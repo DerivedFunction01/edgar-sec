@@ -216,3 +216,11 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Hidden files and folders 
+.*
+# Binary files or pandas exports
+*.parquet
+*.xlsx
+*.db
+*.sqlite
