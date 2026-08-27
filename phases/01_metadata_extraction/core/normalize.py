@@ -63,14 +63,18 @@ PROFILE_KEYS = {
     "filings",
 }
 
-ADDRESS_KEYS = {
-    "street1": "street1",
-    "street2": "street2",
-    "city": "city",
-    "stateOrCountry": "state_or_country",
-    "zipCode": "zip_code",
-    "stateOrCountryDescription": "state_or_country_description",
-}
+ADDRESS_KEYS = [
+    "street1",
+    "street2",
+    "city",
+    "stateOrCountry",
+    "zipCode",
+    "stateOrCountryDescription",
+    "country",
+    "countryCode",
+    "foreignStateTerritory",
+    "isForeignLocation",
+]
 
 FILING_ARRAY_KEYS = [
     "accessionNumber",
@@ -90,6 +94,13 @@ FILING_ARRAY_KEYS = [
     "primaryDocument",
     "primaryDocDescription",
 ]
+
+_CAMEL_BOUNDARY_RE = re.compile(r"(?<=[a-z0-9])(?=[A-Z])")
+
+
+def address_field(raw_key: str) -> str:
+    """Map an SEC address key to its canonical snake_case field name."""
+    return _CAMEL_BOUNDARY_RE.sub("_", raw_key).lower()
 
 
 def add_anomaly(
@@ -191,7 +202,8 @@ def zip_listings(tickers: Any, exchanges: Any, anomalies: list[dict]) -> list[di
 def normalize_address(value: Any, anomalies: list[dict], source: str) -> dict | None:
     """Normalize one address object. A missing key yields None; an empty
     object yields an all-null struct so 'not supplied' stays distinct from
-    'supplied but empty'."""
+    'supplied but empty'. ``isForeignLocation`` is coerced with ``to_bool``
+    like the filing-history booleans."""
     if value is None:
         return None
     if not isinstance(value, dict):
@@ -211,8 +223,9 @@ def normalize_address(value: Any, anomalies: list[dict], source: str) -> dict | 
             source,
         )
     out = {}
-    for raw_key, field in ADDRESS_KEYS.items():
-        out[field] = value.get(raw_key)
+    for raw_key in ADDRESS_KEYS:
+        out[address_field(raw_key)] = value.get(raw_key)
+    out["is_foreign_location"] = to_bool(out["is_foreign_location"])
     return out
 
 

@@ -43,7 +43,9 @@ def load_dotenv(path: str | os.PathLike[str] = DEFAULT_DOTENV_PATH) -> dict[str,
     return values
 
 
-def get_env(name: str, default: str = "", *, path: str | os.PathLike[str] | None = None) -> str:
+def get_env(
+    name: str, default: str = "", *, path: str | os.PathLike[str] | None = None
+) -> str:
     """Resolve one setting: direct environment first, then the ``.env`` file.
 
     An empty direct-environment value is treated as unset so a ``.env``

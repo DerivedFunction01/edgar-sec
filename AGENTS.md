@@ -30,6 +30,7 @@ defs/                              # domain-neutral reusable infrastructure
     partitions.py                  # partition selection and distribution
     progress.py                    # shared progress presentation adapter
     cli.py                         # shared CLI arguments/config bootstrap
+    registry.py                    # static launcher entries for the root run.py
 phases/<number>_<name>/
   core/                            # phase schemas, domain logic, validation
   extractors/                      # future regex/LLM phase adapters
@@ -45,6 +46,12 @@ uploads/                           # input manifests
   HTTP, storage, CLI lifecycle, progress, or worker-commit behavior.
 - `run.py`-style interactive shims are transitional front-ends. The target
   command surface is `python -m phases.<phase>.cli {plan,preview,run,status,merge}`.
+- Root `run.py` is a thin launcher over the static registry in
+  `defs/runtime/registry.py` (`python run.py` menu, `python run.py <id>
+  [args...]` direct dispatch, `--list` JSON). It owns no phase behavior and
+  never subprocesses: entries name existing modules, which keep their own
+  argparse, config handling, and exit codes. New phases register by adding one
+  `LauncherEntry`.
 - Shared interactive behavior belongs in `defs.runtime.interactive`; phase
   runners provide callbacks for preview, plan, status, partition execution,
   and phase-specific command rendering.

@@ -8,7 +8,9 @@ from collections.abc import Callable
 from tqdm import tqdm
 
 
-def make_tqdm_callback(pbar, started: float | None = None, *, warning: Callable[[str], None] | None = None):
+def make_tqdm_callback(
+    pbar, started: float | None = None, *, warning: Callable[[str], None] | None = None
+):
     """Adapt generic ``cik_done``/``worker_failed`` events to a tqdm bar."""
     started = time.monotonic() if started is None else started
     state = {"ok": 0, "not_ok": 0, "hist": 0}
@@ -17,7 +19,9 @@ def make_tqdm_callback(pbar, started: float | None = None, *, warning: Callable[
         metrics = event.get("metrics") or {}
         if event.get("type") == "worker_failed":
             state["not_ok"] += 1
-            (warning or (lambda message: tqdm.write(message)))(f"worker failed: {event.get('error', 'unknown error')}")
+            (warning or (lambda message: tqdm.write(message)))(
+                f"worker failed: {event.get('error', 'unknown error')}"
+            )
         else:
             if event.get("status") == "ok":
                 state["ok"] += 1
@@ -28,8 +32,11 @@ def make_tqdm_callback(pbar, started: float | None = None, *, warning: Callable[
         requests = metrics.get("requests_total", 0)
         elapsed = max(time.monotonic() - started, 1e-6)
         postfix = {
-            "ok": state["ok"], "fail": state["not_ok"], "hist": state["hist"],
-            "req": requests, "rps": f"{requests / elapsed:.1f}",
+            "ok": state["ok"],
+            "fail": state["not_ok"],
+            "hist": state["hist"],
+            "req": requests,
+            "rps": f"{requests / elapsed:.1f}",
             "retry": metrics.get("retries_used", 0),
             "throttle": metrics.get("throttled_count", 0),
         }

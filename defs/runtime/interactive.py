@@ -43,11 +43,25 @@ def run_interactive(phase: InteractivePhase, *, default_partition: int = 1) -> i
             except (ValueError, FileNotFoundError) as exc:
                 print(f"  error: {exc}")
                 continue
-            print(json.dumps({"sample": len(result.get("sample", [])), "artifact": result.get("sample_artifact")}, indent=2, sort_keys=True))
+            print(
+                json.dumps(
+                    {
+                        "sample": len(result.get("sample", [])),
+                        "artifact": result.get("sample_artifact"),
+                    },
+                    indent=2,
+                    sort_keys=True,
+                )
+            )
             continue
         if choice == "2":
             try:
-                selected = parse_id_selection(input(f"Partition ID [{default_partition}]: ").strip() or str(default_partition), partition_ids, "partition")
+                selected = parse_id_selection(
+                    input(f"Partition ID [{default_partition}]: ").strip()
+                    or str(default_partition),
+                    partition_ids,
+                    "partition",
+                )
             except ValueError as exc:
                 print(f"  {exc}")
                 continue
@@ -55,7 +69,9 @@ def run_interactive(phase: InteractivePhase, *, default_partition: int = 1) -> i
                 try:
                     phase.run_partition(partition_id)
                 except KeyboardInterrupt:
-                    print("\n  interrupted; completed chunks are preserved and can be resumed")
+                    print(
+                        "\n  interrupted; completed chunks are preserved and can be resumed"
+                    )
                 except (ValueError, FileNotFoundError) as exc:
                     print(f"  error: {exc}")
             continue
@@ -67,7 +83,9 @@ def run_interactive(phase: InteractivePhase, *, default_partition: int = 1) -> i
                 print(f"  {exc}")
                 continue
             for machine, ids in enumerate(groups, start=1):
-                print(f"\n  machine {machine}: partitions {','.join(map(str, ids)) or '(none)'}")
+                print(
+                    f"\n  machine {machine}: partitions {','.join(map(str, ids)) or '(none)'}"
+                )
                 for partition_id in ids:
                     print(f"    {phase.partition_command(partition_id)}")
             continue

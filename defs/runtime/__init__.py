@@ -1,7 +1,18 @@
 """Shared phase runtime contracts."""
 
 from .defaults import DEFAULT_CHUNK_SIZE, DEFAULT_PARTITION_COUNT, DEFAULT_WORKERS
-from .paths import PhasePaths, ProjectPaths, RunPaths, resolve_paths
+from .paths import (
+    MERGE_DIR_NAME,
+    MERGE_REPORT_NAME,
+    ArtifactClassification,
+    ArtifactRole,
+    PhasePaths,
+    ProjectPaths,
+    RunPaths,
+    classify_artifact_path,
+    merge_report_path_in,
+    resolve_paths,
+)
 from .progress import make_tqdm_callback
 from .interactive import InteractivePhase, run_interactive
 from .partitions import divide_ids_among_workers, parse_id_selection
@@ -12,6 +23,10 @@ __all__ = [
     "DEFAULT_CHUNK_SIZE",
     "DEFAULT_PARTITION_COUNT",
     "DEFAULT_WORKERS",
+    "ArtifactClassification",
+    "ArtifactRole",
+    "MERGE_DIR_NAME",
+    "MERGE_REPORT_NAME",
     "PhasePaths",
     "ProjectPaths",
     "RunPaths",
@@ -25,6 +40,8 @@ __all__ = [
     "load_config_or_template",
     "print_json",
     "resolve_paths",
+    "classify_artifact_path",
+    "merge_report_path_in",
     "DEFAULT_DOTENV_PATH",
     "get_env",
     "load_dotenv",

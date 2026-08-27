@@ -7,6 +7,8 @@ import os
 from collections import Counter
 from dataclasses import dataclass, field
 
+from defs.runtime.paths import merge_report_path_in
+
 from .schemas import SCHEMA_VERSION, TERMINAL_STATUSES
 from .storage import make_phase_store
 
@@ -81,13 +83,26 @@ def merge_chunks(
         raise MergeError("unsupported storage format")
     partition = None
     if partition_id is not None:
-        partition = next((item for item in plan.get("partitions", []) if item["partition_id"] == partition_id), None)
+        partition = next(
+            (
+                item
+                for item in plan.get("partitions", [])
+                if item["partition_id"] == partition_id
+            ),
+            None,
+        )
         if partition is None:
             raise MergeError(f"partition {partition_id} is not present in plan.json")
-    assigned = {chunk["chunk_id"]: chunk for chunk in (partition or plan).get("chunks", [])}
+    assigned = {
+        chunk["chunk_id"]: chunk for chunk in (partition or plan).get("chunks", [])
+    }
     if not assigned:
         raise MergeError("plan contains no chunks")
-    source_root = artifacts_dir if partition is None else os.path.join(artifacts_dir, "partitions", f"partition-{partition_id:05d}")
+    source_root = (
+        artifacts_dir
+        if partition is None
+        else os.path.join(artifacts_dir, "partitions", f"partition-{partition_id:05d}")
+    )
     source = make_phase_store(source_format, source_root, "merge", expected_fingerprint)
     found = {ref.chunk_id: ref for ref in source.list()}
     report = MergeReport(
@@ -195,7 +210,7 @@ def merge_chunks(
         )
         target.finalize(rows, output_path)
     report.output_path = os.path.abspath(output_path)
-    report_path = os.path.join(artifacts_dir, "merge", "merge_report.json")
+    report_path = merge_report_path_in(artifacts_dir)
     os.makedirs(os.path.dirname(report_path), exist_ok=True)
     with open(report_path, "w", encoding="utf-8") as fh:
         json.dump(report.to_dict(), fh, indent=2, sort_keys=True)

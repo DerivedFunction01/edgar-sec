@@ -52,7 +52,9 @@ def test_get_env_empty_environment_value_treated_as_unset(tmp_path, monkeypatch)
 
 def test_get_env_missing_everywhere_returns_default(tmp_path, monkeypatch):
     monkeypatch.delenv("SEC_TEST_VAR", raising=False)
-    assert get_env("SEC_TEST_VAR", "fallback", path=tmp_path / "missing.env") == "fallback"
+    assert (
+        get_env("SEC_TEST_VAR", "fallback", path=tmp_path / "missing.env") == "fallback"
+    )
 
 
 def test_get_env_uses_edgar_dotenv_path_override(tmp_path, monkeypatch):

@@ -10,11 +10,21 @@ from collections.abc import Callable
 
 
 def coalesce(cli_value, config_value, default):
-    return cli_value if cli_value is not None else config_value if config_value is not None else default
+    return (
+        cli_value
+        if cli_value is not None
+        else config_value
+        if config_value is not None
+        else default
+    )
 
 
-def add_common_options(parser: argparse.ArgumentParser, *, include_partition: bool = True) -> None:
-    parser.add_argument("--config", default=None, help="path to persisted project configuration")
+def add_common_options(
+    parser: argparse.ArgumentParser, *, include_partition: bool = True
+) -> None:
+    parser.add_argument(
+        "--config", default=None, help="path to persisted project configuration"
+    )
     parser.add_argument("--input", default=None, help="input manifest")
     parser.add_argument("--artifacts", default=None, help="run artifacts directory")
     parser.add_argument("--chunk-size", type=int, default=None)
@@ -33,7 +43,9 @@ def add_common_options(parser: argparse.ArgumentParser, *, include_partition: bo
     parser.add_argument("--run-id", default="local")
 
 
-def load_config_or_template(path: str, *, load: Callable, write: Callable, default: Callable):
+def load_config_or_template(
+    path: str, *, load: Callable, write: Callable, default: Callable
+):
     if os.path.exists(path):
         return load(path), False
     created = write(path, default())

@@ -1,0 +1,126 @@
+.sidebar {
+	background: var(--theme-surface-navigation);
+	border-right: 1px solid var(--theme-border-subtle);
+	overflow-y: auto;
+	padding: 12px 8px;
+}
+/* Narrower scrollbar for the explorer (colors come from the global rules) */
+
+.sidebar::-webkit-scrollbar {
+	width: var(--theme-scrollbar-sidebar-width);
+}
+
+.sidebar[data-collapsed="true"] {
+	padding: 12px 6px;
+}
+.sidebar-collapsed {
+	color: var(--theme-content-accent);
+	font-weight: 700;
+	text-align: center;
+}
+
+.sidebar-group {
+	margin-bottom: 4px;
+}
+
+.sidebar-group-header {
+	display: flex;
+	align-items: center;
+	gap: 6px;
+	width: 100%;
+	padding: 6px 8px;
+	border: none;
+	background: none;
+	color: var(--theme-content-secondary);
+	font-size: 12px;
+	font-weight: 600;
+	text-transform: uppercase;
+	letter-spacing: 0.04em;
+	cursor: pointer;
+	text-align: left;
+	border-radius: var(--theme-radius-sm);
+}
+
+.sidebar-group-header:hover {
+	background: var(--theme-action-ghost-surface-hover);
+	color: var(--theme-content-primary);
+}
+
+.sidebar-item {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 8px;
+	width: 100%;
+	padding: 5px 8px 5px 22px;
+	border: none;
+	background: none;
+	color: var(--theme-content-secondary);
+	font-size: 12.5px;
+	cursor: pointer;
+	text-align: left;
+	border-radius: var(--theme-radius-sm);
+	overflow: hidden;
+}
+
+.sidebar-item:hover {
+	background: var(--theme-action-ghost-surface-hover);
+	color: var(--theme-content-primary);
+}
+
+.sidebar-item[data-active="true"] {
+	background: var(--theme-surface-accent);
+	color: var(--theme-content-accent);
+}
+
+.sidebar-item-label {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+/* Artifact filter box at the top of the explorer */
+
+.sidebar-filter {
+	padding: 0 4px 8px;
+}
+
+.sidebar-filter .input {
+	width: 100%;
+}
+
+/* Collapsible phase/run groups */
+
+.sidebar-toggle {
+	display: flex;
+	align-items: center;
+	gap: 5px;
+	width: 100%;
+	text-align: left;
+}
+
+.sidebar-toggle .chevron {
+	flex: none;
+	width: 10px;
+	color: var(--theme-content-tertiary);
+	font-size: 10px;
+}
+
+.sidebar-toggle[data-open="true"] .chevron {
+	color: var(--theme-content-accent);
+}
+
+.sidebar-toggle-label {
+	flex: 1;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.sidebar-run {
+	padding-left: 12px;
+}
+
+.sidebar-leaf {
+	padding-left: 30px;
+}

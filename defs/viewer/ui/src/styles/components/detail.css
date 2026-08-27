@@ -1,0 +1,51 @@
+.detail {
+	background: var(--theme-surface-sunken);
+	font-size: 12px;
+	overflow: auto;
+	padding: 12px;
+}
+
+.detail-header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	margin-bottom: 8px;
+}
+.detail-actions {
+	display: flex;
+	gap: 6px;
+	margin-bottom: 8px;
+}
+
+.detail-json {
+	font-size: 12px;
+	line-height: 1.5;
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.json-key {
+	color: var(--syntax-variable);
+}
+
+.json-string {
+	color: var(--syntax-string);
+}
+
+.json-number {
+	color: var(--syntax-number);
+}
+
+.json-boolean,
+.json-null {
+	color: var(--syntax-keyword);
+}
+
+.json-punctuation {
+	color: var(--syntax-punctuation);
+}
+
+.detail-row-line {
+	padding: 3px 0;
+	border-bottom: 1px solid var(--theme-border-subtle);
+}

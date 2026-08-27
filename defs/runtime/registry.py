@@ -1,0 +1,48 @@
+"""Static launcher registry for the root ``run.py`` dispatcher.
+
+Pure declarative data: each entry names the module that owns its own
+argparse/interactive behavior; the launcher adds no phase logic. Adding a
+phase or tool later means adding one ``LauncherEntry`` here — the contract
+test pins that every registered module imports and exposes ``main``.
+"""
+
+from __future__ import annotations
+
+from dataclasses import dataclass
+
+
+@dataclass(frozen=True)
+class LauncherEntry:
+    """One dispatchable entry point of the repository launcher."""
+
+    id: str
+    label: str
+    description: str
+    module: str
+
+
+ENTRIES: tuple[LauncherEntry, ...] = (
+    LauncherEntry(
+        id="viewer",
+        label="Dataset Viewer",
+        description="read-only artifact viewer (API + UI)",
+        module="defs.viewer.__main__",
+    ),
+    LauncherEntry(
+        id="metadata",
+        label="Phase 01: Metadata Extraction",
+        description="interactive SEC 10-K metadata extraction wizard",
+        module="phases.01_metadata_extraction.run",
+    ),
+)
+
+
+def find_entry(entry_id: str) -> LauncherEntry | None:
+    """Return the entry with the given id, or ``None`` when unknown."""
+    for entry in ENTRIES:
+        if entry.id == entry_id:
+            return entry
+    return None
+
+
+__all__ = ["ENTRIES", "LauncherEntry", "find_entry"]

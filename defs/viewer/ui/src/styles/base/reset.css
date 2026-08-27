@@ -1,0 +1,62 @@
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+* {
+	margin: 0;
+}
+
+html,
+body,
+#root {
+	height: 100%;
+}
+
+body {
+	background: var(--theme-surface-canvas);
+	color: var(--theme-content-primary);
+}
+
+/* Themed scrollbars everywhere. Scroll containment is NOT global: setting
+   overscroll-behavior on non-scrollable elements (td, spans) makes them act
+   as scroll boundaries in Chromium and blocks wheel scrolling of the real
+   scroller behind them. It is applied per scroll surface instead. */
+
+* {
+	scrollbar-width: thin;
+	scrollbar-color: var(--theme-scrollbar-thumb) var(--theme-scrollbar-track);
+}
+
+*::-webkit-scrollbar {
+	width: var(--theme-scrollbar-width);
+	height: var(--theme-scrollbar-width);
+}
+
+*::-webkit-scrollbar-thumb {
+	background: var(--theme-scrollbar-thumb);
+	border-radius: 6px;
+}
+
+*::-webkit-scrollbar-track {
+	background: var(--theme-scrollbar-track);
+}
+
+/* Scroll chaining stops at each real scroll surface (tables, panels,
+   popovers) so popovers never scroll the viewer behind them. */
+
+.table-wrap,
+.sidebar,
+.detail,
+.cell-focus,
+.cell-focus-body,
+.cell-fullscreen,
+.type-pop,
+.filter-pop,
+.u-scroll-y,
+.console-editor,
+.console-highlight,
+.console-editor-input {
+	overscroll-behavior: contain;
+}

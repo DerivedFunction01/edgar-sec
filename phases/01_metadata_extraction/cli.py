@@ -126,7 +126,9 @@ def build_parser() -> argparse.ArgumentParser:
     add_common_options(preview_parser)
     preview_parser.add_argument("--sample-size", type=int, default=3)
 
-    run_parser = subparsers.add_parser("run", help="run all missing chunks in one operational partition")
+    run_parser = subparsers.add_parser(
+        "run", help="run all missing chunks in one operational partition"
+    )
     add_common_options(run_parser)
 
     status_parser = subparsers.add_parser(
@@ -174,7 +176,9 @@ def build_parser() -> argparse.ArgumentParser:
         help="final output format (defaults to the output suffix)",
     )
     merge_parser.add_argument("--partition-id", type=int, default=None)
-    merge_parser.add_argument("--all", action="store_true", help="merge all operational partitions")
+    merge_parser.add_argument(
+        "--all", action="store_true", help="merge all operational partitions"
+    )
     return parser
 
 
@@ -188,7 +192,10 @@ def main(argv=None) -> int:
 
     config_path = args.config or PROJECT_CONFIG_DEFAULT_PATH
     project_config, _ = load_config_or_template(
-        config_path, load=load_project_config, write=write_project_config, default=default_project_config
+        config_path,
+        load=load_project_config,
+        write=write_project_config,
+        default=default_project_config,
     )
 
     options = options_from_args(args, project_config)

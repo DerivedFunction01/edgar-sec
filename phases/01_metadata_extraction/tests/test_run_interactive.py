@@ -32,6 +32,7 @@ class FakeSession:
 
 def test_parse_partition_selection_ranges_and_dedup():
     from defs.runtime.partitions import parse_id_selection
+
     known = list(range(1, 11))
     assert parse_id_selection("1,3,5-8", known, "partition") == [1, 3, 5, 6, 7, 8]
     assert parse_id_selection("8-6", known, "partition") == [6, 7, 8]
@@ -42,6 +43,7 @@ def test_parse_partition_selection_ranges_and_dedup():
 
 def test_divide_partitions_among_machines_is_balanced_and_contiguous():
     from defs.runtime.partitions import divide_ids_among_workers
+
     groups = divide_ids_among_workers(list(range(1, 11)), 3)
     assert [len(g) for g in groups] == [4, 3, 3]
     assert groups[0] == [1, 2, 3, 4]
@@ -53,6 +55,7 @@ def test_divide_partitions_among_machines_is_balanced_and_contiguous():
 
 def test_divide_with_more_machines_than_chunks():
     from defs.runtime.partitions import divide_ids_among_workers
+
     groups = divide_ids_among_workers([1, 2], 4)
     assert groups == [[1], [2], [], []]
 
@@ -140,7 +143,16 @@ def test_interactive_wizard_end_to_end(tmp_path, monkeypatch):
 
     exit_code = run_mod.main(["--config", str(config_path)])
     assert exit_code == 0
-    assert len(list((artifacts / "partitions" / "partition-00001" / "chunks").glob("*.parquet"))) == 2
+    assert (
+        len(
+            list(
+                (artifacts / "partitions" / "partition-00001" / "chunks").glob(
+                    "*.parquet"
+                )
+            )
+        )
+        == 2
+    )
 
     status_options = config.load_project_config(str(config_path)).to_run_options(
         input_path=str(input_csv),
@@ -200,7 +212,9 @@ def _write_wizard_config(tmp_path, session, monkeypatch, **config_kwargs):
     config_kwargs.setdefault("user_agent", "TestClient/1.0 test@example.com")
     config_kwargs.setdefault("storage_format", "parquet")
     config_path = tmp_path / "config.json"
-    run_mod.write_project_config(str(config_path), config.ProjectConfig(**config_kwargs))
+    run_mod.write_project_config(
+        str(config_path), config.ProjectConfig(**config_kwargs)
+    )
     return config_path, config_kwargs["artifacts_dir"]
 
 

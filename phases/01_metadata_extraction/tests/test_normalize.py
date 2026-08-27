@@ -63,11 +63,37 @@ def test_addresses_supplied_but_empty_vs_missing():
     assert row["addresses"]["business"]["city"] is None
     # mailing is fully supplied
     assert row["addresses"]["mailing"]["city"] == "Dearborn"
+    assert row["addresses"]["mailing"]["state_or_country"] == "MI"
+    assert row["addresses"]["mailing"]["zip_code"] == "48126"
+    assert row["addresses"]["mailing"]["state_or_country_description"] == "MI"
+    assert row["addresses"]["mailing"]["country"] == "USA"
+    assert row["addresses"]["mailing"]["country_code"] == "US"
+    assert row["addresses"]["mailing"]["foreign_state_territory"] is None
+    assert row["addresses"]["mailing"]["is_foreign_location"] is False
+    codes = {a["code"] for a in row["anomalies"]}
+    assert "unknown_address_keys" not in codes
 
     payload = load("recent_submissions.json")
     del payload["addresses"]["mailing"]
     row2 = normalize.normalize_submissions(payload, **base_kwargs())
     assert row2["addresses"]["mailing"] is None  # not supplied
+
+
+def test_unknown_address_keys_flagged_not_dropped():
+    payload = load("recent_submissions.json")
+    payload["addresses"]["mailing"]["geoHash"] = "dpsb"
+    row = normalize.normalize_submissions(payload, **base_kwargs())
+    flagged = [a for a in row["anomalies"] if a["code"] == "unknown_address_keys"]
+    assert flagged and "geoHash" in flagged[0]["detail"]
+    assert flagged[0]["source"] == "addresses.mailing"
+    assert "geoHash" not in row["addresses"]["mailing"]
+
+
+def test_is_foreign_location_int_coerced_to_bool():
+    payload = load("recent_submissions.json")
+    payload["addresses"]["mailing"]["isForeignLocation"] = 1
+    row = normalize.normalize_submissions(payload, **base_kwargs())
+    assert row["addresses"]["mailing"]["is_foreign_location"] is True
 
 
 def test_listings_zip_preserves_duplicates_and_order():

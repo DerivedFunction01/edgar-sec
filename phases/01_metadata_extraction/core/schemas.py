@@ -22,6 +22,10 @@ ADDRESS_STRUCT = pa.struct(
         ("state_or_country", pa.string()),
         ("zip_code", pa.string()),
         ("state_or_country_description", pa.string()),
+        ("country", pa.string()),
+        ("country_code", pa.string()),
+        ("foreign_state_territory", pa.string()),
+        ("is_foreign_location", pa.bool_()),
     ]
 )
 

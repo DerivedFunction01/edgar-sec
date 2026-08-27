@@ -271,29 +271,65 @@ def run_chunk(options: RunOptions, progress=None) -> dict:
             "input fingerprint mismatch between CSV and plan.json; regenerate the plan"
         )
     if options.partition_id is None:
-        chunk = select_chunk(plan, options.chunk_id, report["fingerprint"], plan.get("schema_version", SCHEMA_VERSION))
+        chunk = select_chunk(
+            plan,
+            options.chunk_id,
+            report["fingerprint"],
+            plan.get("schema_version", SCHEMA_VERSION),
+        )
         targets = chunk_ciks(rows, chunk)
         expected_ciks = plan.get("cik_padded", [])[chunk.start_row : chunk.end_row + 1]
         checkpoint_root = options.artifacts_dir
     else:
         if not 1 <= options.partition_id <= plan.get("partition_count", 1):
-            raise ValueError(f"partition_id must be between 1 and {plan.get('partition_count', 1)}")
-        partition = next((item for item in plan.get("partitions", []) if item["partition_id"] == options.partition_id), None)
+            raise ValueError(
+                f"partition_id must be between 1 and {plan.get('partition_count', 1)}"
+            )
+        partition = next(
+            (
+                item
+                for item in plan.get("partitions", [])
+                if item["partition_id"] == options.partition_id
+            ),
+            None,
+        )
         if partition is None:
-            raise ValueError(f"partition {options.partition_id} is not present in plan.json")
-        chunk_info = next((item for item in partition["chunks"] if item["chunk_id"] == options.chunk_id), None)
+            raise ValueError(
+                f"partition {options.partition_id} is not present in plan.json"
+            )
+        chunk_info = next(
+            (
+                item
+                for item in partition["chunks"]
+                if item["chunk_id"] == options.chunk_id
+            ),
+            None,
+        )
         if chunk_info is None:
-            raise ValueError(f"chunk_id {options.chunk_id} is not present in partition {options.partition_id}")
+            raise ValueError(
+                f"chunk_id {options.chunk_id} is not present in partition {options.partition_id}"
+            )
         from .chunks import ChunkRange
-        chunk = ChunkRange(chunk_info["chunk_id"], chunk_info["start_row"], chunk_info["end_row"], chunk_info["first_cik"], chunk_info["last_cik"])
+
+        chunk = ChunkRange(
+            chunk_info["chunk_id"],
+            chunk_info["start_row"],
+            chunk_info["end_row"],
+            chunk_info["first_cik"],
+            chunk_info["last_cik"],
+        )
         expected_ciks = partition["cik_padded"][chunk.start_row : chunk.end_row + 1]
         target_by_cik = {target.cik_padded: target for target in rows}
         targets = [target_by_cik[cik] for cik in expected_ciks if cik in target_by_cik]
-        checkpoint_root = os.path.join(options.artifacts_dir, "partitions", f"partition-{options.partition_id:05d}")
+        checkpoint_root = os.path.join(
+            options.artifacts_dir, "partitions", f"partition-{options.partition_id:05d}"
+        )
     if [t.cik_padded for t in targets] != expected_ciks:
         raise ValueError("chunk CIK assignment does not match plan order")
 
-    store = make_checkpoint_store(options, input_fingerprint=report["fingerprint"], root=checkpoint_root)
+    store = make_checkpoint_store(
+        options, input_fingerprint=report["fingerprint"], root=checkpoint_root
+    )
     existing = store.find(chunk.chunk_id, chunk)
     if existing:
         logger.info(
@@ -407,12 +443,24 @@ def run_chunk(options: RunOptions, progress=None) -> dict:
 def run_partition(options: RunOptions, partition_id: int, progress=None) -> dict:
     """Run every missing chunk in one operational partition."""
     plan = load_plan(options)
-    partition = next((item for item in plan.get("partitions", []) if item["partition_id"] == partition_id), None)
+    partition = next(
+        (
+            item
+            for item in plan.get("partitions", [])
+            if item["partition_id"] == partition_id
+        ),
+        None,
+    )
     if partition is None:
         raise ValueError(f"partition {partition_id} is not present in plan.json")
     summaries = []
     for chunk in partition.get("chunks", []):
-        summaries.append(run_chunk(replace(options, partition_id=partition_id, chunk_id=chunk["chunk_id"]), progress=progress))
+        summaries.append(
+            run_chunk(
+                replace(options, partition_id=partition_id, chunk_id=chunk["chunk_id"]),
+                progress=progress,
+            )
+        )
     return {
         "partition_id": partition_id,
         "chunk_count": len(summaries),
@@ -430,10 +478,19 @@ def get_status(options: RunOptions, partition_id: int | None = None) -> dict:
     scope = plan
     root = options.artifacts_dir
     if partition_id is not None:
-        scope = next((item for item in plan.get("partitions", []) if item["partition_id"] == partition_id), None)
+        scope = next(
+            (
+                item
+                for item in plan.get("partitions", [])
+                if item["partition_id"] == partition_id
+            ),
+            None,
+        )
         if scope is None:
             raise ValueError(f"partition {partition_id} is not present in plan.json")
-        root = os.path.join(options.artifacts_dir, "partitions", f"partition-{partition_id:05d}")
+        root = os.path.join(
+            options.artifacts_dir, "partitions", f"partition-{partition_id:05d}"
+        )
     store = make_phase_store(
         storage_format,
         root,

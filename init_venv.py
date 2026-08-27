@@ -44,6 +44,8 @@ CUSTOM_PACKAGES = [
     "tiktoken",
     "sentencepiece",
     "tensorboard",
+    "fastapi",
+    "uvicorn",
 ]
 
 # Packages for the ML server

@@ -5,10 +5,46 @@ from __future__ import annotations
 import os
 import re
 from dataclasses import dataclass
-from pathlib import Path
+from enum import Enum
+from pathlib import Path, PurePosixPath
 from typing import Mapping
 
 _SAFE_ID = re.compile(r"^[A-Za-z0-9][A-Za-z0-9_.-]*$")
+_PARTITION_DIR = re.compile(r"^partition-(\d{5,})$")
+_PARTITION_MANIFEST = re.compile(r"^partition-(\d{5,})\.json$")
+
+MERGE_DIR_NAME = "merge"
+MERGE_REPORT_NAME = "merge_report.json"
+
+
+class ArtifactRole(str, Enum):
+    """Recognized roles an artifact path can play under the artifacts root."""
+
+    RUN_PLAN = "run_plan"
+    PARTITION_MANIFEST = "partition_manifest"
+    PARTITION_CHUNK = "partition_chunk"
+    CHUNK = "chunk"
+    PREVIEW = "preview"
+    CANONICAL = "canonical"
+    MERGE_REPORT = "merge_report"
+    WORKER_FRAGMENT = "worker_fragment"
+    UNKNOWN = "unknown"
+
+
+@dataclass(frozen=True)
+class ArtifactClassification:
+    """Result of classifying one artifact path relative to the artifacts root."""
+
+    relative_path: str
+    role: ArtifactRole
+    phase: str | None = None
+    run_id: str | None = None
+    partition_id: int | None = None
+
+
+def merge_report_path_in(run_root: str | os.PathLike[str]) -> Path:
+    """Merge report path for a run directory supplied as a plain path."""
+    return Path(run_root) / MERGE_DIR_NAME / MERGE_REPORT_NAME
 
 
 def _safe_id(value: str, label: str) -> str:
@@ -96,6 +132,14 @@ class RunPaths:
     def workers_root(self) -> Path:
         return self.run_root / "workers"
 
+    @property
+    def merge_root(self) -> Path:
+        return self.run_root / MERGE_DIR_NAME
+
+    @property
+    def merge_report_path(self) -> Path:
+        return self.merge_root / MERGE_REPORT_NAME
+
     def partition_manifest(self, partition_id: int) -> Path:
         return self.partitions_root / f"partition-{_partition_id(partition_id)}.json"
 
@@ -128,6 +172,91 @@ def _partition_id(value: int) -> str:
     return f"{value:05d}"
 
 
+def classify_artifact_path(path: str | os.PathLike[str]) -> ArtifactClassification:
+    """Classify an artifact path relative to the artifacts root.
+
+    This is the read-side mirror of the path builders above: every path
+    produced by ``RunPaths``/``PhasePaths`` classifies back to the same role
+    and partition id. Paths outside the recognized layout classify as
+    ``UNKNOWN``; when they still sit inside a recognized ``<phase>/runs/
+    <run_id>/`` subtree, the phase and run id are preserved so consumers can
+    attribute the file. Absolute paths are rejected.
+    """
+    pure = PurePosixPath(Path(path).as_posix())
+    if pure.is_absolute() or (len(pure.parts) > 0 and pure.parts[0] == "/"):
+        raise ValueError("artifact path must be relative to the artifacts root")
+    parts = pure.parts
+    base = ArtifactClassification(
+        relative_path=pure.as_posix(), role=ArtifactRole.UNKNOWN
+    )
+    if len(parts) < 2:
+        return base
+    phase, second = parts[0], parts[1]
+    if not _SAFE_ID.fullmatch(phase):
+        return base
+    if second == "runs":
+        if len(parts) < 3:
+            return base
+        run_id = parts[2]
+        if not _SAFE_ID.fullmatch(run_id):
+            return base
+        rest = parts[3:]
+
+        def with_run(
+            role: ArtifactRole, partition_id: int | None = None
+        ) -> ArtifactClassification:
+            return ArtifactClassification(
+                relative_path=pure.as_posix(),
+                role=role,
+                phase=phase,
+                run_id=run_id,
+                partition_id=partition_id,
+            )
+
+        def run_unknown() -> ArtifactClassification:
+            """Unrecognized file inside a known run: keep its attribution."""
+            return with_run(ArtifactRole.UNKNOWN)
+
+        if rest == ("plan.json",):
+            return with_run(ArtifactRole.RUN_PLAN)
+        if rest == (MERGE_DIR_NAME, MERGE_REPORT_NAME):
+            return with_run(ArtifactRole.MERGE_REPORT)
+        if len(rest) == 2 and rest[0] == "chunks":
+            return with_run(ArtifactRole.CHUNK)
+        if len(rest) >= 1 and rest[0] == "partitions":
+            if len(rest) == 2:
+                match = _PARTITION_MANIFEST.fullmatch(rest[1])
+                if match is None:
+                    return run_unknown()
+                return with_run(ArtifactRole.PARTITION_MANIFEST, int(match.group(1)))
+            match = _PARTITION_DIR.fullmatch(rest[1]) if len(rest) >= 2 else None
+            if match is None:
+                return run_unknown()
+            partition_id = int(match.group(1))
+            if len(rest) == 4 and rest[2] == "chunks":
+                return with_run(ArtifactRole.PARTITION_CHUNK, partition_id)
+            return run_unknown()
+        if len(rest) >= 3 and rest[0] == "workers":
+            return with_run(ArtifactRole.WORKER_FRAGMENT)
+        return run_unknown()
+    if second == "preview":
+        if len(parts) < 3 or not _SAFE_ID.fullmatch(parts[2]):
+            return base
+        return ArtifactClassification(
+            relative_path=pure.as_posix(),
+            role=ArtifactRole.PREVIEW,
+            phase=phase,
+            run_id=parts[2],
+        )
+    if second == "canonical":
+        return ArtifactClassification(
+            relative_path=pure.as_posix(),
+            role=ArtifactRole.CANONICAL,
+            phase=phase,
+        )
+    return base
+
+
 def resolve_paths(
     phase: str | None = None,
     run_id: str | None = None,
@@ -157,4 +286,15 @@ def resolve_paths(
     return phase_paths.run(run_id)
 
 
-__all__ = ["PhasePaths", "ProjectPaths", "RunPaths", "resolve_paths"]
+__all__ = [
+    "ArtifactClassification",
+    "ArtifactRole",
+    "MERGE_DIR_NAME",
+    "MERGE_REPORT_NAME",
+    "PhasePaths",
+    "ProjectPaths",
+    "RunPaths",
+    "classify_artifact_path",
+    "merge_report_path_in",
+    "resolve_paths",
+]

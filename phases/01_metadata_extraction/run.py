@@ -83,7 +83,9 @@ def build_parser() -> argparse.ArgumentParser:
         default=None,
         help="number of deterministic work partitions",
     )
-    parser.add_argument("--partition-id", type=int, default=None, help="operational partition to run")
+    parser.add_argument(
+        "--partition-id", type=int, default=None, help="operational partition to run"
+    )
     parser.add_argument(
         "--storage-format",
         choices=("parquet", "jsonl"),
@@ -180,9 +182,7 @@ def options_from_args(args, project_config) -> RunOptions:
         rate_limit_rps=_coalesce(
             args.rate_limit, project_config.rate_limit_rps, RunOptions.rate_limit_rps
         ),
-            user_agent=args.user_agent
-            or project_config.user_agent
-            or default_user_agent(),
+        user_agent=args.user_agent or project_config.user_agent or default_user_agent(),
         cache_dir=_coalesce(args.cache_dir, project_config.cache_dir, ""),
         max_failure_attempts=_coalesce(
             args.max_failure_attempts,
@@ -251,17 +251,24 @@ def _chunk_row_counts(options: RunOptions) -> dict[int, int]:
     }
 
 
-def _run_partition_with_progress(options: RunOptions, partition_id: int, *, show_progress: bool = True) -> dict:
+def _run_partition_with_progress(
+    options: RunOptions, partition_id: int, *, show_progress: bool = True
+) -> dict:
     """Run one partition with a single CIK-level progress bar."""
     plan = load_plan(options)
     partition = next(
-        (item for item in plan.get("partitions", []) if item["partition_id"] == partition_id),
+        (
+            item
+            for item in plan.get("partitions", [])
+            if item["partition_id"] == partition_id
+        ),
         None,
     )
     if partition is None:
         raise ValueError(f"partition {partition_id} is not present in plan.json")
     total = sum(
-        chunk["end_row"] - chunk["start_row"] + 1 for chunk in partition.get("chunks", [])
+        chunk["end_row"] - chunk["start_row"] + 1
+        for chunk in partition.get("chunks", [])
     )
     bar = tqdm(
         total=total,
@@ -286,15 +293,19 @@ def interactive_wizard(args, project_config) -> int:
     except ValueError as exc:
         print(f"error: {exc}", file=sys.stderr)
         return 2
-    return run_interactive(InteractivePhase(
-        ensure_plan=lambda: ensure_plan(options),
-        preview=lambda: preview_sample(options),
-        status=lambda: get_status(options),
-        run_partition=lambda partition_id: _run_partition_with_progress(
-            options, partition_id, show_progress=not args.no_progress
-        ),
-        partition_command=lambda partition_id: partition_command(options, partition_id),
-    ))
+    return run_interactive(
+        InteractivePhase(
+            ensure_plan=lambda: ensure_plan(options),
+            preview=lambda: preview_sample(options),
+            status=lambda: get_status(options),
+            run_partition=lambda partition_id: _run_partition_with_progress(
+                options, partition_id, show_progress=not args.no_progress
+            ),
+            partition_command=lambda partition_id: partition_command(
+                options, partition_id
+            ),
+        )
+    )
 
 
 def main(argv=None) -> int:
@@ -337,7 +348,9 @@ def main(argv=None) -> int:
                 project_config.rate_limit_rps,
                 RunOptions.rate_limit_rps,
             ),
-        user_agent=args.user_agent or project_config.user_agent or default_user_agent(),
+            user_agent=args.user_agent
+            or project_config.user_agent
+            or default_user_agent(),
             cache_dir=_coalesce(args.cache_dir, project_config.cache_dir, ""),
             max_failure_attempts=_coalesce(
                 args.max_failure_attempts,
@@ -390,9 +403,7 @@ def main(argv=None) -> int:
     )
     try:
         with logging_redirect_tqdm():
-            summary = run_chunk(
-                options, progress=make_tqdm_callback(bar)
-            )
+            summary = run_chunk(options, progress=make_tqdm_callback(bar))
     except (ValueError, FileNotFoundError) as exc:
         print(f"error: {exc}", file=sys.stderr)
         return 2
