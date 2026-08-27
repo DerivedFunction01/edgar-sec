@@ -37,6 +37,8 @@ BASE_PACKAGES = [
 ]
     
 CUSTOM_PACKAGES = [
+    "duckdb",
+    "pytest",
     "pysbd",
     "nltk",
     "tiktoken",
