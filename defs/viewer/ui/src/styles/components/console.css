@@ -81,6 +81,38 @@
 	margin-right: auto;
 }
 
+.console-history {
+	list-style: none;
+	margin: 0 0 8px;
+	padding: 4px;
+	max-height: 160px;
+	overflow-y: auto;
+	background: var(--theme-surface-sunken);
+	border: 1px solid var(--theme-border-default);
+	border-radius: var(--theme-radius-sm);
+}
+
+.console-history-item {
+	width: 100%;
+	text-align: left;
+	border: none;
+	background: none;
+	color: var(--theme-content-secondary);
+	font-family: var(--theme-mono-font, monospace);
+	font-size: 11.5px;
+	padding: 5px 8px;
+	border-radius: var(--theme-radius-sm);
+	cursor: pointer;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.console-history-item:hover {
+	background: var(--theme-action-ghost-surface-hover);
+	color: var(--theme-content-primary);
+}
+
 /* Regex-highlighted SQL tokens mapped to --syntax-* variables */
 .tok-keyword {
 	color: var(--syntax-keyword);

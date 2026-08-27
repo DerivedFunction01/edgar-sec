@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import re
 from dataclasses import dataclass, field
-from typing import Any, Optional
+from typing import Any
 
 from .errors import SchemaMismatchError, StorageError
 
@@ -122,7 +122,7 @@ def make_spec(
     name: str,
     schema_version: str,
     key_field: str = "cik",
-    arrow_schema: Optional[Any] = None,
+    arrow_schema: Any | None = None,
     required_fields: tuple[str, ...] = (),
 ) -> DatasetSpec:
     return DatasetSpec(

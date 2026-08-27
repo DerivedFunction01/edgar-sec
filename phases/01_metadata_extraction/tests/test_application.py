@@ -243,7 +243,7 @@ def test_run_chunk_rejects_modified_input(tmp_path, fake_sec):
 
 def test_jsonl_storage_end_to_end(tmp_path, fake_sec):
     """plan/run/status/merge with JSONL checkpoints through the same harness."""
-    session, register = fake_sec
+    _session, register = fake_sec
     base = "https://data.sec.gov/submissions"
     register(
         f"{base}/CIK0000037996.json",
@@ -299,7 +299,7 @@ def test_jsonl_storage_end_to_end(tmp_path, fake_sec):
 
 
 def test_run_chunk_emits_progress_events(tmp_path, fake_sec):
-    session, register = fake_sec
+    _session, register = fake_sec
     base = "https://data.sec.gov/submissions"
     register(
         f"{base}/CIK0000000020.json",
@@ -337,7 +337,7 @@ def test_run_chunk_emits_progress_events(tmp_path, fake_sec):
 
 
 def test_run_chunk_progress_callback_failure_does_not_break_run(tmp_path, fake_sec):
-    session, register = fake_sec
+    _session, register = fake_sec
     base = "https://data.sec.gov/submissions"
     register(
         f"{base}/CIK0000000020.json",

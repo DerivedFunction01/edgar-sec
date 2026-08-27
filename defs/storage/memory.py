@@ -8,7 +8,7 @@ durability no-op. Also used by tests to validate domain classes without I/O.
 from __future__ import annotations
 
 import threading
-from typing import Iterable
+from collections.abc import Iterable
 
 from .errors import SchemaMismatchError, StorageError
 from .models import BatchReceipt, DatasetSpec, RunContext

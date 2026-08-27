@@ -1,0 +1,31 @@
+# Ruff configuration for the edgar-sec repository.
+#
+# Ruff 0.16 enables a broad default rule set (pyflakes/pycodestyle plus the
+# bugbear, bandit, tryceratops, simplify, pylint, and ruff families). The
+# ignores below are deliberate: they silence patterns that are intentional in
+# this codebase while keeping the checks that catch real defects.
+
+target-version = "py312"
+
+[lint]
+# TRY004 (type-check-without-type-error) is disabled: config and payload
+# validation in this repo intentionally raises ValueError. A malformed config
+# value is a data problem, not an API type error.
+ignore = ["TRY004"]
+
+[lint.per-file-ignores]
+# defs/sql/__init__.py is the public SQL contract surface; its imports are
+# intentional re-exports consumed as defs.sql.<name>.
+"defs/sql/__init__.py" = ["F401"]
+
+# Viewer tests register fixtures by importing them from viewer_fixtures, then
+# re-list the same names as pytest test parameters. Ruff cannot see the
+# fixture injection and reports F811 redefinitions.
+"defs/tests/test_viewer_datasets.py" = ["F811"]
+"defs/tests/test_viewer_discover.py" = ["F811"]
+"defs/tests/test_viewer_server.py" = ["F811"]
+
+# init_venv.py is an environment bootstrap script, not production code:
+# subprocess probes inspect return codes manually (PLW1510) and GPU/tool
+# detection is deliberately best-effort (BLE001, S110).
+"init_venv.py" = ["BLE001", "PLW1510", "S110"]

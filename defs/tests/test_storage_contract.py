@@ -25,7 +25,6 @@ from defs.storage.errors import MalformedArtifact, SchemaMismatchError
 from defs.storage.jsonl import JsonlChunkBackend, JsonlKeyValueBackend, JsonlWal
 from defs.storage.parquet import ParquetBackend
 
-
 SCHEMA = pa.schema(
     [
         ("cik", pa.string()),
@@ -76,7 +75,7 @@ def test_memory_backend_contract(factory):
     ]
     assert backend.set([record("1", "updated")]) == 1
     assert (
-        list(backend.load(QueryPlan(predicates=(Eq("cik", "1"),))))[0]["name"]
+        next(iter(backend.load(QueryPlan(predicates=(Eq("cik", "1"),)))))["name"]
         == "updated"
     )
     assert backend.delete(QueryPlan(predicates=(InSet("cik", ["1"]),))) == 1
@@ -116,7 +115,7 @@ def test_jsonl_set_appends_wal_batch_without_loading_canonical_file(
     assert {row["cik"] for row in reopened.load()} == {"1", "2"}
     reopened.set([record("1", "updated")])
     assert (
-        list(reopened.load(QueryPlan(predicates=(Eq("cik", "1"),))))[0]["name"]
+        next(iter(reopened.load(QueryPlan(predicates=(Eq("cik", "1"),)))))["name"]
         == "updated"
     )
 

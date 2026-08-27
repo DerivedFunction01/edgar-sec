@@ -9,6 +9,7 @@ read lazily by the dataset layer.
 from __future__ import annotations
 
 import base64
+import hashlib
 import os
 from dataclasses import asdict, dataclass
 from pathlib import Path
@@ -36,7 +37,26 @@ class ArtifactSummary:
     format: str
     size_bytes: int
     mtime: str | None
+    revision: str = ""
     source_paths: tuple[str, ...] = ()
+
+
+def compute_revision(size_bytes: int, mtime_ns: int) -> str:
+    """Change token for a single artifact: size + nanosecond mtime."""
+    return f"{size_bytes}:{mtime_ns}"
+
+
+def compute_union_revision(items: list[ArtifactSummary]) -> str:
+    """Composite change token for a run union.
+
+    Hash of the sorted per-file tokens (relative_path:size:mtime_ns) plus the
+    file count, so adding/removing/changing a chunk invalidates the entry.
+    """
+    tokens = sorted(
+        f"{item.relative_path}:{item.revision}" for item in items if item.revision
+    )
+    digest = hashlib.sha256("|".join(tokens).encode("utf-8")).hexdigest()[:16]
+    return f"{digest}:{len(items)}"
 
 
 def artifact_id(relative_path: str | Path) -> str:
@@ -51,7 +71,7 @@ def artifact_path(artifact_id_value: str, root: Path) -> Path:
         relative = base64.urlsafe_b64decode(artifact_id_value.encode("ascii")).decode(
             "utf-8"
         )
-    except Exception as exc:  # noqa: BLE001 - malformed ids are client errors
+    except Exception as exc:
         raise ValueError(f"invalid dataset id: {artifact_id_value!r}") from exc
     candidate = (root / relative).resolve()
     root_resolved = root.resolve()
@@ -65,10 +85,10 @@ def _suffix_format(suffix: str) -> str | None:
 
 
 def _mtime_iso(stat: os.stat_result) -> str | None:
-    from datetime import datetime, timezone
+    from datetime import UTC, datetime
 
     return (
-        datetime.fromtimestamp(stat.st_mtime, tz=timezone.utc).isoformat()
+        datetime.fromtimestamp(stat.st_mtime, tz=UTC).isoformat()
         if stat.st_mtime > 0
         else None
     )
@@ -96,6 +116,7 @@ def _summarize(root: Path, file_path: Path) -> ArtifactSummary | None:
         format=fmt,
         size_bytes=stat.st_size,
         mtime=_mtime_iso(stat),
+        revision=compute_revision(stat.st_size, stat.st_mtime_ns),
     )
 
 
@@ -134,6 +155,7 @@ def discover_artifacts(root: Path) -> list[ArtifactSummary]:
                 format=fmt,
                 size_bytes=size,
                 mtime=max(mtimes) if mtimes else None,
+                revision=compute_union_revision(items),
                 source_paths=source_paths,
             )
         )

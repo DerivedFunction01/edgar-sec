@@ -17,7 +17,6 @@ import os
 import re
 import threading
 from collections.abc import Iterable, Iterator
-from typing import Any
 
 from .errors import (
     MalformedArtifact,
@@ -152,7 +151,7 @@ class JsonlWal:
             raw = fh.read()
         segments = raw.split(b"\n")
         has_terminal_newline = raw.endswith(b"\n")
-        complete = segments[:-1] if has_terminal_newline else segments[:-1]
+        complete = segments[:-1]
         trailing = None if has_terminal_newline else segments[-1]
         for index, segment in enumerate(complete, start=1):
             if not segment.strip():
@@ -173,7 +172,7 @@ class JsonlWal:
                 # A process can die after writing only a prefix of its final line.
                 return
             if not isinstance(delta, dict):
-                raise MalformedArtifact(f"trailing WAL entry is not an object")
+                raise MalformedArtifact("trailing WAL entry is not an object")
             yield delta
 
     def reconcile(self, canonical_lines: Iterable[str]) -> BatchReceipt:

@@ -1,4 +1,12 @@
+import pyarrow as pa
 import pytest
+from pyarrow import parquet
+from viewer_fixtures import (  # noqa: F401 - fixtures registered via import
+    artifacts_root,
+    chunk_dataset,
+    parquet_dataset,
+    write_parquet,
+)
 
 from defs.viewer.datasets import (
     DatasetError,
@@ -7,15 +15,6 @@ from defs.viewer.datasets import (
     dataset_rows,
     dataset_schema,
     run_dataset_sql,
-)
-import pyarrow as pa
-import pyarrow.parquet as parquet
-
-from viewer_fixtures import (  # noqa: F401 - fixtures registered via import
-    artifacts_root,
-    chunk_dataset,
-    parquet_dataset,
-    write_parquet,
 )
 
 
@@ -103,10 +102,14 @@ def test_typed_filters_are_and_composed(parquet_dataset):
 def test_text_ops_work_on_nested_and_empty_semantics(parquet_dataset):
     ref = _ref(parquet_dataset)
     matches = dataset_rows(
-        ref, limit=10, filters=[{"column": "filings", "op": "contains", "value": "10-K"}]
+        ref,
+        limit=10,
+        filters=[{"column": "filings", "op": "contains", "value": "10-K"}],
     )
     assert len(matches["items"]) == 2
-    kept = dataset_rows(ref, limit=10, filters=[{"column": "filings", "op": "not_empty"}])
+    kept = dataset_rows(
+        ref, limit=10, filters=[{"column": "filings", "op": "not_empty"}]
+    )
     assert len(kept["items"]) == 2
     with pytest.raises(ValueError):
         dataset_rows(
@@ -132,11 +135,16 @@ def test_order_ops_on_numeric_and_bool_rejected(artifacts_root):
         ref, limit=10, filters=[{"column": "n", "op": "gt", "value": 1}]
     )
     assert [row["n"] for row in kept["items"]] == [3]
-    assert dataset_rows(
-        ref, limit=10, filters=[{"column": "flag", "op": "eq", "value": "true"}]
-    )["items"][0]["flag"] is True
+    assert (
+        dataset_rows(
+            ref, limit=10, filters=[{"column": "flag", "op": "eq", "value": "true"}]
+        )["items"][0]["flag"]
+        is True
+    )
     with pytest.raises(ValueError):
-        dataset_rows(ref, limit=10, filters=[{"column": "flag", "op": "lt", "value": True}])
+        dataset_rows(
+            ref, limit=10, filters=[{"column": "flag", "op": "lt", "value": True}]
+        )
 
 
 def test_union_ref_reads_all_paths(artifacts_root):

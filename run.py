@@ -83,8 +83,7 @@ def _usage() -> str:
         "Entries:",
     ]
     lines.extend(
-        f"  {entry.id:<10} {entry.label} - {entry.description}"
-        for entry in ENTRIES
+        f"  {entry.id:<10} {entry.label} - {entry.description}" for entry in ENTRIES
     )
     return "\n".join(lines)
 
@@ -103,9 +102,7 @@ def main(argv: list[str] | None = None) -> int:
     entry = find_entry(first)
     if entry is None:
         valid = ", ".join(item.id for item in ENTRIES)
-        print(
-            f"error: unknown entry {first!r} (valid: {valid})", file=sys.stderr
-        )
+        print(f"error: unknown entry {first!r} (valid: {valid})", file=sys.stderr)
         return 2
     return _dispatch(entry, args[1:])
 

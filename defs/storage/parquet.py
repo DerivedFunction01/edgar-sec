@@ -18,7 +18,6 @@ import os
 import re
 import threading
 from collections.abc import Iterable
-from datetime import datetime, timezone
 
 import pyarrow as pa
 import pyarrow.parquet as pq
@@ -27,7 +26,6 @@ from .errors import (
     MalformedArtifact,
     SchemaMismatchError,
     StorageError,
-    UnsupportedCapability,
 )
 from .models import ArtifactRef, BatchReceipt, ChunkRange, DatasetSpec, RunContext
 from .predicates import QueryPlan, conjunction, evaluate_query
@@ -333,7 +331,7 @@ class ParquetBackend:
         )
 
     def delete(self, query: QueryPlan) -> int:
-        spec = self._require_spec()
+        self._require_spec()
         with self._lock:
             # Deletion reports actual rows removed. Without a separate key
             # index, establish the current view once to distinguish an absent

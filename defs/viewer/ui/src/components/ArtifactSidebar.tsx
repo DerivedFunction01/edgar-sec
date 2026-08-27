@@ -59,6 +59,7 @@ interface Props {
   documents: DatasetSummary[];
   selectedId: string | null;
   onSelect: (dataset: DatasetSummary) => void;
+  onRefresh: () => void;
   collapsed: boolean;
 }
 
@@ -67,6 +68,7 @@ export default function ArtifactSidebar({
   documents,
   selectedId,
   onSelect,
+  onRefresh,
   collapsed,
 }: Props) {
   const [query, setQuery] = useState("");
@@ -119,6 +121,13 @@ export default function ArtifactSidebar({
           value={query}
           onChange={(event) => setQuery(event.target.value)}
         />
+        <button
+          className="btn btn-secondary sidebar-refresh"
+          onClick={onRefresh}
+          title="Refresh listings (re-check for new chunks)"
+        >
+          ⟳
+        </button>
       </div>
       <div className="sidebar-group">
         <div className="sidebar-group-header">Datasets · {datasets.length}</div>

@@ -58,12 +58,6 @@ def make_checkpoint_store(
     options, *, input_fingerprint: str = "", root: str | None = None
 ) -> Phase1CheckpointStore:
     options.validate()
-    spec = DatasetSpec(
-        name=DATASET_NAME,
-        schema_version=SCHEMA_VERSION,
-        key_field="cik",
-        arrow_schema=SUBMISSION_METADATA_SCHEMA,
-    )
     return make_phase_store(
         options.storage_format,
         root or options.artifacts_dir,

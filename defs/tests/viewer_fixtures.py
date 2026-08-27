@@ -2,9 +2,9 @@
 
 from pathlib import Path
 
-import pytest
 import pyarrow as pa
-import pyarrow.parquet as parquet
+import pytest
+from pyarrow import parquet
 
 from defs.storage.jsonl import write_records_atomic
 from defs.viewer.discover import artifact_id

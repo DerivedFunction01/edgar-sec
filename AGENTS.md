@@ -25,6 +25,7 @@ defs/                              # domain-neutral reusable infrastructure
   storage/                         # logical datasets and immutable file chunks
   sql/                             # SQL AST/compiler/executor boundary
   llm/                             # future provider-neutral model boundary
+  viewer/                          # read-only local dataset/artifact viewer (API + UI)
   runtime/                         # shared paths and future lifecycle helpers
     interactive.py                 # shared partition-oriented operator UI
     partitions.py                  # partition selection and distribution
@@ -149,6 +150,19 @@ uploads/                           # input manifests
 - Add contract tests when extending shared infrastructure; add phase tests for
   domain invariants. Default tests never touch live SEC or model services.
 - Use the project virtual environment: `.venv/bin/python`, `.venv/bin/pytest`.
+- Gate every change with the root runner before finishing work:
+
+  ```bash
+  .venv/bin/python check.py          # ruff format --check, ruff check, all suites
+  .venv/bin/python check.py --fix    # apply formatting and safe lint fixes first
+  ```
+
+- Formatting and linting run **before** tests so style is consistent across
+  implementations and test failures are never mixed with lint noise. Lint
+  configuration lives in `ruff.toml`; when a rule is noisy for a deliberate
+  pattern, suppress it there (per-file ignores, or a global ignore with a
+  rationale comment) instead of scattering `# noqa` comments or bypassing the
+  gate.
 - Run suites separately — `defs/tests` and phase tests have `conftest.py`
   modules that collide when collected together:
 
@@ -159,6 +173,21 @@ uploads/                           # input manifests
 
 - Preserve atomic publication, immutable checkpoints, schema versioning,
   provenance, and resumability in every phase.
+
+## Documentation Contract
+
+- Each top-level component (`defs/`, `defs/viewer`, `phases/<number>_<name>`)
+  owns a `README.md` describing its purpose, command surface, layout, and the
+  contracts it guarantees. The root `README.md` links to every component README
+  and summarizes the launcher, phases, and tools.
+- On any **major change** to a component — new command or public entry point,
+  schema/contract change, resumability/merge behavior change, added dependency
+  or tooling, or a new phase — update that component's `README.md`, the root
+  `README.md`, and `roadmap/master_roadmap.md` where the change affects product
+  direction. Do not leave a component, the launcher menu, or the root README out
+  of sync with the code.
+- Documentation describes intended behavior only; it is not a substitute for
+  tests. Default tests remain deterministic, offline, and credential-free.
 
 ## Environment And Paths
 

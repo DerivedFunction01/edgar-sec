@@ -20,9 +20,10 @@ import sys
 
 from defs.runtime.cli import (
     add_common_options as add_runtime_common_options,
+)
+from defs.runtime.cli import (
     coalesce,
     load_config_or_template,
-    print_json,
 )
 
 from .core import (

@@ -10,7 +10,6 @@ from .models import (
     Condition,
     Direction,
     FromItem,
-    Identifier,
     JoinKind,
     NullsOrder,
     QueryExpr,

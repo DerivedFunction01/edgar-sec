@@ -1,16 +1,15 @@
 import pytest
 
 fastapi = pytest.importorskip("fastapi")
-from fastapi.testclient import TestClient  # noqa: E402
-
-from defs.viewer.server import create_app  # noqa: E402
-
+from fastapi.testclient import TestClient
 from viewer_fixtures import (  # noqa: F401 - fixtures registered via import
     artifacts_root,
+    base64_id,
     chunk_dataset,
     parquet_dataset,
 )
-from viewer_fixtures import base64_id  # noqa: E402
+
+from defs.viewer.server import create_app
 
 
 @pytest.fixture()
@@ -77,3 +76,28 @@ def test_documents_endpoint_returns_content(client, artifacts_root):
 
     document = http.get(f"/api/documents/{documents[0]['id']}").json()
     assert document["content"] == {"chunks": 5}
+
+
+def test_listings_carry_revision_field(client, chunk_dataset, parquet_dataset):
+    http, _root = client
+
+    datasets = http.get("/api/datasets").json()
+    by_path = {item["relative_path"]: item for item in datasets}
+    chunk_entry = by_path[chunk_dataset["relative"].as_posix()]
+    canonical_entry = by_path[parquet_dataset["relative"].as_posix()]
+
+    assert "revision" in chunk_entry
+    assert chunk_entry["revision"].startswith(f"{chunk_entry['size_bytes']}:")
+    assert chunk_entry["revision"].split(":")[1].isdigit()
+    assert canonical_entry["revision"]
+
+    # Rewriting a backing file must change its revision on the next listing.
+    path = chunk_dataset["path"]
+    path.write_text(path.read_text(encoding="utf-8") + "\n", encoding="utf-8")
+    refreshed = http.get("/api/datasets").json()
+    new_entry = next(
+        item
+        for item in refreshed
+        if item["relative_path"] == chunk_dataset["relative"].as_posix()
+    )
+    assert new_entry["revision"] != chunk_entry["revision"]

@@ -81,11 +81,11 @@ class BooleanGroup(Condition):
     terms: tuple[Condition, ...]
 
     @staticmethod
-    def and_(*terms: Condition) -> "BooleanGroup":
+    def and_(*terms: Condition) -> BooleanGroup:
         return BooleanGroup(operator=BooleanOp.AND, terms=tuple(terms))
 
     @staticmethod
-    def or_(*terms: Condition) -> "BooleanGroup":
+    def or_(*terms: Condition) -> BooleanGroup:
         return BooleanGroup(operator=BooleanOp.OR, terms=tuple(terms))
 
 

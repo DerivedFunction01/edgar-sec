@@ -8,11 +8,11 @@ into SQL pushdown; file backends evaluate them in memory via
 
 from __future__ import annotations
 
+from collections.abc import Iterable, Iterator
 from dataclasses import dataclass
-from typing import Any, Iterable, Iterator
+from typing import Any
 
 from .errors import StorageError
-
 
 # Predicates -----------------------------------------------------------------
 

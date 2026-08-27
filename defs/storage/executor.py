@@ -18,7 +18,7 @@ into several tables).
 from __future__ import annotations
 
 from collections.abc import Iterable
-from dataclasses import dataclass, field
+from dataclasses import dataclass
 from typing import Any, Protocol, runtime_checkable
 
 from .models import DatasetSpec
@@ -99,23 +99,20 @@ class FileStorageExecutor:
 
     def transaction(self, operations: Iterable[StorageOperation]) -> None:
         self._require_spec()
-        try:
-            for operation in operations:
-                if isinstance(operation, SetRecords):
-                    self.backend.set(operation.records)
-                elif isinstance(operation, DeleteMatching):
-                    self.backend.delete(operation.query)
-                else:
-                    from .errors import StorageError
+        # File backends cannot always roll back physical appends; replay
+        # idempotency by key keeps retried transactions safe.
+        for operation in operations:
+            if isinstance(operation, SetRecords):
+                self.backend.set(operation.records)
+            elif isinstance(operation, DeleteMatching):
+                self.backend.delete(operation.query)
+            else:
+                from .errors import StorageError
 
-                    raise StorageError(
-                        f"unknown storage operation: {type(operation).__name__}"
-                    )
-            self.backend.commit()
-        except Exception:
-            # File backends cannot always roll back physical appends; replay
-            # idempotency by key keeps retried transactions safe.
-            raise
+                raise StorageError(
+                    f"unknown storage operation: {type(operation).__name__}"
+                )
+        self.backend.commit()
 
     def close(self) -> None:
         self.backend.close()

@@ -32,8 +32,9 @@ import sys
 
 from tqdm import tqdm
 from tqdm.contrib.logging import logging_redirect_tqdm
-from defs.runtime.progress import make_tqdm_callback
+
 from defs.runtime.interactive import InteractivePhase, run_interactive
+from defs.runtime.progress import make_tqdm_callback
 
 from .core import (
     PROJECT_CONFIG_DEFAULT_PATH,
@@ -41,10 +42,10 @@ from .core import (
     RunOptions,
     build_plan,
     default_project_config,
+    default_user_agent,
     get_status,
     load_plan,
     load_project_config,
-    default_user_agent,
     preview_sample,
     run_chunk,
     run_partition,

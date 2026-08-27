@@ -1,6 +1,9 @@
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { runSql, type SqlResult } from "../api";
 import { tokenizeSql } from "../lib/sqlHighlight";
+
+const HISTORY_KEY = "viewer-sql-history";
+const MAX_HISTORY = 10;
 
 interface Props {
   datasetId: string | null;
@@ -8,11 +11,39 @@ interface Props {
   onResult: (result: SqlResult, query: string) => void;
 }
 
+function loadHistory(): string[] {
+  try {
+    const raw = localStorage.getItem(HISTORY_KEY);
+    return raw ? (JSON.parse(raw) as string[]) : [];
+  } catch {
+    return [];
+  }
+}
+
+function saveHistory(history: string[]): void {
+  try {
+    localStorage.setItem(HISTORY_KEY, JSON.stringify(history.slice(0, MAX_HISTORY)));
+  } catch {
+    // ignore quota / unavailable storage
+  }
+}
+
 export default function SqlConsole({ datasetId, datasetName, onResult }: Props) {
   const [query, setQuery] = useState("SELECT * FROM dataset LIMIT 10;");
   const [error, setError] = useState<string | null>(null);
   const [running, setRunning] = useState(false);
+  const [history, setHistory] = useState<string[]>([]);
+  const [showHistory, setShowHistory] = useState(false);
   const tokens = tokenizeSql(query);
+  const initialized = useRef(false);
+
+  useEffect(() => {
+    if (initialized.current) return;
+    initialized.current = true;
+    const stored = loadHistory();
+    setHistory(stored);
+    if (stored.length > 0) setQuery(stored[0]);
+  }, []);
 
   const run = useCallback(async () => {
     if (!datasetId) {
@@ -24,6 +55,13 @@ export default function SqlConsole({ datasetId, datasetName, onResult }: Props) 
     try {
       const next = await runSql(datasetId, query);
       onResult(next, query);
+      setHistory((current) => {
+        const trimmed = query.trim();
+        if (current[0] === trimmed) return current;
+        const nextHistory = [trimmed, ...current.filter((item) => item !== trimmed)];
+        saveHistory(nextHistory);
+        return nextHistory;
+      });
     } catch (exc) {
       setError(exc instanceof Error ? exc.message : String(exc));
     } finally {
@@ -77,6 +115,13 @@ export default function SqlConsole({ datasetId, datasetName, onResult }: Props) 
         </div>
         <div className="console-actions">
           <span className="console-meta mono">{tokens.length} tokens</span>
+          <button
+            className="btn btn-secondary"
+            onClick={() => setShowHistory((open) => !open)}
+            title="Query history"
+          >
+            History
+          </button>
           <button className="btn btn-secondary" onClick={() => setError(null)}>
             Clear
           </button>
@@ -84,6 +129,23 @@ export default function SqlConsole({ datasetId, datasetName, onResult }: Props) 
             {running ? "Running…" : "Run Query (Ctrl+↵)"}
           </button>
         </div>
+        {showHistory && history.length > 0 && (
+          <ul className="console-history">
+            {history.map((item) => (
+              <li key={item}>
+                <button
+                  className="console-history-item"
+                  onClick={() => {
+                    setQuery(item);
+                    setShowHistory(false);
+                  }}
+                >
+                  {item}
+                </button>
+              </li>
+            ))}
+          </ul>
+        )}
         {error && <div className="console-error">{error}</div>}
       </div>
     </div>

@@ -76,7 +76,7 @@ def test_artifact_files_take_no_database_locks(tmp_path):
     """Parquet/JSONL artifacts are read via table functions, not as databases:
     two in-memory sessions can read the same file with no lock contention."""
     import pyarrow as pa
-    import pyarrow.parquet as parquet
+    from pyarrow import parquet
 
     artifact = tmp_path / "shared.parquet"
     parquet.write_table(pa.table({"x": [1, 2, 3]}), str(artifact))

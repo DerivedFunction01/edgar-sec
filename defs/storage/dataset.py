@@ -7,7 +7,8 @@ or the in-memory backend without embedding format-specific CRUD code.
 
 from __future__ import annotations
 
-from typing import Iterable, Iterator
+from collections.abc import Iterable, Iterator
+from typing import Self
 
 from .errors import SchemaMismatchError, StorageError
 from .models import BatchReceipt, DatasetSpec, RunContext
@@ -101,7 +102,7 @@ class Dataset:
         self.backend.close()
         self._initialized = False
 
-    def __enter__(self) -> "Dataset":
+    def __enter__(self) -> Self:
         self.init()
         return self
 

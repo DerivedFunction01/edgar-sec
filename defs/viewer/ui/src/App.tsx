@@ -75,19 +75,53 @@ export default function App() {
     localStorage.setItem("viewer-theme", theme);
   }, [theme]);
 
-  useEffect(() => {
-    let cancelled = false;
-    Promise.all([fetchDatasets(), fetchDocuments()])
-      .then(([datasetList, documentList]) => {
-        if (cancelled) return;
-        setDatasets(datasetList);
-        setDocuments(documentList);
-      })
-      .catch((exc) => setError(exc instanceof Error ? exc.message : String(exc)));
-    return () => {
-      cancelled = true;
-    };
+  const selectedRef = useRef<DatasetSummary | null>(null);
+  selectedRef.current = selected;
+
+  const refreshListings = useCallback(async () => {
+    try {
+      const [datasetList, documentList] = await Promise.all([fetchDatasets(), fetchDocuments()]);
+      setDatasets(datasetList);
+      setDocuments(documentList);
+
+      // If the open artifact's backing file changed while the viewer was idle,
+      // flip its revision so the data effects re-run against fresh data.
+      const current = selectedRef.current;
+      if (current) {
+        const updated =
+          current.format === "json"
+            ? documentList.find((item) => item.id === current.id)
+            : datasetList.find((item) => item.id === current.id);
+        if (updated && updated.revision !== current.revision) {
+          if (current.format === "json") {
+            void fetchDocument(updated.id)
+              .then(setDocumentView)
+              .catch(() => {});
+          }
+          setSelected(updated);
+        }
+      }
+    } catch (exc) {
+      setError(exc instanceof Error ? exc.message : String(exc));
+    }
   }, []);
+
+  useEffect(() => {
+    void refreshListings();
+  }, [refreshListings]);
+
+  useEffect(() => {
+    const onVisible = () => {
+      if (document.visibilityState === "visible") void refreshListings();
+    };
+    const onFocus = () => void refreshListings();
+    window.addEventListener("visibilitychange", onVisible);
+    window.addEventListener("focus", onFocus);
+    return () => {
+      window.removeEventListener("visibilitychange", onVisible);
+      window.removeEventListener("focus", onFocus);
+    };
+  }, [refreshListings]);
 
   useEffect(() => {
     localStorage.setItem("viewer-console", String(consoleOpen));
@@ -276,6 +310,7 @@ export default function App() {
         datasets={datasets}
         documents={documents}
         selectedId={selected?.id ?? null}
+        onRefresh={() => void refreshListings()}
         onSelect={(item) => {
           if (item.format === "json") {
             void onSelectDocument(item);

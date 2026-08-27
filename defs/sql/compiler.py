@@ -2,9 +2,9 @@
 
 from __future__ import annotations
 
+import json
 from contextlib import contextmanager
 from dataclasses import fields, is_dataclass
-import json
 
 from .context import RenderContext
 from .dialects import policy_for, quote_ident, sql_literal
@@ -26,15 +26,12 @@ from .expressions import (
 )
 from .models import (
     AggregateFunction,
-    ArithmeticOp,
     BooleanOp,
     ComparisonOp,
     CompiledQuery,
-    Direction,
     Expr,
     MatchMode,
     QueryExpr,
-    RangeOp,
     SqlDialect,
     Statement,
 )
@@ -48,13 +45,11 @@ from .predicates import (
     NullTest,
     RangeTest,
     StringMatch,
-    SubquerySource,
     ValueList,
 )
 from .relations import (
     CrossJoin,
     DerivedTable,
-    Join,
     OrderBy,
     Select,
     SetOperation,
@@ -73,7 +68,6 @@ from .schema import (
     DefaultValue,
     ExplicitNull,
     ForeignKey,
-    IndexColumn,
     NotNull,
     PrimaryKey,
     PrimaryKeyConstraint,
@@ -105,13 +99,11 @@ from .statements import (
     Replace,
     Rollback,
     Savepoint,
-    SelectSource,
     Truncate,
-    Update,
     UnsafeStatement,
+    Update,
     ValuesSource,
 )
-
 
 KNOWN_FUNCTIONS = frozenset(
     {
@@ -477,48 +469,51 @@ class QueryCompiler:
                 if self.dialect is SqlDialect.POSTGRES
                 else f"MODE({argument()})"
             )
-        if function in {
-            AggregateFunction.STDDEV_SAMP,
-            AggregateFunction.STDDEV_POP,
-            AggregateFunction.VAR_SAMP,
-            AggregateFunction.VAR_POP,
-        }:
-            if self.dialect is SqlDialect.SQLITE:
+        if (
+            function
+            in {
+                AggregateFunction.STDDEV_SAMP,
+                AggregateFunction.STDDEV_POP,
+                AggregateFunction.VAR_SAMP,
+                AggregateFunction.VAR_POP,
+            }
+            and self.dialect is SqlDialect.SQLITE
+        ):
 
-                def count() -> str:
-                    return f"COUNT({argument()})"
+            def count() -> str:
+                return f"COUNT({argument()})"
 
-                def sum_value() -> str:
-                    return f"SUM({argument()})"
+            def sum_value() -> str:
+                return f"SUM({argument()})"
 
-                def sum_square() -> str:
-                    return f"SUM({argument()} * {argument()})"
+            def sum_square() -> str:
+                return f"SUM({argument()} * {argument()})"
 
-                def numerator() -> str:
-                    return f"({sum_square()} - ({sum_value()} * {sum_value()} * 1.0) / {count()})"
+            def numerator() -> str:
+                return f"({sum_square()} - ({sum_value()} * {sum_value()} * 1.0) / {count()})"
 
-                def variance() -> str:
-                    denominator = (
-                        f"({count()} - 1)"
-                        if function
-                        in {AggregateFunction.STDDEV_SAMP, AggregateFunction.VAR_SAMP}
-                        else count()
-                    )
-                    return f"({numerator()} / {denominator})"
-
-                minimum = (
-                    "1"
+            def variance() -> str:
+                denominator = (
+                    f"({count()} - 1)"
                     if function
                     in {AggregateFunction.STDDEV_SAMP, AggregateFunction.VAR_SAMP}
-                    else "0"
+                    else count()
                 )
-                value = (
-                    f"SQRT({variance()})"
-                    if function
-                    in {AggregateFunction.STDDEV_SAMP, AggregateFunction.STDDEV_POP}
-                    else variance()
-                )
-                return f"CASE WHEN {count()} > {minimum} THEN {value} ELSE NULL END"
+                return f"({numerator()} / {denominator})"
+
+            minimum = (
+                "1"
+                if function
+                in {AggregateFunction.STDDEV_SAMP, AggregateFunction.VAR_SAMP}
+                else "0"
+            )
+            value = (
+                f"SQRT({variance()})"
+                if function
+                in {AggregateFunction.STDDEV_SAMP, AggregateFunction.STDDEV_POP}
+                else variance()
+            )
+            return f"CASE WHEN {count()} > {minimum} THEN {value} ELSE NULL END"
         return f"{function.value.upper()}({argument()})"
 
     # Conditions ----------------------------------------------------------
@@ -1072,4 +1067,4 @@ class QueryCompiler:
             )
 
 
-from .relations import RecursiveCte  # noqa: E402  (needed by query renderer)
+from .relations import RecursiveCte

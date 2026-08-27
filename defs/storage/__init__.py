@@ -18,6 +18,7 @@ from .executor import (
 from .factory import make_chunk_backend
 
 DEFAULT_STORAGE_FORMAT = "parquet"
+from .jsonl import JsonlChunkBackend, JsonlCodec, JsonlKeyValueBackend, JsonlWal
 from .memory import MemoryBackend
 from .models import (
     ArtifactRef,
@@ -26,6 +27,7 @@ from .models import (
     DatasetSpec,
     RunContext,
 )
+from .parquet import ParquetBackend, write_table_atomic
 from .predicates import (
     And,
     Between,
@@ -46,10 +48,9 @@ from .protocols import (
     StorageBackend,
     WalStore,
 )
-from .jsonl import JsonlChunkBackend, JsonlCodec, JsonlKeyValueBackend, JsonlWal
-from .parquet import ParquetBackend, write_table_atomic
 
 __all__ = [
+    "DEFAULT_STORAGE_FORMAT",
     "And",
     "ArtifactRef",
     "BatchReceipt",
@@ -72,8 +73,6 @@ __all__ = [
     "JsonlKeyValueBackend",
     "JsonlWal",
     "MalformedArtifact",
-    "make_chunk_backend",
-    "DEFAULT_STORAGE_FORMAT",
     "MemoryBackend",
     "Neq",
     "Not",
@@ -90,5 +89,6 @@ __all__ = [
     "StorageOperation",
     "UnsupportedCapability",
     "WalStore",
+    "make_chunk_backend",
     "write_table_atomic",
 ]

@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 
-from .models import AstNode, Identifier
+from .models import AstNode
 
 
 class ColumnType:

@@ -1,5 +1,3 @@
-import os
-
 from defs.runtime.env import get_env, load_dotenv
 
 

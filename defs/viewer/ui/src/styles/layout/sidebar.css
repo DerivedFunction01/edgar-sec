@@ -83,10 +83,20 @@
 
 .sidebar-filter {
 	padding: 0 4px 8px;
+	display: flex;
+	gap: 6px;
 }
 
 .sidebar-filter .input {
 	width: 100%;
+}
+
+.sidebar-refresh {
+	flex: none;
+	width: 32px;
+	padding: 0;
+	font-size: 14px;
+	line-height: 1;
 }
 
 /* Collapsible phase/run groups */

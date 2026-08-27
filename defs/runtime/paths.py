@@ -4,10 +4,10 @@ from __future__ import annotations
 
 import os
 import re
+from collections.abc import Mapping
 from dataclasses import dataclass
 from enum import Enum
 from pathlib import Path, PurePosixPath
-from typing import Mapping
 
 _SAFE_ID = re.compile(r"^[A-Za-z0-9][A-Za-z0-9_.-]*$")
 _PARTITION_DIR = re.compile(r"^partition-(\d{5,})$")
@@ -67,7 +67,7 @@ class ProjectPaths:
     config_path: Path
     cache_root: Path
 
-    def phase(self, phase: str) -> "PhasePaths":
+    def phase(self, phase: str) -> PhasePaths:
         return PhasePaths(self, _safe_id(phase, "phase"))
 
     @property
@@ -107,7 +107,7 @@ class PhasePaths:
     def preview_root(self) -> Path:
         return self.phase_root / "preview"
 
-    def run(self, run_id: str) -> "RunPaths":
+    def run(self, run_id: str) -> RunPaths:
         return RunPaths(self, _safe_id(run_id, "run_id"))
 
 
@@ -287,10 +287,10 @@ def resolve_paths(
 
 
 __all__ = [
-    "ArtifactClassification",
-    "ArtifactRole",
     "MERGE_DIR_NAME",
     "MERGE_REPORT_NAME",
+    "ArtifactClassification",
+    "ArtifactRole",
     "PhasePaths",
     "ProjectPaths",
     "RunPaths",

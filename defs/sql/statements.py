@@ -14,7 +14,6 @@ from .models import (
     TriggerTiming,
 )
 
-
 # --- INSERT ----------------------------------------------------------------
 
 
@@ -124,7 +123,7 @@ class Update(Statement):
             raise ValueError("update requires at least one assignment")
 
     @staticmethod
-    def from_mapping(table: str, values: dict, **kw) -> "Update":
+    def from_mapping(table: str, values: dict, **kw) -> Update:
         if not values:
             raise ValueError("update requires at least one assignment")
         return Update(

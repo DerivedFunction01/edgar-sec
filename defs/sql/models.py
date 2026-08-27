@@ -170,7 +170,7 @@ class JsonPath:
                 )
 
     @staticmethod
-    def parse(path: str) -> "JsonPath":
+    def parse(path: str) -> JsonPath:
         parts = tuple(path.split("."))
         return JsonPath(parts)
 

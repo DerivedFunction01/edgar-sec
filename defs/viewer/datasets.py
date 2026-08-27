@@ -192,11 +192,8 @@ def dataset_rows(
             if not isinstance(op, str):
                 raise ValueError("filter op must be a string")
             duckdb_type = type_by_name[name]
-            is_orderable = (
-                "INT" in duckdb_type
-                or duckdb_type.startswith(
-                    ("DECIMAL", "DOUBLE", "FLOAT", "REAL", "NUMERIC", "DATE", "TIME")
-                )
+            is_orderable = "INT" in duckdb_type or duckdb_type.startswith(
+                ("DECIMAL", "DOUBLE", "FLOAT", "REAL", "NUMERIC", "DATE", "TIME")
             )
             if op in order_ops and not is_orderable:
                 raise ValueError(f"operator {op!r} is invalid for column {name!r}")

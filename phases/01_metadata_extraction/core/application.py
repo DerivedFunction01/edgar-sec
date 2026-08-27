@@ -9,8 +9,8 @@ import logging
 import os
 import time
 from concurrent.futures import ThreadPoolExecutor, as_completed
-from datetime import datetime, timezone
 from dataclasses import replace
+from datetime import UTC, datetime
 
 from .chunks import (
     assign_chunks,
@@ -32,7 +32,7 @@ logger = logging.getLogger("metadata")
 
 
 def utc_now_iso() -> str:
-    return datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+    return datetime.now(UTC).strftime("%Y-%m-%dT%H:%M:%SZ")
 
 
 def build_plan(options: RunOptions) -> dict:

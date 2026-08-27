@@ -5,9 +5,9 @@ Includes automatic GPU detection and TORCH LOCKING to prevent downgrades
 Supports uv (fast) with automatic fallback to pip
 """
 
+import argparse
 import subprocess
 import sys
-import argparse
 from pathlib import Path
 
 VENV_DIR = ".venv"
@@ -39,6 +39,7 @@ BASE_PACKAGES = [
 CUSTOM_PACKAGES = [
     "duckdb",
     "pytest",
+    "ruff",
     "pysbd",
     "nltk",
     "tiktoken",

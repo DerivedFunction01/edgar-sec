@@ -3,8 +3,8 @@
 from __future__ import annotations
 
 import json
+from collections.abc import Callable
 from dataclasses import dataclass
-from typing import Callable
 
 from .partitions import divide_ids_among_workers, parse_id_selection
 
@@ -32,7 +32,7 @@ def run_interactive(phase: InteractivePhase, *, default_partition: int = 1) -> i
         print("  4. Show status")
         print("  0. Exit")
         try:
-            choice = input(f"\nChoice [2]: ").strip() or "2"
+            choice = input("\nChoice [2]: ").strip() or "2"
         except EOFError:
             return 0
         if choice == "0":
