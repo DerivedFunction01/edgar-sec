@@ -74,8 +74,17 @@ def build_run(tmp_path, ciks, chunk_size=2):
     chunks_dir = artifacts / "chunks"
     chunks_dir.mkdir()
     for rng in ranges:
-        rows = [make_row(cik, chunk_id=rng.chunk_id) for cik in ordered[rng.start_row : rng.end_row + 1]]
-        checkpoints.write_checkpoint(rows, str(chunks_dir / checkpoints.chunk_filename(rng.chunk_id, rng.start_row, rng.end_row)))
+        rows = [
+            make_row(cik, chunk_id=rng.chunk_id)
+            for cik in ordered[rng.start_row : rng.end_row + 1]
+        ]
+        checkpoints.write_checkpoint(
+            rows,
+            str(
+                chunks_dir
+                / checkpoints.chunk_filename(rng.chunk_id, rng.start_row, rng.end_row)
+            ),
+        )
     return artifacts, plan
 
 
@@ -87,7 +96,11 @@ def test_merge_writes_unified_dataset_and_report(tmp_path):
     assert report.filing_record_count == 3
     assert report.errors == []
     table = pq.read_table(str(output), schema=schemas.SUBMISSION_METADATA_SCHEMA)
-    assert sorted(table.column("cik").to_pylist()) == ["0000000020", "0000000021", "0000000022"]
+    assert sorted(table.column("cik").to_pylist()) == [
+        "0000000020",
+        "0000000021",
+        "0000000022",
+    ]
     assert (tmp_path / "run" / "merge" / "merge_report.json").exists()
 
 
@@ -124,7 +137,12 @@ def test_merge_rejects_duplicate_cik_rows(tmp_path):
     files = sorted(chunks_dir.iterdir())
     # duplicate a row into another chunk file with a fake range
     table = pq.read_table(str(files[0]), schema=schemas.SUBMISSION_METADATA_SCHEMA)
-    pq.write_table(table, str(chunks_dir / "submission_metadata-v1.0.0-chunk-00009-000001-000001.parquet"))
+    pq.write_table(
+        table,
+        str(
+            chunks_dir / "submission_metadata-v1.0.0-chunk-00009-000001-000001.parquet"
+        ),
+    )
     with pytest.raises(merge_mod.MergeError):
         merge_mod.merge_chunks(str(artifacts), str(tmp_path / "out.parquet"))
 
@@ -144,7 +162,9 @@ def test_merge_rejects_duplicate_accessions_across_ciks(tmp_path):
         table = table.set_column(
             table.schema.get_field_index("filings"),
             "filings",
-            pa.array(filings, type=schemas.SUBMISSION_METADATA_SCHEMA.field("filings").type),
+            pa.array(
+                filings, type=schemas.SUBMISSION_METADATA_SCHEMA.field("filings").type
+            ),
         )
         pq.write_table(table, str(path))
     with pytest.raises(merge_mod.MergeError, match="duplicate accession"):
@@ -164,7 +184,9 @@ def test_merge_rejects_wrong_input_fingerprint(tmp_path):
 
 
 def test_merge_rejects_incomplete_row_counts(tmp_path):
-    artifacts, _plan = build_run(tmp_path, ["0000000020", "0000000021", "0000000022"], chunk_size=3)
+    artifacts, _plan = build_run(
+        tmp_path, ["0000000020", "0000000021", "0000000022"], chunk_size=3
+    )
     chunks_dir = artifacts / "chunks"
     path = next(chunks_dir.iterdir())
     table = pq.read_table(str(path), schema=schemas.SUBMISSION_METADATA_SCHEMA)

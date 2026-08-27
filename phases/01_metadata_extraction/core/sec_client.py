@@ -58,7 +58,9 @@ class SubmissionsClient:
     ):
         if http is None:
             if not user_agent:
-                raise ValueError("user_agent is required to build the shared HTTP client")
+                raise ValueError(
+                    "user_agent is required to build the shared HTTP client"
+                )
             http = SecHttpClient(
                 user_agent=user_agent,
                 rate_limiter=rate_limiter or RateLimiter(),

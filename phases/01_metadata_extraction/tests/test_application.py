@@ -46,7 +46,9 @@ def fake_sec(monkeypatch):
             http=sec_http.SecHttpClient(
                 user_agent=options.user_agent or "TestClient/1.0 test@example.com",
                 rate_limiter=sec_http.RateLimiter(min_interval_s=0.001),
-                retry_policy=sec_http.RetryPolicy(max_retries=1, backoff_base_s=0.001, jitter=0.0),
+                retry_policy=sec_http.RetryPolicy(
+                    max_retries=1, backoff_base_s=0.001, jitter=0.0
+                ),
                 timeout_s=1.0,
                 session_factory=lambda: session,
             )
@@ -71,7 +73,9 @@ def make_options(tmp_path, **kw):
 
 def write_input(tmp_path):
     path = tmp_path / "input.csv"
-    path.write_text("cik,name\n37996,FORD MOTOR CO\n20,K Tron\n1761,Tranzonic\n", encoding="utf-8")
+    path.write_text(
+        "cik,name\n37996,FORD MOTOR CO\n20,K Tron\n1761,Tranzonic\n", encoding="utf-8"
+    )
     return str(path)
 
 
@@ -157,19 +161,31 @@ def test_run_chunk_end_to_end_with_fake_http(tmp_path, fake_sec):
     )
     register(
         f"{base}/CIK0000001761.json",
-        {"cik": "0000001761", "name": "TRANZONIC", "filings": {"recent": {}, "files": []}},
+        {
+            "cik": "0000001761",
+            "name": "TRANZONIC",
+            "filings": {"recent": {}, "files": []},
+        },
     )
 
     input_path = write_input(tmp_path)
     options = make_options(tmp_path, input_path=input_path)
     application.build_plan(options)
 
-    summary = application.run_chunk(config.RunOptions(**{**options.to_dict(), "chunk_id": 1, "user_agent": options.user_agent}))
+    summary = application.run_chunk(
+        config.RunOptions(
+            **{**options.to_dict(), "chunk_id": 1, "user_agent": options.user_agent}
+        )
+    )
     assert summary["rows"] == 2
     assert summary["statuses"] == {"ok": 2}
 
     # chunk 2 holds the single remaining CIK (Ford) with recent + one historical file
-    summary2 = application.run_chunk(config.RunOptions(**{**options.to_dict(), "chunk_id": 2, "user_agent": options.user_agent}))
+    summary2 = application.run_chunk(
+        config.RunOptions(
+            **{**options.to_dict(), "chunk_id": 2, "user_agent": options.user_agent}
+        )
+    )
     assert summary2["statuses"] == {"ok": 1}
     assert summary2["filings"] == 2  # 1 recent + 1 historical
 
@@ -180,7 +196,11 @@ def test_run_chunk_end_to_end_with_fake_http(tmp_path, fake_sec):
     assert status["rows_total"] == 3
 
     # resume: rerunning a completed chunk is a no-op
-    skipped = application.run_chunk(config.RunOptions(**{**options.to_dict(), "chunk_id": 1, "user_agent": options.user_agent}))
+    skipped = application.run_chunk(
+        config.RunOptions(
+            **{**options.to_dict(), "chunk_id": 1, "user_agent": options.user_agent}
+        )
+    )
     assert skipped["skipped"] is True
     assert len(session.calls) == 4  # no new HTTP requests
 
@@ -195,7 +215,15 @@ def test_run_chunk_rejects_chunk_id_outside_plan(tmp_path, fake_sec):
     options = make_options(tmp_path, input_path=input_path)
     application.build_plan(options)
     with pytest.raises(Exception):  # noqa: B017
-        application.run_chunk(config.RunOptions(**{**options.to_dict(), "chunk_id": 99, "user_agent": options.user_agent}))
+        application.run_chunk(
+            config.RunOptions(
+                **{
+                    **options.to_dict(),
+                    "chunk_id": 99,
+                    "user_agent": options.user_agent,
+                }
+            )
+        )
 
 
 def test_run_chunk_rejects_modified_input(tmp_path, fake_sec):
@@ -206,4 +234,136 @@ def test_run_chunk_rejects_modified_input(tmp_path, fake_sec):
     with open(input_path, "a", encoding="utf-8") as fh:
         fh.write("1,Newco\n")
     with pytest.raises(ValueError, match="fingerprint"):
-        application.run_chunk(config.RunOptions(**{**options.to_dict(), "chunk_id": 1, "user_agent": options.user_agent}))
+        application.run_chunk(
+            config.RunOptions(
+                **{**options.to_dict(), "chunk_id": 1, "user_agent": options.user_agent}
+            )
+        )
+
+
+def test_jsonl_storage_end_to_end(tmp_path, fake_sec):
+    """plan/run/status/merge with JSONL checkpoints through the same harness."""
+    session, register = fake_sec
+    base = "https://data.sec.gov/submissions"
+    register(
+        f"{base}/CIK0000037996.json",
+        {
+            "cik": "0000037996",
+            "name": "FORD MOTOR CO",
+            "filings": {"recent": {}, "files": []},
+        },
+    )
+    register(
+        f"{base}/CIK0000000020.json",
+        {
+            "cik": "0000000020",
+            "name": "ACCEL ENTERTAINMENT",
+            "filings": {"recent": {}, "files": []},
+        },
+    )
+    register(
+        f"{base}/CIK0000001761.json",
+        {
+            "cik": "0000001761",
+            "name": "TRANZONIC",
+            "filings": {"recent": {}, "files": []},
+        },
+    )
+
+    input_path = write_input(tmp_path)
+    options = make_options(tmp_path, input_path=input_path, storage_format="jsonl")
+    plan = application.build_plan(options)
+    assert plan["storage_format"] == "jsonl"
+
+    summary = application.run_chunk(
+        config.RunOptions(
+            **{**options.to_dict(), "chunk_id": 1, "user_agent": options.user_agent}
+        )
+    )
+    assert summary["rows"] == 2
+    summary2 = application.run_chunk(
+        config.RunOptions(
+            **{**options.to_dict(), "chunk_id": 2, "user_agent": options.user_agent}
+        )
+    )
+    assert summary2["rows"] == 1
+
+    status = application.get_status(options)
+    assert status["completed_chunks"] == 2
+    assert status["mergeable"] is True
+
+    output = tmp_path / "merged.parquet"
+    report = application.merge(options, str(output))
+    assert report.row_count == 3
+    assert output.exists()
+
+
+def test_run_chunk_emits_progress_events(tmp_path, fake_sec):
+    session, register = fake_sec
+    base = "https://data.sec.gov/submissions"
+    register(
+        f"{base}/CIK0000000020.json",
+        {"cik": "0000000020", "name": "K TRON", "filings": {"recent": {}, "files": []}},
+    )
+    register(
+        f"{base}/CIK0000001761.json",
+        {
+            "cik": "0000001761",
+            "name": "TRANZONIC",
+            "filings": {"recent": {}, "files": []},
+        },
+    )
+
+    input_path = write_input(tmp_path)
+    options = make_options(tmp_path, input_path=input_path)
+    application.build_plan(options)
+
+    events = []
+    summary = application.run_chunk(
+        config.RunOptions(
+            **{**options.to_dict(), "chunk_id": 1, "user_agent": options.user_agent}
+        ),
+        progress=events.append,
+    )
+    assert summary["rows"] == 2
+    assert [event["type"] for event in events] == ["cik_done", "cik_done"]
+    assert {event["cik"] for event in events} == {"0000000020", "0000001761"}
+    for event in events:
+        assert event["chunk_id"] == 1
+        assert event["status"] == "ok"
+        assert event["filings"] == 0
+        assert event["historical_files"] == 0
+        assert event["metrics"]["requests_total"] >= 1
+
+
+def test_run_chunk_progress_callback_failure_does_not_break_run(tmp_path, fake_sec):
+    session, register = fake_sec
+    base = "https://data.sec.gov/submissions"
+    register(
+        f"{base}/CIK0000000020.json",
+        {"cik": "0000000020", "name": "K TRON", "filings": {"recent": {}, "files": []}},
+    )
+    register(
+        f"{base}/CIK0000001761.json",
+        {
+            "cik": "0000001761",
+            "name": "TRANZONIC",
+            "filings": {"recent": {}, "files": []},
+        },
+    )
+
+    input_path = write_input(tmp_path)
+    options = make_options(tmp_path, input_path=input_path)
+    application.build_plan(options)
+
+    def bad_callback(event):
+        raise RuntimeError("callback exploded")
+
+    summary = application.run_chunk(
+        config.RunOptions(
+            **{**options.to_dict(), "chunk_id": 1, "user_agent": options.user_agent}
+        ),
+        progress=bad_callback,
+    )
+    assert summary["rows"] == 2
+    assert summary["statuses"] == {"ok": 2}

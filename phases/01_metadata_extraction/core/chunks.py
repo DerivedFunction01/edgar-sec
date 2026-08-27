@@ -33,6 +33,52 @@ class ChunkMismatchError(Exception):
     pass
 
 
+@dataclass(frozen=True)
+class PartitionSpec:
+    partition_id: int
+    partition_count: int
+    assignment: str
+    cik_padded: tuple[str, ...]
+    chunks: tuple[ChunkRange, ...]
+
+    @property
+    def row_count(self) -> int:
+        return len(self.cik_padded)
+
+    def to_dict(self) -> dict:
+        return {
+            "partition_id": self.partition_id,
+            "partition_count": self.partition_count,
+            "assignment": self.assignment,
+            "cik_padded": list(self.cik_padded),
+            "row_count": self.row_count,
+            "chunks": [chunk.to_dict() for chunk in self.chunks],
+        }
+
+
+def assign_partitions(
+    cik_padded_list: list[str], partition_count: int, chunk_size: int
+) -> list[PartitionSpec]:
+    """Assign sorted CIKs using stable round-robin, then chunk each partition."""
+    if partition_count < 1:
+        raise ValueError("partition_count must be >= 1")
+    if chunk_size < 1:
+        raise ValueError("chunk_size must be >= 1")
+    partitions = []
+    for partition_id in range(1, partition_count + 1):
+        partition_ciks = tuple(cik_padded_list[partition_id - 1 :: partition_count])
+        partitions.append(
+            PartitionSpec(
+                partition_id=partition_id,
+                partition_count=partition_count,
+                assignment="round_robin_v1",
+                cik_padded=partition_ciks,
+                chunks=tuple(assign_chunks(list(partition_ciks), chunk_size)),
+            )
+        )
+    return partitions
+
+
 def assign_chunks(cik_padded_list: list[str], chunk_size: int) -> list[ChunkRange]:
     """Assign contiguous inclusive ranges over the deterministically ordered
     CIK list. Overlapping or missing coverage is impossible by construction,
@@ -40,7 +86,9 @@ def assign_chunks(cik_padded_list: list[str], chunk_size: int) -> list[ChunkRang
     if chunk_size < 1:
         raise ValueError("chunk_size must be >= 1")
     chunks: list[ChunkRange] = []
-    for chunk_id, start in enumerate(range(0, len(cik_padded_list), chunk_size), start=1):
+    for chunk_id, start in enumerate(
+        range(0, len(cik_padded_list), chunk_size), start=1
+    ):
         end = min(start + chunk_size, len(cik_padded_list)) - 1
         chunks.append(
             ChunkRange(
@@ -68,7 +116,9 @@ def json_canonical(value) -> str:
     return json.dumps(value, sort_keys=True, separators=(",", ":"), ensure_ascii=False)
 
 
-def select_chunk(plan: dict, chunk_id: int, input_fingerprint: str, schema_version: str) -> ChunkRange:
+def select_chunk(
+    plan: dict, chunk_id: int, input_fingerprint: str, schema_version: str
+) -> ChunkRange:
     """Validate a worker's chunk against the plan manifest.
 
     A worker must reject a chunk whose manifest version (schema), input
@@ -93,7 +143,9 @@ def select_chunk(plan: dict, chunk_id: int, input_fingerprint: str, schema_versi
                 last_cik=chunk["last_cik"],
             )
     known = [chunk.get("chunk_id") for chunk in plan.get("chunks", [])]
-    raise ChunkMismatchError(f"chunk_id {chunk_id} not present in plan; known chunk ids: {known}")
+    raise ChunkMismatchError(
+        f"chunk_id {chunk_id} not present in plan; known chunk ids: {known}"
+    )
 
 
 def chunk_ciks(target_rows: list, chunk: ChunkRange) -> list:

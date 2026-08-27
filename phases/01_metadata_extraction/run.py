@@ -8,13 +8,14 @@ fan-out):
         --artifacts .artifacts/metadata/runs/<run-id> \
         --chunk-size 1000 --chunk-id 12 --workers 4
 
-Interactive (no --chunk-id): a wizard similar to init_venv.py that walks
-through configuration, can create the plan, and can run:
+Interactive (no --chunk-id): a wizard that uses persisted configuration and
+offers preview, run-all-remaining, split/show commands, status, and exit:
 
-  1. all remaining chunks on this machine
-  2. a division of chunks across N machines (printing the exact command
-     for each machine, then executing this machine's share)
-  3. explicitly selected chunks (e.g. "1,3,5-8")
+   1. Run all remaining chunks on this machine
+   2. Divide chunks across N machines (show commands, run this machine's share)
+   3. Run specific chunks (e.g. "1,3,5-8")
+   4. Show status
+   5. Exit
 
 All execution still goes through the shared core (build_plan, run_chunk,
 get_status); this shim never duplicates fetching, normalization, or
@@ -29,13 +30,32 @@ import logging
 import os
 import sys
 
-from .core import RunOptions, build_plan, get_status, load_plan, run_chunk
+from tqdm import tqdm
+from tqdm.contrib.logging import logging_redirect_tqdm
+from defs.runtime.progress import make_tqdm_callback
+from defs.runtime.interactive import InteractivePhase, run_interactive
+
+from .core import (
+    PROJECT_CONFIG_DEFAULT_PATH,
+    ProjectConfig,
+    RunOptions,
+    build_plan,
+    default_project_config,
+    get_status,
+    load_plan,
+    load_project_config,
+    default_user_agent,
+    preview_sample,
+    run_chunk,
+    run_partition,
+    write_project_config,
+)
 
 log = logging.getLogger("metadata.run")
 
 
 # ---------------------------------------------------------------------------
-# Argument parsing (kept identical to before for the non-interactive path)
+# Argument parsing
 # ---------------------------------------------------------------------------
 
 
@@ -44,53 +64,133 @@ def build_parser() -> argparse.ArgumentParser:
         prog="phases.01_metadata_extraction.run",
         description="Run one chunk non-interactively, or launch the interactive wizard when --chunk-id is omitted.",
     )
-    parser.add_argument("--input", default=RunOptions.input_path)
-    parser.add_argument("--artifacts", default=RunOptions.artifacts_dir)
-    parser.add_argument("--chunk-size", type=int, default=RunOptions.chunk_size)
+    parser.add_argument(
+        "--config",
+        default=PROJECT_CONFIG_DEFAULT_PATH,
+        help="path to the persisted project configuration (default: .artifacts/metadata/config.json)",
+    )
+    parser.add_argument(
+        "--configure",
+        action="store_true",
+        help="create or update the config file from supplied CLI settings and exit",
+    )
+    parser.add_argument("--input", default=None, help="CIK/name CSV manifest")
+    parser.add_argument("--artifacts", default=None, help="run artifacts directory")
+    parser.add_argument("--chunk-size", type=int, default=None, help="CIKs per chunk")
+    parser.add_argument(
+        "--partition-count",
+        type=int,
+        default=None,
+        help="number of deterministic work partitions",
+    )
+    parser.add_argument("--partition-id", type=int, default=None, help="operational partition to run")
+    parser.add_argument(
+        "--storage-format",
+        choices=("parquet", "jsonl"),
+        default=None,
+        help="checkpoint format (Parquet by default; JSONL is useful for inspection)",
+    )
     parser.add_argument(
         "--chunk-id",
         type=int,
         default=None,
         help="omit to start the interactive wizard",
     )
-    parser.add_argument("--workers", type=int, default=RunOptions.workers)
-    parser.add_argument("--timeout", type=float, default=RunOptions.timeout_s)
-    parser.add_argument("--max-retries", type=int, default=RunOptions.max_retries)
-    parser.add_argument("--rate-limit", type=float, default=RunOptions.rate_limit_rps)
-    parser.add_argument("--user-agent", default="")
-    parser.add_argument("--cache-dir", default="")
+    parser.add_argument("--workers", type=int, default=None, help="concurrent workers")
+    parser.add_argument(
+        "--timeout", type=float, default=None, help="request timeout in seconds"
+    )
+    parser.add_argument(
+        "--max-retries", type=int, default=None, help="per-request retry budget"
+    )
+    parser.add_argument(
+        "--rate-limit",
+        type=float,
+        default=None,
+        help="target requests/second per process",
+    )
+    parser.add_argument(
+        "--user-agent",
+        default=None,
+        help="SEC identity: 'AppName/1.0 contact@example.com'",
+    )
+    parser.add_argument(
+        "--cache-dir", default=None, help="optional raw-response cache directory"
+    )
     parser.add_argument(
         "--max-failure-attempts",
         type=int,
-        default=RunOptions.max_failure_attempts,
+        default=None,
         help="independent failed runs after which a URL is skipped without retrying",
     )
+    parser.add_argument("--limit", type=int, default=None, help="bounded test run size")
     parser.add_argument(
         "--ignore-failure-history",
         action="store_true",
         help="attempt every URL regardless of recorded failures",
     )
-    parser.add_argument("--limit", type=int, default=None)
     parser.add_argument("--log-level", default="INFO")
     parser.add_argument("--run-id", default="local")
+    parser.add_argument(
+        "--no-progress",
+        action="store_true",
+        help="disable the tqdm progress bars (useful for cron/automation logs)",
+    )
     return parser
 
 
-def options_from_args(args) -> RunOptions:
+def _coalesce(cli_value, config_value, default):
+    if cli_value is not None:
+        return cli_value
+    if config_value is not None:
+        return config_value
+    return default
+
+
+def options_from_args(args, project_config) -> RunOptions:
     return RunOptions(
-        input_path=args.input,
-        artifacts_dir=args.artifacts,
-        chunk_size=args.chunk_size,
+        input_path=_coalesce(
+            args.input, project_config.input_path, RunOptions.input_path
+        ),
+        artifacts_dir=_coalesce(
+            args.artifacts, project_config.artifacts_dir, RunOptions.artifacts_dir
+        ),
+        chunk_size=_coalesce(
+            args.chunk_size, project_config.chunk_size, RunOptions.chunk_size
+        ),
+        partition_count=_coalesce(
+            getattr(args, "partition_count", None),
+            project_config.partition_count,
+            RunOptions.partition_count,
+        ),
+        partition_id=getattr(args, "partition_id", None),
+        storage_format=_coalesce(
+            args.storage_format,
+            project_config.storage_format,
+            RunOptions.storage_format,
+        ),
         chunk_id=args.chunk_id,
-        workers=args.workers,
-        timeout_s=args.timeout,
-        max_retries=args.max_retries,
-        rate_limit_rps=args.rate_limit,
-        user_agent=args.user_agent,
-        cache_dir=args.cache_dir,
-        max_failure_attempts=args.max_failure_attempts,
+        workers=_coalesce(args.workers, project_config.workers, RunOptions.workers),
+        timeout_s=_coalesce(
+            args.timeout, project_config.timeout_s, RunOptions.timeout_s
+        ),
+        max_retries=_coalesce(
+            args.max_retries, project_config.max_retries, RunOptions.max_retries
+        ),
+        rate_limit_rps=_coalesce(
+            args.rate_limit, project_config.rate_limit_rps, RunOptions.rate_limit_rps
+        ),
+            user_agent=args.user_agent
+            or project_config.user_agent
+            or default_user_agent(),
+        cache_dir=_coalesce(args.cache_dir, project_config.cache_dir, ""),
+        max_failure_attempts=_coalesce(
+            args.max_failure_attempts,
+            project_config.max_failure_attempts,
+            RunOptions.max_failure_attempts,
+        ),
         ignore_failure_history=getattr(args, "ignore_failure_history", False),
-        limit=args.limit,
+        limit=_coalesce(args.limit, project_config.limit, RunOptions.limit),
         log_level=args.log_level,
         run_id=args.run_id,
     )
@@ -105,250 +205,96 @@ def print_json(payload: dict) -> None:
 # ---------------------------------------------------------------------------
 
 
-def ask(prompt: str, default: str) -> str:
-    suffix = f" [{default}]" if default else ""
-    try:
-        answer = input(f"{prompt}{suffix}: ").strip()
-    except EOFError:
-        answer = ""
-    return answer or default
-
-
-def ask_int(prompt: str, default: int, minimum: int = 1) -> int:
-    raw = ask(prompt, str(default))
-    try:
-        value = int(raw)
-        if value < minimum:
-            raise ValueError
-        return value
-    except ValueError:
-        print(f"  invalid number '{raw}', using {default}")
-        return default
-
-
-def ask_float(prompt: str, default: float, minimum: float = 0.0) -> float:
-    raw = ask(prompt, str(default))
-    try:
-        value = float(raw)
-        if value <= minimum:
-            raise ValueError
-        return value
-    except ValueError:
-        print(f"  invalid number '{raw}', using {default}")
-        return default
-
-
-def parse_chunk_spec(spec: str, known_ids: list[int]) -> list[int]:
-    """Parse '1,3,5-8' into an ordered list of valid chunk ids."""
-    known = set(known_ids)
-    selected: list[int] = []
-    for part in spec.replace(" ", "").split(","):
-        if not part:
-            continue
-        if "-" in part:
-            start_text, end_text = part.split("-", 1)
-            start, end = int(start_text), int(end_text)
-            if start > end:
-                start, end = end, start
-            selected.extend(range(start, end + 1))
-        else:
-            selected.append(int(part))
-    unknown = sorted(set(selected) - known)
-    if unknown:
-        raise ValueError(f"unknown chunk ids: {unknown}")
-    return sorted(dict.fromkeys(selected))
-
-
-def chunk_command(options: RunOptions, chunk_id: int) -> str:
+def partition_command(options: RunOptions, partition_id: int) -> str:
     agent = options.user_agent or "$SEC_USER_AGENT"
+    storage = (
+        f" --storage-format {options.storage_format}"
+        if options.storage_format != "parquet"
+        else ""
+    )
     return (
-        f".venv/bin/python -m phases.01_metadata_extraction.run"
-        f" --input {options.input_path}"
-        f" --artifacts {options.artifacts_dir}"
-        f" --chunk-id {chunk_id}"
-        f" --workers {options.workers}"
-        f" --rate-limit {options.rate_limit_rps}"
-        f" --user-agent '{agent}'"
+        f".venv/bin/python -m phases.01_metadata_extraction.cli run"
+        f" --config {PROJECT_CONFIG_DEFAULT_PATH} --partition-id {partition_id}"
+        f" --input '{options.input_path}' --artifacts '{options.artifacts_dir}'"
+        f" --workers {options.workers} --rate-limit {options.rate_limit_rps}"
+        f" --user-agent '{agent}'{storage}"
     )
-
-
-def divide_chunks_among_machines(all_ids: list[int], machines: int) -> list[list[int]]:
-    """Contiguous, balanced groups of chunk ids, one per machine."""
-    groups: list[list[int]] = [[] for _ in range(machines)]
-    base, remainder = divmod(len(all_ids), machines)
-    index = 0
-    for machine in range(machines):
-        count = base + (1 if machine < remainder else 0)
-        groups[machine] = all_ids[index : index + count]
-        index += count
-    return groups
-
-
-def configure_interactively(args) -> RunOptions:
-    print("\n" + "=" * 64)
-    print("SEC submissions metadata extraction — chunk runner")
-    print("=" * 64)
-    print("Press Enter to accept the [default] shown for each setting.\n")
-
-    input_path = ask("Input CSV", args.input or RunOptions.input_path)
-    artifacts_dir = ask("Artifacts/run directory", args.artifacts or RunOptions.artifacts_dir)
-    chunk_size = ask_int("Chunk size (CIKs per chunk)", args.chunk_size)
-    workers = ask_int("Concurrent workers", args.workers)
-    rate_limit = ask_float("Rate limit (requests/second, per process)", args.rate_limit)
-    user_agent = ask(
-        "SEC User-Agent 'AppName/1.0 you@example.com'",
-        args.user_agent or os.environ.get("SEC_USER_AGENT", ""),
-    )
-    cache_dir = ask("Optional raw-response cache directory (blank = off)", args.cache_dir)
-
-    options = RunOptions(
-        input_path=input_path,
-        artifacts_dir=artifacts_dir,
-        chunk_size=chunk_size,
-        workers=workers,
-        rate_limit_rps=rate_limit,
-        user_agent=user_agent,
-        cache_dir=cache_dir,
-        timeout_s=args.timeout,
-        max_retries=args.max_retries,
-        limit=args.limit,
-        log_level=args.log_level,
-        run_id=args.run_id,
-    )
-    options.validate()
-    return options
 
 
 def ensure_plan(options: RunOptions) -> dict:
     try:
         plan = load_plan(options)
-        print(f"\nLoaded existing plan: {len(plan['chunks'])} chunks, {plan['row_count']} CIKs")
+        print(
+            f"\nLoaded existing plan: {len(plan['chunks'])} chunks, {plan['row_count']} CIKs"
+        )
         return plan
     except (FileNotFoundError, ValueError):
-        answer = ask(
-            f"No valid plan.json in {options.artifacts_dir}. Create one now? (y/N)",
-            "y",
-        )
-        if answer.strip().lower() not in ("y", "yes"):
+        answer = input(
+            f"No valid plan.json in {options.artifacts_dir}. Create one now? (y/N) "
+        ).strip()
+        if answer.lower() not in ("y", "yes"):
             raise SystemExit("aborted: run `plan` first or answer yes to create it")
         plan = build_plan(options)
         print(f"Plan created: {len(plan['chunks'])} chunks, {plan['row_count']} CIKs")
         return plan
 
 
-def run_selected_chunks(options: RunOptions, chunk_ids: list[int]) -> int:
-    """Execute chunks sequentially with resume-aware skipping. Returns an
-    exit code: 0 when every chunk succeeded or was already complete."""
-    failures: list[tuple[int, str]] = []
-    completed = skipped = filings = 0
-    for index, chunk_id in enumerate(chunk_ids, start=1):
-        print(f"\n[{index}/{len(chunk_ids)}] chunk {chunk_id}")
-        print("-" * 48)
-        try:
-            summary = run_chunk(
-                RunOptions(
-                    **{**options.to_dict(), "chunk_id": chunk_id, "run_id": options.run_id}
-                )
+def _chunk_row_counts(options: RunOptions) -> dict[int, int]:
+    """Map chunk id -> row count from plan.json; empty when no plan exists."""
+    try:
+        plan = load_plan(options)
+    except (FileNotFoundError, ValueError):
+        return {}
+    return {
+        chunk["chunk_id"]: chunk["end_row"] - chunk["start_row"] + 1
+        for chunk in plan.get("chunks", [])
+    }
+
+
+def _run_partition_with_progress(options: RunOptions, partition_id: int, *, show_progress: bool = True) -> dict:
+    """Run one partition with a single CIK-level progress bar."""
+    plan = load_plan(options)
+    partition = next(
+        (item for item in plan.get("partitions", []) if item["partition_id"] == partition_id),
+        None,
+    )
+    if partition is None:
+        raise ValueError(f"partition {partition_id} is not present in plan.json")
+    total = sum(
+        chunk["end_row"] - chunk["start_row"] + 1 for chunk in partition.get("chunks", [])
+    )
+    bar = tqdm(
+        total=total,
+        unit="cik",
+        desc=f"partition {partition_id}",
+        disable=not show_progress,
+    )
+    try:
+        with logging_redirect_tqdm():
+            return run_partition(
+                options, partition_id, progress=make_tqdm_callback(bar)
             )
-        except KeyboardInterrupt:
-            print("\ninterrupted; completed chunks are preserved and can be resumed")
-            return 130
-        except Exception as exc:  # noqa: BLE001 — one bad chunk must not kill the rest
-            failures.append((chunk_id, f"{type(exc).__name__}: {exc}"))
-            print(f"  chunk {chunk_id} FAILED: {type(exc).__name__}: {exc}")
-            continue
-        if summary.get("skipped"):
-            skipped += 1
-            print(f"  already complete: {summary['checkpoint']}")
-        else:
-            completed += 1
-            filings += summary.get("filings", 0)
-            statuses = " ".join(f"{k}={v}" for k, v in sorted(summary["statuses"].items()))
-            print(f"  rows={summary['rows']} ({statuses}) filings={summary['filings']}")
-
-    print("\n" + "=" * 64)
-    print(f"summary: {completed} executed, {skipped} skipped, {len(failures)} failed, "
-          f"{filings} filing records")
-    for chunk_id, error in failures:
-        print(f"  chunk {chunk_id}: {error}")
-    if not failures:
-        print(
-            "\nnext: merge with\n"
-            f"  .venv/bin/python -m phases.01_metadata_extraction.cli merge"
-            f" --artifacts {options.artifacts_dir}"
-            f" --output phases/01_metadata_extraction/output/merged/submission_metadata.parquet"
-        )
-    return 1 if failures else 0
+    finally:
+        bar.close()
 
 
-def interactive_wizard(args) -> int:
-    options = configure_interactively(args)
-
-    while True:
-        plan = ensure_plan(options)
-        all_ids = [chunk["chunk_id"] for chunk in plan["chunks"]]
-        while True:
-            status = get_status(options)
-            missing = status.get("missing_chunks", [])
-            print("\nOptions:")
-            print("  1. Run all remaining chunks on this machine"
-                  f" ({len(missing)} remaining)")
-            print("  2. Divide chunks across N machines (show commands, run this machine's share)")
-            print("  3. Run specific chunks (e.g. '1,3,5-8')")
-            print("  4. Show status")
-            print("  5. Reconfigure settings")
-            print("  0. Exit")
-            try:
-                choice = input("\nChoice [1]: ").strip() or "1"
-            except EOFError:
-                return 0
-
-            if choice == "0":
-                return 0
-            if choice == "1":
-                code = run_selected_chunks(options, missing)
-                if code:
-                    return code
-                break  # back to ensure_plan/menu; plan is complete now
-            if choice == "2":
-                machines = ask_int("Number of machines", 2)
-                groups = divide_chunks_among_machines(all_ids, machines)
-                print("\nRun one command per machine (each re-validates the same plan):")
-                for machine, ids in enumerate(groups, start=1):
-                    listing = ",".join(str(i) for i in ids) or "(none)"
-                    print(f"\n  machine {machine}: chunks {listing}")
-                    for chunk_id in ids:
-                        print(f"    {chunk_command(options, chunk_id)}")
-                share = ask(f"\nWhich machine is THIS one? (1-{machines}, blank = skip)", "")
-                if share.strip().isdigit() and 1 <= int(share) <= machines:
-                    ids = groups[int(share) - 1]
-                    if not ids:
-                        print("  that machine has no assigned chunks")
-                        continue
-                    answer = ask(f"Run chunks {','.join(map(str, ids))} now? (Y/n)", "y")
-                    if answer.strip().lower() in ("y", "yes", ""):
-                        code = run_selected_chunks(options, ids)
-                        if code:
-                            return code
-                        break
-                continue
-            if choice == "3":
-                spec = ask("Chunk ids (e.g. '1,3,5-8')", "")
-                try:
-                    ids = parse_chunk_spec(spec, all_ids)
-                except ValueError as exc:
-                    print(f"  {exc}")
-                    continue
-                code = run_selected_chunks(options, ids)
-                if code:
-                    return code
-                break
-            if choice == "4":
-                print_json(status)
-                continue
-            if choice == "5":
-                return interactive_wizard(args)  # restart with fresh prompts
-            print("  unknown choice")
+def interactive_wizard(args, project_config) -> int:
+    """Phase 1 adapter for the shared partition-oriented operator UI."""
+    options = options_from_args(args, project_config)
+    try:
+        options.validate()
+    except ValueError as exc:
+        print(f"error: {exc}", file=sys.stderr)
+        return 2
+    return run_interactive(InteractivePhase(
+        ensure_plan=lambda: ensure_plan(options),
+        preview=lambda: preview_sample(options),
+        status=lambda: get_status(options),
+        run_partition=lambda partition_id: _run_partition_with_progress(
+            options, partition_id, show_progress=not args.no_progress
+        ),
+        partition_command=lambda partition_id: partition_command(options, partition_id),
+    ))
 
 
 def main(argv=None) -> int:
@@ -358,22 +304,103 @@ def main(argv=None) -> int:
         format="%(levelname)s %(message)s",
     )
 
+    if args.configure:
+        config_path = args.config
+        if os.path.exists(config_path):
+            try:
+                project_config = load_project_config(config_path)
+            except (FileNotFoundError, ValueError) as exc:
+                print(f"error loading existing config: {exc}", file=sys.stderr)
+                return 2
+        else:
+            project_config = default_project_config()
+
+        updated = ProjectConfig(
+            input_path=_coalesce(
+                args.input, project_config.input_path, RunOptions.input_path
+            ),
+            artifacts_dir=_coalesce(
+                args.artifacts, project_config.artifacts_dir, RunOptions.artifacts_dir
+            ),
+            chunk_size=_coalesce(
+                args.chunk_size, project_config.chunk_size, RunOptions.chunk_size
+            ),
+            workers=_coalesce(args.workers, project_config.workers, RunOptions.workers),
+            timeout_s=_coalesce(
+                args.timeout, project_config.timeout_s, RunOptions.timeout_s
+            ),
+            max_retries=_coalesce(
+                args.max_retries, project_config.max_retries, RunOptions.max_retries
+            ),
+            rate_limit_rps=_coalesce(
+                args.rate_limit,
+                project_config.rate_limit_rps,
+                RunOptions.rate_limit_rps,
+            ),
+        user_agent=args.user_agent or project_config.user_agent or default_user_agent(),
+            cache_dir=_coalesce(args.cache_dir, project_config.cache_dir, ""),
+            max_failure_attempts=_coalesce(
+                args.max_failure_attempts,
+                project_config.max_failure_attempts,
+                RunOptions.max_failure_attempts,
+            ),
+            limit=_coalesce(args.limit, project_config.limit, RunOptions.limit),
+            storage_format=_coalesce(
+                args.storage_format,
+                project_config.storage_format,
+                RunOptions.storage_format,
+            ),
+        )
+        try:
+            updated.validate()
+        except ValueError as exc:
+            print(f"error: {exc}", file=sys.stderr)
+            return 2
+        path = write_project_config(config_path, updated)
+        print(f"Config written to {path}")
+        return 0
+
+    config_path = args.config
+    if not os.path.exists(config_path):
+        default_cfg = default_project_config()
+        path = write_project_config(config_path, default_cfg)
+        print(f"Config not found. Created template at {path}")
+        print("Edit the config to add SEC User-Agent and review paths, then re-run.")
+        return 0
+
+    try:
+        project_config = load_project_config(config_path)
+    except (FileNotFoundError, ValueError) as exc:
+        print(f"error loading config: {exc}", file=sys.stderr)
+        return 2
+
     if args.chunk_id is None:
         try:
-            return interactive_wizard(args)
+            return interactive_wizard(args, project_config)
         except KeyboardInterrupt:
             print("\ninterrupted")
             return 130
 
-    options = options_from_args(args)
+    options = options_from_args(args, project_config)
+    bar = tqdm(
+        total=_chunk_row_counts(options).get(options.chunk_id),
+        unit="cik",
+        desc=f"chunk {options.chunk_id}",
+        disable=args.no_progress,
+    )
     try:
-        summary = run_chunk(options)
+        with logging_redirect_tqdm():
+            summary = run_chunk(
+                options, progress=make_tqdm_callback(bar)
+            )
     except (ValueError, FileNotFoundError) as exc:
         print(f"error: {exc}", file=sys.stderr)
         return 2
     except Exception as exc:  # noqa: BLE001 — network or unexpected failure: nonzero exit
         print(f"error: {type(exc).__name__}: {exc}", file=sys.stderr)
         return 3
+    finally:
+        bar.close()
     print_json(summary)
     return 0
 

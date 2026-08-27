@@ -51,7 +51,15 @@ from .predicates import (
     SubquerySource,
     ValueList,
 )
-from .relations import CrossJoin, DerivedTable, Join, OrderBy, Select, SetOperation, Table
+from .relations import (
+    CrossJoin,
+    DerivedTable,
+    Join,
+    OrderBy,
+    Select,
+    SetOperation,
+    Table,
+)
 from .schema import (
     Check,
     CheckConstraint,
@@ -107,16 +115,42 @@ from .statements import (
 
 KNOWN_FUNCTIONS = frozenset(
     {
-        "year", "month", "day", "quarter", "date_diff", "epoch",
-        "to_string", "to_number", "round", "ceil", "floor", "substring",
-        "trim", "lower", "upper", "concat", "coalesce", "abs", "add",
-        "subtract", "multiply", "divide", "modulo", "power", "sqrt",
-        "starts_with", "ends_with", "str_contains", "length",
+        "year",
+        "month",
+        "day",
+        "quarter",
+        "date_diff",
+        "epoch",
+        "to_string",
+        "to_number",
+        "round",
+        "ceil",
+        "floor",
+        "substring",
+        "trim",
+        "lower",
+        "upper",
+        "concat",
+        "coalesce",
+        "abs",
+        "add",
+        "subtract",
+        "multiply",
+        "divide",
+        "modulo",
+        "power",
+        "sqrt",
+        "starts_with",
+        "ends_with",
+        "str_contains",
+        "length",
     }
 )
 
 
-def _contains_table_reference(node: object, name: str, seen: set[int] | None = None) -> bool:
+def _contains_table_reference(
+    node: object, name: str, seen: set[int] | None = None
+) -> bool:
     """Find a relation reference without requiring a schema catalog."""
     if seen is None:
         seen = set()
@@ -167,7 +201,9 @@ class QueryCompiler:
         sql = self._statement(statement, ctx).rstrip(";")
         return CompiledQuery(sql=sql, params=tuple(ctx.params), dialect=self.dialect)
 
-    def compile_ddl_batch(self, statements: tuple[Statement | CompiledQuery | str, ...]) -> str:
+    def compile_ddl_batch(
+        self, statements: tuple[Statement | CompiledQuery | str, ...]
+    ) -> str:
         """Join already-rendered DDL statements without adding nesting semicolons."""
         rendered = []
         for statement in statements:
@@ -199,7 +235,8 @@ class QueryCompiler:
                 column = quote_ident(node.name.value)
                 return (
                     f"{quote_ident(node.qualifier.value)}.{column}"
-                    if node.qualifier is not None else column
+                    if node.qualifier is not None
+                    else column
                 )
             if isinstance(node, Star):
                 return "*"
@@ -213,13 +250,19 @@ class QueryCompiler:
             if isinstance(node, Alias):
                 return f"{self._expr(node.expression, ctx)} AS {quote_ident(node.name)}"
             if isinstance(node, Arithmetic):
-                return "(" + f" {node.operator.value} ".join(
-                    self._expr(term, ctx) for term in node.terms
-                ) + ")"
+                return (
+                    "("
+                    + f" {node.operator.value} ".join(
+                        self._expr(term, ctx) for term in node.terms
+                    )
+                    + ")"
+                )
             if isinstance(node, FunctionCall):
                 name = node.function.lower()
                 if name not in KNOWN_FUNCTIONS:
-                    raise CapabilityError(f"function {node.function}", self.dialect.value)
+                    raise CapabilityError(
+                        f"function {node.function}", self.dialect.value
+                    )
                 if name in {"starts_with", "ends_with", "str_contains"}:
                     return self._string_function(name, node.args, ctx)
                 return self._function(name, [self._expr(arg, ctx) for arg in node.args])
@@ -228,10 +271,17 @@ class QueryCompiler:
                 path = node.path.path
                 if self.dialect is SqlDialect.POSTGRES:
                     if "." in path:
-                        parts = ", ".join("'" + part.replace("'", "''") + "'" for part in node.path.parts)
+                        parts = ", ".join(
+                            "'" + part.replace("'", "''") + "'"
+                            for part in node.path.parts
+                        )
                         return f"{target}::jsonb #>> ARRAY[{parts}]"
                     return f"{target}::jsonb ->> '{path.replace(chr(39), chr(39) * 2)}'"
-                fn = "json_extract_string" if self.dialect is SqlDialect.DUCKDB else "json_extract"
+                fn = (
+                    "json_extract_string"
+                    if self.dialect is SqlDialect.DUCKDB
+                    else "json_extract"
+                )
                 safe_path = path.replace("'", "''")
                 return f"{fn}({target}, '$.{safe_path}')"
             if isinstance(node, ScalarSubquery):
@@ -242,7 +292,11 @@ class QueryCompiler:
                     parts.append(
                         f"WHEN {self._condition(branch.when, ctx)} THEN {self._expr(branch.then, ctx)}"
                     )
-                else_sql = f" ELSE {self._expr(node.else_, ctx)}" if node.else_ is not None else ""
+                else_sql = (
+                    f" ELSE {self._expr(node.else_, ctx)}"
+                    if node.else_ is not None
+                    else ""
+                )
                 return "(CASE " + " ".join(parts) + else_sql + " END)"
             if isinstance(node, Aggregate):
                 return self._aggregate(node.function, node.argument, ctx)
@@ -250,9 +304,15 @@ class QueryCompiler:
                 operand = self._expr(node.operand, ctx)
                 body = []
                 if node.partition_by:
-                    body.append("PARTITION BY " + ", ".join(self._expr(x, ctx) for x in node.partition_by))
+                    body.append(
+                        "PARTITION BY "
+                        + ", ".join(self._expr(x, ctx) for x in node.partition_by)
+                    )
                 if node.order_by:
-                    body.append("ORDER BY " + ", ".join(self._order(x, ctx) for x in node.order_by))
+                    body.append(
+                        "ORDER BY "
+                        + ", ".join(self._order(x, ctx) for x in node.order_by)
+                    )
                 return f"{operand} OVER ({' '.join(body)})"
             raise ValidationError(f"unsupported expression node: {type(node).__name__}")
 
@@ -261,11 +321,21 @@ class QueryCompiler:
         if name in {"trim", "lower", "upper", "abs", "sqrt", "length"}:
             return f"{name.upper()}({arg0})"
         if name == "concat":
-            return f"({' || '.join(args)})" if self.dialect is SqlDialect.SQLITE else f"CONCAT({', '.join(args)})"
+            return (
+                f"({' || '.join(args)})"
+                if self.dialect is SqlDialect.SQLITE
+                else f"CONCAT({', '.join(args)})"
+            )
         if name == "coalesce":
             return f"COALESCE({', '.join(args)})"
         if name in {"add", "subtract", "multiply", "divide", "modulo"}:
-            op = {"add": "+", "subtract": "-", "multiply": "*", "divide": "/", "modulo": "%"}[name]
+            op = {
+                "add": "+",
+                "subtract": "-",
+                "multiply": "*",
+                "divide": "/",
+                "modulo": "%",
+            }[name]
             return "(" + f" {op} ".join(args) + ")"
         if name == "power":
             if len(args) < 2:
@@ -275,7 +345,11 @@ class QueryCompiler:
                 result = f"POWER({base}, {result})"
             return result
         if name == "ceil":
-            return f"CEIL({arg0})" if self.dialect is SqlDialect.SQLITE else f"CEILING({arg0})"
+            return (
+                f"CEIL({arg0})"
+                if self.dialect is SqlDialect.SQLITE
+                else f"CEILING({arg0})"
+            )
         if name == "floor":
             return f"FLOOR({arg0})"
         if name in {"year", "month", "day", "quarter", "epoch"}:
@@ -287,7 +361,11 @@ class QueryCompiler:
             return f"EXTRACT({name.upper()} FROM CAST({arg0} AS TIMESTAMP))"
         if name == "date_diff":
             arg1 = args[1] if len(args) > 1 else "NULL"
-            return f"(julianday({arg1}) - julianday({arg0}))" if self.dialect is SqlDialect.SQLITE else f"DATE_PART('day', CAST({arg1} AS TIMESTAMP) - CAST({arg0} AS TIMESTAMP))"
+            return (
+                f"(julianday({arg1}) - julianday({arg0}))"
+                if self.dialect is SqlDialect.SQLITE
+                else f"DATE_PART('day', CAST({arg1} AS TIMESTAMP) - CAST({arg0} AS TIMESTAMP))"
+            )
         if name == "to_string":
             return f"CAST({arg0} AS TEXT)"
         if name == "to_number":
@@ -298,10 +376,16 @@ class QueryCompiler:
         if name == "round":
             if self.dialect is SqlDialect.SQLITE:
                 return f"ROUND({arg0}, {args[1] if len(args) > 1 else '0'})"
-            return f"ROUND(CAST({arg0} AS NUMERIC), {args[1] if len(args) > 1 else '0'})"
+            return (
+                f"ROUND(CAST({arg0} AS NUMERIC), {args[1] if len(args) > 1 else '0'})"
+            )
         if name == "substring":
             start = args[1] if len(args) > 1 else "0"
-            return f"SUBSTR({arg0}, ({start}) + 1{', ' + args[2] if len(args) > 2 else ''})" if self.dialect is SqlDialect.SQLITE else f"SUBSTRING({arg0} FROM ({start}) + 1{' FOR ' + args[2] if len(args) > 2 else ''})"
+            return (
+                f"SUBSTR({arg0}, ({start}) + 1{', ' + args[2] if len(args) > 2 else ''})"
+                if self.dialect is SqlDialect.SQLITE
+                else f"SUBSTRING({arg0} FROM ({start}) + 1{' FOR ' + args[2] if len(args) > 2 else ''})"
+            )
         if name in {"starts_with", "ends_with", "str_contains"}:
             if len(args) < 2:
                 return "1=1"
@@ -322,7 +406,9 @@ class QueryCompiler:
             return "(" + (" OR " if mode == "any" else " AND ").join(pieces) + ")"
         raise CapabilityError(f"function {name}", self.dialect.value)
 
-    def _like_pattern(self, value: str, pattern: str, mode: str, *, case_insensitive: bool = False) -> str:
+    def _like_pattern(
+        self, value: str, pattern: str, mode: str, *, case_insensitive: bool = False
+    ) -> str:
         operator = "LIKE"
         if case_insensitive and self.dialect is not SqlDialect.SQLITE:
             operator = "ILIKE"
@@ -338,7 +424,9 @@ class QueryCompiler:
             return f"{value} {operator} CONCAT('%', {pattern})"
         return f"{value} {operator} CONCAT('%', {pattern}, '%')"
 
-    def _string_function(self, name: str, args: tuple[object, ...], ctx: RenderContext) -> str:
+    def _string_function(
+        self, name: str, args: tuple[object, ...], ctx: RenderContext
+    ) -> str:
         if len(args) < 2:
             return "1=1"
         patterns = list(args[1:])
@@ -350,7 +438,11 @@ class QueryCompiler:
                 patterns.pop()
         if not patterns:
             return "1=1"
-        kind = {"starts_with": "prefix", "ends_with": "suffix", "str_contains": "contains"}[name]
+        kind = {
+            "starts_with": "prefix",
+            "ends_with": "suffix",
+            "str_contains": "contains",
+        }[name]
         pieces = []
         for pattern in patterns:
             value_sql = self._expr(args[0], ctx)
@@ -359,7 +451,9 @@ class QueryCompiler:
         joiner = " OR " if name != "str_contains" or mode == "any" else " AND "
         return "(" + joiner.join(pieces) + ")"
 
-    def _aggregate(self, function: AggregateFunction, argument_node, ctx: RenderContext) -> str:
+    def _aggregate(
+        self, function: AggregateFunction, argument_node, ctx: RenderContext
+    ) -> str:
         def argument() -> str:
             return self._expr(argument_node, ctx) if argument_node is not None else "*"
 
@@ -378,9 +472,19 @@ class QueryCompiler:
                 return f"PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY {argument()})"
             return f"MEDIAN({argument()})"
         if function is AggregateFunction.MODE:
-            return "MODE() WITHIN GROUP (ORDER BY " + argument() + ")" if self.dialect is SqlDialect.POSTGRES else f"MODE({argument()})"
-        if function in {AggregateFunction.STDDEV_SAMP, AggregateFunction.STDDEV_POP, AggregateFunction.VAR_SAMP, AggregateFunction.VAR_POP}:
+            return (
+                "MODE() WITHIN GROUP (ORDER BY " + argument() + ")"
+                if self.dialect is SqlDialect.POSTGRES
+                else f"MODE({argument()})"
+            )
+        if function in {
+            AggregateFunction.STDDEV_SAMP,
+            AggregateFunction.STDDEV_POP,
+            AggregateFunction.VAR_SAMP,
+            AggregateFunction.VAR_POP,
+        }:
             if self.dialect is SqlDialect.SQLITE:
+
                 def count() -> str:
                     return f"COUNT({argument()})"
 
@@ -394,11 +498,26 @@ class QueryCompiler:
                     return f"({sum_square()} - ({sum_value()} * {sum_value()} * 1.0) / {count()})"
 
                 def variance() -> str:
-                    denominator = f"({count()} - 1)" if function in {AggregateFunction.STDDEV_SAMP, AggregateFunction.VAR_SAMP} else count()
+                    denominator = (
+                        f"({count()} - 1)"
+                        if function
+                        in {AggregateFunction.STDDEV_SAMP, AggregateFunction.VAR_SAMP}
+                        else count()
+                    )
                     return f"({numerator()} / {denominator})"
 
-                minimum = "1" if function in {AggregateFunction.STDDEV_SAMP, AggregateFunction.VAR_SAMP} else "0"
-                value = f"SQRT({variance()})" if function in {AggregateFunction.STDDEV_SAMP, AggregateFunction.STDDEV_POP} else variance()
+                minimum = (
+                    "1"
+                    if function
+                    in {AggregateFunction.STDDEV_SAMP, AggregateFunction.VAR_SAMP}
+                    else "0"
+                )
+                value = (
+                    f"SQRT({variance()})"
+                    if function
+                    in {AggregateFunction.STDDEV_SAMP, AggregateFunction.STDDEV_POP}
+                    else variance()
+                )
                 return f"CASE WHEN {count()} > {minimum} THEN {value} ELSE NULL END"
         return f"{function.value.upper()}({argument()})"
 
@@ -410,20 +529,37 @@ class QueryCompiler:
                 left = self._expr(node.left, ctx)
                 right = self._expr(node.right, ctx)
                 op = node.operator.value
-                if node.operator is ComparisonOp.ILIKE and self.dialect is SqlDialect.SQLITE:
+                if (
+                    node.operator is ComparisonOp.ILIKE
+                    and self.dialect is SqlDialect.SQLITE
+                ):
                     op = "LIKE"
-                if node.operator is ComparisonOp.NOT_ILIKE and self.dialect is SqlDialect.SQLITE:
+                if (
+                    node.operator is ComparisonOp.NOT_ILIKE
+                    and self.dialect is SqlDialect.SQLITE
+                ):
                     op = "NOT LIKE"
-                if node.operator is ComparisonOp.IS_DISTINCT_FROM and self.dialect is SqlDialect.SQLITE:
+                if (
+                    node.operator is ComparisonOp.IS_DISTINCT_FROM
+                    and self.dialect is SqlDialect.SQLITE
+                ):
                     op = "IS NOT"
-                if node.operator is ComparisonOp.IS_NOT_DISTINCT_FROM and self.dialect is SqlDialect.SQLITE:
+                if (
+                    node.operator is ComparisonOp.IS_NOT_DISTINCT_FROM
+                    and self.dialect is SqlDialect.SQLITE
+                ):
                     op = "IS"
                 return f"{left} {op} {right}"
             if isinstance(node, Membership):
                 left = self._expr(node.value, ctx)
                 if isinstance(node.source, ValueList):
                     values = ", ".join(
-                        self._expr(v if isinstance(v, (Parameter, Literal, Expr)) else Parameter(v), ctx)
+                        self._expr(
+                            v
+                            if isinstance(v, (Parameter, Literal, Expr))
+                            else Parameter(v),
+                            ctx,
+                        )
                         for v in node.source.values
                     )
                     right = f"({values})"
@@ -447,7 +583,11 @@ class QueryCompiler:
                 body = self._like_pattern(
                     value,
                     pattern,
-                    {MatchMode.STARTS_WITH: "prefix", MatchMode.ENDS_WITH: "suffix", MatchMode.CONTAINS: "contains"}[node.mode],
+                    {
+                        MatchMode.STARTS_WITH: "prefix",
+                        MatchMode.ENDS_WITH: "suffix",
+                        MatchMode.CONTAINS: "contains",
+                    }[node.mode],
                     case_insensitive=node.case_insensitive,
                 )
                 return f"NOT ({body})" if node.negated else body
@@ -459,7 +599,13 @@ class QueryCompiler:
             if isinstance(node, BooleanGroup):
                 if not node.terms:
                     return "1=1" if node.operator is BooleanOp.AND else "1=0"
-                return "(" + f" {node.operator.value} ".join(self._condition(x, ctx) for x in node.terms) + ")"
+                return (
+                    "("
+                    + f" {node.operator.value} ".join(
+                        self._condition(x, ctx) for x in node.terms
+                    )
+                    + ")"
+                )
             if isinstance(node, Not):
                 return f"NOT ({self._condition(node.condition, ctx)})"
             raise ValidationError(f"unsupported condition node: {type(node).__name__}")
@@ -471,7 +617,9 @@ class QueryCompiler:
             if isinstance(query, SetOperation):
                 sql = f"{self._query_operand(query.left, ctx)}\n{query.operator.value}\n{self._query_operand(query.right, ctx)}"
                 if query.order_by:
-                    sql += "\nORDER BY " + ", ".join(self._order(x, ctx) for x in query.order_by)
+                    sql += "\nORDER BY " + ", ".join(
+                        self._order(x, ctx) for x in query.order_by
+                    )
                 if query.limit is not None:
                     sql += f"\nLIMIT {query.limit}"
                 if query.offset is not None:
@@ -482,7 +630,9 @@ class QueryCompiler:
             prefix = ""
             if query.with_ is not None:
                 if len(set(query.with_.names)) != len(query.with_.names):
-                    raise ValidationError("CTE names must be unique within a WITH clause")
+                    raise ValidationError(
+                        "CTE names must be unique within a WITH clause"
+                    )
                 ctes = []
                 prior_ctes: set[str] = set()
                 for cte in query.with_.ctes:
@@ -506,18 +656,34 @@ class QueryCompiler:
                         body_separator = ""
                     ctx.push_scope(prior_ctes, allow_outer=False)
                     try:
-                        body = body_separator.join(self._query(part, ctx) for part in bodies)
+                        body = body_separator.join(
+                            self._query(part, ctx) for part in bodies
+                        )
                     finally:
                         ctx.pop_scope()
                     prior_ctes.add(cte.name)
-                    cols = f" ({', '.join(quote_ident(x) for x in cte.columns)})" if cte.columns else ""
+                    cols = (
+                        f" ({', '.join(quote_ident(x) for x in cte.columns)})"
+                        if cte.columns
+                        else ""
+                    )
                     ctes.append(f"{quote_ident(cte.name)}{cols} AS (\n  {body}\n)")
-                prefix = "WITH " + ("RECURSIVE " if query.with_.is_recursive else "") + ",\n".join(ctes) + "\n"
+                prefix = (
+                    "WITH "
+                    + ("RECURSIVE " if query.with_.is_recursive else "")
+                    + ",\n".join(ctes)
+                    + "\n"
+                )
             aliases = self._aliases(query)
             ctx.push_scope(aliases, allow_outer=True)
             try:
                 projection = ", ".join(self._expr(x, ctx) for x in query.projection)
-                sql = prefix + "SELECT " + ("DISTINCT " if query.distinct else "") + projection
+                sql = (
+                    prefix
+                    + "SELECT "
+                    + ("DISTINCT " if query.distinct else "")
+                    + projection
+                )
                 sql += "\nFROM " + self._source(query.source, ctx)
                 for join in query.joins:
                     if isinstance(join, CrossJoin):
@@ -527,11 +693,15 @@ class QueryCompiler:
                 if query.where is not None:
                     sql += "\nWHERE " + self._condition(query.where, ctx)
                 if query.group_by:
-                    sql += "\nGROUP BY " + ", ".join(self._expr(x, ctx) for x in query.group_by)
+                    sql += "\nGROUP BY " + ", ".join(
+                        self._expr(x, ctx) for x in query.group_by
+                    )
                 if query.having is not None:
                     sql += "\nHAVING " + self._condition(query.having, ctx)
                 if query.order_by:
-                    sql += "\nORDER BY " + ", ".join(self._order(x, ctx) for x in query.order_by)
+                    sql += "\nORDER BY " + ", ".join(
+                        self._order(x, ctx) for x in query.order_by
+                    )
                 if query.limit is not None:
                     sql += f"\nLIMIT {query.limit}"
                 if query.offset is not None:
@@ -544,7 +714,12 @@ class QueryCompiler:
         text = self._query(query, ctx)
         if isinstance(query, SetOperation):
             return f"({text})"
-        if isinstance(query, Select) and (query.with_ is not None or query.order_by or query.limit is not None or query.offset is not None):
+        if isinstance(query, Select) and (
+            query.with_ is not None
+            or query.order_by
+            or query.limit is not None
+            or query.offset is not None
+        ):
             return f"({text})"
         return text
 
@@ -602,7 +777,19 @@ class QueryCompiler:
             if isinstance(stmt.source, ValuesSource):
                 rows = []
                 for row in stmt.source.rows:
-                    rows.append("(" + ", ".join(self._expr(x if isinstance(x, (Parameter, Literal, Expr)) else Parameter(x), ctx) for x in row) + ")")
+                    rows.append(
+                        "("
+                        + ", ".join(
+                            self._expr(
+                                x
+                                if isinstance(x, (Parameter, Literal, Expr))
+                                else Parameter(x),
+                                ctx,
+                            )
+                            for x in row
+                        )
+                        + ")"
+                    )
                 body = "VALUES " + ", ".join(rows)
             else:
                 body = self._query(stmt.source.query, ctx)
@@ -613,35 +800,58 @@ class QueryCompiler:
             elif isinstance(conflict, Replace) and self.dialect is SqlDialect.SQLITE:
                 prefix = "INSERT OR REPLACE"
             sql = f"{prefix} INTO {self._table(stmt.table)} ({cols})\n{body}"
-            if isinstance(conflict, DoNothing) and self.dialect is not SqlDialect.SQLITE:
-                target = f" ({', '.join(quote_ident(x) for x in conflict.target)})" if conflict.target else ""
+            if (
+                isinstance(conflict, DoNothing)
+                and self.dialect is not SqlDialect.SQLITE
+            ):
+                target = (
+                    f" ({', '.join(quote_ident(x) for x in conflict.target)})"
+                    if conflict.target
+                    else ""
+                )
                 sql += f"\nON CONFLICT{target} DO NOTHING"
             elif isinstance(conflict, DoUpdate):
                 target = ", ".join(quote_ident(x) for x in conflict.target)
-                assigns = ", ".join(f"{quote_ident(k)} = {self._expr(v, ctx)}" for k, v in conflict.assignments)
+                assigns = ", ".join(
+                    f"{quote_ident(k)} = {self._expr(v, ctx)}"
+                    for k, v in conflict.assignments
+                )
                 sql += f"\nON CONFLICT ({target}) DO UPDATE SET {assigns}"
-            elif isinstance(conflict, Replace) and self.dialect is not SqlDialect.SQLITE:
+            elif (
+                isinstance(conflict, Replace) and self.dialect is not SqlDialect.SQLITE
+            ):
                 if not conflict.target:
-                    raise ValidationError("Replace requires target columns outside SQLite")
+                    raise ValidationError(
+                        "Replace requires target columns outside SQLite"
+                    )
                 target = ", ".join(quote_ident(x) for x in conflict.target)
                 updates = [x for x in stmt.columns if x not in conflict.target]
                 if updates:
-                    assigns = ", ".join(f"{quote_ident(x)} = EXCLUDED.{quote_ident(x)}" for x in updates)
+                    assigns = ", ".join(
+                        f"{quote_ident(x)} = EXCLUDED.{quote_ident(x)}" for x in updates
+                    )
                     sql += f"\nON CONFLICT ({target}) DO UPDATE SET {assigns}"
                 else:
                     sql += f"\nON CONFLICT ({target}) DO NOTHING"
             if stmt.returning:
-                sql += "\nRETURNING " + ", ".join(quote_ident(x) for x in stmt.returning)
+                sql += "\nRETURNING " + ", ".join(
+                    quote_ident(x) for x in stmt.returning
+                )
             return sql
         if isinstance(stmt, Update):
             ctx.push_scope({stmt.table.split(".")[-1]}, allow_outer=True)
             try:
-                assignments = ", ".join(f"{quote_ident(k)} = {self._expr(v if isinstance(v, (Parameter, Literal, Expr)) else Parameter(v), ctx)}" for k, v in stmt.assignments)
+                assignments = ", ".join(
+                    f"{quote_ident(k)} = {self._expr(v if isinstance(v, (Parameter, Literal, Expr)) else Parameter(v), ctx)}"
+                    for k, v in stmt.assignments
+                )
                 sql = f"UPDATE {self._table(stmt.table)}\nSET {assignments}"
                 if stmt.where is not None:
                     sql += "\nWHERE " + self._condition(stmt.where, ctx)
                 if stmt.returning:
-                    sql += "\nRETURNING " + ", ".join(quote_ident(x) for x in stmt.returning)
+                    sql += "\nRETURNING " + ", ".join(
+                        quote_ident(x) for x in stmt.returning
+                    )
                 return sql
             finally:
                 ctx.pop_scope()
@@ -652,7 +862,9 @@ class QueryCompiler:
                 if stmt.where is not None:
                     sql += "\nWHERE " + self._condition(stmt.where, ctx)
                 if stmt.returning:
-                    sql += "\nRETURNING " + ", ".join(quote_ident(x) for x in stmt.returning)
+                    sql += "\nRETURNING " + ", ".join(
+                        quote_ident(x) for x in stmt.returning
+                    )
                 return sql
             finally:
                 ctx.pop_scope()
@@ -669,42 +881,89 @@ class QueryCompiler:
                 return sql
         if isinstance(stmt, CreateView):
             with ctx.ddl():
-                cols = f" ({', '.join(quote_ident(x) for x in stmt.columns)})" if stmt.columns else ""
+                cols = (
+                    f" ({', '.join(quote_ident(x) for x in stmt.columns)})"
+                    if stmt.columns
+                    else ""
+                )
                 return f"CREATE VIEW {'IF NOT EXISTS ' if stmt.if_not_exists else ''}{quote_ident(stmt.name)}{cols} AS\n{self._query(stmt.query, ctx)}"
         if isinstance(stmt, DropTable):
-            return f"DROP TABLE {'IF EXISTS ' if stmt.if_exists else ''}{self._table(stmt.table)}" + (" CASCADE" if stmt.cascade and self.dialect is SqlDialect.POSTGRES else "")
+            return (
+                f"DROP TABLE {'IF EXISTS ' if stmt.if_exists else ''}{self._table(stmt.table)}"
+                + (
+                    " CASCADE"
+                    if stmt.cascade and self.dialect is SqlDialect.POSTGRES
+                    else ""
+                )
+            )
         if isinstance(stmt, DropIndex):
-            prefix = f"{quote_ident(stmt.table)}." if stmt.table and self.dialect is SqlDialect.SQLITE else ""
+            prefix = (
+                f"{quote_ident(stmt.table)}."
+                if stmt.table and self.dialect is SqlDialect.SQLITE
+                else ""
+            )
             return f"DROP INDEX {'IF EXISTS ' if stmt.if_exists else ''}{prefix}{quote_ident(stmt.name)}"
         if isinstance(stmt, DropView):
             return f"DROP VIEW {'IF EXISTS ' if stmt.if_exists else ''}{quote_ident(stmt.name)}"
         if isinstance(stmt, AlterTable):
             with ctx.ddl():
-                return ";\n".join(self._alter(stmt.table, action, ctx) for action in stmt.actions)
+                return ";\n".join(
+                    self._alter(stmt.table, action, ctx) for action in stmt.actions
+                )
         if isinstance(stmt, Explain):
-            prefix = "EXPLAIN QUERY PLAN" if stmt.analyze and self.dialect is SqlDialect.SQLITE else ("EXPLAIN ANALYZE" if stmt.analyze else "EXPLAIN")
+            prefix = (
+                "EXPLAIN QUERY PLAN"
+                if stmt.analyze and self.dialect is SqlDialect.SQLITE
+                else ("EXPLAIN ANALYZE" if stmt.analyze else "EXPLAIN")
+            )
             if stmt.verbose and self.dialect is not SqlDialect.SQLITE:
                 prefix += " VERBOSE"
             return f"{prefix} {self._statement(stmt.query, ctx)}"
-        if isinstance(stmt, Begin): return "BEGIN"
-        if isinstance(stmt, Commit): return "COMMIT"
-        if isinstance(stmt, Rollback): return "ROLLBACK" + (f" TO SAVEPOINT {quote_ident(stmt.savepoint)}" if stmt.savepoint else "")
-        if isinstance(stmt, Savepoint): return f"SAVEPOINT {quote_ident(stmt.name)}"
-        if isinstance(stmt, ReleaseSavepoint): return f"RELEASE SAVEPOINT {quote_ident(stmt.name)}"
+        if isinstance(stmt, Begin):
+            return "BEGIN"
+        if isinstance(stmt, Commit):
+            return "COMMIT"
+        if isinstance(stmt, Rollback):
+            return "ROLLBACK" + (
+                f" TO SAVEPOINT {quote_ident(stmt.savepoint)}" if stmt.savepoint else ""
+            )
+        if isinstance(stmt, Savepoint):
+            return f"SAVEPOINT {quote_ident(stmt.name)}"
+        if isinstance(stmt, ReleaseSavepoint):
+            return f"RELEASE SAVEPOINT {quote_ident(stmt.name)}"
         if isinstance(stmt, Pragma):
             if self.dialect is SqlDialect.POSTGRES:
                 raise CapabilityError("PRAGMA", self.dialect.value)
-            return f"PRAGMA {stmt.name}" + (f" = {sql_literal(stmt.value)}" if stmt.value is not None else "")
+            return f"PRAGMA {stmt.name}" + (
+                f" = {sql_literal(stmt.value)}" if stmt.value is not None else ""
+            )
         if isinstance(stmt, Truncate):
-            if self.dialect is SqlDialect.SQLITE: return f"DELETE FROM {self._table(stmt.table)}"
-            return f"TRUNCATE TABLE {self._table(stmt.table)}" + (" RESTART IDENTITY" if stmt.restart_identity and self.dialect is SqlDialect.POSTGRES else "") + (" CASCADE" if stmt.cascade and self.dialect is SqlDialect.POSTGRES else "")
+            if self.dialect is SqlDialect.SQLITE:
+                return f"DELETE FROM {self._table(stmt.table)}"
+            return (
+                f"TRUNCATE TABLE {self._table(stmt.table)}"
+                + (
+                    " RESTART IDENTITY"
+                    if stmt.restart_identity and self.dialect is SqlDialect.POSTGRES
+                    else ""
+                )
+                + (
+                    " CASCADE"
+                    if stmt.cascade and self.dialect is SqlDialect.POSTGRES
+                    else ""
+                )
+            )
         if isinstance(stmt, Grant):
             return f"GRANT {', '.join(x.upper() for x in stmt.privileges)} ON {self._table(stmt.table)} TO {quote_ident(stmt.to_role)}"
         if isinstance(stmt, UnsafeStatement):
             self._unsafe(ctx)
             return stmt.sql
         if isinstance(stmt, (CreateTrigger, DropTrigger)):
-            raise CapabilityError(type(stmt).__name__, self.dialect.value, "trigger renderer is not enabled yet")
+            raise CapabilityError(
+                type(stmt).__name__,
+                self.dialect.value,
+                "trigger renderer is not enabled yet",
+            )
         raise ValidationError(f"unsupported statement node: {type(stmt).__name__}")
 
     def _table(self, name: str) -> str:
@@ -714,13 +973,19 @@ class QueryCompiler:
         lines = [self._column(column, ctx) for column in stmt.columns]
         for constraint in stmt.constraints:
             if isinstance(constraint, PrimaryKeyConstraint):
-                lines.append(f"PRIMARY KEY ({', '.join(quote_ident(x) for x in constraint.columns)})")
+                lines.append(
+                    f"PRIMARY KEY ({', '.join(quote_ident(x) for x in constraint.columns)})"
+                )
             elif isinstance(constraint, UniqueConstraint):
-                lines.append(f"UNIQUE ({', '.join(quote_ident(x) for x in constraint.columns)})")
+                lines.append(
+                    f"UNIQUE ({', '.join(quote_ident(x) for x in constraint.columns)})"
+                )
             elif isinstance(constraint, ForeignKey):
                 line = f"FOREIGN KEY ({', '.join(quote_ident(x) for x in constraint.columns)}) REFERENCES {self._table(constraint.ref_table)} ({', '.join(quote_ident(x) for x in constraint.ref_columns)})"
-                if constraint.on_delete: line += f" ON DELETE {constraint.on_delete}"
-                if constraint.on_update: line += f" ON UPDATE {constraint.on_update}"
+                if constraint.on_delete:
+                    line += f" ON DELETE {constraint.on_delete}"
+                if constraint.on_update:
+                    line += f" ON UPDATE {constraint.on_update}"
                 lines.append(line)
             elif isinstance(constraint, CheckConstraint):
                 lines.append(f"CHECK ({self._condition(constraint.condition, ctx)})")
@@ -731,46 +996,80 @@ class QueryCompiler:
         parts = [quote_ident(column.name), physical]
         for constraint in column.constraints:
             if isinstance(constraint, PrimaryKey):
-                parts.append("PRIMARY KEY" + (" AUTOINCREMENT" if constraint.auto_increment and self.dialect is SqlDialect.SQLITE else ""))
-            elif isinstance(constraint, NotNull): parts.append("NOT NULL")
-            elif isinstance(constraint, ExplicitNull): parts.append("NULL")
-            elif isinstance(constraint, Unique): parts.append("UNIQUE")
-            elif isinstance(constraint, Check): parts.append(f"CHECK ({self._condition(constraint.condition, ctx)})")
-            elif isinstance(constraint, DefaultCurrentTimestamp): parts.append("DEFAULT CURRENT_TIMESTAMP")
-            elif isinstance(constraint, DefaultValue): parts.append(f"DEFAULT {sql_literal(constraint.value)}")
-            elif isinstance(constraint, DefaultExpression): parts.append(f"DEFAULT {self._expr(constraint.expression, ctx)}")
+                parts.append(
+                    "PRIMARY KEY"
+                    + (
+                        " AUTOINCREMENT"
+                        if constraint.auto_increment
+                        and self.dialect is SqlDialect.SQLITE
+                        else ""
+                    )
+                )
+            elif isinstance(constraint, NotNull):
+                parts.append("NOT NULL")
+            elif isinstance(constraint, ExplicitNull):
+                parts.append("NULL")
+            elif isinstance(constraint, Unique):
+                parts.append("UNIQUE")
+            elif isinstance(constraint, Check):
+                parts.append(f"CHECK ({self._condition(constraint.condition, ctx)})")
+            elif isinstance(constraint, DefaultCurrentTimestamp):
+                parts.append("DEFAULT CURRENT_TIMESTAMP")
+            elif isinstance(constraint, DefaultValue):
+                parts.append(f"DEFAULT {sql_literal(constraint.value)}")
+            elif isinstance(constraint, DefaultExpression):
+                parts.append(f"DEFAULT {self._expr(constraint.expression, ctx)}")
             elif isinstance(constraint, References):
                 text = f"REFERENCES {self._table(constraint.table)} ({', '.join(quote_ident(x) for x in constraint.columns)})"
-                if constraint.on_delete: text += f" ON DELETE {constraint.on_delete}"
-                if constraint.on_update: text += f" ON UPDATE {constraint.on_update}"
+                if constraint.on_delete:
+                    text += f" ON DELETE {constraint.on_delete}"
+                if constraint.on_update:
+                    text += f" ON UPDATE {constraint.on_update}"
                 parts.append(text)
             elif isinstance(constraint, RawConstraint):
-                self._unsafe(ctx); parts.append(constraint.sql)
+                self._unsafe(ctx)
+                parts.append(constraint.sql)
         return " ".join(parts)
 
     def _column_type(self, column: ColumnDef) -> str:
-        if any(isinstance(x, PrimaryKey) and x.auto_increment for x in column.constraints):
+        if any(
+            isinstance(x, PrimaryKey) and x.auto_increment for x in column.constraints
+        ):
             return "SERIAL" if self.dialect is SqlDialect.POSTGRES else "INTEGER"
         types = {
-            ColumnType.ID: "TEXT", ColumnType.TEXT: "TEXT", ColumnType.UUID: self.policy.uuid_type,
-            ColumnType.JSON: self.policy.json_type, ColumnType.INT: "INTEGER", ColumnType.REAL: self.policy.real_type,
-            ColumnType.BOOL: self.policy.bool_type, ColumnType.TIMESTAMP: self.policy.timestamp_type,
+            ColumnType.ID: "TEXT",
+            ColumnType.TEXT: "TEXT",
+            ColumnType.UUID: self.policy.uuid_type,
+            ColumnType.JSON: self.policy.json_type,
+            ColumnType.INT: "INTEGER",
+            ColumnType.REAL: self.policy.real_type,
+            ColumnType.BOOL: self.policy.bool_type,
+            ColumnType.TIMESTAMP: self.policy.timestamp_type,
             ColumnType.BLOB: self.policy.blob_type,
         }
         return types.get(column.type, column.type)
 
     def _alter(self, table: str, action, ctx: RenderContext) -> str:
         prefix = f"ALTER TABLE {self._table(table)}"
-        if isinstance(action, AddColumn): return f"{prefix} ADD COLUMN {self._column(action.column, ctx)}"
-        if isinstance(action, DropColumn): return f"{prefix} DROP COLUMN {'IF EXISTS ' if action.if_exists and self.dialect is not SqlDialect.SQLITE else ''}{quote_ident(action.name)}"
+        if isinstance(action, AddColumn):
+            return f"{prefix} ADD COLUMN {self._column(action.column, ctx)}"
+        if isinstance(action, DropColumn):
+            return f"{prefix} DROP COLUMN {'IF EXISTS ' if action.if_exists and self.dialect is not SqlDialect.SQLITE else ''}{quote_ident(action.name)}"
         if isinstance(action, DropConstraint):
-            if self.dialect is SqlDialect.SQLITE: raise CapabilityError("ALTER TABLE DROP CONSTRAINT", self.dialect.value)
-            return f"{prefix} DROP CONSTRAINT {quote_ident(action.name)}" + (" CASCADE" if action.cascade and self.dialect is SqlDialect.POSTGRES else "")
+            if self.dialect is SqlDialect.SQLITE:
+                raise CapabilityError("ALTER TABLE DROP CONSTRAINT", self.dialect.value)
+            return f"{prefix} DROP CONSTRAINT {quote_ident(action.name)}" + (
+                " CASCADE"
+                if action.cascade and self.dialect is SqlDialect.POSTGRES
+                else ""
+            )
         raise ValidationError(f"unsupported ALTER action: {type(action).__name__}")
 
     def _unsafe(self, ctx: RenderContext) -> None:
         if not ctx.allow_unsafe:
-            raise ValidationError("unsafe SQL requires QueryCompiler(allow_unsafe=True)")
+            raise ValidationError(
+                "unsafe SQL requires QueryCompiler(allow_unsafe=True)"
+            )
 
 
 from .relations import RecursiveCte  # noqa: E402  (needed by query renderer)

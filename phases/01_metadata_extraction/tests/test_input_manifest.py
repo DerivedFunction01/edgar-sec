@@ -15,7 +15,11 @@ def _write_csv(tmp_path, content):
 def test_normalizes_ciks_to_ten_digits_and_sorts(tmp_path):
     path = _write_csv(tmp_path, "cik,name\n1985,Accel\n1761,Tranzonic\n20,K Tron\n")
     rows, report = manifest.read_input_manifest(path)
-    assert [row.cik_padded for row in rows] == ["0000000020", "0000001761", "0000001985"]
+    assert [row.cik_padded for row in rows] == [
+        "0000000020",
+        "0000001761",
+        "0000001985",
+    ]
     assert report["row_count"] == 3
     assert report["malformed"] == []
     assert report["duplicates"] == []

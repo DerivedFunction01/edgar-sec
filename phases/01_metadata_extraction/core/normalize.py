@@ -92,7 +92,9 @@ FILING_ARRAY_KEYS = [
 ]
 
 
-def add_anomaly(anomalies: list[dict], code: str, detail: str, source: str = "") -> None:
+def add_anomaly(
+    anomalies: list[dict], code: str, detail: str, source: str = ""
+) -> None:
     anomalies.append({"code": code, "detail": detail, "source": source})
 
 
@@ -100,7 +102,9 @@ def canonical_json(value: Any) -> str:
     return json.dumps(value, sort_keys=True, separators=(",", ":"), ensure_ascii=False)
 
 
-def resolve_alias(payload: dict, aliases: list[str]) -> tuple[str | None, Any | None, bool, list[dict]]:
+def resolve_alias(
+    payload: dict, aliases: list[str]
+) -> tuple[str | None, Any | None, bool, list[dict]]:
     """Resolve case-insensitive known aliases.
 
     Returns (canonical_key, value, conflicting, anomalies). Conflicting
@@ -141,7 +145,9 @@ def accession_normalized(raw: str | None) -> str | None:
     return text
 
 
-def build_archive_url(cik_padded: str, accession_raw: str | None, primary_document: str | None) -> tuple[str | None, str | None]:
+def build_archive_url(
+    cik_padded: str, accession_raw: str | None, primary_document: str | None
+) -> tuple[str | None, str | None]:
     """Derive the archive URL from CIK, accession, and primary document.
 
     Returns (url, fallback_reason). A filing record must survive even when
@@ -189,7 +195,12 @@ def normalize_address(value: Any, anomalies: list[dict], source: str) -> dict | 
     if value is None:
         return None
     if not isinstance(value, dict):
-        add_anomaly(anomalies, "address_not_object", f"unexpected type {type(value).__name__}", source)
+        add_anomaly(
+            anomalies,
+            "address_not_object",
+            f"unexpected type {type(value).__name__}",
+            source,
+        )
         return None
     unknown = [key for key in value if key not in ADDRESS_KEYS]
     if unknown:
@@ -211,7 +222,9 @@ def normalize_former_names(value: Any, anomalies: list[dict]) -> list[dict]:
     if value is None:
         return []
     if not isinstance(value, list):
-        add_anomaly(anomalies, "former_names_not_list", type(value).__name__, "formerNames")
+        add_anomaly(
+            anomalies, "former_names_not_list", type(value).__name__, "formerNames"
+        )
         return []
     out = []
     for index, entry in enumerate(value):
@@ -227,7 +240,12 @@ def normalize_former_names(value: Any, anomalies: list[dict]) -> list[dict]:
                 }
             )
         else:
-            add_anomaly(anomalies, "former_names_entry", canonical_json(entry)[:200], f"formerNames[{index}]")
+            add_anomaly(
+                anomalies,
+                "former_names_entry",
+                canonical_json(entry)[:200],
+                f"formerNames[{index}]",
+            )
             out.append({"name": entry, "from_date": None, "to_date": None})
     return out
 
@@ -309,6 +327,7 @@ def zip_filing_arrays(
     records: list[dict] = []
     row_count = max(lengths.values()) if lengths else 0
     for index in range(row_count):
+
         def pick(key: str, _index: int = index) -> Any:
             values = section.get(key)
             if not isinstance(values, list) or _index >= len(values):
@@ -317,7 +336,9 @@ def zip_filing_arrays(
 
         accession_raw = pick("accessionNumber")
         primary_document = pick("primaryDocument")
-        archive_url, fallback_reason = build_archive_url(cik_padded, accession_raw, primary_document)
+        archive_url, fallback_reason = build_archive_url(
+            cik_padded, accession_raw, primary_document
+        )
         record = {
             "accession_number": accession_raw,
             "accession_number_normalized": accession_normalized(accession_raw),
@@ -359,7 +380,9 @@ def zip_filing_arrays(
     return records
 
 
-def dedupe_filings(records: list[dict], anomalies: list[dict], source: str) -> tuple[list[dict], int]:
+def dedupe_filings(
+    records: list[dict], anomalies: list[dict], source: str
+) -> tuple[list[dict], int]:
     """Deduplicate by normalized accession and detect conflicting metadata
     rather than silently choosing an arbitrary row. First occurrence wins;
     duplicates with identical content are dropped quietly, conflicts are
@@ -402,11 +425,21 @@ def normalize_submission_files(files: Any, anomalies: list[dict]) -> list[dict]:
     if not isinstance(files, list):
         add_anomaly(anomalies, "files_not_list", type(files).__name__, "filings.files")
         return []
-    aliases = {"name": ["name"], "filing_count": ["FilingCount", "filingCount"], "filing_from": ["FilingFrom", "filingFrom"], "filing_to": ["FilingTo", "filingTo"]}
+    aliases = {
+        "name": ["name"],
+        "filing_count": ["FilingCount", "filingCount"],
+        "filing_from": ["FilingFrom", "filingFrom"],
+        "filing_to": ["FilingTo", "filingTo"],
+    }
     out = []
     for index, entry in enumerate(files):
         if not isinstance(entry, dict):
-            add_anomaly(anomalies, "file_descriptor_not_object", canonical_json(entry)[:200], f"filings.files[{index}]")
+            add_anomaly(
+                anomalies,
+                "file_descriptor_not_object",
+                canonical_json(entry)[:200],
+                f"filings.files[{index}]",
+            )
             continue
         record = {}
         for field, keys in aliases.items():
@@ -423,7 +456,9 @@ def normalize_submission_files(files: Any, anomalies: list[dict]) -> list[dict]:
                         f"filings.files[{index}]",
                     )
         record["filing_count"] = to_int(record["filing_count"])
-        record["url"] = f"{SEC_SUBMISSIONS_BASE}/{record['name']}" if record["name"] else None
+        record["url"] = (
+            f"{SEC_SUBMISSIONS_BASE}/{record['name']}" if record["name"] else None
+        )
         out.append(record)
     return out
 
@@ -463,7 +498,9 @@ def normalize_submissions(
 
     extra_fields: dict[str, Any] = {}
     for key, value in payload.items():
-        if key not in PROFILE_KEYS and key.lower() not in {p.lower() for p in PROFILE_KEYS}:
+        if key not in PROFILE_KEYS and key.lower() not in {
+            p.lower() for p in PROFILE_KEYS
+        }:
             extra_fields[key] = value
 
     _, name, _, name_anoms = resolve_alias(payload, ["name"])
@@ -475,9 +512,13 @@ def normalize_submissions(
     filer_category = payload.get("category")
 
     payload.get("flags")
-    _, investor_site, _, investor_anoms = resolve_alias(payload, ["investorWebsite", "investorwebsite"])
+    _, investor_site, _, investor_anoms = resolve_alias(
+        payload, ["investorWebsite", "investorwebsite"]
+    )
     anomalies.extend(investor_anoms)
-    _, fiscal_year_end, _, fy_anoms = resolve_alias(payload, ["fiscalYearEnd", "FiscalYearEnd"])
+    _, fiscal_year_end, _, fy_anoms = resolve_alias(
+        payload, ["fiscalYearEnd", "FiscalYearEnd"]
+    )
     anomalies.extend(fy_anoms)
 
     state = payload.get("stateOfIncorporation")
@@ -498,7 +539,9 @@ def normalize_submissions(
     mailing_raw = addresses.get("mailing") if isinstance(addresses, dict) else None
     business_raw = addresses.get("business") if isinstance(addresses, dict) else None
     if addresses is not None and not isinstance(addresses, dict):
-        add_anomaly(anomalies, "addresses_not_object", type(addresses).__name__, "addresses")
+        add_anomaly(
+            anomalies, "addresses_not_object", type(addresses).__name__, "addresses"
+        )
 
     filings_section = payload.get("filings")
     if filings_section is not None and not isinstance(filings_section, dict):
@@ -515,15 +558,26 @@ def normalize_submissions(
     recent = filings_section.get("recent")
     if recent is None:
         recent = {}
-        add_anomaly(anomalies, "recent_missing", "filings.recent is absent; treated as zero filings", "filings.recent")
+        add_anomaly(
+            anomalies,
+            "recent_missing",
+            "filings.recent is absent; treated as zero filings",
+            "filings.recent",
+        )
     if not isinstance(recent, dict):
-        add_anomaly(anomalies, "recent_not_object", type(recent).__name__, "filings.recent")
+        add_anomaly(
+            anomalies, "recent_not_object", type(recent).__name__, "filings.recent"
+        )
         recent = {}
 
     recent_file_url = source_url
-    records = zip_filing_arrays(recent, "recent", recent_file_url, anomalies, cik_padded)
+    records = zip_filing_arrays(
+        recent, "recent", recent_file_url, anomalies, cik_padded
+    )
 
-    submission_files = normalize_submission_files(filings_section.get("files"), anomalies)
+    submission_files = normalize_submission_files(
+        filings_section.get("files"), anomalies
+    )
 
     historical_records_total = 0
     for source_file, source_section, hist_payload in historical_payloads:
@@ -535,7 +589,9 @@ def normalize_submissions(
                 source_section,
             )
             continue
-        hist_records = zip_filing_arrays(hist_payload, source_section, source_file, anomalies, cik_padded)
+        hist_records = zip_filing_arrays(
+            hist_payload, source_section, source_file, anomalies, cik_padded
+        )
         historical_records_total += len(hist_records)
         records.extend(hist_records)
 
@@ -578,10 +634,15 @@ def normalize_submissions(
         },
         "incorporation": {"state": state, "state_description": state_description},
         "reporting": {"fiscal_year_end": fiscal_year_end},
-        "insider_transactions": {"owner_exists": owner_exists, "issuer_exists": issuer_exists},
+        "insider_transactions": {
+            "owner_exists": owner_exists,
+            "issuer_exists": issuer_exists,
+        },
         "addresses": {
             "mailing": normalize_address(mailing_raw, anomalies, "addresses.mailing"),
-            "business": normalize_address(business_raw, anomalies, "addresses.business"),
+            "business": normalize_address(
+                business_raw, anomalies, "addresses.business"
+            ),
         },
         "listings": listings,
         "filings": records,
@@ -608,7 +669,9 @@ def validate_row_shapes(row: dict) -> None:
         try:
             pa.array([value], type=field_type)
         except (pa.ArrowInvalid, pa.ArrowTypeError, pa.ArrowNotImplementedError) as exc:
-            raise ValueError(f"row field '{field_name}' does not match schema: {exc}") from exc
+            raise ValueError(
+                f"row field '{field_name}' does not match schema: {exc}"
+            ) from exc
 
 
 def sha256_of(payload: bytes) -> str:

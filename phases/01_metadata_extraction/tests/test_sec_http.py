@@ -38,7 +38,9 @@ class FakeSession:
 
 def make_client(script, **kwargs):
     kwargs.setdefault("rate_limiter", http.RateLimiter(min_interval_s=0.01))
-    kwargs.setdefault("retry_policy", http.RetryPolicy(max_retries=2, backoff_base_s=0.01, jitter=0.0))
+    kwargs.setdefault(
+        "retry_policy", http.RetryPolicy(max_retries=2, backoff_base_s=0.01, jitter=0.0)
+    )
     kwargs.setdefault("timeout_s", 1.0)
     session = FakeSession(script)
     client = http.SecHttpClient(
@@ -69,9 +71,7 @@ def test_4xx_other_is_permanent():
 
 
 def test_429_retries_then_succeeds_and_signals_throttle():
-    client, session = make_client(
-        [FakeResponse(429), FakeResponse(200, b'{"ok": 1}')]
-    )
+    client, session = make_client([FakeResponse(429), FakeResponse(200, b'{"ok": 1}')])
     assert client.get_json("https://x/y.json") == {"ok": 1}
     assert len(session.calls) == 2
     assert client.metrics.snapshot()["throttled_count"] == 1
@@ -111,7 +111,9 @@ def test_timeout_and_connection_errors_are_retryable_not_throttle():
     snapshot = client.metrics.snapshot()
     assert snapshot["network_errors"] == 2
     assert snapshot["throttled_count"] == 0
-    assert client.rate_limiter.interval == 0.01  # network errors never raise the interval
+    assert (
+        client.rate_limiter.interval == 0.01
+    )  # network errors never raise the interval
 
 
 def test_exhausted_timeout_raises_retry_exhausted():
@@ -179,7 +181,9 @@ def test_concurrent_acquisition_does_not_burst():
 
 def test_cache_hit_avoids_http_and_metrics_count_it(tmp_path):
     cache_dir = tmp_path / "cache"
-    client, session = make_client([FakeResponse(200, b'{"cached": true}')], cache_dir=str(cache_dir))
+    client, session = make_client(
+        [FakeResponse(200, b'{"cached": true}')], cache_dir=str(cache_dir)
+    )
     assert client.get_json("https://x/y.json") == {"cached": True}
     assert client.get_json("https://x/y.json") == {"cached": True}
     assert len(session.calls) == 1

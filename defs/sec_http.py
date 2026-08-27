@@ -37,7 +37,10 @@ import requests
 # Conservative default: SEC's published guidance is at most 10 req/s; stay
 # well under it. One process/limiter per machine: if machines share an
 # egress IP the configured rate must be lowered or coordination added.
-DEFAULT_MIN_INTERVAL_S = 0.25
+DEFAULT_RATE_LIMIT_RPS = 4.0
+DEFAULT_TIMEOUT_S = 15.0
+DEFAULT_MAX_RETRIES = 4
+DEFAULT_MIN_INTERVAL_S = 1.0 / DEFAULT_RATE_LIMIT_RPS
 MAX_INTERVAL_S = 60.0
 THROTTLE_MULTIPLIER = 1.5
 RECOVERY_QUIET_S = 30.0
@@ -64,7 +67,9 @@ class RetryExhausted(Exception):
         self.url = url
         self.reason = reason
         self.status_code = status_code
-        super().__init__(f"retries exhausted for {url}: {reason} (status={status_code})")
+        super().__init__(
+            f"retries exhausted for {url}: {reason} (status={status_code})"
+        )
 
 
 class ResponseTooLargeError(PermanentHttpError):
@@ -103,9 +108,14 @@ class RateLimiter:
         with self._lock:
             now = time.monotonic()
             # Gradual recovery: only after a quiet period without throttling.
-            if self._interval > self._min_interval and now - self._last_throttle > RECOVERY_QUIET_S:
+            if (
+                self._interval > self._min_interval
+                and now - self._last_throttle > RECOVERY_QUIET_S
+            ):
                 gap = self._interval - self._min_interval
-                self._interval = max(self._min_interval, self._interval - gap * RECOVERY_DECAY)
+                self._interval = max(
+                    self._min_interval, self._interval - gap * RECOVERY_DECAY
+                )
             wake = max(self._next_slot, now, self._cool_until)
             self._next_slot = wake + self._interval
             return max(0.0, wake - now)
@@ -119,7 +129,11 @@ class RateLimiter:
             now = time.monotonic()
             self._last_throttle = now
             if retry_after_s is not None:
-                delay = min(max(float(retry_after_s), self._interval), self._max_interval, RETRY_AFTER_CAP_S)
+                delay = min(
+                    max(float(retry_after_s), self._interval),
+                    self._max_interval,
+                    RETRY_AFTER_CAP_S,
+                )
             else:
                 delay = min(self._interval * THROTTLE_MULTIPLIER, self._max_interval)
             self._interval = max(self._interval, delay)
@@ -133,7 +147,9 @@ class RateLimiter:
         with self._lock:
             return {
                 "current_interval_s": round(self._interval, 4),
-                "cool_until_in_s": round(max(0.0, self._cool_until - time.monotonic()), 4),
+                "cool_until_in_s": round(
+                    max(0.0, self._cool_until - time.monotonic()), 4
+                ),
                 "last_throttle_age_s": round(time.monotonic() - self._last_throttle, 4)
                 if self._last_throttle
                 else None,
@@ -192,14 +208,20 @@ class HttpMetrics:
         with self._lock:
             self.requests_total += 1
 
-    def record_status(self, status_code: int, latency_s: float, byte_count: int) -> None:
+    def record_status(
+        self, status_code: int, latency_s: float, byte_count: int
+    ) -> None:
         with self._lock:
             self.responses_2xx += 1
-            self.status_counts[str(status_code)] = self.status_counts.get(str(status_code), 0) + 1
+            self.status_counts[str(status_code)] = (
+                self.status_counts.get(str(status_code), 0) + 1
+            )
             self.latency_sum_s += latency_s
             self.bytes_received += byte_count
 
-    def record_failure(self, kind: str, detail: str, status_code: int | None = None) -> None:
+    def record_failure(
+        self, kind: str, detail: str, status_code: int | None = None
+    ) -> None:
         """Record a failure kind; HTTP status counts are kept by
         record_status, so no status is double-counted here."""
         with self._lock:
@@ -458,7 +480,10 @@ class SecHttpClient:
             self.metrics.record_status(response.status_code, latency, len(content))
 
             if response.status_code == 200:
-                if self.max_response_bytes is not None and len(content) > self.max_response_bytes:
+                if (
+                    self.max_response_bytes is not None
+                    and len(content) > self.max_response_bytes
+                ):
                     self._record_failure(
                         url,
                         kind="response_too_large",
@@ -491,14 +516,14 @@ class SecHttpClient:
                     status_code=response.status_code,
                     permanent=True,
                 )
-                raise PermanentHttpError(url, f"status {response.status_code}", response.status_code)
+                raise PermanentHttpError(
+                    url, f"status {response.status_code}", response.status_code
+                )
 
             last_reason = f"status {response.status_code}"
             last_status = response.status_code
             if kind == "throttle":
-                self.metrics.record_failure(
-                    "throttle", f"status 429: {url}", 429
-                )
+                self.metrics.record_failure("throttle", f"status 429: {url}", 429)
                 self.rate_limiter.signal_throttle(retry_after)
 
             if attempt < policy.max_retries:

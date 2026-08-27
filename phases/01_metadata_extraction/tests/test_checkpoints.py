@@ -1,4 +1,3 @@
-
 import pyarrow.parquet as pq
 from conftest import imp
 
@@ -53,7 +52,9 @@ def make_row(cik="0000000020", status="ok", chunk_id=1):
 
 def test_write_checkpoint_is_atomic_and_valid(tmp_path):
     final = tmp_path / "chunks" / checkpoints.chunk_filename(1, 0, 1)
-    info = checkpoints.write_checkpoint([make_row(), make_row("0000000021")], str(final))
+    info = checkpoints.write_checkpoint(
+        [make_row(), make_row("0000000021")], str(final)
+    )
     assert info["rows"] == 2
     assert final.exists()
     assert not final.with_suffix(".parquet.tmp").exists()
@@ -83,7 +84,9 @@ def test_schema_mismatch_is_rejected_on_load(tmp_path):
 def test_find_chunk_checkpoint_skips_tmp_partials(tmp_path):
     chunks_dir = tmp_path / "chunks"
     chunks_dir.mkdir()
-    (chunks_dir / "submission_metadata-v1.0.0-chunk-00001-000000-000001.parquet.tmp").write_bytes(b"partial")
+    (
+        chunks_dir / "submission_metadata-v1.0.0-chunk-00001-000000-000001.parquet.tmp"
+    ).write_bytes(b"partial")
     assert checkpoints.find_chunk_checkpoint(str(chunks_dir), 1) is None
     final = chunks_dir / checkpoints.chunk_filename(1, 0, 1)
     checkpoints.write_checkpoint([make_row(), make_row("0000000021")], str(final))
@@ -95,7 +98,9 @@ def test_find_chunk_checkpoint_ignores_other_versions(tmp_path):
     chunks_dir = tmp_path / "chunks"
     chunks_dir.mkdir()
     # a file whose name declares an old version must not satisfy the request
-    (chunks_dir / "submission_metadata-v0.9.0-chunk-00001-000000-000000.parquet").write_bytes(b"garbage")
+    (
+        chunks_dir / "submission_metadata-v0.9.0-chunk-00001-000000-000000.parquet"
+    ).write_bytes(b"garbage")
     assert checkpoints.find_chunk_checkpoint(str(chunks_dir), 1, "1.0.0") is None
 
 

@@ -165,7 +165,9 @@ class JsonPath:
             if not part:
                 raise ValueError("json path parts must be non-empty")
             if any(char in part for char in "'{}[],"):
-                raise ValueError("json path part contains unsupported structural characters")
+                raise ValueError(
+                    "json path part contains unsupported structural characters"
+                )
 
     @staticmethod
     def parse(path: str) -> "JsonPath":

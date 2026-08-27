@@ -77,15 +77,29 @@ def read_input_manifest(path: str, limit: int | None = None):
             try:
                 cik_padded = normalize_cik(raw_cik)
             except ValueError as exc:
-                malformed.append({"row": row_number, "cik": raw_cik, "name": raw_name, "error": str(exc)})
+                malformed.append(
+                    {
+                        "row": row_number,
+                        "cik": raw_cik,
+                        "name": raw_name,
+                        "error": str(exc),
+                    }
+                )
                 continue
             if cik_padded in seen:
                 duplicates.append(
-                    {"row": row_number, "cik": cik_padded, "first_row": seen[cik_padded], "name": raw_name}
+                    {
+                        "row": row_number,
+                        "cik": cik_padded,
+                        "first_row": seen[cik_padded],
+                        "name": raw_name,
+                    }
                 )
                 continue
             seen[cik_padded] = row_number
-            rows.append(TargetRow(cik_padded=cik_padded, name=raw_name, source_row=row_number))
+            rows.append(
+                TargetRow(cik_padded=cik_padded, name=raw_name, source_row=row_number)
+            )
             if limit is not None and len(rows) >= limit:
                 break
 

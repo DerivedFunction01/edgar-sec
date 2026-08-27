@@ -33,9 +33,9 @@ BASE_PACKAGES = [
     "jupyter",
     "ipywidgets",
     "pyarrow",
-    "fastparquet", 
+    "fastparquet",
 ]
-    
+
 CUSTOM_PACKAGES = [
     "duckdb",
     "pytest",
@@ -43,7 +43,7 @@ CUSTOM_PACKAGES = [
     "nltk",
     "tiktoken",
     "sentencepiece",
-    "tensorboard"
+    "tensorboard",
 ]
 
 # Packages for the ML server

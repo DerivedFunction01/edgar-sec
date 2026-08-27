@@ -29,7 +29,9 @@ def base_kwargs(cik="0000037996", **overrides):
 
 
 def test_profile_structs_and_alias_casing():
-    row = normalize.normalize_submissions(load("recent_submissions.json"), **base_kwargs())
+    row = normalize.normalize_submissions(
+        load("recent_submissions.json"), **base_kwargs()
+    )
     assert row["status"] == "ok"
     assert row["identity"]["name"] == "FORD MOTOR CO"
     assert row["classification"]["sic_code"] == "3711"
@@ -44,14 +46,18 @@ def test_profile_structs_and_alias_casing():
 
 
 def test_former_names_from_array_form():
-    row = normalize.normalize_submissions(load("recent_submissions.json"), **base_kwargs())
+    row = normalize.normalize_submissions(
+        load("recent_submissions.json"), **base_kwargs()
+    )
     assert row["identity"]["former_names"] == [
         {"name": "FORD MOTOR CO", "from_date": "1950-01-01", "to_date": "1960-01-01"}
     ]
 
 
 def test_addresses_supplied_but_empty_vs_missing():
-    row = normalize.normalize_submissions(load("recent_submissions.json"), **base_kwargs())
+    row = normalize.normalize_submissions(
+        load("recent_submissions.json"), **base_kwargs()
+    )
     # business is supplied but empty: all-null struct, not None
     assert row["addresses"]["business"] is not None
     assert row["addresses"]["business"]["city"] is None
@@ -65,7 +71,9 @@ def test_addresses_supplied_but_empty_vs_missing():
 
 
 def test_listings_zip_preserves_duplicates_and_order():
-    row = normalize.normalize_submissions(load("recent_submissions.json"), **base_kwargs())
+    row = normalize.normalize_submissions(
+        load("recent_submissions.json"), **base_kwargs()
+    )
     assert row["listings"] == [
         {"ticker": "F", "exchange": "NYSE"},
         {"ticker": "F-PB", "exchange": "NYSE"},
@@ -84,7 +92,9 @@ def test_listings_length_mismatch_pads_with_null_and_flags():
 
 
 def test_filings_are_zipped_records_with_provenance():
-    row = normalize.normalize_submissions(load("recent_submissions.json"), **base_kwargs())
+    row = normalize.normalize_submissions(
+        load("recent_submissions.json"), **base_kwargs()
+    )
     assert len(row["filings"]) == 2
     first = row["filings"][0]
     assert first["accession_number"] == "0000037996-26-000039"
@@ -101,7 +111,9 @@ def test_filings_are_zipped_records_with_provenance():
 
 
 def test_items_string_is_split():
-    row = normalize.normalize_submissions(load("recent_submissions.json"), **base_kwargs())
+    row = normalize.normalize_submissions(
+        load("recent_submissions.json"), **base_kwargs()
+    )
     assert row["filings"][1]["items"] == ["2.02", "9.01"]
 
 
@@ -185,23 +197,25 @@ def test_conflicting_duplicate_metadata_is_flagged():
     historical["form"] = ["10-Q", "10-K", "99-CHANGED"]
     row = normalize.normalize_submissions(
         load("recent_submissions.json"),
-        **base_kwargs(
-            historical_payloads=[("url", "hist.json", historical)]
-        ),
+        **base_kwargs(historical_payloads=[("url", "hist.json", historical)]),
     )
     codes = {a["code"] for a in row["anomalies"]}
     assert "accession_conflict" in codes
 
 
 def test_mismatched_array_lengths_never_truncate():
-    row = normalize.normalize_submissions(load("mismatched_arrays.json"), **base_kwargs(cik="0000123456"))
+    row = normalize.normalize_submissions(
+        load("mismatched_arrays.json"), **base_kwargs(cik="0000123456")
+    )
     codes = {a["code"] for a in row["anomalies"]}
     assert "filing_array_length_mismatch" in codes
     assert len(row["filings"]) == 3  # longest array wins, shorter sides null
     missing_doc = row["filings"][2]
     assert missing_doc["primary_document"] is None
     assert missing_doc["archive_url"] is None
-    detail = next(a for a in row["anomalies"] if a["code"] == "filing_array_length_mismatch")
+    detail = next(
+        a for a in row["anomalies"] if a["code"] == "filing_array_length_mismatch"
+    )
     assert "primaryDocument" in detail["detail"]
 
 
@@ -216,7 +230,10 @@ def test_primary_document_missing_is_recorded_not_guessed():
 
 def test_stub_primary_document_recorded_with_reason():
     payload = load("recent_submissions.json")
-    payload["filings"]["recent"]["primaryDocument"] = ["000003799626000039.txt", "b.htm"]
+    payload["filings"]["recent"]["primaryDocument"] = [
+        "000003799626000039.txt",
+        "b.htm",
+    ]
     row = normalize.normalize_submissions(payload, **base_kwargs())
     codes = {a["code"] for a in row["anomalies"]}
     assert "primary_document_stub" in codes
@@ -242,7 +259,9 @@ def test_alias_conflict_flagged_not_silently_chosen():
 def test_historical_error_marks_row_partial():
     row = normalize.normalize_submissions(
         load("recent_submissions.json"),
-        **base_kwargs(historical_errors=["CIK0000037996-submissions-001.json: status 503"]),
+        **base_kwargs(
+            historical_errors=["CIK0000037996-submissions-001.json: status 503"]
+        ),
     )
     assert row["status"] == "partial"
     assert row["historical_files_failed"] == 1

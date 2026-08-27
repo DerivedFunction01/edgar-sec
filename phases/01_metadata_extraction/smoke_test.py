@@ -26,12 +26,20 @@ def build_parser() -> argparse.ArgumentParser:
         help="preview output directory (never the production phase output)",
     )
     parser.add_argument("--sample-size", type=int, default=3)
+    parser.add_argument(
+        "--storage-format",
+        choices=("parquet", "jsonl"),
+        default=RunOptions.storage_format,
+        help="preview artifact format",
+    )
     parser.add_argument("--timeout", type=float, default=RunOptions.timeout_s)
     parser.add_argument("--max-retries", type=int, default=RunOptions.max_retries)
     parser.add_argument("--rate-limit", type=float, default=RunOptions.rate_limit_rps)
     parser.add_argument("--user-agent", default="")
     parser.add_argument("--cache-dir", default="")
-    parser.add_argument("--max-failure-attempts", type=int, default=RunOptions.max_failure_attempts)
+    parser.add_argument(
+        "--max-failure-attempts", type=int, default=RunOptions.max_failure_attempts
+    )
     parser.add_argument("--ignore-failure-history", action="store_true")
     parser.add_argument("--limit", type=int, default=None)
     parser.add_argument("--log-level", default="INFO")
@@ -47,6 +55,7 @@ def main(argv=None) -> int:
     options = RunOptions(
         input_path=args.input,
         artifacts_dir=args.artifacts,
+        storage_format=args.storage_format,
         timeout_s=args.timeout,
         max_retries=args.max_retries,
         rate_limit_rps=args.rate_limit,

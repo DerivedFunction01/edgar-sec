@@ -162,8 +162,18 @@ def test_json_case_and_aggregate_are_separate_expression_chunks():
     query = Select(
         source=Table("filings", "f"),
         projection=(
-            Case((CaseBranch(BooleanGroup(BooleanOp.AND, ()), JsonExtract(col("data", "f"), JsonPath.parse("form"))),),),
-            Aggregate(AggregateFunction.COUNT, JsonExtract(col("data", "f"), JsonPath.parse("form"))),
+            Case(
+                (
+                    CaseBranch(
+                        BooleanGroup(BooleanOp.AND, ()),
+                        JsonExtract(col("data", "f"), JsonPath.parse("form")),
+                    ),
+                ),
+            ),
+            Aggregate(
+                AggregateFunction.COUNT,
+                JsonExtract(col("data", "f"), JsonPath.parse("form")),
+            ),
         ),
     )
 
@@ -205,7 +215,11 @@ def test_source_scalar_function_compatibility_cases():
     contains_any = QueryCompiler().compile(
         Select(
             Table("t"),
-            (FunctionCall("str_contains", (col("x"), param("a"), param("b"), lit("any"))),),
+            (
+                FunctionCall(
+                    "str_contains", (col("x"), param("a"), param("b"), lit("any"))
+                ),
+            ),
         )
     )
     zero_arg = QueryCompiler().compile(Select(Table("t"), (FunctionCall("ceil", ()),)))

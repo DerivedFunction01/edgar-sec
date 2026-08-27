@@ -59,9 +59,7 @@ class RenderContext:
 
     def enter(self, node: object) -> None:
         if len(self._active) >= self.max_depth:
-            raise AstDepthError(
-                f"AST nesting exceeds max_depth={self.max_depth}"
-            )
+            raise AstDepthError(f"AST nesting exceeds max_depth={self.max_depth}")
         self.check_cycle(node)
         self._active.add(id(node))
 

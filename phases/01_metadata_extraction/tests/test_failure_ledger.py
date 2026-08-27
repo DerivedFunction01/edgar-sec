@@ -1,4 +1,3 @@
-
 from conftest import imp
 
 http = imp("defs.sec_http")
@@ -31,7 +30,8 @@ class FakeSession:
 def make_client(script, tmp_path, **kwargs):
     kwargs.setdefault("rate_limiter", http.RateLimiter(min_interval_s=0.001))
     kwargs.setdefault(
-        "retry_policy", http.RetryPolicy(max_retries=1, backoff_base_s=0.001, jitter=0.0)
+        "retry_policy",
+        http.RetryPolicy(max_retries=1, backoff_base_s=0.001, jitter=0.0),
     )
     session = FakeSession(script)
     client = http.SecHttpClient(
@@ -68,7 +68,9 @@ def test_404_is_recorded_permanent_and_skipped_next_session(tmp_path):
 
     # A brand-new session must fail fast with zero HTTP requests.
     fresh, fresh_session = make_client([FakeResponse(200)], tmp_path)
-    with pytest.raises(http.PermanentHttpError, match="permanent failure on a previous run"):
+    with pytest.raises(
+        http.PermanentHttpError, match="permanent failure on a previous run"
+    ):
         fresh.get_json("https://x/gone.json")
     assert fresh_session.calls == 0
 
@@ -104,9 +106,7 @@ def test_custom_budget_skips_sooner(tmp_path):
         client, _ = make_client([FakeResponse(500), FakeResponse(500)], tmp_path)
         with pytest.raises(http.RetryExhausted):
             client.get_json("https://x/y.json")
-    fresh, session = make_client(
-        [FakeResponse(200)], tmp_path, max_failure_attempts=2
-    )
+    fresh, session = make_client([FakeResponse(200)], tmp_path, max_failure_attempts=2)
     with pytest.raises(http.PermanentHttpError):
         fresh.get_json("https://x/y.json")
     assert session.calls == 0

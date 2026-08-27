@@ -1,18 +1,11 @@
-"""Atomic Parquet checkpoint writes and completed-chunk discovery.
-
-Checkpoint files are append-safe immutable artifacts: a completed chunk is
-written to a temporary path, validated against the declared schema, then
-atomically renamed into place. Interrupted work may leave ``.tmp`` partials,
-which are ignored on resume.
-"""
+"""Compatibility helpers around the phase 1 storage facade."""
 
 from __future__ import annotations
 
 import os
-import re
+from collections import Counter
 
-import pyarrow as pa
-import pyarrow.parquet as pq
+from defs.storage import ChunkRange, DatasetSpec, RunContext, make_chunk_backend
 
 from .schemas import (
     DATASET_NAME,
@@ -20,20 +13,90 @@ from .schemas import (
     SUBMISSION_METADATA_SCHEMA,
     TERMINAL_STATUSES,
 )
-
-CHUNK_FILE_RE = re.compile(
-    rf"^{DATASET_NAME}-v(?P<version>[A-Za-z0-9.]+)-chunk-(?P<chunk_id>\d+)-"
-    r"(?P<start>\d+)-(?P<end>\d+)\.parquet$"
-)
+from .storage import Phase1CheckpointStore
 
 
-def chunk_filename(chunk_id: int, start_row: int, end_row: int) -> str:
-    """File names include dataset version, chunk id, and row range."""
-    return f"{DATASET_NAME}-v{SCHEMA_VERSION}-chunk-{chunk_id:05d}-{start_row:06d}-{end_row:06d}.parquet"
+def chunk_filename(
+    chunk_id: int, start_row: int, end_row: int, storage_format: str = "parquet"
+) -> str:
+    if storage_format not in {"parquet", "jsonl"}:
+        raise ValueError("storage_format must be 'parquet' or 'jsonl'")
+    extension = "jsonl" if storage_format == "jsonl" else "parquet"
+    return f"{DATASET_NAME}-v{SCHEMA_VERSION}-chunk-{chunk_id:05d}-{start_row:06d}-{end_row:06d}.{extension}"
 
 
-def parse_chunk_filename(name: str) -> dict | None:
-    match = CHUNK_FILE_RE.match(os.path.basename(name))
+def _store(root: str, storage_format: str = "parquet") -> Phase1CheckpointStore:
+    spec = DatasetSpec(DATASET_NAME, SCHEMA_VERSION, "cik", SUBMISSION_METADATA_SCHEMA)
+    backend = make_chunk_backend(storage_format, root)
+    return Phase1CheckpointStore(backend, spec=spec, run=RunContext(run_id="compat"))
+
+
+def write_checkpoint(
+    rows: list[dict], final_path: str, storage_format: str = "parquet"
+) -> dict:
+    if not rows:
+        raise ValueError("refusing to write an empty checkpoint")
+    parsed = parse_chunk_filename(os.path.basename(final_path), storage_format)
+    if parsed is None:
+        raise ValueError(f"invalid {storage_format} checkpoint filename: {final_path}")
+    ref = _store(os.path.dirname(os.path.dirname(final_path)), storage_format).write(
+        rows, ChunkRange(parsed["chunk_id"], parsed["start_row"], parsed["end_row"])
+    )
+    return {
+        "path": ref.path,
+        "rows": ref.row_count,
+        "bytes": ref.bytes,
+        "schema_version": ref.version,
+    }
+
+
+class _Column:
+    def __init__(self, values):
+        self.values = values
+
+    def to_pylist(self):
+        return self.values
+
+    def unique(self):
+        return _Column(list(dict.fromkeys(self.values)))
+
+
+class _RecordTable:
+    def __init__(self, rows):
+        self.rows = rows
+        self.num_rows = len(rows)
+
+    def column(self, name):
+        return _Column([row.get(name) for row in self.rows])
+
+
+def load_checkpoint(path: str, expected_version: str | None = None):
+    if not os.path.exists(path) or path.endswith(".tmp"):
+        return None
+    storage_format = "jsonl" if path.endswith(".jsonl") else "parquet"
+    parsed = parse_chunk_filename(os.path.basename(path), storage_format)
+    if parsed is None:
+        raise ValueError(f"invalid checkpoint filename: {path}")
+    store = _store(os.path.dirname(os.path.dirname(path)), storage_format)
+    rows = store.load(parsed["chunk_id"])
+    if expected_version is not None and any(
+        row.get("schema_version") != expected_version for row in rows
+    ):
+        versions = list(dict.fromkeys(row.get("schema_version") for row in rows))
+        raise ValueError(
+            f"checkpoint {path} has schema versions {versions}, expected {expected_version}"
+        )
+    return _RecordTable(rows)
+
+
+def parse_chunk_filename(name: str, storage_format: str = "parquet") -> dict | None:
+    import re
+
+    extension = "jsonl" if storage_format == "jsonl" else "parquet"
+    match = re.match(
+        rf"^{DATASET_NAME}-v(?P<version>[A-Za-z0-9.]+)-chunk-(?P<chunk_id>\d+)-(?P<start>\d+)-(?P<end>\d+)\.{extension}$",
+        os.path.basename(name),
+    )
     if not match:
         return None
     return {
@@ -44,110 +107,54 @@ def parse_chunk_filename(name: str) -> dict | None:
     }
 
 
-def write_checkpoint(rows: list[dict], final_path: str) -> dict:
-    """Atomically write a validated chunk checkpoint. Returns metadata about
-    the written file."""
-    if not rows:
-        raise ValueError("refusing to write an empty checkpoint")
-    table = pa.Table.from_pylist(rows, schema=SUBMISSION_METADATA_SCHEMA)
-    final_path = os.path.abspath(final_path)
-    os.makedirs(os.path.dirname(final_path), exist_ok=True)
-    tmp_path = final_path + ".tmp"
-    pq.write_table(table, tmp_path)
-
-    # Validate the temporary artifact before making it visible.
-    written = pq.read_table(tmp_path, schema=SUBMISSION_METADATA_SCHEMA)
-    if written.num_rows != len(rows):
-        os.remove(tmp_path)
-        raise ValueError(
-            f"checkpoint validation failed: wrote {len(rows)} rows, read back {written.num_rows}"
-        )
-    if str(written.schema) != str(SUBMISSION_METADATA_SCHEMA):
-        os.remove(tmp_path)
-        raise ValueError("checkpoint validation failed: schema drift detected")
-    os.replace(tmp_path, final_path)
-    return {
-        "path": final_path,
-        "rows": written.num_rows,
-        "bytes": os.path.getsize(final_path),
-        "schema_version": SCHEMA_VERSION,
-    }
+def list_chunk_checkpoints(
+    chunks_dir: str, storage_format: str = "parquet"
+) -> list[dict]:
+    root = os.path.dirname(chunks_dir)
+    return [
+        {
+            "version": ref.version,
+            "chunk_id": ref.chunk_id,
+            "start_row": ref.start_row,
+            "end_row": ref.end_row,
+            "path": ref.path,
+        }
+        for ref in _store(root, storage_format).list()
+    ]
 
 
-def load_checkpoint(path: str, expected_version: str | None = None) -> pa.Table | None:
-    """Load a completed checkpoint, or None when it does not exist or is
-    still a temporary partial. Schema/version mismatches raise."""
-    if not os.path.exists(path) or path.endswith(".tmp"):
-        return None
-    table = pq.read_table(path, schema=SUBMISSION_METADATA_SCHEMA)
-    if expected_version is not None:
-        versions = table.column("schema_version").unique().to_pylist()
-        if versions != [expected_version]:
-            raise ValueError(f"checkpoint {path} has schema versions {versions}, expected {expected_version}")
-    return table
-
-
-def find_chunk_checkpoint(chunks_dir: str, chunk_id: int, expected_version: str | None = None) -> str | None:
-    """Return the checkpoint path for a chunk if a valid completed file
-    exists with matching versions; otherwise None."""
-    if not os.path.isdir(chunks_dir):
-        return None
-    for name in sorted(os.listdir(chunks_dir)):
-        info = parse_chunk_filename(name)
-        if not info or info["chunk_id"] != chunk_id:
-            continue
-        if expected_version is not None and info["version"] != expected_version:
-            continue
-        path = os.path.join(chunks_dir, name)
-        table = load_checkpoint(path, expected_version)
-        if table is not None and table.num_rows > 0:
-            return path
+def find_chunk_checkpoint(
+    chunks_dir: str,
+    chunk_id: int,
+    expected_version: str | None = None,
+    storage_format: str = "parquet",
+) -> str | None:
+    for info in list_chunk_checkpoints(chunks_dir, storage_format):
+        if info["chunk_id"] == chunk_id and (
+            expected_version is None or info["version"] == expected_version
+        ):
+            return info["path"]
     return None
 
 
-def list_chunk_checkpoints(chunks_dir: str) -> list[dict]:
-    """List completed chunk checkpoints with parsed metadata."""
-    out = []
-    if not os.path.isdir(chunks_dir):
-        return out
-    for name in sorted(os.listdir(chunks_dir)):
-        info = parse_chunk_filename(name)
-        if info:
-            out.append({**info, "path": os.path.join(chunks_dir, name)})
-    return out
-
-
-def summarize_checkpoints(chunks_dir: str) -> dict:
-    """Aggregate statuses across completed checkpoints for `status`."""
-    from collections import Counter
-
-    status_counts: Counter = Counter()
-    rows_total = 0
-    ciks: list[str] = []
-    filings_total = 0
-    historical_failures = 0
-    retryable_errors = 0
-    files = list_chunk_checkpoints(chunks_dir)
-    for info in files:
-        table = load_checkpoint(info["path"])
-        if table is None:
-            continue
-        rows_total += table.num_rows
-        ciks.extend(table.column("cik").to_pylist())
-        status_counts.update(table.column("status").to_pylist())
-        filings_total += sum(
-            len(value or []) for value in table.column("filings").to_pylist()
-        )
+def summarize_checkpoints(chunks_dir: str, storage_format: str = "parquet") -> dict:
+    status_counts = Counter()
+    rows_total = filings_total = historical_failures = retryable_errors = 0
+    ciks = []
+    infos = list_chunk_checkpoints(chunks_dir, storage_format)
+    store = _store(os.path.dirname(chunks_dir), storage_format)
+    for info in infos:
+        rows = store.load(info["chunk_id"])
+        rows_total += len(rows)
+        ciks.extend(row["cik"] for row in rows)
+        status_counts.update(row["status"] for row in rows)
+        filings_total += sum(len(row.get("filings") or []) for row in rows)
         historical_failures += sum(
-            value or 0 for value in table.column("historical_files_failed").to_pylist()
+            row.get("historical_files_failed") or 0 for row in rows
         )
-        retryable_errors += sum(
-            1
-            for value in table.column("status").to_pylist()
-            if value not in TERMINAL_STATUSES
-        )
+        retryable_errors += sum(row["status"] not in TERMINAL_STATUSES for row in rows)
     return {
-        "chunk_files": len(files),
+        "chunk_files": len(infos),
         "rows_total": rows_total,
         "unique_ciks": len(set(ciks)),
         "status_counts": dict(status_counts),

@@ -2,6 +2,7 @@
 
 from .compiler import QueryCompiler
 from .dialects import DialectPolicy, policy_for, quote_ident
+from .executor import DbApiBackend, DbApiConnection, SqlBackend, SqlExecutor
 from .errors import (
     AstCycleError,
     AstDepthError,

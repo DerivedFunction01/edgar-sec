@@ -98,7 +98,12 @@ SUBMISSION_METADATA_SCHEMA = pa.schema(
         ("anomalies", pa.list_(ANOMALY_STRUCT)),
         ("extra_fields", pa.string()),  # canonical JSON; null when none
         # Profile fields grouped into named semantic structs
-        ("identity", pa.struct([("name", pa.string()), ("former_names", pa.list_(FORMER_NAME_STRUCT))])),
+        (
+            "identity",
+            pa.struct(
+                [("name", pa.string()), ("former_names", pa.list_(FORMER_NAME_STRUCT))]
+            ),
+        ),
         (
             "classification",
             pa.struct(
@@ -132,7 +137,10 @@ SUBMISSION_METADATA_SCHEMA = pa.schema(
             "insider_transactions",
             pa.struct([("owner_exists", pa.bool_()), ("issuer_exists", pa.bool_())]),
         ),
-        ("addresses", pa.struct([("mailing", ADDRESS_STRUCT), ("business", ADDRESS_STRUCT)])),
+        (
+            "addresses",
+            pa.struct([("mailing", ADDRESS_STRUCT), ("business", ADDRESS_STRUCT)]),
+        ),
         # Repeated values as typed lists
         ("listings", pa.list_(LISTING_STRUCT)),
         ("filings", pa.list_(FILING_STRUCT)),
