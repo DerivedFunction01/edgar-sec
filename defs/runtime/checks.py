@@ -92,6 +92,12 @@ def _run_legacy_shims() -> list[ScannerFinding]:
     return scan_legacy_shims()
 
 
+def _run_file_length() -> list[ScannerFinding]:
+    from .scanners.length import scan_modified_file_length
+
+    return scan_modified_file_length()
+
+
 register(
     Scanner(
         name="environment-access",
@@ -148,6 +154,14 @@ register(
         name="legacy-shims",
         description="scan modified files for dead legacy behavior, backward compatibility aliases, and shims",
         run=_run_legacy_shims,
+    )
+)
+
+register(
+    Scanner(
+        name="file-length",
+        description="scan modified Python files and advise when line count exceeds recommended thresholds",
+        run=_run_file_length,
     )
 )
 

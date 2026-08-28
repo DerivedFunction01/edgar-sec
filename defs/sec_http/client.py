@@ -1,258 +1,21 @@
-"""Shared SEC HTTP layer: pacing, retries, metrics, and optional caching.
-
-This module is domain neutral: it owns request pacing, headers, retry
-classification, response metrics, and optional response caching. Metadata
-parsing and webpage parsing must not reimplement these rules.
-
-Design notes carried over from old-webpage.py:
-
-- A process-local thread-safe limiter reserves the next request slot under a
-  lock; callers sleep outside the lock so unrelated workers are never blocked
-  by a sleeping lock holder.
-- HTTP 429 is handled specially: ``Retry-After`` when supplied, an increased
-  delay after throttling, and gradual recovery only after a quiet period.
-- Timeouts/connection failures are classified separately from rate-limit
-  responses; network failures may retry without being treated as proof that
-  the request rate is too high.
-- Transient 5xx responses retry with jittered backoff; 404 and other
-  non-retryable 4xx responses are permanent and never retried.
-- Request counters, status counts, latency, bytes, retries, and last-error
-  details are collected for run status and diagnostics.
-"""
+"""Core HTTP client session, request orchestration, caching, and failure ledger."""
 
 from __future__ import annotations
 
 import hashlib
 import json
 import os
-import random
-import threading
 import time
 from collections.abc import Callable
-from dataclasses import dataclass, field
+from dataclasses import dataclass
 from typing import Any
 
 import requests
 
-# Conservative default: SEC's published guidance is at most 10 req/s; stay
-# well under it. One process/limiter per machine: if machines share an
-# egress IP the configured rate must be lowered or coordination added.
-DEFAULT_RATE_LIMIT_RPS = 4.0
-DEFAULT_TIMEOUT_S = 15.0
-DEFAULT_MAX_RETRIES = 4
-DEFAULT_MIN_INTERVAL_S = 1.0 / DEFAULT_RATE_LIMIT_RPS
-MAX_INTERVAL_S = 60.0
-THROTTLE_MULTIPLIER = 1.5
-RECOVERY_QUIET_S = 30.0
-RECOVERY_DECAY = 0.10  # fraction of the gap removed per throttle check
-BACKOFF_BASE_S = 0.5
-BACKOFF_CAP_S = 30.0
-RETRY_AFTER_CAP_S = 120.0
-
-
-class PermanentHttpError(Exception):
-    """Non-retryable failure (404, non-retryable 4xx, bad payload)."""
-
-    def __init__(self, url: str, reason: str, status_code: int | None = None):
-        self.url = url
-        self.reason = reason
-        self.status_code = status_code
-        super().__init__(f"permanent error for {url}: {reason} (status={status_code})")
-
-
-class RetryExhausted(Exception):
-    """Retry budget exhausted for a transient failure."""
-
-    def __init__(self, url: str, reason: str, status_code: int | None = None):
-        self.url = url
-        self.reason = reason
-        self.status_code = status_code
-        super().__init__(
-            f"retries exhausted for {url}: {reason} (status={status_code})"
-        )
-
-
-class ResponseTooLargeError(PermanentHttpError):
-    """Response exceeded the configured size limit."""
-
-
-class RateLimiter:
-    """Thread-safe limiter that reserves the next request slot.
-
-    ``acquire()`` reserves the next slot under a lock and returns how long
-    the caller must sleep before sending. Sleeping happens outside the lock.
-    """
-
-    def __init__(
-        self,
-        min_interval_s: float = DEFAULT_MIN_INTERVAL_S,
-        max_interval_s: float = MAX_INTERVAL_S,
-    ):
-        if min_interval_s <= 0:
-            raise ValueError("min_interval_s must be positive")
-        self._min_interval = float(min_interval_s)
-        self._max_interval = float(max_interval_s)
-        self._interval = float(min_interval_s)
-        self._next_slot = time.monotonic()
-        self._cool_until = 0.0
-        self._last_throttle = 0.0
-        self._lock = threading.Lock()
-
-    @property
-    def interval(self) -> float:
-        with self._lock:
-            return self._interval
-
-    def acquire(self) -> float:
-        """Reserve the next request slot; return the delay before sending."""
-        with self._lock:
-            now = time.monotonic()
-            # Gradual recovery: only after a quiet period without throttling.
-            if (
-                self._interval > self._min_interval
-                and now - self._last_throttle > RECOVERY_QUIET_S
-            ):
-                gap = self._interval - self._min_interval
-                self._interval = max(
-                    self._min_interval, self._interval - gap * RECOVERY_DECAY
-                )
-            wake = max(self._next_slot, now, self._cool_until)
-            self._next_slot = wake + self._interval
-            return max(0.0, wake - now)
-
-    def signal_throttle(self, retry_after_s: float | None = None) -> float:
-        """Record a rate-limit response and raise the delay.
-
-        Never sleeps while holding the lock.
-        """
-        with self._lock:
-            now = time.monotonic()
-            self._last_throttle = now
-            if retry_after_s is not None:
-                delay = min(
-                    max(float(retry_after_s), self._interval),
-                    self._max_interval,
-                    RETRY_AFTER_CAP_S,
-                )
-            else:
-                delay = min(self._interval * THROTTLE_MULTIPLIER, self._max_interval)
-            self._interval = max(self._interval, delay)
-            self._cool_until = now + delay
-            return delay
-
-    def signal_network_error(self) -> None:
-        """Record a network failure without treating it as a rate signal."""
-
-    def snapshot(self) -> dict:
-        with self._lock:
-            return {
-                "current_interval_s": round(self._interval, 4),
-                "cool_until_in_s": round(
-                    max(0.0, self._cool_until - time.monotonic()), 4
-                ),
-                "last_throttle_age_s": round(time.monotonic() - self._last_throttle, 4)
-                if self._last_throttle
-                else None,
-            }
-
-
-@dataclass
-class RetryPolicy:
-    """Retry classification and backoff computation."""
-
-    max_retries: int = 4
-    backoff_base_s: float = BACKOFF_BASE_S
-    backoff_cap_s: float = BACKOFF_CAP_S
-    jitter: float = 0.25
-
-    def classify(self, status_code: int) -> str:
-        """Classify an HTTP status: 'ok', 'throttle', 'retry', or 'permanent'."""
-        if status_code == 200:
-            return "ok"
-        if status_code == 429:
-            return "throttle"
-        if status_code in (408, 425):
-            return "retry"
-        if 500 <= status_code < 600:
-            return "retry"
-        # 404 and all other 4xx are permanent.
-        return "permanent"
-
-    def delay(self, attempt: int, retry_after_s: float | None = None) -> float:
-        """Backoff delay after ``attempt`` (0-based) failed attempts."""
-        if retry_after_s is not None:
-            base = min(max(float(retry_after_s), 0.0), RETRY_AFTER_CAP_S)
-        else:
-            base = min(self.backoff_base_s * (2**attempt), self.backoff_cap_s)
-        return base * (1.0 + random.uniform(0.0, self.jitter))
-
-
-@dataclass
-class HttpMetrics:
-    """Thread-safe request/response counters for run status and diagnostics."""
-
-    requests_total: int = 0
-    cache_hits: int = 0
-    responses_2xx: int = 0
-    status_counts: dict = field(default_factory=dict)
-    throttled_count: int = 0
-    network_errors: int = 0
-    retries_used: int = 0
-    bytes_received: int = 0
-    latency_sum_s: float = 0.0
-    last_error: str | None = None
-    _lock: threading.Lock = field(default_factory=threading.Lock, repr=False)
-
-    def record_attempt(self) -> None:
-        """Count one actual HTTP send attempt (including network failures)."""
-        with self._lock:
-            self.requests_total += 1
-
-    def record_status(
-        self, status_code: int, latency_s: float, byte_count: int
-    ) -> None:
-        with self._lock:
-            self.responses_2xx += 1
-            self.status_counts[str(status_code)] = (
-                self.status_counts.get(str(status_code), 0) + 1
-            )
-            self.latency_sum_s += latency_s
-            self.bytes_received += byte_count
-
-    def record_failure(
-        self, kind: str, detail: str, status_code: int | None = None
-    ) -> None:
-        """Record a failure kind; HTTP status counts are kept by
-        record_status, so no status is double-counted here."""
-        with self._lock:
-            if kind == "throttle":
-                self.throttled_count += 1
-            elif kind == "network":
-                self.network_errors += 1
-            self.last_error = detail
-
-    def record_retry(self) -> None:
-        with self._lock:
-            self.retries_used += 1
-
-    def record_cache_hit(self) -> None:
-        with self._lock:
-            self.cache_hits += 1
-
-    def snapshot(self) -> dict:
-        with self._lock:
-            return {
-                "requests_total": self.requests_total,
-                "cache_hits": self.cache_hits,
-                "responses_2xx": self.responses_2xx,
-                "status_counts": dict(self.status_counts),
-                "throttled_count": self.throttled_count,
-                "network_errors": self.network_errors,
-                "retries_used": self.retries_used,
-                "bytes_received": self.bytes_received,
-                "latency_sum_s": round(self.latency_sum_s, 4),
-                "last_error": self.last_error,
-            }
+from .errors import PermanentHttpError, ResponseTooLargeError, RetryExhausted
+from .metrics import HttpMetrics
+from .rate_limit import DEFAULT_RATE_LIMIT_RPS, RateLimiter
+from .retry import DEFAULT_MAX_RETRIES, DEFAULT_TIMEOUT_S, RetryPolicy
 
 
 def default_headers(user_agent: str) -> dict:
@@ -629,3 +392,10 @@ class SecHttpClient:
         except (UnicodeDecodeError, json.JSONDecodeError) as exc:
             raise self._decode_failure(url, exc) from exc
         return parsed, len(payload), hashlib.sha256(payload).hexdigest()
+
+
+__all__ = [
+    "SecHttpClient",
+    "SecTransportProfile",
+    "default_headers",
+]

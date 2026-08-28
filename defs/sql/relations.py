@@ -101,7 +101,7 @@ class WithClause:
 
 @dataclass(frozen=True, slots=True)
 class Select(QueryExpr):
-    source: FromItem
+    source: FromItem | None = None
     projection: tuple[Expr, ...] = (Star(),)
     with_: WithClause | None = None
     distinct: bool = False

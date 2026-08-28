@@ -16,6 +16,7 @@ from defs.runtime.env import scan_modified_environment_access
 from defs.runtime.paths import scan_artifact_path_literals
 from defs.runtime.scanners.clean_exit import scan_clean_exit_boundary
 from defs.runtime.scanners.compat import scan_legacy_shims
+from defs.runtime.scanners.length import scan_modified_file_length
 from defs.runtime.scanners.secrets import scan_secret_leakage
 from defs.sql.checks import scan_sql_boundary
 from defs.storage.checks import scan_storage_boundary
@@ -54,6 +55,7 @@ def test_registry_contains_all_scanners():
         "secrets-leakage",
         "clean-exit",
         "legacy-shims",
+        "file-length",
     ]
     for name in expected:
         assert name in names
@@ -357,3 +359,30 @@ def test_legacy_shims_scanner_allows_manifest_bootstrap_module(repo):
     p.write_text("def discover_legacy_manifests(): pass\n", encoding="utf-8")
     _git(repo, "add", "-A")
     assert scan_legacy_shims(repo_root=repo) == []
+
+
+# --- file-length scanner -------------------------------------------------------
+
+
+def test_file_length_scanner_flags_files_exceeding_threshold(repo):
+    long_content = "\n".join(f"x_{i} = {i}" for i in range(505)) + "\n"
+    (repo / "long_module.py").write_text(long_content, encoding="utf-8")
+    findings = scan_modified_file_length(repo_root=repo, max_lines=500)
+    assert len(findings) == 1
+    assert findings[0].scanner == "file-length"
+    assert "exceeds 500 lines threshold" in findings[0].message
+
+
+def test_file_length_scanner_allows_test_files_and_allowed_paths(repo):
+    long_content = "\n".join(f"x_{i} = {i}" for i in range(505)) + "\n"
+    t = repo / "tests" / "test_big.py"
+    t.parent.mkdir(parents=True, exist_ok=True)
+    t.write_text(long_content, encoding="utf-8")
+    _git(repo, "add", "-A")
+
+    s = repo / "scratch" / "probe.py"
+    s.parent.mkdir(parents=True, exist_ok=True)
+    s.write_text(long_content, encoding="utf-8")
+    _git(repo, "add", "-A")
+
+    assert scan_modified_file_length(repo_root=repo, max_lines=500) == []

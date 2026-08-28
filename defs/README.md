@@ -52,6 +52,7 @@ environment names are generated from it (`RUNTIME_THREADS`,
   - `secrets-leakage`: flags committed API keys, tokens, and credentials in source code
   - `clean-exit`: flags `sys.exit()` calls in library and core phase code outside CLI runners
   - `legacy-shims`: flags dead legacy behavior, backward-compatibility aliases, and transitional shims
+  - `file-length`: advises when modified Python source files exceed 500 lines to encourage modular decomposition
   Register future policy scanners in their respective semantic boundaries or `defs/runtime/scanners/` — `check.py` stays generic.
 
 ## Rules
