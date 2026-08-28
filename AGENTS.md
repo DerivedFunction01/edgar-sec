@@ -118,7 +118,9 @@ uploads/                           # input manifests
 - Define idempotency keys and conflict policy before adding an append path.
   No last-writer-wins for conflicting extraction facts; quarantine or fail.
 - Do not use pandas to define nested schemas or persistence behavior. PyArrow,
-  DuckDB conversion, and backend details stay behind `defs/storage`.
+  DuckDB conversion, and backend details stay behind `defs/storage`. `pyarrow`
+  must not be imported directly outside `defs/storage/`; schema definitions and
+  types are accessed through `defs.storage` (`defs.storage.pa`).
 - Phase code must not issue literal SQL or import backend-private persistence
   helpers; use compiled SQL objects and shared executors (`defs/sql/`).
 
@@ -199,15 +201,25 @@ uploads/                           # input manifests
 
 ## Environment And Paths
 
-- `EDGAR_ARTIFACTS_ROOT` selects the shared generated-artifact workspace and
+- `ARTIFACTS_ROOT` selects the shared generated-artifact workspace and
   defaults to `.artifacts`.
-- `EDGAR_CONFIG_PATH` and `EDGAR_CACHE_ROOT` may override derived config and
-  cache locations. Credentials and SEC contact identity come from the
-  environment or the git-ignored root `.env` file (direct environment wins;
-  `EDGAR_DOTENV_PATH` may relocate the file) resolved through
-  `defs.runtime.env.get_env`; do not store provider API keys in config.
+- `CACHE_ROOT` may override the derived HTTP cache location; phase config
+  paths are derived via `PhasePaths.config_path` and overridden with CLI `--config`.
+  Credentials and SEC contact identity come from the environment or the git-ignored
+  root `.env` file (direct environment wins; `DOTENV_PATH` may relocate the file)
+  resolved through `defs.runtime.env.get_env`; do not store provider API keys in config.
+- Application settings are declared once as typed specs with logical dotted
+  paths in `defs/runtime/settings/` plus one `settings.py` per phase
+  (registered in `phases/settings.py`); environment names are generated from
+  the logical paths. New settings never add `os.environ` reads, env-name
+  constants, or exports outside that registry — direct environment access is
+  confined to `defs/runtime/env.py` and the settings resolution boundary and
+  is enforced by the policy scanners registered in `defs/runtime/checks.py`
+  and run by `check.py` (findings fail the gate; `--scan` runs only the
+  scanner step).
 - Secrets and `.env` values are never written to plans, manifests, logs, or
-  generated artifacts.
+  generated artifacts. Machine-derived settings (threads, memory
+  budget, spill directory) are never persisted automatically.
 - Persist dataset identity and layout (input manifest, run ID, partition
   count, chunk size, and storage format) in project config and immutable plans.
   Keep worker count, rate, timeout, and cache overrides machine-local unless a

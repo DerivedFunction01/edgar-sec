@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import importlib
 
-import pyarrow as pa
+from defs.storage import pa
 
 SOURCE = importlib.import_module("phases.01_metadata_extraction.core.schemas")
 SCHEMA_VERSION = "1.0.0"

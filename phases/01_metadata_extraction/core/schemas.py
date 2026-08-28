@@ -7,9 +7,7 @@ here to avoid pandas-inferred schema drift between empty, failed, and
 successful chunks.
 """
 
-from __future__ import annotations
-
-import pyarrow as pa
+from defs.storage import pa
 
 DATASET_NAME = "submission_metadata"
 SCHEMA_VERSION = "1.0.0"

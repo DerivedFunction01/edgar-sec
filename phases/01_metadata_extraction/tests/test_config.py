@@ -67,6 +67,23 @@ def test_load_project_config_rejects_unknown_fields(tmp_path):
         config_mod.load_project_config(str(config_path))
 
 
+def test_load_project_config_rejects_removed_user_agent_env(tmp_path):
+    """The obsolete user_agent_env branch is gone; it fails as unknown."""
+    config_path = tmp_path / "bad.json"
+    config_path.write_text(
+        '{"version": 2, "config": {"dataset": {}, '
+        '"credentials": {"user_agent_env": "SEC_USER_AGENT"}}}',
+        encoding="utf-8",
+    )
+    with pytest.raises(ValueError, match="unknown config fields.*user_agent_env"):
+        config_mod.load_project_config(str(config_path))
+
+
+def test_persisted_config_omits_user_agent_env(tmp_path):
+    cfg = config_mod.ProjectConfig(user_agent="App/1.0 a@b.com")
+    assert "user_agent_env" not in cfg.to_dict()["credentials"]
+
+
 def test_load_project_config_rejects_invalid_storage_format(tmp_path):
     config_path = tmp_path / "bad.json"
     config_path.write_text(
@@ -323,7 +340,7 @@ def test_empty_config_user_agent_falls_back_to_dotenv(tmp_path, monkeypatch):
         "SEC_USER_AGENT=EnvAgent/1.0 env@example.com\n", encoding="utf-8"
     )
     monkeypatch.delenv("SEC_USER_AGENT", raising=False)
-    monkeypatch.setenv("EDGAR_DOTENV_PATH", str(env_file))
+    monkeypatch.setenv("DOTENV_PATH", str(env_file))
     cfg = config_mod.ProjectConfig(
         input_path="uploads/cik-sec.csv",
         artifacts_dir=str(tmp_path / "run"),

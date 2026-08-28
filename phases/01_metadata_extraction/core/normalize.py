@@ -25,7 +25,7 @@ import json
 import re
 from typing import Any
 
-import pyarrow as pa
+from defs.storage import pa
 
 from .schemas import SCHEMA_VERSION, SUBMISSION_METADATA_SCHEMA
 

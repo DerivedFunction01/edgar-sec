@@ -86,15 +86,46 @@ def _path(value: str | os.PathLike[str]) -> Path:
 
 
 @dataclass(frozen=True)
+class FixturePaths:
+    """Typed layout for an immutable raw/fixture directory."""
+
+    root: Path
+    fixture_id: str
+    dialect: str = "duckdb"
+
+    @property
+    def manifest_path(self) -> Path:
+        return self.root / "fixture.manifest.json"
+
+    @property
+    def db_path(self) -> Path:
+        ext = {"duckdb": "duckdb", "sqlite": "sqlite", "sqlite3": "sqlite"}.get(
+            self.dialect.lower(), self.dialect.lower()
+        )
+        return self.root / f"fixture.{ext}"
+
+    def ensure_layout(self) -> Path:
+        self.root.mkdir(parents=True, exist_ok=True)
+        return self.root
+
+
+@dataclass(frozen=True)
 class ProjectPaths:
     """Project-wide roots resolved without touching the filesystem."""
 
     artifacts_root: Path
-    config_path: Path
     cache_root: Path
 
     def phase(self, phase: str) -> PhasePaths:
         return PhasePaths(self, _safe_id(phase, "phase"))
+
+    @property
+    def runtime_root(self) -> Path:
+        return self.artifacts_root / "runtime"
+
+    @property
+    def runtime_config_path(self) -> Path:
+        return self.runtime_root / "config.json"
 
     @property
     def test_runs_root(self) -> Path:
@@ -103,6 +134,14 @@ class ProjectPaths:
     @property
     def acceptance_root(self) -> Path:
         return self.artifacts_root / "acceptance"
+
+    @property
+    def fixtures_root(self) -> Path:
+        return self.artifacts_root / "fixtures"
+
+    def fixture(self, fixture_id: str, dialect: str = "duckdb") -> FixturePaths:
+        safe = _safe_id(fixture_id, "fixture_id")
+        return FixturePaths(self.fixtures_root / safe, safe, dialect=dialect)
 
     @property
     def artifact_manifests_root(self) -> Path:
@@ -130,12 +169,24 @@ class PhasePaths:
         return self.project.artifacts_root / self.phase
 
     @property
+    def config_path(self) -> Path:
+        return self.phase_root / "config.json"
+
+    @property
     def runs_root(self) -> Path:
         return self.phase_root / "runs"
 
     @property
     def preview_root(self) -> Path:
         return self.phase_root / "preview"
+
+    def fixture(self, fixture_id: str, dialect: str = "duckdb") -> FixturePaths:
+        safe = _safe_id(fixture_id, "fixture_id")
+        return FixturePaths(
+            self.project.acceptance_root / self.phase / "fixtures" / safe,
+            safe,
+            dialect=dialect,
+        )
 
     def run(self, run_id: str) -> RunPaths:
         return RunPaths(self, _safe_id(run_id, "run_id"))
@@ -294,20 +345,25 @@ def resolve_paths(
     run_id: str | None = None,
     env: Mapping[str, str] | None = None,
 ) -> ProjectPaths | PhasePaths | RunPaths:
-    """Resolve shared paths from environment, without creating directories.
+    """Resolve shared paths from the settings registry, without directories.
 
-    ``EDGAR_ARTIFACTS_ROOT`` controls the shared generated-artifact workspace.
-    ``EDGAR_CONFIG_PATH`` and ``EDGAR_CACHE_ROOT`` override their derived
-    locations. Supplying only ``phase`` or both ``phase`` and ``run_id``
-    returns the corresponding narrower layout object.
+    ``artifacts.root`` (environment name ``ARTIFACTS_ROOT``) controls the
+    shared generated-artifact workspace; ``CACHE_ROOT`` overrides the derived
+    cache location. Values resolve through the shared environment layer (direct
+    environment, then the canonical ``.env`` file). Supplying an explicit ``env``
+    mapping bypasses that resolution entirely. Supplying only ``phase`` or both
+    ``phase`` and ``run_id`` returns the corresponding narrower layout object.
     """
-    values = os.environ if env is None else env
-    artifacts_root = _path(values.get("EDGAR_ARTIFACTS_ROOT", ".artifacts"))
-    config_path = _path(
-        values.get("EDGAR_CONFIG_PATH", artifacts_root / "metadata" / "config.json")
-    )
-    cache_root = _path(values.get("EDGAR_CACHE_ROOT", artifacts_root / "caches"))
-    project = ProjectPaths(artifacts_root, config_path, cache_root)
+    if env is None:
+        from .settings import resolve_settings
+
+        values = resolve_settings(include=["artifacts", "cache"])
+        artifacts_root = _path(values["artifacts.root"])
+        cache_root = _path(values["cache.root"])
+    else:
+        artifacts_root = _path(env.get("ARTIFACTS_ROOT", ".artifacts"))
+        cache_root = _path(env.get("CACHE_ROOT", artifacts_root / "caches"))
+    project = ProjectPaths(artifacts_root, cache_root)
     if phase is None:
         if run_id is not None:
             raise ValueError("phase is required when run_id is supplied")
@@ -318,11 +374,73 @@ def resolve_paths(
     return phase_paths.run(run_id)
 
 
+_ARTIFACT_LITERAL_CANDIDATE_RE = r"\.artifacts"
+_ARTIFACT_LITERAL_RE = re.compile(
+    r"""(?:["']\.artifacts[/\\]|Path\(\s*["']\.artifacts["']\s*\))"""
+)
+
+_ARTIFACT_ALLOWED_PREFIXES = (
+    "defs/runtime/paths.py",
+    "defs/runtime/settings/paths.py",
+    "defs/tests/",
+    "check.py",
+    "init_venv.py",
+    "scratch/",
+)
+
+
+def _is_artifact_path_allowed(path: str) -> bool:
+    normalized = path.replace(os.sep, "/")
+    if any(
+        normalized == prefix or normalized.startswith(prefix)
+        for prefix in _ARTIFACT_ALLOWED_PREFIXES
+    ):
+        return True
+    from .scanners.engine import is_test_file
+
+    return is_test_file(path)
+
+
+def _match_artifact_line(path: str, line_number: int, text: str, source: str) -> list:
+    if _is_artifact_path_allowed(path):
+        return []
+    from .checks import ScannerFinding
+
+    findings: list[ScannerFinding] = []
+    if _ARTIFACT_LITERAL_RE.search(text):
+        findings.append(
+            ScannerFinding(
+                scanner="artifact-paths",
+                source=source,
+                path=path,
+                line=line_number,
+                message="hardcoded .artifacts path literal in source code",
+                hint="resolve paths dynamically through defs.runtime.paths.resolve_paths() instead",
+            )
+        )
+    return findings
+
+
+def scan_artifact_path_literals(
+    repo_root: str | os.PathLike[str] | None = None,
+) -> list:
+    """Scan modified Python files for hardcoded .artifacts path literals."""
+    from .scanners.engine import scan_patch_and_untracked
+
+    return scan_patch_and_untracked(
+        candidate_re=_ARTIFACT_LITERAL_CANDIDATE_RE,
+        match_line_fn=_match_artifact_line,
+        repo_root=repo_root,
+        file_glob="*.py",
+    )
+
+
 __all__ = [
     "MERGE_DIR_NAME",
     "MERGE_REPORT_NAME",
     "ArtifactClassification",
     "ArtifactRole",
+    "FixturePaths",
     "PhasePaths",
     "ProjectPaths",
     "RunPaths",
@@ -332,4 +450,5 @@ __all__ = [
     "partition_merge_report_path_in",
     "partition_merge_root_in",
     "resolve_paths",
+    "scan_artifact_path_literals",
 ]

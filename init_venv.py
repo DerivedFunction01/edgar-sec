@@ -47,6 +47,8 @@ CUSTOM_PACKAGES = [
     "tensorboard",
     "fastapi",
     "uvicorn",
+    "httpx2",
+    "psutil",
 ]
 
 # Packages for the ML server

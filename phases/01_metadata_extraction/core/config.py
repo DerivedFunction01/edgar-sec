@@ -2,19 +2,17 @@
 
 from __future__ import annotations
 
-import json
-import os
-import tempfile
 from dataclasses import dataclass, field
 from pathlib import Path
 
-from defs.runtime.defaults import (
+from defs.runtime.config_io import read_json_config, write_json_config
+from defs.runtime.paths import resolve_paths
+from defs.runtime.settings import get_setting
+from defs.runtime.settings.runtime import (
     DEFAULT_CHUNK_SIZE,
     DEFAULT_PARTITION_COUNT,
     DEFAULT_WORKERS,
 )
-from defs.runtime.env import get_env
-from defs.runtime.paths import resolve_paths
 from defs.sec_http import DEFAULT_MAX_RETRIES, DEFAULT_RATE_LIMIT_RPS, DEFAULT_TIMEOUT_S
 from defs.storage import DEFAULT_STORAGE_FORMAT
 
@@ -24,7 +22,7 @@ DEFAULT_ARTIFACTS = str(_DEFAULT_PATHS.run_root)
 DEFAULT_PREVIEW_ARTIFACTS = str(_DEFAULT_PATHS.phase_paths.preview_root / "local")
 DEFAULT_MAX_FAILURE_ATTEMPTS = 3
 
-PROJECT_CONFIG_DEFAULT_PATH = str(_DEFAULT_PATHS.phase_paths.project.config_path)
+PROJECT_CONFIG_DEFAULT_PATH = str(_DEFAULT_PATHS.phase_paths.config_path)
 CONFIG_VERSION = 2
 
 PLAN_DEFINING_FIELDS = (
@@ -44,7 +42,11 @@ def rate_limit_to_interval(requests_per_second: float) -> float:
 
 
 def default_user_agent() -> str:
-    return get_env("SEC_USER_AGENT", "")
+    return str(get_setting("sec.user_agent"))
+
+
+def default_cache_dir() -> str:
+    return str(get_setting("cache.root"))
 
 
 @dataclass
@@ -60,7 +62,7 @@ class RunOptions:
     max_retries: int = DEFAULT_MAX_RETRIES
     rate_limit_rps: float = DEFAULT_RATE_LIMIT_RPS
     user_agent: str = field(default_factory=default_user_agent)
-    cache_dir: str = field(default_factory=lambda: get_env("SEC_CACHE_DIR", ""))
+    cache_dir: str = field(default_factory=default_cache_dir)
     max_failure_attempts: int = DEFAULT_MAX_FAILURE_ATTEMPTS
     ignore_failure_history: bool = False
     limit: int | None = None
@@ -138,7 +140,7 @@ class ProjectConfig:
     max_retries: int = DEFAULT_MAX_RETRIES
     rate_limit_rps: float = DEFAULT_RATE_LIMIT_RPS
     user_agent: str = field(default_factory=default_user_agent)
-    cache_dir: str = field(default_factory=lambda: get_env("SEC_CACHE_DIR", ""))
+    cache_dir: str = field(default_factory=default_cache_dir)
     max_failure_attempts: int = DEFAULT_MAX_FAILURE_ATTEMPTS
     limit: int | None = None
     storage_format: str = DEFAULT_STORAGE_FORMAT
@@ -169,10 +171,6 @@ class ProjectConfig:
             flat.update(section)
         if "format" in flat:
             flat["storage_format"] = flat.pop("format")
-        if "user_agent_env" in flat:
-            if "user_agent" not in flat:
-                flat["user_agent"] = os.environ.get(flat["user_agent_env"], "")
-            flat.pop("user_agent_env")
         return cls._from_flat_dict(flat)
 
     @classmethod
@@ -219,7 +217,6 @@ class ProjectConfig:
             "metadata": {"max_failure_attempts": self.max_failure_attempts},
             "credentials": {
                 "user_agent": self.user_agent,
-                "user_agent_env": "SEC_USER_AGENT",
             },
         }
 
@@ -267,43 +264,16 @@ def default_project_config() -> ProjectConfig:
 
 
 def write_project_config(path: str | Path, config: ProjectConfig) -> str:
-    path = Path(path)
-    path.parent.mkdir(parents=True, exist_ok=True)
-    payload = {
-        "version": CONFIG_VERSION,
-        "config": config.to_dict(),
-    }
-    fd, tmp_path = tempfile.mkstemp(dir=path.parent, prefix=".config-", suffix=".tmp")
-    try:
-        with os.fdopen(fd, "w", encoding="utf-8") as fh:
-            json.dump(payload, fh, indent=2, sort_keys=True)
-            fh.flush()
-            os.fsync(fh.fileno())
-        os.replace(tmp_path, str(path))
-    except Exception:
-        if os.path.exists(tmp_path):
-            os.unlink(tmp_path)
-        raise
-    return str(path)
+    return write_json_config(
+        path, config.to_dict(), version=CONFIG_VERSION, payload_key="config"
+    )
 
 
 def load_project_config(path: str | Path) -> ProjectConfig:
-    path = Path(path)
-    if not path.exists():
-        raise FileNotFoundError(f"config not found at {path}")
-    try:
-        with open(path, "r", encoding="utf-8") as fh:
-            raw = json.load(fh)
-    except json.JSONDecodeError as exc:
-        raise ValueError(f"config file is not valid JSON: {exc}") from exc
-    if not isinstance(raw, dict):
-        raise ValueError("config file must be a JSON object")
-    if raw.get("version") != CONFIG_VERSION:
-        raise ValueError(f"unsupported config version: {raw.get('version')}")
-    config_data = raw.get("config")
-    if not isinstance(config_data, dict):
-        raise ValueError("config file must contain a 'config' object")
-    return ProjectConfig.from_dict(config_data)
+    _version, data = read_json_config(
+        path, expected_version=CONFIG_VERSION, payload_key="config"
+    )
+    return ProjectConfig.from_dict(data)
 
 
 def plan_defining_fields() -> tuple[str, ...]:
@@ -338,6 +308,7 @@ __all__ = [
     "PROJECT_CONFIG_DEFAULT_PATH",
     "ProjectConfig",
     "RunOptions",
+    "default_cache_dir",
     "default_project_config",
     "default_user_agent",
     "load_project_config",

@@ -152,56 +152,51 @@ def build_parser() -> argparse.ArgumentParser:
     return parser
 
 
-def _coalesce(cli_value, config_value, default):
-    if cli_value is not None:
-        return cli_value
-    if config_value is not None:
-        return config_value
-    return default
+from defs.runtime.cli import coalesce
 
 
 def options_from_args(args, project_config) -> RunOptions:
     return RunOptions(
-        input_path=_coalesce(
+        input_path=coalesce(
             args.input, project_config.input_path, RunOptions.input_path
         ),
-        artifacts_dir=_coalesce(
+        artifacts_dir=coalesce(
             args.artifacts, project_config.artifacts_dir, RunOptions.artifacts_dir
         ),
-        chunk_size=_coalesce(
+        chunk_size=coalesce(
             args.chunk_size, project_config.chunk_size, RunOptions.chunk_size
         ),
-        partition_count=_coalesce(
+        partition_count=coalesce(
             getattr(args, "partition_count", None),
             project_config.partition_count,
             RunOptions.partition_count,
         ),
         partition_id=getattr(args, "partition_id", None),
-        storage_format=_coalesce(
+        storage_format=coalesce(
             args.storage_format,
             project_config.storage_format,
             RunOptions.storage_format,
         ),
         chunk_id=args.chunk_id,
-        workers=_coalesce(args.workers, project_config.workers, RunOptions.workers),
-        timeout_s=_coalesce(
+        workers=coalesce(args.workers, project_config.workers, RunOptions.workers),
+        timeout_s=coalesce(
             args.timeout, project_config.timeout_s, RunOptions.timeout_s
         ),
-        max_retries=_coalesce(
+        max_retries=coalesce(
             args.max_retries, project_config.max_retries, RunOptions.max_retries
         ),
-        rate_limit_rps=_coalesce(
+        rate_limit_rps=coalesce(
             args.rate_limit, project_config.rate_limit_rps, RunOptions.rate_limit_rps
         ),
         user_agent=args.user_agent or project_config.user_agent or default_user_agent(),
-        cache_dir=_coalesce(args.cache_dir, project_config.cache_dir, ""),
-        max_failure_attempts=_coalesce(
+        cache_dir=coalesce(args.cache_dir, project_config.cache_dir, ""),
+        max_failure_attempts=coalesce(
             args.max_failure_attempts,
             project_config.max_failure_attempts,
             RunOptions.max_failure_attempts,
         ),
         ignore_failure_history=getattr(args, "ignore_failure_history", False),
-        limit=_coalesce(args.limit, project_config.limit, RunOptions.limit),
+        limit=coalesce(args.limit, project_config.limit, RunOptions.limit),
         log_level=args.log_level,
         run_id=args.run_id,
     )
@@ -405,23 +400,23 @@ def main(argv=None) -> int:
             project_config = default_project_config()
 
         updated = ProjectConfig(
-            input_path=_coalesce(
+            input_path=coalesce(
                 args.input, project_config.input_path, RunOptions.input_path
             ),
-            artifacts_dir=_coalesce(
+            artifacts_dir=coalesce(
                 args.artifacts, project_config.artifacts_dir, RunOptions.artifacts_dir
             ),
-            chunk_size=_coalesce(
+            chunk_size=coalesce(
                 args.chunk_size, project_config.chunk_size, RunOptions.chunk_size
             ),
-            workers=_coalesce(args.workers, project_config.workers, RunOptions.workers),
-            timeout_s=_coalesce(
+            workers=coalesce(args.workers, project_config.workers, RunOptions.workers),
+            timeout_s=coalesce(
                 args.timeout, project_config.timeout_s, RunOptions.timeout_s
             ),
-            max_retries=_coalesce(
+            max_retries=coalesce(
                 args.max_retries, project_config.max_retries, RunOptions.max_retries
             ),
-            rate_limit_rps=_coalesce(
+            rate_limit_rps=coalesce(
                 args.rate_limit,
                 project_config.rate_limit_rps,
                 RunOptions.rate_limit_rps,
@@ -429,14 +424,14 @@ def main(argv=None) -> int:
             user_agent=args.user_agent
             or project_config.user_agent
             or default_user_agent(),
-            cache_dir=_coalesce(args.cache_dir, project_config.cache_dir, ""),
-            max_failure_attempts=_coalesce(
+            cache_dir=coalesce(args.cache_dir, project_config.cache_dir, ""),
+            max_failure_attempts=coalesce(
                 args.max_failure_attempts,
                 project_config.max_failure_attempts,
                 RunOptions.max_failure_attempts,
             ),
-            limit=_coalesce(args.limit, project_config.limit, RunOptions.limit),
-            storage_format=_coalesce(
+            limit=coalesce(args.limit, project_config.limit, RunOptions.limit),
+            storage_format=coalesce(
                 args.storage_format,
                 project_config.storage_format,
                 RunOptions.storage_format,

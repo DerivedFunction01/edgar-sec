@@ -46,6 +46,12 @@ ENTRIES: tuple[LauncherEntry, ...] = (
         description="portable finalized artifact transport",
         module="defs.runtime.bundle",
     ),
+    LauncherEntry(
+        id="settings",
+        label="Settings & .env",
+        description="generate a documented .env template from the settings registry",
+        module="defs.runtime.settings_cli",
+    ),
 )
 
 

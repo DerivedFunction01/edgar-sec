@@ -44,7 +44,7 @@ python run.py            # pick "Dataset Viewer"
 python run.py viewer
 ```
 
-`--artifacts-root` defaults to `EDGAR_ARTIFACTS_ROOT` then `.artifacts`.
+`--artifacts-root` defaults to `ARTIFACTS_ROOT` then `.artifacts`.
 `--host` / `--port` override the bind (default `127.0.0.1:8500`).
 
 ## API surface

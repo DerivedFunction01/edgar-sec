@@ -6,6 +6,7 @@ import argparse
 import json
 import sys
 
+from .core import config as phase_config
 from .core import discovery
 from .core.materialize import materialize
 from .core.target_plan import plan
@@ -13,6 +14,14 @@ from .core.target_plan import plan
 
 def _stderr_progress(event: dict) -> None:
     """Report stage events on stderr; stdout stays pure JSON for automation."""
+    if event.get("type") == "batch_done":
+        print(
+            f"progress: batch {event.get('batch')} "
+            f"(CIK {event.get('cik_start')}..{event.get('cik_end')}, "
+            f"rows={event.get('rows')})",
+            file=sys.stderr,
+        )
+        return
     if event.get("type") == "merge_stage":
         stage = event.get("stage", "")
         rows = event.get("rows")
@@ -26,19 +35,20 @@ def main(argv: list[str] | None = None) -> int:
     materialize_parser = commands.add_parser("materialize")
     materialize_parser.add_argument("--source-artifact")
     materialize_parser.add_argument("--source-manifest")
-    materialize_parser.add_argument(
-        "--output-root", default=".artifacts/filing_extraction/catalogs"
-    )
+    materialize_parser.add_argument("--config", default=None)
+    materialize_parser.add_argument("--output-root", default=None)
     materialize_parser.add_argument(
         "--progress",
         action="store_true",
         help="report stage progress on stderr",
     )
+    materialize_parser.add_argument("--source-batch-size", type=int, default=None)
+    materialize_parser.add_argument("--threads", type=int, default=None)
+    materialize_parser.add_argument("--memory-limit", default=None)
+    materialize_parser.add_argument("--temp-directory", default=None)
     plan_parser = commands.add_parser("plan")
     plan_parser.add_argument("--catalog", required=True)
-    plan_parser.add_argument(
-        "--output-root", default=".artifacts/filing_extraction/runs"
-    )
+    plan_parser.add_argument("--output-root", default=None)
     plan_parser.add_argument("--form", action="append", default=[])
     plan_parser.add_argument(
         "--amendment", choices=("both", "original", "amendments"), default="both"
@@ -54,11 +64,20 @@ def main(argv: list[str] | None = None) -> int:
     status_parser.add_argument("--runs-root", default=None)
     args = parser.parse_args(argv)
     if args.command == "materialize":
+        config = phase_config.load(args.config)
         result = materialize(
             args.source_artifact,
             args.output_root,
             source_manifest=args.source_manifest,
             progress=_stderr_progress if args.progress else None,
+            source_batch_size=(
+                args.source_batch_size
+                if args.source_batch_size is not None
+                else config.source_batch_size
+            ),
+            threads=args.threads,
+            memory_limit=args.memory_limit,
+            temp_directory=args.temp_directory,
         )
     elif args.command == "plan":
         result = plan(

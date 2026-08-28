@@ -1,5 +1,7 @@
 """Reusable file storage primitives for extraction phases."""
 
+import pyarrow as pa
+
 from .artifacts import file_sha256, parquet_column_names, read_records
 from .converter import DatasetConverter
 from .dataset import Dataset
@@ -29,7 +31,7 @@ from .executor import (
     StorageOperation,
 )
 from .factory import make_chunk_backend
-from .finalized import FinalizedArtifact
+from .finalized import DuckDBStaging, FinalizedArtifact
 
 DEFAULT_STORAGE_FORMAT = "parquet"
 from .jsonl import JsonlChunkBackend, JsonlCodec, JsonlKeyValueBackend, JsonlWal
@@ -76,6 +78,7 @@ __all__ = [
     "DatasetConverter",
     "DatasetSpec",
     "DeleteMatching",
+    "DuckDBStaging",
     "Eq",
     "FileBackend",
     "FileStorageExecutor",
@@ -115,6 +118,7 @@ __all__ = [
     "jsonl_columns",
     "make_chunk_backend",
     "ordered_keys",
+    "pa",
     "parquet_column_names",
     "read_records",
     "validate_files",

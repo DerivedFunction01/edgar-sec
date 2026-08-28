@@ -273,6 +273,20 @@ def default_headers(user_agent: str) -> dict:
     }
 
 
+@dataclass(frozen=True)
+class SecTransportProfile:
+    """Consolidated SEC transport settings profile."""
+
+    user_agent: str
+    rate_limit_rps: float = DEFAULT_RATE_LIMIT_RPS
+    timeout_s: float = DEFAULT_TIMEOUT_S
+    max_retries: int = DEFAULT_MAX_RETRIES
+    max_failure_attempts: int = 3
+    cache_dir: str | None = None
+    max_response_bytes: int | None = None
+    ignore_failure_history: bool = False
+
+
 class SecHttpClient:
     """Single request path for JSON and text responses.
 
@@ -292,17 +306,42 @@ class SecHttpClient:
 
     def __init__(
         self,
-        user_agent: str,
+        user_agent: str | None = None,
         rate_limiter: RateLimiter | None = None,
         retry_policy: RetryPolicy | None = None,
-        timeout_s: float = 15.0,
+        timeout_s: float = DEFAULT_TIMEOUT_S,
         cache_dir: str | None = None,
         max_response_bytes: int | None = None,
         metrics: HttpMetrics | None = None,
         session_factory: Callable[[], Any] = requests.Session,
         max_failure_attempts: int = 3,
         ignore_failure_history: bool = False,
+        profile: SecTransportProfile | None = None,
     ):
+        if profile is not None:
+            user_agent = user_agent or profile.user_agent
+            timeout_s = (
+                profile.timeout_s if timeout_s == DEFAULT_TIMEOUT_S else timeout_s
+            )
+            cache_dir = cache_dir if cache_dir is not None else profile.cache_dir
+            max_response_bytes = max_response_bytes or profile.max_response_bytes
+            max_failure_attempts = (
+                profile.max_failure_attempts
+                if max_failure_attempts == 3
+                else max_failure_attempts
+            )
+            ignore_failure_history = (
+                ignore_failure_history or profile.ignore_failure_history
+            )
+            if rate_limiter is None and profile.rate_limit_rps > 0:
+                rate_limiter = RateLimiter(min_interval_s=1.0 / profile.rate_limit_rps)
+            if retry_policy is None and profile.max_retries >= 0:
+                retry_policy = RetryPolicy(max_retries=profile.max_retries)
+
+        if not user_agent:
+            raise ValueError(
+                "user_agent is required for SecHttpClient (or supply via SecTransportProfile)"
+            )
         self.rate_limiter = rate_limiter or RateLimiter()
         self.retry_policy = retry_policy or RetryPolicy()
         self.timeout_s = timeout_s

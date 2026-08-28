@@ -130,9 +130,19 @@ statuses still fail the merge.
 
 `--configure` is the only writer of `.artifacts/metadata/config.json`. A missing
 config is created as a validated template and the run stops before any network
-work so the SEC contact identity (`--user-agent` / `SEC_USER_AGENT`,
-`AppName/1.0 contact@example.com`) can be added first. CLI flags are temporary
-overrides and are never persisted.
+work so the SEC contact identity (`--user-agent`, `AppName/1.0
+contact@example.com`) can be added first. CLI flags are temporary overrides and
+are never persisted.
+
+SEC identity and cache settings are declared in the shared settings registry
+(`defs/runtime/settings/sec.py`) and resolved through it: `sec.user_agent`
+(environment name `SEC_USER_AGENT`, also persisted in the config's
+`credentials` section) and `sec.cache_dir` (`SEC_CACHE_DIR`). Precedence is
+direct environment → `.env` → persisted config → default. The legacy
+`user_agent_env` config field was removed: configurations containing it fail
+validation as an unknown field instead of silently resolving. Phase-specific
+options (e.g. `metadata.max_failure_attempts`) are declared in this phase's
+`settings.py` and registered through the `phases/settings.py` barrel.
 
 `plan.json` is an immutable snapshot of the effective run options plus an input
 fingerprint and plan hash. If the effective options or input CSV change, the plan

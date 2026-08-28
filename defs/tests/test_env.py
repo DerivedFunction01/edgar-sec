@@ -1,4 +1,12 @@
-from defs.runtime.env import get_env, load_dotenv
+from defs.runtime.env import get_env, load_dotenv, render_dotenv_value
+
+
+def test_render_dotenv_value_quotes_only_when_needed():
+    assert render_dotenv_value("plain") == "plain"
+    assert render_dotenv_value("") == ""
+    assert render_dotenv_value("a b") == '"a b"'
+    assert render_dotenv_value('say "hi"') == '"say \\"hi\\""'
+    assert render_dotenv_value("#comment") == '"#comment"'
 
 
 def test_load_dotenv_parses_quotes_comments_and_export(tmp_path):
@@ -59,5 +67,5 @@ def test_get_env_uses_edgar_dotenv_path_override(tmp_path, monkeypatch):
     env_file = tmp_path / "custom.env"
     env_file.write_text("SEC_TEST_VAR=custom\n", encoding="utf-8")
     monkeypatch.delenv("SEC_TEST_VAR", raising=False)
-    monkeypatch.setenv("EDGAR_DOTENV_PATH", str(env_file))
+    monkeypatch.setenv("DOTENV_PATH", str(env_file))
     assert get_env("SEC_TEST_VAR") == "custom"

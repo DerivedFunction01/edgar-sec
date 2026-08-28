@@ -14,7 +14,7 @@ def main() -> None:
     parser.add_argument(
         "--artifacts-root",
         default=None,
-        help="artifacts workspace (default: EDGAR_ARTIFACTS_ROOT or .artifacts)",
+        help="artifacts workspace (default: ARTIFACTS_ROOT or .artifacts)",
     )
     parser.add_argument("--host", default="127.0.0.1")
     parser.add_argument("--port", type=int, default=8500)

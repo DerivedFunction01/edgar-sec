@@ -27,6 +27,7 @@ python run.py                 # interactive menu
 python run.py metadata        # Phase 01 interactive wizard
 python run.py filing-catalog  # Phase 02 interactive materialize/plan menu
 python run.py viewer          # local read-only dataset viewer
+python run.py settings generate-dotenv   # write a documented .env template
 
 # Or use a component's canonical command surface directly:
 .venv/bin/python -m phases.01_metadata_extraction.cli plan \
@@ -37,6 +38,13 @@ python run.py viewer          # local read-only dataset viewer
     --output artifacts.bundle.zip
 # Or choose Artifact Bundle from `python run.py` for the interactive workflow.
 ```
+
+Settings are declared once as typed specs with logical dotted paths
+(`runtime.threads`, `sec.user_agent`, `filing_extraction.source_batch_size`);
+environment names are generated from them (`RUNTIME_THREADS`,
+`FILING_EXTRACTION_SOURCE_BATCH_SIZE`). The generated dotenv template
+documents every setting, comments out machine-derived suggestions, and never
+writes secret values.
 
 ## Phases
 
@@ -53,6 +61,12 @@ Materializes form-partitioned filing occurrences from the finalized Phase 01
 artifact without network access or Phase 01 chunk reads, then plans deterministic
 target selections for later archive resolution. Phase 02 is no-network metadata
 preparation only; it does not fetch filing documents.
+
+Materialization is memory-bounded: source rows are processed in CIK-keyset
+batches (configurable, default 1,000) through disk-backed DuckDB staging tables
+with machine-derived thread/memory limits (`psutil`, environment-overridable).
+Target artifacts are physically unordered; identity and provenance are retained
+for later key/sort phases, and staging is transient.
 
 The interactive launcher (`python run.py filing-catalog`) and the canonical CLI
 (`python -m phases.02_filing_extraction.cli {materialize,plan,status}`) share one
@@ -77,12 +91,14 @@ read-only SQL console — with a built TypeScript UI.
 ## Conventions
 
 - Every change is gated by the root validation runner: `python check.py` runs
-  the ruff format check, the ruff lint (configuration in `ruff.toml`), then
-  each test suite in isolation; `--fix` applies formatting and safe lint fixes
-  first.
-- Shared HTTP, storage, CLI lifecycle, progress, and worker-commit behavior live
-  under `defs/`; phases consume those public contracts and own their schemas and
-  domain logic.
+  the ruff format check, the ruff lint (configuration in `ruff.toml`), the
+  registered policy scanners (environment-access and future gates — see
+  `defs/runtime/checks.py`; `--scan` runs only the scanners), then each test
+  suite in isolation; `--fix` applies formatting and safe lint fixes first.
+- Shared HTTP, storage, CLI lifecycle, progress, settings, and worker-commit
+  behavior live under `defs/`; phases consume those public contracts and own
+  their schemas and domain logic. Direct environment access is confined to
+  `defs/runtime/env.py` and the settings registry.
 - Plans and configs are immutable snapshots validated against effective options;
   completed chunks are skipped and never re-fetched.
 - Credentials (SEC User-Agent) come from the environment or the git-ignored

@@ -1,7 +1,0 @@
-"""Defaults for capabilities shared by phase runtimes."""
-
-DEFAULT_WORKERS = 4
-DEFAULT_CHUNK_SIZE = 1000
-DEFAULT_PARTITION_COUNT = 1
-
-__all__ = ["DEFAULT_CHUNK_SIZE", "DEFAULT_PARTITION_COUNT", "DEFAULT_WORKERS"]

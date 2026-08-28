@@ -12,9 +12,15 @@ from .artifacts import (
     resolve_manifest,
     validate_manifest,
 )
+from .checks import Scanner, ScannerFinding, register, registered, run_all
 from .cli import add_common_options, coalesce, load_config_or_template, print_json
-from .defaults import DEFAULT_CHUNK_SIZE, DEFAULT_PARTITION_COUNT, DEFAULT_WORKERS
-from .env import DEFAULT_DOTENV_PATH, get_env, load_dotenv
+from .env import (
+    DEFAULT_DOTENV_PATH,
+    get_env,
+    load_dotenv,
+    render_dotenv_value,
+    scan_modified_environment_access,
+)
 from .interactive import InteractivePhase, run_interactive
 from .partitions import divide_ids_among_workers, parse_id_selection
 from .paths import (
@@ -33,6 +39,22 @@ from .paths import (
     resolve_paths,
 )
 from .progress import make_merge_progress_callback, make_tqdm_callback
+from .resources import RuntimeResourceProfile, derive_resources
+from .settings import (
+    MISSING,
+    SettingSpec,
+    collect_specs,
+    environment_name,
+    flatten_settings,
+    get_setting,
+    render_dotenv,
+    resolve_settings,
+)
+from .settings.runtime import (
+    DEFAULT_CHUNK_SIZE,
+    DEFAULT_PARTITION_COUNT,
+    DEFAULT_WORKERS,
+)
 
 __all__ = [
     "DEFAULT_CHUNK_SIZE",
@@ -41,20 +63,30 @@ __all__ = [
     "DEFAULT_WORKERS",
     "MERGE_DIR_NAME",
     "MERGE_REPORT_NAME",
+    "MISSING",
     "ArtifactClassification",
     "ArtifactRole",
     "InteractivePhase",
     "PhasePaths",
     "ProjectPaths",
     "RunPaths",
+    "RuntimeResourceProfile",
+    "Scanner",
+    "ScannerFinding",
+    "SettingSpec",
     "add_common_options",
     "artifact_id",
     "classify_artifact_path",
     "coalesce",
+    "collect_specs",
     "create_bundle",
+    "derive_resources",
     "discover_legacy_manifests",
     "divide_ids_among_workers",
+    "environment_name",
+    "flatten_settings",
     "get_env",
+    "get_setting",
     "import_bundle",
     "load_config_or_template",
     "load_dotenv",
@@ -69,9 +101,16 @@ __all__ = [
     "partition_merge_root_in",
     "print_json",
     "publish_manifest",
+    "register",
+    "registered",
     "relative_path",
+    "render_dotenv",
+    "render_dotenv_value",
     "resolve_manifest",
     "resolve_paths",
+    "resolve_settings",
+    "run_all",
     "run_interactive",
+    "scan_modified_environment_access",
     "validate_manifest",
 ]

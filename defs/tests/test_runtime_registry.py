@@ -32,6 +32,7 @@ def test_registry_shape_is_unique_and_complete():
         "metadata",
         "filing-catalog",
         "artifact-bundle",
+        "settings",
     }
 
 

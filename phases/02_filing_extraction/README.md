@@ -20,7 +20,7 @@ python run.py filing-catalog plan --catalog <catalog-directory>
 The interactive menu offers:
 
 1. Materialize catalog — pick a finalized Phase 01 artifact or manifest and an
-   output root; produces a catalog directory.
+   output root; produces a catalog directory through bounded DuckDB staging.
 2. Plan filing targets — pick a catalog, optional form filters, an amendment
    policy (`both`/`original`/`amendments`), and an optional limit; writes an
    immutable target-plan directory.
@@ -32,12 +32,34 @@ Prompts show workspace-derived defaults. In the standard local layout, blank
 materialization input selects the finalized Phase 01
 `metadata/runs/local/merge/submission_metadata.parquet` artifact when present,
 and blank output inputs use `filing_extraction/catalogs` or
-`filing_extraction/runs` under `EDGAR_ARTIFACTS_ROOT`. If exactly one catalog is
+`filing_extraction/runs` under `ARTIFACTS_ROOT`. If exactly one catalog is
 available, blank planning input selects it automatically. Materialization and
 planning show a tqdm stage bar (source validation, company profiles, per-form
 targets, occurrence sources, manifest publication) so long DuckDB and hashing
 steps report progress instead of appearing to hang. The canonical CLI accepts an
 optional `--progress` flag on `materialize` and `plan` for the same events.
+
+Materialization uses a configurable source-row batch size (default 1,000) and
+disk-backed DuckDB staging tables. Execution threads, memory budget, and spill
+directory are machine-derived (`psutil` with an `os` fallback) and are never
+persisted. Container or shared-host overrides are available through the
+generated environment names `RUNTIME_THREADS`, `RUNTIME_MEMORY_LIMIT`,
+`RUNTIME_MEMORY_FRACTION`, and `RUNTIME_TEMP_DIRECTORY`.
+
+## Phase settings vs machine-local settings
+
+Phase behavior is declared in this phase's `settings.py`
+(`filing_extraction.source_batch_size`) and registered through the
+`phases/settings.py` barrel; it is a persistable, dataset-relevant setting.
+Shared runtime execution settings live in the shared registry
+(`defs/runtime/settings/runtime.py`) and are machine-local: they affect how a
+machine executes work but are never part of dataset identity, so they default
+to machine detection and are not written to config or plans.
+
+Resolution precedence for `source_batch_size`: explicit `--source-batch-size`
+flag → direct environment/`.env` (`FILING_EXTRACTION_SOURCE_BATCH_SIZE`) →
+persisted Phase 02 config → default. Runtime execution settings resolve as CLI flag →
+environment → machine-derived value.
 
 ## Canonical command surface
 
@@ -50,9 +72,27 @@ optional `--progress` flag on `materialize` and `plan` for the same events.
 .venv/bin/python -m phases.02_filing_extraction.cli status
 ```
 
+`materialize` accepts machine-tuning overrides: `--source-batch-size`,
+`--threads`, `--memory-limit`, `--temp-directory`, and `--progress`. Explicit
+flags override the persisted Phase 02 configuration at
+`.artifacts/filing_extraction/config.json` (`--config` relocates it), which
+currently holds `source_batch_size`; when neither is present the conservative
+default (1,000 source rows per batch) applies. DuckDB threads, memory budget,
+and spill directory default to machine-derived values (`psutil` with an `os`
+fallback) and may be overridden per environment through
+`DUCKDB_THREADS`, `DUCKDB_MEMORY_LIMIT`,
+`DUCKDB_MEMORY_FRACTION`, and `DUCKDB_TEMP_DIRECTORY` without
+touching project configuration. All of these resolve through the shared
+settings registry (`defs/runtime/settings/`), not ad-hoc environment reads.
+
 The catalog records the source artifact hash and schema version. Accession
 fan-out across CIKs is retained; occurrence identity includes source CIK,
 accession, and document path.
+
+Target and occurrence-source artifacts are physically unordered in Phase 02.
+Identity and provenance fields are retained; later phases may create keys,
+indexes, or sorted derivatives. Staging tables are removed after success or
+failure and are never included in artifact bundles.
 
 ## Scope boundary: Phase 02 vs Phase 2.5
 
@@ -68,7 +108,7 @@ Phase 02 outputs as the input contract for that future stage.
 ## Handoff and bundles
 
 Phase handoffs use immutable manifests with paths relative to
-`EDGAR_ARTIFACTS_ROOT`; no phase assumes another phase's run directory. For
+`ARTIFACTS_ROOT`; no phase assumes another phase's run directory. For
 portable finalized inputs, use `python -m defs.runtime.bundle create`, then
 `verify` and `import` the bundle at the destination workspace. Bundles do not
 include transient chunks or caches.

@@ -140,8 +140,8 @@ def test_materialize_menu_uses_local_phase_one_default(monkeypatch, tmp_path) ->
     )
     source.parent.mkdir(parents=True)
     source.write_bytes(b"parquet placeholder")
-    monkeypatch.setenv("EDGAR_ARTIFACTS_ROOT", str(tmp_path))
-    responses = iter(["", ""])
+    monkeypatch.setenv("ARTIFACTS_ROOT", str(tmp_path))
+    responses = iter(["", "", ""])
     captured = {}
     monkeypatch.setattr(builtins, "input", lambda *a, **k: next(responses))
 
@@ -165,7 +165,7 @@ def test_plan_menu_uses_only_discovered_catalog_default(monkeypatch, tmp_path) -
         json.dumps({"catalog_id": "catalog-1", "form_partitions": {}}),
         encoding="utf-8",
     )
-    monkeypatch.setenv("EDGAR_ARTIFACTS_ROOT", str(tmp_path))
+    monkeypatch.setenv("ARTIFACTS_ROOT", str(tmp_path))
     # Accept the catalog default, all forms, both amendment types, no limit,
     # and the derived target-plan output root.
     responses = iter(["", "", "", "", ""])
@@ -242,8 +242,12 @@ def test_materialize_and_plan_emit_stage_events(tmp_path) -> None:
     assert events[2]["forms"] == 1
     # The announced unit total matches the emitted stage count exactly.
     assert events[2]["total_units"] == len(stages)
-    assert events[3]["stage"] == "targets:10-K"
-    assert events[3]["rows"] == 1
+    batch_events = [event for event in events if event["type"] == "batch_done"]
+    assert batch_events[0]["cik_start"] == "0000000001"
+    target_event = next(
+        event for event in events if event.get("stage") == "targets:10-K"
+    )
+    assert target_event["rows"] == 1
 
     catalog = tmp_path / "catalogs" / result["catalog_id"]
     plan_events: list[dict] = []
@@ -255,3 +259,32 @@ def test_materialize_and_plan_emit_stage_events(tmp_path) -> None:
     assert plan_events[0]["forms"] == 1
     assert plan_events[0]["total_units"] == len(plan_stages)
     assert plan_events[1]["rows"] == 1
+
+
+def test_materialize_appends_multiple_cik_batches(tmp_path) -> None:
+    source = tmp_path / "submission_metadata.parquet"
+    pq.write_table(
+        pa.Table.from_pylist(
+            [row("0000000002"), row("0000000001")],
+            schema=schemas.SUBMISSION_METADATA_SCHEMA,
+        ),
+        source,
+    )
+    (tmp_path / "merge_report.json").write_text("{}", encoding="utf-8")
+
+    result = materializer.materialize(
+        str(source),
+        str(tmp_path / "catalogs"),
+        source_batch_size=1,
+    )
+
+    assert result["batch_count"] == 2
+    target = (
+        tmp_path
+        / "catalogs"
+        / result["catalog_id"]
+        / "filing_targets"
+        / "form=10-K"
+        / "data.parquet"
+    )
+    assert pq.read_table(target).num_rows == 2

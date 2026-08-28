@@ -11,10 +11,48 @@ defs/
   table_definitions.py  # shared table-conversion helpers for later content phases
   storage/              # logical datasets, chunk backends, manifests, atomic publication
   sql/                  # SQL AST/compiler/executor boundary
-  runtime/              # paths, artifact handoffs/bundles, config, partitions, progress, CLI
+  runtime/              # paths, settings registry, env resolution, artifacts/bundles,
+                        # partitions, progress, CLI
   viewer/               # read-only local dataset/artifact viewer (see viewer/README.md)
   tests/                # contract tests for the shared contracts (run: pytest defs/tests)
 ```
+
+## Settings registry and environment resolution
+
+All application settings are declared once as typed specs under
+`defs/runtime/settings/` (`runtime.py`, `paths.py`, `sec.py`);
+phases add their own `settings.py` module registered in the
+`phases/settings.py` barrel. Setting identity is a logical dotted path
+(`runtime.threads`, `sec.user_agent`, `filing_extraction.source_batch_size`);
+environment names are generated from it (`RUNTIME_THREADS`,
+`FILING_EXTRACTION_SOURCE_BATCH_SIZE`) — modules never hardcode env names.
+
+- `defs/runtime/env.py` is the only direct-environment boundary: dotenv
+  parsing, direct-process-environment precedence, and `DOTENV_PATH`
+  selection. It contains no application-specific names.
+- Resolution precedence per spec: explicit CLI override → direct
+  environment/dotenv (when `env=True`) → persisted config (when
+  `config=True`) → default/factory. Empty environment values count as unset;
+  explicit `0`/`false` are preserved. An explicit `env` mapping bypasses
+  process/dotenv resolution entirely (deterministic tests, path resolution).
+- Machine-derived defaults (engine threads, memory budget, spill directory)
+  are factories over `psutil`/`os` probes and are never persisted
+  automatically. Secret settings (SEC contact identity) resolve normally but
+  are excluded from flattened reports and generated dotenv output.
+- `python run.py settings generate-dotenv [--path .env] [--force] [--phase ID]`
+  atomically renders a documented `.env` template from the same specs used at
+  runtime: static defaults as values, machine-derived defaults as commented
+  suggestions, secrets omitted.
+- The validation gate runs registered policy scanners (see
+  `defs/runtime/checks.py`) between linting and tests:
+  - `environment-access`: flags direct `os.environ`/`os.getenv` outside `defs.runtime.env`
+  - `artifact-paths`: flags hardcoded `".artifacts/"` path literals outside `defs.runtime.paths`
+  - `sql-boundary`: flags raw SQL string literals and execution in phase code outside `defs.sql`
+  - `storage-boundary`: flags direct `pyarrow`, database driver (`duckdb`/`sqlite3`), or `pandas` imports outside `defs/storage`
+  - `secrets-leakage`: flags committed API keys, tokens, and credentials in source code
+  - `clean-exit`: flags `sys.exit()` calls in library and core phase code outside CLI runners
+  - `legacy-shims`: flags dead legacy behavior, backward-compatibility aliases, and transitional shims
+  Register future policy scanners in their respective semantic boundaries or `defs/runtime/scanners/` — `check.py` stays generic.
 
 ## Rules
 

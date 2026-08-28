@@ -34,13 +34,21 @@ class MergeValidation:
     uniqueness_duplicate_counts: dict[tuple[str, str], int]
 
 
-def connect(*, threads: int | None = None, memory_limit: str | None = None):
+def connect(
+    *,
+    threads: int | None = None,
+    memory_limit: str | None = None,
+    temp_directory: str | None = None,
+    preserve_insertion_order: bool = True,
+):
     con = duckdb.connect()
     if threads is not None:
         con.execute("SET threads = ?", [max(1, int(threads))])
     if memory_limit is not None:
         con.execute("SET memory_limit = ?", [memory_limit])
-    con.execute("SET preserve_insertion_order = true")
+    if temp_directory is not None:
+        con.execute("SET temp_directory = ?", [str(Path(temp_directory).resolve())])
+    con.execute("SET preserve_insertion_order = ?", [bool(preserve_insertion_order)])
     return con
 
 

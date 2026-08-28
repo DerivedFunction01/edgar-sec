@@ -10,7 +10,7 @@ The objective of this system is to ingest **200,000 raw SEC Form 10-K annual fil
 
 The current Phase 2 boundary first derives a no-network, form-partitioned filing
 catalog from finalized Phase 1 metadata. Cross-phase handoffs use immutable,
-content-derived manifests with paths relative to `EDGAR_ARTIFACTS_ROOT`; the
+content-derived manifests with paths relative to `ARTIFACTS_ROOT`; the
 DuckDB finalized-artifact facade is separate from the compiled SQL executor
 reserved for later extraction and LLM-session storage. Portable bundles carry
 finalized artifacts only, not chunks or caches.
@@ -450,8 +450,32 @@ To prevent SQL double-counting and enable sub-second queries across 200,000 fili
 │ `sec_atomic_records`           │ Discrete leaf-level contracts, facilities, plants, unions, lawsuits   │
 │                                │ Contains: `facets` (JSONB), `active_flags` (TEXT[]), `provenance`     │
 ├────────────────────────────────┼───────────────────────────────────────────────────────────────────────┤
-│ `sec_atomic_metrics`           │ Granular typed numbers: `metric_type`, `value`, `unit`, `scale`       │
+│ `sec_atomic_metrics`           │ Granular typed numbers: `metric_type`, `value`, `unit`, `scale` │
 │                                │ (Safe for direct SQL `SUM()`, `AVG()`, `MIN()`, `MAX()` aggregations) │
 └────────────────────────────────┴───────────────────────────────────────────────────────────────────────┘
 
 ```
+
+## Operator Configuration Boundary (implemented)
+
+All application settings are declared once as typed specs with logical dotted
+paths in the shared settings registry (`defs/runtime/settings/`) plus one
+`settings.py` per phase, registered through the `phases/settings.py` barrel.
+Environment names are generated from the logical paths (e.g.
+`filing_extraction.source_batch_size` -> `FILING_EXTRACTION_SOURCE_BATCH_SIZE`),
+so new phases add a spec module — never environment exports or ad-hoc
+`os.environ` reads. Direct environment access is confined to the generic
+`defs/runtime/env.py` boundary and the settings registry; an automated
+environment-access scanner in the `check.py` validation gate enforces this on
+every modified file.
+
+Resolution precedence: explicit CLI override → direct environment/canonical
+`.env` (when the spec allows `env`) → persisted config (when the spec allows
+`config`) → default. Machine-derived values (DuckDB threads, memory budget,
+spill directory) are never persisted automatically and stay machine-local;
+persisted phase settings remain part of the owning phase's reproducibility
+contract. Secrets (SEC contact identity, provider credentials) resolve
+through the environment or git-ignored `.env` only, and are excluded from
+flattened reports and generated dotenv output. `python run.py settings
+generate-dotenv` renders a documented `.env` template from the same specs the
+runtime resolves, so operator documentation can never drift from behavior.

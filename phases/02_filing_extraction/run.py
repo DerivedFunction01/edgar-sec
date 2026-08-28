@@ -24,9 +24,11 @@ from tqdm import tqdm
 
 from defs.runtime import load_manifest, resolve_paths
 from defs.runtime.progress import make_merge_progress_callback
+from defs.runtime.resources import derive_resources
 from defs.storage import StorageError
 
 from .cli import main as cli_main
+from .core import config as phase_config
 from .core import discovery
 from .core.materialize import materialize
 from .core.target_plan import plan
@@ -70,14 +72,17 @@ def _default_source() -> tuple[str, str]:
     if len(candidates) == 1:
         return candidates[0]
     metadata = importlib.import_module("phases.01_metadata_extraction.core")
-    if paths.config_path.is_file():
+    metadata_default_run = metadata.RunOptions().run_id
+    metadata_default_root = paths.phase("metadata").run(metadata_default_run).run_root
+    metadata_config_path = paths.phase("metadata").config_path
+    if metadata_config_path.is_file():
         try:
-            metadata_config = metadata.load_project_config(paths.config_path)
+            metadata_config = metadata.load_project_config(metadata_config_path)
             metadata_root = Path(metadata_config.artifacts_dir)
         except (OSError, ValueError):
-            metadata_root = paths.phase("metadata").run("local").run_root
+            metadata_root = metadata_default_root
     else:
-        metadata_root = paths.phase("metadata").run("local").run_root
+        metadata_root = metadata_default_root
     legacy = metadata_root / "merge" / "submission_metadata.parquet"
     if legacy.is_file():
         return "artifact", str(legacy)
@@ -128,6 +133,12 @@ class _StageBar:
         self._adapter = make_merge_progress_callback(self._bar)
 
     def __call__(self, event: dict) -> None:
+        if event.get("type") == "batch_done":
+            self._bar.set_postfix(
+                batch=event.get("batch"),
+                cik=f"{event.get('cik_start')}..{event.get('cik_end')}",
+            )
+            return
         total_units = event.get("total_units")
         if total_units is not None:
             self._bar.total = int(total_units)
@@ -150,8 +161,30 @@ def _menu_materialize() -> None:
     output_root = _read(
         f"Output root [{_default_catalog_root()}]: ", _default_catalog_root()
     )
+    settings = phase_config.load()
+    resources = derive_resources()
+    batch_raw = _read(
+        f"Source rows per batch [{settings.source_batch_size}]: ",
+        str(settings.source_batch_size),
+    )
+    try:
+        source_batch_size = int(batch_raw)
+    except ValueError:
+        print(f"  invalid integer: {batch_raw!r}")
+        return
+    print(
+        f"  DuckDB resources: {resources.threads} threads, "
+        f"{resources.memory_limit}, spill={resources.temp_directory}"
+    )
     bar = _StageBar("materialize")
-    kwargs: dict = {"output_root": output_root, "progress": bar}
+    kwargs: dict = {
+        "output_root": output_root,
+        "progress": bar,
+        "source_batch_size": source_batch_size,
+        "threads": resources.threads,
+        "memory_limit": resources.memory_limit,
+        "temp_directory": resources.temp_directory,
+    }
     if source_kind == "manifest" or source.endswith(".json"):
         kwargs["source_manifest"] = source
     else:

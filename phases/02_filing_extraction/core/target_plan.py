@@ -7,6 +7,7 @@ import logging
 from collections.abc import Callable
 from pathlib import Path
 
+from defs.runtime.paths import resolve_paths
 from defs.storage import FinalizedArtifact, StorageError, file_sha256
 
 logger = logging.getLogger("filing_extraction.target_plan")
@@ -23,7 +24,7 @@ def _emit(progress: Callable[[dict], None] | None, event: dict) -> None:
 
 def plan(
     catalog: str,
-    output_root: str = ".artifacts/filing_extraction/runs",
+    output_root: str | None = None,
     *,
     forms: tuple[str, ...] = (),
     amendment: str = "both",
@@ -31,6 +32,8 @@ def plan(
     progress: Callable[[dict], None] | None = None,
 ) -> dict:
     root = Path(catalog).resolve()
+    if output_root is None:
+        output_root = str(resolve_paths("filing_extraction").phase_root / "runs")
     manifest_path = root / "catalog_manifest.json"
     if not manifest_path.exists():
         raise StorageError("catalog_manifest.json is required")
@@ -80,7 +83,7 @@ def plan(
             where = "LIMIT ?"
             params = [limit]
         with FinalizedArtifact(source) as artifact:
-            query = f"SELECT * FROM {artifact.relation} ORDER BY source_cik, accession, document_path {where}"
+            query = f"SELECT * FROM {artifact.relation} {where}"
             counts[form] = artifact.copy_query(query, destination_file, params)
         _emit(
             progress,

@@ -423,7 +423,7 @@ def test_interactive_wizard_rejects_missing_sec_identity(tmp_path, monkeypatch):
         tmp_path, FakeSession(), monkeypatch, user_agent=""
     )
     monkeypatch.delenv("SEC_USER_AGENT", raising=False)
-    monkeypatch.setenv("EDGAR_DOTENV_PATH", str(tmp_path / "missing.env"))
+    monkeypatch.setenv("DOTENV_PATH", str(tmp_path / "missing.env"))
     answers = iter([])
     monkeypatch.setattr("builtins.input", lambda prompt="": next(answers))
     exit_code = run_mod.main(["--config", str(config_path)])

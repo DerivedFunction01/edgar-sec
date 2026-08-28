@@ -36,7 +36,12 @@ def _find(summaries: list[ArtifactSummary], dataset_id: str) -> ArtifactSummary:
 
 
 def create_app(artifacts_root: Path | None = None) -> FastAPI:
-    root = (artifacts_root or Path(".artifacts")).resolve()
+    if artifacts_root is None:
+        from defs.runtime.paths import resolve_paths
+
+        root = resolve_paths().artifacts_root.resolve()
+    else:
+        root = artifacts_root.resolve()
     app = FastAPI(title="EDGAR Dataset Viewer", docs_url="/api/docs")
 
     @app.get("/api/datasets")

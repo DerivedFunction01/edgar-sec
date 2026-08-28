@@ -29,3 +29,8 @@ ignore = ["TRY004"]
 # subprocess probes inspect return codes manually (PLW1510) and GPU/tool
 # detection is deliberately best-effort (BLE001, S110).
 "init_venv.py" = ["BLE001", "PLW1510", "S110"]
+
+# defs/runtime/checks.py runs registered policy scanners whose failures must
+# fail the validation gate, so the runner deliberately catches every
+# exception the scanner callable can raise.
+"defs/runtime/checks.py" = ["BLE001"]
