@@ -11,7 +11,7 @@ defs/
   table_definitions.py  # shared table-conversion helpers for later content phases
   storage/              # logical datasets, chunk backends, manifests, atomic publication
   sql/                  # SQL AST/compiler/executor boundary
-  runtime/              # paths, config bootstrap, partitions, progress, CLI, launcher registry
+  runtime/              # paths, artifact handoffs/bundles, config, partitions, progress, CLI
   viewer/               # read-only local dataset/artifact viewer (see viewer/README.md)
   tests/                # contract tests for the shared contracts (run: pytest defs/tests)
 ```
@@ -21,6 +21,11 @@ defs/
 - New shared behavior lands here only with a reusable contract plus contract
   tests in `defs/tests/`; phase code consumes public contracts, never
   backend-private helpers.
+- Finalized cross-phase artifacts publish immutable manifests under
+  `.artifacts/artifact-manifests/`. Manifest paths are relative to the artifact
+  root and content IDs exclude filesystem paths, so artifacts can move between
+  persistent and ephemeral workspaces. The bundle command transports finalized
+  artifacts without including chunks, checkpoints, caches, or absolute paths.
 - `filing_identity` is the single owner of accession normalization (one
   canonical 18-digit value; the hyphenated form is derived on display),
   archive URL parsing/construction, occurrence identity

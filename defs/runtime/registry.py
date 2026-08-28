@@ -34,6 +34,18 @@ ENTRIES: tuple[LauncherEntry, ...] = (
         description="interactive SEC 10-K metadata extraction wizard",
         module="phases.01_metadata_extraction.run",
     ),
+    LauncherEntry(
+        id="filing-catalog",
+        label="Phase 02: Filing Catalog",
+        description="no-network filing catalog and target planner",
+        module="phases.02_filing_extraction.run",
+    ),
+    LauncherEntry(
+        id="artifact-bundle",
+        label="Artifact Bundle",
+        description="portable finalized artifact transport",
+        module="defs.runtime.bundle",
+    ),
 )
 
 

@@ -104,6 +104,10 @@ class ProjectPaths:
     def acceptance_root(self) -> Path:
         return self.artifacts_root / "acceptance"
 
+    @property
+    def artifact_manifests_root(self) -> Path:
+        return self.artifacts_root / "artifact-manifests"
+
     def canonical_output(self, phase: str, dataset: str, storage_format: str) -> Path:
         """Return the canonical output path for a logical dataset."""
         phase = _safe_id(phase, "phase")

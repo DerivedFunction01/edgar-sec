@@ -29,6 +29,7 @@ from .executor import (
     StorageOperation,
 )
 from .factory import make_chunk_backend
+from .finalized import FinalizedArtifact
 
 DEFAULT_STORAGE_FORMAT = "parquet"
 from .jsonl import JsonlChunkBackend, JsonlCodec, JsonlKeyValueBackend, JsonlWal
@@ -78,6 +79,7 @@ __all__ = [
     "Eq",
     "FileBackend",
     "FileStorageExecutor",
+    "FinalizedArtifact",
     "InSet",
     "IsNotNull",
     "IsNull",

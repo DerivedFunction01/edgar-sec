@@ -8,7 +8,9 @@ import os
 import shutil
 from collections.abc import Callable
 from dataclasses import dataclass, field
+from pathlib import Path
 
+from defs.runtime.artifacts import make_manifest, publish_manifest
 from defs.runtime.paths import (
     merge_report_path_in,
     partition_artifact_path_in,
@@ -35,6 +37,41 @@ from .schemas import (
 from .storage import make_phase_store
 
 logger = logging.getLogger("metadata.merge")
+
+
+def _artifact_root(artifacts_dir: str, output_path: str | None = None) -> str:
+    """Find the configured artifact root without changing legacy output paths."""
+    path = os.path.abspath(artifacts_dir)
+    marker = f"{os.sep}metadata{os.sep}"
+    if marker in path:
+        return path.split(marker, 1)[0]
+    if output_path is not None:
+        return os.path.commonpath([path, os.path.abspath(output_path)])
+    return path
+
+
+def _publish_handoff(
+    output_path: str,
+    *,
+    artifacts_dir: str,
+    row_count: int,
+    partition: str = "",
+    upstream: tuple[str, ...] = (),
+) -> None:
+    root = _artifact_root(artifacts_dir, output_path)
+    manifest = make_manifest(
+        dataset="submission_metadata",
+        phase="metadata",
+        run_id=Path(artifacts_dir).name,
+        schema_version=SCHEMA_VERSION,
+        artifact_path=output_path,
+        artifacts_root=root,
+        row_count=row_count,
+        partition=partition,
+        upstream=upstream,
+        provenance={"report_source": "finalized_artifact"},
+    )
+    publish_manifest(manifest, artifacts_root=root)
 
 
 class MergeError(Exception):
@@ -342,6 +379,12 @@ def _merge_chunks(
     os.makedirs(os.path.dirname(report_path), exist_ok=True)
     with open(report_path, "w", encoding="utf-8") as fh:
         json.dump(report.to_dict(), fh, indent=2, sort_keys=True)
+    _publish_handoff(
+        output_path,
+        artifacts_dir=artifacts_dir,
+        row_count=report.row_count,
+        partition=f"partition-{partition_id:05d}",
+    )
     return report
 
 
@@ -628,6 +671,11 @@ def merge_partition_artifacts(
     os.makedirs(os.path.dirname(report_path), exist_ok=True)
     with open(report_path, "w", encoding="utf-8") as fh:
         json.dump(report.to_dict(), fh, indent=2, sort_keys=True)
+    _publish_handoff(
+        output_path,
+        artifacts_dir=artifacts_dir,
+        row_count=report.row_count,
+    )
     return report
 
 

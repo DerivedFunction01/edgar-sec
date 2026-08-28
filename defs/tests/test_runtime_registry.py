@@ -27,7 +27,12 @@ def test_registry_shape_is_unique_and_complete():
         entry.id and entry.label and entry.description and entry.module
         for entry in ENTRIES
     )
-    assert {entry.id for entry in ENTRIES} == {"viewer", "metadata"}
+    assert {entry.id for entry in ENTRIES} == {
+        "viewer",
+        "metadata",
+        "filing-catalog",
+        "artifact-bundle",
+    }
 
 
 def test_registered_modules_import_and_expose_main():

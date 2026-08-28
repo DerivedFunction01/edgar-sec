@@ -8,6 +8,24 @@
 
 The objective of this system is to ingest **200,000 raw SEC Form 10-K annual filings (1990–2026)** across three incompatible formatting eras (unformatted ASCII, hybrid HTML, and modern Inline XBRL) and transform them into a fully normalized, machine-queryable research database (Apache Parquet, DuckDB, JSONL, and PostgreSQL).
 
+The current Phase 2 boundary first derives a no-network, form-partitioned filing
+catalog from finalized Phase 1 metadata. Cross-phase handoffs use immutable,
+content-derived manifests with paths relative to `EDGAR_ARTIFACTS_ROOT`; the
+DuckDB finalized-artifact facade is separate from the compiled SQL executor
+reserved for later extraction and LLM-session storage. Portable bundles carry
+finalized artifacts only, not chunks or caches.
+
+> **Phase boundary note.** The repository currently implements Phase 01
+> (submissions metadata) and Phase 02 (filing catalog and deterministic target
+> planning). Phase 02 is metadata preparation only — it does **not** fetch, store,
+> or parse raw SEC filing documents. Filing document acquisition (archive fetch,
+> retries, caching, raw document storage, parsing, and content extraction) is a
+> separate **Phase 2.5** boundary that consumes Phase 02 target plans. Phase 2.5
+> is not yet implemented; the semantic extraction phases below (fundamentals,
+> domain extraction, flattening) follow acquisition and build on the resolved
+> filing documents. This note only records the boundary; it does not change the
+> numbered extraction phases in the topology.
+
 The system enforces **Temporal Invariance**: the schema does not break, deprecate, or mutate when accounting rules or SEC disclosure mandates change over time. Every financial, operational, spatial, and qualitative fact extracted from a filing is mapped into an orthogonal coordinate basis:
 
 $$\text{Fact} = \langle \text{Entity}, \text{TemporalScope}, \text{SpatialScope}, \text{Metric}, \text{FacetDict}, \text{ActiveFlagArray}, \text{Provenance} \rangle$$
