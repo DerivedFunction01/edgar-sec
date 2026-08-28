@@ -47,4 +47,27 @@ def make_tqdm_callback(
     return callback
 
 
-__all__ = ["make_tqdm_callback"]
+def make_merge_progress_callback(pbar):
+    """Adapt merge events (``partition_validated``/``merge_stage``) to a bar.
+
+    Each validated partition and completed stage advances the bar by one
+    unit; ``readback_done`` only refreshes the postfix, since verification
+    is not a planned unit of work.
+    """
+
+    def callback(event: dict) -> None:
+        event_type = event.get("type")
+        if event_type in ("partition_validated", "merge_stage"):
+            pbar.update(1)
+        rows = event.get("rows")
+        postfix = {"rows": rows if rows is not None else 0}
+        if event_type == "partition_validated":
+            postfix["partition"] = event.get("partition_id")
+        if event_type == "merge_stage":
+            postfix["stage"] = event.get("stage")
+        pbar.set_postfix(postfix)
+
+    return callback
+
+
+__all__ = ["make_merge_progress_callback", "make_tqdm_callback"]

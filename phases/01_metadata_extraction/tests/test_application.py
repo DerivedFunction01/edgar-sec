@@ -64,6 +64,7 @@ def make_options(tmp_path, **kw):
         "input_path": str(tmp_path / "input.csv"),
         "artifacts_dir": str(tmp_path / "run"),
         "chunk_size": 2,
+        "partition_count": 1,
         "user_agent": "TestClient/1.0 test@example.com",
     }
     defaults.update(kw)
@@ -169,12 +170,17 @@ def test_run_chunk_end_to_end_with_fake_http(tmp_path, fake_sec):
     )
 
     input_path = write_input(tmp_path)
-    options = make_options(tmp_path, input_path=input_path)
+    options = make_options(tmp_path, input_path=input_path, partition_count=1)
     application.build_plan(options)
 
     summary = application.run_chunk(
         config.RunOptions(
-            **{**options.to_dict(), "chunk_id": 1, "user_agent": options.user_agent}
+            **{
+                **options.to_dict(),
+                "chunk_id": 1,
+                "partition_id": 1,
+                "user_agent": options.user_agent,
+            }
         )
     )
     assert summary["rows"] == 2
@@ -183,13 +189,18 @@ def test_run_chunk_end_to_end_with_fake_http(tmp_path, fake_sec):
     # chunk 2 holds the single remaining CIK (Ford) with recent + one historical file
     summary2 = application.run_chunk(
         config.RunOptions(
-            **{**options.to_dict(), "chunk_id": 2, "user_agent": options.user_agent}
+            **{
+                **options.to_dict(),
+                "chunk_id": 2,
+                "partition_id": 1,
+                "user_agent": options.user_agent,
+            }
         )
     )
     assert summary2["statuses"] == {"ok": 1}
     assert summary2["filings"] == 2  # 1 recent + 1 historical
 
-    status = application.get_status(options)
+    status = application.get_status(options, partition_id=1)
     assert status["completed_chunks"] == 2
     assert status["missing_chunks"] == []
     assert status["mergeable"] is True
@@ -198,12 +209,18 @@ def test_run_chunk_end_to_end_with_fake_http(tmp_path, fake_sec):
     # resume: rerunning a completed chunk is a no-op
     skipped = application.run_chunk(
         config.RunOptions(
-            **{**options.to_dict(), "chunk_id": 1, "user_agent": options.user_agent}
+            **{
+                **options.to_dict(),
+                "chunk_id": 1,
+                "partition_id": 1,
+                "user_agent": options.user_agent,
+            }
         )
     )
     assert skipped["skipped"] is True
     assert len(session.calls) == 4  # no new HTTP requests
 
+    application.merge_one_partition(options, 1)
     output = tmp_path / "merged.parquet"
     report = application.merge(options, str(output))
     assert report.row_count == 3
@@ -271,27 +288,40 @@ def test_jsonl_storage_end_to_end(tmp_path, fake_sec):
     )
 
     input_path = write_input(tmp_path)
-    options = make_options(tmp_path, input_path=input_path, storage_format="jsonl")
+    options = make_options(
+        tmp_path, input_path=input_path, storage_format="jsonl", partition_count=1
+    )
     plan = application.build_plan(options)
     assert plan["storage_format"] == "jsonl"
 
     summary = application.run_chunk(
         config.RunOptions(
-            **{**options.to_dict(), "chunk_id": 1, "user_agent": options.user_agent}
+            **{
+                **options.to_dict(),
+                "chunk_id": 1,
+                "partition_id": 1,
+                "user_agent": options.user_agent,
+            }
         )
     )
     assert summary["rows"] == 2
     summary2 = application.run_chunk(
         config.RunOptions(
-            **{**options.to_dict(), "chunk_id": 2, "user_agent": options.user_agent}
+            **{
+                **options.to_dict(),
+                "chunk_id": 2,
+                "partition_id": 1,
+                "user_agent": options.user_agent,
+            }
         )
     )
     assert summary2["rows"] == 1
 
-    status = application.get_status(options)
+    status = application.get_status(options, partition_id=1)
     assert status["completed_chunks"] == 2
     assert status["mergeable"] is True
 
+    application.merge_one_partition(options, 1)
     output = tmp_path / "merged.parquet"
     report = application.merge(options, str(output))
     assert report.row_count == 3

@@ -3,6 +3,11 @@ __pycache__/
 *.py[codz]
 *$py.class
 
+# Scratch experiment outputs (probes, fixtures, generated parquet)
+scratch/*/fixture/
+scratch/**/*.parquet
+scratch/**/*.jsonl
+
 # C extensions
 *.so
 
@@ -150,6 +155,8 @@ activemq-data/
 # Environments
 .env
 .envrc
+.env.*
+!.env.example
 .venv
 env/
 venv/
@@ -293,11 +300,6 @@ web_modules/
 
 # Yarn Integrity file
 .yarn-integrity
-
-# dotenv environment variable files
-.env
-.env.*
-!.env.example
 
 # parcel-bundler cache (https://parceljs.org/)
 .cache

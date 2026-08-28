@@ -56,68 +56,54 @@ def make_row(cik, name="TEST CO", status="ok", chunk_id=1, accession_suffix="000
     return row
 
 
-def build_run(tmp_path, ciks, chunk_size=2):
-    """Write plan.json plus one completed checkpoint per chunk."""
-    artifacts = tmp_path / "run"
-    artifacts.mkdir()
-    ordered = sorted(ciks)
-    ranges = chunks_mod.assign_chunks(ordered, chunk_size)
-    plan = {
-        "schema_version": schemas.SCHEMA_VERSION,
-        "input_fingerprint": "fp",
-        "row_count": len(ordered),
-        "cik_padded": ordered,
-        "chunks": [rng.to_dict() for rng in ranges],
-        "plan_hash": "x",
-    }
-    (artifacts / "plan.json").write_text(json.dumps(plan), encoding="utf-8")
-    chunks_dir = artifacts / "chunks"
-    chunks_dir.mkdir()
-    for rng in ranges:
-        rows = [
-            make_row(cik, chunk_id=rng.chunk_id)
-            for cik in ordered[rng.start_row : rng.end_row + 1]
-        ]
-        checkpoints.write_checkpoint(
-            rows,
-            str(
-                chunks_dir
-                / checkpoints.chunk_filename(rng.chunk_id, rng.start_row, rng.end_row)
-            ),
-        )
-    return artifacts, plan
-
-
-def test_merge_writes_unified_dataset_and_report(tmp_path):
-    artifacts, _plan = build_run(tmp_path, ["0000000020", "0000000021", "0000000022"])
-    output = tmp_path / "merged" / "submission_metadata.parquet"
-    report = merge_mod.merge_chunks(str(artifacts), str(output))
+def test_merge_partition_report_describes_finalized_artifact(tmp_path):
+    artifacts, _plan = build_partitioned_run(
+        tmp_path, ["0000000020", "0000000021", "0000000022"]
+    )
+    report = merge_mod.merge_partition(str(artifacts), 1)
+    assert report.partition_id == 1
     assert report.row_count == 3
     assert report.filing_record_count == 3
     assert report.errors == []
-    table = pq.read_table(str(output), schema=schemas.SUBMISSION_METADATA_SCHEMA)
+    assert report.duplicate_accessions == []
+    assert report.report_source == "finalized_partition_artifact"
+    artifact = (
+        artifacts
+        / "partitions"
+        / "partition-00001"
+        / "merge"
+        / "submission_metadata.parquet"
+    )
+    assert report.output_path == str(artifact.resolve())
+    assert artifact.exists()
+    stored = json.loads(
+        (
+            artifacts / "partitions" / "partition-00001" / "merge" / "merge_report.json"
+        ).read_text()
+    )
+    assert stored["report_source"] == "finalized_partition_artifact"
+    table = pq.read_table(str(artifact), schema=schemas.SUBMISSION_METADATA_SCHEMA)
     assert sorted(table.column("cik").to_pylist()) == [
         "0000000020",
         "0000000021",
         "0000000022",
     ]
-    assert (tmp_path / "run" / "merge" / "merge_report.json").exists()
 
 
-def test_merge_rejects_missing_chunk(tmp_path):
-    artifacts, _plan = build_run(tmp_path, ["0000000020", "0000000021", "0000000022"])
-    # delete one chunk checkpoint
-    for name in (artifacts / "chunks").iterdir():
+def test_merge_partition_rejects_missing_chunk(tmp_path):
+    artifacts, _plan = build_partitioned_run(
+        tmp_path, ["0000000020", "0000000021", "0000000022"]
+    )
+    for name in (artifacts / "partitions" / "partition-00001" / "chunks").iterdir():
         if "chunk-00002" in name.name:
             name.unlink()
     with pytest.raises(merge_mod.MergeError, match="incomplete"):
-        merge_mod.merge_chunks(str(artifacts), str(tmp_path / "out.parquet"))
+        merge_mod.merge_partition(str(artifacts), 1)
 
 
-def test_merge_rejects_mixed_versions(tmp_path):
-    artifacts, _plan = build_run(tmp_path, ["0000000020", "0000000021"])
-    chunks_dir = artifacts / "chunks"
-    # rewrite one chunk with a different schema_version value
+def test_merge_partition_rejects_mixed_versions(tmp_path):
+    artifacts, _plan = build_partitioned_run(tmp_path, ["0000000020", "0000000021"])
+    chunks_dir = artifacts / "partitions" / "partition-00001" / "chunks"
     files = sorted(chunks_dir.iterdir())
     table = pq.read_table(str(files[0]), schema=schemas.SUBMISSION_METADATA_SCHEMA)
     versions = ["0.0.9"] * table.num_rows
@@ -128,14 +114,13 @@ def test_merge_rejects_mixed_versions(tmp_path):
     )
     pq.write_table(table, str(files[0]))
     with pytest.raises(merge_mod.MergeError):
-        merge_mod.merge_chunks(str(artifacts), str(tmp_path / "out.parquet"))
+        merge_mod.merge_partition(str(artifacts), 1)
 
 
-def test_merge_rejects_duplicate_cik_rows(tmp_path):
-    artifacts, _plan = build_run(tmp_path, ["0000000020", "0000000021"])
-    chunks_dir = artifacts / "chunks"
+def test_merge_partition_rejects_chunk_files_outside_plan(tmp_path):
+    artifacts, _plan = build_partitioned_run(tmp_path, ["0000000020", "0000000021"])
+    chunks_dir = artifacts / "partitions" / "partition-00001" / "chunks"
     files = sorted(chunks_dir.iterdir())
-    # duplicate a row into another chunk file with a fake range
     table = pq.read_table(str(files[0]), schema=schemas.SUBMISSION_METADATA_SCHEMA)
     pq.write_table(
         table,
@@ -143,16 +128,16 @@ def test_merge_rejects_duplicate_cik_rows(tmp_path):
             chunks_dir / "submission_metadata-v1.0.0-chunk-00009-000001-000001.parquet"
         ),
     )
-    with pytest.raises(merge_mod.MergeError):
-        merge_mod.merge_chunks(str(artifacts), str(tmp_path / "out.parquet"))
+    with pytest.raises(merge_mod.MergeError, match="outside the plan"):
+        merge_mod.merge_partition(str(artifacts), 1)
 
 
-def test_merge_rejects_duplicate_accessions_across_ciks(tmp_path):
-    artifacts, _plan = build_run(tmp_path, ["0000000020", "0000000021"], chunk_size=1)
-    chunks_dir = artifacts / "chunks"
-    files = sorted(chunks_dir.iterdir())
-    # make both CIKs carry the same accession
-    for index, path in enumerate(files):
+def test_merge_partition_reports_duplicate_accessions_without_rejecting(tmp_path):
+    artifacts, _plan = build_partitioned_run(
+        tmp_path, ["0000000020", "0000000021"], chunk_size=1
+    )
+    chunks_dir = artifacts / "partitions" / "partition-00001" / "chunks"
+    for path in sorted(chunks_dir.iterdir()):
         table = pq.read_table(str(path), schema=schemas.SUBMISSION_METADATA_SCHEMA)
         filings = table.column("filings").to_pylist()
         for record in filings[0]:
@@ -167,29 +152,272 @@ def test_merge_rejects_duplicate_accessions_across_ciks(tmp_path):
             ),
         )
         pq.write_table(table, str(path))
-    with pytest.raises(merge_mod.MergeError, match="duplicate accession"):
-        merge_mod.merge_chunks(str(artifacts), str(tmp_path / "out.parquet"))
-    report = merge_mod.merge_chunks(
-        str(artifacts), str(tmp_path / "out2.parquet"), allow_accession_duplicates=True
+    report = merge_mod.merge_partition(str(artifacts), 1)
+    assert report.duplicate_accessions == ["000000002021000001"]
+    assert report.warnings
+    assert report.report_source == "finalized_partition_artifact"
+
+
+def test_merge_partition_rejects_wrong_input_fingerprint(tmp_path):
+    artifacts, plan = build_partitioned_run(tmp_path, ["0000000020", "0000000021"])
+    plan["input_fingerprint"] = "different"
+    (artifacts / "plan.json").write_text(json.dumps(plan), encoding="utf-8")
+    with pytest.raises(merge_mod.MergeError, match="fingerprint"):
+        merge_mod.merge_partition(str(artifacts), 1)
+
+
+def test_merge_partition_rejects_jsonl_output(tmp_path):
+    artifacts, _plan = build_partitioned_run(tmp_path, ["0000000020", "0000000021"])
+    with pytest.raises(merge_mod.MergeError, match="Parquet"):
+        merge_mod.merge_partition(str(artifacts), 1, output_storage_format="jsonl")
+
+
+def build_partitioned_run(tmp_path, ciks, chunk_size=2, partition_count=1):
+    """Write a partitioned plan plus completed partitions under partitions/."""
+    artifacts = tmp_path / "run"
+    artifacts.mkdir()
+    ordered = sorted(ciks)
+    ranges = chunks_mod.assign_chunks(ordered, chunk_size)
+    partitions = chunks_mod.assign_partitions(ordered, partition_count, chunk_size)
+    plan = {
+        "schema_version": schemas.SCHEMA_VERSION,
+        "input_fingerprint": "fp",
+        "row_count": len(ordered),
+        "cik_padded": ordered,
+        "chunks": [rng.to_dict() for rng in ranges],
+        "partitions": [p.to_dict() for p in partitions],
+        "partition_count": partition_count,
+        "plan_hash": "x",
+    }
+    (artifacts / "plan.json").write_text(json.dumps(plan), encoding="utf-8")
+    for partition in partitions:
+        part_dir = (
+            artifacts
+            / "partitions"
+            / f"partition-{partition.partition_id:05d}"
+            / "chunks"
+        )
+        part_dir.mkdir(parents=True)
+        for rng in partition.chunks:
+            rows = [
+                make_row(cik, chunk_id=rng.chunk_id)
+                for cik in partition.cik_padded[rng.start_row : rng.end_row + 1]
+            ]
+            checkpoints.write_checkpoint(
+                rows,
+                str(
+                    part_dir
+                    / checkpoints.chunk_filename(
+                        rng.chunk_id, rng.start_row, rng.end_row
+                    )
+                ),
+            )
+    return artifacts, plan
+
+
+def test_merge_final_combines_partition_artifacts_without_chunks(tmp_path):
+    artifacts, _plan = build_partitioned_run(
+        tmp_path, ["0000000020", "0000000021", "0000000022"], partition_count=2
     )
+    merge_mod.merge_partition(str(artifacts), 1)
+    merge_mod.merge_partition(str(artifacts), 2)
+    # Remove raw chunk directories to prove the final merge only reads artifacts.
+    for pid in (1, 2):
+        part_chunks = artifacts / "partitions" / f"partition-{pid:05d}" / "chunks"
+        for path in list(part_chunks.iterdir()):
+            path.unlink()
+        (
+            artifacts
+            / "partitions"
+            / f"partition-{pid:05d}"
+            / "merge"
+            / "merge_report.json"
+        ).unlink()
+    output = tmp_path / "final.parquet"
+    report = merge_mod.merge_partition_artifacts(str(artifacts), str(output))
+    assert report.row_count == 3
+    assert report.report_source == "finalized_artifact"
+    assert output.exists()
+    final_report = json.loads((artifacts / "merge" / "merge_report.json").read_text())
+    assert final_report["report_source"] == "finalized_artifact"
+    for pid in (1, 2):
+        partition_report = (
+            artifacts
+            / "partitions"
+            / f"partition-{pid:05d}"
+            / "merge"
+            / "merge_report.json"
+        )
+        assert json.loads(partition_report.read_text())["report_source"] == (
+            "finalized_partition_artifact"
+        )
+
+
+def test_merge_final_rejects_missing_partition_artifact(tmp_path):
+    artifacts, _plan = build_partitioned_run(
+        tmp_path, ["0000000020", "0000000021"], partition_count=2
+    )
+    merge_mod.merge_partition(str(artifacts), 1)
+    with pytest.raises(merge_mod.MergeError, match="missing partition"):
+        merge_mod.merge_partition_artifacts(
+            str(artifacts), str(tmp_path / "out.parquet")
+        )
+
+
+def test_merge_partition_rejects_unknown_partition(tmp_path):
+    artifacts, _plan = build_partitioned_run(
+        tmp_path, ["0000000020", "0000000021"], partition_count=1
+    )
+    with pytest.raises(merge_mod.MergeError, match="not present"):
+        merge_mod.merge_partition(str(artifacts), 9)
+
+
+def test_merge_partition_emits_progress_events(tmp_path):
+    artifacts, _plan = build_partitioned_run(
+        tmp_path, ["0000000020", "0000000021", "0000000022"], partition_count=1
+    )
+    events = []
+    report = merge_mod.merge_partition(str(artifacts), 1, progress=events.append)
+    assert report.row_count == 3
+    stages = [event["stage"] for event in events if event["type"] == "merge_stage"]
+    assert stages == ["validate", "publish"]
+    assert all(event["rows"] == 3 for event in events if event["type"] == "merge_stage")
+    readbacks = [event for event in events if event["type"] == "readback_done"]
+    assert len(readbacks) == 1
+    assert readbacks[0]["rows"] == 3
+
+
+def test_merge_final_emits_progress_events(tmp_path):
+    artifacts, _plan = build_partitioned_run(
+        tmp_path, ["0000000020", "0000000021"], partition_count=2
+    )
+    merge_mod.merge_partition(str(artifacts), 1)
+    merge_mod.merge_partition(str(artifacts), 2)
+    events = []
+    report = merge_mod.merge_partition_artifacts(
+        str(artifacts), str(tmp_path / "out.parquet"), progress=events.append
+    )
+    assert report.row_count == 2
+    validated = [event for event in events if event["type"] == "partition_validated"]
+    assert {event["partition_id"] for event in validated} == {1, 2}
+    assert sum(event["rows"] for event in validated) == 2
+    assert [event for event in events if event["type"] == "readback_done"]
+
+
+def test_merge_results_are_deterministic(tmp_path):
+    artifacts, _plan = build_partitioned_run(
+        tmp_path, ["0000000020", "0000000021", "0000000022"], partition_count=2
+    )
+    merge_mod.merge_partition(str(artifacts), 1)
+    merge_mod.merge_partition(str(artifacts), 2)
+    first = merge_mod.merge_partition_artifacts(
+        str(artifacts), str(tmp_path / "run1.parquet")
+    ).to_dict()
+    second = merge_mod.merge_partition_artifacts(
+        str(artifacts), str(tmp_path / "run2.parquet")
+    ).to_dict()
+    assert first["row_count"] == second["row_count"]
+    assert first["filing_record_count"] == second["filing_record_count"]
+    assert first["input_fingerprint"] == second["input_fingerprint"]
+    assert (tmp_path / "run1.parquet").exists()
+    assert (tmp_path / "run2.parquet").exists()
+
+
+def test_merge_survives_failing_progress_callback(tmp_path):
+    artifacts, _plan = build_partitioned_run(
+        tmp_path, ["0000000020", "0000000021"], partition_count=1
+    )
+
+    def bad_callback(event):
+        raise RuntimeError("callback exploded")
+
+    report = merge_mod.merge_partition(str(artifacts), 1, progress=bad_callback)
+    assert report.row_count == 2
+
+
+def test_merge_final_rejects_foreign_partition_artifact(tmp_path):
+    artifacts, _plan = build_partitioned_run(
+        tmp_path, ["0000000020", "0000000021"], partition_count=1
+    )
+    merge_mod.merge_partition(str(artifacts), 1)
+    # Corrupt the artifact's fingerprint so it no longer matches the plan.
+    artifact = (
+        artifacts
+        / "partitions"
+        / "partition-00001"
+        / "merge"
+        / "submission_metadata.parquet"
+    )
+    table = pq.read_table(str(artifact), schema=schemas.SUBMISSION_METADATA_SCHEMA)
+    new_rows = [{**row, "input_fingerprint": "other"} for row in table.to_pylist()]
+    pq.write_table(
+        pa.Table.from_pylist(new_rows, schema=schemas.SUBMISSION_METADATA_SCHEMA),
+        str(artifact),
+    )
+    with pytest.raises(merge_mod.MergeError, match="fingerprint"):
+        merge_mod.merge_partition_artifacts(
+            str(artifacts), str(tmp_path / "out.parquet")
+        )
+
+
+def test_merge_final_reports_duplicate_accession_across_partitions(tmp_path):
+    artifacts, _plan = build_partitioned_run(
+        tmp_path, ["0000000020", "0000000021"], partition_count=2
+    )
+    # Force the same accession on both partition artifacts.
+    for pid in (1, 2):
+        artifact = (
+            artifacts
+            / "partitions"
+            / f"partition-{pid:05d}"
+            / "merge"
+            / "submission_metadata.parquet"
+        )
+        merge_mod.merge_partition(str(artifacts), pid)
+        table = pq.read_table(str(artifact), schema=schemas.SUBMISSION_METADATA_SCHEMA)
+        rows = table.to_pylist()
+        for record in rows:
+            for filing in record["filings"]:
+                filing["accession_number"] = "0000000020-21-000001"
+                filing["accession_number_normalized"] = "000000002021000001"
+        pq.write_table(
+            pa.Table.from_pylist(rows, schema=schemas.SUBMISSION_METADATA_SCHEMA),
+            str(artifact),
+        )
+    report = merge_mod.merge_partition_artifacts(
+        str(artifacts), str(tmp_path / "out.parquet")
+    )
+    assert report.duplicate_accessions == ["000000002021000001"]
     assert report.warnings
 
 
-def test_merge_rejects_wrong_input_fingerprint(tmp_path):
-    artifacts, plan = build_run(tmp_path, ["0000000020", "0000000021"])
-    plan["input_fingerprint"] = "different"
+def test_merge_final_requires_partition_artifacts(tmp_path):
+    artifacts, plan = build_partitioned_run(tmp_path, ["0000000020", "0000000021"])
+    # A run whose plan carries no partition definitions has no finalized
+    # partition artifacts; the final merge must fail instead of reading chunks.
+    del plan["partitions"]
     (artifacts / "plan.json").write_text(json.dumps(plan), encoding="utf-8")
-    with pytest.raises(merge_mod.MergeError, match="fingerprints"):
-        merge_mod.merge_chunks(str(artifacts), str(tmp_path / "out.parquet"))
+    with pytest.raises(merge_mod.MergeError, match="partitioned plan"):
+        merge_mod.merge_partition_artifacts(
+            str(artifacts), str(tmp_path / "out.parquet")
+        )
 
 
-def test_merge_rejects_incomplete_row_counts(tmp_path):
-    artifacts, _plan = build_run(
-        tmp_path, ["0000000020", "0000000021", "0000000022"], chunk_size=3
+def test_merge_final_rejects_partial_partition_coverage(tmp_path):
+    artifacts, _plan = build_partitioned_run(
+        tmp_path, ["0000000020", "0000000021", "0000000022"], partition_count=2
     )
-    chunks_dir = artifacts / "chunks"
-    path = next(chunks_dir.iterdir())
-    table = pq.read_table(str(path), schema=schemas.SUBMISSION_METADATA_SCHEMA)
-    pq.write_table(table.slice(0, 1), str(path))
-    with pytest.raises(merge_mod.MergeError, match="row count"):
-        merge_mod.merge_chunks(str(artifacts), str(tmp_path / "out.parquet"))
+    merge_mod.merge_partition(str(artifacts), 1)
+    merge_mod.merge_partition(str(artifacts), 2)
+    # Drop one partition artifact; the remaining set no longer covers the plan.
+    (
+        artifacts
+        / "partitions"
+        / "partition-00002"
+        / "merge"
+        / "submission_metadata.parquet"
+    ).unlink()
+    with pytest.raises(merge_mod.MergeError):
+        merge_mod.merge_partition_artifacts(
+            str(artifacts), str(tmp_path / "out.parquet")
+        )

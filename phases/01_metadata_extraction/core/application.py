@@ -1,5 +1,5 @@
 """Orchestration functions exposed by the barrel: build_plan, preview_sample,
-run_chunk, get_status, merge_chunks. Entry points must import from here and
+run_chunk, get_status, merge. Entry points must import from here and
 must not duplicate fetching, normalization, or checkpoint logic."""
 
 from __future__ import annotations
@@ -22,7 +22,12 @@ from .chunks import (
 )
 from .config import RunOptions, rate_limit_to_interval, validate_plan_against_options
 from .input_manifest import read_input_manifest
-from .merge import MergeError, MergeReport, merge_chunks
+from .merge import (
+    MergeError,
+    MergeReport,
+    merge_partition,
+    merge_partition_artifacts,
+)
 from .normalize import normalize_submissions
 from .schemas import SCHEMA_VERSION, TERMINAL_STATUSES
 from .sec_client import SubmissionsClient
@@ -548,22 +553,37 @@ def merge(
     options: RunOptions,
     output_path: str,
     *,
-    allow_accession_duplicates: bool = False,
     storage_format: str | None = None,
     output_storage_format: str | None = None,
-    partition_id: int | None = None,
+    progress=None,
 ) -> MergeReport:
-    """`merge`: accept only finalized checkpoints for the same fingerprint
-    and schema version, verify the contract, then write the unified dataset."""
-    plan = load_plan(options)
-    return merge_chunks(
+    """`merge`: combine complete partition artifacts into the final dataset."""
+    return merge_partition_artifacts(
         options.artifacts_dir,
         output_path,
-        allow_accession_duplicates=allow_accession_duplicates,
         storage_format=storage_format,
         output_storage_format=output_storage_format,
-        plan=plan,
-        partition_id=partition_id,
+        progress=progress,
+    )
+
+
+def merge_one_partition(
+    options: RunOptions,
+    partition_id: int,
+    *,
+    output_path: str | None = None,
+    storage_format: str | None = None,
+    output_storage_format: str | None = None,
+    progress=None,
+) -> MergeReport:
+    """`merge-partition`: publish one complete partition artifact."""
+    return merge_partition(
+        options.artifacts_dir,
+        partition_id,
+        output_path=output_path,
+        storage_format=storage_format or options.storage_format,
+        output_storage_format=output_storage_format,
+        progress=progress,
     )
 
 
@@ -573,6 +593,7 @@ __all__ = [
     "get_status",
     "load_plan",
     "merge",
+    "merge_one_partition",
     "preview_sample",
     "run_chunk",
     "run_partition",

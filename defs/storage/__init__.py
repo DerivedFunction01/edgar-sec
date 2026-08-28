@@ -1,7 +1,20 @@
 """Reusable file storage primitives for extraction phases."""
 
+from .artifacts import read_records
 from .converter import DatasetConverter
 from .dataset import Dataset
+from .duckdb_merge import (
+    MergeValidation,
+    MergeValidationSpec,
+    concat_to_parquet,
+    connect,
+    count_nested_values,
+    count_rows,
+    duplicate_values,
+    jsonl_columns,
+    ordered_keys,
+    validate_files,
+)
 from .errors import (
     MalformedArtifact,
     SchemaMismatchError,
@@ -74,6 +87,8 @@ __all__ = [
     "JsonlWal",
     "MalformedArtifact",
     "MemoryBackend",
+    "MergeValidation",
+    "MergeValidationSpec",
     "Neq",
     "Not",
     "Or",
@@ -89,6 +104,15 @@ __all__ = [
     "StorageOperation",
     "UnsupportedCapability",
     "WalStore",
+    "concat_to_parquet",
+    "connect",
+    "count_nested_values",
+    "count_rows",
+    "duplicate_values",
+    "jsonl_columns",
     "make_chunk_backend",
+    "ordered_keys",
+    "read_records",
+    "validate_files",
     "write_table_atomic",
 ]

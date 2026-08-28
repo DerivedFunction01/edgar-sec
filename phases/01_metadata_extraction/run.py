@@ -9,13 +9,20 @@ fan-out):
         --chunk-size 1000 --chunk-id 12 --workers 4
 
 Interactive (no --chunk-id): a wizard that uses persisted configuration and
-offers preview, run-all-remaining, split/show commands, status, and exit:
+reuses the shared partition-oriented operator menu:
 
-   1. Run all remaining chunks on this machine
-   2. Divide chunks across N machines (show commands, run this machine's share)
-   3. Run specific chunks (e.g. "1,3,5-8")
+   1. Preview
+   2. Run partition
+   3. Show partition commands (for dividing work across machines)
    4. Show status
-   5. Exit
+   5. Merge a partition from its chunks
+   6. Merge all partition artifacts into the final dataset
+   0. Exit
+
+Two-stage merge is the supported path for partitioned runs: each machine
+publishes its partition artifact, those artifacts are copied into the
+coordinator run's partition layout, then option 6 combines them without
+touching the source chunk directories.
 
 All execution still goes through the shared core (build_plan, run_chunk,
 get_status); this shim never duplicates fetching, normalization, or
@@ -34,7 +41,7 @@ from tqdm import tqdm
 from tqdm.contrib.logging import logging_redirect_tqdm
 
 from defs.runtime.interactive import InteractivePhase, run_interactive
-from defs.runtime.progress import make_tqdm_callback
+from defs.runtime.progress import make_merge_progress_callback, make_tqdm_callback
 
 from .core import (
     PROJECT_CONFIG_DEFAULT_PATH,
@@ -46,11 +53,14 @@ from .core import (
     get_status,
     load_plan,
     load_project_config,
+    merge,
+    merge_one_partition,
     preview_sample,
     run_chunk,
     run_partition,
     write_project_config,
 )
+from .core.merge import MergeError
 
 log = logging.getLogger("metadata.run")
 
@@ -286,6 +296,63 @@ def _run_partition_with_progress(
         bar.close()
 
 
+def _translate_merge_error(func):
+    def wrapper(*call_args, **call_kwargs):
+        try:
+            return func(*call_args, **call_kwargs)
+        except MergeError as exc:
+            raise ValueError(str(exc)) from exc
+
+    return wrapper
+
+
+def _merge_partition_with_progress(
+    options: RunOptions, partition_id: int, *, show_progress: bool = True
+) -> dict:
+    """Merge one partition with a stage-level progress bar (validate, publish)."""
+    bar = tqdm(
+        total=3,
+        unit="stage",
+        desc=f"merge partition {partition_id}",
+        disable=not show_progress,
+    )
+    try:
+        with logging_redirect_tqdm():
+            return merge_one_partition(
+                options,
+                partition_id,
+                progress=make_merge_progress_callback(bar),
+            ).to_dict()
+    finally:
+        bar.close()
+
+
+def _merge_final_with_progress(
+    options: RunOptions, *, show_progress: bool = True
+) -> dict:
+    """Combine partition artifacts with a partition-level progress bar."""
+    plan = load_plan(options)
+    bar = tqdm(
+        total=len(plan.get("partitions", [])) + 2,
+        unit="step",
+        desc="final merge",
+        disable=not show_progress,
+    )
+    try:
+        with logging_redirect_tqdm():
+            return merge(
+                options,
+                os.path.join(
+                    options.artifacts_dir,
+                    "merge",
+                    "submission_metadata.parquet",
+                ),
+                progress=make_merge_progress_callback(bar),
+            ).to_dict()
+    finally:
+        bar.close()
+
+
 def interactive_wizard(args, project_config) -> int:
     """Phase 1 adapter for the shared partition-oriented operator UI."""
     options = options_from_args(args, project_config)
@@ -304,6 +371,16 @@ def interactive_wizard(args, project_config) -> int:
             ),
             partition_command=lambda partition_id: partition_command(
                 options, partition_id
+            ),
+            merge_partition=_translate_merge_error(
+                lambda partition_id: _merge_partition_with_progress(
+                    options, partition_id, show_progress=not args.no_progress
+                )
+            ),
+            merge_final=_translate_merge_error(
+                lambda: _merge_final_with_progress(
+                    options, show_progress=not args.no_progress
+                )
             ),
         )
     )

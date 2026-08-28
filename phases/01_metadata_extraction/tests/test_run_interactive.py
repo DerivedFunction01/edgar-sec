@@ -218,6 +218,189 @@ def _write_wizard_config(tmp_path, session, monkeypatch, **config_kwargs):
     return config_path, config_kwargs["artifacts_dir"]
 
 
+def test_interactive_wizard_merge_menu_end_to_end(tmp_path, monkeypatch):
+    """Drive the wizard to merge a partition then the final dataset."""
+    session = FakeSession()
+    base = "https://data.sec.gov/submissions"
+    session.payloads[f"{base}/CIK0000000020.json"] = {
+        "cik": "0000000020",
+        "name": "K TRON",
+        "filings": {"recent": {}, "files": []},
+    }
+    session.payloads[f"{base}/CIK0000001761.json"] = {
+        "cik": "0000001761",
+        "name": "TRANZONIC",
+        "filings": {"recent": {}, "files": []},
+    }
+
+    def fake_build(options):
+        from defs import sec_http
+
+        return imp("phases.01_metadata_extraction.core.sec_client").SubmissionsClient(
+            http=sec_http.SecHttpClient(
+                user_agent=options.user_agent or "TestClient/1.0 test@example.com",
+                rate_limiter=sec_http.RateLimiter(min_interval_s=0.001),
+                retry_policy=sec_http.RetryPolicy(
+                    max_retries=1, backoff_base_s=0.001, jitter=0.0
+                ),
+                timeout_s=1.0,
+                session_factory=lambda: session,
+            )
+        )
+
+    application = imp("phases.01_metadata_extraction.core.application")
+    monkeypatch.setattr(application, "_build_client", fake_build)
+
+    input_csv = tmp_path / "input.csv"
+    input_csv.write_text("cik,name\n20,K Tron\n1761,Tranzonic\n", encoding="utf-8")
+    artifacts = tmp_path / "run"
+    config_path = tmp_path / "config.json"
+
+    run_mod.write_project_config(
+        str(config_path),
+        config.ProjectConfig(
+            input_path=str(input_csv),
+            artifacts_dir=str(artifacts),
+            chunk_size=2,
+            partition_count=1,
+            workers=2,
+            rate_limit_rps=10.0,
+            user_agent="TestClient/1.0 test@example.com",
+            storage_format="parquet",
+        ),
+    )
+
+    options = config.load_project_config(str(config_path)).to_run_options(
+        input_path=str(input_csv),
+        artifacts_dir=str(artifacts),
+        user_agent="TestClient/1.0 test@example.com",
+    )
+    # Produce the completed partition chunks via the core runner.
+    application.build_plan(options)
+    application.run_chunk(
+        config.RunOptions(**{**options.to_dict(), "chunk_id": 1, "partition_id": 1})
+    )
+
+    answers = iter(
+        [
+            "y",  # create plan? (default y)
+            "5",  # menu: merge a partition from its chunks
+            "1",  # partition id
+            "6",  # menu: merge all partition artifacts into the final dataset
+            "0",  # menu: exit
+        ]
+    )
+    monkeypatch.setattr("builtins.input", lambda prompt="": next(answers))
+    exit_code = run_mod.main(["--config", str(config_path)])
+    assert exit_code == 0
+    partition_artifact = (
+        artifacts
+        / "partitions"
+        / "partition-00001"
+        / "merge"
+        / "submission_metadata.parquet"
+    )
+    assert partition_artifact.exists()
+    final_output = artifacts / "merge" / "submission_metadata.parquet"
+    assert final_output.exists()
+
+
+def test_interactive_wizard_merge_bars_honor_no_progress(tmp_path, monkeypatch):
+    """Merge actions pass workers and disable bars under --no-progress."""
+    calls = []
+
+    class RecordingBar:
+        def __init__(self, *args, **kwargs):
+            calls.append(kwargs)
+            self.total = kwargs.get("total")
+
+        def update(self, amount):
+            pass
+
+        def set_postfix(self, value):
+            pass
+
+        def close(self):
+            pass
+
+    session = FakeSession()
+    base = "https://data.sec.gov/submissions"
+    session.payloads[f"{base}/CIK0000000020.json"] = {
+        "cik": "0000000020",
+        "name": "K TRON",
+        "filings": {"recent": {}, "files": []},
+    }
+
+    def fake_build(options):
+        from defs import sec_http
+
+        return imp("phases.01_metadata_extraction.core.sec_client").SubmissionsClient(
+            http=sec_http.SecHttpClient(
+                user_agent=options.user_agent or "TestClient/1.0 test@example.com",
+                rate_limiter=sec_http.RateLimiter(min_interval_s=0.001),
+                retry_policy=sec_http.RetryPolicy(
+                    max_retries=1, backoff_base_s=0.001, jitter=0.0
+                ),
+                timeout_s=1.0,
+                session_factory=lambda: session,
+            )
+        )
+
+    application = imp("phases.01_metadata_extraction.core.application")
+    monkeypatch.setattr(application, "_build_client", fake_build)
+
+    input_csv = tmp_path / "input.csv"
+    input_csv.write_text("cik,name\n20,K Tron\n", encoding="utf-8")
+    artifacts = tmp_path / "run"
+    config_path = tmp_path / "config.json"
+    run_mod.write_project_config(
+        str(config_path),
+        config.ProjectConfig(
+            input_path=str(input_csv),
+            artifacts_dir=str(artifacts),
+            chunk_size=2,
+            partition_count=1,
+            workers=3,
+            user_agent="TestClient/1.0 test@example.com",
+        ),
+    )
+    options = config.load_project_config(str(config_path)).to_run_options(
+        input_path=str(input_csv),
+        artifacts_dir=str(artifacts),
+        user_agent="TestClient/1.0 test@example.com",
+    )
+    application.build_plan(options)
+    application.run_chunk(
+        config.RunOptions(**{**options.to_dict(), "chunk_id": 1, "partition_id": 1})
+    )
+
+    real_tqdm = run_mod.tqdm
+    monkeypatch.setattr(run_mod, "tqdm", RecordingBar)
+    answers = iter(
+        [
+            "5",  # menu: merge a partition from its chunks
+            "1",  # partition id
+            "6",  # menu: final merge
+            "0",  # exit
+        ]
+    )
+    monkeypatch.setattr("builtins.input", lambda prompt="": next(answers))
+    exit_code = run_mod.main(["--config", str(config_path), "--no-progress"])
+    assert exit_code == 0
+    assert len(calls) == 2
+    partition_bar, final_bar = calls
+    assert partition_bar["unit"] == "stage"
+    assert partition_bar["total"] == 3
+    assert partition_bar["desc"] == "merge partition 1"
+    assert partition_bar["disable"] is True
+    assert final_bar["unit"] == "step"
+    assert final_bar["total"] == 3  # one partition + publish + readback
+    assert final_bar["desc"] == "final merge"
+    assert final_bar["disable"] is True
+    assert (artifacts / "merge" / "submission_metadata.parquet").exists()
+    del real_tqdm
+
+
 def test_interactive_wizard_preview_menu(tmp_path, monkeypatch):
     """The preview menu action must run without NameError and exit cleanly."""
     config_path, artifacts = _write_wizard_config(tmp_path, FakeSession(), monkeypatch)

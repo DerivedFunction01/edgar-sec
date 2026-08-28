@@ -86,12 +86,20 @@ uploads/                           # input manifests
 - `run` processes resumable work units (chunks) with shared progress, retry,
   and checkpoint behavior; completed chunks are skipped, never re-fetched.
 - `status` reads manifests/checkpoints without re-fetching source data.
-- `merge` validates phase invariants (ranges, row counts, duplicates,
-  fingerprints, terminal statuses), then delegates physical assembly and
-  atomic publication to shared storage.
+- `merge-partition` is the only operation permitted to read chunk directories;
+  it validates phase invariants (ranges, row counts, CIK coverage,
+  fingerprints, terminal statuses) and publishes one finalized partition
+  artifact. `merge` consumes only finalized partition artifacts — never
+  chunks — and delegates physical assembly and atomic publication to shared
+  storage. Merge reports are derived from finalized artifacts, so a missing
+  report is regenerated without chunk access. Accession values are not
+  globally unique (the same filing is listed by multiple registrants);
+  duplicate accessions are reportable fan-out, while duplicate CIKs, stale or
+  foreign artifacts, and incomplete coverage are failures.
 - Partitions are the user-facing distribution unit; fixed-size chunks are the
   internal resumability unit. Partition assignment and manifests must be
-  deterministic and shared across phases.
+  deterministic and shared across phases. Chunks are transient: once a
+  partition artifact is verified, no consumer may require its chunks.
 
 ## Storage Rules
 

@@ -35,14 +35,16 @@ from .core import (
     get_status,
     load_project_config,
     merge,
+    merge_one_partition,
     preview_sample,
     run_partition,
     write_project_config,
 )
+from .core.merge import MergeError
 
 
-def add_common_options(parser: argparse.ArgumentParser) -> None:
-    add_runtime_common_options(parser)
+def add_common_options(parser: argparse.ArgumentParser, **kwargs) -> None:
+    add_runtime_common_options(parser, **kwargs)
 
 
 def options_from_args(args, project_config) -> RunOptions:
@@ -150,7 +152,7 @@ def build_parser() -> argparse.ArgumentParser:
     )
 
     merge_parser = subparsers.add_parser(
-        "merge", help="validate and merge completed chunks"
+        "merge", help="validate and merge complete partition artifacts"
     )
     merge_parser.add_argument(
         "--config",
@@ -166,19 +168,19 @@ def build_parser() -> argparse.ArgumentParser:
         help="checkpoint format (defaults to plan.json's recorded format)",
     )
     merge_parser.add_argument(
-        "--allow-accession-duplicates",
-        action="store_true",
-        help="permit duplicate nested accessions (recorded in the merge report)",
-    )
-    merge_parser.add_argument(
         "--output-storage-format",
-        choices=("parquet", "jsonl"),
+        choices=("parquet",),
         default=None,
-        help="final output format (defaults to the output suffix)",
+        help="final output format (Parquet only; defaults to the output suffix)",
     )
-    merge_parser.add_argument("--partition-id", type=int, default=None)
-    merge_parser.add_argument(
-        "--all", action="store_true", help="merge all operational partitions"
+    merge_partition_parser = subparsers.add_parser(
+        "merge-partition", help="merge one partition's chunks into a complete artifact"
+    )
+    add_common_options(merge_partition_parser, include_partition=False)
+    merge_partition_parser.add_argument("--partition-id", type=int, required=True)
+    merge_partition_parser.add_argument("--output", default=None)
+    merge_partition_parser.add_argument(
+        "--output-storage-format", choices=("parquet",), default=None
     )
     return parser
 
@@ -237,14 +239,23 @@ def main(argv=None) -> int:
             report = merge(
                 options,
                 args.output,
-                allow_accession_duplicates=args.allow_accession_duplicates,
                 storage_format=args.storage_format,
                 output_storage_format=args.output_storage_format,
-                partition_id=None if args.all else args.partition_id,
             )
             print(json.dumps(report.to_dict(), indent=2, sort_keys=True))
             return 0
-    except (ValueError, FileNotFoundError) as exc:
+        if args.command == "merge-partition":
+            options.validate()
+            report = merge_one_partition(
+                options,
+                args.partition_id,
+                output_path=args.output,
+                storage_format=args.storage_format,
+                output_storage_format=args.output_storage_format,
+            )
+            print(json.dumps(report.to_dict(), indent=2, sort_keys=True))
+            return 0
+    except (ValueError, FileNotFoundError, MergeError) as exc:
         print(f"error: {exc}", file=sys.stderr)
         return 2
     return 1

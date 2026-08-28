@@ -256,6 +256,13 @@ class HttpMetrics:
 
 
 def default_headers(user_agent: str) -> dict:
+    """Shared headers for SEC requests.
+
+    No ``Host`` header is set on purpose: the client serves both
+    ``data.sec.gov`` and ``www.sec.gov`` endpoints, and pinning a host breaks
+    the other (archive requests returned 404 under a hardcoded
+    ``Host: data.sec.gov``). The HTTP library derives Host from each URL.
+    """
     if not user_agent or "@" not in user_agent:
         raise ValueError(
             "user_agent must be a stable identity like 'AppName/1.0 contact@example.com'"
@@ -263,7 +270,6 @@ def default_headers(user_agent: str) -> dict:
     return {
         "User-Agent": user_agent,
         "Accept-Encoding": "gzip, deflate",
-        "Host": "data.sec.gov",
     }
 
 

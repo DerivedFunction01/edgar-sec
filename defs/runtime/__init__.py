@@ -15,9 +15,12 @@ from .paths import (
     RunPaths,
     classify_artifact_path,
     merge_report_path_in,
+    partition_artifact_path_in,
+    partition_merge_report_path_in,
+    partition_merge_root_in,
     resolve_paths,
 )
-from .progress import make_tqdm_callback
+from .progress import make_merge_progress_callback, make_tqdm_callback
 
 __all__ = [
     "DEFAULT_CHUNK_SIZE",
@@ -39,9 +42,13 @@ __all__ = [
     "get_env",
     "load_config_or_template",
     "load_dotenv",
+    "make_merge_progress_callback",
     "make_tqdm_callback",
     "merge_report_path_in",
     "parse_id_selection",
+    "partition_artifact_path_in",
+    "partition_merge_report_path_in",
+    "partition_merge_root_in",
     "print_json",
     "resolve_paths",
     "run_interactive",

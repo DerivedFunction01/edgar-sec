@@ -27,6 +27,7 @@ class ArtifactRole(str, Enum):
     PREVIEW = "preview"
     CANONICAL = "canonical"
     MERGE_REPORT = "merge_report"
+    PARTITION_ARTIFACT = "partition_artifact"
     WORKER_FRAGMENT = "worker_fragment"
     UNKNOWN = "unknown"
 
@@ -45,6 +46,31 @@ class ArtifactClassification:
 def merge_report_path_in(run_root: str | os.PathLike[str]) -> Path:
     """Merge report path for a run directory supplied as a plain path."""
     return Path(run_root) / MERGE_DIR_NAME / MERGE_REPORT_NAME
+
+
+def partition_merge_root_in(
+    run_root: str | os.PathLike[str], partition_id: int
+) -> Path:
+    return (
+        Path(run_root)
+        / "partitions"
+        / f"partition-{_partition_id(partition_id)}"
+        / MERGE_DIR_NAME
+    )
+
+
+def partition_artifact_path_in(
+    run_root: str | os.PathLike[str], partition_id: int, filename: str
+) -> Path:
+    if not filename or Path(filename).name != filename:
+        raise ValueError("partition artifact filename must be a basename")
+    return partition_merge_root_in(run_root, partition_id) / filename
+
+
+def partition_merge_report_path_in(
+    run_root: str | os.PathLike[str], partition_id: int
+) -> Path:
+    return partition_merge_root_in(run_root, partition_id) / MERGE_REPORT_NAME
 
 
 def _safe_id(value: str, label: str) -> str:
@@ -235,6 +261,8 @@ def classify_artifact_path(path: str | os.PathLike[str]) -> ArtifactClassificati
             partition_id = int(match.group(1))
             if len(rest) == 4 and rest[2] == "chunks":
                 return with_run(ArtifactRole.PARTITION_CHUNK, partition_id)
+            if len(rest) == 4 and rest[2] == MERGE_DIR_NAME:
+                return with_run(ArtifactRole.PARTITION_ARTIFACT, partition_id)
             return run_unknown()
         if len(rest) >= 3 and rest[0] == "workers":
             return with_run(ArtifactRole.WORKER_FRAGMENT)
@@ -296,5 +324,8 @@ __all__ = [
     "RunPaths",
     "classify_artifact_path",
     "merge_report_path_in",
+    "partition_artifact_path_in",
+    "partition_merge_report_path_in",
+    "partition_merge_root_in",
     "resolve_paths",
 ]

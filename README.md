@@ -42,6 +42,12 @@ normalization, provenance, and resumable chunk/partition execution.
 
 ## Tools
 
+### [Shared Infrastructure (`defs/`)](defs/README.md)
+
+Domain-neutral contracts: SEC HTTP client (pacing/retries/caching), canonical
+filing identity (accessions, archive URLs, occurrence IDs, document locator
+keys), storage backends, SQL boundary, and the shared phase runtime.
+
 ### [Dataset Viewer](defs/viewer/README.md)
 
 A local, read-only FastAPI + DuckDB web viewer over the `.artifacts` workspace.

@@ -16,6 +16,8 @@ class InteractivePhase:
     status: Callable[[], dict]
     run_partition: Callable[[int], dict]
     partition_command: Callable[[int], str]
+    merge_partition: Callable[[int], dict] | None = None
+    merge_final: Callable[[], dict] | None = None
 
 
 def run_interactive(phase: InteractivePhase, *, default_partition: int = 1) -> int:
@@ -30,6 +32,10 @@ def run_interactive(phase: InteractivePhase, *, default_partition: int = 1) -> i
         print("  2. Run partition")
         print("  3. Show partition commands")
         print("  4. Show status")
+        if phase.merge_partition is not None:
+            print("  5. Merge a partition from its chunks")
+        if phase.merge_final is not None:
+            print("  6. Merge all partition artifacts into the final dataset")
         print("  0. Exit")
         try:
             choice = input("\nChoice [2]: ").strip() or "2"
@@ -91,6 +97,30 @@ def run_interactive(phase: InteractivePhase, *, default_partition: int = 1) -> i
             continue
         if choice == "4":
             print(json.dumps(phase.status(), indent=2, sort_keys=True))
+            continue
+        if choice == "5" and phase.merge_partition is not None:
+            raw = input("Partition IDs [all]: ").strip()
+            if raw:
+                try:
+                    selected = parse_id_selection(raw, partition_ids, "partition")
+                except ValueError as exc:
+                    print(f"  {exc}")
+                    continue
+            else:
+                selected = partition_ids
+            for partition_id in selected:
+                try:
+                    report = phase.merge_partition(partition_id)
+                    print(json.dumps(report, indent=2, sort_keys=True))
+                except (ValueError, FileNotFoundError) as exc:
+                    print(f"  error: {exc}")
+            continue
+        if choice == "6" and phase.merge_final is not None:
+            try:
+                report = phase.merge_final()
+                print(json.dumps(report, indent=2, sort_keys=True))
+            except (ValueError, FileNotFoundError) as exc:
+                print(f"  error: {exc}")
             continue
         print("  unknown choice")
 

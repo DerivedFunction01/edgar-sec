@@ -53,7 +53,14 @@ interactive `run.py` wizard. From the repository root:
 .venv/bin/python -m phases.01_metadata_extraction.cli status \
     --artifacts .artifacts/metadata/runs/<run-id>
 
-# 5. Validate and publish the unified dataset.
+# 5. Publish one partition's chunks into a complete, portable partition artifact.
+.venv/bin/python -m phases.01_metadata_extraction.cli merge-partition \
+    --artifacts .artifacts/metadata/runs/<run-id> --partition-id 1
+
+# 6. Combine every completed partition artifact into the final dataset.
+#    The final merge reads only partition artifacts; it never reads chunk
+#    directories, so partition artifacts copied from other machines can be
+#    combined without copying chunk files.
 .venv/bin/python -m phases.01_metadata_extraction.cli merge \
     --artifacts .artifacts/metadata/runs/<run-id> \
     --output phases/01_metadata_extraction/output/merged/submission_metadata.parquet
@@ -65,6 +72,51 @@ interactive `run.py` wizard. From the repository root:
 .venv/bin/python -m phases.01_metadata_extraction.run \
     --config .artifacts/metadata/config.json
 ```
+
+The wizard offers: preview (1), run partition (2), show per-machine partition
+commands (3), status (4), merge a partition from its chunks (5), and merge all
+partition artifacts into the final dataset (6).
+
+### Distributed run layout
+
+Each partition publishes an immutable artifact under its run-relative directory:
+
+```text
+<run-root>/
+  partitions/
+    partition-00001/
+      chunks/                       # merge-partition input only
+      merge/
+        submission_metadata.parquet # complete, copyable partition artifact
+        merge_report.json           # validation/provenance for that artifact
+  merge/
+    submission_metadata.parquet     # final dataset (configurable output)
+    merge_report.json
+```
+
+Partition artifacts and the final dataset are always Parquet (ZSTD), regardless
+of the checkpoint format used to produce them. JSONL checkpoints are accepted
+as merge inputs and converted during validation/publication.
+
+To merge across machines, copy the remote `partitions/<id>/merge/` directory into
+the coordinator's matching run-relative location, then run the final `merge`
+(command `merge` / wizard option 6). A partition artifact's dataset, report, and
+plan fingerprint are re-validated at final merge time; missing, duplicate,
+foreign, stale, malformed, or conflicting artifacts fail the merge.
+
+The chunk/checkpoint directories are transient worker outputs. Only
+`merge-partition` reads them, and it is the only operation that ever does: the
+final `merge`, the viewer, the materializer, and every later phase read only
+finalized partition artifacts or the final dataset. If a partition or run merge
+report is missing, it is regenerated from the finalized Parquet/JSONL artifact
+(`report_source: finalized_partition_artifact` / `finalized_artifact`) — never
+from chunks. Chunks may be deleted once their partition artifact is verified.
+
+Duplicate accession values are expected SEC fan-out (the same filing listed by
+multiple registrants) and are reported in `duplicate_accessions` with a warning;
+they are not merge failures. Duplicate CIK rows, stale or foreign artifacts,
+range gaps or overlaps, schema drift, mismatched fingerprints, and non-terminal
+statuses still fail the merge.
 
 ## Configuration
 
@@ -104,11 +156,17 @@ is rejected with a regeneration message rather than silently rewritten.
   user-facing distribution unit. Both assignments are deterministic and shared
   across phases.
 - Completed chunks are skipped and never re-fetched. Checkpoints are immutable,
-  schema-versioned fragments; the coordinator-only `merge` validates identity,
-  provenance, schema, fingerprint, row counts, duplicates, and terminal statuses
-  before publishing atomically.
-- Checkpoints support `parquet` (default) and `jsonl` (useful for inspection).
-  The final output format follows the `--output` suffix unless overridden.
+  schema-versioned fragments. `merge-partition` is the only chunk reader: it
+  validates identity, provenance, schema, fingerprint, row counts, CIK
+  coverage, and terminal statuses through the shared DuckDB-backed dataset
+  operations in `defs.storage` (column-pruned scans, no Python row
+  materialization), then publishes its partition artifact atomically as
+  Parquet. The final `merge` combines finalized partition artifacts only —
+  it has no chunk fallback, requires a partitioned plan, and re-reads every
+  artifact as Parquet regardless of the checkpoint format.
+- Checkpoints support `parquet` (default) and `jsonl` (useful for inspection);
+  both are accepted merge inputs. Merge outputs are always Parquet
+  (ZSTD-compressed, deterministically ordered by CIK).
 
 ## Testing
 

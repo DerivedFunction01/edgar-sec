@@ -3,10 +3,14 @@ from pathlib import Path
 import pytest
 
 from defs.runtime.paths import (
+    MERGE_REPORT_NAME,
     ArtifactRole,
     RunPaths,
     classify_artifact_path,
     merge_report_path_in,
+    partition_artifact_path_in,
+    partition_merge_report_path_in,
+    partition_merge_root_in,
     resolve_paths,
 )
 
@@ -186,3 +190,38 @@ def test_absolute_paths_are_rejected():
 def test_merge_report_path_in_matches_run_builder(tmp_path):
     paths = resolve_paths("metadata", "run-1", {"EDGAR_ARTIFACTS_ROOT": str(tmp_path)})
     assert merge_report_path_in(paths.run_root) == paths.merge_report_path
+
+
+def test_partition_artifact_paths_round_trip_classification(tmp_path):
+    paths = resolve_paths("metadata", "run-1", {"EDGAR_ARTIFACTS_ROOT": str(tmp_path)})
+    artifact = paths.partition_root(3) / "merge" / "submission_metadata.parquet"
+    report = paths.partition_root(3) / "merge" / "merge_report.json"
+    relative_artifact = artifact.relative_to(paths.phase_paths.project.artifacts_root)
+    relative_report = report.relative_to(paths.phase_paths.project.artifacts_root)
+
+    classified_artifact = classify_artifact_path(relative_artifact)
+    assert classified_artifact.role is ArtifactRole.PARTITION_ARTIFACT
+    assert classified_artifact.phase == "metadata"
+    assert classified_artifact.run_id == "run-1"
+    assert classified_artifact.partition_id == 3
+
+    classified_report = classify_artifact_path(relative_report)
+    assert classified_report.role is ArtifactRole.PARTITION_ARTIFACT
+    assert classified_report.partition_id == 3
+
+    helpers_root = partition_merge_root_in(paths.run_root, 3)
+    assert (
+        partition_artifact_path_in(paths.run_root, 3, "submission_metadata.parquet")
+        == helpers_root / "submission_metadata.parquet"
+    )
+    assert (
+        partition_merge_report_path_in(paths.run_root, 3)
+        == helpers_root / MERGE_REPORT_NAME
+    )
+
+
+def test_partition_artifact_filename_must_be_a_basename():
+    with pytest.raises(ValueError):
+        partition_artifact_path_in("run", 1, "nested/submission_metadata.parquet")
+    with pytest.raises(ValueError):
+        partition_artifact_path_in("run", 1, "")
