@@ -15,8 +15,18 @@ from .core.target_plan import plan
 def _stderr_progress(event: dict) -> None:
     """Report stage events on stderr; stdout stays pure JSON for automation."""
     if event.get("type") == "batch_done":
+        batch = event.get("batch")
+        total = event.get("total_batches")
+        batch_str = f"batch {batch}/{total}" if total else f"batch {batch}"
+        ciks_done = event.get("ciks_done")
+        total_ciks = event.get("total_ciks")
+        pct_str = (
+            f" ({ciks_done * 100 / total_ciks:.1f}%)"
+            if (ciks_done and total_ciks)
+            else ""
+        )
         print(
-            f"progress: batch {event.get('batch')} "
+            f"progress: {batch_str}{pct_str} "
             f"(CIK {event.get('cik_start')}..{event.get('cik_end')}, "
             f"rows={event.get('rows')})",
             file=sys.stderr,

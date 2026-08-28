@@ -129,13 +129,15 @@ def test_main_forwards_subcommand_to_cli(monkeypatch) -> None:
     assert captured["argv"] == ["materialize", "--source-manifest", "m.json"]
 
 
-def test_materialize_menu_uses_local_phase_one_default(monkeypatch, tmp_path) -> None:
+def test_materialize_menu_uses_manifest_phase_one_default(
+    monkeypatch, tmp_path
+) -> None:
     source = (
         tmp_path
+        / "manifests"
         / "metadata"
-        / "runs"
-        / "local"
-        / "merge"
+        / "submission_metadata"
+        / "final"
         / "submission_metadata.parquet"
     )
     source.parent.mkdir(parents=True)

@@ -166,6 +166,21 @@ register(
 )
 
 
+def _run_form_isolation() -> list[ScannerFinding]:
+    from .scanners.form_isolation import scan_form_isolation
+
+    return scan_form_isolation()
+
+
+register(
+    Scanner(
+        name="form-isolation",
+        description="scan modified generic pipeline and phase code for hardcoded 10-K/form literals",
+        run=_run_form_isolation,
+    )
+)
+
+
 def run_all(stream=None, scanners: Iterable[Scanner] | None = None) -> int:
     """Run scanners, printing descriptions and findings; 0 clean, else 1.
 

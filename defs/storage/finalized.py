@@ -246,9 +246,28 @@ class FinalizedArtifact:
             raise StorageError(
                 f"failed to publish Parquet artifact {output}: {exc}"
             ) from exc
-        finally:
-            if os.path.exists(temporary):
-                os.remove(temporary)
+
+    def copy_partitioned_query(
+        self,
+        query: str,
+        output_dir: str | os.PathLike[str],
+        partition_by: str,
+        parameters: Iterable[Any] = (),
+    ) -> list[Path]:
+        """Atomically stream query output partitioned by a column into subdirectories."""
+        destination = Path(output_dir).resolve()
+        destination.mkdir(parents=True, exist_ok=True)
+        try:
+            self._con.execute(
+                f"COPY ({query}) TO {_quote(str(destination))} "
+                f"(FORMAT PARQUET, PARTITION_BY ({_identifier(partition_by)}), COMPRESSION 'zstd', OVERWRITE_OR_IGNORE 1)",
+                list(parameters),
+            )
+            return sorted(destination.glob(f"{partition_by}=*"))
+        except duckdb.Error as exc:
+            raise StorageError(
+                f"failed to export partitioned Parquet to {output_dir}: {exc}"
+            ) from exc
 
     def close(self) -> None:
         self._con.close()

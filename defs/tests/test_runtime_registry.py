@@ -83,3 +83,15 @@ def test_root_help_prints_usage(capsys):
     launcher = _load_root_launcher()
     assert launcher.main(["--help"]) == 0
     assert "entries" in capsys.readouterr().out.lower()
+
+
+def test_phase_dependencies_declared_and_retrieved():
+    from defs.runtime.registry import get_phase_dependencies
+
+    phase2_deps = get_phase_dependencies("filing-catalog")
+    assert len(phase2_deps) == 1
+    assert phase2_deps[0].phase == "metadata"
+    assert phase2_deps[0].dataset == "submission_metadata"
+
+    phase1_deps = get_phase_dependencies("metadata")
+    assert phase1_deps == ()

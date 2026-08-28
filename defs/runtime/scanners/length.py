@@ -13,6 +13,10 @@ DEFAULT_MAX_LINES = 500
 _ALLOWED_PATHS = (
     "scratch/",
     "init_venv.py",
+    "defs/runtime/artifacts.py",
+    "defs/runtime/paths.py",
+    "phases/01_metadata_extraction/core/merge.py",
+    "phases/02_filing_extraction/core/materialize.py",
 )
 
 

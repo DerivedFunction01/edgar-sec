@@ -13,7 +13,7 @@ SETTING_SPECS = {
     "sec": {
         "user_agent": SettingSpec(
             value_type=str,
-            default="",
+            default="EdgarSec/1.0 contact@example.com",
             env=True,
             cli=True,
             secret=True,

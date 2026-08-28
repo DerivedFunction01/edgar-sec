@@ -2,7 +2,12 @@
 
 from __future__ import annotations
 
-from .client import SecHttpClient, SecTransportProfile, default_headers
+from .client import (
+    DEFAULT_USER_AGENT,
+    SecHttpClient,
+    SecTransportProfile,
+    default_headers,
+)
 from .errors import PermanentHttpError, ResponseTooLargeError, RetryExhausted
 from .metrics import HttpMetrics
 from .rate_limit import (
@@ -30,6 +35,7 @@ __all__ = [
     "DEFAULT_MIN_INTERVAL_S",
     "DEFAULT_RATE_LIMIT_RPS",
     "DEFAULT_TIMEOUT_S",
+    "DEFAULT_USER_AGENT",
     "MAX_INTERVAL_S",
     "RECOVERY_DECAY",
     "RECOVERY_QUIET_S",

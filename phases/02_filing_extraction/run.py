@@ -14,7 +14,6 @@ Phase 2.5 acquisition boundary described in the phase and roadmap docs.
 from __future__ import annotations
 
 import builtins
-import importlib
 import json
 import logging
 import sys
@@ -22,7 +21,7 @@ from pathlib import Path
 
 from tqdm import tqdm
 
-from defs.runtime import load_manifest, resolve_paths
+from defs.runtime import resolve_paths, resolve_source
 from defs.runtime.progress import make_merge_progress_callback
 from defs.runtime.resources import derive_resources
 from defs.storage import StorageError
@@ -38,9 +37,10 @@ log = logging.getLogger("filing_extraction.run")
 
 def _prompt(prompt: str, default: str) -> str:
     try:
-        return builtins.input(prompt).strip() or default
+        raw = builtins.input(prompt).strip()
+        return raw or default
     except EOFError:
-        return "0"
+        return default
 
 
 def _read(prompt: str, default: str = "") -> str:
@@ -58,36 +58,22 @@ def _phase_root() -> Path:
 def _default_source() -> tuple[str, str]:
     """Return a safe default source kind/path for the common local workspace."""
     paths = resolve_paths()
-    manifest_root = paths.artifact_manifests_root
-    candidates: list[tuple[str, str]] = []
-    if manifest_root.exists():
-        for manifest_path in sorted(manifest_root.glob("*.json")):
-            try:
-                manifest = load_manifest(manifest_path)
-                artifact = paths.artifacts_root / manifest["artifact_path"]
-            except (OSError, ValueError, KeyError):
-                continue
-            if manifest.get("dataset") == "submission_metadata" and artifact.is_file():
-                candidates.append(("manifest", str(manifest_path)))
-    if len(candidates) == 1:
-        return candidates[0]
-    metadata = importlib.import_module("phases.01_metadata_extraction.core")
-    metadata_default_run = metadata.RunOptions().run_id
-    metadata_default_root = paths.phase("metadata").run(metadata_default_run).run_root
-    metadata_config_path = paths.phase("metadata").config_path
-    if metadata_config_path.is_file():
-        try:
-            metadata_config = metadata.load_project_config(metadata_config_path)
-            metadata_root = Path(metadata_config.artifacts_dir)
-        except (OSError, ValueError):
-            metadata_root = metadata_default_root
-    else:
-        metadata_root = metadata_default_root
-    legacy = metadata_root / "merge" / "submission_metadata.parquet"
-    if legacy.is_file():
-        return "artifact", str(legacy)
-    if candidates:
-        return candidates[0]
+    try:
+        manifests, _ = resolve_source("submission_metadata", phase="metadata")
+        manifest_path = paths.manifest_path_for(
+            phase="metadata",
+            dataset="submission_metadata",
+            artifact_id_value=manifests[0]["artifact_id"],
+            partition=manifests[0].get("partition", ""),
+        )
+        return "manifest", str(manifest_path)
+    except (FileNotFoundError, OSError):
+        pass
+    published = paths.published_dataset_path(
+        "metadata", "submission_metadata", "parquet"
+    )
+    if published.is_file():
+        return "artifact", str(published)
     return "artifact", ""
 
 
@@ -122,10 +108,10 @@ def _prompt_int(prompt: str) -> int | None:
 
 
 class _StageBar:
-    """tqdm stage bar driven by merge-style progress events.
+    """tqdm stage bar driven by merge-style and batched progress events.
 
-    Stage totals are unknown until the source forms are discovered, so the bar
-    starts indeterminate and adopts the event's ``total_units`` when announced.
+    Stage totals are announced when forms are discovered, while batch updates
+    report live progress during the longest unnest streaming phase.
     """
 
     def __init__(self, desc: str) -> None:
@@ -133,16 +119,46 @@ class _StageBar:
         self._adapter = make_merge_progress_callback(self._bar)
 
     def __call__(self, event: dict) -> None:
-        if event.get("type") == "batch_done":
-            self._bar.set_postfix(
-                batch=event.get("batch"),
-                cik=f"{event.get('cik_start')}..{event.get('cik_end')}",
-            )
+        event_type = event.get("type")
+        if event_type == "batch_done":
+            batch = event.get("batch", 1)
+            total_batches = event.get("total_batches")
+            cik_start = event.get("cik_start", "")
+            cik_end = event.get("cik_end", "")
+            ciks_done = event.get("ciks_done")
+            total_ciks = event.get("total_ciks")
+
+            batch_label = f"{batch}/{total_batches}" if total_batches else str(batch)
+            self._bar.set_description(f"materialize (batch {batch_label})")
+            postfix = {
+                "batch": batch_label,
+                "cik": f"{cik_start}..{cik_end}",
+            }
+            if ciks_done is not None and total_ciks:
+                postfix["done"] = (
+                    f"{ciks_done:,}/{total_ciks:,} ({ciks_done * 100 / total_ciks:.1f}%)"
+                )
+            self._bar.set_postfix(postfix)
             return
-        total_units = event.get("total_units")
-        if total_units is not None:
-            self._bar.total = int(total_units)
-            self._bar.refresh()
+
+        if event_type == "merge_stage":
+            stage = event.get("stage", "")
+            total_units = event.get("total_units")
+            if total_units is not None:
+                self._bar.total = int(total_units)
+                self._bar.refresh()
+            if stage.startswith("targets:"):
+                form_name = stage.split(":", 1)[1]
+                self._bar.set_description(f"targets ({form_name})")
+            elif stage == "company_profiles":
+                self._bar.set_description("company profiles")
+            elif stage == "discover_forms":
+                self._bar.set_description(f"forms ({event.get('forms', 0)} discovered)")
+            elif stage == "occurrence_sources":
+                self._bar.set_description("occurrence sources")
+            elif stage == "publish_manifest":
+                self._bar.set_description("publishing catalog")
+
         self._adapter(event)
 
     def close(self) -> None:

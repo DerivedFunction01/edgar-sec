@@ -87,17 +87,48 @@ def test_explicit_mapping_ignores_process_environment_and_dotenv(tmp_path, monke
     assert paths.artifacts_root == tmp_path / "explicit"
 
 
-def test_canonical_output_is_composed_from_logical_identity_and_format(tmp_path):
+def test_published_dataset_path_is_composed_from_logical_identity_and_format(tmp_path):
     paths = resolve_paths(env={"ARTIFACTS_ROOT": str(tmp_path)})
-    assert paths.canonical_output("metadata", "submission_metadata", "parquet") == (
-        tmp_path / "metadata" / "canonical" / "submission_metadata.parquet"
+    assert paths.published_dataset_path(
+        "metadata", "submission_metadata", "parquet"
+    ) == (
+        tmp_path
+        / "manifests"
+        / "metadata"
+        / "submission_metadata"
+        / "final"
+        / "submission_metadata.parquet"
     )
     assert (
-        paths.canonical_output("metadata", "submission_metadata", "jsonl").suffix
+        paths.published_dataset_path("metadata", "submission_metadata", "jsonl").suffix
         == ".jsonl"
     )
     with pytest.raises(ValueError):
-        paths.canonical_output("metadata", "submission_metadata", "csv")
+        paths.published_dataset_path("metadata", "submission_metadata", "csv")
+    assert paths.manifests_root == tmp_path / "manifests"
+    assert paths.dataset_manifests("metadata", "submission_metadata") == (
+        tmp_path / "manifests" / "metadata" / "submission_metadata" / "final"
+    )
+    assert paths.dataset_manifests(
+        "metadata", "submission_metadata", partition="partition-00001"
+    ) == (
+        tmp_path
+        / "manifests"
+        / "metadata"
+        / "submission_metadata"
+        / "partitions"
+        / "partition-00001"
+    )
+    assert paths.phase("metadata").published_dataset(
+        "submission_metadata", "parquet"
+    ) == (
+        tmp_path
+        / "manifests"
+        / "metadata"
+        / "submission_metadata"
+        / "final"
+        / "submission_metadata.parquet"
+    )
 
 
 def test_fixture_paths_dialect_and_files(tmp_path):
@@ -150,9 +181,17 @@ def test_classify_artifact_path():
     assert classified.phase == "metadata"
     assert classified.run_id == "r1"
 
-    canonical = classify_artifact_path("metadata/canonical/submission_metadata.parquet")
-    assert canonical.role == ArtifactRole.CANONICAL
-    assert canonical.phase == "metadata"
+    pub_dataset = classify_artifact_path(
+        "manifests/metadata/submission_metadata/final/submission_metadata.parquet"
+    )
+    assert pub_dataset.role == ArtifactRole.PUBLISHED_DATASET
+    assert pub_dataset.phase == "metadata"
+
+    pub_manifest = classify_artifact_path(
+        "manifests/metadata/submission_metadata/final/4d7fde4d090d580d876e4f8f89bb0830.json"
+    )
+    assert pub_manifest.role == ArtifactRole.PUBLISHED_MANIFEST
+    assert pub_manifest.phase == "metadata"
 
     unknown = classify_artifact_path("other/file.txt")
     assert unknown.role == ArtifactRole.UNKNOWN

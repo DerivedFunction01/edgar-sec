@@ -25,7 +25,8 @@ class ArtifactRole(str, Enum):
     PARTITION_CHUNK = "partition_chunk"
     CHUNK = "chunk"
     PREVIEW = "preview"
-    CANONICAL = "canonical"
+    PUBLISHED_DATASET = "published_dataset"
+    PUBLISHED_MANIFEST = "published_manifest"
     MERGE_REPORT = "merge_report"
     PARTITION_ARTIFACT = "partition_artifact"
     WORKER_FRAGMENT = "worker_fragment"
@@ -144,19 +145,40 @@ class ProjectPaths:
         return FixturePaths(self.fixtures_root / safe, safe, dialect=dialect)
 
     @property
-    def artifact_manifests_root(self) -> Path:
-        return self.artifacts_root / "artifact-manifests"
+    def manifests_root(self) -> Path:
+        return self.artifacts_root / "manifests"
 
-    def canonical_output(self, phase: str, dataset: str, storage_format: str) -> Path:
-        """Return the canonical output path for a logical dataset."""
-        phase = _safe_id(phase, "phase")
-        dataset = _safe_id(dataset, "dataset")
+    def dataset_manifests(self, phase: str, dataset: str, partition: str = "") -> Path:
+        """Directory containing immutable manifests for a dataset."""
+        phase_safe = _safe_id(phase, "phase")
+        dataset_safe = _safe_id(dataset, "dataset")
+        scope_dir = (
+            f"partitions/{partition}" if partition and partition != "final" else "final"
+        )
+        return self.manifests_root / phase_safe / dataset_safe / scope_dir
+
+    def manifest_path_for(
+        self, phase: str, dataset: str, artifact_id_value: str, partition: str = ""
+    ) -> Path:
+        """Path to an immutable manifest for an artifact."""
+        safe_id = _safe_id(artifact_id_value, "artifact_id")
+        return self.dataset_manifests(phase, dataset, partition) / f"{safe_id}.json"
+
+    def published_dataset_path(
+        self, phase: str, dataset: str, storage_format: str, partition: str = ""
+    ) -> Path:
+        """Return the published dataset path inside the manifests hierarchy."""
+        phase_safe = _safe_id(phase, "phase")
+        dataset_safe = _safe_id(dataset, "dataset")
         extension = {"parquet": "parquet", "jsonl": "jsonl", "sqlite": "sqlite"}.get(
             storage_format
         )
         if extension is None:
             raise ValueError(f"unsupported storage format: {storage_format}")
-        return self.artifacts_root / phase / "canonical" / f"{dataset}.{extension}"
+        return (
+            self.dataset_manifests(phase_safe, dataset_safe, partition)
+            / f"{dataset_safe}.{extension}"
+        )
 
 
 @dataclass(frozen=True)
@@ -179,6 +201,17 @@ class PhasePaths:
     @property
     def preview_root(self) -> Path:
         return self.phase_root / "preview"
+
+    @property
+    def catalogs_root(self) -> Path:
+        return self.phase_root / "catalogs"
+
+    def published_dataset(
+        self, dataset: str, storage_format: str, partition: str = ""
+    ) -> Path:
+        return self.project.published_dataset_path(
+            self.phase, dataset, storage_format, partition
+        )
 
     def fixture(self, fixture_id: str, dialect: str = "duckdb") -> FixturePaths:
         safe = _safe_id(fixture_id, "fixture_id")
@@ -331,11 +364,26 @@ def classify_artifact_path(path: str | os.PathLike[str]) -> ArtifactClassificati
             phase=phase,
             run_id=parts[2],
         )
-    if second == "canonical":
+    if phase == "manifests" and len(parts) >= 4:
+        prod_phase = parts[1]
+        scope = parts[3]
+        filename = parts[-1]
+        is_manifest = filename.endswith(".json")
+        role = (
+            ArtifactRole.PUBLISHED_MANIFEST
+            if is_manifest
+            else ArtifactRole.PUBLISHED_DATASET
+        )
+        part_id = None
+        if scope == "partitions" and len(parts) >= 5:
+            m = _PARTITION_DIR.fullmatch(parts[4])
+            if m:
+                part_id = int(m.group(1))
         return ArtifactClassification(
             relative_path=pure.as_posix(),
-            role=ArtifactRole.CANONICAL,
-            phase=phase,
+            role=role,
+            phase=prod_phase,
+            partition_id=part_id,
         )
     return base
 

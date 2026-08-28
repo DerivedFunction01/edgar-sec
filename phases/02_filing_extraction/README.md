@@ -30,7 +30,7 @@ The interactive menu offers:
 
 Prompts show workspace-derived defaults. In the standard local layout, blank
 materialization input selects the finalized Phase 01
-`metadata/runs/local/merge/submission_metadata.parquet` artifact when present,
+`manifests/metadata/submission_metadata/final/submission_metadata.parquet` artifact when present,
 and blank output inputs use `filing_extraction/catalogs` or
 `filing_extraction/runs` under `ARTIFACTS_ROOT`. If exactly one catalog is
 available, blank planning input selects it automatically. Materialization and
@@ -65,9 +65,9 @@ environment → machine-derived value.
 
 ```bash
 .venv/bin/python -m phases.02_filing_extraction.cli materialize \
-  --source-artifact .artifacts/metadata/runs/local/merge/submission_metadata.parquet
+  --source-artifact .artifacts/manifests/metadata/submission_metadata/final/submission_metadata.parquet
 .venv/bin/python -m phases.02_filing_extraction.cli materialize \
-  --source-manifest .artifacts/artifact-manifests/<artifact-id>.json
+  --source-manifest .artifacts/manifests/metadata/submission_metadata/final/<artifact-id>.json
 .venv/bin/python -m phases.02_filing_extraction.cli plan --catalog <catalog-directory>
 .venv/bin/python -m phases.02_filing_extraction.cli status
 ```

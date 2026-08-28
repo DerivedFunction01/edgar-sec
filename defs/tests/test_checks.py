@@ -16,6 +16,7 @@ from defs.runtime.env import scan_modified_environment_access
 from defs.runtime.paths import scan_artifact_path_literals
 from defs.runtime.scanners.clean_exit import scan_clean_exit_boundary
 from defs.runtime.scanners.compat import scan_legacy_shims
+from defs.runtime.scanners.form_isolation import scan_form_isolation
 from defs.runtime.scanners.length import scan_modified_file_length
 from defs.runtime.scanners.secrets import scan_secret_leakage
 from defs.sql.checks import scan_sql_boundary
@@ -56,6 +57,7 @@ def test_registry_contains_all_scanners():
         "clean-exit",
         "legacy-shims",
         "file-length",
+        "form-isolation",
     ]
     for name in expected:
         assert name in names
@@ -386,3 +388,39 @@ def test_file_length_scanner_allows_test_files_and_allowed_paths(repo):
     _git(repo, "add", "-A")
 
     assert scan_modified_file_length(repo_root=repo, max_lines=500) == []
+
+
+# --- form-isolation scanner ----------------------------------------------------
+
+
+def test_form_isolation_scanner_flags_hardcoded_10k_literals(repo):
+    phase = repo / "phases" / "01_metadata_extraction" / "core"
+    phase.mkdir(parents=True)
+    (phase / "extract.py").write_text('TARGET_FORM = "10-K"\n', encoding="utf-8")
+    findings = scan_form_isolation(repo_root=repo)
+    assert len(findings) == 1
+    assert findings[0].scanner == "form-isolation"
+    assert "hardcoded form literal" in findings[0].message
+
+
+def test_form_isolation_scanner_flags_10ka_and_10q(repo):
+    phase = repo / "phases" / "01_metadata_extraction" / "core"
+    phase.mkdir(parents=True)
+    (phase / "extract.py").write_text('forms = ["10-K/A", "10-Q"]\n', encoding="utf-8")
+    findings = scan_form_isolation(repo_root=repo)
+    assert len(findings) == 1
+    assert findings[0].scanner == "form-isolation"
+
+
+def test_form_isolation_scanner_allows_tests_and_comments(repo):
+    (repo / "app.py").write_text(
+        "# Reference: Form 10-K guidelines\nx = 1\n", encoding="utf-8"
+    )
+    _git(repo, "add", "-A")
+
+    t = repo / "phases" / "01_metadata_extraction" / "tests" / "test_extract.py"
+    t.parent.mkdir(parents=True, exist_ok=True)
+    t.write_text('form = "10-K"\n', encoding="utf-8")
+    _git(repo, "add", "-A")
+
+    assert scan_form_isolation(repo_root=repo) == []

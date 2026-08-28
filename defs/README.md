@@ -53,6 +53,7 @@ environment names are generated from it (`RUNTIME_THREADS`,
   - `clean-exit`: flags `sys.exit()` calls in library and core phase code outside CLI runners
   - `legacy-shims`: flags dead legacy behavior, backward-compatibility aliases, and transitional shims
   - `file-length`: advises when modified Python source files exceed 500 lines to encourage modular decomposition
+  - `form-isolation`: flags hardcoded `10-K`/`10-Q` form literals in generic pipeline code to preserve form neutrality
   Register future policy scanners in their respective semantic boundaries or `defs/runtime/scanners/` — `check.py` stays generic.
 
 ## Rules
@@ -60,8 +61,8 @@ environment names are generated from it (`RUNTIME_THREADS`,
 - New shared behavior lands here only with a reusable contract plus contract
   tests in `defs/tests/`; phase code consumes public contracts, never
   backend-private helpers.
-- Finalized cross-phase artifacts publish immutable manifests under
-  `.artifacts/artifact-manifests/`. Manifest paths are relative to the artifact
+- Finalized cross-phase artifacts publish immutable manifests and datasets under
+  `.artifacts/manifests/<phase>/<dataset>/[final|partitions]/`. Manifest paths are relative to the artifact
   root and content IDs exclude filesystem paths, so artifacts can move between
   persistent and ephemeral workspaces. The bundle command transports finalized
   artifacts without including chunks, checkpoints, caches, or absolute paths.

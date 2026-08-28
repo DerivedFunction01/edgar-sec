@@ -68,7 +68,9 @@ def chunk_dataset(artifacts_root: Path):
 @pytest.fixture()
 def parquet_dataset(artifacts_root: Path):
     """A canonical-style parquet artifact including a nested column."""
-    relative = Path("metadata/canonical/submission_metadata.parquet")
+    relative = Path(
+        "manifests/metadata/submission_metadata/final/submission_metadata.parquet"
+    )
     path = artifacts_root / relative
     table = pa.table(
         {

@@ -15,6 +15,7 @@ from defs.runtime.paths import (
     merge_report_path_in,
     partition_artifact_path_in,
     partition_merge_report_path_in,
+    resolve_paths,
 )
 from defs.storage import (
     MergeValidationSpec,
@@ -671,11 +672,30 @@ def merge_partition_artifacts(
     os.makedirs(os.path.dirname(report_path), exist_ok=True)
     with open(report_path, "w", encoding="utf-8") as fh:
         json.dump(report.to_dict(), fh, indent=2, sort_keys=True)
-    _publish_handoff(
-        output_path,
-        artifacts_dir=artifacts_dir,
-        row_count=report.row_count,
+
+    # Publish to manifests dataset path if running under standard artifacts root
+    root = _artifact_root(artifacts_dir, output_path)
+    published_path = (
+        resolve_paths(env={"ARTIFACTS_ROOT": root})
+        .phase("metadata")
+        .published_dataset("submission_metadata", "parquet")
     )
+    if os.path.abspath(output_path) != os.path.abspath(published_path):
+        published_path.parent.mkdir(parents=True, exist_ok=True)
+        tmp_pub = str(published_path) + ".tmp"
+        shutil.copyfile(output_path, tmp_pub)
+        os.replace(tmp_pub, str(published_path))
+        _publish_handoff(
+            str(published_path),
+            artifacts_dir=artifacts_dir,
+            row_count=report.row_count,
+        )
+    else:
+        _publish_handoff(
+            output_path,
+            artifacts_dir=artifacts_dir,
+            row_count=report.row_count,
+        )
     return report
 
 

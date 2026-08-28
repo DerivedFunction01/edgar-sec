@@ -35,7 +35,7 @@ def discover_catalogs(catalogs_root: str | None = None) -> list[dict]:
     ``catalog_manifest.json``; malformed JSON is skipped rather than raising.
     """
     if catalogs_root is None:
-        catalogs_root = str(resolve_paths("filing_extraction").phase_root / "catalogs")
+        catalogs_root = str(resolve_paths("filing_extraction").catalogs_root)
     root = Path(catalogs_root)
     summaries: list[dict] = []
     if not root.exists():
@@ -65,7 +65,7 @@ def discover_plans(runs_root: str | None = None) -> list[dict]:
     Only the recorded plan metadata is reported; Parquet outputs are never read.
     """
     if runs_root is None:
-        runs_root = str(resolve_paths("filing_extraction").phase_root / "runs")
+        runs_root = str(resolve_paths("filing_extraction").runs_root)
     root = Path(runs_root)
     summaries: list[dict] = []
     if not root.exists():

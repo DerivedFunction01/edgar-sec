@@ -7,6 +7,7 @@ import importlib
 import json
 import logging
 import re
+import shutil
 from collections.abc import Callable
 from pathlib import Path
 
@@ -25,7 +26,7 @@ from defs.runtime import (
     resolve_paths,
 )
 from defs.runtime.resources import derive_resources
-from defs.storage import DuckDBStaging, FinalizedArtifact, StorageError
+from defs.storage import FinalizedArtifact, StorageError, force_reclaim_memory
 
 from .config import DEFAULT_SOURCE_BATCH_SIZE
 from .schemas import (
@@ -111,189 +112,6 @@ def _register_identity_functions(artifact: FinalizedArtifact) -> None:
     )
 
 
-def _table_name(prefix: str, value: str = "") -> str:
-    return f"{prefix}_{_partition_key(value)}" if value else prefix
-
-
-def _next_cik_batch(
-    artifact: FinalizedArtifact, last_cik: str | None, batch_size: int
-) -> list[str]:
-    predicate = "cik IS NOT NULL"
-    parameters: list[object] = []
-    if last_cik is not None:
-        predicate += " AND cik > ?"
-        parameters.append(last_cik)
-    parameters.append(batch_size)
-    return [
-        row[0]
-        for row in artifact.run(
-            f"SELECT cik FROM {artifact.relation} WHERE {predicate} "
-            "ORDER BY cik LIMIT ?",
-            parameters,
-        )
-    ]
-
-
-def _batch_predicate(last_cik: str | None, upper_cik: str) -> tuple[str, list[str]]:
-    if last_cik is None:
-        return "t.cik <= ?", [upper_cik]
-    return "t.cik > ? AND t.cik <= ?", [last_cik, upper_cik]
-
-
-def _materialize_batches(
-    artifact: FinalizedArtifact,
-    staging: DuckDBStaging,
-    forms: list[str],
-    source_hash: str,
-    report: dict | None,
-    handoff: dict | None,
-    catalog_id: str,
-    root: Path,
-    handoff_root: Path,
-    source_batch_size: int,
-    progress: Callable[[dict], None] | None,
-) -> tuple[dict, dict, int, dict | None, int]:
-    metadata = {
-        "source_artifact_sha256": source_hash,
-        "input_fingerprint": report.get("input_fingerprint", "") if report else "",
-        "schema_version": SOURCE.SCHEMA_VERSION,
-        "catalog_id": catalog_id,
-    }
-    metadata_sql = ", ".join(
-        f"'{value}' AS \"{key}\"" for key, value in metadata.items()
-    )
-    target_tables: dict[str, str] = {}
-    source_table = _table_name("filing_occurrence_sources")
-    target_root = root / "filing_targets"
-    source_fields = """
-        filing_occurrence_id(t.cik, filing_accession(filing.accession_number_normalized), filing_document_path(filing.archive_url)) AS occurrence_id,
-        t.cik AS source_cik, filing_accession(filing.accession_number_normalized) AS accession,
-        filing_document_path(filing.archive_url) AS document_path,
-        filing.source_section, filing.source_file, filing.source_array_index
-    """
-    last_cik = None
-    batch_count = 0
-    target_queries = {
-        form: f"""
-            SELECT filing_occurrence_id(t.cik, filing_accession(filing.accession_number_normalized), filing_document_path(filing.archive_url)) AS occurrence_id,
-            filing_locator_key(filing_accession(filing.accession_number_normalized), filing_document_path(filing.archive_url)) AS document_locator_key,
-            t.cik AS source_cik, filing_accession(filing.accession_number_normalized) AS accession, filing.form,
-            filing_partition_key(filing.form) AS form_partition_key, filing_is_amendment(filing.form) AS is_amendment,
-            filing.filing_date, filing.report_date, filing.acceptance_datetime, filing.primary_document,
-            filing.primary_doc_description, filing_document_path(filing.archive_url) AS document_path,
-            filing.archive_url, filing.source_section, filing.source_file, filing.source_array_index,
-            filing.size AS reported_size, filing.is_xbrl, filing.is_inline_xbrl, filing.is_xbrl_numeric,
-            {metadata_sql}
-            FROM {artifact.relation} AS t, LATERAL unnest(t.filings) AS u(filing)
-            WHERE filing.form = ? AND filing_accession(filing.accession_number_normalized) IS NOT NULL
-            AND filing_document_path(filing.archive_url) IS NOT NULL AND filing.primary_document IS NOT NULL
-            AND {{batch_predicate}}
-        """
-        for form in forms
-    }
-    while True:
-        ciks = _next_cik_batch(artifact, last_cik, source_batch_size)
-        if not ciks:
-            break
-        upper_cik = ciks[-1]
-        if last_cik is not None and upper_cik <= last_cik:
-            raise StorageError("CIK batch boundary did not advance")
-        for form in forms:
-            partition = _partition_key(form)
-            query = target_queries[form].replace(
-                "{batch_predicate}", _batch_predicate(last_cik, upper_cik)[0]
-            )
-            parameters = [form, *_batch_predicate(last_cik, upper_cik)[1]]
-            table = target_tables.get(form)
-            if table is None:
-                table = _table_name("targets", form)
-                staging.create_table_as(table, query, parameters)
-                target_tables[form] = table
-            else:
-                staging.insert_query(table, query, parameters)
-        source_query = f"""
-            SELECT {source_fields}
-            FROM {artifact.relation} AS t, LATERAL unnest(t.filings) AS u(filing)
-            WHERE filing_accession(filing.accession_number_normalized) IS NOT NULL
-              AND filing_document_path(filing.archive_url) IS NOT NULL
-              AND {{batch_predicate}}
-        """.replace("{batch_predicate}", _batch_predicate(last_cik, upper_cik)[0])
-        source_parameters = _batch_predicate(last_cik, upper_cik)[1]
-        if batch_count == 0:
-            staging.create_table_as(source_table, source_query, source_parameters)
-        else:
-            staging.insert_query(source_table, source_query, source_parameters)
-        batch_count += 1
-        _emit(
-            progress,
-            {
-                "type": "batch_done",
-                "batch": batch_count,
-                "cik_start": ciks[0],
-                "cik_end": upper_cik,
-                "rows": len(ciks),
-            },
-        )
-        last_cik = upper_cik
-
-    counts: dict[str, int] = {}
-    target_artifact_ids: dict[str, str] = {}
-    for form in forms:
-        table = target_tables.get(form)
-        if table is None:
-            continue
-        count = staging.count(table)
-        if not count:
-            continue
-        partition = _partition_key(form)
-        output = target_root / f"form={partition}" / "data.parquet"
-        count = staging.copy_table(table, output)
-        target_manifest = make_manifest(
-            dataset="filing_targets",
-            phase="filing_extraction",
-            run_id=catalog_id,
-            schema_version=TARGET_SCHEMA_VERSION,
-            artifact_path=str(output),
-            artifacts_root=handoff_root,
-            row_count=count,
-            partition=partition,
-            upstream=(handoff["artifact_id"],) if handoff else (),
-        )
-        publish_manifest(target_manifest, artifacts_root=handoff_root)
-        counts[form] = count
-        target_artifact_ids[form] = target_manifest["artifact_id"]
-        _emit(
-            progress,
-            {"type": "merge_stage", "stage": f"targets:{form}", "rows": count},
-        )
-
-    if not batch_count:
-        staging.create_table_as(
-            source_table,
-            f"SELECT {source_fields} FROM {artifact.relation} AS t, "
-            "LATERAL unnest(t.filings) AS u(filing) WHERE 1 = 0",
-        )
-    source_count = staging.count(source_table)
-    sources_path = root / "filing_occurrence_sources.parquet"
-    source_count = staging.copy_table(source_table, sources_path)
-    sources_manifest = make_manifest(
-        dataset="filing_occurrence_sources",
-        phase="filing_extraction",
-        run_id=catalog_id,
-        schema_version=TARGET_SCHEMA_VERSION,
-        artifact_path=str(sources_path),
-        artifacts_root=handoff_root,
-        row_count=source_count,
-        upstream=(handoff["artifact_id"],) if handoff else (),
-    )
-    publish_manifest(sources_manifest, artifacts_root=handoff_root)
-    _emit(
-        progress,
-        {"type": "merge_stage", "stage": "occurrence_sources", "rows": source_count},
-    )
-    return counts, target_artifact_ids, batch_count, sources_manifest, source_count
-
-
 def materialize(
     source_artifact: str | None = None,
     output_root: str | None = None,
@@ -316,25 +134,27 @@ def materialize(
     if not source_artifact:
         raise ValueError("source_artifact or source_manifest is required")
     if output_root is None:
-        output_root = str(resolve_paths("filing_extraction").phase_root / "catalogs")
+        output_root = str(resolve_paths("filing_extraction").catalogs_root)
     source = Path(source_artifact).resolve()
     if any(part in {"chunks", "checkpoints", "workers"} for part in source.parts):
         raise StorageError(
             "Phase 2 requires a finalized artifact, not a chunk/checkpoint"
         )
     report = _load_json(source.parent / "merge_report.json")
-    # Engine resources resolve through the settings registry; an explicit
-    # temp_directory argument acts as a scoped override.
     resources = derive_resources(
         cli_overrides={"runtime.temp_directory": temp_directory}
         if temp_directory
         else None
     )
+    effective_threads = threads if threads is not None else resources.threads
+    effective_mem = memory_limit or resources.memory_limit
+    effective_temp = resources.temp_directory
+
     with FinalizedArtifact(
         source_artifact,
-        threads=threads if threads is not None else resources.threads,
-        memory_limit=memory_limit or resources.memory_limit,
-        temp_directory=resources.temp_directory,
+        threads=effective_threads,
+        memory_limit=effective_mem,
+        temp_directory=effective_temp,
     ) as artifact:
         _register_identity_functions(artifact)
         if artifact.columns != SOURCE.SUBMISSION_METADATA_SCHEMA.names:
@@ -378,9 +198,14 @@ def materialize(
             existing = _load_json(manifest_path)
             if existing and existing.get("source_artifact_sha256") == source_hash:
                 return existing
+        if root.exists():
+            shutil.rmtree(root, ignore_errors=True)
         root.mkdir(parents=True, exist_ok=True)
+
+        # Stage 1: Company Profiles (Column-Pruned Scalar Query)
+        profile_cols = ", ".join(f'"{c}"' for c in PROFILE_COLUMNS[:-1])
         profile_query = (
-            f"SELECT {', '.join('"' + c + '"' for c in PROFILE_COLUMNS[:-1])}, "
+            f"SELECT {profile_cols}, "
             f"'{PROFILE_SCHEMA_VERSION}' AS profile_schema_version "
             f"FROM {artifact.relation}"
         )
@@ -407,50 +232,235 @@ def materialize(
             progress,
             {"type": "merge_stage", "stage": "company_profiles", "rows": profile_count},
         )
-        forms = [
-            row[0]
-            for row in artifact.run(
-                f"SELECT DISTINCT filing.form FROM {artifact.relation} AS t, LATERAL unnest(t.filings) AS u(filing) WHERE filing.form IS NOT NULL ORDER BY 1"
+        force_reclaim_memory()
+
+        # Stage 2: Batched CIK Streaming into Form-Partitioned Parquet Files
+        ciks = [
+            r[0]
+            for r in artifact.run(
+                f"SELECT cik\n"
+                f"FROM {artifact.relation}\n"
+                f"WHERE cik IS NOT NULL\n"
+                f"ORDER BY cik"
             )
         ]
-        staging_root = root.parent / ".staging" / catalog_id
-        with DuckDBStaging(
-            staging_root / "tables.duckdb",
-            threads=threads if threads is not None else resources.threads,
-            memory_limit=memory_limit or resources.memory_limit,
-            temp_directory=resources.temp_directory,
-            cleanup_root=True,
-        ) as staging:
-            _register_identity_functions(staging)
-            _emit(
-                progress,
-                {
-                    "type": "merge_stage",
-                    "stage": "discover_forms",
-                    "forms": len(forms),
-                    "total_units": len(forms) + 5,
-                    "source_batch_size": source_batch_size,
-                },
+        batch_count = (
+            max(1, (len(ciks) + source_batch_size - 1) // source_batch_size)
+            if ciks
+            else 1
+        )
+
+        metadata = {
+            "source_artifact_sha256": source_hash,
+            "input_fingerprint": report.get("input_fingerprint", "") if report else "",
+            "schema_version": SOURCE.SCHEMA_VERSION,
+            "catalog_id": catalog_id,
+        }
+        metadata_sql = ", ".join(
+            f"'{value}' AS \"{key}\"" for key, value in metadata.items()
+        )
+        target_root = root / "filing_targets"
+        target_root.mkdir(parents=True, exist_ok=True)
+        staging_partitions_dir = root / ".staging_partitions"
+        if staging_partitions_dir.exists():
+            shutil.rmtree(staging_partitions_dir, ignore_errors=True)
+        staging_partitions_dir.mkdir(parents=True, exist_ok=True)
+
+        # Form Discovery & Initial Event
+        form_keys_res = artifact.run(
+            f"SELECT DISTINCT filing_partition_key(filing.form)\n"
+            f"FROM {artifact.relation} AS t, LATERAL unnest(t.filings) AS u(filing)\n"
+            f"WHERE filing.form IS NOT NULL"
+        )
+        all_partition_keys = sorted(r[0] for r in form_keys_res if r[0])
+        _emit(
+            progress,
+            {
+                "type": "merge_stage",
+                "stage": "discover_forms",
+                "forms": len(all_partition_keys),
+                "total_units": len(all_partition_keys) + 5,
+                "source_batch_size": source_batch_size,
+            },
+        )
+
+        # Execute CIK batches
+        if ciks:
+            for b_idx in range(batch_count):
+                b_start = b_idx * source_batch_size
+                b_end = min(b_start + source_batch_size, len(ciks))
+                b_ciks = ciks[b_start:b_end]
+                start_cik, end_cik = b_ciks[0], b_ciks[-1]
+
+                batch_staging_dir = staging_partitions_dir / f"batch_{b_idx}"
+                batch_query = f"""
+                    SELECT 
+                        filing_occurrence_id(t.cik, filing_accession(filing.accession_number_normalized), filing_document_path(filing.archive_url)) AS occurrence_id,
+                        filing_locator_key(filing_accession(filing.accession_number_normalized), filing_document_path(filing.archive_url)) AS document_locator_key,
+                        t.cik AS source_cik,
+                        filing_accession(filing.accession_number_normalized) AS accession,
+                        filing.form,
+                        filing_partition_key(filing.form) AS form_partition_key,
+                        filing_is_amendment(filing.form) AS is_amendment,
+                        filing.filing_date,
+                        filing.report_date,
+                        filing.acceptance_datetime,
+                        filing.primary_document,
+                        filing.primary_doc_description,
+                        filing_document_path(filing.archive_url) AS document_path,
+                        filing.archive_url,
+                        filing.source_section,
+                        filing.source_file,
+                        filing.source_array_index,
+                        filing.size AS reported_size,
+                        filing.is_xbrl,
+                        filing.is_inline_xbrl,
+                        filing.is_xbrl_numeric,
+                        {metadata_sql}
+                    FROM {artifact.relation} AS t, LATERAL unnest(t.filings) AS u(filing)
+                    WHERE t.cik >= ? AND t.cik <= ?
+                      AND filing_accession(filing.accession_number_normalized) IS NOT NULL
+                      AND filing_document_path(filing.archive_url) IS NOT NULL
+                      AND filing.primary_document IS NOT NULL
+                      AND filing.form IS NOT NULL
+                """
+                artifact.copy_partitioned_query(
+                    batch_query,
+                    str(batch_staging_dir),
+                    partition_by="form_partition_key",
+                    parameters=[start_cik, end_cik],
+                )
+                _emit(
+                    progress,
+                    {
+                        "type": "batch_done",
+                        "batch": b_idx + 1,
+                        "total_batches": batch_count,
+                        "cik_start": start_cik,
+                        "cik_end": end_cik,
+                        "rows": b_end - b_start,
+                        "total_ciks": len(ciks),
+                        "ciks_done": b_end,
+                    },
+                )
+                force_reclaim_memory()
+
+        counts: dict[str, int] = {}
+        target_artifact_ids: dict[str, str] = {}
+        form_partition_mapping: dict[str, str] = {}
+
+        for part_key in all_partition_keys:
+            dest_dir = target_root / f"form={part_key}"
+            dest_dir.mkdir(parents=True, exist_ok=True)
+            dest_file = dest_dir / "data.parquet"
+            if dest_file.exists():
+                dest_file.unlink()
+
+            parquet_files = sorted(
+                staging_partitions_dir.glob(
+                    f"batch_*/form_partition_key={part_key}/*.parquet"
+                )
             )
-            (
-                counts,
-                target_artifact_ids,
-                batch_count,
-                sources_manifest,
-                _source_count,
-            ) = _materialize_batches(
-                artifact,
-                staging,
-                forms,
-                source_hash,
-                report,
-                handoff,
-                catalog_id,
-                root,
-                handoff_root,
-                source_batch_size,
-                progress,
+            if not parquet_files:
+                continue
+
+            if len(parquet_files) == 1:
+                shutil.copyfile(parquet_files[0], dest_file)
+            else:
+                file_list = ", ".join(f"'{p}'" for p in parquet_files)
+                concat_q = (
+                    f"COPY (\n"
+                    f"  SELECT *\n"
+                    f"  FROM read_parquet([{file_list}])\n"
+                    f") TO '{dest_file}' (FORMAT PARQUET, COMPRESSION 'zstd')"
+                )
+                artifact.run(concat_q)
+
+            # Retrieve form and count
+            group_q = (
+                f"SELECT form, COUNT(*)\n"
+                f"FROM read_parquet('{dest_file}')\n"
+                f"GROUP BY form"
             )
+            res = artifact.run(group_q)
+            total_count = 0
+            for form_name, row_cnt in res:
+                form_name_str = str(form_name)
+                counts[form_name_str] = int(row_cnt)
+                form_partition_mapping[form_name_str] = part_key
+                total_count += int(row_cnt)
+
+            target_manifest = make_manifest(
+                dataset="filing_targets",
+                phase="filing_extraction",
+                run_id=catalog_id,
+                schema_version=TARGET_SCHEMA_VERSION,
+                artifact_path=str(dest_file),
+                artifacts_root=handoff_root,
+                row_count=total_count,
+                partition=part_key,
+                upstream=(handoff["artifact_id"],) if handoff else (),
+            )
+            publish_manifest(target_manifest, artifacts_root=handoff_root)
+            for form_name, row_cnt in res:
+                form_name_str = str(form_name)
+                target_artifact_ids[form_name_str] = target_manifest["artifact_id"]
+                _emit(
+                    progress,
+                    {
+                        "type": "merge_stage",
+                        "stage": f"targets:{form_name_str}",
+                        "rows": int(row_cnt),
+                    },
+                )
+
+        shutil.rmtree(staging_partitions_dir, ignore_errors=True)
+        force_reclaim_memory()
+
+        # Stage 3: Occurrence Sources (Streaming Distinct Query from Flat Targets)
+        target_files = sorted(target_root.glob("form=*/data.parquet"))
+        if target_files:
+            file_list = ", ".join(f"'{p}'" for p in target_files)
+            sources_query = (
+                f"SELECT DISTINCT\n"
+                f"    occurrence_id, source_cik, accession, document_path,\n"
+                f"    source_section, source_file, source_array_index\n"
+                f"FROM read_parquet([{file_list}])"
+            )
+        else:
+            sources_query = (
+                f"SELECT DISTINCT\n"
+                f"    filing_occurrence_id(t.cik, filing_accession(filing.accession_number_normalized), filing_document_path(filing.archive_url)) AS occurrence_id,\n"
+                f"    t.cik AS source_cik, filing_accession(filing.accession_number_normalized) AS accession,\n"
+                f"    filing_document_path(filing.archive_url) AS document_path,\n"
+                f"    filing.source_section, filing.source_file, filing.source_array_index\n"
+                f"FROM {artifact.relation} AS t, LATERAL unnest(t.filings) AS u(filing)\n"
+                f"WHERE filing_accession(filing.accession_number_normalized) IS NOT NULL\n"
+                f"  AND filing_document_path(filing.archive_url) IS NOT NULL"
+            )
+        sources_path = root / "filing_occurrence_sources.parquet"
+        source_count = artifact.copy_query(sources_query, str(sources_path))
+        sources_manifest = make_manifest(
+            dataset="filing_occurrence_sources",
+            phase="filing_extraction",
+            run_id=catalog_id,
+            schema_version=TARGET_SCHEMA_VERSION,
+            artifact_path=str(sources_path),
+            artifacts_root=handoff_root,
+            row_count=source_count,
+            upstream=(handoff["artifact_id"],) if handoff else (),
+        )
+        publish_manifest(sources_manifest, artifacts_root=handoff_root)
+        _emit(
+            progress,
+            {
+                "type": "merge_stage",
+                "stage": "occurrence_sources",
+                "rows": source_count,
+            },
+        )
+        force_reclaim_memory()
+
         manifest = {
             "catalog_id": catalog_id,
             "source_artifact": handoff["artifact_path"] if handoff else source.name,
@@ -465,10 +475,7 @@ def materialize(
                 "filing_occurrence_sources": sources_manifest["artifact_id"],
                 **target_artifact_ids,
             },
-            "form_partition_mapping": {
-                form: re.sub(r"[^A-Za-z0-9_.-]", "_", form) or "_unknown"
-                for form in counts
-            },
+            "form_partition_mapping": form_partition_mapping,
             "materializer_version": SCHEMA_VERSION,
             "source_batch_size": source_batch_size,
             "batch_count": batch_count,

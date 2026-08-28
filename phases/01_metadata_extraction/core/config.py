@@ -13,7 +13,12 @@ from defs.runtime.settings.runtime import (
     DEFAULT_PARTITION_COUNT,
     DEFAULT_WORKERS,
 )
-from defs.sec_http import DEFAULT_MAX_RETRIES, DEFAULT_RATE_LIMIT_RPS, DEFAULT_TIMEOUT_S
+from defs.sec_http import (
+    DEFAULT_MAX_RETRIES,
+    DEFAULT_RATE_LIMIT_RPS,
+    DEFAULT_TIMEOUT_S,
+    DEFAULT_USER_AGENT,
+)
 from defs.storage import DEFAULT_STORAGE_FORMAT
 
 DEFAULT_INPUT = "uploads/cik-sec.csv"
@@ -42,7 +47,8 @@ def rate_limit_to_interval(requests_per_second: float) -> float:
 
 
 def default_user_agent() -> str:
-    return str(get_setting("sec.user_agent"))
+    setting = get_setting("sec.user_agent")
+    return str(setting) if setting else DEFAULT_USER_AGENT
 
 
 def default_cache_dir() -> str:
@@ -215,9 +221,6 @@ class ProjectConfig:
                 "cache_dir": self.cache_dir,
             },
             "metadata": {"max_failure_attempts": self.max_failure_attempts},
-            "credentials": {
-                "user_agent": self.user_agent,
-            },
         }
 
     def validate(self) -> None:

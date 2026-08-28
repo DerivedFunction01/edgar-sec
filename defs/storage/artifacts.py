@@ -75,4 +75,22 @@ def read_records(path: str, storage_format: str, *, spec: DatasetSpec) -> list[d
     return result
 
 
-__all__ = ["file_sha256", "parquet_column_names", "read_records"]
+def force_reclaim_memory() -> None:
+    """Break reference cycles and return freed arenas to the OS (Linux)."""
+    import ctypes
+    import gc
+
+    gc.collect()
+    try:
+        libc = ctypes.CDLL("libc.so.6")
+        libc.malloc_trim(0)
+    except (AttributeError, OSError):
+        pass
+
+
+__all__ = [
+    "file_sha256",
+    "force_reclaim_memory",
+    "parquet_column_names",
+    "read_records",
+]

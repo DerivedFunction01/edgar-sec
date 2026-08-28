@@ -188,7 +188,11 @@ def options_from_args(args, project_config) -> RunOptions:
         rate_limit_rps=coalesce(
             args.rate_limit, project_config.rate_limit_rps, RunOptions.rate_limit_rps
         ),
-        user_agent=args.user_agent or project_config.user_agent or default_user_agent(),
+        user_agent=(
+            args.user_agent
+            if getattr(args, "user_agent", None) is not None
+            else (project_config.user_agent or default_user_agent())
+        ),
         cache_dir=coalesce(args.cache_dir, project_config.cache_dir, ""),
         max_failure_attempts=coalesce(
             args.max_failure_attempts,

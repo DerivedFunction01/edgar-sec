@@ -29,7 +29,7 @@ def test_discovery_classifies_and_groups_artifacts(
     assert chunk.mtime is not None
 
     canonical = by_path[parquet_dataset["relative"].as_posix()]
-    assert canonical.kind == "canonical"
+    assert canonical.kind == "published_dataset"
     assert canonical.format == "parquet"
     assert canonical.run_id is None
 

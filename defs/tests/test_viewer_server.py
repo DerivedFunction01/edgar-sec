@@ -25,7 +25,7 @@ def test_health_and_listing(client, chunk_dataset, parquet_dataset):
     datasets = http.get("/api/datasets").json()
     kinds = {item["relative_path"]: item["kind"] for item in datasets}
     assert kinds[chunk_dataset["relative"].as_posix()] == "partition_chunk"
-    assert kinds[parquet_dataset["relative"].as_posix()] == "canonical"
+    assert kinds[parquet_dataset["relative"].as_posix()] == "published_dataset"
 
 
 def test_rows_and_schema_endpoints(client, chunk_dataset):

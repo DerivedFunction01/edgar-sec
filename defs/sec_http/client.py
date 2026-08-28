@@ -17,8 +17,10 @@ from .metrics import HttpMetrics
 from .rate_limit import DEFAULT_RATE_LIMIT_RPS, RateLimiter
 from .retry import DEFAULT_MAX_RETRIES, DEFAULT_TIMEOUT_S, RetryPolicy
 
+DEFAULT_USER_AGENT = "EdgarSec/1.0 contact@example.com"
 
-def default_headers(user_agent: str) -> dict:
+
+def default_headers(user_agent: str = DEFAULT_USER_AGENT) -> dict:
     """Shared headers for SEC requests.
 
     No ``Host`` header is set on purpose: the client serves both

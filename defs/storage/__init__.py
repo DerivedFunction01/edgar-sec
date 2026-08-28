@@ -2,7 +2,12 @@
 
 import pyarrow as pa
 
-from .artifacts import file_sha256, parquet_column_names, read_records
+from .artifacts import (
+    file_sha256,
+    force_reclaim_memory,
+    parquet_column_names,
+    read_records,
+)
 from .converter import DatasetConverter
 from .dataset import Dataset
 from .duckdb_merge import (
@@ -115,6 +120,7 @@ __all__ = [
     "count_rows",
     "duplicate_values",
     "file_sha256",
+    "force_reclaim_memory",
     "jsonl_columns",
     "make_chunk_backend",
     "ordered_keys",

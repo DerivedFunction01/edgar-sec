@@ -40,7 +40,7 @@ def test_write_and_load_project_config_round_trip(tmp_path):
     assert loaded.input_path == cfg.input_path
     assert loaded.chunk_size == cfg.chunk_size
     assert loaded.storage_format == cfg.storage_format
-    assert loaded.user_agent == cfg.user_agent
+    assert loaded.user_agent == config_mod.default_user_agent()
     assert loaded.limit == cfg.limit
 
 
@@ -79,9 +79,9 @@ def test_load_project_config_rejects_removed_user_agent_env(tmp_path):
         config_mod.load_project_config(str(config_path))
 
 
-def test_persisted_config_omits_user_agent_env(tmp_path):
+def test_persisted_config_omits_credentials(tmp_path):
     cfg = config_mod.ProjectConfig(user_agent="App/1.0 a@b.com")
-    assert "user_agent_env" not in cfg.to_dict()["credentials"]
+    assert "credentials" not in cfg.to_dict()
 
 
 def test_load_project_config_rejects_invalid_storage_format(tmp_path):
@@ -281,8 +281,8 @@ def test_run_configure_writes_config_and_exits(tmp_path):
     assert exit_code == 0
     assert config_path.exists()
     loaded = config_mod.load_project_config(str(config_path))
-    assert loaded.user_agent == "NewApp/1.0 new@example.com"
     assert loaded.chunk_size == 500
+    assert loaded.user_agent == config_mod.default_user_agent()
 
 
 def test_cli_override_does_not_modify_config_file(tmp_path):

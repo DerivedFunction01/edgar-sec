@@ -419,12 +419,8 @@ def test_interactive_wizard_preview_menu(tmp_path, monkeypatch):
 
 def test_interactive_wizard_rejects_missing_sec_identity(tmp_path, monkeypatch):
     """A missing SEC identity exits with a clear error, never a traceback."""
-    config_path, _ = _write_wizard_config(
-        tmp_path, FakeSession(), monkeypatch, user_agent=""
-    )
-    monkeypatch.delenv("SEC_USER_AGENT", raising=False)
-    monkeypatch.setenv("DOTENV_PATH", str(tmp_path / "missing.env"))
+    config_path, _ = _write_wizard_config(tmp_path, FakeSession(), monkeypatch)
     answers = iter([])
     monkeypatch.setattr("builtins.input", lambda prompt="": next(answers))
-    exit_code = run_mod.main(["--config", str(config_path)])
+    exit_code = run_mod.main(["--config", str(config_path), "--user-agent", ""])
     assert exit_code == 2

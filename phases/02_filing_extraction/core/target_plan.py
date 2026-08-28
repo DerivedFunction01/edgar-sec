@@ -33,7 +33,7 @@ def plan(
 ) -> dict:
     root = Path(catalog).resolve()
     if output_root is None:
-        output_root = str(resolve_paths("filing_extraction").phase_root / "runs")
+        output_root = str(resolve_paths("filing_extraction").runs_root)
     manifest_path = root / "catalog_manifest.json"
     if not manifest_path.exists():
         raise StorageError("catalog_manifest.json is required")

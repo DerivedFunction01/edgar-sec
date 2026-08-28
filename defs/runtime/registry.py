@@ -12,6 +12,16 @@ from dataclasses import dataclass
 
 
 @dataclass(frozen=True)
+class PhaseDependency:
+    """One upstream dataset requirement for a pipeline phase."""
+
+    phase: str
+    dataset: str
+    description: str = ""
+    required: bool = True
+
+
+@dataclass(frozen=True)
 class LauncherEntry:
     """One dispatchable entry point of the repository launcher."""
 
@@ -19,6 +29,7 @@ class LauncherEntry:
     label: str
     description: str
     module: str
+    dependencies: tuple[PhaseDependency, ...] = ()
 
 
 ENTRIES: tuple[LauncherEntry, ...] = (
@@ -31,7 +42,7 @@ ENTRIES: tuple[LauncherEntry, ...] = (
     LauncherEntry(
         id="metadata",
         label="Phase 01: Metadata Extraction",
-        description="interactive SEC 10-K metadata extraction wizard",
+        description="interactive SEC metadata extraction wizard",
         module="phases.01_metadata_extraction.run",
     ),
     LauncherEntry(
@@ -39,6 +50,13 @@ ENTRIES: tuple[LauncherEntry, ...] = (
         label="Phase 02: Filing Catalog",
         description="no-network filing catalog and target planner",
         module="phases.02_filing_extraction.run",
+        dependencies=(
+            PhaseDependency(
+                phase="metadata",
+                dataset="submission_metadata",
+                description="Phase 01 verified submission metadata",
+            ),
+        ),
     ),
     LauncherEntry(
         id="artifact-bundle",
@@ -63,4 +81,24 @@ def find_entry(entry_id: str) -> LauncherEntry | None:
     return None
 
 
-__all__ = ["ENTRIES", "LauncherEntry", "find_entry"]
+def get_phase_dependencies(phase_or_entry_id: str) -> tuple[PhaseDependency, ...]:
+    """Return declared upstream dependencies for a phase or launcher entry."""
+    entry = find_entry(phase_or_entry_id)
+    if entry is not None:
+        return entry.dependencies
+    for item in ENTRIES:
+        if (
+            item.module.startswith(f"phases.{phase_or_entry_id}")
+            or item.id == phase_or_entry_id
+        ):
+            return item.dependencies
+    return ()
+
+
+__all__ = [
+    "ENTRIES",
+    "LauncherEntry",
+    "PhaseDependency",
+    "find_entry",
+    "get_phase_dependencies",
+]

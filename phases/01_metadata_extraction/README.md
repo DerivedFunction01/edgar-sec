@@ -90,9 +90,13 @@ Each partition publishes an immutable artifact under its run-relative directory:
         submission_metadata.parquet # complete, copyable partition artifact
         merge_report.json           # validation/provenance for that artifact
   merge/
-    submission_metadata.parquet     # final dataset (configurable output)
+    submission_metadata.parquet     # run-level merged dataset
     merge_report.json
 ```
+
+On merge completion, verified artifacts and immutable JSON manifest receipts are published to the self-contained manifests hierarchy:
+- Partition artifacts: `.artifacts/manifests/metadata/submission_metadata/partitions/partition-00001/`
+- Final unified dataset: `.artifacts/manifests/metadata/submission_metadata/final/submission_metadata.parquet` and `<artifact_id>.json`
 
 Partition artifacts and the final dataset are always Parquet (ZSTD), regardless
 of the checkpoint format used to produce them. JSONL checkpoints are accepted

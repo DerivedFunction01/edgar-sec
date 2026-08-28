@@ -104,5 +104,5 @@ read-only SQL console — with a built TypeScript UI.
 - Credentials (SEC User-Agent) come from the environment or the git-ignored
   `.env`; they are never written to plans, manifests, or artifacts.
 - Finalized cross-phase artifacts are discovered through immutable manifests in
-  `.artifacts/artifact-manifests/`; bundle transport rebases relative paths and
+  `.artifacts/manifests/<phase>/<dataset>/[final|partitions]/`; bundle transport rebases relative paths and
   never stores absolute filesystem paths.

@@ -9,12 +9,14 @@ import shutil
 import subprocess
 import tempfile
 import zipfile
+from collections.abc import Sequence
 from pathlib import Path, PurePosixPath
+from typing import Any
 
 from defs.storage.artifacts import file_sha256
 
 MANIFEST_VERSION = "1.0.0"
-MANIFEST_DIR = "artifact-manifests"
+MANIFEST_DIR = "manifests"
 
 
 def _canonical(value: object) -> str:
@@ -50,6 +52,19 @@ def artifact_id(
         partition,
     ]
     return hashlib.sha256(_canonical(payload).encode()).hexdigest()[:32]
+
+
+def manifest_relative_path(
+    *,
+    phase: str,
+    dataset: str,
+    artifact_id_value: str,
+    partition: str = "",
+) -> str:
+    scope_dir = (
+        f"partitions/{partition}" if partition and partition != "final" else "final"
+    )
+    return f"{MANIFEST_DIR}/{phase}/{dataset}/{scope_dir}/{artifact_id_value}.json"
 
 
 def make_manifest(
@@ -108,14 +123,22 @@ def _atomic_json(path: Path, value: dict) -> None:
 
 
 def publish_manifest(manifest: dict, *, artifacts_root: str) -> Path:
-    """Publish adjacent and shared immutable copies of one manifest."""
+    """Publish adjacent and structured immutable copies of one manifest."""
     validate_manifest(manifest)
     root = Path(artifacts_root).resolve()
     artifact = root / manifest["artifact_path"]
-    # Multiple finalized datasets can share a merge/catalog directory.
     adjacent = artifact.with_name(artifact.name + ".manifest.json")
-    shared = root / MANIFEST_DIR / f"{manifest['artifact_id']}.json"
-    for path in (adjacent, shared):
+    rel_path = manifest_relative_path(
+        phase=manifest["producer_phase"],
+        dataset=manifest["dataset"],
+        artifact_id_value=manifest["artifact_id"],
+        partition=manifest.get("partition", ""),
+    )
+    shared = root / rel_path
+    paths_to_write = (
+        (shared,) if adjacent.parent == shared.parent else (adjacent, shared)
+    )
+    for path in paths_to_write:
         if path.exists():
             existing = json.loads(path.read_text(encoding="utf-8"))
             stable = ("artifact_id", "artifact_sha256", "dataset", "schema_version")
@@ -152,63 +175,197 @@ def load_manifest(path: str | os.PathLike[str]) -> dict:
     return value
 
 
+def find_manifests(
+    dataset: str,
+    *,
+    phase: str | None = None,
+    scope: str = "final",
+    partition: str = "",
+    artifacts_root: str,
+) -> list[dict]:
+    """Discover immutable manifests for a dataset in structured storage."""
+    root = Path(artifacts_root).resolve()
+    manifests_root = root / MANIFEST_DIR
+    if not manifests_root.exists():
+        return []
+    scope_dir = (
+        f"partitions/{partition}" if partition and partition != "final" else "final"
+    )
+    pattern = (
+        f"{phase}/{dataset}/{scope_dir}/*.json"
+        if phase
+        else f"*/{dataset}/{scope_dir}/*.json"
+    )
+    discovered = []
+    seen_ids: set[str] = set()
+    for manifest_path in sorted(manifests_root.glob(pattern)):
+        try:
+            manifest = load_manifest(manifest_path)
+            aid = manifest["artifact_id"]
+            if aid in seen_ids:
+                continue
+            artifact = root / manifest["artifact_path"]
+            if (
+                artifact.is_file()
+                and file_sha256(str(artifact)) == manifest["artifact_sha256"]
+            ):
+                discovered.append(manifest)
+                seen_ids.add(aid)
+        except (OSError, ValueError):
+            continue
+    return discovered
+
+
 def resolve_manifest(
-    artifact_id_value: str, *, artifacts_root: str
+    path_or_id: str | os.PathLike[str], *, artifacts_root: str
 ) -> tuple[dict, Path]:
-    path = Path(artifacts_root) / MANIFEST_DIR / f"{artifact_id_value}.json"
-    manifest = load_manifest(path)
-    artifact = Path(artifacts_root).resolve() / manifest["artifact_path"]
+    """Resolve an artifact manifest and verify its artifact content hash."""
+    root = Path(artifacts_root).resolve()
+    path = Path(path_or_id)
+    if path.is_file():
+        manifest = load_manifest(path)
+    else:
+        # Search structured manifests by artifact_id
+        candidates = list((root / MANIFEST_DIR).glob(f"**/{path_or_id}.json"))
+        if not candidates:
+            raise FileNotFoundError(f"manifest not found for artifact id: {path_or_id}")
+        manifest = load_manifest(candidates[0])
+    artifact = root / manifest["artifact_path"]
     if file_sha256(str(artifact)) != manifest["artifact_sha256"]:
         raise ValueError("artifact hash does not match its manifest")
     return manifest, artifact
 
 
-def discover_legacy_manifests(
-    *, artifacts_root: str, publish: bool = False
+def resolve_source(
+    dataset: str,
+    *,
+    phase: str | None = None,
+    partition_id: int | str | None = None,
+    artifacts_root: str | os.PathLike[str] | None = None,
+) -> tuple[list[dict], list[Path]]:
+    """Resolve source dataset artifacts by checking final manifests first, then partitions.
+
+    Returns:
+        tuple of (list of manifests, list of verified artifact Paths)
+    """
+    from defs.runtime.paths import resolve_paths
+
+    root = (
+        Path(artifacts_root).resolve()
+        if artifacts_root is not None
+        else resolve_paths().artifacts_root
+    )
+    if partition_id is not None:
+        part_str = (
+            f"partition-{partition_id:05d}"
+            if isinstance(partition_id, int)
+            else str(partition_id)
+        )
+        manifests = find_manifests(
+            dataset,
+            phase=phase,
+            scope="partition",
+            partition=part_str,
+            artifacts_root=str(root),
+        )
+        if not manifests:
+            raise FileNotFoundError(
+                f"No published partition manifest found for dataset {dataset!r} "
+                f"({part_str}) under {root}"
+            )
+        paths = [root / m["artifact_path"] for m in manifests]
+        return manifests, paths
+
+    # Try final manifest first
+    final_manifests = find_manifests(
+        dataset, phase=phase, scope="final", artifacts_root=str(root)
+    )
+    if final_manifests:
+        return final_manifests, [root / final_manifests[0]["artifact_path"]]
+
+    # Fallback to partition manifests
+    partition_manifests = find_manifests(
+        dataset, phase=phase, scope="partition", partition="*", artifacts_root=str(root)
+    )
+    if partition_manifests:
+        return partition_manifests, [
+            root / m["artifact_path"] for m in partition_manifests
+        ]
+
+    raise FileNotFoundError(
+        f"No published manifest found for dataset {dataset!r}"
+        + (f" from phase {phase!r}" if phase else "")
+        + f" under {root}. Ensure upstream merge has completed or import an artifact bundle."
+    )
+
+
+def resolve_dependencies(
+    dependencies: Sequence[Any],
+    *,
+    artifacts_root: str | os.PathLike[str] | None = None,
 ) -> list[dict]:
-    """Find validated finalized outputs from pre-manifest merge reports."""
-    root = Path(artifacts_root).resolve()
-    discovered = []
-    for report_path in root.glob("**/merge_report.json"):
+    """Resolve manifests for all declared phase dependencies."""
+    from defs.runtime.paths import resolve_paths
+
+    root = (
+        Path(artifacts_root).resolve()
+        if artifacts_root is not None
+        else resolve_paths().artifacts_root
+    )
+    resolved_manifests: list[dict] = []
+    missing_deps: list[str] = []
+    for dep in dependencies:
+        phase = getattr(dep, "phase", None) or (
+            dep.get("phase") if isinstance(dep, dict) else None
+        )
+        dataset = getattr(dep, "dataset", None) or (
+            dep.get("dataset") if isinstance(dep, dict) else None
+        )
+        required = (
+            getattr(dep, "required", True)
+            if hasattr(dep, "required")
+            else (dep.get("required", True) if isinstance(dep, dict) else True)
+        )
         try:
-            report = json.loads(report_path.read_text(encoding="utf-8"))
-            output = Path(report["output_path"]).resolve()
-            output.relative_to(root)
-            if any(
-                part in {"chunks", "checkpoints", "workers"} for part in output.parts
-            ):
-                continue
-            if output.suffix != ".parquet" or not output.is_file():
-                continue
-            if file_sha256(str(output)) != report.get("artifact_sha256"):
-                continue
-            relative = output.relative_to(root).as_posix()
-            parts = Path(relative).parts
-            phase = parts[0] if parts else "unknown"
-            run_id = (
-                parts[2]
-                if len(parts) > 2 and parts[1] == "runs"
-                else report_path.parent.name
+            manifests, _ = resolve_source(
+                dataset, phase=phase, artifacts_root=str(root)
             )
-            manifest = make_manifest(
-                dataset=output.stem,
-                phase=phase,
-                run_id=run_id,
-                schema_version=report.get("schema_version", "unknown"),
-                artifact_path=str(output),
-                artifacts_root=str(root),
-                row_count=int(report.get("row_count", 0)),
-                provenance={
-                    "legacy_merge_report": report_path.relative_to(root).as_posix(),
-                    "report_source": report.get("report_source"),
-                },
-            )
-            discovered.append(manifest)
-            if publish:
-                publish_manifest(manifest, artifacts_root=str(root))
-        except (OSError, KeyError, TypeError, ValueError, json.JSONDecodeError):
-            continue
-    return discovered
+            resolved_manifests.extend(manifests)
+        except FileNotFoundError:
+            if required:
+                missing_deps.append(f"{phase}/{dataset}")
+    if missing_deps:
+        raise FileNotFoundError(
+            f"Missing required upstream dependencies under {root}: {', '.join(missing_deps)}. "
+            "Ensure upstream phases have completed or import their artifact bundles."
+        )
+    return resolved_manifests
+
+
+def prepare_bundle_for_phase(
+    target_phase: str,
+    *,
+    output: str,
+    artifacts_root: str | os.PathLike[str] | None = None,
+) -> tuple[str, list[dict]]:
+    """Resolve declared upstream dependencies for a phase and export them as a bundle."""
+    from defs.runtime.paths import resolve_paths
+    from defs.runtime.registry import get_phase_dependencies
+
+    root = (
+        Path(artifacts_root).resolve()
+        if artifacts_root is not None
+        else resolve_paths().artifacts_root
+    )
+    deps = get_phase_dependencies(target_phase)
+    if not deps:
+        raise ValueError(
+            f"No upstream dependencies declared for phase: {target_phase!r}"
+        )
+    manifests = resolve_dependencies(deps, artifacts_root=str(root))
+    artifact_ids = [m["artifact_id"] for m in manifests]
+    create_bundle(artifact_ids, artifacts_root=str(root), output=output)
+    return output, manifests
 
 
 def relative_path(path: str | os.PathLike[str], root: str | os.PathLike[str]) -> str:
@@ -230,18 +387,8 @@ def create_bundle(
         current = pending.pop()
         if current in manifests:
             continue
-        manifest, path = (
-            resolve_manifest(current, artifacts_root=str(root))
-            if not trust_manifests
-            else (
-                load_manifest(root / MANIFEST_DIR / f"{current}.json"),
-                root
-                / load_manifest(root / MANIFEST_DIR / f"{current}.json")[
-                    "artifact_path"
-                ],
-            )
-        )
-        if not trust_manifests and not path.is_file():
+        manifest, path = resolve_manifest(current, artifacts_root=str(root))
+        if not path.is_file():
             raise FileNotFoundError(path)
         manifests[current] = manifest
         pending.extend(manifest.get("upstream_artifact_ids", ()))
@@ -366,12 +513,16 @@ __all__ = [
     "MANIFEST_DIR",
     "artifact_id",
     "create_bundle",
-    "discover_legacy_manifests",
+    "find_manifests",
     "import_bundle",
     "load_manifest",
     "make_manifest",
+    "manifest_relative_path",
+    "prepare_bundle_for_phase",
     "publish_manifest",
     "relative_path",
+    "resolve_dependencies",
     "resolve_manifest",
+    "resolve_source",
     "validate_manifest",
 ]
