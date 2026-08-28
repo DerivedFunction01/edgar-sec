@@ -96,21 +96,29 @@ Each partition publishes an immutable artifact under its run-relative directory:
 
 Partition artifacts and the final dataset are always Parquet (ZSTD), regardless
 of the checkpoint format used to produce them. JSONL checkpoints are accepted
-as merge inputs and converted during validation/publication.
+as merge inputs and converted during validation/publication. When a single
+partition artifact covers the whole plan, the final `merge` publishes it as a
+byte copy of the verified artifact (same sha256) rather than re-encoding it.
 
 To merge across machines, copy the remote `partitions/<id>/merge/` directory into
 the coordinator's matching run-relative location, then run the final `merge`
-(command `merge` / wizard option 6). A partition artifact's dataset, report, and
-plan fingerprint are re-validated at final merge time; missing, duplicate,
-foreign, stale, malformed, or conflicting artifacts fail the merge.
+(command `merge` / wizard option 6).
+
+Integrity is carried by a hash chain instead of re-reading rows: each chunk is
+spec-validated at write time, `merge-partition` performs the one deep row-level
+validation (column-pruned DuckDB scans) and records the artifact's `sha256`,
+row count, plan hash, fingerprint, and schema version in its report. The final
+`merge` verifies each artifact against that report — content sha256, plan
+binding, schema, and row count — using metadata and streamed hashing only, then
+combines artifacts with a single deterministic scan. Missing reports trigger a
+one-time deep re-validation and report regeneration. Missing, truncated,
+tampered, stale-plan, foreign, or schema-drifted artifacts fail the merge.
 
 The chunk/checkpoint directories are transient worker outputs. Only
 `merge-partition` reads them, and it is the only operation that ever does: the
 final `merge`, the viewer, the materializer, and every later phase read only
-finalized partition artifacts or the final dataset. If a partition or run merge
-report is missing, it is regenerated from the finalized Parquet/JSONL artifact
-(`report_source: finalized_partition_artifact` / `finalized_artifact`) — never
-from chunks. Chunks may be deleted once their partition artifact is verified.
+finalized partition artifacts or the final dataset. Chunks may be deleted once
+their partition artifact is verified.
 
 Duplicate accession values are expected SEC fan-out (the same filing listed by
 multiple registrants) and are reported in `duplicate_accessions` with a warning;

@@ -2,11 +2,28 @@
 
 from __future__ import annotations
 
+import hashlib
 import json
 from collections.abc import Iterable
 
 from .errors import MalformedArtifact, SchemaMismatchError
 from .models import DatasetSpec
+
+
+def file_sha256(path: str, *, chunk_size: int = 1024 * 1024) -> str:
+    """Stream a file through SHA-256 without loading it into memory."""
+    digest = hashlib.sha256()
+    with open(path, "rb") as handle:
+        while block := handle.read(chunk_size):
+            digest.update(block)
+    return digest.hexdigest()
+
+
+def parquet_column_names(path: str) -> list[str]:
+    """Return column names from the Parquet footer (metadata only)."""
+    import pyarrow.parquet as pq
+
+    return list(pq.read_schema(path).names)
 
 
 def read_records(path: str, storage_format: str, *, spec: DatasetSpec) -> list[dict]:
@@ -58,4 +75,4 @@ def read_records(path: str, storage_format: str, *, spec: DatasetSpec) -> list[d
     return result
 
 
-__all__ = ["read_records"]
+__all__ = ["file_sha256", "parquet_column_names", "read_records"]

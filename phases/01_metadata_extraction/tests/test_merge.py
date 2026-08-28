@@ -2,6 +2,8 @@ import json
 
 from conftest import imp
 
+from defs.storage import file_sha256
+
 application = imp("phases.01_metadata_extraction.core.application")
 checkpoints = imp("phases.01_metadata_extraction.core.checkpoints")
 chunks_mod = imp("phases.01_metadata_extraction.core.chunks")
@@ -354,41 +356,77 @@ def test_merge_final_rejects_foreign_partition_artifact(tmp_path):
         pa.Table.from_pylist(new_rows, schema=schemas.SUBMISSION_METADATA_SCHEMA),
         str(artifact),
     )
-    with pytest.raises(merge_mod.MergeError, match="fingerprint"):
+    with pytest.raises(merge_mod.MergeError, match="sha256"):
         merge_mod.merge_partition_artifacts(
             str(artifacts), str(tmp_path / "out.parquet")
         )
 
 
-def test_merge_final_reports_duplicate_accession_across_partitions(tmp_path):
+def test_merge_final_rejects_tampered_partition_artifact(tmp_path):
+    artifacts, _plan = build_partitioned_run(
+        tmp_path, ["0000000020", "0000000021"], partition_count=1
+    )
+    merge_mod.merge_partition(str(artifacts), 1)
+    artifact = (
+        artifacts
+        / "partitions"
+        / "partition-00001"
+        / "merge"
+        / "submission_metadata.parquet"
+    )
+    artifact.write_bytes(artifact.read_bytes() + b"tampered")
+    with pytest.raises(merge_mod.MergeError, match="sha256"):
+        merge_mod.merge_partition_artifacts(
+            str(artifacts), str(tmp_path / "out.parquet")
+        )
+
+
+def test_merge_final_rejects_stale_plan_partition_artifact(tmp_path):
+    artifacts, plan = build_partitioned_run(
+        tmp_path, ["0000000020", "0000000021"], partition_count=1
+    )
+    merge_mod.merge_partition(str(artifacts), 1)
+    plan["plan_hash"] = "stale"
+    (artifacts / "plan.json").write_text(json.dumps(plan), encoding="utf-8")
+    with pytest.raises(merge_mod.MergeError, match="different plan"):
+        merge_mod.merge_partition_artifacts(
+            str(artifacts), str(tmp_path / "out.parquet")
+        )
+
+
+def test_merge_final_carries_duplicate_accessions_from_reports(tmp_path):
     artifacts, _plan = build_partitioned_run(
         tmp_path, ["0000000020", "0000000021"], partition_count=2
     )
-    # Force the same accession on both partition artifacts.
-    for pid in (1, 2):
-        artifact = (
-            artifacts
-            / "partitions"
-            / f"partition-{pid:05d}"
-            / "merge"
-            / "submission_metadata.parquet"
-        )
-        merge_mod.merge_partition(str(artifacts), pid)
-        table = pq.read_table(str(artifact), schema=schemas.SUBMISSION_METADATA_SCHEMA)
-        rows = table.to_pylist()
-        for record in rows:
-            for filing in record["filings"]:
-                filing["accession_number"] = "0000000020-21-000001"
-                filing["accession_number_normalized"] = "000000002021000001"
-        pq.write_table(
-            pa.Table.from_pylist(rows, schema=schemas.SUBMISSION_METADATA_SCHEMA),
-            str(artifact),
-        )
+    merge_mod.merge_partition(str(artifacts), 1)
+    merge_mod.merge_partition(str(artifacts), 2)
+    report_path = (
+        artifacts / "partitions" / "partition-00001" / "merge" / "merge_report.json"
+    )
+    payload = json.loads(report_path.read_text(encoding="utf-8"))
+    payload["duplicate_accessions"] = ["000000002021000001"]
+    report_path.write_text(
+        json.dumps(payload, indent=2, sort_keys=True), encoding="utf-8"
+    )
     report = merge_mod.merge_partition_artifacts(
         str(artifacts), str(tmp_path / "out.parquet")
     )
     assert report.duplicate_accessions == ["000000002021000001"]
     assert report.warnings
+
+
+def test_merge_final_single_partition_copies_artifact_bytes(tmp_path):
+    artifacts, _plan = build_partitioned_run(
+        tmp_path, ["0000000020", "0000000021", "0000000022"], partition_count=1
+    )
+    part_report = merge_mod.merge_partition(str(artifacts), 1)
+    output = tmp_path / "final.parquet"
+    report = merge_mod.merge_partition_artifacts(str(artifacts), str(output))
+    # Single-partition fast path: the final artifact is the same bytes.
+    assert report.artifact_sha256 == part_report.artifact_sha256
+    assert file_sha256(str(output)) == part_report.artifact_sha256
+    assert report.row_count == 3
+    assert not output.with_name("final.parquet.tmp").exists()
 
 
 def test_merge_final_requires_partition_artifacts(tmp_path):

@@ -5,6 +5,7 @@ from __future__ import annotations
 import json
 import logging
 import os
+import shutil
 from collections.abc import Callable
 from dataclasses import dataclass, field
 
@@ -20,7 +21,9 @@ from defs.storage import (
     count_nested_values,
     count_rows,
     duplicate_values,
+    file_sha256,
     ordered_keys,
+    parquet_column_names,
     validate_files,
 )
 
@@ -63,6 +66,7 @@ class MergeReport:
     partition_id: int | None = None
     plan_hash: str = ""
     report_source: str = "chunk_checkpoints"
+    artifact_sha256: str = ""
 
     def to_dict(self) -> dict:
         return {
@@ -82,6 +86,7 @@ class MergeReport:
                 "partition_id",
                 "plan_hash",
                 "report_source",
+                "artifact_sha256",
             )
         }
 
@@ -137,12 +142,15 @@ def _partition_report_payload(
     schema_version: str,
     input_fingerprint: str,
     plan_hash: str,
+    artifact_sha256: str = "",
 ) -> dict:
     """Rebuild a partition report from its finalized dataset artifact.
 
     This deliberately does not inspect chunks or trust an existing JSON
     report; the finalized artifact is the portable source of truth for
-    downstream consumers and report regeneration.
+    downstream consumers and report regeneration. The artifact sha256 binds
+    the report to the exact bytes, so the final merge can verify integrity
+    without re-reading rows.
     """
     report = MergeReport(
         artifacts_dir=artifacts_dir,
@@ -160,6 +168,7 @@ def _partition_report_payload(
             )
         ),
         report_source="finalized_partition_artifact",
+        artifact_sha256=artifact_sha256,
     )
     _add_duplicate_warning(report)
     return report.to_dict()
@@ -319,6 +328,13 @@ def _merge_chunks(
         output_path,
     )
     report.row_count = finalized_count
+    report.artifact_sha256 = file_sha256(output_path)
+    logger.info(
+        "partition %d: artifact sha256 %s (%d rows)",
+        partition_id,
+        report.artifact_sha256[:12],
+        finalized_count,
+    )
     _add_duplicate_warning(report)
     report.report_source = "finalized_partition_artifact"
     report.output_path = os.path.abspath(output_path)
@@ -368,6 +384,118 @@ def merge_partition(
     )
 
 
+def _verify_partition_artifact(
+    con,
+    artifacts_dir: str,
+    partition: dict,
+    path,
+    spec: MergeValidationSpec,
+    expected_column_names: list[str],
+    expected_version: str,
+    expected_fingerprint: str,
+    plan_hash: str,
+) -> dict:
+    """Verify one partition artifact and return the carried report fields.
+
+    Cheap path (report present): the recorded sha256 binds the report to the
+    exact artifact bytes, so verification is integrity + plan binding via
+    metadata only — no row reads. Deep path (report missing or from an older
+    format): run the full SQL validation once and regenerate the report,
+    including its sha256.
+    """
+    partition_id = partition["partition_id"]
+    report_path = partition_merge_report_path_in(artifacts_dir, partition_id)
+    recorded = None
+    if report_path.exists():
+        with open(report_path, encoding="utf-8") as fh:
+            recorded = json.load(fh)
+    if isinstance(recorded, dict) and recorded.get("artifact_sha256"):
+        if recorded.get("plan_hash") != plan_hash:
+            raise MergeError(
+                f"partition {partition_id} artifact belongs to a different plan "
+                f"({recorded.get('plan_hash')!r} != {plan_hash!r})"
+            )
+        if recorded.get("input_fingerprint") != expected_fingerprint:
+            raise MergeError(
+                f"partition {partition_id} artifact fingerprint mismatch: "
+                f"{recorded.get('input_fingerprint')!r} != {expected_fingerprint!r}"
+            )
+        if recorded.get("schema_version") != expected_version:
+            raise MergeError(
+                f"partition {partition_id} artifact schema version mismatch"
+            )
+        digest = file_sha256(str(path))
+        if digest != recorded["artifact_sha256"]:
+            raise MergeError(
+                f"partition {partition_id} artifact content fingerprint mismatch: "
+                f"sha256 {digest} != recorded {recorded['artifact_sha256']}"
+            )
+        rows = count_rows(con, str(path))
+        if rows != recorded.get("row_count"):
+            raise MergeError(
+                f"partition {partition_id} artifact row count {rows} differs "
+                f"from recorded {recorded.get('row_count')}"
+            )
+        if parquet_column_names(str(path)) != expected_column_names:
+            raise MergeError(
+                f"partition {partition_id} artifact schema drifted from the dataset contract"
+            )
+        return {
+            "row_count": rows,
+            "filing_record_count": int(recorded.get("filing_record_count") or 0),
+            "duplicate_accessions": list(recorded.get("duplicate_accessions") or []),
+            "artifact_sha256": digest,
+        }
+
+    # Deep path: no trustworthy report — validate the artifact fully once,
+    # then regenerate its report with the sha256 for future merges.
+    validation = validate_files(con, "parquet", [str(path)], spec)
+    _raise_validation_failure(
+        validation,
+        scope=f"partition {partition_id}",
+        expected_rows=partition.get("row_count"),
+    )
+    keys = ordered_keys(con, "parquet", str(path), spec)
+    if keys != partition.get("cik_padded", []):
+        raise MergeError(f"partition {partition_id} CIK coverage differs from plan")
+    duplicate_accessions = duplicate_values(
+        con,
+        "parquet",
+        [str(path)],
+        spec.schema,
+        ("filings", "accession_number_normalized"),
+    )
+    filing_record_count = count_nested_values(
+        con,
+        "parquet",
+        [str(path)],
+        spec.schema,
+        ("filings", "accession_number_normalized"),
+    )
+    digest = file_sha256(str(path))
+    payload = _partition_report_payload(
+        artifacts_dir,
+        partition,
+        row_count=validation.row_count,
+        filing_record_count=filing_record_count,
+        duplicate_accessions=duplicate_accessions,
+        storage_format="parquet",
+        schema_version=spec.schema_version,
+        input_fingerprint=spec.fingerprint,
+        plan_hash=plan_hash,
+        artifact_sha256=digest,
+    )
+    os.makedirs(os.path.dirname(report_path), exist_ok=True)
+    with open(report_path, "w", encoding="utf-8") as fh:
+        json.dump(payload, fh, indent=2, sort_keys=True)
+    return {
+        "row_count": validation.row_count,
+        "filing_record_count": filing_record_count,
+        "duplicate_accessions": duplicate_accessions,
+        "artifact_sha256": digest,
+    }
+
+
 def merge_partition_artifacts(
     artifacts_dir: str,
     output_path: str,
@@ -406,6 +534,11 @@ def merge_partition_artifacts(
     combined_files: list[str] = []
     ordered_partitions = sorted(partitions, key=lambda item: item["partition_id"])
     spec = _merge_spec(plan)
+    expected_column_names = [field.name for field in spec.schema]
+    carried_rows = 0
+    carried_filings = 0
+    carried_duplicates: set[str] = set()
+    carried: dict | None = None
     with connect() as con:
         for partition in ordered_partitions:
             partition_id = partition["partition_id"]
@@ -414,90 +547,72 @@ def merge_partition_artifacts(
                 raise MergeError(
                     f"missing partition artifact for partition {partition_id}: {path}"
                 )
-            validation = validate_files(con, artifact_format, [str(path)], spec)
-            _raise_validation_failure(
-                validation,
-                scope=f"partition {partition_id}",
-                expected_rows=partition.get("row_count"),
-            )
-            keys = ordered_keys(con, artifact_format, str(path), spec)
-            if keys != partition.get("cik_padded", []):
-                raise MergeError(
-                    f"partition {partition_id} CIK coverage differs from plan"
-                )
-            duplicate_accessions = duplicate_values(
+            carried = _verify_partition_artifact(
                 con,
-                artifact_format,
-                [str(path)],
-                spec.schema,
-                ("filings", "accession_number_normalized"),
-            )
-            # Reports are regenerated from the finalized artifact, never from
-            # chunks and never trusted from an earlier run.
-            payload = _partition_report_payload(
                 artifacts_dir,
                 partition,
-                row_count=validation.row_count,
-                filing_record_count=count_nested_values(
-                    con,
-                    artifact_format,
-                    [str(path)],
-                    spec.schema,
-                    ("filings", "accession_number_normalized"),
-                ),
-                duplicate_accessions=duplicate_accessions,
-                storage_format="parquet",
-                schema_version=expected_version,
-                input_fingerprint=expected_fingerprint,
-                plan_hash=plan_hash,
+                path,
+                spec,
+                expected_column_names,
+                expected_version,
+                expected_fingerprint,
+                plan_hash,
             )
-            report_path = partition_merge_report_path_in(artifacts_dir, partition_id)
-            os.makedirs(os.path.dirname(report_path), exist_ok=True)
-            with open(report_path, "w", encoding="utf-8") as fh:
-                json.dump(payload, fh, indent=2, sort_keys=True)
+            carried_rows += carried["row_count"]
+            carried_filings += carried["filing_record_count"]
+            carried_duplicates.update(carried["duplicate_accessions"])
             _emit(
                 progress,
                 {
                     "type": "partition_validated",
                     "partition_id": partition_id,
-                    "rows": validation.row_count,
+                    "rows": carried["row_count"],
                 },
             )
             logger.info(
-                "final merge: partition %d/%d validated (rows=%d)",
+                "final merge: partition %d/%d verified (rows=%d, sha256 %s)",
                 len(combined_files) + 1,
                 len(ordered_partitions),
-                validation.row_count,
+                carried["row_count"],
+                carried["artifact_sha256"][:12],
             )
             combined_files.append(str(path))
-        global_validation = validate_files(con, artifact_format, combined_files, spec)
-        if global_validation.distinct_keys != plan.get("row_count"):
+        if carried_rows != plan.get("row_count"):
             raise MergeError("merged partition artifacts do not cover the planned CIKs")
-        report.duplicate_accessions = duplicate_values(
-            con,
-            artifact_format,
-            combined_files,
-            spec.schema,
-            ("filings", "accession_number_normalized"),
-        )
-        report.row_count = global_validation.row_count
-        report.filing_record_count = count_nested_values(
-            con,
-            artifact_format,
-            combined_files,
-            spec.schema,
-            ("filings", "accession_number_normalized"),
-        )
+        report.duplicate_accessions = sorted(carried_duplicates)
+        report.row_count = carried_rows
+        report.filing_record_count = carried_filings
         _emit(
             progress,
             {"type": "merge_stage", "stage": "validate", "rows": report.row_count},
         )
-        concat_to_parquet(con, artifact_format, combined_files, spec, output_path)
+        if len(combined_files) == 1:
+            # One artifact covers the whole plan and it just passed integrity
+            # verification: a byte copy is the exact, fastest publication.
+            source_path = combined_files[0]
+            if os.path.abspath(source_path) == os.path.abspath(output_path):
+                finalized_count = carried_rows
+            else:
+                os.makedirs(
+                    os.path.dirname(os.path.abspath(output_path)), exist_ok=True
+                )
+                tmp_output = output_path + ".tmp"
+                shutil.copyfile(source_path, tmp_output)
+                os.replace(tmp_output, output_path)
+                finalized_count = count_rows(con, output_path)
+            report.artifact_sha256 = carried["artifact_sha256"]
+            logger.info(
+                "final merge: single-partition fast path, copied %s -> %s",
+                source_path,
+                output_path,
+            )
+        else:
+            concat_to_parquet(con, artifact_format, combined_files, spec, output_path)
+            finalized_count = count_rows(con, output_path)
         _emit(
             progress,
             {"type": "merge_stage", "stage": "publish", "rows": report.row_count},
         )
-        finalized_count = count_rows(con, output_path)
     if finalized_count != report.row_count:
         raise MergeError(
             "finalized artifact row count differs from partition artifacts"
