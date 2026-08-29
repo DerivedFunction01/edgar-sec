@@ -9,9 +9,12 @@ from __future__ import annotations
 import tempfile
 from pathlib import Path
 
+from ..resources import (
+    DEFAULT_WORKER_MEMORY_MIB,
+    DEFAULT_WORKER_MEMORY_SAFETY,
+)
 from . import SettingSpec
 
-DEFAULT_WORKERS = 4
 DEFAULT_CHUNK_SIZE = 1000
 DEFAULT_PARTITION_COUNT = 1
 
@@ -20,6 +23,16 @@ def _default_threads() -> int:
     from ..resources import default_threads
 
     return default_threads()
+
+
+def _default_workers(resolved: dict) -> int:
+    from ..resources import auto_worker_count, available_memory_bytes
+
+    return auto_worker_count(
+        available_memory_bytes(),
+        worker_memory_mib=int(resolved["runtime.worker_memory_mib"]),
+        safety_fraction=float(resolved["runtime.worker_memory_safety"]),
+    )
 
 
 def _default_memory_limit(resolved: dict) -> str:
@@ -40,15 +53,37 @@ def _validate_fraction(value: object) -> None:
         raise ValueError("must be between 0 and 1")
 
 
+def _validate_positive_int(value: object) -> None:
+    if int(value) < 1:
+        raise ValueError("must be >= 1")
+
+
 SETTING_SPECS = {
     "runtime": {
+        "worker_memory_mib": SettingSpec(
+            value_type=int,
+            default=DEFAULT_WORKER_MEMORY_MIB,
+            env=True,
+            machine_local=True,
+            validate=_validate_positive_int,
+            description="peak memory estimate per text-parsing worker (MiB)",
+        ),
+        "worker_memory_safety": SettingSpec(
+            value_type=float,
+            default=DEFAULT_WORKER_MEMORY_SAFETY,
+            env=True,
+            machine_local=True,
+            validate=_validate_fraction,
+            description="available-memory safety fraction for automatic workers",
+        ),
         "workers": SettingSpec(
             value_type=int,
-            default=DEFAULT_WORKERS,
+            default=_default_workers,
             env=True,
             cli=True,
             machine_local=True,
-            description="worker processes for phase chunk execution",
+            validate=_validate_positive_int,
+            description="worker processes; memory-derived when unset",
         ),
         "chunk_size": SettingSpec(
             value_type=int,
@@ -72,6 +107,7 @@ SETTING_SPECS = {
             env=True,
             cli=True,
             machine_local=True,
+            validate=_validate_positive_int,
             description="worker threads for engine staging; machine-derived when unset",
         ),
         "memory_fraction": SettingSpec(
@@ -103,6 +139,7 @@ SETTING_SPECS = {
 __all__ = [
     "DEFAULT_CHUNK_SIZE",
     "DEFAULT_PARTITION_COUNT",
-    "DEFAULT_WORKERS",
+    "DEFAULT_WORKER_MEMORY_MIB",
+    "DEFAULT_WORKER_MEMORY_SAFETY",
     "SETTING_SPECS",
 ]

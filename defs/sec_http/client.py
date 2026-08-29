@@ -12,12 +12,15 @@ from typing import Any
 
 import requests
 
+from defs.http import BoundedTransport, ConcurrencyPolicy
+
 from .errors import PermanentHttpError, ResponseTooLargeError, RetryExhausted
 from .metrics import HttpMetrics
 from .rate_limit import DEFAULT_RATE_LIMIT_RPS, RateLimiter
 from .retry import DEFAULT_MAX_RETRIES, DEFAULT_TIMEOUT_S, RetryPolicy
 
 DEFAULT_USER_AGENT = "EdgarSec/1.0 contact@example.com"
+DEFAULT_SEC_MAX_CONCURRENCY = 8
 
 
 def default_headers(user_agent: str = DEFAULT_USER_AGENT) -> dict:
@@ -50,6 +53,7 @@ class SecTransportProfile:
     cache_dir: str | None = None
     max_response_bytes: int | None = None
     ignore_failure_history: bool = False
+    max_concurrency: int = DEFAULT_SEC_MAX_CONCURRENCY
 
 
 class SecHttpClient:
@@ -81,6 +85,7 @@ class SecHttpClient:
         session_factory: Callable[[], Any] = requests.Session,
         max_failure_attempts: int = 3,
         ignore_failure_history: bool = False,
+        max_concurrency: int = DEFAULT_SEC_MAX_CONCURRENCY,
         profile: SecTransportProfile | None = None,
     ):
         if profile is not None:
@@ -102,11 +107,15 @@ class SecHttpClient:
                 rate_limiter = RateLimiter(min_interval_s=1.0 / profile.rate_limit_rps)
             if retry_policy is None and profile.max_retries >= 0:
                 retry_policy = RetryPolicy(max_retries=profile.max_retries)
+            if max_concurrency == DEFAULT_SEC_MAX_CONCURRENCY:
+                max_concurrency = profile.max_concurrency
 
         if not user_agent:
             raise ValueError(
                 "user_agent is required for SecHttpClient (or supply via SecTransportProfile)"
             )
+        if max_concurrency < 1:
+            raise ValueError("max_concurrency must be >= 1")
         self.rate_limiter = rate_limiter or RateLimiter()
         self.retry_policy = retry_policy or RetryPolicy()
         self.timeout_s = timeout_s
@@ -116,7 +125,10 @@ class SecHttpClient:
         self.headers = default_headers(user_agent)
         self.max_failure_attempts = max_failure_attempts
         self.ignore_failure_history = ignore_failure_history
-        self._session = session_factory()
+        self._transport = BoundedTransport(
+            ConcurrencyPolicy(max_concurrency=max_concurrency),
+            session_factory=session_factory,
+        )
 
     # ------------------------------------------------------------------ cache
 
@@ -225,7 +237,9 @@ class SecHttpClient:
     # ----------------------------------------------------------------- plumbing
 
     def _send(self, url: str) -> requests.Response:
-        return self._session.get(url, headers=self.headers, timeout=self.timeout_s)
+        return self._transport.raw_send(
+            url, headers=self.headers, timeout_s=self.timeout_s
+        )
 
     def _fetch(self, url: str) -> bytes:
         cached = self._cache_get(url)
@@ -397,6 +411,7 @@ class SecHttpClient:
 
 
 __all__ = [
+    "DEFAULT_SEC_MAX_CONCURRENCY",
     "SecHttpClient",
     "SecTransportProfile",
     "default_headers",

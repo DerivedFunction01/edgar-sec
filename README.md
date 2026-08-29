@@ -3,6 +3,12 @@
 Transforms SEC filing inputs into versioned, queryable research data
 (Parquet / JSONL / SQL) with provenance and resumable runs.
 
+Runtime workers are machine-local and automatically sized from cgroup-aware
+available memory using a 512 MiB per-worker estimate and safety budget. Explicit
+CLI, environment, or persisted worker values override automatic sizing. Generic
+HTTP transport concurrency defaults to 16; SEC uses an 8-request cap separately
+from its request-start rate limiter.
+
 Engineering contract and long-term direction live in [`AGENTS.md`](AGENTS.md)
 and [`roadmap/master_roadmap.md`](roadmap/master_roadmap.md).
 

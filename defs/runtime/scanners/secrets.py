@@ -71,6 +71,7 @@ def scan_secret_leakage(
     """Scan modified Python and config files for committed secrets or credentials."""
     return scan_patch_and_untracked(
         candidate_re=_CANDIDATE_RE,
+        candidate_flags=re.IGNORECASE,
         match_line_fn=_match_line,
         repo_root=repo_root,
         file_glob="*.py",

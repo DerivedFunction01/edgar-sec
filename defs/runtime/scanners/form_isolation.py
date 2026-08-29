@@ -8,7 +8,7 @@ import re
 from defs.runtime.checks import ScannerFinding
 from defs.runtime.scanners.engine import is_test_file, scan_patch_and_untracked
 
-_CANDIDATE_RE = "10-K|10-Q|10-k|10-q"
+_CANDIDATE_RE = "10-K|10-Q|8-K"
 
 _FORM_LITERAL_RE = re.compile(
     r"""(?:["']\s*(?:10-K(?:/[Aa])?|10-Q(?:/[Aa])?|8-K(?:/[Aa])?)\s*["']|\bform\s*==\s*["']10-)""",
@@ -64,6 +64,7 @@ def scan_form_isolation(
     """Scan modified Python files for hardcoded form literals in generic code."""
     return scan_patch_and_untracked(
         candidate_re=_CANDIDATE_RE,
+        candidate_flags=re.IGNORECASE,
         match_line_fn=_match_line,
         repo_root=repo_root,
         file_glob="*.py",

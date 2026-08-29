@@ -215,9 +215,9 @@ def test_unknown_setting_path_raises_value_error():
 # --- false, zero, and empty values -------------------------------------------------
 
 
-def test_explicit_zero_environment_value_is_preserved():
-    resolved = _resolve_all(env={"RUNTIME_THREADS": "0"})
-    assert resolved["runtime.threads"] == 0
+def test_explicit_zero_environment_value_is_rejected_for_threads():
+    with pytest.raises(ValueError, match="runtime.threads"):
+        _resolve_all(env={"RUNTIME_THREADS": "0"})
 
 
 def test_explicit_false_environment_value_is_preserved(monkeypatch):

@@ -8,16 +8,15 @@ import re
 from defs.runtime.checks import ScannerFinding
 from defs.runtime.scanners.engine import is_test_file, scan_patch_and_untracked
 
-# git's `-G` pre-filter is a POSIX ERE without a case-insensitive flag, so the
-# candidate pattern must encode both cases itself; the line matchers below add
-# `(?i)` and would otherwise flag "Legacy"/"Compat" lines that `-G` dropped.
-_CANDIDATE_RE = "[Ll]egacy|[Cc]ompat|[Bb]ackward|[Dd]eprecated|[Ss]him"
+_CANDIDATE_RE = "legacy|compat|backward|deprecated|shim"
 
 _COMPAT_COMMENT_RE = re.compile(
-    r"""(?i)#\s*(?:backwards?[- ]compatibility|compatibility|legacy|kept for compatibility|transitional shim|deprecated)""", re.I
+    r"""(?i)#\s*(?:backwards?[- ]compatibility|compatibility|legacy|kept for compatibility|transitional shim|deprecated)""",
+    re.IGNORECASE,
 )
 _COMPAT_IDENTIFIER_RE = re.compile(
-    r"""(?i)\b(?:def\s+_(?:legacy|compat|shim)\w*|class\s+(?:Legacy|Compat|Shim)\w*|(?:legacy_|compat_|shim_)\w*\s*=)""", re.I
+    r"""(?i)\b(?:def\s+_(?:legacy|compat|shim)\w*|class\s+(?:Legacy|Compat|Shim)\w*|(?:legacy_|compat_|shim_)\w*\s*=)""",
+    re.IGNORECASE,
 )
 
 # Semantic areas with documented external contracts (e.g. cross-machine unmanifested artifact bootstrap)
@@ -69,6 +68,7 @@ def scan_legacy_shims(
     """Scan modified Python files for backward compatibility aliases and legacy shims."""
     return scan_patch_and_untracked(
         candidate_re=_CANDIDATE_RE,
+        candidate_flags=re.IGNORECASE,
         match_line_fn=_match_line,
         repo_root=repo_root,
         file_glob="*.py",

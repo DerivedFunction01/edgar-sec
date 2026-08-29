@@ -303,6 +303,13 @@ def test_secrets_leakage_scanner_flags_api_tokens(repo):
     assert findings[0].scanner == "secrets-leakage"
 
 
+def test_secrets_leakage_scanner_matches_case_insensitive_candidates(repo):
+    (repo / "app.py").write_text('API_KEY = "abcdefghijklmnop"\n', encoding="utf-8")
+    findings = scan_secret_leakage(repo_root=repo)
+    assert len(findings) == 1
+    assert findings[0].scanner == "secrets-leakage"
+
+
 def test_secrets_leakage_scanner_allows_placeholders(repo):
     (repo / "app.py").write_text('api_key = "placeholder-key"\n', encoding="utf-8")
     assert scan_secret_leakage(repo_root=repo) == []
@@ -344,6 +351,15 @@ def test_legacy_shims_scanner_flags_compat_comments(repo):
         "compatibility layer, legacy alias, or transitional shim detected"
         in findings[0].message
     )
+
+
+def test_legacy_shims_scanner_matches_capitalized_legacy_comments(repo):
+    (repo / "app.py").write_text(
+        "# Legacy behavior retained temporarily\n", encoding="utf-8"
+    )
+    findings = scan_legacy_shims(repo_root=repo)
+    assert len(findings) == 1
+    assert findings[0].scanner == "legacy-shims"
 
 
 def test_legacy_shims_scanner_flags_legacy_identifiers(repo):
@@ -407,6 +423,15 @@ def test_form_isolation_scanner_flags_10ka_and_10q(repo):
     phase = repo / "phases" / "01_metadata_extraction" / "core"
     phase.mkdir(parents=True)
     (phase / "extract.py").write_text('forms = ["10-K/A", "10-Q"]\n', encoding="utf-8")
+    findings = scan_form_isolation(repo_root=repo)
+    assert len(findings) == 1
+    assert findings[0].scanner == "form-isolation"
+
+
+def test_form_isolation_scanner_flags_8k_literals(repo):
+    phase = repo / "phases" / "01_metadata_extraction" / "core"
+    phase.mkdir(parents=True)
+    (phase / "extract.py").write_text('TARGET_FORM = "8-K"\n', encoding="utf-8")
     findings = scan_form_isolation(repo_root=repo)
     assert len(findings) == 1
     assert findings[0].scanner == "form-isolation"

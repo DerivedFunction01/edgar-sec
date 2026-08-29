@@ -49,7 +49,13 @@ from .registry import (
     find_entry,
     get_phase_dependencies,
 )
-from .resources import RuntimeResourceProfile, derive_resources
+from .resources import (
+    RuntimeResourceProfile,
+    auto_worker_count,
+    available_memory_bytes,
+    derive_resources,
+    usable_memory_bytes,
+)
 from .settings import (
     MISSING,
     SettingSpec,
@@ -63,14 +69,12 @@ from .settings import (
 from .settings.runtime import (
     DEFAULT_CHUNK_SIZE,
     DEFAULT_PARTITION_COUNT,
-    DEFAULT_WORKERS,
 )
 
 __all__ = [
     "DEFAULT_CHUNK_SIZE",
     "DEFAULT_DOTENV_PATH",
     "DEFAULT_PARTITION_COUNT",
-    "DEFAULT_WORKERS",
     "ENTRIES",
     "MERGE_DIR_NAME",
     "MERGE_REPORT_NAME",
@@ -89,6 +93,8 @@ __all__ = [
     "SettingSpec",
     "add_common_options",
     "artifact_id",
+    "auto_worker_count",
+    "available_memory_bytes",
     "classify_artifact_path",
     "coalesce",
     "collect_specs",
@@ -130,5 +136,6 @@ __all__ = [
     "run_all",
     "run_interactive",
     "scan_modified_environment_access",
+    "usable_memory_bytes",
     "validate_manifest",
 ]

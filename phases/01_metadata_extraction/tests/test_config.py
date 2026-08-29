@@ -15,7 +15,8 @@ def test_default_project_config_has_sensible_values():
     assert cfg.input_path == "uploads/cik-sec.csv"
     assert cfg.chunk_size == 1000
     assert cfg.storage_format == "parquet"
-    assert cfg.workers == 4
+    # Workers are memory-derived at runtime; the default config leaves them unset.
+    assert cfg.workers is None
 
 
 def test_write_and_load_project_config_round_trip(tmp_path):
@@ -399,3 +400,109 @@ def test_plan_creation_records_run_options_for_jsonl(tmp_path):
     plan = application.build_plan(options)
     assert plan["run_options"]["storage_format"] == "jsonl"
     assert plan["storage_format"] == "jsonl"
+
+
+def test_run_options_workers_default_is_unset():
+    opts = config_mod.RunOptions(
+        input_path="uploads/cik-sec.csv", user_agent="App/1.0 a@b.com"
+    )
+    assert opts.workers is None
+
+
+def test_effective_workers_honors_explicit_value():
+    opts = config_mod.RunOptions(
+        input_path="uploads/cik-sec.csv", user_agent="App/1.0 a@b.com", workers=3
+    )
+    assert opts.effective_workers() == 3
+
+
+def test_effective_workers_derives_when_unset(monkeypatch):
+    from types import SimpleNamespace
+
+    import defs.runtime.resources as res
+
+    monkeypatch.setattr(res, "derive_resources", lambda: SimpleNamespace(workers=1))
+    opts = config_mod.RunOptions(
+        input_path="uploads/cik-sec.csv", user_agent="App/1.0 a@b.com"
+    )
+    # Unset workers defer to the shared memory-based runtime profile, which
+    # always returns at least one worker.
+    assert opts.effective_workers() == 1
+
+
+def _args_with_workers(workers):
+    return type(
+        "Args",
+        (),
+        {
+            "config": "x",
+            "configure": False,
+            "input": None,
+            "artifacts": None,
+            "chunk_size": None,
+            "storage_format": None,
+            "chunk_id": None,
+            "partition_id": None,
+            "workers": workers,
+            "timeout": None,
+            "max_retries": None,
+            "rate_limit": None,
+            "user_agent": None,
+            "cache_dir": None,
+            "max_failure_attempts": None,
+            "ignore_failure_history": False,
+            "limit": None,
+            "log_level": "INFO",
+            "run_id": "local",
+            "no_progress": False,
+        },
+    )()
+
+
+def test_options_from_args_resolves_omitted_workers_to_auto():
+    run_mod = imp("phases.01_metadata_extraction.run")
+    cfg = config_mod.ProjectConfig(
+        input_path="uploads/cik-sec.csv", user_agent="App/1.0 a@b.com"
+    )
+    options = run_mod.options_from_args(_args_with_workers(None), cfg)
+    assert options.effective_workers() >= 1
+
+
+def test_options_from_args_honors_explicit_workers():
+    run_mod = imp("phases.01_metadata_extraction.run")
+    cfg = config_mod.ProjectConfig(
+        input_path="uploads/cik-sec.csv", user_agent="App/1.0 a@b.com"
+    )
+    options = run_mod.options_from_args(_args_with_workers(7), cfg)
+    assert options.workers == 7
+
+
+def test_preserved_workers_four_remains_explicit(tmp_path):
+    cfg = config_mod.ProjectConfig(
+        input_path="uploads/cik-sec.csv",
+        artifacts_dir=str(tmp_path / "run"),
+        workers=4,
+        user_agent="App/1.0 a@b.com",
+    )
+    path = tmp_path / "config.json"
+    config_mod.write_project_config(str(path), cfg)
+    loaded = config_mod.load_project_config(str(path))
+    assert loaded.workers == 4
+    # Regeneration leaves the explicit worker value intact in the persisted form.
+    assert loaded.to_dict()["execution"]["workers"] == 4
+
+
+def test_regenerated_config_omits_workers_when_unset():
+    cfg = config_mod.ProjectConfig(
+        input_path="uploads/cik-sec.csv", user_agent="App/1.0 a@b.com"
+    )
+    assert cfg.workers is None
+    data = cfg.to_dict()
+    assert "workers" not in data["execution"]
+
+
+def test_run_options_to_dict_omits_workers_when_unset():
+    opts = config_mod.RunOptions(
+        input_path="uploads/cik-sec.csv", user_agent="App/1.0 a@b.com"
+    )
+    assert "workers" not in opts.to_dict()

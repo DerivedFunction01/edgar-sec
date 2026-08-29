@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 from .client import (
+    DEFAULT_SEC_MAX_CONCURRENCY,
     DEFAULT_USER_AGENT,
     SecHttpClient,
     SecTransportProfile,
@@ -34,6 +35,7 @@ __all__ = [
     "DEFAULT_MAX_RETRIES",
     "DEFAULT_MIN_INTERVAL_S",
     "DEFAULT_RATE_LIMIT_RPS",
+    "DEFAULT_SEC_MAX_CONCURRENCY",
     "DEFAULT_TIMEOUT_S",
     "DEFAULT_USER_AGENT",
     "MAX_INTERVAL_S",

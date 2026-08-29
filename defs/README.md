@@ -79,6 +79,19 @@ environment names are generated from it (`RUNTIME_THREADS`,
 
 ## Tests
 
+## Resource And HTTP Policies
+
+Automatic phase workers are derived locally from cgroup-aware available memory,
+using a 512 MiB per-worker estimate and a configurable safety fraction. Cgroup
+v2 and v1 limits are preferred, followed by host available-memory probes. Set
+`RUNTIME_WORKER_MEMORY_MIB` or `RUNTIME_WORKER_MEMORY_SAFETY` for machine-local
+tuning; explicit worker and thread values must be positive.
+
+The generic `defs.http.BoundedTransport` defaults to 16 simultaneous transport
+calls and has no provider-specific pacing or status semantics. `sec_http` adapts
+it with an 8-request in-flight cap, while SEC's aggregate 4 RPS limiter remains
+an independent request-start policy.
+
 ```bash
 .venv/bin/pytest defs/tests
 ```

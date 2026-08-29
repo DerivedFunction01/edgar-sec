@@ -64,6 +64,7 @@ def is_test_file(path: str) -> bool:
 def scan_patch_and_untracked(
     *,
     candidate_re: str,
+    candidate_flags: int = 0,
     match_line_fn: Callable[[str, int, str, str], list[ScannerFinding]],
     repo_root: str | os.PathLike[str] | None = None,
     file_glob: str = "*.py",
@@ -74,14 +75,27 @@ def scan_patch_and_untracked(
     """
     root = Path(repo_root) if repo_root is not None else None
     findings: list[ScannerFinding] = []
+    candidate_pattern = re.compile(candidate_re, candidate_flags)
+
+    # Git's -G filter has no case-insensitive mode. Apply flagged candidate
+    # patterns after reading the patch so scanners do not need case variants.
+    use_git_candidate_filter = not candidate_flags & re.IGNORECASE
 
     # 1. Staged and unstaged diffs
-    for source, args in (
-        ("staged", ("diff", "--cached", "-U0", "-G", candidate_re, "--", file_glob)),
-        ("unstaged", ("diff", "-U0", "-G", candidate_re, "--", file_glob)),
-    ):
+    diff_args = (
+        ("staged", ("diff", "--cached", "-U0")),
+        ("unstaged", ("diff", "-U0")),
+    )
+    for source, base_args in diff_args:
+        args = (
+            (*base_args, "-G", candidate_re, "--", file_glob)
+            if use_git_candidate_filter
+            else (*base_args, "--", file_glob)
+        )
         patch = git_output(root, *args)
         for path, line_number, text in added_patch_lines(patch):
+            if not use_git_candidate_filter and not candidate_pattern.search(text):
+                continue
             findings.extend(match_line_fn(path, line_number, text, source))
 
     # 2. Untracked files

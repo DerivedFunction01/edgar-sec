@@ -11,7 +11,6 @@ from defs.runtime.settings import get_setting
 from defs.runtime.settings.runtime import (
     DEFAULT_CHUNK_SIZE,
     DEFAULT_PARTITION_COUNT,
-    DEFAULT_WORKERS,
 )
 from defs.sec_http import (
     DEFAULT_MAX_RETRIES,
@@ -63,7 +62,7 @@ class RunOptions:
     partition_count: int = DEFAULT_PARTITION_COUNT
     partition_id: int | None = None
     chunk_id: int | None = None
-    workers: int = DEFAULT_WORKERS
+    workers: int | None = None
     timeout_s: float = DEFAULT_TIMEOUT_S
     max_retries: int = DEFAULT_MAX_RETRIES
     rate_limit_rps: float = DEFAULT_RATE_LIMIT_RPS
@@ -77,7 +76,7 @@ class RunOptions:
     storage_format: str = DEFAULT_STORAGE_FORMAT
 
     def validate(self) -> None:
-        if self.workers < 1:
+        if self.workers is not None and self.workers < 1:
             raise ValueError("workers must be >= 1")
         if self.chunk_size < 1:
             raise ValueError("chunk_size must be >= 1")
@@ -96,13 +95,12 @@ class RunOptions:
             )
 
     def to_dict(self) -> dict:
-        return {
+        data = {
             "input_path": self.input_path,
             "artifacts_dir": self.artifacts_dir,
             "chunk_size": self.chunk_size,
             "partition_count": self.partition_count,
             "partition_id": self.partition_id,
-            "workers": self.workers,
             "timeout_s": self.timeout_s,
             "max_retries": self.max_retries,
             "rate_limit_rps": self.rate_limit_rps,
@@ -115,6 +113,17 @@ class RunOptions:
             "run_id": self.run_id,
             "storage_format": self.storage_format,
         }
+        if self.workers is not None:
+            data["workers"] = self.workers
+        return data
+
+    def effective_workers(self) -> int:
+        """Return an explicit worker override or the shared auto-sized count."""
+        if self.workers is not None:
+            return self.workers
+        from defs.runtime.resources import derive_resources
+
+        return derive_resources().workers
 
 
 def _supported_config_fields() -> dict[str, type]:
@@ -141,7 +150,7 @@ class ProjectConfig:
     artifacts_dir: str = DEFAULT_ARTIFACTS
     chunk_size: int = DEFAULT_CHUNK_SIZE
     partition_count: int = DEFAULT_PARTITION_COUNT
-    workers: int = DEFAULT_WORKERS
+    workers: int | None = None
     timeout_s: float = DEFAULT_TIMEOUT_S
     max_retries: int = DEFAULT_MAX_RETRIES
     rate_limit_rps: float = DEFAULT_RATE_LIMIT_RPS
@@ -202,17 +211,19 @@ class ProjectConfig:
         return cls(**kwargs)
 
     def to_dict(self) -> dict:
+        execution = {
+            "chunk_size": self.chunk_size,
+            "partition_count": self.partition_count,
+        }
+        if self.workers is not None:
+            execution["workers"] = self.workers
         return {
             "dataset": {
                 "input_path": self.input_path,
                 "artifacts_dir": self.artifacts_dir,
                 "limit": self.limit,
             },
-            "execution": {
-                "workers": self.workers,
-                "chunk_size": self.chunk_size,
-                "partition_count": self.partition_count,
-            },
+            "execution": execution,
             "storage": {"format": self.storage_format},
             "sec_http": {
                 "timeout_s": self.timeout_s,
@@ -224,7 +235,7 @@ class ProjectConfig:
         }
 
     def validate(self) -> None:
-        if self.workers < 1:
+        if self.workers is not None and self.workers < 1:
             raise ValueError("workers must be >= 1")
         if self.chunk_size < 1:
             raise ValueError("chunk_size must be >= 1")
@@ -306,7 +317,6 @@ __all__ = [
     "DEFAULT_RATE_LIMIT_RPS",
     "DEFAULT_STORAGE_FORMAT",
     "DEFAULT_TIMEOUT_S",
-    "DEFAULT_WORKERS",
     "PLAN_DEFINING_FIELDS",
     "PROJECT_CONFIG_DEFAULT_PATH",
     "ProjectConfig",

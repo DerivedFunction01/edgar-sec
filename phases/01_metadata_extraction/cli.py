@@ -48,7 +48,7 @@ def add_common_options(parser: argparse.ArgumentParser, **kwargs) -> None:
 
 
 def options_from_args(args, project_config) -> RunOptions:
-    return RunOptions(
+    options = RunOptions(
         input_path=coalesce(
             getattr(args, "input", None),
             project_config.input_path,
@@ -112,6 +112,8 @@ def options_from_args(args, project_config) -> RunOptions:
         log_level=getattr(args, "log_level", "INFO"),
         run_id=getattr(args, "run_id", "default"),
     )
+    options.workers = options.effective_workers()
+    return options
 
 
 def build_parser() -> argparse.ArgumentParser:

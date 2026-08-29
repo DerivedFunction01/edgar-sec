@@ -156,7 +156,7 @@ from defs.runtime.cli import coalesce
 
 
 def options_from_args(args, project_config) -> RunOptions:
-    return RunOptions(
+    options = RunOptions(
         input_path=coalesce(
             args.input, project_config.input_path, RunOptions.input_path
         ),
@@ -204,6 +204,11 @@ def options_from_args(args, project_config) -> RunOptions:
         log_level=args.log_level,
         run_id=args.run_id,
     )
+    # An explicit CLI/environment/persisted worker value is honored; otherwise the
+    # shared memory-based runtime profile derives a machine-local count. This must
+    # happen before validate(), which rejects an unconverted auto value.
+    options.workers = options.effective_workers()
+    return options
 
 
 def print_json(payload: dict) -> None:
@@ -226,7 +231,7 @@ def partition_command(options: RunOptions, partition_id: int) -> str:
         f".venv/bin/python -m phases.01_metadata_extraction.cli run"
         f" --config {PROJECT_CONFIG_DEFAULT_PATH} --partition-id {partition_id}"
         f" --input '{options.input_path}' --artifacts '{options.artifacts_dir}'"
-        f" --workers {options.workers} --rate-limit {options.rate_limit_rps}"
+        f" --workers {options.effective_workers()} --rate-limit {options.rate_limit_rps}"
         f" --user-agent '{agent}'{storage}"
     )
 

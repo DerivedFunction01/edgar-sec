@@ -250,7 +250,7 @@ def run_chunk(options: RunOptions, progress=None) -> dict:
         except Exception:
             logger.exception("progress callback failed")
 
-    with ThreadPoolExecutor(max_workers=options.workers) as pool:
+    with ThreadPoolExecutor(max_workers=options.effective_workers()) as pool:
         futures = [pool.submit(work, target) for target in targets]
         for future in as_completed(futures):
             try:
@@ -314,6 +314,7 @@ def run_chunk(options: RunOptions, progress=None) -> dict:
     summary = {
         "chunk_id": chunk.chunk_id,
         "skipped": False,
+        "workers": options.effective_workers(),
         "rows": checkpoint_ref.row_count,
         "checkpoint": checkpoint_ref.path,
         "statuses": {
@@ -353,6 +354,7 @@ def run_partition(options: RunOptions, partition_id: int, progress=None) -> dict
         )
     return {
         "partition_id": partition_id,
+        "workers": options.effective_workers(),
         "chunk_count": len(summaries),
         "chunks": summaries,
         "rows": sum(summary.get("rows", 0) for summary in summaries),

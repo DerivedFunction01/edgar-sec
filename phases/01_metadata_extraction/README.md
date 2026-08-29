@@ -4,6 +4,11 @@ Pipeline A, Part 1. Transforms the SEC `data.sec.gov/submissions` feed into a
 versioned, queryable `submission_metadata` dataset (Parquet / JSONL) with
 provenance and resumable runs.
 
+Omitted workers are derived from the shared cgroup-aware memory profile. The
+512 MiB per-worker estimate and safety fraction are machine-local settings;
+explicit worker values remain overrides and are not plan-defining fields. SEC
+transport concurrency is capped at 8 independently of request-start pacing.
+
 One output row per CIK. For each filing CIK the phase fetches the current
 submissions JSON, follows every historical submissions file, and combines all
 filing records (recent + historical) into a single nested `filings` list on
