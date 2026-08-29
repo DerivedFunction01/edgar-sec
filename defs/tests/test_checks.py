@@ -20,6 +20,7 @@ from defs.runtime.scanners.form_isolation import scan_form_isolation
 from defs.runtime.scanners.json_io import scan_json_io
 from defs.runtime.scanners.length import scan_modified_file_length
 from defs.runtime.scanners.paths import scan_path_construction
+from defs.runtime.scanners.regex_alternations import scan_regex_alternations
 from defs.runtime.scanners.resources import scan_resource_allocation
 from defs.runtime.scanners.secrets import scan_secret_leakage
 from defs.sql.checks import scan_sql_boundary
@@ -553,3 +554,38 @@ def test_json_io_scanner_allows_storage_and_tests(repo):
     _git(repo, "add", "-A")
 
     assert scan_json_io(repo_root=repo) == []
+
+
+# --- regex-alternations scanner -----------------------------------------------
+
+
+def test_regex_alternations_scanner_flags_raw_pipes(repo):
+    phase = repo / "phases" / "02_filing_extraction" / "core"
+    phase.mkdir(parents=True)
+    (phase / "parser.py").write_text(
+        'RX = re.compile(r"(?:alpha|beta|gamma|delta)")\n',
+        encoding="utf-8",
+    )
+    findings = scan_regex_alternations(repo_root=repo)
+    assert len(findings) >= 1
+    assert findings[0].scanner == "regex-alternations"
+    assert "found raw multi-branch regex alternation literal" in findings[0].message
+
+
+def test_regex_alternations_scanner_allows_defs_regex_and_tests(repo):
+    # Test files are exempt
+    t = repo / "phases" / "02_filing_extraction" / "tests" / "test_parser.py"
+    t.parent.mkdir(parents=True, exist_ok=True)
+    t.write_text('RX = re.compile(r"(?:alpha|beta|gamma|delta)")\n', encoding="utf-8")
+    _git(repo, "add", "-A")
+
+    # Code using build_alternation is exempt
+    phase = repo / "phases" / "02_filing_extraction" / "core"
+    phase.mkdir(parents=True, exist_ok=True)
+    (phase / "parser.py").write_text(
+        "RX = re.compile(rf\"{build_alternation(['a', 'b', 'c'])}\")\n",
+        encoding="utf-8",
+    )
+    _git(repo, "add", "-A")
+
+    assert scan_regex_alternations(repo_root=repo) == []

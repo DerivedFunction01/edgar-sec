@@ -26,6 +26,7 @@ from defs.storage import (
     atomic_write_json,
 )
 
+from . import config as phase_config
 from .selection import DeficitSelector
 from .selection_features import FeatureSnapshotBuilder
 from .selection_policy import (
@@ -93,12 +94,16 @@ def plan(
     scope: str = "full",
     selection_policy_path: str | Path | None = None,
     seed_cik_path: str | Path | None = None,
-    forms: tuple[str, ...] = (),
-    amendment: str = "both",
+    forms: tuple[str, ...] | None = None,
+    amendment: str | None = None,
     limit: int | None = None,
     progress: Callable[[dict], None] | None = None,
 ) -> dict[str, Any]:
     """Execute deterministic target planning (full or fixture scope)."""
+    if forms is None:
+        forms = phase_config.load().target_forms
+    if amendment is None:
+        amendment = phase_config.load().amendment
     if scope not in {"full", "fixture"}:
         raise ValueError(f"scope must be 'full' or 'fixture', got {scope!r}")
     if amendment not in {"both", "original", "amendments"}:

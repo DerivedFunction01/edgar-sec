@@ -8,6 +8,7 @@ import json
 
 import pyarrow as pa
 import pyarrow.parquet as pq
+import pytest
 
 run = importlib.import_module("phases.02_filing_extraction.run")
 discovery = importlib.import_module("phases.02_filing_extraction.core.discovery")
@@ -15,9 +16,13 @@ schemas = importlib.import_module("phases.01_metadata_extraction.core.schemas")
 materializer = importlib.import_module("phases.02_filing_extraction.core.materialize")
 target_plan = importlib.import_module("phases.02_filing_extraction.core.target_plan")
 fixtures = importlib.import_module("phases.02_filing_extraction.tests.test_materialize")
+phase_config = importlib.import_module("phases.02_filing_extraction.core.config")
 
 row = fixtures.row
 
+from pathlib import Path
+
+from defs.runtime import resolve_paths
 from defs.runtime.registry import find_entry
 
 
@@ -66,7 +71,8 @@ def test_discover_catalogs_valid_and_skips_noise(tmp_path) -> None:
     assert summary["target_rows"] == 3
 
 
-def test_discover_plans_valid_and_skips_noise(tmp_path) -> None:
+def test_discover_plans_valid_and_skips_noise(tmp_path, monkeypatch) -> None:
+    monkeypatch.setenv("ARTIFACTS_ROOT", str(tmp_path))
     runs = tmp_path / "runs"
     valid = runs / "plan001"
     valid.mkdir(parents=True)
@@ -168,8 +174,7 @@ def test_plan_menu_uses_only_discovered_catalog_default(monkeypatch, tmp_path) -
     monkeypatch.setenv("ARTIFACTS_ROOT", str(tmp_path))
     catalog = {"catalog_id": "catalog-1", "target_rows": 100, "form_count": 5}
     monkeypatch.setattr(run.discovery, "discover_catalogs", lambda *_args: [catalog])
-    # Scope default (1 = full) and forms filter default (empty)
-    responses = iter(["1", ""])
+    responses = iter(["1", "", ""])
     captured = {}
     monkeypatch.setattr(builtins, "input", lambda *a, **k: next(responses))
 
@@ -191,6 +196,67 @@ def test_plan_menu_uses_only_discovered_catalog_default(monkeypatch, tmp_path) -
     assert captured["amendment"] == "both"
     assert captured["limit"] is None
     assert callable(captured["progress"])
+
+
+def test_menu_plan_fixture_scope_generates_template_and_stops(
+    tmp_path: Path, monkeypatch, capsys
+) -> None:
+    monkeypatch.setenv("ARTIFACTS_ROOT", str(tmp_path))
+    catalog = {"catalog_id": "catalog-1", "target_rows": 10, "form_count": 2}
+    monkeypatch.setattr(run.discovery, "discover_catalogs", lambda *_args: [catalog])
+    responses = iter(["2"])  # Scope 2 = fixture
+    monkeypatch.setattr(builtins, "input", lambda *a, **k: next(responses))
+
+    policy_created = []
+
+    def fake_auto_policy(catalog_id, dest):
+        policy_created.append(dest)
+        dest.parent.mkdir(parents=True, exist_ok=True)
+        dest.write_text("{}", encoding="utf-8")
+        return dest
+
+    monkeypatch.setattr(run, "_auto_generate_policy", fake_auto_policy)
+
+    plan_called = []
+    monkeypatch.setattr(run, "plan", lambda *a, **k: plan_called.append(True))
+
+    run._menu_plan()
+
+    assert len(policy_created) == 1
+    assert len(plan_called) == 0  # Should NOT run plan immediately
+    out = capsys.readouterr().out
+    assert "Created default selection policy template at:" in out
+
+
+def test_menu_plan_fixture_scope_runs_with_existing_policy(
+    tmp_path: Path, monkeypatch
+) -> None:
+    monkeypatch.setenv("ARTIFACTS_ROOT", str(tmp_path))
+    catalog = {"catalog_id": "catalog-1", "target_rows": 10, "form_count": 2}
+    monkeypatch.setattr(run.discovery, "discover_catalogs", lambda *_args: [catalog])
+
+    pol_file = resolve_paths("filing_extraction").phase_root / "selection_policy.json"
+    pol_file.parent.mkdir(parents=True, exist_ok=True)
+    pol_file.write_text("{}", encoding="utf-8")
+
+    responses = iter(["2", ""])  # Scope 2 = fixture, default policy path
+    monkeypatch.setattr(builtins, "input", lambda *a, **k: next(responses))
+
+    captured = {}
+
+    def fake_plan(catalog_path, output_root, **kwargs):
+        captured["catalog"] = catalog_path
+        captured["output_root"] = output_root
+        captured.update(kwargs)
+        return {"run_id": "r"}
+
+    monkeypatch.setattr(run, "plan", fake_plan)
+
+    run._menu_plan()
+
+    assert captured["catalog"] == "catalog-1"
+    assert captured["scope"] == "fixture"
+    assert captured["selection_policy_path"] == str(pol_file)
 
 
 def test_main_help_returns_zero() -> None:
@@ -294,3 +360,104 @@ def test_materialize_appends_multiple_cik_batches(tmp_path) -> None:
         / "data.parquet"
     )
     assert pq.read_table(target).num_rows == 2
+
+
+def test_phase2_config_serializes_target_forms_and_amendment() -> None:
+    cfg = phase_config.Phase2Config(
+        source_batch_size=500,
+        target_forms=("10-K", "10-Q"),
+        amendment="original",
+    )
+    data = cfg.to_dict()
+    assert data["source_batch_size"] == 500
+    assert data["target_forms"] == ["10-K", "10-Q"]
+    assert data["amendment"] == "original"
+    restored = phase_config.Phase2Config.from_dict(data)
+    assert restored.target_forms == ("10-K", "10-Q")
+    assert restored.amendment == "original"
+
+
+def test_phase2_config_normalizes_target_forms() -> None:
+    cfg = phase_config.Phase2Config(
+        target_forms=("  10-k  ", "10-Q", "", "8-K"),
+    )
+    assert cfg.target_forms == ("10-K", "10-Q", "8-K")
+
+
+def test_phase2_config_rejects_invalid_amendment() -> None:
+    with pytest.raises(ValueError, match="amendment must be both"):
+        phase_config.Phase2Config(amendment="invalid")
+
+
+def test_plan_menu_uses_config_defaults_for_full_scope(monkeypatch, tmp_path) -> None:
+    monkeypatch.setenv("ARTIFACTS_ROOT", str(tmp_path))
+    config_path = tmp_path / "filing_extraction" / "config.json"
+    config_path.parent.mkdir(parents=True, exist_ok=True)
+    config_path.write_text(
+        json.dumps(
+            {
+                "version": 1,
+                "config": {
+                    "target_forms": ["10-K", "10-Q"],
+                    "amendment": "original",
+                },
+            }
+        ),
+        encoding="utf-8",
+    )
+    catalog = {"catalog_id": "catalog-1", "target_rows": 100, "form_count": 5}
+    monkeypatch.setattr(run.discovery, "discover_catalogs", lambda *_args: [catalog])
+    responses = iter(["1", "", ""])
+    captured = {}
+    monkeypatch.setattr(builtins, "input", lambda *a, **k: next(responses))
+
+    def fake_plan(catalog_path, output_root, **kwargs):
+        captured["catalog"] = catalog_path
+        captured["output_root"] = output_root
+        captured.update(kwargs)
+        return {"run_id": "r"}
+
+    monkeypatch.setattr(run, "plan", fake_plan)
+
+    run._menu_plan()
+
+    assert captured["forms"] == ("10-K", "10-Q")
+    assert captured["amendment"] == "original"
+
+
+def test_plan_menu_allows_form_override_from_config_default(
+    monkeypatch, tmp_path
+) -> None:
+    monkeypatch.setenv("ARTIFACTS_ROOT", str(tmp_path))
+    config_path = tmp_path / "filing_extraction" / "config.json"
+    config_path.parent.mkdir(parents=True, exist_ok=True)
+    config_path.write_text(
+        json.dumps(
+            {
+                "version": 1,
+                "config": {
+                    "target_forms": ["10-K"],
+                    "amendment": "both",
+                },
+            }
+        ),
+        encoding="utf-8",
+    )
+    catalog = {"catalog_id": "catalog-1", "target_rows": 100, "form_count": 5}
+    monkeypatch.setattr(run.discovery, "discover_catalogs", lambda *_args: [catalog])
+    responses = iter(["1", "8-K, 10-Q", ""])
+    captured = {}
+    monkeypatch.setattr(builtins, "input", lambda *a, **k: next(responses))
+
+    def fake_plan(catalog_path, output_root, **kwargs):
+        captured["catalog"] = catalog_path
+        captured["output_root"] = output_root
+        captured.update(kwargs)
+        return {"run_id": "r"}
+
+    monkeypatch.setattr(run, "plan", fake_plan)
+
+    run._menu_plan()
+
+    assert captured["forms"] == ("8-K", "10-Q")
+    assert captured["amendment"] == "both"

@@ -5,13 +5,15 @@ from __future__ import annotations
 import os
 import re
 
+from defs.regex import build_alternation
 from defs.runtime.checks import ScannerFinding
 from defs.runtime.scanners.engine import is_test_file, scan_patch_and_untracked
 
 _CANDIDATE_RE = "10-K|10-Q|8-K"
 
+_FORM_PATTERNS = [r"10-K(?:/[Aa])?", r"10-Q(?:/[Aa])?", r"8-K(?:/[Aa])?"]
 _FORM_LITERAL_RE = re.compile(
-    r"""(?:["']\s*(?:10-K(?:/[Aa])?|10-Q(?:/[Aa])?|8-K(?:/[Aa])?)\s*["']|\bform\s*==\s*["']10-)""",
+    rf"""(?:["']\s*{build_alternation(_FORM_PATTERNS)}\s*["']|\bform\s*==\s*["']10-)""",
     re.IGNORECASE,
 )
 

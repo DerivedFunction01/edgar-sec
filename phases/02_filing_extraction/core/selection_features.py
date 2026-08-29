@@ -231,6 +231,38 @@ class FeatureSnapshotBuilder:
         stub_threshold = int(self.options["stub_size_threshold"])
         from defs.storage import parquet_column_names
 
+        from .company_family import CompanyFamilyIndex
+
+        # Build company family index
+        family_index: CompanyFamilyIndex
+        seed_path = Path(self.policy.seed_cik_path)
+        if (
+            not seed_path.is_file()
+            and not seed_path.is_absolute()
+            and (Path.cwd() / seed_path).is_file()
+        ):
+            seed_path = Path.cwd() / seed_path
+        if seed_path.is_file():
+            family_index = CompanyFamilyIndex.build_from_seed(seed_path)
+        else:
+            prof_records = staging.execute(
+                f"SELECT LPAD(CAST(cik AS VARCHAR), 10, '0'), COALESCE(identity.name, '') FROM read_parquet('{self.profile_path}')"
+            )
+            family_index = CompanyFamilyIndex.build_from_records(
+                [(r[0], r[1]) for r in prof_records]
+            )
+
+        family_tuples = [
+            [cik, info.family_key] for cik, info in family_index._cik_to_info.items()
+        ]
+        staging.execute(
+            "CREATE OR REPLACE TEMP TABLE company_family_map (cik VARCHAR, company_family VARCHAR)"
+        )
+        if family_tuples:
+            staging.executemany(
+                "INSERT INTO company_family_map VALUES (?, ?)", family_tuples
+            )
+
         prof_cols = set(parquet_column_names(self.profile_path))
         if "classification" in prof_cols:
             profiles_sql = f"""
@@ -279,9 +311,11 @@ class FeatureSnapshotBuilder:
                 CASE WHEN f.reported_size IS NOT NULL AND f.reported_size < {stub_threshold} THEN 'true' ELSE 'false' END AS stub_suspect,
                 CASE WHEN f.is_inline_xbrl THEN 'inline_xbrl' WHEN f.is_xbrl THEN 'xbrl_only' ELSE 'no_xbrl' END AS xbrl_state,
                 p.sic_code, p.sic_description, p.owner_org_cik, p.owner_org_name, p.owner_org_presence,
-                p.foreign_status, p.foreign_country_code, p.entity_type, p.filer_category_primary, p.company_name
+                p.foreign_status, p.foreign_country_code, p.entity_type, p.filer_category_primary, p.company_name,
+                COALESCE(cf.company_family, p.company_name, '') AS company_family
             FROM source_filings f
             LEFT JOIN profiles p ON f.source_cik = p.profile_cik
+            LEFT JOIN company_family_map cf ON p.profile_cik = cf.cik
         """
         return staging.copy_query(query, dest)
 
@@ -450,7 +484,7 @@ class FeatureSnapshotBuilder:
                 lifecycle_class, has_revival_gap, locator_class, stub_suspect, anchor_status, comparison_status,
                 is_amendment, reported_size, report_year, filing_year, filing_date, report_date, primary_document,
                 document_path, archive_url, source_cik AS representative_cik, accession AS representative_accession,
-                sic_code, company_name
+                sic_code, company_name, company_family
             FROM ranked WHERE rn = 1
         """
         return staging.copy_query(query, dest)

@@ -9,7 +9,7 @@ from __future__ import annotations
 
 from defs.runtime.settings import SettingSpec
 
-from .core.config import DEFAULT_SOURCE_BATCH_SIZE
+from .core.config import DEFAULT_AMENDMENT, DEFAULT_SOURCE_BATCH_SIZE
 
 SETTING_SPECS = {
     "filing_extraction": {
@@ -20,6 +20,22 @@ SETTING_SPECS = {
             config=True,
             cli=True,
             description="source rows materialized per bounded DuckDB batch",
+        ),
+        "target_forms": SettingSpec(
+            value_type=str,
+            default="",
+            env=True,
+            config=True,
+            cli=True,
+            description="comma-separated target forms for filing extraction",
+        ),
+        "amendment": SettingSpec(
+            value_type=str,
+            default=DEFAULT_AMENDMENT,
+            env=True,
+            config=True,
+            cli=True,
+            description="amendment policy for filing extraction",
         ),
     },
 }

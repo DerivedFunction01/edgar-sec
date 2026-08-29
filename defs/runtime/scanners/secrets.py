@@ -5,15 +5,23 @@ from __future__ import annotations
 import os
 import re
 
+from defs.regex import build_alternation
 from defs.runtime.checks import ScannerFinding
 from defs.runtime.scanners.engine import is_test_file, scan_patch_and_untracked
 
 _CANDIDATE_RE = "sk-|ghp_|api_key|apikey|secret|password|token"
 
+_SECRET_TOKENS = [
+    r"sk-[a-zA-Z0-9]{20,}",
+    r"ghp_[a-zA-Z0-9]{20,}",
+    r"glpat-[a-zA-Z0-9_-]{20,}",
+]
+_SECRET_KEYS = [r"api[_-]?key", r"secret[_-]?key", r"auth[_-]?token", r"password"]
+
 _SECRET_PATTERNS = [
-    re.compile(r"""\b(?:sk-[a-zA-Z0-9]{20,}|ghp_[a-zA-Z0-9]{20,})\b"""),
+    re.compile(rf"\b{build_alternation(_SECRET_TOKENS)}\b"),
     re.compile(
-        r"""(?i)\b(?:api[_-]?key|secret[_-]?key|auth[_-]?token|password)\s*[:=]\s*['"]([a-zA-Z0-9_\-./+=]{16,})['"]"""
+        rf"""(?i)\b{build_alternation(_SECRET_KEYS)}\s*[:=]\s*['"]([a-zA-Z0-9_\-./+=]{{16,}})['"]"""
     ),
 ]
 

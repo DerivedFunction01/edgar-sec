@@ -5,11 +5,12 @@ from __future__ import annotations
 import os
 import re
 
+from defs.regex import build_alternation
 from defs.runtime.checks import ScannerFinding
 from defs.runtime.scanners.engine import is_test_file, scan_patch_and_untracked
 
 _CANDIDATE_RE = "exit"
-_EXIT_RE = re.compile(r"\b(?:sys\.exit|exit)\s*\(")
+_EXIT_RE = re.compile(rf"\b{build_alternation(['sys.exit', 'exit', 'os._exit'])}\s*\(")
 
 _ALLOWED_PATHS = (
     "check.py",

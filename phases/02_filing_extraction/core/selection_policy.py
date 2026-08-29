@@ -39,6 +39,7 @@ KNOWN_DIMENSIONS = (
     "anchor_status",
     "comparison_status",
     "company_name",
+    "company_family",
 )
 
 
@@ -125,7 +126,13 @@ def load_seed_cik_csv(path: str | Path) -> dict[str, SeedFiler]:
     """Parse and validate seed CIK CSV file with 10-digit zero-padding."""
     source_path = Path(path).resolve()
     if not source_path.is_file():
-        raise FileNotFoundError(f"seed CIK file not found: {source_path}")
+        if (
+            source_path.name == "seed-cik.csv"
+            and (source_path.parent / "cik-sec.csv").is_file()
+        ):
+            source_path = source_path.parent / "cik-sec.csv"
+        else:
+            raise FileNotFoundError(f"seed CIK file not found: {source_path}")
 
     seed_map: dict[str, SeedFiler] = {}
     with source_path.open("r", encoding="utf-8-sig") as handle:
@@ -172,7 +179,7 @@ class SelectionPolicy:
     forms: list[str]
     policy_schema_version: str = POLICY_SCHEMA_VERSION
     era_bands: list[EraBand] = field(default_factory=list)
-    seed_cik_path: str = "uploads/seed-cik.csv"
+    seed_cik_path: str = "uploads/cik-sec.csv"
     seed_groups: list[str] = field(default_factory=list)
     base_content_units: int = 500
     level: int = 1
@@ -189,6 +196,7 @@ class SelectionPolicy:
     exclude_amendments: bool = False
     anchor_forms: list[str] = field(default_factory=list)
     comparison_forms: list[str] = field(default_factory=list)
+    max_per_company_classification: int = 1
     pool_per_value: int = 60
     max_pool_rounds: int = 20
     page_size: int = 5_000
@@ -333,7 +341,7 @@ def auto_generate_policy(
         corpus_id=f"corpus_{catalog_id[:8]}",
         forms=forms,
         era_bands=bands,
-        seed_cik_path="uploads/seed-cik.csv",
+        seed_cik_path="uploads/cik-sec.csv",
         base_content_units=min(500, max(100, total_years * 20)),
     )
     if dest is not None:
@@ -341,6 +349,15 @@ def auto_generate_policy(
         dest.parent.mkdir(parents=True, exist_ok=True)
         policy.write(dest)
     return policy
+
+
+def normalize_value(value: Any) -> str:
+    """Normalize a dimension value for policy comparisons and reports."""
+    if value is None:
+        return "none"
+    if isinstance(value, bool):
+        return "true" if value else "false"
+    return str(value).strip().lower()
 
 
 __all__ = [
@@ -352,4 +369,5 @@ __all__ = [
     "auto_generate_policy",
     "compute_seed_fingerprint",
     "load_seed_cik_csv",
+    "normalize_value",
 ]

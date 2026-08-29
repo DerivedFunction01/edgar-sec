@@ -82,7 +82,10 @@ def main(argv: list[str] | None = None) -> int:
     )
     plan_parser.add_argument("--form", action="append", default=[])
     plan_parser.add_argument(
-        "--amendment", choices=("both", "original", "amendments"), default="both"
+        "--amendment",
+        choices=("both", "original", "amendments"),
+        default=None,
+        help="amendment policy override (default from config)",
     )
     plan_parser.add_argument("--limit", type=int)
     plan_parser.add_argument(
@@ -113,14 +116,17 @@ def main(argv: list[str] | None = None) -> int:
             temp_directory=args.temp_directory,
         )
     elif args.command == "plan":
+        config = phase_config.load(args.config)
+        forms = tuple(args.form) if args.form else config.target_forms
+        amendment = args.amendment if args.amendment is not None else config.amendment
         result = plan(
             args.catalog,
             args.output_root,
             scope=args.scope,
             selection_policy_path=args.selection_policy,
             seed_cik_path=args.seed_cik,
-            forms=tuple(args.form),
-            amendment=args.amendment,
+            forms=forms,
+            amendment=amendment,
             limit=args.limit,
             progress=_stderr_progress if args.progress else None,
         )

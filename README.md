@@ -46,9 +46,11 @@ python run.py settings generate-dotenv   # write a documented .env template
 ```
 
 Settings are declared once as typed specs with logical dotted paths
-(`runtime.threads`, `sec.user_agent`, `filing_extraction.source_batch_size`);
+(`runtime.threads`, `sec.user_agent`, `filing_extraction.source_batch_size`,
+`filing_extraction.target_forms`, `filing_extraction.amendment`);
 environment names are generated from them (`RUNTIME_THREADS`,
-`FILING_EXTRACTION_SOURCE_BATCH_SIZE`). The generated dotenv template
+`FILING_EXTRACTION_SOURCE_BATCH_SIZE`, `FILING_EXTRACTION_TARGET_FORMS`,
+`FILING_EXTRACTION_AMENDMENT`). The generated dotenv template
 documents every setting, comments out machine-derived suggestions, and never
 writes secret values.
 

@@ -9,6 +9,7 @@ defs/
   filing_identity.py    # canonical filing identity: accessions, archive URLs,
                         # occurrence IDs, document locator keys, date-derived years
   table_definitions.py  # shared table-conversion helpers for later content phases
+  regex/                # hierarchical regex builders, prefix-tree (trie) compaction, lookarounds
   storage/              # logical datasets, chunk backends, manifests, atomic publication
   sql/                  # SQL AST/compiler/executor boundary
   runtime/              # paths, settings registry, env resolution, artifacts/bundles,
@@ -54,6 +55,7 @@ environment names are generated from it (`RUNTIME_THREADS`,
   - `legacy-shims`: flags dead legacy behavior, backward-compatibility aliases, and transitional shims
   - `file-length`: advises when modified Python source files exceed 500 lines to encourage modular decomposition
   - `form-isolation`: flags hardcoded `10-K`/`10-Q` form literals in generic pipeline code to preserve form neutrality
+  - `regex-alternations`: flags raw multi-branch regex alternations that should use `defs.regex.build_alternation`
   Register future policy scanners in their respective semantic boundaries or `defs/runtime/scanners/` — `check.py` stays generic.
 
 ## Rules

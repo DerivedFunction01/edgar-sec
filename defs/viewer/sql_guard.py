@@ -10,13 +10,23 @@ from __future__ import annotations
 
 import re
 
+from defs.regex import build_alternation
+
 
 class SqlGuardError(ValueError):
     """Raised when a query is not an accepted read-only statement."""
 
 
+_ALLOWED_KEYWORDS = [
+    "SELECT",
+    "WITH",
+    "DESCRIBE",
+    "EXPLAIN",
+    "SHOW",
+    r"PRAGMA\s+table_info",
+]
 _ALLOWED_START = re.compile(
-    r"^\s*(SELECT|WITH|DESCRIBE|EXPLAIN|SHOW|PRAGMA\s+table_info)\b",
+    rf"^\s*({build_alternation(_ALLOWED_KEYWORDS)})\b",
     re.IGNORECASE,
 )
 

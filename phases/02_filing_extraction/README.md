@@ -21,9 +21,9 @@ The interactive menu offers:
 
 1. Materialize catalog — pick a finalized Phase 01 artifact or manifest and an
    output root; produces a catalog directory through bounded DuckDB staging.
-2. Plan filing targets — pick a catalog, optional form filters, an amendment
-   policy (`both`/`original`/`amendments`), and an optional limit; writes an
-   immutable target-plan directory.
+2. Plan filing targets — pick a catalog, optional form filters (defaulting to
+    any configured `target_forms`), an amendment policy (`both`/`original`/`amendments`),
+    and an optional limit; writes an immutable target-plan directory.
 3. Show status — lists discovered catalogs and target plans from their manifests
    and `plan.json` files without scanning Parquet rows or re-fetching source data.
 0. Exit
@@ -49,16 +49,22 @@ generated environment names `RUNTIME_THREADS`, `RUNTIME_MEMORY_LIMIT`,
 ## Phase settings vs machine-local settings
 
 Phase behavior is declared in this phase's `settings.py`
-(`filing_extraction.source_batch_size`) and registered through the
-`phases/settings.py` barrel; it is a persistable, dataset-relevant setting.
-Shared runtime execution settings live in the shared registry
+(`filing_extraction.source_batch_size`, `filing_extraction.target_forms`,
+`filing_extraction.amendment`) and registered through the
+`phases/settings.py` barrel; persistable dataset-relevant settings are written
+to `.artifacts/filing_extraction/config.json`. Shared runtime execution settings
+live in the shared registry
 (`defs/runtime/settings/runtime.py`) and are machine-local: they affect how a
 machine executes work but are never part of dataset identity, so they default
 to machine detection and are not written to config or plans.
 
 Resolution precedence for `source_batch_size`: explicit `--source-batch-size`
 flag → direct environment/`.env` (`FILING_EXTRACTION_SOURCE_BATCH_SIZE`) →
-persisted Phase 02 config → default. Runtime execution settings resolve as CLI flag →
+persisted Phase 02 config → default. Resolution precedence for `target_forms`
+and `amendment`: explicit `--form`/`--amendment` flags → direct environment/`.env`
+(`FILING_EXTRACTION_TARGET_FORMS`, `FILING_EXTRACTION_AMENDMENT`) → persisted
+Phase 02 config → default (`target_forms` empty means all forms, `amendment`
+defaults to `both`). Runtime execution settings resolve as CLI flag →
 environment → machine-derived value.
 
 ## Canonical command surface
@@ -76,8 +82,9 @@ environment → machine-derived value.
 `--threads`, `--memory-limit`, `--temp-directory`, and `--progress`. Explicit
 flags override the persisted Phase 02 configuration at
 `.artifacts/filing_extraction/config.json` (`--config` relocates it), which
-currently holds `source_batch_size`; when neither is present the conservative
-default (1,000 source rows per batch) applies. DuckDB threads, memory budget,
+holds `source_batch_size`, `target_forms`, and `amendment`; when neither is
+present the conservative defaults (1,000 source rows per batch, all forms, and
+`both` amendments) apply. DuckDB threads, memory budget,
 and spill directory default to machine-derived values (`psutil` with an `os`
 fallback) and may be overridden per environment through
 `DUCKDB_THREADS`, `DUCKDB_MEMORY_LIMIT`,
@@ -109,6 +116,103 @@ Filing document acquisition (archive fetch, retries, caching, raw document
 storage, parsing, and content extraction) is a separate **Phase 2.5** boundary
 that consumes Phase 02 target plans. Phase 2.5 is not implemented here; treat
 Phase 02 outputs as the input contract for that future stage.
+
+## How Phase 02 Works
+
+Phase 02 operates as a two-stage, zero-network metadata transformation engine:
+
+```text
+Finalized Phase 01 Artifact (submission_metadata.parquet)
+                     │
+                     ▼
+       ┌───────────────────────────┐
+       │      1. Materialize       │
+       │   - Bounded DuckDB Stream │
+       │   - Unnest Filing Arrays  │
+       │   - Entity Normalization  │
+       │   - Family Clustering     │
+       └─────────────┬─────────────┘
+                     │
+         ┌───────────┴───────────┐
+         ▼                       ▼                       ▼
+ ┌───────────────┐       ┌───────────────┐       ┌───────────────┐
+ │company_profile│       │filing_targets │       │occurrence_srcs│
+ └───────┬───────┘       └───────┬───────┘       └───────────────┘
+         │                       │
+         └───────────┬───────────┘
+                     ▼
+       ┌───────────────────────────┐
+       │         2. Plan           │
+       │   - Selection Policy      │
+       │   - Family Deduplication  │
+       │   - Stratified Allocation │
+       └─────────────┬─────────────┘
+                     ▼
+             Target Plan Artifact
+```
+
+1. **Materialization (`materialize`)**:
+   - **Zero-Network Invariant**: Reads only the finalized `submission_metadata.parquet` artifact from Phase 01. Never touches transient chunks or makes network requests.
+   - **Streaming DuckDB Staging**: Loads CIK rows in configurable memory-bounded batches (default 1,000) into disk-backed DuckDB staging tables.
+   - **Unnesting & Provenance**: Expands nested `filings` arrays (`recent` and `historical`) into flat filing occurrences. Retains complete multi-registrant fan-out (when the same accession is filed by multiple CIKs) in `filing_occurrence_sources.parquet`.
+   - **Company Family Normalization**: Cleans entity names by stripping state jurisdiction codes (`JURISDICTION_RE`), trademark annotations (`TRADEMARK_RE`), punctuation, and legal suffixes (`family_vocab.py`). Groups related corporate entities into deterministic `company_family` clusters using a two-pass authority index.
+   - **Artifact Publication**: Atomically publishes three immutable Parquet datasets:
+     - `company_profiles`: Registrant metadata, SIC classifications, and normalized `company_family`.
+     - `filing_occurrence_sources`: Full provenance mapping of `(source_cik, accession, document_path)`.
+     - `filing_targets`: Hive-partitioned by form (`form=10-K/`, `form=10-Q/`, etc.) containing canonical document paths and filing dates.
+
+2. **Target Planning & Selection (`plan`)**:
+   - Evaluates form filters (`target_forms`), era boundaries, and amendment policies (`both`/`original`/`amendments`).
+   - Uses `DeficitSelector` to perform stratified, quota-balanced sampling across feature signatures `(company_family, form, era, sic_code, entity_type, lifecycle_class)`.
+   - Prevents duplicate over-representation from multiple subsidiaries belonging to the same `company_family`.
+   - Emits an immutable `plan.json` snapshot and target manifest.
+
+---
+
+## Expanding Fixtures and Sample Datasets (e.g. 500 → 1,000 Records)
+
+When expanding structural test fixtures or sample acceptance runs from 500 to 1,000 records:
+
+1. **Define the Target CIK / Record List**:
+   - Prepare the expanded 1,000-CIK manifest (e.g. `phases/01_metadata_extraction/tests/fixtures/samples/sample_1000_ciks.json` or sample CSV) with deterministic CIK ordering and input fingerprinting.
+
+2. **Generate the Phase 01 Submission Metadata Fixture**:
+   - Run Phase 01 ingestion for the 1,000 sample CIKs into an isolated acceptance workspace:
+     ```bash
+     .venv/bin/python -m phases.01_metadata_extraction.cli plan \
+       --input uploads/cik-sec-1000.csv \
+       --artifacts-dir .artifacts/acceptance/phase_01_1000
+     .venv/bin/python -m phases.01_metadata_extraction.cli run \
+       --artifacts-dir .artifacts/acceptance/phase_01_1000
+     .venv/bin/python -m phases.01_metadata_extraction.cli merge \
+       --artifacts-dir .artifacts/acceptance/phase_01_1000
+     ```
+
+3. **Materialize the Phase 02 Catalog**:
+   - Run `materialize` pointing to the finalized Phase 01 artifact:
+     ```bash
+     .venv/bin/python -m phases.02_filing_extraction.cli materialize \
+       --source-artifact .artifacts/acceptance/phase_01_1000/manifests/metadata/submission_metadata/final/submission_metadata.parquet \
+       --output-dir .artifacts/acceptance/phase_02_1000
+     ```
+
+4. **Plan and Validate Selection Strata**:
+   - Generate target plans from the materialized 1,000-record catalog:
+     ```bash
+     .venv/bin/python -m phases.02_filing_extraction.cli plan \
+       --catalog .artifacts/acceptance/phase_02_1000 \
+       --form 10-K --form 10-Q
+     ```
+
+5. **Verify Invariants and Unit Test Assertions**:
+   - Verify schema read-back across `company_profiles`, `filing_targets`, and `filing_occurrence_sources`.
+   - Ensure `company_family` deduplication correctly prevents multi-subsidiary duplicate selection in `test_selection.py` and `test_target_plan.py`.
+   - Validate that all tests pass:
+     ```bash
+     .venv/bin/pytest phases/02_filing_extraction/tests
+     ```
+
+---
 
 ## Handoff and bundles
 

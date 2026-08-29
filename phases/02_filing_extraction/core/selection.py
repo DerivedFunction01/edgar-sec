@@ -9,6 +9,7 @@ md5(seed || locator_key) for strict reproducibility.
 from __future__ import annotations
 
 import hashlib
+from collections import Counter
 from collections.abc import Iterator
 from contextlib import contextmanager
 from dataclasses import dataclass
@@ -22,29 +23,20 @@ from .selection_policy import (
     KNOWN_DIMENSIONS,
     SeedFiler,
     SelectionPolicy,
+    normalize_value,
 )
 
-POOL_COLUMNS = """
-    document_locator_key, form, form_family, era, suffix, xbrl_state,
-    size_band, sic_code, owner_org_presence, foreign_status,
-    foreign_country_code, entity_type, filer_category_primary,
-    lifecycle_class, has_revival_gap, locator_class,
-    stub_suspect, anchor_status, comparison_status, company_name,
-    reported_size, report_year, is_amendment
-"""
+POOL_COLUMNS = (
+    "document_locator_key, form, form_family, era, suffix, xbrl_state, "
+    "size_band, sic_code, owner_org_presence, foreign_status, foreign_country_code, "
+    "entity_type, filer_category_primary, lifecycle_class, has_revival_gap, "
+    "locator_class, stub_suspect, anchor_status, comparison_status, company_name, "
+    "company_family, reported_size, report_year, is_amendment"
+)
 
 
 def _sql_quote(value: str) -> str:
     return "'" + value.replace("'", "''") + "'"
-
-
-def normalize_value(value: Any) -> str:
-    """Normalize a dimension value for policy comparisons and reports."""
-    if value is None:
-        return "none"
-    if isinstance(value, bool):
-        return "true" if value else "false"
-    return str(value).strip().lower()
 
 
 def _stable_hash(seed: str, key: str) -> str:
@@ -312,14 +304,41 @@ class DeficitSelector:
         selected_keys: list[str] = list(parent_active_keys or [])
         selected_candidates: list[dict[str, Any]] = []
         coverage: dict[str, dict[str, int]] = {dim: {} for dim in KNOWN_DIMENSIONS}
+        company_classification_counts: Counter[tuple[str, ...]] = Counter()
+        deduplicated_company_classifications = 0
 
-        def _record(cand: dict[str, Any]) -> bool:
+        def _classification_signature(cand: dict[str, Any]) -> tuple[str, ...]:
+            return (
+                normalize_value(cand.get("company_family") or cand.get("company_name")),
+                normalize_value(cand.get("form")),
+                normalize_value(cand.get("era")),
+                normalize_value(cand.get("sic_code")),
+                normalize_value(cand.get("entity_type")),
+                normalize_value(cand.get("lifecycle_class")),
+            )
+
+        def _record(cand: dict[str, Any], *, check_dedup: bool = True) -> bool:
+            nonlocal deduplicated_company_classifications
             k = str(cand["document_locator_key"])
             if k in selected_set:
                 return False
+
+            sig = _classification_signature(cand)
+            if (
+                check_dedup
+                and self.policy.max_per_company_classification is not None
+                and (
+                    company_classification_counts[sig]
+                    >= self.policy.max_per_company_classification
+                )
+            ):
+                deduplicated_company_classifications += 1
+                return False
+
             selected_set.add(k)
             selected_keys.append(k)
             selected_candidates.append(cand)
+            company_classification_counts[sig] += 1
             source.add_selected(k)
             for dim in KNOWN_DIMENSIONS:
                 val = normalize_value(cand.get(dim))
@@ -336,7 +355,7 @@ class DeficitSelector:
                 for cand in source.pool_for_ciks(seed_ciks, limit_per_cik=5):
                     if len(selected_keys) >= target_units:
                         break
-                    _record(cand)
+                    _record(cand, check_dedup=False)
 
             # Phase 2: Composite Strata
             for comp in self.policy.composites:
@@ -452,6 +471,10 @@ class DeficitSelector:
             "active_locators_count": len(selected_keys),
             "active_occurrences_count": len(active_occurrences),
             "reserve_locators_count": len(reserve_keys),
+            "deduplicated_company_classifications": deduplicated_company_classifications,
+            "unique_company_families": len(
+                {sig[0] for sig in company_classification_counts if sig[0] != "none"}
+            ),
             "underfilled_floors": underfilled_floors,
             "coverage_distributions": {
                 dim: counts for dim, counts in coverage.items() if counts

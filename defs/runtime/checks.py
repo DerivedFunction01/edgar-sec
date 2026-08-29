@@ -226,6 +226,21 @@ register(
 )
 
 
+def _run_regex_alternations() -> list[ScannerFinding]:
+    from .scanners.regex_alternations import scan_regex_alternations
+
+    return scan_regex_alternations()
+
+
+register(
+    Scanner(
+        name="regex-alternations",
+        description="scan modified code for raw multi-branch regex alternations that should use defs.regex",
+        run=_run_regex_alternations,
+    )
+)
+
+
 def run_all(stream=None, scanners: Iterable[Scanner] | None = None) -> int:
     """Run scanners, printing descriptions and findings; 0 clean, else 1.
 

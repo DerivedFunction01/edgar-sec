@@ -261,10 +261,19 @@ def _menu_plan() -> None:
         )
         if not default_policy_path.is_file():
             _auto_generate_policy(catalog, default_policy_path)
+            print(
+                f"\n  Created default selection policy template at:\n"
+                f"    {default_policy_path}\n"
+                f"  Configure target forms, era bands, floors, or weights in this file before running target planning.\n"
+            )
+            return
         pol_input = _read(
             f"Selection policy JSON [{default_policy_path}]: ", str(default_policy_path)
         )
         policy_path = pol_input or str(default_policy_path)
+        if not Path(policy_path).is_file():
+            print(f"  selection policy file not found: {policy_path}")
+            return
 
     try:
         if scope == "fixture":
@@ -276,14 +285,32 @@ def _menu_plan() -> None:
                 progress=bar,
             )
         else:
-            forms_raw = _read("Forms filter (comma-separated, Enter for all): ")
-            forms = tuple(form.strip() for form in forms_raw.split(",") if form.strip())
+            settings = phase_config.load()
+            default_forms = settings.target_forms
+            default_amendment = settings.amendment
+            if default_forms:
+                forms_default = ", ".join(default_forms)
+                forms_prompt = (
+                    f"Forms filter (comma-separated, Enter for {forms_default}): "
+                )
+                forms_raw = _read(forms_prompt, forms_default)
+            else:
+                forms_raw = _read("Forms filter (comma-separated, Enter for all): ", "")
+            forms = (
+                tuple(form.strip() for form in forms_raw.split(",") if form.strip())
+                if forms_raw
+                else default_forms
+            )
+            amendment_raw = _prompt(
+                f"Amendment policy [{default_amendment}]: ", default_amendment
+            )
+            amendment = amendment_raw if amendment_raw else default_amendment
             result = plan(
                 catalog,
                 output_root,
                 scope="full",
                 forms=forms,
-                amendment="both",
+                amendment=amendment,
                 limit=None,
                 progress=bar,
             )

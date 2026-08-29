@@ -5,17 +5,27 @@ from __future__ import annotations
 import os
 import re
 
+from defs.regex import build_alternation
 from defs.runtime.checks import ScannerFinding
 from defs.runtime.scanners.engine import is_test_file, scan_patch_and_untracked
 
 _CANDIDATE_RE = "legacy|compat|backward|deprecated|shim"
 
+_COMMENT_TERMS = [
+    r"backwards?[- ]compatibility",
+    "compatibility",
+    "legacy",
+    "kept for compatibility",
+    "transitional shim",
+    "deprecated",
+]
 _COMPAT_COMMENT_RE = re.compile(
-    r"""(?i)#\s*(?:backwards?[- ]compatibility|compatibility|legacy|kept for compatibility|transitional shim|deprecated)""",
+    rf"(?i)#\s*{build_alternation(_COMMENT_TERMS, sort_longest_first=True)}",
     re.IGNORECASE,
 )
+_IDENTIFIERS = ["legacy", "compat", "shim"]
 _COMPAT_IDENTIFIER_RE = re.compile(
-    r"""(?i)\b(?:def\s+_(?:legacy|compat|shim)\w*|class\s+(?:Legacy|Compat|Shim)\w*|(?:legacy_|compat_|shim_)\w*\s*=)""",
+    rf"(?i)\b(?:def\s+_(?:{build_alternation(_IDENTIFIERS)})\w*|class\s+(?:{build_alternation(['Legacy', 'Compat', 'Shim'])})\w*|(?:{build_alternation(['legacy_', 'compat_', 'shim_'])})\w*\s*=)",
     re.IGNORECASE,
 )
 
