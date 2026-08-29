@@ -18,12 +18,14 @@ from defs.runtime.paths import (
 )
 from defs.storage import (
     MergeValidationSpec,
+    atomic_write_json,
     concat_to_parquet,
     connect,
     count_nested_values,
     count_rows,
     duplicate_values,
     file_sha256,
+    load_json,
     ordered_keys,
     parquet_column_names,
     validate_files,
@@ -135,8 +137,7 @@ def _plan(artifacts_dir: str) -> dict:
     path = os.path.join(artifacts_dir, "plan.json")
     if not os.path.exists(path):
         raise MergeError(f"missing plan.json in {artifacts_dir}")
-    with open(path, encoding="utf-8") as fh:
-        return json.load(fh)
+    return load_json(path)
 
 
 def _merge_spec(plan: dict) -> MergeValidationSpec:
@@ -379,9 +380,7 @@ def _merge_chunks(
     report.report_source = "finalized_partition_artifact"
     report.output_path = os.path.abspath(output_path)
     report_path = partition_merge_report_path_in(artifacts_dir, partition_id)
-    os.makedirs(os.path.dirname(report_path), exist_ok=True)
-    with open(report_path, "w", encoding="utf-8") as fh:
-        json.dump(report.to_dict(), fh, indent=2, sort_keys=True)
+    atomic_write_json(report_path, report.to_dict(), indent=2, sort_keys=True)
     _publish_handoff(
         output_path,
         artifacts_dir=artifacts_dir,
@@ -454,10 +453,7 @@ def _verify_partition_artifact(
     """
     partition_id = partition["partition_id"]
     report_path = partition_merge_report_path_in(artifacts_dir, partition_id)
-    recorded = None
-    if report_path.exists():
-        with open(report_path, encoding="utf-8") as fh:
-            recorded = json.load(fh)
+    recorded = load_json(report_path, default=None)
     if isinstance(recorded, dict) and recorded.get("artifact_sha256"):
         if recorded.get("plan_hash") != plan_hash:
             raise MergeError(
@@ -534,9 +530,7 @@ def _verify_partition_artifact(
         plan_hash=plan_hash,
         artifact_sha256=digest,
     )
-    os.makedirs(os.path.dirname(report_path), exist_ok=True)
-    with open(report_path, "w", encoding="utf-8") as fh:
-        json.dump(payload, fh, indent=2, sort_keys=True)
+    atomic_write_json(report_path, payload, indent=2, sort_keys=True)
     return {
         "row_count": validation.row_count,
         "filing_record_count": filing_record_count,
@@ -674,9 +668,7 @@ def merge_partition_artifacts(
     report.report_source = "finalized_artifact"
     report.output_path = os.path.abspath(output_path)
     report_path = merge_report_path_in(artifacts_dir)
-    os.makedirs(os.path.dirname(report_path), exist_ok=True)
-    with open(report_path, "w", encoding="utf-8") as fh:
-        json.dump(report.to_dict(), fh, indent=2, sort_keys=True)
+    atomic_write_json(report_path, report.to_dict(), indent=2, sort_keys=True)
 
     # Publish to manifests dataset path if running under standard artifacts root
     root = _artifact_root(artifacts_dir, output_path)

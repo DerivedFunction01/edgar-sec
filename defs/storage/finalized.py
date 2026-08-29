@@ -137,6 +137,51 @@ class DuckDBStaging:
             if os.path.exists(temporary):
                 os.remove(temporary)
 
+    def execute(self, query: str, parameters: Iterable[Any] = ()) -> list[tuple]:
+        """Execute a SQL query against staging connection."""
+        try:
+            return self._con.execute(query, list(parameters)).fetchall()
+        except duckdb.Error as exc:
+            raise StorageError(f"staging query failed: {exc}") from exc
+
+    def executemany(self, query: str, parameters: Iterable[Iterable[Any]]) -> None:
+        """Execute parameterized query over many parameter sets."""
+        try:
+            self._con.executemany(query, [list(p) for p in parameters])
+        except duckdb.Error as exc:
+            raise StorageError(f"staging batch execution failed: {exc}") from exc
+
+    def copy_query(
+        self,
+        query: str,
+        output_path: str | os.PathLike[str],
+        parameters: Iterable[Any] = (),
+    ) -> int:
+        """Atomically export a query result to Parquet and return its row count."""
+        output = os.path.abspath(os.fspath(output_path))
+        if os.path.exists(output):
+            raise StorageError(f"immutable artifact already exists: {output}")
+        os.makedirs(os.path.dirname(output), exist_ok=True)
+        temporary = output + ".tmp"
+        try:
+            self._con.execute(
+                f"COPY ({query}) TO {_quote(temporary)} "
+                "(FORMAT PARQUET, COMPRESSION 'zstd')",
+                list(parameters),
+            )
+            count = int(
+                self._con.execute(
+                    f"SELECT count(*) FROM read_parquet({_quote(temporary)})"
+                ).fetchone()[0]
+            )
+            os.replace(temporary, output)
+            return count
+        except duckdb.Error as exc:
+            raise StorageError(f"failed to export query to {output}: {exc}") from exc
+        finally:
+            if os.path.exists(temporary):
+                os.remove(temporary)
+
     def close(self) -> None:
         if self._closed:
             return

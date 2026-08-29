@@ -3,8 +3,12 @@
 import pyarrow as pa
 
 from .artifacts import (
+    atomic_write_json,
+    atomic_write_text,
+    canonical_json,
     file_sha256,
     force_reclaim_memory,
+    load_json,
     parquet_column_names,
     read_records,
 )
@@ -114,6 +118,9 @@ __all__ = [
     "StorageOperation",
     "UnsupportedCapability",
     "WalStore",
+    "atomic_write_json",
+    "atomic_write_text",
+    "canonical_json",
     "concat_to_parquet",
     "connect",
     "count_nested_values",
@@ -122,6 +129,7 @@ __all__ = [
     "file_sha256",
     "force_reclaim_memory",
     "jsonl_columns",
+    "load_json",
     "make_chunk_backend",
     "ordered_keys",
     "pa",

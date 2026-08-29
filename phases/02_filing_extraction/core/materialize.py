@@ -13,7 +13,6 @@ from collections.abc import Callable
 from pathlib import Path
 
 from defs.filing_identity import (
-    canonical_json,
     document_locator_key,
     is_amendment_form,
     normalize_accession,
@@ -27,7 +26,13 @@ from defs.runtime import (
     resolve_paths,
 )
 from defs.runtime.resources import derive_resources
-from defs.storage import FinalizedArtifact, StorageError, force_reclaim_memory
+from defs.storage import (
+    FinalizedArtifact,
+    StorageError,
+    canonical_json,
+    force_reclaim_memory,
+    load_json,
+)
 
 from .config import DEFAULT_SOURCE_BATCH_SIZE
 from .schemas import (
@@ -54,15 +59,6 @@ def _emit(progress: Callable[[dict], None] | None, event: dict) -> None:
 def _catalog_id(source_hash: str, config: dict) -> str:
     value = canonical_json([source_hash, SOURCE.SCHEMA_VERSION, SCHEMA_VERSION, config])
     return hashlib.sha256(value.encode()).hexdigest()[:24]
-
-
-def _load_json(path: Path) -> dict | None:
-    try:
-        with path.open(encoding="utf-8") as handle:
-            value = json.load(handle)
-        return value if isinstance(value, dict) else None
-    except (OSError, json.JSONDecodeError):
-        return None
 
 
 def _publish_file(source: Path, destination: Path) -> None:
@@ -169,7 +165,7 @@ def materialize(
         raise StorageError(
             "Phase 2 requires a finalized artifact, not a chunk/checkpoint"
         )
-    report = _load_json(source.parent / "merge_report.json")
+    report = load_json(source.parent / "merge_report.json", default=None)
     resources = derive_resources(
         cli_overrides={"runtime.temp_directory": temp_directory}
         if temp_directory
@@ -222,7 +218,9 @@ def materialize(
         )
         catalog_id = _catalog_id(source_hash, {})
         root = Path(output_root).resolve() / catalog_id
-        final_root = artifacts_root / "manifests" / "filing_extraction"
+        resolved_paths = resolve_paths(
+            "filing_extraction", env={"ARTIFACTS_ROOT": str(artifacts_root)}
+        )
         if root.exists():
             shutil.rmtree(root, ignore_errors=True)
         root.mkdir(parents=True, exist_ok=True)
@@ -237,7 +235,10 @@ def materialize(
         profile_path = root / "company_profiles.parquet"
         profile_count = artifact.copy_query(profile_query, str(profile_path))
         profile_destination = (
-            final_root / "company_profiles" / "final" / "company_profiles.parquet"
+            resolved_paths.project.dataset_manifests(
+                "filing_extraction", "company_profiles"
+            )
+            / "company_profiles.parquet"
         )
         _publish_file(profile_path, profile_destination)
         handoff_root = artifacts_root
@@ -289,7 +290,9 @@ def materialize(
         )
         target_root = root / "filing_targets"
         target_root.mkdir(parents=True, exist_ok=True)
-        final_target_root = final_root / "filing_targets" / "final"
+        final_target_root = resolved_paths.project.dataset_manifests(
+            "filing_extraction", "filing_targets"
+        )
         staging_partitions_dir = root / ".staging_partitions"
         if staging_partitions_dir.exists():
             shutil.rmtree(staging_partitions_dir, ignore_errors=True)
@@ -487,9 +490,9 @@ def materialize(
         sources_path = root / "filing_occurrence_sources.parquet"
         source_count = artifact.copy_query(sources_query, str(sources_path))
         sources_destination = (
-            final_root
-            / "filing_occurrence_sources"
-            / "final"
+            resolved_paths.project.dataset_manifests(
+                "filing_extraction", "filing_occurrence_sources"
+            )
             / "filing_occurrence_sources.parquet"
         )
         _publish_file(sources_path, sources_destination)

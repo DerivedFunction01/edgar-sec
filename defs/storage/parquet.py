@@ -1,15 +1,4 @@
-"""Parquet file backend with immutable writes.
-
-Parquet has no row-level update primitive. ``set`` therefore writes an
-immutable delta fragment and atomically publishes a small manifest. Existing
-rows are not scanned during a write. ``load`` resolves the latest record per
-key; ``compact``/``finalize`` are the explicit points where a full materialized
-dataset is written.
-
-The same class also implements immutable chunk checkpoints used by phase 1.
-Those checkpoints are written directly and never pass through logical
-``set``.
-"""
+"""Parquet file backend with immutable writes and chunk checkpoints."""
 
 from __future__ import annotations
 
@@ -22,58 +11,24 @@ from collections.abc import Iterable
 import pyarrow as pa
 import pyarrow.parquet as pq
 
-from .errors import (
-    MalformedArtifact,
-    SchemaMismatchError,
-    StorageError,
-)
+from .artifacts import atomic_write_text as _atomic_write_text
+from .artifacts import canonical_json
+from .errors import MalformedArtifact, SchemaMismatchError, StorageError
 from .models import ArtifactRef, BatchReceipt, ChunkRange, DatasetSpec, RunContext
 from .predicates import QueryPlan, conjunction, evaluate_query
 from .protocols import Record
 
 
-def canonical_json(value: object) -> str:
-    return json.dumps(value, sort_keys=True, separators=(",", ":"), ensure_ascii=False)
-
-
-def _atomic_write_text(path: str, text: str) -> int:
-    directory = os.path.dirname(os.path.abspath(path))
-    os.makedirs(directory, exist_ok=True)
-    tmp_path = path + ".tmp"
-    byte_count = len(text.encode("utf-8"))
-    try:
-        with open(tmp_path, "w", encoding="utf-8", newline="\n") as fh:
-            fh.write(text)
-            fh.flush()
-            os.fsync(fh.fileno())
-        os.replace(tmp_path, path)
-        if os.name == "posix":
-            try:
-                directory_fd = os.open(directory, os.O_RDONLY)
-                try:
-                    os.fsync(directory_fd)
-                finally:
-                    os.close(directory_fd)
-            except OSError:
-                pass
-        return byte_count
-    finally:
-        if os.path.exists(tmp_path):
-            try:
-                os.remove(tmp_path)
-            except OSError:
-                pass
-
-
 def _atomic_write_table(
     table: pa.Table,
-    final_path: str,
+    final_path: str | os.PathLike[str],
     expected_rows: int | None = None,
     expected_schema: pa.Schema | None = None,
 ) -> int:
-    directory = os.path.dirname(os.path.abspath(final_path))
+    final_path_str = os.fspath(final_path)
+    directory = os.path.dirname(os.path.abspath(final_path_str))
     os.makedirs(directory, exist_ok=True)
-    tmp_path = final_path + ".tmp"
+    tmp_path = final_path_str + ".tmp"
     try:
         pq.write_table(table, tmp_path)
         written = pq.read_table(tmp_path)
@@ -85,7 +40,7 @@ def _atomic_write_table(
             raise SchemaMismatchError(
                 "artifact validation failed: schema drift detected"
             )
-        os.replace(tmp_path, final_path)
+        os.replace(tmp_path, final_path_str)
         if os.name == "posix":
             try:
                 directory_fd = os.open(directory, os.O_RDONLY)
@@ -95,7 +50,7 @@ def _atomic_write_table(
                     os.close(directory_fd)
             except OSError:
                 pass
-        return os.path.getsize(final_path)
+        return os.path.getsize(final_path_str)
     finally:
         if os.path.exists(tmp_path):
             try:
@@ -106,32 +61,22 @@ def _atomic_write_table(
 
 def write_table_atomic(
     table: pa.Table,
-    final_path: str,
+    final_path: str | os.PathLike[str],
     *,
     expected_rows: int | None = None,
     expected_schema: pa.Schema | None = None,
 ) -> int:
-    """Publish a validated Parquet table through the shared file primitive."""
     return _atomic_write_table(
-        table,
-        final_path,
-        expected_rows=expected_rows,
-        expected_schema=expected_schema,
+        table, final_path, expected_rows=expected_rows, expected_schema=expected_schema
     )
 
 
 def chunk_filename(spec: DatasetSpec, chunk: ChunkRange) -> str:
-    return (
-        f"{spec.name}-v{spec.schema_version}-chunk-{chunk.chunk_id:05d}"
-        f"-{chunk.start_row:06d}-{chunk.end_row:06d}.parquet"
-    )
+    return f"{spec.name}-v{spec.schema_version}-chunk-{chunk.chunk_id:05d}-{chunk.start_row:06d}-{chunk.end_row:06d}.parquet"
 
 
 def parse_chunk_filename(spec: DatasetSpec, name: str) -> dict | None:
-    pattern = (
-        rf"^{re.escape(spec.name)}-v(?P<version>[A-Za-z0-9.]+)-chunk-"
-        r"(?P<chunk_id>\d+)-(?P<start>\d+)-(?P<end>\d+)\.parquet$"
-    )
+    pattern = rf"^{re.escape(spec.name)}-v(?P<version>[A-Za-z0-9.]+)-chunk-(?P<chunk_id>\d+)-(?P<start>\d+)-(?P<end>\d+)\.parquet$"
     match = re.match(pattern, os.path.basename(name))
     if not match:
         return None
@@ -237,8 +182,6 @@ class ParquetBackend:
             self._logical_path()
         ):
             return self._logical_path()
-        if entry.get("kind") == "delete":
-            return os.path.join(self.fragment_dir, path)
         return os.path.join(self.fragment_dir, path)
 
     def _next_generation(self) -> int:

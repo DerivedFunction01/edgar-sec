@@ -3,7 +3,6 @@
 from __future__ import annotations
 
 import hashlib
-import json
 import os
 import shutil
 import subprocess
@@ -13,14 +12,15 @@ from collections.abc import Sequence
 from pathlib import Path, PurePosixPath
 from typing import Any
 
-from defs.storage.artifacts import file_sha256
+from defs.storage import (
+    atomic_write_json,
+    canonical_json,
+    file_sha256,
+    load_json,
+)
 
 MANIFEST_VERSION = "1.0.0"
 MANIFEST_DIR = "manifests"
-
-
-def _canonical(value: object) -> str:
-    return json.dumps(value, sort_keys=True, separators=(",", ":"), ensure_ascii=False)
 
 
 def _relative(path: str | os.PathLike[str], root: str | os.PathLike[str]) -> str:
@@ -51,7 +51,7 @@ def artifact_id(
         artifact_sha256,
         partition,
     ]
-    return hashlib.sha256(_canonical(payload).encode()).hexdigest()[:32]
+    return hashlib.sha256(canonical_json(payload).encode()).hexdigest()[:32]
 
 
 def manifest_relative_path(
@@ -112,16 +112,6 @@ def make_manifest(
     return manifest
 
 
-def _atomic_json(path: Path, value: dict) -> None:
-    path.parent.mkdir(parents=True, exist_ok=True)
-    temporary = path.with_name(path.name + ".tmp")
-    try:
-        temporary.write_text(_canonical(value) + "\n", encoding="utf-8")
-        os.replace(temporary, path)
-    finally:
-        temporary.unlink(missing_ok=True)
-
-
 def publish_manifest(manifest: dict, *, artifacts_root: str) -> Path:
     """Publish adjacent and structured immutable copies of one manifest."""
     validate_manifest(manifest)
@@ -144,12 +134,12 @@ def publish_manifest(manifest: dict, *, artifacts_root: str) -> Path:
     )
     for path in paths_to_write:
         if path.exists():
-            existing = json.loads(path.read_text(encoding="utf-8"))
+            existing = load_json(path)
             stable = ("artifact_id", "artifact_sha256", "dataset", "schema_version")
             if any(existing.get(key) != manifest.get(key) for key in stable):
                 raise ValueError(f"conflicting immutable manifest: {path}")
         else:
-            _atomic_json(path, manifest)
+            atomic_write_json(path, manifest, indent=None)
     return shared
 
 
@@ -174,7 +164,7 @@ def validate_manifest(manifest: dict) -> None:
 
 
 def load_manifest(path: str | os.PathLike[str]) -> dict:
-    value = json.loads(Path(path).read_text(encoding="utf-8"))
+    value = load_json(path)
     validate_manifest(value)
     return value
 
@@ -402,8 +392,7 @@ def create_bundle(
         staging = Path(temporary)
         for key, manifest in manifests.items():
             manifest_path = staging / "manifests" / f"{key}.json"
-            manifest_path.parent.mkdir(parents=True, exist_ok=True)
-            manifest_path.write_text(_canonical(manifest) + "\n", encoding="utf-8")
+            atomic_write_json(manifest_path, manifest, indent=None)
         included: set[str] = set()
         for manifest in manifests.values():
             relative = manifest["artifact_path"]

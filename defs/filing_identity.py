@@ -24,9 +24,10 @@ stable across processes and machines.
 from __future__ import annotations
 
 import hashlib
-import json
 import re
 from dataclasses import dataclass
+
+from defs.storage import canonical_json
 
 SEC_ARCHIVE_BASE = "https://www.sec.gov/Archives/edgar/data"
 ACCESSION_LENGTH = 18
@@ -36,10 +37,6 @@ _ARCHIVE_URL_RE = re.compile(
     r"(?P<archive_cik>[^/]+)/(?P<accession>[^/]+)/(?P<document_path>.+)$"
 )
 _YEAR_RE = re.compile(r"^(\d{4})(?:-|$)")
-
-
-def canonical_json(value: object) -> str:
-    return json.dumps(value, sort_keys=True, separators=(",", ":"), ensure_ascii=False)
 
 
 def _stable_hash(parts: list) -> str:

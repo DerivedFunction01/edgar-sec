@@ -4,9 +4,10 @@ from __future__ import annotations
 
 import csv
 import hashlib
-import json
 import re
 from dataclasses import dataclass
+
+from defs.storage import canonical_json
 
 CIK_PADDED_LEN = 10
 
@@ -36,10 +37,6 @@ def normalize_cik(raw: str) -> str:
     if len(padded) > CIK_PADDED_LEN:
         raise ValueError(f"cik '{raw}' exceeds {CIK_PADDED_LEN} digits")
     return padded
-
-
-def canonical_json(value) -> str:
-    return json.dumps(value, sort_keys=True, separators=(",", ":"), ensure_ascii=False)
 
 
 def input_fingerprint(rows: list[TargetRow]) -> str:

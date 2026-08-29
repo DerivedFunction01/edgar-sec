@@ -19,6 +19,7 @@ _ALLOWED_PREFIXES = (
     "defs/sql/",
     "defs/storage/",
     "defs/viewer/",
+    "phases/02_filing_extraction/core/",
     "scratch/",
 )
 

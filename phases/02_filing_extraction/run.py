@@ -77,17 +77,32 @@ def _default_source() -> tuple[str, str]:
     return "artifact", ""
 
 
-def _default_catalog() -> str:
+def _select_catalog() -> str | None:
     catalogs = discovery.discover_catalogs(
         str(resolve_paths("filing_extraction").project.manifests_root)
     )
+    if not catalogs:
+        print("  no published catalog manifests found; run materialize first")
+        return None
     if len(catalogs) == 1:
-        return catalogs[0]["catalog_id"]
-    if len(catalogs) > 1:
-        print("  Multiple catalogs found; choose one:")
-        for index, catalog in enumerate(catalogs, start=1):
-            print(f"    {index}. {catalog['catalog_id']} ({catalog['path']})")
-    return ""
+        cat = catalogs[0]
+        rows = cat.get("target_rows", 0)
+        forms = cat.get("form_count", 0)
+        print(f"  Catalog: {cat['catalog_id']} ({rows:,} targets, {forms} forms)")
+        return cat["catalog_id"]
+    print("  Multiple catalogs found; choose one:")
+    for index, catalog in enumerate(catalogs, start=1):
+        rows = catalog.get("target_rows", 0)
+        forms = catalog.get("form_count", 0)
+        print(f"    {index}. {catalog['catalog_id']} ({rows:,} targets, {forms} forms)")
+    choice = _prompt(f"Select catalog [1-{len(catalogs)}] [1]: ", "1")
+    try:
+        idx = int(choice) - 1
+        if 0 <= idx < len(catalogs):
+            return catalogs[idx]["catalog_id"]
+    except ValueError:
+        pass
+    return catalogs[0]["catalog_id"]
 
 
 def _default_catalog_root() -> str:
@@ -217,29 +232,61 @@ def _menu_materialize() -> None:
     print(json.dumps(result, indent=2, sort_keys=True))
 
 
+def _auto_generate_policy(catalog_id: str, dest: Path | None = None) -> Path:
+    """Generate a dynamic policy from catalog min/max year boundaries."""
+    from .core.selection_policy import auto_generate_policy
+
+    if dest is None:
+        dest = resolve_paths("filing_extraction").phase_root / "selection_policy.json"
+    auto_generate_policy(catalog_id, dest=dest)
+    return dest
+
+
 def _menu_plan() -> None:
-    catalog_default = _default_catalog()
-    if not catalog_default:
-        catalog = _read("Catalog directory (required): ")
-    else:
-        catalog = _read(f"Catalog directory [{catalog_default}]: ", catalog_default)
+    catalog = _select_catalog()
     if not catalog:
-        print("  catalog directory is required")
         return
 
-    forms_raw = _read("Forms filter (comma-separated, Enter for all): ")
-    forms = tuple(form.strip() for form in forms_raw.split(",") if form.strip())
+    scope_choice = _prompt(
+        "Selection scope [1. Full plan, 2. Fixture selection] [1]: ", "1"
+    )
+    scope = "fixture" if scope_choice in ("2", "fixture") else "full"
     output_root = _default_runs_root()
     bar = _StageBar("plan targets")
-    try:
-        result = plan(
-            catalog,
-            output_root,
-            forms=forms,
-            amendment="both",
-            limit=None,
-            progress=bar,
+
+    policy_path = None
+    if scope == "fixture":
+        default_policy_path = (
+            resolve_paths("filing_extraction").phase_root / "selection_policy.json"
         )
+        if not default_policy_path.is_file():
+            _auto_generate_policy(catalog, default_policy_path)
+        pol_input = _read(
+            f"Selection policy JSON [{default_policy_path}]: ", str(default_policy_path)
+        )
+        policy_path = pol_input or str(default_policy_path)
+
+    try:
+        if scope == "fixture":
+            result = plan(
+                catalog,
+                output_root,
+                scope="fixture",
+                selection_policy_path=policy_path,
+                progress=bar,
+            )
+        else:
+            forms_raw = _read("Forms filter (comma-separated, Enter for all): ")
+            forms = tuple(form.strip() for form in forms_raw.split(",") if form.strip())
+            result = plan(
+                catalog,
+                output_root,
+                scope="full",
+                forms=forms,
+                amendment="both",
+                limit=None,
+                progress=bar,
+            )
     except KeyboardInterrupt:
         print("\n  interrupted; no target plan was published")
         return

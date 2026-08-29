@@ -17,7 +17,10 @@ from defs.runtime.paths import scan_artifact_path_literals
 from defs.runtime.scanners.clean_exit import scan_clean_exit_boundary
 from defs.runtime.scanners.compat import scan_legacy_shims
 from defs.runtime.scanners.form_isolation import scan_form_isolation
+from defs.runtime.scanners.json_io import scan_json_io
 from defs.runtime.scanners.length import scan_modified_file_length
+from defs.runtime.scanners.paths import scan_path_construction
+from defs.runtime.scanners.resources import scan_resource_allocation
 from defs.runtime.scanners.secrets import scan_secret_leakage
 from defs.sql.checks import scan_sql_boundary
 from defs.storage.checks import scan_storage_boundary
@@ -58,6 +61,7 @@ def test_registry_contains_all_scanners():
         "legacy-shims",
         "file-length",
         "form-isolation",
+        "resource-allocation",
     ]
     for name in expected:
         assert name in names
@@ -449,3 +453,103 @@ def test_form_isolation_scanner_allows_tests_and_comments(repo):
     _git(repo, "add", "-A")
 
     assert scan_form_isolation(repo_root=repo) == []
+
+
+# --- resource-allocation scanner ----------------------------------------------
+
+
+def test_resource_allocation_scanner_flags_hardcoded_threads_and_memory(repo):
+    phase = repo / "phases" / "02_filing_extraction" / "core"
+    phase.mkdir(parents=True)
+    (phase / "extract.py").write_text(
+        'def run(threads: int = 4, memory_limit: str = "2GB"):\n    pass\n',
+        encoding="utf-8",
+    )
+    findings = scan_resource_allocation(repo_root=repo)
+    assert len(findings) >= 1
+    assert findings[0].scanner == "resource-allocation"
+    assert "hardcoded resource allocation" in findings[0].message
+
+
+def test_resource_allocation_scanner_allows_resources_and_tests(repo):
+    t = repo / "phases" / "02_filing_extraction" / "tests" / "test_extract.py"
+    t.parent.mkdir(parents=True, exist_ok=True)
+    t.write_text('threads = 4\nmemory_limit = "2GB"\n', encoding="utf-8")
+    _git(repo, "add", "-A")
+
+    assert scan_resource_allocation(repo_root=repo) == []
+
+
+# --- path-construction scanner ------------------------------------------------
+
+
+def test_path_construction_scanner_flags_adhoc_dataset_paths(repo):
+    phase = repo / "phases" / "02_filing_extraction" / "core"
+    phase.mkdir(parents=True)
+    (phase / "extract.py").write_text(
+        'dest = root / "filing_targets" / "final"\n',
+        encoding="utf-8",
+    )
+    findings = scan_path_construction(repo_root=repo)
+    assert "ad-hoc path construction" in findings[0].message
+
+
+def test_path_construction_scanner_allows_paths_and_tests(repo):
+    t = repo / "phases" / "02_filing_extraction" / "tests" / "test_extract.py"
+    t.parent.mkdir(parents=True, exist_ok=True)
+    t.write_text('dest = root / "filing_targets" / "final"\n', encoding="utf-8")
+    _git(repo, "add", "-A")
+
+    boundary = repo / "defs" / "runtime"
+    boundary.mkdir(parents=True, exist_ok=True)
+    (boundary / "paths.py").write_text(
+        'root / "filing_targets" / "final"\n', encoding="utf-8"
+    )
+    _git(repo, "add", "-A")
+
+    assert scan_path_construction(repo_root=repo) == []
+
+
+# --- json-io scanner ----------------------------------------------------------
+
+
+def test_json_io_scanner_flags_redundant_helpers(repo):
+    phase = repo / "phases" / "02_filing_extraction" / "core"
+    phase.mkdir(parents=True)
+    (phase / "helper.py").write_text(
+        "def canonical_json(value):\n    return ''\n",
+        encoding="utf-8",
+    )
+    findings = scan_json_io(repo_root=repo)
+    assert len(findings) >= 1
+    assert findings[0].scanner == "json-io"
+    assert "redundant definition of json helpers" in findings[0].message
+
+
+def test_json_io_scanner_flags_non_atomic_writes(repo):
+    phase = repo / "phases" / "02_filing_extraction" / "core"
+    phase.mkdir(parents=True)
+    (phase / "extract.py").write_text(
+        'path.write_text(json.dumps({"a": 1}))\n',
+        encoding="utf-8",
+    )
+    findings = scan_json_io(repo_root=repo)
+    assert len(findings) >= 1
+    assert findings[0].scanner == "json-io"
+    assert "non-atomic JSON file write" in findings[0].message
+
+
+def test_json_io_scanner_allows_storage_and_tests(repo):
+    t = repo / "phases" / "02_filing_extraction" / "tests" / "test_extract.py"
+    t.parent.mkdir(parents=True, exist_ok=True)
+    t.write_text('path.write_text(json.dumps({"a": 1}))\n', encoding="utf-8")
+    _git(repo, "add", "-A")
+
+    boundary = repo / "defs" / "storage"
+    boundary.mkdir(parents=True, exist_ok=True)
+    (boundary / "artifacts.py").write_text(
+        "def canonical_json(value):\n    return ''\n", encoding="utf-8"
+    )
+    _git(repo, "add", "-A")
+
+    assert scan_json_io(repo_root=repo) == []

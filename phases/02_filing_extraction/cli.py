@@ -56,9 +56,30 @@ def main(argv: list[str] | None = None) -> int:
     materialize_parser.add_argument("--threads", type=int, default=None)
     materialize_parser.add_argument("--memory-limit", default=None)
     materialize_parser.add_argument("--temp-directory", default=None)
+
     plan_parser = commands.add_parser("plan")
-    plan_parser.add_argument("--catalog", required=True)
+    plan_parser.add_argument(
+        "--catalog",
+        default=None,
+        help="catalog run ID, path, or directory (optional if only one catalog exists)",
+    )
     plan_parser.add_argument("--output-root", default=None)
+    plan_parser.add_argument(
+        "--scope",
+        choices=("full", "fixture"),
+        default="full",
+        help="selection scope: 'full' for deterministic filtering, 'fixture' for policy-driven selection",
+    )
+    plan_parser.add_argument(
+        "--selection-policy",
+        default=None,
+        help="path to selection policy JSON file (required when scope=fixture)",
+    )
+    plan_parser.add_argument(
+        "--seed-cik",
+        default=None,
+        help="path to seed CIK CSV file override",
+    )
     plan_parser.add_argument("--form", action="append", default=[])
     plan_parser.add_argument(
         "--amendment", choices=("both", "original", "amendments"), default="both"
@@ -69,10 +90,12 @@ def main(argv: list[str] | None = None) -> int:
         action="store_true",
         help="report stage progress on stderr",
     )
+
     status_parser = commands.add_parser("status")
     status_parser.add_argument("--manifests-root", default=None)
     status_parser.add_argument("--runs-root", default=None)
     args = parser.parse_args(argv)
+
     if args.command == "materialize":
         config = phase_config.load(args.config)
         result = materialize(
@@ -93,6 +116,9 @@ def main(argv: list[str] | None = None) -> int:
         result = plan(
             args.catalog,
             args.output_root,
+            scope=args.scope,
+            selection_policy_path=args.selection_policy,
+            seed_cik_path=args.seed_cik,
             forms=tuple(args.form),
             amendment=args.amendment,
             limit=args.limit,

@@ -3,9 +3,10 @@
 from __future__ import annotations
 
 import hashlib
-import json
 import re
 from typing import Any
+
+from defs.storage import canonical_json
 
 SEC_ARCHIVE_BASE = "https://www.sec.gov/Archives/edgar/data"
 SEC_SUBMISSIONS_BASE = "https://data.sec.gov/submissions"
@@ -17,10 +18,6 @@ def add_anomaly(
     anomalies: list[dict], code: str, detail: str, source: str = ""
 ) -> None:
     anomalies.append({"code": code, "detail": detail, "source": source})
-
-
-def canonical_json(value: Any) -> str:
-    return json.dumps(value, sort_keys=True, separators=(",", ":"), ensure_ascii=False)
 
 
 def resolve_alias(

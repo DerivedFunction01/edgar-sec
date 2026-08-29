@@ -103,11 +103,11 @@ def test_status_does_not_scan_parquet(tmp_path, monkeypatch) -> None:
     (catalogs / "data.parquet").write_bytes(b"x")
     captured = {}
 
-    def fake_catalogs(root=None):
+    def fake_catalogs(root=None, *args, **kwargs):
         captured["catalogs_root"] = root
         return []
 
-    def fake_plans(root=None):
+    def fake_plans(root=None, *args, **kwargs):
         captured["plans_root"] = root
         return []
 
@@ -166,11 +166,10 @@ def test_materialize_menu_uses_manifest_phase_one_default(
 
 def test_plan_menu_uses_only_discovered_catalog_default(monkeypatch, tmp_path) -> None:
     monkeypatch.setenv("ARTIFACTS_ROOT", str(tmp_path))
-    catalog = {"catalog_id": "catalog-1"}
+    catalog = {"catalog_id": "catalog-1", "target_rows": 100, "form_count": 5}
     monkeypatch.setattr(run.discovery, "discover_catalogs", lambda *_args: [catalog])
-    # Accept the catalog default, all forms, both amendment types, no limit,
-    # and the derived target-plan output root.
-    responses = iter(["", "", "", "", ""])
+    # Scope default (1 = full) and forms filter default (empty)
+    responses = iter(["1", ""])
     captured = {}
     monkeypatch.setattr(builtins, "input", lambda *a, **k: next(responses))
 

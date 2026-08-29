@@ -105,15 +105,11 @@ def assign_chunks(cik_padded_list: list[str], chunk_size: int) -> list[ChunkRang
 def plan_hash(plan: dict) -> str:
     """Deterministic hash over the plan content (excluding any previous
     plan_hash field)."""
+    from defs.storage import canonical_json
+
     payload = {key: value for key, value in plan.items() if key != "plan_hash"}
-    canonical = json_canonical(payload)
+    canonical = canonical_json(payload)
     return hashlib.sha256(canonical.encode("utf-8")).hexdigest()
-
-
-def json_canonical(value) -> str:
-    import json
-
-    return json.dumps(value, sort_keys=True, separators=(",", ":"), ensure_ascii=False)
 
 
 def select_chunk(

@@ -181,6 +181,51 @@ register(
 )
 
 
+def _run_resource_allocation() -> list[ScannerFinding]:
+    from .scanners.resources import scan_resource_allocation
+
+    return scan_resource_allocation()
+
+
+register(
+    Scanner(
+        name="resource-allocation",
+        description="scan modified pipeline and phase code for hardcoded thread counts, memory limits, and worker counts",
+        run=_run_resource_allocation,
+    )
+)
+
+
+def _run_path_construction() -> list[ScannerFinding]:
+    from .scanners.paths import scan_path_construction
+
+    return scan_path_construction()
+
+
+register(
+    Scanner(
+        name="path-construction",
+        description="scan modified pipeline and phase code for ad-hoc dataset/manifest path constructions and literal path chains",
+        run=_run_path_construction,
+    )
+)
+
+
+def _run_json_io() -> list[ScannerFinding]:
+    from .scanners.json_io import scan_json_io
+
+    return scan_json_io()
+
+
+register(
+    Scanner(
+        name="json-io",
+        description="scan modified pipeline and phase code for redundant or ad-hoc JSON I/O and non-atomic writes",
+        run=_run_json_io,
+    )
+)
+
+
 def run_all(stream=None, scanners: Iterable[Scanner] | None = None) -> int:
     """Run scanners, printing descriptions and findings; 0 clean, else 1.
 

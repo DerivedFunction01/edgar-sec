@@ -2,10 +2,10 @@
 
 from __future__ import annotations
 
-import json
 import logging
 
 from defs.runtime.paths import resolve_paths
+from defs.storage import atomic_write_json
 
 from .config import RunOptions
 from .input_manifest import read_input_manifest
@@ -61,12 +61,11 @@ def preview_sample(options: RunOptions, sample_size: int = 3) -> dict:
     preview_root = resolve_paths("metadata").preview_root
     preview_root.mkdir(parents=True, exist_ok=True)
     out_json = str(preview_root / "preview_summary.json")
-    with open(out_json, "w", encoding="utf-8") as fh:
-        json.dump(
-            {"sample": summaries, "metrics": client.http.metrics.snapshot()},
-            fh,
-            indent=2,
-        )
+    atomic_write_json(
+        out_json,
+        {"sample": summaries, "metrics": client.http.metrics.snapshot()},
+        indent=2,
+    )
 
     output_rows = [row for row in completed_rows if row.get("status") != "failed"]
     sample_path = None

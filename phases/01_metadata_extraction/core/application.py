@@ -14,6 +14,7 @@ from datetime import UTC, datetime
 from pathlib import Path
 
 from defs.runtime.paths import resolve_paths
+from defs.storage import atomic_write_json, load_json
 
 from .chunks import (
     assign_chunks,
@@ -82,17 +83,14 @@ def build_plan(options: RunOptions) -> dict:
 
     os.makedirs(options.artifacts_dir, exist_ok=True)
     plan_path = os.path.join(options.artifacts_dir, "plan.json")
-    with open(plan_path, "w", encoding="utf-8") as fh:
-        json.dump(plan, fh, indent=2, sort_keys=True)
+    atomic_write_json(plan_path, plan, indent=2, sort_keys=True)
 
     partitions_dir = os.path.join(options.artifacts_dir, "partitions")
-    os.makedirs(partitions_dir, exist_ok=True)
     for partition in partitions:
         partition_path = os.path.join(
             partitions_dir, f"partition-{partition.partition_id:05d}.json"
         )
-        with open(partition_path, "w", encoding="utf-8") as fh:
-            json.dump(partition.to_dict(), fh, indent=2, sort_keys=True)
+        atomic_write_json(partition_path, partition.to_dict(), indent=2, sort_keys=True)
 
     logger.info(
         "plan: %d CIKs, %d chunks, %d malformed, %d duplicates -> %s",
@@ -111,8 +109,7 @@ def load_plan(options: RunOptions | None = None) -> dict:
         # Fallback for callers that only have a path; skip freshness validation.
         if not os.path.exists(path):
             raise FileNotFoundError(f"plan.json not found at {path}; run `plan` first")
-        with open(path, "r", encoding="utf-8") as fh:
-            plan = json.load(fh)
+        plan = load_json(path)
         expected = plan.get("plan_hash")
         if expected and plan_hash(plan) != expected:
             raise ValueError(
@@ -123,8 +120,7 @@ def load_plan(options: RunOptions | None = None) -> dict:
         raise FileNotFoundError(
             f"plan.json not found in {options.artifacts_dir}; run `plan` first"
         )
-    with open(path, "r", encoding="utf-8") as fh:
-        plan = json.load(fh)
+    plan = load_json(path)
     expected = plan.get("plan_hash")
     if expected and plan_hash(plan) != expected:
         raise ValueError(
