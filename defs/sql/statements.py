@@ -228,7 +228,34 @@ class ReleaseSavepoint(Statement):
     name: str
 
 
-# --- PRAGMA / TRUNCATE / GRANT ---------------------------------------------
+# --- PRAGMA / TRUNCATE / GRANT / ATTACH ------------------------------------
+
+
+@dataclass(frozen=True, slots=True)
+class Attach(Statement):
+    """ATTACH database statement supporting SQLite and DuckDB."""
+
+    path: str
+    alias: str
+    read_only: bool = True
+    db_type: str = "sqlite"
+
+    def __post_init__(self) -> None:
+        if not self.path:
+            raise ValueError("Attach statement requires a database path")
+        if not self.alias:
+            raise ValueError("Attach statement requires an alias")
+
+
+@dataclass(frozen=True, slots=True)
+class Detach(Statement):
+    """DETACH database statement supporting SQLite and DuckDB."""
+
+    alias: str
+
+    def __post_init__(self) -> None:
+        if not self.alias:
+            raise ValueError("Detach statement requires an alias")
 
 
 @dataclass(frozen=True, slots=True)

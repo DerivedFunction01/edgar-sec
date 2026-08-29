@@ -325,3 +325,30 @@ def test_ddl_rejects_bound_parameters_and_postgres_pragma():
         QueryCompiler().compile(index)
     with pytest.raises(Exception, match="PRAGMA"):
         QueryCompiler("postgres").compile(Pragma("journal_mode", "WAL"))
+
+
+def test_attach_and_detach_compilation():
+    from defs.sql.statements import Attach, Detach
+
+    attach = Attach(path="data/chunk.db", alias="c1", read_only=True)
+    detach = Detach(alias="c1")
+
+    # SQLite compilation
+    sqlite_attach = QueryCompiler("sqlite").compile(attach)
+    assert sqlite_attach.sql == "ATTACH DATABASE 'data/chunk.db' AS \"c1\""
+    sqlite_detach = QueryCompiler("sqlite").compile(detach)
+    assert sqlite_detach.sql == 'DETACH DATABASE "c1"'
+
+    # DuckDB compilation
+    duckdb_attach = QueryCompiler("duckdb").compile(attach)
+    assert (
+        duckdb_attach.sql == "ATTACH 'data/chunk.db' AS \"c1\" (TYPE SQLITE, READ_ONLY)"
+    )
+    duckdb_detach = QueryCompiler("duckdb").compile(detach)
+    assert duckdb_detach.sql == 'DETACH "c1"'
+
+    # Postgres unsupported
+    with pytest.raises(Exception, match="ATTACH"):
+        QueryCompiler("postgres").compile(attach)
+    with pytest.raises(Exception, match="DETACH"):
+        QueryCompiler("postgres").compile(detach)

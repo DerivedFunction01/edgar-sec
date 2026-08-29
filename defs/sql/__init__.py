@@ -10,7 +10,15 @@ from .errors import (
     SqlError,
     ValidationError,
 )
-from .executor import DbApiBackend, DbApiConnection, SqlBackend, SqlExecutor
+from .executor import (
+    DbApiBackend,
+    DbApiConnection,
+    SqlBackend,
+    SqlExecutor,
+    detect_db_header,
+    is_analytical_dataset,
+    make_sql_executor,
+)
 from .expressions import (
     Aggregate,
     Alias,

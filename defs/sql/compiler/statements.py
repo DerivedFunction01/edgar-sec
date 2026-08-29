@@ -16,10 +16,12 @@ from ..schema import (
 )
 from ..statements import (
     AlterTable,
+    Attach,
     Begin,
     Commit,
     CreateTrigger,
     Delete,
+    Detach,
     DoNothing,
     DoUpdate,
     DropIndex,
@@ -30,7 +32,6 @@ from ..statements import (
     Grant,
     Insert,
     Pragma,
-    ReleaseSavepoint,
     Replace,
     Rollback,
     Savepoint,
@@ -219,8 +220,28 @@ class StatementCompilerMixin:
             )
         if isinstance(stmt, Savepoint):
             return f"SAVEPOINT {quote_ident(stmt.name)}"
-        if isinstance(stmt, ReleaseSavepoint):
-            return f"RELEASE SAVEPOINT {quote_ident(stmt.name)}"
+        if isinstance(stmt, Attach):
+            if self.dialect is SqlDialect.POSTGRES:
+                raise CapabilityError("ATTACH database", self.dialect.value)
+            path_lit = sql_literal(stmt.path)
+            alias_quoted = quote_ident(stmt.alias)
+            if self.dialect is SqlDialect.SQLITE:
+                return f"ATTACH DATABASE {path_lit} AS {alias_quoted}"
+            ro_clause = ", READ_ONLY" if stmt.read_only else ""
+            type_clause = f", TYPE {stmt.db_type.upper()}" if stmt.db_type else ""
+            options = (
+                f" ({type_clause.lstrip(', ')}{ro_clause})"
+                if (type_clause or ro_clause)
+                else ""
+            )
+            return f"ATTACH {path_lit} AS {alias_quoted}{options}"
+        if isinstance(stmt, Detach):
+            if self.dialect is SqlDialect.POSTGRES:
+                raise CapabilityError("DETACH database", self.dialect.value)
+            alias_quoted = quote_ident(stmt.alias)
+            if self.dialect is SqlDialect.SQLITE:
+                return f"DETACH DATABASE {alias_quoted}"
+            return f"DETACH {alias_quoted}"
         if isinstance(stmt, Pragma):
             if self.dialect is SqlDialect.POSTGRES:
                 raise CapabilityError("PRAGMA", self.dialect.value)
