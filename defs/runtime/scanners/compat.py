@@ -8,13 +8,16 @@ import re
 from defs.runtime.checks import ScannerFinding
 from defs.runtime.scanners.engine import is_test_file, scan_patch_and_untracked
 
-_CANDIDATE_RE = "legacy|compat|backward|deprecated|shim"
+# git's `-G` pre-filter is a POSIX ERE without a case-insensitive flag, so the
+# candidate pattern must encode both cases itself; the line matchers below add
+# `(?i)` and would otherwise flag "Legacy"/"Compat" lines that `-G` dropped.
+_CANDIDATE_RE = "[Ll]egacy|[Cc]ompat|[Bb]ackward|[Dd]eprecated|[Ss]him"
 
 _COMPAT_COMMENT_RE = re.compile(
-    r"""(?i)#\s*(?:backwards?[- ]compatibility|compatibility[- ]alias|legacy[- ]alias|kept for compatibility|transitional shim|deprecated)"""
+    r"""(?i)#\s*(?:backwards?[- ]compatibility|compatibility|legacy|kept for compatibility|transitional shim|deprecated)""", re.I
 )
 _COMPAT_IDENTIFIER_RE = re.compile(
-    r"""(?i)\b(?:def\s+_(?:legacy|compat|shim)\w*|class\s+(?:Legacy|Compat|Shim)\w*|(?:legacy_|compat_|shim_)\w*\s*=)"""
+    r"""(?i)\b(?:def\s+_(?:legacy|compat|shim)\w*|class\s+(?:Legacy|Compat|Shim)\w*|(?:legacy_|compat_|shim_)\w*\s*=)""", re.I
 )
 
 # Semantic areas with documented external contracts (e.g. cross-machine unmanifested artifact bootstrap)
