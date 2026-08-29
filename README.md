@@ -19,7 +19,8 @@ defs/              # domain-neutral infrastructure (SEC HTTP, storage, runtime, 
 phases/            # phase-owned schemas, normalization, planning, validation, merge
  01_metadata_extraction/   # Pipeline A, Part 1 — submissions metadata
  02_filing_extraction/     # Pipeline A, Part 2 — filing catalog and targets (no network)
- #   (future) Phase 2.5 — filing document acquisition from Phase 02 target plans
+ 025_webpage_storage/      # Phase 2.5 — raw document acquisition and storage
+  #   (future) Phase 3 — section extraction from stored documents
 roadmap/           # product and extraction specifications
 uploads/           # input manifests
 .artifacts/        # published manifests and transient runs (git-ignored)
@@ -33,6 +34,7 @@ python run.py                 # interactive menu
 python run.py metadata        # Phase 01 interactive wizard
 python run.py filing-catalog  # Phase 02 interactive materialize/plan menu
 python run.py viewer          # local read-only dataset viewer
+python run.py webpage-storage  # Phase 2.5 interactive document acquisition
 python run.py settings generate-dotenv   # write a documented .env template
 
 # Or use a component's canonical command surface directly:
@@ -47,7 +49,8 @@ python run.py settings generate-dotenv   # write a documented .env template
 
 Settings are declared once as typed specs with logical dotted paths
 (`runtime.threads`, `sec.user_agent`, `filing_extraction.source_batch_size`,
-`filing_extraction.target_forms`, `filing_extraction.amendment`);
+`filing_extraction.target_forms`, `filing_extraction.amendment`,
+`webpage_storage.zstd_level`, `webpage_storage.mode`);
 environment names are generated from them (`RUNTIME_THREADS`,
 `FILING_EXTRACTION_SOURCE_BATCH_SIZE`, `FILING_EXTRACTION_TARGET_FORMS`,
 `FILING_EXTRACTION_AMENDMENT`). The generated dotenv template
@@ -80,6 +83,16 @@ The interactive launcher (`python run.py filing-catalog`) and the canonical CLI
 (`python -m phases.02_filing_extraction.cli {materialize,plan,status}`) share one
 contract. Filing document acquisition is a separate Phase 2.5 boundary that
 consumes these target plans; see the Phase 02 README for the scope split.
+
+### [Phase 2.5 — Webpage Storage](phases/025_webpage_storage/README.md)
+
+Acquires and stores raw SEC filing documents (HTML, SGML, iXBRL) as
+content-addressed, zstd-compressed SQLite BLOBs, linked to Phase 02 corporate
+occurrences. The boundary is storage-only: it consumes a finalized Phase 02 target
+plan, fetches each unique document locator once via an offline fixture CAS or the
+live SEC archive, and merges isolated worker chunk databases into a published
+partition SQLite database. Document parsing and section extraction are later
+phases built on the stored `document_blobs`.
 
 ## Tools
 

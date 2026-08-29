@@ -171,6 +171,38 @@ def test_partition_merge_paths_and_helpers(tmp_path):
     assert merge_report_path_in(run_root) == run_root / "merge" / MERGE_REPORT_NAME
 
 
+def test_worker_chunk_db_path_is_under_worker_attempt_root(tmp_path):
+    run = (
+        resolve_paths(env={"ARTIFACTS_ROOT": str(tmp_path)})
+        .phase("webpage_storage")
+        .run("run-1")
+    )
+    chunk = run.worker_chunk_db("worker-1", "attempt-1", "chunk-00001")
+    assert chunk == (
+        tmp_path
+        / "transient"
+        / "webpage_storage"
+        / "runs"
+        / "run-1"
+        / "workers"
+        / "worker-1"
+        / "attempt-1"
+        / "chunk-00001.db"
+    )
+
+
+def test_worker_chunk_db_rejects_unsafe_ids(tmp_path):
+    run = (
+        resolve_paths(env={"ARTIFACTS_ROOT": str(tmp_path)})
+        .phase("webpage_storage")
+        .run("run-1")
+    )
+    with pytest.raises(ValueError):
+        run.worker_chunk_db("worker-1", "attempt-1", "../escape")
+    with pytest.raises(ValueError):
+        run.worker_chunk_db("bad/id", "attempt-1", "chunk-00001")
+
+
 def test_classify_artifact_path():
     classified = classify_artifact_path("transient/metadata/runs/r1/plan.json")
     assert classified.role == ArtifactRole.RUN_PLAN

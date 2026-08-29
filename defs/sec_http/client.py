@@ -391,6 +391,16 @@ class SecHttpClient:
         except UnicodeDecodeError as exc:
             raise self._decode_failure(url, exc) from exc
 
+    def get_bytes(self, url: str) -> bytes:
+        """Return the raw response payload without decoding.
+
+        Archive documents (HTML, SGML, iXBRL) are stored as raw bytes; unlike
+        :meth:`get_text`, a body that is not valid UTF-8 is not treated as a
+        permanent content failure. Pacing, retries, caching, and failure-ledger
+        preflight behave exactly as for the other fetch methods.
+        """
+        return self._fetch(url)
+
     def get_json(self, url: str) -> Any:
         payload = self._fetch(url)
         try:

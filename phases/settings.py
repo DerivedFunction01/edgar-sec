@@ -14,6 +14,7 @@ import importlib
 PHASE_SETTING_MODULES = {
     "metadata": "phases.01_metadata_extraction.settings",
     "filing_extraction": "phases.02_filing_extraction.settings",
+    "webpage_storage": "phases.025_webpage_storage.settings",
 }
 
 

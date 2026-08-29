@@ -131,3 +131,43 @@ def test_sec_cache_hit_does_not_acquire_slot(tmp_path):
     client.get_json(url)
     assert raw_calls == []
     assert session.calls == 1  # unchanged
+
+
+def test_get_bytes_returns_raw_payload_without_decoding():
+    session = _CountingSession(lambda url: _FakeResponse(200, b"\xff\xfe<html>"))
+    client = SecHttpClient(
+        user_agent="App/1.0 a@b.com",
+        session_factory=lambda: session,
+        rate_limiter=RateLimiter(min_interval_s=1e-6),
+        retry_policy=RetryPolicy(max_retries=0),
+    )
+    url = "https://www.sec.gov/Archives/edgar/data/1/0000000001-000001.txt"
+    assert client.get_bytes(url) == b"\xff\xfe<html>"
+    assert session.calls == 1
+
+
+def test_get_bytes_failure_ledger_preflight_skips_request(tmp_path):
+    url = "https://www.sec.gov/Archives/missing.htm"
+    session = _CountingSession(lambda u: _FakeResponse(404, b"not found"))
+    first = SecHttpClient(
+        user_agent="App/1.0 a@b.com",
+        session_factory=lambda: session,
+        cache_dir=str(tmp_path / "cache"),
+        rate_limiter=RateLimiter(min_interval_s=1e-6),
+        retry_policy=RetryPolicy(max_retries=0),
+    )
+    with pytest.raises(PermanentHttpError):
+        first.get_bytes(url)
+    assert session.calls == 1
+
+    # A later session sharing the cache dir skips the dead URL without any HTTP request.
+    second = SecHttpClient(
+        user_agent="App/1.0 a@b.com",
+        session_factory=lambda: session,
+        cache_dir=str(tmp_path / "cache"),
+        rate_limiter=RateLimiter(min_interval_s=1e-6),
+        retry_policy=RetryPolicy(max_retries=0),
+    )
+    with pytest.raises(PermanentHttpError):
+        second.get_bytes(url)
+    assert session.calls == 1  # unchanged: preflight skip, no request

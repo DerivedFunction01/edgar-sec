@@ -51,12 +51,32 @@ Researchers and quantitative analysts query this database directly via SQL, Duck
  │ PHASE 5: FLATTENING, PARQUET DATA ENGINEERING, RECONCILIATION & ANALYTICS                             │
  │ • Populate partitioned Parquet tables (`fiscal_year`, `module_domain`) and relational DDL             │
  │ • Enforce 3-tier partitioned aggregations (`portfolio`, `category`, `atomic_positions`) to stop double-counting│
- │ • Execute automated accounting assertion harness ($\text{Assets} = \text{Liab} + \text{Eq}$, Lease discounting)  │
- └───────────────────────────────────────────────────────────────────────────────────────────────────────┘
+  │ • Execute automated accounting assertion harness ($\text{Assets} = \text{Liab} + \text{Eq}$, Lease discounting)  │
+  └───────────────────────────────────────────────────────────────────────────────────────────────────────┘
 
 ```
 
 ---
+
+### Phase 2.5: Raw Document Acquisition & Storage (Boundary)
+
+Between the metadata catalog (Phase 1) and downstream extraction, Phase 2.5
+(`phases/025_webpage_storage`) acquires and stores raw filing documents so that
+parsing and section extraction never re-hit the SEC archive. It is **storage-only**:
+
+- Consumes a finalized Phase 02 target plan (`locator_groups.parquet`,
+  `targets/form=*/data.parquet`) and fetches each unique `(accession,
+  document_path)` locator exactly once.
+- Dual-mode fetch: offline fixture CAS replay (`--mode fixture`) or live SEC
+  archive via `SecHttpClient.get_bytes` with 4 RPS pacing and a failure ledger
+  (`--mode production`).
+- Stores `document_blobs` (sha256-addressed, zstd-compressed raw bytes) and
+  `filing_occurrences` (provenance links) in isolated worker chunk SQLite
+  databases, then merges them atomically into a published partition database via
+  compiled `Attach`/`Detach`.
+- Deferred to later parallel tracks (built on `document_blobs`): multi-era
+  envelope unpacking, HTML/iXBRL cleaning, and stub/defect detection.
+
 
 # SECTION 1: THE DISCRETE AND HIDDEN SECTIONS TAXONOMY
 

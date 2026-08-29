@@ -155,6 +155,9 @@ class CompanyFamilyInfo:
     is_variant: bool
 
 
+_SEED_CACHE: dict[tuple[str, str, int], CompanyFamilyIndex] = {}
+
+
 class CompanyFamilyIndex:
     """Two-pass company family clustering and canonical resolver."""
 
@@ -180,6 +183,10 @@ class CompanyFamilyIndex:
         if not p.is_file():
             raise FileNotFoundError(f"seed CIK file not found: {p}")
 
+        cache_key = (str(p), seed_string, p.stat().st_mtime_ns)
+        if cache_key in _SEED_CACHE:
+            return _SEED_CACHE[cache_key]
+
         ciks: list[str] = []
         names: list[str] = []
         with p.open("r", encoding="utf-8-sig") as f:
@@ -194,7 +201,9 @@ class CompanyFamilyIndex:
                     ciks.append(f"{int(digits):010d}")
                     names.append(name)
 
-        return cls.build_from_records(list(zip(ciks, names)), seed_string=seed_string)
+        index = cls.build_from_records(list(zip(ciks, names)), seed_string=seed_string)
+        _SEED_CACHE[cache_key] = index
+        return index
 
     @classmethod
     def build_from_records(
@@ -226,7 +235,6 @@ class CompanyFamilyIndex:
             first_idx = indices[0] if indices else len(body)
             key_tokens = body[:first_idx]
             clean_key = [t for t in key_tokens if t not in PLACEHOLDER]
-
             rec = {
                 "cik": cik,
                 "name": name,
@@ -235,7 +243,6 @@ class CompanyFamilyIndex:
                 "clean_key": tuple(clean_key),
             }
             parsed_records.append(rec)
-
             if not body or not clean_key:
                 orphans.append(rec)
             elif count == 0:
@@ -355,32 +362,25 @@ class CompanyFamilyIndex:
             fid = hashlib.md5(fam_key.replace(" ", "").encode()).hexdigest()[:12]
             roots = family_roots.get(fam_key, [])
 
-            # Choose representative
-            rep_candidates = []
-            for r in roots:
-                rep_candidates.append(
-                    (
-                        0,
-                        len(r["body"]),
-                        hashlib.md5(f"{seed_string}{r['name']}".encode()).hexdigest(),
-                        r["name"],
-                    )
+            rep_candidates = [
+                (
+                    0,
+                    len(r["body"]),
+                    hashlib.md5(f"{seed_string}{r['name']}".encode()).hexdigest(),
+                    r["name"],
                 )
-            if not rep_candidates:
-                for m in members:
-                    is_parent = m["count"] == 0 or len(m["body"]) <= MAX_PARENT_TOKENS
-                    prio = 1 if is_parent else 2
-                    rep_candidates.append(
-                        (
-                            prio,
-                            len(m["body"]),
-                            hashlib.md5(
-                                f"{seed_string}{m['name']}".encode()
-                            ).hexdigest(),
-                            m["name"],
-                        )
-                    )
-
+                for r in roots
+            ] or [
+                (
+                    1
+                    if (m["count"] == 0 or len(m["body"]) <= MAX_PARENT_TOKENS)
+                    else 2,
+                    len(m["body"]),
+                    hashlib.md5(f"{seed_string}{m['name']}".encode()).hexdigest(),
+                    m["name"],
+                )
+                for m in members
+            ]
             rep_candidates.sort()
             rep_name = rep_candidates[0][3] if rep_candidates else fam_key
 
@@ -409,7 +409,7 @@ class CompanyFamilyIndex:
                     cik_to_info[r["cik"]] = info
                     name_to_info[r["name"].strip().lower()] = info
 
-        # Roots that were not clustered into variants stay as standalone root families
+        # Standalone root families
         for r in pure_roots + protected_roots + orphans:
             cik = r["cik"]
             if cik in cik_to_info:

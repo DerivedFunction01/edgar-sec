@@ -49,6 +49,7 @@ CUSTOM_PACKAGES = [
     "uvicorn",
     "httpx2",
     "psutil",
+    "zstandard",
 ]
 
 # Packages for the ML server

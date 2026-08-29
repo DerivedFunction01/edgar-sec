@@ -292,6 +292,15 @@ class RunPaths:
             / _safe_id(attempt_id, "attempt_id")
         )
 
+    def worker_chunk_db(self, worker_id: str, attempt_id: str, chunk_id: str) -> Path:
+        """Private transient chunk database file for one worker attempt."""
+        safe_chunk = _safe_id(chunk_id, "chunk_id")
+        return self.worker_root(worker_id, attempt_id) / f"{safe_chunk}.db"
+
+    def worker_chunk_glob(self) -> Path:
+        """Glob pattern matching all transient worker chunk databases."""
+        return self.workers_root / "*" / "*" / "chunk-*.db"
+
     def ensure_run_layout(self) -> None:
         self.partitions_root.mkdir(parents=True, exist_ok=True)
         self.workers_root.mkdir(parents=True, exist_ok=True)

@@ -252,48 +252,41 @@ class FeatureSnapshotBuilder:
                 [(r[0], r[1]) for r in prof_records]
             )
 
-        family_tuples = [
-            [cik, info.family_key] for cik, info in family_index._cik_to_info.items()
-        ]
         staging.execute(
             "CREATE OR REPLACE TEMP TABLE company_family_map (cik VARCHAR, company_family VARCHAR)"
         )
-        if family_tuples:
+        cik_records = staging.execute(
+            f"SELECT DISTINCT source_cik FROM ({union_sql}) WHERE source_cik IS NOT NULL"
+        )
+        if cik_records:
+            family_tuples = [
+                [r[0], family_index.resolve(r[0]).family_key] for r in cik_records
+            ]
             staging.executemany(
                 "INSERT INTO company_family_map VALUES (?, ?)", family_tuples
             )
 
         prof_cols = set(parquet_column_names(self.profile_path))
         if "classification" in prof_cols:
-            profiles_sql = f"""
-                SELECT
-                    cik AS profile_cik,
-                    classification.sic_code AS sic_code,
-                    classification.sic_description AS sic_description,
-                    classification.owner_org AS owner_org_cik,
-                    CAST(NULL AS VARCHAR) AS owner_org_name,
-                    COALESCE(classification.entity_type, 'operating') AS entity_type,
-                    COALESCE(classification.filer_category, 'unspecified') AS filer_category_primary,
-                    incorporation.state AS state_of_incorporation,
-                    CAST(NULL AS VARCHAR) AS state_of_business,
-                    CAST(NULL AS VARCHAR) AS foreign_country_code,
-                    'domestic' AS foreign_status,
-                    CASE WHEN classification.owner_org IS NOT NULL THEN 'has_org' ELSE 'no_org' END AS owner_org_presence,
-                    COALESCE(identity.name, '') AS company_name
-                FROM read_parquet('{self.profile_path}')
-            """
+            profiles_sql = (
+                f"SELECT cik AS profile_cik, classification.sic_code AS sic_code, "
+                f"classification.sic_description AS sic_description, classification.owner_org AS owner_org_cik, "
+                f"CAST(NULL AS VARCHAR) AS owner_org_name, COALESCE(classification.entity_type, 'operating') AS entity_type, "
+                f"COALESCE(classification.filer_category, 'unspecified') AS filer_category_primary, "
+                f"incorporation.state AS state_of_incorporation, CAST(NULL AS VARCHAR) AS state_of_business, "
+                f"CAST(NULL AS VARCHAR) AS foreign_country_code, 'domestic' AS foreign_status, "
+                f"CASE WHEN classification.owner_org IS NOT NULL THEN 'has_org' ELSE 'no_org' END AS owner_org_presence, "
+                f"COALESCE(identity.name, '') AS company_name FROM read_parquet('{self.profile_path}')"
+            )
         else:
-            profiles_sql = f"""
-                SELECT
-                    cik AS profile_cik, sic AS sic_code, sic_description,
-                    owner_org_cik, owner_org_name, entity_type, filer_category,
-                    state_of_incorporation, state_of_business, foreign_country_code,
-                    CASE WHEN foreign_country_code IS NOT NULL THEN 'foreign' ELSE 'domestic' END AS foreign_status,
-                    CASE WHEN owner_org_cik IS NOT NULL THEN 'has_org' ELSE 'no_org' END AS owner_org_presence,
-                    COALESCE(filer_category, 'unspecified') AS filer_category_primary,
-                    company_name
-                FROM read_parquet('{self.profile_path}')
-            """
+            profiles_sql = (
+                f"SELECT cik AS profile_cik, sic AS sic_code, sic_description, owner_org_cik, owner_org_name, "
+                f"entity_type, filer_category, state_of_incorporation, state_of_business, foreign_country_code, "
+                f"CASE WHEN foreign_country_code IS NOT NULL THEN 'foreign' ELSE 'domestic' END AS foreign_status, "
+                f"CASE WHEN owner_org_cik IS NOT NULL THEN 'has_org' ELSE 'no_org' END AS owner_org_presence, "
+                f"COALESCE(filer_category, 'unspecified') AS filer_category_primary, company_name "
+                f"FROM read_parquet('{self.profile_path}')"
+            )
         era_expr = self._sql_era_of("f.report_date")
         family_expr = self._sql_form_family("f.form")
         query = f"""
@@ -473,10 +466,9 @@ class FeatureSnapshotBuilder:
         dest = snapshot_dir / "locator_features.parquet"
         occ = snapshot_dir / "occurrence_features.parquet"
         query = f"""
-            WITH occurrences AS (SELECT * FROM read_parquet('{occ}')),
-            ranked AS (
+            WITH ranked AS (
                 SELECT *, ROW_NUMBER() OVER (PARTITION BY document_locator_key ORDER BY occurrence_id) AS rn
-                FROM occurrences
+                FROM read_parquet('{occ}')
             )
             SELECT
                 document_locator_key, form, form_family, era, suffix, xbrl_state, size_band,

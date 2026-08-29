@@ -59,6 +59,19 @@ ENTRIES: tuple[LauncherEntry, ...] = (
         ),
     ),
     LauncherEntry(
+        id="webpage-storage",
+        label="Phase 2.5: Webpage Storage",
+        description="raw SEC filing document acquisition and storage",
+        module="phases.025_webpage_storage.run",
+        dependencies=(
+            PhaseDependency(
+                phase="filing-catalog",
+                dataset="filing_targets",
+                description="Phase 02 finalized target plan",
+            ),
+        ),
+    ),
+    LauncherEntry(
         id="artifact-bundle",
         label="Artifact Bundle",
         description="portable finalized artifact transport",

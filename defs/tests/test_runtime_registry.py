@@ -31,6 +31,7 @@ def test_registry_shape_is_unique_and_complete():
         "viewer",
         "metadata",
         "filing-catalog",
+        "webpage-storage",
         "artifact-bundle",
         "settings",
     }
