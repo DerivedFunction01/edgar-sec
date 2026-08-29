@@ -10,7 +10,8 @@ module opens a driver connection itself.
 from __future__ import annotations
 
 import hashlib
-from dataclasses import dataclass
+import threading
+from dataclasses import asdict, dataclass
 from pathlib import PurePosixPath
 
 import zstandard
@@ -35,9 +36,31 @@ from defs.sql import (
 SCHEMA_VERSION = 1
 ZSTD_COMPRESSION_LEVEL = 3
 
+_thread_local = threading.local()
+
+
+def _get_compressor(level: int = ZSTD_COMPRESSION_LEVEL) -> zstandard.ZstdCompressor:
+    compressor = getattr(_thread_local, "compressor", None)
+    current_level = getattr(_thread_local, "compressor_level", None)
+    if compressor is None or current_level != level:
+        compressor = zstandard.ZstdCompressor(level=level)
+        _thread_local.compressor = compressor
+        _thread_local.compressor_level = level
+    return compressor
+
+
+def _get_decompressor() -> zstandard.ZstdDecompressor:
+    decompressor = getattr(_thread_local, "decompressor", None)
+    if decompressor is None:
+        decompressor = zstandard.ZstdDecompressor()
+        _thread_local.decompressor = decompressor
+    return decompressor
+
+
 DOCUMENT_BLOBS_TABLE = "document_blobs"
 FILING_OCCURRENCES_TABLE = "filing_occurrences"
 COMMITTED_CHUNKS_TABLE = "_committed_chunks"
+ACQUISITION_FAILURES_TABLE = "acquisition_failures"
 
 BLOB_COLUMNS = (
     "doc_id",
@@ -58,6 +81,14 @@ OCCURRENCE_COLUMNS = (
     "doc_id",
 )
 COMMITTED_CHUNK_COLUMNS = ("chunk_id", "record_count", "worker_id", "committed_at")
+ACQUISITION_FAILURE_COLUMNS = (
+    "doc_id",
+    "accession",
+    "document_path",
+    "status",
+    "error_message",
+    "attempted_at",
+)
 
 MIME_HTML = "text/html"
 MIME_TEXT = "text/plain"
@@ -88,14 +119,7 @@ class RawDocumentBlob:
     raw_payload: bytes
 
     def to_row(self) -> dict:
-        return {
-            "doc_id": self.doc_id,
-            "accession": self.accession,
-            "document_path": self.document_path,
-            "byte_size": self.byte_size,
-            "mime_type": self.mime_type,
-            "raw_payload": self.raw_payload,
-        }
+        return asdict(self)
 
     @classmethod
     def from_row(cls, row: dict) -> RawDocumentBlob:
@@ -123,16 +147,7 @@ class FilingOccurrence:
     doc_id: str
 
     def to_row(self) -> dict:
-        return {
-            "occurrence_id": self.occurrence_id,
-            "source_cik": self.source_cik,
-            "accession": self.accession,
-            "document_path": self.document_path,
-            "form": self.form,
-            "filing_date": self.filing_date,
-            "report_date": self.report_date,
-            "doc_id": self.doc_id,
-        }
+        return asdict(self)
 
     @classmethod
     def from_row(cls, row: dict) -> FilingOccurrence:
@@ -159,12 +174,7 @@ class CommittedChunk:
     committed_at: str
 
     def to_row(self) -> dict:
-        return {
-            "chunk_id": self.chunk_id,
-            "record_count": self.record_count,
-            "worker_id": self.worker_id,
-            "committed_at": self.committed_at,
-        }
+        return asdict(self)
 
     @classmethod
     def from_row(cls, row: dict) -> CommittedChunk:
@@ -173,6 +183,33 @@ class CommittedChunk:
             record_count=int(row["record_count"]),
             worker_id=str(row["worker_id"]),
             committed_at=str(row["committed_at"]),
+        )
+
+
+@dataclass(frozen=True, slots=True)
+class AcquisitionFailure:
+    """A document acquisition failure or missing payload record."""
+
+    doc_id: str
+    accession: str
+    document_path: str
+    status: str
+    error_message: str | None
+    attempted_at: str
+
+    def to_row(self) -> dict:
+        return asdict(self)
+
+    @classmethod
+    def from_row(cls, row: dict) -> AcquisitionFailure:
+        err = row.get("error_message")
+        return cls(
+            doc_id=str(row["doc_id"]),
+            accession=str(row["accession"]),
+            document_path=str(row["document_path"]),
+            status=str(row["status"]),
+            error_message=None if err is None else str(err),
+            attempted_at=str(row["attempted_at"]),
         )
 
 
@@ -250,6 +287,24 @@ def committed_chunks_ddl() -> CreateTable:
     )
 
 
+def acquisition_failures_ddl() -> CreateTable:
+    return CreateTable(
+        table=ACQUISITION_FAILURES_TABLE,
+        columns=(
+            ColumnDef("doc_id", ColumnType.TEXT, (PrimaryKey(), NotNull())),
+            ColumnDef("accession", ColumnType.TEXT, (NotNull(),)),
+            ColumnDef("document_path", ColumnType.TEXT, (NotNull(),)),
+            ColumnDef("status", ColumnType.TEXT, (NotNull(),)),
+            ColumnDef("error_message", ColumnType.TEXT),
+            ColumnDef(
+                "attempted_at",
+                ColumnType.TIMESTAMP,
+                (NotNull(), DefaultCurrentTimestamp()),
+            ),
+        ),
+    )
+
+
 def partition_indexes() -> tuple[CreateIndex, ...]:
     return (
         CreateIndex(
@@ -275,21 +330,24 @@ def partition_indexes() -> tuple[CreateIndex, ...]:
     )
 
 
-def partition_ddl() -> tuple[Statement, ...]:
+def partition_tables_ddl() -> tuple[Statement, ...]:
     return (
         document_blobs_ddl(),
         filing_occurrences_ddl(),
         committed_chunks_ddl(),
+        acquisition_failures_ddl(),
+    )
+
+
+def partition_ddl() -> tuple[Statement, ...]:
+    return (
+        *partition_tables_ddl(),
         *partition_indexes(),
     )
 
 
 def chunk_ddl() -> tuple[Statement, ...]:
-    return (
-        document_blobs_ddl(),
-        filing_occurrences_ddl(),
-        committed_chunks_ddl(),
-    )
+    return partition_tables_ddl()
 
 
 def compile_schema(
@@ -308,6 +366,10 @@ def create_schema(executor, statements) -> None:
 
 def create_partition_schema(executor) -> None:
     create_schema(executor, partition_ddl())
+
+
+def create_partition_indexes(executor) -> None:
+    create_schema(executor, partition_indexes())
 
 
 def create_chunk_schema(executor) -> None:
@@ -329,11 +391,11 @@ def occurrence_id(source_cik: str, accession: str, document_path: str) -> str:
 
 
 def compress_payload(raw: bytes, level: int = ZSTD_COMPRESSION_LEVEL) -> bytes:
-    return zstandard.ZstdCompressor(level=level).compress(raw)
+    return _get_compressor(level=level).compress(raw)
 
 
 def decompress_payload(payload: bytes) -> bytes:
-    return zstandard.ZstdDecompressor().decompress(payload)
+    return _get_decompressor().decompress(payload)
 
 
 def detect_mime(document_path: str) -> str:
@@ -375,7 +437,9 @@ def build_occurrence(
     )
 
 
-__all__ = [
+__all__ = (
+    "ACQUISITION_FAILURES_TABLE",
+    "ACQUISITION_FAILURE_COLUMNS",
     "BLOB_COLUMNS",
     "COMMITTED_CHUNKS_TABLE",
     "COMMITTED_CHUNK_COLUMNS",
@@ -388,11 +452,13 @@ __all__ = [
     "OCCURRENCE_COLUMNS",
     "SCHEMA_VERSION",
     "ZSTD_COMPRESSION_LEVEL",
+    "AcquisitionFailure",
     "CommittedChunk",
     "DocumentLocator",
     "FetchResult",
     "FilingOccurrence",
     "RawDocumentBlob",
+    "acquisition_failures_ddl",
     "build_blob",
     "build_occurrence",
     "chunk_ddl",
@@ -400,6 +466,7 @@ __all__ = [
     "compile_schema",
     "compress_payload",
     "create_chunk_schema",
+    "create_partition_indexes",
     "create_partition_schema",
     "create_schema",
     "decompress_payload",
@@ -410,4 +477,5 @@ __all__ = [
     "occurrence_id",
     "partition_ddl",
     "partition_indexes",
-]
+    "partition_tables_ddl",
+)

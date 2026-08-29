@@ -23,7 +23,7 @@ def make_tqdm_callback(
                 f"worker failed: {event.get('error', 'unknown error')}"
             )
         else:
-            if event.get("status") == "ok":
+            if event.get("status") in ("ok", "cached"):
                 state["ok"] += 1
             else:
                 state["not_ok"] += 1

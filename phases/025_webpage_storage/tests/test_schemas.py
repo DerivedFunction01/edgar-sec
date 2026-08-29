@@ -30,7 +30,12 @@ def test_partition_schema_is_created_from_sql_ast(tmp_path):
             "SELECT name FROM sqlite_master WHERE type = 'table'"
         )
     }
-    assert {"document_blobs", "filing_occurrences", "_committed_chunks"} <= tables
+    assert {
+        "document_blobs",
+        "filing_occurrences",
+        "_committed_chunks",
+        "acquisition_failures",
+    } <= tables
     columns = {
         row[1]: row[2]
         for row in connection.execute("PRAGMA table_info(document_blobs)")

@@ -19,6 +19,7 @@ from defs.sec_http import (
     RetryExhausted,
     RetryPolicy,
     SecHttpClient,
+    make_sec_http_client,
 )
 
 
@@ -171,3 +172,42 @@ def test_get_bytes_failure_ledger_preflight_skips_request(tmp_path):
     with pytest.raises(PermanentHttpError):
         second.get_bytes(url)
     assert session.calls == 1  # unchanged: preflight skip, no request
+
+
+def test_make_sec_http_client_resolves_settings_defaults():
+    client = make_sec_http_client()
+    assert isinstance(client, SecHttpClient)
+    assert client.headers["User-Agent"] == "EdgarSec/1.0 contact@example.com"
+    assert client.cache_dir.endswith("caches")
+    # Default policies are wired when none are supplied.
+    assert isinstance(client.rate_limiter, RateLimiter)
+    assert isinstance(client.retry_policy, RetryPolicy)
+
+
+def test_make_sec_http_client_honors_overrides():
+    custom_rl = RateLimiter(min_interval_s=0.5)
+    custom_rp = RetryPolicy(max_retries=2)
+    client = make_sec_http_client(
+        user_agent="Custom/1.0 c@d.com",
+        cache_dir="/tmp/foo",
+        rate_limiter=custom_rl,
+        retry_policy=custom_rp,
+        timeout_s=42.0,
+        max_failure_attempts=7,
+        ignore_failure_history=True,
+        max_concurrency=3,
+    )
+    assert client.headers["User-Agent"] == "Custom/1.0 c@d.com"
+    assert client.cache_dir == "/tmp/foo"
+    assert client.rate_limiter is custom_rl
+    assert client.retry_policy is custom_rp
+    assert client.timeout_s == 42.0
+    assert client.max_failure_attempts == 7
+    assert client.ignore_failure_history is True
+
+
+def test_make_sec_http_client_empty_user_agent_falls_back_to_setting():
+    # An empty identity defers to the resolved setting default rather than
+    # raising, matching the `or` fallback convention used at call sites.
+    client = make_sec_http_client(user_agent="")
+    assert client.headers["User-Agent"] == "EdgarSec/1.0 contact@example.com"

@@ -8,6 +8,7 @@ from .client import (
     SecHttpClient,
     SecTransportProfile,
     default_headers,
+    make_sec_http_client,
 )
 from .errors import PermanentHttpError, ResponseTooLargeError, RetryExhausted
 from .metrics import HttpMetrics
@@ -52,4 +53,5 @@ __all__ = [
     "SecHttpClient",
     "SecTransportProfile",
     "default_headers",
+    "make_sec_http_client",
 ]

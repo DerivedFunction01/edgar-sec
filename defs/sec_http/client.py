@@ -8,6 +8,7 @@ import os
 import time
 from collections.abc import Callable
 from dataclasses import dataclass
+from pathlib import Path
 from typing import Any
 
 import requests
@@ -39,6 +40,48 @@ def default_headers(user_agent: str = DEFAULT_USER_AGENT) -> dict:
         "User-Agent": user_agent,
         "Accept-Encoding": "gzip, deflate",
     }
+
+
+def make_sec_http_client(
+    *,
+    user_agent: str | None = None,
+    cache_dir: str | Path | None = None,
+    rate_limiter: RateLimiter | None = None,
+    retry_policy: RetryPolicy | None = None,
+    timeout_s: float = DEFAULT_TIMEOUT_S,
+    metrics: HttpMetrics | None = None,
+    max_failure_attempts: int = 3,
+    ignore_failure_history: bool = False,
+    max_concurrency: int = DEFAULT_SEC_MAX_CONCURRENCY,
+) -> SecHttpClient:
+    """Construct a production ``SecHttpClient`` bound to runtime settings.
+
+    Only ``user_agent`` and ``cache_dir`` are resolved dynamically from the
+    shared settings layer when not supplied; rate limiting, retries, metrics,
+    and concurrency use the client's defaults unless explicitly overridden.
+    Importing the settings/path layer is deferred to call time so this factory
+    can live in the shared HTTP boundary without a circular import.
+    """
+    from defs.runtime.paths import resolve_paths
+    from defs.runtime.settings import get_setting
+
+    resolved_ua = user_agent or str(get_setting("sec.user_agent") or DEFAULT_USER_AGENT)
+    resolved_cache = (
+        str(cache_dir)
+        if cache_dir is not None
+        else str(get_setting("cache.root") or resolve_paths().cache_root)
+    )
+    return SecHttpClient(
+        user_agent=resolved_ua,
+        rate_limiter=rate_limiter,
+        retry_policy=retry_policy,
+        timeout_s=timeout_s,
+        cache_dir=resolved_cache,
+        metrics=metrics,
+        max_failure_attempts=max_failure_attempts,
+        ignore_failure_history=ignore_failure_history,
+        max_concurrency=max_concurrency,
+    )
 
 
 @dataclass(frozen=True)
@@ -425,4 +468,5 @@ __all__ = [
     "SecHttpClient",
     "SecTransportProfile",
     "default_headers",
+    "make_sec_http_client",
 ]

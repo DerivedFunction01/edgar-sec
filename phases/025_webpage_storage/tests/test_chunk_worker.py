@@ -128,3 +128,135 @@ def test_fetch_failures_are_reported_and_successes_commit(tmp_path):
     assert result.failures[0].status == "missing"
     assert result.occurrence_count == result.blob_count == 1
     assert _rows(result.path, schemas.COMMITTED_CHUNKS_TABLE)[0]["record_count"] == 1
+    failures_in_db = _rows(result.path, schemas.ACQUISITION_FAILURES_TABLE)
+    assert len(failures_in_db) == 1
+    assert failures_in_db[0]["document_path"] == "missing.htm"
+    assert failures_in_db[0]["status"] == "missing"
+
+
+def test_multi_registrant_locators_deduplicate_before_fetch(tmp_path):
+    fetcher = FakeFetcher({"loc-reg1": b"shared", "loc-reg2": b"shared"})
+    # Two different locator keys sharing same accession + document_path
+    loc1 = schemas.DocumentLocator(
+        "loc-reg1", "0001-0001", "shared.htm", "https://example/loc1", "10-K"
+    )
+    loc2 = schemas.DocumentLocator(
+        "loc-reg2", "0001-0001", "shared.htm", "https://example/loc2", "10-K"
+    )
+    occ1 = schemas.build_occurrence(
+        "0000000001", "0001-0001", "shared.htm", "10-K", "2024-01-02", "2023-12-31"
+    )
+    occ2 = schemas.build_occurrence(
+        "0000000002", "0001-0001", "shared.htm", "10-K", "2024-01-02", "2023-12-31"
+    )
+    result = worker_module.process_chunk(
+        "chunk-dedup",
+        "worker",
+        [loc1, loc2],
+        [occ1, occ2],
+        fetcher,
+        tmp_path / "dedup.db",
+    )
+    # Only fetched once because they identify the same document
+    assert len(_rows(result.path, schemas.DOCUMENT_BLOBS_TABLE)) == 1
+    assert len(_rows(result.path, schemas.FILING_OCCURRENCES_TABLE)) == 2
+
+
+def test_sub_chunk_resumption(tmp_path):
+    db_path = tmp_path / "sub_chunk.db"
+    loc_a = _locator("a", "a.htm")
+    loc_b = _locator("b", "b.htm")
+    occ_a = _occurrence("0000000001", "a.htm")
+    occ_b = _occurrence("0000000001", "b.htm")
+
+    # Step 1: Initial run with only locator 'a' stored (simulating interruption before 'b')
+    fetcher1 = FakeFetcher({"a": b"payload-a"})
+    worker_module.process_chunk(
+        "chunk-resume",
+        "worker-1",
+        [loc_a],
+        [occ_a],
+        fetcher1,
+        db_path,
+    )
+    assert fetcher1.calls == ["a"]
+    assert len(_rows(db_path, schemas.DOCUMENT_BLOBS_TABLE)) == 1
+
+    # Remove the _committed_chunks record so it acts like an interrupted chunk
+    executor = make_sql_executor(db_path, dialect="sqlite")
+    from defs.sql import Commit, Delete
+
+    executor.exec(
+        executor.compiler.compile(Delete(table=schemas.COMMITTED_CHUNKS_TABLE))
+    )
+    executor.exec(executor.compiler.compile(Commit()))
+    executor.close()
+
+    # Step 2: Resume with both 'a' and 'b'
+    fetcher2 = FakeFetcher({"a": b"payload-a", "b": b"payload-b"})
+    resumed = worker_module.process_chunk(
+        "chunk-resume",
+        "worker-1",
+        [loc_a, loc_b],
+        [occ_a, occ_b],
+        fetcher2,
+        db_path,
+    )
+
+    # 'a' was skipped because it was already stored; only 'b' was fetched
+    assert fetcher2.calls == ["b"]
+    assert resumed.blob_count == 2
+    assert resumed.occurrence_count == 2
+    assert len(_rows(db_path, schemas.DOCUMENT_BLOBS_TABLE)) == 2
+    assert len(_rows(db_path, schemas.COMMITTED_CHUNKS_TABLE)) == 1
+
+
+def test_process_chunk_progress_events(tmp_path):
+    events: list[dict] = []
+    fetcher = FakeFetcher({"a": b"payload-a"})
+    worker_module.process_chunk(
+        "chunk-p",
+        "worker-1",
+        [_locator("a")],
+        [_occurrence()],
+        fetcher,
+        tmp_path / "p.db",
+        progress=events.append,
+    )
+    assert len(events) == 1
+    assert events[0]["type"] == "document_done"
+    assert events[0]["status"] == "ok"
+
+
+def test_process_chunk_with_async_processor(tmp_path):
+    proc_module = importlib.import_module("phases.025_webpage_storage.processors")
+    ProcessedDocument = proc_module.ProcessedDocument
+
+    class AsyncPipelineProcessor:
+        async def process(self, raw_bytes, locator):
+            import asyncio
+
+            await asyncio.sleep(0.001)
+            # Example: clean HTML scripts & transform text
+            cleaned = raw_bytes.replace(b"<script>ad()</script>", b"").upper()
+            return ProcessedDocument(
+                doc_id=schemas.doc_id(locator.accession, locator.document_path),
+                payload=cleaned,
+                byte_size=len(cleaned),
+                mime_type="text/html",
+                metadata={"cleaned": True},
+            )
+
+    fetcher = FakeFetcher({"a": b"<html><body><script>ad()</script>text</body></html>"})
+    result = worker_module.process_chunk(
+        "chunk-async-proc",
+        "worker-1",
+        [_locator("a")],
+        [_occurrence()],
+        fetcher,
+        tmp_path / "async_proc.db",
+        processor=AsyncPipelineProcessor(),
+    )
+    stored = _rows(result.path, schemas.DOCUMENT_BLOBS_TABLE)[0]
+    decompressed = schemas.decompress_payload(stored["raw_payload"])
+    assert decompressed == b"<HTML><BODY>TEXT</BODY></HTML>"

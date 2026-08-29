@@ -2,11 +2,13 @@
 
 from __future__ import annotations
 
+import threading
 from collections.abc import Iterable, Sequence
+from contextlib import suppress
 from pathlib import Path
 from typing import Protocol, runtime_checkable
 
-from defs.sec_http import SecHttpClient
+from defs.sec_http import HttpMetrics, SecHttpClient
 from defs.sql import (
     Compare,
     ComparisonOp,
@@ -40,9 +42,21 @@ class FixtureArchiveFetcher:
     """Look up compressed archive blobs in one or more SQLite fixtures."""
 
     def __init__(self, fixture_paths: Iterable[str | Path]) -> None:
-        self._executors: list[SqlExecutor] = [
-            make_sql_executor(path, dialect="sqlite") for path in fixture_paths
-        ]
+        self._fixture_paths = tuple(Path(p) for p in fixture_paths)
+        self._local = threading.local()
+        self._all_executors: list[SqlExecutor] = []
+        self._lock = threading.Lock()
+
+    def _get_executors(self) -> list[SqlExecutor]:
+        if not hasattr(self._local, "executors"):
+            execs = [
+                make_sql_executor(path, dialect="sqlite")
+                for path in self._fixture_paths
+            ]
+            self._local.executors = execs
+            with self._lock:
+                self._all_executors.extend(execs)
+        return self._local.executors
 
     def fetch(self, locator: DocumentLocator) -> FetchResult:
         expected_doc_id = doc_id(locator.accession, locator.document_path)
@@ -61,7 +75,7 @@ class FixtureArchiveFetcher:
         )
 
         try:
-            for executor in self._executors:
+            for executor in self._get_executors():
                 row = executor.query_one(executor.compiler.compile(query))
                 if row is None:
                     continue
@@ -80,8 +94,11 @@ class FixtureArchiveFetcher:
 
     def close(self) -> None:
         """Close the fixture database connections owned by this fetcher."""
-        for executor in self._executors:
-            executor.close()
+        with self._lock:
+            for executor in self._all_executors:
+                with suppress(Exception):
+                    executor.close()
+            self._all_executors.clear()
 
 
 class LiveSecArchiveFetcher:
@@ -89,6 +106,10 @@ class LiveSecArchiveFetcher:
 
     def __init__(self, http_client: SecHttpClient) -> None:
         self._http_client = http_client
+
+    @property
+    def metrics(self) -> HttpMetrics:
+        return self._http_client.metrics
 
     def fetch(self, locator: DocumentLocator) -> FetchResult:
         try:

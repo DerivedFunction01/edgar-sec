@@ -17,6 +17,8 @@ are a later parallel track built on `document_blobs`).
   `document_path`, `form`, `filing_date`, `report_date`, and `doc_id`. Company
   name/family are intentionally absent here and are re-derived downstream by
   joining `source_cik` against Phase 01 metadata.
+- Missing (404) and failed document acquisitions are permanently recorded in
+  `acquisition_failures` for auditability and queryability.
 
 ## Command surface
 
@@ -24,14 +26,14 @@ are a later parallel track built on `document_blobs`).
 # Validate inputs and report planned acquisition counts (no network)
 .venv/bin/python -m phases.025_webpage_storage.cli preview --plan-dir <phase02-plan>
 
-# Acquire + store one partition in offline fixture mode
+# Acquire + store one partition in offline fixture mode with 4 workers
 .venv/bin/python -m phases.025_webpage_storage.cli run \
   --plan-dir <phase02-plan> --mode fixture --fixtures <fixture_id> \
-  --partition-id 1 --partition-count 1
+  --partition-id 1 --partition-count 1 --workers 4
 
 # Acquire in production mode (live SEC archive, 4 RPS pacing, failure ledger)
 .venv/bin/python -m phases.025_webpage_storage.cli run \
-  --plan-dir <phase02-plan> --mode production
+  --plan-dir <phase02-plan> --mode production --workers 8
 
 # Merge transient worker chunk DBs into the published partition database
 .venv/bin/python -m phases.025_webpage_storage.cli merge-partition \
@@ -50,11 +52,12 @@ Phase 02 target plan
 ArchiveFetcher  ── fixture (offline SQLite CAS) | production (SecHttpClient.get_bytes)
    │
    ▼
-ChunkWorker  → isolated chunk-XXXXX.db (zstd-compressed blobs + occurrences)
+ChunkWorkers (ThreadPoolExecutor, concurrent) → isolated chunk-XXXXX.db
+   (document_blobs, filing_occurrences, acquisition_failures, _committed_chunks)
    │
    ▼
 PartitionMerger → single atomic merge into partition-000XX.sqlite
-   (document_blobs, filing_occurrences, _committed_chunks, indexes)
+   (document_blobs, filing_occurrences, acquisition_failures, _committed_chunks, indexes)
 ```
 
 All SQLite access goes through `defs.sql` AST nodes + `SqlExecutor`; the phase
@@ -64,8 +67,8 @@ never imports `sqlite3`/`duckdb` or issues raw SQL. Merge uses compiled
 ## Settings
 
 Declared in `settings.py` under `webpage_storage.*`
-(`WEBPAGE_STORAGE_ZSTD_LEVEL`, `WEBPAGE_STORAGE_MODE`); resolved from the shared
-settings registry.
+(`WEBPAGE_STORAGE_ZSTD_LEVEL`, `WEBPAGE_STORAGE_MODE`, `WEBPAGE_STORAGE_WORKERS`);
+resolved from the shared settings registry.
 
 ## Testing
 

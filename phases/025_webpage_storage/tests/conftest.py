@@ -5,6 +5,7 @@ from __future__ import annotations
 import importlib
 import json
 import sys
+from contextlib import suppress
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[3]
@@ -125,11 +126,20 @@ def phase02_bundle(tmp_path):
 
 
 @pytest.fixture
-def fixture_database(tmp_path):
-    return build_fixture_sqlite(
-        "sample-001",
+def fixture_database():
+    import shutil
+    import uuid
+
+    fixture_id = f"test-fixture-{uuid.uuid4().hex[:8]}"
+    fixture_paths = resolve_paths().fixture(fixture_id, dialect="sqlite")
+    database = build_fixture_sqlite(
+        fixture_id,
         {
             "000000000100000001/10k.htm": b"<html>alpha</html>",
             "000000000100000001/10k2.htm": b"<html>beta</html>",
         },
     )
+    yield database
+    with suppress(Exception):
+        if fixture_paths.root.is_dir():
+            shutil.rmtree(fixture_paths.root)

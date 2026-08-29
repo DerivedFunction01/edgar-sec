@@ -20,6 +20,13 @@ SETTING_SPECS = {
             cli=True,
             description="document acquisition mode: fixture or production",
         ),
+        "workers": SettingSpec(
+            value_type=int,
+            default=1,
+            config=True,
+            cli=True,
+            description="number of parallel worker threads for chunk acquisition",
+        ),
     },
 }
 

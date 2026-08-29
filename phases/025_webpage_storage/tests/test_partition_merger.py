@@ -53,6 +53,8 @@ def _rows(path: Path, table: str) -> list[dict]:
         columns = schemas.BLOB_COLUMNS
     elif table == schemas.FILING_OCCURRENCES_TABLE:
         columns = schemas.OCCURRENCE_COLUMNS
+    elif table == schemas.ACQUISITION_FAILURES_TABLE:
+        columns = schemas.ACQUISITION_FAILURE_COLUMNS
     else:
         columns = schemas.COMMITTED_CHUNK_COLUMNS
     rows = executor.query(
@@ -94,3 +96,59 @@ def test_merge_partition_deduplicates_blobs_and_is_idempotent(tmp_path: Path) ->
     assert len(_rows(partition, schemas.DOCUMENT_BLOBS_TABLE)) == 1
     assert len(_rows(partition, schemas.FILING_OCCURRENCES_TABLE)) == 2
     assert len(_rows(partition, schemas.COMMITTED_CHUNKS_TABLE)) == 2
+
+
+def test_merge_partition_merges_acquisition_failures(tmp_path: Path) -> None:
+    chunk_path = tmp_path / "chunk-failed.db"
+    chunk_path.touch()
+    executor = make_sql_executor(chunk_path, dialect="sqlite")
+    schemas.create_chunk_schema(executor)
+    failure = {
+        "doc_id": "doc-fail-1",
+        "accession": "0001-0001",
+        "document_path": "missing.htm",
+        "status": "missing",
+        "error_message": "not found",
+        "attempted_at": "2024-01-01 00:00:00",
+    }
+    audit = {
+        "chunk_id": "chunk-f1",
+        "record_count": 0,
+        "worker_id": "worker-1",
+        "committed_at": "2024-01-01 00:00:00",
+    }
+    executor.exec(
+        executor.compiler.compile(
+            insert_values(schemas.ACQUISITION_FAILURES_TABLE, failure)
+        )
+    )
+    executor.exec(
+        executor.compiler.compile(insert_values(schemas.COMMITTED_CHUNKS_TABLE, audit))
+    )
+    executor.exec(executor.compiler.compile(Commit()))
+    executor.close()
+
+    partition = tmp_path / "partition.db"
+    result = merger.merge_partition(partition, [chunk_path])
+    assert result.failure_rows == 1
+    failures_in_part = _rows(partition, schemas.ACQUISITION_FAILURES_TABLE)
+    assert len(failures_in_part) == 1
+    assert failures_in_part[0]["doc_id"] == "doc-fail-1"
+
+
+def test_merge_partition_batches_large_chunk_count(tmp_path: Path) -> None:
+    chunks_dir = tmp_path / "chunks"
+    chunks_dir.mkdir()
+    chunk_paths = []
+    for i in range(20):
+        chunk_file = chunks_dir / f"chunk-{i:05d}.db"
+        _chunk(chunk_file, f"chunk-{i:05d}")
+        chunk_paths.append(chunk_file)
+
+    partition = tmp_path / "large_partition.db"
+    result = merger.merge_partition(partition, chunk_paths)
+    assert len(result.committed_chunk_ids) == 20
+    assert result.audit_rows == 20
+    assert result.blob_rows == 20
+    assert result.occurrence_rows == 20
+    assert len(_rows(partition, schemas.COMMITTED_CHUNKS_TABLE)) == 20

@@ -23,6 +23,8 @@ from defs.sql import (
 )
 
 from .schemas import (
+    ACQUISITION_FAILURE_COLUMNS,
+    ACQUISITION_FAILURES_TABLE,
     BLOB_COLUMNS,
     COMMITTED_CHUNK_COLUMNS,
     COMMITTED_CHUNKS_TABLE,
@@ -30,8 +32,12 @@ from .schemas import (
     FILING_OCCURRENCES_TABLE,
     OCCURRENCE_COLUMNS,
     CommittedChunk,
-    create_partition_schema,
+    create_partition_indexes,
+    create_schema,
+    partition_tables_ddl,
 )
+
+ATTACH_BATCH_SIZE = 8
 
 
 @dataclass(frozen=True, slots=True)
@@ -44,6 +50,7 @@ class PartitionMergeResult:
     blob_rows: int
     occurrence_rows: int
     audit_rows: int
+    failure_rows: int = 0
 
     @property
     def committed_chunks(self) -> tuple[str, ...]:
@@ -79,24 +86,24 @@ def _insert_from(
 def merge_partition(
     partition_db_path: str | Path, chunk_dbs: Iterable[str | Path]
 ) -> PartitionMergeResult:
-    """Merge chunk databases into ``partition_db_path`` atomically.
+    """Merge chunk databases into ``partition_db_path`` atomically in batches.
 
-    Chunk identity comes from the chunk's ``_committed_chunks`` audit row.  A
+    Chunk identity comes from the chunk's ``_committed_chunks`` audit row. A
     chunk already present in the partition is not copied or audited again.
-    Attachments are deliberately established before ``BEGIN`` because SQLite
-    cannot reliably attach or detach databases while a write transaction is
-    active.
+    Attachments are batched (ATTACH_BATCH_SIZE = 8) to scale to thousands of chunk DBs
+    without exceeding SQLite's attached database limits. Secondary indexes are built
+    after all chunk batches are merged for optimal insert performance.
     """
-
     partition_path = Path(partition_db_path)
     partition_path.touch(exist_ok=True)
     executor = make_sql_executor(partition_path, dialect="sqlite")
-    attached: list[str] = []
-    eligible: list[tuple[str, list[dict]]] = []
     skipped: list[str] = []
     committed: list[str] = []
+    blob_rows = occurrence_rows = audit_count = failure_rows = 0
+
     try:
-        create_partition_schema(executor)
+        # Create unindexed tables first for maximum bulk insert throughput
+        create_schema(executor, partition_tables_ddl())
         existing_rows = executor.query(
             executor.compiler.compile(
                 _select_columns(COMMITTED_CHUNKS_TABLE, ("chunk_id",))
@@ -104,110 +111,149 @@ def merge_partition(
         )
         existing_ids = {str(row["chunk_id"]) for row in existing_rows}
 
-        for index, chunk_path in enumerate(chunk_dbs):
-            alias = f"chunk_{index:05d}"
-            executor.exec(
-                executor.compiler.compile(
-                    Attach(path=str(chunk_path), alias=alias, read_only=True)
-                )
-            )
-            attached.append(alias)
-            audit_rows = executor.query(
-                executor.compiler.compile(
-                    _select_columns(
-                        f"{alias}.{COMMITTED_CHUNKS_TABLE}",
-                        COMMITTED_CHUNK_COLUMNS,
-                        alias,
-                    )
-                )
-            )
-            if not audit_rows:
-                raise ValueError(f"chunk database has no {COMMITTED_CHUNKS_TABLE} row")
-            for row in audit_rows:
-                CommittedChunk.from_row(row)
-            chunk_ids = {str(row["chunk_id"]) for row in audit_rows}
-            if chunk_ids <= existing_ids:
-                skipped.extend(sorted(chunk_ids))
-            else:
-                eligible.append((alias, audit_rows))
+        chunk_list = [Path(p) for p in chunk_dbs]
+        for batch_start in range(0, len(chunk_list), ATTACH_BATCH_SIZE):
+            batch = chunk_list[batch_start : batch_start + ATTACH_BATCH_SIZE]
+            attached_in_batch: list[str] = []
+            eligible_in_batch: list[tuple[str, list[dict]]] = []
 
-        executor.exec(executor.compiler.compile(Begin()))
-        blob_rows = occurrence_rows = audit_count = 0
-        try:
-            for alias, audit_rows in eligible:
-                new_audits = [
-                    row
-                    for row in audit_rows
-                    if str(row["chunk_id"]) not in existing_ids
-                ]
-                if not new_audits:
-                    continue
-                executor.exec(
-                    executor.compiler.compile(
-                        _insert_from(
-                            DOCUMENT_BLOBS_TABLE,
-                            BLOB_COLUMNS,
-                            f"{alias}.{DOCUMENT_BLOBS_TABLE}",
-                            alias,
-                            on_conflict=DoNothing(),
+            try:
+                for idx, chunk_path in enumerate(batch):
+                    alias = f"chunk_{batch_start + idx:05d}"
+                    executor.exec(
+                        executor.compiler.compile(
+                            Attach(path=str(chunk_path), alias=alias, read_only=True)
                         )
                     )
-                )
-                executor.exec(
-                    executor.compiler.compile(
-                        _insert_from(
-                            FILING_OCCURRENCES_TABLE,
-                            OCCURRENCE_COLUMNS,
-                            f"{alias}.{FILING_OCCURRENCES_TABLE}",
-                            alias,
-                            on_conflict=DoNothing(),
-                        )
-                    )
-                )
-                executor.exec(
-                    executor.compiler.compile(
-                        _insert_from(
-                            COMMITTED_CHUNKS_TABLE,
-                            COMMITTED_CHUNK_COLUMNS,
-                            f"{alias}.{COMMITTED_CHUNKS_TABLE}",
-                            alias,
-                            on_conflict=DoNothing(),
-                        )
-                    )
-                )
-                committed_ids = tuple(str(row["chunk_id"]) for row in new_audits)
-                blob_rows += len(
-                    executor.query(
+                    attached_in_batch.append(alias)
+                    audit_rows = executor.query(
                         executor.compiler.compile(
                             _select_columns(
-                                f"{alias}.{DOCUMENT_BLOBS_TABLE}", BLOB_COLUMNS, alias
-                            )
-                        )
-                    )
-                )
-                occurrence_rows += len(
-                    executor.query(
-                        executor.compiler.compile(
-                            _select_columns(
-                                f"{alias}.{FILING_OCCURRENCES_TABLE}",
-                                OCCURRENCE_COLUMNS,
+                                f"{alias}.{COMMITTED_CHUNKS_TABLE}",
+                                COMMITTED_CHUNK_COLUMNS,
                                 alias,
                             )
                         )
                     )
-                )
-                audit_count += len(committed_ids)
-                committed.extend(committed_ids)
-                existing_ids.update(committed_ids)
-            executor.exec(executor.compiler.compile(Commit()))
-        except Exception:
-            # Rollback is intentionally compiled by the same SQL boundary.
-            executor.exec(executor.compiler.compile(Rollback()))
-            raise
+                    if not audit_rows:
+                        raise ValueError(
+                            f"chunk database has no {COMMITTED_CHUNKS_TABLE} row: {chunk_path}"
+                        )
+                    for row in audit_rows:
+                        CommittedChunk.from_row(row)
+                    chunk_ids = {str(row["chunk_id"]) for row in audit_rows}
+                    if chunk_ids <= existing_ids:
+                        skipped.extend(sorted(chunk_ids))
+                    else:
+                        eligible_in_batch.append((alias, audit_rows))
+
+                if eligible_in_batch:
+                    executor.exec(executor.compiler.compile(Begin()))
+                    try:
+                        for alias, audit_rows in eligible_in_batch:
+                            new_audits = [
+                                row
+                                for row in audit_rows
+                                if str(row["chunk_id"]) not in existing_ids
+                            ]
+                            if not new_audits:
+                                continue
+                            executor.exec(
+                                executor.compiler.compile(
+                                    _insert_from(
+                                        DOCUMENT_BLOBS_TABLE,
+                                        BLOB_COLUMNS,
+                                        f"{alias}.{DOCUMENT_BLOBS_TABLE}",
+                                        alias,
+                                        on_conflict=DoNothing(),
+                                    )
+                                )
+                            )
+                            executor.exec(
+                                executor.compiler.compile(
+                                    _insert_from(
+                                        FILING_OCCURRENCES_TABLE,
+                                        OCCURRENCE_COLUMNS,
+                                        f"{alias}.{FILING_OCCURRENCES_TABLE}",
+                                        alias,
+                                        on_conflict=DoNothing(),
+                                    )
+                                )
+                            )
+                            executor.exec(
+                                executor.compiler.compile(
+                                    _insert_from(
+                                        ACQUISITION_FAILURES_TABLE,
+                                        ACQUISITION_FAILURE_COLUMNS,
+                                        f"{alias}.{ACQUISITION_FAILURES_TABLE}",
+                                        alias,
+                                        on_conflict=DoNothing(),
+                                    )
+                                )
+                            )
+                            executor.exec(
+                                executor.compiler.compile(
+                                    _insert_from(
+                                        COMMITTED_CHUNKS_TABLE,
+                                        COMMITTED_CHUNK_COLUMNS,
+                                        f"{alias}.{COMMITTED_CHUNKS_TABLE}",
+                                        alias,
+                                        on_conflict=DoNothing(),
+                                    )
+                                )
+                            )
+                            committed_ids = tuple(
+                                str(row["chunk_id"]) for row in new_audits
+                            )
+                            blob_rows += len(
+                                executor.query(
+                                    executor.compiler.compile(
+                                        _select_columns(
+                                            f"{alias}.{DOCUMENT_BLOBS_TABLE}",
+                                            BLOB_COLUMNS,
+                                            alias,
+                                        )
+                                    )
+                                )
+                            )
+                            occurrence_rows += len(
+                                executor.query(
+                                    executor.compiler.compile(
+                                        _select_columns(
+                                            f"{alias}.{FILING_OCCURRENCES_TABLE}",
+                                            OCCURRENCE_COLUMNS,
+                                            alias,
+                                        )
+                                    )
+                                )
+                            )
+                            failure_rows += len(
+                                executor.query(
+                                    executor.compiler.compile(
+                                        _select_columns(
+                                            f"{alias}.{ACQUISITION_FAILURES_TABLE}",
+                                            ACQUISITION_FAILURE_COLUMNS,
+                                            alias,
+                                        )
+                                    )
+                                )
+                            )
+                            audit_count += len(committed_ids)
+                            committed.extend(committed_ids)
+                            existing_ids.update(committed_ids)
+                        executor.exec(executor.compiler.compile(Commit()))
+                    except Exception:
+                        executor.exec(executor.compiler.compile(Rollback()))
+                        raise
+            finally:
+                for alias in reversed(attached_in_batch):
+                    with suppress(Exception):
+                        executor.exec(executor.compiler.compile(Detach(alias=alias)))
+
+        # Build secondary indexes once after all chunk batches have been committed
+        create_partition_indexes(executor)
+
     finally:
-        for alias in reversed(attached):
-            with suppress(Exception):
-                executor.exec(executor.compiler.compile(Detach(alias=alias)))
         executor.close()
 
     return PartitionMergeResult(
@@ -217,6 +263,7 @@ def merge_partition(
         blob_rows=blob_rows,
         occurrence_rows=occurrence_rows,
         audit_rows=audit_count,
+        failure_rows=failure_rows,
     )
 
 

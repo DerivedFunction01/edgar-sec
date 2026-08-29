@@ -12,6 +12,7 @@ from defs.sec_http import (
     RetryExhausted,
     RetryPolicy,
     SecHttpClient,
+    make_sec_http_client,
 )
 
 SUBMISSIONS_BASE = "https://data.sec.gov/submissions"
@@ -61,13 +62,13 @@ class SubmissionsClient:
                 raise ValueError(
                     "user_agent is required to build the shared HTTP client"
                 )
-            http = SecHttpClient(
+            http = make_sec_http_client(
                 user_agent=user_agent,
-                rate_limiter=rate_limiter or RateLimiter(),
-                retry_policy=retry_policy or RetryPolicy(),
+                rate_limiter=rate_limiter or None,
+                retry_policy=retry_policy or None,
                 timeout_s=timeout_s,
                 cache_dir=cache_dir or None,
-                metrics=metrics or HttpMetrics(),
+                metrics=metrics or None,
                 max_failure_attempts=max_failure_attempts,
                 ignore_failure_history=ignore_failure_history,
             )
