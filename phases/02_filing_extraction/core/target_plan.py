@@ -104,16 +104,14 @@ def plan(
     if amendment not in {"both", "original", "amendments"}:
         raise ValueError("amendment must be both, original, or amendments")
 
-    if output_root is not None:
-        art_root = Path(output_root).parent.resolve()
-        resolved_paths = resolve_paths(
-            "filing_extraction", env={"ARTIFACTS_ROOT": str(art_root)}
-        )
-    else:
-        resolved_paths = resolve_paths("filing_extraction")
+    resolved_paths = resolve_paths("filing_extraction")
     artifacts_root = resolved_paths.project.artifacts_root.resolve()
     manifests_root = resolved_paths.project.manifests_root.resolve()
-    transient_root = resolved_paths.runs_root.resolve()
+    transient_root = (
+        Path(output_root).resolve()
+        if output_root is not None
+        else resolved_paths.runs_root.resolve()
+    )
 
     catalog_id, catalog_manifests = _resolve_catalog_manifests(
         catalog, artifacts_root, manifests_root
@@ -223,6 +221,10 @@ def plan(
         target_root.mkdir(parents=True, exist_ok=True)
 
         db_file = final_plan_dir / "materialize_staging.duckdb"
+        try:
+            db_file.unlink(missing_ok=True)
+        except OSError:
+            pass
         with DuckDBStaging(
             db_file,
             threads=resources.threads,

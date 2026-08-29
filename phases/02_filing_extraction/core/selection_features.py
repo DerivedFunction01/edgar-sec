@@ -150,6 +150,10 @@ class FeatureSnapshotBuilder:
         snapshot_dir.mkdir(parents=True, exist_ok=True)
         counts: dict[str, int] = {}
         db_file = snapshot_dir / "staging_features.duckdb"
+        try:
+            db_file.unlink(missing_ok=True)
+        except OSError:
+            pass
         with DuckDBStaging(
             db_file,
             threads=self.threads,
