@@ -127,6 +127,10 @@ def publish_manifest(manifest: dict, *, artifacts_root: str) -> Path:
     validate_manifest(manifest)
     root = Path(artifacts_root).resolve()
     artifact = root / manifest["artifact_path"]
+    if not PurePosixPath(manifest["artifact_path"]).parts[:1] == (MANIFEST_DIR,):
+        raise ValueError("published manifests must reference manifests/ artifacts")
+    if not artifact.is_file():
+        raise FileNotFoundError(f"published artifact does not exist: {artifact}")
     adjacent = artifact.with_name(artifact.name + ".manifest.json")
     rel_path = manifest_relative_path(
         phase=manifest["producer_phase"],

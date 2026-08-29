@@ -70,7 +70,7 @@ def main(argv: list[str] | None = None) -> int:
         help="report stage progress on stderr",
     )
     status_parser = commands.add_parser("status")
-    status_parser.add_argument("--catalogs-root", default=None)
+    status_parser.add_argument("--manifests-root", default=None)
     status_parser.add_argument("--runs-root", default=None)
     args = parser.parse_args(argv)
     if args.command == "materialize":
@@ -99,7 +99,7 @@ def main(argv: list[str] | None = None) -> int:
             progress=_stderr_progress if args.progress else None,
         )
     else:
-        result = discovery.status(args.catalogs_root, args.runs_root)
+        result = discovery.status(args.manifests_root, args.runs_root)
     print(json.dumps(result, indent=2, sort_keys=True))
     return 0
 

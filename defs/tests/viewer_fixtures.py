@@ -30,7 +30,7 @@ def artifacts_root(tmp_path: Path) -> Path:
 def chunk_dataset(artifacts_root: Path):
     """A partition chunk written as NDJSON via the shared storage writer."""
     relative = Path(
-        "metadata/runs/run-1/partitions/partition-00001/chunks/chunk-00001.jsonl"
+        "transient/metadata/runs/run-1/partitions/partition-00001/chunks/chunk-00001.jsonl"
     )
     path = artifacts_root / relative
     records = [
@@ -67,7 +67,7 @@ def chunk_dataset(artifacts_root: Path):
 
 @pytest.fixture()
 def parquet_dataset(artifacts_root: Path):
-    """A canonical-style parquet artifact including a nested column."""
+    """A published parquet artifact including a nested column."""
     relative = Path(
         "manifests/metadata/submission_metadata/final/submission_metadata.parquet"
     )

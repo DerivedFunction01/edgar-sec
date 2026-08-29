@@ -13,7 +13,6 @@ from pathlib import Path
 from defs.runtime.artifacts import make_manifest, publish_manifest
 from defs.runtime.paths import (
     merge_report_path_in,
-    partition_artifact_path_in,
     partition_merge_report_path_in,
     resolve_paths,
 )
@@ -41,14 +40,17 @@ logger = logging.getLogger("metadata.merge")
 
 
 def _artifact_root(artifacts_dir: str, output_path: str | None = None) -> str:
-    """Find the configured artifact root without changing legacy output paths."""
+    """Find the configured artifact root from a transient run path."""
     path = os.path.abspath(artifacts_dir)
+    transient_marker = f"{os.sep}transient{os.sep}"
+    if transient_marker in path:
+        return path.split(transient_marker, 1)[0]
     marker = f"{os.sep}metadata{os.sep}"
     if marker in path:
         return path.split(marker, 1)[0]
     if output_path is not None:
         return os.path.commonpath([path, os.path.abspath(output_path)])
-    return path
+    return os.path.dirname(path)
 
 
 def _publish_handoff(
@@ -392,10 +394,13 @@ def _merge_chunks(
 def _partition_artifact_path(
     artifacts_dir: str, partition_id: int, storage_format: str
 ):
-    return partition_artifact_path_in(
-        artifacts_dir,
-        partition_id,
-        f"submission_metadata.{storage_format}",
+    if storage_format != "parquet":
+        raise MergeError("published partition artifacts must be Parquet")
+    artifact_root = _artifact_root(artifacts_dir)
+    return resolve_paths(
+        env={"ARTIFACTS_ROOT": artifact_root}
+    ).published_partition_dataset_path(
+        "metadata", "submission_metadata", partition_id, storage_format
     )
 
 

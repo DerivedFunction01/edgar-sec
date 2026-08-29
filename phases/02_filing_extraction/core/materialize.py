@@ -6,6 +6,7 @@ import hashlib
 import importlib
 import json
 import logging
+import os
 import re
 import shutil
 from collections.abc import Callable
@@ -62,6 +63,26 @@ def _load_json(path: Path) -> dict | None:
         return value if isinstance(value, dict) else None
     except (OSError, json.JSONDecodeError):
         return None
+
+
+def _publish_file(source: Path, destination: Path) -> None:
+    """Copy a validated staging file into its durable location atomically."""
+    destination.parent.mkdir(parents=True, exist_ok=True)
+    if destination.exists():
+        if _sha256(source) != _sha256(destination):
+            raise StorageError(f"conflicting immutable output: {destination}")
+        return
+    temporary = destination.with_name(destination.name + ".tmp")
+    shutil.copyfile(source, temporary)
+    os.replace(temporary, destination)
+
+
+def _sha256(path: Path) -> str:
+    digest = hashlib.sha256()
+    with path.open("rb") as handle:
+        for block in iter(lambda: handle.read(1024 * 1024), b""):
+            digest.update(block)
+    return digest.hexdigest()
 
 
 def _safe_occurrence(cik, accession, path):
@@ -135,6 +156,14 @@ def materialize(
         raise ValueError("source_artifact or source_manifest is required")
     if output_root is None:
         output_root = str(resolve_paths("filing_extraction").catalogs_root)
+    configured_paths = resolve_paths("filing_extraction")
+    configured_artifacts_root = configured_paths.project.artifacts_root.resolve()
+    staging_root = Path(output_root).resolve()
+    artifacts_root = (
+        configured_artifacts_root
+        if staging_root == configured_paths.catalogs_root.resolve()
+        else staging_root.parent
+    )
     source = Path(source_artifact).resolve()
     if any(part in {"chunks", "checkpoints", "workers"} for part in source.parts):
         raise StorageError(
@@ -193,11 +222,7 @@ def materialize(
         )
         catalog_id = _catalog_id(source_hash, {})
         root = Path(output_root).resolve() / catalog_id
-        manifest_path = root / "catalog_manifest.json"
-        if manifest_path.exists():
-            existing = _load_json(manifest_path)
-            if existing and existing.get("source_artifact_sha256") == source_hash:
-                return existing
+        final_root = artifacts_root / "manifests" / "filing_extraction"
         if root.exists():
             shutil.rmtree(root, ignore_errors=True)
         root.mkdir(parents=True, exist_ok=True)
@@ -211,21 +236,24 @@ def materialize(
         )
         profile_path = root / "company_profiles.parquet"
         profile_count = artifact.copy_query(profile_query, str(profile_path))
-        configured_root = Path(resolve_paths().artifacts_root).resolve()
-        handoff_root = (
-            configured_root
-            if profile_path.resolve().is_relative_to(configured_root)
-            else Path(output_root).resolve().parent
+        profile_destination = (
+            final_root / "company_profiles" / "final" / "company_profiles.parquet"
         )
+        _publish_file(profile_path, profile_destination)
+        handoff_root = artifacts_root
         profile_manifest = make_manifest(
             dataset="company_profiles",
             phase="filing_extraction",
             run_id=catalog_id,
             schema_version=PROFILE_SCHEMA_VERSION,
-            artifact_path=str(profile_path),
+            artifact_path=str(profile_destination),
             artifacts_root=handoff_root,
             row_count=profile_count,
             upstream=(handoff["artifact_id"],) if handoff else (),
+            provenance={
+                "catalog_id": catalog_id,
+                "source_artifact_sha256": source_hash,
+            },
         )
         publish_manifest(profile_manifest, artifacts_root=handoff_root)
         _emit(
@@ -261,18 +289,23 @@ def materialize(
         )
         target_root = root / "filing_targets"
         target_root.mkdir(parents=True, exist_ok=True)
+        final_target_root = final_root / "filing_targets" / "final"
         staging_partitions_dir = root / ".staging_partitions"
         if staging_partitions_dir.exists():
             shutil.rmtree(staging_partitions_dir, ignore_errors=True)
         staging_partitions_dir.mkdir(parents=True, exist_ok=True)
 
-        # Form Discovery & Initial Event
-        form_keys_res = artifact.run(
-            f"SELECT DISTINCT filing_partition_key(filing.form)\n"
-            f"FROM {artifact.relation} AS t, LATERAL unnest(t.filings) AS u(filing)\n"
-            f"WHERE filing.form IS NOT NULL"
-        )
-        all_partition_keys = sorted(r[0] for r in form_keys_res if r[0])
+        # Form Discovery & Initial Event (native columnar streaming)
+        raw_forms = [
+            r[0]
+            for r in artifact.run(
+                f"SELECT DISTINCT unnest(filings).form\n"
+                f"FROM {artifact.relation}\n"
+                f"WHERE filings IS NOT NULL"
+            )
+            if r[0]
+        ]
+        all_partition_keys = sorted({_partition_key(f) for f in raw_forms if f})
         _emit(
             progress,
             {
@@ -283,8 +316,6 @@ def materialize(
                 "source_batch_size": source_batch_size,
             },
         )
-
-        # Execute CIK batches
         if ciks:
             for b_idx in range(batch_count):
                 b_start = b_idx * source_batch_size
@@ -349,6 +380,14 @@ def materialize(
         target_artifact_ids: dict[str, str] = {}
         form_partition_mapping: dict[str, str] = {}
 
+        all_partition_keys = sorted(
+            {
+                p.name.split("=", 1)[1]
+                for p in staging_partitions_dir.glob("batch_*/form_partition_key=*")
+                if "=" in p.name
+            }
+        )
+
         for part_key in all_partition_keys:
             dest_dir = target_root / f"form={part_key}"
             dest_dir.mkdir(parents=True, exist_ok=True)
@@ -390,16 +429,23 @@ def materialize(
                 form_partition_mapping[form_name_str] = part_key
                 total_count += int(row_cnt)
 
+            final_dest_file = final_target_root / f"form={part_key}" / "data.parquet"
+            _publish_file(dest_file, final_dest_file)
             target_manifest = make_manifest(
                 dataset="filing_targets",
                 phase="filing_extraction",
                 run_id=catalog_id,
                 schema_version=TARGET_SCHEMA_VERSION,
-                artifact_path=str(dest_file),
+                artifact_path=str(final_dest_file),
                 artifacts_root=handoff_root,
                 row_count=total_count,
-                partition=part_key,
+                partition="",
                 upstream=(handoff["artifact_id"],) if handoff else (),
+                provenance={
+                    "catalog_id": catalog_id,
+                    "source_artifact_sha256": source_hash,
+                    "form_partition_key": part_key,
+                },
             )
             publish_manifest(target_manifest, artifacts_root=handoff_root)
             for form_name, row_cnt in res:
@@ -440,15 +486,26 @@ def materialize(
             )
         sources_path = root / "filing_occurrence_sources.parquet"
         source_count = artifact.copy_query(sources_query, str(sources_path))
+        sources_destination = (
+            final_root
+            / "filing_occurrence_sources"
+            / "final"
+            / "filing_occurrence_sources.parquet"
+        )
+        _publish_file(sources_path, sources_destination)
         sources_manifest = make_manifest(
             dataset="filing_occurrence_sources",
             phase="filing_extraction",
             run_id=catalog_id,
             schema_version=TARGET_SCHEMA_VERSION,
-            artifact_path=str(sources_path),
+            artifact_path=str(sources_destination),
             artifacts_root=handoff_root,
             row_count=source_count,
             upstream=(handoff["artifact_id"],) if handoff else (),
+            provenance={
+                "catalog_id": catalog_id,
+                "source_artifact_sha256": source_hash,
+            },
         )
         publish_manifest(sources_manifest, artifacts_root=handoff_root)
         _emit(
@@ -482,9 +539,6 @@ def materialize(
             "source_artifact_id": handoff.get("artifact_id") if handoff else None,
             "handoff_mode": "manifest" if handoff else "legacy_merge_report",
         }
-        manifest_path.write_text(
-            json.dumps(manifest, indent=2, sort_keys=True) + "\n", encoding="utf-8"
-        )
         report_payload = {
             "catalog_id": catalog_id,
             "source_artifact_sha256": source_hash,
@@ -505,4 +559,5 @@ def materialize(
                 "rows": sum(counts.values()),
             },
         )
+        shutil.rmtree(root, ignore_errors=True)
         return manifest

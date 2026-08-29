@@ -14,7 +14,7 @@ import argparse
 import logging
 import sys
 
-from .core import RunOptions, preview_sample
+from .core import DEFAULT_PREVIEW_ARTIFACTS, RunOptions, preview_sample
 
 
 def build_parser() -> argparse.ArgumentParser:
@@ -22,7 +22,7 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--input", default=RunOptions.input_path)
     parser.add_argument(
         "--artifacts",
-        default=".artifacts/metadata/preview/local",
+        default=DEFAULT_PREVIEW_ARTIFACTS,
         help="preview output directory (never the production phase output)",
     )
     parser.add_argument("--sample-size", type=int, default=3)

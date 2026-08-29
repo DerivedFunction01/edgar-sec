@@ -53,7 +53,10 @@ def test_explicit_env_mapping_bypasses_process_and_dotenv(tmp_path):
     assert result.temp_directory == str((tmp_path / "mapped-tmp").resolve())
 
 
-def test_resources_default_from_machine_probe(monkeypatch):
+def test_resources_default_from_machine_probe(monkeypatch, tmp_path):
+    empty_env = tmp_path / "empty.env"
+    empty_env.write_text("", encoding="utf-8")
+    monkeypatch.setenv("DOTENV_PATH", str(empty_env))
     monkeypatch.delenv("RUNTIME_WORKERS", raising=False)
     monkeypatch.delenv("RUNTIME_THREADS", raising=False)
     monkeypatch.delenv("RUNTIME_MEMORY_LIMIT", raising=False)
@@ -70,7 +73,10 @@ def test_resources_default_from_machine_probe(monkeypatch):
     assert result.temp_directory.endswith("edgar-sec-spill")
 
 
-def test_memory_fraction_setting_scales_machine_probe(monkeypatch):
+def test_memory_fraction_setting_scales_machine_probe(monkeypatch, tmp_path):
+    empty_env = tmp_path / "empty.env"
+    empty_env.write_text("", encoding="utf-8")
+    monkeypatch.setenv("DOTENV_PATH", str(empty_env))
     monkeypatch.setattr(resources, "_physical_memory_bytes", lambda: 10 * 1024**3)
     monkeypatch.setattr(resources, "psutil", None)
 

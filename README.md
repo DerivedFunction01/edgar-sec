@@ -16,7 +16,7 @@ phases/            # phase-owned schemas, normalization, planning, validation, m
  #   (future) Phase 2.5 — filing document acquisition from Phase 02 target plans
 roadmap/           # product and extraction specifications
 uploads/           # input manifests
-.artifacts/        # generated config, plans, runs, checkpoints (git-ignored)
+.artifacts/        # published manifests and transient runs (git-ignored)
 ```
 
 ## Quick start
@@ -33,7 +33,7 @@ python run.py settings generate-dotenv   # write a documented .env template
 .venv/bin/python -m phases.01_metadata_extraction.cli plan \
     --config .artifacts/metadata/config.json
 .venv/bin/python -m defs.viewer --artifacts-root .artifacts
-# Portable finalized-artifact transport:
+# Portable published-artifact transport:
 .venv/bin/python -m defs.runtime.bundle create --artifact-id <id> \
     --output artifacts.bundle.zip
 # Or choose Artifact Bundle from `python run.py` for the interactive workflow.
@@ -104,5 +104,7 @@ read-only SQL console — with a built TypeScript UI.
 - Credentials (SEC User-Agent) come from the environment or the git-ignored
   `.env`; they are never written to plans, manifests, or artifacts.
 - Finalized cross-phase artifacts are discovered through immutable manifests in
-  `.artifacts/manifests/<phase>/<dataset>/[final|partitions]/`; bundle transport rebases relative paths and
+  `.artifacts/manifests/<phase>/<dataset>/[final|partitions]/`; plans, chunks,
+  workers, previews, staging, and merge reports live under
+  `.artifacts/transient/<phase>/`. Bundle transport rebases relative paths and
   never stores absolute filesystem paths.

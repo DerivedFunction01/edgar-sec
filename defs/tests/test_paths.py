@@ -7,7 +7,6 @@ from defs.runtime.paths import (
     RunPaths,
     classify_artifact_path,
     merge_report_path_in,
-    partition_artifact_path_in,
     partition_merge_report_path_in,
     partition_merge_root_in,
     resolve_paths,
@@ -19,7 +18,7 @@ def test_paths_are_derived_from_shared_environment_root_without_creation(tmp_pat
     paths = resolve_paths("metadata", "run-1", {"ARTIFACTS_ROOT": str(root)})
 
     assert isinstance(paths, RunPaths)
-    assert paths.run_root == root / "metadata" / "runs" / "run-1"
+    assert paths.run_root == root / "transient" / "metadata" / "runs" / "run-1"
     assert paths.plan_path == paths.run_root / "plan.json"
     assert paths.partition_manifest(2).name == "partition-00002.json"
     assert (
@@ -162,21 +161,18 @@ def test_fixture_paths_dialect_and_files(tmp_path):
 
 
 def test_partition_merge_paths_and_helpers(tmp_path):
-    run_root = tmp_path / "metadata" / "runs" / "run-1"
+    run_root = tmp_path / "transient" / "metadata" / "runs" / "run-1"
     assert partition_merge_root_in(run_root, 1) == (
-        run_root / "partitions" / "partition-00001" / "merge"
+        run_root / "merge" / "partitions" / "partition-00001"
     )
     assert partition_merge_report_path_in(run_root, 1) == (
-        run_root / "partitions" / "partition-00001" / "merge" / MERGE_REPORT_NAME
-    )
-    assert partition_artifact_path_in(run_root, 1, "sub.parquet") == (
-        run_root / "partitions" / "partition-00001" / "merge" / "sub.parquet"
+        run_root / "merge" / "partitions" / "partition-00001.json"
     )
     assert merge_report_path_in(run_root) == run_root / "merge" / MERGE_REPORT_NAME
 
 
 def test_classify_artifact_path():
-    classified = classify_artifact_path("metadata/runs/r1/plan.json")
+    classified = classify_artifact_path("transient/metadata/runs/r1/plan.json")
     assert classified.role == ArtifactRole.RUN_PLAN
     assert classified.phase == "metadata"
     assert classified.run_id == "r1"

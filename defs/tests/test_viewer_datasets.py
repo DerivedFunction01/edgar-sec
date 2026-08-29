@@ -118,7 +118,9 @@ def test_text_ops_work_on_nested_and_empty_semantics(parquet_dataset):
 
 
 def test_order_ops_on_numeric_and_bool_rejected(artifacts_root):
-    path = artifacts_root / "metadata" / "canonical" / "typed.parquet"
+    path = (
+        artifacts_root / "manifests" / "metadata" / "typed" / "final" / "typed.parquet"
+    )
     write_parquet(
         path,
         pa.table(

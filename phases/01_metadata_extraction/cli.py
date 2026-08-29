@@ -110,7 +110,7 @@ def options_from_args(args, project_config) -> RunOptions:
             getattr(args, "limit", None), project_config.limit, RunOptions.limit
         ),
         log_level=getattr(args, "log_level", "INFO"),
-        run_id=getattr(args, "run_id", "local"),
+        run_id=getattr(args, "run_id", "default"),
     )
 
 
@@ -160,7 +160,7 @@ def build_parser() -> argparse.ArgumentParser:
         help="path to persisted project configuration",
     )
     merge_parser.add_argument("--artifacts", required=True)
-    merge_parser.add_argument("--output", required=True)
+    merge_parser.add_argument("--output", default=None)
     merge_parser.add_argument(
         "--storage-format",
         choices=("parquet", "jsonl"),

@@ -65,7 +65,7 @@ def test_sql_endpoint_rejects_writes_with_structured_error(client, chunk_dataset
 
 
 def test_documents_endpoint_returns_content(client, artifacts_root):
-    plan_relative = "metadata/runs/run-1/plan.json"
+    plan_relative = "transient/metadata/runs/run-1/plan.json"
     path = artifacts_root / plan_relative
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text('{"chunks": 5}', encoding="utf-8")

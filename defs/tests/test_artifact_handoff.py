@@ -17,7 +17,7 @@ from defs.runtime.artifacts import (
 
 def test_manifest_is_relative_and_bundle_round_trips(tmp_path):
     root = tmp_path / "workspace"
-    artifact = root / "phase" / "run" / "data.parquet"
+    artifact = root / "manifests" / "phase" / "example" / "final" / "data.parquet"
     artifact.parent.mkdir(parents=True)
     pq.write_table(pa.table({"value": [1, 2]}), artifact)
     manifest = make_manifest(
@@ -66,7 +66,15 @@ def test_manifest_rejects_absolute_path(tmp_path):
 
 def test_resolve_source_prefers_final_then_partitions(tmp_path):
     root = tmp_path / "workspace"
-    p1_file = root / "metadata" / "p1.parquet"
+    p1_file = (
+        root
+        / "manifests"
+        / "metadata"
+        / "submissions"
+        / "partitions"
+        / "partition-00001"
+        / "submissions.parquet"
+    )
     p1_file.parent.mkdir(parents=True)
     pq.write_table(pa.table({"id": [1]}), p1_file)
 
@@ -91,7 +99,14 @@ def test_resolve_source_prefers_final_then_partitions(tmp_path):
     assert paths == [p1_file]
 
     # When final is published, resolve_source prefers final
-    final_file = root / "metadata" / "canonical" / "submissions.parquet"
+    final_file = (
+        root
+        / "manifests"
+        / "metadata"
+        / "submissions"
+        / "final"
+        / "submissions.parquet"
+    )
     final_file.parent.mkdir(parents=True)
     pq.write_table(pa.table({"id": [1, 2]}), final_file)
 
@@ -125,7 +140,14 @@ def test_resolve_source_prefers_final_then_partitions(tmp_path):
 def test_find_manifests_discovers_final_and_partitions(tmp_path):
 
     root = tmp_path / "workspace"
-    artifact = root / "metadata" / "canonical" / "submission_metadata.parquet"
+    artifact = (
+        root
+        / "manifests"
+        / "metadata"
+        / "submission_metadata"
+        / "final"
+        / "submission_metadata.parquet"
+    )
     artifact.parent.mkdir(parents=True)
     pq.write_table(pa.table({"value": [10, 20]}), artifact)
 

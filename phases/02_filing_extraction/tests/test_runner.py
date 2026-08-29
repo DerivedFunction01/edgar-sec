@@ -32,36 +32,38 @@ def test_discover_catalogs_empty_root(tmp_path) -> None:
 
 
 def test_discover_catalogs_valid_and_skips_noise(tmp_path) -> None:
-    catalogs = tmp_path / "catalogs"
-    valid = catalogs / "abc123"
-    valid.mkdir(parents=True)
-    (valid / "catalog_manifest.json").write_text(
-        json.dumps(
-            {
-                "catalog_id": "abc123",
-                "source_artifact": "submission_metadata.parquet",
-                "source_artifact_sha256": "deadbeef",
-                "form_partitions": {"10-K": 3, "10-Q": 5},
-            }
-        ),
-        encoding="utf-8",
-    )
-    # Directory without a manifest must be ignored, even if it holds Parquet.
-    noisy = catalogs / "no_manifest"
-    noisy.mkdir(parents=True)
-    (noisy / "company_profiles.parquet").write_bytes(b"x")
-    # Malformed manifest must be skipped, not raise.
-    broken = catalogs / "broken"
-    broken.mkdir(parents=True)
-    (broken / "catalog_manifest.json").write_text("{not json", encoding="utf-8")
+    manifests = tmp_path / "manifests" / "filing_extraction"
+    final = manifests / "filing_targets" / "final"
+    final.mkdir(parents=True)
+    artifact = final / "form=10-K" / "data.parquet"
+    artifact.parent.mkdir()
+    artifact.write_bytes(b"parquet")
+    from defs.storage.artifacts import file_sha256
 
-    result = discovery.discover_catalogs(str(catalogs))
+    receipt = {
+        "manifest_schema_version": "1.0.0",
+        "artifact_id": "abc123",
+        "dataset": "filing_targets",
+        "producer_phase": "filing_extraction",
+        "run_id": "abc123",
+        "schema_version": "1",
+        "artifact_path": str(artifact.relative_to(tmp_path)),
+        "storage_format": "parquet",
+        "byte_count": artifact.stat().st_size,
+        "artifact_sha256": file_sha256(str(artifact)),
+        "row_count": 3,
+        "partition": "",
+        "provenance": {"source_artifact_sha256": "deadbeef"},
+    }
+    (final / "abc123.json").write_text(json.dumps(receipt), encoding="utf-8")
+
+    result = discovery.discover_catalogs(str(tmp_path / "manifests"))
     assert len(result) == 1
     summary = result[0]
     assert summary["catalog_id"] == "abc123"
     assert summary["source_artifact_sha256"] == "deadbeef"
-    assert summary["form_count"] == 2
-    assert summary["target_rows"] == 8
+    assert summary["form_count"] == 1
+    assert summary["target_rows"] == 3
 
 
 def test_discover_plans_valid_and_skips_noise(tmp_path) -> None:
@@ -156,18 +158,16 @@ def test_materialize_menu_uses_manifest_phase_one_default(
     run._menu_materialize()
 
     assert captured["source_artifact"] == str(source)
-    assert captured["output_root"] == str(tmp_path / "filing_extraction" / "catalogs")
+    assert captured["output_root"] == str(
+        tmp_path / "transient" / "filing_extraction" / "catalogs"
+    )
     assert callable(captured["progress"])
 
 
 def test_plan_menu_uses_only_discovered_catalog_default(monkeypatch, tmp_path) -> None:
-    catalog = tmp_path / "filing_extraction" / "catalogs" / "catalog-1"
-    catalog.mkdir(parents=True)
-    (catalog / "catalog_manifest.json").write_text(
-        json.dumps({"catalog_id": "catalog-1", "form_partitions": {}}),
-        encoding="utf-8",
-    )
     monkeypatch.setenv("ARTIFACTS_ROOT", str(tmp_path))
+    catalog = {"catalog_id": "catalog-1"}
+    monkeypatch.setattr(run.discovery, "discover_catalogs", lambda *_args: [catalog])
     # Accept the catalog default, all forms, both amendment types, no limit,
     # and the derived target-plan output root.
     responses = iter(["", "", "", "", ""])
@@ -184,8 +184,10 @@ def test_plan_menu_uses_only_discovered_catalog_default(monkeypatch, tmp_path) -
 
     run._menu_plan()
 
-    assert captured["catalog"] == str(catalog)
-    assert captured["output_root"] == str(tmp_path / "filing_extraction" / "runs")
+    assert captured["catalog"] == "catalog-1"
+    assert captured["output_root"] == str(
+        tmp_path / "transient" / "filing_extraction" / "runs"
+    )
     assert captured["forms"] == ()
     assert captured["amendment"] == "both"
     assert captured["limit"] is None
@@ -225,7 +227,8 @@ def _build_source(tmp_path):
     return source
 
 
-def test_materialize_and_plan_emit_stage_events(tmp_path) -> None:
+def test_materialize_and_plan_emit_stage_events(tmp_path, monkeypatch) -> None:
+    monkeypatch.setenv("ARTIFACTS_ROOT", str(tmp_path))
     source = _build_source(tmp_path)
     events: list[dict] = []
     result = materializer.materialize(
@@ -251,9 +254,10 @@ def test_materialize_and_plan_emit_stage_events(tmp_path) -> None:
     )
     assert target_event["rows"] == 1
 
-    catalog = tmp_path / "catalogs" / result["catalog_id"]
     plan_events: list[dict] = []
-    target_plan.plan(str(catalog), str(tmp_path / "runs"), progress=plan_events.append)
+    target_plan.plan(
+        result["catalog_id"], str(tmp_path / "runs"), progress=plan_events.append
+    )
     plan_stages = [
         event["stage"] for event in plan_events if event["type"] == "merge_stage"
     ]
@@ -283,9 +287,10 @@ def test_materialize_appends_multiple_cik_batches(tmp_path) -> None:
     assert result["batch_count"] == 2
     target = (
         tmp_path
-        / "catalogs"
-        / result["catalog_id"]
+        / "manifests"
+        / "filing_extraction"
         / "filing_targets"
+        / "final"
         / "form=10-K"
         / "data.parquet"
     )

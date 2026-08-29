@@ -22,9 +22,9 @@ from defs.sec_http import (
 from defs.storage import DEFAULT_STORAGE_FORMAT
 
 DEFAULT_INPUT = "uploads/cik-sec.csv"
-_DEFAULT_PATHS = resolve_paths("metadata", "local")
+_DEFAULT_PATHS = resolve_paths("metadata", "default")
 DEFAULT_ARTIFACTS = str(_DEFAULT_PATHS.run_root)
-DEFAULT_PREVIEW_ARTIFACTS = str(_DEFAULT_PATHS.phase_paths.preview_root / "local")
+DEFAULT_PREVIEW_ARTIFACTS = str(_DEFAULT_PATHS.phase_paths.preview_root)
 DEFAULT_MAX_FAILURE_ATTEMPTS = 3
 
 PROJECT_CONFIG_DEFAULT_PATH = str(_DEFAULT_PATHS.phase_paths.config_path)
@@ -73,7 +73,7 @@ class RunOptions:
     ignore_failure_history: bool = False
     limit: int | None = None
     log_level: str = "INFO"
-    run_id: str = "local"
+    run_id: str = "default"
     storage_format: str = DEFAULT_STORAGE_FORMAT
 
     def validate(self) -> None:

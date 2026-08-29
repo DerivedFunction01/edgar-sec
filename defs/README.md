@@ -65,7 +65,9 @@ environment names are generated from it (`RUNTIME_THREADS`,
   `.artifacts/manifests/<phase>/<dataset>/[final|partitions]/`. Manifest paths are relative to the artifact
   root and content IDs exclude filesystem paths, so artifacts can move between
   persistent and ephemeral workspaces. The bundle command transports finalized
-  artifacts without including chunks, checkpoints, caches, or absolute paths.
+  artifacts without including transient runs, chunks, checkpoints, caches, or
+  absolute paths. Transient plans, workers, previews, staging, and merge reports
+  live under `.artifacts/transient/<phase>/`.
 - `filing_identity` is the single owner of accession normalization (one
   canonical 18-digit value; the hyphenated form is derived on display),
   archive URL parsing/construction, occurrence identity

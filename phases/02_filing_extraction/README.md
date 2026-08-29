@@ -31,9 +31,9 @@ The interactive menu offers:
 Prompts show workspace-derived defaults. In the standard local layout, blank
 materialization input selects the finalized Phase 01
 `manifests/metadata/submission_metadata/final/submission_metadata.parquet` artifact when present,
-and blank output inputs use `filing_extraction/catalogs` or
-`filing_extraction/runs` under `ARTIFACTS_ROOT`. If exactly one catalog is
-available, blank planning input selects it automatically. Materialization and
+and blank output inputs use transient staging and runs under
+`transient/filing_extraction/` under `ARTIFACTS_ROOT`. If exactly one published
+manifest group is available, blank planning input selects it automatically. Materialization and
 planning show a tqdm stage bar (source validation, company profiles, per-form
 targets, occurrence sources, manifest publication) so long DuckDB and hashing
 steps report progress instead of appearing to hang. The canonical CLI accepts an
@@ -68,7 +68,7 @@ environment → machine-derived value.
   --source-artifact .artifacts/manifests/metadata/submission_metadata/final/submission_metadata.parquet
 .venv/bin/python -m phases.02_filing_extraction.cli materialize \
   --source-manifest .artifacts/manifests/metadata/submission_metadata/final/<artifact-id>.json
-.venv/bin/python -m phases.02_filing_extraction.cli plan --catalog <catalog-directory>
+.venv/bin/python -m phases.02_filing_extraction.cli plan --catalog <catalog-id-or-final-manifest-directory>
 .venv/bin/python -m phases.02_filing_extraction.cli status
 ```
 
@@ -85,14 +85,19 @@ fallback) and may be overridden per environment through
 touching project configuration. All of these resolve through the shared
 settings registry (`defs/runtime/settings/`), not ad-hoc environment reads.
 
-The catalog records the source artifact hash and schema version. Accession
+Final manifests share a materialization/catalog ID and record the source
+artifact identity and schema version; discovery groups those manifests rather
+than reading a catalog directory. Accession
 fan-out across CIKs is retained; occurrence identity includes source CIK,
 accession, and document path.
 
 Target and occurrence-source artifacts are physically unordered in Phase 02.
 Identity and provenance fields are retained; later phases may create keys,
 indexes, or sorted derivatives. Staging tables are removed after success or
-failure and are never included in artifact bundles.
+failure and are never included in artifact bundles. Published outputs are
+`manifests/filing_extraction/company_profiles/final/company_profiles.parquet`,
+`manifests/filing_extraction/filing_occurrence_sources/final/filing_occurrence_sources.parquet`,
+and `manifests/filing_extraction/filing_targets/final/form=<key>/data.parquet`.
 
 ## Scope boundary: Phase 02 vs Phase 2.5
 

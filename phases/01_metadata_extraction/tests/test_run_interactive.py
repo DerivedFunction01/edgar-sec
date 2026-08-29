@@ -1,5 +1,4 @@
 import json
-import pathlib
 
 from conftest import imp
 
@@ -294,14 +293,23 @@ def test_interactive_wizard_merge_menu_end_to_end(tmp_path, monkeypatch):
     exit_code = run_mod.main(["--config", str(config_path)])
     assert exit_code == 0
     partition_artifact = (
-        artifacts
+        artifacts.parent
+        / "manifests"
+        / "metadata"
+        / "submission_metadata"
         / "partitions"
         / "partition-00001"
-        / "merge"
         / "submission_metadata.parquet"
     )
     assert partition_artifact.exists()
-    final_output = artifacts / "merge" / "submission_metadata.parquet"
+    final_output = (
+        artifacts.parent
+        / "manifests"
+        / "metadata"
+        / "submission_metadata"
+        / "final"
+        / "submission_metadata.parquet"
+    )
     assert final_output.exists()
 
 
@@ -397,13 +405,21 @@ def test_interactive_wizard_merge_bars_honor_no_progress(tmp_path, monkeypatch):
     assert final_bar["total"] == 3  # one partition + publish + readback
     assert final_bar["desc"] == "final merge"
     assert final_bar["disable"] is True
-    assert (artifacts / "merge" / "submission_metadata.parquet").exists()
+    assert (
+        artifacts.parent
+        / "manifests"
+        / "metadata"
+        / "submission_metadata"
+        / "final"
+        / "submission_metadata.parquet"
+    ).exists()
     del real_tqdm
 
 
 def test_interactive_wizard_preview_menu(tmp_path, monkeypatch):
     """The preview menu action must run without NameError and exit cleanly."""
-    config_path, artifacts = _write_wizard_config(tmp_path, FakeSession(), monkeypatch)
+    config_path, _artifacts = _write_wizard_config(tmp_path, FakeSession(), monkeypatch)
+    monkeypatch.setenv("ARTIFACTS_ROOT", str(tmp_path))
     answers = iter(
         [
             "y",  # create plan?
@@ -414,7 +430,9 @@ def test_interactive_wizard_preview_menu(tmp_path, monkeypatch):
     monkeypatch.setattr("builtins.input", lambda prompt="": next(answers))
     exit_code = run_mod.main(["--config", str(config_path)])
     assert exit_code == 0
-    assert (pathlib.Path(artifacts) / "preview_summary.json").exists()
+    assert (
+        tmp_path / "transient" / "metadata" / "preview" / "preview_summary.json"
+    ).exists()
 
 
 def test_interactive_wizard_rejects_missing_sec_identity(tmp_path, monkeypatch):

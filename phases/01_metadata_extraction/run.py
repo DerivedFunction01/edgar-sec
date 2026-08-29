@@ -143,7 +143,7 @@ def build_parser() -> argparse.ArgumentParser:
         help="attempt every URL regardless of recorded failures",
     )
     parser.add_argument("--log-level", default="INFO")
-    parser.add_argument("--run-id", default="local")
+    parser.add_argument("--run-id", default="default")
     parser.add_argument(
         "--no-progress",
         action="store_true",
@@ -341,11 +341,6 @@ def _merge_final_with_progress(
         with logging_redirect_tqdm():
             return merge(
                 options,
-                os.path.join(
-                    options.artifacts_dir,
-                    "merge",
-                    "submission_metadata.parquet",
-                ),
                 progress=make_merge_progress_callback(bar),
             ).to_dict()
     finally:

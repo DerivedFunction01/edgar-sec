@@ -23,12 +23,10 @@ class ArtifactRole(str, Enum):
     RUN_PLAN = "run_plan"
     PARTITION_MANIFEST = "partition_manifest"
     PARTITION_CHUNK = "partition_chunk"
-    CHUNK = "chunk"
     PREVIEW = "preview"
     PUBLISHED_DATASET = "published_dataset"
     PUBLISHED_MANIFEST = "published_manifest"
     MERGE_REPORT = "merge_report"
-    PARTITION_ARTIFACT = "partition_artifact"
     WORKER_FRAGMENT = "worker_fragment"
     UNKNOWN = "unknown"
 
@@ -54,24 +52,21 @@ def partition_merge_root_in(
 ) -> Path:
     return (
         Path(run_root)
+        / MERGE_DIR_NAME
         / "partitions"
         / f"partition-{_partition_id(partition_id)}"
-        / MERGE_DIR_NAME
     )
-
-
-def partition_artifact_path_in(
-    run_root: str | os.PathLike[str], partition_id: int, filename: str
-) -> Path:
-    if not filename or Path(filename).name != filename:
-        raise ValueError("partition artifact filename must be a basename")
-    return partition_merge_root_in(run_root, partition_id) / filename
 
 
 def partition_merge_report_path_in(
     run_root: str | os.PathLike[str], partition_id: int
 ) -> Path:
-    return partition_merge_root_in(run_root, partition_id) / MERGE_REPORT_NAME
+    return (
+        Path(run_root)
+        / MERGE_DIR_NAME
+        / "partitions"
+        / (f"partition-{_partition_id(partition_id)}.json")
+    )
 
 
 def _safe_id(value: str, label: str) -> str:
@@ -148,6 +143,10 @@ class ProjectPaths:
     def manifests_root(self) -> Path:
         return self.artifacts_root / "manifests"
 
+    @property
+    def transient_root(self) -> Path:
+        return self.artifacts_root / "transient"
+
     def dataset_manifests(self, phase: str, dataset: str, partition: str = "") -> Path:
         """Directory containing immutable manifests for a dataset."""
         phase_safe = _safe_id(phase, "phase")
@@ -180,6 +179,29 @@ class ProjectPaths:
             / f"{dataset_safe}.{extension}"
         )
 
+    def published_partition_dataset_path(
+        self, phase: str, dataset: str, partition: int | str, storage_format: str
+    ) -> Path:
+        phase_safe = _safe_id(phase, "phase")
+        dataset_safe = _safe_id(dataset, "dataset")
+        partition_safe = _safe_id(
+            f"partition-{partition:05d}"
+            if isinstance(partition, int)
+            else str(partition),
+            "partition",
+        )
+        extension = {"parquet": "parquet", "jsonl": "jsonl"}.get(storage_format)
+        if extension is None:
+            raise ValueError(f"unsupported storage format: {storage_format}")
+        return (
+            self.manifests_root
+            / phase_safe
+            / dataset_safe
+            / "partitions"
+            / partition_safe
+            / f"{dataset_safe}.{extension}"
+        )
+
 
 @dataclass(frozen=True)
 class PhasePaths:
@@ -196,15 +218,15 @@ class PhasePaths:
 
     @property
     def runs_root(self) -> Path:
-        return self.phase_root / "runs"
+        return self.project.transient_root / self.phase / "runs"
 
     @property
     def preview_root(self) -> Path:
-        return self.phase_root / "preview"
+        return self.project.transient_root / self.phase / "preview"
 
     @property
     def catalogs_root(self) -> Path:
-        return self.phase_root / "catalogs"
+        return self.project.transient_root / self.phase / "catalogs"
 
     def published_dataset(
         self, dataset: str, storage_format: str, partition: str = ""
@@ -305,66 +327,72 @@ def classify_artifact_path(path: str | os.PathLike[str]) -> ArtifactClassificati
     )
     if len(parts) < 2:
         return base
-    phase, second = parts[0], parts[1]
-    if not _SAFE_ID.fullmatch(phase):
-        return base
-    if second == "runs":
+    if parts[0] == "transient":
         if len(parts) < 3:
             return base
-        run_id = parts[2]
-        if not _SAFE_ID.fullmatch(run_id):
+        phase, second = parts[1], parts[2]
+        if not _SAFE_ID.fullmatch(phase):
             return base
-        rest = parts[3:]
+        if second == "runs":
+            if len(parts) < 4:
+                return base
+            run_id = parts[3]
+            if not _SAFE_ID.fullmatch(run_id):
+                return base
+            rest = parts[4:]
 
-        def with_run(
-            role: ArtifactRole, partition_id: int | None = None
-        ) -> ArtifactClassification:
-            return ArtifactClassification(
-                relative_path=pure.as_posix(),
-                role=role,
-                phase=phase,
-                run_id=run_id,
-                partition_id=partition_id,
-            )
+            def with_run(
+                role: ArtifactRole, partition_id: int | None = None
+            ) -> ArtifactClassification:
+                return ArtifactClassification(
+                    relative_path=pure.as_posix(),
+                    role=role,
+                    phase=phase,
+                    run_id=run_id,
+                    partition_id=partition_id,
+                )
 
-        def run_unknown() -> ArtifactClassification:
-            """Unrecognized file inside a known run: keep its attribution."""
-            return with_run(ArtifactRole.UNKNOWN)
+            def run_unknown() -> ArtifactClassification:
+                return with_run(ArtifactRole.UNKNOWN)
 
-        if rest == ("plan.json",):
-            return with_run(ArtifactRole.RUN_PLAN)
-        if rest == (MERGE_DIR_NAME, MERGE_REPORT_NAME):
-            return with_run(ArtifactRole.MERGE_REPORT)
-        if len(rest) == 2 and rest[0] == "chunks":
-            return with_run(ArtifactRole.CHUNK)
-        if len(rest) >= 1 and rest[0] == "partitions":
-            if len(rest) == 2:
+            if rest == ("plan.json",):
+                return with_run(ArtifactRole.RUN_PLAN)
+            if rest == (MERGE_DIR_NAME, MERGE_REPORT_NAME):
+                return with_run(ArtifactRole.MERGE_REPORT)
+            if (
+                len(rest) == 3
+                and rest[0] == MERGE_DIR_NAME
+                and rest[1] == "partitions"
+                and _PARTITION_MANIFEST.fullmatch(rest[2])
+                and rest[2].endswith(".json")
+            ):
+                match = _PARTITION_MANIFEST.fullmatch(rest[2])
+                return with_run(ArtifactRole.MERGE_REPORT, int(match.group(1)))
+            if len(rest) == 2 and rest[0] == "partitions":
                 match = _PARTITION_MANIFEST.fullmatch(rest[1])
                 if match is None:
                     return run_unknown()
                 return with_run(ArtifactRole.PARTITION_MANIFEST, int(match.group(1)))
-            match = _PARTITION_DIR.fullmatch(rest[1]) if len(rest) >= 2 else None
-            if match is None:
-                return run_unknown()
-            partition_id = int(match.group(1))
-            if len(rest) == 4 and rest[2] == "chunks":
-                return with_run(ArtifactRole.PARTITION_CHUNK, partition_id)
-            if len(rest) == 4 and rest[2] == MERGE_DIR_NAME:
-                return with_run(ArtifactRole.PARTITION_ARTIFACT, partition_id)
+            if len(rest) == 4 and rest[0] == "partitions":
+                match = _PARTITION_DIR.fullmatch(rest[1])
+                if match is None:
+                    return run_unknown()
+                partition_id = int(match.group(1))
+                if rest[2] == "chunks":
+                    return with_run(ArtifactRole.PARTITION_CHUNK, partition_id)
+            if len(rest) >= 3 and rest[0] == "workers":
+                return with_run(ArtifactRole.WORKER_FRAGMENT)
             return run_unknown()
-        if len(rest) >= 3 and rest[0] == "workers":
-            return with_run(ArtifactRole.WORKER_FRAGMENT)
-        return run_unknown()
-    if second == "preview":
-        if len(parts) < 3 or not _SAFE_ID.fullmatch(parts[2]):
-            return base
-        return ArtifactClassification(
-            relative_path=pure.as_posix(),
-            role=ArtifactRole.PREVIEW,
-            phase=phase,
-            run_id=parts[2],
-        )
-    if phase == "manifests" and len(parts) >= 4:
+        if second == "preview":
+            if len(parts) < 4 or not _SAFE_ID.fullmatch(parts[3]):
+                return base
+            return ArtifactClassification(
+                relative_path=pure.as_posix(),
+                role=ArtifactRole.PREVIEW,
+                phase=phase,
+            )
+        return base
+    if parts[0] == "manifests" and len(parts) >= 5:
         prod_phase = parts[1]
         scope = parts[3]
         filename = parts[-1]
@@ -375,7 +403,7 @@ def classify_artifact_path(path: str | os.PathLike[str]) -> ArtifactClassificati
             else ArtifactRole.PUBLISHED_DATASET
         )
         part_id = None
-        if scope == "partitions" and len(parts) >= 5:
+        if scope == "partitions" and len(parts) >= 6:
             m = _PARTITION_DIR.fullmatch(parts[4])
             if m:
                 part_id = int(m.group(1))
@@ -494,7 +522,6 @@ __all__ = [
     "RunPaths",
     "classify_artifact_path",
     "merge_report_path_in",
-    "partition_artifact_path_in",
     "partition_merge_report_path_in",
     "partition_merge_root_in",
     "resolve_paths",

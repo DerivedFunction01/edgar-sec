@@ -42,7 +42,7 @@ interactive `run.py` wizard. From the repository root:
 .venv/bin/python -m phases.01_metadata_extraction.cli plan \
     --config .artifacts/metadata/config.json
 
-# 2. Bounded SEC-backed smoke test (writes to .artifacts/metadata/preview only).
+# 2. Bounded SEC-backed smoke test (writes to transient preview storage).
 .venv/bin/python -m phases.01_metadata_extraction.cli preview --sample-size 3
 
 # 3. Run one operational partition (one or many machines; skips done chunks).
@@ -51,19 +51,16 @@ interactive `run.py` wizard. From the repository root:
 
 # 4. Inspect progress and mergeability (no re-fetch).
 .venv/bin/python -m phases.01_metadata_extraction.cli status \
-    --artifacts .artifacts/metadata/runs/<run-id>
+    --artifacts .artifacts/transient/metadata/runs/<run-id>
 
-# 5. Publish one partition's chunks into a complete, portable partition artifact.
+# 5. Publish one partition's chunks into a complete, portable partition dataset.
 .venv/bin/python -m phases.01_metadata_extraction.cli merge-partition \
-    --artifacts .artifacts/metadata/runs/<run-id> --partition-id 1
+    --artifacts .artifacts/transient/metadata/runs/<run-id> --partition-id 1
 
-# 6. Combine every completed partition artifact into the final dataset.
-#    The final merge reads only partition artifacts; it never reads chunk
-#    directories, so partition artifacts copied from other machines can be
-#    combined without copying chunk files.
+# 6. Combine every completed published partition into the final dataset.
+#    The final merge reads only published partition datasets and receipts.
 .venv/bin/python -m phases.01_metadata_extraction.cli merge \
-    --artifacts .artifacts/metadata/runs/<run-id> \
-    --output phases/01_metadata_extraction/output/merged/submission_metadata.parquet
+    --artifacts .artifacts/transient/metadata/runs/<run-id>
 ```
 
 `run.py` also works as an interactive wizard when `--chunk-id` is omitted:
@@ -79,23 +76,19 @@ partition artifacts into the final dataset (6).
 
 ### Distributed run layout
 
-Each partition publishes an immutable artifact under its run-relative directory:
+Chunks and plans are transient; each completed partition is published separately:
 
 ```text
-<run-root>/
-  partitions/
-    partition-00001/
-      chunks/                       # merge-partition input only
-      merge/
-        submission_metadata.parquet # complete, copyable partition artifact
-        merge_report.json           # validation/provenance for that artifact
-  merge/
-    submission_metadata.parquet     # run-level merged dataset
-    merge_report.json
+transient/metadata/runs/<run-id>/
+  plan.json
+  partitions/partition-00001.json
+  partitions/partition-00001/chunks/    # merge-partition input only
+  merge/partitions/partition-00001.json # transient partition audit report
+  merge/merge_report.json               # transient final audit report
 ```
 
-On merge completion, verified artifacts and immutable JSON manifest receipts are published to the self-contained manifests hierarchy:
-- Partition artifacts: `.artifacts/manifests/metadata/submission_metadata/partitions/partition-00001/`
+On partition merge, the verified partition and immutable receipt are published:
+- Partition dataset: `.artifacts/manifests/metadata/submission_metadata/partitions/partition-00001/`
 - Final unified dataset: `.artifacts/manifests/metadata/submission_metadata/final/submission_metadata.parquet` and `<artifact_id>.json`
 
 Partition artifacts and the final dataset are always Parquet (ZSTD), regardless
@@ -104,9 +97,9 @@ as merge inputs and converted during validation/publication. When a single
 partition artifact covers the whole plan, the final `merge` publishes it as a
 byte copy of the verified artifact (same sha256) rather than re-encoding it.
 
-To merge across machines, copy the remote `partitions/<id>/merge/` directory into
-the coordinator's matching run-relative location, then run the final `merge`
-(command `merge` / wizard option 6).
+To merge across machines, copy the published partition directory and its receipt
+into the shared manifests workspace, then run final `merge`. Later phases may
+consume a published partition directly without the source run or its chunks.
 
 Integrity is carried by a hash chain instead of re-reading rows: each chunk is
 spec-validated at write time, `merge-partition` performs the one deep row-level

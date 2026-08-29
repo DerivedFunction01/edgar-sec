@@ -132,7 +132,7 @@ def discover_artifacts(root: Path) -> list[ArtifactSummary]:
     unions: list[ArtifactSummary] = []
     grouped: dict[tuple[str, str, str], list[ArtifactSummary]] = {}
     for item in summaries:
-        if item.run_id and item.kind in {"partition_chunk", "chunk", "worker_fragment"}:
+        if item.run_id and item.kind in {"partition_chunk", "worker_fragment"}:
             grouped.setdefault((item.phase or "", item.run_id, item.format), []).append(
                 item
             )
@@ -142,7 +142,7 @@ def discover_artifacts(root: Path) -> list[ArtifactSummary]:
         source_paths = tuple(
             item.relative_path for item in sorted(items, key=lambda x: x.relative_path)
         )
-        relative = f"{phase}/runs/{run_id}/all-chunks.{fmt}"
+        relative = f"transient/{phase}/runs/{run_id}/all-chunks.{fmt}"
         size = sum(item.size_bytes for item in items)
         mtimes = [item.mtime for item in items if item.mtime]
         unions.append(

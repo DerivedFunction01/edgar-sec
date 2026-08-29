@@ -89,12 +89,13 @@ def test_materialize_reads_only_finalized_artifact(tmp_path):
         source,
     )
     (tmp_path / "merge_report.json").write_text("{}", encoding="utf-8")
-    result = materializer.materialize(str(source), str(tmp_path / "catalogs"))
+    materializer.materialize(str(source), str(tmp_path / "catalogs"))
     target = (
         tmp_path
-        / "catalogs"
-        / result["catalog_id"]
+        / "manifests"
+        / "filing_extraction"
         / "filing_targets"
+        / "final"
         / "form=10-K"
         / "data.parquet"
     )
@@ -102,7 +103,12 @@ def test_materialize_reads_only_finalized_artifact(tmp_path):
         "000000000124000001"
     ]
     assert pq.read_table(
-        tmp_path / "catalogs" / result["catalog_id"] / "company_profiles.parquet"
+        tmp_path
+        / "manifests"
+        / "filing_extraction"
+        / "company_profiles"
+        / "final"
+        / "company_profiles.parquet"
     ).column_names == list(materializer.PROFILE_COLUMNS)
 
 

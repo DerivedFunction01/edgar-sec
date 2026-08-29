@@ -11,6 +11,9 @@ import time
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from dataclasses import replace
 from datetime import UTC, datetime
+from pathlib import Path
+
+from defs.runtime.paths import resolve_paths
 
 from .chunks import (
     assign_chunks,
@@ -20,7 +23,9 @@ from .chunks import (
     select_chunk,
     verify_chunk_assignment,
 )
-from .config import RunOptions, rate_limit_to_interval, validate_plan_against_options
+from .config import RunOptions, validate_plan_against_options
+from .fetch import build_client as _build_client
+from .fetch import fetch_and_normalize as _fetch_and_normalize
 from .input_manifest import read_input_manifest
 from .merge import (
     MergeError,
@@ -30,7 +35,6 @@ from .merge import (
 )
 from .normalize import normalize_submissions
 from .schemas import SCHEMA_VERSION, TERMINAL_STATUSES
-from .sec_client import SubmissionsClient
 from .storage import make_checkpoint_store, make_phase_store
 
 logger = logging.getLogger("metadata")
@@ -130,129 +134,10 @@ def load_plan(options: RunOptions | None = None) -> dict:
     return plan
 
 
-def _build_client(options: RunOptions) -> SubmissionsClient:
-    options.validate()
-    limiter_interval = rate_limit_to_interval(options.rate_limit_rps)
-    from defs.sec_http import RateLimiter, RetryPolicy
-
-    return SubmissionsClient(
-        user_agent=options.user_agent,
-        rate_limiter=RateLimiter(min_interval_s=limiter_interval),
-        retry_policy=RetryPolicy(max_retries=options.max_retries),
-        timeout_s=options.timeout_s,
-        cache_dir=options.cache_dir,
-        max_failure_attempts=options.max_failure_attempts,
-        ignore_failure_history=options.ignore_failure_history,
-    )
-
-
-def _fetch_and_normalize(client: SubmissionsClient, target, snapshot_id: str) -> dict:
-    result = client.fetch_cik(target.cik_padded)
-    if not result.fetched_ok:
-        return normalize_submissions(
-            {},
-            cik_padded=target.cik_padded,
-            input_name=target.name,
-            snapshot_id=snapshot_id,
-            fetched_at=utc_now_iso(),
-            source_url=result.source_url,
-            byte_count=0,
-            historical_payloads=[],
-            historical_errors=[result.terminal_error() or "unknown fetch failure"],
-            response_sha256="",
-        )
-    row = normalize_submissions(
-        result.payload,
-        cik_padded=target.cik_padded,
-        input_name=target.name,
-        snapshot_id=snapshot_id,
-        fetched_at=utc_now_iso(),
-        source_url=result.source_url,
-        byte_count=result.byte_count,
-        historical_payloads=result.historical_payloads,
-        historical_errors=result.historical_errors,
-        response_sha256=result.response_sha256,
-    )
-    return row
-
-
 def preview_sample(options: RunOptions, sample_size: int = 3) -> dict:
-    """`preview`/smoke_test: small deterministic sample, SEC-backed, writing
-    inspectable output under .artifacts/metadata/preview/<run-id>. Never
-    writes to the production phase output."""
-    rows, _report = read_input_manifest(
-        options.input_path, limit=max(sample_size, options.limit or 0)
-    )
-    sample = rows[:sample_size]
-    client = _build_client(options)
-    snapshot_id = f"preview-{utc_now_iso()}"
-    summaries = []
-    completed_rows = []
-    for target in sample:
-        try:
-            row = _fetch_and_normalize(client, target, snapshot_id)
-            completed_rows.append(row)
-            forms = sorted({f.get("form") for f in row["filings"] if f.get("form")})
-            summaries.append(
-                {
-                    "cik": target.cik_padded,
-                    "input_name": target.name,
-                    "sec_name": row["identity"]["name"],
-                    "status": row["status"],
-                    "error": row["error"],
-                    "recent_filings": sum(
-                        1 for f in row["filings"] if f.get("source_section") == "recent"
-                    ),
-                    "historical_files": row["historical_files_total"],
-                    "combined_filing_records": len(row["filings"]),
-                    "forms_found": forms,
-                    "anomalies": row["anomalies"],
-                }
-            )
-        except Exception as exc:  # noqa: BLE001  # preview failures must be visible
-            summaries.append(
-                {
-                    "cik": target.cik_padded,
-                    "input_name": target.name,
-                    "status": "failed",
-                    "error": f"{type(exc).__name__}: {exc}",
-                }
-            )
+    from .preview import preview_sample as run_preview
 
-    os.makedirs(options.artifacts_dir, exist_ok=True)
-    out_json = os.path.join(options.artifacts_dir, "preview_summary.json")
-    with open(out_json, "w", encoding="utf-8") as fh:
-        json.dump(
-            {"sample": summaries, "metrics": client.http.metrics.snapshot()},
-            fh,
-            indent=2,
-        )
-
-    output_rows = [row for row in completed_rows if row.get("status") != "failed"]
-    if output_rows:
-        sample_path = os.path.join(
-            options.artifacts_dir, f"preview_sample.{options.storage_format}"
-        )
-        make_checkpoint_store(options, root=options.artifacts_dir).finalize(
-            output_rows, sample_path
-        )
-        summaries_path_note = sample_path
-    else:
-        summaries_path_note = None
-
-    for item in summaries:
-        print(
-            f"{item['cik']}  {str(item.get('sec_name') or item.get('input_name'))[:40]:40s} "
-            f"status={item['status']} filings={item.get('combined_filing_records', 0)} "
-            f"hist_files={item.get('historical_files', 0)}"
-            + (f" error={item['error']}" if item.get("error") else "")
-        )
-    return {
-        "sample": summaries,
-        "metrics": client.http.metrics.snapshot(),
-        "summary_path": out_json,
-        "sample_artifact": summaries_path_note,
-    }
+    return run_preview(options, sample_size)
 
 
 def run_chunk(options: RunOptions, progress=None) -> dict:
@@ -551,13 +436,26 @@ def get_status(options: RunOptions, partition_id: int | None = None) -> dict:
 
 def merge(
     options: RunOptions,
-    output_path: str,
+    output_path: str | None = None,
     *,
     storage_format: str | None = None,
     output_storage_format: str | None = None,
     progress=None,
 ) -> MergeReport:
-    """`merge`: combine complete partition artifacts into the final dataset."""
+    """`merge`: combine published partitions into the final dataset."""
+    if output_path is None:
+        artifact_root = Path(options.artifacts_dir).resolve()
+        marker = f"{os.sep}transient{os.sep}"
+        root = (
+            Path(str(artifact_root).split(marker, 1)[0])
+            if marker in str(artifact_root)
+            else artifact_root.parent
+        )
+        output_path = str(
+            resolve_paths(env={"ARTIFACTS_ROOT": str(root)}).published_dataset_path(
+                "metadata", "submission_metadata", "parquet"
+            )
+        )
     return merge_partition_artifacts(
         options.artifacts_dir,
         output_path,

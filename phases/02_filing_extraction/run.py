@@ -78,9 +78,11 @@ def _default_source() -> tuple[str, str]:
 
 
 def _default_catalog() -> str:
-    catalogs = discovery.discover_catalogs(str(_phase_root() / "catalogs"))
+    catalogs = discovery.discover_catalogs(
+        str(resolve_paths("filing_extraction").project.manifests_root)
+    )
     if len(catalogs) == 1:
-        return catalogs[0]["path"]
+        return catalogs[0]["catalog_id"]
     if len(catalogs) > 1:
         print("  Multiple catalogs found; choose one:")
         for index, catalog in enumerate(catalogs, start=1):
@@ -89,11 +91,11 @@ def _default_catalog() -> str:
 
 
 def _default_catalog_root() -> str:
-    return str(_phase_root() / "catalogs")
+    return str(resolve_paths("filing_extraction").catalogs_root)
 
 
 def _default_runs_root() -> str:
-    return str(_phase_root() / "runs")
+    return str(resolve_paths("filing_extraction").runs_root)
 
 
 def _prompt_int(prompt: str) -> int | None:
@@ -167,31 +169,28 @@ class _StageBar:
 
 def _menu_materialize() -> None:
     source_kind, source_default = _default_source()
-    source_label = source_default or "required"
-    source = _read(
-        f"Source artifact path or manifest path [{source_label}]: ", source_default
-    )
+    if source_default:
+        source = _read(
+            f"Source artifact or manifest [{source_default}]: ", source_default
+        )
+    else:
+        source = _read("Source artifact or manifest path: ")
     if not source:
         print("  source is required")
         return
-    output_root = _read(
-        f"Output root [{_default_catalog_root()}]: ", _default_catalog_root()
-    )
+
+    output_root = _default_catalog_root()
     settings = phase_config.load()
     resources = derive_resources()
-    batch_raw = _read(
-        f"Source rows per batch [{settings.source_batch_size}]: ",
-        str(settings.source_batch_size),
-    )
-    try:
-        source_batch_size = int(batch_raw)
-    except ValueError:
-        print(f"  invalid integer: {batch_raw!r}")
-        return
+    source_batch_size = settings.source_batch_size
+
+    print(f"  Output: {output_root}")
+    print(f"  Batch size: {source_batch_size} rows")
     print(
         f"  DuckDB resources: {resources.threads} threads, "
         f"{resources.memory_limit}, spill={resources.temp_directory}"
     )
+
     bar = _StageBar("materialize")
     kwargs: dict = {
         "output_root": output_root,
@@ -220,28 +219,25 @@ def _menu_materialize() -> None:
 
 def _menu_plan() -> None:
     catalog_default = _default_catalog()
-    catalog = _read(
-        f"Catalog directory [{catalog_default or 'required'}]: ", catalog_default
-    )
+    if not catalog_default:
+        catalog = _read("Catalog directory (required): ")
+    else:
+        catalog = _read(f"Catalog directory [{catalog_default}]: ", catalog_default)
     if not catalog:
         print("  catalog directory is required")
         return
-    forms_raw = _read("Forms (comma-separated, empty for all): ")
+
+    forms_raw = _read("Forms filter (comma-separated, Enter for all): ")
     forms = tuple(form.strip() for form in forms_raw.split(",") if form.strip())
-    amendment = _prompt("Amendment [both]: ", "both")
-    if amendment not in ("both", "original", "amendments"):
-        print("  amendment must be both, original, or amendments")
-        return
-    limit = _prompt_int("Limit (empty for none): ")
-    output_root = _read(f"Output root [{_default_runs_root()}]: ", _default_runs_root())
+    output_root = _default_runs_root()
     bar = _StageBar("plan targets")
     try:
         result = plan(
             catalog,
             output_root,
             forms=forms,
-            amendment=amendment,
-            limit=limit,
+            amendment="both",
+            limit=None,
             progress=bar,
         )
     except KeyboardInterrupt:

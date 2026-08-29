@@ -35,7 +35,7 @@ def test_discovery_classifies_and_groups_artifacts(
 
 
 def test_discovery_lists_documents_separately(artifacts_root):
-    plan_relative = "metadata/runs/run-1/plan.json"
+    plan_relative = "transient/metadata/runs/run-1/plan.json"
     (artifacts_root / plan_relative).parent.mkdir(parents=True, exist_ok=True)
     (artifacts_root / plan_relative).write_text("{}", encoding="utf-8")
 
@@ -58,9 +58,7 @@ def test_discovery_scales_to_multiple_phases_with_runs(artifacts_root):
 
     for phase in ("metadata", "fixtures"):
         for chunk in ("chunk-00001", "chunk-00002"):
-            relative = (
-                f"{phase}/runs/run-1/partitions/partition-00001/chunks/{chunk}.jsonl"
-            )
+            relative = f"transient/{phase}/runs/run-1/partitions/partition-00001/chunks/{chunk}.jsonl"
             path = artifacts_root / relative
             path.parent.mkdir(parents=True, exist_ok=True)
             write_records_atomic([{"id": phase}], str(path))
@@ -121,7 +119,7 @@ def test_union_revision_changes_when_chunk_added(artifacts_root):
     from defs.storage.jsonl import write_records_atomic
     from defs.viewer.discover import discover_artifacts
 
-    base = "metadata/runs/run-2/partitions/partition-00001/chunks"
+    base = "transient/metadata/runs/run-2/partitions/partition-00001/chunks"
     for chunk in ("chunk-00001", "chunk-00002"):
         path = artifacts_root / base / f"{chunk}.jsonl"
         path.parent.mkdir(parents=True, exist_ok=True)

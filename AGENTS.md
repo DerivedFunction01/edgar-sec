@@ -40,7 +40,7 @@ phases/<number>_<name>/
   smoke_test.py
 roadmap/                           # product and extraction specifications
 uploads/                           # input manifests
-.artifacts/                        # generated config, plans, runs, checkpoints (ignored)
+.artifacts/                        # published manifests and transient state (ignored)
 ```
 
 - A phase may add files for a real domain concern, but must not fork shared
@@ -110,10 +110,10 @@ uploads/                           # input manifests
 - Workers never write the canonical dataset concurrently. They emit immutable,
   schema-versioned fragments; a coordinator validates identity, provenance,
   schema, and duplicates before publishing.
-- Standard temporary layout: `.artifacts/<phase>/runs/<run-id>/workers/<worker-id>/`
+- Standard temporary layout: `.artifacts/transient/<phase>/runs/<run-id>/workers/<worker-id>/`
   with attempt IDs and a manifest. Partial files are never "complete".
 - Use partition-scoped paths such as
-  `.artifacts/<phase>/runs/<run-id>/partitions/partition-00001/chunks/` when a
+  `.artifacts/transient/<phase>/runs/<run-id>/partitions/partition-00001/chunks/` when a
   run is distributed. The same layout must work for one or many machines.
 - Define idempotency keys and conflict policy before adding an append path.
   No last-writer-wins for conflicting extraction facts; quarantine or fail.
