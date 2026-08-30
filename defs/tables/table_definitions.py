@@ -251,6 +251,79 @@ def _registration_table_template(
     )
 
 
+def _cell_lines(cell: object) -> list[str]:
+    """Extract visible block lines without losing layout-only line breaks."""
+    blocks = cell.find_all("div", recursive=False)
+    if blocks:
+        return [_cell_text(block) for block in blocks if _cell_text(block)]
+    text = _cell_text(cell)
+    return [line.strip() for line in text.splitlines() if line.strip()] or (
+        [text] if text else []
+    )
+
+
+def _side_by_side_template(table: object, source_grid: list[list[str]]) -> str | None:
+    """Render two populated span groups as a horizontal presentation block."""
+    if len(source_grid) < 2:
+        return None
+    populated_positions = [
+        [index for index, cell in enumerate(row) if cell.strip()]
+        for row in source_grid
+        if any(cell.strip() for cell in row)
+    ]
+    if not populated_positions or any(
+        positions[0] != 0 or positions[-1] < 6 for positions in populated_positions
+    ):
+        return None
+    rows = table.find_all("tr")
+    logical_rows: list[tuple[list[str], list[str]]] = []
+    right_values: list[str] = []
+    for row in rows:
+        cells = row.find_all(["td", "th"])
+        populated = [cell for cell in cells if _cell_text(cell)]
+        if not populated:
+            continue
+        if len(cells) < 3:
+            return None
+        if len(populated) != 2:
+            return None
+        right_values.append(_cell_text(populated[-1]))
+        logical_rows.append((_cell_lines(populated[0]), _cell_lines(populated[-1])))
+    if not logical_rows:
+        return None
+    if sum(is_numeric_cell(value) for value in right_values) / len(right_values) > 0.5:
+        return None
+
+    width = min(max(len(" ".join(left)) for left, _ in logical_rows), 30)
+    output: list[str] = []
+    for left, right in logical_rows:
+        line_count = max(len(left), len(right))
+        for index in range(line_count):
+            left_line = left[index] if index < len(left) else ""
+            right_line = right[index] if index < len(right) else ""
+            output.append(f"{left_line.ljust(width)}  {right_line}".rstrip())
+    return "\n" + "\n".join(output) + "\n"
+
+
+def _uniform_text_table_template(
+    source_grid: list[list[str]],
+) -> str | None:
+    """Render a text-dominant table with a stable header and row shape."""
+    if len(source_grid) < 3:
+        return None
+    compact = [[cell for cell in row if cell.strip()] for row in source_grid]
+    width = len(compact[0])
+    if width < 3 or any(len(row) != width for row in compact):
+        return None
+    if any(is_numeric_cell(cell) for cell in compact[0]):
+        return None
+    return (
+        HTMLTableConverter(grid=compact, header_row_count=1)
+        .to_generic_table()
+        .build()
+    )
+
+
 def _span_grid(
     table: object, *, with_spans: bool = False
 ) -> list[list[str]] | tuple[list[list[str]], list[SpanGroup]]:
@@ -480,6 +553,18 @@ def convert_html_tables_to_ascii(html_content: str, *, debug: bool = False) -> s
         registration_output = _registration_table_template(source_grid)
         if registration_output:
             table.replace_with(soup.new_string(registration_output))
+            continue
+        side_by_side_output = (
+            None if is_toc else _side_by_side_template(table, source_grid)
+        )
+        if side_by_side_output:
+            table.replace_with(soup.new_string(side_by_side_output))
+            continue
+        uniform_text_output = (
+            None if is_toc else _uniform_text_table_template(source_grid)
+        )
+        if uniform_text_output:
+            table.replace_with(soup.new_string(uniform_text_output))
             continue
         if (
             len(rows) < 3

@@ -189,6 +189,26 @@ def test_registration_table_delegator_handles_text_only_columns():
     assert "<TABLE>" in plural_result
 
 
+def test_html_presentation_layout_preserves_side_by_side_groups():
+    html = """
+    <table>
+      <tr><td style="width:20%"></td><td style="width:1%"></td>
+          <td style="width:79%"></td></tr>
+      <tr><td colspan="3"><div>CCB</div><div>ROE 32%</div></td>
+          <td colspan="3"></td>
+          <td colspan="3"><div>• Average deposits up 1%</div><div>• Loans up 2%</div></td></tr>
+      <tr><td colspan="3"><div>CIB</div><div>ROE 18%</div></td>
+          <td colspan="3"></td>
+          <td colspan="3"><div>• Fees up 3%</div></td></tr>
+    </table>
+    """
+
+    result = convert_html_tables_to_ascii(html)
+
+    assert "CCB          • Average deposits up 1%" in result
+    assert "ROE 32%      • Loans up 2%" in result
+
+
 def test_simple_table_processor_parsing():
     raw_table = """
 <TABLE>
