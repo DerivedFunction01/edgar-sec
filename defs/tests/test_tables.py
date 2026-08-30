@@ -52,6 +52,43 @@ def test_html_table_converter():
     assert "$ 1,000" in built
 
 
+def test_html_table_converter_dynamic_alignment_and_trimming():
+    # Column 0: Code, Column 1: Empty spacer, Column 2: Text Description, Column 3: Numbers
+    grid = [
+        ["Code", "", "Description", "FY 2025"],
+        ["A1", "", "Consumer Health Products", "$ 1,200"],
+        ["B2", "", "Medical Devices and Diagnostics", "$ 3,400"],
+    ]
+    converter = HTMLTableConverter(
+        grid=grid, title="Segment Summary", header_row_count=1
+    )
+    generic = converter.to_generic_table()
+    built = generic.build()
+
+    # Verify spacer column was trimmed (3 columns remain, not 4)
+    assert len(generic.widths) == 3
+    # Verify Col 0 (Code) and Col 1 (Description) are left-aligned, Col 2 is right-aligned
+    assert generic.alignments == ["l", "l", "r"]
+    assert "Consumer Health Products" in built
+    assert "$ 1,200" in built
+
+
+def test_html_table_converter_width_capping():
+    # Long narrative footnote in cell
+    grid = [
+        ["Category", "Long Description Footnote"],
+        [
+            "Item",
+            "This is an extremely long footnote text describing accounting policies in extensive detail spanning well over sixty characters in a single cell.",
+        ],
+    ]
+    converter = HTMLTableConverter(grid=grid, max_text_col_width=40)
+    generic = converter.to_generic_table()
+
+    # Column 1 width should be capped at 40
+    assert generic.widths[1] <= 40
+
+
 def test_simple_table_processor_parsing():
     raw_table = """
 <TABLE>
