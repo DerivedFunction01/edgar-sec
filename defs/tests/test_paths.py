@@ -46,6 +46,15 @@ def test_explicit_cache_path_overrides_derived_locations(tmp_path):
     )
 
 
+def test_test_run_root_uses_shared_generated_artifact_root(tmp_path):
+    paths = resolve_paths(env={"ARTIFACTS_ROOT": str(tmp_path)})
+    assert paths.test_run_root("defs", "tables", "run-1") == (
+        tmp_path / "test-runs" / "defs" / "tables" / "run-1"
+    )
+    with pytest.raises(ValueError):
+        paths.test_run_root("defs/tables", "tables", "run-1")
+
+
 def test_paths_resolve_through_the_shared_environment_layer(tmp_path, monkeypatch):
     """Without an explicit mapping, paths flow through the settings registry."""
     monkeypatch.setenv("ARTIFACTS_ROOT", str(tmp_path / "from-process"))

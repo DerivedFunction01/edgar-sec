@@ -127,6 +127,15 @@ class ProjectPaths:
     def test_runs_root(self) -> Path:
         return self.artifacts_root / "test-runs"
 
+    def test_run_root(self, scope: str, suite: str, run_id: str) -> Path:
+        """Return a generated test-report directory without creating it."""
+        return (
+            self.test_runs_root
+            / _safe_id(scope, "test scope")
+            / _safe_id(suite, "test suite")
+            / _safe_id(run_id, "test run id")
+        )
+
     @property
     def acceptance_root(self) -> Path:
         return self.artifacts_root / "acceptance"

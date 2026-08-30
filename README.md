@@ -112,6 +112,8 @@ read-only SQL console — with a built TypeScript UI.
 The [shared table engine](defs/tables/README.md) provides HTML span-grid
 resolution, layout-table unwrapping, financial column healing, and standardized
 ASCII table generation for document-processing phases.
+Its tracked validated corpus is stored in one Parquet fixture, with threshold
+reports written to the shared `.artifacts/test-runs/` location.
 
 ## Conventions
 

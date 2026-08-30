@@ -4,7 +4,10 @@ Acquires and stores raw SEC filing documents (HTML, SGML, iXBRL XML) as
 content-addressed, zstd-compressed SQLite BLOBs, linked to corporate
 occurrences from a finalized Phase 02 target plan. This is the **storage-only**
 boundary: no parsing, envelope unpacking, or tag stripping happens here (those
-are a later parallel track built on `document_blobs`).
+are a later processing track built on `document_blobs`). The phase tests also
+exercise the downstream `DeepNormalizer` against small tracked archetype
+segments; the shared table corpus and converter goldens live under
+`defs/tests/fixtures/tables/`.
 
 ## Scope boundary
 
@@ -74,4 +77,9 @@ resolved from the shared settings registry.
 
 ```bash
 .venv/bin/pytest phases/025_webpage_storage/tests
+.venv/bin/pytest phases/025_webpage_storage/tests/test_normalization_goldens.py
 ```
+
+Generated test evidence uses the shared `.artifacts/test-runs/` root through
+`defs.runtime.paths`; acceptance fixture databases remain under
+`.artifacts/acceptance/webpage_storage/fixtures/`.
