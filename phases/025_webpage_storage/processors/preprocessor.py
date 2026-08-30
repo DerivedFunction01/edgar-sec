@@ -15,7 +15,6 @@ from defs.regex import build_alternation
 from .forms.base import PreprocessedDocument
 
 # Fast regexes for envelope and structural markers
-_RE_XML_HTML_TAGS = re.compile(r"<[^>]+>")
 _TAG_NAMES = build_alternation(["script", "style", "head"])
 _RE_HEAD_SCRIPT_STYLE = re.compile(
     rf"(?is)<(?:{_TAG_NAMES})\b[^>]*>.*?</(?:{_TAG_NAMES})>"
@@ -23,6 +22,32 @@ _RE_HEAD_SCRIPT_STYLE = re.compile(
 _RE_DOCUMENT_WRAPPER = re.compile(
     r"(?is)^\s*<DOCUMENT>\s*(?:<TYPE>.*?\n)?(?:<SEQUENCE>.*?\n)?(?:<FILENAME>.*?\n)?(?:<DESCRIPTION>.*?\n)?<TEXT>\s*(.*?)\s*</TEXT>\s*</DOCUMENT>\s*$"
 )
+
+# HTML structural and styling tag discriminators (excludes SGML ASCII <TABLE><S><C>)
+_HTML_TAG_NAMES = build_alternation(
+    [
+        r"!doctype",
+        "html",
+        "body",
+        "div",
+        "span",
+        "font",
+        "tr",
+        "td",
+        "th",
+        "head",
+        "style",
+        "script",
+        "br",
+        "p",
+        "a",
+        "hr",
+        "img",
+        "ix",
+        "xbrl",
+    ]
+)
+_RE_HTML_DISCRIMINATOR = re.compile(rf"(?i)<\/?(?:{_HTML_TAG_NAMES})\b")
 
 
 class GenericPreprocessor:
@@ -62,11 +87,8 @@ class GenericPreprocessor:
         m_doc = _RE_DOCUMENT_WRAPPER.match(raw_text.strip())
         content_text = m_doc.group(1) if m_doc else raw_text
 
-        has_html = (
-            "<html" in content_text.lower()
-            or "<body" in content_text.lower()
-            or "<table" in content_text.lower()
-        )
+        # Robust HTML discrimination (never matches pure SEC ASCII <TABLE><S><C>)
+        has_html = bool(_RE_HTML_DISCRIMINATOR.search(content_text))
 
         # Strip non-displaying script and style blocks
         clean = _RE_HEAD_SCRIPT_STYLE.sub(" ", content_text)

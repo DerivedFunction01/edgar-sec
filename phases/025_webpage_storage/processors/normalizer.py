@@ -56,8 +56,8 @@ class DeepNormalizer:
         _ = metadata
         text = preprocessed.cleaned_text
 
-        # 1. If HTML table structures exist, extract and align tables
-        if "<table" in text.lower():
+        # 1. If HTML tags exist and table structures are present, convert HTML tables to ASCII grids
+        if preprocessed.has_html_tags and "<table" in text.lower():
             text = self._convert_html_tables_to_ascii(text)
 
         # 2. Strip non-visual XML / iXBRL tags

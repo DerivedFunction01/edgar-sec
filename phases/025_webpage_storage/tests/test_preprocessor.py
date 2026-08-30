@@ -52,3 +52,26 @@ def test_preprocess_strips_envelope_and_unescapes() -> None:
     assert "Business & Operations" in doc.cleaned_text
     assert "<STYLE>" not in doc.cleaned_text
     assert "<HEAD>" not in doc.cleaned_text
+
+
+def test_preprocess_ascii_sec_table_not_flagged_as_html() -> None:
+    preprocessor = GenericPreprocessor()
+    raw_ascii = b"""<DOCUMENT>
+<TYPE>10-K
+<TEXT>
+ITEM 1. BUSINESS
+Southern Company operations.
+
+<TABLE>
+<CAPTION>
+Operating Results
+<S>                       <C>           <C>
+Total Net Income          $  1,250,000  $  1,100,000
+</TABLE>
+</TEXT>
+</DOCUMENT>"""
+
+    doc = preprocessor.preprocess(raw_ascii)
+    assert doc.has_html_tags is False
+    assert "Operating Results" in doc.cleaned_text
+    assert "Total Net Income" in doc.cleaned_text
