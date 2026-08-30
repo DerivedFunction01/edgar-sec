@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 
+import re
+
 from defs.tables import (
     ALL_CURRENCY_SYMBOLS,
     FINANCIAL_PLACEHOLDERS,
@@ -14,6 +16,7 @@ from defs.tables import (
     process_table,
 )
 from defs.tables.currencies import MAJOR_CURRENCIES
+from defs.tables.repair import clean_and_merge_symbols
 
 
 def test_generic_table_build():
@@ -93,6 +96,97 @@ def test_html_table_converter_width_capping():
 
     # Column 1 width should be capped at 40
     assert generic.widths[1] <= 40
+
+
+def test_html_table_conversion_debug_reports_header_boundary(capsys):
+    html = """
+    <table>
+      <tr><th></th><th>2025</th></tr>
+      <tr><th>Amount</th><th>Value</th></tr>
+      <tr><td>The effects of fair value hedging:</td><td></td></tr>
+      <tr><td>Gain (Loss) on fair value hedging relationship:</td><td></td></tr>
+      <tr><td>Hedged items</td><td>338</td></tr>
+      <tr><td>Other hedged items</td><td>339</td></tr>
+      <tr><td>Total hedged items</td><td>340</td></tr>
+      <tr><td>Final hedged items</td><td>341</td></tr>
+    </table>
+    """
+
+    result = convert_html_tables_to_ascii(html, debug=True)
+
+    diagnostics = capsys.readouterr().err
+    assert "source row 2" in diagnostics
+    assert "Gain (Loss) on fair value hedging relationship:" in diagnostics
+    assert re.search(r"selected header_count=2", diagnostics)
+    assert "converted output" in diagnostics
+    assert "<TABLE>" in result
+
+
+def test_html_table_conversion_preserves_change_columns():
+    html = """
+    <table>
+      <tr><th></th><th>2025</th><th>Change</th><th>2024</th></tr>
+      <tr><td>Research and development</td><td>$ 34,550</td><td>10 %</td><td>$ 31,370</td></tr>
+      <tr><td>Selling, general and administrative</td><td>$ 27,601</td><td>6 %</td><td>$ 26,097</td></tr>
+      <tr><td>Total operating expenses</td><td>$ 62,151</td><td>8 %</td><td>$ 57,467</td></tr>
+    </table>
+    """
+
+    result = convert_html_tables_to_ascii(html)
+
+    assert "2025" in result and "Change" in result and "2024" in result
+    assert "34,550" in result and "10%" in result
+    assert "34,550 10%" not in result
+
+
+def test_percentage_normalization_preserves_prose():
+    assert clean_and_merge_symbols(["Deposits as a % of total liabilities"])[0] == (
+        "Deposits as a % of total liabilities"
+    )
+
+
+def test_html_percentage_normalization_preserves_prose():
+    html = """
+    <table>
+      <tr><th>Metric</th><th>Total % of IG</th></tr>
+      <tr><td>Coverage</td><td>10 %</td></tr>
+      <tr><td>Deposits as a % of total liabilities</td><td>50 %</td></tr>
+      <tr><td>Other</td><td>25 %</td></tr>
+    </table>
+    """
+
+    result = convert_html_tables_to_ascii(html)
+
+    assert "10%" in result and "50%" in result and "25%" in result
+    assert "Total % of IG" in result
+    assert "Deposits as a % of total liabilities" in result
+
+
+def test_registration_table_delegator_handles_text_only_columns():
+    html = """
+    <table>
+      <tr><th>Title of each class</th><th>Trading Symbol(s)</th>
+          <th>Name of each exchange on which registered</th></tr>
+      <tr><td>Common stock</td><td>JPM</td><td>The New York Stock Exchange</td></tr>
+      <tr><td>Depositary Shares, each representing a one-four hundredth interest in a share</td>
+          <td>JPM PR D</td><td>The New York Stock Exchange</td></tr>
+    </table>
+    """
+
+    result = convert_html_tables_to_ascii(html)
+
+    assert "<TABLE>" in result
+    assert "Title of each class" in result
+    assert "JPM PR D" in result
+    assert "a one-four hundredth" in result
+    assert "interest in a share" in result
+    assert "aone-four" not in result
+
+    plural_result = convert_html_tables_to_ascii(
+        html.replace("Trading Symbol(s)", "Trading Symbol")
+    )
+    assert "JPM PR D" in plural_result
+    assert "<TABLE>" in plural_result
 
 
 def test_simple_table_processor_parsing():

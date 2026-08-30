@@ -33,6 +33,7 @@ PERCENT_HEADER_RE = re.compile(
 PAREN_SPACES_RE = re.compile(r"\(\s+([^\)]+?)\s+\)")
 FOOTNOTE_RE = re.compile(r"^\(?[a-zA-Z0-9\*\†\‡\§\d]{1,3}\)?$")
 YEAR_TOKEN_RE = re.compile(r"^\b(202[0-9]|201[0-9]|200[0-9]|199[0-9])\b$")
+YEAR_IN_HEADER_RE = re.compile(r"\b\d{4}\b")
 BULLET_MARKER_RE = re.compile(
     rf"^(?:{build_alternation(sorted(BULLET_MARKERS), auto_escape=True)}|\(?\d{{1,2}}[\.\)]?|\(?[a-zA-Z][\.\)]?)$"
 )
@@ -98,7 +99,9 @@ _PREFIX_SYM_ALT = build_alternation(
 CURRENCY_SPACE_RE = re.compile(rf"({_PREFIX_SYM_ALT})\s+")
 OPEN_PAREN_SPACE_RE = re.compile(r"\(\s+")
 CLOSE_PAREN_SPACE_RE = re.compile(r"\s+\)")
-PERCENT_SPACE_RE = re.compile(r"\s+%")
+NUMERIC_PERCENT_SPACE_RE = re.compile(
+    r"(?<![A-Za-z])(\(?[+-]?\d[\d,]*(?:\.\d+)?\)?)[ \t]+%"
+)
 COMMA_SPACE_RE = re.compile(r",\s+")
 SPACE_COMMA_RE = re.compile(r"\s+,")
 
@@ -121,13 +124,13 @@ __all__ = [
     "LAST_HEADER_PATTERN",
     "MILLION_RE",
     "NUMERIC_CELL_RE",
+    "NUMERIC_PERCENT_SPACE_RE",
     "NUMERIC_RE",
     "NUMERIC_WITH_SYMBOLS",
     "OPEN_PAREN_SPACE_RE",
     "PARAGRAPH_THRESHOLD",
     "PAREN_SPACES_RE",
     "PERCENT_HEADER_RE",
-    "PERCENT_SPACE_RE",
     "SPACE_COMMA_RE",
     "S_MARKER_RE",
     "TABLE_OF_CONTENTS_RE",
@@ -136,5 +139,6 @@ __all__ = [
     "UNIT_RE",
     "WHITESPACE_RE",
     "YEAR_RE",
+    "YEAR_IN_HEADER_RE",
     "YEAR_TOKEN_RE",
 ]

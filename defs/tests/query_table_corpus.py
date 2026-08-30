@@ -9,7 +9,8 @@ from pathlib import Path
 from defs.storage import DatasetSpec, pa, read_records
 
 ROOT = Path(__file__).parents[2]
-CORPUS_PATH = ROOT / "defs/tests/fixtures/tables/validated_table_corpus.parquet"
+CORPUS_PATH = ROOT / "defs/tests/fixtures/tables/validated_table_corpus_v2.parquet"
+LEGACY_CORPUS_PATH = ROOT / "defs/tests/fixtures/tables/validated_table_corpus.parquet"
 SCHEMA = pa.schema(
     [
         ("corpus", pa.string()),
@@ -22,12 +23,14 @@ SCHEMA = pa.schema(
 )
 
 
-def _records() -> list[dict]:
+def _records(
+    path: Path = CORPUS_PATH, name: str = "validated_table_corpus_v2"
+) -> list[dict]:
     return read_records(
-        CORPUS_PATH,
+        path,
         "parquet",
         spec=DatasetSpec(
-            name="validated_table_corpus",
+            name=name,
             schema_version="1",
             key_field="table_id",
             arrow_schema=SCHEMA,

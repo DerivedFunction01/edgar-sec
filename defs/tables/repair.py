@@ -10,8 +10,8 @@ from .patterns import (
     CLOSE_PAREN_SPACE_RE,
     COMMA_SPACE_RE,
     CURRENCY_SPACE_RE,
+    NUMERIC_PERCENT_SPACE_RE,
     OPEN_PAREN_SPACE_RE,
-    PERCENT_SPACE_RE,
     SPACE_COMMA_RE,
     YEAR_RE,
 )
@@ -156,7 +156,7 @@ def clean_and_merge_symbols(row: list[str]) -> list[str]:
         c = CURRENCY_SPACE_RE.sub(r"\1", cell)
         c = OPEN_PAREN_SPACE_RE.sub("(", c)
         c = CLOSE_PAREN_SPACE_RE.sub(")", c)
-        c = PERCENT_SPACE_RE.sub("%", c)
+        c = NUMERIC_PERCENT_SPACE_RE.sub(r"\1%", c)
         c = COMMA_SPACE_RE.sub(",", c)
         c = SPACE_COMMA_RE.sub(",", c)
         cleaned_row.append(c)

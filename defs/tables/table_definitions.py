@@ -3,24 +3,21 @@
 from __future__ import annotations
 
 import re
+import sys
 import textwrap
 from dataclasses import dataclass
 
 from bs4 import BeautifulSoup, Comment, FeatureNotFound
 
+from .grid_repairs import SpanGroup, apply_grid_repairs
 from .patterns import (
     BULLET_MARKER_RE,
-    FOOTNOTE_RE,
     HIDDEN_ELEMENT_STYLE_RE,
+    NUMERIC_PERCENT_SPACE_RE,
     PAREN_SPACES_RE,
     YEAR_TOKEN_RE,
 )
-from .tokens import (
-    PREFIX_SYMBOLS,
-    PREFIX_TOKENS,
-    SUFFIX_TOKENS,
-    is_numeric_cell,
-)
+from .tokens import is_numeric_cell
 
 
 @dataclass
@@ -196,14 +193,11 @@ class HTMLTableConverter:
                 title=self.title,
             )
 
-        split_idx = self.header_row_count if self.header_row_count > 0 else 1
+        split_idx = max(0, self.header_row_count)
         split_idx = min(split_idx, len(clean_grid))
 
         headers = clean_grid[:split_idx]
         data_rows = clean_grid[split_idx:]
-
-        if not headers and data_rows:
-            headers = [data_rows.pop(0)]
 
         widths, alignments = self._calculate_widths_and_alignments(
             clean_grid, split_idx
@@ -221,12 +215,47 @@ class HTMLTableConverter:
 def _cell_text(cell: object) -> str:
     text = cell.get_text(separator=" ", strip=True)
     text = re.sub(r"\s+", " ", text).strip()
+    text = re.sub(r"\s+([.,;:!?])", r"\1", text)
+    text = re.sub(r"\b([A-Z]) (?=[a-z])", r"\1", text)
+    text = re.sub(r"\.{2,}", " ", text)
     text = PAREN_SPACES_RE.sub(r"(\1)", text)
     return re.sub(r"^\$\s+(\d)", r"$\1", text)
 
 
-def _span_grid(table: object) -> list[list[str]]:
+def _registration_table_template(
+    source_grid: list[list[str]],
+) -> str | None:
+    """Render the stable three-column registered-securities table layout."""
+    if len(source_grid) < 2:
+        return None
+
+    compact = [[cell for cell in row if cell.strip()] for row in source_grid]
+    if any(len(row) != 3 for row in compact):
+        return None
+
+    normalized_headers = tuple(
+        re.sub(r"\s+", " ", cell).strip().casefold() for cell in compact[0]
+    )
+    if (
+        normalized_headers[0] != "title of each class"
+        or normalized_headers[1] not in {"trading symbol", "trading symbol(s)",  "trading symbols"}
+        or normalized_headers[2]
+        != "name of each exchange on which registered"
+    ):
+        return None
+
+    return (
+        HTMLTableConverter(grid=compact, header_row_count=1)
+        .to_generic_table()
+        .build()
+    )
+
+
+def _span_grid(
+    table: object, *, with_spans: bool = False
+) -> list[list[str]] | tuple[list[list[str]], list[SpanGroup]]:
     occupied: dict[tuple[int, int], str] = {}
+    span_groups: list[SpanGroup] = []
     rows = table.find_all("tr")
     for r, tr in enumerate(rows):
         c = 0
@@ -239,6 +268,8 @@ def _span_grid(table: object) -> list[list[str]]:
             except (TypeError, ValueError):
                 colspan = rowspan = 1
             occupied[(r, c)] = _cell_text(cell)
+            if colspan > 1:
+                span_groups.append((r, c, c + colspan, _cell_text(cell)))
             for rr in range(r, r + rowspan):
                 for cc in range(c, c + colspan):
                     occupied.setdefault((rr, cc), "")
@@ -247,128 +278,157 @@ def _span_grid(table: object) -> list[list[str]]:
         return []
     max_r = max(r for r, _ in occupied) + 1
     max_c = max(c for _, c in occupied) + 1
-    return [
-        [occupied.get((r, c), "") for c in range(max_c)]
+    included_rows = [
+        r
         for r in range(max_r)
         if any(occupied.get((r, c), "").strip() for c in range(max_c))
     ]
+    grid = [[occupied.get((r, c), "") for c in range(max_c)] for r in included_rows]
+    if with_spans:
+        row_map = {source: target for target, source in enumerate(included_rows)}
+        span_groups = [
+            (row_map[row], start, end, label)
+            for row, start, end, label in span_groups
+            if row in row_map
+        ]
+        return grid, span_groups
+    return grid
 
 
-def _is_section(row: list[str]) -> bool:
-    cells = [cell.strip().lower() for cell in row if cell.strip()]
-    return bool(cells) and all(not is_numeric_cell(cell) for cell in cells)
+def _signature_template(table: object) -> str | None:
+    source_grid, _ = _span_grid(table, with_spans=True)
+    if not source_grid:
+        return None
+    all_text = " ".join(cell for row in source_grid for cell in row if cell)
+    if "/s/" not in all_text:
+        return None
+    date_pattern = re.compile(r"\b\d{1,2},\s*\d{4}\b")
+    header_index = next(
+        (
+            index
+            for index, row in enumerate(source_grid)
+            if (
+                {"title", "date"}.issubset({cell.casefold() for cell in row if cell})
+                and any(cell.casefold() in {"name", "signature"} for cell in row if cell)
+            )
+        ),
+        None,
+    )
+    if header_index is not None:
+        header = source_grid[header_index]
+        starts = [
+            index
+            for index, cell in enumerate(header)
+            if cell.casefold() in {"name", "signature", "title", "date"}
+        ]
+        starts.sort()
+        groups = [
+            (
+                starts[index],
+                starts[index + 1] if index + 1 < len(starts) else len(header),
+            )
+            for index in range(len(starts))
+        ]
+        records: list[list[str]] = []
+        for row in source_grid[header_index + 1 :]:
+            values = [
+                " ".join(cell for cell in row[start:end] if cell).strip()
+                for start, end in groups
+            ]
+            if not any(values):
+                continue
+            if records and not date_pattern.search(values[-1]):
+                records[-1] = [
+                    " ".join(
+                        part for part in (records[-1][index], values[index]) if part
+                    )
+                    for index in range(3)
+                ]
+            else:
+                records.append(values)
+        header_name = "Signature" if "signature" in header else "Name"
+        return (
+            HTMLTableConverter(
+                grid=[[header_name, "Title", "Date"], *records], header_row_count=1
+            )
+            .to_generic_table()
+            .build()
+        )
+
+    if "by:" not in all_text.casefold():
+        return None
+    midpoint = max(1, len(source_grid[0]) // 2)
+    rows = []
+    for row in source_grid:
+        left = " ".join(cell for cell in row[:midpoint] if cell).strip()
+        right = " ".join(cell for cell in row[midpoint:] if cell).strip()
+        if left or right:
+            rows.append([left, right])
+    return HTMLTableConverter(grid=rows, header_row_count=0).to_generic_table().build()
 
 
-def _heal_grid(grid: list[list[str]]) -> tuple[list[list[str]], int]:
+def _heal_grid(
+    grid: list[list[str]],
+    *,
+    debug: bool = False,
+    span_groups: list[SpanGroup] | None = None,
+) -> tuple[list[list[str]], int]:
     if not grid:
         return [], 0
     width = max(map(len, grid))
     rows = [row + [""] * (width - len(row)) for row in grid]
-    header_count = 1
+    header_count, first_numeric_row = 1, len(rows)
     for i, row in enumerate(rows):
         values = [cell.strip() for cell in row if cell.strip()]
         numeric = sum(
             is_numeric_cell(cell) and not YEAR_TOKEN_RE.match(cell) for cell in values
         )
         if values and numeric / len(values) >= 0.25:
+            header_count = first_numeric_row = i
+            break
+
+    # Keep sparse section rows in the body after a multi-column header.
+    for i in range(1, min(first_numeric_row, len(rows) - 1)):
+        values = [cell.strip() for cell in rows[i] if cell.strip()]
+        next_values = [cell.strip() for cell in rows[i + 1] if cell.strip()]
+        previous_values = [cell.strip() for cell in rows[i - 1] if cell.strip()]
+        if len(values) <= 1 and len(next_values) <= 1 and len(previous_values) > 1:
+            header_count = i
+            break
+        if (
+            len(values) <= 1
+            and len(previous_values) > 1
+            and any(is_numeric_cell(value) for value in next_values)
+        ):
             header_count = i
             break
 
-    drop: set[int] = set()
-    for c in range(1, width):
-        cells = [
-            rows[r][c].strip()
-            for r in range(header_count, len(rows))
-            if rows[r][c].strip() and not _is_section(rows[r])
+    kept = apply_grid_repairs(rows, header_count, debug=debug, span_groups=span_groups)
+    healed = [
+        [
+            NUMERIC_PERCENT_SPACE_RE.sub(
+                r"\1%", PAREN_SPACES_RE.sub(r"(\1)", rows[r][c].strip())
+            )
+            for c in kept
         ]
-        if (
-            cells
-            and len(cells) <= (len(rows) - header_count) * 0.6
-            and all(FOOTNOTE_RE.match(cell) for cell in cells)
-        ):
-            for r in range(header_count, len(rows)):
-                if rows[r][c].strip() and not _is_section(rows[r]):
-                    for left in range(c - 1, -1, -1):
-                        if rows[r][left].strip() and left not in drop:
-                            rows[r][left] += " " + rows[r][c].strip()
-                            break
-            drop.add(c)
-
-    for c in range(1, width):
-        if c in drop:
-            continue
-        cells = [
-            rows[r][c].strip()
-            for r in range(header_count, len(rows))
-            if rows[r][c].strip() and not _is_section(rows[r])
-        ]
-        if cells and all(cell.casefold() in SUFFIX_TOKENS for cell in cells):
-            for r in range(header_count, len(rows)):
-                if rows[r][c].strip() and not _is_section(rows[r]):
-                    for left in range(c - 1, -1, -1):
-                        if rows[r][left].strip() and left not in drop:
-                            suffix = rows[r][c].strip()
-                            rows[r][left] += (
-                                "" if suffix.startswith(("%", ")")) else " "
-                            ) + suffix
-                            break
-            drop.add(c)
-
-    for c in range(width - 1):
-        if c in drop:
-            continue
-        cells = [
-            rows[r][c].strip()
-            for r in range(header_count, len(rows))
-            if rows[r][c].strip() and not _is_section(rows[r])
-        ]
-        if cells and all(
-            cell in PREFIX_SYMBOLS or cell in PREFIX_TOKENS for cell in cells
-        ):
-            for r in range(header_count, len(rows)):
-                if rows[r][c].strip() and not _is_section(rows[r]):
-                    for right in range(c + 1, width):
-                        if rows[r][right].strip() and right not in drop:
-                            prefix = rows[r][c].strip()
-                            rows[r][right] = (
-                                prefix
-                                + (
-                                    ""
-                                    if prefix in PREFIX_SYMBOLS or prefix == "("
-                                    else " "
-                                )
-                                + rows[r][right].strip()
-                            )
-                            break
-            drop.add(c)
-
-    kept = [
-        c
-        for c in range(width)
-        if c not in drop and any(rows[r][c].strip() for r in range(len(rows)))
-    ]
-    # Keep labels from structural columns when their data is folded right.
-    for c in sorted(drop):
-        for r in range(header_count):
-            label = rows[r][c].strip()
-            if not label:
-                continue
-            destination = next((target for target in kept if target > c), None)
-            if destination is None:
-                destination = next(
-                    (target for target in reversed(kept) if target < c), None
-                )
-            if destination is not None:
-                rows[r][destination] = " ".join(
-                    part for part in (rows[r][destination].strip(), label) if part
-                )
-    return [
-        [PAREN_SPACES_RE.sub(r"(\1)", rows[r][c].strip()) for c in kept]
         for r in range(len(rows))
-    ], header_count
+    ]
+    if debug:
+        print(
+            f"[table-debug] first_numeric_row={first_numeric_row} "
+            f"selected header_count={header_count}",
+            file=sys.stderr,
+        )
+        for index, row in enumerate(healed):
+            print(
+                f"[table-debug] healed "
+                f"{'header' if index < header_count else 'data'} row {index}: {row!r}",
+                file=sys.stderr,
+            )
+    return healed, header_count
 
 
-def convert_html_tables_to_ascii(html_content: str) -> str:
+def convert_html_tables_to_ascii(html_content: str, *, debug: bool = False) -> str:
     """Convert valid HTML financial tables into standardized ASCII tables."""
     try:
         soup = BeautifulSoup(html_content, "lxml")
@@ -383,13 +443,17 @@ def convert_html_tables_to_ascii(html_content: str) -> str:
     for comment in soup.find_all(string=lambda value: isinstance(value, Comment)):
         comment.extract()
 
-    for table in list(soup.find_all("table")):
+    for table_index, table in enumerate(list(soup.find_all("table"))):
         rows = table.find_all("tr")
         if len(rows) <= 1:
             table.unwrap()
             continue
         cells = table.find_all(["td", "th"])
         full_text = table.get_text(" ", strip=True)
+        signature_output = _signature_template(table)
+        if signature_output:
+            table.replace_with(soup.new_string(signature_output))
+            continue
         bullet_rows = []
         for row in rows:
             row_cells = row.find_all(["td", "th"])
@@ -405,29 +469,56 @@ def convert_html_tables_to_ascii(html_content: str) -> str:
                     soup.new_string("\n" + "\n".join(bullet_rows) + "\n")
                 )
                 continue
-        if (
+        is_toc = (
             "item" in full_text.lower()
             and "page" in full_text.lower()
             and "part i" in full_text.lower()
+        )
+        non_empty = [_cell_text(cell) for cell in cells if _cell_text(cell)]
+        numeric = sum(is_numeric_cell(cell) for cell in non_empty)
+        source_grid, span_groups = _span_grid(table, with_spans=True)
+        registration_output = _registration_table_template(source_grid)
+        if registration_output:
+            table.replace_with(soup.new_string(registration_output))
+            continue
+        if (
+            len(rows) < 3
+            or not non_empty
+            or (not is_toc and numeric / len(non_empty) < 0.15)
         ):
             table.unwrap()
             continue
-        non_empty = [_cell_text(cell) for cell in cells if _cell_text(cell)]
-        numeric = sum(is_numeric_cell(cell) for cell in non_empty)
-        if len(rows) < 3 or not non_empty or numeric / len(non_empty) < 0.15:
-            table.unwrap()
-            continue
-        grid, header_count = _heal_grid(_span_grid(table))
+        if debug:
+            print(
+                f"[table-debug] table {table_index}: source grid "
+                f"{len(source_grid)}x{max(map(len, source_grid), default=0)}",
+                file=sys.stderr,
+            )
+            for index, row in enumerate(source_grid):
+                print(f"[table-debug] source row {index}: {row!r}", file=sys.stderr)
+            for row, start, end, label in span_groups:
+                print(
+                    f"[table-debug] span row {row}: columns {start}:{end} "
+                    f"label={label!r}",
+                    file=sys.stderr,
+                )
+        grid, header_count = _heal_grid(
+            source_grid, debug=debug, span_groups=span_groups
+        )
         if not grid or len(grid[0]) <= 1:
             table.unwrap()
             continue
-        table.replace_with(
-            soup.new_string(
-                HTMLTableConverter(grid=grid, header_row_count=max(1, header_count))
-                .to_generic_table()
-                .build()
-            )
+        converted = (
+            HTMLTableConverter(grid=grid, header_row_count=header_count)
+            .to_generic_table()
+            .build()
         )
+        if debug:
+            print(
+                f"[table-debug] table {table_index}: converted output", file=sys.stderr
+            )
+            print(converted, file=sys.stderr)
+        table.replace_with(soup.new_string(converted))
     return soup.get_text(separator="\n")
 
 

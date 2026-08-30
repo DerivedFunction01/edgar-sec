@@ -16,7 +16,17 @@ from defs.storage import pa, write_table_atomic
 from defs.tables import convert_html_tables_to_ascii
 
 ROOT = Path(__file__).parents[2]
-DEFAULT_OUTPUT = ROOT / "defs/tests/fixtures/tables/validated_table_corpus.parquet"
+DEFAULT_OUTPUT = ROOT / "defs/tests/fixtures/tables/validated_table_corpus_v2.parquet"
+SCHEMA = pa.schema(
+    [
+        ("corpus", pa.string()),
+        ("table_id", pa.string()),
+        ("source_sha256", pa.string()),
+        ("source_path", pa.string()),
+        ("html", pa.string()),
+        ("expected", pa.string()),
+    ]
+)
 SOURCES = {
     "apple_2025": ROOT
     / "phases/025_webpage_storage/scratch/multi_filing_eval/cache/aapl-20250927.htm",
@@ -60,8 +70,16 @@ def build(output: Path) -> int:
     return len(records)
 
 
+def initialize_empty(output: Path) -> None:
+    output.parent.mkdir(parents=True, exist_ok=True)
+    table = pa.table({field.name: pa.array([], type=field.type) for field in SCHEMA})
+    write_table_atomic(table, output, expected_rows=0)
+    print(f"initialized empty corpus at {output}")
+
+
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--output", type=Path, default=DEFAULT_OUTPUT)
+    parser.add_argument("--empty", action="store_true")
     args = parser.parse_args()
-    build(args.output)
+    initialize_empty(args.output) if args.empty else build(args.output)

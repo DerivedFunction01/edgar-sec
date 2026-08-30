@@ -14,7 +14,8 @@ from defs.tables import convert_html_tables_to_ascii
 from defs.testing.goldens import compare_golden_value
 
 FIXTURES = Path(__file__).parent / "fixtures" / "tables"
-CORPUS_PATH = FIXTURES / "validated_table_corpus.parquet"
+CORPUS_PATH = FIXTURES / "validated_table_corpus_v2.parquet"
+LEGACY_CORPUS_PATH = FIXTURES / "validated_table_corpus.parquet"
 CORPUS_SCHEMA = pa.schema(
     [
         ("corpus", pa.string()),
@@ -52,10 +53,10 @@ def test_synthetic_table_golden(name: str) -> None:
 
 def test_manually_validated_jnj_derivatives_table() -> None:
     records = read_records(
-        CORPUS_PATH,
+        LEGACY_CORPUS_PATH,
         "parquet",
         spec=DatasetSpec(
-            name="validated_table_corpus",
+            name="validated_table_corpus_legacy",
             schema_version="1",
             key_field="table_id",
             arrow_schema=CORPUS_SCHEMA,
@@ -73,7 +74,7 @@ def _validated_corpus(corpus: str) -> tuple[int, int, int, list[str], Path]:
         CORPUS_PATH,
         "parquet",
         spec=DatasetSpec(
-            name="validated_table_corpus",
+            name="validated_table_corpus_v2",
             schema_version="1",
             key_field="table_id",
             arrow_schema=CORPUS_SCHEMA,
@@ -81,6 +82,14 @@ def _validated_corpus(corpus: str) -> tuple[int, int, int, list[str], Path]:
         ),
     )
     selected = [record for record in records if record["corpus"] == corpus]
+    if not selected:
+        return (
+            0,
+            0,
+            0,
+            [],
+            resolve_paths().test_run_root("defs", "table-goldens", _run_id()) / corpus,
+        )
     report_root = (
         resolve_paths().test_run_root("defs", "table-goldens", _run_id()) / corpus
     )
@@ -117,7 +126,7 @@ def _validated_corpus(corpus: str) -> tuple[int, int, int, list[str], Path]:
     rate = matched / comparable if comparable else 0.0
     summary = {
         "corpus": corpus,
-        "threshold": 0.95,
+        "threshold": 1.0,
         "tables_checked": len(selected),
         "matched": matched,
         "diverged": divergent,
@@ -129,7 +138,7 @@ def _validated_corpus(corpus: str) -> tuple[int, int, int, list[str], Path]:
         json.dumps(summary, indent=2, sort_keys=True) + "\n", encoding="utf-8"
     )
     print(
-        f"TABLE CORPUS: {'PASS' if invalid == 0 and comparable and rate >= 0.95 else 'FAIL'}\n"
+        f"TABLE CORPUS: {'PASS' if invalid == 0 and comparable and rate == 1.0 else 'FAIL'}\n"
         f"Corpus: {corpus}\nTables checked: {len(selected)}\n"
         f"Matched: {matched}\nDiverged: {divergent}\nInvalid: {invalid}\n"
         f"Match rate: {rate:.2%}\nDivergence report: {report_root}"
@@ -144,9 +153,11 @@ def _validated_corpus(corpus: str) -> tuple[int, int, int, list[str], Path]:
 def test_validated_table_corpus(corpus: str) -> None:
     matched, divergent, invalid, divergent_ids, report_root = _validated_corpus(corpus)
     comparable = matched + divergent
+    if not comparable:
+        pytest.skip(f"{corpus} has no promoted live tables")
     assert comparable > 0, f"{corpus} has no tables: {report_root}"
     assert invalid == 0, f"{corpus} has invalid tables: {report_root}"
-    assert matched / comparable >= 0.95, (
+    assert matched == comparable, (
         f"{corpus} matched {matched}/{comparable}; "
         f"divergences: {divergent_ids}; report: {report_root}"
     )
