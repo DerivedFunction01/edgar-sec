@@ -6,7 +6,21 @@ import re
 import textwrap
 from dataclasses import dataclass
 
-_RE_NUMERIC_CELL = re.compile(r"^[\$\€\£]?\s*\(?[\d,\.]+\)?%?$")
+from bs4 import BeautifulSoup, Comment, FeatureNotFound
+
+from .patterns import (
+    BULLET_MARKER_RE,
+    FOOTNOTE_RE,
+    HIDDEN_ELEMENT_STYLE_RE,
+    PAREN_SPACES_RE,
+    YEAR_TOKEN_RE,
+)
+from .tokens import (
+    PREFIX_SYMBOLS,
+    PREFIX_TOKENS,
+    SUFFIX_TOKENS,
+    is_numeric_cell,
+)
 
 
 @dataclass
@@ -149,14 +163,8 @@ class HTMLTableConverter:
             col_data_cells = [
                 r[c].strip() for r in data_rows if len(r) > c and r[c].strip()
             ]
-            num_count = sum(
-                1
-                for cell in col_data_cells
-                if _RE_NUMERIC_CELL.match(cell) or cell in ("—", "-", "–")
-            )
-            has_text = any(
-                re.search(r"[a-zA-Z]", cell) for cell in col_data_cells
-            )
+            num_count = sum(1 for cell in col_data_cells if is_numeric_cell(cell))
+            has_text = any(re.search(r"[a-zA-Z]", cell) for cell in col_data_cells)
             if c == 0 and has_text:
                 is_numeric = False
             else:
@@ -210,4 +218,217 @@ class HTMLTableConverter:
         )
 
 
-__all__ = ["GenericTable", "HTMLTableConverter"]
+def _cell_text(cell: object) -> str:
+    text = cell.get_text(separator=" ", strip=True)
+    text = re.sub(r"\s+", " ", text).strip()
+    text = PAREN_SPACES_RE.sub(r"(\1)", text)
+    return re.sub(r"^\$\s+(\d)", r"$\1", text)
+
+
+def _span_grid(table: object) -> list[list[str]]:
+    occupied: dict[tuple[int, int], str] = {}
+    rows = table.find_all("tr")
+    for r, tr in enumerate(rows):
+        c = 0
+        for cell in tr.find_all(["td", "th"]):
+            while (r, c) in occupied:
+                c += 1
+            try:
+                colspan = max(1, int(cell.get("colspan", 1)))
+                rowspan = max(1, int(cell.get("rowspan", 1)))
+            except (TypeError, ValueError):
+                colspan = rowspan = 1
+            occupied[(r, c)] = _cell_text(cell)
+            for rr in range(r, r + rowspan):
+                for cc in range(c, c + colspan):
+                    occupied.setdefault((rr, cc), "")
+            c += colspan
+    if not occupied:
+        return []
+    max_r = max(r for r, _ in occupied) + 1
+    max_c = max(c for _, c in occupied) + 1
+    return [
+        [occupied.get((r, c), "") for c in range(max_c)]
+        for r in range(max_r)
+        if any(occupied.get((r, c), "").strip() for c in range(max_c))
+    ]
+
+
+def _is_section(row: list[str]) -> bool:
+    cells = [cell.strip().lower() for cell in row if cell.strip()]
+    return bool(cells) and all(not is_numeric_cell(cell) for cell in cells)
+
+
+def _heal_grid(grid: list[list[str]]) -> tuple[list[list[str]], int]:
+    if not grid:
+        return [], 0
+    width = max(map(len, grid))
+    rows = [row + [""] * (width - len(row)) for row in grid]
+    header_count = 1
+    for i, row in enumerate(rows):
+        values = [cell.strip() for cell in row if cell.strip()]
+        numeric = sum(
+            is_numeric_cell(cell) and not YEAR_TOKEN_RE.match(cell) for cell in values
+        )
+        if values and numeric / len(values) >= 0.25:
+            header_count = i
+            break
+
+    drop: set[int] = set()
+    for c in range(1, width):
+        cells = [
+            rows[r][c].strip()
+            for r in range(header_count, len(rows))
+            if rows[r][c].strip() and not _is_section(rows[r])
+        ]
+        if (
+            cells
+            and len(cells) <= (len(rows) - header_count) * 0.6
+            and all(FOOTNOTE_RE.match(cell) for cell in cells)
+        ):
+            for r in range(header_count, len(rows)):
+                if rows[r][c].strip() and not _is_section(rows[r]):
+                    for left in range(c - 1, -1, -1):
+                        if rows[r][left].strip() and left not in drop:
+                            rows[r][left] += " " + rows[r][c].strip()
+                            break
+            drop.add(c)
+
+    for c in range(1, width):
+        if c in drop:
+            continue
+        cells = [
+            rows[r][c].strip()
+            for r in range(header_count, len(rows))
+            if rows[r][c].strip() and not _is_section(rows[r])
+        ]
+        if cells and all(cell.casefold() in SUFFIX_TOKENS for cell in cells):
+            for r in range(header_count, len(rows)):
+                if rows[r][c].strip() and not _is_section(rows[r]):
+                    for left in range(c - 1, -1, -1):
+                        if rows[r][left].strip() and left not in drop:
+                            suffix = rows[r][c].strip()
+                            rows[r][left] += (
+                                "" if suffix.startswith(("%", ")")) else " "
+                            ) + suffix
+                            break
+            drop.add(c)
+
+    for c in range(width - 1):
+        if c in drop:
+            continue
+        cells = [
+            rows[r][c].strip()
+            for r in range(header_count, len(rows))
+            if rows[r][c].strip() and not _is_section(rows[r])
+        ]
+        if cells and all(
+            cell in PREFIX_SYMBOLS or cell in PREFIX_TOKENS for cell in cells
+        ):
+            for r in range(header_count, len(rows)):
+                if rows[r][c].strip() and not _is_section(rows[r]):
+                    for right in range(c + 1, width):
+                        if rows[r][right].strip() and right not in drop:
+                            prefix = rows[r][c].strip()
+                            rows[r][right] = (
+                                prefix
+                                + (
+                                    ""
+                                    if prefix in PREFIX_SYMBOLS or prefix == "("
+                                    else " "
+                                )
+                                + rows[r][right].strip()
+                            )
+                            break
+            drop.add(c)
+
+    kept = [
+        c
+        for c in range(width)
+        if c not in drop and any(rows[r][c].strip() for r in range(len(rows)))
+    ]
+    # Keep labels from structural columns when their data is folded right.
+    for c in sorted(drop):
+        for r in range(header_count):
+            label = rows[r][c].strip()
+            if not label:
+                continue
+            destination = next((target for target in kept if target > c), None)
+            if destination is None:
+                destination = next(
+                    (target for target in reversed(kept) if target < c), None
+                )
+            if destination is not None:
+                rows[r][destination] = " ".join(
+                    part for part in (rows[r][destination].strip(), label) if part
+                )
+    return [
+        [PAREN_SPACES_RE.sub(r"(\1)", rows[r][c].strip()) for c in kept]
+        for r in range(len(rows))
+    ], header_count
+
+
+def convert_html_tables_to_ascii(html_content: str) -> str:
+    """Convert valid HTML financial tables into standardized ASCII tables."""
+    try:
+        soup = BeautifulSoup(html_content, "lxml")
+    except FeatureNotFound:  # pragma: no cover - parser availability varies
+        soup = BeautifulSoup(html_content, "html.parser")
+    for element in soup(
+        ["head", "script", "style", "title", "meta", "noscript", "ix:hidden"]
+    ):
+        element.decompose()
+    for element in soup.find_all(style=HIDDEN_ELEMENT_STYLE_RE):
+        element.decompose()
+    for comment in soup.find_all(string=lambda value: isinstance(value, Comment)):
+        comment.extract()
+
+    for table in list(soup.find_all("table")):
+        rows = table.find_all("tr")
+        if len(rows) <= 1:
+            table.unwrap()
+            continue
+        cells = table.find_all(["td", "th"])
+        full_text = table.get_text(" ", strip=True)
+        bullet_rows = []
+        for row in rows:
+            row_cells = row.find_all(["td", "th"])
+            if len(row_cells) != 2:
+                break
+            marker = _cell_text(row_cells[0])
+            if not BULLET_MARKER_RE.match(marker) or len(marker) > 6:
+                break
+            bullet_rows.append(f"• {_cell_text(row_cells[1])}")
+        else:
+            if bullet_rows:
+                table.replace_with(
+                    soup.new_string("\n" + "\n".join(bullet_rows) + "\n")
+                )
+                continue
+        if (
+            "item" in full_text.lower()
+            and "page" in full_text.lower()
+            and "part i" in full_text.lower()
+        ):
+            table.unwrap()
+            continue
+        non_empty = [_cell_text(cell) for cell in cells if _cell_text(cell)]
+        numeric = sum(is_numeric_cell(cell) for cell in non_empty)
+        if len(rows) < 3 or not non_empty or numeric / len(non_empty) < 0.15:
+            table.unwrap()
+            continue
+        grid, header_count = _heal_grid(_span_grid(table))
+        if not grid or len(grid[0]) <= 1:
+            table.unwrap()
+            continue
+        table.replace_with(
+            soup.new_string(
+                HTMLTableConverter(grid=grid, header_row_count=max(1, header_count))
+                .to_generic_table()
+                .build()
+            )
+        )
+    return soup.get_text(separator="\n")
+
+
+__all__ = ["GenericTable", "HTMLTableConverter", "convert_html_tables_to_ascii"]

@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from .currencies import MAJOR_CURRENCIES, PREFIX_SYMBOLS, SUFFIX_SYMBOLS
+from .currencies import MAJOR_CURRENCIES
 from .patterns import (
     BILLION_RE,
     MILLION_RE,
@@ -14,6 +14,12 @@ from .patterns import (
     THOUSAND_RE,
     UNIT_RE,
     YEAR_RE,
+)
+from .tokens import (
+    PREFIX_SYMBOLS,
+    SUFFIX_SYMBOLS,
+    is_financial_placeholder,
+    is_numeric_start,
 )
 
 
@@ -52,24 +58,12 @@ def scan_for_multiplier(text: str) -> float | None:
 
 def is_numeric(val: str) -> bool:
     """Check if value is numeric."""
-    clean = NUMERIC_WITH_SYMBOLS.sub("", val).strip()
+    clean = val.strip()
+    if is_financial_placeholder(clean):
+        return False
+    clean = NUMERIC_WITH_SYMBOLS.sub("", clean).strip()
     clean = UNIT_RE.sub("", clean)
     return bool(NUMERIC_RE.match(clean))
-
-
-def is_numeric_start(val: str) -> bool:
-    """Check if value looks like start of a number."""
-    if not val:
-        return False
-    clean = val
-    for symbol in PREFIX_SYMBOLS:
-        clean = clean.replace(symbol, "")
-    for symbol in SUFFIX_SYMBOLS:
-        clean = clean.replace(symbol, "")
-    clean = clean.replace(",", "").replace("(", "").replace(" ", "")
-    if not clean:
-        return False
-    return clean[0].isdigit() or clean.startswith(("-", "."))
 
 
 def is_percentage_header(header_text: str) -> bool:
@@ -154,7 +148,7 @@ def normalize_percentage_columns(
             if idx >= len(new_row):
                 continue
             cell = new_row[idx].strip()
-            if not cell or cell in {"-", "—", "N/A", "n/a"}:
+            if not cell or is_financial_placeholder(cell):
                 continue
             if "%" in cell:
                 continue

@@ -3,11 +3,17 @@
 from __future__ import annotations
 
 from defs.tables import (
+    ALL_CURRENCY_SYMBOLS,
+    FINANCIAL_PLACEHOLDERS,
     GenericTable,
     HTMLTableConverter,
     SimpleTableProcessor,
+    convert_html_tables_to_ascii,
+    is_financial_placeholder,
+    is_numeric_cell,
     process_table,
 )
+from defs.tables.currencies import MAJOR_CURRENCIES
 
 
 def test_generic_table_build():
@@ -203,3 +209,68 @@ Assets                          $ 500
     assert "<TABLE>" in rebuilt
     assert "<CAPTION>\nSummary</CAPTION>" in rebuilt
     assert "$500" in rebuilt
+
+
+def test_html_conversion_resolves_rowspan_and_colspan():
+    html = """
+    <table><tr><th rowspan="2">Item</th><th colspan="2">Years</th></tr>
+    <tr><th>2024</th><th>2025</th></tr>
+    <tr><td>Revenue</td><td>$ 10</td><td>$ 12</td></tr>
+    <tr><td>Costs</td><td>$ 4</td><td>$ 5</td></tr></table>
+    """
+    result = convert_html_tables_to_ascii(html)
+    assert "Years" in result and "2024" in result and "2025" in result
+    assert "Revenue" in result and "$10" in result
+
+
+def test_html_conversion_merges_split_currency_and_footnotes():
+    html = """
+    <table><tr><th>Item</th><th>Amount</th><th>Ref</th></tr>
+    <tr><td>Cash</td><td>$</td><td>2,559,320</td><td>(a)</td></tr>
+    <tr><td>Debt</td><td>$</td><td>3,803</td><td></td></tr>
+    <tr><td>Other</td><td>$</td><td>100</td><td>(b)</td></tr></table>
+    """
+    result = convert_html_tables_to_ascii(html)
+    assert "$2,559,320" in result and "(a)" in result
+    assert "$3,803" in result
+
+
+def test_html_conversion_unwraps_bullets_and_toc():
+    html = """
+    <table><tr><td>1.</td><td>First disclosure</td></tr>
+    <tr><td>2.</td><td>Second disclosure</td></tr></table>
+    <table><tr><td>PART I</td><td>Page</td></tr>
+    <tr><td>Item 1 ...</td><td>4</td></tr></table>
+    """
+    result = convert_html_tables_to_ascii(html)
+    assert "• First disclosure" in result
+    assert "PART I" in result and "<TABLE>" not in result
+
+
+def test_html_conversion_preserves_section_headers_and_stub_alignment():
+    html = """
+    <table><tr><th>Description</th><th>2024</th><th>2025</th></tr>
+    <tr><td colspan="3">North America</td></tr>
+    <tr><td>Revenue</td><td>10</td><td>12</td></tr>
+    <tr><td>Margin</td><td>20%</td><td>25%</td></tr></table>
+    """
+    result = convert_html_tables_to_ascii(html)
+    assert "North America" in result and "Revenue" in result
+    assert "<S>" in result
+
+
+def test_table_token_registry_covers_all_currency_metadata():
+    registered_symbols = {
+        symbol
+        for currency in MAJOR_CURRENCIES.values()
+        for symbol in currency["symbols"]
+    }
+    assert registered_symbols == ALL_CURRENCY_SYMBOLS
+    for symbol in registered_symbols:
+        assert is_numeric_cell(f"{symbol}123")
+
+
+def test_table_token_registry_has_one_placeholder_policy():
+    for placeholder in FINANCIAL_PLACEHOLDERS:
+        assert is_financial_placeholder(placeholder)
+        assert is_numeric_cell(placeholder)

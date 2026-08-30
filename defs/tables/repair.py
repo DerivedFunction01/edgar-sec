@@ -6,7 +6,6 @@ import re
 
 from defs.regex import build_alternation
 
-from .currencies import PREFIX_SYMBOLS, SUFFIX_SYMBOLS
 from .patterns import (
     CLOSE_PAREN_SPACE_RE,
     COMMA_SPACE_RE,
@@ -16,7 +15,14 @@ from .patterns import (
     SPACE_COMMA_RE,
     YEAR_RE,
 )
-from .types import is_numeric, is_numeric_start
+from .tokens import (
+    PREFIX_SYMBOLS,
+    SUFFIX_SYMBOLS,
+    is_numeric_start,
+    is_prefix_token,
+    is_suffix_token,
+)
+from .types import is_numeric
 
 
 def merge_sparse_columns(
@@ -108,16 +114,14 @@ def detect_merge_patterns(
         for row in raw_rows:
             if col_idx < len(row) and row[col_idx].strip():
                 val = row[col_idx].strip()
-                if val in PREFIX_SYMBOLS:
+                if is_prefix_token(val):
                     col_patterns.add("prefix")
-                elif val in SUFFIX_SYMBOLS:
+                elif is_suffix_token(val):
                     col_patterns.add("suffix")
                 elif val == "(":
                     col_patterns.add("prefix_paren")
                 elif val == ")":
                     col_patterns.add("suffix_paren")
-                elif val == "%":
-                    col_patterns.add("suffix_percent")
                 else:
                     col_patterns.add("other")
 
@@ -170,9 +174,9 @@ def clean_and_merge_symbols(row: list[str]) -> list[str]:
             next_val = cleaned_row[i + 1]
 
             if (
-                (next_val in SUFFIX_SYMBOLS or (next_val in [")", "%"] and current_val))
+                (is_suffix_token(next_val) and current_val)
                 and is_numeric_start(current_val)
-                or (current_val in PREFIX_SYMBOLS or (current_val == "(" and next_val))
+                or is_prefix_token(current_val)
                 and is_numeric_start(next_val)
             ):
                 current_val = current_val + next_val

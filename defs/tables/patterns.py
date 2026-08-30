@@ -6,6 +6,13 @@ import re
 
 from defs.regex import build_alternation, build_regex
 
+from .tokens import (
+    BULLET_MARKERS,
+    CURRENCY_TOKEN_RE,
+    FINANCIAL_PLACEHOLDERS,
+    NUMERIC_CELL_RE,
+)
+
 # --- BASIC REGEX PATTERNS ---
 CAPTION_RE = re.compile(
     r"<caption[^>]*>(.*?)(?:</caption\s*>|(?=\n\s*\n|\n\s*<S>|\n\s*[-=]{3,}|\Z))",
@@ -17,9 +24,20 @@ C_MARKER_RE = re.compile(r"<C>")
 HTML_TAG_RE = re.compile(r"<[^>]+>")
 WHITESPACE_RE = re.compile(r"\s+")
 NUMERIC_RE = re.compile(r"^-?\d+(?:\.\d+)?$")
-NUMERIC_WITH_SYMBOLS = re.compile(r"[$€£¥₹%\(\)\-,]")
+NUMERIC_WITH_SYMBOLS = re.compile(rf"(?:{CURRENCY_TOKEN_RE.pattern}|[%()\-,])")
 PERCENT_HEADER_RE = re.compile(
     rf"\b(?:%|{build_alternation(['percentage', 'percent'])})\b", re.IGNORECASE
+)
+
+# Canonical patterns used while classifying and healing HTML financial tables.
+PAREN_SPACES_RE = re.compile(r"\(\s+([^\)]+?)\s+\)")
+FOOTNOTE_RE = re.compile(r"^\(?[a-zA-Z0-9\*\†\‡\§\d]{1,3}\)?$")
+YEAR_TOKEN_RE = re.compile(r"^\b(202[0-9]|201[0-9]|200[0-9]|199[0-9])\b$")
+BULLET_MARKER_RE = re.compile(
+    rf"^(?:{build_alternation(sorted(BULLET_MARKERS), auto_escape=True)}|\(?\d{{1,2}}[\.\)]?|\(?[a-zA-Z][\.\)]?)$"
+)
+HIDDEN_ELEMENT_STYLE_RE = re.compile(
+    r"(?:display:\s*none|visibility:\s*hidden)", re.IGNORECASE
 )
 
 # Safe patterns for years in tables
@@ -90,18 +108,24 @@ PARAGRAPH_THRESHOLD = 250
 
 __all__ = [
     "BILLION_RE",
+    "BULLET_MARKER_RE",
     "CAPTION_RE",
     "CLOSE_PAREN_SPACE_RE",
     "COMMA_SPACE_RE",
     "CURRENCY_SPACE_RE",
     "C_MARKER_RE",
+    "FINANCIAL_PLACEHOLDERS",
+    "FOOTNOTE_RE",
+    "HIDDEN_ELEMENT_STYLE_RE",
     "HTML_TAG_RE",
     "LAST_HEADER_PATTERN",
     "MILLION_RE",
+    "NUMERIC_CELL_RE",
     "NUMERIC_RE",
     "NUMERIC_WITH_SYMBOLS",
     "OPEN_PAREN_SPACE_RE",
     "PARAGRAPH_THRESHOLD",
+    "PAREN_SPACES_RE",
     "PERCENT_HEADER_RE",
     "PERCENT_SPACE_RE",
     "SPACE_COMMA_RE",
@@ -112,4 +136,5 @@ __all__ = [
     "UNIT_RE",
     "WHITESPACE_RE",
     "YEAR_RE",
+    "YEAR_TOKEN_RE",
 ]

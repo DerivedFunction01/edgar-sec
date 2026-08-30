@@ -77,6 +77,10 @@ parsing and section extraction never re-hit the SEC archive. It is **storage-onl
 - Deferred to later parallel tracks (built on `document_blobs`): multi-era
   envelope unpacking, HTML/iXBRL cleaning, and stub/defect detection.
 
+Shared table processing is implemented under `defs/tables/` so downstream
+document-processing phases use one span-aware HTML-to-ASCII conversion contract
+for layout detection, financial column healing, and SEC table rendering.
+
 
 # SECTION 1: THE DISCRETE AND HIDDEN SECTIONS TAXONOMY
 

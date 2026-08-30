@@ -109,6 +109,10 @@ Discovers Parquet/JSONL datasets and JSON documents (plans, manifests, merge
 reports), serves schema/stats/paged rows with filter+sort+search, and a guarded
 read-only SQL console — with a built TypeScript UI.
 
+The [shared table engine](defs/tables/README.md) provides HTML span-grid
+resolution, layout-table unwrapping, financial column healing, and standardized
+ASCII table generation for document-processing phases.
+
 ## Conventions
 
 - Every change is gated by the root validation runner: `python check.py` runs
