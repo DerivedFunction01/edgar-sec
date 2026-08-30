@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import json
 from collections import defaultdict
-from concurrent.futures import ThreadPoolExecutor
+from concurrent.futures import ProcessPoolExecutor
 from contextlib import suppress
 from dataclasses import asdict, dataclass
 from pathlib import Path
@@ -368,7 +368,12 @@ def run_partition(
                         processor=processor,
                     )
             else:
-                with ThreadPoolExecutor(max_workers=workers) as pool:
+                import multiprocessing
+
+                with ProcessPoolExecutor(
+                    max_workers=workers,
+                    mp_context=multiprocessing.get_context("spawn"),
+                ) as pool:
                     future_to_task = {
                         pool.submit(
                             process_chunk,
@@ -378,13 +383,48 @@ def run_partition(
                             task.chunk_occurrences,
                             fetcher,
                             task.chunk_path,
-                            progress,
+                            None,
                             processor,
                         ): task
                         for task in tasks
                     }
                     for future, task in future_to_task.items():
-                        chunk_results[task.index] = future.result()
+                        chunk_result = future.result()
+                        chunk_results[task.index] = chunk_result
+                        if progress is not None:
+                            # Emit document-level completion events for progress callbacks
+                            for failure in chunk_result.failures:
+                                progress(
+                                    {
+                                        "type": "document_done",
+                                        "status": failure.status,
+                                        "doc_id": doc_id(
+                                            failure.locator.accession,
+                                            failure.locator.document_path,
+                                        ),
+                                        "error": failure.error,
+                                    }
+                                )
+                            for _ in range(chunk_result.blob_count):
+                                progress(
+                                    {
+                                        "type": "document_done",
+                                        "status": "ok",
+                                        "chunk_id": task.chunk_id,
+                                    }
+                                )
+                            progress(
+                                {
+                                    "type": "chunk_done",
+                                    "chunk_id": task.chunk_id,
+                                    "status": (
+                                        "completed"
+                                        if chunk_result.succeeded
+                                        else "failed"
+                                    ),
+                                    "fetched_count": chunk_result.fetched_count,
+                                }
+                            )
     finally:
         close = getattr(fetcher, "close", None)
         if close is not None:

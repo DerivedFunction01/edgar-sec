@@ -1,12 +1,16 @@
+"""Generic text-based ASCII/SGML table layout builder and HTML grid converter."""
+
+from __future__ import annotations
+
 import textwrap
 from dataclasses import dataclass
 
 
 @dataclass
 class GenericTable:
-    """
-    A generic class for building formatted text-based tables with SEC tags.
-    This class is responsible only for the layout and formatting, not data preparation.
+    """A generic class for building formatted text-based tables with SEC tags.
+
+    Responsible only for the layout and formatting, not data preparation.
     """
 
     headers: list[str] | list[list[str]]
@@ -21,24 +25,25 @@ class GenericTable:
         widths: list[int],
         alignments: list[str],
     ) -> list[str]:
-        """
-        Formats a single logical row into multiple physical lines with text wrapping.
-        """
+        """Format a single logical row into multiple physical lines with text wrapping."""
         wrapped_cells = []
         max_lines = 0
         for i, cell_content in enumerate(cells):
-            lines = textwrap.wrap(cell_content, width=widths[i], break_long_words=False)  # type: ignore
+            text_val = (
+                " ".join(cell_content)
+                if isinstance(cell_content, list)
+                else str(cell_content)
+            )
+            lines = textwrap.wrap(text_val, width=widths[i], break_long_words=False)
             if not lines:  # Handle empty cells
                 lines = [""]
             wrapped_cells.append(lines)
             max_lines = max(max_lines, len(lines))
 
-        # Pad shorter cells with blank lines to match the tallest cell
         for lines in wrapped_cells:
             while len(lines) < max_lines:
                 lines.append("")
 
-        # Construct the physical lines for the row
         output_lines = []
         for i in range(max_lines):
             row_parts = []
@@ -54,11 +59,9 @@ class GenericTable:
         return output_lines
 
     def build(self) -> str:
-        """Builds the final table string with SEC tags."""
+        """Build the final table string with SEC tags."""
         header_lines = []
-        # --- NEW: Handle both single-line and multi-line headers ---
         if self.headers and isinstance(self.headers[0], list):
-            # It's a list of lists (multi-line header)
             for header_row in self.headers:
                 assert isinstance(header_row, list)
                 header_lines.extend(
@@ -67,7 +70,6 @@ class GenericTable:
                     )
                 )
         else:
-            # It's a single list of strings, but we need to assert its type for the type checker.
             assert all(isinstance(h, str) for h in self.headers)
             header_lines.extend(
                 self._format_row_with_wrapping(
@@ -76,8 +78,9 @@ class GenericTable:
             )
 
         separator = "  ".join(["-" * w for w in self.widths])
+        first_w = self.widths[0] if self.widths else 0
         sec_tags_line = (
-            "<S>".ljust(self.widths[0] + 2)
+            "<S>".ljust(first_w + 2)
             + "".join(["<C>".ljust(w + 2) for w in self.widths[1:]]).rstrip()
         )
 
@@ -96,16 +99,14 @@ class GenericTable:
 
 @dataclass
 class HTMLTableConverter:
-    """
-    Converts a 2D list of strings (from a parsed HTML table) into a GenericTable.
-    """
+    """Converts a 2D list of strings (from a parsed HTML table) into a GenericTable."""
 
     grid: list[list[str]]
     title: str = ""
     header_row_count: int = 1
 
     def _calculate_widths_and_alignments(self) -> tuple[list[int], list[str]]:
-        """Calculates column widths and default alignments from the grid."""
+        """Calculate column widths and default alignments from the grid."""
         if not self.grid:
             return [], []
 
@@ -116,10 +117,7 @@ class HTMLTableConverter:
                 if i < num_cols:
                     widths[i] = max(widths[i], len(cell))
 
-        # --- NEW: Ensure a minimum width of 1 for all columns ---
         widths = [max(1, w) for w in widths]
-
-        # Default alignment: left for first column, right for others
         alignments = ["l"] + ["r"] * (num_cols - 1)
         return widths, alignments
 
@@ -129,9 +127,6 @@ class HTMLTableConverter:
                 headers=[], data_rows=[], widths=[], alignments=[], title=self.title
             )
 
-        # --- UPDATE: Fallback Logic ---
-        # If header_row_count is 0, default to 1 so the first row becomes the header.
-        # Otherwise, use the detected count.
         if self.header_row_count > 0:
             split_idx = self.header_row_count
         else:
@@ -143,13 +138,11 @@ class HTMLTableConverter:
             if split_idx == 0:
                 split_idx = 1
 
-        # Safety check: ensure we don't slice beyond the grid
         split_idx = min(split_idx, len(self.grid))
 
-        headers = self.grid[:split_idx]  # Captures ALL header rows
+        headers = self.grid[:split_idx]
         data_rows = self.grid[split_idx:]
 
-        # Fallback: If headers is empty but data_rows exist, promote first data row to header
         if not headers and data_rows:
             headers = [data_rows.pop(0)]
 
@@ -162,3 +155,6 @@ class HTMLTableConverter:
             alignments=alignments,
             title=self.title,
         )
+
+
+__all__ = ["GenericTable", "HTMLTableConverter"]

@@ -111,7 +111,7 @@ def merge_partition(
         )
         existing_ids = {str(row["chunk_id"]) for row in existing_rows}
 
-        chunk_list = [Path(p) for p in chunk_dbs]
+        chunk_list = [Path(p).resolve() for p in chunk_dbs]
         for batch_start in range(0, len(chunk_list), ATTACH_BATCH_SIZE):
             batch = chunk_list[batch_start : batch_start + ATTACH_BATCH_SIZE]
             attached_in_batch: list[str] = []
@@ -122,7 +122,11 @@ def merge_partition(
                     alias = f"chunk_{batch_start + idx:05d}"
                     executor.exec(
                         executor.compiler.compile(
-                            Attach(path=str(chunk_path), alias=alias, read_only=True)
+                            Attach(
+                                path=str(chunk_path.resolve()),
+                                alias=alias,
+                                read_only=True,
+                            )
                         )
                     )
                     attached_in_batch.append(alias)

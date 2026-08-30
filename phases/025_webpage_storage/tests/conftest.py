@@ -143,3 +143,32 @@ def fixture_database():
     with suppress(Exception):
         if fixture_paths.root.is_dir():
             shutil.rmtree(fixture_paths.root)
+
+
+@pytest.fixture(autouse=True)
+def clean_transient_test_runs():
+    """Automatically clean up any transient run or test-generated fixture folders created during test execution."""
+    import shutil
+
+    paths = resolve_paths()
+    runs_dir = paths.transient_root / "webpage_storage" / "runs"
+    fixtures_dir = paths.fixtures_root
+
+    existing_runs = set(runs_dir.iterdir()) if runs_dir.is_dir() else set()
+    existing_fixtures = set(fixtures_dir.iterdir()) if fixtures_dir.is_dir() else set()
+
+    yield
+
+    if runs_dir.is_dir():
+        for p in runs_dir.iterdir():
+            if p not in existing_runs:
+                with suppress(Exception):
+                    shutil.rmtree(p)
+
+    if fixtures_dir.is_dir():
+        for p in fixtures_dir.iterdir():
+            if p not in existing_fixtures and p.name.startswith(
+                ("test-", "cli-", "fix-")
+            ):
+                with suppress(Exception):
+                    shutil.rmtree(p)

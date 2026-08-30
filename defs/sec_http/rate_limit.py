@@ -5,7 +5,7 @@ from __future__ import annotations
 import threading
 import time
 
-DEFAULT_RATE_LIMIT_RPS = 4.0
+DEFAULT_RATE_LIMIT_RPS = 7.0
 DEFAULT_MIN_INTERVAL_S = 1.0 / DEFAULT_RATE_LIMIT_RPS
 MAX_INTERVAL_S = 60.0
 THROTTLE_MULTIPLIER = 1.5

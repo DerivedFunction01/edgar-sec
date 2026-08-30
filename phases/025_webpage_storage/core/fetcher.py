@@ -92,6 +92,15 @@ class FixtureArchiveFetcher:
 
         return FetchResult(locator=locator, payload=None, status="missing")
 
+    def __getstate__(self) -> dict[str, object]:
+        return {"_fixture_paths": self._fixture_paths}
+
+    def __setstate__(self, state: dict[str, object]) -> None:
+        self._fixture_paths = state["_fixture_paths"]  # type: ignore[assignment]
+        self._local = threading.local()
+        self._all_executors = []
+        self._lock = threading.Lock()
+
     def close(self) -> None:
         """Close the fixture database connections owned by this fetcher."""
         with self._lock:
@@ -106,6 +115,20 @@ class LiveSecArchiveFetcher:
 
     def __init__(self, http_client: SecHttpClient) -> None:
         self._http_client = http_client
+
+    def __getstate__(self) -> dict[str, object]:
+        return {
+            "user_agent": self._http_client.user_agent,
+            "cache_dir": self._http_client.cache_dir,
+        }
+
+    def __setstate__(self, state: dict[str, object]) -> None:
+        from defs.sec_http import make_sec_http_client
+
+        self._http_client = make_sec_http_client(
+            user_agent=state.get("user_agent"),  # type: ignore[arg-type]
+            cache_dir=state.get("cache_dir"),  # type: ignore[arg-type]
+        )
 
     @property
     def metrics(self) -> HttpMetrics:

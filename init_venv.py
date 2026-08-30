@@ -29,7 +29,6 @@ BASE_PACKAGES = [
     "tqdm",
     "numpy",
     "scikit-learn",
-    "plotly",
     "jupyter",
     "ipywidgets",
     "pyarrow",
@@ -50,6 +49,8 @@ CUSTOM_PACKAGES = [
     "httpx2",
     "psutil",
     "zstandard",
+    "lxml",
+    "plotly",
 ]
 
 # Packages for the ML server

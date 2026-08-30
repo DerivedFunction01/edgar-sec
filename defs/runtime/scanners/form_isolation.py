@@ -23,6 +23,8 @@ _ALLOWED_PATHS = (
     "old-webpage.py",
     "old-webpage.py.txt",
     "scratch/",
+    "phases/025_webpage_storage/processors/forms/",
+    "phases/025_webpage_storage/processors/router.py",
 )
 
 
