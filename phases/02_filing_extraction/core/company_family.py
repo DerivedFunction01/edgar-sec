@@ -14,6 +14,7 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
 
+from defs.entities import JURISDICTION_RE
 from defs.regex import build_alternation
 
 from .family_vocab import (
@@ -28,15 +29,10 @@ from .family_vocab import (
     PLURAL_MAP,
     ROMAN,
     SEED,
-    STATE_CODES,
     STRUCTURAL_THRESHOLD,
 )
 
 PUNCT_RE = re.compile(r"[/\\,._\-—()\[\]{}'\"’`&]+")
-JURISDICTION_RE = re.compile(
-    rf"\s*/\s*{build_alternation(STATE_CODES)}\s*/\s*",
-    re.IGNORECASE,
-)
 TRADEMARK_RE = re.compile(
     rf"\({build_alternation(['sm', 'tm', 'r', 'c'])}\)", re.IGNORECASE
 )

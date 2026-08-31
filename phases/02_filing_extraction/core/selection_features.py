@@ -15,6 +15,7 @@ from pathlib import Path
 from typing import Any
 
 from defs.runtime.resources import derive_resources
+from defs.sec_forms import form_family
 from defs.storage import DuckDBStaging
 
 from .selection_policy import EraBand, SelectionPolicy
@@ -30,14 +31,6 @@ IDENTITY_COLUMNS = """
 
 def _canonical_json(data: Any) -> str:
     return json.dumps(data, sort_keys=True, separators=(",", ":"), ensure_ascii=False)
-
-
-def form_family(form: str) -> str:
-    """Collapse amendment and submission suffixes into the base form family."""
-    base = form.upper().strip()
-    for suffix in ("_A", "_W", "_POS", "-POS", "MEF", "-W", "/A"):
-        base = base.removesuffix(suffix)
-    return base.strip("_-") or form
 
 
 def era_of(report_date: str | None, era_bands: Sequence[EraBand]) -> str:

@@ -5,6 +5,13 @@ from __future__ import annotations
 import re
 
 from defs.regex import build_alternation, build_regex
+from defs.text.dates import (
+    TABLE_YEAR_RE,
+    YEAR_IN_TEXT_RE,
+)
+from defs.text.dates import (
+    YEAR_TOKEN_RE as SHARED_YEAR_TOKEN_RE,
+)
 
 from .tokens import (
     BULLET_MARKERS,
@@ -32,8 +39,8 @@ PERCENT_HEADER_RE = re.compile(
 # Canonical patterns used while classifying and healing HTML financial tables.
 PAREN_SPACES_RE = re.compile(r"\(\s+([^\)]+?)\s+\)")
 FOOTNOTE_RE = re.compile(r"^\(?[a-zA-Z0-9\*\†\‡\§\d]{1,3}\)?$")
-YEAR_TOKEN_RE = re.compile(r"^\b(202[0-9]|201[0-9]|200[0-9]|199[0-9])\b$")
-YEAR_IN_HEADER_RE = re.compile(r"\b\d{4}\b")
+YEAR_IN_HEADER_RE = YEAR_IN_TEXT_RE
+YEAR_TOKEN_RE = SHARED_YEAR_TOKEN_RE
 BULLET_MARKER_RE = re.compile(
     rf"^(?:{build_alternation(sorted(BULLET_MARKERS), auto_escape=True)}|\(?\d{{1,2}}[\.\)]?|\(?[a-zA-Z][\.\)]?)$"
 )
@@ -42,7 +49,7 @@ HIDDEN_ELEMENT_STYLE_RE = re.compile(
 )
 
 # Safe patterns for years in tables
-YEAR_RE = build_regex([r"(?:\d{1,2}/)+(\d{2,4})", r"(19[8-9]\d|20\d{2})"])
+YEAR_RE = TABLE_YEAR_RE
 
 # Header detection keywords
 LAST_HEADER_PATTERN = build_regex(
@@ -138,7 +145,7 @@ __all__ = [
     "THOUSAND_RE",
     "UNIT_RE",
     "WHITESPACE_RE",
-    "YEAR_RE",
     "YEAR_IN_HEADER_RE",
+    "YEAR_RE",
     "YEAR_TOKEN_RE",
 ]

@@ -5,6 +5,8 @@ from __future__ import annotations
 import re
 from typing import Any
 
+from defs.text.dates import YEAR_RANGE, extract_years
+
 from .currencies import MAJOR_CURRENCIES, PREFIX_SYMBOLS, SUFFIX_SYMBOLS
 from .patterns import (
     C_MARKER_RE,
@@ -14,7 +16,6 @@ from .patterns import (
     S_MARKER_RE,
     TABLE_TAG_RE,
     WHITESPACE_RE,
-    YEAR_RE,
 )
 from .repair import (
     clean_and_merge_symbols,
@@ -346,17 +347,9 @@ class SimpleTableProcessor:
         """Return table metadata."""
         caption_year = None
         if self.caption:
-            matches = YEAR_RE.findall(self.caption)
-            years = []
-            for m in matches:
-                if isinstance(m, tuple):
-                    for g in m:
-                        if g:
-                            years.append(int(g))
-                else:
-                    years.append(int(m))
-
-            valid_years = sorted({y for y in years if 1900 <= y <= 2100})
+            valid_years = sorted(
+                set(extract_years(self.caption, valid_range=YEAR_RANGE))
+            )
             if len(valid_years) == 1:
                 caption_year = valid_years[0]
 

@@ -52,6 +52,14 @@ def test_form_router_resolution() -> None:
     assert isinstance(router.get_evaluator("11-K"), GenericFormEvaluator)
     assert isinstance(router.get_evaluator(None), GenericFormEvaluator)
 
+    # Normalizer resolution
+    assert isinstance(router.get_normalizer("10-K"), form_10k_mod.Form10KNormalizer)
+    assert isinstance(router.get_normalizer("10-Q"), form_10q_mod.Form10QNormalizer)
+    assert isinstance(router.get_normalizer("8-K"), form_8k_mod.Form8KNormalizer)
+    assert isinstance(
+        router.get_normalizer("20-F"), form_generic_mod.GenericFormNormalizer
+    )
+
 
 def test_form_router_evaluate_default_proceed() -> None:
     router = FormRouter()

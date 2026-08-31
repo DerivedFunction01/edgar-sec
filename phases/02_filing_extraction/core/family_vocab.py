@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 
+from defs.entities import LEGAL_FORMS, STATE_POSTAL_CODES
+
 SEED = "phase-02-company-family"
 HEAD_TOKENS = 3
 MIN_ALIAS_CHARS = 6
@@ -80,41 +82,6 @@ PLURAL_MAP: dict[str, str] = {
     "equities": "equity",
 }
 
-LEGAL_FORMS: set[str] = {
-    "inc",
-    "incorporated",
-    "corp",
-    "corporation",
-    "co",
-    "company",
-    "ltd",
-    "limited",
-    "llc",
-    "lp",
-    "llp",
-    "plc",
-    "sa",
-    "nv",
-    "bv",
-    "ag",
-    "gmbh",
-    "kgaa",
-    "se",
-    "srl",
-    "pty",
-    "pvt",
-    "cia",
-    "spa",
-    "sl",
-    "lda",
-    "sociedad",
-    "anonima",
-    "holding",
-    "holdings",
-    "group",
-    "grp",
-}
-
 ROMAN: set[str] = {
     "i",
     "ii",
@@ -140,58 +107,7 @@ ROMAN: set[str] = {
 
 PLACEHOLDER: set[str] = {"D", "S", "R"}
 
-STATE_CODES: list[str] = [
-    "de",
-    "tx",
-    "cn",
-    "ca",
-    "fl",
-    "ny",
-    "nv",
-    "pa",
-    "il",
-    "oh",
-    "ga",
-    "nc",
-    "va",
-    "wa",
-    "ma",
-    "az",
-    "co",
-    "tn",
-    "md",
-    "mo",
-    "in",
-    "wi",
-    "mn",
-    "sc",
-    "al",
-    "la",
-    "ky",
-    "or",
-    "ok",
-    "ct",
-    "ut",
-    "ia",
-    "ar",
-    "ms",
-    "ks",
-    "nm",
-    "ne",
-    "wv",
-    "id",
-    "hi",
-    "me",
-    "nh",
-    "ri",
-    "mt",
-    "sd",
-    "nd",
-    "ak",
-    "vt",
-    "wy",
-    "dc",
-]
+STATE_CODES: list[str] = sorted(code.lower() for code in STATE_POSTAL_CODES)
 
 __all__ = [
     "ABBR_MAP",

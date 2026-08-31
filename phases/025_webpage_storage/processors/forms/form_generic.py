@@ -1,26 +1,21 @@
-"""Generic fallback form evaluator stub.
+"""Generic fallback form evaluator and normalizer.
 
-This module provides the fallback evaluator for all unspecified form types
+This module provides the fallback evaluator and normalizer for all unspecified form types
 (Form 20-F, 11-K, 6-K, Form 3/4/5, Form 144, SC 13D/G, etc.).
-
-Specifications / Target Rules:
-------------------------------
-1. Universal Hard Machine Stubs:
-   - Form 12b-25 / Notification of Late Filing.
-   - Form SE / Auto-generated paper submission notices with Document Control Numbers.
-   - Privacy-enhanced message wrappers (<300 words, undecodable).
-   - EDGAR system error pages.
-   - Action: SKIP_HARD_STUB (is_stub=True, category='index_stub' or 'paper_notice').
-
-2. Default Pass-Through:
-   - All other valid documents proceed with primary content.
-   - Action: PROCEED (is_stub=False, category='standard_full').
 """
 
 from __future__ import annotations
 
+from typing import Any
+
 from ...core.schemas import DocumentLocator
-from .base import DecisionAction, FormEvaluator, PreprocessedDocument, RefetchDecision
+from .base import (
+    DecisionAction,
+    FormEvaluator,
+    FormNormalizer,
+    PreprocessedDocument,
+    RefetchDecision,
+)
 
 
 class GenericFormEvaluator(FormEvaluator):
@@ -31,17 +26,37 @@ class GenericFormEvaluator(FormEvaluator):
         preprocessed: PreprocessedDocument,
         locator: DocumentLocator,
     ) -> RefetchDecision:
-        """Evaluate a generic filing document.
-
-        Currently a no-op placeholder returning PROCEED by default until active
-        rules are finalized.
-        """
-        # No-op pass-through implementation
+        """Evaluate a generic filing document."""
+        _ = locator
+        _ = preprocessed
         return RefetchDecision(
             action=DecisionAction.PROCEED,
             target_exhibit=None,
-            reason="Generic form no-op evaluation placeholder; proceeding with primary payload.",
+            reason="Generic form evaluation placeholder; proceeding with primary payload.",
             is_stub=False,
             category="standard_full",
             confidence=1.0,
         )
+
+
+class GenericFormNormalizer(FormNormalizer):
+    """Fallback normalizer for generic/unspecified form types."""
+
+    def preprocess_cover(
+        self,
+        html_text: str,
+        metadata: dict[str, Any] | None = None,
+    ) -> str:
+        _ = metadata
+        return html_text
+
+    def normalize_headers(
+        self,
+        text: str,
+        metadata: dict[str, Any] | None = None,
+    ) -> str:
+        _ = metadata
+        return text
+
+
+__all__ = ["GenericFormEvaluator", "GenericFormNormalizer"]

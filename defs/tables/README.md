@@ -67,3 +67,25 @@ changing the corpus. The confirmed first-100 failure list is tracked at
 `defs/tests/fixtures/tables/review_fail_first_100.txt`.
 Use `--legacy` when previewing unpromoted PASS candidates from the original
 full corpus; the live v2 corpus contains only explicitly promoted tables.
+
+### Cover table templates
+
+`templates/cover.py` provides cover-page layout decomposition:
+- `cover_layout_template` — decomposes address, state, EIN, contact tables into prose blocks
+- `checkbox_grid_template` — formats filer-category and yes/no checkbox grids
+- `single_row_horizontal_template` — joins single-row multi-cell layout blocks
+
+These templates consume canonical label matchers from `defs.sec_forms.cover.vocabulary` and are scoped to cover-page tables via the typed `TableScope.COVER` in the template dispatcher. Body and data tables use the generic table converter.
+
+### Table scope contract
+
+`templates/scope.py` defines `TableScope`, a typed capability selector for the
+dispatcher. It is deliberately form-name agnostic: SEC form families select
+scopes, they do not branch inside the shared table layer.
+
+- `TableScope.BODY` — generic financial and body templates
+- `TableScope.TOC` — table-of-contents tables; body templates disabled
+- `TableScope.COVER` — cover and registration templates plus body templates
+
+`apply_table_templates` accepts a `TableScope` or a legacy string. A no-cover
+scope cannot activate registration, cover-layout, or cover-checkbox templates.

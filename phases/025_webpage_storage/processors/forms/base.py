@@ -1,4 +1,4 @@
-"""Form evaluator protocols, decision actions, and refetch decision models."""
+"""Form evaluator and normalizer protocols, decision actions, and models."""
 
 from __future__ import annotations
 
@@ -53,3 +53,33 @@ class FormEvaluator(Protocol):
     ) -> RefetchDecision:
         """Evaluate preprocessed content and determine if refetching or skipping is required."""
         ...
+
+
+@runtime_checkable
+class FormNormalizer(Protocol):
+    """Protocol for form-family specific cover and heading normalization passes."""
+
+    def preprocess_cover(
+        self,
+        html_text: str,
+        metadata: dict[str, Any] | None = None,
+    ) -> str:
+        """Apply form-family specific HTML cover preprocessing."""
+        ...
+
+    def normalize_headers(
+        self,
+        text: str,
+        metadata: dict[str, Any] | None = None,
+    ) -> str:
+        """Apply form-family specific section and item heading normalization."""
+        ...
+
+
+__all__ = [
+    "DecisionAction",
+    "FormEvaluator",
+    "FormNormalizer",
+    "PreprocessedDocument",
+    "RefetchDecision",
+]

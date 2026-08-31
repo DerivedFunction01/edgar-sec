@@ -104,6 +104,208 @@ def _get_metrics(fetcher: object) -> dict[str, Any] | None:
     return None
 
 
+def _persist_fetch_result(
+    locator: DocumentLocator,
+    fetched: FetchResult | None,
+    *,
+    fetcher: ArchiveFetcher,
+    processor: DocumentProcessor,
+    executor,
+    occurrences_by_doc_id: Mapping[str, Sequence[FilingOccurrence]],
+    existing_blobs: set[str],
+    existing_failures: Mapping[str, tuple[str, str]],
+    chunk_failures: list[ChunkFailure],
+    progress: Callable[[dict], None] | None,
+    error: str | None = None,
+) -> str:
+    """Persist one fetch result into the chunk database and emit a progress event.
+
+    The coordinator owns the SQLite connection and progress callbacks; worker
+    threads only supply the completed ``FetchResult``. Returns the terminal
+    status for this document.
+    """
+    target_doc_id = doc_id(locator.accession, locator.document_path)
+
+    def emit(event: dict) -> None:
+        if progress is not None:
+            with suppress(Exception):
+                progress(event)
+
+    if error is not None:
+        err_msg = error
+        chunk_failures.append(ChunkFailure(locator, "failed", err_msg))
+        failure_record = AcquisitionFailure(
+            doc_id=target_doc_id,
+            accession=locator.accession,
+            document_path=locator.document_path,
+            status="failed",
+            error_message=err_msg,
+            attempted_at=datetime.now(UTC).isoformat(),
+        )
+        executor.exec(
+            executor.compiler.compile(
+                insert_values(
+                    ACQUISITION_FAILURES_TABLE,
+                    failure_record.to_row(),
+                    on_conflict=DoNothing(),
+                )
+            )
+        )
+        executor.exec(executor.compiler.compile(Commit()))
+        emit(
+            {
+                "type": "document_done",
+                "status": "failed",
+                "doc_id": target_doc_id,
+                "error": err_msg,
+                "metrics": _get_metrics(fetcher),
+            }
+        )
+        return "failed"
+
+    if fetched.status != "ok" or fetched.payload is None:
+        status = fetched.status
+        err_msg = fetched.error or fetched.status
+        chunk_failures.append(ChunkFailure(locator, status, err_msg))
+        failure_record = AcquisitionFailure(
+            doc_id=target_doc_id,
+            accession=locator.accession,
+            document_path=locator.document_path,
+            status=status,
+            error_message=err_msg,
+            attempted_at=datetime.now(UTC).isoformat(),
+        )
+        executor.exec(
+            executor.compiler.compile(
+                insert_values(
+                    ACQUISITION_FAILURES_TABLE,
+                    failure_record.to_row(),
+                    on_conflict=DoNothing(),
+                )
+            )
+        )
+        executor.exec(executor.compiler.compile(Commit()))
+        emit(
+            {
+                "type": "document_done",
+                "status": status,
+                "doc_id": target_doc_id,
+                "error": err_msg,
+                "metrics": _get_metrics(fetcher),
+            }
+        )
+        return status
+
+    # Process document (cleaning, normalization, or pass-through, sync or async)
+    processed = execute_processor(processor, fetched.payload, locator)
+
+    # Succeeded: compress and stream directly to SQLite
+    blob = build_blob(locator.accession, locator.document_path, processed.payload)
+    blob_stmt = insert_values(
+        DOCUMENT_BLOBS_TABLE,
+        blob.to_row(),
+        on_conflict=DoNothing(),
+    )
+    executor.exec(executor.compiler.compile(blob_stmt))
+
+    # Store associated occurrences
+    matching_occs = occurrences_by_doc_id.get(target_doc_id, [])
+    if matching_occs:
+        occ_stmt = insert_values(
+            FILING_OCCURRENCES_TABLE,
+            [occ.to_row() for occ in matching_occs],
+            on_conflict=DoNothing(),
+        )
+        executor.exec(executor.compiler.compile(occ_stmt))
+
+    executor.exec(executor.compiler.compile(Commit()))
+    existing_blobs.add(target_doc_id)
+    emit(
+        {
+            "type": "document_done",
+            "status": "ok",
+            "doc_id": target_doc_id,
+            "byte_size": blob.byte_size,
+            "metrics": _get_metrics(fetcher),
+        }
+    )
+    return "ok"
+
+
+def _run_concurrent_acquisitions(
+    locators: Sequence[DocumentLocator],
+    *,
+    fetcher: ArchiveFetcher,
+    processor: DocumentProcessor,
+    executor,
+    occurrences_by_doc_id: Mapping[str, Sequence[FilingOccurrence]],
+    existing_blobs: set[str],
+    existing_failures: Mapping[str, tuple[str, str]],
+    chunk_failures: list[ChunkFailure],
+    progress: Callable[[dict], None] | None,
+    fetch_workers: int,
+) -> None:
+    """Fetch uncached locators across a bounded thread pool; the coordinator
+    owns the SQLite connection and progress callbacks, so worker threads only
+    call ``fetcher.fetch`` and return the completed ``FetchResult``."""
+    from concurrent.futures import FIRST_COMPLETED, ThreadPoolExecutor, wait
+
+    pending: list[DocumentLocator] = [
+        locator
+        for locator in locators
+        if doc_id(locator.accession, locator.document_path) not in existing_blobs
+        and doc_id(locator.accession, locator.document_path) not in existing_failures
+    ]
+    if not pending:
+        return
+
+    with ThreadPoolExecutor(max_workers=max(1, fetch_workers)) as pool:
+        locator_iter = iter(pending)
+        future_to_locator: dict = {
+            pool.submit(_fetch, fetcher, locator): locator
+            for locator in (next(locator_iter, None) for _ in range(fetch_workers))
+            if locator is not None
+        }
+        while future_to_locator:
+            completed, _ = wait(future_to_locator, return_when=FIRST_COMPLETED)
+            for future in completed:
+                locator = future_to_locator.pop(future)
+                try:
+                    fetched = future.result()
+                except (OSError, RuntimeError, TypeError, ValueError) as exc:
+                    _persist_fetch_result(
+                        locator,
+                        None,
+                        fetcher=fetcher,
+                        processor=processor,
+                        executor=executor,
+                        occurrences_by_doc_id=occurrences_by_doc_id,
+                        existing_blobs=existing_blobs,
+                        existing_failures=existing_failures,
+                        chunk_failures=chunk_failures,
+                        progress=progress,
+                        error=str(exc) or type(exc).__name__,
+                    )
+                else:
+                    _persist_fetch_result(
+                        locator,
+                        fetched,
+                        fetcher=fetcher,
+                        processor=processor,
+                        executor=executor,
+                        occurrences_by_doc_id=occurrences_by_doc_id,
+                        existing_blobs=existing_blobs,
+                        existing_failures=existing_failures,
+                        chunk_failures=chunk_failures,
+                        progress=progress,
+                    )
+                replacement = next(locator_iter, None)
+                if replacement is not None:
+                    future_to_locator[pool.submit(_fetch, fetcher, replacement)] = (
+                        replacement
+                    )
+
+
 def process_chunk(
     chunk_id: str,
     worker_id: str,
@@ -113,6 +315,7 @@ def process_chunk(
     output_path: str | Path,
     progress: Callable[[dict], None] | None = None,
     processor: DocumentProcessor | None = None,
+    fetch_workers: int = 1,
 ) -> ChunkResult:
     """Fetch locators and stream records directly into a self-contained SQLite chunk database.
 
@@ -264,132 +467,74 @@ def process_chunk(
                 with suppress(Exception):
                     progress(event)
 
-        # Stream acquisitions directly into SQLite
-        for locator in unique_documents:
-            target_doc_id = doc_id(locator.accession, locator.document_path)
-            if target_doc_id in existing_blobs:
-                emit(
-                    {
-                        "type": "document_done",
-                        "status": "cached",
-                        "doc_id": target_doc_id,
-                        "metrics": _get_metrics(fetcher),
-                    }
-                )
-                continue
-            if target_doc_id in existing_failures:
-                emit(
-                    {
-                        "type": "document_done",
-                        "status": existing_failures[target_doc_id][0],
-                        "doc_id": target_doc_id,
-                        "metrics": _get_metrics(fetcher),
-                    }
-                )
-                continue
-
-            try:
-                fetched = _fetch(fetcher, locator)
-            except (OSError, RuntimeError, TypeError, ValueError) as exc:
-                err_msg = str(exc) or type(exc).__name__
-                chunk_failures.append(ChunkFailure(locator, "failed", err_msg))
-                failure_record = AcquisitionFailure(
-                    doc_id=target_doc_id,
-                    accession=locator.accession,
-                    document_path=locator.document_path,
-                    status="failed",
-                    error_message=err_msg,
-                    attempted_at=datetime.now(UTC).isoformat(),
-                )
-                executor.exec(
-                    executor.compiler.compile(
-                        insert_values(
-                            ACQUISITION_FAILURES_TABLE,
-                            failure_record.to_row(),
-                            on_conflict=DoNothing(),
-                        )
+        if fetch_workers > 1:
+            _run_concurrent_acquisitions(
+                unique_documents,
+                fetcher=fetcher,
+                processor=effective_processor,
+                executor=executor,
+                occurrences_by_doc_id=occurrences_by_doc_id,
+                existing_blobs=existing_blobs,
+                existing_failures=existing_failures,
+                chunk_failures=chunk_failures,
+                progress=progress,
+                fetch_workers=fetch_workers,
+            )
+        else:
+            # Stream acquisitions directly into SQLite
+            for locator in unique_documents:
+                target_doc_id = doc_id(locator.accession, locator.document_path)
+                if target_doc_id in existing_blobs:
+                    emit(
+                        {
+                            "type": "document_done",
+                            "status": "cached",
+                            "doc_id": target_doc_id,
+                            "metrics": _get_metrics(fetcher),
+                        }
                     )
-                )
-                executor.exec(executor.compiler.compile(Commit()))
-                emit(
-                    {
-                        "type": "document_done",
-                        "status": "failed",
-                        "doc_id": target_doc_id,
-                        "error": err_msg,
-                        "metrics": _get_metrics(fetcher),
-                    }
-                )
-                continue
-
-            if fetched.status != "ok" or fetched.payload is None:
-                status = fetched.status
-                err_msg = fetched.error or fetched.status
-                chunk_failures.append(ChunkFailure(locator, status, err_msg))
-                failure_record = AcquisitionFailure(
-                    doc_id=target_doc_id,
-                    accession=locator.accession,
-                    document_path=locator.document_path,
-                    status=status,
-                    error_message=err_msg,
-                    attempted_at=datetime.now(UTC).isoformat(),
-                )
-                executor.exec(
-                    executor.compiler.compile(
-                        insert_values(
-                            ACQUISITION_FAILURES_TABLE,
-                            failure_record.to_row(),
-                            on_conflict=DoNothing(),
-                        )
+                    continue
+                if target_doc_id in existing_failures:
+                    emit(
+                        {
+                            "type": "document_done",
+                            "status": existing_failures[target_doc_id][0],
+                            "doc_id": target_doc_id,
+                            "metrics": _get_metrics(fetcher),
+                        }
                     )
+                    continue
+
+                try:
+                    fetched = _fetch(fetcher, locator)
+                except (OSError, RuntimeError, TypeError, ValueError) as exc:
+                    _persist_fetch_result(
+                        locator,
+                        None,
+                        fetcher=fetcher,
+                        processor=effective_processor,
+                        executor=executor,
+                        occurrences_by_doc_id=occurrences_by_doc_id,
+                        existing_blobs=existing_blobs,
+                        existing_failures=existing_failures,
+                        chunk_failures=chunk_failures,
+                        progress=progress,
+                        error=str(exc) or type(exc).__name__,
+                    )
+                    continue
+
+                _persist_fetch_result(
+                    locator,
+                    fetched,
+                    fetcher=fetcher,
+                    processor=effective_processor,
+                    executor=executor,
+                    occurrences_by_doc_id=occurrences_by_doc_id,
+                    existing_blobs=existing_blobs,
+                    existing_failures=existing_failures,
+                    chunk_failures=chunk_failures,
+                    progress=progress,
                 )
-                executor.exec(executor.compiler.compile(Commit()))
-                emit(
-                    {
-                        "type": "document_done",
-                        "status": status,
-                        "doc_id": target_doc_id,
-                        "error": err_msg,
-                        "metrics": _get_metrics(fetcher),
-                    }
-                )
-                continue
-
-            # Process document (cleaning, normalization, or pass-through, sync or async)
-            processed = execute_processor(effective_processor, fetched.payload, locator)
-
-            # Succeeded: compress and stream directly to SQLite
-            blob = build_blob(
-                locator.accession, locator.document_path, processed.payload
-            )
-            blob_stmt = insert_values(
-                DOCUMENT_BLOBS_TABLE,
-                blob.to_row(),
-                on_conflict=DoNothing(),
-            )
-            executor.exec(executor.compiler.compile(blob_stmt))
-
-            # Store associated occurrences
-            matching_occs = occurrences_by_doc_id.get(target_doc_id, [])
-            if matching_occs:
-                occ_stmt = insert_values(
-                    FILING_OCCURRENCES_TABLE,
-                    [occ.to_row() for occ in matching_occs],
-                    on_conflict=DoNothing(),
-                )
-                executor.exec(executor.compiler.compile(occ_stmt))
-
-            executor.exec(executor.compiler.compile(Commit()))
-            existing_blobs.add(target_doc_id)
-            emit(
-                {
-                    "type": "document_done",
-                    "status": "ok",
-                    "doc_id": target_doc_id,
-                    "byte_size": blob.byte_size,
-                    "metrics": _get_metrics(fetcher),
-                }
-            )
 
         # Count total stored occurrences and blobs
         final_occurrences = executor.query(

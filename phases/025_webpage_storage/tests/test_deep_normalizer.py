@@ -79,6 +79,7 @@ def test_deep_normalizer_spacer_trimming() -> None:
     )
     normalized = normalizer.normalize(prep)
     assert "<TABLE>" in normalized
+    assert "Metric" in normalized
     assert "Sales" in normalized
     assert "$5,000" in normalized
 
@@ -96,3 +97,53 @@ def test_deep_normalizer_xml_stripping() -> None:
     normalized = normalizer.normalize(prep)
     assert "<ix:" not in normalized
     assert "1500000" in normalized
+
+
+def test_deep_normalizer_cover_metadata_conversion() -> None:
+    normalizer = DeepNormalizer()
+    html = """
+    <html>
+    <body>
+    <p>UNITED STATES SECURITIES AND EXCHANGE COMMISSION</p>
+    <p>FORM 10-K</p>
+    <table>
+      <tr><td>Delaware</td><td></td><td>13-2624428</td></tr>
+      <tr><td>(State of Incorporation)</td><td></td><td>(I.R.S. Employer Identification No.)</td></tr>
+      <tr><td>270 Park Avenue, New York, New York</td><td></td><td>10017</td></tr>
+      <tr><td>(Address of principal executive offices)</td><td></td><td>(Zip Code)</td></tr>
+    </table>
+    <p>ITEM 1. BUSINESS</p>
+    <table border="1">
+      <tr><th>Year</th><th>Revenue</th><th>Net Income</th></tr>
+      <tr><td>2024</td><td>$100,000</td><td>$10,000</td></tr>
+      <tr><td>2025</td><td>$120,000</td><td>$15,000</td></tr>
+    </table>
+    </body>
+    </html>
+    """
+    prep = PreprocessedDocument(
+        raw_text=html,
+        cleaned_text=html,
+        word_count=50,
+        has_html_tags=True,
+        detected_encoding="utf-8",
+        metadata={"form": "10-K"},
+    )
+    normalized = normalizer.normalize(prep)
+
+    # 1. Cover layout is preserved as canonical normalized source text.
+    assert "Delaware" in normalized
+    assert "(State of Incorporation)" in normalized
+    assert "13-2624428" in normalized
+    assert "(I.R.S. Employer Identification No.)" in normalized
+    assert "270 Park Avenue, New York, New York" in normalized
+    assert "(Address of principal executive offices)" in normalized
+    assert "10017" in normalized
+    assert "(Zip Code)" in normalized
+
+    # 2. Subsequent financial table converted to structured ASCII table
+    assert "ITEM 1. BUSINESS" in normalized
+    assert "Year" in normalized
+    assert "$100,000" in normalized
+    assert "Revenue" in normalized
+    assert "$100,000" in normalized

@@ -6,7 +6,7 @@ import threading
 from collections.abc import Iterable, Sequence
 from contextlib import suppress
 from pathlib import Path
-from typing import Protocol, runtime_checkable
+from typing import Any, Protocol, runtime_checkable
 
 from defs.sec_http import HttpMetrics, SecHttpClient
 from defs.sql import (
@@ -148,22 +148,84 @@ def make_archive_fetcher(
     mode: str,
     fixture_paths: Sequence[str | Path] | None = None,
     http_client: SecHttpClient | None = None,
+    broker_socket: str | Path | None = None,
 ) -> ArchiveFetcher:
-    """Construct the configured offline fixture or live SEC fetcher."""
+    """Construct the configured offline fixture or live SEC fetcher.
+
+    ``broker_socket`` selects the managed broker path for live acquisition:
+    workers route archive URLs through the broker instead of constructing
+    their own SEC client, so all live requests share one aggregate rate
+    limiter. ``broker_socket`` is ignored for fixture mode.
+
+    ``mode`` accepts ``"fixture"`` for offline lookup and ``"live"`` or
+    ``"production"`` for live SEC acquisition.
+    """
     normalized_mode = mode.strip().lower()
     if normalized_mode == "fixture":
         if not fixture_paths:
             raise ValueError("fixture mode requires fixture_paths")
         return FixtureArchiveFetcher(fixture_paths)
-    if normalized_mode == "live":
+    if normalized_mode in ("live", "production"):
+        if broker_socket is not None:
+            from defs.sec_http.broker import SecBrokerClient
+
+            return BrokerArchiveFetcher(SecBrokerClient(broker_socket))
         if http_client is None:
             raise ValueError("live mode requires http_client")
         return LiveSecArchiveFetcher(http_client)
     raise ValueError(f"unsupported archive fetcher mode: {mode!r}")
 
 
+class BrokerArchiveFetcher:
+    """Adapt the SEC broker RPC to the ``ArchiveFetcher`` protocol.
+
+    Worker processes never construct a production SEC client; they route
+    every archive URL through the broker, which owns the single shared rate
+    limiter, cache, failure ledger, and metrics.
+    """
+
+    def __init__(self, broker_client: Any) -> None:
+        self._broker = broker_client
+
+    @property
+    def metrics(self) -> Any:
+        return getattr(self._broker, "metrics", None)
+
+    def fetch(self, locator: DocumentLocator) -> FetchResult:
+        try:
+            result = self._broker.fetch(locator.archive_url)
+        except Exception as exc:  # noqa: BLE001 - client errors are per-document failures
+            return FetchResult(
+                locator=locator, payload=None, status="failed", error=str(exc)
+            )
+        status = result.get("status")
+        if status != "ok":
+            return FetchResult(
+                locator=locator,
+                payload=None,
+                status="failed",
+                error=result.get("error") or "broker reported failure",
+            )
+        payload = result.get("payload")
+        if payload is None:
+            return FetchResult(
+                locator=locator,
+                payload=None,
+                status="failed",
+                error="broker returned no payload",
+            )
+        return FetchResult(locator=locator, payload=payload, status="ok")
+
+    def close(self) -> None:
+        close = getattr(self._broker, "close", None)
+        if close is not None:
+            with suppress(Exception):
+                close()
+
+
 __all__ = [
     "ArchiveFetcher",
+    "BrokerArchiveFetcher",
     "FixtureArchiveFetcher",
     "LiveSecArchiveFetcher",
     "make_archive_fetcher",

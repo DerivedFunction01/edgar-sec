@@ -68,8 +68,30 @@ parsing and section extraction never re-hit the SEC archive. It is **storage-onl
   `targets/form=*/data.parquet`) and fetches each unique `(accession,
   document_path)` locator exactly once.
 - Dual-mode fetch: offline fixture CAS replay (`--mode fixture`) or live SEC
-  archive via `SecHttpClient.get_bytes` with 4 RPS pacing and a failure ledger
-  (`--mode production`).
+  archive via the managed same-host SEC broker with aggregate pacing and a
+  failure ledger (`--mode production`). Fixture population supports bounded
+  machine-local fetch threads through `fill-fixture --workers` (defaults to
+  `derive_resources().threads`, rejected if < 1).
+- Two independent parallel levels that never share a writer: **chunk workers**
+  run as a `ProcessPoolExecutor` in production mode, each owning an isolated
+  `chunk-XXXXX.db`, while the coordinator remains the sole SQLite writer and
+  merges published chunks afterward. **Fetch threads** inside one chunk use a
+  bounded in-flight window (`wait(..., FIRST_COMPLETED)`) so at most
+  `fetch_workers` live `fetch()` calls overlap; worker threads never touch
+  SQLite directly, they return completed `FetchResult` objects and the
+  coordinator persists them one at a time. Fixture fill shares one
+  `SecHttpClient` across all fetch threads so pacing, cache, failure ledger,
+  and metrics aggregate through a single rate limiter.
+- Production workers never construct their own SEC client. `run_partition`
+  auto-starts a managed broker via `ensure_broker()` when `mode=production`
+  and no client/socket is supplied; workers submit archive URLs over a
+  Unix-domain socket (`BrokerPaths.broker_paths().socket_path`) using
+  length-prefixed JSON frames (protocol version 1, `healthcheck://broker`
+  sentinel). The broker owns one `SecHttpClient` — single rate limiter, cache,
+  failure ledger, and metrics — so all live requests share one aggregate
+  pace. Manage it directly with
+  `python -m defs.sec_http.broker {start,stop,status} [--socket PATH]`;
+  `start` is idempotent (existing healthy broker reused, stale socket replaced).
 - Stores `document_blobs` (sha256-addressed, zstd-compressed raw bytes) and
   `filing_occurrences` (provenance links) in isolated worker chunk SQLite
   databases, then merges them atomically into a published partition database via

@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 
+from defs.text.dates import YEAR_RANGE, extract_years
+
 from .currencies import MAJOR_CURRENCIES
 from .patterns import (
     BILLION_RE,
@@ -182,19 +184,7 @@ def extract_years_from_headers(col_headers: dict[int, str]) -> dict[int, int]:
         detected_year = None
 
         if header:
-            extracted_years = []
-            matches = YEAR_RE.findall(header)
-
-            for m in matches:
-                groups = m if isinstance(m, tuple) else [m]
-                for g in groups:
-                    if g and g.isdigit():
-                        y = int(g)
-                        if y < 100:
-                            y += 2000 if y < 50 else 1900
-                        extracted_years.append(y)
-
-            valid_years = [y for y in extracted_years if 1900 <= y <= 2100]
+            valid_years = extract_years(header, valid_range=YEAR_RANGE)
             if valid_years:
                 detected_year = max(valid_years)
 
@@ -226,19 +216,7 @@ def extract_row_years(data: list[list[str]]) -> dict[int, int]:
                 break
 
         if other_cells_empty and first_cell:
-            matches = YEAR_RE.findall(first_cell)
-            valid_years_found = []
-            for m in matches:
-                groups = m if isinstance(m, tuple) else [m]
-                for g in groups:
-                    if g and g.isdigit():
-                        y = int(g)
-                        if y < 100:
-                            y += 2000 if y < 50 else 1900
-                        if 1900 <= y <= 2100:
-                            valid_years_found.append(y)
-
-            unique_years = set(valid_years_found)
+            unique_years = set(extract_years(first_cell, valid_range=YEAR_RANGE))
             if len(unique_years) == 1:
                 current_year = unique_years.pop()
                 is_header = True

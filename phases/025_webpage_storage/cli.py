@@ -79,6 +79,11 @@ def build_parser() -> argparse.ArgumentParser:
         default=None,
         help="worker threads (defaults to system CPU budget)",
     )
+    run_parser.add_argument(
+        "--no-normalize",
+        action="store_true",
+        help="store raw payloads without running the normalization pipeline",
+    )
     run_parser.add_argument("--run-id", default="local")
     run_parser.add_argument(
         "--fixtures", default=None, help="comma-separated fixture ids for fixture mode"
@@ -114,6 +119,12 @@ def build_parser() -> argparse.ArgumentParser:
     )
     fill_fixture_parser.add_argument(
         "--limit", type=int, default=None, help="maximum unique documents to fetch"
+    )
+    fill_fixture_parser.add_argument(
+        "--workers",
+        type=int,
+        default=None,
+        help="fetch threads (defaults to machine-local runtime threads)",
     )
     fill_fixture_parser.add_argument(
         "--no-progress", action="store_true", help="disable the tqdm progress bar"
@@ -242,7 +253,7 @@ def main(argv: list[str] | None = None) -> int:
                 else max(1, derive_resources().workers)
             )
             http_client = (
-                _build_production_client(workers) if args.mode == "production" else None
+                None if args.mode == "production" else _build_production_client(workers)
             )
             progress_cb = None
             pbar = None
@@ -260,6 +271,12 @@ def main(argv: list[str] | None = None) -> int:
 
             with logging_redirect_tqdm():
                 try:
+                    processor = None
+                    if not getattr(args, "no_normalize", False):
+                        processors_mod = importlib.import_module(
+                            "phases.025_webpage_storage.processors"
+                        )
+                        processor = processors_mod.DefaultFilingProcessor()
                     result = pipeline.run_partition(
                         plan_dir,
                         _resolved_output(args),
@@ -272,6 +289,7 @@ def main(argv: list[str] | None = None) -> int:
                         chunk_size=args.chunk_size,
                         workers=workers,
                         progress=progress_cb,
+                        processor=processor,
                     )
                 finally:
                     if pbar is not None:
@@ -309,6 +327,11 @@ def main(argv: list[str] | None = None) -> int:
             fixture_id = (
                 args.fixture_id if args.fixture_id else f"fix-{Path(plan_dir).name[:8]}"
             )
+            workers = (
+                args.workers
+                if args.workers is not None
+                else max(1, derive_resources().threads)
+            )
             progress_cb = None
             pbar = None
             if not getattr(args, "no_progress", False):
@@ -327,6 +350,7 @@ def main(argv: list[str] | None = None) -> int:
                         plan_dir,
                         fixture_id=fixture_id,
                         limit=args.limit,
+                        workers=workers,
                         progress=progress_cb,
                     )
                 finally:

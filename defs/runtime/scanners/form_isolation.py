@@ -20,6 +20,7 @@ _FORM_LITERAL_RE = re.compile(
 _ALLOWED_PATHS = (
     "roadmap/",
     "defs/runtime/scanners/",
+    "defs/sec_forms/",
     "old-webpage.py",
     "old-webpage.py.txt",
     "scratch/",

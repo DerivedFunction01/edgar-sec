@@ -34,3 +34,8 @@ ignore = ["TRY004"]
 # fail the validation gate, so the runner deliberately catches every
 # exception the scanner callable can raise.
 "defs/runtime/checks.py" = ["BLE001"]
+
+# defs/sec_http/broker_cli.py runs liveness probes against a possibly absent
+# or stale broker socket; any transport/protocol failure means the broker is
+# not reachable, so the probes deliberately catch broad exceptions.
+"defs/sec_http/broker_cli.py" = ["BLE001"]

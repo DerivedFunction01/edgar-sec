@@ -275,10 +275,17 @@ def run_partition(
     worker_id: str = "worker-00001",
     attempt_id: str = "attempt-00001",
     fetcher: ArchiveFetcher | None = None,
+    broker_socket: str | Path | None = None,
     progress=None,
     processor=None,
 ) -> dict[str, Any]:
-    """Acquire one deterministic partition and merge its worker chunks."""
+    """Acquire one deterministic partition and merge its worker chunks.
+
+    When ``broker_socket`` is supplied in live mode, workers route archive
+    fetches through the managed SEC broker instead of constructing
+    independent SEC clients, so all live requests share one aggregate rate
+    limiter.
+    """
     if workers < 1:
         raise ValueError("workers must be positive")
     locators, occurrences, plan = load_targets(plan_dir)
@@ -297,7 +304,15 @@ def run_partition(
     if fetcher is None:
         if mode.strip().lower() == "fixture" and not fixture_paths:
             raise ValueError("fixture mode requires fixture_paths")
-        fetcher = make_archive_fetcher(mode, fixture_paths, http_client)
+        if (
+            mode.strip().lower() == "production"
+            and http_client is None
+            and broker_socket is None
+        ):
+            from defs.sec_http.broker_cli import ensure_broker
+
+            broker_socket = ensure_broker().socket_path
+        fetcher = make_archive_fetcher(mode, fixture_paths, http_client, broker_socket)
 
     run_paths = resolve_paths("webpage_storage", run_id)
     run_paths.ensure_run_layout()

@@ -9,9 +9,18 @@ from .base import (
     ProcessedDocument,
     execute_processor,
 )
-from .forms.base import (
+from .forms import (
     DecisionAction,
+    Form8KEvaluator,
+    Form8KNormalizer,
+    Form10KEvaluator,
+    Form10KNormalizer,
+    Form10QEvaluator,
+    Form10QNormalizer,
     FormEvaluator,
+    FormNormalizer,
+    GenericFormEvaluator,
+    GenericFormNormalizer,
     PreprocessedDocument,
     RefetchDecision,
 )
@@ -31,7 +40,7 @@ class DefaultFilingProcessor(DocumentProcessor):
     ) -> None:
         self.preprocessor = preprocessor or GenericPreprocessor()
         self.router = router or FormRouter()
-        self.normalizer = normalizer or DeepNormalizer()
+        self.normalizer = normalizer or DeepNormalizer(router=self.router)
 
     async def process(
         self,
@@ -48,7 +57,9 @@ class DefaultFilingProcessor(DocumentProcessor):
         decision = self.router.evaluate(preprocessed, locator)
 
         # Stage 3: Deep Normalization & Table Alignment
-        normalized_text = self.normalizer.normalize(preprocessed)
+        normalized_text = self.normalizer.normalize(
+            preprocessed, metadata={"form": locator.form}
+        )
 
         output_payload = normalized_text.encode("utf-8")
         out_doc_id = doc_id(locator.accession, locator.document_path)
@@ -77,8 +88,17 @@ __all__ = [
     "DeepNormalizer",
     "DefaultFilingProcessor",
     "DocumentProcessor",
+    "Form8KEvaluator",
+    "Form8KNormalizer",
+    "Form10KEvaluator",
+    "Form10KNormalizer",
+    "Form10QEvaluator",
+    "Form10QNormalizer",
     "FormEvaluator",
+    "FormNormalizer",
     "FormRouter",
+    "GenericFormEvaluator",
+    "GenericFormNormalizer",
     "GenericPreprocessor",
     "NoOpDocumentProcessor",
     "PreprocessedDocument",

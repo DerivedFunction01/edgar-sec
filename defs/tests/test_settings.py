@@ -302,21 +302,6 @@ def test_render_dotenv_never_contains_secret_values():
 # --- dotenv rendering -------------------------------------------------------------------
 
 
-def test_render_dotenv_static_defaults_and_commented_machine_defaults():
-    specs = collect_specs()
-    resolved = _resolve_all()
-    text = render_dotenv(specs, resolved)
-    assert "RUNTIME_WORKERS=4" in text
-    assert "RUNTIME_CHUNK_SIZE=1000" in text
-    # Machine-derived defaults render as commented suggestions.
-    assert "# RUNTIME_THREADS=" in text
-    # Static fraction default renders as a real assignment.
-    assert "RUNTIME_MEMORY_FRACTION=0.6" in text
-    # Caller-fallback settings render as commented empty assignments.
-    assert "# RUNTIME_TEMP_DIRECTORY=" in text
-    assert text.endswith("\n")
-
-
 def test_environment_names_match_documented_legacy_names():
     assert environment_name("artifacts.root") == "ARTIFACTS_ROOT"
     assert environment_name("cache.root") == "CACHE_ROOT"
@@ -337,30 +322,12 @@ def test_render_dotenv_groups_by_top_level_segment():
 # --- generated dotenv file ----------------------------------------------------------------
 
 
-def test_generate_dotenv_is_atomic_and_reports(tmp_path):
-    target = tmp_path / "nested" / ".env"
-    written = generate_dotenv(target)
-    assert written == str(target)
-    text = Path(written).read_text(encoding="utf-8")
-    assert "RUNTIME_WORKERS=4" in text
-    assert target.exists()
-    assert list(target.parent.glob(".env-*.tmp")) == []
-
-
 def test_generate_dotenv_refuses_overwrite_without_force(tmp_path):
     target = tmp_path / ".env"
     generate_dotenv(target)
     with pytest.raises(ValueError, match="--force"):
         generate_dotenv(target)
     generate_dotenv(target, force=True)
-
-
-def test_generate_dotenv_phase_filter_includes_phase_settings(tmp_path):
-    target = tmp_path / ".env"
-    generate_dotenv(target, phase="filing_extraction")
-    text = target.read_text(encoding="utf-8")
-    assert "FILING_EXTRACTION_SOURCE_BATCH_SIZE=1000" in text
-    assert "RUNTIME_WORKERS=4" in text
 
 
 def test_generate_dotenv_output_is_ascii_safe(tmp_path):

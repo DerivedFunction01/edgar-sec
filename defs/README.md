@@ -5,9 +5,18 @@ surfaces exported here and never reimplement or bypass them.
 
 ```text
 defs/
-  sec_http.py           # SEC HTTP client: pacing, retries, caching, metrics, headers
+  sec_http/            # SEC HTTP client, managed broker, and broker CLI
+    client.py          # SEC pacing, retries, caching, metrics, headers
+    broker.py          # same-host SEC acquisition broker (Unix socket RPC)
+    broker_cli.py      # start/stop/status, ensure_broker() auto-start
+    errors.py          # permanent/overlarge/retry-exhausted error taxonomy
+    metrics.py         # request counters, latency, rate, cache hit-rate
+    rate_limit.py      # aggregate 4 RPS pacing policy
+    retry.py           # exponential backoff with jitter
   filing_identity.py    # canonical filing identity: accessions, archive URLs,
                         # occurrence IDs, document locator keys, date-derived years
+  sec_forms/             # shared SEC form definitions, semantic concepts, cover-page contracts
+    cover/               # canonical cover labels, regex matchers, text-based extractors
   table_definitions.py  # shared table-conversion helpers for later content phases
   regex/                # hierarchical regex builders, prefix-tree (trie) compaction, lookarounds
   storage/              # logical datasets, chunk backends, manifests, atomic publication
@@ -17,6 +26,18 @@ defs/
   viewer/               # read-only local dataset/artifact viewer (see viewer/README.md)
   tests/                # contract tests for the shared contracts (run: pytest defs/tests)
 ```
+
+- `sec_http/` — the SEC HTTP boundary. `client.py` owns the production
+  `SecHttpClient` (pacing, retries, cache, failure ledger, metrics). `broker.py`
+  exposes `SecBroker`/`SecBrokerClient` over a Unix-domain socket using
+  length-prefixed JSON frames (protocol version 1, `healthcheck://broker`
+  sentinel): one broker process owns a single shared `SecHttpClient` and
+  serves archive fetch RPCs, so process-pool workers never construct their own
+  client and all live requests share one aggregate rate limiter. `broker_cli.py`
+  provides `start`/`stop`/`status` plus `ensure_broker()`, which production
+  pipelines call to auto-start a broker. Manage it with
+  `python -m defs.sec_http.broker {start,stop,status} [--socket PATH]`.
+- `sec_forms/` — shared SEC form definitions, semantic concepts, and cover-page contracts (see `sec_forms/README.md`).
 
 ## Settings registry and environment resolution
 

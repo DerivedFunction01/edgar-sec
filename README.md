@@ -88,11 +88,10 @@ consumes these target plans; see the Phase 02 README for the scope split.
 
 Acquires and stores raw SEC filing documents (HTML, SGML, iXBRL) as
 content-addressed, zstd-compressed SQLite BLOBs, linked to Phase 02 corporate
-occurrences. The boundary is storage-only: it consumes a finalized Phase 02 target
-plan, fetches each unique document locator once via an offline fixture CAS or the
-live SEC archive, and merges isolated worker chunk databases into a published
-partition SQLite database. Document parsing and section extraction are later
-phases built on the stored `document_blobs`.
+occurrences, and applies cover-page normalization (hybrid in-place DOM
+preprocessing with layout-table decomposition and text healing). Document
+parsing and section extraction are later phases built on the stored and
+normalized `document_blobs`.
 
 ## Tools
 
@@ -100,7 +99,8 @@ phases built on the stored `document_blobs`.
 
 Domain-neutral contracts: SEC HTTP client (pacing/retries/caching), canonical
 filing identity (accessions, archive URLs, occurrence IDs, document locator
-keys), storage backends, SQL boundary, and the shared phase runtime.
+keys), storage backends, SQL boundary, `sec_forms/` (shared SEC form definitions,
+semantic concepts, cover-page contracts), and the shared phase runtime.
 
 ### [Dataset Viewer](defs/viewer/README.md)
 

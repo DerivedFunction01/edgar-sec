@@ -124,6 +124,13 @@ class ProjectPaths:
         return self.runtime_root / "config.json"
 
     @property
+    def broker_root(self) -> Path:
+        return self.runtime_root / "broker"
+
+    def broker_paths(self) -> BrokerPaths:
+        return BrokerPaths(self.broker_root)
+
+    @property
     def test_runs_root(self) -> Path:
         return self.artifacts_root / "test-runs"
 
@@ -318,6 +325,30 @@ class RunPaths:
         path = self.worker_root(worker_id, attempt_id)
         path.mkdir(parents=True, exist_ok=True)
         return path
+
+
+@dataclass(frozen=True)
+class BrokerPaths:
+    """Typed layout for the managed SEC acquisition broker service."""
+
+    root: Path
+    socket_name: str = "broker.sock"
+
+    @property
+    def socket_path(self) -> Path:
+        return self.root / self.socket_name
+
+    @property
+    def pid_path(self) -> Path:
+        return self.root / "broker.pid"
+
+    @property
+    def registry_path(self) -> Path:
+        return self.root / "broker.json"
+
+    def ensure_layout(self) -> Path:
+        self.root.mkdir(parents=True, exist_ok=True)
+        return self.root
 
 
 def _partition_id(value: int) -> str:
@@ -534,6 +565,7 @@ __all__ = [
     "MERGE_REPORT_NAME",
     "ArtifactClassification",
     "ArtifactRole",
+    "BrokerPaths",
     "FixturePaths",
     "PhasePaths",
     "ProjectPaths",

@@ -46,6 +46,7 @@ def test_normalization_segment_golden(name: str) -> None:
             word_count=100,
             has_html_tags=True,
             detected_encoding="utf-8",
+            metadata={"form": "10-K"},
         )
     )
     report_root = (
