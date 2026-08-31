@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import json
 from collections import defaultdict
-from concurrent.futures import ProcessPoolExecutor
+from concurrent.futures import ProcessPoolExecutor, as_completed
 from contextlib import suppress
 from dataclasses import asdict, dataclass
 from pathlib import Path
@@ -403,11 +403,12 @@ def run_partition(
                         ): task
                         for task in tasks
                     }
-                    for future, task in future_to_task.items():
+                    for future in as_completed(future_to_task):
+                        task = future_to_task[future]
                         chunk_result = future.result()
                         chunk_results[task.index] = chunk_result
                         if progress is not None:
-                            # Emit document-level completion events for progress callbacks
+                            # Replay document completions after the isolated chunk returns.
                             for failure in chunk_result.failures:
                                 progress(
                                     {

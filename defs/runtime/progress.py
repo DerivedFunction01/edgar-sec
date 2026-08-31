@@ -29,19 +29,24 @@ def make_tqdm_callback(
                 state["not_ok"] += 1
             state["hist"] += event.get("historical_files", 0) or 0
             pbar.update(1)
-        requests = metrics.get("requests_total", 0)
-        elapsed = max(time.monotonic() - started, 1e-6)
         postfix = {
             "ok": state["ok"],
             "fail": state["not_ok"],
             "hist": state["hist"],
-            "req": requests,
-            "rps": f"{requests / elapsed:.1f}",
-            "retry": metrics.get("retries_used", 0),
-            "throttle": metrics.get("throttled_count", 0),
         }
-        if metrics.get("cache_hits"):
-            postfix["cache"] = metrics["cache_hits"]
+        if metrics:
+            requests = metrics.get("requests_total", 0)
+            elapsed = max(time.monotonic() - started, 1e-6)
+            postfix.update(
+                {
+                    "req": requests,
+                    "rps": f"{requests / elapsed:.1f}",
+                    "retry": metrics.get("retries_used", 0),
+                    "throttle": metrics.get("throttled_count", 0),
+                }
+            )
+            if metrics.get("cache_hits"):
+                postfix["cache"] = metrics["cache_hits"]
         pbar.set_postfix(postfix)
 
     return callback

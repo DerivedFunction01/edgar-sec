@@ -32,6 +32,15 @@ def test_tqdm_callback_updates_generic_completion_metrics():
     assert bar.postfix["retry"] == 1
 
 
+def test_tqdm_callback_omits_unavailable_http_metrics():
+    bar = Bar()
+    callback = make_tqdm_callback(bar)
+    callback({"type": "document_done", "status": "ok"})
+
+    assert bar.updated == 1
+    assert bar.postfix == {"ok": 1, "fail": 0, "hist": 0}
+
+
 def test_merge_callback_advances_on_stage_and_partition_events():
     bar = Bar()
     callback = make_merge_progress_callback(bar)

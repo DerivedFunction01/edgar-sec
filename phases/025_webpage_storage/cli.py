@@ -15,7 +15,6 @@ from defs.runtime.cli import print_json
 from defs.runtime.paths import resolve_paths
 from defs.runtime.progress import make_tqdm_callback
 from defs.runtime.resources import derive_resources
-from defs.sec_http import SecHttpClient, make_sec_http_client
 from defs.sql import Select, SqlDialect, Table, col, make_sql_executor
 
 from .core import pipeline
@@ -161,10 +160,6 @@ def _resolved_output(args) -> str:
     )
 
 
-def _build_production_client(workers: int) -> SecHttpClient:
-    return make_sec_http_client(max_concurrency=max(4, workers))
-
-
 def _status(database: str) -> dict:
     path = Path(database)
     if not path.is_file():
@@ -252,9 +247,7 @@ def main(argv: list[str] | None = None) -> int:
                 if args.workers is not None
                 else max(1, derive_resources().workers)
             )
-            http_client = (
-                None if args.mode == "production" else _build_production_client(workers)
-            )
+            http_client = None
             progress_cb = None
             pbar = None
             if not getattr(args, "no_progress", False):
