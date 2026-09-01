@@ -11,6 +11,7 @@ from .cover import (
 from .presentation import (
     exhibit_index_template,
     side_by_side_template,
+    sparse_status_matrix_template,
     uniform_text_table_template,
 )
 from .registration import registration_table_template
@@ -58,6 +59,10 @@ def apply_table_templates(
 
     # 2. General financial & body table templates (side-by-side, uniform text)
     if typed_scope is not TableScope.TOC:
+        res_product_status = sparse_status_matrix_template(source_grid)
+        if res_product_status:
+            return TemplateResult(text=res_product_status, bypass_guard=False)
+
         res_exhibit = exhibit_index_template(source_grid)
         if res_exhibit:
             return TemplateResult(text=res_exhibit, bypass_guard=True)

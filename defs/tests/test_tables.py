@@ -432,6 +432,27 @@ def test_html_conversion_preserves_section_headers_and_stub_alignment():
     assert "<S>" in result
 
 
+def test_signature_fallback_renders_single_and_horizontal_signers_as_prose():
+    html = """
+    <table>
+      <tr><td>Date: January 1, 2025</td><td>By:</td><td>/s/ Alex Smith</td></tr>
+      <tr><td></td><td></td><td>Alex Smith</td></tr>
+      <tr><td></td><td></td><td>Chief Executive Officer</td></tr>
+    </table>
+    <table>
+      <tr><td colspan="3">/s/ Alex Smith</td><td colspan="3">/s/ Pat Jones</td></tr>
+      <tr><td colspan="3">Alex Smith</td><td colspan="3">Pat Jones</td></tr>
+      <tr><td colspan="3">Chief Executive Officer</td><td colspan="3">Chief Financial Officer</td></tr>
+    </table>
+    """
+
+    result = convert_html_tables_to_ascii(html)
+
+    assert "By: /s/ Alex Smith" in result
+    assert "/s/ Pat Jones" in result
+    assert "<TABLE>" not in result
+
+
 def test_table_token_registry_covers_all_currency_metadata():
     registered_symbols = {
         symbol

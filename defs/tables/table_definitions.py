@@ -34,6 +34,7 @@ from .tokens import is_numeric_cell
 
 _BORDER_PROPERTY_RE = re.compile(r"(?:^|;)border-(top|bottom):([^;]*)", re.IGNORECASE)
 _TOTAL_LABEL_RE = re.compile(r"\b(?:sub)?total\b", re.IGNORECASE)
+_UNITS_LABEL_RE = re.compile(r"^\((?:dollars\s+in|in)\b[^)]*\)$", re.IGNORECASE)
 
 
 def _has_border(cell: object, side: str) -> bool:
@@ -146,6 +147,9 @@ def _heal_grid(
         values = [cell.strip() for cell in rows[i] if cell.strip()]
         next_values = [cell.strip() for cell in rows[i + 1] if cell.strip()]
         previous_values = [cell.strip() for cell in rows[i - 1] if cell.strip()]
+        if len(values) == 1 and _UNITS_LABEL_RE.fullmatch(values[0]):
+            header_count = i + 1
+            break
         if len(values) <= 1 and len(next_values) <= 1 and len(previous_values) > 1:
             header_count = i
             break

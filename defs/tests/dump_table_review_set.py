@@ -46,6 +46,7 @@ def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--ids-file", type=Path)
     parser.add_argument("--id", action="append", dest="ids", default=[])
+    parser.add_argument("--corpus-path", type=Path, default=LEGACY_CORPUS_PATH)
     parser.add_argument("--output", type=Path, required=True)
     args = parser.parse_args(argv)
     if not args.ids_file and not args.ids:
@@ -56,7 +57,8 @@ def main(argv: list[str] | None = None) -> int:
         ids.extend(_ids_from_file(args.ids_file))
     ids = list(dict.fromkeys(ids))
     records = {
-        record["table_id"]: record for record in _records(LEGACY_CORPUS_PATH, "legacy")
+        record["table_id"]: record
+        for record in _records(args.corpus_path, "review_source")
     }
     missing = sorted(set(ids) - records.keys())
     if missing:

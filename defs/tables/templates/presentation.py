@@ -93,22 +93,36 @@ def signature_template(table: object) -> str | None:
             .build()
         )
 
-    if len(source_grid[0]) >= 4:
+    marker_positions = [
+        (row_index, column)
+        for row_index, row in enumerate(source_grid)
+        for column, cell in enumerate(row)
+        if "/s/" in cell
+    ]
+    if (
+        len(marker_positions) >= 2
+        and len({column for _, column in marker_positions}) >= 2
+    ):
         midpoint = len(source_grid[0]) // 2
-        left_signature = " ".join(source_grid[0][:midpoint]).strip()
-        right_signature = " ".join(source_grid[0][midpoint:]).strip()
-        if "/s/" in left_signature and "/s/" in right_signature:
-            rows = []
-            for row in source_grid:
-                left = " ".join(cell for cell in row[:midpoint] if cell).strip()
-                right = " ".join(cell for cell in row[midpoint:] if cell).strip()
-                if left or right:
-                    rows.append([left, right])
-            return (
-                HTMLTableConverter(grid=rows, header_row_count=0)
-                .to_generic_table()
-                .build()
-            )
+        rows = []
+        for row in source_grid:
+            left = " ".join(cell for cell in row[:midpoint] if cell).strip()
+            right = " ".join(cell for cell in row[midpoint:] if cell).strip()
+            if left or right:
+                rows.append((left, right))
+        width = max((len(left) for left, _ in rows), default=0)
+        lines = [f"{left.ljust(width)}  {right}".rstrip() for left, right in rows]
+        return "\n" + "\n".join(lines) + "\n"
+
+    lines = [cell for row in source_grid for cell in row if cell]
+    if len(marker_positions) == 1 and lines:
+        rendered: list[str] = []
+        for line in lines:
+            if rendered and rendered[-1].casefold() in {"by", "by:"} and "/s/" in line:
+                rendered[-1] = f"By: {line}"
+            else:
+                rendered.append(line)
+        return "\n" + "\n".join(rendered) + "\n"
 
     if "by:" not in all_text.casefold():
         return None
@@ -178,6 +192,37 @@ def uniform_text_table_template(source_grid: list[list[str]]) -> str | None:
     )
 
 
+def sparse_status_matrix_template(source_grid: list[list[str]]) -> str | None:
+    """Render sparse marker matrices while preserving empty status columns."""
+    if len(source_grid) < 2:
+        return None
+    starts = [index for index, cell in enumerate(source_grid[0]) if cell.strip()]
+    if len(starts) < 4:
+        return None
+    groups = [
+        (start, starts[index + 1] if index + 1 < len(starts) else len(source_grid[0]))
+        for index, start in enumerate(starts)
+    ]
+    rows = [
+        [
+            " ".join(cell for cell in row[start:end] if cell).strip()
+            for start, end in groups
+        ]
+        for row in source_grid
+    ]
+    if any(not row[0] or not row[1] for row in rows[1:]):
+        return None
+    marker_values = {"•", "✓", "✔", "☑", "☐", "x", "X"}
+    status_columns = [
+        column
+        for column in range(2, len(starts))
+        if all(not row[column] or row[column] in marker_values for row in rows[1:])
+    ]
+    if len(status_columns) < 2:
+        return None
+    return HTMLTableConverter(grid=rows, header_row_count=1).to_generic_table().build()
+
+
 def exhibit_index_template(source_grid: list[list[str]]) -> str | None:
     """Render continuation rows from a two-column exhibit index as data."""
     if len(source_grid) < 4:
@@ -211,5 +256,6 @@ __all__ = [
     "exhibit_index_template",
     "side_by_side_template",
     "signature_template",
+    "sparse_status_matrix_template",
     "uniform_text_table_template",
 ]

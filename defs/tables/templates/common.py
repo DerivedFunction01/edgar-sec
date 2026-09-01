@@ -31,6 +31,7 @@ def cell_text(cell: object) -> str:
     text = cell.get_text(separator=" ", strip=True)
     text = re.sub(r"\s+", " ", text).strip()
     text = re.sub(r"\s+([.,;:!?])", r"\1", text)
+    text = re.sub(r"(?<=\d)\s+%", "%", text)
     text = re.sub(r"\b([A-Z]) (?=[a-z])", r"\1", text)
     text = re.sub(r"\.{2,}", " ", text)
     text = PAREN_SPACES_RE.sub(r"(\1)", text)
