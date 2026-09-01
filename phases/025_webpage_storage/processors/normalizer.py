@@ -43,6 +43,7 @@ class DeepNormalizer:
             text = form_normalizer.preprocess_cover(text, metadata)
 
         # 2. Generic HTML financial table to ASCII conversion & HTML tag stripping
+        # Meant for html documents that actually are just SGML ASCII documents in the 2008-range that uses <PRE> wrappers
         if preprocessed.has_html_tags and "<TABLE>" not in text:
             text = convert_html_tables_to_ascii(text)
 
