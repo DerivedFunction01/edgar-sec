@@ -124,6 +124,45 @@ def merge_inline_suffix_cells(
                 rows[row][column] = ""
 
 
+def merge_prefix_columns(
+    rows: list[list[str]], header_count: int, drop: set[int]
+) -> None:
+    """Merge standalone prefix symbols into the following numeric cell on the same row.
+
+    Only fires on sparse prefix columns where the symbol appears in a minority
+    of body rows. Consistent prefix columns (e.g. a dedicated currency column
+    used on every row) are left intact.
+    """
+    width = max(map(len, rows), default=0)
+    body_row_count = len(rows) - header_count
+    for column in range(width - 1):
+        if column in drop:
+            continue
+        body_cells = [
+            rows[row][column].strip() for row in range(header_count, len(rows))
+        ]
+        symbol_count = sum(1 for cell in body_cells if cell in PREFIX_SYMBOLS)
+        if symbol_count == 0 or (
+            body_row_count > 1 and symbol_count / body_row_count > 0.5
+        ):
+            continue
+        for row in range(header_count, len(rows)):
+            prefix = rows[row][column].strip()
+            if prefix not in PREFIX_SYMBOLS:
+                continue
+            next_column = next(
+                (
+                    candidate
+                    for candidate in range(column + 1, width)
+                    if rows[row][candidate].strip()
+                ),
+                None,
+            )
+            if next_column is not None and is_numeric_cell(rows[row][next_column]):
+                rows[row][column] = prefix + rows[row][next_column].strip()
+                rows[row][next_column] = ""
+
+
 def attach_inline_footnotes(
     rows: list[list[str]], header_count: int, drop: set[int]
 ) -> None:
@@ -162,8 +201,27 @@ def drop_empty_body_columns(
     for column in range(1, width):
         if column in drop:
             continue
-        if not any(row[column].strip() for row in rows):
+        if not any(row[column].strip() for row in rows[header_count:]):
             drop.add(column)
+
+
+def drop_header_only_spacers(
+    rows: list[list[str]], header_count: int, drop: set[int]
+) -> None:
+    """Drop empty body columns that sit between populated body columns."""
+    width = max(map(len, rows), default=0)
+    body_columns = {
+        column
+        for column in range(width)
+        if any(rows[row][column].strip() for row in range(header_count, len(rows)))
+    }
+    if len(body_columns) < 2:
+        return
+    first_body, last_body = min(body_columns), max(body_columns)
+    for column in range(first_body + 1, last_body):
+        if column in body_columns or column in drop:
+            continue
+        drop.add(column)
 
 
 def drop_prefix_columns(
@@ -221,10 +279,12 @@ __all__ = [
     "attach_inline_footnotes",
     "drop_empty_body_columns",
     "drop_footnote_columns",
+    "drop_header_only_spacers",
     "drop_header_only_year_spacers",
     "drop_prefix_columns",
     "drop_suffix_columns",
     "fold_dropped_headers",
     "is_section",
     "merge_inline_suffix_cells",
+    "merge_prefix_columns",
 ]

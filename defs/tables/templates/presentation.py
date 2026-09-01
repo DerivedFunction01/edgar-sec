@@ -93,6 +93,23 @@ def signature_template(table: object) -> str | None:
             .build()
         )
 
+    if len(source_grid[0]) >= 4:
+        midpoint = len(source_grid[0]) // 2
+        left_signature = " ".join(source_grid[0][:midpoint]).strip()
+        right_signature = " ".join(source_grid[0][midpoint:]).strip()
+        if "/s/" in left_signature and "/s/" in right_signature:
+            rows = []
+            for row in source_grid:
+                left = " ".join(cell for cell in row[:midpoint] if cell).strip()
+                right = " ".join(cell for cell in row[midpoint:] if cell).strip()
+                if left or right:
+                    rows.append([left, right])
+            return (
+                HTMLTableConverter(grid=rows, header_row_count=0)
+                .to_generic_table()
+                .build()
+            )
+
     if "by:" not in all_text.casefold():
         return None
     midpoint = max(1, len(source_grid[0]) // 2)
@@ -161,8 +178,37 @@ def uniform_text_table_template(source_grid: list[list[str]]) -> str | None:
     )
 
 
+def exhibit_index_template(source_grid: list[list[str]]) -> str | None:
+    """Render continuation rows from a two-column exhibit index as data."""
+    if len(source_grid) < 4:
+        return None
+    compact = [[cell for cell in row if cell.strip()] for row in source_grid]
+    if max((len(row) for row in compact), default=0) > 2:
+        return None
+    exhibit_re = re.compile(
+        r"^\d+(?:\.\d+)?(?:\([a-z0-9]+\))?$|^\d{3}\*{2}$|^EX-\d+\.[A-Z]+$",
+        re.IGNORECASE,
+    )
+    header_count = 0
+    if compact and len(compact[0]) >= 2:
+        first_cell = compact[0][0].casefold()
+        second_cell = compact[0][1].casefold()
+        if "exhibit" in first_cell and "description" in second_cell:
+            header_count = 1
+    exhibit_rows = compact[header_count:]
+    if sum(bool(exhibit_re.fullmatch(row[0])) for row in exhibit_rows if row) < 3:
+        return None
+    rows = [row if len(row) == 2 else [row[0], ""] for row in compact]
+    return (
+        HTMLTableConverter(grid=rows, header_row_count=header_count)
+        .to_generic_table()
+        .build()
+    )
+
+
 __all__ = [
     "bullet_list_template",
+    "exhibit_index_template",
     "side_by_side_template",
     "signature_template",
     "uniform_text_table_template",

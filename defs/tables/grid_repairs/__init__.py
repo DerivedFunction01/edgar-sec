@@ -10,12 +10,14 @@ from .repairs import (
     attach_inline_footnotes,
     drop_empty_body_columns,
     drop_footnote_columns,
+    drop_header_only_spacers,
     drop_header_only_year_spacers,
     drop_prefix_columns,
     drop_suffix_columns,
     fold_dropped_headers,
     is_section,
     merge_inline_suffix_cells,
+    merge_prefix_columns,
 )
 from .templates import (
     GRID_TEMPLATES,
@@ -39,6 +41,8 @@ def apply_grid_repairs(
 ) -> list[int]:
     """Apply registered grid repair passes and return the indices of retained columns."""
     repairs: list[tuple[str, GridRepair]] = [
+        ("merge_prefix_columns", merge_prefix_columns),
+        ("drop_header_only_spacers", drop_header_only_spacers),
         ("drop_header_only_year_spacers", drop_header_only_year_spacers),
         ("merge_inline_suffix_cells", merge_inline_suffix_cells),
         ("drop_footnote_columns", drop_footnote_columns),

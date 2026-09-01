@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import re
 import sys
 import warnings
 
@@ -31,19 +32,99 @@ from .templates import (
 )
 from .tokens import is_numeric_cell
 
+_BORDER_PROPERTY_RE = re.compile(r"(?:^|;)border-(top|bottom):([^;]*)", re.IGNORECASE)
+_TOTAL_LABEL_RE = re.compile(r"\b(?:sub)?total\b", re.IGNORECASE)
+
+
+def _has_border(cell: object, side: str) -> bool:
+    """Return whether an inline border declaration exists for a cell side."""
+    style = re.sub(r"\s+", "", cell.get("style", ""))
+    return any(
+        match_side.casefold() == side
+        for match_side, _ in _BORDER_PROPERTY_RE.findall(style)
+    )
+
+
+def _detect_border_header_count(table: object, row_count: int) -> int:
+    """Infer a header boundary from the first inline border transition."""
+    if row_count < 2:
+        return 0
+    filtered_rows = [
+        row for row in table.find_all("tr") if row.get_text(" ", strip=True)
+    ]
+    if not filtered_rows:
+        return 0
+
+    for row_index, row in enumerate(filtered_rows):
+        cells = row.find_all(["td", "th"])
+        has_top = any(_has_border(cell, "top") for cell in cells)
+        has_bottom = any(_has_border(cell, "bottom") for cell in cells)
+        if has_top and has_bottom:
+            return 0
+        if has_top:
+            candidate = row_index
+        elif has_bottom:
+            candidate = row_index + 1
+        else:
+            continue
+        first_value = next(
+            (
+                cell.get_text(" ", strip=True)
+                for cell in cells
+                if cell.get_text(strip=True)
+            ),
+            "",
+        )
+        if _TOTAL_LABEL_RE.search(first_value):
+            return 0
+        return candidate if 0 < candidate < row_count else 0
+    return 0
+
+
+def _detect_explicit_header_count(table: object, row_count: int) -> int:
+    """Count leading non-empty rows containing explicit ``th`` cells."""
+    filtered_rows = [
+        row for row in table.find_all("tr") if row.get_text(" ", strip=True)
+    ]
+    count = 0
+    for row in filtered_rows:
+        if not row.find("th"):
+            break
+        count += 1
+    return count if 0 < count < row_count else 0
+
+
+def _detect_header_like_first_row(table: object, row_count: int) -> int:
+    """Weak final fallback: treat the first multi-cell text row as a header."""
+    filtered_rows = [
+        row for row in table.find_all("tr") if row.get_text(" ", strip=True)
+    ]
+    for row in filtered_rows[:2]:
+        cells = [
+            cell.get_text(" ", strip=True)
+            for cell in row.find_all(["td", "th"])
+            if cell.get_text(strip=True)
+        ]
+        if len(cells) >= 2 and all(
+            not is_numeric_cell(cell) and len(cell) <= 40 for cell in cells
+        ):
+            return 1
+    return 0
+
 
 def _heal_grid(
     grid: list[list[str]],
     *,
     debug: bool = False,
     span_groups: list[SpanGroup] | None = None,
+    table: object | None = None,
 ) -> tuple[list[list[str]], int]:
     """Analyze and repair column alignment and span groups across table rows."""
     if not grid:
         return [], 0
     width = max(map(len, grid))
     rows = [row + [""] * (width - len(row)) for row in grid]
-    header_count, first_numeric_row = 1, len(rows)
+    header_count, first_numeric_row = 0, len(rows)
     for i, row in enumerate(rows):
         values = [cell.strip() for cell in row if cell.strip()]
         numeric = sum(
@@ -52,6 +133,13 @@ def _heal_grid(
         if values and numeric / len(values) >= 0.25:
             header_count = first_numeric_row = i
             break
+
+    if first_numeric_row == len(rows) and table is not None:
+        header_count = _detect_explicit_header_count(table, len(rows))
+        if not header_count:
+            header_count = _detect_border_header_count(table, len(rows))
+        if not header_count:
+            header_count = _detect_header_like_first_row(table, len(rows))
 
     # Keep sparse section rows in the body after a multi-column header.
     for i in range(1, min(first_numeric_row, len(rows) - 1)):
@@ -174,7 +262,7 @@ def convert_html_tables_to_ascii(html_content: str, *, debug: bool = False) -> s
 
         # 4. Standard financial table grid healing and ASCII rendering
         grid, header_count = _heal_grid(
-            source_grid, debug=debug, span_groups=span_groups
+            source_grid, debug=debug, span_groups=span_groups, table=table
         )
         if not grid or len(grid[0]) <= 1:
             table.unwrap()

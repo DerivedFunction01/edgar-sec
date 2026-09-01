@@ -4,6 +4,8 @@ from __future__ import annotations
 
 import re
 
+from bs4 import BeautifulSoup
+
 from defs.tables import (
     ALL_CURRENCY_SYMBOLS,
     FINANCIAL_PLACEHOLDERS,
@@ -17,6 +19,8 @@ from defs.tables import (
 )
 from defs.tables.currencies import MAJOR_CURRENCIES
 from defs.tables.repair import clean_and_merge_symbols
+from defs.tables.table_definitions import _detect_border_header_count, _heal_grid
+from defs.tables.templates import span_grid
 
 
 def test_generic_table_build():
@@ -120,6 +124,61 @@ def test_html_table_conversion_debug_reports_header_boundary(capsys):
     assert re.search(r"selected header_count=2", diagnostics)
     assert "converted output" in diagnostics
     assert "<TABLE>" in result
+
+
+def test_html_table_conversion_uses_first_inline_border_as_header_boundary(capsys):
+    html = """
+    <table>
+      <tr><td>Metric</td><td>Class</td><td>Region</td><td>Unit</td><td>Value</td></tr>
+      <tr><td style="border-top:1pt solid #000">Revenue</td><td>Retail</td>
+          <td>North</td><td>USD</td><td>reported</td></tr>
+      <tr><td>Margin</td><td>Retail</td><td>North</td><td>Percent</td><td>20</td></tr>
+      <tr><td>Growth</td><td>Retail</td><td>North</td><td>Percent</td><td>10</td></tr>
+      <tr><td>Change</td><td>Retail</td><td>North</td><td>Percent</td><td>5</td></tr>
+      <tr><td>Other</td><td>Retail</td><td>North</td><td>Percent</td><td>3</td></tr>
+      <tr><td>Volume</td><td>Retail</td><td>North</td><td>Percent</td><td>4</td></tr>
+      <tr><td>Rate</td><td>Retail</td><td>North</td><td>Percent</td><td>2</td></tr>
+    </table>
+    """
+
+    soup = BeautifulSoup(html, "lxml")
+    table = soup.find("table")
+    grid, spans = span_grid(table, with_spans=True)
+    result, _ = _heal_grid(grid, debug=True, span_groups=spans, table=table)
+    diagnostics = capsys.readouterr().err
+
+    assert re.search(r"selected header_count=1", diagnostics)
+    assert any("Revenue" in row for row in result)
+
+
+def test_border_header_detection_rejects_outer_and_subtotal_boundaries():
+    for html in (
+        """
+        <table>
+          <tr><td style="border-top:1pt solid #000">Metric</td><td>Value</td></tr>
+          <tr><td>Revenue</td><td>20</td></tr>
+        </table>
+        """,
+        """
+        <table>
+          <tr><td>Metric</td><td>Value</td></tr>
+          <tr><td>Revenue</td><td>20</td></tr>
+          <tr><td style="border-bottom:1pt solid #000">Total</td><td>20</td></tr>
+        </table>
+        """,
+        """
+        <table>
+          <tr><td>Metric</td><td>Value</td></tr>
+          <tr><td style="border-top:1pt solid #000">Subtotal</td><td>20</td></tr>
+          <tr><td>Revenue</td><td>20</td></tr>
+        </table>
+        """,
+    ):
+        soup = BeautifulSoup(html, "lxml")
+        assert (
+            _detect_border_header_count(soup.find("table"), len(soup.find_all("tr")))
+            == 0
+        )
 
 
 def test_html_table_conversion_preserves_change_columns():

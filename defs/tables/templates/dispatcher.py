@@ -8,7 +8,11 @@ from .cover import (
     cover_layout_template,
     single_row_horizontal_template,
 )
-from .presentation import side_by_side_template, uniform_text_table_template
+from .presentation import (
+    exhibit_index_template,
+    side_by_side_template,
+    uniform_text_table_template,
+)
 from .registration import registration_table_template
 from .scope import TableScope
 
@@ -54,6 +58,10 @@ def apply_table_templates(
 
     # 2. General financial & body table templates (side-by-side, uniform text)
     if typed_scope is not TableScope.TOC:
+        res_exhibit = exhibit_index_template(source_grid)
+        if res_exhibit:
+            return TemplateResult(text=res_exhibit, bypass_guard=True)
+
         res_side = side_by_side_template(table, source_grid)
         if res_side:
             return TemplateResult(text=res_side, bypass_guard=False)
