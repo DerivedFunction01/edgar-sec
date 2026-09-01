@@ -9,7 +9,6 @@ from defs.storage import DatasetSpec, pa, read_records, write_table_atomic
 from defs.tables import convert_html_tables_to_ascii
 
 ROOT = Path(__file__).parents[2]
-LEGACY_PATH = ROOT / "defs/tests/fixtures/tables/validated_table_corpus.parquet"
 LIVE_PATH = ROOT / "defs/tests/fixtures/tables/validated_table_corpus_v2.parquet"
 SCHEMA = pa.schema(
     [
@@ -55,12 +54,11 @@ def main() -> int:
         parser.error(
             "one of --id, --ids-file, --all-corpus, or --remove-id is required"
         )
-    legacy = {record["table_id"]: record for record in _read(LEGACY_PATH, "legacy")}
     live = {record["table_id"]: record for record in _read(LIVE_PATH, "live")}
     if args.all_corpus:
         args.ids = [
             table_id
-            for table_id, record in legacy.items()
+            for table_id, record in live.items()
             if record["corpus"] == args.all_corpus
         ]
     if args.ids_file:
@@ -85,14 +83,14 @@ def main() -> int:
         for table_id, record in live.items()
         if table_id not in remove_ids
     }
-    missing = sorted(set(args.ids) - legacy.keys())
+    missing = sorted(set(args.ids) - live.keys())
     if missing:
         parser.error(f"unknown table ID(s): {', '.join(missing)}")
     live.update(
         {
             table_id: {
-                **legacy[table_id],
-                "expected": convert_html_tables_to_ascii(legacy[table_id]["html"]),
+                **live[table_id],
+                "expected": convert_html_tables_to_ascii(live[table_id]["html"]),
             }
             for table_id in args.ids
         }

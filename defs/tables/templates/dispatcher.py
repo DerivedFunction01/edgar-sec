@@ -10,8 +10,11 @@ from .cover import (
 )
 from .presentation import (
     exhibit_index_template,
+    footnote_template,
+    linked_index_template,
     side_by_side_template,
     sparse_status_matrix_template,
+    two_column_prose_template,
     uniform_text_table_template,
 )
 from .registration import registration_table_template
@@ -57,15 +60,19 @@ def apply_table_templates(
         if res_single:
             return TemplateResult(text=res_single, bypass_guard=True)
 
+    res_footnote = footnote_template(table, source_grid)
+    if res_footnote:
+        return TemplateResult(text=res_footnote, bypass_guard=True)
+
+    res_exhibit = exhibit_index_template(source_grid)
+    if res_exhibit:
+        return TemplateResult(text=res_exhibit, bypass_guard=True)
+
     # 2. General financial & body table templates (side-by-side, uniform text)
     if typed_scope is not TableScope.TOC:
         res_product_status = sparse_status_matrix_template(source_grid)
         if res_product_status:
             return TemplateResult(text=res_product_status, bypass_guard=False)
-
-        res_exhibit = exhibit_index_template(source_grid)
-        if res_exhibit:
-            return TemplateResult(text=res_exhibit, bypass_guard=True)
 
         res_side = side_by_side_template(table, source_grid)
         if res_side:
@@ -74,6 +81,14 @@ def apply_table_templates(
         res_uniform = uniform_text_table_template(source_grid)
         if res_uniform:
             return TemplateResult(text=res_uniform, bypass_guard=False)
+
+        res_two_col = two_column_prose_template(source_grid)
+        if res_two_col:
+            return TemplateResult(text=res_two_col, bypass_guard=True)
+
+    res_linked = linked_index_template(table, source_grid)
+    if res_linked:
+        return TemplateResult(text=res_linked, bypass_guard=True)
 
     return None
 

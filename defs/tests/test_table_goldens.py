@@ -15,7 +15,6 @@ from defs.testing.goldens import compare_golden_value
 
 FIXTURES = Path(__file__).parent / "fixtures" / "tables"
 CORPUS_PATH = FIXTURES / "validated_table_corpus_v2.parquet"
-LEGACY_CORPUS_PATH = FIXTURES / "validated_table_corpus.parquet"
 CORPUS_SCHEMA = pa.schema(
     [
         ("corpus", pa.string()),
@@ -53,10 +52,10 @@ def test_synthetic_table_golden(name: str) -> None:
 
 def test_manually_validated_jnj_derivatives_table() -> None:
     records = read_records(
-        LEGACY_CORPUS_PATH,
+        CORPUS_PATH,
         "parquet",
         spec=DatasetSpec(
-            name="validated_table_corpus_legacy",
+            name="validated_table_corpus_v2",
             schema_version="1",
             key_field="table_id",
             arrow_schema=CORPUS_SCHEMA,
@@ -148,7 +147,7 @@ def _validated_corpus(corpus: str) -> tuple[int, int, int, list[str], Path]:
 
 @pytest.mark.parametrize(
     "corpus",
-    ["apple_2025", "jnj_2025", "jpmorgan_2025", "berry_2008", "kellogg_2003"],
+    ["apple_2025", "jnj_2025", "jpmorgan_2025", "apd_2025"],
 )
 def test_validated_table_corpus(corpus: str) -> None:
     matched, divergent, invalid, divergent_ids, report_root = _validated_corpus(corpus)

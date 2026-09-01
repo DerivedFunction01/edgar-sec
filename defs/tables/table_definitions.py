@@ -30,6 +30,11 @@ from .templates import (
     signature_template,
     span_grid,
 )
+from .toc import (
+    PART_HEADING_RE,
+    looks_like_toc_text,
+    toc_part_headings_are_body_rows,
+)
 from .tokens import is_numeric_cell
 
 _BORDER_PROPERTY_RE = re.compile(r"(?:^|;)border-(top|bottom):([^;]*)", re.IGNORECASE)
@@ -113,12 +118,142 @@ def _detect_header_like_first_row(table: object, row_count: int) -> int:
     return 0
 
 
+def _toc_starts_with_part_heading(
+    source_grid: list[list[str]], scope: TableScope
+) -> bool:
+    """Keep a leading PART heading in the TOC body rather than as a header."""
+    first_row = next(
+        (row for row in source_grid if any(value.strip() for value in row)), []
+    )
+    values = [value.strip() for value in first_row if value.strip()]
+    return (
+        len(values) == 1
+        and toc_part_headings_are_body_rows(source_grid, is_toc=scope is TableScope.TOC)
+        and bool(PART_HEADING_RE.fullmatch(values[0]))
+    )
+
+
+def _detect_section_row_indexes(
+    table: object, source_grid: list[list[str]], header_count: int
+) -> set[int]:
+    """Find visually marked, nonnumeric rows that introduce a table section."""
+    styled_rows = [row for row in table.find_all("tr") if row.get_text(" ", strip=True)]
+    section_rows: set[int] = set()
+    for index, row in enumerate(source_grid):
+        if index < header_count or index >= len(styled_rows):
+            continue
+        values = [value.strip() for value in row if value.strip()]
+        if len(values) != 1 or is_numeric_cell(values[0]):
+            continue
+        cells = styled_rows[index].find_all(["td", "th"])
+        if not cells:
+            continue
+        first_cell = next((cell for cell in cells if cell.get_text(strip=True)), None)
+        if first_cell is None:
+            continue
+        style = re.sub(r"\s+", "", first_cell.get("style", "")).casefold()
+        emphasized = bool(
+            first_cell.find(["b", "strong", "i", "em"])
+            or re.search(r"font-(?:weight:\s*700|style:\s*italic)", style)
+        )
+        if "border-top:" in style or "border-bottom:" in style or emphasized:
+            section_rows.add(index)
+    return section_rows
+
+
+def _detect_section_rows(
+    table: object, source_grid: list[list[str]], header_count: int
+) -> dict[int, int]:
+    section_rows = _detect_section_row_indexes(table, source_grid, header_count)
+    styled_rows = [row for row in table.find_all("tr") if row.get_text(" ", strip=True)]
+    levels: dict[int, int] = {}
+    for index in sorted(section_rows):
+        levels[index] = 1 if index - 1 in section_rows else 0
+    active_level = 0
+    active_label = ""
+    active_section = False
+    for index in range(header_count, len(source_grid)):
+        if index in section_rows:
+            active_level = levels[index]
+            active_section = True
+            active_label = next(
+                value.strip() for value in source_grid[index] if value.strip()
+            ).casefold()
+            continue
+        values = [value.strip() for value in source_grid[index] if value.strip()]
+        if not values:
+            continue
+        label = values[0].casefold()
+        if not active_section:
+            continue
+        levels[index] = active_level + 1
+        if active_level > 0 and label.startswith("total ") and active_label:
+            levels[index] = active_level + 1
+            active_level = 0
+            active_label = ""
+    paddings: dict[int, float] = {}
+    for index, row in enumerate(styled_rows[: len(source_grid)]):
+        first_cell = next(
+            (cell for cell in row.find_all(["td", "th"]) if cell.get_text(strip=True)),
+            None,
+        )
+        if first_cell is None:
+            continue
+        style = first_cell.get("style", "")
+        match = re.search(r"padding-left:\s*([0-9.]+)pt", style)
+        if match is None:
+            padding = re.search(r"padding:\s*([^;]+)", style)
+            if padding:
+                values = padding.group(1).split()
+                left = (
+                    values[-1]
+                    if len(values) == 4
+                    else values[1]
+                    if len(values) >= 2
+                    else values[0]
+                )
+                match = re.fullmatch(r"([0-9.]+)pt", left)
+        if match:
+            padding_left = float(match.group(1))
+            indent = re.search(r"text-indent:\s*(-?[0-9.]+)pt", style)
+            paddings[index] = (
+                padding_left + float(indent.group(1)) if indent else padding_left
+            )
+    if paddings:
+        clusters: list[list[float]] = []
+        for value in sorted(set(paddings.values())):
+            if not clusters or value - clusters[-1][-1] > 2.0:
+                clusters.append([value])
+            else:
+                clusters[-1].append(value)
+        baseline = min(sum(cluster) / len(cluster) for cluster in clusters)
+        deltas = sorted(
+            delta
+            for delta in {round(value - baseline, 3) for value in paddings.values()}
+            if delta > 0
+        )
+        min_step = 2.0
+        real_deltas = [delta for delta in deltas if delta >= min_step]
+        if len(real_deltas) >= 1:
+            step = real_deltas[0]
+            for index, padding in paddings.items():
+                delta = padding - baseline
+                if delta < min_step and index not in section_rows:
+                    levels[index] = 0
+                    continue
+                if delta >= step and abs(delta / step - round(delta / step)) < 0.15:
+                    levels[index] = max(levels.get(index, 0), round(delta / step))
+
+    return levels
+
+
 def _heal_grid(
     grid: list[list[str]],
     *,
     debug: bool = False,
     span_groups: list[SpanGroup] | None = None,
     table: object | None = None,
+    header_count_override: int | None = None,
 ) -> tuple[list[list[str]], int]:
     """Analyze and repair column alignment and span groups across table rows."""
     if not grid:
@@ -126,7 +261,11 @@ def _heal_grid(
     width = max(map(len, grid))
     rows = [row + [""] * (width - len(row)) for row in grid]
     header_count, first_numeric_row = 0, len(rows)
+    if header_count_override is not None:
+        header_count = first_numeric_row = header_count_override
     for i, row in enumerate(rows):
+        if header_count_override is not None:
+            break
         values = [cell.strip() for cell in row if cell.strip()]
         numeric = sum(
             is_numeric_cell(cell) and not YEAR_TOKEN_RE.match(cell) for cell in values
@@ -221,14 +360,16 @@ def convert_html_tables_to_ascii(html_content: str, *, debug: bool = False) -> s
         # 2. Extract grid and test layout templates
         full_text = table.get_text(" ", strip=True).lower()
         scope = TableScope.from_string(
-            "toc"
-            if ("item" in full_text and "page" in full_text and "part i" in full_text)
-            else "body"
+            "toc" if looks_like_toc_text(full_text) else "body"
         )
         cells = table.find_all(["td", "th"])
         non_empty = [cell_text(cell) for cell in cells if cell_text(cell)]
         numeric = sum(is_numeric_cell(cell) for cell in non_empty)
-        source_grid, span_groups = span_grid(table, with_spans=True)
+        source_grid, span_groups = span_grid(
+            table,
+            with_spans=True,
+            join_fragmented_anchors=scope is TableScope.TOC,
+        )
 
         template_result = apply_table_templates(table, source_grid, scope=scope)
         if template_result is not None:
@@ -266,13 +407,25 @@ def convert_html_tables_to_ascii(html_content: str, *, debug: bool = False) -> s
 
         # 4. Standard financial table grid healing and ASCII rendering
         grid, header_count = _heal_grid(
-            source_grid, debug=debug, span_groups=span_groups, table=table
+            source_grid,
+            debug=debug,
+            span_groups=span_groups,
+            table=table,
+            header_count_override=(
+                0 if _toc_starts_with_part_heading(source_grid, scope) else None
+            ),
         )
         if not grid or len(grid[0]) <= 1:
             table.unwrap()
             continue
         converted = (
-            HTMLTableConverter(grid=grid, header_row_count=header_count)
+            HTMLTableConverter(
+                grid=grid,
+                header_row_count=header_count,
+                section_levels=_detect_section_rows(table, grid, header_count),
+                section_rows=_detect_section_row_indexes(table, grid, header_count),
+                debug=debug,
+            )
             .to_generic_table()
             .build()
         )

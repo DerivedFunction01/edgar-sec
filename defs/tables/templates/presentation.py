@@ -3,10 +3,12 @@
 from __future__ import annotations
 
 import re
+import textwrap
 
 from defs.tables.builder import HTMLTableConverter
 from defs.tables.patterns import BULLET_MARKER_RE
 from defs.tables.tokens import is_numeric_cell
+from defs.text.checkmarks import CHECKED_TOKENS, UNCHECKED_TOKENS
 
 from .common import cell_lines, cell_text, span_grid
 
@@ -30,15 +32,82 @@ def bullet_list_template(table: object) -> str | None:
     return None
 
 
+def footnote_template(table: object, source_grid: list[list[str]]) -> str | None:
+    """Render symbol-marked footnote rows as horizontal prose lines."""
+    marker_re = re.compile(r"^[*†‡§]+$")
+    rows = [
+        [cell_text(cell) for cell in row.find_all(["td", "th"]) if cell_text(cell)]
+        for row in table.find_all("tr")
+        if row.get_text(" ", strip=True)
+    ]
+    if not rows or len(rows) != len(source_grid):
+        return None
+    if not all(
+        len(row) == 2 and marker_re.fullmatch(row[0]) and row[1] for row in rows
+    ):
+        return None
+    return "\n" + "\n".join(f"{marker} {text}" for marker, text in rows) + "\n"
+
+
 def signature_template(table: object) -> str | None:
     """Render executive/sign-off signature blocks."""
     source_grid, _ = span_grid(table, with_spans=True)
     if not source_grid:
         return None
     all_text = " ".join(cell for row in source_grid for cell in row if cell)
-    if "/s/" not in all_text:
+    marker_re = re.compile(r"^(?:/s/|\*)\s*", re.IGNORECASE)
+    marker_positions = [
+        (row_index, column)
+        for row_index, row in enumerate(source_grid)
+        for column, cell in enumerate(row)
+        if marker_re.match(cell.strip())
+    ]
+    if "/s/" not in all_text and len(marker_positions) < 2:
         return None
-    date_pattern = re.compile(r"\b\d{1,2},\s*\d{4}\b")
+    date_pattern = re.compile(r"\b(?:\d{1,2},\s*\d{4}|\d{1,2}\s+[A-Za-z]+\s+\d{4})\b")
+    has_asterisk_marker = any(
+        cell.strip() == "*" for row in source_grid for cell in row
+    )
+    if has_asterisk_marker and len(marker_positions) >= 2:
+        rows = [row for row in table.find_all("tr") if row.get_text(" ", strip=True)]
+        records: list[list[str]] = []
+        for row_index, _ in marker_positions:
+            if row_index + 1 >= len(source_grid) or row_index + 1 >= len(rows):
+                return None
+            marker = next(
+                cell.strip() for cell in source_grid[row_index] if cell.strip()
+            )
+            date = next(
+                (
+                    cell.strip()
+                    for cell in source_grid[row_index]
+                    if date_pattern.search(cell)
+                ),
+                "",
+            )
+            detail = next(
+                (cell.strip() for cell in source_grid[row_index + 1] if cell.strip()),
+                "",
+            )
+            next_style = " ".join(
+                cell.get("style", "")
+                for cell in rows[row_index + 1].find_all(["td", "th"])
+            ).casefold()
+            if not date or not detail or "border-top:" not in next_style:
+                return None
+            signature = f"{marker} {detail}"
+            if marker.casefold().startswith("/s/"):
+                signer = marker[3:].strip()
+                if detail.casefold().startswith(signer.casefold()):
+                    signature = f"{marker} {detail[len(signer) :].strip()}"
+            records.append([signature, date])
+        return (
+            HTMLTableConverter(
+                grid=[["Signature and Title", "Date"], *records], header_row_count=1
+            )
+            .to_generic_table()
+            .build()
+        )
     header_index = next(
         (
             index
@@ -212,7 +281,11 @@ def sparse_status_matrix_template(source_grid: list[list[str]]) -> str | None:
     ]
     if any(not row[0] or not row[1] for row in rows[1:]):
         return None
-    marker_values = {"•", "✓", "✔", "☑", "☐", "x", "X"}
+    marker_values = {
+        token
+        for token in CHECKED_TOKENS | UNCHECKED_TOKENS
+        if token.strip() and token.strip() != "&nbsp;"
+    }
     status_columns = [
         column
         for column in range(2, len(starts))
@@ -223,27 +296,80 @@ def sparse_status_matrix_template(source_grid: list[list[str]]) -> str | None:
     return HTMLTableConverter(grid=rows, header_row_count=1).to_generic_table().build()
 
 
+def two_column_prose_template(source_grid: list[list[str]]) -> str | None:
+    """Render a two-column prose table as a two-column ASCII table.
+
+    Matches tables where ``span_grid`` produces exactly two populated columns
+    (e.g., company-name + ownership-percentage lists separated by spacer
+    columns). Fires after all other templates and before the prose-unwrap
+    fallback, and only when the grid is genuinely two columns.
+    """
+    if len(source_grid) < 2:
+        return None
+    width = max(len(row) for row in source_grid)
+    if width < 2:
+        return None
+    padded = [row + [""] * (width - len(row)) for row in source_grid]
+    populated_cols = [c for c in range(width) if any(row[c].strip() for row in padded)]
+    if len(populated_cols) != 2:
+        return None
+    compact = [[row[populated_cols[0]], row[populated_cols[1]]] for row in padded]
+    populated = [row for row in compact if any(cell.strip() for cell in row)]
+    if len(populated) < 2:
+        return None
+    both_filled = sum(1 for row in populated if row[0].strip() and row[1].strip())
+    if both_filled / len(populated) < 0.75:
+        return None
+    all_cells = [cell for row in compact for cell in row if cell.strip()]
+    if not all_cells:
+        return None
+    if sum(is_numeric_cell(cell) for cell in all_cells) / len(all_cells) > 0.15:
+        return None
+    left_words = [len(row[0].split()) for row in populated if row[0].strip()]
+    right_words = [len(row[1].split()) for row in populated if row[1].strip()]
+    if left_words and right_words:
+        avg_left = sum(left_words) / len(left_words)
+        avg_right = sum(right_words) / len(right_words)
+        if avg_left > 0 and avg_right > 0:
+            ratio = min(avg_left, avg_right) / max(avg_left, avg_right)
+            if ratio < 0.15:
+                return None
+    return (
+        HTMLTableConverter(grid=compact, header_row_count=0).to_generic_table().build()
+    )
+
+
 def exhibit_index_template(source_grid: list[list[str]]) -> str | None:
     """Render continuation rows from a two-column exhibit index as data."""
-    if len(source_grid) < 4:
+    if len(source_grid) < 3:
         return None
     compact = [[cell for cell in row if cell.strip()] for row in source_grid]
-    if max((len(row) for row in compact), default=0) > 2:
-        return None
     exhibit_re = re.compile(
-        r"^\d+(?:\.\d+)?(?:\([a-z0-9]+\))?$|^\d{3}\*{2}$|^EX-\d+\.[A-Z]+$",
+        r"^\(?\d+\)?(?:\.\d+)?(?:\([a-z0-9]+\))?$|^\d{3}\*{2}$|^EX-\d+\.[A-Z]+$",
         re.IGNORECASE,
     )
     header_count = 0
-    if compact and len(compact[0]) >= 2:
-        first_cell = compact[0][0].casefold()
-        second_cell = compact[0][1].casefold()
-        if "exhibit" in first_cell and "description" in second_cell:
-            header_count = 1
-    exhibit_rows = compact[header_count:]
-    if sum(bool(exhibit_re.fullmatch(row[0])) for row in exhibit_rows if row) < 3:
+    for index, row in enumerate(compact[:3]):
+        if (
+            len(row) >= 2
+            and "exhibit" in " ".join(row[:2]).casefold()
+            and "description" in row[1].casefold()
+        ):
+            header_count = index + 1
+            break
+    if header_count == 0 and max((len(row) for row in compact), default=0) > 2:
         return None
-    rows = [row if len(row) == 2 else [row[0], ""] for row in compact]
+    exhibit_rows = compact[header_count:]
+    minimum_exhibits = (
+        1 if header_count >= 2 and "incorporated" in compact[0][0].casefold() else 3
+    )
+    if (
+        sum(bool(exhibit_re.fullmatch(row[0])) for row in exhibit_rows if row)
+        < minimum_exhibits
+    ):
+        return None
+    width = max((len(row) for row in compact), default=0)
+    rows = [row + [""] * (width - len(row)) for row in compact]
     return (
         HTMLTableConverter(grid=rows, header_row_count=header_count)
         .to_generic_table()
@@ -251,11 +377,72 @@ def exhibit_index_template(source_grid: list[list[str]]) -> str | None:
     )
 
 
+def linked_index_template(table: object, source_grid: list[list[str]]) -> str | None:
+    """Render mixed prose and linked page-index rows without a table wrapper."""
+    rows = [row for row in table.find_all("tr") if row.get_text(" ", strip=True)]
+    if len(rows) < 5 or len(rows) != len(source_grid):
+        return None
+    linked_rows = []
+    prose_rows = []
+    for index, row in enumerate(rows):
+        values = [
+            cell_text(cell) for cell in row.find_all(["td", "th"]) if cell_text(cell)
+        ]
+        anchors = row.find_all("a")
+        if len(anchors) >= 2 and len(values) >= 2:
+            linked_rows.append(index)
+        elif len(values) == 1 and values[0].endswith(":"):
+            prose_rows.append(index)
+    if len(linked_rows) < 3 or len(linked_rows) / len(rows) < 0.4 or not prose_rows:
+        return None
+
+    descriptions = []
+    page_values = []
+    rendered_rows = []
+    for index, row in enumerate(rows):
+        values = [
+            cell_text(cell) for cell in row.find_all(["td", "th"]) if cell_text(cell)
+        ]
+        if index in linked_rows:
+            descriptions.append(values[0])
+            page_values.append(values[-1])
+        elif values:
+            rendered_rows.append((index, values[0]))
+    description_width = min(max(map(len, descriptions), default=0), 88)
+    page_width = max(map(len, page_values), default=0)
+    output = []
+    for index, row in enumerate(source_grid):
+        values = [value.strip() for value in row if value.strip()]
+        if not values:
+            continue
+        if index in linked_rows:
+            description = values[0]
+            page = values[-1]
+            wrapped = textwrap.wrap(
+                description,
+                width=description_width,
+                break_long_words=False,
+                break_on_hyphens=False,
+            ) or [""]
+            output.append(
+                f"{wrapped[0].ljust(description_width)}  {page.rjust(page_width)}"
+            )
+            output.extend(wrapped[1:])
+        else:
+            output.extend(
+                textwrap.wrap(values[0], width=100, break_long_words=False) or [""]
+            )
+    return "\n" + "\n".join(output) + "\n"
+
+
 __all__ = [
     "bullet_list_template",
     "exhibit_index_template",
+    "footnote_template",
+    "linked_index_template",
     "side_by_side_template",
     "signature_template",
     "sparse_status_matrix_template",
+    "two_column_prose_template",
     "uniform_text_table_template",
 ]

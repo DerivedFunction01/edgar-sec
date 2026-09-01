@@ -9,7 +9,7 @@ from pathlib import Path
 
 from defs.runtime.paths import resolve_paths
 from defs.tables import convert_html_tables_to_ascii
-from defs.tests.query_table_corpus import LEGACY_CORPUS_PATH, _records
+from defs.tests.query_table_corpus import _records
 
 
 def _default_output() -> Path:
@@ -56,9 +56,6 @@ def _render(records: list[dict], *, corpus: str | None, render_current: bool) ->
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--corpus", help="dump only one filing corpus")
-    parser.add_argument(
-        "--legacy", action="store_true", help="read the legacy full corpus"
-    )
     parser.add_argument("--limit", type=int, help="limit records after filtering")
     parser.add_argument(
         "--first", type=int, help="select the first N corpus records before filtering"
@@ -85,11 +82,7 @@ def main(argv: list[str] | None = None) -> int:
     )
     args = parser.parse_args(argv)
 
-    records = (
-        _records(LEGACY_CORPUS_PATH, "validated_table_corpus_legacy")
-        if args.legacy
-        else _records()
-    )
+    records = _records()
     if args.first is not None:
         if args.first <= 0:
             parser.error("--first must be positive")

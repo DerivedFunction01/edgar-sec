@@ -7,27 +7,8 @@ import re
 from defs.regex import build_alternation
 
 from .currencies import MAJOR_CURRENCIES
+from .units import MEASUREMENT_UNITS
 
-FINANCIAL_PLACEHOLDERS = frozenset(
-    {
-        "—",
-        "-",
-        "–",
-        "*",
-        "$—",
-        "—*",
-        "-*",
-        "—)",
-        "-)",
-        "—%",
-        "-%",
-        "–%",
-        "na",
-        "n/a",
-        "none",
-        "nil",
-    }
-)
 SUFFIX_TOKENS = frozenset({"%", "pt", "bps", ")", "%)"})
 PREFIX_TOKENS = frozenset({"(", "-"})
 BULLET_MARKERS = frozenset({"o", "*", "-", "+", "•", "·", "\x95", "–", "—", "&#149;"})
@@ -45,20 +26,58 @@ SUFFIX_SYMBOLS = frozenset(
     for symbol in data.get("symbols", [])
 )
 ALL_CURRENCY_SYMBOLS = PREFIX_SYMBOLS | SUFFIX_SYMBOLS
+UNIT_SYMBOLS: set[str] = set()
+for _unit_data in MEASUREMENT_UNITS.values():
+    UNIT_SYMBOLS.update(_unit_data.get("symbols", []))
+
+_EMPTY_NUMERIC_MARKERS = frozenset({"—", "-", "–"})
+FINANCIAL_PLACEHOLDERS = frozenset(
+    {
+        *(_EMPTY_NUMERIC_MARKERS | {"*"}),
+        *(
+            f"{symbol}{marker}"
+            for symbol in ALL_CURRENCY_SYMBOLS
+            for marker in _EMPTY_NUMERIC_MARKERS
+        ),
+        *(
+            f"{marker}{suffix}"
+            for marker in _EMPTY_NUMERIC_MARKERS
+            for suffix in ("*", ")", "%")
+        ),
+        "na",
+        "n/a",
+        "none",
+        "nil",
+    }
+)
+_FINANCIAL_PLACEHOLDERS_CASEFOLD = frozenset(
+    placeholder.casefold() for placeholder in FINANCIAL_PLACEHOLDERS
+)
 
 _CURRENCY_ALTERNATION = build_alternation(
     sorted(ALL_CURRENCY_SYMBOLS), auto_escape=True, sort_longest_first=True
 )
-CURRENCY_TOKEN_RE = re.compile(rf"(?:{_CURRENCY_ALTERNATION})")
-NUMERIC_CELL_RE = re.compile(
-    rf"^(?:{_CURRENCY_ALTERNATION})?\s*\(?\s*[\d,\.]+\s*\)?\s*%?$"
+_UNIT_ALTERNATION = build_alternation(
+    sorted(UNIT_SYMBOLS), auto_escape=True, sort_longest_first=True
 )
-_NUMERIC_STRIP_RE = re.compile(rf"(?:{_CURRENCY_ALTERNATION}|[%()\-,])")
+CURRENCY_TOKEN_RE = re.compile(rf"(?:{_CURRENCY_ALTERNATION})")
+UNIT_TOKEN_RE = re.compile(rf"(?:{_UNIT_ALTERNATION})\b", re.IGNORECASE)
+NUMERIC_CELL_RE = re.compile(
+    rf"^(?:{_CURRENCY_ALTERNATION}\s*)?\(?\s*"
+    rf"(?:{_CURRENCY_ALTERNATION}\s*)?[\d,\.]+"
+    rf"(?:\s*(?:{_UNIT_ALTERNATION}|%))?"
+    rf"(?:\s*-\s*(?:{_CURRENCY_ALTERNATION}\s*)?[\d,\.]+"
+    rf"(?:\s*(?:{_UNIT_ALTERNATION}|%))?)?"
+    rf"\s*(?:{_CURRENCY_ALTERNATION})?\s*\)?\s*%?$"
+)
+_NUMERIC_STRIP_RE = re.compile(
+    rf"(?:{_CURRENCY_ALTERNATION}|{_UNIT_ALTERNATION}|[%()\-,])"
+)
 
 
 def is_financial_placeholder(value: str) -> bool:
     """Return whether a cell is an exact configured financial placeholder."""
-    return value.strip().casefold() in FINANCIAL_PLACEHOLDERS
+    return value.strip().casefold() in _FINANCIAL_PLACEHOLDERS_CASEFOLD
 
 
 def is_prefix_token(value: str) -> bool:

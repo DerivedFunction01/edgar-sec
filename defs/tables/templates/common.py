@@ -6,7 +6,7 @@ import re
 from dataclasses import dataclass, field
 
 from defs.tables.grid_repairs import SpanGroup
-from defs.tables.patterns import PAREN_SPACES_RE
+from defs.tables.patterns import CURRENCY_TOKEN_RE, PAREN_SPACES_RE
 
 
 @dataclass(frozen=True)
@@ -26,16 +26,38 @@ class TemplateResult:
     bypass_guard: bool = field(default=False)
 
 
-def cell_text(cell: object) -> str:
+def cell_text(cell: object, *, join_fragmented_anchors: bool = False) -> str:
     """Extract, clean, and normalize text inside a single table cell."""
+    anchors = cell.find_all("a")
+    fragmented = (
+        join_fragmented_anchors
+        and len(anchors) >= 3
+        and any(
+            len(anchor.get_text(strip=True)) == 1
+            and anchor.get_text(strip=True).islower()
+            for anchor in anchors
+        )
+    )
     text = cell.get_text(separator=" ", strip=True)
+    if fragmented:
+        for index, anchor in enumerate(anchors[:-1]):
+            fragment = anchor.get_text(strip=True)
+            following = anchors[index + 1].get_text(strip=True)
+            if len(fragment) == 1 and fragment.islower() and following[:1].islower():
+                text = re.sub(
+                    rf"(?<!\w){re.escape(fragment)}\s+(?={re.escape(following[:1])})",
+                    fragment,
+                    text,
+                    count=1,
+                )
     text = re.sub(r"\s+", " ", text).strip()
     text = re.sub(r"\s+([.,;:!?])", r"\1", text)
     text = re.sub(r"(?<=\d)\s+%", "%", text)
     text = re.sub(r"\b([A-Z]) (?=[a-z])", r"\1", text)
     text = re.sub(r"\.{2,}", " ", text)
+    text = re.sub(rf"({CURRENCY_TOKEN_RE.pattern})\s+(?=\(?\s*[\d])", r"\1", text)
     text = PAREN_SPACES_RE.sub(r"(\1)", text)
-    return re.sub(r"^\$\s+(\d)", r"$\1", text)
+    return re.sub(r"\(\s+(?=[\d])", "(", text)
 
 
 def cell_lines(cell: object) -> list[str]:
@@ -50,7 +72,7 @@ def cell_lines(cell: object) -> list[str]:
 
 
 def span_grid(
-    table: object, *, with_spans: bool = False
+    table: object, *, with_spans: bool = False, join_fragmented_anchors: bool = False
 ) -> list[list[str]] | tuple[list[list[str]], list[SpanGroup]]:
     """Build a 2D text matrix respecting HTML cell colspans and rowspans."""
     occupied: dict[tuple[int, int], str] = {}
@@ -66,9 +88,20 @@ def span_grid(
                 rowspan = max(1, int(cell.get("rowspan", 1)))
             except (TypeError, ValueError):
                 colspan = rowspan = 1
-            occupied[(r, c)] = cell_text(cell)
+            occupied[(r, c)] = cell_text(
+                cell, join_fragmented_anchors=join_fragmented_anchors
+            )
             if colspan > 1:
-                span_groups.append((r, c, c + colspan, cell_text(cell)))
+                span_groups.append(
+                    (
+                        r,
+                        c,
+                        c + colspan,
+                        cell_text(
+                            cell, join_fragmented_anchors=join_fragmented_anchors
+                        ),
+                    )
+                )
             for rr in range(r, r + rowspan):
                 for cc in range(c, c + colspan):
                     occupied.setdefault((rr, cc), "")

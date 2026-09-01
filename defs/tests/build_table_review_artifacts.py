@@ -11,7 +11,7 @@ from pathlib import Path
 
 from defs.runtime.paths import resolve_paths
 from defs.tables import convert_html_tables_to_ascii
-from defs.tests.query_table_corpus import LEGACY_CORPUS_PATH, _records
+from defs.tests.query_table_corpus import _records
 
 
 def _default_root() -> Path:
@@ -50,17 +50,10 @@ def main(argv: list[str] | None = None) -> int:
     selection.add_argument("--id", action="append", dest="ids")
     selection.add_argument("--corpus")
     selection.add_argument("--all", action="store_true")
-    parser.add_argument(
-        "--legacy", action="store_true", help="read the legacy full corpus"
-    )
     parser.add_argument("--output", type=Path, default=None)
     args = parser.parse_args(argv)
 
-    source_records = (
-        _records(LEGACY_CORPUS_PATH, "validated_table_corpus_legacy")
-        if args.legacy
-        else _records()
-    )
+    source_records = _records()
     records = {record["table_id"]: record for record in source_records}
     if args.all:
         selected = list(records.values())

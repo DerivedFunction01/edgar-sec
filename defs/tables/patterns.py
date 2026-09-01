@@ -37,7 +37,7 @@ PERCENT_HEADER_RE = re.compile(
 )
 
 # Canonical patterns used while classifying and healing HTML financial tables.
-PAREN_SPACES_RE = re.compile(r"\(\s+([^\)]+?)\s+\)")
+PAREN_SPACES_RE = re.compile(r"\(\s*([^\)]+?)\s*\)")
 FOOTNOTE_RE = re.compile(r"^\(?[a-zA-Z0-9\*\†\‡\§\d]{1,3}\)?$")
 YEAR_IN_HEADER_RE = YEAR_IN_TEXT_RE
 YEAR_TOKEN_RE = SHARED_YEAR_TOKEN_RE

@@ -21,6 +21,9 @@ class GenericTable:
     widths: list[int]
     alignments: list[str]  # 'l' for left, 'r' for right, 'c' for center
     title: str
+    section_levels: dict[int, int] | None = None
+    section_rows: set[int] | None = None
+    debug: bool = False
 
     def _format_row_with_wrapping(
         self,
@@ -39,7 +42,15 @@ class GenericTable:
                 if isinstance(cell_content, list)
                 else str(cell_content)
             )
-            lines = textwrap.wrap(text_val, width=widths[i], break_long_words=False)
+            leading = len(text_val) - len(text_val.lstrip(" "))
+            content = text_val[leading:]
+            lines = textwrap.wrap(
+                content,
+                width=widths[i],
+                break_long_words=False,
+                initial_indent=" " * leading,
+                subsequent_indent=" " * leading,
+            )
             if not lines:  # Handle empty cells
                 lines = [""]
             wrapped_cells.append(lines)
@@ -95,7 +106,28 @@ class GenericTable:
         )
 
         all_rows = header_lines + [separator, sec_tags_line]
-        for row_data in self.data_rows:
+        for data_index, row_data in enumerate(self.data_rows):
+            row_index = len(self.headers) + data_index
+            level = self.section_levels.get(row_index, 0) if self.section_levels else 0
+            if self.debug and level > 0:
+                import sys
+
+                print(
+                    f"[table-debug] data row {data_index}: level={level}",
+                    file=sys.stderr,
+                )
+            if (
+                self.section_levels
+                and self.section_rows
+                and row_index in self.section_rows
+                and self.section_levels.get(row_index, 0) == 0
+                and data_index > 0
+                and all_rows
+            ):
+                all_rows.append("")
+            if self.section_levels and self.section_levels.get(row_index, 0) > 0:
+                row_data = list(row_data)
+                row_data[0] = "  " * self.section_levels[row_index] + row_data[0]
             all_rows.extend(
                 self._format_row_with_wrapping(row_data, self.widths, self.alignments)
             )
@@ -150,8 +182,11 @@ class HTMLTableConverter:
     grid: list[list[str]]
     title: str = ""
     header_row_count: int = 1
-    max_text_col_width: int = 60
+    max_text_col_width: int = 80
     max_num_col_width: int = 18
+    section_levels: dict[int, int] | None = None
+    section_rows: set[int] | None = None
+    debug: bool = False
 
     def _trim_empty_columns(self, grid: list[list[str]]) -> list[list[str]]:
         """Trim columns that are completely empty strings across all rows."""
@@ -201,9 +236,14 @@ class HTMLTableConverter:
 
             # Determine max width with capping
             max_len = 0
-            for row in clean_grid:
+            for row_index, row in enumerate(clean_grid):
                 if c < len(row):
-                    max_len = max(max_len, len(row[c]))
+                    indent = (
+                        4 * self.section_levels.get(row_index, 0)
+                        if c == 0 and self.section_levels
+                        else 0
+                    )
+                    max_len = max(max_len, len(row[c]) + indent)
 
             cap = self.max_num_col_width if is_numeric else self.max_text_col_width
             widths[c] = max(1, min(max_len, cap))
@@ -237,6 +277,9 @@ class HTMLTableConverter:
             widths=widths,
             alignments=alignments,
             title=self.title,
+            section_levels=self.section_levels,
+            section_rows=self.section_rows,
+            debug=self.debug,
         )
 
 

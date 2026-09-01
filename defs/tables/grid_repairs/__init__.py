@@ -18,6 +18,7 @@ from .repairs import (
     is_section,
     merge_inline_suffix_cells,
     merge_prefix_columns,
+    shift_sparse_numeric_cells_left,
 )
 from .templates import (
     GRID_TEMPLATES,
@@ -42,6 +43,7 @@ def apply_grid_repairs(
     """Apply registered grid repair passes and return the indices of retained columns."""
     repairs: list[tuple[str, GridRepair]] = [
         ("merge_prefix_columns", merge_prefix_columns),
+        ("shift_sparse_numeric_cells_left", shift_sparse_numeric_cells_left),
         ("drop_header_only_spacers", drop_header_only_spacers),
         ("drop_header_only_year_spacers", drop_header_only_year_spacers),
         ("merge_inline_suffix_cells", merge_inline_suffix_cells),

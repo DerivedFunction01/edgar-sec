@@ -10,7 +10,6 @@ from defs.storage import DatasetSpec, pa, read_records
 
 ROOT = Path(__file__).parents[2]
 CORPUS_PATH = ROOT / "defs/tests/fixtures/tables/validated_table_corpus_v2.parquet"
-LEGACY_CORPUS_PATH = ROOT / "defs/tests/fixtures/tables/validated_table_corpus.parquet"
 SCHEMA = pa.schema(
     [
         ("corpus", pa.string()),

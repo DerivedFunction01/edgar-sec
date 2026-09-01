@@ -163,6 +163,44 @@ def merge_prefix_columns(
                 rows[row][next_column] = ""
 
 
+def shift_sparse_numeric_cells_left(
+    rows: list[list[str]], header_count: int, drop: set[int]
+) -> None:
+    """Align a row-local numeric cell with a dominant adjacent numeric column.
+
+    This handles HTML rows that omit a currency-prefix cell and consequently
+    start one physical column later than their neighboring period rows.
+    """
+    del drop
+    width = max(map(len, rows), default=0)
+    numeric_counts = [
+        sum(
+            is_numeric_cell(rows[row][column].strip())
+            for row in range(header_count, len(rows))
+            if column < len(rows[row])
+        )
+        for column in range(width)
+    ]
+    for row in range(header_count, len(rows)):
+        numeric_columns = [
+            column
+            for column, cell in enumerate(rows[row])
+            if is_numeric_cell(cell.strip())
+        ]
+        if len(numeric_columns) < 2:
+            continue
+        for column in numeric_columns:
+            target = column - 1
+            if target < 1 or rows[row][target].strip():
+                continue
+            if (
+                numeric_counts[target] >= 2
+                and numeric_counts[target] >= 2 * numeric_counts[column]
+            ):
+                rows[row][target] = rows[row][column]
+                rows[row][column] = ""
+
+
 def attach_inline_footnotes(
     rows: list[list[str]], header_count: int, drop: set[int]
 ) -> None:
