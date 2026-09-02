@@ -15,6 +15,7 @@ normalize_form = sec_forms.normalize_form
 resolve_alias = sec_forms.resolve_alias
 aliases_for_family = sec_forms.aliases_for_family
 get_profile = cover_mod.get_profile
+BoundarySignal = cover_mod.BoundarySignal
 COVER_PROFILES = cover_mod.COVER_PROFILES
 CoverProfile = cover_mod.CoverProfile
 SEC_COVER_PHRASE_RULES = sec_forms.SEC_COVER_PHRASE_RULES
@@ -67,22 +68,22 @@ def test_profiles_exist_for_registered_families() -> None:
         assert family in COVER_PROFILES
 
 
-def test_profile_eligibility_matrix() -> None:
-    assert get_profile("10-K").eligible is True
-    assert get_profile("20-F").eligible is True
-    assert get_profile("10-Q").eligible is True
-    assert get_profile("8-K").eligible is False
-    assert get_profile("6-K").eligible is False
-    assert get_profile("GENERIC").eligible is False
-    assert get_profile(None).eligible is False
-    assert get_profile("S-1").eligible is False
+def test_profile_boundary_capability_matrix() -> None:
+    assert get_profile("10-K").boundary is not None
+    assert get_profile("20-F").boundary is not None
+    assert get_profile("10-Q").boundary is not None
+    assert get_profile("8-K").boundary is None
+    assert get_profile("6-K").boundary is None
+    assert get_profile("GENERIC").boundary is None
+    assert get_profile(None).boundary is None
+    assert get_profile("S-1").boundary is None
 
 
 def test_annual_profiles_enable_incorporated_reference() -> None:
     annual = get_profile("10-K")
     quarterly = get_profile("10-Q")
-    annual_names = {rule.name for rule in annual.phrase_rules}
-    quarterly_names = {rule.name for rule in quarterly.phrase_rules}
+    annual_names = {rule.name for rule in annual.healing_rules}
+    quarterly_names = {rule.name for rule in quarterly.healing_rules}
     assert "documents_incorporated_reference" in annual_names
     assert "documents_incorporated_reference" not in quarterly_names
     assert "aggregate_market_value" in annual_names
@@ -94,26 +95,27 @@ def test_annual_profiles_enable_incorporated_reference() -> None:
 def test_no_cover_profiles_have_no_rules_or_labels() -> None:
     for family in ("8-K", "6-K", "GENERIC"):
         profile = get_profile(family)
-        assert profile.phrase_rules == ()
+        assert profile.healing_rules == ()
         assert profile.labels == ()
-        assert profile.boundary_phrases == ()
+        assert profile.boundary is None
         assert profile.evidence_terms == ()
 
 
-def test_annual_boundary_includes_incorporated_reference() -> None:
+def test_annual_boundary_enables_incorporated_reference() -> None:
     annual = get_profile("10-K")
     quarterly = get_profile("10-Q")
-    assert "documents incorporated by reference" in annual.boundary_phrases
-    assert "documents incorporated by reference" not in quarterly.boundary_phrases
+    assert annual.boundary is not None
+    assert quarterly.boundary is not None
+    assert BoundarySignal.INCORPORATED_REFERENCE in annual.boundary.signals
+    assert BoundarySignal.INCORPORATED_REFERENCE not in quarterly.boundary.signals
 
 
 def test_20_f_profile_extends_annual_common() -> None:
     annual = get_profile("10-K")
     foreign = get_profile("20-F")
-    assert foreign.eligible is True
+    assert foreign.boundary == annual.boundary
     assert foreign.labels == annual.labels
-    assert foreign.boundary_phrases == annual.boundary_phrases
-    assert foreign.phrase_rules == annual.phrase_rules
+    assert foreign.healing_rules == annual.healing_rules
 
 
 def test_profiles_are_immutable() -> None:
@@ -123,5 +125,9 @@ def test_profiles_are_immutable() -> None:
 
 
 def test_aggregate_matches_annual_profile_rules() -> None:
+    from defs.sec_forms.forms.annual import ANNUAL_ADDITIONAL_PHRASE_RULES
+    from defs.sec_forms.sequences import COMMON_PHRASE_RULES
+
     annual = get_profile("10-K")
-    assert tuple(SEC_COVER_PHRASE_RULES) == annual.phrase_rules
+    expected = tuple(COMMON_PHRASE_RULES) + tuple(ANNUAL_ADDITIONAL_PHRASE_RULES)
+    assert annual.healing_rules == expected

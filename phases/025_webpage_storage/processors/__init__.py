@@ -24,7 +24,7 @@ from .forms import (
     PreprocessedDocument,
     RefetchDecision,
 )
-from .normalizer import DeepNormalizer
+from .normalizer import DeepNormalizer, NormalizationResult
 from .preprocessor import GenericPreprocessor
 from .router import FormRouter
 
@@ -57,9 +57,10 @@ class DefaultFilingProcessor(DocumentProcessor):
         decision = self.router.evaluate(preprocessed, locator)
 
         # Stage 3: Deep Normalization & Table Alignment
-        normalized_text = self.normalizer.normalize(
+        normalization = self.normalizer.normalize_result(
             preprocessed, metadata={"form": locator.form}
         )
+        normalized_text = normalization.text
 
         output_payload = normalized_text.encode("utf-8")
         out_doc_id = doc_id(locator.accession, locator.document_path)
@@ -72,6 +73,9 @@ class DefaultFilingProcessor(DocumentProcessor):
             "target_exhibit": decision.target_exhibit,
             "detected_encoding": preprocessed.detected_encoding,
             "word_count": len(normalized_text.split()),
+            "cover_boundary_method": normalization.cover_boundary.method.value,
+            "cover_boundary_line": normalization.cover_boundary.end_line,
+            "cover_boundary_confidence": normalization.cover_boundary.confidence,
         }
 
         return ProcessedDocument(
@@ -101,6 +105,7 @@ __all__ = [
     "GenericFormNormalizer",
     "GenericPreprocessor",
     "NoOpDocumentProcessor",
+    "NormalizationResult",
     "PreprocessedDocument",
     "ProcessedDocument",
     "RefetchDecision",

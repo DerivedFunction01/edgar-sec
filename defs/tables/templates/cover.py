@@ -4,8 +4,9 @@ from __future__ import annotations
 
 import re
 
-from defs.sec_forms.cover.vocabulary import (
+from defs.sec_forms.vocabulary import (
     ADDRESS_RE,
+    CHECKBOX_GRID_RE,
     COMMISSION_FILE_RE,
     COMMISSION_FILE_VALUE_RE,
     EIN_VALUE_RE,
@@ -17,7 +18,6 @@ from defs.sec_forms.cover.vocabulary import (
     ZIP_VALUE_RE,
     is_state_value,
 )
-from defs.sec_forms.patterns import CHECKBOX_GRID_RE
 from defs.text import (
     RE_RAW_CHECKED,
     RE_RAW_UNCHECKED,

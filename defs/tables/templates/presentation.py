@@ -49,6 +49,56 @@ def footnote_template(table: object, source_grid: list[list[str]]) -> str | None
     return "\n" + "\n".join(f"{marker} {text}" for marker, text in rows) + "\n"
 
 
+def marked_list_template(source_grid: list[list[str]]) -> str | None:
+    """Render spacer-column bullet or numbered lists as row-aware prose."""
+    marker_re = re.compile(r"^(?:[•·▪◦‣⁃*+-]+|\(?\d+[.)]|[A-Za-z][.)])$")
+    rendered_rows = []
+    for row in source_grid:
+        values = [value.strip() for value in row if value.strip()]
+        if not values or len(values) % 2:
+            return None
+        pairs = []
+        for index in range(0, len(values), 2):
+            if not marker_re.fullmatch(values[index]):
+                return None
+            pairs.append(f"{values[index]} {values[index + 1]}")
+        rendered_rows.append("  ".join(pairs))
+    if len(rendered_rows) < 2:
+        return None
+    return "\n" + "\n".join(rendered_rows) + "\n"
+
+
+def definition_table_template(source_grid: list[list[str]]) -> str | None:
+    """Render stable two-column prose key/value tables as labeled rows."""
+    compact = [[value.strip() for value in row if value.strip()] for row in source_grid]
+    if len(compact) < 2 or any(len(row) != 2 for row in compact):
+        return None
+    labels = [row[0] for row in compact]
+    values = [row[1] for row in compact]
+    if any(len(label.split()) > 5 for label in labels):
+        return None
+    if any(re.fullmatch(r"(?:[*†‡§]+|\(?\d+[.)])", label) for label in labels):
+        return None
+    header_words = {"description", "amount", "date", "year", "period", "total"}
+    if any(label.casefold() in header_words for label in labels[:2]):
+        return None
+    numeric_values = sum(is_numeric_cell(value) for value in values)
+    if numeric_values / len(values) > 0.4:
+        return None
+    label_width = max(map(len, labels))
+    output = []
+    for label, value in compact:
+        wrapped = textwrap.wrap(
+            value,
+            width=max(20, 100 - label_width - 2),
+            break_long_words=False,
+            break_on_hyphens=False,
+        ) or [""]
+        output.append(f"{label.ljust(label_width)}: {wrapped[0]}")
+        output.extend(f"{' ' * (label_width + 2)}{line}" for line in wrapped[1:])
+    return "\n" + "\n".join(output) + "\n"
+
+
 def signature_template(table: object) -> str | None:
     """Render executive/sign-off signature blocks."""
     source_grid, _ = span_grid(table, with_spans=True)
@@ -437,9 +487,11 @@ def linked_index_template(table: object, source_grid: list[list[str]]) -> str | 
 
 __all__ = [
     "bullet_list_template",
+    "definition_table_template",
     "exhibit_index_template",
     "footnote_template",
     "linked_index_template",
+    "marked_list_template",
     "side_by_side_template",
     "signature_template",
     "sparse_status_matrix_template",

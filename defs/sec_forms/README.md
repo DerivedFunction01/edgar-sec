@@ -1,52 +1,96 @@
 # `defs/sec_forms/` — Shared SEC Form Definitions, Semantic Concepts, and Cover-Page Contracts
 
-Owns the canonical data models, regex patterns, phrase-sequence rules, concept definitions, and form taxonomies shared across SEC cover-page extraction, normalization, and layout rendering.
+Owns the canonical data models, universal vocabulary constants, compiled regex patterns, phrase-sequence rules, concept definitions, and form-family taxonomies shared across SEC cover-page extraction, normalization, and layout rendering.
 
 ---
 
-## Layout
+## Layout & Ownership Architecture
 
 ```text
 defs/sec_forms/
-  __init__.py          # Public API exports
-  models.py            # Frozen dataclasses for cover-page semantic models
-  patterns.py          # Reusable regex patterns for filer categories, checkboxes, public float, shares
-  sequences.py         # Phrase-sequence healing rules for SEC cover captions
-  concepts.py          # ConceptPattern for dual regex/BoW semantic matching
-  taxonomy.py          # Form 10-K, 10-Q, and 8-K item/part taxonomy constants
-  families.py          # Canonical form-family alias registry and cover profile mapping
-  cover/               # Subpackage for cover labels, matchers, extractors, and profiles (own README)
+  __init__.py              # Root public exports (clean vocabulary, models, taxonomy, markers)
+  vocabulary.py            # Universal vocabulary, shared cover labels, filer terms, and contact regexes
+  models.py                # Frozen dataclasses for cover-page semantic models (CoverPageModel, etc.)
+  page_markers.py          # Pre-soup line-oriented and inline page marker detection and analysis
+  sequences.py             # Shared phrase-sequence healing rules for common cover captions
+  concepts.py              # ConceptPattern for dual regex/BoW semantic matching
+  families.py              # Canonical form-family alias registry and cover profile mapping
+  forms/                   # Form-family specific taxonomies, evidence packs, and profiles
+    __init__.py            # Form-family package entry point
+    common.py              # Base evidence pack contracts (CoverEvidencePack, BodyEvidencePack)
+    profiles.py            # Typed cover-profile composition (build_annual_profile, etc.)
+    annual/                # Form 10-K & 20-F specific domain package
+      __init__.py          # Annual API re-exports
+      taxonomy.py          # Part (I-IV) and Item (1-16) taxonomy
+      vocabulary.py        # Annual-only phrases and regexes (public float, shares, incorporated refs)
+      sequences.py         # Annual-only phrase healing rules (float, shares, auditor, incorporated)
+      evidence.py          # AnnualReportEvidence dataclass and semantic anchors
+    quarterly/             # Form 10-Q specific domain package
+      __init__.py          # Quarterly API re-exports
+      taxonomy.py          # Part (I-II) and Item (1-4, Part II 1-6) taxonomy
+      evidence.py          # QuarterlyReportEvidence dataclass and semantic anchors
+    current_report/        # Form 8-K & 6-K specific domain package
+      __init__.py          # Current-report API re-exports
+      taxonomy.py          # Section 1-9 dotted Item taxonomy (1.01 through 9.01)
+  cover/                   # Subpackage for cover boundary, extractors, and profiles (own README)
 ```
 
 ---
 
-## Key Exports
+## Detailed Component Ownership
 
-- **`models.py`** — Frozen, slotted dataclasses:
-  - `Security12b` — registered security under Section 12(b) (title, symbol, exchange, registrant)
-  - `RegistrantEntry` — single legal entity in a multi-registrant filing (name, CIK, EIN, state, address, phone, target-entity flag)
-  - `CheckboxDisclosures` — tri-state filer status and regulatory disclosure flags (WKSI, accelerated, smaller reporting, emerging growth, shell, voluntary, clawback, interactive data)
-  - `CoverPageModel` — normalized semantic representation of a Form cover page (form, company, CIK, EIN, state, file number, fiscal year end, address, phone, co-registrants, securities, shares, public float, checkboxes, auditor, incorporated-documents note)
+### 1. Universal / Shared Infrastructure
 
-- **`patterns.py`** — Compiled regex and pattern tuples consumed by extraction algorithms:
-  - `FILER_CATEGORY_PATTERNS` — filer-category regex tuples (large accelerated, accelerated, non-accelerated, smaller reporting, emerging growth)
-  - `CHECKBOX_KEYWORDS` / `CHECKBOX_GRID_RE` — checkbox keyword alternation and compiled grid matcher
-  - `PUBLIC_FLOAT_ANCHOR_RE`, `PUBLIC_FLOAT_VALUE_RE`, `PUBLIC_FLOAT_EXACT_RE` — public-float anchor and value matchers
-  - `SHARES_ANCHOR_RE`, `SHARES_VALUE_RE` — shares-outstanding anchor and value matchers
-  - `CURRENCY_SPACING_RE`, `PUNCT_SPACING_RE`, `IXBRL_FACT_RE` — text-cleanup and XBRL fact patterns
-  - Consumes `PUBLIC_FLOAT_PHRASES` and `SHARES_PHRASES` from `defs.sec_forms.cover.vocabulary`
+- **`vocabulary.py`** — Single canonical source for universal SEC terms and regex patterns:
+  - `COVER_LABELS` / `COVER_LABELS_FLAT` — Universal cover caption dictionary and flattened list (state, EIN, address, zip, telephone, registrant name, commission file number, securities 12(b)).
+  - `SEC_HEADER_TERMS`, `COVER_START_IDENTITY_TERMS`, `COVER_START_SHAPE_TERMS` — Universal header and cover start anchors.
+  - `LARGE_ACCELERATED_FILER`, `ACCELERATED_FILER`, `NON_ACCELERATED_FILER`, `SMALLER_REPORTING_COMPANY`, `EMERGING_GROWTH_COMPANY`, `SHELL_COMPANY`, `WELL_KNOWN_SEASONED_ISSUER`, `VOLUNTARY_FILER` — Canonical category constants.
+  - `FILER_CATEGORY_PATTERNS`, `CHECKBOX_KEYWORDS`, `CHECKBOX_GRID_RE` — Universal checkmark and status patterns.
+  - `STATE_INCORPORATION_RE`, `IRS_EIN_RE`, `ADDRESS_RE`, `ZIP_RE`, `TELEPHONE_RE`, `REGISTRANT_NAME_RE`, `COMMISSION_FILE_RE`, `SECURITIES_12B_RE` — Universal field label patterns.
+  - `ZIP_VALUE_RE`, `EIN_VALUE_RE`, `COMMISSION_FILE_VALUE_RE`, `is_state_value` — Value matching helpers.
 
-- **`sequences.py`** — `SEC_COVER_PHRASE_RULES`: ordered list of `PhraseSequenceRule` objects for healing fragmented cover captions (SEC banner, form titles, period/file-number/state/EIN/address/telephone captions, securities 12(b), shares outstanding, public float, incorporated documents, auditor, extended transition). Consumes phrase tuples from `defs.sec_forms.cover.vocabulary`.
+- **`sequences.py`** — Universal phrase sequence healing rules (`COMMON_PHRASE_RULES` / `SEC_COVER_PHRASE_RULES`):
+  - `BANNER_RULES` (SEC header), `FORM_TITLE_RULES` (form title captions), `PERIOD_FILE_REGISTRANT_RULES` (period ended, file number, registrant name), `CONTACT_CAPTION_RULES` (state, EIN, address, telephone), `REGISTRATION_RULES` (securities registered pursuant to section 12(b)).
 
-- **`concepts.py`** — `ConceptPattern` frozen dataclass that compiles a phrase list into a single alternation regex via `defs.regex.build_alternation` and derives a Bag-of-Words token set (filtered through `defs.entities.NAME_STOPWORDS`) for dual regex-search and overlap scoring (`search`, `finditer`, `match_score`).
+- **`models.py`** — Shared immutable domain dataclasses:
+  - `Security12b`, `RegistrantEntry`, `CheckboxDisclosures`, `CoverPageModel`.
 
-- **`taxonomy.py`** — Canonical form structure constants: `FORM_10K_ITEMS`, `FORM_10K_PARTS`, `FORM_10Q_ITEMS`, `FORM_10Q_PARTS`, `FORM_8K_ITEMS` mapping item numbers to statutory descriptions.
+- **`page_markers.py`** — Universal page marker detection, classification, and stripping:
+  - `analyze_page_markers()`, `strip_page_markers()`, `find_page_markers()`.
+
+- **`concepts.py`** — `ConceptPattern` dataclass for regex/BoW dual matching.
+
+- **`families.py`** — Canonical form-family aliases and normalization (`form_family`, `resolve_alias`).
 
 ---
 
-## Dependency Direction
+### 2. Form-Family Specific Packages (`forms/`)
 
-- `patterns.py` and `sequences.py` consume `PUBLIC_FLOAT_PHRASES` and `SHARES_PHRASES` from `defs.sec_forms.cover.vocabulary`.
-- `concepts.py` depends on `defs.regex.build_alternation` and `defs.entities.NAME_STOPWORDS`.
-- `models.py`, `taxonomy.py` are self-contained with no internal or external dependencies beyond the standard library.
-- The `cover/` subpackage has its own README and operates one level lower: it owns canonical cover labels, compiled label matchers, value patterns, and universal text-based extractors.
+- **`forms/annual/`** — Form 10-K and Form 20-F:
+  - `taxonomy.py`: Defines `PARTS` (`PART I` through `PART IV`) and `ITEMS` (`ITEM 1` through `ITEM 16`).
+  - `vocabulary.py`: Owns annual-exclusive terms and regexes:
+    - Public float: `PUBLIC_FLOAT_PHRASES`, `PUBLIC_FLOAT_ANCHOR_RE`, `PUBLIC_FLOAT_VALUE_RE`, `PUBLIC_FLOAT_EXACT_RE`.
+    - Shares outstanding: `SHARES_PHRASES`, `SHARES_ANCHOR_RE`, `SHARES_VALUE_RE`.
+    - Documents incorporated by reference: `INCORPORATED_REFERENCE_TERMS`.
+  - `sequences.py`: Owns annual-exclusive phrase healing rules:
+    - `SHARES_RULES`, `PUBLIC_FLOAT_RULES`, `DOCUMENTS_INCORPORATED_RULES`, `AUDITOR_RULES`, `EXTENDED_TRANSITION_RULES`, `ANNUAL_ADDITIONAL_PHRASE_RULES`.
+  - `evidence.py`: `AnnualReportEvidence` dataclass providing annual semantic headings, body n-grams, verbs, and healing rules.
+
+- **`forms/quarterly/`** — Form 10-Q:
+  - `taxonomy.py`: Defines `PARTS` (`PART I`, `PART II`) and `ITEMS` (`ITEM 1` to `ITEM 4`, `ITEM 1A`, `ITEM 5`, `ITEM 6`).
+  - `evidence.py`: `QuarterlyReportEvidence` dataclass providing quarterly semantic headings and comparison verbs (`decreased`, `increased`, `compared`).
+
+- **`forms/current_report/`** — Form 8-K and Form 6-K:
+  - `taxonomy.py`: Defines event-driven `ITEMS` (Section 1 through Section 9 dotted items).
+
+- **`forms/profiles.py`** & **`forms/common.py`**:
+  - `CoverEvidencePack` and `BodyEvidencePack` base contracts.
+  - `build_annual_profile()`, `build_quarterly_profile()`, `build_no_cover_profile()`.
+
+---
+
+## Dependency Invariants
+
+1. **No Form Leakage**: Generic modules (`vocabulary.py`, `sequences.py`, `cover/rules.py`) never import from `forms/annual`, `forms/quarterly`, or `forms/current_report`.
+2. **Strict Profile Composition**: Cover profiles compose universal vocabulary with form-family evidence packs explicitly.
+3. **Zero Backward-Compatibility Shims**: Consumers import directly from canonical module locations without proxy aliases or re-export shims.

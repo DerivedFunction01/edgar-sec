@@ -6,41 +6,44 @@
 import queue
 import string
 import sys
+from collections import defaultdict
+
 
 # Increase recursion limit to handle deeply nested HTML structures
 # Default is usually 1000, increase to 5000 for robust handling
 sys.setrecursionlimit(5000)
 
+import pandas as pd
+import requests
+import time
+from bs4 import BeautifulSoup, Comment
 import json
-import multiprocessing as mp
+import sqlite3
+import unicodedata
+from enum import Enum
+from typing import Any, Dict, List, Optional, Tuple, Literal
+from dataclasses import dataclass
 import random
 import re
-import sqlite3
+from tqdm import tqdm
+import multiprocessing as mp
+import psutil
+from pathlib import Path
 import threading
-import time
+import html2text
+from bs4 import XMLParsedAsHTMLWarning
 import unicodedata
 import warnings
-from pathlib import Path
-from typing import Optional
-
-import html2text
-import pandas as pd
-import psutil
-import requests
-from bs4 import BeautifulSoup, Comment, XMLParsedAsHTMLWarning
-from tqdm import tqdm
+import subprocess
 
 warnings.filterwarnings("ignore", category=XMLParsedAsHTMLWarning)
-
-# Importing required module
-import subprocess
 
 # =============================================================================
 # CONFIGURATION - DEFAULT
 # =============================================================================
 DEBUG = False
-ALL_FIRMS_DATA = "all_data.csv"
-REPORT_CSV_PATH = "report_data.csv"
+ALL_FIRMS_DATA = "data/cik_data.csv"
+REPORT_PATH = "data/report_data.parquet"
 DB_PATH = "web_data.db"
 MAX_LEN = 1000
 
@@ -58,6 +61,14 @@ DRIVE_SAVE_INTERVAL_RESULTS = 4000
 # =============================================================================
 QUEUE_BATCH_SIZE = 20  # URLs to add per fill
 QUEUE_FILL_INTERVAL_SECONDS = 2  # Seconds between fills
+
+
+class FetchStatus(Enum):
+    RETRY = "RETRY"
+    FAILED = "FAILED"
+    RATE_LIMITED = "RATE_LIMITED"
+    PERMANENT_FAILURE = "PERMANENT_FAILURE"
+
 
 # =============================================================================
 # COLAB CONFIGURATION
@@ -106,13 +117,9 @@ def get_system_config():
 # =============================================================================
 # REGEX PATTERNS AND KEYWORDS
 # =============================================================================
-from defs.currency_hints import CURRENCY_COUNTRY_HINTS
-from defs.regex_lib import build_regex
-from defs.region_regex import REGION_CODES, TAX_HAVEN_CODES, RegionMatcher
-from defs.text_cleaner import WebTextCleaner
-from defs.union_regex import LABOR_TERMS, RISK_TERMS
-
 from defs.table_definitions import HTMLTableConverter
+from defs.region_regex import RegionMatcher, TAX_HAVEN_CODES, REGION_CODES
+from defs.regex_lib import build_alternation, build_regex
 
 FILING_TYPES = {
     "10-K",
@@ -125,203 +132,176 @@ FILING_TYPES = {
 }
 
 
-CLEANUP_PATTERNS = [
-    (re.compile(r"([a-z])([A-Z])"), r"\1 \2"),
-    (re.compile(r"([a-zA-Z])(\d+)"), r"\1 \2"),
-    (re.compile(r"(\d+)([a-zA-Z])"), r"\1 \2"),
-    (re.compile(r"([a-zA-Z0-9])(\$)"), r"\1 \2"),
-    (re.compile(r"(?:\b\d{1,3}\s*)?<PAGE>(?:\s*\d{1,3}\b)?", re.IGNORECASE), r""),
-]
-
-
-TABLE_SPLIT_PATTERN = re.compile(r"(<TABLE>.*?</TABLE>)", re.DOTALL | re.IGNORECASE)
-TABLE_HINT_PATTERN = re.compile(
-    r"\b(table|summary|following|below|presented|summarized|\:)\b", re.IGNORECASE
+TABLE_SPLIT_RE = re.compile(r"(<TABLE>.*?</TABLE>)", re.DOTALL | re.IGNORECASE)
+TABLE_HINT_RE = re.compile(
+    rf"\b(?:{build_alternation([
+        "table",
+        "summary",
+        "following",
+        "below",
+        "presented",
+        "summarized",
+    ])})\b|:",
+    re.IGNORECASE,
 )
 
-LOOSE_TERMS = LABOR_TERMS.SPECIFIC_PHRASES + RISK_TERMS.PHRASES
-LOOSE_FILTER_REGEX = build_regex(LOOSE_TERMS)
-
-# Initialize RegionMatcher to access specific union regexes (e.g. "UAW", "IG Metall")
-REGION_MATCHER = RegionMatcher()
-WEB_CLEANER = WebTextCleaner()
-
-# Pattern to find single newlines that are not preceded or followed by another newline (i.e., wrapped lines)
-WRAPPED_LINE_PATTERN = re.compile(r"(?<!\n)[ \t]*\n[ \t]*(?!\n)")
-PARAGRAPH_SPLIT_PATTERN = re.compile(r"\n\s*\n")
-SPACE_PATTERN = re.compile(r"\s+")
-DOC_PATTERN = re.compile(r"<document>\s*(.*?)\s*</document>", re.DOTALL | re.IGNORECASE)
-HTML_REGEX = re.compile(r"<html", re.IGNORECASE)
-XML_REGEX = re.compile(r"xml", re.IGNORECASE)
-
-
-# ============================================================================
-# 10-K PATTERNS
-# ============================================================================
-ITEM_1_START_PATTERN = re.compile(
-    r"^\s*Items?\s+1\b(?!\s*[AB])\.?\s*(?:Business)?",
-    re.MULTILINE | re.IGNORECASE,
-)
-ITEM_1A_START_PATTERN = re.compile(
-    r"^\s*Item\s+1\s*A\b\.?\s*(?:Risk\s+Factors)?",
-    re.MULTILINE | re.IGNORECASE,
-)
-ITEM_1B_START_PATTERN = re.compile(
-    r"^\s*Item\s+1\s*B\b\.?",
-    re.MULTILINE | re.IGNORECASE,
-)
-ITEM_2_START_PATTERN = re.compile(
-    r"^\s*Items?\s+2\b\.?",
-    re.MULTILINE | re.IGNORECASE,
-)
-
-# ============================================================================
-# 20-F PATTERNS
-# ============================================================================
-# Item 3 = Business (In 20-F, Item 3 is "Key Information - Business Overview")
-ITEM_3_START_PATTERN = re.compile(
-    r"^\s*Item\s+3\b\.?\s*(?:Key\s+Information)?",
-    re.MULTILINE | re.IGNORECASE,
-)
-# Item 3A or Item 3B could be subsections, but main business is Item 3
-ITEM_3A_START_PATTERN = re.compile(
-    r"^\s*Item\s+3\s*[AB]\b\.?",
-    re.MULTILINE | re.IGNORECASE,
-)
-
-# Item 3D = Risk Factors (In 20-F, Item 3D is "Risk Factors")
-ITEM_3D_START_PATTERN = re.compile(
-    r"^\s*Item\s+3\s*D\b\.?\s*(?:Risk\s+Factors)?",
-    re.MULTILINE | re.IGNORECASE,
-)
-
-# Item 4 = Operating & Financial Review (use as fallback if Item 4A exists)
-ITEM_4_START_PATTERN = re.compile(
-    r"^\s*Item\s+4\b(?!\s*A)\.?\s*(?:Operating|Financial)?",
-    re.MULTILINE | re.IGNORECASE,
-)
-# Item 4A = Financial Statements
-ITEM_4A_START_PATTERN = re.compile(
-    r"^\s*Item\s+4\s*A\b\.?\s*(?:Financial)?",
-    re.MULTILINE | re.IGNORECASE,
-)
-
-# Item 5 = Management
-ITEM_5_START_PATTERN = re.compile(
-    r"^\s*Item\s+5\b\.?\s*(?:Management)?",
-    re.MULTILINE | re.IGNORECASE,
-)
-
-# ============================================================================
-# 40-F PATTERNS
-# ============================================================================
-# In 40-F, sections are NOT numbered like Item 1, Item 2, etc.
-# Instead they use section names. These are the main sections:
-
-# "General Development of the Business" or "Description of the Business"
-ITEM_40F_BUSINESS_PATTERN = re.compile(
-    r"^\s*(?:General\s+Development\s+of\s+(?:the\s+)?Business|"
-    r"Description\s+of\s+(?:the\s+)?Business)",
-    re.MULTILINE | re.IGNORECASE,
-)
-
-# "Risk Factors"
-ITEM_40F_RISK_PATTERN = re.compile(
-    r"^\s*Risk\s+Factors",
-    re.MULTILINE | re.IGNORECASE,
-)
-
-# Use these as boundary markers to know when a section ends
-ITEM_40F_SECTION_BOUNDARIES = re.compile(
-    r"^\s*(?:"
-    r"Dividends|"
-    r"Description\s+of\s+Capital\s+Structure|"
-    r"Market\s+for\s+Securities|"
-    r"Directors(?:\s+and\s+Officers)?|"
-    r"Executive\s+Compensation|"
-    r"Legal\s+Proceedings|"
-    r"Transfer\s+Agent|"
-    r"Material\s+Contracts|"
-    r"Financial\s+Information"
-    r")",
-    re.MULTILINE | re.IGNORECASE,
-)
-
-# ============================================================================
-# Pattern Configuration
-# ============================================================================
-PATTERN_CONFIG = {
-    "10K": {
-        "patterns": [
-            (ITEM_1_START_PATTERN, "1"),
-            (ITEM_1A_START_PATTERN, "1A"),
-            (ITEM_1B_START_PATTERN, "1B"),
-            (ITEM_2_START_PATTERN, "2"),
-        ],
-        "business_label": "1",
-        "risk_label": "1A",
-    },
-    "20F": {
-        "patterns": [
-            (ITEM_3_START_PATTERN, "3"),  # Business
-            (ITEM_3D_START_PATTERN, "3D"),  # Risk Factors
-            (ITEM_4_START_PATTERN, "4"),  # Operating & Financial
-            (ITEM_4A_START_PATTERN, "4A"),  # Financial Statements
-            (ITEM_5_START_PATTERN, "5"),  # Management
-        ],
-        "business_label": "3",  # Item 3 = Business in 20-F
-        "risk_label": "3D",  # Item 3D = Risk Factors in 20-F
-    },
-    "40F": {
-        "patterns": [
-            (ITEM_40F_BUSINESS_PATTERN, "40F_B"),
-            (ITEM_40F_RISK_PATTERN, "40F_R"),
-            (ITEM_40F_SECTION_BOUNDARIES, "40F_BOUNDARY"),
-        ],
-        "business_label": "40F_B",
-        "risk_label": "40F_R",
-    },
+_PLAIN_TABLE_RULES: Dict[str, re.Pattern | Any] = {
+    "separator": re.compile(r"^\s*[-=_]{4,}\s*$"),
+    "whitespace_gap": re.compile(r" {3,}"),
+    "score_threshold": 0.65,
+    "min_lines": 3,
 }
+
+_NUM_BASE_RE = r"(?:\d{1,3}(?:,\d{3})+|\d+)(?:\.\d+)?"
+_NUM_RE = (
+    rf"(?:\(\s*\$?\s*{_NUM_BASE_RE}\s*%?\s*\)"
+    rf"|(?:-|\$)?\s*{_NUM_BASE_RE}\s*%?)"
+)
+NUM_TOKEN_RE = re.compile(_NUM_RE)
+DATA_LINE_RE = re.compile(
+    rf"(?:{_NUM_RE})(?:[ ]{{3,}}{_NUM_RE}){{2,}}"
+    rf"|(?:[A-Za-z]{{3,}}[^\n]*?)(?:[ ]{{3,}}{_NUM_RE}){{2}}"
+)
+
+
+def _is_separator_line(line: str) -> bool:
+    return bool(_PLAIN_TABLE_RULES["separator"].match(line.strip()))
+
+
+def _is_data_line(line: str) -> bool:
+    stripped = line.strip()
+    if not stripped:
+        return False
+    return bool(DATA_LINE_RE.search(line))
+
+
+def _score_block_as_table(lines: List[str]) -> float:
+    if not lines:
+        return 0.0
+
+    separator_count = sum(1 for line in lines if _is_separator_line(line))
+    data_count = sum(1 for line in lines if _is_data_line(line))
+    gap_count = sum(
+        len(_PLAIN_TABLE_RULES["whitespace_gap"].findall(line)) for line in lines
+    )
+    total = len(lines)
+
+    score = 0.0
+    if separator_count >= 1:
+        score += 0.5
+
+    score += min(0.3, (data_count / total) * 0.3)
+    avg_gaps = gap_count / total if total else 0
+    score += min(0.2, (avg_gaps / 5) * 0.2)
+
+    return score
+
+
+def detect_and_wrap_plaintext_tables(
+    text: str,
+    threshold: float = _PLAIN_TABLE_RULES["score_threshold"],  # type: ignore
+    hint_bonus: float = 0.0,
+) -> str:
+    paragraphs = PARAGRAPH_SPLIT_RE.split(text)
+    output_parts = []
+
+    for para in paragraphs:
+        stripped = para.strip()
+        if not stripped:
+            continue
+
+        upper = stripped.upper()
+        if "<TABLE>" in upper or "</TABLE>" in upper:
+            output_parts.append(stripped)
+            continue
+
+        lines = stripped.splitlines()
+        if len(lines) < _PLAIN_TABLE_RULES["min_lines"]:  # type: ignore
+            output_parts.append(stripped)
+            continue
+
+        score = _score_block_as_table(lines)
+        if hint_bonus:
+            score = min(1.0, score + hint_bonus)
+        if score >= threshold:
+            output_parts.append(f"<TABLE>\n\n{stripped}\n</TABLE>")
+        else:
+            output_parts.append(stripped)
+
+    return "\n\n".join(output_parts)
+
+
+def _process_plaintext_chunk(part: str) -> List[str]:
+    hint_bonus = 0.0
+    if TABLE_HINT_RE.search(part):
+        hint_bonus = 0.1
+    text = detect_and_wrap_plaintext_tables(part, hint_bonus=hint_bonus)
+    segments = TABLE_SPLIT_RE.split(text)
+    processed = []
+
+    for idx, segment in enumerate(segments):
+        if idx % 2 == 1:
+            processed.append(segment)
+            continue
+
+        chunk = UNDERLINE_RE.sub("\n\n", segment)
+        paragraphs = PARAGRAPH_SPLIT_RE.split(chunk)
+        cleaned = [
+            WRAPPED_LINE_RE.sub(" ", p).strip() for p in paragraphs if p.strip()
+        ]
+        if cleaned:
+            processed.append("\n\n".join(cleaned))
+    return processed
+
+
+# Initialize RegionMatcher to access location regexes for home-country detection
+REGION_MATCHER = RegionMatcher()
+# Pattern to find single newlines that are not preceded or followed by another newline (i.e., wrapped lines)
+WRAPPED_LINE_RE = re.compile(r"(?<!\n)[ \t]*\n[ \t]*(?!\n)")
+PARAGRAPH_SPLIT_RE = re.compile(r"\n\s*\n")
+SPACE_RE = re.compile(r"\s+")
+DOC_RE = re.compile(r"<document>\s*(.*?)\s*</document>", re.DOTALL | re.IGNORECASE)
+HTML_RE = re.compile(r"<html", re.IGNORECASE)
+XML_RE = re.compile(r"xml", re.IGNORECASE)
 
 # ============================================================================
 # Common patterns for all document types
 # ============================================================================
 
-ANNUAL_REPORT_PATTERN = re.compile(
+ANNUAL_REPORT_RE = re.compile(
     r"ANNUAL\s+REPORT\s+PURSUANT\s+TO\s+SECTION\s+13\s+OR\s+15\s*\(d\)",
     re.IGNORECASE | re.MULTILINE,
 )
-FISCAL_YEAR_PATTERN = re.compile(
+FISCAL_YEAR_RE = re.compile(
     r"(?:For\s+the\s+fiscal\s+)?year\s+ended(?:\:)?\s+([A-Za-z]+\s+\d{1,2},?\s+\d{4})",
     re.IGNORECASE | re.MULTILINE,
 )
 
-JURISDICTION_PATTERN = re.compile(
-    r"\bJurisdiction\s+of\s+incorporation\s+or\s+organization\b",
-    re.IGNORECASE | re.MULTILINE,
-)
-OFFICE_PATTERN = re.compile(
-    r"\bAddress\s+of\s+principal\s+executive\s+offices\b", re.IGNORECASE | re.MULTILINE
-)
 FILING_20F = re.compile(r"\b20-F\b", re.IGNORECASE | re.MULTILINE)
 FILING_40F = re.compile(r"\b40-F\b", re.IGNORECASE | re.MULTILINE)
-PART_I_PATTERN = re.compile(
-    r"^\s*Part\s+I\b(?!\s*[\.\-_]{3,})", re.MULTILINE | re.IGNORECASE
-)
-PART_II_PATTERN = re.compile(
-    r"^\s*Part\s+II\b(?!\s*[\.\-_]{3,})", re.MULTILINE | re.IGNORECASE
-)
 
 HOME_COUNTRY_PATTERNS = [
-    (JURISDICTION_PATTERN, 5.0),
+    (
+        re.compile(
+            r"\bJurisdiction\s+of\s+incorporation\s+or\s+organization\b",
+            re.IGNORECASE | re.MULTILINE,
+        ),
+        5.0,
+    ),
     (build_regex([r"home\s+country"]), 4.0),
     (build_regex([r"(?:headquartered|incorporated)\s+in"]), 3.0),
     (build_regex([r"domiciled?"]), 3.0),
     (build_regex([r"principal\s+place\s+of\s+business"]), 3.0),
     (build_regex([r"corporate\s+headquarters"]), 2.5),
     (build_regex([r"reporting\s+currency"]), 2.0),
-    (OFFICE_PATTERN, 2.0),
-    (build_regex([r"executive\s+offices"]), 1.5),
+    (
+        re.compile(
+            r"\bAddress\s+of\s+principal\s+executive\s+offices\b",
+            re.IGNORECASE | re.MULTILINE,
+        ),
+        2.0,
+    ),
+    (build_regex([r"executive\s+offices?"]), 1.5),
     (build_regex([r"registered\s+office"]), 1.0),
     (
         build_regex(
@@ -334,12 +314,411 @@ HOME_COUNTRY_PATTERNS = [
         4.0,
     ),
 ]
+# %%
+# =============================================================================
+# LOAD DATA
+# =============================================================================
+all_df = pd.DataFrame()
+
+# =============================================================================
+# DEBUG UTILITIES
+# =============================================================================
+
+
+def debug_print(*args):
+    global DEBUG
+    if DEBUG:
+        print(*args)
+
+
+# =============================================================================
+# DATABASE FUNCTIONS
+# =============================================================================
+
+
+def create_db():
+    conn = sqlite3.connect(DB_PATH)
+    c = conn.cursor()
+    try:
+        # Check if report_data has the accession column, if not, recreate it
+        try:
+            c.execute("SELECT accession FROM report_data LIMIT 1")
+        except sqlite3.OperationalError:
+            c.execute("DROP TABLE IF EXISTS report_data")
+
+        c.execute(
+            """
+            CREATE TABLE IF NOT EXISTS report_data (
+                cik INTEGER,
+                year INTEGER,
+                url TEXT,
+                accession TEXT,
+                original_url TEXT
+            )
+        """
+        )
+        c.execute(
+            """
+            CREATE TABLE IF NOT EXISTS names (
+                cik INTEGER,
+                name TEXT
+            )
+        """
+        )
+        c.execute(
+            """
+            CREATE TABLE IF NOT EXISTS webpage_result (
+                accession TEXT PRIMARY KEY,
+                documents TEXT,
+                period_of_report TEXT,
+                home_country TEXT
+            )
+        """
+        )
+        c.execute(
+            """
+            CREATE TABLE IF NOT EXISTS fail_results (
+                cik INTEGER,
+                year INTEGER,
+                url TEXT,
+                reason TEXT
+            )
+        """
+        )
+        c.execute("CREATE INDEX IF NOT EXISTS url_idx ON report_data (url)")
+        c.execute(
+            "CREATE INDEX IF NOT EXISTS report_acc_idx ON report_data (accession)"
+        )
+        c.execute("CREATE INDEX IF NOT EXISTS acc_idx ON webpage_result (accession)")
+        c.execute("CREATE INDEX IF NOT EXISTS name_idx ON names (name)")
+
+        # Cleanup: Remove duplicates from report_data based on accession
+        # Keeps the row with the minimum rowid (oldest)
+        try:
+            c.execute(
+                """
+                DELETE FROM report_data 
+                WHERE accession IS NOT NULL 
+                AND rowid NOT IN (
+                    SELECT MIN(rowid) FROM report_data WHERE accession IS NOT NULL GROUP BY accession
+                )
+            """
+            )
+        except sqlite3.OperationalError:
+            pass
+
+        conn.commit()
+        c.execute("PRAGMA journal_mode=WAL")
+    except sqlite3.IntegrityError:
+        print("Something went wrong creating the database")
+    finally:
+        conn.commit()
+        conn.close()
+
+
+def save_batch_report_urls(df: pd.DataFrame):
+    with sqlite3.connect(DB_PATH) as conn:
+        try:
+            name = df[["cik", "name"]].drop_duplicates()
+            name = name.dropna()
+            name["name"] = name["name"].str.title()
+            name.to_sql("names", conn, if_exists="append", index=False)
+        except:
+            pass
+        try:
+            # Check if accession is already provided in the dataframe
+            cols = ["cik", "year", "url"]
+            if "accession" in df.columns:
+                cols.append("accession")
+
+            report = df[cols].copy()
+            report["original_url"] = report["url"]
+
+            if "accession" not in report.columns:
+
+                def get_acc(u):
+                    info = extract_accession_info(u)
+                    return info["accession"] if info else None
+
+                report["accession"] = report["url"].apply(get_acc)
+
+            # Deduplicate by accession to ensure integrity before insertion
+            # IMPORTANT: Only deduplicate rows that actually HAVE an accession.
+            # Rows with None accession (placeholders for missing years) should be kept.
+            valid_acc = report[report["accession"].notna()].drop_duplicates(
+                subset=["accession"]
+            )
+            null_acc = report[report["accession"].isna()]
+            report = pd.concat([valid_acc, null_acc])
+
+            report.to_sql("report_data", conn, if_exists="append", index=False)
+            return True
+        except sqlite3.IntegrityError:
+            debug_print(df.head())
+            df = df[["cik", "year", "url"]]
+            df["reason"] = "Error submitting batch"
+            df.to_sql("fail_results", conn, if_exists="append", index=False)
+            return False
+
+
+def fetch_report_data(valid: Optional[bool] = True):
+    conn = sqlite3.connect(DB_PATH)
+    c = conn.cursor()
+
+    # Check if DB is empty
+    try:
+        c.execute("SELECT count(*) FROM report_data")
+        count = c.fetchone()[0]
+    except sqlite3.OperationalError:
+        count = 0
+
+    # If empty, try to load from CSV
+    if count == 0 and Path(REPORT_PATH).exists():
+        print(f"📥 Importing {REPORT_PATH} into database...")
+        try:
+            df = pd.read_parquet(REPORT_PATH)
+            if {"cik", "year", "url"}.issubset(df.columns):
+                # Use a dictionary to deduplicate by accession
+                unique_records = {}
+                for _, row in df.iterrows():
+                    u = row["url"]
+                    info = extract_accession_info(u)
+                    acc = info["accession"] if info else None
+
+                    # Case 1: Valid URL with Accession
+                    if acc and acc not in unique_records:
+                        unique_records[acc] = (row["cik"], row["year"], u, acc, u)
+                    # Case 2: Placeholder (Empty URL) - Key by "placeholder_CIK_YEAR"
+                    elif pd.isna(u) or u == "":
+                        key = f"placeholder_{row['cik']}_{row['year']}"
+                        if key not in unique_records:
+                            unique_records[key] = (
+                                row["cik"],
+                                row["year"],
+                                "",
+                                None,
+                                "",
+                            )
+
+                c.executemany(
+                    "INSERT INTO report_data (cik, year, url, accession, original_url) VALUES (?, ?, ?, ?, ?)",
+                    list(unique_records.values()),
+                )
+                conn.commit()
+                print(f"✅ Imported {len(unique_records)} unique rows.")
+        except Exception as e:
+            print(f"❌ Error importing CSV: {e}")
+
+    query = "SELECT * FROM report_data"
+    if valid is True:
+        query += " WHERE url IS NOT NULL AND url != ''"
+    elif valid is False:
+        query += " WHERE url IS NULL OR url = ''"
+    # If valid is None, fetch ALL rows (both valid and placeholders)
+
+    try:
+        pre_data = pd.read_sql_query(query, conn)
+    except Exception:
+        pre_data = pd.DataFrame(
+            columns=["cik", "year", "url", "accession", "original_url"]
+        )
+
+    conn.close()
+    return pre_data
+
+
+def fetch_webpage_results():
+    conn = sqlite3.connect(DB_PATH)
+    c = conn.cursor()
+    c.execute("SELECT * FROM webpage_result")
+    columns = [col[0] for col in c.description]
+    rows = c.fetchall()
+    pre_data = pd.DataFrame(rows, columns=columns)
+    conn.close()
+    return pre_data
+
+
+def get_processed_accessions() -> set:
+    conn = sqlite3.connect(DB_PATH)
+    c = conn.cursor()
+    c.execute("SELECT accession FROM webpage_result")
+    rows = c.fetchall()
+    conn.close()
+    return set(r[0] for r in rows)
+
+
+def save_process_result(df: pd.DataFrame):
+    conn = sqlite3.connect(DB_PATH)
+    c = conn.cursor()
+    c.execute(
+        "INSERT OR REPLACE INTO webpage_result (accession, documents, period_of_report, home_country) VALUES (?, ?, ?, ?)",
+        (
+            df.accession,
+            json.dumps(df.documents),
+            df.get("period_of_report"),
+            df.get("home_country"),
+        ),
+    )
+    conn.commit()
+    conn.close()
+
+
+def save_process_result_batch(batch_df: pd.DataFrame):
+    if batch_df.empty:
+        return
+    conn = sqlite3.connect(DB_PATH)
+    c = conn.cursor()
+    # Use executemany logic via pandas to_sql or raw SQL
+    try:
+        data = list(
+            zip(
+                batch_df.accession,
+                batch_df.documents.apply(json.dumps),
+                batch_df.period_of_report,
+                batch_df.home_country,
+            )
+        )
+        c.executemany(
+            "INSERT OR REPLACE INTO webpage_result (accession, documents, period_of_report, home_country) VALUES (?, ?, ?, ?)",
+            data,
+        )
+        conn.commit()
+    except Exception as e:
+        print(f"Batch write error: {e}")
+    finally:
+        conn.close()
+
+
+# =============================================================================
+# FETCH SEC FILINGS
+# =============================================================================
+
+
+# %%
+class TransientError(Exception):
+    """Raised when a fetch fails transiently (e.g. rate limit, timeout) and should be retried."""
+
+    pass
+
+
+def fetch_json(
+    url: str,
+    rate_limiter: Optional["ThreadSafeRateLimiter"] = None,
+    fetch_metrics: Optional[dict] = None,
+    metrics_lock: Optional[threading.Lock] = None,
+) -> dict | None:
+    global SEC_RATE_LIMIT
+    headers = {
+        "User-Agent": f"{random.randint(1000,9999)}-{random.randint(1000,9999)}@{''.join(random.choice(string.ascii_lowercase) for _ in range(random.randint(8,15)))}.com"
+    }
+
+    if rate_limiter:
+        time.sleep(rate_limiter.value)
+    else:
+        time.sleep(SEC_RATE_LIMIT)
+
+    if fetch_metrics is not None and metrics_lock is not None:
+        with metrics_lock:
+            fetch_metrics["fetch_count"] += 1
+            fetch_metrics["last_sample_time"] = time.time()
+
+    try:
+        resp = requests.get(url, headers=headers, timeout=10)
+        debug_print("Fetching", url)
+
+        if resp.status_code == 404:
+            # Permanent failure - return None so caller knows it's empty/missing
+            return None
+
+        if resp.status_code == 429:
+            print(f"Rate Limited {resp.status_code} fetching {url}")
+            if rate_limiter:
+                rate_limiter.signal_429()
+            # Raise exception to prevent recording as "empty" in DB
+            raise TransientError(f"Rate Limited: {url}")
+
+        if resp.status_code != 200:
+            print(f"Error {resp.status_code} fetching {url}")
+            # Treat 5xx as transient
+            if 500 <= resp.status_code < 600:
+                raise TransientError(f"Server Error {resp.status_code}: {url}")
+            return None
+        return resp.json()
+    except (requests.exceptions.RequestException, TransientError) as e:
+        print(f"Transient error fetching {url}: {e}")
+        if rate_limiter and not isinstance(e, TransientError):
+            rate_limiter.signal_timeout()
+        raise  # Re-raise to abort processing this CIK
+    except Exception as e:
+        print(f"Unexpected error fetching {url}: {e}")
+        return None
+
+
+def extract_filings(data: dict, cik: str, name: str, ticker: str) -> List[dict]:
+    links = []
+    forms = data.get("form", [])
+    accession_numbers = data.get("accessionNumber", [])
+    primary_docs = data.get("primaryDocument", [])
+    filing_dates = data.get("filingDate", [])
+    report_dates = data.get("reportDate", [])
+
+    for i, f_type in enumerate(forms):
+        if f_type in FILING_TYPES:
+            accession = accession_numbers[i].replace("-", "")
+            doc = primary_docs[i]
+            if not doc or doc.endswith(".txt") or doc.endswith("0001.htm"):
+                doc = f"{accession[:10]}-{accession[10:12]}-{accession[12:]}.txt"
+            link = f"https://www.sec.gov/Archives/edgar/data/{cik}/{accession}/{doc}"
+            links.append(
+                {
+                    "name": name,
+                    "filing_date": filing_dates[i],
+                    "report_date": report_dates[i],
+                    "url": link,
+                    "ticker": ticker,
+                    "type": f_type,
+                    "accession": accession,
+                }
+            )
+    return links
+
+
+def get_cik_filings(
+    cik: str,
+    rate_limiter: Optional["ThreadSafeRateLimiter"] = None,
+    fetch_metrics: Optional[dict] = None,
+    metrics_lock: Optional[threading.Lock] = None,
+) -> Optional[List[dict]]:
+    cik = str(cik).zfill(10)
+    url_main = f"https://data.sec.gov/submissions/CIK{cik}.json"
+
+    data = fetch_json(url_main, rate_limiter, fetch_metrics, metrics_lock)
+    if not data:
+        return None
+
+    name = data.get("name", "")
+    ticker = data.get("tickers", [])[0] if data.get("tickers", []) else cik
+
+    recent = data.get("filings", {}).get("recent", {})
+    links = extract_filings(recent, cik, name, ticker)
+
+    older_files = data.get("filings", {}).get("files", [])
+    for f in older_files:
+        older_data = fetch_json(
+            f"https://data.sec.gov/submissions/{f.get('name')}",
+            rate_limiter,
+            fetch_metrics,
+            metrics_lock,
+        )
+        if isinstance(older_data, dict):
+            links.extend(extract_filings(older_data, cik, name, ticker))
+
+    return links
+
 
 # =============================================================================
 # CONTENT EXTRACTION
 # =============================================================================
-
-
 def normalize_unicode(text: str) -> str:
     """
     Converts common Unicode punctuation to ASCII equivalents, then
@@ -402,7 +781,7 @@ def _is_underline_style(tag) -> bool:
     return "text-decoration:underline" in style
 
 
-def _detect_header_rows(rows: list[list[str]], table_soup) -> int:
+def _detect_header_rows(rows: List[List[str]], table_soup) -> int:
     """
     Detect number of header rows using hierarchical detection logic:
     1. Explicit <th> tags
@@ -429,7 +808,7 @@ def _detect_header_rows(rows: list[list[str]], table_soup) -> int:
 
     def validate_header_count(
         count: int, allow_all_headers: bool = False
-    ) -> int | None:
+    ) -> Optional[int]:
         """Validates that the detected header count leaves a valid data row."""
         if count <= 0:
             return None
@@ -513,7 +892,7 @@ def _detect_header_rows(rows: list[list[str]], table_soup) -> int:
     return 1  # Safe default
 
 
-def _detect_by_border(filtered_trs: list, rows: list[list[str]]) -> int:
+def _detect_by_border(filtered_trs: List, rows: List[List[str]]) -> int:
     """
     Detect header rows by analyzing borders (top or bottom).
 
@@ -560,7 +939,38 @@ def _detect_by_border(filtered_trs: list, rows: list[list[str]]) -> int:
     return 0
 
 
-underline_regex = re.compile(r"(?:^\s*-{3,}\s*$\n?)+", re.MULTILINE)
+UNDERLINE_RE = re.compile(r"(?:^\s*-{3,}\s*$\n?)+", re.MULTILINE)
+_EXHIBIT_TYPE_RE = re.compile(r"<TYPE>\s*(EX-[0-9A-Z]+)", re.IGNORECASE)
+_ALLOWED_EXHIBITS = {"EX-13"}
+
+CLEANUP_PATTERNS = [
+    (re.compile(r"(?:\b\d{1,3}\s*)?<PAGE>(?:\s*\d{1,3}\b)?", re.IGNORECASE), r""),
+    (re.compile(r"(?<!\d)-\s*\d{1,3}\s*-(?!\d)", re.IGNORECASE), r""),
+    (
+        re.compile(
+            r"<(?:TYPE|SEQUENCE|FILENAME|DESCRIPTION)>[^<\\n\\r]*", re.IGNORECASE
+        ),
+        r"",
+    ),
+    (
+        re.compile(r"</?(?:TEXT|TYPE|SEQUENCE|FILENAME|DESCRIPTION)>", re.IGNORECASE),
+        r"",
+    ),
+    # Links https or www
+    (
+        re.compile(
+            r"(?:"
+            r'https?://[^\s<>"\'()]+(?<![.,;:!?])'  # standard http/https URLs
+            r'|www\.[^\s<>"\'()]+(?<![.,;:!?])'  # www. without scheme
+            r"|[a-zA-Z0-9\-]+\."  # bare domain
+            r"(?:com|org|net|io|co|uk|edu|gov|me|dev|ai|app)"
+            r'(?:/[^\s<>"\'()]*[^\s<>"\'().,;:!?])?'
+            r")",
+            re.IGNORECASE,
+        ),
+        r"",
+    ),
+]
 
 
 def extract_content(data: str, asHTML=True) -> str:
@@ -603,7 +1013,7 @@ def extract_content(data: str, asHTML=True) -> str:
             )
             if prev_text:
                 prev_string = prev_text.strip()
-                if len(prev_string) < 500 and TABLE_HINT_PATTERN.search(prev_string):
+                if len(prev_string) < 500 and TABLE_HINT_RE.search(prev_string):
                     prologue_text = prev_string
 
             if title and prologue_text:
@@ -678,23 +1088,16 @@ def extract_content(data: str, asHTML=True) -> str:
             text = soup.get_text(separator="\n\n", strip=True)
 
     else:
-        # Plain text processing (unchanged)
-        parts = TABLE_SPLIT_PATTERN.split(data)
+        # Plain text processing: keep existing tables separate and run the ASCII detector on the rest
+        parts = TABLE_SPLIT_RE.split(data)
         processed_parts = []
-        for i, part in enumerate(parts):
-            if i % 2 == 1:
+        for idx, part in enumerate(parts):
+            if idx % 2 == 1:
                 processed_parts.append(part)
-            else:
-                part = underline_regex.sub("\n\n", part)
-                paragraphs = PARAGRAPH_SPLIT_PATTERN.split(part)
-                processed_paragraphs = [
-                    WRAPPED_LINE_PATTERN.sub(" ", p).strip()
-                    for p in paragraphs
-                    if p.strip()
-                ]
-                processed_parts.append(
-                    "\n\n".join(p for p in processed_paragraphs if p)
-                )
+                continue
+
+            processed_parts.extend(_process_plaintext_chunk(part))
+
         text = "".join(processed_parts)
 
     for pattern, replacement in CLEANUP_PATTERNS:
@@ -752,7 +1155,7 @@ def fetch_url(
 
 def _collect_candidates_near_match(
     text: str, match: re.Match, matcher: RegionMatcher, ignore_us: bool = False
-) -> list[tuple[str, int]]:
+) -> List[Tuple[str, int]]:
     """Helper to find country codes near a regex match with distances."""
     # Look at the text surrounding the match (before and after)
     start_search = max(0, match.start() - 200)
@@ -821,10 +1224,6 @@ def extract_home_country(text: str) -> str:
 
                 candidate_scores[code] = candidate_scores.get(code, 0.0) + score
 
-    for pattern, code in CURRENCY_COUNTRY_HINTS:
-        if pattern.search(header):
-            candidate_scores[code] = candidate_scores.get(code, 0.0) + 0.75
-
     if not candidate_scores:
         return "INT"
 
@@ -850,7 +1249,7 @@ def extract_home_country(text: str) -> str:
     return best_code
 
 
-def extract_fiscal_year(text: str, accession: str | None = None) -> str | None:
+def extract_fiscal_year(text: str, accession: Optional[str] = None) -> Optional[str]:
     """
     Extracts the fiscal year end date from the document header.
     Validates that the document is an Annual Report (10-K).
@@ -862,11 +1261,11 @@ def extract_fiscal_year(text: str, accession: str | None = None) -> str | None:
         header_text = text[:CHAR_LIMIT]
 
         # Check for 10-K header first
-        ar_match = ANNUAL_REPORT_PATTERN.search(header_text)
+        ar_match = ANNUAL_REPORT_RE.search(header_text)
         if not ar_match:
             return None
 
-        fy_match = FISCAL_YEAR_PATTERN.search(header_text)
+        fy_match = FISCAL_YEAR_RE.search(header_text)
         if fy_match:
             # Safety Check 1: Distance
             # Ensure the fiscal year date is not too far from the "Annual Report" header
@@ -907,157 +1306,990 @@ def extract_fiscal_year(text: str, accession: str | None = None) -> str | None:
     return None
 
 
-def filter_paragraphs_loose(text: str) -> list[str]:
-    blocks = []
-    parts = TABLE_SPLIT_PATTERN.split(text)
-    for part in parts:
-        if not part.strip():
-            continue
-        if part.strip().upper().startswith("<TABLE"):
-            blocks.append(part)
-        else:
-            part = WEB_CLEANER.clean(part)
-            if not LOOSE_FILTER_REGEX.search(part):
-                continue
-            paras = PARAGRAPH_SPLIT_PATTERN.split(part)
-            for p in paras:
-                if p.strip():
-                    blocks.append(p.strip())
+def normalize_for_matching(text: str) -> str:
+    if not text:
+        return ""
+    sanitized = re.sub(r"[^a-z0-9]+", " ", text.lower())
+    return SPACE_RE.sub(" ", sanitized).strip()
 
-    if not blocks:
+
+@dataclass
+class ItemDef:
+    item: str
+    part: int
+    names: List[str]
+    optional: bool = False
+    early: bool = False  # True = can legitimately appear before the TOC body anchor
+
+
+FORM_10K_ITEMS: List[ItemDef] = [
+    # PART I
+    ItemDef("item 1", 1, ["business", "description of business"], early=True),
+    ItemDef("item 1a", 1, ["risk factors"], optional=True, early=True),
+    ItemDef("item 1b", 1, ["unresolved staff comments"], optional=True, early=True),
+    ItemDef("item 1c", 1, ["cybersecurity"], optional=True, early=True),
+    ItemDef("item 2", 1, ["properties", "property"]),
+    ItemDef("item 3", 1, ["legal proceedings"]),
+    ItemDef(
+        "item 4",
+        1,
+        [
+            "mine safety disclosures",
+            "submission of matters to a vote",
+            "reserved",
+        ],
+    ),
+    # PART II
+    ItemDef("item 5", 2, ["market for registrant"]),
+    ItemDef("item 6", 2, ["selected financial data"], optional=True),
+    ItemDef("item 7", 2, ["management's discussion", "results of operations"]),
+    ItemDef(
+        "item 7a",
+        2,
+        [
+            "quantitative and qualitative",
+            "qualitative and quantitative",
+            "about market risk",
+        ],
+    ),
+    ItemDef("item 8", 2, ["financial statements", "supplementary data"]),
+    ItemDef("item 9", 2, ["changes in and disagreements", "accountants"]),
+    ItemDef("item 9a", 2, ["controls and procedures"]),
+    ItemDef("item 9b", 2, ["other information"]),
+    # PART III
+    ItemDef("item 10", 3, ["directors", "executive officers"]),
+    ItemDef("item 11", 3, ["executive compensation"]),
+    ItemDef("item 12", 3, ["security ownership"]),
+    ItemDef("item 13", 3, ["certain relationships", "related transactions"]),
+    ItemDef("item 14", 3, ["principal accountant fees"]),
+    # PART IV
+    ItemDef("item 15", 4, ["exhibits", "financial statement schedules"]),
+]
+
+FORM_20F_ITEMS: List[ItemDef] = [
+    # PART I
+    ItemDef(
+        "item 1",
+        1,
+        ["identity of directors", "senior management", "advisers"],
+        early=True,
+    ),
+    ItemDef("item 2", 1, ["offer statistics", "expected timetable"], early=True),
+    ItemDef(
+        "item 3",
+        1,
+        [
+            "key information",
+            "risk factors",
+            "capitalization",
+            "selected financial data",
+        ],
+        early=True,
+    ),
+    ItemDef(
+        "item 4",
+        1,
+        [
+            "information on the company",
+            "description of business",
+            "business overview",
+            "organizational structure",
+            "property",
+        ],
+        early=True,
+    ),
+    ItemDef("item 4a", 1, ["unresolved staff comments"], optional=True, early=True),
+    ItemDef(
+        "item 5",
+        1,
+        [
+            "operating and financial review",
+            "management's discussion",
+            "results of operations",
+            "liquidity and capital resources",
+        ],
+        early=True,
+    ),
+    ItemDef(
+        "item 6",
+        1,
+        [
+            "directors, senior management",
+            "executive compensation",
+            "board practices",
+            "employees",
+            "share ownership",
+        ],
+    ),
+    ItemDef("item 7", 1, ["major shareholders", "related party transactions"]),
+    ItemDef(
+        "item 8",
+        1,
+        ["financial information", "financial statements", "legal proceedings"],
+    ),
+    ItemDef("item 9", 1, ["listing details", "markets", "plan of distribution"]),
+    ItemDef(
+        "item 10",
+        1,
+        [
+            "additional information",
+            "memorandum",
+            "articles of association",
+            "material contracts",
+            "exchange controls",
+            "taxation",
+            "dividends",
+        ],
+    ),
+    ItemDef("item 11", 1, ["quantitative and qualitative", "about market risk"]),
+    ItemDef(
+        "item 12",
+        1,
+        ["description of securities", "american depositary shares"],
+        optional=True,
+    ),
+    # PART II
+    ItemDef("item 13", 2, ["defaults", "dividends", "arrears"]),
+    ItemDef("item 14", 2, ["material modifications"]),
+    ItemDef("item 15", 2, ["controls and procedures"]),
+    ItemDef("item 16", 2, ["reserved"], optional=True),
+    ItemDef("item 16a", 2, ["audit committee financial expert"]),
+    ItemDef("item 16b", 2, ["code of ethics"]),
+    ItemDef("item 16c", 2, ["principal accountant fees"]),
+    ItemDef("item 16d", 2, ["exemptions from listing standards"]),
+    ItemDef("item 16e", 2, ["purchases of equity securities"]),
+    ItemDef(
+        "item 16f", 2, ["change in registrant's certifying accountant"], optional=True
+    ),
+    ItemDef("item 16g", 2, ["corporate governance"]),
+    ItemDef("item 16h", 2, ["mine safety disclosure"], optional=True),
+    ItemDef(
+        "item 16i", 2, ["disclosure regarding foreign jurisdictions"], optional=True
+    ),
+    # PART III
+    ItemDef("item 17", 3, ["financial statements"]),
+    ItemDef("item 18", 3, ["financial statements"]),
+    ItemDef("item 19", 3, ["exhibits"]),
+]
+
+FORM_40F_ITEMS: List[ItemDef] = [
+    # PART I — incorporated by reference from Canadian AIF/MD&A
+    ItemDef(
+        "item 1",
+        1,
+        ["annual information form", "business", "description of business"],
+        early=True,
+    ),
+    ItemDef(
+        "item 2",
+        1,
+        ["audited annual financial statements", "financial statements"],
+        early=True,
+    ),
+    ItemDef(
+        "item 3",
+        1,
+        ["management's discussion", "results of operations", "md&a"],
+        early=True,
+    ),
+    # PART II
+    ItemDef("item 4", 2, ["unresolved staff comments"], optional=True),
+    # PART III — boilerplate certifications/governance
+    ItemDef("item 5", 3, ["undertakings"]),
+    ItemDef(
+        "item 6", 3, ["consent of independent registered accounting firm", "consent"]
+    ),
+    ItemDef("item 7", 3, ["exhibits"]),
+]
+
+FilingFormType = Literal["10-K", "20-F", "40-F"]
+
+_FORM_ITEMS_MAP: dict[FilingFormType, List[ItemDef]] = {
+    "10-K": FORM_10K_ITEMS,
+    "20-F": FORM_20F_ITEMS,
+    "40-F": FORM_40F_ITEMS,
+}
+
+
+def get_form_items(form_type: FilingFormType) -> List[ItemDef]:
+    return _FORM_ITEMS_MAP.get(form_type, FORM_10K_ITEMS)
+
+
+def build_form_derived(form_type: FilingFormType):
+    """Returns all derived lists and regexes for a given form type."""
+    items = get_form_items(form_type)
+
+    late_items = [i.item for i in items if not i.early]
+    late_names = [n for i in items if not i.early for n in i.names]
+    early_items = [i.item for i in items if i.early]
+    early_names = [n for i in items if i.early for n in i.names]
+
+    late_parts = {
+        "10-K": ["part ii", "part 2", "part iii", "part 3", "part iv", "part 4"],
+        "20-F": ["part ii", "part 2", "part iii", "part 3"],
+        "40-F": ["part ii", "part 2", "part iii", "part 3"],
+    }[form_type]
+
+    late_item_re = re.compile(
+        rf"^\s*(?:{build_alternation(late_items + late_parts)})\b",
+        re.IGNORECASE,
+    )
+
+    toc_keywords = (
+        early_items
+        + early_names
+        + ["part i", "part 1"]
+        + late_parts
+        + ["[reserved]", "(reserved)", "reserved"]
+    )
+
+    return {
+        "late_items": late_items,
+        "late_names": late_names,
+        "early_items": early_items,
+        "early_names": early_names,
+        "late_item_re": late_item_re,
+        "toc_keywords": toc_keywords,
+        "normalized_toc_keywords": [normalize_for_matching(t) for t in toc_keywords],
+        "normalized_late_names": [normalize_for_matching(t) for t in late_names],
+        "normalized_early_names": [normalize_for_matching(t) for t in early_names],
+    }
+
+
+FORM_DERIVED_CACHE = {ft: build_form_derived(ft) for ft in _FORM_ITEMS_MAP}
+
+
+COVER_PAGE_KEYWORDS = [
+    "annual report pursuant",
+    "report pursuant to section 13",
+    "report pursuant to section 15(d)",
+    "transition report pursuant",
+    "pursuant to item 405",
+    "securities exchange act",
+    "exchange act of 1934",
+    "indicate by check mark",
+    "indicate by check mark if",
+    "check mark if the registrant is",
+    "delinquent filers",
+    "well-known seasoned issuer",
+    "rule 405 of the securities act",
+    "not required to file reports",
+    "pursuant to section 13 or 15(d)",
+    "has filed all reports required",
+    "preceding 12 months",
+    "subject to such filing requirements",
+    "past 90 days",
+    "large accelerated filer",
+    "accelerated filer",
+    "non-accelerated filer",
+    "smaller reporting company",
+    "emerging growth company",
+    "shell company",
+    "interactive data file",
+    "rule 405 of regulation",
+    "united states securities and exchange commission",
+    "washington, d.c. 20549",
+    "commission file number",
+    "exact name of registrant",
+    "state or other jurisdiction",
+    "irs employer identification",
+    "including area code",
+    "name of each exchange",
+    "principal executive offices",
+    "aggregate market value",
+    "non-affiliates",
+    "number of shares outstanding",
+    "documents incorporated by reference",
+    "shares of common stock outstanding",
+    "shares outstanding",
+    "annual report under section 13",
+    "name of small business issuer",
+    "title of class",
+    "issuer s telephone number",
+    "issuer's telephone number",
+    "securities registered under section 12",
+    "of the exchange act",
+    "par value",  # "Common Stock, $0.001 par value"
+    # Checkbox / filer status language
+    "as defined in rule",
+    "yes no",  # bare checkbox line
+    # Shares / equity boilerplate
+    "voting and non-voting common equity",
+    "last business day",
+    "most recently completed second fiscal quarter",
+    "number of shares of common stock",
+    "shares of the issuer",
+    "par value outstanding",
+    # Index / TOC header lines specific to cover
+    "index to report",
+    "for the fiscal year ended",
+    "checkbox",
+    "check box",
+    "check mark",
+    "check marks",
+    "check one",
+]
+
+NORMALIZED_COVER_PAGE_KEYWORDS = [
+    normalize_for_matching(term) for term in COVER_PAGE_KEYWORDS
+]
+CHECKMARK_RE = re.compile(r"\[\s*[xX]\s*\]|\(\s*[xX]\s*\)|\|\s*[xX]\s*\||\\\s*[xX]\s*\\|/\s*[xX]\s*/")
+_RE = {
+    "fwd": r"(?:FORWARD[- ]?LOOKING|(?:CAUTIONARY|SPECIAL|NOTE)[\w\s,]{0,60}?FORWARD[- ]?LOOKING)\s+(?:STATEMENTS?|INFORMATION)|CAUTIONARY\s+STATEMENTS?",
+    "part": r"PART\s+(?:[IVX]+|\d+)",
+    "part_body": r"PART\s+(?:I|1)\b",
+    "item": r"ITEM\s+\d+[\.\s]?",
+    "item_body": r"ITEM\s+1[\w\s.]{0,40}?BUSINESS\b|ITEM\s+1[\.\s]",
+}
+
+BODY_ANCHOR_RE = re.compile(
+    rf"^\s*(?:{build_alternation([_RE['part_body'], _RE['item_body'], _RE['fwd']], sort_longest_first=False)})",
+    re.IGNORECASE,
+)
+SECTION_LABEL_RE = re.compile(
+    rf"^(?:{build_alternation([_RE['part'], _RE['item'], _RE['fwd']], sort_longest_first=False)})$",
+    re.IGNORECASE,
+)
+
+PROSE_INDICATOR_WORDS = {
+    # Linking / state verbs (almost never in headers)
+    "are",
+    "were",
+    "was",
+    "is",
+    "has",
+    "have",
+    "had",
+    "may",
+    "will",
+    "would",
+    "could",
+    "should",
+    "might",
+    "does",
+    "did",
+    "been",
+    "being",
+    # Conjunctions / concessive openers
+    "although",
+    "however",
+    "whereas",
+    "nevertheless",
+    "notwithstanding",
+    "therefore",
+    "accordingly",
+    "furthermore",
+    "moreover",
+    "consequently",
+    "because",
+    "since",
+    "whether",
+    "unless",
+    "until",
+    "while",
+    # Relative / subordinating markers
+    "which",
+    "whose",
+    "whereby",
+    "thereof",
+    "therein",
+    "thereto",
+    "herein",
+    "hereof",
+    "hereunder",
+    "pursuant",
+    # Prepositions that only appear mid-sentence
+    "including",
+    "excluding",
+    "regarding",
+    "relating",
+    "consisting",
+    "resulting",
+    "arising",
+    "following",
+    "preceding",
+    # Quantifiers / determiners
+    "our",
+    "its",
+    "their",
+    "such",
+    "each",
+    "any",
+    "all",
+    "certain",
+    "various",
+    "other",
+    "additional",
+    "significant",
+    # Prose-specific verbs
+    "believe",
+    "expect",
+    "anticipate",
+    "estimate",
+    "intend",
+    "continue",
+    "provide",
+    "include",
+    "represent",
+    "require",
+    "result",
+    "occur",
+    "affect",
+    "exceed",
+    "increase",
+    "decrease",
+    # Forward-looking verbs and phrases
+    "anticipate",
+    "expect",
+    "believe",
+    "estimate",
+    "intend",
+    "project",
+    "forecast",
+    "plan",
+    "seek",
+    "target",
+    "hope",
+    "assume",
+    "predict",
+    "foresee",
+    # Modal + forward-looking combos (the modal is already caught,
+    # but these verb stems add specificity)
+    "achieve",
+    "attain",
+    "realize",
+    "deliver",
+    "execute",
+    "grow",
+    "expand",
+    "improve",
+    "reduce",
+    "increase",
+    "decrease",
+    "generate",
+    "maintain",
+    "sustain",
+    "develop",
+    "implement",
+    "complete",
+    "launch",
+    "enter",
+    "pursue",
+    "continue",
+    # Hedging language that always accompanies forward-looking statements
+    "approximately",
+    "substantially",
+    "materially",
+    "adversely",
+    "significantly",
+    "potentially",
+    "primarily",
+    "generally",
+    "historically",
+    "currently",
+    "prospectively",
+    # Risk / uncertainty markers
+    "uncertainty",
+    "uncertainties",
+    "assumption",
+    "assumptions",
+    "contingent",
+    "dependent",
+    "exposure",
+    "likelihood",
+}
+
+_PROSE_INDICATOR_RE = build_regex(PROSE_INDICATOR_WORDS)
+TOC_DOTS_RE = re.compile(
+    r"(?:\.[\s.]*){4,}|(?:\.[\s.]*){3}\s*(?:\d+(?:-\d+)?|[A-Za-z]{1,3}(?:-?\d+)?)\b",
+    re.IGNORECASE,
+)
+MAX_TOC_SCAN_CHARS = 25000
+_FWD_CORE = r"forward[- ]looking\s+(?:statements?|information)"
+FWD_PROSE_RE = build_regex(
+    [
+        r"safe\s+harbor",
+        r"cautionary\s+statements",
+        r"words",
+        r"phrases",
+        r"expressions",
+        r"cautioned",
+        r"reliance",
+        _FWD_CORE,
+    ],
+    use_sep=False,
+)
+
+ALPHANUM_RE = re.compile(r"[A-Za-z0-9]")
+_FORM_LABEL_FULL_RE = re.compile(r"^[A-Za-z]-\d+$")
+
+PAGE_MARKER_RE = re.compile(
+    r"^(?:-\s*\d{1,3}\s*-|pp?\s*\.?\s*\d{1,3}|page\s+\d{1,3})$", re.IGNORECASE
+)
+LONE_NUMBER_RE = re.compile(r"^\s*\d{1,3}\s*$")
+FORM_LABEL_RE = re.compile(r"^[A-Za-z]-\d+$")
+
+_RESIDUAL_MIN_LEN = 4  # after stripping, less than this = discard
+
+
+def is_structural_only(text: str) -> bool:
+    """True if the block has negligible alphanumeric content after removing punctuation/symbols."""
+    residual = ALPHANUM_RE.sub("", text).strip()
+    # Collapse whitespace to measure actual content
+    residual = SPACE_RE.sub(" ", residual).strip()
+    return len(residual) < _RESIDUAL_MIN_LEN
+
+
+def prefilter_blocks(blocks: List[str]) -> List[str]:
+    filtered = []
+    for block in blocks:
+        stripped = block.strip()
+        if not stripped:
+            continue
+        if PAGE_MARKER_RE.match(stripped):
+            continue
+        if LONE_NUMBER_RE.match(stripped):
+            continue
+        if FORM_LABEL_RE.match(stripped):
+            continue
+        if not ALPHANUM_RE.search(stripped):
+            continue
+        if is_structural_only(stripped):
+            continue
+        filtered.append(block)
+    return filtered
+
+
+def find_forward_looking_boundary(
+    blocks: List[str],
+    start_idx: int = 0,
+    scan: int = 120,
+) -> Optional[int]:
+    end = min(len(blocks), start_idx + scan)
+    for idx in range(start_idx, end):
+        block = blocks[idx]
+        stripped = block.strip()
+        if not stripped:
+            continue
+        if re.search(_RE["fwd"], stripped, re.IGNORECASE):
+            return idx
+        if FWD_PROSE_RE.search(block):
+            return idx
+    return None
+
+
+def _cap_at_fwd_boundary(
+    idx: int,
+    fwd_boundary_idx: Optional[int],
+) -> int:
+    if fwd_boundary_idx is None:
+        return idx
+    return fwd_boundary_idx if idx > fwd_boundary_idx else idx
+
+
+def drop_cover_page(
+    blocks: List[str],
+    scan: int = 30,
+    anchor_limit: int = 80,
+    fwd_boundary_idx: Optional[int] = None,
+) -> Tuple[List[str], int]:
+    cover_end = 0
+    for idx, block in enumerate(blocks[:scan]):
+        normalized = normalize_for_matching(block)
+        matched_terms = [
+            term for term in NORMALIZED_COVER_PAGE_KEYWORDS if term in normalized
+        ]
+        hits = len(matched_terms)
+        
+        checkmarks = CHECKMARK_RE.findall(block)
+        if checkmarks:
+            hits += len(checkmarks)
+            matched_terms.extend(["checkmark"] * len(checkmarks))
+
+        if hits >= 1:
+            debug_print(
+                f"[drop_cover_page] cover hit idx={idx} hits={hits} terms={matched_terms}"
+            )
+            cover_end = idx + 1
+
+    if cover_end == 0:
+        debug_print("[drop_cover_page] no cover detected")
+        return blocks, 0
+
+    if fwd_boundary_idx is not None and fwd_boundary_idx <= cover_end:
+        debug_print(
+            f"[drop_cover_page] fwd boundary caps cover_end at idx={fwd_boundary_idx}"
+        )
+        return blocks[fwd_boundary_idx:], fwd_boundary_idx
+
+    for idx in range(cover_end, min(len(blocks), cover_end + anchor_limit)):
+        if fwd_boundary_idx is not None and idx >= fwd_boundary_idx:
+            debug_print(f"[drop_cover_page] fwd boundary hit idx={fwd_boundary_idx}")
+            return blocks[fwd_boundary_idx:], fwd_boundary_idx
+        stripped = blocks[idx].strip()
+        if BODY_ANCHOR_RE.match(stripped):
+            # Peek ahead: if next non-empty block is a short number or TOC line, skip
+            lookahead = [b.strip() for b in blocks[idx + 1 : idx + 3] if b.strip()]
+            if lookahead and (
+                LONE_NUMBER_RE.match(lookahead[0])
+                or len(lookahead[0]) < 40  # short = likely still cover/TOC
+            ):
+                debug_print(
+                    f"[drop_cover_page] anchor skipped idx={idx} lookahead='{lookahead[0][:40]}'"
+                )
+                continue
+            debug_print(f"[drop_cover_page] body anchor idx={idx}")
+            capped_idx = _cap_at_fwd_boundary(idx, fwd_boundary_idx)
+            return blocks[capped_idx:], capped_idx
+
+    debug_print(f"[drop_cover_page] dropped cover_end={cover_end} no anchor found")
+    return blocks[cover_end:], cover_end
+
+
+def _is_toc_line(stripped: str, late_label_hit: bool, late_name_hit: bool) -> bool:
+    """
+    A late-item name/label only counts as a TOC signal if the block looks like
+    a TOC entry — i.e. it is short and contains no prose indicators.
+    Prevents mid-sentence mentions of "financial statements" etc. from
+    falsely triggering TOC detection.
+    """
+    if late_label_hit:
+        # Labels like "Item 8." are unambiguous regardless of length
+        return True
+    if late_name_hit:
+        # Names like "financial statements" only count if the block is short
+        # (a TOC entry) and has no prose words
+        return len(stripped) <= 120 and not _PROSE_INDICATOR_RE.search(stripped)
+    return False
+
+
+def drop_table_of_contents(
+    blocks: List[str],
+    form_type: FilingFormType = "10-K",
+    max_scan: int = 10,
+    char_limit: int = MAX_TOC_SCAN_CHARS,
+    fwd_boundary_idx: Optional[int] = None,
+) -> Tuple[List[str], int]:
+    start_idx = 0
+    char_count = 0
+    toc_detected = False
+    _TOC_RESIDUE_MAX_LEN = 120
+    fwd_boundary_active = fwd_boundary_idx
+
+    derived = FORM_DERIVED_CACHE.get(form_type, FORM_DERIVED_CACHE["10-K"])
+    norm_toc_kw = derived["normalized_toc_keywords"]
+    late_item_re = derived["late_item_re"]
+    norm_late_names = derived["normalized_late_names"]
+    norm_early_names = derived["normalized_early_names"]
+
+    # Bug 1 fix: FWD fast-path must require toc_detected first.
+    # Instead of a separate pre-scan, integrate it into the main loop below.
+
+    for idx, block in enumerate(blocks[:max_scan]):
+        normalized = normalize_for_matching(block)
+        char_count += len(block)
+        if char_count > char_limit:
+            debug_print(f"[drop_toc] char_limit reached idx={idx}")
+            break
+
+        stripped = block.strip()
+        is_table = stripped.upper().startswith("<TABLE")
+        matched_toc_terms = [term for term in norm_toc_kw if term in normalized]
+        hits = len(matched_toc_terms)
+        has_toc_dots = bool(TOC_DOTS_RE.search(block))
+        late_label_hit = bool(late_item_re.match(stripped))
+        matched_late_names = [term for term in norm_late_names if term in normalized]
+        late_name_hit = bool(matched_late_names)
+        strong_toc_signal = (
+            "table of contents" in normalized
+            or (is_table and hits >= 2)
+            or hits >= 3
+            or has_toc_dots
+        )
+        is_fwd_hit = bool(
+            re.search(_RE["fwd"], stripped, re.IGNORECASE) or FWD_PROSE_RE.search(block)
+        )
+        is_toc_like = (
+            _is_toc_line(stripped, late_label_hit, late_name_hit)
+            or has_toc_dots
+            or (is_table and hits >= 2)
+            or "table of contents" in normalized
+        )
+
+        if fwd_boundary_active is not None and idx >= fwd_boundary_active:
+            if toc_detected:
+                debug_print(f"[drop_toc] fwd boundary hit idx={fwd_boundary_active}")
+                return blocks[fwd_boundary_active:], fwd_boundary_active
+            if idx == fwd_boundary_active and is_fwd_hit and is_toc_like:
+                debug_print(
+                    f"[drop_toc] fwd boundary overlaps TOC idx={idx} allow_toc=True"
+                )
+                fwd_boundary_active = None
+            elif not strong_toc_signal:
+                debug_print("[drop_toc] fwd boundary before TOC detection")
+                return blocks, 0
+
+        # Body anchor and FWD anchor: only valid AFTER toc has been detected
+        if toc_detected:
+            if BODY_ANCHOR_RE.match(stripped):
+                debug_print(f"[drop_toc] body anchor after TOC idx={idx}")
+                capped_idx = _cap_at_fwd_boundary(idx, fwd_boundary_idx)
+                return blocks[capped_idx:], capped_idx
+            # Bug 1 fix: FWD fast-path now lives here, gated by toc_detected
+            if re.match(_RE["fwd"], stripped, re.IGNORECASE):
+                next_blocks = [b for b in blocks[idx + 1 : idx + 4] if b.strip()]
+                if next_blocks and len(next_blocks[0].strip()) > _TOC_RESIDUE_MAX_LEN:
+                    debug_print(f"[drop_toc] FWD anchor after TOC idx={idx}")
+                    capped_idx = _cap_at_fwd_boundary(idx, fwd_boundary_idx)
+                    return blocks[capped_idx:], capped_idx
+
+        if _is_toc_line(stripped, late_label_hit, late_name_hit):
+            debug_print(
+                "[drop_toc] late-item noise "
+                f"idx={idx} label={late_label_hit} name={late_name_hit} "
+                f"late_names={matched_late_names}"
+            )
+            toc_detected = True
+            start_idx = idx + 1
+            continue
+
+        if is_table and hits >= 2:
+            debug_print(
+                f"[drop_toc] TOC table idx={idx} hits={hits} terms={matched_toc_terms}"
+            )
+            toc_detected = True
+            start_idx = idx + 1
+            continue
+
+        if "table of contents" in normalized or hits >= 3 or has_toc_dots:
+            debug_print(
+                f"[drop_toc] TOC text/dots idx={idx} hits={hits} "
+                f"dots={has_toc_dots} terms={matched_toc_terms}"
+            )
+            toc_detected = True
+            start_idx = idx + 1
+            continue
+
+        if toc_detected:
+            debug_print(f"[drop_toc] exit TOC idx={idx}")
+            start_idx = idx
+            break
+
+    if not toc_detected:
+        debug_print("[drop_toc] no TOC detected")
+        return blocks, 0
+
+    # ── Second pass: consume remaining TOC residue ───────────────────────────
+    idx = start_idx
+    char_count = 0
+    while idx < len(blocks) and char_count <= char_limit:
+        if fwd_boundary_active is not None and idx >= fwd_boundary_active:
+            debug_print(
+                f"[drop_toc] residue fwd boundary hit idx={fwd_boundary_active}"
+            )
+            start_idx = fwd_boundary_active
+            break
+        block = blocks[idx]
+        normalized = normalize_for_matching(block)
+        char_count += len(block)
+        stripped = block.strip()
+        is_table = stripped.upper().startswith("<TABLE")
+        hits = sum(1 for term in norm_toc_kw if term in normalized)
+        has_toc_dots = bool(TOC_DOTS_RE.search(block))
+        late_label_hit = bool(late_item_re.match(stripped))
+        late_name_hit = any(term in normalized for term in norm_late_names)
+        early_name_hit = any(term in normalized for term in norm_early_names)
+
+        if len(stripped) > 200:
+            debug_print(f"[drop_toc] residue stop long block idx={idx}")
+            start_idx = idx
+            break
+
+        if _PROSE_INDICATOR_RE.search(stripped):
+            debug_print(f"[drop_toc] residue stop prose idx={idx}")
+            start_idx = idx
+            break
+
+        if early_name_hit:
+            debug_print(f"[drop_toc] residue stop early name idx={idx}")
+            start_idx = idx
+            break
+
+        if BODY_ANCHOR_RE.match(stripped):
+            debug_print(f"[drop_toc] residue stop body anchor idx={idx}")
+            start_idx = idx
+            break
+
+        if is_table and hits >= 2:
+            debug_print(f"[drop_toc] residue skip TOC table idx={idx} hits={hits}")
+            idx += 1
+            continue
+
+        if has_toc_dots:
+            debug_print(f"[drop_toc] residue skip dots idx={idx}")
+            idx += 1
+            continue
+
+        if "table of contents" in normalized:
+            debug_print(f"[drop_toc] residue skip TOC text idx={idx}")
+            idx += 1
+            continue
+
+        if SECTION_LABEL_RE.match(stripped):
+            debug_print(f"[drop_toc] residue skip section label idx={idx}")
+            idx += 1
+            continue
+
+        if _is_toc_line(stripped, late_label_hit, late_name_hit):
+            debug_print(f"[drop_toc] residue skip late-item idx={idx}")
+            idx += 1
+            continue
+
+        debug_print(f"[drop_toc] residue exit idx={idx}")
+        start_idx = idx
+        break
+
+    # ── Cleanup pass ─────────────────────────────────────────────────────────
+    if fwd_boundary_active is not None and start_idx >= fwd_boundary_active:
+        debug_print(
+            f"[drop_toc] cleanup skipped at fwd boundary idx={start_idx}"
+        )
+        return blocks[start_idx:], start_idx
+
+    result = blocks[start_idx:]
+    clean_start = 0
+    for i, block in enumerate(result):
+        normalized = normalize_for_matching(block)
+        stripped = block.strip()
+
+        if len(stripped) > 200:
+            debug_print(f"[drop_toc] cleanup stop long block idx={i}")
+            break
+
+        if _PROSE_INDICATOR_RE.search(stripped):
+            debug_print(f"[drop_toc] cleanup stop prose idx={i}")
+            break
+
+        if any(name in normalized for name in norm_early_names):
+            debug_print(f"[drop_toc] cleanup stop early name idx={i}")
+            clean_start = i
+            break
+
+        if BODY_ANCHOR_RE.match(stripped):
+            debug_print(f"[drop_toc] cleanup stop body anchor idx={i}")
+            clean_start = i
+            break
+
+        if (
+            late_item_re.match(stripped)
+            or SECTION_LABEL_RE.match(stripped)
+            or any(name in normalized for name in norm_late_names)
+        ):
+            debug_print(f"[drop_toc] cleanup skip label/late idx={i}")
+            clean_start = i + 1
+            continue
+
+        break
+
+    return result[clean_start:], start_idx
+
+
+def identify_repeating_markers(
+    blocks: List[str],
+    min_occurrences: int = 3,
+    proximity_window: int = 20,
+) -> set[str]:
+    positions = defaultdict(list)
+    for idx, block in enumerate(blocks):
+        normalized = normalize_for_matching(block)
+        if not normalized or len(normalized) < 4 or len(normalized) > 80:
+            continue
+        positions[normalized].append(idx)
+
+    markers = set()
+    total = len(blocks)
+    for normalized, idxs in positions.items():
+        if len(idxs) < min_occurrences:
+            continue
+        if idxs[0] < proximity_window or idxs[-1] >= total - proximity_window:
+            markers.add(normalized)
+
+    return markers
+
+
+def remove_repeating_markers(
+    blocks: List[str],
+    min_occurrences: int = 3,
+    proximity_window: int = 12,
+) -> Tuple[List[str], set[str]]:
+    markers = identify_repeating_markers(blocks, min_occurrences, proximity_window)
+    if not markers:
+        return blocks, markers
+
+    filtered = []
+    for block in blocks:
+        normalized = normalize_for_matching(block)
+        if normalized in markers:
+            continue
+        filtered.append(block)
+
+    return filtered, markers
+
+
+def filter_paragraphs_loose(text: str, company_name: Optional[str] = None) -> List[str]:
+    """Paragraph splitter with simple heuristics for pruning boilerplate."""
+    if not text:
         return []
 
-    indices_to_keep = set()
-    WINDOW = 5
+    _company = company_name.strip().lower() if company_name else None
 
-    # Bidirectional scan
-    left, right = 0, len(blocks) - 1
+    def is_discardable(chunk: str) -> bool:
+        if not ALPHANUM_RE.search(chunk):
+            return True
+        if len(chunk) > 200:
+            return False
+        if chunk.isdigit():
+            return True
+        if _FORM_LABEL_FULL_RE.match(chunk):
+            return True
+        lower_chunk = chunk.lower()
+        if lower_chunk == "table of contents":
+            return True
+        if _company and lower_chunk == _company:
+            return True
+        return False
 
-    while left <= right:
-        # Scan from left
-        if left <= right:
-            end_idx = min(left + WINDOW, right + 1)
-            chunk_text = " ".join(blocks[left:end_idx])
-            if LOOSE_FILTER_REGEX.search(chunk_text):
-                for j in range(left, end_idx):
-                    indices_to_keep.add(j)
-            left = end_idx
+    def ends_sentence(chunk: str) -> bool:
+        stripped = chunk.rstrip()
+        return bool(stripped) and stripped[-1] in {".", "!", "?", ";", ":"}
 
-        # Scan from right
-        if left <= right:
-            start_idx = max(right - WINDOW + 1, left)
-            chunk_text = " ".join(blocks[start_idx : right + 1])
-            if LOOSE_FILTER_REGEX.search(chunk_text):
-                for j in range(start_idx, right + 1):
-                    indices_to_keep.add(j)
-            right = start_idx - 1
+    merged_blocks: List[str] = []
 
-    # Add context
-    final_indices = set()
-    for i in indices_to_keep:
-        final_indices.add(i)
-        if i > 0:
-            final_indices.add(i - 1)
-        if i < len(blocks) - 1:
-            final_indices.add(i + 1)
+    for part in TABLE_SPLIT_RE.split(text):
+        if not part.strip():
+            continue
+        stripped_part = part.strip()
 
-    return [blocks[i] for i in sorted(final_indices)]
+        if stripped_part.upper().startswith("<TABLE"):
+            if not is_discardable(stripped_part):
+                merged_blocks.append(stripped_part)
+            continue
 
-
-def filter_for_item1(
-    content: str, is_20f: bool = False, is_40f: bool = False
-) -> tuple[str, str]:
-    """
-    Filters content to extract Business and Risk Factors sections.
-
-    Returns:
-        Tuple[str, str]: (business_section, risk_section)
-    """
-    # Select config based on document type
-    if is_40f:
-        config = PATTERN_CONFIG["40F"]
-    elif is_20f:
-        config = PATTERN_CONFIG["20F"]
-    else:
-        config = PATTERN_CONFIG["10K"]
-
-    patterns = config["patterns"]
-    business_label = config["business_label"]
-    risk_label = config["risk_label"]
-
-    # ========================================================================
-    # BOUNDARY DETECTION: Find where to search
-    # ========================================================================
-    search_start = 0
-    search_end = len(content)
-
-    # Find Part I/Part II boundaries
-    p1_match = PART_I_PATTERN.search(content)
-    p2_matches = list(PART_II_PATTERN.finditer(content))
-
-    if p1_match:
-        search_start = p1_match.start()
-
-    if p2_matches:
-        # Use the last Part II as the end boundary
-        search_end = p2_matches[-1].start()
-    else:
-        # If no Part II found, cap at 75% of content (rough heuristic)
-        search_end = int(len(content) * 0.75)
-
-    # Cap the search to avoid processing huge blocks
-    MAX_BLOCK_SIZE = 500000
-    relevant_content = content[search_start:search_end]
-    if len(relevant_content) > MAX_BLOCK_SIZE:
-        relevant_content = relevant_content[:MAX_BLOCK_SIZE]
-
-    # ========================================================================
-    # PATTERN MATCHING: Find all section starts
-    # ========================================================================
-    matches = []
-    for pattern, label in patterns:
-        for m in pattern.finditer(relevant_content):
-            # Skip boundary matches for 40-F (they're only for delimiting)
-            if label == "40F_BOUNDARY":
+        for para in PARAGRAPH_SPLIT_RE.split(part):
+            cleaned = para.strip()
+            if not cleaned or is_discardable(cleaned):
                 continue
-            matches.append((m.start(), m.end(), label))
 
-    if not matches:
-        # Fallback: if no headers are found at all, treat the whole relevant content as Item 1
-        return relevant_content.strip(), ""
+            if (
+                merged_blocks
+                and cleaned[0].islower()
+                and not ends_sentence(merged_blocks[-1])
+            ):
+                merged_blocks[-1] = merged_blocks[-1].rstrip() + " " + cleaned
+            else:
+                merged_blocks.append(cleaned)
 
-    # Sort by position
-    matches.sort(key=lambda x: x[0])
-
-    # Fallback: if the first found section is not Item 1, assume the text before it is Item 1
-    business_section = ""
-    if matches[0][2] != business_label:
-        business_section = relevant_content[: matches[0][0]].strip()
-
-    # ========================================================================
-    # BLOCK EXTRACTION: Extract content between section headers
-    # ========================================================================
-    risk_section = ""
-
-    for i, (start, header_end, label) in enumerate(matches):
-        # Determine block end: next section start or end of content
-        if i + 1 < len(matches):
-            block_end = matches[i + 1][0]
-        else:
-            block_end = len(relevant_content)
-
-        # Extract content (skip the header itself, start from after header)
-        text_block = relevant_content[header_end:block_end].strip()
-
-        # Store if this is business or risk (use longest match if duplicates)
-        if label == business_label:
-            if len(text_block) > len(business_section):
-                business_section = text_block
-        elif label == risk_label:
-            if len(text_block) > len(risk_section):
-                risk_section = text_block
-
-    return business_section, risk_section
+    return merged_blocks
 
 
 def filter_by_fyear(filings: list[dict], fyear: int) -> list[dict]:
@@ -1101,7 +2333,7 @@ def cik_fetch_worker(
                 except (ValueError, TypeError):
                     pass
 
-            if not years_to_fetch:
+            if years and not years_to_fetch:
                 continue
 
             # get_cik_filings handles rate limiting via fetch_json
@@ -1124,16 +2356,19 @@ def cik_fetch_worker(
                             pass
 
             # Add placeholder for checked years that were NOT found
-            for year in years:
-                try:
-                    y_int = int(year)
-                    if (
-                        y_int not in found_years
-                        and (cik_int, y_int) not in already_done_set
-                    ):
-                        cik_records.append({"cik": cik_int, "year": y_int, "url": ""})
-                except (ValueError, TypeError):
-                    pass
+            if years:
+                for year in years:
+                    try:
+                        y_int = int(year)
+                        if (
+                            y_int not in found_years
+                            and (cik_int, y_int) not in already_done_set
+                        ):
+                            cik_records.append(
+                                {"cik": cik_int, "year": y_int, "url": ""}
+                            )
+                    except (ValueError, TypeError):
+                        pass
 
             if cik_records:
                 result_queue.put(cik_records)
@@ -1172,7 +2407,633 @@ def report_saver_worker(result_queue, stop_event):
         print(f"Saved {len(buffer)} urls to database")
 
 
-def parse_multi_document_content(raw_text: str) -> list[str]:
+def fetch_all_grouped(saveIteration: int = 100):
+    """
+    Fetch filings using a Queue-based Producer-Consumer model with Adaptive Rate Limiting.
+    """
+    global existing_report_df, all_df, SEC_RATE_LIMIT, SEC_RATE
+
+    if existing_report_df is None or existing_report_df.empty:
+        # Load ALL data (valid=None) to ensure we don't retry failed/empty years
+        existing_report_df = fetch_report_data(valid=None)
+
+    # Ensure types match DB (int) for robust comparison
+    already_done = set()
+    processed_ciks = set()
+    for c, y in zip(existing_report_df["cik"], existing_report_df["year"]):
+        try:
+            cik_int = int(c)
+            already_done.add((cik_int, int(y)))
+            processed_ciks.add(cik_int)
+        except (ValueError, TypeError):
+            pass
+
+    cik_values = []
+    if "cik" in all_df:
+        for raw_cik in all_df["cik"]:
+            try:
+                cik_values.append(int(raw_cik))
+            except (ValueError, TypeError):
+                continue
+    unique_ciks = sorted(set(cik_values))
+
+    # Prepare list of tasks (only schedule CIKs we have not processed yet)
+    unprocessed_tasks = [(cik, []) for cik in unique_ciks if cik not in processed_ciks]
+
+    total_tasks = len(unprocessed_tasks)
+    print(f"Found {total_tasks} CIKs to process.")
+
+    if total_tasks == 0:
+        return fetch_report_data(valid=None)
+
+    # Setup Queues
+    cik_queue = queue.Queue()  # Thread-safe queue
+    result_queue = queue.Queue()
+
+    # Setup Adaptive Rate Limiter
+    rate_limiter = ThreadSafeRateLimiter(SEC_RATE_LIMIT)
+    metrics_lock = threading.Lock()
+    fetch_metrics = {
+        "fetch_count": 0,
+        "last_sample_time": time.time(),
+        "last_adjustment_time": time.time(),
+    }
+    stop_event = threading.Event()
+
+    # Start Rate Adjuster
+    rate_adjuster = threading.Thread(
+        target=rate_adjuster_worker,
+        args=(rate_limiter, fetch_metrics, metrics_lock, stop_event, SEC_RATE),
+        daemon=False,
+    )
+    rate_adjuster.start()
+
+    # 2. Start Queue Filler
+    queue_filler_stop_event = threading.Event()
+    queue_filler = threading.Thread(
+        target=url_queue_filler_worker,  # Reusing the generic filler
+        args=(
+            cik_queue,
+            unprocessed_tasks,
+            queue_filler_stop_event,
+            QUEUE_BATCH_SIZE,
+            QUEUE_FILL_INTERVAL_SECONDS,
+        ),
+        daemon=False,
+    )
+    queue_filler.start()
+
+    # 3. Start Fetch Workers
+    progress_counter = {"val": 0, "lock": threading.Lock()}
+    workers = []
+    for _ in range(NUM_FETCHERS):
+        t = threading.Thread(
+            target=cik_fetch_worker,
+            args=(
+                cik_queue,
+                result_queue,
+                rate_limiter,
+                stop_event,
+                fetch_metrics,
+                metrics_lock,
+                already_done,
+                progress_counter,
+            ),
+            daemon=False,
+        )
+        t.start()
+        workers.append(t)
+
+    # 4. Start Saver Worker
+    saver = threading.Thread(
+        target=report_saver_worker, args=(result_queue, stop_event), daemon=False
+    )
+    saver.start()
+
+    try:
+        with tqdm(total=total_tasks, unit="ciks") as pbar:
+            while True:
+                time.sleep(1)
+
+                with progress_counter["lock"]:
+                    current_val = progress_counter["val"]
+
+                pbar.n = current_val
+                pbar.refresh()
+                pbar.set_postfix(sleep=f"{rate_limiter.value*1000:.1f}ms")
+
+                if current_val >= total_tasks:
+                    break
+
+    except KeyboardInterrupt:
+        print("Stopping...")
+    finally:
+        stop_event.set()
+        queue_filler_stop_event.set()
+
+        queue_filler.join(timeout=5)
+        for t in workers:
+            t.join(timeout=5)
+        saver.join(timeout=5)
+        rate_adjuster.join()
+
+    # Update global dataframe so subsequent steps see the new data
+    existing_report_df = fetch_report_data(valid=None)
+    return existing_report_df
+
+
+class ThreadSafeRateLimiter:
+    """
+    A thread-safe class to manage a shared rate limit value using atomic
+    update methods to prevent race conditions.
+
+    Distinguishes between 429 (rate limit) and timeout errors.
+    """
+
+    def __init__(self, initial_rate_limit: float):
+        self._rate_limit = initial_rate_limit
+        self._lock = threading.Lock()
+        self._last_429_time = 0
+        self._recovery_mode = False
+        self._initial_rate_limit = float(initial_rate_limit)
+        self._timeout_count = 0  # Track timeouts separately
+
+    @property
+    def value(self) -> float:
+        """Get the current rate limit value."""
+        with self._lock:
+            return self._rate_limit
+
+    def signal_429(self):
+        """Signal that a 429 (Too Many Requests) response was received."""
+        with self._lock:
+            self._last_429_time = time.time()
+            self._recovery_mode = True
+            # Increase sleep time by 50%, capped at 60s
+            self._rate_limit = min(self._rate_limit * 1.5, 60.0)
+            print(f"🛑 429 Rate Limited! Increasing sleep to {self._rate_limit:.2f}s")
+
+            if self._rate_limit >= 60.0:
+                print("🛑 CRITICAL: Rate limit reached 60s. Pausing for 1 minutes...")
+                time.sleep(60)
+
+    def signal_timeout(self):
+        """Signal that a timeout error occurred (NOT a rate limit)."""
+        with self._lock:
+            self._timeout_count += 1
+            # DO NOT increase sleep time for timeouts - they're network issues, not rate limits
+            # Just log it for debugging
+            if self._timeout_count % 10 == 0:
+                print(
+                    f"⏱️  {self._timeout_count} timeouts detected (not increasing sleep rate)"
+                )
+
+    def adjust(
+        self, current_rate: float, target_rate: float, inventory_full: bool = False
+    ):
+        """Atomically adjust the rate limit based on performance."""
+        with self._lock:
+            time_since_last_429 = time.time() - self._last_429_time
+
+            # Exit recovery mode if no 429s for 30 seconds
+            if self._recovery_mode and time_since_last_429 > 30:
+                self._recovery_mode = False
+
+            # Determine target rate based on recovery status
+            target_rate_adjusted = (
+                target_rate * 0.5 if self._recovery_mode else target_rate
+            )
+
+            # --- Main Adjustment Logic (Performance-based) ---
+            # This is key: adjust sleep based on ACTUAL vs TARGET fetch rate
+            if current_rate > target_rate_adjusted:  # Over target - TOO FAST
+                # Fetching too fast - increase sleep to slow down
+                increase_factor = (
+                    1.0
+                    + min(
+                        (current_rate - target_rate_adjusted) / target_rate_adjusted,
+                        1.0,
+                    )
+                    * 0.1
+                )
+                self._rate_limit *= increase_factor
+
+            elif current_rate < target_rate_adjusted * 0.95:  # Under target - TOO SLOW
+                # Fetching too slow - decrease sleep to speed up
+                if (
+                    not self._recovery_mode
+                    and not inventory_full
+                    and self._rate_limit > SEC_RATE / 2
+                ):
+                    decrease_factor = 0.98
+                    self._rate_limit *= decrease_factor
+
+            # --- Gradual Recovery Logic ---
+            # Only decay back to initial if we're above it AND not in recovery
+            if not self._recovery_mode and self._rate_limit > self._initial_rate_limit:
+                gap = self._rate_limit - self._initial_rate_limit
+                decay_step = 0.10  # 10% decay per check
+                self._rate_limit = max(
+                    self._initial_rate_limit, self._rate_limit - gap * decay_step
+                )
+
+            return self._rate_limit, self._recovery_mode, target_rate_adjusted
+
+
+def adjust_rate_in_background(
+    tqdm_bar: tqdm,
+    rate_limiter: ThreadSafeRateLimiter,
+    target_rate: float,
+    stop_event: threading.Event,
+):
+    """
+    A background thread to dynamically adjust the sleep rate.
+    Only adjusts for actual rate limit conditions, not timeouts.
+    """
+    prev_count = getattr(tqdm_bar, "n", 0)
+    prev_time = time.time()
+    last_sleep = rate_limiter.value
+
+    while not stop_event.is_set():
+        time.sleep(0.25)  # Check 4 times per second
+
+        # Estimate current rate (requests/sec) from progress increments
+        try:
+            now = time.time()
+            current_count = getattr(tqdm_bar, "n", prev_count)
+            elapsed = now - prev_time if now - prev_time > 0 else 1e-6
+            current_rate = (current_count - prev_count) / elapsed
+            prev_count = current_count
+            prev_time = now
+        except Exception:
+            current_rate = 0.0
+
+        # Atomically adjust the rate and get the current state
+        current_sleep, in_recovery, target_rate_adjusted = rate_limiter.adjust(
+            current_rate, target_rate
+        )
+        mode = "Recovery" if in_recovery else "Normal"
+
+        # Only update postfix if sleep time changed (reduce noise)
+        if abs(current_sleep - last_sleep) > 0.001:  # Changed by more than 1ms
+            tqdm_bar.set_postfix(
+                rate=f"{current_rate:.1f} req/s",
+                sleep=f"{current_sleep*1000:.1f}ms",
+                mode=mode,
+                target=f"{target_rate_adjusted:.1f} req/s",
+            )
+            last_sleep = current_sleep
+
+
+def extract_accession_info(url: str) -> Optional[dict]:
+    """
+    Extracts accession number, CIK, and year from an SEC EDGAR URL.
+    Returns None if not a valid EDGAR URL or accession not found.
+    """
+    if not isinstance(url, str) or "Archives/edgar/data" not in url:
+        return None
+
+    parts = url.split("/")
+    accession = None
+    cik_part = None
+
+    # Find the part that looks like an accession (18 digits)
+    for i, part in enumerate(parts):
+        if len(part) == 18 and part.isdigit():
+            accession = part
+            if i > 0:
+                cik_part = parts[i - 1]
+            break
+
+    if not accession:
+        return None
+
+    # Extract year from accession (digits 10-12)
+    year_str = accession[10:12]
+    try:
+        year = int(year_str)
+    except ValueError:
+        return None
+
+    # Determine if pre-2011 (approximate logic based on 2-digit year)
+    # 90-99 -> 1990-1999
+    # 00-10 -> 2000-2010
+    is_pre_2011 = (0 <= year <= 10) or (90 <= year <= 99)
+
+    return {
+        "accession": accession,
+        "cik": cik_part,
+        "year_short": year,
+        "is_pre_2011": is_pre_2011,
+        "filename": parts[-1] if parts else "",
+    }
+
+
+# def update_report_url(old_url: str, new_url: str):
+#     """Updates the URL in report_data table to maintain consistency."""
+#     try:
+#         conn = sqlite3.connect(DB_PATH)
+#         c = conn.cursor()
+#         c.execute("UPDATE report_data SET url = ? WHERE url = ?", (new_url, old_url))
+#         if c.rowcount > 0:
+#              debug_print(f"  📝 Updated report_data: {old_url} -> {new_url}")
+#         conn.commit()
+#         conn.close()
+#     except Exception as e:
+#         print(f"Error updating report_data: {e}")
+
+
+def sync_fiscal_years():
+    """
+    Updates report_data.year using the verified period_of_report extracted from filings.
+    """
+    conn = sqlite3.connect(DB_PATH)
+    c = conn.cursor()
+
+    try:
+        print("🔄 Syncing fiscal years from extracted content...")
+
+        # SQLite 3.33+ supports UPDATE FROM
+        try:
+            c.execute(
+                """
+                UPDATE report_data
+                SET year = CAST(webpage_result.period_of_report AS INTEGER)
+                FROM webpage_result
+                WHERE report_data.accession = webpage_result.accession
+                AND webpage_result.period_of_report IS NOT NULL
+                AND webpage_result.period_of_report != ''
+                AND report_data.year != CAST(webpage_result.period_of_report AS INTEGER)
+            """
+            )
+            count = c.rowcount
+        except sqlite3.OperationalError:
+            # Fallback for older SQLite versions
+            c.execute(
+                """
+                SELECT accession, period_of_report 
+                FROM webpage_result 
+                WHERE period_of_report IS NOT NULL AND period_of_report != ''
+            """
+            )
+            updates = []
+            for acc, year_str in c.fetchall():
+                if year_str and year_str.isdigit():
+                    updates.append((int(year_str), acc))
+
+            if updates:
+                c.executemany(
+                    "UPDATE report_data SET year = ? WHERE accession = ?", updates
+                )
+                count = len(updates)
+            else:
+                count = 0
+
+        if count > 0:
+            print(f"✅ Updated {count} rows in report_data with verified fiscal years.")
+        else:
+            print("✓ Fiscal years are already in sync.")
+
+        conn.commit()
+    except Exception as e:
+        print(f"⚠️ Error syncing fiscal years: {e}")
+    finally:
+        conn.close()
+
+
+def sync_home_country():
+    """
+    Updates webpage_result.home_country based on URL patterns in report_data.
+    If URL contains '10.k' -> US.
+    If URL contains '40.f' -> CA.
+    Only checks rows where home_country is not already US or CA.
+    Also attempts to resolve Tax Haven countries using Company Name.
+    """
+    conn = sqlite3.connect(DB_PATH)
+    c = conn.cursor()
+
+    try:
+        print("🔄 Syncing home country from URL patterns and Company Names...")
+
+        # Fetch data joined
+        # User requested to check those whose home country is not US or Canada
+        c.execute(
+            """
+            SELECT w.accession, r.url, w.home_country, n.name
+            FROM webpage_result w
+            JOIN report_data r ON w.accession = r.accession
+            LEFT JOIN names n ON r.cik = n.cik
+            WHERE r.url IS NOT NULL AND r.url != ''
+            AND (w.home_country IS NULL OR w.home_country NOT IN ('US', 'CA'))
+        """
+        )
+
+        rows = c.fetchall()
+        updates = []
+
+        for accession, url, current_country, company_name in rows:
+            new_country = None
+
+            # 2. Tax Haven / Name Check
+            # If not resolved to US/CA, and current is Tax Haven/INT/None, try name
+            check_country = new_country if new_country else current_country
+
+            if (
+                (not check_country)
+                or (check_country in TAX_HAVEN_CODES)
+                or (check_country == "INT")
+            ):
+                if company_name and REGION_MATCHER.location_regexes:
+                    # Find all location matches
+                    matches = []
+                    for regex in REGION_MATCHER.location_regexes:
+                        for m in regex.finditer(company_name):
+                            term = m.group(0)
+                            info = REGION_MATCHER.get_location(term)
+                            if info:
+                                # (Region, Country, City, Code)
+                                _, _, _, code = info
+                                # We want a specific country code that is NOT a tax haven and NOT a region code
+                                if (
+                                    code
+                                    and code not in TAX_HAVEN_CODES
+                                    and code not in REGION_CODES
+                                ):
+                                    matches.append(code)
+
+                    if matches:
+                        # Use the first valid non-tax-haven country found
+                        new_country = matches[0]
+                    else:
+                        # No firm has domestic employees in Cayman Islands
+                        new_country = "INT"
+
+            if new_country and new_country != current_country:
+                updates.append((new_country, accession))
+
+        if updates:
+            c.executemany(
+                "UPDATE webpage_result SET home_country = ? WHERE accession = ?",
+                updates,
+            )
+            print(
+                f"✅ Updated {len(updates)} rows in webpage_result with inferred home country."
+            )
+        else:
+            print("✓ Home countries are already in sync.")
+
+        conn.commit()
+    except Exception as e:
+        print(f"⚠️ Error syncing home countries: {e}")
+    finally:
+        conn.close()
+
+
+def is_url_from_accession(url: str) -> bool:
+    """
+    Checks if a URL is a raw text submission file derived from an accession number.
+    """
+    if not url.endswith(".txt"):
+        return False
+
+    info = extract_accession_info(url)
+    if not info:
+        return False
+
+    accession = info["accession"]
+    filename = info["filename"]
+
+    expected_filename = f"{accession[:10]}-{accession[10:12]}-{accession[12:]}.txt"
+    return filename == expected_filename
+
+
+def detect_filing_type(url: str, raw_text: str) -> Tuple[bool, bool, str, bool]:
+    """
+    Detects filing type (20-F, 40-F) and home country from URL and content.
+    Returns: (is_20f, is_40f, home_country, url_determined)
+    """
+    home_country = "US"
+    url_determined = False
+    is_20f = False
+    is_40f = False
+
+    # Check URL first
+    if re.search(r"10.?k", url, re.IGNORECASE):
+        home_country = "US"
+        url_determined = True
+    elif re.search(r"40.?f", url, re.IGNORECASE):
+        home_country = "CA"
+        url_determined = True
+        is_40f = True
+    elif re.search(r"20.?f", url, re.IGNORECASE):
+        home_country = "INT"
+        url_determined = True
+        is_20f = True
+
+    # Fallback to text header if not determined by URL
+    if not url_determined:
+        header_text = raw_text[:10000]
+        is_20f = bool(FILING_20F.search(header_text))
+        is_40f = bool(FILING_40F.search(header_text))
+
+        if is_20f:
+            home_country = "INT"
+            url_determined = True
+        elif is_40f:
+            home_country = "CA"
+            url_determined = True
+        else:
+            home_country = "US"
+            url_determined = True
+
+    return is_20f, is_40f, home_country, url_determined
+
+
+def should_retry_with_plaintext(
+    url: str, raw_text: str, rate_limiter: Optional[ThreadSafeRateLimiter] = None
+) -> Optional[tuple]:
+    """
+    Checks if a pre-2011 filing should be retried with plain text URL.
+    Returns:
+      - (FetchStatus.RETRY, new_txt_url) if retry needed
+      - None if no retry needed
+    """
+    try:
+        info = extract_accession_info(url)
+        if not info or not info["is_pre_2011"] or not info["cik"]:
+            return None
+
+        accession = info["accession"]
+        cik_part = info["cik"]
+
+        # Detect 20-F
+        is_20f, is_40f, _, _ = detect_filing_type(url, raw_text)
+
+        # Construct plain text URL filename to check against current URL
+        accession_dashed = f"{accession[:10]}-{accession[10:12]}-{accession[12:]}"
+        txt_filename = f"{accession_dashed}.txt"
+
+        # Prevent infinite loop: if we are already at the target .txt file, stop.
+        if url.endswith(txt_filename):
+            return None
+
+        # Parse content to check Item 1/1A length
+        docs = parse_multi_document_content(raw_text)
+        has_valid_content = False
+
+        for doc in docs:
+            if doc and len(doc.strip()) > 1000:
+                has_valid_content = True
+                break
+
+            if not has_valid_content:
+                txt_url = f"https://www.sec.gov/Archives/edgar/data/{cik_part}/{accession}/{txt_filename}"
+                if txt_url != url:
+                    debug_print(f"  🔄 Retry with plain text for {url}")
+                    return FetchStatus.RETRY, url, txt_url
+
+    except Exception as e:
+        print(f"Error in retry logic for {url}: {e}")
+
+    return None
+
+
+def fetch_raw_content(
+    url: str, accession: str, rate_limiter: Optional[ThreadSafeRateLimiter] = None
+):
+    """
+    Fetches raw text content from a URL. This is purely I/O-bound.
+    Properly distinguishes between different failure modes.
+    """
+    conn = sqlite3.connect(DB_PATH)
+    c = conn.cursor()
+    c.execute("SELECT 1 FROM webpage_result WHERE accession = ?", (accession,))
+    exists = c.fetchone()
+    conn.close()
+    if exists:
+        return None
+
+    raw_text = fetch_url(url, rate_limiter=rate_limiter)
+
+    if raw_text:
+        # Try retry logic for short pre-2011 reports
+        retry_result = should_retry_with_plaintext(url, raw_text, rate_limiter)
+        if retry_result:
+            if retry_result[0] == FetchStatus.RETRY:
+                # Return signal to re-queue the new .txt URL
+                return retry_result
+
+        # Successfully fetched (no retry needed)
+        return url, accession, raw_text
+    elif raw_text is None and url:
+        # fetch_url returned None - could be 429, timeout, or other error
+        # The rate_limiter was already notified by fetch_url
+        return FetchStatus.FAILED, url
+
+    return None
+
+
+def parse_multi_document_content(raw_text: str) -> List[str]:
     """
     Splits a multi-document .txt file (from SEC EDGAR) into individual documents.
     Each document is wrapped in <document></document> tags.
@@ -1193,14 +3054,22 @@ def parse_multi_document_content(raw_text: str) -> list[str]:
         if not doc_content:
             return
 
-        # Detect if this document is HTML (only check for html/body tags)
-        is_html = bool(HTML_REGEX.search(doc_content))
+        type_match = _EXHIBIT_TYPE_RE.search(doc_content)
+        if type_match:
+            doc_type = type_match.group(1).upper()
+            if doc_type not in _ALLOWED_EXHIBITS:
+                debug_print(
+                    f"  ℹ️  Skipping doc {index_label}: <TYPE>{doc_type} not allowed"
+                )
+                return
+
+        is_html = bool(HTML_RE.search(doc_content))
 
         try:
             if is_html:
                 debug_print(f"  📄 Document {index_label}: Parsing as HTML")
                 content = extract_content(doc_content, asHTML=True)
-            elif XML_REGEX.search(doc_content):  # just check if the word "xml exists"
+            elif XML_RE.search(doc_content):
                 debug_print(f"  📄 Document {index_label}: Is XML, skipping")
                 return
             else:
@@ -1209,13 +3078,12 @@ def parse_multi_document_content(raw_text: str) -> list[str]:
 
             if content and len(content.strip()) > 0:
                 parsed_contents.append(content)
-
         except Exception as e:
             print(f"  ⚠️  Error parsing document {index_label}: {e}")
 
     # Use finditer to avoid creating a list of all document strings in memory at once
     # This significantly reduces memory usage for large text files
-    doc_iterator = DOC_PATTERN.finditer(raw_text)
+    doc_iterator = DOC_RE.finditer(raw_text)
     found_docs = False
 
     for i, match in enumerate(doc_iterator):
@@ -1232,13 +3100,13 @@ def parse_multi_document_content(raw_text: str) -> list[str]:
 
 def parse_content(data):
     """
-    Parses raw HTML/text, handles multi-document files, filters for keywords,
+    Parses raw HTML/text, handles multi-document files, extracts paragraph blocks,
     and saves to the database. This is a CPU-bound task.
 
     Handles:
     - Multi-document .txt files (split by <document> tags)
     - HTML and plain text documents
-    - Keyword filtering per document
+    - Block extraction per document
     - Returns aggregated results across all documents
     """
     if data is None:
@@ -1250,6 +3118,7 @@ def parse_content(data):
         return None
 
     is_20f, is_40f, home_country, url_determined = detect_filing_type(url, raw_text)
+    form_type: FilingFormType = "20-F" if is_20f else "40-F" if is_40f else "10-K"
 
     try:
         # 1. Parse multi-document content
@@ -1265,16 +3134,13 @@ def parse_content(data):
                 {
                     "url": url,
                     "accession": accession,
-                    "item1": [],
-                    "item1a": [],
+                    "documents": [],
                     "period_of_report": None,
                     "home_country": home_country,
                 }
             )
 
-        # 2. Filter each document for keywords and aggregate results
-        item1_matches = []
-        item1a_matches = []
+        document_blocks = []
         detected_year = None
 
         for doc_idx, content in enumerate(parsed_documents):
@@ -1287,31 +3153,37 @@ def parse_content(data):
                 detected_year = extract_fiscal_year(content, accession)
 
             try:
-                # Filter this document for keywords (CPU-intensive)
-                item1, item1a = filter_for_item1(content, is_20f=is_20f, is_40f=is_40f)
-
-                if item1:
-                    filtered = filter_paragraphs_loose(item1)
-                    if filtered:
-                        debug_print(
-                            f"  Document {doc_idx + 1}: Found item 1 ({len(filtered)} paragraphs)"
-                        )
-                        item1_matches.extend(filtered)
+                filtered = filter_paragraphs_loose(content)
+                if filtered:
+                    debug_print(
+                        f"  Document {doc_idx + 1}: Extracted {len(filtered)} blocks"
+                    )
+                    document_blocks.extend(filtered)
                 else:
-                    debug_print(f"  Document {doc_idx + 1}: No matches found")
-                if item1a:
-                    filtered = filter_paragraphs_loose(item1a)
-                    if filtered:
-                        debug_print(
-                            f"  Document {doc_idx + 1}: Found item 1a ({len(filtered)} paragraphs)"
-                        )
-                        item1a_matches.extend(filtered)
-                else:
-                    debug_print(f"  Document {doc_idx + 1}: No matches found")
-
+                    debug_print(f"  Document {doc_idx + 1}: No blocks extracted")
             except Exception as e:
-                print(f"  ⚠️  Error filtering document {doc_idx + 1} from {url}: {e}")
+                print(
+                    f"  ⚠️  Error extracting blocks from document {doc_idx + 1} of {url}: {e}"
+                )
                 continue
+
+        document_blocks = prefilter_blocks(document_blocks)
+        fwd_boundary_idx = find_forward_looking_boundary(document_blocks)
+        document_blocks, cover_dropped = drop_cover_page(
+            document_blocks,
+            fwd_boundary_idx=fwd_boundary_idx,
+        )
+        if fwd_boundary_idx is not None:
+            fwd_boundary_idx = max(0, fwd_boundary_idx - cover_dropped)
+        document_blocks, toc_start_idx = drop_table_of_contents(
+            document_blocks,
+            form_type=form_type,
+            fwd_boundary_idx=fwd_boundary_idx,
+        )
+        document_blocks, header_markers = remove_repeating_markers(document_blocks)
+        debug_print(
+            f"Dropped {cover_dropped} cover blocks, {toc_start_idx} TOC blocks, {len(header_markers)} repeating markers"
+        )
 
         # Determine home country from the first document (usually the main filing)
         # Only if not already determined by URL
@@ -1325,21 +3197,619 @@ def parse_content(data):
             {
                 "url": url,
                 "accession": accession,
-                "item1": item1_matches,
-                "item1a": item1a_matches,
+                "documents": document_blocks,
                 "period_of_report": detected_year,
                 "home_country": home_country,
             }
         )
-        if item1_matches and item1a_matches:
+        if document_blocks:
             debug_print(
                 f"✓ Successfully parsed {len(parsed_documents)} documents from {url}"
             )
         else:
-            debug_print(f"No keyword matches found in any document from {url}")
+            debug_print(f"No document blocks extracted from any document in {url}")
 
         return result_row
 
     except Exception as e:
         print(f"Parse error for {url}: {e}")
         return None
+
+
+def format_time(seconds):
+    hours, remainder = divmod(seconds, 3600)
+    minutes, seconds = divmod(remainder, 60)
+    if hours > 0:
+        return f"{int(hours)}h {int(minutes)}m {int(seconds)}s"
+    elif minutes > 0:
+        return f"{int(minutes)}m {int(seconds)}s"
+    else:
+        return f"{int(seconds)}s"
+
+
+# =============================================================================
+# QUEUE FILLER WORKER
+# =============================================================================
+
+
+def url_queue_filler_worker(
+    url_queue,
+    unprocessed_urls_list,
+    queue_filler_stop_event,
+    batch_size: int,
+    fill_interval_seconds: int,
+):
+    """
+    BACKGROUND THREAD: Periodically refills url_queue with new URLs.
+
+    Maintains the queue size up to `batch_size`.
+    Checks every `fill_interval_seconds`.
+    """
+    index = 0
+
+    while not queue_filler_stop_event.is_set():
+        try:
+            # Check current queue size
+            try:
+                q_size = url_queue.qsize()
+            except Exception:
+                q_size = 0
+
+            # Calculate how many to add to reach batch_size (target capacity)
+            if q_size < batch_size:
+                needed = batch_size - q_size
+
+                # Determine range to add
+                batch_end = min(index + needed, len(unprocessed_urls_list))
+
+                if index < batch_end:
+                    for i in range(index, batch_end):
+                        url_queue.put(unprocessed_urls_list[i])
+
+                    index = batch_end
+
+                # Done?
+                if index >= len(unprocessed_urls_list):
+                    debug_print("✅ All items queued. Queue filler stopping.")
+                    break
+
+        except Exception as e:
+            print(f"Queue filler error: {e}")
+
+        # Wait for interval or stop event
+        if queue_filler_stop_event.wait(fill_interval_seconds):
+            break
+
+
+# =============================================================================
+# INITIALIZATION
+# =============================================================================
+# %%
+def process_producer_consumer_adaptive():
+    """
+    Producer-Consumer model with ADAPTIVE rate limiting.
+    Continuously monitors fetch rate and adjusts sleep dynamically.
+    """
+    manager = mp.Manager()
+
+    # 1. Setup Queues
+    url_queue = manager.Queue()
+    raw_queue = manager.Queue(maxsize=CHUNK_SIZE)
+    result_queue = manager.Queue()
+
+    # 2. Shared Stats
+    items_processed = manager.dict({"count": 0})
+    counter_lock = manager.Lock()
+
+    # 3. Shared rate limiter (for all fetchers to use)
+    rate_limiter = ThreadSafeRateLimiter(SEC_RATE_LIMIT)
+
+    # 4. Metrics for rate adjustment (shared across fetchers)
+    fetch_metrics = manager.dict(
+        {
+            "fetch_count": 0,
+            "last_sample_time": time.time(),
+            "last_adjustment_time": time.time(),
+        }
+    )
+    metrics_lock = manager.Lock()
+
+    # 5. Populate Queue
+    processed_set = get_processed_accessions()
+
+    # Filter to only valid URLs (ignore placeholders) to ensure accurate stats
+    valid_reports_df = existing_report_df[
+        (existing_report_df["url"].notna()) & (existing_report_df["url"] != "")
+    ]
+
+    total_files_in_manifest = len(valid_reports_df)
+    already_in_warehouse = len(processed_set)
+
+    print("=" * 60)
+    print(f"   • Total Files in Manifest:    {total_files_in_manifest:,}")
+    print(f"   • Already Processed:          {already_in_warehouse:,}")
+    print(
+        f"   • Net Requirements (ToDo):    {max(0, total_files_in_manifest - already_in_warehouse):,}"
+    )
+    print("=" * 60)
+
+    # Build list (not queue) of unprocessed URLs
+    unprocessed_urls = []
+    for r in valid_reports_df.itertuples(index=False):
+        if r.accession and r.accession not in processed_set:
+            unprocessed_urls.append((r.url, r.accession))
+
+    total_to_process = len(unprocessed_urls)
+    initial_count = total_to_process
+
+    if total_to_process == 0:
+        print("Nothing to process.")
+        return
+
+    print(f"Total unprocessed URLs: {total_to_process}")
+    print(
+        f"Initializing time-based queue refilling (batch_size={QUEUE_BATCH_SIZE}, interval={QUEUE_FILL_INTERVAL_SECONDS}s)..."
+    )
+
+    # Pre-populate initial batch (10 URLs)
+    for i in range(min(QUEUE_BATCH_SIZE, len(unprocessed_urls))):
+        url_queue.put(unprocessed_urls[i])
+
+    initial_batch_count = min(QUEUE_BATCH_SIZE, len(unprocessed_urls))
+    print(f"Initial batch queued: {initial_batch_count} URLs")
+
+    # 6. Start Workers
+    db_thread = threading.Thread(
+        target=db_writer_worker,
+        args=(result_queue, DB_PATH, items_processed, counter_lock, initial_count),
+        daemon=False,
+    )
+    db_thread.start()
+
+    parsers = []
+    for _ in range(NUM_PARSERS):
+        p = mp.Process(target=parse_worker, args=(raw_queue, result_queue))
+        p.start()
+        parsers.append(p)
+
+    # 7. Start fetchers WITH rate limiter
+    fetchers = []
+    stop_event = threading.Event()
+
+    for _ in range(NUM_FETCHERS):
+        t = threading.Thread(
+            target=fetch_worker_adaptive,
+            args=(
+                url_queue,
+                raw_queue,
+                rate_limiter,
+                stop_event,
+                fetch_metrics,
+                metrics_lock,
+            ),
+            daemon=False,
+        )
+        t.start()
+        fetchers.append(t)
+
+    # 8. Start RATE ADJUSTER thread (monitors and adjusts sleep rate)
+    rate_adjuster = threading.Thread(
+        target=rate_adjuster_worker,
+        args=(
+            rate_limiter,
+            fetch_metrics,
+            metrics_lock,
+            stop_event,
+            SEC_RATE,
+            raw_queue,
+        ),
+        daemon=False,
+    )
+    rate_adjuster.start()
+
+    # 8b. Start QUEUE FILLER thread (periodically refills url_queue)
+    queue_filler_stop_event = threading.Event()
+    queue_filler = threading.Thread(
+        target=url_queue_filler_worker,
+        args=(
+            url_queue,
+            unprocessed_urls,  # List from step 5
+            queue_filler_stop_event,
+            QUEUE_BATCH_SIZE,
+            QUEUE_FILL_INTERVAL_SECONDS,
+        ),
+        daemon=False,
+    )
+    queue_filler.start()
+
+    # 9. Monitoring Loop
+    last_save_time = time.time()
+
+    with tqdm(total=initial_count, unit="files", smoothing=0.1) as pbar:
+        try:
+            stalled_count = 0
+            prev_done = 0
+
+            while True:
+                time.sleep(1)
+
+                # A. Update Progress Bar
+                current_done = items_processed["count"]
+                pbar.n = current_done
+                pbar.refresh()
+
+                # B. Update Stats (Postfix)
+                q_rem = url_queue.qsize() if hasattr(url_queue, "qsize") else "N/A"
+                inv_size = raw_queue.qsize() if hasattr(raw_queue, "qsize") else "N/A"
+
+                # Calculate actual remaining (since queue is now just a small buffer)
+                remaining_count = initial_count - current_done
+
+                pbar.set_postfix(
+                    rem=remaining_count,
+                    q=q_rem,  # URL queue (should stay ~10)
+                    inventory=f"{inv_size}/{CHUNK_SIZE}",  # Raw buffer
+                    sleep=f"{rate_limiter.value*1000:.1f}ms",
+                )
+
+                # C. Check Backup Trigger
+                if IS_COLAB and (
+                    time.time() - last_save_time > DRIVE_SAVE_INTERVAL_SECONDS
+                ):
+                    pbar.write("  💾 Triggering Background Backup...")
+                    try:
+                        subprocess.Popen(
+                            SAVE_SHELL_CMD,
+                            shell=True,
+                            stdout=subprocess.DEVNULL,
+                            stderr=subprocess.DEVNULL,
+                        )
+                        last_save_time = time.time()
+                    except Exception as e:
+                        pbar.write(f"  ⚠️ Backup failed: {e}")
+
+                # D. Exit Condition
+                if current_done >= initial_count and initial_count > 0:
+                    pbar.write("✓ All items processed!")
+                    break
+
+                # E. Stall detection
+                if current_done == prev_done:
+                    stalled_count += 1
+                    if stalled_count >= 100 and stalled_count % 25 == 0:
+                        pbar.write("⚠️  Pipeline stalled! Checking queue status...")
+                        pbar.write(
+                            f"   URL Queue: {url_queue.qsize()}, Raw Queue: {raw_queue.qsize()}, Result Queue: {result_queue.qsize()}"
+                        )
+                        # if stalled_count > 600:
+                        #     pbar.write("⚠️  Force-exiting stalled pipeline...")
+                        #     break
+                else:
+                    stalled_count = 0
+
+                prev_done = current_done
+
+        except KeyboardInterrupt:
+            pbar.write("Stopping pipeline...")
+
+        finally:
+            # SHUTDOWN SEQUENCE
+            pbar.write("Initiating shutdown...")
+            stop_event.set()
+            queue_filler_stop_event.set()  # Stop queue refiller
+
+            # Wait for queue filler first
+            queue_filler.join(timeout=5)
+            if queue_filler.is_alive():
+                pbar.write("⚠️  Queue filler thread did not terminate gracefully")
+
+            # Wait for rate adjuster
+            rate_adjuster.join(timeout=5)
+
+            # Wait for fetchers to complete
+            for t in fetchers:
+                t.join(timeout=5)
+                if t.is_alive():
+                    pbar.write("⚠️  Fetcher thread did not terminate gracefully")
+
+            # Signal parsers to stop
+            for _ in range(NUM_PARSERS):
+                raw_queue.put(None)
+
+            for p in parsers:
+                p.join(timeout=5)
+                if p.is_alive():
+                    pbar.write("⚠️  Parser process did not terminate gracefully")
+                    p.terminate()
+
+            # Signal DB writer to stop
+            result_queue.put(None)
+            db_thread.join(timeout=10)
+            if db_thread.is_alive():
+                pbar.write("⚠️  DB writer thread did not terminate gracefully")
+
+            # Final Save
+            if IS_COLAB:
+                print("Performing final backup...")
+                subprocess.run(SAVE_SHELL_CMD, shell=True)
+
+            print("Pipeline finished.")
+
+
+def rate_adjuster_worker(
+    rate_limiter: ThreadSafeRateLimiter,
+    fetch_metrics,
+    metrics_lock,
+    stop_event,
+    target_rate,
+    raw_queue=None,
+):
+    """
+    BACKGROUND THREAD: Continuously monitors fetch rate and adjusts sleep dynamically.
+
+    This is the "adaptive" component that makes the producer-consumer model responsive
+    to server throttling and network conditions.
+    """
+    prev_fetch_count = 0
+    prev_time = time.time()
+    last_recovery_check = time.time()
+
+    while not stop_event.is_set():
+        time.sleep(0.5)  # Check 2x per second (more responsive than old 0.25s)
+
+        try:
+            with metrics_lock:
+                current_fetch_count = fetch_metrics["fetch_count"]
+                sample_time = fetch_metrics["last_sample_time"]
+
+            now = time.time()
+            elapsed = now - prev_time
+
+            # Calculate current fetch rate (requests/second)
+            if elapsed > 0:
+                current_rate = (current_fetch_count - prev_fetch_count) / elapsed
+            else:
+                current_rate = 0.0
+
+            prev_fetch_count = current_fetch_count
+            prev_time = now
+
+            # Check inventory pressure
+            inventory_full = False
+            if raw_queue is not None:
+                try:
+                    # If inventory is nearly full (e.g. > 90%), we are blocked by consumers.
+                    # Don't decrease sleep time (don't speed up fetching) in this case.
+                    if raw_queue.qsize() >= CHUNK_SIZE * 0.9:
+                        inventory_full = True
+                except Exception:
+                    pass
+
+            # Call the rate limiter's atomic adjust method
+            # This returns updated sleep value and recovery mode status
+            new_sleep, in_recovery, target_rate_adjusted = rate_limiter.adjust(
+                current_rate, target_rate, inventory_full=inventory_full
+            )
+
+            # Log periodically (every 5 seconds)
+            if now - last_recovery_check > 5:
+                last_recovery_check = now
+
+        except Exception as e:
+            print(f"⚠️  Rate adjuster error: {e}")
+
+
+def fetch_worker_adaptive(
+    url_queue,
+    raw_queue,
+    rate_limiter: ThreadSafeRateLimiter,
+    stop_event,
+    fetch_metrics,
+    metrics_lock,
+):
+    """
+    PRODUCER: Downloads content and puts into raw_queue.
+    Reports fetch attempts to metrics for rate adjustment.
+    """
+    while not stop_event.is_set():
+        try:
+            # Get a URL with timeout to allow checking stop_event
+            item = url_queue.get(timeout=1)
+            if isinstance(item, tuple):
+                url, accession = item
+            else:
+                # Fallback if queue has old format (shouldn't happen with new logic)
+                url = item
+                data = extract_accession_info(url)
+                if not data:
+                    continue
+                accession = data["accession"]
+
+        except queue.Empty:
+            continue
+
+        try:
+            # 1. Apply Rate Limit (dynamically adjusted by rate_adjuster_worker)
+            sleep_time = rate_limiter.value
+            time.sleep(sleep_time)
+
+            # 2. Update metrics (increment fetch attempt)
+            with metrics_lock:
+                fetch_metrics["fetch_count"] += 1
+                fetch_metrics["last_sample_time"] = time.time()
+
+            # 3. Fetch
+            result = fetch_raw_content(url, accession, rate_limiter)
+
+            # 4. Put into Queue
+            if result:
+                if result[0] == FetchStatus.RETRY:
+                    # Re-queue the new .txt URL
+                    if len(result) == 3:
+                        # result is ("RETRY", old_url, new_url)
+                        # We re-queue with the SAME accession
+                        new_url_val = result[2]
+                        url_queue.put((new_url_val, accession))
+                    else:
+                        # Fallback
+                        url_queue.put((result[1], accession))
+                elif result[0] == FetchStatus.RATE_LIMITED:
+                    # Explicit rate limit - signal the rate limiter
+                    rate_limiter.signal_429()
+                    # Put URL back for retry (sleep already increased)
+                    url_queue.put((url, accession))
+
+                elif result[0] == FetchStatus.FAILED:
+                    # Other failure (timeout, connection error) - retry but don't increase sleep
+                    rate_limiter.signal_timeout()
+                    url_queue.put((url, accession))
+                    time.sleep(0.5)
+
+                elif result[0] == FetchStatus.PERMANENT_FAILURE:
+                    print(f"🛑 Permanent failure (404) for {url}. Dropping.")
+
+                else:
+                    # Successfully fetched - put in raw queue
+                    # This BLOCKS if queue is full, creating backpressure
+                    try:
+                        raw_queue.put(result, timeout=5)
+                    except queue.Full:
+                        # Queue is full - put URL back and try again later
+                        url_queue.put((url, accession))
+                        time.sleep(0.5)
+
+        except Exception as e:
+            print(f"Fetch worker error: {e}")
+
+        finally:
+            # Always mark as done for queue accounting
+            url_queue.task_done()
+
+
+def save_batch(conn, buffer):
+    if not buffer:
+        return
+    try:
+        df_batch = pd.DataFrame(buffer)
+        c = conn.cursor()
+        data = list(
+            zip(
+                df_batch.accession,
+                df_batch.documents.apply(json.dumps),
+                df_batch.period_of_report,
+                df_batch.home_country,
+            )
+        )
+        c.executemany(
+            "INSERT OR REPLACE INTO webpage_result (accession, documents, period_of_report, home_country) VALUES (?, ?, ?, ?)",
+            data,
+        )
+        conn.commit()
+    except Exception as e:
+        print(f"DB Write Error: {e}")
+
+
+def db_writer_worker(
+    result_queue,
+    db_path,
+    shared_counter,
+    counter_lock,
+    total_expected,
+    save_interval=50,
+):
+    """Consumes results, writes to DB, and updates the shared_counter."""
+    buffer = []
+    conn = sqlite3.connect(db_path)
+    processed = 0
+
+    while processed < total_expected:
+        try:
+            result = result_queue.get(timeout=2)
+        except queue.Empty:
+            if buffer:
+                save_batch(conn, buffer)
+                with counter_lock:
+                    shared_counter["count"] += len(buffer)
+                processed += len(buffer)
+                buffer = []
+            continue
+
+        if result is None:
+            if buffer:
+                save_batch(conn, buffer)
+                with counter_lock:
+                    shared_counter["count"] += len(buffer)
+                processed += len(buffer)
+            break
+
+        buffer.append(result)
+
+        if len(buffer) >= save_interval:
+            save_batch(conn, buffer)
+            with counter_lock:
+                shared_counter["count"] += len(buffer)
+            processed += len(buffer)
+            buffer = []
+
+    conn.close()
+
+
+def parse_worker(raw_queue, result_queue):
+    """CONSUMER: Takes raw content and puts parsed results into result_queue."""
+    while True:
+        try:
+            data = raw_queue.get(timeout=2)
+        except queue.Empty:
+            continue
+
+        if data is None:
+            break
+
+        try:
+            parsed_result = parse_content(data)
+            if parsed_result is not None:
+                result_queue.put(parsed_result)
+        except Exception as e:
+            print(f"Parse worker error: {e}")
+
+
+existing_report_df = pd.DataFrame()
+# =============================================================================
+# MAIN EXECUTION
+# =============================================================================
+# %%
+if __name__ == "__main__":
+    create_db()
+    existing_report_df = fetch_report_data()
+    print(f"Found {len(existing_report_df)} reports in database")
+    NUM_FETCHERS, NUM_PARSERS, CHUNK_SIZE, SEC_RATE_LIMIT = get_system_config()
+    all_df = pd.read_csv(ALL_FIRMS_DATA)
+    if IS_COLAB:
+        print("Running in Google Colab environment")
+        if not Path(DB_PATH).exists():
+            print("Loading database from Google Drive...")
+            subprocess.run(LOAD_SHELL_CMD, shell=True)
+    else:
+        print("Running in local environment")
+    print("=" * 70)
+    print("STEP 1: Fetch all 10-K report URLs from SEC")
+    print("=" * 70)
+    # Uncomment to run:
+    # fetch_all_grouped()
+
+    print("\n" + "=" * 70)
+    print(f"STEP 2: Perform keyword extraction in parallel")
+    print("=" * 70)
+    process_producer_consumer_adaptive()
+
+    # Sync extracted years back to report_data
+    sync_fiscal_years()
+
+    # Sync home country from URL patterns
+    sync_home_country()
+
+    print("\n" + "=" * 70)
+    print("All done!")
+    print("=" * 70)
+
+# %%

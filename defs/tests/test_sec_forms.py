@@ -9,7 +9,7 @@ from defs.sec_forms.cover.extractors import (
     match_company_name,
     normalize_ein,
 )
-from defs.sec_forms.cover.vocabulary import (
+from defs.sec_forms.vocabulary import (
     ADDRESS_RE,
     COMMISSION_FILE_RE,
     COVER_LABELS,

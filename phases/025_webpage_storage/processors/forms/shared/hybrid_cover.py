@@ -2,19 +2,21 @@
 
 The preprocessor no longer branches on form names. It receives a resolved
 :class:`CoverProfile` and applies only the profile's enabled labels, boundary
-phrases, and phrase-healing rules. Generic HTML cleanup, generic table
-conversion, and document-wide checkbox normalization remain available to
-every profile, including no-cover ones.
+evidence, and phrase-healing rules. Cover termination is selected by the shared
+:class:`defs.sec_forms.cover.find_cover_boundary` detector, which returns a
+typed :class:`CoverBoundary` consumed by later TOC/body stages. Generic HTML
+cleanup, generic table conversion, and document-wide checkbox normalization
+remain available to every profile, including no-cover ones.
 """
 
 from __future__ import annotations
 
 import re
-from dataclasses import dataclass
 from typing import Any
 
 from bs4 import BeautifulSoup, Comment
 
+from defs.sec_forms.cover import BoundaryInput, find_cover_boundary_for_profile
 from defs.sec_forms.cover.profiles import CoverProfile, get_profile
 from defs.tables.templates import apply_table_templates
 from defs.text import (
@@ -25,25 +27,7 @@ from defs.text import (
     normalize_whitespace_and_tabs,
 )
 
-
-@dataclass(frozen=True, slots=True)
-class CoverPreprocessResult:
-    """Normalized document text produced without synthetic cover replacement."""
-
-    html: str
-    matched: bool
-    template: str | None
-    confidence: float
-    reason: str
-
-
-def _build_boundary_re(phrases: tuple[str, ...]) -> re.Pattern[str]:
-    if not phrases:
-        return re.compile(r"$.^", re.IGNORECASE)
-    return re.compile(
-        "|".join(re.escape(phrase) for phrase in phrases),
-        re.IGNORECASE,
-    )
+from ..base import CoverPreprocessResult
 
 
 def _mark_cover_candidates(
@@ -51,42 +35,20 @@ def _mark_cover_candidates(
     profile: CoverProfile,
 ) -> list[object]:
     """Mark layout tables before the cover boundary for scoped conversion."""
-    boundary_re = _build_boundary_re(profile.boundary_phrases)
-    boundary = next((node.parent for node in soup.find_all(string=boundary_re)), None)
     tables = list(soup.find_all("table"))
-    if boundary is not None:
-        previous = set(boundary.find_all_previous("table"))
-        candidates = [table for table in tables if table in previous]
-    else:
-        labels = profile.labels
-        evidence = profile.evidence_terms
-        candidates = [
-            table
-            for table in tables
-            if any(term in table.get_text(" ", strip=True).lower() for term in labels)
-            or any(term in table.get_text(" ", strip=True).lower() for term in evidence)
-            or table.find_previous(
-                string=re.compile(r"section\s+12\(b\)", re.IGNORECASE)
-            )
-        ]
+    labels = profile.labels
+    evidence = profile.evidence_terms
+    candidates = [
+        table
+        for table in tables
+        if any(term in table.get_text(" ", strip=True).lower() for term in labels)
+        or any(term in table.get_text(" ", strip=True).lower() for term in evidence)
+        or table.find_previous(string=re.compile(r"section\s+12\(b\)", re.IGNORECASE))
+    ]
 
     for table in candidates:
         table["data-cover-candidate"] = "true"
     return candidates
-
-
-def _find_cover_end_line(lines: list[str], boundary_re: re.Pattern[str]) -> int | None:
-    """Return the index of the first line that ends the cover region.
-
-    The cover region is every line before the first high-confidence boundary
-    phrase. Body content after that line is not subject to cover-specific
-    text healing, which prevents overhealing financial statements and other
-    body prose that merely resembles cover captions.
-    """
-    for index, line in enumerate(lines):
-        if boundary_re.search(line):
-            return index
-    return None
 
 
 class HybridCoverPreprocessor:
@@ -121,6 +83,9 @@ class HybridCoverPreprocessor:
                 template=None,
                 confidence=0.0,
                 reason="non_html_text",
+                cover_boundary=find_cover_boundary_for_profile(
+                    html_text, get_profile("GENERIC")
+                ),
             )
 
         soup = BeautifulSoup(html_text, "lxml")
@@ -133,10 +98,9 @@ class HybridCoverPreprocessor:
         for comment in soup.find_all(string=lambda value: isinstance(value, Comment)):
             comment.extract()
 
-        # 2. In-place layout table transformation, gated by profile eligibility.
-        boundary_re = _build_boundary_re(self.profile.boundary_phrases)
+        # 2. In-place layout table transformation, gated by cover capability.
         candidates: list[object] = []
-        if self.profile.eligible:
+        if self.profile.boundary is not None:
             candidates = _mark_cover_candidates(soup, self.profile)
             for table in list(soup.find_all("table")):
                 if table not in candidates:
@@ -156,11 +120,19 @@ class HybridCoverPreprocessor:
 
         # 3. Convert remaining body/data tables through the generic renderer.
         converted_html = convert_html_tables_to_ascii(str(soup))
+        boundary_source = normalize_checkbox_tokens(
+            normalize_whitespace_and_tabs(converted_html)
+        )
+        boundary = find_cover_boundary_for_profile(
+            BoundaryInput(boundary_source, representation="html"),
+            self.profile,
+        )
         table_blocks: list[str] = []
 
         def protect_table(match: re.Match[str]) -> str:
             table_blocks.append(match.group(0))
-            return f"__CANONICAL_TABLE_{len(table_blocks) - 1}__"
+            placeholder = f"__CANONICAL_TABLE_{len(table_blocks) - 1}__"
+            return placeholder + ("\n" * match.group(0).count("\n"))
 
         raw_text = re.sub(
             r"<TABLE>.*?</TABLE>", protect_table, converted_html, flags=re.DOTALL
@@ -175,18 +147,17 @@ class HybridCoverPreprocessor:
         # body content (financial statements, notes, exhibits) is not
         # overhealed. Profiles with no enabled rules or boundaries skip this.
         raw_lines = normalized_text.splitlines()
-        cover_end = _find_cover_end_line(raw_lines, boundary_re)
-        if cover_end is None:
-            cover_lines = raw_lines
-            body_lines: list[str] = []
+        if boundary.end_line is None:
+            cover_lines = []
+            body_lines = raw_lines
         else:
-            cover_lines = raw_lines[:cover_end]
-            body_lines = raw_lines[cover_end:]
+            cover_lines = raw_lines[: boundary.end_line]
+            body_lines = raw_lines[boundary.end_line :]
 
-        if self.profile.eligible and self.profile.phrase_rules:
+        if boundary.end_line is not None and self.profile.healing_rules:
             cover_lines = merge_yes_no_binary_blocks(cover_lines)
             cover_lines = heal_split_lines(
-                cover_lines, rules=tuple(self.profile.phrase_rules)
+                cover_lines, rules=tuple(self.profile.healing_rules)
             )
             cover_lines = heal_date_fragments(cover_lines)
 
@@ -194,13 +165,14 @@ class HybridCoverPreprocessor:
         for index, table_block in enumerate(table_blocks):
             final_text = final_text.replace(f"__CANONICAL_TABLE_{index}__", table_block)
 
-        matched = bool(self.profile.eligible and candidates)
+        matched = bool(self.profile.boundary is not None and candidates)
         return CoverPreprocessResult(
             html=final_text,
             matched=matched,
             template="hybrid_in_place_cover_preprocessor" if matched else None,
-            confidence=0.99 if matched else 0.0,
+            confidence=boundary.confidence if matched else 0.0,
             reason="success" if matched else "no_cover_profile_or_evidence",
+            cover_boundary=boundary,
         )
 
 

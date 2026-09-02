@@ -30,11 +30,6 @@ from .templates import (
     signature_template,
     span_grid,
 )
-from .toc import (
-    PART_HEADING_RE,
-    looks_like_toc_text,
-    toc_part_headings_are_body_rows,
-)
 from .tokens import is_numeric_cell
 
 _BORDER_PROPERTY_RE = re.compile(r"(?:^|;)border-(top|bottom):([^;]*)", re.IGNORECASE)
@@ -122,6 +117,8 @@ def _toc_starts_with_part_heading(
     source_grid: list[list[str]], scope: TableScope
 ) -> bool:
     """Keep a leading PART heading in the TOC body rather than as a header."""
+    from .toc import PART_HEADING_RE, toc_part_headings_are_body_rows
+
     first_row = next(
         (row for row in source_grid if any(value.strip() for value in row)), []
     )
@@ -358,6 +355,8 @@ def convert_html_tables_to_ascii(html_content: str, *, debug: bool = False) -> s
             continue
 
         # 2. Extract grid and test layout templates
+        from .toc import looks_like_toc_text
+
         full_text = table.get_text(" ", strip=True).lower()
         scope = TableScope.from_string(
             "toc" if looks_like_toc_text(full_text) else "body"

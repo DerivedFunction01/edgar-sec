@@ -5,13 +5,13 @@ from __future__ import annotations
 import re
 
 from defs.regex import build_alternation
+from defs.text.tokens import BULLET_MARKERS
 
 from .currencies import MAJOR_CURRENCIES
 from .units import MEASUREMENT_UNITS
 
 SUFFIX_TOKENS = frozenset({"%", "pt", "bps", ")", "%)"})
 PREFIX_TOKENS = frozenset({"(", "-"})
-BULLET_MARKERS = frozenset({"o", "*", "-", "+", "•", "·", "\x95", "–", "—", "&#149;"})
 
 PREFIX_SYMBOLS = frozenset(
     symbol

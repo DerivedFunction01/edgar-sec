@@ -67,6 +67,26 @@ def test_build_alternation_nested_structures() -> None:
     assert "swap" in pattern
 
 
+def test_build_alternation_flexible_whitespace() -> None:
+    phrases = ["documents incorporated by reference", "incorporated by reference to"]
+    pattern = build_alternation(
+        phrases, auto_escape=True, compact=True, flexible_whitespace=True
+    )
+    rx = re.compile(pattern, re.IGNORECASE)
+    assert rx.search("documents\nincorporated by reference") is not None
+    assert rx.search("documents   incorporated\tby reference") is not None
+    assert rx.search("incorporated\nby\nreference\nto") is not None
+    assert rx.search("unrelated prose") is None
+
+
+def test_build_alternation_never_match_empty() -> None:
+    assert build_alternation([]) == ""
+    assert build_alternation([], never_match_empty=True) == r"(?!)"
+    rx = re.compile(build_alternation([], never_match_empty=True))
+    assert rx.search("any string") is None
+    assert rx.search("") is None
+
+
 def test_trie_compaction_matches_exact_terms() -> None:
     terms = ["swap", "swap agreement", "swap option", "swaption"]
     compact = compact_alternation(terms)

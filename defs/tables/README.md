@@ -67,7 +67,7 @@ changing the corpus. The confirmed first-100 failure list is tracked at
 - `checkbox_grid_template` — formats filer-category and yes/no checkbox grids
 - `single_row_horizontal_template` — joins single-row multi-cell layout blocks
 
-These templates consume canonical label matchers from `defs.sec_forms.cover.vocabulary` and are scoped to cover-page tables via the typed `TableScope.COVER` in the template dispatcher. Body and data tables use the generic table converter.
+These templates consume canonical label matchers from `defs.sec_forms.vocabulary` and are scoped to cover-page tables via the typed `TableScope.COVER` in the template dispatcher. Body and data tables use the generic table converter.
 
 ### Table scope contract
 

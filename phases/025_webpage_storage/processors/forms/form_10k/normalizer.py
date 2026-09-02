@@ -6,7 +6,7 @@ from typing import Any
 
 from defs.sec_forms.cover import get_profile
 
-from ..base import FormNormalizer
+from ..base import CoverPreprocessResult, FormNormalizer
 from ..shared.headers import FORM_10K_GRAMMAR, normalize_headers
 from ..shared.hybrid_cover import HybridCoverPreprocessor
 
@@ -16,13 +16,11 @@ class Form10KNormalizer(FormNormalizer):
 
     def preprocess_cover(
         self, html_text: str, metadata: dict[str, Any] | None = None
-    ) -> str:
+    ) -> CoverPreprocessResult:
         meta = metadata or {}
         company_name = meta.get("company_name") or meta.get("input_name") or ""
-        return (
-            HybridCoverPreprocessor(get_profile("10-K"))
-            .preprocess(html_text, company_name=company_name, metadata=meta)
-            .html
+        return HybridCoverPreprocessor(get_profile("10-K")).preprocess(
+            html_text, company_name=company_name, metadata=meta
         )
 
     def normalize_headers(

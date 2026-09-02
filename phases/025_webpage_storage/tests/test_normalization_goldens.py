@@ -32,7 +32,6 @@ def _run_id() -> str:
         "apple_2025_segment",
         "jpmorgan_2025_segment",
         "jnj_2025_segment",
-        "berry_2008_segment",
         "kellogg_2003_segment",
     ],
 )

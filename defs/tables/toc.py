@@ -2,11 +2,15 @@
 
 from __future__ import annotations
 
-import re
-
-PART_HEADING_RE = re.compile(r"^PART\s+(?:[IVXLCDM]+|\d+)$", re.IGNORECASE)
-TOC_ITEM_RE = re.compile(r"^ITEM\s+\d+[A-Z]?\.", re.IGNORECASE)
-TOC_PART_TEXT_RE = re.compile(r"\bp\s*a\s*r\s*t\s+(?:[ivxlcdm]+|\d+)\b", re.IGNORECASE)
+from defs.sec_forms.cover.structure import (
+    RE_PART as PART_HEADING_RE,
+)
+from defs.sec_forms.cover.toc import (
+    RE_TOC_ITEM as TOC_ITEM_RE,
+)
+from defs.sec_forms.cover.toc import (
+    RE_TOC_PART_TEXT as TOC_PART_TEXT_RE,
+)
 
 
 def looks_like_toc_text(text: str) -> bool:

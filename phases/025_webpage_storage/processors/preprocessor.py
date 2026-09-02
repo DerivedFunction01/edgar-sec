@@ -11,6 +11,7 @@ import re
 from typing import Any
 
 from defs.regex import build_alternation
+from defs.sec_forms.page_markers import analyze_page_markers
 
 from .forms.base import PreprocessedDocument
 
@@ -100,6 +101,11 @@ class GenericPreprocessor:
         words = clean.split()
         word_count = len(words)
 
+        page_analysis = analyze_page_markers(
+            clean,
+            representation="html" if has_html else "ascii",
+        )
+
         return PreprocessedDocument(
             raw_text=raw_text,
             cleaned_text=clean,
@@ -107,4 +113,5 @@ class GenericPreprocessor:
             has_html_tags=has_html,
             detected_encoding=encoding,
             metadata=meta,
+            page_analysis=page_analysis,
         )

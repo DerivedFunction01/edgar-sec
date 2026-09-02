@@ -36,6 +36,8 @@ def build_alternation(
     sort_longest_first: bool = True,
     auto_escape: bool = False,
     compact: bool = False,
+    flexible_whitespace: bool = False,
+    never_match_empty: bool = False,
 ) -> str:
     """Build a non-capturing regex alternation pattern from strings, enums, or nested sequences.
 
@@ -47,17 +49,25 @@ def build_alternation(
         sort_longest_first: If True, sort by (word_count DESC, char_length DESC).
         auto_escape: If True, escapes regex metacharacters in literal strings.
         compact: If True, factors common prefixes using a trie.
+        flexible_whitespace: If True, replaces inter-word spaces with `\\s+`.
+        never_match_empty: If True, returns `(?!)` when items is empty instead of `""`.
 
     Returns:
         Alternation pattern string ready for compilation.
     """
     flat = to_list(items)
     if not flat:
-        return ""
+        return r"(?!)" if never_match_empty else ""
     if len(flat) == 1:
         val = flat[0]
         if auto_escape:
             val = re.escape(val)
+        if flexible_whitespace:
+            val = (
+                val.replace(r"\ ", r"\s+")
+                if auto_escape
+                else re.sub(r"[ \t]+", r"\s+", val)
+            )
         return val
 
     # Deduplicate while preserving order for deterministic tiebreakers
@@ -69,7 +79,14 @@ def build_alternation(
             seen.add(item)
 
     if compact:
-        return compact_alternation(unique_items, auto_escape=auto_escape)
+        pattern = compact_alternation(unique_items, auto_escape=auto_escape)
+        if flexible_whitespace:
+            pattern = (
+                pattern.replace(r"\ ", r"\s+")
+                if auto_escape
+                else re.sub(r"[ \t]+", r"\s+", pattern)
+            )
+        return pattern
 
     if sort_longest_first:
         unique_items.sort(
@@ -81,18 +98,30 @@ def build_alternation(
 
     if auto_escape:
         unique_items = [re.escape(x) for x in unique_items]
+        if flexible_whitespace:
+            unique_items = [x.replace(r"\ ", r"\s+") for x in unique_items]
+    elif flexible_whitespace:
+        unique_items = [re.sub(r"[ \t]+", r"\s+", x) for x in unique_items]
 
     return f"(?:{'|'.join(unique_items)})"
 
 
 def to_build_alternation(
-    items: Any, sort_longest_first: bool = True, auto_escape: bool = False
+    items: Any,
+    sort_longest_first: bool = True,
+    auto_escape: bool = False,
+    flexible_whitespace: bool = False,
+    never_match_empty: bool = False,
 ) -> str:
     """Convenience wrapper around build_alternation."""
     if not items:
-        return ""
+        return r"(?!)" if never_match_empty else ""
     return build_alternation(
-        items, sort_longest_first=sort_longest_first, auto_escape=auto_escape
+        items,
+        sort_longest_first=sort_longest_first,
+        auto_escape=auto_escape,
+        flexible_whitespace=flexible_whitespace,
+        never_match_empty=never_match_empty,
     )
 
 

@@ -14,7 +14,6 @@ from defs.text.dates import (
 )
 
 from .tokens import (
-    BULLET_MARKERS,
     CURRENCY_TOKEN_RE,
     FINANCIAL_PLACEHOLDERS,
     NUMERIC_CELL_RE,
@@ -36,14 +35,12 @@ PERCENT_HEADER_RE = re.compile(
     rf"\b(?:%|{build_alternation(['percentage', 'percent'])})\b", re.IGNORECASE
 )
 
-# Canonical patterns used while classifying and healing HTML financial tables.
+from defs.text.tokens import BULLET_MARKER_RE
+
 PAREN_SPACES_RE = re.compile(r"\(\s*([^\)]+?)\s*\)")
 FOOTNOTE_RE = re.compile(r"^\(?[a-zA-Z0-9\*\†\‡\§\d]{1,3}\)?$")
 YEAR_IN_HEADER_RE = YEAR_IN_TEXT_RE
 YEAR_TOKEN_RE = SHARED_YEAR_TOKEN_RE
-BULLET_MARKER_RE = re.compile(
-    rf"^(?:{build_alternation(sorted(BULLET_MARKERS), auto_escape=True)}|\(?\d{{1,2}}[\.\)]?|\(?[a-zA-Z][\.\)]?)$"
-)
 HIDDEN_ELEMENT_STYLE_RE = re.compile(
     r"(?:display:\s*none|visibility:\s*hidden)", re.IGNORECASE
 )

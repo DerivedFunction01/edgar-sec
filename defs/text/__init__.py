@@ -43,8 +43,15 @@ from .healing import (
     strip_alphanumeric_words,
     strip_boxdot_spacers,
 )
+from .tokens import (
+    BULLET_MARKER_RE,
+    BULLET_MARKERS,
+    RE_BULLET_PREFIX,
+)
 
 __all__ = [
+    "BULLET_MARKERS",
+    "BULLET_MARKER_RE",
     "CANONICAL_CHECKED",
     "CANONICAL_UNCHECKED",
     "CENTURY_PIVOT",
@@ -57,6 +64,7 @@ __all__ = [
     "NEGATIVE_BOUNDARY_RE",
     "ORDINAL_SUFFIX_PATTERN",
     "ORDINAL_SUFFIX_RE",
+    "RE_BULLET_PREFIX",
     "RE_RAW_CHECKED",
     "RE_RAW_UNCHECKED",
     "SEC_DATE_FORMATS",

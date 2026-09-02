@@ -6,7 +6,7 @@ import re
 
 from defs.entities import clean_entity_name, entity_name_tokens
 from defs.regex import build_alternation
-from defs.sec_forms.cover.vocabulary import (
+from defs.sec_forms.vocabulary import (
     COMMISSION_FILE_RE,
     EIN_VALUE_RE,
     IRS_EIN_RE,

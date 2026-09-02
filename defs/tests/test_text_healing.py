@@ -2,7 +2,8 @@
 
 from __future__ import annotations
 
-from defs.sec_forms.sequences import SEC_COVER_PHRASE_RULES
+from defs.sec_forms.forms.annual import ANNUAL_ADDITIONAL_PHRASE_RULES
+from defs.sec_forms.sequences import COMMON_PHRASE_RULES
 from defs.text.healing import (
     CANONICAL_CHECKED,
     CANONICAL_UNCHECKED,
@@ -217,7 +218,8 @@ def test_merge_yes_no_binary_blocks_consolidated() -> None:
         "by reference: Portions of Part III.",
     ]
 
-    healed = heal_split_lines(lines, SEC_COVER_PHRASE_RULES)
+    rules = tuple(COMMON_PHRASE_RULES) + tuple(ANNUAL_ADDITIONAL_PHRASE_RULES)
+    healed = heal_split_lines(lines, rules)
     assert (
         "Indicate the number of shares outstanding of each of the registrant's classes of common stock as of January 31, 2025: 15,115,823,000 shares."
         in healed[0]

@@ -156,12 +156,13 @@ def test_annual_cover_profile_matches_existing_behavior() -> None:
               <td>Delaware</td>
               <td>35-1828377</td>
             </tr>
-            <tr>
-              <td>(State or other jurisdiction of incorporation or organization)</td>
-              <td>(I.R.S. Employer Identification No.)</td>
-            </tr>
-          </table>
-        </div>
+                <tr>
+                  <td>(State or other jurisdiction of incorporation or organization)</td>
+                  <td>(I.R.S. Employer Identification No.)</td>
+                </tr>
+              </table>
+              <p>ITEM 1. BUSINESS</p>
+            </div>
       </body>
     </html>
     """
