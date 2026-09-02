@@ -389,13 +389,30 @@ def test_adversarial_filing_starting_directly_at_item1_body():
     doc = """PART I
 
 ITEM 1. BUSINESS
-The Company provides cloud computing infrastructure.
+The Company provides cloud computing infrastructure and operates
+manufacturing facilities throughout North America and Europe.
 """
+
+    # Use body_evidence_pack with body terms for BoW scoring
+    class SimpleEvidence:
+        body_terms = (
+            "company",
+            "provides",
+            "business",
+            "operations",
+            "operates",
+            "manufactures",
+            "facilities",
+        )
+        body_verbs = ("provides", "operates", "manufactures")
+        body_ngrams = ("cloud computing",)
+        cover_terms = ()
+
     topo = resolve_document_topology(
         doc,
         policy=CoverBoundaryPolicy(signals=(BoundarySignal.COVER_IDENTITY_AND_LAYOUT,)),
         cover_evidence=(),
-        body_evidence=("ITEM 1", "BUSINESS"),
+        body_evidence_pack=SimpleEvidence(),
         derived_taxonomy=FORM_10K_DERIVED,
     )
     assert topo.toc_start is None

@@ -31,7 +31,7 @@ def row_aware_fallback(source_grid: list[list[str]]) -> str | None:
     if len(source_grid) < 2:
         return None
     rows = [[cell.strip() for cell in row if cell.strip()] for row in source_grid]
-    if not rows or not any(len(row) >= 2 for row in rows):
+    if not rows or any(len(row) < 2 for row in rows):
         return None
     if any(not row for row in rows):
         return None

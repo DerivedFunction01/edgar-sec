@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+from defs.sec_forms.cover.body_start import find_body_start
 from defs.sec_forms.cover.boundary import (
     find_cover_boundary,
     find_cover_boundary_for_profile,
@@ -14,7 +15,10 @@ from defs.sec_forms.cover.extractors import (
     extract_fiscal_period,
 )
 from defs.sec_forms.cover.models import (
+    BodyAnchorType,
     BodyRoot,
+    BodyStart,
+    BodyStartEvidence,
     BoundaryEvidence,
     BoundaryInput,
     BoundaryMethod,
@@ -58,7 +62,10 @@ __all__ = [
     "RE_TOC_HEADING",
     "RE_TOC_ITEM",
     "RE_TOC_PART_TEXT",
+    "BodyAnchorType",
     "BodyRoot",
+    "BodyStart",
+    "BodyStartEvidence",
     "BoundaryEvidence",
     "BoundaryInput",
     "BoundaryMethod",
@@ -78,6 +85,7 @@ __all__ = [
     "extract_candidate_ein",
     "extract_commission_file_number",
     "extract_fiscal_period",
+    "find_body_start",
     "find_cover_boundary",
     "find_cover_boundary_for_profile",
     "find_cover_start",

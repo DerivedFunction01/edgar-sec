@@ -10,7 +10,9 @@ from defs.regex import build_alternation
 from defs.sec_forms.cover import (
     BoundaryInput,
     CoverBoundary,
+    find_body_start,
     find_cover_boundary_for_profile,
+    find_toc_span,
     get_profile,
 )
 from defs.sec_forms.page_markers import strip_page_markers
@@ -31,6 +33,7 @@ class NormalizationResult:
 
     text: str
     cover_boundary: CoverBoundary
+    body_start: object | None = None
 
 
 class DeepNormalizer:
@@ -91,7 +94,22 @@ class DeepNormalizer:
         # 5. Final whitespace cleanup
         text = _RE_TRAILING_WHITESPACE.sub("", text)
         text = _RE_MULTIPLE_BLANKS.sub("\n\n", text)
-        return NormalizationResult(text=text.strip(), cover_boundary=boundary)
+        body_start = None
+        if profile.boundary is not None and profile.body_evidence is not None:
+            # Body-start analysis runs on the final normalized text; resolve
+            # the TOC span on the same representation so the search lower
+            # bound and TOC ineligibility use consistent line coordinates.
+            toc_span = find_toc_span(text, start_line=boundary.start_line or 0)
+            body_start = find_body_start(
+                text,
+                cover_end=boundary.end_line,
+                toc_end=toc_span.end_line if toc_span is not None else None,
+                evidence=profile.body_evidence,
+                toc_span=toc_span,
+            )
+        return NormalizationResult(
+            text=text.strip(), cover_boundary=boundary, body_start=body_start
+        )
 
 
 __all__ = ["DeepNormalizer", "NormalizationResult"]

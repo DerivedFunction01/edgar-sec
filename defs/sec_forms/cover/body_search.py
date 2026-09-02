@@ -10,9 +10,20 @@ from defs.sec_forms.cover.structure import (
     is_continuation_prose,
     match_structural_line,
 )
+from defs.text.bow import (
+    BowScore,
+    CompiledEvidencePack,
+    EvidenceContext,
+    score_tokens,
+    tokenize,
+)
 
 _BACKWARD_SEARCH_LIMIT = 150
 _BACKWARD_CONFIRM_WINDOW = 8
+
+# Backward confirmation accepts only score-2/score-3 lexical evidence;
+# score-1 evidence stays ambiguous and below the acceptance gate.
+_SCORE_CONFIDENCE = {0: 0.0, 1: 0.5, 2: 0.7, 3: 0.85}
 
 
 def _next_nonblank_line(lines: list[str], start_line: int) -> tuple[int, str] | None:
@@ -23,19 +34,13 @@ def _next_nonblank_line(lines: list[str], start_line: int) -> tuple[int, str] | 
     return None
 
 
-def _score_body_paragraph(paragraph: str, rules: CompiledCoverRules) -> float:
-    """Score a paragraph for body-like content using body-only vocabulary."""
-    if len(paragraph.split()) < 8:
-        return 0.0
-    ngram_hits = len(rules.body_ngram.findall(paragraph))
-    verb_hits = len(rules.body_verb.findall(paragraph))
-    if ngram_hits >= 2:
-        return 0.85
-    if ngram_hits >= 1 and verb_hits >= 1:
-        return 0.7
-    if ngram_hits >= 1 or verb_hits >= 2:
-        return 0.5
-    return 0.0
+def _score_body_paragraph(paragraph: str, lexical: CompiledEvidencePack) -> BowScore:
+    """Score one backward-search line with the shared lexical evaluator."""
+    return score_tokens(
+        tokenize(paragraph),
+        lexical,
+        EvidenceContext(unit_kind="line"),
+    )
 
 
 def _find_body_root_backward(
@@ -90,7 +95,8 @@ def _find_body_root_backward(
             )
             continue
         if first_substantive is None:
-            score = _score_body_paragraph(stripped, rules)
+            bow_score = _score_body_paragraph(stripped, rules.lexical)
+            score = _SCORE_CONFIDENCE.get(bow_score.score, 0.0)
             if score >= 0.7:
                 first_substantive = BodyRoot(
                     line=index,

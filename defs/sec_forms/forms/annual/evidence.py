@@ -10,7 +10,136 @@ from defs.sec_forms.forms.annual.vocabulary import (
     PUBLIC_FLOAT_PHRASES,
     SHARES_PHRASES,
 )
-from defs.text import PhraseSequenceRule
+from defs.text import EvidenceTier, LexicalEvidencePack, PhraseSequenceRule
+
+# High-confidence annual body phrases: one distinct phrase hit is decisive.
+ANNUAL_BODY_PHRASES: tuple[str, ...] = (
+    "collective bargaining",
+    "labor union",
+    "market segments",
+)
+
+# Curated high-confidence early-body unigrams. Two distinct terms clear the
+# strong tier; the two-term minimum reflects that the probe vocabulary was
+# sampled, not observed across the full filing corpus.
+ANNUAL_BODY_STRONG_TERMS: tuple[str, ...] = (
+    "founded",
+    "organized",
+    "leading",
+    "provider",
+    "primarily",
+    "overview",
+    "engaged",
+    "operated",
+    "located",
+    "manufacturing",
+    "worldwide",
+    "segments",
+    "commenced",
+    "began",
+    "manufacturer",
+    "range",
+    "focus",
+    "focused",
+    "specialty",
+    "headquartered",
+    "subsidiaries",
+    "acquired",
+    "employees",
+    "customers",
+    "suppliers",
+    "facilities",
+    "competition",
+)
+
+ANNUAL_BODY_VERBS: tuple[str, ...] = (
+    "provides",
+    "operates",
+    "manufactures",
+    "sells",
+    "develops",
+    "distributes",
+    "manages",
+    "expects",
+    "believes",
+    "anticipates",
+)
+
+# Weaker body-leaning vocabulary: two distinct terms are required to count.
+ANNUAL_BODY_WEAK_TERMS: tuple[str, ...] = (
+    *ANNUAL_BODY_VERBS,
+    "products",
+    "services",
+    "operations",
+    "sales",
+    "revenue",
+    "fiscal",
+    "approximately",
+    "markets",
+    "industry",
+    "network",
+)
+
+# Cover/form-leaning terms recorded as exclusions. They are reported on the
+# score result and never reduce or veto a lexical score by themselves.
+ANNUAL_COVER_EXCLUSION_TERMS: tuple[str, ...] = (
+    "pursuant",
+    "herein",
+    "hereof",
+    "hereunder",
+    "thereof",
+    "therein",
+    "thereto",
+    "whereby",
+    "including",
+    "other",
+    "its",
+    "any",
+    "has",
+    "is",
+    "was",
+    "been",
+    "such",
+    "all",
+    "will",
+    "whether",
+    "preceding",
+    "commission",
+    "registrant",
+    "filer",
+    "form",
+)
+
+ANNUAL_BODY_LEXICAL_PACK = LexicalEvidencePack(
+    name="annual_body_start",
+    tiers=(
+        EvidenceTier(
+            name="body_phrase",
+            priority=30,
+            value=3,
+            terms=ANNUAL_BODY_PHRASES,
+            match_kind="ngram",
+            min_distinct_hits=1,
+        ),
+        EvidenceTier(
+            name="body_strong",
+            priority=20,
+            value=2,
+            terms=ANNUAL_BODY_STRONG_TERMS,
+            match_kind="unigram",
+            min_distinct_hits=2,
+        ),
+        EvidenceTier(
+            name="body_weak",
+            priority=10,
+            value=1,
+            terms=ANNUAL_BODY_WEAK_TERMS,
+            match_kind="unigram",
+            min_distinct_hits=2,
+        ),
+    ),
+    exclusion_terms=ANNUAL_COVER_EXCLUSION_TERMS,
+)
 
 
 @dataclass(frozen=True, slots=True)
@@ -28,9 +157,7 @@ class AnnualReportEvidence:
         *SHARES_PHRASES,
     )
     body_ngrams: tuple[str, ...] = (
-        "collective bargaining",
-        "labor union",
-        "market segments",
+        *ANNUAL_BODY_PHRASES,
         "worldwide",
         "employees",
         "customers",
@@ -38,11 +165,19 @@ class AnnualReportEvidence:
         "facilities",
         "competition",
     )
-    body_verbs: tuple[str, ...] = (
-        "provides",
-        "operates",
-        "manufactures",
+    body_verbs: tuple[str, ...] = ANNUAL_BODY_VERBS
+    body_terms: tuple[str, ...] = (
+        *ANNUAL_BODY_STRONG_TERMS,
+        "products",
+        "services",
+        "operations",
+        "sales",
+        "revenue",
+        "fiscal",
+        "approximately",
     )
+    cover_terms: tuple[str, ...] = ANNUAL_COVER_EXCLUSION_TERMS
+    body_lexical: LexicalEvidencePack = ANNUAL_BODY_LEXICAL_PACK
     semantic_headings: tuple[str, ...] = (
         "management's discussion and analysis",
         "risk factors",
@@ -67,4 +202,12 @@ class AnnualReportEvidence:
     )
 
 
-__all__ = ["AnnualReportEvidence"]
+__all__ = [
+    "ANNUAL_BODY_LEXICAL_PACK",
+    "ANNUAL_BODY_PHRASES",
+    "ANNUAL_BODY_STRONG_TERMS",
+    "ANNUAL_BODY_VERBS",
+    "ANNUAL_BODY_WEAK_TERMS",
+    "ANNUAL_COVER_EXCLUSION_TERMS",
+    "AnnualReportEvidence",
+]

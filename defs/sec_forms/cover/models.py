@@ -1,4 +1,4 @@
-"""Shared immutable data models and enums for cover boundary detection."""
+"""Shared immutable data models and enums for cover and body boundary detection."""
 
 from __future__ import annotations
 
@@ -15,6 +15,15 @@ class BoundarySignal(StrEnum):
     TOC_TRANSITION = "toc_transition"
     PART_FALLBACK = "part_fallback"
     ITEM_FALLBACK = "item_fallback"
+
+
+class BodyAnchorType(StrEnum):
+    """How a body-start anchor was selected."""
+
+    STRUCTURAL = "structural"
+    SEMANTIC = "semantic"
+    SUBSTANTIVE = "substantive"
+    UNKNOWN = "unknown"
 
 
 class BoundaryMethod(StrEnum):
@@ -113,8 +122,43 @@ class DocumentTopology:
     evidence: tuple[BoundaryEvidence, ...] = ()
 
 
+@dataclass(frozen=True, slots=True)
+class BodyStartEvidence:
+    """One named piece of evidence for a body-start decision."""
+
+    name: str
+    strength: float
+    line: int
+    details: str = ""
+
+
+@dataclass(frozen=True, slots=True)
+class BodyStart:
+    """The first sufficiently validated body region after cover/TOC material.
+
+    ``anchor_type`` is one of ``BodyAnchorType``. ``line`` is the source line
+    of the body-start boundary; ``heading_line`` is the structural heading
+    line when present. ``delayed`` is set when an earlier candidate was
+    rejected in favor of a later one. ``rejection_reasons`` records why
+    earlier candidates were rejected.
+    """
+
+    line: int | None
+    heading_line: int | None
+    first_unit_line: int | None
+    anchor_type: str
+    confidence: float
+    evidence: tuple[BodyStartEvidence, ...] = ()
+    delayed: bool = False
+    rejection_reasons: tuple[str, ...] = ()
+    reason: str = ""
+
+
 __all__ = [
+    "BodyAnchorType",
     "BodyRoot",
+    "BodyStart",
+    "BodyStartEvidence",
     "BoundaryEvidence",
     "BoundaryInput",
     "BoundaryMethod",

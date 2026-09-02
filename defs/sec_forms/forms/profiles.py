@@ -56,6 +56,9 @@ def build_annual_profile(family: str) -> CoverProfile:
             ),
             body_ngrams=annual.body_ngrams,
             body_verbs=annual.body_verbs,
+            body_terms=annual.body_terms,
+            cover_terms=annual.cover_terms,
+            lexical=annual.body_lexical,
         ),
     )
 
@@ -79,6 +82,7 @@ def build_quarterly_profile(family: str) -> CoverProfile:
             ),
             body_ngrams=quarterly.body_ngrams,
             body_verbs=quarterly.body_verbs,
+            lexical=quarterly.body_lexical,
         ),
     )
 

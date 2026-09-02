@@ -316,32 +316,46 @@ layout verbatim.
 
 ### K. Shared Bag-of-Words Body Confirmation
 
-BoW is a shared scorer, not a per-form implementation. Profiles supply evidence
-packs containing body terms, verbs, n-grams, cover/form exclusions, stopwords,
-and weights.
+BoW is a shared lexical evidence engine, not a per-form implementation. The
+engine (`defs.text.bow`) consumes compiled evidence packs of ordered tiers;
+form-specific and extraction-specific vocabulary lives in the owning packs.
 
 ```text
-score_unit(logical_unit, context, profile_evidence_pack)
-    -> score: 0 | 1 | 2
-    -> class: cover_like | ambiguous | body_like
-    -> confidence, matched features, novelty features, source span, reason
+form/domain evidence pack
+    -> compile once (normalized token indexes, cached by value)
+
+score_unit(unit_text, compiled_pack, context)
+    -> score: 0 | 1 | 2 | 3
+    -> classification: no_match | ambiguous | matched
+    -> confidence, hits (term, count, positions), satisfied tiers,
+       evaluated tiers, short-circuit flag, reason
 ```
 
-Score semantics are stable:
+Stable score semantics:
 
 ```text
-2 = clear body-like prose after structural guards
-1 = ambiguous; continue searching
-0 = cover/form/TOC/table-like or unusable for body confirmation
+3 = decisive high-confidence phrase evidence (one distinct phrase hit)
+2 = satisfied high-confidence unigram evidence
+1 = satisfied weak evidence, or partial high-confidence evidence
+0 = no usable evidence, ineligible content, or empty pack
 ```
+
+Tiers are evaluated in descending priority order and evaluation short-circuits
+once no unevaluated tier can raise the score. A satisfied tier must meet its
+`min_distinct_hits` requirement, which counts distinct matched terms and never
+repeated occurrences of one term. Weak tiers (value 1) contribute nothing
+until two distinct terms match; a single high-confidence unigram is
+intermediate score 1. Matching is token-boundary safe with dash normalization,
+so `interest rate` and `interest-rate` match one configured phrase without
+alias lists. Prefix (cover) vocabulary is diagnostic context only and never
+affects the score; sampled corpus absence is not treated as a universal rule.
 
 The common caller skips headings, `Omitted`, `Not Applicable`, bullets, tables,
-and signatures before scoring substantive double-newline paragraphs. Document-
-local vocabulary absent from the cover/reference prefix can strengthen the
-score, while terms such as `omitted` and `not applicable` remain weak because
-they occur in both form and body contexts.
+and signatures before scoring substantive double-newline paragraphs. Form-lean
+exclusion terms are reported on the result but never veto a match by
+themselves.
 
-Annual, quarterly, offering, and future profiles reuse the same scorer and
+Annual, quarterly, offering, and future profiles reuse the same engine and
 caller. They change only their evidence packs, such as:
 
 ```text
@@ -350,9 +364,65 @@ quarterly: quarter, period, operating update, results
 offering:  prospectus, proceeds, subscription, selling shareholders
 ```
 
+Later extraction phases (labor relations, derivative activity, stock
+compensation) reuse the same engine with their own packs and their own
+eligibility context, such as intentionally scoring table cells.
+
 Forward-looking/safe-harbor language is a later confirmation, not a required
 early stop: it appears in roughly 73% of relevant filings and can occur more
 than 500 lines after the body anchor.
+
+### L. Delayed Body-Start Detection
+
+After `COVER_END` and optional `TOC_END` are resolved, the body-start
+detector (`defs.sec_forms.cover.body_start.find_body_start`) validates the
+first body region using a forward search bounded by a fixed window from the
+lower bound (the later of `COVER_END` and `TOC_END`):
+
+```text
+receive COVER_END and optional TOC_END
+    -> choose body search lower bound
+    -> enumerate structural and semantic candidates
+    -> classify logical paragraph/list/table units
+    -> reject TOC, form, signature, exhibit, and continuation candidates
+    -> score first substantive prose with shared BoW scorer
+    -> accept first candidate meeting confidence threshold
+    -> otherwise continue to a later candidate
+    -> return delayed BODY_START or UNKNOWN
+```
+
+The accepted tradeoff is **late over early**: a late start may leave some
+ordinary body prose hard-wrapped; an early start can corrupt a table, list,
+signature, TOC, or cover layout. If no reliable body anchor exists, the
+detector returns `UNKNOWN` and the remaining content stays preserved. The
+detector never starts reflow solely because a search window was reached.
+
+**Anchor hierarchy** (tried in order):
+
+1. **Structural** — `PART I` + `ITEM 1`, `ITEM 1` + substantive prose,
+   `ITEM 1A`, later recognized body headings. Each heading is validated
+   against TOC context, multi-reference lines, continuation tokens, and
+   lowercase continuation prose.
+2. **Semantic** — named body sections (Forward-Looking Statements, Safe
+   Harbor, Risk Factors, MD&A) confirmed with BoW score 2 or 3.
+3. **Substantive** — a prose cluster with BoW score 2 or 3 and no layout
+   conflict.
+
+When a later candidate is accepted, `delayed=True` and the rejection reasons
+are recorded. The result carries line/offset, anchor type, evidence,
+confidence, and delayed status.
+
+The shared lexical engine (`defs.text.bow.score_unit`) is form-neutral: it
+consumes a compiled `LexicalEvidencePack` of ordered tiers (or any object
+carrying a `lexical` pack or legacy body fields, which is adapted once) and
+returns a `0..3` score with confidence, hit trace, satisfied/evaluated tiers,
+and short-circuit status. Form-specific vocabulary lives in the annual
+evidence pack (`defs.sec_forms.forms.annual.evidence`) and its compiled tiers.
+
+ASCII logical units (`defs.text.logical_units.classify_units`) split on
+double-newline boundaries, classify blocks as paragraph/list/table, and
+heal single-newline soft wraps within paragraphs while preserving the source
+line span.
 
 ---
 

@@ -147,3 +147,41 @@ def test_deep_normalizer_cover_metadata_conversion() -> None:
     assert "$100,000" in normalized
     assert "Revenue" in normalized
     assert "$100,000" in normalized
+
+
+def test_deep_normalizer_body_start_consumes_toc_end() -> None:
+    """Body-start analysis receives a real TOC_END, not None."""
+    normalizer = DeepNormalizer()
+    text = (
+        "UNITED STATES\n"
+        "SECURITIES AND EXCHANGE COMMISSION\n"
+        "WASHINGTON, D.C. 20549\n"
+        "FORM 10-K\n"
+        "ACME CORPORATION\n"
+        "(Exact name of registrant as specified in its charter)\n"
+        "\n"
+        "TABLE OF CONTENTS\n"
+        "ITEM 1. BUSINESS .......................... 1\n"
+        "ITEM 1A. RISK FACTORS ..................... 8\n"
+        "\n"
+        "PART I\n"
+        "\n"
+        "ITEM 1. BUSINESS\n"
+        "\n"
+        "The Company was founded in 1985 and operates manufacturing facilities "
+        "worldwide. It provides products to customers through its market "
+        "segments.\n"
+    )
+    prep = PreprocessedDocument(
+        raw_text=text,
+        cleaned_text=text,
+        word_count=80,
+        has_html_tags=False,
+        detected_encoding="utf-8",
+        metadata={"form": "10-K"},
+    )
+    result = normalizer.normalize_result(prep)
+    assert result.body_start is not None
+    lines = result.text.splitlines()
+    assert lines[result.body_start.line].strip() == "PART I"
+    assert result.body_start.first_unit_line >= result.body_start.line
