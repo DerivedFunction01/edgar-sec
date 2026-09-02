@@ -27,6 +27,7 @@ from .templates import (
     apply_table_templates,
     bullet_list_template,
     cell_text,
+    row_aware_fallback,
     signature_template,
     span_grid,
 )
@@ -386,7 +387,11 @@ def convert_html_tables_to_ascii(html_content: str, *, debug: bool = False) -> s
             or not non_empty
             or (scope is not TableScope.TOC and numeric / len(non_empty) < 0.15)
         ):
-            table.unwrap()
+            fallback = row_aware_fallback(source_grid)
+            if fallback:
+                table.replace_with(soup.new_string(fallback))
+            else:
+                table.unwrap()
             continue
 
         if debug:

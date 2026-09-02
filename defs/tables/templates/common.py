@@ -26,6 +26,18 @@ class TemplateResult:
     bypass_guard: bool = field(default=False)
 
 
+def row_aware_fallback(source_grid: list[list[str]]) -> str | None:
+    """Join recoverable cells horizontally, one logical source row per line."""
+    if len(source_grid) < 2:
+        return None
+    rows = [[cell.strip() for cell in row if cell.strip()] for row in source_grid]
+    if not rows or not any(len(row) >= 2 for row in rows):
+        return None
+    if any(not row for row in rows):
+        return None
+    return "\n" + "\n".join("  ".join(row) for row in rows) + "\n"
+
+
 def cell_text(cell: object, *, join_fragmented_anchors: bool = False) -> str:
     """Extract, clean, and normalize text inside a single table cell."""
     anchors = cell.find_all("a")
