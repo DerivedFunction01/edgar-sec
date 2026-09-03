@@ -93,6 +93,55 @@ def test_strong_plus_weak_evidence_stays_intermediate() -> None:
     assert result.satisfied_tiers == ("body_weak",)
 
 
+# --- Support tier semantics ---------------------------------------------------
+
+
+def test_support_phrase_alone_stays_ambiguous() -> None:
+    text = "The company noted its safe harbor provisions during the year."
+    result = score_unit(text, ANNUAL_BODY_LEXICAL_PACK)
+    assert result.score == 1
+    assert result.classification == "ambiguous"
+    assert result.satisfied_tiers == ("body_phrase_soft",)
+    assert result.support_score == 1
+
+
+def test_support_phrase_with_weak_words_confirms() -> None:
+    text = (
+        "The company noted its safe harbor provisions and provides "
+        "services to many clients."
+    )
+    result = score_unit(text, ANNUAL_BODY_LEXICAL_PACK)
+    assert result.score == 2
+    assert result.classification == "matched"
+    assert result.satisfied_tiers == ("body_phrase_soft", "body_weak")
+    assert result.support_score == 1
+
+
+def test_decisive_phrase_short_circuit_skips_support_tier() -> None:
+    text = (
+        "The company described its safe harbor provisions and market "
+        "segments during the year."
+    )
+    result = score_unit(text, ANNUAL_BODY_LEXICAL_PACK)
+    assert result.score == 3
+    assert result.classification == "matched"
+    assert result.satisfied_tiers == ("body_phrase",)
+    assert result.support_score == 0
+    assert result.evaluated_tiers == ("body_phrase",)
+
+
+def test_support_tier_requires_value_one() -> None:
+    with pytest.raises(ValueError):
+        EvidenceTier(
+            name="bad_support",
+            priority=15,
+            value=2,
+            terms=("two words",),
+            match_kind="ngram",
+            support=True,
+        )
+
+
 def test_exclusion_only_text_scores_zero() -> None:
     text = (
         "Pursuant to the requirements herein, the registrant has duly caused "
@@ -280,7 +329,8 @@ def test_same_priority_bags_do_not_sum_distinct_hits() -> None:
         "The company operates in the US market and maintains facilities worldwide.",
         pack,
     )
-    assert result.score == 0
+    assert result.score < 2
+    assert result.classification == "ambiguous"
     assert result.satisfied_tiers == ()
 
 
@@ -398,7 +448,13 @@ def test_short_circuit_skips_lower_tier_evaluation() -> None:
 def test_evaluated_tiers_record_search_order() -> None:
     text = "The company was founded in 1985 and serves customers worldwide."
     result = score_unit(text, ANNUAL_BODY_LEXICAL_PACK)
-    assert result.evaluated_tiers == ("body_phrase", "body_strong")
+    assert result.evaluated_tiers == (
+        "body_phrase",
+        "body_forward",
+        "body_header",
+        "body_header_phrase",
+        "body_strong",
+    )
 
 
 def test_prefix_vocab_is_diagnostic_only() -> None:

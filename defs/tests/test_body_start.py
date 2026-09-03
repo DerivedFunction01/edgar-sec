@@ -275,3 +275,14 @@ def test_cover_end_zero_starts_from_beginning() -> None:
     )
     result = find_body_start(text, cover_end=0, toc_end=None, evidence=ANNUAL_PACK)
     assert result.line is not None
+
+
+def test_semantic_heading_matches_without_hyphen() -> None:
+    text = ANNUAL_COVER + (
+        "\n\nThe Company's forward looking statements describe its operations "
+        "and strategy. The Company was incorporated in Delaware and "
+        "manufactures widgets for industrial customers throughout North "
+        "America and Europe. It provides products to customers worldwide.\n"
+    )
+    result = find_body_start(text, cover_end=11, toc_end=None, evidence=ANNUAL_PACK)
+    assert result.line is not None

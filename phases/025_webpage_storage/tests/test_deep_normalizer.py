@@ -11,6 +11,9 @@ normalizer_mod = importlib.import_module(
 
 PreprocessedDocument = forms_base.PreprocessedDocument
 DeepNormalizer = normalizer_mod.DeepNormalizer
+GenericPreprocessor = importlib.import_module(
+    "phases.025_webpage_storage.processors.preprocessor"
+).GenericPreprocessor
 
 
 def test_deep_normalizer_table_conversion() -> None:
@@ -185,3 +188,25 @@ def test_deep_normalizer_body_start_consumes_toc_end() -> None:
     lines = result.text.splitlines()
     assert lines[result.body_start.line].strip() == "PART I"
     assert result.body_start.first_unit_line >= result.body_start.line
+
+
+def test_deep_normalizer_removes_validated_html_markers_without_ascii_reflow() -> None:
+    html = """<html><body>
+    <div class="page-number">1</div>
+    <p>First page paragraph.</p>
+    <div class="page-number">2</div>
+    <p>Second page paragraph.</p>
+    <div class="page-number">3</div>
+    <p>Third page paragraph.</p>
+    </body></html>"""
+    preprocessed = GenericPreprocessor().preprocess(html.encode("utf-8"))
+
+    assert preprocessed.representation == "html"
+    result = DeepNormalizer().normalize_result(preprocessed)
+
+    assert "page-number" not in result.text
+    assert "First page paragraph." in result.text
+    assert "Third page paragraph." in result.text
+    assert result.reflow is None
+    assert result.page_analysis is not None
+    assert result.page_analysis.coordinate_frame == "html"

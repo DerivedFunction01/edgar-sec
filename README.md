@@ -35,6 +35,7 @@ python run.py metadata        # Phase 01 interactive wizard
 python run.py filing-catalog  # Phase 02 interactive materialize/plan menu
 python run.py viewer          # local read-only dataset viewer
 python run.py webpage-storage  # Phase 2.5 interactive document acquisition
+python run.py append --plan-dir <expanded-plan> --fixture-id <fixture-id>
 python run.py settings generate-dotenv   # write a documented .env template
 
 # Or use a component's canonical command surface directly:
@@ -80,7 +81,7 @@ Target artifacts are physically unordered; identity and provenance are retained
 for later key/sort phases, and staging is transient.
 
 The interactive launcher (`python run.py filing-catalog`) and the canonical CLI
-(`python -m phases.02_filing_extraction.cli {materialize,plan,status}`) share one
+(`python -m phases.02_filing_extraction.cli {materialize,plan,expand,status}`) share one
 contract. Filing document acquisition is a separate Phase 2.5 boundary that
 consumes these target plans; see the Phase 02 README for the scope split.
 
@@ -89,9 +90,12 @@ consumes these target plans; see the Phase 02 README for the scope split.
 Acquires and stores raw SEC filing documents (HTML, SGML, iXBRL) as
 content-addressed, zstd-compressed SQLite BLOBs, linked to Phase 02 corporate
 occurrences, and applies cover-page normalization (hybrid in-place DOM
-preprocessing with layout-table decomposition and text healing). Document
-parsing and section extraction are later phases built on the stored and
-normalized `document_blobs`.
+preprocessing with layout-table decomposition and text healing). Fixture IDs
+are reusable appendable test caches: an expanded child plan reuses existing
+blobs and fetches only missing locators. Document parsing and section
+extraction are later phases built on the stored and normalized `document_blobs`.
+The phase also provides a fixture-ID document corpus review workflow with
+20-document batches and exact promoted output goldens.
 
 ## Tools
 
@@ -100,7 +104,8 @@ normalized `document_blobs`.
 Domain-neutral contracts: SEC HTTP client (pacing/retries/caching), canonical
 filing identity (accessions, archive URLs, occurrence IDs, document locator
 keys), storage backends, SQL boundary, `sec_forms/` (shared SEC form definitions,
-semantic concepts, cover-page contracts), and the shared phase runtime.
+cover-page contracts, and the coordinate-safe `page_markers/` analysis package),
+and the shared phase runtime.
 
 ### [Dataset Viewer](defs/viewer/README.md)
 
@@ -110,10 +115,11 @@ reports), serves schema/stats/paged rows with filter+sort+search, and a guarded
 read-only SQL console — with a built TypeScript UI.
 
 The [shared table engine](defs/tables/README.md) provides HTML span-grid
-resolution, layout-table unwrapping, financial column healing, and standardized
-ASCII table generation for document-processing phases.
-Its tracked validated corpus is stored in one Parquet fixture, with threshold
-reports written to the shared `.artifacts/test-runs/` location.
+resolution, layout-table unwrapping, financial column healing, standardized
+ASCII table generation, and exact tagged-table protection
+(`protection.py`) for document-processing phases. Its tracked validated corpus
+is stored in one Parquet fixture, with threshold reports written to the shared
+`.artifacts/test-runs/` location.
 
 ## Conventions
 

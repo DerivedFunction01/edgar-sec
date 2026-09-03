@@ -8,6 +8,7 @@ from defs.sec_forms.cover.boundary import (
     find_cover_boundary_for_profile,
     resolve_document_topology,
 )
+from defs.sec_forms.cover.closing import ClosingSpan, find_closing_span
 from defs.sec_forms.cover.cover_start import find_cover_start
 from defs.sec_forms.cover.extractors import (
     extract_candidate_ein,
@@ -70,6 +71,7 @@ __all__ = [
     "BoundaryInput",
     "BoundaryMethod",
     "BoundarySignal",
+    "ClosingSpan",
     "CoverBoundary",
     "CoverBoundaryPolicy",
     "CoverProfile",
@@ -86,6 +88,7 @@ __all__ = [
     "extract_commission_file_number",
     "extract_fiscal_period",
     "find_body_start",
+    "find_closing_span",
     "find_cover_boundary",
     "find_cover_boundary_for_profile",
     "find_cover_start",

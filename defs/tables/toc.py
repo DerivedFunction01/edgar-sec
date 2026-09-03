@@ -2,9 +2,8 @@
 
 from __future__ import annotations
 
-from defs.sec_forms.cover.structure import (
-    RE_PART as PART_HEADING_RE,
-)
+from defs.sec_forms.cover.structure import RE_ITEM_REFERENCE
+from defs.sec_forms.cover.structure import RE_PART as PART_HEADING_RE
 from defs.sec_forms.cover.toc import (
     RE_TOC_ITEM as TOC_ITEM_RE,
 )
@@ -25,9 +24,16 @@ def toc_part_headings_are_body_rows(
     if not is_toc:
         return False
     values = [value.strip() for row in source_grid for value in row if value.strip()]
+    part_headings = {
+        value.casefold() for value in values if PART_HEADING_RE.fullmatch(value)
+    }
     return bool(
-        any(PART_HEADING_RE.fullmatch(value) for value in values)
-        and any(TOC_ITEM_RE.match(value) for value in values)
+        len(part_headings) >= 2
+        and any(
+            TOC_ITEM_RE.match(value)
+            or RE_ITEM_REFERENCE.fullmatch(value.rstrip("."))
+            for value in values
+        )
     )
 
 

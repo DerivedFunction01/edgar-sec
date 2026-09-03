@@ -52,6 +52,8 @@ def build_annual_profile(family: str) -> CoverProfile:
                 "management's discussion and analysis",
                 "risk factors",
                 "forward-looking statements",
+                "forward looking statements",
+                "forward looking information",
                 "safe harbor",
             ),
             body_ngrams=annual.body_ngrams,

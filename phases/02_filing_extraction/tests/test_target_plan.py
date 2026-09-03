@@ -11,11 +11,15 @@ from defs.runtime.artifacts import make_manifest, publish_manifest
 from defs.storage import pa, write_table_atomic
 
 target_plan = importlib.import_module("phases.02_filing_extraction.core.target_plan")
+plan_expansion = importlib.import_module(
+    "phases.02_filing_extraction.core.plan_expansion"
+)
 selection_policy = importlib.import_module(
     "phases.02_filing_extraction.core.selection_policy"
 )
 
 plan = target_plan.plan
+expand = target_plan.expand
 EraBand = selection_policy.EraBand
 SelectionPolicy = selection_policy.SelectionPolicy
 
@@ -170,3 +174,44 @@ def test_plan_fixture_scope(catalog_fixture: Path) -> None:
     assert (plan_dir / "locator_groups.parquet").is_file()
     assert (plan_dir / "reserve_targets.parquet").is_file()
     assert (plan_dir / "selection_report.json").is_file()
+
+
+def test_expand_fixture_plan_preserves_parent_selection(catalog_fixture: Path) -> None:
+    policy = SelectionPolicy(
+        corpus_id="test_corpus",
+        forms=["10-K"],
+        era_bands=[
+            EraBand(name="era_2021", start_year=2021, end_year=2022),
+            EraBand(name="era_2022", start_year=2022, end_year=2023),
+            EraBand(name="era_2023", start_year=2023, end_year=2024),
+        ],
+        base_content_units=2,
+        reserve_size=0,
+    )
+    pol_file = catalog_fixture / "policy.json"
+    policy.write(pol_file)
+    parent = plan(
+        catalog="cat123",
+        scope="fixture",
+        selection_policy_path=pol_file,
+    )
+    parent_dir = (
+        catalog_fixture
+        / "manifests"
+        / "filing_extraction"
+        / "target_plans"
+        / "final"
+        / parent["plan_id"]
+    )
+
+    child = expand(parent_dir, 3, selection_policy_path=pol_file)
+    child_dir = parent_dir.parent / child["plan_id"]
+    parent_keys = plan_expansion.plan_locator_keys(parent_dir)
+    child_keys = plan_expansion.plan_locator_keys(child_dir)
+
+    assert child["parent_plan_id"] == parent["plan_id"]
+    assert child["target_units"] == 3
+    assert child["added_locators_count"] == 1
+    assert set(parent_keys).issubset(child_keys)
+    assert len(set(child_keys)) == 3
+    assert child["selection_policy"]["base_content_units"] == 3

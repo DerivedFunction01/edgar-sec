@@ -35,6 +35,8 @@ def test_partition_schema_is_created_from_sql_ast(tmp_path):
         "filing_occurrences",
         "_committed_chunks",
         "acquisition_failures",
+        "normalized_documents",
+        "normalization_failures",
     } <= tables
     columns = {
         row[1]: row[2]
@@ -43,6 +45,13 @@ def test_partition_schema_is_created_from_sql_ast(tmp_path):
     assert tuple(columns) == BLOB_COLUMNS
     assert columns["raw_payload"] == "BLOB"
     assert columns["byte_size"] == "INTEGER"
+    assert columns["raw_payload_sha256"] == "TEXT"
+    normalized_columns = {
+        row[1]: row[2]
+        for row in connection.execute("PRAGMA table_info(normalized_documents)")
+    }
+    assert tuple(normalized_columns) == schemas.NORMALIZED_DOCUMENT_COLUMNS
+    assert "debug_metadata" not in normalized_columns
     indexes = {
         row[1] for row in connection.execute("PRAGMA index_list(filing_occurrences)")
     }

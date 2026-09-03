@@ -34,6 +34,7 @@ class CompiledTier:
     match_kind: str
     min_distinct_hits: int
     case_mode: CaseMode
+    support: bool = False
     unigrams: frozenset[str] = frozenset()
     ngram_index: dict[int, frozenset[tuple[str, ...]]] | None = None
 

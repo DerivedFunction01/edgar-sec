@@ -16,17 +16,22 @@ from collections.abc import Callable
 from pathlib import Path
 from typing import Any
 
-from defs.runtime.artifacts import load_manifest
 from defs.runtime.paths import resolve_paths
 from defs.runtime.resources import derive_resources
 from defs.storage import (
     DuckDBStaging,
     FinalizedArtifact,
-    StorageError,
     atomic_write_json,
 )
 
 from . import config as phase_config
+from .plan_expansion import (
+    expand,
+    expansion_metadata,
+    plan_fingerprint,
+    prepare_parent,
+    validate_target,
+)
 from .selection import DeficitSelector
 from .selection_features import FeatureSnapshotBuilder
 from .selection_policy import (
@@ -34,6 +39,7 @@ from .selection_policy import (
     compute_seed_fingerprint,
     load_seed_cik_csv,
 )
+from .target_catalog import resolve_catalog_manifests
 
 logger = logging.getLogger("filing_extraction.target_plan")
 
@@ -49,44 +55,6 @@ def _emit(progress: Callable[[dict], None] | None, event: dict) -> None:
         logger.exception("target plan progress callback failed")
 
 
-def _resolve_catalog_manifests(
-    catalog: str, artifacts_root: Path, manifests_root: Path
-) -> tuple[str, list[dict]]:
-    catalog_path = Path(catalog) if catalog else None
-    if catalog_path and catalog_path.is_file():
-        candidate_paths = [catalog_path]
-    elif catalog_path and catalog_path.is_dir():
-        candidate_paths = sorted(catalog_path.glob("*.json"))
-    else:
-        candidate_paths = sorted((manifests_root / "filing_extraction").rglob("*.json"))
-    distinct_manifests = {}
-    for path in candidate_paths:
-        try:
-            item = load_manifest(path)
-        except (OSError, ValueError, json.JSONDecodeError):
-            continue
-        art_id = item.get("artifact_id")
-        if not art_id or art_id in distinct_manifests:
-            continue
-        if (
-            not catalog
-            or (catalog_path and catalog_path.exists())
-            or str(catalog)
-            in {
-                str(item.get("run_id")),
-                str(item.get("provenance", {}).get("catalog_id")),
-            }
-        ):
-            distinct_manifests[art_id] = item
-    manifests = list(distinct_manifests.values())
-    target_manifests = [m for m in manifests if m.get("dataset") == "filing_targets"]
-    if not target_manifests:
-        raise StorageError("no published filing_targets manifests found for catalog")
-    catalog_id = str(target_manifests[0].get("run_id") or "")
-    all_catalog_manifests = [m for m in manifests if str(m.get("run_id")) == catalog_id]
-    return catalog_id, all_catalog_manifests
-
-
 def plan(
     catalog: str = "",
     output_root: str | None = None,
@@ -98,6 +66,8 @@ def plan(
     amendment: str | None = None,
     limit: int | None = None,
     progress: Callable[[dict], None] | None = None,
+    parent_plan_dir: str | Path | None = None,
+    target_units: int | None = None,
 ) -> dict[str, Any]:
     """Execute deterministic target planning (full or fixture scope)."""
     if forms is None:
@@ -118,7 +88,7 @@ def plan(
         else resolved_paths.runs_root.resolve()
     )
 
-    catalog_id, catalog_manifests = _resolve_catalog_manifests(
+    catalog_id, catalog_manifests = resolve_catalog_manifests(
         catalog, artifacts_root, manifests_root
     )
     target_manifests = [
@@ -145,6 +115,19 @@ def plan(
         seed_filers = {}
         if actual_seed_path.exists():
             seed_filers = load_seed_cik_csv(actual_seed_path)
+
+        parent_meta: dict[str, Any] | None = None
+        parent_keys: list[str] = []
+        if parent_plan_dir is not None:
+            if target_units is None:
+                raise ValueError("target_units is required when expanding a plan")
+            parent_meta, parent_keys, policy = prepare_parent(
+                parent_plan_dir,
+                policy,
+                target_units,
+                catalog_id,
+                compute_seed_fingerprint(seed_filers),
+            )
 
         # Build feature snapshot
         _emit(
@@ -194,7 +177,13 @@ def plan(
             threads=resources.threads,
             memory_limit=resources.memory_limit,
         )
-        selection_res = selector.select()
+        selection_res = selector.select(parent_active_keys=parent_keys)
+
+        validate_target(
+            parent_plan_dir,
+            len(selection_res.active_locators),
+            policy.base_content_units,
+        )
 
         # Compute Plan Identity
         plan_hash_payload = {
@@ -204,6 +193,7 @@ def plan(
             "seed_fingerprint": compute_seed_fingerprint(seed_filers),
             "level": policy.level,
             "active_locators": sorted(selection_res.active_locators),
+            "parent_plan_id": policy.parent_plan_id,
         }
         plan_id = hashlib.sha256(
             json.dumps(plan_hash_payload, sort_keys=True).encode()
@@ -328,7 +318,16 @@ def plan(
             "forms": list(policy.forms),
             "counts": counts,
             "selected_rows": sum(counts.values()),
+            "selection_policy": policy.to_dict(),
         }
+        plan_meta.update(
+            expansion_metadata(
+                policy, parent_meta, parent_keys, selection_res.active_locators
+            )
+        )
+        plan_meta["plan_fingerprint"] = plan_fingerprint(
+            plan_meta, selection_res.active_locators
+        )
         atomic_write_json(final_plan_dir / "plan.json", plan_meta)
         _emit(
             progress,
@@ -488,4 +487,4 @@ def plan(
         return plan_meta
 
 
-__all__ = ["TARGET_PLAN_SCHEMA_VERSION", "plan"]
+__all__ = ["TARGET_PLAN_SCHEMA_VERSION", "expand", "plan"]

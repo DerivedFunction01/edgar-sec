@@ -10,6 +10,7 @@ Owns cover boundary policies, body root backward search, cover start clustering,
 defs/sec_forms/cover/
   __init__.py          # Public cover API surface
   boundary.py          # Cover boundary detection policies and coordinator
+  closing.py           # Conservative closing-region detection (signatures, exhibit index)
   cover_start.py       # Cover start cluster detection and candidate search
   body_search.py       # Backward body root search and boundary confirmation
   body_start.py        # Forward body-start detection after cover/TOC
@@ -28,6 +29,7 @@ defs/sec_forms/cover/
 ## Key Modules
 
 - **`boundary.py`** — `find_cover_boundary()`, `find_cover_boundary_for_profile()`: multi-signal boundary detection across cover identity, incorporated references, TOC transitions, and Part/Item fallbacks.
+- **`closing.py`** — `find_closing_span()`, `ClosingSpan`: exact standalone `SIGNATURES` headings, `By: /s/` signature lines, and `EXHIBIT INDEX` headings after a validated body anchor; dotted TOC rows are rejected, and an absent signal means "no closing region" rather than a guess.
 - **`cover_start.py`** — `find_cover_start()`, `CoverStart`: anchors start of cover via SEC header, form titles, and registrant names.
 - **`body_search.py`** — `_find_body_root_backward()`, `confirm_backward_body()`, `BodyRoot`: finds first structural body item after cover using the shared compiled lexical evaluator.
 - **`body_start.py`** — `find_body_start()`, `BodyStart`: forward body-start detection after cover/TOC boundaries using structural, semantic, and substantive anchors with tiered lexical validation (score >= 2 accepted).

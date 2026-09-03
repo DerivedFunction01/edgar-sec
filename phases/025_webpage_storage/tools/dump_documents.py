@@ -39,6 +39,7 @@ _BLOB_COLUMNS = (
     "byte_size",
     "mime_type",
     "raw_payload",
+    "raw_payload_sha256",
 )
 
 

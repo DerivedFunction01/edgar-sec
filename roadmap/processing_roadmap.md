@@ -22,7 +22,7 @@ Every decision in the pipeline follows one governing invariant:
 - Financial statements, balance sheets, executive compensation grids, and signature blocks must remain **fixed-width, space-aligned, and intact**.
 - Only unambiguous narrative prose paragraphs are eligible for soft-unwrap and reflow.
 - When ambiguous, the system **preserves source layout exactly** and leaves it untagged.
-- The pipeline never requires or emits artificial synthetic markers into final published canonical text.
+- The pipeline never requires or emits artificial synthetic markers into final published canonical text. One structural exception is approved and versioned: high-confidence untagged fixed-width tables are delimited with standardized uppercase `<TABLE>`/`</TABLE>` markers (`TAG_AND_PRESERVE`), matching the existing table-engine output convention, so downstream consumers can locate tables without re-running layout heuristics. These wrapper tags are identified as generated in the processing sidecar; all other analysis sentinels remain prohibited.
 
 ---
 
@@ -278,8 +278,10 @@ sequence evidence before acceptance.
 
 ### I. Page-Marker Span Detection
 
-Page markers are detected by a dedicated span-producing function rather than a
-single boundary regex. Initial forms include:
+Page markers are detected by a dedicated analysis package rather than a single
+boundary regex. Firm spans remain source-coordinate safe, while contextual
+ASCII candidates are promoted only after sequence, layout, TOC, prose, and
+financial/table exclusion checks. Initial firm forms include:
 
 ```text
 -1-
@@ -290,8 +292,12 @@ Page 1
 ```
 
 `F-1`-style markers require contextual opt-in because they can be SEC form
-identifiers. Page spans provide positional evidence and source offsets; they do
-not independently define `COVER_END`.
+identifiers. Page analysis provides positional evidence, accepted namespace
+runs, unresolved candidates, and metadata-only inferred boundaries; inferred
+locations never become removable source spans and page spans do not
+independently define `COVER_END`. Cleanup applies only validated
+`REMOVE`/`NORMALIZE` decisions. TOC, cover, body, and ASCII reflow consumers
+share the same analysis when they operate in its declared source frame.
 
 ### J. Non-Mutating Healing View
 

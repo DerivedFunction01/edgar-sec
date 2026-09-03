@@ -12,8 +12,9 @@ from defs.text.dates import (
 from defs.text.dates import (
     YEAR_TOKEN_RE as SHARED_YEAR_TOKEN_RE,
 )
+from defs.text.patterns import RE_DOT_LEADER
 
-from .tokens import (
+from .numeric_cells import (
     CURRENCY_TOKEN_RE,
     FINANCIAL_PLACEHOLDERS,
     NUMERIC_CELL_RE,
@@ -94,6 +95,12 @@ MILLION_RE = re.compile(
 BILLION_RE = re.compile(rf"(?:{_MULT_PREFIX})\s+billions", re.IGNORECASE)
 UNIT_RE = re.compile(rf"\s*{_UNIT_TERMS}", re.IGNORECASE)
 
+# Single-cell units-qualifier row: ``(dollars in millions)``, ``(in thousands)``.
+UNITS_LABEL_RE = re.compile(
+    rf"^\(\s*(?:dollars\s+)?in\s+(?:{_UNIT_TERMS})\s*\)$",
+    re.IGNORECASE,
+)
+
 from .currencies import PREFIX_SYMBOLS
 
 # Symbol cleaning
@@ -109,8 +116,8 @@ NUMERIC_PERCENT_SPACE_RE = re.compile(
 COMMA_SPACE_RE = re.compile(r",\s+")
 SPACE_COMMA_RE = re.compile(r"\s+,")
 
-# Paragraph masquerading detection
-TABLE_OF_CONTENTS_RE = re.compile(r"\.{3,}")
+# Paragraph masquerading detection: the shared dot-leader core.
+TABLE_OF_CONTENTS_RE = RE_DOT_LEADER
 PARAGRAPH_THRESHOLD = 250
 
 __all__ = [
@@ -140,6 +147,7 @@ __all__ = [
     "TABLE_OF_CONTENTS_RE",
     "TABLE_TAG_RE",
     "THOUSAND_RE",
+    "UNITS_LABEL_RE",
     "UNIT_RE",
     "WHITESPACE_RE",
     "YEAR_IN_HEADER_RE",

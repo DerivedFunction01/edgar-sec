@@ -16,6 +16,7 @@ from .presentation import (
     marked_list_template,
     side_by_side_template,
     sparse_status_matrix_template,
+    titled_period_table_template,
     two_column_prose_template,
     uniform_text_table_template,
 )
@@ -73,6 +74,10 @@ def apply_table_templates(
     res_exhibit = exhibit_index_template(source_grid)
     if res_exhibit:
         return TemplateResult(text=res_exhibit, bypass_guard=True)
+
+    res_titled_period = titled_period_table_template(source_grid)
+    if res_titled_period:
+        return TemplateResult(text=res_titled_period, bypass_guard=False)
 
     # 2. General financial & body table templates (side-by-side, uniform text)
     if typed_scope is not TableScope.TOC:

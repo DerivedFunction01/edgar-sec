@@ -65,6 +65,9 @@ from .tokens import (
 )
 
 __all__ = [
+    "ACTION_PRESERVE",
+    "ACTION_TAG_AND_PRESERVE",
+    "ACTION_UNWRAP",
     "BULLET_MARKERS",
     "BULLET_MARKER_RE",
     "CANONICAL_CHECKED",
@@ -98,6 +101,8 @@ __all__ = [
     "LexicalEvidencePack",
     "ParsedDate",
     "PhraseSequenceRule",
+    "ReflowResult",
+    "SpanDecision",
     "Token",
     "classify_mark_line",
     "compile_evidence_pack",
@@ -112,6 +117,7 @@ __all__ = [
     "parse_date",
     "parse_numeric_year",
     "parse_year_token",
+    "reflow_ascii",
     "score_tokens",
     "score_unit",
     "should_join_two_lines",
@@ -119,3 +125,22 @@ __all__ = [
     "strip_boxdot_spacers",
     "tokenize",
 ]
+
+
+def __getattr__(name: str):
+    """Load the table-dependent reflow API only when it is requested."""
+    reflow_names = {
+        "ACTION_PRESERVE",
+        "ACTION_TAG_AND_PRESERVE",
+        "ACTION_UNWRAP",
+        "ReflowResult",
+        "SpanDecision",
+        "reflow_ascii",
+    }
+    if name in reflow_names:
+        from . import reflow as _reflow
+
+        value = getattr(_reflow, name)
+        globals()[name] = value
+        return value
+    raise AttributeError(f"module {__name__!r} has no attribute {name!r}")

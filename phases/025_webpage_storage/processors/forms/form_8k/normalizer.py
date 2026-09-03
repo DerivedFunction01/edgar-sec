@@ -15,11 +15,14 @@ class Form8KNormalizer(FormNormalizer):
     """Form 8-K normalizer for current-report Section/Item headings."""
 
     def preprocess_cover(
-        self, html_text: str, metadata: dict[str, Any] | None = None
+        self,
+        html_text: str,
+        metadata: dict[str, Any] | None = None,
+        page_analysis=None,
     ) -> CoverPreprocessResult:
         _ = metadata
         return HybridCoverPreprocessor(get_profile("8-K")).preprocess(
-            html_text, metadata=metadata
+            html_text, metadata=metadata, page_analysis=page_analysis
         )
 
     def normalize_headers(

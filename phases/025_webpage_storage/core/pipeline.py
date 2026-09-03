@@ -12,27 +12,19 @@ from typing import Any
 
 from defs.runtime.paths import resolve_paths
 from defs.sql import (
-    Compare,
-    ComparisonOp,
     Select,
     SqlDialect,
     Table,
     col,
     make_sql_executor,
-    param,
 )
 
-from .chunk_worker import ChunkFailure, ChunkResult, process_chunk
+from .chunk_cache import find_completed_chunk_db, try_load_completed_chunk
+from .chunk_persistence import ChunkResult
+from .chunk_worker import process_chunk
 from .fetcher import ArchiveFetcher, make_archive_fetcher
 from .partition_merger import PartitionMergeResult, merge_partition
 from .schemas import (
-    ACQUISITION_FAILURE_COLUMNS,
-    ACQUISITION_FAILURES_TABLE,
-    COMMITTED_CHUNK_COLUMNS,
-    COMMITTED_CHUNKS_TABLE,
-    DOCUMENT_BLOBS_TABLE,
-    FILING_OCCURRENCES_TABLE,
-    CommittedChunk,
     DocumentLocator,
     FilingOccurrence,
     build_occurrence,
@@ -65,88 +57,6 @@ class _ChunkTask:
     chunk: list[DocumentLocator]
     chunk_occurrences: list[FilingOccurrence]
     chunk_path: Path
-
-
-def _find_completed_chunk_db(run_paths, attempt_id: str, chunk_id: str) -> Path | None:
-    matches = sorted(run_paths.workers_root.glob(f"*/{attempt_id}/{chunk_id}.db"))
-    for path in matches:
-        if path.is_file():
-            return path
-    return None
-
-
-def _try_load_completed_chunk(chunk_id: str, chunk_path: Path) -> ChunkResult | None:
-    if not chunk_path.is_file():
-        return None
-    try:
-        executor = make_sql_executor(chunk_path, dialect=SqlDialect.SQLITE)
-        try:
-            audit_row = executor.query_one(
-                executor.compiler.compile(
-                    Select(
-                        source=Table(COMMITTED_CHUNKS_TABLE),
-                        projection=tuple(col(c) for c in COMMITTED_CHUNK_COLUMNS),
-                        where=Compare(
-                            col("chunk_id"), ComparisonOp.EQ, param(chunk_id)
-                        ),
-                    )
-                )
-            )
-            if audit_row is None:
-                return None
-            audit = CommittedChunk.from_row(audit_row)
-            blobs = executor.query(
-                executor.compiler.compile(
-                    Select(
-                        source=Table(DOCUMENT_BLOBS_TABLE),
-                        projection=(col("doc_id"),),
-                    )
-                )
-            )
-            occurrences = executor.query(
-                executor.compiler.compile(
-                    Select(
-                        source=Table(FILING_OCCURRENCES_TABLE),
-                        projection=(col("occurrence_id"),),
-                    )
-                )
-            )
-            failure_rows = executor.query(
-                executor.compiler.compile(
-                    Select(
-                        source=Table(ACQUISITION_FAILURES_TABLE),
-                        projection=tuple(col(c) for c in ACQUISITION_FAILURE_COLUMNS),
-                    )
-                )
-            )
-            failures = tuple(
-                ChunkFailure(
-                    locator=DocumentLocator(
-                        locator_key=str(row["doc_id"]),
-                        accession=str(row["accession"]),
-                        document_path=str(row["document_path"]),
-                        archive_url="",
-                    ),
-                    status=str(row["status"]),
-                    error=str(row["error_message"] or row["status"]),
-                )
-                for row in failure_rows
-            )
-            return ChunkResult(
-                chunk_id=chunk_id,
-                worker_id=audit.worker_id,
-                path=chunk_path,
-                locator_count=len(blobs) + len(failure_rows),
-                fetched_count=len(blobs),
-                occurrence_count=len(occurrences),
-                blob_count=len(blobs),
-                failures=failures,
-                audit=audit,
-            )
-        finally:
-            executor.close()
-    except Exception:  # noqa: BLE001 - corrupted or incomplete chunk dbs are reprocessed
-        return None
 
 
 def _read_parquet_rows(
@@ -330,9 +240,9 @@ def run_partition(
         chunk_id = f"chunk-{chunk_idx + 1:05d}"
 
         # Preflight check for already completed chunk
-        existing_path = _find_completed_chunk_db(run_paths, attempt_id, chunk_id)
+        existing_path = find_completed_chunk_db(run_paths, attempt_id, chunk_id)
         if existing_path is not None:
-            cached = _try_load_completed_chunk(chunk_id, existing_path)
+            cached = try_load_completed_chunk(chunk_id, existing_path, processor)
             if cached is not None:
                 chunk_results[chunk_idx] = cached
                 if progress is not None:

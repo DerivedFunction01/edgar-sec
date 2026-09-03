@@ -20,6 +20,7 @@ def _chunk(path: Path, chunk_id: str, *, duplicate_doc: bool = False) -> None:
         "byte_size": 4,
         "mime_type": schemas.MIME_HTML,
         "raw_payload": b"data",
+        "raw_payload_sha256": "sha256-data",
     }
     occurrence = {
         "occurrence_id": f"occ-{chunk_id}",
@@ -36,6 +37,8 @@ def _chunk(path: Path, chunk_id: str, *, duplicate_doc: bool = False) -> None:
         "record_count": 1,
         "worker_id": "worker-1",
         "committed_at": "2024-01-01 00:00:00",
+        "processor_fingerprint": "raw-only",
+        "normalized_schema_version": 1,
     }
     for table, row in (
         (schemas.DOCUMENT_BLOBS_TABLE, blob),
@@ -55,6 +58,10 @@ def _rows(path: Path, table: str) -> list[dict]:
         columns = schemas.OCCURRENCE_COLUMNS
     elif table == schemas.ACQUISITION_FAILURES_TABLE:
         columns = schemas.ACQUISITION_FAILURE_COLUMNS
+    elif table == schemas.NORMALIZED_DOCUMENTS_TABLE:
+        columns = schemas.NORMALIZED_DOCUMENT_COLUMNS
+    elif table == schemas.NORMALIZATION_FAILURES_TABLE:
+        columns = schemas.NORMALIZATION_FAILURE_COLUMNS
     else:
         columns = schemas.COMMITTED_CHUNK_COLUMNS
     rows = executor.query(
@@ -116,6 +123,8 @@ def test_merge_partition_merges_acquisition_failures(tmp_path: Path) -> None:
         "record_count": 0,
         "worker_id": "worker-1",
         "committed_at": "2024-01-01 00:00:00",
+        "processor_fingerprint": "raw-only",
+        "normalized_schema_version": 1,
     }
     executor.exec(
         executor.compiler.compile(
@@ -134,6 +143,46 @@ def test_merge_partition_merges_acquisition_failures(tmp_path: Path) -> None:
     failures_in_part = _rows(partition, schemas.ACQUISITION_FAILURES_TABLE)
     assert len(failures_in_part) == 1
     assert failures_in_part[0]["doc_id"] == "doc-fail-1"
+
+
+def test_merge_partition_copies_normalization_records(tmp_path: Path) -> None:
+    chunk = tmp_path / "chunk-normalized.db"
+    _chunk(chunk, "chunk-normalized")
+    executor = make_sql_executor(chunk, dialect="sqlite")
+    normalized = {
+        "normalized_artifact_id": "norm-1",
+        "source_doc_id": "doc-chunk-normalized",
+        "byte_size": 3,
+        "normalized_payload": b"out",
+        "payload_sha256": "out-sha",
+        "mime_type": "text/plain",
+        "representation": "normalized-text",
+        "processor_fingerprint": "proc:v1",
+        "schema_version": 1,
+        "processor_metadata": '{"a":1}',
+    }
+    failure = {
+        "source_doc_id": "doc-failure",
+        "processor_fingerprint": "proc:v1",
+        "schema_version": 1,
+        "error_message": "bad input",
+        "attempted_at": "2024-01-01 00:00:00",
+    }
+    executor.exec(
+        executor.compiler.compile(
+            insert_values(schemas.NORMALIZED_DOCUMENTS_TABLE, normalized)
+        )
+    )
+    executor.exec(
+        executor.compiler.compile(
+            insert_values(schemas.NORMALIZATION_FAILURES_TABLE, failure)
+        )
+    )
+    executor.backend.connection.commit()
+    executor.close()
+    result = merger.merge_partition(tmp_path / "partition.db", [chunk])
+    assert result.normalized_rows == 1
+    assert result.normalization_failure_rows == 1
 
 
 def test_merge_partition_batches_large_chunk_count(tmp_path: Path) -> None:

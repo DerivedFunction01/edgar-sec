@@ -48,6 +48,11 @@ def resolve_document_topology(
         raw_text,
         start_line=cover_start.start_line or 0,
         derived_taxonomy=derived_taxonomy,
+        page_analysis=(
+            boundary_input.page_analysis
+            if isinstance(boundary_input, BoundaryInput)
+            else None
+        ),
     )
 
     evidence: list[BoundaryEvidence] = list(cover_boundary.evidence)

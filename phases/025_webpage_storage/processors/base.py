@@ -19,6 +19,8 @@ class ProcessedDocument:
     byte_size: int
     mime_type: str
     metadata: dict[str, object] = field(default_factory=dict)
+    processor_fingerprint: str = "custom:unspecified"
+    representation: str = "application/octet-stream"
 
 
 @runtime_checkable
@@ -44,6 +46,8 @@ class NoOpDocumentProcessor:
             byte_size=len(raw_bytes),
             mime_type=detect_mime(locator.document_path),
             metadata={},
+            processor_fingerprint="raw-pass-through",
+            representation="raw",
         )
 
 

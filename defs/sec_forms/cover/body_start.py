@@ -13,6 +13,8 @@ stay upstream; their boundary results are consumed, never reimplemented.
 
 from __future__ import annotations
 
+import re
+
 from defs.sec_forms.cover.body_context import (
     collect_cover_vocab,
     compile_body_lexical,
@@ -42,6 +44,7 @@ _BODY_START_SEARCH_WINDOW = 300
 _HEADING_PROSE_WINDOW = 25
 # Minimum lexical score to accept a substantive body start.
 _MIN_BODY_SCORE = 2
+_WHITESPACE_RE = re.compile(r"\s+")
 
 
 def _next_nonblank_line(lines: list[str], start: int) -> tuple[int, str] | None:
@@ -403,6 +406,10 @@ def _scan_semantic_anchor(
         return None
 
     lowered_headings = [heading.lower() for heading in semantic_headings]
+    normalized_headings = [
+        _WHITESPACE_RE.sub(" ", heading.replace("-", " "))
+        for heading in lowered_headings
+    ]
     for unit in units:
         if unit.start_line < lower_bound:
             continue
@@ -413,7 +420,11 @@ def _scan_semantic_anchor(
         if unit_in_toc(unit, toc_span):
             continue
         text_lower = unit.text.lower()
-        if any(heading in text_lower for heading in lowered_headings):
+        text_normalized = _WHITESPACE_RE.sub(" ", text_lower)
+        if any(
+            heading in text_lower or heading in text_normalized
+            for heading in lowered_headings + normalized_headings
+        ):
             context = unit_context(unit, toc_span, prefix_vocab)
             bow_score = score_unit(unit.text, compiled, context)
             if bow_score.score >= _MIN_BODY_SCORE:

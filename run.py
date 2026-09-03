@@ -8,6 +8,7 @@ Direct dispatch (all flags after the id pass through to the target module):
 
     python run.py viewer --port 8501
     python run.py metadata
+    python run.py append --plan-dir <expanded-plan> --fixture-id <fixture-id>
     python run.py --list
 
 The dispatcher owns no phase behavior: it resolves an entry, patches

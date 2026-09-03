@@ -69,6 +69,7 @@ class FixtureArchiveFetcher:
                 col("byte_size"),
                 col("mime_type"),
                 col("raw_payload"),
+                col("raw_payload_sha256"),
             ),
             where=Compare(col("doc_id"), ComparisonOp.EQ, param(expected_doc_id)),
             limit=1,

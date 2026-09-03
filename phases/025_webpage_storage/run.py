@@ -84,8 +84,17 @@ def _usage() -> str:
         "usage: python run.py webpage-storage            interactive menu\n"
         "       python run.py webpage-storage run --plan-dir <p> --mode fixture\n"
         "       python run.py webpage-storage preview --plan-dir <p>\n"
+        "       python run.py webpage-storage append --plan-dir <p> --fixture-id <id>\n"
         "       python run.py webpage-storage status --database <path>"
     )
+
+
+def append_fixture(argv: list[str] | None = None) -> int:
+    """Convenience wrapper that forwards append requests to ``fill-fixture``."""
+    args = list(sys.argv[1:] if argv is None else argv)
+    if not args or args[0] != "fill-fixture":
+        args = ["fill-fixture", *args]
+    return cli_main(args)
 
 
 def interactive_menu() -> int:
@@ -97,7 +106,8 @@ def interactive_menu() -> int:
         print("  2. Run acquisition (fixture mode)")
         print("  3. Run acquisition (production mode - live SEC)")
         print("  4. Fill / update offline fixture from live SEC")
-        print("  5. Show status")
+        print("  5. Append fixture cache")
+        print("  6. Show status")
         print("  0. Exit")
         choice = _read("\nChoice [0]: ", "0")
         if choice == "0":
@@ -153,6 +163,28 @@ def interactive_menu() -> int:
                     cmd.extend(["--limit", limit])
                 cli_main(cmd)
         elif choice == "5":
+            plan_dir = _select_target_plan()
+            if plan_dir:
+                def_fix_id = f"fix-{Path(plan_dir).name[:8]}"
+                fixture_id = _read(f"  Fixture ID [{def_fix_id}]: ", def_fix_id)
+                workers = _read(f"  Workers [{default_workers}]: ", default_workers)
+                limit = _read("  Limit (blank for all): ", "")
+                retry = _read("  Retry previous failures? [y/N]: ", "N")
+                cmd = [
+                    "fill-fixture",
+                    "--plan-dir",
+                    plan_dir,
+                    "--fixture-id",
+                    fixture_id,
+                    "--workers",
+                    workers,
+                ]
+                if limit:
+                    cmd.extend(["--limit", limit])
+                if retry.lower() in ("y", "yes"):
+                    cmd.append("--retry-failures")
+                append_fixture(cmd)
+        elif choice == "6":
             def_db = _default_partition_db()
             prompt = f"  Database path [{def_db}]: " if def_db else "  Database path: "
             database = _read(prompt, def_db)
@@ -169,6 +201,8 @@ def main(argv: list[str] | None = None) -> int:
     if argv and argv[0] in ("-h", "--help"):
         print(_usage())
         return 0
+    if argv and argv[0] == "append":
+        return append_fixture(argv[1:])
     if not argv:
         try:
             return interactive_menu()

@@ -17,6 +17,7 @@ import builtins
 import json
 import logging
 import sys
+from contextlib import suppress
 from pathlib import Path
 
 from tqdm import tqdm
@@ -30,7 +31,7 @@ from .cli import main as cli_main
 from .core import config as phase_config
 from .core import discovery
 from .core.materialize import materialize
-from .core.target_plan import plan
+from .core.target_plan import expand, plan
 
 log = logging.getLogger("filing_extraction.run")
 
@@ -329,12 +330,99 @@ def _menu_status() -> None:
     print(json.dumps(discovery.status(), indent=2, sort_keys=True))
 
 
+def _select_parent_plan() -> str | None:
+    """Auto-discover published target plans or prompt for a path."""
+    plans = []
+    with suppress(ImportError, OSError, ValueError):
+        plans = discovery.discover_plans()
+
+    if not plans:
+        raw = _read("Parent plan directory: ")
+        return raw or None
+
+    if len(plans) == 1:
+        plan = plans[0]
+        locs = (
+            plan.get("unique_locators_count") or plan.get("active_targets_count") or "?"
+        )
+        print(f"  Parent plan: {plan['plan_id']} ({locs} locators) -> {plan['path']}")
+        raw = _read(f"  Plan directory [{plan['path']}]: ", plan["path"])
+        return raw
+
+    print("  Discovered target plans:")
+    for idx, plan in enumerate(plans, start=1):
+        locs = (
+            plan.get("unique_locators_count") or plan.get("active_targets_count") or "?"
+        )
+        print(f"    {idx}. {plan['plan_id']} ({locs} locators)")
+
+    choice = _read(f"  Select plan [1-{len(plans)}] [1]: ", "1")
+    try:
+        idx = int(choice) - 1
+        if 0 <= idx < len(plans):
+            return plans[idx]["path"]
+    except ValueError:
+        pass
+    return plans[0]["path"]
+
+
+def _menu_expand() -> None:
+    parent_plan = _select_parent_plan()
+    if not parent_plan:
+        return
+
+    target_units_raw = _read("Target units (total unique locators): ")
+    if not target_units_raw:
+        print("  target units is required")
+        return
+    try:
+        target_units = int(target_units_raw)
+    except ValueError:
+        print(f"  invalid integer: {target_units_raw!r}")
+        return
+
+    default_policy = str(
+        resolve_paths("filing_extraction").phase_root / "selection_policy.json"
+    )
+    policy_path = (
+        _read(f"Selection policy JSON [{default_policy}]: ", default_policy)
+        or default_policy
+    )
+    if not Path(policy_path).is_file():
+        print(f"  selection policy file not found: {policy_path}")
+        return
+
+    seed_cik = _read("Seed CIK file (blank for none): ", "")
+    output_root = _read(f"Output root [{_default_runs_root()}]: ", _default_runs_root())
+
+    bar = _StageBar("expand plan")
+    try:
+        result = expand(
+            parent_plan=parent_plan,
+            target_units=target_units,
+            selection_policy_path=policy_path,
+            seed_cik_path=seed_cik or None,
+            output_root=output_root or None,
+            progress=bar,
+        )
+    except KeyboardInterrupt:
+        print("\n  interrupted; no child plan was published")
+        return
+    except (ValueError, FileNotFoundError, StorageError) as exc:
+        print(f"  error: {exc}")
+        return
+    finally:
+        bar.close()
+    print(json.dumps(result, indent=2, sort_keys=True))
+
+
 def interactive_menu() -> int:
     while True:
         print("\nPhase 02: Filing Catalog (no-network materialize and plan)")
         print("  1. Materialize catalog")
         print("  2. Plan filing targets")
-        print("  3. Show status")
+        print("  3. Expand plan (child plan with additional locators)")
+        print("  4. Show status")
         print("  0. Exit")
         choice = _prompt("\nChoice [0]: ", "0")
         if choice == "0":
@@ -344,6 +432,8 @@ def interactive_menu() -> int:
         elif choice == "2":
             _menu_plan()
         elif choice == "3":
+            _menu_expand()
+        elif choice == "4":
             _menu_status()
         else:
             print("  unknown choice")
@@ -354,6 +444,7 @@ def _usage() -> str:
         "usage: python run.py filing-catalog            interactive menu\n"
         "       python run.py filing-catalog materialize --source-manifest <m>\n"
         "       python run.py filing-catalog plan --catalog <dir>\n"
+        "       python run.py filing-catalog expand --parent-plan <dir> --target-units <n>\n"
         "       python run.py filing-catalog status"
     )
 

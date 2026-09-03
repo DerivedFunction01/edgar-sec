@@ -11,7 +11,7 @@ import re
 from typing import Any
 
 from defs.regex import build_alternation
-from defs.sec_forms.page_markers import analyze_page_markers
+from defs.sec_forms.page_markers import analyze_page_markers, extract_ascii_pre
 
 from .forms.base import PreprocessedDocument
 
@@ -88,14 +88,23 @@ class GenericPreprocessor:
         m_doc = _RE_DOCUMENT_WRAPPER.match(raw_text.strip())
         content_text = m_doc.group(1) if m_doc else raw_text
 
-        # Robust HTML discrimination (never matches pure SEC ASCII <TABLE><S><C>)
-        has_html = bool(_RE_HTML_DISCRIMINATOR.search(content_text))
-
         # Strip non-displaying script and style blocks
         clean = _RE_HEAD_SCRIPT_STYLE.sub(" ", content_text)
 
         # Unescape standard HTML and XML entities (&nbsp;, &amp;, &#160;, etc.)
         clean = html.unescape(clean)
+
+        ascii_pre = extract_ascii_pre(clean)
+        # Wrapper-only HTML/PRE documents are legacy ASCII payloads. The
+        # extension and outer HTML tags are transport details, not routing
+        # evidence. Real visible HTML remains on the HTML path.
+        has_html = bool(_RE_HTML_DISCRIMINATOR.search(clean)) and ascii_pre is None
+        if ascii_pre is not None:
+            clean = ascii_pre
+            meta["ascii_pre_wrapper"] = True
+            meta["representation"] = "ascii"
+        else:
+            meta["representation"] = "html" if has_html else "ascii"
 
         # Compute preliminary word count
         words = clean.split()
@@ -114,4 +123,5 @@ class GenericPreprocessor:
             detected_encoding=encoding,
             metadata=meta,
             page_analysis=page_analysis,
+            representation="html" if has_html else "ascii",
         )

@@ -264,7 +264,7 @@ def test_main_help_returns_zero() -> None:
 
 
 def test_interactive_menu_status_then_exit(monkeypatch, capsys) -> None:
-    responses = iter(["3", "0"])
+    responses = iter(["4", "0"])
     monkeypatch.setattr(builtins, "input", lambda *a, **k: next(responses))
     monkeypatch.setattr(
         discovery, "status", lambda *a, **k: {"catalogs": [], "plans": []}

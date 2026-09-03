@@ -20,6 +20,7 @@ from .patterns import (
     HIDDEN_ELEMENT_STYLE_RE,
     NUMERIC_PERCENT_SPACE_RE,
     PAREN_SPACES_RE,
+    UNITS_LABEL_RE,
     YEAR_TOKEN_RE,
 )
 from .templates import (
@@ -35,9 +36,6 @@ from .tokens import is_numeric_cell
 
 _BORDER_PROPERTY_RE = re.compile(r"(?:^|;)border-(top|bottom):([^;]*)", re.IGNORECASE)
 _TOTAL_LABEL_RE = re.compile(r"\b(?:sub)?total\b", re.IGNORECASE)
-_UNITS_LABEL_RE = re.compile(r"^\((?:dollars\s+in|in)\b[^)]*\)$", re.IGNORECASE)
-
-
 def _has_border(cell: object, side: str) -> bool:
     """Return whether an inline border declaration exists for a cell side."""
     style = re.sub(r"\s+", "", cell.get("style", ""))
@@ -125,7 +123,8 @@ def _toc_starts_with_part_heading(
     )
     values = [value.strip() for value in first_row if value.strip()]
     return (
-        len(values) == 1
+        len(values) <= 2
+        and (len(values) == 1 or values[1].casefold() in {"page", "pages"})
         and toc_part_headings_are_body_rows(source_grid, is_toc=scope is TableScope.TOC)
         and bool(PART_HEADING_RE.fullmatch(values[0]))
     )
@@ -284,7 +283,7 @@ def _heal_grid(
         values = [cell.strip() for cell in rows[i] if cell.strip()]
         next_values = [cell.strip() for cell in rows[i + 1] if cell.strip()]
         previous_values = [cell.strip() for cell in rows[i - 1] if cell.strip()]
-        if len(values) == 1 and _UNITS_LABEL_RE.fullmatch(values[0]):
+        if len(values) == 1 and UNITS_LABEL_RE.fullmatch(values[0]):
             header_count = i + 1
             break
         if len(values) <= 1 and len(next_values) <= 1 and len(previous_values) > 1:

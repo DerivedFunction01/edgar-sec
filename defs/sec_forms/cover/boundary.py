@@ -29,7 +29,7 @@ from defs.sec_forms.cover.structure import (
     match_structural_line,
 )
 from defs.sec_forms.cover.toc import RE_TOC_HEADING, find_toc_span
-from defs.sec_forms.page_markers import find_page_markers
+from defs.sec_forms.page_markers import PageMarkerKind, find_page_markers
 
 
 def _prev_nonblank_line(lines: list[str], start_line: int) -> tuple[int, str] | None:
@@ -177,8 +177,25 @@ def find_cover_boundary(
 
     identity_count = 0
     first_page: int | None = None
-    page_markers = find_page_markers(text)
-    page_lines = {text.count("\n", 0, marker.start) for marker in page_markers}
+    page_analysis = getattr(boundary_input, "page_analysis", None)
+    page_markers = (
+        page_analysis.markers if page_analysis is not None else find_page_markers(text)
+    )
+    page_markers = tuple(
+        marker
+        for marker in page_markers
+        if marker.kind
+        not in {
+            PageMarkerKind.REPEATING_HEADER,
+            PageMarkerKind.REPEATING_FOOTER,
+        }
+    )
+    page_lines = {
+        getattr(marker, "start_line", None)
+        if getattr(marker, "start_line", None) is not None
+        else text.count("\n", 0, marker.start)
+        for marker in page_markers
+    }
     # Page markers can precede the cover cluster (e.g. <PAGE> at line 0), so
     # detect them from the document start rather than from scan_start.
     for index, line in enumerate(lines[:search_limit]):
@@ -218,6 +235,7 @@ def find_cover_boundary(
             text,
             start_line=scan_start,
             max_lines=search_limit,
+            page_analysis=page_analysis,
         )
         if toc is not None and identity_count >= 2 and not toc.approximate:
             evidence.extend(

@@ -10,13 +10,31 @@ from defs.sec_forms.forms.annual.vocabulary import (
     PUBLIC_FLOAT_PHRASES,
     SHARES_PHRASES,
 )
-from defs.text import EvidenceTier, LexicalEvidencePack, PhraseSequenceRule
+from defs.text import CaseMode, EvidenceTier, LexicalEvidencePack, PhraseSequenceRule
 
-# High-confidence annual body phrases: one distinct phrase hit is decisive.
+# Decisive annual body phrases: one distinct phrase hit confirms body prose.
+# Membership requires zero observed cover-only false positives in the corpus
+# probe; phrases with any cover collision belong in ANNUAL_BODY_SOFT_PHRASES.
 ANNUAL_BODY_PHRASES: tuple[str, ...] = (
     "collective bargaining",
     "labor union",
     "market segments",
+    "management believes",
+    "future cash flows",
+    "assumptions and estimates",
+)
+
+# Corroborating body phrases with observed cover-prefix collision (cover quotes
+# of forward-looking boilerplate, TOC/notice text). One hit contributes support
+# evidence (additive value 1) and can confirm body start only alongside other
+# word evidence; a soft phrase alone never clears the decision threshold.
+ANNUAL_BODY_SOFT_PHRASES: tuple[str, ...] = (
+    "safe harbor",
+    "cautionary statements",
+    "undue reliance",
+    "statements include",
+    "future performance",
+    "unless the context",
 )
 
 # Curated high-confidence early-body unigrams. Two distinct terms clear the
@@ -80,6 +98,58 @@ ANNUAL_BODY_WEAK_TERMS: tuple[str, ...] = (
     "network",
 )
 
+# Forward-looking vocabulary from the combined BoW classifier.
+# "may" must be lowercase to avoid matching the month name "May".
+# "future" is intentionally absent: the fold-mode "future performance" phrase
+# now owns that token shape, and case modes cannot share a token per pack.
+ANNUAL_BODY_FORWARD_TERMS: tuple[str, ...] = (
+    "forward",
+    "looking",
+    "actual",
+    "results",
+    "materially",
+    "risks",
+    "differ",
+    "uncertainties",
+    "believe",
+    "expect",
+    "anticipate",
+    "estimate",
+    "intend",
+    "following",
+    "certain",
+    "may",
+)
+
+# ITEM 1 header text vocabulary from the combined BoW classifier.
+ANNUAL_BODY_HEADER_TERMS: tuple[str, ...] = (
+    "business",
+    "description",
+    "operations",
+    "general",
+    "overview",
+)
+
+ANNUAL_BODY_HEADER_PHRASES: tuple[str, ...] = ("our company",)
+
+# General body-leaning vocabulary from the combined BoW classifier.
+ANNUAL_BODY_GENERAL_TERMS: tuple[str, ...] = (
+    "continue",
+    "include",
+    "their",
+    "regarding",
+    "could",
+    "should",
+    "plan",
+    "had",
+    "have",
+    "approximately",
+    "were",
+    "are",
+    "each",
+    "which",
+)
+
 # Cover/form-leaning terms recorded as exclusions. They are reported on the
 # score result and never reduce or veto a lexical score by themselves.
 ANNUAL_COVER_EXCLUSION_TERMS: tuple[str, ...] = (
@@ -126,6 +196,48 @@ ANNUAL_BODY_LEXICAL_PACK = LexicalEvidencePack(
             priority=20,
             value=2,
             terms=ANNUAL_BODY_STRONG_TERMS,
+            match_kind="unigram",
+            min_distinct_hits=2,
+        ),
+        EvidenceTier(
+            name="body_forward",
+            priority=20,
+            value=2,
+            terms=ANNUAL_BODY_FORWARD_TERMS,
+            match_kind="unigram",
+            case_mode=CaseMode.LOWERCASE,
+            min_distinct_hits=2,
+        ),
+        EvidenceTier(
+            name="body_header",
+            priority=20,
+            value=2,
+            terms=ANNUAL_BODY_HEADER_TERMS,
+            match_kind="unigram",
+            min_distinct_hits=2,
+        ),
+        EvidenceTier(
+            name="body_header_phrase",
+            priority=20,
+            value=2,
+            terms=ANNUAL_BODY_HEADER_PHRASES,
+            match_kind="ngram",
+            min_distinct_hits=1,
+        ),
+        EvidenceTier(
+            name="body_phrase_soft",
+            priority=15,
+            value=1,
+            terms=ANNUAL_BODY_SOFT_PHRASES,
+            match_kind="ngram",
+            min_distinct_hits=1,
+            support=True,
+        ),
+        EvidenceTier(
+            name="body_general",
+            priority=10,
+            value=1,
+            terms=ANNUAL_BODY_GENERAL_TERMS,
             match_kind="unigram",
             min_distinct_hits=2,
         ),
@@ -178,10 +290,18 @@ class AnnualReportEvidence:
     )
     cover_terms: tuple[str, ...] = ANNUAL_COVER_EXCLUSION_TERMS
     body_lexical: LexicalEvidencePack = ANNUAL_BODY_LEXICAL_PACK
+    forward_terms: tuple[str, ...] = ANNUAL_BODY_FORWARD_TERMS
+    header_terms: tuple[str, ...] = ANNUAL_BODY_HEADER_TERMS
+    header_phrases: tuple[str, ...] = ANNUAL_BODY_HEADER_PHRASES
+    soft_phrases: tuple[str, ...] = ANNUAL_BODY_SOFT_PHRASES
+    general_terms: tuple[str, ...] = ANNUAL_BODY_GENERAL_TERMS
     semantic_headings: tuple[str, ...] = (
         "management's discussion and analysis",
         "risk factors",
         "forward-looking statements",
+        "forward looking statements",
+        "forward looking information",
+        "forward-looking information",
         "safe harbor",
         "quantitative and qualitative disclosures",
         "properties",
@@ -203,8 +323,13 @@ class AnnualReportEvidence:
 
 
 __all__ = [
+    "ANNUAL_BODY_FORWARD_TERMS",
+    "ANNUAL_BODY_GENERAL_TERMS",
+    "ANNUAL_BODY_HEADER_PHRASES",
+    "ANNUAL_BODY_HEADER_TERMS",
     "ANNUAL_BODY_LEXICAL_PACK",
     "ANNUAL_BODY_PHRASES",
+    "ANNUAL_BODY_SOFT_PHRASES",
     "ANNUAL_BODY_STRONG_TERMS",
     "ANNUAL_BODY_VERBS",
     "ANNUAL_BODY_WEAK_TERMS",

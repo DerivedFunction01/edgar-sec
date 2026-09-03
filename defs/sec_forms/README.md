@@ -11,7 +11,15 @@ defs/sec_forms/
   __init__.py              # Root public exports (clean vocabulary, models, taxonomy, markers)
   vocabulary.py            # Universal vocabulary, shared cover labels, filer terms, and contact regexes
   models.py                # Frozen dataclasses for cover-page semantic models (CoverPageModel, etc.)
-  page_markers.py          # Pre-soup line-oriented and inline page marker detection and analysis
+  page_markers/            # Coordinate-safe ASCII page-marker analysis package
+    __init__.py             # Stable public API re-exports
+    models.py               # Marker, candidate, run, evidence, and terminal-state models
+    ascii.py                # ASCII/SGML orchestration and validated cleanup
+    html.py                 # Visible DOM markers, PRE discrimination, and DOM cleanup
+    candidates.py           # Firm patterns, contextual candidates, and promotion
+    sequence.py             # Namespace-aware validation, healing, and inference
+    headers.py              # Repeated header/footer evidence
+    layout.py               # Alignment, spacing, and table-shape guards
   sequences.py             # Shared phrase-sequence healing rules for common cover captions
   concepts.py              # ConceptPattern for dual regex/BoW semantic matching
   families.py              # Canonical form-family alias registry and cover profile mapping
@@ -55,8 +63,14 @@ defs/sec_forms/
 - **`models.py`** — Shared immutable domain dataclasses:
   - `Security12b`, `RegistrantEntry`, `CheckboxDisclosures`, `CoverPageModel`.
 
-- **`page_markers.py`** — Universal page marker detection, classification, and stripping:
-  - `analyze_page_markers()`, `strip_page_markers()`, `find_page_markers()`.
+- **`page_markers/`** — Universal page-marker analysis, classification, and stripping.
+  - Firm SGML/footer forms remain compatible with the original public API.
+  - Contextual ASCII candidates are promoted only through namespace-aware
+    sequence, layout, TOC, prose, and financial/table exclusion evidence.
+  - `PageMarkerAnalysis` retains source line ranges, accepted runs, unresolved
+    candidates, inferred (metadata-only) boundaries, and terminal states.
+  - `analyze_page_markers()`, `strip_page_markers()`, and `find_page_markers()`
+    remain available from `defs.sec_forms.page_markers`.
 
 - **`concepts.py`** — `ConceptPattern` dataclass for regex/BoW dual matching.
 

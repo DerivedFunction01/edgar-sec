@@ -75,6 +75,9 @@ environment → machine-derived value.
 .venv/bin/python -m phases.02_filing_extraction.cli materialize \
   --source-manifest .artifacts/manifests/metadata/submission_metadata/final/<artifact-id>.json
 .venv/bin/python -m phases.02_filing_extraction.cli plan --catalog <catalog-id-or-final-manifest-directory>
+.venv/bin/python -m phases.02_filing_extraction.cli expand \
+  --parent-plan <fixture-plan-directory> --target-units 10000 \
+  --selection-policy <selection-policy.json>
 .venv/bin/python -m phases.02_filing_extraction.cli status
 ```
 
@@ -105,6 +108,14 @@ failure and are never included in artifact bundles. Published outputs are
 `manifests/filing_extraction/company_profiles/final/company_profiles.parquet`,
 `manifests/filing_extraction/filing_occurrence_sources/final/filing_occurrence_sources.parquet`,
 and `manifests/filing_extraction/filing_targets/final/form=<key>/data.parquet`.
+
+Fixture-scope plans can be expanded without rerunning Phase 01 or fetching SEC
+documents. `expand` creates a new immutable child plan, preserves every parent
+locator, and adds locators until the absolute `--target-units` count is met.
+The count is for unique document locators; occurrence fan-out is reported
+separately. Plans generated after this feature include the effective policy
+snapshot and parent identity; legacy plans can be expanded when the compatible
+policy is supplied.
 
 ## Scope boundary: Phase 02 vs Phase 2.5
 
@@ -169,9 +180,28 @@ Finalized Phase 01 Artifact (submission_metadata.parquet)
 
 ---
 
-## Expanding Fixtures and Sample Datasets (e.g. 500 → 1,000 Records)
+## Expanding Fixtures and Sample Datasets (e.g. 5,000 → 10,000 Locators)
 
-When expanding structural test fixtures or sample acceptance runs from 500 to 1,000 records:
+For an existing fixture-scope selection, retain the original plan and expand it:
+
+```bash
+.venv/bin/python -m phases.02_filing_extraction.cli expand \
+  --parent-plan <plan-5000> --target-units 10000 \
+  --selection-policy <selection-policy.json>
+```
+
+Then reuse the same Phase 2.5 fixture ID; only missing documents are fetched:
+
+```bash
+.venv/bin/python -m phases.025_webpage_storage.cli fill-fixture \
+  --plan-dir <plan-10000> --fixture-id <same-fixture-id>
+```
+
+Use `--retry-failures` on `fill-fixture` to retry prior acquisition failures.
+The fixture sidecar records plan lineage at
+`.artifacts/fixtures/<fixture-id>/fixture.manifest.json`.
+
+When expanding the underlying structural sample itself from 500 to 1,000 CIKs:
 
 1. **Define the Target CIK / Record List**:
    - Prepare the expanded 1,000-CIK manifest (e.g. `phases/01_metadata_extraction/tests/fixtures/samples/sample_1000_ciks.json` or sample CSV) with deterministic CIK ordering and input fingerprinting.

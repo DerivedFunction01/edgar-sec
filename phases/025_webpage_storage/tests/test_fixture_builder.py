@@ -181,7 +181,7 @@ def test_cli_fill_fixture_command(
 
 def test_fill_fixture_concurrent_workers_overlap(tmp_path: Path):
     bundle = _build_multi_doc_bundle(tmp_path / "plan", count=5)
-    fixture_id = f"overlap-{uuid.uuid4().hex[:8]}"
+    fixture_id = f"test-overlap-{uuid.uuid4().hex[:8]}"
     num_workers = 4
     client = BarrierHttpClient(_payload_urls(count=5), num_workers)
 
@@ -200,7 +200,7 @@ def test_fill_fixture_concurrent_workers_overlap(tmp_path: Path):
 
 def test_fill_fixture_worker_one_is_serial(tmp_path: Path):
     bundle = _build_multi_doc_bundle(tmp_path / "plan", count=3)
-    fixture_id = f"serial-{uuid.uuid4().hex[:8]}"
+    fixture_id = f"test-serial-{uuid.uuid4().hex[:8]}"
     client = BarrierHttpClient(_payload_urls(count=3), 1)
 
     result = fixture_builder.fill_fixture(
@@ -222,15 +222,78 @@ def test_fill_fixture_rejects_invalid_workers(tmp_path: Path):
     with pytest.raises(ValueError):
         fixture_builder.fill_fixture(
             bundle,
-            fixture_id=f"bad-{uuid.uuid4().hex[:8]}",
+            fixture_id=f"test-bad-{uuid.uuid4().hex[:8]}",
             http_client=fake_client,
             workers=0,
         )
 
 
+def test_fill_fixture_appends_to_completed_cache(tmp_path: Path):
+    first_bundle = _build_multi_doc_bundle(tmp_path / "plan-first", count=2)
+    expanded_bundle = _build_multi_doc_bundle(tmp_path / "plan-expanded", count=4)
+    fixture_id = f"test-append-{uuid.uuid4().hex[:8]}"
+    payloads = _payload_urls(count=4)
+
+    first = fixture_builder.fill_fixture(
+        first_bundle,
+        fixture_id=fixture_id,
+        http_client=FakeHttpClient({key: payloads[key] for key in list(payloads)[:2]}),
+        workers=1,
+    )
+    assert first["newly_fetched"] == 2
+    assert first["total_persisted"] == 2
+
+    second_client = TrackingHttpClient(payloads)
+    second = fixture_builder.fill_fixture(
+        expanded_bundle,
+        fixture_id=fixture_id,
+        http_client=second_client,
+        workers=1,
+    )
+    assert second["newly_fetched"] == 2
+    assert second["cached_count"] == 2
+    assert second["total_persisted"] == 4
+    assert second_client.calls == list(payloads)[2:]
+
+    manifest = json.loads(
+        resolve_paths()
+        .fixture(fixture_id, dialect="sqlite")
+        .manifest_path.read_text(encoding="utf-8")
+    )
+    assert len(manifest["plan_history"]) == 2
+    assert manifest["blob_count"] == 4
+
+
+def test_fill_fixture_retries_failures_explicitly(tmp_path: Path):
+    bundle = _build_multi_doc_bundle(tmp_path / "plan", count=1)
+    fixture_id = f"test-retry-{uuid.uuid4().hex[:8]}"
+    url = next(iter(_payload_urls(count=1)))
+
+    first = fixture_builder.fill_fixture(
+        bundle,
+        fixture_id=fixture_id,
+        http_client=FakeHttpClient({}),
+        workers=1,
+    )
+    assert first["failed_count"] == 1
+
+    client = TrackingHttpClient({url: b"recovered"})
+    second = fixture_builder.fill_fixture(
+        bundle,
+        fixture_id=fixture_id,
+        http_client=client,
+        workers=1,
+        retry_failures=True,
+    )
+    assert second["retried_count"] == 1
+    assert second["newly_fetched"] == 1
+    assert second["failed_count"] == 0
+    assert client.calls == [url]
+
+
 def test_fill_fixture_resume_does_not_refetch(tmp_path: Path):
     bundle = _build_multi_doc_bundle(tmp_path / "plan", count=3)
-    fixture_id = f"resume-{uuid.uuid4().hex[:8]}"
+    fixture_id = f"test-resume-{uuid.uuid4().hex[:8]}"
 
     # First pass: only one document is available.
     first_urls = {next(iter(_payload_urls(count=3)))}

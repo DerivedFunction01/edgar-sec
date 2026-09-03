@@ -15,12 +15,18 @@ class Form10KNormalizer(FormNormalizer):
     """Form 10-K normalizer for cover metadata and structural headings."""
 
     def preprocess_cover(
-        self, html_text: str, metadata: dict[str, Any] | None = None
+        self,
+        html_text: str,
+        metadata: dict[str, Any] | None = None,
+        page_analysis=None,
     ) -> CoverPreprocessResult:
         meta = metadata or {}
         company_name = meta.get("company_name") or meta.get("input_name") or ""
         return HybridCoverPreprocessor(get_profile("10-K")).preprocess(
-            html_text, company_name=company_name, metadata=meta
+            html_text,
+            company_name=company_name,
+            metadata=meta,
+            page_analysis=page_analysis,
         )
 
     def normalize_headers(

@@ -37,6 +37,11 @@ class EvidenceTier:
     decision strength of a satisfied tier (1, 2, or 3).
     ``min_distinct_hits`` counts distinct matched terms, not occurrences.
     ``case_mode`` selects how terms match source tokens.
+    ``support`` marks corroborating evidence: a satisfied support tier adds
+    its value to the score additively instead of setting it, so it can push
+    a unit over the decision threshold only alongside other evidence.
+    Support tiers must use ``value=1`` so support evidence alone can never
+    confirm a decision.
     """
 
     name: str
@@ -46,10 +51,13 @@ class EvidenceTier:
     match_kind: str = "unigram"
     min_distinct_hits: int = 1
     case_mode: CaseMode = CaseMode.FOLD
+    support: bool = False
 
     def __post_init__(self) -> None:
         if self.value not in _TIER_VALUES:
             raise ValueError(f"tier value must be one of {_TIER_VALUES}: {self.value}")
+        if self.support and self.value != 1:
+            raise ValueError("support tiers must use value=1")
         if self.match_kind not in _MATCH_KINDS:
             raise ValueError(
                 f"tier match_kind must be one of {_MATCH_KINDS}: {self.match_kind}"
@@ -110,7 +118,13 @@ class EvidenceHit:
 
 @dataclass(frozen=True, slots=True)
 class BowScore:
-    """Result of lexical evidence scoring for one unit."""
+    """Result of lexical evidence scoring for one unit.
+
+    ``score`` is the capped decision score (0-3). ``support_score`` records
+    the raw additive contribution of satisfied support tiers that was folded
+    into ``score``; it is diagnostic and never exceeds the support tiers'
+    own values.
+    """
 
     score: int
     classification: str
@@ -121,6 +135,7 @@ class BowScore:
     evaluated_tiers: tuple[str, ...] = ()
     short_circuited: bool = False
     novel_count: int = 0
+    support_score: int = 0
     reason: str = ""
 
 
@@ -219,6 +234,7 @@ def _build_compiled_tier(tier: EvidenceTier) -> CompiledTier:
             match_kind=tier.match_kind,
             min_distinct_hits=tier.min_distinct_hits,
             case_mode=tier.case_mode,
+            support=tier.support,
             unigrams=frozenset(unigrams),
         )
     index: dict[int, set[tuple[str, ...]]] = {}
@@ -234,6 +250,7 @@ def _build_compiled_tier(tier: EvidenceTier) -> CompiledTier:
         match_kind=tier.match_kind,
         min_distinct_hits=tier.min_distinct_hits,
         case_mode=tier.case_mode,
+        support=tier.support,
         ngram_index={
             length: frozenset(phrases) for length, phrases in sorted(index.items())
         },
@@ -305,6 +322,8 @@ def score_tokens(
     evaluated: list[str] = []
     satisfied: list[str] = []
     score = 0
+    support_score = 0
+    support_confidence = 0.0
     confidence = 0.0
     partial_strong = False
     short_circuited = False
@@ -351,18 +370,27 @@ def score_tokens(
 
         if distinct >= tier.min_distinct_hits:
             satisfied.append(tier.name)
-            if tier.value > score:
-                score = tier.value
-                confidence = tier_confidence(tier.value, distinct)
-            if score == current_band_max:
-                short_circuited = True
-                for later in compiled.tiers[tier_index + 1 :]:
-                    if later.priority != current_band_priority:
-                        break
-                    evaluated.append(later.name)
-                break
+            if tier.support:
+                # Support evidence is additive and can never set or raise
+                # the primary score, trigger a band short-circuit, or confirm
+                # a decision alone (support tiers are constrained to value=1).
+                support_score += tier.value
+                support_confidence = max(
+                    support_confidence, tier_confidence(tier.value, distinct)
+                )
+            else:
+                if tier.value > score:
+                    score = tier.value
+                    confidence = tier_confidence(tier.value, distinct)
+                if score == current_band_max:
+                    short_circuited = True
+                    for later in compiled.tiers[tier_index + 1 :]:
+                        if later.priority != current_band_priority:
+                            break
+                        evaluated.append(later.name)
+                    break
 
-        elif distinct and tier.value >= 2:
+        elif distinct and tier.value >= 2 and not tier.support:
             partial_strong = True
 
         if score >= 2:
@@ -374,20 +402,23 @@ def score_tokens(
     if score == 0 and partial_strong:
         score = 1
 
-    if score >= 2:
+    total = min(3, score + support_score)
+    if total >= 2:
         classification = "matched"
-    elif score == 1:
+        if confidence == 0.0:
+            confidence = support_confidence
+    elif total == 1:
         classification = "ambiguous"
     else:
         classification = "no_match"
 
-    if confidence == 0.0 and score == 1 and not satisfied:
+    if confidence == 0.0 and total == 1 and not satisfied:
         confidence = 0.3
-    if confidence == 0.0 and score == 0 and exclusions:
+    if confidence == 0.0 and total == 0 and exclusions:
         confidence = 0.2
 
     return BowScore(
-        score=score,
+        score=total,
         classification=classification,
         confidence=confidence,
         hits=tuple(hits),
@@ -396,8 +427,9 @@ def score_tokens(
         evaluated_tiers=tuple(evaluated),
         short_circuited=short_circuited,
         novel_count=novel_count,
+        support_score=support_score,
         reason=build_reason(
-            score, satisfied, partial_strong, exclusions, compiled.name
+            total, satisfied, partial_strong, exclusions, compiled.name
         ),
     )
 

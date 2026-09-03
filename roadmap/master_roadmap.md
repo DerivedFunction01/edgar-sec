@@ -72,6 +72,13 @@ parsing and section extraction never re-hit the SEC archive. It is **storage-onl
   failure ledger (`--mode production`). Fixture population supports bounded
   machine-local fetch threads through `fill-fixture --workers` (defaults to
   `derive_resources().threads`, rejected if < 1).
+- Fixture-scope selection plans are expandable: Phase 02 creates immutable
+  child plans that retain parent locators, while Phase 2.5 reuses the same
+  fixture ID as an appendable raw-document cache. Existing `doc_id` values are
+  not refetched; explicit retry is available for prior acquisition failures,
+  and fixture lineage is recorded beside the SQLite cache. The root launcher
+  also provides `python run.py append` as a convenience alias for the
+  append-aware `fill-fixture` command.
 - Two independent parallel levels that never share a writer: **chunk workers**
   run as a `ProcessPoolExecutor` in production mode, each owning an isolated
   `chunk-XXXXX.db`, while the coordinator remains the sole SQLite writer and
@@ -91,6 +98,13 @@ parsing and section extraction never re-hit the SEC archive. It is **storage-onl
   failure ledger, and metrics — so all live requests share one aggregate
   pace. Manage it directly with
   `python -m defs.sec_http.broker {start,stop,status} [--socket PATH]`;
+
+Phase 2.5's normalization path also shares the coordinate-safe
+`defs.sec_forms.page_markers` analysis package across cover, TOC, body, and
+ASCII reflow consumers. Firm labels are removed only from validated decisions;
+contextual namespace runs, repeated headers/footers, unresolved candidates,
+and metadata-only inferred boundaries are retained in bounded processed-document
+metadata.
   `start` is idempotent (existing healthy broker reused, stale socket replaced).
 - Stores `document_blobs` (sha256-addressed, zstd-compressed raw bytes) and
   `filing_occurrences` (provenance links) in isolated worker chunk SQLite
@@ -98,6 +112,11 @@ parsing and section extraction never re-hit the SEC archive. It is **storage-onl
   compiled `Attach`/`Detach`.
 - Deferred to later parallel tracks (built on `document_blobs`): multi-era
   envelope unpacking, HTML/iXBRL cleaning, and stub/defect detection.
+
+Phase 2.5 also provides a fixture-ID document corpus review workflow: source
+bytes are promoted to a versioned Parquet corpus, rendered in deterministic
+20-document batches, and promoted to exact goldens only after explicit manual
+review.
 
 Shared table processing is implemented under `defs/tables/` so downstream
 document-processing phases use one span-aware HTML-to-ASCII conversion contract

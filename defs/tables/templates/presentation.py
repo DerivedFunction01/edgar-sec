@@ -6,11 +6,62 @@ import re
 import textwrap
 
 from defs.tables.builder import HTMLTableConverter
-from defs.tables.patterns import BULLET_MARKER_RE
+from defs.tables.currencies import PREFIX_SYMBOLS
+from defs.tables.patterns import BULLET_MARKER_RE, UNITS_LABEL_RE
 from defs.tables.tokens import is_numeric_cell
 from defs.text.checkmarks import CHECKED_TOKENS, UNCHECKED_TOKENS
+from defs.text.dates import YEAR_TOKEN_RE, parse_date
 
 from .common import cell_lines, cell_text, span_grid
+
+_EXHIBIT_HEADER_MAX_WORDS = 8
+
+
+def titled_period_table_template(source_grid: list[list[str]]) -> str | None:
+    """Move full-width title/unit rows out of a two-level period header."""
+    compact = [[cell.strip() for cell in row if cell.strip()] for row in source_grid]
+    if len(compact) < 5 or len(compact[0]) != 1 or len(compact[1]) != 1:
+        return None
+    if not UNITS_LABEL_RE.fullmatch(compact[1][0]):
+        return None
+
+    period_row = compact[2]
+    date_row = compact[3]
+    body = compact[4:]
+    if len(period_row) != 1 or len(date_row) < 3 or not body:
+        return None
+    if not any(
+        parse_date(cell) is not None or YEAR_TOKEN_RE.fullmatch(cell)
+        for cell in date_row[1:]
+    ):
+        return None
+    normalized_body = []
+    for row in body:
+        normalized = []
+        index = 0
+        while index < len(row):
+            if row[index] in PREFIX_SYMBOLS and index + 1 < len(row):
+                normalized.append(row[index] + row[index + 1])
+                index += 2
+            else:
+                normalized.append(row[index])
+                index += 1
+        normalized_body.append(normalized)
+    if any(len(row) != len(date_row) for row in normalized_body):
+        return None
+
+    # Keep the period group as a second header line while making the row
+    # label and date columns the actual leaf headers.
+    headers = [["", period_row[0], ""], date_row]
+    return (
+        HTMLTableConverter(
+            grid=[*headers, *normalized_body],
+            header_row_count=2,
+            title=f"{compact[0][0]}\n{compact[1][0]}",
+        )
+        .to_generic_table()
+        .build()
+    )
 
 
 def bullet_list_template(table: object) -> str | None:
@@ -394,16 +445,25 @@ def exhibit_index_template(source_grid: list[list[str]]) -> str | None:
     if len(source_grid) < 3:
         return None
     compact = [[cell for cell in row if cell.strip()] for row in source_grid]
+    marker_re = re.compile(r"^[*+†‡§]+(?:\s+[*+†‡§]+)*$")
+    compact = [
+        [row[0] + " " + row[1], row[2]]
+        if len(row) == 3 and marker_re.fullmatch(row[1])
+        else row
+        for row in compact
+    ]
     exhibit_re = re.compile(
-        r"^\(?\d+\)?(?:\.\d+)?(?:\([a-z0-9]+\))?$|^\d{3}\*{2}$|^EX-\d+\.[A-Z]+$",
+        r"^\(?\d+\)?(?:\.\d+)*(?:\([a-z0-9]+\))?$|"
+        r"^\d{3}\*{2}$|^\d+\.[A-Z]+$|^EX-\d+\.[A-Z]+$",
         re.IGNORECASE,
     )
     header_count = 0
     for index, row in enumerate(compact[:3]):
         if (
             len(row) >= 2
-            and "exhibit" in " ".join(row[:2]).casefold()
+            and "exhibit" in row[0].casefold()
             and "description" in row[1].casefold()
+            and len(row[1].split()) <= _EXHIBIT_HEADER_MAX_WORDS
         ):
             header_count = index + 1
             break
@@ -414,7 +474,7 @@ def exhibit_index_template(source_grid: list[list[str]]) -> str | None:
         1 if header_count >= 2 and "incorporated" in compact[0][0].casefold() else 3
     )
     if (
-        sum(bool(exhibit_re.fullmatch(row[0])) for row in exhibit_rows if row)
+        sum(bool(exhibit_re.fullmatch(row[0].split(maxsplit=1)[0])) for row in exhibit_rows if row)
         < minimum_exhibits
     ):
         return None

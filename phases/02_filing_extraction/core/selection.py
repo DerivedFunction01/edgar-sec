@@ -8,16 +8,12 @@ md5(seed || locator_key) for strict reproducibility.
 
 from __future__ import annotations
 
-import hashlib
 from collections import Counter
-from collections.abc import Iterator
-from contextlib import contextmanager
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
 
 from defs.runtime.resources import derive_resources
-from defs.storage import DuckDBStaging
 
 from .selection_policy import (
     KNOWN_DIMENSIONS,
@@ -25,238 +21,7 @@ from .selection_policy import (
     SelectionPolicy,
     normalize_value,
 )
-
-POOL_COLUMNS = (
-    "document_locator_key, form, form_family, era, suffix, xbrl_state, "
-    "size_band, sic_code, owner_org_presence, foreign_status, foreign_country_code, "
-    "entity_type, filer_category_primary, lifecycle_class, has_revival_gap, "
-    "locator_class, stub_suspect, anchor_status, comparison_status, company_name, "
-    "company_family, reported_size, report_year, is_amendment"
-)
-
-
-def _sql_quote(value: str) -> str:
-    return "'" + value.replace("'", "''") + "'"
-
-
-def _stable_hash(seed: str, key: str) -> str:
-    return hashlib.md5(f"{seed}{key}".encode()).hexdigest()
-
-
-class CandidateSource:
-    """Storage-backed candidate access with bounded memory behavior."""
-
-    def __init__(
-        self,
-        snapshot_dir: str | Path,
-        seed: str,
-        *,
-        threads: int | None = None,
-        memory_limit: str | None = None,
-        page_size: int = 5_000,
-        max_reported_size: int | None = None,
-        exclude_amendments: bool = False,
-    ) -> None:
-        self.snapshot_dir = Path(snapshot_dir).resolve()
-        self.locator = str(self.snapshot_dir / "locator_features.parquet")
-        self.occurrence = str(self.snapshot_dir / "occurrence_features.parquet")
-        self.seed = seed
-        res = derive_resources()
-        self.threads = threads if threads is not None else res.threads
-        self.memory_limit = memory_limit or res.memory_limit
-        self.page_size = page_size
-        self.max_reported_size = max_reported_size
-        self.exclude_amendments = exclude_amendments
-        self._staging: DuckDBStaging | None = None
-
-    @contextmanager
-    def session(self) -> Iterator[None]:
-        """Open the selection session; cleans up temporary staging on exit."""
-        db_file = self.snapshot_dir / "selection_session.duckdb"
-        try:
-            self._staging = DuckDBStaging(
-                db_file,
-                threads=self.threads,
-                memory_limit=self.memory_limit,
-                cleanup_root=False,
-            )
-            self._staging.execute(
-                "CREATE OR REPLACE TEMP TABLE selected_keys "
-                "(document_locator_key VARCHAR)"
-            )
-            yield
-        finally:
-            if self._staging is not None:
-                self._staging.close()
-                self._staging = None
-
-    def _require(self) -> DuckDBStaging:
-        if self._staging is None:
-            raise RuntimeError("CandidateSource session is not open")
-        return self._staging
-
-    def register_selected(self, keys: list[str]) -> None:
-        """Replace the selected-key temp table with the supplied keys."""
-        staging = self._require()
-        staging.execute("DELETE FROM selected_keys")
-        self._insert_keys(keys)
-
-    def add_selected(self, key: str) -> None:
-        """Record one newly selected locator key in the exclusion table."""
-        self._require().execute("INSERT INTO selected_keys VALUES (?)", [key])
-
-    def _insert_keys(self, keys: list[str]) -> None:
-        staging = self._require()
-        step = 5_000
-        for idx in range(0, len(keys), step):
-            chunk = [[k] for k in keys[idx : idx + step]]
-            staging.executemany("INSERT INTO selected_keys VALUES (?)", chunk)
-
-    def _base_filter(self) -> str:
-        clauses = [
-            "l.document_locator_key NOT IN (SELECT document_locator_key FROM selected_keys)"
-        ]
-        if self.max_reported_size is not None:
-            clauses.append(f"l.reported_size <= {int(self.max_reported_size)}")
-        if self.exclude_amendments:
-            clauses.append("l.is_amendment = false")
-        return " AND ".join(clauses)
-
-    def pool_for_value(
-        self, dimension: str, value: str, limit: int = 60
-    ) -> list[dict[str, Any]]:
-        """Return candidate rows satisfying dimension = value."""
-        staging = self._require()
-        where = f"{self._base_filter()} AND l.{dimension} = {_sql_quote(value)}"
-        query = f"""
-            SELECT {POOL_COLUMNS}
-            FROM read_parquet('{self.locator}') l
-            WHERE {where}
-            ORDER BY md5('{self.seed}' || l.document_locator_key)
-            LIMIT {int(limit)}
-        """
-        rows = staging.execute(query)
-        cols = [c.strip() for c in POOL_COLUMNS.split(",") if c.strip()]
-        return [dict(zip(cols, row)) for row in rows]
-
-    def pool_for_composite(
-        self, filters: dict[str, Any], limit: int = 60
-    ) -> list[dict[str, Any]]:
-        """Return candidates satisfying all filters in the composite."""
-        staging = self._require()
-        clauses = [self._base_filter()]
-        for dim, val in filters.items():
-            clauses.append(f"l.{dim} = {_sql_quote(str(val))}")
-        where = " AND ".join(clauses)
-        query = f"""
-            SELECT {POOL_COLUMNS}
-            FROM read_parquet('{self.locator}') l
-            WHERE {where}
-            ORDER BY md5('{self.seed}' || l.document_locator_key)
-            LIMIT {int(limit)}
-        """
-        rows = staging.execute(query)
-        cols = [c.strip() for c in POOL_COLUMNS.split(",") if c.strip()]
-        return [dict(zip(cols, row)) for row in rows]
-
-    def pool_for_ciks(
-        self, ciks: list[str], limit_per_cik: int = 5
-    ) -> list[dict[str, Any]]:
-        """Return candidates belonging to the supplied CIKs."""
-        if not ciks:
-            return []
-        staging = self._require()
-        cik_list = ", ".join(_sql_quote(c) for c in ciks)
-        where = f"{self._base_filter()} AND l.representative_cik IN ({cik_list})"
-        query = f"""
-            WITH ranked AS (
-                SELECT {POOL_COLUMNS},
-                       ROW_NUMBER() OVER (
-                           PARTITION BY l.representative_cik
-                           ORDER BY md5('{self.seed}' || l.document_locator_key)
-                       ) AS cik_rn
-                FROM read_parquet('{self.locator}') l
-                WHERE {where}
-            )
-            SELECT {POOL_COLUMNS}
-            FROM ranked
-            WHERE cik_rn <= {int(limit_per_cik)}
-            ORDER BY md5('{self.seed}' || document_locator_key)
-        """
-        rows = staging.execute(query)
-        cols = [c.strip() for c in POOL_COLUMNS.split(",") if c.strip()]
-        return [dict(zip(cols, row)) for row in rows]
-
-    def candidate_page(self, page_index: int) -> list[dict[str, Any]]:
-        """Return one deterministic page of candidates."""
-        staging = self._require()
-        offset = page_index * self.page_size
-        query = f"""
-            SELECT {POOL_COLUMNS}
-            FROM read_parquet('{self.locator}') l
-            WHERE {self._base_filter()}
-            ORDER BY md5('{self.seed}' || l.document_locator_key)
-            LIMIT {int(self.page_size)} OFFSET {int(offset)}
-        """
-        rows = staging.execute(query)
-        cols = [c.strip() for c in POOL_COLUMNS.split(",") if c.strip()]
-        return [dict(zip(cols, row)) for row in rows]
-
-    def load_occurrences_for_locators(
-        self, locator_keys: list[str]
-    ) -> list[dict[str, Any]]:
-        """Fetch all occurrences mapping to the selected locator keys."""
-        if not locator_keys:
-            return []
-        staging = self._require()
-        step = 5_000
-        occurrences = []
-        for idx in range(0, len(locator_keys), step):
-            subset = locator_keys[idx : idx + step]
-            key_list = ", ".join(_sql_quote(k) for k in subset)
-            query = f"""
-                SELECT
-                    occurrence_id, document_locator_key, source_cik, accession,
-                    form, is_amendment, filing_date, report_date, primary_document,
-                    document_path, archive_url, reported_size, is_xbrl,
-                    is_inline_xbrl, is_xbrl_numeric, sic_code, sic_description,
-                    owner_org_cik, owner_org_name, owner_org_presence,
-                    foreign_status, foreign_country_code, entity_type,
-                    filer_category_primary, company_name
-                FROM read_parquet('{self.occurrence}')
-                WHERE document_locator_key IN ({key_list})
-                ORDER BY document_locator_key, occurrence_id
-            """
-            rows = staging.execute(query)
-            cols = [
-                "occurrence_id",
-                "document_locator_key",
-                "source_cik",
-                "accession",
-                "form",
-                "is_amendment",
-                "filing_date",
-                "report_date",
-                "primary_document",
-                "document_path",
-                "archive_url",
-                "reported_size",
-                "is_xbrl",
-                "is_inline_xbrl",
-                "is_xbrl_numeric",
-                "sic_code",
-                "sic_description",
-                "owner_org_cik",
-                "owner_org_name",
-                "owner_org_presence",
-                "foreign_status",
-                "foreign_country_code",
-                "entity_type",
-                "filer_category_primary",
-                "company_name",
-            ]
-            occurrences.extend(dict(zip(cols, r)) for r in rows)
-        return occurrences
+from .selection_source import CandidateSource
 
 
 @dataclass
@@ -347,7 +112,20 @@ class DeficitSelector:
 
         with source.session():
             selected_set = set(selected_keys)
+            if len(selected_set) != len(selected_keys):
+                raise ValueError("parent selection contains duplicate locator keys")
             source.register_selected(selected_keys)
+
+            # Parent selections are part of the effective selection. Load their
+            # feature rows so floors, caps, and company-classification limits
+            # apply to the combined parent + expansion set.
+            for cand in source.load_candidates_for_locators(selected_keys):
+                selected_candidates.append(cand)
+                sig = _classification_signature(cand)
+                company_classification_counts[sig] += 1
+                for dim in KNOWN_DIMENSIONS:
+                    val = normalize_value(cand.get(dim))
+                    coverage[dim][val] = coverage[dim].get(val, 0) + 1
 
             # Phase 1: Seed Filers
             if self.seed_filers:

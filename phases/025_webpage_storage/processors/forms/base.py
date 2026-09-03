@@ -31,6 +31,7 @@ class PreprocessedDocument:
     detected_encoding: str
     metadata: dict[str, Any] = field(default_factory=dict)
     page_analysis: PageMarkerAnalysis | None = None
+    representation: str = "ascii"
 
 
 @dataclass(frozen=True, slots=True)
@@ -79,6 +80,7 @@ class FormNormalizer(Protocol):
         self,
         html_text: str,
         metadata: dict[str, Any] | None = None,
+        page_analysis: PageMarkerAnalysis | None = None,
     ) -> CoverPreprocessResult:
         """Apply form-family cover preprocessing and return boundary metadata."""
         ...

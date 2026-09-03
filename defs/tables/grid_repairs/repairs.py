@@ -143,7 +143,7 @@ def merge_prefix_columns(
         ]
         symbol_count = sum(1 for cell in body_cells if cell in PREFIX_SYMBOLS)
         if symbol_count == 0 or (
-            body_row_count > 1 and symbol_count / body_row_count > 0.5
+            body_row_count > 1 and symbol_count == body_row_count
         ):
             continue
         for row in range(header_count, len(rows)):

@@ -13,6 +13,7 @@ from .presentation import (
     bullet_list_template,
     side_by_side_template,
     signature_template,
+    titled_period_table_template,
     uniform_text_table_template,
 )
 from .registration import registration_table_template
@@ -32,5 +33,6 @@ __all__ = [
     "signature_template",
     "single_row_horizontal_template",
     "span_grid",
+    "titled_period_table_template",
     "uniform_text_table_template",
 ]

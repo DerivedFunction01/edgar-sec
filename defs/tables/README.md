@@ -10,8 +10,17 @@ need direct formatting, while `GenericTable` owns wrapping, widths, alignment,
 and `<S>`/`<C>` marker output. `SimpleTableProcessor` handles parsing and
 repairs for generated ASCII tables.
 
+`protection.py` owns exact tagged-table protection for plain-text pipelines:
+`mask_tagged_tables()` replaces complete — and unterminated, through
+end-of-text — `<TABLE>...</TABLE>` spans with collision-safe sentinels so
+whitespace-oriented passes cannot see their layout, and
+`restore_tagged_tables()` restores the original bytes exactly. A source that
+already contains the sentinel byte is returned unmasked; callers must treat
+that as "no reflow possible".
+
 The public API is exported from `defs.tables`. Contract tests live in
-`defs/tests/test_tables.py` and are run independently from phase test suites.
+`defs/tests/test_tables.py` and `defs/tests/test_table_protection.py` and are
+run independently from phase test suites.
 
 The manually reviewed table corpus is stored as the single tracked Parquet
 fixture `defs/tests/fixtures/tables/validated_table_corpus_v2.parquet`. The

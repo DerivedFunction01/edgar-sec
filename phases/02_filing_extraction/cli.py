@@ -9,7 +9,7 @@ import sys
 from .core import config as phase_config
 from .core import discovery
 from .core.materialize import materialize
-from .core.target_plan import plan
+from .core.target_plan import expand, plan
 
 
 def _stderr_progress(event: dict) -> None:
@@ -94,6 +94,18 @@ def main(argv: list[str] | None = None) -> int:
         help="report stage progress on stderr",
     )
 
+    expand_parser = commands.add_parser(
+        "expand", help="create an expanded fixture-scope child plan"
+    )
+    expand_parser.add_argument("--parent-plan", required=True)
+    expand_parser.add_argument("--target-units", type=int, required=True)
+    expand_parser.add_argument("--selection-policy", default=None)
+    expand_parser.add_argument("--seed-cik", default=None)
+    expand_parser.add_argument("--output-root", default=None)
+    expand_parser.add_argument(
+        "--progress", action="store_true", help="report stage progress on stderr"
+    )
+
     status_parser = commands.add_parser("status")
     status_parser.add_argument("--manifests-root", default=None)
     status_parser.add_argument("--runs-root", default=None)
@@ -128,6 +140,15 @@ def main(argv: list[str] | None = None) -> int:
             forms=forms,
             amendment=amendment,
             limit=args.limit,
+            progress=_stderr_progress if args.progress else None,
+        )
+    elif args.command == "expand":
+        result = expand(
+            args.parent_plan,
+            args.target_units,
+            selection_policy_path=args.selection_policy,
+            seed_cik_path=args.seed_cik,
+            output_root=args.output_root,
             progress=_stderr_progress if args.progress else None,
         )
     else:

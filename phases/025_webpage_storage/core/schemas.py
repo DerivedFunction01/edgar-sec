@@ -10,8 +10,8 @@ module opens a driver connection itself.
 from __future__ import annotations
 
 import hashlib
+import json
 import threading
-from dataclasses import asdict, dataclass
 from pathlib import PurePosixPath
 
 import zstandard
@@ -33,7 +33,19 @@ from defs.sql import (
     col,
 )
 
-SCHEMA_VERSION = 1
+from .records import (
+    AcquisitionFailure,
+    CommittedChunk,
+    DocumentLocator,
+    FetchResult,
+    FilingOccurrence,
+    NormalizationFailure,
+    NormalizedDocument,
+    RawDocumentBlob,
+)
+
+SCHEMA_VERSION = 2
+NORMALIZED_SCHEMA_VERSION = 1
 ZSTD_COMPRESSION_LEVEL = 3
 
 _thread_local = threading.local()
@@ -61,6 +73,8 @@ DOCUMENT_BLOBS_TABLE = "document_blobs"
 FILING_OCCURRENCES_TABLE = "filing_occurrences"
 COMMITTED_CHUNKS_TABLE = "_committed_chunks"
 ACQUISITION_FAILURES_TABLE = "acquisition_failures"
+NORMALIZED_DOCUMENTS_TABLE = "normalized_documents"
+NORMALIZATION_FAILURES_TABLE = "normalization_failures"
 
 BLOB_COLUMNS = (
     "doc_id",
@@ -69,6 +83,7 @@ BLOB_COLUMNS = (
     "byte_size",
     "mime_type",
     "raw_payload",
+    "raw_payload_sha256",
 )
 OCCURRENCE_COLUMNS = (
     "occurrence_id",
@@ -80,12 +95,38 @@ OCCURRENCE_COLUMNS = (
     "report_date",
     "doc_id",
 )
-COMMITTED_CHUNK_COLUMNS = ("chunk_id", "record_count", "worker_id", "committed_at")
+COMMITTED_CHUNK_COLUMNS = (
+    "chunk_id",
+    "record_count",
+    "worker_id",
+    "committed_at",
+    "processor_fingerprint",
+    "normalized_schema_version",
+)
 ACQUISITION_FAILURE_COLUMNS = (
     "doc_id",
     "accession",
     "document_path",
     "status",
+    "error_message",
+    "attempted_at",
+)
+NORMALIZED_DOCUMENT_COLUMNS = (
+    "normalized_artifact_id",
+    "source_doc_id",
+    "byte_size",
+    "normalized_payload",
+    "payload_sha256",
+    "mime_type",
+    "representation",
+    "processor_fingerprint",
+    "schema_version",
+    "processor_metadata",
+)
+NORMALIZATION_FAILURE_COLUMNS = (
+    "source_doc_id",
+    "processor_fingerprint",
+    "schema_version",
     "error_message",
     "attempted_at",
 )
@@ -104,136 +145,6 @@ _MIME_BY_SUFFIX = {
 }
 
 
-# ----------------------------------------------------------------- records
-
-
-@dataclass(frozen=True, slots=True)
-class RawDocumentBlob:
-    """One deduplicated compressed raw payload."""
-
-    doc_id: str
-    accession: str
-    document_path: str
-    byte_size: int
-    mime_type: str
-    raw_payload: bytes
-
-    def to_row(self) -> dict:
-        return asdict(self)
-
-    @classmethod
-    def from_row(cls, row: dict) -> RawDocumentBlob:
-        return cls(
-            doc_id=str(row["doc_id"]),
-            accession=str(row["accession"]),
-            document_path=str(row["document_path"]),
-            byte_size=int(row["byte_size"]),
-            mime_type=str(row["mime_type"]),
-            raw_payload=bytes(row["raw_payload"]),
-        )
-
-
-@dataclass(frozen=True, slots=True)
-class FilingOccurrence:
-    """Provenance link from one corporate occurrence to a stored blob."""
-
-    occurrence_id: str
-    source_cik: str
-    accession: str
-    document_path: str
-    form: str
-    filing_date: str
-    report_date: str | None
-    doc_id: str
-
-    def to_row(self) -> dict:
-        return asdict(self)
-
-    @classmethod
-    def from_row(cls, row: dict) -> FilingOccurrence:
-        report_date = row["report_date"]
-        return cls(
-            occurrence_id=str(row["occurrence_id"]),
-            source_cik=str(row["source_cik"]),
-            accession=str(row["accession"]),
-            document_path=str(row["document_path"]),
-            form=str(row["form"]),
-            filing_date=str(row["filing_date"]),
-            report_date=None if report_date is None else str(report_date),
-            doc_id=str(row["doc_id"]),
-        )
-
-
-@dataclass(frozen=True, slots=True)
-class CommittedChunk:
-    """Resumability audit row for one merged worker chunk."""
-
-    chunk_id: str
-    record_count: int
-    worker_id: str
-    committed_at: str
-
-    def to_row(self) -> dict:
-        return asdict(self)
-
-    @classmethod
-    def from_row(cls, row: dict) -> CommittedChunk:
-        return cls(
-            chunk_id=str(row["chunk_id"]),
-            record_count=int(row["record_count"]),
-            worker_id=str(row["worker_id"]),
-            committed_at=str(row["committed_at"]),
-        )
-
-
-@dataclass(frozen=True, slots=True)
-class AcquisitionFailure:
-    """A document acquisition failure or missing payload record."""
-
-    doc_id: str
-    accession: str
-    document_path: str
-    status: str
-    error_message: str | None
-    attempted_at: str
-
-    def to_row(self) -> dict:
-        return asdict(self)
-
-    @classmethod
-    def from_row(cls, row: dict) -> AcquisitionFailure:
-        err = row.get("error_message")
-        return cls(
-            doc_id=str(row["doc_id"]),
-            accession=str(row["accession"]),
-            document_path=str(row["document_path"]),
-            status=str(row["status"]),
-            error_message=None if err is None else str(err),
-            attempted_at=str(row["attempted_at"]),
-        )
-
-
-@dataclass(frozen=True, slots=True)
-class DocumentLocator:
-    """One unique pre-capture locator from a Phase 02 target plan."""
-
-    locator_key: str
-    accession: str
-    document_path: str
-    archive_url: str
-    form: str = ""
-
-
-@dataclass(frozen=True, slots=True)
-class FetchResult:
-    """Outcome of one acquisition attempt for a locator."""
-
-    locator: DocumentLocator
-    payload: bytes | None
-    status: str  # "ok" | "missing" | "failed"
-    error: str | None = None
-
-
 # --------------------------------------------------------------------- DDL
 
 
@@ -247,6 +158,7 @@ def document_blobs_ddl() -> CreateTable:
             ColumnDef("byte_size", ColumnType.INT, (NotNull(),)),
             ColumnDef("mime_type", ColumnType.TEXT, (NotNull(),)),
             ColumnDef("raw_payload", ColumnType.BLOB, (NotNull(),)),
+            ColumnDef("raw_payload_sha256", ColumnType.TEXT, (NotNull(),)),
         ),
     )
 
@@ -278,6 +190,8 @@ def committed_chunks_ddl() -> CreateTable:
             ColumnDef("chunk_id", ColumnType.TEXT, (PrimaryKey(), NotNull())),
             ColumnDef("record_count", ColumnType.INT, (NotNull(),)),
             ColumnDef("worker_id", ColumnType.TEXT, (NotNull(),)),
+            ColumnDef("processor_fingerprint", ColumnType.TEXT, (NotNull(),)),
+            ColumnDef("normalized_schema_version", ColumnType.INT, (NotNull(),)),
             ColumnDef(
                 "committed_at",
                 ColumnType.TIMESTAMP,
@@ -296,6 +210,47 @@ def acquisition_failures_ddl() -> CreateTable:
             ColumnDef("document_path", ColumnType.TEXT, (NotNull(),)),
             ColumnDef("status", ColumnType.TEXT, (NotNull(),)),
             ColumnDef("error_message", ColumnType.TEXT),
+            ColumnDef(
+                "attempted_at",
+                ColumnType.TIMESTAMP,
+                (NotNull(), DefaultCurrentTimestamp()),
+            ),
+        ),
+    )
+
+
+def normalized_documents_ddl() -> CreateTable:
+    return CreateTable(
+        table=NORMALIZED_DOCUMENTS_TABLE,
+        columns=(
+            ColumnDef(
+                "normalized_artifact_id", ColumnType.TEXT, (PrimaryKey(), NotNull())
+            ),
+            ColumnDef(
+                "source_doc_id",
+                ColumnType.TEXT,
+                (NotNull(), References(DOCUMENT_BLOBS_TABLE, ("doc_id",))),
+            ),
+            ColumnDef("byte_size", ColumnType.INT, (NotNull(),)),
+            ColumnDef("normalized_payload", ColumnType.BLOB, (NotNull(),)),
+            ColumnDef("payload_sha256", ColumnType.TEXT, (NotNull(),)),
+            ColumnDef("mime_type", ColumnType.TEXT, (NotNull(),)),
+            ColumnDef("representation", ColumnType.TEXT, (NotNull(),)),
+            ColumnDef("processor_fingerprint", ColumnType.TEXT, (NotNull(),)),
+            ColumnDef("schema_version", ColumnType.INT, (NotNull(),)),
+            ColumnDef("processor_metadata", ColumnType.TEXT, (NotNull(),)),
+        ),
+    )
+
+
+def normalization_failures_ddl() -> CreateTable:
+    return CreateTable(
+        table=NORMALIZATION_FAILURES_TABLE,
+        columns=(
+            ColumnDef("source_doc_id", ColumnType.TEXT, (PrimaryKey(), NotNull())),
+            ColumnDef("processor_fingerprint", ColumnType.TEXT, (NotNull(),)),
+            ColumnDef("schema_version", ColumnType.INT, (NotNull(),)),
+            ColumnDef("error_message", ColumnType.TEXT, (NotNull(),)),
             ColumnDef(
                 "attempted_at",
                 ColumnType.TIMESTAMP,
@@ -336,6 +291,8 @@ def partition_tables_ddl() -> tuple[Statement, ...]:
         filing_occurrences_ddl(),
         committed_chunks_ddl(),
         acquisition_failures_ddl(),
+        normalized_documents_ddl(),
+        normalization_failures_ddl(),
     )
 
 
@@ -414,6 +371,23 @@ def build_blob(
         byte_size=len(raw),
         mime_type=detect_mime(document_path),
         raw_payload=compress_payload(raw, level=level),
+        raw_payload_sha256=hashlib.sha256(raw).hexdigest(),
+    )
+
+
+def normalized_artifact_id(
+    raw_digest: str,
+    processor_fingerprint: str,
+    schema_version: int = NORMALIZED_SCHEMA_VERSION,
+) -> str:
+    return hashlib.sha256(
+        f"{raw_digest}:{processor_fingerprint}:{schema_version}".encode()
+    ).hexdigest()
+
+
+def deterministic_metadata(metadata: dict[str, object]) -> str:
+    return json.dumps(
+        metadata, sort_keys=True, separators=(",", ":"), ensure_ascii=True
     )
 
 
@@ -449,6 +423,11 @@ __all__ = (
     "MIME_HTML",
     "MIME_TEXT",
     "MIME_XML",
+    "NORMALIZATION_FAILURES_TABLE",
+    "NORMALIZATION_FAILURE_COLUMNS",
+    "NORMALIZED_DOCUMENTS_TABLE",
+    "NORMALIZED_DOCUMENT_COLUMNS",
+    "NORMALIZED_SCHEMA_VERSION",
     "OCCURRENCE_COLUMNS",
     "SCHEMA_VERSION",
     "ZSTD_COMPRESSION_LEVEL",
@@ -457,6 +436,8 @@ __all__ = (
     "DocumentLocator",
     "FetchResult",
     "FilingOccurrence",
+    "NormalizationFailure",
+    "NormalizedDocument",
     "RawDocumentBlob",
     "acquisition_failures_ddl",
     "build_blob",
@@ -471,9 +452,13 @@ __all__ = (
     "create_schema",
     "decompress_payload",
     "detect_mime",
+    "deterministic_metadata",
     "doc_id",
     "document_blobs_ddl",
     "filing_occurrences_ddl",
+    "normalization_failures_ddl",
+    "normalized_artifact_id",
+    "normalized_documents_ddl",
     "occurrence_id",
     "partition_ddl",
     "partition_indexes",

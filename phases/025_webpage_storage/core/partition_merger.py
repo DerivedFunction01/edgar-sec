@@ -30,6 +30,10 @@ from .schemas import (
     COMMITTED_CHUNKS_TABLE,
     DOCUMENT_BLOBS_TABLE,
     FILING_OCCURRENCES_TABLE,
+    NORMALIZATION_FAILURE_COLUMNS,
+    NORMALIZATION_FAILURES_TABLE,
+    NORMALIZED_DOCUMENT_COLUMNS,
+    NORMALIZED_DOCUMENTS_TABLE,
     OCCURRENCE_COLUMNS,
     CommittedChunk,
     create_partition_indexes,
@@ -51,6 +55,8 @@ class PartitionMergeResult:
     occurrence_rows: int
     audit_rows: int
     failure_rows: int = 0
+    normalized_rows: int = 0
+    normalization_failure_rows: int = 0
 
     @property
     def committed_chunks(self) -> tuple[str, ...]:
@@ -100,6 +106,7 @@ def merge_partition(
     skipped: list[str] = []
     committed: list[str] = []
     blob_rows = occurrence_rows = audit_count = failure_rows = 0
+    normalized_rows = normalization_failure_rows = 0
 
     try:
         # Create unindexed tables first for maximum bulk insert throughput
@@ -198,6 +205,28 @@ def merge_partition(
                             executor.exec(
                                 executor.compiler.compile(
                                     _insert_from(
+                                        NORMALIZED_DOCUMENTS_TABLE,
+                                        NORMALIZED_DOCUMENT_COLUMNS,
+                                        f"{alias}.{NORMALIZED_DOCUMENTS_TABLE}",
+                                        alias,
+                                        on_conflict=DoNothing(),
+                                    )
+                                )
+                            )
+                            executor.exec(
+                                executor.compiler.compile(
+                                    _insert_from(
+                                        NORMALIZATION_FAILURES_TABLE,
+                                        NORMALIZATION_FAILURE_COLUMNS,
+                                        f"{alias}.{NORMALIZATION_FAILURES_TABLE}",
+                                        alias,
+                                        on_conflict=DoNothing(),
+                                    )
+                                )
+                            )
+                            executor.exec(
+                                executor.compiler.compile(
+                                    _insert_from(
                                         COMMITTED_CHUNKS_TABLE,
                                         COMMITTED_CHUNK_COLUMNS,
                                         f"{alias}.{COMMITTED_CHUNKS_TABLE}",
@@ -242,6 +271,28 @@ def merge_partition(
                                     )
                                 )
                             )
+                            normalized_rows += len(
+                                executor.query(
+                                    executor.compiler.compile(
+                                        _select_columns(
+                                            f"{alias}.{NORMALIZED_DOCUMENTS_TABLE}",
+                                            NORMALIZED_DOCUMENT_COLUMNS,
+                                            alias,
+                                        )
+                                    )
+                                )
+                            )
+                            normalization_failure_rows += len(
+                                executor.query(
+                                    executor.compiler.compile(
+                                        _select_columns(
+                                            f"{alias}.{NORMALIZATION_FAILURES_TABLE}",
+                                            NORMALIZATION_FAILURE_COLUMNS,
+                                            alias,
+                                        )
+                                    )
+                                )
+                            )
                             audit_count += len(committed_ids)
                             committed.extend(committed_ids)
                             existing_ids.update(committed_ids)
@@ -268,6 +319,8 @@ def merge_partition(
         occurrence_rows=occurrence_rows,
         audit_rows=audit_count,
         failure_rows=failure_rows,
+        normalized_rows=normalized_rows,
+        normalization_failure_rows=normalization_failure_rows,
     )
 
 

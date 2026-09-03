@@ -134,6 +134,45 @@ def test_fetch_failures_are_reported_and_successes_commit(tmp_path):
     assert failures_in_db[0]["status"] == "missing"
 
 
+def test_raw_only_mode_has_no_normalized_record(tmp_path):
+    result = worker_module.process_chunk(
+        "raw-only",
+        "worker",
+        [_locator()],
+        [_occurrence()],
+        FakeFetcher({"a": b"raw"}),
+        tmp_path / "raw-only.db",
+    )
+    assert _rows(result.path, schemas.NORMALIZED_DOCUMENTS_TABLE) == []
+
+
+def test_processor_failure_keeps_raw_and_records_normalization_failure(tmp_path):
+    class FailingProcessor:
+        processor_fingerprint = "failing:v1"
+
+        async def process(self, raw_bytes, locator):
+            raise ValueError("cannot normalize")
+
+    result = worker_module.process_chunk(
+        "failed-normalization",
+        "worker",
+        [_locator()],
+        [_occurrence()],
+        FakeFetcher({"a": b"raw"}),
+        tmp_path / "failed.db",
+        processor=FailingProcessor(),
+    )
+    assert (
+        schemas.decompress_payload(
+            _rows(result.path, schemas.DOCUMENT_BLOBS_TABLE)[0]["raw_payload"]
+        )
+        == b"raw"
+    )
+    assert len(_rows(result.path, schemas.FILING_OCCURRENCES_TABLE)) == 1
+    failures = _rows(result.path, schemas.NORMALIZATION_FAILURES_TABLE)
+    assert failures[0]["error_message"] == "cannot normalize"
+
+
 def test_multi_registrant_locators_deduplicate_before_fetch(tmp_path):
     fetcher = FakeFetcher({"loc-reg1": b"shared", "loc-reg2": b"shared"})
     # Two different locator keys sharing same accession + document_path
@@ -258,5 +297,181 @@ def test_process_chunk_with_async_processor(tmp_path):
         processor=AsyncPipelineProcessor(),
     )
     stored = _rows(result.path, schemas.DOCUMENT_BLOBS_TABLE)[0]
-    decompressed = schemas.decompress_payload(stored["raw_payload"])
-    assert decompressed == b"<HTML><BODY>TEXT</BODY></HTML>"
+    assert schemas.decompress_payload(stored["raw_payload"]) == (
+        b"<html><body><script>ad()</script>text</body></html>"
+    )
+    normalized = _rows(result.path, schemas.NORMALIZED_DOCUMENTS_TABLE)
+    assert (
+        normalized[0]["payload_sha256"]
+        == __import__("hashlib").sha256(b"<HTML><BODY>TEXT</BODY></HTML>").hexdigest()
+    )
+    assert normalized[0]["representation"] == "application/octet-stream"
+
+
+def _upper_processor_class(fingerprint: str):
+    proc_module = importlib.import_module("phases.025_webpage_storage.processors")
+    ProcessedDocument = proc_module.ProcessedDocument
+
+    class UpperProcessor:
+        processor_fingerprint = fingerprint
+
+        async def process(self, raw_bytes, locator):
+            return ProcessedDocument(
+                doc_id=schemas.doc_id(locator.accession, locator.document_path),
+                payload=raw_bytes.upper(),
+                byte_size=len(raw_bytes),
+                mime_type="text/plain",
+                metadata={},
+                processor_fingerprint=self.processor_fingerprint,
+                representation="text",
+            )
+
+    return UpperProcessor
+
+
+def _clear_committed_audit(db_path):
+    from defs.sql import Commit, Delete
+
+    executor = make_sql_executor(db_path, dialect=SqlDialect.SQLITE)
+    try:
+        executor.exec(
+            executor.compiler.compile(Delete(table=schemas.COMMITTED_CHUNKS_TABLE))
+        )
+        executor.exec(executor.compiler.compile(Commit()))
+    finally:
+        executor.close()
+
+
+def test_resume_with_processor_normalizes_existing_raw_blobs(tmp_path):
+    db_path = tmp_path / "resume-normalize.db"
+    loc = _locator("a", "a.htm")
+    occ = _occurrence("0000000001", "a.htm")
+
+    worker_module.process_chunk(
+        "chunk-norm",
+        "worker-1",
+        [loc],
+        [occ],
+        FakeFetcher({"a": b"payload-a"}),
+        db_path,
+    )
+    assert len(_rows(db_path, schemas.DOCUMENT_BLOBS_TABLE)) == 1
+    assert _rows(db_path, schemas.NORMALIZED_DOCUMENTS_TABLE) == []
+    assert (
+        _rows(db_path, schemas.COMMITTED_CHUNKS_TABLE)[0]["processor_fingerprint"]
+        == "raw-only"
+    )
+
+    _clear_committed_audit(db_path)
+
+    UpperProcessor = _upper_processor_class("upper:v1")
+    resumed_fetcher = FakeFetcher({"a": b"payload-a"})
+    worker_module.process_chunk(
+        "chunk-norm",
+        "worker-1",
+        [loc],
+        [occ],
+        resumed_fetcher,
+        db_path,
+        processor=UpperProcessor(),
+    )
+
+    assert resumed_fetcher.calls == []
+    normalized = _rows(db_path, schemas.NORMALIZED_DOCUMENTS_TABLE)
+    assert len(normalized) == 1
+    assert normalized[0]["processor_fingerprint"] == "upper:v1"
+    assert normalized[0]["normalized_payload"] == b"PAYLOAD-A"
+    assert normalized[0]["source_doc_id"] == schemas.doc_id("0001-0001", "a.htm")
+    audit = _rows(db_path, schemas.COMMITTED_CHUNKS_TABLE)[0]
+    assert audit["processor_fingerprint"] == "upper:v1"
+
+
+def test_committed_chunk_with_different_processor_is_reprocessed(tmp_path):
+    db_path = tmp_path / "stale-fingerprint.db"
+    loc = _locator("a", "a.htm")
+    occ = _occurrence()
+
+    UpperProcessor = _upper_processor_class("upper:v1")
+    first = worker_module.process_chunk(
+        "chunk-stale",
+        "worker-1",
+        [loc],
+        [occ],
+        FakeFetcher({"a": b"payload-a"}),
+        db_path,
+        processor=UpperProcessor(),
+    )
+    assert first.audit is not None
+    assert first.audit.processor_fingerprint == "upper:v1"
+
+    class ReversingProcessor:
+        processor_fingerprint = "reverse:v1"
+
+        async def process(self, raw_bytes, locator):
+            proc_module = importlib.import_module(
+                "phases.025_webpage_storage.processors"
+            )
+            payload = raw_bytes[::-1]
+            return proc_module.ProcessedDocument(
+                doc_id=schemas.doc_id(locator.accession, locator.document_path),
+                payload=payload,
+                byte_size=len(payload),
+                mime_type="text/plain",
+                metadata={},
+                processor_fingerprint=self.processor_fingerprint,
+                representation="text",
+            )
+
+    second = worker_module.process_chunk(
+        "chunk-stale",
+        "worker-1",
+        [loc],
+        [occ],
+        FakeFetcher({"a": b"payload-a"}),
+        db_path,
+        processor=ReversingProcessor(),
+    )
+
+    assert second.audit is not None
+    assert second.audit.processor_fingerprint == "reverse:v1"
+    assert len(_rows(db_path, schemas.COMMITTED_CHUNKS_TABLE)) == 1
+    normalized = _rows(db_path, schemas.NORMALIZED_DOCUMENTS_TABLE)
+    assert {row["processor_fingerprint"] for row in normalized} == {
+        "upper:v1",
+        "reverse:v1",
+    }
+    reversed_row = next(
+        row for row in normalized if row["processor_fingerprint"] == "reverse:v1"
+    )
+    assert reversed_row["normalized_payload"] == b"a-daolyap"
+
+
+def test_processor_failure_keeps_raw_blob_and_records_normalization_failure(tmp_path):
+    db_path = tmp_path / "norm-failure.db"
+    loc = _locator("a")
+    occ = _occurrence()
+
+    class FailingProcessor:
+        processor_fingerprint = "failing:v1"
+
+        async def process(self, raw_bytes, locator):
+            raise RuntimeError("normalization exploded")
+
+    result = worker_module.process_chunk(
+        "chunk-norm-fail",
+        "worker-1",
+        [loc],
+        [occ],
+        FakeFetcher({"a": b"payload-a"}),
+        db_path,
+        processor=FailingProcessor(),
+    )
+
+    assert result.succeeded
+    assert len(_rows(db_path, schemas.DOCUMENT_BLOBS_TABLE)) == 1
+    assert _rows(db_path, schemas.NORMALIZED_DOCUMENTS_TABLE) == []
+    failures = _rows(db_path, schemas.NORMALIZATION_FAILURES_TABLE)
+    assert len(failures) == 1
+    assert failures[0]["processor_fingerprint"] == "failing:v1"
+    assert "normalization exploded" in failures[0]["error_message"]
+    assert len(_rows(db_path, schemas.FILING_OCCURRENCES_TABLE)) == 1

@@ -18,6 +18,7 @@ from bs4 import BeautifulSoup, Comment
 
 from defs.sec_forms.cover import BoundaryInput, find_cover_boundary_for_profile
 from defs.sec_forms.cover.profiles import CoverProfile, get_profile
+from defs.sec_forms.page_markers import PageMarkerAnalysis, analyze_page_markers
 from defs.tables.templates import apply_table_templates
 from defs.text import (
     heal_date_fragments,
@@ -73,6 +74,7 @@ class HybridCoverPreprocessor:
         html_text: str,
         company_name: str = "",
         metadata: dict[str, Any] | None = None,
+        page_analysis: PageMarkerAnalysis | None = None,
     ) -> CoverPreprocessResult:
         _ = company_name
         _ = metadata
@@ -84,7 +86,12 @@ class HybridCoverPreprocessor:
                 confidence=0.0,
                 reason="non_html_text",
                 cover_boundary=find_cover_boundary_for_profile(
-                    html_text, get_profile("GENERIC")
+                    BoundaryInput(
+                        html_text,
+                        representation="html",
+                        page_analysis=page_analysis,
+                    ),
+                    get_profile("GENERIC"),
                 ),
             )
 
@@ -123,8 +130,22 @@ class HybridCoverPreprocessor:
         boundary_source = normalize_checkbox_tokens(
             normalize_whitespace_and_tabs(converted_html)
         )
+        boundary_analysis = page_analysis
+        if (
+            boundary_analysis is None
+            or boundary_analysis.source_text != boundary_source
+        ):
+            # Table conversion and whitespace normalization create a new text
+            # frame. Re-detect text markers instead of carrying stale offsets.
+            boundary_analysis = analyze_page_markers(
+                boundary_source, representation="html"
+            )
         boundary = find_cover_boundary_for_profile(
-            BoundaryInput(boundary_source, representation="html"),
+            BoundaryInput(
+                boundary_source,
+                representation="html",
+                page_analysis=boundary_analysis,
+            ),
             self.profile,
         )
         table_blocks: list[str] = []

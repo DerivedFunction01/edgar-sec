@@ -3,11 +3,11 @@
 Acquires and stores raw SEC filing documents (HTML, SGML, iXBRL XML) as
 content-addressed, zstd-compressed SQLite BLOBs, linked to corporate
 occurrences from a finalized Phase 02 target plan. Normalization runs during
-acquisition (see Normalization below); parsing, envelope unpacking, and section
-extraction remain a later processing track built on `document_blobs`. The phase
-tests also exercise the downstream `DeepNormalizer` against small tracked
-archetype segments; the shared table corpus and converter goldens live under
-`defs/tests/fixtures/tables/`.
+acquisition into a separate, versioned normalized artifact (see Normalization
+below); parsing, envelope unpacking, and section extraction remain a later
+processing track. The phase tests also exercise the downstream `DeepNormalizer`
+against small tracked archetype segments; the shared table corpus and converter
+goldens live under `defs/tests/fixtures/tables/`.
 
 ## Scope boundary
 
@@ -16,12 +16,15 @@ archetype segments; the shared table corpus and converter goldens live under
   metadata directly.
 - Fetches each unique document locator exactly once; deduplicates by
   `doc_id = sha256(accession + "/" + document_path)`.
+- `document_blobs` stores only the exact fetched source bytes plus their
+  SHA-256 digest (`raw_payload_sha256`); processor output never replaces them.
 - Provenance rows (`filing_occurrences`) carry `source_cik`, `accession`,
   `document_path`, `form`, `filing_date`, `report_date`, and `doc_id`. Company
   name/family are intentionally absent here and are re-derived downstream by
   joining `source_cik` against Phase 01 metadata.
 - Missing (404) and failed document acquisitions are permanently recorded in
-  `acquisition_failures` for auditability and queryability.
+  `acquisition_failures`; normalization failures are recorded separately in
+  `normalization_failures` without discarding the raw source.
 
 ## Command surface
 
@@ -48,6 +51,18 @@ archetype segments; the shared table corpus and converter goldens live under
 .venv/bin/python -m phases.025_webpage_storage.cli fill-fixture \
   --plan-dir <phase02-plan> --fixture-id <fixture-id> --workers 8
 
+# Append a larger child plan to the same completed fixture cache
+.venv/bin/python -m phases.025_webpage_storage.cli fill-fixture \
+  --plan-dir <expanded-phase02-plan> --fixture-id <fixture-id> --workers 8
+
+# Root-launcher convenience form of the same append operation
+.venv/bin/python run.py append \
+  --plan-dir <expanded-phase02-plan> --fixture-id <fixture-id>
+
+# Explicitly retry prior acquisition failures for this plan
+.venv/bin/python -m phases.025_webpage_storage.cli fill-fixture \
+  --plan-dir <phase02-plan> --fixture-id <fixture-id> --retry-failures
+
 # Manage the same-host production SEC broker used by process workers
 .venv/bin/python -m defs.sec_http.broker start
 .venv/bin/python -m defs.sec_http.broker status
@@ -71,14 +86,15 @@ ArchiveFetcher  ── fixture (offline SQLite CAS) | production (managed SEC br
    │
    ▼
 ChunkWorkers (ThreadPoolExecutor, concurrent) → isolated chunk-XXXXX.db
-    (document_blobs, filing_occurrences, acquisition_failures, _committed_chunks)
+    (document_blobs, filing_occurrences, normalized_documents,
+     normalization_failures, acquisition_failures, _committed_chunks)
 
 Fixture fill uses fetch threads with one coordinator SQLite writer. Production
 process workers route through one broker-owned SEC client and aggregate limiter.
    │
    ▼
 PartitionMerger → single atomic merge into partition-000XX.sqlite
-    (document_blobs, filing_occurrences, acquisition_failures, _committed_chunks, indexes)
+    (all chunk tables copied verbatim, then indexes)
 ```
 
 All SQLite access goes through `defs.sql` AST nodes + `SqlExecutor`; the phase
@@ -105,6 +121,14 @@ fetch threads, so pacing, cache, failure ledger, and metrics aggregate through
 a single rate limiter instead of one independent limiter per thread. Production
 mode replaces that shared client with the managed broker.
 
+`fill-fixture` treats the fixture ID as a reusable raw-document cache. It may
+be rerun with a larger child plan after completion: existing blobs are skipped
+by `doc_id`, new locators are appended, and the operation remains idempotent.
+Known acquisition failures are skipped by default and retried only with
+`--retry-failures`. Coverage and plan lineage are atomically recorded in
+`fixture.manifest.json` beside the SQLite database. The fixture remains a raw
+CAS and does not store filing occurrence rows.
+
 ## Managed SEC broker
 
 Production workers never construct their own SEC client. `run_partition`
@@ -121,16 +145,44 @@ healthy broker is reused, a stale socket is replaced.
 
 ## Normalization
 
-Normalization is **on by default** during acquisition. Each fetched document
-flows through `GenericPreprocessor` → `FormRouter` → form-specific normalizer →
-`DeepNormalizer`, and the normalized text is what gets stored as the payload.
-Pass `--no-normalize` to store raw payloads instead. The boundary is
-normalization only — parsing and section extraction are later phases.
+Raw acquisition and normalization are separate artifacts:
+
+- `document_blobs` always holds the exact fetched bytes plus `raw_payload_sha256`
+  (schema version 2).
+- When a processor is configured (the CLI default), its output is stored in
+  `normalized_documents` keyed by
+  `normalized_artifact_id = sha256(raw_digest:processor_fingerprint:schema_version)`.
+  Each row carries the normalized payload, payload digest, byte size, output
+  MIME/representation, processor fingerprint, schema version, and the
+  processor's stable metadata serialized deterministically (sorted-key JSON).
+  Topology evidence is part of that metadata: cover boundary lines, TOC span,
+  body-start anchor/confidence/rejection reasons, and the closing region
+  (`closing_start_line`, `closing_kind`, `closing_confidence`) detected only
+  after a validated body anchor.
+- `--no-normalize` runs raw-only acquisition: no normalized rows are written,
+  and `_committed_chunks` records the `raw-only` processor fingerprint.
+- Committed chunks record their processor fingerprint and normalized schema
+  version. A committed chunk never satisfies a run with a different
+  fingerprint; the stale audit row is dropped and the chunk is reprocessed,
+  reusing the stored raw blobs without re-fetching.
+- A processor failure is recorded in `normalization_failures`; the raw blob,
+  occurrences, and the chunk's success status are unaffected.
+
+The boundary is normalization only — parsing and section extraction are later
+phases.
 
 - `DeepNormalizer` — coordinates form-specific and generic normalization passes
 - `HybridCoverPreprocessor` — in-place DOM cover preprocessor driven by a typed form-family cover profile. It preserves organic filing prose while decomposing layout tables and healing split phrases (checkbox normalization, phrase-sequence healing, date fragment healing). Behavior is profile-gated: annual-only anchors never apply to quarterly, current-report, or no-cover profiles.
 - Form-family normalizers — `Form10KNormalizer`, `Form10QNormalizer`, `Form8KNormalizer` route through `HybridCoverPreprocessor` with their profile; `GenericFormNormalizer` is the fallback
 - `FormRouter` — routes documents to form-specific evaluators and normalizers
+- ASCII span/action pass — after body-start detection, non-HTML text runs through
+  `defs.text.reflow.reflow_ascii`: hard-wrapped prose is unwrapped, untagged
+  fixed-width tables are wrapped in `<TABLE>`/`</TABLE>` with rows preserved
+  exactly, and every ambiguous block stays preserved and untagged. Existing
+  tagged tables are masked and restored byte-for-byte. Everything before the
+  validated body anchor is preserved; with no body anchor the pass is skipped.
+  Decision counts are published in processor metadata (`reflow_unwrap_blocks`,
+  `reflow_preserve_blocks`, `reflow_tag_blocks`).
 
 The processing pipeline: `GenericPreprocessor` → `FormRouter` → form-specific normalizer → `DeepNormalizer`. Shared table processing lives under `defs/tables/`; cover-specific table templates live under `defs/tables/templates/cover.py`.
 
@@ -169,3 +221,36 @@ a persisted setting.
 Generated test evidence uses the shared `.artifacts/test-runs/` root through
 `defs.runtime.paths`; acceptance fixture databases remain under
 `.artifacts/acceptance/webpage_storage/fixtures/`.
+
+### Document corpus review
+
+The document golden workflow starts from a fixture ID. The phase resolves the
+SQLite database and required `fixture.manifest.json` through the shared fixture
+path contract; callers do not pass an arbitrary database path. Promotion writes
+source bytes and review fields to the tracked corpus at
+`tests/fixtures/documents/document_corpus_v1.parquet` and records bounded
+lineage in `tests/fixtures/documents/manifest.json`:
+
+```bash
+.venv/bin/python -m phases.025_webpage_storage.tools.promote_document_corpus \
+  --fixture-id <fixture-id>
+
+.venv/bin/python -m phases.025_webpage_storage.tools.build_document_review_artifacts \
+  --fixture-id <fixture-id> --limit 100 \
+  --output .artifacts/test-runs/webpage_storage/document-reviews/<run-id>
+
+.venv/bin/python -m phases.025_webpage_storage.tools.chunk_document_reviews \
+  .artifacts/test-runs/webpage_storage/document-reviews/<run-id>/review_manifest.jsonl \
+  --output .artifacts/test-runs/webpage_storage/document-reviews/<run-id>/batches \
+  --limit 100 --size 20
+```
+
+Review artifacts contain source, preprocessed text, current normalized output,
+sanitized HTML where applicable, and bounded page-marker/debug analysis. Edit
+the JSONL batch manifest to classify failures, regenerate into a new run after
+code changes, and use `dump_document_review_set.py` for a focused temporary
+review file. Accepted expectations are promoted explicitly; deferred behavior
+can be recorded with `--status accepted_current_behavior --deferred
+paragraph_healing`. Pytest compares accepted rows exactly and writes
+divergence reports under `.artifacts/test-runs/`; pending rows remain visible
+but do not fail normal development tests.

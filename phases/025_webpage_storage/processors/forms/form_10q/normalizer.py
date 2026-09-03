@@ -15,11 +15,14 @@ class Form10QNormalizer(FormNormalizer):
     """Form 10-Q normalizer for cover metadata and structural headings."""
 
     def preprocess_cover(
-        self, html_text: str, metadata: dict[str, Any] | None = None
+        self,
+        html_text: str,
+        metadata: dict[str, Any] | None = None,
+        page_analysis=None,
     ) -> CoverPreprocessResult:
         _ = metadata
         return HybridCoverPreprocessor(get_profile("10-Q")).preprocess(
-            html_text, metadata=metadata
+            html_text, metadata=metadata, page_analysis=page_analysis
         )
 
     def normalize_headers(

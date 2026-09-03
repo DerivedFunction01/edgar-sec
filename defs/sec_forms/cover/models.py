@@ -4,6 +4,10 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 from enum import StrEnum
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from defs.sec_forms.page_markers import PageMarkerAnalysis
 
 
 class BoundarySignal(StrEnum):
@@ -76,6 +80,7 @@ class BoundaryInput:
 
     text: str
     representation: str = "ascii"
+    page_analysis: PageMarkerAnalysis | None = None
 
 
 @dataclass(frozen=True, slots=True)

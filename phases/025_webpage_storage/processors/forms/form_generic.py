@@ -49,9 +49,17 @@ class GenericFormNormalizer(FormNormalizer):
         self,
         html_text: str,
         metadata: dict[str, Any] | None = None,
+        page_analysis=None,
     ) -> CoverPreprocessResult:
         _ = metadata
-        boundary = find_cover_boundary(BoundaryInput(html_text), None)
+        boundary = find_cover_boundary(
+            BoundaryInput(
+                html_text,
+                representation="html",
+                page_analysis=page_analysis,
+            ),
+            None,
+        )
         return CoverPreprocessResult(
             html=html_text,
             matched=False,

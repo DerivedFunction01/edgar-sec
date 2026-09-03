@@ -126,6 +126,11 @@ def build_parser() -> argparse.ArgumentParser:
         help="fetch threads (defaults to machine-local runtime threads)",
     )
     fill_fixture_parser.add_argument(
+        "--retry-failures",
+        action="store_true",
+        help="retry acquisition failures belonging to the current plan",
+    )
+    fill_fixture_parser.add_argument(
         "--no-progress", action="store_true", help="disable the tqdm progress bar"
     )
     return parser
@@ -344,6 +349,7 @@ def main(argv: list[str] | None = None) -> int:
                         fixture_id=fixture_id,
                         limit=args.limit,
                         workers=workers,
+                        retry_failures=args.retry_failures,
                         progress=progress_cb,
                     )
                 finally:
