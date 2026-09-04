@@ -14,16 +14,20 @@ class TemplateResult:
     """Return value from table template matchers.
 
     Attributes:
-        text:         The rendered string to replace the table node with.
-        bypass_guard: When True, the caller must skip the numeric-density
-                      guard and unwrap check.  Use this for templates that
-                      intentionally handle non-numeric prose (checkboxes,
-                      cover-page layout grids, etc.) where the density test
-                      would wrongly discard a successful render.
+        text:          The rendered string to replace the table node with.
+        bypass_guard:  When True, the caller must skip the numeric-density
+                       guard and unwrap check.  Use this for templates that
+                       intentionally handle non-numeric prose (checkboxes,
+                       cover-page layout grids, etc.) where the density test
+                       would wrongly discard a successful render.
+        template_name: Canonical name of the template function that produced
+                       this result (e.g. ``"fair_value_template"``).  Set by
+                       the dispatcher; empty string when called directly.
     """
 
     text: str
     bypass_guard: bool = field(default=False)
+    template_name: str = field(default="")
 
 
 def row_aware_fallback(source_grid: list[list[str]]) -> str | None:
@@ -224,5 +228,7 @@ __all__ = [
     "TemplateResult",
     "cell_lines",
     "cell_text",
+    "oriented_prose_fallback",
+    "row_aware_fallback",
     "span_grid",
 ]

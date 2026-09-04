@@ -182,6 +182,8 @@ def merge_range_columns(
 ) -> None:
     """Merge standalone range separator columns (–, -, to, etc.) and their bounds into Column L."""
     width = max(map(len, rows), default=0)
+    last_hdr_row = header_count - 1 if header_count > 0 else -1
+
     for column in range(1, width - 1):
         if column in drop:
             continue
@@ -212,26 +214,73 @@ def merge_range_columns(
         )
         if left is None or right is None:
             continue
-        left_has_header = any(rows[r][left].strip() for r in range(header_count))
-        right_has_header = any(rows[r][right].strip() for r in range(header_count))
-        if left_has_header and right_has_header:
+
+        # Check distinctness of header text across candidate columns
+        if header_count > 0:
+            # 1. Check last row of header
+            if last_hdr_row >= 0:
+                l_last = (
+                    rows[last_hdr_row][left].strip()
+                    if left < len(rows[last_hdr_row])
+                    else ""
+                )
+                c_last = (
+                    rows[last_hdr_row][column].strip()
+                    if column < len(rows[last_hdr_row])
+                    else ""
+                )
+                r_last = (
+                    rows[last_hdr_row][right].strip()
+                    if right < len(rows[last_hdr_row])
+                    else ""
+                )
+                if l_last and r_last and l_last.casefold() != r_last.casefold():
+                    continue
+                if l_last and c_last and l_last.casefold() != c_last.casefold():
+                    continue
+                if c_last and r_last and c_last.casefold() != r_last.casefold():
+                    continue
+
+            # 2. Check full combined header across all header rows
             left_hdr = " ".join(
                 rows[r][left].strip()
                 for r in range(header_count)
-                if rows[r][left].strip()
+                if left < len(rows[r]) and rows[r][left].strip()
+            )
+            col_hdr = " ".join(
+                rows[r][column].strip()
+                for r in range(header_count)
+                if column < len(rows[r]) and rows[r][column].strip()
             )
             right_hdr = " ".join(
                 rows[r][right].strip()
                 for r in range(header_count)
-                if rows[r][right].strip()
+                if right < len(rows[r]) and rows[r][right].strip()
             )
-            if left_hdr and right_hdr and left_hdr != right_hdr:
+            if left_hdr and right_hdr and left_hdr.casefold() != right_hdr.casefold():
+                continue
+            if left_hdr and col_hdr and left_hdr.casefold() != col_hdr.casefold():
+                continue
+            if col_hdr and right_hdr and col_hdr.casefold() != right_hdr.casefold():
                 continue
 
+        # Check if there is at least one genuine range pair in the body
+        has_valid_range = any(
+            is_range_marker(rows[r][column].strip())
+            and rows[r][left].strip()
+            and rows[r][right].strip()
+            and not is_financial_placeholder(rows[r][left].strip())
+            and not is_financial_placeholder(rows[r][right].strip())
+            for r in range(header_count, len(rows))
+            if column < len(rows[r]) and left < len(rows[r]) and right < len(rows[r])
+        )
+        if not has_valid_range:
+            continue
+
         for row in range(header_count, len(rows)):
-            marker = rows[row][column].strip()
-            l_val = rows[row][left].strip()
-            r_val = rows[row][right].strip()
+            marker = rows[row][column].strip() if column < len(rows[row]) else ""
+            l_val = rows[row][left].strip() if left < len(rows[row]) else ""
+            r_val = rows[row][right].strip() if right < len(rows[row]) else ""
             if is_range_marker(marker):
                 if (
                     l_val
@@ -415,9 +464,24 @@ def fold_dropped_headers(
                 ),
             )
             if destination is not None and destination < len(rows[row]):
-                rows[row][destination] = " ".join(
-                    part for part in (rows[row][destination].strip(), label) if part
-                )
+                dest_val = rows[row][destination].strip()
+                if not dest_val:
+                    rows[row][destination] = label
+                elif (
+                    label.casefold() == dest_val.casefold()
+                    or label.casefold() in dest_val.casefold()
+                ):
+                    continue
+                elif dest_val.casefold() in label.casefold():
+                    rows[row][destination] = label
+                elif (
+                    row == header_count - 1
+                    and len(label.split()) > 1
+                    and len(dest_val.split()) > 1
+                ):
+                    continue
+                else:
+                    rows[row][destination] = f"{dest_val} {label}"
 
 
 __all__ = [

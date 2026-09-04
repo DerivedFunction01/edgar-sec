@@ -23,6 +23,7 @@ from defs.taxonomy.probe.census import (
     census_vocabulary,
     compute_distinctive_ngrams,
 )
+from defs.taxonomy.probe.exporter import export_family_dataset
 from defs.taxonomy.probe.inspector import inspect_table_record
 from defs.taxonomy.probe.rules import (
     count_probe_cache_tables,
@@ -155,6 +156,17 @@ def main(argv: list[str] | None = None) -> int:
         type=int,
         default=0,
         help="Number of jittery / high-defect table samples to dump during profiling",
+    )
+    parser.add_argument(
+        "--export-dataset",
+        action="store_true",
+        help="Export a family-specific Parquet dataset with HTML, healed grids, and rendered output",
+    )
+    parser.add_argument(
+        "--output-parquet",
+        type=Path,
+        default=None,
+        help="Custom output path for the exported Parquet dataset",
     )
     parser.add_argument(
         "--json",
@@ -439,6 +451,7 @@ def main(argv: list[str] | None = None) -> int:
             or args.cluster_unclassified
             or args.synthesize_spec
             or args.detect_unions
+            or args.export_dataset
         )
     ):
         from defs.taxonomy.probe.profiler import (
@@ -461,6 +474,20 @@ def main(argv: list[str] | None = None) -> int:
                 json.dumps(result.to_dict(), indent=2), encoding="utf-8"
             )
             print(f"Wrote profile results to {args.json}")
+        return 0
+
+    # Mode: Export Family Dataset
+    if args.export_dataset:
+        if not args.family:
+            print("Error: --export-dataset requires --family", file=sys.stderr)
+            return 1
+        print(f"Exporting family '{args.family}' dataset...")
+        out = export_family_dataset(
+            family=args.family,
+            limit=args.limit,
+            output_path=args.output_parquet,
+        )
+        print(f"Successfully exported dataset to {out}")
         return 0
 
     return 0

@@ -145,9 +145,33 @@ def _validated_corpus(corpus: str) -> tuple[int, int, int, list[str], Path]:
     return matched, divergent, invalid, divergent_ids, report_root
 
 
+def _available_corpuses() -> list[str]:
+    if not CORPUS_PATH.exists():
+        return []
+    records = read_records(
+        CORPUS_PATH,
+        "parquet",
+        spec=DatasetSpec(
+            name="validated_table_corpus_v2",
+            schema_version="1",
+            key_field="table_id",
+            arrow_schema=CORPUS_SCHEMA,
+            required_fields=("corpus",),
+        ),
+    )
+    seen: set[str] = set()
+    corpuses: list[str] = []
+    for record in records:
+        corpus = str(record.get("corpus", "")).strip()
+        if corpus and corpus not in seen:
+            seen.add(corpus)
+            corpuses.append(corpus)
+    return corpuses
+
+
 @pytest.mark.parametrize(
     "corpus",
-    ["apple_2025", "jnj_2025", "jpmorgan_2025", "apd_2025"],
+    _available_corpuses(),
 )
 def test_validated_table_corpus(corpus: str) -> None:
     matched, divergent, invalid, divergent_ids, report_root = _validated_corpus(corpus)
