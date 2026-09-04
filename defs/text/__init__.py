@@ -2,6 +2,15 @@
 
 from __future__ import annotations
 
+from .automaton import (
+    ClassificationMatch,
+    LexicalMatcher,
+    MatchedTerm,
+    MatchPayload,
+    MultiPatternAutomaton,
+    compile_family_automaton,
+    compile_lexical_matcher,
+)
 from .bow import (
     BowScore,
     CaseMode,
@@ -58,11 +67,6 @@ from .healing import (
     strip_alphanumeric_words,
     strip_boxdot_spacers,
 )
-from .automaton import (
-    MatchPayload,
-    MultiPatternAutomaton,
-    compile_family_automaton,
-)
 from .html import FastHtmlNode, FastHtmlTree, parse_html
 from .tokens import (
     BULLET_MARKER_RE,
@@ -98,6 +102,7 @@ __all__ = [
     "YEAR_TOKEN_RE",
     "BowScore",
     "CaseMode",
+    "ClassificationMatch",
     "CompiledEvidencePack",
     "DateComponents",
     "DateFormat",
@@ -107,7 +112,9 @@ __all__ = [
     "FastHtmlNode",
     "FastHtmlTree",
     "LexicalEvidencePack",
+    "LexicalMatcher",
     "MatchPayload",
+    "MatchedTerm",
     "MultiPatternAutomaton",
     "ParsedDate",
     "PhraseSequenceRule",
@@ -117,6 +124,7 @@ __all__ = [
     "classify_mark_line",
     "compile_evidence_pack",
     "compile_family_automaton",
+    "compile_lexical_matcher",
     "extract_years",
     "heal_date_fragments",
     "heal_split_lines",

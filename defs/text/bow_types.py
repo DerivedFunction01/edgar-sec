@@ -39,6 +39,17 @@ class CompiledTier:
     ngram_index: dict[int, frozenset[tuple[str, ...]]] | None = None
 
 
+@dataclass(frozen=True, slots=True)
+class CompiledEvidencePack:
+    """A pack compiled once for reuse across many units."""
+
+    name: str
+    tiers: tuple[CompiledTier, ...]
+    band_max_value: tuple[int, ...]
+    exclusions: frozenset[str] = frozenset()
+    automaton: object | None = None
+
+
 def token_to_key(token: Token, mode: CaseMode) -> str | None:
     """Return the lookup key for a token under a case mode, or None to skip."""
     if mode is CaseMode.FOLD:
@@ -63,4 +74,11 @@ def window_key(
     return " ".join(keys)
 
 
-__all__ = ["CaseMode", "CompiledTier", "Token", "token_to_key", "window_key"]
+__all__ = [
+    "CaseMode",
+    "CompiledEvidencePack",
+    "CompiledTier",
+    "Token",
+    "token_to_key",
+    "window_key",
+]

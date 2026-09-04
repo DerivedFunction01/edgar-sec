@@ -123,7 +123,13 @@ def count_document_blobs(
     try:
         stmt = Select(
             source=Table("document_blobs"),
-            projection=(Aggregate(function=AggregateFunction.COUNT),),
+            projection=(
+                Aggregate(
+                    function=AggregateFunction.COUNT,
+                    argument=Column(Identifier("doc_id")),
+                ),
+            ),
+
             where=Membership(
                 value=Column(Identifier("mime_type")),
                 source=ValueList(tuple(mime_types)),

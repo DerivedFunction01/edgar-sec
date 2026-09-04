@@ -19,7 +19,13 @@ from defs.text.bow_match import (
     match_unigrams,
     tier_confidence,
 )
-from defs.text.bow_types import CaseMode, CompiledTier, Token, token_to_key
+from defs.text.bow_types import (
+    CaseMode,
+    CompiledEvidencePack,
+    CompiledTier,
+    Token,
+    token_to_key,
+)
 
 _DASH_CHARS = "-\u2010\u2011\u2012\u2013\u2014\u2212"
 _DASH_TRANSLATION = str.maketrans({char: " " for char in _DASH_CHARS})
@@ -137,16 +143,6 @@ class BowScore:
     novel_count: int = 0
     support_score: int = 0
     reason: str = ""
-
-
-@dataclass(frozen=True, slots=True)
-class CompiledEvidencePack:
-    """A pack compiled once for reuse across many units."""
-
-    name: str
-    tiers: tuple[CompiledTier, ...]
-    band_max_value: tuple[int, ...]
-    exclusions: frozenset[str] = frozenset()
 
 
 def tokenize(text: str) -> list[Token]:
@@ -271,6 +267,11 @@ def compile_evidence_pack(pack: LexicalEvidencePack) -> CompiledEvidencePack:
             raise ValueError(f"duplicate tier name {tier.name!r} in pack {pack.name!r}")
         names.add(tier.name)
         compiled.append(_build_compiled_tier(tier))
+
+    from defs.text.automaton import compile_family_automaton
+
+    automaton = compile_family_automaton([pack])
+
     return CompiledEvidencePack(
         name=pack.name,
         tiers=tuple(compiled),
@@ -280,6 +281,7 @@ def compile_evidence_pack(pack: LexicalEvidencePack) -> CompiledEvidencePack:
             for term in pack.exclusion_terms
             for token in _tokenize_term(term)
         ),
+        automaton=automaton,
     )
 
 
@@ -334,13 +336,36 @@ def score_tokens(
     current_band_priority: int | None = None
     current_band_max = 0
 
+    matched_by_tier: dict[str, dict[str, list[int]]] = {}
+    if compiled.automaton is not None:
+        raw_matches = compiled.automaton.scan_tokens(tokens)  # type: ignore[attr-defined]
+        for pos, payload in raw_matches:
+            if payload.is_exclusion:
+                continue
+            start_pos = pos - payload.token_length + 1
+            tier_dict = matched_by_tier.setdefault(payload.tier_name, {})
+            tier_dict.setdefault(payload.term, []).append(start_pos)
+
     for tier_index, tier in enumerate(compiled.tiers):
         if tier.priority != current_band_priority:
             current_band_priority = tier.priority
             current_band_max = tier.value
         evaluated.append(tier.name)
-        if tier.match_kind == "unigram":
-            matched = match_unigrams(tokens, tier.unigrams, tier.case_mode)
+        if compiled.automaton is not None:
+            matched = matched_by_tier.get(tier.name, {})
+            tier_hits = [
+                EvidenceHit(
+                    tier=tier.name,
+                    term=term,
+                    match_kind=tier.match_kind,
+                    count=len(positions),
+                    positions=tuple(positions),
+                    case_mode=tier.case_mode.value,
+                )
+                for term, positions in sorted(matched.items())
+            ]
+        elif tier.match_kind == "unigram":
+            matched_u = match_unigrams(tokens, tier.unigrams, tier.case_mode)
             tier_hits = [
                 EvidenceHit(
                     tier=tier.name,
@@ -350,10 +375,10 @@ def score_tokens(
                     positions=tuple(positions),
                     case_mode=tier.case_mode.value,
                 )
-                for term, positions in sorted(matched.items())
+                for term, positions in sorted(matched_u.items())
             ]
         else:
-            matched = match_ngrams(tokens, tier.ngram_index or {}, tier.case_mode)
+            matched_n = match_ngrams(tokens, tier.ngram_index or {}, tier.case_mode)
             tier_hits = [
                 EvidenceHit(
                     tier=tier.name,
@@ -363,7 +388,7 @@ def score_tokens(
                     positions=tuple(positions),
                     case_mode=tier.case_mode.value,
                 )
-                for phrase, positions in sorted(matched.items())
+                for phrase, positions in sorted(matched_n.items())
             ]
         hits.extend(tier_hits)
         distinct = len(tier_hits)
