@@ -30,8 +30,7 @@ def toc_part_headings_are_body_rows(
     return bool(
         len(part_headings) >= 2
         and any(
-            TOC_ITEM_RE.match(value)
-            or RE_ITEM_REFERENCE.fullmatch(value.rstrip("."))
+            TOC_ITEM_RE.match(value) or RE_ITEM_REFERENCE.fullmatch(value.rstrip("."))
             for value in values
         )
     )

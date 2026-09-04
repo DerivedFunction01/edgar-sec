@@ -68,6 +68,7 @@ class CoverProfile:
     healing_rules: tuple[PhraseSequenceRule, ...]
     cover_evidence: CoverEvidencePack | None = None
     body_evidence: BodyEvidencePack | None = None
+    derived_taxonomy: dict | None = None
 
 
 def _make_profile(
@@ -78,6 +79,7 @@ def _make_profile(
     healing_rules: tuple[PhraseSequenceRule, ...],
     cover_evidence: CoverEvidencePack | None = None,
     body_evidence: BodyEvidencePack | None = None,
+    derived_taxonomy: dict | None = None,
 ) -> CoverProfile:
     return CoverProfile(
         family=family,
@@ -90,10 +92,16 @@ def _make_profile(
         healing_rules=healing_rules,
         cover_evidence=cover_evidence,
         body_evidence=body_evidence,
+        derived_taxonomy=derived_taxonomy,
     )
 
 
 def _build_profiles() -> dict[str, CoverProfile]:
+    from defs.sec_forms.forms.annual.taxonomy import (
+        FORM_10K_DERIVED,
+        FORM_20F_DERIVED,
+    )
+    from defs.sec_forms.forms.quarterly.taxonomy import FORM_10Q_DERIVED
     from defs.tables.templates import TableScope
 
     annual_evidence = build_annual_profile("10-K")
@@ -118,8 +126,11 @@ def _build_profiles() -> dict[str, CoverProfile]:
         + tuple(ANNUAL_ADDITIONAL_PHRASE_RULES),
         cover_evidence=annual_evidence.cover_evidence,
         body_evidence=annual_evidence.body_evidence,
+        derived_taxonomy=FORM_10K_DERIVED,
     )
-    annual_foreign = _dataclass_replace(annual_common, family="20-F")
+    annual_foreign = _dataclass_replace(
+        annual_common, family="20-F", derived_taxonomy=FORM_20F_DERIVED
+    )
     quarterly = _make_profile(
         family="10-Q",
         boundary=CoverBoundaryPolicy(
@@ -136,6 +147,7 @@ def _build_profiles() -> dict[str, CoverProfile]:
         healing_rules=QUARTERLY_PHRASE_RULES,
         cover_evidence=quarterly_evidence.cover_evidence,
         body_evidence=quarterly_evidence.body_evidence,
+        derived_taxonomy=FORM_10Q_DERIVED,
     )
     no_cover_8k = _make_profile(
         family="8-K",
@@ -145,6 +157,7 @@ def _build_profiles() -> dict[str, CoverProfile]:
         healing_rules=NO_COVER_PHRASE_RULES,
         cover_evidence=no_cover_evidence.cover_evidence,
         body_evidence=no_cover_evidence.body_evidence,
+        derived_taxonomy=None,
     )
     no_cover_6k = _dataclass_replace(no_cover_8k, family="6-K")
     generic = _make_profile(
@@ -155,6 +168,7 @@ def _build_profiles() -> dict[str, CoverProfile]:
         healing_rules=NO_COVER_PHRASE_RULES,
         cover_evidence=no_cover_evidence.cover_evidence,
         body_evidence=no_cover_evidence.body_evidence,
+        derived_taxonomy=None,
     )
     return {
         "10-K": annual_common,

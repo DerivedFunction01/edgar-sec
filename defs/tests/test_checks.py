@@ -16,6 +16,7 @@ from defs.runtime.env import scan_modified_environment_access
 from defs.runtime.paths import scan_artifact_path_literals
 from defs.runtime.scanners.clean_exit import scan_clean_exit_boundary
 from defs.runtime.scanners.compat import scan_legacy_shims
+from defs.runtime.scanners.dates import scan_date_patterns
 from defs.runtime.scanners.form_isolation import scan_form_isolation
 from defs.runtime.scanners.json_io import scan_json_io
 from defs.runtime.scanners.length import scan_modified_file_length
@@ -63,6 +64,10 @@ def test_registry_contains_all_scanners():
         "file-length",
         "form-isolation",
         "resource-allocation",
+        "path-construction",
+        "json-io",
+        "regex-alternations",
+        "date-patterns",
     ]
     for name in expected:
         assert name in names
@@ -589,3 +594,59 @@ def test_regex_alternations_scanner_allows_defs_regex_and_tests(repo):
     _git(repo, "add", "-A")
 
     assert scan_regex_alternations(repo_root=repo) == []
+
+
+# --- date-patterns scanner ----------------------------------------------------
+
+
+def test_date_patterns_scanner_flags_month_lists(repo):
+    phase = repo / "phases" / "02_filing_extraction" / "core"
+    phase.mkdir(parents=True)
+    (phase / "dates_helper.py").write_text(
+        'MONTHS = ["january", "february", "march"]\n',
+        encoding="utf-8",
+    )
+    findings = scan_date_patterns(repo_root=repo)
+    assert len(findings) >= 1
+    assert findings[0].scanner == "date-patterns"
+    assert "ad-hoc month list" in findings[0].message
+
+
+def test_date_patterns_scanner_flags_month_alternations(repo):
+    phase = repo / "phases" / "02_filing_extraction" / "core"
+    phase.mkdir(parents=True)
+    (phase / "dates_helper.py").write_text(
+        'MONTH_RE = re.compile(r"jan|feb|mar|apr")\n',
+        encoding="utf-8",
+    )
+    findings = scan_date_patterns(repo_root=repo)
+    assert len(findings) >= 1
+    assert findings[0].scanner == "date-patterns"
+
+
+def test_date_patterns_scanner_allows_defs_dates_and_tests(repo):
+    # Test files are exempt
+    t = repo / "phases" / "02_filing_extraction" / "tests" / "test_dates.py"
+    t.parent.mkdir(parents=True, exist_ok=True)
+    t.write_text('MONTHS = ["january", "february"]\n', encoding="utf-8")
+    _git(repo, "add", "-A")
+
+    # defs/text/dates.py is exempt
+    dates_module = repo / "defs" / "text"
+    dates_module.mkdir(parents=True, exist_ok=True)
+    (dates_module / "dates.py").write_text(
+        'MONTH_NAMES = ("january", "february")\n',
+        encoding="utf-8",
+    )
+    _git(repo, "add", "-A")
+
+    # Regular code importing from defs.text.dates is clean
+    phase = repo / "phases" / "02_filing_extraction" / "core"
+    phase.mkdir(parents=True, exist_ok=True)
+    (phase / "clean.py").write_text(
+        "from defs.text.dates import parse_date\n\ndate = parse_date('2025-01-01')\n",
+        encoding="utf-8",
+    )
+    _git(repo, "add", "-A")
+
+    assert scan_date_patterns(repo_root=repo) == []

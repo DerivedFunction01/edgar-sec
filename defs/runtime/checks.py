@@ -241,6 +241,21 @@ register(
 )
 
 
+def _run_date_patterns() -> list[ScannerFinding]:
+    from .scanners.dates import scan_date_patterns
+
+    return scan_date_patterns()
+
+
+register(
+    Scanner(
+        name="date-patterns",
+        description="scan modified code for ad-hoc month lists, month alternations, and date regexes",
+        run=_run_date_patterns,
+    )
+)
+
+
 def run_all(stream=None, scanners: Iterable[Scanner] | None = None) -> int:
     """Run scanners, printing descriptions and findings; 0 clean, else 1.
 

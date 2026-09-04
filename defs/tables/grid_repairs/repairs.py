@@ -2,14 +2,26 @@
 
 from __future__ import annotations
 
+import re
+
 from ..patterns import FOOTNOTE_RE, YEAR_TOKEN_RE
-from ..tokens import PREFIX_SYMBOLS, PREFIX_TOKENS, SUFFIX_TOKENS, is_numeric_cell
+from ..tokens import (
+    PREFIX_SYMBOLS,
+    PREFIX_TOKENS,
+    SUFFIX_TOKENS,
+    is_financial_placeholder,
+    is_numeric_cell,
+    is_numeric_start,
+    is_range_marker,
+)
 
 
 def is_section(row: list[str]) -> bool:
     """Determine if a row represents a text-only section header rather than data."""
     cells = [cell.strip().lower() for cell in row if cell.strip()]
-    return bool(cells) and all(not is_numeric_cell(cell) for cell in cells)
+    return bool(cells) and all(
+        not is_numeric_cell(cell) and not is_numeric_start(cell) for cell in cells
+    )
 
 
 def drop_header_only_year_spacers(
@@ -55,10 +67,11 @@ def drop_footnote_columns(
             for row in range(header_count, len(rows))
             if rows[row][column].strip() and not is_section(rows[row])
         ]
-        if not (
-            cells
-            and len(cells) <= (len(rows) - header_count) * 0.6
-            and all(FOOTNOTE_RE.match(cell) for cell in cells)
+        if (
+            not cells
+            or len(cells) > (len(rows) - header_count) * 0.6
+            or not all(FOOTNOTE_RE.match(cell) for cell in cells)
+            or any(re.search(r"\d{2,}", cell) for cell in cells)
         ):
             continue
         for row in range(header_count, len(rows)):
@@ -129,22 +142,23 @@ def merge_prefix_columns(
 ) -> None:
     """Merge standalone prefix symbols into the following numeric cell on the same row.
 
-    Only fires on sparse prefix columns where the symbol appears in a minority
-    of body rows. Consistent prefix columns (e.g. a dedicated currency column
-    used on every row) are left intact.
+    Only fires on sparse prefix cells within data columns. Dedicated prefix
+    columns where all non-empty cells are prefix symbols are handled by
+    drop_prefix_columns.
     """
     width = max(map(len, rows), default=0)
-    body_row_count = len(rows) - header_count
     for column in range(width - 1):
         if column in drop:
             continue
         body_cells = [
-            rows[row][column].strip() for row in range(header_count, len(rows))
+            rows[row][column].strip()
+            for row in range(header_count, len(rows))
+            if rows[row][column].strip()
         ]
+        if not body_cells or all(cell in PREFIX_SYMBOLS for cell in body_cells):
+            continue
         symbol_count = sum(1 for cell in body_cells if cell in PREFIX_SYMBOLS)
-        if symbol_count == 0 or (
-            body_row_count > 1 and symbol_count == body_row_count
-        ):
+        if symbol_count == 0:
             continue
         for row in range(header_count, len(rows)):
             prefix = rows[row][column].strip()
@@ -163,6 +177,79 @@ def merge_prefix_columns(
                 rows[row][next_column] = ""
 
 
+def merge_range_columns(
+    rows: list[list[str]], header_count: int, drop: set[int]
+) -> None:
+    """Merge standalone range separator columns (–, -, to, etc.) and their bounds into Column L."""
+    width = max(map(len, rows), default=0)
+    for column in range(1, width - 1):
+        if column in drop:
+            continue
+        body_cells = [
+            rows[row][column].strip()
+            for row in range(header_count, len(rows))
+            if rows[row][column].strip()
+        ]
+        if not body_cells or not all(is_range_marker(cell) for cell in body_cells):
+            continue
+        left = next(
+            (
+                c
+                for c in range(column - 1, -1, -1)
+                if c not in drop
+                and any(rows[r][c].strip() for r in range(header_count, len(rows)))
+            ),
+            None,
+        )
+        right = next(
+            (
+                c
+                for c in range(column + 1, width)
+                if c not in drop
+                and any(rows[r][c].strip() for r in range(header_count, len(rows)))
+            ),
+            None,
+        )
+        if left is None or right is None:
+            continue
+        left_has_header = any(rows[r][left].strip() for r in range(header_count))
+        right_has_header = any(rows[r][right].strip() for r in range(header_count))
+        if left_has_header and right_has_header:
+            left_hdr = " ".join(
+                rows[r][left].strip()
+                for r in range(header_count)
+                if rows[r][left].strip()
+            )
+            right_hdr = " ".join(
+                rows[r][right].strip()
+                for r in range(header_count)
+                if rows[r][right].strip()
+            )
+            if left_hdr and right_hdr and left_hdr != right_hdr:
+                continue
+
+        for row in range(header_count, len(rows)):
+            marker = rows[row][column].strip()
+            l_val = rows[row][left].strip()
+            r_val = rows[row][right].strip()
+            if is_range_marker(marker):
+                if (
+                    l_val
+                    and r_val
+                    and not is_financial_placeholder(l_val)
+                    and not is_financial_placeholder(r_val)
+                ):
+                    rows[row][left] = f"{l_val} – {r_val}"
+                    rows[row][column] = ""
+                    rows[row][right] = ""
+            elif not marker and not l_val and r_val:
+                rows[row][left] = r_val
+                rows[row][right] = ""
+
+        drop.add(column)
+        drop.add(right)
+
+
 def shift_sparse_numeric_cells_left(
     rows: list[list[str]], header_count: int, drop: set[int]
 ) -> None:
@@ -171,7 +258,6 @@ def shift_sparse_numeric_cells_left(
     This handles HTML rows that omit a currency-prefix cell and consequently
     start one physical column later than their neighboring period rows.
     """
-    del drop
     width = max(map(len, rows), default=0)
     numeric_counts = [
         sum(
@@ -185,18 +271,27 @@ def shift_sparse_numeric_cells_left(
         numeric_columns = [
             column
             for column, cell in enumerate(rows[row])
-            if is_numeric_cell(cell.strip())
+            if is_numeric_cell(cell.strip()) and column not in drop
         ]
-        if len(numeric_columns) < 2:
-            continue
         for column in numeric_columns:
-            target = column - 1
-            if target < 1 or rows[row][target].strip():
+            target = next((c for c in range(column - 1, 0, -1) if c not in drop), None)
+            if target is None or rows[row][target].strip():
                 continue
-            if (
+            target_has_header = any(
+                rows[r][target].strip() for r in range(header_count)
+            )
+            col_has_header = any(rows[r][column].strip() for r in range(header_count))
+            if target_has_header and col_has_header:
+                continue
+            is_majority = (
                 numeric_counts[target] >= 2
                 and numeric_counts[target] >= 2 * numeric_counts[column]
-            ):
+            )
+            is_complementary = numeric_counts[target] >= 1 and not any(
+                rows[r][target].strip() and rows[r][column].strip()
+                for r in range(header_count, len(rows))
+            )
+            if is_majority or is_complementary:
                 rows[row][target] = rows[row][column]
                 rows[row][column] = ""
 
@@ -297,17 +392,29 @@ def fold_dropped_headers(
     rows: list[list[str]], header_count: int, drop: set[int], kept: list[int]
 ) -> None:
     """Preserve header labels from dropped columns into the closest remaining column."""
+    data_kept = [t for t in kept if t > 0]
+    if not data_kept:
+        data_kept = kept
+    if not data_kept:
+        return
     for column in sorted(drop):
         for row in range(header_count):
+            if column >= len(rows[row]):
+                continue
             label = rows[row][column].strip()
             if not label:
                 continue
-            destination = next((target for target in kept if target > column), None)
-            if destination is None:
-                destination = next(
-                    (target for target in reversed(kept) if target < column), None
-                )
-            if destination is not None:
+            destination = min(
+                data_kept,
+                key=lambda target: (
+                    abs(target - column),
+                    bool(rows[row][target].strip())
+                    if target < len(rows[row])
+                    else False,
+                    target < column,
+                ),
+            )
+            if destination is not None and destination < len(rows[row]):
                 rows[row][destination] = " ".join(
                     part for part in (rows[row][destination].strip(), label) if part
                 )

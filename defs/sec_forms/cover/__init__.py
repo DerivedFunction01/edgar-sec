@@ -33,11 +33,14 @@ from defs.sec_forms.cover.models import (
 from defs.sec_forms.cover.structure import (
     RE_PART,
     RE_PART_ONE,
+    ParsedSection,
+    SectionKind,
     StructuralMatch,
     StructuralRole,
     is_continuation_prose,
     is_exact_heading,
     match_structural_line,
+    parse_section_heading,
 )
 from defs.sec_forms.cover.toc import (
     RE_TOC_HEADING,
@@ -80,6 +83,8 @@ __all__ = [
     "ItemDefinition",
     "PageMarkerKind",
     "PageMarkerSpan",
+    "ParsedSection",
+    "SectionKind",
     "StructuralMatch",
     "StructuralRole",
     "TocEvidence",
@@ -99,6 +104,7 @@ __all__ = [
     "is_exact_heading",
     "is_toc_row",
     "match_structural_line",
+    "parse_section_heading",
     "resolve_document_topology",
 ]
 

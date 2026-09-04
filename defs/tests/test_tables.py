@@ -453,6 +453,112 @@ def test_signature_fallback_renders_single_and_horizontal_signers_as_prose():
     assert "<TABLE>" not in result
 
 
+def test_signature_component_heals_mangled_name_and_marker():
+    html = """
+    <table>
+      <tr><td>/S/ S ATYA N ADELLA</td><td>Chairman and Chief Executive Officer</td></tr>
+      <tr><td>Satya Nadella</td></tr>
+    </table>
+    """
+    result = convert_html_tables_to_ascii(html)
+    assert "/s/ Satya Nadella" in result
+    assert "S ATYA" not in result
+    assert "/S/" not in result
+
+
+def test_signature_component_prefers_readable_spelling_over_all_caps():
+    html = """
+    <table>
+      <tr><td>Name</td><td>Title</td><td>Date</td></tr>
+      <tr><td>/s/ Timothy D. Cook</td><td>Chief Executive Officer</td><td>October 31, 2025</td></tr>
+      <tr><td>TIMOTHY D. COOK</td></tr>
+      <tr><td>/s/ Jane Doe</td><td>Director</td><td>October 31, 2025</td></tr>
+    </table>
+    """
+    result = convert_html_tables_to_ascii(html)
+    assert "/s/ Timothy D. Cook" in result
+    assert "TIMOTHY D. COOK" not in result
+
+
+def test_signature_component_renders_title_roster_without_dates():
+    html = """
+    <table>
+      <tr><td>Signature</td><td>Title</td></tr>
+      <tr><td>/s/ Jane Doe</td><td>Chief Executive Officer</td></tr>
+      <tr><td>/s/ John Smith</td><td>Director</td></tr>
+    </table>
+    """
+    result = convert_html_tables_to_ascii(html)
+    assert "<TABLE>" in result
+    assert "/s/ Jane Doe" in result
+    assert "/s/ John Smith" in result
+
+
+def test_signature_component_vetoes_marker_legend():
+    html = """
+    <table>
+      <tr><td>u</td><td>Indicates management compensatory plan.</td></tr>
+      <tr><td>*</td><td>Filed herewith.</td></tr>
+    </table>
+    """
+    result = convert_html_tables_to_ascii(html)
+    assert "Indicates management compensatory plan." in result
+    assert "Filed herewith." in result
+
+
+def test_signature_component_vetoes_prose_with_signature_word():
+    html = """
+    <table>
+      <tr><td>The signatures on the agreement</td><td>were verified carefully</td></tr>
+      <tr><td>before the closing</td><td>of the transaction</td></tr>
+    </table>
+    """
+    result = convert_html_tables_to_ascii(html)
+    assert "/s/" not in result
+
+
+def test_oriented_fallback_prefers_columns_for_topic_grid():
+    from defs.tables.templates.common import oriented_prose_fallback
+
+    prose_a = "The first topic discusses supply chain logistics across regions. " * 3
+    prose_b = "The second topic covers workforce development and training. " * 3
+    grid = [
+        [prose_a, prose_b],
+        [prose_a, prose_b],
+    ]
+    result = oriented_prose_fallback(grid)
+    assert result is not None
+    # Column-oriented: each column is one block, not one enormous row line.
+    assert prose_a.strip() in result
+    assert prose_b.strip() not in result.splitlines()[0]
+
+
+def test_oriented_fallback_prefers_rows_for_label_value_pairs():
+    from defs.tables.templates.common import oriented_prose_fallback
+
+    grid = [
+        ["Term", "Definition"],
+        ["Sponsor", "The entity that files the registration statement"],
+        ["Underwriter", "The firm that distributes the securities offering"],
+    ]
+    result = oriented_prose_fallback(grid)
+    lines = result.splitlines()
+    assert any("Sponsor" in line and "registration statement" in line for line in lines)
+
+
+def test_oriented_fallback_strips_blank_spacing():
+    from defs.tables.templates.common import oriented_prose_fallback
+
+    grid = [
+        ["Label", "", "Value one"],
+        ["", "", ""],
+        ["Second", "", "Value two"],
+    ]
+    result = oriented_prose_fallback(grid)
+    assert result is not None
+    assert not any(line == "" for line in result.splitlines()[1:-1])
+
+
 def test_table_token_registry_covers_all_currency_metadata():
     registered_symbols = {
         symbol

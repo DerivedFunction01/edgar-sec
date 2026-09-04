@@ -1,0 +1,23 @@
+"""Statutory disclosure and schedule concepts."""
+
+from __future__ import annotations
+
+from .exhibit_index import (
+    CANONICAL_EXHIBIT_HEADERS,
+    EXHIBIT_INDEX_SPEC,
+    EXHIBIT_INDEX_STATUTORY_PHRASES,
+)
+from .shares_purchased import (
+    CANONICAL_REPURCHASE_HEADERS,
+    SHARES_PURCHASED_SPEC,
+    SHARES_PURCHASED_STATUTORY_PHRASES,
+)
+
+__all__ = [
+    "CANONICAL_EXHIBIT_HEADERS",
+    "CANONICAL_REPURCHASE_HEADERS",
+    "EXHIBIT_INDEX_SPEC",
+    "EXHIBIT_INDEX_STATUTORY_PHRASES",
+    "SHARES_PURCHASED_SPEC",
+    "SHARES_PURCHASED_STATUTORY_PHRASES",
+]

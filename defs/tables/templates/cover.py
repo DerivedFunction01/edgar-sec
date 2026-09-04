@@ -35,18 +35,35 @@ def single_row_horizontal_template(source_grid: list[list[str]]) -> str | None:
     return " ".join(row)
 
 
-def cover_layout_template(source_grid: list[list[str]]) -> str | None:
+def cover_layout_template(
+    source_grid: list[list[str]],
+    *,
+    in_cover_scope: bool = False,
+) -> str | None:
     """Decompose and reorder cover address, state, EIN, and contact tables into clean prose blocks."""
-    if len(source_grid) < 2:
+    max_allowed_rows = 35 if in_cover_scope else 6
+    if len(source_grid) < 2 or len(source_grid) > max_allowed_rows:
         return None
 
     compact_grid = [[c.strip() for c in row if c.strip()] for row in source_grid]
     all_text = " ".join(c for r in compact_grid for c in r)
-    is_cover = bool(
-        (STATE_INCORPORATION_RE.search(all_text) or IRS_EIN_RE.search(all_text))
-        or (ADDRESS_RE.search(all_text) or ZIP_RE.search(all_text))
+
+    has_high_entropy = bool(
+        STATE_INCORPORATION_RE.search(all_text)
+        or IRS_EIN_RE.search(all_text)
+        or (
+            COMMISSION_FILE_RE.search(all_text)
+            and COMMISSION_FILE_VALUE_RE.search(all_text)
+        )
         or (REGISTRANT_NAME_RE.search(all_text) and len(compact_grid) <= 3)
     )
+    has_qualifier = bool(ADDRESS_RE.search(all_text) or ZIP_RE.search(all_text))
+
+    if in_cover_scope:
+        is_cover = has_high_entropy or has_qualifier
+    else:
+        is_cover = has_high_entropy
+
     if not is_cover:
         return None
 

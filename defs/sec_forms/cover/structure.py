@@ -8,9 +8,29 @@ free of annual-report-specific phrasing.
 from __future__ import annotations
 
 import re
+from dataclasses import dataclass
+from enum import Enum
 
 from defs.regex import build_alternation
 from defs.text.tokens import RE_BULLET_PREFIX
+
+
+class SectionKind(str, Enum):
+    """Canonical structural role for an SEC filing section."""
+
+    PART = "part"
+    ITEM = "item"
+
+
+@dataclass(frozen=True, slots=True)
+class ParsedSection:
+    """A parsed structural section heading or reference."""
+
+    kind: SectionKind
+    identifier: str
+    canonical_label: str
+    title: str = ""
+    is_exact_heading: bool = True
 
 
 class StructuralRole:
@@ -88,6 +108,91 @@ RE_ITEM_ONE_A = re.compile(
 # labels without changing this module.
 RE_PART_REFERENCE = re.compile(r"\bPART\s+(?:[IVXLCDM]+|\d+)\b", re.IGNORECASE)
 RE_ITEM_REFERENCE = re.compile(r"\bITEM\s+\d+(?:\.\d+)*[A-Z]?\b", re.IGNORECASE)
+
+# Anchored section headings for exact structure matching. Requires line-leading
+# structural tokens; disallows leading prose or filler words.
+_PART_HEADING_RE = re.compile(
+    r"^\s*(?:[\|+•\t-]\s*)?PART\s+([IVXLCDM]+|\d+)\b(?:\s*[:.\-]\s*|\s+)?(?:\(\s*continued\s*\))?(.*)$",
+    re.IGNORECASE,
+)
+_ITEM_HEADING_RE = re.compile(
+    r"^\s*(?:[\|+•\t-]\s*)?ITEMS?\s+(\d+[A-Z]?(?:\.\d{1,2})?)\b(?:\s*[:.\-]\s*|\s+)?(?:\(\s*continued\s*\))?(.*)$",
+    re.IGNORECASE,
+)
+_PART_INLINE_RE = re.compile(r"\bPART\s+([IVXLCDM]+|\d+)\b", re.IGNORECASE)
+_ITEM_INLINE_RE = re.compile(r"\bITEMS?\s+(\d+[A-Z]?(?:\.\d{1,2})?)\b", re.IGNORECASE)
+
+
+def parse_section_heading(
+    text: str,
+    *,
+    allow_inline: bool = False,
+) -> ParsedSection | None:
+    """Parse a structural Part or Item heading.
+
+    Guarantees:
+    - By default (``allow_inline=False``), requires line-leading structural tokens
+      (e.g., 'Item 1. Business', '| PART II |'). Leading prose or filler words
+      ('as noted in Item 1', 'pursuant to Item 7') return ``None``.
+    - Captures the canonical identifier ('I', 'II', '1', '1A', '7.01') and any trailing title.
+    - When ``allow_inline=True``, recognizes prose mentions but flags
+      ``is_exact_heading=False``.
+    """
+    if not text:
+        return None
+    stripped = text.strip()
+
+    # 1. Exact leading PART heading
+    part_match = _PART_HEADING_RE.match(stripped)
+    if part_match:
+        part_num = part_match.group(1).upper()
+        raw_title = part_match.group(2).strip()
+        title = raw_title.strip(":.- |+•\t")
+        return ParsedSection(
+            kind=SectionKind.PART,
+            identifier=part_num,
+            canonical_label=f"PART {part_num}",
+            title=title,
+            is_exact_heading=True,
+        )
+
+    # 2. Exact leading ITEM heading
+    item_match = _ITEM_HEADING_RE.match(stripped)
+    if item_match:
+        item_num = item_match.group(1).upper()
+        raw_title = item_match.group(2).strip()
+        title = raw_title.strip(":.- |+•\t")
+        return ParsedSection(
+            kind=SectionKind.ITEM,
+            identifier=item_num,
+            canonical_label=f"ITEM {item_num}",
+            title=title,
+            is_exact_heading=True,
+        )
+
+    # 3. Inline reference fallback
+    if allow_inline:
+        part_ref = _PART_INLINE_RE.search(stripped)
+        if part_ref:
+            part_num = part_ref.group(1).upper()
+            return ParsedSection(
+                kind=SectionKind.PART,
+                identifier=part_num,
+                canonical_label=f"PART {part_num}",
+                is_exact_heading=False,
+            )
+        item_ref = _ITEM_INLINE_RE.search(stripped)
+        if item_ref:
+            item_num = item_ref.group(1).upper()
+            return ParsedSection(
+                kind=SectionKind.ITEM,
+                identifier=item_num,
+                canonical_label=f"ITEM {item_num}",
+                is_exact_heading=False,
+            )
+
+    return None
+
 
 _CONTINUATION_WORDS = (
     "including",
@@ -221,10 +326,13 @@ __all__ = [
     "RE_PART",
     "RE_PART_ONE",
     "RE_PART_REFERENCE",
+    "ParsedSection",
+    "SectionKind",
     "StructuralMatch",
     "StructuralRole",
     "is_continuation_prose",
     "is_exact_heading",
     "is_preceding_continuation",
     "match_structural_line",
+    "parse_section_heading",
 ]

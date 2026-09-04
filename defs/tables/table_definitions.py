@@ -5,13 +5,11 @@ from __future__ import annotations
 import re
 import sys
 import warnings
+from typing import TYPE_CHECKING
 
 from bs4 import BeautifulSoup, Comment, FeatureNotFound, XMLParsedAsHTMLWarning
 
-# SEC filings are frequently served as XML (SGML/XHTML/XBRL) documents. The
-# repository deliberately parses them with an HTML parser for table layout,
-# so silence the bs4 warning rather than switching to an XML parser that
-# would change the layout model.
+# Parsed as HTML for table layout; silence the bs4 XML warning.
 warnings.filterwarnings("ignore", category=XMLParsedAsHTMLWarning)
 
 from .builder import GenericTable, HTMLTableConverter
@@ -28,14 +26,20 @@ from .templates import (
     apply_table_templates,
     bullet_list_template,
     cell_text,
+    oriented_prose_fallback,
     row_aware_fallback,
     signature_template,
     span_grid,
 )
-from .tokens import is_numeric_cell
+from .tokens import PREFIX_SYMBOLS, SUFFIX_TOKENS, is_numeric_cell
+
+if TYPE_CHECKING:
+    from defs.sec_forms.context import HtmlStructureIndex, SectionContext, TableContext
 
 _BORDER_PROPERTY_RE = re.compile(r"(?:^|;)border-(top|bottom):([^;]*)", re.IGNORECASE)
 _TOTAL_LABEL_RE = re.compile(r"\b(?:sub)?total\b", re.IGNORECASE)
+
+
 def _has_border(cell: object, side: str) -> bool:
     """Return whether an inline border declaration exists for a cell side."""
     style = re.sub(r"\s+", "", cell.get("style", ""))
@@ -114,20 +118,34 @@ def _detect_header_like_first_row(table: object, row_count: int) -> int:
 
 def _toc_starts_with_part_heading(
     source_grid: list[list[str]], scope: TableScope
-) -> bool:
+) -> int | None:
     """Keep a leading PART heading in the TOC body rather than as a header."""
     from .toc import PART_HEADING_RE, toc_part_headings_are_body_rows
 
+    if not toc_part_headings_are_body_rows(source_grid, is_toc=scope is TableScope.TOC):
+        return None
     first_row = next(
         (row for row in source_grid if any(value.strip() for value in row)), []
     )
     values = [value.strip() for value in first_row if value.strip()]
-    return (
+    if (
         len(values) <= 2
         and (len(values) == 1 or values[1].casefold() in {"page", "pages"})
-        and toc_part_headings_are_body_rows(source_grid, is_toc=scope is TableScope.TOC)
         and bool(PART_HEADING_RE.fullmatch(values[0]))
+    ):
+        return 0
+    second_row = next(
+        (row for row in source_grid[1:] if any(value.strip() for value in row)), []
     )
+    second_values = [value.strip() for value in second_row if value.strip()]
+    if (
+        len(values) == 1
+        and values[0].casefold() in {"page", "pages"}
+        and second_values
+        and PART_HEADING_RE.fullmatch(second_values[0])
+    ):
+        return 1
+    return None
 
 
 def _detect_section_row_indexes(
@@ -201,13 +219,13 @@ def _detect_section_rows(
         if match is None:
             padding = re.search(r"padding:\s*([^;]+)", style)
             if padding:
-                values = padding.group(1).split()
+                vals = padding.group(1).split()
                 left = (
-                    values[-1]
-                    if len(values) == 4
-                    else values[1]
-                    if len(values) >= 2
-                    else values[0]
+                    vals[-1]
+                    if len(vals) == 4
+                    else vals[1]
+                    if len(vals) >= 2
+                    else vals[0]
                 )
                 match = re.fullmatch(r"([0-9.]+)pt", left)
         if match:
@@ -263,7 +281,13 @@ def _heal_grid(
     for i, row in enumerate(rows):
         if header_count_override is not None:
             break
-        values = [cell.strip() for cell in row if cell.strip()]
+        values = [
+            cell.strip()
+            for cell in row
+            if cell.strip()
+            and cell.strip() not in PREFIX_SYMBOLS
+            and cell.strip() not in SUFFIX_TOKENS
+        ]
         numeric = sum(
             is_numeric_cell(cell) and not YEAR_TOKEN_RE.match(cell) for cell in values
         )
@@ -309,21 +333,31 @@ def _heal_grid(
     ]
     if debug:
         print(
-            f"[table-debug] first_numeric_row={first_numeric_row} "
-            f"selected header_count={header_count}",
+            f"[table-debug] first_numeric_row={first_numeric_row} selected header_count={header_count}",
             file=sys.stderr,
         )
         for index, row in enumerate(healed):
-            print(
-                f"[table-debug] healed "
-                f"{'header' if index < header_count else 'data'} row {index}: {row!r}",
-                file=sys.stderr,
-            )
+            tag = "header" if index < header_count else "data"
+            print(f"[table-debug] healed {tag} row {index}: {row!r}", file=sys.stderr)
     return healed, header_count
 
 
-def convert_html_tables_to_ascii(html_content: str, *, debug: bool = False) -> str:
-    """Convert valid HTML financial tables into standardized ASCII tables."""
+def convert_html_tables_to_ascii(
+    html_content: str,
+    *,
+    debug: bool = False,
+    section_context: SectionContext | None = None,
+    table_context: TableContext | None = None,
+    structure_index: HtmlStructureIndex | None = None,
+) -> str:
+    """Convert valid HTML financial tables into standardized ASCII tables.
+
+    The optional context arguments are accepted as an extension of the
+    public API (Phases E/F of the table-processing context refactor). When
+    ``None`` (the default), behavior is identical to the standalone
+    converter. When ``structure_index`` is passed, per-table context is
+    resolved dynamically for each table in multi-table documents.
+    """
     try:
         soup = BeautifulSoup(html_content, "lxml")
     except FeatureNotFound:  # pragma: no cover - parser availability varies
@@ -342,6 +376,26 @@ def convert_html_tables_to_ascii(html_content: str, *, debug: bool = False) -> s
         if len(rows) <= 1:
             table.unwrap()
             continue
+
+        ordinal = table_index + 1
+        effective_section, effective_table = section_context, table_context
+        if structure_index is not None:
+            from defs.sec_forms.context import SectionContext, TableContext
+
+            block = structure_index.block_for_table(ordinal)
+            if block:
+                effective_section = SectionContext(
+                    document_id=structure_index.document_id,
+                    source_sha256=structure_index.source_sha256,
+                    heading=block.text,
+                    preceding_blocks=block.preceding_blocks,
+                    following_blocks=block.following_blocks,
+                )
+            effective_table = TableContext(
+                section=effective_section,
+                table_ordinal=ordinal,
+                locator=f"table-{ordinal:06d}",
+            )
 
         # 1. Early signature and bullet block templates
         signature_output = signature_template(table)
@@ -370,23 +424,26 @@ def convert_html_tables_to_ascii(html_content: str, *, debug: bool = False) -> s
             join_fragmented_anchors=scope is TableScope.TOC,
         )
 
-        template_result = apply_table_templates(table, source_grid, scope=scope)
+        template_result = apply_table_templates(
+            table,
+            source_grid,
+            scope=scope,
+            section_context=effective_section,
+            table_context=effective_table,
+        )
         if template_result is not None:
             table.replace_with(soup.new_string(template_result.text))
             continue
 
-        # 3. Filter non-tabular blocks.
-        #    The numeric-density guard is intentional: tables used purely for
-        #    prose layout (< 15% numeric cells) are unwrapped to plain text.
-        #    Templates that match non-numeric cover grids or checkbox tables set
-        #    bypass_guard=True on their TemplateResult so they are consumed above
-        #    before ever reaching this check — no special handling needed here.
+        # 3. Filter non-tabular blocks (< 15% numeric cells are unwrapped to text).
         if (
             len(rows) < 3
             or not non_empty
             or (scope is not TableScope.TOC and numeric / len(non_empty) < 0.15)
         ):
             fallback = row_aware_fallback(source_grid)
+            if not fallback:
+                fallback = oriented_prose_fallback(source_grid)
             if fallback:
                 table.replace_with(soup.new_string(fallback))
             else:
@@ -414,9 +471,7 @@ def convert_html_tables_to_ascii(html_content: str, *, debug: bool = False) -> s
             debug=debug,
             span_groups=span_groups,
             table=table,
-            header_count_override=(
-                0 if _toc_starts_with_part_heading(source_grid, scope) else None
-            ),
+            header_count_override=(_toc_starts_with_part_heading(source_grid, scope)),
         )
         if not grid or len(grid[0]) <= 1:
             table.unwrap()

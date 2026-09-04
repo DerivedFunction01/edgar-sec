@@ -2,15 +2,17 @@
 
 from __future__ import annotations
 
+from typing import TYPE_CHECKING
+
 from .common import TemplateResult
 from .cover import (
     checkbox_grid_template,
     cover_layout_template,
     single_row_horizontal_template,
 )
+from .exhibit_index import exhibit_index_template
 from .presentation import (
     definition_table_template,
-    exhibit_index_template,
     footnote_template,
     linked_index_template,
     marked_list_template,
@@ -22,6 +24,10 @@ from .presentation import (
 )
 from .registration import registration_table_template
 from .scope import TableScope
+from .shares_purchased import shares_purchased_template
+
+if TYPE_CHECKING:
+    from defs.sec_forms.context import SectionContext, TableContext
 
 
 def apply_table_templates(
@@ -29,14 +35,18 @@ def apply_table_templates(
     source_grid: list[list[str]],
     *,
     scope: str | TableScope = TableScope.BODY,
+    section_context: SectionContext | None = None,
+    table_context: TableContext | None = None,
 ) -> TemplateResult | None:
     """Try specialized table layout templates in precedence order.
 
     Args:
-        table:       HTML table node.
-        source_grid: 2D cell text matrix.
-        scope:       Processing scope as a typed :class:`TableScope` or a
-                     legacy string ('cover', 'toc', 'body').
+        table: BeautifulSoup table node.
+        source_grid: Two-dimensional list of extracted cell strings.
+        scope: Logical table scope (``"cover"``, ``"toc"``, ``"body"``).
+        section_context: Optional logical section context for the table.
+        table_context: Optional representation-neutral table context.
+            Currently provenance-only; templates opt in explicitly.
 
     Returns:
         TemplateResult with rendered text and a ``bypass_guard`` flag that
@@ -44,14 +54,30 @@ def apply_table_templates(
         Returns ``None`` when no template matches.
     """
     typed_scope = TableScope.from_string(scope)
+    effective_section = section_context or (
+        table_context.section if table_context is not None else None
+    )
+    if typed_scope is TableScope.BODY and effective_section is not None:
+        if (
+            effective_section.cover_scope is not None
+            and effective_section.cover_scope.active
+        ):
+            typed_scope = TableScope.COVER
+        elif effective_section.scope is not None:
+            typed_scope = effective_section.scope
 
-    # 1. Cover & Registration templates (activated exclusively for cover scope)
-    if typed_scope is TableScope.COVER:
+    # 1. Cover & Registration templates (cover scope OR standalone without section context)
+    allow_cover = typed_scope is TableScope.COVER or (
+        effective_section is None and typed_scope is not TableScope.TOC
+    )
+    if allow_cover:
         res_reg = registration_table_template(source_grid)
         if res_reg:
             return TemplateResult(text=res_reg, bypass_guard=False)
 
-        res_cover = cover_layout_template(source_grid)
+        res_cover = cover_layout_template(
+            source_grid, in_cover_scope=(typed_scope is TableScope.COVER)
+        )
         if res_cover:
             return TemplateResult(text=res_cover, bypass_guard=True)
 
@@ -59,9 +85,10 @@ def apply_table_templates(
         if res_chk:
             return TemplateResult(text=res_chk, bypass_guard=True)
 
-        res_single = single_row_horizontal_template(source_grid)
-        if res_single:
-            return TemplateResult(text=res_single, bypass_guard=True)
+        if typed_scope is TableScope.COVER:
+            res_single = single_row_horizontal_template(source_grid)
+            if res_single:
+                return TemplateResult(text=res_single, bypass_guard=True)
 
     res_footnote = footnote_template(table, source_grid)
     if res_footnote:
@@ -71,9 +98,16 @@ def apply_table_templates(
     if res_marked:
         return TemplateResult(text=res_marked, bypass_guard=True)
 
-    res_exhibit = exhibit_index_template(source_grid)
+    res_exhibit = exhibit_index_template(source_grid, section_context=effective_section)
     if res_exhibit:
         return TemplateResult(text=res_exhibit, bypass_guard=True)
+
+    # 2. Specialized statutory & family schedule templates
+    res_shares = shares_purchased_template(
+        source_grid, section_context=effective_section
+    )
+    if res_shares:
+        return TemplateResult(text=res_shares, bypass_guard=False)
 
     res_titled_period = titled_period_table_template(source_grid)
     if res_titled_period:

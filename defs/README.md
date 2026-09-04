@@ -23,6 +23,8 @@ defs/
   regex/                # hierarchical regex builders, prefix-tree (trie) compaction, lookarounds
   storage/              # logical datasets, chunk backends, manifests, atomic publication
   sql/                  # SQL AST/compiler/executor boundary
+  tables/               # table grid healing, cell tokens, 2D layout templates, and TOC detection
+  taxonomy/             # table classification specs, multi-zone BoW gates, vocabulary census, empirical probe
   runtime/              # paths, settings registry, env resolution, artifacts/bundles,
                         # partitions, progress, CLI
   viewer/               # read-only local dataset/artifact viewer (see viewer/README.md)
@@ -40,6 +42,7 @@ defs/
   pipelines call to auto-start a broker. Manage it with
   `python -m defs.sec_http.broker {start,stop,status} [--socket PATH]`.
 - `sec_forms/` — shared SEC form definitions, semantic concepts, and cover-page contracts (see `sec_forms/README.md`).
+- `taxonomy/` — financial table taxonomy specifications, multi-zone BoW classification, vocabulary census, keyword density optimizer, and empirical probe engine (see `taxonomy/README.md`).
 - `text/` — domain-neutral text normalization, ASCII logical-unit classification (`logical_units.py`), the shared token-boundary lexical evidence engine (`bow.py`): ordered evidence tiers, distinct-hit policies, priority short-circuiting, and a compiled pack cache, and the conservative ASCII span/action reflow engine (`reflow.py`): `UNWRAP`/`PRESERVE`/`TAG_AND_PRESERVE` block decisions with exact source-span rendering, bounded blank-line table bridging, and no-reflow without a validated body anchor. Form-specific and extraction-specific vocabulary lives in the owning evidence packs (`sec_forms/forms/<form>/` or the consuming phase); these modules stay form- and domain-neutral.
 
 ## Settings registry and environment resolution

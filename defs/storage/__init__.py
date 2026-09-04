@@ -1,6 +1,7 @@
 """Reusable file storage primitives for extraction phases."""
 
 import pyarrow as pa
+import pyarrow.parquet as pq
 
 from .artifacts import (
     atomic_write_json,
@@ -12,6 +13,7 @@ from .artifacts import (
     parquet_column_names,
     read_records,
 )
+from .blobs import DocumentBlob, count_document_blobs, stream_document_blobs
 from .converter import DatasetConverter
 from .dataset import Dataset
 from .duckdb_merge import (
@@ -87,6 +89,7 @@ __all__ = [
     "DatasetConverter",
     "DatasetSpec",
     "DeleteMatching",
+    "DocumentBlob",
     "DuckDBStaging",
     "Eq",
     "FileBackend",
@@ -123,6 +126,7 @@ __all__ = [
     "canonical_json",
     "concat_to_parquet",
     "connect",
+    "count_document_blobs",
     "count_nested_values",
     "count_rows",
     "duplicate_values",
@@ -134,7 +138,9 @@ __all__ = [
     "ordered_keys",
     "pa",
     "parquet_column_names",
+    "pq",
     "read_records",
+    "stream_document_blobs",
     "validate_files",
     "write_table_atomic",
 ]

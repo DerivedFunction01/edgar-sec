@@ -28,6 +28,7 @@ def test_registry_shape_is_unique_and_complete():
         for entry in ENTRIES
     )
     assert {entry.id for entry in ENTRIES} == {
+        "table-probe",
         "viewer",
         "metadata",
         "filing-catalog",

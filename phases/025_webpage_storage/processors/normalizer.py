@@ -175,6 +175,7 @@ class DeepNormalizer:
                 text,
                 start_line=boundary.start_line or 0,
                 page_analysis=page_analysis,
+                derived_taxonomy=profile.derived_taxonomy,
             )
             body_start = find_body_start(
                 text,

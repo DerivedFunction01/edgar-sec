@@ -16,9 +16,12 @@ from typing import Any
 
 from bs4 import BeautifulSoup, Comment
 
+from defs.sec_forms.context import build_cover_scope
+from defs.sec_forms.context.models import SectionContext, TableContext
 from defs.sec_forms.cover import BoundaryInput, find_cover_boundary_for_profile
 from defs.sec_forms.cover.profiles import CoverProfile, get_profile
 from defs.sec_forms.page_markers import PageMarkerAnalysis, analyze_page_markers
+from defs.tables.protection import mask_tagged_tables, restore_tagged_tables
 from defs.tables.templates import apply_table_templates
 from defs.text import (
     heal_date_fragments,
@@ -109,15 +112,26 @@ class HybridCoverPreprocessor:
         candidates: list[object] = []
         if self.profile.boundary is not None:
             candidates = _mark_cover_candidates(soup, self.profile)
-            for table in list(soup.find_all("table")):
+            cover_scope = build_cover_scope(self.profile, None)
+            for ordinal, table in enumerate(list(soup.find_all("table")), start=1):
                 if table not in candidates:
                     continue
                 source_grid = span_grid(table, with_spans=False)
                 if source_grid:
+                    table_context = TableContext(
+                        section=SectionContext(
+                            scope=self.profile.table_scope,
+                            cover_scope=cover_scope,
+                        ),
+                        table_ordinal=ordinal,
+                        locator=f"table-{ordinal:06d}",
+                    )
                     template_result = apply_table_templates(
                         table,
                         source_grid,
                         scope=self.profile.table_scope,
+                        table_context=table_context,
+                        section_context=table_context.section,
                     )
                     if template_result is not None:
                         table.replace_with(
@@ -148,20 +162,12 @@ class HybridCoverPreprocessor:
             ),
             self.profile,
         )
-        table_blocks: list[str] = []
 
-        def protect_table(match: re.Match[str]) -> str:
-            table_blocks.append(match.group(0))
-            placeholder = f"__CANONICAL_TABLE_{len(table_blocks) - 1}__"
-            return placeholder + ("\n" * match.group(0).count("\n"))
-
-        raw_text = re.sub(
-            r"<TABLE>.*?</TABLE>", protect_table, converted_html, flags=re.DOTALL
-        )
+        masked_text, table_spans = mask_tagged_tables(converted_html)
 
         # 4. Normalize whitespace, tabs, and checkbox symbols.
         # Checkbox glyph canonicalization is benign and applies document-wide.
-        normalized_text = normalize_whitespace_and_tabs(raw_text)
+        normalized_text = normalize_whitespace_and_tabs(masked_text)
         normalized_text = normalize_checkbox_tokens(normalized_text)
 
         # 5. Apply cover-specific healing only before the cover boundary so
@@ -183,8 +189,8 @@ class HybridCoverPreprocessor:
             cover_lines = heal_date_fragments(cover_lines)
 
         final_text = "\n".join(cover_lines + body_lines)
-        for index, table_block in enumerate(table_blocks):
-            final_text = final_text.replace(f"__CANONICAL_TABLE_{index}__", table_block)
+        if table_spans:
+            final_text = restore_tagged_tables(final_text, table_spans)
 
         matched = bool(self.profile.boundary is not None and candidates)
         return CoverPreprocessResult(

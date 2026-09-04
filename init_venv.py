@@ -42,6 +42,8 @@ CUSTOM_PACKAGES = [
     "pysbd",
     "nltk",
     "tiktoken",
+    "bs4",
+    "selectolax",
     "sentencepiece",
     "tensorboard",
     "fastapi",

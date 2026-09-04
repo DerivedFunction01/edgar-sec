@@ -12,9 +12,9 @@ from defs.tables.tokens import is_numeric_cell
 from defs.text.checkmarks import CHECKED_TOKENS, UNCHECKED_TOKENS
 from defs.text.dates import YEAR_TOKEN_RE, parse_date
 
-from .common import cell_lines, cell_text, span_grid
-
-_EXHIBIT_HEADER_MAX_WORDS = 8
+from .common import cell_lines, cell_text
+from .exhibit_index import exhibit_index_template
+from .signatures import signature_template as _signature_block_template
 
 
 def titled_period_table_template(source_grid: list[list[str]]) -> str | None:
@@ -85,7 +85,7 @@ def bullet_list_template(table: object) -> str | None:
 
 def footnote_template(table: object, source_grid: list[list[str]]) -> str | None:
     """Render symbol-marked footnote rows as horizontal prose lines."""
-    marker_re = re.compile(r"^[*†‡§]+$")
+    marker_re = re.compile(r"^[*†‡§u]+$")
     rows = [
         [cell_text(cell) for cell in row.find_all(["td", "th"]) if cell_text(cell)]
         for row in table.find_all("tr")
@@ -128,7 +128,7 @@ def definition_table_template(source_grid: list[list[str]]) -> str | None:
     values = [row[1] for row in compact]
     if any(len(label.split()) > 5 for label in labels):
         return None
-    if any(re.fullmatch(r"(?:[*†‡§]+|\(?\d+[.)])", label) for label in labels):
+    if any(re.fullmatch(r"(?:[*†‡§u]+|\(?\d+[.)])", label) for label in labels):
         return None
     header_words = {"description", "amount", "date", "year", "period", "total"}
     if any(label.casefold() in header_words for label in labels[:2]):
@@ -151,159 +151,8 @@ def definition_table_template(source_grid: list[list[str]]) -> str | None:
 
 
 def signature_template(table: object) -> str | None:
-    """Render executive/sign-off signature blocks."""
-    source_grid, _ = span_grid(table, with_spans=True)
-    if not source_grid:
-        return None
-    all_text = " ".join(cell for row in source_grid for cell in row if cell)
-    marker_re = re.compile(r"^(?:/s/|\*)\s*", re.IGNORECASE)
-    marker_positions = [
-        (row_index, column)
-        for row_index, row in enumerate(source_grid)
-        for column, cell in enumerate(row)
-        if marker_re.match(cell.strip())
-    ]
-    if "/s/" not in all_text and len(marker_positions) < 2:
-        return None
-    date_pattern = re.compile(r"\b(?:\d{1,2},\s*\d{4}|\d{1,2}\s+[A-Za-z]+\s+\d{4})\b")
-    has_asterisk_marker = any(
-        cell.strip() == "*" for row in source_grid for cell in row
-    )
-    if has_asterisk_marker and len(marker_positions) >= 2:
-        rows = [row for row in table.find_all("tr") if row.get_text(" ", strip=True)]
-        records: list[list[str]] = []
-        for row_index, _ in marker_positions:
-            if row_index + 1 >= len(source_grid) or row_index + 1 >= len(rows):
-                return None
-            marker = next(
-                cell.strip() for cell in source_grid[row_index] if cell.strip()
-            )
-            date = next(
-                (
-                    cell.strip()
-                    for cell in source_grid[row_index]
-                    if date_pattern.search(cell)
-                ),
-                "",
-            )
-            detail = next(
-                (cell.strip() for cell in source_grid[row_index + 1] if cell.strip()),
-                "",
-            )
-            next_style = " ".join(
-                cell.get("style", "")
-                for cell in rows[row_index + 1].find_all(["td", "th"])
-            ).casefold()
-            if not date or not detail or "border-top:" not in next_style:
-                return None
-            signature = f"{marker} {detail}"
-            if marker.casefold().startswith("/s/"):
-                signer = marker[3:].strip()
-                if detail.casefold().startswith(signer.casefold()):
-                    signature = f"{marker} {detail[len(signer) :].strip()}"
-            records.append([signature, date])
-        return (
-            HTMLTableConverter(
-                grid=[["Signature and Title", "Date"], *records], header_row_count=1
-            )
-            .to_generic_table()
-            .build()
-        )
-    header_index = next(
-        (
-            index
-            for index, row in enumerate(source_grid)
-            if (
-                {"title", "date"}.issubset({cell.casefold() for cell in row if cell})
-                and any(
-                    cell.casefold() in {"name", "signature"} for cell in row if cell
-                )
-            )
-        ),
-        None,
-    )
-    if header_index is not None:
-        header = source_grid[header_index]
-        starts = [
-            index
-            for index, cell in enumerate(header)
-            if cell.casefold() in {"name", "signature", "title", "date"}
-        ]
-        starts.sort()
-        groups = [
-            (
-                starts[index],
-                starts[index + 1] if index + 1 < len(starts) else len(header),
-            )
-            for index in range(len(starts))
-        ]
-        records: list[list[str]] = []
-        for row in source_grid[header_index + 1 :]:
-            values = [
-                " ".join(cell for cell in row[start:end] if cell).strip()
-                for start, end in groups
-            ]
-            if not any(values):
-                continue
-            if records and not date_pattern.search(values[-1]):
-                records[-1] = [
-                    " ".join(
-                        part for part in (records[-1][index], values[index]) if part
-                    )
-                    for index in range(3)
-                ]
-            else:
-                records.append(values)
-        header_name = "Signature" if "signature" in header else "Name"
-        return (
-            HTMLTableConverter(
-                grid=[[header_name, "Title", "Date"], *records], header_row_count=1
-            )
-            .to_generic_table()
-            .build()
-        )
-
-    marker_positions = [
-        (row_index, column)
-        for row_index, row in enumerate(source_grid)
-        for column, cell in enumerate(row)
-        if "/s/" in cell
-    ]
-    if (
-        len(marker_positions) >= 2
-        and len({column for _, column in marker_positions}) >= 2
-    ):
-        midpoint = len(source_grid[0]) // 2
-        rows = []
-        for row in source_grid:
-            left = " ".join(cell for cell in row[:midpoint] if cell).strip()
-            right = " ".join(cell for cell in row[midpoint:] if cell).strip()
-            if left or right:
-                rows.append((left, right))
-        width = max((len(left) for left, _ in rows), default=0)
-        lines = [f"{left.ljust(width)}  {right}".rstrip() for left, right in rows]
-        return "\n" + "\n".join(lines) + "\n"
-
-    lines = [cell for row in source_grid for cell in row if cell]
-    if len(marker_positions) == 1 and lines:
-        rendered: list[str] = []
-        for line in lines:
-            if rendered and rendered[-1].casefold() in {"by", "by:"} and "/s/" in line:
-                rendered[-1] = f"By: {line}"
-            else:
-                rendered.append(line)
-        return "\n" + "\n".join(rendered) + "\n"
-
-    if "by:" not in all_text.casefold():
-        return None
-    midpoint = max(1, len(source_grid[0]) // 2)
-    rows = []
-    for row in source_grid:
-        left = " ".join(cell for cell in row[:midpoint] if cell).strip()
-        right = " ".join(cell for cell in row[midpoint:] if cell).strip()
-        if left or right:
-            rows.append([left, right])
-    return HTMLTableConverter(grid=rows, header_row_count=0).to_generic_table().build()
+    """Render executive/sign-off signature blocks (see templates.signatures)."""
+    return _signature_block_template(table)
 
 
 def side_by_side_template(table: object, source_grid: list[list[str]]) -> str | None:
@@ -437,53 +286,6 @@ def two_column_prose_template(source_grid: list[list[str]]) -> str | None:
                 return None
     return (
         HTMLTableConverter(grid=compact, header_row_count=0).to_generic_table().build()
-    )
-
-
-def exhibit_index_template(source_grid: list[list[str]]) -> str | None:
-    """Render continuation rows from a two-column exhibit index as data."""
-    if len(source_grid) < 3:
-        return None
-    compact = [[cell for cell in row if cell.strip()] for row in source_grid]
-    marker_re = re.compile(r"^[*+†‡§]+(?:\s+[*+†‡§]+)*$")
-    compact = [
-        [row[0] + " " + row[1], row[2]]
-        if len(row) == 3 and marker_re.fullmatch(row[1])
-        else row
-        for row in compact
-    ]
-    exhibit_re = re.compile(
-        r"^\(?\d+\)?(?:\.\d+)*(?:\([a-z0-9]+\))?$|"
-        r"^\d{3}\*{2}$|^\d+\.[A-Z]+$|^EX-\d+\.[A-Z]+$",
-        re.IGNORECASE,
-    )
-    header_count = 0
-    for index, row in enumerate(compact[:3]):
-        if (
-            len(row) >= 2
-            and "exhibit" in row[0].casefold()
-            and "description" in row[1].casefold()
-            and len(row[1].split()) <= _EXHIBIT_HEADER_MAX_WORDS
-        ):
-            header_count = index + 1
-            break
-    if header_count == 0 and max((len(row) for row in compact), default=0) > 2:
-        return None
-    exhibit_rows = compact[header_count:]
-    minimum_exhibits = (
-        1 if header_count >= 2 and "incorporated" in compact[0][0].casefold() else 3
-    )
-    if (
-        sum(bool(exhibit_re.fullmatch(row[0].split(maxsplit=1)[0])) for row in exhibit_rows if row)
-        < minimum_exhibits
-    ):
-        return None
-    width = max((len(row) for row in compact), default=0)
-    rows = [row + [""] * (width - len(row)) for row in compact]
-    return (
-        HTMLTableConverter(grid=rows, header_row_count=header_count)
-        .to_generic_table()
-        .build()
     )
 
 

@@ -34,6 +34,12 @@ class LauncherEntry:
 
 ENTRIES: tuple[LauncherEntry, ...] = (
     LauncherEntry(
+        id="table-probe",
+        label="Table Taxonomy & Vocabulary Probe",
+        description="pipeline table census, firm vocabulary explorer, and classifier benchmark",
+        module="defs.taxonomy.probe.cli",
+    ),
+    LauncherEntry(
         id="viewer",
         label="Dataset Viewer",
         description="read-only artifact viewer (API + UI)",

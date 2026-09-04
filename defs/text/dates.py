@@ -344,6 +344,18 @@ def _normalize_separators(text: str) -> str:
     return re.sub(r"\s*/\s*", "/", re.sub(r"\s*-\s*", "-", text))
 
 
+# One ownership point for "does this text contain a full SEC date?".
+# Composed from the format registry so new formats join automatically
+# instead of consumers hand-rolling date-shape alternations. Patterns are
+# matched individually because each carries its own named groups.
+
+
+def contains_date(text: str) -> bool:
+    """Return whether ``text`` contains a recognizable SEC date."""
+    normalized = re.sub(r"\s+", " ", text).strip()
+    return any(re.search(fmt.pattern, normalized) for fmt in SEC_DATE_FORMATS)
+
+
 def _looks_like_date_fragment(parts: list[str]) -> bool:
     combined = " ".join(parts)
     if MONTH_RE.search(combined):
@@ -371,6 +383,7 @@ __all__ = [
     "DateComponents",
     "DateFormat",
     "ParsedDate",
+    "contains_date",
     "extract_years",
     "heal_date_fragments",
     "month_name_to_index",

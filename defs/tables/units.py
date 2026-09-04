@@ -101,6 +101,13 @@ MEASUREMENT_UNITS: dict[str, dict[str, Any]] = {
     "THOUSAND": {"names": ["thousand"], "symbols": ["K"]},
     "MILLION": {"names": ["million"], "symbols": ["MM", "M"]},
     "BILLION": {"names": ["billion"], "symbols": ["B"]},
+    # Time / duration
+    "YEAR": {"names": ["year", "years"], "symbols": ["year", "years", "yr", "yrs"]},
+    "MONTH": {
+        "names": ["month", "months"],
+        "symbols": ["month", "months", "mo", "mos"],
+    },
+    "DAY": {"names": ["day", "days"], "symbols": ["day", "days"]},
 }
 
 UNIT_SYMBOLS: set[str] = set()

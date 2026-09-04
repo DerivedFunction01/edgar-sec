@@ -15,6 +15,7 @@ _ALLOWED_PATHS = (
     "init_venv.py",
     "defs/runtime/artifacts.py",
     "defs/runtime/paths.py",
+    "defs/tables/templates/presentation.py",
     "phases/01_metadata_extraction/core/merge.py",
     "phases/02_filing_extraction/core/materialize.py",
 )

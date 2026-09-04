@@ -58,6 +58,12 @@ from .healing import (
     strip_alphanumeric_words,
     strip_boxdot_spacers,
 )
+from .automaton import (
+    MatchPayload,
+    MultiPatternAutomaton,
+    compile_family_automaton,
+)
+from .html import FastHtmlNode, FastHtmlTree, parse_html
 from .tokens import (
     BULLET_MARKER_RE,
     BULLET_MARKERS,
@@ -98,7 +104,11 @@ __all__ = [
     "EvidenceContext",
     "EvidenceHit",
     "EvidenceTier",
+    "FastHtmlNode",
+    "FastHtmlTree",
     "LexicalEvidencePack",
+    "MatchPayload",
+    "MultiPatternAutomaton",
     "ParsedDate",
     "PhraseSequenceRule",
     "ReflowResult",
@@ -106,6 +116,7 @@ __all__ = [
     "Token",
     "classify_mark_line",
     "compile_evidence_pack",
+    "compile_family_automaton",
     "extract_years",
     "heal_date_fragments",
     "heal_split_lines",
@@ -115,6 +126,7 @@ __all__ = [
     "normalize_tokens",
     "normalize_whitespace_and_tabs",
     "parse_date",
+    "parse_html",
     "parse_numeric_year",
     "parse_year_token",
     "reflow_ascii",

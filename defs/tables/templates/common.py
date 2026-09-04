@@ -38,6 +38,87 @@ def row_aware_fallback(source_grid: list[list[str]]) -> str | None:
     return "\n" + "\n".join("  ".join(row) for row in rows) + "\n"
 
 
+# Readability band for fallback line length: below the lower bound the output
+# is fragmented soup; above the upper bound wrapping becomes unavoidable.
+_ORIENT_MIN_LINE = 20
+_ORIENT_MAX_LINE = 100
+_ORIENT_LONG_PENALTY = 3.0
+_ORIENT_STDEV_WEIGHT = 1.0
+
+
+def _orientation_lines(source_grid: list[list[str]], *, row_wise: bool) -> list[str]:
+    """Build candidate lines for one orientation, stripping blank spacing."""
+    if row_wise:
+        lines = [
+            "  ".join(cell.strip() for cell in row if cell.strip())
+            for row in source_grid
+        ]
+    else:
+        column_count = max((len(row) for row in source_grid), default=0)
+        lines = [
+            "  ".join(
+                row[column].strip()
+                for row in source_grid
+                if column < len(row) and row[column].strip()
+            )
+            for column in range(column_count)
+        ]
+    return [line for line in lines if line.strip()]
+
+
+def _orientation_score(lines: list[str]) -> float:
+    """Score candidate lines; lower is better (readability, not wrapping)."""
+    if not lines:
+        return float("inf")
+    lengths = [len(line) for line in lines]
+    mean = sum(lengths) / len(lengths)
+    if mean == 0:
+        return float("inf")
+    variance = sum((length - mean) ** 2 for length in lengths) / len(lengths)
+    stdev = variance**0.5
+    # Distance outside the readable band dominates; wrap-heavy and soup-like
+    # shapes both score poorly.
+    band_penalty = 0.0
+    if mean < _ORIENT_MIN_LINE:
+        band_penalty = (_ORIENT_MIN_LINE - mean) * _ORIENT_LONG_PENALTY
+    elif mean > _ORIENT_MAX_LINE:
+        band_penalty = (mean - _ORIENT_MAX_LINE) * _ORIENT_LONG_PENALTY
+    return band_penalty + _ORIENT_STDEV_WEIGHT * (stdev / mean)
+
+
+def oriented_prose_fallback(source_grid: list[list[str]]) -> str | None:
+    """Choose row-wise or column-wise prose orientation by line statistics.
+
+    Compares the mean line length and its spread for both orientations and
+    picks the readable one. Column-oriented tables (each column a distinct
+    topic) render one block per column; label/value and list shapes stay
+    row-wise. Ties resolve to row-wise to preserve source order. Returns
+    ``None`` when neither orientation is meaningful (caller keeps its own
+    fallback).
+    """
+    if len(source_grid) < 2:
+        return None
+    populated_counts = [sum(1 for cell in row if cell.strip()) for row in source_grid]
+    # Orientation scoring compares line shapes; mixed-width grids (a full-width
+    # title row plus data rows) have no meaningful orientation and stay on the
+    # vertical unwrap path.
+    if len({count for count in populated_counts if count}) != 1:
+        return None
+    if not any(count >= 2 for count in populated_counts):
+        return None
+    populated = any(any(cell.strip() for cell in row) for row in source_grid)
+    if not populated:
+        return None
+    row_lines = _orientation_lines(source_grid, row_wise=True)
+    column_lines = _orientation_lines(source_grid, row_wise=False)
+    if not row_lines or not column_lines:
+        return None
+    row_score = _orientation_score(row_lines)
+    column_score = _orientation_score(column_lines)
+    chosen = row_lines if row_score <= column_score else column_lines
+    return "\n" + "\n".join(chosen) + "\n"
+
+
 def cell_text(cell: object, *, join_fragmented_anchors: bool = False) -> str:
     """Extract, clean, and normalize text inside a single table cell."""
     anchors = cell.find_all("a")
