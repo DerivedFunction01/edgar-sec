@@ -91,12 +91,12 @@ def detect_currency_affix(
     sorted_symbols = sorted(ALL_CURRENCY_SYMBOLS, key=len, reverse=True)
 
     # 1. Inspect 2D grid structure for position-aware column detection
-    if (
-        isinstance(grid_or_cells, list)
-        and grid_or_cells
-        and isinstance(grid_or_cells[0], list)
+    if isinstance(grid_or_cells, (list, tuple)) and any(
+        isinstance(row, (list, tuple)) for row in grid_or_cells
     ):
         for row in grid_or_cells:
+            if not isinstance(row, (list, tuple)):
+                continue
             for idx, cell in enumerate(row):
                 stripped = cell.strip()
                 if stripped in ALL_CURRENCY_SYMBOLS:
@@ -115,11 +115,10 @@ def detect_currency_affix(
                         return sym, False
 
     # 2. Fallback for 1D cell list or single string
-    cells = (
-        [grid_or_cells]
-        if isinstance(grid_or_cells, str)
-        else [c for c in grid_or_cells if c.strip()]
-    )
+    if isinstance(grid_or_cells, str):
+        cells = [grid_or_cells]
+    else:
+        cells = [c for c in grid_or_cells if isinstance(c, str) and c.strip()]
     for cell in cells:
         stripped = cell.strip()
         if stripped in ALL_CURRENCY_SYMBOLS:
