@@ -18,6 +18,7 @@ _RAW_SQL_RE = re.compile(
 _ALLOWED_PREFIXES = (
     "defs/sql/",
     "defs/storage/",
+    "defs/taxonomy/probe/",
     "defs/viewer/",
     "phases/02_filing_extraction/core/",
     "scratch/",

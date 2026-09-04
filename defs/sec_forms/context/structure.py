@@ -36,6 +36,7 @@ from bs4 import BeautifulSoup, Comment, NavigableString
 from defs.regex import build_alternation
 from defs.sec_forms.context.models import TableNode
 from defs.sec_forms.cover.structure import SectionKind, parse_section_heading
+from defs.sec_forms.forms.registry import _taxonomy_normalize, get_taxonomy_matcher
 
 __all__ = [
     "SKIP_TAGS",
@@ -166,7 +167,7 @@ def _is_bold_styled(node: object) -> bool:
     return bool(_BOLD_STYLE_RE.search(style or ""))
 
 
-def _candidate_heading(node: object) -> bool:
+def _candidate_heading(node: object, family: str | None = None) -> bool:
     if not hasattr(node, "name") or node.name is None:
         return False
     name = str(node.name).lower()
@@ -178,31 +179,22 @@ def _candidate_heading(node: object) -> bool:
         return True
     if name in {"div", "span", "p"}:
         text = _strip_and_join(node)
-        if text and len(text) <= _MAX_HEADING_LENGTH and _looks_heading_like(text):
+        if (
+            text
+            and len(text) <= _MAX_HEADING_LENGTH
+            and _looks_heading_like(text, family)
+        ):
             return True
     return False
 
 
-_HEADING_KEYWORDS = (
-    "item",
-    "part",
-    "section",
-    "risk factors",
-    "business",
-    "financial statements",
-    "management",
-    "discussion",
-    "exhibit",
-)
-
-
-def _looks_heading_like(text: str) -> bool:
+def _looks_heading_like(text: str, family: str | None = None) -> bool:
     lowered = text.casefold().strip()
     if not lowered or len(lowered) > 80:
         return False
-    if any(lowered.startswith(kw) for kw in _HEADING_KEYWORDS):
+    if parse_section_heading(text) is not None:
         return True
-    return bool(re.match(r"^(item|part|section)\b", lowered))
+    return get_taxonomy_matcher(family).has_any(_taxonomy_normalize(text))
 
 
 def _classify_heading(text: str) -> tuple[bool, bool]:
@@ -235,6 +227,7 @@ def _iter_visible_descendants(soup: BeautifulSoup) -> Iterable[object]:
 
 def _collect_logical_blocks(
     visible: list[object],
+    form_family: str | None = None,
 ) -> list[tuple[object, str]]:
     """Pick semantic blocks: p, li, caption, validated headings, leaf div/span."""
     blocks: list[tuple[object, str]] = []
@@ -246,7 +239,7 @@ def _collect_logical_blocks(
         text = _strip_and_join(node)
         if not text:
             continue
-        if lowered in {"p", "li", "caption"} or _candidate_heading(node):
+        if lowered in {"p", "li", "caption"} or _candidate_heading(node, form_family):
             if len(text) > _MAX_BLOCK_LENGTH:
                 text = text[:_MAX_BLOCK_LENGTH]
             blocks.append((node, text))
@@ -296,13 +289,14 @@ def scan_html(
     *,
     document_id: str = "",
     source_sha256: str = "",
+    form_family: str | None = None,
 ) -> HtmlStructureIndex:
     """Build a deterministic structure index from ``soup``."""
     visible = list(_iter_visible_descendants(soup))
     headings: list[HeadingNode] = []
     heading_ordinal = 0
     for node in visible:
-        if not _candidate_heading(node):
+        if not _candidate_heading(node, form_family):
             continue
         text = _strip_and_join(node)
         if not text or len(text) > _MAX_HEADING_LENGTH:
@@ -320,7 +314,7 @@ def scan_html(
             )
         )
 
-    raw_blocks = _collect_logical_blocks(visible)
+    raw_blocks = _collect_logical_blocks(visible, form_family)
     blocks: list[BlockNode] = []
     for index, (_node, text) in enumerate(raw_blocks, start=1):
         preceding = tuple(

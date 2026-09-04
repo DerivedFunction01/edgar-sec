@@ -6,14 +6,13 @@ import argparse
 import json
 import sys
 from pathlib import Path
-from typing import Any
 
-from defs.runtime.paths import resolve_paths
 from defs.runtime.resources import derive_resources
 from defs.taxonomy.probe.audit import (
     compute_collision_matrix,
     compute_family_relations,
     compute_geometry_stats,
+    run_benchmark_classifier,
 )
 from defs.taxonomy.probe.cache import (
     build_probe_cache_from_sqlite,
@@ -22,12 +21,14 @@ from defs.taxonomy.probe.cache import (
 )
 from defs.taxonomy.probe.census import (
     census_vocabulary,
-    cluster_unclassified_tables,
     compute_distinctive_ngrams,
 )
 from defs.taxonomy.probe.inspector import inspect_table_record
-from defs.taxonomy.probe.rules import load_external_rules, load_parquet_records
-from defs.taxonomy.tables.classifier import classify_table
+from defs.taxonomy.probe.rules import (
+    count_probe_cache_tables,
+    load_external_rules,
+    query_probe_parquet,
+)
 from defs.taxonomy.tables.families import FAMILY_SPECS
 from defs.taxonomy.tables.specs import TableFamilySpec
 
@@ -39,8 +40,8 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument(
         "--cache",
         type=Path,
-        default=default_probe_cache_path(),
-        help="Path to healed probe parquet cache",
+        default=None,
+        help="Path to healed probe parquet cache (defaults to auto-discovered cache in .artifacts/taxonomy/probe/)",
     )
     parser.add_argument(
         "--build-cache",
@@ -145,6 +146,17 @@ def main(argv: list[str] | None = None) -> int:
         help="Detect multi-part table schedule candidates (adjacent tables under identical heading)",
     )
     parser.add_argument(
+        "--profile",
+        action="store_true",
+        help="Run comprehensive empirical profile for --family (dimensions, jitter, top headers/rows)",
+    )
+    parser.add_argument(
+        "--show-jittery-samples",
+        type=int,
+        default=0,
+        help="Number of jittery / high-defect table samples to dump during profiling",
+    )
+    parser.add_argument(
         "--json",
         type=Path,
         help="Write structured results to JSON file",
@@ -168,36 +180,17 @@ def main(argv: list[str] | None = None) -> int:
         print(f"Successfully created probe cache at {out_p}")
         return 0
 
-    if not args.cache.exists():
-        # Fallback to alternative cache under test_runs_root if available
-        project = resolve_paths()
-        scratch_dir = project.test_runs_root / "scratch"
-        fallback_candidates = [
-            scratch_dir / name
-            for name in (
-                "table-healed-probe-500.parquet",
-                "table-healed-probe-250.parquet",
-                "table-healed-probe-25.parquet",
-                "table-identity-probe-250.parquet",
-            )
-        ]
-        found = False
-        for cand in fallback_candidates:
-            if cand.exists():
-                args.cache = cand
-                found = True
-                break
-        if not found:
-            print(
-                f"Cache file {args.cache} not found. Use --build-cache to build it.",
-                file=sys.stderr,
-            )
-            return 1
+    cache_path = args.cache if args.cache is not None else default_probe_cache_path()
+    if not cache_path.exists():
+        print(
+            f"Cache file {cache_path} not found. Use --build-cache to build it.",
+            file=sys.stderr,
+        )
+        return 1
 
-    records = load_parquet_records(args.cache)
-    non_toc_records = [r for r in records if not r.get("is_toc", False)]
+    total_tables, non_toc_count = count_probe_cache_tables(cache_path)
     print(
-        f"Loaded {len(records)} tables ({len(non_toc_records)} non-TOC) from {args.cache.name}"
+        f"Probe cache: {total_tables:,} tables ({non_toc_count:,} non-TOC) in {cache_path.name}"
     )
 
     active_specs: dict[str, TableFamilySpec] = dict(FAMILY_SPECS)
@@ -211,11 +204,16 @@ def main(argv: list[str] | None = None) -> int:
     # Mode: Inspect single table
     if args.inspect is not None:
         idx = args.inspect
-        if 0 <= idx < len(non_toc_records):
-            print(inspect_table_record(non_toc_records[idx]))
+        recs = query_probe_parquet(
+            cache_path,
+            where_clause="is_toc = false",
+            limit=idx + 1,
+        )
+        if 0 <= idx < len(recs):
+            print(inspect_table_record(recs[idx]))
         else:
             print(
-                f"Error: index {idx} out of range [0..{len(non_toc_records) - 1}]",
+                f"Error: index {idx} out of range [0..{non_toc_count - 1}]",
                 file=sys.stderr,
             )
             return 1
@@ -226,8 +224,18 @@ def main(argv: list[str] | None = None) -> int:
         print(
             f"\n--- Vocabulary Census: Zone={args.zone}, Order={args.ngram}-grams ---"
         )
+        zone_key = {
+            "row_labels": "row_labels_text",
+            "header": "header_text",
+            "full": "full_normalized_text",
+        }.get(args.zone, "row_labels_text")
+        census_records = query_probe_parquet(
+            cache_path,
+            where_clause="is_toc = false",
+            columns=[zone_key],
+        )
         items = census_vocabulary(
-            non_toc_records, n=args.ngram, zone=args.zone, top_k=30
+            census_records, n=args.ngram, zone=args.zone, top_k=30
         )
         for rank, itm in enumerate(items, start=1):
             print(
@@ -240,31 +248,40 @@ def main(argv: list[str] | None = None) -> int:
         if not args.seed:
             print("Error: --discover requires --seed <terms...>", file=sys.stderr)
             return 1
-        seed_terms = [s.lower() for s in args.seed]
-        target_recs = [
-            r
-            for r in non_toc_records
-            if all(
-                s in str(r.get("full_normalized_text", "")).lower() for s in seed_terms
-            )
-        ]
-        bg_recs = [
-            r
-            for r in non_toc_records
-            if not all(
-                s in str(r.get("full_normalized_text", "")).lower() for s in seed_terms
-            )
-        ]
+        seed_terms = [s.lower().replace("'", "''") for s in args.seed]
+        where_target = " OR ".join(
+            f"lower(full_normalized_text) LIKE '%{s}%' OR lower(row_labels_text) LIKE '%{s}%' OR lower(header_text) LIKE '%{s}%' OR lower(heading) LIKE '%{s}%'"
+            for s in seed_terms
+        )
+        target_recs = query_probe_parquet(
+            cache_path,
+            where_clause=f"is_toc = false AND ({where_target})",
+            columns=[
+                "row_labels_text",
+                "heading",
+                "healed_cols",
+                "healed_rows",
+                "numeric_density",
+                "header_count",
+                "has_column_jitter",
+                "has_split_affixes",
+            ],
+        )
+        bg_recs = query_probe_parquet(
+            cache_path,
+            where_clause=f"is_toc = false AND NOT ({where_target})",
+            columns=["row_labels_text"],
+            limit=50000,
+        )
+
         print(
-            f"Discovery: matched {len(target_recs)} candidate tables matching seed {seed_terms}"
+            f"Discovery: matched {len(target_recs)} candidate tables matching seeds {args.seed}"
         )
 
         target_row_texts = [
-            str(r.get("row_labels_text", r.get("text", ""))) for r in target_recs
+            str(r.get("row_labels_text", "") or "") for r in target_recs
         ]
-        bg_row_texts = [
-            str(r.get("row_labels_text", r.get("text", ""))) for r in bg_recs
-        ]
+        bg_row_texts = [str(r.get("row_labels_text", "") or "") for r in bg_recs]
 
         ngrams = compute_distinctive_ngrams(
             target_row_texts, bg_row_texts, n=args.ngram, top_k=20
@@ -284,21 +301,24 @@ def main(argv: list[str] | None = None) -> int:
 
     # Mode: Benchmark Classifier & Audit Gate
     if args.benchmark or args.audit_gate or args.relations:
-        print("\nRunning Multi-Zone BoW Classifier Benchmark on Corpus...")
-        matches_per_family: dict[str, set[int]] = {name: set() for name in active_specs}
-        classified_slots: set[int] = set()
+        workers = (
+            args.workers if args.workers is not None else derive_resources().workers
+        )
+        workers = max(1, workers)
+        print(
+            f"\nRunning Multi-Zone BoW Classifier Benchmark on Corpus ({workers} workers)..."
+        )
+        bench_records = query_probe_parquet(
+            cache_path,
+            where_clause="is_toc = false",
+            columns=["healed_grid_json"],
+        )
 
-        for slot, rec in enumerate(non_toc_records):
-            grid_raw = rec.get("healed_grid_json")
-            if grid_raw:
-                grid = json.loads(str(grid_raw))
-            else:
-                grid = [[c] for c in str(rec.get("text", "")).split()[:10]]
-
-            res = classify_table(grid)
-            if res.family and res.family in matches_per_family:
-                matches_per_family[res.family].add(slot)
-                classified_slots.add(slot)
+        matches_per_family, classified_slots = run_benchmark_classifier(
+            bench_records=bench_records,
+            active_family_names=list(active_specs.keys()),
+            workers=workers,
+        )
 
         print("\n=== Classification Summary ===")
         for name, slots in sorted(matches_per_family.items()):
@@ -342,42 +362,22 @@ def main(argv: list[str] | None = None) -> int:
                         f"  {rel['family_a']} -> {rel['family_b']}: overlap={rel['overlap_count']} (rate_a={rel['rate_in_a']:.1%}, rate_b={rel['rate_in_b']:.1%}) [{rel['relation_type']}]"
                     )
 
-        total_cov = len(classified_slots) / max(1, len(non_toc_records))
+        total_cov = len(classified_slots) / max(1, len(bench_records))
         print(
-            f"\nTotal Classified Tables: {len(classified_slots)} / {len(non_toc_records)} ({total_cov:.1%})"
+            f"\nTotal Classified Tables: {len(classified_slots)} / {len(bench_records)} ({total_cov:.1%})"
         )
-
-    # Mode: Cluster Unclassified Tables
-    if args.cluster_unclassified:
-        print("\nGrouping unclassified tables into candidate clusters...")
-        unclassified_records: list[dict[str, Any]] = []
-        for rec in non_toc_records:
-            grid_raw = rec.get("healed_grid_json")
-            grid = json.loads(str(grid_raw)) if grid_raw else []
-            res = classify_table(grid) if grid else None
-            if res is None or res.family is None:
-                unclassified_records.append(rec)
-
-        print(f"Analyzing {len(unclassified_records)} unclassified tables...")
-        clusters = cluster_unclassified_tables(
-            unclassified_records, min_cluster_size=3, top_k=25
-        )
-
-        print("\n=== Top Recurring Unclassified Table Clusters ===")
-        for idx, c in enumerate(clusters, start=1):
-            print(
-                f"{idx:2}. Signature: '{c['signature']}' ({c['table_count']} tables | avg cols: {c['avg_cols']} | avg rows: {c['avg_rows']} | num density: {c['avg_numeric_density']})"
-            )
-            if c["sample_headings"]:
-                print(f"    Sample Headings: {c['sample_headings']}")
-            print()
 
     # Mode: Detect Multi-Part Unions
     if args.detect_unions:
         print("\nDetecting multi-part table schedule candidates across filings...")
         from defs.taxonomy.probe.optimizer import detect_union_candidates
 
-        unions = detect_union_candidates(non_toc_records)
+        union_records = query_probe_parquet(
+            cache_path,
+            where_clause="is_toc = false",
+            columns=["doc_id", "heading", "item_label", "table_index"],
+        )
+        unions = detect_union_candidates(union_records)
         print(f"Found {len(unions)} candidate multi-part table groups.")
         for u in unions[:20]:
             print(
@@ -393,18 +393,24 @@ def main(argv: list[str] | None = None) -> int:
         )
         from defs.taxonomy.probe.optimizer import synthesize_candidate_family
 
-        target_records = [
-            r
-            for r in non_toc_records
-            if target_sig in str(r.get("row_labels_text", "")).lower()
-            or target_sig in str(r.get("heading", "")).lower()
-        ]
-        bg_records = [
-            r
-            for r in non_toc_records
-            if target_sig not in str(r.get("row_labels_text", "")).lower()
-            and target_sig not in str(r.get("heading", "")).lower()
-        ]
+        safe_sig = target_sig.replace("'", "''")
+        target_records = query_probe_parquet(
+            cache_path,
+            where_clause=f"is_toc = false AND (lower(row_labels_text) LIKE '%{safe_sig}%' OR lower(heading) LIKE '%{safe_sig}%')",
+            columns=[
+                "row_labels_text",
+                "heading",
+                "healed_cols",
+                "healed_rows",
+                "numeric_density",
+            ],
+        )
+        bg_records = query_probe_parquet(
+            cache_path,
+            where_clause=f"is_toc = false AND NOT (lower(row_labels_text) LIKE '%{safe_sig}%' OR lower(heading) LIKE '%{safe_sig}%')",
+            columns=["row_labels_text"],
+            limit=50000,
+        )
 
         if not target_records:
             print(f"Error: No tables matched signature '{target_sig}'", file=sys.stderr)
@@ -417,6 +423,44 @@ def main(argv: list[str] | None = None) -> int:
         )
         print("\n=== Synthesized Spec Definition ===")
         print(json.dumps(spec_json, indent=2))
+        return 0
+
+    # Mode: Profile Table Family
+    if args.profile or (
+        args.family
+        and not (
+            args.census
+            or args.discover
+            or args.audit_gate
+            or args.geometry
+            or args.relations
+            or args.inspect
+            or args.benchmark
+            or args.cluster_unclassified
+            or args.synthesize_spec
+            or args.detect_unions
+        )
+    ):
+        from defs.taxonomy.probe.profiler import (
+            format_profile_report,
+            profile_table_family,
+        )
+
+        fam = args.family or "derivatives_hedging"
+        print(f"Profiling table family '{fam}' across {cache_path}...")
+        result = profile_table_family(
+            cache_path=cache_path,
+            family_name=fam,
+            sample_jittery=args.show_jittery_samples,
+        )
+        report = format_profile_report(result)
+        print("\n" + report)
+
+        if args.json:
+            args.json.write_text(
+                json.dumps(result.to_dict(), indent=2), encoding="utf-8"
+            )
+            print(f"Wrote profile results to {args.json}")
         return 0
 
     return 0

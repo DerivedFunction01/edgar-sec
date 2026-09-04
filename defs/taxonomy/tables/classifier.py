@@ -8,6 +8,7 @@ from defs.taxonomy.tables.families import FAMILY_SPECS
 from defs.taxonomy.tables.shapes import validate_shape
 from defs.taxonomy.tables.specs import (
     FamilyClassification,
+    FamilyMatch,
     RepairPolicy,
     TableFamilySpec,
     VocabularyEvidence,
@@ -102,11 +103,7 @@ def classify_table(
     section_tokens = tokenize(section_text) if section_text else []
     ctx = EvidenceContext(min_words=1)
 
-    best_family: str | None = None
-    best_confidence = 0.0
-    best_policy = RepairPolicy.NO_REPAIR
-    best_structural = False
-    best_evidence: list[VocabularyEvidence] = []
+    candidates: list[tuple[FamilyMatch, RepairPolicy]] = []
 
     # 3. Evaluate each family
     for name in families_to_evaluate:
@@ -164,17 +161,37 @@ def classify_table(
         if s_score:
             evidence_list.append(_bow_to_evidence(s_score, "section"))
 
-        if confidence > best_confidence:
-            best_family = spec.name
-            best_confidence = confidence
-            best_policy = spec.repair_policy
-            best_structural = True
-            best_evidence = evidence_list
+        match = FamilyMatch(
+            family=spec.name,
+            confidence=confidence,
+            score=table_score,
+            evidence=tuple(evidence_list),
+            structural_confirmed=True,
+            priority=spec.priority,
+        )
+        candidates.append((match, spec.repair_policy))
+
+    if not candidates:
+        return FamilyClassification(
+            family=None,
+            confidence=0.0,
+            repair_policy=RepairPolicy.NO_REPAIR,
+        )
+
+    # Sort candidates by priority descending, confidence descending, then score descending
+    candidates.sort(
+        key=lambda item: (item[0].priority, item[0].confidence, item[0].score),
+        reverse=True,
+    )
+    primary_match, primary_policy = candidates[0]
+    secondary_tags = tuple(item[0].family for item in candidates[1:])
 
     return FamilyClassification(
-        family=best_family,
-        confidence=best_confidence,
-        evidence=tuple(best_evidence),
-        structural_confirmed=best_structural,
-        repair_policy=best_policy,
+        family=primary_match.family,
+        confidence=primary_match.confidence,
+        evidence=primary_match.evidence,
+        structural_confirmed=primary_match.structural_confirmed,
+        repair_policy=primary_policy,
+        tags=secondary_tags,
+        all_matches=tuple(item[0] for item in candidates),
     )

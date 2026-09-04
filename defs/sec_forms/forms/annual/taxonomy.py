@@ -443,6 +443,20 @@ def build_taxonomy_derived(
         + ("reserved", "[reserved]", "(reserved)")
     )
 
+    from defs.text.automaton import compile_lexical_matcher
+
+    norm_toc = tuple(_normalize_token(t) for t in toc_keywords if _normalize_token(t))
+    norm_late = tuple(_normalize_token(t) for t in late_names if _normalize_token(t))
+    norm_early = tuple(_normalize_token(t) for t in early_names if _normalize_token(t))
+
+    matcher = compile_lexical_matcher(
+        {
+            "toc_keywords": norm_toc,
+            "late_names": norm_late,
+            "early_names": norm_early,
+        }
+    )
+
     return {
         "early_items": early_items,
         "early_names": early_names,
@@ -451,15 +465,10 @@ def build_taxonomy_derived(
         "late_parts": late_parts,
         "late_item_re": late_item_re,
         "toc_keywords": toc_keywords,
-        "norm_toc_keywords": tuple(
-            _normalize_token(t) for t in toc_keywords if _normalize_token(t)
-        ),
-        "norm_late_names": tuple(
-            _normalize_token(t) for t in late_names if _normalize_token(t)
-        ),
-        "norm_early_names": tuple(
-            _normalize_token(t) for t in early_names if _normalize_token(t)
-        ),
+        "norm_toc_keywords": norm_toc,
+        "norm_late_names": norm_late,
+        "norm_early_names": norm_early,
+        "matcher": matcher,
     }
 
 

@@ -68,10 +68,24 @@ def _row_lines(
 
 def score_block_toc_density(
     normalized_block: str,
-    norm_toc_keywords: tuple[str, ...],
+    norm_toc_keywords: tuple[str, ...] | object,
 ) -> tuple[int, tuple[str, ...]]:
     """Count matches of known TOC keywords in a normalized text block."""
-    if not normalized_block or not norm_toc_keywords:
+    if not normalized_block:
+        return 0, ()
+    if hasattr(norm_toc_keywords, "find_matches"):
+        matches = norm_toc_keywords.find_matches(normalized_block)
+        hits = tuple(
+            sorted(
+                {
+                    m.term
+                    for m in matches
+                    if m.category == "toc_keywords" and not m.is_exclusion
+                }
+            )
+        )
+        return len(hits), hits
+    if not norm_toc_keywords:
         return 0, ()
     hits = tuple(term for term in norm_toc_keywords if term in normalized_block)
     return len(hits), hits
@@ -80,7 +94,7 @@ def score_block_toc_density(
 def is_anachronistic_late_item(
     line: str,
     late_item_re: re.Pattern | None = None,
-    norm_late_names: tuple[str, ...] = (),
+    norm_late_names: tuple[str, ...] | object = (),
 ) -> bool:
     """True if line matches a late item indicating TOC anachronism."""
     stripped = line.strip().strip("|+")
@@ -88,7 +102,11 @@ def is_anachronistic_late_item(
         return False
     if late_item_re is not None and late_item_re.match(stripped):
         return True
-    if norm_late_names:
+    if hasattr(norm_late_names, "has_any"):
+        norm_line = normalize_for_matching(stripped)
+        if len(stripped) <= 120 and not is_continuation_prose(stripped):
+            return norm_late_names.has_any(norm_line, ["late_names"])
+    elif norm_late_names:
         norm_line = normalize_for_matching(stripped)
         if (
             len(stripped) <= 120

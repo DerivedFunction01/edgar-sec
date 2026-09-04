@@ -62,31 +62,31 @@ The probe CLI operates over atomic Parquet caches produced from real pipeline da
 
 ```bash
 # 1. Build or expand the probe cache across N table-bearing filings (parallel workers + tqdm)
-.venv/bin/python -m defs.taxonomy.probe.cli --build-cache --limit 1000 --cache .artifacts/test-runs/scratch/table-healed-probe-1000.parquet
+.venv/bin/python -m defs.taxonomy.probe.cli --build-cache --limit 1000
 
-# 2. Benchmark all active table families across the entire corpus
-.venv/bin/python -m defs.taxonomy.probe.cli --benchmark --cache .artifacts/test-runs/scratch/table-healed-probe-1000.parquet
+# 2. Benchmark all active table families across the entire corpus (auto-discovers cache)
+.venv/bin/python -m defs.taxonomy.probe.cli --benchmark
 
 # 3. Cross-firm vocabulary census (unigrams, bigrams, trigrams in row stubs or headers)
-.venv/bin/python -m defs.taxonomy.probe.cli --census --ngram 3 --zone row_labels --cache .artifacts/test-runs/scratch/table-healed-probe-1000.parquet
+.venv/bin/python -m defs.taxonomy.probe.cli --census --ngram 3 --zone row_labels
 
 # 4. Discover distinctive n-grams for candidate tables matching seed keywords
-.venv/bin/python -m defs.taxonomy.probe.cli --discover --seed "derivative" "hedging" --ngram 2 --cache .artifacts/test-runs/scratch/table-healed-probe-1000.parquet
+.venv/bin/python -m defs.taxonomy.probe.cli --discover --seed "derivative" "hedging" --ngram 2
 
 # 5. Group unclassified tables into candidate clusters
-.venv/bin/python -m defs.taxonomy.probe.cli --cluster-unclassified --cache .artifacts/test-runs/scratch/table-healed-probe-1000.parquet
+.venv/bin/python -m defs.taxonomy.probe.cli --cluster-unclassified
 
 # 6. Auto-synthesize non-colliding TableFamilySpec JSON & keyword density curves
-.venv/bin/python -m defs.taxonomy.probe.cli --synthesize-spec "derivative instruments" --cache .artifacts/test-runs/scratch/table-healed-probe-1000.parquet
+.venv/bin/python -m defs.taxonomy.probe.cli --synthesize-spec "derivative instruments"
 
 # 7. Detect multi-part table schedule unions (adjacent tables sharing footnote headings)
-.venv/bin/python -m defs.taxonomy.probe.cli --detect-unions --cache .artifacts/test-runs/scratch/table-healed-probe-1000.parquet
+.venv/bin/python -m defs.taxonomy.probe.cli --detect-unions
 
 # 8. Test dynamic rules from an external JSON or Python file
-.venv/bin/python -m defs.taxonomy.probe.cli --benchmark --rules scratch/candidate_rules.json --cache .artifacts/test-runs/scratch/table-healed-probe-1000.parquet
+.venv/bin/python -m defs.taxonomy.probe.cli --benchmark --rules candidate_rules.json
 
 # 9. Inspect 2D healed grid and ASCII template preview for a specific table index
-.venv/bin/python -m defs.taxonomy.probe.cli --inspect 42 --cache .artifacts/test-runs/scratch/table-healed-probe-1000.parquet
+.venv/bin/python -m defs.taxonomy.probe.cli --inspect 42
 ```
 
 ---
@@ -98,5 +98,18 @@ The probe CLI operates over atomic Parquet caches produced from real pipeline da
    - `ShapeConstraint` (minimum columns, rows, numeric density).
    - `LexicalEvidencePack` (required phrases, supporting n-grams, unigram exclusions).
    - `RepairPolicy` (`NO_REPAIR`, `PRESENTATION_ONLY`, `SAFE_GRID_REPAIR`, or `FAMILY_TEMPLATE`).
+   - `priority: int` (e.g. 100 for primary financial statements, 80 for fair value hierarchies, 50 for footnote disclosures).
 3. Register the specification in `defs/taxonomy/tables/families.py`.
 4. Validate with contract tests (`pytest defs/tests/test_table_taxonomy_contracts.py`) and probe benchmarks (`--benchmark`).
+
+---
+
+## Multi-Classification & Semantic Facet Tagging
+
+Tables frequently contain overlapping disclosures (e.g. a Fair Value hierarchy table disclosing derivative instrument levels).
+
+`classify_table` performs multi-candidate evaluation:
+- **Primary `family`**: The winning candidate sorted by `(priority, confidence, score)` descending. Determines the table's physical `RepairPolicy` and grid template.
+- **Secondary `tags` (`tuple[str, ...]`)**: Additional matching family names tagged as semantic facets without risking conflicting physical mutations.
+- **`all_matches` (`tuple[FamilyMatch, ...]`)**: Full list of candidate matches, each preserving individual `confidence`, `score`, `priority`, and multi-zone `VocabularyEvidence`.
+

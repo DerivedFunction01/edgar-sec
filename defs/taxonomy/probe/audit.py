@@ -111,8 +111,72 @@ def compute_family_relations(
     return relations
 
 
+import concurrent.futures
+import json
+
+from tqdm import tqdm
+
+from defs.taxonomy.tables.classifier import classify_table
+
+
+def eval_record_batch(
+    batch: list[tuple[int, str | None]],
+) -> list[tuple[int, str | None]]:
+    """Process a chunk of table records in a worker process."""
+    results: list[tuple[int, str | None]] = []
+    for slot, grid_raw in batch:
+        if grid_raw:
+            try:
+                grid = json.loads(grid_raw)
+            except (json.JSONDecodeError, TypeError, ValueError):
+                grid = []
+        else:
+            grid = []
+        res = classify_table(grid)
+        results.append((slot, res.family))
+    return results
+
+
+def run_benchmark_classifier(
+    bench_records: Sequence[dict[str, Any]],
+    active_family_names: Sequence[str],
+    workers: int = 4,
+) -> tuple[dict[str, set[int]], set[int]]:
+    """Run parallel multi-zone BoW classifier benchmark over table records."""
+    matches_per_family: dict[str, set[int]] = {
+        name: set() for name in active_family_names
+    }
+    classified_slots: set[int] = set()
+
+    chunk_size = max(500, len(bench_records) // (max(1, workers) * 8))
+    batches: list[list[tuple[int, str | None]]] = []
+    for i in range(0, len(bench_records), chunk_size):
+        chunk = [
+            (i + j, r.get("healed_grid_json"))
+            for j, r in enumerate(bench_records[i : i + chunk_size])
+        ]
+        batches.append(chunk)
+
+    with concurrent.futures.ProcessPoolExecutor(max_workers=workers) as executor:
+        futures = [executor.submit(eval_record_batch, b) for b in batches]
+        for f in tqdm(
+            concurrent.futures.as_completed(futures),
+            total=len(futures),
+            desc="Benchmarking classifier",
+            unit="chunk",
+        ):
+            for slot, family in f.result():
+                if family and family in matches_per_family:
+                    matches_per_family[family].add(slot)
+                    classified_slots.add(slot)
+
+    return matches_per_family, classified_slots
+
+
 __all__ = [
     "compute_collision_matrix",
     "compute_family_relations",
     "compute_geometry_stats",
+    "eval_record_batch",
+    "run_benchmark_classifier",
 ]

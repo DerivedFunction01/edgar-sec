@@ -129,7 +129,6 @@ def count_document_blobs(
                     argument=Column(Identifier("doc_id")),
                 ),
             ),
-
             where=Membership(
                 value=Column(Identifier("mime_type")),
                 source=ValueList(tuple(mime_types)),

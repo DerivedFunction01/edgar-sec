@@ -7,22 +7,45 @@ import json
 from pathlib import Path
 from typing import Any
 
-from defs.storage import pq
+import duckdb
+
 from defs.taxonomy.tables.shapes import ShapeConstraint
 from defs.taxonomy.tables.specs import TableFamilySpec
 from defs.text.bow import EvidenceTier, LexicalEvidencePack
 
 
-def load_parquet_records(path: Path) -> list[dict[str, Any]]:
-    """Load table records from a probe parquet cache."""
-    table = pq.read_table(path)
-    columns = {name: table.column(name).to_pylist() for name in table.column_names}
-    records: list[dict[str, Any]] = []
-    num_rows = len(table)
-    for i in range(num_rows):
-        rec = {col: columns[col][i] for col in table.column_names}
-        records.append(rec)
-    return records
+def query_probe_parquet(
+    path: Path,
+    *,
+    where_clause: str | None = None,
+    columns: list[str] | tuple[str, ...] | None = None,
+    limit: int | None = None,
+) -> list[dict[str, Any]]:
+    """Execute a fast DuckDB SQL query directly over a probe parquet cache and return records."""
+    con = duckdb.connect()
+    col_str = ", ".join(columns) if columns else "*"
+    query = f"SELECT {col_str} FROM read_parquet('{path}')"
+    if where_clause:
+        query += f" WHERE {where_clause}"
+    if limit is not None:
+        query += f" LIMIT {int(limit)}"
+    return con.execute(query).fetch_arrow_table().to_pylist()
+
+
+def count_probe_cache_tables(path: Path) -> tuple[int, int]:
+    """Return (total_tables, non_toc_tables) in probe cache in milliseconds."""
+    con = duckdb.connect()
+    row = con.execute(
+        f"SELECT COUNT(*), COUNT(*) FILTER (WHERE is_toc = false) FROM read_parquet('{path}')"
+    ).fetchone()
+    return int(row[0] or 0), int(row[1] or 0)
+
+
+def load_parquet_records(
+    path: Path, columns: list[str] | None = None
+) -> list[dict[str, Any]]:
+    """Load table records from a probe parquet cache using DuckDB."""
+    return query_probe_parquet(path, columns=columns)
 
 
 def load_external_rules(path: Path) -> dict[str, TableFamilySpec]:

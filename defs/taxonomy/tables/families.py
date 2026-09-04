@@ -13,12 +13,20 @@ from defs.taxonomy.components.financials.equity import EQUITY_STATEMENT_SPEC
 from defs.taxonomy.components.financials.income import INCOME_STATEMENT_SPEC
 from defs.taxonomy.components.schedules.debt_maturity import DEBT_MATURITY_SPEC
 from defs.taxonomy.components.schedules.deferred_tax import DEFERRED_TAX_SPEC
+from defs.taxonomy.components.schedules.derivatives import (
+    AOCI_SPEC,
+    DERIVATIVES_HEDGING_SPEC,
+)
 from defs.taxonomy.components.schedules.eps_reconciliation import (
     EPS_RECONCILIATION_SPEC,
 )
 from defs.taxonomy.components.schedules.fair_value import FAIR_VALUE_SPEC
+from defs.taxonomy.components.schedules.intangibles import INTANGIBLES_SPEC
+from defs.taxonomy.components.schedules.inventory import INVENTORY_SPEC
+from defs.taxonomy.components.schedules.labor import LABOR_CONTRACTS_SPEC
 from defs.taxonomy.components.schedules.lease_maturity import LEASE_MATURITY_SPEC
 from defs.taxonomy.components.schedules.pension import PENSION_SPEC
+from defs.taxonomy.components.schedules.ppe import PPE_SPEC
 from defs.taxonomy.components.schedules.shares_purchased import SHARES_PURCHASED_SPEC
 from defs.taxonomy.components.schedules.stock_comp import (
     STOCK_COMP_ROLLFORWARD_SPEC,
@@ -47,6 +55,12 @@ FAMILY_SPECS: dict[str, TableFamilySpec] = {
         STOCK_COMP_ROLLFORWARD_SPEC,
         PENSION_SPEC,
         EPS_RECONCILIATION_SPEC,
+        LABOR_CONTRACTS_SPEC,
+        INVENTORY_SPEC,
+        PPE_SPEC,
+        INTANGIBLES_SPEC,
+        DERIVATIVES_HEDGING_SPEC,
+        AOCI_SPEC,
     )
 }
 

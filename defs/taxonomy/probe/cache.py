@@ -42,11 +42,29 @@ def default_fixture_db_path() -> Path:
     return project.fixtures_root / "fixture.sqlite"
 
 
-def default_probe_cache_path(name: str = "table-healed-probe-500.parquet") -> Path:
-    """Resolve the canonical probe parquet cache path under test_runs_root."""
-    project = resolve_paths()
-    scratch_dir = project.test_runs_root / "scratch"
-    return scratch_dir / name
+def probe_cache_root() -> Path:
+    """Resolve the dedicated taxonomy probe cache directory under artifacts_root."""
+    return resolve_paths().artifacts_root.joinpath("taxonomy", "probe")
+
+
+def default_probe_cache_path(name: str | None = None) -> Path:
+    """Resolve the canonical probe parquet cache path under artifacts/taxonomy/probe.
+
+    If name is None, auto-discovers the most complete (largest/latest) existing
+    parquet cache in the probe directory, or defaults to table-healed-probe.parquet.
+    """
+    root = probe_cache_root()
+    if name is not None:
+        return root / name
+    if root.exists():
+        candidates = sorted(
+            root.glob("*.parquet"),
+            key=lambda p: (p.stat().st_size, p.stat().st_mtime),
+            reverse=True,
+        )
+        if candidates:
+            return candidates[0]
+    return root / "table-healed-probe.parquet"
 
 
 HEAD_TAGS = frozenset(["h1", "h2", "h3", "h4", "h5", "h6"])
@@ -315,7 +333,11 @@ def build_probe_cache_from_sqlite(
 ) -> Path:
     """Build the healed probe parquet cache with multi-worker parallelism and tqdm progress."""
     target_db = db_path or default_fixture_db_path()
-    target_out = output_path or default_probe_cache_path()
+    target_out = (
+        output_path
+        if output_path is not None
+        else probe_cache_root() / f"table-healed-probe-{limit}.parquet"
+    )
 
     effective_workers = workers if workers is not None else derive_resources().workers
     effective_workers = max(1, effective_workers)

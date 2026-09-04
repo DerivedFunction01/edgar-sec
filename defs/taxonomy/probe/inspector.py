@@ -9,6 +9,11 @@ from defs.tables.builder import HTMLTableConverter
 from defs.tables.templates.dispatcher import apply_table_templates
 
 
+class _DummyTableTag:
+    def find_all(self, *args: Any, **kwargs: Any) -> list[Any]:
+        return []
+
+
 def inspect_table_record(
     record: dict[str, Any],
     *,
@@ -43,7 +48,7 @@ def inspect_table_record(
         lines.append("")
 
         if test_templates:
-            res = apply_table_templates(table=object(), source_grid=grid)
+            res = apply_table_templates(table=_DummyTableTag(), source_grid=grid)
             if res:
                 lines.append("--- Matched Template Output ---")
                 lines.append(res.text.strip())

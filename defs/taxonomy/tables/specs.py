@@ -36,14 +36,28 @@ class VocabularyEvidence:
 
 
 @dataclass(frozen=True, slots=True)
+class FamilyMatch:
+    """Evidence and confidence for one matching candidate table family."""
+
+    family: str
+    confidence: float
+    score: int
+    evidence: tuple[VocabularyEvidence, ...] = ()
+    structural_confirmed: bool = False
+    priority: int = 0
+
+
+@dataclass(frozen=True, slots=True)
 class FamilyClassification:
-    """Result of classifying a single table against table families."""
+    """Result of classifying a table against table families with multi-tag support."""
 
     family: str | None
     confidence: float
     evidence: tuple[VocabularyEvidence, ...] = ()
     structural_confirmed: bool = False
     repair_policy: RepairPolicy = RepairPolicy.NO_REPAIR
+    tags: tuple[str, ...] = ()
+    all_matches: tuple[FamilyMatch, ...] = ()
 
 
 @dataclass(frozen=True, slots=True)
@@ -55,6 +69,7 @@ class TableFamilySpec:
     evidence_pack: CompiledEvidencePack
     repair_policy: RepairPolicy = RepairPolicy.NO_REPAIR
     candidate_default_scope: TableScope = TableScope.BODY
+    priority: int = 0
 
 
 def build_ngram_tier(
@@ -79,3 +94,14 @@ def build_ngram_tier(
         min_distinct_hits=min_distinct_hits,
         support=support,
     )
+
+
+__all__ = [
+    "FamilyClassification",
+    "FamilyMatch",
+    "RepairPolicy",
+    "TableFamilySpec",
+    "TableScope",
+    "VocabularyEvidence",
+    "build_ngram_tier",
+]

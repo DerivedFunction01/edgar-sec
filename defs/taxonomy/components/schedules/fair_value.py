@@ -68,4 +68,5 @@ FAIR_VALUE_SPEC = TableFamilySpec(
     evidence_pack=_FAIR_VALUE_PACK,
     repair_policy=RepairPolicy.FAMILY_TEMPLATE,
     candidate_default_scope=TableScope.BODY,
+    priority=80,
 )

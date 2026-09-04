@@ -7,6 +7,8 @@ import re
 import statistics
 from typing import TYPE_CHECKING, Any
 
+from tqdm import tqdm
+
 from defs.taxonomy.probe.cache import STOP_WORDS
 
 if TYPE_CHECKING:
@@ -61,9 +63,15 @@ def census_vocabulary(
 
     total_records = len(records) or 1
 
-    for rec in records:
-        text = str(rec.get(zone_key, ""))
+    for r in tqdm(
+        records, desc=f"Census (zone={zone}, n={n})", unit="tbl", leave=False
+    ):
+        text = str(r.get(zone_key, "") or "")
+        if not text:
+            continue
         grams = extract_ngrams(text, n=n, stop_words=stop_words)
+        if not grams:
+            continue
         term_counts.update(grams)
         doc_counts.update(set(grams))
 
@@ -101,7 +109,13 @@ def compute_distinctive_ngrams(
     target_counts: collections.Counter[str] = collections.Counter()
     target_doc_counts: collections.Counter[str] = collections.Counter()
 
-    for text in target_texts:
+    for text in tqdm(
+        target_texts,
+        desc=f"Scanning target ({n}-grams)",
+        unit="txt",
+        leave=False,
+        disable=len(target_texts) < 500,
+    ):
         grams = extract_ngrams(text, n=n, stop_words=stop_words)
         target_counts.update(grams)
         target_doc_counts.update(set(grams))
@@ -109,7 +123,13 @@ def compute_distinctive_ngrams(
     bg_counts: collections.Counter[str] = collections.Counter()
     bg_doc_counts: collections.Counter[str] = collections.Counter()
 
-    for text in background_texts:
+    for text in tqdm(
+        background_texts,
+        desc=f"Scanning background ({n}-grams)",
+        unit="txt",
+        leave=False,
+        disable=len(background_texts) < 500,
+    ):
         grams = extract_ngrams(text, n=n, stop_words=stop_words)
         bg_counts.update(grams)
         bg_doc_counts.update(set(grams))
@@ -154,7 +174,13 @@ def cluster_unclassified_tables(
     """Cluster unclassified tables by recurring row-stub & heading n-grams, calculating geometric profiles."""
     signature_to_slots: dict[str, set[int]] = collections.defaultdict(set)
 
-    for slot, rec in enumerate(unclassified_records):
+    for slot, rec in tqdm(
+        enumerate(unclassified_records),
+        total=len(unclassified_records),
+        desc="Indexing unclassified tables",
+        unit="tbl",
+        leave=False,
+    ):
         row_text = str(rec.get("row_labels_text", ""))
         heading_text = str(rec.get("heading", ""))
         grams = (

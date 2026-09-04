@@ -5,6 +5,8 @@ from __future__ import annotations
 import collections
 from typing import TYPE_CHECKING, Any
 
+from tqdm import tqdm
+
 from defs.taxonomy.probe.census import extract_ngrams
 
 if TYPE_CHECKING:
@@ -138,7 +140,9 @@ def detect_union_candidates(
 
     unions: list[dict[str, object]] = []
 
-    for doc_id, doc_recs in by_doc.items():
+    for doc_id, doc_recs in tqdm(
+        by_doc.items(), desc="Scanning schedule unions", unit="doc", leave=False
+    ):
         doc_recs.sort(key=lambda x: int(x.get("table_index", 0)))
         current_group: list[dict[str, Any]] = []
 

@@ -79,4 +79,5 @@ BALANCE_SHEET_SPEC = TableFamilySpec(
     evidence_pack=_BALANCE_SHEET_PACK,
     repair_policy=RepairPolicy.SAFE_GRID_REPAIR,
     candidate_default_scope=TableScope.BODY,
+    priority=100,
 )

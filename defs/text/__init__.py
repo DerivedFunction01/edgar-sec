@@ -26,6 +26,11 @@ from .bow import (
     score_unit,
     tokenize,
 )
+from .compounds import (
+    expand_alternations,
+    expand_compounds,
+    expand_variants,
+)
 from .dates import (
     CENTURY_PIVOT,
     MONTH_ALIASES,
@@ -125,6 +130,9 @@ __all__ = [
     "compile_evidence_pack",
     "compile_family_automaton",
     "compile_lexical_matcher",
+    "expand_alternations",
+    "expand_compounds",
+    "expand_variants",
     "extract_years",
     "heal_date_fragments",
     "heal_split_lines",

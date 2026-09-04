@@ -277,3 +277,293 @@ def test_activities_veto_on_income_statement() -> None:
     ]
     res = classify_table(grid)
     assert res.family != "income_statement"
+
+
+def test_multi_classification_tags_and_all_matches() -> None:
+    """Multi-family matching populates primary family, secondary tags, and all_matches."""
+    # A grid with terms matching both fair value hierarchy and pension/benefit obligation
+    grid = [
+        ["Fair Value Measurement & Obligation", "Level 1", "Level 2", "Total"],
+        ["Quoted prices in active markets", "$100", "$200", "$300"],
+        ["Observable inputs and unobservable inputs", "$50", "$150", "$200"],
+        ["Benefit obligation at beginning of year", "$500", "$600", "$1,100"],
+        ["Service cost and interest cost", "$40", "$50", "$90"],
+        ["Actuarial loss and benefits paid", "$10", "$20", "$30"],
+        ["Benefit obligation at end of year", "$550", "$670", "$1,220"],
+    ]
+    res = classify_table(grid)
+    assert res.family == "fair_value"
+    assert len(res.all_matches) >= 2
+    matched_families = {m.family for m in res.all_matches}
+    assert "fair_value" in matched_families
+    assert "pension" in matched_families
+    # Primary family is first in all_matches (fair_value has priority 80 > pension priority 0)
+    assert res.family == res.all_matches[0].family
+    # Secondary matches become tags
+    assert "pension" in res.tags
+    assert len(res.tags) == len(res.all_matches) - 1
+    assert set(res.tags) == matched_families - {res.family}
+    for match in res.all_matches:
+        assert match.structural_confirmed is True
+        assert match.confidence > 0
+        assert len(match.evidence) >= 2  # header & body zones
+
+
+def test_labor_contracts_classification() -> None:
+    """Airline/transport collective bargaining table matches labor_contracts."""
+    grid = [
+        [
+            "Employee Group",
+            "Bargaining Representative",
+            "Number Represented",
+            "Contract Amendable Date",
+        ],
+        ["Pilots", "Air Line Pilots Association (ALPA)", "15,200", "Dec 2026"],
+        [
+            "Flight Attendants",
+            "Association of Flight Attendants (AFA)",
+            "28,000",
+            "Passed Amendable",
+        ],
+        [
+            "Mechanics & Related",
+            "Teamsters / Machinists (IBT/IAM)",
+            "12,500",
+            "March 2025",
+        ],
+        ["Dispatchers", "Transport Workers Union (TWU)", "450", "Oct 2027"],
+    ]
+    res = classify_table(grid)
+    assert res.family == "labor_contracts"
+    assert res.structural_confirmed is True
+    assert res.repair_policy is RepairPolicy.SAFE_GRID_REPAIR
+
+
+def test_labor_contracts_credit_union_veto() -> None:
+    """Financial services credit union references are vetoed from labor_contracts."""
+    grid = [
+        ["Institution Name", "State", "Total Deposits", "Members"],
+        ["First State Credit Union", "CA", "$1,200,000", "45,000"],
+        ["Federal Employees Credit Union", "DC", "$5,000,000", "120,000"],
+        ["Total Credit Union Deposits", "", "$6,200,000", "165,000"],
+    ]
+    res = classify_table(grid)
+    assert res.family != "labor_contracts"
+
+
+def test_inventory_classification() -> None:
+    """ASC 330 inventory disaggregation by stage and valuation reserve matches inventory."""
+    grid = [
+        ["(in thousands)", "December 31, 2024", "December 31, 2023"],
+        ["Raw materials", "$ 124,500", "$ 115,200"],
+        ["Work in process", "45,200", "41,800"],
+        ["Finished goods", "210,400", "195,000"],
+        ["Gross inventories", "380,100", "352,000"],
+        ["LIFO reserve", "(18,500)", "(16,200)"],
+        ["Total inventories", "$ 361,600", "$ 335,800"],
+    ]
+    res = classify_table(grid)
+    assert res.family == "inventory"
+    assert res.structural_confirmed is True
+
+
+def test_ppe_classification() -> None:
+    """ASC 360 property, plant, and equipment disaggregation matches ppe."""
+    grid = [
+        ["(in millions)", "2024", "2023"],
+        ["Land and improvements", "$ 450", "$ 420"],
+        ["Buildings and improvements", "2,150", "1,980"],
+        ["Machinery and equipment", "4,320", "3,850"],
+        ["Construction in progress", "680", "510"],
+        ["Property, plant and equipment, gross", "7,600", "6,760"],
+        ["Accumulated depreciation", "(3,100)", "(2,750)"],
+        ["Property, plant and equipment, net", "$ 4,500", "$ 4,010"],
+    ]
+    res = classify_table(grid)
+    assert res.family == "ppe"
+    assert res.structural_confirmed is True
+
+
+def test_intangibles_classification() -> None:
+    """ASC 350 goodwill and intangible assets breakdown matches intangibles."""
+    grid = [
+        [
+            "Intangible Asset Class",
+            "Gross Carrying Amount",
+            "Accumulated Amortization",
+            "Net",
+        ],
+        ["Customer relationships", "$ 500,000", "$ (150,000)", "$ 350,000"],
+        ["Developed technology", "320,000", "(80,000)", "240,000"],
+        ["Trademarks and trade names", "150,000", "(30,000)", "120,000"],
+        ["Total intangible assets", "$ 970,000", "$ (260,000)", "$ 710,000"],
+    ]
+    res = classify_table(grid)
+    assert res.family == "intangibles"
+    assert res.structural_confirmed is True
+
+
+def test_derivatives_hedging_classification() -> None:
+    """Dedicated ASC 815 derivative table matches derivatives_hedging."""
+    grid = [
+        [
+            "Derivative Category",
+            "Notional Amount",
+            "Derivative Assets Fair Value",
+            "Derivative Liabilities Fair Value",
+        ],
+        [
+            "Derivatives designated as hedging instruments:",
+            "",
+            "",
+            "",
+        ],
+        ["Interest rate swaps", "$ 1,500,000", "$ 12,400", "$ (3,100)"],
+        ["Foreign currency forward contracts", "850,000", "8,200", "(4,500)"],
+        [
+            "Commodity contracts designated as cash flow hedges",
+            "200,000",
+            "1,800",
+            "(900)",
+        ],
+        [
+            "Total derivatives designated as hedging instruments",
+            "$ 2,550,000",
+            "$ 22,400",
+            "$ (8,500)",
+        ],
+        [
+            "Derivatives not designated as hedging instruments:",
+            "",
+            "",
+            "",
+        ],
+        ["Foreign exchange options", "$ 300,000", "$ 2,100", "$ (1,200)"],
+        ["Total derivative instruments", "$ 2,850,000", "$ 24,500", "$ (9,700)"],
+    ]
+    res = classify_table(grid)
+    assert res.family == "derivatives_hedging"
+    assert res.structural_confirmed is True
+
+
+def test_derivatives_hedging_false_positive_guards() -> None:
+    """Physical supply, medical derivatives, shareholder litigation, and stock options are vetoed."""
+    # 1. Physical commercial energy supply / NPNS
+    physical_grid = [
+        ["Contract Type", "Delivery Year", "Volume MMBtu", "Fixed Price"],
+        ["Natural gas delivery", "2025", "10,000,000", "$ 3.50"],
+        ["Power purchase agreement", "2026", "5,000,000", "$ 45.00"],
+        ["Normal purchases and normal sales", "2027", "2,000,000", "$ 3.20"],
+    ]
+    res_physical = classify_table(physical_grid)
+    assert res_physical.family != "derivatives_hedging"
+
+    # 2. Chemical / Medical derivatives
+    chemical_grid = [
+        ["Product Line", "Volume Tons", "Revenue"],
+        ["Cellulose derivatives", "150,000", "$ 450,000"],
+        ["Chemical derivatives", "80,000", "220,000"],
+        ["Polymer derivatives", "60,000", "180,000"],
+    ]
+    res_chem = classify_table(chemical_grid)
+    assert res_chem.family != "derivatives_hedging"
+
+    # 3. Shareholder derivative litigation
+    legal_grid = [
+        ["Matter", "Court", "Filing Date", "Status"],
+        ["Shareholder derivative lawsuit", "Delaware Chancery", "Jan 2024", "Pending"],
+        ["Securities litigation class action", "SDNY", "Mar 2024", "Motion to dismiss"],
+        [
+            "Derivative action settlement",
+            "NDCA",
+            "May 2024",
+            "Dismissed with prejudice",
+        ],
+    ]
+    res_legal = classify_table(legal_grid)
+    assert res_legal.family != "derivatives_hedging"
+
+
+def test_aoci_rollforward_classification() -> None:
+    """ASC 220 Accumulated Other Comprehensive Income rollforward matches aoci."""
+    grid = [
+        [
+            "(in thousands)",
+            "Gains (Losses) on Cash Flow Hedges",
+            "Foreign Currency Translation",
+            "Pension Adjustments",
+            "Total AOCI",
+        ],
+        ["Beginning balance", "$ 45,000", "$ (12,000)", "$ (8,000)", "$ 25,000"],
+        [
+            "Other comprehensive income (loss) before reclassifications",
+            "15,000",
+            "(3,500)",
+            "1,200",
+            "12,700",
+        ],
+        [
+            "Amounts reclassified from accumulated other comprehensive income",
+            "(8,000)",
+            "—",
+            "800",
+            "(7,200)",
+        ],
+        [
+            "Net current-period other comprehensive income",
+            "7,000",
+            "(3,500)",
+            "2,000",
+            "5,500",
+        ],
+        ["Ending balance", "$ 52,000", "$ (15,500)", "$ (6,000)", "$ 30,500"],
+    ]
+    res = classify_table(grid)
+    assert res.family == "aoci"
+    assert res.structural_confirmed is True
+
+
+def test_fair_value_with_secondary_derivatives_tag() -> None:
+    """ASC 820 Fair Value table with derivatives maintains fair_value primary and tags derivatives."""
+    grid = [
+        ["Assets / Liabilities", "Level 1", "Level 2", "Level 3", "Total"],
+        ["Quoted prices in active markets", "$ 500", "$ —", "$ —", "$ 500"],
+        ["Interest rate swap agreements", "$ —", "$ 120", "$ —", "$ 120"],
+        ["Foreign currency forward contracts", "$ —", "$ 85", "$ —", "$ 85"],
+        [
+            "Commodity contracts designated as cash flow hedges",
+            "$ —",
+            "$ 45",
+            "$ 15",
+            "$ 60",
+        ],
+        ["Total derivative assets", "$ —", "$ 250", "$ 15", "$ 265"],
+        ["Total fair value of assets", "$ 500", "$ 250", "$ 15", "$ 765"],
+    ]
+    res = classify_table(grid)
+    assert res.family == "fair_value"
+    assert "derivatives_hedging" in res.tags
+    matched_families = {m.family for m in res.all_matches}
+    assert "fair_value" in matched_families
+    assert "derivatives_hedging" in matched_families
+
+
+def test_commodity_derivatives_classification() -> None:
+    """Agricultural, metal, and freight derivative schedules classify as derivatives_hedging."""
+    grid = [
+        [
+            "Commodity Derivative Type",
+            "Notional",
+            "Fair Value Asset",
+            "Fair Value Liability",
+        ],
+        ["Corn futures and options", "$ 45,000", "$ 1,200", "$ (450)"],
+        ["Soybean meal swap contracts", "32,000", "850", "(210)"],
+        ["Copper forward contracts", "60,000", "2,100", "(800)"],
+        ["Aluminum swap agreements", "28,000", "640", "(150)"],
+        ["Freight forward contracts", "15,000", "320", "(90)"],
+        ["Total commodity derivative contracts", "$ 180,000", "$ 5,110", "$ (1,700)"],
+    ]
+    res = classify_table(grid)
+    assert res.family == "derivatives_hedging"
+    assert res.structural_confirmed is True

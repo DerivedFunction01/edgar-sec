@@ -75,4 +75,5 @@ CASH_FLOW_SPEC = TableFamilySpec(
     evidence_pack=_CASH_FLOW_PACK,
     repair_policy=RepairPolicy.SAFE_GRID_REPAIR,
     candidate_default_scope=TableScope.BODY,
+    priority=100,
 )

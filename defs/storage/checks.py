@@ -20,6 +20,7 @@ _PANDAS_IMPORT_RE = re.compile(
 
 _PYARROW_ALLOWED_PREFIXES = (
     "defs/storage/",
+    "defs/taxonomy/probe/",
     "defs/tests/",
     "scratch/",
 )
@@ -27,6 +28,7 @@ _PYARROW_ALLOWED_PREFIXES = (
 _DRIVER_ALLOWED_PREFIXES = (
     "defs/storage/",
     "defs/sql/",
+    "defs/taxonomy/probe/",
     "defs/viewer/",
     "defs/tests/",
     "scratch/",

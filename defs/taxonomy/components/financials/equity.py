@@ -66,4 +66,5 @@ EQUITY_STATEMENT_SPEC = TableFamilySpec(
     evidence_pack=_EQUITY_PACK,
     repair_policy=RepairPolicy.SAFE_GRID_REPAIR,
     candidate_default_scope=TableScope.BODY,
+    priority=100,
 )

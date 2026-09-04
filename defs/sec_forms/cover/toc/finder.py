@@ -42,12 +42,17 @@ def find_toc_span(
         if marker.start_line is not None
     }
 
+    matcher = derived_taxonomy.get("matcher") if derived_taxonomy else None
     norm_toc_keywords = (
-        derived_taxonomy.get("norm_toc_keywords", ()) if derived_taxonomy else ()
+        matcher
+        if matcher is not None
+        else (derived_taxonomy.get("norm_toc_keywords", ()) if derived_taxonomy else ())
     )
     late_item_re = derived_taxonomy.get("late_item_re") if derived_taxonomy else None
     norm_late_names = (
-        derived_taxonomy.get("norm_late_names", ()) if derived_taxonomy else ()
+        matcher
+        if matcher is not None
+        else (derived_taxonomy.get("norm_late_names", ()) if derived_taxonomy else ())
     )
 
     for index in range(start_line, limit):
@@ -178,9 +183,12 @@ def find_toc_span(
             hits_count, hit_terms = score_block_toc_density(
                 norm_line, norm_toc_keywords
             )
-            has_late_hit = any(name in norm_line for name in norm_late_names) or (
-                late_item_re and late_item_re.search(line)
-            )
+            has_late_hit = (
+                matcher.has_any(norm_line, ["late_names"])
+                if matcher is not None
+                else any(name in norm_line for name in norm_late_names)
+            ) or bool(late_item_re and late_item_re.search(line))
+
             if hits_count >= 3 and has_late_hit:
                 rows = _row_lines(lines, index, limit, page_marker_lines)
                 last_row = rows[-1] if rows else index + 1
