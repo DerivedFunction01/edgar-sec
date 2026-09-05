@@ -5,13 +5,7 @@ from __future__ import annotations
 import json
 from typing import Any
 
-from defs.tables.builder import HTMLTableConverter
-from defs.tables.templates.dispatcher import apply_table_templates
-
-
-class _DummyTableTag:
-    def find_all(self, *args: Any, **kwargs: Any) -> list[Any]:
-        return []
+from defs.tables.ascii_html import render_grid_to_ascii
 
 
 def inspect_table_record(
@@ -48,19 +42,10 @@ def inspect_table_record(
         lines.append("")
 
         if test_templates:
-            res = apply_table_templates(table=_DummyTableTag(), source_grid=grid)
-            if res:
-                lines.append("--- Matched Template Output ---")
-                lines.append(res.text.strip())
-            else:
-                lines.append("--- Standard HTMLTableConverter Output ---")
-                conv_out = (
-                    HTMLTableConverter(
-                        grid=grid, header_row_count=int(record.get("header_count", 1))
-                    )
-                    .to_generic_table()
-                    .build()
-                )
-                lines.append(conv_out.strip())
+            lines.append("--- Geometry-First ASCII Render Output ---")
+            conv_out = render_grid_to_ascii(
+                grid=grid, header_row_count=int(record.get("header_count", 1))
+            )
+            lines.append(conv_out.strip())
 
     return "\n".join(lines)

@@ -1,9 +1,12 @@
-"""Structured table extraction, ASCII formatting, and row-healing tools."""
+"""Canonical geometry-first HTML table extraction and shared table tokens."""
 
 from __future__ import annotations
 
-from .ascii_html_v2 import convert_html_table_v2, convert_html_tables_to_ascii_v2
-from .builder import GenericTable, HTMLTableConverter
+from .ascii_html import (
+    convert_html_table,
+    convert_html_tables_to_ascii,
+    render_grid_to_ascii,
+)
 from .currencies import MAJOR_CURRENCIES, PREFIX_SYMBOLS, SUFFIX_SYMBOLS
 from .patterns import (
     BULLET_MARKER_RE,
@@ -13,19 +16,6 @@ from .patterns import (
     NUMERIC_CELL_RE,
     PAREN_SPACES_RE,
     YEAR_TOKEN_RE,
-)
-from .processor import SimpleTableProcessor, process_table
-from .table_definitions import convert_html_tables_to_ascii
-from .templates import (
-    apply_table_templates,
-    bullet_list_template,
-    cell_lines,
-    cell_text,
-    registration_table_template,
-    side_by_side_template,
-    signature_template,
-    span_grid,
-    uniform_text_table_template,
 )
 from .tokens import (
     ALL_CURRENCY_SYMBOLS,
@@ -52,25 +42,12 @@ __all__ = [
     "SUFFIX_SYMBOLS",
     "SUFFIX_TOKENS",
     "YEAR_TOKEN_RE",
-    "GenericTable",
-    "HTMLTableConverter",
-    "SimpleTableProcessor",
-    "apply_table_templates",
-    "bullet_list_template",
-    "cell_lines",
-    "cell_text",
-    "convert_html_table_v2",
+    "convert_html_table",
     "convert_html_tables_to_ascii",
-    "convert_html_tables_to_ascii_v2",
     "is_financial_placeholder",
     "is_numeric_cell",
     "is_numeric_start",
     "is_prefix_token",
     "is_suffix_token",
-    "process_table",
-    "registration_table_template",
-    "side_by_side_template",
-    "signature_template",
-    "span_grid",
-    "uniform_text_table_template",
+    "render_grid_to_ascii",
 ]

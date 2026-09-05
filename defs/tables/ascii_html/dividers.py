@@ -5,7 +5,7 @@ from __future__ import annotations
 import re
 from typing import TYPE_CHECKING
 
-from defs.tables.ascii_html_v2.model import BorderStyle, RenderBudget
+from defs.tables.ascii_html.model import BorderStyle, RenderBudget
 from defs.tables.tokens import (
     CLOSING_DELIMITERS,
     PREFIX_SYMBOLS,
@@ -15,8 +15,8 @@ from defs.tables.tokens import (
 )
 
 if TYPE_CHECKING:
-    from defs.tables.ascii_html_v2.blocks import RenderBlock
-    from defs.tables.ascii_html_v2.model import SourceCell
+    from defs.tables.ascii_html.blocks import RenderBlock
+    from defs.tables.ascii_html.model import SourceCell
 
 
 def repair_rendered_affix_columns(lines: list[str]) -> None:

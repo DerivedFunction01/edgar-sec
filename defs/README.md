@@ -19,11 +19,10 @@ defs/
     cover/               # canonical cover labels, regex matchers, text-based extractors
     page_markers/        # ASCII/SGML page-reference analysis and safe cleanup
   text/                  # text normalization, logical-unit classification, lexical evidence engine
-  table_definitions.py  # shared table-conversion helpers for later content phases
   regex/                # hierarchical regex builders, prefix-tree (trie) compaction, lookarounds
   storage/              # logical datasets, chunk backends, manifests, atomic publication
   sql/                  # SQL AST/compiler/executor boundary
-  tables/               # table grid healing, cell tokens, 2D layout templates, and TOC detection
+  tables/               # geometry-first ASCII table renderer, span extraction, cell tokens, and table scope contract
   taxonomy/             # table classification specs, multi-zone BoW gates, vocabulary census, empirical probe
   runtime/              # paths, settings registry, env resolution, artifacts/bundles,
                         # partitions, progress, CLI

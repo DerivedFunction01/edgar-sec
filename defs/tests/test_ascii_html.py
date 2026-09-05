@@ -1,28 +1,28 @@
-"""Unit and contract tests for ascii_html_v2 geometry-first table renderer."""
+"""Unit and contract tests for ascii_html geometry-first table renderer."""
 
 from __future__ import annotations
 
-from defs.tables.ascii_html_v2 import (
+from defs.tables.ascii_html import (
     BorderStyle,
     HorizontalAlign,
-    convert_html_table_v2,
+    convert_html_table,
     extract_source_table,
 )
-from defs.tables.ascii_html_v2.borders import (
+from defs.tables.ascii_html.borders import (
     extract_border_segments,
     score_header_boundary,
 )
-from defs.tables.ascii_html_v2.columns import (
+from defs.tables.ascii_html.columns import (
     is_structural_spacer,
     resolve_columns,
 )
-from defs.tables.ascii_html_v2.css import (
+from defs.tables.ascii_html.css import (
     parse_dimension_px,
     parse_style_and_attributes,
 )
-from defs.tables.ascii_html_v2.geometry import estimate_table_geometry
-from defs.tables.ascii_html_v2.spans import build_span_matrix
-from defs.tables.ascii_html_v2.text import (
+from defs.tables.ascii_html.geometry import estimate_table_geometry
+from defs.tables.ascii_html.spans import build_span_matrix
+from defs.tables.ascii_html.text import (
     format_cell_line,
     wrap_cell_text,
 )
@@ -216,7 +216,7 @@ def test_multi_signal_header_scoring_and_double_borders() -> None:
     assert divider_style == BorderStyle.DOUBLE
 
     # Render result should have '==' divider
-    res = convert_html_table_v2(html)
+    res = convert_html_table(html)
     assert "===" in res.ascii_text
 
 
@@ -264,7 +264,7 @@ def test_canonical_ascii_table_rendering() -> None:
         </tr>
     </table>
     """
-    res = convert_html_table_v2(html)
+    res = convert_html_table(html)
     assert res.confidence >= 0.80
     assert "<TABLE>" in res.ascii_text
     assert "</TABLE>" in res.ascii_text
@@ -274,8 +274,8 @@ def test_canonical_ascii_table_rendering() -> None:
     assert "---" in res.ascii_text
 
 
-def test_convert_html_tables_to_ascii_v2_document_facade() -> None:
-    """convert_html_tables_to_ascii_v2 converts all tables across a document."""
+def test_convert_html_tables_to_ascii_document_facade() -> None:
+    """convert_html_tables_to_ascii converts all tables across a document."""
     html = """
     <html>
         <body>
@@ -304,9 +304,9 @@ def test_convert_html_tables_to_ascii_v2_document_facade() -> None:
         </body>
     </html>
     """
-    from defs.tables.ascii_html_v2 import convert_html_tables_to_ascii_v2
+    from defs.tables.ascii_html import convert_html_tables_to_ascii
 
-    v2_doc = convert_html_tables_to_ascii_v2(html)
+    v2_doc = convert_html_tables_to_ascii(html)
     assert "<TABLE>" in v2_doc
     assert "Financial Statement Note" in v2_doc
     assert "Revenue" in v2_doc
@@ -340,7 +340,7 @@ def test_indent_preservation_and_compact_layout() -> None:
         </tr>
     </table>
     """
-    res = convert_html_table_v2(html)
+    res = convert_html_table(html)
     lines = res.ascii_text.splitlines()
 
     # Find the data rows and assert leading whitespace indentation is preserved
@@ -390,7 +390,7 @@ def test_effective_indentation_normalization() -> None:
         </tr>
     </table>
     """
-    res = convert_html_table_v2(html)
+    res = convert_html_table(html)
     lines = res.ascii_text.splitlines()
 
     rev_line = next(line for line in lines if "Revenue:" in line)
@@ -422,7 +422,7 @@ def test_rowspan_header_deduplication() -> None:
         </tr>
     </table>
     """
-    res = convert_html_table_v2(html)
+    res = convert_html_table(html)
     assert res.ascii_text.count("Period ended") == 1
 
 
@@ -439,7 +439,7 @@ def test_nbsp_normalization_no_mid_word_wrap() -> None:
         </tr>
     </table>
     """
-    res = convert_html_table_v2(html)
+    res = convert_html_table(html)
     assert "\xa0" not in res.ascii_text
     lines = res.ascii_text.splitlines()
     header_lines = [l for l in lines if "Weighted" in l or "Grant-Date" in l]
@@ -449,7 +449,7 @@ def test_nbsp_normalization_no_mid_word_wrap() -> None:
 
 def test_hyphen_fallback_no_mid_word_chop() -> None:
     """Hyphenated tokens wider than the column break at hyphens before mid-word chopping."""
-    from defs.tables.ascii_html_v2.text import wrap_cell_text
+    from defs.tables.ascii_html.text import wrap_cell_text
 
     text = "Fully taxable-equivalent adjustments (a)"
     wrapped = wrap_cell_text(text, width=10)
@@ -464,7 +464,7 @@ def test_hyphen_fallback_no_mid_word_chop() -> None:
 
 def test_header_tier_balance_pass() -> None:
     """Sibling span headers in the same row receive more balanced column widths."""
-    from defs.tables.ascii_html_v2.text import compute_column_widths
+    from defs.tables.ascii_html.text import compute_column_widths
 
     grid = [
         ["Short", "", "Long Header Here", ""],
@@ -494,7 +494,7 @@ def test_nonempty_span_origin_is_not_pruned() -> None:
     record = next(
         item for item in _records() if item["table_id"] == "jpmorgan_2025_table_0098"
     )
-    output = convert_html_table_v2(record["html"]).ascii_text
+    output = convert_html_table(record["html"]).ascii_text
     year_line = next(line for line in output.splitlines() if "2025" in line)
     assert "2024" in year_line
     assert "2023" in year_line
@@ -519,7 +519,7 @@ def test_affix_only_columns_do_not_fragment_dividers() -> None:
     assert {item["table_id"] for item in records} == target_ids
 
     for record in records:
-        output = convert_html_table_v2(record["html"]).ascii_text
+        output = convert_html_table(record["html"]).ascii_text
         divider_lines = [
             line
             for line in output.splitlines()
@@ -538,7 +538,7 @@ def test_prefix_column_closes_following_divider_gap() -> None:
     record = next(
         item for item in _records() if item["table_id"] == "msft_2025_table_0060"
     )
-    output = convert_html_table_v2(record["html"]).ascii_text
+    output = convert_html_table(record["html"]).ascii_text
     divider_lines = [
         line for line in output.splitlines() if line and set(line) <= {"-", "=", " "}
     ]
@@ -561,7 +561,7 @@ def test_healed_divider_lines_from_templates() -> None:
     assert set(records.keys()) == target_ids
 
     # 1. 2-year table (tgt_2026_table_0114)
-    out_114 = convert_html_table_v2(records["tgt_2026_table_0114"]["html"]).ascii_text
+    out_114 = convert_html_table(records["tgt_2026_table_0114"]["html"]).ascii_text
     divs_114 = [
         line
         for line in out_114.splitlines()
@@ -572,7 +572,7 @@ def test_healed_divider_lines_from_templates() -> None:
     assert divs_114[0] == divs_114[1]
 
     # 2. 2-year table (tgt_2026_table_0120)
-    out_120 = convert_html_table_v2(records["tgt_2026_table_0120"]["html"]).ascii_text
+    out_120 = convert_html_table(records["tgt_2026_table_0120"]["html"]).ascii_text
     divs_120 = [
         line
         for line in out_120.splitlines()
@@ -582,7 +582,7 @@ def test_healed_divider_lines_from_templates() -> None:
     assert divs_120[0] == divs_120[1]
 
     # 3. 3-year / rate reconciliation table (tgt_2026_table_0140)
-    out_140 = convert_html_table_v2(records["tgt_2026_table_0140"]["html"]).ascii_text
+    out_140 = convert_html_table(records["tgt_2026_table_0140"]["html"]).ascii_text
     divs_140 = [
         line
         for line in out_140.splitlines()
@@ -592,7 +592,7 @@ def test_healed_divider_lines_from_templates() -> None:
     assert divs_140[0] == divs_140[2]
 
     # 4. Multi-level merged header table (tgt_2026_table_0162)
-    out_162 = convert_html_table_v2(records["tgt_2026_table_0162"]["html"]).ascii_text
+    out_162 = convert_html_table(records["tgt_2026_table_0162"]["html"]).ascii_text
     divs_162 = [
         line
         for line in out_162.splitlines()
@@ -612,7 +612,7 @@ def test_balanced_line_wrapping_optimizes_headroom() -> None:
     record = next(
         item for item in _records() if item["table_id"] == "jnj_2025_table_0112"
     )
-    output = convert_html_table_v2(record["html"]).ascii_text
+    output = convert_html_table(record["html"]).ascii_text
     lines = output.splitlines()
 
     # Date headers should fit completely on one line and not be forced onto two lines
@@ -630,7 +630,7 @@ def test_short_headers_do_not_wrap_when_budget_allows() -> None:
     record = next(
         item for item in _records() if item["table_id"] == "jnj_2025_table_0178"
     )
-    output = convert_html_table_v2(record["html"]).ascii_text
+    output = convert_html_table(record["html"]).ascii_text
     lines = output.splitlines()
     header_line = next(line for line in lines if "’25 vs. ’24" in line)
     assert "’24 vs. ’23" in header_line
@@ -643,7 +643,7 @@ def test_footnote_column_dividers_heal_to_full_columns() -> None:
     record = next(
         item for item in _records() if item["table_id"] == "jpmorgan_2025_table_0065"
     )
-    output = convert_html_table_v2(record["html"]).ascii_text
+    output = convert_html_table(record["html"]).ascii_text
     divs = [
         line
         for line in output.splitlines()
@@ -664,7 +664,7 @@ def test_inline_elements_do_not_inject_artificial_spaces() -> None:
     record = next(
         item for item in _records() if item["table_id"] == "goog_2025_table_0185"
     )
-    output = convert_html_table_v2(record["html"]).ascii_text
+    output = convert_html_table(record["html"]).ascii_text
     # Names split across styling spans (e.g. <span>S</span><span>UNDAR</span>) should not have inner spaces
     assert "SUNDAR PICHAI" in output
     assert "S UNDAR" not in output
@@ -683,7 +683,7 @@ def test_unanchored_divider_fragments_are_pruned() -> None:
     record = next(
         item for item in _records() if item["table_id"] == "msft_2025_table_0055"
     )
-    output = convert_html_table_v2(record["html"]).ascii_text
+    output = convert_html_table(record["html"]).ascii_text
     # Divider line should not have orphan ' - ' fragments between columns
     assert "  -  " not in output
     assert (
@@ -699,7 +699,7 @@ def test_data_row_cells_not_misclassified_as_header_bands() -> None:
     record = next(
         item for item in _records() if item["table_id"] == "apple_2025_table_0059"
     )
-    output = convert_html_table_v2(record["html"]).ascii_text
+    output = convert_html_table(record["html"]).ascii_text
     assert "32.1***           Section 1350 Certifications of Chief Executive" in output
 
 
@@ -710,7 +710,7 @@ def test_data_row_with_footnote_spans_preserves_numeric_values() -> None:
     record = next(
         item for item in _records() if item["table_id"] == "jpmorgan_2025_table_0065"
     )
-    output = convert_html_table_v2(record["html"]).ascii_text
+    output = convert_html_table(record["html"]).ascii_text
     assert (
         "Total net revenue                             $ 182,447    $ 177,556 (g)      $ 158,104"
         in output
@@ -728,7 +728,7 @@ def test_multi_column_header_span_with_zero_width_origin_preserves_text() -> Non
     record = next(
         item for item in _records() if item["table_id"] == "msft_2025_table_0015"
     )
-    output = convert_html_table_v2(record["html"]).ascii_text
+    output = convert_html_table(record["html"]).ascii_text
     assert "Percentage" in output
     assert "Change" in output
 
@@ -740,7 +740,7 @@ def test_hidden_elements_filtered_preserves_header_band_alignment() -> None:
     record = next(
         item for item in _records() if item["table_id"] == "jpmorgan_2025_table_0098"
     )
-    output = convert_html_table_v2(record["html"]).ascii_text
+    output = convert_html_table(record["html"]).ascii_text
     lines = output.splitlines()
     year_line = next(line for line in lines if "2025" in line and "2024" in line)
     # The header line should have exactly one occurrence of each year
@@ -757,14 +757,14 @@ def test_prose_columns_expand_without_artificial_line_wrapping() -> None:
     rec_msft = next(
         item for item in _records() if item["table_id"] == "msft_2025_table_0006"
     )
-    out_msft = convert_html_table_v2(rec_msft["html"]).ascii_text
+    out_msft = convert_html_table(rec_msft["html"]).ascii_text
     assert "Item 1.   Business" in out_msft
 
     # LMT 0071 Exhibit Index description
     rec_lmt = next(
         item for item in _records() if item["table_id"] == "lmt_2025_table_0071"
     )
-    out_lmt = convert_html_table_v2(rec_lmt["html"]).ascii_text
+    out_lmt = convert_html_table(rec_lmt["html"]).ascii_text
     assert (
         "3.1  Charter of Lockheed Martin Corporation, as amended by Articles of Amendment"
         in out_lmt

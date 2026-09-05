@@ -5,7 +5,7 @@ from __future__ import annotations
 import argparse
 from pathlib import Path
 
-from defs.tables import convert_html_tables_to_ascii
+from defs.tables.ascii_html import convert_html_tables_to_ascii
 
 
 def main() -> int:
@@ -21,7 +21,7 @@ def main() -> int:
     args = parser.parse_args()
 
     html = args.file.read_text(encoding="utf-8") if args.file else args.html
-    converted = convert_html_tables_to_ascii(html, debug=True)
+    converted = convert_html_tables_to_ascii(html)
     if args.write_output:
         args.write_output.write_text(converted, encoding="utf-8")
     else:

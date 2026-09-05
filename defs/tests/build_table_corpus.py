@@ -11,7 +11,7 @@ import hashlib
 from pathlib import Path
 
 from defs.storage import pa, write_table_atomic
-from defs.tables import convert_html_tables_to_ascii
+from defs.tables.ascii_html import convert_html_tables_to_ascii
 from defs.text.html import parse_html
 
 ROOT = Path(__file__).parents[2]

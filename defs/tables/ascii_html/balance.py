@@ -5,10 +5,10 @@ from __future__ import annotations
 from collections import defaultdict
 from typing import TYPE_CHECKING
 
-from defs.tables.ascii_html_v2.text import wrap_cell_text
+from defs.tables.ascii_html.text import wrap_cell_text
 
 if TYPE_CHECKING:
-    from defs.tables.ascii_html_v2.model import RenderBudget
+    from defs.tables.ascii_html.model import RenderBudget
 
 
 def split_wide_hyphenated(text: str, width: int) -> str:

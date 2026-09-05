@@ -4,13 +4,11 @@ from __future__ import annotations
 
 import argparse
 import json
-from contextlib import redirect_stderr
 from datetime import UTC, datetime
-from io import StringIO
 from pathlib import Path
 
 from defs.runtime.paths import resolve_paths
-from defs.tables import convert_html_tables_to_ascii
+from defs.tables.ascii_html import convert_html_tables_to_ascii
 from defs.tests.query_table_corpus import _records
 
 
@@ -20,9 +18,7 @@ def _default_root() -> Path:
 
 
 def _bundle(record: dict) -> str:
-    diagnostics = StringIO()
-    with redirect_stderr(diagnostics):
-        current = convert_html_tables_to_ascii(record["html"], debug=True)
+    current = convert_html_tables_to_ascii(record["html"])
     return "\n".join(
         (
             "TABLE REVIEW ARTIFACT",
@@ -33,9 +29,6 @@ def _bundle(record: dict) -> str:
             "",
             "=== ORIGINAL HTML TABLE ===",
             record["html"].rstrip(),
-            "",
-            "=== PIPELINE DIAGNOSTICS ===",
-            diagnostics.getvalue().rstrip(),
             "",
             "=== CURRENT ASCII RENDER ===",
             current.rstrip(),

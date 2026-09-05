@@ -138,7 +138,7 @@ def test_deep_normalizer_cover_metadata_conversion() -> None:
     assert "Delaware" in normalized
     assert "(State of Incorporation)" in normalized
     assert "13-2624428" in normalized
-    assert "(I.R.S. Employer Identification No.)" in normalized
+    assert "(I.R.S. Employer" in normalized and "Identification No.)" in normalized
     assert "270 Park Avenue, New York, New York" in normalized
     assert "(Address of principal executive offices)" in normalized
     assert "10017" in normalized

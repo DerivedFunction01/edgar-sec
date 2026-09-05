@@ -22,7 +22,7 @@ from defs.sec_forms.page_markers import (
     refresh_html_analysis,
     strip_page_markers,
 )
-from defs.tables import convert_html_tables_to_ascii_v2
+from defs.tables import convert_html_tables_to_ascii
 from defs.text.html import parse_html
 from defs.text.reflow import reflow_ascii
 
@@ -145,7 +145,7 @@ class DeepNormalizer:
         # 2. Generic HTML financial table to ASCII conversion & HTML tag stripping
         # Meant for html documents that actually are just SGML ASCII documents in the 2008-range that uses <PRE> wrappers
         if is_html and bool(_RE_HTML_DISCRIMINATOR.search(text)):
-            text = convert_html_tables_to_ascii_v2(text)
+            text = convert_html_tables_to_ascii(text)
             page_analysis = refresh_html_analysis(page_analysis, text)
 
         # 3. Invariant generic cleanup passes

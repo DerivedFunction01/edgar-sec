@@ -4,14 +4,14 @@ from __future__ import annotations
 
 from typing import TYPE_CHECKING
 
-from defs.tables.ascii_html_v2.model import (
+from defs.tables.ascii_html.model import (
     CellBox,
     SourceCell,
     SourceTable,
 )
 
 if TYPE_CHECKING:
-    from defs.tables.ascii_html_v2.model import SpanGroup
+    from defs.tables.ascii_html.model import SpanGroup
 
 
 def estimate_table_geometry(

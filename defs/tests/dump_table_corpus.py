@@ -8,8 +8,7 @@ from datetime import UTC, datetime
 from pathlib import Path
 
 from defs.runtime.paths import resolve_paths
-from defs.tables import convert_html_tables_to_ascii
-from defs.tables.ascii_html_v2 import convert_html_tables_to_ascii_v2
+from defs.tables.ascii_html import convert_html_tables_to_ascii
 from defs.tests.query_table_corpus import (
     _records,
     format_diff,
@@ -29,7 +28,6 @@ def _render(
     records: list[dict],
     *,
     corpus: str | None,
-    render_current: bool,
     render_v2: bool,
     side_by_side: bool,
     diff: bool,
@@ -41,11 +39,8 @@ def _render(
         mode_title = "TABLE CORPUS DIFF (GOLDEN vs V2)"
         field_desc = "Converted field: unified diff (expected -> v2)"
     elif render_v2:
-        mode_title = "V2 TABLE CORPUS RENDER (ascii_html_v2)"
-        field_desc = "Converted field: convert_html_tables_to_ascii_v2(html)"
-    elif render_current:
-        mode_title = "CURRENT TABLE CORPUS RENDER (legacy)"
-        field_desc = "Converted field: current converter applied to html"
+        mode_title = "TABLE CORPUS RENDER (ascii_html)"
+        field_desc = "Converted field: convert_html_tables_to_ascii(html)"
     else:
         mode_title = "VALIDATED TABLE CORPUS"
         field_desc = "Converted field: expected"
@@ -62,14 +57,12 @@ def _render(
             lines.extend(("", "=" * 100, ""))
 
         if side_by_side:
-            v2_render = convert_html_tables_to_ascii_v2(record["html"])
+            v2_render = convert_html_tables_to_ascii(record["html"])
             body = format_side_by_side(record["expected"], v2_render)
         elif diff:
-            v2_render = convert_html_tables_to_ascii_v2(record["html"])
+            v2_render = convert_html_tables_to_ascii(record["html"])
             body = format_diff(record["expected"], v2_render)
         elif render_v2:
-            body = convert_html_tables_to_ascii_v2(record["html"])
-        elif render_current:
             body = convert_html_tables_to_ascii(record["html"])
         else:
             body = record["expected"]
@@ -106,16 +99,11 @@ def main(argv: list[str] | None = None) -> int:
         help="newline-delimited table IDs to exclude",
     )
     parser.add_argument(
-        "--render-current",
-        action="store_true",
-        help="convert each stored raw HTML table with the legacy converter",
-    )
-    parser.add_argument(
         "--render-v2",
         "--v2",
         action="store_true",
         dest="render_v2",
-        help="convert each stored raw HTML table with ascii_html_v2",
+        help="convert each stored raw HTML table with ascii_html",
     )
     parser.add_argument(
         "--side-by-side",
@@ -165,7 +153,6 @@ def main(argv: list[str] | None = None) -> int:
     rendered = _render(
         records,
         corpus=args.corpus,
-        render_current=args.render_current,
         render_v2=args.render_v2,
         side_by_side=args.side_by_side,
         diff=args.diff,

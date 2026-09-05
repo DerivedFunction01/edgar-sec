@@ -6,7 +6,7 @@ import argparse
 from pathlib import Path
 
 from defs.storage import DatasetSpec, pa, read_records, write_table_atomic
-from defs.tables import convert_html_tables_to_ascii
+from defs.tables.ascii_html import convert_html_tables_to_ascii
 
 ROOT = Path(__file__).parents[2]
 LIVE_PATH = ROOT / "defs/tests/fixtures/tables/validated_table_corpus_v2.parquet"

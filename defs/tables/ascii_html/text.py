@@ -6,7 +6,7 @@ import textwrap
 from re import sub
 from typing import Any
 
-from defs.tables.ascii_html_v2.model import HorizontalAlign
+from defs.tables.ascii_html.model import HorizontalAlign
 
 
 def _split_wide_hyphenated(text: str, width: int) -> str:
@@ -150,7 +150,7 @@ def normalize_grid_indents(
 
 def __getattr__(name: str) -> Any:
     if name == "compute_column_widths":
-        from defs.tables.ascii_html_v2.widths import compute_column_widths
+        from defs.tables.ascii_html.widths import compute_column_widths
 
         return compute_column_widths
     raise AttributeError(f"module {__name__!r} has no attribute {name!r}")

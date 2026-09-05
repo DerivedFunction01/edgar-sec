@@ -3,7 +3,7 @@
 This module owns the canonical transformations for conformed signature
 markers and letter-spaced (mangled) signature text. It is text-level only:
 ``re`` and ``defs.text`` imports, no HTML or table dependencies. Table-level
-consumers compose these primitives from ``defs.tables.templates.signatures``.
+consumers compose these primitives with the canonical geometry-first renderer.
 
 Mangled names are a known SEC artifact of condensed fonts: glyph-width
 rendering inserts a space after isolated uppercase letters, producing shapes

@@ -13,13 +13,10 @@ from __future__ import annotations
 
 from typing import Any
 
-from defs.sec_forms.context import build_cover_scope
-from defs.sec_forms.context.models import SectionContext, TableContext
 from defs.sec_forms.cover import BoundaryInput, find_cover_boundary_for_profile
 from defs.sec_forms.cover.profiles import CoverProfile, get_profile
 from defs.sec_forms.page_markers import PageMarkerAnalysis, analyze_page_markers
 from defs.tables.protection import mask_tagged_tables, restore_tagged_tables
-from defs.tables.templates import apply_table_templates
 from defs.text import (
     heal_date_fragments,
     heal_split_lines,
@@ -102,39 +99,16 @@ class HybridCoverPreprocessor:
             ("head", "script", "style", "meta", "noscript", "ix:hidden", "ix:header")
         )
 
-        # 2. In-place layout table transformation, gated by cover capability.
+        # 2. Classify cover candidates without applying a formatter. All tables
+        # use the geometry-first renderer below so cover and body output share
+        # one alignment and unwrapping policy.
         candidates: list[FastHtmlNode] = []
         if self.profile.boundary is not None:
             candidates = _mark_cover_candidates(tree, self.profile)
-            cover_scope = build_cover_scope(self.profile, None)
-            all_tables = tree.css("table")
-            for ordinal, table in enumerate(all_tables, start=1):
-                if not any(c.raw_node == table.raw_node for c in candidates):
-                    continue
-                source_grid = span_grid(table, with_spans=False)
-                if source_grid:
-                    table_context = TableContext(
-                        section=SectionContext(
-                            scope=self.profile.table_scope,
-                            cover_scope=cover_scope,
-                        ),
-                        table_ordinal=ordinal,
-                        locator=f"table-{ordinal:06d}",
-                    )
-                    template_result = apply_table_templates(
-                        table,
-                        source_grid,
-                        scope=self.profile.table_scope,
-                        table_context=table_context,
-                        section_context=table_context.section,
-                    )
-                    if template_result is not None:
-                        table.replace_with_html(f"\n\n{template_result.text}\n\n")
-                        continue
 
-        # 3. Convert remaining body/data tables through the generic renderer.
+        # 3. Convert all tables through the geometry-first renderer.
         converted_html = normalize_checkbox_tokens(
-            convert_html_tables_to_ascii_v2(str(tree))
+            convert_html_tables_to_ascii(str(tree))
         )
         boundary_source = normalize_whitespace_and_tabs(converted_html)
         boundary_analysis = page_analysis
@@ -196,16 +170,9 @@ class HybridCoverPreprocessor:
         )
 
 
-def span_grid(table: object, *, with_spans: bool = False):
+def convert_html_tables_to_ascii(html_content: str) -> str:
     """Re-exported for local use to avoid a top-level circular import."""
-    from defs.tables import span_grid as _span_grid
-
-    return _span_grid(table, with_spans=with_spans)
-
-
-def convert_html_tables_to_ascii_v2(html_content: str) -> str:
-    """Re-exported for local use to avoid a top-level circular import."""
-    from defs.tables import convert_html_tables_to_ascii_v2 as _convert
+    from defs.tables import convert_html_tables_to_ascii as _convert
 
     return _convert(html_content)
 

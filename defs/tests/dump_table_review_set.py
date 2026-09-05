@@ -3,11 +3,9 @@
 from __future__ import annotations
 
 import argparse
-from contextlib import redirect_stderr
-from io import StringIO
 from pathlib import Path
 
-from defs.tables import convert_html_tables_to_ascii
+from defs.tables.ascii_html import convert_html_tables_to_ascii
 from defs.tests.query_table_corpus import CORPUS_PATH, _records
 
 
@@ -19,10 +17,8 @@ def _ids_from_file(path: Path) -> list[str]:
     ]
 
 
-def _render(record: dict, *, debug: bool) -> str:
-    diagnostics = StringIO()
-    with redirect_stderr(diagnostics):
-        current = convert_html_tables_to_ascii(record["html"], debug=debug)
+def _render(record: dict) -> str:
+    current = convert_html_tables_to_ascii(record["html"])
     sections = [
         f"ID: {record['table_id']}",
         f"Corpus: {record['corpus']}",
@@ -31,16 +27,10 @@ def _render(record: dict, *, debug: bool) -> str:
         "",
         "=== ORIGINAL HTML TABLE ===",
         record["html"].rstrip(),
+        "",
+        "=== CURRENT ASCII RENDER ===",
+        current.rstrip(),
     ]
-    if debug:
-        sections.extend(
-            [
-                "",
-                "=== PIPELINE DIAGNOSTICS ===",
-                diagnostics.getvalue().rstrip(),
-            ]
-        )
-    sections.extend(["", "=== CURRENT ASCII RENDER ===", current.rstrip()])
     return "\n".join(sections)
 
 
@@ -49,7 +39,6 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--ids-file", type=Path)
     parser.add_argument("--id", action="append", dest="ids", default=[])
     parser.add_argument("--corpus-path", type=Path, default=CORPUS_PATH)
-    parser.add_argument("--no-debug", action="store_true")
     parser.add_argument("--output", type=Path, required=True)
     args = parser.parse_args(argv)
     if not args.ids_file and not args.ids:
@@ -69,11 +58,7 @@ def main(argv: list[str] | None = None) -> int:
 
     args.output.parent.mkdir(parents=True, exist_ok=True)
     args.output.write_text(
-        "\n\n"
-        + "\n\n".join(
-            _render(records[table_id], debug=not args.no_debug) for table_id in ids
-        )
-        + "\n",
+        "\n\n" + "\n\n".join(_render(records[table_id]) for table_id in ids) + "\n",
         encoding="utf-8",
     )
     print(f"Wrote {len(ids)} current table reviews to {args.output}")

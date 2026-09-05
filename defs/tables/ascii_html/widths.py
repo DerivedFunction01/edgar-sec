@@ -5,11 +5,11 @@ from __future__ import annotations
 import re
 from collections import defaultdict
 
-from defs.tables.ascii_html_v2.balance import (
+from defs.tables.ascii_html.balance import (
     balance_span_widths,
     balanced_wrap_width,
 )
-from defs.tables.ascii_html_v2.model import (
+from defs.tables.ascii_html.model import (
     DEFAULT_RENDER_BUDGET,
     HorizontalAlign,
     RenderBudget,

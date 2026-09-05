@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from defs.tables.ascii_html_v2.model import (
+from defs.tables.ascii_html.model import (
     BorderSegment,
     BorderStyle,
     SourceCell,

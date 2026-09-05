@@ -6,9 +6,6 @@ from defs.sec_forms.context.models import (
     RepairPolicy,
     SectionContext,
 )
-from defs.tables.templates.shares_purchased import (
-    shares_purchased_template,
-)
 from defs.taxonomy.tables.classifier import classify_table
 
 
@@ -68,8 +65,8 @@ def test_income_statement_shape_and_vocabulary() -> None:
     assert res_short.structural_confirmed is False
 
 
-def test_shares_purchased_classification_and_template_repair() -> None:
-    """Microsoft Table 0009 raw grid with spacer columns is repaired into canonical 5 columns."""
+def test_shares_purchased_classification() -> None:
+    """Microsoft Table 0009 raw grid with spacer columns is classified structurally."""
     raw_msft_grid = [
         [
             "Period",
@@ -115,43 +112,6 @@ def test_shares_purchased_classification_and_template_repair() -> None:
     assert res.family == "shares_purchased"
     assert res.structural_confirmed is True
     assert res.repair_policy is RepairPolicy.FAMILY_TEMPLATE
-
-    repaired_output = shares_purchased_template(raw_msft_grid)
-    assert repaired_output is not None
-    assert "<TABLE>" in repaired_output
-    assert "April 1, 2025 – April 30, 2025" in repaired_output
-    assert "$448.01" in repaired_output
-    assert "$58,293" in repaired_output
-    assert "$476.78" in repaired_output
-    assert "Total" in repaired_output
-    assert "7,520,493" in repaired_output
-    assert "Period" in repaired_output
-    assert "Shares Purchased" in repaired_output
-    assert "Average Price Paid" in repaired_output
-
-
-def test_shares_purchased_template_drops_footnote_columns_and_year_superheader():
-    grid = [
-        [
-            "2012",
-            "Total Number of Shares Purchased",
-            "",
-            "Average Price Paid per Share",
-            "Total Number of Shares Purchased as Part of Publicly Announced Plans or Programs",
-            "Approximate Dollar Value of Shares that May Yet be Purchased Under the Program (in millions)",
-        ],
-        ["October 1 - October 31", "115,800", "(1)", "$37.62", "-", "$-"],
-        ["November 1 - November 30", "175,000", "(2)", "$34.29", "175,000", "$19.0"],
-        ["December 1 - December 31", "171,500", "(2)", "$34.50", "171,500", "$11.1"],
-        ["Total", "462,300", "", "$35.20", "346,500", "$11.1"],
-    ]
-    result = shares_purchased_template(grid)
-    assert result is not None
-    assert "Period" in result
-    assert "2012" not in result.split("<S>", 1)[1]
-    assert "(1)" not in result.split("<S>", 1)[1]
-    assert "175,000" in result
-    assert "19.0" in result
 
 
 def test_equity_statement_classification() -> None:

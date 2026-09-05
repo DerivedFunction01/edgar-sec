@@ -26,8 +26,8 @@ from defs.storage import (
     stream_document_blobs,
     write_table_atomic,
 )
-from defs.tables.table_definitions import _heal_grid
-from defs.tables.templates.common import span_grid
+from defs.tables.ascii_html import build_span_matrix, extract_source_table
+from defs.tables.ascii_html.renderer import render_source_table
 from defs.tables.toc import looks_like_toc_text
 from defs.tables.tokens import ALL_CURRENCY_SYMBOLS, is_numeric_cell
 from defs.text.html import FastHtmlNode, FastHtmlTree, parse_html
@@ -219,24 +219,21 @@ def extract_table_record(
     full_raw_text = table_tag.get_text(" ", strip=True)
     is_toc = bool(looks_like_toc_text(full_raw_text.lower()))
 
-    # Extract source grid with span awareness
-    source_grid, span_groups = span_grid(
-        table_tag,
-        with_spans=True,
-        join_fragmented_anchors=is_toc,
-    )
+    # Extract source grid with the canonical geometry engine.
+    source_table, _ = extract_source_table(table_tag)
+    grid_matrix, _ = build_span_matrix(source_table)
+    source_grid = [
+        [cell.text if cell is not None else "" for cell in row] for row in grid_matrix
+    ]
     if not source_grid or not any(any(c.strip() for c in r) for r in source_grid):
         return None
 
     has_split = check_split_affixes(source_grid)
 
-    # Heal grid using production pipeline
-    healed_grid, header_count = _heal_grid(
-        source_grid,
-        debug=False,
-        span_groups=span_groups,
-        table=table_tag,
-    )
+    # Resolve active columns, spans, widths, and header geometry together.
+    rendered = render_source_table(table_tag)
+    healed_grid = [list(row) for row in rendered.resolved_grid.rows]
+    header_count = rendered.resolved_grid.header_row_count
     if not healed_grid or len(healed_grid[0]) == 0:
         healed_grid = [[c.strip() for c in r if c.strip()] for r in source_grid]
         header_count = min(1, len(healed_grid))

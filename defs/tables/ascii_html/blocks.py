@@ -5,8 +5,8 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import TYPE_CHECKING
 
-from defs.tables.ascii_html_v2.columns import is_affix_footnote_token
-from defs.tables.ascii_html_v2.model import HorizontalAlign, RenderBudget
+from defs.tables.ascii_html.columns import is_affix_footnote_token
+from defs.tables.ascii_html.model import HorizontalAlign, RenderBudget
 from defs.tables.tokens import (
     CLOSING_DELIMITERS,
     is_numeric_cell,
@@ -15,7 +15,7 @@ from defs.tables.tokens import (
 )
 
 if TYPE_CHECKING:
-    from defs.tables.ascii_html_v2.model import SourceCell
+    from defs.tables.ascii_html.model import SourceCell
 
 
 @dataclass(slots=True)

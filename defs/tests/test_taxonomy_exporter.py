@@ -40,10 +40,10 @@ def test_build_search_terms_unknown_family() -> None:
 
 
 def test_generate_rendered_output_fallback() -> None:
-    """_generate_rendered_output returns standard_html_converter for non-matching grid."""
+    """_generate_rendered_output falls back to the geometry-first renderer."""
     grid = [["a", "b"], ["1", "2"]]
     rendered, template_name = _generate_rendered_output(grid, header_row_count=1)
-    assert template_name == "standard_html_converter"
+    assert template_name == "standard_ascii_renderer"
     assert "a" in rendered and "1" in rendered
 
 

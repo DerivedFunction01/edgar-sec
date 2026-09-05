@@ -1,4 +1,4 @@
-"""Core data models for ascii_html_v2 geometry-first table renderer."""
+"""Core data models for ascii_html geometry-first table renderer."""
 
 from __future__ import annotations
 
@@ -200,7 +200,7 @@ class ResolvedGrid:
 
 @dataclass(frozen=True, slots=True)
 class TableRenderResult:
-    """Final output of ascii_html_v2 rendering."""
+    """Final output of ascii_html rendering."""
 
     ascii_text: str
     resolved_grid: ResolvedGrid

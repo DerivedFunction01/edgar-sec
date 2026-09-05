@@ -8,7 +8,7 @@ import re
 from pathlib import Path
 
 from defs.storage import DatasetSpec, pa, read_records
-from defs.tables.ascii_html_v2 import convert_html_tables_to_ascii_v2
+from defs.tables.ascii_html import convert_html_tables_to_ascii
 
 ROOT = Path(__file__).parents[2]
 CORPUS_PATH = ROOT / "defs/tests/fixtures/tables/validated_table_corpus_v2.parquet"
@@ -170,12 +170,12 @@ def main(argv: list[str] | None = None) -> int:
         elif args.show == "html":
             text = record["html"]
         elif args.show == "v2":
-            text = convert_html_tables_to_ascii_v2(record["html"])
+            text = convert_html_tables_to_ascii(record["html"])
         elif args.show == "diff":
-            v2_render = convert_html_tables_to_ascii_v2(record["html"])
+            v2_render = convert_html_tables_to_ascii(record["html"])
             text = format_diff(record["expected"], v2_render)
         elif args.show == "side-by-side":
-            v2_render = convert_html_tables_to_ascii_v2(record["html"])
+            v2_render = convert_html_tables_to_ascii(record["html"])
             text = format_side_by_side(record["expected"], v2_render)
         else:
             text = record["expected"]

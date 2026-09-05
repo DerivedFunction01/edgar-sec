@@ -176,8 +176,7 @@ def test_annual_cover_profile_matches_existing_behavior() -> None:
     assert "UNITED STATES SECURITIES AND EXCHANGE COMMISSION" in text
     assert "For the fiscal year ended December 31, 2024" in text
     assert "Commission file number 001-13665" in text
-    assert (
-        "Delaware\n(State or other jurisdiction of incorporation or organization)"
-        in text
-    )
-    assert "35-1828377\n(I.R.S. Employer Identification No.)" in text
+    assert "Delaware" in text
+    assert "(State or other jurisdiction of incorporation or organization)" in text
+    assert "35-1828377" in text
+    assert "(I.R.S. Employer" in text and "Identification No.)" in text

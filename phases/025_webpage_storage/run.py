@@ -44,14 +44,18 @@ def _select_target_plan() -> str | None:
 
     if len(plans) == 1:
         plan = plans[0]
-        locs = plan.get("unique_locators_count") or plan.get("active_targets_count") or "?"
+        locs = (
+            plan.get("unique_locators_count") or plan.get("active_targets_count") or "?"
+        )
         print(f"  Target Plan: {plan['plan_id']} ({locs} locators) -> {plan['path']}")
         raw = _read(f"  Plan directory [{plan['path']}]: ", plan["path"])
         return raw
 
     print("  Discovered Phase 02 Target Plans:")
     for idx, plan in enumerate(plans, start=1):
-        locs = plan.get("unique_locators_count") or plan.get("active_targets_count") or "?"
+        locs = (
+            plan.get("unique_locators_count") or plan.get("active_targets_count") or "?"
+        )
         print(f"    {idx}. {plan['plan_id']} ({locs} locators)")
 
     choice = _read(f"  Select plan [1-{len(plans)}] [1]: ", "1")

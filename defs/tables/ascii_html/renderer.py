@@ -4,31 +4,31 @@ from __future__ import annotations
 
 from typing import TYPE_CHECKING
 
-from defs.tables.ascii_html_v2.blocks import (
+from defs.tables.ascii_html.blocks import (
     build_row_blocks,
     extract_raw_grids_and_spans,
     fuse_data_affix_blocks,
     fuse_empty_header_span_blocks,
 )
-from defs.tables.ascii_html_v2.borders import (
+from defs.tables.ascii_html.borders import (
     extract_border_segments,
     score_header_boundary,
 )
-from defs.tables.ascii_html_v2.columns import (
+from defs.tables.ascii_html.columns import (
     identify_affix_columns,
     is_affix_footnote_token,
     resolve_columns,
 )
-from defs.tables.ascii_html_v2.diagnostics import evaluate_table_confidence
-from defs.tables.ascii_html_v2.dividers import (
+from defs.tables.ascii_html.diagnostics import evaluate_table_confidence
+from defs.tables.ascii_html.dividers import (
     format_row_divider,
     format_top_divider,
     heal_divider_lines_from_templates,
     prune_unanchored_divider_fragments,
     repair_rendered_affix_columns,
 )
-from defs.tables.ascii_html_v2.geometry import estimate_table_geometry
-from defs.tables.ascii_html_v2.model import (
+from defs.tables.ascii_html.geometry import estimate_table_geometry
+from defs.tables.ascii_html.model import (
     DEFAULT_RENDER_BUDGET,
     BorderStyle,
     HorizontalAlign,
@@ -36,18 +36,19 @@ from defs.tables.ascii_html_v2.model import (
     ResolvedGrid,
     TableRenderResult,
 )
-from defs.tables.ascii_html_v2.spans import (
+from defs.tables.ascii_html.spans import (
     build_span_matrix,
     extract_source_table,
     repair_header_band_spans,
 )
-from defs.tables.ascii_html_v2.text import (
+from defs.tables.ascii_html.text import (
     format_cell_line,
     normalize_grid_indents,
     wrap_cell_text,
 )
-from defs.tables.ascii_html_v2.widths import compute_column_widths
+from defs.tables.ascii_html.widths import compute_column_widths
 from defs.tables.tokens import (
+    is_numeric_cell,
     is_prefix_token,
     is_suffix_token,
 )
@@ -318,6 +319,62 @@ def render_source_table(
     )
 
 
+def render_grid_to_ascii(
+    grid: list[list[str]],
+    header_row_count: int = 1,
+    alignments: list[HorizontalAlign] | None = None,
+    budget: RenderBudget = DEFAULT_RENDER_BUDGET,
+) -> str:
+    """Render a 2D text matrix into canonical ASCII table format using geometry-first budgeting."""
+    if not grid or not grid[0]:
+        return ""
+
+    num_cols = len(grid[0])
+    if alignments is None:
+        derived_alignments: list[HorizontalAlign] = []
+        for c in range(num_cols):
+            col_vals = [
+                grid[r][c].strip()
+                for r in range(header_row_count, len(grid))
+                if c < len(grid[r]) and grid[r][c].strip()
+            ]
+            num_cnt = sum(1 for v in col_vals if is_numeric_cell(v))
+            if num_cnt > 0 and num_cnt >= len(col_vals) * 0.5:
+                derived_alignments.append(HorizontalAlign.RIGHT)
+            else:
+                derived_alignments.append(HorizontalAlign.LEFT)
+        alignments = derived_alignments
+
+    widths, _ = compute_column_widths(grid, alignments, budget=budget)
+    col_sep = " " * budget.column_spacing
+    lines = ["<TABLE>"]
+
+    for r_idx, row in enumerate(grid):
+        block_lines = [
+            wrap_cell_text(row[c] if c < len(row) else "", widths[c])
+            for c in range(num_cols)
+        ]
+        max_lines = max((len(bl) for bl in block_lines), default=1)
+        for line_i in range(max_lines):
+            formatted_cells = [
+                format_cell_line(
+                    block_lines[c][line_i] if line_i < len(block_lines[c]) else "",
+                    widths[c],
+                    align=alignments[c],
+                )
+                for c in range(num_cols)
+            ]
+            lines.append(col_sep.join(formatted_cells).rstrip())
+
+        if r_idx == header_row_count - 1 and header_row_count > 0:
+            divs = ["-" * widths[c] for c in range(num_cols)]
+            lines.append(col_sep.join(divs))
+
+    lines.append("</TABLE>")
+    return "\n".join(lines)
+
+
 __all__ = [
+    "render_grid_to_ascii",
     "render_source_table",
 ]

@@ -14,9 +14,7 @@ from typing import Any
 
 from defs.runtime.paths import resolve_paths
 from defs.storage import pa, stream_document_blobs, write_table_atomic
-from defs.tables.builder import HTMLTableConverter
-from defs.tables.templates.common import span_grid
-from defs.tables.templates.dispatcher import apply_table_templates
+from defs.tables.ascii_html import convert_html_table, render_grid_to_ascii
 from defs.taxonomy.probe.cache import (
     decompress_payload,
     default_fixture_db_path,
@@ -119,39 +117,22 @@ def _extract_table_html(
     return ""
 
 
-class _DummyTableTag:
-    def find_all(self, *args: Any, **kwargs: Any) -> list[Any]:
-        return []
-
-
 def _generate_rendered_output(
     grid: list[list[str]],
     header_row_count: int,
     html: str = "",
 ) -> tuple[str, str]:
-    """Render the grid using templates or HTMLTableConverter.
+    """Render source HTML or a cached grid using the v2 renderer.
 
     Returns:
-        ``(rendered_text, template_name)`` where ``template_name`` is the
-        name of the matched template function (from ``TemplateResult.template_name``),
-        or ``"standard_html_converter"`` when no template matched.
+        ``(rendered_text, renderer_name)``.
     """
-    table: Any = _DummyTableTag()
-    render_grid = grid
     if html:
-        parsed = parse_html(html)
-        table = parsed.find("table") or table
-        if not isinstance(table, _DummyTableTag):
-            render_grid, _ = span_grid(table, with_spans=True)
-    res = apply_table_templates(table=table, source_grid=render_grid)
-    if res:
-        return res.text.strip(), res.template_name or "apply_table_templates"
-    conv = (
-        HTMLTableConverter(grid=render_grid, header_row_count=header_row_count)
-        .to_generic_table()
-        .build()
-    )
-    return conv.strip(), "standard_html_converter"
+        v2_res = convert_html_table(html)
+        if v2_res.ascii_text.strip():
+            return v2_res.ascii_text.strip(), "ascii_html"
+    conv = render_grid_to_ascii(grid=grid, header_row_count=header_row_count)
+    return conv.strip(), "standard_ascii_renderer"
 
 
 def export_family_dataset(

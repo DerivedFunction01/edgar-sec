@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from typing import TYPE_CHECKING
 
-from defs.tables.ascii_html_v2.model import (
+from defs.tables.ascii_html.model import (
     BorderStyle,
     HorizontalAlign,
     SourceCell,
@@ -16,7 +16,7 @@ from defs.tables.tokens import (
 )
 
 if TYPE_CHECKING:
-    from defs.tables.ascii_html_v2.model import CellBox
+    from defs.tables.ascii_html.model import CellBox
 
 
 def is_structural_spacer(

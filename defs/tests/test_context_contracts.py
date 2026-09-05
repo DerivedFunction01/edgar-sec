@@ -24,8 +24,6 @@ from defs.sec_forms.context import (
 from defs.sec_forms.cover.profiles import get_profile
 from defs.sec_forms.cover.structure import SectionKind, parse_section_heading
 from defs.sec_forms.cover.toc.models import TocEvidence, TocSpan
-from defs.tables import convert_html_tables_to_ascii
-from defs.tables.templates import TableScope, apply_table_templates
 from defs.text.html import parse_html
 
 # --- SectionContext / TableContext -------------------------------------------
@@ -309,83 +307,6 @@ def test_scan_html_repairs_split_inline_words() -> None:
     assert "  T " not in f" {joined} "
 
 
-# --- Public converter / dispatcher back-compat --------------------------------
-
-
-def test_convert_html_tables_to_ascii_unchanged_without_context() -> None:
-    html = """
-    <html><body>
-    <table>
-      <tr><th>Year</th><th>Revenue</th></tr>
-      <tr><td>2024</td><td>100</td></tr>
-      <tr><td>2023</td><td>80</td></tr>
-    </table>
-    </body></html>
-    """
-    without = convert_html_tables_to_ascii(html)
-    with_none = convert_html_tables_to_ascii(
-        html, section_context=None, table_context=None
-    )
-    assert without == with_none
-    assert "Year" in without
-    assert "Revenue" in without
-
-
-def test_apply_table_templates_accepts_context_kwargs() -> None:
-    html = """
-    <html><body>
-    <table>
-      <tr><td>Delaware</td><td>35-1828377</td></tr>
-      <tr>
-        <td>(State or other jurisdiction of incorporation or organization)</td>
-        <td>(I.R.S. Employer Identification No.)</td>
-      </tr>
-    </table>
-    </body></html>
-    """
-    soup = parse_html(html)
-    table = soup.find("table")
-    grid = [
-        ["Delaware", "35-1828377"],
-        [
-            "(State or other jurisdiction of incorporation or organization)",
-            "(I.R.S. Employer Identification No.)",
-        ],
-    ]
-    result = apply_table_templates(
-        table,
-        grid,
-        scope=TableScope.COVER,
-        section_context=SectionContext(),
-        table_context=TableContext(),
-    )
-    # Cover template should match regardless of context (provenance-only).
-    assert result is not None
-    assert "Delaware" in result.text
-
-
-def test_table_context_does_not_alter_canonical_cell_text() -> None:
-    """Context is provenance only; canonical cell text must remain identical."""
-    html = """
-    <html><body>
-    <table>
-      <tr><th>Year</th><th>Revenue</th></tr>
-      <tr><td>2024</td><td>100</td></tr>
-    </table>
-    </body></html>
-    """
-    plain = convert_html_tables_to_ascii(html)
-    section = SectionContext(
-        document_id="doc-1",
-        form_family="10-K",
-        part="II",
-        item="7",
-        heading="Management's Discussion",
-    )
-    with_ctx = convert_html_tables_to_ascii(html, section_context=section)
-    assert plain == with_ctx
-
-
 def test_parse_section_heading_anchored_exact() -> None:
     # Exact leading headings
     p1 = parse_section_heading("PART I")
@@ -436,62 +357,6 @@ def test_cover_profile_wires_derived_taxonomy() -> None:
 
     eight_k = get_profile("8-K")
     assert eight_k.derived_taxonomy is None
-
-
-def test_apply_table_templates_infers_scope_from_context() -> None:
-    html = """
-    <table>
-      <tr><td>Delaware</td><td>35-1828377</td></tr>
-      <tr>
-        <td>(State or other jurisdiction of incorporation)</td>
-        <td>(I.R.S. Employer Identification No.)</td>
-      </tr>
-    </table>
-    """
-    soup = parse_html(html)
-    table = soup.find("table")
-    grid = [
-        ["Delaware", "35-1828377"],
-        [
-            "(State or other jurisdiction of incorporation)",
-            "(I.R.S. Employer Identification No.)",
-        ],
-    ]
-    cover_scope = build_cover_scope(get_profile("10-K"), None)
-    ctx = TableContext(
-        section=SectionContext(
-            scope=TableScope.COVER,
-            cover_scope=cover_scope,
-        ),
-        table_ordinal=1,
-    )
-    # Even when caller passes scope=TableScope.BODY (or defaults to it),
-    # context infers COVER scope and triggers cover templates.
-    result = apply_table_templates(
-        table,
-        grid,
-        scope=TableScope.BODY,
-        table_context=ctx,
-    )
-    assert result is not None
-    assert "Delaware" in result.text
-
-
-def test_convert_html_tables_to_ascii_with_structure_index() -> None:
-    html = """
-    <html><body>
-    <h1>Item 1. Business</h1>
-    <table>
-      <tr><th>Year</th><th>Revenue</th></tr>
-      <tr><td>2024</td><td>100</td></tr>
-    </table>
-    </body></html>
-    """
-    soup = parse_html(html)
-    index = scan_html(soup, document_id="doc-test")
-    converted = convert_html_tables_to_ascii(html, structure_index=index)
-    assert "Year" in converted
-    assert "Revenue" in converted
 
 
 def test_extract_toc_references_bare_and_prefixed_page_numbers() -> None:

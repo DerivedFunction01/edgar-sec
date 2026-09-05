@@ -1,14 +1,13 @@
 # `defs/tables/` — Shared Table Processing
 
 Provides the phase-independent table contract used by document normalizers.
-`convert_html_tables_to_ascii` parses visual HTML tables, removes non-visual
-content, resolves `rowspan`/`colspan`, unwraps layout tables, heals split
-currency and footnote columns, and renders standardized SEC `<TABLE>` blocks.
+The primary table engine is `ascii_html`, a geometry-first presentation layer
+that resolves 2D cell coordinate grids, rowspan/colspan regions, border dividers,
+affix fusion, and balanced column width budgeting to render standardized SEC
+`<TABLE>` blocks.
 
-`HTMLTableConverter` also accepts an already-resolved grid for callers that
-need direct formatting, while `GenericTable` owns wrapping, widths, alignment,
-and `<S>`/`<C>` marker output. `SimpleTableProcessor` handles parsing and
-repairs for generated ASCII tables.
+`render_grid_to_ascii` formats programmatic 2D matrix grids directly using the same
+geometry and budgeting rules without needing an HTML DOM.
 
 `protection.py` owns exact tagged-table protection for plain-text pipelines:
 `mask_tagged_tables()` replaces complete — and unterminated, through
@@ -18,9 +17,21 @@ whitespace-oriented passes cannot see their layout, and
 already contains the sentinel byte is returned unmasked; callers must treat
 that as "no reflow possible".
 
+> [!NOTE]
+> **TODO: Future Table Unwrapping / De-Tabling Policy**
+> Many SEC HTML filings use `<table>` tags for non-tabular layout purposes (such as
+> 1x1 container boxes, vertical 1-column paragraph stacks, bullet lists wrapped in `<td>`,
+> or key-value metadata pairs). When de-tabling is implemented in a future phase,
+> tables should only be unwrapped to plain text/markdown when strict invariants hold:
+> - The table must contain zero financial/numeric data cells (`is_numeric_cell == False`).
+> - The table must not contain multi-column matrix data or visual border rules.
+> - Tables matching whitelisted non-data layout shapes (single-cell containers, 1-col stacks,
+>   2-col bullet lists, or 2-col key-value pairs) may be unwrapped to prose/lists, while
+>   all multi-dimensional data tables remain canonical `<TABLE>` blocks.
+
 The public API is exported from `defs.tables`. Contract tests live in
-`defs/tests/test_tables.py` and `defs/tests/test_table_protection.py` and are
-run independently from phase test suites.
+`defs/tests/test_ascii_html.py`, `defs/tests/test_table_protection.py`, and
+`defs/tests/test_table_protection.py`.
 
 The manually reviewed table corpus is stored as the single tracked Parquet
 fixture `defs/tests/fixtures/tables/validated_table_corpus_v2.parquet`. The
@@ -33,15 +44,15 @@ Use `PYTHONPATH=. .venv/bin/python defs/tests/query_table_corpus.py --grep
 select an exact ID with `--id` and inspect it using `--head`, `--tail`, or
 `--offset`. Searches cover both source HTML and expected output by default;
 use `--search-in html` or `--search-in expected` to restrict the field.
-To compare directly against the `ascii_html_v2` renderer, use `--show side-by-side`
+To compare directly against the `ascii_html` renderer, use `--show side-by-side`
 (side-by-side column view), `--show diff` (unified diff), or `--show v2`.
 
 For a single readable file containing every converted table and its source
 metadata, run `PYTHONPATH=. .venv/bin/python defs/tests/dump_table_corpus.py`.
 The default output is a generated file under `.artifacts/test-runs/`; use
 `--corpus jnj_2025` to limit the dump or `--output -` to write to stdout.
-To preview the current legacy converter rather than stored expected output, add
-`--render-current`. To preview the `ascii_html_v2` geometry engine, add `--v2`.
+The dump utility renders source HTML with `ascii_html`; `--v2` remains
+available as an explicit spelling for scripts that compare renderer modes.
 To generate a comprehensive comparison across the corpus, use `--side-by-side`
 or `--diff`.
 The live v2 corpus starts schema-only. Promote reviewed tables explicitly with
@@ -72,24 +83,12 @@ ID files, plus `--limit`, so reviewed PASS candidates can be inspected without
 changing the corpus. The confirmed first-100 failure list is tracked at
 `defs/tests/fixtures/tables/review_fail_first_100.txt`.
 
-### Cover table templates
-
-`templates/cover.py` provides cover-page layout decomposition:
-- `cover_layout_template` — decomposes address, state, EIN, contact tables into prose blocks
-- `checkbox_grid_template` — formats filer-category and yes/no checkbox grids
-- `single_row_horizontal_template` — joins single-row multi-cell layout blocks
-
-These templates consume canonical label matchers from `defs.sec_forms.vocabulary` and are scoped to cover-page tables via the typed `TableScope.COVER` in the template dispatcher. Body and data tables use the generic table converter.
-
 ### Table scope contract
 
-`templates/scope.py` defines `TableScope`, a typed capability selector for the
-dispatcher. It is deliberately form-name agnostic: SEC form families select
-scopes, they do not branch inside the shared table layer.
+`templates/scope.py` defines `TableScope`, a typed capability selector retained
+for form and taxonomy classification. It does not select a renderer; all HTML
+tables use the geometry-first engine.
 
-- `TableScope.BODY` — generic financial and body templates
-- `TableScope.TOC` — table-of-contents tables; body templates disabled
-- `TableScope.COVER` — cover and registration templates plus body templates
-
-`apply_table_templates` accepts a `TableScope` or a legacy string. A no-cover
-scope cannot activate registration, cover-layout, or cover-checkbox templates.
+- `TableScope.BODY` — body-table classification
+- `TableScope.TOC` — table-of-contents classification
+- `TableScope.COVER` — cover-table classification

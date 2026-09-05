@@ -5,13 +5,14 @@ from __future__ import annotations
 import re
 from typing import TYPE_CHECKING
 
-from defs.tables.ascii_html_v2.css import parse_style_and_attributes
-from defs.tables.ascii_html_v2.model import (
+from defs.tables.ascii_html.css import parse_style_and_attributes
+from defs.tables.ascii_html.model import (
     HorizontalAlign,
     SourceCell,
     SourceTable,
     SpanGroup,
 )
+from defs.tables.currencies import PREFIX_SYMBOLS
 from defs.tables.tokens import is_numeric_cell
 from defs.text.tokens import BULLET_MARKER_RE
 
@@ -305,14 +306,14 @@ def repair_header_band_spans(
     scenario labels, or other visible header text when the row below provides
     repeated multi-column groups.
     """
-    from defs.tables.ascii_html_v2.columns import is_affix_footnote_token
+    from defs.tables.ascii_html.columns import is_affix_footnote_token
     from defs.tables.tokens import is_numeric_cell
 
     def _is_financial_data_token(text: str) -> bool:
         t = text.strip()
         if not t:
             return False
-        if t in ("$", "€", "£", "¥", "%"):
+        if t in PREFIX_SYMBOLS or t == "%":
             return True
         if is_numeric_cell(t):
             # 4-digit years like 2024 or 2025 can be header labels

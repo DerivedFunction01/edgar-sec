@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from defs.tables.ascii_html_v2.model import (
+from defs.tables.ascii_html.model import (
     DEFAULT_RENDER_BUDGET,
     BorderSegment,
     BorderStyle,
@@ -18,15 +18,15 @@ from defs.tables.ascii_html_v2.model import (
     TextLayoutDiagnostic,
     VerticalAlign,
 )
-from defs.tables.ascii_html_v2.renderer import render_source_table
-from defs.tables.ascii_html_v2.spans import (
+from defs.tables.ascii_html.renderer import render_grid_to_ascii, render_source_table
+from defs.tables.ascii_html.spans import (
     build_span_matrix,
     extract_source_table,
 )
 from defs.text.html import FastHtmlNode, parse_html
 
 
-def convert_html_table_v2(
+def convert_html_table(
     table_html: str | bytes | FastHtmlNode,
     *,
     table_index: int = 0,
@@ -57,7 +57,7 @@ def convert_html_table_v2(
     return render_source_table(table_node, table_index=table_index, budget=budget)
 
 
-def convert_html_tables_to_ascii_v2(
+def convert_html_tables_to_ascii(
     html_content: str,
     *,
     budget: RenderBudget = DEFAULT_RENDER_BUDGET,
@@ -94,8 +94,9 @@ __all__ = [
     "TextLayoutDiagnostic",
     "VerticalAlign",
     "build_span_matrix",
-    "convert_html_table_v2",
-    "convert_html_tables_to_ascii_v2",
+    "convert_html_table",
+    "convert_html_tables_to_ascii",
     "extract_source_table",
+    "render_grid_to_ascii",
     "render_source_table",
 ]
