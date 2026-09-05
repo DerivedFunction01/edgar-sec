@@ -2,82 +2,37 @@
 
 from __future__ import annotations
 
+import bisect
 import re
 from collections import defaultdict
 from typing import Any
 
-from defs.regex import build_alternation
-from defs.text.patterns import PAGE_NUMBER_CORE
-
+from .constants import (
+    _NUMERALS,
+    _PAGE_MARKER_PATTERNS,
+    _RE_APPENDIX_ROMAN,
+    _RE_BARE_ARABIC,
+    _RE_BARE_ROMAN,
+    _RE_BOUNDARY,
+    _RE_DASH_LABEL,
+    _RE_DOTTED_LABEL,
+    _RE_INLINE_PAGE,
+    _RE_LEADING_NUMBER,
+    _RE_LETTER_NUMBER,
+    _RE_PAREN_LABEL,
+    _RE_PIPE_LABEL,
+    _RE_SIMPLE_WRAPPED_LABEL,
+    _RE_STRUCTURAL_MATCH,
+    _RE_TRAILING_NUMBER,
+    RE_PAGE_SUFFIX,
+)
 from .layout import candidate_template, cluster_is_table_like, has_numeric_data_shape
 from .models import PageCandidate, PageMarker, PageMarkerKind, PageNumberRun
-from .sequence import heal_run, validate_group
-
-_RE_PAGE_NUMBER_OF_TOTAL = re.compile(
-    r"(?im)^[ \t]*page[ \t]+(?P<page>\d+)[ \t]+of[ \t]+(?P<count>\d+)[ \t]*$"
-)
-_RE_NUMBER_OF_TOTAL = re.compile(
-    r"(?im)^[ \t]*(?P<page>\d+)[ \t]+of[ \t]+(?P<count>\d+)[ \t]*$"
-)
-_RE_PAGE_NUMBER = re.compile(
-    r"(?im)^[ \t]*page[ \t]+(?P<page>\d+)[ \t]*$", re.IGNORECASE
-)
-_RE_DASHED_NUMBER = re.compile(r"(?im)^[ \t]*-[ \t]*(?P<page>\d+)[ \t]*-[ \t]*$")
-_RE_LETTER_NUMBER = re.compile(
-    r"(?im)^\s*(?P<prefix>[A-Z])\s*[-–—]\s*(?P<page>\d+)\s*$"
-)
-_RE_SGML_LINE = re.compile(
-    r"(?im)^[ \t]*</?PAGE\b[^>]*>[ \t]*(?P<page>\d+)?[ \t]*"
-    r"(?:</?PAGE\b[^>]*>)?[ \t]*$"
-)
-_RE_SGML_INLINE = re.compile(r"(?i)</?PAGE\b[^>]*>")
-_RE_BOUNDARY = re.compile(r"(?im)^[ \t]*(?:\(PAGE\)|\[PAGE\])[ \t]*$")
-_WRAPPERS = build_alternation(["-", "–", "—", ".", "·", "•", "▪"], auto_escape=True)
-_RE_DASH_LABEL = re.compile(
-    rf"^(?=.*(?:{_WRAPPERS}))(?:{_WRAPPERS}|\s)+"
-    rf"(?P<value>\d{{1,4}}|[ivxlcdm]{{1,8}})"
-    rf"(?:{_WRAPPERS}|\s)+$",
-    re.IGNORECASE,
-)
-_RE_PIPE_LABEL = re.compile(
-    r"^\|\s*(?P<value>\d{1,4}|[ivxlcdm]{1,8})\s*\|$", re.IGNORECASE
-)
-_RE_PAREN_LABEL = re.compile(
-    r"^\(\s*(?P<value>\d{1,4}|[ivxlcdm]{1,8})\s*\)$", re.IGNORECASE
-)
-_RE_SIMPLE_WRAPPED_LABEL = re.compile(
-    r"^(?:[|]\s*\d{1,4}\s*[|]|\(\s*\d{1,4}\s*\)|\d{1,4}\.)$"
-)
-_RE_DOTTED_LABEL = re.compile(r"^(?P<value>\d{1,4})\.$")
-_RE_BARE_ARABIC = re.compile(r"^(?P<value>\d{1,4})$")
-_RE_BARE_ROMAN = re.compile(r"^(?P<value>[ivxlcdm]{1,8})$", re.IGNORECASE)
-_RE_LEADING_NUMBER = re.compile(r"^(?P<value>\d{1,4})\s{1,}\S.*$")
-_RE_TRAILING_NUMBER = re.compile(r"^\S.*?\s{2,}(?P<value>\d{1,4})$")
-_RE_INLINE_PAGE = re.compile(
-    r"^(?P<prefix>.{0,80}?\bpage\s+)(?P<value>\d{1,4})\b(?P<suffix>.{0,80})$",
-    re.IGNORECASE,
-)
-_STRUCTURAL_WORDS = build_alternation(
-    ["part", "item", "exhibit", "note"], auto_escape=True
-)
-_PAGE_MARKER_PATTERNS = (
-    (PageMarkerKind.PAGE_NUMBER_OF_TOTAL, _RE_PAGE_NUMBER_OF_TOTAL),
-    (PageMarkerKind.NUMBER_OF_TOTAL, _RE_NUMBER_OF_TOTAL),
-    (PageMarkerKind.PAGE_NUMBER, _RE_PAGE_NUMBER),
-    (PageMarkerKind.DASHED_NUMBER, _RE_DASHED_NUMBER),
-    (PageMarkerKind.LETTER_NUMBER, _RE_LETTER_NUMBER),
-    (PageMarkerKind.SGML, _RE_SGML_LINE),
-    (PageMarkerKind.SGML, _RE_SGML_INLINE),
-)
-RE_PAGE_SUFFIX = re.compile(
-    rf"(?:\b[A-Z])?[\.\-\s]?{PAGE_NUMBER_CORE}(?:\s*[\|+])?\s*$",
-    re.IGNORECASE,
-)
+from .sequence import heal_run, unify_alternating_runs, validate_group
 
 
 def roman_to_int(value: str) -> int | None:
     """Parse a canonical bounded Roman numeral."""
-
     text = value.casefold()
     if not re.fullmatch(r"[ivxlcdm]{1,8}", text):
         return None
@@ -89,23 +44,8 @@ def roman_to_int(value: str) -> int | None:
         previous = max(previous, current)
     if not 0 < total <= 3000:
         return None
-    remaining = total
-    canonical = ""
-    for numeral, amount in (
-        ("m", 1000),
-        ("cm", 900),
-        ("d", 500),
-        ("cd", 400),
-        ("c", 100),
-        ("xc", 90),
-        ("l", 50),
-        ("xl", 40),
-        ("x", 10),
-        ("ix", 9),
-        ("v", 5),
-        ("iv", 4),
-        ("i", 1),
-    ):
+    remaining, canonical = total, ""
+    for numeral, amount in _NUMERALS:
         count, remaining = divmod(remaining, amount)
         canonical += numeral * count
     return total if canonical == text else None
@@ -121,8 +61,6 @@ def line_offsets(lines: list[str]) -> list[int]:
 
 
 def line_for_offset(offsets: list[int], offset: int) -> int:
-    import bisect
-
     return max(0, min(bisect.bisect_right(offsets, offset) - 1, len(offsets) - 1))
 
 
@@ -255,7 +193,7 @@ def classify_candidate(
     stripped = line.strip()
     if not stripped or stripped.casefold() in {"<page>", "</page>"}:
         return None
-    if re.match(rf"(?i)^(?:{_STRUCTURAL_WORDS})\b", stripped):
+    if _RE_STRUCTURAL_MATCH.match(stripped):
         return None
     if has_numeric_data_shape(line) and not (
         re.fullmatch(r"(?:\d{1,4}|[ivxlcdm]{1,8})", stripped, re.IGNORECASE)
@@ -310,11 +248,7 @@ def classify_candidate(
                 relative,
                 True,
             )
-        appendix = re.match(
-            r"^(?P<prefix>[A-Za-z])-(?P<value>[ivxlcdm]{1,8})$",
-            stripped,
-            re.IGNORECASE,
-        )
+        appendix = _RE_APPENDIX_ROMAN.match(stripped)
         if appendix and roman_to_int(appendix.group("value")) is not None:
             return _candidate(
                 appendix,
@@ -354,42 +288,95 @@ def all_candidates(
     offsets = line_offsets(lines)
     excluded_lines = excluded_lines or set()
     candidates: list[PageCandidate] = []
-    for index, line in enumerate(lines):
-        if index in occupied_lines or index in excluded_lines or not line.strip():
-            continue
-        relatives: list[int | None] = [None]
-        if anchors:
-            relatives = []
-            for anchor in anchors:
-                if index == anchor:
-                    continue
-                direction = 1 if index > anchor else -1
+    memo: dict[int, PageCandidate | None] = {}
+
+    def _get_candidate(idx: int, relative: int | None = None) -> PageCandidate | None:
+        if idx in memo:
+            return memo[idx]
+        if idx in occupied_lines or idx in excluded_lines:
+            memo[idx] = None
+            return None
+        line = lines[idx]
+        if not line.strip() or len(line) > 120:
+            memo[idx] = None
+            return None
+        cand = classify_candidate(
+            line,
+            idx,
+            offsets[idx],
+            relative=relative,
+            allow_letter_number=allow_letter_number,
+        )
+        memo[idx] = cand
+        return cand
+
+    if anchors:
+        relatives_by_line: dict[int, list[int]] = {}
+        for anchor in anchors:
+            for direction in (1, -1):
                 eligible = 0
-                position = anchor + direction
-                while position != index and 0 <= position < len(lines):
+                pos = anchor + direction
+                while 0 <= pos < len(lines) and eligible < 3:
                     if (
-                        lines[position].strip()
-                        and position not in occupied_lines
-                        and position not in excluded_lines
+                        lines[pos].strip()
+                        and pos not in occupied_lines
+                        and pos not in excluded_lines
                     ):
                         eligible += 1
-                    position += direction
-                if 1 <= eligible + 1 <= 3:
-                    relatives.append(direction * (eligible + 1))
-            if not relatives:
-                continue
+                        relatives_by_line.setdefault(pos, []).append(
+                            direction * eligible
+                        )
+                    pos += direction
+
+        for index in sorted(relatives_by_line.keys()):
+            relatives = relatives_by_line[index]
             relatives.sort(key=lambda value: abs(value or 0))
-        for relative in relatives:
-            candidate = classify_candidate(
-                line,
-                index,
-                offsets[index],
-                relative=relative,
-                allow_letter_number=allow_letter_number,
-            )
-            if candidate is not None:
-                candidates.append(candidate)
-                break
+            for relative in relatives:
+                candidate = _get_candidate(index, relative=relative)
+                if candidate is not None:
+                    candidates.append(candidate)
+                    break
+    else:
+        n_lines = len(lines)
+        if n_lines <= 250:
+            for idx in range(n_lines):
+                candidate = _get_candidate(idx)
+                if candidate is not None:
+                    candidates.append(candidate)
+        else:
+            # Progressive bidirectional scan: front 25% and tail 25%
+            front_limit = n_lines // 4
+            tail_start = (3 * n_lines) // 4
+            front_cands: list[PageCandidate] = []
+            for idx in range(front_limit):
+                c = _get_candidate(idx)
+                if c is not None:
+                    front_cands.append(c)
+            for idx in range(tail_start, n_lines):
+                _get_candidate(idx)
+
+            # Adaptive stride hopping if front probe found a sequence
+            if len(front_cands) >= 3:
+                vals = [c.value for c in front_cands if c.namespace == "arabic"]
+                if len(vals) >= 3 and vals[-1] > vals[0]:
+                    stride = (
+                        front_cands[-1].start_line - front_cands[0].start_line
+                    ) // (vals[-1] - vals[0])
+                    if stride >= 10:
+                        curr = front_cands[-1].start_line + stride
+                        while curr < tail_start:
+                            for offset_line in range(
+                                max(0, curr - 4), min(n_lines, curr + 5)
+                            ):
+                                _get_candidate(offset_line)
+                            curr += stride
+
+            # Sweep remaining unvisited lines via memo cache
+            for idx in range(n_lines):
+                candidate = _get_candidate(idx)
+                if candidate is not None:
+                    candidates.append(candidate)
+
     return candidates
 
 
@@ -472,6 +459,7 @@ def promote_groups(
             marker_for_candidate(candidate, 0.88 if anchored else 0.8, evidence)
             for candidate in healed.candidates
         )
+    runs = unify_alternating_runs(runs)
     return markers, runs, accepted
 
 

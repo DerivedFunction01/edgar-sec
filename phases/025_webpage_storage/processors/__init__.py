@@ -175,7 +175,6 @@ class DefaultFilingProcessor(DocumentProcessor):
         return self.build_processed_document(preprocessed, normalization, locator)
 
 
-
 __all__ = [
     "DecisionAction",
     "DeepNormalizer",

@@ -16,6 +16,7 @@ from defs.text import (
 from defs.text.dates import MONTH_PATTERN, extract_years
 from defs.text.logical_units import classify_units
 
+from .candidates import line_offsets
 from .layout import line_shape
 from .models import (
     PageMarker,
@@ -67,6 +68,9 @@ _PROSE_PACK = LexicalEvidencePack(
 _COMPILED_PROSE = compile_evidence_pack(_PROSE_PACK)
 _PAGE_TOKEN_RE = re.compile(r"\bpage\s+\d{1,4}\b", re.IGNORECASE)
 _TRAILING_NUMBER_RE = re.compile(r"\s{2,}(?:\d{1,4}|[ivxlcdm]{1,8})\s*$", re.IGNORECASE)
+_WHITESPACE_RE = re.compile(r"\s+")
+_MONTH_RE = re.compile(MONTH_PATTERN)
+_DATE_END_RE = re.compile(r"(?:\.|\d)\s*$")
 _STRUCTURAL_WORDS = build_alternation(
     ["part", "item", "exhibit", "note"], auto_escape=True
 )
@@ -83,10 +87,11 @@ _HEADER_HINTS = build_alternation(
     auto_escape=False,
 )
 _STRUCTURAL_RE = re.compile(rf"^\s*(?:{_STRUCTURAL_WORDS})\b", re.IGNORECASE)
+_HEADER_HINT_RE = re.compile(rf"(?i)\b(?:{_HEADER_HINTS})\b")
 
 
 def _clean_template(line: str) -> str:
-    normalized = re.sub(r"\s+", " ", line.strip().casefold())
+    normalized = _WHITESPACE_RE.sub(" ", line.strip().casefold())
     normalized = _PAGE_TOKEN_RE.sub(" page #", normalized)
     normalized = _TRAILING_NUMBER_RE.sub(" #", normalized)
     return normalized.strip()
@@ -106,9 +111,9 @@ def _clean_date_heading(line: str) -> bool:
     if len(years) != 1:
         return False
     lowered = line.casefold()
-    if not re.search(MONTH_PATTERN, lowered):
+    if not _MONTH_RE.search(lowered):
         return False
-    return bool(re.search(r"(?:\.|\d)\s*$", line))
+    return bool(_DATE_END_RE.search(line))
 
 
 def _eligible(
@@ -126,11 +131,7 @@ def _eligible(
     title_case = len(words) >= 2 and all(
         word[:1].isupper() for word in words if word[:1].isalpha()
     )
-    hint = re.search(
-        rf"(?i)\b(?:{_HEADER_HINTS})\b",
-        stripped,
-    )
-    return bool(title_case or hint)
+    return bool(title_case or _HEADER_HINT_RE.search(stripped))
 
 
 def analyze_repeating_headers(
@@ -142,6 +143,7 @@ def analyze_repeating_headers(
     """Classify repeated text adjacent to accepted page anchors."""
 
     lines = text.splitlines()
+    offsets = line_offsets(lines)
     toc_lines = toc_lines or set()
     anchors = sorted(
         {marker.start_line for marker in markers if marker.start_line is not None}
@@ -170,6 +172,8 @@ def analyze_repeating_headers(
     templates: list[TemplateEvidence] = []
     header_markers: list[PageMarker] = []
     decisions: list[PageMarkerDecision] = []
+    handled_lines: set[int] = set()
+
     for (side, position, template), members in groups.items():
         if not template or len(members) < 3:
             continue
@@ -193,7 +197,8 @@ def analyze_repeating_headers(
             )
         )
         for index, raw in members:
-            start = sum(len(value) + 1 for value in lines[:index])
+            handled_lines.add(index)
+            start = offsets[index]
             end = start + len(raw)
             marker = PageMarker(
                 start=start,
@@ -217,6 +222,65 @@ def analyze_repeating_headers(
                     marker.evidence,
                 )
             )
+
+    # Slot-invariant detection for section-changing running headers
+    slot_groups: dict[tuple[str, int], list[tuple[int, str, str]]] = defaultdict(list)
+    for (side, position, template), members in groups.items():
+        for index, line in members:
+            if index not in handled_lines:
+                slot_groups[(side, position)].append((index, line, template))
+
+    for (side, position), slot_members in slot_groups.items():
+        if len(slot_members) < 4:
+            continue
+        slot_presence = len(slot_members) / len(anchors)
+        if slot_presence >= 0.65:
+            kind = (
+                PageMarkerKind.REPEATING_HEADER
+                if side == "header"
+                else PageMarkerKind.REPEATING_FOOTER
+            )
+            lines_seen = tuple(index for index, _, _ in slot_members)
+            templates.append(
+                TemplateEvidence(
+                    side,
+                    position,
+                    "slot_invariant_section_header",
+                    len(slot_members),
+                    slot_presence,
+                    kind,
+                    lines_seen,
+                )
+            )
+            for index, raw, _ in slot_members:
+                start = offsets[index]
+                end = start + len(raw)
+                marker = PageMarker(
+                    start=start,
+                    end=end,
+                    text=raw,
+                    kind=kind,
+                    representation="ascii",
+                    confidence=0.82,
+                    start_line=index,
+                    end_line=index,
+                    family=kind,
+                    evidence=(
+                        "slot_invariant_header",
+                        f"slot_presence:{slot_presence:.2f}",
+                    ),
+                )
+                header_markers.append(marker)
+                decisions.append(
+                    PageMarkerDecision(
+                        marker,
+                        PageMarkerAction.REMOVE,
+                        "slot_invariant_header_template",
+                        0.82,
+                        marker.evidence,
+                    )
+                )
+
     return tuple(templates), header_markers, decisions
 
 

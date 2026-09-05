@@ -83,9 +83,11 @@ def scan_patch_and_untracked(
 
     # 1. Staged and unstaged diffs
     diff_args = (
-        ("staged", ("diff", "--cached", "-U0")),
-        ("unstaged", ("diff", "-U0")),
+        ("staged", ("diff", "--cached", "-U0", "--diff-filter=d")),
+        ("unstaged", ("diff", "-U0", "--diff-filter=d")),
     )
+    worktree_cache: dict[str, set[str]] = {}
+
     for source, base_args in diff_args:
         args = (
             (*base_args, "-G", candidate_re, "--", file_glob)
@@ -96,6 +98,26 @@ def scan_patch_and_untracked(
         for path, line_number, text in added_patch_lines(patch):
             if not use_git_candidate_filter and not candidate_pattern.search(text):
                 continue
+            # If a line in diff is no longer present in the working tree (deleted/replaced), ignore it
+            if path not in worktree_cache:
+                full_path = (root or Path.cwd()).joinpath(path)
+                if full_path.is_file():
+                    try:
+                        worktree_cache[path] = {
+                            line.strip()
+                            for line in full_path.read_text(
+                                encoding="utf-8"
+                            ).splitlines()
+                        }
+                    except (OSError, UnicodeDecodeError):
+                        worktree_cache[path] = set()
+                else:
+                    worktree_cache[path] = set()
+
+            current_lines = worktree_cache[path]
+            if text.strip() not in current_lines:
+                continue
+
             findings.extend(match_line_fn(path, line_number, text, source))
 
     # 2. Untracked files

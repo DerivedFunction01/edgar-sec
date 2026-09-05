@@ -6,10 +6,21 @@ import re
 from dataclasses import replace
 from typing import Any
 
-from defs.regex import build_alternation
 from defs.tables.tokens import is_numeric_cell
 
 from .candidates import roman_to_int
+from .constants import (
+    _HIDDEN_STYLE_RE,
+    _PAGE_BREAK_AVOID_RE,
+    _PAGE_BREAK_RE,
+    _RE_HIDDEN_TEMPLATE,
+    _RE_LEADING_NUMBER,
+    _RE_LETTER_NUMBER,
+    _RE_PAGE_SEMANTIC,
+    _RE_TOC_SEMANTIC,
+    _RE_TRAILING_NUMBER,
+    _VALUE_RE,
+)
 from .layout import candidate_template
 from .models import (
     PageCandidate,
@@ -22,55 +33,8 @@ from .models import (
     PageNumberRun,
     TemplateEvidence,
 )
-from .sequence import monotone_fraction
-
-_PAGE_WORDS = build_alternation(
-    [
-        "page",
-        "page-no",
-        "page_no",
-        "pageno",
-        "page-number",
-        "page_number",
-        "folio",
-        "pgbrk",
-        "pagebreak",
-        "footer",
-    ],
-    auto_escape=True,
-)
-_TOC_WORDS = build_alternation(
-    ["toc", "contents", "table-of-contents", "table_of_contents", "index"],
-    auto_escape=True,
-)
-_VALUE_RE = re.compile(
-    r"^(?:page\s+)?(?P<value>\d{1,4}|[ivxlcdm]{1,8})$|"
-    r"^(?:[-–—|·•▪()]\s*)+(?P<wrapped>\d{1,4}|[ivxlcdm]{1,8})"
-    r"(?:\s*[-–—|·•▪()])+$",
-    re.IGNORECASE,
-)
-_NUMERIC_RE = re.compile(r"^(?P<value>\d{1,4})$")
-_HIDDEN_STYLE_VALUES = build_alternation(
-    [r"display\s*:\s*none", r"visibility\s*:\s*hidden", "hidden"]
-)
-_HIDDEN_STYLE_RE = re.compile(rf"(?:{_HIDDEN_STYLE_VALUES})", re.IGNORECASE)
-_PAGE_BREAK_PROPERTIES = build_alternation(
-    ["page-break-before", "page-break-after", "break-before", "break-after"],
-    auto_escape=True,
-)
-_PAGE_BREAK_VALUES = build_alternation(
-    ["always", "left", "right", "page"], auto_escape=True
-)
-_PAGE_BREAK_RE = re.compile(
-    rf"(?:{_PAGE_BREAK_PROPERTIES})\s*:\s*(?:{_PAGE_BREAK_VALUES})\b",
-    re.IGNORECASE,
-)
-_PAGE_BREAK_AVOID_RE = re.compile(
-    rf"(?:{_PAGE_BREAK_PROPERTIES})\s*:\s*avoid\b",
-    re.IGNORECASE,
-)
-
 from .pre import extract_ascii_pre
+from .sequence import monotone_fraction, unify_alternating_runs
 
 
 def _attrs(node: object) -> dict[str, Any]:
@@ -80,13 +44,13 @@ def _attrs(node: object) -> dict[str, Any]:
 
 def _attr_text(node: object) -> str:
     attrs = _attrs(node)
-    values: list[str] = []
-    for key in ("id", "class", "title", "data-page", "data-page-number"):
-        value = attrs.get(key, "")
-        if isinstance(value, (list, tuple)):
-            values.extend(str(item) for item in value)
-        elif value:
-            values.append(str(value))
+    values = [
+        str(item)
+        if not isinstance(item, (list, tuple))
+        else " ".join(str(x) for x in item)
+        for key in ("id", "class", "title", "data-page", "data-page-number")
+        if (item := attrs.get(key, ""))
+    ]
     return " ".join(values).casefold()
 
 
@@ -106,26 +70,22 @@ def _hidden(node: object) -> bool:
         attrs = _attrs(current)
         if "hidden" in attrs or str(attrs.get("aria-hidden", "")).casefold() == "true":
             return True
-        if _HIDDEN_STYLE_RE.search(str(attrs.get("style", ""))):
-            return True
-        if re.search(
-            r"(?:^|[\s_-])(?:hidden|template)(?:$|[\s_-])", _attr_text(current)
-        ):
+        if _HIDDEN_STYLE_RE.search(
+            str(attrs.get("style", ""))
+        ) or _RE_HIDDEN_TEMPLATE.search(_attr_text(current)):
             return True
         current = _parent(current)
     return False
 
 
 def _semantic(node: object) -> bool:
-    return bool(
-        re.search(rf"(?:^|[\s_-])(?:{_PAGE_WORDS})(?:$|[\s_-])", _attr_text(node))
-    )
+    return bool(_RE_PAGE_SEMANTIC.search(_attr_text(node)))
 
 
 def _toc_node(node: object) -> bool:
     current: object | None = node
     while current is not None:
-        if re.search(rf"(?:^|[\s_-])(?:{_TOC_WORDS})(?:$|[\s_-])", _attr_text(current)):
+        if _RE_TOC_SEMANTIC.search(_attr_text(current)):
             return True
         current = _parent(current)
     return False
@@ -141,23 +101,36 @@ def _actual_break(node: object) -> bool:
     return False
 
 
-def _parse_value(text: str) -> tuple[int, str, str] | None:
-    match = _VALUE_RE.fullmatch(" ".join(text.split()))
-    if match is None:
-        return None
-    value_text = match.group("value") or match.group("wrapped")
-    value = int(value_text) if value_text.isdigit() else roman_to_int(value_text)
-    if value is None or value <= 0:
-        return None
-    namespace = "arabic" if value_text.isdigit() else "roman"
-    return value, namespace, candidate_template(text)
+def _parse_value(
+    text: str, *, allow_letter_number: bool = True
+) -> tuple[int, str, str] | None:
+    cleaned = " ".join(text.split())
+    match = _VALUE_RE.fullmatch(cleaned)
+    if match is not None:
+        value_text = match.group("value") or match.group("wrapped")
+        value = int(value_text) if value_text.isdigit() else roman_to_int(value_text)
+        if value is None or value <= 0:
+            return None
+        namespace = "arabic" if value_text.isdigit() else "roman"
+        return value, namespace, candidate_template(text)
+    if allow_letter_number:
+        letter_match = _RE_LETTER_NUMBER.fullmatch(cleaned)
+        if letter_match is not None and (value := int(letter_match.group("page"))) > 0:
+            return value, letter_match.group("prefix").upper(), candidate_template(text)
+    if len(cleaned.split()) <= 6:
+        match_lead = _RE_LEADING_NUMBER.match(cleaned)
+        if match_lead is not None and (val := int(match_lead.group("value"))) > 0:
+            return val, "arabic", candidate_template(text)
+        match_trail = _RE_TRAILING_NUMBER.match(cleaned)
+        if match_trail is not None and (val := int(match_trail.group("value"))) > 0:
+            return val, "arabic", candidate_template(text)
+    return None
 
 
 def _table_context(node: object) -> tuple[bool, bool]:
     current: object | None = node
     while current is not None:
-        name = str(getattr(current, "name", "")).casefold()
-        if name == "table":
+        if str(getattr(current, "name", "")).casefold() == "table":
             semantic = _semantic(current) or _actual_break(current)
             row = getattr(node, "find_parent", None)
             parent_row = row("tr") if callable(row) else None
@@ -195,18 +168,69 @@ def _resolve_path(root: object, path: tuple[int, ...]) -> object | None:
     return current
 
 
-def _candidate_nodes(soup: object) -> list[dict[str, Any]]:
+def _hr_candidate_nodes(
+    soup: object, *, allow_letter_number: bool = True
+) -> list[dict[str, Any]]:
+    finder = getattr(soup, "find_all", None)
+    if not callable(finder):
+        return []
+    hrs = finder("hr")
+    if len(hrs) < 3:
+        return []
+    candidates: list[dict[str, Any]] = []
+    seen: set[int] = set()
+    for hr in hrs:
+        for method_name in ("find_previous_sibling", "find_next_sibling"):
+            step = 0
+            curr = getattr(hr, method_name, lambda: None)()
+            while curr is not None and step < 2:
+                node_id = id(curr)
+                if node_id not in seen and not _hidden(curr) and not _toc_node(curr):
+                    text = _node_text(curr)
+                    if text and len(text) <= 80:
+                        parsed = _parse_value(
+                            text, allow_letter_number=allow_letter_number
+                        )
+                        if parsed is not None:
+                            seen.add(node_id)
+                            in_table, _ = _table_context(curr)
+                            value, namespace, template = parsed
+                            candidates.append(
+                                {
+                                    "node": curr,
+                                    "value": value,
+                                    "namespace": namespace,
+                                    "template": template,
+                                    "text": text,
+                                    "explicit": _semantic(curr),
+                                    "actual_break": True,
+                                    "table_footer": in_table,
+                                    "path": _node_path(curr),
+                                }
+                            )
+                            break
+                curr = getattr(curr, method_name, lambda: None)()
+                step += 1
+    return candidates
+
+
+def _candidate_nodes(
+    soup: object, *, allow_letter_number: bool = True
+) -> list[dict[str, Any]]:
+    hr_candidates = _hr_candidate_nodes(soup, allow_letter_number=allow_letter_number)
+    if len(hr_candidates) >= 3:
+        return hr_candidates
     finder = getattr(soup, "find_all", None)
     if not callable(finder):
         return []
     candidates: list[dict[str, Any]] = []
-    for node in finder(True):
+    for node in finder(["font", "p", "div", "span", "td", "th", "b", "i", "a", "em"]):
         if _hidden(node) or _toc_node(node):
             continue
         text = _node_text(node)
         if not text or len(text) > 80:
             continue
-        parsed = _parse_value(text)
+        parsed = _parse_value(text, allow_letter_number=allow_letter_number)
         if parsed is None:
             continue
         parent = _parent(node)
@@ -214,20 +238,24 @@ def _candidate_nodes(soup: object) -> list[dict[str, Any]]:
         if (
             parent is not None
             and parent_name not in {"table", "tbody", "thead", "tfoot", "tr"}
-            and _parse_value(_node_text(parent)) == parsed
+            and _parse_value(
+                _node_text(parent), allow_letter_number=allow_letter_number
+            )
+            == parsed
         ):
             continue
         in_table, table_semantic = _table_context(node)
         explicit = _semantic(node)
         actual_break = _actual_break(node)
         tag_name = str(getattr(node, "name", "")).casefold()
-        if tag_name in {"table", "tbody", "thead", "tfoot", "tr"}:
-            continue
-        if in_table and not (table_semantic or explicit or actual_break):
-            # Still exercise the authoritative numeric-cell predicate: a
-            # numeric table cell is preserved unless page evidence exists.
-            if is_numeric_cell(text):
-                continue
+        if (
+            in_table
+            and not (table_semantic or explicit or actual_break)
+            and (
+                is_numeric_cell(text)
+                or (parsed[1] == "arabic" and not re.search(r"(?i)\bpage\b", text))
+            )
+        ):
             continue
         if (
             not explicit
@@ -256,6 +284,7 @@ def enrich_html_analysis(
     analysis: PageMarkerAnalysis | None,
     soup: object,
     *,
+    allow_letter_number: bool = True,
     source_text: str,
 ) -> PageMarkerAnalysis:
     """Add validated visible DOM markers to an existing analysis."""
@@ -264,7 +293,7 @@ def enrich_html_analysis(
         (), (), (), representation="html", source_text=source_text
     )
     groups: dict[tuple[str, str, str, str], list[dict[str, Any]]] = {}
-    for item in _candidate_nodes(soup):
+    for item in _candidate_nodes(soup, allow_letter_number=allow_letter_number):
         tag = str(getattr(item["node"], "name", "")).casefold()
         key = (tag, item["namespace"], item["template"], _attr_text(item["node"]))
         groups.setdefault(key, []).append(item)
@@ -308,29 +337,22 @@ def enrich_html_analysis(
             for item in ordered
         )
         if valid:
-            runs.append(
-                PageNumberRun(
-                    family,
-                    ordered[0]["namespace"],
-                    page_candidates,
-                    monotone_fraction(values, max_delta=3),
-                    0.0,
-                    0.0,
-                    1.0,
-                    -1,
-                    -1,
-                    "html_dom",
-                )
+            run = PageNumberRun(
+                family,
+                ordered[0]["namespace"],
+                page_candidates,
+                monotone_fraction(values, max_delta=3),
+                0.0,
+                0.0,
+                1.0,
+                -1,
+                -1,
+                "html_dom",
             )
+            runs.append(run)
         templates.append(
             TemplateEvidence(
-                "html",
-                0,
-                ordered[0]["template"],
-                len(ordered),
-                1.0,
-                family,
-                (),
+                "html", 0, ordered[0]["template"], len(ordered), 1.0, family, ()
             )
         )
         for item in ordered:
@@ -364,6 +386,7 @@ def enrich_html_analysis(
                 )
             )
 
+    runs = unify_alternating_runs(runs)
     combined_markers = list(base.markers)
     combined_decisions = list(base.decisions)
     existing_paths = {
@@ -373,16 +396,9 @@ def enrich_html_analysis(
         if marker.node_path not in existing_paths:
             combined_markers.append(marker)
             combined_decisions.append(decision)
-    combined_markers.sort(
-        key=lambda marker: (marker.start_line or -1, marker.start, marker.node_path)
-    )
-    combined_decisions.sort(
-        key=lambda item: (
-            item.marker.start_line or -1,
-            item.marker.start,
-            item.marker.node_path,
-        )
-    )
+    key_fn = lambda m: (m.start_line or -1, m.start, m.node_path)
+    combined_markers.sort(key=key_fn)
+    combined_decisions.sort(key=lambda d: key_fn(d.marker))
     has_visible = any(marker.page_number is not None for marker in combined_markers)
     return replace(
         base,
@@ -393,34 +409,27 @@ def enrich_html_analysis(
         page_number_runs=base.page_number_runs + tuple(runs),
         header_footer_templates=base.header_footer_templates + tuple(templates),
         unresolved=tuple(unresolved[:256]),
-        terminal_state=(
-            PageMarkerTerminalState.NONE
-            if has_visible
-            else PageMarkerTerminalState.NO_VISIBLE_LABELS
-        ),
+        terminal_state=PageMarkerTerminalState.NONE
+        if has_visible
+        else PageMarkerTerminalState.NO_VISIBLE_LABELS,
         coordinate_frame="html",
     )
 
 
 def apply_html_page_decisions(soup: object, analysis: PageMarkerAnalysis) -> int:
     """Remove validated DOM markers using node paths, never source offsets."""
-
     removed = 0
     paths = {
-        decision.marker.node_path
-        for decision in analysis.decisions
-        if decision.action in {PageMarkerAction.REMOVE, PageMarkerAction.NORMALIZE}
-        and decision.marker.coordinate_frame == "dom"
-        and decision.marker.node_path
+        d.marker.node_path
+        for d in analysis.decisions
+        if d.action in {PageMarkerAction.REMOVE, PageMarkerAction.NORMALIZE}
+        and d.marker.coordinate_frame == "dom"
+        and d.marker.node_path
     }
-    nodes = [
-        node
-        for path in sorted(paths, key=len, reverse=True)
-        if (node := _resolve_path(soup, path)) is not None
-    ]
-    for node in nodes:
-        decompose = getattr(node, "decompose", None)
-        if callable(decompose):
+    for path in sorted(paths, key=len, reverse=True):
+        if (node := _resolve_path(soup, path)) is not None and callable(
+            decompose := getattr(node, "decompose", None)
+        ):
             decompose()
             removed += 1
     return removed

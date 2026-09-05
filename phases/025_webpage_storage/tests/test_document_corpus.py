@@ -257,4 +257,3 @@ def test_build_document_review_artifacts_parallel_and_sequential(
     manifest_ext = (out_ext / "review_manifest.jsonl").read_text().splitlines()
     assert len(manifest_ext) == 1
     assert json.loads(manifest_ext[0])["document_id"] == "doc-2"
-

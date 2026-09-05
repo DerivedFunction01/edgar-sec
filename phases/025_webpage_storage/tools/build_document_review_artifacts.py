@@ -87,7 +87,6 @@ def main(argv: list[str] | None = None) -> int:
     )
     args = parser.parse_args(argv)
     if args.limit is not None and args.limit <= 0:
-
         parser.error("--limit must be positive")
     if args.workers is not None and args.workers <= 0:
         parser.error("--workers must be positive")
@@ -140,7 +139,6 @@ def main(argv: list[str] | None = None) -> int:
             raise
         else:
             pool.shutdown(wait=True)
-
 
     manifest = [manifest_by_id[str(record["document_id"])] for record in records]
     atomic_write_text(

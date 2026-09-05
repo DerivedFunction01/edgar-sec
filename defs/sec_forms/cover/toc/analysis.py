@@ -48,9 +48,12 @@ def _row_lines(
     start: int,
     limit: int,
     page_marker_lines: set[int] | None = None,
+    max_gap: int = 5,
+    max_span: int = 250,
 ) -> list[int]:
     rows: list[int] = []
-    for index in range(start, limit):
+    consecutive_prose = 0
+    for index in range(start, min(limit, start + max_span)):
         line = lines[index].strip().strip("|+")
         if (
             not line
@@ -63,6 +66,12 @@ def _row_lines(
             and (RE_TOC_LEADER.search(line) or RE_PAGE_SUFFIX.search(line))
         ):
             rows.append(index)
+            consecutive_prose = 0
+        else:
+            if rows:
+                consecutive_prose += 1
+                if consecutive_prose >= max_gap:
+                    break
     return rows
 
 

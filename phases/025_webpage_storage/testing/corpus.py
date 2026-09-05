@@ -142,15 +142,12 @@ def find_document_cases(
         and (
             not ext_set
             or any(
-                str(record.get("document_path", ""))
-                .casefold()
-                .endswith(expected_ext)
+                str(record.get("document_path", "")).casefold().endswith(expected_ext)
                 for expected_ext in ext_set
             )
         )
     ]
     return sorted(selected, key=lambda record: str(record["document_id"]))
-
 
 
 __all__ = [

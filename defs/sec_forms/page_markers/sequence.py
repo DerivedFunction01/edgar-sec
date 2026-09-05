@@ -133,4 +133,51 @@ def heal_run(
     return healed, tuple(inferred), tuple(promoted)
 
 
-__all__ = ["heal_run", "monotone_fraction", "validate_group"]
+def unify_alternating_runs(
+    runs: list[PageNumberRun],
+) -> list[PageNumberRun]:
+    """Unify complementary alternating (verso/recto step=2) runs into unified runs."""
+    if len(runs) < 2:
+        return runs
+
+    merged_runs: list[PageNumberRun] = []
+    used: set[int] = set()
+
+    for i in range(len(runs)):
+        if i in used:
+            continue
+        run_a = runs[i]
+        for j in range(i + 1, len(runs)):
+            if j in used:
+                continue
+            run_b = runs[j]
+            if run_a.namespace != run_b.namespace:
+                continue
+            cand_a = list(run_a.candidates)
+            cand_b = list(run_b.candidates)
+            if len(cand_a) < 2 or len(cand_b) < 2:
+                continue
+            combined = sorted(cand_a + cand_b, key=lambda c: (c.start_line, c.start))
+            values = [c.value for c in combined]
+            if monotone_fraction(values, max_delta=2) >= 0.85:
+                sources = [0 if c in cand_a else 1 for c in combined]
+                alternations = sum(s1 != s2 for s1, s2 in pairwise(sources))
+                if alternations / (len(sources) - 1) >= 0.6:
+                    unified = validate_group(
+                        combined,
+                        strategy=f"alternating_verso_recto:{run_a.strategy}",
+                        min_members=max(len(cand_a), len(cand_b)),
+                        min_monotone=0.8,
+                    )
+                    if unified is not None:
+                        merged_runs.append(unified)
+                        used.add(i)
+                        used.add(j)
+                        break
+        if i not in used:
+            merged_runs.append(run_a)
+
+    return merged_runs
+
+
+__all__ = ["heal_run", "monotone_fraction", "unify_alternating_runs", "validate_group"]

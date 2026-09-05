@@ -55,9 +55,7 @@ def run_document_case(record: dict[str, Any]) -> DocumentCaseResult:
     normalization = processor.normalizer.normalize_result(
         preprocessed, metadata={"form": locator.form}
     )
-    processed = processor.build_processed_document(
-        preprocessed, normalization, locator
-    )
+    processed = processor.build_processed_document(preprocessed, normalization, locator)
     return DocumentCaseResult(
         document_id=str(record["document_id"]),
         accession=str(record["accession"]),
@@ -68,7 +66,6 @@ def run_document_case(record: dict[str, Any]) -> DocumentCaseResult:
         normalization=normalization,
         processed=processed,
     )
-
 
 
 def stable_expected_metadata(result: DocumentCaseResult) -> dict[str, Any]:

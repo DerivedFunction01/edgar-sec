@@ -86,12 +86,34 @@ def _fixture_rows(
         elif len(conditions) > 1:
             where = BooleanGroup.and_(*conditions)
 
+        if limit is not None:
+            id_stmt = Select(
+                source=Table(DOCUMENT_BLOBS_TABLE),
+                projection=(col("doc_id"),),
+                where=where,
+                order_by=(OrderBy(col("doc_id")),),
+                limit=limit,
+            )
+            id_rows = executor.query(executor.compiler.compile(id_stmt))
+            if not id_rows:
+                return []
+            selected_ids = tuple(str(r["doc_id"]) for r in id_rows)
+            blob_stmt = Select(
+                source=Table(DOCUMENT_BLOBS_TABLE),
+                projection=(Star(),),
+                where=Membership(
+                    col("doc_id"),
+                    source=ValueList(tuple(Parameter(i) for i in selected_ids)),
+                ),
+                order_by=(OrderBy(col("doc_id")),),
+            )
+            return executor.query(executor.compiler.compile(blob_stmt))
+
         statement = Select(
             source=Table(DOCUMENT_BLOBS_TABLE),
             projection=(Star(),),
             where=where,
             order_by=(OrderBy(col("doc_id")),),
-            limit=limit,
         )
         return executor.query(executor.compiler.compile(statement))
     finally:
@@ -112,7 +134,6 @@ def build_records(
         raise ValueError("limit must be positive")
     rows = _fixture_rows(paths, ids, limit=limit, extensions=extensions)
     records: list[dict[str, Any]] = []
-
 
     for row in rows:
         raw = decompress_payload(bytes(row["raw_payload"]))
