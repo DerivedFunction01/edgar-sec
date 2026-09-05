@@ -8,10 +8,6 @@ index/scanner produce deterministic fingerprints.
 
 from __future__ import annotations
 
-import warnings
-
-from bs4 import BeautifulSoup, XMLParsedAsHTMLWarning
-
 from defs.sec_forms.context import (
     ContextEvidence,
     ContextSource,
@@ -30,9 +26,7 @@ from defs.sec_forms.cover.structure import SectionKind, parse_section_heading
 from defs.sec_forms.cover.toc.models import TocEvidence, TocSpan
 from defs.tables import convert_html_tables_to_ascii
 from defs.tables.templates import TableScope, apply_table_templates
-
-warnings.filterwarnings("ignore", category=XMLParsedAsHTMLWarning)
-
+from defs.text.html import parse_html
 
 # --- SectionContext / TableContext -------------------------------------------
 
@@ -125,7 +119,7 @@ def test_extract_toc_references_finds_anchors() -> None:
     </table>
     </body></html>
     """
-    soup = BeautifulSoup(html, "lxml")
+    soup = parse_html(html)
     references = extract_toc_references(soup)
     joined = " ".join(ref.label for ref in references)
     assert "Item 1. Business" in joined
@@ -138,7 +132,7 @@ def test_extract_toc_references_finds_anchors() -> None:
 
 def test_extract_toc_references_empty_when_no_toc() -> None:
     html = "<html><body><p>Just prose, no table of contents.</p></body></html>"
-    soup = BeautifulSoup(html, "lxml")
+    soup = parse_html(html)
     assert extract_toc_references(soup) == ()
 
 
@@ -183,7 +177,7 @@ def test_extract_toc_references_handles_multiple_tocs() -> None:
     </table>
     </body></html>
     """
-    soup = BeautifulSoup(html, "lxml")
+    soup = parse_html(html)
     refs = extract_toc_references(soup)
     joined = " ".join(ref.label for ref in refs)
     assert "Item 1. Business" in joined
@@ -196,7 +190,7 @@ def test_extract_toc_references_handles_multiple_tocs() -> None:
 
 
 def test_scan_html_empty_soup_yields_empty_index() -> None:
-    soup = BeautifulSoup("<html><body></body></html>", "lxml")
+    soup = parse_html("<html><body></body></html>")
     index = scan_html(soup)
     assert index.headings == ()
     assert index.blocks == ()
@@ -211,7 +205,7 @@ def test_scan_html_detects_h1_and_block_paragraphs() -> None:
       <p>Our widgets are best in class.</p>
     </body></html>
     """
-    soup = BeautifulSoup(html, "lxml")
+    soup = parse_html(html)
     index = scan_html(soup)
     assert any(h.text == "Item 1. Business" for h in index.headings)
     paragraphs = [b for b in index.blocks if b.text]
@@ -230,7 +224,7 @@ def test_scan_html_excludes_table_descendants_from_blocks() -> None:
       <p>Following paragraph.</p>
     </body></html>
     """
-    soup = BeautifulSoup(html, "lxml")
+    soup = parse_html(html)
     index = scan_html(soup)
     block_texts = " ".join(b.text for b in index.blocks)
     assert "Preceding paragraph" in block_texts
@@ -252,7 +246,7 @@ def test_scan_html_preserves_nested_table_relationship() -> None:
       </table>
     </body></html>
     """
-    soup = BeautifulSoup(html, "lxml")
+    soup = parse_html(html)
     index = scan_html(soup)
     assert len(index.tables) == 2
     inner = next(t for t in index.tables if t.depth == 1)
@@ -262,8 +256,8 @@ def test_scan_html_preserves_nested_table_relationship() -> None:
 
 def test_scan_html_deterministic_fingerprint() -> None:
     html = "<html><body><h1>Item 1</h1><p>Body text.</p></body></html>"
-    soup1 = BeautifulSoup(html, "lxml")
-    soup2 = BeautifulSoup(html, "lxml")
+    soup1 = parse_html(html)
+    soup2 = parse_html(html)
     idx1 = scan_html(soup1, document_id="doc-1")
     idx2 = scan_html(soup2, document_id="doc-1")
     assert idx1.scanner_fingerprint == idx2.scanner_fingerprint
@@ -277,7 +271,7 @@ def test_scan_html_block_for_table_returns_nearest_preceding() -> None:
       <table><tr><td>Cell</td></tr></table>
     </body></html>
     """
-    soup = BeautifulSoup(html, "lxml")
+    soup = parse_html(html)
     index = scan_html(soup)
     assert index.tables
     block = index.block_for_table(index.tables[0].ordinal)
@@ -292,7 +286,7 @@ def test_scan_html_strips_ix_metadata() -> None:
       <p>Real body text.</p>
     </body></html>
     """
-    soup = BeautifulSoup(html, "lxml")
+    soup = parse_html(html)
     index = scan_html(soup)
     block_texts = " ".join(b.text for b in index.blocks)
     assert "internal xbrl label" not in block_texts
@@ -306,7 +300,7 @@ def test_scan_html_repairs_split_inline_words() -> None:
         "<p>The <span>T</span>he following <em>text</em> is a test.</p>"
         "</body></html>"
     )
-    soup = BeautifulSoup(html, "lxml")
+    soup = parse_html(html)
     index = scan_html(soup)
     joined = " ".join(b.text for b in index.blocks)
     assert "The following text is a test" in joined or "The The following" not in joined
@@ -349,7 +343,7 @@ def test_apply_table_templates_accepts_context_kwargs() -> None:
     </table>
     </body></html>
     """
-    soup = BeautifulSoup(html, "lxml")
+    soup = parse_html(html)
     table = soup.find("table")
     grid = [
         ["Delaware", "35-1828377"],
@@ -454,7 +448,7 @@ def test_apply_table_templates_infers_scope_from_context() -> None:
       </tr>
     </table>
     """
-    soup = BeautifulSoup(html, "lxml")
+    soup = parse_html(html)
     table = soup.find("table")
     grid = [
         ["Delaware", "35-1828377"],
@@ -493,7 +487,7 @@ def test_convert_html_tables_to_ascii_with_structure_index() -> None:
     </table>
     </body></html>
     """
-    soup = BeautifulSoup(html, "lxml")
+    soup = parse_html(html)
     index = scan_html(soup, document_id="doc-test")
     converted = convert_html_tables_to_ascii(html, structure_index=index)
     assert "Year" in converted
@@ -512,7 +506,7 @@ def test_extract_toc_references_bare_and_prefixed_page_numbers() -> None:
     </table>
     </body></html>
     """
-    soup = BeautifulSoup(html, "lxml")
+    soup = parse_html(html)
     references = extract_toc_references(soup)
     assert len(references) == 5
     pages = [ref.page for ref in references]

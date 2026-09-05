@@ -11,7 +11,7 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
 
-from bs4 import BeautifulSoup, Comment
+from defs.text.html import parse_html
 
 from ..core.records import DocumentLocator
 from ..processors import DefaultFilingProcessor
@@ -120,20 +120,17 @@ def bounded_analysis(result: DocumentCaseResult) -> dict[str, Any]:
 
 
 def _sanitized_html(source: str, normalized: str) -> str:
-    soup = BeautifulSoup(source, "lxml")
-    for element in soup(["script", "style", "meta", "noscript"]):
-        element.decompose()
-    for comment in soup.find_all(string=lambda value: isinstance(value, Comment)):
-        comment.extract()
-    for element in soup.find_all(True):
-        for name in list(element.attrs):
+    tree = parse_html(source)
+    tree.strip_tags(("script", "style", "meta", "noscript"))
+    for node in tree.traverse():
+        for name in list(node.attributes.keys()):
             if name.casefold().startswith("on") or name.casefold() in {
                 "src",
                 "href",
                 "action",
             }:
-                del element.attrs[name]
-    rendered = str(soup)
+                del node.raw_node.attrs[name]
+    rendered = str(tree)
     return (
         '<!doctype html>\n<meta charset="utf-8">\n'
         "<title>Document review</title>\n"

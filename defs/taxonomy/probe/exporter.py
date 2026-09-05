@@ -15,8 +15,10 @@ from typing import Any
 from defs.runtime.paths import resolve_paths
 from defs.storage import pa, stream_document_blobs, write_table_atomic
 from defs.tables.builder import HTMLTableConverter
+from defs.tables.templates.common import span_grid
 from defs.tables.templates.dispatcher import apply_table_templates
 from defs.taxonomy.probe.cache import (
+    decompress_payload,
     default_fixture_db_path,
     default_probe_cache_path,
 )
@@ -88,7 +90,7 @@ def _fetch_html_snippets(
     html_map: dict[str, str] = {}
     for blob in stream_document_blobs(db_path, limit=None):
         if blob.doc_id in doc_ids and blob.doc_id not in html_map:
-            html_map[blob.doc_id] = blob.raw_payload.decode("utf-8", errors="replace")
+            html_map[blob.doc_id] = decompress_payload(blob.raw_payload)
         if len(html_map) == len(doc_ids):
             break
     return html_map
@@ -125,6 +127,7 @@ class _DummyTableTag:
 def _generate_rendered_output(
     grid: list[list[str]],
     header_row_count: int,
+    html: str = "",
 ) -> tuple[str, str]:
     """Render the grid using templates or HTMLTableConverter.
 
@@ -133,11 +136,18 @@ def _generate_rendered_output(
         name of the matched template function (from ``TemplateResult.template_name``),
         or ``"standard_html_converter"`` when no template matched.
     """
-    res = apply_table_templates(table=_DummyTableTag(), source_grid=grid)
+    table: Any = _DummyTableTag()
+    render_grid = grid
+    if html:
+        parsed = parse_html(html)
+        table = parsed.find("table") or table
+        if not isinstance(table, _DummyTableTag):
+            render_grid, _ = span_grid(table, with_spans=True)
+    res = apply_table_templates(table=table, source_grid=render_grid)
     if res:
         return res.text.strip(), res.template_name or "apply_table_templates"
     conv = (
-        HTMLTableConverter(grid=grid, header_row_count=header_row_count)
+        HTMLTableConverter(grid=render_grid, header_row_count=header_row_count)
         .to_generic_table()
         .build()
     )
@@ -192,7 +202,7 @@ def export_family_dataset(
             html_snippet = _reconstruct_html_from_grid(healed_grid)
 
         rendered, template_applied = _generate_rendered_output(
-            healed_grid, header_count
+            healed_grid, header_count, html_snippet
         )
 
         export_record: dict[str, Any] = {

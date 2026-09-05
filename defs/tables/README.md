@@ -33,14 +33,17 @@ Use `PYTHONPATH=. .venv/bin/python defs/tests/query_table_corpus.py --grep
 select an exact ID with `--id` and inspect it using `--head`, `--tail`, or
 `--offset`. Searches cover both source HTML and expected output by default;
 use `--search-in html` or `--search-in expected` to restrict the field.
+To compare directly against the `ascii_html_v2` renderer, use `--show side-by-side`
+(side-by-side column view), `--show diff` (unified diff), or `--show v2`.
 
 For a single readable file containing every converted table and its source
 metadata, run `PYTHONPATH=. .venv/bin/python defs/tests/dump_table_corpus.py`.
 The default output is a generated file under `.artifacts/test-runs/`; use
 `--corpus jnj_2025` to limit the dump or `--output -` to write to stdout.
-To preview the current converter rather than the stored expected output, add
-`--render-current`; this converts each raw HTML table from the Parquet corpus
-at dump time.
+To preview the current legacy converter rather than stored expected output, add
+`--render-current`. To preview the `ascii_html_v2` geometry engine, add `--v2`.
+To generate a comprehensive comparison across the corpus, use `--side-by-side`
+or `--diff`.
 The live v2 corpus starts schema-only. Promote reviewed tables explicitly with
 `PYTHONPATH=. .venv/bin/python defs/tests/promote_table_corpus.py --id TABLE_ID`.
 Promotion recomputes the expected render from the stored raw HTML using the

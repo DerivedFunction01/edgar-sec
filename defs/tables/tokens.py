@@ -17,8 +17,10 @@ from .numeric_cells import (
     is_numeric_start,
 )
 
+CLOSING_DELIMITERS = frozenset({")", "]", "}"})
 SUFFIX_TOKENS = frozenset(
-    {"%", "pt", "bps", ")", "%)", "years", "year", "months", "month", "days", "day"}
+    {"%", "pt", "bps", "%)", "years", "year", "months", "month", "days", "day"}
+    | CLOSING_DELIMITERS
 )
 PREFIX_TOKENS = frozenset({"(", "-"})
 RANGE_MARKERS = frozenset({"-", "–", "—", "−", "‒", "―", "to", "through", "thru"})
@@ -42,6 +44,7 @@ def is_range_marker(value: str) -> bool:
 __all__ = [
     "ALL_CURRENCY_SYMBOLS",
     "BULLET_MARKERS",
+    "CLOSING_DELIMITERS",
     "CURRENCY_TOKEN_RE",
     "FINANCIAL_PLACEHOLDERS",
     "NUMERIC_CELL_RE",

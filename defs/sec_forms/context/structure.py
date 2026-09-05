@@ -1,7 +1,7 @@
 """HTML structure scanner (Phase B).
 
-Builds a deterministic, representation-neutral structure index from a
-BeautifulSoup tree in a *single* ``soup.descendants`` walk:
+Builds a deterministic, representation-neutral structure index from an
+HTML tree in a single traversal:
 
 - :class:`HeadingNode` for h1-h6 + b/strong + bold-styled div/span/p +
   short, anchored plain div/span/p headings;
@@ -9,19 +9,6 @@ BeautifulSoup tree in a *single* ``soup.descendants`` walk:
   validated headings, and leaf div/span blocks);
 - :class:`TableNode` for tables, with parent/child relationships preserved
   for nested tables.
-
-The scanner deliberately:
-
-- does not depend on BeautifulSoup ``sourceline``/``sourcepos`` (the
-  repository's lxml setup does not populate them reliably — the research
-  probe validated this);
-- excludes candidates inside tables so TOC rows cannot become body
-  headings;
-- skips ``script``, ``style``, ``meta``, ``noscript``, comments, and
-  ``ix:hidden`` subtrees;
-- joins adjacent inline strings so ``<span>T</span>he`` becomes ``The``;
-- stores bounded preceding 1-2 blocks and following 1 block per
-  :class:`BlockNode` (raw text, no normalization).
 """
 
 from __future__ import annotations
@@ -31,12 +18,11 @@ import re
 from collections.abc import Iterable
 from dataclasses import dataclass
 
-from bs4 import BeautifulSoup, Comment, NavigableString
-
 from defs.regex import build_alternation
 from defs.sec_forms.context.models import TableNode
 from defs.sec_forms.cover.structure import SectionKind, parse_section_heading
 from defs.sec_forms.forms.registry import _taxonomy_normalize, get_taxonomy_matcher
+from defs.text.html import FastHtmlNode, FastHtmlTree, parse_html
 
 __all__ = [
     "SKIP_TAGS",
@@ -102,8 +88,8 @@ class BlockNode:
 class HtmlStructureIndex:
     """One deterministic view over a parsed HTML document.
 
-    All fields are produced by a single ``soup.descendants`` walk; ordinals
-    are stable for a given soup and parser. The index is versioned via
+    All fields are produced by a single tree traversal; ordinals
+    are stable for a given tree and parser. The index is versioned via
     ``schema_version`` and ``scanner_fingerprint`` for provenance.
     """
 
@@ -127,57 +113,44 @@ class HtmlStructureIndex:
         return None
 
 
-def _strip_and_join(node: object) -> str:
+def _strip_and_join(node: FastHtmlNode) -> str:
     """Return the visible text of ``node`` with inline fragments joined."""
-    if isinstance(node, NavigableString):
-        return str(node)
-    pieces: list[str] = []
-    for child in getattr(node, "children", ()):
-        if isinstance(child, NavigableString):
-            pieces.append(str(child))
-        else:
-            pieces.append(_strip_and_join(child))
-    joined = "".join(pieces)
-    return re.sub(r"\s+", " ", joined).strip()
+    return node.text(separator=" ", strip=True)
 
 
-def _is_skip_subtree(node: object) -> bool:
-    if isinstance(node, Comment):
-        return True
-    name = getattr(node, "name", None)
-    if name is None:
-        return False
-    lowered = str(name).lower()
-    return lowered in SKIP_TAGS
+def _is_skip_subtree(node: FastHtmlNode) -> bool:
+    tag = node.tag
+    return bool(
+        not tag or tag.startswith("ix:") or tag in SKIP_TAGS or tag == "-comment"
+    )
 
 
-def _inside_table(node: object) -> bool:
+def _inside_table(node: FastHtmlNode) -> bool:
     """True if the node is inside any ``<table>`` ancestor."""
-    for parent in getattr(node, "parents", ()):
-        if parent is node:
-            continue
-        name = getattr(parent, "name", None)
-        if name in {"table"}:
+    curr = node.parent
+    while curr is not None:
+        if curr.tag == "table":
             return True
+        curr = curr.parent
     return False
 
 
-def _is_bold_styled(node: object) -> bool:
-    style = node.get("style", "") if hasattr(node, "get") else ""
+def _is_bold_styled(node: FastHtmlNode) -> bool:
+    style = node.get("style", "")
     return bool(_BOLD_STYLE_RE.search(style or ""))
 
 
-def _candidate_heading(node: object, family: str | None = None) -> bool:
-    if not hasattr(node, "name") or node.name is None:
+def _candidate_heading(node: FastHtmlNode, family: str | None = None) -> bool:
+    tag = node.tag
+    if not tag:
         return False
-    name = str(node.name).lower()
-    if name in _HEADING_TAGS:
+    if tag in _HEADING_TAGS:
         return True
-    if name in _STRONG_TAGS:
+    if tag in _STRONG_TAGS:
         return True
-    if name in {"div", "span", "p"} and _is_bold_styled(node):
+    if tag in {"div", "span", "p"} and _is_bold_styled(node):
         return True
-    if name in {"div", "span", "p"}:
+    if tag in {"div", "span", "p"}:
         text = _strip_and_join(node)
         if (
             text
@@ -213,12 +186,18 @@ def _locator(prefix: str, ordinal: int) -> str:
     return f"{prefix}-{ordinal:06d}"
 
 
-def _iter_visible_descendants(soup: BeautifulSoup) -> Iterable[object]:
-    """Yield visible nodes in document order, skipping the excluded subtrees."""
-    for node in soup.descendants:
+def _iter_visible_descendants(
+    tree: FastHtmlTree | FastHtmlNode,
+) -> Iterable[FastHtmlNode]:
+    """Yield visible nodes in document order, skipping excluded subtrees."""
+    if isinstance(tree, FastHtmlTree):
+        generator = tree.traverse()
+    else:
+        root_node = tree.raw_node
+        generator = (FastHtmlNode(n) for n in root_node.traverse() if n.tag)
+
+    for node in generator:
         if _is_skip_subtree(node):
-            continue
-        if isinstance(node, NavigableString):
             continue
         if _inside_table(node):
             continue
@@ -226,51 +205,51 @@ def _iter_visible_descendants(soup: BeautifulSoup) -> Iterable[object]:
 
 
 def _collect_logical_blocks(
-    visible: list[object],
+    visible: list[FastHtmlNode],
     form_family: str | None = None,
-) -> list[tuple[object, str]]:
+) -> list[tuple[FastHtmlNode, str]]:
     """Pick semantic blocks: p, li, caption, validated headings, leaf div/span."""
-    blocks: list[tuple[object, str]] = []
+    blocks: list[tuple[FastHtmlNode, str]] = []
     for node in visible:
-        name = getattr(node, "name", None)
-        if name is None:
+        tag = node.tag
+        if not tag:
             continue
-        lowered = str(name).lower()
         text = _strip_and_join(node)
         if not text:
             continue
-        if lowered in {"p", "li", "caption"} or _candidate_heading(node, form_family):
+        if tag in {"p", "li", "caption"} or _candidate_heading(node, form_family):
             if len(text) > _MAX_BLOCK_LENGTH:
                 text = text[:_MAX_BLOCK_LENGTH]
             blocks.append((node, text))
     return blocks
 
 
-def _collect_tables(soup: BeautifulSoup) -> tuple[TableNode, ...]:
-    """Collect all tables in document order, including nested tables.
-
-    Nested tables retain their parent ordinal and depth so the index can
-    distinguish prose-formatted outer tables from true data tables.
-    """
+def _collect_tables(tree_or_node: FastHtmlTree | FastHtmlNode) -> tuple[TableNode, ...]:
+    """Collect all tables in document order, including nested tables."""
     tables: list[TableNode] = []
-    for ordinal, table in enumerate(soup.find_all("table"), start=1):
+    all_tables = tree_or_node.css("table") if hasattr(tree_or_node, "css") else []
+    for ordinal, table in enumerate(all_tables, start=1):
         depth = 0
-        parent = table.parent
-        while parent is not None and getattr(parent, "name", None) is not None:
-            if str(parent.name).lower() == "table":
+        curr = table.parent
+        while curr is not None:
+            if curr.tag == "table":
                 depth += 1
-            parent = parent.parent
-        rows = table.find_all("tr")
-        cells = table.find_all(["td", "th"])
+            curr = curr.parent
+        rows = table.css("tr")
+        cells = table.css("td, th")
         parent_ordinal = None
         if depth > 0:
-            ancestors = [
-                a for a in table.parents if getattr(a, "name", None) == "table"
-            ]
-            if ancestors:
-                outermost = ancestors[-1]
-                outer_index = list(soup.find_all("table")).index(outermost)
-                parent_ordinal = outer_index + 1
+            curr = table.parent
+            outermost = None
+            while curr is not None:
+                if curr.tag == "table":
+                    outermost = curr
+                curr = curr.parent
+            if outermost is not None:
+                for idx, t in enumerate(all_tables, start=1):
+                    if t.raw_node == outermost.raw_node:
+                        parent_ordinal = idx
+                        break
         tables.append(
             TableNode(
                 ordinal=ordinal,
@@ -285,14 +264,21 @@ def _collect_tables(soup: BeautifulSoup) -> tuple[TableNode, ...]:
 
 
 def scan_html(
-    soup: BeautifulSoup,
+    soup: FastHtmlTree | FastHtmlNode | str | object,
     *,
     document_id: str = "",
     source_sha256: str = "",
     form_family: str | None = None,
 ) -> HtmlStructureIndex:
-    """Build a deterministic structure index from ``soup``."""
-    visible = list(_iter_visible_descendants(soup))
+    """Build a deterministic structure index from parsed HTML or FastHtmlTree."""
+    if isinstance(soup, (str, bytes)):
+        tree: FastHtmlTree | FastHtmlNode = parse_html(soup)
+    elif isinstance(soup, (FastHtmlTree, FastHtmlNode)):
+        tree = soup
+    else:
+        tree = parse_html(str(soup))
+
+    visible = list(_iter_visible_descendants(tree))
     headings: list[HeadingNode] = []
     heading_ordinal = 0
     for node in visible:
@@ -334,7 +320,7 @@ def scan_html(
             )
         )
 
-    tables = _collect_tables(soup)
+    tables = _collect_tables(tree)
 
     scanner_fingerprint = hashlib.sha256(
         b"|".join(

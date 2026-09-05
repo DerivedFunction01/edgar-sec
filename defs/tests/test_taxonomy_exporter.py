@@ -7,16 +7,22 @@ from unittest.mock import MagicMock, patch
 
 import pyarrow as pa
 import pyarrow.parquet as pq
+import zstandard as zstd
 
 from defs.taxonomy.probe.exporter import (
     _build_search_terms,
-    _detect_template_applied,
     _extract_table_html,
     _generate_rendered_output,
     _reconstruct_html_from_grid,
     export_family_dataset,
 )
 from defs.taxonomy.tables.families import FAMILY_SPECS
+
+_cctx = zstd.ZstdCompressor()
+
+
+def compress_payload(payload: bytes) -> bytes:
+    return _cctx.compress(payload)
 
 
 def test_build_search_terms() -> None:
@@ -33,11 +39,12 @@ def test_build_search_terms_unknown_family() -> None:
     assert terms == []
 
 
-def test_detect_template_applied() -> None:
-    """_detect_template_applied returns standard_html_converter for non-matching grid."""
+def test_generate_rendered_output_fallback() -> None:
+    """_generate_rendered_output returns standard_html_converter for non-matching grid."""
     grid = [["a", "b"], ["1", "2"]]
-    result = _detect_template_applied(grid)
-    assert result == "standard_html_converter"
+    rendered, template_name = _generate_rendered_output(grid, header_row_count=1)
+    assert template_name == "standard_html_converter"
+    assert "a" in rendered and "1" in rendered
 
 
 def test_reconstruct_html_from_grid() -> None:
@@ -74,7 +81,7 @@ def test_extract_table_html_empty() -> None:
 def test_generate_rendered_output() -> None:
     """_generate_rendered_output produces non-empty ASCII output."""
     grid = [["Header1", "Header2"], ["val1", "val2"]]
-    result = _generate_rendered_output(grid, header_row_count=1)
+    result, _ = _generate_rendered_output(grid, header_row_count=1)
     assert len(result) > 0
     assert "<TABLE>" in result
 
@@ -147,7 +154,7 @@ def _run_export_test(
 
         mock_blob = MagicMock()
         mock_blob.doc_id = "doc0"
-        mock_blob.raw_payload = b"<html><body></body></html>"
+        mock_blob.raw_payload = compress_payload(b"<html><body></body></html>")
         mock_blobs.return_value = [mock_blob]
 
         return export_family_dataset(
@@ -330,7 +337,7 @@ def test_export_default_output_path() -> None:
         mock_query.return_value = _make_mock_records(1)
         mock_blob = MagicMock()
         mock_blob.doc_id = "doc0"
-        mock_blob.raw_payload = b"<html><body></body></html>"
+        mock_blob.raw_payload = compress_payload(b"<html><body></body></html>")
         mock_blobs.return_value = [mock_blob]
 
         cache_path = Path(tmpdir) / "probe.parquet"
@@ -386,7 +393,7 @@ def test_export_reconstructs_html_when_no_blob() -> None:
 
         mock_blob = MagicMock()
         mock_blob.doc_id = "non_matching_doc"
-        mock_blob.raw_payload = b"<html><body></body></html>"
+        mock_blob.raw_payload = compress_payload(b"<html><body></body></html>")
         mock_blobs.return_value = [mock_blob]
 
         result = export_family_dataset(

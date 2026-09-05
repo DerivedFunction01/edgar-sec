@@ -9,7 +9,12 @@ from pathlib import Path
 
 from defs.runtime.paths import resolve_paths
 from defs.tables import convert_html_tables_to_ascii
-from defs.tests.query_table_corpus import _records
+from defs.tables.ascii_html_v2 import convert_html_tables_to_ascii_v2
+from defs.tests.query_table_corpus import (
+    _records,
+    format_diff,
+    format_side_by_side,
+)
 
 
 def _default_output() -> Path:
@@ -20,21 +25,55 @@ def _default_output() -> Path:
     )
 
 
-def _render(records: list[dict], *, corpus: str | None, render_current: bool) -> str:
+def _render(
+    records: list[dict],
+    *,
+    corpus: str | None,
+    render_current: bool,
+    render_v2: bool,
+    side_by_side: bool,
+    diff: bool,
+) -> str:
+    if side_by_side:
+        mode_title = "SIDE-BY-SIDE TABLE CORPUS COMPARISON (GOLDEN vs V2)"
+        field_desc = "Converted field: side-by-side (expected | v2)"
+    elif diff:
+        mode_title = "TABLE CORPUS DIFF (GOLDEN vs V2)"
+        field_desc = "Converted field: unified diff (expected -> v2)"
+    elif render_v2:
+        mode_title = "V2 TABLE CORPUS RENDER (ascii_html_v2)"
+        field_desc = "Converted field: convert_html_tables_to_ascii_v2(html)"
+    elif render_current:
+        mode_title = "CURRENT TABLE CORPUS RENDER (legacy)"
+        field_desc = "Converted field: current converter applied to html"
+    else:
+        mode_title = "VALIDATED TABLE CORPUS"
+        field_desc = "Converted field: expected"
+
     lines = [
-        "CURRENT TABLE CORPUS RENDER" if render_current else "VALIDATED TABLE CORPUS",
+        mode_title,
         f"Tables: {len(records)}",
         f"Corpus filter: {corpus or '(all)'}",
-        (
-            "Converted field: current converter applied to html"
-            if render_current
-            else "Converted field: expected"
-        ),
+        field_desc,
         "",
     ]
     for index, record in enumerate(records):
         if index:
             lines.extend(("", "=" * 100, ""))
+
+        if side_by_side:
+            v2_render = convert_html_tables_to_ascii_v2(record["html"])
+            body = format_side_by_side(record["expected"], v2_render)
+        elif diff:
+            v2_render = convert_html_tables_to_ascii_v2(record["html"])
+            body = format_diff(record["expected"], v2_render)
+        elif render_v2:
+            body = convert_html_tables_to_ascii_v2(record["html"])
+        elif render_current:
+            body = convert_html_tables_to_ascii(record["html"])
+        else:
+            body = record["expected"]
+
         lines.extend(
             (
                 f"TABLE {index + 1}/{len(records)}",
@@ -43,11 +82,7 @@ def _render(records: list[dict], *, corpus: str | None, render_current: bool) ->
                 f"Source: {record['source_path']}",
                 f"Source SHA256: {record['source_sha256']}",
                 "",
-                (
-                    convert_html_tables_to_ascii(record["html"])
-                    if render_current
-                    else record["expected"]
-                ).rstrip("\n"),
+                body.rstrip("\n"),
             )
         )
     return "\n".join(lines) + "\n"
@@ -73,7 +108,24 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument(
         "--render-current",
         action="store_true",
-        help="convert each stored raw HTML table with the current converter",
+        help="convert each stored raw HTML table with the legacy converter",
+    )
+    parser.add_argument(
+        "--render-v2",
+        "--v2",
+        action="store_true",
+        dest="render_v2",
+        help="convert each stored raw HTML table with ascii_html_v2",
+    )
+    parser.add_argument(
+        "--side-by-side",
+        action="store_true",
+        help="render expected golden and v2 side-by-side for comparison",
+    )
+    parser.add_argument(
+        "--diff",
+        action="store_true",
+        help="render unified diff between expected golden and v2",
     )
     parser.add_argument(
         "--output",
@@ -110,7 +162,14 @@ def main(argv: list[str] | None = None) -> int:
         if not records:
             parser.error(f"unknown or empty corpus: {args.corpus}")
 
-    rendered = _render(records, corpus=args.corpus, render_current=args.render_current)
+    rendered = _render(
+        records,
+        corpus=args.corpus,
+        render_current=args.render_current,
+        render_v2=args.render_v2,
+        side_by_side=args.side_by_side,
+        diff=args.diff,
+    )
     if args.output and str(args.output) == "-":
         sys.stdout.write(rendered)
         return 0

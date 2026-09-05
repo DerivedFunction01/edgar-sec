@@ -5,7 +5,8 @@ from __future__ import annotations
 import importlib
 
 import pytest
-from bs4 import BeautifulSoup
+
+from defs.text.html import parse_html
 
 pm_mod = importlib.import_module("defs.sec_forms.page_markers")
 
@@ -264,7 +265,7 @@ def test_html_repeated_visible_page_nodes_are_removed_by_dom_path() -> None:
 <div class="page-number">2</div><p>Second page prose.</p>
 <div class="page-number">3</div><p>Third page prose.</p>
 </body></html>"""
-    soup = BeautifulSoup(text, "lxml")
+    soup = parse_html(text)
     analysis = enrich_html_analysis(
         analyze_page_markers(text, representation="html"),
         soup,
@@ -285,7 +286,7 @@ def test_html_hidden_and_avoid_page_values_are_preserved() -> None:
 <div class="page-number" hidden>1</div>
 <div style="page-break-before: avoid">2</div>
 </body></html>"""
-    soup = BeautifulSoup(text, "lxml")
+    soup = parse_html(text)
     analysis = enrich_html_analysis(
         analyze_page_markers(text, representation="html"),
         soup,
@@ -301,7 +302,7 @@ def test_html_actual_page_break_is_context_but_avoid_is_not() -> None:
 <div style="page-break-before: always">1</div>
 <div style="page-break-before: avoid">2</div>
 </body></html>"""
-    soup = BeautifulSoup(text, "lxml")
+    soup = parse_html(text)
     analysis = enrich_html_analysis(
         analyze_page_markers(text, representation="html"),
         soup,
@@ -318,7 +319,7 @@ def test_html_page_footer_table_is_allowed_but_financial_table_is_not() -> None:
 <table class="page-footer"><tr><td>Page 3</td></tr></table>"""
     financial = """<table><tr><td>Revenue</td><td>100</td></tr>
 <tr><td>Net income</td><td>20</td></tr></table>"""
-    footer_soup = BeautifulSoup(f"<html><body>{footer}</body></html>", "lxml")
+    footer_soup = parse_html(f"<html><body>{footer}</body></html>")
     footer_analysis = enrich_html_analysis(
         analyze_page_markers(footer, representation="html"),
         footer_soup,
@@ -327,7 +328,7 @@ def test_html_page_footer_table_is_allowed_but_financial_table_is_not() -> None:
     assert {marker.kind for marker in footer_analysis.markers} == {
         PageMarkerKind.TABLE_FOOTER
     }
-    financial_soup = BeautifulSoup(f"<html><body>{financial}</body></html>", "lxml")
+    financial_soup = parse_html(f"<html><body>{financial}</body></html>")
     financial_analysis = enrich_html_analysis(
         analyze_page_markers(financial, representation="html"),
         financial_soup,

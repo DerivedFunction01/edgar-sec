@@ -4,13 +4,9 @@ from __future__ import annotations
 
 import re
 import sys
-import warnings
 from typing import TYPE_CHECKING
 
-from bs4 import BeautifulSoup, Comment, FeatureNotFound, XMLParsedAsHTMLWarning
-
-# Parsed as HTML for table layout; silence the bs4 XML warning.
-warnings.filterwarnings("ignore", category=XMLParsedAsHTMLWarning)
+from defs.text.html import parse_html
 
 from .builder import GenericTable, HTMLTableConverter
 from .grid_repairs import SpanGroup, apply_grid_repairs
@@ -358,20 +354,15 @@ def convert_html_tables_to_ascii(
     converter. When ``structure_index`` is passed, per-table context is
     resolved dynamically for each table in multi-table documents.
     """
-    try:
-        soup = BeautifulSoup(html_content, "lxml")
-    except FeatureNotFound:  # pragma: no cover - parser availability varies
-        soup = BeautifulSoup(html_content, "html.parser")
-    for element in soup(
-        ["head", "script", "style", "title", "meta", "noscript", "ix:hidden"]
-    ):
-        element.decompose()
-    for element in soup.find_all(style=HIDDEN_ELEMENT_STYLE_RE):
-        element.decompose()
-    for comment in soup.find_all(string=lambda value: isinstance(value, Comment)):
-        comment.extract()
+    tree = parse_html(html_content)
+    tree.strip_tags(
+        ("head", "script", "style", "title", "meta", "noscript", "ix:hidden")
+    )
+    for element in tree.find_all(True):
+        if HIDDEN_ELEMENT_STYLE_RE.search(element.get("style", "")):
+            element.decompose()
 
-    for table_index, table in enumerate(list(soup.find_all("table"))):
+    for table_index, table in enumerate(list(tree.find_all("table"))):
         rows = table.find_all("tr")
         if len(rows) <= 1:
             table.unwrap()
@@ -400,12 +391,12 @@ def convert_html_tables_to_ascii(
         # 1. Early signature and bullet block templates
         signature_output = signature_template(table)
         if signature_output:
-            table.replace_with(soup.new_string(signature_output))
+            table.replace_with(signature_output)
             continue
 
         bullet_output = bullet_list_template(table)
         if bullet_output:
-            table.replace_with(soup.new_string(bullet_output))
+            table.replace_with(bullet_output)
             continue
 
         # 2. Extract grid and test layout templates
@@ -432,7 +423,7 @@ def convert_html_tables_to_ascii(
             table_context=effective_table,
         )
         if template_result is not None:
-            table.replace_with(soup.new_string(template_result.text))
+            table.replace_with(template_result.text)
             continue
 
         # 3. Filter non-tabular blocks (< 15% numeric cells are unwrapped to text).
@@ -445,7 +436,7 @@ def convert_html_tables_to_ascii(
             if not fallback:
                 fallback = oriented_prose_fallback(source_grid)
             if fallback:
-                table.replace_with(soup.new_string(fallback))
+                table.replace_with(fallback)
             else:
                 table.unwrap()
             continue
@@ -492,8 +483,8 @@ def convert_html_tables_to_ascii(
                 f"[table-debug] table {table_index}: converted output", file=sys.stderr
             )
             print(converted, file=sys.stderr)
-        table.replace_with(soup.new_string(converted))
-    return soup.get_text(separator="\n")
+        table.replace_with(converted)
+    return tree.get_text(separator="\n")
 
 
 __all__ = ["GenericTable", "HTMLTableConverter", "convert_html_tables_to_ascii"]

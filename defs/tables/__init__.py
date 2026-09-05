@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+from .ascii_html_v2 import convert_html_table_v2, convert_html_tables_to_ascii_v2
 from .builder import GenericTable, HTMLTableConverter
 from .currencies import MAJOR_CURRENCIES, PREFIX_SYMBOLS, SUFFIX_SYMBOLS
 from .patterns import (
@@ -58,7 +59,9 @@ __all__ = [
     "bullet_list_template",
     "cell_lines",
     "cell_text",
+    "convert_html_table_v2",
     "convert_html_tables_to_ascii",
+    "convert_html_tables_to_ascii_v2",
     "is_financial_placeholder",
     "is_numeric_cell",
     "is_numeric_start",

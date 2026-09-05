@@ -31,12 +31,11 @@ import re
 from collections.abc import Iterable
 from dataclasses import dataclass
 
-from bs4 import BeautifulSoup
-
 from defs.sec_forms.context.models import ContextEvidence, TocReference
 from defs.sec_forms.cover.structure import SectionKind, parse_section_heading
 from defs.sec_forms.cover.toc.analysis import normalize_for_matching
 from defs.sec_forms.cover.toc.models import TocSpan
+from defs.text.html import FastHtmlNode, FastHtmlTree, parse_html
 from defs.text.patterns import PAGE_NUMBER_CORE, RE_PAGE_NUMBER_SUFFIX
 
 __all__ = [
@@ -130,13 +129,7 @@ def _row_candidate(
 
 
 def _looks_like_toc_label(text: str) -> bool:
-    """Cheap test for whether a row text resembles a TOC entry.
-
-    A row qualifies when it contains ``item``/``part``/``page``/``exhibit``/
-    ``note`` vocabulary, *or* when it ends in a plain numeric page number
-    (canonical financial-statement index shape).
-    """
-    if not text:
+    if not text or len(text) > 240:
         return False
     lowered = text.casefold()
     if parse_section_heading(text) is not None:
@@ -151,24 +144,39 @@ def _looks_like_toc_label(text: str) -> bool:
 
 
 def _collect_anchors(
-    soup: BeautifulSoup, table: object
+    table: FastHtmlNode | object,
 ) -> Iterable[tuple[str, str | None, str | None]]:
     """Yield ``(label, anchor, page)`` tuples for each TOC row in ``table``."""
-    for row in table.find_all("tr"):
-        cells = row.find_all(["td", "th"])
+    rows = (
+        table.css("tr")
+        if hasattr(table, "css")
+        else getattr(table, "find_all", lambda x: [])("tr")
+    )
+    for row in rows:
+        cells = (
+            row.css("td, th")
+            if hasattr(row, "css")
+            else getattr(row, "find_all", lambda x: [])(["td", "th"])
+        )
         if not cells:
             continue
         cell_texts = [
-            re.sub(r"\s+", " ", cell.get_text(" ", strip=True)).strip()
+            cell.text(separator=" ", strip=True)
+            if hasattr(cell, "text")
+            else cell.get_text(" ", strip=True)
             for cell in cells
         ]
         cell_texts = [text for text in cell_texts if text]
         if not cell_texts:
             continue
         anchor_href: str | None = None
-        anchor_link = row.find("a", href=True)
+        anchor_link = (
+            row.css_first("a[href]")
+            if hasattr(row, "css_first")
+            else getattr(row, "find", lambda *a, **k: None)("a", href=True)
+        )
         if anchor_link is not None:
-            anchor_href = anchor_link.get("href", "").lstrip("#") or None
+            anchor_href = (anchor_link.get("href", "") or "").lstrip("#") or None
         label = " ".join(cell_texts)
         if not _looks_like_toc_label(label):
             continue
@@ -177,22 +185,24 @@ def _collect_anchors(
 
 
 def extract_toc_references(
-    soup: BeautifulSoup,
+    soup: FastHtmlTree | FastHtmlNode | str | object,
     *,
     document_id: str = "",
     min_rows: int = 2,
 ) -> tuple[TocReference, ...]:
-    """Return all :class:`TocReference` records found in ``soup``.
+    """Return all :class:`TocReference` records found in parsed HTML or FastHtmlTree."""
+    if isinstance(soup, (str, bytes)):
+        tree: FastHtmlTree | FastHtmlNode = parse_html(soup)
+    elif isinstance(soup, (FastHtmlTree, FastHtmlNode)):
+        tree = soup
+    else:
+        tree = parse_html(str(soup))
 
-    Walks every ``<table>`` whose flattened text contains ``page``/``item``/
-    ``part`` vocabulary, then lifts each row into a typed reference. The
-    function is independent of the existing line-based TOC detector and
-    therefore supports multiple TOCs (main, financial, note, exhibit).
-    """
     references: list[TocReference] = []
     ordinal = 0
-    for table in soup.find_all("table"):
-        rows = list(_collect_anchors(soup, table))
+    all_tables = tree.css("table") if hasattr(tree, "css") else []
+    for table in all_tables:
+        rows = list(_collect_anchors(table))
         if len(rows) < min_rows:
             continue
         for label, anchor, page in rows:
@@ -212,7 +222,7 @@ def extract_toc_references(
                     part=entry.part,
                     item=entry.item,
                     anchor=entry.anchor,
-                    ordinal=entry.ordinal,
+                    ordinal=ordinal,
                     confidence=entry.confidence,
                     page=entry.page,
                     evidence=evidence,

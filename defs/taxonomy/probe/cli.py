@@ -23,6 +23,7 @@ from defs.taxonomy.probe.census import (
     census_vocabulary,
     compute_distinctive_ngrams,
 )
+from defs.taxonomy.probe.css_census import census_documents, write_census
 from defs.taxonomy.probe.exporter import export_family_dataset
 from defs.taxonomy.probe.inspector import inspect_table_record
 from defs.taxonomy.probe.rules import (
@@ -169,12 +170,47 @@ def main(argv: list[str] | None = None) -> int:
         help="Custom output path for the exported Parquet dataset",
     )
     parser.add_argument(
+        "--css-census",
+        action="store_true",
+        help="Census table HTML/CSS attributes from compressed fixture documents",
+    )
+    parser.add_argument(
+        "--css-census-output",
+        type=Path,
+        default=None,
+        help="JSON output path for --css-census (Parquet samples use the same stem)",
+    )
+    parser.add_argument(
+        "--css-census-samples",
+        type=int,
+        default=5000,
+        help="Maximum per-table sample records to write for --css-census",
+    )
+    parser.add_argument(
         "--json",
         type=Path,
         help="Write structured results to JSON file",
     )
 
     args = parser.parse_args(argv)
+
+    if args.css_census:
+        output = args.css_census_output or Path(
+            ".artifacts/taxonomy/probe/css-census.json"
+        )
+        print(f"Censusing table HTML/CSS features from {args.db_path}...")
+        summary, samples = census_documents(
+            db_path=args.db_path,
+            limit=None if args.limit == 500 else args.limit,
+            sample_limit=args.css_census_samples,
+            workers=args.workers,
+        )
+        write_census(summary, samples, output)
+        print(
+            f"Scanned {summary['documents']} documents and {summary['tables']} tables; "
+            f"wrote {output} and {output.with_suffix('.parquet')}"
+        )
+        return 0
 
     if args.build_cache:
         workers = (

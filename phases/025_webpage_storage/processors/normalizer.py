@@ -6,8 +6,6 @@ import re
 from dataclasses import dataclass
 from typing import Any
 
-from bs4 import BeautifulSoup
-
 from defs.regex import build_alternation
 from defs.sec_forms.cover import (
     BoundaryInput,
@@ -24,14 +22,17 @@ from defs.sec_forms.page_markers import (
     refresh_html_analysis,
     strip_page_markers,
 )
-from defs.tables import convert_html_tables_to_ascii
+from defs.tables import convert_html_tables_to_ascii_v2
+from defs.text.html import parse_html
 from defs.text.reflow import reflow_ascii
 
 from .forms.base import PreprocessedDocument
+from .preprocessor import _RE_HTML_DISCRIMINATOR
 from .router import FormRouter
 
 _IXBRL_PREFIXES = build_alternation(["ix", "xbrli", "dei", "us-gaap"])
 _RE_XML_IXBRL_TAGS = re.compile(rf"</?(?:{_IXBRL_PREFIXES}):[^>]*>", re.IGNORECASE)
+_RE_TABLE_TAG = re.compile(r"<\/?table\b", re.IGNORECASE)
 _RE_MULTIPLE_BLANKS = re.compile(r"\n{3,}")
 _RE_TRAILING_WHITESPACE = re.compile(r"[ \t]+$", re.MULTILINE)
 
@@ -87,13 +88,13 @@ class DeepNormalizer:
         text = preprocessed.cleaned_text
         page_analysis = preprocessed.page_analysis
 
-        # HTML node decisions are applied before any Soup/table serialization.
+        # HTML node decisions are applied before any table serialization.
         # Their DOM paths are never passed to the text-span stripper.
         if is_html:
-            soup = BeautifulSoup(text, "lxml")
-            page_analysis = enrich_html_analysis(page_analysis, soup, source_text=text)
-            if apply_html_page_decisions(soup, page_analysis):
-                text = str(soup)
+            tree = parse_html(text)
+            page_analysis = enrich_html_analysis(page_analysis, tree, source_text=text)
+            if apply_html_page_decisions(tree, page_analysis):
+                text = str(tree)
                 page_analysis = refresh_html_analysis(page_analysis, text)
 
         boundary = find_cover_boundary_for_profile(
@@ -106,7 +107,7 @@ class DeepNormalizer:
         )
 
         # 1. Form-specific HTML cover-page preprocessing
-        if is_html and "<table" in text.lower():
+        if is_html and bool(_RE_TABLE_TAG.search(text)):
             cover_result = form_normalizer.preprocess_cover(
                 text, metadata, page_analysis=page_analysis
             )
@@ -143,8 +144,8 @@ class DeepNormalizer:
 
         # 2. Generic HTML financial table to ASCII conversion & HTML tag stripping
         # Meant for html documents that actually are just SGML ASCII documents in the 2008-range that uses <PRE> wrappers
-        if is_html and "<TABLE>" not in text:
-            text = convert_html_tables_to_ascii(text)
+        if is_html and bool(_RE_HTML_DISCRIMINATOR.search(text)):
+            text = convert_html_tables_to_ascii_v2(text)
             page_analysis = refresh_html_analysis(page_analysis, text)
 
         # 3. Invariant generic cleanup passes

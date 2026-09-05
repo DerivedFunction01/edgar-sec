@@ -3,10 +3,12 @@
 from __future__ import annotations
 
 import argparse
+import difflib
 import re
 from pathlib import Path
 
 from defs.storage import DatasetSpec, pa, read_records
+from defs.tables.ascii_html_v2 import convert_html_tables_to_ascii_v2
 
 ROOT = Path(__file__).parents[2]
 CORPUS_PATH = ROOT / "defs/tests/fixtures/tables/validated_table_corpus_v2.parquet"
@@ -38,6 +40,56 @@ def _records(
     )
 
 
+def format_side_by_side(
+    left_text: str,
+    right_text: str,
+    *,
+    left_title: str = "EXPECTED (GOLDEN)",
+    right_title: str = "V2 RENDER",
+    left_width: int | None = None,
+) -> str:
+    """Format two multiline strings side-by-side separated by a vertical bar."""
+    left_lines = left_text.strip("\n").splitlines()
+    right_lines = right_text.strip("\n").splitlines()
+
+    if left_width is None:
+        max_left = max((len(line) for line in left_lines), default=0)
+        left_width = max(max_left, len(left_title), 20)
+
+    header = f"{left_title:<{left_width}} | {right_title}"
+    divider = f"{'-' * left_width}-+-{'-' * max(len(right_title), 40)}"
+    rows = [header, divider]
+
+    max_rows = max(len(left_lines), len(right_lines))
+    for i in range(max_rows):
+        l_line = left_lines[i] if i < len(left_lines) else ""
+        r_line = right_lines[i] if i < len(right_lines) else ""
+        rows.append(f"{l_line:<{left_width}} | {r_line}")
+
+    return "\n".join(rows)
+
+
+def format_diff(
+    expected_text: str,
+    actual_text: str,
+    *,
+    fromfile: str = "expected (golden)",
+    tofile: str = "v2 render",
+) -> str:
+    """Generate a unified diff between expected and actual text."""
+    diff = list(
+        difflib.unified_diff(
+            expected_text.splitlines(keepends=True),
+            actual_text.splitlines(keepends=True),
+            fromfile=fromfile,
+            tofile=tofile,
+        )
+    )
+    if not diff:
+        return "(no differences)\n"
+    return "".join(diff)
+
+
 def _print_window(
     text: str, *, head: int | None, tail: int | None, offset: int
 ) -> None:
@@ -59,7 +111,12 @@ def main(argv: list[str] | None = None) -> int:
         "--grep", help="case-insensitive regex searched in corpus fields"
     )
     parser.add_argument("--corpus", help="limit --grep results to one filing corpus")
-    parser.add_argument("--show", choices=("expected", "html"), default="expected")
+    parser.add_argument(
+        "--show",
+        choices=("expected", "html", "v2", "diff", "side-by-side"),
+        default="expected",
+        help="what to display for matching tables (default: expected)",
+    )
     parser.add_argument(
         "--search-in",
         choices=("html", "expected", "both"),
@@ -107,7 +164,22 @@ def main(argv: list[str] | None = None) -> int:
         print(f"ID: {record['table_id']}")
         print(f"Corpus: {record['corpus']}")
         print(f"Source: {record['source_path']}")
-        text = record[args.show]
+
+        if args.show == "expected":
+            text = record["expected"]
+        elif args.show == "html":
+            text = record["html"]
+        elif args.show == "v2":
+            text = convert_html_tables_to_ascii_v2(record["html"])
+        elif args.show == "diff":
+            v2_render = convert_html_tables_to_ascii_v2(record["html"])
+            text = format_diff(record["expected"], v2_render)
+        elif args.show == "side-by-side":
+            v2_render = convert_html_tables_to_ascii_v2(record["html"])
+            text = format_side_by_side(record["expected"], v2_render)
+        else:
+            text = record["expected"]
+
         if args.grep and args.context:
             fields = (
                 (args.search_in,) if args.search_in != "both" else ("html", "expected")

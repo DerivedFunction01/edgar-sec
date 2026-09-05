@@ -11,10 +11,7 @@ remain available to every profile, including no-cover ones.
 
 from __future__ import annotations
 
-import re
 from typing import Any
-
-from bs4 import BeautifulSoup, Comment
 
 from defs.sec_forms.context import build_cover_scope
 from defs.sec_forms.context.models import SectionContext, TableContext
@@ -30,28 +27,28 @@ from defs.text import (
     normalize_checkbox_tokens,
     normalize_whitespace_and_tabs,
 )
+from defs.text.html import FastHtmlNode, FastHtmlTree, parse_html
 
 from ..base import CoverPreprocessResult
 
 
 def _mark_cover_candidates(
-    soup: BeautifulSoup,
+    tree: FastHtmlTree,
     profile: CoverProfile,
-) -> list[object]:
+) -> list[FastHtmlNode]:
     """Mark layout tables before the cover boundary for scoped conversion."""
-    tables = list(soup.find_all("table"))
+    tables = tree.css("table")
     labels = profile.labels
     evidence = profile.evidence_terms
-    candidates = [
-        table
-        for table in tables
-        if any(term in table.get_text(" ", strip=True).lower() for term in labels)
-        or any(term in table.get_text(" ", strip=True).lower() for term in evidence)
-        or table.find_previous(string=re.compile(r"section\s+12\(b\)", re.IGNORECASE))
-    ]
-
-    for table in candidates:
-        table["data-cover-candidate"] = "true"
+    candidates: list[FastHtmlNode] = []
+    for table in tables:
+        text = table.text().lower()
+        if (
+            any(term in text for term in labels)
+            or any(term in text for term in evidence)
+            or "section 12(b)" in text
+        ):
+            candidates.append(table)
     return candidates
 
 
@@ -98,23 +95,21 @@ class HybridCoverPreprocessor:
                 ),
             )
 
-        soup = BeautifulSoup(html_text, "lxml")
+        tree = parse_html(html_text)
 
         # 1. Clean non-displaying and hidden XBRL header tags
-        for el in soup(
-            ["head", "script", "style", "meta", "noscript", "ix:hidden", "ix:header"]
-        ):
-            el.decompose()
-        for comment in soup.find_all(string=lambda value: isinstance(value, Comment)):
-            comment.extract()
+        tree.strip_tags(
+            ("head", "script", "style", "meta", "noscript", "ix:hidden", "ix:header")
+        )
 
         # 2. In-place layout table transformation, gated by cover capability.
-        candidates: list[object] = []
+        candidates: list[FastHtmlNode] = []
         if self.profile.boundary is not None:
-            candidates = _mark_cover_candidates(soup, self.profile)
+            candidates = _mark_cover_candidates(tree, self.profile)
             cover_scope = build_cover_scope(self.profile, None)
-            for ordinal, table in enumerate(list(soup.find_all("table")), start=1):
-                if table not in candidates:
+            all_tables = tree.css("table")
+            for ordinal, table in enumerate(all_tables, start=1):
+                if not any(c.raw_node == table.raw_node for c in candidates):
                     continue
                 source_grid = span_grid(table, with_spans=False)
                 if source_grid:
@@ -134,16 +129,14 @@ class HybridCoverPreprocessor:
                         section_context=table_context.section,
                     )
                     if template_result is not None:
-                        table.replace_with(
-                            soup.new_string(f"\n\n{template_result.text}\n\n")
-                        )
+                        table.replace_with_html(f"\n\n{template_result.text}\n\n")
                         continue
 
         # 3. Convert remaining body/data tables through the generic renderer.
-        converted_html = convert_html_tables_to_ascii(str(soup))
-        boundary_source = normalize_checkbox_tokens(
-            normalize_whitespace_and_tabs(converted_html)
+        converted_html = normalize_checkbox_tokens(
+            convert_html_tables_to_ascii_v2(str(tree))
         )
+        boundary_source = normalize_whitespace_and_tabs(converted_html)
         boundary_analysis = page_analysis
         if (
             boundary_analysis is None
@@ -210,9 +203,9 @@ def span_grid(table: object, *, with_spans: bool = False):
     return _span_grid(table, with_spans=with_spans)
 
 
-def convert_html_tables_to_ascii(html_content: str) -> str:
+def convert_html_tables_to_ascii_v2(html_content: str) -> str:
     """Re-exported for local use to avoid a top-level circular import."""
-    from defs.tables import convert_html_tables_to_ascii as _convert
+    from defs.tables import convert_html_tables_to_ascii_v2 as _convert
 
     return _convert(html_content)
 

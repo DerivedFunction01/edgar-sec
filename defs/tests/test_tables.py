@@ -4,8 +4,6 @@ from __future__ import annotations
 
 import re
 
-from bs4 import BeautifulSoup
-
 from defs.tables import (
     ALL_CURRENCY_SYMBOLS,
     FINANCIAL_PLACEHOLDERS,
@@ -21,6 +19,7 @@ from defs.tables.currencies import MAJOR_CURRENCIES
 from defs.tables.repair import clean_and_merge_symbols
 from defs.tables.table_definitions import _detect_border_header_count, _heal_grid
 from defs.tables.templates import span_grid
+from defs.text.html import parse_html
 
 
 def test_generic_table_build():
@@ -141,7 +140,7 @@ def test_html_table_conversion_uses_first_inline_border_as_header_boundary(capsy
     </table>
     """
 
-    soup = BeautifulSoup(html, "lxml")
+    soup = parse_html(html)
     table = soup.find("table")
     grid, spans = span_grid(table, with_spans=True)
     result, _ = _heal_grid(grid, debug=True, span_groups=spans, table=table)
@@ -174,7 +173,7 @@ def test_border_header_detection_rejects_outer_and_subtotal_boundaries():
         </table>
         """,
     ):
-        soup = BeautifulSoup(html, "lxml")
+        soup = parse_html(html)
         assert (
             _detect_border_header_count(soup.find("table"), len(soup.find_all("tr")))
             == 0

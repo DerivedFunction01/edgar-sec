@@ -130,6 +130,30 @@ def test_shares_purchased_classification_and_template_repair() -> None:
     assert "Average Price Paid" in repaired_output
 
 
+def test_shares_purchased_template_drops_footnote_columns_and_year_superheader():
+    grid = [
+        [
+            "2012",
+            "Total Number of Shares Purchased",
+            "",
+            "Average Price Paid per Share",
+            "Total Number of Shares Purchased as Part of Publicly Announced Plans or Programs",
+            "Approximate Dollar Value of Shares that May Yet be Purchased Under the Program (in millions)",
+        ],
+        ["October 1 - October 31", "115,800", "(1)", "$37.62", "-", "$-"],
+        ["November 1 - November 30", "175,000", "(2)", "$34.29", "175,000", "$19.0"],
+        ["December 1 - December 31", "171,500", "(2)", "$34.50", "171,500", "$11.1"],
+        ["Total", "462,300", "", "$35.20", "346,500", "$11.1"],
+    ]
+    result = shares_purchased_template(grid)
+    assert result is not None
+    assert "Period" in result
+    assert "2012" not in result.split("<S>", 1)[1]
+    assert "(1)" not in result.split("<S>", 1)[1]
+    assert "175,000" in result
+    assert "19.0" in result
+
+
 def test_equity_statement_classification() -> None:
     """Statement of stockholders equity matches with APIC, retained earnings, balance at."""
     grid = [

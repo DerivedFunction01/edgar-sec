@@ -10,10 +10,9 @@ import argparse
 import hashlib
 from pathlib import Path
 
-from bs4 import BeautifulSoup
-
 from defs.storage import pa, write_table_atomic
 from defs.tables import convert_html_tables_to_ascii
+from defs.text.html import parse_html
 
 ROOT = Path(__file__).parents[2]
 DEFAULT_OUTPUT = ROOT / "defs/tests/fixtures/tables/validated_table_corpus_v2.parquet"
@@ -46,13 +45,12 @@ def build(output: Path) -> int:
     for corpus, source in SOURCES.items():
         raw = source.read_bytes()
         source_hash = hashlib.sha256(raw).hexdigest()
-        soup = BeautifulSoup(raw, "lxml")
-        for element in soup(
-            ["head", "script", "style", "meta", "noscript", "ix:hidden", "ix:header"]
-        ):
-            element.decompose()
-        for number, table in enumerate(soup.find_all("table"), start=1):
-            html = str(table)
+        tree = parse_html(raw)
+        tree.strip_tags(
+            ("head", "script", "style", "meta", "noscript", "ix:hidden", "ix:header")
+        )
+        for number, table in enumerate(tree.css("table"), start=1):
+            html = table.html
             records.append(
                 {
                     "corpus": corpus,
