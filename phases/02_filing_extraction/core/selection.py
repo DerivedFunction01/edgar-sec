@@ -45,6 +45,7 @@ class DeficitSelector:
         *,
         threads: int | None = None,
         memory_limit: str | None = None,
+        document_suffixes: tuple[str, ...] = (),
     ) -> None:
         self.snapshot_dir = Path(snapshot_dir).resolve()
         self.policy = policy
@@ -52,6 +53,7 @@ class DeficitSelector:
         res = derive_resources()
         self.threads = threads if threads is not None else res.threads
         self.memory_limit = memory_limit or res.memory_limit
+        self.document_suffixes = tuple(document_suffixes)
 
     def select(self, parent_active_keys: list[str] | None = None) -> SelectionResult:
         """Run full deficit selection and produce typed SelectionResult."""
@@ -64,6 +66,7 @@ class DeficitSelector:
             page_size=self.policy.page_size,
             max_reported_size=self.policy.max_reported_size,
             exclude_amendments=self.policy.exclude_amendments,
+            document_suffixes=self.document_suffixes,
         )
 
         selected_keys: list[str] = list(parent_active_keys or [])

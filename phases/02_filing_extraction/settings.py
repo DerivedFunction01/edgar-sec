@@ -9,7 +9,11 @@ from __future__ import annotations
 
 from defs.runtime.settings import SettingSpec
 
-from .core.config import DEFAULT_AMENDMENT, DEFAULT_SOURCE_BATCH_SIZE
+from .core.config import (
+    DEFAULT_AMENDMENT,
+    DEFAULT_DOCUMENT_SUFFIXES,
+    DEFAULT_SOURCE_BATCH_SIZE,
+)
 
 SETTING_SPECS = {
     "filing_extraction": {
@@ -28,6 +32,14 @@ SETTING_SPECS = {
             config=True,
             cli=True,
             description="comma-separated target forms for filing extraction",
+        ),
+        "document_suffixes": SettingSpec(
+            value_type=str,
+            default=",".join(DEFAULT_DOCUMENT_SUFFIXES),
+            env=True,
+            config=True,
+            cli=True,
+            description="comma-separated document path suffixes for target planning",
         ),
         "amendment": SettingSpec(
             value_type=str,

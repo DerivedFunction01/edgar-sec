@@ -82,6 +82,12 @@ def main(argv: list[str] | None = None) -> int:
     )
     plan_parser.add_argument("--form", action="append", default=[])
     plan_parser.add_argument(
+        "--document-suffix",
+        action="append",
+        default=None,
+        help="document path suffix to include; repeat for multiple suffixes",
+    )
+    plan_parser.add_argument(
         "--amendment",
         choices=("both", "original", "amendments"),
         default=None,
@@ -131,6 +137,11 @@ def main(argv: list[str] | None = None) -> int:
         config = phase_config.load(args.config)
         forms = tuple(args.form) if args.form else config.target_forms
         amendment = args.amendment if args.amendment is not None else config.amendment
+        document_suffixes = (
+            tuple(args.document_suffix)
+            if args.document_suffix is not None
+            else config.document_suffixes
+        )
         result = plan(
             args.catalog,
             args.output_root,
@@ -139,6 +150,7 @@ def main(argv: list[str] | None = None) -> int:
             seed_cik_path=args.seed_cik,
             forms=forms,
             amendment=amendment,
+            document_suffixes=document_suffixes,
             limit=args.limit,
             progress=_stderr_progress if args.progress else None,
         )

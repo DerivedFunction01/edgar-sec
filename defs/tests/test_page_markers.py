@@ -91,19 +91,21 @@ def test_page_marker_inline_sgml() -> None:
 def test_letter_number_preserved_by_default_without_sequence() -> None:
     text = "F-1\nSome prospectus text.\n"
     analysis = analyze_page_markers(text)
-    assert len(analysis.markers) == 0  # not detected by default
+    assert len(analysis.markers) == 1
+    assert analysis.markers[0].kind == PageMarkerKind.LETTER_NUMBER
+    assert analysis.markers[0].page_number == 1
+    assert analysis.decisions[0].action == PageMarkerAction.PRESERVE
 
-    # Explicit allow
     analysis_allowed = analyze_page_markers(text, allow_letter_number=True)
     assert len(analysis_allowed.markers) == 1
     assert analysis_allowed.markers[0].kind == PageMarkerKind.LETTER_NUMBER
     assert analysis_allowed.markers[0].page_number == 1
-    assert analysis_allowed.decisions[0].action == PageMarkerAction.REMOVE
+    assert analysis_allowed.decisions[0].action == PageMarkerAction.PRESERVE
 
 
 def test_letter_number_in_sequence_is_removed() -> None:
     text = "-1-\n-2-\n-3-\nF-4\n"
-    analysis = analyze_page_markers(text, allow_letter_number=True)
+    analysis = analyze_page_markers(text)
     assert len(analysis.markers) == 4
     assert all(d.action == PageMarkerAction.REMOVE for d in analysis.decisions)
 
@@ -342,3 +344,28 @@ def test_text_cleanup_does_not_reuse_stale_coordinate_frame() -> None:
     changed = "Prefix\nPage 1\nBody\n"
     analysis = analyze_page_markers(original)
     assert strip_page_markers(changed, analysis) == "Prefix\nBody\n"
+
+
+def test_letter_number_monotonic_f_sequence_accepted_by_default() -> None:
+    text = "\n".join(f"F-{i}" for i in range(1, 6))
+    analysis = analyze_page_markers(text)
+    assert [marker.page_number for marker in analysis.markers] == [1, 2, 3, 4, 5]
+    assert all(
+        marker.kind == PageMarkerKind.LETTER_NUMBER for marker in analysis.markers
+    )
+    assert all(d.action == PageMarkerAction.REMOVE for d in analysis.decisions)
+
+
+def test_letter_number_non_monotone_sequence_preserved() -> None:
+    text = "F-1\nF-3\nF-2\n"
+    analysis = analyze_page_markers(text)
+    assert len(analysis.markers) == 3
+    assert all(m.kind == PageMarkerKind.LETTER_NUMBER for m in analysis.markers)
+    assert all(d.action == PageMarkerAction.PRESERVE for d in analysis.decisions)
+
+
+def test_ordinary_sec_form_references_not_removed() -> None:
+    text = "Form S-1\nForm F-3\nSome content.\n"
+    analysis = analyze_page_markers(text)
+    assert not any(m.kind == PageMarkerKind.LETTER_NUMBER for m in analysis.markers)
+    assert strip_page_markers(text, analysis) == text

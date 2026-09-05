@@ -157,20 +157,3 @@ Then run the golden tests:
 Expected-output divergence reports are written under the shared
 `.artifacts/test-runs/` directory and include text and HTML diffs plus debug
 metadata.
-
-## Legacy fixture hash repair
-
-`/tmp/repair_fixture_hashes.py` is a temporary migration aid for fixtures with
-empty `raw_payload_sha256` values. It defaults to a dry run and only updates
-empty or NULL hashes when `--apply` is supplied:
-
-```bash
-.venv/bin/python /tmp/repair_fixture_hashes.py \
-  --fixture-id <fixture-id>
-
-.venv/bin/python /tmp/repair_fixture_hashes.py \
-  --fixture-id <fixture-id> \
-  --apply
-```
-
-After repair, rerun corpus promotion and verify the corpus integrity test.

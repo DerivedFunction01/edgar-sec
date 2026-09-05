@@ -50,7 +50,6 @@ def _valid_firm_sequence(markers: list[PageMarker]) -> bool:
 def _decision_for_marker(
     marker: PageMarker,
     *,
-    allow_letter_number: bool,
     valid_firm_sequence: bool,
 ) -> PageMarkerDecision:
     if marker.kind == PageMarkerKind.BOUNDARY:
@@ -65,9 +64,7 @@ def _decision_for_marker(
         return PageMarkerDecision(
             marker, PageMarkerAction.REMOVE, "sgml_page_tag", 1.0, marker.evidence
         )
-    if marker.kind == PageMarkerKind.LETTER_NUMBER and not (
-        allow_letter_number or valid_firm_sequence
-    ):
+    if marker.kind == PageMarkerKind.LETTER_NUMBER and not valid_firm_sequence:
         return PageMarkerDecision(
             marker,
             PageMarkerAction.PRESERVE,
@@ -117,7 +114,7 @@ def analyze_page_markers(
     context: dict[str, Any] | None = None,
     *,
     representation: str = "ascii",
-    allow_letter_number: bool = False,
+    allow_letter_number: bool = True,
 ) -> PageMarkerAnalysis:
     """Detect firm labels, validated candidates, and presentation evidence."""
 
@@ -175,7 +172,6 @@ def analyze_page_markers(
     decisions = [
         _decision_for_marker(
             marker,
-            allow_letter_number=allow_letter_number,
             valid_firm_sequence=valid_firm_sequence,
         )
         for marker in markers
@@ -238,7 +234,7 @@ def analyze_page_markers(
 
 
 def find_page_markers(
-    text: str, *, allow_letter_number: bool = False
+    text: str, *, allow_letter_number: bool = True
 ) -> tuple[PageMarkerSpan, ...]:
     """Return accepted observed page-marker spans in source order."""
 

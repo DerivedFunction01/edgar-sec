@@ -3,7 +3,8 @@
 This phase derives immutable, no-network filing catalogs from the finalized
 Phase 01 `submission_metadata` Parquet artifact. `materialize` expands nested
 filing observations into form-partitioned targets and `plan` applies
-deterministic form and amendment filters. Phase 01 chunks are never read.
+deterministic form, amendment, and optional document-suffix filters. Phase 01
+chunks are never read.
 This phase performs no network access and does not fetch filing documents.
 
 ## Interactive runner
@@ -22,8 +23,9 @@ The interactive menu offers:
 1. Materialize catalog — pick a finalized Phase 01 artifact or manifest and an
    output root; produces a catalog directory through bounded DuckDB staging.
 2. Plan filing targets — pick a catalog, optional form filters (defaulting to
-    any configured `target_forms`), an amendment policy (`both`/`original`/`amendments`),
-    and an optional limit; writes an immutable target-plan directory.
+     any configured `target_forms`), repeatable `--document-suffix` filters,
+     an amendment policy (`both`/`original`/`amendments`), and an optional
+     limit; writes an immutable target-plan directory.
 3. Show status — lists discovered catalogs and target plans from their manifests
    and `plan.json` files without scanning Parquet rows or re-fetching source data.
 0. Exit
@@ -50,7 +52,8 @@ generated environment names `RUNTIME_THREADS`, `RUNTIME_MEMORY_LIMIT`,
 
 Phase behavior is declared in this phase's `settings.py`
 (`filing_extraction.source_batch_size`, `filing_extraction.target_forms`,
-`filing_extraction.amendment`) and registered through the
+`filing_extraction.document_suffixes`, `filing_extraction.amendment`) and
+registered through the
 `phases/settings.py` barrel; persistable dataset-relevant settings are written
 to `.artifacts/filing_extraction/config.json`. Shared runtime execution settings
 live in the shared registry
@@ -64,7 +67,11 @@ persisted Phase 02 config → default. Resolution precedence for `target_forms`
 and `amendment`: explicit `--form`/`--amendment` flags → direct environment/`.env`
 (`FILING_EXTRACTION_TARGET_FORMS`, `FILING_EXTRACTION_AMENDMENT`) → persisted
 Phase 02 config → default (`target_forms` empty means all forms, `amendment`
-defaults to `both`). Runtime execution settings resolve as CLI flag →
+defaults to `both`). Repeat `--document-suffix` for a union of
+case-insensitive path suffixes; leading dots are normalized away. The filter
+is recorded in `plan.json` and its fingerprint. A suffix identifies the SEC
+document path only; `.txt` does not guarantee plain-text content. Runtime
+execution settings resolve as CLI flag →
 environment → machine-derived value.
 
 ## Canonical command surface

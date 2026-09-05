@@ -14,6 +14,7 @@ from defs.runtime.settings import resolve_settings
 CONFIG_VERSION = 1
 DEFAULT_SOURCE_BATCH_SIZE = 1_000
 DEFAULT_TARGET_FORMS: tuple[str, ...] = ()
+DEFAULT_DOCUMENT_SUFFIXES: tuple[str, ...] = ()
 DEFAULT_AMENDMENT = "both"
 
 
@@ -25,6 +26,7 @@ def default_config_path() -> Path:
 class Phase2Config:
     source_batch_size: int = DEFAULT_SOURCE_BATCH_SIZE
     target_forms: tuple[str, ...] = DEFAULT_TARGET_FORMS
+    document_suffixes: tuple[str, ...] = DEFAULT_DOCUMENT_SUFFIXES
     amendment: str = DEFAULT_AMENDMENT
 
     def __post_init__(self) -> None:
@@ -35,6 +37,14 @@ class Phase2Config:
         normalized = tuple(f.strip().upper() for f in self.target_forms if f.strip())
         if normalized != self.target_forms:
             object.__setattr__(self, "target_forms", normalized)
+        suffixes = tuple(
+            suffix.strip().lower().lstrip(".")
+            for suffix in self.document_suffixes
+            if str(suffix).strip().lstrip(".")
+        )
+        suffixes = tuple(dict.fromkeys(suffixes))
+        if suffixes != self.document_suffixes:
+            object.__setattr__(self, "document_suffixes", suffixes)
 
     def resolved(self) -> Phase2Config:
         return self
@@ -44,18 +54,26 @@ class Phase2Config:
         return {
             "source_batch_size": value.source_batch_size,
             "target_forms": list(value.target_forms),
+            "document_suffixes": list(value.document_suffixes),
             "amendment": value.amendment,
         }
 
     @classmethod
     def from_dict(cls, value: dict) -> Phase2Config:
-        allowed = {"source_batch_size", "target_forms", "amendment"}
+        allowed = {
+            "source_batch_size",
+            "target_forms",
+            "document_suffixes",
+            "amendment",
+        }
         unknown = sorted(set(value) - allowed)
         if unknown:
             raise ValueError(f"unknown Phase 02 config fields: {unknown}")
         data = dict(value)
         if "target_forms" in data:
             data["target_forms"] = tuple(data["target_forms"])
+        if "document_suffixes" in data:
+            data["document_suffixes"] = tuple(data["document_suffixes"])
         return cls(**data).resolved()
 
 
@@ -88,6 +106,11 @@ def load(
     target_forms = persisted_dict.get("target_forms") or []
     if target_forms:
         settings_config["filing_extraction.target_forms"] = ",".join(target_forms)
+    document_suffixes = persisted_dict.get("document_suffixes") or []
+    if document_suffixes:
+        settings_config["filing_extraction.document_suffixes"] = ",".join(
+            document_suffixes
+        )
     if persisted_dict.get("amendment") is not None:
         settings_config["filing_extraction.amendment"] = persisted_dict["amendment"]
 
@@ -109,9 +132,22 @@ def load(
     else:
         target_forms = DEFAULT_TARGET_FORMS
 
+    suffixes_raw = resolved.get("filing_extraction.document_suffixes", "")
+    if isinstance(suffixes_raw, str):
+        document_suffixes = tuple(
+            suffix.strip().lower().lstrip(".")
+            for suffix in suffixes_raw.split(",")
+            if suffix.strip().lstrip(".")
+        )
+    elif isinstance(suffixes_raw, (list, tuple)):
+        document_suffixes = tuple(str(suffix) for suffix in suffixes_raw)
+    else:
+        document_suffixes = DEFAULT_DOCUMENT_SUFFIXES
+
     return Phase2Config(
         source_batch_size=int(resolved["filing_extraction.source_batch_size"]),
         target_forms=target_forms,
+        document_suffixes=document_suffixes,
         amendment=str(resolved.get("filing_extraction.amendment", DEFAULT_AMENDMENT)),
     )
 
@@ -124,6 +160,7 @@ def write(path: str | os.PathLike[str], config: Phase2Config) -> str:
 
 __all__ = [
     "CONFIG_VERSION",
+    "DEFAULT_DOCUMENT_SUFFIXES",
     "DEFAULT_SOURCE_BATCH_SIZE",
     "Phase2Config",
     "default_config_path",

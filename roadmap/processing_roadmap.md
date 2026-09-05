@@ -291,13 +291,9 @@ Page 1
 <PAGE> 1
 ```
 
-`F-1`-style markers require contextual opt-in because they can be SEC form
-identifiers. Page analysis provides positional evidence, accepted namespace
-runs, unresolved candidates, and metadata-only inferred boundaries; inferred
-locations never become removable source spans and page spans do not
-independently define `COVER_END`. Cleanup applies only validated
-`REMOVE`/`NORMALIZE` decisions. TOC, cover, body, and ASCII reflow consumers
-share the same analysis when they operate in its declared source frame.
+`F-1`-style markers are considered by default but require sequence, layout,
+TOC exclusion, and table-like-cluster validation. Isolated form-like tokens
+remain preserved.
 
 ### J. Non-Mutating Healing View
 

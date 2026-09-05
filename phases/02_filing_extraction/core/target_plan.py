@@ -25,6 +25,7 @@ from defs.storage import (
 )
 
 from . import config as phase_config
+from .document_filters import normalize_suffixes, suffix_sql
 from .plan_expansion import (
     expand,
     expansion_metadata,
@@ -68,12 +69,16 @@ def plan(
     progress: Callable[[dict], None] | None = None,
     parent_plan_dir: str | Path | None = None,
     target_units: int | None = None,
+    document_suffixes: tuple[str, ...] | None = None,
 ) -> dict[str, Any]:
     """Execute deterministic target planning (full or fixture scope)."""
     if forms is None:
         forms = phase_config.load().target_forms
     if amendment is None:
         amendment = phase_config.load().amendment
+    if document_suffixes is None:
+        document_suffixes = phase_config.load().document_suffixes
+    document_suffixes = normalize_suffixes(document_suffixes)
     if scope not in {"full", "fixture"}:
         raise ValueError(f"scope must be 'full' or 'fixture', got {scope!r}")
     if amendment not in {"both", "original", "amendments"}:
@@ -129,7 +134,6 @@ def plan(
                 compute_seed_fingerprint(seed_filers),
             )
 
-        # Build feature snapshot
         _emit(
             progress,
             {
@@ -176,6 +180,7 @@ def plan(
             seed_filers=seed_filers,
             threads=resources.threads,
             memory_limit=resources.memory_limit,
+            document_suffixes=document_suffixes,
         )
         selection_res = selector.select(parent_active_keys=parent_keys)
 
@@ -185,7 +190,6 @@ def plan(
             policy.base_content_units,
         )
 
-        # Compute Plan Identity
         plan_hash_payload = {
             "catalog_id": catalog_id,
             "scope": scope,
@@ -194,6 +198,7 @@ def plan(
             "level": policy.level,
             "active_locators": sorted(selection_res.active_locators),
             "parent_plan_id": policy.parent_plan_id,
+            "document_suffixes": list(document_suffixes),
         }
         plan_id = hashlib.sha256(
             json.dumps(plan_hash_payload, sort_keys=True).encode()
@@ -209,7 +214,6 @@ def plan(
             shutil.rmtree(final_plan_dir, ignore_errors=True)
         final_plan_dir.mkdir(parents=True, exist_ok=True)
 
-        # Materialize form-partitioned active targets & locator groups
         _emit(progress, {"type": "merge_stage", "stage": "materialize_targets"})
         counts: dict[str, int] = {}
         target_root = final_plan_dir / "targets"
@@ -238,7 +242,6 @@ def plan(
                 chunk = [[k] for k in active_keys[idx : idx + step]]
                 staging.executemany("INSERT INTO selected_locs VALUES (?)", chunk)
 
-            # Extract distinct forms in active selection
             forms_in_selection = [
                 r[0]
                 for r in staging.execute(f"""
@@ -260,6 +263,9 @@ def plan(
                     FROM read_parquet('{occ_parquet}') o
                     JOIN selected_locs s ON o.document_locator_key = s.document_locator_key
                     WHERE o.form = '{form_name}'
+                      AND (
+                        {suffix_sql("o.primary_document", document_suffixes)}
+                      )
                     ORDER BY o.document_locator_key, o.occurrence_id
                 """
                 cnt = staging.copy_query(val_q, dest_file)
@@ -275,6 +281,7 @@ def plan(
                     l.archive_url, l.company_name
                 FROM read_parquet('{loc_parquet}') l
                 JOIN selected_locs s ON l.document_locator_key = s.document_locator_key
+                WHERE {suffix_sql("l.primary_document", document_suffixes)}
                 ORDER BY l.document_locator_key
             """
             staging.copy_query(loc_q, loc_dest)
@@ -297,7 +304,6 @@ def plan(
                 """
                 staging.copy_query(res_q, res_dest)
 
-        # Write selection report
         atomic_write_json(
             final_plan_dir / "selection_report.json", selection_res.report
         )
@@ -319,6 +325,7 @@ def plan(
             "counts": counts,
             "selected_rows": sum(counts.values()),
             "selection_policy": policy.to_dict(),
+            "document_suffixes": list(document_suffixes),
         }
         plan_meta.update(
             expansion_metadata(
@@ -340,7 +347,6 @@ def plan(
         return plan_meta
 
     else:
-        # Full Scope Selection
         selected_forms = set(forms)
         selected_entries = []
         for item in sorted(target_manifests, key=lambda m: m["artifact_path"]):
@@ -412,6 +418,9 @@ def plan(
                     raise ValueError("limit must be non-negative")
                 where = "LIMIT ?"
                 params = [limit]
+            if document_suffixes:
+                suffix_filter = suffix_sql("primary_document", document_suffixes)
+                where = f"WHERE ({suffix_filter}) " + where
             with FinalizedArtifact(source) as artifact:
                 query = f"SELECT * FROM {artifact.relation} {where}"
                 counts[form] = artifact.copy_query(query, destination_file, params)
@@ -425,7 +434,6 @@ def plan(
                 },
             )
 
-        # Generate locator_groups.parquet for full plan
         target_files = sorted(target_root.glob("form=*/data.parquet"))
         unique_locators = 0
         if target_files:
@@ -446,6 +454,7 @@ def plan(
                         document_path,
                         archive_url
                     FROM read_parquet([{file_list}])
+                    WHERE {suffix_sql("primary_document", document_suffixes)}
                     ORDER BY document_locator_key
                 """,
                     loc_dest,
@@ -474,6 +483,7 @@ def plan(
             "active_targets_count": sum(counts.values()),
             "unique_locators_count": int(unique_locators),
             "source_artifact_ids": source_artifact_ids,
+            "document_suffixes": list(document_suffixes),
         }
         atomic_write_json(destination / "plan.json", plan_meta)
         _emit(

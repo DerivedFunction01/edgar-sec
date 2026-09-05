@@ -36,6 +36,7 @@ class CandidateSource:
         page_size: int = 5_000,
         max_reported_size: int | None = None,
         exclude_amendments: bool = False,
+        document_suffixes: tuple[str, ...] = (),
     ) -> None:
         self.snapshot_dir = Path(snapshot_dir).resolve()
         self.locator = str(self.snapshot_dir / "locator_features.parquet")
@@ -47,6 +48,7 @@ class CandidateSource:
         self.page_size = page_size
         self.max_reported_size = max_reported_size
         self.exclude_amendments = exclude_amendments
+        self.document_suffixes = tuple(document_suffixes)
         self._staging: DuckDBStaging | None = None
 
     @contextmanager
@@ -100,6 +102,12 @@ class CandidateSource:
             clauses.append(f"l.reported_size <= {int(self.max_reported_size)}")
         if self.exclude_amendments:
             clauses.append("l.is_amendment = false")
+        if self.document_suffixes:
+            suffixes = " OR ".join(
+                f"lower(l.primary_document) LIKE {_sql_quote(f'%.{suffix}')}"
+                for suffix in self.document_suffixes
+            )
+            clauses.append(f"({suffixes})")
         return " AND ".join(clauses)
 
     def _rows(self, query: str) -> list[dict[str, Any]]:

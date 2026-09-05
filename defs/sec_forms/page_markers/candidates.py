@@ -137,7 +137,7 @@ def _marker_lines(
 
 
 def firm_markers(
-    text: str, representation: str, allow_letter_number: bool
+    text: str, representation: str, allow_letter_number: bool = True
 ) -> tuple[list[PageMarker], set[tuple[int, int]], set[int]]:
     """Find exact marker spans and their line occupancy."""
 
@@ -248,7 +248,7 @@ def classify_candidate(
     start: int,
     *,
     relative: int | None = None,
-    allow_letter_number: bool = False,
+    allow_letter_number: bool = True,
 ) -> PageCandidate | None:
     """Classify one short, structurally eligible ASCII line."""
 
@@ -347,7 +347,7 @@ def all_candidates(
     occupied_lines: set[int],
     *,
     anchors: set[int] | None = None,
-    allow_letter_number: bool = False,
+    allow_letter_number: bool = True,
     excluded_lines: set[int] | None = None,
 ) -> list[PageCandidate]:
     lines = text.splitlines()

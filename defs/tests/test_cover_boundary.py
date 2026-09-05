@@ -249,15 +249,17 @@ def test_page_marker_detector_returns_supported_spans() -> None:
         "page_number",
         "number_of_total",
         "sgml",
+        "letter_number",
     ]
-    assert [marker.page_number for marker in markers] == [1, 2, 2, 3]
+    assert [marker.page_number for marker in markers] == [1, 2, 2, 3, 1]
     assert all(text[marker.start : marker.end] == marker.text for marker in markers)
 
 
-def test_letter_number_page_marker_requires_explicit_opt_in() -> None:
+def test_letter_number_page_marker_accepted_by_default_and_preserved_without_sequence() -> (
+    None
+):
     text = "F-1\n"
-    assert find_page_markers(text) == ()
-    markers = find_page_markers(text, allow_letter_number=True)
+    markers = find_page_markers(text)
     assert len(markers) == 1
     assert markers[0].kind == "letter_number"
 

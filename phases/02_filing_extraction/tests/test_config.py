@@ -121,6 +121,21 @@ def test_persisted_target_forms_are_normalized(tmp_path):
     assert config.target_forms == ("10-K", "10-Q")
 
 
+def test_document_suffixes_are_normalized_and_deduplicated(tmp_path):
+    config_path = tmp_path / "config.json"
+    config_path.write_text(
+        json.dumps(
+            {
+                "version": 1,
+                "config": {"document_suffixes": [".TXT", "xml", "txt"]},
+            }
+        ),
+        encoding="utf-8",
+    )
+    config = phase_config.load(config_path)
+    assert config.document_suffixes == ("txt", "xml")
+
+
 def test_environment_amendment_overrides_persisted_config(tmp_path, monkeypatch):
     config_path = tmp_path / "config.json"
     config_path.write_text(
