@@ -10,12 +10,15 @@ from typing import Any
 
 from defs.runtime.paths import FixturePaths
 from defs.sql import (
+    BooleanGroup,
+    MatchMode,
     Membership,
     OrderBy,
     Parameter,
     Select,
     SqlDialect,
     Star,
+    StringMatch,
     Table,
     ValueList,
     col,
@@ -46,20 +49,49 @@ def _load_fixture_manifest(paths: FixturePaths) -> dict[str, Any]:
     return manifest
 
 
-def _fixture_rows(paths: FixturePaths, ids: set[str] | None) -> list[dict[str, Any]]:
+def _fixture_rows(
+    paths: FixturePaths,
+    ids: set[str] | None,
+    limit: int | None = None,
+    extensions: list[str] | None = None,
+) -> list[dict[str, Any]]:
     executor = make_sql_executor(paths.db_path, dialect=SqlDialect.SQLITE)
     try:
-        where = None
+        conditions = []
         if ids:
-            where = Membership(
-                col("doc_id"),
-                source=ValueList(tuple(Parameter(value) for value in sorted(ids))),
+            conditions.append(
+                Membership(
+                    col("doc_id"),
+                    source=ValueList(tuple(Parameter(value) for value in sorted(ids))),
+                )
             )
+        if extensions:
+            ext_conditions = [
+                StringMatch(
+                    value=col("document_path"),
+                    pattern=Parameter(f"%.{ext.lstrip('.')}"),
+                    mode=MatchMode.LIKE,
+                )
+                for ext in extensions
+            ]
+            conditions.append(
+                ext_conditions[0]
+                if len(ext_conditions) == 1
+                else BooleanGroup.or_(*ext_conditions)
+            )
+
+        where = None
+        if len(conditions) == 1:
+            where = conditions[0]
+        elif len(conditions) > 1:
+            where = BooleanGroup.and_(*conditions)
+
         statement = Select(
             source=Table(DOCUMENT_BLOBS_TABLE),
             projection=(Star(),),
             where=where,
             order_by=(OrderBy(col("doc_id")),),
+            limit=limit,
         )
         return executor.query(executor.compiler.compile(statement))
     finally:
@@ -72,15 +104,16 @@ def build_records(
     ids: set[str] | None = None,
     limit: int | None = None,
     existing: dict[str, dict[str, Any]] | None = None,
+    extensions: list[str] | None = None,
 ) -> list[dict[str, Any]]:
     """Read, decompress, verify, and shape fixture blobs for Parquet."""
 
-    rows = _fixture_rows(paths, ids)
-    if limit is not None:
-        if limit <= 0:
-            raise ValueError("limit must be positive")
-        rows = rows[:limit]
+    if limit is not None and limit <= 0:
+        raise ValueError("limit must be positive")
+    rows = _fixture_rows(paths, ids, limit=limit, extensions=extensions)
     records: list[dict[str, Any]] = []
+
+
     for row in rows:
         raw = decompress_payload(bytes(row["raw_payload"]))
         digest = hashlib.sha256(raw).hexdigest()

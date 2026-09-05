@@ -120,13 +120,15 @@ def find_document_cases(
     ids: list[str] | None = None,
     categories: list[str] | None = None,
     *,
+    extensions: list[str] | None = None,
     path: str | Path | None = None,
 ) -> list[dict[str, Any]]:
-    """Return deterministic corpus rows filtered by ID and review category."""
+    """Return deterministic corpus rows filtered by ID, category, and extension."""
 
     records = load_document_corpus(path)
     id_set = set(ids or ())
     category_set = {value.casefold() for value in categories or ()}
+    ext_set = {f".{ext.lstrip('.').casefold()}" for ext in extensions or ()}
     selected = [
         record
         for record in records
@@ -137,8 +139,18 @@ def find_document_cases(
                 category.casefold() for category in _record_categories(record)
             )
         )
+        and (
+            not ext_set
+            or any(
+                str(record.get("document_path", ""))
+                .casefold()
+                .endswith(expected_ext)
+                for expected_ext in ext_set
+            )
+        )
     ]
     return sorted(selected, key=lambda record: str(record["document_id"]))
+
 
 
 __all__ = [

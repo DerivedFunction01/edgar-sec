@@ -39,12 +39,14 @@ fixture first with the temporary script described below.
 Review artifacts can be generated directly from a fixture for the initial
 review, or from the tracked Parquet corpus for all subsequent comparisons.
 Each run contains per-document source/output/debug files and a
-`review_manifest.jsonl`.
+`review_manifest.jsonl`. Multiprocessing (`--workers` / `-j`) and progress
+tracking with `tqdm` are enabled by default.
 
 ```bash
 .venv/bin/python -m phases.025_webpage_storage.tools.build_document_review_artifacts \
   --fixture-id <fixture-id> \
   --limit 100 \
+  --workers 8 \
   --output .artifacts/test-runs/webpage_storage/document-reviews/<run-id>
 ```
 
@@ -56,6 +58,7 @@ After corpus promotion, use the corpus path instead:
   --limit 100 \
   --output .artifacts/test-runs/webpage_storage/document-reviews/<run-id>
 ```
+
 
 Each case may contain:
 

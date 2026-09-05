@@ -8,7 +8,7 @@ from pathlib import Path
 from defs.storage import atomic_write_text
 
 from ..testing.corpus import find_document_cases
-from ..testing.review import run_document_case, write_review_artifacts
+from ..testing.review import process_and_write_review_case
 
 
 def _ids(path: Path | None) -> list[str]:
@@ -37,17 +37,11 @@ def main(argv: list[str] | None = None) -> int:
         parser.error(f"unknown document ID(s): {', '.join(missing)}")
     sections = []
     for record in records:
-        result = run_document_case(record)
-        sections.append(
-            Path(args.output).parent / ".document-review-temp" / result.document_id
-        )
-        output_dir = sections[-1]
-        write_review_artifacts(
-            result,
-            output_dir,
-            expected_output=record.get("expected_output"),
-            expected_metadata=record.get("expected_metadata"),
-        )
+        doc_id = str(record["document_id"])
+        output_dir = Path(args.output).parent / ".document-review-temp" / doc_id
+        sections.append(output_dir)
+        process_and_write_review_case(record, output_dir)
+
     text = "\n\n".join(
         (path / f"{path.name}.txt").read_text(encoding="utf-8") for path in sections
     )

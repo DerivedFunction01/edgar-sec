@@ -45,26 +45,15 @@ class DefaultFilingProcessor(DocumentProcessor):
         self.router = router or FormRouter()
         self.normalizer = normalizer or DeepNormalizer(router=self.router)
 
-    async def process(
+    def build_processed_document(
         self,
-        raw_bytes: bytes,
+        preprocessed: PreprocessedDocument,
+        normalization: NormalizationResult,
         locator: DocumentLocator,
     ) -> ProcessedDocument:
-        """Process raw filing bytes through the normalization pipeline."""
-        # Stage 1: Generic Preprocessing
-        preprocessed = self.preprocessor.preprocess(
-            raw_bytes, metadata={"form": locator.form}
-        )
-
-        # Stage 2: Form Routing & Refetch Evaluation
+        """Construct canonical ProcessedDocument from completed preprocessing and normalization."""
         decision = self.router.evaluate(preprocessed, locator)
-
-        # Stage 3: Deep Normalization & Table Alignment
-        normalization = self.normalizer.normalize_result(
-            preprocessed, metadata={"form": locator.form}
-        )
         normalized_text = normalization.text
-
         output_payload = normalized_text.encode("utf-8")
 
         cover_boundary = normalization.cover_boundary
@@ -166,6 +155,25 @@ class DefaultFilingProcessor(DocumentProcessor):
             processor_fingerprint=self.processor_fingerprint,
             representation=self.representation,
         )
+
+    async def process(
+        self,
+        raw_bytes: bytes,
+        locator: DocumentLocator,
+    ) -> ProcessedDocument:
+        """Process raw filing bytes through the normalization pipeline."""
+        # Stage 1: Generic Preprocessing
+        preprocessed = self.preprocessor.preprocess(
+            raw_bytes, metadata={"form": locator.form}
+        )
+
+        # Stage 2 & 3: Deep Normalization & Table Alignment
+        normalization = self.normalizer.normalize_result(
+            preprocessed, metadata={"form": locator.form}
+        )
+
+        return self.build_processed_document(preprocessed, normalization, locator)
+
 
 
 __all__ = [

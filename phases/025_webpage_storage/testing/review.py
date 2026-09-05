@@ -2,10 +2,8 @@
 
 from __future__ import annotations
 
-import asyncio
 import dataclasses
 import hashlib
-import html
 import json
 from dataclasses import dataclass
 from pathlib import Path
@@ -57,13 +55,9 @@ def run_document_case(record: dict[str, Any]) -> DocumentCaseResult:
     normalization = processor.normalizer.normalize_result(
         preprocessed, metadata={"form": locator.form}
     )
-    processed = asyncio.run(processor.process(raw, locator))
-    normalized_text = processed.payload.decode("utf-8")
-    if normalized_text != normalization.text:
-        raise AssertionError(
-            f"production processor differs from captured normalization for "
-            f"{record['document_id']}"
-        )
+    processed = processor.build_processed_document(
+        preprocessed, normalization, locator
+    )
     return DocumentCaseResult(
         document_id=str(record["document_id"]),
         accession=str(record["accession"]),
@@ -74,6 +68,7 @@ def run_document_case(record: dict[str, Any]) -> DocumentCaseResult:
         normalization=normalization,
         processed=processed,
     )
+
 
 
 def stable_expected_metadata(result: DocumentCaseResult) -> dict[str, Any]:
@@ -119,7 +114,7 @@ def bounded_analysis(result: DocumentCaseResult) -> dict[str, Any]:
     return payload
 
 
-def _sanitized_html(source: str, normalized: str) -> str:
+def _sanitized_html(source: str) -> str:
     tree = parse_html(source)
     tree.strip_tags(("script", "style", "meta", "noscript"))
     for node in tree.traverse():
@@ -130,17 +125,7 @@ def _sanitized_html(source: str, normalized: str) -> str:
                 "action",
             }:
                 del node.raw_node.attrs[name]
-    rendered = str(tree)
-    return (
-        '<!doctype html>\n<meta charset="utf-8">\n'
-        "<title>Document review</title>\n"
-        "<style>body{display:grid;grid-template-columns:1fr 1fr;gap:1rem}"
-        "pre{white-space:pre-wrap;overflow:auto;border:1px solid #ccc;"
-        "padding:1rem}section{min-width:0}</style>\n"
-        f"<section><h2>Sanitized source rendering</h2>{rendered}</section>\n"
-        "<section><h2>Normalized output</h2><pre>"
-        f"{html.escape(normalized)}</pre></section>\n"
-    )
+    return str(tree)
 
 
 def write_review_artifacts(
@@ -167,29 +152,7 @@ def write_review_artifacts(
             json.loads(expected_metadata) if expected_metadata else None
         ),
     }
-    bundle = "\n".join(
-        (
-            "DOCUMENT REVIEW ARTIFACT",
-            f"ID: {case_id}",
-            f"Accession: {result.accession}",
-            f"Document: {result.document_path}",
-            f"Source SHA256: {result.source_sha256}",
-            f"Representation: {result.preprocessed.representation}",
-            "",
-            "=== ORIGINAL SOURCE ===",
-            result.source_text.rstrip(),
-            "",
-            "=== PREPROCESSED REPRESENTATION ===",
-            result.preprocessed.cleaned_text.rstrip(),
-            "",
-            "=== CURRENT NORMALIZED OUTPUT ===",
-            current.rstrip(),
-            "",
-            "=== PIPELINE DEBUG ===",
-            json.dumps(bounded_analysis(result), indent=2, sort_keys=True),
-        )
-    )
-    (output_dir / f"{case_id}.txt").write_text(bundle + "\n", encoding="utf-8")
+    (output_dir / f"{case_id}.txt").write_text(current + "\n", encoding="utf-8")
     (output_dir / f"{case_id}.analysis.json").write_text(
         json.dumps(bounded_analysis(result), indent=2, sort_keys=True) + "\n",
         encoding="utf-8",
@@ -199,7 +162,7 @@ def write_review_artifacts(
     )
     if result.document_path.casefold().endswith((".htm", ".html", ".xhtml")):
         (output_dir / f"{case_id}.html").write_text(
-            _sanitized_html(result.source_text, current), encoding="utf-8"
+            _sanitized_html(result.source_text), encoding="utf-8"
         )
 
     if expected_output is not None:
@@ -242,9 +205,24 @@ def write_review_artifacts(
     }
 
 
+def process_and_write_review_case(
+    record: dict[str, Any],
+    output_dir: Path,
+) -> dict[str, Any]:
+    """Execute processing for one document case, write its files, and return manifest entry."""
+    result = run_document_case(record)
+    return write_review_artifacts(
+        result,
+        output_dir,
+        expected_output=record.get("expected_output"),
+        expected_metadata=record.get("expected_metadata"),
+    )
+
+
 __all__ = [
     "DocumentCaseResult",
     "bounded_analysis",
+    "process_and_write_review_case",
     "run_document_case",
     "stable_expected_metadata",
     "write_review_artifacts",

@@ -22,6 +22,9 @@ promoter = importlib.import_module(
 expectation_promoter = importlib.import_module(
     "phases.025_webpage_storage.tools.promote_document_expectations"
 )
+review_builder = importlib.import_module(
+    "phases.025_webpage_storage.tools.build_document_review_artifacts"
+)
 
 
 def _record(
@@ -81,7 +84,9 @@ def test_document_review_artifacts_capture_current_output_and_debug(
     assert (tmp_path / "doc-1" / "doc-1.analysis.json").is_file()
     analysis = json.loads((tmp_path / "doc-1" / "doc-1.analysis.json").read_text())
     assert "source_text" not in analysis
-    assert "CURRENT NORMALIZED OUTPUT" in (tmp_path / "doc-1" / "doc-1.txt").read_text()
+    assert (
+        tmp_path / "doc-1" / "doc-1.txt"
+    ).read_text() == result.normalized_text + "\n"
 
 
 def test_document_review_html_artifact_is_sanitized(tmp_path: Path) -> None:
@@ -184,3 +189,72 @@ def test_corpus_path_version_validation_and_missing_lookup(tmp_path: Path) -> No
         paths_mod.document_corpus_path("corpus-one")
     with pytest.raises(FileNotFoundError):
         paths_mod.find_document_corpus("v99")
+
+
+def test_build_document_review_artifacts_parallel_and_sequential(
+    tmp_path: Path,
+) -> None:
+    corpus_path = tmp_path / "document_corpus.parquet"
+    _write_corpus(
+        corpus_path,
+        [
+            _record("doc-1", b"Doc 1 text\n"),
+            _record("doc-2", b"<html><body>Doc 2 HTML</body></html>", "doc2.htm"),
+            _record("doc-3", b"Doc 3 text\n"),
+        ],
+    )
+
+    out_parallel = tmp_path / "out_parallel"
+    ret = review_builder.main(
+        [
+            "--corpus",
+            str(corpus_path),
+            "--output",
+            str(out_parallel),
+            "--workers",
+            "2",
+            "--no-progress",
+        ]
+    )
+    assert ret == 0
+    manifest_lines = (out_parallel / "review_manifest.jsonl").read_text().splitlines()
+    assert len(manifest_lines) == 3
+    parsed = [json.loads(line) for line in manifest_lines]
+    assert [entry["document_id"] for entry in parsed] == ["doc-1", "doc-2", "doc-3"]
+    assert (out_parallel / "cases" / "doc-1" / "doc-1.txt").is_file()
+    assert (out_parallel / "cases" / "doc-2" / "doc-2.html").is_file()
+
+    out_sequential = tmp_path / "out_sequential"
+    ret_seq = review_builder.main(
+        [
+            "--corpus",
+            str(corpus_path),
+            "--output",
+            str(out_sequential),
+            "--workers",
+            "1",
+            "--limit",
+            "2",
+        ]
+    )
+    assert ret_seq == 0
+    manifest_seq = (out_sequential / "review_manifest.jsonl").read_text().splitlines()
+    assert len(manifest_seq) == 2
+
+    out_ext = tmp_path / "out_ext"
+    ret_ext = review_builder.main(
+        [
+            "--corpus",
+            str(corpus_path),
+            "--output",
+            str(out_ext),
+            "--ext",
+            "htm",
+            "--no-progress",
+        ]
+    )
+    assert ret_ext == 0
+    manifest_ext = (out_ext / "review_manifest.jsonl").read_text().splitlines()
+    assert len(manifest_ext) == 1
+    assert json.loads(manifest_ext[0])["document_id"] == "doc-2"
+
