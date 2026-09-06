@@ -846,9 +846,7 @@ def test_html_recipe_cache_rejects_mismatched_profile_and_falls_back() -> None:
     html_mod._RECIPE_REJECTED.clear()
     layout_a = (
         "<!-- PAGEBREAK --><html><body>"
-        + "".join(
-            f"<p align='center'>F-{n}</p><p>Body {n}.</p>" for n in range(1, 6)
-        )
+        + "".join(f"<p align='center'>F-{n}</p><p>Body {n}.</p>" for n in range(1, 6))
         + "</body></html>"
     )
     layout_a_tree = parse_html(layout_a)
@@ -863,8 +861,7 @@ def test_html_recipe_cache_rejects_mismatched_profile_and_falls_back() -> None:
     layout_b = (
         "<!-- PAGEBREAK --><html><body>"
         + "".join(
-            f"<div style='width:100%'><span>P-{n}</span>"
-            f"<p>Content {n}.</p></div>"
+            f"<div style='width:100%'><span>P-{n}</span><p>Content {n}.</p></div>"
             for n in range(1, 6)
         )
         + "</body></html>"
@@ -875,9 +872,7 @@ def test_html_recipe_cache_rejects_mismatched_profile_and_falls_back() -> None:
         layout_b_tree,
         source_text=layout_b,
     )
-    values = {
-        marker.page_number for marker in analysis.markers if marker.page_number
-    }
+    values = {marker.page_number for marker in analysis.markers if marker.page_number}
     assert values == {1, 2, 3, 4, 5}
     assert html_mod._RECIPE_REJECTED
     html_mod._RECIPE_CACHE.clear()

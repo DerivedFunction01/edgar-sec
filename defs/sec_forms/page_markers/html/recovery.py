@@ -165,8 +165,11 @@ def _recover_between_nodes(
     left_chain = _ancestor_chain(left_item["node"])
     right_ids = {_stable_id(item) for item in _ancestor_chain(right_item["node"])}
     lca_depth = next(
-        (depth for depth, ancestor in enumerate(left_chain)
-         if _stable_id(ancestor) in right_ids),
+        (
+            depth
+            for depth, ancestor in enumerate(left_chain)
+            if _stable_id(ancestor) in right_ids
+        ),
         None,
     )
     if lca_depth is None or lca_depth == 0:
@@ -198,7 +201,10 @@ def _recover_between_nodes(
         if namespace != run.namespace:
             return None
         explicit_break = _actual_break(node)
-        if not explicit_break and _context_signature(node, facts) not in anchor_signatures:
+        if (
+            not explicit_break
+            and _context_signature(node, facts) not in anchor_signatures
+        ):
             return None
         in_table, _ = _table_context(node)
         return {
@@ -236,7 +242,9 @@ def _recover_between_nodes(
             score = 0
             if "number" in roles:
                 score += 40
-            if any(alias in token for alias in ("pn", "pageno", "pagenum", "page-number")):
+            if any(
+                alias in token for alias in ("pn", "pageno", "pagenum", "page-number")
+            ):
                 score += 35
             if "break" in roles:
                 score += 25
@@ -244,7 +252,11 @@ def _recover_between_nodes(
                 score += 10
             return score
 
-        while stack and (budget > 0 or stack[-1][1] == len(spine_tags)) and not expected.issubset(emitted_values):
+        while (
+            stack
+            and (budget > 0 or stack[-1][1] == len(spine_tags))
+            and not expected.issubset(emitted_values)
+        ):
             current, depth = stack.pop()
             inner = getattr(current, "_node", current)
             child = getattr(inner, "child", None)
@@ -295,7 +307,9 @@ def _recover_between_nodes(
         window = _RECOVERY_EXPANSION * 2
         seen_hr: set[int] = set()
         for hr_index in hr_indices:
-            for index in range(max(0, hr_index - window), min(len(between), hr_index + window + 1)):
+            for index in range(
+                max(0, hr_index - window), min(len(between), hr_index + window + 1)
+            ):
                 if index in seen_hr or expected.issubset(emitted_values):
                     continue
                 seen_hr.add(index)

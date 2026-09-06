@@ -322,7 +322,9 @@ def _candidate_nodes(
     recipe_profile: frozenset[tuple[str, str]] | None = None,
 ) -> list[dict[str, Any]]:
     facts = facts or _NodeFacts()
-    recursive_nodes = _recursive_page_nodes(soup, ("font", "p", "div", "span", "td", "th", "b", "i", "a", "em"))
+    recursive_nodes = _recursive_page_nodes(
+        soup, ("font", "p", "div", "span", "td", "th", "b", "i", "a", "em")
+    )
     recipe_tags = tuple(sorted({tag for tag, _ in recipe_profile or ()}))
     if recipe_profile:
         hint_candidates, hint_fast_path = [], False
@@ -360,7 +362,11 @@ def _candidate_nodes(
     if not callable(finder):
         return [*hr_candidates, *table_candidates]
     candidates: list[dict[str, Any]] = []
-    tags = recipe_tags or strong_tags or ("font", "p", "div", "span", "td", "th", "b", "i", "a", "em")
+    tags = (
+        recipe_tags
+        or strong_tags
+        or ("font", "p", "div", "span", "td", "th", "b", "i", "a", "em")
+    )
     if recursive_nodes is not None:
         nodes = [
             node

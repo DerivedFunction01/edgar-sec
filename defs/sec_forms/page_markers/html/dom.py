@@ -131,6 +131,7 @@ def _hidden_self(node: object) -> bool:
     if "hidden" in attrs or str(attrs.get("aria-hidden", "")).casefold() == "true":
         return True
     from ..constants import _HIDDEN_STYLE_RE, _RE_HIDDEN_TEMPLATE
+
     return bool(
         _HIDDEN_STYLE_RE.search(str(attrs.get("style", "")))
         or _RE_HIDDEN_TEMPLATE.search(_attr_text(node))
@@ -139,6 +140,7 @@ def _hidden_self(node: object) -> bool:
 
 def _toc_self(node: object) -> bool:
     from ..constants import _RE_TOC_SEMANTIC
+
     return bool(_RE_TOC_SEMANTIC.search(_attr_text(node)))
 
 
@@ -211,6 +213,7 @@ def _has_element_child(node: object) -> bool:
 
 def _recursive_page_nodes(soup: object, tags: tuple[str, ...]) -> list[object] | None:
     from defs.text.html import FastHtmlNode
+
     finder = getattr(soup, "find_all", None)
     if not callable(finder):
         return None

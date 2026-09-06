@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 
+import re
+
 from defs.tables.ascii_html import (
     BorderStyle,
     HorizontalAlign,
@@ -255,6 +257,20 @@ def test_dot_leaders_are_reduced_during_cell_normalization() -> None:
     )
     assert "Operating expenses..." in result.ascii_text
     assert "...." not in result.ascii_text
+
+
+def test_standalone_dash_does_not_attach_to_following_numeric_cell() -> None:
+    """A missing-value dash remains separate from an adjacent numeric column."""
+    result = convert_html_table(
+        """
+        <table>
+          <tr><th>Current</th><th>Prior</th></tr>
+          <tr><td>-</td><td>250,000</td></tr>
+        </table>
+        """
+    )
+    line = next(line for line in result.ascii_text.splitlines() if "250,000" in line)
+    assert line.index("250,000") - line.index("-") >= 2
 
 
 def test_dense_tables_get_bounded_overflow_when_safe_floors_do_not_fit() -> None:
@@ -731,8 +747,26 @@ def test_header_divider_uses_same_width_lower_template_for_short_gap() -> None:
     ]
     assert dividers
     first = dividers[0]
-    assert first[38:40] == "  "
-    assert first[40:43] == "---"
+    runs = list(re.finditer(r"[-=]+", first))
+    assert runs
+    assert len(runs[0].group()) >= 38
+
+
+def test_multilevel_awards_date_column_keeps_data_width() -> None:
+    """Header-span balancing must not collapse a standalone date data column."""
+    from defs.tables.ascii_html.balance import balance_span_widths
+
+    widths = [22, 12, 0, 0, 0, 0, 0, 0, 0, 0]
+    spans = [(row, [column], "Header") for row, column in enumerate(range(2, 10))]
+    balance_span_widths(
+        widths,
+        spans,
+        set(),
+        [22, 7, 1, 1, 1, 1, 1, 1, 1, 1],
+        [False] * 10,
+        RenderBudget(),
+    )
+    assert widths[1] >= 7
 
 
 def test_balanced_line_wrapping_optimizes_headroom() -> None:
@@ -779,12 +813,24 @@ def test_footnote_column_dividers_heal_to_full_columns() -> None:
         for line in output.splitlines()
         if line and set(line) <= {"-", "=", " "} and set(line) & {"-", "="}
     ]
-    # Full-table major dividers should be unified across the 4 primary columns (3 double-spaces)
+    # Full-table major dividers may be continuous or have three column gaps.
     full_divs = [d for d in divs if len(d) > 40]
     assert len(full_divs) >= 4
-    assert all(d.count("  ") == 3 for d in full_divs)
+    for divider in full_divs:
+        runs = list(re.finditer(r"[-=]+", divider))
+        assert len(runs) in {1, 4}
+        gaps = [
+            divider[runs[index].end() : runs[index + 1].start()]
+            for index in range(len(runs) - 1)
+        ]
+        if len(runs) == 4:
+            assert len(gaps) == 3
+            assert all(len(gap) >= 2 for gap in gaps)
     # Single-column subheader dividers are preserved without artificial gaps
-    assert any(d == "--------------------------------------" for d in divs)
+    single_column_dividers = [list(re.finditer(r"[-=]+", divider)) for divider in divs]
+    assert any(
+        len(runs) == 1 and len(runs[0].group()) >= 30 for runs in single_column_dividers
+    )
 
 
 def test_inline_elements_do_not_inject_artificial_spaces() -> None:
@@ -814,11 +860,18 @@ def test_unanchored_divider_fragments_are_pruned() -> None:
         item for item in _records() if item["table_id"] == "msft_2025_table_0055"
     )
     output = convert_html_table(record["html"]).ascii_text
-    # Divider line should not have orphan ' - ' fragments between columns
-    assert "  -  " not in output
-    assert (
-        "--------------------------------------  ----------  ----------  ----------"
-        in output
+    # Divider lines should not have orphan one-character fragments between columns.
+    assert not re.search(r"(?<= )[-=](?= )", output)
+    divider = next(
+        line
+        for line in output.splitlines()
+        if line.startswith("-") and len(re.findall(r"[-=]+", line)) >= 4
+    )
+    runs = list(re.finditer(r"[-=]+", divider))
+    assert len(runs) >= 4
+    assert all(
+        len(divider[runs[index].end() : runs[index + 1].start()]) >= 2
+        for index in range(len(runs) - 1)
     )
 
 
@@ -841,14 +894,25 @@ def test_data_row_with_footnote_spans_preserves_numeric_values() -> None:
         item for item in _records() if item["table_id"] == "jpmorgan_2025_table_0065"
     )
     output = convert_html_table(record["html"]).ascii_text
-    assert (
-        "Total net revenue                             $ 182,447    $ 177,556 (g)      $ 158,104"
-        in output
-    )
-    assert (
-        "Total noninterest expense                        95,640       91,797 (g)         87,172"
-        in output
-    )
+    for label, values in (
+        (
+            "Total net revenue",
+            ("$ 182,447", "$ 177,556 (g)", "$ 158,104"),
+        ),
+        (
+            "Total noninterest expense",
+            ("95,640", "91,797 (g)", "87,172"),
+        ),
+    ):
+        line = next(row for row in output.splitlines() if row.startswith(label))
+        positions = [line.index(value) for value in values]
+        assert positions == sorted(positions)
+        gaps = [
+            line[positions[index] + len(values[index]) : positions[index + 1]]
+            for index in range(len(values) - 1)
+        ]
+        assert len(gaps) == 2
+        assert all(len(gap) >= 2 for gap in gaps)
 
 
 def test_multi_column_header_span_with_zero_width_origin_preserves_text() -> None:

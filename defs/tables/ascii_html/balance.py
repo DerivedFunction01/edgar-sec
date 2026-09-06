@@ -112,22 +112,11 @@ def balance_span_widths(
             continue
         donors = [c for c in range(len(widths)) if c not in header_columns]
         donors.sort(
-            key=lambda c: (
-                widths[c]
-                - (
-                    col_min_safe_widths[c]
-                    if col_is_numeric[c]
-                    else (38 if c == 0 else 1)
-                )
-            ),
+            key=lambda c: widths[c] - max(col_min_safe_widths[c], 38 if c == 0 else 0),
             reverse=True,
         )
         for donor in donors:
-            floor = (
-                col_min_safe_widths[donor]
-                if col_is_numeric[donor]
-                else (38 if donor == 0 else 1)
-            )
+            floor = max(col_min_safe_widths[donor], 38 if donor == 0 else 0)
             if widths[donor] > floor:
                 widths[donor] -= 1
                 widths[origin] = 1
@@ -218,7 +207,7 @@ def balance_span_widths(
 
                 remaining = amount
                 for col in donor_cols:
-                    floor = col_min_safe_widths[col] if col_is_numeric[col] else 1
+                    floor = max(col_min_safe_widths[col], 38 if col == 0 else 0)
                     movable = max(0, widths[col] - floor)
                     moved = min(remaining, movable)
                     widths[col] -= moved
@@ -246,7 +235,7 @@ def balance_span_widths(
             ):
                 if excess <= 0 or col in prefix_positions:
                     continue
-                floor = col_min_safe_widths[col] if col_is_numeric[col] else 1
+                floor = max(col_min_safe_widths[col], 38 if col == 0 else 0)
                 moved = min(excess, max(0, widths[col] - floor))
                 widths[col] -= moved
                 excess -= moved
@@ -268,25 +257,14 @@ def balance_span_widths(
         receiver_cols.sort(key=lambda c: widths[c], reverse=True)
         donors = [c for c in range(len(widths)) if c not in header_columns]
         donors.sort(
-            key=lambda c: (
-                widths[c]
-                - (
-                    col_min_safe_widths[c]
-                    if col_is_numeric[c]
-                    else (38 if c == 0 else 1)
-                )
-            ),
+            key=lambda c: widths[c] - max(col_min_safe_widths[c], 38 if c == 0 else 0),
             reverse=True,
         )
 
         for donor in donors:
             if deficit <= 0:
                 break
-            floor = (
-                col_min_safe_widths[donor]
-                if col_is_numeric[donor]
-                else (38 if donor == 0 else 1)
-            )
+            floor = max(col_min_safe_widths[donor], 38 if donor == 0 else 0)
             movable = max(0, widths[donor] - floor)
             moved = min(deficit, movable)
             widths[donor] -= moved

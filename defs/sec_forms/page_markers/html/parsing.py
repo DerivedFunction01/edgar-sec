@@ -35,10 +35,7 @@ def _parse_value(
         if value is None or value <= 0:
             return None
         namespace = "arabic" if value_text.isdigit() else "roman"
-        if (
-            namespace == "arabic"
-            and _YEAR_VALUE_MIN <= value <= _YEAR_VALUE_MAX
-        ):
+        if namespace == "arabic" and _YEAR_VALUE_MIN <= value <= _YEAR_VALUE_MAX:
             return None
         return value, namespace, candidate_template(text)
     if allow_letter_number:

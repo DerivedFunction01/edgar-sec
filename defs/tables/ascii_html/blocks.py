@@ -9,8 +9,10 @@ from defs.tables.ascii_html.columns import is_affix_footnote_token
 from defs.tables.ascii_html.model import HorizontalAlign, RenderBudget
 from defs.tables.tokens import (
     CLOSING_DELIMITERS,
+    PREFIX_SYMBOLS,
     is_numeric_cell,
     is_prefix_token,
+    is_range_marker,
     is_suffix_token,
 )
 
@@ -228,7 +230,11 @@ def fuse_data_affix_blocks(
                 if curr_is_prefix:
                     p_txt = curr_b.text.strip()
                     n_txt = next_b.text.strip()
-                    is_safe_p = not p_txt or is_prefix_token(p_txt)
+                    # A standalone hyphen is ambiguous: it may be a missing
+                    # value or range marker rather than a unary sign. Only
+                    # currency prefixes and an opening parenthesis are safe
+                    # to attach to the following numeric cell.
+                    is_safe_p = not p_txt or p_txt in PREFIX_SYMBOLS or p_txt == "("
                     is_safe_n = (
                         not n_txt
                         or is_numeric_cell(n_txt)
@@ -343,9 +349,16 @@ def fuse_empty_header_span_blocks(
                 in_same_h_span = any(
                     comb_cols.issubset(h_span) for h_span in header_spans
                 )
+                can_extend_value_band = len(curr_b.span_cols) > 1 or any(
+                    set(curr_b.span_cols) == h_span for h_span in header_spans
+                )
 
-                if is_empty_one and in_same_h_span:
+                if is_empty_one and in_same_h_span and can_extend_value_band:
                     active_b = next_b if not curr_b.text.strip() else curr_b
+                    if is_range_marker(active_b.text.strip()):
+                        fused.append(curr_b)
+                        b_idx += 1
+                        continue
                     combined_w = curr_b.width + budget.column_spacing + next_b.width
                     combined_span = curr_b.span_cols + next_b.span_cols
                     fused.append(

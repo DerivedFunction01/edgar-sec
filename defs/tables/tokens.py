@@ -22,7 +22,7 @@ SUFFIX_TOKENS = frozenset(
     {"%", "pt", "bps", "%)", "years", "year", "months", "month", "days", "day"}
     | CLOSING_DELIMITERS
 )
-PREFIX_TOKENS = frozenset({"(", "-"})
+PREFIX_TOKENS = frozenset({"("})
 RANGE_MARKERS = frozenset({"-", "–", "—", "−", "‒", "―", "to", "through", "thru"})
 
 

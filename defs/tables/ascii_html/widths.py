@@ -398,6 +398,7 @@ def compute_column_widths(
                         headroom -= can_expand
 
     if span_constraints:
+        pre_balance_widths = widths.copy()
         balance_span_widths(
             widths,
             span_constraints,
@@ -406,6 +407,8 @@ def compute_column_widths(
             col_is_numeric,
             budget,
         )
+        if widths and pre_balance_widths[0] > 0:
+            widths[0] = max(widths[0], pre_balance_widths[0])
 
     # 6. Generate diagnostics for cells exceeding column width
     for r_idx in range(num_rows):
