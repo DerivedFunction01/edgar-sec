@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 import re
-from collections import Counter
+from collections import Counter, OrderedDict
 from dataclasses import replace
 from itertools import pairwise
 from typing import Any
@@ -22,6 +22,7 @@ from .constants import (
     _RE_LETTER_NUMBER,
     _RE_TOC_SEMANTIC,
     _RE_TRAILING_NUMBER,
+    _RECIPE_PLATFORM_RE,
     _VALUE_RE,
     PROSE_GUARD_STOP_WORDS,
     page_hint_roles_for_attrs,
@@ -52,6 +53,10 @@ _FOOTER_MAX_CELLS = 8
 _FOOTER_CELL_TEXT_LIMIT = 200
 
 _LABEL_TAGS = ("font", "p", "div", "span", "td", "th", "b", "i", "a", "em")
+_RECIPE_CACHE_LIMIT = 512
+_RECIPE_VARIANTS_LIMIT = 4
+_RECIPE_CACHE: OrderedDict[str, list[frozenset[tuple[str, str]]]] = OrderedDict()
+_RECIPE_REJECTED: OrderedDict[tuple[str, int], None] = OrderedDict()
 _LABEL_TAG_PATTERN = build_alternation(_LABEL_TAGS)
 _RAW_LABEL_RE = re.compile(
     rf"(?is)<(?P<tag>{_LABEL_TAG_PATTERN})\b[^>]*>"
@@ -657,6 +662,45 @@ def _parse_value(
     return None
 
 
+def _html_recipe_signature(source_text: str) -> str:
+    """Return a bounded normalized generator/comment signature."""
+    for comment in re.findall(r"<!--(.*?)-->", source_text[:100_000], re.DOTALL):
+        flat = " ".join(comment.split())
+        if _RECIPE_PLATFORM_RE.search(flat):
+            return re.sub(r"\d+", "#", flat.casefold())[:96]
+    return ""
+
+
+def _recipe_fingerprint(profile: frozenset[tuple[str, str]]) -> int:
+    return hash(profile)
+
+
+def _recipe_learn(
+    signature: str,
+    markers: list[PageMarker],
+    candidates: list[dict[str, Any]],
+) -> None:
+    if not signature or len(markers) < 3:
+        return
+    paths = {marker.node_path for marker in markers if marker.node_path}
+    profile = frozenset(
+        (str(getattr(item["node"], "name", "")).casefold(), item.get("attr_text", ""))
+        for item in candidates
+        if item.get("path") in paths
+    )
+    if not profile:
+        return
+    variants = _RECIPE_CACHE.setdefault(signature, [])
+    if profile in variants:
+        variants.remove(profile)
+    else:
+        variants[:] = variants[-(_RECIPE_VARIANTS_LIMIT - 1) :]
+    variants.append(profile)
+    _RECIPE_CACHE.move_to_end(signature)
+    while len(_RECIPE_CACHE) > _RECIPE_CACHE_LIMIT:
+        _RECIPE_CACHE.popitem(last=False)
+
+
 def _table_context(node: object) -> tuple[bool, bool]:
     current: object | None = node
     while current is not None:
@@ -899,20 +943,32 @@ def _candidate_nodes(
     allow_letter_number: bool = True,
     source_text: str = "",
     facts: _NodeFacts | None = None,
+    recipe_profile: frozenset[tuple[str, str]] | None = None,
 ) -> list[dict[str, Any]]:
     facts = facts or _NodeFacts()
     recursive_nodes = _recursive_page_nodes(soup, _LABEL_TAGS)
-    hint_candidates, hint_fast_path = _hint_nodes(
-        soup, allow_letter_number=allow_letter_number, facts=facts
-    )
-    table_candidates = _table_footer_candidates(
-        soup, allow_letter_number=allow_letter_number, facts=facts
-    )
+    recipe_tags = tuple(sorted({tag for tag, _ in recipe_profile or ()}))
+    if recipe_profile:
+        # A learned recipe deliberately skips hint/table discovery; its
+        # candidate shape is validated below and failure falls back to full.
+        hint_candidates, hint_fast_path = [], False
+        table_candidates = []
+        hr_candidates = []
+    else:
+        hint_candidates, hint_fast_path = _hint_nodes(
+            soup, allow_letter_number=allow_letter_number, facts=facts
+        )
+        table_candidates = _table_footer_candidates(
+            soup, allow_letter_number=allow_letter_number, facts=facts
+        )
     # Hint fast path engages only on explicit number-role classes; break and
     # header/footer hints merge into the normal paths so documents with weak
     # hints never starve generic discovery.
     if hint_fast_path:
-        return _dedupe_candidates([*hint_candidates, *table_candidates])
+        result = _dedupe_candidates([*hint_candidates, *table_candidates])
+        for item in result:
+            item["attr_text"] = facts.attr_text(item["node"])
+        return result
     hr_candidates = (
         []
         if recursive_nodes is not None
@@ -936,7 +992,7 @@ def _candidate_nodes(
     if not callable(finder):
         return [*hr_candidates, *table_candidates]
     candidates: list[dict[str, Any]] = []
-    tags = strong_tags or _LABEL_TAGS
+    tags = recipe_tags or strong_tags or _LABEL_TAGS
     if recursive_nodes is not None:
         nodes = [
             node
@@ -956,6 +1012,8 @@ def _candidate_nodes(
         nodes = [*nodes[:head], *middle[::stride], *nodes[-tail:]]
     for node in nodes:
         tag_name = str(getattr(node, "name", "")).casefold()
+        if recipe_profile and (tag_name, facts.attr_text(node)) not in recipe_profile:
+            continue
         if tag_name in _CONTAINER_SKIP_TAGS and _has_element_child(node):
             # Occupied container: label discovery continues via its children,
             # and the innermost node becomes the marker candidate.
@@ -1030,9 +1088,12 @@ def _candidate_nodes(
                 "path": _node_path(node),
             }
         )
-    return _dedupe_candidates(
+    result = _dedupe_candidates(
         [*hr_candidates, *table_candidates, *hint_candidates, *candidates]
     )
+    for item in result:
+        item["attr_text"] = facts.attr_text(item["node"])
+    return result
 
 
 # Complement-interval analysis: uncovered source regions and neighbor-predicted
@@ -1206,15 +1267,40 @@ def enrich_html_analysis(
     )
     _flatten_recursive_pages(soup)
     facts = _NodeFacts()
-    candidates = _candidate_nodes(
-        soup,
-        allow_letter_number=allow_letter_number,
-        source_text=source_text,
-        facts=facts,
-    )
-    markers, decisions, runs, templates, unresolved = _validate_candidate_groups(
-        candidates, facts
-    )
+    signature = _html_recipe_signature(source_text)
+    candidates: list[dict[str, Any]] | None = None
+    if signature:
+        for profile in reversed(_RECIPE_CACHE.get(signature, ())):
+            fingerprint = _recipe_fingerprint(profile)
+            rejected_key = (signature, fingerprint)
+            if rejected_key in _RECIPE_REJECTED:
+                continue
+            targeted = _candidate_nodes(
+                soup,
+                allow_letter_number=allow_letter_number,
+                source_text=source_text,
+                facts=facts,
+                recipe_profile=profile,
+            )
+            trial = _validate_candidate_groups(targeted, facts)
+            if trial[0] and trial[2]:
+                candidates = targeted
+                markers, decisions, runs, templates, unresolved = trial
+                break
+            _RECIPE_REJECTED[rejected_key] = None
+            while len(_RECIPE_REJECTED) > _RECIPE_CACHE_LIMIT:
+                _RECIPE_REJECTED.popitem(last=False)
+    if candidates is None:
+        candidates = _candidate_nodes(
+            soup,
+            allow_letter_number=allow_letter_number,
+            source_text=source_text,
+            facts=facts,
+        )
+        markers, decisions, runs, templates, unresolved = _validate_candidate_groups(
+            candidates, facts
+        )
+        _recipe_learn(signature, markers, candidates)
     unresolved = [*base.unresolved, *unresolved]
     runs = unify_alternating_runs(runs)
     return _finalize_html_analysis(

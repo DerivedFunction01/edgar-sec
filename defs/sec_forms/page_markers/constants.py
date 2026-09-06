@@ -184,6 +184,32 @@ _PAGE_BREAK_VALUES = build_alternation(
     auto_escape=True,
 )
 
+# Filing-platform signature vocabulary for the layout-recipe memo. New
+# generators discovered by exploratory probes are appended here; the
+# alternation is compiled once. Matched against normalized leading HTML
+# comments (whitespace collapsed, digits replaced with '#').
+RECIPE_PLATFORM_WORDS = build_alternation(
+    [
+        "workiva",
+        "wdesk",
+        "webfilings",
+        "dfin",
+        "donnelley",
+        "broadridge",
+        "toppan",
+        "merrill",
+        "pagebreak",
+        "rule-page",
+        "rule_page",
+        "xbrlmaster",
+        "converter",
+        "field: page",
+        "field:rule-page",
+    ],
+    auto_escape=True,
+)
+_RECIPE_PLATFORM_RE = re.compile(rf"(?:{RECIPE_PLATFORM_WORDS})", re.IGNORECASE)
+
 # HTML page-hint vocabulary for attribute-based fast-path discovery.
 # Attribute values (class/id/name) and CSS property names are normalized by
 # lowercasing and stripping every non-alphanumeric character, then replacing

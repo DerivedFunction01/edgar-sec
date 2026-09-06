@@ -793,3 +793,101 @@ def test_ordinary_sec_form_references_not_removed() -> None:
     analysis = analyze_page_markers(text)
     assert not any(m.kind == PageMarkerKind.LETTER_NUMBER for m in analysis.markers)
     assert strip_page_markers(text, analysis) == text
+
+
+def _recipe_sample(signature_comment: str, value: int) -> str:
+    return (
+        f"<!-- {signature_comment} --><html><body>"
+        "<p align='center'>Intro page.</p>"
+        + "".join(
+            f"<p align='center'>F-{n}</p><p>Body {n} content.</p>"
+            for n in range(1, value + 1)
+        )
+        + "</body></html>"
+    )
+
+
+def test_html_recipe_cache_learns_and_reuses_signature_profile() -> None:
+    import defs.sec_forms.page_markers.html as html_mod
+
+    html_mod._RECIPE_CACHE.clear()
+    html_mod._RECIPE_REJECTED.clear()
+    first = _recipe_sample("Document created using Wdesk 1", 6)
+    first_tree = parse_html(first)
+    first_analysis = enrich_html_analysis(
+        analyze_page_markers(first, representation="html"),
+        first_tree,
+        source_text=first,
+    )
+    assert len(first_analysis.markers) >= 3
+    signature = html_mod._html_recipe_signature(first)
+    assert "wdesk" in signature
+    assert signature in html_mod._RECIPE_CACHE
+
+    second = _recipe_sample("Document created using Wdesk 1", 9)
+    second_tree = parse_html(second)
+    second_analysis = enrich_html_analysis(
+        analyze_page_markers(second, representation="html"),
+        second_tree,
+        source_text=second,
+    )
+    values = {
+        marker.page_number for marker in second_analysis.markers if marker.page_number
+    }
+    assert values == {1, 2, 3, 4, 5, 6, 7, 8, 9}
+    html_mod._RECIPE_CACHE.clear()
+    html_mod._RECIPE_REJECTED.clear()
+
+
+def test_html_recipe_cache_rejects_mismatched_profile_and_falls_back() -> None:
+    import defs.sec_forms.page_markers.html as html_mod
+
+    html_mod._RECIPE_CACHE.clear()
+    html_mod._RECIPE_REJECTED.clear()
+    layout_a = (
+        "<!-- PAGEBREAK --><html><body>"
+        + "".join(
+            f"<p align='center'>F-{n}</p><p>Body {n}.</p>" for n in range(1, 6)
+        )
+        + "</body></html>"
+    )
+    layout_a_tree = parse_html(layout_a)
+    enrich_html_analysis(
+        analyze_page_markers(layout_a, representation="html"),
+        layout_a_tree,
+        source_text=layout_a,
+    )
+    # Same platform signature but a different label shape; the learned
+    # profile must be rejected (memoized as such) and the full scan must
+    # still produce the complete marker set.
+    layout_b = (
+        "<!-- PAGEBREAK --><html><body>"
+        + "".join(
+            f"<div style='width:100%'><span>P-{n}</span>"
+            f"<p>Content {n}.</p></div>"
+            for n in range(1, 6)
+        )
+        + "</body></html>"
+    )
+    layout_b_tree = parse_html(layout_b)
+    analysis = enrich_html_analysis(
+        analyze_page_markers(layout_b, representation="html"),
+        layout_b_tree,
+        source_text=layout_b,
+    )
+    values = {
+        marker.page_number for marker in analysis.markers if marker.page_number
+    }
+    assert values == {1, 2, 3, 4, 5}
+    assert html_mod._RECIPE_REJECTED
+    html_mod._RECIPE_CACHE.clear()
+    html_mod._RECIPE_REJECTED.clear()
+
+
+def test_recipe_platform_vocabulary_compiles_from_constants() -> None:
+    from defs.sec_forms.page_markers.constants import _RECIPE_PLATFORM_RE
+
+    assert _RECIPE_PLATFORM_RE.search("Document created using Wdesk 1")
+    assert _RECIPE_PLATFORM_RE.search("PAGEBREAK")
+    assert _RECIPE_PLATFORM_RE.search("Field: Rule-Page")
+    assert not _RECIPE_PLATFORM_RE.search("random prose comment")
