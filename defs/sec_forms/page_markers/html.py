@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import re
+from collections import Counter
 from dataclasses import replace
 from itertools import pairwise
 from typing import Any
@@ -11,20 +12,19 @@ from defs.regex import build_alternation
 from defs.tables.numeric_cells import CURRENCY_TOKEN_RE, is_financial_placeholder
 from defs.tables.tokens import is_numeric_cell
 from defs.text.dates import contains_date
+from defs.text.html import FastHtmlNode
 
 from .candidates import roman_to_int
 from .constants import (
     _HIDDEN_STYLE_RE,
-    _PAGE_BREAK_AVOID_RE,
-    _PAGE_BREAK_RE,
     _RE_HIDDEN_TEMPLATE,
     _RE_LEADING_NUMBER,
     _RE_LETTER_NUMBER,
-    _RE_PAGE_SEMANTIC,
     _RE_TOC_SEMANTIC,
     _RE_TRAILING_NUMBER,
     _VALUE_RE,
     PROSE_GUARD_STOP_WORDS,
+    page_hint_roles_for_attrs,
 )
 from .layout import candidate_template
 from .models import (
@@ -353,7 +353,7 @@ class _NodeFacts:
         cached = self._semantic_cache.get(node_id)
         if cached is None:
             cached = self._semantic_cache[node_id] = bool(
-                _RE_PAGE_SEMANTIC.search(self.attr_text(node))
+                page_hint_roles_for_attrs(_attrs(node))
             )
         return cached
 
@@ -395,8 +395,7 @@ def _toc_self(node: object) -> bool:
 
 
 def _break_self(node: object) -> bool:
-    style = str(_attrs(node).get("style", ""))
-    return bool(_PAGE_BREAK_RE.search(style) and not _PAGE_BREAK_AVOID_RE.search(style))
+    return "break" in page_hint_roles_for_attrs(_attrs(node))
 
 
 def _hidden(node: object) -> bool:
@@ -409,7 +408,7 @@ def _hidden(node: object) -> bool:
 
 
 def _semantic(node: object) -> bool:
-    return bool(_RE_PAGE_SEMANTIC.search(_attr_text(node)))
+    return bool(page_hint_roles_for_attrs(_attrs(node)))
 
 
 def _toc_node(node: object) -> bool:
@@ -435,6 +434,9 @@ def _actual_break(node: object) -> bool:
 # extraction on occupied element containers avoids re-walking the same
 # subtree once per wrapper. Label-carrier tags (p, td, th, font, b, i, a,
 # em) keep deep extraction.
+_MAX_GENERIC_NODES = 24_000
+_GENERIC_HEAD_FRACTION = 0.6
+_MIDDLE_STRIDE_BUDGET = 8_000
 _CONTAINER_SKIP_TAGS = frozenset(
     {"div", "span", "section", "table", "tbody", "thead", "tfoot", "tr", "center"}
 )
@@ -457,6 +459,74 @@ def _has_element_child(node: object) -> bool:
         except TypeError:
             return False
     return False
+
+
+def _recursive_page_nodes(soup: object, tags: tuple[str, ...]) -> list[object] | None:
+    """Return bounded edge nodes for recursively nested ``<page>`` trees.
+
+    Some legacy filings nest every later page inside the previous ``page``
+    element. A global tag scan repeatedly extracts the text of all ancestors.
+    Leaf-page prefix/suffix windows retain header/footer discovery while
+    avoiding the recursive body walk. ``None`` means the topology is not
+    confidently recursive and callers should use the normal scan.
+    """
+    finder = getattr(soup, "find_all", None)
+    if not callable(finder):
+        return None
+    pages = finder("page")
+    if len(pages) < 4:
+        return None
+    selected: list[object] = []
+    seen: set[int] = set()
+    pages_with_content = 0
+    for page in pages:
+        inner = getattr(page, "_node", page)
+        child = getattr(inner, "child", None)
+        page_nodes: list[object] = []
+        while child is not None:
+            tag = getattr(child, "tag", None)
+            if isinstance(tag, str) and tag not in {"-text", "-comment", "page"}:
+                page_nodes.extend(FastHtmlNode(child).find_all(list(tags)))
+            child = getattr(child, "next", None)
+        if page_nodes:
+            pages_with_content += 1
+            for node in [*page_nodes[:12], *page_nodes[-12:]]:
+                node_id = _stable_id(node)
+                if node_id not in seen:
+                    seen.add(node_id)
+                    selected.append(node)
+    if pages_with_content < 3:
+        return None
+    return selected
+
+
+def _flatten_recursive_pages(soup: object) -> bool:
+    """Unwrap nested page wrappers that carry no presentation attributes.
+
+    Legacy filings sometimes encode every later page as a child of the prior
+    ``<page>`` element. That makes every ancestor text query revisit the whole
+    remaining document. Page wrappers are structural-only in this format, so
+    flatten them before discovery while retaining all content nodes.
+    """
+    finder = getattr(soup, "find_all", None)
+    if not callable(finder):
+        return False
+    pages = finder("page")
+    if len(pages) < 4:
+        return False
+    nested = any(
+        str(getattr(_parent(page), "name", "")).casefold() == "page" for page in pages
+    )
+    if not nested:
+        return False
+    for page in reversed(pages):
+        attrs = getattr(page, "attrs", {})
+        if attrs:
+            continue
+        unwrap = getattr(page, "unwrap", None)
+        if callable(unwrap):
+            unwrap()
+    return True
 
 
 def _sibling_signature(node: object, facts: _NodeFacts) -> str | None:
@@ -524,10 +594,28 @@ def _group_is_toc_like(ordered: list[dict[str, Any]], facts: _NodeFacts) -> bool
     return len(set(signatures)) / len(signatures) > 0.6
 
 
+_HAS_LABEL_SHAPE_RE = re.compile(r"\d|^[ivxlcdm]+$", re.IGNORECASE)
+
+# Real documents never have ~2000 physical pages, so an arabic value in the
+# calendar-year range is a heading, column period, or prose lead-in ("2015
+# compared to 2014"), not a page number. Reject it before any grouping so
+# year lookalikes cannot validate as page-marker runs.
+_YEAR_VALUE_MIN = 1900
+_YEAR_VALUE_MAX = 2100
+
+
 def _parse_value(
     text: str, *, allow_letter_number: bool = True
 ) -> tuple[int, str, str] | None:
-    cleaned = " ".join(text.split())
+    if len(text) > 80 and not any(char.isdigit() for char in text):
+        # Long digit-free text cannot parse as a label; skip the expensive
+        # normalization (roman candidates are short by definition).
+        return None
+    parts = text.split()
+    if not parts:
+        return None
+    cleaned = " ".join(parts)
+    word_count = len(parts)
     match = _VALUE_RE.fullmatch(cleaned)
     if match is not None:
         value_text = match.group("value") or match.group("wrapped")
@@ -535,17 +623,36 @@ def _parse_value(
         if value is None or value <= 0:
             return None
         namespace = "arabic" if value_text.isdigit() else "roman"
+        if (
+            namespace == "arabic"
+            and _YEAR_VALUE_MIN <= value <= _YEAR_VALUE_MAX
+        ):
+            return None
         return value, namespace, candidate_template(text)
     if allow_letter_number:
         letter_match = _RE_LETTER_NUMBER.fullmatch(cleaned)
         if letter_match is not None and (value := int(letter_match.group("page"))) > 0:
             return value, letter_match.group("prefix").upper(), candidate_template(text)
-    if len(cleaned.split()) <= 6:
+    if word_count <= 6:
         match_lead = _RE_LEADING_NUMBER.match(cleaned)
-        if match_lead is not None and (val := int(match_lead.group("value"))) > 0:
+        if (
+            match_lead is not None
+            and _YEAR_VALUE_MIN
+            <= (val := int(match_lead.group("value")))
+            <= _YEAR_VALUE_MAX
+        ):
+            return None
+        if match_lead is not None and val > 0:
             return val, "arabic", candidate_template(text)
         match_trail = _RE_TRAILING_NUMBER.match(cleaned)
-        if match_trail is not None and (val := int(match_trail.group("value"))) > 0:
+        if (
+            match_trail is not None
+            and _YEAR_VALUE_MIN
+            <= (val := int(match_trail.group("value")))
+            <= _YEAR_VALUE_MAX
+        ):
+            return None
+        if match_trail is not None and val > 0:
             return val, "arabic", candidate_template(text)
     return None
 
@@ -681,6 +788,111 @@ def _hr_candidate_nodes(
     return candidates
 
 
+_HINT_MIN_ROLE_NODES = 3
+
+
+def _node_hint_roles(node: object) -> tuple[str, ...]:
+    """Resolve page-hint roles from one node's attributes via the shared table."""
+
+    return page_hint_roles_for_attrs(_attrs(node))
+
+
+def _hint_nodes(
+    soup: object,
+    *,
+    allow_letter_number: bool = True,
+    facts: _NodeFacts,
+) -> tuple[list[dict[str, Any]], bool]:
+    """Emit candidates from nodes carrying page-hint classes/ids.
+
+    Attribute values are normalized (lowercase, separators stripped, digit
+    runs collapsed) and resolved against the shared hint-alias table. Roles:
+    ``number`` nodes are direct label candidates; ``break`` nodes are break
+    candidates with bounded neighbor label probes; ``header``/``footer`` nodes
+    are furniture candidates. Returns [] when fewer than three hint nodes of
+    any single role exist, leaving discovery to the existing paths.
+    """
+    finder = getattr(soup, "find_all", None)
+    if not callable(finder):
+        return [], False
+    try:
+        attr_nodes = finder(True, attrs={"class": True})
+    except TypeError:
+        attr_nodes = finder(True)
+    role_counts: Counter[str] = Counter()
+    role_nodes: dict[str, list[tuple[object, tuple[str, ...]]]] = {}
+    for node in attr_nodes:
+        roles = _node_hint_roles(node)
+        if not roles:
+            continue
+        for role in roles:
+            role_counts[role] += 1
+            role_nodes.setdefault(role, []).append((node, roles))
+    if not any(count >= _HINT_MIN_ROLE_NODES for count in role_counts.values()):
+        return [], False
+    # Only explicit number-role classes justify skipping the generic scan;
+    # break/header/footer hints merge into the normal paths instead.
+    fast_path = role_counts.get("number", 0) >= _HINT_MIN_ROLE_NODES
+    candidates: list[dict[str, Any]] = []
+    seen: set[int] = set()
+
+    def emit(node: object, *, roles: tuple[str, ...], actual_break: bool) -> None:
+        node_id = _stable_id(node)
+        if node_id in seen:
+            return
+        if facts.hidden(node) or facts.toc(node):
+            return
+        text = facts.node_text(node)
+        if not text or len(text) > 80:
+            return
+        parsed = _parse_value(text, allow_letter_number=allow_letter_number)
+        if parsed is None:
+            return
+        value, namespace, template = parsed
+        seen.add(node_id)
+        in_table, _ = _table_context(node)
+        candidates.append(
+            {
+                "node": node,
+                "value": value,
+                "namespace": namespace,
+                "template": template,
+                "text": text,
+                "explicit": True,
+                "actual_break": actual_break,
+                "table_footer": in_table,
+                "path": _node_path(node),
+                "hint_roles": roles,
+            }
+        )
+
+    for node, roles in role_nodes.get("number", []):
+        emit(node, roles=roles, actual_break=False)
+    for node, roles in role_nodes.get("break", []):
+        if "number" in roles:
+            emit(node, roles=roles, actual_break=True)
+            continue
+        # Break nodes are boundaries, not labels; probe adjacent label text.
+        for method_name in ("find_previous_sibling", "find_next_sibling"):
+            meaningful = 0
+            curr = getattr(node, method_name, lambda: None)()
+            while curr is not None and meaningful < 2:
+                text = facts.node_text(curr)
+                if text:
+                    meaningful += 1
+                if text and len(text) <= 80:
+                    parsed = _parse_value(text, allow_letter_number=allow_letter_number)
+                    if parsed is not None:
+                        emit(curr, roles=roles, actual_break=True)
+                curr = getattr(curr, method_name, lambda: None)()
+    for role in ("header", "footer"):
+        for node, roles in role_nodes.get(role, []):
+            if any(other in roles for other in ("number", "break")):
+                continue
+            emit(node, roles=roles, actual_break=False)
+    return candidates, fast_path
+
+
 def _candidate_nodes(
     soup: object,
     *,
@@ -689,14 +901,30 @@ def _candidate_nodes(
     facts: _NodeFacts | None = None,
 ) -> list[dict[str, Any]]:
     facts = facts or _NodeFacts()
-    hr_candidates = _hr_candidate_nodes(
+    recursive_nodes = _recursive_page_nodes(soup, _LABEL_TAGS)
+    hint_candidates, hint_fast_path = _hint_nodes(
         soup, allow_letter_number=allow_letter_number, facts=facts
     )
     table_candidates = _table_footer_candidates(
         soup, allow_letter_number=allow_letter_number, facts=facts
     )
+    # Hint fast path engages only on explicit number-role classes; break and
+    # header/footer hints merge into the normal paths so documents with weak
+    # hints never starve generic discovery.
+    if hint_fast_path:
+        return _dedupe_candidates([*hint_candidates, *table_candidates])
+    hr_candidates = (
+        []
+        if recursive_nodes is not None
+        else _hr_candidate_nodes(
+            soup, allow_letter_number=allow_letter_number, facts=facts
+        )
+    )
     strong_tags = _raw_label_tags(source_text) if source_text else None
-    seen = {_stable_id(item["node"]) for item in [*hr_candidates, *table_candidates]}
+    seen = {
+        _stable_id(item["node"])
+        for item in [*hr_candidates, *table_candidates, *hint_candidates]
+    }
     # Generic scan gating: strong labels justify a targeted (or broad) scan.
     # Bare-digit documents with a verified footer-table family skip it; bare
     # digits alone never justify it. HR-adjacent evidence keeps the broad scan.
@@ -709,7 +937,24 @@ def _candidate_nodes(
         return [*hr_candidates, *table_candidates]
     candidates: list[dict[str, Any]] = []
     tags = strong_tags or _LABEL_TAGS
-    for node in finder(tags):
+    if recursive_nodes is not None:
+        nodes = [
+            node
+            for node in recursive_nodes
+            if str(getattr(node, "name", "")).casefold() in tags
+        ]
+    else:
+        nodes = finder(tags)
+    if len(nodes) > _MAX_GENERIC_NODES:
+        head = int(_MAX_GENERIC_NODES * _GENERIC_HEAD_FRACTION)
+        tail = _MAX_GENERIC_NODES - head
+        # Large documents: probe front/back windows fully and stride-hop the
+        # middle (footers repeat every few hundred nodes, so coarse sampling
+        # retains them) instead of walking every node.
+        middle = nodes[head:-tail]
+        stride = max(1, len(middle) // _MIDDLE_STRIDE_BUDGET)
+        nodes = [*nodes[:head], *middle[::stride], *nodes[-tail:]]
+    for node in nodes:
         tag_name = str(getattr(node, "name", "")).casefold()
         if tag_name in _CONTAINER_SKIP_TAGS and _has_element_child(node):
             # Occupied container: label discovery continues via its children,
@@ -717,7 +962,13 @@ def _candidate_nodes(
             continue
         if facts.hidden(node) or facts.toc(node):
             continue
-        text = facts.node_text(node)
+        # Most repeated page labels are leaf-like nodes whose text is directly
+        # attached to the candidate element.  Avoid flattening the entire
+        # subtree (often thousands of content nodes) before checking the label.
+        # Nested labels still use the existing recursive extraction fallback.
+        text = _raw_shallow_text(node)
+        if not text:
+            text = facts.node_text(node)
         if not text or len(text) > 80:
             continue
         parsed = _parse_value(text, allow_letter_number=allow_letter_number)
@@ -730,9 +981,11 @@ def _candidate_nodes(
             and parent_name not in {"table", "tbody", "thead", "tfoot", "tr"}
             and parent_name not in _CONTAINER_SKIP_TAGS
             and _parse_value(
-                facts.node_text(parent), allow_letter_number=allow_letter_number
+                parent_text := facts.node_text(parent),
+                allow_letter_number=allow_letter_number,
             )
             == parsed
+            and len(parent_text) <= 240
             and not (
                 strong_tags
                 and tag_name in strong_tags
@@ -777,7 +1030,9 @@ def _candidate_nodes(
                 "path": _node_path(node),
             }
         )
-    return [*hr_candidates, *table_candidates, *candidates]
+    return _dedupe_candidates(
+        [*hr_candidates, *table_candidates, *hint_candidates, *candidates]
+    )
 
 
 # Complement-interval analysis: uncovered source regions and neighbor-predicted
@@ -785,6 +1040,10 @@ def _candidate_nodes(
 # requires two independent signals (sequence prediction + literal source hit
 # with matching tag context) and never authorizes removal.
 _RECOVERY_MAX_GAP = 64
+_RECOVERY_STRIDE_TARGET = 400
+_RECOVERY_EXPANSION = 6
+# Node-visit budget for the depth-bounded route DFS during gap recovery.
+_RECOVERY_ROUTE_BUDGET = 256
 _REGION_LETTER_RE = re.compile(r"(?i)(?:^|[>\s])[a-z]\s*[-\u2013\u2014]\s*\d{1,4}\b")
 _REGION_PAGE_RE = re.compile(r"(?i)(?:^|[>\s])page\s*\d{1,4}\b")
 _REGION_DIGIT_RE = re.compile(r"(?:^|[>\s])\d{1,4}(?=[\s<]|$)")
@@ -921,6 +1180,18 @@ def _recover_run_gaps(
     return tuple(boundaries)
 
 
+def _dedupe_candidates(candidates: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    seen: set[int] = set()
+    deduped: list[dict[str, Any]] = []
+    for item in candidates:
+        node_id = _stable_id(item["node"])
+        if node_id in seen:
+            continue
+        seen.add(node_id)
+        deduped.append(item)
+    return deduped
+
+
 def enrich_html_analysis(
     analysis: PageMarkerAnalysis | None,
     soup: object,
@@ -933,14 +1204,44 @@ def enrich_html_analysis(
     base = analysis or PageMarkerAnalysis(
         (), (), (), representation="html", source_text=source_text
     )
+    _flatten_recursive_pages(soup)
     facts = _NodeFacts()
-    groups: dict[tuple[str, str, str, str], list[dict[str, Any]]] = {}
-    for item in _candidate_nodes(
+    candidates = _candidate_nodes(
         soup,
         allow_letter_number=allow_letter_number,
         source_text=source_text,
         facts=facts,
-    ):
+    )
+    markers, decisions, runs, templates, unresolved = _validate_candidate_groups(
+        candidates, facts
+    )
+    unresolved = [*base.unresolved, *unresolved]
+    runs = unify_alternating_runs(runs)
+    return _finalize_html_analysis(
+        base,
+        source_text,
+        facts,
+        candidates,
+        markers,
+        decisions,
+        runs,
+        templates,
+        unresolved,
+    )
+
+
+def _validate_candidate_groups(
+    candidates: list[dict[str, Any]], facts: _NodeFacts
+) -> tuple[
+    list[PageMarker],
+    list[PageMarkerDecision],
+    list[PageNumberRun],
+    list[TemplateEvidence],
+    list[str],
+]:
+    """Group candidates, split value sections, and validate each independently."""
+    groups: dict[tuple[str, str, str, str], list[dict[str, Any]]] = {}
+    for item in candidates:
         tag = str(getattr(item["node"], "name", "")).casefold()
         key = (
             tag,
@@ -954,7 +1255,7 @@ def enrich_html_analysis(
     decisions: list[PageMarkerDecision] = []
     runs: list[PageNumberRun] = []
     templates: list[TemplateEvidence] = []
-    unresolved = list(base.unresolved)
+    unresolved: list[str] = []
     for members in groups.values():
         ordered_all = sorted(members, key=lambda item: item["path"])
         # Repeated namespaces (exhibit sections, TOC indices) restart values.
@@ -968,7 +1269,17 @@ def enrich_html_analysis(
                 sections.append([item])
         for ordered in sections:
             values = [item["value"] for item in ordered]
-            valid = len(ordered) >= 3 and monotone_fraction(values, max_delta=3) >= 0.8
+            values_monotone = monotone_fraction(values, max_delta=3) >= 0.8
+            valid = len(ordered) >= 3 and values_monotone
+            if (
+                not valid
+                and len(ordered) >= 2
+                and values_monotone
+                and all(item["actual_break"] for item in ordered)
+            ):
+                # Every member carries explicit page-break semantics; a short
+                # monotone section of such nodes is still strong evidence.
+                valid = True
             if valid and _group_is_toc_like(ordered, facts):
                 # TOC rows pair each number with unique prose titles, while
                 # genuine page footers repeat the same neighboring furniture.
@@ -1053,7 +1364,395 @@ def enrich_html_analysis(
                     )
                 )
 
-    runs = unify_alternating_runs(runs)
+    return markers, decisions, runs, templates, unresolved
+
+
+def _ancestor_chain(node: object) -> list[object]:
+    chain: list[object] = []
+    current: object | None = node
+    while current is not None:
+        chain.append(current)
+        current = _parent(current)
+    return chain
+
+
+def _raw_shallow_text(inner: object) -> str:
+    getter = getattr(inner, "text", None)
+    if not callable(getter):
+        return ""
+    try:
+        return str(getter(deep=False, separator=" ", strip=True))
+    except TypeError:
+        try:
+            return str(getter())
+        except Exception:  # noqa: BLE001
+            return ""
+
+
+def _sibling_range(
+    left_item: dict[str, Any], right_item: dict[str, Any]
+) -> list[object] | None:
+    """Return wrapper-level nodes strictly between the two confirmed nodes.
+
+    Walks both ancestor chains to the lowest common ancestor and collects the
+    LCA's children between the two chain branches (case 1: markers are direct
+    siblings; case 2: the branches are repeated page containers).
+    """
+    lchain = _ancestor_chain(left_item["node"])
+    rchain = _ancestor_chain(right_item["node"])
+    rids = {_stable_id(item) for item in rchain}
+    lca_depth = None
+    for depth, ancestor in enumerate(lchain):
+        if _stable_id(ancestor) in rids:
+            lca_depth = depth
+            break
+    if lca_depth is None or lca_depth == 0:
+        return None
+    lca = lchain[lca_depth]
+    rca_depth = next(
+        depth
+        for depth, ancestor in enumerate(rchain)
+        if _stable_id(ancestor) == _stable_id(lca)
+    )
+    if lca_depth == 0 or rca_depth == 0:
+        return None
+    left_branch = lchain[lca_depth - 1]
+    right_branch = rchain[rca_depth - 1]
+    if _stable_id(left_branch) == _stable_id(right_branch):
+        return None
+    inner_lca = getattr(lca, "_node", lca)
+    inner_left = getattr(left_branch, "_node", left_branch)
+    inner_right = getattr(right_branch, "_node", right_branch)
+    left_id = getattr(inner_left, "mem_id", None)
+    right_id = getattr(inner_right, "mem_id", None)
+    between: list[object] = []
+    child = getattr(inner_lca, "child", None)
+    if child is not None and left_id is not None and right_id is not None:
+        active = False
+        while child is not None:
+            child_id = getattr(child, "mem_id", None)
+            if child_id == left_id:
+                active = True
+            elif child_id == right_id:
+                break
+            elif active and getattr(child, "tag", None) not in (
+                None,
+                "-text",
+                "-comment",
+            ):
+                between.append(FastHtmlNode(child))
+            child = getattr(child, "next", None)
+        return between
+    contents = getattr(lca, "contents", ())
+    active = False
+    for element in contents:
+        if element is left_branch:
+            active = True
+        elif element is right_branch:
+            break
+        elif active and getattr(element, "name", None):
+            between.append(element)
+    return between
+
+
+def _adjacent_sibling_tag(inner: object, step: str) -> str:
+    current = getattr(inner, step, None)
+    while current is not None:
+        tag = getattr(current, "tag", None) or getattr(current, "name", None)
+        if isinstance(tag, str) and tag not in {"-text", "-comment"}:
+            return tag.casefold()
+        current = getattr(current, step, None)
+    return ""
+
+
+def _context_signature(node: object, facts: _NodeFacts) -> tuple:
+    """Shape-based local signature: structure only, never text content.
+
+    Body text differs on every page, so signature equality is computed from
+    the parent tag, the node's own tag and normalized attributes, the
+    adjacent sibling tags, and whether the node carries a digit. Nodes from
+    a different generator context (headings, TOC cells) fail the comparison
+    against confirmed footer/header anchors and stay inferred-only.
+    """
+    inner = getattr(node, "_node", node)
+    parent = _parent(node)
+    text = facts.node_text(node)
+    return (
+        str(getattr(parent, "name", "")).casefold() if parent is not None else "",
+        str(getattr(node, "name", "")).casefold(),
+        facts.attr_text(node),
+        _adjacent_sibling_tag(inner, "prev"),
+        _adjacent_sibling_tag(inner, "next"),
+        bool(re.search(r"\d", text)),
+    )
+
+
+def _recover_between_nodes(
+    left_item: dict[str, Any],
+    right_item: dict[str, Any],
+    run: PageNumberRun,
+    facts: _NodeFacts,
+    expected: set[int],
+) -> list[dict[str, Any]]:
+    """Locate missing label nodes between two confirmed anchors.
+
+    Stride-samples the LCA sibling range; on any hit, expands to neighboring
+    siblings. Nodes not matching the confirmed marker's route spine are
+    skipped without deep text extraction. Recovered nodes are candidate
+    dicts and still pass full group/section/TOC validation afterwards.
+    """
+    between = _sibling_range(left_item, right_item)
+    if not between:
+        return []
+    # Route spine from the LCA branch down to the confirmed marker node.
+    left_chain = _ancestor_chain(left_item["node"])
+    right_ids = {_stable_id(item) for item in _ancestor_chain(right_item["node"])}
+    lca_depth = next(
+        (depth for depth, ancestor in enumerate(left_chain)
+         if _stable_id(ancestor) in right_ids),
+        None,
+    )
+    if lca_depth is None or lca_depth == 0:
+        return []
+    spine: list[str] = []
+    current = left_item["node"]
+    branch_id = _stable_id(left_chain[lca_depth - 1])
+    while current is not None:
+        current_id = _stable_id(current)
+        spine.append(str(getattr(current, "name", "")).casefold())
+        if current_id == branch_id:
+            break
+        current = _parent(current)
+    spine.reverse()  # [branch, ..., marker]
+    spine_tags = spine[1:]
+
+    def try_emit(node: object, roles_check: bool = True) -> dict[str, Any] | None:
+        if roles_check and (facts.hidden(node) or facts.toc(node)):
+            return None
+        # Shallow-first: leaf-like page labels keep their text directly on the
+        # candidate element, so the cheap non-recursive extraction answers the
+        # common case without flattening content subtrees. Deep extraction
+        # only runs when no shallow text exists (nested-span labels).
+        text = _raw_shallow_text(node)
+        if not text:
+            text = facts.node_text(node)
+        if not text or len(text) > 80:
+            return None
+        parsed = _parse_value(text, allow_letter_number=True)
+        if parsed is None or parsed[0] not in expected:
+            return None
+        value, namespace, template = parsed
+        if namespace != run.namespace:
+            return None
+        # Signature gate: the recovered node must share the confirmed
+        # anchors' structural context, otherwise it is a lookalike (heading,
+        # TOC reference) and stays inferred-only rather than strippable.
+        # Explicit page-break semantics bypass the gate: a label inside a
+        # page-break container (e.g. div#PN with PAGE-BREAK-AFTER) carries
+        # stronger evidence than structural context, including break roles
+        # inherited from an ancestor.
+        explicit_break = _actual_break(node)
+        if not explicit_break and _context_signature(node, facts) not in anchor_signatures:
+            return None
+        in_table, _ = _table_context(node)
+        return {
+            "node": node,
+            "value": value,
+            "namespace": namespace,
+            "template": template,
+            "text": text,
+            "explicit": False,
+            "actual_break": explicit_break,
+            "table_footer": in_table,
+            "path": _node_path(node),
+            "recovered": True,
+        }
+
+    recovered: list[dict[str, Any]] = []
+    emitted_values: set[int] = set()
+    anchor_signatures = {
+        _context_signature(left_item["node"], facts),
+        _context_signature(right_item["node"], facts),
+    }
+    stride = max(1, len(between) // _RECOVERY_STRIDE_TARGET)
+
+    def route_descend(node: object) -> list[dict[str, Any]]:
+        # Route-spine descent: depth-bounded DFS over children matching the
+        # confirmed marker's ancestor tags, skipping content subtrees. Purely
+        # tag-based until the terminal node, so foreign branches cost one
+        # child walk and never any text extraction. Every matching branch is
+        # tried (page containers repeat FTR/HDR wrappers around the label),
+        # bounded by _RECOVERY_ROUTE_BUDGET node visits.
+        hits: list[dict[str, Any]] = []
+        stack: list[tuple[object, int]] = [(node, 0)]
+        budget = _RECOVERY_ROUTE_BUDGET
+
+        def route_priority(child: object) -> int:
+            """Prioritize page-number branches within page-break wrappers."""
+            roles = page_hint_roles_for_attrs(_attrs(child))
+            token = " ".join(
+                str(_attrs(child).get(key, "")).casefold()
+                for key in ("id", "class", "name")
+            )
+            score = 0
+            if "number" in roles:
+                score += 40
+            if any(alias in token for alias in ("pn", "pageno", "pagenum", "page-number")):
+                score += 35
+            if "break" in roles:
+                score += 25
+            if "footer" in roles or "header" in roles:
+                score += 10
+            return score
+
+        while stack and (budget > 0 or stack[-1][1] == len(spine_tags)) and not expected.issubset(emitted_values):
+            current, depth = stack.pop()
+            inner = getattr(current, "_node", current)
+            child = getattr(inner, "child", None)
+            matching: list[object] = []
+            if depth < len(spine_tags):
+                expected_tag = spine_tags[depth]
+                while child is not None:
+                    tag = getattr(child, "tag", None)
+                    if isinstance(tag, str) and tag.casefold() == expected_tag:
+                        matching.append(child)
+                    child = getattr(child, "next", None)
+            if not matching:
+                # Dead end: either the terminal depth or a wrapper level whose
+                # subtree ends short of the anchor route (nested page-break
+                # containers). The node's own text must carry the expected
+                # value, so emit it through the full gate stack.
+                budget -= 1
+                hit = try_emit(current)
+                if hit is not None:
+                    hits.append(hit)
+                continue
+            # Stack order is reversed so the highest-priority branch is popped
+            # first. This favors PN/page-number branches over FTR/HDR filler.
+            matching.sort(key=route_priority)
+            for child in matching:
+                if depth + 1 < len(spine_tags):
+                    if budget <= 0:
+                        break
+                    budget -= 1
+                stack.append((FastHtmlNode(child), depth + 1))
+        return hits
+
+    def emit(hit: dict[str, Any] | None) -> None:
+        if hit is not None and hit["value"] not in emitted_values:
+            emitted_values.add(hit["value"])
+            recovered.append(hit)
+
+    def scan(index: int) -> None:
+        node = between[index]
+        if spine_tags and str(getattr(node, "name", "")).casefold() != spine_tags[0]:
+            # Early route rejection: the sibling's own tag already diverges
+            # from the confirmed marker route (e.g. a p where the anchors are
+            # div -> div -> hr), so skip text parsing and try the route
+            # descent directly; if the route fails too, the node is dropped.
+            for hit in route_descend(node):
+                emit(hit)
+            return
+        emit(try_emit(node))
+        for hit in route_descend(node) if spine_tags else ():
+            emit(hit)
+
+    # Page labels cluster around visible breaks, so scan a bounded window
+    # around each <hr> sibling before the general stride walk; the early
+    # exit keeps this a pure shortcut when the windows find everything.
+    hr_indices = [
+        index
+        for index, node in enumerate(between)
+        if str(getattr(node, "name", "")).casefold() == "hr"
+    ]
+    if hr_indices:
+        window = _RECOVERY_EXPANSION * 2
+        seen_hr: set[int] = set()
+        for hr_index in hr_indices:
+            for index in range(max(0, hr_index - window), min(len(between), hr_index + window + 1)):
+                if index in seen_hr or expected.issubset(emitted_values):
+                    continue
+                seen_hr.add(index)
+                scan(index)
+    for index in range(0, len(between), stride):
+        if expected.issubset(emitted_values):
+            break
+        scan(index)
+        if stride > 1:
+            for offset in range(1, _RECOVERY_EXPANSION + 1):
+                if expected.issubset(emitted_values):
+                    break
+                if index - offset >= 0:
+                    scan(index - offset)
+                if index + offset < len(between):
+                    scan(index + offset)
+    # Rule-element boundary recovery: when no label element exists for a
+    # missing page but the gap's <hr> count equals the page span, each hr is
+    # the literal boundary of exactly one page (label renders before its
+    # trailing rule). The k-th hr then belongs to page left+1+k, so remaining
+    # values map positionally onto real strippable boundary nodes.
+    remaining = sorted(expected - emitted_values)
+    if remaining and len(hr_indices) == right_item["value"] - left_item["value"]:
+        for value in remaining:
+            hr_position = value - left_item["value"] - 1
+            if hr_position < 0 or hr_position >= len(hr_indices):
+                continue
+            node = between[hr_indices[hr_position]]
+            recovered.append(
+                {
+                    "node": node,
+                    "value": value,
+                    "namespace": run.namespace,
+                    "template": "hr",
+                    "text": "",
+                    "explicit": False,
+                    "actual_break": True,
+                    "table_footer": False,
+                    "path": _node_path(node),
+                    "recovered": True,
+                }
+            )
+    return recovered
+
+
+def _finalize_html_analysis(
+    base: PageMarkerAnalysis,
+    source_text: str,
+    facts: _NodeFacts,
+    candidates: list[dict[str, Any]],
+    markers: list[PageMarker],
+    decisions: list[PageMarkerDecision],
+    runs: list[PageNumberRun],
+    templates: list[TemplateEvidence],
+    unresolved: list[str],
+) -> PageMarkerAnalysis:
+    # DOM gap recovery: for validated runs with missing page values, locate
+    # the missing label nodes between the bracketing confirmed nodes (LCA
+    # sibling walk + route-spine descent + stride sampling) and re-validate
+    # the union so recovered nodes become real strippable markers.
+    by_path = {item["path"]: item for item in candidates if item.get("path")}
+    recovered: list[dict[str, Any]] = []
+    for run in runs:
+        ordered = sorted(run.candidates, key=lambda item: item.node_path)
+        for left, right in pairwise(ordered):
+            missing = right.value - left.value - 1
+            if not 1 <= missing <= _RECOVERY_MAX_GAP:
+                continue
+            left_item = by_path.get(left.node_path)
+            right_item = by_path.get(right.node_path)
+            if left_item is None or right_item is None:
+                continue
+            expected = set(range(left.value + 1, right.value))
+            recovered.extend(
+                _recover_between_nodes(left_item, right_item, run, facts, expected)
+            )
+    if recovered:
+        candidates = [*candidates, *recovered]
+        markers, decisions, runs, templates, unresolved2 = _validate_candidate_groups(
+            candidates, facts
+        )
+        unresolved = [*unresolved, *unresolved2]
+        runs = unify_alternating_runs(runs)
     combined_markers = list(base.markers)
     combined_decisions = list(base.decisions)
     existing_paths = {
@@ -1067,9 +1766,13 @@ def enrich_html_analysis(
     combined_markers.sort(key=key_fn)
     combined_decisions.sort(key=lambda d: key_fn(d.marker))
     has_visible = any(marker.page_number is not None for marker in combined_markers)
-    recovered_boundaries = tuple(
-        boundary for run in runs for boundary in _recover_run_gaps(source_text, run)
-    )
+    recovered_boundaries = []
+    for run in runs:
+        observed = {candidate.value for candidate in run.candidates}
+        for boundary in _recover_run_gaps(source_text, run):
+            if boundary.page_number not in observed:
+                recovered_boundaries.append(boundary)
+    recovered_boundaries = tuple(recovered_boundaries)
     covered = _family_extents(source_text, runs)
     regions = _region_reports(source_text, covered)
     return replace(
@@ -1090,9 +1793,13 @@ def enrich_html_analysis(
     )
 
 
-def apply_html_page_decisions(soup: object, analysis: PageMarkerAnalysis) -> int:
-    """Remove validated DOM markers using node paths, never source offsets."""
-    removed = 0
+def apply_html_page_decisions(soup: object, analysis: PageMarkerAnalysis) -> list:
+    """Remove validated DOM markers using node paths, never source offsets.
+
+    Returns the removed nodes so callers can inspect what was stripped;
+    empty list means nothing was removed.
+    """
+    removed_nodes: list = []
     paths = {
         d.marker.node_path
         for d in analysis.decisions
@@ -1105,8 +1812,8 @@ def apply_html_page_decisions(soup: object, analysis: PageMarkerAnalysis) -> int
             decompose := getattr(node, "decompose", None)
         ):
             decompose()
-            removed += 1
-    return removed
+            removed_nodes.append(node)
+    return removed_nodes
 
 
 def refresh_html_analysis(

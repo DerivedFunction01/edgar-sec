@@ -79,7 +79,21 @@ def heal_divider_lines_from_templates(lines: list[str]) -> None:
                 t in "-=" and r not in "-=" for t, r in zip(target, reference)
             )
             if conflicting:
-                continue
+                if target_idx != divider_indices[0]:
+                    continue
+                target_runs = list(re.finditer(r"[-=]+", target))
+                reference_runs = list(re.finditer(r"[-=]+", reference))
+                has_leading_template = any(
+                    1 <= target_run.start() - reference_run.start() <= 3
+                    and min(target_run.end(), reference_run.end())
+                    - max(target_run.start(), reference_run.start())
+                    >= 10
+                    and target_run.group(0)[0] == reference_run.group(0)[0]
+                    for target_run in target_runs
+                    for reference_run in reference_runs
+                )
+                if not has_leading_template:
+                    continue
 
             added_positions = [
                 pos
@@ -104,7 +118,31 @@ def heal_divider_lines_from_templates(lines: list[str]) -> None:
             # Check if any gap bridges to an isolated short run (<= 3 chars, e.g. affix/footnote columns)
             has_short_fragment = any(rl <= 3 for rl in target_run_lengths)
 
-            if has_short_fragment:
+            leading_run_extension: list[int] = []
+            if target_idx == divider_indices[0]:
+                target_runs = list(re.finditer(r"[-=]+", target))
+                reference_runs = list(re.finditer(r"[-=]+", reference))
+                for target_run in target_runs:
+                    for reference_run in reference_runs:
+                        shift = target_run.start() - reference_run.start()
+                        overlap = min(target_run.end(), reference_run.end()) - max(
+                            target_run.start(), reference_run.start()
+                        )
+                        if (
+                            1 <= shift <= 3
+                            and overlap >= 10
+                            and target_run.group(0)[0] == reference_run.group(0)[0]
+                        ):
+                            leading_run_extension = list(
+                                range(reference_run.start(), target_run.start())
+                            )
+                            break
+                    if leading_run_extension:
+                        break
+
+            if has_short_fragment or leading_run_extension:
+                if leading_run_extension:
+                    added_positions = leading_run_extension
                 fill_char = "=" if target.count("=") > target.count("-") else "-"
                 chars = list(target)
                 for pos in added_positions:

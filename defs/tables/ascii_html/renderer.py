@@ -9,6 +9,7 @@ from defs.tables.ascii_html.blocks import (
     extract_raw_grids_and_spans,
     fuse_data_affix_blocks,
     fuse_empty_header_span_blocks,
+    fuse_header_suffix_blocks,
 )
 from defs.tables.ascii_html.borders import (
     extract_border_segments,
@@ -230,6 +231,13 @@ def render_source_table(
             raw_grid,
             budget,
         )
+        h_blocks = fuse_header_suffix_blocks(
+            h_blocks,
+            h_r,
+            header_row_count,
+            suffix_positions,
+            budget,
+        )
         for b in h_blocks:
             # Exclude full-table-width spans — these are caption/units rows that
             # should not collapse structural column gaps in body divider rows.
@@ -246,6 +254,13 @@ def render_source_table(
             col_widths,
             col_alignments,
             raw_grid,
+            budget,
+        )
+        blocks = fuse_header_suffix_blocks(
+            blocks,
+            r_idx,
+            header_row_count,
+            suffix_positions,
             budget,
         )
         blocks = fuse_data_affix_blocks(

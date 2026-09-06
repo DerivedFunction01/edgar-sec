@@ -282,7 +282,7 @@ def test_html_repeated_visible_page_nodes_are_removed_by_dom_path() -> None:
         PageMarkerKind.HTML_NODE
     ] * 3
     assert all(marker.coordinate_frame == "dom" for marker in analysis.markers)
-    assert apply_html_page_decisions(soup, analysis) == 3
+    assert len(apply_html_page_decisions(soup, analysis)) == 3
     rendered = str(soup)
     assert "page-number" not in rendered
     assert "First page prose." in rendered
@@ -300,7 +300,7 @@ def test_html_hidden_and_avoid_page_values_are_preserved() -> None:
         source_text=text,
     )
     assert analysis.terminal_state.value == "no_visible_labels"
-    assert apply_html_page_decisions(soup, analysis) == 0
+    assert not apply_html_page_decisions(soup, analysis)
     assert "1" in str(soup) and "2" in str(soup)
 
 
@@ -316,7 +316,7 @@ def test_html_actual_page_break_is_context_but_avoid_is_not() -> None:
         source_text=text,
     )
     assert [marker.page_number for marker in analysis.markers] == [1]
-    assert apply_html_page_decisions(soup, analysis) == 1
+    assert len(apply_html_page_decisions(soup, analysis)) == 1
     assert "1" not in str(soup) and "2" in str(soup)
 
 
@@ -530,7 +530,79 @@ def test_html_no_page_label_evidence_skips_generic_scan() -> None:
     assert analysis.terminal_state.value == "no_visible_labels"
 
 
-def test_html_recovery_infers_hidden_page_boundaries() -> None:
+def test_html_signature_mismatched_recovery_stays_inferred() -> None:
+    # F-4 sits in an <h6>: structurally different from the confirmed p-footer
+    # family. Stripping it would be a false removal (it may be a heading), so
+    # it must remain inferred-only metadata and survive text conversion.
+    text = (
+        "<html><body>"
+        "<p align='center'>F-1</p><p>Body one.</p>"
+        "<p align='center'>F-2</p><p>Body two.</p>"
+        "<p align='center'>F-3</p><p>Body three.</p>"
+        "<h6>F-4</h6><p>Body four.</p>"
+        "<p align='center'>F-5</p><p>Body five.</p>"
+        "</body></html>"
+    )
+    soup = parse_html(text)
+    analysis = enrich_html_analysis(
+        analyze_page_markers(text, representation="html"),
+        soup,
+        source_text=text,
+    )
+    assert any(
+        run.namespace == "F"
+        and sorted(candidate.value for candidate in run.candidates) == [1, 2, 3, 5]
+        for run in analysis.page_number_runs
+    )
+    assert not [marker for marker in analysis.markers if marker.text == "F-4"]
+    assert any(
+        boundary.page_number == 4 and boundary.namespace == "F"
+        for boundary in analysis.inferred_boundaries
+    )
+    apply_html_page_decisions(soup, analysis)
+    rendered = str(soup)
+    assert "F-4" in rendered
+    assert "Body four." in rendered
+
+
+def test_html_recovery_maps_same_signature_label_to_strippable_node() -> None:
+    # F-4 is hidden from the generic scan inside a styled wrapper but keeps
+    # the exact footer shape (p align=center) and sibling context, so the
+    # recovery must promote it to a real strippable marker.
+    text = (
+        "<html><body>"
+        "<p align='center'>F-1</p><p>Body one.</p>"
+        "<p align='center'>F-2</p><p>Body two.</p>"
+        "<p align='center'>F-3</p><p>Body three.</p>"
+        "<div style='display:block'><p align='center'>F-4</p></div>"
+        "<p>Body four.</p>"
+        "<p align='center'>F-5</p><p>Body five.</p>"
+        "</body></html>"
+    )
+    soup = parse_html(text)
+    analysis = enrich_html_analysis(
+        analyze_page_markers(text, representation="html"),
+        soup,
+        source_text=text,
+    )
+    assert any(
+        run.namespace == "F"
+        and sorted(candidate.value for candidate in run.candidates) == [1, 2, 3, 4, 5]
+        for run in analysis.page_number_runs
+    )
+    assert [marker.text for marker in analysis.markers if marker.text == "F-4"]
+    assert not [
+        boundary
+        for boundary in analysis.inferred_boundaries
+        if boundary.page_number == 4 and boundary.namespace == "F"
+    ]
+    apply_html_page_decisions(soup, analysis)
+    rendered = str(soup)
+    assert "F-4" not in rendered
+    assert "Body four." in rendered
+
+
+def test_html_hidden_labels_stay_inferred_not_recovered() -> None:
     parts = ["<html><body>"]
     for value in range(1, 5):
         parts.append(f'<p align="center">F-{value}</p><p>Body {value}.</p>')

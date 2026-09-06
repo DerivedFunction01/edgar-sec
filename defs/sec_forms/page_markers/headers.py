@@ -10,6 +10,7 @@ from defs.text.dates import MONTH_PATTERN, extract_years
 from defs.text.logical_units import classify_units
 
 from .candidates import line_offsets
+from .constants import _RE_STRUCTURAL_MATCH
 from .layout import line_shape
 from .models import (
     PageMarker,
@@ -25,9 +26,6 @@ _TRAILING_NUMBER_RE = re.compile(r"\s{2,}(?:\d{1,4}|[ivxlcdm]{1,8})\s*$", re.IGN
 _WHITESPACE_RE = re.compile(r"\s+")
 _MONTH_RE = re.compile(MONTH_PATTERN)
 _DATE_END_RE = re.compile(r"(?:\.|\d)\s*$")
-_STRUCTURAL_WORDS = build_alternation(
-    ["part", "item", "exhibit", "note"], auto_escape=True
-)
 _HEADER_HINTS = build_alternation(
     [
         "annual report",
@@ -40,7 +38,6 @@ _HEADER_HINTS = build_alternation(
     ],
     auto_escape=False,
 )
-_STRUCTURAL_RE = re.compile(rf"^\s*(?:{_STRUCTURAL_WORDS})\b", re.IGNORECASE)
 _HEADER_HINT_RE = re.compile(rf"(?i)\b(?:{_HEADER_HINTS})\b")
 
 
@@ -87,7 +84,7 @@ def _eligible(
     line: str, toc_lines: set[int], line_index: int, unit_kind: str | None
 ) -> bool:
     stripped = line.strip()
-    if not stripped or line_index in toc_lines or _STRUCTURAL_RE.match(stripped):
+    if not stripped or line_index in toc_lines or _RE_STRUCTURAL_MATCH.match(stripped):
         return False
     if unit_kind == "table" or _clean_date_heading(line):
         return False

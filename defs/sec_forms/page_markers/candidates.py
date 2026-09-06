@@ -27,6 +27,8 @@ from .constants import (
     RE_PAGE_SUFFIX,
 )
 from .layout import candidate_template, cluster_is_table_like, has_numeric_data_shape
+
+_ASCII_PROBE_WINDOW = 2500
 from .models import PageCandidate, PageMarker, PageMarkerKind, PageNumberRun
 from .sequence import heal_run, unify_alternating_runs, validate_group
 
@@ -344,9 +346,12 @@ def all_candidates(
                 if candidate is not None:
                     candidates.append(candidate)
         else:
-            # Progressive bidirectional scan: front 25% and tail 25%
-            front_limit = n_lines // 4
-            tail_start = (3 * n_lines) // 4
+            # Progressive bidirectional scan: bounded front/tail windows.
+            # Large documents do not need half the document probed to find a
+            # repeated pattern; windows cap at _ASCII_PROBE_WINDOW lines.
+            probe_lines = min(n_lines // 4, _ASCII_PROBE_WINDOW)
+            front_limit = probe_lines
+            tail_start = n_lines - probe_lines
             front_cands: list[PageCandidate] = []
             for idx in range(front_limit):
                 c = _get_candidate(idx)

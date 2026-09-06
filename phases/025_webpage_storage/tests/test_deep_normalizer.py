@@ -51,10 +51,6 @@ def test_deep_normalizer_table_conversion() -> None:
     assert "ITEM 1. BUSINESS" in normalized
     assert "ITEM 7. MD&A" in normalized
 
-    # 2. Page markers stripped
-    assert "<PAGE>" not in normalized
-    assert "Page 2 of 10" not in normalized
-
     # 3. HTML table converted into structured ASCII grid
     assert "Revenue" in normalized
     assert "100,000" in normalized

@@ -116,21 +116,6 @@ _HIDDEN_STYLE_VALUES = build_alternation(
     [r"display\s*:\s*none", r"visibility\s*:\s*hidden", "hidden"]
 )
 _HIDDEN_STYLE_RE = re.compile(rf"(?:{_HIDDEN_STYLE_VALUES})", re.IGNORECASE)
-_PAGE_BREAK_PROPERTIES = build_alternation(
-    ["page-break-before", "page-break-after", "break-before", "break-after"],
-    auto_escape=True,
-)
-_PAGE_BREAK_VALUES = build_alternation(
-    ["always", "left", "right", "page"], auto_escape=True
-)
-_PAGE_BREAK_RE = re.compile(
-    rf"(?:{_PAGE_BREAK_PROPERTIES})\s*:\s*(?:{_PAGE_BREAK_VALUES})\b",
-    re.IGNORECASE,
-)
-_PAGE_BREAK_AVOID_RE = re.compile(
-    rf"(?:{_PAGE_BREAK_PROPERTIES})\s*:\s*avoid\b",
-    re.IGNORECASE,
-)
 _RE_HIDDEN_TEMPLATE = re.compile(r"(?:^|[\s_-])(?:hidden|template)(?:$|[\s_-])")
 _RE_PAGE_SEMANTIC = re.compile(rf"(?:^|[\s_-])(?:{_PAGE_WORDS})(?:$|[\s_-])")
 _RE_TOC_SEMANTIC = re.compile(rf"(?:^|[\s_-])(?:{_TOC_WORDS})(?:$|[\s_-])")
@@ -194,16 +179,117 @@ _RE_APPENDIX_ROMAN = re.compile(
     re.IGNORECASE,
 )
 
+_PAGE_BREAK_VALUES = build_alternation(
+    ["always", "left", "right", "page"],
+    auto_escape=True,
+)
+
+# HTML page-hint vocabulary for attribute-based fast-path discovery.
+# Attribute values (class/id/name) and CSS property names are normalized by
+# lowercasing and stripping every non-alphanumeric character, then replacing
+# digit runs with "#" so page_1/page_2/... share one container alias, before
+# alias lookup. This collapses spellings such as page-break, page_break,
+# "page break", and ct-page-break into one alias without fuzzy per-character
+# matching. Roles: break, number, header, footer, container, page_semantic.
+_HINT_SEPARATOR_RE = re.compile(r"[^a-z0-9]+")
+_HINT_DIGITS_RE = re.compile(r"\d+")
+_PAGE_BREAK_PROPERTY_ALIASES = frozenset(
+    {"pagebreakbefore", "pagebreakafter", "breakbefore", "breakafter"}
+)
+_PAGE_BREAK_VALUE_ALIASES = frozenset({"always", "left", "right", "page"})
+PAGE_HINT_ROLES: dict[str, tuple[str, ...]] = {
+    "pagebreak": ("break",),
+    "ctpagebreak": ("break",),
+    "pgbrk": ("break",),
+    "pgbk": ("break",),
+    "pagebreakbefore": ("break",),
+    "pagebreakafter": ("break",),
+    "breakbefore": ("break",),
+    "breakafter": ("break",),
+    "dspfpagebreak": ("break",),
+    "dspfpagebreakarea": ("break",),
+    "lastpagebreak": ("break",),
+    "pgnum": ("number",),
+    "pagenum": ("number",),
+    "pagenumber": ("number",),
+    "dspfpagenumber": ("number",),
+    "dspfpagenumberarea": ("number",),
+    "tocpgnum": ("number",),
+    "acipg#": ("number",),
+    "pghdr": ("header",),
+    "pageheader": ("header",),
+    "headercontainer": ("header",),
+    "bclheader": ("header",),
+    "pgftr": ("footer",),
+    "pagefooter": ("footer",),
+    "footercontainer": ("footer",),
+    "bclfooter": ("footer",),
+    "ctheaderfooterpage": ("header", "footer"),
+    "page#": ("container",),
+    "pagenodecontent": ("container",),
+    "eolpage#": ("container",),
+}
+_RAW_HINT_ATTR_RE = re.compile(
+    rf"(?is)\b({build_alternation(['class', 'name', 'id', 'style'])})\s*=\s*"
+    r"(?P<quote>[\"'])(?P<value>.*?)(?P=quote)"
+)
+_HINT_TOKEN_SPLIT_RE = re.compile(r"[\s;,:]+")
+
+
+def _normalized_hint_token(token: str) -> str:
+    return _HINT_DIGITS_RE.sub("#", _HINT_SEPARATOR_RE.sub("", token.casefold()))
+
+
+def page_hint_roles(token: str) -> tuple[str, ...]:
+    """Resolve one attribute token to its page-hint roles, if any."""
+
+    return PAGE_HINT_ROLES.get(_normalized_hint_token(token), ())
+
+
+def page_hint_roles_for_attrs(attrs: dict) -> tuple[str, ...]:
+    """Single page-hint entry point over one node's attributes.
+
+    Roles combine the alias vocabulary (``PAGE_HINT_ROLES``), the classic
+    page-word semantics (``_RE_PAGE_SEMANTIC`` -> ``page_semantic``), and
+    value-aware CSS break detection (``page-break-before: always`` -> break,
+    ``: avoid`` -> no role). This replaces separate semantic, break, and
+    hint lookups for HTML candidate discovery.
+    """
+    roles: list[str] = []
+
+    def add_token(value: object) -> None:
+        if not value:
+            return
+        tokens = value if isinstance(value, list) else [value]
+        for token in tokens:
+            for part in _HINT_TOKEN_SPLIT_RE.split(str(token)):
+                if not part:
+                    continue
+                for role in page_hint_roles(part):
+                    if role not in roles:
+                        roles.append(role)
+                if _RE_PAGE_SEMANTIC.search(part) and "page_semantic" not in roles:
+                    roles.append("page_semantic")
+
+    for key in ("class", "id", "name", "title", "data-page", "data-page-number"):
+        add_token(attrs.get(key))
+    for declaration in str(attrs.get("style", "")).split(";"):
+        prop, _, value = declaration.partition(":")
+        if _normalized_hint_token(prop) in _PAGE_BREAK_PROPERTY_ALIASES:
+            normalized_value = _HINT_SEPARATOR_RE.sub("", value.casefold())
+            if normalized_value in _PAGE_BREAK_VALUE_ALIASES and "break" not in roles:
+                roles.append("break")
+    return tuple(roles)
+
+
 __all__ = [
+    "PAGE_HINT_ROLES",
+    "PROSE_GUARD_STOP_WORDS",
     "RE_PAGE_SUFFIX",
     "_HIDDEN_STYLE_RE",
     "_HIDDEN_STYLE_VALUES",
     "_NUMERALS",
     "_NUMERIC_RE",
-    "_PAGE_BREAK_AVOID_RE",
-    "_PAGE_BREAK_PROPERTIES",
-    "_PAGE_BREAK_RE",
-    "_PAGE_BREAK_VALUES",
     "_PAGE_MARKER_PATTERNS",
     "_PAGE_WORDS",
     "_RE_APPENDIX_ROMAN",
@@ -233,4 +319,6 @@ __all__ = [
     "_TOC_WORDS",
     "_VALUE_RE",
     "_WRAPPERS",
+    "page_hint_roles",
+    "page_hint_roles_for_attrs",
 ]

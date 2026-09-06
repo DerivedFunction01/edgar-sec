@@ -367,10 +367,67 @@ def fuse_empty_header_span_blocks(
     return curr_blocks
 
 
+def fuse_header_suffix_blocks(
+    blocks: list[RenderBlock],
+    r_idx: int,
+    header_row_count: int,
+    suffix_positions: set[int],
+    budget: RenderBudget,
+) -> list[RenderBlock]:
+    """Extend multi-column headers across adjacent empty accounting suffix bands.
+
+    EDGAR finance tables commonly put the closing-parenthesis and footnote
+    columns outside a header cell's literal colspan. Treating those empty
+    bands as part of a multi-column header keeps its label and existing
+    divider aligned with the effective value band without inventing a new
+    divider.
+    """
+    if r_idx >= header_row_count or not suffix_positions:
+        return blocks
+
+    curr_blocks = blocks
+    changed = True
+    while changed:
+        changed = False
+        fused: list[RenderBlock] = []
+        b_idx = 0
+        while b_idx < len(curr_blocks):
+            curr_b = curr_blocks[b_idx]
+            if (
+                curr_b.text.strip()
+                and len(curr_b.span_cols) >= 2
+                and b_idx + 1 < len(curr_blocks)
+            ):
+                next_b = curr_blocks[b_idx + 1]
+                if (
+                    not next_b.text.strip()
+                    and next_b.span_cols[0] == curr_b.span_cols[-1] + 1
+                    and all(c in suffix_positions for c in next_b.span_cols)
+                ):
+                    fused.append(
+                        RenderBlock(
+                            cell=curr_b.cell,
+                            span_cols=curr_b.span_cols + next_b.span_cols,
+                            width=curr_b.width + budget.column_spacing + next_b.width,
+                            alignment=curr_b.alignment,
+                            text=curr_b.text,
+                        )
+                    )
+                    b_idx += 2
+                    changed = True
+                    continue
+            fused.append(curr_b)
+            b_idx += 1
+        curr_blocks = fused
+
+    return curr_blocks
+
+
 __all__ = [
     "RenderBlock",
     "build_row_blocks",
     "extract_raw_grids_and_spans",
     "fuse_data_affix_blocks",
     "fuse_empty_header_span_blocks",
+    "fuse_header_suffix_blocks",
 ]

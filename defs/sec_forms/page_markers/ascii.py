@@ -128,6 +128,19 @@ def analyze_page_markers(
             terminal_state=PageMarkerTerminalState.NO_VISIBLE_LABELS,
         )
 
+    # HTML has its own DOM-aware discovery path. Running the line-oriented
+    # ASCII candidate sweep over raw markup is both expensive and semantically
+    # noisy; callers should pass this empty base to enrich_html_analysis().
+    if representation.casefold() == "html":
+        return PageMarkerAnalysis(
+            (),
+            (),
+            (),
+            representation=representation,
+            source_text=document,
+            terminal_state=PageMarkerTerminalState.NO_VISIBLE_LABELS,
+        )
+
     context = context or {}
     firm, _occupied_spans, occupied_lines = firm_markers(
         document, representation, allow_letter_number

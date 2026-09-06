@@ -345,6 +345,14 @@ def test_suffix_spacers_fuse_consistently_across_data_rows() -> None:
     assert len(revenue_line.rstrip()) == len(loss_line.rstrip())
     assert len(revenue_line.rstrip()) == len(dash_line.rstrip())
 
+    year_line = next(line for line in lines if "2015" in line and "2017" in line)
+    divider_line = next(
+        line for line in lines if line.strip().startswith("-") and "----------" in line
+    )
+    year_start = year_line.index("2015")
+    year_end = year_line.index("2016")
+    assert divider_line[year_start:year_end].count("-") > len("2015")
+
 
 def test_canonical_ascii_table_rendering() -> None:
     """Full table rendering emits canonical <TABLE> format with alignment headers."""
@@ -706,6 +714,25 @@ def test_healed_divider_lines_from_templates() -> None:
     assert len(divs_162[1].split()) == 2
     # Subheaders (row 1) and data rows should preserve the 4 separate column bands (5 runs)
     assert len(divs_162[2].split()) == 5
+
+
+def test_header_divider_uses_same_width_lower_template_for_short_gap() -> None:
+    """A short header-divider offset borrows dashes without closing the stub gap."""
+    from defs.tests.query_table_corpus import _records
+
+    record = next(
+        item for item in _records() if item["table_id"] == "msft_2025_table_0034"
+    )
+    output = convert_html_table(record["html"]).ascii_text
+    dividers = [
+        line
+        for line in output.splitlines()
+        if line and set(line) <= {"-", "=", " "} and set(line) & {"-", "="}
+    ]
+    assert dividers
+    first = dividers[0]
+    assert first[38:40] == "  "
+    assert first[40:43] == "---"
 
 
 def test_balanced_line_wrapping_optimizes_headroom() -> None:
