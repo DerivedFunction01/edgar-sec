@@ -5,6 +5,7 @@ from __future__ import annotations
 from defs.tables.ascii_html import (
     BorderStyle,
     HorizontalAlign,
+    RenderBudget,
     convert_html_table,
     extract_source_table,
 )
@@ -26,6 +27,7 @@ from defs.tables.ascii_html.text import (
     format_cell_line,
     wrap_cell_text,
 )
+from defs.tables.ascii_html.widths import compute_column_widths
 from defs.text.html import parse_html
 
 
@@ -243,8 +245,109 @@ def test_wrap_normalizes_non_breaking_spaces_before_layout() -> None:
     assert "Grant-Date" in " ".join(wrapped)
 
 
+def test_dot_leaders_are_reduced_during_cell_normalization() -> None:
+    """Decorative dot leaders cannot consume a table column's width budget."""
+    result = convert_html_table(
+        """
+        <table><tr><td>Operating expenses....................................................</td>
+        <td>12</td></tr></table>
+        """
+    )
+    assert "Operating expenses..." in result.ascii_text
+    assert "...." not in result.ascii_text
+
+
+def test_dense_tables_get_bounded_overflow_when_safe_floors_do_not_fit() -> None:
+    """Only dense multi-column numeric layouts may exceed the normal width cap."""
+    headers = [f"Estimated Future Payout {index}" for index in range(10)]
+    dense_grid = [headers, ["1,000"] * 10]
+    budget = RenderBudget(max_table_width=60, max_dense_table_overflow=12)
+    widths, _ = compute_column_widths(
+        dense_grid, [HorizontalAlign.RIGHT] * 10, budget=budget
+    )
+    assert sum(widths) + budget.column_spacing * 9 > budget.max_table_width
+    assert sum(widths) + budget.column_spacing * 9 <= 72
+
+    narrow_grid = [headers[:9], ["1,000"] * 9]
+    narrow_widths, _ = compute_column_widths(
+        narrow_grid, [HorizontalAlign.RIGHT] * 9, budget=budget
+    )
+    assert sum(narrow_widths) + budget.column_spacing * 8 <= budget.max_table_width
+
+
+def test_spanned_title_does_not_widen_operator_column() -> None:
+    """A two-column title must not make a one-character operator band enormous."""
+    result = convert_html_table(
+        """
+        <table>
+          <tr><td colspan="2">Net Asset Value Calculation</td></tr>
+          <tr><td align="right">+</td><td>PV-10 Proved Developed Producing Reserves</td></tr>
+          <tr><td align="right">-</td><td>Debt</td></tr>
+        </table>
+        """
+    )
+    assert result.resolved_grid.column_widths[0] <= 6
+    assert " +    PV-10" not in result.ascii_text
+
+
+def test_suffix_spacers_fuse_consistently_across_data_rows() -> None:
+    """Empty trail/footnote spacers fuse into value blocks identically in every row.
+
+    Reproduces the EDGAR micro-column pattern where a superheader spans only
+    some year groups and each group's ')' and '(n)' cells live outside any
+    header span. Fusion must not depend on whether a row carries content in
+    those spacer cells, or right-aligned values drift between rows.
+    """
+    html = """
+    <table>
+        <tr>
+            <td></td>
+            <td colspan="8" style="text-align: center; border-bottom: 1px solid black;"><b>Year Ended December 31,</b></td>
+            <td></td><td></td><td></td><td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td colspan="2" style="text-align: center; border-bottom: 1px solid black;"><b>2015</b></td>
+            <td></td><td></td>
+            <td colspan="2" style="text-align: center; border-bottom: 1px solid black;"><b>2016</b></td>
+            <td></td><td></td>
+            <td colspan="2" style="text-align: center; border-bottom: 1px solid black;"><b>2017</b></td>
+            <td></td><td></td>
+        </tr>
+        <tr><td>Revenue</td>
+            <td>$</td><td>67,030</td><td></td><td></td>
+            <td>$</td><td>56,555</td><td></td><td></td>
+            <td>$</td><td>129,146</td><td></td><td></td></tr>
+        <tr><td>Net income (loss)</td>
+            <td>$</td><td>(127,110</td><td>)</td><td>(1)</td>
+            <td>$</td><td>(96,378</td><td>)</td><td>(2)</td>
+            <td>$</td><td>(65,004</td><td>)</td><td>(3)</td></tr>
+        <tr><td>Other income</td>
+            <td>$</td><td>-</td><td></td><td></td>
+            <td>$</td><td>-</td><td></td><td></td>
+            <td>$</td><td>-</td><td></td><td></td></tr>
+    </table>
+    """
+    lines = convert_html_table(html).ascii_text.splitlines()
+
+    revenue_line = next(line for line in lines if "67,030" in line)
+    loss_line = next(line for line in lines if "(127,110)" in line)
+    dash_line = next(line for line in lines if "$ -" in line)
+    assert "129,146" in revenue_line
+    assert "(65,004)" in loss_line
+
+    # Group 1 values and footnotes share one right edge in every row.
+    assert revenue_line.rfind("67,030") + len("67,030") == loss_line.rfind("(1)") + len(
+        "(1)"
+    )
+    # The last group is the row's final block: right edges must match across
+    # populated, empty, and dash-placeholder rows.
+    assert len(revenue_line.rstrip()) == len(loss_line.rstrip())
+    assert len(revenue_line.rstrip()) == len(dash_line.rstrip())
+
+
 def test_canonical_ascii_table_rendering() -> None:
-    """Full v2 table rendering emits canonical <TABLE> format with alignment headers."""
+    """Full table rendering emits canonical <TABLE> format with alignment headers."""
     html = """
     <table>
         <tr>

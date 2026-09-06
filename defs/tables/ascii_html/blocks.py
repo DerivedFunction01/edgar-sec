@@ -251,14 +251,20 @@ def fuse_data_affix_blocks(
                         changed = True
                         continue
 
-                # 2. Suffix pair (number + %)
-                next_is_suffix = (
-                    len(next_b.span_cols) == 1
-                    and (
-                        next_b.span_cols[0] in suffix_positions
-                        or is_suffix_token(next_b.text.strip())
+                # 2. Suffix pair (number + %). Multi-column blocks whose every
+                # column is a suffix position (e.g. empty trail/footnote
+                # spacers fused together in an earlier pass) stay eligible,
+                # otherwise fusion becomes row-dependent and right-aligned
+                # values drift between rows.
+                next_is_suffix = next_b.span_cols[0] == curr_b.span_cols[-1] + 1 and (
+                    (
+                        len(next_b.span_cols) == 1
+                        and (
+                            next_b.span_cols[0] in suffix_positions
+                            or is_suffix_token(next_b.text.strip())
+                        )
                     )
-                    and next_b.span_cols[0] == curr_b.span_cols[-1] + 1
+                    or all(c in suffix_positions for c in next_b.span_cols)
                 )
                 if next_is_suffix:
                     n_txt = curr_b.text.strip()
@@ -268,8 +274,18 @@ def fuse_data_affix_blocks(
                         or is_suffix_token(s_txt)
                         or is_affix_footnote_token(s_txt)
                     )
+                    n_tokens = n_txt.split()
                     is_safe_n = (
-                        not n_txt or is_numeric_cell(n_txt) or n_txt.startswith("(")
+                        not n_txt
+                        or is_numeric_cell(n_txt)
+                        or n_txt.startswith("(")
+                        or (
+                            bool(n_tokens)
+                            and all(
+                                is_numeric_cell(t) or is_prefix_token(t)
+                                for t in n_tokens
+                            )
+                        )
                     )
                     if is_safe_s and is_safe_n:
                         combined_span = curr_b.span_cols + next_b.span_cols

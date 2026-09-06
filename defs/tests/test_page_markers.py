@@ -9,6 +9,7 @@ from bs4 import BeautifulSoup
 
 from defs.sec_forms.page_markers.headers import _slot_heading_members
 from defs.sec_forms.page_markers.html import html_has_page_label_evidence
+from defs.sec_forms.page_markers.sequence import heal_run
 from defs.text.html import parse_html
 
 pm_mod = importlib.import_module("defs.sec_forms.page_markers")
@@ -19,6 +20,7 @@ PageMarkerAnalysis = pm_mod.PageMarkerAnalysis
 PageMarkerDecision = pm_mod.PageMarkerDecision
 PageMarkerKind = pm_mod.PageMarkerKind
 PageMarkerSpan = pm_mod.PageMarkerSpan
+PageCandidate = pm_mod.PageCandidate
 analyze_page_markers = pm_mod.analyze_page_markers
 find_page_markers = pm_mod.find_page_markers
 strip_page_markers = pm_mod.strip_page_markers
@@ -604,6 +606,89 @@ def test_html_has_page_label_evidence_gate() -> None:
     assert html_has_page_label_evidence("<table><tr><td>7</td></tr></table>")
     assert not html_has_page_label_evidence("<p>Plain prose without numbers.</p>")
     assert not html_has_page_label_evidence("")
+
+
+def _make_run(values_and_lines: list[tuple[int, int]]) -> object:
+    candidates = tuple(
+        PageCandidate(
+            0,
+            0,
+            line,
+            line,
+            str(value),
+            "bare_number",
+            "arabic",
+            value,
+        )
+        for value, line in values_and_lines
+    )
+    return pm_mod.PageNumberRun(
+        "bare_number",
+        "arabic",
+        candidates,
+        1.0,
+        0.0,
+        0.0,
+        1.0,
+        -1,
+        -1,
+        "anchorless",
+    )
+
+
+def test_heal_run_repairs_inversion_spikes_and_duplicates() -> None:
+    # d-50408 signature: foreign table total 86 between 23 and a duplicate 20.
+    run = _make_run(
+        [(value, 100 + index * 10) for index, value in enumerate(range(2, 24))]
+        + [(86, 330), (20, 340)]
+        + [(value, 350 + index * 10) for index, value in enumerate(range(24, 47))]
+    )
+    healed, inferred, promoted = heal_run(run, run.candidates)
+    values = [candidate.value for candidate in healed.candidates]
+    assert 86 not in values
+    assert values == sorted(set(values))
+    assert inferred == ()
+    assert promoted == ()
+
+
+def test_heal_run_suppresses_values_observed_by_stronger_runs() -> None:
+    run = _make_run([(20, 100), (86, 200), (20, 300), (24, 400)])
+    _healed, inferred, _ = heal_run(
+        run,
+        run.candidates,
+        stronger_values=frozenset(range(21, 47)),
+    )
+    inferred_values = {boundary.page_number for boundary in inferred}
+    assert inferred_values.isdisjoint(range(21, 47))
+
+
+def test_heal_run_requires_page_break_evidence_for_gaps() -> None:
+    run = _make_run([(17, 100), (25, 900)])
+    without_evidence = heal_run(run, run.candidates, page_break_lines=frozenset())
+    assert without_evidence[1] == ()
+    breaks = frozenset(range(150, 880, 90))
+    with_evidence = heal_run(run, run.candidates, page_break_lines=breaks)
+    assert [boundary.page_number for boundary in with_evidence[1]] == list(
+        range(18, 25)
+    )
+    assert {boundary.reason for boundary in with_evidence[1]} <= {
+        "validated_page_break_count",
+        "page_break_supported",
+    }
+
+
+def test_heal_run_promotes_compatible_anchorless_candidates() -> None:
+    run = _make_run([(1, 100), (2, 200), (3, 300), (5, 500), (6, 600)])
+    anchorless = [
+        PageCandidate(0, 0, 400, 400, "4", "bare_number", "arabic", 4),
+        PageCandidate(0, 0, 250, 250, "86", "bare_number", "arabic", 86),
+    ]
+    healed, inferred, promoted = heal_run(run, anchorless)
+    values = [candidate.value for candidate in healed.candidates]
+    assert 4 in values
+    assert 86 not in values
+    assert inferred == ()
+    assert len(promoted) == 1
 
 
 def test_text_cleanup_does_not_reuse_stale_coordinate_frame() -> None:

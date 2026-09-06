@@ -148,6 +148,8 @@ class RenderBudget:
     """Table rendering width constraints and budgets."""
 
     max_table_width: int = 180
+    max_dense_table_overflow: int = 48
+    dense_table_min_columns: int = 10
     max_column_width: int = 48
     max_text_column_width: int = 80
     minimum_numeric_width: int = 8

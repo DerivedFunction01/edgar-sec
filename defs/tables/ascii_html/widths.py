@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import re
 from collections import defaultdict
+from dataclasses import replace
 
 from defs.tables.ascii_html.balance import (
     balance_span_widths,
@@ -84,23 +85,28 @@ def compute_column_widths(
                 if c_idx < len(measuring_rows[r_idx])
                 else ""
             )
+            if (r_idx, c_idx) in multi_span_cells:
+                cell_txt = ""
             stripped = cell_txt.strip()
             if not stripped:
                 continue
+            visual_lines = [line.rstrip() for line in cell_txt.splitlines()]
+            visual_lines = [line for line in visual_lines if line.strip()] or [stripped]
+            longest_line = max(visual_lines, key=len)
             if len(stripped) > len(col_longest_text[c_idx]):
-                col_longest_text[c_idx] = stripped
-            max_unwrapped = max(max_unwrapped, len(stripped))
-            words = stripped.split()
+                col_longest_text[c_idx] = longest_line
+            max_unwrapped = max(max_unwrapped, len(longest_line))
+            words = " ".join(visual_lines).split()
             if words:
                 word_counts.append(len(words))
             for w in words:
                 max_word_len = max(max_word_len, len(w))
             if is_numeric_cell(stripped):
                 num_count += 1
-                max_num_len = max(max_num_len, len(cell_txt))
+                max_num_len = max(max_num_len, len(longest_line))
             else:
                 text_count += 1
-                max_text_len = max(max_text_len, len(cell_txt))
+                max_text_len = max(max_text_len, len(longest_line))
 
         if c_idx == 0:
             is_num = False
@@ -150,6 +156,27 @@ def compute_column_widths(
         else:
             col_natural_lengths[c_idx] = max_text_len
             col_min_safe_widths[c_idx] = max(max_word_len, 14)
+
+    # Dense numeric tables often have a dozen narrow bands plus multi-line
+    # headers. If their safe floors cannot fit in the normal cap, allow a
+    # bounded overflow rather than shrinking cells until headers become
+    # unreadable. Ordinary prose and small tables remain strictly capped.
+    numeric_columns = sum(
+        1 for c_idx in range(1, num_cols) if c_idx not in prefix_positions
+    )
+    safe_floor_width = sum(
+        max(1, width) for width in col_min_safe_widths
+    ) + budget.column_spacing * max(0, num_cols - 1)
+    if (
+        num_cols >= budget.dense_table_min_columns
+        and numeric_columns >= 4
+        and safe_floor_width > budget.max_table_width
+    ):
+        overflow_limit = min(
+            safe_floor_width,
+            budget.max_table_width + budget.max_dense_table_overflow,
+        )
+        budget = replace(budget, max_table_width=overflow_limit)
 
     # 1b. Mirror column equalization for numeric columns with matching normalized headers
     header_to_num_cols: dict[str, list[int]] = defaultdict(list)

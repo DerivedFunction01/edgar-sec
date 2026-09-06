@@ -81,6 +81,9 @@ def _normalize_whitespace(text: str, *, preserve_newlines: bool = False) -> str:
         text = text.replace(ch, " ")
     for ch in _STRIP_ZERO_WIDTH:
         text = text.replace(ch, "")
+    # Dot leaders are visual filler, not meaningful cell content. Keep a
+    # compact ASCII leader so they cannot consume an entire table budget.
+    text = re.sub(r"\.{4,}", "...", text)
     if not preserve_newlines:
         text = _collapse_non_structural_newlines(text)
     return text

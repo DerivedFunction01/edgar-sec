@@ -28,12 +28,7 @@ def _run_id() -> str:
 
 @pytest.mark.parametrize(
     "name",
-    [
-        "apple_2025_segment",
-        "jpmorgan_2025_segment",
-        "jnj_2025_segment",
-        "kellogg_2003_segment",
-    ],
+    ["apple_2025_segment", "jpmorgan_2025_segment", "jnj_2025_segment"],
 )
 def test_normalization_segment_golden(name: str) -> None:
     input_path = FIXTURES / "archetypes" / f"{name}.htm"

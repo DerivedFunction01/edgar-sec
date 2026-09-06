@@ -77,13 +77,89 @@ def _is_detour(
     return right.value > left.value and middle.value > right.value
 
 
+def _repair_sequence(
+    members: list[PageCandidate],
+) -> tuple[list[PageCandidate], list[PageCandidate]]:
+    """Pop spikes, dips, duplicates, and inversions from one slot's sequence.
+
+    A middle value must sit strictly between ascending endpoints. Descending
+    endpoints (inversions such as a foreign table total followed by a
+    duplicate restart) are repaired only when the surrounding context is
+    ascending; restart-like descents, where the right side continues
+    consecutively, are left intact for section handling.
+    """
+    members = list(members)
+    popped: list[PageCandidate] = []
+    changed = True
+    while changed and len(members) >= 3:
+        changed = False
+        for index in range(1, len(members) - 1):
+            left, middle, right = (
+                members[index - 1],
+                members[index],
+                members[index + 1],
+            )
+            if left.value < right.value:
+                if left.value < middle.value < right.value:
+                    continue
+                popped.append(members.pop(index))
+                changed = True
+                break
+            if left.value == right.value:
+                if middle.value == left.value:
+                    continue
+                popped.append(members.pop(index))
+                changed = True
+                break
+            # Inversion: left.value > right.value.
+            previous = members[index - 2] if index >= 2 else None
+            following = members[index + 2] if index + 2 < len(members) else None
+            if following is not None and following.value == right.value + 1:
+                # Restart-like descent: the right side continues consecutively.
+                continue
+            duplicate_counts: dict[int, int] = {}
+            for candidate in members:
+                duplicate_counts[candidate.value] = (
+                    duplicate_counts.get(candidate.value, 0) + 1
+                )
+            if duplicate_counts.get(middle.value, 0) > 1:
+                popped.append(members.pop(index))
+            elif duplicate_counts.get(right.value, 0) > 1:
+                popped.append(members.pop(index + 1))
+            else:
+                middle_supported = previous is None or middle.value > previous.value
+                right_supported = following is None or right.value < following.value
+                if middle_supported and not right_supported:
+                    popped.append(members.pop(index))
+                elif right_supported and not middle_supported:
+                    popped.append(members.pop(index + 1))
+                else:
+                    popped.append(members.pop(index))
+            changed = True
+            break
+    return members, popped
+
+
 def heal_run(
     run: PageNumberRun,
     all_candidates: Iterable[PageCandidate] = (),
+    *,
+    stronger_values: frozenset[int] | set[int] = frozenset(),
+    page_break_lines: frozenset[int] | set[int] | None = None,
 ) -> tuple[PageNumberRun, tuple[InferredBoundary, ...], tuple[PageCandidate, ...]]:
-    """Remove isolated detours, promote compatible observations, and infer gaps."""
+    """Remove isolated detours, promote compatible observations, and infer gaps.
 
-    members = list(run.candidates)
+    ``stronger_values`` are page numbers already observed by higher-evidence
+    runs of the same namespace; this run never infers them. ``page_break_lines``
+    carries validated page-break anchor lines; when provided, a numeric gap is
+    interpolated only if at least that many page breaks exist between the
+    bracketing members (independent evidence that the pages exist). Without
+    boundary information the historical bounded interpolation applies.
+    """
+
+    members, _popped = _repair_sequence(list(run.candidates))
+    member_values = {candidate.value for candidate in members}
+    member_ids = {(candidate.start_line, candidate.value) for candidate in members}
     changed = True
     while changed and len(members) >= 3:
         changed = False
@@ -98,7 +174,8 @@ def heal_run(
         for candidate in all_candidates
         if candidate.namespace == run.namespace
         and candidate.family == run.family
-        and candidate not in members
+        and (candidate.start_line, candidate.value) not in member_ids
+        and candidate.value not in member_values
     ]
     promoted: list[PageCandidate] = []
     for left, right in pairwise(members):
@@ -114,6 +191,7 @@ def heal_run(
             )
     if promoted:
         members = sorted({*members, *promoted}, key=lambda item: item.start_line)
+        member_values.update(candidate.value for candidate in promoted)
 
     inferred: list[InferredBoundary] = []
     for left, right in pairwise(members):
@@ -123,14 +201,35 @@ def heal_run(
             # inside the run rather than missing pages; interpolating them
             # floods metadata with phantom boundaries.
             continue
+        breaks_between = None
+        if page_break_lines is not None:
+            breaks_between = sum(
+                1
+                for line in page_break_lines
+                if left.start_line < line < right.start_line
+            )
+            if breaks_between < missing:
+                # The numeric gap alone is not evidence that the pages exist.
+                continue
+        reason = "interpolated_gap"
+        if breaks_between is not None:
+            reason = (
+                "validated_page_break_count"
+                if breaks_between == missing
+                else "page_break_supported"
+            )
         for rank in range(1, missing + 1):
+            value = left.value + rank
+            if value in member_values or value in stronger_values:
+                # Already observed here or by a higher-evidence run.
+                continue
             inferred.append(
                 InferredBoundary(
                     line=left.start_line
                     + (right.start_line - left.start_line) * rank / (missing + 1),
-                    page_number=left.value + rank,
+                    page_number=value,
                     namespace=run.namespace,
-                    reason="interpolated_gap",
+                    reason=reason,
                 )
             )
 

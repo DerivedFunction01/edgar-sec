@@ -178,7 +178,34 @@ def analyze_page_markers(
     ]
 
     runs = (*anchored_runs, *fallback_runs)
-    inferred = tuple(item for run in runs for item in heal_run(run, run.candidates)[1])
+    # Cross-run context for healing: anchored runs rank above anchorless runs,
+    # so anchorless runs never infer values the anchored runs already observed.
+    # Promotion pools span both scans so anchorless discoveries can fill gaps.
+    stronger_values: dict[str, set[int]] = {}
+    candidate_pool: dict[tuple[str, Any], list[PageCandidate]] = {}
+    for candidate in (*anchored_candidates, *fallback_candidates):
+        candidate_pool.setdefault((candidate.namespace, candidate.family), []).append(
+            candidate
+        )
+    firm_breaks = {
+        marker.start_line
+        for marker in markers
+        if marker.kind in {PageMarkerKind.SGML, PageMarkerKind.BOUNDARY}
+    }
+    inferred = tuple(
+        item
+        for run in runs
+        for item in heal_run(
+            run,
+            candidate_pool.get((run.namespace, run.family), ()),
+            stronger_values=stronger_values.get(run.namespace, frozenset()),
+            page_break_lines=firm_breaks or None,
+        )[1]
+    )
+    for run in runs:
+        stronger_values.setdefault(run.namespace, set()).update(
+            candidate.value for candidate in run.candidates
+        )
     # SGML tags delimit pages, but are not sufficient evidence to remove
     # nearby presentation prose.
     label_anchors = [marker for marker in markers if marker.page_number is not None]
