@@ -808,7 +808,7 @@ def _recipe_sample(signature_comment: str, value: int) -> str:
 
 
 def test_html_recipe_cache_learns_and_reuses_signature_profile() -> None:
-    import defs.sec_forms.page_markers.html as html_mod
+    import defs.sec_forms.page_markers.html.probes as html_mod
 
     html_mod._RECIPE_CACHE.clear()
     html_mod._RECIPE_REJECTED.clear()
@@ -840,7 +840,7 @@ def test_html_recipe_cache_learns_and_reuses_signature_profile() -> None:
 
 
 def test_html_recipe_cache_rejects_mismatched_profile_and_falls_back() -> None:
-    import defs.sec_forms.page_markers.html as html_mod
+    import defs.sec_forms.page_markers.html.probes as html_mod
 
     html_mod._RECIPE_CACHE.clear()
     html_mod._RECIPE_REJECTED.clear()
