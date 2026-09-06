@@ -135,6 +135,60 @@ _RE_HIDDEN_TEMPLATE = re.compile(r"(?:^|[\s_-])(?:hidden|template)(?:$|[\s_-])")
 _RE_PAGE_SEMANTIC = re.compile(rf"(?:^|[\s_-])(?:{_PAGE_WORDS})(?:$|[\s_-])")
 _RE_TOC_SEMANTIC = re.compile(rf"(?:^|[\s_-])(?:{_TOC_WORDS})(?:$|[\s_-])")
 _RE_STRUCTURAL_MATCH = re.compile(rf"(?i)^(?:{_STRUCTURAL_WORDS})\b")
+
+# Function words that empirically never appear in captured page header/footer
+# text. Derived by probing all 2,202 ASCII fixtures: corpus of captured
+# REPEATING_HEADER/REPEATING_FOOTER marker text versus sampled body lines
+# (footer document-frequency == 0, body document-frequency >= 25%). Words that
+# legitimately occur in footer titles ("the", "of", "for", "to", "no",
+# "which", "during", "must") are deliberately excluded. Used to reject
+# prose-bearing lookalike tables (footnote tables, comparison tables).
+PROSE_GUARD_STOP_WORDS = frozenset(
+    [
+        "about",
+        "above",
+        "all",
+        "also",
+        "any",
+        "because",
+        "been",
+        "being",
+        "below",
+        "both",
+        "can",
+        "could",
+        "do",
+        "does",
+        "each",
+        "had",
+        "has",
+        "have",
+        "herein",
+        "however",
+        "is",
+        "more",
+        "most",
+        "only",
+        "over",
+        "same",
+        "should",
+        "some",
+        "such",
+        "than",
+        "there",
+        "these",
+        "this",
+        "those",
+        "through",
+        "until",
+        "was",
+        "were",
+        "when",
+        "who",
+        "will",
+        "would",
+    ]
+)
 _RE_APPENDIX_ROMAN = re.compile(
     r"^(?P<prefix>[A-Za-z])-(?P<value>[ivxlcdm]{1,8})$",
     re.IGNORECASE,

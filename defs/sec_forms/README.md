@@ -63,7 +63,10 @@ defs/sec_forms/
 - **`models.py`** — Shared immutable domain dataclasses:
   - `Security12b`, `RegistrantEntry`, `CheckboxDisclosures`, `CoverPageModel`.
 
-- **`page_markers/`** — Universal page-marker analysis, classification, and stripping.
+- **`page_markers/`** — Coordinate-safe ASCII/SGML and HTML page-marker
+  discovery, classification, and removal. See
+  [`page_markers/README.md`](page_markers/README.md) for the full pipeline,
+  safety invariants, performance history, and benchmark status.
   - Firm SGML/footer forms remain compatible with the original public API.
   - Contextual ASCII candidates are promoted only through namespace-aware
     sequence, layout, TOC, prose, and financial/table exclusion evidence.

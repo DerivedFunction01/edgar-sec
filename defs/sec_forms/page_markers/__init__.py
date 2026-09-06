@@ -25,6 +25,7 @@ from .models import (
     PageMarkerSpan,
     PageMarkerTerminalState,
     PageNumberRun,
+    PageRegionReport,
     TemplateEvidence,
 )
 from .pre import extract_ascii_pre
@@ -41,6 +42,7 @@ __all__ = [
     "PageMarkerSpan",
     "PageMarkerTerminalState",
     "PageNumberRun",
+    "PageRegionReport",
     "TemplateEvidence",
     "analyze_page_markers",
     "apply_html_page_decisions",

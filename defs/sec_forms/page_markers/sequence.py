@@ -8,6 +8,10 @@ from statistics import median
 
 from .models import InferredBoundary, PageCandidate, PageNumberRun
 
+# Upper bound on pages interpolated across one value gap. Larger jumps are
+# typically foreign values (years, totals) inside the run, not missing pages.
+MAX_INTERPOLATED_GAP = 64
+
 
 def monotone_fraction(values: Iterable[int], max_delta: int = 3) -> float:
     """Return the fraction of consecutive values forming a bounded increase."""
@@ -114,7 +118,10 @@ def heal_run(
     inferred: list[InferredBoundary] = []
     for left, right in pairwise(members):
         missing = right.value - left.value - 1
-        if missing <= 0:
+        if missing <= 0 or missing > MAX_INTERPOLATED_GAP:
+            # Very large gaps are usually foreign values (years, totals)
+            # inside the run rather than missing pages; interpolating them
+            # floods metadata with phantom boundaries.
             continue
         for rank in range(1, missing + 1):
             inferred.append(

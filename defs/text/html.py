@@ -212,6 +212,26 @@ class FastHtmlNode:
             if child.tag:
                 yield FastHtmlNode(child)
 
+    def find_previous_sibling(self, name: str | None = None) -> FastHtmlNode | None:
+        """Find the nearest previous sibling element (skipping text nodes)."""
+        target = name.lower() if name is not None else None
+        curr = self._node.prev
+        while curr is not None:
+            if curr.tag != "-text" and (target is None or curr.tag == target):
+                return FastHtmlNode(curr)
+            curr = curr.prev
+        return None
+
+    def find_next_sibling(self, name: str | None = None) -> FastHtmlNode | None:
+        """Find the nearest next sibling element (skipping text nodes)."""
+        target = name.lower() if name is not None else None
+        curr = self._node.next
+        while curr is not None:
+            if curr.tag != "-text" and (target is None or curr.tag == target):
+                return FastHtmlNode(curr)
+            curr = curr.next
+        return None
+
     def unwrap(self) -> None:
         """Remove this element while retaining all its children in place."""
         self._node.unwrap()

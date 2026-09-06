@@ -107,6 +107,24 @@ class InferredBoundary:
 
 
 @dataclass(frozen=True, slots=True)
+class PageRegionReport:
+    """Classification of one source interval outside validated page families.
+
+    ``status`` is one of ``referential_labels`` (label-shaped tokens exist but
+    no family claimed the region, e.g. a table of contents), ``weak_numeric``
+    (bare digits only, typically financial tables), or ``likely_pageless``.
+    Reports are metadata only and never authorize removal.
+    """
+
+    start_offset: int
+    end_offset: int
+    status: str
+    letter_tokens: int = 0
+    page_tokens: int = 0
+    digit_tokens: int = 0
+
+
+@dataclass(frozen=True, slots=True)
 class TemplateEvidence:
     """Evidence for a repeated header/footer template."""
 
@@ -168,6 +186,7 @@ class PageMarkerAnalysis:
     unresolved: tuple[str, ...] = ()
     terminal_state: PageMarkerTerminalState = PageMarkerTerminalState.NONE
     coordinate_frame: str = "text"
+    regions: tuple[PageRegionReport, ...] = ()
 
 
 __all__ = [
@@ -181,5 +200,6 @@ __all__ = [
     "PageMarkerSpan",
     "PageMarkerTerminalState",
     "PageNumberRun",
+    "PageRegionReport",
     "TemplateEvidence",
 ]

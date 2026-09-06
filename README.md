@@ -104,7 +104,8 @@ The phase also provides a fixture-ID document corpus review workflow with
 Domain-neutral contracts: SEC HTTP client (pacing/retries/caching), canonical
 filing identity (accessions, archive URLs, occurrence IDs, document locator
 keys), storage backends, SQL boundary, `sec_forms/` (shared SEC form definitions,
-cover-page contracts, and the coordinate-safe `page_markers/` analysis package),
+cover-page contracts, and the coordinate-safe `page_markers/` analysis package
+with HTML/ASCII discovery, structural pruning, and safety invariants),
 and the shared phase runtime.
 
 ### [Dataset Viewer](defs/viewer/README.md)

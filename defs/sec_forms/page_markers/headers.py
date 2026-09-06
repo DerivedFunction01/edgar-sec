@@ -6,13 +6,6 @@ import re
 from collections import defaultdict
 
 from defs.regex import build_alternation
-from defs.text import (
-    CaseMode,
-    EvidenceTier,
-    LexicalEvidencePack,
-    compile_evidence_pack,
-    score_unit,
-)
 from defs.text.dates import MONTH_PATTERN, extract_years
 from defs.text.logical_units import classify_units
 
@@ -25,47 +18,8 @@ from .models import (
     PageMarkerKind,
     TemplateEvidence,
 )
+from .prose import looks_like_prose
 
-_PROSE_PACK = LexicalEvidencePack(
-    name="page_marker_header_prose",
-    tiers=(
-        EvidenceTier(
-            name="verbs",
-            priority=2,
-            value=2,
-            terms=(
-                "is",
-                "are",
-                "was",
-                "were",
-                "has",
-                "have",
-                "had",
-                "will",
-                "include",
-                "provide",
-                "contain",
-            ),
-            case_mode=CaseMode.LOWERCASE,
-        ),
-        EvidenceTier(
-            name="currency_units",
-            priority=1,
-            value=1,
-            terms=("usd", "million", "thousand"),
-            support=True,
-        ),
-        EvidenceTier(
-            name="per_share",
-            priority=1,
-            value=1,
-            terms=("per share",),
-            match_kind="ngram",
-            support=True,
-        ),
-    ),
-)
-_COMPILED_PROSE = compile_evidence_pack(_PROSE_PACK)
 _PAGE_TOKEN_RE = re.compile(r"\bpage\s+\d{1,4}\b", re.IGNORECASE)
 _TRAILING_NUMBER_RE = re.compile(r"\s{2,}(?:\d{1,4}|[ivxlcdm]{1,8})\s*$", re.IGNORECASE)
 _WHITESPACE_RE = re.compile(r"\s+")
@@ -97,15 +51,6 @@ def _clean_template(line: str) -> str:
     return normalized.strip()
 
 
-def _prose_warning(line: str) -> bool:
-    stripped = line.strip()
-    if len(stripped.split()) < 6:
-        return False
-    if stripped.endswith((",", ";", ":")):
-        return True
-    return score_unit(stripped, _COMPILED_PROSE).score >= 2
-
-
 def _clean_date_heading(line: str) -> bool:
     years = extract_years(line)
     if len(years) != 1:
@@ -116,13 +61,35 @@ def _clean_date_heading(line: str) -> bool:
     return bool(_DATE_END_RE.search(line))
 
 
+def _slot_heading_members(
+    slot_members: list[tuple[int, str, str]],
+) -> list[tuple[int, str, str]]:
+    """Keep headings and prose templates repeated within the slot.
+
+    Slot occupancy alone is insufficient: body prose can begin at the same
+    line after many page breaks. A prose-looking line is removable only when
+    its normalized template repeats, while heading-shaped lines retain the
+    existing slot-invariant behavior.
+    """
+    template_counts: dict[str, int] = defaultdict(int)
+    for _, line, template in slot_members:
+        if not looks_like_prose(line):
+            continue
+        template_counts[template] += 1
+    return [
+        member
+        for member in slot_members
+        if not looks_like_prose(member[1]) or template_counts[member[2]] >= 2
+    ]
+
+
 def _eligible(
     line: str, toc_lines: set[int], line_index: int, unit_kind: str | None
 ) -> bool:
     stripped = line.strip()
     if not stripped or line_index in toc_lines or _STRUCTURAL_RE.match(stripped):
         return False
-    if unit_kind == "table" or _prose_warning(line) or _clean_date_heading(line):
+    if unit_kind == "table" or _clean_date_heading(line):
         return False
     shape = line_shape(line)
     if shape["all_caps"]:
@@ -231,16 +198,17 @@ def analyze_repeating_headers(
                 slot_groups[(side, position)].append((index, line, template))
 
     for (side, position), slot_members in slot_groups.items():
-        if len(slot_members) < 4:
+        heading_members = _slot_heading_members(slot_members)
+        if len(heading_members) < 4:
             continue
-        slot_presence = len(slot_members) / len(anchors)
+        slot_presence = len(heading_members) / len(anchors)
         if slot_presence >= 0.65:
             kind = (
                 PageMarkerKind.REPEATING_HEADER
                 if side == "header"
                 else PageMarkerKind.REPEATING_FOOTER
             )
-            lines_seen = tuple(index for index, _, _ in slot_members)
+            lines_seen = tuple(index for index, _, _ in heading_members)
             templates.append(
                 TemplateEvidence(
                     side,

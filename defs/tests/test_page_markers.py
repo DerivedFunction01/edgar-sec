@@ -5,7 +5,10 @@ from __future__ import annotations
 import importlib
 
 import pytest
+from bs4 import BeautifulSoup
 
+from defs.sec_forms.page_markers.headers import _slot_heading_members
+from defs.sec_forms.page_markers.html import html_has_page_label_evidence
 from defs.text.html import parse_html
 
 pm_mod = importlib.import_module("defs.sec_forms.page_markers")
@@ -337,6 +340,270 @@ def test_html_page_footer_table_is_allowed_but_financial_table_is_not() -> None:
         source_text=financial,
     )
     assert financial_analysis.markers == ()
+
+
+def test_html_label_scan_keeps_generic_labels_with_hr_candidates() -> None:
+    text = """<html><body>
+    <p><hr><p>1</p><hr><p>2</p><hr><p>3</p>
+    <p align="center">F-1</p><p align="center">F-2</p>
+    <p align="center">F-3</p>
+    </body></html>"""
+    soup = BeautifulSoup(text, "lxml")
+    analysis = enrich_html_analysis(
+        analyze_page_markers(text, representation="html"),
+        soup,
+        source_text=text,
+    )
+    assert any(
+        run.namespace == "F"
+        and [candidate.value for candidate in run.candidates] == [1, 2, 3]
+        for run in analysis.page_number_runs
+    )
+
+
+def test_ascii_slot_preserves_unique_prose_but_keeps_repeated_prose_header() -> None:
+    unique = [
+        (
+            1,
+            "During 1999 the Company entered into a new arrangement for investors",
+            "a",
+        ),
+        (2, "During 2000 the Company entered into a new arrangement for holders", "b"),
+        (3, "During 2001 the Company entered into a new arrangement for lenders", "c"),
+        (
+            4,
+            "During 2002 the Company entered into a new arrangement for customers",
+            "d",
+        ),
+    ]
+    assert _slot_heading_members(unique) == []
+
+    repeated = [(index, unique[0][1], "same") for index in range(1, 5)]
+    assert _slot_heading_members(repeated) == repeated
+
+
+def _footer_tables(values: int | list[int], cell_middle: str = "Page") -> str:
+    numbers = [values] if isinstance(values, int) else values
+    return "".join(
+        f'<table style="border-collapse: collapse; width: 100%">'
+        f"<tr><td>ACME 10-K</td><td>{cell_middle}</td>"
+        f'<td style="text-align: center">{number}</td>'
+        f"<td>ACME Corp</td></tr></table>"
+        for number in numbers
+    )
+
+
+def test_html_word_style_table_footer_family_is_detected() -> None:
+    text = f"<html><body>{_footer_tables([1, 2, 3, 4])}<p>Body prose.</p></body></html>"
+    soup = parse_html(text)
+    analysis = enrich_html_analysis(
+        analyze_page_markers(text, representation="html"),
+        soup,
+        source_text=text,
+    )
+    assert any(
+        run.namespace == "arabic"
+        and [candidate.value for candidate in run.candidates] == [1, 2, 3, 4]
+        for run in analysis.page_number_runs
+    )
+    assert {marker.kind for marker in analysis.markers} == {PageMarkerKind.TABLE_FOOTER}
+
+
+@pytest.mark.parametrize(
+    "middle",
+    [
+        "$1,234",  # currency + thousands separator
+        "45%",  # percent
+        "1,234.56",  # thousands + decimal
+        "(1,234)",  # parenthesized number
+        "December 31, 2024",  # SEC date
+    ],
+)
+def test_html_financial_footer_tables_are_rejected(middle: str) -> None:
+    text = f"<html><body>{_footer_tables([1, 2, 3], cell_middle=middle)}</body></html>"
+    soup = parse_html(text)
+    analysis = enrich_html_analysis(
+        analyze_page_markers(text, representation="html"),
+        soup,
+        source_text=text,
+    )
+    assert analysis.markers == ()
+    assert analysis.page_number_runs == ()
+
+
+def test_html_multiyear_footer_table_is_rejected() -> None:
+    rows = "".join(
+        f'<table style="border-collapse: collapse; width: 100%">'
+        f"<tr><td>Fiscal {year} results</td>"
+        f'<td style="text-align: center">{number}</td>'
+        f"<td>ACME Corp</td></tr></table>"
+        for year, number in ((2023, 1), (2024, 2), (2025, 3))
+    )
+    text = f"<html><body>{rows}</body></html>"
+    soup = parse_html(text)
+    analysis = enrich_html_analysis(
+        analyze_page_markers(text, representation="html"),
+        soup,
+        source_text=text,
+    )
+    assert analysis.markers == ()
+    assert analysis.page_number_runs == ()
+
+
+def test_html_footnote_prose_table_is_rejected_by_stop_words() -> None:
+    # d699820d10k-style false positive: bare footnote numbers next to short
+    # prose. Two distinct page-guard stop words must reject it even though the
+    # sequence (3, 5, 6) is monotone and no financial tokens are present.
+    rows = "".join(
+        f"<table><tr><td>{number}</td>"
+        f"<td>The reported total was above the plan for this period.</td></tr></table>"
+        for number in (3, 5, 6)
+    )
+    text = f"<html><body>{rows}</body></html>"
+    soup = parse_html(text)
+    analysis = enrich_html_analysis(
+        analyze_page_markers(text, representation="html"),
+        soup,
+        source_text=text,
+    )
+    assert analysis.markers == ()
+    assert analysis.page_number_runs == ()
+
+
+def test_html_oversized_prose_cell_is_rejected() -> None:
+    filler = "word " * 60
+    rows = "".join(
+        f"<table><tr><td>{number}</td><td>{filler}</td></tr></table>"
+        for number in (1, 2, 3)
+    )
+    text = f"<html><body>{rows}</body></html>"
+    soup = parse_html(text)
+    analysis = enrich_html_analysis(
+        analyze_page_markers(text, representation="html"),
+        soup,
+        source_text=text,
+    )
+    assert analysis.markers == ()
+    assert analysis.page_number_runs == ()
+
+
+def test_html_oversized_cell_count_is_rejected() -> None:
+    rows = "".join(
+        "<table><tr>"
+        + "".join(f"<td>{index}</td>" for index in range(10))
+        + "</tr></table>"
+        for _ in range(3)
+    )
+    text = f"<html><body>{rows}</body></html>"
+    soup = parse_html(text)
+    analysis = enrich_html_analysis(
+        analyze_page_markers(text, representation="html"),
+        soup,
+        source_text=text,
+    )
+    assert analysis.markers == ()
+    assert analysis.page_number_runs == ()
+
+
+def test_html_no_page_label_evidence_skips_generic_scan() -> None:
+    # bwc-style document: financial tables full of bare digits, no strong
+    # labels, no HR. The generic div/span/font scan must not run, but the
+    # financial tables must also not be promoted to footer families.
+    text = (
+        "<html><body>"
+        "<table><tr><td>Revenue</td><td>$1,234.56</td><td>45%</td></tr></table>"
+        "<table><tr><td>Net income</td><td>2,000</td><td>10%</td></tr></table>"
+        "<table><tr><td>Year</td><td>2023</td><td>2024</td></tr></table>"
+        "<p>Total assets grew 12.5% year over year with 3,456 units.</p>"
+        "</body></html>"
+    )
+    soup = parse_html(text)
+    analysis = enrich_html_analysis(
+        analyze_page_markers(text, representation="html"),
+        soup,
+        source_text=text,
+    )
+    assert analysis.markers == ()
+    assert analysis.page_number_runs == ()
+    assert analysis.terminal_state.value == "no_visible_labels"
+
+
+def test_html_recovery_infers_hidden_page_boundaries() -> None:
+    parts = ["<html><body>"]
+    for value in range(1, 5):
+        parts.append(f'<p align="center">F-{value}</p><p>Body {value}.</p>')
+    for value in range(5, 9):  # hidden -> not validated as visible candidates
+        parts.append(f'<span style="display:none">F-{value}</span><p>Body {value}.</p>')
+    for value in (9, 10):
+        parts.append(f'<p align="center">F-{value}</p><p>Body {value}.</p>')
+    parts.append("</body></html>")
+    text = "".join(parts)
+    analysis = enrich_html_analysis(
+        analyze_page_markers(text, representation="html"),
+        parse_html(text),
+        source_text=text,
+    )
+    assert any(
+        run.namespace == "F"
+        and [candidate.value for candidate in run.candidates] == [1, 2, 3, 4, 9, 10]
+        for run in analysis.page_number_runs
+    )
+    inferred = sorted(
+        boundary.page_number
+        for boundary in analysis.inferred_boundaries
+        if boundary.namespace == "F" and boundary.reason == "bounded_literal_recovery"
+    )
+    assert inferred == [5, 6, 7, 8]
+
+
+def test_html_regions_report_uncovered_intervals() -> None:
+    text = (
+        "<html><body>"
+        "<p>Refer to Page 1 and Page 2 for details.</p>"
+        "<p>Page 3 continues the introduction.</p>"
+        "<p>Body prose without any page furniture.</p>"
+        "<p align='center'>A-1</p><p>Section text one.</p>"
+        "<p align='center'>A-2</p><p>Section text two.</p>"
+        "<p align='center'>A-3</p><p>Section text three.</p>"
+        "</body></html>"
+    )
+    analysis = enrich_html_analysis(
+        analyze_page_markers(text, representation="html"),
+        parse_html(text),
+        source_text=text,
+    )
+    statuses = {region.status for region in analysis.regions}
+    assert "referential_labels" in statuses
+    assert "likely_pageless" in statuses
+
+
+def test_html_regions_report_weak_numeric_without_families() -> None:
+    text = (
+        "<html><body>"
+        "<table><tr><td>Revenue</td><td>$1,234.56</td><td>45%</td></tr></table>"
+        "<table><tr><td>Year</td><td>2003</td></tr>"
+        "<tr><td>Amount</td><td>2004</td></tr>"
+        "<tr><td>Count</td><td>2005</td></tr></table>"
+        "<p>Total assets grew 12.5% year over year with 3,456 units.</p>"
+        "</body></html>"
+    )
+    analysis = enrich_html_analysis(
+        analyze_page_markers(text, representation="html"),
+        parse_html(text),
+        source_text=text,
+    )
+    assert analysis.markers == ()
+    assert any(region.status == "weak_numeric" for region in analysis.regions)
+    assert html_has_page_label_evidence("<p>F-3</p>")
+
+
+def test_html_has_page_label_evidence_gate() -> None:
+    assert html_has_page_label_evidence("<p>F-3</p>")
+    assert html_has_page_label_evidence("<td>page 4</td>")
+    assert html_has_page_label_evidence("<hr><p>1</p>")
+    assert html_has_page_label_evidence("<table><tr><td>7</td></tr></table>")
+    assert not html_has_page_label_evidence("<p>Plain prose without numbers.</p>")
+    assert not html_has_page_label_evidence("")
 
 
 def test_text_cleanup_does_not_reuse_stale_coordinate_frame() -> None:
