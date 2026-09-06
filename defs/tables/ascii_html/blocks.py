@@ -406,11 +406,7 @@ def fuse_header_suffix_blocks(
         b_idx = 0
         while b_idx < len(curr_blocks):
             curr_b = curr_blocks[b_idx]
-            if (
-                curr_b.text.strip()
-                and len(curr_b.span_cols) >= 2
-                and b_idx + 1 < len(curr_blocks)
-            ):
+            if curr_b.text.strip() and b_idx + 1 < len(curr_blocks):
                 next_b = curr_blocks[b_idx + 1]
                 if (
                     not next_b.text.strip()

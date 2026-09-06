@@ -35,7 +35,12 @@ def _split_wide_hyphenated(text: str, width: int) -> str:
 
 def _normalize_wrap_whitespace(text: str) -> str:
     """Make source whitespace consistently breakable for direct wrap callers."""
-    return sub(r"[\u00a0\u2007\u2009\u202f\u200b\u200c\u200d\ufeff]", " ", text)
+    text = sub(
+        r"[\u200b\u200c\u200d\u200e\u200f\u061c\u202a-\u202e\u2066-\u2069\ufeff]",
+        "",
+        text,
+    )
+    return sub(r"[\u00a0\u2007\u2009\u202f]", " ", text)
 
 
 def wrap_cell_text(text: str, width: int) -> list[str]:
