@@ -47,6 +47,14 @@ class PageMarkerTerminalState(StrEnum):
     UNRESOLVED = "unresolved"
 
 
+class PageArtifactPolicy(StrEnum):
+    """Rendering policy for validated page furniture."""
+
+    STRIP = "strip"
+    ANNOTATE = "annotate"
+    PRESERVE = "preserve"
+
+
 @dataclass(frozen=True, slots=True)
 class PageMarkerSpan:
     """A detected page marker and its source span."""
@@ -138,6 +146,30 @@ class TemplateEvidence:
 
 
 @dataclass(frozen=True, slots=True)
+class PageBreakArtifact:
+    """Provenance record for one rendered page artifact event.
+
+    ``source`` names the validated origin (for example ``page_number``,
+    ``hr``, ``page-break-container``, ``inferred-line``); coordinates stay in
+    their declared ``coordinate_frame``. The rendered token carries only the
+    assigned id; every payload attribute lives here.
+    """
+
+    page_number: int | str | None
+    namespace: str | None
+    source: str
+    coordinate_frame: str
+    source_identity: str
+    node_path: tuple[int, ...] = ()
+    start: int | None = None
+    end: int | None = None
+    start_line: int | None = None
+    end_line: int | None = None
+    removable: bool = False
+    template_id: str | None = None
+
+
+@dataclass(frozen=True, slots=True)
 class PageMarker:
     """A detected page marker and its representation metadata."""
 
@@ -187,10 +219,13 @@ class PageMarkerAnalysis:
     terminal_state: PageMarkerTerminalState = PageMarkerTerminalState.NONE
     coordinate_frame: str = "text"
     regions: tuple[PageRegionReport, ...] = ()
+    artifacts: tuple[PageBreakArtifact, ...] = ()
 
 
 __all__ = [
     "InferredBoundary",
+    "PageArtifactPolicy",
+    "PageBreakArtifact",
     "PageCandidate",
     "PageMarker",
     "PageMarkerAction",

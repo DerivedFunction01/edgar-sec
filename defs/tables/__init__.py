@@ -8,6 +8,14 @@ from .ascii_html import (
     render_grid_to_ascii,
 )
 from .currencies import MAJOR_CURRENCIES, PREFIX_SYMBOLS, SUFFIX_SYMBOLS
+from .hybrid import (
+    HybridPreText,
+    PreBlockKind,
+    classify_pre_block,
+    normalize_hybrid_pre_blocks,
+    normalize_hybrid_pre_text,
+    restore_hybrid_pre_text,
+)
 from .patterns import (
     BULLET_MARKER_RE,
     FINANCIAL_PLACEHOLDERS,
@@ -42,6 +50,9 @@ __all__ = [
     "SUFFIX_SYMBOLS",
     "SUFFIX_TOKENS",
     "YEAR_TOKEN_RE",
+    "HybridPreText",
+    "PreBlockKind",
+    "classify_pre_block",
     "convert_html_table",
     "convert_html_tables_to_ascii",
     "is_financial_placeholder",
@@ -49,5 +60,8 @@ __all__ = [
     "is_numeric_start",
     "is_prefix_token",
     "is_suffix_token",
+    "normalize_hybrid_pre_blocks",
+    "normalize_hybrid_pre_text",
     "render_grid_to_ascii",
+    "restore_hybrid_pre_text",
 ]

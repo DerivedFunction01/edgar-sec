@@ -206,3 +206,65 @@ def test_deep_normalizer_removes_validated_html_markers_without_ascii_reflow() -
     assert result.reflow is None
     assert result.page_analysis is not None
     assert result.page_analysis.coordinate_frame == "html"
+
+
+# --------------------------------------------------------------------------
+# Page artifact policy integration.
+# --------------------------------------------------------------------------
+
+PageArtifactPolicy = importlib.import_module(
+    "defs.sec_forms.page_markers"
+).PageArtifactPolicy
+
+
+def _ascii_prep(text: str) -> PreprocessedDocument:
+    return PreprocessedDocument(
+        raw_text=text,
+        cleaned_text=text,
+        word_count=len(text.split()),
+        has_html_tags=False,
+        detected_encoding="utf-8",
+    )
+
+
+def test_deep_normalizer_annotate_policy_emits_tokens_and_metadata() -> None:
+    normalizer = DeepNormalizer()
+    text = "<PAGE>\nITEM 1. BUSINESS\nSome prose.\n<PAGE> 2\nMore prose.\n"
+    result = normalizer.normalize_result(
+        _ascii_prep(text), page_artifact_policy=PageArtifactPolicy.ANNOTATE
+    )
+    assert "[[SEC:PAGE_BREAK id=1]]" in result.text
+    assert "[[SEC:PAGE_BREAK id=2]]" in result.text
+    artifacts = result.page_artifacts
+    assert artifacts is not None
+    assert artifacts["policy"] == "annotate"
+    assert artifacts["source_identity"]
+    assert [entry["id"] for entry in artifacts["artifacts"]] == [1, 2]
+    assert all(entry["removable"] for entry in artifacts["artifacts"])
+
+
+def test_deep_normalizer_strip_policy_records_provenance_without_tokens() -> None:
+    normalizer = DeepNormalizer()
+    text = "<PAGE>\nITEM 1. BUSINESS\nSome prose.\n<PAGE> 2\nMore prose.\n"
+    result = normalizer.normalize_result(_ascii_prep(text))
+    assert "[[SEC:" not in result.text
+    assert "<PAGE>" not in result.text
+    artifacts = result.page_artifacts
+    assert artifacts is not None
+    assert artifacts["policy"] == "strip"
+    assert len(artifacts["artifacts"]) == 2
+    assert all(entry["removable"] for entry in artifacts["artifacts"])
+    assert all(entry["line_span"] is not None for entry in artifacts["artifacts"])
+
+
+def test_deep_normalizer_preserve_policy_keeps_source() -> None:
+    normalizer = DeepNormalizer()
+    text = "<PAGE>\nITEM 1. BUSINESS\nSome prose.\n<PAGE> 2\nMore prose.\n"
+    result = normalizer.normalize_result(
+        _ascii_prep(text), page_artifact_policy=PageArtifactPolicy.PRESERVE
+    )
+    assert "<PAGE>" in result.text
+    assert result.page_artifacts is not None
+    assert result.page_artifacts["policy"] == "preserve"
+    assert result.page_artifacts["artifacts"] == []
+    assert result.page_artifacts["templates"] == {}

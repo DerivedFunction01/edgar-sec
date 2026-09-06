@@ -8,7 +8,7 @@ from statistics import median
 
 from defs.tables.tokens import ALL_CURRENCY_SYMBOLS, is_numeric_cell
 
-from .models import PageCandidate
+from ..models import PageCandidate
 
 _MULTI_SPACE_RE = re.compile(r"[ \t]{2,}")
 _NUMERIC_RE = re.compile(r"(?<![A-Za-z0-9])\d{1,4}(?![A-Za-z0-9])")

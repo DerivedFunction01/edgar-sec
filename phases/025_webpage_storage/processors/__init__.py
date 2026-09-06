@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 
+from defs.sec_forms.page_markers import PageArtifactPolicy
+
 from ..core.schemas import DocumentLocator, doc_id
 from .base import (
     DocumentProcessor,
@@ -40,10 +42,12 @@ class DefaultFilingProcessor(DocumentProcessor):
         preprocessor: GenericPreprocessor | None = None,
         router: FormRouter | None = None,
         normalizer: DeepNormalizer | None = None,
+        page_artifact_policy: PageArtifactPolicy = PageArtifactPolicy.STRIP,
     ) -> None:
         self.preprocessor = preprocessor or GenericPreprocessor()
         self.router = router or FormRouter()
         self.normalizer = normalizer or DeepNormalizer(router=self.router)
+        self.page_artifact_policy = page_artifact_policy
 
     def build_processed_document(
         self,
@@ -144,6 +148,7 @@ class DefaultFilingProcessor(DocumentProcessor):
             "page_marker_unresolved_count": len(page_analysis.unresolved)
             if page_analysis
             else 0,
+            "page_artifacts": normalization.page_artifacts,
         }
 
         return ProcessedDocument(
@@ -169,7 +174,9 @@ class DefaultFilingProcessor(DocumentProcessor):
 
         # Stage 2 & 3: Deep Normalization & Table Alignment
         normalization = self.normalizer.normalize_result(
-            preprocessed, metadata={"form": locator.form}
+            preprocessed,
+            metadata={"form": locator.form},
+            page_artifact_policy=self.page_artifact_policy,
         )
 
         return self.build_processed_document(preprocessed, normalization, locator)

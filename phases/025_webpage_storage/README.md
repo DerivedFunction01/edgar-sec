@@ -159,6 +159,13 @@ Raw acquisition and normalization are separate artifacts:
   body-start anchor/confidence/rejection reasons, and the closing region
   (`closing_start_line`, `closing_kind`, `closing_confidence`) detected only
   after a validated body anchor.
+- Page artifacts are part of that metadata under the `page_artifacts` key:
+  the declared `PageArtifactPolicy` (`strip` by default, `annotate`, or
+  `preserve`), the source-identity fingerprint, deduplicated furniture
+  templates, and per-artifact coordinates. Under `annotate`, validated page
+  furniture is replaced by compact `[[SEC:PAGE_BREAK id=N]]`-style tokens in
+  the normalized payload; the id resolves only against metadata whose
+  `source_identity` matches. Absent key means legacy `strip` behavior.
 - `--no-normalize` runs raw-only acquisition: no normalized rows are written,
   and `_committed_chunks` records the `raw-only` processor fingerprint.
 - Committed chunks record their processor fingerprint and normalized schema

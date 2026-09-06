@@ -7,7 +7,7 @@ import importlib
 import pytest
 from bs4 import BeautifulSoup
 
-from defs.sec_forms.page_markers.headers import _slot_heading_members
+from defs.sec_forms.page_markers.ascii.headers import _slot_heading_members
 from defs.sec_forms.page_markers.html import html_has_page_label_evidence
 from defs.sec_forms.page_markers.sequence import heal_run
 from defs.text.html import parse_html
@@ -886,3 +886,330 @@ def test_recipe_platform_vocabulary_compiles_from_constants() -> None:
     assert _RECIPE_PLATFORM_RE.search("PAGEBREAK")
     assert _RECIPE_PLATFORM_RE.search("Field: Rule-Page")
     assert not _RECIPE_PLATFORM_RE.search("random prose comment")
+
+
+# --------------------------------------------------------------------------
+# Page artifact formatting, policies, and provenance.
+# --------------------------------------------------------------------------
+
+apply_page_markers = pm_mod.apply_page_markers
+apply_html_page_policy = pm_mod.apply_html_page_policy
+PageArtifactPolicy = pm_mod.PageArtifactPolicy
+PageBreakArtifact = pm_mod.PageBreakArtifact
+InferredBoundary = pm_mod.InferredBoundary
+render_page_break_artifact = pm_mod.render_page_break_artifact
+parse_page_break_artifact = pm_mod.parse_page_break_artifact
+parse_page_artifact = pm_mod.parse_page_artifact
+normalize_template_text = pm_mod.normalize_template_text
+build_page_artifact_metadata = pm_mod.build_page_artifact_metadata
+
+
+def test_artifact_token_round_trip() -> None:
+    artifact = PageBreakArtifact(
+        page_number=7,
+        namespace="arabic",
+        source="page_number",
+        coordinate_frame="text",
+        source_identity="abc",
+    )
+    token = render_page_break_artifact(artifact, 7)
+    assert token == "[[SEC:PAGE_BREAK id=7]]"
+    assert parse_page_break_artifact(token) == 7
+    assert parse_page_break_artifact("body text") is None
+    assert parse_page_artifact("[[SEC:REPEATING_FOOTER id=13]]") == (
+        "REPEATING_FOOTER",
+        13,
+    )
+
+
+def test_normalize_template_text_digit_runs_and_slot() -> None:
+    rendered, slot = normalize_template_text("Page  12 of  100 APPLE report")
+    assert rendered == "Page # of # APPLE report"
+    assert slot is None
+    rendered, slot = normalize_template_text("page 3 APPLE Annual 10-K report")
+    assert rendered == "page # APPLE Annual 10-K report"
+    assert slot == 0
+
+
+def test_ascii_strip_records_provenance_without_tokens() -> None:
+    text = "-1-\nSome text\n-  42  -\n"
+    analysis = analyze_page_markers(text)
+    result, artifacts, templates, next_id = apply_page_markers(
+        text, analysis, PageArtifactPolicy.STRIP
+    )
+    assert result == strip_page_markers(text, analysis)
+    assert "SEC:" not in result
+    assert [artifact.page_number for artifact in artifacts] == [1, 42]
+    assert all(artifact.removable for artifact in artifacts)
+    assert all(artifact.start_line is not None for artifact in artifacts)
+    assert not templates
+    assert next_id == 3
+
+
+def test_ascii_annotate_replaces_validated_spans_with_tokens() -> None:
+    text = "-1-\nSome text\n-  42  -\n"
+    analysis = analyze_page_markers(text)
+    result, artifacts, _templates, next_id = apply_page_markers(
+        text, analysis, PageArtifactPolicy.ANNOTATE
+    )
+    assert result == "[[SEC:PAGE_BREAK id=1]]\nSome text\n[[SEC:PAGE_BREAK id=2]]\n"
+    assert [artifact.page_number for artifact in artifacts] == [1, 42]
+    assert [
+        parse_page_break_artifact(line)
+        for line in result.splitlines()
+        if line.startswith("[[SEC:")
+    ] == [1, 2]
+    assert next_id == 3
+
+
+def test_ascii_preserve_leaves_source_unchanged() -> None:
+    text = "-1-\nSome text\n-  42  -\n"
+    analysis = analyze_page_markers(text)
+    result, artifacts, templates, next_id = apply_page_markers(
+        text, analysis, PageArtifactPolicy.PRESERVE
+    )
+    assert result == text
+    assert not artifacts and not templates and next_id == 1
+
+
+def test_ascii_annotate_inferred_line_boundary_is_not_removable() -> None:
+    analysis = PageMarkerAnalysis(
+        (),
+        (),
+        (),
+        source_text="body one\nbody two\n",
+        source_identity="sig",
+        inferred_boundaries=(InferredBoundary(1.0, 2, "arabic", "gap"),),
+    )
+    result, artifacts, _templates, _next = apply_page_markers(
+        "body one\nbody two\n", analysis, PageArtifactPolicy.ANNOTATE
+    )
+    assert result == "body one\n[[SEC:PAGE_BREAK id=1]]\nbody two\n"
+    assert len(artifacts) == 1
+    assert artifacts[0].source == "inferred-line"
+    assert artifacts[0].removable is False
+    assert artifacts[0].page_number == 2
+
+
+def test_ascii_generated_tokens_are_not_source_markers() -> None:
+    text = "[[SEC:PAGE_BREAK id=1]]\nBody text\n"
+    analysis = analyze_page_markers(text)
+    assert not analysis.markers
+
+
+def test_html_annotate_replaces_page_number_nodes_with_tokens() -> None:
+    text = """<html><body>
+<div class="page-number">1</div><p>First page prose.</p>
+<div class="page-number">2</div><p>Second page prose.</p>
+<div class="page-number">3</div><p>Third page prose.</p>
+</body></html>"""
+    soup = parse_html(text)
+    analysis = enrich_html_analysis(
+        analyze_page_markers(text, representation="html"), soup, source_text=text
+    )
+    removed, artifacts, _templates, next_id = apply_html_page_policy(
+        soup, analysis, PageArtifactPolicy.ANNOTATE
+    )
+    assert len(removed) == 3 and next_id == 4
+    rendered = str(soup)
+    assert "page-number" not in rendered
+    assert "[[SEC:PAGE_BREAK id=1]]" in rendered
+    assert "[[SEC:PAGE_BREAK id=3]]" in rendered
+    assert all(artifact.coordinate_frame == "dom" for artifact in artifacts)
+    assert all(artifact.node_path for artifact in artifacts)
+    assert all(artifact.removable for artifact in artifacts)
+
+
+def test_html_metadata_only_inference_emits_no_artifact() -> None:
+    analysis = PageMarkerAnalysis(
+        (),
+        (),
+        (),
+        representation="html",
+        source_text="<html><body><p>Prose.</p></body></html>",
+        source_identity="sig",
+        inferred_boundaries=(InferredBoundary(3.0, 4, "arabic", "gap"),),
+    )
+    soup = parse_html(analysis.source_text)
+    removed, artifacts, _templates, next_id = apply_html_page_policy(
+        soup, analysis, PageArtifactPolicy.ANNOTATE
+    )
+    assert not removed and not artifacts and next_id == 1
+    assert "[[SEC:" not in str(soup)
+
+
+def _dom_paths(soup: object, node: object) -> tuple[int, ...]:
+    """Find one resolvable DOM path for ``node`` by bounded prefix search."""
+
+    from defs.sec_forms.page_markers.html.dom import _resolve_path
+
+    frontier: list[tuple[int, ...]] = [()]
+    while frontier:
+        path = frontier.pop(0)
+        if len(path) > 5:
+            continue
+        current = _resolve_path(soup, path)
+        if current is not None:
+            if current == node:
+                return path
+            frontier.extend(
+                path + (index,)
+                for index in range(len(getattr(current, "contents", ())))
+            )
+    raise AssertionError("node path not found")
+
+
+def test_html_repeating_footer_annotates_as_repeating_event() -> None:
+    from defs.sec_forms.page_markers.artifacts import note_template
+
+    text = """<html><body>
+<p>Prose one.</p>
+<div class="running-footer">page 1 of ACME</div>
+<p>Prose two.</p>
+<div class="running-footer">page 2 of ACME</div>
+<p>Prose three.</p>
+<div class="running-footer">page 3 of ACME</div>
+</body></html>"""
+    soup = parse_html(text)
+    nodes = soup.css("div.running-footer")
+    assert len(nodes) == 3
+    templates: dict[str, dict] = {}
+    markers = []
+    decisions = []
+    for index, node in enumerate(nodes, start=1):
+        path = _dom_paths(soup, node)
+        marker = PageMarker(
+            start=0,
+            end=0,
+            text=node.text(),
+            kind=PageMarkerKind.REPEATING_FOOTER,
+            page_number=index,
+            representation="html",
+            coordinate_frame="dom",
+            node_path=path,
+        )
+        markers.append(marker)
+        decisions.append(
+            PageMarkerDecision(marker, PageMarkerAction.REMOVE, "test", 1.0)
+        )
+        note_template(
+            templates,
+            PageMarkerKind.REPEATING_FOOTER,
+            node.text(),
+            page_number=index,
+        )
+    analysis = PageMarkerAnalysis(
+        tuple(markers), tuple(decisions), (), representation="html", source_text=text
+    )
+    _removed, artifacts, annotated_templates, _next = apply_html_page_policy(
+        soup, analysis, PageArtifactPolicy.ANNOTATE, first_id=10
+    )
+    rendered = str(soup)
+    assert "[[SEC:REPEATING_FOOTER id=10]]" in rendered
+    assert "running-footer" not in rendered
+    assert "Prose one." in rendered
+    assert all(artifact.source == "repeating_footer" for artifact in artifacts)
+    assert len(annotated_templates) == 1
+    entry = next(iter(annotated_templates.values()))
+    assert entry["occurrences"] == 3
+    assert entry["rendered_text"] == "page # of ACME"
+
+
+def test_html_preserve_leaves_dom_untouched() -> None:
+    text = """<html><body>
+<div class="page-number">1</div><p>Prose.</p>
+</body></html>"""
+    soup = parse_html(text)
+    analysis = enrich_html_analysis(
+        analyze_page_markers(text, representation="html"), soup, source_text=text
+    )
+    removed, artifacts, templates, next_id = apply_html_page_policy(
+        soup, analysis, PageArtifactPolicy.PRESERVE
+    )
+    assert not removed and not artifacts and not templates and next_id == 1
+    assert "page-number" in str(soup)
+
+
+def test_html_table_footer_annotates_outside_rendered_table() -> None:
+    footer = """<table class="page-footer"><tr><td>Page 1</td></tr></table>
+<table class="page-footer"><tr><td>Page 2</td></tr></table>
+<table class="page-footer"><tr><td>Page 3</td></tr></table>"""
+    soup = parse_html(f"<html><body>{footer}</body></html>")
+    analysis = enrich_html_analysis(
+        analyze_page_markers(footer, representation="html"), soup, source_text=footer
+    )
+    assert analysis.markers
+    _removed, artifacts, _templates, _next = apply_html_page_policy(
+        soup, analysis, PageArtifactPolicy.ANNOTATE
+    )
+    rendered = str(soup)
+    assert "[[SEC:PAGE_BREAK id=" in rendered
+    assert "page-footer" not in rendered
+    assert all(artifact.removable for artifact in artifacts)
+    # The financial table is content and stays untouched.
+    financial_text = """<html><body>
+<table><tr><td>Revenue</td><td>100</td></tr></table>
+</body></html>"""
+    financial_soup = parse_html(financial_text)
+    financial_analysis = enrich_html_analysis(
+        analyze_page_markers(financial_text, representation="html"),
+        financial_soup,
+        source_text=financial_text,
+    )
+    fin_removed, fin_artifacts, _t, _n = apply_html_page_policy(
+        financial_soup, financial_analysis, PageArtifactPolicy.ANNOTATE
+    )
+    assert not fin_removed and not fin_artifacts
+    assert "Revenue" in str(financial_soup)
+
+
+def test_template_dedup_across_page_numbers() -> None:
+    templates: dict[str, dict] = {}
+    first = (
+        pm_mod.note_template(
+            "repeating_footer", "page 12 APPLE Annual 10-K report", page_number=12
+        )
+        if False
+        else None
+    )
+    from defs.sec_forms.page_markers.artifacts import note_template
+
+    first = note_template(
+        templates,
+        "repeating_footer",
+        "page 12 APPLE Annual 10-K report",
+        page_number=12,
+    )
+    second = note_template(
+        templates,
+        "repeating_footer",
+        "page 13 APPLE Annual 10-K report",
+        page_number=13,
+    )
+    assert first == second
+    assert len(templates) == 1
+    entry = templates[first]
+    assert entry["occurrences"] == 2
+    assert entry["rendered_text"] == "page # APPLE Annual 10-K report"
+
+
+def test_build_page_artifact_metadata_is_deterministic() -> None:
+    artifact = PageBreakArtifact(
+        page_number=12,
+        namespace="arabic",
+        source="page_number",
+        coordinate_frame="dom",
+        source_identity="sig",
+        node_path=(0, 1, 6),
+        removable=True,
+    )
+    one = build_page_artifact_metadata(
+        PageArtifactPolicy.ANNOTATE, "sig", {}, [(7, artifact)]
+    )
+    two = build_page_artifact_metadata(
+        PageArtifactPolicy.ANNOTATE, "sig", {}, [(7, artifact)]
+    )
+    assert one == two
+    assert one["policy"] == "annotate"
+    assert one["artifacts"][0]["node_path"] == [0, 1, 6]
+    assert one["artifacts"][0]["id"] == 7

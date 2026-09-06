@@ -2,15 +2,20 @@
 
 from __future__ import annotations
 
+import hashlib
 from dataclasses import replace
 from itertools import pairwise
 from typing import Any
 
+from ..artifacts import note_template, render_page_artifact, token_kind_for
 from ..models import (
+    PageArtifactPolicy,
+    PageBreakArtifact,
     PageMarker,
     PageMarkerAction,
     PageMarkerAnalysis,
     PageMarkerDecision,
+    PageMarkerKind,
     PageMarkerTerminalState,
     PageNumberRun,
     TemplateEvidence,
@@ -171,21 +176,125 @@ def _finalize_html_analysis(
 
 
 def apply_html_page_decisions(soup: object, analysis: PageMarkerAnalysis) -> list:
-    removed_nodes: list = []
-    paths = {
-        d.marker.node_path
-        for d in analysis.decisions
-        if d.action in {PageMarkerAction.REMOVE, PageMarkerAction.NORMALIZE}
-        and d.marker.coordinate_frame == "dom"
-        and d.marker.node_path
-    }
-    for path in sorted(paths, key=len, reverse=True):
-        if (node := _resolve_path(soup, path)) is not None and callable(
-            decompose := getattr(node, "decompose", None)
-        ):
+    """Remove validated DOM decision nodes; kept for strip-mode callers."""
+
+    removed, _, _, _ = apply_html_page_policy(soup, analysis, PageArtifactPolicy.STRIP)
+    return removed
+
+
+def _furniture_table(node: object) -> object | None:
+    """Return the nearest ``table`` ancestor chain root for a node."""
+
+    current = node
+    table = None
+    while current is not None:
+        if getattr(current, "tag", "") == "table":
+            table = current
+        current = getattr(current, "parent", None)
+    return table
+
+
+def apply_html_page_policy(
+    soup: object,
+    analysis: PageMarkerAnalysis,
+    policy: PageArtifactPolicy = PageArtifactPolicy.STRIP,
+    *,
+    first_id: int = 1,
+) -> tuple[list, tuple[PageBreakArtifact, ...], dict[str, dict], int]:
+    """Apply the declared rendering policy to validated DOM decisions.
+
+    ``strip`` decomposes validated nodes and records provenance; ``annotate``
+    replaces each validated node (or its classified furniture table) with a
+    canonical token before removal; ``preserve`` leaves the DOM untouched.
+    Metadata-only inferred boundaries never produce a visible HTML artifact.
+    """
+
+    if policy == PageArtifactPolicy.PRESERVE:
+        return [], (), {}, first_id
+    source_identity = (
+        analysis.source_identity
+        or hashlib.sha256(analysis.source_text.encode("utf-8")).hexdigest()
+    )
+    templates: dict[str, dict] = {}
+    decisions = sorted(
+        (
+            decision
+            for decision in analysis.decisions
+            if decision.action in {PageMarkerAction.REMOVE, PageMarkerAction.NORMALIZE}
+            and decision.marker.coordinate_frame == "dom"
+            and decision.marker.node_path
+        ),
+        key=lambda decision: decision.marker.node_path,
+    )
+    replacements: list[tuple[int, object, str, PageBreakArtifact]] = []
+    next_id = first_id
+    for decision in decisions:
+        marker = decision.marker
+        node = _resolve_path(soup, marker.node_path)
+        if node is None:
+            continue
+        depth = len(marker.node_path)
+        artifact = PageBreakArtifact(
+            page_number=marker.page_number,
+            namespace=marker.namespace or None,
+            source="repeating_header"
+            if marker.kind == PageMarkerKind.REPEATING_HEADER
+            else "repeating_footer"
+            if marker.kind == PageMarkerKind.REPEATING_FOOTER
+            else "page-number"
+            if marker.kind == PageMarkerKind.PAGE_NUMBER
+            else marker.kind,
+            coordinate_frame="dom",
+            source_identity=source_identity,
+            node_path=marker.node_path,
+            start_line=marker.start_line,
+            end_line=marker.end_line,
+            removable=True,
+        )
+        if marker.kind in {
+            PageMarkerKind.REPEATING_HEADER,
+            PageMarkerKind.REPEATING_FOOTER,
+        } or any(char.isalpha() for char in marker.text):
+            artifact = replace(
+                artifact,
+                template_id=note_template(
+                    templates,
+                    marker.kind,
+                    marker.text,
+                    page_number=marker.page_number,
+                )
+                or None,
+            )
+        if policy == PageArtifactPolicy.ANNOTATE:
+            target = _furniture_table(node) or node
+            replacements.append(
+                (
+                    depth,
+                    target,
+                    render_page_artifact(token_kind_for(marker.kind), next_id),
+                    artifact,
+                )
+            )
+        else:
+            replacements.append((depth, node, "", artifact))
+        next_id += 1
+    # Deepest first so nested validated nodes never resurrect their parents;
+    # ids and artifacts stay in document order.
+    removed: list = []
+    artifacts: list[PageBreakArtifact] = []
+    for _, target, token, artifact in sorted(
+        replacements, key=lambda item: item[0], reverse=True
+    ):
+        decompose = getattr(target, "decompose", None)
+        if not callable(decompose):
+            continue
+        if token:
+            target.replace_with_html(f"\n{token}\n")
+        else:
             decompose()
-            removed_nodes.append(node)
-    return removed_nodes
+        removed.append(target)
+        artifacts.append(artifact)
+    return removed, tuple(artifacts), templates, next_id
 
 
 def refresh_html_analysis(
@@ -248,6 +357,7 @@ def refresh_html_analysis(
 __all__ = [
     "_finalize_html_analysis",
     "apply_html_page_decisions",
+    "apply_html_page_policy",
     "enrich_html_analysis",
     "refresh_html_analysis",
 ]

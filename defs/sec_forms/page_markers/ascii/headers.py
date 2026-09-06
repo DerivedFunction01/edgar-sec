@@ -9,17 +9,17 @@ from defs.regex import build_alternation
 from defs.text.dates import MONTH_PATTERN, extract_years
 from defs.text.logical_units import classify_units
 
-from .candidates import line_offsets
-from .constants import _RE_STRUCTURAL_MATCH
-from .layout import line_shape
-from .models import (
+from ..constants import _RE_STRUCTURAL_MATCH
+from ..models import (
     PageMarker,
     PageMarkerAction,
     PageMarkerDecision,
     PageMarkerKind,
     TemplateEvidence,
 )
-from .prose import looks_like_prose
+from ..prose import looks_like_prose
+from .candidates import line_offsets
+from .layout import line_shape
 
 _PAGE_TOKEN_RE = re.compile(r"\bpage\s+\d{1,4}\b", re.IGNORECASE)
 _TRAILING_NUMBER_RE = re.compile(r"\s{2,}(?:\d{1,4}|[ivxlcdm]{1,8})\s*$", re.IGNORECASE)

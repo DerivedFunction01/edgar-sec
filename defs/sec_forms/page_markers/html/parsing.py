@@ -4,14 +4,14 @@ from __future__ import annotations
 
 import re
 
-from ..candidates import roman_to_int
+from ..ascii.candidates import roman_to_int
+from ..ascii.layout import candidate_template
 from ..constants import (
     _RE_LEADING_NUMBER,
     _RE_LETTER_NUMBER,
     _RE_TRAILING_NUMBER,
     _VALUE_RE,
 )
-from ..layout import candidate_template
 
 _HAS_LABEL_SHAPE_RE = re.compile(r"\d|^[ivxlcdm]+$", re.IGNORECASE)
 _YEAR_VALUE_MIN = 1900

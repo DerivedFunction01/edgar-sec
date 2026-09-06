@@ -73,6 +73,12 @@ from .healing import (
     strip_boxdot_spacers,
 )
 from .html import FastHtmlNode, FastHtmlTree, parse_html
+from .html_cleaner import (
+    clean_html_for_parsing,
+    strip_benign_font_styles,
+    strip_ixbrl_inline_tags,
+    strip_office_metadata_attributes,
+)
 from .tokens import (
     BULLET_MARKER_RE,
     BULLET_MARKERS,
@@ -127,6 +133,7 @@ __all__ = [
     "SpanDecision",
     "Token",
     "classify_mark_line",
+    "clean_html_for_parsing",
     "compile_evidence_pack",
     "compile_family_automaton",
     "compile_lexical_matcher",
@@ -150,7 +157,10 @@ __all__ = [
     "score_unit",
     "should_join_two_lines",
     "strip_alphanumeric_words",
+    "strip_benign_font_styles",
     "strip_boxdot_spacers",
+    "strip_ixbrl_inline_tags",
+    "strip_office_metadata_attributes",
     "tokenize",
 ]
 

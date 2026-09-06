@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import hashlib
 import re
 from dataclasses import dataclass
 from typing import Any
@@ -17,12 +18,18 @@ from defs.sec_forms.cover import (
     get_profile,
 )
 from defs.sec_forms.page_markers import (
-    apply_html_page_decisions,
+    PageArtifactPolicy,
+    apply_html_page_policy,
+    apply_page_markers,
+    build_page_artifact_metadata,
     enrich_html_analysis,
     refresh_html_analysis,
-    strip_page_markers,
 )
-from defs.tables import convert_html_tables_to_ascii
+from defs.tables import (
+    convert_html_tables_to_ascii,
+    normalize_hybrid_pre_text,
+    restore_hybrid_pre_text,
+)
 from defs.text.html import parse_html
 from defs.text.reflow import reflow_ascii
 
@@ -55,6 +62,7 @@ class NormalizationResult:
     closing_span: object | None = None
     reflow: object | None = None
     page_analysis: object | None = None
+    page_artifacts: dict | None = None
 
 
 class DeepNormalizer:
@@ -74,6 +82,8 @@ class DeepNormalizer:
         self,
         preprocessed: PreprocessedDocument,
         metadata: dict[str, Any] | None = None,
+        *,
+        page_artifact_policy: PageArtifactPolicy = PageArtifactPolicy.STRIP,
     ) -> NormalizationResult:
         """Normalize preprocessed document using form-specific and generic rules."""
         form = (metadata or {}).get("form") or preprocessed.metadata.get("form")
@@ -90,10 +100,22 @@ class DeepNormalizer:
 
         # HTML node decisions are applied before any table serialization.
         # Their DOM paths are never passed to the text-span stripper.
+        source_identity = hashlib.sha256(text.encode("utf-8")).hexdigest()
+        artifact_templates: dict[str, dict] = {}
+        artifact_records: list[tuple[int, object]] = []
+        next_artifact_id = 1
         if is_html:
             tree = parse_html(text)
             page_analysis = enrich_html_analysis(page_analysis, tree, source_text=text)
-            if apply_html_page_decisions(tree, page_analysis):
+            first_html_id = next_artifact_id
+            removed, html_artifacts, html_templates, next_artifact_id = (
+                apply_html_page_policy(tree, page_analysis, page_artifact_policy)
+            )
+            artifact_templates.update(html_templates)
+            artifact_records.extend(
+                zip(range(first_html_id, next_artifact_id), html_artifacts)
+            )
+            if removed:
                 text = str(tree)
                 page_analysis = refresh_html_analysis(page_analysis, text)
 
@@ -145,7 +167,10 @@ class DeepNormalizer:
         # 2. Generic HTML financial table to ASCII conversion & HTML tag stripping
         # Meant for html documents that actually are just SGML ASCII documents in the 2008-range that uses <PRE> wrappers
         if is_html and bool(_RE_HTML_DISCRIMINATOR.search(text)):
+            hybrid_text = normalize_hybrid_pre_text(text)
+            text = hybrid_text.text
             text = convert_html_tables_to_ascii(text)
+            text = restore_hybrid_pre_text(text, hybrid_text.protected)
             page_analysis = refresh_html_analysis(page_analysis, text)
 
         # 3. Invariant generic cleanup passes
@@ -154,7 +179,16 @@ class DeepNormalizer:
             text = cleaned_text
             if is_html:
                 page_analysis = refresh_html_analysis(page_analysis, text)
-        text = strip_page_markers(text, page_analysis)
+        text, ascii_artifacts, ascii_templates, _ = apply_page_markers(
+            text, page_analysis, page_artifact_policy, first_id=next_artifact_id
+        )
+        artifact_templates.update(ascii_templates)
+        artifact_records.extend(
+            zip(
+                range(next_artifact_id, next_artifact_id + len(ascii_artifacts)),
+                ascii_artifacts,
+            )
+        )
         if is_html:
             page_analysis = refresh_html_analysis(page_analysis, text)
 
@@ -216,6 +250,12 @@ class DeepNormalizer:
             closing_span=closing_span,
             reflow=reflow_result,
             page_analysis=page_analysis,
+            page_artifacts=build_page_artifact_metadata(
+                page_artifact_policy,
+                source_identity,
+                artifact_templates,
+                artifact_records,
+            ),
         )
 
 

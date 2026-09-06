@@ -7,7 +7,7 @@ import re
 from collections import defaultdict
 from typing import Any
 
-from .constants import (
+from ..constants import (
     _NUMERALS,
     _PAGE_MARKER_PATTERNS,
     _RE_APPENDIX_ROMAN,
@@ -26,11 +26,11 @@ from .constants import (
     _RE_TRAILING_NUMBER,
     RE_PAGE_SUFFIX,
 )
+from ..models import PageCandidate, PageMarker, PageMarkerKind, PageNumberRun
+from ..sequence import heal_run, unify_alternating_runs, validate_group
 from .layout import candidate_template, cluster_is_table_like, has_numeric_data_shape
 
 _ASCII_PROBE_WINDOW = 2500
-from .models import PageCandidate, PageMarker, PageMarkerKind, PageNumberRun
-from .sequence import heal_run, unify_alternating_runs, validate_group
 
 
 def roman_to_int(value: str) -> int | None:

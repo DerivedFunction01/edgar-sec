@@ -107,6 +107,13 @@ uploads/                           # input manifests
   SQLite, and future backends. No phase-local serializers or filename schemes.
 - Phase owns schema/semantic validation; storage owns physical reads/writes,
   manifest publication, atomicity, and read-back validation.
+- Source page markers and generated page artifacts are distinct namespaces.
+  Rendering applies an explicit declared policy (`strip`, `annotate`,
+  `preserve`) with source identity recorded in artifact metadata; generated
+  `[[SEC:PAGE_BREAK id=N]]`-style tokens are never reclassified as source
+  markers, and post-render rediscovery from rendered output is never used as
+  the removal mechanism — decisions are resolved on the source DOM/span before
+  rendering and carried through as events.
 - Workers never write the canonical dataset concurrently. They emit immutable,
   schema-versioned fragments; a coordinator validates identity, provenance,
   schema, and duplicates before publishing.

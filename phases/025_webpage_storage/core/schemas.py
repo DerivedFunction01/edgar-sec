@@ -45,7 +45,7 @@ from .records import (
 )
 
 SCHEMA_VERSION = 2
-NORMALIZED_SCHEMA_VERSION = 1
+NORMALIZED_SCHEMA_VERSION = 2
 ZSTD_COMPRESSION_LEVEL = 3
 
 _thread_local = threading.local()

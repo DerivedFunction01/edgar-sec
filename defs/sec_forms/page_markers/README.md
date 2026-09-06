@@ -14,13 +14,23 @@ defs/sec_forms/page_markers/
   models.py            # Marker, candidate, run, evidence, terminal-state, region, and boundary models
   constants.py         # Empirical prose stop-word set (42 words) and tuning constants
   prose.py             # Shared prose classifier (ASCII/HTML stop-word guard, template detector)
-  ascii.py             # ASCII/SGML orchestration and validated cleanup
-  html.py              # HTML discovery: DOM pruning, table-footers, strong-label gate, regions, recovery
-  candidates.py        # Firm patterns, contextual candidates, and promotion (ASCII slot logic)
-  headers.py           # Repeated header/footer evidence and ASCII slot-invariant policy
+  artifacts.py         # Canonical page-artifact tokens, template normalization, and metadata
   sequence.py          # Namespace-aware validation, healing, inference, and monotone-fraction checks
-  layout.py            # Alignment, spacing, and table-shape guards
-  pre.py               # SGML PRE-block discrimination and marker sanitation
+  html/                # HTML-specific subpackage
+    __init__.py
+    discovery.py
+    dom.py
+    finalization.py
+    probes.py
+    recovery.py
+    validation.py
+  ascii/               # ASCII/SGML-specific subpackage
+    __init__.py        # Re-exports all public ASCII functions
+    orchestrator.py    # ASCII/SGML orchestration and validated cleanup
+    candidates.py      # Firm patterns, contextual candidates, and promotion (ASCII slot logic)
+    headers.py         # Repeated header/footer evidence and ASCII slot-invariant policy
+    layout.py          # Alignment, spacing, and table-shape guards
+    pre.py             # SGML PRE-block discrimination and marker sanitation
 ```
 
 ---
@@ -41,8 +51,8 @@ defs/sec_forms/page_markers/
   footer/header templates. Unique prose is always preserved; repeated prose
   templates may be removable.
 
-- **`ascii.py`** — ASCII/SGML orchestration. Delegates slot analysis to
-  `candidates.py` and `headers.py`, then runs `sequence.py` healing and
+- **`ascii/orchestrator.py`** — ASCII/SGML orchestration. Delegates slot analysis to
+  `ascii/candidates.py` and `ascii/headers.py`, then runs `sequence.py` healing and
   inference. Validates final strips before applying.
 
 - **`html.py`** — HTML discovery pipeline:
@@ -63,10 +73,10 @@ defs/sec_forms/page_markers/
   - `_recover_run_gaps()` → `InferredBoundary(reason="bounded_literal_recovery")`
     metadata-only; zero-cost when no gaps exist.
 
-- **`candidates.py`** — ASCII `all_candidates` first/last-quarter selection,
+- **`ascii/candidates.py`** — ASCII `all_candidates` first/last-quarter selection,
   slot promotion rules, and template detection.
 
-- **`headers.py`** — Repeated header/footer evidence. ASCII slot-invariant
+- **`ascii/headers.py`** — Repeated header/footer evidence. ASCII slot-invariant
   policy: prose-looking lines need a repeated template (≥2) within the slot;
   unique prose is preserved. Uses `prose.py` for shared classification.
 
@@ -76,10 +86,10 @@ defs/sec_forms/page_markers/
   `_RECOVERY_MAX_GAP` boundary) to prevent runaway inferred boundaries on
   long documents.
 
-- **`layout.py`** — Alignment, spacing, and table-shape guards used by
-  candidates and headers.
+- **`ascii/layout.py`** — Alignment, spacing, and table-shape guards used by
+  `ascii/candidates.py` and `ascii/headers.py`.
 
-- **`pre.py`** — SGML PRE-block discrimination: distinguishes real page-marker
+- **`ascii/pre.py`** — SGML PRE-block discrimination: distinguishes real page-marker
   PRE content from boilerplate, then sanitizes markers inside validated blocks.
 
 ---
@@ -124,6 +134,38 @@ Key optimizations:
 
 ---
 
+## Page Artifacts (Rendered Provenance)
+
+Validated page-marker decisions survive rendering as page artifacts.
+`PageArtifactPolicy` (`strip` / `annotate` / `preserve`) is declared at the
+normalizer boundary:
+
+- `strip` removes validated furniture and records provenance in the
+  `page_artifacts` metadata; no visible token is emitted (legacy behavior).
+- `annotate` replaces each validated span or DOM node with a compact,
+  ASCII-safe token line — `[[SEC:PAGE_BREAK id=N]]`,
+  `[[SEC:REPEATING_HEADER id=N]]`, `[[SEC:REPEATING_FOOTER id=N]]` — where `N`
+  is assigned in document order. All payload attributes (page number,
+  namespace, source kind, `node_path` / line span, removability,
+  `template_id`) live in the artifact metadata, never in the token.
+- `preserve` leaves the source representation unchanged.
+
+Key contracts (`artifacts.py`, `ascii/orchestrator.py`, `html/finalization.py`):
+
+- Generated tokens are never classified as source page markers; re-running
+  analysis over annotated text is idempotent.
+- Metadata-only inference emits no visible HTML artifact; ASCII inferred-line
+  boundaries may emit one at their line coordinate and are never removable.
+- Repeating header/footer furniture deduplicates into templates keyed by the
+  SHA-1 of normalized rendered text (digit runs collapse to `#`), so repeating
+  an Apple-style footer 120 times costs one template entry plus per-page
+  coordinates.
+- `build_page_artifact_metadata()` returns the deterministic sidecar persisted
+  under `processor_metadata.page_artifacts` in phase 025 storage; a missing
+  key means legacy `strip` behavior.
+
+---
+
 ## Benchmark Harnesses
 
 - `/tmp/kilo/bench_table_footer.py` — 16-doc set (10 misses + 6 controls).
@@ -154,5 +196,5 @@ p50=2081ms, 180 runs, 5628 markers.
 
 ## Tests
 
-- 52 page-marker contract tests in `defs/tests/test_page_markers.py`.
+- 75 page-marker contract tests in `defs/tests/test_page_markers.py`.
 - Run: `.venv/bin/pytest defs/tests`

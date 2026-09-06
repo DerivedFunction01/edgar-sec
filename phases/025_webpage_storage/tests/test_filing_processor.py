@@ -201,3 +201,39 @@ Title: Chief Executive Officer
         executor.exec(executor.compiler.compile(Commit()))
     finally:
         executor.close()
+
+
+def test_default_filing_processor_annotate_policy_carries_artifacts() -> None:
+    import json
+
+    from defs.sec_forms.page_markers import PageArtifactPolicy
+
+    processor = DefaultFilingProcessor(page_artifact_policy=PageArtifactPolicy.ANNOTATE)
+    raw_html = b"""<DOCUMENT>
+<TYPE>10-K
+<TEXT>
+ITEM 1. BUSINESS
+We are an enterprise software company.
+<PAGE>
+Page 1 of 5
+ITEM 7. MD&A
+Revenues grew 40% year over year.
+</TEXT>
+</DOCUMENT>"""
+    locator = DocumentLocator(
+        locator_key="k1",
+        accession="0000123456-02-000001",
+        document_path="form10k.htm",
+        archive_url="https://www.sec.gov/Archives/edgar/data/123456/000012345602000001/form10k.htm",
+        form="10-K",
+    )
+    processed = asyncio.run(processor.process(raw_html, locator))
+    decoded = processed.payload.decode("utf-8")
+    assert "[[SEC:PAGE_BREAK id=" in decoded
+    artifacts = processed.metadata["page_artifacts"]
+    assert artifacts["policy"] == "annotate"
+    assert artifacts["source_identity"]
+    # Metadata must stay deterministic JSON for processor_metadata.
+    assert json.loads(schemas.deterministic_metadata(processed.metadata)) == (
+        processed.metadata
+    )

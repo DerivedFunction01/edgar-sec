@@ -104,7 +104,11 @@ Phase 2.5's normalization path also shares the coordinate-safe
 ASCII reflow consumers. Firm labels are removed only from validated decisions;
 contextual namespace runs, repeated headers/footers, unresolved candidates,
 and metadata-only inferred boundaries are retained in bounded processed-document
-metadata.
+metadata. Rendering applies an explicit page-artifact policy (`strip`,
+`annotate`, `preserve`): annotated runs replace validated furniture with compact
+`[[SEC:PAGE_BREAK id=N]]` tokens whose provenance lives in deterministic
+`page_artifacts` processor metadata, so normalized output stays inspectable and
+reversible without re-deriving decisions from rendered text.
   `start` is idempotent (existing healthy broker reused, stale socket replaced).
 - Stores `document_blobs` (sha256-addressed, zstd-compressed raw bytes) and
   `filing_occurrences` (provenance links) in isolated worker chunk SQLite

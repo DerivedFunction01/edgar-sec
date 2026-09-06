@@ -12,6 +12,7 @@ from typing import Any
 
 from defs.regex import build_alternation
 from defs.sec_forms.page_markers import analyze_page_markers, extract_ascii_pre
+from defs.text import clean_html_for_parsing
 
 from .forms.base import PreprocessedDocument
 
@@ -105,6 +106,12 @@ class GenericPreprocessor:
             meta["representation"] = "ascii"
         else:
             meta["representation"] = "html" if has_html else "ascii"
+            if has_html:
+                # Stage-1 sanitization: drop inline XBRL wrappers, benign font
+                # declarations, and Office metadata attributes before any
+                # downstream DOM work, so every later stage sees a leaner,
+                # equivalent document.
+                clean = clean_html_for_parsing(clean)
 
         # Compute preliminary word count
         words = clean.split()
