@@ -1,4 +1,8 @@
-"""Public page-marker API across ASCII and future representations."""
+"""Public page-marker API across ASCII and future representations.
+
+Callers use this package (or ``orchestrator``) only; representation dispatch
+lives in ``orchestrator.py`` and subpackages never import each other.
+"""
 
 from .artifacts import (
     build_page_artifact_metadata,
@@ -12,21 +16,13 @@ from .artifacts import (
 )
 from .ascii import (
     RE_PAGE_SUFFIX,
-    analyze_page_markers,
     analyze_repeating_headers,
     apply_page_markers,
     classify_candidate,
-    extract_ascii_pre,
     find_page_markers,
     is_page_marker_line,
     roman_to_int,
     strip_page_markers,
-)
-from .html import (
-    apply_html_page_decisions,
-    apply_html_page_policy,
-    enrich_html_analysis,
-    refresh_html_analysis,
 )
 from .models import (
     InferredBoundary,
@@ -43,6 +39,11 @@ from .models import (
     PageNumberRun,
     PageRegionReport,
     TemplateEvidence,
+)
+from .orchestrator import (
+    analyze_page_markers,
+    apply_html_policy,
+    apply_text_policy,
 )
 
 __all__ = [
@@ -63,19 +64,16 @@ __all__ = [
     "TemplateEvidence",
     "analyze_page_markers",
     "analyze_repeating_headers",
-    "apply_html_page_decisions",
-    "apply_html_page_policy",
+    "apply_html_policy",
     "apply_page_markers",
+    "apply_text_policy",
     "build_page_artifact_metadata",
     "classify_candidate",
-    "enrich_html_analysis",
-    "extract_ascii_pre",
     "find_page_markers",
     "is_page_marker_line",
     "normalize_template_text",
     "parse_page_artifact",
     "parse_page_break_artifact",
-    "refresh_html_analysis",
     "render_page_artifact",
     "render_page_break_artifact",
     "roman_to_int",

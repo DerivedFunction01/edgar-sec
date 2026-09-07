@@ -15,6 +15,7 @@ from defs.sec_forms.cover.extractors import (
     extract_commission_file_number,
     extract_fiscal_period,
 )
+from defs.sec_forms.cover.healing import heal_cover_text
 from defs.sec_forms.cover.models import (
     BodyAnchorType,
     BodyRoot,
@@ -100,6 +101,7 @@ __all__ = [
     "find_page_markers",
     "find_toc_span",
     "get_profile",
+    "heal_cover_text",
     "is_continuation_prose",
     "is_exact_heading",
     "is_toc_row",

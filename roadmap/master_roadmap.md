@@ -99,23 +99,44 @@ parsing and section extraction never re-hit the SEC archive. It is **storage-onl
   pace. Manage it directly with
   `python -m defs.sec_http.broker {start,stop,status} [--socket PATH]`;
 
-Phase 2.5's normalization path also shares the coordinate-safe
-`defs.sec_forms.page_markers` analysis package across cover, TOC, body, and
-ASCII reflow consumers. Firm labels are removed only from validated decisions;
-contextual namespace runs, repeated headers/footers, unresolved candidates,
-and metadata-only inferred boundaries are retained in bounded processed-document
-metadata. Rendering applies an explicit page-artifact policy (`strip`,
-`annotate`, `preserve`): annotated runs replace validated furniture with compact
-`[[SEC:PAGE_BREAK id=N]]` tokens whose provenance lives in deterministic
-`page_artifacts` processor metadata, so normalized output stays inspectable and
+Phase 2.5's normalization path uses a string-first HTML pipeline
+(`defs.text.html`) shared across cover, TOC, body, and ASCII reflow
+consumers. HTML documents are normalized through
+`normalize_html_document()`: Stage-1 cleaning, HTML-preserving table
+rendering to canonical `<TABLE>...</TABLE>` blocks, tagged-table
+protection, string structural decomposition, whitespace normalization,
+and tagged-table restoration. The DOM page-marker package has been
+removed; page-marker analysis operates on the rendered ASCII text
+frame. Firm labels are removed only from validated decisions;
+contextual namespace runs, repeated headers/footers, unresolved
+candidates, and metadata-only inferred boundaries are retained in
+bounded processed-document metadata. Rendering applies an explicit
+page-artifact policy (`strip`, `annotate`, `preserve`): annotated runs
+replace validated furniture with compact `[[SEC:PAGE_BREAK id=N]]`
+tokens whose provenance lives in deterministic `page_artifacts`
+processor metadata, so normalized output stays inspectable and
 reversible without re-deriving decisions from rendered text.
-  `start` is idempotent (existing healthy broker reused, stale socket replaced).
+  `start` is idempotent (existing healthy broker reused, stale socket
+replaced).
 - Stores `document_blobs` (sha256-addressed, zstd-compressed raw bytes) and
   `filing_occurrences` (provenance links) in isolated worker chunk SQLite
   databases, then merges them atomically into a published partition database via
   compiled `Attach`/`Detach`.
 - Deferred to later parallel tracks (built on `document_blobs`): multi-era
   envelope unpacking, HTML/iXBRL cleaning, and stub/defect detection.
+
+Phase 2.5's HTML normalization uses a string-first pipeline in
+`defs.text.html` that renders HTML tables to canonical tagged ASCII
+`<TABLE>...</TABLE>` blocks. The deferred `cleanup_false_tables()`
+stage remains as a no-op placeholder in the pipeline for future
+false/layout-table unwrapping; tagged tables are protected through
+generic whitespace passes. Shared cover healing is provided by
+`defs.sec_forms.cover.healing.heal_cover_text()`, which applies
+representation-neutral healing to bounded cover slices. The retained
+`defs.text.html.tree.py` module provides parser/table-node infrastructure
+(selectolax wrapper, CSS traversal, raw-node access, cell text
+extraction) for table rendering and independent research consumers; it
+is not a document normalization API.
 
 Phase 2.5 also provides a fixture-ID document corpus review workflow: source
 bytes are promoted to a versioned Parquet corpus, rendered in deterministic
@@ -125,6 +146,8 @@ review.
 Shared table processing is implemented under `defs/tables/` so downstream
 document-processing phases use one span-aware HTML-to-ASCII conversion contract
 for layout detection, financial column healing, and SEC table rendering.
+Rendered HTML tables become canonical tagged `<TABLE>...</TABLE>` blocks;
+`cleanup_false_tables()` remains a deferred no-op stage.
 
 
 # SECTION 1: THE DISCRETE AND HIDDEN SECTIONS TAXONOMY

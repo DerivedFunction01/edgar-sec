@@ -15,6 +15,7 @@ defs/sec_forms/cover/
   body_search.py       # Backward body root search and boundary confirmation
   body_start.py        # Forward body-start detection after cover/TOC
   body_context.py      # Unit indexing, eligibility context, lexical pack glue
+  healing.py           # Representation-neutral cover healing on normalized text frames
   structure.py         # Structural line and Part/Item heading parsers
   toc.py               # Table of Contents detection and row classification
   extractors.py        # Universal text-based cover extractors (EIN, CIK, fiscal year)
@@ -28,6 +29,7 @@ defs/sec_forms/cover/
 
 ## Key Modules
 
+- **`healing.py`** — `heal_cover_text()`: representation-neutral cover healing on normalized text frames; applies checkbox, phrase-sequence, and date healing only to the bounded cover line slice with tagged-table protection.
 - **`boundary.py`** — `find_cover_boundary()`, `find_cover_boundary_for_profile()`: multi-signal boundary detection across cover identity, incorporated references, TOC transitions, and Part/Item fallbacks.
 - **`closing.py`** — `find_closing_span()`, `ClosingSpan`: exact standalone `SIGNATURES` headings, `By: /s/` signature lines, and `EXHIBIT INDEX` headings after a validated body anchor; dotted TOC rows are rejected, and an absent signal means "no closing region" rather than a guess.
 - **`cover_start.py`** — `find_cover_start()`, `CoverStart`: anchors start of cover via SEC header, form titles, and registrant names.

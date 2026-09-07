@@ -33,6 +33,12 @@ The public API is exported from `defs.tables`. Contract tests live in
 `defs/tests/test_ascii_html.py`, `defs/tests/test_table_protection.py`, and
 `defs/tests/test_table_protection.py`.
 
+`cleanup_false_tables()` in `defs/tables/false_tables.py` is a deferred
+no-op stage in the string-first HTML pipeline; it will eventually decide
+which retained tagged tables are layout-only and unwrap them. Tagged
+tables rendered from HTML are canonical `<TABLE>...</TABLE>` blocks
+protected through generic whitespace passes by `protection.py`.
+
 The manually reviewed table corpus is stored as the single tracked Parquet
 fixture `defs/tests/fixtures/tables/validated_table_corpus_v2.parquet`. The
 one-off builder is `defs/tests/build_table_corpus.py`; it reads local

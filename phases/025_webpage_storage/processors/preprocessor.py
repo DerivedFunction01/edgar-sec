@@ -11,8 +11,7 @@ import re
 from typing import Any
 
 from defs.regex import build_alternation
-from defs.sec_forms.page_markers import analyze_page_markers, extract_ascii_pre
-from defs.text import clean_html_for_parsing
+from defs.text import clean_html_for_parsing, extract_ascii_pre, strip_ixbrl_inline_tags
 
 from .forms.base import PreprocessedDocument
 
@@ -94,6 +93,9 @@ class GenericPreprocessor:
 
         # Unescape standard HTML and XML entities (&nbsp;, &amp;, &#160;, etc.)
         clean = html.unescape(clean)
+        # Wrapper cleanup is representation-neutral; apply it before routing
+        # so direct XML/iXBRL text and HTML share the same namespace contract.
+        clean = strip_ixbrl_inline_tags(clean)
 
         ascii_pre = extract_ascii_pre(clean)
         # Wrapper-only HTML/PRE documents are legacy ASCII payloads. The
@@ -117,11 +119,6 @@ class GenericPreprocessor:
         words = clean.split()
         word_count = len(words)
 
-        page_analysis = analyze_page_markers(
-            clean,
-            representation="html" if has_html else "ascii",
-        )
-
         return PreprocessedDocument(
             raw_text=raw_text,
             cleaned_text=clean,
@@ -129,6 +126,5 @@ class GenericPreprocessor:
             has_html_tags=has_html,
             detected_encoding=encoding,
             metadata=meta,
-            page_analysis=page_analysis,
             representation="html" if has_html else "ascii",
         )

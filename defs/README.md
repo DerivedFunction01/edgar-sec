@@ -16,13 +16,16 @@ defs/
   filing_identity.py    # canonical filing identity: accessions, archive URLs,
                         # occurrence IDs, document locator keys, date-derived years
   sec_forms/             # shared SEC form definitions, semantic concepts, cover-page contracts
-    cover/               # canonical cover labels, regex matchers, text-based extractors
-    page_markers/        # ASCII/SGML page-reference analysis and safe cleanup
-  text/                  # text normalization, logical-unit classification, lexical evidence engine
+    cover/               # canonical cover labels, regex matchers, text-based extractors, shared cover healing
+    page_markers/        # coordinate-safe ASCII page-marker analysis and string-first HTML adapter
+  text/                  # text normalization, logical-unit classification, lexical evidence engine;
+                         # html/pipeline.py is the string-first HTML normalizer (canonical tags,
+                         # table protection); tree.py retained for parser/table/context consumers;
+                         # shared iXBRL cleanup and final whitespace helper
   regex/                # hierarchical regex builders, prefix-tree (trie) compaction, lookarounds
   storage/              # logical datasets, chunk backends, manifests, atomic publication
   sql/                  # SQL AST/compiler/executor boundary
-  tables/               # geometry-first ASCII table renderer, span extraction, cell tokens, and table scope contract
+  tables/               # geometry-first ASCII table renderer, span extraction, cell tokens, tagged-table protection, and deferred cleanup_false_tables stage
   taxonomy/             # table classification specs, multi-zone BoW gates, vocabulary census, empirical probe
   runtime/              # paths, settings registry, env resolution, artifacts/bundles,
                         # partitions, progress, CLI
@@ -40,9 +43,9 @@ defs/
   provides `start`/`stop`/`status` plus `ensure_broker()`, which production
   pipelines call to auto-start a broker. Manage it with
   `python -m defs.sec_http.broker {start,stop,status} [--socket PATH]`.
-- `sec_forms/` — shared SEC form definitions, semantic concepts, and cover-page contracts (see `sec_forms/README.md`).
+- `sec_forms/` — shared SEC form definitions, semantic concepts, and cover-page contracts (see `sec_forms/README.md`). The `page_markers/` package provides coordinate-safe ASCII page-marker analysis; the HTML page-marker DOM package has been removed in favor of the string-first `fast_html/` adapter.
 - `taxonomy/` — financial table taxonomy specifications, multi-zone BoW classification, vocabulary census, keyword density optimizer, and empirical probe engine (see `taxonomy/README.md`).
-- `text/` — domain-neutral text normalization, ASCII logical-unit classification (`logical_units.py`), the shared token-boundary lexical evidence engine (`bow.py`): ordered evidence tiers, distinct-hit policies, priority short-circuiting, and a compiled pack cache, and the conservative ASCII span/action reflow engine (`reflow.py`): `UNWRAP`/`PRESERVE`/`TAG_AND_PRESERVE` block decisions with exact source-span rendering, bounded blank-line table bridging, and no-reflow without a validated body anchor. Form-specific and extraction-specific vocabulary lives in the owning evidence packs (`sec_forms/forms/<form>/` or the consuming phase); these modules stay form- and domain-neutral.
+- `text/` — domain-neutral text normalization, ASCII logical-unit classification (`logical_units.py`), the shared token-boundary lexical evidence engine (`bow.py`): ordered evidence tiers, distinct-hit policies, priority short-circuiting, and a compiled pack cache, and the conservative ASCII span/action reflow engine (`reflow.py`): `UNWRAP`/`PRESERVE`/`TAG_AND_PRESERVE` block decisions with exact source-span rendering, bounded blank-line table bridging, and no-reflow without a validated body anchor. `html/pipeline.py` is the string-first HTML normalizer: it renders HTML to text with canonical tag handling and tagged-table protection, delegating DOM parsing to `tree.py` which is retained for parser, table, and context consumers. Shared iXBRL cleanup lives in `html/cleaner.py` (`strip_ixbrl_inline_tags`) and final whitespace normalization in `text/whitespace.py` (`normalize_final_text_whitespace`). Form-specific and extraction-specific vocabulary lives in the owning evidence packs (`sec_forms/forms/<form>/` or the consuming phase); these modules stay form- and domain-neutral.
 
 ## Settings registry and environment resolution
 

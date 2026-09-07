@@ -8,6 +8,7 @@ from .ascii_html import (
     render_grid_to_ascii,
 )
 from .currencies import MAJOR_CURRENCIES, PREFIX_SYMBOLS, SUFFIX_SYMBOLS
+from .false_tables import cleanup_false_tables, is_false_table
 from .hybrid import (
     HybridPreText,
     PreBlockKind,
@@ -53,8 +54,10 @@ __all__ = [
     "HybridPreText",
     "PreBlockKind",
     "classify_pre_block",
+    "cleanup_false_tables",
     "convert_html_table",
     "convert_html_tables_to_ascii",
+    "is_false_table",
     "is_financial_placeholder",
     "is_numeric_cell",
     "is_numeric_start",

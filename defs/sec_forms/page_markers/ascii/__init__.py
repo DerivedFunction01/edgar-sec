@@ -15,7 +15,6 @@ from .orchestrator import (
     is_page_marker_line,
     strip_page_markers,
 )
-from .pre import extract_ascii_pre
 
 __all__ = [
     "RE_PAGE_SUFFIX",
@@ -23,7 +22,6 @@ __all__ = [
     "analyze_repeating_headers",
     "apply_page_markers",
     "classify_candidate",
-    "extract_ascii_pre",
     "find_page_markers",
     "is_page_marker_line",
     "roman_to_int",

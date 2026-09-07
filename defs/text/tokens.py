@@ -17,12 +17,9 @@ BULLET_MARKER_RE: re.Pattern = re.compile(
 FOOTNOTE_MARKERS: frozenset[str] = frozenset({"*", "+", "†", "‡", "§", "u"})
 FOOTNOTE_MARKER_RE: re.Pattern = re.compile(r"^(?:[*+†‡§u]+)(?:\s+[*+†‡§u]+)*$")
 
-RE_BULLET_PREFIX = BULLET_MARKER_RE
-
 __all__ = [
     "BULLET_MARKERS",
     "BULLET_MARKER_RE",
     "FOOTNOTE_MARKERS",
     "FOOTNOTE_MARKER_RE",
-    "RE_BULLET_PREFIX",
 ]

@@ -436,10 +436,11 @@ flowchart TD
     Router --> RepSplit{Input Representation?}
     
     %% HTML Branch
-    RepSplit -->|HTML / iXBRL| HTMLCand[DOM Cover Layout Table Tagger]
-    HTMLCand --> HTMLConv[Decompose Cover Layout Tables]
-    HTMLConv --> HTMLProtect[Protect Financial Tables with Placeholders]
-    HTMLProtect --> SharedBound[Shared Cover Boundary Detector]
+    RepSplit -->|HTML / iXBRL| HTMLClean[Shared Stage-1 HTML Cleaner]
+    HTMLClean --> HTMLRender[Render Tables to Canonical Tagged ASCII]
+    HTMLRender --> HTMLProtect[Protect Tagged TABLE Blocks]
+    HTMLProtect --> HTMLDecompose[String Structural Decomposition]
+    HTMLDecompose --> SharedBound[Shared Cover Boundary Detector]
     
     %% ASCII Branch
     RepSplit -->|Legacy ASCII TXT| ASCIILines[Line Stream & Feature Extraction]
@@ -538,13 +539,14 @@ defs/
       quarterly/             # 10-Q: taxonomy, comparison evidence
       current_report/        # 8-K & 6-K: dotted Item taxonomy
       profiles.py            # Composed cover profiles
-    cover/                   # Cover boundary detector, cluster start, backward body confirmation
-  tables/                    # Table AST, HTML templates, TOC detectors, ASCII table classifiers
+    cover/                   # Cover boundary detector, cluster start, backward body confirmation, shared cover healing
+    page_markers/            # ASCII page-marker analysis and string-first HTML adapter
+  tables/                    # Table AST, HTML templates, TOC detectors, ASCII table classifiers, deferred cleanup_false_tables
     classifiers/             # Fast layout rules, numeric density, whitespace gutter analysis
     toc_parser.py            # Unified TOC sequence and dot-leader parser
-  text/                      # Soft-wrap joining, date healing, whitespace normalization
+  text/                      # Soft-wrap joining, date healing, whitespace normalization; string-first HTML pipeline under defs/text/html
 phases/
-  025_webpage_storage/       # Pipeline orchestration, DOM preprocessing, parquet storage emission
+  025_webpage_storage/       # Pipeline orchestration, string-first HTML normalization, parquet storage emission
 ```
 
 ---

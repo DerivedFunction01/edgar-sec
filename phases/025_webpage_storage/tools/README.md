@@ -157,6 +157,13 @@ Then run the golden tests:
 .venv/bin/pytest phases/025_webpage_storage/tests/test_document_goldens.py
 ```
 
+Normalization goldens under `tests/fixtures/normalization/` may need
+regeneration after processor changes. The focused
+`tests/test_normalization_goldens.py` suite validates the archetype segments;
+`test_document_goldens.py` additionally validates the promoted document corpus.
+The archetype expected files still need regeneration once the final tagged-table
+formatting contract is finalized.
+
 Expected-output divergence reports are written under the shared
 `.artifacts/test-runs/` directory and include text and HTML diffs plus debug
 metadata.

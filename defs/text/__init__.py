@@ -72,18 +72,28 @@ from .healing import (
     strip_alphanumeric_words,
     strip_boxdot_spacers,
 )
-from .html import FastHtmlNode, FastHtmlTree, parse_html
-from .html_cleaner import (
+from .html import (
+    FastHtmlNode,
+    FastHtmlTree,
     clean_html_for_parsing,
+    decompose_html_structures,
+    extract_ascii_pre,
+    parse_html,
     strip_benign_font_styles,
+    strip_font_tag_and_noise_attributes,
     strip_ixbrl_inline_tags,
     strip_office_metadata_attributes,
 )
 from .tokens import (
     BULLET_MARKER_RE,
     BULLET_MARKERS,
-    RE_BULLET_PREFIX,
 )
+from .unicode import (
+    NORMALIZE_TO_SPACE,
+    STRIP_ZERO_WIDTH,
+    sanitize_unicode_whitespace,
+)
+from .whitespace import normalize_final_text_whitespace
 
 __all__ = [
     "ACTION_PRESERVE",
@@ -101,12 +111,13 @@ __all__ = [
     "MONTH_RE",
     "MONTH_SUFFIX_RE",
     "NEGATIVE_BOUNDARY_RE",
+    "NORMALIZE_TO_SPACE",
     "ORDINAL_SUFFIX_PATTERN",
     "ORDINAL_SUFFIX_RE",
-    "RE_BULLET_PREFIX",
     "RE_RAW_CHECKED",
     "RE_RAW_UNCHECKED",
     "SEC_DATE_FORMATS",
+    "STRIP_ZERO_WIDTH",
     "TABLE_YEAR_RE",
     "YEAR_IN_TEXT_RE",
     "YEAR_RANGE",
@@ -137,15 +148,18 @@ __all__ = [
     "compile_evidence_pack",
     "compile_family_automaton",
     "compile_lexical_matcher",
+    "decompose_html_structures",
     "expand_alternations",
     "expand_compounds",
     "expand_variants",
+    "extract_ascii_pre",
     "extract_years",
     "heal_date_fragments",
     "heal_split_lines",
     "merge_yes_no_binary_blocks",
     "month_name_to_index",
     "normalize_checkbox_tokens",
+    "normalize_final_text_whitespace",
     "normalize_tokens",
     "normalize_whitespace_and_tabs",
     "parse_date",
@@ -153,12 +167,14 @@ __all__ = [
     "parse_numeric_year",
     "parse_year_token",
     "reflow_ascii",
+    "sanitize_unicode_whitespace",
     "score_tokens",
     "score_unit",
     "should_join_two_lines",
     "strip_alphanumeric_words",
     "strip_benign_font_styles",
     "strip_boxdot_spacers",
+    "strip_font_tag_and_noise_attributes",
     "strip_ixbrl_inline_tags",
     "strip_office_metadata_attributes",
     "tokenize",

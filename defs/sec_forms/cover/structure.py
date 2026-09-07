@@ -12,7 +12,7 @@ from dataclasses import dataclass
 from enum import Enum
 
 from defs.regex import build_alternation
-from defs.text.tokens import RE_BULLET_PREFIX
+from defs.text.tokens import BULLET_MARKER_RE
 
 
 class SectionKind(str, Enum):
@@ -290,7 +290,7 @@ def is_continuation_prose(line: str) -> bool:
     if stripped[0].islower():
         return True
     first_token = stripped.split(maxsplit=1)[0]
-    if RE_BULLET_PREFIX.match(first_token):
+    if BULLET_MARKER_RE.match(first_token):
         return True
     if RE_PART_REFERENCE.search(stripped) or RE_ITEM_REFERENCE.search(stripped):
         continuation = _extract_continuation(stripped)

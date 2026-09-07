@@ -6,9 +6,6 @@ from dataclasses import dataclass, field
 from enum import Enum
 from typing import Any, Protocol, runtime_checkable
 
-from defs.sec_forms.cover import CoverBoundary
-from defs.sec_forms.page_markers import PageMarkerAnalysis
-
 from ...core.schemas import DocumentLocator
 
 
@@ -30,20 +27,7 @@ class PreprocessedDocument:
     has_html_tags: bool
     detected_encoding: str
     metadata: dict[str, Any] = field(default_factory=dict)
-    page_analysis: PageMarkerAnalysis | None = None
     representation: str = "ascii"
-
-
-@dataclass(frozen=True, slots=True)
-class CoverPreprocessResult:
-    """Cover-processed text and the boundary selected for later stages."""
-
-    html: str
-    matched: bool
-    template: str | None
-    confidence: float
-    reason: str
-    cover_boundary: CoverBoundary
 
 
 @dataclass(frozen=True, slots=True)
@@ -74,16 +58,7 @@ class FormEvaluator(Protocol):
 
 @runtime_checkable
 class FormNormalizer(Protocol):
-    """Protocol for form-family specific cover and heading normalization passes."""
-
-    def preprocess_cover(
-        self,
-        html_text: str,
-        metadata: dict[str, Any] | None = None,
-        page_analysis: PageMarkerAnalysis | None = None,
-    ) -> CoverPreprocessResult:
-        """Apply form-family cover preprocessing and return boundary metadata."""
-        ...
+    """Protocol for form-family specific heading normalization passes."""
 
     def normalize_headers(
         self,
@@ -95,7 +70,6 @@ class FormNormalizer(Protocol):
 
 
 __all__ = [
-    "CoverPreprocessResult",
     "DecisionAction",
     "FormEvaluator",
     "FormNormalizer",

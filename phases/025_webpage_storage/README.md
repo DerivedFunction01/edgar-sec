@@ -179,8 +179,8 @@ The boundary is normalization only — parsing and section extraction are later
 phases.
 
 - `DeepNormalizer` — coordinates form-specific and generic normalization passes
-- `HybridCoverPreprocessor` — in-place DOM cover preprocessor driven by a typed form-family cover profile. It preserves organic filing prose while decomposing layout tables and healing split phrases (checkbox normalization, phrase-sequence healing, date fragment healing). Behavior is profile-gated: annual-only anchors never apply to quarterly, current-report, or no-cover profiles.
-- Form-family normalizers — `Form10KNormalizer`, `Form10QNormalizer`, `Form8KNormalizer` route through `HybridCoverPreprocessor` with their profile; `GenericFormNormalizer` is the fallback
+- Shared cover boundary and healing — `find_cover_boundary_for_profile()` and `heal_cover_text()` are representation-neutral and operate on the normalized text frame; form normalizers expose heading normalization only
+- Form-family normalizers — `Form10KNormalizer`, `Form10QNormalizer`, `Form8KNormalizer` route through the shared text-frame coordinator; `GenericFormNormalizer` is the fallback
 - `FormRouter` — routes documents to form-specific evaluators and normalizers
 - ASCII span/action pass — after body-start detection, non-HTML text runs through
   `defs.text.reflow.reflow_ascii`: hard-wrapped prose is unwrapped, untagged
@@ -191,7 +191,21 @@ phases.
   Decision counts are published in processor metadata (`reflow_unwrap_blocks`,
   `reflow_preserve_blocks`, `reflow_tag_blocks`).
 
-The processing pipeline: `GenericPreprocessor` → `FormRouter` → form-specific normalizer → `DeepNormalizer`. Shared table processing lives under `defs/tables/`; cover-specific table templates live under `defs/tables/templates/cover.py`.
+The processing pipeline is `GenericPreprocessor` → representation-specific page
+policy and text-frame rendering → shared cover boundary/healing → form-specific
+header normalization → `DeepNormalizer` downstream structure analysis. HTML
+documents use `defs.text.html.normalize_html_document()`, which renders tables
+to canonical `<TABLE>...</TABLE>` blocks and decomposes HTML as strings. Shared
+table processing lives under `defs/tables/`; cover-specific table templates
+live under `defs/tables/templates/cover.py`.
+
+### Removed components
+
+- `HybridCoverPreprocessor` and `profile_pipeline.py` have been removed. Cover preprocessing is now handled by the shared text-frame coordinator in `defs.sec_forms.cover`.
+- Preprocessing no longer carries page-marker analysis. `GenericPreprocessor`
+  performs source cleanup and representation classification only. ASCII analysis
+  is created lazily by `apply_text_policy()`; HTML analysis occurs after the
+  string-first renderer has produced a valid text coordinate frame.
 
 ### Representation-aware cover routing
 
@@ -202,7 +216,12 @@ Cover applicability is decided by both the selected form profile and bounded doc
 - Pure XML/structured filings: no-cover scope and no HTML cover pass
 - Narrative/no-standardized-cover filings: no-cover scope and generic normalization only
 
-Profiles are immutable and selected by form family from `defs.sec_forms.cover.profiles`. The preprocessor consumes a profile; it does not branch on form names. Annual-only anchors (`Documents incorporated by reference`, public float, annual share-count wording, auditor disclosures) are profile-gated and must never apply to quarterly, current-report, or no-cover profiles.
+Profiles are immutable and selected by form family from
+`defs.sec_forms.cover.profiles` at the normalization boundary. The generic
+preprocessor does not consume profiles or branch on form names. Annual-only
+anchors (`Documents incorporated by reference`, public float, annual share-count
+wording, auditor disclosures) are profile-gated and must never apply to
+quarterly, current-report, or no-cover profiles.
 
 ### Shared alias registry
 
@@ -222,8 +241,15 @@ a persisted setting.
 
 ```bash
 .venv/bin/pytest phases/025_webpage_storage/tests
-.venv/bin/pytest phases/025_webpage_storage/tests/test_normalization_goldens.py
 ```
+
+Normalization goldens under `tests/fixtures/normalization/` may need
+regeneration after processor changes. The focused
+`tests/test_normalization_goldens.py` suite currently validates the three
+archetype segments; document-corpus validation additionally runs through
+`test_document_goldens.py` against the promoted document corpus. The expected
+goldens still need regeneration once the final tagged-table formatting contract
+is finalized.
 
 Generated test evidence uses the shared `.artifacts/test-runs/` root through
 `defs.runtime.paths`; acceptance fixture databases remain under

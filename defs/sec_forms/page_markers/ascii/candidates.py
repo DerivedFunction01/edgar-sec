@@ -20,6 +20,7 @@ from ..constants import (
     _RE_LEADING_NUMBER,
     _RE_LETTER_NUMBER,
     _RE_PAREN_LABEL,
+    _RE_PIPE_HEADER_NUMBER,
     _RE_PIPE_LABEL,
     _RE_SIMPLE_WRAPPED_LABEL,
     _RE_STRUCTURAL_MATCH,
@@ -200,6 +201,7 @@ def classify_candidate(
     if has_numeric_data_shape(line) and not (
         re.fullmatch(r"(?:\d{1,4}|[ivxlcdm]{1,8})", stripped, re.IGNORECASE)
         or _RE_SIMPLE_WRAPPED_LABEL.fullmatch(stripped)
+        or _RE_PIPE_HEADER_NUMBER.match(stripped)
     ):
         return None
     checks: tuple[tuple[re.Pattern[str], str, str, bool], ...] = (
@@ -211,6 +213,7 @@ def classify_candidate(
         (_RE_BARE_ROMAN, PageMarkerKind.ROMAN_NUMBER, "roman", True),
         (_RE_LEADING_NUMBER, PageMarkerKind.NUMBER_FIRST, "arabic", False),
         (_RE_TRAILING_NUMBER, PageMarkerKind.TRAILING_NUMBER, "arabic", False),
+        (_RE_PIPE_HEADER_NUMBER, PageMarkerKind.TRAILING_NUMBER, "arabic", False),
         (_RE_INLINE_PAGE, PageMarkerKind.INLINE_PAGE_NUMBER, "arabic", False),
     )
     for pattern, family, namespace, whole_line in checks:

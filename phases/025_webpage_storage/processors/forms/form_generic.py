@@ -8,11 +8,8 @@ from __future__ import annotations
 
 from typing import Any
 
-from defs.sec_forms.cover import BoundaryInput, find_cover_boundary
-
 from ...core.schemas import DocumentLocator
 from .base import (
-    CoverPreprocessResult,
     DecisionAction,
     FormEvaluator,
     FormNormalizer,
@@ -44,30 +41,6 @@ class GenericFormEvaluator(FormEvaluator):
 
 class GenericFormNormalizer(FormNormalizer):
     """Fallback normalizer for generic/unspecified form types."""
-
-    def preprocess_cover(
-        self,
-        html_text: str,
-        metadata: dict[str, Any] | None = None,
-        page_analysis=None,
-    ) -> CoverPreprocessResult:
-        _ = metadata
-        boundary = find_cover_boundary(
-            BoundaryInput(
-                html_text,
-                representation="html",
-                page_analysis=page_analysis,
-            ),
-            None,
-        )
-        return CoverPreprocessResult(
-            html=html_text,
-            matched=False,
-            template=None,
-            confidence=0.0,
-            reason="no_cover_profile_or_evidence",
-            cover_boundary=boundary,
-        )
 
     def normalize_headers(
         self,

@@ -10,16 +10,13 @@ from .headers import (
     match_header,
     normalize_headers,
 )
-from .hybrid_cover import CoverPreprocessResult, HybridCoverPreprocessor
 
 __all__ = [
     "FORM_8K_GRAMMAR",
     "FORM_10K_GRAMMAR",
     "FORM_10Q_GRAMMAR",
-    "CoverPreprocessResult",
     "HeaderGrammar",
     "HeaderMatch",
-    "HybridCoverPreprocessor",
     "make_grammar",
     "match_header",
     "normalize_headers",

@@ -14,12 +14,13 @@ defs/sec_forms/
   page_markers/            # Coordinate-safe ASCII page-marker analysis package
     __init__.py             # Stable public API re-exports
     models.py               # Marker, candidate, run, evidence, and terminal-state models
-    ascii.py                # ASCII/SGML orchestration and validated cleanup
-    html.py                 # Visible DOM markers, PRE discrimination, and DOM cleanup
-    candidates.py           # Firm patterns, contextual candidates, and promotion
+    ascii/                  # ASCII/SGML-specific subpackage (orchestration, candidates, headers, layout, pre)
+    fast_html/              # String-first HTML break-to-text converter and page policy adapter
+    artifacts.py            # Canonical page-artifact tokens, template normalization, and metadata
     sequence.py             # Namespace-aware validation, healing, and inference
-    headers.py              # Repeated header/footer evidence
-    layout.py               # Alignment, spacing, and table-shape guards
+    prose.py                # Shared prose classifier (ASCII/HTML stop-word guard, template detector)
+    constants.py            # Empirical prose stop-word set and tuning constants
+    orchestrator.py         # Representation facade: ASCII dispatch and string-first HTML fast path
   sequences.py             # Shared phrase-sequence healing rules for common cover captions
   concepts.py              # ConceptPattern for dual regex/BoW semantic matching
   families.py              # Canonical form-family alias registry and cover profile mapping
@@ -40,7 +41,7 @@ defs/sec_forms/
     current_report/        # Form 8-K & 6-K specific domain package
       __init__.py          # Current-report API re-exports
       taxonomy.py          # Section 1-9 dotted Item taxonomy (1.01 through 9.01)
-  cover/                   # Subpackage for cover boundary, extractors, and profiles (own README)
+  cover/                   # Subpackage for cover boundary, extractors, profiles, and shared cover healing (own README). healing.py provides heal_cover_text().
 ```
 
 ---
@@ -63,8 +64,12 @@ defs/sec_forms/
 - **`models.py`** — Shared immutable domain dataclasses:
   - `Security12b`, `RegistrantEntry`, `CheckboxDisclosures`, `CoverPageModel`.
 
-- **`page_markers/`** — Coordinate-safe ASCII/SGML and HTML page-marker
-  discovery, classification, and removal. See
+- **`page_markers/`** — Coordinate-safe ASCII page-marker
+  discovery, classification, and removal. The HTML page-marker DOM
+  package has been removed; HTML callers use the string-first
+  `fast_html/` adapter which renders HTML to break-text via
+  `defs.text.html.normalize_html_document` before delegating to the
+  ASCII orchestrator. See
   [`page_markers/README.md`](page_markers/README.md) for the full pipeline,
   safety invariants, performance history, and benchmark status.
   - Firm SGML/footer forms remain compatible with the original public API.

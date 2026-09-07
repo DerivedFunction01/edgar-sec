@@ -40,7 +40,7 @@ _PRE_OPEN_RE = re.compile(r"<pre\b[^>]*>", re.IGNORECASE)
 _PRE_CLOSE_RE = re.compile(r"</pre\s*>", re.IGNORECASE)
 _PRE_BLOCK_RE = re.compile(r"(?is)<pre\b[^>]*>(?P<body>.*?)</pre\s*>")
 _TABLE_RE = re.compile(r"(?is)<table\b.*?</table\s*>")
-_TOKEN_PREFIX = "\x00HYBRID_PRE_"
+_TOKEN_PREFIX = "__SEC_HYBRID_PRE_"
 
 
 @dataclass(frozen=True, slots=True)
@@ -181,7 +181,9 @@ def normalize_hybrid_pre_text(text: str) -> HybridPreText:
                         + body[table_match.end() :]
                     )
 
-        token = f"{_TOKEN_PREFIX}{index}_\x00"
+        token = f"{_TOKEN_PREFIX}{index}__"
+        while token in text:
+            token += "_"
         protected[token] = payload
         pieces.extend((text[cursor : match.start()], token))
         cursor = match.end()

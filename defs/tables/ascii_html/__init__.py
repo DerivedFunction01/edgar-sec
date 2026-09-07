@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 
+import re
+
 from defs.tables.ascii_html.model import (
     DEFAULT_RENDER_BUDGET,
     BorderSegment,
@@ -24,6 +26,16 @@ from defs.tables.ascii_html.spans import (
     extract_source_table,
 )
 from defs.text.html import FastHtmlNode, parse_html
+
+_RE_TABLE_WRAPPER = re.compile(
+    r"<table\b[^>]*>(?P<body>.*)</table\s*>\s*$",
+    re.IGNORECASE | re.DOTALL,
+)
+
+
+def _is_wholly_empty_table(table_node: FastHtmlNode) -> bool:
+    """Return True if the table has no visible text after whitespace normalization."""
+    return not table_node.text(strip=True)
 
 
 def convert_html_table(
@@ -61,22 +73,52 @@ def convert_html_tables_to_ascii(
     html_content: str,
     *,
     budget: RenderBudget = DEFAULT_RENDER_BUDGET,
+    convert_to_text: bool = True,
 ) -> str:
-    """Document-level facade: converts all visual HTML tables in a document to ASCII tables."""
+    """Convert visual HTML tables to ASCII, optionally preserving HTML markup."""
     tree = parse_html(html_content)
     tables = tree.css("table")
     if not tables:
-        return tree.root.text(separator="\n") if tree.root else html_content
+        if tree.root is None:
+            return html_content
+        return tree.root.text(separator="\n") if convert_to_text else str(tree)
 
+    rendered_tables: list[tuple[str, str]] = []
     for idx, tbl in enumerate(tables):
         if tbl.find_parent("table") is not None:
             continue
         res = render_source_table(tbl, table_index=idx, budget=budget)
         if res.ascii_text:
-            tbl.raw_node.replace_with(f"\n{res.ascii_text}\n")
+            if convert_to_text:
+                tbl.raw_node.replace_with(f"\n{res.ascii_text}\n")
+            else:
+                token = f"__SEC_RENDERED_TABLE_{len(rendered_tables)}__"
+                while token in html_content:
+                    token += "_"
+                rendered_tables.append((token, f"\n{res.ascii_text}\n"))
+                tbl.raw_node.replace_with(token)
+        elif not convert_to_text:
+            if _is_wholly_empty_table(tbl):
+                tbl.decompose()
+                continue
+            token = f"__SEC_RENDERED_TABLE_{len(rendered_tables)}__"
+            while token in html_content:
+                token += "_"
+            raw_html = tbl.raw_node.html or ""
+            match = _RE_TABLE_WRAPPER.fullmatch(raw_html)
+            inner_html = match.group("body") if match else raw_html
+            rendered_tables.append((token, f"\n<TABLE>{inner_html}</TABLE>\n"))
+            tbl.raw_node.replace_with(token)
 
     root = tree.root
-    return root.text(separator="\n") if root else html_content
+    if root is None:
+        return html_content
+    rendered = root.text(separator="\n") if convert_to_text else str(tree)
+    for token, table in rendered_tables:
+        if token not in rendered:
+            raise ValueError(f"rendered table token missing: {token!r}")
+        rendered = rendered.replace(token, table)
+    return rendered
 
 
 __all__ = [

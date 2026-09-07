@@ -1,8 +1,10 @@
 # `defs/sec_forms/page_markers/` — Coordinate-Safe Page-Marker Analysis and Cleanup
 
-Owns ASCII/SGML and HTML page-marker discovery, classification, and safe
-coordinate-aware removal. No phase-local serializers or regexes; all
-heuristics are structural, statistical, or prose-guarded.
+Owns ASCII/SGML page-marker discovery, classification, and safe
+coordinate-aware removal. HTML callers use the string-first
+`fast_html/` adapter which renders HTML to break-text before
+delegating to the ASCII orchestrator. No phase-local serializers or
+regexes; all heuristics are structural, statistical, or prose-guarded.
 
 ---
 
@@ -16,14 +18,9 @@ defs/sec_forms/page_markers/
   prose.py             # Shared prose classifier (ASCII/HTML stop-word guard, template detector)
   artifacts.py         # Canonical page-artifact tokens, template normalization, and metadata
   sequence.py          # Namespace-aware validation, healing, inference, and monotone-fraction checks
-  html/                # HTML-specific subpackage
-    __init__.py
-    discovery.py
-    dom.py
-    finalization.py
-    probes.py
-    recovery.py
-    validation.py
+  fast_html/           # String-first HTML break-to-text converter and page policy adapter
+    __init__.py        # Public API re-exports
+    converter.py       # HTML-to-break-text conversion and ASCII delegation
   ascii/               # ASCII/SGML-specific subpackage
     __init__.py        # Re-exports all public ASCII functions
     orchestrator.py    # ASCII/SGML orchestration and validated cleanup
@@ -55,27 +52,6 @@ defs/sec_forms/page_markers/
   `ascii/candidates.py` and `ascii/headers.py`, then runs `sequence.py` healing and
   inference. Validates final strips before applying.
 
-- **`html.py`** — HTML discovery pipeline:
-  - `_NodeFacts` per-enrichment memo (hidden/toc/break ancestor walks,
-    attr_text, node_text, semantic) shared across HR/table/generic strategies.
-  - Occupied-container pruning via `_CONTAINER_SKIP_TAGS` (div/span/section/
-    table/tbody/tr/center); element-children containers skip deep text, so the
-    innermost node is the marker.
-  - Table-footer candidates (`_table_footer_candidates`): repeated one-row
-    footer-table families, financial guards (currency/percent/decimal/paren/
-    date/multiyear family-wide), prose stop-word guard via `LexicalMatcher`
-    (≥2 distinct hits), cell-count cap ≤8, cell text ≤200 chars; section-split
-    at value restarts.
-  - Strong-label raw gate (`_raw_label_tags` + `html_has_page_label_evidence`):
-    `F-N`/`page N` tokens, page-semantic attrs, page-break styles.
-  - Complement interval search: `_family_extents()` (2 literal anchors/family),
-    `_region_reports()` → `PageRegionReport` attached to `PageMarkerAnalysis.regions`.
-  - `_recover_run_gaps()` → `InferredBoundary(reason="bounded_literal_recovery")`
-    metadata-only; zero-cost when no gaps exist.
-
-- **`ascii/candidates.py`** — ASCII `all_candidates` first/last-quarter selection,
-  slot promotion rules, and template detection.
-
 - **`ascii/headers.py`** — Repeated header/footer evidence. ASCII slot-invariant
   policy: prose-looking lines need a repeated template (≥2) within the slot;
   unique prose is preserved. Uses `prose.py` for shared classification.
@@ -91,6 +67,13 @@ defs/sec_forms/page_markers/
 
 - **`ascii/pre.py`** — SGML PRE-block discrimination: distinguishes real page-marker
   PRE content from boilerplate, then sanitizes markers inside validated blocks.
+
+Shared cover healing is provided by `defs.sec_forms.cover.healing.heal_cover_text()`,
+which applies representation-neutral healing to bounded cover slices. The retained
+`defs.text.html.tree.py` module provides parser/table-node infrastructure
+(selectolax wrapper, CSS traversal, raw-node access, cell text extraction) for
+table rendering and independent research consumers; it is not a document
+normalization API.
 
 ---
 
@@ -116,21 +99,19 @@ defs/sec_forms/page_markers/
 
 ## Performance
 
-Iterative optimization of the HTML/ASCII pipeline achieved an **81× speedup**
-on the 16-doc benchmark (524.5s → 6.47s). Form-level improvements include
-form10-k (142s → 2.85s) and v217619 (322s → 0.66s).
-
-Key optimizations:
+The string-first HTML/ASCII pipeline achieves high throughput by
+rendering HTML to break-text via `defs.text.html.normalize_html_document`
+before delegating to the ASCII orchestrator. Key optimizations:
 - Occupied-container pruning eliminates deep text walks inside non-marker
   containers.
-- `_NodeFacts` memoization shares expensive ancestor/attr walks across HR,
-  table, and generic strategies.
 - Table-footer promotion is family-aware (one-row repeated tables) with
   early financial guards.
 - Section-split group validation and `_group_is_toc_like()` sibling-signature
   rejection reduce false positives from TOC rows.
 - Complement interval search bounds recovery to literal anchor families
   instead of scanning the full document.
+- Tagged-table protection via `mask_tagged_tables`/`restore_tagged_tables`
+  prevents whitespace-oriented passes from seeing table layout.
 
 ---
 
@@ -142,15 +123,15 @@ normalizer boundary:
 
 - `strip` removes validated furniture and records provenance in the
   `page_artifacts` metadata; no visible token is emitted (legacy behavior).
-- `annotate` replaces each validated span or DOM node with a compact,
+- `annotate` replaces each validated span with a compact,
   ASCII-safe token line — `[[SEC:PAGE_BREAK id=N]]`,
   `[[SEC:REPEATING_HEADER id=N]]`, `[[SEC:REPEATING_FOOTER id=N]]` — where `N`
   is assigned in document order. All payload attributes (page number,
-  namespace, source kind, `node_path` / line span, removability,
+  namespace, source kind, line span, removability,
   `template_id`) live in the artifact metadata, never in the token.
 - `preserve` leaves the source representation unchanged.
 
-Key contracts (`artifacts.py`, `ascii/orchestrator.py`, `html/finalization.py`):
+Key contracts (`artifacts.py`, `ascii/orchestrator.py`, `fast_html/converter.py`):
 
 - Generated tokens are never classified as source page markers; re-running
   analysis over annotated text is idempotent.
@@ -166,17 +147,6 @@ Key contracts (`artifacts.py`, `ascii/orchestrator.py`, `html/finalization.py`):
 
 ---
 
-## Benchmark Harnesses
-
-- `/tmp/kilo/bench_table_footer.py` — 16-doc set (10 misses + 6 controls).
-- `/tmp/kilo/scale_test_50.py` — 50 stratified docs, 8 workers.
-- `/tmp/kilo/probe_complement.py` — Region/recovery probe.
-
-Current 50-doc scale results: 50/50 ok, 0 errors, 1.8 docs/s, 3.2 MB/s,
-p50=2081ms, 180 runs, 5628 markers.
-
----
-
 ## Known Caveats
 
 - ASCII `heal_run` gap interpolation on very long documents (e.g. `d50363_10k.txt`,
@@ -187,10 +157,11 @@ p50=2081ms, 180 runs, 5628 markers.
 - Recovery tag-context can anchor to TOC rows when bracketing anchors are
   ambiguous. A corpus-prior recipe cache is flagged as a future guard but is
   not yet implemented.
+- The string-first HTML path renders via `defs.text.html.normalize_html_document`
+  before ASCII analysis; complex nested HTML shapes may produce different
+  break-text than a DOM-based approach would.
 - Selectolax drops boolean `hidden` attrs; hidden-ancestor detection is
   selectolax-aware but may miss some edge cases present in bs4.
-- `FastHtmlNode` lacks `find_previous_sibling`; the HR short-circuit is
-  currently bs4-harness-only.
 
 ---
 

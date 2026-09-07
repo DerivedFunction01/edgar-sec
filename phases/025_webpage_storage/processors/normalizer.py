@@ -3,11 +3,9 @@
 from __future__ import annotations
 
 import hashlib
-import re
 from dataclasses import dataclass
 from typing import Any
 
-from defs.regex import build_alternation
 from defs.sec_forms.cover import (
     BoundaryInput,
     CoverBoundary,
@@ -16,32 +14,20 @@ from defs.sec_forms.cover import (
     find_cover_boundary_for_profile,
     find_toc_span,
     get_profile,
+    heal_cover_text,
 )
 from defs.sec_forms.page_markers import (
     PageArtifactPolicy,
-    apply_html_page_policy,
-    apply_page_markers,
+    analyze_page_markers,
+    apply_html_policy,
+    apply_text_policy,
     build_page_artifact_metadata,
-    enrich_html_analysis,
-    refresh_html_analysis,
 )
-from defs.tables import (
-    convert_html_tables_to_ascii,
-    normalize_hybrid_pre_text,
-    restore_hybrid_pre_text,
-)
-from defs.text.html import parse_html
+from defs.text import normalize_final_text_whitespace
 from defs.text.reflow import reflow_ascii
 
 from .forms.base import PreprocessedDocument
-from .preprocessor import _RE_HTML_DISCRIMINATOR
 from .router import FormRouter
-
-_IXBRL_PREFIXES = build_alternation(["ix", "xbrli", "dei", "us-gaap"])
-_RE_XML_IXBRL_TAGS = re.compile(rf"</?(?:{_IXBRL_PREFIXES}):[^>]*>", re.IGNORECASE)
-_RE_TABLE_TAG = re.compile(r"<\/?table\b", re.IGNORECASE)
-_RE_MULTIPLE_BLANKS = re.compile(r"\n{3,}")
-_RE_TRAILING_WHITESPACE = re.compile(r"[ \t]+$", re.MULTILINE)
 
 
 @dataclass(frozen=True, slots=True)
@@ -96,28 +82,51 @@ class DeepNormalizer:
         )
         is_html = representation == "html" or preprocessed.has_html_tags
         text = preprocessed.cleaned_text
-        page_analysis = preprocessed.page_analysis
+        page_analysis = None
 
-        # HTML node decisions are applied before any table serialization.
-        # Their DOM paths are never passed to the text-span stripper.
         source_identity = hashlib.sha256(text.encode("utf-8")).hexdigest()
         artifact_templates: dict[str, dict] = {}
         artifact_records: list[tuple[int, object]] = []
         next_artifact_id = 1
         if is_html:
-            tree = parse_html(text)
-            page_analysis = enrich_html_analysis(page_analysis, tree, source_text=text)
             first_html_id = next_artifact_id
-            removed, html_artifacts, html_templates, next_artifact_id = (
-                apply_html_page_policy(tree, page_analysis, page_artifact_policy)
+            (
+                text,
+                page_analysis,
+                html_artifacts,
+                html_templates,
+                next_artifact_id,
+            ) = apply_html_policy(
+                text,
+                page_analysis,
+                page_artifact_policy,
+                first_id=first_html_id,
             )
             artifact_templates.update(html_templates)
             artifact_records.extend(
                 zip(range(first_html_id, next_artifact_id), html_artifacts)
             )
-            if removed:
-                text = str(tree)
-                page_analysis = refresh_html_analysis(page_analysis, text)
+        else:
+            first_ascii_id = next_artifact_id
+            (
+                text,
+                page_analysis,
+                ascii_artifacts,
+                ascii_templates,
+                next_artifact_id,
+            ) = apply_text_policy(
+                text,
+                page_analysis,
+                page_artifact_policy,
+                first_id=first_ascii_id,
+            )
+            artifact_templates.update(ascii_templates)
+            artifact_records.extend(
+                zip(
+                    range(first_ascii_id, next_artifact_id),
+                    ascii_artifacts,
+                )
+            )
 
         boundary = find_cover_boundary_for_profile(
             BoundaryInput(
@@ -128,76 +137,30 @@ class DeepNormalizer:
             profile,
         )
 
-        # 1. Form-specific HTML cover-page preprocessing
-        if is_html and bool(_RE_TABLE_TAG.search(text)):
-            cover_result = form_normalizer.preprocess_cover(
-                text, metadata, page_analysis=page_analysis
-            )
-            text = cover_result.html
-            page_analysis = refresh_html_analysis(page_analysis, text)
-            boundary = find_cover_boundary_for_profile(
-                BoundaryInput(
-                    text,
-                    representation=representation,
-                    page_analysis=page_analysis,
-                ),
-                profile,
-            )
-        elif not is_html:
-            boundary = find_cover_boundary_for_profile(
-                BoundaryInput(
-                    text,
-                    representation=representation,
-                    page_analysis=page_analysis,
-                ),
-                profile,
-            )
-        else:
-            # HTML without tables: run cover-boundary detection even though
-            # there are no layout tables to convert.
-            boundary = find_cover_boundary_for_profile(
-                BoundaryInput(
-                    text,
-                    representation=representation,
-                    page_analysis=page_analysis,
-                ),
-                profile,
-            )
-
-        # 2. Generic HTML financial table to ASCII conversion & HTML tag stripping
-        # Meant for html documents that actually are just SGML ASCII documents in the 2008-range that uses <PRE> wrappers
-        if is_html and bool(_RE_HTML_DISCRIMINATOR.search(text)):
-            hybrid_text = normalize_hybrid_pre_text(text)
-            text = hybrid_text.text
-            text = convert_html_tables_to_ascii(text)
-            text = restore_hybrid_pre_text(text, hybrid_text.protected)
-            page_analysis = refresh_html_analysis(page_analysis, text)
-
-        # 3. Invariant generic cleanup passes
-        cleaned_text = _RE_XML_IXBRL_TAGS.sub("", text)
-        if cleaned_text != text:
-            text = cleaned_text
-            if is_html:
-                page_analysis = refresh_html_analysis(page_analysis, text)
-        text, ascii_artifacts, ascii_templates, _ = apply_page_markers(
-            text, page_analysis, page_artifact_policy, first_id=next_artifact_id
+        healed_text, cover_changed = heal_cover_text(
+            text,
+            boundary,
+            tuple(profile.healing_rules),
         )
-        artifact_templates.update(ascii_templates)
-        artifact_records.extend(
-            zip(
-                range(next_artifact_id, next_artifact_id + len(ascii_artifacts)),
-                ascii_artifacts,
+        if cover_changed:
+            text = healed_text
+            # Healing can merge lines, so line-based consumers need a fresh
+            # analysis and boundary in the new coordinate frame.
+            page_analysis = analyze_page_markers(text, representation="ascii")
+            boundary = find_cover_boundary_for_profile(
+                BoundaryInput(
+                    text,
+                    representation=representation,
+                    page_analysis=page_analysis,
+                ),
+                profile,
             )
-        )
-        if is_html:
-            page_analysis = refresh_html_analysis(page_analysis, text)
 
-        # 4. Form-specific heading standardization
+        # Form-specific heading standardization
         text = form_normalizer.normalize_headers(text, metadata)
 
         # 5. Final whitespace cleanup
-        text = _RE_TRAILING_WHITESPACE.sub("", text)
-        text = _RE_MULTIPLE_BLANKS.sub("\n\n", text)
+        text = normalize_final_text_whitespace(text)
         body_start = None
         toc_span = None
         closing_span = None

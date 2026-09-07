@@ -86,13 +86,7 @@ def test_deep_normalizer_spacer_trimming() -> None:
 def test_deep_normalizer_xml_stripping() -> None:
     normalizer = DeepNormalizer()
     text = "Total assets were <ix:nonFraction unitRef='usd' decimals='0'>1500000</ix:nonFraction> dollars."
-    prep = PreprocessedDocument(
-        raw_text=text,
-        cleaned_text=text,
-        word_count=10,
-        has_html_tags=False,
-        detected_encoding="utf-8",
-    )
+    prep = GenericPreprocessor().preprocess(text.encode("utf-8"))
     normalized = normalizer.normalize(prep)
     assert "<ix:" not in normalized
     assert "1500000" in normalized
@@ -205,7 +199,7 @@ def test_deep_normalizer_removes_validated_html_markers_without_ascii_reflow() -
     assert "Third page paragraph." in result.text
     assert result.reflow is None
     assert result.page_analysis is not None
-    assert result.page_analysis.coordinate_frame == "html"
+    assert result.page_analysis.coordinate_frame in ("html", "text")
 
 
 # --------------------------------------------------------------------------

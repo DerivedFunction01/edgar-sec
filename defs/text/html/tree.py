@@ -6,6 +6,8 @@ from collections.abc import Iterable, Iterator
 
 from selectolax.parser import HTMLParser, Node
 
+from .tags import BLOCK_TAGS
+
 
 class FastHtmlNode:
     """Wrapper around a selectolax HTML DOM node providing standardized access."""
@@ -53,6 +55,60 @@ class FastHtmlNode:
             if child is not None
         ]
 
+    def previous_sibling_blocks(self, limit: int = 3) -> list[FastHtmlNode]:
+        """Return preceding non-text sibling blocks, climbing ancestors.
+
+        Some SEC markup wraps a page label and its following ``hr`` in
+        different nested branches. In that shape the useful predecessor is
+        not the immediate text/element sibling of the ``hr`` but the previous
+        sibling of the nearest ancestor block. This helper exposes that
+        representation-neutral traversal without assigning page semantics.
+        """
+
+        return self._sibling_blocks("previous", limit)
+
+    def next_sibling_blocks(self, limit: int = 3) -> list[FastHtmlNode]:
+        """Return following non-text sibling blocks, climbing ancestors."""
+        return self._sibling_blocks("next", limit)
+
+    def _sibling_blocks(self, direction: str, limit: int) -> list[FastHtmlNode]:
+        result: list[FastHtmlNode] = []
+        current = self._node
+        while current is not None and len(result) < limit:
+            parent = current.parent
+            if parent is None:
+                break
+            children = []
+            child = parent.child
+            while child is not None:
+                children.append(child)
+                child = child.next
+            try:
+                index = next(
+                    i
+                    for i, child in enumerate(children)
+                    if getattr(child, "mem_id", None)
+                    == getattr(current, "mem_id", None)
+                )
+            except StopIteration:
+                current = parent
+                continue
+            step = -1 if direction == "previous" else 1
+            index += step
+            while 0 <= index < len(children):
+                sibling = children[index]
+                if (sibling.tag or "") not in {
+                    "-text",
+                    "-comment",
+                    "head",
+                    "html",
+                }:
+                    result.append(FastHtmlNode(sibling))
+                    break
+                index += step
+            current = parent
+        return result
+
     def __eq__(self, other: object) -> bool:
         if isinstance(other, FastHtmlNode):
             return self._node == other._node
@@ -67,46 +123,6 @@ class FastHtmlNode:
 
     def text(self, *, separator: str = " ", strip: bool = True) -> str:
         """Extract plain text with block-aware separator and stripping."""
-        block_tags = {
-            "address",
-            "article",
-            "aside",
-            "blockquote",
-            "canvas",
-            "dd",
-            "div",
-            "dl",
-            "dt",
-            "fieldset",
-            "figcaption",
-            "figure",
-            "footer",
-            "form",
-            "h1",
-            "h2",
-            "h3",
-            "h4",
-            "h5",
-            "h6",
-            "header",
-            "hr",
-            "li",
-            "main",
-            "nav",
-            "noscript",
-            "ol",
-            "p",
-            "pre",
-            "section",
-            "table",
-            "tfoot",
-            "ul",
-            "video",
-            "br",
-            "tr",
-            "td",
-            "th",
-        }
         chunks: list[str] = []
 
         def _walk(n: Node) -> None:
@@ -116,7 +132,7 @@ class FastHtmlNode:
                     chunks.append(child.text(deep=False))
                 elif tag == "br":
                     chunks.append(separator)
-                elif tag in block_tags:
+                elif tag in BLOCK_TAGS:
                     if (
                         separator
                         and chunks
@@ -232,6 +248,34 @@ class FastHtmlNode:
             curr = curr.next
         return None
 
+    def find_previous_siblings(
+        self, name: str | None = None, *, limit: int | None = None
+    ) -> list[FastHtmlNode]:
+        """Return previous element siblings in nearest-first order."""
+
+        target = name.lower() if name is not None else None
+        result: list[FastHtmlNode] = []
+        curr = self._node.prev
+        while curr is not None and (limit is None or len(result) < limit):
+            if curr.tag != "-text" and (target is None or curr.tag == target):
+                result.append(FastHtmlNode(curr))
+            curr = curr.prev
+        return result
+
+    def find_next_siblings(
+        self, name: str | None = None, *, limit: int | None = None
+    ) -> list[FastHtmlNode]:
+        """Return next element siblings in nearest-first order."""
+
+        target = name.lower() if name is not None else None
+        result: list[FastHtmlNode] = []
+        curr = self._node.next
+        while curr is not None and (limit is None or len(result) < limit):
+            if curr.tag != "-text" and (target is None or curr.tag == target):
+                result.append(FastHtmlNode(curr))
+            curr = curr.next
+        return result
+
     def unwrap(self) -> None:
         """Remove this element while retaining all its children in place."""
         self._node.unwrap()
@@ -246,12 +290,30 @@ class FastHtmlNode:
         return self._node.html or ""
 
     def replace_with_html(self, html: str) -> None:
-        """Replace this node with new HTML content."""
+        """Replace this node with new HTML content.
+
+        Prefer :meth:`insert_before_html` plus :meth:`decompose` for
+        programmatic tree surgery: lexbor's C-level ``replace_with`` is
+        segfault-prone on large real-world trees (observed on selectolax
+        0.4.11), while ``insert_before``/``decompose`` are stable.
+        """
         if hasattr(self._node, "replace_with"):
             self._node.replace_with(html)
         else:
-            self._node.insert_before(html)
+            self.insert_before_html(html)
             self._node.decompose()
+
+    def insert_before_html(self, html: str) -> None:
+        """Insert HTML content immediately before this node.
+
+        Uses lexbor's ``insert_before`` only (no ``replace_with``), which is
+        the mutation path verified stable on large SEC filing trees.
+        """
+        self._node.insert_before(html)
+
+    def remove(self) -> None:
+        """Remove this node from the tree without touching its children."""
+        self._node.remove()
 
     def replace_with(self, content: str | FastHtmlNode) -> None:
         """Replace this node with new string or FastHtmlNode (BeautifulSoup compatibility)."""

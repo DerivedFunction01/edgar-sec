@@ -15,40 +15,11 @@ from defs.tables.ascii_html.model import (
 from defs.tables.currencies import PREFIX_SYMBOLS
 from defs.tables.tokens import is_numeric_cell
 from defs.text.tokens import BULLET_MARKER_RE
+from defs.text.unicode import NORMALIZE_TO_SPACE, STRIP_ZERO_WIDTH
 
 if TYPE_CHECKING:
     from defs.text.html import FastHtmlNode
 
-
-_NORMALIZE_TO_SPACE = frozenset(
-    {
-        "\u00a0",  # NO-BREAK SPACE
-        "\u2007",  # FIGURE SPACE
-        "\u202f",  # NARROW NO-BREAK SPACE
-        "\u2009",  # THIN SPACE
-    }
-)
-
-_STRIP_ZERO_WIDTH = frozenset(
-    {
-        "\u200b",  # ZERO WIDTH SPACE
-        "\u200c",  # ZERO WIDTH NON-JOINER
-        "\u200d",  # ZERO WIDTH JOINER
-        "\u200e",  # LEFT-TO-RIGHT MARK
-        "\u200f",  # RIGHT-TO-LEFT MARK
-        "\u061c",  # ARABIC LETTER MARK
-        "\u202a",  # LEFT-TO-RIGHT EMBEDDING
-        "\u202b",  # RIGHT-TO-LEFT EMBEDDING
-        "\u202c",  # POP DIRECTIONAL FORMATTING
-        "\u202d",  # LEFT-TO-RIGHT OVERRIDE
-        "\u202e",  # RIGHT-TO-LEFT OVERRIDE
-        "\u2066",  # LEFT-TO-RIGHT ISOLATE
-        "\u2067",  # RIGHT-TO-LEFT ISOLATE
-        "\u2068",  # FIRST STRONG ISOLATE
-        "\u2069",  # POP DIRECTIONAL ISOLATE
-        "\ufeff",  # ZERO WIDTH NO-BREAK SPACE (BOM)
-    }
-)
 
 _SENTENCE_END_RE = re.compile(r"[:.!?\)]\s*$")
 
@@ -89,9 +60,9 @@ def _collapse_non_structural_newlines(text: str) -> str:
 
 
 def _normalize_whitespace(text: str, *, preserve_newlines: bool = False) -> str:
-    for ch in _NORMALIZE_TO_SPACE:
+    for ch in NORMALIZE_TO_SPACE:
         text = text.replace(ch, " ")
-    for ch in _STRIP_ZERO_WIDTH:
+    for ch in STRIP_ZERO_WIDTH:
         text = text.replace(ch, "")
     # Dot leaders are visual filler, not meaningful cell content. Keep a
     # compact ASCII leader so they cannot consume an entire table budget.

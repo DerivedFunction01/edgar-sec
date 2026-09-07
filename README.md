@@ -89,8 +89,8 @@ consumes these target plans; see the Phase 02 README for the scope split.
 
 Acquires and stores raw SEC filing documents (HTML, SGML, iXBRL) as
 content-addressed, zstd-compressed SQLite BLOBs, linked to Phase 02 corporate
-occurrences, and applies cover-page normalization (hybrid in-place DOM
-preprocessing with layout-table decomposition and text healing). Fixture IDs
+occurrences, and applies cover-page normalization (string-first HTML preprocessing
+with layout-table decomposition and text healing). Fixture IDs
 are reusable appendable test caches: an expanded child plan reuses existing
 blobs and fetches only missing locators. Document parsing and section
 extraction are later phases built on the stored and normalized `document_blobs`.
@@ -105,7 +105,8 @@ Domain-neutral contracts: SEC HTTP client (pacing/retries/caching), canonical
 filing identity (accessions, archive URLs, occurrence IDs, document locator
 keys), storage backends, SQL boundary, `sec_forms/` (shared SEC form definitions,
 cover-page contracts, and the coordinate-safe `page_markers/` analysis package
-with HTML/ASCII discovery, structural pruning, policy-driven page-artifact
+with ASCII discovery, the string-first `fast_html/` HTML break-to-text
+adapter, structural pruning, policy-driven page-artifact
 rendering, and safety invariants),
 and the shared phase runtime.
 

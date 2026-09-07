@@ -71,7 +71,7 @@ class DefaultFilingProcessor(DocumentProcessor):
                 reflow_counts[span_decision.action] = (
                     reflow_counts.get(span_decision.action, 0) + 1
                 )
-        page_analysis = normalization.page_analysis or preprocessed.page_analysis
+        page_analysis = normalization.page_analysis
         page_decisions = page_analysis.decisions if page_analysis is not None else ()
         meta = {
             "is_stub": decision.is_stub,

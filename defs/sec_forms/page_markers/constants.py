@@ -49,6 +49,10 @@ _RE_BARE_ARABIC = re.compile(r"^(?P<value>\d{1,4})$")
 _RE_BARE_ROMAN = re.compile(r"^(?P<value>[ivxlcdm]{1,8})$", re.IGNORECASE)
 _RE_LEADING_NUMBER = re.compile(r"^(?P<value>\d{1,4})\s{1,}\S.*$")
 _RE_TRAILING_NUMBER = re.compile(r"^\S.*?\s{2,}(?P<value>\d{1,4})$")
+_RE_PIPE_HEADER_NUMBER = re.compile(
+    r"^(?P<prefix>.*?[|]\s*)(?P<value>\d{1,4})$",
+    re.IGNORECASE,
+)
 _RE_INLINE_PAGE = re.compile(
     r"^(?P<prefix>.{0,80}?\bpage\s+)(?P<value>\d{1,4})\b(?P<suffix>.{0,80})$",
     re.IGNORECASE,
@@ -334,6 +338,7 @@ __all__ = [
     "_RE_PAGE_NUMBER_OF_TOTAL",
     "_RE_PAGE_SEMANTIC",
     "_RE_PAREN_LABEL",
+    "_RE_PIPE_HEADER_NUMBER",
     "_RE_PIPE_LABEL",
     "_RE_SGML_INLINE",
     "_RE_SGML_LINE",

@@ -137,17 +137,12 @@ def analyze_page_markers(
             terminal_state=PageMarkerTerminalState.NO_VISIBLE_LABELS,
         )
 
-    # HTML has its own DOM-aware discovery path. Running the line-oriented
-    # ASCII candidate sweep over raw markup is both expensive and semantically
-    # noisy; callers should pass this empty base to enrich_html_analysis().
+    # The ASCII orchestrator never sees HTML: the package facade owns
+    # representation dispatch. Fail loudly rather than scanning raw markup.
     if representation.casefold() == "html":
-        return PageMarkerAnalysis(
-            (),
-            (),
-            (),
-            representation=representation,
-            source_text=document,
-            terminal_state=PageMarkerTerminalState.NO_VISIBLE_LABELS,
+        raise ValueError(
+            "ascii analyze_page_markers does not accept representation='html'; "
+            "use defs.sec_forms.page_markers.orchestrator"
         )
 
     context = context or {}

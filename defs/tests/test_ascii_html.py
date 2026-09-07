@@ -9,6 +9,7 @@ from defs.tables.ascii_html import (
     HorizontalAlign,
     RenderBudget,
     convert_html_table,
+    convert_html_tables_to_ascii,
     extract_source_table,
 )
 from defs.tables.ascii_html.borders import (
@@ -962,4 +963,85 @@ def test_prose_columns_expand_without_artificial_line_wrapping() -> None:
     assert (
         "3.1  Charter of Lockheed Martin Corporation, as amended by Articles of Amendment"
         in out_lmt
+    )
+
+
+def test_empty_table_no_canonical_label_in_fallback_mode() -> None:
+    """A wholly empty table must not produce a canonical <TABLE> label in fallback mode."""
+    from defs.tables.ascii_html import convert_html_tables_to_ascii
+
+    html = '<TABLE><tbody><tr><td style="text-align: center; width: 100%"> </td></tr></tbody></TABLE>'
+    result = convert_html_tables_to_ascii(html, convert_to_text=False)
+    assert "<TABLE>" not in result
+
+
+def test_empty_table_with_whitespace_only_cells() -> None:
+    """Tables with only whitespace in all cells are omitted in fallback mode."""
+    from defs.tables.ascii_html import convert_html_tables_to_ascii
+
+    html = """
+    <html><body>
+    <table><tr><td>   </td><td>
+</td></tr></table>
+    </body></html>
+    """
+    result = convert_html_tables_to_ascii(html, convert_to_text=False)
+    assert "<TABLE>" not in result
+
+
+def test_nonempty_table_preserved_in_fallback_mode() -> None:
+    """Non-empty tables still produce canonical <TABLE> labels in fallback mode."""
+    from defs.tables.ascii_html import convert_html_tables_to_ascii
+
+    html = """
+    <html><body>
+    <table><tr><th>Item</th></tr><tr><td>Value</td></tr></table>
+    </body></html>
+    """
+    result = convert_html_tables_to_ascii(html, convert_to_text=False)
+    assert "<TABLE>" in result
+    assert "Item" in result
+    assert "Value" in result
+
+
+def test_table_with_nested_text_preserved_in_fallback_mode() -> None:
+    """Tables with meaningful text in nested cells are preserved in fallback mode."""
+    from defs.tables.ascii_html import convert_html_tables_to_ascii
+
+    html = """
+    <html><body>
+    <table>
+        <tr><td>Outer text</td>
+            <td><table><tr><td>Nested</td></tr></table></td>
+        </tr>
+    </table>
+    </body></html>
+    """
+    result = convert_html_tables_to_ascii(html, convert_to_text=False)
+    assert "<TABLE>" in result
+    assert "Outer text" in result
+
+
+def test_empty_table_omitted_from_rendered_tables_list() -> None:
+    """Empty tables produce no token and no replacement in fallback mode."""
+    from defs.tables.ascii_html import convert_html_tables_to_ascii
+
+    html = """
+    <html><body>
+    <table><tr><td> </td></tr></table>
+    <table><tr><td>Real</td></tr></table>
+    </body></html>
+    """
+    result = convert_html_tables_to_ascii(html, convert_to_text=False)
+    assert result.count("<TABLE>") == 1
+    assert "Real" in result
+def test_convert_html_tables_to_ascii_removes_empty_layout_table() -> None:
+    html = (
+        '<table cellpadding="0" cellspacing="0" style="width: 100%">'
+        '<tbody><tr><td style="text-align: center; width: 100%"> '
+        "</td></tr></tbody></table>"
+    )
+
+    assert convert_html_tables_to_ascii(html, convert_to_text=False) == (
+        "<html><head></head><body></body></html>"
     )

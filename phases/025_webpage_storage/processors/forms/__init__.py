@@ -3,7 +3,6 @@
 from __future__ import annotations
 
 from .base import (
-    CoverPreprocessResult,
     DecisionAction,
     FormEvaluator,
     FormNormalizer,
@@ -25,7 +24,6 @@ from .form_10q import (
 from .form_generic import GenericFormEvaluator, GenericFormNormalizer
 
 __all__ = [
-    "CoverPreprocessResult",
     "DecisionAction",
     "Form8KEvaluator",
     "Form8KNormalizer",

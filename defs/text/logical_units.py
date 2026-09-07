@@ -15,7 +15,7 @@ from __future__ import annotations
 import re
 from dataclasses import dataclass
 
-from defs.text.tokens import RE_BULLET_PREFIX
+from defs.text.tokens import BULLET_MARKER_RE
 
 
 @dataclass(frozen=True, slots=True)
@@ -92,7 +92,7 @@ def _is_list_item(line: str) -> bool:
     if not stripped:
         return False
     first_token = stripped.split(maxsplit=1)[0]
-    if RE_BULLET_PREFIX.match(first_token):
+    if BULLET_MARKER_RE.match(first_token):
         return True
     return bool(re.match(r"^\s*[\(\[]?[a-zA-Z0-9]+[\.\)\]]", stripped))
 

@@ -52,6 +52,8 @@ def test_preprocess_strips_envelope_and_unescapes() -> None:
     assert "Business & Operations" in doc.cleaned_text
     assert "<STYLE>" not in doc.cleaned_text
     assert "<HEAD>" not in doc.cleaned_text
+    # Page analysis belongs to the representation-specific policy boundary,
+    # after HTML has been rendered into a valid text coordinate frame.
 
 
 def test_preprocess_ascii_sec_table_not_flagged_as_html() -> None:
