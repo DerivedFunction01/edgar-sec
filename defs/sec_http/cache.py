@@ -99,9 +99,7 @@ class SqlCache:
                         ),
                         ColumnDef("url", ColumnType.TEXT, (NotNull(),)),
                         ColumnDef("payload", ColumnType.BLOB, (NotNull(),)),
-                        ColumnDef(
-                            "payload_sha256", ColumnType.TEXT, (NotNull(),)
-                        ),
+                        ColumnDef("payload_sha256", ColumnType.TEXT, (NotNull(),)),
                         ColumnDef("byte_size", ColumnType.INT, (NotNull(),)),
                         ColumnDef("content_kind", ColumnType.TEXT, (NotNull(),)),
                         ColumnDef("fetched_at", ColumnType.TEXT, (NotNull(),)),

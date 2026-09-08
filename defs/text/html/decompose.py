@@ -18,6 +18,7 @@ _RE_PARAGRAPH_TAGS = re.compile(rf"</?(?:{_PARAGRAPH_TAGS_ALT})\b[^>]*>", re.IGN
 _RE_CONTAINER_TAGS = re.compile(rf"</?(?:{_CONTAINER_TAGS_ALT})\b[^>]*>", re.IGNORECASE)
 _RE_INLINE_TAGS = re.compile(rf"</?(?:{_INLINE_TAGS_ALT})\b[^>]*>", re.IGNORECASE)
 _RE_REMAINING_TAGS = re.compile(r"</?[a-zA-Z][^>]*>")
+_RE_COMMENTS = re.compile(r"<!--.*?-->", re.DOTALL)
 _RE_HORIZONTAL_SPACES = re.compile(r"[^\S\n]+")
 _RE_MULTIPLE_NEWLINES = re.compile(r"\n{3,}")
 
@@ -58,6 +59,7 @@ def decompose_html_structures(html: str) -> str:
     # 2. Unescape entities and sanitize Unicode whitespace
     masked = html_lib.unescape(masked)
     masked = sanitize_unicode_whitespace(masked)
+    masked = _RE_COMMENTS.sub("", masked)
 
     # 3. Convert display:inline divs to spans
     masked = _RE_INLINE_DIV.sub(r"<span\1>", masked)
