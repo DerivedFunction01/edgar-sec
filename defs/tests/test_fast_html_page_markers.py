@@ -155,3 +155,36 @@ def test_decompose_whitespace_only_lines() -> None:
     html = "<p>Line 1</p>\n\t\n  \t  \n<p>Line 2</p>"
     text = convert_html_to_break_text(html)
     assert text == "Line 1\n\nLine 2"
+
+
+def test_repeated_html_table_furniture_is_removed_as_one_block() -> None:
+    pages = []
+    for index in range(1, 4):
+        pages.append(
+            f"""
+            <p>{index}</p><hr>
+            <table border="1">
+              <tr><th>ABC CORP</th><th>FOR THE YEAR END DECEMBER 31, 2025</th></tr>
+              <tr><td>Notes to consolidated financial statements</td><td></td></tr>
+            </table>
+            <p>Body content {index}</p>
+            """
+        )
+    html = "".join(pages)
+
+    analysis = analyze_fast_html_page_markers(html)
+    repeated = [
+        marker
+        for marker in analysis.markers
+        if marker.kind == PageMarkerKind.REPEATING_HEADER
+    ]
+
+    assert len(repeated) == 3
+    assert all("<TABLE>" in marker.text for marker in repeated)
+    assert all(marker.end_line > marker.start_line for marker in repeated)
+
+    normalized, _, _, _, _, _ = apply_fast_html_page_policy(
+        html, analysis=analysis, policy=PageArtifactPolicy.STRIP
+    )
+    assert "ABC CORP" not in normalized
+    assert "Body content 3" in normalized

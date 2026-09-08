@@ -10,9 +10,11 @@ from .headers import analyze_repeating_headers
 from .orchestrator import (
     RE_PAGE_SUFFIX,
     analyze_page_markers,
-    apply_page_markers,
     find_page_markers,
     is_page_marker_line,
+)
+from .policy import (
+    apply_page_markers,
     strip_page_markers,
 )
 

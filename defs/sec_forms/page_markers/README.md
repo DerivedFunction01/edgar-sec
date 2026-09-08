@@ -23,9 +23,10 @@ defs/sec_forms/page_markers/
     converter.py       # HTML-to-break-text conversion and ASCII delegation
   ascii/               # ASCII/SGML-specific subpackage
     __init__.py        # Re-exports all public ASCII functions
-    orchestrator.py    # ASCII/SGML orchestration and validated cleanup
+    orchestrator.py    # ASCII/SGML analysis orchestration (markers, runs, inference)
+    policy.py          # Coordinate-safe application of validated decisions (strip/annotate/preserve)
     candidates.py      # Firm patterns, contextual candidates, and promotion (ASCII slot logic)
-    headers.py         # Repeated header/footer evidence and ASCII slot-invariant policy
+    headers.py         # Repeated header/footer evidence and local-cohort furniture policy
     layout.py          # Alignment, spacing, and table-shape guards
     pre.py             # SGML PRE-block discrimination and marker sanitation
 ```
@@ -48,13 +49,32 @@ defs/sec_forms/page_markers/
   footer/header templates. Unique prose is always preserved; repeated prose
   templates may be removable.
 
-- **`ascii/orchestrator.py`** — ASCII/SGML orchestration. Delegates slot analysis to
-  `ascii/candidates.py` and `ascii/headers.py`, then runs `sequence.py` healing and
-  inference. Validates final strips before applying.
+- **`ascii/orchestrator.py`** — ASCII/SGML analysis orchestration. Delegates slot
+  analysis to `ascii/candidates.py` and `ascii/headers.py`, then runs
+  `sequence.py` healing and inference.
 
-- **`ascii/headers.py`** — Repeated header/footer evidence. ASCII slot-invariant
-  policy: prose-looking lines need a repeated template (≥2) within the slot;
-  unique prose is preserved. Uses `prose.py` for shared classification.
+- **`ascii/policy.py`** — Coordinate-safe application of validated decisions.
+  `strip_page_markers()` applies only REMOVE/NORMALIZE decisions in the same
+  source frame; `apply_page_markers()` implements the `strip`/`annotate`/
+  `preserve` artifact policy with merged ranges, reverse-order rewriting, and
+  template-id provenance.
+
+- **`ascii/headers.py`** — Repeated header/footer evidence. Bounded block
+  windows: for each accepted page anchor the analyzer walks forward (headers)
+  and backward (footers), skipping blanks, and collects up to 8 non-empty
+  lines / 1200 characters, stopping at other anchors, structural tags, and
+  `<TABLE>` boundaries. Normalized line templates are grouped by
+  `(side, slot, template)` and evaluated in **local anchor clusters** (gap
+  ≤ 2, local density ≥ 0.65, ≥ 3 anchors), never against a document-wide
+  denominator, so a 5-page appendix run inside a 300-page filing survives.
+  Roles drive retention: `boilerplate`/`footer` remove all occurrences,
+  `section_header` (variable content in a stable slot) keeps the first
+  occurrence per cohort, `unknown` preserves. Fully validated adjacent lines
+  merge into one block span before removal; ASCII `<TABLE>` units are
+  excluded unless `allow_table_furniture` is set (HTML path only, where
+  rendered table furniture is removed atomically including wrappers).
+  Structural `<PAGE>` anchors alone (no numeric labels) authorize furniture
+  detection. Uses `prose.py` for shared classification.
 
 - **`sequence.py`** — Namespace-aware validation, `heal_run` monotone
   interpolation, `monotone_fraction` reporting, and inferred-boundary
@@ -82,7 +102,9 @@ normalization API.
 1. **Page-number removal is independent of header removal.** The two signals
    are evaluated separately; removal of one does not imply removal of the other.
 2. **Unique prose is preserved.** Repeated prose templates may be removable,
-   but any line with unique prose content is never stripped.
+   but any line with unique prose content is never stripped. Removal now
+   requires a repeated normalized template inside a local anchor cluster, so
+   unique prose cannot clear the evidence bar.
 3. **Promotion requires ≥2 independent signals.** A candidate must clear
    namespace sequence, layout/TOC, prose, and financial/table exclusion gates
    before it is promoted.
@@ -167,5 +189,8 @@ Key contracts (`artifacts.py`, `ascii/orchestrator.py`, `fast_html/converter.py`
 
 ## Tests
 
-- 75 page-marker contract tests in `defs/tests/test_page_markers.py`.
+- Page-marker contract tests in `defs/tests/test_page_markers.py` (furniture
+  engine, cohorts, retention roles, unnumbered `<PAGE>` anchors) and HTML
+  adapter tests in `defs/tests/test_fast_html_page_markers.py` (rendered
+  table furniture, break-text conversion, policy application).
 - Run: `.venv/bin/pytest defs/tests`

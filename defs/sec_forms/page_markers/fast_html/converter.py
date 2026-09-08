@@ -9,7 +9,7 @@ from defs.regex import build_alternation
 from defs.text.html import NormalizedHtmlText, normalize_html_document
 
 from ..ascii.orchestrator import analyze_page_markers as _analyze_ascii
-from ..ascii.orchestrator import apply_page_markers as _apply_ascii_policy
+from ..ascii.policy import apply_page_markers as _apply_ascii_policy
 from ..models import (
     PageArtifactPolicy,
     PageBreakArtifact,
@@ -32,7 +32,10 @@ _RE_CSS_PAGE_BREAKS = re.compile(
 _RE_HR_TAGS = re.compile(r"<hr\b[^>]*>", re.IGNORECASE)
 _RE_PAGE_TAGS = re.compile(r"</?page\b[^>]*>", re.IGNORECASE)
 
-_PAGE_SENTINEL = "__SEC_PAGE_BREAK_SENTINEL__"
+# "SPLIT" deliberately avoids r/R: the Stage-1 glyph pass maps r/R to
+# checkbox glyphs inside Wingdings/Webdings/Symbol font scopes, which would
+# corrupt the sentinel (e.g. "__SEC_PAGE_B[ ]EAK_SENTINEL__").
+_PAGE_SENTINEL = "__SEC_PAGE_SPLIT_SENTINEL__"
 
 
 def _convert_html_to_break_text_with_metadata(html: str) -> NormalizedHtmlText:
@@ -43,7 +46,7 @@ def _convert_html_to_break_text_with_metadata(html: str) -> NormalizedHtmlText:
     text = _RE_CSS_PAGE_BREAKS.sub(f"\n{_PAGE_SENTINEL}\n", text)
     normalized = normalize_html_document(text)
     return NormalizedHtmlText(
-        normalized.replace(_PAGE_SENTINEL, "<PAGE>"),
+        normalized.replace(_PAGE_SENTINEL, "\n<PAGE>\n").strip(),
         normalized.table_geometries,
     )
 
@@ -72,9 +75,11 @@ def analyze_fast_html_page_markers(
             terminal_state=PageMarkerTerminalState.NO_VISIBLE_LABELS,
         )
     text = _convert_html_to_break_text_with_metadata(html)
+    analysis_context = dict(context or ())
+    analysis_context["allow_table_furniture"] = True
     analysis = _analyze_ascii(
         text,
-        context,
+        analysis_context,
         representation="ascii",
         allow_letter_number=allow_letter_number,
     )
@@ -100,10 +105,12 @@ def apply_fast_html_page_policy(
     """Render fast HTML text and apply page-marker decisions."""
     normalized = _convert_html_to_break_text_with_metadata(html)
     text = str(normalized)
+    analysis_context = dict(context or ())
+    analysis_context["allow_table_furniture"] = True
     if analysis is None or analysis.representation == "html":
         analysis = _analyze_ascii(
             text,
-            context,
+            analysis_context,
             representation="ascii",
             allow_letter_number=allow_letter_number,
         )

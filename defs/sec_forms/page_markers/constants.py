@@ -20,7 +20,7 @@ _RE_PAGE_NUMBER = re.compile(
 )
 _RE_DASHED_NUMBER = re.compile(r"(?im)^[ \t]*-[ \t]*(?P<page>\d+)[ \t]*-[ \t]*$")
 _RE_LETTER_NUMBER = re.compile(
-    r"(?im)^\s*(?:page\s+)?(?P<prefix>[A-Z])\s*[-–—]\s*(?P<page>\d+)\s*$"
+    r"(?im)^\s*(?:page\s+)?(?P<prefix>[A-Z])\s*[-–—]\s*(?P<page>\d+)\s*[-–—]?\s*$"
 )
 _RE_SGML_LINE = re.compile(
     r"(?im)^[ \t]*</?PAGE\b[^>]*>[ \t]*(?P<page>\d+)?[ \t]*"
@@ -176,6 +176,7 @@ PROSE_GUARD_STOP_WORDS = frozenset(
         "who",
         "will",
         "would",
+        "see",
     ]
 )
 _RE_APPENDIX_ROMAN = re.compile(

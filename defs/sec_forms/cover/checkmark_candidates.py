@@ -6,6 +6,7 @@ import re
 from collections.abc import Sequence
 
 from defs.regex import build_alternation
+from defs.sec_forms.cover.checkmark_frames import build_masked_offset_translator
 from defs.sec_forms.cover.checkmark_models import CheckboxCandidate
 from defs.sec_forms.cover.models import CoverBoundary
 from defs.tables.protection import mask_tagged_tables
@@ -380,7 +381,7 @@ def extract_cover_candidates(
     if boundary.end_line is None:
         return ()
     candidates: list[CheckboxCandidate] = []
-    _, table_spans = mask_tagged_tables(text)
+    masked, table_spans = mask_tagged_tables(text)
     table_line_numbers = tuple(text.count("\n", 0, span.start) for span in table_spans)
     for table_index, geometry in enumerate(table_geometries):
         if table_index >= len(table_line_numbers):
@@ -390,17 +391,34 @@ def extract_cover_candidates(
             continue
         candidates.extend(extract_table_candidates(geometry, table_index=table_index))
 
-    masked, _ = mask_tagged_tables(text)
+    # Candidate marks and spans must be reported in the unmasked document
+    # frame: apply_cover_checkmark_decisions slices the original text with
+    # them. Masked-table sentinels would shift every offset after a table.
+    # Line extraction still skips table interiors via the sentinel text, then
+    # each masked offset is translated back through the table spans.
     lines = masked.splitlines(keepends=True)
-    line_offsets: list[int] = []
+    masked_line_offsets: list[int] = []
     offset = 0
     for raw_line in lines:
-        line_offsets.append(offset)
+        masked_line_offsets.append(offset)
         offset += len(raw_line)
-    for line_index, raw_line in enumerate(lines[: boundary.end_line]):
-        line = raw_line.rstrip("\r\n")
-        if line_index < (boundary.start_line or 0):
+
+    masked_to_original = build_masked_offset_translator(masked, table_spans)
+
+    # The cover boundary line range is expressed in the unmasked frame;
+    # translate each masked line to its unmasked line index for bounds.
+    line_unmasked_index = [
+        text.count("\n", 0, masked_to_original(line_offset))
+        for line_offset in masked_line_offsets
+    ]
+    start_line = boundary.start_line or 0
+    for line_index, raw_line in enumerate(lines):
+        unmasked_index = line_unmasked_index[line_index]
+        if unmasked_index >= boundary.end_line:
+            break
+        if unmasked_index < start_line:
             continue
+        line = raw_line.rstrip("\r\n")
         labels = _label_matches(line)
         if not labels:
             continue
@@ -421,8 +439,8 @@ def extract_cover_candidates(
                 mark_refs = []
             if not mark_refs:
                 for nearby_index in range(
-                    max(boundary.start_line or 0, line_index - 2),
-                    min(boundary.end_line, line_index + 3),
+                    max(0, line_index - 2),
+                    min(len(lines), line_index + 3),
                 ):
                     if nearby_index == line_index:
                         continue
@@ -439,6 +457,12 @@ def extract_cover_candidates(
                 ]
             )
             for mark_line, mark in mark_refs:
+                mark_start = masked_to_original(
+                    masked_line_offsets[mark_line] + mark.start()
+                )
+                mark_end = masked_to_original(
+                    masked_line_offsets[mark_line] + mark.end()
+                )
                 candidates.append(
                     _candidate_from_match(
                         key=key,
@@ -446,7 +470,7 @@ def extract_cover_candidates(
                         token=mark,
                         label=(phrase, start, end),
                         row_text=row_text or line,
-                        source_region=f"line-{mark_line}-mark-{line_offsets[mark_line] + mark.start()}",
+                        source_region=f"line-{mark_line}-mark-{mark_start}",
                         row=line_index,
                         orientation=(
                             "above_label"
@@ -457,10 +481,7 @@ def extract_cover_candidates(
                             if mark.start() < start
                             else "right_of_label"
                         ),
-                        mark_span=(
-                            line_offsets[mark_line] + mark.start(),
-                            line_offsets[mark_line] + mark.end(),
-                        ),
+                        mark_span=(mark_start, mark_end),
                     )
                 )
     return tuple(candidates)

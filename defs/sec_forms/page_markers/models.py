@@ -143,6 +143,10 @@ class TemplateEvidence:
     presence: float
     kind: str
     lines: tuple[int, ...] = ()
+    cohort_start_line: int | None = None
+    cohort_end_line: int | None = None
+    role: str = "unknown"
+    retention: str = "preserve"
 
 
 @dataclass(frozen=True, slots=True)

@@ -95,7 +95,13 @@ def apply_cover_checkmark_decisions(
             decision = decisions.get((region, candidate.source_token))
             if decision is None or decision.span is None or region.startswith("table-"):
                 continue
-            replacements.append((*decision.span, decision.canonical_token))
+            start, end = decision.span
+            # Spans must land on the token they were extracted from. A stale
+            # or foreign-frame span would corrupt unrelated text (including
+            # structural table tags) and is dropped instead of applied.
+            if text[start:end] != candidate.source_token:
+                continue
+            replacements.append((start, end, decision.canonical_token))
     for start, end, replacement in sorted(replacements, reverse=True):
         text = text[:start] + replacement + text[end:]
 

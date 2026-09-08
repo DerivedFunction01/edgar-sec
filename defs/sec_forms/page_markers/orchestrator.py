@@ -10,7 +10,7 @@ from __future__ import annotations
 from typing import Any
 
 from .ascii.orchestrator import analyze_page_markers as _analyze_ascii
-from .ascii.orchestrator import apply_page_markers as _apply_ascii_policy
+from .ascii.policy import apply_page_markers as _apply_ascii_policy
 from .models import (
     PageArtifactPolicy,
     PageBreakArtifact,
