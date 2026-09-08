@@ -32,7 +32,7 @@ def test_normalize_checkbox_tokens() -> None:
     assert CANONICAL_UNCHECKED in normalized
     assert "☒" not in normalized
     assert "☐" not in normalized
-    assert "þ" not in normalized
+    assert "þ" in normalized
 
 
 def test_should_join_two_lines_and_negative_guards() -> None:
@@ -113,6 +113,40 @@ def test_heal_split_lines_end_to_end() -> None:
     assert healed[4] == "[X] ANNUAL REPORT PURSUANT TO SECTION 13"
 
 
+def test_heal_split_lines_preserves_cover_orientation() -> None:
+    rules = [
+        PhraseSequenceRule(
+            name="sec_banner",
+            tokens=["united", "states", "securities", "and", "exchange", "commission"],
+            anchor=["securities"],
+        ),
+    ]
+
+    lines = [
+        "       BEHRINGER HARVARD MID-TERM VALUE ENHANCEMENT",
+        "       FUND I LP",
+        "       (Exact Name of Registrant as Specified in Its Charter)",
+        "",
+        "                    UNITED STATES",
+        "                    SECURITIES AND EXCHANGE COMMISSION",
+        "   TEXAS                                            71-0897613",
+    ]
+
+    healed = heal_split_lines(lines, rules)
+
+    # Unchanged lines keep their leading whitespace (orientation).
+    assert healed[0] == "       BEHRINGER HARVARD MID-TERM VALUE ENHANCEMENT"
+    assert healed[1] == "       FUND I LP"
+    assert healed[2] == "       (Exact Name of Registrant as Specified in Its Charter)"
+    assert healed[3] == ""
+    # Joined fragments adopt the first line's base indentation.
+    assert (
+        healed[4]
+        == "                    UNITED STATES SECURITIES AND EXCHANGE COMMISSION"
+    )
+    assert healed[5] == "   TEXAS                                            71-0897613"
+
+
 def test_merge_yes_no_binary_blocks_standard() -> None:
     lines = [
         "Indicate by check mark if the registrant is a well-known seasoned issuer.",
@@ -133,7 +167,7 @@ def test_merge_yes_no_binary_blocks_standard() -> None:
 
 def test_merge_yes_no_binary_blocks_inverse_and_bare_marks() -> None:
     lines = ["Is the registrant a shell company?", "No", "o", "Yes", "[X]", "Done."]
-    merged = merge_yes_no_binary_blocks(lines)
+    merged = merge_yes_no_binary_blocks(lines, scope="cover_context")
     assert merged[1].endswith("No [ ] Yes [X]")
 
 
@@ -145,13 +179,74 @@ def test_merge_yes_no_binary_blocks_no_false_merge() -> None:
 
 
 def test_bare_mark_canonicalization() -> None:
-    assert normalize_checkbox_tokens("Yes x No o") == "Yes [X] No [ ]"
+    assert normalize_checkbox_tokens("Yes x No o") == "Yes [X] No o"
+    assert normalize_checkbox_tokens("Yes x No o", scope="cover_context") == (
+        "Yes [X] No [ ]"
+    )
     assert normalize_checkbox_tokens("X") == "[X]"
-    assert normalize_checkbox_tokens("o") == "[ ]"
+    assert normalize_checkbox_tokens("o") == "o"
     # must not touch letters inside words
     assert normalize_checkbox_tokens("x-ray") == "x-ray"
     assert normalize_checkbox_tokens("box") == "box"
     assert normalize_checkbox_tokens("max") == "max"
+
+
+def test_wingdings_unchecked_artifact_canonicalization() -> None:
+    """The Wingdings '¨' render artifact represents an unchecked box."""
+    assert normalize_checkbox_tokens("¨") == "[ ]"
+    assert (
+        normalize_checkbox_tokens(
+            "¨ TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE ACT"
+        )
+        == "[ ] TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE ACT"
+    )
+    assert normalize_checkbox_tokens(
+        "Large accelerated filer  ¨  Accelerated filer          ¨\n"
+        "Non-accelerated filer    ¨  Smaller reporting company  x"
+    ) == (
+        "Large accelerated filer  [ ]  Accelerated filer          [ ]\n"
+        "Non-accelerated filer    [ ]  Smaller reporting company  [X]"
+    )
+    # The artifact only counts as a standalone token.
+    assert normalize_checkbox_tokens("residuum") == "residuum"
+
+
+def test_heal_cover_text_normalizes_masked_table_tokens() -> None:
+    """Retained cover tables are normalized after tagged-table restoration."""
+    from defs.sec_forms.cover import heal_cover_text
+    from defs.sec_forms.cover.models import BoundaryMethod, CoverBoundary
+
+    text = (
+        "FORM 10-K\n"
+        "x ANNUAL REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE ACT\n"
+        "or\n"
+        "¨ TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE ACT\n"
+        "\n"
+        "<TABLE>\n"
+        "Large accelerated filer  ¨  Accelerated filer          ¨\n"
+        "Non-accelerated filer    ¨  Smaller reporting company  x\n"
+        "</TABLE>\n"
+        "\n"
+        "The Company was incorporated in Delaware in 1985 and manufactures\n"
+        "industrial widgets for customers throughout North America and Europe.\n"
+    )
+    boundary = CoverBoundary(
+        end_line=13,
+        end_offset=len(text),
+        method=BoundaryMethod.STRUCTURAL,
+        confidence=0.9,
+        evidence=(),
+        start_line=0,
+        start_offset=0,
+        start_evidence=(),
+    )
+    healed, changed = heal_cover_text(text, boundary, healing_rules=())
+    assert changed
+    assert "[X] ANNUAL REPORT" in healed
+    assert "[ ] TRANSITION REPORT" in healed
+    assert "Large accelerated filer  [ ]" in healed
+    assert "Smaller reporting company  [X]" in healed
+    assert "¨" not in healed
 
 
 def test_strip_boxdot_spacers() -> None:
@@ -164,8 +259,9 @@ def test_classify_mark_line_recognized() -> None:
     assert classify_mark_line("[X]") == "checked"
     assert classify_mark_line("[ ]") == "unchecked"
     assert classify_mark_line("x") == "checked"
-    assert classify_mark_line("o") == "unchecked"
-    assert classify_mark_line("R", context="gap") == "unchecked"
+    assert classify_mark_line("o") == "unknown"
+    assert classify_mark_line("o", scope="cover_context") == "unchecked"
+    assert classify_mark_line("R", context="gap") == "unknown"
     assert classify_mark_line("hello") == "unknown"
     assert classify_mark_line("x ANNUAL REPORT", context="leading") == "checked"
     assert classify_mark_line("Xylophone data", context="leading") == "unknown"
@@ -180,11 +276,17 @@ def test_merge_yes_no_binary_blocks_consolidated() -> None:
 
     # Case 2: 4-line with blank
     lines = ["...Act. Yes", "o", "", "No", "next"]
-    assert merge_yes_no_binary_blocks(lines)[0] == "...Act. Yes [ ] No"
+    assert (
+        merge_yes_no_binary_blocks(lines, scope="cover_context")[0]
+        == "...Act. Yes [ ] No"
+    )
 
     # Case 3: 5-line with blanks around mark
     lines = ["...Act. Yes", "", "o", "", "No", "next"]
-    assert merge_yes_no_binary_blocks(lines)[0] == "...Act. Yes [ ] No"
+    assert (
+        merge_yes_no_binary_blocks(lines, scope="cover_context")[0]
+        == "...Act. Yes [ ] No"
+    )
 
     # Case 4: box+dot stripped (mark is invisible inside bordered box)
     lines = ["...Act. Yes", ".", "No", "next"]
@@ -192,11 +294,14 @@ def test_merge_yes_no_binary_blocks_consolidated() -> None:
 
     # Case 5: Wingdings single-char
     lines = ["...Act. Yes", "R", "No", "next"]
-    assert merge_yes_no_binary_blocks(lines)[0] == "...Act. Yes [ ] No"
+    assert merge_yes_no_binary_blocks(lines)[0] == "...Act. Yes"
 
     # Case 7: inverse order (No first)
     lines = ["...Act. No", "o", "Yes", "[X]", "next"]
-    assert merge_yes_no_binary_blocks(lines)[0] == "...Act. No [ ] Yes [X]"
+    assert (
+        merge_yes_no_binary_blocks(lines, scope="cover_context")[0]
+        == "...Act. No [ ] Yes [X]"
+    )
 
     # Case 8: prose gap = NOT merged
     lines = ["...Act. Yes", "some prose text", "No", "next"]

@@ -28,6 +28,7 @@ _PYARROW_ALLOWED_PREFIXES = (
 _DRIVER_ALLOWED_PREFIXES = (
     "defs/storage/",
     "defs/sql/",
+    "defs/sec_http/",
     "defs/taxonomy/probe/",
     "defs/viewer/",
     "defs/tests/",

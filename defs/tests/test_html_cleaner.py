@@ -157,6 +157,29 @@ def test_strip_font_tag_and_noise_attributes() -> None:
     assert "color=" not in cleaned
 
 
+def test_clean_html_normalizes_only_font_qualified_glyphs() -> None:
+    text = (
+        '<span style="font-family: Wingdings, Arial">ý</span>'
+        '<font FACE="WINGDINGS">r</font>'
+        "<p>ý r</p>"
+    )
+    cleaned = clean_html_for_parsing(text)
+    assert '<span style="font-family: Wingdings, Arial">[X]</span>' in cleaned
+    assert '<font FACE="WINGDINGS">[ ]</font>' in cleaned
+    assert "<p>ý r</p>" in cleaned
+
+
+def test_clean_html_does_not_map_attributes_comments_or_opaque_text() -> None:
+    text = (
+        '<div title="ý"><!-- r --><script>var mark = "ý";</script>'
+        '<span style="font-family: Arial">ý</span></div>'
+    )
+    cleaned = clean_html_for_parsing(text)
+    assert 'title="ý"' in cleaned
+    assert 'var mark = "ý"' in cleaned
+    assert "<span >ý</span>" in cleaned
+
+
 def test_strip_layout_and_typography_styles() -> None:
     text = (
         '<div style="margin-top: 0pt; margin-bottom: 0pt; padding: 5px; '

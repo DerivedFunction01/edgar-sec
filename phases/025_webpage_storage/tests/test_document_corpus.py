@@ -72,6 +72,31 @@ def test_document_corpus_loader_and_category_filter(tmp_path: Path) -> None:
     )
 
 
+def test_document_cases_match_ids_and_url_endings(tmp_path: Path) -> None:
+    corpus_path = tmp_path / "document_corpus.parquet"
+    _write_corpus(
+        corpus_path,
+        [
+            _record("doc-1", path="t10k-2094e.txt"),
+            _record("doc-2", b"<html><body>Text</body></html>", "doc.htm"),
+        ],
+    )
+
+    by_id = corpus.find_document_cases(ids=["doc-1"], path=corpus_path)
+    assert [record["document_id"] for record in by_id] == ["doc-1"]
+
+    by_full_ending = corpus.find_document_cases(
+        ids=["t10k-2094e.txt"], path=corpus_path
+    )
+    assert [record["document_id"] for record in by_full_ending] == ["doc-1"]
+
+    by_partial_ending = corpus.find_document_cases(ids=["2094E.TXT"], path=corpus_path)
+    assert [record["document_id"] for record in by_partial_ending] == ["doc-1"]
+
+    unknown = corpus.find_document_cases(ids=["missing.txt"], path=corpus_path)
+    assert unknown == []
+
+
 def test_document_review_artifacts_capture_current_output_and_debug(
     tmp_path: Path,
 ) -> None:
@@ -87,6 +112,14 @@ def test_document_review_artifacts_capture_current_output_and_debug(
     assert (
         tmp_path / "doc-1" / "doc-1.txt"
     ).read_text() == result.normalized_text + "\n"
+
+
+def test_document_review_infers_form_for_profile_selection() -> None:
+    raw = b"UNITED STATES\nFORM 10-K\n"
+    result = review.run_document_case(_record(raw=raw))
+
+    assert result.preprocessed.metadata["form"] == "10-K"
+    assert result.normalization.cover_boundary.method.value != "disabled"
 
 
 def test_document_review_html_artifact_is_sanitized(tmp_path: Path) -> None:

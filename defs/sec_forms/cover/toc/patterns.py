@@ -17,6 +17,13 @@ RE_TOC_ITEM = re.compile(
     re.IGNORECASE,
 )
 RE_TOC_PART_TEXT = re.compile(r"\bp\s*a\s*r\s*t\s+(?:[ivxlcdm]+|\d+)\b", re.IGNORECASE)
+RE_TOC_PART_ROW = re.compile(
+    r"^\s*(?:[\|+]\s*)?PART\s+([IVXLCDM]+|\d+)\b", re.IGNORECASE
+)
+RE_TOC_ITEM_ROW = re.compile(
+    r"^\s*(?:[\|+]\s*)?ITEMS?\s+(\d{1,2})([A-Z])?\b", re.IGNORECASE
+)
+RE_TOC_NUMERIC_LABEL = re.compile(r"^\s*\d{1,2}[A-Z]?[.\)]\s")
 
 WEAK_TOC_HEADINGS = ("index", "reference", "references")
 _RE_WEAK_HEADING = re.compile(
@@ -36,7 +43,10 @@ _RE_MULTI_SPACE = re.compile(r"\s+")
 __all__ = [
     "RE_TOC_HEADING",
     "RE_TOC_ITEM",
+    "RE_TOC_ITEM_ROW",
     "RE_TOC_LEADER",
+    "RE_TOC_NUMERIC_LABEL",
+    "RE_TOC_PART_ROW",
     "RE_TOC_PART_TEXT",
     "WEAK_TOC_HEADINGS",
     "_RE_MULTI_SPACE",

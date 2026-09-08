@@ -10,21 +10,19 @@ from defs.regex import build_alternation, compact_alternation
 from defs.text.checkmarks import (
     CANONICAL_CHECKED,
     CANONICAL_UNCHECKED,
+    CONTEXT_CHECKED_SYMBOLS,
+    CONTEXT_UNCHECKED_SYMBOLS,
     RAW_CHECKED_TOKENS,
     RAW_UNCHECKED_TOKENS,
     RE_RAW_CHECKED,
     RE_RAW_UNCHECKED,
+    CheckmarkScope,
 )
 from defs.text.dates import MONTH_RE
 
-_BARE_CHECKED = ("x", "X", "\u00fe", "\u00fd")
-_BARE_UNCHECKED = ("o", "O")
+_BARE_CHECKED = ("x", "X")
 _RE_BARE_CHECKED = re.compile(
     rf"(?<!\S)(?:{build_alternation(_BARE_CHECKED, auto_escape=True)})(?!\S)",
-    re.IGNORECASE,
-)
-_RE_BARE_UNCHECKED = re.compile(
-    rf"(?<!\S)(?:{build_alternation(_BARE_UNCHECKED, auto_escape=True)})(?!\S)",
     re.IGNORECASE,
 )
 
@@ -67,17 +65,15 @@ RE_TRAILING_CONTINUATION = re.compile(
 )
 
 YES_NO_TAIL_RE = re.compile(r"\b(yes|no)\.?\s*$", re.IGNORECASE)
-_STANDALONE_MARK_RE = re.compile(
-    r"^(?:"
-    rf"(?:{RE_RAW_CHECKED.pattern})"
-    rf"|(?:{RE_RAW_UNCHECKED.pattern})"
-    r"|x|o|\u00fe|\u00fd)\s*[.;]?\s*$",
-    re.IGNORECASE,
-)
 _MAX_BINARY_CHAIN_GAP = 3
 _QUESTION_TAIL_RE = re.compile(r"\b(yes|no)\b[^a-z]*$", re.IGNORECASE)
 _INLINE_YES_NO_RE = re.compile(r"\byes\b.*\bno\b|\bno\b.*\byes\b", re.IGNORECASE)
-_WINGDINGS_UNCHECKED = frozenset({"r"})
+_RE_CONTEXT_CHECKED = re.compile(
+    rf"(?<!\w)(?:{build_alternation(CONTEXT_CHECKED_SYMBOLS, auto_escape=True)})(?!\w)"
+)
+_RE_CONTEXT_UNCHECKED = re.compile(
+    rf"(?<!\w)(?:{build_alternation(CONTEXT_UNCHECKED_SYMBOLS, auto_escape=True)})(?!\w)"
+)
 
 
 @dataclass(frozen=True)
@@ -105,12 +101,18 @@ def normalize_whitespace_and_tabs(text: str) -> str:
     return "\n".join(collapsed).strip()
 
 
-def normalize_checkbox_tokens(text: str) -> str:
-    """Normalize diverse checked and unchecked characters to canonical [X] and [ ]."""
+def normalize_checkbox_tokens(
+    text: str,
+    *,
+    scope: CheckmarkScope = CheckmarkScope.GLOBAL_SAFE,
+) -> str:
+    """Normalize safe checkbox tokens, optionally using cover context."""
     text = RE_RAW_CHECKED.sub(CANONICAL_CHECKED, text)
     text = RE_RAW_UNCHECKED.sub(CANONICAL_UNCHECKED, text)
     text = _RE_BARE_CHECKED.sub(CANONICAL_CHECKED, text)
-    text = _RE_BARE_UNCHECKED.sub(CANONICAL_UNCHECKED, text)
+    if scope in (CheckmarkScope.COVER_CONTEXT, CheckmarkScope.ALL):
+        text = _RE_CONTEXT_CHECKED.sub(CANONICAL_CHECKED, text)
+        text = _RE_CONTEXT_UNCHECKED.sub(CANONICAL_UNCHECKED, text)
     # Ensure a single space separates a canonical checkbox token from adjacent
     # words when the source cell had no spacing (e.g. "[X]Annual report...").
     text = re.sub(r"(\[[ Xx]\])(?=[A-Za-z0-9])", r"\1 ", text)
@@ -123,7 +125,12 @@ def strip_boxdot_spacers(lines: list[str]) -> list[str]:
     return [ln for ln in lines if ln.strip() != "."]
 
 
-def classify_mark_line(line: str, *, context: str = "gap") -> str:
+def classify_mark_line(
+    line: str,
+    *,
+    context: str = "gap",
+    scope: CheckmarkScope = CheckmarkScope.GLOBAL_SAFE,
+) -> str:
     """Classify a line as a checkbox mark.
 
     Args:
@@ -143,18 +150,25 @@ def classify_mark_line(line: str, *, context: str = "gap") -> str:
         return "checked"
     if RE_RAW_UNCHECKED.fullmatch(stripped):
         return "unchecked"
-    if _RE_BARE_CHECKED.match(stripped):
+    if _RE_BARE_CHECKED.fullmatch(stripped):
         return "checked"
-    if _RE_BARE_UNCHECKED.match(stripped):
-        return "unchecked"
-    if len(stripped) == 1 and stripped.isprintable():
-        if stripped.lower() in _WINGDINGS_UNCHECKED:
+    if scope in (CheckmarkScope.COVER_CONTEXT, CheckmarkScope.ALL):
+        if _RE_CONTEXT_CHECKED.fullmatch(stripped):
+            return "checked"
+        if _RE_CONTEXT_UNCHECKED.fullmatch(stripped):
             return "unchecked"
-        return "checked" if context in ("gap", "leading", "trailing") else "unknown"
     if context == "leading":
         head = stripped[:1]
         tail = stripped[1:].lstrip()
-        if head.isprintable() and tail[:1].isupper() and _looks_like_mark_head(head):
+        if (
+            (
+                head in "xX"
+                or scope in (CheckmarkScope.COVER_CONTEXT, CheckmarkScope.ALL)
+            )
+            and head.isprintable()
+            and tail[:1].isupper()
+            and _looks_like_mark_head(head)
+        ):
             return "checked"
     return "unknown"
 
@@ -245,17 +259,25 @@ def heal_split_lines(
     lines: Sequence[str],
     rules: Sequence[PhraseSequenceRule],
 ) -> list[str]:
-    """Slide across lines and heal broken phrase fragments across newlines."""
+    """Slide across lines and heal broken phrase fragments across newlines.
+
+    Leading indentation is layout, not damage: every emitted line keeps the
+    original leading whitespace of its first source line so cover orientation
+    (centering, two-column captions) survives healing unchanged. Joined
+    fragments adopt the base indentation of the line that started the phrase.
+    """
     healed: list[str] = []
     i = 0
     num_lines = len(lines)
 
     while i < num_lines:
-        line = lines[i].strip()
+        original = lines[i]
+        line = original.strip()
         if not line:
             healed.append("")
             i += 1
             continue
+        base_indent = original[: len(original) - len(original.lstrip())]
 
         while i + 1 < num_lines:
             next_idx = i + 1
@@ -276,13 +298,17 @@ def heal_split_lines(
             else:
                 break
 
-        healed.append(line)
+        healed.append(base_indent + line)
         i += 1
 
     return healed
 
 
-def merge_yes_no_binary_blocks(lines: Sequence[str]) -> list[str]:
+def merge_yes_no_binary_blocks(
+    lines: Sequence[str],
+    *,
+    scope: CheckmarkScope = CheckmarkScope.GLOBAL_SAFE,
+) -> list[str]:
     """Collapse Yes/No binary question blocks onto single lines.
 
     Handles every variant found in the fixture:
@@ -293,20 +319,23 @@ def merge_yes_no_binary_blocks(lines: Sequence[str]) -> list[str]:
       - prefix/suffix positioning
       - inverse order (No before Yes)
     """
-    blocks = _find_binary_blocks(list(lines))
+    blocks = _find_binary_blocks(list(lines), scope=scope)
     if not blocks:
+        # A cover boundary alone is not evidence for a free-standing bullet.
         return [normalize_checkbox_tokens(line) for line in lines]
     merged: list[str] = []
     cursor = 0
     for start, end in blocks:
         merged.extend(lines[cursor:start])
-        merged.append(_render_binary_block(lines[start:end]))
+        merged.append(_render_binary_block(lines[start:end], scope=scope))
         cursor = end
     merged.extend(lines[cursor:])
     return merged
 
 
-def _find_binary_blocks(lines: list[str]) -> list[tuple[int, int]]:
+def _find_binary_blocks(
+    lines: list[str], *, scope: CheckmarkScope = CheckmarkScope.GLOBAL_SAFE
+) -> list[tuple[int, int]]:
     """Find (start, end) index pairs for each Yes/No binary block."""
     blocks: list[tuple[int, int]] = []
     i = 0
@@ -315,7 +344,7 @@ def _find_binary_blocks(lines: list[str]) -> list[tuple[int, int]]:
         if not _is_question_tail(lines[i]):
             i += 1
             continue
-        end = _extend_binary_block(lines, i)
+        end = _extend_binary_block(lines, i, scope=scope)
         if end is None:
             i += 1
             continue
@@ -324,7 +353,12 @@ def _find_binary_blocks(lines: list[str]) -> list[tuple[int, int]]:
     return blocks
 
 
-def _extend_binary_block(lines: list[str], start: int) -> int | None:
+def _extend_binary_block(
+    lines: list[str],
+    start: int,
+    *,
+    scope: CheckmarkScope = CheckmarkScope.GLOBAL_SAFE,
+) -> int | None:
     """Return the end index (exclusive) if a binary block starts at `start`.
 
     Structure: head(question word) + gap_marks + tail(opposite word) + trailing_mark.
@@ -353,7 +387,7 @@ def _extend_binary_block(lines: list[str], start: int) -> int | None:
                 next_i < n
                 and lines[next_i].strip() == "."
                 or next_i < n
-                and classify_mark_line(lines[next_i], context="gap")
+                and classify_mark_line(lines[next_i], context="gap", scope=scope)
                 in (
                     "checked",
                     "unchecked",
@@ -361,7 +395,10 @@ def _extend_binary_block(lines: list[str], start: int) -> int | None:
             ):
                 end = next_i + 1
             return end if saw_context_mark or end > i + 1 else None
-        if classify_mark_line(line, context="gap") in ("checked", "unchecked"):
+        if classify_mark_line(line, context="gap", scope=scope) in (
+            "checked",
+            "unchecked",
+        ):
             saw_context_mark = True
             i += 1
             continue
@@ -375,7 +412,9 @@ def _tail_word(line: str) -> str:
     return match.group(1).lower() if match else ""
 
 
-def _render_binary_block(lines: list[str]) -> str:
+def _render_binary_block(
+    lines: list[str], *, scope: CheckmarkScope = CheckmarkScope.GLOBAL_SAFE
+) -> str:
     """Join a binary block's lines into a single canonicalized line."""
     parts = []
     for line in lines:
@@ -384,16 +423,16 @@ def _render_binary_block(lines: list[str]) -> str:
             continue
         if (
             len(stripped) == 1
-            and classify_mark_line(stripped, context="gap") == "unchecked"
+            and classify_mark_line(stripped, context="gap", scope=scope) == "unchecked"
         ):
             stripped = CANONICAL_UNCHECKED
         elif (
             len(stripped) == 1
-            and classify_mark_line(stripped, context="gap") == "checked"
+            and classify_mark_line(stripped, context="gap", scope=scope) == "checked"
         ):
             stripped = CANONICAL_CHECKED
         parts.append(stripped)
-    return normalize_checkbox_tokens(" ".join(parts))
+    return normalize_checkbox_tokens(" ".join(parts), scope=scope)
 
 
 __all__ = [

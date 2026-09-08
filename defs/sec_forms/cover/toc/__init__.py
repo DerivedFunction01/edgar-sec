@@ -12,6 +12,8 @@ from defs.sec_forms.page_markers import RE_PAGE_SUFFIX
 from .analysis import (
     is_anachronistic_late_item,
     is_toc_row,
+    looks_like_toc_row,
+    looks_like_toc_tabular,
     normalize_for_matching,
     score_block_toc_density,
 )
@@ -20,7 +22,10 @@ from .models import TocEvidence, TocSpan
 from .patterns import (
     RE_TOC_HEADING,
     RE_TOC_ITEM,
+    RE_TOC_ITEM_ROW,
     RE_TOC_LEADER,
+    RE_TOC_NUMERIC_LABEL,
+    RE_TOC_PART_ROW,
     RE_TOC_PART_TEXT,
     WEAK_TOC_HEADINGS,
 )
@@ -30,7 +35,10 @@ __all__ = [
     "RE_PAGE_SUFFIX",
     "RE_TOC_HEADING",
     "RE_TOC_ITEM",
+    "RE_TOC_ITEM_ROW",
     "RE_TOC_LEADER",
+    "RE_TOC_NUMERIC_LABEL",
+    "RE_TOC_PART_ROW",
     "RE_TOC_PART_TEXT",
     "WEAK_TOC_HEADINGS",
     "TocEvidence",
@@ -39,6 +47,8 @@ __all__ = [
     "find_toc_span",
     "is_anachronistic_late_item",
     "is_toc_row",
+    "looks_like_toc_row",
+    "looks_like_toc_tabular",
     "normalize_for_matching",
     "score_block_toc_density",
 ]

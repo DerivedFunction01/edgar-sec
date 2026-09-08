@@ -113,10 +113,15 @@ def _find_first_substantive_prose(
 ) -> tuple[LogicalUnit | None, BowScore | None, LogicalUnit | None]:
     """Find the first substantive prose unit with a lexical score >= 2.
 
-    Skips form placeholders, short headings, tables, and lists. Also returns
-    the first intermediate (score-1) unit encountered for the audit trail.
+    Skips form placeholders, short headings, tables, and lists. Consecutive
+    short paragraph units (each below the word gate) are merged before scoring
+    so fragmented HTML prose — split spans, short lead sentences — can still
+    reach the lexical gate. Also returns the first intermediate (score-1) unit
+    encountered for the audit trail.
     """
     intermediate: LogicalUnit | None = None
+    merged: list[LogicalUnit] = []
+    merged_text = ""
     for unit in units:
         if unit.start_line < start_line:
             continue
@@ -127,6 +132,27 @@ def _find_first_substantive_prose(
         if is_form_placeholder(unit.text):
             continue
         if len(unit.text.split()) < 8:
+            merged.append(unit)
+            merged_text = f"{merged_text} {unit.text}".strip()
+            if len(merged_text.split()) >= 8:
+                head = merged[0]
+                candidate = LogicalUnit(
+                    kind="paragraph",
+                    start_line=head.start_line,
+                    end_line=unit.end_line,
+                    text=merged_text,
+                )
+                bow_score = score_unit(
+                    candidate.text,
+                    compiled,
+                    unit_context(candidate, toc_span, prefix_vocab),
+                )
+                if bow_score.score >= _MIN_BODY_SCORE:
+                    return candidate, bow_score, intermediate
+                if bow_score.score == 1 and intermediate is None:
+                    intermediate = candidate
+                merged = []
+                merged_text = ""
             continue
         bow_score = score_unit(
             unit.text, compiled, unit_context(unit, toc_span, prefix_vocab)

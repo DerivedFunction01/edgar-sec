@@ -81,6 +81,23 @@ COVER_LABELS_FLAT: tuple[str, ...] = tuple(
     phrase for phrases in COVER_LABELS.values() for phrase in phrases
 )
 
+SECURITIES_12B_ANCHOR_TERMS: tuple[str, ...] = (
+    "securities registered pursuant to section 12(b) of the act",
+    "securities registered pursuant to section 12(b)",
+    "securities registered pursuant to section 12(g)",
+    "securities registered under section 12",
+    "trading symbol(s)",
+    "trading symbol",
+    "title of each class",
+    "name of each exchange on which registered",
+)
+
+SECURITIES_12B_SUPPORT_TERMS: tuple[str, ...] = (
+    "title of class",
+    "trading symbols",
+    "par value",
+)
+
 # --- Standard SEC Header Terms -------------------------------------------------
 
 SEC_HEADER_TERMS: tuple[str, ...] = (
@@ -89,9 +106,11 @@ SEC_HEADER_TERMS: tuple[str, ...] = (
     "washington d.c.",
     "united states",
 )
-
+_FORM_PATTERN = re.compile(
+    r"\b(?:FORM|SCHEDULE)\s+([A-Z0-9]+(?:[-/][A-Z0-9]+)*)\b", re.IGNORECASE
+)
 COVER_START_IDENTITY_TERMS: tuple[str, ...] = (
-    rf"form\s+{build_alternation(['10-k', '20-f', '10-q', '8-k', '6-k'], auto_escape=True)}",
+    _FORM_PATTERN.pattern,
     r"securities\s+and\s+exchange\s+commission",
 )
 
@@ -136,8 +155,6 @@ CHECKBOX_KEYWORDS: tuple[str, ...] = (
     "yes",
     "no",
     "yes no",
-    "check mark if the registrant is",
-    "indicate by check mark if",
     "indicate by check mark",
     "check one",
     "check mark",
@@ -146,8 +163,6 @@ CHECKBOX_KEYWORDS: tuple[str, ...] = (
     "check box",
     "as defined in rule 12b-2",
     "as defined in rule",
-    "rule 405 of the securities act",
-    "rule 405 of regulation",
     "rule 405",
 )
 
@@ -380,7 +395,9 @@ __all__ = [
     "NON_ACCELERATED_FILER",
     "PUNCT_SPACING_RE",
     "REGISTRANT_NAME_RE",
+    "SECURITIES_12B_ANCHOR_TERMS",
     "SECURITIES_12B_RE",
+    "SECURITIES_12B_SUPPORT_TERMS",
     "SEC_HEADER_TERMS",
     "SHELL_COMPANY",
     "SMALLER_REPORTING_COMPANY",

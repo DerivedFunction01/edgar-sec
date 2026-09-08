@@ -32,7 +32,17 @@ def main(argv: list[str] | None = None) -> int:
     if not ids:
         parser.error("one of --ids-file or --id is required")
     records = find_document_cases(ids=ids, path=args.corpus)
-    missing = sorted(set(ids) - {record["document_id"] for record in records})
+
+    def _satisfied(token: str) -> bool:
+        return any(
+            str(record["document_id"]) == token
+            or str(record.get("document_path", ""))
+            .casefold()
+            .endswith(token.casefold())
+            for record in records
+        )
+
+    missing = sorted({token for token in ids if not _satisfied(token)})
     if missing:
         parser.error(f"unknown document ID(s): {', '.join(missing)}")
     sections = []

@@ -59,7 +59,12 @@ def apply_html_policy(
     first_id: int = 1,
     allow_letter_number: bool = True,
 ) -> tuple[
-    str, PageMarkerAnalysis, tuple[PageBreakArtifact, ...], dict[str, dict], int
+    str,
+    PageMarkerAnalysis,
+    tuple[PageBreakArtifact, ...],
+    dict[str, dict],
+    int,
+    tuple,
 ]:
     """Apply page policy to HTML input using the string-first fast path."""
     from .fast_html import apply_fast_html_page_policy

@@ -6,7 +6,7 @@ import re
 from collections import defaultdict
 
 from defs.regex import build_alternation
-from defs.text.dates import MONTH_PATTERN, extract_years
+from defs.text.dates import MONTH_RE, extract_years
 from defs.text.logical_units import classify_units
 
 from ..constants import _RE_STRUCTURAL_MATCH
@@ -19,26 +19,15 @@ from ..models import (
 )
 from ..prose import looks_like_prose
 from .candidates import line_offsets
-from .layout import line_shape
 
+_STRUCTURAL_TAG_RE = re.compile(
+    rf"^\s*<(?:{build_alternation(['PAGE', 'TABLE', '/TABLE'], auto_escape=False)})\s*$",
+    re.IGNORECASE,
+)
 _PAGE_TOKEN_RE = re.compile(r"\bpage\s+\d{1,4}\b", re.IGNORECASE)
 _TRAILING_NUMBER_RE = re.compile(r"\s{2,}(?:\d{1,4}|[ivxlcdm]{1,8})\s*$", re.IGNORECASE)
 _WHITESPACE_RE = re.compile(r"\s+")
-_MONTH_RE = re.compile(MONTH_PATTERN)
 _DATE_END_RE = re.compile(r"(?:\.|\d)\s*$")
-_HEADER_HINTS = build_alternation(
-    [
-        "annual report",
-        r"form \d",
-        "financial",
-        "consolidated",
-        "continued",
-        "corporation",
-        "company",
-    ],
-    auto_escape=False,
-)
-_HEADER_HINT_RE = re.compile(rf"(?i)\b(?:{_HEADER_HINTS})\b")
 
 
 def _clean_template(line: str) -> str:
@@ -53,7 +42,7 @@ def _clean_date_heading(line: str) -> bool:
     if len(years) != 1:
         return False
     lowered = line.casefold()
-    if not _MONTH_RE.search(lowered):
+    if not MONTH_RE.search(lowered):
         return False
     return bool(_DATE_END_RE.search(line))
 
@@ -86,16 +75,13 @@ def _eligible(
     stripped = line.strip()
     if not stripped or line_index in toc_lines or _RE_STRUCTURAL_MATCH.match(stripped):
         return False
+    if _STRUCTURAL_TAG_RE.match(stripped):
+        return False
     if unit_kind == "table" or _clean_date_heading(line):
         return False
-    shape = line_shape(line)
-    if shape["all_caps"]:
-        return True
-    words = stripped.split()
-    title_case = len(words) >= 2 and all(
-        word[:1].isupper() for word in words if word[:1].isalpha()
-    )
-    return bool(title_case or _HEADER_HINT_RE.search(stripped))
+    if looks_like_prose(stripped):
+        return False
+    return not len(stripped) > 140
 
 
 def analyze_repeating_headers(
@@ -122,16 +108,19 @@ def analyze_repeating_headers(
     for anchor in anchors:
         for side, direction in (("header", 1), ("footer", -1)):
             index = anchor + direction
-            while 0 <= index < len(lines) and not lines[index].strip():
+            slot = -1
+            while 0 <= index < len(lines):
+                if lines[index].strip():
+                    slot += 1
+                    if slot <= 1:
+                        break
                 index += direction
             if not 0 <= index < len(lines):
                 continue
             line = lines[index]
             if not _eligible(line, toc_lines, index, units_by_line.get(index)):
                 continue
-            groups[(side, abs(index - anchor) - 1, _clean_template(line))].append(
-                (index, line)
-            )
+            groups[(side, slot, _clean_template(line))].append((index, line))
 
     templates: list[TemplateEvidence] = []
     header_markers: list[PageMarker] = []

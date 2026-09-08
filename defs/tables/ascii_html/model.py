@@ -211,6 +211,56 @@ class TableRenderResult:
     is_fallback_to_legacy: bool = False
 
 
+@dataclass(frozen=True, slots=True)
+class TableGeometry:
+    """Per-table geometry metadata retained alongside normalized text.
+
+    This contract lets callers establish that one rendered line equals
+    one table row and inspect cell geometry, spans, alignment, and
+    diagnostics without re-parsing the tagged <TABLE> output.
+    """
+
+    table_index: int
+    render_result: TableRenderResult
+
+    @property
+    def resolved_grid(self) -> ResolvedGrid:
+        return self.render_result.resolved_grid
+
+    @property
+    def confidence(self) -> float:
+        return self.render_result.confidence
+
+    @property
+    def diagnostics(self) -> tuple[str, ...]:
+        return self.render_result.diagnostics
+
+    @property
+    def is_fallback_to_legacy(self) -> bool:
+        return self.render_result.is_fallback_to_legacy
+
+    @property
+    def rows(self) -> tuple[tuple[str, ...], ...]:
+        """Logical grid rows; never inferred from rendered text lines."""
+        return self.resolved_grid.rows
+
+    @property
+    def column_alignments(self) -> tuple[HorizontalAlign, ...]:
+        return self.resolved_grid.column_alignments
+
+    @property
+    def column_widths(self) -> tuple[int, ...]:
+        return self.resolved_grid.column_widths
+
+    @property
+    def header_row_count(self) -> int:
+        return self.resolved_grid.header_row_count
+
+    @property
+    def span_groups(self) -> tuple[SpanGroup, ...]:
+        return self.resolved_grid.span_groups
+
+
 __all__ = [
     "DEFAULT_RENDER_BUDGET",
     "BorderSegment",
@@ -223,6 +273,7 @@ __all__ = [
     "SourceCell",
     "SourceTable",
     "SpanGroup",
+    "TableGeometry",
     "TableRenderResult",
     "TextLayoutDiagnostic",
     "VerticalAlign",

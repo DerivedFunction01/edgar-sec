@@ -1,145 +1,38 @@
-"""Shared cover-boundary evidence and conservative detector."""
+"""Main cover boundary detection logic."""
 
 from __future__ import annotations
 
-from defs.sec_forms.cover.body_search import (
-    _confirm_backward_body,
-    _find_body_root_backward,
-    _next_nonblank_line,
-)
-from defs.sec_forms.cover.cover_start import (
-    find_cover_start,
-)
+from defs.sec_forms.cover.body_search import _next_nonblank_line
+from defs.sec_forms.cover.cover_start import find_cover_start
 from defs.sec_forms.cover.models import (
-    BodyRoot,
     BoundaryEvidence,
     BoundaryInput,
     BoundaryMethod,
     BoundarySignal,
     CoverBoundary,
     CoverBoundaryPolicy,
-    CoverStart,
-    DocumentTopology,
-    ItemDefinition,
 )
-from defs.sec_forms.cover.rules import CompiledCoverRules, compile_cover_rules
+from defs.sec_forms.cover.rules import compile_cover_rules
 from defs.sec_forms.cover.structure import (
     is_continuation_prose,
     is_preceding_continuation,
     match_structural_line,
 )
-from defs.sec_forms.cover.toc import RE_TOC_HEADING, find_toc_span
+from defs.sec_forms.cover.toc import (
+    RE_TOC_HEADING,
+    find_toc_span,
+)
 from defs.sec_forms.page_markers import PageMarkerKind, find_page_markers
 
-
-def _prev_nonblank_line(lines: list[str], start_line: int) -> tuple[int, str] | None:
-    for index in range(start_line, -1, -1):
-        stripped = lines[index].strip()
-        if stripped:
-            return index, stripped
-    return None
-
-
-def _is_proxy_reference_disclosure(line: str) -> bool:
-    stripped = line.strip().lower()
-    return bool(
-        stripped.startswith(
-            (
-                "portions of",
-                "the information required",
-                "information required",
-                "see part",
-                "refer to",
-            )
-        )
-    )
-
-
-def _enabled(policy: CoverBoundaryPolicy, signal: BoundarySignal) -> bool:
-    return signal in policy.signals
-
-
-def _line_offset(lines: list[str], line: int) -> int:
-    return sum(len(value) + 1 for value in lines[:line])
-
-
-def _line_at_offset(text: str, offset: int) -> int:
-    return text.count("\n", 0, offset)
-
-
-def _next_cover_transition(
-    lines: list[str], start_line: int, search_limit: int
-) -> tuple[int, str] | None:
-    """Find the next heading that can terminate an incorporated-reference block."""
-    for index, line in enumerate(lines[start_line:search_limit], start=start_line):
-        match = match_structural_line(line, index)
-        if match is None:
-            continue
-        if match.role == "toc_heading":
-            return index, "TOC heading"
-        if not match.is_exact_heading:
-            continue
-        if match.reference_count != 1:
-            continue
-        if index > 0:
-            prev = _prev_nonblank_line(lines, index - 1)
-            if prev is not None and is_preceding_continuation(prev[1]):
-                continue
-        following = _next_nonblank_line(lines, index + 1)
-        if following is not None:
-            if is_continuation_prose(following[1]):
-                continue
-            if _is_proxy_reference_disclosure(following[1]):
-                continue
-        if match.role == "part":
-            return index, "PART heading"
-        if match.role == "item":
-            return index, "ITEM 1 heading"
-    return None
-
-
-def _unknown(method: BoundaryMethod = BoundaryMethod.UNKNOWN) -> CoverBoundary:
-    return CoverBoundary(
-        end_line=None,
-        end_offset=None,
-        method=method,
-        confidence=0.0,
-        evidence=(),
-        approximate=True,
-    )
-
-
-def _finalize_boundary(
-    end_line: int,
-    method: BoundaryMethod,
-    confidence: float,
-    evidence: list[BoundaryEvidence],
-    cover_start: CoverStart,
-    lines: list[str],
-    continued_cover: bool = False,
-    confirm_backward: bool = True,
-    rules: CompiledCoverRules | None = None,
-) -> CoverBoundary:
-    """Run backward body confirmation and build the final boundary."""
-    if confirm_backward:
-        rules = rules or compile_cover_rules()
-        adjusted_end, adjusted_evidence = _confirm_backward_body(
-            lines, end_line, cover_start.start_line, evidence, rules
-        )
-    else:
-        adjusted_end, adjusted_evidence = end_line, evidence
-    return CoverBoundary(
-        end_line=adjusted_end,
-        end_offset=_line_offset(lines, adjusted_end),
-        method=method,
-        confidence=confidence,
-        evidence=tuple(adjusted_evidence),
-        start_line=cover_start.start_line,
-        start_offset=cover_start.start_offset,
-        start_evidence=cover_start.evidence,
-        approximate=True,
-        continued_cover=continued_cover,
-    )
+from .body_prose import _find_body_prose_line
+from .finalize import _finalize_boundary, _unknown
+from .helpers import (
+    _enabled,
+    _is_proxy_reference_disclosure,
+    _line_at_offset,
+    _prev_nonblank_line,
+)
+from .transition import _first_body_semantic_line, _next_cover_transition
 
 
 def find_cover_boundary(
@@ -196,8 +89,6 @@ def find_cover_boundary(
         else text.count("\n", 0, marker.start)
         for marker in page_markers
     }
-    # Page markers can precede the cover cluster (e.g. <PAGE> at line 0), so
-    # detect them from the document start rather than from scan_start.
     for index, line in enumerate(lines[:search_limit]):
         if (
             _enabled(policy, BoundarySignal.PAGE_MARKERS)
@@ -229,6 +120,66 @@ def find_cover_boundary(
                 details=f"{identity_count} cover identity signals",
             )
         )
+
+    if _enabled(policy, BoundarySignal.INCORPORATED_REFERENCE):
+        for match in rules.incorporated.finditer(text):
+            index = _line_at_offset(text, match.start())
+            if index < scan_start or index >= search_limit:
+                continue
+            if identity_count < 2 and first_page is None:
+                continue
+            phrase_end_line = _line_at_offset(text, match.end()) + 1
+            transition = _next_cover_transition(lines, phrase_end_line, search_limit)
+            end_line = transition[0] if transition else phrase_end_line
+            depth_line = _first_body_semantic_line(
+                lines, phrase_end_line, end_line, rules
+            )
+            if depth_line is not None:
+                evidence.append(
+                    BoundaryEvidence(
+                        name="body_prose_depth_adjust",
+                        strength=0.7,
+                        line=depth_line,
+                        details=(
+                            "body-semantic prose precedes the structural "
+                            "transition; cover ends before it"
+                        ),
+                    )
+                )
+                end_line = depth_line
+            evidence.append(
+                BoundaryEvidence(
+                    name="incorporated_reference",
+                    strength=0.92 if identity_count >= 2 else 0.72,
+                    line=index,
+                    details="annual/foreign cover reference block",
+                )
+            )
+            if transition:
+                evidence.append(
+                    BoundaryEvidence(
+                        name="incorporated_reference_transition",
+                        strength=0.96,
+                        line=end_line,
+                        details=f"cover ends before {transition[1]}",
+                    )
+                )
+            return _finalize_boundary(
+                end_line=end_line,
+                method=BoundaryMethod.STRUCTURAL
+                if transition
+                else BoundaryMethod.PHRASE,
+                confidence=(
+                    0.96
+                    if transition
+                    else min(0.9, 0.72 + (0.06 * min(identity_count, 3)))
+                ),
+                evidence=evidence,
+                cover_start=cover_start,
+                lines=lines,
+                rules=rules,
+                continued_cover=True,
+            )
 
     if _enabled(policy, BoundarySignal.TOC_TRANSITION):
         toc = find_toc_span(
@@ -263,50 +214,6 @@ def find_cover_boundary(
                 cover_start=cover_start,
                 lines=lines,
                 confirm_backward=False,
-            )
-
-    if _enabled(policy, BoundarySignal.INCORPORATED_REFERENCE):
-        for match in rules.incorporated.finditer(text):
-            index = _line_at_offset(text, match.start())
-            if index < scan_start or index >= search_limit:
-                continue
-            if identity_count < 2 and first_page is None:
-                continue
-            phrase_end_line = _line_at_offset(text, match.end()) + 1
-            transition = _next_cover_transition(lines, phrase_end_line, search_limit)
-            end_line = transition[0] if transition else phrase_end_line
-            evidence.append(
-                BoundaryEvidence(
-                    name="incorporated_reference",
-                    strength=0.92 if identity_count >= 2 else 0.72,
-                    line=index,
-                    details="annual/foreign cover reference block",
-                )
-            )
-            if transition:
-                evidence.append(
-                    BoundaryEvidence(
-                        name="incorporated_reference_transition",
-                        strength=0.96,
-                        line=end_line,
-                        details=f"cover ends before {transition[1]}",
-                    )
-                )
-            return _finalize_boundary(
-                end_line=end_line,
-                method=BoundaryMethod.STRUCTURAL
-                if transition
-                else BoundaryMethod.PHRASE,
-                confidence=(
-                    0.96
-                    if transition
-                    else min(0.9, 0.72 + (0.06 * min(identity_count, 3)))
-                ),
-                evidence=evidence,
-                cover_start=cover_start,
-                lines=lines,
-                rules=rules,
-                continued_cover=True,
             )
 
     if _enabled(policy, BoundarySignal.TOC_TRANSITION):
@@ -416,20 +323,47 @@ def find_cover_boundary(
                 rules=rules,
             )
 
-    # Documented conservative fallback: when the entire document was searched,
-    # strong cover identity evidence exists, and no body anchor was found, the
-    # document is a cover-only fragment and cover processing applies to all of
-    # it. Longer documents with an unsearched remainder stay unknown so body
-    # content is never healed as cover by default.
-    if identity_count >= 2 and len(lines) <= search_limit:
+    if _enabled(policy, BoundarySignal.BODY_PROSE_FALLBACK):
+        prose_line = _find_body_prose_line(lines, scan_start, search_limit, rules)
+        if (
+            prose_line is not None
+            and cover_start.start_line is not None
+            and identity_count >= 1
+        ):
+            evidence.append(
+                BoundaryEvidence(
+                    name="body_prose_fallback",
+                    strength=0.65,
+                    line=prose_line,
+                    details=(
+                        "decisive body-lexical prose ends a cover without "
+                        "structural anchors"
+                    ),
+                )
+            )
+            return _finalize_boundary(
+                end_line=prose_line,
+                method=BoundaryMethod.FALLBACK,
+                confidence=0.65,
+                evidence=evidence,
+                cover_start=cover_start,
+                lines=lines,
+                rules=rules,
+            )
+
+    if (
+        cover_start.start_line is not None
+        and identity_count >= 1
+        and len(lines) <= search_limit
+    ):
         evidence.append(
             BoundaryEvidence(
                 name="cover_only_fragment",
                 strength=0.6,
                 line=len(lines),
                 details=(
-                    f"{identity_count} cover identity signals, no body anchor "
-                    "in fully searched document"
+                    f"{identity_count} cover identity signal(s), detected cover "
+                    "start, and no body anchor in fully searched document"
                 ),
             )
         )
@@ -460,25 +394,3 @@ def find_cover_boundary_for_profile(
         cover_evidence=getattr(profile, "cover_evidence", None),
         body_evidence=getattr(profile, "body_evidence", None),
     )
-
-
-from defs.sec_forms.cover.topology import resolve_document_topology
-
-__all__ = [
-    "BodyRoot",
-    "BoundaryEvidence",
-    "BoundaryInput",
-    "BoundaryMethod",
-    "BoundarySignal",
-    "CoverBoundary",
-    "CoverBoundaryPolicy",
-    "CoverStart",
-    "DocumentTopology",
-    "ItemDefinition",
-    "_confirm_backward_body",
-    "_find_body_root_backward",
-    "find_cover_boundary",
-    "find_cover_boundary_for_profile",
-    "find_cover_start",
-    "resolve_document_topology",
-]

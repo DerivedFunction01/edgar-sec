@@ -25,6 +25,7 @@ from dataclasses import dataclass
 
 from defs.tables.numeric_cells import NUMERIC_CELL_RE
 from defs.tables.protection import (
+    _SENTINEL_PREFIX,
     TableSpan,
     mask_tagged_tables,
     restore_tagged_tables,
@@ -410,7 +411,7 @@ def reflow_ascii(
             )
             continue
         features = _compute_features(block_lines)
-        has_masked = any("\x00" in line for line in block_lines)
+        has_masked = any(_SENTINEL_PREFIX in line for line in block_lines)
         decision = _decide(features, len(block_lines), has_masked)
         if page_context and decision.action == ACTION_UNWRAP:
             decision = SpanDecision(

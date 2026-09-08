@@ -9,10 +9,19 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
 
+from defs.sec_forms.vocabulary import _FORM_PATTERN
 from defs.text.html import parse_html
 
 from ..core.records import DocumentLocator
 from ..processors import DefaultFilingProcessor
+
+
+def _infer_form_from_bytes(raw: bytes) -> str:
+    text = raw.decode("ascii", errors="ignore")
+    match = _FORM_PATTERN.search(text)
+    if match is None:
+        return ""
+    return match.group(1).upper()
 
 
 @dataclass(frozen=True, slots=True)
@@ -41,12 +50,13 @@ def run_document_case(record: dict[str, Any]) -> DocumentCaseResult:
     actual_hash = hashlib.sha256(raw).hexdigest()
     if actual_hash != expected_hash:
         raise ValueError(f"source hash mismatch for {record['document_id']}")
+    form = str(record.get("form", "")) or _infer_form_from_bytes(raw)
     locator = DocumentLocator(
         locator_key=str(record["document_id"]),
         accession=str(record["accession"]),
         document_path=str(record["document_path"]),
         archive_url="",
-        form=str(record.get("form", "")),
+        form=form,
     )
     processor = DefaultFilingProcessor()
     preprocessed = processor.preprocessor.preprocess(
@@ -74,6 +84,7 @@ def stable_expected_metadata(result: DocumentCaseResult) -> dict[str, Any]:
     metadata = result.processed.metadata
     analysis = result.normalization.page_analysis
     decisions = getattr(analysis, "decisions", ()) if analysis else ()
+    artifacts = result.normalization.page_artifacts or {}
     return {
         "representation": result.preprocessed.representation,
         "reflow": result.normalization.reflow is not None,
@@ -91,6 +102,11 @@ def stable_expected_metadata(result: DocumentCaseResult) -> dict[str, Any]:
         ),
         "body_anchor_type": metadata.get("body_anchor_type"),
         "toc_detected": metadata.get("toc_start_line") is not None,
+        "page_artifact_count": len(artifacts.get("artifacts", ())),
+        "stage_trace_count": len(result.normalization.stage_trace or ()),
+        "rejection_diagnostics": list(getattr(analysis, "rejection_diagnostics", ()))
+        if analysis
+        else [],
     }
 
 
@@ -108,6 +124,17 @@ def bounded_analysis(result: DocumentCaseResult) -> dict[str, Any]:
     payload["header_footer_templates"] = payload.get("header_footer_templates", ())[:64]
     payload["inferred_boundaries"] = payload.get("inferred_boundaries", ())[:256]
     payload["unresolved"] = payload.get("unresolved", ())[:256]
+    table_payload: list[dict[str, Any]] = []
+    for geometry in getattr(result.normalization, "table_geometries", ())[:128]:
+        item = dataclasses.asdict(geometry)
+        resolved = item.get("render_result", {}).get("resolved_grid", {})
+        if isinstance(resolved, dict) and "rows" in resolved:
+            resolved["rows"] = resolved["rows"][:128]
+        table_payload.append(item)
+    payload["table_geometries"] = table_payload
+    artifacts = result.normalization.page_artifacts or {}
+    payload["page_artifacts"] = artifacts
+    payload["stage_trace"] = list(result.normalization.stage_trace or ())
     return payload
 
 
@@ -183,6 +210,7 @@ def write_review_artifacts(
         (output_dir / f"{case_id}.diff.html").write_text(diff_html, encoding="utf-8")
 
     analysis = result.normalization.page_analysis
+    artifacts = result.normalization.page_artifacts or {}
     return {
         "document_id": case_id,
         "accession": result.accession,
@@ -199,6 +227,11 @@ def write_review_artifacts(
         "evidence": None,
         "recommendation": None,
         "deferred": [],
+        "page_artifact_count": len(artifacts.get("artifacts", ())),
+        "stage_trace_count": len(result.normalization.stage_trace or ()),
+        "rejection_diagnostics": list(getattr(analysis, "rejection_diagnostics", ()))
+        if analysis
+        else [],
     }
 
 

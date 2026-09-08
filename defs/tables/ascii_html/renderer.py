@@ -5,6 +5,7 @@ from __future__ import annotations
 from typing import TYPE_CHECKING
 
 from defs.tables.ascii_html.blocks import (
+    align_terminal_numeric_headers,
     build_row_blocks,
     extract_raw_grids_and_spans,
     fuse_data_affix_blocks,
@@ -132,6 +133,29 @@ def render_source_table(
         grid_matrix, active_cols
     )
     raw_grid, single_col_grid = normalize_grid_indents(raw_grid, single_col_grid)
+
+    # Some filings place several caption rows before the actual column
+    # subheaders, so the border-based header score can stop too early. Detect
+    # only text-only rows immediately before the first numeric data row for the
+    # narrow affix-header alignment adjustment.
+    terminal_header_rows: set[int] = set()
+    for row_idx, row in enumerate(raw_grid[:-1]):
+        if not any(cell.strip() for cell in row):
+            continue
+        if any(is_numeric_cell(cell.strip()) for cell in row if cell.strip()):
+            continue
+        next_non_empty = next(
+            (
+                candidate
+                for candidate in raw_grid[row_idx + 1 :]
+                if any(cell.strip() for cell in candidate)
+            ),
+            (),
+        )
+        if next_non_empty and any(
+            is_numeric_cell(cell.strip()) for cell in next_non_empty if cell.strip()
+        ):
+            terminal_header_rows.add(row_idx)
 
     # 6. Compute column widths adhering to RenderBudget
     col_widths, layout_diags = compute_column_widths(
@@ -271,12 +295,43 @@ def render_source_table(
             suffix_positions,
             budget,
         )
+        protected_spans: set[tuple[int, ...]] = set()
+        if r_idx in terminal_header_rows:
+            numeric_positions = {
+                pos
+                for pos, alignment in enumerate(col_alignments)
+                if alignment == HorizontalAlign.RIGHT
+            }
+            affix_positions = prefix_positions | suffix_positions
+            protected_spans = {
+                tuple(block.span_cols)
+                for block in blocks
+                if (
+                    block.text.strip()
+                    and len(block.span_cols) <= 3
+                    and any(col in affix_positions for col in block.span_cols)
+                    and any(col in numeric_positions for col in block.span_cols)
+                    and block.span_cols[-1] + 1 not in suffix_positions
+                )
+            }
         blocks = fuse_empty_header_span_blocks(
             blocks,
             r_idx,
             header_row_count,
             header_spans,
             budget,
+            protected_spans=protected_spans,
+        )
+        blocks = align_terminal_numeric_headers(
+            blocks,
+            r_idx,
+            terminal_header_rows,
+            {
+                pos
+                for pos, alignment in enumerate(col_alignments)
+                if alignment == HorizontalAlign.RIGHT
+            },
+            prefix_positions | suffix_positions,
         )
 
         block_lines: list[list[str]] = [wrap_cell_text(b.text, b.width) for b in blocks]

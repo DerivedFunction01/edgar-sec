@@ -8,6 +8,29 @@ from defs.sec_forms.cover.boundary import (
     find_cover_boundary_for_profile,
     resolve_document_topology,
 )
+from defs.sec_forms.cover.checkmark_candidates import (
+    extract_cover_candidates,
+    extract_table_candidates,
+)
+from defs.sec_forms.cover.checkmark_models import (
+    CheckboxCandidate,
+    ConstraintViolation,
+    CoverCheckmarkResult,
+    HypothesisScore,
+    InferenceStatus,
+    PenaltyScorer,
+)
+from defs.sec_forms.cover.checkmark_rewrite import (
+    apply_cover_checkmark_decisions,
+    update_table_geometries,
+)
+from defs.sec_forms.cover.checkmark_solver import (
+    infer_cover_checkmarks,
+    solve_cover_constraints,
+    solve_filer_constraints,
+    solve_report_period,
+    solve_statutory_constraints,
+)
 from defs.sec_forms.cover.closing import ClosingSpan, find_closing_span
 from defs.sec_forms.cover.cover_start import find_cover_start
 from defs.sec_forms.cover.extractors import (
@@ -75,24 +98,33 @@ __all__ = [
     "BoundaryInput",
     "BoundaryMethod",
     "BoundarySignal",
+    "CheckboxCandidate",
     "ClosingSpan",
+    "ConstraintViolation",
     "CoverBoundary",
     "CoverBoundaryPolicy",
+    "CoverCheckmarkResult",
     "CoverProfile",
     "CoverStart",
     "DocumentTopology",
+    "HypothesisScore",
+    "InferenceStatus",
     "ItemDefinition",
     "PageMarkerKind",
     "PageMarkerSpan",
     "ParsedSection",
+    "PenaltyScorer",
     "SectionKind",
     "StructuralMatch",
     "StructuralRole",
     "TocEvidence",
     "TocSpan",
+    "apply_cover_checkmark_decisions",
     "extract_candidate_ein",
     "extract_commission_file_number",
+    "extract_cover_candidates",
     "extract_fiscal_period",
+    "extract_table_candidates",
     "find_body_start",
     "find_closing_span",
     "find_cover_boundary",
@@ -102,12 +134,18 @@ __all__ = [
     "find_toc_span",
     "get_profile",
     "heal_cover_text",
+    "infer_cover_checkmarks",
     "is_continuation_prose",
     "is_exact_heading",
     "is_toc_row",
     "match_structural_line",
     "parse_section_heading",
     "resolve_document_topology",
+    "solve_cover_constraints",
+    "solve_filer_constraints",
+    "solve_report_period",
+    "solve_statutory_constraints",
+    "update_table_geometries",
 ]
 
 

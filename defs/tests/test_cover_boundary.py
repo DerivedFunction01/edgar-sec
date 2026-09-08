@@ -134,6 +134,29 @@ def test_split_incorporated_reference_uses_later_single_heading() -> None:
     }
 
 
+def test_last_child_safety_ends_cover_after_reference_children() -> None:
+    """Child headings inside the reference unit end the cover after them all."""
+    text = ANNUAL_COVER.rsplit("\n", 1)[0]
+    text += (
+        "\nDocuments incorporated by reference:\n\n"
+        "PART I\n"
+        "PART II\n"
+        "part three of the annual report was previously filed in 2023.\n"
+    )
+    boundary = find_cover_boundary(text, ANNUAL_POLICY)
+    assert boundary.end_line is not None
+    lines = text.splitlines()
+    joined = "\n".join(lines[: boundary.end_line])
+    # Both same-role reference children and the trailing reference sentence
+    # stay in the cover slice: the cover ends after the final child, not
+    # before the first.
+    assert "PART I\n" in joined or "PART I" in joined
+    assert "PART II" in joined
+    assert "part three of the annual report" in joined
+    names = {evidence.name for evidence in boundary.evidence}
+    assert "incorporated_reference_transition" in names
+
+
 def test_same_line_part_reference_is_not_a_cover_transition() -> None:
     text = ANNUAL_COVER.rsplit("\n", 1)[0]
     text += """
@@ -181,6 +204,112 @@ def test_toc_transition_ends_cover_before_heading() -> None:
     assert boundary.method is BoundaryMethod.STRUCTURAL
     lines = text.splitlines()
     assert lines[boundary.end_line].strip().lower() == "table of contents"
+
+
+MID_COVER_TOC_HEADING_TEXT = (
+    ANNUAL_COVER
+    + """
+Indicate by check mark if the registrant is a well-known seasoned issuer.
+
+Table of Contents
+
+Large accelerated filer \u2612    Accelerated filer \u2610
+Non-accelerated filer \u2610    Smaller reporting company \u2610
+
+Documents incorporated by reference: Portions of the Annual Report on Form 10-K.
+
+Table of Contents
+
+Item 1. Business ................................ 1
+Item 1A. Risk Factors ........................... 5
+Item 7. Management's Discussion and Analysis .... 12
+
+PART I
+
+Item 1. Business
+
+The Company was incorporated in Delaware in 1985 and manufactures widgets.
+"""
+)
+
+
+def test_mid_cover_toc_heading_does_not_truncate_cover() -> None:
+    """A TOC heading inside the checkbox region must not end the cover.
+
+    The incorporated-reference anchor runs first; its transition is the next
+    proximity-validated TOC heading, so the filer checkbox block and the
+    incorporated-reference block stay inside the cover slice.
+    """
+    boundary = find_cover_boundary(MID_COVER_TOC_HEADING_TEXT, ANNUAL_POLICY)
+    assert boundary.method is BoundaryMethod.STRUCTURAL
+    lines = MID_COVER_TOC_HEADING_TEXT.splitlines()
+    joined = "\n".join(lines[: boundary.end_line])
+    assert "well-known seasoned issuer" in joined
+    assert "Large accelerated filer" in joined
+    assert "Documents incorporated by reference" in joined
+    # The boundary stops immediately before the real TOC (the heading whose
+    # rows begin nearby), not at the mid-cover navigation heading.
+    assert "Item 1. Business ...." not in joined
+    assert lines[boundary.end_line].strip().lower().startswith("table of contents")
+    names = {evidence.name for evidence in boundary.evidence}
+    assert "incorporated_reference" in names
+    assert "incorporated_reference_transition" in names
+
+
+def test_toc_heading_with_distant_rows_is_not_a_toc_start() -> None:
+    """A heading whose rows begin far below must not produce a TOC span."""
+    text = (
+        "FORM 10-K\nCommission file number 001-13665\nACME CORPORATION\n"
+        "Indicate by check mark whether the registrant is a large accelerated filer.\n"
+        "\nTable of Contents\n\nLarge accelerated filer \u2612\n"
+    )
+    span = cover_mod.find_toc_span(text)
+    assert span is None
+
+
+FORWARD_LOOKING_BEFORE_TRANSITION_TEXT = (
+    ANNUAL_COVER
+    + """
+Indicate by check mark if the registrant is a well-known seasoned issuer.
+
+Documents incorporated by reference: Portions of the Annual Report on Form 10-K.
+
+Table of Contents
+
+Cautionary Note Regarding Forward-Looking Statements
+
+This Annual Report contains statements that relate to future events and expectations.
+
+Table of Contents
+
+Item 1. Business ................................ 1
+Item 1A. Risk Factors ........................... 5
+
+PART I
+
+Item 1. Business
+
+The Company was incorporated in Delaware in 1985 and manufactures widgets.
+"""
+)
+
+
+def test_forward_looking_prose_precedes_transition_depth_adjust() -> None:
+    """Body-semantic prose between the reference block and the transition ends the cover first."""
+    boundary = find_cover_boundary(
+        FORWARD_LOOKING_BEFORE_TRANSITION_TEXT, ANNUAL_POLICY
+    )
+    assert boundary.method is BoundaryMethod.STRUCTURAL
+    lines = FORWARD_LOOKING_BEFORE_TRANSITION_TEXT.splitlines()
+    joined = "\n".join(lines[: boundary.end_line])
+    assert "Documents incorporated by reference" in joined
+    assert "well-known seasoned issuer" in joined
+    # The cover ends before the forward-looking section, not at the TOC/PART
+    # transition behind it.
+    assert "Cautionary Note" not in joined
+    assert "relate to future events" not in joined
+    names = {evidence.name for evidence in boundary.evidence}
+    assert "body_prose_depth_adjust" in names
 
 
 def test_part_item_fallback_ends_cover() -> None:
@@ -274,6 +403,55 @@ def test_boundary_input_defaults_to_ascii_representation() -> None:
 
 def test_policy_without_signals_never_selects_boundary() -> None:
     boundary = find_cover_boundary(ANNUAL_COVER, CoverBoundaryPolicy(signals=()))
+    assert boundary.end_line is None
+    assert boundary.method is BoundaryMethod.UNKNOWN
+
+
+WEAK_IDENTITY_COVER_WITH_BODY = """\
+FORM 10-K
+
+ACME CORPORATION
+(Exact name of registrant as specified in its charter)
+
+For the fiscal year ended December 31, 2024
+
+The Company was incorporated in Delaware in 1985 and manufactures precision
+industrial widgets for customers throughout North America and Europe. The
+Company's operations are subject to extensive federal regulation.
+
+Cautionary Note Regarding Forward-Looking Statements
+
+This Annual Report contains forward-looking statements that involve risks
+and uncertainties. Actual results could differ materially from those
+projected in the forward-looking statements.
+"""
+
+
+def test_body_prose_fallback_ends_weak_identity_cover() -> None:
+    """A weak-identity cover with no structural anchor ends at decisive prose."""
+    boundary = find_cover_boundary(WEAK_IDENTITY_COVER_WITH_BODY, ANNUAL_POLICY)
+    assert boundary.end_line is not None
+    assert boundary.method is BoundaryMethod.FALLBACK
+    assert boundary.confidence <= 0.7
+    lines = WEAK_IDENTITY_COVER_WITH_BODY.splitlines()
+    joined = "\n".join(lines[: boundary.end_line])
+    # The cover fragment (form identity, registrant, fiscal year) stays inside.
+    assert "FORM 10-K" in joined
+    assert "fiscal year ended" in joined
+    # The forward-looking section is body, not cover.
+    assert "Cautionary Note" not in joined
+    assert "differ materially" not in joined
+    names = {evidence.name for evidence in boundary.evidence}
+    assert "body_prose_fallback" in names
+
+
+def test_body_prose_fallback_requires_cover_evidence() -> None:
+    """Free-standing body prose without any cover identity stays unknown."""
+    text = """\
+The Company was incorporated in Delaware in 1985 and manufactures precision
+industrial widgets. Cautionary Note Regarding Forward-Looking Statements.
+"""
+    boundary = find_cover_boundary(text, ANNUAL_POLICY)
     assert boundary.end_line is None
     assert boundary.method is BoundaryMethod.UNKNOWN
 

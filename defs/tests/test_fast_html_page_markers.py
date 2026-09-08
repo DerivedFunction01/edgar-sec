@@ -102,7 +102,7 @@ def test_apply_fast_html_page_policy_strip_and_annotate() -> None:
     </html>
     """
     # Test strip policy
-    stripped_text, _, artifacts, _, _ = apply_fast_html_page_policy(
+    stripped_text, _, artifacts, _, _, _ = apply_fast_html_page_policy(
         html, policy=PageArtifactPolicy.STRIP
     )
     assert "First section body text" in stripped_text
@@ -111,7 +111,7 @@ def test_apply_fast_html_page_policy_strip_and_annotate() -> None:
     assert len(artifacts) >= 3
 
     # Test annotate policy
-    annotated_text, _, ann_artifacts, _, _ = apply_fast_html_page_policy(
+    annotated_text, _, ann_artifacts, _, _, _ = apply_fast_html_page_policy(
         html, policy=PageArtifactPolicy.ANNOTATE
     )
     assert "[[SEC:PAGE_NUMBER" in annotated_text or "[[SEC:PAGE_BREAK" in annotated_text
@@ -142,7 +142,7 @@ def test_orchestrator_routes_html_to_fast_html() -> None:
     assert page_numbers == [1, 2, 3]
 
     # Test apply_html_policy
-    result_text, _, artifacts, _, _ = apply_html_policy(
+    result_text, _, artifacts, _, _, _ = apply_html_policy(
         html, policy=PageArtifactPolicy.STRIP
     )
     assert "First section body text" in result_text

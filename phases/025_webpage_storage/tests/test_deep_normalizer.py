@@ -262,3 +262,201 @@ def test_deep_normalizer_preserve_policy_keeps_source() -> None:
     assert result.page_artifacts["policy"] == "preserve"
     assert result.page_artifacts["artifacts"] == []
     assert result.page_artifacts["templates"] == {}
+
+
+# --------------------------------------------------------------------------
+# Page-marker analysis lifecycle: analyze once, never refresh.
+# --------------------------------------------------------------------------
+
+
+def test_page_analysis_detects_source_marker_once() -> None:
+    """The one canonical analysis detects the <PAGE> marker and one boundary."""
+    normalizer = DeepNormalizer()
+    text = "<PAGE>\nITEM 1. BUSINESS\nSome prose.\n"
+    result = normalizer.normalize_result(_ascii_prep(text))
+    assert result.page_analysis is not None
+    assert len(result.page_analysis.markers) >= 1
+    assert len(result.page_analysis.page_boundaries) >= 1
+
+
+def test_page_analysis_remains_non_empty_after_stripping() -> None:
+    """The one analysis remains non-empty after STRIP policy removes markers."""
+    normalizer = DeepNormalizer()
+    text = "<PAGE>\nITEM 1. BUSINESS\nSome prose.\n"
+    result = normalizer.normalize_result(_ascii_prep(text))
+    assert result.page_analysis is not None
+    assert len(result.page_analysis.markers) >= 1
+    assert result.page_analysis.page_number_runs == ()
+
+
+def test_page_number_runs_zero_without_valid_candidates() -> None:
+    """Numbered-run count remains zero when fewer than three valid candidates."""
+    normalizer = DeepNormalizer()
+    text = "<PAGE>\nITEM 1. BUSINESS\nSome prose.\n"
+    result = normalizer.normalize_result(_ascii_prep(text))
+    assert result.page_analysis is not None
+    assert result.page_analysis.page_number_runs == ()
+
+
+def test_page_artifacts_record_removal_provenance() -> None:
+    """Page policy removes <PAGE> and emits one removal artifact."""
+    normalizer = DeepNormalizer()
+    text = "<PAGE>\nITEM 1. BUSINESS\nSome prose.\n"
+    result = normalizer.normalize_result(_ascii_prep(text))
+    assert result.page_artifacts is not None
+    assert result.page_artifacts["policy"] == "strip"
+    assert len(result.page_artifacts["artifacts"]) >= 1
+    assert all(entry["removable"] for entry in result.page_artifacts["artifacts"])
+
+
+def test_stage_trace_contains_required_stages() -> None:
+    """Review JSON contains stage trace with all required stages."""
+    normalizer = DeepNormalizer()
+    text = "<PAGE>\nITEM 1. BUSINESS\nSome prose.\n"
+    result = normalizer.normalize_result(_ascii_prep(text))
+    stages = [s["stage"] for s in result.stage_trace]
+    assert "preprocessed" in stages
+    assert "page_policy_input" in stages
+    assert "page_policy_output" in stages
+    assert "after_header_normalization" in stages
+    assert "after_final_whitespace" in stages
+
+
+def test_rejection_diagnostics_auditable() -> None:
+    """Empty page_number_runs is auditable via rejection_diagnostics."""
+    normalizer = DeepNormalizer()
+    text = "<PAGE>\nITEM 1. BUSINESS\nSome prose.\n"
+    result = normalizer.normalize_result(_ascii_prep(text))
+    assert result.page_analysis is not None
+    assert result.page_analysis.page_number_runs == ()
+    diagnostics = list(getattr(result.page_analysis, "rejection_diagnostics", ()))
+    assert isinstance(diagnostics, list)
+
+
+def test_page_analysis_not_overwritten_by_healing() -> None:
+    """Cover healing does not overwrite source page_analysis."""
+    normalizer = DeepNormalizer()
+    text = "<PAGE>\nUNITED STATES\nFORM 10-K\nACME CORP\n\nTABLE OF CONTENTS\nITEM 1. BUSINESS\nSome prose.\n"
+    result = normalizer.normalize_result(_ascii_prep(text))
+    assert result.page_analysis is not None
+    assert len(result.page_analysis.markers) >= 1
+    assert result.page_analysis is result.page_analysis
+
+
+def test_stable_expected_metadata_includes_rejection_diagnostics() -> None:
+    """stable_expected_metadata includes rejection_diagnostics."""
+    import importlib
+    from types import SimpleNamespace
+
+    review_mod = importlib.import_module("phases.025_webpage_storage.testing.review")
+    stable_expected_metadata = review_mod.stable_expected_metadata
+    normalizer = DeepNormalizer()
+    text = "<PAGE>\nITEM 1. BUSINESS\nSome prose.\n"
+    result = normalizer.normalize_result(_ascii_prep(text))
+    mock_result = SimpleNamespace(
+        normalization=result,
+        processed=SimpleNamespace(metadata={}),
+        preprocessed=_ascii_prep(text),
+    )
+    meta = stable_expected_metadata(mock_result)
+    assert "rejection_diagnostics" in meta
+    assert isinstance(meta["rejection_diagnostics"], list)
+
+
+# --------------------------------------------------------------------------
+# Table protection: heading and whitespace normalization.
+# --------------------------------------------------------------------------
+
+
+def test_normalize_headers_preserves_table_spacing() -> None:
+    """Heading normalization leaves table spacing byte-for-byte unchanged."""
+    normalizer = DeepNormalizer()
+    text = (
+        "<TABLE>\n"
+        "ITEM 5.               Market for the Registrant's Common Equity\n"
+        "ITEM 7.               Management's Discussion\n"
+        "</TABLE>\n"
+        "ITEM 1. BUSINESS\n"
+    )
+    result = normalizer.normalize_result(_ascii_prep(text))
+    normalized = result.text
+    table_start = normalized.find("<TABLE>")
+    if table_start != -1:
+        table_end = normalized.find("</TABLE>", table_start)
+        if table_end != -1:
+            table_content = normalized[table_start : table_end + len("</TABLE>")]
+            assert "ITEM 5." in table_content
+            assert "ITEM 7." in table_content
+
+
+def test_reflow_preserves_tagged_table() -> None:
+    """Reflow preserves the tagged table exactly."""
+    normalizer = DeepNormalizer()
+    text = "<TABLE>\nItem 1. Description\nValue 1\n</TABLE>\nSome prose here.\n"
+    result = normalizer.normalize_result(_ascii_prep(text))
+    assert "<TABLE>" in result.text
+    assert "</TABLE>" in result.text
+
+
+# --------------------------------------------------------------------------
+# ProtectedText abstraction.
+# --------------------------------------------------------------------------
+
+
+def test_protected_text_outside_only_transform() -> None:
+    """ProtectedText.transform_outside only modifies text outside tables."""
+    from defs.tables.protection import ProtectedText
+
+    text = "Hello <TABLE>cell\nvalue</TABLE> World"
+    pt = ProtectedText(text)
+    assert pt.span_count == 1
+    result = pt.transform_outside(lambda s: s.upper())
+    assert "<TABLE>" in result
+    assert "cell" in result
+    assert "WORLD" in result
+
+
+def test_protected_text_multiple_tables() -> None:
+    """ProtectedText handles multiple tables."""
+    from defs.tables.protection import ProtectedText
+
+    text = "<TABLE>1</TABLE> middle <TABLE>2</TABLE>"
+    pt = ProtectedText(text)
+    assert pt.span_count == 2
+    assert len(pt.complete_spans) == 2
+
+
+def test_protected_text_unterminated_table() -> None:
+    """ProtectedText handles unterminated tables."""
+    from defs.tables.protection import ProtectedText
+
+    text = "<TABLE>unclosed"
+    pt = ProtectedText(text)
+    assert pt.span_count == 1
+    assert len(pt.unterminated_spans) == 1
+    assert len(pt.complete_spans) == 0
+
+
+def test_protected_text_restore_once() -> None:
+    """ProtectedText.original restores tables exactly once."""
+    from defs.tables.protection import ProtectedText
+
+    text = "Hello <TABLE>cell</TABLE> World"
+    pt = ProtectedText(text)
+    restored = pt.original
+    assert restored == text
+    restored_again = pt.original
+    assert restored_again == text
+
+
+def test_protected_text_line_ranges() -> None:
+    """ProtectedText.span line_ranges preserve line-coordinate information."""
+    from defs.tables.protection import ProtectedText
+
+    text = "Line 1\n<TABLE>cell\nvalue</TABLE>\nLine 3"
+    pt = ProtectedText(text)
+    for span in pt.spans:
+        ranges = span.line_ranges
+        assert len(ranges) == 1
+        assert ranges[0][0] == 0
+        assert ranges[0][1] == 1

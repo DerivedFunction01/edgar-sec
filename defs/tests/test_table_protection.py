@@ -20,7 +20,7 @@ def test_complete_table_is_masked_and_restored_exactly() -> None:
     assert spans[0].text == TAGGED
     assert spans[0].complete
     assert TAGGED not in masked
-    assert "\x00" in masked
+    assert "__SEC_TBL_" in masked
     assert restore_tagged_tables(masked, spans) == text
 
 
@@ -55,7 +55,7 @@ def test_document_without_tables_is_unchanged() -> None:
 
 
 def test_sentinel_collision_disables_masking() -> None:
-    text = "has NUL\x00byte\n<TABLE>\nA 1\n</TABLE>"
+    text = "has __SEC_TBL__\n<TABLE>\nA 1\n</TABLE>"
     masked, spans = mask_tagged_tables(text)
     assert masked == text
     assert spans == ()

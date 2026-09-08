@@ -27,7 +27,61 @@ __all__ = [
     "RE_SIGNATURE_LABEL_LINE",
     "RE_STRUCTURAL_SGML",
     "SIGNATURE_LABEL_PREFIXES",
+    "roman_to_int",
 ]
+
+# Roman numeral character-to-value mapping used by roman_to_int.
+_ROMAN_VALUES = {
+    "i": 1,
+    "v": 5,
+    "x": 10,
+    "l": 50,
+    "c": 100,
+    "d": 500,
+    "m": 1000,
+}
+
+# Canonical numeral-value pairs ordered largest to smallest, used for
+# validating that a roman numeral string is in canonical form.
+_NUMERALS = (
+    ("m", 1000),
+    ("cm", 900),
+    ("d", 500),
+    ("cd", 400),
+    ("c", 100),
+    ("xc", 90),
+    ("l", 50),
+    ("xl", 40),
+    ("x", 10),
+    ("ix", 9),
+    ("v", 5),
+    ("iv", 4),
+    ("i", 1),
+)
+
+
+def roman_to_int(value: str) -> int | None:
+    """Parse a canonical bounded Roman numeral string to an integer.
+
+    Returns ``None`` if ``value`` is not a valid canonical Roman numeral
+    (e.g. non-canonical forms like ``iiiv`` or values exceeding 3000).
+    """
+    text = value.casefold()
+    if not re.fullmatch(r"[ivxlcdm]{1,8}", text):
+        return None
+    total = previous = 0
+    for char in reversed(text):
+        current = _ROMAN_VALUES[char]
+        total += -current if current < previous else current
+        previous = max(previous, current)
+    if not 0 < total <= 3000:
+        return None
+    remaining, canonical = total, ""
+    for numeral, amount in _NUMERALS:
+        count, remaining = divmod(remaining, amount)
+        canonical += numeral * count
+    return total if canonical == text else None
+
 
 # Dot-leader runs used by TOC and index rows.
 RE_DOT_LEADER = re.compile(r"\.{3,}")

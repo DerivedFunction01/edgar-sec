@@ -105,7 +105,11 @@ consumers. HTML documents are normalized through
 `normalize_html_document()`: Stage-1 cleaning, HTML-preserving table
 rendering to canonical `<TABLE>...</TABLE>` blocks, tagged-table
 protection, string structural decomposition, whitespace normalization,
-and tagged-table restoration. The DOM page-marker package has been
+form-profiled cover checkbox constraint inference, and tagged-table
+restoration. Ambiguous glyphs are evaluated against report-period,
+filer-status, and applicable statutory Boolean constraints; tied or
+contradictory hypotheses remain unresolved rather than being guessed. The DOM
+page-marker package has been
 removed; page-marker analysis operates on the rendered ASCII text
 frame. Firm labels are removed only from validated decisions;
 contextual namespace runs, repeated headers/footers, unresolved
@@ -132,7 +136,10 @@ stage remains as a no-op placeholder in the pipeline for future
 false/layout-table unwrapping; tagged tables are protected through
 generic whitespace passes. Shared cover healing is provided by
 `defs.sec_forms.cover.healing.heal_cover_text()`, which applies
-representation-neutral healing to bounded cover slices. The retained
+representation-neutral healing to bounded cover slices; form-profiled checkbox
+constraint inference is provided by
+`defs.sec_forms.cover.inference.infer_cover_checkmarks()`, which skips no-cover
+families such as 8-K and 6-K. The retained
 `defs.text.html.tree.py` module provides parser/table-node infrastructure
 (selectolax wrapper, CSS traversal, raw-node access, cell text
 extraction) for table rendering and independent research consumers; it

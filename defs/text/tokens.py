@@ -7,7 +7,7 @@ import re
 from defs.regex import build_alternation
 
 BULLET_MARKERS: frozenset[str] = frozenset(
-    {"o", "*", "-", "+", "•", "·", "\x95", "–", "—", "&#149;"}
+    {"o", "*", "-", "+", "•", "●", "·", "\x95", "–", "—", "&#149;"}
 )
 
 BULLET_MARKER_RE: re.Pattern = re.compile(

@@ -16,6 +16,7 @@ from defs.tables.ascii_html.model import (
     SourceCell,
     SourceTable,
     SpanGroup,
+    TableGeometry,
     TableRenderResult,
     TextLayoutDiagnostic,
     VerticalAlign,
@@ -75,15 +76,40 @@ def convert_html_tables_to_ascii(
     budget: RenderBudget = DEFAULT_RENDER_BUDGET,
     convert_to_text: bool = True,
 ) -> str:
-    """Convert visual HTML tables to ASCII, optionally preserving HTML markup."""
+    """Convert visual HTML tables to ASCII, optionally preserving markup."""
+    rendered, _ = convert_html_tables_to_ascii_with_metadata(
+        html_content,
+        budget=budget,
+        convert_to_text=convert_to_text,
+    )
+    return rendered
+
+
+def convert_html_tables_to_ascii_with_metadata(
+    html_content: str,
+    *,
+    budget: RenderBudget = DEFAULT_RENDER_BUDGET,
+    convert_to_text: bool = True,
+) -> tuple[str, tuple[TableGeometry, ...]]:
+    """Convert HTML tables to ASCII, returning text and per-table geometry metadata.
+
+    Identical to :func:`convert_html_tables_to_ascii` except that a
+    :class:`TableGeometry` instance is retained for every table that
+    produces rendered output.  Wholly-empty tables that are decomposed
+    are omitted from the metadata, matching the string output behavior.
+    """
     tree = parse_html(html_content)
     tables = tree.css("table")
     if not tables:
         if tree.root is None:
-            return html_content
-        return tree.root.text(separator="\n") if convert_to_text else str(tree)
+            return html_content, ()
+        return (
+            tree.root.text(separator="\n") if convert_to_text else str(tree),
+            (),
+        )
 
     rendered_tables: list[tuple[str, str]] = []
+    geometries: list[TableGeometry] = []
     for idx, tbl in enumerate(tables):
         if tbl.find_parent("table") is not None:
             continue
@@ -97,6 +123,12 @@ def convert_html_tables_to_ascii(
                     token += "_"
                 rendered_tables.append((token, f"\n{res.ascii_text}\n"))
                 tbl.raw_node.replace_with(token)
+            geometries.append(
+                TableGeometry(
+                    table_index=len(geometries),
+                    render_result=res,
+                )
+            )
         elif not convert_to_text:
             if _is_wholly_empty_table(tbl):
                 tbl.decompose()
@@ -109,16 +141,22 @@ def convert_html_tables_to_ascii(
             inner_html = match.group("body") if match else raw_html
             rendered_tables.append((token, f"\n<TABLE>{inner_html}</TABLE>\n"))
             tbl.raw_node.replace_with(token)
+            geometries.append(
+                TableGeometry(
+                    table_index=len(geometries),
+                    render_result=res,
+                )
+            )
 
     root = tree.root
     if root is None:
-        return html_content
+        return html_content, tuple(geometries)
     rendered = root.text(separator="\n") if convert_to_text else str(tree)
     for token, table in rendered_tables:
         if token not in rendered:
             raise ValueError(f"rendered table token missing: {token!r}")
         rendered = rendered.replace(token, table)
-    return rendered
+    return rendered, tuple(geometries)
 
 
 __all__ = [
@@ -132,12 +170,14 @@ __all__ = [
     "SourceCell",
     "SourceTable",
     "SpanGroup",
+    "TableGeometry",
     "TableRenderResult",
     "TextLayoutDiagnostic",
     "VerticalAlign",
     "build_span_matrix",
     "convert_html_table",
     "convert_html_tables_to_ascii",
+    "convert_html_tables_to_ascii_with_metadata",
     "extract_source_table",
     "render_grid_to_ascii",
     "render_source_table",

@@ -116,6 +116,14 @@ def _record_categories(record: dict[str, Any]) -> set[str]:
     return categories
 
 
+def _token_matches(record: dict[str, Any], token: str) -> bool:
+    """Match a selection token by exact document ID or URL-ending path suffix."""
+
+    if str(record["document_id"]) == token:
+        return True
+    return str(record.get("document_path", "")).casefold().endswith(token.casefold())
+
+
 def find_document_cases(
     ids: list[str] | None = None,
     categories: list[str] | None = None,
@@ -123,16 +131,24 @@ def find_document_cases(
     extensions: list[str] | None = None,
     path: str | Path | None = None,
 ) -> list[dict[str, Any]]:
-    """Return deterministic corpus rows filtered by ID, category, and extension."""
+    """Return deterministic corpus rows filtered by ID, category, and extension.
+
+    Each ID token selects a record whose ``document_id`` equals the token or
+    whose ``document_path`` ends with the token (case-insensitive URL ending,
+    e.g. ``t10k-2094e.txt``), so review selection works before a document's
+    hash-derived ID is known.
+    """
 
     records = load_document_corpus(path)
-    id_set = set(ids or ())
+    token_list = list(ids or ())
     category_set = {value.casefold() for value in categories or ()}
     ext_set = {f".{ext.lstrip('.').casefold()}" for ext in extensions or ()}
     selected = [
         record
         for record in records
-        if (not id_set or record["document_id"] in id_set)
+        if (
+            not token_list or any(_token_matches(record, token) for token in token_list)
+        )
         and (
             not category_set
             or category_set.intersection(

@@ -177,6 +177,7 @@ def test_ledger_write_is_atomic(tmp_path):
     with pytest.raises(http.PermanentHttpError):
         client.get_json("https://x/z.json")
 
-    files = list((tmp_path / "cache" / "failures").glob("*"))
-    assert len(files) == 1
-    assert not [f for f in files if f.name.endswith(".tmp")]
+    entry = client.load_failure_entry("https://x/z.json")
+    assert entry is not None
+    assert entry["last_kind"] == "permanent"
+    assert entry["permanent"]

@@ -26,6 +26,7 @@ from .bow import (
     score_unit,
     tokenize,
 )
+from .checkmarks import CheckmarkDecision, CheckmarkScope
 from .compounds import (
     expand_alternations,
     expand_compounds,
@@ -78,6 +79,7 @@ from .html import (
     clean_html_for_parsing,
     decompose_html_structures,
     extract_ascii_pre,
+    normalize_font_qualified_glyphs,
     parse_html,
     strip_benign_font_styles,
     strip_font_tag_and_noise_attributes,
@@ -124,6 +126,8 @@ __all__ = [
     "YEAR_TOKEN_RE",
     "BowScore",
     "CaseMode",
+    "CheckmarkDecision",
+    "CheckmarkScope",
     "ClassificationMatch",
     "CompiledEvidencePack",
     "DateComponents",
@@ -160,6 +164,7 @@ __all__ = [
     "month_name_to_index",
     "normalize_checkbox_tokens",
     "normalize_final_text_whitespace",
+    "normalize_font_qualified_glyphs",
     "normalize_tokens",
     "normalize_whitespace_and_tabs",
     "parse_date",

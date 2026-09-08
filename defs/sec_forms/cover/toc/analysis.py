@@ -10,11 +10,12 @@ from defs.sec_forms.cover.structure import (
     is_continuation_prose,
 )
 from defs.sec_forms.page_markers import RE_PAGE_SUFFIX, is_page_marker_line
+from defs.text.patterns import RE_DOT_LEADER
 
 from .patterns import (
     _RE_MULTI_SPACE,
     _RE_NON_ALPHANUM,
-    RE_TOC_ITEM,
+    RE_TOC_ITEM_ROW,
     RE_TOC_LEADER,
 )
 
@@ -28,7 +29,7 @@ def normalize_for_matching(text: str) -> str:
 
 
 def is_toc_row(line: str) -> bool:
-    """Return whether ``line`` looks like a TOC row."""
+    """Return whether ``line`` looks like a dot-leader TOC row."""
     stripped = line.strip().strip("|+")
     if not stripped:
         return False
@@ -37,6 +38,38 @@ def is_toc_row(line: str) -> bool:
             RE_PART_REFERENCE.search(stripped) or RE_ITEM_REFERENCE.search(stripped)
         )
     return False
+
+
+def looks_like_toc_row(line: str) -> bool:
+    """Return whether ``line`` matches any TOC row form.
+
+    Covers dot-leader rows (:func:`is_toc_row`) and leader-less rows that begin
+    with an ITEM reference and carry a trailing page suffix — the shape HTML
+    table TOCs produce when columns replace dot leaders. Old ASCII filings use
+    dot leaders; HTML TOCs live inside ``<TABLE>`` blocks whose rendered rows
+    keep the page suffix as cell text.
+    """
+    stripped = line.strip().strip("|+")
+    if not stripped:
+        return False
+    if is_toc_row(stripped):
+        return True
+    return bool(
+        RE_TOC_ITEM_ROW.match(stripped)
+        and (RE_TOC_LEADER.search(stripped) or RE_PAGE_SUFFIX.search(stripped))
+    )
+
+
+def looks_like_toc_tabular(line: str) -> bool:
+    """Return whether a line is dot-leader tabular content with a page token.
+
+    Uses the shared dot-leader and page-suffix patterns, so digits, namespaced
+    financial-statement pages (``F-1``), and roman numerals (``xii``) all count.
+    """
+    stripped = line.strip().strip("|+")
+    if not stripped:
+        return False
+    return bool(RE_DOT_LEADER.search(stripped) and RE_PAGE_SUFFIX.search(stripped))
 
 
 def _line_offset(lines: list[str], line: int) -> int:
@@ -61,10 +94,7 @@ def _row_lines(
             or is_page_marker_line(line)
         ):
             continue
-        if is_toc_row(line) or (
-            RE_TOC_ITEM.match(line)
-            and (RE_TOC_LEADER.search(line) or RE_PAGE_SUFFIX.search(line))
-        ):
+        if looks_like_toc_row(line):
             rows.append(index)
             consecutive_prose = 0
         else:

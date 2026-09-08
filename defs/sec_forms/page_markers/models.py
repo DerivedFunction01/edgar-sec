@@ -220,6 +220,7 @@ class PageMarkerAnalysis:
     coordinate_frame: str = "text"
     regions: tuple[PageRegionReport, ...] = ()
     artifacts: tuple[PageBreakArtifact, ...] = ()
+    rejection_diagnostics: tuple[str, ...] = ()
 
 
 __all__ = [

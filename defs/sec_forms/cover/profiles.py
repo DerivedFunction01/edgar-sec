@@ -27,6 +27,7 @@ from defs.text import PhraseSequenceRule
 
 if TYPE_CHECKING:
     from defs.tables.scope import TableScope
+    from defs.taxonomy.components.cover import CoverCheckboxSchema
 
 
 # --- Label groups --------------------------------------------------------------
@@ -58,6 +59,8 @@ class CoverProfile:
         healing_rules: Phrase-healing rules enabled by this profile.
         cover_evidence: Typed evidence pack for cover-start/end detection.
         body_evidence: Typed evidence pack for body-anchor detection.
+        checkbox_schema: Form-scoped checkbox constraints, or ``None`` for
+            forms without a cover checkbox schema.
     """
 
     family: str
@@ -69,6 +72,7 @@ class CoverProfile:
     cover_evidence: CoverEvidencePack | None = None
     body_evidence: BodyEvidencePack | None = None
     derived_taxonomy: dict | None = None
+    checkbox_schema: CoverCheckboxSchema | None = None
 
 
 def _make_profile(
@@ -80,6 +84,7 @@ def _make_profile(
     cover_evidence: CoverEvidencePack | None = None,
     body_evidence: BodyEvidencePack | None = None,
     derived_taxonomy: dict | None = None,
+    checkbox_schema: CoverCheckboxSchema | None = None,
 ) -> CoverProfile:
     return CoverProfile(
         family=family,
@@ -93,6 +98,7 @@ def _make_profile(
         cover_evidence=cover_evidence,
         body_evidence=body_evidence,
         derived_taxonomy=derived_taxonomy,
+        checkbox_schema=checkbox_schema,
     )
 
 
@@ -103,6 +109,10 @@ def _build_profiles() -> dict[str, CoverProfile]:
     )
     from defs.sec_forms.forms.quarterly.taxonomy import FORM_10Q_DERIVED
     from defs.tables.templates import TableScope
+    from defs.taxonomy.components.cover import (
+        ANNUAL_CHECKBOX_SCHEMA,
+        QUARTERLY_CHECKBOX_SCHEMA,
+    )
 
     annual_evidence = build_annual_profile("10-K")
     quarterly_evidence = build_quarterly_profile("10-Q")
@@ -118,6 +128,7 @@ def _build_profiles() -> dict[str, CoverProfile]:
                 BoundarySignal.TOC_TRANSITION,
                 BoundarySignal.PART_FALLBACK,
                 BoundarySignal.ITEM_FALLBACK,
+                BoundarySignal.BODY_PROSE_FALLBACK,
             )
         ),
         table_scope=TableScope.COVER,
@@ -127,6 +138,7 @@ def _build_profiles() -> dict[str, CoverProfile]:
         cover_evidence=annual_evidence.cover_evidence,
         body_evidence=annual_evidence.body_evidence,
         derived_taxonomy=FORM_10K_DERIVED,
+        checkbox_schema=ANNUAL_CHECKBOX_SCHEMA,
     )
     annual_foreign = _dataclass_replace(
         annual_common, family="20-F", derived_taxonomy=FORM_20F_DERIVED
@@ -140,6 +152,7 @@ def _build_profiles() -> dict[str, CoverProfile]:
                 BoundarySignal.TOC_TRANSITION,
                 BoundarySignal.PART_FALLBACK,
                 BoundarySignal.ITEM_FALLBACK,
+                BoundarySignal.BODY_PROSE_FALLBACK,
             )
         ),
         table_scope=TableScope.COVER,
@@ -148,6 +161,7 @@ def _build_profiles() -> dict[str, CoverProfile]:
         cover_evidence=quarterly_evidence.cover_evidence,
         body_evidence=quarterly_evidence.body_evidence,
         derived_taxonomy=FORM_10Q_DERIVED,
+        checkbox_schema=QUARTERLY_CHECKBOX_SCHEMA,
     )
     no_cover_8k = _make_profile(
         family="8-K",

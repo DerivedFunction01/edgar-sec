@@ -90,7 +90,10 @@ consumes these target plans; see the Phase 02 README for the scope split.
 Acquires and stores raw SEC filing documents (HTML, SGML, iXBRL) as
 content-addressed, zstd-compressed SQLite BLOBs, linked to Phase 02 corporate
 occurrences, and applies cover-page normalization (string-first HTML preprocessing
-with layout-table decomposition and text healing). Fixture IDs
+with layout-table decomposition, form-scoped checkbox constraint inference, and
+text healing). Ambiguous modern cover glyphs are resolved only when a unique
+lowest-penalty report-period, filer-status, or statutory Boolean hypothesis is
+available; unresolved groups remain inspectable. Fixture IDs
 are reusable appendable test caches: an expanded child plan reuses existing
 blobs and fetches only missing locators. Document parsing and section
 extraction are later phases built on the stored and normalized `document_blobs`.

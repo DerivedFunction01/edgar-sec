@@ -93,7 +93,9 @@ def extract_source_table(
             curr = node.parent
             while curr is not None and (curr.tag or "").lower() != "table":
                 curr = curr.parent
-            if curr == table_node.raw_node:
+            if getattr(curr, "mem_id", None) == getattr(
+                table_node.raw_node, "mem_id", None
+            ):
                 from defs.text.html import FastHtmlNode as FHN
 
                 direct_rows.append(FHN(node))

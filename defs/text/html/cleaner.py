@@ -18,6 +18,11 @@ from __future__ import annotations
 import re
 
 from defs.regex import build_alternation
+from defs.text.checkmarks import (
+    CANONICAL_CHECKED,
+    CANONICAL_UNCHECKED,
+    font_glyph_state,
+)
 from defs.text.unicode import sanitize_unicode_whitespace
 
 # ---------------------------------------------------------------------------
@@ -87,6 +92,43 @@ _RE_BENIGN_STYLE_DECL = re.compile(
 _RE_REDUNDANT_SEPARATORS = re.compile(r";\s*;")
 _RE_EMPTY_STYLE_ATTR = re.compile(r'(?i)(?<=[\s"])style\s*=\s*"\s*"')
 
+_RE_TAG_OR_TEXT = re.compile(r"(?is)<!--.*?-->|<[^>]*>|[^<]+")
+_RE_STYLE_FONT_FAMILY = re.compile(r"(?i)\bfont-family\s*:\s*([^;\"]+)")
+_RE_FACE_ATTR = re.compile(r"(?i)\bface\s*=\s*(?:\"([^\"]*)\"|'([^']*)'|([^\s>]+))")
+_RE_TAG_NAME = re.compile(r"(?is)^\s*<\s*(/?)\s*([a-z][a-z0-9:-]*)")
+_RE_GLYPH = re.compile(r"[\u00fe\u00fd\u0072\u0052]")
+_VOID_TAGS = frozenset(
+    {
+        "area",
+        "base",
+        "br",
+        "col",
+        "embed",
+        "hr",
+        "img",
+        "input",
+        "link",
+        "meta",
+        "param",
+        "source",
+        "track",
+        "wbr",
+    }
+)
+
+
+def _replace_font_glyphs(text: str, font_family: str) -> str:
+    def replace(match: re.Match[str]) -> str:
+        state = font_glyph_state(font_family, match.group(0))
+        if state == "checked":
+            return CANONICAL_CHECKED
+        if state == "unchecked":
+            return CANONICAL_UNCHECKED
+        return match.group(0)
+
+    return _RE_GLYPH.sub(replace, text)
+
+
 # ---------------------------------------------------------------------------
 # Presentation <font> attributes and non-semantic HTML attributes
 # ---------------------------------------------------------------------------
@@ -136,6 +178,68 @@ def strip_ixbrl_inline_tags(html: str) -> str:
     return html
 
 
+def normalize_font_qualified_glyphs(html: str) -> str:
+    """Map only glyphs in text nodes with an explicit symbolic font.
+
+    This scanner deliberately leaves tags, attributes, comments, scripts, and
+    styles untouched.  A nested font declaration replaces the inherited
+    declaration, so ordinary text in an override cannot be reinterpreted.
+    """
+    if not html:
+        return html
+    folded_html = html.lower()
+    if not any(family in folded_html for family in _PRESERVED_FAMILIES):
+        return html
+
+    output: list[str] = []
+    font_stack: list[str | None] = []
+    current_font: str | None = None
+    opaque_depth = 0
+    for match in _RE_TAG_OR_TEXT.finditer(html):
+        token = match.group(0)
+        if not token.startswith("<"):
+            if opaque_depth or current_font is None:
+                output.append(token)
+                continue
+
+            output.append(_replace_font_glyphs(token, current_font or ""))
+            continue
+
+        if token.startswith("<!--"):
+            output.append(token)
+            continue
+        tag_match = _RE_TAG_NAME.match(token)
+        if tag_match is None:
+            output.append(token)
+            continue
+        closing, tag_name = tag_match.groups()
+        tag_name = tag_name.lower()
+        if closing:
+            output.append(token)
+            if tag_name in {"script", "style"} and opaque_depth:
+                opaque_depth -= 1
+            if font_stack:
+                current_font = font_stack.pop()
+            continue
+
+        output.append(token)
+        if tag_name in {"script", "style"}:
+            opaque_depth += 1
+        if tag_name in _VOID_TAGS or token.rstrip().endswith("/>"):
+            continue
+        font_stack.append(current_font)
+        style_match = _RE_STYLE_FONT_FAMILY.search(token)
+        face_match = _RE_FACE_ATTR.search(token)
+        if style_match:
+            current_font = style_match.group(1).strip()
+        elif face_match:
+            current_font = next(
+                (value for value in face_match.groups() if value is not None), ""
+            ).strip()
+
+    return "".join(output)
+
+
 def strip_benign_font_styles(html: str) -> str:
     """Strip redundant standard font and layout declarations from style attributes.
 
@@ -183,6 +287,7 @@ def clean_html_for_parsing(html: str) -> str:
     sanitization.
     """
     html = strip_ixbrl_inline_tags(html)
+    html = normalize_font_qualified_glyphs(html)
     html = strip_benign_font_styles(html)
     html = strip_font_tag_and_noise_attributes(html)
     html = strip_office_metadata_attributes(html)

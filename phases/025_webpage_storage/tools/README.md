@@ -108,6 +108,12 @@ Or select an individual case:
   --output /tmp/document-review-one.txt
 ```
 
+`--id` / `--ids-file` tokens match either the exact `document_id` or a
+case-insensitive URL ending of `document_path` (for example
+`t10k-2094e.txt`), so cases can be selected before their hash-derived ID is
+known. Both `dump_document_review_set` and `build_document_review_artifacts`
+accept this matching.
+
 The command also writes per-case temporary artifacts beside the output file,
 including HTML and diff files when an expected output exists.
 

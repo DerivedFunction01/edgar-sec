@@ -4,7 +4,6 @@ from __future__ import annotations
 
 import hashlib
 import json
-import os
 import time
 from collections.abc import Callable
 from dataclasses import dataclass
@@ -15,6 +14,7 @@ import requests
 
 from defs.http import BoundedTransport, ConcurrencyPolicy
 
+from .cache import make_cache_store
 from .errors import PermanentHttpError, ResponseTooLargeError, RetryExhausted
 from .metrics import HttpMetrics
 from .rate_limit import DEFAULT_RATE_LIMIT_RPS, RateLimiter
@@ -163,6 +163,7 @@ class SecHttpClient:
         self.retry_policy = retry_policy or RetryPolicy()
         self.timeout_s = timeout_s
         self.cache_dir = cache_dir
+        self._cache = make_cache_store(cache_dir)
         self.max_response_bytes = max_response_bytes
         self.metrics = metrics or HttpMetrics()
         self.headers = default_headers(user_agent)
@@ -175,47 +176,23 @@ class SecHttpClient:
 
     # ------------------------------------------------------------------ cache
 
-    def _cache_path(self, url: str) -> str | None:
-        if not self.cache_dir:
-            return None
-        digest = hashlib.sha256(url.encode("utf-8")).hexdigest()
-        return os.path.join(self.cache_dir, digest + ".cache")
-
     def _cache_get(self, url: str) -> bytes | None:
-        path = self._cache_path(url)
-        if path and os.path.exists(path):
-            with open(path, "rb") as fh:
-                return fh.read()
+        if self._cache:
+            return self._cache.get(url)
         return None
 
-    def _cache_put(self, url: str, payload: bytes) -> None:
-        path = self._cache_path(url)
-        if not path:
-            return
-        os.makedirs(self.cache_dir, exist_ok=True)  # type: ignore[type-var]
-        tmp = path + ".tmp"
-        with open(tmp, "wb") as fh:
-            fh.write(payload)
-        os.replace(tmp, path)
+    def _cache_put(
+        self, url: str, payload: bytes, sha256: str, byte_size: int, content_kind: str
+    ) -> None:
+        if self._cache:
+            self._cache.put(url, payload, sha256, byte_size, content_kind)
 
     # ---------------------------------------------------------- failure ledger
 
-    def _failure_path(self, url: str) -> str | None:
-        if not self.cache_dir:
-            return None
-        digest = hashlib.sha256(("failure:" + url).encode("utf-8")).hexdigest()
-        return os.path.join(self.cache_dir, "failures", digest + ".json")
-
     def load_failure_entry(self, url: str) -> dict | None:
-        path = self._failure_path(url)
-        if not path or not os.path.exists(path):
-            return None
-        try:
-            with open(path, "r", encoding="utf-8") as fh:
-                data = json.load(fh)
-            return data if isinstance(data, dict) else None
-        except (OSError, json.JSONDecodeError):
-            return None
+        if self._cache:
+            return self._cache.load_failure_entry(url)
+        return None
 
     def _record_failure(
         self,
@@ -226,37 +203,21 @@ class SecHttpClient:
         status_code: int | None = None,
         permanent: bool = False,
     ) -> dict | None:
-        """Persist one failed independent run for this URL. Atomic rename."""
-        path = self._failure_path(url)
-        if not path:
-            return None
-        previous = self.load_failure_entry(url) or {}
-        entry = {
-            "url": url,
-            "failed_runs": int(previous.get("failed_runs", 0)) + 1,
-            "last_kind": kind,
-            "last_status": status_code,
-            "last_detail": detail[:500],
-            "permanent": bool(permanent or previous.get("permanent")),
-            "updated_at": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
-        }
-        os.makedirs(os.path.dirname(path), exist_ok=True)
-        tmp = path + ".tmp"
-        with open(tmp, "w", encoding="utf-8") as fh:
-            json.dump(entry, fh, sort_keys=True)
-        os.replace(tmp, path)
-        return entry
+        if self._cache:
+            return self._cache.record_failure(
+                url,
+                kind=kind,
+                detail=detail,
+                status_code=status_code,
+                permanent=permanent,
+            )
+        return None
 
     def _clear_failure(self, url: str) -> None:
-        path = self._failure_path(url)
-        if path and os.path.exists(path):
-            try:
-                os.remove(path)
-            except OSError:  # pragma: no cover
-                pass
+        if self._cache:
+            self._cache.clear_failure(url)
 
     def _preflight_skip(self, url: str) -> PermanentHttpError | None:
-        """Return an error when history proves this URL should be skipped."""
         if self.ignore_failure_history:
             return None
         entry = self.load_failure_entry(url)
@@ -284,7 +245,7 @@ class SecHttpClient:
             url, headers=self.headers, timeout_s=self.timeout_s
         )
 
-    def _fetch(self, url: str) -> bytes:
+    def _fetch(self, url: str, content_kind: str = "bytes") -> bytes:
         cached = self._cache_get(url)
         if cached is not None:
             self.metrics.record_cache_hit()
@@ -363,7 +324,13 @@ class SecHttpClient:
                         f"response size {len(content)} exceeds limit {self.max_response_bytes}",
                         200,
                     )
-                self._cache_put(url, content)
+                self._cache_put(
+                    url,
+                    content,
+                    hashlib.sha256(content).hexdigest(),
+                    len(content),
+                    content_kind,
+                )
                 self._clear_failure(url)
                 return content
 
@@ -428,7 +395,7 @@ class SecHttpClient:
         return PermanentHttpError(url, str(exc), 200)
 
     def get_text(self, url: str) -> str:
-        payload = self._fetch(url)
+        payload = self._fetch(url, "text")
         try:
             return payload.decode("utf-8")
         except UnicodeDecodeError as exc:
@@ -442,10 +409,10 @@ class SecHttpClient:
         permanent content failure. Pacing, retries, caching, and failure-ledger
         preflight behave exactly as for the other fetch methods.
         """
-        return self._fetch(url)
+        return self._fetch(url, "bytes")
 
     def get_json(self, url: str) -> Any:
-        payload = self._fetch(url)
+        payload = self._fetch(url, "json")
         try:
             parsed = json.loads(payload.decode("utf-8"))
         except (UnicodeDecodeError, json.JSONDecodeError) as exc:
@@ -455,7 +422,7 @@ class SecHttpClient:
 
     def get_json_ex(self, url: str) -> tuple[Any, int, str]:
         """Like get_json but also returns (byte_count, response_sha256)."""
-        payload = self._fetch(url)
+        payload = self._fetch(url, "json")
         try:
             parsed = json.loads(payload.decode("utf-8"))
         except (UnicodeDecodeError, json.JSONDecodeError) as exc:

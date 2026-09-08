@@ -39,6 +39,8 @@ from .headers import analyze_repeating_headers
 
 
 def _valid_firm_sequence(markers: list[PageMarker]) -> bool:
+    from collections import defaultdict
+
     candidates = [
         PageCandidate(
             marker.start,
@@ -53,7 +55,14 @@ def _valid_firm_sequence(markers: list[PageMarker]) -> bool:
         for marker in markers
         if marker.page_number is not None
     ]
-    return validate_group(candidates, strategy="firm") is not None
+    by_namespace: dict[str, list[PageCandidate]] = defaultdict(list)
+    for candidate in candidates:
+        by_namespace[candidate.namespace].append(candidate)
+    for ns_candidates in by_namespace.values():
+        ns_candidates.sort(key=lambda item: (item.start_line, item.start))
+        if validate_group(ns_candidates, strategy="firm") is None:
+            return False
+    return True
 
 
 def _decision_for_marker(
@@ -163,10 +172,10 @@ def analyze_page_markers(
         allow_letter_number=allow_letter_number,
         excluded_lines=toc_exclusions,
     )
-    anchored_markers, anchored_runs, anchored_accepted = (
+    anchored_markers, anchored_runs, anchored_accepted, anchored_rejections = (
         promote_groups(anchored_candidates, anchored=True)
         if anchor_lines
-        else ([], [], [])
+        else ([], [], [], ())
     )
     fallback_candidates = all_candidates(
         document,
@@ -174,8 +183,8 @@ def analyze_page_markers(
         allow_letter_number=allow_letter_number,
         excluded_lines=toc_exclusions,
     )
-    fallback_markers, fallback_runs, fallback_accepted = promote_groups(
-        fallback_candidates, anchored=False
+    fallback_markers, fallback_runs, fallback_accepted, fallback_rejections = (
+        promote_groups(fallback_candidates, anchored=False)
     )
 
     markers = list(firm)
@@ -226,8 +235,17 @@ def analyze_page_markers(
     # SGML tags delimit pages, but are not sufficient evidence to remove
     # nearby presentation prose.
     label_anchors = [marker for marker in markers if marker.page_number is not None]
+    break_anchors = [
+        marker
+        for marker in markers
+        if marker.kind in {PageMarkerKind.SGML, PageMarkerKind.BOUNDARY}
+        and marker.start_line is not None
+    ]
+    combined_anchors = (
+        label_anchors if len(label_anchors) >= 3 else label_anchors + break_anchors
+    )
     templates, presentation_markers, presentation_decisions = analyze_repeating_headers(
-        document, label_anchors, toc_lines=toc_exclusions
+        document, combined_anchors, toc_lines=toc_exclusions
     )
     for marker, decision in zip(presentation_markers, presentation_decisions):
         if (marker.start, marker.end) not in seen_spans:
@@ -274,6 +292,7 @@ def analyze_page_markers(
         inferred_boundaries=inferred,
         unresolved=unresolved,
         terminal_state=terminal,
+        rejection_diagnostics=(*anchored_rejections, *fallback_rejections),
     )
 
 

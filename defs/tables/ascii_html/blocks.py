@@ -329,11 +329,13 @@ def fuse_empty_header_span_blocks(
     header_row_count: int,
     header_spans: list[set[int]],
     budget: RenderBudget,
+    protected_spans: set[tuple[int, ...]] | None = None,
 ) -> list[RenderBlock]:
     """Fuse empty spacer sub-blocks under a parent header span in data rows."""
     if r_idx < header_row_count or not header_spans:
         return blocks
 
+    protected_spans = protected_spans or set()
     curr_blocks = blocks
     changed = True
     while changed:
@@ -344,6 +346,13 @@ def fuse_empty_header_span_blocks(
             curr_b = curr_blocks[b_idx]
             if b_idx + 1 < len(curr_blocks):
                 next_b = curr_blocks[b_idx + 1]
+                if (
+                    tuple(curr_b.span_cols) in protected_spans
+                    or tuple(next_b.span_cols) in protected_spans
+                ):
+                    fused.append(curr_b)
+                    b_idx += 1
+                    continue
                 comb_cols = set(curr_b.span_cols + next_b.span_cols)
                 is_empty_one = (not curr_b.text.strip()) or (not next_b.text.strip())
                 in_same_h_span = any(
@@ -432,8 +441,46 @@ def fuse_header_suffix_blocks(
     return curr_blocks
 
 
+def align_terminal_numeric_headers(
+    blocks: list[RenderBlock],
+    r_idx: int,
+    terminal_header_rows: set[int],
+    numeric_positions: set[int],
+    affix_positions: set[int],
+) -> list[RenderBlock]:
+    """Align terminal subheaders with the value edge of affixed columns.
+
+    Financial HTML often gives a subheader a span covering both a currency or
+    delimiter micro-column and its numeric value column. Keep that source span
+    intact, but align the label to the numeric edge instead of centering it
+    across the micro-columns. Parent band headers and ordinary tables are left
+    unchanged.
+    """
+    if r_idx not in terminal_header_rows or not affix_positions:
+        return blocks
+
+    aligned: list[RenderBlock] = []
+    for block in blocks:
+        if (
+            block.text.strip()
+            and len(block.span_cols) <= 3
+            and any(col in affix_positions for col in block.span_cols)
+            and any(col in numeric_positions for col in block.span_cols)
+        ):
+            block = RenderBlock(
+                cell=block.cell,
+                span_cols=block.span_cols,
+                width=block.width,
+                alignment=HorizontalAlign.RIGHT,
+                text=block.text,
+            )
+        aligned.append(block)
+    return aligned
+
+
 __all__ = [
     "RenderBlock",
+    "align_terminal_numeric_headers",
     "build_row_blocks",
     "extract_raw_grids_and_spans",
     "fuse_data_affix_blocks",

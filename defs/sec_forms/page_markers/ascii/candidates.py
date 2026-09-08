@@ -7,8 +7,9 @@ import re
 from collections import defaultdict
 from typing import Any
 
+from defs.text.patterns import roman_to_int
+
 from ..constants import (
-    _NUMERALS,
     _PAGE_MARKER_PATTERNS,
     _RE_APPENDIX_ROMAN,
     _RE_BARE_ARABIC,
@@ -28,30 +29,15 @@ from ..constants import (
     RE_PAGE_SUFFIX,
 )
 from ..models import PageCandidate, PageMarker, PageMarkerKind, PageNumberRun
-from ..sequence import heal_run, unify_alternating_runs, validate_group
+from ..sequence import (
+    heal_run,
+    monotone_fraction,
+    unify_alternating_runs,
+    validate_group,
+)
 from .layout import candidate_template, cluster_is_table_like, has_numeric_data_shape
 
 _ASCII_PROBE_WINDOW = 2500
-
-
-def roman_to_int(value: str) -> int | None:
-    """Parse a canonical bounded Roman numeral."""
-    text = value.casefold()
-    if not re.fullmatch(r"[ivxlcdm]{1,8}", text):
-        return None
-    values = {"i": 1, "v": 5, "x": 10, "l": 50, "c": 100, "d": 500, "m": 1000}
-    total = previous = 0
-    for char in reversed(text):
-        current = values[char]
-        total += -current if current < previous else current
-        previous = max(previous, current)
-    if not 0 < total <= 3000:
-        return None
-    remaining, canonical = total, ""
-    for numeral, amount in _NUMERALS:
-        count, remaining = divmod(remaining, amount)
-        canonical += numeral * count
-    return total if canonical == text else None
 
 
 def line_offsets(lines: list[str]) -> list[int]:
@@ -411,7 +397,7 @@ def promote_groups(
     candidates: list[PageCandidate],
     *,
     anchored: bool,
-) -> tuple[list[PageMarker], list[PageNumberRun], list[PageCandidate]]:
+) -> tuple[list[PageMarker], list[PageNumberRun], list[PageCandidate], tuple[str, ...]]:
     groups: dict[tuple[Any, ...], list[PageCandidate]] = defaultdict(list)
     for candidate in candidates:
         if anchored:
@@ -427,8 +413,10 @@ def promote_groups(
     markers: list[PageMarker] = []
     runs: list[PageNumberRun] = []
     accepted: list[PageCandidate] = []
+    rejections: list[str] = []
     for members in groups.values():
         if not anchored and cluster_is_table_like(members):
+            rejections.append("table_like_cluster")
             continue
         run = validate_group(
             members,
@@ -436,8 +424,14 @@ def promote_groups(
             min_gap_median=0 if anchored else 8,
         )
         if run is None:
-            # Healing needs a provisional run so an isolated outlier such as
-            # 10, 47, 11 can be removed before the strict monotone gate.
+            if len(members) < 3:
+                rejections.append("fewer_than_min_members")
+            else:
+                mono = monotone_fraction(item.value for item in members)
+                if mono < 0.8:
+                    rejections.append("monotonicity_failure")
+                else:
+                    rejections.append("gap_median_failure")
             provisional = validate_group(
                 members,
                 strategy="anchor_relative" if anchored else "anchorless",
@@ -445,14 +439,18 @@ def promote_groups(
                 min_gap_median=0 if anchored else 8,
             )
             if provisional is None:
+                rejections.append("provisional_validation_failed")
                 continue
             healed, _inferred, _promoted = heal_run(provisional, members)
             if healed.monotone_fraction < 0.8:
+                rejections.append("healed_monotone_below_threshold")
                 continue
             run = provisional
         if run is None or (
             not anchored and run.alignment_fraction < 0.6 and len(members) < 10
         ):
+            if not anchored and run is not None:
+                rejections.append("alignment_fraction_below_threshold")
             continue
         healed, _inferred, promoted = heal_run(run, members)
         runs.append(healed)
@@ -468,7 +466,7 @@ def promote_groups(
             for candidate in healed.candidates
         )
     runs = unify_alternating_runs(runs)
-    return markers, runs, accepted
+    return markers, runs, accepted, tuple(rejections)
 
 
 __all__ = [

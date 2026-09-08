@@ -8,8 +8,10 @@ from defs.tables.ascii_html import (
     BorderStyle,
     HorizontalAlign,
     RenderBudget,
+    TableGeometry,
     convert_html_table,
     convert_html_tables_to_ascii,
+    convert_html_tables_to_ascii_with_metadata,
     extract_source_table,
 )
 from defs.tables.ascii_html.borders import (
@@ -120,6 +122,18 @@ def test_span_matrix_and_nested_table_isolation() -> None:
     assert len(span_groups) == 1
     assert span_groups[0].start_col == 0
     assert span_groups[0].end_col == 1
+
+
+def test_adjacent_structurally_identical_tables_do_not_cross_contaminate() -> None:
+    """Sibling tables with equal markup remain separate source-table inputs."""
+    html = """
+    <table><tr><td>Date:</td><td>February 18, 2025</td></tr></table>
+    <table><tr><td>Date:</td><td>February 18, 2025</td></tr></table>
+    """
+
+    rendered = convert_html_tables_to_ascii(html)
+
+    assert rendered.count("February 18, 2025") == 2
 
 
 def test_geometry_and_column_resolution() -> None:
@@ -369,6 +383,34 @@ def test_suffix_spacers_fuse_consistently_across_data_rows() -> None:
     year_start = year_line.index("2015")
     year_end = year_line.index("2016")
     assert divider_line[year_start:year_end].count("-") > len("2015")
+
+
+def test_affixed_terminal_subheader_aligns_to_numeric_value_edge() -> None:
+    """Late financial subheaders align with values after caption rows."""
+    html = """
+    <table>
+        <tr><td colspan="5">Statement</td></tr>
+        <tr>
+            <td>Item</td><td colspan="2">Common Shares</td>
+            <td colspan="2">Additional Paid-in Capital</td>
+        </tr>
+        <tr>
+            <td></td><td>Number</td><td></td><td colspan="2">Par Value</td>
+        </tr>
+        <tr>
+            <td>Balance</td><td align="right">1,000</td><td></td>
+            <td>$</td><td align="right">540</td>
+        </tr>
+    </table>
+    """
+    lines = convert_html_table(html).ascii_text.splitlines()
+    header = next(line for line in lines if "Par Value" in line)
+    data = next(line for line in lines if "540" in line)
+
+    assert header.rstrip().endswith("Par Value")
+    assert header.index("Par Value") + len("Par Value") == data.index("540") + len(
+        "540"
+    )
 
 
 def test_canonical_ascii_table_rendering() -> None:
@@ -1035,6 +1077,8 @@ def test_empty_table_omitted_from_rendered_tables_list() -> None:
     result = convert_html_tables_to_ascii(html, convert_to_text=False)
     assert result.count("<TABLE>") == 1
     assert "Real" in result
+
+
 def test_convert_html_tables_to_ascii_removes_empty_layout_table() -> None:
     html = (
         '<table cellpadding="0" cellspacing="0" style="width: 100%">'
@@ -1045,3 +1089,84 @@ def test_convert_html_tables_to_ascii_removes_empty_layout_table() -> None:
     assert convert_html_tables_to_ascii(html, convert_to_text=False) == (
         "<html><head></head><body></body></html>"
     )
+
+
+def test_convert_html_tables_to_ascii_with_metadata_returns_tuple() -> None:
+    """convert_html_tables_to_ascii_with_metadata returns (text, geometries)."""
+    html = "<table><tr><th>A</th></tr><tr><td>1</td></tr></table>"
+    text, geometries = convert_html_tables_to_ascii_with_metadata(html)
+    assert "<TABLE>" in text
+    assert len(geometries) == 1
+    assert isinstance(geometries[0], TableGeometry)
+
+
+def test_convert_html_tables_to_ascii_with_metadata_empty_table_omitted() -> None:
+    """Wholly-empty tables produce no geometry metadata."""
+    html = "<html><body><table><tr><td> </td></tr></table></body></html>"
+    text, geometries = convert_html_tables_to_ascii_with_metadata(html)
+    assert geometries == ()
+    assert "<TABLE>" not in text
+
+
+def test_convert_html_tables_to_ascii_with_metadata_multiple_tables() -> None:
+    """Multiple tables produce multiple geometry entries."""
+    html = (
+        "<table><tr><th>A</th></tr><tr><td>1</td></tr></table>"
+        "<table><tr><th>B</th></tr><tr><td>2</td></tr></table>"
+    )
+    _, geometries = convert_html_tables_to_ascii_with_metadata(html)
+    assert len(geometries) == 2
+    assert geometries[0].table_index == 0
+    assert geometries[1].table_index == 1
+
+
+def test_convert_html_tables_to_ascii_with_metadata_geometry_fields() -> None:
+    """TableGeometry has all required fields."""
+    html = (
+        "<table><tr><th>Metric</th><th>Value</th></tr>"
+        "<tr><td>Sales</td><td>5</td></tr></table>"
+    )
+    _, geometries = convert_html_tables_to_ascii_with_metadata(html)
+    geom = geometries[0]
+    assert isinstance(geom.table_index, int)
+    assert isinstance(geom.rows, tuple)
+    assert isinstance(geom.column_alignments, tuple)
+    assert isinstance(geom.column_widths, tuple)
+    assert isinstance(geom.header_row_count, int)
+    assert isinstance(geom.span_groups, tuple)
+    assert isinstance(geom.confidence, float)
+    assert isinstance(geom.diagnostics, tuple)
+    assert isinstance(geom.is_fallback_to_legacy, bool)
+
+
+def test_convert_html_tables_to_ascii_with_metadata_no_tables() -> None:
+    """No tables means empty geometries."""
+    html = "<p>No tables</p>"
+    text, geometries = convert_html_tables_to_ascii_with_metadata(html)
+    assert geometries == ()
+    assert "No tables" in text
+
+
+def test_convert_html_tables_to_ascii_with_metadata_fallback_mode() -> None:
+    """convert_to_text=False still produces geometries."""
+    html = "<table><tr><th>A</th></tr><tr><td>1</td></tr></table>"
+    text, geometries = convert_html_tables_to_ascii_with_metadata(
+        html, convert_to_text=False
+    )
+    assert "<TABLE>" in text
+    assert len(geometries) == 1
+    assert geometries[0].rows == (("A",), ("1",))
+
+
+def test_convert_html_tables_to_ascii_with_metadata_empty_table_no_geometry() -> None:
+    """Empty table in fallback mode produces no geometry."""
+    html = (
+        "<html><body>"
+        '<table><tr><td style="text-align: center; width: 100%"> </td></tr></table>'
+        "</body></html>"
+    )
+    text, geometries = convert_html_tables_to_ascii_with_metadata(
+        html, convert_to_text=False
+    )
+    assert geometries == ()
+    assert "<TABLE>" not in text

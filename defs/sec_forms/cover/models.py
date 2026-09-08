@@ -19,6 +19,7 @@ class BoundarySignal(StrEnum):
     TOC_TRANSITION = "toc_transition"
     PART_FALLBACK = "part_fallback"
     ITEM_FALLBACK = "item_fallback"
+    BODY_PROSE_FALLBACK = "body_prose_fallback"
 
 
 class BodyAnchorType(StrEnum):
