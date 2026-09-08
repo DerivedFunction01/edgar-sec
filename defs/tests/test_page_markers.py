@@ -90,7 +90,7 @@ def test_multiline_furniture_removes_block_and_preserves_body() -> None:
                 "FOR THE YEAR END DECEMBER 31, 2025",
                 "Notes to consolidated financial statements",
                 "",
-                f"Body content {index}",
+                f"The company provides operating information for page {index}.",
             ]
         )
     text = "\n".join(pages)
@@ -105,7 +105,7 @@ def test_multiline_furniture_removes_block_and_preserves_body() -> None:
     assert len(blocks) == 4
     assert all(marker.end_line - marker.start_line + 1 == 3 for marker in blocks)
     assert "ABC CORP" not in normalized
-    assert "Body content 4" in normalized
+    assert "operating information for page 4" in normalized
 
 
 def test_local_section_run_is_not_lost_to_document_denominator() -> None:

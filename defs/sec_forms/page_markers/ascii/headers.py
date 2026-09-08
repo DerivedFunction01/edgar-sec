@@ -2,9 +2,7 @@
 
 from __future__ import annotations
 
-import re
 from collections import defaultdict
-from dataclasses import dataclass
 
 from defs.text.logical_units import classify_units
 
@@ -16,175 +14,18 @@ from ..models import (
     TemplateEvidence,
 )
 from .candidates import line_offsets
-
-_STANDALONE_TAG_RE = re.compile(r"^\s*</?[a-zA-Z][^>\s]{0,30}>\s*$")
-_PAGE_TOKEN_RE = re.compile(r"\bpage\s+\d{1,4}\b", re.IGNORECASE)
-_TRAILING_NUMBER_RE = re.compile(r"\s{2,}(?:\d{1,4}|[ivxlcdm]{1,8})\s*$", re.IGNORECASE)
-_WHITESPACE_RE = re.compile(r"\s+")
-
-
-def _clean_template(line: str) -> str:
-    normalized = _WHITESPACE_RE.sub(" ", line.strip().casefold())
-    normalized = _PAGE_TOKEN_RE.sub(" page #", normalized)
-    normalized = _TRAILING_NUMBER_RE.sub(" #", normalized)
-    return normalized.strip()
-
-
-_MAX_FURNITURE_LINES = 8
-_MAX_FURNITURE_CHARS = 1200
-_LOCAL_DENSITY = 0.65
-_MAX_ANCHOR_GAP = 2
-
-
-@dataclass(frozen=True, slots=True)
-class _Observation:
-    side: str
-    slot: int
-    template: str
-    line_index: int
-    raw: str
-    anchor_position: int
-    anchor_line: int | None
-
-
-def _is_table_tag(stripped: str) -> bool:
-    return stripped.casefold() in {"<table>", "</table>"}
-
-
-def _eligible(
-    line: str,
-    toc_lines: set[int],
-    line_index: int,
-    unit_kind: str | None,
-    *,
-    allow_table: bool,
-) -> bool:
-    stripped = line.strip()
-    if not stripped or line_index in toc_lines:
-        return False
-    if _STANDALONE_TAG_RE.match(stripped):
-        return False
-    if unit_kind == "table" and not allow_table:
-        return False
-    return not len(stripped) > 140
-
-
-def _collect_window(
-    lines: list[str],
-    anchor: int,
-    direction: int,
-    boundary_lines: set[int],
-) -> list[tuple[int, str]]:
-    """Collect a bounded non-empty furniture window around one anchor."""
-    result: list[tuple[int, str]] = []
-    index = anchor + direction
-    characters = 0
-    while 0 <= index < len(lines) and len(result) < _MAX_FURNITURE_LINES:
-        if index in boundary_lines:
-            break
-        stripped = lines[index].strip()
-        if not stripped:
-            index += direction
-            continue
-        if stripped.casefold() in {"<page>", "</page>"}:
-            break
-        if _is_table_tag(stripped):
-            if result and (
-                (direction > 0 and stripped.casefold() == "</table>")
-                or (direction < 0 and stripped.casefold() == "<table>")
-            ):
-                break
-            index += direction
-            continue
-        if _STANDALONE_TAG_RE.match(stripped):
-            break
-        characters += len(lines[index])
-        if characters > _MAX_FURNITURE_CHARS:
-            break
-        result.append((index, lines[index]))
-        index += direction
-    return result
-
-
-def _clusters(
-    members: list[_Observation],
-) -> list[tuple[list[_Observation], int, int, float]]:
-    by_position: dict[int, list[_Observation]] = defaultdict(list)
-    for member in members:
-        by_position[member.anchor_position].append(member)
-    positions = sorted(by_position)
-    clusters: list[list[int]] = []
-    current: list[int] = []
-    for position in positions:
-        if current and position - current[-1] > _MAX_ANCHOR_GAP:
-            clusters.append(current)
-            current = []
-        current.append(position)
-    if current:
-        clusters.append(current)
-    result: list[tuple[list[_Observation], int, int, float]] = []
-    for positions in clusters:
-        start, end = positions[0], positions[-1]
-        cluster_members = [
-            member for member in members if member.anchor_position in positions
-        ]
-        density = len(positions) / (end - start + 1)
-        result.append((cluster_members, start, end, density))
-    return result
-
-
-def _merge_observations(
-    observations: list[_Observation],
-    lines: list[str],
-    offsets: list[int],
-) -> list[tuple[int, int, int, int, str]]:
-    """Merge only fully validated adjacent lines into block spans."""
-    by_anchor: dict[tuple[str, int], list[_Observation]] = defaultdict(list)
-    for observation in observations:
-        by_anchor[(observation.side, observation.anchor_position)].append(observation)
-    ranges: list[tuple[int, int, int, int, str]] = []
-    for (side, anchor_position), members in by_anchor.items():
-        del anchor_position
-        members.sort(key=lambda item: item.line_index)
-        selected = {member.line_index for member in members}
-        start = previous = members[0].line_index
-        for member in members[1:]:
-            between = range(previous + 1, member.line_index)
-            if any(
-                lines[index].strip()
-                and not _is_table_tag(lines[index].strip())
-                and index not in selected
-                for index in between
-            ):
-                ranges.append(
-                    (
-                        start,
-                        previous,
-                        offsets[start],
-                        offsets[previous] + len(lines[previous]),
-                        side,
-                    )
-                )
-                start = member.line_index
-            previous = member.line_index
-        while start > 0 and lines[start - 1].strip().casefold() == "<table>":
-            start -= 1
-        end_line = previous
-        while (
-            end_line + 1 < len(lines)
-            and lines[end_line + 1].strip().casefold() == "</table>"
-        ):
-            end_line += 1
-        ranges.append(
-            (
-                start,
-                end_line,
-                offsets[start],
-                offsets[end_line] + len(lines[end_line]),
-                side,
-            )
-        )
-    return ranges
+from .windows import (
+    LOCAL_DENSITY,
+    PERSISTENT_MIN_ANCHORS,
+    PERSISTENT_MIN_CLUSTERS,
+    PERSISTENT_MIN_PRESENCE,
+    Observation,
+    clean_template,
+    clusters,
+    collect_window,
+    eligible_line,
+    merge_observations,
+)
 
 
 def analyze_repeating_headers(
@@ -238,7 +79,7 @@ def analyze_repeating_headers(
         for marker in markers
         for line in range(marker.start_line or 0, (marker.end_line or 0) + 1)
     }
-    groups: dict[tuple[str, int, str], list[_Observation]] = defaultdict(list)
+    groups: dict[tuple[str, int, str], list[Observation]] = defaultdict(list)
     for side, direction in (("header", 1), ("footer", -1)):
         anchor_positions = {
             line: position for position, (line, _) in enumerate(side_scan[side])
@@ -246,9 +87,9 @@ def analyze_repeating_headers(
         for anchor, anchor_line in side_scan[side]:
             anchor_position = anchor_positions[anchor]
             for slot, (index, line) in enumerate(
-                _collect_window(lines, anchor, direction, boundary_lines)
+                collect_window(lines, anchor, direction, boundary_lines)
             ):
-                if not _eligible(
+                if not eligible_line(
                     line,
                     toc_lines,
                     index,
@@ -256,10 +97,10 @@ def analyze_repeating_headers(
                     allow_table=allow_table_furniture,
                 ):
                     continue
-                template = _clean_template(line)
+                template = clean_template(line)
                 if template:
                     groups[(side, slot, template)].append(
-                        _Observation(
+                        Observation(
                             side,
                             slot,
                             template,
@@ -273,21 +114,51 @@ def analyze_repeating_headers(
     templates: list[TemplateEvidence] = []
     header_markers: list[PageMarker] = []
     decisions: list[PageMarkerDecision] = []
-    removable: list[_Observation] = []
+    removable: list[Observation] = []
     retained_lines: set[int] = set()
     observed_groups: list[
-        tuple[tuple[str, int, str], list[_Observation], int, int, float]
+        tuple[tuple[str, int, str], list[Observation], int, int, float]
     ] = []
 
     for key, members in groups.items():
         side, position, template = key
-        for cluster_members, start, end, presence in _clusters(members):
+        for cluster_members, start, end, presence in clusters(members):
             positions = {member.anchor_position for member in cluster_members}
-            if len(positions) < 3 or presence < _LOCAL_DENSITY:
+            if len(positions) < 3 or presence < LOCAL_DENSITY:
                 continue
             if len(positions) == 3 and not allow_table_furniture and presence < 1.0:
                 continue
             observed_groups.append((key, cluster_members, start, end, presence))
+
+    # Document-persistent tier: some filings repeat furniture steadily across
+    # the whole document (a "Table of Contents" header or a company banner
+    # footer on every few pages) without any dense local run. When the same
+    # normalized template recurs on at least PERSISTENT_MIN_ANCHORS anchors,
+    # covers at least PERSISTENT_MIN_PRESENCE of the side's anchors, and is
+    # split into at least PERSISTENT_MIN_CLUSTERS separate clusters, the
+    # recurrence itself is the evidence.
+    accepted_keys = {key for key, *_ in observed_groups}
+    side_anchor_counts = {side: len(scan) for side, scan in side_scan.items()}
+    for key, members in groups.items():
+        if key in accepted_keys:
+            continue
+        side, _, _ = key
+        positions = {member.anchor_position for member in members}
+        cluster_count = len(clusters(members))
+        if (
+            len(positions) >= PERSISTENT_MIN_ANCHORS
+            and len(positions) / side_anchor_counts[side] >= PERSISTENT_MIN_PRESENCE
+            and cluster_count >= PERSISTENT_MIN_CLUSTERS
+        ):
+            observed_groups.append(
+                (
+                    key,
+                    list(members),
+                    0,
+                    side_anchor_counts[side] - 1,
+                    len(positions) / side_anchor_counts[side],
+                ),
+            )
 
     # Attach same-side/same-template observations whose own slot group was
     # too sparse (for example the cover occurrence, where the furniture is
@@ -295,7 +166,7 @@ def analyze_repeating_headers(
     # of the identical template. They inherit that cluster's role. Clusters
     # are addressed by index: one key can yield several accepted clusters.
     accepted_keys = {key for key, *_ in observed_groups}
-    augmented_members: list[list[_Observation]] = [
+    augmented_members: list[list[Observation]] = [
         sorted(members, key=lambda item: (item.anchor_position, item.line_index))
         for _, members, _, _, _ in observed_groups
     ]
@@ -391,14 +262,14 @@ def analyze_repeating_headers(
     # Virtual boundary anchors measure distance from the document start
     # (header side) or end (footer side). Lines explicitly retained by a
     # keep-first group are never removed by the other side's claim.
-    def _anchor_distance(observation: _Observation) -> int:
+    def _anchor_distance(observation: Observation) -> int:
         if observation.anchor_line is not None:
             return abs(observation.line_index - observation.anchor_line)
         if observation.side == "header":
             return observation.line_index + 1
         return len(lines) - observation.line_index
 
-    unique_removable: dict[int, _Observation] = {}
+    unique_removable: dict[int, Observation] = {}
     for observation in removable:
         if observation.line_index in retained_lines:
             continue
@@ -419,7 +290,7 @@ def analyze_repeating_headers(
         span_start,
         span_end,
         side,
-    ) in sorted(_merge_observations(removable, lines, offsets), key=lambda s: s[0]):
+    ) in sorted(merge_observations(removable, lines, offsets), key=lambda s: s[0]):
         line_count = end_line - start_line + 1
         if coalesced and span_start <= coalesced[-1][3] + 1:
             previous = coalesced[-1]

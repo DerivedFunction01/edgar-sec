@@ -9,6 +9,7 @@ from defs.text.patterns import roman_to_int
 
 from .analysis import (
     _row_lines,
+    _table_toc_rows,
     is_anachronistic_late_item,
     is_toc_row,
     looks_like_toc_row,
@@ -96,6 +97,8 @@ def _merge_continuation_tables(
             )
             if cont_end is not None:
                 cont_rows = _row_lines(lines, scan, cont_end + 1, page_marker_lines)
+                if not cont_rows:
+                    cont_rows = _table_toc_rows(lines, scan, cont_end + 1)
                 if cont_rows:
                     rows = rows + cont_rows
                     merged_end = cont_end
@@ -307,6 +310,8 @@ def find_toc_span(
         if end is None:
             continue
         rows = _row_lines(lines, index, end + 1, page_marker_lines)
+        if len(rows) < minimum_rows:
+            rows = _table_toc_rows(lines, index, end + 1)
         if len(rows) < minimum_rows:
             continue
 

@@ -34,7 +34,11 @@ from .router import FormRouter
 class DefaultFilingProcessor(DocumentProcessor):
     """Default end-to-end filing processor executing the multi-stage lifecycle."""
 
-    processor_fingerprint = "default-filing-processor:v1"
+    # v2: page-marker engine rewritten for local-cohort multi-line furniture
+    # (cohort clusters, retention roles, HTML table-furniture removal, and
+    # sentinel-safe table separation). Cached chunks produced by v1 carry
+    # stale normalized text and must not be reused.
+    processor_fingerprint = "default-filing-processor:v2"
     representation = "normalized-text"
 
     def __init__(

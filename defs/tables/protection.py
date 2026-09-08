@@ -15,10 +15,22 @@ from __future__ import annotations
 from collections.abc import Callable
 from dataclasses import dataclass
 
-__all__ = ["ProtectedText", "TableSpan", "mask_tagged_tables", "restore_tagged_tables"]
+__all__ = [
+    "SENTINEL_PREFIX",
+    "SENTINEL_SUFFIX",
+    "ProtectedText",
+    "TableSpan",
+    "mask_tagged_tables",
+    "restore_tagged_tables",
+]
 
 _SENTINEL_PREFIX = "__SEC_TBL_"
 _SENTINEL_SUFFIX = "__"
+
+# Public sentinel boundary constants: whitespace normalization passes must
+# treat whitespace adjacent to these tokens as line separators, not spaces.
+SENTINEL_PREFIX = _SENTINEL_PREFIX
+SENTINEL_SUFFIX = _SENTINEL_SUFFIX
 
 
 @dataclass(frozen=True, slots=True)

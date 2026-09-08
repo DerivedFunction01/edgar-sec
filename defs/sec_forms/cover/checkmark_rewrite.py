@@ -13,7 +13,12 @@ from defs.sec_forms.cover.checkmark_models import (
     CoverCheckmarkResult,
 )
 from defs.tables.protection import mask_tagged_tables, restore_tagged_tables
-from defs.text.checkmarks import CheckmarkDecision
+from defs.text.checkmarks import (
+    CANONICAL_CHECKED,
+    CANONICAL_UNCHECKED,
+    CheckmarkDecision,
+    CheckmarkScope,
+)
 
 
 def _replace_mark_in_text(text: str, source_token: str, replacement: str) -> str:
@@ -66,6 +71,12 @@ def _unwrap_pure_yes_no_table(table_text: str) -> str:
     return content.strip()
 
 
+def _has_labeled_checkmark_candidates(
+    candidates: Sequence[CheckboxCandidate],
+) -> bool:
+    return bool(candidates) and all(c.known_state is not None for c in candidates)
+
+
 def _has_pure_yes_no_candidates(
     candidates: Sequence[CheckboxCandidate],
 ) -> bool:
@@ -79,13 +90,36 @@ def apply_cover_checkmark_decisions(
     result: CoverCheckmarkResult,
 ) -> tuple[str, bool]:
     """Apply resolved source decisions without reclassifying generated tokens."""
-    if not result.decisions and not _has_pure_yes_no_candidates(result.candidates):
+    if (
+        not result.decisions
+        and not _has_pure_yes_no_candidates(result.candidates)
+        and not _has_labeled_checkmark_candidates(result.candidates)
+    ):
         return text, False
     original_text = text
     decisions = {
         (decision.source_region, decision.source_token): decision
         for decision in result.decisions
     }
+    for candidate in result.candidates:
+        if (
+            candidate.known_state is not None
+            and (candidate.source_region, candidate.source_token) not in decisions
+        ):
+            decisions[(candidate.source_region, candidate.source_token)] = (
+                CheckmarkDecision(
+                    source_token=candidate.source_token,
+                    canonical_token=CANONICAL_CHECKED
+                    if candidate.known_state == "checked"
+                    else CANONICAL_UNCHECKED,
+                    state=candidate.known_state,
+                    scope=CheckmarkScope.COVER_CONTEXT.value,
+                    confidence=1.0,
+                    reason="known_state",
+                    source_region=candidate.source_region,
+                    span=candidate.mark_span,
+                )
+            )
     candidates_by_region: dict[str, list[CheckboxCandidate]] = defaultdict(list)
     for candidate in result.candidates:
         candidates_by_region[candidate.source_region].append(candidate)
@@ -127,7 +161,9 @@ def apply_cover_checkmark_decisions(
                 candidates,
                 replacements,
             )
-            if _has_pure_yes_no_candidates(candidates):
+            if _has_pure_yes_no_candidates(
+                candidates
+            ) or _has_labeled_checkmark_candidates(candidates):
                 table_text = _unwrap_pure_yes_no_table(table_text)
             updated_spans[table_index] = type(updated_spans[table_index])(
                 updated_spans[table_index].start,

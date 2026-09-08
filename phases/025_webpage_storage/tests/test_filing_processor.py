@@ -191,7 +191,7 @@ Title: Chief Executive Officer
                         "payload_sha256": "0" * 64,
                         "mime_type": "text/plain",
                         "representation": "normalized-text",
-                        "processor_fingerprint": "default-filing-processor:v1",
+                        "processor_fingerprint": "default-filing-processor:v2",
                         "schema_version": schemas.NORMALIZED_SCHEMA_VERSION,
                         "processor_metadata": schemas.deterministic_metadata(meta),
                     },

@@ -114,6 +114,29 @@ ITEM 1. BUSINESS
     assert "merged across page break" in boundary.details
 
 
+def test_tagged_html_toc_merges_aligned_subsection_rows() -> None:
+    """Whitespace-column HTML TOCs merge a one-row continuation table."""
+    text = """\
+<TABLE>
+Item 1 - Business                                      1
+Overview                                               1
+Markets and Customers                                  3
+Item 2 - Properties                                   10
+</TABLE>
+
+<TABLE>
+Item 15 - Exhibits, Financial Statement Schedules     36
+</TABLE>
+
+As used herein, the Company means the registrant.
+"""
+    toc = find_toc_span(text)
+
+    assert toc is not None
+    assert toc.method == "tagged_table_merged"
+    assert text.splitlines()[toc.end_line].startswith("As used herein")
+
+
 def test_unclosed_table_before_heading_does_not_claim() -> None:
     """An unbalanced open table that never closes within the window is not claimed."""
     text = """\

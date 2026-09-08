@@ -19,6 +19,7 @@ from defs.sec_forms.cover import (
     infer_cover_checkmarks,
     update_table_geometries,
 )
+from defs.sec_forms.cover.checkmark_rewrite import _has_labeled_checkmark_candidates
 from defs.sec_forms.page_markers import (
     PageArtifactPolicy,
     apply_html_policy,
@@ -199,7 +200,9 @@ class DeepNormalizer:
             table_geometries=table_geometries,
             schema=profile.checkbox_schema,
         )
-        if checkmark_inference.decisions:
+        if checkmark_inference.decisions or _has_labeled_checkmark_candidates(
+            checkmark_inference.candidates
+        ):
             table_geometries = update_table_geometries(
                 table_geometries,
                 checkmark_inference,

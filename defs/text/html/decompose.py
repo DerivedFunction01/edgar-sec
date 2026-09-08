@@ -36,6 +36,29 @@ _RE_DIV_TAG = re.compile(r"</?div\b[^>]*>", re.IGNORECASE)
 _RE_RAW_SOURCE_WHITESPACE = re.compile(r"[\r\n\t]+")
 
 
+def _collapse_source_whitespace_factory(sentinel_prefix: str, sentinel_suffix: str):
+    """Build a whitespace-run collapser that keeps table-sentinel separators.
+
+    A whitespace run that separates two masked-table sentinels (or touches a
+    sentinel boundary) is a rendered table separator, not a source-code line
+    wrap: collapsing it to a space would fuse adjacent tables onto one line.
+    """
+
+    def _collapse(match: re.Match[str]) -> str:
+        text = match.string
+        start, end = match.span()
+        token = text[start:end]
+        if not token.isspace():
+            return token
+        before = text[:start].rstrip()
+        after = text[end:].lstrip()
+        if before.endswith(sentinel_suffix) or after.startswith(sentinel_prefix):
+            return "\n"
+        return " "
+
+    return _collapse
+
+
 def _clean_p_content(match: re.Match[str]) -> str:
     """Strip layout containers inside paragraph elements so text flows as single lines."""
     content = match.group(1)
@@ -52,7 +75,12 @@ def decompose_html_structures(html: str) -> str:
     """
     if not html:
         return ""
-    from defs.tables.protection import mask_tagged_tables, restore_tagged_tables
+    from defs.tables.protection import (
+        SENTINEL_PREFIX,
+        SENTINEL_SUFFIX,
+        mask_tagged_tables,
+        restore_tagged_tables,
+    )
 
     # 1. Mask rendered tables and preformatted blocks
     masked, spans = mask_tagged_tables(html)
@@ -78,8 +106,11 @@ def decompose_html_structures(html: str) -> str:
     # 6. Clean paragraph-internal container divs
     masked = _RE_P_CONTAINER.sub(_clean_p_content, masked)
 
-    # 7. Collapse raw source-code line wraps outside tables
-    masked = _RE_RAW_SOURCE_WHITESPACE.sub(" ", masked)
+    # 7. Collapse raw source-code line wraps outside tables, keeping the
+    # separator between adjacent masked tables as a real line break
+    masked = _RE_RAW_SOURCE_WHITESPACE.sub(
+        _collapse_source_whitespace_factory(SENTINEL_PREFIX, SENTINEL_SUFFIX), masked
+    )
 
     # 8. Delimit semantic block boundaries
     masked = _RE_PARAGRAPH_TAGS.sub("\n\n", masked)

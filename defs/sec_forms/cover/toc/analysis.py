@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import re
+from itertools import pairwise
 
 from defs.sec_forms.cover.structure import (
     RE_ITEM_REFERENCE,
@@ -17,7 +18,10 @@ from .patterns import (
     _RE_NON_ALPHANUM,
     RE_TOC_ITEM_ROW,
     RE_TOC_LEADER,
+    RE_TOC_PART_ROW,
 )
+
+_RE_TABLE_TOC_ROW = re.compile(r"^(?P<label>.+?)(?P<gap>\s{2,})(?P<page>\d{1,4})\s*$")
 
 
 def normalize_for_matching(text: str) -> str:
@@ -103,6 +107,41 @@ def _row_lines(
                 if consecutive_prose >= max_gap:
                     break
     return rows
+
+
+def _table_toc_rows(lines: list[str], start: int, limit: int) -> list[int]:
+    """Return aligned, monotonic TOC rows from a rendered tagged table.
+
+    HTML table rendering replaces dot leaders with column whitespace, and many
+    rows are subsection labels rather than ``ITEM`` rows.  Keep this broader
+    rule table-scoped and require a real TOC signal before accepting it.
+    """
+    candidates: list[tuple[int, int, str]] = []
+    for index in range(start, min(limit, start + 250)):
+        line = lines[index].strip().strip("|+")
+        if not line or is_page_marker_line(line):
+            continue
+        match = _RE_TABLE_TOC_ROW.match(line)
+        if match is None:
+            continue
+        candidates.append((index, int(match.group("page")), match.group("label")))
+
+    if not candidates or not any(
+        RE_TOC_ITEM_ROW.match(label) or RE_TOC_PART_ROW.match(label)
+        for _, _, label in candidates
+    ):
+        return []
+
+    page_columns = [
+        _RE_TABLE_TOC_ROW.match(lines[index].strip().strip("|+")).start("page")
+        for index, _, _ in candidates
+    ]
+    if max(page_columns) - min(page_columns) > 2:
+        return []
+    pages = [page for _, page, _ in candidates]
+    if any(current < previous for previous, current in pairwise(pages)):
+        return []
+    return [index for index, _, _ in candidates]
 
 
 def score_block_toc_density(
