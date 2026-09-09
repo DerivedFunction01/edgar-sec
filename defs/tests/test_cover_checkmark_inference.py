@@ -103,6 +103,26 @@ def test_prose_decisions_report_that_text_changed() -> None:
     assert "TRANSITION REPORT [ ]" in updated
 
 
+def test_wingdings_unchecked_glyph_is_a_shared_cover_mark() -> None:
+    boundary = CoverBoundary(
+        end_line=2,
+        end_offset=None,
+        method="test",
+        confidence=1.0,
+        start_line=0,
+    )
+    candidates = extract_cover_candidates(
+        "ANNUAL REPORT x\nTRANSITION REPORT ¨\n", boundary, family="10-K"
+    )
+
+    transition = [
+        candidate for candidate in candidates if candidate.semantic_key == "transition"
+    ]
+
+    assert len(transition) == 1
+    assert transition[0].known_state == "unchecked"
+
+
 def test_statutory_constraints_reject_wksi_shell_hypothesis() -> None:
     rows = (
         ("wksi", "G0", "yes"),

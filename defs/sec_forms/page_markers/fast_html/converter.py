@@ -6,6 +6,7 @@ import re
 from typing import Any
 
 from defs.regex import build_alternation
+from defs.tables.protection import mask_tagged_tables
 from defs.text.html import NormalizedHtmlText, normalize_html_document
 
 from ..ascii.orchestrator import analyze_page_markers as _analyze_ascii
@@ -37,13 +38,42 @@ _RE_PAGE_TAGS = re.compile(r"</?page\b[^>]*>", re.IGNORECASE)
 # corrupt the sentinel (e.g. "__SEC_PAGE_B[ ]EAK_SENTINEL__").
 _PAGE_SENTINEL = "__SEC_PAGE_SPLIT_SENTINEL__"
 
+# Combined break-tag pattern: all three rules share the sentinel replacement
+# and are mutually exclusive tag prefixes (<page>, <hr>, style-bearing tags),
+# so alternation order matches the sequential pass outcomes.
+_RE_BREAK_TAGS = re.compile(
+    f"{_RE_PAGE_TAGS.pattern}|{_RE_HR_TAGS.pattern}|{_RE_CSS_PAGE_BREAKS.pattern}",
+    re.IGNORECASE,
+)
+
+
+def _insert_page_sentinels(html: str) -> str:
+    """Replace break tags with the page-split sentinel outside table spans.
+
+    Break tags inside tables are page furniture (decorative ``<hr>`` header
+    underlines, row rules), not page boundaries. Converting them to the
+    page-split sentinel makes the ASCII table render treat the sentinel as
+    cell text and wrap it at column widths, corrupting both the table and
+    the sentinel, so the final sentinel-to-``<PAGE>`` pass cannot recover it.
+    """
+    replacement = f"\n{_PAGE_SENTINEL}\n"
+    spans = mask_tagged_tables(html)[1]
+    if not spans:
+        return _RE_BREAK_TAGS.sub(replacement, html)
+    pieces: list[str] = []
+    cursor = 0
+    for span in spans:
+        pieces.append(_RE_BREAK_TAGS.sub(replacement, html[cursor : span.start]))
+        pieces.append(html[span.start : span.end])
+        cursor = span.end
+    pieces.append(_RE_BREAK_TAGS.sub(replacement, html[cursor:]))
+    return "".join(pieces)
+
 
 def _convert_html_to_break_text_with_metadata(html: str) -> NormalizedHtmlText:
     if not html:
         return NormalizedHtmlText("", ())
-    text = _RE_PAGE_TAGS.sub(f"\n{_PAGE_SENTINEL}\n", html)
-    text = _RE_HR_TAGS.sub(f"\n{_PAGE_SENTINEL}\n", text)
-    text = _RE_CSS_PAGE_BREAKS.sub(f"\n{_PAGE_SENTINEL}\n", text)
+    text = _insert_page_sentinels(html)
     normalized = normalize_html_document(text)
     return NormalizedHtmlText(
         normalized.replace(_PAGE_SENTINEL, "\n<PAGE>\n").strip(),

@@ -79,12 +79,12 @@ _SIDE_SUFFIX_ALT = build_alternation(
 # preserving structural borders, alignment, widths, page breaks, and symbol fonts.
 _RE_BENIGN_STYLE_DECL = re.compile(
     r"(?i)(?<![a-z-])(?:"
-    rf"font-family\s*:\s*(?![^;\"'\n]*(?:{_PRESERVED_FAMILIES_ALT}))[^;\"'\n]*"
-    r"|font-size\s*:[^;\"'\n]*"
-    r"|(?:background-)?color\s*:[^;\"'\n]*"
-    rf"|(?:{_BOX_SPACING_ALT})(?:-(?:{_SIDE_SUFFIX_ALT}))?\s*:[^;\"'\n]*"
-    rf"|(?:{_TYPOGRAPHY_ALT})\s*:[^;\"'\n]*"
-    rf"|(?:{_MISC_STYLE_ALT})\s*:[^;\"'\n]*"
+    rf"font-family\s*:\s*(?![^;\"'\n>]*(?:{_PRESERVED_FAMILIES_ALT}))[^;\"'\n>]*"
+    r"|font-size\s*:[^;\"'\n>]*"
+    r"|(?:background-)?color\s*:[^;\"'\n>]*"
+    rf"|(?:{_BOX_SPACING_ALT})(?:-(?:{_SIDE_SUFFIX_ALT}))?\s*:[^;\"'\n>]*"
+    rf"|(?:{_TYPOGRAPHY_ALT})\s*:[^;\"'\n>]*"
+    rf"|(?:{_MISC_STYLE_ALT})\s*:[^;\"'\n>]*"
     r");?"
 )
 
@@ -96,7 +96,7 @@ _RE_TAG_OR_TEXT = re.compile(r"(?is)<!--.*?-->|<[^>]*>|[^<]+")
 _RE_STYLE_FONT_FAMILY = re.compile(r"(?i)\bfont-family\s*:\s*([^;\"]+)")
 _RE_FACE_ATTR = re.compile(r"(?i)\bface\s*=\s*(?:\"([^\"]*)\"|'([^']*)'|([^\s>]+))")
 _RE_TAG_NAME = re.compile(r"(?is)^\s*<\s*(/?)\s*([a-z][a-z0-9:-]*)")
-_RE_GLYPH = re.compile(r"[\u00fe\u00fd\u0072\u0052]")
+_RE_GLYPH = re.compile(r"[\u00a8\u00fe\u00fd\u0072\u0052]")
 _VOID_TAGS = frozenset(
     {
         "area",

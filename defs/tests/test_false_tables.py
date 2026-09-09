@@ -155,6 +155,71 @@ def test_geometry_unwraps_numeric_footnote_prose_rows() -> None:
     )
 
 
+def test_geometry_unwraps_paren_numbered_rows_without_punctuation() -> None:
+    result = convert_html_table(
+        "<table><tr><td>(1)</td><td>First list item without terminal punctuation</td></tr>"
+        "<tr><td>(2)</td><td>Second list item without terminal punctuation</td></tr></table>"
+    )
+    geometry = TableGeometry(table_index=0, render_result=result)
+    text = "<TABLE>rendered wrapped lines</TABLE>"
+
+    assert cleanup_false_tables(text, (geometry,)) == (
+        "(1) First list item without terminal punctuation\n"
+        "(2) Second list item without terminal punctuation"
+    )
+
+
+def test_geometry_unwraps_three_column_paren_ordered_grid() -> None:
+    result = convert_html_table(
+        "<table><tr><td>(1)</td><td>Incorporated by reference to</td><td>Form 10-K</td></tr>"
+        "<tr><td>(2)</td><td>Incorporated by reference to</td><td>Form 10-Q</td></tr></table>"
+    )
+    geometry = TableGeometry(table_index=0, render_result=result)
+    text = "<TABLE>rendered incorporation rows</TABLE>"
+
+    assert cleanup_false_tables(text, (geometry,)) == (
+        "(1) Incorporated by reference to Form 10-K\n"
+        "(2) Incorporated by reference to Form 10-Q"
+    )
+
+
+def test_geometry_unwraps_paren_roman_prose_rows() -> None:
+    result = convert_html_table(
+        "<table><tr><td>(i)</td><td>The first enumerated footnote with several words</td></tr>"
+        "<tr><td>(ii)</td><td>The second enumerated footnote with several words</td></tr></table>"
+    )
+    geometry = TableGeometry(table_index=0, render_result=result)
+    text = "<TABLE>rendered roman rows</TABLE>"
+
+    assert cleanup_false_tables(text, (geometry,)) == (
+        "(i) The first enumerated footnote with several words\n"
+        "(ii) The second enumerated footnote with several words"
+    )
+
+
+def test_geometry_retains_paren_marker_rows_with_numeric_second_column() -> None:
+    result = convert_html_table(
+        "<table><tr><td>(123)</td><td>924,643</td></tr>"
+        "<tr><td>(456)</td><td>876,348</td></tr></table>"
+    )
+    geometry = TableGeometry(table_index=0, render_result=result)
+    text = "<TABLE>rendered financial rows</TABLE>"
+
+    assert cleanup_false_tables(text, (geometry,)) == text
+
+
+def test_geometry_retains_footnote_table_with_short_label_row() -> None:
+    result = convert_html_table(
+        "<table><tr><td>(1)</td><td>End of year statistics.</td></tr>"
+        "<tr><td>(2)</td><td>Digital rooms are equipped with an interactive digital "
+        "system where on-demand movies are stored in a digital format</td></tr></table>"
+    )
+    geometry = TableGeometry(table_index=0, render_result=result)
+    text = "<TABLE>rendered footnote rows</TABLE>"
+
+    assert cleanup_false_tables(text, (geometry,)) == text
+
+
 def test_geometry_ignores_empty_spacer_columns_and_rows() -> None:
     prose = (
         "Incident Response and Recovery Planning: BlackRock has established and "

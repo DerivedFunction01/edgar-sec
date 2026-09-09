@@ -7,7 +7,6 @@ from collections import defaultdict
 from collections.abc import Mapping, Sequence
 from dataclasses import replace as dataclass_replace
 
-from defs.sec_forms.cover.checkmark_candidates import _MARK_RE
 from defs.sec_forms.cover.checkmark_models import (
     CheckboxCandidate,
     CoverCheckmarkResult,
@@ -16,6 +15,7 @@ from defs.tables.protection import mask_tagged_tables, restore_tagged_tables
 from defs.text.checkmarks import (
     CANONICAL_CHECKED,
     CANONICAL_UNCHECKED,
+    CHECKMARK_MARK_RE,
     CheckmarkDecision,
     CheckmarkScope,
 )
@@ -23,7 +23,11 @@ from defs.text.checkmarks import (
 
 def _replace_mark_in_text(text: str, source_token: str, replacement: str) -> str:
     match = next(
-        (match for match in _MARK_RE.finditer(text) if match.group(0) == source_token),
+        (
+            match
+            for match in CHECKMARK_MARK_RE.finditer(text)
+            if match.group(0) == source_token
+        ),
         None,
     )
     if match is None:

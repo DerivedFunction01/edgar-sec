@@ -42,6 +42,10 @@ _RE_ORDERED_MARKER = re.compile(
     r"|(?P<letter>[a-z])\s*[.)]\s*)",
     re.IGNORECASE,
 )
+_RE_WRAPPED_MARKER = re.compile(
+    r"^\(\s*(?P<token>\d{1,3}|[ivxlcdm]+|[a-z])\s*\)\s*",
+    re.IGNORECASE,
+)
 
 
 def _is_single_column_prose(lines: list[str]) -> bool:
@@ -85,11 +89,13 @@ def _marker_candidates(value: str) -> list[tuple[str, int, str]]:
     Single characters in ``ivxlcdm`` are ambiguous between roman numerals and
     letter sequences (for example ``i)`` inside ``g) h) i) j) k)``); callers
     resolve the ambiguity consistently across the whole row sequence.
+    Parenthesized forms such as ``(1)``, ``(iv)``, and ``(a)`` read the same
+    way as their bare ``1.``, ``iv.``, and ``a.`` counterparts.
     """
     value = value.strip()
     match = _RE_ORDERED_MARKER.match(value)
     if match is None:
-        return []
+        return _wrapped_marker_candidates(value)
     rest = value[match.end() :].strip()
     if match.group("number"):
         return [("number", int(match.group("number")), rest)]
@@ -106,6 +112,24 @@ def _marker_candidates(value: str) -> list[tuple[str, int, str]]:
     candidates = [("letter", ord(letter) - ord("a") + 1, rest)]
     if roman_to_int(letter) is not None:
         candidates.append(("roman", roman_to_int(letter), rest))
+    return candidates
+
+
+def _wrapped_marker_candidates(value: str) -> list[tuple[str, int, str]]:
+    """Return marker candidates for a parenthesized ``(1)``/``(iv)``/``(a)`` cell."""
+    match = _RE_WRAPPED_MARKER.match(value)
+    if match is None:
+        return []
+    token = match.group("token").lower()
+    rest = value[match.end() :].strip()
+    if token.isdigit():
+        return [("number", int(token), rest)]
+    roman_value = roman_to_int(token)
+    candidates: list[tuple[str, int, str]] = []
+    if roman_value is not None:
+        candidates.append(("roman", roman_value, rest))
+    if len(token) == 1:
+        candidates.append(("letter", ord(token) - ord("a") + 1, rest))
     return candidates
 
 

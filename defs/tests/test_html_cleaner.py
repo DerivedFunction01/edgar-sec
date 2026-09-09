@@ -159,12 +159,12 @@ def test_strip_font_tag_and_noise_attributes() -> None:
 
 def test_clean_html_normalizes_only_font_qualified_glyphs() -> None:
     text = (
-        '<span style="font-family: Wingdings, Arial">ý</span>'
+        '<span style="font-family: Wingdings, Arial">ý ¨</span>'
         '<font FACE="WINGDINGS">r</font>'
         "<p>ý r</p>"
     )
     cleaned = clean_html_for_parsing(text)
-    assert '<span style="font-family: Wingdings, Arial">[X]</span>' in cleaned
+    assert '<span style="font-family: Wingdings, Arial">[X] [ ]</span>' in cleaned
     assert '<font FACE="WINGDINGS">[ ]</font>' in cleaned
     assert "<p>ý r</p>" in cleaned
 

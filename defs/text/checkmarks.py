@@ -72,7 +72,13 @@ CONTEXT_UNCHECKED_SYMBOLS = ("o", "O")
 # The cleaner is the only stage allowed to interpret these encoded glyphs.
 # Keys are normalized font family names; values are source glyph -> state.
 FONT_GLYPH_MAPPINGS = {
-    "wingdings": {"r": "unchecked", "R": "unchecked", "þ": "checked", "ý": "checked"},
+    "wingdings": {
+        "r": "unchecked",
+        "R": "unchecked",
+        "þ": "checked",
+        "ý": "checked",
+        "¨": "unchecked",
+    },
     "webdings": {"r": "unchecked", "R": "unchecked", "þ": "checked", "ý": "checked"},
     "symbol": {"r": "unchecked", "R": "unchecked", "þ": "checked", "ý": "checked"},
 }
@@ -123,6 +129,26 @@ RE_RAW_UNCHECKED = re.compile(
 CHECKED_TOKENS = frozenset(RAW_CHECKED_TOKENS)
 UNCHECKED_TOKENS = frozenset(RAW_UNCHECKED_TOKENS)
 
+# Candidate extraction uses the complete mark vocabulary, including marks
+# whose meaning requires cover context. Semantic association remains phase-owned.
+CHECKMARK_MARK_TOKENS = (
+    *RAW_CHECKED_TOKENS,
+    *RAW_UNCHECKED_TOKENS,
+    *CONTEXT_CHECKED_SYMBOLS,
+    *CONTEXT_UNCHECKED_SYMBOLS,
+    "x",
+    "X",
+    "o",
+    "O",
+    "þ",
+    "ý",
+    "r",
+    "R",
+)
+CHECKMARK_MARK_RE = re.compile(
+    rf"(?<!\w)(?:{build_alternation(CHECKMARK_MARK_TOKENS, auto_escape=True)})(?!\w)"
+)
+
 __all__ = [
     "BRACKET_PAIRS",
     "CANONICAL_CHECKED",
@@ -131,6 +157,8 @@ __all__ = [
     "CHECKED_INNER",
     "CHECKED_SYMBOLS",
     "CHECKED_TOKENS",
+    "CHECKMARK_MARK_RE",
+    "CHECKMARK_MARK_TOKENS",
     "CONTEXT_CHECKED_SYMBOLS",
     "CONTEXT_UNCHECKED_SYMBOLS",
     "FONT_GLYPH_MAPPINGS",

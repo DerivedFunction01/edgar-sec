@@ -5,7 +5,6 @@ from __future__ import annotations
 import re
 from collections.abc import Sequence
 
-from defs.regex import build_alternation
 from defs.sec_forms.cover.checkmark_frames import build_masked_offset_translator
 from defs.sec_forms.cover.checkmark_models import CheckboxCandidate
 from defs.sec_forms.cover.models import CoverBoundary
@@ -31,40 +30,9 @@ from defs.taxonomy.components.cover import (
     STAT_WKSI,
     STATUTORY_BINARY_GROUP,
 )
+from defs.text.checkmarks import CHECKMARK_MARK_RE
 from defs.text.dates import parse_date
 
-_MARK_TOKENS = (
-    "[X]",
-    "[x]",
-    "[ ]",
-    "(X)",
-    "(x)",
-    "☒",
-    "☑",
-    "☐",
-    "□",
-    "✓",
-    "✔",
-    "✘",
-    "●",
-    "■",
-    "▪",
-    "•",
-    "*",
-    "+",
-    "-",
-    "x",
-    "X",
-    "o",
-    "O",
-    "þ",
-    "ý",
-    "r",
-    "R",
-)
-_MARK_RE = re.compile(
-    rf"(?<!\w)(?:{build_alternation(_MARK_TOKENS, auto_escape=True)})(?!\w)"
-)
 _LABELS: tuple[tuple[str, tuple[str, ...], str], ...] = (
     (REPORT_ANNUAL, ("annual report", "annual report pursuant"), REPORT_PERIOD_GROUP),
     (
@@ -151,7 +119,7 @@ def _label_matches(text: str) -> list[tuple[str, str, int, int, str]]:
 
 
 def _mark_matches(text: str, *, allow_asterisk: bool = False) -> list[re.Match[str]]:
-    matches = list(_MARK_RE.finditer(text))
+    matches = list(CHECKMARK_MARK_RE.finditer(text))
     if allow_asterisk:
         return matches
     return [
