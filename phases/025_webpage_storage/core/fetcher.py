@@ -8,6 +8,16 @@ from contextlib import suppress
 from pathlib import Path
 from typing import Any, Protocol, runtime_checkable
 
+from defs.filing_identity import (
+    accession_hyphenated,
+    full_submission_url_for,
+    normalize_accession,
+    parse_archive_url,
+)
+from defs.sec_documents.sgml import (
+    resolve_target_sub_document,
+    unpack_sgml_submission,
+)
 from defs.sec_http import HttpMetrics, SecHttpClient
 from defs.sql import (
     Compare,
@@ -36,6 +46,45 @@ class ArchiveFetcher(Protocol):
 
     def fetch(self, locator: DocumentLocator) -> FetchResult:
         """Acquire the bytes identified by ``locator``."""
+
+
+def is_stub_document_path(document_path: str | None) -> bool:
+    """True when the document path is a placeholder/stub rather than substantive filing."""
+    if not document_path:
+        return True
+    lowered = document_path.strip().lower()
+    return lowered.endswith(("0001.txt", "0001.htm", "0000.txt", "0000.htm"))
+
+
+def extract_from_sgml_envelope(
+    raw_payload: bytes,
+    locator: DocumentLocator,
+) -> bytes | None:
+    """Extract the target sub-document if the payload is an SGML submission envelope."""
+    if not raw_payload:
+        return None
+    head = raw_payload[:1000].lower()
+    if b"<document>" not in head and b"<submission>" not in head:
+        return raw_payload
+
+    sub_docs = unpack_sgml_submission(raw_payload)
+    if not sub_docs:
+        return raw_payload
+    form_val = locator.form.strip().upper() if locator.form else None
+    targets = ()
+    if form_val:
+        targets = (
+            (form_val, f"{form_val}/A", form_val[:-2])
+            if form_val.endswith("/A")
+            else (form_val, f"{form_val}/A")
+        )
+    target = resolve_target_sub_document(
+        sub_docs,
+        target_types=targets,
+        primary_filename=locator.document_path,
+        fallback_to_sequence_one=True,
+    )
+    return target.raw_payload if target is not None else None
 
 
 class FixtureArchiveFetcher:
@@ -78,14 +127,40 @@ class FixtureArchiveFetcher:
         try:
             for executor in self._get_executors():
                 row = executor.query_one(executor.compiler.compile(query))
-                if row is None:
-                    continue
-                blob = RawDocumentBlob.from_row(row)
-                return FetchResult(
-                    locator=locator,
-                    payload=decompress_payload(blob.raw_payload),
-                    status="ok",
-                )
+                if row is not None:
+                    blob = RawDocumentBlob.from_row(row)
+                    payload = decompress_payload(blob.raw_payload)
+                    extracted = extract_from_sgml_envelope(payload, locator)
+                    if extracted is not None:
+                        return FetchResult(
+                            locator=locator,
+                            payload=extracted,
+                            status="ok",
+                        )
+
+                # Fallback to full submission blob if present in fixture
+                canonical = normalize_accession(locator.accession)
+                if canonical:
+                    dashed = accession_hyphenated(canonical)
+                    full_doc_id = doc_id(locator.accession, f"{dashed}.txt")
+                    query_full = Select(
+                        source=Table(DOCUMENT_BLOBS_TABLE),
+                        projection=(col("raw_payload"),),
+                        where=Compare(
+                            col("doc_id"), ComparisonOp.EQ, param(full_doc_id)
+                        ),
+                        limit=1,
+                    )
+                    row_full = executor.query_one(executor.compiler.compile(query_full))
+                    if row_full is not None:
+                        sgml_payload = decompress_payload(row_full["raw_payload"])
+                        extracted = extract_from_sgml_envelope(sgml_payload, locator)
+                        if extracted is not None:
+                            return FetchResult(
+                                locator=locator,
+                                payload=extracted,
+                                status="ok",
+                            )
         except Exception as exc:  # noqa: BLE001 - fetch failures become result statuses
             return FetchResult(
                 locator=locator, payload=None, status="failed", error=str(exc)
@@ -136,13 +211,50 @@ class LiveSecArchiveFetcher:
         return self._http_client.metrics
 
     def fetch(self, locator: DocumentLocator) -> FetchResult:
-        try:
-            payload = self._http_client.get_bytes(locator.archive_url)
-        except Exception as exc:  # noqa: BLE001 - client errors are per-document failures
-            return FetchResult(
-                locator=locator, payload=None, status="failed", error=str(exc)
-            )
-        return FetchResult(locator=locator, payload=payload, status="ok")
+        parts = parse_archive_url(locator.archive_url)
+        full_sub_url = (
+            full_submission_url_for(parts.archive_cik, locator.accession)
+            if parts
+            else None
+        )
+
+        is_stub = is_stub_document_path(locator.document_path)
+        primary_error = None
+
+        if not is_stub:
+            try:
+                payload = self._http_client.get_bytes(locator.archive_url)
+                extracted = extract_from_sgml_envelope(payload, locator)
+                if extracted is not None:
+                    return FetchResult(locator=locator, payload=extracted, status="ok")
+            except Exception as exc:  # noqa: BLE001 - client errors fall back to full submission
+                primary_error = str(exc)
+
+        # Fallback to full SGML submission bundle if direct fetch failed or was a stub
+        if full_sub_url and full_sub_url != locator.archive_url:
+            try:
+                sgml_payload = self._http_client.get_bytes(full_sub_url)
+                extracted = extract_from_sgml_envelope(sgml_payload, locator)
+                if extracted is not None:
+                    return FetchResult(locator=locator, payload=extracted, status="ok")
+                return FetchResult(
+                    locator=locator,
+                    payload=None,
+                    status="failed",
+                    error=f"sgml_subdocument_not_found (form={locator.form})",
+                )
+            except Exception as exc:  # noqa: BLE001
+                err = primary_error or str(exc)
+                return FetchResult(
+                    locator=locator, payload=None, status="failed", error=err
+                )
+
+        return FetchResult(
+            locator=locator,
+            payload=None,
+            status="failed",
+            error=primary_error or "fetch failed",
+        )
 
 
 def make_archive_fetcher(
@@ -151,16 +263,7 @@ def make_archive_fetcher(
     http_client: SecHttpClient | None = None,
     broker_socket: str | Path | None = None,
 ) -> ArchiveFetcher:
-    """Construct the configured offline fixture or live SEC fetcher.
-
-    ``broker_socket`` selects the managed broker path for live acquisition:
-    workers route archive URLs through the broker instead of constructing
-    their own SEC client, so all live requests share one aggregate rate
-    limiter. ``broker_socket`` is ignored for fixture mode.
-
-    ``mode`` accepts ``"fixture"`` for offline lookup and ``"live"`` or
-    ``"production"`` for live SEC acquisition.
-    """
+    """Construct the configured offline fixture or live SEC fetcher."""
     normalized_mode = mode.strip().lower()
     if normalized_mode == "fixture":
         if not fixture_paths:
@@ -178,12 +281,7 @@ def make_archive_fetcher(
 
 
 class BrokerArchiveFetcher:
-    """Adapt the SEC broker RPC to the ``ArchiveFetcher`` protocol.
-
-    Worker processes never construct a production SEC client; they route
-    every archive URL through the broker, which owns the single shared rate
-    limiter, cache, failure ledger, and metrics.
-    """
+    """Adapt the SEC broker RPC to the ``ArchiveFetcher`` protocol."""
 
     def __init__(self, broker_client: Any) -> None:
         self._broker = broker_client
@@ -193,29 +291,62 @@ class BrokerArchiveFetcher:
         return getattr(self._broker, "metrics", None)
 
     def fetch(self, locator: DocumentLocator) -> FetchResult:
-        try:
-            result = self._broker.fetch(locator.archive_url)
-        except Exception as exc:  # noqa: BLE001 - client errors are per-document failures
-            return FetchResult(
-                locator=locator, payload=None, status="failed", error=str(exc)
-            )
-        status = result.get("status")
-        if status != "ok":
-            return FetchResult(
-                locator=locator,
-                payload=None,
-                status="failed",
-                error=result.get("error") or "broker reported failure",
-            )
-        payload = result.get("payload")
-        if payload is None:
-            return FetchResult(
-                locator=locator,
-                payload=None,
-                status="failed",
-                error="broker returned no payload",
-            )
-        return FetchResult(locator=locator, payload=payload, status="ok")
+        parts = parse_archive_url(locator.archive_url)
+        full_sub_url = (
+            full_submission_url_for(parts.archive_cik, locator.accession)
+            if parts
+            else None
+        )
+
+        is_stub = is_stub_document_path(locator.document_path)
+        primary_error = None
+
+        if not is_stub:
+            try:
+                result = self._broker.fetch(locator.archive_url)
+                if result.get("status") == "ok" and result.get("payload") is not None:
+                    extracted = extract_from_sgml_envelope(result["payload"], locator)
+                    if extracted is not None:
+                        return FetchResult(
+                            locator=locator, payload=extracted, status="ok"
+                        )
+                else:
+                    primary_error = result.get("error") or "broker reported failure"
+            except Exception as exc:  # noqa: BLE001
+                primary_error = str(exc)
+
+        # Fallback to full SGML submission bundle if direct fetch failed or was a stub
+        if full_sub_url and full_sub_url != locator.archive_url:
+            try:
+                result = self._broker.fetch(full_sub_url)
+                if result.get("status") == "ok" and result.get("payload") is not None:
+                    extracted = extract_from_sgml_envelope(result["payload"], locator)
+                    if extracted is not None:
+                        return FetchResult(
+                            locator=locator, payload=extracted, status="ok"
+                        )
+                    return FetchResult(
+                        locator=locator,
+                        payload=None,
+                        status="failed",
+                        error=f"sgml_subdocument_not_found (form={locator.form})",
+                    )
+                err = primary_error or result.get("error") or "broker reported failure"
+                return FetchResult(
+                    locator=locator, payload=None, status="failed", error=err
+                )
+            except Exception as exc:  # noqa: BLE001
+                err = primary_error or str(exc)
+                return FetchResult(
+                    locator=locator, payload=None, status="failed", error=err
+                )
+
+        return FetchResult(
+            locator=locator,
+            payload=None,
+            status="failed",
+            error=primary_error or "fetch failed",
+        )
 
     def close(self) -> None:
         close = getattr(self._broker, "close", None)
@@ -229,5 +360,7 @@ __all__ = [
     "BrokerArchiveFetcher",
     "FixtureArchiveFetcher",
     "LiveSecArchiveFetcher",
+    "extract_from_sgml_envelope",
+    "is_stub_document_path",
     "make_archive_fetcher",
 ]

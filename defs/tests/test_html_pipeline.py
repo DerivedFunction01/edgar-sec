@@ -172,3 +172,45 @@ def test_normalize_html_document_geometry_span_groups_present() -> None:
     result = normalize_html_document(html)
     geom = result.table_geometries[0]
     assert isinstance(geom.span_groups, tuple)
+
+
+def test_normalize_html_document_unifies_definition_list_bullets() -> None:
+    """Definition lists with bullet markers in dt are unified inline with dd text."""
+    html = (
+        "<dl compact=''>"
+        "<dt><font size='2'>•</font></dt>"
+        "<dd><font size='2'>First item description;<br><br></font></dd>"
+        "<dt><font size='2'>*</font></dt>"
+        "<dd><font size='2'>Second item description;<br><br></font></dd>"
+        "</dl>"
+    )
+    result = normalize_html_document(html)
+    assert result == "• First item description;\n\n* Second item description;"
+
+
+def test_normalize_html_document_preserves_consecutive_bullet_tables_on_separate_lines() -> (
+    None
+):
+    """Consecutive layout-table bullet items stay on separate lines."""
+    html = (
+        "<html><body>"
+        "<table cellpadding='0' cellspacing='0'><tr><td>&#8226;</td><td>financial performance;</td></tr></table>"
+        "<table cellpadding='0' cellspacing='0'><tr><td>&#8226;</td><td>cash flows;</td></tr></table>"
+        "<table cellpadding='0' cellspacing='0'><tr><td>&#8226;</td><td>capital expenditures;</td></tr></table>"
+        "</body></html>"
+    )
+    result = normalize_html_document(html)
+    assert result == "• financial performance;\n• cash flows;\n• capital expenditures;"
+
+
+def test_normalize_html_document_collapses_source_wrap_before_words_like_a() -> None:
+    """Source code line breaks before words like 'a' are collapsed to spaces, not preserved."""
+    html = (
+        "<p>If the Company determines that a reinsurance agreement does not expose the reinsurer to\n"
+        "a reasonable possibility of a significant loss from insurance risk, the Company records the agreement.</p>"
+    )
+    result = normalize_html_document(html)
+    assert result == (
+        "If the Company determines that a reinsurance agreement does not expose the reinsurer to "
+        "a reasonable possibility of a significant loss from insurance risk, the Company records the agreement."
+    )

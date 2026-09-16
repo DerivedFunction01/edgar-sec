@@ -286,3 +286,117 @@ def test_semantic_heading_matches_without_hyphen() -> None:
     )
     result = find_body_start(text, cover_end=11, toc_end=None, evidence=ANNUAL_PACK)
     assert result.line is not None
+
+
+def test_forward_looking_statements_preceding_item_one_anchors_body() -> None:
+    text = ANNUAL_COVER + (
+        "\n\nSpecial Note Regarding Forward-Looking Statements\n\n"
+        "This Annual Report on Form 10-K contains forward-looking statements within the "
+        "meaning of Section 27A of the Securities Act. These statements involve risks and "
+        "uncertainties regarding future financial performance and market operations.\n\n"
+        "PART I\n\nItem 1. Business\n\n"
+        "The Company was incorporated in Delaware and manufactures widgets for customers "
+        "worldwide.\n"
+    )
+    result = find_body_start(text, cover_end=11, toc_end=None, evidence=ANNUAL_PACK)
+    assert result.line is not None
+    # Semantic anchor starting at the forward looking statements heading
+    assert result.anchor_type == BodyAnchorType.SEMANTIC.value
+    lines = text.splitlines()
+    assert "Forward-Looking" in lines[result.line]
+    assert result.first_unit_line is not None
+    assert result.first_unit_line > result.line
+
+
+def test_cautionary_statements_preceding_item_one_anchors_body() -> None:
+    text = ANNUAL_COVER + (
+        "\n\nCautionary Statements for Forward-Looking Information\n\n"
+        "Statements contained herein contain forward-looking statements and financial estimates "
+        "that reflect current expectations about future revenue and operational results.\n\n"
+        "PART I\n\nItem 1. Business\n\n"
+        "The Company was incorporated in Delaware and manufactures widgets.\n"
+    )
+    result = find_body_start(text, cover_end=11, toc_end=None, evidence=ANNUAL_PACK)
+    assert result.line is not None
+    assert result.anchor_type == BodyAnchorType.SEMANTIC.value
+    assert result.first_unit_line is not None
+
+
+def test_toc_followed_by_forward_looking_statements() -> None:
+    text = ANNUAL_COVER + (
+        "\n\nTABLE OF CONTENTS\n"
+        "ITEM 1. BUSINESS .......................... 1\n"
+        "ITEM 1A. RISK FACTORS ..................... 8\n\n"
+        "Special Note Regarding Forward-Looking Statements\n\n"
+        "This Annual Report contains forward-looking statements regarding operations.\n\n"
+        "PART I\n\nItem 1. Business\n\n"
+        "The Company manufactures widgets worldwide for industrial customers.\n"
+    )
+    result = find_body_start(text, cover_end=11, toc_end=15, evidence=ANNUAL_PACK)
+    assert result.line is not None
+    assert result.line >= 15
+    assert result.anchor_type == BodyAnchorType.SEMANTIC.value
+
+
+def test_form_8k_decimal_items_anchor_body() -> None:
+    evidence_8k = get_profile("8-K").body_evidence
+    text = (
+        "UNITED STATES\n"
+        "SECURITIES AND EXCHANGE COMMISSION\n"
+        "Washington, D.C. 20549\n"
+        "FORM 8-K\n"
+        "CURRENT REPORT\n"
+        "Pursuant to Section 13 or 15(d) of the Securities Exchange Act of 1934\n"
+        "Date of Report: March 15, 2024\n"
+        "ACME CORP\n\n"
+        "Item 1.01 Entry into a Material Definitive Agreement.\n\n"
+        "On March 15, 2024, Acme Corp entered into a credit agreement with Bank Inc. "
+        "The credit agreement provides for a revolving credit facility of $500 million "
+        "for general corporate operations and liquidity purposes.\n\n"
+        "Item 9.01 Financial Statements and Exhibits.\n\n"
+        "(d) Exhibits.\n"
+    )
+    result = find_body_start(text, cover_end=8, toc_end=None, evidence=evidence_8k)
+    lines = text.splitlines()
+    assert result.line is not None
+    assert "Item 1.01" in lines[result.line]
+    assert result.anchor_type == BodyAnchorType.STRUCTURAL.value
+    assert result.confidence >= 0.8
+
+
+def test_form_8k_item_502_anchor_body() -> None:
+    evidence_8k = get_profile("8-K").body_evidence
+    text = (
+        "FORM 8-K\n"
+        "ACME CORP\n\n"
+        "Item 5.02 Departure of Directors or Certain Officers.\n\n"
+        "Effective March 1, 2024, John Doe resigned as Chief Executive Officer. "
+        "The Board appointed Jane Smith as Chief Executive Officer effective immediately.\n"
+    )
+    result = find_body_start(text, cover_end=2, toc_end=None, evidence=evidence_8k)
+    lines = text.splitlines()
+    assert result.line is not None
+    assert "Item 5.02" in lines[result.line]
+    assert result.anchor_type == BodyAnchorType.STRUCTURAL.value
+
+
+def test_form_6k_semantic_signatures_or_exhibits() -> None:
+    evidence_6k = get_profile("6-K").body_evidence
+    text = (
+        "UNITED STATES\n"
+        "SECURITIES AND EXCHANGE COMMISSION\n"
+        "Washington, D.C. 20549\n"
+        "FORM 6-K\n"
+        "REPORT OF FOREIGN PRIVATE ISSUER\n\n"
+        "Special Note Regarding Forward-Looking Statements\n\n"
+        "This report on Form 6-K contains forward-looking statements within the meaning of the "
+        "Securities Act regarding operations, revenue, and international market expansion.\n\n"
+        "SIGNATURES\n\n"
+        "Pursuant to the requirements of the Securities Exchange Act of 1934, the registrant "
+        "has duly caused this report to be signed on its behalf.\n"
+    )
+    result = find_body_start(text, cover_end=5, toc_end=None, evidence=evidence_6k)
+    assert result.line is not None
+    assert result.anchor_type == BodyAnchorType.SEMANTIC.value
+    lines = text.splitlines()
+    assert "Forward-Looking" in lines[result.line]

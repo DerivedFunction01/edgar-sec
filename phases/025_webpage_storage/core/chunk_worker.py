@@ -30,11 +30,10 @@ from .chunk_persistence import (
     ArchiveFetcher,
     ChunkFailure,
     ChunkResult,
-    _fetch,
     _get_metrics,
     _load_raw_payload,
     _persist_fetch_result,
-    _run_concurrent_acquisitions,
+    _run_pipelined_acquisitions,
 )
 from .schemas import (
     ACQUISITION_FAILURES_TABLE,
@@ -336,74 +335,42 @@ def process_chunk(
                 with suppress(Exception):
                     progress(event)
 
-        if fetch_workers > 1:
-            _run_concurrent_acquisitions(
-                unique_documents,
-                fetcher=fetcher,
-                processor=effective_processor,
-                executor=executor,
-                occurrences_by_doc_id=occurrences_by_doc_id,
-                existing_blobs=existing_blobs,
-                existing_failures=existing_failures,
-                chunk_failures=chunk_failures,
-                progress=progress,
-                fetch_workers=fetch_workers,
-            )
-        else:
-            # Stream acquisitions directly into SQLite
-            for locator in unique_documents:
-                target_doc_id = doc_id(locator.accession, locator.document_path)
-                if target_doc_id in existing_blobs:
-                    emit(
-                        {
-                            "type": "document_done",
-                            "status": "cached",
-                            "doc_id": target_doc_id,
-                            "metrics": _get_metrics(fetcher),
-                        }
-                    )
-                    continue
-                if target_doc_id in existing_failures:
-                    emit(
-                        {
-                            "type": "document_done",
-                            "status": existing_failures[target_doc_id][0],
-                            "doc_id": target_doc_id,
-                            "metrics": _get_metrics(fetcher),
-                        }
-                    )
-                    continue
-
-                try:
-                    fetched = _fetch(fetcher, locator)
-                except (OSError, RuntimeError, TypeError, ValueError) as exc:
-                    _persist_fetch_result(
-                        locator,
-                        None,
-                        fetcher=fetcher,
-                        processor=effective_processor,
-                        executor=executor,
-                        occurrences_by_doc_id=occurrences_by_doc_id,
-                        existing_blobs=existing_blobs,
-                        existing_failures=existing_failures,
-                        chunk_failures=chunk_failures,
-                        progress=progress,
-                        error=str(exc) or type(exc).__name__,
-                    )
-                    continue
-
-                _persist_fetch_result(
-                    locator,
-                    fetched,
-                    fetcher=fetcher,
-                    processor=effective_processor,
-                    executor=executor,
-                    occurrences_by_doc_id=occurrences_by_doc_id,
-                    existing_blobs=existing_blobs,
-                    existing_failures=existing_failures,
-                    chunk_failures=chunk_failures,
-                    progress=progress,
+        # Emit progress events for any pre-existing or cached documents
+        for locator in unique_documents:
+            target_doc_id = doc_id(locator.accession, locator.document_path)
+            if target_doc_id in existing_blobs:
+                emit(
+                    {
+                        "type": "document_done",
+                        "status": "cached",
+                        "doc_id": target_doc_id,
+                        "metrics": _get_metrics(fetcher),
+                    }
                 )
+            elif target_doc_id in existing_failures:
+                emit(
+                    {
+                        "type": "document_done",
+                        "status": existing_failures[target_doc_id][0],
+                        "doc_id": target_doc_id,
+                        "metrics": _get_metrics(fetcher),
+                    }
+                )
+
+        # Run bounded producer-consumer prefetcher pipeline
+        _run_pipelined_acquisitions(
+            unique_documents,
+            fetcher=fetcher,
+            processor=effective_processor,
+            executor=executor,
+            occurrences_by_doc_id=occurrences_by_doc_id,
+            existing_blobs=existing_blobs,
+            existing_failures=existing_failures,
+            chunk_failures=chunk_failures,
+            progress=progress,
+            fetch_workers=fetch_workers,
+            prefetch_size=16,
+        )
 
         # Count total stored occurrences and blobs
         final_occurrences = executor.query(

@@ -48,19 +48,17 @@ _WHITESPACE_RE = re.compile(r"\s+")
 
 
 def _next_nonblank_line(lines: list[str], start: int) -> tuple[int, str] | None:
-    for index in range(start, len(lines)):
-        stripped = lines[index].strip()
-        if stripped:
-            return index, stripped
-    return None
+    return next(
+        ((i, s) for i in range(start, len(lines)) if (s := lines[i].strip())),
+        None,
+    )
 
 
 def _prev_nonblank_line(lines: list[str], start: int) -> tuple[int, str] | None:
-    for index in range(start, -1, -1):
-        stripped = lines[index].strip()
-        if stripped:
-            return index, stripped
-    return None
+    return next(
+        ((i, s) for i in range(start, -1, -1) if (s := lines[i].strip())),
+        None,
+    )
 
 
 def _validate_structural_heading(
@@ -206,91 +204,134 @@ def find_body_start(
     rejection_reasons: list[str] = []
     seen_intermediate = False
 
-    for candidate_line, role in _scan_structural_candidates(
-        lines, units_by_line, toc_span, lower_bound, search_limit
-    ):
-        valid, reason = _validate_structural_heading(
-            lines, candidate_line, units_by_line, toc_span
-        )
-        if not valid:
-            rejection_reasons.append(f"line {candidate_line} {role} rejected: {reason}")
-            evidence_log.append(
-                BodyStartEvidence(
-                    name="structural_candidate_rejected",
-                    strength=0.3,
-                    line=candidate_line,
-                    details=f"{role}: {reason}",
-                )
-            )
-            continue
-
-        prose_limit = min(search_limit, candidate_line + _HEADING_PROSE_WINDOW)
-        prose_unit, bow_score, intermediate = _find_first_substantive_prose(
-            units, compiled, toc_span, prefix_vocab, candidate_line + 1, prose_limit
-        )
-        seen_intermediate = _record_intermediate(
-            evidence_log, intermediate, seen_intermediate
-        )
-        if prose_unit is not None and bow_score is not None:
-            evidence_log.append(
-                BodyStartEvidence(
-                    name="structural_body_anchor",
-                    strength=0.9,
-                    line=candidate_line,
-                    details=(
-                        f"{role} with substantive prose at line "
-                        f"{prose_unit.start_line} ({_score_description(bow_score)})"
-                    ),
-                )
-            )
-            return BodyStart(
-                line=candidate_line,
-                heading_line=candidate_line,
-                first_unit_line=prose_unit.start_line,
-                anchor_type=BodyAnchorType.STRUCTURAL.value,
-                confidence=0.9,
-                evidence=tuple(evidence_log),
-                delayed=len(rejection_reasons) > 0,
-                rejection_reasons=tuple(rejection_reasons),
-                reason=(
-                    f"{role} heading with validated prose at line "
-                    f"{prose_unit.start_line}"
-                ),
-            )
-        rejection_reasons.append(
-            f"line {candidate_line} {role}: no substantive prose within window"
-        )
-
-    semantic_unit = _scan_semantic_anchor(
-        units,
-        compiled,
-        semantic_headings,
+    candidates: list[tuple[int, str, object]] = []
+    structural_headings = tuple(getattr(evidence, "structural_headings", ()))
+    for cand_line, role in _scan_structural_candidates(
+        lines,
+        units_by_line,
         toc_span,
-        prefix_vocab,
         lower_bound,
         search_limit,
-    )
-    if semantic_unit is not None:
-        unit, bow_score = semantic_unit
-        evidence_log.append(
-            BodyStartEvidence(
-                name="semantic_body_anchor",
-                strength=0.7,
-                line=unit.start_line,
-                details=f"semantic section with {_score_description(bow_score)}",
+        structural_headings,
+    ):
+        candidates.append((cand_line, "structural", role))
+    for cand_line, unit in _scan_semantic_candidates(
+        units, semantic_headings, toc_span, lower_bound, search_limit
+    ):
+        candidates.append((cand_line, "semantic", unit))
+
+    candidates.sort(key=lambda c: c[0])
+
+    for candidate_line, kind, payload in candidates:
+        if kind == "structural":
+            role = str(payload)
+            valid, reason = _validate_structural_heading(
+                lines, candidate_line, units_by_line, toc_span
             )
-        )
-        return BodyStart(
-            line=unit.start_line,
-            heading_line=unit.start_line,
-            first_unit_line=unit.start_line,
-            anchor_type=BodyAnchorType.SEMANTIC.value,
-            confidence=0.7,
-            evidence=tuple(evidence_log),
-            delayed=len(rejection_reasons) > 0,
-            rejection_reasons=tuple(rejection_reasons),
-            reason="semantic body section with validated prose",
-        )
+            if not valid:
+                rejection_reasons.append(
+                    f"line {candidate_line} {role} rejected: {reason}"
+                )
+                evidence_log.append(
+                    BodyStartEvidence(
+                        name="structural_candidate_rejected",
+                        strength=0.3,
+                        line=candidate_line,
+                        details=f"{role}: {reason}",
+                    )
+                )
+                continue
+
+            prose_limit = min(search_limit, candidate_line + _HEADING_PROSE_WINDOW)
+            prose_unit, bow_score, intermediate = _find_first_substantive_prose(
+                units, compiled, toc_span, prefix_vocab, candidate_line + 1, prose_limit
+            )
+            seen_intermediate = _record_intermediate(
+                evidence_log, intermediate, seen_intermediate
+            )
+            if prose_unit is not None and bow_score is not None:
+                evidence_log.append(
+                    BodyStartEvidence(
+                        name="structural_body_anchor",
+                        strength=0.9,
+                        line=candidate_line,
+                        details=f"{role} with substantive prose at line {prose_unit.start_line} ({_score_description(bow_score)})",
+                    )
+                )
+                return _build_body_start(
+                    line=candidate_line,
+                    heading_line=candidate_line,
+                    first_unit_line=prose_unit.start_line,
+                    anchor_type=BodyAnchorType.STRUCTURAL.value,
+                    confidence=0.9,
+                    evidence_log=evidence_log,
+                    rejection_reasons=rejection_reasons,
+                    reason=f"{role} heading with validated prose at line {prose_unit.start_line}",
+                )
+            rejection_reasons.append(
+                f"line {candidate_line} {role}: no substantive prose within window"
+            )
+        elif kind == "semantic":
+            heading_unit: LogicalUnit = payload  # type: ignore[assignment]
+            context = unit_context(heading_unit, toc_span, prefix_vocab)
+            if len(heading_unit.text.split()) >= 8:
+                bow_score = score_unit(heading_unit.text, compiled, context)
+                if bow_score.score >= _MIN_BODY_SCORE:
+                    evidence_log.append(
+                        BodyStartEvidence(
+                            name="semantic_body_anchor",
+                            strength=0.8,
+                            line=heading_unit.start_line,
+                            details=f"semantic section with substantive prose ({_score_description(bow_score)})",
+                        )
+                    )
+                    return _build_body_start(
+                        line=heading_unit.start_line,
+                        heading_line=heading_unit.start_line,
+                        first_unit_line=heading_unit.start_line,
+                        anchor_type=BodyAnchorType.SEMANTIC.value,
+                        confidence=0.8,
+                        evidence_log=evidence_log,
+                        rejection_reasons=rejection_reasons,
+                        reason=f"semantic body section with validated prose at line {heading_unit.start_line}",
+                    )
+
+            prose_limit = min(
+                search_limit, heading_unit.end_line + _HEADING_PROSE_WINDOW
+            )
+            prose_unit, bow_score, intermediate = _find_first_substantive_prose(
+                units,
+                compiled,
+                toc_span,
+                prefix_vocab,
+                heading_unit.end_line + 1,
+                prose_limit,
+            )
+            seen_intermediate = _record_intermediate(
+                evidence_log, intermediate, seen_intermediate
+            )
+            if prose_unit is not None and bow_score is not None:
+                evidence_log.append(
+                    BodyStartEvidence(
+                        name="semantic_body_anchor",
+                        strength=0.8,
+                        line=heading_unit.start_line,
+                        details=f"semantic section with substantive prose at line {prose_unit.start_line} ({_score_description(bow_score)})",
+                    )
+                )
+                return _build_body_start(
+                    line=heading_unit.start_line,
+                    heading_line=heading_unit.start_line,
+                    first_unit_line=prose_unit.start_line,
+                    anchor_type=BodyAnchorType.SEMANTIC.value,
+                    confidence=0.8,
+                    evidence_log=evidence_log,
+                    rejection_reasons=rejection_reasons,
+                    reason=f"semantic body section with validated prose at line {prose_unit.start_line}",
+                )
+            rejection_reasons.append(
+                f"line {candidate_line} semantic heading: no substantive prose within window"
+            )
 
     prose_unit, bow_score, intermediate = _find_first_substantive_prose(
         units, compiled, toc_span, prefix_vocab, lower_bound, search_limit
@@ -302,64 +343,77 @@ def find_body_start(
                 name="substantive_body_anchor",
                 strength=0.6,
                 line=prose_unit.start_line,
-                details=(
-                    "substantive prose cluster without structural heading "
-                    f"({_score_description(bow_score)})"
-                ),
+                details=f"substantive prose cluster without structural heading ({_score_description(bow_score)})",
             )
         )
-        return BodyStart(
+        return _build_body_start(
             line=prose_unit.start_line,
             heading_line=None,
             first_unit_line=prose_unit.start_line,
             anchor_type=BodyAnchorType.SUBSTANTIVE.value,
             confidence=0.6,
-            evidence=tuple(evidence_log),
-            delayed=len(rejection_reasons) > 0,
-            rejection_reasons=tuple(rejection_reasons),
-            reason="delayed substantive body start without structural heading",
+            evidence_log=evidence_log,
+            rejection_reasons=rejection_reasons,
+            reason="substantive body prose cluster without structural heading",
         )
 
-    return BodyStart(
+    return _build_body_start(
         line=None,
         heading_line=None,
         first_unit_line=None,
         anchor_type=BodyAnchorType.UNKNOWN.value,
         confidence=0.0,
+        evidence_log=evidence_log,
+        rejection_reasons=rejection_reasons,
+        reason="no reliable body candidate within search window",
+    )
+
+
+def _build_body_start(
+    line: int | None,
+    heading_line: int | None,
+    first_unit_line: int | None,
+    anchor_type: str,
+    confidence: float,
+    evidence_log: list[BodyStartEvidence],
+    rejection_reasons: list[str],
+    reason: str,
+) -> BodyStart:
+    return BodyStart(
+        line=line,
+        heading_line=heading_line,
+        first_unit_line=first_unit_line,
+        anchor_type=anchor_type,
+        confidence=confidence,
         evidence=tuple(evidence_log),
         delayed=len(rejection_reasons) > 0,
         rejection_reasons=tuple(rejection_reasons),
-        reason="no reliable body candidate within search window",
+        reason=reason,
     )
 
 
 def _record_intermediate(
     evidence_log: list[BodyStartEvidence],
     intermediate: LogicalUnit | None,
-    seen_intermediate: bool,
+    seen: bool,
 ) -> bool:
     """Append one intermediate-evidence entry; returns the new seen flag."""
-    if intermediate is None or seen_intermediate:
-        return seen_intermediate
-    evidence_log.append(
-        BodyStartEvidence(
-            name="bow_intermediate",
-            strength=0.4,
-            line=intermediate.start_line,
-            details="intermediate prose evidence; search continued",
+    if intermediate is not None and not seen:
+        evidence_log.append(
+            BodyStartEvidence(
+                name="bow_intermediate",
+                strength=0.4,
+                line=intermediate.start_line,
+                details="intermediate prose evidence; search continued",
+            )
         )
-    )
-    return True
+        return True
+    return seen
 
 
 def _unknown_body_start(reason: str) -> BodyStart:
-    return BodyStart(
-        line=None,
-        heading_line=None,
-        first_unit_line=None,
-        anchor_type=BodyAnchorType.UNKNOWN.value,
-        confidence=0.0,
-        reason=reason,
+    return _build_body_start(
+        None, None, None, BodyAnchorType.UNKNOWN.value, 0.0, [], [], reason
     )
 
 
@@ -369,17 +423,15 @@ def _scan_structural_candidates(
     toc_span: TocSpan | None,
     lower_bound: int,
     search_limit: int,
+    structural_headings: tuple[str, ...] = (),
 ) -> list[tuple[int, str]]:
-    """Scan forward for structural PART/ITEM heading candidates.
-
-    Returns a list of (line_index, role) ordered by priority: PART I first,
-    then ITEM 1, then ITEM 1A, then later ITEMs.
-    """
-    part_one: tuple[int, str] | None = None
-    item_one: tuple[int, str] | None = None
-    item_one_a: tuple[int, str] | None = None
-    later_items: list[tuple[int, str]] = []
-
+    """Scan forward for structural PART/ITEM heading candidates."""
+    candidates: list[tuple[int, str]] = []
+    norm_sh = (
+        {h.upper().strip() for h in structural_headings}
+        if structural_headings
+        else set()
+    )
     for index in range(lower_bound, search_limit):
         unit = unit_at(units_by_line, index)
         if unit is not None and (
@@ -392,74 +444,38 @@ def _scan_structural_candidates(
         match = match_structural_line(line, index)
         if match is None or not match.is_exact_heading:
             continue
-        if match.role == "part" and part_one is None:
-            part_one = (index, "PART I")
-        elif match.role == "item":
-            label_upper = line.upper()
-            if "ITEM 1A" in label_upper and item_one_a is None:
-                item_one_a = (index, "ITEM 1A")
-            elif (
-                "ITEM 1" in label_upper
-                and "ITEM 1A" not in label_upper
-                and item_one is None
-            ):
-                item_one = (index, "ITEM 1")
-            elif item_one is None and item_one_a is None:
-                later_items.append((index, match.label))
-
-    candidates: list[tuple[int, str]] = []
-    if part_one is not None:
-        candidates.append(part_one)
-    if item_one is not None:
-        candidates.append(item_one)
-    if item_one_a is not None:
-        candidates.append(item_one_a)
-    candidates.extend(later_items)
+        label = match.label.strip()
+        lbl_up = label.upper()
+        if not norm_sh or any(lbl_up == s or lbl_up.startswith(s) for s in norm_sh):
+            candidates.append((index, label))
     return candidates
 
 
-def _scan_semantic_anchor(
+def _scan_semantic_candidates(
     units: list[LogicalUnit],
-    compiled: CompiledEvidencePack,
     semantic_headings: tuple[str, ...],
     toc_span: TocSpan | None,
-    prefix_vocab: frozenset[str],
     lower_bound: int,
     search_limit: int,
-) -> tuple[LogicalUnit, BowScore] | None:
-    """Scan for a named body section with lexical score >= 2."""
+) -> list[tuple[int, LogicalUnit]]:
+    """Scan forward for semantic heading candidates."""
     if not semantic_headings:
-        return None
-
-    lowered_headings = [heading.lower() for heading in semantic_headings]
-    normalized_headings = [
-        _WHITESPACE_RE.sub(" ", heading.replace("-", " "))
-        for heading in lowered_headings
-    ]
+        return []
+    lowered = [h.lower() for h in semantic_headings]
+    normalized = [_WHITESPACE_RE.sub(" ", h.replace("-", " ")) for h in lowered]
+    candidates: list[tuple[int, LogicalUnit]] = []
     for unit in units:
         if unit.start_line < lower_bound:
             continue
         if unit.start_line > search_limit:
             break
-        if unit.kind != "paragraph":
+        if unit.kind != "paragraph" or unit_in_toc(unit, toc_span):
             continue
-        if unit_in_toc(unit, toc_span):
-            continue
-        text_lower = unit.text.lower()
-        text_normalized = _WHITESPACE_RE.sub(" ", text_lower)
-        if any(
-            heading in text_lower or heading in text_normalized
-            for heading in lowered_headings + normalized_headings
-        ):
-            context = unit_context(unit, toc_span, prefix_vocab)
-            bow_score = score_unit(unit.text, compiled, context)
-            if bow_score.score >= _MIN_BODY_SCORE:
-                return unit, bow_score
-    return None
+        t_low = unit.text.lower()
+        t_norm = _WHITESPACE_RE.sub(" ", t_low)
+        if any(h in t_low or h in t_norm for h in lowered + normalized):
+            candidates.append((unit.start_line, unit))
+    return candidates
 
 
-__all__ = [
-    "BodyStart",
-    "BodyStartEvidence",
-    "find_body_start",
-]
+__all__ = ["BodyStart", "BodyStartEvidence", "find_body_start"]

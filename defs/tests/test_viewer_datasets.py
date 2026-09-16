@@ -11,6 +11,7 @@ from viewer_fixtures import (  # noqa: F401 - fixtures registered via import
 from defs.viewer.datasets import (
     DatasetError,
     DatasetRef,
+    dataset_blob,
     dataset_column_stats,
     dataset_rows,
     dataset_schema,
@@ -19,8 +20,18 @@ from defs.viewer.datasets import (
 
 
 def _ref(dataset) -> DatasetRef:
-    fmt = "parquet" if str(dataset["path"]).endswith(".parquet") else "jsonl"
-    return DatasetRef(dataset_id=dataset["id"], path=dataset["path"], fmt=fmt)
+    path_str = str(dataset["path"])
+    fmt = (
+        "parquet"
+        if path_str.endswith(".parquet")
+        else ("sqlite" if path_str.endswith((".sqlite", ".db")) else "jsonl")
+    )
+    return DatasetRef(
+        dataset_id=dataset["id"],
+        path=dataset["path"],
+        fmt=fmt,
+        table=dataset.get("table"),
+    )
 
 
 def test_schema_reports_names_types_and_nulls(chunk_dataset):
@@ -212,3 +223,83 @@ def test_sql_guard_rejects_writes_and_allows_reads(chunk_dataset):
         run_dataset_sql(ref, "SELECT * FROM read_parquet('/etc/passwd')")
     with pytest.raises(DatasetError):
         run_dataset_sql(ref, "   ")
+
+
+def test_sqlite_dataset_and_blob_decompression(artifacts_root):
+    import sqlite3
+
+    import zstandard as zstd
+
+    db_rel = "transient/webpage_storage/runs/run-1/partitions/partition-00001/chunks/chunk-00001.db"
+    db_path = artifacts_root / db_rel
+    db_path.parent.mkdir(parents=True, exist_ok=True)
+
+    markdown_text = "# Sample 10-K Filing\n" + (
+        "Item 1. Business overview and operations.\n" * 50
+    )
+    compressed_blob = zstd.ZstdCompressor(level=3).compress(
+        markdown_text.encode("utf-8")
+    )
+
+    with sqlite3.connect(db_path) as conn:
+        conn.execute(
+            "CREATE TABLE filing_documents (accession_number TEXT PRIMARY KEY, cik TEXT, normalized_payload BLOB)"
+        )
+        conn.execute(
+            "INSERT INTO filing_documents VALUES (?, ?, ?)",
+            ("0000000001-23-000001", "0000000001", compressed_blob),
+        )
+        conn.execute(
+            "INSERT INTO filing_documents VALUES (?, ?, ?)",
+            ("0000000002-23-000002", "0000000002", b"plain uncompressed text"),
+        )
+
+    ref = DatasetRef(
+        dataset_id="sqlite-test",
+        path=db_path,
+        fmt="sqlite",
+        table="filing_documents",
+    )
+
+    schema = dataset_schema(ref)
+    assert {col["name"] for col in schema} == {
+        "accession_number",
+        "cik",
+        "normalized_payload",
+    }
+
+    rows = dataset_rows(ref, limit=10)
+    assert len(rows["items"]) == 2
+    first_row = rows["items"][0]
+    assert first_row["accession_number"] == "0000000001-23-000001"
+    # Verify blob serialization in rows
+    assert first_row["normalized_payload"]["__blob__"] is True
+    assert first_row["normalized_payload"]["is_compressed"] is True
+    assert first_row["normalized_payload"]["size_bytes"] == len(compressed_blob)
+
+    # Test blob endpoint function
+    blob_res = dataset_blob(
+        ref,
+        column="normalized_payload",
+        pk_col="accession_number",
+        pk_val="0000000001-23-000001",
+    )
+    assert blob_res["is_compressed"] is True
+    assert blob_res["text"] == markdown_text
+    assert blob_res["mime_type"] == "text/markdown"
+    assert blob_res["compression_ratio"] > 1.0
+
+    # Test plain blob via row_index
+    plain_res = dataset_blob(
+        ref,
+        column="normalized_payload",
+        row_index=1,
+    )
+    assert plain_res["is_compressed"] is False
+    assert plain_res["text"] == "plain uncompressed text"
+
+    # Test SQL execution on SQLite dataset
+    sql_res = run_dataset_sql(
+        ref, "SELECT accession_number, cik FROM dataset ORDER BY cik"
+    )
+    assert [r["cik"] for r in sql_res["rows"]] == ["0000000001", "0000000002"]

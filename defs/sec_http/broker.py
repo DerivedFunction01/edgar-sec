@@ -99,14 +99,16 @@ class SecBroker:
         *,
         socket_path: str | Path,
         http_client: SecHttpClient | None = None,
-        max_connections: int = 16,
+        max_connections: int = 32,
     ) -> None:
         self.socket_path = Path(socket_path)
-        self._client = http_client or make_sec_http_client()
+        self._max_connections = max(1, max_connections)
+        self._client = http_client or make_sec_http_client(
+            max_concurrency=self._max_connections
+        )
         self._metrics = self._client.metrics
         self._lock = threading.Lock()
         self._active = 0
-        self._max_connections = max(1, max_connections)
         self._semaphore = threading.Semaphore(self._max_connections)
         self._server: socket.socket | None = None
         self._stop = threading.Event()

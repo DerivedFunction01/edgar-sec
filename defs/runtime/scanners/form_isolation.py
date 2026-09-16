@@ -9,11 +9,20 @@ from defs.regex import build_alternation
 from defs.runtime.checks import ScannerFinding
 from defs.runtime.scanners.engine import is_test_file, scan_patch_and_untracked
 
-_CANDIDATE_RE = "10-K|10-Q|8-K"
+_CANDIDATE_RE = "10-K|10-Q|8-K|20-F|6-K|EX-13|EX-99|EX-2"
 
-_FORM_PATTERNS = [r"10-K(?:/[Aa])?", r"10-Q(?:/[Aa])?", r"8-K(?:/[Aa])?"]
+_FORM_PATTERNS = [
+    r"10-K(?:/[Aa])?",
+    r"10-Q(?:/[Aa])?",
+    r"8-K(?:/[Aa])?",
+    r"20-F(?:/[Aa])?",
+    r"6-K(?:/[Aa])?",
+    r"EX-13(?:\.\d+)?",
+    r"EX-99(?:\.\d+)?",
+    r"EX-2\.1",
+]
 _FORM_LITERAL_RE = re.compile(
-    rf"""(?:["']\s*{build_alternation(_FORM_PATTERNS)}\s*["']|\bform\s*==\s*["']10-)""",
+    rf"""(?:["']\s*{build_alternation(_FORM_PATTERNS)}\s*["']|\bform\s*==\s*["'](?:10-|20-|8-|6-|EX-))""",
     re.IGNORECASE,
 )
 
@@ -21,6 +30,7 @@ _ALLOWED_PATHS = (
     "roadmap/",
     "defs/runtime/scanners/",
     "defs/sec_forms/",
+    "defs/sec_documents/",
     "old-webpage.py",
     "old-webpage.py.txt",
     "scratch/",

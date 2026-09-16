@@ -12,7 +12,9 @@ from dataclasses import dataclass
 from enum import Enum
 
 from defs.regex import build_alternation
-from defs.text.tokens import BULLET_MARKER_RE
+from defs.text.tokens import BULLET_MARKER_RE, BULLET_MARKERS
+
+_HEADING_SEPARATOR_CHARS = ":.- |+\t" + "".join(BULLET_MARKERS)
 
 
 class SectionKind(str, Enum):
@@ -87,9 +89,15 @@ RE_PART_ONE = re.compile(
     r"^\s*PART\s+I\s*\.?\s*(?:\(\s*continued\s*\))?\s*$", re.IGNORECASE
 )
 
-# Real ITEM 1 / ITEM 1A headings carry a title-case title after an optional
+# Real ITEM headings (1, 1A, 1.01, 5.02, 9.01, etc.) carry a title-case title after an optional
 # separator. TOC rows ("ITEM 1. BUSINESS ..... 1") fail because the title may
 # contain dot leaders or a trailing page number.
+RE_ITEM_EXACT = re.compile(
+    r"^\s*ITEMS?\s+(?:\d+[A-Z]?(?:\.\d{1,2})?)\b\s*(?:[.:;\-]+\s*)?"
+    r"(?:(?-i:[A-Z])[A-Za-z0-9,&'()\s-]*)?[:.]?\s*"
+    r"(?:\(\s*continued\s*\))?\s*$",
+    re.IGNORECASE,
+)
 RE_ITEM_ONE = re.compile(
     r"^\s*ITEM\s+1\b\s*(?:[.:;\-]+\s*)?"
     r"(?:(?-i:[A-Z])[A-Za-z,&'()\s-]*)?[:.]?\s*"
@@ -147,7 +155,7 @@ def parse_section_heading(
     if part_match:
         part_num = part_match.group(1).upper()
         raw_title = part_match.group(2).strip()
-        title = raw_title.strip(":.- |+•\t")
+        title = raw_title.strip(_HEADING_SEPARATOR_CHARS)
         return ParsedSection(
             kind=SectionKind.PART,
             identifier=part_num,
@@ -161,7 +169,7 @@ def parse_section_heading(
     if item_match:
         item_num = item_match.group(1).upper()
         raw_title = item_match.group(2).strip()
-        title = raw_title.strip(":.- |+•\t")
+        title = raw_title.strip(_HEADING_SEPARATOR_CHARS)
         return ParsedSection(
             kind=SectionKind.ITEM,
             identifier=item_num,
@@ -239,14 +247,14 @@ def match_structural_line(
             reference_count=part_refs,
         )
 
-    # Exact ITEM 1 / ITEM 1A heading.
-    if RE_ITEM_ONE.match(stripped) or RE_ITEM_ONE_A.match(stripped):
+    # Exact ITEM heading.
+    if RE_ITEM_EXACT.match(stripped):
         return StructuralMatch(
             line=line_number,
             role=StructuralRole.ITEM,
             label=stripped,
             is_exact_heading=True,
-            reference_count=item_refs,
+            reference_count=max(item_refs, 1),
         )
 
     # Not an exact heading, but contains section references.
@@ -269,11 +277,7 @@ def is_exact_heading(line: str) -> bool:
     stripped = line.strip()
     if not stripped:
         return False
-    return bool(
-        RE_PART.match(stripped)
-        or RE_ITEM_ONE.match(stripped)
-        or RE_ITEM_ONE_A.match(stripped)
-    )
+    return bool(RE_PART.match(stripped) or RE_ITEM_EXACT.match(stripped))
 
 
 def is_continuation_prose(line: str) -> bool:

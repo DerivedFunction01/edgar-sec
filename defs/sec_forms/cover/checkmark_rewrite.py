@@ -127,7 +127,8 @@ def apply_cover_checkmark_decisions(
     candidates_by_region: dict[str, list[CheckboxCandidate]] = defaultdict(list)
     for candidate in result.candidates:
         candidates_by_region[candidate.source_region].append(candidate)
-    replacements: list[tuple[int, int, str]] = []
+    replacements: list[tuple[int, int, str, str]] = []
+    claimed_spans: set[tuple[int, int]] = set()
     for region, candidates in candidates_by_region.items():
         for candidate in candidates:
             decision = decisions.get((region, candidate.source_token))
@@ -139,8 +140,20 @@ def apply_cover_checkmark_decisions(
             # structural table tags) and is dropped instead of applied.
             if text[start:end] != candidate.source_token:
                 continue
-            replacements.append((start, end, decision.canonical_token))
-    for start, end, replacement in sorted(replacements, reverse=True):
+            # Inference may associate one physical mark with several semantic
+            # labels (e.g. a single Wingdings "x" matched against every filer
+            # status). Each span is rewritten at most once: re-applying the
+            # same span slices the already-expanded canonical token into
+            # "[X]X]X]" fragments.
+            if (start, end) in claimed_spans:
+                continue
+            claimed_spans.add((start, end))
+            replacements.append(
+                (start, end, candidate.source_token, decision.canonical_token)
+            )
+    for start, end, source_token, replacement in sorted(replacements, reverse=True):
+        if text[start:end] != source_token:
+            continue
         text = text[:start] + replacement + text[end:]
 
     masked, spans = mask_tagged_tables(text)

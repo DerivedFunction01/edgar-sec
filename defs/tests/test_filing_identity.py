@@ -9,6 +9,7 @@ from defs.filing_identity import (
     document_locator_key,
     filing_year,
     fiscal_year,
+    full_submission_url_for,
     is_amendment_form,
     normalize_accession,
     occurrence_id,
@@ -125,6 +126,16 @@ def test_archive_url_for_round_trips_through_parse():
     assert parts.archive_cik == "1086364"
     assert parts.accession == "000108636410008819"
     assert parts.document_path == "ktroninternat012910.txt"
+
+
+def test_full_submission_url_for_builds_dashed_text_bundle_url():
+    url = full_submission_url_for("0000320193", "000032019320000096")
+    assert url == (
+        "https://www.sec.gov/Archives/edgar/data/320193/000032019320000096/0000320193-20-000096.txt"
+    )
+    # Accepts dashed accession as input
+    url2 = full_submission_url_for("320193", "0000320193-20-000096")
+    assert url2 == url
 
 
 @pytest.mark.parametrize(

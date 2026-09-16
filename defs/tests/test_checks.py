@@ -447,6 +447,17 @@ def test_form_isolation_scanner_flags_8k_literals(repo):
     assert findings[0].scanner == "form-isolation"
 
 
+def test_form_isolation_scanner_flags_20f_and_exhibits(repo):
+    phase = repo / "phases" / "01_metadata_extraction" / "core"
+    phase.mkdir(parents=True)
+    (phase / "extract.py").write_text(
+        'target_exhibits = ["EX-13", "20-F"]\n', encoding="utf-8"
+    )
+    findings = scan_form_isolation(repo_root=repo)
+    assert len(findings) == 1
+    assert findings[0].scanner == "form-isolation"
+
+
 def test_form_isolation_scanner_allows_tests_and_comments(repo):
     (repo / "app.py").write_text(
         "# Reference: Form 10-K guidelines\nx = 1\n", encoding="utf-8"

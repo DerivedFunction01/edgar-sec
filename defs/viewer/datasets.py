@@ -37,6 +37,7 @@ class DatasetRef:
     path: Path | None
     fmt: str
     paths: tuple[Path, ...] = ()
+    table: str | None = None
 
     def __post_init__(self) -> None:
         if self.path is None and not self.paths:
@@ -67,6 +68,25 @@ class DatasetRef:
                     "union_by_name=true)"
                 )
             return f"read_json_auto('{self._sql_path()}', format='newline_delimited')"
+        if self.fmt == "sqlite":
+            path_str = self._sql_path()
+            table_name = self.table
+            if not table_name:
+                from defs.viewer.discover import _get_sqlite_tables
+
+                tables = _get_sqlite_tables(self.path)
+                if "normalized_documents" in tables:
+                    table_name = "normalized_documents"
+                elif "filing_documents" in tables:
+                    table_name = "filing_documents"
+                elif "document_blobs" in tables:
+                    table_name = "document_blobs"
+                elif tables:
+                    table_name = tables[0]
+                else:
+                    table_name = "sqlite_master"
+            table_esc = table_name.replace("'", "''")
+            return f"sqlite_scan('{path_str}', '{table_esc}')"
         raise DatasetError(f"unsupported dataset format: {self.fmt}")
 
     def _sql_path(self) -> str:
@@ -77,7 +97,7 @@ def _quote_ident(name: str) -> str:
     return '"' + name.replace('"', '""') + '"'
 
 
-def _connect() -> duckdb.DuckDBPyConnection:
+def _connect(_ref: DatasetRef | None = None) -> duckdb.DuckDBPyConnection:
     return duckdb.connect(database=":memory:")
 
 
@@ -98,7 +118,7 @@ def _execute_with_timeout(
 
 def dataset_schema(ref: DatasetRef) -> list[dict]:
     """Column names, types, null counts, and approx distinct counts."""
-    conn = _connect()
+    conn = _connect(ref)
     try:
         described = _execute_with_timeout(
             conn, f"DESCRIBE SELECT * FROM {ref.reader_expression}", []
@@ -135,7 +155,8 @@ def dataset_schema(ref: DatasetRef) -> list[dict]:
             )
         return columns
     except duckdb.Error as exc:
-        raise DatasetError(f"cannot read dataset {ref.path.name}: {exc}") from exc
+        name = ref.path.name if ref.path else ref.dataset_id
+        raise DatasetError(f"cannot read dataset {name}: {exc}") from exc
     finally:
         conn.close()
 
@@ -241,7 +262,7 @@ def dataset_rows(
     if sort is not None:
         order_clause = f" ORDER BY {_quote_ident(sort)} {direction.upper()}"
 
-    conn = _connect()
+    conn = _connect(ref)
     try:
         base = f"SELECT * FROM {ref.reader_expression}"
         filtered = f"{base}{where_clause}"
@@ -251,7 +272,23 @@ def dataset_rows(
         )
         result = _execute_with_timeout(conn, page_sql, [*params, limit + 1, offset])
         arrow = result.arrow().read_all()
-        items = [json_safe(record) for record in arrow.to_pylist()]
+        items = []
+        for record in arrow.to_pylist():
+            processed_record = {}
+            for k, v in record.items():
+                if isinstance(v, bytes):
+                    is_comp = v.startswith(b"\x28\xb5\x2f\xfd")
+                    if len(v) > 128 or is_comp:
+                        processed_record[k] = {
+                            "__blob__": True,
+                            "size_bytes": len(v),
+                            "is_compressed": is_comp,
+                        }
+                    else:
+                        processed_record[k] = json_safe(v)
+                else:
+                    processed_record[k] = json_safe(v)
+            items.append(processed_record)
         has_more = len(items) > limit
         items = items[:limit]
 
@@ -280,7 +317,7 @@ def dataset_rows(
 def dataset_column_stats(ref: DatasetRef, top_k: int = 5) -> list[dict]:
     """Per-column stats including top values for low-cardinality strings."""
     columns = dataset_schema(ref)
-    conn = _connect()
+    conn = _connect(ref)
     try:
         for column in columns:
             column["top_values"] = []
@@ -318,7 +355,7 @@ def run_dataset_sql(
     if "read_parquet(" in lowered or "read_json" in lowered or "read_csv" in lowered:
         raise DatasetError("table functions are not allowed in console queries")
     wrapped = f"SELECT * FROM (\n{validated}\n) __viewer_console LIMIT {MAX_SQL_ROWS}"
-    conn = _connect()
+    conn = _connect(ref)
     started = time.monotonic()
     try:
         # Expose the selected artifact as the only relation the console can
@@ -355,5 +392,87 @@ def run_dataset_sql(
                 f"query exceeded {timeout_s:g}s and was interrupted"
             ) from exc
         raise DatasetError(message) from exc
+    finally:
+        conn.close()
+
+
+def dataset_blob(
+    ref: DatasetRef,
+    *,
+    column: str,
+    pk_col: str | None = None,
+    pk_val: str | None = None,
+    row_index: int | None = None,
+    timeout_s: float = DEFAULT_TIMEOUT_S,
+) -> dict:
+    """Fetch and lazily decompress one BLOB field from a dataset."""
+    conn = _connect(ref)
+    try:
+        col_ident = _quote_ident(column)
+        if pk_col and pk_val is not None:
+            pk_ident = _quote_ident(pk_col)
+            sql = f"SELECT {col_ident} FROM {ref.reader_expression} WHERE {pk_ident} = ? LIMIT 1"
+            res = _execute_with_timeout(
+                conn, sql, [pk_val], timeout_s=timeout_s
+            ).fetchone()
+        elif row_index is not None:
+            sql = f"SELECT {col_ident} FROM {ref.reader_expression} LIMIT 1 OFFSET ?"
+            res = _execute_with_timeout(
+                conn, sql, [row_index], timeout_s=timeout_s
+            ).fetchone()
+        else:
+            raise ValueError("either (pk_col, pk_val) or row_index must be provided")
+
+        if not res or res[0] is None:
+            raise DatasetError(f"blob not found for column {column!r}")
+
+        raw_blob = bytes(res[0])
+        is_compressed = raw_blob.startswith(b"\x28\xb5\x2f\xfd")
+        if is_compressed:
+            try:
+                import importlib
+
+                schemas = importlib.import_module(
+                    "phases.025_webpage_storage.core.schemas"
+                )
+                decompressed = schemas.decompress_payload(raw_blob)
+            except (ImportError, AttributeError, ValueError):
+                import zstandard
+
+                decompressed = zstandard.ZstdDecompressor().decompress(raw_blob)
+        else:
+            decompressed = raw_blob
+
+        comp_bytes = len(raw_blob)
+        decomp_bytes = len(decompressed)
+        ratio = round(decomp_bytes / comp_bytes, 2) if comp_bytes > 0 else 1.0
+
+        try:
+            text = decompressed.decode("utf-8")
+            stripped = text.strip()
+            if stripped.startswith(("<html", "<!DOCTYPE", "<HTML", "<!doctype")):
+                mime = "text/html"
+            elif stripped.startswith(("#", "```", "|")):
+                mime = "text/markdown"
+            elif stripped.startswith(("{", "[")):
+                mime = "application/json"
+            else:
+                mime = "text/plain"
+        except UnicodeDecodeError:
+            text = None
+            mime = "application/octet-stream"
+
+        return {
+            "column": column,
+            "is_compressed": is_compressed,
+            "compressed_bytes": comp_bytes,
+            "decompressed_bytes": decomp_bytes,
+            "compression_ratio": ratio,
+            "mime_type": mime,
+            "text": text,
+            "preview": text[:500] if text else None,
+        }
+    except duckdb.Error as exc:
+        raise DatasetError(f"blob query failed: {exc}") from exc
     finally:
         conn.close()

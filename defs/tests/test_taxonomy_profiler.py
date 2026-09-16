@@ -119,6 +119,7 @@ def test_profile_table_family_mocked(
         family_name="derivatives_hedging",
         spec=DERIVATIVES_HEDGING_SPEC,
         sample_jittery=1,
+        output_dir=tmp_path,
     )
     assert res.matched_tables == 1
     assert res.jitter_diagnostics.jitter_count == 1

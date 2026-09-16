@@ -29,6 +29,15 @@ export function JsonValue({
     return <Scalar value={value} />;
   }
 
+  if ("__blob__" in (value as Record<string, unknown>)) {
+    const blob = value as { __blob__: boolean; size_bytes: number; is_compressed: boolean };
+    return (
+      <span className="badge badge-kind mono">
+        {blob.is_compressed ? "⚡ ZSTD BLOB" : "BLOB"} ({blob.size_bytes.toLocaleString()} bytes)
+      </span>
+    );
+  }
+
   const is_array = Array.isArray(value);
   const entries: [string, unknown][] = is_array
     ? (value as unknown[]).map((item, index) => [String(index), item])

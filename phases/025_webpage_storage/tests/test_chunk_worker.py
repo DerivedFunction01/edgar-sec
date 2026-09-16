@@ -380,7 +380,9 @@ def test_resume_with_processor_normalizes_existing_raw_blobs(tmp_path):
     normalized = _rows(db_path, schemas.NORMALIZED_DOCUMENTS_TABLE)
     assert len(normalized) == 1
     assert normalized[0]["processor_fingerprint"] == "upper:v1"
-    assert normalized[0]["normalized_payload"] == b"PAYLOAD-A"
+    assert (
+        schemas.decompress_payload(normalized[0]["normalized_payload"]) == b"PAYLOAD-A"
+    )
     assert normalized[0]["source_doc_id"] == schemas.doc_id("0001-0001", "a.htm")
     audit = _rows(db_path, schemas.COMMITTED_CHUNKS_TABLE)[0]
     assert audit["processor_fingerprint"] == "upper:v1"
@@ -443,7 +445,9 @@ def test_committed_chunk_with_different_processor_is_reprocessed(tmp_path):
     reversed_row = next(
         row for row in normalized if row["processor_fingerprint"] == "reverse:v1"
     )
-    assert reversed_row["normalized_payload"] == b"a-daolyap"
+    assert (
+        schemas.decompress_payload(reversed_row["normalized_payload"]) == b"a-daolyap"
+    )
 
 
 def test_processor_failure_keeps_raw_blob_and_records_normalization_failure(tmp_path):

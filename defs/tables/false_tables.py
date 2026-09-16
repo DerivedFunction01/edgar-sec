@@ -12,8 +12,8 @@ or producing extra blank lines.
 Tables are intentionally retained when:
  * they have more than one visible text line (multi-row financial
    statements, multi-cell data tables, signatory blocks, etc.);
- * their visible text starts with ``ITEM `` or ``PART `` (cover/TOC
-   detection still uses them); or
+ * their visible text matches a table-of-contents row with page numbers or
+   dot leaders; or
  * the rendered text contains only numeric separator characters
    (financial-statement-like layouts).
 """
@@ -25,6 +25,7 @@ from collections.abc import Sequence
 from typing import TYPE_CHECKING
 
 from defs.sec_forms.cover.structure import RE_ITEM_REFERENCE, RE_PART_REFERENCE
+from defs.sec_forms.cover.toc import looks_like_toc_row, looks_like_toc_tabular
 from defs.tables.patterns import FOOTNOTE_RE
 from defs.text.patterns import roman_to_int
 from defs.text.tokens import BULLET_MARKER_RE
@@ -133,25 +134,54 @@ def _wrapped_marker_candidates(value: str) -> list[tuple[str, int, str]]:
     return candidates
 
 
-def _passes_monotonic(rows: list[list[tuple[str, int]]], prefer: str) -> bool:
-    """Check strict per-family increase under one consistent interpretation."""
-    previous: dict[str, int] = {}
-    for candidates in rows:
-        chosen: tuple[str, int] | None = None
-        if len(candidates) == 1:
-            chosen = candidates[0]
+def _step_stack(
+    stack: list[tuple[str, int]], family: str, value: int
+) -> list[tuple[str, int]] | None:
+    """Attempt to advance an outline stack with a new (family, value) marker."""
+    if not stack:
+        return [(family, value)]
+    if stack[-1][0] == family:
+        if value > stack[-1][1]:
+            new_stack = list(stack)
+            new_stack[-1] = (family, value)
+            return new_stack
+        return None
+    for i in range(len(stack) - 1, -1, -1):
+        if stack[i][0] == family:
+            if value > stack[i][1]:
+                new_stack = stack[:i]
+                new_stack.append((family, value))
+                return new_stack
+            return None
+    if value == 1:
+        new_stack = list(stack)
+        new_stack.append((family, value))
+        return new_stack
+    return None
+
+
+def _passes_monotonic(
+    rows: list[list[tuple[str, int]]], prefer: str | None = None
+) -> bool:
+    """Check monotonic increase (flat or hierarchical) under consistent interpretation."""
+
+    def _search(index: int, stack: list[tuple[str, int]]) -> bool:
+        if index >= len(rows):
+            return True
+        candidates = rows[index]
+        if prefer is not None:
+            sorted_candidates = sorted(
+                candidates, key=lambda c: 0 if c[0] == prefer else 1
+            )
         else:
-            for family, value in candidates:
-                if family == prefer:
-                    chosen = (family, value)
-                    break
-            if chosen is None:
-                chosen = candidates[0]
-        family, value = chosen
-        if family in previous and value <= previous[family]:
-            return False
-        previous[family] = value
-    return True
+            sorted_candidates = candidates
+        for family, value in sorted_candidates:
+            next_stack = _step_stack(stack, family, value)
+            if next_stack is not None and _search(index + 1, next_stack):
+                return True
+        return False
+
+    return _search(0, [])
 
 
 def _is_ordered_prose_grid(grid: list[tuple[str, ...]]) -> bool:
@@ -214,7 +244,7 @@ def is_false_table(
     if geometry is not None and geometry.rows:
         grid = [row for row in geometry.rows if any(cell.strip() for cell in row)]
         if not grid:
-            return False
+            return True
         span = max(len(row) for row in grid)
         effective = [
             index
@@ -233,7 +263,21 @@ def is_false_table(
                 row[effective[1]].strip() if effective[1] < len(row) else ""
                 for row in grid
             ]
-            if not all(_is_prose_marker(cell) for cell in first_column):
+            if all(
+                RE_ITEM_REFERENCE.match(cell) or RE_PART_REFERENCE.match(cell)
+                for cell in first_column
+            ):
+                if any(is_numeric_cell(cell) for cell in second_column if cell):
+                    return False
+                return not any(
+                    looks_like_toc_row(" ".join(row))
+                    or looks_like_toc_tabular(" ".join(row))
+                    for row in grid
+                )
+            non_empty_first = [cell for cell in first_column if cell]
+            if not non_empty_first or not all(
+                _is_prose_marker(cell) for cell in non_empty_first
+            ):
                 return False
             if any(is_numeric_cell(cell) for cell in second_column if cell):
                 return False
@@ -242,22 +286,28 @@ def is_false_table(
             # bullet or the table directly precedes a retained table.
             if (
                 not allow_footnote_context
-                and not all(_is_clear_bullet(cell) for cell in first_column)
-                and not all(_is_prose_text(cell) for cell in second_column)
+                and not all(_is_clear_bullet(cell) for cell in non_empty_first)
+                and not all(_is_prose_text(cell) for cell in second_column if cell)
             ):
                 return False
-        elif not _is_single_column_prose(lines):
+        elif not _is_single_column_prose(lines) or any(
+            looks_like_toc_row(line) or looks_like_toc_tabular(line) for line in lines
+        ):
             return False
         return True
     else:
         inner = table_body[len("<TABLE>") : -len("</TABLE>")]
         lines = [line.strip() for line in inner.splitlines() if line.strip()]
+    if not lines:
+        return True
     if len(lines) != 1:
         return False
     text = lines[0]
     if not text:
-        return False
-    if RE_PART_REFERENCE.match(text) or RE_ITEM_REFERENCE.match(text):
+        return True
+    if (RE_PART_REFERENCE.match(text) or RE_ITEM_REFERENCE.match(text)) and (
+        looks_like_toc_row(text) or looks_like_toc_tabular(text)
+    ):
         return False
     return not _RE_NUMERIC_SEPARATOR.match(text)
 
@@ -286,6 +336,8 @@ def _unwrap_block(block: str, geometry: TableGeometry | None = None) -> str:
     if geometry is not None and geometry.rows:
         rows = [[cell.strip() for cell in row if cell.strip()] for row in geometry.rows]
         rows = [row for row in rows if row]
+        if not rows:
+            return ""
         has_bullets = any(BULLET_MARKER_RE.match(cell) for row in rows for cell in row)
         has_ordered = any(_marker_candidates(cell) for row in rows for cell in row)
         if has_bullets or has_ordered:

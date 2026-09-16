@@ -130,6 +130,7 @@ def profile_table_family(
     top_k_headers: int = 20,
     top_k_rows: int = 30,
     sample_jittery: int = 0,
+    output_dir: Path | None = None,
 ) -> FamilyProfileResult:
     """Profiles a registered TableFamilySpec across the probe cache."""
     path = cache_path or default_probe_cache_path()
@@ -287,7 +288,9 @@ def profile_table_family(
                 }
             )
         if sample_records:
-            saved_p = save_sample_renders(sample_records, family_name=family_name)
+            saved_p = save_sample_renders(
+                sample_records, family_name=family_name, output_dir=output_dir
+            )
             saved_sample_path = str(saved_p)
 
     return FamilyProfileResult(

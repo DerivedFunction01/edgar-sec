@@ -426,8 +426,11 @@ export default function App() {
                 <RowDetail row={rows[selectedRowIndex]} onClose={() => setSelectedRowIndex(null)} />
               ) : cellFocus ? (
                 <CellFocus
+                  datasetId={selected?.id}
                   column={cellFocus.column}
                   value={cellFocus.row[cellFocus.column.name]}
+                  row={cellFocus.row}
+                  rowIndex={cellFocus.index}
                   onViewRow={() => setSelectedRowIndex(cellFocus.index)}
                   onClose={() => setCellFocus(null)}
                 />

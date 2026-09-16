@@ -13,6 +13,17 @@ INCORPORATED_REFERENCE_TERMS: tuple[str, ...] = (
     "part iii of this report",
 )
 
+ANNUAL_TARGET_EXHIBITS: tuple[str, ...] = (
+    "EX-13",
+    "EX-13.1",
+    "EX-13.2",
+    "EX-99",
+    "EX-99.1",
+    "EX-99.2",
+    "EX-99.3",
+    "EX-2.1",
+)
+
 ANNUAL_REPORT_TITLES: tuple[str, ...] = (
     "annual report pursuant to section 13 or 15(d) of the securities exchange act of 1934",
     "annual report pursuant to section 13 or 15(d)",
@@ -97,6 +108,7 @@ SHARES_VALUE_RE = re.compile(
 
 __all__ = [
     "ANNUAL_REPORT_TITLES",
+    "ANNUAL_TARGET_EXHIBITS",
     "DELINQUENT_FILERS_TERMS",
     "INCORPORATED_REFERENCE_TERMS",
     "PUBLIC_FLOAT_ANCHOR_RE",

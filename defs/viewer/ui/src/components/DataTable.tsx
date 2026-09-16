@@ -162,14 +162,31 @@ export default function DataTable({
                 >
                   {schema.map((column) => {
                     const value = row[column.name];
+                    const isBlob =
+                      value !== null &&
+                      typeof value === "object" &&
+                      "__blob__" in (value as Record<string, unknown>);
+                    const blobInfo = isBlob
+                      ? (value as {
+                          __blob__: boolean;
+                          size_bytes: number;
+                          is_compressed: boolean;
+                          preview?: string;
+                        })
+                      : null;
                     return (
                       <td
                         key={column.name}
-                        title={previewText(value)}
+                        title={blobInfo ? (blobInfo.preview ?? "BLOB") : previewText(value)}
                         onClick={() => onCellFocus(row, index, column)}
                       >
                         {value === null || value === undefined ? (
                           <span className="badge badge-null">NULL</span>
+                        ) : blobInfo ? (
+                          <span className="badge badge-kind mono" style={{ cursor: "pointer" }}>
+                            {blobInfo.is_compressed ? "⚡ ZSTD" : "BLOB"}{" "}
+                            {blobInfo.size_bytes.toLocaleString()} B
+                          </span>
                         ) : typeof value === "object" ? (
                           <span className="mono">{JSON.stringify(value).slice(0, 120)}</span>
                         ) : (

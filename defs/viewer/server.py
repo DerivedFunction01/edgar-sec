@@ -11,6 +11,7 @@ from fastapi.responses import JSONResponse
 from .datasets import (
     DatasetError,
     DatasetRef,
+    dataset_blob,
     dataset_column_stats,
     dataset_rows,
     dataset_schema,
@@ -20,6 +21,7 @@ from .discover import (
     ArtifactSummary,
     artifact_id,
     artifact_path,
+    artifact_table,
     discover_artifacts,
     discover_documents,
     summary_to_dict,
@@ -107,6 +109,29 @@ def create_app(artifacts_root: Path | None = None) -> FastAPI:
         except DatasetError as exc:
             raise HTTPException(status_code=400, detail=str(exc)) from exc
 
+    @app.get("/api/datasets/{dataset_id}/blob")
+    def get_blob(
+        dataset_id: str,
+        column: str = Query(..., description="Target blob column name"),
+        pk_col: str | None = Query(default=None, description="Primary key column name"),
+        pk_val: str | None = Query(default=None, description="Primary key value"),
+        row_index: int | None = Query(
+            default=None, ge=0, description="Zero-based row index fallback"
+        ),
+    ) -> dict:
+        summaries = discover_artifacts(root)
+        summary = _find(summaries, dataset_id)
+        try:
+            return dataset_blob(
+                _ref(summary, root),
+                column=column,
+                pk_col=pk_col,
+                pk_val=pk_val,
+                row_index=row_index,
+            )
+        except (ValueError, DatasetError) as exc:
+            raise HTTPException(status_code=400, detail=str(exc)) from exc
+
     @app.post("/api/datasets/{dataset_id}/sql")
     def post_sql(dataset_id: str, body: dict) -> dict:
         summaries = discover_artifacts(root)
@@ -160,4 +185,5 @@ def _ref(summary: ArtifactSummary, root: Path) -> DatasetRef:
         path=artifact_path(summary.id, root) if not paths else paths[0],
         fmt=summary.format,
         paths=paths,
+        table=summary.table or artifact_table(summary.id),
     )

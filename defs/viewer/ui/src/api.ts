@@ -84,6 +84,36 @@ export interface SqlResult {
   truncated: boolean;
 }
 
+export interface BlobResponse {
+  column: string;
+  is_compressed: boolean;
+  compressed_bytes: number;
+  decompressed_bytes: number;
+  compression_ratio: number;
+  mime_type: string;
+  text: string | null;
+  preview: string | null;
+}
+
+export function fetchBlob(
+  id: string,
+  params: {
+    column: string;
+    pkCol?: string;
+    pkVal?: string;
+    rowIndex?: number;
+  },
+): Promise<BlobResponse> {
+  const query = new URLSearchParams({ column: params.column });
+  if (params.pkCol && params.pkVal !== undefined) {
+    query.set("pk_col", params.pkCol);
+    query.set("pk_val", params.pkVal);
+  } else if (params.rowIndex !== undefined) {
+    query.set("row_index", String(params.rowIndex));
+  }
+  return getJson<BlobResponse>(`/api/datasets/${encodeURIComponent(id)}/blob?${query}`);
+}
+
 /** Latest known revision per artifact id (populated from every listing). */
 export const revisions = new Map<string, string>();
 

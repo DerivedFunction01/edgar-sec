@@ -3,6 +3,7 @@ from types import SimpleNamespace
 from defs.sec_forms.cover import (
     CheckboxCandidate,
     CoverBoundary,
+    CoverCheckmarkResult,
     InferenceStatus,
     PenaltyScorer,
     apply_cover_checkmark_decisions,
@@ -266,6 +267,53 @@ def test_pure_yes_no_table_is_inferred_and_unwrapped() -> None:
     ]
     assert changed
     assert updated == "[ ] Yes  [X] No"
+
+
+def test_duplicate_span_candidates_rewrite_one_physical_mark_once() -> None:
+    """Several semantic labels sharing one physical mark rewrite it once.
+
+    Regression: re-applying the same mark span sliced the expanded canonical
+    token into "[X]X]X]..." fragments on real 10-K covers whose single
+    Wingdings "x" was associated with every filer-status label.
+    """
+    head = "Indicate by check mark if disclosure of delinquent filers is not contained herein. "
+    tail = "\n\nIndicate by check mark whether the registrant is a shell company. "
+    text = f"{head}x{tail}x Yes\n"
+    delinquent_start = len(head)
+    shell_start = len(head) + 1 + len(tail)
+    filer_labels = (
+        "large_accelerated_filer",
+        "accelerated_filer",
+        "non_accelerated_filer",
+        "smaller_reporting_company",
+    )
+    candidates = (
+        *(
+            CheckboxCandidate(
+                key,
+                "x",
+                "filer_status",
+                source_region="line-0-mark-0",
+                mark_span=(delinquent_start, delinquent_start + 1),
+            )
+            for key in filer_labels
+        ),
+        CheckboxCandidate(
+            "shell_company",
+            "x",
+            "statutory",
+            source_region="line-1-mark-0",
+            mark_span=(shell_start, shell_start + 1),
+        ),
+    )
+    result = CoverCheckmarkResult(
+        status=InferenceStatus.RESOLVED, candidates=candidates
+    )
+
+    updated, changed = apply_cover_checkmark_decisions(text, result)
+
+    assert changed
+    assert updated == f"{head}[X]{tail}[X] Yes\n"
 
 
 def test_prose_asterisks_are_not_checkbox_candidates() -> None:

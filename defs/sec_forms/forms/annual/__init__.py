@@ -13,6 +13,9 @@ from defs.sec_forms.forms.annual.sequences import (
 )
 from defs.sec_forms.forms.annual.taxonomy import ITEMS, PARTS
 from defs.sec_forms.forms.annual.vocabulary import (
+    ANNUAL_REPORT_TITLES,
+    ANNUAL_TARGET_EXHIBITS,
+    DELINQUENT_FILERS_TERMS,
     INCORPORATED_REFERENCE_TERMS,
     PUBLIC_FLOAT_ANCHOR_RE,
     PUBLIC_FLOAT_EXACT_RE,
@@ -25,7 +28,10 @@ from defs.sec_forms.forms.annual.vocabulary import (
 
 __all__ = [
     "ANNUAL_ADDITIONAL_PHRASE_RULES",
+    "ANNUAL_REPORT_TITLES",
+    "ANNUAL_TARGET_EXHIBITS",
     "AUDITOR_RULES",
+    "DELINQUENT_FILERS_TERMS",
     "DOCUMENTS_INCORPORATED_RULES",
     "EXTENDED_TRANSITION_RULES",
     "INCORPORATED_REFERENCE_TERMS",

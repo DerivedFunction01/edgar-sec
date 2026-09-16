@@ -137,6 +137,18 @@ def archive_url_for(archive_cik: str, accession: str, document_path: str) -> str
     return f"{SEC_ARCHIVE_BASE}/{int(cik_text)}/{accession}/{path}"
 
 
+def full_submission_url_for(archive_cik: str, accession: str) -> str:
+    """Build the complete SGML submission .txt bundle URL for an accession.
+
+    Example: ``https://www.sec.gov/Archives/edgar/data/320193/000032019320000096/0000320193-20-000096.txt``
+    """
+    canonical = normalize_accession(accession)
+    if canonical is None:
+        raise ValueError(f"accession must be canonicalizable: {accession!r}")
+    dashed = accession_hyphenated(canonical)
+    return archive_url_for(archive_cik, canonical, f"{dashed}.txt")
+
+
 def occurrence_id(source_cik: str, accession: str, document_path: str | None) -> str:
     """Stable identity of one filing occurrence.
 
@@ -199,6 +211,7 @@ __all__ = [
     "document_locator_key",
     "filing_year",
     "fiscal_year",
+    "full_submission_url_for",
     "is_amendment_form",
     "normalize_accession",
     "occurrence_id",

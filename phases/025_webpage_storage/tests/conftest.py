@@ -154,6 +154,8 @@ def clean_transient_test_runs():
     runs_dir = paths.transient_root / "webpage_storage" / "runs"
     fixtures_dir = paths.fixtures_root
 
+    test_prefixes = ("test-", "cli-", "prog-run-", "multi-worker-run")
+
     existing_runs = set(runs_dir.iterdir()) if runs_dir.is_dir() else set()
     existing_fixtures = set(fixtures_dir.iterdir()) if fixtures_dir.is_dir() else set()
 
@@ -161,14 +163,14 @@ def clean_transient_test_runs():
 
     if runs_dir.is_dir():
         for p in runs_dir.iterdir():
-            if p not in existing_runs:
+            if p not in existing_runs or p.name.startswith(test_prefixes):
                 with suppress(Exception):
                     shutil.rmtree(p)
 
     if fixtures_dir.is_dir():
         for p in fixtures_dir.iterdir():
-            if p not in existing_fixtures and p.name.startswith(
-                ("test-", "cli-", "fix-")
-            ):
+            if (
+                p not in existing_fixtures or p.name.startswith(test_prefixes)
+            ) and p.name.startswith(("test-", "cli-", "fix-")):
                 with suppress(Exception):
                     shutil.rmtree(p)

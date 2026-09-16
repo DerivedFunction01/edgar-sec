@@ -109,11 +109,11 @@ def test_form_router_post_2011_temporal_bypass() -> None:
 def test_form_router_size_ceiling_bypass() -> None:
     router = FormRouter()
     loc = DocumentLocator(
-        locator_key="klarge",
+        locator_key="qlarge",
         accession="0000950124-04-000801",
-        document_path="k82532e10vk.htm",
-        archive_url="https://www.sec.gov/Archives/edgar/data/55067/000095012404000801/k82532e10vk.htm",
-        form="10-K",
+        document_path="q82532e10vq.htm",
+        archive_url="https://www.sec.gov/Archives/edgar/data/55067/000095012404000801/q82532e10vq.htm",
+        form="10-Q",
     )
     # Large 1.5MB HTML payload
     big_html = (

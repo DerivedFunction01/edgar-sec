@@ -255,3 +255,27 @@ def test_bullet_prefix_survives_unwrap() -> None:
         "    (a) The company manufactures widgets and sells them throughout "
         "the United States and Canada."
     ) in result.text
+
+
+def test_table_interrupted_prose_is_unified() -> None:
+    text = (
+        "PART I\n"
+        "ITEM 1. BUSINESS\n"
+        "\n"
+        "The following table summarizes revenue for the\n"
+        "years ended December 31, 2024 and 2023:\n"
+        "\n"
+        "<TABLE>\n"
+        "Revenue by segment       2024       2023\n"
+        "  Automotive             $1,200     $1,100\n"
+        "  Industrial             $2,050     $1,980\n"
+        "</TABLE>\n"
+        "\n"
+        "and shows strong growth across all segments."
+    )
+    result = reflow_ascii(text, body_start_line=3)
+    # The prose following the table should be unified with the sentence preceding it
+    assert (
+        "years ended December 31, 2024 and 2023: and shows strong growth across all segments."
+        in result.text
+    )

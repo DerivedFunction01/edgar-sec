@@ -227,6 +227,47 @@ def run_partition(
     run_paths = resolve_paths("webpage_storage", run_id)
     run_paths.ensure_run_layout()
 
+    # Plan-binding metadata and collision guard
+    meta_file = run_paths.run_root / "run_metadata.json"
+    if meta_file.exists():
+        with suppress(Exception):
+            from defs.storage import load_json
+
+            existing_meta = load_json(meta_file)
+            existing_plan = existing_meta.get("plan_id")
+            cur_plan = plan.get("plan_id")
+            if existing_plan and cur_plan and existing_plan != cur_plan:
+                raise ValueError(
+                    f"Run '{run_id}' was previously bound to plan '{existing_plan}', "
+                    f"but current plan is '{cur_plan}'. Use a distinct --run-id "
+                    f"or clear the run directory to avoid mixing chunk data."
+                )
+
+    from datetime import UTC, datetime
+
+    from defs.storage import atomic_write_json
+
+    run_meta = {
+        "run_id": run_id,
+        "phase": "webpage_storage",
+        "mode": mode.strip().lower(),
+        "plan_id": plan.get("plan_id"),
+        "plan_dir": str(plan_dir),
+        "scope": plan.get("scope"),
+        "total_target_docs": len(selected),
+        "total_plan_docs": len(locators),
+        "partition_id": partition_id,
+        "partition_count": partition_count,
+        "chunk_size": effective_chunk_size,
+        "workers": workers,
+        "fixture_paths": (
+            [str(p) for p in (fixture_paths or [])] if fixture_paths else None
+        ),
+        "started_at": datetime.now(UTC).strftime("%Y-%m-%dT%H:%M:%SZ"),
+        "status": "running",
+    }
+    atomic_write_json(meta_file, run_meta)
+
     tasks: list[_ChunkTask] = []
     chunk_count = (
         (len(selected) + effective_chunk_size - 1) // effective_chunk_size
@@ -374,6 +415,14 @@ def run_partition(
     merge_result: PartitionMergeResult = merge_partition(
         partition_path, [result.path for result in final_chunk_results]
     )
+
+    with suppress(Exception):
+        run_meta["status"] = "completed"
+        run_meta["completed_at"] = datetime.now(UTC).strftime("%Y-%m-%dT%H:%M:%SZ")
+        run_meta["blob_count"] = sum(r.blob_count for r in final_chunk_results)
+        run_meta["failure_count"] = sum(len(r.failures) for r in final_chunk_results)
+        atomic_write_json(meta_file, run_meta)
+
     return {
         "plan": plan,
         "partition_id": partition_id,

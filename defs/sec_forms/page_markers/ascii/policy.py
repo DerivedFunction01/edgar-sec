@@ -3,7 +3,10 @@
 from __future__ import annotations
 
 import hashlib
+import re
 from dataclasses import replace
+
+from defs.text.healing import NEGATIVE_BOUNDARY_RE
 
 from ..artifacts import (
     note_template,
@@ -19,6 +22,8 @@ from ..models import (
     PageMarkerKind,
 )
 from .orchestrator import analyze_page_markers
+
+_TERMINAL_PUNCT = re.compile(r"[.:;!?\"\x27\u201d\u2019)]\s*$")
 
 
 def strip_page_markers(
@@ -54,7 +59,18 @@ def strip_page_markers(
             merged.append((start, end))
     result = document
     for start, end in reversed(merged):
-        result = result[:start] + result[end:]
+        prec = result[:start].rstrip()
+        succ = result[end:].lstrip()
+        if (
+            prec
+            and succ
+            and not _TERMINAL_PUNCT.search(prec)
+            and succ[:1].islower()
+            and not NEGATIVE_BOUNDARY_RE.search(succ)
+        ):
+            result = prec + " " + succ
+        else:
+            result = result[:start] + result[end:]
     return result
 
 
@@ -181,7 +197,18 @@ def apply_page_markers(
             newline = "\n" if result[end - 1 : end] == "\n" else ""
             result = result[:start] + token + newline + result[end:]
         else:
-            result = result[:start] + result[end:]
+            prec = result[:start].rstrip()
+            succ = result[end:].lstrip()
+            if (
+                prec
+                and succ
+                and not _TERMINAL_PUNCT.search(prec)
+                and succ[:1].islower()
+                and not NEGATIVE_BOUNDARY_RE.search(succ)
+            ):
+                result = prec + " " + succ
+            else:
+                result = result[:start] + result[end:]
         assigned.extend(members)
     assigned.reverse()
     artifacts.extend(assigned)

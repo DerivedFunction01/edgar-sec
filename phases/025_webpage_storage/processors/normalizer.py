@@ -281,11 +281,15 @@ class DeepNormalizer:
                 evidence=profile.body_evidence,
                 toc_span=toc_span,
             )
-        if (
-            not is_html
-            and body_start is not None
-            and body_start.first_unit_line is not None
-        ):
+        body_start_line = (
+            body_start.first_unit_line
+            if (body_start is not None and body_start.first_unit_line is not None)
+            else max(
+                (boundary.end_line or 0) if boundary else 0,
+                (toc_span.end_line or 0) if toc_span else 0,
+            )
+        )
+        if not is_html and body_start_line > 0:
             stage_trace.append(
                 {
                     "stage": "before_reflow",
@@ -297,7 +301,7 @@ class DeepNormalizer:
             )
             reflow_result = reflow_ascii(
                 text,
-                body_start_line=body_start.first_unit_line,
+                body_start_line=body_start_line,
                 page_analysis=page_analysis,
             )
             text = reflow_result.text

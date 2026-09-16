@@ -6,6 +6,7 @@ import html as html_lib
 import re
 
 from defs.regex import build_alternation
+from defs.text.tokens import is_list_or_bullet_marker
 from defs.text.unicode import sanitize_unicode_whitespace
 
 from .tags import CONTAINER_BLOCK_TAGS, INLINE_TAGS, PARAGRAPH_TAGS
@@ -35,6 +36,27 @@ _RE_P_CONTAINER = re.compile(r"<p\b[^>]*>(.*?)</p>", re.DOTALL | re.IGNORECASE)
 _RE_DIV_TAG = re.compile(r"</?div\b[^>]*>", re.IGNORECASE)
 _RE_RAW_SOURCE_WHITESPACE = re.compile(r"[\r\n\t]+")
 
+_RE_DL_ITEM = re.compile(
+    r"<dt\b[^>]*>(.*?)</dt>\s*(<dd\b[^>]*>)",
+    re.IGNORECASE | re.DOTALL,
+)
+_RE_TRAILING_BR_DD = re.compile(r"(?:<br\s*/?>\s*)+(?=</dd>)", re.IGNORECASE)
+_RE_TAG_STRIP = re.compile(r"<[^>]+>")
+
+
+def _unify_dl_bullet(match: re.Match[str]) -> str:
+    """Unify definition list markers with their description content.
+
+    When a <dt> contains only a bullet or list marker, fuse it directly into
+    the succeeding <dd> block so list items render with their marker inline.
+    """
+    dt_content = match.group(1)
+    dd_tag = match.group(2)
+    clean_dt = _RE_TAG_STRIP.sub("", dt_content).strip()
+    if is_list_or_bullet_marker(clean_dt):
+        return f"{dd_tag}{clean_dt} "
+    return match.group(0)
+
 
 def _collapse_source_whitespace_factory(sentinel_prefix: str, sentinel_suffix: str):
     """Build a whitespace-run collapser that keeps table-sentinel separators.
@@ -54,16 +76,47 @@ def _collapse_source_whitespace_factory(sentinel_prefix: str, sentinel_suffix: s
         after = text[end:].lstrip()
         if before.endswith(sentinel_suffix) or after.startswith(sentinel_prefix):
             return "\n"
+        first_token = after.split(maxsplit=1)[0] if after else ""
+        if first_token and is_list_or_bullet_marker(first_token):
+            return "\n"
         return " "
 
     return _collapse
 
 
 def _clean_p_content(match: re.Match[str]) -> str:
-    """Strip layout containers inside paragraph elements so text flows as single lines."""
+    """Strip layout containers inside paragraph elements so text flows as single lines.
+
+    When a table was embedded inside a <p> container in HTML, lift the table
+    outside the <p> while preserving the continuous paragraph prose above it.
+    """
+    from defs.tables.protection import SENTINEL_PREFIX, SENTINEL_SUFFIX
+
     content = match.group(1)
     cleaned = _RE_DIV_TAG.sub(" ", content)
-    return f"<p>{cleaned}</p>"
+
+    sentinel_pattern = re.compile(
+        rf"({re.escape(SENTINEL_PREFIX)}\d+{re.escape(SENTINEL_SUFFIX)})"
+    )
+    parts = sentinel_pattern.split(cleaned)
+    if len(parts) == 1:
+        return f"<p>{cleaned}</p>"
+
+    prose_parts = []
+    sentinels = []
+    for i, part in enumerate(parts):
+        if i % 2 == 0:
+            if part.strip():
+                prose_parts.append(part.strip())
+        else:
+            sentinels.append(part)
+
+    result_pieces = []
+    if prose_parts:
+        unified_prose = " ".join(prose_parts)
+        result_pieces.append(f"<p>{unified_prose}</p>")
+    result_pieces.extend(sentinels)
+    return "\n\n".join(result_pieces)
 
 
 def decompose_html_structures(html: str) -> str:
@@ -94,7 +147,8 @@ def decompose_html_structures(html: str) -> str:
     # 3. Convert display:inline divs to spans
     masked = _RE_INLINE_DIV.sub(r"<span\1>", masked)
 
-    # 4. Handle line breaks (consecutive <br> to \n\n, single <br> to space)
+    # 4. Strip redundant trailing breaks in description lists, then handle line breaks
+    masked = _RE_TRAILING_BR_DD.sub("", masked)
     masked = _RE_CONSECUTIVE_BR.sub("\n\n", masked)
     masked = _RE_SINGLE_BR.sub(" ", masked)
 
@@ -112,7 +166,8 @@ def decompose_html_structures(html: str) -> str:
         _collapse_source_whitespace_factory(SENTINEL_PREFIX, SENTINEL_SUFFIX), masked
     )
 
-    # 8. Delimit semantic block boundaries
+    # 8. Unify definition-list bullets and delimit semantic block boundaries
+    masked = _RE_DL_ITEM.sub(_unify_dl_bullet, masked)
     masked = _RE_PARAGRAPH_TAGS.sub("\n\n", masked)
     masked = _RE_CONTAINER_TAGS.sub("\n", masked)
 

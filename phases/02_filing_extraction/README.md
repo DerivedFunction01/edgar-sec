@@ -81,7 +81,12 @@ environment → machine-derived value.
   --source-artifact .artifacts/manifests/metadata/submission_metadata/final/submission_metadata.parquet
 .venv/bin/python -m phases.02_filing_extraction.cli materialize \
   --source-manifest .artifacts/manifests/metadata/submission_metadata/final/<artifact-id>.json
-.venv/bin/python -m phases.02_filing_extraction.cli plan --catalog <catalog-id-or-final-manifest-directory>
+.venv/bin/python -m phases.02_filing_extraction.cli plan \
+  --catalog <catalog-id-or-final-manifest-directory> \
+  --form 10-K --form 10-K/A --form 10-K405 --form 10-KSB --form 10-KT --form 10KSB
+# Or plan with custom config override:
+.venv/bin/python -m phases.02_filing_extraction.cli plan \
+  --catalog <catalog-id> --config .artifacts/filing_extraction/config.json
 .venv/bin/python -m phases.02_filing_extraction.cli expand \
   --parent-plan <fixture-plan-directory> --target-units 10000 \
   --selection-policy <selection-policy.json>

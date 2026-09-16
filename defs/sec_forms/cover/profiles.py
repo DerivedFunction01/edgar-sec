@@ -18,6 +18,7 @@ from defs.sec_forms.forms.annual import ANNUAL_ADDITIONAL_PHRASE_RULES
 from defs.sec_forms.forms.common import BodyEvidencePack, CoverEvidencePack
 from defs.sec_forms.forms.profiles import (
     build_annual_profile,
+    build_current_report_profile,
     build_no_cover_profile,
     build_quarterly_profile,
 )
@@ -116,7 +117,8 @@ def _build_profiles() -> dict[str, CoverProfile]:
 
     annual_evidence = build_annual_profile("10-K")
     quarterly_evidence = build_quarterly_profile("10-Q")
-    no_cover_evidence = build_no_cover_profile("8-K")
+    current_report_evidence = build_current_report_profile("8-K")
+    no_cover_evidence = build_no_cover_profile("GENERIC")
 
     annual_common = _make_profile(
         family="10-K",
@@ -169,11 +171,38 @@ def _build_profiles() -> dict[str, CoverProfile]:
         table_scope=TableScope.BODY,
         labels=NO_COVER_LABELS,
         healing_rules=NO_COVER_PHRASE_RULES,
-        cover_evidence=no_cover_evidence.cover_evidence,
-        body_evidence=no_cover_evidence.body_evidence,
+        cover_evidence=current_report_evidence.cover_evidence,
+        body_evidence=current_report_evidence.body_evidence,
         derived_taxonomy=None,
     )
-    no_cover_6k = _dataclass_replace(no_cover_8k, family="6-K")
+    no_cover_6k = _dataclass_replace(
+        no_cover_8k,
+        family="6-K",
+        body_evidence=BodyEvidencePack(
+            structural_headings=(),
+            semantic_headings=(
+                "signatures",
+                "signature",
+                "exhibit",
+                "press release",
+                "forward-looking statements",
+                "forward looking statements",
+                "cautionary note",
+            ),
+            body_ngrams=current_report_evidence.body_evidence.body_ngrams
+            if current_report_evidence.body_evidence
+            else (),
+            body_verbs=current_report_evidence.body_evidence.body_verbs
+            if current_report_evidence.body_evidence
+            else (),
+            body_terms=current_report_evidence.body_evidence.body_terms
+            if current_report_evidence.body_evidence
+            else (),
+            lexical=current_report_evidence.body_evidence.lexical
+            if current_report_evidence.body_evidence
+            else None,
+        ),
+    )
     generic = _make_profile(
         family="GENERIC",
         boundary=None,

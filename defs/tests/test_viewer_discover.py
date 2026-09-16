@@ -137,3 +137,25 @@ def test_union_revision_changes_when_chunk_added(artifacts_root):
     union2 = next(item for item in second if item.kind == "run_union")
     assert union2.revision != first_revision
     assert len(union2.source_paths) == 3
+
+
+def test_sqlite_discovery_discovers_tables(artifacts_root):
+    import sqlite3
+
+    db_rel = "manifests/filing_documents/final/partition-00001.sqlite"
+    db_path = artifacts_root / db_rel
+    db_path.parent.mkdir(parents=True, exist_ok=True)
+    with sqlite3.connect(db_path) as conn:
+        conn.execute(
+            "CREATE TABLE filing_documents (accession_number TEXT, payload BLOB)"
+        )
+        conn.execute("CREATE TABLE metadata (run_id TEXT)")
+
+    datasets = discover_artifacts(artifacts_root)
+    by_rel = {item.relative_path: item for item in datasets}
+
+    assert f"{db_rel}::filing_documents" in by_rel
+    assert f"{db_rel}::metadata" in by_rel
+    item = by_rel[f"{db_rel}::filing_documents"]
+    assert item.format == "sqlite"
+    assert item.table == "filing_documents"

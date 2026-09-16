@@ -12,16 +12,17 @@ from its request-start rate limiter.
 Engineering contract and long-term direction live in [`AGENTS.md`](AGENTS.md)
 and [`roadmap/master_roadmap.md`](roadmap/master_roadmap.md).
 
-## Repository layout
+### Repository layout
 
 ```text
 defs/              # domain-neutral infrastructure (SEC HTTP, storage, runtime, sql, llm, viewer)
 phases/            # phase-owned schemas, normalization, planning, validation, merge
- 01_metadata_extraction/   # Pipeline A, Part 1 — submissions metadata
- 02_filing_extraction/     # Pipeline A, Part 2 — filing catalog and targets (no network)
- 025_webpage_storage/      # Phase 2.5 — raw document acquisition and storage
-  #   (future) Phase 3 — section extraction from stored documents
-roadmap/           # product and extraction specifications
+  01_metadata_extraction/   # Phase 01 — submissions metadata (data.sec.gov)
+  02_filing_extraction/     # Phase 02 — filing catalog and target planning (no network)
+  025_webpage_storage/      # Phase 2.5 — raw document acquisition and text normalization
+  #   (future) Phase 03 — section segmentation and boundary discovery
+roadmap/           # product and extraction specifications (Milestones M1–M5)
+scripts/           # operations and diagnostics (e.g. monitor_progress.py)
 uploads/           # input manifests
 .artifacts/        # published manifests and transient runs (git-ignored)
 ```
@@ -34,17 +35,23 @@ python run.py                 # interactive menu
 python run.py metadata        # Phase 01 interactive wizard
 python run.py filing-catalog  # Phase 02 interactive materialize/plan menu
 python run.py viewer          # local read-only dataset viewer
-python run.py webpage-storage  # Phase 2.5 interactive document acquisition
+python run.py webpage-storage # Phase 2.5 interactive document acquisition
 python run.py append --plan-dir <expanded-plan> --fixture-id <fixture-id>
 python run.py settings generate-dotenv   # write a documented .env template
+
+# Live acquisition monitoring:
+python scripts/monitor_progress.py --watch
 
 # Or use a component's canonical command surface directly:
 .venv/bin/python -m phases.01_metadata_extraction.cli plan \
     --config .artifacts/metadata/config.json
+.venv/bin/python -m phases.025_webpage_storage.cli run \
+    --scope full --mode production --workers 8
 .venv/bin/python -m defs.viewer --artifacts-root .artifacts
 # Portable published-artifact transport:
 .venv/bin/python -m defs.runtime.bundle create --artifact-id <id> \
     --output artifacts.bundle.zip
+
 # Or choose Artifact Bundle from `python run.py` for the interactive workflow.
 ```
 
@@ -64,15 +71,17 @@ writes secret values.
 
 Fetches the SEC `data.sec.gov/submissions` feed per CIK, follows historical
 submissions files, and produces one `submission_metadata` row per CIK (recent +
- historical filings combined into a nested `filings` list) with strict
- normalization, provenance, and resumable chunk/partition execution.
+historical filings combined into a nested `filings` list) with strict
+normalization, provenance, and resumable chunk/partition execution.
 
 ### [Phase 02 — Filing Catalog](phases/02_filing_extraction/README.md)
 
 Materializes form-partitioned filing occurrences from the finalized Phase 01
 artifact without network access or Phase 01 chunk reads, then plans deterministic
 target selections for later archive resolution. Phase 02 is no-network metadata
-preparation only; it does not fetch filing documents.
+preparation only; it does not fetch filing documents. Supports `--scope full`
+for comprehensive annual/quarterly multi-form target plans and deterministic
+`--config` overrides.
 
 Materialization is memory-bounded: source rows are processed in CIK-keyset
 batches (configurable, default 1,000) through disk-backed DuckDB staging tables
@@ -85,33 +94,33 @@ The interactive launcher (`python run.py filing-catalog`) and the canonical CLI
 contract. Filing document acquisition is a separate Phase 2.5 boundary that
 consumes these target plans; see the Phase 02 README for the scope split.
 
-### [Phase 2.5 — Webpage Storage](phases/025_webpage_storage/README.md)
+### [Phase 2.5 — Webpage Storage & Normalization](phases/025_webpage_storage/README.md)
 
 Acquires and stores raw SEC filing documents (HTML, SGML, iXBRL) as
 content-addressed, zstd-compressed SQLite BLOBs, linked to Phase 02 corporate
-occurrences, and applies cover-page normalization (string-first HTML preprocessing
-with layout-table decomposition, form-scoped checkbox constraint inference, and
-text healing). Ambiguous modern cover glyphs are resolved only when a unique
-lowest-penalty report-period, filer-status, or statutory Boolean hypothesis is
-available; unresolved groups remain inspectable. Fixture IDs
-are reusable appendable test caches: an expanded child plan reuses existing
-blobs and fetches only missing locators. Document parsing and section
-extraction are later phases built on the stored and normalized `document_blobs`.
-The phase also provides a fixture-ID document corpus review workflow with
-20-document batches and exact promoted output goldens.
+occurrences, and applies multi-era text normalization:
+- **SGML multi-document envelope unpacking**: Extracts target filings and exhibits from concatenated SGML submission envelopes (`defs.sec_documents.sgml`).
+- **String-first HTML preprocessing**: Renders HTML to canonical text, preserves tagged `<TABLE>` blocks, and unrolls nested markup (`defs.text.html`).
+- **Form-scoped checkbox constraint solver**: Evaluates glyph penalty hypotheses for report periods, filer statuses, and statutory Booleans (`defs.sec_forms.cover`).
+- **Canonical body start alignment**: Uses tiered lexical scoring to anchor the start of substantive body text past cover and TOC pages.
+- **ASCII table recognition & reflow**: Detects untagged multi-column ASCII tables and unwraps hard-wrapped prose and list/bullet markers (`defs.text.reflow`).
+- **Live monitoring**: Real-time read-only status and throughput inspection via `scripts/monitor_progress.py`.
+
+Fixture IDs provide reusable appendable test caches: an expanded child plan reuses
+existing blobs and fetches only missing locators. Document section segmentation and
+financial table extraction are downstream phases built on `document_blobs` and
+`normalized_documents`.
 
 ## Tools
 
 ### [Shared Infrastructure (`defs/`)](defs/README.md)
 
-Domain-neutral contracts: SEC HTTP client (pacing/retries/caching), canonical
-filing identity (accessions, archive URLs, occurrence IDs, document locator
-keys), storage backends, SQL boundary, `sec_forms/` (shared SEC form definitions,
-cover-page contracts, and the coordinate-safe `page_markers/` analysis package
-with ASCII discovery, the string-first `fast_html/` HTML break-to-text
-adapter, structural pruning, policy-driven page-artifact
-rendering, and safety invariants),
-and the shared phase runtime.
+Domain-neutral contracts: SEC HTTP client (pacing/retries/caching/broker), canonical
+filing identity (accessions, archive URLs, occurrence IDs, document locator keys),
+storage backends, SQL boundary, SEC document handling (`defs/sec_documents/`),
+`sec_forms/` (shared form definitions, cover-page contracts, coordinate-safe
+`page_markers/` analysis), text reflow/lexical evidence (`defs/text/`), and the
+shared phase runtime.
 
 ### [Dataset Viewer](defs/viewer/README.md)
 
@@ -122,10 +131,9 @@ read-only SQL console — with a built TypeScript UI.
 
 The [shared table engine](defs/tables/README.md) provides HTML span-grid
 resolution, layout-table unwrapping, financial column healing, standardized
-ASCII table generation, and exact tagged-table protection
-(`protection.py`) for document-processing phases. Its tracked validated corpus
-is stored in one Parquet fixture, with threshold reports written to the shared
-`.artifacts/test-runs/` location.
+ASCII table generation, and exact tagged-table protection (`protection.py`)
+for document-processing phases. Tracked validated corpora live in Parquet
+fixtures with threshold reports written under `.artifacts/test-runs/`.
 
 ## Conventions
 

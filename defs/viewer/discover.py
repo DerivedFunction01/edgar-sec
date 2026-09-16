@@ -24,7 +24,12 @@ DOCUMENT_ROLES = frozenset(
     }
 )
 
-_TABULAR_SUFFIXES = {".parquet": "parquet", ".jsonl": "jsonl"}
+_TABULAR_SUFFIXES = {
+    ".parquet": "parquet",
+    ".jsonl": "jsonl",
+    ".sqlite": "sqlite",
+    ".db": "sqlite",
+}
 
 
 @dataclass(frozen=True)
@@ -39,6 +44,7 @@ class ArtifactSummary:
     mtime: str | None
     revision: str = ""
     source_paths: tuple[str, ...] = ()
+    table: str | None = None
 
 
 def compute_revision(size_bytes: int, mtime_ns: int) -> str:
@@ -61,7 +67,11 @@ def compute_union_revision(items: list[ArtifactSummary]) -> str:
 
 def artifact_id(relative_path: str | Path) -> str:
     """URL-safe opaque id for an artifact relative path."""
-    posix = Path(relative_path).as_posix()
+    posix = (
+        Path(relative_path).as_posix()
+        if isinstance(relative_path, Path)
+        else str(relative_path)
+    )
     return base64.urlsafe_b64encode(posix.encode("utf-8")).decode("ascii")
 
 
@@ -73,11 +83,25 @@ def artifact_path(artifact_id_value: str, root: Path) -> Path:
         )
     except Exception as exc:
         raise ValueError(f"invalid dataset id: {artifact_id_value!r}") from exc
-    candidate = (root / relative).resolve()
+    base_relative = relative.split("::")[0]
+    candidate = (root / base_relative).resolve()
     root_resolved = root.resolve()
     if candidate != root_resolved and root_resolved not in candidate.parents:
         raise ValueError("dataset path escapes the artifacts root")
     return candidate
+
+
+def artifact_table(artifact_id_value: str) -> str | None:
+    """Extract table name from a composite SQLite dataset id if present."""
+    try:
+        relative = base64.urlsafe_b64decode(artifact_id_value.encode("ascii")).decode(
+            "utf-8"
+        )
+        if "::" in relative:
+            return relative.split("::", 1)[1]
+    except (ValueError, UnicodeDecodeError):
+        return None
+    return None
 
 
 def _suffix_format(suffix: str) -> str | None:
@@ -94,7 +118,24 @@ def _mtime_iso(stat: os.stat_result) -> str | None:
     )
 
 
-def _summarize(root: Path, file_path: Path) -> ArtifactSummary | None:
+def _get_sqlite_tables(file_path: Path) -> list[str]:
+    """Inspect tables inside an SQLite database using DuckDB's sqlite_scan."""
+    import duckdb
+
+    try:
+        path_str = str(file_path.resolve()).replace("'", "''")
+        conn = duckdb.connect(database=":memory:")
+        rows = conn.execute(
+            f"SELECT name FROM sqlite_scan('{path_str}', 'sqlite_master') "
+            f"WHERE type='table' AND name NOT LIKE 'sqlite_%' ORDER BY name;"
+        ).fetchall()
+        conn.close()
+        return [row[0] for row in rows]
+    except (duckdb.Error, OSError, RuntimeError):
+        return []
+
+
+def _summarize(root: Path, file_path: Path) -> list[ArtifactSummary]:
     relative = file_path.relative_to(root)
     classification = classify_artifact_path(relative)
     stat = file_path.stat()
@@ -106,18 +147,42 @@ def _summarize(root: Path, file_path: Path) -> ArtifactSummary | None:
         ):
             fmt = "json"
         else:
-            return None
-    return ArtifactSummary(
-        id=artifact_id(relative),
-        relative_path=relative.as_posix(),
-        phase=classification.phase,
-        run_id=classification.run_id,
-        kind=classification.role.value,
-        format=fmt,
-        size_bytes=stat.st_size,
-        mtime=_mtime_iso(stat),
-        revision=compute_revision(stat.st_size, stat.st_mtime_ns),
-    )
+            return []
+
+    if fmt == "sqlite":
+        tables = _get_sqlite_tables(file_path)
+        if tables:
+            summaries = []
+            for tbl in tables:
+                rel_with_tbl = f"{relative.as_posix()}::{tbl}"
+                summaries.append(
+                    ArtifactSummary(
+                        id=artifact_id(rel_with_tbl),
+                        relative_path=rel_with_tbl,
+                        phase=classification.phase,
+                        run_id=classification.run_id,
+                        kind=classification.role.value,
+                        format=fmt,
+                        size_bytes=stat.st_size,
+                        mtime=_mtime_iso(stat),
+                        revision=compute_revision(stat.st_size, stat.st_mtime_ns),
+                        table=tbl,
+                    )
+                )
+            return summaries
+    return [
+        ArtifactSummary(
+            id=artifact_id(relative),
+            relative_path=relative.as_posix(),
+            phase=classification.phase,
+            run_id=classification.run_id,
+            kind=classification.role.value,
+            format=fmt,
+            size_bytes=stat.st_size,
+            mtime=_mtime_iso(stat),
+            revision=compute_revision(stat.st_size, stat.st_mtime_ns),
+        )
+    ]
 
 
 def discover_artifacts(root: Path) -> list[ArtifactSummary]:
@@ -126,9 +191,10 @@ def discover_artifacts(root: Path) -> list[ArtifactSummary]:
     for current, _dirs, files in os.walk(root):
         for name in files:
             file_path = Path(current) / name
-            summary = _summarize(root, file_path)
-            if summary is not None and summary.format in {"parquet", "jsonl"}:
-                summaries.append(summary)
+            file_summaries = _summarize(root, file_path)
+            for summary in file_summaries:
+                if summary.format in {"parquet", "jsonl", "sqlite"}:
+                    summaries.append(summary)
     unions: list[ArtifactSummary] = []
     grouped: dict[tuple[str, str, str], list[ArtifactSummary]] = {}
     for item in summaries:
@@ -177,9 +243,10 @@ def discover_documents(root: Path) -> list[ArtifactSummary]:
     for current, _dirs, files in os.walk(root):
         for name in files:
             file_path = Path(current) / name
-            summary = _summarize(root, file_path)
-            if summary is not None and summary.format == "json":
-                summaries.append(summary)
+            file_summaries = _summarize(root, file_path)
+            for summary in file_summaries:
+                if summary.format == "json":
+                    summaries.append(summary)
     summaries.sort(key=lambda item: item.relative_path)
     return summaries
 

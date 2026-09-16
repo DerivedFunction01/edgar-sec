@@ -47,18 +47,56 @@ def test_consecutive_prose_fragments_collapse_with_spaces() -> None:
     assert result == "First fragment. Second fragment."
 
 
-def test_item_heading_table_is_retained() -> None:
+def test_item_heading_furniture_table_is_unwrapped() -> None:
     text = "<TABLE>\nITEM 5. MARKET FOR REGISTRANT'S COMMON EQUITY\n</TABLE>"
 
-    assert is_false_table(text) is False
-    assert cleanup_false_tables(text) == text
+    assert is_false_table(text) is True
+    assert cleanup_false_tables(text) == "ITEM 5. MARKET FOR REGISTRANT'S COMMON EQUITY"
 
 
-def test_part_heading_table_is_retained() -> None:
+def test_part_heading_furniture_table_is_unwrapped() -> None:
     text = "<TABLE>\nPART I\n</TABLE>"
 
+    assert is_false_table(text) is True
+    assert cleanup_false_tables(text) == "PART I"
+
+
+def test_toc_item_row_with_page_number_is_retained() -> None:
+    text = "<TABLE>\nItem 1 Business                            10\n</TABLE>"
+
     assert is_false_table(text) is False
     assert cleanup_false_tables(text) == text
+
+
+def test_toc_item_row_with_namespaced_page_number_is_retained() -> None:
+    text = "<TABLE>\nItem 1 Business                            F-1\n</TABLE>"
+
+    assert is_false_table(text) is False
+    assert cleanup_false_tables(text) == text
+
+
+def test_toc_item_row_with_dot_leader_is_retained() -> None:
+    text = "<TABLE>\nITEM 1. BUSINESS .......................... 1\n</TABLE>"
+
+    assert is_false_table(text) is False
+    assert cleanup_false_tables(text) == text
+
+
+def test_item_heading_two_column_geometry_is_unwrapped() -> None:
+    html = (
+        "<table><tr>"
+        "<td>ITEM 7.</td>"
+        "<td>MANAGEMENT'S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION</td>"
+        "</tr></table>"
+    )
+    result = convert_html_table(html)
+    geometry = TableGeometry(table_index=0, render_result=result)
+    text = "<TABLE>ITEM 7.  MANAGEMENT'S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION</TABLE>"
+    assert is_false_table(text, geometry) is True
+    assert (
+        cleanup_false_tables(text, (geometry,))
+        == "ITEM 7. MANAGEMENT'S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION"
+    )
 
 
 def test_multi_line_financial_table_is_retained() -> None:
@@ -74,11 +112,78 @@ def test_multi_line_financial_table_is_retained() -> None:
     assert cleanup_false_tables(text) == text
 
 
-def test_empty_table_is_not_classified_as_false() -> None:
+def test_empty_table_is_unwrapped() -> None:
     text = "<TABLE>\n</TABLE>"
 
-    assert is_false_table(text) is False
-    assert cleanup_false_tables(text) == text
+    assert is_false_table(text) is True
+    assert cleanup_false_tables(text) == ""
+
+
+def test_empty_geometry_table_is_unwrapped() -> None:
+    result = convert_html_table("<table><tr><td></td><td>   </td></tr></table>")
+    geometry = TableGeometry(table_index=0, render_result=result)
+    text = "<TABLE></TABLE>"
+
+    assert is_false_table(text, geometry) is True
+    assert cleanup_false_tables(text, (geometry,)) == ""
+
+
+def test_bullet_with_continuation_row_is_unwrapped() -> None:
+    html = (
+        "<table>"
+        "<tr><td>•</td><td>First paragraph of risk factor.</td></tr>"
+        "<tr><td></td><td>Second continuation paragraph of the risk factor.</td></tr>"
+        "</table>"
+    )
+    result = convert_html_table(html)
+    geometry = TableGeometry(table_index=0, render_result=result)
+    text = "<TABLE>• First paragraph of risk factor.\nSecond continuation paragraph of the risk factor.</TABLE>"
+    assert is_false_table(text, geometry) is True
+    assert (
+        cleanup_false_tables(text, (geometry,))
+        == "• First paragraph of risk factor.\nSecond continuation paragraph of the risk factor."
+    )
+
+
+def test_hierarchical_outline_is_unwrapped() -> None:
+    html = (
+        "<table>"
+        "<tr><td>(a)</td><td>General terms and conditions applying to all operations.</td></tr>"
+        "<tr><td>(i)</td><td>Sub-clause regarding domestic operational limits.</td></tr>"
+        "<tr><td>(ii)</td><td>Sub-clause regarding international operational limits.</td></tr>"
+        "<tr><td>(b)</td><td>Specific terms applicable only to defined subsidiaries.</td></tr>"
+        "<tr><td>(i)</td><td>Subsidiary compliance and reporting obligations.</td></tr>"
+        "</table>"
+    )
+    result = convert_html_table(html)
+    geometry = TableGeometry(table_index=0, render_result=result)
+    text = (
+        "<TABLE>(a) General terms and conditions applying to all operations.\n"
+        "(i) Sub-clause regarding domestic operational limits.\n"
+        "(ii) Sub-clause regarding international operational limits.\n"
+        "(b) Specific terms applicable only to defined subsidiaries.\n"
+        "(i) Subsidiary compliance and reporting obligations.</TABLE>"
+    )
+    assert is_false_table(text, geometry) is True
+    unwrapped = cleanup_false_tables(text, (geometry,))
+    assert "(a) General terms" in unwrapped
+    assert "(b) Specific terms" in unwrapped
+
+
+def test_numbered_lettered_hierarchical_outline_is_unwrapped() -> None:
+    html = (
+        "<table>"
+        "<tr><td>(1)</td><td>First section governing capital requirements and ratios.</td></tr>"
+        "<tr><td>(a)</td><td>Tier 1 leverage ratio calculation methodology details.</td></tr>"
+        "<tr><td>(b)</td><td>Total risk-based capital ratio calculation details.</td></tr>"
+        "<tr><td>(2)</td><td>Second section governing liquidity coverage requirements.</td></tr>"
+        "<tr><td>(a)</td><td>High quality liquid asset qualifying standards.</td></tr>"
+        "</table>"
+    )
+    result = convert_html_table(html)
+    geometry = TableGeometry(table_index=0, render_result=result)
+    text = "<TABLE>dummy</TABLE>"
+    assert is_false_table(text, geometry) is True
 
 
 def test_geometry_rows_drive_false_table_classification() -> None:

@@ -6,6 +6,7 @@ from dataclasses import dataclass
 
 from defs.sec_forms.forms.annual import AnnualReportEvidence
 from defs.sec_forms.forms.common import BodyEvidencePack, CoverEvidencePack
+from defs.sec_forms.forms.current_report import CurrentReportEvidence
 from defs.sec_forms.forms.quarterly import QuarterlyReportEvidence
 from defs.sec_forms.vocabulary import (
     COVER_EVIDENCE_TERMS,
@@ -54,7 +55,13 @@ def build_annual_profile(family: str) -> CoverProfile:
                 "forward-looking statements",
                 "forward looking statements",
                 "forward looking information",
+                "special note regarding forward-looking",
+                "special note regarding forward looking",
+                "cautionary statements",
+                "cautionary note",
                 "safe harbor",
+                "glossary of",
+                "definitions",
             ),
             body_ngrams=annual.body_ngrams,
             body_verbs=annual.body_verbs,
@@ -81,10 +88,51 @@ def build_quarterly_profile(family: str) -> CoverProfile:
             semantic_headings=(
                 "management's discussion and analysis",
                 "quantitative and qualitative disclosures",
+                "forward-looking statements",
+                "forward looking statements",
+                "forward looking information",
+                "cautionary statements",
+                "cautionary note",
+                "safe harbor",
             ),
             body_ngrams=quarterly.body_ngrams,
             body_verbs=quarterly.body_verbs,
             lexical=quarterly.body_lexical,
+        ),
+    )
+
+
+def build_current_report_profile(family: str) -> CoverProfile:
+    """Build a cover profile for current reports (8-K, 6-K)."""
+    from defs.sec_forms.forms.current_report.taxonomy import FORM_8K_ITEMS
+
+    current = CurrentReportEvidence()
+    structural_headings = tuple(d.item for d in FORM_8K_ITEMS)
+    return CoverProfile(
+        family=family,
+        boundary_enabled=False,
+        cover_evidence=CoverEvidencePack(
+            identity_terms=(),
+            shape_terms=(),
+            labels=NO_COVER_LABELS,
+        ),
+        body_evidence=BodyEvidencePack(
+            structural_headings=structural_headings,
+            semantic_headings=(
+                "item",
+                "forward-looking statements",
+                "forward looking statements",
+                "forward looking information",
+                "cautionary statements",
+                "cautionary note",
+                "safe harbor",
+                "signature",
+                "signatures",
+            ),
+            body_ngrams=current.body_ngrams,
+            body_verbs=current.body_verbs,
+            body_terms=current.body_terms,
+            lexical=current.body_lexical,
         ),
     )
 
@@ -108,6 +156,7 @@ __all__ = [
     "NO_COVER_LABELS",
     "CoverProfile",
     "build_annual_profile",
+    "build_current_report_profile",
     "build_no_cover_profile",
     "build_quarterly_profile",
 ]

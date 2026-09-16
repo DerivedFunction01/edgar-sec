@@ -39,3 +39,8 @@ ignore = ["TRY004"]
 # or stale broker socket; any transport/protocol failure means the broker is
 # not reachable, so the probes deliberately catch broad exceptions.
 "defs/sec_http/broker_cli.py" = ["BLE001"]
+
+# scripts/monitor_progress.py polls active chunk databases in read-only mode
+# while workers concurrently initialize, write, and lock tables; broad exception
+# catching is intentional to prevent polling crashes during in-flight writes.
+"scripts/monitor_progress.py" = ["BLE001", "S110"]

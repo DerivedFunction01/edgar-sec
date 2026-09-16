@@ -38,6 +38,7 @@ from .schemas import (
     NormalizationFailure,
     NormalizedDocument,
     build_blob,
+    compress_payload,
     decompress_payload,
     deterministic_metadata,
     doc_id,
@@ -233,7 +234,7 @@ def _persist_fetch_result(
                 ),
                 source_doc_id=target_doc_id,
                 byte_size=processed.byte_size,
-                normalized_payload=processed.payload,
+                normalized_payload=compress_payload(processed.payload),
                 payload_sha256=hashlib.sha256(processed.payload).hexdigest(),
                 mime_type=processed.mime_type,
                 representation=processed.representation,
@@ -284,23 +285,30 @@ def _persist_fetch_result(
     return "ok"
 
 
-def _run_concurrent_acquisitions(
+def _run_pipelined_acquisitions(
     locators: Sequence[DocumentLocator],
     *,
     fetcher: ArchiveFetcher,
-    processor: DocumentProcessor,
+    processor: DocumentProcessor | None,
     executor,
     occurrences_by_doc_id: Mapping[str, Sequence[FilingOccurrence]],
     existing_blobs: set[str],
     existing_failures: Mapping[str, tuple[str, str]],
     chunk_failures: list[ChunkFailure],
     progress: Callable[[dict], None] | None,
-    fetch_workers: int,
+    fetch_workers: int = 1,
+    prefetch_size: int = 16,
 ) -> None:
-    """Fetch uncached locators across a bounded thread pool; the coordinator
-    owns the SQLite connection and progress callbacks, so worker threads only
-    call ``fetcher.fetch`` and return the completed ``FetchResult``."""
-    from concurrent.futures import FIRST_COMPLETED, ThreadPoolExecutor, wait
+    """Acquire and persist uncached locators via a bounded producer-consumer pipeline.
+
+    Lightweight fetch threads pull raw payloads from the fetcher and push into
+    a bounded FIFO queue (maxsize items). The main coordinator thread consumes from the
+    queue and performs CPU normalization, table extraction, and SQLite persistence.
+    When the buffer is full, the fetch threads automatically pause, strictly bounding
+    RAM consumption to O(prefetch_size).
+    """
+    import queue
+    import threading
 
     pending: list[DocumentLocator] = [
         locator
@@ -311,51 +319,67 @@ def _run_concurrent_acquisitions(
     if not pending:
         return
 
-    with ThreadPoolExecutor(max_workers=max(1, fetch_workers)) as pool:
-        locator_iter = iter(pending)
-        future_to_locator: dict = {
-            pool.submit(_fetch, fetcher, locator): locator
-            for locator in (next(locator_iter, None) for _ in range(fetch_workers))
-            if locator is not None
-        }
-        while future_to_locator:
-            completed, _ = wait(future_to_locator, return_when=FIRST_COMPLETED)
-            for future in completed:
-                locator = future_to_locator.pop(future)
-                try:
-                    fetched = future.result()
-                except (OSError, RuntimeError, TypeError, ValueError) as exc:
-                    _persist_fetch_result(
-                        locator,
-                        None,
-                        fetcher=fetcher,
-                        processor=processor,
-                        executor=executor,
-                        occurrences_by_doc_id=occurrences_by_doc_id,
-                        existing_blobs=existing_blobs,
-                        existing_failures=existing_failures,
-                        chunk_failures=chunk_failures,
-                        progress=progress,
-                        error=str(exc) or type(exc).__name__,
-                    )
-                else:
-                    _persist_fetch_result(
-                        locator,
-                        fetched,
-                        fetcher=fetcher,
-                        processor=processor,
-                        executor=executor,
-                        occurrences_by_doc_id=occurrences_by_doc_id,
-                        existing_blobs=existing_blobs,
-                        existing_failures=existing_failures,
-                        chunk_failures=chunk_failures,
-                        progress=progress,
-                    )
-                replacement = next(locator_iter, None)
-                if replacement is not None:
-                    future_to_locator[pool.submit(_fetch, fetcher, replacement)] = (
-                        replacement
-                    )
+    sentinel = object()
+    worker_count = max(1, fetch_workers)
+    q: queue.Queue = queue.Queue(maxsize=max(worker_count * 2, prefetch_size))
+    locator_iter = iter(pending)
+    iter_lock = threading.Lock()
+
+    def producer() -> None:
+        while True:
+            with iter_lock:
+                loc = next(locator_iter, None)
+            if loc is None:
+                break
+            try:
+                fetched = _fetch(fetcher, loc)
+                q.put((loc, fetched, None))
+            except Exception as exc:  # noqa: BLE001
+                q.put((loc, None, str(exc) or type(exc).__name__))
+
+    threads = [
+        threading.Thread(target=producer, daemon=True) for _ in range(worker_count)
+    ]
+    for t in threads:
+        t.start()
+
+    def waiter() -> None:
+        for t in threads:
+            t.join()
+        q.put(sentinel)
+
+    waiter_thread = threading.Thread(target=waiter, daemon=True)
+    waiter_thread.start()
+
+    while True:
+        item = q.get()
+        if item is sentinel:
+            q.task_done()
+            break
+        loc, fetched, err = item
+        try:
+            _persist_fetch_result(
+                loc,
+                fetched,
+                fetcher=fetcher,
+                processor=processor,
+                executor=executor,
+                occurrences_by_doc_id=occurrences_by_doc_id,
+                existing_blobs=existing_blobs,
+                existing_failures=existing_failures,
+                chunk_failures=chunk_failures,
+                progress=progress,
+                error=err,
+            )
+        finally:
+            q.task_done()
+
+    waiter_thread.join()
 
 
-__all__ = ["ArchiveFetcher", "ChunkFailure", "ChunkResult"]
+__all__ = [
+    "ArchiveFetcher",
+    "ChunkFailure",
+    "ChunkResult",
+    "_run_pipelined_acquisitions",
+]

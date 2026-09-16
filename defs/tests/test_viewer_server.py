@@ -101,3 +101,82 @@ def test_listings_carry_revision_field(client, chunk_dataset, parquet_dataset):
         if item["relative_path"] == chunk_dataset["relative"].as_posix()
     )
     assert new_entry["revision"] != chunk_entry["revision"]
+
+
+def test_sqlite_and_blob_endpoints(client, artifacts_root):
+    import sqlite3
+
+    import zstandard as zstd
+
+    db_rel = "manifests/filing_documents/final/partition-00001.sqlite"
+    db_path = artifacts_root / db_rel
+    db_path.parent.mkdir(parents=True, exist_ok=True)
+
+    html_content = "<html><body><h1>Item 1. Business</h1></body></html>"
+    compressed_blob = zstd.ZstdCompressor(level=3).compress(
+        html_content.encode("utf-8")
+    )
+
+    with sqlite3.connect(db_path) as conn:
+        conn.execute(
+            "CREATE TABLE filing_documents (accession_number TEXT PRIMARY KEY, cik TEXT, normalized_payload BLOB)"
+        )
+        conn.execute(
+            "INSERT INTO filing_documents VALUES (?, ?, ?)",
+            ("0001000001-23-000001", "0001000001", compressed_blob),
+        )
+
+    http, _root = client
+
+    datasets = http.get("/api/datasets").json()
+    dataset = next(
+        d
+        for d in datasets
+        if "partition-00001.sqlite::filing_documents" in d["relative_path"]
+    )
+    dataset_id = dataset["id"]
+
+    # Test schema
+    schema = http.get(f"/api/datasets/{dataset_id}/schema").json()
+    assert {c["name"] for c in schema} == {
+        "accession_number",
+        "cik",
+        "normalized_payload",
+    }
+
+    # Test rows
+    rows = http.get(f"/api/datasets/{dataset_id}/rows").json()
+    assert len(rows["items"]) == 1
+    assert rows["items"][0]["normalized_payload"]["__blob__"] is True
+    assert rows["items"][0]["normalized_payload"]["is_compressed"] is True
+
+    # Test blob endpoint with primary key
+    blob_res = http.get(
+        f"/api/datasets/{dataset_id}/blob",
+        params={
+            "column": "normalized_payload",
+            "pk_col": "accession_number",
+            "pk_val": "0001000001-23-000001",
+        },
+    ).json()
+    assert blob_res["is_compressed"] is True
+    assert blob_res["mime_type"] == "text/html"
+    assert blob_res["text"] == html_content
+    assert blob_res["decompressed_bytes"] == len(html_content.encode("utf-8"))
+
+    # Test blob endpoint with row_index
+    blob_res2 = http.get(
+        f"/api/datasets/{dataset_id}/blob",
+        params={
+            "column": "normalized_payload",
+            "row_index": 0,
+        },
+    ).json()
+    assert blob_res2["text"] == html_content
+
+    # Test SQL on SQLite dataset
+    sql_res = http.post(
+        f"/api/datasets/{dataset_id}/sql",
+        json={"query": "SELECT COUNT(*) AS total FROM dataset"},
+    ).json()
+    assert sql_res["rows"][0]["total"] == 1

@@ -32,19 +32,26 @@ goldens live under `defs/tests/fixtures/tables/`.
 # Validate inputs and report planned acquisition counts (no network)
 .venv/bin/python -m phases.025_webpage_storage.cli preview --plan-dir <phase02-plan>
 
+# Acquire + store production target plan directly (resolves full 10-K production plan)
+.venv/bin/python -m phases.025_webpage_storage.cli run \
+  --scope full --mode production --workers 8
+
+# Or target a specific plan directory or plan ID:
+.venv/bin/python -m phases.025_webpage_storage.cli run \
+  --plan-id c2f54ad43d433b03bb597fd2 --mode production --workers 8
+
 # Acquire + store one partition in offline fixture mode with 4 workers
 .venv/bin/python -m phases.025_webpage_storage.cli run \
   --plan-dir <phase02-plan> --mode fixture --fixtures <fixture_id> \
   --partition-id 1 --partition-count 1 --workers 4
 
+# Monitor live acquisition progress in real-time (terminal UI with live throughput and disk usage):
+python scripts/monitor_progress.py --watch
+
 # Same run but store raw payloads without normalization
 .venv/bin/python -m phases.025_webpage_storage.cli run \
   --plan-dir <phase02-plan> --mode fixture --fixtures <fixture_id> \
   --partition-id 1 --partition-count 1 --workers 4 --no-normalize
-
-# Acquire in production mode (live SEC archive, 4 RPS pacing, failure ledger)
-.venv/bin/python -m phases.025_webpage_storage.cli run \
-  --plan-dir <phase02-plan> --mode production --workers 8
 
 # Fill/update one shared offline fixture from live SEC using machine-local
 # fetch threads; omit --workers to use runtime resource defaults
@@ -179,17 +186,15 @@ The boundary is normalization only — parsing and section extraction are later
 phases.
 
 - `DeepNormalizer` — coordinates form-specific and generic normalization passes
+- **SGML Multi-Document Unpacking** — `defs.sec_documents.sgml` unpacks concatenated submission envelopes (`<DOCUMENT>...</DOCUMENT>`), extracts target primary documents and exhibits (`EX-10`, `EX-21`, `EX-99`), parses filing headers (`<SEC-HEADER>`), and assigns distinct document identifiers.
 - Shared cover boundary and healing — `find_cover_boundary_for_profile()` and `heal_cover_text()` are representation-neutral and operate on the normalized text frame; form normalizers expose heading normalization only
 - Form-family normalizers — `Form10KNormalizer`, `Form10QNormalizer`, `Form8KNormalizer` route through the shared text-frame coordinator; `GenericFormNormalizer` is the fallback
 - `FormRouter` — routes documents to form-specific evaluators and normalizers
-- ASCII span/action pass — after body-start detection, non-HTML text runs through
-  `defs.text.reflow.reflow_ascii`: hard-wrapped prose is unwrapped, untagged
-  fixed-width tables are wrapped in `<TABLE>`/`</TABLE>` with rows preserved
-  exactly, and every ambiguous block stays preserved and untagged. Existing
-  tagged tables are masked and restored byte-for-byte. Everything before the
-  validated body anchor is preserved; with no body anchor the pass is skipped.
-  Decision counts are published in processor metadata (`reflow_unwrap_blocks`,
-  `reflow_preserve_blocks`, `reflow_tag_blocks`).
+- **ASCII Reflow & Table Recognition** — after body-start detection, non-HTML text runs through `defs.text.reflow.reflow_ascii`:
+  - **Prose Unwrapping**: Hard-wrapped text and multi-line bullet/list items (e.g. `(a)`, `(1)`, `•`, `-`) are cleanly reflowed into single logical lines while preserving paragraph boundaries (`is_list_or_bullet_marker`).
+  - **Fixed-Width Table Recognition**: Untagged multi-column ASCII tables (with aligned numeric columns and headers) are automatically detected and wrapped in canonical `<TABLE>`/`</TABLE>` tags with row geometry preserved exactly.
+  - **Table Protection**: Existing tagged tables are masked and restored byte-for-byte; ambiguous blocks stay preserved and untagged.
+  - Everything before the validated body anchor is preserved; with no body anchor the pass is skipped. Decision counts are published in processor metadata (`reflow_unwrap_blocks`, `reflow_preserve_blocks`, `reflow_tag_blocks`).
 
 The processing pipeline is `GenericPreprocessor` → representation-specific page
 policy and text-frame rendering → shared cover boundary/healing → form-specific

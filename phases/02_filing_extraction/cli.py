@@ -58,6 +58,7 @@ def main(argv: list[str] | None = None) -> int:
     materialize_parser.add_argument("--temp-directory", default=None)
 
     plan_parser = commands.add_parser("plan")
+    plan_parser.add_argument("--config", default=None)
     plan_parser.add_argument(
         "--catalog",
         default=None,

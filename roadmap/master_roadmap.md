@@ -6,7 +6,7 @@
 
 ### Executive Summary & System Mission
 
-The objective of this system is to ingest **200,000 raw SEC Form 10-K annual filings (1990–2026)** across three incompatible formatting eras (unformatted ASCII, hybrid HTML, and modern Inline XBRL) and transform them into a fully normalized, machine-queryable research database (Apache Parquet, DuckDB, JSONL, and PostgreSQL).
+The objective of this system is to ingest **200,000+ raw SEC Form 10-K annual filings (1990–2026)** across three incompatible formatting eras (unformatted ASCII, hybrid HTML, and modern Inline XBRL) and transform them into a fully normalized, machine-queryable research database (Apache Parquet, DuckDB, JSONL, and PostgreSQL).
 
 The system enforces **Temporal Invariance**: the schema does not break, deprecate, or mutate when accounting rules or SEC disclosure mandates change over time. Every financial, operational, spatial, and qualitative fact extracted from a filing is mapped into an orthogonal coordinate basis:
 
@@ -14,148 +14,80 @@ $$\text{Fact} = \langle \text{Entity}, \text{TemporalScope}, \text{SpatialScope}
 
 Researchers and quantitative analysts query this database directly via SQL, DuckDB, or Python **without ever opening a raw 10-K filing**, while retaining line-by-line bidirectional provenance to the source text.
 
+---
+
+### Strategic Milestones & Pipeline Execution Architecture
+
+To balance long-term analytical capability with rigorous software engineering, the roadmap distinguishes between **Strategic Milestones** (high-level research capability goals / product epics) and **Pipeline Execution Phases** (modular, resumable, schema-versioned engineering boundaries with isolated test contracts):
+
 ```
 ┌────────────────────────────────────────────────────────────────────────────────────────────────────────┐
-│                                 END-TO-END SYSTEM PIPELINE TOPOLOGY                                    │
+│                                STRATEGIC RESEARCH MILESTONES (M1–M5)                                   │
 └────────────────────────────────────────────────────────────────────────────────────────────────────────┘
                                                      │
  ┌───────────────────────────────────────────────────▼───────────────────────────────────────────────────┐
- │ PHASE 1: INGESTION, MULTI-ERA NORMALIZATION & EXPLICIT BOUNDARY SEGMENTATION                          │
- │ • Decode ASCII (1992–1997), HTML (1998–2011), and iXBRL (2012–2026) envelopes                         │
- │ • Run Table of Contents (TOC) Disambiguation Heuristic to prevent header false positives              │
- │ • Segment Tier-1 Explicit Items (1–16), Financial Statements, and Notes 1–20                          │
+ │ MILESTONE 1: INGESTION, MULTI-ERA NORMALIZATION & STORAGE FOUNDATION                                  │
+ │ • Phase 01: Submissions Metadata Extraction (data.sec.gov feeds, nested histories, CIK coverage)      │
+ │ • Phase 02: Filing Catalog & Target Planner (Zero-network DuckDB staging, stratified target plans)    │
+ │ • Phase 2.5: Webpage Storage & Normalization (CAS BLOBs, SGML unpacking, body alignment, ASCII reflow)│
  └───────────────────────────────────────────────────┬───────────────────────────────────────────────────┘
                                                      │
  ┌───────────────────────────────────────────────────▼───────────────────────────────────────────────────┐
- │ PHASE 2: HIDDEN SECTION SEMANTIC DISCOVERY & POLICY/CRISIS CARTOGRAPHY                                │
- │ • Execute 20 Qualified Tier-3 Hidden Section Regex Engines with 500-char co-occurrence verification   │
+ │ MILESTONE 2: SECTION SEGMENTATION & HIDDEN DISCLOSURE CARTOGRAPHY                                     │
+ │ • Phase 03: Explicit Item Segmentation (Items 1–16 across Parts I–IV, TOC disambiguation)             │
+ │ • 20 Qualified Tier-3 Hidden Section Regex Engines with 500-char co-occurrence verification           │
  │ • Capture Multi-Scale Divergence (<100 employee micro-caps vs. megacaps: cash runway, burn rate)      │
- │ • Map multi-decade policy shocks (tariffs, CHIPS/IRA subsidies, export bans, SAB 121 crypto)          │
+ │ • Multi-decade policy shock cartography (tariffs, CHIPS/IRA subsidies, export bans, SAB 121 crypto)  │
  └───────────────────────────────────────────────────┬───────────────────────────────────────────────────┘
                                                      │
  ┌───────────────────────────────────────────────────▼───────────────────────────────────────────────────┐
- │ PHASE 3: UNIVERSAL FUNDAMENTALS, TEMPORAL SCOPING & SPATIAL ONTOLOGY                                  │
- │ • Bind numbers to Measurement Tuples: $\text{Value} \times \text{Unit} \times \text{Scale} \times \text{Polarity}$     │
- │ • Distinguish Point-in-Time Instants (Stocks) from Duration-Scoped Intervals (Flows)                  │
- │ • Apply 7 Temporal Precision Tiers and universal `GeographicScope` (US/CA cross-border CBAs)           │
+ │ MILESTONE 3: UNIVERSAL FUNDAMENTALS & TABLE EXTRACTION ENGINE                                         │
+ │ • Phase 04: Geometry-first table parsing, span extraction, and financial statement reconstruction     │
+ │ • Bind numbers to 6-parameter Measurement Tuples: Magnitude × Unit × Scale × Polarity × Valuation    │
+ │ • Distinguish Instantaneous Stocks from Duration-Scoped Flows; apply 7 Temporal Precision Tiers       │
  └───────────────────────────────────────────────────┬───────────────────────────────────────────────────┘
                                                      │
  ┌───────────────────────────────────────────────────▼───────────────────────────────────────────────────┐
- │ PHASE 4: THE 16-MODULE DOMAIN EXTRACTION ENGINE & ACTIVE FLAG ARRAYS                                  │
- │ • Filter disclosures through the Analytic Utility Test (Computable, Partitionable, Discrete Signals)  │
- │ • Structure facts into: `metrics: []`, `facets: {}`, `active_flags: []`, and `provenance: {}`         │
- │ • Extract across 16 specialized modules (Financials, Debt, Derivatives, Labor, Real Estate, Risks)    │
+ │ MILESTONE 4: 16-MODULE DOMAIN FACT EXTRACTION ENGINE & ACTIVE FLAG ARRAYS                             │
+ │ • Phase 05: Extract computable facts across 16 specialized modules (Financials, Debt, Labor, etc.)    │
+ │ • Structure disclosures into Analytic Utility tuples: `metrics: []`, `facets: {}`, `active_flags: []`│
  └───────────────────────────────────────────────────┬───────────────────────────────────────────────────┘
                                                      │
  ┌───────────────────────────────────────────────────▼───────────────────────────────────────────────────┐
- │ PHASE 5: FLATTENING, PARQUET DATA ENGINEERING, RECONCILIATION & ANALYTICS                             │
- │ • Populate partitioned Parquet tables (`fiscal_year`, `module_domain`) and relational DDL             │
- │ • Enforce 3-tier partitioned aggregations (`portfolio`, `category`, `atomic_positions`) to stop double-counting│
-  │ • Execute automated accounting assertion harness ($\text{Assets} = \text{Liab} + \text{Eq}$, Lease discounting)  │
-  └───────────────────────────────────────────────────────────────────────────────────────────────────────┘
-
+ │ MILESTONE 5: FLATTENED ANALYTICAL DATASETS, RECONCILIATION & SQL VIEWS                                │
+ │ • Phase 06: Populate partitioned Parquet tables (`fiscal_year`, `module_domain`) and relational DDL   │
+ │ • Enforce 3-tier partitioned aggregations (`portfolio`, `category`, `atomic_positions`)              │
+ │ • Execute automated accounting assertion harness (Assets = Liabilities + Equity, Lease discounting)   │
+ └───────────────────────────────────────────────────────────────────────────────────────────────────────┘
 ```
 
 ---
 
-### Phase 2.5: Raw Document Acquisition & Storage (Boundary)
+### Ingestion & Storage Engineering Boundaries (Phases 01, 02, 2.5)
 
-Between the metadata catalog (Phase 1) and downstream extraction, Phase 2.5
-(`phases/025_webpage_storage`) acquires and stores raw filing documents so that
-parsing and section extraction never re-hit the SEC archive. It is **storage-only**:
+#### Phase 01: Submissions Metadata Extraction
+- Consumes `data.sec.gov/submissions` feeds per CIK, recursively follows historical metadata files, and produces one `submission_metadata` row per CIK combining recent and historical filings with complete provenance.
+- Deterministic chunking, atomic partition merging, and zero raw filing downloads.
 
-- Consumes a finalized Phase 02 target plan (`locator_groups.parquet`,
-  `targets/form=*/data.parquet`) and fetches each unique `(accession,
-  document_path)` locator exactly once.
-- Dual-mode fetch: offline fixture CAS replay (`--mode fixture`) or live SEC
-  archive via the managed same-host SEC broker with aggregate pacing and a
-  failure ledger (`--mode production`). Fixture population supports bounded
-  machine-local fetch threads through `fill-fixture --workers` (defaults to
-  `derive_resources().threads`, rejected if < 1).
-- Fixture-scope selection plans are expandable: Phase 02 creates immutable
-  child plans that retain parent locators, while Phase 2.5 reuses the same
-  fixture ID as an appendable raw-document cache. Existing `doc_id` values are
-  not refetched; explicit retry is available for prior acquisition failures,
-  and fixture lineage is recorded beside the SQLite cache. The root launcher
-  also provides `python run.py append` as a convenience alias for the
-  append-aware `fill-fixture` command.
-- Two independent parallel levels that never share a writer: **chunk workers**
-  run as a `ProcessPoolExecutor` in production mode, each owning an isolated
-  `chunk-XXXXX.db`, while the coordinator remains the sole SQLite writer and
-  merges published chunks afterward. **Fetch threads** inside one chunk use a
-  bounded in-flight window (`wait(..., FIRST_COMPLETED)`) so at most
-  `fetch_workers` live `fetch()` calls overlap; worker threads never touch
-  SQLite directly, they return completed `FetchResult` objects and the
-  coordinator persists them one at a time. Fixture fill shares one
-  `SecHttpClient` across all fetch threads so pacing, cache, failure ledger,
-  and metrics aggregate through a single rate limiter.
-- Production workers never construct their own SEC client. `run_partition`
-  auto-starts a managed broker via `ensure_broker()` when `mode=production`
-  and no client/socket is supplied; workers submit archive URLs over a
-  Unix-domain socket (`BrokerPaths.broker_paths().socket_path`) using
-  length-prefixed JSON frames (protocol version 1, `healthcheck://broker`
-  sentinel). The broker owns one `SecHttpClient` — single rate limiter, cache,
-  failure ledger, and metrics — so all live requests share one aggregate
-  pace. Manage it directly with
-  `python -m defs.sec_http.broker {start,stop,status} [--socket PATH]`;
+#### Phase 02: Filing Catalog & Target Planner (Zero-Network)
+- Materializes flat filing occurrences from finalized Phase 01 Parquet artifacts via memory-bounded DuckDB staging.
+- Normalizes corporate entities into `company_family` clusters to prevent multi-subsidiary duplicate over-representation.
+- Plans deterministic target selections across form families (`10-K`, `10-K/A`, `10-KSB`, `10-KT`, `10-Q`, etc.) with expandable fixture support.
 
-Phase 2.5's normalization path uses a string-first HTML pipeline
-(`defs.text.html`) shared across cover, TOC, body, and ASCII reflow
-consumers. HTML documents are normalized through
-`normalize_html_document()`: Stage-1 cleaning, HTML-preserving table
-rendering to canonical `<TABLE>...</TABLE>` blocks, tagged-table
-protection, string structural decomposition, whitespace normalization,
-form-profiled cover checkbox constraint inference, and tagged-table
-restoration. Ambiguous glyphs are evaluated against report-period,
-filer-status, and applicable statutory Boolean constraints; tied or
-contradictory hypotheses remain unresolved rather than being guessed. The DOM
-page-marker package has been
-removed; page-marker analysis operates on the rendered ASCII text
-frame. Firm labels are removed only from validated decisions;
-contextual namespace runs, repeated headers/footers, unresolved
-candidates, and metadata-only inferred boundaries are retained in
-bounded processed-document metadata. Rendering applies an explicit
-page-artifact policy (`strip`, `annotate`, `preserve`): annotated runs
-replace validated furniture with compact `[[SEC:PAGE_BREAK id=N]]`
-tokens whose provenance lives in deterministic `page_artifacts`
-processor metadata, so normalized output stays inspectable and
-reversible without re-deriving decisions from rendered text.
-  `start` is idempotent (existing healthy broker reused, stale socket
-replaced).
-- Stores `document_blobs` (sha256-addressed, zstd-compressed raw bytes) and
-  `filing_occurrences` (provenance links) in isolated worker chunk SQLite
-  databases, then merges them atomically into a published partition database via
-  compiled `Attach`/`Detach`.
-- Deferred to later parallel tracks (built on `document_blobs`): multi-era
-  envelope unpacking, HTML/iXBRL cleaning, and stub/defect detection.
+#### Phase 2.5: Raw Webpage Storage & Multi-Era Text Normalization
+- Consumes Phase 02 target plans and fetches each unique `(accession, document_path)` locator exactly once.
+- **Dual-Mode Fetch**: Offline fixture CAS replay (`--mode fixture`) or live SEC archive via managed same-host SEC broker (`--mode production`, 4 RPS pacing, failure ledger).
+- **SGML Multi-Document Unpacking**: Unpacks concatenated SGML envelopes (`<DOCUMENT>...</DOCUMENT>`), separates primary documents from exhibits (`EX-10`, `EX-21`, `EX-99`), and extracts `<SEC-HEADER>` metadata (`defs.sec_documents.sgml`).
+- **Multi-Era Normalization Engine**:
+  - String-first HTML preprocessing with canonical `<TABLE>...</TABLE>` rendering and tagged-table protection (`defs.text.html`).
+  - Form-scoped checkbox constraint solver evaluating report-period, filer-status, and statutory Boolean hypotheses (`defs.sec_forms.cover`).
+  - Canonical body-start alignment past cover and TOC pages using tiered lexical evidence scoring (`defs.sec_forms.cover.body_start`).
+  - Geometry-first ASCII reflow: hard-wrapped prose and multi-line bullet/list items are cleanly reflowed (`is_list_or_bullet_marker`), while untagged multi-column ASCII tables are automatically detected and preserved in `<TABLE>` tags (`defs.text.reflow`).
+- **Storage Layout**: Persists sha256-addressed raw bytes (`document_blobs`) and versioned normalized representations (`normalized_documents`) in isolated worker SQLite chunks before atomic partition merge.
+- **Live Monitoring**: Real-time progress, throughput, and disk usage tracking via `scripts/monitor_progress.py`.
+- **Review Workflow**: Document corpus review toolchain (`promote_document_corpus`, `build_document_review_artifacts`, `chunk_document_reviews`) with exact golden promotion.
 
-Phase 2.5's HTML normalization uses a string-first pipeline in
-`defs.text.html` that renders HTML tables to canonical tagged ASCII
-`<TABLE>...</TABLE>` blocks. The deferred `cleanup_false_tables()`
-stage remains as a no-op placeholder in the pipeline for future
-false/layout-table unwrapping; tagged tables are protected through
-generic whitespace passes. Shared cover healing is provided by
-`defs.sec_forms.cover.healing.heal_cover_text()`, which applies
-representation-neutral healing to bounded cover slices; form-profiled checkbox
-constraint inference is provided by
-`defs.sec_forms.cover.inference.infer_cover_checkmarks()`, which skips no-cover
-families such as 8-K and 6-K. The retained
-`defs.text.html.tree.py` module provides parser/table-node infrastructure
-(selectolax wrapper, CSS traversal, raw-node access, cell text
-extraction) for table rendering and independent research consumers; it
-is not a document normalization API.
-
-Phase 2.5 also provides a fixture-ID document corpus review workflow: source
-bytes are promoted to a versioned Parquet corpus, rendered in deterministic
-20-document batches, and promoted to exact goldens only after explicit manual
-review.
-
-Shared table processing is implemented under `defs/tables/` so downstream
-document-processing phases use one span-aware HTML-to-ASCII conversion contract
-for layout detection, financial column healing, and SEC table rendering.
-Rendered HTML tables become canonical tagged `<TABLE>...</TABLE>` blocks;
-`cleanup_false_tables()` remains a deferred no-op stage.
-
+---
 
 # SECTION 1: THE DISCRETE AND HIDDEN SECTIONS TAXONOMY
 

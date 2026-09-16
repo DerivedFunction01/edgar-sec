@@ -31,25 +31,55 @@ def _add_plan_args(parser: argparse.ArgumentParser) -> None:
     parser.add_argument(
         "--plan-dir",
         default=None,
-        help="Phase 02 finalized target plan directory (defaults to latest discovered target plan)",
+        help="Phase 02 finalized target plan directory or plan ID (defaults to latest discovered target plan)",
+    )
+    parser.add_argument(
+        "--plan-id",
+        default=None,
+        help="Phase 02 target plan ID or prefix",
+    )
+    parser.add_argument(
+        "--scope",
+        choices=("full", "fixture"),
+        default=None,
+        help="target plan scope filter ('full' or 'fixture')",
     )
     parser.add_argument(
         "--output-dir", default=None, help="published partition database directory"
     )
 
 
-def _resolve_plan_dir(plan_dir: str | None) -> str:
-    if plan_dir:
-        return plan_dir
+def _resolve_plan_dir(
+    plan_dir: str | None = None,
+    plan_id: str | None = None,
+    scope: str | None = None,
+) -> str:
+    target_spec = plan_dir or plan_id
+    if target_spec and Path(target_spec).is_dir():
+        return target_spec
+
     with suppress(ImportError, OSError, ValueError):
         discovery = importlib.import_module(
             "phases.02_filing_extraction.core.discovery"
         )
         plans = discovery.discover_plans()
+        if target_spec:
+            for p in plans:
+                if p["plan_id"].startswith(target_spec) or target_spec in p["path"]:
+                    return p["path"]
+            raise ValueError(
+                f"Target plan matching {target_spec!r} not found among discovered plans: "
+                f"{[p['plan_id'] for p in plans]}"
+            )
+        if scope:
+            scoped_plans = [p for p in plans if p.get("scope") == scope]
+            if scoped_plans:
+                return scoped_plans[0]["path"]
+            raise ValueError(f"No Phase 02 target plan found with scope {scope!r}.")
         if plans:
             return plans[0]["path"]
     raise ValueError(
-        "No Phase 02 target plan found. Run Phase 02 target plan or specify --plan-dir."
+        "No Phase 02 target plan found. Run Phase 02 target plan or specify --plan-dir / --plan-id."
     )
 
 
@@ -223,7 +253,11 @@ def main(argv: list[str] | None = None) -> int:
     args = build_parser().parse_args(argv)
     try:
         if args.command == "preview":
-            plan_dir = _resolve_plan_dir(getattr(args, "plan_dir", None))
+            plan_dir = _resolve_plan_dir(
+                getattr(args, "plan_dir", None),
+                getattr(args, "plan_id", None),
+                getattr(args, "scope", None),
+            )
             locators, occurrences, plan = pipeline.load_targets(plan_dir)
             selected = pipeline._partition_locators(
                 locators,
@@ -246,7 +280,11 @@ def main(argv: list[str] | None = None) -> int:
             )
             return 0
         if args.command == "run":
-            plan_dir = _resolve_plan_dir(getattr(args, "plan_dir", None))
+            plan_dir = _resolve_plan_dir(
+                getattr(args, "plan_dir", None),
+                getattr(args, "plan_id", None),
+                getattr(args, "scope", None),
+            )
             workers = (
                 args.workers
                 if args.workers is not None
@@ -321,7 +359,11 @@ def main(argv: list[str] | None = None) -> int:
         if args.command == "fill-fixture":
             from .core.fixture_builder import fill_fixture
 
-            plan_dir = _resolve_plan_dir(getattr(args, "plan_dir", None))
+            plan_dir = _resolve_plan_dir(
+                getattr(args, "plan_dir", None),
+                getattr(args, "plan_id", None),
+                getattr(args, "scope", None),
+            )
             fixture_id = (
                 args.fixture_id if args.fixture_id else f"fix-{Path(plan_dir).name[:8]}"
             )

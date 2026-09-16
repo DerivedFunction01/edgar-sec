@@ -89,13 +89,20 @@ from .html import (
 from .tokens import (
     BULLET_MARKER_RE,
     BULLET_MARKERS,
+    DELIMITED_ORDERED_MARKER_RE,
+    GLYPH_BULLET_MARKERS,
+    WRAPPED_ORDERED_MARKER_RE,
+    is_list_or_bullet_marker,
 )
 from .unicode import (
     NORMALIZE_TO_SPACE,
     STRIP_ZERO_WIDTH,
     sanitize_unicode_whitespace,
 )
-from .whitespace import normalize_final_text_whitespace
+from .whitespace import (
+    normalize_final_text_whitespace,
+    split_concatenated_bullets,
+)
 
 __all__ = [
     "ACTION_PRESERVE",
@@ -106,6 +113,8 @@ __all__ = [
     "CANONICAL_CHECKED",
     "CANONICAL_UNCHECKED",
     "CENTURY_PIVOT",
+    "DELIMITED_ORDERED_MARKER_RE",
+    "GLYPH_BULLET_MARKERS",
     "MONTH_ALIASES",
     "MONTH_NAMES",
     "MONTH_NAME_RE",
@@ -121,6 +130,7 @@ __all__ = [
     "SEC_DATE_FORMATS",
     "STRIP_ZERO_WIDTH",
     "TABLE_YEAR_RE",
+    "WRAPPED_ORDERED_MARKER_RE",
     "YEAR_IN_TEXT_RE",
     "YEAR_RANGE",
     "YEAR_TOKEN_RE",
@@ -160,6 +170,7 @@ __all__ = [
     "extract_years",
     "heal_date_fragments",
     "heal_split_lines",
+    "is_list_or_bullet_marker",
     "merge_yes_no_binary_blocks",
     "month_name_to_index",
     "normalize_checkbox_tokens",
@@ -176,6 +187,7 @@ __all__ = [
     "score_tokens",
     "score_unit",
     "should_join_two_lines",
+    "split_concatenated_bullets",
     "strip_alphanumeric_words",
     "strip_benign_font_styles",
     "strip_boxdot_spacers",
