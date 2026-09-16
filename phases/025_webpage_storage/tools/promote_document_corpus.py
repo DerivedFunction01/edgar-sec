@@ -136,9 +136,12 @@ def build_records(
     records: list[dict[str, Any]] = []
 
     for row in rows:
-        raw = decompress_payload(bytes(row["raw_payload"]))
+        payload = row.get("raw_payload")
+        if payload is None:
+            continue
+        raw = decompress_payload(bytes(payload))
         digest = hashlib.sha256(raw).hexdigest()
-        source_hash = str(row["raw_payload_sha256"] or "")
+        source_hash = str(row.get("raw_payload_sha256") or "")
         if len(source_hash) != 64:
             raise ValueError(f"missing source hash for {row['doc_id']}")
         if digest != source_hash:

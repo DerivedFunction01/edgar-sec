@@ -7,14 +7,13 @@ from dataclasses import asdict, dataclass
 
 @dataclass(frozen=True, slots=True)
 class RawDocumentBlob:
-    """One deduplicated compressed raw payload."""
+    """One content-addressed document metadata record."""
 
     doc_id: str
     accession: str
     document_path: str
     byte_size: int
     mime_type: str
-    raw_payload: bytes
     raw_payload_sha256: str
 
     def to_row(self) -> dict:
@@ -28,7 +27,6 @@ class RawDocumentBlob:
             document_path=str(row["document_path"]),
             byte_size=int(row["byte_size"]),
             mime_type=str(row["mime_type"]),
-            raw_payload=bytes(row["raw_payload"]),
             raw_payload_sha256=str(row["raw_payload_sha256"]),
         )
 

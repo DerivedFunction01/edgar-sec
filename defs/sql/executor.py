@@ -105,15 +105,22 @@ class DbApiBackend:
         return [dict(zip(names, row)) for row in cursor.fetchall()]
 
     def query(self, statement: CompiledQuery) -> list[dict[str, Any]]:
-        return self._rows(self._cursor(statement))
+        cursor = self._cursor(statement)
+        try:
+            return self._rows(cursor)
+        finally:
+            cursor.close()
 
     def query_one(self, statement: CompiledQuery) -> dict[str, Any] | None:
         cursor = self._cursor(statement)
-        row = cursor.fetchone()
-        if row is None:
-            return None
-        names = [column[0] for column in (cursor.description or ())]
-        return dict(zip(names, row))
+        try:
+            row = cursor.fetchone()
+            if row is None:
+                return None
+            names = [column[0] for column in (cursor.description or ())]
+            return dict(zip(names, row))
+        finally:
+            cursor.close()
 
     def exec(self, statement: CompiledQuery) -> None:
         self._cursor(statement).close()

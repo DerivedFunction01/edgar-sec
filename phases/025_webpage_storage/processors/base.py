@@ -3,11 +3,23 @@
 from __future__ import annotations
 
 import asyncio
+import threading
 from concurrent.futures import ThreadPoolExecutor
 from dataclasses import dataclass, field
 from typing import Protocol, runtime_checkable
 
 from ..core.schemas import DocumentLocator, detect_mime, doc_id
+
+_thread_local = threading.local()
+
+
+def _get_thread_loop() -> asyncio.AbstractEventLoop:
+    loop = getattr(_thread_local, "loop", None)
+    if loop is None or loop.is_closed():
+        loop = asyncio.new_event_loop()
+        asyncio.set_event_loop(loop)
+        _thread_local.loop = loop
+    return loop
 
 
 @dataclass(frozen=True, slots=True)
@@ -56,17 +68,17 @@ def execute_processor(
     raw_bytes: bytes,
     locator: DocumentLocator,
 ) -> ProcessedDocument:
-    """Execute an async DocumentProcessor from synchronous worker threads."""
+    """Execute an async DocumentProcessor from synchronous worker threads reusing thread event loops."""
     coro = processor.process(raw_bytes, locator)
     try:
-        loop = asyncio.get_running_loop()
+        current_loop = asyncio.get_running_loop()
     except RuntimeError:
-        loop = None
+        current_loop = None
 
-    if loop is not None and loop.is_running():
+    if current_loop is not None and current_loop.is_running():
         with ThreadPoolExecutor() as pool:
-            return pool.submit(asyncio.run, coro).result()
-    return asyncio.run(coro)
+            return pool.submit(_get_thread_loop().run_until_complete, coro).result()
+    return _get_thread_loop().run_until_complete(coro)
 
 
 __all__ = [

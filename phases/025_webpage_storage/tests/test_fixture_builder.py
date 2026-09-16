@@ -141,7 +141,7 @@ def test_fill_fixture_populates_sqlite_directly(phase02_bundle: Path, tmp_path: 
             executor.compiler.compile(
                 Select(
                     source=Table(schemas.DOCUMENT_BLOBS_TABLE),
-                    projection=(col("doc_id"), col("raw_payload")),
+                    projection=(col("doc_id"), col("raw_payload_sha256")),
                 )
             )
         )
@@ -149,9 +149,9 @@ def test_fill_fixture_populates_sqlite_directly(phase02_bundle: Path, tmp_path: 
         executor.close()
 
     assert len(blobs) == 2
-    decompressed = [schemas.decompress_payload(b["raw_payload"]) for b in blobs]
-    assert b"<html>doc1</html>" in decompressed
-    assert b"<html>doc2</html>" in decompressed
+    hashes = [b["raw_payload_sha256"] for b in blobs]
+    assert __import__("hashlib").sha256(b"<html>doc1</html>").hexdigest() in hashes
+    assert __import__("hashlib").sha256(b"<html>doc2</html>").hexdigest() in hashes
 
 
 def test_cli_fill_fixture_command(

@@ -82,7 +82,6 @@ BLOB_COLUMNS = (
     "document_path",
     "byte_size",
     "mime_type",
-    "raw_payload",
     "raw_payload_sha256",
 )
 OCCURRENCE_COLUMNS = (
@@ -157,7 +156,6 @@ def document_blobs_ddl() -> CreateTable:
             ColumnDef("document_path", ColumnType.TEXT, (NotNull(),)),
             ColumnDef("byte_size", ColumnType.INT, (NotNull(),)),
             ColumnDef("mime_type", ColumnType.TEXT, (NotNull(),)),
-            ColumnDef("raw_payload", ColumnType.BLOB, (NotNull(),)),
             ColumnDef("raw_payload_sha256", ColumnType.TEXT, (NotNull(),)),
         ),
     )
@@ -360,17 +358,14 @@ def detect_mime(document_path: str) -> str:
     return _MIME_BY_SUFFIX.get(suffix, MIME_BINARY)
 
 
-def build_blob(
-    accession: str, document_path: str, raw: bytes, level: int = ZSTD_COMPRESSION_LEVEL
-) -> RawDocumentBlob:
-    """Compress one raw payload into a content-addressed record."""
+def build_blob(accession: str, document_path: str, raw: bytes) -> RawDocumentBlob:
+    """Build one content-addressed metadata record from raw payload bytes."""
     return RawDocumentBlob(
         doc_id=doc_id(accession, document_path),
         accession=accession,
         document_path=document_path,
         byte_size=len(raw),
         mime_type=detect_mime(document_path),
-        raw_payload=compress_payload(raw, level=level),
         raw_payload_sha256=hashlib.sha256(raw).hexdigest(),
     )
 

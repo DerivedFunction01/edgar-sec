@@ -145,6 +145,10 @@ def load_targets(
                 f"target document path disagrees with locator group: {key}"
             )
         occurrences.append(occurrence)
+
+    del locator_rows
+    del target_rows
+    del locator_by_key
     return locators, occurrences, plan
 
 
@@ -319,6 +323,10 @@ def run_partition(
             )
         )
 
+    # Release coordinator occurrences map to free RAM before worker pool execution
+    occurrences_by_doc_id.clear()
+    del occurrences_by_doc_id
+
     try:
         if tasks:
             if workers <= 1:
@@ -339,59 +347,85 @@ def run_partition(
                 with ProcessPoolExecutor(
                     max_workers=workers,
                     mp_context=multiprocessing.get_context("spawn"),
+                    max_tasks_per_child=8,
                 ) as pool:
-                    future_to_task = {
-                        pool.submit(
-                            process_chunk,
-                            task.chunk_id,
-                            task.worker_id,
-                            task.chunk,
-                            task.chunk_occurrences,
-                            fetcher,
-                            task.chunk_path,
-                            None,
-                            processor,
-                        ): task
-                        for task in tasks
-                    }
-                    for future in as_completed(future_to_task):
-                        task = future_to_task[future]
-                        chunk_result = future.result()
-                        chunk_results[task.index] = chunk_result
-                        if progress is not None:
-                            # Replay document completions after the isolated chunk returns.
-                            for failure in chunk_result.failures:
-                                progress(
-                                    {
-                                        "type": "document_done",
-                                        "status": failure.status,
-                                        "doc_id": doc_id(
-                                            failure.locator.accession,
-                                            failure.locator.document_path,
-                                        ),
-                                        "error": failure.error,
-                                    }
-                                )
-                            for _ in range(chunk_result.blob_count):
-                                progress(
-                                    {
-                                        "type": "document_done",
-                                        "status": "ok",
-                                        "chunk_id": task.chunk_id,
-                                    }
-                                )
-                            progress(
-                                {
-                                    "type": "chunk_done",
-                                    "chunk_id": task.chunk_id,
-                                    "status": (
-                                        "completed"
-                                        if chunk_result.succeeded
-                                        else "failed"
-                                    ),
-                                    "fetched_count": chunk_result.fetched_count,
-                                }
+                    max_in_flight = max(4, workers * 2)
+                    task_iter = iter(tasks)
+                    future_to_task: dict = {}
+
+                    # Seed initial in-flight window
+                    for _ in range(min(len(tasks), max_in_flight)):
+                        initial_task = next(task_iter, None)
+                        if initial_task is not None:
+                            fut = pool.submit(
+                                process_chunk,
+                                initial_task.chunk_id,
+                                initial_task.worker_id,
+                                initial_task.chunk,
+                                initial_task.chunk_occurrences,
+                                fetcher,
+                                initial_task.chunk_path,
+                                None,
+                                processor,
                             )
+                            future_to_task[fut] = initial_task
+
+                    while future_to_task:
+                        for future in as_completed(future_to_task):
+                            task = future_to_task.pop(future)
+                            chunk_result = future.result()
+                            chunk_results[task.index] = chunk_result
+                            if progress is not None:
+                                # Replay document completions after the isolated chunk returns.
+                                for failure in chunk_result.failures:
+                                    progress(
+                                        {
+                                            "type": "document_done",
+                                            "status": failure.status,
+                                            "doc_id": doc_id(
+                                                failure.locator.accession,
+                                                failure.locator.document_path,
+                                            ),
+                                            "error": failure.error,
+                                        }
+                                    )
+                                for _ in range(chunk_result.blob_count):
+                                    progress(
+                                        {
+                                            "type": "document_done",
+                                            "status": "ok",
+                                            "chunk_id": task.chunk_id,
+                                        }
+                                    )
+                                progress(
+                                    {
+                                        "type": "chunk_done",
+                                        "chunk_id": task.chunk_id,
+                                        "status": (
+                                            "completed"
+                                            if chunk_result.succeeded
+                                            else "failed"
+                                        ),
+                                        "fetched_count": chunk_result.fetched_count,
+                                    }
+                                )
+
+                            # Feed next task into bounded window
+                            next_task = next(task_iter, None)
+                            if next_task is not None:
+                                next_fut = pool.submit(
+                                    process_chunk,
+                                    next_task.chunk_id,
+                                    next_task.worker_id,
+                                    next_task.chunk,
+                                    next_task.chunk_occurrences,
+                                    fetcher,
+                                    next_task.chunk_path,
+                                    None,
+                                    processor,
+                                )
+                                future_to_task[next_fut] = next_task
+                            break
     finally:
         close = getattr(fetcher, "close", None)
         if close is not None:

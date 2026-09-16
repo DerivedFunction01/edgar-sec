@@ -13,13 +13,37 @@ schemas = importlib.import_module("phases.025_webpage_storage.core.schemas")
 
 
 def _fixture(path, accession="0001", document_path="index.htm", payload=b"<html>"):
+    import hashlib
+
+    from defs.sql import ColumnDef, ColumnType, CreateTable, NotNull, PrimaryKey
+
     path.touch()
     executor = make_sql_executor(path, dialect="sqlite")
-    schemas.create_chunk_schema(executor)
-    blob = schemas.build_blob(accession, document_path, payload)
+    fixture_ddl = CreateTable(
+        table=schemas.DOCUMENT_BLOBS_TABLE,
+        columns=(
+            ColumnDef("doc_id", ColumnType.TEXT, (PrimaryKey(), NotNull())),
+            ColumnDef("accession", ColumnType.TEXT, (NotNull(),)),
+            ColumnDef("document_path", ColumnType.TEXT, (NotNull(),)),
+            ColumnDef("byte_size", ColumnType.INT, (NotNull(),)),
+            ColumnDef("mime_type", ColumnType.TEXT, (NotNull(),)),
+            ColumnDef("raw_payload", ColumnType.BLOB),
+            ColumnDef("raw_payload_sha256", ColumnType.TEXT, (NotNull(),)),
+        ),
+    )
+    executor.exec(executor.compiler.compile(fixture_ddl))
+    blob_row = {
+        "doc_id": schemas.doc_id(accession, document_path),
+        "accession": accession,
+        "document_path": document_path,
+        "byte_size": len(payload),
+        "mime_type": schemas.detect_mime(document_path),
+        "raw_payload": schemas.compress_payload(payload),
+        "raw_payload_sha256": hashlib.sha256(payload).hexdigest(),
+    }
     executor.exec(
         QueryCompiler("sqlite").compile(
-            insert_values(schemas.DOCUMENT_BLOBS_TABLE, blob.to_row())
+            insert_values(schemas.DOCUMENT_BLOBS_TABLE, blob_row)
         )
     )
     executor.backend.connection.commit()

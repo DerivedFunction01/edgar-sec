@@ -8,6 +8,8 @@ from dataclasses import asdict, dataclass
 from pathlib import Path
 
 from defs.sql import (
+    Aggregate,
+    AggregateFunction,
     Attach,
     Begin,
     Commit,
@@ -17,6 +19,7 @@ from defs.sql import (
     Rollback,
     Select,
     SelectSource,
+    Star,
     Table,
     col,
     make_sql_executor,
@@ -71,6 +74,18 @@ def _select_columns(table: str, columns: tuple[str, ...], qualifier: str | None 
         source=Table(table, alias=qualifier),
         projection=tuple(col(column, qualifier) for column in columns),
     )
+
+
+def _count_table(executor, table: str, qualifier: str | None = None) -> int:
+    query = Select(
+        source=Table(table, alias=qualifier),
+        projection=(Aggregate(AggregateFunction.COUNT, Star()),),
+    )
+    row = executor.query_one(executor.compiler.compile(query))
+    if row:
+        val = next(iter(row.values()))
+        return int(val) if val is not None else 0
+    return 0
 
 
 def _insert_from(
@@ -238,60 +253,30 @@ def merge_partition(
                             committed_ids = tuple(
                                 str(row["chunk_id"]) for row in new_audits
                             )
-                            blob_rows += len(
-                                executor.query(
-                                    executor.compiler.compile(
-                                        _select_columns(
-                                            f"{alias}.{DOCUMENT_BLOBS_TABLE}",
-                                            BLOB_COLUMNS,
-                                            alias,
-                                        )
-                                    )
-                                )
+                            blob_rows += _count_table(
+                                executor,
+                                f"{alias}.{DOCUMENT_BLOBS_TABLE}",
+                                alias,
                             )
-                            occurrence_rows += len(
-                                executor.query(
-                                    executor.compiler.compile(
-                                        _select_columns(
-                                            f"{alias}.{FILING_OCCURRENCES_TABLE}",
-                                            OCCURRENCE_COLUMNS,
-                                            alias,
-                                        )
-                                    )
-                                )
+                            occurrence_rows += _count_table(
+                                executor,
+                                f"{alias}.{FILING_OCCURRENCES_TABLE}",
+                                alias,
                             )
-                            failure_rows += len(
-                                executor.query(
-                                    executor.compiler.compile(
-                                        _select_columns(
-                                            f"{alias}.{ACQUISITION_FAILURES_TABLE}",
-                                            ACQUISITION_FAILURE_COLUMNS,
-                                            alias,
-                                        )
-                                    )
-                                )
+                            failure_rows += _count_table(
+                                executor,
+                                f"{alias}.{ACQUISITION_FAILURES_TABLE}",
+                                alias,
                             )
-                            normalized_rows += len(
-                                executor.query(
-                                    executor.compiler.compile(
-                                        _select_columns(
-                                            f"{alias}.{NORMALIZED_DOCUMENTS_TABLE}",
-                                            NORMALIZED_DOCUMENT_COLUMNS,
-                                            alias,
-                                        )
-                                    )
-                                )
+                            normalized_rows += _count_table(
+                                executor,
+                                f"{alias}.{NORMALIZED_DOCUMENTS_TABLE}",
+                                alias,
                             )
-                            normalization_failure_rows += len(
-                                executor.query(
-                                    executor.compiler.compile(
-                                        _select_columns(
-                                            f"{alias}.{NORMALIZATION_FAILURES_TABLE}",
-                                            NORMALIZATION_FAILURE_COLUMNS,
-                                            alias,
-                                        )
-                                    )
-                                )
+                            normalization_failure_rows += _count_table(
+                                executor,
+                                f"{alias}.{NORMALIZATION_FAILURES_TABLE}",
+                                alias,
                             )
                             audit_count += len(committed_ids)
                             committed.extend(committed_ids)

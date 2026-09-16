@@ -1,5 +1,4 @@
-from __future__ import annotations
-
+import hashlib
 import sqlite3
 from importlib import import_module
 
@@ -43,7 +42,7 @@ def test_partition_schema_is_created_from_sql_ast(tmp_path):
         for row in connection.execute("PRAGMA table_info(document_blobs)")
     }
     assert tuple(columns) == BLOB_COLUMNS
-    assert columns["raw_payload"] == "BLOB"
+    assert "raw_payload" not in columns
     assert columns["byte_size"] == "INTEGER"
     assert columns["raw_payload_sha256"] == "TEXT"
     normalized_columns = {
@@ -60,12 +59,12 @@ def test_partition_schema_is_created_from_sql_ast(tmp_path):
     connection.close()
 
 
-def test_content_addressing_and_zstd_round_trip():
+def test_content_addressing_and_metadata():
     raw = b"legacy SEC filing bytes\x00\xff"
     blob = build_blob("000000000100000001", "d10k.htm", raw)
     assert blob.doc_id == doc_id("000000000100000001", "d10k.htm")
     assert blob.byte_size == len(raw)
-    assert decompress_payload(blob.raw_payload) == raw
+    assert blob.raw_payload_sha256 == hashlib.sha256(raw).hexdigest()
     assert blob.mime_type == "text/html"
 
     occurrence = build_occurrence(

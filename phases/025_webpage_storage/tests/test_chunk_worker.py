@@ -78,7 +78,7 @@ def test_chunks_are_isolated(tmp_path):
     )
 
 
-def test_payload_is_zstd_compressed_and_roundtrips(tmp_path):
+def test_blob_metadata_is_stored(tmp_path):
     raw = b"<html>deterministic payload</html>"
     result = worker_module.process_chunk(
         "chunk",
@@ -89,8 +89,8 @@ def test_payload_is_zstd_compressed_and_roundtrips(tmp_path):
         tmp_path / "chunk.db",
     )
     stored = _rows(result.path, schemas.DOCUMENT_BLOBS_TABLE)[0]
-    assert stored["raw_payload"] != raw
-    assert schemas.decompress_payload(stored["raw_payload"]) == raw
+    assert "raw_payload" not in stored
+    assert stored["raw_payload_sha256"] == __import__("hashlib").sha256(raw).hexdigest()
     assert stored["byte_size"] == len(raw)
 
 
@@ -162,11 +162,9 @@ def test_processor_failure_keeps_raw_and_records_normalization_failure(tmp_path)
         tmp_path / "failed.db",
         processor=FailingProcessor(),
     )
+    stored = _rows(result.path, schemas.DOCUMENT_BLOBS_TABLE)[0]
     assert (
-        schemas.decompress_payload(
-            _rows(result.path, schemas.DOCUMENT_BLOBS_TABLE)[0]["raw_payload"]
-        )
-        == b"raw"
+        stored["raw_payload_sha256"] == __import__("hashlib").sha256(b"raw").hexdigest()
     )
     assert len(_rows(result.path, schemas.FILING_OCCURRENCES_TABLE)) == 1
     failures = _rows(result.path, schemas.NORMALIZATION_FAILURES_TABLE)
@@ -297,8 +295,10 @@ def test_process_chunk_with_async_processor(tmp_path):
         processor=AsyncPipelineProcessor(),
     )
     stored = _rows(result.path, schemas.DOCUMENT_BLOBS_TABLE)[0]
-    assert schemas.decompress_payload(stored["raw_payload"]) == (
-        b"<html><body><script>ad()</script>text</body></html>"
+    assert stored["raw_payload_sha256"] == (
+        __import__("hashlib")
+        .sha256(b"<html><body><script>ad()</script>text</body></html>")
+        .hexdigest()
     )
     normalized = _rows(result.path, schemas.NORMALIZED_DOCUMENTS_TABLE)
     assert (
@@ -376,7 +376,7 @@ def test_resume_with_processor_normalizes_existing_raw_blobs(tmp_path):
         processor=UpperProcessor(),
     )
 
-    assert resumed_fetcher.calls == []
+    assert resumed_fetcher.calls == ["a"]
     normalized = _rows(db_path, schemas.NORMALIZED_DOCUMENTS_TABLE)
     assert len(normalized) == 1
     assert normalized[0]["processor_fingerprint"] == "upper:v1"

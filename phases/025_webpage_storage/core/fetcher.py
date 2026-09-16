@@ -34,7 +34,6 @@ from .schemas import (
     DOCUMENT_BLOBS_TABLE,
     DocumentLocator,
     FetchResult,
-    RawDocumentBlob,
     decompress_payload,
     doc_id,
 )
@@ -111,15 +110,7 @@ class FixtureArchiveFetcher:
         expected_doc_id = doc_id(locator.accession, locator.document_path)
         query = Select(
             source=Table(DOCUMENT_BLOBS_TABLE),
-            projection=(
-                col("doc_id"),
-                col("accession"),
-                col("document_path"),
-                col("byte_size"),
-                col("mime_type"),
-                col("raw_payload"),
-                col("raw_payload_sha256"),
-            ),
+            projection=(col("raw_payload"),),
             where=Compare(col("doc_id"), ComparisonOp.EQ, param(expected_doc_id)),
             limit=1,
         )
@@ -127,9 +118,8 @@ class FixtureArchiveFetcher:
         try:
             for executor in self._get_executors():
                 row = executor.query_one(executor.compiler.compile(query))
-                if row is not None:
-                    blob = RawDocumentBlob.from_row(row)
-                    payload = decompress_payload(blob.raw_payload)
+                if row is not None and row.get("raw_payload") is not None:
+                    payload = decompress_payload(row["raw_payload"])
                     extracted = extract_from_sgml_envelope(payload, locator)
                     if extracted is not None:
                         return FetchResult(

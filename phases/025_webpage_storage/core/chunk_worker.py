@@ -31,7 +31,6 @@ from .chunk_persistence import (
     ChunkFailure,
     ChunkResult,
     _get_metrics,
-    _load_raw_payload,
     _persist_fetch_result,
     _run_pipelined_acquisitions,
 )
@@ -314,12 +313,21 @@ def process_chunk(
                     == processor_fingerprint
                 ):
                     continue
-                raw_payload = _load_raw_payload(executor, target_doc_id)
-                if raw_payload is None:
+                fetched = fetcher.fetch(locator)
+                if not isinstance(fetched, FetchResult):
+                    if isinstance(fetched, bytes):
+                        fetched = FetchResult(
+                            locator=locator, payload=fetched, status="ok"
+                        )
+                    else:
+                        fetched = FetchResult(
+                            locator=locator, payload=None, status="missing"
+                        )
+                if fetched.status != "ok" or fetched.payload is None:
                     continue
                 _persist_fetch_result(
                     locator,
-                    FetchResult(locator, raw_payload, "ok"),
+                    fetched,
                     fetcher=fetcher,
                     processor=processor,
                     executor=executor,
@@ -436,7 +444,18 @@ def process_chunk(
             audit=audit,
         )
     finally:
-        executor.close()
+        with suppress(Exception):
+            executor.exec(
+                executor.compiler.compile(Pragma("wal_checkpoint", "TRUNCATE"))
+            )
+            executor.close()
+        with suppress(Exception):
+            import gc
+
+            gc.collect()
+            import ctypes
+
+            ctypes.CDLL("libc.so.6").malloc_trim(0)
 
 
 def worker(*args, **kwargs) -> ChunkResult:

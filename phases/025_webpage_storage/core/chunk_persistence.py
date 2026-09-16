@@ -12,14 +12,8 @@ from typing import Any, Protocol, runtime_checkable
 
 from defs.sql import (
     Commit,
-    Compare,
-    ComparisonOp,
     DoNothing,
-    Select,
-    Table,
-    col,
     insert_values,
-    param,
 )
 
 from ..processors import DocumentProcessor, execute_processor
@@ -39,7 +33,6 @@ from .schemas import (
     NormalizedDocument,
     build_blob,
     compress_payload,
-    decompress_payload,
     deterministic_metadata,
     doc_id,
     normalized_artifact_id,
@@ -95,22 +88,6 @@ def _get_metrics(fetcher: object) -> dict[str, Any] | None:
     if metrics is not None and hasattr(metrics, "snapshot"):
         return metrics.snapshot()
     return None
-
-
-def _load_raw_payload(executor, target_doc_id: str) -> bytes | None:
-    rows = executor.query(
-        executor.compiler.compile(
-            Select(
-                source=Table(DOCUMENT_BLOBS_TABLE),
-                projection=(col("raw_payload"),),
-                where=Compare(col("doc_id"), ComparisonOp.EQ, param(target_doc_id)),
-                limit=1,
-            )
-        )
-    )
-    if not rows:
-        return None
-    return decompress_payload(rows[0]["raw_payload"])
 
 
 def _persist_fetch_result(
@@ -372,6 +349,10 @@ def _run_pipelined_acquisitions(
                 error=err,
             )
         finally:
+            item = None
+            loc = None
+            fetched = None
+            err = None
             q.task_done()
 
     waiter_thread.join()

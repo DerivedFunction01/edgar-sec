@@ -151,13 +151,19 @@ def auto_worker_count(
     worker_memory_mib: int = DEFAULT_WORKER_MEMORY_MIB,
     safety_fraction: float = DEFAULT_WORKER_MEMORY_SAFETY,
     reserve_bytes: int = 0,
+    cpu_cores: int | None = None,
 ) -> int:
     if worker_memory_mib < 1:
         raise ValueError("worker_memory_mib must be >= 1")
     budget = usable_memory_bytes(
         available, safety_fraction=safety_fraction, reserve_bytes=reserve_bytes
     )
-    return max(1, budget // (worker_memory_mib * _MEBIBYTE))
+    mem_workers = max(1, budget // (worker_memory_mib * _MEBIBYTE))
+    if cpu_cores is not None:
+        if cpu_cores < 1:
+            raise ValueError("cpu_cores must be >= 1")
+        return max(1, min(cpu_cores, mem_workers))
+    return max(1, min(default_cpu_cores(), mem_workers))
 
 
 @dataclass(frozen=True)

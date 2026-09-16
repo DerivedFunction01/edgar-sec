@@ -392,38 +392,19 @@ def main() -> int:
     parser = argparse.ArgumentParser(
         description="Live monitor for Webpage Storage SQLite chunks."
     )
+    parser.add_argument("--artifacts-root", default=None, help="Path to artifacts root")
+    parser.add_argument("--run-id", default=None, help="Specific run ID to monitor")
     parser.add_argument(
-        "--artifacts-root",
-        default=None,
-        help="Path to artifacts root (defaults to configured .artifacts)",
+        "--total-docs", type=int, default=None, help="Target count override"
     )
     parser.add_argument(
-        "--run-id",
-        default=None,
-        help="Specific run ID to monitor",
+        "--window", type=float, default=60.0, help="Rolling window seconds"
     )
     parser.add_argument(
-        "--total-docs",
-        type=int,
-        default=None,
-        help="Total target document count (auto-discovered from plan.json by default)",
+        "--interval", type=float, default=2.0, help="Poll interval seconds"
     )
     parser.add_argument(
-        "--window",
-        type=float,
-        default=60.0,
-        help="Rolling average speed window in seconds (default: 60.0s)",
-    )
-    parser.add_argument(
-        "--interval",
-        type=float,
-        default=2.0,
-        help="Polling interval in seconds (default: 2.0s)",
-    )
-    parser.add_argument(
-        "--once",
-        action="store_true",
-        help="Print a single snapshot and exit",
+        "--once", action="store_true", help="Print single snapshot and exit"
     )
     args = parser.parse_args()
 
@@ -433,7 +414,6 @@ def main() -> int:
         else Path(resolve_paths().artifacts_root).resolve()
     )
 
-    # Discover run metadata directly from active run
     run_meta, detected_run_id = _inspect_run_metadata(artifacts_root, args.run_id)
     detected_run_id = args.run_id or detected_run_id or ""
 

@@ -19,7 +19,6 @@ def _chunk(path: Path, chunk_id: str, *, duplicate_doc: bool = False) -> None:
         "document_path": "index.html",
         "byte_size": 4,
         "mime_type": schemas.MIME_HTML,
-        "raw_payload": b"data",
         "raw_payload_sha256": "sha256-data",
     }
     occurrence = {

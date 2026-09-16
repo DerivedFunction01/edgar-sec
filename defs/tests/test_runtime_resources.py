@@ -231,8 +231,20 @@ def test_auto_worker_count_floors_and_clamps_to_one():
 def test_auto_worker_count_divides_by_per_worker_estimate():
     available = 10 * resources._MEBIBYTE
     assert (
-        resources.auto_worker_count(available, worker_memory_mib=2, safety_fraction=1.0)
+        resources.auto_worker_count(
+            available, worker_memory_mib=2, safety_fraction=1.0, cpu_cores=10
+        )
         == 5
+    )
+
+
+def test_auto_worker_count_clamps_to_cpu_cores():
+    available = 100 * resources._MEBIBYTE
+    assert (
+        resources.auto_worker_count(
+            available, worker_memory_mib=2, safety_fraction=1.0, cpu_cores=8
+        )
+        == 8
     )
 
 

@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import hashlib
 import importlib
 import json
 import sys
@@ -100,16 +101,38 @@ def build_fixture_sqlite(fixture_id: str, documents: dict[str, bytes]) -> Path:
     database.touch()
     executor = make_sql_executor(database, dialect="sqlite")
     try:
-        phases_025.create_schema(executor, phases_025.chunk_ddl())
+        from defs.sql import ColumnDef, ColumnType, CreateTable, NotNull, PrimaryKey
+
+        fixture_ddl = CreateTable(
+            table=phases_025.DOCUMENT_BLOBS_TABLE,
+            columns=(
+                ColumnDef("doc_id", ColumnType.TEXT, (PrimaryKey(), NotNull())),
+                ColumnDef("accession", ColumnType.TEXT, (NotNull(),)),
+                ColumnDef("document_path", ColumnType.TEXT, (NotNull(),)),
+                ColumnDef("byte_size", ColumnType.INT, (NotNull(),)),
+                ColumnDef("mime_type", ColumnType.TEXT, (NotNull(),)),
+                ColumnDef("raw_payload", ColumnType.BLOB),
+                ColumnDef("raw_payload_sha256", ColumnType.TEXT, (NotNull(),)),
+            ),
+        )
+        executor.exec(executor.compiler.compile(fixture_ddl))
         for key, raw in documents.items():
             accession, document_path = key.split("/", 1)
-            blob = phases_025.build_blob(accession, document_path, raw)
+            blob_row = {
+                "doc_id": phases_025.doc_id(accession, document_path),
+                "accession": accession,
+                "document_path": document_path,
+                "byte_size": len(raw),
+                "mime_type": phases_025.detect_mime(document_path),
+                "raw_payload": phases_025.compress_payload(raw),
+                "raw_payload_sha256": hashlib.sha256(raw).hexdigest(),
+            }
             executor.transaction(
                 (
                     executor.compiler.compile(
                         insert_values(
                             phases_025.DOCUMENT_BLOBS_TABLE,
-                            blob.to_row(),
+                            blob_row,
                             on_conflict=DoNothing(),
                         )
                     ),

@@ -15,7 +15,15 @@ from defs.runtime.cli import print_json
 from defs.runtime.paths import resolve_paths
 from defs.runtime.progress import make_tqdm_callback
 from defs.runtime.resources import derive_resources
-from defs.sql import Select, SqlDialect, Table, col, make_sql_executor
+from defs.sql import (
+    Aggregate,
+    AggregateFunction,
+    Select,
+    SqlDialect,
+    Star,
+    Table,
+    make_sql_executor,
+)
 
 from .core import pipeline
 from .core.partition_merger import merge_partition
@@ -127,13 +135,22 @@ def build_parser() -> argparse.ArgumentParser:
     )
     merge_partition_parser.add_argument("--partition-id", type=int, required=True)
     merge_partition_parser.add_argument("--run-id", default="local")
-    merge_partition_parser.add_argument("--output-dir", required=True)
+    merge_partition_parser.add_argument(
+        "--output-dir",
+        default=None,
+        help="published partition directory (defaults to canonical dataset path)",
+    )
 
     status_parser = subparsers.add_parser(
         "status", help="report partition database integrity and record counts"
     )
     status_parser.add_argument(
-        "--database", required=True, help="partition database path"
+        "--database", default=None, help="partition database path"
+    )
+    status_parser.add_argument(
+        "--run-id",
+        default=None,
+        help="transient run ID to inspect (defaults to 'local' when --database is omitted)",
     )
 
     fill_fixture_parser = subparsers.add_parser(
@@ -158,26 +175,56 @@ def build_parser() -> argparse.ArgumentParser:
     fill_fixture_parser.add_argument(
         "--retry-failures",
         action="store_true",
-        help="retry acquisition failures belonging to the current plan",
+        help="retry previous acquisition failures",
     )
     fill_fixture_parser.add_argument(
-        "--no-progress", action="store_true", help="disable the tqdm progress bar"
+        "--no-progress", action="store_true", help="disable progress tracking"
     )
     return parser
 
 
-def _fixture_paths(fixtures: str | None) -> list[Path] | None:
-    if fixtures:
-        return [
-            resolve_paths().fixture(fid.strip(), dialect="sqlite").db_path
-            for fid in fixtures.split(",")
-            if fid.strip()
-        ]
-    fixtures_root = resolve_paths().fixtures_root
+def _fixture_paths(fixtures_arg: str | None) -> list[str] | None:
+    if fixtures_arg:
+        paths = []
+        for item in fixtures_arg.split(","):
+            item = item.strip()
+            if not item:
+                continue
+            path = Path(item)
+            if path.is_file():
+                paths.append(str(path))
+            else:
+                p_fixture = resolve_paths().fixture(item, dialect="sqlite")
+                if p_fixture.db_path.is_file():
+                    paths.append(str(p_fixture.db_path))
+                else:
+                    p_fixture_phase = resolve_paths("webpage_storage").fixture(
+                        item, dialect="sqlite"
+                    )
+                    if p_fixture_phase.db_path.is_file():
+                        paths.append(str(p_fixture_phase.db_path))
+                    else:
+                        paths.append(item)
+        return paths
+
+    fixtures_root = (
+        resolve_paths("webpage_storage").project.acceptance_root
+        / "webpage_storage"
+        / "fixtures"
+    )
     if fixtures_root.is_dir():
         dbs = [
-            d / "fixture.sqlite"
+            str(d / "fixture.sqlite")
             for d in sorted(fixtures_root.iterdir())
+            if d.is_dir() and (d / "fixture.sqlite").is_file()
+        ]
+        if dbs:
+            return dbs
+    shared_fixtures_root = resolve_paths().fixtures_root
+    if shared_fixtures_root.is_dir():
+        dbs = [
+            str(d / "fixture.sqlite")
+            for d in sorted(shared_fixtures_root.iterdir())
             if d.is_dir() and (d / "fixture.sqlite").is_file()
         ]
         if dbs:
@@ -195,58 +242,62 @@ def _resolved_output(args) -> str:
     )
 
 
-def _status(database: str) -> dict:
-    path = Path(database)
-    if not path.is_file():
-        return {
-            "database": database,
-            "exists": False,
-            "blobs": 0,
-            "occurrences": 0,
-            "failures": 0,
-            "committed_chunks": 0,
-        }
-    executor = make_sql_executor(database, dialect=SqlDialect.SQLITE)
-    try:
-        blobs = executor.query(
-            executor.compiler.compile(
-                Select(source=Table(DOCUMENT_BLOBS_TABLE), projection=(col("doc_id"),))
-            )
-        )
-        occurrences = executor.query(
-            executor.compiler.compile(
-                Select(
-                    source=Table(FILING_OCCURRENCES_TABLE),
-                    projection=(col("occurrence_id"),),
-                )
-            )
-        )
-        failures = executor.query(
-            executor.compiler.compile(
-                Select(
-                    source=Table(ACQUISITION_FAILURES_TABLE),
-                    projection=(col("doc_id"),),
-                )
-            )
-        )
-        chunks = executor.query(
-            executor.compiler.compile(
-                Select(
-                    source=Table(COMMITTED_CHUNKS_TABLE),
-                    projection=(col("chunk_id"),),
-                )
-            )
-        )
-        return {
-            "database": database,
-            "exists": True,
-            "blobs": len(blobs),
-            "occurrences": len(occurrences),
-            "failures": len(failures),
-            "committed_chunks": len(chunks),
-        }
-    finally:
-        executor.close()
+def _count_table(executor, table: str) -> int:
+    query = Select(
+        source=Table(table),
+        projection=(Aggregate(AggregateFunction.COUNT, Star()),),
+    )
+    row = executor.query_one(executor.compiler.compile(query))
+    if row:
+        val = next(iter(row.values()))
+        return int(val) if val is not None else 0
+    return 0
+
+
+def _status(database: str | None = None, run_id: str | None = None) -> dict:
+    if database:
+        path = Path(database)
+        if not path.is_file():
+            return {
+                "database": database,
+                "exists": False,
+                "blobs": 0,
+                "occurrences": 0,
+                "failures": 0,
+                "committed_chunks": 0,
+            }
+        executor = make_sql_executor(database, dialect=SqlDialect.SQLITE)
+        try:
+            return {
+                "database": database,
+                "exists": True,
+                "blobs": _count_table(executor, DOCUMENT_BLOBS_TABLE),
+                "occurrences": _count_table(executor, FILING_OCCURRENCES_TABLE),
+                "failures": _count_table(executor, ACQUISITION_FAILURES_TABLE),
+                "committed_chunks": _count_table(executor, COMMITTED_CHUNKS_TABLE),
+            }
+        finally:
+            executor.close()
+
+    target_run_id = run_id or "local"
+    run_paths = resolve_paths("webpage_storage", target_run_id)
+    meta_file = run_paths.run_root / "run_metadata.json"
+    meta = {}
+    if meta_file.is_file():
+        with suppress(Exception):
+            from defs.storage import load_json
+
+            meta = load_json(meta_file)
+
+    chunk_dbs = [
+        p for p in sorted(run_paths.workers_root.rglob("chunk-*.db")) if p.is_file()
+    ]
+    return {
+        "run_id": target_run_id,
+        "exists": run_paths.run_root.exists(),
+        "metadata": meta,
+        "chunk_dbs_count": len(chunk_dbs),
+    }
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -335,10 +386,12 @@ def main(argv: list[str] | None = None) -> int:
             return 0
         if args.command == "merge-partition":
             run_paths = resolve_paths("webpage_storage", args.run_id)
-            chunk_dbs = sorted(run_paths.workers_root.glob("*/*/chunk-*.db"))
-            if not chunk_dbs:
-                chunk_dbs = sorted(run_paths.workers_root.glob("*/chunk-*.db"))
-            output = Path(args.output_dir)
+            chunk_dbs = [
+                p
+                for p in sorted(run_paths.workers_root.rglob("chunk-*.db"))
+                if p.is_file()
+            ]
+            output = Path(_resolved_output(args))
             output.mkdir(parents=True, exist_ok=True)
             partition_name = (
                 resolve_paths()
@@ -354,7 +407,7 @@ def main(argv: list[str] | None = None) -> int:
             print_json(merge_result.to_dict())
             return 0
         if args.command == "status":
-            print_json(_status(args.database))
+            print_json(_status(args.database, args.run_id))
             return 0
         if args.command == "fill-fixture":
             from .core.fixture_builder import fill_fixture

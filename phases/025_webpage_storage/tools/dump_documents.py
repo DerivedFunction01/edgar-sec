@@ -26,20 +26,18 @@ from defs.sql import (
     col,
     make_sql_executor,
 )
-from defs.sql.models import MatchMode
-from defs.sql.predicates import Membership, StringMatch, ValueList
+from defs.sql.predicates import Membership, ValueList
 from defs.storage import atomic_write_json
 
-DOCUMENT_BLOBS_TABLE = "document_blobs"
+NORMALIZED_DOCUMENTS_TABLE = "normalized_documents"
 
-_BLOB_COLUMNS = (
-    "doc_id",
-    "accession",
-    "document_path",
+_DOC_COLUMNS = (
+    "normalized_artifact_id",
+    "source_doc_id",
     "byte_size",
     "mime_type",
-    "raw_payload",
-    "raw_payload_sha256",
+    "normalized_payload",
+    "payload_sha256",
 )
 
 
@@ -49,13 +47,10 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--out", required=True, help="output directory")
     parser.add_argument("--limit", type=int, default=20, help="max documents to dump")
     parser.add_argument(
-        "--doc-id", action="append", default=[], help="restrict to specific doc_ids"
-    )
-    parser.add_argument(
-        "--accession", action="append", default=[], help="restrict to accessions"
-    )
-    parser.add_argument(
-        "--path-contains", default="", help="restrict to document_path containing this"
+        "--doc-id",
+        action="append",
+        default=[],
+        help="restrict to specific source_doc_ids",
     )
     parser.add_argument("--no-decompress", action="store_true")
     parser.add_argument("--verbose", action="store_true")
@@ -69,23 +64,8 @@ def main(argv: list[str] | None = None) -> int:
     if args.doc_id:
         where.append(
             Membership(
-                col("doc_id"),
+                col("source_doc_id"),
                 source=ValueList(values=tuple(Parameter(p) for p in args.doc_id)),
-            )
-        )
-    if args.accession:
-        where.append(
-            Membership(
-                col("accession"),
-                source=ValueList(values=tuple(Parameter(p) for p in args.accession)),
-            )
-        )
-    if args.path_contains:
-        where.append(
-            StringMatch(
-                value=col("document_path"),
-                pattern=Parameter(f"%{args.path_contains}%"),
-                mode=MatchMode.LIKE,
             )
         )
 
@@ -93,8 +73,8 @@ def main(argv: list[str] | None = None) -> int:
     try:
         compiled = executor.compiler.compile(
             Select(
-                source=Table(DOCUMENT_BLOBS_TABLE),
-                projection=tuple(col(c) for c in _BLOB_COLUMNS),
+                source=Table(NORMALIZED_DOCUMENTS_TABLE),
+                projection=tuple(col(c) for c in _DOC_COLUMNS),
                 where=where[0] if len(where) == 1 else None,
                 limit=args.limit,
             )
@@ -105,17 +85,15 @@ def main(argv: list[str] | None = None) -> int:
 
     dumped = 0
     for row in rows:
-        doc_id = row["doc_id"]
-        accession = row["accession"]
-        document_path = row["document_path"]
+        doc_id = row["source_doc_id"]
+        artifact_id = row["normalized_artifact_id"]
         byte_size = row["byte_size"]
         mime_type = row["mime_type"]
-        payload = row["raw_payload"]
+        payload = row["normalized_payload"]
 
         doc_dir = out / doc_id
         doc_dir.mkdir(parents=True, exist_ok=True)
-        safe_name = document_path.replace("/", "__")
-        target = doc_dir / safe_name
+        target = doc_dir / f"{artifact_id}.md"
 
         if args.no_decompress:
             target.write_bytes(payload)
@@ -128,9 +106,8 @@ def main(argv: list[str] | None = None) -> int:
             target.write_bytes(raw)
 
         meta = {
-            "doc_id": doc_id,
-            "accession": accession,
-            "document_path": document_path,
+            "source_doc_id": doc_id,
+            "artifact_id": artifact_id,
             "byte_size": byte_size,
             "mime_type": mime_type,
             "compressed_size": len(payload),
@@ -141,7 +118,7 @@ def main(argv: list[str] | None = None) -> int:
         dumped += 1
         if args.verbose:
             print(
-                f"{doc_id} {accession} {document_path} "
+                f"{doc_id} {artifact_id} "
                 f"{len(payload)} -> {meta['decompressed_size']} bytes"
             )
 

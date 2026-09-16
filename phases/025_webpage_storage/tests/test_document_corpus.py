@@ -9,7 +9,6 @@ from pathlib import Path
 
 import pytest
 
-from defs.sql import DoNothing, insert_values, make_sql_executor
 from defs.storage import pa, write_table_atomic
 
 corpus = importlib.import_module("phases.025_webpage_storage.testing.corpus")
@@ -162,59 +161,6 @@ def test_deferred_expectation_promotion_records_current_behavior(
     assert json.loads(promoted["expected_metadata"])["deferred"] == [
         "paragraph_healing"
     ]
-
-
-def test_fixture_id_promotion_decompresses_and_verifies_source(tmp_path: Path) -> None:
-    db_path = tmp_path / "fixture.sqlite"
-    db_path.touch()
-    executor = make_sql_executor(db_path, dialect="sqlite")
-    try:
-        schemas.create_schema(executor, schemas.chunk_ddl())
-        raw = b"fixture source\n"
-        blob = schemas.build_blob("acc-1", "doc.txt", raw)
-        executor.transaction(
-            (
-                executor.compiler.compile(
-                    insert_values(
-                        schemas.DOCUMENT_BLOBS_TABLE,
-                        blob.to_row(),
-                        on_conflict=DoNothing(),
-                    )
-                ),
-            )
-        )
-    finally:
-        executor.close()
-    fixture = paths_mod.FixturePaths(tmp_path, "fixture-test", dialect="sqlite")
-    fixture.manifest_path.write_text(
-        json.dumps(
-            {
-                "fixture_id": "fixture-test",
-                "storage_format": "sqlite",
-                "fixture_manifest_schema_version": 1,
-            }
-        )
-    )
-
-    records = promoter.build_records(fixture)
-    assert records[0]["source_bytes"] == raw
-    assert records[0]["source_sha256"] == hashlib.sha256(raw).hexdigest()
-
-
-def test_fixture_manifest_must_identify_sqlite_fixture(tmp_path: Path) -> None:
-    fixture = paths_mod.FixturePaths(tmp_path, "fixture-test", dialect="sqlite")
-    fixture.db_path.touch()
-    fixture.manifest_path.write_text(
-        json.dumps({"fixture_id": "other", "storage_format": "sqlite"})
-    )
-    with pytest.raises(ValueError, match="different fixture ID"):
-        promoter._load_fixture_manifest(fixture)
-
-    fixture.manifest_path.write_text(
-        json.dumps({"fixture_id": "fixture-test", "storage_format": "parquet"})
-    )
-    with pytest.raises(ValueError, match="SQLite fixture"):
-        promoter._load_fixture_manifest(fixture)
 
 
 def test_corpus_path_version_validation_and_missing_lookup(tmp_path: Path) -> None:

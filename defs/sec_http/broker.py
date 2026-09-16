@@ -190,13 +190,15 @@ class SecBroker:
                 header = _json_dumps(response)
                 try:
                     conn.sendall(_HEADER_STRUCT.pack(len(header)) + header)
+                    if payload:
+                        conn.sendall(bytes(payload))
                 except OSError:
                     return
-                if payload:
-                    try:
-                        conn.sendall(bytes(payload))
-                    except OSError:
-                        return
+                finally:
+                    result = None
+                    response = None
+                    payload = None
+                    header = None
         finally:
             try:
                 conn.close()
