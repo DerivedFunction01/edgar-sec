@@ -2,7 +2,6 @@
 
 from __future__ import annotations
 
-import re
 from typing import TYPE_CHECKING
 
 from defs.tables.ascii_html.css import parse_style_and_attributes
@@ -12,70 +11,38 @@ from defs.tables.ascii_html.model import (
     SourceTable,
     SpanGroup,
 )
+from defs.tables.ascii_html.text import (
+    normalize_cell_whitespace as _normalize_whitespace,
+)
 from defs.tables.tokens import (
     PREFIX_SYMBOLS,
     is_numeric_cell,
     is_year_token,
 )
 from defs.text.html import FastHtmlNode
-from defs.text.tokens import BULLET_MARKER_RE
-from defs.text.unicode import NORMALIZE_TO_SPACE, STRIP_ZERO_WIDTH
 
 if TYPE_CHECKING:
     from defs.tables.ascii_html.blocks import RenderBlock
 
-
-_SENTENCE_END_RE = re.compile(r"[:.!?\)]\s*$")
-_RE_PARAGRAPH_SPLIT = re.compile(r"\n\s*\n+")
-_RE_DOTS = re.compile(r"\.{4,}")
-
-
-def _collapse_non_structural_newlines(text: str) -> str:
-    """Collapse soft wrapping newlines while preserving paragraphs and bullet/sentence breaks."""
-    text = text.replace("\r\n", "\n").replace("\r", "\n")
-    paragraphs = _RE_PARAGRAPH_SPLIT.split(text.strip())
-    out_paragraphs: list[str] = []
-
-    for p in paragraphs:
-        lines = p.split("\n")
-        curr_line: list[str] = []
-        p_lines: list[str] = []
-        for line in lines:
-            line_str = line.strip()
-            if not line_str:
-                continue
-            if not curr_line:
-                curr_line.append(line_str)
-            else:
-                prev = curr_line[-1]
-                first_word = line_str.split()[0]
-                is_bullet = bool(BULLET_MARKER_RE.match(first_word))
-                is_sentence_end = bool(_SENTENCE_END_RE.search(prev))
-                is_capital = line_str[0].isupper() or line_str[0].isdigit()
-                if is_bullet or (is_sentence_end and is_capital):
-                    p_lines.append(" ".join(" ".join(curr_line).split()))
-                    curr_line = [line_str]
-                else:
-                    curr_line.append(line_str)
-        if curr_line:
-            p_lines.append(" ".join(" ".join(curr_line).split()))
-        if p_lines:
-            out_paragraphs.append("\n".join(p_lines))
-
-    return "\n".join(out_paragraphs)
+# O4: tag sets for bounded-DFS inner-indent scan
+_INDENT_SOURCE_TAGS: frozenset[str] = frozenset({"div", "p", "span"})
+_INDENT_STOP_TAGS: frozenset[str] = frozenset({"table", "tr", "td", "th"})
 
 
-def _normalize_whitespace(text: str, *, preserve_newlines: bool = False) -> str:
-    for ch in NORMALIZE_TO_SPACE:
-        text = text.replace(ch, " ")
-    for ch in STRIP_ZERO_WIDTH:
-        text = text.replace(ch, "")
-    # Dot leaders are visual filler, not meaningful cell content. Keep a
-    # compact ASCII leader so they cannot consume an entire table budget.
-    text = _RE_DOTS.sub("...", text)
-    if not preserve_newlines:
-        text = _collapse_non_structural_newlines(text)
-    return text
+def _iter_indent_descendants(cell: FastHtmlNode):
+    """Yield div/p/span raw selectolax Nodes within a cell without crossing table boundaries.
+
+    Replaces ``cell.css('div, p, span')`` with a bounded DFS that avoids the
+    overhead of CSS selector parsing and selectolax re-parenting of malformed cells.
+    """
+    stack = [c for c in cell.raw_node.iter(include_text=False) if c.tag]
+    while stack:
+        raw = stack.pop()
+        tag = (raw.tag or "").lower()
+        if tag in _INDENT_SOURCE_TAGS:
+            yield raw
+        if tag not in _INDENT_STOP_TAGS:
+            stack.extend(c for c in raw.iter(include_text=False) if c.tag)
 
 
 def extract_source_table(
@@ -129,7 +96,7 @@ def extract_source_table(
                 child.raw_node.child.tag is not None
                 or child.raw_node.child.next is not None
             )
-            if has_child_elements:
+            if has_child_elements and child.raw_node.css_first("table") is not None:
                 child_tables = child.css("table")
                 if child_tables:
                     is_nested = True
@@ -145,20 +112,22 @@ def extract_source_table(
                         if nested_idx is None:
                             nested_idx = sub_idx
 
+            child_attrs = child.raw_node.attributes or {}
             try:
-                colspan = max(1, int(child.get("colspan", "1") or "1"))
+                colspan = max(1, int(child_attrs.get("colspan", "1") or "1"))
             except ValueError:
                 colspan = 1
             try:
-                rowspan = max(1, int(child.get("rowspan", "1") or "1"))
+                rowspan = max(1, int(child_attrs.get("rowspan", "1") or "1"))
             except ValueError:
                 rowspan = 1
 
             # Calculate visual indentation from CSS padding/margin/indent and non-breaking space prefixes
             inner_indent_px = 0.0
             if has_child_elements:
-                for inner in child.css("div, p, span"):
-                    attrs = inner.attributes
+                # O4: bounded DFS instead of child.css() to avoid CSS selector overhead
+                for inner in _iter_indent_descendants(child):
+                    attrs = inner.attributes or {}
                     if "style" in attrs or "class" in attrs or "align" in attrs:
                         inner_s = parse_style_and_attributes(inner)
                         inner_indent_px += (

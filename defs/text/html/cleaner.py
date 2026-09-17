@@ -45,6 +45,7 @@ _RE_IXBRL_CLOSE_TAG = re.compile(rf"(?i)</(?:{_IXBRL_PREFIXES}):[a-z][a-z0-9_.-]
 # Standard families carry no downstream signal; symbolic fonts do.
 _PRESERVED_FAMILIES = ("wingdings", "webdings", "symbol")
 _PRESERVED_FAMILIES_ALT = build_alternation(_PRESERVED_FAMILIES, auto_escape=True)
+_RE_HAS_PRESERVED_FAMILY = re.compile(rf"(?i)\b(?:{_PRESERVED_FAMILIES_ALT})\b")
 
 _BOX_SPACING_ALT = build_alternation(["margin", "padding"], auto_escape=True)
 _TYPOGRAPHY_ALT = build_alternation(
@@ -223,8 +224,7 @@ def normalize_font_qualified_glyphs(html: str) -> str:
     """
     if not html:
         return html
-    folded_html = html.lower()
-    if not any(family in folded_html for family in _PRESERVED_FAMILIES):
+    if not _RE_HAS_PRESERVED_FAMILY.search(html):
         return html
 
     output: list[str] = []
@@ -264,14 +264,20 @@ def normalize_font_qualified_glyphs(html: str) -> str:
         if tag_name in _VOID_TAGS or token.rstrip().endswith("/>"):
             continue
         font_stack.append(current_font)
-        style_match = _RE_STYLE_FONT_FAMILY.search(token)
-        face_match = _RE_FACE_ATTR.search(token)
-        if style_match:
-            current_font = (style_match.group(1) or style_match.group(2) or "").strip()
-        elif face_match:
-            current_font = next(
-                (value for value in face_match.groups() if value is not None), ""
-            ).strip()
+        tok_lower = token.lower()
+        if "font-family" in tok_lower or "style" in tok_lower:
+            style_match = _RE_STYLE_FONT_FAMILY.search(token)
+            if style_match:
+                current_font = (
+                    style_match.group(1) or style_match.group(2) or ""
+                ).strip()
+                continue
+        if "face" in tok_lower:
+            face_match = _RE_FACE_ATTR.search(token)
+            if face_match:
+                current_font = next(
+                    (value for value in face_match.groups() if value is not None), ""
+                ).strip()
 
     return "".join(output)
 

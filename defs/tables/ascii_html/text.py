@@ -2,11 +2,65 @@
 
 from __future__ import annotations
 
+import re
 import textwrap
-from re import sub
 from typing import Any
 
 from defs.tables.ascii_html.model import HorizontalAlign
+from defs.text.tokens import BULLET_MARKER_RE
+from defs.text.unicode import NORMALIZE_TO_SPACE, STRIP_ZERO_WIDTH
+
+# Single-pass character translation table
+_NORMALIZE_TRANS = str.maketrans(
+    {ch: " " for ch in NORMALIZE_TO_SPACE} | {ch: None for ch in STRIP_ZERO_WIDTH}
+)
+_SENTENCE_END_RE = re.compile(r"[:.!?\)]\s*$")
+_RE_PARAGRAPH_SPLIT = re.compile(r"\n\s*\n+")
+_RE_DOTS = re.compile(r"\.{4,}")
+
+
+def _collapse_non_structural_newlines(text: str) -> str:
+    """Collapse soft wrapping newlines while preserving paragraphs and bullet/sentence breaks."""
+    text = text.replace("\r\n", "\n").replace("\r", "\n")
+    paragraphs = _RE_PARAGRAPH_SPLIT.split(text.strip())
+    out_paragraphs: list[str] = []
+
+    for p in paragraphs:
+        lines = p.split("\n")
+        curr_line: list[str] = []
+        p_lines: list[str] = []
+        for line in lines:
+            line_str = line.strip()
+            if not line_str:
+                continue
+            if not curr_line:
+                curr_line.append(line_str)
+            else:
+                prev = curr_line[-1]
+                first_word = line_str.split()[0]
+                is_bullet = bool(BULLET_MARKER_RE.match(first_word))
+                is_sentence_end = bool(_SENTENCE_END_RE.search(prev))
+                is_capital = line_str[0].isupper() or line_str[0].isdigit()
+                if is_bullet or (is_sentence_end and is_capital):
+                    p_lines.append(" ".join(" ".join(curr_line).split()))
+                    curr_line = [line_str]
+                else:
+                    curr_line.append(line_str)
+        if curr_line:
+            p_lines.append(" ".join(" ".join(curr_line).split()))
+        if p_lines:
+            out_paragraphs.append("\n".join(p_lines))
+
+    return "\n".join(out_paragraphs)
+
+
+def normalize_cell_whitespace(text: str, *, preserve_newlines: bool = False) -> str:
+    """Normalize cell text whitespace, dots, and soft wrapping newlines."""
+    text = text.translate(_NORMALIZE_TRANS)
+    text = _RE_DOTS.sub("...", text)
+    if not preserve_newlines:
+        text = _collapse_non_structural_newlines(text)
+    return text
 
 
 def _split_wide_hyphenated(text: str, width: int) -> str:
@@ -35,12 +89,7 @@ def _split_wide_hyphenated(text: str, width: int) -> str:
 
 def _normalize_wrap_whitespace(text: str) -> str:
     """Make source whitespace consistently breakable for direct wrap callers."""
-    text = sub(
-        r"[\u200b\u200c\u200d\u200e\u200f\u061c\u202a-\u202e\u2066-\u2069\ufeff]",
-        "",
-        text,
-    )
-    return sub(r"[\u00a0\u2007\u2009\u202f]", " ", text)
+    return text.translate(_NORMALIZE_TRANS)
 
 
 def wrap_cell_text(text: str, width: int) -> list[str]:

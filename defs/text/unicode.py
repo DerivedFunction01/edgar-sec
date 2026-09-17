@@ -33,16 +33,16 @@ STRIP_ZERO_WIDTH = frozenset(
 )
 
 
+_UNICODE_TRANS = str.maketrans(
+    {ch: " " for ch in NORMALIZE_TO_SPACE} | {ch: None for ch in STRIP_ZERO_WIDTH}
+)
+
+
 def sanitize_unicode_whitespace(text: str) -> str:
     """Normalize Unicode whitespace: special spaces -> ASCII space, strip zero-width chars."""
     if not text:
         return ""
-    return text.translate(
-        str.maketrans(
-            {ch: " " for ch in NORMALIZE_TO_SPACE}
-            | {ch: None for ch in STRIP_ZERO_WIDTH}
-        )
-    )
+    return text.translate(_UNICODE_TRANS)
 
 
 __all__ = [

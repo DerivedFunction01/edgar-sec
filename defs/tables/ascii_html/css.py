@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 import re
-from typing import TYPE_CHECKING
+from typing import Any
 
 from defs.tables.ascii_html.model import (
     BorderStyle,
@@ -11,9 +11,7 @@ from defs.tables.ascii_html.model import (
     HorizontalAlign,
     VerticalAlign,
 )
-
-if TYPE_CHECKING:
-    from defs.text.html import FastHtmlNode
+from defs.tables.patterns import HIDDEN_ELEMENT_STYLE_RE
 
 # CSS declaration regex: property: value
 _DECL_RE = re.compile(r"([a-zA-Z\-]+)\s*:\s*([^;]+)")
@@ -30,9 +28,12 @@ _BORDER_STYLES = {
 }
 # Cell boundary tags — traversal must not descend into these when inheriting child styles
 _CELL_BOUNDARY_TAGS = frozenset(("table", "tr", "td", "th"))
+# Typography tags for inline bold/italic detection (replaces node.find() CSS queries)
+_BOLD_TAGS = frozenset(("b", "strong"))
+_ITALIC_TAGS = frozenset(("i", "em"))
 
 
-def _iter_cell_descendants(node: FastHtmlNode):  # type: ignore[name-defined]
+def _iter_cell_descendants(node: Any):
     """Yield descendant raw selectolax nodes without crossing into nested cell/table boundaries.
 
     selectolax (lexbor) re-parents unclosed <td>/<th> siblings as children of the
@@ -41,14 +42,13 @@ def _iter_cell_descendants(node: FastHtmlNode):  # type: ignore[name-defined]
     onto the wrong cell.  This bounded DFS stops recursing whenever it hits a boundary
     tag so only the current cell's own content is inspected.
     """
-    # Seed stack from FastHtmlNode.iter_children() which wraps raw nodes properly
-    stack = [c.raw_node for c in node.iter_children()]
+    raw_node = getattr(node, "raw_node", node)
+    stack = [c for c in raw_node.iter(include_text=False) if c.tag]
     while stack:
         child = stack.pop()
         yield child
         tag = (child.tag or "").lower()
         if tag not in _CELL_BOUNDARY_TAGS:
-            # Use raw selectolax .iter() for already-raw children
             stack.extend(c for c in child.iter(include_text=False) if c.tag)
 
 
@@ -183,9 +183,10 @@ def _parse_vertical_align(val: str | None) -> VerticalAlign:
 _DEFAULT_CELL_STYLE = CellStyle()
 
 
-def parse_style_and_attributes(node: FastHtmlNode) -> CellStyle:
+def parse_style_and_attributes(node: Any) -> CellStyle:
     """Extract and normalize all inline CSS properties and HTML attributes into a CellStyle."""
-    attrs = node.attributes
+    raw_node = getattr(node, "raw_node", node)
+    attrs = raw_node.attributes or {}
     if not attrs:
         return _DEFAULT_CELL_STYLE
 
@@ -220,14 +221,10 @@ def parse_style_and_attributes(node: FastHtmlNode) -> CellStyle:
 
     # Parse inline style declaration overrides
     style_str = attrs.get("style", "")
-    is_hidden = False
-    if attrs.get("hidden") is not None:
-        is_hidden = True
-    elif style_str:
-        from defs.tables.patterns import HIDDEN_ELEMENT_STYLE_RE
-
-        if HIDDEN_ELEMENT_STYLE_RE.search(style_str):
-            is_hidden = True
+    is_hidden = bool(
+        attrs.get("hidden") is not None
+        or (style_str and HIDDEN_ELEMENT_STYLE_RE.search(style_str))
+    )
 
     font_weight = "normal"
     font_style = "normal"
@@ -354,64 +351,84 @@ def parse_style_and_attributes(node: FastHtmlNode) -> CellStyle:
             elif prop == "border-top-color":
                 b_top_c = val.lower()
 
-    # Check child tags and inline styles for nested borders or typography
-    for child in _iter_cell_descendants(node):
-        tag = (child.tag or "").lower()
-        if tag in _CELL_BOUNDARY_TAGS:
-            continue
+    # Fast inline check: does the node have any element children?
+    # Text-only and childless nodes skip the entire subtree traversal block,
+    # eliminating _iter_cell_descendants and all four node.find() CSS queries.
+    _c = raw_node.child
+    _has_elem_child = False
+    while _c is not None:
+        _t = _c.tag
+        if _t and _t not in ("-text", "-comment"):
+            _has_elem_child = True
+            break
+        _c = _c.next
 
-        c_style = child.attributes.get("style", "")
-        if c_style:
-            for prop, val in _DECL_RE.findall(c_style):
-                prop = prop.strip().lower()
-                val = val.strip()
-                if prop in ("border-bottom", "border"):
-                    _, bs, bc = _parse_border_shorthand(val)
-                    if bs != BorderStyle.NONE:
-                        b_bot_s = bs
-                        b_bot_w = max(b_bot_w, 1.0)
-                        if bc:
-                            b_bot_c = bc
-                elif prop == "border-bottom-style":
-                    bs = _BORDER_STYLES.get(val.lower(), BorderStyle.SOLID)
-                    if bs != BorderStyle.NONE:
-                        b_bot_s = bs
-                        b_bot_w = max(b_bot_w, 1.0)
-                elif prop in ("border-top",):
-                    _, ts, tc = _parse_border_shorthand(val)
-                    if ts != BorderStyle.NONE:
-                        b_top_s = ts
-                        b_top_w = max(b_top_w, 1.0)
-                        if tc:
-                            b_top_c = tc
-                elif prop == "font-weight" and val.lower() in (
-                    "bold",
-                    "700",
-                    "800",
-                    "900",
-                ):
-                    font_weight = "bold"
-                elif prop == "text-align":
-                    inner_align = _parse_horizontal_align(val)
-                    if inner_align != HorizontalAlign.AUTO:
-                        h_align = (
-                            HorizontalAlign.LEFT
-                            if inner_align == HorizontalAlign.JUSTIFY
-                            else inner_align
-                        )
+    if _has_elem_child:
+        found_bold = False
+        found_italic = False
+        # Check child tags and inline styles for nested borders or typography.
+        # Inline bold/italic tag detection replaces the four node.find() CSS queries.
+        for child in _iter_cell_descendants(raw_node):
+            tag = (child.tag or "").lower()
+            if tag in _CELL_BOUNDARY_TAGS:
+                continue
 
-        if tag == "hr":
-            b_bot_w = max(b_bot_w, 1.0)
-            b_bot_s = BorderStyle.SOLID
+            # Detect typography tags inline — no separate CSS selector queries needed
+            if tag in _BOLD_TAGS:
+                found_bold = True
+            elif tag in _ITALIC_TAGS:
+                found_italic = True
 
-    # Check child formatting tags (<b>, <strong>, <i>, <em>) for typography inheritance
-    is_bold = font_weight in ("bold", "700", "800", "900")
-    if not is_bold and (node.find("b") or node.find("strong")):
-        is_bold = True
+            c_style = child.attributes.get("style", "")
+            if c_style:
+                for prop, val in _DECL_RE.findall(c_style):
+                    prop = prop.strip().lower()
+                    val = val.strip()
+                    if prop in ("border-bottom", "border"):
+                        _, bs, bc = _parse_border_shorthand(val)
+                        if bs != BorderStyle.NONE:
+                            b_bot_s = bs
+                            b_bot_w = max(b_bot_w, 1.0)
+                            if bc:
+                                b_bot_c = bc
+                    elif prop == "border-bottom-style":
+                        bs = _BORDER_STYLES.get(val.lower(), BorderStyle.SOLID)
+                        if bs != BorderStyle.NONE:
+                            b_bot_s = bs
+                            b_bot_w = max(b_bot_w, 1.0)
+                    elif prop in ("border-top",):
+                        _, ts, tc = _parse_border_shorthand(val)
+                        if ts != BorderStyle.NONE:
+                            b_top_s = ts
+                            b_top_w = max(b_top_w, 1.0)
+                            if tc:
+                                b_top_c = tc
+                    elif prop == "font-weight" and val.lower() in (
+                        "bold",
+                        "700",
+                        "800",
+                        "900",
+                    ):
+                        font_weight = "bold"
+                    elif prop == "text-align":
+                        inner_align = _parse_horizontal_align(val)
+                        if inner_align != HorizontalAlign.AUTO:
+                            h_align = (
+                                HorizontalAlign.LEFT
+                                if inner_align == HorizontalAlign.JUSTIFY
+                                else inner_align
+                            )
 
-    is_italic = font_style in ("italic", "oblique")
-    if not is_italic and (node.find("i") or node.find("em")):
-        is_italic = True
+            if tag == "hr":
+                b_bot_w = max(b_bot_w, 1.0)
+                b_bot_s = BorderStyle.SOLID
+
+        is_bold = font_weight in ("bold", "700", "800", "900") or found_bold
+        is_italic = font_style in ("italic", "oblique") or found_italic
+    else:
+        # Leaf node: typography determined solely by inline font-weight/style attrs
+        is_bold = font_weight in ("bold", "700", "800", "900")
+        is_italic = font_style in ("italic", "oblique")
 
     return CellStyle(
         width=w_attr,

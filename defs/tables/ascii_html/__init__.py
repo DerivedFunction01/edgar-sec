@@ -26,6 +26,7 @@ from defs.tables.ascii_html.model import (
     TextLayoutDiagnostic,
     VerticalAlign,
 )
+from defs.tables.ascii_html.quick_grid import quick_extract_table_grid
 from defs.tables.ascii_html.renderer import render_grid_to_ascii, render_source_table
 from defs.tables.ascii_html.spans import (
     build_span_matrix,
@@ -123,39 +124,65 @@ def convert_html_tables_to_ascii_with_metadata(
             (),
         )
 
-    source_tables = [
-        extract_source_table(tbl, table_index=i)[0] for i, tbl in enumerate(top_tables)
-    ]
+    # O5: per-node cache for is_wholly_empty_table (called up to 3x per table)
+    _empty_cache: dict[int, bool] = {}
 
-    is_false_list: list[bool] = []
-    unwrapped_texts: list[str] = []
+    def _is_empty(tbl: FastHtmlNode) -> bool:
+        k = id(tbl.raw_node)
+        v = _empty_cache.get(k)
+        if v is None:
+            v = not tbl.text(strip=True)
+            _empty_cache[k] = v
+        return v
+
+    # O1: Pre-filter obvious false tables using fast DOM scan (no CSS parsing).
+    # Tables with colspan/rowspan or nested <table> elements return None and
+    # fall through to the full extract_source_table path.
+    is_false_list: list[bool] = [False] * len(top_tables)
+    unwrapped_texts: list[str] = [""] * len(top_tables)
 
     if early_unwrap_false_tables:
         from defs.tables.false_tables import is_false_grid, unwrap_grid
 
+        for i, tbl in enumerate(top_tables):
+            quick = quick_extract_table_grid(tbl)
+            if quick is not None and quick and is_false_grid(quick):
+                is_false_list[i] = True
+                unwrapped_texts[i] = unwrap_grid(quick)
+
+    # Build source_tables, skipping full extraction for pre-classified false tables.
+    # None sentinels are always guarded by is_false_list[i] in downstream loops.
+    source_tables: list[SourceTable | None] = []
+    for i, tbl in enumerate(top_tables):
+        if is_false_list[i]:
+            source_tables.append(None)
+        else:
+            source_tables.append(extract_source_table(tbl, table_index=i)[0])
+
+    if early_unwrap_false_tables:
         for i, source in enumerate(source_tables):
-            if not source.rows or _is_wholly_empty_table(top_tables[i]):
-                is_false_list.append(False)
-                unwrapped_texts.append("")
+            if is_false_list[i]:
+                continue  # already classified by quick pre-filter
+            if source is None or not source.rows or _is_empty(top_tables[i]):
                 continue
             matrix, _ = build_span_matrix(source)
             grid_rows = tuple(
                 tuple(cell.text if cell else "" for cell in row) for row in matrix
             )
             if is_false_grid(grid_rows):
-                is_false_list.append(True)
-                unwrapped_texts.append(unwrap_grid(grid_rows))
-            else:
-                is_false_list.append(False)
-                unwrapped_texts.append("")
+                is_false_list[i] = True
+                unwrapped_texts[i] = unwrap_grid(grid_rows)
 
         # Footnote lookahead for tables immediately preceding a retained table
         for i in range(len(top_tables)):
-            if is_false_list[i] or not source_tables[i].rows:
+            if is_false_list[i] or not (
+                source_tables[i] is not None and source_tables[i].rows
+            ):
                 continue
             if (
                 i + 1 < len(top_tables)
                 and not is_false_list[i + 1]
+                and source_tables[i + 1] is not None
                 and source_tables[i + 1].rows
             ):
                 matrix, _ = build_span_matrix(source_tables[i])
@@ -165,9 +192,6 @@ def convert_html_tables_to_ascii_with_metadata(
                 if is_false_grid(grid_rows, allow_footnote_context=True):
                     is_false_list[i] = True
                     unwrapped_texts[i] = unwrap_grid(grid_rows)
-    else:
-        is_false_list = [False] * len(top_tables)
-        unwrapped_texts = [""] * len(top_tables)
 
     clusters: list[list[int]] = []
     fused_sources: list[SourceTable] = []
@@ -177,12 +201,13 @@ def convert_html_tables_to_ascii_with_metadata(
             tbl.raw_node.replace_with(f"\n{unwrapped_texts[i]}\n")
             continue
 
-        if _is_wholly_empty_table(tbl):
+        if _is_empty(tbl):
             if not convert_to_text:
                 tbl.decompose()
             continue
 
-        source = source_tables[i]
+        source = source_tables[i]  # not None: only None when is_false_list[i]
+        assert source is not None
         if not source.rows:
             clusters.append([i])
             fused_sources.append(source)
@@ -264,7 +289,7 @@ def convert_html_tables_to_ascii_with_metadata(
                 )
             )
         elif not convert_to_text:
-            if _is_wholly_empty_table(primary_tbl):
+            if _is_empty(primary_tbl):
                 primary_tbl.decompose()
                 continue
             token = f"__SEC_RENDERED_TABLE_{len(rendered_tables)}__"
