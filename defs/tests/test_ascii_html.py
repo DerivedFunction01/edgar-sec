@@ -1170,3 +1170,38 @@ def test_convert_html_tables_to_ascii_with_metadata_empty_table_no_geometry() ->
     )
     assert geometries == ()
     assert "<TABLE>" not in text
+
+
+def test_header_vertical_bottom_alignment_and_no_double_newlines() -> None:
+    """Multi-paragraph headers collapse to single newlines and bottom-align against dividers."""
+    html = """
+    <table>
+        <tr>
+            <td width="10" valign="bottom" style="border-bottom: 1px solid #000;"><p>Clover</p></td>
+            <td width="10" valign="bottom" style="border-bottom: 1px solid #000;"><p>North Anna</p></td>
+            <td width="10" valign="bottom" style="border-bottom: 1px solid #000;"><p>Combustion Turbine Facilities</p></td>
+        </tr>
+        <tr>
+            <td>$ 100</td>
+            <td>$ 200</td>
+            <td>$ 300</td>
+        </tr>
+    </table>
+    """
+    result = convert_html_table(
+        html, budget=RenderBudget(max_column_width=10, max_table_width=40)
+    )
+    ascii_table = result.ascii_text
+    assert "<TABLE>" in ascii_table
+    lines = [line.strip() for line in ascii_table.splitlines() if line.strip()]
+    table_idx = lines.index("<TABLE>")
+    divider_idx = next(i for i, line in enumerate(lines) if "---" in line)
+    header_block = lines[table_idx + 1 : divider_idx]
+    assert len(header_block) == 2
+    # Top line has Combustion Turbine
+    assert "Combustion Turbine" in header_block[0]
+    assert "Clover" not in header_block[0]
+    # Bottom line has Clover, North Anna, Facilities flush together
+    assert "Clover" in header_block[1]
+    assert "North Anna" in header_block[1]
+    assert "Facilities" in header_block[1]

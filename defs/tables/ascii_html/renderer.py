@@ -37,6 +37,7 @@ from defs.tables.ascii_html.model import (
     RenderBudget,
     ResolvedGrid,
     TableRenderResult,
+    VerticalAlign,
 )
 from defs.tables.ascii_html.spans import (
     build_span_matrix,
@@ -341,7 +342,25 @@ def render_source_table(
             formatted_blocks: list[str] = []
             for b_idx, b_info in enumerate(blocks):
                 lines_list = block_lines[b_idx]
-                txt = lines_list[line_i] if line_i < len(lines_list) else ""
+                v_align = (
+                    b_info.cell.style.vertical_align
+                    if b_info.cell is not None
+                    else VerticalAlign.AUTO
+                )
+                if v_align == VerticalAlign.BOTTOM or (
+                    v_align == VerticalAlign.AUTO and r_idx < header_row_count
+                ):
+                    pad = max_lines_in_row - len(lines_list)
+                    txt = lines_list[line_i - pad] if line_i >= pad else ""
+                elif v_align == VerticalAlign.MIDDLE:
+                    pad = (max_lines_in_row - len(lines_list)) // 2
+                    txt = (
+                        lines_list[line_i - pad]
+                        if pad <= line_i < pad + len(lines_list)
+                        else ""
+                    )
+                else:
+                    txt = lines_list[line_i] if line_i < len(lines_list) else ""
                 formatted = format_cell_line(txt, b_info.width, align=b_info.alignment)
                 formatted_blocks.append(formatted)
             row_line = col_sep.join(formatted_blocks).rstrip()
@@ -426,14 +445,21 @@ def render_grid_to_ascii(
         ]
         max_lines = max((len(bl) for bl in block_lines), default=1)
         for line_i in range(max_lines):
-            formatted_cells = [
-                format_cell_line(
-                    block_lines[c][line_i] if line_i < len(block_lines[c]) else "",
-                    widths[c],
-                    align=alignments[c],
+            formatted_cells = []
+            for c in range(num_cols):
+                bl = block_lines[c]
+                if r_idx < header_row_count:
+                    pad = max_lines - len(bl)
+                    txt = bl[line_i - pad] if line_i >= pad else ""
+                else:
+                    txt = bl[line_i] if line_i < len(bl) else ""
+                formatted_cells.append(
+                    format_cell_line(
+                        txt,
+                        widths[c],
+                        align=alignments[c],
+                    )
                 )
-                for c in range(num_cols)
-            ]
             lines.append(col_sep.join(formatted_cells).rstrip())
 
         if r_idx == header_row_count - 1 and header_row_count > 0:

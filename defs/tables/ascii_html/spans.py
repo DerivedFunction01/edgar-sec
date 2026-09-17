@@ -56,7 +56,7 @@ def _collapse_non_structural_newlines(text: str) -> str:
         if p_lines:
             out_paragraphs.append("\n".join(p_lines))
 
-    return "\n\n".join(out_paragraphs)
+    return "\n".join(out_paragraphs)
 
 
 def _normalize_whitespace(text: str, *, preserve_newlines: bool = False) -> str:
