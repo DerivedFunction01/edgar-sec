@@ -8,7 +8,6 @@ from .headers import (
     HeaderMatch,
     make_grammar,
     match_header,
-    normalize_headers,
 )
 
 __all__ = [
@@ -19,5 +18,4 @@ __all__ = [
     "HeaderMatch",
     "make_grammar",
     "match_header",
-    "normalize_headers",
 ]

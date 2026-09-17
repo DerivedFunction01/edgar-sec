@@ -58,14 +58,14 @@ class FormEvaluator(Protocol):
 
 @runtime_checkable
 class FormNormalizer(Protocol):
-    """Protocol for form-family specific heading normalization passes."""
+    """Protocol for form-family specific normalization passes."""
 
-    def normalize_headers(
+    def normalize(
         self,
         text: str,
         metadata: dict[str, Any] | None = None,
     ) -> str:
-        """Apply form-family specific section and item heading normalization."""
+        """Apply form-family specific normalization."""
         ...
 
 

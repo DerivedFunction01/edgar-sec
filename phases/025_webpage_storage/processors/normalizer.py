@@ -10,6 +10,7 @@ from defs.sec_forms.cover import (
     BoundaryInput,
     CoverBoundary,
     apply_cover_checkmark_decisions,
+    clean_cover_tables,
     find_body_start,
     find_closing_span,
     find_cover_boundary_for_profile,
@@ -203,18 +204,42 @@ class DeepNormalizer:
         if checkmark_inference.decisions or _has_labeled_checkmark_candidates(
             checkmark_inference.candidates
         ):
+            text, checkmark_changed, unwrapped_indices = (
+                apply_cover_checkmark_decisions(
+                    text,
+                    checkmark_inference,
+                )
+            )
             table_geometries = update_table_geometries(
                 table_geometries,
                 checkmark_inference,
-            )
-            text, checkmark_changed = apply_cover_checkmark_decisions(
-                text,
-                checkmark_inference,
+                unwrapped_indices,
             )
             if checkmark_changed:
                 stage_trace.append(
                     {
                         "stage": "after_checkmark_rewrite",
+                        "text_identity": hashlib.sha256(
+                            text.encode("utf-8")
+                        ).hexdigest(),
+                        "representation": representation,
+                        "line_count": len(text.splitlines()),
+                        "char_count": len(text),
+                    }
+                )
+
+        if profile.cover_table_cleaners and boundary.end_line is not None:
+            cleaned_cover_text, table_geometries = clean_cover_tables(
+                text,
+                boundary,
+                table_geometries=table_geometries,
+                enabled_cleaners=profile.cover_table_cleaners,
+            )
+            if cleaned_cover_text != text:
+                text = cleaned_cover_text
+                stage_trace.append(
+                    {
+                        "stage": "after_cover_table_cleaning",
                         "text_identity": hashlib.sha256(
                             text.encode("utf-8")
                         ).hexdigest(),
@@ -241,16 +266,7 @@ class DeepNormalizer:
                 }
             )
 
-        text = form_normalizer.normalize_headers(text, metadata)
-        stage_trace.append(
-            {
-                "stage": "after_header_normalization",
-                "text_identity": hashlib.sha256(text.encode("utf-8")).hexdigest(),
-                "representation": representation,
-                "line_count": len(text.splitlines()),
-                "char_count": len(text),
-            }
-        )
+        text = form_normalizer.normalize(text, metadata)
 
         text = normalize_final_text_whitespace(text)
         stage_trace.append(

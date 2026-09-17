@@ -171,6 +171,7 @@ To enable code reuse across both historical backfills and live streaming:
   class ItemSectioner:
       def partition_document(self, text: str, form: str) -> list[DocumentSection]: ...
 
+
   # INCORRECT: Tying sectioning logic to database persistence
   class ItemSectioner:
       def partition_document(self, db_conn: sqlite3.Connection, doc_id: str): ...
@@ -200,7 +201,7 @@ struct ExtractedFact {
     // Audit & Lineage
     extractor_type:      VARCHAR ("regex" | "llm")
     extractor_version:   VARCHAR ("regex_v1.4" | "gemini-2.5-flash@2026-09")
-    source_char_offset:  INT     (Character index in normalized text)
+    source_line_start:   INT     (1-indexed start line in normalized .txt)
     source_evidence:     VARCHAR ("Approximately 18.5% of our active workforce...")
     confidence:          DOUBLE
 }

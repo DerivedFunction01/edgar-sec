@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import importlib
+import json
 import uuid
 from pathlib import Path
 
@@ -249,3 +250,117 @@ def test_pipeline_progress_callback(
         e["type"] == "document_done" and e["status"] in ("ok", "missing")
         for e in events
     )
+
+
+def test_pipeline_populates_form_and_cover_metadata(tmp_path: Path):
+    from .conftest import build_fixture_sqlite, build_phase02_bundle
+
+    raw_doc = b"""<DOCUMENT>
+<TYPE>10-K
+<TEXT>
+UNITED STATES SECURITIES AND EXCHANGE COMMISSION
+Washington, D.C. 20549
+FORM 10-K
+
+ANNUAL REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934
+FOR THE FISCAL YEAR ENDED DECEMBER 31, 1998
+COMMISSION FILE NUMBER 001-00001
+
+ACME CORP
+Exact name of registrant as specified in its charter
+
+Indicate by check mark whether the registrant is a well-known seasoned issuer. Yes [ ] No [X]
+
+DOCUMENTS INCORPORATED BY REFERENCE
+Portions of the definitive Proxy Statement are incorporated by reference into Part III.
+
+TABLE OF CONTENTS
+Item 1. Business
+Item 1A. Risk Factors
+Item 7. MD&A
+
+PART I
+
+ITEM 1. BUSINESS
+
+We are a leading provider and manufacturer of enterprise software, founded in 1998 with employees worldwide.
+
+ITEM 1A. RISK FACTORS
+
+Our business faces risks.
+
+ITEM 7. MD&A
+
+Management discussion and analysis of financial condition.
+
+SIGNATURES
+
+Pursuant to the requirements of Section 13 or 15(d).
+Date: March 1, 1999
+By: /s/ Jane Doe
+Title: Chief Executive Officer
+</TEXT>
+</DOCUMENT>"""
+
+    plan_dir = tmp_path / "plan_meta"
+    occurrences = [
+        {
+            "occurrence_id": "occ-10k",
+            "document_locator_key": "loc-10k",
+            "source_cik": "0000000001",
+            "accession": "000000000100000001",
+            "form": "10-K",
+            "filing_date": "1999-03-15",
+            "report_date": "1998-12-31",
+            "document_path": "form10k.txt",
+        }
+    ]
+    bundle = build_phase02_bundle(
+        plan_dir,
+        documents={"000000000100000001/form10k.txt": raw_doc},
+        occurrences=occurrences,
+    )
+    fixture_db = build_fixture_sqlite(
+        "test-fix-meta", {"000000000100000001/form10k.txt": raw_doc}
+    )
+
+    DefaultFilingProcessor = importlib.import_module(
+        "phases.025_webpage_storage.processors"
+    ).DefaultFilingProcessor
+
+    out_dir = tmp_path / "out_meta"
+    result = pipeline.run_partition(
+        bundle,
+        out_dir,
+        mode="fixture",
+        fixture_paths=[fixture_db],
+        run_id=f"meta-run-{uuid.uuid4().hex}",
+        partition_id=1,
+        partition_count=1,
+        chunk_size=10,
+        processor=DefaultFilingProcessor(),
+    )
+
+    assert result["locator_count"] == 1
+    partition_db = out_dir / "partition-00001.sqlite"
+    assert partition_db.is_file()
+
+    executor = make_sql_executor(partition_db, dialect=SqlDialect.SQLITE)
+    try:
+        normalized_docs = executor.query(
+            executor.compiler.compile(
+                Select(
+                    source=Table(phases_025.NORMALIZED_DOCUMENTS_TABLE),
+                    projection=(col("processor_metadata"),),
+                )
+            )
+        )
+    finally:
+        executor.close()
+
+    assert len(normalized_docs) == 1
+    meta = json.loads(normalized_docs[0]["processor_metadata"])
+    assert meta["cover_boundary_method"] != "disabled"
+    assert meta["cover_boundary_line"] is not None
+    assert meta["body_start_line"] is not None
+    assert meta["closing_start_line"] is not None

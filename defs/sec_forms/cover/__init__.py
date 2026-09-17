@@ -66,6 +66,7 @@ from defs.sec_forms.cover.structure import (
     match_structural_line,
     parse_section_heading,
 )
+from defs.sec_forms.cover.tables import clean_cover_tables
 from defs.sec_forms.cover.toc import (
     RE_TOC_HEADING,
     RE_TOC_ITEM,
@@ -120,6 +121,7 @@ __all__ = [
     "TocEvidence",
     "TocSpan",
     "apply_cover_checkmark_decisions",
+    "clean_cover_tables",
     "extract_candidate_ein",
     "extract_commission_file_number",
     "extract_cover_candidates",

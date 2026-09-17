@@ -33,29 +33,29 @@ To balance long-term analytical capability with rigorous software engineering, t
  └───────────────────────────────────────────────────┬───────────────────────────────────────────────────┘
                                                      │
  ┌───────────────────────────────────────────────────▼───────────────────────────────────────────────────┐
- │ MILESTONE 2: SECTION SEGMENTATION & HIDDEN DISCLOSURE CARTOGRAPHY                                     │
- │ • Phase 03: Explicit Item Segmentation (Items 1–16 across Parts I–IV, TOC disambiguation)             │
- │ • 20 Qualified Tier-3 Hidden Section Regex Engines with 500-char co-occurrence verification           │
+ │ MILESTONE 2: CANONICAL TOC SEGMENTATION & THEMATIC DISCLOSURE CARTOGRAPHY                             │
+ │ • Phase 03: Canonical Item Segmentation & TOC Builder (Parts I–IV, Items 1–16, 1D disjoint spine)    │
+ │ • Phase 04: Thematic Disclosure Cartography & Hidden Sections (20 Tier-3 tags, multi-span bookmarks) │
  │ • Capture Multi-Scale Divergence (<100 employee micro-caps vs. megacaps: cash runway, burn rate)      │
  │ • Multi-decade policy shock cartography (tariffs, CHIPS/IRA subsidies, export bans, SAB 121 crypto)  │
  └───────────────────────────────────────────────────┬───────────────────────────────────────────────────┘
                                                      │
  ┌───────────────────────────────────────────────────▼───────────────────────────────────────────────────┐
  │ MILESTONE 3: UNIVERSAL FUNDAMENTALS & TABLE EXTRACTION ENGINE                                         │
- │ • Phase 04: Geometry-first table parsing, span extraction, and financial statement reconstruction     │
+ │ • Phase 05: Geometry-first table parsing, span extraction, and financial statement reconstruction     │
  │ • Bind numbers to 6-parameter Measurement Tuples: Magnitude × Unit × Scale × Polarity × Valuation    │
  │ • Distinguish Instantaneous Stocks from Duration-Scoped Flows; apply 7 Temporal Precision Tiers       │
  └───────────────────────────────────────────────────┬───────────────────────────────────────────────────┘
                                                      │
  ┌───────────────────────────────────────────────────▼───────────────────────────────────────────────────┐
  │ MILESTONE 4: 16-MODULE DOMAIN FACT EXTRACTION ENGINE & ACTIVE FLAG ARRAYS                             │
- │ • Phase 05: Extract computable facts across 16 specialized modules (Financials, Debt, Labor, etc.)    │
+ │ • Phase 06: Extract computable facts across 16 specialized modules (Financials, Debt, Labor, etc.)    │
  │ • Structure disclosures into Analytic Utility tuples: `metrics: []`, `facets: {}`, `active_flags: []`│
  └───────────────────────────────────────────────────┬───────────────────────────────────────────────────┘
                                                      │
  ┌───────────────────────────────────────────────────▼───────────────────────────────────────────────────┐
  │ MILESTONE 5: FLATTENED ANALYTICAL DATASETS, RECONCILIATION & SQL VIEWS                                │
- │ • Phase 06: Populate partitioned Parquet tables (`fiscal_year`, `module_domain`) and relational DDL   │
+ │ • Phase 07: Populate partitioned Parquet tables (`fiscal_year`, `module_domain`) and relational DDL   │
  │ • Enforce 3-tier partitioned aggregations (`portfolio`, `category`, `atomic_positions`)              │
  │ • Execute automated accounting assertion harness (Assets = Liabilities + Equity, Lease discounting)   │
  └───────────────────────────────────────────────────────────────────────────────────────────────────────┘
@@ -63,7 +63,7 @@ To balance long-term analytical capability with rigorous software engineering, t
 
 ---
 
-### Ingestion & Storage Engineering Boundaries (Phases 01, 02, 2.5)
+### Pipeline Engineering Boundaries (Phases 01–04)
 
 #### Phase 01: Submissions Metadata Extraction
 - Consumes `data.sec.gov/submissions` feeds per CIK, recursively follows historical metadata files, and produces one `submission_metadata` row per CIK combining recent and historical filings with complete provenance.
@@ -86,6 +86,19 @@ To balance long-term analytical capability with rigorous software engineering, t
 - **Storage Layout**: Persists sha256-addressed raw bytes (`document_blobs`) and versioned normalized representations (`normalized_documents`) in isolated worker SQLite chunks before atomic partition merge.
 - **Live Monitoring**: Real-time progress, throughput, and disk usage tracking via `scripts/monitor_progress.py`.
 - **Review Workflow**: Document corpus review toolchain (`promote_document_corpus`, `build_document_review_artifacts`, `chunk_document_reviews`) with exact golden promotion.
+
+#### Phase 03: Canonical Item Segmentation & Document TOC Spine
+- Consumes clean normalized documents from Phase 2.5 and builds an **exhaustive, non-overlapping, 1D Table of Contents (TOC) spine**.
+- **Statutory Hierarchy**: Partitions 10-K (Parts I–IV, Items 1–16), 10-Q (Parts I–II, Items 1–6), and 8-K into distinct character spans `[char_start, char_end]`.
+- **TOC & Inline Disambiguation**: Employs monotonic item state machines and structural heading geometry to reject false matches from initial Table of Contents pages and inline cross-references.
+- **Incorporation by Reference**: Detects stubs referencing proxy statements (`Schedule 14A`) or external exhibits and flags them without generating phantom sections.
+- **Pure Functional Core**: Decoupled from physical persistence; takes in-memory text/records and emits integer offset bookmarks.
+
+#### Phase 04: Thematic Disclosure Cartography & Hidden Sections (Deferred / In Design)
+- Operates on the canonical TOC bookmarks established in Phase 03 to identify **sparse, multi-span, cross-cutting topic bookmarks** across sections.
+- **20 Qualified Tier-3 Tags**: Discovers thematic disclosures (Derivatives/Hedging, Labor Unions/CBA, Loss of Exclusivity, CERCLA Superfund, Cash Runway) that lack dedicated SEC item numbers and migrate across Item 1, 1A, 7, 7A, and Item 8 Notes.
+- **Multi-Location Bookmarks**: Maps single topics to multiple distinct spans within the same document (e.g., Derivatives appearing in both Item 7A and Note 5 Fair Value).
+- **Targeted Slicing**: Bounded execution that scans only relevant parent canonical items (skipping irrelevant parts of the document).
 
 ---
 

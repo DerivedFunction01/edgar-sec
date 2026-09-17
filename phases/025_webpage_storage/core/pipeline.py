@@ -36,6 +36,7 @@ REQUIRED_LOCATOR_COLUMNS = (
     "representative_accession",
     "document_path",
     "archive_url",
+    "form",
 )
 REQUIRED_TARGET_COLUMNS = (
     "occurrence_id",

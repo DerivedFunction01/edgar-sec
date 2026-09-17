@@ -28,12 +28,8 @@ def test_form_10q_evaluator_basic() -> None:
     assert decision.is_stub is False
 
 
-def test_form_10q_normalizer_headings() -> None:
+def test_form_10q_normalizer() -> None:
     normalizer = Form10QNormalizer()
     text = "part i\nitem 1. financial statements\nRevenue table.\npart ii\nitem 1. legal proceedings\nNone."
-    normalized = normalizer.normalize_headers(text)
-
-    assert "PART I\n" in normalized
-    assert "ITEM 1. financial statements\n" in normalized
-    assert "PART II\n" in normalized
-    assert "ITEM 1. legal proceedings\n" in normalized
+    normalized = normalizer.normalize(text)
+    assert normalized == text

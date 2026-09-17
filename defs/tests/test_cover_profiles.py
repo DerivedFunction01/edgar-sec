@@ -131,3 +131,11 @@ def test_aggregate_matches_annual_profile_rules() -> None:
     annual = get_profile("10-K")
     expected = tuple(COMMON_PHRASE_RULES) + tuple(ANNUAL_ADDITIONAL_PHRASE_RULES)
     assert annual.healing_rules == expected
+
+
+def test_cover_table_cleaners_configuration() -> None:
+    assert get_profile("10-K").cover_table_cleaners == ("report_period",)
+    assert get_profile("20-F").cover_table_cleaners == ("report_period",)
+    assert get_profile("10-Q").cover_table_cleaners == ("report_period",)
+    assert get_profile("8-K").cover_table_cleaners == ()
+    assert get_profile("GENERIC").cover_table_cleaners == ()

@@ -318,7 +318,6 @@ def test_stage_trace_contains_required_stages() -> None:
     assert "preprocessed" in stages
     assert "page_policy_input" in stages
     assert "page_policy_output" in stages
-    assert "after_header_normalization" in stages
     assert "after_final_whitespace" in stages
 
 

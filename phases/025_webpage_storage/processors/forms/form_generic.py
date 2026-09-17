@@ -42,7 +42,7 @@ class GenericFormEvaluator(FormEvaluator):
 class GenericFormNormalizer(FormNormalizer):
     """Fallback normalizer for generic/unspecified form types."""
 
-    def normalize_headers(
+    def normalize(
         self,
         text: str,
         metadata: dict[str, Any] | None = None,

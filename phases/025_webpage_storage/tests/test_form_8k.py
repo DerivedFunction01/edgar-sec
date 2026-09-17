@@ -28,11 +28,8 @@ def test_form_8k_evaluator_basic() -> None:
     assert decision.is_stub is False
 
 
-def test_form_8k_normalizer_headings() -> None:
+def test_form_8k_normalizer() -> None:
     normalizer = Form8KNormalizer()
     text = "section 1 - registrant's business and operations\nitem 1.01 entry into a material definitive agreement\nWe signed an agreement.\nitem 9.01 financial statements and exhibits\nNone."
-    normalized = normalizer.normalize_headers(text)
-
-    assert "SECTION 1 - REGISTRANT'S BUSINESS AND OPERATIONS\n" in normalized
-    assert "ITEM 1.01. entry into a material definitive agreement\n" in normalized
-    assert "ITEM 9.01. financial statements and exhibits\n" in normalized
+    normalized = normalizer.normalize(text)
+    assert normalized == text

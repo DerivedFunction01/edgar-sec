@@ -74,6 +74,7 @@ class CoverProfile:
     body_evidence: BodyEvidencePack | None = None
     derived_taxonomy: dict | None = None
     checkbox_schema: CoverCheckboxSchema | None = None
+    cover_table_cleaners: tuple[str, ...] = ()
 
 
 def _make_profile(
@@ -86,6 +87,7 @@ def _make_profile(
     body_evidence: BodyEvidencePack | None = None,
     derived_taxonomy: dict | None = None,
     checkbox_schema: CoverCheckboxSchema | None = None,
+    cover_table_cleaners: tuple[str, ...] = (),
 ) -> CoverProfile:
     return CoverProfile(
         family=family,
@@ -100,6 +102,7 @@ def _make_profile(
         body_evidence=body_evidence,
         derived_taxonomy=derived_taxonomy,
         checkbox_schema=checkbox_schema,
+        cover_table_cleaners=cover_table_cleaners,
     )
 
 
@@ -141,6 +144,7 @@ def _build_profiles() -> dict[str, CoverProfile]:
         body_evidence=annual_evidence.body_evidence,
         derived_taxonomy=FORM_10K_DERIVED,
         checkbox_schema=ANNUAL_CHECKBOX_SCHEMA,
+        cover_table_cleaners=("report_period",),
     )
     annual_foreign = _dataclass_replace(
         annual_common, family="20-F", derived_taxonomy=FORM_20F_DERIVED
@@ -164,6 +168,7 @@ def _build_profiles() -> dict[str, CoverProfile]:
         body_evidence=quarterly_evidence.body_evidence,
         derived_taxonomy=FORM_10Q_DERIVED,
         checkbox_schema=QUARTERLY_CHECKBOX_SCHEMA,
+        cover_table_cleaners=("report_period",),
     )
     no_cover_8k = _make_profile(
         family="8-K",

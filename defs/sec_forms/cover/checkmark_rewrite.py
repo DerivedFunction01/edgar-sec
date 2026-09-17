@@ -92,14 +92,24 @@ def _has_pure_yes_no_candidates(
 def apply_cover_checkmark_decisions(
     text: str,
     result: CoverCheckmarkResult,
-) -> tuple[str, bool]:
-    """Apply resolved source decisions without reclassifying generated tokens."""
+) -> tuple[str, bool, frozenset[int]]:
+    """Apply resolved source decisions without reclassifying generated tokens.
+
+    Returns ``(new_text, changed, unwrapped_table_indices)`` where
+    ``unwrapped_table_indices`` is the set of *geometry* table indices
+    (matching :attr:`~defs.tables.ascii_html.TableGeometry.table_index`)
+    whose ``<TABLE>`` tags were physically stripped from the output text.
+    Callers must evict those indices from their ``table_geometries`` tuple
+    before any subsequent pass that pairs tables by position — otherwise
+    the first remaining ``<TABLE>`` block in text will be mis-matched with
+    the stale geometry of the table that was just unwrapped.
+    """
     if (
         not result.decisions
         and not _has_pure_yes_no_candidates(result.candidates)
         and not _has_labeled_checkmark_candidates(result.candidates)
     ):
-        return text, False
+        return text, False, frozenset()
     original_text = text
     decisions = {
         (decision.source_region, decision.source_token): decision
@@ -156,6 +166,9 @@ def apply_cover_checkmark_decisions(
             continue
         text = text[:start] + replacement + text[end:]
 
+    # Track which geometry table indices are physically unwrapped so the caller
+    # can evict them from table_geometries before the next positional pass.
+    unwrapped_table_indices: set[int] = set()
     masked, spans = mask_tagged_tables(text)
     if spans:
         updated_spans = list(spans)
@@ -182,22 +195,32 @@ def apply_cover_checkmark_decisions(
                 candidates
             ) or _has_labeled_checkmark_candidates(candidates):
                 table_text = _unwrap_pure_yes_no_table(table_text)
+                # Record that this table was physically unwrapped (no longer
+                # present as a <TABLE> block in the output text).
+                unwrapped_table_indices.add(table_index)
             updated_spans[table_index] = type(updated_spans[table_index])(
                 updated_spans[table_index].start,
                 updated_spans[table_index].end,
                 table_text,
             )
         masked = restore_tagged_tables(masked, tuple(updated_spans))
-    return masked, masked != original_text
+    return masked, masked != original_text, frozenset(unwrapped_table_indices)
 
 
 def update_table_geometries(
     table_geometries: Sequence[object],
     result: CoverCheckmarkResult,
+    unwrapped_table_indices: frozenset[int] = frozenset(),
 ) -> tuple[object, ...]:
-    """Carry resolved source states into retained table metadata."""
-    if not result.decisions:
-        return tuple(table_geometries)
+    """Carry resolved source states into retained table metadata.
+
+    If ``unwrapped_table_indices`` is supplied, any geometry whose
+    :attr:`~defs.tables.ascii_html.TableGeometry.table_index` appears in
+    that set is dropped from the result — its ``<TABLE>`` block was
+    physically removed from the text by
+    :func:`apply_cover_checkmark_decisions` and must not be passed to any
+    subsequent positional-pairing pass such as :func:`clean_cover_tables`.
+    """
     decisions = {
         (decision.source_region, decision.source_token): decision
         for decision in result.decisions
@@ -208,8 +231,15 @@ def update_table_geometries(
         if match is not None:
             by_table[int(match.group(1))].append(candidate)
     updated: list[object] = []
-    for table_index, geometry in enumerate(table_geometries):
-        candidates = by_table.get(table_index, [])
+    for geometry in table_geometries:
+        # Use the stable table_index attribute to look up candidates and to
+        # determine whether this geometry was physically unwrapped.
+        geom_id = getattr(geometry, "table_index", None)
+        if geom_id is not None and geom_id in unwrapped_table_indices:
+            # Table was unwrapped by apply_cover_checkmark_decisions; it is no
+            # longer present as a <TABLE> block in the output text.
+            continue
+        candidates = by_table.get(geom_id if geom_id is not None else -1, [])
         if not candidates or not hasattr(geometry, "render_result"):
             updated.append(geometry)
             continue

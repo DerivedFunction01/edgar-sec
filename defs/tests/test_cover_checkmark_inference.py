@@ -97,7 +97,7 @@ def test_prose_decisions_report_that_text_changed() -> None:
     )
     text = "FORM 10-K\nANNUAL REPORT ●\nTRANSITION REPORT o\n"
     result = infer_cover_checkmarks(text, boundary, family="10-K")
-    updated, changed = apply_cover_checkmark_decisions(text, result)
+    updated, changed, _ = apply_cover_checkmark_decisions(text, result)
 
     assert changed
     assert "ANNUAL REPORT [X]" in updated
@@ -213,7 +213,7 @@ def test_table_candidates_use_left_right_geometry_and_apply_decisions() -> None:
         )
         + "\n</TABLE>"
     )
-    updated, changed = apply_cover_checkmark_decisions(text, result)
+    updated, changed, _ = apply_cover_checkmark_decisions(text, result)
 
     assert changed
     assert "[ ] | Large accelerated filer" in updated
@@ -256,7 +256,7 @@ def test_pure_yes_no_table_is_inferred_and_unwrapped() -> None:
     candidates = extract_table_candidates(geometry, table_index=0)
 
     result = solve_statutory_constraints(candidates, schema=ANNUAL_CHECKBOX_SCHEMA)
-    updated, changed = apply_cover_checkmark_decisions(
+    updated, changed, _ = apply_cover_checkmark_decisions(
         "<TABLE>\no Yes  [X] No\n</TABLE>", result
     )
 
@@ -310,7 +310,7 @@ def test_duplicate_span_candidates_rewrite_one_physical_mark_once() -> None:
         status=InferenceStatus.RESOLVED, candidates=candidates
     )
 
-    updated, changed = apply_cover_checkmark_decisions(text, result)
+    updated, changed, _ = apply_cover_checkmark_decisions(text, result)
 
     assert changed
     assert updated == f"{head}[X]{tail}[X] Yes\n"

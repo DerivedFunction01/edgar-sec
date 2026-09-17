@@ -104,12 +104,8 @@ def test_form_10k_evaluator_index_only_no_delegation() -> None:
     assert decision.category == "exhibit_index_only"
 
 
-def test_form_10k_normalizer_headings() -> None:
+def test_form_10k_normalizer() -> None:
     normalizer = Form10KNormalizer()
     text = "part i\nitem 1. business\nWe sell software.\npart ii\nitem 7. md&a\nRevenue grew."
-    normalized = normalizer.normalize_headers(text)
-
-    assert "PART I\n" in normalized
-    assert "ITEM 1. business\n" in normalized
-    assert "PART II\n" in normalized
-    assert "ITEM 7. md&a\n" in normalized
+    normalized = normalizer.normalize(text)
+    assert normalized == text

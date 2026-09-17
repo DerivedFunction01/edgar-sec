@@ -7,7 +7,6 @@ from dataclasses import dataclass
 from typing import Literal
 
 from defs.regex import build_alternation
-from defs.tables.protection import mask_tagged_tables, restore_tagged_tables
 
 HeaderKind = Literal["part", "section", "item"]
 
@@ -98,39 +97,6 @@ def match_header(text: str, grammar: HeaderGrammar) -> HeaderMatch | None:
     )
 
 
-def normalize_headers(text: str, grammar: HeaderGrammar) -> str:
-    """Normalize headings using one shared replacement algorithm.
-
-    Tagged tables are masked before normalization so rows such as
-    ``ITEM 5.               Market for the Registrant's Common Equity and``
-    are not rewritten by heading patterns.
-    """
-    masked, table_spans = mask_tagged_tables(text)
-    normalized = masked
-
-    def replace_part(match: re.Match[str]) -> str:
-        return f"\n\n{match.group('identifier').upper()}\n"
-
-    def replace_section(match: re.Match[str]) -> str:
-        return f"\n\n{match.group(0).strip().upper()}\n"
-
-    def replace_item(match: re.Match[str]) -> str:
-        title = match.group("title").strip()
-        suffix = f". {title}" if title else "."
-        return f"\n\n{match.group('identifier').upper()}{suffix}\n"
-
-    if grammar.part:
-        normalized = grammar.part.sub(replace_part, normalized)
-    if grammar.section:
-        normalized = grammar.section.sub(replace_section, normalized)
-    if grammar.item:
-        normalized = grammar.item.sub(replace_item, normalized)
-
-    if table_spans:
-        normalized = restore_tagged_tables(normalized, table_spans)
-    return normalized
-
-
 __all__ = [
     "FORM_8K_GRAMMAR",
     "FORM_10K_GRAMMAR",
@@ -139,5 +105,4 @@ __all__ = [
     "HeaderMatch",
     "make_grammar",
     "match_header",
-    "normalize_headers",
 ]
