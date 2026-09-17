@@ -255,18 +255,33 @@ def extract_table_candidates(
         if yes_no:
             candidates.extend(yes_no)
             continue
-        for label_column, (key, phrase, start, end, group) in labels:
+        used_marks: set[int] = set()
+        all_right = len(labels) == len(marks) > 1 and all(
+            marks[i][0] > labels[i][0] for i in range(len(labels))
+        )
+        all_left = len(labels) == len(marks) > 1 and all(
+            marks[i][0] < labels[i][0] for i in range(len(labels))
+        )
+        for label_idx, (label_column, (key, phrase, start, end, group)) in enumerate(
+            labels
+        ):
             same_cell = [
                 (column, match) for column, match in marks if column == label_column
             ]
-            related = (
-                same_cell
-                or sorted(
-                    marks,
+            if same_cell:
+                related = same_cell
+            elif all_right or all_left:
+                related = [marks[label_idx]]
+            else:
+                available = [m for m in marks if id(m[1]) not in used_marks]
+                if not available:
+                    available = marks
+                related = sorted(
+                    available,
                     key=lambda item: abs(item[0] - label_column),
                 )[:1]
-            )
             for mark_column, mark in related:
+                used_marks.add(id(mark))
                 orientation = (
                     "left_of_label"
                     if mark_column < label_column

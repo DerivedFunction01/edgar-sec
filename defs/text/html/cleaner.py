@@ -93,10 +93,12 @@ _RE_REDUNDANT_SEPARATORS = re.compile(r";\s*;")
 _RE_EMPTY_STYLE_ATTR = re.compile(r'(?i)(?<=[\s"])style\s*=\s*"\s*"')
 
 _RE_TAG_OR_TEXT = re.compile(r"(?is)<!--.*?-->|<[^>]*>|[^<]+")
-_RE_STYLE_FONT_FAMILY = re.compile(r"(?i)\bfont-family\s*:\s*([^;\"]+)")
+_RE_STYLE_FONT_FAMILY = re.compile(
+    r"(?i)\bfont-family\s*:\s*([^;\"]+)|(?<=style=[\"'])\s*([a-z0-9\s,'\"_-]+?)(?:;|\"|'|$)"
+)
 _RE_FACE_ATTR = re.compile(r"(?i)\bface\s*=\s*(?:\"([^\"]*)\"|'([^']*)'|([^\s>]+))")
 _RE_TAG_NAME = re.compile(r"(?is)^\s*<\s*(/?)\s*([a-z][a-z0-9:-]*)")
-_RE_GLYPH = re.compile(r"[\u00a8\u00fe\u00fd\u0072\u0052]")
+_RE_GLYPH = re.compile(r"[\u00a8\u00a3\u00fe\u00fd\u0072\u0052oOxX]")
 _VOID_TAGS = frozenset(
     {
         "area",
@@ -118,13 +120,19 @@ _VOID_TAGS = frozenset(
 
 
 def _replace_font_glyphs(text: str, font_family: str) -> str:
+    stripped = text.strip()
+    is_standalone = len(stripped) <= 3
+
     def replace(match: re.Match[str]) -> str:
-        state = font_glyph_state(font_family, match.group(0))
+        glyph = match.group(0)
+        if glyph in {"r", "R", "o", "O", "x", "X", "s", "S"} and not is_standalone:
+            return glyph
+        state = font_glyph_state(font_family, glyph)
         if state == "checked":
             return CANONICAL_CHECKED
         if state == "unchecked":
             return CANONICAL_UNCHECKED
-        return match.group(0)
+        return glyph
 
     return _RE_GLYPH.sub(replace, text)
 
@@ -231,7 +239,7 @@ def normalize_font_qualified_glyphs(html: str) -> str:
         style_match = _RE_STYLE_FONT_FAMILY.search(token)
         face_match = _RE_FACE_ATTR.search(token)
         if style_match:
-            current_font = style_match.group(1).strip()
+            current_font = (style_match.group(1) or style_match.group(2) or "").strip()
         elif face_match:
             current_font = next(
                 (value for value in face_match.groups() if value is not None), ""

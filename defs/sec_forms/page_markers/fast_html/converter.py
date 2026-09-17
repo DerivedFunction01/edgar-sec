@@ -11,6 +11,7 @@ from defs.text.html import NormalizedHtmlText, normalize_html_document
 
 from ..ascii.orchestrator import analyze_page_markers as _analyze_ascii
 from ..ascii.policy import apply_page_markers as _apply_ascii_policy
+from ..constants import PAGE_HINT_ROLES
 from ..models import (
     PageArtifactPolicy,
     PageBreakArtifact,
@@ -33,16 +34,25 @@ _RE_CSS_PAGE_BREAKS = re.compile(
 _RE_HR_TAGS = re.compile(r"<hr\b[^>]*>", re.IGNORECASE)
 _RE_PAGE_TAGS = re.compile(r"</?page\b[^>]*>", re.IGNORECASE)
 
+_BREAK_HINTS_ALT = build_alternation(
+    [token for token, roles in PAGE_HINT_ROLES.items() if "break" in roles],
+    auto_escape=True,
+)
+_RE_CLASS_ID_PAGE_BREAKS = re.compile(
+    rf"""<[^>]+(?:class|id)=[\"'][^\"']*\b(?:{_BREAK_HINTS_ALT})\b[^\"']*[\"'][^>]*>""",
+    re.IGNORECASE,
+)
+
 # "SPLIT" deliberately avoids r/R: the Stage-1 glyph pass maps r/R to
 # checkbox glyphs inside Wingdings/Webdings/Symbol font scopes, which would
 # corrupt the sentinel (e.g. "__SEC_PAGE_B[ ]EAK_SENTINEL__").
 _PAGE_SENTINEL = "__SEC_PAGE_SPLIT_SENTINEL__"
 
-# Combined break-tag pattern: all three rules share the sentinel replacement
-# and are mutually exclusive tag prefixes (<page>, <hr>, style-bearing tags),
+# Combined break-tag pattern: all break rules share the sentinel replacement
+# and are mutually exclusive tag prefixes (<page>, <hr>, style/class/id-bearing tags),
 # so alternation order matches the sequential pass outcomes.
 _RE_BREAK_TAGS = re.compile(
-    f"{_RE_PAGE_TAGS.pattern}|{_RE_HR_TAGS.pattern}|{_RE_CSS_PAGE_BREAKS.pattern}",
+    f"{_RE_PAGE_TAGS.pattern}|{_RE_HR_TAGS.pattern}|{_RE_CSS_PAGE_BREAKS.pattern}|{_RE_CLASS_ID_PAGE_BREAKS.pattern}",
     re.IGNORECASE,
 )
 

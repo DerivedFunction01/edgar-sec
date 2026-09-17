@@ -43,6 +43,9 @@ def _is_proxy_reference_disclosure(line: str) -> bool:
                 "refer to",
             )
         )
+        or "indicate by check mark" in stripped
+        or "pursuant to item 405" in stripped
+        or "delinquent filers" in stripped
     )
 
 

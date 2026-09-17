@@ -84,6 +84,8 @@ def eligible_line(
     stripped = line.strip()
     if not stripped or line_index in toc_lines:
         return False
+    if is_table_tag(stripped):
+        return allow_table
     if _STANDALONE_TAG_RE.match(stripped):
         return False
     if unit_kind == "table" and not allow_table:
@@ -98,6 +100,8 @@ def collect_window(
     anchor: int,
     direction: int,
     boundary_lines: set[int],
+    *,
+    allow_table: bool = False,
 ) -> list[tuple[int, str]]:
     """Collect a bounded non-empty furniture window around one anchor."""
     result: list[tuple[int, str]] = []
@@ -113,13 +117,43 @@ def collect_window(
         if stripped.casefold() in {"<page>", "</page>"}:
             break
         if is_table_tag(stripped):
-            if result and (
-                (direction > 0 and stripped.casefold() == "</table>")
-                or (direction < 0 and stripped.casefold() == "<table>")
-            ):
+            if not allow_table:
                 break
-            index += direction
-            continue
+            if direction > 0 and stripped.casefold() == "<table>":
+                close_idx = next(
+                    (
+                        i
+                        for i in range(
+                            index + 1, min(len(lines), index + MAX_FURNITURE_LINES)
+                        )
+                        if lines[i].strip().casefold() == "</table>"
+                    ),
+                    None,
+                )
+                if close_idx is None:
+                    break
+                for tbl_i in range(index, close_idx + 1):
+                    result.append((tbl_i, lines[tbl_i]))
+                index = close_idx + 1
+                continue
+            if direction < 0 and stripped.casefold() == "</table>":
+                open_idx = next(
+                    (
+                        i
+                        for i in range(
+                            index - 1, max(-1, index - MAX_FURNITURE_LINES), -1
+                        )
+                        if lines[i].strip().casefold() == "<table>"
+                    ),
+                    None,
+                )
+                if open_idx is None:
+                    break
+                for tbl_i in range(index, open_idx - 1, -1):
+                    result.append((tbl_i, lines[tbl_i]))
+                index = open_idx - 1
+                continue
+            break
         if _STANDALONE_TAG_RE.match(stripped):
             break
         characters += len(lines[index])

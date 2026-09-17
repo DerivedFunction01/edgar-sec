@@ -6,8 +6,45 @@ from defs.sec_forms.cover.structure import is_continuation_prose
 from defs.sec_forms.page_markers import is_page_marker_line
 from defs.text.tokens import BULLET_MARKERS
 
-from .analysis import is_anachronistic_late_item, is_toc_row, normalize_for_matching
+from .analysis import (
+    is_anachronistic_late_item,
+    is_toc_row,
+    looks_like_toc_row,
+    normalize_for_matching,
+)
 from .patterns import _RE_WEAK_HEADING, RE_TOC_HEADING, RE_TOC_ITEM, RE_TOC_LEADER
+
+
+def _has_toc_continuation(
+    lines: list[str],
+    start_index: int,
+    limit: int,
+    page_marker_lines: set[int] | None = None,
+    late_item_re: object | None = None,
+    norm_late_names: tuple[str, ...] = (),
+) -> bool:
+    """Return True if continuation TOC rows follow across a page boundary."""
+    scan = start_index
+    while scan < limit:
+        raw_line = lines[scan].strip()
+        clean = raw_line.strip("|+").strip()
+        if (
+            not clean
+            or scan in (page_marker_lines or set())
+            or is_page_marker_line(clean)
+        ):
+            scan += 1
+            continue
+        if RE_TOC_HEADING.match(clean) or _RE_WEAK_HEADING.match(clean):
+            scan += 1
+            continue
+        return bool(
+            is_toc_row(clean)
+            or looks_like_toc_row(clean)
+            or RE_TOC_LEADER.search(clean)
+            or is_anachronistic_late_item(clean, late_item_re, norm_late_names)
+        )
+    return False
 
 
 def consume_toc_residue(
@@ -39,6 +76,15 @@ def consume_toc_residue(
             continue
 
         if curr in (page_marker_lines or set()) or is_page_marker_line(clean_line):
+            if not _has_toc_continuation(
+                lines,
+                curr,
+                limit,
+                page_marker_lines=page_marker_lines,
+                late_item_re=late_item_re,
+                norm_late_names=norm_late_names,
+            ):
+                break
             curr += 1
             continue
 

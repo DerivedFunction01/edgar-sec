@@ -32,7 +32,20 @@ def _replace_mark_in_text(text: str, source_token: str, replacement: str) -> str
     )
     if match is None:
         return text
-    return text[: match.start()] + replacement + text[match.end() :]
+    start, end = match.start(), match.end()
+    if (
+        start > 0
+        and end < len(text)
+        and text[start - 1] == "["
+        and text[end] == "]"
+        or start > 0
+        and end < len(text)
+        and text[start - 1] == "("
+        and text[end] == ")"
+    ):
+        start -= 1
+        end += 1
+    return text[:start] + replacement + text[end:]
 
 
 def _replace_table_text(

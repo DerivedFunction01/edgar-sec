@@ -87,7 +87,13 @@ def analyze_repeating_headers(
         for anchor, anchor_line in side_scan[side]:
             anchor_position = anchor_positions[anchor]
             for slot, (index, line) in enumerate(
-                collect_window(lines, anchor, direction, boundary_lines)
+                collect_window(
+                    lines,
+                    anchor,
+                    direction,
+                    boundary_lines,
+                    allow_table=allow_table_furniture,
+                )
             ):
                 if not eligible_line(
                     line,

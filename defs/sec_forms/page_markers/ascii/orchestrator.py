@@ -29,7 +29,7 @@ from .candidates import (
 from .headers import analyze_repeating_headers
 
 
-def _valid_firm_sequence(markers: list[PageMarker]) -> bool:
+def _valid_firm_namespaces(markers: list[PageMarker]) -> set[str]:
     from collections import defaultdict
 
     candidates = [
@@ -49,17 +49,18 @@ def _valid_firm_sequence(markers: list[PageMarker]) -> bool:
     by_namespace: dict[str, list[PageCandidate]] = defaultdict(list)
     for candidate in candidates:
         by_namespace[candidate.namespace].append(candidate)
-    for ns_candidates in by_namespace.values():
+    valid_namespaces: set[str] = set()
+    for ns, ns_candidates in by_namespace.items():
         ns_candidates.sort(key=lambda item: (item.start_line, item.start))
-        if validate_group(ns_candidates, strategy="firm") is None:
-            return False
-    return True
+        if validate_group(ns_candidates, strategy="firm") is not None:
+            valid_namespaces.add(ns)
+    return valid_namespaces
 
 
 def _decision_for_marker(
     marker: PageMarker,
     *,
-    valid_firm_sequence: bool,
+    valid_firm_namespaces: set[str],
 ) -> PageMarkerDecision:
     if marker.kind == PageMarkerKind.BOUNDARY:
         return PageMarkerDecision(
@@ -73,7 +74,10 @@ def _decision_for_marker(
         return PageMarkerDecision(
             marker, PageMarkerAction.REMOVE, "sgml_page_tag", 1.0, marker.evidence
         )
-    if marker.kind == PageMarkerKind.LETTER_NUMBER and not valid_firm_sequence:
+    if (
+        marker.kind == PageMarkerKind.LETTER_NUMBER
+        and marker.namespace not in valid_firm_namespaces
+    ):
         return PageMarkerDecision(
             marker,
             PageMarkerAction.PRESERVE,
@@ -186,11 +190,11 @@ def analyze_page_markers(
             markers.append(marker)
             seen_spans.add((marker.start, marker.end))
     markers.sort(key=lambda marker: (marker.start, marker.end))
-    valid_firm_sequence = _valid_firm_sequence(firm)
+    valid_firm_namespaces = _valid_firm_namespaces(firm)
     decisions = [
         _decision_for_marker(
             marker,
-            valid_firm_sequence=valid_firm_sequence,
+            valid_firm_namespaces=valid_firm_namespaces,
         )
         for marker in markers
     ]
@@ -234,17 +238,15 @@ def analyze_page_markers(
         if marker.kind in {PageMarkerKind.SGML, PageMarkerKind.BOUNDARY}
         and marker.start_line is not None
     ]
-    combined_anchors = break_anchors if len(break_anchors) >= 3 else label_anchors
+    header_markers = break_anchors if break_anchors else label_anchors
+    footer_markers = label_anchors if label_anchors else break_anchors
     header_anchor_lines = [
-        marker.start_line
-        for marker in (break_anchors if len(break_anchors) >= 3 else label_anchors)
-        if marker.start_line is not None
+        marker.start_line for marker in header_markers if marker.start_line is not None
     ]
     footer_anchor_lines = [
-        marker.start_line
-        for marker in (label_anchors if len(label_anchors) >= 3 else break_anchors)
-        if marker.start_line is not None
+        marker.start_line for marker in footer_markers if marker.start_line is not None
     ]
+    combined_anchors = list({*header_markers, *footer_markers})
     templates, presentation_markers, presentation_decisions = analyze_repeating_headers(
         document,
         combined_anchors,

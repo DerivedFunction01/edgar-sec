@@ -58,6 +58,12 @@ def _unify_dl_bullet(match: re.Match[str]) -> str:
     return match.group(0)
 
 
+_HEADING_TERMS_ALT = build_alternation(
+    ["item", "part", "section", "rule", "paragraph"], auto_escape=True
+)
+_RE_HEADING_PREFIX = re.compile(rf"\b(?:{_HEADING_TERMS_ALT})\b$", re.IGNORECASE)
+
+
 def _collapse_source_whitespace_factory(sentinel_prefix: str, sentinel_suffix: str):
     """Build a whitespace-run collapser that keeps table-sentinel separators.
 
@@ -78,6 +84,8 @@ def _collapse_source_whitespace_factory(sentinel_prefix: str, sentinel_suffix: s
             return "\n"
         first_token = after.split(maxsplit=1)[0] if after else ""
         if first_token and is_list_or_bullet_marker(first_token):
+            if _RE_HEADING_PREFIX.search(before):
+                return " "
             return "\n"
         return " "
 

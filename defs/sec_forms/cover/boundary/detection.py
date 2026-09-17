@@ -128,6 +128,8 @@ def find_cover_boundary(
                 continue
             if identity_count < 2 and first_page is None:
                 continue
+            if _is_proxy_reference_disclosure(lines[index]):
+                continue
             phrase_end_line = _line_at_offset(text, match.end()) + 1
             transition = _next_cover_transition(lines, phrase_end_line, search_limit)
             end_line = transition[0] if transition else phrase_end_line

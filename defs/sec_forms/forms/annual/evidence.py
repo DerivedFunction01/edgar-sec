@@ -6,6 +6,7 @@ from dataclasses import dataclass, field
 
 from defs.sec_forms.forms.annual.sequences import ANNUAL_ADDITIONAL_PHRASE_RULES
 from defs.sec_forms.forms.annual.vocabulary import (
+    BANKRUPTCY_PROCEEDINGS_TERMS,
     INCORPORATED_REFERENCE_TERMS,
     PUBLIC_FLOAT_PHRASES,
     SHARES_PHRASES,
@@ -267,6 +268,7 @@ class AnnualReportEvidence:
     shape_terms: tuple[str, ...] = (
         *PUBLIC_FLOAT_PHRASES,
         *SHARES_PHRASES,
+        *BANKRUPTCY_PROCEEDINGS_TERMS,
     )
     body_ngrams: tuple[str, ...] = (
         *ANNUAL_BODY_PHRASES,

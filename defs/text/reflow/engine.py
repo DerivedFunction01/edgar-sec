@@ -152,11 +152,22 @@ def reflow_ascii(
 
     page_context = bool(getattr(page_analysis, "page_number_runs", ()))
     masked, spans = mask_tagged_tables(text)
+    masked_body_start_line = body_start_line
+    for span in spans:
+        span_start_line = text.count("\n", 0, span.start)
+        span_newline_count = span.text.count("\n")
+        span_end_line = span_start_line + span_newline_count
+        if span_end_line <= body_start_line:
+            masked_body_start_line -= span_newline_count
+        elif span_start_line < body_start_line:
+            masked_body_start_line -= body_start_line - span_start_line
+    masked_body_start_line = max(0, masked_body_start_line)
+
     lines = masked.split("\n")
     blocks = _segment(lines)
     per_block: list[tuple[tuple[int, int, tuple[str, ...]], SpanDecision]] = []
     for start, end, block_lines in blocks:
-        if end <= body_start_line:
+        if end <= masked_body_start_line:
             per_block.append(
                 (
                     (start, end, block_lines),

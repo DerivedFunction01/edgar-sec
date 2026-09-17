@@ -8,9 +8,15 @@ from defs.regex import build_alternation
 
 INCORPORATED_REFERENCE_TERMS: tuple[str, ...] = (
     "documents incorporated by reference",
-    "incorporated by reference",
-    "part iii of this form 10-k",
-    "part iii of this report",
+    "documents incorporated by reference:",
+    "list hereunder the following documents if incorporated by reference",
+    "the following documents are incorporated by reference",
+)
+
+BANKRUPTCY_PROCEEDINGS_TERMS: tuple[str, ...] = (
+    "applicable only to registrants involved in bankruptcy proceedings during the preceding five years",
+    "bankruptcy proceedings during the preceding five years",
+    "plan confirmed by a court",
 )
 
 ANNUAL_TARGET_EXHIBITS: tuple[str, ...] = (
@@ -109,6 +115,7 @@ SHARES_VALUE_RE = re.compile(
 __all__ = [
     "ANNUAL_REPORT_TITLES",
     "ANNUAL_TARGET_EXHIBITS",
+    "BANKRUPTCY_PROCEEDINGS_TERMS",
     "DELINQUENT_FILERS_TERMS",
     "INCORPORATED_REFERENCE_TERMS",
     "PUBLIC_FLOAT_ANCHOR_RE",
