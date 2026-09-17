@@ -31,7 +31,14 @@ class FastHtmlNode:
 
     @property
     def attributes(self) -> dict[str, str]:
-        return self._node.attributes or {}
+        raw = self._node.attributes
+        if not raw:
+            return {}
+        return {
+            str(k).lower(): str(v)
+            for k, v in raw.items()
+            if k is not None and v is not None
+        }
 
     @property
     def attrs(self) -> dict[str, str]:

@@ -186,9 +186,14 @@ _DEFAULT_CELL_STYLE = CellStyle()
 def parse_style_and_attributes(node: Any) -> CellStyle:
     """Extract and normalize all inline CSS properties and HTML attributes into a CellStyle."""
     raw_node = getattr(node, "raw_node", node)
-    attrs = raw_node.attributes or {}
-    if not attrs:
+    raw_attrs = raw_node.attributes or {}
+    if not raw_attrs:
         return _DEFAULT_CELL_STYLE
+    attrs = {
+        str(k).lower(): str(v)
+        for k, v in raw_attrs.items()
+        if k is not None and v is not None
+    }
 
     # Initialize from HTML attributes
     w_attr, w_unit, is_pct = parse_dimension_px(attrs.get("width"))

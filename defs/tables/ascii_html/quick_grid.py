@@ -4,6 +4,8 @@ from __future__ import annotations
 
 from typing import TYPE_CHECKING
 
+from defs.tables.ascii_html.text import normalize_cell_whitespace
+
 if TYPE_CHECKING:
     from defs.text.html import FastHtmlNode
 
@@ -66,7 +68,8 @@ def quick_extract_table_grid(
                 # Bail when a nested table is present
                 if _has_nested_table(td.raw_node):
                     return None
-                cells.append(td.text(strip=True) or "")
+                raw_cell_text = td.text(strip=True) or ""
+                cells.append(normalize_cell_whitespace(raw_cell_text))
             if cells:
                 rows.append(tuple(cells))
                 max_cols = max(max_cols, len(cells))
