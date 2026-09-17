@@ -32,6 +32,7 @@ from .compounds import (
     expand_compounds,
     expand_variants,
 )
+from .counts import count_lines, count_words
 from .dates import (
     CENTURY_PIVOT,
     MONTH_ALIASES,
@@ -162,6 +163,8 @@ __all__ = [
     "compile_evidence_pack",
     "compile_family_automaton",
     "compile_lexical_matcher",
+    "count_lines",
+    "count_words",
     "decompose_html_structures",
     "expand_alternations",
     "expand_compounds",

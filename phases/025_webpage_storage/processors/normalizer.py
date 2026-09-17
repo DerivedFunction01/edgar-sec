@@ -2,10 +2,10 @@
 
 from __future__ import annotations
 
-import hashlib
 from dataclasses import dataclass
 from typing import Any
 
+from defs.runtime.memory import sha256_text
 from defs.sec_forms.cover import (
     BoundaryInput,
     CoverBoundary,
@@ -27,7 +27,7 @@ from defs.sec_forms.page_markers import (
     apply_text_policy,
     build_page_artifact_metadata,
 )
-from defs.text import normalize_final_text_whitespace
+from defs.text import count_lines, normalize_final_text_whitespace
 from defs.text.reflow import reflow_ascii
 
 from .forms.base import PreprocessedDocument
@@ -94,13 +94,13 @@ class DeepNormalizer:
         text = preprocessed.cleaned_text
         stage_trace: list[dict[str, Any]] = []
 
-        source_identity = hashlib.sha256(text.encode("utf-8")).hexdigest()
+        source_identity = sha256_text(text)
         stage_trace.append(
             {
                 "stage": "preprocessed",
                 "text_identity": source_identity,
                 "representation": representation,
-                "line_count": len(text.splitlines()),
+                "line_count": count_lines(text),
                 "char_count": len(text),
             }
         )
@@ -135,7 +135,7 @@ class DeepNormalizer:
                     "stage": "page_policy_input",
                     "text_identity": source_identity,
                     "representation": representation,
-                    "line_count": len(text.splitlines()),
+                    "line_count": count_lines(text),
                     "char_count": len(text),
                     "marker_count": 0,
                     "page_boundary_count": 0,
@@ -165,9 +165,9 @@ class DeepNormalizer:
         stage_trace.append(
             {
                 "stage": "page_policy_output",
-                "text_identity": hashlib.sha256(text.encode("utf-8")).hexdigest(),
+                "text_identity": sha256_text(text),
                 "representation": representation,
-                "line_count": len(text.splitlines()),
+                "line_count": count_lines(text),
                 "char_count": len(text),
                 "marker_count": len(getattr(page_analysis, "markers", ()))
                 if page_analysis
@@ -219,11 +219,9 @@ class DeepNormalizer:
                 stage_trace.append(
                     {
                         "stage": "after_checkmark_rewrite",
-                        "text_identity": hashlib.sha256(
-                            text.encode("utf-8")
-                        ).hexdigest(),
+                        "text_identity": sha256_text(text),
                         "representation": representation,
-                        "line_count": len(text.splitlines()),
+                        "line_count": count_lines(text),
                         "char_count": len(text),
                     }
                 )
@@ -240,11 +238,9 @@ class DeepNormalizer:
                 stage_trace.append(
                     {
                         "stage": "after_cover_table_cleaning",
-                        "text_identity": hashlib.sha256(
-                            text.encode("utf-8")
-                        ).hexdigest(),
+                        "text_identity": sha256_text(text),
                         "representation": representation,
-                        "line_count": len(text.splitlines()),
+                        "line_count": count_lines(text),
                         "char_count": len(text),
                     }
                 )
@@ -259,9 +255,9 @@ class DeepNormalizer:
             stage_trace.append(
                 {
                     "stage": "after_cover_healing",
-                    "text_identity": hashlib.sha256(text.encode("utf-8")).hexdigest(),
+                    "text_identity": sha256_text(text),
                     "representation": representation,
-                    "line_count": len(text.splitlines()),
+                    "line_count": count_lines(text),
                     "char_count": len(text),
                 }
             )
@@ -272,9 +268,9 @@ class DeepNormalizer:
         stage_trace.append(
             {
                 "stage": "after_final_whitespace",
-                "text_identity": hashlib.sha256(text.encode("utf-8")).hexdigest(),
+                "text_identity": sha256_text(text),
                 "representation": representation,
-                "line_count": len(text.splitlines()),
+                "line_count": count_lines(text),
                 "char_count": len(text),
             }
         )
@@ -309,9 +305,9 @@ class DeepNormalizer:
             stage_trace.append(
                 {
                     "stage": "before_reflow",
-                    "text_identity": hashlib.sha256(text.encode("utf-8")).hexdigest(),
+                    "text_identity": sha256_text(text),
                     "representation": representation,
-                    "line_count": len(text.splitlines()),
+                    "line_count": count_lines(text),
                     "char_count": len(text),
                 }
             )
@@ -324,9 +320,9 @@ class DeepNormalizer:
             stage_trace.append(
                 {
                     "stage": "after_reflow",
-                    "text_identity": hashlib.sha256(text.encode("utf-8")).hexdigest(),
+                    "text_identity": sha256_text(text),
                     "representation": representation,
-                    "line_count": len(text.splitlines()),
+                    "line_count": count_lines(text),
                     "char_count": len(text),
                 }
             )

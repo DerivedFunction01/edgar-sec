@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 from defs.sec_forms.page_markers import PageArtifactPolicy
+from defs.text import count_words
 
 from ..core.schemas import DocumentLocator, doc_id
 from .base import (
@@ -84,7 +85,7 @@ class DefaultFilingProcessor(DocumentProcessor):
             "decision_reason": decision.reason,
             "target_exhibit": decision.target_exhibit,
             "detected_encoding": preprocessed.detected_encoding,
-            "word_count": len(normalized_text.split()),
+            "word_count": count_words(normalized_text),
             "cover_boundary_method": cover_boundary.method.value,
             "cover_boundary_line": cover_boundary.end_line,
             "cover_boundary_confidence": cover_boundary.confidence,

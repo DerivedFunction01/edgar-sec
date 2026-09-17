@@ -15,8 +15,8 @@ from defs.filing_identity import (
     parse_archive_url,
 )
 from defs.sec_documents.sgml import (
-    resolve_target_sub_document,
-    unpack_sgml_submission,
+    extract_target_sub_document,
+    has_sgml_documents,
 )
 from defs.sec_http import HttpMetrics, SecHttpClient
 from defs.sql import (
@@ -59,16 +59,19 @@ def extract_from_sgml_envelope(
     raw_payload: bytes,
     locator: DocumentLocator,
 ) -> bytes | None:
-    """Extract the target sub-document if the payload is an SGML submission envelope."""
+    """Extract the target sub-document if the payload is an SGML submission envelope.
+
+    Scans the envelope and materializes only the resolved target's payload;
+    block-less payloads (plain documents) are returned unchanged.
+    """
     if not raw_payload:
         return None
     head = raw_payload[:1000].lower()
     if b"<document>" not in head and b"<submission>" not in head:
         return raw_payload
-
-    sub_docs = unpack_sgml_submission(raw_payload)
-    if not sub_docs:
+    if not has_sgml_documents(raw_payload):
         return raw_payload
+
     form_val = locator.form.strip().upper() if locator.form else None
     targets = ()
     if form_val:
@@ -77,13 +80,12 @@ def extract_from_sgml_envelope(
             if form_val.endswith("/A")
             else (form_val, f"{form_val}/A")
         )
-    target = resolve_target_sub_document(
-        sub_docs,
+    return extract_target_sub_document(
+        raw_payload,
         target_types=targets,
         primary_filename=locator.document_path,
         fallback_to_sequence_one=True,
     )
-    return target.raw_payload if target is not None else None
 
 
 class FixtureArchiveFetcher:

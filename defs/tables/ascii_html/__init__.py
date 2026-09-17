@@ -152,6 +152,10 @@ def convert_html_tables_to_ascii_with_metadata(
     if root is None:
         return html_content, tuple(geometries)
     rendered = root.text(separator="\n") if convert_to_text else str(tree)
+    # Release the C-level DOM before the string-heavy token replacement tail;
+    # lexbor trees cost ~15x the HTML payload in C heap and stay alive while
+    # any wrapper (loop variable included) still references a node.
+    del tbl, tree, tables, root
     for token, table in rendered_tables:
         if token not in rendered:
             raise ValueError(f"rendered table token missing: {token!r}")

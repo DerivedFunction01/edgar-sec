@@ -1,5 +1,7 @@
 from defs.sec_documents.sgml import (
     extract_sub_document,
+    extract_target_sub_document,
+    has_sgml_documents,
     resolve_target_sub_document,
     unpack_sgml_submission,
 )
@@ -236,3 +238,105 @@ def test_resolve_target_sub_document_across_multiple_forms():
     assert res_ex is not None
     assert res_ex.doc_type == "EX-13"
     assert b"Annual Report to Shareholders" in res_ex.raw_payload
+
+
+# ---------------------------------------------------------------------------
+# Selective target extraction: byte equivalence with unpack + resolve
+# ---------------------------------------------------------------------------
+
+
+def _selective_equivalent(raw: bytes, **kwargs) -> bytes | None:
+    docs = unpack_sgml_submission(raw)
+    winner = resolve_target_sub_document(docs, **kwargs)
+    expected = winner.raw_payload if winner is not None else None
+    actual = extract_target_sub_document(raw, **kwargs)
+    assert actual == expected
+    return actual
+
+
+def test_extract_target_sub_document_matches_unpack_resolve_all_tiers():
+    # Tier 1: by type
+    assert (
+        _selective_equivalent(SAMPLE_SGML, target_types=("10-K", "10-K/A"))
+        == b"<html><body>\n<h1>Annual Report</h1>\n<p>Items 1, 7, and 8 incorporated by reference to Exhibit 13.</p>\n</body></html>"
+    )
+    # Tier 1 skips graphics by extension
+    _selective_equivalent(SAMPLE_SGML, target_types=("EX-13",))
+    # Tier 2: by primary filename
+    _selective_equivalent(
+        SAMPLE_SGML, primary_filename="dir/ex21.txt", fallback_to_sequence_one=False
+    )
+    # Tier 3: sequence-1 fallback skips GRAPHIC sequences
+    sgml_graphic_first = b"""<DOCUMENT>
+<TYPE>GRAPHIC
+<SEQUENCE>1
+<FILENAME>cover.jpg
+<TEXT>[COVER]</TEXT>
+</DOCUMENT>
+<DOCUMENT>
+<TYPE>ATTACHMENT
+<SEQUENCE>1
+<FILENAME>main.txt
+<TEXT>Main content</TEXT>
+</DOCUMENT>
+"""
+    payload = _selective_equivalent(sgml_graphic_first)
+    assert payload == b"Main content"
+    # Tier 4: first non-graphic fallback
+    sgml_generic = b"""<DOCUMENT>
+<TYPE>ZIP
+<SEQUENCE>1
+<FILENAME>bundle.zip
+<TEXT>[ZIP]</TEXT>
+</DOCUMENT>
+<DOCUMENT>
+<TYPE>NOTICE
+<SEQUENCE>2
+<FILENAME>notice.txt
+<TEXT>Notice body</TEXT>
+</DOCUMENT>
+"""
+    assert _selective_equivalent(sgml_generic) == b"Notice body"
+
+
+def test_extract_target_sub_document_no_blocks_returns_none():
+    assert not has_sgml_documents(b"plain document body without sgml tags")
+    assert extract_target_sub_document(b"plain document") is None
+    assert has_sgml_documents(b"") is False
+    assert extract_target_sub_document(b"") is None
+
+
+def test_extract_target_sub_document_missing_text_tag_fallback():
+    raw = b"""<DOCUMENT>
+<TYPE>10-K
+<SEQUENCE>1
+<FILENAME>10k.htm
+</DOCUMENT>
+"""
+    assert _selective_equivalent(raw) is not None
+
+
+def test_extract_target_sub_document_stub_filename_excluded_from_tier2():
+    raw = b"""<DOCUMENT>
+<TYPE>10-K
+<SEQUENCE>1
+<FILENAME>real10k.htm
+<TEXT>Real filing</TEXT>
+</DOCUMENT>
+<DOCUMENT>
+<TYPE>10-K
+<SEQUENCE>2
+<FILENAME>0001.htm
+<TEXT>Stub page</TEXT>
+</DOCUMENT>
+"""
+    assert _selective_equivalent(raw, primary_filename="0001.htm") == b"Real filing"
+
+
+def test_extract_target_sub_document_crlf_and_multibyte_payloads():
+    raw = (
+        b"<DOCUMENT>\r\n<TYPE>10-K\r\n<SEQUENCE>1\r\n<FILENAME>a.htm\r\n"
+        b"<TEXT>\r\ncaf\xe9 line\r\nsecond line\r\n</TEXT>\r\n</DOCUMENT>\r\n"
+    )
+    payload = _selective_equivalent(raw)
+    assert payload == b"caf\xe9 line\r\nsecond line"

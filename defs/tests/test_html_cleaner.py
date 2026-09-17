@@ -198,3 +198,24 @@ def test_strip_layout_and_typography_styles() -> None:
     assert "border-top: 1pt solid black" in cleaned
     assert "text-align: right" in cleaned
     assert "Content" in cleaned
+
+
+def test_normalize_font_qualified_glyphs_hit_and_miss_paths() -> None:
+    from defs.text import normalize_font_qualified_glyphs
+
+    # Miss path: ordinary document without symbolic families is returned
+    # untouched (identical to the full-scan reference behavior).
+    miss = '<p style="font-family: Arial">plain \u2713 text</p>'
+    assert normalize_font_qualified_glyphs(miss) == miss
+
+    # Hit path: symbolic-font glyphs still normalize on mixed-case input.
+    hit = '<font face="wingdings">r</font><font FACE="Wingdings">r</font>'
+    cleaned = normalize_font_qualified_glyphs(hit)
+    assert cleaned != hit
+    from defs.text import CANONICAL_CHECKED, CANONICAL_UNCHECKED
+
+    assert CANONICAL_CHECKED in cleaned or CANONICAL_UNCHECKED in cleaned
+
+    # Empty and whitespace inputs stay untouched.
+    assert normalize_font_qualified_glyphs("") == ""
+    assert normalize_font_qualified_glyphs("   ") == "   "

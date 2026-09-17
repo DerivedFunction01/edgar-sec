@@ -180,3 +180,96 @@ def test_broker_cli_start_stop_status(tmp_path: Path) -> None:
 
     status_after = broker_cli.main(["status", "--socket", str(socket_path)])
     assert status_after == 0
+
+
+class _CountingBroker(SecBroker):
+    """SecBroker variant counting accepted connections."""
+
+    def __init__(self, **kwargs) -> None:
+        super().__init__(**kwargs)
+        self._conn_count = 0
+        self._conn_lock = threading.Lock()
+
+    def handle_connection(self, conn: socket.socket) -> None:
+        with self._conn_lock:
+            self._conn_count += 1
+        super().handle_connection(conn)
+
+
+def _start_counting_server(
+    socket_path: Path, payloads: dict[str, bytes]
+) -> tuple[_CountingBroker, threading.Thread]:
+    server = _CountingBroker(
+        socket_path=socket_path,
+        http_client=_FakeSecClient(payloads),
+        max_connections=8,
+    )
+    thread = threading.Thread(target=server.serve, daemon=False)
+    thread.start()
+    probe = SecBrokerClient(socket_path)
+    deadline = time.monotonic() + 5
+    while time.monotonic() < deadline:
+        try:
+            result = probe.fetch("healthcheck://broker")
+            if isinstance(result, dict) and result.get("status") == "ok":
+                return server, thread
+        except Exception:  # noqa: BLE001 - probing liveness
+            result = None
+        time.sleep(0.05)
+    server.stop()
+    thread.join(timeout=5)
+    raise RuntimeError("broker did not become ready")
+
+
+def test_broker_client_reuses_one_connection_for_sequential_fetches(
+    broker_paths: Path,
+) -> None:
+    payloads = {
+        f"https://www.sec.gov/Archives/doc{i}.htm": f"<p>{i}</p>".encode()
+        for i in range(4)
+    }
+    server, thread = _start_counting_server(broker_paths, payloads)
+    try:
+        baseline = server._conn_count
+        client = SecBrokerClient(broker_paths)
+        for i in range(4):
+            result = client.fetch(f"https://www.sec.gov/Archives/doc{i}.htm")
+            assert result["status"] == "ok"
+            assert result["payload"] == f"<p>{i}</p>".encode()
+        # One persistent connection served all sequential requests.
+        assert server._conn_count == baseline + 1
+    finally:
+        _stop_server(server, thread)
+
+
+def test_broker_client_reconnects_after_broker_restart(broker_paths: Path) -> None:
+    payloads = {"https://www.sec.gov/Archives/x/doc.htm": b"<html>ok</html>"}
+    server, thread = _start_counting_server(broker_paths, payloads)
+    client = SecBrokerClient(broker_paths)
+    result = client.fetch("https://www.sec.gov/Archives/x/doc.htm")
+    assert result["status"] == "ok"
+    _stop_server(server, thread)
+
+    server2, thread2 = _start_counting_server(broker_paths, payloads)
+    try:
+        result = client.fetch("https://www.sec.gov/Archives/x/doc.htm")
+        assert result["status"] == "ok"
+        assert result["payload"] == b"<html>ok</html>"
+    finally:
+        _stop_server(server2, thread2)
+
+
+def test_broker_client_fails_when_broker_gone(broker_paths: Path) -> None:
+    payloads = {"https://www.sec.gov/Archives/x/doc.htm": b"<html>ok</html>"}
+    server, thread = _start_counting_server(broker_paths, payloads)
+    client = SecBrokerClient(broker_paths)
+    assert client.fetch("https://www.sec.gov/Archives/x/doc.htm")["status"] == "ok"
+    _stop_server(server, thread)
+    # A drained in-flight request may still succeed on the dying connection;
+    # the next fetch must fail cleanly after the reconnect attempt.
+    deadline = time.monotonic() + 5
+    result = client.fetch("https://www.sec.gov/Archives/x/doc.htm")
+    while time.monotonic() < deadline and result["status"] == "ok":
+        result = client.fetch("https://www.sec.gov/Archives/x/doc.htm")
+    assert result["status"] == "failed"
+    assert result["payload"] is None

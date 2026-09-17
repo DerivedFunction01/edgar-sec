@@ -30,6 +30,8 @@ import threading
 from pathlib import Path
 from typing import Any
 
+from defs.runtime.memory import reclaim
+
 from .client import SecHttpClient, make_sec_http_client
 from .errors import PermanentHttpError, ResponseTooLargeError, RetryExhausted
 from .metrics import HttpMetrics
@@ -40,6 +42,9 @@ _HEADER_SIZE = _HEADER_STRUCT.size
 _SOCKET_BACKLOG = 128
 _READ_TIMEOUT_S = 30.0
 HEALTHCHECK_URL = "healthcheck://broker"
+# The broker is the only other process alive for an entire run; decompressed
+# payloads and zstd scratch fragments its C arenas, so reclaim periodically.
+_RECLAIM_BYTES_THRESHOLD = 512 * 1024 * 1024
 
 
 class BrokerError(Exception):
@@ -109,6 +114,7 @@ class SecBroker:
         self._metrics = self._client.metrics
         self._lock = threading.Lock()
         self._active = 0
+        self._bytes_since_reclaim = 0
         self._semaphore = threading.Semaphore(self._max_connections)
         self._server: socket.socket | None = None
         self._stop = threading.Event()
@@ -135,6 +141,7 @@ class SecBroker:
         with self._semaphore:
             with self._lock:
                 self._active += 1
+            payload: bytes | None = None
             try:
                 payload = self._client.get_bytes(archive_url)
             except (PermanentHttpError, ResponseTooLargeError, RetryExhausted) as exc:
@@ -152,12 +159,24 @@ class SecBroker:
             finally:
                 with self._lock:
                     self._active -= 1
+            due_reclaim = self._note_bytes(len(payload))
+        if due_reclaim:
+            reclaim()
         return {
             "status": "ok",
             "error": None,
             "payload_length": len(payload),
             "payload": payload,
         }
+
+    def _note_bytes(self, count: int) -> bool:
+        """Accumulate served bytes; return True when a reclaim is due."""
+        with self._lock:
+            self._bytes_since_reclaim += count
+            if self._bytes_since_reclaim >= _RECLAIM_BYTES_THRESHOLD:
+                self._bytes_since_reclaim = 0
+                return True
+            return False
 
     def handle_connection(self, conn: socket.socket) -> None:
         try:
@@ -253,38 +272,83 @@ class SecBroker:
 
 
 class SecBrokerClient:
-    """Worker-side ``ArchiveFetcher`` that routes fetches through the broker."""
+    """Worker-side ``ArchiveFetcher`` that routes fetches through the broker.
+
+    Each calling thread keeps one persistent connection to the broker. The
+    server already serves sequential framed requests per connection, so the
+    wire protocol is unchanged while the broker handles one thread per
+    connection instead of one thread per request.
+    """
 
     def __init__(self, socket_path: str | Path) -> None:
         self.socket_path = Path(socket_path)
+        self._local = threading.local()
 
     @property
     def metrics(self) -> HttpMetrics | None:
         return None
+
+    def _get_socket(self) -> socket.socket:
+        sock = getattr(self._local, "sock", None)
+        if sock is None:
+            sock = socket.socket(socket.AF_UNIX, socket.SOCK_STREAM)
+            sock.settimeout(_READ_TIMEOUT_S)
+            try:
+                sock.connect(str(self.socket_path))
+            except OSError:
+                sock.close()
+                raise
+            self._local.sock = sock
+        return sock
+
+    def _reset_socket(self) -> None:
+        sock = getattr(self._local, "sock", None)
+        self._local.sock = None
+        if sock is not None:
+            try:
+                sock.close()
+            except OSError:
+                pass
+
+    def _exchange(self, request: bytes) -> tuple[dict[str, Any], bytes]:
+        sock = self._get_socket()
+        sock.sendall(_HEADER_STRUCT.pack(len(request)) + request)
+        header_raw = _recv_exactly(sock, _HEADER_SIZE)
+        (header_len,) = _HEADER_STRUCT.unpack(header_raw)
+        header = _json_loads(_recv_exactly(sock, header_len))
+        payload_length = int(header.get("payload_length", 0) or 0)
+        payload = _recv_exactly(sock, payload_length) if payload_length else b""
+        return header, payload
 
     def fetch(self, archive_url: str) -> dict[str, Any]:
         """Fetch one archive URL through the broker.
 
         Returns a dict shaped like ``FetchResult``: ``status`` is
         ``"ok"``/``"failed"``, ``payload`` is the raw bytes on success, and
-        ``error`` carries the failure detail.
+        ``error`` carries the failure detail. A stale or broken connection is
+        reconnected exactly once and the request replayed; a failed exchange
+        desynchronizes the frame stream, so the socket is always reset.
         """
         request_id = os.urandom(8).hex()
         request = _json_dumps({"request_id": request_id, "archive_url": archive_url})
-        try:
-            with socket.socket(socket.AF_UNIX, socket.SOCK_STREAM) as sock:
-                sock.settimeout(_READ_TIMEOUT_S)
-                sock.connect(str(self.socket_path))
-                sock.sendall(_HEADER_STRUCT.pack(len(request)) + request)
-                header_raw = _recv_exactly(sock, _HEADER_SIZE)
-                (header_len,) = _HEADER_STRUCT.unpack(header_raw)
-                header = _json_loads(_recv_exactly(sock, header_len))
-                payload_length = int(header.get("payload_length", 0) or 0)
-                payload = _recv_exactly(sock, payload_length) if payload_length else b""
-        except (OSError, BrokerError) as exc:
+        header: dict[str, Any] | None = None
+        payload = b""
+        for attempt in (1, 2):
+            try:
+                header, payload = self._exchange(request)
+                break
+            except (OSError, BrokerError) as exc:
+                self._reset_socket()
+                if attempt == 2:
+                    return {
+                        "status": "failed",
+                        "error": str(exc) or type(exc).__name__,
+                        "payload": None,
+                    }
+        if header is None:
             return {
                 "status": "failed",
-                "error": str(exc) or type(exc).__name__,
+                "error": "broker exchange did not complete",
                 "payload": None,
             }
         if header.get("status") != "ok":

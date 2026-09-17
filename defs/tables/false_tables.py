@@ -275,6 +275,16 @@ def is_false_table(
                     for row in grid
                 )
             non_empty_first = [cell for cell in first_column if cell]
+            if non_empty_first and all(
+                bool(_RE_ORDERED_MARKER.match(cell)) for cell in non_empty_first
+            ):
+                if any(is_numeric_cell(cell) for cell in second_column if cell):
+                    return False
+                return not any(
+                    looks_like_toc_row(" ".join(row))
+                    or looks_like_toc_tabular(" ".join(row))
+                    for row in grid
+                )
             if not non_empty_first or not all(
                 _is_prose_marker(cell) for cell in non_empty_first
             ):

@@ -20,6 +20,15 @@ _RE_TAG_FILENAME = re.compile(r"(?im)^\s*<FILENAME>\s*([^\r\n<]+)")
 _RE_TAG_DESCRIPTION = re.compile(r"(?im)^\s*<DESCRIPTION>\s*([^\r\n<]+)")
 _RE_TAG_TEXT = re.compile(r"(?is)<TEXT>(.*?)</TEXT>")
 
+# Bytes twins of the header regexes for the selective extractor: scanning the
+# raw envelope avoids the full latin-1 str decode of ``unpack_sgml_submission``
+# while matching exactly the same ASCII tag shapes.
+_RE_DOCUMENT_B = re.compile(rb"(?is)<DOCUMENT>(.*?)</DOCUMENT>")
+_RE_TAG_TYPE_B = re.compile(rb"(?im)^\s*<TYPE>\s*([^\r\n<]+)")
+_RE_TAG_SEQUENCE_B = re.compile(rb"(?im)^\s*<SEQUENCE>\s*([^\r\n<]+)")
+_RE_TAG_FILENAME_B = re.compile(rb"(?im)^\s*<FILENAME>\s*([^\r\n<]+)")
+_RE_TAG_TEXT_B = re.compile(rb"(?is)<TEXT>(.*?)</TEXT>")
+
 
 @dataclass(frozen=True, slots=True)
 class SgmlSubDocument:
@@ -229,10 +238,92 @@ def resolve_target_sub_document(
     return None
 
 
+def has_sgml_documents(raw_bytes: bytes) -> bool:
+    """True when the envelope contains at least one ``<DOCUMENT>`` block."""
+    if not raw_bytes:
+        return False
+    return _RE_DOCUMENT_B.search(raw_bytes) is not None
+
+
+def extract_target_sub_document(
+    raw_bytes: bytes,
+    *,
+    target_types: Sequence[str] | None = None,
+    primary_filename: str | None = None,
+    fallback_to_sequence_one: bool = True,
+) -> bytes | None:
+    """Selectively extract the resolved target sub-document payload.
+
+    Resolves the winner through :func:`resolve_target_sub_document` using the
+    same tier semantics as ``unpack_sgml_submission`` output, but scans the
+    raw bytes and materializes only the winning sub-document's payload
+    instead of decoding the envelope and unpacking every sub-document.
+
+    Returns ``None`` only when blocks exist yet none resolves; callers that
+    treat block-less payloads as whole documents check
+    :func:`has_sgml_documents` first.
+    """
+    if not raw_bytes:
+        return None
+
+    refs: list[tuple[SgmlSubDocument, int, int]] = []
+    for match in _RE_DOCUMENT_B.finditer(raw_bytes):
+        block = raw_bytes[match.start(1) : match.end(1)]
+        doc_type_raw = _clean_b_field(_RE_TAG_TYPE_B.search(block)) or ""
+        seq_raw = _clean_b_field(_RE_TAG_SEQUENCE_B.search(block))
+        sequence: int | None = None
+        if seq_raw:
+            try:
+                sequence = int(seq_raw)
+            except ValueError:
+                sequence = None
+        filename = _clean_b_field(_RE_TAG_FILENAME_B.search(block)) or ""
+        light = SgmlSubDocument(
+            doc_type=doc_type_raw.upper(),
+            sequence=sequence,
+            filename=filename,
+            description=None,
+            raw_payload=b"",
+            is_html=False,
+        )
+        refs.append((light, match.start(1), match.end(1)))
+
+    if not refs:
+        return None
+
+    winner = resolve_target_sub_document(
+        [doc for doc, _, _ in refs],
+        target_types=target_types,
+        primary_filename=primary_filename,
+        fallback_to_sequence_one=fallback_to_sequence_one,
+    )
+    if winner is None:
+        return None
+    for doc, start, end in refs:
+        if doc is winner:
+            block = raw_bytes[start:end]
+            text_match = _RE_TAG_TEXT_B.search(block)
+            if text_match is not None:
+                # Equivalent to decoding latin-1, stripping \r\n, and
+                # re-encoding: latin-1 decodes every byte losslessly.
+                return text_match.group(1).strip(b"\r\n")
+            return block.decode("latin-1").strip().encode("latin-1")
+    return None  # pragma: no cover - winner always comes from refs
+
+
+def _clean_b_field(match: re.Match[bytes] | None) -> str | None:
+    if match is None:
+        return None
+    val = match.group(1).decode("latin-1").strip()
+    return val if val else None
+
+
 __all__ = [
     "SgmlSubDocument",
     "extract_sub_document",
+    "extract_target_sub_document",
     "find_sub_document",
+    "has_sgml_documents",
     "resolve_target_sub_document",
     "unpack_sgml_submission",
 ]

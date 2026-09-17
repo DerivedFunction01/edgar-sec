@@ -8,6 +8,7 @@ from contextlib import suppress
 from datetime import UTC, datetime
 from pathlib import Path
 
+from defs.runtime.memory import reclaim
 from defs.sql import (
     Commit,
     Compare,
@@ -377,7 +378,6 @@ def process_chunk(
             chunk_failures=chunk_failures,
             progress=progress,
             fetch_workers=fetch_workers,
-            prefetch_size=16,
         )
 
         # Count total stored occurrences and blobs
@@ -449,13 +449,27 @@ def process_chunk(
                 executor.compiler.compile(Pragma("wal_checkpoint", "TRUNCATE"))
             )
             executor.close()
+        # Release the chunk's large lookups and row dumps before reclaiming so
+        # gc.collect() can actually free them; every name may be unbound when
+        # an early failure skipped its assignment.
         with suppress(Exception):
-            import gc
-
-            gc.collect()
-            import ctypes
-
-            ctypes.CDLL("libc.so.6").malloc_trim(0)
+            del (
+                executor,
+                normalized_occurrences,
+                occurrences_by_doc_id,
+                unique_documents,
+                seen_docs,
+                locators_by_doc_id,
+                existing_blobs,
+                existing_normalized,
+                existing_normalization_failures,
+                existing_failure_rows,
+                existing_failures,
+                chunk_failures,
+                final_occurrences,
+                final_blobs,
+            )
+        reclaim()
 
 
 def worker(*args, **kwargs) -> ChunkResult:

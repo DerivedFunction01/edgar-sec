@@ -10,6 +10,7 @@ from datetime import UTC, datetime
 from pathlib import Path
 from typing import Any, Protocol, runtime_checkable
 
+from defs.runtime.memory import reclaim
 from defs.sql import (
     Commit,
     DoNothing,
@@ -44,6 +45,19 @@ class ArchiveFetcher(Protocol):
     """Protocol for fetching raw document payloads given a DocumentLocator."""
 
     def fetch(self, locator: DocumentLocator) -> FetchResult: ...
+
+
+# Consumer-side reclaim thresholds: after either bound is reached, the
+# coordinator collects cycles and returns free C heap pages (selectolax
+# trees, decompressed payloads) to the operating system. This keeps worker
+# RSS near the per-document working set instead of the per-chunk high-water
+# mark. Machine-derived bounds, never persisted.
+_RECLAIM_BYTES_THRESHOLD = 64 * 1024 * 1024
+_RECLAIM_DOCS_THRESHOLD = 64
+# Bounded FIFO item cap; payload bytes are additionally bounded by
+# _PREFETCH_BYTES_BUDGET via the producer-held semaphore.
+_PREFETCH_ITEM_CAP = 8
+_PREFETCH_BYTES_BUDGET = 96 * 1024 * 1024
 
 
 @dataclass(frozen=True, slots=True)
@@ -274,15 +288,18 @@ def _run_pipelined_acquisitions(
     chunk_failures: list[ChunkFailure],
     progress: Callable[[dict], None] | None,
     fetch_workers: int = 1,
-    prefetch_size: int = 16,
 ) -> None:
     """Acquire and persist uncached locators via a bounded producer-consumer pipeline.
 
     Lightweight fetch threads pull raw payloads from the fetcher and push into
-    a bounded FIFO queue (maxsize items). The main coordinator thread consumes from the
-    queue and performs CPU normalization, table extraction, and SQLite persistence.
-    When the buffer is full, the fetch threads automatically pause, strictly bounding
-    RAM consumption to O(prefetch_size).
+    a bounded FIFO queue. RAM is strictly bounded on two axes: the queue holds
+    at most a handful of items, and producers block on a shared bytes
+    semaphore so in-flight raw payloads never exceed ``_PREFETCH_BYTES_BUDGET``
+    regardless of document size. The main coordinator thread consumes from the
+    queue and performs CPU normalization, table extraction, and SQLite
+    persistence, releasing its byte reservation and periodically invoking
+    :func:`defs.runtime.memory.reclaim` so freed C-backed objects (selectolax
+    trees, decompressed payloads) are returned to the operating system.
     """
     import queue
     import threading
@@ -298,7 +315,8 @@ def _run_pipelined_acquisitions(
 
     sentinel = object()
     worker_count = max(1, fetch_workers)
-    q: queue.Queue = queue.Queue(maxsize=max(worker_count * 2, prefetch_size))
+    q: queue.Queue = queue.Queue(maxsize=max(worker_count, _PREFETCH_ITEM_CAP))
+    bytes_budget = threading.Semaphore(_PREFETCH_BYTES_BUDGET)
     locator_iter = iter(pending)
     iter_lock = threading.Lock()
 
@@ -310,9 +328,15 @@ def _run_pipelined_acquisitions(
                 break
             try:
                 fetched = _fetch(fetcher, loc)
-                q.put((loc, fetched, None))
             except Exception as exc:  # noqa: BLE001
-                q.put((loc, None, str(exc) or type(exc).__name__))
+                q.put((loc, None, 0, str(exc) or type(exc).__name__))
+                continue
+            reserved = len(fetched.payload) if fetched.payload else 0
+            if reserved:
+                # Block while the in-flight payload budget is exhausted; the
+                # consumer releases each reservation after persisting.
+                bytes_budget.acquire()
+            q.put((loc, fetched, reserved, None))
 
     threads = [
         threading.Thread(target=producer, daemon=True) for _ in range(worker_count)
@@ -328,12 +352,14 @@ def _run_pipelined_acquisitions(
     waiter_thread = threading.Thread(target=waiter, daemon=True)
     waiter_thread.start()
 
+    processed_bytes = 0
+    processed_docs = 0
     while True:
         item = q.get()
         if item is sentinel:
             q.task_done()
             break
-        loc, fetched, err = item
+        loc, fetched, reserved, err = item
         try:
             _persist_fetch_result(
                 loc,
@@ -349,10 +375,21 @@ def _run_pipelined_acquisitions(
                 error=err,
             )
         finally:
+            if reserved:
+                bytes_budget.release()
             item = None
             loc = None
             fetched = None
             err = None
+            processed_bytes += reserved
+            processed_docs += 1
+            if (
+                processed_bytes >= _RECLAIM_BYTES_THRESHOLD
+                or processed_docs >= _RECLAIM_DOCS_THRESHOLD
+            ):
+                reclaim()
+                processed_bytes = 0
+                processed_docs = 0
             q.task_done()
 
     waiter_thread.join()

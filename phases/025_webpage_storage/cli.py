@@ -310,7 +310,7 @@ def main(argv: list[str] | None = None) -> int:
                 getattr(args, "scope", None),
             )
             locators, occurrences, plan = pipeline.load_targets(plan_dir)
-            selected = pipeline._partition_locators(
+            selected = pipeline.partition_locators(
                 locators,
                 args.partition_id if hasattr(args, "partition_id") else 1,
                 args.partition_count,
@@ -346,7 +346,7 @@ def main(argv: list[str] | None = None) -> int:
             pbar = None
             if not getattr(args, "no_progress", False):
                 locators, _, _ = pipeline.load_targets(plan_dir)
-                selected = pipeline._partition_locators(
+                selected = pipeline.partition_locators(
                     locators, args.partition_id, args.partition_count
                 )
                 pbar = tqdm(

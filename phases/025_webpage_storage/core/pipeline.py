@@ -2,7 +2,6 @@
 
 from __future__ import annotations
 
-import json
 from collections import defaultdict
 from concurrent.futures import ProcessPoolExecutor, as_completed
 from contextlib import suppress
@@ -11,13 +10,6 @@ from pathlib import Path
 from typing import Any
 
 from defs.runtime.paths import resolve_paths
-from defs.sql import (
-    Select,
-    SqlDialect,
-    Table,
-    col,
-    make_sql_executor,
-)
 
 from .chunk_cache import find_completed_chunk_db, try_load_completed_chunk
 from .chunk_persistence import ChunkResult
@@ -27,26 +19,12 @@ from .partition_merger import PartitionMergeResult, merge_partition
 from .schemas import (
     DocumentLocator,
     FilingOccurrence,
-    build_occurrence,
     doc_id,
 )
-
-REQUIRED_LOCATOR_COLUMNS = (
-    "document_locator_key",
-    "representative_accession",
-    "document_path",
-    "archive_url",
-    "form",
-)
-REQUIRED_TARGET_COLUMNS = (
-    "occurrence_id",
-    "document_locator_key",
-    "source_cik",
-    "accession",
-    "form",
-    "filing_date",
-    "report_date",
-    "document_path",
+from .targets import (
+    calculate_optimal_chunk_size,
+    load_targets,
+    partition_locators,
 )
 
 
@@ -58,121 +36,6 @@ class _ChunkTask:
     chunk: list[DocumentLocator]
     chunk_occurrences: list[FilingOccurrence]
     chunk_path: Path
-
-
-def _read_parquet_rows(
-    path: str | Path, columns: tuple[str, ...], view: str
-) -> list[dict[str, Any]]:
-    executor = make_sql_executor(
-        dialect=SqlDialect.DUCKDB,
-        dataset_views={view: str(path)},
-    )
-    try:
-        query = Select(
-            source=Table(view),
-            projection=tuple(col(column) for column in columns),
-        )
-        return executor.query(executor.compiler.compile(query))
-    finally:
-        executor.close()
-
-
-def _validate_bundle(plan_dir: Path) -> tuple[Path, Path, dict[str, Any]]:
-    manifest = plan_dir / "plan.json"
-    locator_path = plan_dir / "locator_groups.parquet"
-    if not manifest.is_file():
-        raise FileNotFoundError(f"Phase 02 plan manifest not found: {manifest}")
-    if not locator_path.is_file():
-        raise FileNotFoundError(f"Phase 02 locator groups not found: {locator_path}")
-    with manifest.open("r", encoding="utf-8") as stream:
-        plan = json.load(stream)
-    if not isinstance(plan, dict):
-        raise ValueError("Phase 02 plan.json must contain an object")
-    target_paths = sorted((plan_dir / "targets").glob("form=*/data.parquet"))
-    if not target_paths:
-        raise FileNotFoundError(
-            f"Phase 02 target parquet files not found under {plan_dir / 'targets'}"
-        )
-    return locator_path, target_paths[0], plan
-
-
-def load_targets(
-    plan_dir: str | Path,
-) -> tuple[list[DocumentLocator], list[FilingOccurrence], dict[str, Any]]:
-    """Read and validate the published Phase 02 plan bundle."""
-    root = Path(plan_dir)
-    locator_path, _first_target_path, plan = _validate_bundle(root)
-    locator_rows = _read_parquet_rows(
-        locator_path, REQUIRED_LOCATOR_COLUMNS, "locator_groups"
-    )
-    target_paths = sorted((root / "targets").glob("form=*/data.parquet"))
-    target_rows: list[dict[str, Any]] = []
-    for target_path in target_paths:
-        target_rows.extend(
-            _read_parquet_rows(target_path, REQUIRED_TARGET_COLUMNS, "target_rows")
-        )
-    if not locator_rows:
-        return [], [], plan
-
-    locators = [
-        DocumentLocator(
-            locator_key=str(row["document_locator_key"]),
-            accession=str(row["representative_accession"]),
-            document_path=str(row["document_path"]),
-            archive_url=str(row["archive_url"]),
-            form=str(row.get("form", "")),
-        )
-        for row in locator_rows
-    ]
-    locator_by_key = {locator.locator_key: locator for locator in locators}
-    occurrences: list[FilingOccurrence] = []
-    for row in target_rows:
-        key = str(row["document_locator_key"])
-        locator = locator_by_key.get(key)
-        if locator is None:
-            raise ValueError(f"target references unknown document locator: {key}")
-        occurrence = build_occurrence(
-            source_cik=str(row["source_cik"]),
-            accession=str(row["accession"]),
-            document_path=str(row["document_path"]),
-            form=str(row["form"]),
-            filing_date=str(row["filing_date"]),
-            report_date=(
-                None if row.get("report_date") is None else str(row["report_date"])
-            ),
-        )
-        if occurrence.document_path != locator.document_path:
-            raise ValueError(
-                f"target document path disagrees with locator group: {key}"
-            )
-        occurrences.append(occurrence)
-
-    del locator_rows
-    del target_rows
-    del locator_by_key
-    return locators, occurrences, plan
-
-
-def _partition_locators(
-    locators: list[DocumentLocator], partition_id: int, partition_count: int
-) -> list[DocumentLocator]:
-    if partition_count < 1 or partition_id < 1 or partition_id > partition_count:
-        raise ValueError("partition_id must be in the range 1..partition_count")
-    ordered = sorted(locators, key=lambda locator: locator.locator_key)
-    return [
-        locator
-        for index, locator in enumerate(ordered)
-        if index % partition_count == partition_id - 1
-    ]
-
-
-def calculate_optimal_chunk_size(locator_count: int, workers: int = 1) -> int:
-    """Calculate an optimal chunk size balancing concurrency and SQLite file overhead."""
-    if locator_count <= 0:
-        return 100
-    target_chunks = max(1, workers * 4)
-    computed = (locator_count + target_chunks - 1) // target_chunks
-    return max(100, min(2500, computed))
 
 
 def run_partition(
@@ -204,7 +67,7 @@ def run_partition(
     if workers < 1:
         raise ValueError("workers must be positive")
     locators, occurrences, plan = load_targets(plan_dir)
-    selected = _partition_locators(locators, partition_id, partition_count)
+    selected = partition_locators(locators, partition_id, partition_count)
 
     effective_chunk_size = (
         chunk_size
@@ -273,7 +136,6 @@ def run_partition(
     }
     atomic_write_json(meta_file, run_meta)
 
-    tasks: list[_ChunkTask] = []
     chunk_count = (
         (len(selected) + effective_chunk_size - 1) // effective_chunk_size
         if selected
@@ -281,6 +143,10 @@ def run_partition(
     )
     chunk_results: list[ChunkResult | None] = [None] * chunk_count
 
+    # Preflight completed chunks first so pending work can be materialized
+    # lazily: only the in-flight window ever holds chunk slices and their
+    # occurrence lists instead of the whole partition.
+    pending_indices: list[int] = []
     for chunk_idx, start in enumerate(range(0, len(selected), effective_chunk_size)):
         chunk = selected[start : start + effective_chunk_size]
         chunk_id = f"chunk-{chunk_idx + 1:05d}"
@@ -297,24 +163,38 @@ def run_partition(
                             progress({"type": "document_done", "status": "cached"})
                 continue
 
-        assigned_worker_num = (chunk_idx % workers) + 1
-        chunk_worker_id = (
-            worker_id if workers == 1 else f"worker-{assigned_worker_num:05d}"
-        )
-        chunk_path = run_paths.worker_chunk_db(chunk_worker_id, attempt_id, chunk_id)
-        run_paths.ensure_worker_layout(chunk_worker_id, attempt_id)
+        pending_indices.append(chunk_idx)
 
-        chunk_doc_ids = {
-            doc_id(locator.accession, locator.document_path) for locator in chunk
-        }
-        chunk_occurrences = [
-            occurrence
-            for d_id in chunk_doc_ids
-            for occurrence in occurrences_by_doc_id.get(d_id, ())
-        ]
+    locator_count = len(selected)
+    # Release the coordinator's locator shell; occurrences stay reachable
+    # through the by-doc-id map consumed lazily by the task generator.
+    del locators
 
-        tasks.append(
-            _ChunkTask(
+    def _pending_tasks():
+        for chunk_idx in pending_indices:
+            start = chunk_idx * effective_chunk_size
+            chunk = selected[start : start + effective_chunk_size]
+            chunk_id = f"chunk-{chunk_idx + 1:05d}"
+
+            assigned_worker_num = (chunk_idx % workers) + 1
+            chunk_worker_id = (
+                worker_id if workers == 1 else f"worker-{assigned_worker_num:05d}"
+            )
+            chunk_path = run_paths.worker_chunk_db(
+                chunk_worker_id, attempt_id, chunk_id
+            )
+            run_paths.ensure_worker_layout(chunk_worker_id, attempt_id)
+
+            chunk_doc_ids = {
+                doc_id(locator.accession, locator.document_path) for locator in chunk
+            }
+            chunk_occurrences = [
+                occurrence
+                for d_id in chunk_doc_ids
+                for occurrence in occurrences_by_doc_id.get(d_id, ())
+            ]
+
+            yield _ChunkTask(
                 index=chunk_idx,
                 chunk_id=chunk_id,
                 worker_id=chunk_worker_id,
@@ -322,16 +202,11 @@ def run_partition(
                 chunk_occurrences=chunk_occurrences,
                 chunk_path=chunk_path,
             )
-        )
-
-    # Release coordinator occurrences map to free RAM before worker pool execution
-    occurrences_by_doc_id.clear()
-    del occurrences_by_doc_id
 
     try:
-        if tasks:
+        if pending_indices:
             if workers <= 1:
-                for task in tasks:
+                for task in _pending_tasks():
                     chunk_results[task.index] = process_chunk(
                         task.chunk_id,
                         task.worker_id,
@@ -350,26 +225,27 @@ def run_partition(
                     mp_context=multiprocessing.get_context("spawn"),
                     max_tasks_per_child=8,
                 ) as pool:
-                    max_in_flight = max(4, workers * 2)
-                    task_iter = iter(tasks)
+                    max_in_flight = workers + 4
+                    task_iter = _pending_tasks()
                     future_to_task: dict = {}
 
                     # Seed initial in-flight window
-                    for _ in range(min(len(tasks), max_in_flight)):
+                    for _ in range(min(len(pending_indices), max_in_flight)):
                         initial_task = next(task_iter, None)
-                        if initial_task is not None:
-                            fut = pool.submit(
-                                process_chunk,
-                                initial_task.chunk_id,
-                                initial_task.worker_id,
-                                initial_task.chunk,
-                                initial_task.chunk_occurrences,
-                                fetcher,
-                                initial_task.chunk_path,
-                                None,
-                                processor,
-                            )
-                            future_to_task[fut] = initial_task
+                        if initial_task is None:
+                            break
+                        fut = pool.submit(
+                            process_chunk,
+                            initial_task.chunk_id,
+                            initial_task.worker_id,
+                            initial_task.chunk,
+                            initial_task.chunk_occurrences,
+                            fetcher,
+                            initial_task.chunk_path,
+                            None,
+                            processor,
+                        )
+                        future_to_task[fut] = initial_task
 
                     while future_to_task:
                         for future in as_completed(future_to_task):
@@ -432,6 +308,13 @@ def run_partition(
         if close is not None:
             close()
 
+    # Execution complete: release coordinator-side target state before merge.
+    # Reassign rather than ``del`` — the lazy task generator closes over these
+    # names, and it is fully consumed by the time execution finishes.
+    occurrences_by_doc_id = None
+    occurrences = None
+    selected = None
+
     final_chunk_results: list[ChunkResult] = [
         result for result in chunk_results if result is not None
     ]
@@ -462,7 +345,7 @@ def run_partition(
         "plan": plan,
         "partition_id": partition_id,
         "partition_count": partition_count,
-        "locator_count": len(selected),
+        "locator_count": locator_count,
         "chunk_size": effective_chunk_size,
         "occurrence_count": sum(
             result.occurrence_count for result in final_chunk_results
@@ -481,4 +364,12 @@ def run_partition(
     }
 
 
-__all__ = ["calculate_optimal_chunk_size", "load_targets", "run_partition"]
+_partition_locators = partition_locators
+
+__all__ = [
+    "_partition_locators",
+    "calculate_optimal_chunk_size",
+    "load_targets",
+    "partition_locators",
+    "run_partition",
+]

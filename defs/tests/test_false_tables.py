@@ -231,6 +231,41 @@ def test_geometry_retains_simple_numeric_two_column_table() -> None:
     assert cleanup_false_tables(text, (geometry,)) == text
 
 
+def test_single_row_numbered_heading_with_indent_spacer_is_unwrapped() -> None:
+    html = (
+        "<table><tr>"
+        "<td style='width:9%'>&nbsp;</td>"
+        "<td style='width:5%'>1.</td>"
+        "<td>Financial Statements</td>"
+        "</tr></table>"
+    )
+    result = convert_html_table(html)
+    geometry = TableGeometry(table_index=0, render_result=result)
+    text = "<TABLE>1.       Financial Statements</TABLE>"
+
+    assert is_false_table(text, geometry) is True
+    assert cleanup_false_tables(text, (geometry,)) == "1. Financial Statements"
+
+
+def test_multi_row_short_numbered_labels_are_unwrapped() -> None:
+    html = (
+        "<table>"
+        "<tr><td>1.</td><td>Financial Statements</td></tr>"
+        "<tr><td>2.</td><td>Financial Statement Schedules</td></tr>"
+        "<tr><td>3.</td><td>Exhibits</td></tr>"
+        "</table>"
+    )
+    result = convert_html_table(html)
+    geometry = TableGeometry(table_index=0, render_result=result)
+    text = "<TABLE>rendered</TABLE>"
+
+    assert is_false_table(text, geometry) is True
+    assert (
+        cleanup_false_tables(text, (geometry,))
+        == "1. Financial Statements\n2. Financial Statement Schedules\n3. Exhibits"
+    )
+
+
 def test_geometry_retains_numeric_exhibit_index_marker() -> None:
     result = convert_html_table(
         "<table><tr><td>1</td><td>Material Contract</td></tr>"
