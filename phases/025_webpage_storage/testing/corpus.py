@@ -21,6 +21,7 @@ DOCUMENT_CORPUS_SCHEMA = pa.schema(
         ("mime_type", pa.string()),
         ("source_sha256", pa.string()),
         ("source_bytes", pa.binary()),
+        ("form", pa.string()),
         ("expected_output", pa.string()),
         ("expected_metadata", pa.string()),
         ("review_status", pa.string()),
@@ -143,26 +144,55 @@ def find_document_cases(
     token_list = list(ids or ())
     category_set = {value.casefold() for value in categories or ()}
     ext_set = {f".{ext.lstrip('.').casefold()}" for ext in extensions or ()}
-    selected = [
-        record
-        for record in records
+    if path is not None:
+        manifest_path = Path(path)
+        if manifest_path.suffix == ".parquet":
+            manifest_path = manifest_path.parent / "manifest.json"
+        if manifest_path.is_file():
+            manifest = load_document_manifest(manifest_path)
+        else:
+            manifest = {}
+    else:
+        manifest = load_document_manifest()
+    manifest_forms = manifest.get("forms", [])
+    selected = []
+    for record in records:
         if (
-            not token_list or any(_token_matches(record, token) for token in token_list)
-        )
-        and (
-            not category_set
-            or category_set.intersection(
-                category.casefold() for category in _record_categories(record)
+            (
+                not token_list
+                or any(_token_matches(record, token) for token in token_list)
             )
-        )
-        and (
-            not ext_set
-            or any(
-                str(record.get("document_path", "")).casefold().endswith(expected_ext)
-                for expected_ext in ext_set
+            and (
+                not category_set
+                or category_set.intersection(
+                    category.casefold() for category in _record_categories(record)
+                )
             )
-        )
-    ]
+            and (
+                not ext_set
+                or any(
+                    str(record.get("document_path", ""))
+                    .casefold()
+                    .endswith(expected_ext)
+                    for expected_ext in ext_set
+                )
+            )
+        ):
+            # Join `form` from the fixture manifest directly into
+            # records, eliminating fragile unparsed byte regex
+            # inference.
+            if "form" not in record:
+                if manifest_forms:
+                    record["form"] = manifest_forms[0]
+                else:
+                    expected_metadata = record.get("expected_metadata")
+                    if expected_metadata:
+                        try:
+                            metadata = json.loads(expected_metadata)
+                        except (TypeError, json.JSONDecodeError):
+                            metadata = {}
+                        record["form"] = metadata.get("form", "")
+            selected.append(record)
     return sorted(selected, key=lambda record: str(record["document_id"]))
 
 

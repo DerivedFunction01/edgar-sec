@@ -9,19 +9,10 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
 
-from defs.sec_forms.vocabulary import _FORM_PATTERN
 from defs.text.html import parse_html
 
 from ..core.records import DocumentLocator
 from ..processors import DefaultFilingProcessor
-
-
-def _infer_form_from_bytes(raw: bytes) -> str:
-    text = raw.decode("ascii", errors="ignore")
-    match = _FORM_PATTERN.search(text)
-    if match is None:
-        return ""
-    return match.group(1).upper()
 
 
 @dataclass(frozen=True, slots=True)
@@ -50,7 +41,10 @@ def run_document_case(record: dict[str, Any]) -> DocumentCaseResult:
     actual_hash = hashlib.sha256(raw).hexdigest()
     if actual_hash != expected_hash:
         raise ValueError(f"source hash mismatch for {record['document_id']}")
-    form = str(record.get("form", "")) or _infer_form_from_bytes(raw)
+    # Use `form` from the record directly (joined from fixture
+    # manifest during promotion), eliminating fragile unparsed
+    # byte regex inference.
+    form = str(record.get("form", ""))
     locator = DocumentLocator(
         locator_key=str(record["document_id"]),
         accession=str(record["accession"]),

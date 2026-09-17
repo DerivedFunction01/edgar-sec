@@ -92,6 +92,14 @@ def test_heal_date_fragments_protects_non_dates() -> None:
     assert heal_date_fragments(lines) == lines
 
 
+def test_heal_date_fragments_preserves_prose_with_embedded_date() -> None:
+    lines = [
+        "[X] ANNUAL REPORT PURSUANT TO SECTION 13 OR 15(d)",
+        "For the fiscal year ended December 31, 2024",
+    ]
+    assert heal_date_fragments(lines) == lines
+
+
 def test_month_name_to_index() -> None:
     assert month_name_to_index("January") == 1
     assert month_name_to_index("jan") == 1

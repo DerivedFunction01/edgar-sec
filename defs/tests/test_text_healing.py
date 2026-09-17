@@ -71,6 +71,14 @@ def test_should_join_two_lines_and_negative_guards() -> None:
         is False
     )
     assert should_join_two_lines("Address", "<TABLE>", rules) is False
+    assert (
+        should_join_two_lines(
+            "For the transition period from to",
+            "Commission File Number: 001-32947",
+            rules,
+        )
+        is False
+    )
 
     # Caption vs value separation
     assert (

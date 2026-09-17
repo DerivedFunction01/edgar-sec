@@ -33,6 +33,15 @@ def _replace_mark_in_text(text: str, source_token: str, replacement: str) -> str
     if match is None:
         return text
     start, end = match.start(), match.end()
+    # Skip if the token is already enclosed in brackets or parentheses
+    # to prevent double-expansion (e.g. "[X]" should not become "[[X]]").
+    if (
+        start > 0
+        and end < len(text)
+        and text[start - 1] in "[(/"
+        and text[end] in "])/"
+    ):
+        return text
     if (
         start > 0
         and end < len(text)

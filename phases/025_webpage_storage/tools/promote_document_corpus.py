@@ -133,6 +133,9 @@ def build_records(
     if limit is not None and limit <= 0:
         raise ValueError("limit must be positive")
     rows = _fixture_rows(paths, ids, limit=limit, extensions=extensions)
+    fixture_manifest = _load_fixture_manifest(paths)
+    manifest_forms = fixture_manifest.get("forms", [])
+    single_form = manifest_forms[0] if len(manifest_forms) == 1 else None
     records: list[dict[str, Any]] = []
 
     for row in rows:
@@ -150,28 +153,36 @@ def build_records(
         previous = (existing or {}).get(document_id)
         if previous is not None and previous.get("source_sha256") != digest:
             raise ValueError(f"source changed for existing corpus row {document_id}")
-        records.append(
-            {
-                "document_id": document_id,
-                "accession": str(row["accession"]),
-                "document_path": str(row["document_path"]),
-                "mime_type": str(row["mime_type"]),
-                "source_sha256": digest,
-                "source_bytes": raw,
-                "expected_output": previous.get("expected_output")
-                if previous is not None
-                else None,
-                "expected_metadata": previous.get("expected_metadata")
-                if previous is not None
-                else None,
-                "review_status": previous.get("review_status", "pending")
-                if previous is not None
-                else "pending",
-                "review_notes": previous.get("review_notes")
-                if previous is not None
-                else None,
-            }
-        )
+        record: dict[str, Any] = {
+            "document_id": document_id,
+            "accession": str(row["accession"]),
+            "document_path": str(row["document_path"]),
+            "mime_type": str(row["mime_type"]),
+            "source_sha256": digest,
+            "source_bytes": raw,
+            "expected_output": previous.get("expected_output")
+            if previous is not None
+            else None,
+            "expected_metadata": previous.get("expected_metadata")
+            if previous is not None
+            else None,
+            "review_status": previous.get("review_status", "pending")
+            if previous is not None
+            else "pending",
+            "review_notes": previous.get("review_notes")
+            if previous is not None
+            else None,
+        }
+        # Join `form` from the fixture manifest directly into each
+        # record, eliminating fragile unparsed byte regex inference.
+        row_form = str(row.get("form", "")) if row.get("form") else ""
+        if single_form:
+            record["form"] = single_form
+        elif row_form:
+            record["form"] = row_form
+        elif manifest_forms:
+            record["form"] = manifest_forms[0]
+        records.append(record)
     return records
 
 
@@ -219,6 +230,7 @@ def promote(
         "fixture_manifest_schema_version": fixture_manifest.get(
             "fixture_manifest_schema_version"
         ),
+        "forms": fixture_manifest.get("forms", []),
         "document_count": len(records),
         "accepted_count": sum(
             record["review_status"] in {"accepted", "accepted_current_behavior"}

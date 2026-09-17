@@ -30,8 +30,9 @@ def _record(
     document_id: str = "doc-1",
     raw: bytes = b"First paragraph.\n",
     path: str = "document.txt",
+    form: str = "",
 ) -> dict:
-    return {
+    record = {
         "document_id": document_id,
         "accession": "000000000100000001",
         "document_path": path,
@@ -43,6 +44,9 @@ def _record(
         "review_status": "pending",
         "review_notes": None,
     }
+    if form:
+        record["form"] = form
+    return record
 
 
 def _write_corpus(path: Path, records: list[dict]) -> None:
@@ -113,9 +117,9 @@ def test_document_review_artifacts_capture_current_output_and_debug(
     ).read_text() == result.normalized_text + "\n"
 
 
-def test_document_review_infers_form_for_profile_selection() -> None:
+def test_document_review_uses_manifest_form_for_profile_selection() -> None:
     raw = b"UNITED STATES\nFORM 10-K\n"
-    result = review.run_document_case(_record(raw=raw))
+    result = review.run_document_case(_record(raw=raw, form="10-K"))
 
     assert result.preprocessed.metadata["form"] == "10-K"
     assert result.normalization.cover_boundary.method.value != "disabled"

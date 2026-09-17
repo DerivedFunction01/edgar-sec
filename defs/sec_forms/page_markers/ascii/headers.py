@@ -28,6 +28,22 @@ from .windows import (
 )
 
 
+def _deduplicate_anchors(anchor_lines: list[int]) -> list[int]:
+    """Collapse physical anchor lines within <= 2 lines of each other.
+
+    Consecutive or tightly clustered anchors (e.g. from multiple break
+    mechanisms for a single page transition) are merged into one,
+    preventing anchor denominator inflation.
+    """
+    if not anchor_lines:
+        return []
+    deduped = [anchor_lines[0]]
+    for line in anchor_lines[1:]:
+        if line - deduped[-1] > 2:
+            deduped.append(line)
+    return deduped
+
+
 def analyze_repeating_headers(
     text: str,
     markers: list[PageMarker],
@@ -46,8 +62,8 @@ def analyze_repeating_headers(
     anchors = sorted(
         {marker.start_line for marker in markers if marker.start_line is not None}
     )
-    header_anchor_lines = sorted(set(header_anchors or anchors))
-    footer_anchor_lines = sorted(set(footer_anchors or anchors))
+    header_anchor_lines = _deduplicate_anchors(header_anchors or anchors)
+    footer_anchor_lines = _deduplicate_anchors(footer_anchors or anchors)
     if max(len(header_anchor_lines), len(footer_anchor_lines)) < 3:
         return (), [], []
     # The cover has no anchor before it and the last page has none after it.
@@ -154,7 +170,13 @@ def analyze_repeating_headers(
         if (
             len(positions) >= PERSISTENT_MIN_ANCHORS
             and len(positions) / side_anchor_counts[side] >= PERSISTENT_MIN_PRESENCE
-            and cluster_count >= PERSISTENT_MIN_CLUSTERS
+            and (
+                cluster_count >= PERSISTENT_MIN_CLUSTERS
+                or (
+                    len(positions) >= 8
+                    and len(positions) / side_anchor_counts[side] >= 0.05
+                )
+            )
         ):
             observed_groups.append(
                 (

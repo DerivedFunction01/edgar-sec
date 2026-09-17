@@ -113,10 +113,15 @@ def normalize_checkbox_tokens(
     if scope in (CheckmarkScope.COVER_CONTEXT, CheckmarkScope.ALL):
         text = _RE_CONTEXT_CHECKED.sub(CANONICAL_CHECKED, text)
         text = _RE_CONTEXT_UNCHECKED.sub(CANONICAL_UNCHECKED, text)
-    # Ensure a single space separates a canonical checkbox token from adjacent
-    # words when the source cell had no spacing (e.g. "[X]Annual report...").
+    # Ensure a single space separates a canonical checkbox token from
+    # adjacent words when the source had no spacing
+    # (e.g. "[X]Annual report..." -> "[X] Annual report..." and
+    #  "company[X]" -> "company [X]").
+    # Handle bracketed tokens: [X], [ ], (X), ( )
     text = re.sub(r"(\[[ Xx]\])(?=[A-Za-z0-9])", r"\1 ", text)
     text = re.sub(r"([A-Za-z0-9])(\[[ Xx]\])", r"\1 \2", text)
+    text = re.sub(r"(\([ Xx]\))(?=[A-Za-z0-9])", r"\1 ", text)
+    text = re.sub(r"([A-Za-z0-9])(\([ Xx]\))", r"\1 \2", text)
     return text
 
 
@@ -248,7 +253,10 @@ def should_join_two_lines(
 
     return bool(
         RE_TRAILING_CONTINUATION.search(line_a)
-        and re.match(r"^[a-z0-9\(\:\,\.\)]", line_b, re.IGNORECASE)
+        # A title-cased caption is a new field, not a continuation. Explicit
+        # phrase rules handle known uppercase banners; this fallback stays
+        # conservative and only joins lowercase continuation text.
+        and re.match(r"^[a-z0-9\(\:\,\.\)]", line_b)
     ) or bool(
         re.search(r"\b(?:ended|from)\s*$", line_a, re.IGNORECASE)
         and MONTH_RE.match(line_b)

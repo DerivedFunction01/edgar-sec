@@ -326,6 +326,11 @@ def _scan_date_window(
         text = lines[idx].strip()
         if not text:
             break
+        # Date healing is intentionally limited to date-only fragments. A
+        # permissive date parser can find an embedded date in arbitrary prose
+        # and replacing the whole window would silently discard that prose.
+        if not _is_date_fragment(text):
+            break
         parts.append(text)
         end = idx
         if offset > 0:
@@ -337,6 +342,22 @@ def _scan_date_window(
     if len(parts) > 1 and _looks_like_date_fragment(parts):
         return _normalize_separators(" ".join(parts)), end
     return None, start
+
+
+def _is_date_fragment(text: str) -> bool:
+    """Return whether a line contains only one fragment of a date."""
+    normalized = text.strip()
+    if not normalized:
+        return False
+    if MONTH_RE.fullmatch(normalized.rstrip(".")):
+        return True
+    return bool(
+        re.fullmatch(
+            r"(?:\d{1,4}(?:st|nd|rd|th)?|[,./-])(?:\s*[,./-]?\s*)?",
+            normalized,
+            re.IGNORECASE,
+        )
+    )
 
 
 def _normalize_separators(text: str) -> str:

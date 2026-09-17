@@ -127,6 +127,27 @@ def _replace_font_glyphs(text: str, font_family: str) -> str:
         glyph = match.group(0)
         if glyph in {"r", "R", "o", "O", "x", "X", "s", "S"} and not is_standalone:
             return glyph
+        # Skip glyphs that are already wrapped in a canonical bracket pair so
+        # pre-rendered [X] / [ ] inside a symbolic-font scope are not
+        # double-expanded into [[X]] / [[ ]].
+        start, end = match.start(), match.end()
+        if (
+            start > 0
+            and end < len(text)
+            and text[start - 1] in "[(/"
+            and text[end] in "])/"
+        ):
+            return glyph
+        # Broader guard: skip if the surrounding context encloses the
+        # glyph in brackets or parentheses (e.g. "[X]" or "(X)").
+        if start >= 2 and end <= len(text) - 2:
+            surrounding = text[start - 2 : end + 2]
+            if (
+                surrounding[0] in "[("
+                and surrounding[-1] in "])"
+                and surrounding[1] in "xXoOsSrR"
+            ):
+                return glyph
         state = font_glyph_state(font_family, glyph)
         if state == "checked":
             return CANONICAL_CHECKED

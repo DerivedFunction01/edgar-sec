@@ -85,10 +85,25 @@ def _convert_html_to_break_text_with_metadata(html: str) -> NormalizedHtmlText:
         return NormalizedHtmlText("", ())
     text = _insert_page_sentinels(html)
     normalized = normalize_html_document(text)
-    return NormalizedHtmlText(
-        normalized.replace(_PAGE_SENTINEL, "\n<PAGE>\n").strip(),
-        normalized.table_geometries,
+    converted = normalized.replace(_PAGE_SENTINEL, "\n<PAGE>\n")
+    # Collapse consecutive or tightly clustered <PAGE> anchors separated
+    # only by whitespace or decorative markup into a single canonical
+    # \n<PAGE>\n. Multiple break mechanisms (e.g. <p style=...> followed
+    # by <hr>) for one physical page transition must yield exactly one
+    # anchor line, preventing 2x/3x anchor denominator inflation.
+    converted = re.sub(
+        r"\n<PAGE>\n(?:\s*\n<PAGE>\n)+",
+        "\n<PAGE>\n",
+        converted,
     )
+    # Also collapse whitespace-only gaps between adjacent <PAGE> tokens
+    # that survived the above (e.g. <PAGE> \n <PAGE>).
+    converted = re.sub(
+        r"\n<PAGE>\n\s*\n<PAGE>\n",
+        "\n<PAGE>\n",
+        converted,
+    )
+    return NormalizedHtmlText(converted.strip(), normalized.table_geometries)
 
 
 def convert_html_to_break_text(html: str) -> str:

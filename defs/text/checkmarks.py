@@ -184,8 +184,32 @@ CHECKMARK_MARK_TOKENS = (
     "r",
     "R",
 )
+# Bracketed tokens match without trailing word-boundary constraints
+# so that `[X]No` and `company[X]` are recognized as checkmark tokens.
+# Bare glyphs require word boundaries and must not appear inside
+# bracket delimiters (preventing bare `X` inside `[X]` from
+# double-expanding to `[[X]]`).
+_BRACKETED_MARK_TOKENS = tuple(
+    f"{left}{inner}{right}"
+    for left, right in BRACKET_PAIRS
+    for inner in CHECKED_INNER + UNCHECKED_INNER
+)
+_BARE_MARK_TOKENS = ("x", "X", "o", "O", "þ", "ý", "r", "R")
+# Non-bracketed, non-bare tokens: symbols, HTML entities, context symbols
+_OTHER_MARK_TOKENS = tuple(
+    t
+    for t in CHECKMARK_MARK_TOKENS
+    if t not in _BRACKETED_MARK_TOKENS and t not in _BARE_MARK_TOKENS
+)
+
 CHECKMARK_MARK_RE = re.compile(
-    rf"(?<!\w)(?:{build_alternation(CHECKMARK_MARK_TOKENS, auto_escape=True)})(?!\w)"
+    "(?<![\\w])(?:"
+    + build_alternation(_OTHER_MARK_TOKENS, auto_escape=True)
+    + ")(?![\\w])"
+    "|(?<![\\w[({])(?:"
+    + build_alternation(_BARE_MARK_TOKENS, auto_escape=True)
+    + ")(?![\\w])"
+    "|" + build_alternation(_BRACKETED_MARK_TOKENS, auto_escape=True)
 )
 
 __all__ = [
