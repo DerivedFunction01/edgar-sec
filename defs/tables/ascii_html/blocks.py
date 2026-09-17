@@ -197,6 +197,48 @@ def build_row_blocks(
     return blocks
 
 
+def expand_numeric_blocks_to_header_bands(
+    blocks: list[RenderBlock],
+    header_spans: list[set[int]],
+    budget: RenderBudget,
+) -> list[RenderBlock]:
+    """Extend combined numeric cells across their three-column header band."""
+    if not blocks or not header_spans:
+        return blocks
+
+    expanded = list(blocks)
+    for header_span in header_spans:
+        if len(header_span) != 3:
+            continue
+        positions = sorted(header_span)
+        indices = [
+            idx
+            for idx, block in enumerate(expanded)
+            if set(block.span_cols).issubset(header_span)
+        ]
+        if not indices or indices != list(range(indices[0], indices[-1] + 1)):
+            continue
+        band_blocks = [expanded[idx] for idx in indices]
+        nonempty = [block for block in band_blocks if block.text.strip()]
+        if len(nonempty) != 1 or not is_numeric_cell(nonempty[0].text.strip()):
+            continue
+        if set().union(*(set(block.span_cols) for block in band_blocks)) != header_span:
+            continue
+
+        value = nonempty[0]
+        merged = RenderBlock(
+            cell=value.cell,
+            span_cols=positions,
+            width=sum(block.width for block in band_blocks)
+            + budget.column_spacing * (len(band_blocks) - 1),
+            alignment=HorizontalAlign.RIGHT,
+            text=value.text,
+        )
+        expanded[indices[0] : indices[-1] + 1] = [merged]
+
+    return expanded
+
+
 def fuse_data_affix_blocks(
     blocks: list[RenderBlock],
     r_idx: int,
@@ -482,6 +524,7 @@ __all__ = [
     "RenderBlock",
     "align_terminal_numeric_headers",
     "build_row_blocks",
+    "expand_numeric_blocks_to_header_bands",
     "extract_raw_grids_and_spans",
     "fuse_data_affix_blocks",
     "fuse_empty_header_span_blocks",

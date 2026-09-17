@@ -44,3 +44,9 @@ def test_split_concatenated_bullets_preserves_tagged_tables() -> None:
         "Item 1;\n• Item 2;\n<TABLE>\nCol 1; • Col 2;\n</TABLE>\nItem 3;\n• Item 4;\n"
     )
     assert split_concatenated_bullets(text) == expected
+
+
+def test_split_concatenated_bullets_splits_on_wingdings_derived_bullets() -> None:
+    text = "First item. ○ Second item. • Third item."
+    expected = "First item.\n○ Second item.\n• Third item."
+    assert split_concatenated_bullets(text) == expected

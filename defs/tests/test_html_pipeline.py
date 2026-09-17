@@ -214,3 +214,15 @@ def test_normalize_html_document_collapses_source_wrap_before_words_like_a() -> 
         "If the Company determines that a reinsurance agreement does not expose the reinsurer to "
         "a reasonable possibility of a significant loss from insurance risk, the Company records the agreement."
     )
+
+
+def test_normalize_html_document_converts_wingdings_bullet_glyphs() -> None:
+    html = (
+        "<ul>"
+        "<li><font face='wingdings'>n</font> First item</li>"
+        "<li><font face='wingdings'>u</font> Second item</li>"
+        "</ul>"
+    )
+    result = normalize_html_document(html)
+    assert "• First item" in result
+    assert "○ Second item" in result

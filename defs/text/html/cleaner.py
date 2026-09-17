@@ -21,6 +21,7 @@ from defs.regex import build_alternation
 from defs.text.checkmarks import (
     CANONICAL_CHECKED,
     CANONICAL_UNCHECKED,
+    font_bullet_glyph_state,
     font_glyph_state,
 )
 from defs.text.unicode import sanitize_unicode_whitespace
@@ -98,7 +99,7 @@ _RE_STYLE_FONT_FAMILY = re.compile(
 )
 _RE_FACE_ATTR = re.compile(r"(?i)\bface\s*=\s*(?:\"([^\"]*)\"|'([^']*)'|([^\s>]+))")
 _RE_TAG_NAME = re.compile(r"(?is)^\s*<\s*(/?)\s*([a-z][a-z0-9:-]*)")
-_RE_GLYPH = re.compile(r"[\u00a8\u00a3\u00fe\u00fd\u0072\u0052oOxX]")
+_RE_GLYPH = re.compile(r"[\u00a8\u00a3\u00fe\u00fdrRnNuUoOxX]")
 _VOID_TAGS = frozenset(
     {
         "area",
@@ -125,7 +126,10 @@ def _replace_font_glyphs(text: str, font_family: str) -> str:
 
     def replace(match: re.Match[str]) -> str:
         glyph = match.group(0)
-        if glyph in {"r", "R", "o", "O", "x", "X", "s", "S"} and not is_standalone:
+        if (
+            glyph in {"r", "R", "o", "O", "x", "X", "s", "S", "n", "N", "u", "U"}
+            and not is_standalone
+        ):
             return glyph
         # Skip glyphs that are already wrapped in a canonical bracket pair so
         # pre-rendered [X] / [ ] inside a symbolic-font scope are not
@@ -145,9 +149,12 @@ def _replace_font_glyphs(text: str, font_family: str) -> str:
             if (
                 surrounding[0] in "[("
                 and surrounding[-1] in "])"
-                and surrounding[1] in "xXoOsSrR"
+                and surrounding[1] in "xXoOsSrRnNuU"
             ):
                 return glyph
+        bullet = font_bullet_glyph_state(font_family, glyph)
+        if bullet is not None:
+            return bullet
         state = font_glyph_state(font_family, glyph)
         if state == "checked":
             return CANONICAL_CHECKED

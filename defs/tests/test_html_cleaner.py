@@ -219,3 +219,50 @@ def test_normalize_font_qualified_glyphs_hit_and_miss_paths() -> None:
     # Empty and whitespace inputs stay untouched.
     assert normalize_font_qualified_glyphs("") == ""
     assert normalize_font_qualified_glyphs("   ") == "   "
+
+
+def test_normalize_font_qualified_glyphs_converts_wingdings_bullet_glyphs() -> None:
+    from defs.text import normalize_font_qualified_glyphs
+
+    hit = (
+        '<font face="wingdings">n</font>'
+        '<font face="wingdings 2">n</font>'
+        '<font face="Wingdings">n</font>'
+        '<font face="webdings">n</font>'
+        '<font face="wingdings">u</font>'
+    )
+    cleaned = normalize_font_qualified_glyphs(hit)
+    assert 'face="wingdings">•' in cleaned
+    assert 'face="wingdings">○' in cleaned
+    assert 'face="Wingdings">•' in cleaned
+    assert ">n<" not in cleaned
+    assert ">u<" not in cleaned
+
+
+def test_normalize_font_qualified_glyphs_preserves_bullet_glyphs_outside_wingdings() -> (
+    None
+):
+    from defs.text import normalize_font_qualified_glyphs
+
+    text = '<p style="font-family: Arial">Now is the time</p>'
+    assert normalize_font_qualified_glyphs(text) == text
+
+
+def test_normalize_font_qualified_glyphs_does_not_convert_bullet_glyphs_in_long_wingdings_text() -> (
+    None
+):
+    from defs.text import normalize_font_qualified_glyphs
+
+    text = '<font face="wingdings">Now is the time</font>'
+    cleaned = normalize_font_qualified_glyphs(text)
+    assert "•" not in cleaned
+    assert "○" not in cleaned
+    assert "Now is the time" in cleaned
+
+
+def test_is_list_or_bullet_marker_recognizes_converted_wingdings_bullets() -> None:
+    from defs.text.tokens import is_list_or_bullet_marker
+
+    assert is_list_or_bullet_marker("•") is True
+    assert is_list_or_bullet_marker("○") is True
+    assert is_list_or_bullet_marker("Now") is False

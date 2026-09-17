@@ -188,3 +188,4 @@ def test_repeated_html_table_furniture_is_removed_as_one_block() -> None:
     )
     assert "ABC CORP" not in normalized
     assert "Body content 3" in normalized
+    assert normalized.count("<TABLE>") == normalized.count("</TABLE>")

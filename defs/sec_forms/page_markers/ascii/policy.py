@@ -24,6 +24,21 @@ from ..models import (
 from .orchestrator import analyze_page_markers
 
 _TERMINAL_PUNCT = re.compile(r"[.:;!?\"\x27\u201d\u2019)]\s*$")
+_TAGGED_TABLE = re.compile(r"<TABLE\b.*?</TABLE\s*>", re.IGNORECASE | re.DOTALL)
+
+
+def _expand_table_range(document: str, start: int, end: int) -> tuple[int, int]:
+    """Make a page-furniture range atomic when it touches a tagged table.
+
+    HTML page conversion emits canonical ``<TABLE>`` wrappers around rendered
+    furniture. A marker can cover only the wrapper or only the body, which
+    would leave the counterpart tag behind. Expand such a range to the entire
+    table before applying removals.
+    """
+    for match in _TAGGED_TABLE.finditer(document):
+        if match.start() < end and match.end() > start:
+            return match.start(), match.end()
+    return start, end
 
 
 def strip_page_markers(
@@ -169,12 +184,13 @@ def apply_page_markers(
             end >= len(document) or document[end] == "\n"
         ):
             end += int(end < len(document))
+        start, end = _expand_table_range(document, marker.start, end)
         artifact = _note(marker, _artifact_for_marker(marker, source_identity))
-        if ranges and marker.start <= ranges[-1][1]:
+        if ranges and start <= ranges[-1][1]:
             ranges[-1][1] = max(ranges[-1][1], end)
             ranges[-1][2].append(artifact)
         else:
-            ranges.append([marker.start, end, [artifact]])
+            ranges.append([start, end, [artifact]])
 
     result = document
     assigned: list[PageBreakArtifact] = []

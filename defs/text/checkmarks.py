@@ -122,6 +122,14 @@ FONT_GLYPH_MAPPINGS = {
     "symbol": {"þ": "checked", "ý": "checked"},
 }
 
+FONT_BULLET_GLYPH_MAPPINGS = {
+    "wingdings": {"n": "•", "u": "○"},
+    "wingdings 2": {"n": "•", "u": "○"},
+    "wingdings2": {"n": "•", "u": "○"},
+    "webdings": {"n": "•", "u": "○"},
+    "symbol": {},
+}
+
 
 def font_glyph_state(font_family: str, glyph: str) -> str | None:
     """Return the mapped state for one explicitly named symbolic font glyph."""
@@ -132,6 +140,20 @@ def font_glyph_state(font_family: str, glyph: str) -> str | None:
     ]
     for family in families:
         mapping = FONT_GLYPH_MAPPINGS.get(family)
+        if mapping is not None and glyph in mapping:
+            return mapping[glyph]
+    return None
+
+
+def font_bullet_glyph_state(font_family: str, glyph: str) -> str | None:
+    """Return the mapped canonical bullet character for one symbolic font glyph."""
+    families = [
+        part.strip().strip("\"'").lower()
+        for part in font_family.split(",")
+        if part.strip()
+    ]
+    for family in families:
+        mapping = FONT_BULLET_GLYPH_MAPPINGS.get(family)
         if mapping is not None and glyph in mapping:
             return mapping[glyph]
     return None
@@ -224,6 +246,7 @@ __all__ = [
     "CHECKMARK_MARK_TOKENS",
     "CONTEXT_CHECKED_SYMBOLS",
     "CONTEXT_UNCHECKED_SYMBOLS",
+    "FONT_BULLET_GLYPH_MAPPINGS",
     "FONT_GLYPH_MAPPINGS",
     "RAW_CHECKED_TOKENS",
     "RAW_UNCHECKED_TOKENS",
@@ -235,5 +258,6 @@ __all__ = [
     "UNCHECKED_TOKENS",
     "CheckmarkDecision",
     "CheckmarkScope",
+    "font_bullet_glyph_state",
     "font_glyph_state",
 ]

@@ -7,6 +7,7 @@ from typing import TYPE_CHECKING
 from defs.tables.ascii_html.blocks import (
     align_terminal_numeric_headers,
     build_row_blocks,
+    expand_numeric_blocks_to_header_bands,
     extract_raw_grids_and_spans,
     fuse_data_affix_blocks,
     fuse_empty_header_span_blocks,
@@ -288,6 +289,7 @@ def render_source_table(
             suffix_positions,
             budget,
         )
+        blocks = expand_numeric_blocks_to_header_bands(blocks, header_spans, budget)
         blocks = fuse_data_affix_blocks(
             blocks,
             r_idx,

@@ -413,6 +413,25 @@ def test_affixed_terminal_subheader_aligns_to_numeric_value_edge() -> None:
     )
 
 
+def test_combined_currency_cell_matches_three_column_header_band() -> None:
+    """A combined currency value aligns with its expanded header divider band."""
+    html = """
+    <table>
+        <tr>
+            <th style="border-bottom: 1px solid black;">Item</th>
+            <th colspan="3" style="border-bottom: 1px solid black;">2017</th>
+        </tr>
+        <tr><td>Income</td><td></td><td>$14,164</td><td></td></tr>
+    </table>
+    """
+    lines = convert_html_table(html).ascii_text.splitlines()
+    divider = next(line for line in lines if set(line) <= {"-", " "} and "-" in line)
+    value = next(line for line in lines if "$14,164" in line)
+    divider_end = divider.rindex("-") + 1
+
+    assert value.index("$14,164") + len("$14,164") == divider_end
+
+
 def test_canonical_ascii_table_rendering() -> None:
     """Full table rendering emits canonical <TABLE> format with alignment headers."""
     html = """
