@@ -11,6 +11,8 @@ from defs.runtime.artifacts import load_manifest
 from defs.runtime.paths import resolve_paths
 from defs.storage import load_json
 
+_RE_FORM_PATH = re.compile(r"/form=([^/]+)/")
+
 
 def _safe_int(value: Any) -> int:
     return value if isinstance(value, int) else 0
@@ -53,7 +55,7 @@ def discover_catalogs(manifests_root: str | None = None) -> list[dict]:
             {
                 match.group(1)
                 for item in targets
-                if (match := re.search(r"/form=([^/]+)/", item["artifact_path"]))
+                if (match := _RE_FORM_PATH.search(item["artifact_path"]))
             }
         )
         summaries.append(

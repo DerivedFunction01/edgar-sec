@@ -314,17 +314,39 @@ def strip_font_tag_and_noise_attributes(html: str) -> str:
     return html
 
 
+_TOC_NAV_PHRASES = build_alternation(
+    [
+        r"table\s+of\s+contents",
+        r"return\s+to\s+table\s+of\s+contents",
+        r"index\s+to\s+(?:financial\s+statements|exhibits)",
+        r"back\s+to\s+top",
+    ],
+    auto_escape=False,
+)
+_RE_TOC_NAV_LINK = re.compile(
+    rf"""(?is)<a\b[^>]*\bhref\s*=\s*["']#[^"']*["'][^>]*>\s*(?:<[^>]+>\s*)*(?:{_TOC_NAV_PHRASES})\s*(?:</[^>]+>\s*)*</a>"""
+)
+
+
+def strip_toc_navigation_links(html: str) -> str:
+    """Strip web-only intra-document TOC jump-links (<a href="#...">Table of Contents</a>)."""
+    if "href=" not in html and "href =" not in html and "HREF=" not in html:
+        return html
+    return _RE_TOC_NAV_LINK.sub("", html)
+
+
 def clean_html_for_parsing(html: str) -> str:
     """Unified Stage-1 cleaning entry point.
 
     Composes the passes in dependency order: inline XBRL wrappers first (they
     carry their own style attributes), then benign font and layout styles, then
-    font tag attributes, then metadata attributes, then Unicode whitespace
-    sanitization.
+    font tag attributes, then metadata attributes, then TOC navigation jump-links,
+    then Unicode whitespace sanitization.
     """
     html = strip_ixbrl_inline_tags(html)
     html = normalize_font_qualified_glyphs(html)
     html = strip_benign_font_styles(html)
     html = strip_font_tag_and_noise_attributes(html)
     html = strip_office_metadata_attributes(html)
+    html = strip_toc_navigation_links(html)
     return sanitize_unicode_whitespace(html)

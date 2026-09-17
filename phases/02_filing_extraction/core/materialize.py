@@ -34,6 +34,8 @@ from defs.storage import (
     load_json,
 )
 
+_RE_INVALID_CHARS = re.compile(r"[^A-Za-z0-9_.-]")
+
 from .config import DEFAULT_SOURCE_BATCH_SIZE
 from .schemas import (
     PROFILE_COLUMNS,
@@ -97,7 +99,7 @@ def _safe_locator(accession, path):
 
 def _partition_key(form):
     value = str(form or "").strip()
-    return re.sub(r"[^A-Za-z0-9_.-]", "_", value) or "_unknown"
+    return _RE_INVALID_CHARS.sub("_", value) or "_unknown"
 
 
 def _register_identity_functions(artifact: FinalizedArtifact) -> None:

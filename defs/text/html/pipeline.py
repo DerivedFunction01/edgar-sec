@@ -69,7 +69,9 @@ def normalize_html_document(
     cleaned = clean_html_for_parsing(html)
     hybrid = normalize_hybrid_pre_text(cleaned)
     rendered, geometries = convert_html_tables_to_ascii_with_metadata(
-        hybrid.text, convert_to_text=False
+        hybrid.text,
+        convert_to_text=False,
+        early_unwrap_false_tables=metadata_cleanup,
     )
     if metadata_cleanup:
         rendered, geometries = cleanup_false_tables_with_metadata(rendered, geometries)

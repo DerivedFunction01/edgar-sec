@@ -19,6 +19,11 @@ from ..predicates import QueryPlan, evaluate_query
 from ..protocols import Record
 from .codec import JsonlCodec, write_records_atomic
 
+_RE_CHUNK_FILENAME = re.compile(
+    r"^[^-]+-v(?P<version>[A-Za-z0-9.]+)-chunk-"
+    r"(?P<chunk_id>\d+)-(?P<start>\d+)-(?P<end>\d+)\.jsonl$"
+)
+
 
 class JsonlChunkBackend:
     """Streaming immutable JSONL checkpoint backend."""
@@ -51,12 +56,7 @@ class JsonlChunkBackend:
         )
 
     def _parse_chunk_filename(self, name: str) -> dict | None:
-        spec = self._require_spec()
-        pattern = (
-            rf"^{re.escape(spec.name)}-v(?P<version>[A-Za-z0-9.]+)-chunk-"
-            r"(?P<chunk_id>\d+)-(?P<start>\d+)-(?P<end>\d+)\.jsonl$"
-        )
-        match = re.match(pattern, os.path.basename(name))
+        match = _RE_CHUNK_FILENAME.match(os.path.basename(name))
         if not match:
             return None
         return {

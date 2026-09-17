@@ -13,6 +13,8 @@ from ..artifacts import canonical_json
 from ..errors import MalformedArtifact
 from ..models import BatchReceipt
 
+_RE_JSONL_EXT = re.compile(r"\.jsonl$")
+
 
 class JsonlWal:
     """Append-only mutation log with one write/fsync per batch."""
@@ -21,7 +23,7 @@ class JsonlWal:
         self, data_path: str, *, max_entries: int = 1000, max_bytes: int = 1_048_576
     ) -> None:
         self.data_path = data_path
-        self.wal_path = re.sub(r"\.jsonl$", "", data_path) + ".wal.jsonl"
+        self.wal_path = _RE_JSONL_EXT.sub("", data_path) + ".wal.jsonl"
         self.max_entries = max(1, int(max_entries))
         self.max_bytes = max(1, int(max_bytes))
         self.entries = 0

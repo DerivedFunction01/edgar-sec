@@ -20,6 +20,11 @@ from defs.text.checkmarks import (
     CheckmarkScope,
 )
 
+_RE_DIVIDER_LINE = re.compile(r"\s*[+|:\-=_]+\s*\n?")
+_RE_TABLE_TAG = re.compile(r"</?TABLE\b[^>]*>", re.IGNORECASE)
+_RE_TABLE_REGION = re.compile(r"table-(\d+)")
+_RE_TABLE_REGION_DETAILED = re.compile(r"table-(\d+)/row-(\d+)/column-(\d+)")
+
 
 def _replace_mark_in_text(text: str, source_token: str, replacement: str) -> str:
     match = next(
@@ -81,7 +86,7 @@ def _replace_table_text(
                 index
                 for index, line in enumerate(lines)
                 if candidate.source_token in line
-                and not re.fullmatch(r"\s*[+|:\-=_]+\s*\n?", line)
+                and not _RE_DIVIDER_LINE.fullmatch(line)
             ]
         if target_lines:
             index = target_lines[0]
@@ -93,7 +98,7 @@ def _replace_table_text(
 
 def _unwrap_pure_yes_no_table(table_text: str) -> str:
     """Remove a wrapper that contained only one rendered Yes/No row."""
-    content = re.sub(r"</?TABLE\b[^>]*>", "", table_text, flags=re.IGNORECASE)
+    content = _RE_TABLE_TAG.sub("", table_text)
     return content.strip()
 
 
@@ -197,7 +202,7 @@ def apply_cover_checkmark_decisions(
         for region, candidates in candidates_by_region.items():
             if not region.startswith("table-"):
                 continue
-            match = re.match(r"table-(\d+)", region)
+            match = _RE_TABLE_REGION.match(region)
             if match is None:
                 continue
             table_index = int(match.group(1))
@@ -249,7 +254,7 @@ def update_table_geometries(
     }
     by_table: dict[int, list[CheckboxCandidate]] = defaultdict(list)
     for candidate in result.candidates:
-        match = re.match(r"table-(\d+)/row-(\d+)/column-(\d+)", candidate.source_region)
+        match = _RE_TABLE_REGION_DETAILED.match(candidate.source_region)
         if match is not None:
             by_table[int(match.group(1))].append(candidate)
     updated: list[object] = []

@@ -135,14 +135,21 @@ def bounded_analysis(result: DocumentCaseResult) -> dict[str, Any]:
 def _sanitized_html(source: str) -> str:
     tree = parse_html(source)
     tree.strip_tags(("script", "style", "meta", "noscript"))
-    for node in tree.traverse():
-        for name in list(node.attributes.keys()):
-            if name.casefold().startswith("on") or name.casefold() in {
+    root = tree.root
+    if root is None:
+        return ""
+    for node in root.raw_node.traverse():
+        attrs = node.attrs
+        if not attrs:
+            continue
+        for name in list(attrs.keys()):
+            n_fold = name.casefold()
+            if n_fold.startswith("on") or n_fold in {
                 "src",
                 "href",
                 "action",
             }:
-                del node.raw_node.attrs[name]
+                del attrs[name]
     return str(tree)
 
 

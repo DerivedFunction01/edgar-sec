@@ -5,7 +5,11 @@ from __future__ import annotations
 import re
 
 from defs.regex import build_alternation
-from defs.tables.protection import mask_tagged_tables, restore_tagged_tables
+from defs.tables.protection import (
+    SENTINEL_PREFIX,
+    mask_tagged_tables,
+    restore_tagged_tables,
+)
 from defs.text.tokens import BULLET_MARKERS, GLYPH_BULLET_MARKERS
 
 _ALL_BULLET_ALT = build_alternation(sorted(BULLET_MARKERS), auto_escape=True)
@@ -26,6 +30,20 @@ _RE_PERIOD_GLYPH_BULLET_SPLIT = re.compile(
 _RE_FOOTNOTE_BULLET_SPLIT = re.compile(r"(\.)[ \t]+(?=\*{1,3}[ \t]+[A-Za-z0-9\(\$])")
 
 
+def _split_bullets_on_masked(masked: str) -> str:
+    lines = masked.split("\n")
+    new_lines = []
+    for line in lines:
+        if SENTINEL_PREFIX in line:
+            new_lines.append(line)
+            continue
+        cleaned = _RE_SEMICOLON_BULLET_SPLIT.sub(r"\1\n", line)
+        cleaned = _RE_PERIOD_GLYPH_BULLET_SPLIT.sub(r"\1\n", cleaned)
+        cleaned = _RE_FOOTNOTE_BULLET_SPLIT.sub(r"\1\n", cleaned)
+        new_lines.append(cleaned)
+    return "\n".join(new_lines)
+
+
 def split_concatenated_bullets(text: str) -> str:
     """Split inline concatenated bullet points and footnotes into separate lines.
 
@@ -34,17 +52,7 @@ def split_concatenated_bullets(text: str) -> str:
     single line (e.g. following semicolons or periods) are split onto their own lines.
     """
     masked, table_spans = mask_tagged_tables(text)
-    lines = masked.split("\n")
-    new_lines = []
-    for line in lines:
-        if "__TAGGED_TABLE_" in line:
-            new_lines.append(line)
-            continue
-        cleaned = _RE_SEMICOLON_BULLET_SPLIT.sub(r"\1\n", line)
-        cleaned = _RE_PERIOD_GLYPH_BULLET_SPLIT.sub(r"\1\n", cleaned)
-        cleaned = _RE_FOOTNOTE_BULLET_SPLIT.sub(r"\1\n", cleaned)
-        new_lines.append(cleaned)
-    result = "\n".join(new_lines)
+    result = _split_bullets_on_masked(masked)
     if table_spans:
         result = restore_tagged_tables(result, table_spans)
     return result
@@ -58,7 +66,7 @@ def normalize_final_text_whitespace(text: str) -> str:
     """
     masked, table_spans = mask_tagged_tables(text)
     cleaned = _RE_TRAILING_WHITESPACE.sub("", masked)
-    cleaned = split_concatenated_bullets(cleaned)
+    cleaned = _split_bullets_on_masked(cleaned)
     cleaned = _RE_MULTIPLE_BLANKS.sub("\n\n", cleaned)
     if table_spans:
         cleaned = restore_tagged_tables(cleaned, table_spans)

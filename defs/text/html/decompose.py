@@ -78,8 +78,8 @@ def _collapse_source_whitespace_factory(sentinel_prefix: str, sentinel_suffix: s
         token = text[start:end]
         if not token.isspace():
             return token
-        before = text[:start].rstrip()
-        after = text[end:].lstrip()
+        before = text[max(0, start - 40) : start].rstrip()
+        after = text[end : min(len(text), end + 50)].lstrip()
         if before.endswith(sentinel_suffix) or after.startswith(sentinel_prefix):
             return "\n"
         first_token = after.split(maxsplit=1)[0] if after else ""

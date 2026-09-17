@@ -9,6 +9,8 @@ from re import Match, Pattern
 from defs.entities import NAME_STOPWORDS
 from defs.regex import build_alternation
 
+_RE_ALNUM_TOKENS = re.compile(r"[a-z0-9]+")
+
 
 @dataclass(frozen=True, slots=True)
 class ConceptPattern:
@@ -25,7 +27,7 @@ class ConceptPattern:
 
         all_tokens: set[str] = set()
         for phrase in self.phrases:
-            for word in re.findall(r"[a-z0-9]+", phrase.lower()):
+            for word in _RE_ALNUM_TOKENS.findall(phrase.lower()):
                 if len(word) > 1 and word not in NAME_STOPWORDS:
                     all_tokens.add(word)
         object.__setattr__(self, "tokens", frozenset(all_tokens))
@@ -40,7 +42,7 @@ class ConceptPattern:
 
     def match_score(self, text: str) -> float:
         """Calculate Bag-of-Words token overlap score against text (0.0 to 1.0)."""
-        words = set(re.findall(r"[a-z0-9]+", text.lower()))
+        words = set(_RE_ALNUM_TOKENS.findall(text.lower()))
         if not self.tokens:
             return 0.0
         return len(self.tokens.intersection(words)) / len(self.tokens)

@@ -16,6 +16,16 @@ from defs.text.dates import YEAR_IN_TEXT_RE, parse_date
 _FISCAL_ANCHOR_TERMS = ("fiscal", "period", "year")
 _FISCAL_END_TERMS = ("end", "ended", "ending")
 
+_RE_ALNUM_TOKENS = re.compile(r"[a-z0-9]+")
+_RE_NON_DIGITS = re.compile(r"\D")
+_RE_HTML_TAGS = re.compile(r"<[^>]*>")
+_FISCAL_ANCHOR_RE = re.compile(
+    rf"(?i)\b(?:{build_alternation(_FISCAL_ANCHOR_TERMS)})\b[\s\w<>/\"\'\=\:\;\-–—]{{0,50}}?\b(?:{build_alternation(_FISCAL_END_TERMS)})\b"
+)
+_COMMISSION_FILE_RE = re.compile(
+    rf"(?i)(?:{COMMISSION_FILE_RE.pattern})[\s\:\.\-\–—<>\w\/]{{0,30}}(\d{{1,3}}[\-\s]\d{{3,8}}(?:[\-\s]\d{{2,4}})?)"
+)
+
 
 def clean_company_name_string(raw: str) -> str:
     """Strip jurisdiction codes (e.g. /DE/, /WA) and trailing legal punctuation."""
@@ -38,15 +48,15 @@ def match_company_name(
 
     all_targets = [target_name] + (former_names or [])
     cand_cleaned = clean_company_name_string(candidate_text).lower()
-    cand_tokens = re.findall(r"[a-z0-9]+", cand_cleaned)
+    cand_tokens = _RE_ALNUM_TOKENS.findall(cand_cleaned)
     cand_norm = " ".join(cand_tokens)
     cand_core = get_core_name_tokens(candidate_text)
     cand_core_set = set(cand_core)
 
     # Tier 1: Exact Normalized Full Match
     for target in all_targets:
-        target_tokens = re.findall(
-            r"[a-z0-9]+", clean_company_name_string(target).lower()
+        target_tokens = _RE_ALNUM_TOKENS.findall(
+            clean_company_name_string(target).lower()
         )
         target_norm = " ".join(target_tokens)
         if cand_norm == target_norm and cand_norm:
@@ -88,7 +98,7 @@ def normalize_ein(candidate: str | None) -> str | None:
     """Strictly normalize a candidate sequence into a 9-digit IRS EIN (XX-XXXXXXX)."""
     if not candidate:
         return None
-    digits = re.sub(r"\D", "", str(candidate))
+    digits = _RE_NON_DIGITS.sub("", str(candidate))
     if len(digits) == 9 and not digits.startswith("0000"):
         return f"{digits[:2]}-{digits[2:]}"
     return None
@@ -122,13 +132,10 @@ def extract_fiscal_period(
     """Extract fiscal year or quarterly period end date handling horizontal, vertical, and standalone years."""
     raw_str = str(soup_or_text)
 
-    anchor_m = re.search(
-        rf"(?i)\b(?:{build_alternation(_FISCAL_ANCHOR_TERMS)})\b[\s\w<>/\"\'\=\:\;\-–—]{{0,50}}?\b(?:{build_alternation(_FISCAL_END_TERMS)})\b",
-        raw_str,
-    )
+    anchor_m = _FISCAL_ANCHOR_RE.search(raw_str)
     if anchor_m:
         lookahead = raw_str[anchor_m.end() : anchor_m.end() + 250]
-        clean_lookahead = " ".join(re.sub(r"<[^>]*>", " ", lookahead).split())
+        clean_lookahead = " ".join(_RE_HTML_TAGS.sub(" ", lookahead).split())
 
         parsed = parse_date(clean_lookahead)
         if parsed is not None:
@@ -153,10 +160,7 @@ def extract_commission_file_number(
     default_file: str | None = None,
 ) -> str | None:
     """Extract SEC commission file number."""
-    m = re.search(
-        rf"(?i)(?:{COMMISSION_FILE_RE.pattern})[\s\:\.\-\–—<>\w\/]{{0,30}}(\d{{1,3}}[\-\s]\d{{3,8}}(?:[\-\s]\d{{2,4}})?)",
-        text_snippet,
-    )
+    m = _COMMISSION_FILE_RE.search(text_snippet)
     if m:
         return m.group(1).strip()
     return default_file

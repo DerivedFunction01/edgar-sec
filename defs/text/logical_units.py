@@ -17,6 +17,11 @@ from dataclasses import dataclass
 
 from defs.text.tokens import BULLET_MARKER_RE
 
+_RE_SEPARATOR_LINE = re.compile(r"^[-=_+]+$")
+_RE_GUTTER = re.compile(r"(?<=\S) {2,}(?=\S)")
+_RE_LIST_ITEM = re.compile(r"^\s*[\(\[]?[a-zA-Z0-9]+[\.\)\]]")
+_RE_TRAILING_PUNCT = re.compile(r"[-,;:]$")
+
 
 @dataclass(frozen=True, slots=True)
 class LogicalUnit:
@@ -54,9 +59,9 @@ def _is_table_row(line: str) -> bool:
     stripped = line.strip()
     if not stripped:
         return False
-    if re.match(r"^[-=_+]+$", stripped.replace(" ", "")):
+    if _RE_SEPARATOR_LINE.match(stripped.replace(" ", "")):
         return True
-    return bool(re.search(r"\S {2,}\S", line))
+    return bool(_RE_GUTTER.search(line))
 
 
 def _positions_overlap(
@@ -74,7 +79,7 @@ def _rows_are_aligned(lines: list[str]) -> bool:
     """Return whether adjacent table-like lines share column gutter positions."""
     gutter_positions: list[set[int]] = []
     for line in lines:
-        positions = {m.start() for m in re.finditer(r"(?<=\S) {2,}(?=\S)", line)}
+        positions = {m.start() for m in _RE_GUTTER.finditer(line)}
         if positions:
             gutter_positions.append(positions)
     if len(gutter_positions) < 2:
@@ -94,7 +99,7 @@ def _is_list_item(line: str) -> bool:
     first_token = stripped.split(maxsplit=1)[0]
     if BULLET_MARKER_RE.match(first_token):
         return True
-    return bool(re.match(r"^\s*[\(\[]?[a-zA-Z0-9]+[\.\)\]]", stripped))
+    return bool(_RE_LIST_ITEM.match(stripped))
 
 
 def _heal_paragraph(lines: list[str]) -> str:
@@ -104,7 +109,7 @@ def _heal_paragraph(lines: list[str]) -> str:
         stripped = line.strip()
         if not stripped:
             continue
-        if joined and not re.search(r"[-,;:]$", joined[-1]):
+        if joined and not _RE_TRAILING_PUNCT.search(joined[-1]):
             joined[-1] = f"{joined[-1]} {stripped}"
         else:
             joined.append(stripped)

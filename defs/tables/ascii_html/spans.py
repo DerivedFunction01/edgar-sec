@@ -12,22 +12,28 @@ from defs.tables.ascii_html.model import (
     SourceTable,
     SpanGroup,
 )
-from defs.tables.currencies import PREFIX_SYMBOLS
-from defs.tables.tokens import is_numeric_cell
+from defs.tables.tokens import (
+    PREFIX_SYMBOLS,
+    is_numeric_cell,
+    is_year_token,
+)
+from defs.text.html import FastHtmlNode
 from defs.text.tokens import BULLET_MARKER_RE
 from defs.text.unicode import NORMALIZE_TO_SPACE, STRIP_ZERO_WIDTH
 
 if TYPE_CHECKING:
-    from defs.text.html import FastHtmlNode
+    from defs.tables.ascii_html.blocks import RenderBlock
 
 
 _SENTENCE_END_RE = re.compile(r"[:.!?\)]\s*$")
+_RE_PARAGRAPH_SPLIT = re.compile(r"\n\s*\n+")
+_RE_DOTS = re.compile(r"\.{4,}")
 
 
 def _collapse_non_structural_newlines(text: str) -> str:
     """Collapse soft wrapping newlines while preserving paragraphs and bullet/sentence breaks."""
     text = text.replace("\r\n", "\n").replace("\r", "\n")
-    paragraphs = re.split(r"\n\s*\n+", text.strip())
+    paragraphs = _RE_PARAGRAPH_SPLIT.split(text.strip())
     out_paragraphs: list[str] = []
 
     for p in paragraphs:
@@ -66,7 +72,7 @@ def _normalize_whitespace(text: str, *, preserve_newlines: bool = False) -> str:
         text = text.replace(ch, "")
     # Dot leaders are visual filler, not meaningful cell content. Keep a
     # compact ASCII leader so they cannot consume an entire table budget.
-    text = re.sub(r"\.{4,}", "...", text)
+    text = _RE_DOTS.sub("...", text)
     if not preserve_newlines:
         text = _collapse_non_structural_newlines(text)
     return text
@@ -87,18 +93,14 @@ def extract_source_table(
 
     # Find rows that belong DIRECTLY to this table (not to a nested child table)
     direct_rows: list[FastHtmlNode] = []
-    for node in table_node.raw_node.traverse():
-        if (node.tag or "").lower() == "tr":
-            # Check if this tr's closest parent table is our table_node
-            curr = node.parent
-            while curr is not None and (curr.tag or "").lower() != "table":
-                curr = curr.parent
-            if getattr(curr, "mem_id", None) == getattr(
-                table_node.raw_node, "mem_id", None
-            ):
-                from defs.text.html import FastHtmlNode as FHN
-
-                direct_rows.append(FHN(node))
+    for child in table_node.iter_children():
+        tag = child.tag
+        if tag == "tr":
+            direct_rows.append(child)
+        elif tag in ("tbody", "thead", "tfoot"):
+            for subchild in child.iter_children():
+                if subchild.tag == "tr":
+                    direct_rows.append(subchild)
 
     extracted_rows: list[list[SourceCell]] = []
 
@@ -121,24 +123,28 @@ def extract_source_table(
                 continue
 
             # Check for nested tables inside this cell
-            child_tables = child.css("table")
-            is_nested = len(child_tables) > 0
+            is_nested = False
             nested_idx: int | None = None
+            has_child_elements = child.raw_node.child is not None and (
+                child.raw_node.child.tag is not None
+                or child.raw_node.child.next is not None
+            )
+            if has_child_elements:
+                child_tables = child.css("table")
+                if child_tables:
+                    is_nested = True
+                    for sub_t in child_tables:
+                        sub_idx = len(nested_tables) + 1
+                        sub_source, sub_nested = extract_source_table(
+                            sub_t,
+                            table_index=sub_idx,
+                            parent_table_index=table_index,
+                        )
+                        nested_tables.append(sub_source)
+                        nested_tables.extend(sub_nested)
+                        if nested_idx is None:
+                            nested_idx = sub_idx
 
-            if is_nested:
-                for sub_t in child_tables:
-                    sub_idx = len(nested_tables) + 1
-                    sub_source, sub_nested = extract_source_table(
-                        sub_t,
-                        table_index=sub_idx,
-                        parent_table_index=table_index,
-                    )
-                    nested_tables.append(sub_source)
-                    nested_tables.extend(sub_nested)
-                    if nested_idx is None:
-                        nested_idx = sub_idx
-
-            cell_style = parse_style_and_attributes(child)
             try:
                 colspan = max(1, int(child.get("colspan", "1") or "1"))
             except ValueError:
@@ -150,13 +156,16 @@ def extract_source_table(
 
             # Calculate visual indentation from CSS padding/margin/indent and non-breaking space prefixes
             inner_indent_px = 0.0
-            for inner in child.css("div, p, span"):
-                inner_s = parse_style_and_attributes(inner)
-                inner_indent_px += (
-                    max(0.0, inner_s.padding_left)
-                    + max(0.0, inner_s.text_indent)
-                    + max(0.0, inner_s.margin_left)
-                )
+            if has_child_elements:
+                for inner in child.css("div, p, span"):
+                    attrs = inner.attributes
+                    if "style" in attrs or "class" in attrs or "align" in attrs:
+                        inner_s = parse_style_and_attributes(inner)
+                        inner_indent_px += (
+                            max(0.0, inner_s.padding_left)
+                            + max(0.0, inner_s.text_indent)
+                            + max(0.0, inner_s.margin_left)
+                        )
 
             indent_px = (
                 max(0.0, cell_style.padding_left)
@@ -305,7 +314,7 @@ def repair_header_band_spans(
             return True
         if is_numeric_cell(t):
             # 4-digit years like 2024 or 2025 can be header labels
-            return not (len(t) == 4 and t.isdigit() and (1900 <= int(t) <= 2100))
+            return not is_year_token(t)
         return False
 
     # Header band repairs only apply to top header rows (e.g. within top 5 rows)
@@ -376,8 +385,83 @@ def repair_header_band_spans(
                         row[col_idx] = band_cell
 
 
+def distribute_multi_row_span_lines(
+    all_row_blocks: list[list[RenderBlock]],
+    all_block_lines: list[list[list[str]]],
+) -> None:
+    """Distribute wrapped lines of multi-row spanning cells across their row span."""
+    from defs.tables.ascii_html.model import VerticalAlign
+    from defs.tables.ascii_html.text import wrap_cell_text
+
+    seen_cells: set[int] = set()
+    for blocks in all_row_blocks:
+        for b in blocks:
+            cell = b.cell
+            if cell is None or cell.rowspan <= 1 or id(cell) in seen_cells:
+                continue
+            seen_cells.add(id(cell))
+            row_indices = [
+                r
+                for r, row_b in enumerate(all_row_blocks)
+                if any(x.cell is cell for x in row_b)
+            ]
+            if len(row_indices) <= 1:
+                continue
+
+            full_lines = wrap_cell_text(cell.text, b.width)
+            total_lines = len(full_lines)
+            k = len(row_indices)
+
+            min_heights: list[int] = []
+            for r in row_indices:
+                row_b = all_row_blocks[r]
+                row_bl = all_block_lines[r]
+                other_lens = [
+                    len(row_bl[i])
+                    for i, x in enumerate(row_b)
+                    if x.cell is not cell
+                    and (x.cell is None or x.cell.rowspan <= 1)
+                    and bool(x.text.strip())
+                ]
+                min_heights.append(max(other_lens, default=1) if other_lens else 1)
+
+            if total_lines <= 1:
+                v_align = cell.style.vertical_align
+                if v_align == VerticalAlign.MIDDLE:
+                    target_r = row_indices[k // 2]
+                elif v_align == VerticalAlign.BOTTOM:
+                    target_r = row_indices[-1]
+                else:
+                    target_r = row_indices[0]
+                for r in row_indices:
+                    b_i = next(
+                        i for i, x in enumerate(all_row_blocks[r]) if x.cell is cell
+                    )
+                    all_block_lines[r][b_i] = full_lines if r == target_r else []
+            else:
+                cur_sum = sum(min_heights)
+                extra = max(0, total_lines - cur_sum)
+                heights = list(min_heights)
+                if extra > 0:
+                    base_add = extra // k
+                    rem = extra % k
+                    for i in range(k):
+                        heights[i] += base_add + (1 if i < rem else 0)
+
+                offset = 0
+                for i, r in enumerate(row_indices):
+                    h = heights[i]
+                    slice_l = full_lines[offset : offset + h]
+                    offset += h
+                    b_i = next(
+                        j for j, x in enumerate(all_row_blocks[r]) if x.cell is cell
+                    )
+                    all_block_lines[r][b_i] = slice_l
+
+
 __all__ = [
     "build_span_matrix",
+    "distribute_multi_row_span_lines",
     "extract_source_table",
     "repair_header_band_spans",
 ]

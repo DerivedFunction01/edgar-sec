@@ -432,6 +432,26 @@ def test_combined_currency_cell_matches_three_column_header_band() -> None:
     assert value.index("$14,164") + len("$14,164") == divider_end
 
 
+def test_late_three_column_header_band_aligns_currency_value() -> None:
+    """Three-column source spans remain usable when header scoring stops early."""
+    html = """
+    <table>
+        <tr><td></td></tr>
+        <tr><td></td></tr>
+        <tr>
+            <td>Item</td>
+            <td colspan="3" style="border-bottom: 1px solid black;">2017</td>
+        </tr>
+        <tr><td>Beginning balance</td><td></td><td>$915</td><td></td></tr>
+    </table>
+    """
+    lines = convert_html_table(html).ascii_text.splitlines()
+    divider = next(line for line in lines if set(line) <= {"-", " "} and "-" in line)
+    value = next(line for line in lines if "$915" in line)
+
+    assert value.index("$915") + len("$915") == divider.rindex("-") + 1
+
+
 def test_canonical_ascii_table_rendering() -> None:
     """Full table rendering emits canonical <TABLE> format with alignment headers."""
     html = """
@@ -1224,3 +1244,43 @@ def test_header_vertical_bottom_alignment_and_no_double_newlines() -> None:
     assert "Clover" in header_block[1]
     assert "North Anna" in header_block[1]
     assert "Facilities" in header_block[1]
+
+
+def test_multi_row_span_lines_distributed_across_rows() -> None:
+    """Rowspan cells distribute their multi-line wrapped text across constituent rows."""
+    html = """
+    <table>
+        <tr>
+            <th>Category</th>
+            <th>Description</th>
+            <th>Item</th>
+        </tr>
+        <tr>
+            <td rowspan="3">Segment A</td>
+            <td rowspan="3">This is a long multi-line paragraph describing Segment A in detail across several lines of text.</td>
+            <td>• First activity</td>
+        </tr>
+        <tr>
+            <td>• Second activity</td>
+        </tr>
+        <tr>
+            <td>• Third activity</td>
+        </tr>
+    </table>
+    """
+    result = convert_html_table(html)
+    ascii_table = result.ascii_text
+    assert "<TABLE>" in ascii_table
+    assert "• First activity" in ascii_table
+    assert "• Second activity" in ascii_table
+    assert "• Third activity" in ascii_table
+    # Ensure all activities are present and not pushed after a massive gap
+    lines = [line.strip() for line in ascii_table.splitlines() if line.strip()]
+    first_idx = next(i for i, line in enumerate(lines) if "• First activity" in line)
+    second_idx = next(i for i, line in enumerate(lines) if "• Second activity" in line)
+    third_idx = next(i for i, line in enumerate(lines) if "• Third activity" in line)
+    assert second_idx > first_idx
+    assert third_idx > second_idx
+    # The gap between bullet rows should be small (1-2 lines of description per bullet)
+    assert second_idx - first_idx <= 3
+    assert third_idx - second_idx <= 3

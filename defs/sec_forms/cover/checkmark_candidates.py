@@ -33,6 +33,8 @@ from defs.taxonomy.components.cover import (
 from defs.text.checkmarks import CHECKMARK_MARK_RE
 from defs.text.dates import parse_date
 
+_RE_YES_NO = re.compile(r"\b(yes|no)\b", re.IGNORECASE)
+
 _LABELS: tuple[tuple[str, tuple[str, ...], str], ...] = (
     (REPORT_ANNUAL, ("annual report", "annual report pursuant"), REPORT_PERIOD_GROUP),
     (
@@ -101,12 +103,19 @@ _LABELS: tuple[tuple[str, tuple[str, ...], str], ...] = (
 )
 
 
+_LABEL_RE_PATTERNS: list[tuple[str, str, int, int, str, re.Pattern[str]]] = []
+for _key, _phrases, _group in _LABELS:
+    for _phrase in _phrases:
+        _LABEL_RE_PATTERNS.append(
+            (_key, _phrase, 0, 0, _group, re.compile(re.escape(_phrase), re.IGNORECASE))
+        )
+
+
 def _label_matches(text: str) -> list[tuple[str, str, int, int, str]]:
     matches: list[tuple[str, str, int, int, str]] = []
-    for key, phrases, group in _LABELS:
-        for phrase in phrases:
-            for match in re.finditer(re.escape(phrase), text, re.IGNORECASE):
-                matches.append((key, phrase, match.start(), match.end(), group))
+    for _key, _phrase, _a, _b, _group, _re in _LABEL_RE_PATTERNS:
+        for match in _re.finditer(text):
+            matches.append((_key, _phrase, match.start(), match.end(), _group))
     matches.sort(key=lambda item: (item[2], -(item[3] - item[2])))
     accepted: list[tuple[str, str, int, int, str]] = []
     occupied: list[tuple[int, int]] = []
@@ -123,16 +132,14 @@ def _mark_matches(text: str, *, allow_asterisk: bool = False) -> list[re.Match[s
     if allow_asterisk:
         return matches
     return [
-        match
-        for match in matches
-        if match.group(0) != "*" or re.search(r"\b(?:yes|no)\b", text, re.IGNORECASE)
+        match for match in matches if match.group(0) != "*" or _RE_YES_NO.search(text)
     ]
 
 
 def _answer_for_mark(text: str, start: int, end: int) -> str | None:
     nearby = [
         (abs(match.start() - end), match.group(1).lower())
-        for match in re.finditer(r"\b(yes|no)\b", text, re.IGNORECASE)
+        for match in _RE_YES_NO.finditer(text)
         if start - 32 <= match.start() <= end + 32
     ]
     return min(nearby)[1] if nearby else None
@@ -155,7 +162,7 @@ def _yes_no_candidates(
         return []
     entries: list[tuple[str, int, int, re.Match[str]]] = []
     for _, text, _, marks in cells:
-        answers = list(re.finditer(r"\b(yes|no)\b", text, re.IGNORECASE))
+        answers = list(_RE_YES_NO.finditer(text))
         if len(answers) != 1 or len(marks) != 1:
             continue
         entries.append(
@@ -171,7 +178,7 @@ def _yes_no_candidates(
     question_key = f"table_yes_no:{table_index}:{row_index}"
     candidates: list[CheckboxCandidate] = []
     for column, text, _, marks in cells:
-        answers = list(re.finditer(r"\b(yes|no)\b", text, re.IGNORECASE))
+        answers = list(_RE_YES_NO.finditer(text))
         if len(answers) != 1 or len(marks) != 1:
             continue
         answer = answers[0]
@@ -365,12 +372,14 @@ def extract_cover_candidates(
         return ()
     candidates: list[CheckboxCandidate] = []
     masked, table_spans = mask_tagged_tables(text)
-    table_line_numbers = tuple(text.count("\n", 0, span.start) for span in table_spans)
+    start_line = boundary.start_line or 0
     for table_index, geometry in enumerate(table_geometries):
-        if table_index >= len(table_line_numbers):
-            continue
-        table_line = table_line_numbers[table_index]
-        if table_line < (boundary.start_line or 0) or table_line >= boundary.end_line:
+        if table_index >= len(table_spans):
+            break
+        table_line = text.count("\n", 0, table_spans[table_index].start)
+        if table_line >= boundary.end_line:
+            break
+        if table_line < start_line:
             continue
         candidates.extend(extract_table_candidates(geometry, table_index=table_index))
 
@@ -388,15 +397,9 @@ def extract_cover_candidates(
 
     masked_to_original = build_masked_offset_translator(masked, table_spans)
 
-    # The cover boundary line range is expressed in the unmasked frame;
-    # translate each masked line to its unmasked line index for bounds.
-    line_unmasked_index = [
-        text.count("\n", 0, masked_to_original(line_offset))
-        for line_offset in masked_line_offsets
-    ]
-    start_line = boundary.start_line or 0
     for line_index, raw_line in enumerate(lines):
-        unmasked_index = line_unmasked_index[line_index]
+        line_offset = masked_line_offsets[line_index]
+        unmasked_index = text.count("\n", 0, masked_to_original(line_offset))
         if unmasked_index >= boundary.end_line:
             break
         if unmasked_index < start_line:

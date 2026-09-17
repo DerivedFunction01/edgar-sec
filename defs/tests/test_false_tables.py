@@ -266,7 +266,7 @@ def test_multi_row_short_numbered_labels_are_unwrapped() -> None:
     )
 
 
-def test_geometry_retains_numeric_exhibit_index_marker() -> None:
+def test_geometry_unwraps_numeric_exhibit_index_marker() -> None:
     result = convert_html_table(
         "<table><tr><td>1</td><td>Material Contract</td></tr>"
         "<tr><td>2</td><td>Lease Agreement</td></tr></table>"
@@ -274,7 +274,10 @@ def test_geometry_retains_numeric_exhibit_index_marker() -> None:
     geometry = TableGeometry(table_index=0, render_result=result)
     text = "<TABLE>rendered exhibit rows</TABLE>"
 
-    assert cleanup_false_tables(text, (geometry,)) == text
+    assert (
+        cleanup_false_tables(text, (geometry,))
+        == "1 Material Contract\n2 Lease Agreement"
+    )
 
 
 def test_geometry_unwraps_numeric_footnote_prose_rows() -> None:
@@ -348,7 +351,7 @@ def test_geometry_retains_paren_marker_rows_with_numeric_second_column() -> None
     assert cleanup_false_tables(text, (geometry,)) == text
 
 
-def test_geometry_retains_footnote_table_with_short_label_row() -> None:
+def test_geometry_unwraps_footnote_table_with_short_label_row() -> None:
     result = convert_html_table(
         "<table><tr><td>(1)</td><td>End of year statistics.</td></tr>"
         "<tr><td>(2)</td><td>Digital rooms are equipped with an interactive digital "
@@ -357,7 +360,10 @@ def test_geometry_retains_footnote_table_with_short_label_row() -> None:
     geometry = TableGeometry(table_index=0, render_result=result)
     text = "<TABLE>rendered footnote rows</TABLE>"
 
-    assert cleanup_false_tables(text, (geometry,)) == text
+    assert (
+        cleanup_false_tables(text, (geometry,)) == "(1) End of year statistics.\n"
+        "(2) Digital rooms are equipped with an interactive digital system where on-demand movies are stored in a digital format"
+    )
 
 
 def test_geometry_ignores_empty_spacer_columns_and_rows() -> None:
@@ -427,14 +433,14 @@ def test_footnote_preceding_retained_table_unwraps_label_text() -> None:
     )
 
 
-def test_footnote_without_following_table_stays_retained() -> None:
+def test_footnote_without_following_table_unwraps() -> None:
     result = convert_html_table(
         "<table><tr><td>(1)</td><td>Percent of class</td></tr></table>"
     )
     geometry = TableGeometry(table_index=0, render_result=result)
     text = "<TABLE>(1) rendered footnote</TABLE>"
 
-    assert cleanup_false_tables(text, (geometry,)) == text
+    assert cleanup_false_tables(text, (geometry,)) == "(1) Percent of class"
 
 
 def test_geometry_unwraps_monotonic_ordered_prose_rows() -> None:
@@ -571,3 +577,36 @@ def test_pipeline_unwraps_consecutive_bullets_and_keeps_others() -> None:
     assert "$ 29" in result
     assert "$ 100" in result
     assert "After" in result
+
+
+def test_geometry_unwraps_leadin_sentence_with_bullet_rows() -> None:
+    html = (
+        "<table>"
+        "<tr><td colspan='2'>The primary impacts to Segment Earnings are:</td></tr>"
+        "<tr><td>•</td><td>Interest expense on our various funding products; and</td></tr>"
+        "<tr><td>•</td><td>Gains and losses on the early termination of our funding products.</td></tr>"
+        "</table>"
+    )
+    result = convert_html_table(html)
+    geometry = TableGeometry(table_index=0, render_result=result)
+    text = "<TABLE>rendered table</TABLE>"
+
+    assert is_false_table(text, geometry) is True
+    assert cleanup_false_tables(text, (geometry,)) == (
+        "The primary impacts to Segment Earnings are:\n"
+        "• Interest expense on our various funding products; and\n"
+        "• Gains and losses on the early termination of our funding products."
+    )
+
+
+def test_geometry_retains_two_column_table_with_title_header() -> None:
+    html = (
+        '<table><tr><th colspan="2">Title</th></tr>'
+        "<tr><td>A</td><td>B</td></tr></table>"
+    )
+    result = convert_html_table(html)
+    geometry = TableGeometry(table_index=0, render_result=result)
+    text = "<TABLE>Title\n\nA   B</TABLE>"
+
+    assert is_false_table(text, geometry) is False
+    assert cleanup_false_tables(text, (geometry,)) == text

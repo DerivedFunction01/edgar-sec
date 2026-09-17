@@ -18,6 +18,8 @@ if TYPE_CHECKING:
     from defs.tables.ascii_html.blocks import RenderBlock
     from defs.tables.ascii_html.model import SourceCell
 
+_RE_DIVIDER_RUNS = re.compile(r"[-=]+")
+
 
 def repair_rendered_affix_columns(lines: list[str]) -> None:
     """Restore missing divider marks at rendered prefix/suffix columns only."""
@@ -81,8 +83,8 @@ def heal_divider_lines_from_templates(lines: list[str]) -> None:
             if conflicting:
                 if target_idx != divider_indices[0]:
                     continue
-                target_runs = list(re.finditer(r"[-=]+", target))
-                reference_runs = list(re.finditer(r"[-=]+", reference))
+                target_runs = list(_RE_DIVIDER_RUNS.finditer(target))
+                reference_runs = list(_RE_DIVIDER_RUNS.finditer(reference))
                 has_leading_template = any(
                     1 <= target_run.start() - reference_run.start() <= 3
                     and min(target_run.end(), reference_run.end())
@@ -113,15 +115,15 @@ def heal_divider_lines_from_templates(lines: list[str]) -> None:
             if not all(len(run) <= 3 for run in runs):
                 continue
 
-            target_stroke_matches = list(re.finditer(r"[-=]+", target))
+            target_stroke_matches = list(_RE_DIVIDER_RUNS.finditer(target))
             target_run_lengths = [len(m.group(0)) for m in target_stroke_matches]
             # Check if any gap bridges to an isolated short run (<= 3 chars, e.g. affix/footnote columns)
             has_short_fragment = any(rl <= 3 for rl in target_run_lengths)
 
             leading_run_extension: list[int] = []
             if target_idx == divider_indices[0]:
-                target_runs = list(re.finditer(r"[-=]+", target))
-                reference_runs = list(re.finditer(r"[-=]+", reference))
+                target_runs = list(_RE_DIVIDER_RUNS.finditer(target))
+                reference_runs = list(_RE_DIVIDER_RUNS.finditer(reference))
                 for target_run in target_runs:
                     for reference_run in reference_runs:
                         shift = target_run.start() - reference_run.start()
@@ -169,7 +171,7 @@ def prune_unanchored_divider_fragments(lines: list[str]) -> None:
             continue
 
         chars = list(line)
-        for m in re.finditer(r"[-=]+", line):
+        for m in _RE_DIVIDER_RUNS.finditer(line):
             start, end = m.span()
             length = end - start
             if length <= 3:

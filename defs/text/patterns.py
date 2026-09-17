@@ -41,6 +41,8 @@ _ROMAN_VALUES = {
     "m": 1000,
 }
 
+_RE_ROMAN = re.compile(r"[ivxlcdm]{1,8}")
+
 # Canonical numeral-value pairs ordered largest to smallest, used for
 # validating that a roman numeral string is in canonical form.
 _NUMERALS = (
@@ -67,7 +69,7 @@ def roman_to_int(value: str) -> int | None:
     (e.g. non-canonical forms like ``iiiv`` or values exceeding 3000).
     """
     text = value.casefold()
-    if not re.fullmatch(r"[ivxlcdm]{1,8}", text):
+    if not _RE_ROMAN.fullmatch(text):
         return None
     total = previous = 0
     for char in reversed(text):

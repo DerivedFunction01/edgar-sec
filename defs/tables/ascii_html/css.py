@@ -180,9 +180,14 @@ def _parse_vertical_align(val: str | None) -> VerticalAlign:
     return VerticalAlign.AUTO
 
 
+_DEFAULT_CELL_STYLE = CellStyle()
+
+
 def parse_style_and_attributes(node: FastHtmlNode) -> CellStyle:
     """Extract and normalize all inline CSS properties and HTML attributes into a CellStyle."""
     attrs = node.attributes
+    if not attrs:
+        return _DEFAULT_CELL_STYLE
 
     # Initialize from HTML attributes
     w_attr, w_unit, is_pct = parse_dimension_px(attrs.get("width"))

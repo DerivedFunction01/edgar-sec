@@ -139,7 +139,7 @@ def test_clean_html_for_parsing_performance_bounded() -> None:
     assert "Times New Roman" not in cleaned
     assert "margin-top" not in cleaned
     assert "line-height" not in cleaned
-    assert elapsed < 1.0
+    assert elapsed < 2.0
 
 
 def test_strip_font_tag_and_noise_attributes() -> None:

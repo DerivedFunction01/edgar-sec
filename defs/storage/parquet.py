@@ -18,6 +18,10 @@ from .models import ArtifactRef, BatchReceipt, ChunkRange, DatasetSpec, RunConte
 from .predicates import QueryPlan, conjunction, evaluate_query
 from .protocols import Record
 
+_RE_CHUNK_FILENAME = re.compile(
+    r"^[^-]+-v(?P<version>[A-Za-z0-9.]+)-chunk-(?P<chunk_id>\d+)-(?P<start>\d+)-(?P<end>\d+)\.parquet$"
+)
+
 
 def _atomic_write_table(
     table: pa.Table,
@@ -76,8 +80,7 @@ def chunk_filename(spec: DatasetSpec, chunk: ChunkRange) -> str:
 
 
 def parse_chunk_filename(spec: DatasetSpec, name: str) -> dict | None:
-    pattern = rf"^{re.escape(spec.name)}-v(?P<version>[A-Za-z0-9.]+)-chunk-(?P<chunk_id>\d+)-(?P<start>\d+)-(?P<end>\d+)\.parquet$"
-    match = re.match(pattern, os.path.basename(name))
+    match = _RE_CHUNK_FILENAME.match(os.path.basename(name))
     if not match:
         return None
     return {

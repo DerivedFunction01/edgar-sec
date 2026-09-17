@@ -7,6 +7,8 @@ import re
 from enum import Enum
 from typing import Any
 
+_RE_WHITESPACE = re.compile(r"\s+")
+
 
 def _to_str_list(items: Any) -> list[str]:
     """Recursively flatten nested lists, tuples, sets, Enums, and strings to list[str]."""
@@ -62,7 +64,7 @@ def expand_alternations(
     seen: set[str] = set()
     unique: list[str] = []
     for term in flat:
-        norm = re.sub(r"\s+", " ", term).strip().lower()
+        norm = _RE_WHITESPACE.sub(" ", term).strip().lower()
         if norm and norm not in seen:
             seen.add(norm)
             unique.append(norm)

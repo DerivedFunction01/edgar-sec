@@ -5,6 +5,7 @@ from .cleaner import (
     strip_font_tag_and_noise_attributes,
     strip_ixbrl_inline_tags,
     strip_office_metadata_attributes,
+    strip_toc_navigation_links,
 )
 from .decompose import decompose_html_structures
 from .pipeline import NormalizedHtmlText, normalize_html_document
@@ -37,4 +38,5 @@ __all__ = [
     "strip_font_tag_and_noise_attributes",
     "strip_ixbrl_inline_tags",
     "strip_office_metadata_attributes",
+    "strip_toc_navigation_links",
 ]

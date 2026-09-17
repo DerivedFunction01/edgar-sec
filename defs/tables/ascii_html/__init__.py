@@ -4,6 +4,11 @@ from __future__ import annotations
 
 import re
 
+from defs.tables.ascii_html.continuation import (
+    ContinuationDecision,
+    detect_table_continuation,
+    fuse_source_tables,
+)
 from defs.tables.ascii_html.model import (
     DEFAULT_RENDER_BUDGET,
     BorderSegment,
@@ -90,12 +95,13 @@ def convert_html_tables_to_ascii_with_metadata(
     *,
     budget: RenderBudget = DEFAULT_RENDER_BUDGET,
     convert_to_text: bool = True,
+    early_unwrap_false_tables: bool = False,
 ) -> tuple[str, tuple[TableGeometry, ...]]:
     """Convert HTML tables to ASCII, returning text and per-table geometry metadata.
 
     Identical to :func:`convert_html_tables_to_ascii` except that a
     :class:`TableGeometry` instance is retained for every table that
-    produces rendered output.  Wholly-empty tables that are decomposed
+    produces rendered output. Wholly-empty tables that are decomposed
     are omitted from the metadata, matching the string output behavior.
     """
     tree = parse_html(html_content)
@@ -108,21 +114,149 @@ def convert_html_tables_to_ascii_with_metadata(
             (),
         )
 
+    top_tables = [tbl for tbl in tables if tbl.find_parent("table") is None]
+    if not top_tables:
+        return (
+            tree.root.text(separator="\n")
+            if convert_to_text and tree.root
+            else str(tree),
+            (),
+        )
+
+    source_tables = [
+        extract_source_table(tbl, table_index=i)[0] for i, tbl in enumerate(top_tables)
+    ]
+
+    is_false_list: list[bool] = []
+    unwrapped_texts: list[str] = []
+
+    if early_unwrap_false_tables:
+        from defs.tables.false_tables import is_false_grid, unwrap_grid
+
+        for i, source in enumerate(source_tables):
+            if not source.rows or _is_wholly_empty_table(top_tables[i]):
+                is_false_list.append(False)
+                unwrapped_texts.append("")
+                continue
+            matrix, _ = build_span_matrix(source)
+            grid_rows = tuple(
+                tuple(cell.text if cell else "" for cell in row) for row in matrix
+            )
+            if is_false_grid(grid_rows):
+                is_false_list.append(True)
+                unwrapped_texts.append(unwrap_grid(grid_rows))
+            else:
+                is_false_list.append(False)
+                unwrapped_texts.append("")
+
+        # Footnote lookahead for tables immediately preceding a retained table
+        for i in range(len(top_tables)):
+            if is_false_list[i] or not source_tables[i].rows:
+                continue
+            if (
+                i + 1 < len(top_tables)
+                and not is_false_list[i + 1]
+                and source_tables[i + 1].rows
+            ):
+                matrix, _ = build_span_matrix(source_tables[i])
+                grid_rows = tuple(
+                    tuple(cell.text if cell else "" for cell in row) for row in matrix
+                )
+                if is_false_grid(grid_rows, allow_footnote_context=True):
+                    is_false_list[i] = True
+                    unwrapped_texts[i] = unwrap_grid(grid_rows)
+    else:
+        is_false_list = [False] * len(top_tables)
+        unwrapped_texts = [""] * len(top_tables)
+
+    clusters: list[list[int]] = []
+    fused_sources: list[SourceTable] = []
+
+    for i, tbl in enumerate(top_tables):
+        if is_false_list[i]:
+            tbl.raw_node.replace_with(f"\n{unwrapped_texts[i]}\n")
+            continue
+
+        if _is_wholly_empty_table(tbl):
+            if not convert_to_text:
+                tbl.decompose()
+            continue
+
+        source = source_tables[i]
+        if not source.rows:
+            clusters.append([i])
+            fused_sources.append(source)
+            continue
+        if (
+            clusters
+            and fused_sources[-1].rows
+            and len(fused_sources[-1].rows[0]) == len(source.rows[0])
+        ):
+            prev_idx = clusters[-1][-1]
+            prev_tbl = top_tables[prev_idx]
+            prev_source = fused_sources[-1]
+
+            intervening_text_pieces = []
+            curr = prev_tbl.raw_node.next
+            too_far = False
+            total_chars = 0
+            while curr and curr != tbl.raw_node:
+                tag = curr.tag
+                if tag == "table":
+                    too_far = True
+                    break
+                t = curr.text(deep=True) or ""
+                if t.strip():
+                    total_chars += len(t)
+                    if total_chars > 100:
+                        too_far = True
+                        break
+                    intervening_text_pieces.append(t)
+                curr = curr.next
+
+            if curr != tbl.raw_node:
+                too_far = True
+
+            if not too_far:
+                intervening_text = " ".join(intervening_text_pieces)
+                decision = detect_table_continuation(
+                    prev_source, source, intervening_html=intervening_text
+                )
+                if decision.is_continuation:
+                    clusters[-1].append(i)
+                    fused_sources[-1] = fuse_source_tables(
+                        prev_source, source, decision.header_rows_to_drop
+                    )
+                    continue
+        clusters.append([i])
+        fused_sources.append(source)
+
     rendered_tables: list[tuple[str, str]] = []
     geometries: list[TableGeometry] = []
-    for idx, tbl in enumerate(tables):
-        if tbl.find_parent("table") is not None:
-            continue
-        res = render_source_table(tbl, table_index=idx, budget=budget)
+
+    for cluster_idx, cluster in enumerate(clusters):
+        primary_idx = cluster[0]
+        primary_tbl = top_tables[primary_idx]
+        fused_source = fused_sources[cluster_idx]
+
+        res = render_source_table(
+            fused_source,
+            table_index=len(geometries),
+            budget=budget,
+        )
+
+        for sec_idx in cluster[1:]:
+            top_tables[sec_idx].raw_node.replace_with("")
+
         if res.ascii_text:
             if convert_to_text:
-                tbl.raw_node.replace_with(f"\n{res.ascii_text}\n")
+                primary_tbl.raw_node.replace_with(f"\n{res.ascii_text}\n")
             else:
                 token = f"__SEC_RENDERED_TABLE_{len(rendered_tables)}__"
                 while token in html_content:
                     token += "_"
                 rendered_tables.append((token, f"\n{res.ascii_text}\n"))
-                tbl.raw_node.replace_with(token)
+                primary_tbl.raw_node.replace_with(token)
             geometries.append(
                 TableGeometry(
                     table_index=len(geometries),
@@ -130,17 +264,17 @@ def convert_html_tables_to_ascii_with_metadata(
                 )
             )
         elif not convert_to_text:
-            if _is_wholly_empty_table(tbl):
-                tbl.decompose()
+            if _is_wholly_empty_table(primary_tbl):
+                primary_tbl.decompose()
                 continue
             token = f"__SEC_RENDERED_TABLE_{len(rendered_tables)}__"
             while token in html_content:
                 token += "_"
-            raw_html = tbl.raw_node.html or ""
+            raw_html = primary_tbl.raw_node.html or ""
             match = _RE_TABLE_WRAPPER.fullmatch(raw_html)
             inner_html = match.group("body") if match else raw_html
             rendered_tables.append((token, f"\n<TABLE>{inner_html}</TABLE>\n"))
-            tbl.raw_node.replace_with(token)
+            primary_tbl.raw_node.replace_with(token)
             geometries.append(
                 TableGeometry(
                     table_index=len(geometries),
@@ -152,10 +286,7 @@ def convert_html_tables_to_ascii_with_metadata(
     if root is None:
         return html_content, tuple(geometries)
     rendered = root.text(separator="\n") if convert_to_text else str(tree)
-    # Release the C-level DOM before the string-heavy token replacement tail;
-    # lexbor trees cost ~15x the HTML payload in C heap and stay alive while
-    # any wrapper (loop variable included) still references a node.
-    del tbl, tree, tables, root
+    del tbl, tree, tables, top_tables, root
     for token, table in rendered_tables:
         if token not in rendered:
             raise ValueError(f"rendered table token missing: {token!r}")
@@ -168,6 +299,7 @@ __all__ = [
     "BorderStyle",
     "CellBox",
     "CellStyle",
+    "ContinuationDecision",
     "HorizontalAlign",
     "RenderBudget",
     "ResolvedGrid",
@@ -182,7 +314,9 @@ __all__ = [
     "convert_html_table",
     "convert_html_tables_to_ascii",
     "convert_html_tables_to_ascii_with_metadata",
+    "detect_table_continuation",
     "extract_source_table",
+    "fuse_source_tables",
     "render_grid_to_ascii",
     "render_source_table",
 ]

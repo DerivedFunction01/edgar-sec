@@ -303,21 +303,21 @@ def all_candidates(
 
     if anchors:
         relatives_by_line: dict[int, list[int]] = {}
-        for anchor in anchors:
-            for direction in (1, -1):
-                eligible = 0
-                pos = anchor + direction
-                while 0 <= pos < len(lines) and eligible < 3:
-                    if (
-                        lines[pos].strip()
-                        and pos not in occupied_lines
-                        and pos not in excluded_lines
-                    ):
-                        eligible += 1
-                        relatives_by_line.setdefault(pos, []).append(
-                            direction * eligible
-                        )
-                    pos += direction
+        scan_anchors = [(a, d) for a in anchors for d in (1, -1)]
+        if len(anchors) >= 2:
+            scan_anchors.extend([(-1, 1), (len(lines), -1)])
+        for anchor, direction in scan_anchors:
+            eligible = 0
+            pos = anchor + direction
+            while 0 <= pos < len(lines) and eligible < 3:
+                if (
+                    lines[pos].strip()
+                    and pos not in occupied_lines
+                    and pos not in excluded_lines
+                ):
+                    eligible += 1
+                    relatives_by_line.setdefault(pos, []).append(direction * eligible)
+                pos += direction
 
         for index in sorted(relatives_by_line.keys()):
             relatives = relatives_by_line[index]

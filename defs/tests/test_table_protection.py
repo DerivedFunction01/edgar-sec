@@ -4,12 +4,25 @@ from __future__ import annotations
 
 import pytest
 
-from defs.tables.protection import mask_tagged_tables, restore_tagged_tables
+from defs.tables.protection import (
+    find_table_spans,
+    mask_tagged_tables,
+    restore_tagged_tables,
+)
 
 TAGGED = """<TABLE>
 <S>     <C>   <C>
 Assets   1,000   900
 </TABLE>"""
+
+
+def test_find_table_spans() -> None:
+    text = f"prose before\n\n{TAGGED}\n\nprose after"
+    spans = find_table_spans(text)
+    assert len(spans) == 1
+    assert spans[0].text == TAGGED
+    assert spans[0].start == text.find("<TABLE>")
+    assert spans[0].end == spans[0].start + len(TAGGED)
 
 
 def test_complete_table_is_masked_and_restored_exactly() -> None:

@@ -173,7 +173,10 @@ def detect_paragraph_masquerading_as_table(data: list[list[str]]) -> bool:
     return first_col_max_length > PARAGRAPH_THRESHOLD
 
 
-def extract_years_from_headers(col_headers: dict[int, str]) -> dict[int, int]:
+def extract_years_from_headers(
+    col_headers: dict[int, str],
+    reference_year: int | None = None,
+) -> dict[int, int]:
     """Detect column years from headers with forward-filling."""
     years_map = {}
     sorted_indices = sorted(col_headers.keys())
@@ -184,7 +187,9 @@ def extract_years_from_headers(col_headers: dict[int, str]) -> dict[int, int]:
         detected_year = None
 
         if header:
-            valid_years = extract_years(header, valid_range=YEAR_RANGE)
+            valid_years = extract_years(
+                header, reference_year=reference_year, valid_range=YEAR_RANGE
+            )
             if valid_years:
                 detected_year = max(valid_years)
 
@@ -197,7 +202,10 @@ def extract_years_from_headers(col_headers: dict[int, str]) -> dict[int, int]:
     return years_map
 
 
-def extract_row_years(data: list[list[str]]) -> dict[int, int]:
+def extract_row_years(
+    data: list[list[str]],
+    reference_year: int | None = None,
+) -> dict[int, int]:
     """Detect row years from transposed section headers."""
     row_years = {}
     current_year = None
@@ -216,7 +224,11 @@ def extract_row_years(data: list[list[str]]) -> dict[int, int]:
                 break
 
         if other_cells_empty and first_cell:
-            unique_years = set(extract_years(first_cell, valid_range=YEAR_RANGE))
+            unique_years = set(
+                extract_years(
+                    first_cell, reference_year=reference_year, valid_range=YEAR_RANGE
+                )
+            )
             if len(unique_years) == 1:
                 current_year = unique_years.pop()
                 is_header = True

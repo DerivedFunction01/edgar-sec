@@ -189,18 +189,15 @@ def analyze_repeating_headers(
             )
 
     # Attach same-side/same-template observations whose own slot group was
-    # too sparse (for example the cover occurrence, where the furniture is
-    # the second non-empty line from document start) to an accepted cluster
-    # of the identical template. They inherit that cluster's role. Clusters
-    # are addressed by index: one key can yield several accepted clusters.
-    accepted_keys = {key for key, *_ in observed_groups}
+    # too sparse or isolated to an accepted cluster of the identical template.
+    # They inherit that cluster's role. Clusters are addressed by index:
+    # one key can yield several accepted clusters.
     augmented_members: list[list[Observation]] = [
         sorted(members, key=lambda item: (item.anchor_position, item.line_index))
         for _, members, _, _, _ in observed_groups
     ]
+    accepted_obs_ids = {id(obs) for members in augmented_members for obs in members}
     for key, observations in groups.items():
-        if key in accepted_keys:
-            continue
         side, _, template = key
         candidate_indexes = [
             index
@@ -210,6 +207,8 @@ def analyze_repeating_headers(
         if not candidate_indexes:
             continue
         for observation in observations:
+            if id(observation) in accepted_obs_ids:
+                continue
             best_index: int | None = None
             best_distance: int | None = None
             for index in candidate_indexes:
@@ -225,6 +224,82 @@ def analyze_repeating_headers(
                     best_index, best_distance = index, distance
             if best_index is not None:
                 augmented_members[best_index].append(observation)
+                accepted_obs_ids.add(id(observation))
+
+    # Recover isolated tagged-table furniture that falls between accepted
+    # anchors. A page can be absent from the numeric anchor run while its
+    # repeated footer remains unambiguous (for example pages 59 and 78 in
+    # filings with missing page markers). Once footer templates have passed
+    # the repetition checks above, a compact table whose content consists
+    # entirely of those templates — including at least one banner-like
+    # template — is furniture and safe to remove. Structural table tags and
+    # dash-only separator lines never trigger recovery on their own, so
+    # content tables that merely contain a dashed rule are preserved.
+    footer_groups = {
+        (key[1], key[2]): index
+        for index, (key, *_rest) in enumerate(observed_groups)
+        if key[0] == "footer"
+    }
+    if footer_groups and allow_table_furniture:
+        footer_templates = {template for _, template in footer_groups}
+        banner_templates = {
+            template
+            for template in footer_templates
+            if sum(1 for word in template.split() if any(ch.isalpha() for ch in word))
+            >= 3
+        }
+        table_starts: list[int] = []
+        for line_index, line in enumerate(lines):
+            stripped = line.strip().casefold()
+            if stripped == "<table>":
+                table_starts.append(line_index)
+                continue
+            if stripped != "</table>" or not table_starts:
+                continue
+            table_start = table_starts.pop()
+            # Repeated page furniture is a compact table. Never promote
+            # content inside or beyond this size bound.
+            if line_index - table_start > 12:
+                continue
+            content_templates = [
+                clean_template(content_line)
+                for content_line in lines[table_start + 1 : line_index]
+                if content_line.strip()
+            ]
+            if not content_templates:
+                continue
+            if any(template not in footer_templates for template in content_templates):
+                continue
+            if not any(template in banner_templates for template in content_templates):
+                continue
+            banner_offset = next(
+                offset
+                for offset, content_line in enumerate(
+                    lines[table_start + 1 : line_index]
+                )
+                if content_line.strip()
+                and clean_template(content_line) in banner_templates
+            )
+            banner_template = clean_template(lines[table_start + 1 + banner_offset])
+            for (position, template), group_index in footer_groups.items():
+                if template != banner_template:
+                    continue
+                if any(
+                    member.line_index >= table_start and member.line_index < line_index
+                    for member in augmented_members[group_index]
+                ):
+                    continue
+                augmented_members[group_index].append(
+                    Observation(
+                        "footer",
+                        position,
+                        template,
+                        table_start + 1 + banner_offset,
+                        lines[table_start + 1 + banner_offset],
+                        len(augmented_members[group_index]) + 1,
+                        None,
+                    )
+                )
 
     for group_index, (key, _cluster_members, start, end, _presence) in enumerate(
         observed_groups

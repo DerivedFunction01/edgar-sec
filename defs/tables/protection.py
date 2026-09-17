@@ -20,6 +20,7 @@ __all__ = [
     "SENTINEL_SUFFIX",
     "ProtectedText",
     "TableSpan",
+    "find_table_spans",
     "mask_tagged_tables",
     "restore_tagged_tables",
 ]
@@ -135,20 +136,12 @@ class ProtectedText:
         return len(self._spans) > 0
 
 
-def mask_tagged_tables(text: str) -> tuple[str, tuple[TableSpan, ...]]:
-    """Mask every complete or unterminated tagged table with a sentinel.
-
-    Returns the masked text plus the exact spans in source order. When the
-    source already contains the sentinel prefix, masking is skipped entirely
-    and the input is returned unchanged with no spans — callers must treat
-    that as "no reflow possible" rather than guessing.
-    """
-    if not text or _SENTINEL_PREFIX in text:
-        return text, ()
+def find_table_spans(text: str) -> tuple[TableSpan, ...]:
+    """Find all complete or unterminated tagged table spans in source order."""
+    if not text or _SENTINEL_PREFIX in text or "<table" not in text.lower():
+        return ()
 
     spans: list[TableSpan] = []
-    pieces: list[str] = []
-    cursor = 0
     lowered = text.lower()
     index = lowered.find("<table")
     while index != -1:
@@ -161,17 +154,34 @@ def mask_tagged_tables(text: str) -> tuple[str, tuple[TableSpan, ...]]:
             end = len(text) if end == -1 else end + 1
             complete = True
         spans.append(TableSpan(start=index, end=end, text=text[index:end]))
-        pieces.append(text[cursor:index])
-        pieces.append(f"{_SENTINEL_PREFIX}{len(spans) - 1}{_SENTINEL_SUFFIX}")
-        cursor = end
         if not complete:
             break
         index = lowered.find("<table", end)
 
+    return tuple(spans)
+
+
+def mask_tagged_tables(text: str) -> tuple[str, tuple[TableSpan, ...]]:
+    """Mask every complete or unterminated tagged table with a sentinel.
+
+    Returns the masked text plus the exact spans in source order. When the
+    source already contains the sentinel prefix, masking is skipped entirely
+    and the input is returned unchanged with no spans — callers must treat
+    that as "no reflow possible" rather than guessing.
+    """
+    spans = find_table_spans(text)
     if not spans:
         return text, ()
+
+    pieces: list[str] = []
+    cursor = 0
+    for position, span in enumerate(spans):
+        pieces.append(text[cursor : span.start])
+        pieces.append(f"{_SENTINEL_PREFIX}{position}{_SENTINEL_SUFFIX}")
+        cursor = span.end
+
     pieces.append(text[cursor:])
-    return "".join(pieces), tuple(spans)
+    return "".join(pieces), spans
 
 
 def restore_tagged_tables(text: str, spans: tuple[TableSpan, ...]) -> str:

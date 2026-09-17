@@ -7,7 +7,7 @@ from defs.tables.ascii_html.model import (
     BorderStyle,
     SourceCell,
 )
-from defs.tables.tokens import is_numeric_cell
+from defs.tables.tokens import is_numeric_cell, is_year_token
 
 
 def extract_border_segments(
@@ -180,15 +180,7 @@ def score_header_boundary(
             if c < len(grid_matrix[last_header_row_idx])
             and grid_matrix[last_header_row_idx][c] is not None
             and is_numeric_cell(grid_matrix[last_header_row_idx][c].text.strip())
-            and not (
-                len(grid_matrix[last_header_row_idx][c].text.strip()) == 4
-                and grid_matrix[last_header_row_idx][c].text.strip().isdigit()
-                and (
-                    1900
-                    <= int(grid_matrix[last_header_row_idx][c].text.strip())
-                    <= 2100
-                )
-            )
+            and not is_year_token(grid_matrix[last_header_row_idx][c].text.strip())
         )
         if numeric_count > 0:
             # Header rows cannot contain data amounts

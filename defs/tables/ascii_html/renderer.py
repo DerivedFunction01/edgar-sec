@@ -37,11 +37,13 @@ from defs.tables.ascii_html.model import (
     HorizontalAlign,
     RenderBudget,
     ResolvedGrid,
+    SourceTable,
     TableRenderResult,
     VerticalAlign,
 )
 from defs.tables.ascii_html.spans import (
     build_span_matrix,
+    distribute_multi_row_span_lines,
     extract_source_table,
     repair_header_band_spans,
 )
@@ -61,28 +63,35 @@ if TYPE_CHECKING:
     from defs.text.html import FastHtmlNode
 
 
+def _empty_render_result(reason: str) -> TableRenderResult:
+    empty_grid = ResolvedGrid(
+        rows=(),
+        column_alignments=(),
+        column_widths=(),
+        confidence=0.0,
+        veto_reasons=(reason,),
+    )
+    return TableRenderResult(
+        ascii_text="",
+        resolved_grid=empty_grid,
+        confidence=0.0,
+        diagnostics=(reason,),
+    )
+
+
 def render_source_table(
-    table_node: FastHtmlNode,
+    table_input: FastHtmlNode | SourceTable,
     table_index: int = 0,
     budget: RenderBudget = DEFAULT_RENDER_BUDGET,
 ) -> TableRenderResult:
-    """Render a single HTML <table> node into canonical ASCII table format using geometry-first layout."""
+    """Render a single HTML <table> node or SourceTable into canonical ASCII table format."""
     # 1. Extract SourceTable and isolate nested tables
-    source_table, _ = extract_source_table(table_node, table_index=table_index)
+    if isinstance(table_input, SourceTable):
+        source_table = table_input
+    else:
+        source_table, _ = extract_source_table(table_input, table_index=table_index)
     if not source_table.rows:
-        empty_grid = ResolvedGrid(
-            rows=(),
-            column_alignments=(),
-            column_widths=(),
-            confidence=0.0,
-            veto_reasons=("Empty source table",),
-        )
-        return TableRenderResult(
-            ascii_text="",
-            resolved_grid=empty_grid,
-            confidence=0.0,
-            diagnostics=("Empty source table",),
-        )
+        return _empty_render_result("Empty source table")
 
     # 2. Build 2D span matrix and estimate coordinate geometry
     grid_matrix, span_groups = build_span_matrix(source_table)
@@ -98,19 +107,7 @@ def render_source_table(
         grid_matrix.pop()
 
     if not grid_matrix:
-        empty_grid = ResolvedGrid(
-            rows=(),
-            column_alignments=(),
-            column_widths=(),
-            confidence=0.0,
-            veto_reasons=("Empty content table",),
-        )
-        return TableRenderResult(
-            ascii_text="",
-            resolved_grid=empty_grid,
-            confidence=0.0,
-            diagnostics=("Empty content table",),
-        )
+        return _empty_render_result("Empty content table")
 
     box_matrix = estimate_table_geometry(source_table, grid_matrix, span_groups)
 
@@ -222,19 +219,15 @@ def render_source_table(
     lines: list[str] = ["<TABLE>"]
 
     # Top border above table
-    row_0_blocks = (
-        build_row_blocks(
-            grid_matrix,
-            0,
-            active_cols,
-            visible_col_indices,
-            col_widths,
-            col_alignments,
-            raw_grid,
-            budget,
-        )
-        if grid_matrix
-        else []
+    row_0_blocks = build_row_blocks(
+        grid_matrix,
+        0,
+        active_cols,
+        visible_col_indices,
+        col_widths,
+        col_alignments,
+        raw_grid,
+        budget,
     )
     top_div = format_top_divider(
         [(b.cell, b.span_cols, b.width) for b in row_0_blocks],
@@ -270,8 +263,25 @@ def render_source_table(
             if len(b.span_cols) > 1 and set(b.span_cols) != all_active_col_set:
                 header_spans.append(set(b.span_cols))
 
-    # Render rows
-    for r_idx, row in enumerate(raw_grid):
+    numeric_band_spans = list(header_spans)
+    active_positions = {column: pos for pos, column in enumerate(active_cols)}
+    for span in span_groups:
+        text = span.source_cell.text.strip()
+        if span.end_col - span.start_col + 1 != 3 or not text:
+            continue
+        mapped = [
+            active_positions[column]
+            for column in range(span.start_col, span.end_col + 1)
+            if column in active_positions
+        ]
+        if len(mapped) == 3 and mapped == list(range(mapped[0], mapped[0] + 3)):
+            candidate = set(mapped)
+            if candidate not in numeric_band_spans:
+                numeric_band_spans.append(candidate)
+
+    # Build all row blocks
+    all_row_blocks = []
+    for r_idx in range(len(raw_grid)):
         blocks = build_row_blocks(
             grid_matrix,
             r_idx,
@@ -289,7 +299,6 @@ def render_source_table(
             suffix_positions,
             budget,
         )
-        blocks = expand_numeric_blocks_to_header_bands(blocks, header_spans, budget)
         blocks = fuse_data_affix_blocks(
             blocks,
             r_idx,
@@ -298,7 +307,19 @@ def render_source_table(
             suffix_positions,
             budget,
         )
+        blocks = expand_numeric_blocks_to_header_bands(
+            blocks, numeric_band_spans, budget
+        )
         protected_spans: set[tuple[int, ...]] = set()
+        protected_spans.update(
+            tuple(block.span_cols)
+            for block in blocks
+            if (
+                len(block.span_cols) > 1
+                and is_numeric_cell(block.text.strip())
+                and any(col in suffix_positions for col in block.span_cols)
+            )
+        )
         if r_idx in terminal_header_rows:
             numeric_positions = {
                 pos
@@ -336,8 +357,16 @@ def render_source_table(
             },
             prefix_positions | suffix_positions,
         )
+        all_row_blocks.append(blocks)
 
-        block_lines: list[list[str]] = [wrap_cell_text(b.text, b.width) for b in blocks]
+    all_block_lines = [
+        [wrap_cell_text(b.text, b.width) for b in blocks] for blocks in all_row_blocks
+    ]
+    distribute_multi_row_span_lines(all_row_blocks, all_block_lines)
+
+    # Render rows
+    for r_idx, blocks in enumerate(all_row_blocks):
+        block_lines = all_block_lines[r_idx]
         max_lines_in_row = max((len(bl) for bl in block_lines), default=1)
 
         for line_i in range(max_lines_in_row):
@@ -349,7 +378,9 @@ def render_source_table(
                     if b_info.cell is not None
                     else VerticalAlign.AUTO
                 )
-                if v_align == VerticalAlign.BOTTOM or (
+                if r_idx >= header_row_count:
+                    txt = lines_list[line_i] if line_i < len(lines_list) else ""
+                elif v_align == VerticalAlign.BOTTOM or (
                     v_align == VerticalAlign.AUTO and r_idx < header_row_count
                 ):
                     pad = max_lines_in_row - len(lines_list)
@@ -430,10 +461,10 @@ def render_grid_to_ascii(
                 if c < len(grid[r]) and grid[r][c].strip()
             ]
             num_cnt = sum(1 for v in col_vals if is_numeric_cell(v))
-            if num_cnt > 0 and num_cnt >= len(col_vals) * 0.5:
-                derived_alignments.append(HorizontalAlign.RIGHT)
-            else:
-                derived_alignments.append(HorizontalAlign.LEFT)
+            is_right = num_cnt > 0 and num_cnt >= len(col_vals) * 0.5
+            derived_alignments.append(
+                HorizontalAlign.RIGHT if is_right else HorizontalAlign.LEFT
+            )
         alignments = derived_alignments
 
     widths, _ = compute_column_widths(grid, alignments, budget=budget)
@@ -456,11 +487,7 @@ def render_grid_to_ascii(
                 else:
                     txt = bl[line_i] if line_i < len(bl) else ""
                 formatted_cells.append(
-                    format_cell_line(
-                        txt,
-                        widths[c],
-                        align=alignments[c],
-                    )
+                    format_cell_line(txt, widths[c], align=alignments[c])
                 )
             lines.append(col_sep.join(formatted_cells).rstrip())
 

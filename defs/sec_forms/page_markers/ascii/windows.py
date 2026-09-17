@@ -106,6 +106,12 @@ def collect_window(
     """Collect a bounded non-empty furniture window around one anchor."""
     result: list[tuple[int, str]] = []
     index = anchor + direction
+    # Skip any contiguous boundary lines / consecutive <PAGE> tags at this anchor cluster
+    while 0 <= index < len(lines) and (
+        index in boundary_lines
+        or lines[index].strip().casefold() in {"<page>", "</page>"}
+    ):
+        index += direction
     characters = 0
     while 0 <= index < len(lines) and len(result) < MAX_FURNITURE_LINES:
         if index in boundary_lines:

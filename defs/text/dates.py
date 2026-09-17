@@ -5,7 +5,7 @@ from __future__ import annotations
 import re
 from collections.abc import Sequence
 from dataclasses import dataclass
-from datetime import date
+from datetime import UTC, date, datetime
 
 from defs.regex import build_alternation, compact_alternation
 
@@ -55,16 +55,50 @@ ORDINAL_SUFFIX_PATTERN = build_alternation(
 MONTH_SUFFIX_RE = re.compile(rf"(?i)(?:{MONTH_PATTERN})\s*$")
 ORDINAL_SUFFIX_RE = re.compile(rf"(?i)(\d+)(?:{ORDINAL_SUFFIX_PATTERN})\b")
 
-YEAR_RANGE = (1900, 2100)
-CENTURY_PIVOT = 50
+_RE_WHITESPACE = re.compile(r"\s+")
+_RE_SLASH_SEP = re.compile(r"\s*/\s*")
+_RE_DASH_SEP = re.compile(r"\s*-\s*")
+_RE_DATE_FRAGMENT = re.compile(
+    r"(?:\d{1,4}(?:st|nd|rd|th)?|[,./-])(?:\s*[,./-]?\s*)?",
+    re.IGNORECASE,
+)
+_RE_YEAR_IN_TEXT = re.compile(r"\b\d{4}\b")
+_RE_TRAILING_PUNCT = re.compile(r"[.,;:]+$")
+
+
+def _current_system_year() -> int:
+    return datetime.now(UTC).year
+
+
+_SYSTEM_YEAR = _current_system_year()
+DEFAULT_YEAR_UPPER_BOUND = max(2100, _SYSTEM_YEAR + 50)
+YEAR_RANGE = (1900, DEFAULT_YEAR_UPPER_BOUND)
+CENTURY_PIVOT = 80
+
+
+def is_valid_year(year: int, valid_range: tuple[int, int] = YEAR_RANGE) -> bool:
+    """Return whether an integer year falls within the valid system year range."""
+    return valid_range[0] <= year <= valid_range[1]
+
+
+def is_year_token(value: str, valid_range: tuple[int, int] = YEAR_RANGE) -> bool:
+    """Return whether a string represents a standalone 4-digit calendar year."""
+    v = value.strip()
+    return (
+        len(v) == 4 and v.isdigit() and is_valid_year(int(v), valid_range=valid_range)
+    )
+
 
 YEAR_TOKEN_RE = re.compile(
-    rf"^\b({build_alternation([r'19[0-9]{2}', r'20[0-9]{2}', r'2100'], auto_escape=False)})\b$"
+    rf"^\b({build_alternation([r'19[0-9]{2}', r'[2-9][0-9]{3}'], auto_escape=False)})\b$"
 )
 YEAR_IN_TEXT_RE = re.compile(r"\b(\d{4})\b")
 NUMERIC_YEAR_RE = re.compile(r"\b(\d{2,4})\b")
 TABLE_YEAR_RE = re.compile(
-    build_alternation([r"(?:\d{1,2}/)+(\d{2,4})", r"\b(\d{4})\b"], auto_escape=False)
+    build_alternation(
+        [r"(?:\d{1,2}/)+(\d{2,4})", r"\b(\d{4})\b", r"['’](\d{2})\b"],
+        auto_escape=False,
+    )
 )
 
 
@@ -88,7 +122,7 @@ class DateComponents:
 @dataclass(frozen=True, slots=True)
 class DateFormat:
     id: str
-    pattern: str
+    pattern: re.Pattern[str]
     priority: int = 0
 
 
@@ -108,6 +142,32 @@ class ParsedDate:
         return self.source
 
 
+def expand_2digit_year(
+    year: int,
+    *,
+    reference_year: int | None = None,
+    lookback_years: int = 80,
+    century_pivot: int | None = None,
+) -> int:
+    """Expand a 1- or 2-digit year using a dynamic rolling window relative to a reference year."""
+    if year >= 100:
+        return year
+    anchor = _SYSTEM_YEAR if reference_year is None else reference_year
+    if century_pivot is not None:
+        current_century = (anchor // 100) * 100
+        prev_century = current_century - 100
+        return (
+            (current_century + year) if year < century_pivot else (prev_century + year)
+        )
+
+    base_year = anchor - lookback_years
+    base_century = (base_year // 100) * 100
+    candidate = base_century + year
+    if candidate < base_year:
+        candidate += 100
+    return candidate
+
+
 def parse_year_token(
     value: str,
     *,
@@ -118,7 +178,7 @@ def parse_year_token(
     if not match:
         return None
     year = int(match.group(1))
-    if not valid_range[0] <= year <= valid_range[1]:
+    if not is_valid_year(year, valid_range=valid_range):
         return None
     return year
 
@@ -126,16 +186,26 @@ def parse_year_token(
 def extract_years(
     text: str,
     *,
+    reference_year: int | None = None,
     valid_range: tuple[int, int] = YEAR_RANGE,
+    lookback_years: int = 80,
+    century_pivot: int | None = None,
 ) -> list[int]:
     """Extract validated year integers from header-style text."""
     years: list[int] = []
     for match in TABLE_YEAR_RE.finditer(text):
-        raw = match.group(1) or match.group(2)
+        raw = next((g for g in match.groups() if g is not None), None)
+        if not raw:
+            continue
         year = int(raw)
-        if len(raw) == 2:
-            year += 2000 if year < CENTURY_PIVOT else 1900
-        if valid_range[0] <= year <= valid_range[1]:
+        if len(raw) <= 2:
+            year = expand_2digit_year(
+                year,
+                reference_year=reference_year,
+                lookback_years=lookback_years,
+                century_pivot=century_pivot,
+            )
+        if is_valid_year(year, valid_range=valid_range):
             years.append(year)
     return years
 
@@ -143,8 +213,10 @@ def extract_years(
 def parse_numeric_year(
     value: str,
     *,
+    reference_year: int | None = None,
     valid_range: tuple[int, int] = YEAR_RANGE,
-    century_pivot: int = CENTURY_PIVOT,
+    lookback_years: int = 80,
+    century_pivot: int | None = None,
 ) -> int | None:
     """Parse a one- to four-digit numeric year token with century expansion."""
     match = NUMERIC_YEAR_RE.search(value.strip())
@@ -152,8 +224,13 @@ def parse_numeric_year(
         return None
     year = int(match.group(1))
     if year < 100:
-        year += 2000 if year < century_pivot else 1900
-    if not valid_range[0] <= year <= valid_range[1]:
+        year = expand_2digit_year(
+            year,
+            reference_year=reference_year,
+            lookback_years=lookback_years,
+            century_pivot=century_pivot,
+        )
+    if not is_valid_year(year, valid_range=valid_range):
         return None
     return year
 
@@ -161,7 +238,7 @@ def parse_numeric_year(
 def month_name_to_index(name: str) -> int | None:
     """Return the month index (1-12) for a month name or alias."""
     normalized = ORDINAL_SUFFIX_RE.sub(r"\1", name)
-    normalized = re.sub(r"[.,;:]+$", "", normalized).strip().lower()
+    normalized = _RE_TRAILING_PUNCT.sub("", normalized).strip().lower()
     return _MONTH_NAME_TO_INDEX.get(normalized)
 
 
@@ -237,7 +314,7 @@ def _build_formats() -> tuple[DateFormat, ...]:
     return tuple(
         DateFormat(
             id=fmt_id,
-            pattern=_build_format_pattern(tokens, separators),
+            pattern=re.compile(_build_format_pattern(tokens, separators)),
             priority=priority,
         )
         for fmt_id, tokens, separators, priority in formats
@@ -253,13 +330,13 @@ def parse_date(
     formats: Sequence[DateFormat] = SEC_DATE_FORMATS,
 ) -> ParsedDate | None:
     """Parse a complete date string against known formats."""
-    normalized = re.sub(r"\s+", " ", text).strip()
+    normalized = _RE_WHITESPACE.sub(" ", text).strip()
     if not normalized:
         return None
 
     ordered = sorted(formats, key=lambda fmt: fmt.priority, reverse=True)
     for fmt in ordered:
-        match = re.search(fmt.pattern, normalized)
+        match = fmt.pattern.search(normalized)
         if not match:
             continue
         year_str = match.group("year")
@@ -351,18 +428,12 @@ def _is_date_fragment(text: str) -> bool:
         return False
     if MONTH_RE.fullmatch(normalized.rstrip(".")):
         return True
-    return bool(
-        re.fullmatch(
-            r"(?:\d{1,4}(?:st|nd|rd|th)?|[,./-])(?:\s*[,./-]?\s*)?",
-            normalized,
-            re.IGNORECASE,
-        )
-    )
+    return bool(_RE_DATE_FRAGMENT.fullmatch(normalized))
 
 
 def _normalize_separators(text: str) -> str:
     """Collapse spaces around slash and dash date separators."""
-    return re.sub(r"\s*/\s*", "/", re.sub(r"\s*-\s*", "-", text))
+    return _RE_SLASH_SEP.sub("/", _RE_DASH_SEP.sub("-", text))
 
 
 # One ownership point for "does this text contain a full SEC date?".
@@ -373,8 +444,8 @@ def _normalize_separators(text: str) -> str:
 
 def contains_date(text: str) -> bool:
     """Return whether ``text`` contains a recognizable SEC date."""
-    normalized = re.sub(r"\s+", " ", text).strip()
-    return any(re.search(fmt.pattern, normalized) for fmt in SEC_DATE_FORMATS)
+    normalized = _RE_WHITESPACE.sub(" ", text).strip()
+    return any(fmt.pattern.search(normalized) for fmt in SEC_DATE_FORMATS)
 
 
 def _looks_like_date_fragment(parts: list[str]) -> bool:
@@ -382,7 +453,7 @@ def _looks_like_date_fragment(parts: list[str]) -> bool:
     if MONTH_RE.search(combined):
         return True
     return bool(
-        re.search(r"\b\d{4}\b", combined) and ("/" in combined or "-" in combined)
+        _RE_YEAR_IN_TEXT.search(combined) and ("/" in combined or "-" in combined)
     )
 
 
@@ -405,8 +476,11 @@ __all__ = [
     "DateFormat",
     "ParsedDate",
     "contains_date",
+    "expand_2digit_year",
     "extract_years",
     "heal_date_fragments",
+    "is_valid_year",
+    "is_year_token",
     "month_name_to_index",
     "parse_date",
     "parse_numeric_year",

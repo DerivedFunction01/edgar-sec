@@ -18,7 +18,6 @@ from dataclasses import dataclass
 from enum import Enum
 
 from defs.tables.ascii_html import convert_html_table
-from defs.tables.protection import mask_tagged_tables, restore_tagged_tables
 from defs.text.html import FastHtmlNode, FastHtmlTree
 
 
@@ -242,13 +241,7 @@ def _preserve_sgml_in_pre(pre_node: FastHtmlNode) -> None:
     """Unwrap <pre> and protect SGML <TABLE>...</TABLE> spans from collapse."""
     inner_html = pre_node.raw_node.html or ""
     inner = _extract_pre_inner(inner_html)
-
-    masked_text, spans = mask_tagged_tables(inner)
-    if spans:
-        restored = restore_tagged_tables(masked_text, spans)
-        _insert_raw_html(pre_node, restored)
-    else:
-        _insert_raw_html(pre_node, inner)
+    _insert_raw_html(pre_node, inner)
 
 
 def _preserve_monospace_in_pre(pre_node: FastHtmlNode) -> None:

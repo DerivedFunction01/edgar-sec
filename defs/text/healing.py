@@ -20,6 +20,15 @@ from defs.text.checkmarks import (
 )
 from defs.text.dates import MONTH_RE
 
+_RE_MULTI_SPACE = re.compile(r"[ \t]+")
+_RE_BRACKET_CHECKED = re.compile(r"(\[[ Xx]\])(?=[A-Za-z0-9])")
+_RE_BRACKET_CHECKED_AFTER = re.compile(r"([A-Za-z0-9])(\[[ Xx]\])")
+_RE_PAREN_CHECKED = re.compile(r"(\([ Xx]\))(?=[A-Za-z0-9])")
+_RE_PAREN_CHECKED_AFTER = re.compile(r"([A-Za-z0-9])(\([ Xx]\))")
+_RE_WORD_TOKENS = re.compile(r"[a-zA-Z0-9'\-]+")
+_RE_LOWER_START = re.compile(r"^[a-z0-9\(\:\,\.\)]")
+_RE_ENDED_FROM = re.compile(r"\b(?:ended|from)\s*$", re.IGNORECASE)
+
 _BARE_CHECKED = ("x", "X")
 _RE_BARE_CHECKED = re.compile(
     rf"(?<!\S)(?:{build_alternation(_BARE_CHECKED, auto_escape=True)})(?!\S)",
@@ -90,7 +99,7 @@ def normalize_whitespace_and_tabs(text: str) -> str:
     if not text:
         return ""
     text = text.replace("\xa0", " ").replace("\r\n", "\n").replace("\r", "\n")
-    lines = [re.sub(r"[ \t]+", " ", line).strip() for line in text.splitlines()]
+    lines = [_RE_MULTI_SPACE.sub(" ", line).strip() for line in text.splitlines()]
 
     collapsed: list[str] = []
     for line in lines:
@@ -118,10 +127,10 @@ def normalize_checkbox_tokens(
     # (e.g. "[X]Annual report..." -> "[X] Annual report..." and
     #  "company[X]" -> "company [X]").
     # Handle bracketed tokens: [X], [ ], (X), ( )
-    text = re.sub(r"(\[[ Xx]\])(?=[A-Za-z0-9])", r"\1 ", text)
-    text = re.sub(r"([A-Za-z0-9])(\[[ Xx]\])", r"\1 \2", text)
-    text = re.sub(r"(\([ Xx]\))(?=[A-Za-z0-9])", r"\1 ", text)
-    text = re.sub(r"([A-Za-z0-9])(\([ Xx]\))", r"\1 \2", text)
+    text = _RE_BRACKET_CHECKED.sub(CANONICAL_CHECKED, text)
+    text = _RE_BRACKET_CHECKED_AFTER.sub(CANONICAL_CHECKED, text)
+    text = _RE_PAREN_CHECKED.sub(CANONICAL_CHECKED, text)
+    text = _RE_PAREN_CHECKED_AFTER.sub(CANONICAL_CHECKED, text)
     return text
 
 
@@ -194,7 +203,7 @@ def _is_question_tail(line: str) -> bool:
 
 def strip_alphanumeric_words(text: str) -> list[str]:
     """Extract lowercase word tokens, keeping intra-word hyphens and apostrophes."""
-    return re.findall(r"[a-zA-Z0-9'\-]+", text.lower())
+    return _RE_WORD_TOKENS.findall(text.lower())
 
 
 def _token_to_regex(token: str | Sequence[str]) -> re.Pattern:
@@ -256,11 +265,8 @@ def should_join_two_lines(
         # A title-cased caption is a new field, not a continuation. Explicit
         # phrase rules handle known uppercase banners; this fallback stays
         # conservative and only joins lowercase continuation text.
-        and re.match(r"^[a-z0-9\(\:\,\.\)]", line_b)
-    ) or bool(
-        re.search(r"\b(?:ended|from)\s*$", line_a, re.IGNORECASE)
-        and MONTH_RE.match(line_b)
-    )
+        and _RE_LOWER_START.match(line_b)
+    ) or bool(_RE_ENDED_FROM.search(line_a) and MONTH_RE.match(line_b))
 
 
 def heal_split_lines(

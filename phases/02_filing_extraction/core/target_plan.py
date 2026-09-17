@@ -16,6 +16,8 @@ from collections.abc import Callable
 from pathlib import Path
 from typing import Any
 
+_RE_FORM_PATH = re.compile(r"/form=([^/]+)/")
+
 from defs.runtime.paths import resolve_paths
 from defs.runtime.resources import derive_resources
 from defs.storage import (
@@ -350,7 +352,7 @@ def plan(
         selected_forms = set(forms)
         selected_entries = []
         for item in sorted(target_manifests, key=lambda m: m["artifact_path"]):
-            match = re.search(r"/form=([^/]+)/", item["artifact_path"])
+            match = _RE_FORM_PATH.search(item["artifact_path"])
             form = match.group(1) if match else ""
             if selected_forms and form not in selected_forms:
                 continue

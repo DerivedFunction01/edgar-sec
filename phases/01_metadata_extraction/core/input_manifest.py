@@ -11,6 +11,8 @@ from defs.storage import canonical_json
 
 CIK_PADDED_LEN = 10
 
+_RE_DIGITS = re.compile(r"[0-9]+")
+
 
 @dataclass(frozen=True)
 class TargetRow:
@@ -31,7 +33,7 @@ def normalize_cik(raw: str) -> str:
     text = str(raw).strip()
     if not text:
         raise ValueError("cik is empty")
-    if not re.fullmatch(r"[0-9]+", text):
+    if not _RE_DIGITS.fullmatch(text):
         raise ValueError(f"cik '{raw}' is not numeric")
     padded = text.zfill(CIK_PADDED_LEN)
     if len(padded) > CIK_PADDED_LEN:

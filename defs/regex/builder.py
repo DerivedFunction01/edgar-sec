@@ -8,6 +8,8 @@ from typing import Any
 
 from .trie import compact_alternation
 
+_RE_MULTI_SPACE = re.compile(r"[ \t]+")
+
 
 def to_list(items: Any) -> list[str]:
     """Recursively flatten nested lists, tuples, sets, Enums, and strings to list[str]."""
@@ -66,7 +68,7 @@ def build_alternation(
             val = (
                 val.replace(r"\ ", r"\s+")
                 if auto_escape
-                else re.sub(r"[ \t]+", r"\s+", val)
+                else _RE_MULTI_SPACE.sub(r"\s+", val)
             )
         return val
 
@@ -84,7 +86,7 @@ def build_alternation(
             pattern = (
                 pattern.replace(r"\ ", r"\s+")
                 if auto_escape
-                else re.sub(r"[ \t]+", r"\s+", pattern)
+                else _RE_MULTI_SPACE.sub(r"\s+", pattern)
             )
         return pattern
 
@@ -101,7 +103,7 @@ def build_alternation(
         if flexible_whitespace:
             unique_items = [x.replace(r"\ ", r"\s+") for x in unique_items]
     elif flexible_whitespace:
-        unique_items = [re.sub(r"[ \t]+", r"\s+", x) for x in unique_items]
+        unique_items = [_RE_MULTI_SPACE.sub(r"\s+", x) for x in unique_items]
 
     return f"(?:{'|'.join(unique_items)})"
 

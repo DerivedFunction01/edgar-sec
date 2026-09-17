@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+from defs.text.dates import YEAR_RANGE, is_valid_year, is_year_token
 from defs.text.tokens import BULLET_MARKERS
 
 from .currencies import detect_currency_affix, format_currency
@@ -53,6 +54,7 @@ __all__ = [
     "RANGE_MARKERS",
     "SUFFIX_SYMBOLS",
     "SUFFIX_TOKENS",
+    "YEAR_RANGE",
     "detect_currency_affix",
     "format_currency",
     "is_financial_placeholder",
@@ -61,4 +63,6 @@ __all__ = [
     "is_prefix_token",
     "is_range_marker",
     "is_suffix_token",
+    "is_valid_year",
+    "is_year_token",
 ]

@@ -28,7 +28,7 @@ from defs.sec_forms.cover.structure import RE_ITEM_REFERENCE, RE_PART_REFERENCE
 from defs.sec_forms.cover.toc import looks_like_toc_row, looks_like_toc_tabular
 from defs.tables.patterns import FOOTNOTE_RE
 from defs.text.patterns import roman_to_int
-from defs.text.tokens import BULLET_MARKER_RE
+from defs.text.tokens import BULLET_MARKER_RE, is_list_or_bullet_marker
 
 from .numeric_cells import is_numeric_cell
 
@@ -47,6 +47,7 @@ _RE_WRAPPED_MARKER = re.compile(
     r"^\(\s*(?P<token>\d{1,3}|[ivxlcdm]+|[a-z])\s*\)\s*",
     re.IGNORECASE,
 )
+_RE_UNAMBIGUOUS_MARKER = re.compile(r"\[\d{1,3}\]|[\*\†\‡\§\#]+")
 
 
 def _is_single_column_prose(lines: list[str]) -> bool:
@@ -68,20 +69,22 @@ def _is_prose_marker(value: str) -> bool:
     return bool(FOOTNOTE_RE.fullmatch(value))
 
 
-def _is_clear_bullet(value: str) -> bool:
-    """Return whether a marker is an unambiguous bullet, not a numeric label."""
-    value = value.strip()
-    if not value or re.fullmatch(r"\(?\d{1,2}[.)]?", value):
-        return False
-    return bool(BULLET_MARKER_RE.match(value))
-
-
-def _is_prose_text(value: str) -> bool:
-    """Return whether a cell reads as sentence-like prose rather than a label."""
+def _is_unambiguous_list_marker(value: str) -> bool:
+    """Return whether a marker is an unambiguous bullet or delimited list marker."""
     value = value.strip()
     if not value:
         return False
-    return len(value.split()) >= 6 or len(value) >= 35
+    if is_list_or_bullet_marker(value):
+        return True
+    return bool(_RE_UNAMBIGUOUS_MARKER.fullmatch(value))
+
+
+def _is_prose_text(value: str) -> bool:
+    """Return whether a cell reads as prose rather than purely numeric data."""
+    value = value.strip()
+    if not value:
+        return False
+    return any(c.isalpha() for c in value) and not is_numeric_cell(value)
 
 
 def _marker_candidates(value: str) -> list[tuple[str, int, str]]:
@@ -187,14 +190,16 @@ def _passes_monotonic(
 def _is_ordered_prose_grid(grid: list[tuple[str, ...]]) -> bool:
     rows: list[list[tuple[str, int]]] = []
     for row in grid:
-        marker_cells = [
-            (cell, _marker_candidates(cell)) for cell in row if _marker_candidates(cell)
-        ]
+        marker_cells: list[tuple[str, list[tuple[str, int, str]]]] = []
+        for cell in row:
+            if not cell.strip():
+                continue
+            candidates = _marker_candidates(cell)
+            if candidates:
+                marker_cells.append((cell, candidates))
         if len(marker_cells) != 1:
             return False
         marker_cell, candidates = marker_cells[0]
-        if not candidates:
-            return False
         prose = " ".join(
             cell.strip() for cell in row if cell.strip() and cell is not marker_cell
         )
@@ -228,86 +233,110 @@ def _visible_text(block: str) -> str:
     return " ".join(lines)
 
 
-def is_false_table(
-    table_body: str,
-    geometry: TableGeometry | None = None,
+def is_false_grid(
+    grid_rows: Sequence[Sequence[str]],
     *,
     allow_footnote_context: bool = False,
 ) -> bool:
-    """Return True for prose-wrapper tables that should be unwrapped.
+    """Return True for prose-wrapper table grids that should be unwrapped.
 
     Geometry-aware classification ignores fully-empty spacer rows and columns
     before judging the effective grid shape. ``allow_footnote_context`` relaxes
     the prose-length gate for footnote-marker tables that immediately precede a
     retained table; marker-shape and numeric-content checks still apply.
     """
-    if geometry is not None and geometry.rows:
-        grid = [row for row in geometry.rows if any(cell.strip() for cell in row)]
-        if not grid:
+    grid = [row for row in grid_rows if any(cell.strip() for cell in row)]
+    if not grid:
+        return True
+    span = max(len(row) for row in grid)
+    effective = [
+        index
+        for index in range(span)
+        if any(index < len(row) and row[index].strip() for row in grid)
+    ]
+    lines = [" ".join(cell.strip() for cell in row).strip() for row in grid]
+    effective_grid = [tuple(row[index] for index in effective) for row in grid]
+    if len(effective) > 2:
+        return _is_ordered_prose_grid(effective_grid)
+    if len(effective) == 2:
+        if _is_ordered_prose_grid(effective_grid):
             return True
-        span = max(len(row) for row in grid)
-        effective = [
-            index
-            for index in range(span)
-            if any(index < len(row) and row[index].strip() for row in grid)
+        first_column = [row[effective[0]].strip() for row in grid]
+        second_column = [
+            row[effective[1]].strip() if effective[1] < len(row) else "" for row in grid
         ]
-        lines = [" ".join(cell.strip() for cell in row).strip() for row in grid]
-        effective_grid = [tuple(row[index] for index in effective) for row in grid]
-        if len(effective) > 2:
-            return _is_ordered_prose_grid(effective_grid)
-        if len(effective) == 2:
-            if _is_ordered_prose_grid(effective_grid):
-                return True
-            first_column = [row[effective[0]].strip() for row in grid]
-            second_column = [
-                row[effective[1]].strip() if effective[1] < len(row) else ""
-                for row in grid
-            ]
-            if all(
-                RE_ITEM_REFERENCE.match(cell) or RE_PART_REFERENCE.match(cell)
-                for cell in first_column
-            ):
-                if any(is_numeric_cell(cell) for cell in second_column if cell):
-                    return False
-                return not any(
-                    looks_like_toc_row(" ".join(row))
-                    or looks_like_toc_tabular(" ".join(row))
-                    for row in grid
-                )
-            non_empty_first = [cell for cell in first_column if cell]
-            if non_empty_first and all(
-                bool(_RE_ORDERED_MARKER.match(cell)) for cell in non_empty_first
-            ):
-                if any(is_numeric_cell(cell) for cell in second_column if cell):
-                    return False
-                return not any(
-                    looks_like_toc_row(" ".join(row))
-                    or looks_like_toc_tabular(" ".join(row))
-                    for row in grid
-                )
-            if not non_empty_first or not all(
-                _is_prose_marker(cell) for cell in non_empty_first
-            ):
-                return False
+        if all(
+            RE_ITEM_REFERENCE.match(cell) or RE_PART_REFERENCE.match(cell)
+            for cell in first_column
+        ):
             if any(is_numeric_cell(cell) for cell in second_column if cell):
                 return False
-            # Numeric/footnote markers are ambiguous with exhibit indexes;
-            # require sentence-like prose unless every marker is a clear
-            # bullet or the table directly precedes a retained table.
+            return not any(
+                looks_like_toc_row(" ".join(row))
+                or looks_like_toc_tabular(" ".join(row))
+                for row in grid
+            )
+        non_empty_first = [cell for cell in first_column if cell]
+        if non_empty_first and all(
+            bool(_RE_ORDERED_MARKER.match(cell)) for cell in non_empty_first
+        ):
+            if any(is_numeric_cell(cell) for cell in second_column if cell):
+                return False
+            return not any(
+                looks_like_toc_row(" ".join(row))
+                or looks_like_toc_tabular(" ".join(row))
+                for row in grid
+            )
+        # Check for standard bullet rows or lead-in prose row + bullet rows
+        non_empty_first = [cell for cell in first_column if cell]
+        if non_empty_first and all(_is_prose_marker(cell) for cell in non_empty_first):
+            if any(is_numeric_cell(cell) for cell in second_column if cell):
+                return False
+            if not all(_is_prose_text(cell) for cell in second_column if cell):
+                return False
+        elif (
+            len(first_column) >= 2
+            and first_column[0]
+            and not second_column[0]
+            and _is_prose_text(first_column[0])
+            and (
+                first_column[0].rstrip().endswith(":")
+                or len(first_column[0].split()) >= 3
+            )
+            and not is_numeric_cell(first_column[0])
+            and not looks_like_toc_row(first_column[0])
+        ):
+            rem_first = [cell for cell in first_column[1:] if cell]
+            rem_second = [cell for cell in second_column[1:] if cell]
             if (
-                not allow_footnote_context
-                and not all(_is_clear_bullet(cell) for cell in non_empty_first)
-                and not all(_is_prose_text(cell) for cell in second_column if cell)
+                not rem_first
+                or not all(_is_unambiguous_list_marker(cell) for cell in rem_first)
+                or any(is_numeric_cell(cell) for cell in rem_second)
+                or not all(_is_prose_text(cell) for cell in rem_second)
             ):
                 return False
-        elif not _is_single_column_prose(lines) or any(
-            looks_like_toc_row(line) or looks_like_toc_tabular(line) for line in lines
-        ):
+        else:
             return False
-        return True
-    else:
-        inner = table_body[len("<TABLE>") : -len("</TABLE>")]
-        lines = [line.strip() for line in inner.splitlines() if line.strip()]
+    elif not _is_single_column_prose(lines) or any(
+        looks_like_toc_row(line) or looks_like_toc_tabular(line) for line in lines
+    ):
+        return False
+    return True
+
+
+def is_false_table(
+    table_body: str,
+    geometry: TableGeometry | None = None,
+    *,
+    allow_footnote_context: bool = False,
+) -> bool:
+    """Return True for prose-wrapper tables that should be unwrapped."""
+    if geometry is not None and geometry.rows:
+        return is_false_grid(
+            geometry.rows, allow_footnote_context=allow_footnote_context
+        )
+    inner = table_body[len("<TABLE>") : -len("</TABLE>")]
+    lines = [line.strip() for line in inner.splitlines() if line.strip()]
     if not lines:
         return True
     if len(lines) != 1:
@@ -342,17 +371,22 @@ def _join_prose_rows(rows: list[list[str]]) -> str:
     return "".join(pieces)
 
 
+def unwrap_grid(grid_rows: Sequence[Sequence[str]]) -> str:
+    """Unwrap a false grid into formatted prose or bullet text."""
+    rows = [[cell.strip() for cell in row if cell.strip()] for row in grid_rows]
+    rows = [row for row in rows if row]
+    if not rows:
+        return ""
+    has_bullets = any(BULLET_MARKER_RE.match(cell) for row in rows for cell in row)
+    has_ordered = any(_marker_candidates(cell) for row in rows for cell in row)
+    if has_bullets or has_ordered:
+        return "\n".join(" ".join(row) for row in rows)
+    return _join_prose_rows(rows)
+
+
 def _unwrap_block(block: str, geometry: TableGeometry | None = None) -> str:
     if geometry is not None and geometry.rows:
-        rows = [[cell.strip() for cell in row if cell.strip()] for row in geometry.rows]
-        rows = [row for row in rows if row]
-        if not rows:
-            return ""
-        has_bullets = any(BULLET_MARKER_RE.match(cell) for row in rows for cell in row)
-        has_ordered = any(_marker_candidates(cell) for row in rows for cell in row)
-        if has_bullets or has_ordered:
-            return "\n".join(" ".join(row) for row in rows)
-        return _join_prose_rows(rows)
+        return unwrap_grid(geometry.rows)
     return _visible_text(block)
 
 
@@ -361,8 +395,14 @@ def cleanup_false_tables_with_metadata(
     geometries: Sequence[TableGeometry] | None = None,
 ) -> tuple[str, tuple[TableGeometry, ...]]:
     """Unwrap layout-only single-line tables without dropping surrounding text."""
-    blocks = _RE_TABLE_BLOCK.findall(text)
+    if "<TABLE>" not in text:
+        return text, tuple(geometries or ())
+
     matches = list(_RE_TABLE_BLOCK.finditer(text))
+    if not matches:
+        return text, tuple(geometries or ())
+
+    blocks = [m.group(0) for m in matches]
     verdicts = [
         is_false_table(
             block, geometries[i] if geometries and i < len(geometries) else None
@@ -389,31 +429,25 @@ def cleanup_false_tables_with_metadata(
         for index, geometry in enumerate(geometries or ())
         if index >= len(blocks) or not verdicts[index]
     )
-    if "<TABLE>" not in text:
+
+    if not any(verdicts):
         return text, kept_geometries
 
-    replacements: dict[str, str] = {}
-    for index, block in enumerate(blocks):
-        if verdicts[index]:
-            geometry = (
-                geometries[index] if geometries and index < len(geometries) else None
-            )
-            replacements[block] = _unwrap_block(block, geometry)
-
-    if not replacements:
-        return text, kept_geometries
-
-    pattern = re.compile(
-        "|".join(re.escape(block) for block in replacements), re.DOTALL
-    )
     pieces: list[str] = []
     last = 0
     previous_unwrapped: str | None = None
 
-    for match in pattern.finditer(text):
+    for i, match in enumerate(matches):
         gap = text[last : match.start()]
-        block = match.group(0)
-        unwrapped = replacements[block]
+        if not verdicts[i]:
+            pieces.append(gap)
+            pieces.append(match.group(0))
+            previous_unwrapped = None
+            last = match.end()
+            continue
+
+        geometry = geometries[i] if geometries and i < len(geometries) else None
+        unwrapped = _unwrap_block(match.group(0), geometry)
 
         if previous_unwrapped is not None and not gap.strip():
             if _is_list_item(previous_unwrapped) or _is_list_item(unwrapped):
@@ -446,5 +480,7 @@ def cleanup_false_tables(
 __all__ = [
     "cleanup_false_tables",
     "cleanup_false_tables_with_metadata",
+    "is_false_grid",
     "is_false_table",
+    "unwrap_grid",
 ]

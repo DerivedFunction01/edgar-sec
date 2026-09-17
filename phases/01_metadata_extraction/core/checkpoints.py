@@ -93,10 +93,10 @@ def parse_chunk_filename(name: str, storage_format: str = "parquet") -> dict | N
     import re
 
     extension = "jsonl" if storage_format == "jsonl" else "parquet"
-    match = re.match(
-        rf"^{DATASET_NAME}-v(?P<version>[A-Za-z0-9.]+)-chunk-(?P<chunk_id>\d+)-(?P<start>\d+)-(?P<end>\d+)\.{extension}$",
-        os.path.basename(name),
+    _pattern = re.compile(
+        rf"^{DATASET_NAME}-v(?P<version>[A-Za-z0-9.]+)-chunk-(?P<chunk_id>\d+)-(?P<start>\d+)-(?P<end>\d+)\.{extension}$"
     )
+    match = _pattern.match(os.path.basename(name))
     if not match:
         return None
     return {

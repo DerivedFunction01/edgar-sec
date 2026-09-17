@@ -6,7 +6,7 @@ import re
 from typing import Any
 
 from defs.regex import build_alternation
-from defs.tables.protection import mask_tagged_tables
+from defs.tables.protection import find_table_spans
 from defs.text.html import NormalizedHtmlText, normalize_html_document
 
 from ..ascii.orchestrator import analyze_page_markers as _analyze_ascii
@@ -42,6 +42,7 @@ _RE_CLASS_ID_PAGE_BREAKS = re.compile(
     rf"""<[^>]+(?:class|id)=[\"'][^\"']*\b(?:{_BREAK_HINTS_ALT})\b[^\"']*[\"'][^>]*>""",
     re.IGNORECASE,
 )
+_RE_PAGE_SENTINEL_RE = re.compile(r"(?:\n\s*<PAGE>\s*)+")
 
 # "SPLIT" deliberately avoids r/R: the Stage-1 glyph pass maps r/R to
 # checkbox glyphs inside Wingdings/Webdings/Symbol font scopes, which would
@@ -67,7 +68,7 @@ def _insert_page_sentinels(html: str) -> str:
     the sentinel, so the final sentinel-to-``<PAGE>`` pass cannot recover it.
     """
     replacement = f"\n{_PAGE_SENTINEL}\n"
-    spans = mask_tagged_tables(html)[1]
+    spans = find_table_spans(html)
     if not spans:
         return _RE_BREAK_TAGS.sub(replacement, html)
     pieces: list[str] = []
@@ -85,24 +86,13 @@ def _convert_html_to_break_text_with_metadata(html: str) -> NormalizedHtmlText:
         return NormalizedHtmlText("", ())
     text = _insert_page_sentinels(html)
     normalized = normalize_html_document(text)
-    converted = normalized.replace(_PAGE_SENTINEL, "\n<PAGE>\n")
-    # Collapse consecutive or tightly clustered <PAGE> anchors separated
-    # only by whitespace or decorative markup into a single canonical
-    # \n<PAGE>\n. Multiple break mechanisms (e.g. <p style=...> followed
-    # by <hr>) for one physical page transition must yield exactly one
-    # anchor line, preventing 2x/3x anchor denominator inflation.
-    converted = re.sub(
-        r"\n<PAGE>\n(?:\s*\n<PAGE>\n)+",
-        "\n<PAGE>\n",
-        converted,
+    norm_text = str(normalized)
+    collapsed = _RE_PAGE_SENTINEL_RE.sub(
+        f"\n{_PAGE_SENTINEL}\n",
+        norm_text,
     )
-    # Also collapse whitespace-only gaps between adjacent <PAGE> tokens
-    # that survived the above (e.g. <PAGE> \n <PAGE>).
-    converted = re.sub(
-        r"\n<PAGE>\n\s*\n<PAGE>\n",
-        "\n<PAGE>\n",
-        converted,
-    )
+    converted = collapsed.replace(_PAGE_SENTINEL, "\n<PAGE>\n")
+    converted = _RE_PAGE_SENTINEL_RE.sub("\n<PAGE>\n", converted)
     return NormalizedHtmlText(converted.strip(), normalized.table_geometries)
 
 

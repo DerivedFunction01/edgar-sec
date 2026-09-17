@@ -59,15 +59,15 @@ def test_fast_html_analysis_on_synthetic_pages() -> None:
         <p>Cover paragraph</p>
         <hr>
         <p>ACME CORPORATION</p>
-        <p>Section 1 body content...</p>
+        <p>First section body text and operations discussion...</p>
         <p>1</p>
         <hr>
         <p>ACME CORPORATION</p>
-        <p>Section 2 body content...</p>
+        <p>Second section risk factor disclosures and narrative...</p>
         <p>2</p>
         <hr>
         <p>ACME CORPORATION</p>
-        <p>Section 3 body content...</p>
+        <p>Third section financial notes and summary results...</p>
         <p>3</p>
     </body>
     </html>

@@ -27,17 +27,37 @@ _TERMINAL_PUNCT = re.compile(r"[.:;!?\"\x27\u201d\u2019)]\s*$")
 _TAGGED_TABLE = re.compile(r"<TABLE\b.*?</TABLE\s*>", re.IGNORECASE | re.DOTALL)
 
 
-def _expand_table_range(document: str, start: int, end: int) -> tuple[int, int]:
+def _find_compact_table_ranges(document: str) -> list[tuple[int, int]]:
+    """Scan document once for compact rendered tables that can be atomic page furniture."""
+    if "<table" not in document.lower():
+        return []
+    ranges: list[tuple[int, int]] = []
+    for match in _TAGGED_TABLE.finditer(document):
+        if match.group(0).count("\n") <= 12:
+            ranges.append((match.start(), match.end()))
+    return ranges
+
+
+def _expand_table_range(
+    document: str,
+    start: int,
+    end: int,
+    table_ranges: list[tuple[int, int]] | None = None,
+) -> tuple[int, int]:
     """Make a page-furniture range atomic when it touches a tagged table.
 
     HTML page conversion emits canonical ``<TABLE>`` wrappers around rendered
     furniture. A marker can cover only the wrapper or only the body, which
     would leave the counterpart tag behind. Expand such a range to the entire
-    table before applying removals.
+    table before applying removals. Only compact tables qualify: repeating
+    page furniture is a few lines tall, while widening onto a large data
+    table would delete document content.
     """
-    for match in _TAGGED_TABLE.finditer(document):
-        if match.start() < end and match.end() > start:
-            return match.start(), match.end()
+    if table_ranges is None:
+        table_ranges = _find_compact_table_ranges(document)
+    for t_start, t_end in table_ranges:
+        if t_start < end and t_end > start:
+            return t_start, t_end
     return start, end
 
 
@@ -50,6 +70,7 @@ def strip_page_markers(
         return ""
     if analysis is None or analysis.source_text != document:
         analysis = analyze_page_markers(document)
+    table_ranges = _find_compact_table_ranges(document)
     removals: list[tuple[int, int]] = []
     for decision in analysis.decisions:
         if decision.action not in {
@@ -65,7 +86,10 @@ def strip_page_markers(
             end >= len(document) or document[end] == "\n"
         ):
             end += int(end < len(document))
-        removals.append((marker.start, end))
+        start, end = _expand_table_range(
+            document, marker.start, end, table_ranges=table_ranges
+        )
+        removals.append((start, end))
     merged: list[tuple[int, int]] = []
     for start, end in sorted(removals):
         if merged and start <= merged[-1][1]:
@@ -170,6 +194,7 @@ def apply_page_markers(
     # Replacement ranges in document order; overlapping decisions merge into
     # one range carrying every decision so ids stay sequential and stable.
     ranges: list[list] = []  # [start, end, [artifact, ...]]
+    table_ranges = _find_compact_table_ranges(document)
     for decision in analysis.decisions:
         if decision.action not in {
             PageMarkerAction.REMOVE,
@@ -184,7 +209,9 @@ def apply_page_markers(
             end >= len(document) or document[end] == "\n"
         ):
             end += int(end < len(document))
-        start, end = _expand_table_range(document, marker.start, end)
+        start, end = _expand_table_range(
+            document, marker.start, end, table_ranges=table_ranges
+        )
         artifact = _note(marker, _artifact_for_marker(marker, source_identity))
         if ranges and start <= ranges[-1][1]:
             ranges[-1][1] = max(ranges[-1][1], end)
@@ -192,11 +219,7 @@ def apply_page_markers(
         else:
             ranges.append([start, end, [artifact]])
 
-    result = document
-    assigned: list[PageBreakArtifact] = []
     next_id = first_id
-    # Ids are assigned in document order; replacement runs back to front so
-    # earlier offsets stay valid while later spans are rewritten.
     prepared: list[tuple[int, int, str, list[PageBreakArtifact]]] = []
     for start, end, members in ranges:
         kinds = {
@@ -208,28 +231,24 @@ def apply_page_markers(
             (start, end, render_page_artifact(token_kind, next_id), members)
         )
         next_id += 1
-    for start, end, token, members in reversed(prepared):
-        if policy == PageArtifactPolicy.ANNOTATE:
-            newline = "\n" if result[end - 1 : end] == "\n" else ""
-            result = result[:start] + token + newline + result[end:]
-        else:
-            prec = result[:start].rstrip()
-            succ = result[end:].lstrip()
-            if (
-                prec
-                and succ
-                and not _TERMINAL_PUNCT.search(prec)
-                and succ[:1].islower()
-                and not NEGATIVE_BOUNDARY_RE.search(succ)
-            ):
-                result = prec + " " + succ
-            else:
-                result = result[:start] + result[end:]
-        assigned.extend(members)
-    assigned.reverse()
+
+    if not prepared:
+        return document, (), templates, next_id
+
+    assigned = [member for _, _, _, members in prepared for member in members]
     artifacts.extend(assigned)
 
     if policy == PageArtifactPolicy.ANNOTATE:
+        chunks = []
+        last_pos = 0
+        for start, end, token, _ in prepared:
+            chunks.append(document[last_pos:start])
+            newline = "\n" if document[end - 1 : end] == "\n" else ""
+            chunks.append(token + newline)
+            last_pos = end
+        chunks.append(document[last_pos:])
+        result = "".join(chunks)
+
         lines = result.splitlines()
         line_offsets: list[int] = []
         offset = 0
@@ -257,15 +276,51 @@ def apply_page_markers(
                 (line_index, render_page_artifact("PAGE_BREAK", next_id), artifact)
             )
             next_id += 1
-        for line_index, token, artifact in reversed(insertions):
-            result = (
-                result[: line_offsets[line_index]]
-                + token
-                + "\n"
-                + result[line_offsets[line_index] :]
-            )
-        artifacts.extend(artifact for _, _, artifact in insertions)
+        if insertions:
+            for line_index, token, artifact in reversed(insertions):
+                lines.insert(line_index, token)
+                artifacts.append(artifact)
+            result = "\n".join(lines)
+            if document.endswith("\n") and not result.endswith("\n"):
+                result += "\n"
+        return result, tuple(artifacts), templates, next_id
 
+    # STRIP policy: linear reverse segment assembly with boundary healing
+    segments = [document[prepared[-1][1] :]]
+    for i in range(len(prepared) - 1, -1, -1):
+        start, end, _, _ = prepared[i]
+        prev_end = prepared[i - 1][1] if i > 0 else 0
+        intervening = document[prev_end:start]
+
+        prec_window = document[max(0, start - 2000) : start].rstrip()
+        prec_exists = bool(prec_window) or bool(document[:start].strip())
+
+        succ_window = ""
+        for seg in segments:
+            s = seg.lstrip()
+            if s:
+                succ_window = s[:2000]
+                break
+        succ_exists = bool(succ_window)
+
+        if (
+            prec_exists
+            and succ_exists
+            and not _TERMINAL_PUNCT.search(prec_window)
+            and succ_window[:1].islower()
+            and not NEGATIVE_BOUNDARY_RE.search(succ_window)
+        ):
+            for idx in range(len(segments)):
+                if segments[idx].strip():
+                    segments[idx] = segments[idx].lstrip()
+                    break
+                segments[idx] = ""
+            intervening = intervening.rstrip() + " "
+            segments.insert(0, intervening)
+        else:
+            segments.insert(0, intervening)
+
+    result = "".join(segments)
     return result, tuple(artifacts), templates, next_id
 
 

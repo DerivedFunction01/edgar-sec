@@ -3,8 +3,13 @@
 Provides the phase-independent table contract used by document normalizers.
 The primary table engine is `ascii_html`, a geometry-first presentation layer
 that resolves 2D cell coordinate grids, rowspan/colspan regions, border dividers,
-affix fusion, and balanced column width budgeting to render standardized SEC
-`<TABLE>` blocks.
+affix fusion, multi-page table continuation detection and pre-render fusion, and
+balanced column width budgeting to render standardized SEC `<TABLE>` blocks.
+
+`continuation.py` provides form-neutral, structural continuation detection:
+consecutive multi-row tables across page furniture without intervening narrative prose
+and matching column structure/header rows are fused pre-render, calculating global
+column width budgets across all constituent pages.
 
 `render_grid_to_ascii` formats programmatic 2D matrix grids directly using the same
 geometry and budgeting rules without needing an HTML DOM.
