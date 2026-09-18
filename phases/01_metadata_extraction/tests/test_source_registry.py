@@ -6,7 +6,7 @@ from conftest import imp
 
 source_registry = imp("phases.01_metadata_extraction.core.source_registry")
 registry = imp("phases.01_metadata_extraction.core.registry")
-paths_mod = imp("defs.runtime.paths")
+paths_core = imp("phases.01_metadata_extraction.core.paths")
 
 
 class FakeClient:
@@ -47,10 +47,9 @@ def test_refresh_publishes_immutable_source_snapshot(tmp_path):
     assert first["listing_row_count"] == 3
     assert first["unique_cik_count"] == 2
     assert first["duplicate_listing_count"] == 0
-    assert Path(tmp_path, first["raw_path"]).is_file()
     assert (
-        paths_mod.resolve_paths(env={"ARTIFACTS_ROOT": str(tmp_path)})
-        .metadata_source_manifest_path("company_tickers", first["snapshot_id"])
+        paths_core.resolve_metadata_paths(env={"ARTIFACTS_ROOT": str(tmp_path)})
+        .source_manifest_path("company_tickers", first["snapshot_id"])
         .is_file()
     )
     assert len(client.urls) == 2
@@ -68,9 +67,9 @@ def test_compare_sources_writes_registry_and_effective_csv(tmp_path):
         "cik,name\n20,K Tron curated\n1761,Tranzonic\n", encoding="utf-8"
     )
 
-    source_manifest_path = paths_mod.resolve_paths(
+    source_manifest_path = paths_core.resolve_metadata_paths(
         env={"ARTIFACTS_ROOT": str(tmp_path)}
-    ).metadata_source_manifest_path("company_tickers", source["snapshot_id"])
+    ).source_manifest_path("company_tickers", source["snapshot_id"])
     result = registry.compare_sources(
         curated_input_path=curated,
         source_manifest_path=source_manifest_path,

@@ -11,6 +11,7 @@ application = imp("phases.01_metadata_extraction.core.application")
 source_registry = imp("phases.01_metadata_extraction.core.source_registry")
 artifacts_mod = imp("defs.runtime.artifacts")
 paths_mod = imp("defs.runtime.paths")
+paths_core = imp("phases.01_metadata_extraction.core.paths")
 
 import pytest
 
@@ -517,9 +518,9 @@ def _prepare_base_and_source(tmp_path, monkeypatch) -> tuple[str, str]:
             ).encode("utf-8")
         ),
     )
-    source_manifest_path = paths_mod.resolve_paths(
+    source_manifest_path = paths_core.resolve_metadata_paths(
         env={"ARTIFACTS_ROOT": str(tmp_path)}
-    ).metadata_source_manifest_path("company_tickers", source["snapshot_id"])
+    ).source_manifest_path("company_tickers", source["snapshot_id"])
     manifests = artifacts_mod.find_manifests(
         "submission_metadata", phase="metadata", artifacts_root=str(tmp_path)
     )

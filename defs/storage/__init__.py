@@ -27,6 +27,7 @@ from .duckdb_merge import (
     duplicate_values,
     jsonl_columns,
     ordered_keys,
+    parquet_column_bounds,
     validate_files,
 )
 from .errors import (
@@ -43,7 +44,8 @@ from .executor import (
     StorageOperation,
 )
 from .factory import make_chunk_backend
-from .finalized import DuckDBStaging, FinalizedArtifact
+from .finalized import FinalizedArtifact, FinalizedDataset
+from .staging import DuckDBStaging
 
 DEFAULT_STORAGE_FORMAT = "parquet"
 from .jsonl import JsonlChunkBackend, JsonlCodec, JsonlKeyValueBackend, JsonlWal
@@ -96,6 +98,7 @@ __all__ = [
     "FileBackend",
     "FileStorageExecutor",
     "FinalizedArtifact",
+    "FinalizedDataset",
     "InSet",
     "IsNotNull",
     "IsNull",
@@ -139,6 +142,7 @@ __all__ = [
     "make_chunk_backend",
     "ordered_keys",
     "pa",
+    "parquet_column_bounds",
     "parquet_column_names",
     "pq",
     "read_records",

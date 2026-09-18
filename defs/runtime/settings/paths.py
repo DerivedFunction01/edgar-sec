@@ -20,6 +20,11 @@ def _cache_root(resolved: dict) -> Path:
     return Path(root) / "caches"
 
 
+def _validate_non_negative_int(value: object) -> None:
+    if int(value) < 0:
+        raise ValueError("must be >= 0")
+
+
 SETTING_SPECS = {
     "artifacts": {
         "root": SettingSpec(
@@ -37,6 +42,14 @@ SETTING_SPECS = {
             env=True,
             machine_local=True,
             description="HTTP response cache root",
+        ),
+        "json_ttl_s": SettingSpec(
+            value_type=int,
+            default=90 * 24 * 60 * 60,
+            env=True,
+            machine_local=True,
+            validate=_validate_non_negative_int,
+            description="HTTP cache lifetime for mutable JSON URLs in seconds; zero means forever",
         ),
     },
 }

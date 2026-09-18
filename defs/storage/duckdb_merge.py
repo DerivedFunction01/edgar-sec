@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import os
 from dataclasses import dataclass
 from pathlib import Path
 
@@ -272,6 +273,21 @@ def concat_to_parquet(
         raise StorageError(f"DuckDB failed to serialize {output_path}: {exc}") from exc
 
 
+def parquet_column_bounds(
+    con: duckdb.DuckDBPyConnection,
+    file_path: str | os.PathLike[str],
+    column: str,
+) -> tuple[object, object]:
+    """Return (min, max) for a column in a parquet file."""
+    try:
+        res = con.execute(
+            f"SELECT min({_identifier(column)}), max({_identifier(column)}) FROM read_parquet({_quote(str(file_path))})"
+        ).fetchone()
+        return (res[0], res[1]) if res else (None, None)
+    except duckdb.Error as exc:
+        raise StorageError(f"Failed to query bounds for {column}: {exc}") from exc
+
+
 __all__ = [
     "MergeValidation",
     "MergeValidationSpec",
@@ -282,5 +298,6 @@ __all__ = [
     "duplicate_values",
     "jsonl_columns",
     "ordered_keys",
+    "parquet_column_bounds",
     "validate_files",
 ]

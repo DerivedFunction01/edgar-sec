@@ -27,9 +27,12 @@ from defs.runtime import (
     publish_manifest,
     resolve_paths,
 )
+from defs.runtime.artifacts import (
+    get_current_snapshot_pointer,
+)
 from defs.runtime.resources import derive_resources
 from defs.storage import (
-    FinalizedArtifact,
+    FinalizedDataset,
     StorageError,
     canonical_json,
     force_reclaim_memory,
@@ -159,7 +162,7 @@ def _partition_key(form):
     return _RE_INVALID_CHARS.sub("_", value) or "_unknown"
 
 
-def _register_identity_functions(artifact: FinalizedArtifact) -> None:
+def _register_identity_functions(artifact: FinalizedDataset) -> None:
     artifact.register_function(
         "filing_accession", normalize_accession, parameters=[str], return_type=str
     )
@@ -224,9 +227,30 @@ def materialize(
     if source_manifest:
         handoff = load_manifest(source_manifest)
         artifact_root = resolve_paths().artifacts_root
-        source_artifact = str(artifact_root / handoff["artifact_path"])
+        if handoff.get("manifest_kind", "").endswith("_snapshot"):
+            source_artifact = str(source_manifest)
+        elif "artifact_path" in handoff:
+            source_artifact = str(artifact_root / handoff["artifact_path"])
+        else:
+            source_artifact = str(source_manifest)
     if not source_artifact:
-        raise ValueError("source_artifact or source_manifest is required")
+        # Check current snapshot pointer first
+        configured_paths = resolve_paths("filing_extraction")
+        artifact_root = configured_paths.project.artifacts_root.resolve()
+        current_pointer = get_current_snapshot_pointer(
+            artifact_root, phase="metadata", dataset="submission_metadata"
+        )
+        if current_pointer:
+            source_artifact = str(artifact_root / current_pointer["manifest_path"])
+        else:
+            canonical_pub = configured_paths.project.published_dataset_path(
+                "metadata", "submission_metadata", "parquet"
+            )
+            if canonical_pub.is_file():
+                source_artifact = str(canonical_pub)
+            else:
+                raise ValueError("source_artifact or source_manifest is required")
+
     if output_root is None:
         output_root = str(resolve_paths("filing_extraction").catalogs_root)
     configured_paths = resolve_paths("filing_extraction")
@@ -252,8 +276,9 @@ def materialize(
     effective_mem = memory_limit or resources.memory_limit
     effective_temp = resources.temp_directory
 
-    with FinalizedArtifact(
+    with FinalizedDataset(
         source_artifact,
+        artifacts_root=artifacts_root,
         threads=effective_threads,
         memory_limit=effective_mem,
         temp_directory=effective_temp,
@@ -267,6 +292,7 @@ def materialize(
             if (
                 report.get("artifact_sha256")
                 and report["artifact_sha256"] != artifact.sha256
+                and not source_artifact.endswith(".json")
             ):
                 raise StorageError(
                     "source artifact SHA-256 does not match merge report"
@@ -279,7 +305,11 @@ def materialize(
                     "source artifact row count does not match merge report"
                 )
         source_hash = artifact.sha256
-        if handoff and handoff.get("artifact_sha256") != source_hash:
+        if (
+            handoff
+            and handoff.get("artifact_sha256")
+            and handoff.get("artifact_sha256") != source_hash
+        ):
             raise StorageError(
                 "source artifact SHA-256 does not match handoff manifest"
             )

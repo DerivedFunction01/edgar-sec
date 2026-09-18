@@ -14,6 +14,7 @@ import time
 from contextlib import suppress
 from pathlib import Path
 from typing import Any
+from urllib.parse import urlsplit
 
 import zstandard as zstd
 
@@ -34,11 +35,14 @@ from defs.sql import (
     col,
     insert_values,
     make_sql_executor,
+    param,
 )
 from defs.sql.expressions import Arithmetic, ArithmeticOp
 from defs.sql.predicates import Membership, ValueList
 
 _thread_local = threading.local()
+DEFAULT_JSON_TTL_S = 90 * 24 * 60 * 60
+_FOREVER = None
 
 
 def _get_compressor() -> zstd.ZstdCompressor:
@@ -63,14 +67,38 @@ def _url_sha256(url: str) -> str:
     return hashlib.sha256(url.encode("utf-8")).hexdigest()
 
 
+def _now() -> str:
+    return time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime())
+
+
+def _expires_at(
+    url: str, *, now: float | None = None, json_ttl_s: int = DEFAULT_JSON_TTL_S
+) -> str | None:
+    """Return the default expiry for a URL; static archive URLs never expire."""
+    path = urlsplit(url).path.lower()
+    if not path.endswith(".json"):
+        return _FOREVER
+    if json_ttl_s <= 0:
+        return _FOREVER
+    fetched = time.time() if now is None else now
+    return time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime(fetched + json_ttl_s))
+
+
+def _is_expired(expires_at: str | None, *, now: str | None = None) -> bool:
+    return expires_at is not None and expires_at <= (now or _now())
+
+
 class SqlCache:
     """SQLite response cache with zstd-compressed payloads and failure ledger."""
 
-    def __init__(self, cache_dir: str | Path) -> None:
+    def __init__(
+        self, cache_dir: str | Path, *, json_ttl_s: int = DEFAULT_JSON_TTL_S
+    ) -> None:
         self.cache_dir = Path(cache_dir)
         self.db_path = self.cache_dir / "responses.sqlite"
         self.cache_dir.mkdir(parents=True, exist_ok=True)
         self._lock = threading.Lock()
+        self.json_ttl_s = json_ttl_s
         self.db_path.touch()
         conn = sqlite3.connect(str(self.db_path), check_same_thread=False)
         conn.isolation_level = None
@@ -105,10 +133,25 @@ class SqlCache:
                         ColumnDef("byte_size", ColumnType.INT, (NotNull(),)),
                         ColumnDef("content_kind", ColumnType.TEXT, (NotNull(),)),
                         ColumnDef("fetched_at", ColumnType.TEXT, (NotNull(),)),
+                        ColumnDef("expires_at", ColumnType.TEXT),
                     ),
                 )
             )
         )
+        try:
+            self._query_one(
+                self._executor.compiler.compile(
+                    Select(
+                        source=Table("url_responses"),
+                        projection=(col("expires_at"),),
+                    )
+                )
+            )
+        except sqlite3.OperationalError as exc:
+            raise RuntimeError(
+                "HTTP cache schema is missing url_responses.expires_at; "
+                "run scripts/migrate_http_cache_json_ttl.py"
+            ) from exc
         self._exec(
             self._executor.compiler.compile(
                 CreateTable(
@@ -137,7 +180,7 @@ class SqlCache:
             self._executor.compiler.compile(
                 Select(
                     source=Table("url_responses"),
-                    projection=(col("payload"),),
+                    projection=(col("payload"), col("expires_at")),
                     where=Membership(
                         value=col("url_sha256"),
                         source=ValueList((digest,)),
@@ -146,6 +189,8 @@ class SqlCache:
             )
         )
         if row is None:
+            return None
+        if _is_expired(row["expires_at"]):
             return None
         compressed = row["payload"]
         return _get_decompressor().decompress(bytes(compressed))
@@ -160,7 +205,8 @@ class SqlCache:
     ) -> None:
         digest = _url_sha256(url)
         compressed = _get_compressor().compress(payload)
-        now = time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime())
+        now = _now()
+        expires_at = _expires_at(url, json_ttl_s=self.json_ttl_s)
         self._exec(
             self._executor.compiler.compile(
                 insert_values(
@@ -173,16 +219,18 @@ class SqlCache:
                         "byte_size": byte_size,
                         "content_kind": content_kind,
                         "fetched_at": now,
+                        "expires_at": expires_at,
                     },
                     on_conflict=DoUpdate(
                         target=("url_sha256",),
                         assignments=(
                             ("url", Literal(url)),
-                            ("payload", Literal(compressed)),
+                            ("payload", param(compressed)),
                             ("payload_sha256", Literal(sha256)),
                             ("byte_size", Literal(byte_size)),
                             ("content_kind", Literal(content_kind)),
                             ("fetched_at", Literal(now)),
+                            ("expires_at", Literal(expires_at)),
                         ),
                     ),
                 )
@@ -289,9 +337,12 @@ class SqlCacheReader:
     erroring.
     """
 
-    def __init__(self, cache_dir: str | Path) -> None:
+    def __init__(
+        self, cache_dir: str | Path, *, json_ttl_s: int = DEFAULT_JSON_TTL_S
+    ) -> None:
         self.cache_dir = Path(cache_dir)
         self.db_path = self.cache_dir / "responses.sqlite"
+        self.json_ttl_s = json_ttl_s
         self._local = threading.local()
 
     def _executor(self) -> SqlExecutor:
@@ -311,7 +362,7 @@ class SqlCacheReader:
                 executor.compiler.compile(
                     Select(
                         source=Table("url_responses"),
-                        projection=(col("payload"),),
+                        projection=(col("payload"), col("expires_at")),
                         where=Membership(
                             value=col("url_sha256"),
                             source=ValueList((digest,)),
@@ -323,6 +374,8 @@ class SqlCacheReader:
             self._local.executor = None
             return None
         if row is None:
+            return None
+        if _is_expired(row["expires_at"]):
             return None
         try:
             return _get_decompressor().decompress(bytes(row["payload"]))
@@ -338,17 +391,31 @@ class SqlCacheReader:
                 executor.backend.connection.close()
 
 
-def make_cache_store(cache_dir: str | Path | None = None) -> SqlCache | None:
+def make_cache_store(
+    cache_dir: str | Path | None = None,
+    *,
+    json_ttl_s: int = DEFAULT_JSON_TTL_S,
+) -> SqlCache | None:
     if not cache_dir:
         return None
-    return SqlCache(cache_dir)
+    return SqlCache(cache_dir, json_ttl_s=json_ttl_s)
 
 
-def make_cache_reader(cache_dir: str | Path | None = None) -> SqlCacheReader | None:
+def make_cache_reader(
+    cache_dir: str | Path | None = None,
+    *,
+    json_ttl_s: int = DEFAULT_JSON_TTL_S,
+) -> SqlCacheReader | None:
     """Construct a read-only cache reader; ``None`` disables local probing."""
     if not cache_dir:
         return None
-    return SqlCacheReader(cache_dir)
+    return SqlCacheReader(cache_dir, json_ttl_s=json_ttl_s)
 
 
-__all__ = ["SqlCache", "SqlCacheReader", "make_cache_reader", "make_cache_store"]
+__all__ = [
+    "DEFAULT_JSON_TTL_S",
+    "SqlCache",
+    "SqlCacheReader",
+    "make_cache_reader",
+    "make_cache_store",
+]

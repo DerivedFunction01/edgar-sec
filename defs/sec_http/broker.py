@@ -129,7 +129,7 @@ class SecBroker:
             base["active_requests"] = self._active
         return base
 
-    def fetch(self, archive_url: str) -> dict[str, Any]:
+    def fetch(self, archive_url: str, *, force_refresh: bool = False) -> dict[str, Any]:
         """Serve one archive fetch, returning a response dict."""
         if archive_url == HEALTHCHECK_URL:
             return {
@@ -138,12 +138,10 @@ class SecBroker:
                 "payload_length": 0,
                 "payload": b"",
             }
-        # Warm-cache fast path: serve hits before acquiring a connection slot
-        # so cached documents never queue behind paced network requests. A hit
-        # is byte-identical to what ``get_bytes`` would return (cache entries
-        # never expire) and skips the limiter entirely.
+        # Warm-cache fast path: serve unexpired hits before acquiring a
+        # connection slot. Forced requests intentionally bypass this path.
         peek = getattr(self._client, "peek_cache", None)
-        if peek is not None:
+        if peek is not None and not force_refresh:
             peeked = peek(archive_url)
             if peeked is not None:
                 if self._note_bytes(len(peeked)):
@@ -159,7 +157,10 @@ class SecBroker:
                 self._active += 1
             payload: bytes | None = None
             try:
-                payload = self._client.get_bytes(archive_url)
+                if force_refresh:
+                    payload = self._client.get_bytes(archive_url, force_refresh=True)
+                else:
+                    payload = self._client.get_bytes(archive_url)
             except (PermanentHttpError, ResponseTooLargeError, RetryExhausted) as exc:
                 return {
                     "status": "failed",
@@ -205,6 +206,7 @@ class SecBroker:
                 request = _json_loads(request_raw)
                 request_id = request.get("request_id")
                 archive_url = request.get("archive_url")
+                force_refresh = bool(request.get("force_refresh", False))
                 if not isinstance(request_id, str) or not isinstance(archive_url, str):
                     response = {
                         "request_id": request_id,
@@ -214,7 +216,7 @@ class SecBroker:
                     }
                     payload = b""
                 else:
-                    result = self.fetch(archive_url)
+                    result = self.fetch(archive_url, force_refresh=force_refresh)
                     response = {
                         "request_id": request_id,
                         "status": result["status"],
@@ -345,7 +347,7 @@ class SecBrokerClient:
         payload = _recv_exactly(sock, payload_length) if payload_length else b""
         return header, payload
 
-    def fetch(self, archive_url: str) -> dict[str, Any]:
+    def fetch(self, archive_url: str, *, force_refresh: bool = False) -> dict[str, Any]:
         """Fetch one archive URL through the broker.
 
         Returns a dict shaped like ``FetchResult``: ``status`` is
@@ -355,7 +357,13 @@ class SecBrokerClient:
         desynchronizes the frame stream, so the socket is always reset.
         """
         request_id = os.urandom(8).hex()
-        request = _json_dumps({"request_id": request_id, "archive_url": archive_url})
+        request = _json_dumps(
+            {
+                "request_id": request_id,
+                "archive_url": archive_url,
+                "force_refresh": force_refresh,
+            }
+        )
         header: dict[str, Any] | None = None
         payload = b""
         for attempt in (1, 2):

@@ -8,6 +8,7 @@ application = imp("phases.01_metadata_extraction.core.application")
 augmentation = imp("phases.01_metadata_extraction.core.augmentation")
 config = imp("phases.01_metadata_extraction.core.config")
 paths_mod = imp("defs.runtime.paths")
+paths_core = imp("phases.01_metadata_extraction.core.paths")
 resources_mod = imp("defs.runtime.resources")
 source_registry = imp("phases.01_metadata_extraction.core.source_registry")
 artifacts_mod = imp("defs.runtime.artifacts")
@@ -129,9 +130,9 @@ def test_augmentation_uses_existing_manifest_and_publishes_new_snapshot(
         user_agent="Test/1.0 test@example.com",
         client=FakeSourceClient(source_payload),
     )
-    source_manifest_path = paths_mod.resolve_paths(
+    source_manifest_path = paths_core.resolve_metadata_paths(
         env={"ARTIFACTS_ROOT": str(tmp_path)}
-    ).metadata_source_manifest_path("company_tickers", source["snapshot_id"])
+    ).source_manifest_path("company_tickers", source["snapshot_id"])
 
     register(
         "https://data.sec.gov/submissions/CIK0000001761.json",

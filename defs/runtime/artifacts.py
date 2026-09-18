@@ -495,11 +495,217 @@ def import_bundle(
                 and file_sha256(str(target)) != manifest["artifact_sha256"]
             ):
                 raise ValueError(f"import conflicts with existing artifact: {target}")
-            target.parent.mkdir(parents=True, exist_ok=True)
             if not target.exists():
+                target.parent.mkdir(parents=True, exist_ok=True)
                 os.replace(source, target)
             publish_manifest(manifest, artifacts_root=str(root))
         return [manifest["artifact_id"] for manifest in loaded]
+
+
+def make_snapshot_manifest(
+    *,
+    snapshot_id: str,
+    schema_version: str,
+    resolved_parts: list[dict],
+    added_parts: list[dict] | None = None,
+    replacement_key_parts: list[dict] | None = None,
+    parent_snapshot_id: str | None = None,
+    source_snapshot_ids: list[str] | None = None,
+    plan_id: str | None = None,
+    effective_cik_count: int | None = None,
+    effective_input_fingerprint: str | None = None,
+    dataset: str = "submission_metadata",
+    phase: str = "metadata",
+    validation_status: str = "ok",
+    provenance: dict | None = None,
+) -> dict:
+    """Create a structured multi-part snapshot manifest dictionary."""
+    total_rows = (
+        effective_cik_count
+        if effective_cik_count is not None
+        else sum(int(p.get("row_count", 0)) for p in resolved_parts)
+    )
+    manifest = {
+        "manifest_kind": f"{dataset}_snapshot",
+        "manifest_schema_version": MANIFEST_VERSION,
+        "dataset": dataset,
+        "producer_phase": phase,
+        "snapshot_id": snapshot_id,
+        "parent_snapshot_id": parent_snapshot_id,
+        "schema_version": schema_version,
+        "resolved_parts": resolved_parts,
+        "added_parts": added_parts or [],
+        "replacement_key_parts": replacement_key_parts or [],
+        "source_snapshot_ids": source_snapshot_ids or [],
+        "plan_id": plan_id,
+        "effective_cik_count": total_rows,
+        "row_count": total_rows,
+        "effective_input_fingerprint": effective_input_fingerprint,
+        "validation_status": validation_status,
+        "provenance": provenance or {},
+    }
+    return manifest
+
+
+def validate_snapshot_manifest(manifest: dict) -> None:
+    """Validate a multi-part snapshot manifest."""
+    if not isinstance(manifest, dict):
+        raise ValueError("snapshot manifest must be a dictionary")
+    kind = manifest.get("manifest_kind", "")
+    if not kind.endswith("_snapshot") and kind != "submission_metadata_snapshot":
+        raise ValueError(f"invalid manifest_kind for snapshot: {kind}")
+    required = {
+        "manifest_kind",
+        "manifest_schema_version",
+        "snapshot_id",
+        "schema_version",
+        "resolved_parts",
+    }
+    missing = sorted(required - manifest.keys())
+    if missing:
+        raise ValueError(f"snapshot manifest missing fields: {missing}")
+    if not isinstance(manifest.get("resolved_parts"), list):
+        raise ValueError("snapshot manifest resolved_parts must be a list")
+    for part in manifest["resolved_parts"]:
+        if (
+            not isinstance(part, dict)
+            or "path" not in part
+            or "artifact_sha256" not in part
+        ):
+            raise ValueError("each resolved part must specify path and artifact_sha256")
+
+
+def publish_snapshot_manifest(
+    manifest: dict,
+    *,
+    artifacts_root: str | os.PathLike[str],
+    phase: str = "metadata",
+    dataset: str = "submission_metadata",
+    set_current: bool = True,
+) -> Path:
+    """Write snapshot manifest atomically to its canonical path and update pointer if requested."""
+    validate_snapshot_manifest(manifest)
+    from defs.runtime.paths import resolve_paths
+
+    phase_name = manifest.get("producer_phase", phase)
+    dataset_name = manifest.get("dataset", dataset)
+    paths = resolve_paths(env={"ARTIFACTS_ROOT": str(artifacts_root)})
+    snapshot_id = manifest["snapshot_id"]
+    manifest_path = paths.dataset_snapshot_manifest_path(
+        phase_name, dataset_name, snapshot_id
+    )
+    manifest_path.parent.mkdir(parents=True, exist_ok=True)
+    if manifest_path.exists():
+        existing = load_json(manifest_path)
+        if existing.get("snapshot_id") != snapshot_id or existing.get(
+            "resolved_parts"
+        ) != manifest.get("resolved_parts"):
+            raise ValueError(
+                f"conflicting immutable snapshot manifest: {manifest_path}"
+            )
+    else:
+        atomic_write_json(manifest_path, manifest, indent=2, sort_keys=True)
+    if set_current:
+        update_current_snapshot_pointer(
+            snapshot_id,
+            manifest_path=manifest_path,
+            phase=phase_name,
+            dataset=dataset_name,
+            artifacts_root=artifacts_root,
+        )
+    return manifest_path
+
+
+def update_current_snapshot_pointer(
+    snapshot_id: str,
+    *,
+    manifest_path: str | os.PathLike[str] | None = None,
+    phase: str = "metadata",
+    dataset: str = "submission_metadata",
+    artifacts_root: str | os.PathLike[str],
+) -> Path:
+    """Atomically advance or roll back the current dataset snapshot pointer."""
+    from defs.runtime.paths import resolve_paths
+
+    paths = resolve_paths(env={"ARTIFACTS_ROOT": str(artifacts_root)})
+    pointer_path = paths.dataset_current_pointer_path(phase, dataset)
+    pointer_path.parent.mkdir(parents=True, exist_ok=True)
+    root = Path(artifacts_root).resolve()
+    rel_path = (
+        _relative(manifest_path, root)
+        if manifest_path is not None
+        else _relative(
+            paths.dataset_snapshot_manifest_path(phase, dataset, snapshot_id), root
+        )
+    )
+    payload = {
+        "pointer_kind": f"{dataset}_current_snapshot",
+        "dataset": dataset,
+        "producer_phase": phase,
+        "snapshot_id": snapshot_id,
+        "manifest_path": rel_path,
+    }
+    atomic_write_json(pointer_path, payload, indent=2, sort_keys=True)
+    return pointer_path
+
+
+def get_current_snapshot_pointer(
+    artifacts_root: str | os.PathLike[str],
+    *,
+    phase: str = "metadata",
+    dataset: str = "submission_metadata",
+) -> dict | None:
+    """Get the current dataset snapshot pointer dict, or None if not set."""
+    from defs.runtime.paths import resolve_paths
+
+    paths = resolve_paths(env={"ARTIFACTS_ROOT": str(artifacts_root)})
+    pointer_path = paths.dataset_current_pointer_path(phase, dataset)
+    if not pointer_path.exists():
+        return None
+    try:
+        return load_json(pointer_path)
+    except (OSError, ValueError):
+        return None
+
+
+def resolve_snapshot_manifest(
+    snapshot_id_or_path: str | os.PathLike[str] | None = None,
+    *,
+    artifacts_root: str | os.PathLike[str],
+    phase: str = "metadata",
+    dataset: str = "submission_metadata",
+) -> tuple[dict, Path]:
+    """Resolve a snapshot manifest dict and verify part paths exist and hashes match."""
+    from defs.runtime.paths import resolve_paths
+
+    root = Path(artifacts_root).resolve()
+    paths = resolve_paths(env={"ARTIFACTS_ROOT": str(root)})
+    if snapshot_id_or_path is None:
+        pointer = get_current_snapshot_pointer(root, phase=phase, dataset=dataset)
+        if pointer is None:
+            raise FileNotFoundError(
+                f"no current snapshot pointer found for {phase}/{dataset} under {root}"
+            )
+        snapshot_manifest_file = root / pointer["manifest_path"]
+    else:
+        path = Path(snapshot_id_or_path)
+        if path.is_file():
+            snapshot_manifest_file = path
+        elif path.is_dir() and (path / "snapshot.manifest.json").is_file():
+            snapshot_manifest_file = path / "snapshot.manifest.json"
+        elif path.is_dir() and (path / "snapshot.json").is_file():
+            snapshot_manifest_file = path / "snapshot.json"
+        else:
+            snapshot_manifest_file = paths.dataset_snapshot_manifest_path(
+                phase, dataset, str(snapshot_id_or_path)
+            )
+    if not snapshot_manifest_file.is_file():
+        raise FileNotFoundError(
+            f"snapshot manifest not found: {snapshot_manifest_file}"
+        )
+    manifest = load_json(snapshot_manifest_file)
+    validate_snapshot_manifest(manifest)
+    return manifest, snapshot_manifest_file
 
 
 __all__ = [
@@ -507,15 +713,21 @@ __all__ = [
     "artifact_id",
     "create_bundle",
     "find_manifests",
+    "get_current_snapshot_pointer",
     "import_bundle",
     "load_manifest",
     "make_manifest",
+    "make_snapshot_manifest",
     "manifest_relative_path",
     "prepare_bundle_for_phase",
     "publish_manifest",
+    "publish_snapshot_manifest",
     "relative_path",
     "resolve_dependencies",
     "resolve_manifest",
+    "resolve_snapshot_manifest",
     "resolve_source",
+    "update_current_snapshot_pointer",
     "validate_manifest",
+    "validate_snapshot_manifest",
 ]

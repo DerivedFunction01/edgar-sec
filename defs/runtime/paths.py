@@ -160,65 +160,6 @@ class ProjectPaths:
         return self.artifacts_root / "manifests"
 
     @property
-    def metadata_sources_root(self) -> Path:
-        """Raw metadata-source snapshots kept outside published handoffs."""
-        return self.artifacts_root / "metadata" / "sources"
-
-    def metadata_source_snapshot_path(
-        self, source: str, snapshot_id: str, suffix: str = ".json"
-    ) -> Path:
-        source_safe = _safe_id(source, "source")
-        snapshot_safe = _safe_id(snapshot_id, "snapshot_id")
-        if not suffix.startswith(".") or "/" in suffix or "\\" in suffix:
-            raise ValueError("source snapshot suffix must be a simple extension")
-        return (
-            self.metadata_sources_root
-            / source_safe
-            / "snapshots"
-            / f"{snapshot_safe}{suffix}"
-        )
-
-    def metadata_source_manifest_dir(self, source: str) -> Path:
-        return self.metadata_sources_root / _safe_id(source, "source") / "snapshots"
-
-    def metadata_source_manifest_path(self, source: str, snapshot_id: str) -> Path:
-        snapshot_safe = _safe_id(snapshot_id, "snapshot_id")
-        return (
-            self.metadata_source_manifest_dir(source) / f"{snapshot_safe}.manifest.json"
-        )
-
-    def registry_snapshot_root(self, registry_id: str) -> Path:
-        registry_safe = _safe_id(registry_id, "registry_id")
-        return (
-            self.artifacts_root
-            / "metadata"
-            / "registries"
-            / "snapshots"
-            / registry_safe
-        )
-
-    def registry_snapshot_path(self, registry_id: str, name: str) -> Path:
-        if not _SAFE_ID.fullmatch(name.replace(".", "-")):
-            raise ValueError("registry artifact name contains unsafe characters")
-        return self.registry_snapshot_root(registry_id) / name
-
-    def registry_manifest_root(self, registry_id: str) -> Path:
-        return self.registry_snapshot_root(registry_id)
-
-    def registry_manifest_path(self, registry_id: str, name: str) -> Path:
-        if not _SAFE_ID.fullmatch(name.replace(".", "-")):
-            raise ValueError("registry manifest name contains unsafe characters")
-        return self.registry_manifest_root(registry_id) / name
-
-    def metadata_augmentation_worklist_root(self, run_id: str) -> Path:
-        return (
-            self.artifacts_root / "metadata" / "worklists" / _safe_id(run_id, "run_id")
-        )
-
-    def metadata_augmentation_snapshot_dir(self) -> Path:
-        return self.manifests_root / "metadata" / "submission_metadata" / "snapshots"
-
-    @property
     def transient_root(self) -> Path:
         return self.artifacts_root / "transient"
 
@@ -230,6 +171,45 @@ class ProjectPaths:
             f"partitions/{partition}" if partition and partition != "final" else "final"
         )
         return self.manifests_root / phase_safe / dataset_safe / scope_dir
+
+    def dataset_snapshots_dir(self, phase: str, dataset: str) -> Path:
+        """Directory containing multi-part snapshots for a dataset."""
+        phase_safe = _safe_id(phase, "phase")
+        dataset_safe = _safe_id(dataset, "dataset")
+        return self.manifests_root / phase_safe / dataset_safe / "snapshots"
+
+    def dataset_snapshot_dir(self, phase: str, dataset: str, snapshot_id: str) -> Path:
+        return self.dataset_snapshots_dir(phase, dataset) / _safe_id(
+            snapshot_id, "snapshot_id"
+        )
+
+    def dataset_snapshot_manifest_path(
+        self, phase: str, dataset: str, snapshot_id: str
+    ) -> Path:
+        return (
+            self.dataset_snapshot_dir(phase, dataset, snapshot_id)
+            / "snapshot.manifest.json"
+        )
+
+    def dataset_snapshot_parts_dir(
+        self, phase: str, dataset: str, snapshot_id: str, shard_id: str | None = None
+    ) -> Path:
+        base = self.dataset_snapshot_dir(phase, dataset, snapshot_id) / "parts"
+        if shard_id is not None:
+            return base / _safe_id(shard_id, "shard_id")
+        return base
+
+    def dataset_snapshot_replacement_keys_dir(
+        self, phase: str, dataset: str, snapshot_id: str
+    ) -> Path:
+        return (
+            self.dataset_snapshot_dir(phase, dataset, snapshot_id) / "replacement-keys"
+        )
+
+    def dataset_current_pointer_path(self, phase: str, dataset: str) -> Path:
+        phase_safe = _safe_id(phase, "phase")
+        dataset_safe = _safe_id(dataset, "dataset")
+        return self.manifests_root / phase_safe / dataset_safe / "current.json"
 
     def manifest_path_for(
         self, phase: str, dataset: str, artifact_id_value: str, partition: str = ""

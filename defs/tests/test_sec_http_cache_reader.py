@@ -34,6 +34,18 @@ def test_reader_observes_writer_payload(tmp_path: Path) -> None:
     assert SqlCacheReader(tmp_path).get(URL) == b"payload"
 
 
+def test_reader_treats_expired_json_as_miss(tmp_path: Path) -> None:
+    url = "https://data.sec.gov/submissions/CIK0000000001.json"
+    cache = SqlCache(tmp_path)
+    _put(cache, url)
+    import sqlite3
+
+    with sqlite3.connect(tmp_path / "responses.sqlite") as conn:
+        conn.execute("UPDATE url_responses SET expires_at = '2000-01-01T00:00:00Z'")
+        conn.commit()
+    assert SqlCacheReader(tmp_path).get(url) is None
+
+
 def test_reader_sees_commits_after_reader_creation(tmp_path: Path) -> None:
     reader = SqlCacheReader(tmp_path)
     assert reader.get(URL) is None

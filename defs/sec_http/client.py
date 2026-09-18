@@ -14,7 +14,7 @@ import requests
 
 from defs.http import BoundedTransport, ConcurrencyPolicy
 
-from .cache import make_cache_store
+from .cache import DEFAULT_JSON_TTL_S, make_cache_store
 from .errors import PermanentHttpError, ResponseTooLargeError, RetryExhausted
 from .metrics import HttpMetrics
 from .rate_limit import DEFAULT_RATE_LIMIT_RPS, RateLimiter
@@ -53,6 +53,7 @@ def make_sec_http_client(
     max_failure_attempts: int = 3,
     ignore_failure_history: bool = False,
     max_concurrency: int = DEFAULT_SEC_MAX_CONCURRENCY,
+    json_ttl_s: int = DEFAULT_JSON_TTL_S,
 ) -> SecHttpClient:
     """Construct a production ``SecHttpClient`` bound to runtime settings.
 
@@ -71,6 +72,10 @@ def make_sec_http_client(
         if cache_dir is not None
         else str(get_setting("cache.root") or resolve_paths().cache_root)
     )
+    raw_json_ttl = get_setting("cache.json_ttl_s")
+    resolved_json_ttl = (
+        DEFAULT_JSON_TTL_S if raw_json_ttl is None else int(raw_json_ttl)
+    )
     return SecHttpClient(
         user_agent=resolved_ua,
         rate_limiter=rate_limiter,
@@ -81,6 +86,7 @@ def make_sec_http_client(
         max_failure_attempts=max_failure_attempts,
         ignore_failure_history=ignore_failure_history,
         max_concurrency=max_concurrency,
+        json_ttl_s=resolved_json_ttl,
     )
 
 
@@ -97,6 +103,7 @@ class SecTransportProfile:
     max_response_bytes: int | None = None
     ignore_failure_history: bool = False
     max_concurrency: int = DEFAULT_SEC_MAX_CONCURRENCY
+    json_ttl_s: int = DEFAULT_JSON_TTL_S
 
 
 class SecHttpClient:
@@ -129,6 +136,7 @@ class SecHttpClient:
         max_failure_attempts: int = 3,
         ignore_failure_history: bool = False,
         max_concurrency: int = DEFAULT_SEC_MAX_CONCURRENCY,
+        json_ttl_s: int = DEFAULT_JSON_TTL_S,
         profile: SecTransportProfile | None = None,
     ):
         if profile is not None:
@@ -152,6 +160,8 @@ class SecHttpClient:
                 retry_policy = RetryPolicy(max_retries=profile.max_retries)
             if max_concurrency == DEFAULT_SEC_MAX_CONCURRENCY:
                 max_concurrency = profile.max_concurrency
+            if json_ttl_s == DEFAULT_JSON_TTL_S:
+                json_ttl_s = profile.json_ttl_s
 
         if not user_agent:
             raise ValueError(
@@ -159,11 +169,14 @@ class SecHttpClient:
             )
         if max_concurrency < 1:
             raise ValueError("max_concurrency must be >= 1")
+        if json_ttl_s < 0:
+            raise ValueError("json_ttl_s must be >= 0")
         self.rate_limiter = rate_limiter or RateLimiter()
         self.retry_policy = retry_policy or RetryPolicy()
         self.timeout_s = timeout_s
         self.cache_dir = cache_dir
-        self._cache = make_cache_store(cache_dir)
+        self.json_ttl_s = json_ttl_s
+        self._cache = make_cache_store(cache_dir, json_ttl_s=json_ttl_s)
         self.max_response_bytes = max_response_bytes
         self.metrics = metrics or HttpMetrics()
         self.headers = default_headers(user_agent)
@@ -258,11 +271,18 @@ class SecHttpClient:
             url, headers=self.headers, timeout_s=self.timeout_s
         )
 
-    def _fetch(self, url: str, content_kind: str = "bytes") -> bytes:
-        cached = self._cache_get(url)
-        if cached is not None:
-            self.metrics.record_cache_hit()
-            return cached
+    def _fetch(
+        self,
+        url: str,
+        content_kind: str = "bytes",
+        *,
+        force_refresh: bool = False,
+    ) -> bytes:
+        if not force_refresh:
+            cached = self._cache_get(url)
+            if cached is not None:
+                self.metrics.record_cache_hit()
+                return cached
 
         # Failure-ledger preflight: skip without any request when history
         # proves the URL is permanently broken or exhausted its budget.
@@ -407,14 +427,14 @@ class SecHttpClient:
         )
         return PermanentHttpError(url, str(exc), 200)
 
-    def get_text(self, url: str) -> str:
-        payload = self._fetch(url, "text")
+    def get_text(self, url: str, *, force_refresh: bool = False) -> str:
+        payload = self._fetch(url, "text", force_refresh=force_refresh)
         try:
             return payload.decode("utf-8")
         except UnicodeDecodeError as exc:
             raise self._decode_failure(url, exc) from exc
 
-    def get_bytes(self, url: str) -> bytes:
+    def get_bytes(self, url: str, *, force_refresh: bool = False) -> bytes:
         """Return the raw response payload without decoding.
 
         Archive documents (HTML, SGML, iXBRL) are stored as raw bytes; unlike
@@ -422,10 +442,10 @@ class SecHttpClient:
         permanent content failure. Pacing, retries, caching, and failure-ledger
         preflight behave exactly as for the other fetch methods.
         """
-        return self._fetch(url, "bytes")
+        return self._fetch(url, "bytes", force_refresh=force_refresh)
 
-    def get_json(self, url: str) -> Any:
-        payload = self._fetch(url, "json")
+    def get_json(self, url: str, *, force_refresh: bool = False) -> Any:
+        payload = self._fetch(url, "json", force_refresh=force_refresh)
         try:
             parsed = json.loads(payload.decode("utf-8"))
         except (UnicodeDecodeError, json.JSONDecodeError) as exc:
@@ -433,9 +453,11 @@ class SecHttpClient:
         self._clear_failure(url)
         return parsed
 
-    def get_json_ex(self, url: str) -> tuple[Any, int, str]:
+    def get_json_ex(
+        self, url: str, *, force_refresh: bool = False
+    ) -> tuple[Any, int, str]:
         """Like get_json but also returns (byte_count, response_sha256)."""
-        payload = self._fetch(url, "json")
+        payload = self._fetch(url, "json", force_refresh=force_refresh)
         try:
             parsed = json.loads(payload.decode("utf-8"))
         except (UnicodeDecodeError, json.JSONDecodeError) as exc:

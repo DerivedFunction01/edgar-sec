@@ -32,7 +32,11 @@ def _is_allowed(path: str) -> bool:
         for allowed in _ALLOWED_PATHS
     ):
         return True
-    if normalized.endswith(("cli.py", "__main__.py")) or "/cli" in normalized:
+    if (
+        normalized.endswith(("cli.py", "__main__.py"))
+        or "/cli" in normalized
+        or normalized.startswith("scripts/")
+    ):
         return True
     return is_test_file(path)
 

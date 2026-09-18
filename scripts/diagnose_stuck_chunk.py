@@ -29,6 +29,14 @@ from pathlib import Path
 
 from tqdm import tqdm
 
+from defs.sql import (
+    Select,
+    SqlDialect,
+    Table,
+    col,
+    make_sql_executor,
+)
+
 _TABLE_RE = re.compile(r"<table\b", re.IGNORECASE)
 _HTML_RE = re.compile(r"<\s*(?:html|table|div|span|p|body|tr|td)\b", re.IGNORECASE)
 
@@ -50,15 +58,34 @@ def _load_run_metadata(chunk_db: Path) -> dict:
 
 
 def _chunk_rows(chunk_db: Path) -> tuple[set[str], set[str]]:
-    con = sqlite3.connect(f"file:{chunk_db}?mode=ro", uri=True)
+    conn = sqlite3.connect(f"file:{chunk_db}?mode=ro", uri=True)
+    executor = make_sql_executor(conn, dialect=SqlDialect.SQLITE)
     try:
-        blobs = {row[0] for row in con.execute("SELECT doc_id FROM document_blobs")}
+        blobs = {
+            row["doc_id"]
+            for row in executor.query(
+                executor.compiler.compile(
+                    Select(
+                        source=Table("document_blobs"),
+                        projection=(col("doc_id"),),
+                    )
+                )
+            )
+        }
         failures = {
-            row[0] for row in con.execute("SELECT doc_id FROM acquisition_failures")
+            row["doc_id"]
+            for row in executor.query(
+                executor.compiler.compile(
+                    Select(
+                        source=Table("acquisition_failures"),
+                        projection=(col("doc_id"),),
+                    )
+                )
+            )
         }
         return blobs, failures
     finally:
-        con.close()
+        executor.close()
 
 
 def _document_id(locator) -> str:

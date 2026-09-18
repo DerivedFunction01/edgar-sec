@@ -24,7 +24,7 @@ class _FakeHttpBytes:
         self.calls: list[str] = []
         self._lock = threading.Lock()
 
-    def get_bytes(self, url: str) -> bytes:
+    def get_bytes(self, url: str, *, force_refresh: bool = False) -> bytes:
         with self._lock:
             self.calls.append(url)
         if url in self.payloads:
@@ -37,8 +37,8 @@ class _FakeSecClient:
         self.http = _FakeHttpBytes(payloads)
         self.metrics = HttpMetrics()
 
-    def get_bytes(self, url: str) -> bytes:
-        return self.http.get_bytes(url)
+    def get_bytes(self, url: str, *, force_refresh: bool = False) -> bytes:
+        return self.http.get_bytes(url, force_refresh=force_refresh)
 
 
 @pytest.fixture
@@ -84,6 +84,18 @@ def test_broker_fetch_returns_payload(broker_paths: Path) -> None:
         result = client.fetch("https://www.sec.gov/Archives/x/doc.htm")
         assert result["status"] == "ok"
         assert result["payload"] == b"<html>ok</html>"
+    finally:
+        _stop_server(server, thread)
+
+
+def test_broker_force_refresh_reaches_http_client(broker_paths: Path) -> None:
+    url = "https://data.sec.gov/submissions/CIK0000000001.json"
+    server, thread = _start_server(broker_paths, {url: b'{"fresh":true}'})
+    try:
+        client = SecBrokerClient(broker_paths)
+        result = client.fetch(url, force_refresh=True)
+        assert result["status"] == "ok"
+        assert server._client.http.calls == [url]
     finally:
         _stop_server(server, thread)
 

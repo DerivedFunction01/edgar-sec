@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from .cache import SqlCacheReader, make_cache_reader
+from .cache import DEFAULT_JSON_TTL_S, SqlCacheReader, make_cache_reader
 from .client import (
     DEFAULT_SEC_MAX_CONCURRENCY,
     DEFAULT_USER_AGENT,
@@ -34,6 +34,7 @@ from .retry import (
 __all__ = [
     "BACKOFF_BASE_S",
     "BACKOFF_CAP_S",
+    "DEFAULT_JSON_TTL_S",
     "DEFAULT_MAX_RETRIES",
     "DEFAULT_MIN_INTERVAL_S",
     "DEFAULT_RATE_LIMIT_RPS",

@@ -8,9 +8,15 @@ import os
 import shutil
 from collections.abc import Callable
 from dataclasses import dataclass, field
-from pathlib import Path
+from pathlib import Path, PurePosixPath
 
-from defs.runtime.artifacts import make_manifest, publish_manifest
+from defs.runtime.artifacts import (
+    MANIFEST_DIR,
+    make_manifest,
+    make_snapshot_manifest,
+    publish_manifest,
+    publish_snapshot_manifest,
+)
 from defs.runtime.paths import (
     merge_report_path_in,
     partition_merge_report_path_in,
@@ -27,10 +33,12 @@ from defs.storage import (
     file_sha256,
     load_json,
     ordered_keys,
+    parquet_column_bounds,
     parquet_column_names,
     validate_files,
 )
 
+from .paths import resolve_metadata_paths
 from .schemas import (
     SCHEMA_VERSION,
     SUBMISSION_METADATA_SCHEMA,
@@ -64,6 +72,12 @@ def _publish_handoff(
     upstream: tuple[str, ...] = (),
 ) -> None:
     root = _artifact_root(artifacts_dir, output_path)
+    try:
+        rel_path = str(Path(output_path).resolve().relative_to(Path(root).resolve()))
+    except ValueError:
+        return
+    if PurePosixPath(rel_path).parts[:1] != (MANIFEST_DIR,):
+        return
     manifest = make_manifest(
         dataset="submission_metadata",
         phase="metadata",
@@ -568,10 +582,6 @@ def merge_partition_artifacts(
         raise MergeError(
             "merge requires a partitioned plan and finalized partition artifacts"
         )
-    # Partition artifacts are always published as Parquet regardless of the
-    # chunk/checkpoint format, so the final merge reads Parquet only. The
-    # checkpoint storage_format is accepted for CLI compatibility but does
-    # not affect artifact reading.
     artifact_format = "parquet"
     expected_version = plan.get("schema_version", SCHEMA_VERSION)
     expected_fingerprint = plan.get("input_fingerprint", "")
@@ -594,6 +604,11 @@ def merge_partition_artifacts(
     carried_filings = 0
     carried_duplicates: set[str] = set()
     carried: dict | None = None
+    root = _artifact_root(artifacts_dir, output_path)
+    metadata_paths = resolve_metadata_paths(env={"ARTIFACTS_ROOT": root})
+    snapshot_id = plan.get("snapshot_id", Path(artifacts_dir).name)
+    resolved_parts: list[dict] = []
+
     with connect() as con:
         for partition in ordered_partitions:
             partition_id = partition["partition_id"]
@@ -634,6 +649,36 @@ def merge_partition_artifacts(
                 carried["artifact_sha256"][:12],
             )
             combined_files.append(str(path))
+
+            # Copy partition artifact to snapshot parts directory
+            shard_name = f"shard-{partition_id:04d}"
+            target_part = (
+                metadata_paths.snapshot_parts_dir(snapshot_id, shard_name)
+                / "part-000.parquet"
+            )
+            target_part.parent.mkdir(parents=True, exist_ok=True)
+            if str(path.resolve()) != str(target_part.resolve()) and (
+                not target_part.exists()
+                or file_sha256(str(target_part)) != carried["artifact_sha256"]
+            ):
+                tmp_t = target_part.with_suffix(".tmp")
+                shutil.copyfile(str(path), str(tmp_t))
+                os.replace(str(tmp_t), str(target_part))
+
+            cik_min, cik_max = parquet_column_bounds(con, target_part, "cik")
+
+            resolved_parts.append(
+                {
+                    "path": str(target_part.relative_to(Path(root))),
+                    "artifact_sha256": carried["artifact_sha256"],
+                    "row_count": carried["row_count"],
+                    "byte_count": target_part.stat().st_size,
+                    "cik_min": cik_min,
+                    "cik_max": cik_max,
+                    "shard_id": shard_name,
+                }
+            )
+
         if carried_rows != plan.get("row_count"):
             raise MergeError("merged partition artifacts do not cover the planned CIKs")
         report.duplicate_accessions = sorted(carried_duplicates)
@@ -643,79 +688,75 @@ def merge_partition_artifacts(
             progress,
             {"type": "merge_stage", "stage": "validate", "rows": report.row_count},
         )
-        if len(combined_files) == 1:
-            # One artifact covers the whole plan and it just passed integrity
-            # verification: a byte copy is the exact, fastest publication.
-            source_path = combined_files[0]
-            if os.path.abspath(source_path) == os.path.abspath(output_path):
-                finalized_count = carried_rows
+
+        # Support singular parquet output if output_path is provided
+        if output_path and (
+            output_path.endswith(".parquet") or not output_path.endswith(".json")
+        ):
+            if len(combined_files) == 1:
+                source_path = combined_files[0]
+                if os.path.abspath(source_path) != os.path.abspath(output_path):
+                    os.makedirs(
+                        os.path.dirname(os.path.abspath(output_path)), exist_ok=True
+                    )
+                    tmp_output = output_path + ".tmp"
+                    shutil.copyfile(source_path, tmp_output)
+                    os.replace(tmp_output, output_path)
             else:
-                os.makedirs(
-                    os.path.dirname(os.path.abspath(output_path)), exist_ok=True
+                concat_to_parquet(
+                    con, artifact_format, combined_files, spec, output_path
                 )
-                tmp_output = output_path + ".tmp"
-                shutil.copyfile(source_path, tmp_output)
-                os.replace(tmp_output, output_path)
-                finalized_count = count_rows(con, output_path)
-            report.artifact_sha256 = carried["artifact_sha256"]
-            logger.info(
-                "final merge: single-partition fast path, copied %s -> %s",
-                source_path,
-                output_path,
-            )
-        else:
-            concat_to_parquet(con, artifact_format, combined_files, spec, output_path)
-            finalized_count = count_rows(con, output_path)
+
         _emit(
             progress,
             {"type": "merge_stage", "stage": "publish", "rows": report.row_count},
         )
-    if finalized_count != report.row_count:
-        raise MergeError(
-            "finalized artifact row count differs from partition artifacts"
-        )
-    _emit(progress, {"type": "readback_done", "rows": finalized_count})
+
+    # Publish snapshot manifest
+    snapshot_manifest_data = make_snapshot_manifest(
+        snapshot_id=snapshot_id,
+        schema_version=expected_version,
+        resolved_parts=resolved_parts,
+        effective_cik_count=carried_rows,
+        effective_input_fingerprint=expected_fingerprint,
+        plan_id=plan.get("plan_id", snapshot_id),
+        dataset="submission_metadata",
+        phase="metadata",
+    )
+    snapshot_manifest_path = publish_snapshot_manifest(
+        snapshot_manifest_data,
+        artifacts_root=root,
+        set_current=not plan.get("augmentation"),
+    )
+
+    report.artifact_sha256 = (
+        carried["artifact_sha256"]
+        if len(combined_files) == 1
+        else file_sha256(str(snapshot_manifest_path))
+    )
+    _emit(progress, {"type": "readback_done", "rows": carried_rows})
     logger.info(
-        "final merge: artifact validated (rows=%d) -> %s", finalized_count, output_path
+        "final merge: snapshot validated (rows=%d) -> %s",
+        carried_rows,
+        snapshot_manifest_path,
     )
     _add_duplicate_warning(report)
     report.report_source = "finalized_artifact"
-    report.output_path = os.path.abspath(output_path)
+    report.output_path = (
+        os.path.abspath(output_path)
+        if output_path and output_path.endswith(".parquet")
+        else str(snapshot_manifest_path)
+    )
     report_path = merge_report_path_in(artifacts_dir)
     atomic_write_json(report_path, report.to_dict(), indent=2, sort_keys=True)
 
-    # Augmentation artifacts are already versioned under manifests and must not
-    # overwrite the fresh-run logical dataset path.
-    if plan.get("augmentation"):
+    if output_path and output_path.endswith(".parquet"):
         _publish_handoff(
             output_path,
             artifacts_dir=artifacts_dir,
             row_count=report.row_count,
         )
-    else:
-        # Publish to the standard manifests dataset path for fresh runs.
-        root = _artifact_root(artifacts_dir, output_path)
-        published_path = (
-            resolve_paths(env={"ARTIFACTS_ROOT": root})
-            .phase("metadata")
-            .published_dataset("submission_metadata", "parquet")
-        )
-        if os.path.abspath(output_path) != os.path.abspath(published_path):
-            published_path.parent.mkdir(parents=True, exist_ok=True)
-            tmp_pub = str(published_path) + ".tmp"
-            shutil.copyfile(output_path, tmp_pub)
-            os.replace(tmp_pub, str(published_path))
-            _publish_handoff(
-                str(published_path),
-                artifacts_dir=artifacts_dir,
-                row_count=report.row_count,
-            )
-        else:
-            _publish_handoff(
-                output_path,
-                artifacts_dir=artifacts_dir,
-                row_count=report.row_count,
-            )
+
     return report
 
 

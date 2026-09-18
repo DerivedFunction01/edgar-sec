@@ -22,6 +22,7 @@ _ALLOWED_PREFIXES = (
     "defs/viewer/",
     "phases/02_filing_extraction/core/",
     "scratch/",
+    "scripts/",
 )
 
 

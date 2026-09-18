@@ -2,17 +2,21 @@
 
 from __future__ import annotations
 
+import os
+import shutil
 from pathlib import Path
 
 from defs.runtime.artifacts import (
     artifact_id,
     find_manifests,
     make_manifest,
+    make_snapshot_manifest,
     manifest_relative_path,
     publish_manifest,
+    publish_snapshot_manifest,
     resolve_manifest,
 )
-from defs.runtime.paths import merge_report_path_in, resolve_paths
+from defs.runtime.paths import merge_report_path_in
 from defs.runtime.resources import derive_resources
 from defs.storage import (
     atomic_write_json,
@@ -57,9 +61,10 @@ def write_worklist(
     base_manifest: dict,
     root: Path,
 ) -> tuple[Path, dict]:
-    worklist_root = resolve_paths(
-        env={"ARTIFACTS_ROOT": str(root)}
-    ).metadata_augmentation_worklist_root(options.run_id)
+    from .paths import resolve_metadata_paths
+
+    metadata_paths = resolve_metadata_paths(env={"ARTIFACTS_ROOT": str(root)})
+    worklist_root = metadata_paths.worklist_root(options.run_id)
     worklist_root.mkdir(parents=True, exist_ok=True)
     path = worklist_root / "worklist.parquet"
     records = [
@@ -126,13 +131,11 @@ def load_plan_rows(options: RunOptions, plan: dict) -> tuple[list[TargetRow], di
 
 
 def output_paths(options: RunOptions) -> tuple[Path, Path, Path, Path]:
+    from .paths import resolve_metadata_paths
+
     root = artifacts_root(options.base_metadata_manifest or options.artifacts_dir)
-    output_root = (
-        resolve_paths(
-            env={"ARTIFACTS_ROOT": str(root)}
-        ).metadata_augmentation_snapshot_dir()
-        / options.run_id
-    )
+    metadata_paths = resolve_metadata_paths(env={"ARTIFACTS_ROOT": str(root)})
+    output_root = metadata_paths.snapshots_dir / options.run_id
     return (
         root,
         output_root / "submission_metadata_delta.parquet",
@@ -143,8 +146,10 @@ def output_paths(options: RunOptions) -> tuple[Path, Path, Path, Path]:
 
 def discover_source_manifests(root: str | Path) -> list[dict]:
     """List published company-ticker source manifests, latest first."""
-    paths = resolve_paths(env={"ARTIFACTS_ROOT": str(root)})
-    directories = (paths.metadata_source_manifest_dir("company_tickers"),)
+    from .paths import resolve_metadata_paths
+
+    metadata_paths = resolve_metadata_paths(env={"ARTIFACTS_ROOT": str(root)})
+    directories = (metadata_paths.source_manifest_dir("company_tickers"),)
     entries: list[dict] = []
     seen: set[str] = set()
     for directory in directories:
@@ -175,6 +180,8 @@ def discover_source_manifests(root: str | Path) -> list[dict]:
 
 def discover_base_metadata_manifests(root: str | Path) -> list[dict]:
     """List finalized metadata manifests usable as augmentation bases."""
+    from .paths import resolve_metadata_paths
+
     entries: list[dict] = []
     for manifest in find_manifests(
         "submission_metadata", phase="metadata", artifacts_root=str(root)
@@ -194,9 +201,8 @@ def discover_base_metadata_manifests(root: str | Path) -> list[dict]:
                 "run_id": str(manifest.get("run_id", "")),
             }
         )
-    snapshot_dir = resolve_paths(
-        env={"ARTIFACTS_ROOT": str(root)}
-    ).metadata_augmentation_snapshot_dir()
+    metadata_paths = resolve_metadata_paths(env={"ARTIFACTS_ROOT": str(root)})
+    snapshot_dir = metadata_paths.snapshots_dir
     for path in sorted(snapshot_dir.glob("*/snapshot.json")):
         try:
             snapshot = load_json(path)
@@ -217,35 +223,39 @@ def discover_base_metadata_manifests(root: str | Path) -> list[dict]:
     return entries
 
 
+def _quote(value: str) -> str:
+    return "'" + str(value).replace("'", "''") + "'"
+
+
 def publish_snapshot(
     options: RunOptions,
     delta_report: MergeReport,
     delta_path: Path,
     full_path_override: Path | None = None,
 ) -> MergeReport:
-    root, _default_delta_path, default_full_path, snapshot_manifest_path = output_paths(
-        options
+    from .paths import resolve_metadata_paths
+
+    root, _default_delta_path, default_full_path, _snapshot_manifest_path = (
+        output_paths(options)
     )
-    full_path = full_path_override or default_full_path
+    metadata_paths = resolve_metadata_paths(env={"ARTIFACTS_ROOT": str(root)})
     base_manifest, base_path = resolve_manifest(
         options.base_metadata_manifest, artifacts_root=str(root)
     )
-    if full_path.exists():
-        raise MergeError(
-            f"immutable augmented metadata artifact already exists: {full_path}"
-        )
-    # Wide nested-payload sorts (base plus delta union) must run under the
-    # machine-derived profile: below-availability memory limit, managed spill
-    # directory, and profiled thread count. Unprofiled DuckDB defaults OOM.
+
     resources = derive_resources()
     base = FinalizedArtifact(
-        base_path,
+        base_path
+        if base_path.is_file() and base_path.suffix == ".parquet"
+        else base_manifest,
+        artifacts_root=root,
         threads=resources.threads,
         memory_limit=resources.memory_limit,
         temp_directory=resources.temp_directory,
     )
     delta = FinalizedArtifact(
         delta_path,
+        artifacts_root=root,
         threads=resources.threads,
         memory_limit=resources.memory_limit,
         temp_directory=resources.temp_directory,
@@ -260,59 +270,95 @@ def publish_snapshot(
             raise MergeError(
                 f"augmentation merge found {overlap} CIKs in both base and delta"
             )
-        full_count = base.copy_union(delta_path, full_path, order_by="cik")
+        full_path = (
+            full_path_override if full_path_override is not None else default_full_path
+        )
+        if full_path is not None and not Path(full_path).exists():
+            Path(full_path).parent.mkdir(parents=True, exist_ok=True)
+            base.copy_union(delta_path, full_path)
     finally:
         base.close()
         delta.close()
-    if full_count != base_count + delta_count:
-        raise MergeError("augmented metadata row count differs from base plus delta")
+
+    # Move/copy delta part to snapshot parts directory
+    delta_part_path = (
+        metadata_paths.snapshot_parts_dir(options.run_id, "shard-0000")
+        / "part-000.parquet"
+    )
+    delta_part_path.parent.mkdir(parents=True, exist_ok=True)
+    if str(delta_path.resolve()) != str(delta_part_path.resolve()):
+        tmp_d = delta_part_path.with_suffix(".tmp")
+        shutil.copyfile(str(delta_path), str(tmp_d))
+        os.replace(str(tmp_d), str(delta_part_path))
+
+    delta_hash = file_sha256(str(delta_part_path))
+    delta_part_entry = {
+        "path": str(delta_part_path.relative_to(root)),
+        "artifact_sha256": delta_hash,
+        "row_count": delta_count,
+        "byte_count": delta_part_path.stat().st_size,
+        "shard_id": "shard-0000",
+    }
+
+    # Resolve base parts
+    base_parts = []
+    if "resolved_parts" in base_manifest:
+        base_parts = list(base_manifest["resolved_parts"])
+    else:
+        base_parts = [
+            {
+                "path": str(base_path.relative_to(root)),
+                "artifact_sha256": base_manifest.get("artifact_sha256")
+                or file_sha256(str(base_path)),
+                "row_count": base_count,
+                "byte_count": base_path.stat().st_size if base_path.is_file() else 0,
+                "shard_id": "shard-0000",
+            }
+        ]
+
+    resolved_parts = base_parts + [delta_part_entry]
+    full_count = base_count + delta_count
+
     delta_manifest = make_manifest(
         dataset="submission_metadata",
         phase="metadata",
         run_id=options.run_id,
         schema_version=SCHEMA_VERSION,
-        artifact_path=str(delta_path),
+        artifact_path=str(delta_part_path),
         artifacts_root=str(root),
         row_count=delta_count,
         upstream=(base_manifest["artifact_id"],),
         provenance={"report_source": "augmentation_delta"},
     )
     publish_manifest(delta_manifest, artifacts_root=str(root))
-    full_manifest = make_manifest(
+
+    snapshot_manifest_data = make_snapshot_manifest(
+        snapshot_id=options.run_id,
+        parent_snapshot_id=base_manifest.get(
+            "snapshot_id", base_manifest.get("artifact_id")
+        ),
+        schema_version=SCHEMA_VERSION,
+        resolved_parts=resolved_parts,
+        added_parts=[delta_part_entry],
+        effective_cik_count=full_count,
+        plan_id=options.run_id,
         dataset="submission_metadata",
         phase="metadata",
-        run_id=options.run_id,
-        schema_version=SCHEMA_VERSION,
-        artifact_path=str(full_path),
-        artifacts_root=str(root),
-        row_count=full_count,
-        upstream=(base_manifest["artifact_id"], delta_manifest["artifact_id"]),
         provenance={
             "report_source": "augmented_snapshot",
-            "delta_artifact_sha256": file_sha256(delta_path),
+            "delta_artifact_sha256": delta_hash,
+            "source_manifest": options.source_manifest,
+            "base_metadata_manifest": options.base_metadata_manifest,
         },
     )
-    publish_manifest(full_manifest, artifacts_root=str(root))
-    snapshot_manifest = {
-        "manifest_kind": "submission_metadata_snapshot",
-        "manifest_schema_version": SCHEMA_VERSION,
-        "snapshot_id": options.run_id,
-        "parent_metadata_manifest_id": base_manifest["artifact_id"],
-        "delta_artifact_manifest_id": delta_manifest["artifact_id"],
-        "full_artifact_manifest_id": full_manifest["artifact_id"],
-        "delta_artifact_path": str(delta_path),
-        "delta_artifact_sha256": file_sha256(delta_path),
-        "full_artifact_path": str(full_path),
-        "full_artifact_sha256": full_manifest["artifact_sha256"],
-        "row_count": full_count,
-        "source_manifest": options.source_manifest,
-        "base_metadata_manifest": options.base_metadata_manifest,
-        "plan_path": _relative(Path(options.artifacts_dir) / "plan.json", root),
-        "validation_status": "ok",
-    }
-    atomic_write_json(snapshot_manifest_path, snapshot_manifest, indent=None)
-    delta_report.output_path = str(full_path)
-    delta_report.artifact_sha256 = full_manifest["artifact_sha256"]
+    manifest_path = publish_snapshot_manifest(
+        snapshot_manifest_data,
+        artifacts_root=root,
+        set_current=True,
+    )
+
+    delta_report.output_path = str(manifest_path)
+    delta_report.artifact_sha256 = file_sha256(str(manifest_path))
     delta_report.row_count = full_count
     delta_report.report_source = "augmented_snapshot"
     atomic_write_json(

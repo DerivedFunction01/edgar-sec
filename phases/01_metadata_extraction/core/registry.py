@@ -6,7 +6,6 @@ from collections import defaultdict
 from pathlib import Path
 
 from defs.runtime.artifacts import artifact_id
-from defs.runtime.paths import resolve_paths
 from defs.storage import (
     atomic_write_json,
     atomic_write_text,
@@ -126,9 +125,11 @@ def compare_sources(
     registry_id = _registry_id(
         source.manifest["snapshot_id"], curated_report["fingerprint"]
     )
-    paths = resolve_paths(env={"ARTIFACTS_ROOT": str(root)})
-    registry_root = paths.registry_snapshot_root(registry_id)
-    registry_manifest_root = paths.registry_manifest_root(registry_id)
+    from .paths import resolve_metadata_paths
+
+    metadata_paths = resolve_metadata_paths(env={"ARTIFACTS_ROOT": str(root)})
+    registry_root = metadata_paths.registry_snapshot_root(registry_id)
+    registry_manifest_root = metadata_paths.registry_manifest_root(registry_id)
     registry_root.mkdir(parents=True, exist_ok=True)
     registry_manifest_root.mkdir(parents=True, exist_ok=True)
     listing_path = registry_manifest_root / "listing_observations.parquet"

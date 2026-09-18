@@ -10,7 +10,6 @@ from datetime import UTC, datetime
 from pathlib import Path
 from typing import Any
 
-from defs.runtime.paths import resolve_paths
 from defs.sec_http import make_sec_http_client
 from defs.storage import (
     atomic_write_bytes,
@@ -163,10 +162,12 @@ def parse_company_tickers(
 
 
 def _paths(root: Path, snapshot_id: str) -> tuple[Path, Path]:
-    paths = resolve_paths(env={"ARTIFACTS_ROOT": str(root)})
+    from .paths import resolve_metadata_paths
+
+    metadata_paths = resolve_metadata_paths(env={"ARTIFACTS_ROOT": str(root)})
     return (
-        paths.metadata_source_snapshot_path(SOURCE_NAME, snapshot_id),
-        paths.metadata_source_manifest_path(SOURCE_NAME, snapshot_id),
+        metadata_paths.source_snapshot_path(SOURCE_NAME, snapshot_id),
+        metadata_paths.source_manifest_path(SOURCE_NAME, snapshot_id),
     )
 
 

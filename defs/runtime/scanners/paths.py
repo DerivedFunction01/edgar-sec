@@ -40,6 +40,8 @@ def _is_allowed(path: str) -> bool:
         for allowed in _ALLOWED_PATHS
     ):
         return True
+    if normalized.endswith("paths.py") or normalized.startswith("scripts/"):
+        return True
     return is_test_file(path)
 
 

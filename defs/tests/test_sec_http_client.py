@@ -7,6 +7,7 @@ cache hits never acquire a transport slot.
 
 from __future__ import annotations
 
+import sqlite3
 import threading
 import time
 
@@ -132,6 +133,81 @@ def test_sec_cache_hit_does_not_acquire_slot(tmp_path):
     client.get_json(url)
     assert raw_calls == []
     assert session.calls == 1  # unchanged
+
+
+def test_expired_json_cache_entry_fetches_again(tmp_path):
+    session = _CountingSession(lambda url: _FakeResponse(200, b'{"fresh":true}'))
+    client = SecHttpClient(
+        user_agent="App/1.0 a@b.com",
+        session_factory=lambda: session,
+        cache_dir=str(tmp_path / "cache"),
+        json_ttl_s=90 * 24 * 60 * 60,
+        rate_limiter=RateLimiter(min_interval_s=1e-6),
+        retry_policy=RetryPolicy(max_retries=0),
+    )
+    url = "https://data.sec.gov/submissions/CIK0000000001.json"
+    client.get_json(url)
+    with sqlite3.connect(tmp_path / "cache" / "responses.sqlite") as conn:
+        conn.execute("UPDATE url_responses SET expires_at = '2000-01-01T00:00:00Z'")
+        conn.commit()
+
+    assert client.get_json(url) == {"fresh": True}
+    assert session.calls == 2
+
+
+def test_expired_json_does_not_fall_back_to_stale_payload(tmp_path):
+    session = _CountingSession(lambda url: _FakeResponse(503, b"unavailable"))
+    client = SecHttpClient(
+        user_agent="App/1.0 a@b.com",
+        session_factory=lambda: session,
+        cache_dir=str(tmp_path / "cache"),
+        rate_limiter=RateLimiter(min_interval_s=1e-6),
+        retry_policy=RetryPolicy(max_retries=0),
+    )
+    url = "https://data.sec.gov/submissions/CIK0000000001.json"
+    client._cache.put(url, b'{"stale":true}', "hash", 14, "json")
+    with sqlite3.connect(tmp_path / "cache" / "responses.sqlite") as conn:
+        conn.execute("UPDATE url_responses SET expires_at = '2000-01-01T00:00:00Z'")
+        conn.commit()
+
+    with pytest.raises(RetryExhausted):
+        client.get_json(url)
+    assert session.calls == 1
+
+
+def test_force_refresh_bypasses_fresh_cache(tmp_path):
+    payloads = iter((b'{"version":1}', b'{"version":2}'))
+    session = _CountingSession(lambda url: _FakeResponse(200, next(payloads)))
+    client = SecHttpClient(
+        user_agent="App/1.0 a@b.com",
+        session_factory=lambda: session,
+        cache_dir=str(tmp_path / "cache"),
+        rate_limiter=RateLimiter(min_interval_s=1e-6),
+        retry_policy=RetryPolicy(max_retries=0),
+    )
+    url = "https://data.sec.gov/submissions/CIK0000000001.json"
+    assert client.get_json(url) == {"version": 1}
+    assert client.get_json(url, force_refresh=True) == {"version": 2}
+    assert client.get_json(url) == {"version": 2}
+    assert session.calls == 2
+
+
+def test_static_archive_cache_never_expires(tmp_path):
+    session = _CountingSession(lambda url: _FakeResponse(200, b"<html>static</html>"))
+    client = SecHttpClient(
+        user_agent="App/1.0 a@b.com",
+        session_factory=lambda: session,
+        cache_dir=str(tmp_path / "cache"),
+        rate_limiter=RateLimiter(min_interval_s=1e-6),
+        retry_policy=RetryPolicy(max_retries=0),
+    )
+    url = "https://www.sec.gov/Archives/edgar/data/1/doc.htm"
+    assert client.get_bytes(url) == b"<html>static</html>"
+    with sqlite3.connect(tmp_path / "cache" / "responses.sqlite") as conn:
+        conn.execute("UPDATE url_responses SET fetched_at = '2000-01-01T00:00:00Z'")
+        conn.commit()
+    assert client.get_bytes(url) == b"<html>static</html>"
+    assert session.calls == 1
 
 
 def test_get_bytes_returns_raw_payload_without_decoding():
