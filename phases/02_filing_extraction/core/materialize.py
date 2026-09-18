@@ -123,10 +123,12 @@ def _catalog_id(source_hash: str, config: dict) -> str:
     return hashlib.sha256(value.encode()).hexdigest()[:24]
 
 
-def _publish_file(source: Path, destination: Path) -> None:
+def _publish_file(
+    source: Path, destination: Path, *, allow_overwrite: bool = False
+) -> None:
     """Copy a validated staging file into its durable location atomically."""
     destination.parent.mkdir(parents=True, exist_ok=True)
-    if destination.exists():
+    if destination.exists() and not allow_overwrite:
         if _sha256(source) != _sha256(destination):
             raise StorageError(f"conflicting immutable output: {destination}")
         return
@@ -350,7 +352,7 @@ def materialize(
             )
             / "company_profiles.parquet"
         )
-        _publish_file(profile_path, profile_destination)
+        _publish_file(profile_path, profile_destination, allow_overwrite=True)
         handoff_root = artifacts_root
         profile_manifest = make_manifest(
             dataset="company_profiles",
@@ -374,11 +376,14 @@ def materialize(
         force_reclaim_memory()
 
         # Stage 2: Batched CIK Streaming into Form-Partitioned Parquet Files
+        unnest_relation = artifact.added_relation or artifact.relation
+        is_delta_materialize = artifact.added_relation is not None
+
         ciks = [
             r[0]
             for r in artifact.run(
                 f"SELECT cik\n"
-                f"FROM {artifact.relation}\n"
+                f"FROM {unnest_relation}\n"
                 f"WHERE cik IS NOT NULL\n"
                 f"ORDER BY cik"
             )
@@ -414,7 +419,7 @@ def materialize(
             r[0]
             for r in artifact.run(
                 f"SELECT DISTINCT unnest(filings).form\n"
-                f"FROM {artifact.relation}\n"
+                f"FROM {unnest_relation}\n"
                 f"WHERE filings IS NOT NULL"
             )
             if r[0]
@@ -468,7 +473,7 @@ def materialize(
                                   t.cik, filing.accession_number_normalized
                               ) = '{PATH_SOURCE_BUNDLE}'
                     ) AS emitted_submission_bundle
-                FROM {artifact.relation} AS t, LATERAL unnest(t.filings) AS u(filing)
+                FROM {unnest_relation} AS t, LATERAL unnest(t.filings) AS u(filing)
                 """
             )
             keys = (
@@ -549,7 +554,7 @@ def materialize(
                             filing.is_xbrl AS is_xbrl,
                             filing.is_inline_xbrl AS is_inline_xbrl,
                             filing.is_xbrl_numeric AS is_xbrl_numeric
-                        FROM {artifact.relation} AS t, LATERAL unnest(t.filings) AS u(filing)
+                        FROM {unnest_relation} AS t, LATERAL unnest(t.filings) AS u(filing)
                         WHERE t.cik >= ? AND t.cik <= ?
                           AND filing.form IS NOT NULL
                           AND filing_effective_path(
@@ -607,10 +612,15 @@ def materialize(
             if not parquet_files:
                 continue
 
-            if len(parquet_files) == 1:
-                shutil.copyfile(parquet_files[0], dest_file)
+            final_dest_file = final_target_root / f"form={part_key}" / "data.parquet"
+            candidate_files = [str(p) for p in parquet_files]
+            if is_delta_materialize and final_dest_file.exists():
+                candidate_files = [str(final_dest_file)] + candidate_files
+
+            if len(candidate_files) == 1:
+                shutil.copyfile(candidate_files[0], dest_file)
             else:
-                file_list = ", ".join(f"'{p}'" for p in parquet_files)
+                file_list = ", ".join(f"'{p}'" for p in candidate_files)
                 concat_q = (
                     f"COPY (\n"
                     f"  SELECT *\n"
@@ -633,8 +643,7 @@ def materialize(
                 form_partition_mapping[form_name_str] = part_key
                 total_count += int(row_cnt)
 
-            final_dest_file = final_target_root / f"form={part_key}" / "data.parquet"
-            _publish_file(dest_file, final_dest_file)
+            _publish_file(dest_file, final_dest_file, allow_overwrite=True)
             target_manifest = make_manifest(
                 dataset="filing_targets",
                 phase="filing_extraction",
@@ -670,14 +679,34 @@ def materialize(
 
         # Stage 3: Occurrence Sources (Streaming Distinct Query from Flat Targets)
         target_files = sorted(target_root.glob("form=*/data.parquet"))
+        sources_destination = (
+            resolved_paths.project.dataset_manifests(
+                "filing_extraction", "filing_occurrence_sources"
+            )
+            / "filing_occurrence_sources.parquet"
+        )
         if target_files:
             file_list = ", ".join(f"'{p}'" for p in target_files)
-            sources_query = (
-                f"SELECT DISTINCT\n"
-                f"    occurrence_id, source_cik, accession, document_path,\n"
-                f"    source_section, source_file, source_array_index\n"
-                f"FROM read_parquet([{file_list}])"
-            )
+            if is_delta_materialize and sources_destination.exists():
+                sources_query = (
+                    f"SELECT DISTINCT\n"
+                    f"    occurrence_id, source_cik, accession, document_path,\n"
+                    f"    source_section, source_file, source_array_index\n"
+                    f"FROM (\n"
+                    f"    SELECT occurrence_id, source_cik, accession, document_path, source_section, source_file, source_array_index\n"
+                    f"    FROM read_parquet('{sources_destination}')\n"
+                    f"    UNION ALL\n"
+                    f"    SELECT occurrence_id, source_cik, accession, document_path, source_section, source_file, source_array_index\n"
+                    f"    FROM read_parquet([{file_list}])\n"
+                    f")"
+                )
+            else:
+                sources_query = (
+                    f"SELECT DISTINCT\n"
+                    f"    occurrence_id, source_cik, accession, document_path,\n"
+                    f"    source_section, source_file, source_array_index\n"
+                    f"FROM read_parquet([{file_list}])"
+                )
         else:
             sources_query = (
                 f"SELECT DISTINCT\n"
@@ -685,20 +714,14 @@ def materialize(
                 f"    t.cik AS source_cik, filing_accession(filing.accession_number_normalized) AS accession,\n"
                 f"    filing_effective_path(filing.primary_document, filing.archive_url, t.cik, filing.accession_number_normalized) AS document_path,\n"
                 f"    filing.source_section, filing.source_file, filing.source_array_index\n"
-                f"FROM {artifact.relation} AS t, LATERAL unnest(t.filings) AS u(filing)\n"
+                f"FROM {unnest_relation} AS t, LATERAL unnest(t.filings) AS u(filing)\n"
                 f"WHERE filing.form IS NOT NULL\n"
                 f"  AND filing_accession(filing.accession_number_normalized) IS NOT NULL\n"
                 f"  AND filing_effective_path(filing.primary_document, filing.archive_url, t.cik, filing.accession_number_normalized) IS NOT NULL"
             )
         sources_path = root / "filing_occurrence_sources.parquet"
         source_count = artifact.copy_query(sources_query, str(sources_path))
-        sources_destination = (
-            resolved_paths.project.dataset_manifests(
-                "filing_extraction", "filing_occurrence_sources"
-            )
-            / "filing_occurrence_sources.parquet"
-        )
-        _publish_file(sources_path, sources_destination)
+        _publish_file(sources_path, sources_destination, allow_overwrite=True)
         sources_manifest = make_manifest(
             dataset="filing_occurrence_sources",
             phase="filing_extraction",

@@ -202,6 +202,28 @@ class CompanyFamilyIndex:
         return index
 
     @classmethod
+    def from_existing_profiles(
+        cls, profiles_path: Path | str, *, seed_string: str = SEED
+    ) -> CompanyFamilyIndex:
+        """Load an index from a previously materialized company_profiles.parquet."""
+        from defs.storage import connect
+
+        p = Path(profiles_path).resolve()
+        if not p.is_file():
+            raise FileNotFoundError(f"company profiles file not found: {p}")
+        ciks, names = [], []
+        with connect() as con:
+            for r_cik, name in con.execute(
+                f"SELECT cik, identity.name FROM read_parquet('{p}') WHERE cik IS NOT NULL"
+            ).fetchall():
+                if r_cik and name:
+                    digits = "".join(ch for ch in str(r_cik) if ch.isdigit())
+                    if digits:
+                        ciks.append(f"{int(digits):010d}")
+                        names.append(str(name))
+        return cls.build_from_records(list(zip(ciks, names)), seed_string=seed_string)
+
+    @classmethod
     def build_from_records(
         cls,
         records: list[tuple[str, str]],
@@ -257,18 +279,14 @@ class CompanyFamilyIndex:
 
         alias_map: dict[tuple[str, ...], tuple[str, ...]] = {}
         for head in sorted(head_clusters.keys(), key=lambda h: (len(h), h)):
-            if len(head) < 2:
+            if len(head) < 2 or len("".join(head)) < MIN_ALIAS_CHARS:
                 continue
             flat = "".join(head)
-            if len(flat) < MIN_ALIAS_CHARS:
-                continue
-            candidates = []
-            for other in head_clusters:
-                if other == head or len(other) < 2:
-                    continue
-                other_flat = "".join(other)
-                if other_flat.startswith(flat):
-                    candidates.append(other)
+            candidates = [
+                o
+                for o in head_clusters
+                if o != head and len(o) >= 2 and "".join(o).startswith(flat)
+            ]
             if len(candidates) == 1:
                 alias_map[head] = candidates[0]
 
@@ -285,9 +303,8 @@ class CompanyFamilyIndex:
 
         root_members: dict[tuple[str, ...], list[dict[str, Any]]] = defaultdict(list)
         for r in pure_roots + protected_roots:
-            key = r["clean_key"]
-            if key:
-                root_members[key].append(r)
+            if r["clean_key"]:
+                root_members[r["clean_key"]].append(r)
 
         first_token_heads: dict[str, set[tuple[str, ...]]] = defaultdict(set)
         for head in resolved_clusters:
@@ -382,12 +399,7 @@ class CompanyFamilyIndex:
 
             for m in members:
                 info = CompanyFamilyInfo(
-                    cik=m["cik"],
-                    company_name=m["name"],
-                    family_id=fid,
-                    family_key=fam_key,
-                    representative_name=rep_name,
-                    is_variant=True,
+                    m["cik"], m["name"], fid, fam_key, rep_name, True
                 )
                 cik_to_info[m["cik"]] = info
                 name_to_info[m["name"].strip().lower()] = info
@@ -395,12 +407,7 @@ class CompanyFamilyIndex:
             for r in roots:
                 if r["cik"] not in cik_to_info:
                     info = CompanyFamilyInfo(
-                        cik=r["cik"],
-                        company_name=r["name"],
-                        family_id=fid,
-                        family_key=fam_key,
-                        representative_name=rep_name,
-                        is_variant=False,
+                        r["cik"], r["name"], fid, fam_key, rep_name, False
                     )
                     cik_to_info[r["cik"]] = info
                     name_to_info[r["name"].strip().lower()] = info
@@ -416,14 +423,7 @@ class CompanyFamilyIndex:
                 else r["name"].strip().lower()
             )
             fid = hashlib.md5(clean_k.replace(" ", "").encode()).hexdigest()[:12]
-            info = CompanyFamilyInfo(
-                cik=cik,
-                company_name=r["name"],
-                family_id=fid,
-                family_key=clean_k,
-                representative_name=r["name"],
-                is_variant=False,
-            )
+            info = CompanyFamilyInfo(cik, r["name"], fid, clean_k, r["name"], False)
             cik_to_info[cik] = info
             name_to_info[r["name"].strip().lower()] = info
 

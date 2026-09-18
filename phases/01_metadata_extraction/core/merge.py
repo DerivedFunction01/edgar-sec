@@ -594,7 +594,7 @@ def merge_partition_artifacts(
         0,
         0,
         plan_hash=plan_hash,
-        report_source="finalized_partition_artifacts",
+        report_source="finalized_artifact",
     )
     combined_files: list[str] = []
     ordered_partitions = sorted(partitions, key=lambda item: item["partition_id"])
@@ -683,6 +683,10 @@ def merge_partition_artifacts(
         if carried_rows != plan.get("row_count"):
             raise MergeError("merged partition artifacts do not cover the planned CIKs")
         report.duplicate_accessions = sorted(carried_duplicates)
+        if report.duplicate_accessions:
+            report.warnings.append(
+                f"detected {len(report.duplicate_accessions)} duplicate accessions across partitions"
+            )
         report.row_count = carried_rows
         report.filing_record_count = carried_filings
         _emit(

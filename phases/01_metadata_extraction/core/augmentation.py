@@ -339,7 +339,9 @@ def publish_snapshot(
     resolved_parts = base_parts + [delta_part_entry]
     full_count = base_count + delta_count
 
-    base_id = base_manifest.get("snapshot_id", base_manifest.get("artifact_id", "unknown"))
+    base_id = base_manifest.get(
+        "snapshot_id", base_manifest.get("artifact_id", "unknown")
+    )
     delta_manifest = make_manifest(
         dataset="submission_metadata",
         phase="metadata",
@@ -358,7 +360,6 @@ def publish_snapshot(
         parent_snapshot_id=base_manifest.get(
             "snapshot_id", base_manifest.get("artifact_id")
         ),
-
         schema_version=SCHEMA_VERSION,
         resolved_parts=resolved_parts,
         added_parts=[delta_part_entry],

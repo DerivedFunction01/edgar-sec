@@ -269,3 +269,106 @@ def test_catalog_identity_is_deterministic_and_policy_versioned(tmp_path):
         second["artifact_ids"]["company_profiles"]
         == manifest["artifact_ids"]["company_profiles"]
     )
+
+
+def test_delta_materialize_combines_partition_targets(tmp_path):
+    import json
+
+    from defs.storage import file_sha256
+
+    s0_part = tmp_path / "s0_part.parquet"
+    pq.write_table(
+        pa.Table.from_pylist(
+            [row("0000000001")], schema=schemas.SUBMISSION_METADATA_SCHEMA
+        ),
+        s0_part,
+    )
+    s1_part = tmp_path / "s1_part.parquet"
+    pq.write_table(
+        pa.Table.from_pylist(
+            [
+                row("0000000002", accession="0000000002-24-000001", form="10-K"),
+                row("0000000003", accession="0000000003-24-000001", form="10-Q"),
+            ],
+            schema=schemas.SUBMISSION_METADATA_SCHEMA,
+        ),
+        s1_part,
+    )
+
+    # 1. Materialize base S0
+    (tmp_path / "merge_report.json").write_text("{}", encoding="utf-8")
+    materializer.materialize(str(s0_part), str(tmp_path / "catalogs"))
+
+    # 2. Prepare multi-part S1 snapshot manifest
+    s1_manifest = {
+        "manifest_kind": "submission_metadata_snapshot",
+        "snapshot_id": "S1",
+        "parent_snapshot_id": "S0",
+        "schema_version": "1.0.0",
+        "effective_cik_count": 3,
+        "added_parts": [
+            {
+                "path": str(s1_part),
+                "artifact_sha256": file_sha256(str(s1_part)),
+                "row_count": 2,
+            }
+        ],
+        "resolved_parts": [
+            {
+                "path": str(s0_part),
+                "artifact_sha256": file_sha256(str(s0_part)),
+                "row_count": 1,
+            },
+            {
+                "path": str(s1_part),
+                "artifact_sha256": file_sha256(str(s1_part)),
+                "row_count": 2,
+            },
+        ],
+    }
+    s1_manifest_path = tmp_path / "s1_snapshot.manifest.json"
+    s1_manifest_path.write_text(json.dumps(s1_manifest), encoding="utf-8")
+
+    # 3. Materialize delta S1
+    delta_cat_manifest = materializer.materialize(
+        str(s1_manifest_path), str(tmp_path / "catalogs")
+    )
+    assert delta_cat_manifest["catalog_id"]
+
+    # 4. Verify form=10-K contains both base and delta rows
+    target_10k = (
+        tmp_path
+        / "manifests"
+        / "filing_extraction"
+        / "filing_targets"
+        / "final"
+        / "form=10-K"
+        / "data.parquet"
+    )
+    table_10k = pq.read_table(target_10k)
+    accessions_10k = sorted(table_10k.column("accession").to_pylist())
+    assert accessions_10k == ["000000000124000001", "000000000224000001"]
+
+    # 5. Verify form=10-Q exists and contains delta 10-Q row
+    target_10q = (
+        tmp_path
+        / "manifests"
+        / "filing_extraction"
+        / "filing_targets"
+        / "final"
+        / "form=10-Q"
+        / "data.parquet"
+    )
+    table_10q = pq.read_table(target_10q)
+    assert table_10q.column("accession").to_pylist() == ["000000000324000001"]
+
+    # 6. Verify company profiles has all 3 CIKs
+    profiles_table = pq.read_table(
+        tmp_path
+        / "manifests"
+        / "filing_extraction"
+        / "company_profiles"
+        / "final"
+        / "company_profiles.parquet"
+    )
+    assert len(profiles_table) == 3

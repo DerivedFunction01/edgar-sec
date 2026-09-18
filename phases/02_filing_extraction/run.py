@@ -1,15 +1,4 @@
-"""Interactive Phase 02 runner and launcher module.
-
-Selecting ``Phase 02: Filing Catalog`` from ``python run.py`` opens a
-phase-specific menu. Explicit subcommands (``materialize``, ``plan``,
-``status``) are forwarded verbatim to the canonical CLI so automation keeps one
-contract with the command surface.
-
-Phase 02 is a no-network workflow: it materializes a filing catalog from a
-finalized Phase 01 artifact and plans deterministic target selections. It never
-fetches, stores, or parses raw SEC filing documents; that is the separate
-Phase 2.5 acquisition boundary described in the phase and roadmap docs.
-"""
+"""Interactive Phase 02 runner and launcher module."""
 
 from __future__ import annotations
 
@@ -23,9 +12,10 @@ from pathlib import Path
 from tqdm import tqdm
 
 from defs.runtime import resolve_paths, resolve_source
+from defs.runtime.artifacts import get_current_snapshot_pointer
 from defs.runtime.progress import make_merge_progress_callback
 from defs.runtime.resources import derive_resources
-from defs.storage import StorageError
+from defs.storage import StorageError, load_json
 
 from .cli import main as cli_main
 from .core import config as phase_config
@@ -36,46 +26,107 @@ from .core.target_plan import expand, plan
 log = logging.getLogger("filing_extraction.run")
 
 
-def _prompt(prompt: str, default: str) -> str:
-    try:
-        raw = builtins.input(prompt).strip()
-        return raw or default
-    except EOFError:
-        return default
-
-
-def _read(prompt: str, default: str = "") -> str:
-    """Read a value, returning its displayed default on blank input or EOF."""
+def _prompt(prompt: str, default: str = "") -> str:
     try:
         return builtins.input(prompt).strip() or default
     except EOFError:
         return default
 
 
-def _phase_root() -> Path:
-    return resolve_paths("filing_extraction").phase_root
-
-
 def _default_source() -> tuple[str, str]:
-    """Return a safe default source kind/path for the common local workspace."""
     paths = resolve_paths()
+    pointer = get_current_snapshot_pointer(
+        paths.artifacts_root, phase="metadata", dataset="submission_metadata"
+    )
+    if pointer and "manifest_path" in pointer:
+        snap = paths.artifacts_root / pointer["manifest_path"]
+        if snap.is_file():
+            return "manifest", str(snap)
     try:
         manifests, _ = resolve_source("submission_metadata", phase="metadata")
-        manifest_path = paths.manifest_path_for(
+        m_path = paths.manifest_path_for(
             phase="metadata",
             dataset="submission_metadata",
             artifact_id_value=manifests[0]["artifact_id"],
             partition=manifests[0].get("partition", ""),
         )
-        return "manifest", str(manifest_path)
+        return "manifest", str(m_path)
     except (FileNotFoundError, OSError):
         pass
-    published = paths.published_dataset_path(
-        "metadata", "submission_metadata", "parquet"
+    pub = paths.published_dataset_path("metadata", "submission_metadata", "parquet")
+    return ("artifact", str(pub)) if pub.is_file() else ("artifact", "")
+
+
+def _get_context_summary() -> dict:
+    paths = resolve_paths("filing_extraction")
+    ctx: dict = {
+        "snapshot_id": None,
+        "ciks": 0,
+        "filings": 0,
+        "parts": 0,
+        "catalog_id": None,
+        "catalog_forms": 0,
+        "catalog_targets": 0,
+        "catalog_manifest": None,
+    }
+    pointer = get_current_snapshot_pointer(
+        paths.project.artifacts_root, phase="metadata", dataset="submission_metadata"
     )
-    if published.is_file():
-        return "artifact", str(published)
-    return "artifact", ""
+    if pointer and "manifest_path" in pointer:
+        snap_path = paths.project.artifacts_root / pointer["manifest_path"]
+        if snap_path.is_file():
+            ctx["snapshot_id"] = pointer.get("snapshot_id", "current")
+            with suppress(Exception):
+                snap_m = load_json(snap_path)
+                ctx["ciks"] = snap_m.get("row_count", 0)
+                ctx["filings"] = snap_m.get("filing_record_count", 0)
+                ctx["parts"] = len(snap_m.get("parts", []))
+
+    catalogs = discovery.discover_catalogs(str(paths.project.manifests_root))
+    if catalogs:
+        latest = catalogs[-1]
+        ctx.update(
+            catalog_id=latest["catalog_id"],
+            catalog_forms=latest.get("form_count", 0),
+            catalog_targets=latest.get("target_rows", 0),
+        )
+        art_ids = latest.get("artifact_ids", [])
+        if art_ids:
+            mf = (
+                paths.project.manifests_root
+                / "filing_extraction"
+                / latest["catalog_id"]
+                / "final"
+                / f"{art_ids[0]}.json"
+            )
+            ctx["catalog_manifest"] = str(mf) if mf.is_file() else None
+    return ctx
+
+
+def _print_context_header() -> None:
+    ctx = _get_context_summary()
+    print("=" * 70)
+    print("Phase 02: Filing Catalog (No-Network Materialize & Target Planner)")
+    print("-" * 70)
+    if ctx["snapshot_id"]:
+        print(
+            f"Active Upstream:  Snapshot {ctx['snapshot_id']} "
+            f"({ctx['ciks']:,} CIKs, {ctx['filings']:,} filing records, {ctx['parts']} parts)"
+        )
+    else:
+        print("Active Upstream:  (no active Phase 01 snapshot detected)")
+    if ctx["catalog_id"]:
+        print(
+            f"Existing Catalog: {ctx['catalog_id']} "
+            f"({ctx['catalog_forms']} forms, {ctx['catalog_targets']:,} targets)"
+        )
+        if ctx["snapshot_id"] and ctx["parts"] > 1:
+            print(
+                "Recommended Mode: Incremental Augmentation (Fast O(N_delta) delta pass)"
+            )
+    else:
+        print("Existing Catalog: (none - seed materialization required)")
+    print("=" * 70)
 
 
 def _select_catalog() -> str | None:
@@ -87,15 +138,15 @@ def _select_catalog() -> str | None:
         return None
     if len(catalogs) == 1:
         cat = catalogs[0]
-        rows = cat.get("target_rows", 0)
-        forms = cat.get("form_count", 0)
-        print(f"  Catalog: {cat['catalog_id']} ({rows:,} targets, {forms} forms)")
+        print(
+            f"  Catalog: {cat['catalog_id']} ({cat.get('target_rows', 0):,} targets, {cat.get('form_count', 0)} forms)"
+        )
         return cat["catalog_id"]
     print("  Multiple catalogs found; choose one:")
-    for index, catalog in enumerate(catalogs, start=1):
-        rows = catalog.get("target_rows", 0)
-        forms = catalog.get("form_count", 0)
-        print(f"    {index}. {catalog['catalog_id']} ({rows:,} targets, {forms} forms)")
+    for i, cat in enumerate(catalogs, start=1):
+        print(
+            f"    {i}. {cat['catalog_id']} ({cat.get('target_rows', 0):,} targets, {cat.get('form_count', 0)} forms)"
+        )
     choice = _prompt(f"Select catalog [1-{len(catalogs)}] [1]: ", "1")
     try:
         idx = int(choice) - 1
@@ -106,77 +157,43 @@ def _select_catalog() -> str | None:
     return catalogs[0]["catalog_id"]
 
 
-def _default_catalog_root() -> str:
-    return str(resolve_paths("filing_extraction").catalogs_root)
-
-
-def _default_runs_root() -> str:
-    return str(resolve_paths("filing_extraction").runs_root)
-
-
-def _prompt_int(prompt: str) -> int | None:
-    raw = _read(prompt)
-    if raw == "":
-        return None
-    try:
-        return int(raw)
-    except ValueError:
-        print(f"  invalid integer: {raw!r}")
-        return None
-
-
 class _StageBar:
-    """tqdm stage bar driven by merge-style and batched progress events.
-
-    Stage totals are announced when forms are discovered, while batch updates
-    report live progress during the longest unnest streaming phase.
-    """
-
     def __init__(self, desc: str) -> None:
         self._bar = tqdm(total=None, unit="stage", desc=desc)
         self._adapter = make_merge_progress_callback(self._bar)
 
     def __call__(self, event: dict) -> None:
-        event_type = event.get("type")
-        if event_type == "batch_done":
-            batch = event.get("batch", 1)
-            total_batches = event.get("total_batches")
-            cik_start = event.get("cik_start", "")
-            cik_end = event.get("cik_end", "")
-            ciks_done = event.get("ciks_done")
-            total_ciks = event.get("total_ciks")
-
-            batch_label = f"{batch}/{total_batches}" if total_batches else str(batch)
-            self._bar.set_description(f"materialize (batch {batch_label})")
-            postfix = {
-                "batch": batch_label,
-                "cik": f"{cik_start}..{cik_end}",
+        etype = event.get("type")
+        if etype == "batch_done":
+            batch, total = event.get("batch", 1), event.get("total_batches")
+            done, total_ciks = event.get("ciks_done"), event.get("total_ciks")
+            blbl = f"{batch}/{total}" if total else str(batch)
+            self._bar.set_description(f"materialize (batch {blbl})")
+            pfix = {
+                "batch": blbl,
+                "cik": f"{event.get('cik_start', '')}..{event.get('cik_end', '')}",
             }
-            if ciks_done is not None and total_ciks:
-                postfix["done"] = (
-                    f"{ciks_done:,}/{total_ciks:,} ({ciks_done * 100 / total_ciks:.1f}%)"
+            if done is not None and total_ciks:
+                pfix["done"] = (
+                    f"{done:,}/{total_ciks:,} ({done * 100 / total_ciks:.1f}%)"
                 )
-            self._bar.set_postfix(postfix)
+            self._bar.set_postfix(pfix)
             return
-
-        if event_type == "merge_stage":
-            stage = event.get("stage", "")
-            total_units = event.get("total_units")
+        if etype == "merge_stage":
+            stage, total_units = event.get("stage", ""), event.get("total_units")
             if total_units is not None:
                 self._bar.total = int(total_units)
                 self._bar.refresh()
             if stage.startswith("targets:"):
-                form_name = stage.split(":", 1)[1]
-                self._bar.set_description(f"targets ({form_name})")
-            elif stage == "company_profiles":
-                self._bar.set_description("company profiles")
+                self._bar.set_description(f"targets ({stage.split(':', 1)[1]})")
+            elif stage in (
+                "company_profiles",
+                "occurrence_sources",
+                "publish_manifest",
+            ):
+                self._bar.set_description(stage.replace("_", " "))
             elif stage == "discover_forms":
                 self._bar.set_description(f"forms ({event.get('forms', 0)} discovered)")
-            elif stage == "occurrence_sources":
-                self._bar.set_description("occurrence sources")
-            elif stage == "publish_manifest":
-                self._bar.set_description("publishing catalog")
-
         self._adapter(event)
 
     def close(self) -> None:
@@ -184,42 +201,49 @@ class _StageBar:
 
 
 def _menu_materialize() -> None:
+    ctx = _get_context_summary()
     source_kind, source_default = _default_source()
-    if source_default:
-        source = _read(
-            f"Source artifact or manifest [{source_default}]: ", source_default
+    res = derive_resources()
+    kwargs: dict = {
+        "output_root": str(resolve_paths("filing_extraction").catalogs_root),
+        "source_batch_size": phase_config.load().source_batch_size,
+        "threads": res.threads,
+        "memory_limit": res.memory_limit,
+        "temp_directory": res.temp_directory,
+    }
+    if ctx["catalog_id"] and ctx["snapshot_id"] and ctx["catalog_manifest"]:
+        print(
+            f"\nDetected active snapshot {ctx['snapshot_id']} and catalog {ctx['catalog_id']}."
         )
-    else:
-        source = _read("Source artifact or manifest path: ")
+        if _prompt(
+            "Materialize mode [1. Incremental Augmentation (fast delta pass), 2. Full Seed] [1]: ",
+            "1",
+        ) in ("1", "aug", "augmentation"):
+            kwargs["base_catalog_manifest"] = ctx["catalog_manifest"]
+
+    p_msg = (
+        f"Source artifact or manifest [{source_default}]: "
+        if source_default
+        else "Source artifact or manifest path: "
+    )
+    source = _prompt(p_msg, source_default)
     if not source:
         print("  source is required")
         return
-
-    output_root = _default_catalog_root()
-    settings = phase_config.load()
-    resources = derive_resources()
-    source_batch_size = settings.source_batch_size
-
-    print(f"  Output: {output_root}")
-    print(f"  Batch size: {source_batch_size} rows")
-    print(
-        f"  DuckDB resources: {resources.threads} threads, "
-        f"{resources.memory_limit}, spill={resources.temp_directory}"
-    )
-
-    bar = _StageBar("materialize")
-    kwargs: dict = {
-        "output_root": output_root,
-        "progress": bar,
-        "source_batch_size": source_batch_size,
-        "threads": resources.threads,
-        "memory_limit": resources.memory_limit,
-        "temp_directory": resources.temp_directory,
-    }
     if source_kind == "manifest" or source.endswith(".json"):
         kwargs["source_manifest"] = source
     else:
         kwargs["source_artifact"] = source
+
+    print(
+        f"  Output: {kwargs['output_root']}\n  Batch size: {kwargs['source_batch_size']} rows"
+    )
+    print(
+        f"  DuckDB resources: {res.threads} threads, {res.memory_limit}, spill={res.temp_directory}"
+    )
+
+    bar = _StageBar("materialize")
+    kwargs["progress"] = bar
     try:
         result = materialize(**kwargs)
     except KeyboardInterrupt:
@@ -234,7 +258,6 @@ def _menu_materialize() -> None:
 
 
 def _auto_generate_policy(catalog_id: str, dest: Path | None = None) -> Path:
-    """Generate a dynamic policy from catalog min/max year boundaries."""
     from .core.selection_policy import auto_generate_policy
 
     if dest is None:
@@ -247,74 +270,75 @@ def _menu_plan() -> None:
     catalog = _select_catalog()
     if not catalog:
         return
-
     scope_choice = _prompt(
         "Selection scope [1. Full plan, 2. Fixture selection] [1]: ", "1"
     )
     scope = "fixture" if scope_choice in ("2", "fixture") else "full"
-    output_root = _default_runs_root()
+    out_root = str(resolve_paths("filing_extraction").runs_root)
     bar = _StageBar("plan targets")
 
-    policy_path = None
     if scope == "fixture":
-        default_policy_path = (
+        pol_path = (
             resolve_paths("filing_extraction").phase_root / "selection_policy.json"
         )
-        if not default_policy_path.is_file():
-            _auto_generate_policy(catalog, default_policy_path)
+        if not pol_path.is_file():
+            _auto_generate_policy(catalog, pol_path)
             print(
                 f"\n  Created default selection policy template at:\n"
-                f"    {default_policy_path}\n"
+                f"    {pol_path}\n"
                 f"  Configure target forms, era bands, floors, or weights in this file before running target planning.\n"
             )
             return
-        pol_input = _read(
-            f"Selection policy JSON [{default_policy_path}]: ", str(default_policy_path)
-        )
-        policy_path = pol_input or str(default_policy_path)
-        if not Path(policy_path).is_file():
-            print(f"  selection policy file not found: {policy_path}")
+        pol_in = _prompt(f"Selection policy JSON [{pol_path}]: ", str(pol_path))
+        if not Path(pol_in).is_file():
+            print(f"  selection policy file not found: {pol_in}")
             return
-
-    try:
-        if scope == "fixture":
+        try:
             result = plan(
                 catalog,
-                output_root,
+                out_root,
                 scope="fixture",
-                selection_policy_path=policy_path,
+                selection_policy_path=pol_in,
                 progress=bar,
             )
-        else:
-            settings = phase_config.load()
-            default_forms = settings.target_forms
-            default_amendment = settings.amendment
-            if default_forms:
-                forms_default = ", ".join(default_forms)
-                forms_prompt = (
-                    f"Forms filter (comma-separated, Enter for {forms_default}): "
-                )
-                forms_raw = _read(forms_prompt, forms_default)
-            else:
-                forms_raw = _read("Forms filter (comma-separated, Enter for all): ", "")
-            forms = (
-                tuple(form.strip() for form in forms_raw.split(",") if form.strip())
-                if forms_raw
-                else default_forms
-            )
-            amendment_raw = _prompt(
-                f"Amendment policy [{default_amendment}]: ", default_amendment
-            )
-            amendment = amendment_raw if amendment_raw else default_amendment
-            result = plan(
-                catalog,
-                output_root,
-                scope="full",
-                forms=forms,
-                amendment=amendment,
-                limit=None,
-                progress=bar,
-            )
+        except KeyboardInterrupt:
+            print("\n  interrupted; no target plan was published")
+            return
+        except (ValueError, FileNotFoundError, StorageError) as exc:
+            print(f"  error: {exc}")
+            return
+        finally:
+            bar.close()
+        print(json.dumps(result, indent=2, sort_keys=True))
+        return
+
+    settings = phase_config.load()
+    default_forms = settings.target_forms
+    default_amendment = settings.amendment
+    if default_forms:
+        forms_default = ", ".join(default_forms)
+        forms_raw = _prompt(
+            f"Forms filter (comma-separated, Enter for {forms_default}): ",
+            forms_default,
+        )
+    else:
+        forms_raw = _prompt("Forms filter (comma-separated, Enter for all): ", "")
+    forms = (
+        tuple(f.strip() for f in forms_raw.split(",") if f.strip())
+        if forms_raw
+        else default_forms
+    )
+    amendment = _prompt(f"Amendment policy [{default_amendment}]: ", default_amendment)
+    try:
+        result = plan(
+            catalog,
+            out_root,
+            scope="full",
+            forms=forms,
+            amendment=amendment,
+            limit=None,
+            progress=bar,
+        )
     except KeyboardInterrupt:
         print("\n  interrupted; no target plan was published")
         return
@@ -327,36 +351,42 @@ def _menu_plan() -> None:
 
 
 def _menu_status() -> None:
-    print(json.dumps(discovery.status(), indent=2, sort_keys=True))
+    st = discovery.status()
+    print("\n" + "=" * 70)
+    print("Phase 02 Status Summary")
+    print("=" * 70)
+    cats = st.get("catalogs", [])
+    print(f"Catalogs ({len(cats)} found):")
+    for c in cats:
+        print(
+            f"  - {c['catalog_id']}: {c.get('target_rows', 0):,} targets across {c.get('form_count', 0)} forms"
+        )
+    plans = st.get("plans", [])
+    print(f"\nTarget Plans ({len(plans)} found):")
+    for p in plans:
+        locs = p.get("unique_locators_count") or p.get("active_targets_count") or "?"
+        print(
+            f"  - {p['plan_id']} ({locs} locators) [catalog: {p.get('catalog_id', '?')}]"
+        )
+    print("=" * 70 + "\n")
 
 
 def _select_parent_plan() -> str | None:
-    """Auto-discover published target plans or prompt for a path."""
     plans = []
     with suppress(ImportError, OSError, ValueError):
         plans = discovery.discover_plans()
-
     if not plans:
-        raw = _read("Parent plan directory: ")
-        return raw or None
-
+        return _prompt("Parent plan directory: ") or None
     if len(plans) == 1:
-        plan = plans[0]
-        locs = (
-            plan.get("unique_locators_count") or plan.get("active_targets_count") or "?"
-        )
-        print(f"  Parent plan: {plan['plan_id']} ({locs} locators) -> {plan['path']}")
-        raw = _read(f"  Plan directory [{plan['path']}]: ", plan["path"])
-        return raw
-
+        p = plans[0]
+        locs = p.get("unique_locators_count") or p.get("active_targets_count") or "?"
+        print(f"  Parent plan: {p['plan_id']} ({locs} locators) -> {p['path']}")
+        return _prompt(f"  Plan directory [{p['path']}]: ", p["path"])
     print("  Discovered target plans:")
-    for idx, plan in enumerate(plans, start=1):
-        locs = (
-            plan.get("unique_locators_count") or plan.get("active_targets_count") or "?"
-        )
-        print(f"    {idx}. {plan['plan_id']} ({locs} locators)")
-
-    choice = _read(f"  Select plan [1-{len(plans)}] [1]: ", "1")
+    for idx, p in enumerate(plans, start=1):
+        locs = p.get("unique_locators_count") or p.get("active_targets_count") or "?"
+        print(f"    {idx}. {p['plan_id']} ({locs} locators)")
+    choice = _prompt(f"  Select plan [1-{len(plans)}] [1]: ", "1")
     try:
         idx = int(choice) - 1
         if 0 <= idx < len(plans):
@@ -370,39 +400,33 @@ def _menu_expand() -> None:
     parent_plan = _select_parent_plan()
     if not parent_plan:
         return
-
-    target_units_raw = _read("Target units (total unique locators): ")
-    if not target_units_raw:
+    raw_units = _prompt("Target units (total unique locators): ")
+    if not raw_units:
         print("  target units is required")
         return
     try:
-        target_units = int(target_units_raw)
+        target_units = int(raw_units)
     except ValueError:
-        print(f"  invalid integer: {target_units_raw!r}")
+        print(f"  invalid integer: {raw_units!r}")
         return
-
-    default_policy = str(
+    default_pol = str(
         resolve_paths("filing_extraction").phase_root / "selection_policy.json"
     )
-    policy_path = (
-        _read(f"Selection policy JSON [{default_policy}]: ", default_policy)
-        or default_policy
-    )
-    if not Path(policy_path).is_file():
-        print(f"  selection policy file not found: {policy_path}")
+    pol_path = _prompt(f"Selection policy JSON [{default_pol}]: ", default_pol)
+    if not Path(pol_path).is_file():
+        print(f"  selection policy file not found: {pol_path}")
         return
-
-    seed_cik = _read("Seed CIK file (blank for none): ", "")
-    output_root = _read(f"Output root [{_default_runs_root()}]: ", _default_runs_root())
-
+    seed_cik = _prompt("Seed CIK file (blank for none): ", "")
+    runs_root = str(resolve_paths("filing_extraction").runs_root)
+    out_root = _prompt(f"Output root [{runs_root}]: ", runs_root)
     bar = _StageBar("expand plan")
     try:
         result = expand(
             parent_plan=parent_plan,
             target_units=target_units,
-            selection_policy_path=policy_path,
+            selection_policy_path=pol_path,
             seed_cik_path=seed_cik or None,
-            output_root=output_root or None,
+            output_root=out_root or None,
             progress=bar,
         )
     except KeyboardInterrupt:
@@ -418,7 +442,8 @@ def _menu_expand() -> None:
 
 def interactive_menu() -> int:
     while True:
-        print("\nPhase 02: Filing Catalog (no-network materialize and plan)")
+        print()
+        _print_context_header()
         print("  1. Materialize catalog")
         print("  2. Plan filing targets")
         print("  3. Expand plan (child plan with additional locators)")
@@ -439,20 +464,16 @@ def interactive_menu() -> int:
             print("  unknown choice")
 
 
-def _usage() -> str:
-    return (
-        "usage: python run.py filing-catalog            interactive menu\n"
-        "       python run.py filing-catalog materialize --source-manifest <m>\n"
-        "       python run.py filing-catalog plan --catalog <dir>\n"
-        "       python run.py filing-catalog expand --parent-plan <dir> --target-units <n>\n"
-        "       python run.py filing-catalog status"
-    )
-
-
 def main(argv: list[str] | None = None) -> int:
     argv = list(sys.argv[1:] if argv is None else argv)
     if argv and argv[0] in ("-h", "--help"):
-        print(_usage())
+        print(
+            "usage: python run.py filing-catalog            interactive menu\n"
+            "       python run.py filing-catalog materialize --source-manifest <m>\n"
+            "       python run.py filing-catalog plan --catalog <dir>\n"
+            "       python run.py filing-catalog expand --parent-plan <dir> --target-units <n>\n"
+            "       python run.py filing-catalog status"
+        )
         return 0
     if not argv:
         try:
@@ -460,7 +481,6 @@ def main(argv: list[str] | None = None) -> int:
         except KeyboardInterrupt:
             print("\ninterrupted")
             return 130
-    # Forward explicit subcommands to the canonical CLI surface.
     return cli_main(argv)
 
 

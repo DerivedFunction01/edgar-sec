@@ -233,6 +233,26 @@ class FinalizedDataset:
         quoted_parts = ", ".join(_quote(p) for p in self.resolved_part_paths)
         return f"read_parquet([{quoted_parts}])"
 
+    @property
+    def added_part_paths(self) -> list[str]:
+        """Return file paths for only the added/delta parts if present."""
+        if not self.manifest or not self.manifest.get("added_parts"):
+            return []
+        return [
+            self._resolve_rel(p["path"])
+            for p in self.manifest["added_parts"]
+            if "path" in p
+        ]
+
+    @property
+    def added_relation(self) -> str | None:
+        """Return the DuckDB SQL relation for only the added/delta parts if present."""
+        paths = self.added_part_paths
+        if not paths:
+            return None
+        quoted = ", ".join(_quote(p) for p in paths)
+        return f"read_parquet([{quoted}])"
+
     def register_function(
         self,
         name: str,

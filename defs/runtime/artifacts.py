@@ -115,7 +115,9 @@ def make_manifest(
     return manifest
 
 
-def publish_manifest(manifest: dict, *, artifacts_root: str) -> Path:
+def publish_manifest(
+    manifest: dict, *, artifacts_root: str, allow_overwrite_adjacent: bool = True
+) -> Path:
     """Publish adjacent and structured immutable copies of one manifest."""
     validate_manifest(manifest)
     root = Path(artifacts_root).resolve()
@@ -140,7 +142,10 @@ def publish_manifest(manifest: dict, *, artifacts_root: str) -> Path:
             existing = load_json(path)
             stable = ("artifact_id", "artifact_sha256", "dataset", "schema_version")
             if any(existing.get(key) != manifest.get(key) for key in stable):
-                raise ValueError(f"conflicting immutable manifest: {path}")
+                if path == adjacent and allow_overwrite_adjacent:
+                    atomic_write_json(path, manifest, indent=None)
+                else:
+                    raise ValueError(f"conflicting immutable manifest: {path}")
         else:
             atomic_write_json(path, manifest, indent=None)
     return shared
