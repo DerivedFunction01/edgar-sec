@@ -13,7 +13,9 @@ from collections.abc import Callable
 from pathlib import Path
 
 from defs.filing_identity import (
+    accession_hyphenated,
     document_locator_key,
+    full_submission_url_for,
     is_amendment_form,
     normalize_accession,
     occurrence_id,
@@ -38,6 +40,8 @@ _RE_INVALID_CHARS = re.compile(r"[^A-Za-z0-9_.-]")
 
 from .config import DEFAULT_SOURCE_BATCH_SIZE
 from .schemas import (
+    PATH_SOURCE_BUNDLE,
+    PATH_SOURCE_PRIMARY,
     PROFILE_COLUMNS,
     PROFILE_SCHEMA_VERSION,
     SCHEMA_VERSION,
@@ -47,6 +51,59 @@ from .schemas import (
 SOURCE = importlib.import_module("phases.01_metadata_extraction.core.schemas")
 
 logger = logging.getLogger("filing_extraction.materialize")
+
+# Version of the full-submission fallback policy; part of the catalog identity
+# so catalogs built with different policies can never be confused.
+FALLBACK_POLICY_VERSION = "1"
+
+_EffectiveParts = tuple[str, str, str]  # (document_path, archive_url, source)
+
+
+def _effective_document_parts(
+    primary_document: object, archive_url: object, cik: object, accession: object
+) -> _EffectiveParts | None:
+    """Resolve the effective locator parts for one filing observation.
+
+    Prefers the observed primary-document archive URL; when the source does not
+    name a primary document (predominantly pre-2001 filings), falls back to the
+    accession's complete SGML submission bundle:
+    ``<dashed-accession>.txt``. Returns None when no usable locator can be
+    derived. Pure and network-free.
+    """
+    if archive_url:
+        parts = parse_archive_url(str(archive_url))
+        if parts is not None:
+            return parts.document_path, parts.url, PATH_SOURCE_PRIMARY
+    canonical = normalize_accession(str(accession) if accession else None)
+    cik_text = str(cik).strip() if cik is not None else ""
+    if canonical is None or not cik_text.isdigit():
+        return None
+    try:
+        bundle_url = full_submission_url_for(cik_text, canonical)
+    except ValueError:
+        return None
+    return f"{accession_hyphenated(canonical)}.txt", bundle_url, PATH_SOURCE_BUNDLE
+
+
+def _effective_path(
+    primary_document: object, archive_url: object, cik: object, accession: object
+) -> str | None:
+    parts = _effective_document_parts(primary_document, archive_url, cik, accession)
+    return None if parts is None else parts[0]
+
+
+def _effective_archive_url(
+    primary_document: object, archive_url: object, cik: object, accession: object
+) -> str | None:
+    parts = _effective_document_parts(primary_document, archive_url, cik, accession)
+    return None if parts is None else parts[1]
+
+
+def _effective_source(
+    primary_document: object, archive_url: object, cik: object, accession: object
+) -> str | None:
+    parts = _effective_document_parts(primary_document, archive_url, cik, accession)
+    return None if parts is None else parts[2]
 
 
 def _emit(progress: Callable[[dict], None] | None, event: dict) -> None:
@@ -112,6 +169,24 @@ def _register_identity_functions(artifact: FinalizedArtifact) -> None:
             parse_archive_url(value).document_path if parse_archive_url(value) else None
         ),
         parameters=[str],
+        return_type=str,
+    )
+    artifact.register_function(
+        "filing_effective_path",
+        _effective_path,
+        parameters=[str, str, str, str],
+        return_type=str,
+    )
+    artifact.register_function(
+        "filing_effective_archive_url",
+        _effective_archive_url,
+        parameters=[str, str, str, str],
+        return_type=str,
+    )
+    artifact.register_function(
+        "filing_effective_source",
+        _effective_source,
+        parameters=[str, str, str, str],
         return_type=str,
     )
     artifact.register_function(
@@ -218,7 +293,10 @@ def materialize(
                 else None,
             },
         )
-        catalog_id = _catalog_id(source_hash, {})
+        catalog_id = _catalog_id(
+            source_hash,
+            {"target_fallback_policy": FALLBACK_POLICY_VERSION},
+        )
         root = Path(output_root).resolve() / catalog_id
         resolved_paths = resolve_paths(
             "filing_extraction", env={"ARTIFACTS_ROOT": str(artifacts_root)}
@@ -280,6 +358,7 @@ def materialize(
             if ciks
             else 1
         )
+        path_source_stats: dict[str, int] = {}
 
         metadata = {
             "source_artifact_sha256": source_hash,
@@ -322,6 +401,57 @@ def materialize(
             },
         )
         if ciks:
+            # One bounded aggregate pass for locator-path diagnostics. Counts
+            # are disjoint and exhaustive over every filing observation.
+            diagnostics_rows = artifact.run(
+                f"""
+                SELECT
+                    count(*) AS total_observations,
+                    count(*) FILTER (
+                        WHERE filing_accession(filing.accession_number_normalized) IS NULL
+                    ) AS excluded_invalid_accession,
+                    count(*) FILTER (
+                        WHERE filing_accession(filing.accession_number_normalized) IS NOT NULL
+                          AND filing.form IS NULL
+                    ) AS excluded_missing_form,
+                    count(*) FILTER (
+                        WHERE filing_accession(filing.accession_number_normalized) IS NOT NULL
+                          AND filing.form IS NOT NULL
+                          AND filing_effective_path(
+                                  filing.primary_document, filing.archive_url,
+                                  t.cik, filing.accession_number_normalized
+                              ) IS NULL
+                    ) AS excluded_unusable,
+                    count(*) FILTER (
+                        WHERE filing_accession(filing.accession_number_normalized) IS NOT NULL
+                          AND filing.form IS NOT NULL
+                          AND filing_effective_source(
+                                  filing.primary_document, filing.archive_url,
+                                  t.cik, filing.accession_number_normalized
+                              ) = '{PATH_SOURCE_PRIMARY}'
+                    ) AS emitted_primary_document,
+                    count(*) FILTER (
+                        WHERE filing_accession(filing.accession_number_normalized) IS NOT NULL
+                          AND filing.form IS NOT NULL
+                          AND filing_effective_source(
+                                  filing.primary_document, filing.archive_url,
+                                  t.cik, filing.accession_number_normalized
+                              ) = '{PATH_SOURCE_BUNDLE}'
+                    ) AS emitted_submission_bundle
+                FROM {artifact.relation} AS t, LATERAL unnest(t.filings) AS u(filing)
+                """
+            )
+            keys = (
+                "total_observations",
+                "excluded_invalid_accession",
+                "excluded_missing_form",
+                "excluded_unusable",
+                "emitted_primary_document",
+                "emitted_submission_bundle",
+            )
+            path_source_stats = {
+                key: int(value) for key, value in zip(keys, diagnostics_rows[0])
+            }
             for b_idx in range(batch_count):
                 b_start = b_idx * source_batch_size
                 b_end = min(b_start + source_batch_size, len(ciks))
@@ -329,36 +459,75 @@ def materialize(
                 start_cik, end_cik = b_ciks[0], b_ciks[-1]
 
                 batch_staging_dir = staging_partitions_dir / f"batch_{b_idx}"
+                # The inner projection resolves the effective document locator
+                # once per observation: the observed primary-document archive
+                # URL when present, otherwise the accession's complete
+                # submission bundle (pre-2001 filings without a named primary
+                # document). The outer projection derives occurrence and
+                # locator identity from that effective path.
                 batch_query = f"""
-                    SELECT 
-                        filing_occurrence_id(t.cik, filing_accession(filing.accession_number_normalized), filing_document_path(filing.archive_url)) AS occurrence_id,
-                        filing_locator_key(filing_accession(filing.accession_number_normalized), filing_document_path(filing.archive_url)) AS document_locator_key,
-                        t.cik AS source_cik,
-                        filing_accession(filing.accession_number_normalized) AS accession,
-                        filing.form,
-                        filing_partition_key(filing.form) AS form_partition_key,
-                        filing_is_amendment(filing.form) AS is_amendment,
-                        filing.filing_date,
-                        filing.report_date,
-                        filing.acceptance_datetime,
-                        filing.primary_document,
-                        filing.primary_doc_description,
-                        filing_document_path(filing.archive_url) AS document_path,
-                        filing.archive_url,
-                        filing.source_section,
-                        filing.source_file,
-                        filing.source_array_index,
-                        filing.size AS reported_size,
-                        filing.is_xbrl,
-                        filing.is_inline_xbrl,
-                        filing.is_xbrl_numeric,
+                    SELECT
+                        filing_occurrence_id(s.source_cik, s.accession, s.document_path) AS occurrence_id,
+                        filing_locator_key(s.accession, s.document_path) AS document_locator_key,
+                        s.source_cik,
+                        s.accession,
+                        s.form,
+                        filing_partition_key(s.form) AS form_partition_key,
+                        filing_is_amendment(s.form) AS is_amendment,
+                        s.filing_date,
+                        s.report_date,
+                        s.acceptance_datetime,
+                        s.primary_document,
+                        s.primary_doc_description,
+                        s.document_path,
+                        s.archive_url,
+                        s.document_path_source,
+                        s.source_section,
+                        s.source_file,
+                        s.source_array_index,
+                        s.reported_size,
+                        s.is_xbrl,
+                        s.is_inline_xbrl,
+                        s.is_xbrl_numeric,
                         {metadata_sql}
-                    FROM {artifact.relation} AS t, LATERAL unnest(t.filings) AS u(filing)
-                    WHERE t.cik >= ? AND t.cik <= ?
-                      AND filing_accession(filing.accession_number_normalized) IS NOT NULL
-                      AND filing_document_path(filing.archive_url) IS NOT NULL
-                      AND filing.primary_document IS NOT NULL
-                      AND filing.form IS NOT NULL
+                    FROM (
+                        SELECT
+                            t.cik AS source_cik,
+                            filing_accession(filing.accession_number_normalized) AS accession,
+                            filing.form AS form,
+                            filing.filing_date AS filing_date,
+                            filing.report_date AS report_date,
+                            filing.acceptance_datetime AS acceptance_datetime,
+                            filing.primary_document AS primary_document,
+                            filing.primary_doc_description AS primary_doc_description,
+                            filing_effective_path(
+                                filing.primary_document, filing.archive_url,
+                                t.cik, filing.accession_number_normalized
+                            ) AS document_path,
+                            filing_effective_archive_url(
+                                filing.primary_document, filing.archive_url,
+                                t.cik, filing.accession_number_normalized
+                            ) AS archive_url,
+                            filing_effective_source(
+                                filing.primary_document, filing.archive_url,
+                                t.cik, filing.accession_number_normalized
+                            ) AS document_path_source,
+                            filing.source_section AS source_section,
+                            filing.source_file AS source_file,
+                            filing.source_array_index AS source_array_index,
+                            filing.size AS reported_size,
+                            filing.is_xbrl AS is_xbrl,
+                            filing.is_inline_xbrl AS is_inline_xbrl,
+                            filing.is_xbrl_numeric AS is_xbrl_numeric
+                        FROM {artifact.relation} AS t, LATERAL unnest(t.filings) AS u(filing)
+                        WHERE t.cik >= ? AND t.cik <= ?
+                          AND filing.form IS NOT NULL
+                          AND filing_effective_path(
+                                  filing.primary_document, filing.archive_url,
+                                  t.cik, filing.accession_number_normalized
+                              ) IS NOT NULL
+                    ) AS s
+                    WHERE s.accession IS NOT NULL
                 """
                 artifact.copy_partitioned_query(
                     batch_query,
@@ -450,6 +619,7 @@ def materialize(
                     "catalog_id": catalog_id,
                     "source_artifact_sha256": source_hash,
                     "form_partition_key": part_key,
+                    "fallback_policy": FALLBACK_POLICY_VERSION,
                 },
             )
             publish_manifest(target_manifest, artifacts_root=handoff_root)
@@ -481,13 +651,14 @@ def materialize(
         else:
             sources_query = (
                 f"SELECT DISTINCT\n"
-                f"    filing_occurrence_id(t.cik, filing_accession(filing.accession_number_normalized), filing_document_path(filing.archive_url)) AS occurrence_id,\n"
+                f"    filing_occurrence_id(t.cik, filing_accession(filing.accession_number_normalized), filing_effective_path(filing.primary_document, filing.archive_url, t.cik, filing.accession_number_normalized)) AS occurrence_id,\n"
                 f"    t.cik AS source_cik, filing_accession(filing.accession_number_normalized) AS accession,\n"
-                f"    filing_document_path(filing.archive_url) AS document_path,\n"
+                f"    filing_effective_path(filing.primary_document, filing.archive_url, t.cik, filing.accession_number_normalized) AS document_path,\n"
                 f"    filing.source_section, filing.source_file, filing.source_array_index\n"
                 f"FROM {artifact.relation} AS t, LATERAL unnest(t.filings) AS u(filing)\n"
-                f"WHERE filing_accession(filing.accession_number_normalized) IS NOT NULL\n"
-                f"  AND filing_document_path(filing.archive_url) IS NOT NULL"
+                f"WHERE filing.form IS NOT NULL\n"
+                f"  AND filing_accession(filing.accession_number_normalized) IS NOT NULL\n"
+                f"  AND filing_effective_path(filing.primary_document, filing.archive_url, t.cik, filing.accession_number_normalized) IS NOT NULL"
             )
         sources_path = root / "filing_occurrence_sources.parquet"
         source_count = artifact.copy_query(sources_query, str(sources_path))
@@ -531,6 +702,8 @@ def materialize(
             "catalog_schema_version": SCHEMA_VERSION,
             "profile_schema_version": PROFILE_SCHEMA_VERSION,
             "target_schema_version": TARGET_SCHEMA_VERSION,
+            "fallback_policy_version": FALLBACK_POLICY_VERSION,
+            "document_path_sources": path_source_stats,
             "form_partitions": counts,
             "artifact_ids": {
                 "company_profiles": profile_manifest["artifact_id"],
@@ -548,7 +721,12 @@ def materialize(
             "catalog_id": catalog_id,
             "source_artifact_sha256": source_hash,
             "target_counts": counts,
-            "malformed_records": "invalid accession, archive URL, or primary document records are excluded from targets",
+            "document_path_sources": path_source_stats,
+            "malformed_records": (
+                "filings without a usable accession, form, or effective document "
+                "locator are excluded from targets; filings without an observed "
+                "primary document fall back to their complete submission bundle"
+            ),
             "source_batch_size": source_batch_size,
             "batch_count": batch_count,
         }

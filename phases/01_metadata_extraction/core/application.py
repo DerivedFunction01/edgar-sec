@@ -14,20 +14,21 @@ from datetime import UTC, datetime
 from pathlib import Path
 
 from defs.runtime.paths import resolve_paths
-from defs.storage import atomic_write_json, load_json
+from defs.storage import load_json
 
+from .augmentation import (
+    load_plan_rows,
+    output_paths,
+    publish_snapshot,
+)
 from .chunks import (
-    assign_chunks,
-    assign_partitions,
     chunk_ciks,
     plan_hash,
     select_chunk,
-    verify_chunk_assignment,
 )
 from .config import RunOptions, validate_plan_against_options
 from .fetch import build_client as _build_client
 from .fetch import fetch_and_normalize as _fetch_and_normalize
-from .input_manifest import read_input_manifest
 from .merge import (
     MergeError,
     MergeReport,
@@ -35,6 +36,7 @@ from .merge import (
     merge_partition_artifacts,
 )
 from .normalize import normalize_submissions
+from .planning import build_plan
 from .schemas import SCHEMA_VERSION, TERMINAL_STATUSES
 from .storage import make_checkpoint_store, make_phase_store
 
@@ -43,64 +45,6 @@ logger = logging.getLogger("metadata")
 
 def utc_now_iso() -> str:
     return datetime.now(UTC).strftime("%Y-%m-%dT%H:%M:%SZ")
-
-
-def build_plan(options: RunOptions) -> dict:
-    """`plan`: read and validate the CSV, normalize CIKs to ten digits,
-    sort deterministically, assign contiguous chunk ranges, and write
-    plan.json. Performs no SEC requests."""
-    rows, report = read_input_manifest(options.input_path, limit=options.limit)
-    ciks = [row.cik_padded for row in rows]
-    chunks = assign_chunks(ciks, options.chunk_size)
-    partitions = assign_partitions(ciks, options.partition_count, options.chunk_size)
-    verify_chunk_assignment(rows, chunks)
-
-    plan = {
-        "schema_version": SCHEMA_VERSION,
-        "created_at": utc_now_iso(),
-        "input_path": options.input_path,
-        "input_fingerprint": report["fingerprint"],
-        "row_count": len(rows),
-        "chunk_size": options.chunk_size,
-        "partition_count": options.partition_count,
-        "partition_assignment": "round_robin_v1",
-        "storage_format": options.storage_format,
-        "malformed": report["malformed"],
-        "duplicates": report["duplicates"],
-        "cik_padded": ciks,
-        "chunks": [chunk.to_dict() for chunk in chunks],
-        "partitions": [partition.to_dict() for partition in partitions],
-        "run_options": {
-            "input_path": options.input_path,
-            "artifacts_dir": options.artifacts_dir,
-            "chunk_size": options.chunk_size,
-            "partition_count": options.partition_count,
-            "limit": options.limit,
-            "storage_format": options.storage_format,
-        },
-    }
-    plan["plan_hash"] = plan_hash(plan)
-
-    os.makedirs(options.artifacts_dir, exist_ok=True)
-    plan_path = os.path.join(options.artifacts_dir, "plan.json")
-    atomic_write_json(plan_path, plan, indent=2, sort_keys=True)
-
-    partitions_dir = os.path.join(options.artifacts_dir, "partitions")
-    for partition in partitions:
-        partition_path = os.path.join(
-            partitions_dir, f"partition-{partition.partition_id:05d}.json"
-        )
-        atomic_write_json(partition_path, partition.to_dict(), indent=2, sort_keys=True)
-
-    logger.info(
-        "plan: %d CIKs, %d chunks, %d malformed, %d duplicates -> %s",
-        len(rows),
-        len(chunks),
-        len(report["malformed"]),
-        len(report["duplicates"]),
-        plan_path,
-    )
-    return plan
 
 
 def load_plan(options: RunOptions | None = None) -> dict:
@@ -151,7 +95,7 @@ def run_chunk(options: RunOptions, progress=None) -> dict:
     if options.storage_format != plan.get("storage_format", "parquet"):
         raise ValueError("storage format does not match plan.json")
 
-    rows, report = read_input_manifest(options.input_path, limit=options.limit)
+    rows, report = load_plan_rows(options, plan)
     if report["fingerprint"] != plan.get("input_fingerprint"):
         raise ValueError(
             "input fingerprint mismatch between CSV and plan.json; regenerate the plan"
@@ -441,6 +385,25 @@ def merge(
     progress=None,
 ) -> MergeReport:
     """`merge`: combine published partitions into the final dataset."""
+    if options.augmentation:
+        _root, delta_path, default_full_path, _snapshot_path = output_paths(options)
+        delta_report = merge_partition_artifacts(
+            options.artifacts_dir,
+            str(delta_path),
+            storage_format=storage_format,
+            output_storage_format=output_storage_format,
+            progress=progress,
+        )
+        if output_path is not None:
+            requested = Path(output_path).resolve()
+            if requested != default_full_path.resolve():
+                default_full_path = requested
+        return publish_snapshot(
+            options,
+            delta_report,
+            delta_path,
+            full_path_override=default_full_path,
+        )
     if output_path is None:
         artifact_root = Path(options.artifacts_dir).resolve()
         marker = f"{os.sep}transient{os.sep}"

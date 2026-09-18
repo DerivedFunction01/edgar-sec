@@ -36,6 +36,9 @@ PLAN_DEFINING_FIELDS = (
     "partition_count",
     "limit",
     "storage_format",
+    "source_manifest",
+    "base_metadata_manifest",
+    "augmentation",
 )
 
 
@@ -74,6 +77,9 @@ class RunOptions:
     log_level: str = "INFO"
     run_id: str = "default"
     storage_format: str = DEFAULT_STORAGE_FORMAT
+    source_manifest: str | None = None
+    base_metadata_manifest: str | None = None
+    augmentation: bool = False
 
     def validate(self) -> None:
         if self.workers is not None and self.workers < 1:
@@ -93,6 +99,10 @@ class RunOptions:
                 "SEC contact identity is required: set --user-agent or SEC_USER_AGENT to "
                 "'AppName/1.0 your-email@example.com'"
             )
+        if self.augmentation and not self.source_manifest:
+            raise ValueError("augmentation requires --source-manifest")
+        if self.augmentation and not self.base_metadata_manifest:
+            raise ValueError("augmentation requires --base-metadata-manifest")
 
     def to_dict(self) -> dict:
         data = {
@@ -112,6 +122,9 @@ class RunOptions:
             "log_level": self.log_level,
             "run_id": self.run_id,
             "storage_format": self.storage_format,
+            "source_manifest": self.source_manifest,
+            "base_metadata_manifest": self.base_metadata_manifest,
+            "augmentation": self.augmentation,
         }
         if self.workers is not None:
             data["workers"] = self.workers
@@ -297,7 +310,8 @@ def plan_defining_fields() -> tuple[str, ...]:
 def validate_plan_against_options(plan: dict, options: RunOptions) -> None:
     run_options = plan.get("run_options", {})
     for field_name in PLAN_DEFINING_FIELDS:
-        expected = run_options.get(field_name)
+        default = False if field_name == "augmentation" else None
+        expected = run_options.get(field_name, default)
         actual = getattr(options, field_name)
         if expected != actual:
             raise ValueError(

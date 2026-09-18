@@ -20,13 +20,14 @@ modeled is preserved verbatim in `extra_fields`.
 
 ```text
 phases/01_metadata_extraction/
-  cli.py            # canonical command surface: plan / preview / run / status / merge
+  cli.py            # canonical command surface: sources / plan / preview / run / status / merge
   run.py            # transitional interactive wizard + non-interactive single-chunk runner
   smoke_test.py     # bounded SEC-backed preview shim (never writes production output)
   core/             # schemas, normalization, planning, checkpoints, merge, SEC client
     schemas.py      # explicit PyArrow schema for submission_metadata (v1.0.0)
     normalize.py    # deterministic, network-free normalization of SEC JSON
-    input_manifest.py  # CIK/name CSV validation + deterministic ordering + fingerprint
+     input_manifest.py  # CIK/name CSV validation + deterministic ordering + fingerprint
+     source_registry.py  # SEC listing snapshots, registry, effective CSV, and diffs
     application.py  # orchestration: build_plan / run_chunk / get_status / merge
     config.py       # RunOptions / ProjectConfig persistence (config.json, plan.json)
     chunks.py       # chunk + partition assignment (deterministic, shared across phases)
@@ -68,6 +69,92 @@ interactive `run.py` wizard. From the repository root:
     --artifacts .artifacts/transient/metadata/runs/<run-id>
 ```
 
+### Source snapshots and augmentation
+
+The tracked `uploads/cik-sec.csv` remains the curated baseline. An explicit
+source refresh captures the SEC ticker/listing source under `.artifacts`; it
+does not modify `uploads/` and is the only command in this workflow that
+fetches that source:
+
+```bash
+.venv/bin/python -m phases.01_metadata_extraction.cli sources refresh \
+    --artifacts-root .artifacts
+
+.venv/bin/python -m phases.01_metadata_extraction.cli sources compare \
+    --input uploads/cik-sec.csv \
+    --source-manifest .artifacts/metadata/sources/company_tickers/snapshots/<snapshot-id>.manifest.json \
+    --artifacts-root .artifacts
+```
+
+The comparison publishes listing observations, a one-row-per-CIK registry, a
+deterministic `effective_cik_input.csv` compatibility projection under
+`.artifacts`, and a CIK difference report. The registry Parquet artifact is
+canonical; the generated CSV is only an input adapter for the current Phase 1
+reader.
+
+Augmentation mode requires a finalized metadata manifest. It creates an
+immutable worklist containing only CIKs missing from finalized coverage, runs
+the normal Phase 1 chunk/checkpoint lifecycle for that worklist, and publishes
+a new versioned full metadata snapshot from base plus delta. The base artifact,
+manifest, and plan are never overwritten:
+
+```bash
+.venv/bin/python -m phases.01_metadata_extraction.cli plan \
+    --augmentation \
+    --input uploads/cik-sec.csv \
+    --source-manifest <source-manifest> \
+    --base-metadata-manifest <metadata-manifest> \
+    --artifacts .artifacts/transient/metadata/runs/<augmentation-run>
+```
+
+Plans and workers consume immutable source/worklist hashes. They do not reread
+the mutable source pointer while executing. Phase 2 is responsible for later
+consuming the new versioned metadata snapshot; this augmentation boundary does
+not alter Phase 2 target selection.
+
+The complete canonical augmentation sequence is:
+
+```bash
+# 1. Capture the live listing source (the only network step).
+.venv/bin/python -m phases.01_metadata_extraction.cli sources refresh \
+    --artifacts-root .artifacts
+
+# 2. Optional audit view: registry, effective CSV, and CIK diff.
+#    `plan --augmentation` rebuilds these deterministically when omitted.
+.venv/bin/python -m phases.01_metadata_extraction.cli sources compare \
+    --input uploads/cik-sec.csv \
+    --source-manifest <source-manifest> \
+    --artifacts-root .artifacts
+
+# 3. Plan the delta against a finalized metadata manifest.
+.venv/bin/python -m phases.01_metadata_extraction.cli plan \
+    --augmentation \
+    --input uploads/cik-sec.csv \
+    --source-manifest <source-manifest> \
+    --base-metadata-manifest <metadata-manifest> \
+    --artifacts .artifacts/transient/metadata/runs/<augmentation-run>
+
+# 4. Run only the delta work (repeat the plan-defining flags on every
+#    command; run/status/merge validate them against plan.json).
+.venv/bin/python -m phases.01_metadata_extraction.cli run \
+    --config .artifacts/metadata/config.json \
+    --artifacts .artifacts/transient/metadata/runs/<augmentation-run> \
+    --augmentation \
+    --source-manifest <source-manifest> \
+    --base-metadata-manifest <metadata-manifest> \
+    --partition-id 1
+
+# 5. Publish the partition, then the versioned full snapshot
+#    (delta + new complete metadata snapshot under
+#    manifests/metadata/submission_metadata/snapshots/<run-id>/).
+.venv/bin/python -m phases.01_metadata_extraction.cli merge-partition \
+    --artifacts .artifacts/transient/metadata/runs/<augmentation-run> \
+    --partition-id 1
+
+.venv/bin/python -m phases.01_metadata_extraction.cli merge \
+    --artifacts .artifacts/transient/metadata/runs/<augmentation-run>
+```
+
 `run.py` also works as an interactive wizard when `--chunk-id` is omitted:
 
 ```bash
@@ -76,8 +163,29 @@ interactive `run.py` wizard. From the repository root:
 ```
 
 The wizard offers: preview (1), run partition (2), show per-machine partition
-commands (3), status (4), merge a partition from its chunks (5), and merge all
-partition artifacts into the final dataset (6).
+commands (3), status (4), merge a partition from its chunks (5), merge all
+partition artifacts into the final dataset (6), SEC listing-source refresh
+(s, network, explicit confirmation), and augmentation preparation (a). When no
+valid plan exists, the plan prompt offers fresh ([F]) or augmentation ([a])
+creation (Enter defaults to fresh); `a` discovers published source snapshots
+and finalized metadata manifests, asks for the base, and writes the delta
+plan. When the run directory already holds an augmentation plan, starting the
+wizard with no flags adopts that plan's identity automatically and resumes it
+(hands-free); any other plan-identity mismatch is printed and regeneration
+requires an explicit confirmation. Passing
+`--augmentation --source-manifest ... --base-metadata-manifest ...` to `run.py`
+starts the wizard in augmentation mode and works for non-interactive single
+chunks too:
+
+```bash
+.venv/bin/python -m phases.01_metadata_extraction.run \
+    --config .artifacts/metadata/config.json \
+    --artifacts .artifacts/transient/metadata/runs/<augmentation-run> \
+    --augmentation \
+    --source-manifest <source-manifest> \
+    --base-metadata-manifest <metadata-manifest> \
+    --chunk-id 1
+```
 
 ### Distributed run layout
 

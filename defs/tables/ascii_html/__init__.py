@@ -258,6 +258,7 @@ def convert_html_tables_to_ascii_with_metadata(
 
     rendered_tables: list[tuple[str, str]] = []
     geometries: list[TableGeometry] = []
+    has_token_prefix = "__SEC_RENDERED_TABLE_" in html_content
 
     for cluster_idx, cluster in enumerate(clusters):
         primary_idx = cluster[0]
@@ -278,8 +279,9 @@ def convert_html_tables_to_ascii_with_metadata(
                 primary_tbl.raw_node.replace_with(f"\n{res.ascii_text}\n")
             else:
                 token = f"__SEC_RENDERED_TABLE_{len(rendered_tables)}__"
-                while token in html_content:
-                    token += "_"
+                if has_token_prefix:
+                    while token in html_content:
+                        token += "_"
                 rendered_tables.append((token, f"\n{res.ascii_text}\n"))
                 primary_tbl.raw_node.replace_with(token)
             geometries.append(
@@ -293,8 +295,9 @@ def convert_html_tables_to_ascii_with_metadata(
                 primary_tbl.decompose()
                 continue
             token = f"__SEC_RENDERED_TABLE_{len(rendered_tables)}__"
-            while token in html_content:
-                token += "_"
+            if has_token_prefix:
+                while token in html_content:
+                    token += "_"
             raw_html = primary_tbl.raw_node.html or ""
             match = _RE_TABLE_WRAPPER.fullmatch(raw_html)
             inner_html = match.group("body") if match else raw_html
@@ -311,11 +314,21 @@ def convert_html_tables_to_ascii_with_metadata(
     if root is None:
         return html_content, tuple(geometries)
     rendered = root.text(separator="\n") if convert_to_text else str(tree)
-    del tbl, tree, tables, top_tables, root
-    for token, table in rendered_tables:
-        if token not in rendered:
-            raise ValueError(f"rendered table token missing: {token!r}")
-        rendered = rendered.replace(token, table)
+    if rendered_tables:
+        token_map = dict(rendered_tables)
+        token_re = re.compile("|".join(re.escape(k) for k in token_map))
+        seen_tokens: set[str] = set()
+
+        def _replace_token(match: re.Match[str]) -> str:
+            t = match.group(0)
+            seen_tokens.add(t)
+            return token_map[t]
+
+        rendered = token_re.sub(_replace_token, rendered)
+        if len(seen_tokens) != len(rendered_tables):
+            for token, _ in rendered_tables:
+                if token not in seen_tokens:
+                    raise ValueError(f"rendered table token missing: {token!r}")
     return rendered, tuple(geometries)
 
 

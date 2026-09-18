@@ -1,6 +1,10 @@
 from __future__ import annotations
 
-from defs.runtime.interactive import InteractivePhase, run_interactive
+from defs.runtime.interactive import (
+    ExtraAction,
+    InteractivePhase,
+    run_interactive,
+)
 
 
 class _ScriptedInput:
@@ -104,3 +108,54 @@ def test_interactive_merge_final_invokes_callback(monkeypatch, capsys):
     _capture(monkeypatch, ["6", "0"])
     run_interactive(phase)
     assert called["final"] == 1
+
+
+def _extra_phase(callback):
+    return InteractivePhase(
+        ensure_plan=lambda: {"partitions": [{"partition_id": 1}]},
+        preview=lambda: {"sample": []},
+        status=dict,
+        run_partition=lambda pid: None,
+        partition_command=lambda pid: f"cmd {pid}",
+        extra_actions=(ExtraAction("s", "Refresh source", callback),),
+    )
+
+
+def test_extra_action_renders_and_dispatches_dict_result(monkeypatch, capsys):
+    seen: list[str] = []
+
+    def callback():
+        seen.append("s")
+        return {"ok": True, "snapshot_id": "abc"}
+
+    _capture(monkeypatch, ["s", "0"])
+    run_interactive(_extra_phase(callback))
+    out = capsys.readouterr().out
+    assert seen == ["s"]
+    assert "Refresh source" in out
+    assert '"ok": true' in out
+
+
+def test_extra_action_prints_message_result(monkeypatch, capsys):
+    _capture(monkeypatch, ["s", "0"])
+    run_interactive(_extra_phase(lambda: "cancelled"))
+    out = capsys.readouterr().out
+    assert "cancelled" in out
+
+
+def test_extra_action_error_is_reported_and_menu_continues(monkeypatch, capsys):
+    def boom():
+        raise ValueError("no snapshots found")
+
+    _capture(monkeypatch, ["s", "0"])
+    run_interactive(_extra_phase(boom))
+    out = capsys.readouterr().out
+    assert "error: no snapshots found" in out
+
+
+def test_extra_action_none_result_prints_nothing(monkeypatch, capsys):
+    _capture(monkeypatch, ["s", "0"])
+    run_interactive(_extra_phase(lambda: None))
+    out = capsys.readouterr().out
+    assert "Refresh source" in out
+    assert "None" not in out

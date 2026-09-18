@@ -187,6 +187,19 @@ class SecHttpClient:
         if self._cache:
             self._cache.put(url, payload, sha256, byte_size, content_kind)
 
+    def peek_cache(self, url: str) -> bytes | None:
+        """Read-only cache probe with no pacing, ledger, or retry side effects.
+
+        Returns the cached payload for ``url`` when present, else ``None``. A
+        hit is byte-identical to what :meth:`get_bytes` would return; the
+        broker uses this to serve warm entries before acquiring a connection
+        slot so cached documents never queue behind paced network requests.
+        """
+        cached = self._cache_get(url)
+        if cached is not None:
+            self.metrics.record_cache_hit()
+        return cached
+
     # ---------------------------------------------------------- failure ledger
 
     def load_failure_entry(self, url: str) -> dict | None:

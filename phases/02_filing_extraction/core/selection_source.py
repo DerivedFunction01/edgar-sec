@@ -103,8 +103,11 @@ class CandidateSource:
         if self.exclude_amendments:
             clauses.append("l.is_amendment = false")
         if self.document_suffixes:
+            # Suffix filters apply to the effective document path: identical
+            # to primary_document for observed paths, and the synthetic
+            # submission-bundle path for fallback locators.
             suffixes = " OR ".join(
-                f"lower(l.primary_document) LIKE {_sql_quote(f'%.{suffix}')}"
+                f"lower(l.document_path) LIKE {_sql_quote(f'%.{suffix}')}"
                 for suffix in self.document_suffixes
             )
             clauses.append(f"({suffixes})")
@@ -232,6 +235,7 @@ class CandidateSource:
             "primary_document",
             "document_path",
             "archive_url",
+            "document_path_source",
             "reported_size",
             "is_xbrl",
             "is_inline_xbrl",

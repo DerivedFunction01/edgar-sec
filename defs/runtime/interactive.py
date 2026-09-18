@@ -10,6 +10,15 @@ from .partitions import divide_ids_among_workers, parse_id_selection
 
 
 @dataclass(frozen=True)
+class ExtraAction:
+    """Phase-supplied menu action rendered by the shared interactive loop."""
+
+    key: str
+    label: str
+    callback: Callable[[], object]
+
+
+@dataclass(frozen=True)
 class InteractivePhase:
     ensure_plan: Callable[[], dict]
     preview: Callable[[], dict]
@@ -18,6 +27,7 @@ class InteractivePhase:
     partition_command: Callable[[int], str]
     merge_partition: Callable[[int], dict] | None = None
     merge_final: Callable[[], dict] | None = None
+    extra_actions: tuple[ExtraAction, ...] = ()
 
 
 def run_interactive(phase: InteractivePhase, *, default_partition: int = 1) -> int:
@@ -27,6 +37,17 @@ def run_interactive(phase: InteractivePhase, *, default_partition: int = 1) -> i
         partition_ids = [item["partition_id"] for item in plan.get("partitions", [])]
         if not partition_ids:
             raise ValueError("plan contains no operational partitions")
+        mode = "augmentation" if plan.get("augmentation") else "fresh"
+        print(
+            "\nCurrent plan:"
+            f" mode={mode}"
+            f" CIKs={plan.get('row_count', 0)}"
+            f" chunks={len(plan.get('chunks', []))}"
+        )
+        if plan.get("source_manifest"):
+            print(f"  source: {plan['source_manifest']}")
+        if plan.get("base_metadata_manifest"):
+            print(f"  base: {plan['base_metadata_manifest']}")
         print("\nOptions:")
         print("  1. Preview")
         print("  2. Run partition")
@@ -36,6 +57,8 @@ def run_interactive(phase: InteractivePhase, *, default_partition: int = 1) -> i
             print("  5. Merge a partition from its chunks")
         if phase.merge_final is not None:
             print("  6. Merge all partition artifacts into the final dataset")
+        for action in phase.extra_actions:
+            print(f"  {action.key}. {action.label}")
         print("  0. Exit")
         try:
             choice = input("\nChoice [2]: ").strip() or "2"
@@ -122,7 +145,20 @@ def run_interactive(phase: InteractivePhase, *, default_partition: int = 1) -> i
             except (ValueError, FileNotFoundError) as exc:
                 print(f"  error: {exc}")
             continue
+        extra = {action.key: action for action in phase.extra_actions}
+        if choice in extra:
+            action = extra[choice]
+            try:
+                result = action.callback()
+            except (ValueError, FileNotFoundError) as exc:
+                print(f"  error: {exc}")
+                continue
+            if isinstance(result, dict):
+                print(json.dumps(result, indent=2, sort_keys=True))
+            elif result is not None:
+                print(f"  {result}")
+            continue
         print("  unknown choice")
 
 
-__all__ = ["InteractivePhase", "run_interactive"]
+__all__ = ["ExtraAction", "InteractivePhase", "run_interactive"]

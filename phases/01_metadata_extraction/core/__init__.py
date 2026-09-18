@@ -14,6 +14,11 @@ from .application import (
     run_chunk,
     run_partition,
 )
+from .augmentation import (
+    artifacts_root,
+    discover_base_metadata_manifests,
+    discover_source_manifests,
+)
 from .config import (
     CONFIG_VERSION,
     DEFAULT_ARTIFACTS,
@@ -39,6 +44,13 @@ from .config import (
     write_project_config,
 )
 from .merge import MergeError
+from .registry import compare_sources
+from .source_registry import (
+    SourceRegistryError,
+    load_source_snapshot,
+    parse_company_tickers,
+    refresh_company_tickers,
+)
 
 __all__ = [
     "CONFIG_VERSION",
@@ -57,17 +69,25 @@ __all__ = [
     "MergeError",
     "ProjectConfig",
     "RunOptions",
+    "SourceRegistryError",
+    "artifacts_root",
     "build_plan",
+    "compare_sources",
     "default_project_config",
     "default_user_agent",
+    "discover_base_metadata_manifests",
+    "discover_source_manifests",
     "get_status",
     "load_plan",
     "load_project_config",
+    "load_source_snapshot",
     "merge",
     "merge_one_partition",
+    "parse_company_tickers",
     "plan_defining_fields",
     "preview_sample",
     "rate_limit_to_interval",
+    "refresh_company_tickers",
     "run_chunk",
     "run_partition",
     "validate_plan_against_options",

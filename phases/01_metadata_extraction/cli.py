@@ -17,6 +17,7 @@ import argparse
 import json
 import logging
 import sys
+from pathlib import Path
 
 from defs.runtime.cli import (
     add_common_options as add_runtime_common_options,
@@ -25,6 +26,7 @@ from defs.runtime.cli import (
     coalesce,
     load_config_or_template,
 )
+from defs.runtime.paths import resolve_paths
 
 from .core import (
     PROJECT_CONFIG_DEFAULT_PATH,
@@ -41,10 +43,22 @@ from .core import (
     write_project_config,
 )
 from .core.merge import MergeError
+from .core.registry import compare_sources
+from .core.source_registry import SourceRegistryError, refresh_company_tickers
 
 
 def add_common_options(parser: argparse.ArgumentParser, **kwargs) -> None:
     add_runtime_common_options(parser, **kwargs)
+
+
+def add_augmentation_options(parser: argparse.ArgumentParser) -> None:
+    parser.add_argument("--source-manifest", default=None)
+    parser.add_argument("--base-metadata-manifest", default=None)
+    parser.add_argument(
+        "--augmentation",
+        action="store_true",
+        help="plan/run only CIKs missing from a finalized metadata manifest",
+    )
 
 
 def options_from_args(args, project_config) -> RunOptions:
@@ -111,6 +125,9 @@ def options_from_args(args, project_config) -> RunOptions:
         ),
         log_level=getattr(args, "log_level", "INFO"),
         run_id=getattr(args, "run_id", "default"),
+        source_manifest=getattr(args, "source_manifest", None),
+        base_metadata_manifest=getattr(args, "base_metadata_manifest", None),
+        augmentation=bool(getattr(args, "augmentation", False)),
     )
     options.workers = options.effective_workers()
     return options
@@ -124,6 +141,29 @@ def build_parser() -> argparse.ArgumentParser:
         "plan", help="validate input, assign chunks, write plan.json (no network)"
     )
     add_common_options(plan_parser)
+    add_augmentation_options(plan_parser)
+
+    sources_parser = subparsers.add_parser(
+        "sources", help="capture and compare immutable metadata source snapshots"
+    )
+    source_subparsers = sources_parser.add_subparsers(
+        dest="source_command", required=True
+    )
+    refresh_parser = source_subparsers.add_parser(
+        "refresh", help="fetch and publish a company ticker source snapshot"
+    )
+    refresh_parser.add_argument("--artifacts-root", default=None)
+    refresh_parser.add_argument("--user-agent", default=None)
+    refresh_parser.add_argument("--timeout", type=float, default=30.0)
+    refresh_parser.add_argument("--max-retries", type=int, default=3)
+    refresh_parser.add_argument("--rate-limit", type=float, default=5.0)
+    refresh_parser.add_argument("--cache-dir", default=None)
+    compare_parser = source_subparsers.add_parser(
+        "compare", help="build a CIK registry and difference artifacts"
+    )
+    compare_parser.add_argument("--input", required=True)
+    compare_parser.add_argument("--source-manifest", required=True)
+    compare_parser.add_argument("--artifacts-root", default=None)
 
     preview_parser = subparsers.add_parser(
         "preview", help="small SEC-backed smoke test"
@@ -135,6 +175,7 @@ def build_parser() -> argparse.ArgumentParser:
         "run", help="run all missing chunks in one operational partition"
     )
     add_common_options(run_parser)
+    add_augmentation_options(run_parser)
 
     status_parser = subparsers.add_parser(
         "status", help="report run progress and mergeability"
@@ -144,6 +185,7 @@ def build_parser() -> argparse.ArgumentParser:
         default=PROJECT_CONFIG_DEFAULT_PATH,
         help="path to persisted project configuration",
     )
+    add_augmentation_options(status_parser)
     status_parser.add_argument("--partition-id", type=int, default=None)
     status_parser.add_argument("--artifacts", required=True)
     status_parser.add_argument(
@@ -161,6 +203,9 @@ def build_parser() -> argparse.ArgumentParser:
         default=PROJECT_CONFIG_DEFAULT_PATH,
         help="path to persisted project configuration",
     )
+    merge_parser.add_argument("--source-manifest", default=None)
+    merge_parser.add_argument("--base-metadata-manifest", default=None)
+    merge_parser.add_argument("--augmentation", action="store_true")
     merge_parser.add_argument("--artifacts", required=True)
     merge_parser.add_argument("--output", default=None)
     merge_parser.add_argument(
@@ -179,6 +224,7 @@ def build_parser() -> argparse.ArgumentParser:
         "merge-partition", help="merge one partition's chunks into a complete artifact"
     )
     add_common_options(merge_partition_parser, include_partition=False)
+    add_augmentation_options(merge_partition_parser)
     merge_partition_parser.add_argument("--partition-id", type=int, required=True)
     merge_partition_parser.add_argument("--output", default=None)
     merge_partition_parser.add_argument(
@@ -194,6 +240,33 @@ def main(argv=None) -> int:
         level=getattr(logging, log_level.upper(), logging.INFO),
         format="%(levelname)s %(message)s",
     )
+
+    if args.command == "sources":
+        try:
+            artifacts_root = Path(
+                args.artifacts_root or str(resolve_paths().artifacts_root)
+            ).resolve()
+            if args.source_command == "refresh":
+                user_agent = args.user_agent or default_user_agent()
+                result = refresh_company_tickers(
+                    artifacts_root=artifacts_root,
+                    user_agent=user_agent,
+                    timeout_s=args.timeout,
+                    max_retries=args.max_retries,
+                    rate_limit_rps=args.rate_limit,
+                    cache_dir=args.cache_dir,
+                )
+            else:
+                result = compare_sources(
+                    curated_input_path=args.input,
+                    source_manifest_path=args.source_manifest,
+                    artifacts_root=artifacts_root,
+                )
+            print(json.dumps(result, indent=2, sort_keys=True))
+            return 0
+        except (SourceRegistryError, ValueError, FileNotFoundError) as exc:
+            print(f"error: {exc}", file=sys.stderr)
+            return 2
 
     config_path = args.config or PROJECT_CONFIG_DEFAULT_PATH
     project_config, _ = load_config_or_template(
@@ -257,7 +330,7 @@ def main(argv=None) -> int:
             )
             print(json.dumps(report.to_dict(), indent=2, sort_keys=True))
             return 0
-    except (ValueError, FileNotFoundError, MergeError) as exc:
+    except (ValueError, FileNotFoundError, MergeError, SourceRegistryError) as exc:
         print(f"error: {exc}", file=sys.stderr)
         return 2
     return 1

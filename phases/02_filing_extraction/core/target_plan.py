@@ -260,13 +260,13 @@ def plan(
                     SELECT
                         o.occurrence_id, o.document_locator_key, o.source_cik, o.accession,
                         o.form, o.is_amendment, o.filing_date, o.report_date, o.primary_document,
-                        o.document_path, o.archive_url, o.reported_size, o.is_xbrl,
-                        o.is_inline_xbrl, o.is_xbrl_numeric
+                        o.document_path, o.archive_url, o.document_path_source, o.reported_size,
+                        o.is_xbrl, o.is_inline_xbrl, o.is_xbrl_numeric
                     FROM read_parquet('{occ_parquet}') o
                     JOIN selected_locs s ON o.document_locator_key = s.document_locator_key
                     WHERE o.form = '{form_name}'
                       AND (
-                        {suffix_sql("o.primary_document", document_suffixes)}
+                        {suffix_sql("o.document_path", document_suffixes)}
                       )
                     ORDER BY o.document_locator_key, o.occurrence_id
                 """
@@ -280,10 +280,10 @@ def plan(
                     l.xbrl_state, l.size_band, l.owner_org_presence, l.foreign_status,
                     l.lifecycle_class, l.stub_suspect, l.representative_cik,
                     l.representative_accession, l.primary_document, l.document_path,
-                    l.archive_url, l.company_name
+                    l.archive_url, l.document_path_source, l.company_name
                 FROM read_parquet('{loc_parquet}') l
                 JOIN selected_locs s ON l.document_locator_key = s.document_locator_key
-                WHERE {suffix_sql("l.primary_document", document_suffixes)}
+                WHERE {suffix_sql("l.document_path", document_suffixes)}
                 ORDER BY l.document_locator_key
             """
             staging.copy_query(loc_q, loc_dest)
@@ -421,7 +421,9 @@ def plan(
                 where = "LIMIT ?"
                 params = [limit]
             if document_suffixes:
-                suffix_filter = suffix_sql("primary_document", document_suffixes)
+                # Effective document path: byte-identical to primary_document
+                # for observed locators; synthetic bundle paths carry .txt.
+                suffix_filter = suffix_sql("document_path", document_suffixes)
                 where = f"WHERE ({suffix_filter}) " + where
             with FinalizedArtifact(source) as artifact:
                 query = f"SELECT * FROM {artifact.relation} {where}"
@@ -440,6 +442,17 @@ def plan(
         unique_locators = 0
         if target_files:
             file_list = ", ".join(f"'{p}'" for p in target_files)
+            from defs.storage import parquet_column_names
+
+            # Catalogs predating the fallback policy have no provenance column.
+            has_source = "document_path_source" in parquet_column_names(
+                str(target_files[0])
+            )
+            source_projection = (
+                "document_path_source"
+                if has_source
+                else "CAST(NULL AS VARCHAR) AS document_path_source"
+            )
             loc_dest = destination / "locator_groups.parquet"
             db_file = destination / "full_plan_staging.duckdb"
             with DuckDBStaging(
@@ -454,9 +467,10 @@ def plan(
                         accession AS representative_accession,
                         primary_document,
                         document_path,
-                        archive_url
+                        archive_url,
+                        {source_projection}
                     FROM read_parquet([{file_list}])
-                    WHERE {suffix_sql("primary_document", document_suffixes)}
+                    WHERE {suffix_sql("document_path", document_suffixes)}
                     ORDER BY document_locator_key
                 """,
                     loc_dest,

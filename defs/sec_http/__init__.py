@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+from .cache import SqlCacheReader, make_cache_reader
 from .client import (
     DEFAULT_SEC_MAX_CONCURRENCY,
     DEFAULT_USER_AGENT,
@@ -52,6 +53,8 @@ __all__ = [
     "RetryPolicy",
     "SecHttpClient",
     "SecTransportProfile",
+    "SqlCacheReader",
     "default_headers",
+    "make_cache_reader",
     "make_sec_http_client",
 ]

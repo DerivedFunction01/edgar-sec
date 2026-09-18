@@ -146,6 +146,21 @@ length-prefixed JSON frames (protocol version 1, `healthcheck://broker`
 sentinel). The broker owns one `SecHttpClient` — single rate limiter, cache,
 failure ledger, and metrics — so all live requests share one aggregate pace.
 
+Warm-cache reruns bypass the broker for already-cached documents:
+
+- The broker records the cache directory it uses in its registry; workers
+  resolve it with `broker_cache_dir()` and open a read-only
+  `SqlCacheReader` (`mode=ro`, fail-open on missing or drifted databases).
+- `BrokerArchiveFetcher` probes the local reader for the primary archive URL
+  and the full-submission fallback URL before each RPC. A hit is
+  byte-identical to the broker's response (cache entries never expire and
+  successes clear their ledger entry), so only misses traverse the socket.
+- The reader is strictly read-only: cache writes, failure-ledger updates,
+  pacing, and retries stay broker-owned. Cache hits also never consume the
+  broker's connection slots (the broker serves its own warm hits before
+  acquiring a slot), so cached-document throughput does not queue behind
+  paced network requests.
+
 Manage the broker directly with `python -m defs.sec_http.broker
 {start,stop,status} [--socket PATH]`. `start` is idempotent: an existing
 healthy broker is reused, a stale socket is replaced.

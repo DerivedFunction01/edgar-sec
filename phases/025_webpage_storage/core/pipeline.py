@@ -82,15 +82,19 @@ def run_partition(
     if fetcher is None:
         if mode.strip().lower() == "fixture" and not fixture_paths:
             raise ValueError("fixture mode requires fixture_paths")
+        cache_dir = None
         if (
             mode.strip().lower() == "production"
             and http_client is None
             and broker_socket is None
         ):
-            from defs.sec_http.broker_cli import ensure_broker
+            from defs.sec_http.broker_cli import broker_cache_dir, ensure_broker
 
             broker_socket = ensure_broker().socket_path
-        fetcher = make_archive_fetcher(mode, fixture_paths, http_client, broker_socket)
+            cache_dir = broker_cache_dir()
+        fetcher = make_archive_fetcher(
+            mode, fixture_paths, http_client, broker_socket, cache_dir=cache_dir
+        )
 
     run_paths = resolve_paths("webpage_storage", run_id)
     run_paths.ensure_run_layout()

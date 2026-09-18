@@ -16,7 +16,6 @@ _ALL_BULLET_ALT = build_alternation(sorted(BULLET_MARKERS), auto_escape=True)
 _GLYPH_BULLET_ALT = build_alternation(sorted(GLYPH_BULLET_MARKERS), auto_escape=True)
 
 _RE_MULTIPLE_BLANKS = re.compile(r"\n{3,}")
-_RE_TRAILING_WHITESPACE = re.compile(r"[ \t]+$", re.MULTILINE)
 
 # Concatenated bullet splitting patterns
 _RE_SEMICOLON_BULLET_SPLIT = re.compile(
@@ -34,10 +33,11 @@ def _split_bullets_on_masked(masked: str) -> str:
     lines = masked.split("\n")
     new_lines = []
     for line in lines:
-        if SENTINEL_PREFIX in line:
-            new_lines.append(line)
+        stripped = line.rstrip(" \t")
+        if SENTINEL_PREFIX in stripped:
+            new_lines.append(stripped)
             continue
-        cleaned = _RE_SEMICOLON_BULLET_SPLIT.sub(r"\1\n", line)
+        cleaned = _RE_SEMICOLON_BULLET_SPLIT.sub(r"\1\n", stripped)
         cleaned = _RE_PERIOD_GLYPH_BULLET_SPLIT.sub(r"\1\n", cleaned)
         cleaned = _RE_FOOTNOTE_BULLET_SPLIT.sub(r"\1\n", cleaned)
         new_lines.append(cleaned)
@@ -65,8 +65,7 @@ def normalize_final_text_whitespace(text: str) -> str:
     spacing is preserved byte-for-byte.
     """
     masked, table_spans = mask_tagged_tables(text)
-    cleaned = _RE_TRAILING_WHITESPACE.sub("", masked)
-    cleaned = _split_bullets_on_masked(cleaned)
+    cleaned = _split_bullets_on_masked(masked)
     cleaned = _RE_MULTIPLE_BLANKS.sub("\n\n", cleaned)
     if table_spans:
         cleaned = restore_tagged_tables(cleaned, table_spans)

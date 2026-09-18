@@ -72,7 +72,11 @@ writes secret values.
 Fetches the SEC `data.sec.gov/submissions` feed per CIK, follows historical
 submissions files, and produces one `submission_metadata` row per CIK (recent +
 historical filings combined into a nested `filings` list) with strict
-normalization, provenance, and resumable chunk/partition execution.
+normalization, provenance, and resumable chunk/partition execution. The phase
+also captures explicit SEC listing-source snapshots and can augment a finalized
+metadata snapshot with only newly uncovered CIKs without modifying the tracked
+curated input manifest; both the canonical CLI and the interactive `run.py`
+wizard expose the listing-source refresh and augmentation flow.
 
 ### [Phase 02 — Filing Catalog](phases/02_filing_extraction/README.md)
 
@@ -115,9 +119,10 @@ financial table extraction are downstream phases built on `document_blobs` and
 
 ### [Shared Infrastructure (`defs/`)](defs/README.md)
 
-Domain-neutral contracts: SEC HTTP client (pacing/retries/caching/broker), canonical
-filing identity (accessions, archive URLs, occurrence IDs, document locator keys),
-storage backends, SQL boundary, SEC document handling (`defs/sec_documents/`),
+Domain-neutral contracts: SEC HTTP client (pacing/retries/caching/managed broker
+with read-only warm-cache readers for workers), canonical filing identity
+(accessions, archive URLs, occurrence IDs, document locator keys), storage
+backends, SQL boundary, SEC document handling (`defs/sec_documents/`),
 `sec_forms/` (shared form definitions, cover-page contracts, coordinate-safe
 `page_markers/` analysis), text reflow/lexical evidence (`defs/text/`), and the
 shared phase runtime.

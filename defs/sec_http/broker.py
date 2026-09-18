@@ -138,6 +138,22 @@ class SecBroker:
                 "payload_length": 0,
                 "payload": b"",
             }
+        # Warm-cache fast path: serve hits before acquiring a connection slot
+        # so cached documents never queue behind paced network requests. A hit
+        # is byte-identical to what ``get_bytes`` would return (cache entries
+        # never expire) and skips the limiter entirely.
+        peek = getattr(self._client, "peek_cache", None)
+        if peek is not None:
+            peeked = peek(archive_url)
+            if peeked is not None:
+                if self._note_bytes(len(peeked)):
+                    reclaim()
+                return {
+                    "status": "ok",
+                    "error": None,
+                    "payload_length": len(peeked),
+                    "payload": peeked,
+                }
         with self._semaphore:
             with self._lock:
                 self._active += 1
@@ -282,6 +298,15 @@ class SecBrokerClient:
 
     def __init__(self, socket_path: str | Path) -> None:
         self.socket_path = Path(socket_path)
+        self._local = threading.local()
+
+    def __getstate__(self) -> dict[str, object]:
+        """Serialize only configuration; live worker sockets are process-local."""
+        return {"socket_path": self.socket_path}
+
+    def __setstate__(self, state: dict[str, object]) -> None:
+        """Recreate thread-local connection state in a spawned worker."""
+        self.socket_path = Path(state["socket_path"])
         self._local = threading.local()
 
     @property

@@ -264,6 +264,85 @@ class FinalizedArtifact:
     def count(self) -> int:
         return int(self.run(f"SELECT count(*) FROM {self.relation}")[0][0])
 
+    def distinct_values(self, column: str) -> set[str]:
+        """Return distinct values for a validated scalar column."""
+        if column not in self.columns:
+            raise StorageError(f"column not present in finalized artifact: {column}")
+        try:
+            rows = self._con.execute(
+                f"SELECT DISTINCT {_identifier(column)} FROM {self.relation} "
+                f"WHERE {_identifier(column)} IS NOT NULL"
+            ).fetchall()
+        except duckdb.Error as exc:
+            raise StorageError(
+                f"failed to read distinct values for {column}: {exc}"
+            ) from exc
+        return {str(row[0]) for row in rows}
+
+    def key_overlap_count(self, other_path: str | os.PathLike[str], column: str) -> int:
+        """Count shared scalar keys with another finalized Parquet artifact."""
+        if column not in self.columns or column not in parquet_column_names(other_path):
+            raise StorageError(
+                f"column not present in both finalized artifacts: {column}"
+            )
+        other = os.path.abspath(os.fspath(other_path))
+        try:
+            return int(
+                self._con.execute(
+                    "SELECT count(*) FROM ("
+                    f"SELECT {_identifier(column)} FROM {self.relation} "
+                    "INTERSECT "
+                    f"SELECT {_identifier(column)} FROM read_parquet({_quote(other)}))"
+                ).fetchone()[0]
+            )
+        except duckdb.Error as exc:
+            raise StorageError(
+                f"failed to compare finalized artifact keys: {exc}"
+            ) from exc
+
+    def copy_union(
+        self,
+        other_path: str | os.PathLike[str],
+        output_path: str | os.PathLike[str],
+        *,
+        order_by: str | None = None,
+    ) -> int:
+        """Atomically publish this artifact unioned with another artifact."""
+        output = os.path.abspath(os.fspath(output_path))
+        if os.path.exists(output):
+            raise StorageError(f"immutable artifact already exists: {output}")
+        other = os.path.abspath(os.fspath(other_path))
+        if parquet_column_names(other) != self.columns:
+            raise StorageError(
+                "cannot union finalized artifacts with different schemas"
+            )
+        order = f" ORDER BY {_identifier(order_by)}" if order_by else ""
+        query = (
+            f"SELECT * FROM {self.relation} UNION ALL "
+            f"SELECT * FROM read_parquet({_quote(other)}){order}"
+        )
+        os.makedirs(os.path.dirname(output), exist_ok=True)
+        temporary = output + ".tmp"
+        try:
+            self._con.execute(
+                f"COPY ({query}) TO {_quote(temporary)} "
+                "(FORMAT PARQUET, COMPRESSION 'zstd')"
+            )
+            count = int(
+                self._con.execute(
+                    f"SELECT count(*) FROM read_parquet({_quote(temporary)})"
+                ).fetchone()[0]
+            )
+            os.replace(temporary, output)
+            return count
+        except duckdb.Error as exc:
+            raise StorageError(
+                f"failed to publish finalized artifact union: {exc}"
+            ) from exc
+        finally:
+            if os.path.exists(temporary):
+                os.remove(temporary)
+
     def copy_query(
         self,
         query: str,

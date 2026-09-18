@@ -96,6 +96,8 @@ class FeatureSnapshotBuilder:
         }
 
     def _target_union(self, forms: list[str]) -> str:
+        from defs.storage import parquet_column_names
+
         selects = []
         for form in sorted(forms):
             form_part = form.replace("/", "_")
@@ -106,8 +108,15 @@ class FeatureSnapshotBuilder:
                 raise FileNotFoundError(
                     f"missing target partition for form {form}: {path}"
                 )
+            # Catalogs built before the full-submission fallback policy have
+            # no document_path_source column; project NULL for those.
+            if "document_path_source" in parquet_column_names(str(path)):
+                source_projection = "document_path_source"
+            else:
+                source_projection = "CAST(NULL AS VARCHAR) AS document_path_source"
             selects.append(
-                f"SELECT '{form}' AS catalog_form, {IDENTITY_COLUMNS} FROM read_parquet('{path}')"
+                f"SELECT '{form}' AS catalog_form, {IDENTITY_COLUMNS}, "
+                f"{source_projection} FROM read_parquet('{path}')"
             )
         return " UNION ALL ".join(selects)
 
@@ -291,8 +300,8 @@ class FeatureSnapshotBuilder:
                 CASE WHEN f.report_date IS NOT NULL AND length(f.report_date) >= 4 THEN CAST(substring(f.report_date, 1, 4) AS INTEGER) ELSE NULL END AS report_year,
                 CASE WHEN f.filing_date IS NOT NULL AND length(f.filing_date) >= 4 THEN CAST(substring(f.filing_date, 1, 4) AS INTEGER) ELSE NULL END AS filing_year,
                 {era_expr} AS era,
-                CASE WHEN f.primary_document LIKE '%.htm%' THEN 'htm' WHEN f.primary_document LIKE '%.txt%' THEN 'txt' WHEN f.primary_document LIKE '%.pdf%' THEN 'pdf' ELSE 'other' END AS suffix,
-                f.primary_document, f.document_path, f.archive_url, f.reported_size,
+                CASE WHEN f.document_path LIKE '%.htm%' THEN 'htm' WHEN f.document_path LIKE '%.txt%' THEN 'txt' WHEN f.document_path LIKE '%.pdf%' THEN 'pdf' ELSE 'other' END AS suffix,
+                f.primary_document, f.document_path, f.archive_url, f.document_path_source, f.reported_size,
                 f.is_xbrl, f.is_inline_xbrl, f.is_xbrl_numeric,
                 CASE WHEN f.reported_size IS NOT NULL AND f.reported_size < {stub_threshold} THEN 'true' ELSE 'false' END AS stub_suspect,
                 CASE WHEN f.is_inline_xbrl THEN 'inline_xbrl' WHEN f.is_xbrl THEN 'xbrl_only' ELSE 'no_xbrl' END AS xbrl_state,
@@ -468,7 +477,7 @@ class FeatureSnapshotBuilder:
                 owner_org_presence, foreign_status, foreign_country_code, entity_type, filer_category_primary,
                 lifecycle_class, has_revival_gap, locator_class, stub_suspect, anchor_status, comparison_status,
                 is_amendment, reported_size, report_year, filing_year, filing_date, report_date, primary_document,
-                document_path, archive_url, source_cik AS representative_cik, accession AS representative_accession,
+                document_path, archive_url, document_path_source, source_cik AS representative_cik, accession AS representative_accession,
                 sic_code, company_name, company_family
             FROM ranked WHERE rn = 1
         """

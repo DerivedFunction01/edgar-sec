@@ -2,7 +2,9 @@
 
 from __future__ import annotations
 
+import hashlib
 import json
+import pickle
 import socket
 import struct
 import threading
@@ -140,6 +142,14 @@ def test_broker_client_missing_socket_fails_cleanly(tmp_path: Path) -> None:
     assert result["error"]
 
 
+def test_broker_client_can_be_pickled_for_process_workers(tmp_path: Path) -> None:
+    socket_path = tmp_path / "broker.sock"
+    restored = pickle.loads(pickle.dumps(SecBrokerClient(socket_path)))
+
+    assert restored.socket_path == socket_path
+    assert restored._local is not None
+
+
 def test_broker_malformed_request_returns_error(broker_paths: Path) -> None:
     server, thread = _start_server(broker_paths, {})
     try:
@@ -171,6 +181,11 @@ def test_broker_cli_start_stop_status(tmp_path: Path) -> None:
 
     started = broker_cli.main(["start", "--socket", str(socket_path)])
     assert started == 0
+
+    registry = json.loads((tmp_path / "broker.json").read_text(encoding="utf-8"))
+    registry_payload = registry.get("broker", registry)
+    assert isinstance(registry_payload.get("cache_dir"), str)
+    assert registry_payload["cache_dir"]
 
     status = broker_cli.main(["status", "--socket", str(socket_path)])
     assert status == 0
@@ -273,3 +288,97 @@ def test_broker_client_fails_when_broker_gone(broker_paths: Path) -> None:
         result = client.fetch("https://www.sec.gov/Archives/x/doc.htm")
     assert result["status"] == "failed"
     assert result["payload"] is None
+
+
+def test_broker_fast_path_serves_cache_hit_without_connection_slot(
+    tmp_path: Path,
+) -> None:
+    """A warm cache hit must not queue behind paced requests holding slots."""
+    from defs.sec_http.cache import SqlCache
+
+    class _BlockingPeekClient:
+        """Misses block inside ``get_bytes`` like paced requests; peek reads the cache."""
+
+        def __init__(self) -> None:
+            self.cache = SqlCache(tmp_path / "cache")
+            self.metrics = HttpMetrics()
+            self.in_request = threading.Event()
+            self.release = threading.Event()
+
+        def peek_cache(self, url: str) -> bytes | None:
+            return self.cache.get(url)
+
+        def get_bytes(self, url: str) -> bytes:
+            self.in_request.set()
+            assert self.release.wait(timeout=10)
+            raise RuntimeError("aborted")
+
+    client = _BlockingPeekClient()
+    payload = b"cached-bytes"
+    client.cache.put(
+        "https://www.sec.gov/Archives/cached.htm",
+        payload,
+        hashlib.sha256(payload).hexdigest(),
+        len(payload),
+        "bytes",
+    )
+    broker = SecBroker(
+        socket_path=tmp_path / "fast.sock",
+        http_client=client,
+        max_connections=1,
+    )
+    try:
+        miss_result: dict = {}
+
+        def miss() -> None:
+            miss_result["r"] = broker.fetch("https://www.sec.gov/Archives/miss.htm")
+
+        miss_thread = threading.Thread(target=miss)
+        miss_thread.start()
+        assert client.in_request.wait(timeout=5)
+
+        hit_result: dict = {}
+
+        def hit() -> None:
+            hit_result["r"] = broker.fetch("https://www.sec.gov/Archives/cached.htm")
+
+        hit_thread = threading.Thread(target=hit)
+        hit_thread.start()
+        hit_thread.join(timeout=5)
+        assert not hit_thread.is_alive(), "cache hit blocked behind an occupied slot"
+        assert hit_result["r"]["status"] == "ok"
+        assert hit_result["r"]["payload"] == payload
+
+        client.release.set()
+        miss_thread.join(timeout=5)
+        assert miss_result["r"]["status"] == "failed"
+    finally:
+        client.release.set()
+        broker.stop()
+
+
+def test_broker_cache_dir_prefers_registry_field(tmp_path: Path) -> None:
+    import importlib
+
+    from defs.runtime.paths import BrokerPaths
+
+    broker_cli = importlib.import_module("defs.sec_http.broker_cli")
+    paths = BrokerPaths(tmp_path)
+    paths.registry_path.write_text(
+        json.dumps({"broker": {"pid": 1, "cache_dir": str(tmp_path / "cache")}}),
+        encoding="utf-8",
+    )
+
+    assert broker_cli.broker_cache_dir(paths) == tmp_path / "cache"
+
+
+def test_broker_cache_dir_falls_back_to_runtime_resolution(tmp_path: Path) -> None:
+    import importlib
+
+    from defs.runtime.paths import BrokerPaths
+
+    broker_cli = importlib.import_module("defs.sec_http.broker_cli")
+
+    assert broker_cli.broker_cache_dir(BrokerPaths(tmp_path)) == (
+        resolve_paths().cache_root
+    )

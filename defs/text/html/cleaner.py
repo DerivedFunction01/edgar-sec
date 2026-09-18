@@ -35,8 +35,7 @@ from defs.text.unicode import sanitize_unicode_whitespace
 _RE_IX_HEADER_BLOCK = re.compile(r"(?is)<ix:header\b.*?</ix:header>")
 _RE_IX_HIDDEN_BLOCK = re.compile(r"(?is)<ix:hidden\b.*?</ix:hidden>")
 _IXBRL_PREFIXES = build_alternation(["ix", "xbrl", "xbrli", "dei", "us-gaap"])
-_RE_IXBRL_OPEN_TAG = re.compile(rf"(?i)<(?:{_IXBRL_PREFIXES}):[a-z][a-z0-9_.-]*[^>]*>")
-_RE_IXBRL_CLOSE_TAG = re.compile(rf"(?i)</(?:{_IXBRL_PREFIXES}):[a-z][a-z0-9_.-]*\s*>")
+_RE_IXBRL_TAG = re.compile(rf"(?i)</?(?:{_IXBRL_PREFIXES}):[a-z][a-z0-9_.-]*[^>]*>")
 
 # ---------------------------------------------------------------------------
 # Benign font styles inside style="..." attribute values
@@ -99,7 +98,6 @@ _RE_STYLE_FONT_FAMILY = re.compile(
     r"(?i)\bfont-family\s*:\s*([^;\"]+)|(?<=style=[\"'])\s*([a-z0-9\s,'\"_-]+?)(?:;|\"|'|$)"
 )
 _RE_FACE_ATTR = re.compile(r"(?i)\bface\s*=\s*(?:\"([^\"]*)\"|'([^']*)'|([^\s>]+))")
-_RE_TAG_NAME = re.compile(r"(?is)^\s*<\s*(/?)\s*([a-z][a-z0-9:-]*)")
 _RE_GLYPH = re.compile(r"[\u00a8\u00a3\u00fe\u00fdrRnNuUoOxX]")
 _VOID_TAGS = frozenset(
     {
@@ -167,17 +165,9 @@ def _replace_font_glyphs(text: str, font_family: str) -> str:
 
 
 # ---------------------------------------------------------------------------
-# Presentation <font> attributes and non-semantic HTML attributes
-# ---------------------------------------------------------------------------
-_FONT_FACE_NOT_SYMBOL = (
-    rf"(?:[\"']\s*(?!(?:{_PRESERVED_FAMILIES_ALT})\b)[^>\"']*[\"']|"
-    rf"(?!(?:{_PRESERVED_FAMILIES_ALT})\b)[^>\s\"']+)"
-)
-_RE_NON_SYMBOL_FONT_FACE = re.compile(rf"(?i)\s+face={_FONT_FACE_NOT_SYMBOL}")
-
-_SIZE_COLOR_ALT = build_alternation(["size", "color"], auto_escape=True)
-_RE_FONT_SIZE_COLOR_ATTRS = re.compile(
-    rf"(?i)\s+(?:{_SIZE_COLOR_ALT})=(?:[\"'][^>\"']*[\"']|[^>\s\"']+)"
+_RE_FONT_TAG = re.compile(r"(?i)<font\b([^>]*)>")
+_RE_FONT_ATTRS = re.compile(
+    r"""(?i)\s+(?:face=(?:"([^"]*)"|'([^']*)'|([^\s>]+))|(?:size|color)=(?:"[^"]*"|'[^']*'|[^\s>]+))"""
 )
 
 _NOISE_ATTRS_ALT = build_alternation(
@@ -194,13 +184,8 @@ _RE_NOISE_ATTRS = re.compile(
 _METADATA_PREFIX_ALT = build_alternation(["mso", "data"], auto_escape=True)
 _METADATA_LANG_ALT = build_alternation(["xml:lang", "lang"], auto_escape=True)
 
-_RE_METADATA_ATTR_DQ = re.compile(
-    rf'(?i)\s+(?:{_METADATA_PREFIX_ALT})-[a-z0-9_.-]+\s*=\s*"[^"]*"'
-    rf'|\s+(?:{_METADATA_LANG_ALT})\s*=\s*"[^"]*"'
-)
-_RE_METADATA_ATTR_SQ = re.compile(
-    rf"(?i)\s+(?:{_METADATA_PREFIX_ALT})-[a-z0-9_.-]+\s*=\s*'[^']*'"
-    rf"|\s+(?:{_METADATA_LANG_ALT})\s*=\s*'[^']*'"
+_RE_METADATA_ATTR = re.compile(
+    rf"""(?i)\s+(?:(?:{_METADATA_PREFIX_ALT})-[a-z0-9_.-]+|(?:{_METADATA_LANG_ALT}))\s*=\s*(?:"[^"]*"|'[^']*')"""
 )
 
 
@@ -208,11 +193,11 @@ def strip_ixbrl_inline_tags(html: str) -> str:
     """Unwrap inline XBRL tags while keeping their inner text content."""
     if ":" not in html:
         return html
-    html = _RE_IX_HEADER_BLOCK.sub(" ", html)
-    html = _RE_IX_HIDDEN_BLOCK.sub(" ", html)
-    html = _RE_IXBRL_OPEN_TAG.sub("", html)
-    html = _RE_IXBRL_CLOSE_TAG.sub("", html)
-    return html
+    if "ix:header" in html or "IX:HEADER" in html:
+        html = _RE_IX_HEADER_BLOCK.sub(" ", html)
+    if "ix:hidden" in html or "IX:HIDDEN" in html:
+        html = _RE_IX_HIDDEN_BLOCK.sub(" ", html)
+    return _RE_IXBRL_TAG.sub("", html)
 
 
 def normalize_font_qualified_glyphs(html: str) -> str:
@@ -233,46 +218,47 @@ def normalize_font_qualified_glyphs(html: str) -> str:
     opaque_depth = 0
     for match in _RE_TAG_OR_TEXT.finditer(html):
         token = match.group(0)
-        if not token.startswith("<"):
+        if token[0] != "<":
             if opaque_depth or current_font is None:
                 output.append(token)
-                continue
-
-            output.append(_replace_font_glyphs(token, current_font or ""))
+            else:
+                output.append(_replace_font_glyphs(token, current_font))
             continue
 
         if token.startswith("<!--"):
             output.append(token)
             continue
-        tag_match = _RE_TAG_NAME.match(token)
-        if tag_match is None:
-            output.append(token)
-            continue
-        closing, tag_name = tag_match.groups()
-        tag_name = tag_name.lower()
-        if closing:
-            output.append(token)
-            if tag_name in {"script", "style"} and opaque_depth:
+
+        is_closing = len(token) > 1 and token[1] == "/"
+        output.append(token)
+
+        if is_closing:
+            tag_name = (
+                token[2:].split()[0].rstrip(">").lower() if len(token) > 2 else ""
+            )
+            if tag_name in ("script", "style") and opaque_depth:
                 opaque_depth -= 1
             if font_stack:
                 current_font = font_stack.pop()
             continue
 
-        output.append(token)
-        if tag_name in {"script", "style"}:
+        tag_part = token[1:].split(None, 1)[0].rstrip("/>")
+        tag_name = tag_part.lower()
+        if tag_name in ("script", "style"):
             opaque_depth += 1
-        if tag_name in _VOID_TAGS or token.rstrip().endswith("/>"):
+        if tag_name in _VOID_TAGS or token.endswith("/>"):
             continue
+
         font_stack.append(current_font)
         tok_lower = token.lower()
-        if "font-family" in tok_lower or "style" in tok_lower:
+        if "font-family" in tok_lower:
             style_match = _RE_STYLE_FONT_FAMILY.search(token)
             if style_match:
                 current_font = (
                     style_match.group(1) or style_match.group(2) or ""
                 ).strip()
                 continue
-        if "face" in tok_lower:
+        if "face=" in tok_lower or "face =" in tok_lower:
             face_match = _RE_FACE_ATTR.search(token)
             if face_match:
                 current_font = next(
@@ -299,17 +285,33 @@ def strip_benign_font_styles(html: str) -> str:
 
 def strip_office_metadata_attributes(html: str) -> str:
     """Strip ``mso-*``, ``data-*``, ``xml:lang``, and ``lang`` attributes."""
-    if "mso-" not in html and "data-" not in html and "lang=" not in html:
+    if (
+        "mso-" not in html
+        and "data-" not in html
+        and "lang=" not in html
+        and "LANG=" not in html
+    ):
         return html
-    html = _RE_METADATA_ATTR_DQ.sub("", html)
-    return _RE_METADATA_ATTR_SQ.sub("", html)
+    return _RE_METADATA_ATTR.sub("", html)
 
 
 def strip_font_tag_and_noise_attributes(html: str) -> str:
     """Strip legacy non-symbolic font face/size/color and noise attributes."""
     if "<font" in html or "<FONT" in html:
-        html = _RE_NON_SYMBOL_FONT_FACE.sub("", html)
-        html = _RE_FONT_SIZE_COLOR_ATTRS.sub("", html)
+
+        def _clean_tag(match: re.Match[str]) -> str:
+            attrs = match.group(1)
+
+            def _clean_attr(m: re.Match[str]) -> str:
+                face_val = m.group(1) or m.group(2) or m.group(3)
+                if face_val and _RE_HAS_PRESERVED_FAMILY.search(face_val):
+                    return m.group(0)
+                return ""
+
+            new_attrs = _RE_FONT_ATTRS.sub(_clean_attr, attrs)
+            return f"<font{new_attrs}>"
+
+        html = _RE_FONT_TAG.sub(_clean_tag, html)
     if (
         "tabindex=" in html
         or "target=" in html

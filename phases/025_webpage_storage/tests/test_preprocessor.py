@@ -30,7 +30,7 @@ def test_decode_bytes_encodings() -> None:
     assert enc == "utf-8"
 
 
-def test_preprocess_strips_envelope_and_unescapes() -> None:
+def test_preprocess_strips_envelope_and_sanitizes_html() -> None:
     preprocessor = GenericPreprocessor()
     raw = b"""<DOCUMENT>
 <TYPE>10-K
@@ -40,7 +40,7 @@ def test_preprocess_strips_envelope_and_unescapes() -> None:
 <HTML>
 <HEAD><TITLE>Report</TITLE><STYLE>.bold { font-weight: bold; }</STYLE></HEAD>
 <BODY>
-<P>Item 1.&nbsp;Business &amp; Operations</P>
+<P>Item 1.&nbsp;Business &amp; Operations &lt;Table of Contents&gt;</P>
 </BODY>
 </HTML>
 </TEXT>
@@ -49,11 +49,25 @@ def test_preprocess_strips_envelope_and_unescapes() -> None:
     doc = preprocessor.preprocess(raw)
     assert doc.word_count >= 3
     assert doc.has_html_tags is True
-    assert "Business & Operations" in doc.cleaned_text
     assert "<STYLE>" not in doc.cleaned_text
     assert "<HEAD>" not in doc.cleaned_text
-    # Page analysis belongs to the representation-specific policy boundary,
-    # after HTML has been rendered into a valid text coordinate frame.
+    # HTML entities remain intact so &lt;Table...&gt; is not treated as a <table> tag
+    assert "&lt;Table of Contents&gt;" in doc.cleaned_text
+    assert "<Table of Contents>" not in doc.cleaned_text
+
+
+def test_preprocess_ascii_unescapes_entities() -> None:
+    preprocessor = GenericPreprocessor()
+    raw = b"""<DOCUMENT>
+<TYPE>10-K
+<TEXT>
+ITEM 1. Business &amp; Operations &copy; 2024
+</TEXT>
+</DOCUMENT>"""
+    doc = preprocessor.preprocess(raw)
+    assert doc.has_html_tags is False
+    assert doc.representation == "ascii"
+    assert "Business & Operations \xa9 2024" in doc.cleaned_text
 
 
 def test_preprocess_ascii_sec_table_not_flagged_as_html() -> None:

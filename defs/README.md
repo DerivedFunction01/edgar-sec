@@ -7,8 +7,9 @@ surfaces exported here and never reimplement or bypass them.
 defs/
   sec_http/            # SEC HTTP client, managed broker, and broker CLI
     client.py          # SEC pacing, retries, caching, metrics, headers
+    cache.py           # SQLite response cache + failure ledger; read-only reader view
     broker.py          # same-host SEC acquisition broker (Unix socket RPC)
-    broker_cli.py      # start/stop/status, ensure_broker() auto-start
+    broker_cli.py      # start/stop/status, ensure_broker() auto-start, cache-dir resolution
     errors.py          # permanent/overlarge/retry-exhausted error taxonomy
     metrics.py         # request counters, latency, rate, cache hit-rate
     rate_limit.py      # aggregate 4 RPS pacing policy
@@ -36,14 +37,19 @@ defs/
 ```
 
 - `sec_http/` — the SEC HTTP boundary. `client.py` owns the production
-  `SecHttpClient` (pacing, retries, cache, failure ledger, metrics). `broker.py`
-  exposes `SecBroker`/`SecBrokerClient` over a Unix-domain socket using
-  length-prefixed JSON frames (protocol version 1, `healthcheck://broker`
-  sentinel): one broker process owns a single shared `SecHttpClient` and
-  serves archive fetch RPCs, so process-pool workers never construct their own
-  client and all live requests share one aggregate rate limiter. `broker_cli.py`
-  provides `start`/`stop`/`status` plus `ensure_broker()`, which production
-  pipelines call to auto-start a broker. Manage it with
+  `SecHttpClient` (pacing, retries, cache, failure ledger, metrics) plus the
+  read-only `peek_cache()` probe the broker fast path uses. `cache.py` defines
+  the SQLite-backed response cache, the writer `SqlCache`, and `SqlCacheReader`,
+  a read-only (`mode=ro`) view that fails open on missing or drifted databases.
+  `broker.py` exposes `SecBroker`/`SecBrokerClient` over a Unix-domain socket
+  using length-prefixed JSON frames (protocol version 1, `healthcheck://broker`
+  sentinel): one broker process owns a single shared `SecHttpClient` and serves
+  archive fetch RPCs, so process-pool workers never construct their own client
+  and all live requests share one aggregate rate limiter; warm cache hits are
+  served before acquiring a connection slot. `broker_cli.py` provides
+  `start`/`stop`/`status`, `ensure_broker()` auto-start, and
+  `broker_cache_dir()`, which reads the cache directory the running broker
+  records in its registry. Manage it with
   `python -m defs.sec_http.broker {start,stop,status} [--socket PATH]`.
 - `sec_documents/` — SEC submission envelope unpacking and exhibit extraction (`sgml.py`). Unpacks multi-document envelopes (`<DOCUMENT>...</DOCUMENT>`), separates primary filing documents from exhibits (`EX-10`, `EX-21`, `EX-99`), parses `<SEC-HEADER>` metadata blocks, and generates deterministic document locators.
 - `sec_forms/` — shared SEC form definitions, semantic concepts, and cover-page contracts (see `sec_forms/README.md`). The `page_markers/` package provides coordinate-safe ASCII page-marker analysis; the HTML page-marker DOM package has been removed in favor of the string-first `fast_html/` adapter.
@@ -125,6 +131,42 @@ The generic `defs.http.BoundedTransport` defaults to 16 simultaneous transport
 calls and has no provider-specific pacing or status semantics. `sec_http` adapts
 it with an 8-request in-flight cap, while SEC's aggregate 4 RPS limiter remains
 an independent request-start policy.
+
+### DuckDB engine resource policy (mandatory)
+
+Every DuckDB entry point — `FinalizedArtifact`, `DuckDBStaging`,
+`concat_to_parquet`, any ad-hoc `duckdb.connect()` — must run under the
+machine-derived resource profile from `defs.runtime.resources.derive_resources()`:
+
+- `threads`: the profiled count, not DuckDB's default (which can double the
+  per-thread sort buffers of wide rows);
+- `memory_limit`: a fraction of physical memory chosen to sit **below** real
+  availability, never DuckDB's 80%-of-physical default;
+- `temp_directory`: the managed spill directory (`runtime.temp_directory`,
+  default `/tmp/edgar-sec-spill`), so out-of-core sorts and hashes have a known
+  place to spill.
+
+Never rely on DuckDB defaults for engine work. DuckDB's default memory limit is
+80% of *physical* memory — above what is actually available on a loaded host —
+its default thread count maximizes per-thread buffer pressure, and its default
+spill directory is unmanaged. `preserve_insertion_order=false` is set by
+`FinalizedArtifact` and `DuckDBStaging`; an explicit `ORDER BY` still
+determines output order when deterministic row order is required.
+
+The failure mode this prevents is real and was hit in practice: a Phase 1
+augmentation union (`base UNION ALL delta ORDER BY cik` over ~41k rows of the
+widest nested table in the repository) opened `FinalizedArtifact` without a
+profile, thrashed for ~4.5 minutes against DuckDB's 80%-default limit on a
+loaded 10.9 GiB host, and died with
+`OutOfMemoryException … (8.8 GiB/8.7 GiB used)`. Phase 2 never hits this
+because `materialize.py` and the selection/staging paths pass
+`derive_resources()` into every `FinalizedArtifact`/`DuckDBStaging`, process
+the nested source in `source_batch_size` batches, sort only narrow key
+projections, and write partitioned output. New engine paths must follow the
+same pattern: derive the profile, hand it to the connection, batch wide
+sources, and keep global sorts narrow or spill-backed. The
+`resource-allocation` scanner rejects hardcoded thread/memory values so this
+cannot silently regress.
 
 ```bash
 .venv/bin/pytest defs/tests

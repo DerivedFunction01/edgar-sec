@@ -6,6 +6,7 @@ from conftest import imp
 config_mod = imp("phases.01_metadata_extraction.core.config")
 application = imp("phases.01_metadata_extraction.core.application")
 run_mod = imp("phases.01_metadata_extraction.run")
+operator_mod = imp("phases.01_metadata_extraction.operator")
 
 import pytest
 
@@ -382,7 +383,7 @@ def test_partition_command_includes_config_path():
         artifacts_dir=".artifacts/metadata/runs/r1",
         user_agent="App/1.0 a@b.com",
     )
-    command = run_mod.partition_command(options, 7)
+    command = operator_mod.partition_command(options, 7)
     assert "--config .artifacts/metadata/config.json" in command
 
 

@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import re
 import threading
 from collections.abc import Iterable, Sequence
 from contextlib import suppress
@@ -18,7 +19,8 @@ from defs.sec_documents.sgml import (
     extract_target_sub_document,
     has_sgml_documents,
 )
-from defs.sec_http import HttpMetrics, SecHttpClient
+from defs.sec_http import HttpMetrics, SecHttpClient, SqlCacheReader
+from defs.sec_http.cache import make_cache_reader
 from defs.sql import (
     Compare,
     ComparisonOp,
@@ -47,11 +49,22 @@ class ArchiveFetcher(Protocol):
         """Acquire the bytes identified by ``locator``."""
 
 
+_BUNDLE_NAME_RE = re.compile(r"\d{10}-\d{2}-\d{6}\.txt$")
+
+
 def is_stub_document_path(document_path: str | None) -> bool:
-    """True when the document path is a placeholder/stub rather than substantive filing."""
+    """True when the document path is a placeholder/stub rather than substantive filing.
+
+    Complete submission bundle paths (``<dashed-accession>.txt``) are real
+    acquisition targets — catalog fallback locators point at them directly —
+    and are never stubs, even when the accession's sequence ends in
+    ``0000``/``0001``.
+    """
     if not document_path:
         return True
     lowered = document_path.strip().lower()
+    if _BUNDLE_NAME_RE.search(lowered):
+        return False
     return lowered.endswith(("0001.txt", "0001.htm", "0000.txt", "0000.htm"))
 
 
@@ -254,8 +267,15 @@ def make_archive_fetcher(
     fixture_paths: Sequence[str | Path] | None = None,
     http_client: SecHttpClient | None = None,
     broker_socket: str | Path | None = None,
+    cache_dir: str | Path | None = None,
 ) -> ArchiveFetcher:
-    """Construct the configured offline fixture or live SEC fetcher."""
+    """Construct the configured offline fixture or live SEC fetcher.
+
+    On the broker path, ``cache_dir`` adds a read-only warm-cache probe in
+    front of the broker RPC; only cache misses traverse the socket. It has no
+    effect on the direct live-client path, whose client already owns the
+    cache.
+    """
     normalized_mode = mode.strip().lower()
     if normalized_mode == "fixture":
         if not fixture_paths:
@@ -265,7 +285,10 @@ def make_archive_fetcher(
         if broker_socket is not None:
             from defs.sec_http.broker import SecBrokerClient
 
-            return BrokerArchiveFetcher(SecBrokerClient(broker_socket))
+            return BrokerArchiveFetcher(
+                SecBrokerClient(broker_socket),
+                cache_reader=make_cache_reader(cache_dir),
+            )
         if http_client is None:
             raise ValueError("live mode requires http_client")
         return LiveSecArchiveFetcher(http_client)
@@ -273,14 +296,57 @@ def make_archive_fetcher(
 
 
 class BrokerArchiveFetcher:
-    """Adapt the SEC broker RPC to the ``ArchiveFetcher`` protocol."""
+    """Adapt the SEC broker RPC to the ``ArchiveFetcher`` protocol.
 
-    def __init__(self, broker_client: Any) -> None:
+    When ``cache_reader`` is supplied, each URL is probed against the local
+    warm HTTP cache before the broker RPC. A hit is byte-identical to the
+    broker's response — cache entries never expire and successful fetches
+    clear their failure-ledger entry — so only misses traverse the socket.
+    The reader is strictly read-only: cache writes, ledger updates, pacing,
+    and retries stay broker-owned.
+    """
+
+    def __init__(
+        self,
+        broker_client: Any,
+        cache_reader: SqlCacheReader | None = None,
+    ) -> None:
         self._broker = broker_client
+        self._cache = cache_reader
+        self._cache_dir = cache_reader.cache_dir if cache_reader is not None else None
+
+    def __getstate__(self) -> dict[str, object]:
+        return {
+            "socket_path": self._broker.socket_path,
+            "cache_dir": self._cache_dir,
+        }
+
+    def __setstate__(self, state: dict[str, object]) -> None:
+        from defs.sec_http.broker import SecBrokerClient
+
+        self._broker = SecBrokerClient(state["socket_path"])
+        cache_dir = state.get("cache_dir")
+        self._cache_dir = cache_dir
+        self._cache = make_cache_reader(cache_dir) if cache_dir else None
 
     @property
     def metrics(self) -> Any:
         return getattr(self._broker, "metrics", None)
+
+    def _payload_from(self, archive_url: str) -> tuple[bytes | None, str | None]:
+        """Return ``(payload, error)`` for one URL, probing the warm cache first."""
+        if self._cache is not None:
+            with suppress(Exception):
+                payload = self._cache.get(archive_url)
+                if payload is not None:
+                    return payload, None
+        try:
+            result = self._broker.fetch(archive_url)
+        except Exception as exc:  # noqa: BLE001
+            return None, str(exc) or type(exc).__name__
+        if result.get("status") == "ok" and result.get("payload") is not None:
+            return result["payload"], None
+        return None, result.get("error") or "broker reported failure"
 
     def fetch(self, locator: DocumentLocator) -> FetchResult:
         parts = parse_archive_url(locator.archive_url)
@@ -294,44 +360,31 @@ class BrokerArchiveFetcher:
         primary_error = None
 
         if not is_stub:
-            try:
-                result = self._broker.fetch(locator.archive_url)
-                if result.get("status") == "ok" and result.get("payload") is not None:
-                    extracted = extract_from_sgml_envelope(result["payload"], locator)
-                    if extracted is not None:
-                        return FetchResult(
-                            locator=locator, payload=extracted, status="ok"
-                        )
-                else:
-                    primary_error = result.get("error") or "broker reported failure"
-            except Exception as exc:  # noqa: BLE001
-                primary_error = str(exc)
+            payload, primary_error = self._payload_from(locator.archive_url)
+            if payload is not None:
+                extracted = extract_from_sgml_envelope(payload, locator)
+                if extracted is not None:
+                    return FetchResult(locator=locator, payload=extracted, status="ok")
 
         # Fallback to full SGML submission bundle if direct fetch failed or was a stub
         if full_sub_url and full_sub_url != locator.archive_url:
-            try:
-                result = self._broker.fetch(full_sub_url)
-                if result.get("status") == "ok" and result.get("payload") is not None:
-                    extracted = extract_from_sgml_envelope(result["payload"], locator)
-                    if extracted is not None:
-                        return FetchResult(
-                            locator=locator, payload=extracted, status="ok"
-                        )
-                    return FetchResult(
-                        locator=locator,
-                        payload=None,
-                        status="failed",
-                        error=f"sgml_subdocument_not_found (form={locator.form})",
-                    )
-                err = primary_error or result.get("error") or "broker reported failure"
+            payload, fallback_error = self._payload_from(full_sub_url)
+            if payload is not None:
+                extracted = extract_from_sgml_envelope(payload, locator)
+                if extracted is not None:
+                    return FetchResult(locator=locator, payload=extracted, status="ok")
                 return FetchResult(
-                    locator=locator, payload=None, status="failed", error=err
+                    locator=locator,
+                    payload=None,
+                    status="failed",
+                    error=f"sgml_subdocument_not_found (form={locator.form})",
                 )
-            except Exception as exc:  # noqa: BLE001
-                err = primary_error or str(exc)
-                return FetchResult(
-                    locator=locator, payload=None, status="failed", error=err
-                )
+            return FetchResult(
+                locator=locator,
+                payload=None,
+                status="failed",
+                error=primary_error or fallback_error or "broker reported failure",
+            )
 
         return FetchResult(
             locator=locator,
@@ -345,6 +398,9 @@ class BrokerArchiveFetcher:
         if close is not None:
             with suppress(Exception):
                 close()
+        if self._cache is not None:
+            with suppress(Exception):
+                self._cache.close()
 
 
 __all__ = [

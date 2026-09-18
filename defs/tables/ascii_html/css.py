@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import re
+from functools import lru_cache
 from typing import Any
 
 from defs.tables.ascii_html.model import (
@@ -15,6 +16,16 @@ from defs.tables.patterns import HIDDEN_ELEMENT_STYLE_RE
 
 # CSS declaration regex: property: value
 _DECL_RE = re.compile(r"([a-zA-Z\-]+)\s*:\s*([^;]+)")
+
+
+@lru_cache(maxsize=1024)
+def _parse_css_declarations(style_str: str) -> tuple[tuple[str, str], ...]:
+    """Parse and normalize CSS property: value pairs from a style attribute string."""
+    return tuple(
+        (prop.strip().lower(), val.strip()) for prop, val in _DECL_RE.findall(style_str)
+    )
+
+
 # Number + unit regex: e.g. "12.5px", "100%", "2pt", "1.5em", "300"
 _UNIT_RE = re.compile(r"^([+-]?\d+(?:\.\d+)?)\s*([a-zA-Z%]*)$")
 # Border style keywords
@@ -240,10 +251,7 @@ def parse_style_and_attributes(node: Any) -> CellStyle:
     text_indent = 0.0
 
     if style_str:
-        for prop, val in _DECL_RE.findall(style_str):
-            prop = prop.strip().lower()
-            val = val.strip()
-
+        for prop, val in _parse_css_declarations(style_str):
             if (
                 prop == "display"
                 and val.lower() == "none"
@@ -386,9 +394,7 @@ def parse_style_and_attributes(node: Any) -> CellStyle:
 
             c_style = child.attributes.get("style", "")
             if c_style:
-                for prop, val in _DECL_RE.findall(c_style):
-                    prop = prop.strip().lower()
-                    val = val.strip()
+                for prop, val in _parse_css_declarations(c_style):
                     if prop in ("border-bottom", "border"):
                         _, bs, bc = _parse_border_shorthand(val)
                         if bs != BorderStyle.NONE:

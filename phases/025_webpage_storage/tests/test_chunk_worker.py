@@ -7,6 +7,9 @@ from defs.sql import Select, SqlDialect, Star, Table, make_sql_executor
 
 schemas = importlib.import_module("phases.025_webpage_storage.core.schemas")
 worker_module = importlib.import_module("phases.025_webpage_storage.core.chunk_worker")
+persistence_module = importlib.import_module(
+    "phases.025_webpage_storage.core.chunk_persistence"
+)
 
 
 @dataclass
@@ -41,6 +44,22 @@ def _rows(path, table):
         return executor.query(executor.compiler.compile(query))
     finally:
         executor.close()
+
+
+def test_prefetch_byte_budget_tracks_payload_sizes():
+    budget = persistence_module._ByteBudget(10)
+    budget.acquire(7)
+    assert budget.used == 7
+    budget.release(7)
+    assert budget.used == 0
+
+
+def test_prefetch_byte_budget_allows_one_oversized_payload():
+    budget = persistence_module._ByteBudget(10)
+    budget.acquire(11)
+    assert budget.used == 11
+    budget.release(11)
+    assert budget.used == 0
 
 
 def test_chunks_are_isolated(tmp_path):

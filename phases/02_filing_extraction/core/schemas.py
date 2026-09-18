@@ -7,9 +7,13 @@ import importlib
 from defs.storage import pa
 
 SOURCE = importlib.import_module("phases.01_metadata_extraction.core.schemas")
-SCHEMA_VERSION = "1.0.0"
+SCHEMA_VERSION = "1.1.0"
 PROFILE_SCHEMA_VERSION = "1.0.0"
-TARGET_SCHEMA_VERSION = "1.0.0"
+TARGET_SCHEMA_VERSION = "1.1.0"
+
+# Provenance of an effective document path in the filing catalog.
+PATH_SOURCE_PRIMARY = "primary_document"
+PATH_SOURCE_BUNDLE = "submission_bundle"
 
 PROFILE_COLUMNS = (
     "cik",
@@ -56,6 +60,7 @@ TARGET_COLUMNS = (
     ("primary_doc_description", pa.string()),
     ("document_path", pa.string()),
     ("archive_url", pa.string()),
+    ("document_path_source", pa.string()),
     ("source_section", pa.string()),
     ("source_file", pa.string()),
     ("source_array_index", pa.int32()),

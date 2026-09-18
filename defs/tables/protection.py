@@ -12,6 +12,7 @@ tag's content is worse than leaving it untouched.
 
 from __future__ import annotations
 
+import re
 from collections.abc import Callable
 from dataclasses import dataclass
 
@@ -27,6 +28,9 @@ __all__ = [
 
 _SENTINEL_PREFIX = "__SEC_TBL_"
 _SENTINEL_SUFFIX = "__"
+_RE_RESTORE_SENTINEL = re.compile(
+    rf"{re.escape(_SENTINEL_PREFIX)}(\d+){re.escape(_SENTINEL_SUFFIX)}"
+)
 
 # Public sentinel boundary constants: whitespace normalization passes must
 # treat whitespace adjacent to these tokens as line separators, not spaces.
@@ -186,9 +190,20 @@ def mask_tagged_tables(text: str) -> tuple[str, tuple[TableSpan, ...]]:
 
 def restore_tagged_tables(text: str, spans: tuple[TableSpan, ...]) -> str:
     """Restore exact original table spans replaced by :func:`mask_tagged_tables`."""
-    for position, span in enumerate(spans):
-        sentinel = f"{_SENTINEL_PREFIX}{position}{_SENTINEL_SUFFIX}"
-        if sentinel not in text:
-            raise ValueError(f"masked table sentinel {position} missing at restore")
-        text = text.replace(sentinel, span.text)
-    return text
+    if not spans:
+        return text
+
+    span_texts = [span.text for span in spans]
+    seen_positions: set[int] = set()
+
+    def _replace_sentinel(match: re.Match[str]) -> str:
+        idx = int(match.group(1))
+        seen_positions.add(idx)
+        return span_texts[idx] if idx < len(span_texts) else match.group(0)
+
+    restored = _RE_RESTORE_SENTINEL.sub(_replace_sentinel, text)
+    if len(seen_positions) != len(spans):
+        for position in range(len(spans)):
+            if position not in seen_positions:
+                raise ValueError(f"masked table sentinel {position} missing at restore")
+    return restored

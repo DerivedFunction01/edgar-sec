@@ -24,9 +24,22 @@ _TAG_NAMES = build_alternation(["script", "style", "head"])
 _RE_HEAD_SCRIPT_STYLE = re.compile(
     rf"(?is)<(?:{_TAG_NAMES})\b[^>]*>.*?</(?:{_TAG_NAMES})>"
 )
-_RE_DOCUMENT_WRAPPER = re.compile(
-    r"(?is)^\s*<DOCUMENT>\s*(?:<TYPE>.*?\n)?(?:<SEQUENCE>.*?\n)?(?:<FILENAME>.*?\n)?(?:<DESCRIPTION>.*?\n)?<TEXT>\s*(.*?)\s*</TEXT>\s*</DOCUMENT>\s*$"
-)
+
+
+def strip_sgml_document_wrapper(raw_text: str) -> str:
+    """Extract inner content from SGML <DOCUMENT>...<TEXT>...</TEXT></DOCUMENT> wrappers."""
+    s = raw_text.lstrip()
+    if not s.upper().startswith("<DOCUMENT>"):
+        return raw_text
+    upper = raw_text.upper()
+    start_pos = upper.find("<TEXT>")
+    end_pos = upper.rfind("</TEXT>")
+    if start_pos != -1 and end_pos != -1 and end_pos > start_pos:
+        doc_end = upper.find("</DOCUMENT>", end_pos)
+        if doc_end != -1:
+            return raw_text[start_pos + 6 : end_pos].strip()
+    return raw_text
+
 
 # HTML structural and styling tag discriminators (excludes SGML ASCII <TABLE><S><C>)
 _HTML_TAG_NAMES = build_alternation(
@@ -89,14 +102,10 @@ class GenericPreprocessor:
         meta = dict(metadata or {})
 
         # Strip outer SGML <DOCUMENT>...</DOCUMENT> wrapper if present
-        m_doc = _RE_DOCUMENT_WRAPPER.match(raw_text.strip())
-        content_text = m_doc.group(1) if m_doc else raw_text
+        content_text = strip_sgml_document_wrapper(raw_text)
 
         # Strip non-displaying script and style blocks
         clean = _RE_HEAD_SCRIPT_STYLE.sub(" ", content_text)
-
-        # Unescape standard HTML and XML entities (&nbsp;, &amp;, &#160;, etc.)
-        clean = html.unescape(clean)
 
         ascii_pre = extract_ascii_pre(clean)
         # Wrapper-only HTML/PRE documents are legacy ASCII payloads. The
@@ -104,17 +113,21 @@ class GenericPreprocessor:
         # evidence. Real visible HTML remains on the HTML path.
         has_html = bool(_RE_HTML_DISCRIMINATOR.search(clean)) and ascii_pre is None
         if ascii_pre is not None:
-            clean = ascii_pre
+            clean = html.unescape(ascii_pre)
             meta["ascii_pre_wrapper"] = True
             meta["representation"] = "ascii"
+        elif not has_html:
+            clean = html.unescape(clean)
+            meta["representation"] = "ascii"
         else:
-            meta["representation"] = "html" if has_html else "ascii"
-            if has_html:
-                # Stage-1 sanitization: drop inline XBRL wrappers, benign font
-                # declarations, and Office metadata attributes before any
-                # downstream DOM work, so every later stage sees a leaner,
-                # equivalent document.
-                clean = clean_html_for_parsing(clean)
+            meta["representation"] = "html"
+            # Stage-1 sanitization: drop inline XBRL wrappers, benign font
+            # declarations, and Office metadata attributes before any
+            # downstream DOM work, so every later stage sees a leaner,
+            # equivalent document. HTML entities remain intact so text nodes
+            # containing escaped angle brackets (&lt;...&gt;) do not create
+            # synthetic HTML tags that corrupt the DOM hierarchy.
+            clean = clean_html_for_parsing(clean)
 
         # Compute preliminary word count (lazy scan; no word-list materialization)
         word_count = count_words(clean)

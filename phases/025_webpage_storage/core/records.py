@@ -157,6 +157,7 @@ class DocumentLocator:
     document_path: str
     archive_url: str
     form: str = ""
+    document_path_source: str | None = None
 
 
 @dataclass(frozen=True, slots=True)

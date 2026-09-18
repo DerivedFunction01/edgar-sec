@@ -11,6 +11,7 @@ import hashlib
 import sqlite3
 import threading
 import time
+from contextlib import suppress
 from pathlib import Path
 from typing import Any
 
@@ -27,6 +28,7 @@ from defs.sql import (
     PrimaryKey,
     Select,
     SqlDialect,
+    SqlExecutor,
     Star,
     Table,
     col,
@@ -275,10 +277,78 @@ class SqlCache:
         )
 
 
+class SqlCacheReader:
+    """Read-only view over an existing HTTP cache database.
+
+    Opens ``responses.sqlite`` with SQLite URI ``mode=ro``: no directories are
+    created, no schema is initialized, and nothing is ever written. The broker
+    process owns the database and all writes; readers observe its committed
+    rows through WAL and see commits made after the reader was created. Every
+    access fail-opens — a missing, empty, unreadable, or schema-drifted
+    database reports a miss so callers degrade to the network path instead of
+    erroring.
+    """
+
+    def __init__(self, cache_dir: str | Path) -> None:
+        self.cache_dir = Path(cache_dir)
+        self.db_path = self.cache_dir / "responses.sqlite"
+        self._local = threading.local()
+
+    def _executor(self) -> SqlExecutor:
+        executor = getattr(self._local, "executor", None)
+        if executor is None:
+            conn = sqlite3.connect(f"file:{self.db_path}?mode=ro", uri=True)
+            conn.execute("PRAGMA busy_timeout=5000")
+            executor = make_sql_executor(conn, dialect=SqlDialect.SQLITE)
+            self._local.executor = executor
+        return executor
+
+    def get(self, url: str) -> bytes | None:
+        digest = _url_sha256(url)
+        try:
+            executor = self._executor()
+            row = executor.query_one(
+                executor.compiler.compile(
+                    Select(
+                        source=Table("url_responses"),
+                        projection=(col("payload"),),
+                        where=Membership(
+                            value=col("url_sha256"),
+                            source=ValueList((digest,)),
+                        ),
+                    )
+                )
+            )
+        except Exception:  # noqa: BLE001 - missing/unreadable schema fails open
+            self._local.executor = None
+            return None
+        if row is None:
+            return None
+        try:
+            return _get_decompressor().decompress(bytes(row["payload"]))
+        except Exception:  # noqa: BLE001 - corrupt entry fails open
+            return None
+
+    def close(self) -> None:
+        """Close this thread's read connection; other threads are unaffected."""
+        executor = getattr(self._local, "executor", None)
+        self._local.executor = None
+        if executor is not None:
+            with suppress(Exception):
+                executor.backend.connection.close()
+
+
 def make_cache_store(cache_dir: str | Path | None = None) -> SqlCache | None:
     if not cache_dir:
         return None
     return SqlCache(cache_dir)
 
 
-__all__ = ["SqlCache", "make_cache_store"]
+def make_cache_reader(cache_dir: str | Path | None = None) -> SqlCacheReader | None:
+    """Construct a read-only cache reader; ``None`` disables local probing."""
+    if not cache_dir:
+        return None
+    return SqlCacheReader(cache_dir)
+
+
+__all__ = ["SqlCache", "SqlCacheReader", "make_cache_reader", "make_cache_store"]

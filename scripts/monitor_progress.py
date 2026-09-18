@@ -56,9 +56,9 @@ def _safe_count(executor, table_name: str) -> int:
     return 0
 
 
-def _get_chunk_stats(db_path: Path) -> dict[str, int | str | bool]:
+def _get_chunk_stats(db_path: Path) -> dict[str, int | str | bool | float]:
     """Inspect one chunk SQLite database in read-only mode."""
-    stats: dict[str, int | str | bool] = {
+    stats: dict[str, int | str | bool | float] = {
         "path": str(db_path),
         "chunk_id": db_path.stem,
         "worker": db_path.parent.parent.name,
@@ -67,16 +67,21 @@ def _get_chunk_stats(db_path: Path) -> dict[str, int | str | bool]:
         "normalized": 0,
         "failures": 0,
         "committed": False,
+        "last_mtime": 0.0,
     }
 
+    max_mtime = 0.0
     # Sum total bytes of .db, .db-wal, and .db-shm files
     for ext in ("", "-wal", "-shm"):
         sidecar = Path(str(db_path) + ext)
         if sidecar.is_file():
             try:
-                stats["size_bytes"] = int(stats["size_bytes"]) + sidecar.stat().st_size
+                st = sidecar.stat()
+                stats["size_bytes"] = int(stats["size_bytes"]) + st.st_size
+                max_mtime = max(max_mtime, st.st_mtime)
             except OSError:
                 pass
+    stats["last_mtime"] = max_mtime
 
     if not db_path.is_file():
         return stats
@@ -230,7 +235,7 @@ def _format_duration(seconds: float) -> str:
 
 
 def render_dashboard(
-    chunk_stats: Sequence[dict[str, int | str | bool]],
+    chunk_stats: Sequence[dict[str, int | str | bool | float]],
     history: deque[tuple[float, int]],
     start_time: float,
     total_target_docs: int | None = None,
@@ -239,8 +244,11 @@ def render_dashboard(
     run_id: str = "",
     mode: str | None = None,
     window_s: float = 60.0,
+    stall_threshold_s: float = 60.0,
+    stalled_only: bool = False,
+    cache_dir: Path | None = None,
 ) -> None:
-    """Print an updated monitoring dashboard with rolling speed and tqdm progress bar."""
+    """Print an updated monitoring dashboard with rolling speed, tqdm progress, and stall tracking."""
     now = time.monotonic()
     total_blobs = sum(int(s["blobs"]) for s in chunk_stats)
     total_normalized = sum(int(s["normalized"]) for s in chunk_stats)
@@ -248,6 +256,7 @@ def render_dashboard(
     total_bytes = sum(int(s["size_bytes"]) for s in chunk_stats)
     committed_chunks = sum(1 for s in chunk_stats if s["committed"])
     active_chunks = sum(1 for s in chunk_stats if not s["committed"])
+    stalled_chunks = [s for s in chunk_stats if s.get("is_stalled")]
 
     current_docs = total_blobs + total_failures
 
@@ -312,9 +321,10 @@ def render_dashboard(
         f" 📄 Document Blobs    : \033[1;36m{total_blobs:,}\033[0m (Normalized: {total_normalized:,})"
     )
     print(f" ⚠️  Failures / 404s   : \033[1;33m{total_failures:,}\033[0m")
-    print(
-        f" 🧩 Chunks Progress   : \033[1;35m{committed_chunks} committed\033[0m, {active_chunks} active (Total: {len(chunk_stats)})"
-    )
+    chunks_str = f" 🧩 Chunks Progress   : \033[1;35m{committed_chunks} committed\033[0m, {active_chunks} active (Total: {len(chunk_stats)})"
+    if stalled_chunks:
+        chunks_str += f" | \033[1;31m{len(stalled_chunks)} STALLED (idle \u2265 {int(stall_threshold_s)}s)\033[0m"
+    print(chunks_str)
     print(
         f" ⚡ Rolling Speed     : \033[1;32m{rps_str}\033[0m ({int(window_s)}s moving avg)"
     )
@@ -358,30 +368,64 @@ def render_dashboard(
     print("-" * term_width)
 
     # Active Chunks Detail Table
-    print(
-        f" {'Chunk ID':<14} {'Worker':<16} {'Blobs':<10} {'Failures':<10} {'Disk Size':<12} {'Status'}"
+    display_chunks = (
+        [s for s in chunk_stats if s.get("is_stalled")]
+        if stalled_only
+        else list(chunk_stats)
     )
+    header_title = f" {'Chunk ID':<14} {'Worker':<16} {'Blobs':<10} {'Failures':<10} {'Disk Size':<12} {'Status'}"
+    print(header_title)
     print("-" * term_width)
 
-    # Show top 15 active/recent chunks
+    # Sort stalled chunks to the very top, then active chunks by idle time descending, then committed
     sorted_chunks = sorted(
-        chunk_stats,
-        key=lambda s: (not s["committed"], int(s["blobs"])),
+        display_chunks,
+        key=lambda s: (
+            bool(s.get("is_stalled")),
+            not bool(s["committed"]),
+            float(s.get("idle_seconds", 0.0)),
+        ),
         reverse=True,
     )
 
     for s in sorted_chunks[:15]:
-        status_tag = (
-            "\033[32m[COMMITTED]\033[0m"
-            if s["committed"]
-            else "\033[33m[WRITING]\033[0m"
-        )
+        idle_dur = _format_duration(float(s.get("idle_seconds", 0.0)))
+        if s["committed"]:
+            status_tag = "\033[32m[COMMITTED]\033[0m"
+        elif s.get("is_stalled"):
+            status_tag = f"\033[1;31m[STALLED {idle_dur}]\033[0m"
+        else:
+            status_tag = f"\033[36m[ACTIVE {idle_dur}]\033[0m"
+
         print(
             f" {s['chunk_id']:<14} {s['worker']:<16} {s['blobs']:<10} {s['failures']:<10} {_format_size(int(s['size_bytes'])):<12} {status_tag}"
         )
 
     if len(sorted_chunks) > 15:
         print(f" ... and {len(sorted_chunks) - 15} more chunk databases.")
+
+    # Stalled Chunks Actionable Commands Box
+    if stalled_chunks:
+        print("-" * term_width)
+        print(
+            f" \033[1;31m⚠️  STALLED CHUNKS DETECTED ({len(stalled_chunks)} chunks idle \u2265 {int(stall_threshold_s)}s):\033[0m"
+        )
+        caches_arg = (
+            f"--cache-dir {cache_dir}" if cache_dir else "--cache-dir .artifacts/caches"
+        )
+        for sc in stalled_chunks[:5]:
+            cid = sc["chunk_id"]
+            wkr = sc["worker"]
+            c_path = sc["path"]
+            idle_str = _format_duration(float(sc.get("idle_seconds", 0.0)))
+            print(
+                f"  • \033[1;33m{cid}\033[0m ({wkr}, {sc['blobs']:,} blobs, idle {idle_str}):"
+            )
+            print(
+                f"    python scripts/diagnose_stuck_chunk.py --chunk-db {c_path} {caches_arg} --timeout 180"
+            )
+        if len(stalled_chunks) > 5:
+            print(f"    ... and {len(stalled_chunks) - 5} more stalled chunks.")
 
     print("=" * term_width)
     print(" (Press Ctrl+C to stop monitoring — does not interrupt pipeline)")
@@ -402,6 +446,17 @@ def main() -> int:
     )
     parser.add_argument(
         "--interval", type=float, default=2.0, help="Poll interval seconds"
+    )
+    parser.add_argument(
+        "--stall-threshold",
+        type=float,
+        default=60.0,
+        help="Seconds of inactivity before flagging a chunk as stalled (default: 60s)",
+    )
+    parser.add_argument(
+        "--stalled-only",
+        action="store_true",
+        help="Display only stalled chunks in the detail table",
     )
     parser.add_argument(
         "--once", action="store_true", help="Print single snapshot and exit"
@@ -448,7 +503,9 @@ def main() -> int:
             discovered_scope = fallback_scope
 
     history: deque[tuple[float, int]] = deque()
+    chunk_activity: dict[str, dict[str, float | int]] = {}
     start_time = time.monotonic()
+    cache_dir = resolve_paths(env={"ARTIFACTS_ROOT": str(artifacts_root)}).cache_root
 
     try:
         while True:
@@ -464,7 +521,34 @@ def main() -> int:
                 )
                 sys.stdout.flush()
             else:
+                now = time.monotonic()
                 stats = [_get_chunk_stats(p) for p in chunk_paths]
+
+                # Update per-chunk activity and calculate idle times
+                for s in stats:
+                    cid = str(s["chunk_id"])
+                    count = int(s["blobs"]) + int(s["failures"])
+                    mtime = float(s.get("last_mtime", 0.0))
+
+                    if cid not in chunk_activity:
+                        chunk_activity[cid] = {
+                            "last_progress_time": now,
+                            "last_count": count,
+                            "last_mtime": mtime,
+                        }
+                    else:
+                        act = chunk_activity[cid]
+                        if count > act["last_count"] or mtime > act["last_mtime"]:
+                            act["last_progress_time"] = now
+                            act["last_count"] = count
+                            act["last_mtime"] = mtime
+
+                    idle_s = now - float(chunk_activity[cid]["last_progress_time"])
+                    s["idle_seconds"] = idle_s
+                    s["is_stalled"] = (not s["committed"]) and (
+                        idle_s >= args.stall_threshold
+                    )
+
                 render_dashboard(
                     chunk_stats=stats,
                     history=history,
@@ -475,6 +559,9 @@ def main() -> int:
                     run_id=detected_run_id,
                     mode=exec_mode,
                     window_s=args.window,
+                    stall_threshold_s=args.stall_threshold,
+                    stalled_only=args.stalled_only,
+                    cache_dir=cache_dir,
                 )
 
             if args.once:

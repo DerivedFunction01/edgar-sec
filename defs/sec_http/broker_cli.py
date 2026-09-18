@@ -104,6 +104,22 @@ def ensure_broker(
     return paths
 
 
+def broker_cache_dir(paths: BrokerPaths | None = None) -> Path:
+    """Resolve the HTTP cache directory used by the managed SEC broker.
+
+    Prefers the ``cache_dir`` the broker process records in its registry, so
+    local cache readers observe the exact database the running broker writes;
+    registries written before the field existed fall back to runtime settings
+    resolution — the same resolution a fresh broker performs.
+    """
+    resolved = paths or resolve_paths().broker_paths()
+    registry = _read_registry(resolved)
+    raw = registry.get("cache_dir") if registry else None
+    if isinstance(raw, str) and raw.strip():
+        return Path(raw)
+    return resolve_paths().cache_root
+
+
 def _write_registry(paths: BrokerPaths, payload: dict[str, Any]) -> None:
     write_json_config(paths.registry_path, payload, version=1, payload_key="broker")
 
@@ -152,11 +168,13 @@ def _start_broker(paths: BrokerPaths, *, max_connections: int) -> dict[str, Any]
         "socket": str(paths.socket_path),
         "protocol_version": PROTOCOL_VERSION,
         "max_connections": max_connections,
+        "cache_dir": str(resolve_paths().cache_root),
     }
     registry["pid"] = proc.pid
     registry["socket"] = str(paths.socket_path)
     registry["protocol_version"] = PROTOCOL_VERSION
     registry["max_connections"] = max_connections
+    registry.setdefault("cache_dir", str(resolve_paths().cache_root))
     _write_registry(paths, registry)
     return registry
 
@@ -234,9 +252,10 @@ def _status_broker(paths: BrokerPaths) -> dict[str, Any]:
 
 
 def _serve_broker(paths: BrokerPaths, *, max_connections: int) -> int:
+    client = make_sec_http_client()
     broker = SecBroker(
         socket_path=paths.socket_path,
-        http_client=make_sec_http_client(),
+        http_client=client,
         max_connections=max_connections,
     )
     paths.ensure_layout()
@@ -247,6 +266,7 @@ def _serve_broker(paths: BrokerPaths, *, max_connections: int) -> int:
             "socket": str(paths.socket_path),
             "protocol_version": PROTOCOL_VERSION,
             "max_connections": max_connections,
+            "cache_dir": str(client.cache_dir),
             "started_at": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
         },
         version=1,

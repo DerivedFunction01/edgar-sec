@@ -37,11 +37,27 @@ REQUIRED_TARGET_COLUMNS = (
     "report_date",
     "document_path",
 )
+# Optional provenance column from catalogs implementing the full-submission
+# fallback policy; older plan bundles simply omit it.
+OPTIONAL_COLUMNS = ("document_path_source",)
 
 
 def _read_parquet_rows(
-    path: str | Path, columns: tuple[str, ...], view: str
+    path: str | Path,
+    columns: tuple[str, ...],
+    view: str,
+    optional: tuple[str, ...] = (),
 ) -> list[dict[str, Any]]:
+    from defs.storage import parquet_column_names
+
+    available = set(parquet_column_names(str(path)))
+    missing_required = [column for column in columns if column not in available]
+    if missing_required:
+        raise ValueError(
+            f"{view} parquet is missing required columns: {', '.join(missing_required)}"
+        )
+    projection = tuple(col(column) for column in columns)
+    projection += tuple(col(column) for column in optional if column in available)
     executor = make_sql_executor(
         dialect=SqlDialect.DUCKDB,
         dataset_views={view: str(path)},
@@ -49,7 +65,7 @@ def _read_parquet_rows(
     try:
         query = Select(
             source=Table(view),
-            projection=tuple(col(column) for column in columns),
+            projection=projection,
         )
         return executor.query(executor.compiler.compile(query))
     finally:
@@ -82,13 +98,21 @@ def load_targets(
     root = Path(plan_dir)
     locator_path, _first_target_path, plan = _validate_bundle(root)
     locator_rows = _read_parquet_rows(
-        locator_path, REQUIRED_LOCATOR_COLUMNS, "locator_groups"
+        locator_path,
+        REQUIRED_LOCATOR_COLUMNS,
+        "locator_groups",
+        optional=OPTIONAL_COLUMNS,
     )
     target_paths = sorted((root / "targets").glob("form=*/data.parquet"))
     target_rows: list[dict[str, Any]] = []
     for target_path in target_paths:
         target_rows.extend(
-            _read_parquet_rows(target_path, REQUIRED_TARGET_COLUMNS, "target_rows")
+            _read_parquet_rows(
+                target_path,
+                REQUIRED_TARGET_COLUMNS,
+                "target_rows",
+                optional=OPTIONAL_COLUMNS,
+            )
         )
     if not locator_rows:
         return [], [], plan
@@ -100,6 +124,11 @@ def load_targets(
             document_path=str(row["document_path"]),
             archive_url=str(row["archive_url"]),
             form=str(row.get("form", "")),
+            document_path_source=(
+                None
+                if row.get("document_path_source") is None
+                else str(row["document_path_source"])
+            ),
         )
         for row in locator_rows
     ]
@@ -110,6 +139,15 @@ def load_targets(
         locator = locator_by_key.get(key)
         if locator is None:
             raise ValueError(f"target references unknown document locator: {key}")
+        target_source = (
+            None
+            if row.get("document_path_source") is None
+            else str(row["document_path_source"])
+        )
+        if target_source != locator.document_path_source:
+            raise ValueError(
+                f"target document path provenance disagrees with locator group: {key}"
+            )
         occurrence = build_occurrence(
             source_cik=str(row["source_cik"]),
             accession=str(row["accession"]),
@@ -156,6 +194,7 @@ def calculate_optimal_chunk_size(locator_count: int, workers: int = 1) -> int:
 
 
 __all__ = [
+    "OPTIONAL_COLUMNS",
     "REQUIRED_LOCATOR_COLUMNS",
     "REQUIRED_TARGET_COLUMNS",
     "calculate_optimal_chunk_size",

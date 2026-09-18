@@ -160,6 +160,65 @@ class ProjectPaths:
         return self.artifacts_root / "manifests"
 
     @property
+    def metadata_sources_root(self) -> Path:
+        """Raw metadata-source snapshots kept outside published handoffs."""
+        return self.artifacts_root / "metadata" / "sources"
+
+    def metadata_source_snapshot_path(
+        self, source: str, snapshot_id: str, suffix: str = ".json"
+    ) -> Path:
+        source_safe = _safe_id(source, "source")
+        snapshot_safe = _safe_id(snapshot_id, "snapshot_id")
+        if not suffix.startswith(".") or "/" in suffix or "\\" in suffix:
+            raise ValueError("source snapshot suffix must be a simple extension")
+        return (
+            self.metadata_sources_root
+            / source_safe
+            / "snapshots"
+            / f"{snapshot_safe}{suffix}"
+        )
+
+    def metadata_source_manifest_dir(self, source: str) -> Path:
+        return self.metadata_sources_root / _safe_id(source, "source") / "snapshots"
+
+    def metadata_source_manifest_path(self, source: str, snapshot_id: str) -> Path:
+        snapshot_safe = _safe_id(snapshot_id, "snapshot_id")
+        return (
+            self.metadata_source_manifest_dir(source) / f"{snapshot_safe}.manifest.json"
+        )
+
+    def registry_snapshot_root(self, registry_id: str) -> Path:
+        registry_safe = _safe_id(registry_id, "registry_id")
+        return (
+            self.artifacts_root
+            / "metadata"
+            / "registries"
+            / "snapshots"
+            / registry_safe
+        )
+
+    def registry_snapshot_path(self, registry_id: str, name: str) -> Path:
+        if not _SAFE_ID.fullmatch(name.replace(".", "-")):
+            raise ValueError("registry artifact name contains unsafe characters")
+        return self.registry_snapshot_root(registry_id) / name
+
+    def registry_manifest_root(self, registry_id: str) -> Path:
+        return self.registry_snapshot_root(registry_id)
+
+    def registry_manifest_path(self, registry_id: str, name: str) -> Path:
+        if not _SAFE_ID.fullmatch(name.replace(".", "-")):
+            raise ValueError("registry manifest name contains unsafe characters")
+        return self.registry_manifest_root(registry_id) / name
+
+    def metadata_augmentation_worklist_root(self, run_id: str) -> Path:
+        return (
+            self.artifacts_root / "metadata" / "worklists" / _safe_id(run_id, "run_id")
+        )
+
+    def metadata_augmentation_snapshot_dir(self) -> Path:
+        return self.manifests_root / "metadata" / "submission_metadata" / "snapshots"
+
+    @property
     def transient_root(self) -> Path:
         return self.artifacts_root / "transient"
 

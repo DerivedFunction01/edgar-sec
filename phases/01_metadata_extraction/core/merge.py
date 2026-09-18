@@ -184,6 +184,7 @@ def _partition_report_payload(
     input_fingerprint: str,
     plan_hash: str,
     artifact_sha256: str = "",
+    output_path: str | None = None,
 ) -> dict:
     """Rebuild a partition report from its finalized dataset artifact.
 
@@ -204,7 +205,8 @@ def _partition_report_payload(
         partition_id=partition["partition_id"],
         plan_hash=plan_hash,
         output_path=os.path.abspath(
-            _partition_artifact_path(
+            output_path
+            or _partition_artifact_path(
                 artifacts_dir, partition["partition_id"], storage_format
             )
         ),
@@ -403,6 +405,15 @@ def _partition_artifact_path(
     )
 
 
+def _planned_partition_artifact_path(
+    artifacts_dir: str, plan: dict, partition_id: int, storage_format: str
+):
+    relative = plan.get("partition_artifacts", {}).get(str(partition_id))
+    if relative:
+        return Path(_artifact_root(artifacts_dir)) / relative
+    return _partition_artifact_path(artifacts_dir, partition_id, storage_format)
+
+
 def merge_partition(
     artifacts_dir: str,
     partition_id: int,
@@ -420,7 +431,7 @@ def merge_partition(
     ):
         raise MergeError("DuckDB merge publishes Parquet artifacts only")
     output = output_path or str(
-        _partition_artifact_path(artifacts_dir, partition_id, "parquet")
+        _planned_partition_artifact_path(artifacts_dir, plan, partition_id, "parquet")
     )
     return _merge_chunks(
         artifacts_dir,
@@ -529,6 +540,7 @@ def _verify_partition_artifact(
         input_fingerprint=spec.fingerprint,
         plan_hash=plan_hash,
         artifact_sha256=digest,
+        output_path=str(path),
     )
     atomic_write_json(report_path, payload, indent=2, sort_keys=True)
     return {
@@ -585,7 +597,9 @@ def merge_partition_artifacts(
     with connect() as con:
         for partition in ordered_partitions:
             partition_id = partition["partition_id"]
-            path = _partition_artifact_path(artifacts_dir, partition_id, "parquet")
+            path = _planned_partition_artifact_path(
+                artifacts_dir, plan, partition_id, "parquet"
+            )
             if not path.exists():
                 raise MergeError(
                     f"missing partition artifact for partition {partition_id}: {path}"
@@ -670,29 +684,38 @@ def merge_partition_artifacts(
     report_path = merge_report_path_in(artifacts_dir)
     atomic_write_json(report_path, report.to_dict(), indent=2, sort_keys=True)
 
-    # Publish to manifests dataset path if running under standard artifacts root
-    root = _artifact_root(artifacts_dir, output_path)
-    published_path = (
-        resolve_paths(env={"ARTIFACTS_ROOT": root})
-        .phase("metadata")
-        .published_dataset("submission_metadata", "parquet")
-    )
-    if os.path.abspath(output_path) != os.path.abspath(published_path):
-        published_path.parent.mkdir(parents=True, exist_ok=True)
-        tmp_pub = str(published_path) + ".tmp"
-        shutil.copyfile(output_path, tmp_pub)
-        os.replace(tmp_pub, str(published_path))
-        _publish_handoff(
-            str(published_path),
-            artifacts_dir=artifacts_dir,
-            row_count=report.row_count,
-        )
-    else:
+    # Augmentation artifacts are already versioned under manifests and must not
+    # overwrite the fresh-run logical dataset path.
+    if plan.get("augmentation"):
         _publish_handoff(
             output_path,
             artifacts_dir=artifacts_dir,
             row_count=report.row_count,
         )
+    else:
+        # Publish to the standard manifests dataset path for fresh runs.
+        root = _artifact_root(artifacts_dir, output_path)
+        published_path = (
+            resolve_paths(env={"ARTIFACTS_ROOT": root})
+            .phase("metadata")
+            .published_dataset("submission_metadata", "parquet")
+        )
+        if os.path.abspath(output_path) != os.path.abspath(published_path):
+            published_path.parent.mkdir(parents=True, exist_ok=True)
+            tmp_pub = str(published_path) + ".tmp"
+            shutil.copyfile(output_path, tmp_pub)
+            os.replace(tmp_pub, str(published_path))
+            _publish_handoff(
+                str(published_path),
+                artifacts_dir=artifacts_dir,
+                row_count=report.row_count,
+            )
+        else:
+            _publish_handoff(
+                output_path,
+                artifacts_dir=artifacts_dir,
+                row_count=report.row_count,
+            )
     return report
 
 

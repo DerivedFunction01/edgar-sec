@@ -181,8 +181,9 @@ def normalize_hybrid_pre_text(text: str) -> HybridPreText:
                     )
 
         token = f"{_TOKEN_PREFIX}{index}__"
-        while token in text:
-            token += "_"
+        if _TOKEN_PREFIX in text:
+            while token in text:
+                token += "_"
         protected[token] = payload
         pieces.extend((text[cursor : match.start()], token))
         cursor = match.end()
@@ -195,11 +196,29 @@ def normalize_hybrid_pre_text(text: str) -> HybridPreText:
 
 def restore_hybrid_pre_text(text: str, protected: dict[str, str]) -> str:
     """Restore payloads protected by :func:`normalize_hybrid_pre_text`."""
-    for token, payload in protected.items():
+    if not protected:
+        return text
+    if len(protected) == 1:
+        token, payload = next(iter(protected.items()))
         if token not in text:
             raise ValueError(f"hybrid pre token missing during restore: {token!r}")
-        text = text.replace(token, payload)
-    return text
+        return text.replace(token, payload)
+
+    pattern = re.compile("|".join(re.escape(k) for k in protected))
+    seen_tokens: set[str] = set()
+
+    def _replace_token(match: re.Match[str]) -> str:
+        t = match.group(0)
+        seen_tokens.add(t)
+        return protected[t]
+
+    restored = pattern.sub(_replace_token, text)
+    missing = set(protected) - seen_tokens
+    if missing:
+        raise ValueError(
+            f"hybrid pre token missing during restore: {next(iter(missing))!r}"
+        )
+    return restored
 
 
 def _classify_pre_source(body: str) -> PreBlockKind:

@@ -68,6 +68,7 @@ To balance long-term analytical capability with rigorous software engineering, t
 #### Phase 01: Submissions Metadata Extraction
 - Consumes `data.sec.gov/submissions` feeds per CIK, recursively follows historical metadata files, and produces one `submission_metadata` row per CIK combining recent and historical filings with complete provenance.
 - Deterministic chunking, atomic partition merging, and zero raw filing downloads.
+- Captures explicit active-listing source snapshots, derives registry/effective-input artifacts, and supports immutable CIK augmentation against finalized metadata manifests without rewriting the curated seed CSV.
 
 #### Phase 02: Filing Catalog & Target Planner (Zero-Network)
 - Materializes flat filing occurrences from finalized Phase 01 Parquet artifacts via memory-bounded DuckDB staging.
@@ -76,7 +77,7 @@ To balance long-term analytical capability with rigorous software engineering, t
 
 #### Phase 2.5: Raw Webpage Storage & Multi-Era Text Normalization
 - Consumes Phase 02 target plans and fetches each unique `(accession, document_path)` locator exactly once.
-- **Dual-Mode Fetch**: Offline fixture CAS replay (`--mode fixture`) or live SEC archive via managed same-host SEC broker (`--mode production`, 4 RPS pacing, failure ledger).
+- **Dual-Mode Fetch**: Offline fixture CAS replay (`--mode fixture`) or live SEC archive via managed same-host SEC broker (`--mode production`, 4 RPS pacing, failure ledger). Warm-cache reruns read the broker's HTTP cache read-only from each worker (`SqlCacheReader`): local hits skip the socket and pacing entirely and only misses route through the broker, so cached-document throughput decouples from live-request pacing.
 - **SGML Multi-Document Unpacking**: Unpacks concatenated SGML envelopes (`<DOCUMENT>...</DOCUMENT>`), separates primary documents from exhibits (`EX-10`, `EX-21`, `EX-99`), and extracts `<SEC-HEADER>` metadata (`defs.sec_documents.sgml`).
 - **Multi-Era Normalization Engine**:
   - String-first HTML preprocessing with canonical `<TABLE>...</TABLE>` rendering and tagged-table protection (`defs.text.html`).

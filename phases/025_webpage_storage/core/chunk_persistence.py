@@ -60,6 +60,44 @@ _PREFETCH_ITEM_CAP = 8
 _PREFETCH_BYTES_BUDGET = 96 * 1024 * 1024
 
 
+class _ByteBudget:
+    """Condition-backed byte budget for prefetched raw payloads.
+
+    A semaphore counts items, not bytes.  This budget reserves the actual
+    payload size and permits one oversized payload so a document larger than
+    the nominal budget cannot deadlock the producer.
+    """
+
+    def __init__(self, limit: int) -> None:
+        if limit <= 0:
+            raise ValueError("byte budget must be positive")
+        import threading
+
+        self._limit = limit
+        self._used = 0
+        self._condition = threading.Condition()
+
+    def acquire(self, size: int) -> None:
+        if size <= 0:
+            return
+        with self._condition:
+            while self._used and self._used + size > self._limit:
+                self._condition.wait()
+            self._used += size
+
+    def release(self, size: int) -> None:
+        if size <= 0:
+            return
+        with self._condition:
+            self._used = max(0, self._used - size)
+            self._condition.notify_all()
+
+    @property
+    def used(self) -> int:
+        with self._condition:
+            return self._used
+
+
 @dataclass(frozen=True, slots=True)
 class ChunkFailure:
     locator: DocumentLocator
@@ -316,7 +354,7 @@ def _run_pipelined_acquisitions(
     sentinel = object()
     worker_count = max(1, fetch_workers)
     q: queue.Queue = queue.Queue(maxsize=max(worker_count, _PREFETCH_ITEM_CAP))
-    bytes_budget = threading.Semaphore(_PREFETCH_BYTES_BUDGET)
+    bytes_budget = _ByteBudget(_PREFETCH_BYTES_BUDGET)
     locator_iter = iter(pending)
     iter_lock = threading.Lock()
 
@@ -335,7 +373,7 @@ def _run_pipelined_acquisitions(
             if reserved:
                 # Block while the in-flight payload budget is exhausted; the
                 # consumer releases each reservation after persisting.
-                bytes_budget.acquire()
+                bytes_budget.acquire(reserved)
             q.put((loc, fetched, reserved, None))
 
     threads = [
@@ -376,7 +414,7 @@ def _run_pipelined_acquisitions(
             )
         finally:
             if reserved:
-                bytes_budget.release()
+                bytes_budget.release(reserved)
             item = None
             loc = None
             fetched = None

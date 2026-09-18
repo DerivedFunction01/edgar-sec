@@ -69,16 +69,29 @@ def firm_markers(
     """Find exact marker spans and their line occupancy."""
 
     offsets = line_offsets(text.splitlines())
-    occupied: list[tuple[int, int]] = []
+    occupied_starts: list[int] = []
+    occupied_ends: list[int] = []
     markers: list[PageMarker] = []
+
+    def _is_occupied(s: int, e: int) -> bool:
+        idx = bisect.bisect_right(occupied_starts, s)
+        if idx > 0 and occupied_ends[idx - 1] > s:
+            return True
+        return idx < len(occupied_starts) and occupied_starts[idx] < e
+
+    def _add_occupied(s: int, e: int) -> None:
+        idx = bisect.bisect_right(occupied_starts, s)
+        occupied_starts.insert(idx, s)
+        occupied_ends.insert(idx, e)
+
     for kind, pattern in _PAGE_MARKER_PATTERNS:
         if kind == PageMarkerKind.LETTER_NUMBER and not allow_letter_number:
             continue
         for match in pattern.finditer(text):
             start, end = match.span()
-            if any(start < right and left < end for left, right in occupied):
+            if _is_occupied(start, end):
                 continue
-            occupied.append((start, end))
+            _add_occupied(start, end)
             groups = match.groupdict()
             start_line, end_line = _marker_lines(start, end, text, offsets)
             page = groups.get("page")
@@ -102,10 +115,10 @@ def firm_markers(
             )
     for match in _RE_BOUNDARY.finditer(text):
         start, end = match.span()
-        if any(start < right and left < end for left, right in occupied):
+        if _is_occupied(start, end):
             continue
         start_line, end_line = _marker_lines(start, end, text, offsets)
-        occupied.append((start, end))
+        _add_occupied(start, end)
         markers.append(
             PageMarker(
                 start=start,
@@ -124,7 +137,7 @@ def firm_markers(
     lines: set[int] = set()
     for marker in markers:
         lines.update(range(marker.start_line or 0, (marker.end_line or 0) + 1))
-    return markers, set(occupied), lines
+    return markers, set(zip(occupied_starts, occupied_ends)), lines
 
 
 def _candidate(

@@ -2,10 +2,15 @@
 
 from __future__ import annotations
 
+import hashlib
 import importlib
+import pickle
 
 import pytest
 
+from defs.filing_identity import full_submission_url_for, parse_archive_url
+from defs.sec_http.broker import SecBrokerClient
+from defs.sec_http.cache import SqlCache, SqlCacheReader
 from defs.sql import QueryCompiler, insert_values, make_sql_executor
 
 fetcher_module = importlib.import_module("phases.025_webpage_storage.core.fetcher")
@@ -200,3 +205,188 @@ def test_factory_validates_mode_dependencies():
         fetcher_module.make_archive_fetcher("live")
     with pytest.raises(ValueError, match="unsupported"):
         fetcher_module.make_archive_fetcher("other")
+
+
+def test_submission_bundle_paths_are_never_stubs():
+    # Sequence 000001 accessions end in "0001.txt" but are real bundles.
+    assert not fetcher_module.is_stub_document_path("0000950123-98-009115.txt")
+    assert not fetcher_module.is_stub_document_path("0000000001-24-000001.txt")
+    assert fetcher_module.is_stub_document_path("0001.txt")
+    assert fetcher_module.is_stub_document_path("0000.htm")
+    assert fetcher_module.is_stub_document_path("")
+    assert fetcher_module.is_stub_document_path(None)
+
+
+def test_live_fetch_fetches_synthetic_bundle_locator_directly():
+    sample_sgml = b"""<SUBMISSION>
+<DOCUMENT>
+<TYPE>10-K
+<SEQUENCE>1
+<FILENAME>form10k.htm
+<TEXT>
+<html><body>Pre-2001 Annual Report</body></html>
+</TEXT>
+</DOCUMENT>
+</SUBMISSION>
+"""
+    called_urls = []
+
+    class Client:
+        def get_bytes(self, url):
+            called_urls.append(url)
+            return sample_sgml
+
+    accession = "000095012398009115"
+    bundle_url = full_submission_url_for("20164", accession)
+    locator = schemas.DocumentLocator(
+        "key",
+        accession,
+        "0000950123-98-009115.txt",
+        bundle_url,
+        form="10-K",
+        document_path_source="submission_bundle",
+    )
+    result = fetcher_module.LiveSecArchiveFetcher(Client()).fetch(locator)
+
+    assert result.status == "ok"
+    assert b"Pre-2001 Annual Report" in result.payload
+    # The synthetic locator is fetched once, directly at the bundle URL.
+    assert called_urls == [bundle_url]
+
+
+def _cache_put(cache: SqlCache, url: str, payload: bytes) -> None:
+    cache.put(
+        url,
+        payload,
+        hashlib.sha256(payload).hexdigest(),
+        len(payload),
+        "bytes",
+    )
+
+
+def test_broker_fetcher_serves_cached_hit_without_broker(tmp_path):
+    payload = b"<html><body>Primary Document</body></html>"
+    url = "https://www.sec.gov/Archives/edgar/data/1/0000000001-000001.htm"
+    _cache_put(SqlCache(tmp_path / "cache"), url, payload)
+
+    fetcher = fetcher_module.BrokerArchiveFetcher(
+        SecBrokerClient(tmp_path / "missing.sock"),
+        cache_reader=SqlCacheReader(tmp_path / "cache"),
+    )
+    locator = schemas.DocumentLocator("key", "0000000001000001", "doc.htm", url)
+
+    result = fetcher.fetch(locator)
+
+    assert result.status == "ok"
+    assert result.payload == payload
+
+
+def test_cached_hit_skips_broker_rpc(tmp_path):
+    payload = b"<html><body>Primary Document</body></html>"
+    url = "https://www.sec.gov/Archives/edgar/data/1/0000000001-000001.htm"
+    _cache_put(SqlCache(tmp_path / "cache"), url, payload)
+
+    class CountingBroker:
+        def __init__(self):
+            self.calls = []
+
+        def fetch(self, url):
+            self.calls.append(url)
+            return {"status": "failed", "error": "must not be called"}
+
+    broker = CountingBroker()
+    fetcher = fetcher_module.BrokerArchiveFetcher(
+        broker, cache_reader=SqlCacheReader(tmp_path / "cache")
+    )
+    locator = schemas.DocumentLocator("key", "0000000001000001", "doc.htm", url)
+
+    result = fetcher.fetch(locator)
+
+    assert result.status == "ok"
+    assert result.payload == payload
+    assert broker.calls == []
+
+
+def test_broker_fetcher_serves_cached_full_submission_fallback(tmp_path):
+    sample_sgml = (
+        b"<SUBMISSION><DOCUMENT><TYPE>10-K<SEQUENCE>1<FILENAME>form10k.htm"
+        b"<TEXT><html><body>Substantive 10-K Content</body></html></TEXT>"
+        b"</DOCUMENT></SUBMISSION>"
+    )
+    url = (
+        "https://www.sec.gov/Archives/edgar/data/320193/000032019320000096/missing.htm"
+    )
+    parts = parse_archive_url(url)
+    full_sub_url = full_submission_url_for(parts.archive_cik, "000032019320000096")
+    cache = SqlCache(tmp_path / "cache")
+    _cache_put(cache, full_sub_url, sample_sgml)
+
+    fetcher = fetcher_module.BrokerArchiveFetcher(
+        SecBrokerClient(tmp_path / "missing.sock"),
+        cache_reader=SqlCacheReader(tmp_path / "cache"),
+    )
+    locator = schemas.DocumentLocator(
+        "key",
+        "000032019320000096",
+        "missing.htm",
+        url,
+        form="10-K",
+    )
+
+    result = fetcher.fetch(locator)
+
+    assert result.status == "ok"
+    assert b"Substantive 10-K Content" in result.payload
+
+
+def test_broker_fetcher_miss_with_dead_broker_fails_cleanly(tmp_path):
+    fetcher = fetcher_module.BrokerArchiveFetcher(
+        SecBrokerClient(tmp_path / "missing.sock"),
+        cache_reader=SqlCacheReader(tmp_path / "empty-cache"),
+    )
+    locator = schemas.DocumentLocator(
+        "key",
+        "0000000001000001",
+        "doc.htm",
+        "https://www.sec.gov/Archives/edgar/data/1/0000000001-000001.htm",
+    )
+
+    result = fetcher.fetch(locator)
+
+    assert result.status == "failed"
+    assert result.error
+    assert result.payload is None
+
+
+def test_broker_fetcher_pickle_round_trip_preserves_cache_reader(tmp_path):
+    payload = b"<html><body>Primary Document</body></html>"
+    url = "https://www.sec.gov/Archives/edgar/data/1/0000000001-000001.htm"
+    _cache_put(SqlCache(tmp_path / "cache"), url, payload)
+
+    fetcher = fetcher_module.BrokerArchiveFetcher(
+        SecBrokerClient(tmp_path / "broker.sock"),
+        cache_reader=SqlCacheReader(tmp_path / "cache"),
+    )
+    restored = pickle.loads(pickle.dumps(fetcher))
+    locator = schemas.DocumentLocator("key", "0000000001000001", "doc.htm", url)
+
+    assert restored._cache is not None
+    result = restored.fetch(locator)
+
+    assert result.status == "ok"
+    assert result.payload == payload
+
+
+def test_make_archive_fetcher_wires_cache_reader(tmp_path):
+    fetcher = fetcher_module.make_archive_fetcher(
+        "production",
+        broker_socket=tmp_path / "broker.sock",
+        cache_dir=tmp_path / "cache",
+    )
+    plain = fetcher_module.make_archive_fetcher(
+        "production", broker_socket=tmp_path / "broker.sock"
+    )
+
+    assert isinstance(fetcher, fetcher_module.BrokerArchiveFetcher)
+    assert fetcher._cache is not None
+    assert plain._cache is None

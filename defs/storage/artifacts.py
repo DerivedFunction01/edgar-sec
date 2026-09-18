@@ -54,6 +54,28 @@ def atomic_write_text(path: str | os.PathLike[str], text: str) -> int:
                 pass
 
 
+def atomic_write_bytes(path: str | os.PathLike[str], payload: bytes) -> int:
+    """Atomically write bytes with fsync and directory sync."""
+    path_str = os.fspath(path)
+    directory = os.path.dirname(os.path.abspath(path_str))
+    os.makedirs(directory, exist_ok=True)
+    tmp_path = path_str + ".tmp"
+    try:
+        with open(tmp_path, "wb") as fh:
+            fh.write(payload)
+            fh.flush()
+            os.fsync(fh.fileno())
+        os.replace(tmp_path, path_str)
+        _fsync_directory(directory)
+        return len(payload)
+    finally:
+        if os.path.exists(tmp_path):
+            try:
+                os.remove(tmp_path)
+            except OSError:
+                pass
+
+
 def atomic_write_json(
     path: str | os.PathLike[str],
     value: Any,
@@ -173,6 +195,7 @@ def force_reclaim_memory() -> None:
 
 
 __all__ = [
+    "atomic_write_bytes",
     "atomic_write_json",
     "atomic_write_text",
     "canonical_json",

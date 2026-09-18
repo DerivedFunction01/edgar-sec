@@ -211,3 +211,26 @@ def test_make_sec_http_client_empty_user_agent_falls_back_to_setting():
     # raising, matching the `or` fallback convention used at call sites.
     client = make_sec_http_client(user_agent="")
     assert client.headers["User-Agent"] == "EdgarSec/1.0 contact@example.com"
+
+
+def test_peek_cache_returns_cached_payload_without_pacing(tmp_path):
+    session = _CountingSession(lambda url: _FakeResponse(200, b"{}"))
+    client = SecHttpClient(
+        user_agent="App/1.0 a@b.com",
+        session_factory=lambda: session,
+        cache_dir=str(tmp_path / "cache"),
+        rate_limiter=RateLimiter(min_interval_s=1e-6),
+        retry_policy=RetryPolicy(max_retries=0),
+    )
+    url = "https://data.sec.gov/submissions/CIK0000000001.json"
+
+    client.get_json(url)
+    assert session.calls == 1
+
+    peeked = client.peek_cache(url)
+    assert peeked == b"{}"
+    assert session.calls == 1  # the probe never touches the transport
+    assert client.metrics.snapshot()["cache_hits"] == 1
+
+    assert client.peek_cache("https://data.sec.gov/missing.json") is None
+    assert session.calls == 1

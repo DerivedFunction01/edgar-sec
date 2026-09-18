@@ -83,13 +83,16 @@ def analyze_repeating_headers(
             units_by_line[line_index] = unit.kind
     table_depth = 0
     for line_index, line in enumerate(lines):
-        stripped = line.strip().casefold()
-        if "<table>" in stripped:
-            table_depth += stripped.count("<table>")
-        if table_depth:
+        if "<" in line:
+            stripped = line.strip().casefold()
+            if "<table>" in stripped:
+                table_depth += stripped.count("<table>")
+            if table_depth:
+                units_by_line[line_index] = "table"
+            if "</table>" in stripped:
+                table_depth = max(0, table_depth - stripped.count("</table>"))
+        elif table_depth:
             units_by_line[line_index] = "table"
-        if "</table>" in stripped:
-            table_depth = max(0, table_depth - stripped.count("</table>"))
     boundary_lines = boundary_lines or {
         line
         for marker in markers

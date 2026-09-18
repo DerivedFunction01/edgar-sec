@@ -4,6 +4,7 @@ import pyarrow as pa
 import pyarrow.parquet as pq
 
 from .artifacts import (
+    atomic_write_bytes,
     atomic_write_json,
     atomic_write_text,
     canonical_json,
@@ -121,6 +122,7 @@ __all__ = [
     "StorageOperation",
     "UnsupportedCapability",
     "WalStore",
+    "atomic_write_bytes",
     "atomic_write_json",
     "atomic_write_text",
     "canonical_json",
