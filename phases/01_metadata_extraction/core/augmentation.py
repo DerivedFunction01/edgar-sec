@@ -67,6 +67,9 @@ def write_worklist(
     worklist_root = metadata_paths.worklist_root(options.run_id)
     worklist_root.mkdir(parents=True, exist_ok=True)
     path = worklist_root / "worklist.parquet"
+    base_id = base_manifest.get(
+        "snapshot_id", base_manifest.get("artifact_id", "unknown")
+    )
     records = [
         {
             "cik_padded": row.cik_padded,
@@ -74,7 +77,7 @@ def write_worklist(
             "source_row": row.source_row,
             "work_reason": "missing_from_finalized_metadata",
             "source_snapshot_id": source_snapshot_id,
-            "base_metadata_manifest_id": base_manifest["artifact_id"],
+            "base_metadata_manifest_id": base_id,
         }
         for row in rows
     ]
@@ -101,9 +104,10 @@ def write_worklist(
         "byte_count": path.stat().st_size,
         "artifact_sha256": digest,
         "row_count": len(records),
-        "upstream_artifact_ids": [base_manifest["artifact_id"], source_snapshot_id],
+        "upstream_artifact_ids": [base_id, source_snapshot_id],
         "provenance": {"work_reason": "missing_from_finalized_metadata"},
     }
+
     atomic_write_json(
         path.with_name(path.name + ".manifest.json"), manifest, indent=None
     )
@@ -335,6 +339,7 @@ def publish_snapshot(
     resolved_parts = base_parts + [delta_part_entry]
     full_count = base_count + delta_count
 
+    base_id = base_manifest.get("snapshot_id", base_manifest.get("artifact_id", "unknown"))
     delta_manifest = make_manifest(
         dataset="submission_metadata",
         phase="metadata",
@@ -343,7 +348,7 @@ def publish_snapshot(
         artifact_path=str(delta_part_path),
         artifacts_root=str(root),
         row_count=delta_count,
-        upstream=(base_manifest["artifact_id"],),
+        upstream=(base_id,),
         provenance={"report_source": "augmentation_delta"},
     )
     publish_manifest(delta_manifest, artifacts_root=str(root))
@@ -353,6 +358,7 @@ def publish_snapshot(
         parent_snapshot_id=base_manifest.get(
             "snapshot_id", base_manifest.get("artifact_id")
         ),
+
         schema_version=SCHEMA_VERSION,
         resolved_parts=resolved_parts,
         added_parts=[delta_part_entry],
@@ -372,7 +378,6 @@ def publish_snapshot(
         artifacts_root=root,
         set_current=True,
     )
-
 
     delta_report.output_path = str(manifest_path)
     delta_report.artifact_sha256 = file_sha256(str(manifest_path))

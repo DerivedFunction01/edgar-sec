@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import hashlib
+import logging
 import os
 import shutil
 import subprocess
@@ -18,6 +19,8 @@ from defs.storage import (
     file_sha256,
     load_json,
 )
+
+logger = logging.getLogger("defs.runtime.artifacts")
 
 MANIFEST_VERSION = "1.0.0"
 MANIFEST_DIR = "manifests"
@@ -216,18 +219,25 @@ def resolve_manifest(
     """Resolve an artifact manifest and verify its artifact content hash."""
     root = Path(artifacts_root).resolve()
     path = Path(path_or_id)
-    if path.is_file():
-        manifest = load_manifest(path)
-    else:
-        # Search structured manifests by artifact_id
+    if not path.is_file():
+        # Search structured manifests by artifact_id or snapshot_id
         candidates = list((root / MANIFEST_DIR).glob(f"**/{path_or_id}.json"))
         if not candidates:
+            candidates = list(
+                (root / MANIFEST_DIR).glob(f"**/snapshots/{path_or_id}/*.manifest.json")
+            )
+        if not candidates:
             raise FileNotFoundError(f"manifest not found for artifact id: {path_or_id}")
-        manifest = load_manifest(candidates[0])
-    artifact = root / manifest["artifact_path"]
-    if file_sha256(str(artifact)) != manifest["artifact_sha256"]:
+        path = candidates[0]
+    raw = load_json(path)
+    if "snapshot_id" in raw:
+        validate_snapshot_manifest(raw)
+        return raw, path
+    validate_manifest(raw)
+    artifact = root / raw["artifact_path"]
+    if file_sha256(str(artifact)) != raw["artifact_sha256"]:
         raise ValueError("artifact hash does not match its manifest")
-    return manifest, artifact
+    return raw, artifact
 
 
 def resolve_source(
@@ -747,7 +757,10 @@ def list_snapshots(
                         "manifest": manifest,
                     }
                 )
-            except Exception:
+            except (OSError, ValueError, KeyError, TypeError) as exc:
+                logger.debug(
+                    "skipping invalid snapshot manifest %s: %s", manifest_p, exc
+                )
                 continue
 
     def _sort_key(s: dict) -> tuple[int, int, str]:

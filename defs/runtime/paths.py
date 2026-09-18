@@ -288,7 +288,6 @@ class ProjectPaths:
         )
 
 
-
 @dataclass(frozen=True)
 class PhasePaths:
     project: ProjectPaths

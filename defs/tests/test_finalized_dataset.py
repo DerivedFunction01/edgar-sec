@@ -230,8 +230,18 @@ def test_list_and_next_snapshot_id(tmp_path):
     from defs.runtime.artifacts import list_snapshots, next_snapshot_id
 
     root = tmp_path / "artifacts"
-    assert next_snapshot_id(phase="metadata", dataset="submission_metadata", artifacts_root=root) == "S0"
-    assert list_snapshots(phase="metadata", dataset="submission_metadata", artifacts_root=root) == []
+    assert (
+        next_snapshot_id(
+            phase="metadata", dataset="submission_metadata", artifacts_root=root
+        )
+        == "S0"
+    )
+    assert (
+        list_snapshots(
+            phase="metadata", dataset="submission_metadata", artifacts_root=root
+        )
+        == []
+    )
 
     # Publish S0
     s0_manifest = make_snapshot_manifest(
@@ -241,7 +251,12 @@ def test_list_and_next_snapshot_id(tmp_path):
         effective_cik_count=100,
     )
     publish_snapshot_manifest(s0_manifest, artifacts_root=root, set_current=True)
-    assert next_snapshot_id(phase="metadata", dataset="submission_metadata", artifacts_root=root) == "S1"
+    assert (
+        next_snapshot_id(
+            phase="metadata", dataset="submission_metadata", artifacts_root=root
+        )
+        == "S1"
+    )
 
     # Publish S1
     s1_manifest = make_snapshot_manifest(
@@ -252,10 +267,16 @@ def test_list_and_next_snapshot_id(tmp_path):
         effective_cik_count=150,
     )
     publish_snapshot_manifest(s1_manifest, artifacts_root=root, set_current=True)
-    assert next_snapshot_id(phase="metadata", dataset="submission_metadata", artifacts_root=root) == "S2"
+    assert (
+        next_snapshot_id(
+            phase="metadata", dataset="submission_metadata", artifacts_root=root
+        )
+        == "S2"
+    )
 
-    snaps = list_snapshots(phase="metadata", dataset="submission_metadata", artifacts_root=root)
+    snaps = list_snapshots(
+        phase="metadata", dataset="submission_metadata", artifacts_root=root
+    )
     assert len(snaps) == 2
     assert [s["snapshot_id"] for s in snaps] == ["S0", "S1"]
     assert snaps[1]["parent_snapshot_id"] == "S0"
-

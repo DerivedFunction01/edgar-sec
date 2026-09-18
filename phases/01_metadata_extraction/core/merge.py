@@ -650,34 +650,35 @@ def merge_partition_artifacts(
             )
             combined_files.append(str(path))
 
-            # Copy partition artifact to snapshot parts directory
-            shard_name = f"shard-{partition_id:04d}"
-            target_part = (
-                metadata_paths.snapshot_parts_dir(snapshot_id, shard_name)
-                / "part-000.parquet"
-            )
-            target_part.parent.mkdir(parents=True, exist_ok=True)
-            if str(path.resolve()) != str(target_part.resolve()) and (
-                not target_part.exists()
-                or file_sha256(str(target_part)) != carried["artifact_sha256"]
-            ):
-                tmp_t = target_part.with_suffix(".tmp")
-                shutil.copyfile(str(path), str(tmp_t))
-                os.replace(str(tmp_t), str(target_part))
+            if not plan.get("augmentation"):
+                # Copy partition artifact to snapshot parts directory
+                shard_name = f"shard-{partition_id:04d}"
+                target_part = (
+                    metadata_paths.snapshot_parts_dir(snapshot_id, shard_name)
+                    / "part-000.parquet"
+                )
+                target_part.parent.mkdir(parents=True, exist_ok=True)
+                if str(path.resolve()) != str(target_part.resolve()) and (
+                    not target_part.exists()
+                    or file_sha256(str(target_part)) != carried["artifact_sha256"]
+                ):
+                    tmp_t = target_part.with_suffix(".tmp")
+                    shutil.copyfile(str(path), str(tmp_t))
+                    os.replace(str(tmp_t), str(target_part))
 
-            cik_min, cik_max = parquet_column_bounds(con, target_part, "cik")
+                cik_min, cik_max = parquet_column_bounds(con, target_part, "cik")
 
-            resolved_parts.append(
-                {
-                    "path": str(target_part.relative_to(Path(root))),
-                    "artifact_sha256": carried["artifact_sha256"],
-                    "row_count": carried["row_count"],
-                    "byte_count": target_part.stat().st_size,
-                    "cik_min": cik_min,
-                    "cik_max": cik_max,
-                    "shard_id": shard_name,
-                }
-            )
+                resolved_parts.append(
+                    {
+                        "path": str(target_part.relative_to(Path(root))),
+                        "artifact_sha256": carried["artifact_sha256"],
+                        "row_count": carried["row_count"],
+                        "byte_count": target_part.stat().st_size,
+                        "cik_min": cik_min,
+                        "cik_max": cik_max,
+                        "shard_id": shard_name,
+                    }
+                )
 
         if carried_rows != plan.get("row_count"):
             raise MergeError("merged partition artifacts do not cover the planned CIKs")
@@ -712,41 +713,47 @@ def merge_partition_artifacts(
             {"type": "merge_stage", "stage": "publish", "rows": report.row_count},
         )
 
-    # Publish snapshot manifest
-    snapshot_manifest_data = make_snapshot_manifest(
-        snapshot_id=snapshot_id,
-        schema_version=expected_version,
-        resolved_parts=resolved_parts,
-        effective_cik_count=carried_rows,
-        effective_input_fingerprint=expected_fingerprint,
-        plan_id=plan.get("plan_id", snapshot_id),
-        dataset="submission_metadata",
-        phase="metadata",
-    )
-    snapshot_manifest_path = publish_snapshot_manifest(
-        snapshot_manifest_data,
-        artifacts_root=root,
-        set_current=not plan.get("augmentation"),
-    )
+    if not plan.get("augmentation"):
+        snapshot_manifest_data = make_snapshot_manifest(
+            snapshot_id=snapshot_id,
+            schema_version=expected_version,
+            resolved_parts=resolved_parts,
+            effective_cik_count=carried_rows,
+            effective_input_fingerprint=expected_fingerprint,
+            plan_id=plan.get("plan_id", snapshot_id),
+            dataset="submission_metadata",
+            phase="metadata",
+        )
+        snapshot_manifest_path = publish_snapshot_manifest(
+            snapshot_manifest_data,
+            artifacts_root=root,
+            set_current=True,
+        )
+        report.artifact_sha256 = (
+            carried["artifact_sha256"]
+            if len(combined_files) == 1
+            else file_sha256(str(snapshot_manifest_path))
+        )
+        logger.info(
+            "final merge: snapshot validated (rows=%d) -> %s",
+            carried_rows,
+            snapshot_manifest_path,
+        )
+        report.output_path = (
+            os.path.abspath(output_path)
+            if output_path and output_path.endswith(".parquet")
+            else str(snapshot_manifest_path)
+        )
+    else:
+        report.artifact_sha256 = (
+            carried["artifact_sha256"]
+            if len(combined_files) == 1
+            else file_sha256(str(output_path))
+        )
+        report.output_path = os.path.abspath(output_path) if output_path else ""
 
-    report.artifact_sha256 = (
-        carried["artifact_sha256"]
-        if len(combined_files) == 1
-        else file_sha256(str(snapshot_manifest_path))
-    )
     _emit(progress, {"type": "readback_done", "rows": carried_rows})
-    logger.info(
-        "final merge: snapshot validated (rows=%d) -> %s",
-        carried_rows,
-        snapshot_manifest_path,
-    )
-    _add_duplicate_warning(report)
-    report.report_source = "finalized_artifact"
-    report.output_path = (
-        os.path.abspath(output_path)
-        if output_path and output_path.endswith(".parquet")
-        else str(snapshot_manifest_path)
-    )
+
     report_path = merge_report_path_in(artifacts_dir)
     atomic_write_json(report_path, report.to_dict(), indent=2, sort_keys=True)
 

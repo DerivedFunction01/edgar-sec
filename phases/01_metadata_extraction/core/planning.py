@@ -3,7 +3,6 @@
 from __future__ import annotations
 
 import logging
-import os
 from datetime import UTC, datetime
 from pathlib import Path
 
@@ -35,7 +34,9 @@ def build_plan(options: RunOptions) -> dict:
     source_manifest = None
     effective_input_fingerprint = None
     root = artifacts_root(options.base_metadata_manifest or options.artifacts_dir)
-    metadata_paths = resolve_metadata_paths(run_id=options.run_id, env={"ARTIFACTS_ROOT": str(root)})
+    metadata_paths = resolve_metadata_paths(
+        run_id=options.run_id, env={"ARTIFACTS_ROOT": str(root)}
+    )
 
     if options.augmentation:
         if not options.base_metadata_manifest:
@@ -58,7 +59,9 @@ def build_plan(options: RunOptions) -> dict:
             from .config import DEFAULT_ARTIFACTS
 
             if options.artifacts_dir == DEFAULT_ARTIFACTS:
-                options.artifacts_dir = str(metadata_paths.run_paths(options.run_id).run_root)
+                options.artifacts_dir = str(
+                    metadata_paths.run_paths(options.run_id).run_root
+                )
         source = load_source_snapshot(options.source_manifest, artifacts_root=root)
         source_manifest = source.manifest
 
@@ -119,11 +122,13 @@ def build_plan(options: RunOptions) -> dict:
         "malformed": report["malformed"],
         "duplicates": report["duplicates"],
         "cik_padded": ciks,
+        "run_id": options.run_id,
         "chunks": [chunk.to_dict() for chunk in chunks],
         "partitions": [partition.to_dict() for partition in partitions],
         "run_options": {
             "input_path": options.input_path,
             "artifacts_dir": options.artifacts_dir,
+            "run_id": options.run_id,
             "chunk_size": options.chunk_size,
             "partition_count": options.partition_count,
             "limit": options.limit,
@@ -133,6 +138,7 @@ def build_plan(options: RunOptions) -> dict:
             "augmentation": options.augmentation,
         },
     }
+
     if options.augmentation:
         plan["partition_artifacts"] = {
             str(partition.partition_id): (
@@ -153,7 +159,9 @@ def build_plan(options: RunOptions) -> dict:
 
     for partition in partitions:
         partition_path = partitions_dir / f"partition-{partition.partition_id:05d}.json"
-        atomic_write_json(str(partition_path), partition.to_dict(), indent=2, sort_keys=True)
+        atomic_write_json(
+            str(partition_path), partition.to_dict(), indent=2, sort_keys=True
+        )
     logger.info(
         "plan: %d CIKs, %d chunks, %d malformed, %d duplicates -> %s",
         len(rows),
@@ -166,5 +174,3 @@ def build_plan(options: RunOptions) -> dict:
 
 
 __all__ = ["build_plan"]
-
-

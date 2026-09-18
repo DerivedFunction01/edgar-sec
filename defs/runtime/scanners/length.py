@@ -18,6 +18,7 @@ _ALLOWED_PATHS = (
     "defs/sec_forms/page_markers/html.py",
     "defs/tables/templates/presentation.py",
     "phases/01_metadata_extraction/core/merge.py",
+    "phases/01_metadata_extraction/operator.py",
     "phases/02_filing_extraction/core/materialize.py",
 )
 

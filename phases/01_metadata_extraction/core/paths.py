@@ -124,7 +124,6 @@ class MetadataPhasePaths:
         )
 
 
-
 def resolve_metadata_paths(
     run_id: str | None = None,
     env: dict | None = None,

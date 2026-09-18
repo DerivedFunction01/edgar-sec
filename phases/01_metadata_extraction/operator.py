@@ -18,8 +18,10 @@ from defs.runtime.artifacts import (
 from defs.runtime.cli import coalesce
 from defs.runtime.interactive import ExtraAction, InteractivePhase, run_interactive
 from defs.runtime.progress import make_merge_progress_callback, make_tqdm_callback
+from defs.storage import load_json
 
 from .core import (
+    DEFAULT_ARTIFACTS,
     PROJECT_CONFIG_DEFAULT_PATH,
     RunOptions,
     artifacts_root,
@@ -212,6 +214,8 @@ def interactive_wizard(args, project_config) -> int:
         print(f"error: {exc}", file=sys.stderr)
         return 2
     state = {
+        "run_id": base_options.run_id,
+        "artifacts_dir": base_options.artifacts_dir,
         "source_manifest": base_options.source_manifest,
         "base_metadata_manifest": base_options.base_metadata_manifest,
     }
@@ -219,12 +223,27 @@ def interactive_wizard(args, project_config) -> int:
     def _options() -> RunOptions:
         return replace(
             base_options,
+            run_id=state["run_id"],
+            artifacts_dir=state["artifacts_dir"],
             source_manifest=state["source_manifest"],
             base_metadata_manifest=state["base_metadata_manifest"],
             augmentation=bool(
                 state["source_manifest"] and state["base_metadata_manifest"]
             ),
         )
+
+    def _update_state_from_plan(plan: dict) -> None:
+        run_options = plan.get("run_options") or {}
+        if "artifacts_dir" in run_options:
+            state["artifacts_dir"] = run_options["artifacts_dir"]
+        if "run_id" in run_options:
+            state["run_id"] = run_options["run_id"]
+        elif plan.get("run_id"):
+            state["run_id"] = plan["run_id"]
+        if run_options.get("source_manifest"):
+            state["source_manifest"] = run_options["source_manifest"]
+        if run_options.get("base_metadata_manifest"):
+            state["base_metadata_manifest"] = run_options["base_metadata_manifest"]
 
     def _root():
         options = _options()
@@ -235,6 +254,30 @@ def interactive_wizard(args, project_config) -> int:
             return direct
         parent = artifacts_root(Path(options.artifacts_dir).parent)
         return parent if (parent / "manifests").is_dir() else direct
+
+    def _find_in_progress_runs(root: Path) -> list[dict]:
+        from .core.paths import resolve_metadata_paths
+
+        metadata_paths = resolve_metadata_paths(env={"ARTIFACTS_ROOT": str(root)})
+        runs_dir = metadata_paths.phase_paths.runs_root
+        if not runs_dir.is_dir():
+            return []
+        found = []
+        for entry in sorted(runs_dir.iterdir()):
+            if entry.is_dir():
+                plan_file = entry / "plan.json"
+                if plan_file.is_file():
+                    try:
+                        p = load_json(plan_file)
+                        run_id = p.get("run_id", entry.name)
+                        snap_manifest = metadata_paths.snapshot_manifest_path(run_id)
+                        if not snap_manifest.is_file():
+                            found.append(
+                                {"run_dir": entry, "plan": p, "run_id": run_id}
+                            )
+                    except (OSError, ValueError):
+                        continue
+        return found
 
     def _pick(entries: list[dict], prompt: str) -> dict | None:
         if not entries:
@@ -318,18 +361,6 @@ def interactive_wizard(args, project_config) -> int:
     def _ensure_augmentation_plan(options: RunOptions):
         plan_path = Path(options.artifacts_dir) / "plan.json"
         if plan_path.is_file():
-            try:
-                raw = json.loads(plan_path.read_text(encoding="utf-8"))
-            except (OSError, ValueError):
-                raw = {}
-            if raw.get("augmentation"):
-                try:
-                    plan = load_plan(options)
-                except (FileNotFoundError, ValueError):
-                    plan = None
-                if plan is not None:
-                    print(f"\nLoaded augmentation plan: {plan['row_count']} delta CIKs")
-                    return plan
             print(
                 f"\nExisting plan in {options.artifacts_dir} will be replaced by"
                 " this augmentation plan."
@@ -340,8 +371,9 @@ def interactive_wizard(args, project_config) -> int:
             ):
                 return None
         plan = build_plan(options)
+        _update_state_from_plan(plan)
         print(
-            f"Augmentation plan created: {plan['row_count']} delta CIKs,"
+            f"Augmentation plan created: {plan['row_count']} delta CIKs (run: {state.get('run_id', 'default')}),"
             f" worklist {plan.get('worklist_path')}"
         )
         return plan
@@ -362,8 +394,7 @@ def interactive_wizard(args, project_config) -> int:
         base = run_options.get("base_metadata_manifest")
         if not raw.get("augmentation") or not source or not base:
             return None
-        state["source_manifest"] = source
-        state["base_metadata_manifest"] = base
+        _update_state_from_plan(raw)
         try:
             plan = load_plan(_options())
         except (FileNotFoundError, ValueError):
@@ -379,8 +410,30 @@ def interactive_wizard(args, project_config) -> int:
         return plan
 
     def ensure_plan(options: RunOptions) -> dict:
+        root = _root()
+        # Auto-resume in-progress run when launched without an explicit custom artifacts dir
+        if base_options.artifacts_dir == DEFAULT_ARTIFACTS and not getattr(
+            args, "artifacts", None
+        ):
+            in_progress = _find_in_progress_runs(root)
+            if in_progress:
+                active = in_progress[-1]
+                _update_state_from_plan(active["plan"])
+                state["artifacts_dir"] = str(active["run_dir"])
+                state["run_id"] = active["run_id"]
+                try:
+                    plan = load_plan(_options())
+                    print(
+                        f"\nResumed active in-progress run: {active['run_id']}"
+                        f" ({len(plan['chunks'])} chunks, {plan['row_count']} CIKs)"
+                    )
+                    return plan
+                except (FileNotFoundError, ValueError):
+                    pass
+
         try:
-            plan = load_plan(options)
+            plan = load_plan(_options())
+            _update_state_from_plan(plan)
             print(
                 f"\nLoaded existing plan: {len(plan['chunks'])} chunks,"
                 f" {plan['row_count']} CIKs"
@@ -390,12 +443,12 @@ def interactive_wizard(args, project_config) -> int:
             pass
         except ValueError as exc:
             print(f"\nExisting plan rejected: {exc}")
-            adopted = _adopt_existing_plan(options)
+            adopted = _adopt_existing_plan(_options())
             if adopted is not None:
                 return adopted
             answer = (
                 input(
-                    f"Regenerate the plan in {options.artifacts_dir}?"
+                    f"Regenerate the plan in {state['artifacts_dir']}?"
                     " This replaces plan.json (y/N) "
                 )
                 .strip()
@@ -403,6 +456,7 @@ def interactive_wizard(args, project_config) -> int:
             )
             if answer in ("y", "yes"):
                 plan = build_plan(_options())
+                _update_state_from_plan(plan)
                 print(
                     f"Plan created: {len(plan['chunks'])} chunks,"
                     f" {plan['row_count']} CIKs"
@@ -413,27 +467,47 @@ def interactive_wizard(args, project_config) -> int:
                 "aborted: plan identity mismatch; rerun with the matching"
                 " --augmentation/--source-manifest/--base-metadata-manifest flags"
             )
-        answer = (
-            input(
-                f"No valid plan.json in {options.artifacts_dir}."
+
+        pointer = get_current_snapshot_pointer(
+            root, phase="metadata", dataset="submission_metadata"
+        )
+        if pointer is not None:
+            cur_id = pointer.get("snapshot_id", "current")
+            prompt_text = (
+                f"Active snapshot: {cur_id}.\n"
+                f"No active run in {state['artifacts_dir']}."
+                " Create: [A]ugmentation plan (delta against current), [f]resh plan from CSV, [q]uit?"
+                " (A/f/q) "
+            )
+            default_choice = "a"
+        else:
+            prompt_text = (
+                f"No valid plan.json in {state['artifacts_dir']}."
                 " Create: [F]resh plan from CSV, [a]ugmentation plan, [q]uit?"
                 " (F/a/q) "
             )
-            .strip()
-            .lower()
-        )
+            default_choice = "f"
+
+        answer = input(prompt_text).strip().lower()
+        if not answer:
+            answer = default_choice
+
         if answer in ("a", "augmentation"):
             selected = _prompt_augmentation_inputs()
             if selected is None:
                 raise SystemExit("aborted: augmentation inputs unavailable")
             state["source_manifest"], state["base_metadata_manifest"] = selected
             plan = build_plan(_options())
-            print(f"Augmentation plan created: {plan['row_count']} delta CIKs")
-            return plan
-        if answer in ("f", "fresh", "y", "yes", ""):
-            plan = build_plan(options)
+            _update_state_from_plan(plan)
             print(
-                f"Plan created: {len(plan['chunks'])} chunks, {plan['row_count']} CIKs"
+                f"Augmentation plan created: {plan['row_count']} delta CIKs (run: {state.get('run_id', 'default')})"
+            )
+            return plan
+        if answer in ("f", "fresh", "y", "yes"):
+            plan = build_plan(_options())
+            _update_state_from_plan(plan)
+            print(
+                f"Plan created: {len(plan['chunks'])} chunks, {plan['row_count']} CIKs (run: {state.get('run_id', 'default')})"
             )
             return plan
         raise SystemExit("aborted: run `plan` first or answer yes to create it")
@@ -461,8 +535,10 @@ def interactive_wizard(args, project_config) -> int:
         plan = _ensure_augmentation_plan(_options())
         if plan is None:
             return "aborted; existing plan unchanged"
+        _update_state_from_plan(plan)
         return {
             "mode": "augmentation",
+            "run_id": state.get("run_id"),
             "delta_ciks": plan["row_count"],
             "effective_input_fingerprint": plan.get("effective_input_fingerprint"),
             "worklist": plan.get("worklist_path"),
