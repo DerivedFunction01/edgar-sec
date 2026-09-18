@@ -298,10 +298,10 @@ def auto_generate_policy(
         "filing_extraction", "filing_targets"
     )
 
-    target_files = sorted(target_dir.glob("form=*/data.parquet"))
-    target_pattern = str(target_dir / "form=*" / "data.parquet")
+    target_files = sorted(target_dir.glob("*.parquet"))
+    target_pattern = str(target_dir / "*.parquet")
     current_year = datetime.datetime.now(datetime.UTC).year
-    forms = [p.parent.name.split("=", 1)[1].replace("_", "/") for p in target_files]
+    forms = [p.stem.replace("_", "/") for p in target_files]
     if not target_files:
         forms = []
         min_year, max_year = current_year - 10, current_year

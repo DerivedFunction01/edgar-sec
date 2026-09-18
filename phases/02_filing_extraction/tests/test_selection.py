@@ -26,9 +26,9 @@ DeficitSelector = selection.DeficitSelector
 
 @pytest.fixture()
 def snapshot_fixture(tmp_path: Path):
-    target_dir = tmp_path / "targets" / "form=10-K"
+    target_dir = tmp_path / "targets"
+    target_file = target_dir / "part-00000.parquet"
     target_dir.mkdir(parents=True)
-    target_file = target_dir / "data.parquet"
 
     # Create synthetic targets with 4 items across 2 CIKs
     data = {
@@ -52,6 +52,7 @@ def snapshot_fixture(tmp_path: Path):
         "is_xbrl": [True, True, True, True],
         "is_inline_xbrl": [True, True, True, True],
         "is_xbrl_numeric": [True, True, True, True],
+        "document_path_source": ["primary_document"] * 4,
     }
     write_table_atomic(pa.Table.from_pydict(data), target_file)
 

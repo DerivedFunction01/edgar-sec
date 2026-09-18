@@ -44,11 +44,11 @@ def test_era_of_dynamic_matching() -> None:
 
 
 def test_feature_snapshot_builder(tmp_path: Path) -> None:
-    target_dir = tmp_path / "targets" / "form=10-K"
+    target_dir = tmp_path / "targets"
+    target_file = target_dir / "part-00000.parquet"
     target_dir.mkdir(parents=True)
-    target_file = target_dir / "data.parquet"
 
-    # Create synthetic target parquet
+    # Create synthetic target parquet (flat shard)
     data = {
         "occurrence_id": ["occ1", "occ2"],
         "document_locator_key": ["loc1", "loc2"],
@@ -65,6 +65,7 @@ def test_feature_snapshot_builder(tmp_path: Path) -> None:
         "is_xbrl": [True, True],
         "is_inline_xbrl": [True, True],
         "is_xbrl_numeric": [True, True],
+        "document_path_source": ["primary_document", "primary_document"],
     }
     write_table_atomic(pa.Table.from_pydict(data), target_file)
 
@@ -93,7 +94,7 @@ def test_feature_snapshot_builder(tmp_path: Path) -> None:
     )
 
     builder = FeatureSnapshotBuilder(
-        target_root=tmp_path / "targets",
+        target_root=target_dir,
         profile_path=profile_file,
         output_root=tmp_path / "scratch",
         policy=policy,

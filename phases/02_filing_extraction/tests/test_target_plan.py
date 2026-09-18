@@ -30,14 +30,14 @@ def catalog_fixture(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> Path:
     manifests_root = tmp_path / "manifests"
     manifests_root.mkdir(parents=True)
 
-    # 1. Target Snapshot Directory
+    # 1. Target Snapshot Directory with flat shards
     snap_dir = (
         manifests_root / "filing_extraction" / "filing_catalog" / "snapshots" / "cat123"
     )
     snap_dir.mkdir(parents=True)
-    target_dir = snap_dir / "filing_targets" / "form=10-K"
+    target_dir = snap_dir / "filing_targets"
     target_dir.mkdir(parents=True)
-    target_file = target_dir / "data.parquet"
+    target_file = target_dir / "part-00000.parquet"
 
     data = {
         "occurrence_id": ["occ1", "occ2", "occ3"],
@@ -55,6 +55,11 @@ def catalog_fixture(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> Path:
         "is_xbrl": [True, True, True],
         "is_inline_xbrl": [True, True, True],
         "is_xbrl_numeric": [True, True, True],
+        "document_path_source": [
+            "primary_document",
+            "primary_document",
+            "primary_document",
+        ],
     }
     write_table_atomic(pa.Table.from_pydict(data), target_file)
 
@@ -138,8 +143,15 @@ def catalog_fixture(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> Path:
         "catalog_id": "cat123",
         "target_rows": 3,
         "form_count": 1,
-        "form_partitions": {"10-K": 3},
+        "form_counts": {"10-K": 3},
         "company_profiles_rows": 3,
+        "parts": [
+            {
+                "path": "filing_targets/part-00000.parquet",
+                "row_count": 3,
+                "artifact_sha256": "",
+            }
+        ],
     }
     (snap_dir / "snapshot.manifest.json").write_text(
         json.dumps(manifest), encoding="utf-8"

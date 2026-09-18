@@ -39,7 +39,7 @@ from .core import (
     merge,
     merge_one_partition,
     preview_sample,
-    run_partition,
+    run_partition_with_automerge,
     write_project_config,
 )
 from .core.merge import MergeError
@@ -303,7 +303,7 @@ def main(argv=None) -> int:
             options.validate()
             if args.partition_id is None:
                 raise ValueError("--partition-id is required for run")
-            result = run_partition(options, args.partition_id)
+            result = run_partition_with_automerge(options, args.partition_id)
             print(json.dumps(result, indent=2, sort_keys=True))
             return 0
         if args.command == "status":

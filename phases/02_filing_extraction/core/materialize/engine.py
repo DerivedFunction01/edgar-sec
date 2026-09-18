@@ -33,11 +33,8 @@ from ..schemas import (
     SCHEMA_VERSION,
 )
 from .sql import (
-    build_batch_query,
+    build_part_unnest_query,
     build_profile_query,
-    build_sources_query,
-    partition_key,
-    register_identity_functions,
 )
 
 SOURCE = importlib.import_module("phases.01_metadata_extraction.core.schemas")
@@ -97,131 +94,8 @@ def _resolve_source(
     return str(source_artifact), handoff
 
 
-def _stream_form_batches(
-    artifact: FinalizedDataset,
-    snapshot_dir: Path,
-    source_hash: str,
-    catalog_id: str,
-    report: dict | None,
-    source_batch_size: int,
-    progress: Callable[[dict], None] | None,
-) -> tuple[dict[str, int], int, dict[str, int]]:
-    ciks = [
-        r[0]
-        for r in artifact.run(
-            f"SELECT cik FROM {artifact.relation} WHERE cik IS NOT NULL ORDER BY cik"
-        )
-    ]
-    batch_count = (
-        max(1, (len(ciks) + source_batch_size - 1) // source_batch_size) if ciks else 1
-    )
-    staging_dir = snapshot_dir / ".staging_partitions"
-    staging_dir.mkdir(parents=True, exist_ok=True)
-
-    raw_forms = [
-        r[0]
-        for r in artifact.run(
-            f"SELECT DISTINCT unnest(filings).form FROM {artifact.relation} WHERE filings IS NOT NULL"
-        )
-        if r[0]
-    ]
-    all_keys = sorted({partition_key(f) for f in raw_forms if f})
-    _emit(
-        progress,
-        {
-            "type": "merge_stage",
-            "stage": "discover_forms",
-            "forms": len(all_keys),
-            "total_units": len(all_keys) + 5,
-            "source_batch_size": source_batch_size,
-        },
-    )
-
-    path_source_stats: dict[str, int] = {}
-    metadata = {
-        "source_artifact_sha256": source_hash,
-        "input_fingerprint": report.get("input_fingerprint", "") if report else "",
-        "schema_version": SOURCE.SCHEMA_VERSION,
-        "catalog_id": catalog_id,
-    }
-    metadata_sql = ", ".join(f"'{v}' AS \"{k}\"" for k, v in metadata.items())
-    batch_sql = build_batch_query(artifact.relation, metadata_sql)
-
-    for b_idx in range(batch_count):
-        b_start = b_idx * source_batch_size
-        b_end = min(b_start + source_batch_size, len(ciks))
-        b_ciks = ciks[b_start:b_end]
-        start_cik, end_cik = b_ciks[0], b_ciks[-1]
-        batch_staging_dir = staging_dir / f"batch_{b_idx}"
-
-        artifact.copy_partitioned_query(
-            batch_sql,
-            str(batch_staging_dir),
-            partition_by="form_partition_key",
-            parameters=[start_cik, end_cik],
-        )
-        _emit(
-            progress,
-            {
-                "type": "batch_done",
-                "batch": b_idx + 1,
-                "total_batches": batch_count,
-                "cik_start": start_cik,
-                "cik_end": end_cik,
-                "rows": b_end - b_start,
-                "total_ciks": len(ciks),
-                "ciks_done": b_end,
-            },
-        )
-        force_reclaim_memory()
-
-    counts: dict[str, int] = {}
-    target_root = snapshot_dir / "filing_targets"
-    target_root.mkdir(parents=True, exist_ok=True)
-    form_keys = sorted(
-        {
-            p.name.split("=", 1)[1]
-            for p in staging_dir.glob("batch_*/form_partition_key=*")
-            if "=" in p.name
-        }
-    )
-
-    for part_key in form_keys:
-        dest_dir = target_root / f"form={part_key}"
-        dest_dir.mkdir(parents=True, exist_ok=True)
-        dest_file = dest_dir / "data.parquet"
-        parquet_files = sorted(
-            staging_dir.glob(f"batch_*/form_partition_key={part_key}/*.parquet")
-        )
-        if not parquet_files:
-            continue
-        if len(parquet_files) == 1:
-            shutil.copyfile(parquet_files[0], dest_file)
-        else:
-            file_list = ", ".join(f"'{p}'" for p in parquet_files)
-            concat_q = (
-                f"COPY (SELECT * FROM read_parquet([{file_list}])) "
-                f"TO '{dest_file}' (FORMAT PARQUET, COMPRESSION 'zstd')"
-            )
-            artifact.run(concat_q)
-
-        res = artifact.run(
-            f"SELECT form, COUNT(*) FROM read_parquet('{dest_file}') GROUP BY form"
-        )
-        for form_name, row_cnt in res:
-            counts[str(form_name)] = int(row_cnt)
-            _emit(
-                progress,
-                {
-                    "type": "merge_stage",
-                    "stage": f"targets:{form_name}",
-                    "rows": int(row_cnt),
-                },
-            )
-
-    shutil.rmtree(staging_dir, ignore_errors=True)
-    force_reclaim_memory()
-    return counts, batch_count, path_source_stats
+def _compute_sha256(path: str) -> str:
+    return FinalizedDataset(path).sha256
 
 
 def materialize(
@@ -264,7 +138,6 @@ def materialize(
         memory_limit=memory_limit or resources.memory_limit,
         temp_directory=resources.temp_directory,
     ) as artifact:
-        register_identity_functions(artifact)
         if artifact.columns != SOURCE.SUBMISSION_METADATA_SCHEMA.names:
             raise StorageError(
                 "source artifact columns do not match submission_metadata schema"
@@ -313,36 +186,60 @@ def materialize(
         )
         force_reclaim_memory()
 
-        # Stage 2: Batched Form Streaming
-        counts, batch_count, path_source_stats = _stream_form_batches(
-            artifact=artifact,
-            snapshot_dir=snapshot_dir,
-            source_hash=source_hash,
-            catalog_id=catalog_id,
-            report=report,
-            source_batch_size=source_batch_size,
-            progress=progress,
-        )
+        # Stage 2: Shard-Aligned Unnest
+        target_dir = snapshot_dir / "filing_targets"
+        if target_dir.exists():
+            shutil.rmtree(target_dir)
+        target_dir.mkdir(parents=True, exist_ok=True)
+        part_paths = artifact.resolved_part_paths
+        parts_metadata: list[dict] = []
+        form_counts: dict[str, int] = {}
+        total_target_rows = 0
 
-        # Stage 3: Occurrence Sources
-        target_root = snapshot_dir / "filing_targets"
-        target_files = sorted(target_root.glob("form=*/data.parquet"))
-        sources_path = snapshot_dir / "filing_occurrence_sources.parquet"
-        source_count = 0
-        if target_files:
-            sources_query = build_sources_query(target_files)
-            source_count = artifact.copy_query(sources_query, str(sources_path))
-        _emit(
-            progress,
-            {
-                "type": "merge_stage",
-                "stage": "occurrence_sources",
-                "rows": source_count,
-            },
-        )
-        force_reclaim_memory()
+        target_part_paths: list[str] = []
+        for part_index, part_path in enumerate(part_paths):
+            # Upstream shards may all use the basename ``part-000.parquet``
+            # inside distinct shard directories. The snapshot contract is
+            # flat, so assign deterministic names by resolved-part order.
+            part_name = f"part-{part_index:05d}.parquet"
+            dest_part = target_dir / part_name
+            unnest_query = build_part_unnest_query(part_path)
+            row_count = artifact.copy_query(unnest_query, str(dest_part))
+            total_target_rows += row_count
+            artifact_sha = _compute_sha256(str(dest_part))
+            target_part_paths.append(str(dest_part))
+            parts_metadata.append(
+                {
+                    "path": f"filing_targets/{part_name}",
+                    "row_count": row_count,
+                    "artifact_sha256": artifact_sha,
+                }
+            )
+            _emit(
+                progress,
+                {
+                    "type": "merge_stage",
+                    "stage": f"targets:{part_name}",
+                    "rows": row_count,
+                },
+            )
+            force_reclaim_memory()
 
-        # Stage 4: Snapshot Manifest & Active Pointer
+        # Aggregate per-form counts from all target parts
+        if target_part_paths:
+            for part_path in target_part_paths:
+                for form_name, cnt in artifact.run(
+                    f"""
+                    SELECT form, COUNT(*)
+                    FROM read_parquet('{part_path}')
+                    WHERE form IS NOT NULL
+                    GROUP BY form
+                    ORDER BY COUNT(*) DESC
+                    """
+                ):
+                    form_counts[str(form_name)] = int(cnt)
+
+        # Stage 3: Snapshot Manifest & Active Pointer
         try:
             rel_dir = snapshot_dir.relative_to(artifacts_root)
         except ValueError:
@@ -357,20 +254,15 @@ def materialize(
             "source_artifact_sha256": source_hash,
             "upstream_snapshot_id": handoff.get("snapshot_id") if handoff else None,
             "schema_version": SCHEMA_VERSION,
-            "target_rows": sum(counts.values()),
-            "form_count": len(counts),
+            "target_rows": total_target_rows,
             "company_profiles_rows": profile_count,
-            "occurrence_sources_rows": source_count,
-            "form_partitions": counts,
-            "path_source_statistics": path_source_stats,
+            "form_count": len(form_counts),
+            "form_counts": form_counts,
+            "parts": parts_metadata,
             "snapshot_path": str(rel_dir / "snapshot.manifest.json"),
             "company_profiles_path": str(rel_dir / "company_profiles.parquet"),
-            "occurrence_sources_path": str(
-                rel_dir / "filing_occurrence_sources.parquet"
-            ),
             "filing_targets_dir": str(rel_dir / "filing_targets"),
             "source_batch_size": source_batch_size,
-            "batch_count": batch_count,
         }
         manifest_path = snapshot_dir / "snapshot.manifest.json"
         manifest_path.write_text(

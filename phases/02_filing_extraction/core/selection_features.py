@@ -1,8 +1,7 @@
 """Immutable occurrence- and locator-level feature snapshot builder for Phase 02.
 
 Computes multi-dimensional features over catalog artifacts (filing_targets,
-company_profiles, filing_occurrence_sources) for policy-driven fixture
-selection without full memory materialization.
+company_profiles) for policy-driven fixture selection without full memory materialization.
 """
 
 from __future__ import annotations
@@ -98,27 +97,21 @@ class FeatureSnapshotBuilder:
     def _target_union(self, forms: list[str]) -> str:
         from defs.storage import parquet_column_names
 
-        selects = []
-        for form in sorted(forms):
-            form_part = form.replace("/", "_")
-            path = self.target_root / f"form={form_part}" / "data.parquet"
-            if not path.exists():
-                path = self.target_root / f"form={form}" / "data.parquet"
-            if not path.exists():
-                raise FileNotFoundError(
-                    f"missing target partition for form {form}: {path}"
-                )
-            # Catalogs built before the full-submission fallback policy have
-            # no document_path_source column; project NULL for those.
-            if "document_path_source" in parquet_column_names(str(path)):
-                source_projection = "document_path_source"
-            else:
-                source_projection = "CAST(NULL AS VARCHAR) AS document_path_source"
-            selects.append(
-                f"SELECT '{form}' AS catalog_form, {IDENTITY_COLUMNS}, "
-                f"{source_projection} FROM read_parquet('{path}')"
-            )
-        return " UNION ALL ".join(selects)
+        target_part_files = sorted(self.target_root.glob("*.parquet"))
+        if not target_part_files:
+            raise FileNotFoundError(f"no target part files found in {self.target_root}")
+        quoted_forms = ", ".join(f"'{f}'" for f in sorted(forms))
+        file_list = ", ".join(f"'{p}'" for p in target_part_files)
+        source_projection = "document_path_source"
+        if "document_path_source" not in parquet_column_names(
+            str(target_part_files[0])
+        ):
+            source_projection = "CAST(NULL AS VARCHAR) AS document_path_source"
+        return (
+            f"SELECT form, form AS catalog_form, {IDENTITY_COLUMNS}, "
+            f"{source_projection} FROM read_parquet([{file_list}]) "
+            f"WHERE form IN ({quoted_forms})"
+        )
 
     def snapshot_dir(self, forms: list[str]) -> Path:
         payload = {

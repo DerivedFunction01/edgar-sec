@@ -35,7 +35,7 @@ from .core import (
     merge_one_partition,
     preview_sample,
     refresh_company_tickers,
-    run_partition,
+    run_partition_with_automerge,
 )
 from .core.merge import MergeError
 
@@ -122,7 +122,7 @@ def partition_command(options: RunOptions, partition_id: int) -> str:
 def _run_partition_with_progress(
     options: RunOptions, partition_id: int, *, show_progress: bool = True
 ) -> dict:
-    """Run one partition with progress."""
+    """Run one partition with progress, auto-merging on full success."""
     plan = load_plan(options)
     partition = next(
         (
@@ -146,7 +146,7 @@ def _run_partition_with_progress(
     )
     try:
         with logging_redirect_tqdm():
-            return run_partition(
+            return run_partition_with_automerge(
                 options, partition_id, progress=make_tqdm_callback(bar)
             )
     finally:

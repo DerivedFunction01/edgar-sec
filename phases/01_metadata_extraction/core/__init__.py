@@ -13,6 +13,7 @@ from .application import (
     preview_sample,
     run_chunk,
     run_partition,
+    run_partition_with_automerge,
 )
 from .augmentation import (
     artifacts_root,
@@ -90,6 +91,7 @@ __all__ = [
     "refresh_company_tickers",
     "run_chunk",
     "run_partition",
+    "run_partition_with_automerge",
     "validate_plan_against_options",
     "write_project_config",
 ]

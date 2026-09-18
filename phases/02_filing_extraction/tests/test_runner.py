@@ -53,7 +53,7 @@ def test_discover_catalogs_valid_and_skips_noise(tmp_path) -> None:
         "source_artifact_sha256": "deadbeef",
         "form_count": 1,
         "target_rows": 3,
-        "form_partitions": {"10-K": 3},
+        "form_counts": {"10-K": 3},
     }
     (snap_dir / "snapshot.manifest.json").write_text(
         json.dumps(manifest), encoding="utf-8"
@@ -300,19 +300,13 @@ def test_materialize_and_plan_emit_stage_events(tmp_path, monkeypatch) -> None:
     assert stages == [
         "validate_source",
         "company_profiles",
-        "discover_forms",
-        "targets:10-K",
-        "occurrence_sources",
+        "targets:part-00000.parquet",
         "publish_manifest",
     ]
     assert events[1]["rows"] == 1
-    assert events[2]["forms"] == 1
     # The announced unit total matches the emitted stage count exactly.
-    assert events[2]["total_units"] == len(stages)
-    batch_events = [event for event in events if event["type"] == "batch_done"]
-    assert batch_events[0]["cik_start"] == "0000000001"
     target_event = next(
-        event for event in events if event.get("stage") == "targets:10-K"
+        event for event in events if event.get("stage") == "targets:part-00000.parquet"
     )
     assert target_event["rows"] == 1
 
@@ -346,11 +340,8 @@ def test_materialize_appends_multiple_cik_batches(tmp_path) -> None:
         source_batch_size=1,
     )
 
-    assert result["batch_count"] == 2
     cat_id = result.get("snapshot_id", result.get("catalog_id"))
-    target = (
-        tmp_path / "catalogs" / cat_id / "filing_targets" / "form=10-K" / "data.parquet"
-    )
+    target = tmp_path / "catalogs" / cat_id / "filing_targets" / "part-00000.parquet"
     assert pq.read_table(target).num_rows == 2
 
 

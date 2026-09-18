@@ -10,19 +10,15 @@ from __future__ import annotations
 import hashlib
 import json
 import logging
-import re
 import shutil
 from collections.abc import Callable
 from pathlib import Path
 from typing import Any
 
-_RE_FORM_PATH = re.compile(r"/form=([^/]+)/")
-
 from defs.runtime.paths import resolve_paths
 from defs.runtime.resources import derive_resources
 from defs.storage import (
     DuckDBStaging,
-    FinalizedArtifact,
     atomic_write_json,
 )
 
@@ -143,7 +139,7 @@ def plan(
         art_path = Path(target_manifests[0]["artifact_path"])
         if not art_path.is_absolute():
             art_path = artifacts_root / art_path
-        target_base_dir = art_path.parent.parent
+        target_base_dir = art_path.parent
 
         profile_art_path = target_base_dir.parent / "company_profiles.parquet"
         if not profile_art_path.exists():
@@ -336,17 +332,6 @@ def plan(
 
     else:
         selected_forms = set(forms)
-        selected_entries = []
-        for item in sorted(target_manifests, key=lambda m: m["artifact_path"]):
-            match = _RE_FORM_PATH.search(item["artifact_path"])
-            form = match.group(1) if match else ""
-            if selected_forms and form not in selected_forms:
-                continue
-            if amendment == "original" and form.upper().endswith("_A"):
-                continue
-            if amendment == "amendments" and not form.upper().endswith("_A"):
-                continue
-            selected_entries.append((form, item))
 
         full_hash_payload = {
             "catalog_id": catalog_id,
@@ -369,32 +354,45 @@ def plan(
             shutil.rmtree(destination, ignore_errors=True)
         destination.mkdir(parents=True, exist_ok=True)
 
+        target_root = destination / "targets"
+        target_root.mkdir(parents=True, exist_ok=True)
+
+        target_files = [m["artifact_path"] for m in target_manifests]
+        plan_target_files = []
+        for art_path in target_files:
+            p = Path(art_path)
+            if not p.is_absolute():
+                p = artifacts_root / p
+            plan_target_files.append(str(p))
+
+        if not selected_forms:
+            file_list = ", ".join(f"'{p}'" for p in plan_target_files)
+            with DuckDBStaging(
+                transient_root / "_form_discovery.duckdb",
+                threads=resources.threads,
+                memory_limit=resources.memory_limit,
+                cleanup_root=False,
+            ) as staging:
+                selected_forms = {
+                    str(row[0])
+                    for row in staging.execute(
+                        f"SELECT DISTINCT form FROM read_parquet([{file_list}]) WHERE form IS NOT NULL"
+                    )
+                }
+
         _emit(
             progress,
             {
                 "type": "merge_stage",
                 "stage": "select_targets",
-                "forms": len(selected_entries),
-                "total_units": len(selected_entries) + 2,
+                "forms": len(selected_forms),
+                "total_units": len(selected_forms) + 2,
             },
         )
 
         counts = {}
-        source_artifact_ids = {}
-        target_root = destination / "targets"
-        target_root.mkdir(parents=True, exist_ok=True)
-
-        targets_manifest_dir = resolved_paths.project.dataset_manifests(
-            "filing_extraction", "filing_targets"
-        )
-        for form, item in selected_entries:
-            form_part = form.replace("/", "_")
-            source = targets_manifest_dir / f"form={form_part}" / "data.parquet"
-            if not source.exists():
-                art_path = Path(item["artifact_path"])
-                if not art_path.is_absolute():
-                    art_path = artifacts_root / art_path
-                source = art_path
+        for form_name in sorted(selected_forms):
+            form_part = form_name.replace("/", "_")
             destination_file = target_root / f"form={form_part}" / "data.parquet"
             if destination_file.exists():
                 destination_file.unlink()
@@ -407,42 +405,42 @@ def plan(
                 where = "LIMIT ?"
                 params = [limit]
             if document_suffixes:
-                # Effective document path: byte-identical to primary_document
-                # for observed locators; synthetic bundle paths carry .txt.
                 suffix_filter = suffix_sql("document_path", document_suffixes)
                 where = f"WHERE ({suffix_filter}) " + where
-            with FinalizedArtifact(source) as artifact:
-                query = f"SELECT * FROM {artifact.relation} {where}"
-                counts[form] = artifact.copy_query(query, destination_file, params)
-            source_artifact_ids[form] = item["artifact_id"]
+            file_list = ", ".join(f"'{p}'" for p in plan_target_files)
+            query = f"""
+                SELECT * FROM read_parquet([{file_list}])
+                WHERE form = '{form_name}'
+                  AND ({suffix_sql("document_path", document_suffixes)})
+                ORDER BY document_locator_key, occurrence_id
+                {where}
+            """
+            with DuckDBStaging(
+                destination.parent / "_plan_staging.duckdb",
+                threads=resources.threads,
+                memory_limit=resources.memory_limit,
+                cleanup_root=False,
+            ) as staging:
+                counts[form_name] = staging.copy_query(query, destination_file, params)
             _emit(
                 progress,
                 {
                     "type": "merge_stage",
-                    "stage": f"targets:{form}",
-                    "rows": counts[form],
+                    "stage": f"targets:{form_name}",
+                    "rows": counts[form_name],
                 },
             )
 
-        target_files = sorted(target_root.glob("form=*/data.parquet"))
+        target_files_out = sorted(target_root.glob("form=*/data.parquet"))
         unique_locators = 0
-        if target_files:
-            file_list = ", ".join(f"'{p}'" for p in target_files)
-            from defs.storage import parquet_column_names
-
-            # Catalogs predating the fallback policy have no provenance column.
-            has_source = "document_path_source" in parquet_column_names(
-                str(target_files[0])
-            )
-            source_projection = (
-                "document_path_source"
-                if has_source
-                else "CAST(NULL AS VARCHAR) AS document_path_source"
-            )
+        if target_files_out:
+            file_list = ", ".join(f"'{p}'" for p in target_files_out)
             loc_dest = destination / "locator_groups.parquet"
-            db_file = destination / "full_plan_staging.duckdb"
             with DuckDBStaging(
-                db_file, threads=resources.threads, memory_limit=resources.memory_limit
+                destination / "_plan_staging.duckdb",
+                threads=resources.threads,
+                memory_limit=resources.memory_limit,
+                cleanup_root=False,
             ) as staging:
                 unique_locators = staging.copy_query(
                     f"""
@@ -454,11 +452,11 @@ def plan(
                         primary_document,
                         document_path,
                         archive_url,
-                        {source_projection}
+                        document_path_source
                     FROM read_parquet([{file_list}])
                     WHERE {suffix_sql("document_path", document_suffixes)}
                     ORDER BY document_locator_key
-                """,
+                    """,
                     loc_dest,
                 )
 
@@ -485,7 +483,6 @@ def plan(
             "selected_rows": total_rows,
             "active_targets_count": total_rows,
             "unique_locators_count": int(unique_locators),
-            "source_artifact_ids": source_artifact_ids,
             "document_suffixes": list(document_suffixes),
         }
         atomic_write_json(destination / "plan.json", plan_meta)

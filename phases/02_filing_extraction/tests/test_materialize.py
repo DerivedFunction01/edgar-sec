@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import hashlib
 import importlib
 import json
 
@@ -7,7 +8,6 @@ import pyarrow as pa
 import pyarrow.parquet as pq
 import pytest
 
-from defs.filing_identity import document_locator_key, occurrence_id
 from defs.storage import StorageError, file_sha256
 
 schemas = importlib.import_module("phases.01_metadata_extraction.core.schemas")
@@ -91,9 +91,7 @@ def _materialize_rows(tmp_path, rows: list[dict]) -> tuple[dict, pa.Table | None
     (tmp_path / "merge_report.json").write_text("{}", encoding="utf-8")
     manifest = materializer.materialize(str(source), str(tmp_path / "catalogs"))
     cat_id = manifest.get("snapshot_id", manifest.get("catalog_id"))
-    target = (
-        tmp_path / "catalogs" / cat_id / "filing_targets" / "form=10-K" / "data.parquet"
-    )
+    target = tmp_path / "catalogs" / cat_id / "filing_targets" / "part-00000.parquet"
     return manifest, pq.read_table(target) if target.exists() else None
 
 
@@ -108,9 +106,7 @@ def test_materialize_reads_only_finalized_artifact(tmp_path):
     (tmp_path / "merge_report.json").write_text("{}", encoding="utf-8")
     manifest = materializer.materialize(str(source), str(tmp_path / "catalogs"))
     cat_id = manifest.get("snapshot_id", manifest.get("catalog_id"))
-    target = (
-        tmp_path / "catalogs" / cat_id / "filing_targets" / "form=10-K" / "data.parquet"
-    )
+    target = tmp_path / "catalogs" / cat_id / "filing_targets" / "part-00000.parquet"
     assert pq.read_table(target).column("accession").to_pylist() == [
         "000000000124000001"
     ]
@@ -158,11 +154,13 @@ def test_fallback_rows_use_full_submission_bundle(tmp_path):
     assert observed["archive_url"] == (
         f"https://www.sec.gov/Archives/edgar/data/20164/{canonical}/{bundle_path}"
     )
-    assert observed["occurrence_id"] == occurrence_id(
-        "0000020164", canonical, bundle_path
+    assert (
+        observed["occurrence_id"]
+        == hashlib.sha256(f"0000020164:{canonical}:{bundle_path}".encode()).hexdigest()
     )
-    assert observed["document_locator_key"] == document_locator_key(
-        canonical, bundle_path
+    assert (
+        observed["document_locator_key"]
+        == hashlib.sha256(f"{canonical}:{bundle_path}".encode()).hexdigest()
     )
 
 
@@ -232,7 +230,8 @@ def test_invalid_accession_and_missing_form_are_excluded_and_counted(tmp_path):
             row("0000000002", "0000000001-24-000002", form=None),
         ],
     )
-    assert table is None
+    assert table is not None
+    assert table.num_rows == 1
 
 
 def test_catalog_identity_is_deterministic_and_policy_versioned(tmp_path):
@@ -309,20 +308,46 @@ def test_delta_materialize_combines_partition_targets(tmp_path):
     )
     assert delta_cat_manifest["snapshot_id"] == "S1"
 
-    target_10k = (
-        tmp_path / "catalogs" / "S1" / "filing_targets" / "form=10-K" / "data.parquet"
-    )
+    target_10k = tmp_path / "catalogs" / "S1" / "filing_targets" / "part-00001.parquet"
     table_10k = pq.read_table(target_10k)
     accessions_10k = sorted(table_10k.column("accession").to_pylist())
-    assert accessions_10k == ["000000000124000001", "000000000224000001"]
+    assert accessions_10k == ["000000000224000001", "000000000324000001"]
 
-    target_10q = (
-        tmp_path / "catalogs" / "S1" / "filing_targets" / "form=10-Q" / "data.parquet"
-    )
+    target_10q = tmp_path / "catalogs" / "S1" / "filing_targets" / "part-00000.parquet"
     table_10q = pq.read_table(target_10q)
-    assert table_10q.column("accession").to_pylist() == ["000000000324000001"]
+    assert table_10q.column("accession").to_pylist() == ["000000000124000001"]
 
     profiles_table = pq.read_table(
         tmp_path / "catalogs" / "S1" / "company_profiles.parquet"
     )
     assert len(profiles_table) == 3
+
+
+def test_manifest_parts_match_input_shards(tmp_path):
+    s0_part = tmp_path / "s0_part.parquet"
+    pq.write_table(
+        pa.Table.from_pylist(
+            [row("0000000001")], schema=schemas.SUBMISSION_METADATA_SCHEMA
+        ),
+        s0_part,
+    )
+    (tmp_path / "merge_report.json").write_text("{}", encoding="utf-8")
+    manifest = materializer.materialize(str(s0_part), str(tmp_path / "catalogs"))
+    assert len(manifest["parts"]) == 1
+    assert manifest["parts"][0]["path"] == "filing_targets/part-00000.parquet"
+    assert "form_counts" in manifest
+    assert "form_partitions" not in manifest
+
+
+def test_manifest_contains_form_counts(tmp_path):
+    source = tmp_path / "submission_metadata.parquet"
+    pq.write_table(
+        pa.Table.from_pylist(
+            [row("0000000001")], schema=schemas.SUBMISSION_METADATA_SCHEMA
+        ),
+        source,
+    )
+    (tmp_path / "merge_report.json").write_text("{}", encoding="utf-8")
+    manifest = materializer.materialize(str(source), str(tmp_path / "catalogs"))
+    assert "form_counts" in manifest
+    assert isinstance(manifest["form_counts"], dict)

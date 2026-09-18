@@ -186,7 +186,6 @@ class _StageBar:
                 self._bar.set_description(f"targets ({stage.split(':', 1)[1]})")
             elif stage in (
                 "company_profiles",
-                "occurrence_sources",
                 "publish_manifest",
             ):
                 self._bar.set_description(stage.replace("_", " "))

@@ -45,7 +45,7 @@ def discover_catalogs(manifests_root: str | None = None) -> list[dict]:
             if cat_id in seen_catalogs:
                 continue
             seen_catalogs.add(cat_id)
-            forms = sorted(data.get("form_partitions", {}).keys())
+            forms = sorted(data.get("form_counts", {}).keys())
             summaries.append(
                 {
                     "catalog_id": cat_id,

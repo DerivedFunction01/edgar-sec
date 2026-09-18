@@ -66,22 +66,36 @@ def resolve_catalog_manifests(
         or snap_manifest_file.parent.name
     )
     manifests = []
-    target_dir = snap_manifest_file.parent / "filing_targets"
-    for form_dir in sorted(target_dir.glob("form=*")):
-        form_key = form_dir.name.split("=", 1)[1]
-        data_file = form_dir / "data.parquet"
-        if data_file.is_file():
-            row_cnt = data.get("form_partitions", {}).get(form_key, 0)
+    parts = data.get("parts", [])
+    snap_dir = snap_manifest_file.parent
+
+    if parts:
+        for p in parts:
+            part_path = snap_dir / p["path"]
+            if part_path.is_file():
+                manifests.append(
+                    {
+                        "artifact_id": f"{cat_id}_{part_path.stem}",
+                        "run_id": cat_id,
+                        "dataset": "filing_targets",
+                        "artifact_path": str(part_path),
+                        "row_count": p.get("row_count", 0),
+                        "provenance": {
+                            "catalog_id": cat_id,
+                        },
+                    }
+                )
+    else:
+        for part_file in sorted((snap_dir / "filing_targets").glob("*.parquet")):
             manifests.append(
                 {
-                    "artifact_id": f"{cat_id}_{form_key}",
+                    "artifact_id": f"{cat_id}_{part_file.stem}",
                     "run_id": cat_id,
                     "dataset": "filing_targets",
-                    "artifact_path": str(data_file),
-                    "row_count": row_cnt,
+                    "artifact_path": str(part_file),
+                    "row_count": 0,
                     "provenance": {
                         "catalog_id": cat_id,
-                        "form_partition_key": form_key,
                     },
                 }
             )

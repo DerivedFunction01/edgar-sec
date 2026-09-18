@@ -397,3 +397,110 @@ def test_run_chunk_progress_callback_failure_does_not_break_run(tmp_path, fake_s
     )
     assert summary["rows"] == 2
     assert summary["statuses"] == {"ok": 2}
+
+
+def test_run_partition_with_automerge_success(tmp_path, fake_sec):
+    _session, register = fake_sec
+    base = "https://data.sec.gov/submissions"
+    register(
+        f"{base}/CIK0000000020.json",
+        {"cik": "0000000020", "name": "K TRON", "filings": {"recent": {}, "files": []}},
+    )
+    register(
+        f"{base}/CIK0000001761.json",
+        {
+            "cik": "0000001761",
+            "name": "TRANZONIC",
+            "filings": {"recent": {}, "files": []},
+        },
+    )
+    register(
+        f"{base}/CIK0000037996.json",
+        {
+            "cik": "0000037996",
+            "name": "FORD MOTOR CO",
+            "filings": {"recent": {}, "files": []},
+        },
+    )
+
+    input_path = write_input(tmp_path)
+    options = make_options(tmp_path, input_path=input_path, partition_count=1)
+    application.build_plan(options)
+
+    events = []
+    result = application.run_partition_with_automerge(
+        config.RunOptions(**{**options.to_dict(), "user_agent": options.user_agent}),
+        partition_id=1,
+        progress=events.append,
+    )
+    assert result["auto_merged"] is True
+    assert result["partition_id"] == 1
+    stages = [e["stage"] for e in events if e.get("type") == "merge_stage"]
+    assert "auto_merge_partition" in stages
+
+
+def test_run_partition_with_automerge_skips_on_failure(tmp_path, fake_sec):
+    _session, register = fake_sec
+    base = "https://data.sec.gov/submissions"
+    register(
+        f"{base}/CIK0000000020.json",
+        {"cik": "0000000020", "name": "K TRON", "filings": {"recent": {}, "files": []}},
+    )
+    # CIK 0000001761 is NOT registered, so fetch returns 404 -> failed row
+    register(
+        f"{base}/CIK0000037996.json",
+        {
+            "cik": "0000037996",
+            "name": "FORD MOTOR CO",
+            "filings": {"recent": {}, "files": []},
+        },
+    )
+
+    input_path = write_input(tmp_path)
+    options = make_options(tmp_path, input_path=input_path, partition_count=1)
+    application.build_plan(options)
+
+    result = application.run_partition_with_automerge(
+        config.RunOptions(**{**options.to_dict(), "user_agent": options.user_agent}),
+        partition_id=1,
+    )
+    assert result.get("auto_merged") is not True
+    assert result["partition_id"] == 1
+
+
+def test_run_partition_with_automerge_emits_merge_stage_events(tmp_path, fake_sec):
+    _session, register = fake_sec
+    base = "https://data.sec.gov/submissions"
+    register(
+        f"{base}/CIK0000000020.json",
+        {"cik": "0000000020", "name": "K TRON", "filings": {"recent": {}, "files": []}},
+    )
+    register(
+        f"{base}/CIK0000001761.json",
+        {
+            "cik": "0000001761",
+            "name": "TRANZONIC",
+            "filings": {"recent": {}, "files": []},
+        },
+    )
+    register(
+        f"{base}/CIK0000037996.json",
+        {
+            "cik": "0000037996",
+            "name": "FORD MOTOR CO",
+            "filings": {"recent": {}, "files": []},
+        },
+    )
+
+    input_path = write_input(tmp_path)
+    options = make_options(tmp_path, input_path=input_path, partition_count=1)
+    application.build_plan(options)
+
+    events = []
+    application.run_partition_with_automerge(
+        config.RunOptions(**{**options.to_dict(), "user_agent": options.user_agent}),
+        partition_id=1,
+        progress=events.append,
+    )
+    merge_events = [e for e in events if e.get("type") == "merge_stage"]
+    assert any(e["stage"] == "auto_merge_partition" for e in merge_events)

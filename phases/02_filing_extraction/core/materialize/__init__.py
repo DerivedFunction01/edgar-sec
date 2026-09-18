@@ -11,9 +11,6 @@ from .engine import (
     FALLBACK_POLICY_VERSION,
     materialize,
 )
-from .sql import (
-    partition_key,
-)
 
 __all__ = [
     "FALLBACK_POLICY_VERSION",
@@ -21,5 +18,4 @@ __all__ = [
     "PROFILE_SCHEMA_VERSION",
     "SCHEMA_VERSION",
     "materialize",
-    "partition_key",
 ]

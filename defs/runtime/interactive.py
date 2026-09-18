@@ -50,7 +50,7 @@ def run_interactive(phase: InteractivePhase, *, default_partition: int = 1) -> i
             print(f"  base: {plan['base_metadata_manifest']}")
         print("\nOptions:")
         print("  1. Preview")
-        print("  2. Run partition")
+        print("  2. Run partition (auto-merges on full success)")
         print("  3. Show partition commands")
         print("  4. Show status")
         if phase.merge_partition is not None:

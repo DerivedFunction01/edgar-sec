@@ -37,7 +37,7 @@ and blank output inputs use transient staging and runs under
 `transient/filing_extraction/` under `ARTIFACTS_ROOT`. If exactly one published
 manifest group is available, blank planning input selects it automatically. Materialization and
 planning show a tqdm stage bar (source validation, company profiles, per-form
-targets, occurrence sources, manifest publication) so long DuckDB and hashing
+targets, manifest publication) so long DuckDB and hashing
 steps report progress instead of appearing to hang. The canonical CLI accepts an
 optional `--progress` flag on `materialize` and `plan` for the same events.
 
@@ -118,7 +118,6 @@ Identity and provenance fields are retained; later phases may create keys,
 indexes, or sorted derivatives. Staging tables are removed after success or
 failure and are never included in artifact bundles. Published outputs are
 `manifests/filing_extraction/company_profiles/final/company_profiles.parquet`,
-`manifests/filing_extraction/filing_occurrence_sources/final/filing_occurrence_sources.parquet`,
 and `manifests/filing_extraction/filing_targets/final/form=<key>/data.parquet`.
 
 Fixture-scope plans can be expanded without rerunning Phase 01 or fetching SEC
@@ -158,11 +157,11 @@ Finalized Phase 01 Artifact (submission_metadata.parquet)
                      │
          ┌───────────┴───────────┐
          ▼                       ▼                       ▼
- ┌───────────────┐       ┌───────────────┐       ┌───────────────┐
- │company_profile│       │filing_targets │       │occurrence_srcs│
- └───────┬───────┘       └───────┬───────┘       └───────────────┘
-         │                       │
-         └───────────┬───────────┘
+┌───────────────┐       ┌───────────────┐
+  │company_profile│       │filing_targets │
+  └───────┬───────┘       └───────┬───────┘
+          │                       │
+          └───────────┬───────────┘
                      ▼
        ┌───────────────────────────┐
        │         2. Plan           │
@@ -177,12 +176,11 @@ Finalized Phase 01 Artifact (submission_metadata.parquet)
 1. **Materialization (`materialize`)**:
    - **Zero-Network Invariant**: Reads only the finalized `submission_metadata.parquet` artifact from Phase 01. Never touches transient chunks or makes network requests.
    - **Streaming DuckDB Staging**: Loads CIK rows in configurable memory-bounded batches (default 1,000) into disk-backed DuckDB staging tables.
-   - **Unnesting & Provenance**: Expands nested `filings` arrays (`recent` and `historical`) into flat filing occurrences. Retains complete multi-registrant fan-out (when the same accession is filed by multiple CIKs) in `filing_occurrence_sources.parquet`.
+   - **Unnesting & Provenance**: Expands nested `filings` arrays (`recent` and `historical`) into flat filing occurrences. Retains complete multi-registrant fan-out (when the same accession is filed by multiple CIKs) in flat `filing_targets` shards.
    - **Company Family Normalization**: Cleans entity names by stripping state jurisdiction codes (`JURISDICTION_RE`), trademark annotations (`TRADEMARK_RE`), punctuation, and legal suffixes (`family_vocab.py`). Groups related corporate entities into deterministic `company_family` clusters using a two-pass authority index.
-   - **Artifact Publication**: Atomically publishes three immutable Parquet datasets:
-     - `company_profiles`: Registrant metadata, SIC classifications, and normalized `company_family`.
-     - `filing_occurrence_sources`: Full provenance mapping of `(source_cik, accession, document_path)`.
-     - `filing_targets`: Hive-partitioned by form (`form=10-K/`, `form=10-Q/`, etc.) containing canonical document paths and filing dates.
+- **Artifact Publication**: Atomically publishes two immutable Parquet datasets:
+      - `company_profiles`: Registrant metadata, SIC classifications, and normalized `company_family`.
+      - `filing_targets`: Flat Parquet shards (`parts/part-00000.parquet`, etc.) containing canonical document paths and filing dates.
 
 2. **Target Planning & Selection (`plan`)**:
    - Evaluates form filters (`target_forms`), era boundaries, and amendment policies (`both`/`original`/`amendments`).
@@ -247,7 +245,7 @@ When expanding the underlying structural sample itself from 500 to 1,000 CIKs:
      ```
 
 5. **Verify Invariants and Unit Test Assertions**:
-   - Verify schema read-back across `company_profiles`, `filing_targets`, and `filing_occurrence_sources`.
+   - Verify schema read-back across `company_profiles`, `filing_targets`.
    - Ensure `company_family` deduplication correctly prevents multi-subsidiary duplicate selection in `test_selection.py` and `test_target_plan.py`.
    - Validate that all tests pass:
      ```bash

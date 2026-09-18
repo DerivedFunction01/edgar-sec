@@ -8,6 +8,7 @@ import json
 import logging
 import os
 import time
+from collections.abc import Callable
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from dataclasses import replace
 from datetime import UTC, datetime
@@ -41,6 +42,15 @@ from .schemas import SCHEMA_VERSION, TERMINAL_STATUSES
 from .storage import make_checkpoint_store, make_phase_store
 
 logger = logging.getLogger("metadata")
+
+
+def _emit(progress: Callable[[dict], None] | None, event: dict) -> None:
+    if progress is None:
+        return
+    try:
+        progress(event)
+    except Exception:
+        logger.exception("progress callback failed")
 
 
 def utc_now_iso() -> str:
@@ -299,6 +309,54 @@ def run_partition(options: RunOptions, partition_id: int, progress=None) -> dict
         "chunks": summaries,
         "rows": sum(summary.get("rows", 0) for summary in summaries),
         "skipped_chunks": sum(summary.get("skipped", False) for summary in summaries),
+    }
+
+
+def run_partition_with_automerge(
+    options: RunOptions, partition_id: int, progress=None
+) -> dict:
+    """Run every chunk in partition and auto-merge on full success.
+
+    After all chunks complete, if every chunk has zero failures
+    (no ``failed`` rows), invokes :func:`merge_partition`
+    automatically and emits a ``merge_stage: auto_merge_partition``
+    progress event.  If any chunk has failures, the partition is
+    left as-is for manual ``merge-partition`` after retry.
+    """
+    result = run_partition(options, partition_id, progress=progress)
+    summaries = result["chunks"]
+    has_failures = any(
+        not summary.get("skipped", False)
+        and summary.get("statuses", {}).get("failed", 0) > 0
+        for summary in summaries
+    )
+    if has_failures:
+        failed_count = sum(
+            1
+            for s in summaries
+            if not s.get("skipped", False)
+            and s.get("statuses", {}).get("failed", 0) > 0
+        )
+        logger.info(
+            "partition %d: %d chunk(s) had failures; skipping auto-merge",
+            partition_id,
+            failed_count,
+        )
+        return result
+
+    _emit(
+        progress,
+        {
+            "type": "merge_stage",
+            "stage": "auto_merge_partition",
+            "rows": result["rows"],
+        },
+    )
+    merge_report = merge_one_partition(options, partition_id, progress=progress)
+    return {
+        **result,
+        "auto_merged": True,
+        "merge_report": merge_report.to_dict(),
     }
 
 
