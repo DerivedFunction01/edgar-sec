@@ -37,30 +37,27 @@ def test_discover_catalogs_empty_root(tmp_path) -> None:
 
 
 def test_discover_catalogs_valid_and_skips_noise(tmp_path) -> None:
-    manifests = tmp_path / "manifests" / "filing_extraction"
-    final = manifests / "filing_targets" / "final"
-    final.mkdir(parents=True)
-    artifact = final / "form=10-K" / "data.parquet"
-    artifact.parent.mkdir()
-    artifact.write_bytes(b"parquet")
-    from defs.storage.artifacts import file_sha256
-
-    receipt = {
-        "manifest_schema_version": "1.0.0",
-        "artifact_id": "abc123",
-        "dataset": "filing_targets",
-        "producer_phase": "filing_extraction",
-        "run_id": "abc123",
-        "schema_version": "1",
-        "artifact_path": str(artifact.relative_to(tmp_path)),
-        "storage_format": "parquet",
-        "byte_count": artifact.stat().st_size,
-        "artifact_sha256": file_sha256(str(artifact)),
-        "row_count": 3,
-        "partition": "",
-        "provenance": {"source_artifact_sha256": "deadbeef"},
+    snap_dir = (
+        tmp_path
+        / "manifests"
+        / "filing_extraction"
+        / "filing_catalog"
+        / "snapshots"
+        / "abc123"
+    )
+    snap_dir.mkdir(parents=True)
+    manifest = {
+        "manifest_kind": "filing_catalog_snapshot",
+        "snapshot_id": "abc123",
+        "catalog_id": "abc123",
+        "source_artifact_sha256": "deadbeef",
+        "form_count": 1,
+        "target_rows": 3,
+        "form_partitions": {"10-K": 3},
     }
-    (final / "abc123.json").write_text(json.dumps(receipt), encoding="utf-8")
+    (snap_dir / "snapshot.manifest.json").write_text(
+        json.dumps(manifest), encoding="utf-8"
+    )
 
     result = discovery.discover_catalogs(str(tmp_path / "manifests"))
     assert len(result) == 1
@@ -350,14 +347,9 @@ def test_materialize_appends_multiple_cik_batches(tmp_path) -> None:
     )
 
     assert result["batch_count"] == 2
+    cat_id = result.get("snapshot_id", result.get("catalog_id"))
     target = (
-        tmp_path
-        / "manifests"
-        / "filing_extraction"
-        / "filing_targets"
-        / "final"
-        / "form=10-K"
-        / "data.parquet"
+        tmp_path / "catalogs" / cat_id / "filing_targets" / "form=10-K" / "data.parquet"
     )
     assert pq.read_table(target).num_rows == 2
 

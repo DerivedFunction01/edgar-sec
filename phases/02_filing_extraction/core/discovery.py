@@ -1,17 +1,14 @@
-"""Discovery of published Phase 02 manifests and target plans."""
+"""Discovery of published Phase 02 catalog snapshots and target plans."""
 
 from __future__ import annotations
 
-import json
-import re
 from pathlib import Path
 from typing import Any
 
-from defs.runtime.artifacts import load_manifest
 from defs.runtime.paths import resolve_paths
 from defs.storage import load_json
 
-_RE_FORM_PATH = re.compile(r"/form=([^/]+)/")
+from .paths import resolve_filing_paths
 
 
 def _safe_int(value: Any) -> int:
@@ -19,62 +16,51 @@ def _safe_int(value: Any) -> int:
 
 
 def discover_catalogs(manifests_root: str | None = None) -> list[dict]:
-    """Group validated Phase 02 final receipts by materialization ID."""
+    """Discover validated Phase 02 catalog snapshots."""
+    fp = resolve_filing_paths()
     if manifests_root is None:
-        manifests_root = str(resolve_paths("filing_extraction").project.manifests_root)
-    root = Path(manifests_root) / "filing_extraction"
-    groups: dict[str, list[dict]] = {}
-    if not root.exists():
-        return []
-    for path in sorted(root.glob("*/final/*.json")):
-        if "target_plans" in path.parts:
-            continue
-        try:
-            manifest = load_manifest(path)
-            art_path = Path(manifest["artifact_path"])
-            if not art_path.is_absolute():
-                art_path = Path(manifests_root).parent / art_path
-            if not art_path.is_file():
-                # Also check relative to manifests_root or next to manifest
-                alt_cand = path.parent / Path(manifest["artifact_path"]).name
-                if alt_cand.is_file():
-                    art_path = alt_cand
-                else:
-                    continue
-        except (OSError, ValueError, json.JSONDecodeError):
-            continue
-        catalog_id = str(manifest.get("run_id") or "")
-        if not catalog_id:
-            continue
-        groups.setdefault(catalog_id, []).append(manifest)
+        snap_root = fp.catalog_snapshots_dir
+        if not snap_root.exists():
+            return []
+        snap_manifest_files = sorted(snap_root.glob("*/snapshot.manifest.json"))
+    else:
+        m_path = Path(manifests_root).resolve()
+        if not m_path.exists():
+            return []
+        snap_manifest_files = sorted(m_path.rglob("snapshot.manifest.json"))
 
-    summaries = []
-    for catalog_id, manifests in sorted(groups.items()):
-        targets = [m for m in manifests if m.get("dataset") == "filing_targets"]
-        forms = sorted(
-            {
-                match.group(1)
-                for item in targets
-                if (match := _RE_FORM_PATH.search(item["artifact_path"]))
-            }
-        )
-        summaries.append(
-            {
-                "catalog_id": catalog_id,
-                "path": str(root),
-                "source_artifact_sha256": next(
-                    (
-                        m.get("provenance", {}).get("source_artifact_sha256")
-                        for m in manifests
-                    ),
-                    None,
-                ),
-                "form_count": len(forms),
-                "forms": forms,
-                "target_rows": sum(_safe_int(m.get("row_count")) for m in targets),
-                "artifact_ids": [m["artifact_id"] for m in manifests],
-            }
-        )
+    summaries: list[dict] = []
+    seen_catalogs: set[str] = set()
+
+    for snap_manifest in snap_manifest_files:
+        try:
+            data = load_json(snap_manifest)
+            if not isinstance(data, dict):
+                continue
+            cat_id = str(
+                data.get("snapshot_id")
+                or data.get("catalog_id")
+                or snap_manifest.parent.name
+            )
+            if cat_id in seen_catalogs:
+                continue
+            seen_catalogs.add(cat_id)
+            forms = sorted(data.get("form_partitions", {}).keys())
+            summaries.append(
+                {
+                    "catalog_id": cat_id,
+                    "snapshot_id": cat_id,
+                    "path": str(snap_manifest.parent),
+                    "source_artifact_sha256": data.get("source_artifact_sha256"),
+                    "form_count": data.get("form_count", len(forms)),
+                    "forms": forms,
+                    "target_rows": _safe_int(data.get("target_rows")),
+                    "artifact_ids": [cat_id],
+                }
+            )
+        except (OSError, ValueError):
+            continue
+
     return summaries
 
 

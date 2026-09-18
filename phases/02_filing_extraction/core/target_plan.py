@@ -28,6 +28,7 @@ from defs.storage import (
 
 from . import config as phase_config
 from .document_filters import normalize_suffixes, suffix_sql
+from .paths import resolve_filing_paths
 from .plan_expansion import (
     expand,
     expansion_metadata,
@@ -73,14 +74,12 @@ def plan(
     target_units: int | None = None,
     document_suffixes: tuple[str, ...] | None = None,
 ) -> dict[str, Any]:
-    """Execute deterministic target planning (full or fixture scope)."""
-    if forms is None:
-        forms = phase_config.load().target_forms
-    if amendment is None:
-        amendment = phase_config.load().amendment
-    if document_suffixes is None:
-        document_suffixes = phase_config.load().document_suffixes
-    document_suffixes = normalize_suffixes(document_suffixes)
+    cfg = phase_config.load()
+    forms = forms if forms is not None else cfg.target_forms
+    amendment = amendment if amendment is not None else cfg.amendment
+    document_suffixes = normalize_suffixes(
+        document_suffixes if document_suffixes is not None else cfg.document_suffixes
+    )
     if scope not in {"full", "fixture"}:
         raise ValueError(f"scope must be 'full' or 'fixture', got {scope!r}")
     if amendment not in {"both", "original", "amendments"}:
@@ -101,9 +100,6 @@ def plan(
     target_manifests = [
         m for m in catalog_manifests if m.get("dataset") == "filing_targets"
     ]
-    profile_manifest = next(
-        (m for m in catalog_manifests if m.get("dataset") == "company_profiles"), None
-    )
 
     resources = derive_resources()
 
@@ -144,25 +140,15 @@ def plan(
                 "forms": len(policy.forms),
             },
         )
-        target_base_dir = resolved_paths.project.dataset_manifests(
-            "filing_extraction", "filing_targets"
-        )
-        if not target_base_dir.exists() and target_manifests:
-            art_path = Path(target_manifests[0]["artifact_path"])
-            if not art_path.is_absolute():
-                art_path = artifacts_root / art_path
-            target_base_dir = art_path.parent.parent
+        art_path = Path(target_manifests[0]["artifact_path"])
+        if not art_path.is_absolute():
+            art_path = artifacts_root / art_path
+        target_base_dir = art_path.parent.parent
 
-        profile_dir = resolved_paths.project.dataset_manifests(
-            "filing_extraction", "company_profiles"
-        )
-        profile_art_path = profile_dir / "company_profiles.parquet"
-        if not profile_art_path.exists() and profile_manifest:
-            art_path = Path(profile_manifest["artifact_path"])
-            if not art_path.is_absolute():
-                art_path = artifacts_root / art_path
-            if art_path.exists():
-                profile_art_path = art_path
+        profile_art_path = target_base_dir.parent / "company_profiles.parquet"
+        if not profile_art_path.exists():
+            fp = resolve_filing_paths()
+            profile_art_path = fp.company_profiles_path(catalog_id)
 
         snapshot_builder = FeatureSnapshotBuilder(
             target_root=target_base_dir,
@@ -476,10 +462,11 @@ def plan(
                     loc_dest,
                 )
 
+        total_rows = sum(counts.values())
         selection_report = {
             "scope": "full",
             "catalog_id": catalog_id,
-            "active_targets_count": sum(counts.values()),
+            "active_targets_count": total_rows,
             "unique_locators_count": int(unique_locators),
             "counts": counts,
         }
@@ -495,8 +482,8 @@ def plan(
             "amendment": amendment,
             "limit": limit,
             "counts": counts,
-            "selected_rows": sum(counts.values()),
-            "active_targets_count": sum(counts.values()),
+            "selected_rows": total_rows,
+            "active_targets_count": total_rows,
             "unique_locators_count": int(unique_locators),
             "source_artifact_ids": source_artifact_ids,
             "document_suffixes": list(document_suffixes),
@@ -504,11 +491,7 @@ def plan(
         atomic_write_json(destination / "plan.json", plan_meta)
         _emit(
             progress,
-            {
-                "type": "merge_stage",
-                "stage": "publish_plan",
-                "rows": sum(counts.values()),
-            },
+            {"type": "merge_stage", "stage": "publish_plan", "rows": total_rows},
         )
         return plan_meta
 

@@ -5,6 +5,7 @@ from __future__ import annotations
 import builtins
 import json
 import logging
+import shutil
 import sys
 from contextlib import suppress
 from pathlib import Path
@@ -21,6 +22,7 @@ from .cli import main as cli_main
 from .core import config as phase_config
 from .core import discovery
 from .core.materialize import materialize
+from .core.paths import resolve_filing_paths
 from .core.target_plan import expand, plan
 
 log = logging.getLogger("filing_extraction.run")
@@ -58,48 +60,48 @@ def _default_source() -> tuple[str, str]:
 
 
 def _get_context_summary() -> dict:
-    paths = resolve_paths("filing_extraction")
+    paths = resolve_filing_paths()
     ctx: dict = {
-        "snapshot_id": None,
-        "ciks": 0,
-        "filings": 0,
-        "parts": 0,
-        "catalog_id": None,
+        "p1_snapshot_id": None,
+        "p1_ciks": 0,
+        "p1_filings": 0,
+        "p1_parts": 0,
+        "catalog_snapshot_id": None,
         "catalog_forms": 0,
         "catalog_targets": 0,
-        "catalog_manifest": None,
     }
-    pointer = get_current_snapshot_pointer(
-        paths.project.artifacts_root, phase="metadata", dataset="submission_metadata"
+    p1 = get_current_snapshot_pointer(
+        paths.artifacts_root, phase="metadata", dataset="submission_metadata"
     )
-    if pointer and "manifest_path" in pointer:
-        snap_path = paths.project.artifacts_root / pointer["manifest_path"]
-        if snap_path.is_file():
-            ctx["snapshot_id"] = pointer.get("snapshot_id", "current")
+    if p1 and "manifest_path" in p1:
+        sp = paths.artifacts_root / p1["manifest_path"]
+        if sp.is_file():
+            ctx["p1_snapshot_id"] = p1.get("snapshot_id", "current")
             with suppress(Exception):
-                snap_m = load_json(snap_path)
-                ctx["ciks"] = snap_m.get("row_count", 0)
-                ctx["filings"] = snap_m.get("filing_record_count", 0)
-                ctx["parts"] = len(snap_m.get("parts", []))
+                sm = load_json(sp)
+                ctx["p1_ciks"] = sm.get("row_count", 0)
+                ctx["p1_filings"] = sm.get("filing_record_count", 0)
+                ctx["p1_parts"] = len(sm.get("parts", []))
 
-    catalogs = discovery.discover_catalogs(str(paths.project.manifests_root))
-    if catalogs:
-        latest = catalogs[-1]
-        ctx.update(
-            catalog_id=latest["catalog_id"],
-            catalog_forms=latest.get("form_count", 0),
-            catalog_targets=latest.get("target_rows", 0),
-        )
-        art_ids = latest.get("artifact_ids", [])
-        if art_ids:
-            mf = (
-                paths.project.manifests_root
-                / "filing_extraction"
-                / latest["catalog_id"]
-                / "final"
-                / f"{art_ids[0]}.json"
-            )
-            ctx["catalog_manifest"] = str(mf) if mf.is_file() else None
+    p2 = get_current_snapshot_pointer(
+        paths.artifacts_root, phase="filing_extraction", dataset="filing_catalog"
+    )
+    if p2 and "manifest_path" in p2:
+        cp = paths.artifacts_root / p2["manifest_path"]
+        if cp.is_file():
+            ctx["catalog_snapshot_id"] = p2.get("snapshot_id", "current")
+            with suppress(Exception):
+                cm = load_json(cp)
+                ctx["catalog_targets"] = cm.get("target_rows", 0)
+                ctx["catalog_forms"] = cm.get("form_count", 0)
+
+    if not ctx["catalog_snapshot_id"]:
+        catalogs = discovery.discover_catalogs(str(paths.project.manifests_root))
+        if catalogs:
+            latest = catalogs[-1]
+            ctx["catalog_snapshot_id"] = latest["catalog_id"]
+            ctx["catalog_forms"] = latest.get("form_count", 0)
+            ctx["catalog_targets"] = latest.get("target_rows", 0)
     return ctx
 
 
@@ -108,24 +110,20 @@ def _print_context_header() -> None:
     print("=" * 70)
     print("Phase 02: Filing Catalog (No-Network Materialize & Target Planner)")
     print("-" * 70)
-    if ctx["snapshot_id"]:
+    if ctx["p1_snapshot_id"]:
         print(
-            f"Active Upstream:  Snapshot {ctx['snapshot_id']} "
-            f"({ctx['ciks']:,} CIKs, {ctx['filings']:,} filing records, {ctx['parts']} parts)"
+            f"Active Upstream:  Snapshot {ctx['p1_snapshot_id']} "
+            f"({ctx['p1_ciks']:,} CIKs, {ctx['p1_filings']:,} filing records, {ctx['p1_parts']} parts)"
         )
     else:
         print("Active Upstream:  (no active Phase 01 snapshot detected)")
-    if ctx["catalog_id"]:
+    if ctx["catalog_snapshot_id"]:
         print(
-            f"Existing Catalog: {ctx['catalog_id']} "
-            f"({ctx['catalog_forms']} forms, {ctx['catalog_targets']:,} targets)"
+            f"Catalog Snapshot: Snapshot {ctx['catalog_snapshot_id']} "
+            f"({ctx['catalog_targets']:,} filing targets across {ctx['catalog_forms']} forms)"
         )
-        if ctx["snapshot_id"] and ctx["parts"] > 1:
-            print(
-                "Recommended Mode: Incremental Augmentation (Fast O(N_delta) delta pass)"
-            )
     else:
-        print("Existing Catalog: (none - seed materialization required)")
+        print("Catalog Snapshot: (no active catalog snapshot; choose 1 to materialize)")
     print("=" * 70)
 
 
@@ -201,7 +199,6 @@ class _StageBar:
 
 
 def _menu_materialize() -> None:
-    ctx = _get_context_summary()
     source_kind, source_default = _default_source()
     res = derive_resources()
     kwargs: dict = {
@@ -211,16 +208,6 @@ def _menu_materialize() -> None:
         "memory_limit": res.memory_limit,
         "temp_directory": res.temp_directory,
     }
-    if ctx["catalog_id"] and ctx["snapshot_id"] and ctx["catalog_manifest"]:
-        print(
-            f"\nDetected active snapshot {ctx['snapshot_id']} and catalog {ctx['catalog_id']}."
-        )
-        if _prompt(
-            "Materialize mode [1. Incremental Augmentation (fast delta pass), 2. Full Seed] [1]: ",
-            "1",
-        ) in ("1", "aug", "augmentation"):
-            kwargs["base_catalog_manifest"] = ctx["catalog_manifest"]
-
     p_msg = (
         f"Source artifact or manifest [{source_default}]: "
         if source_default
@@ -235,11 +222,10 @@ def _menu_materialize() -> None:
     else:
         kwargs["source_artifact"] = source
 
+    print(f"  Output: {kwargs['output_root']}")
+    print(f"  Batch size: {kwargs['source_batch_size']} rows")
     print(
-        f"  Output: {kwargs['output_root']}\n  Batch size: {kwargs['source_batch_size']} rows"
-    )
-    print(
-        f"  DuckDB resources: {res.threads} threads, {res.memory_limit}, spill={res.temp_directory}"
+        f"  DuckDB: {res.threads} threads, {res.memory_limit}, spill={res.temp_directory}"
     )
 
     bar = _StageBar("materialize")
@@ -284,9 +270,7 @@ def _menu_plan() -> None:
         if not pol_path.is_file():
             _auto_generate_policy(catalog, pol_path)
             print(
-                f"\n  Created default selection policy template at:\n"
-                f"    {pol_path}\n"
-                f"  Configure target forms, era bands, floors, or weights in this file before running target planning.\n"
+                f"\n  Created default selection policy template at:\n    {pol_path}\n"
             )
             return
         pol_in = _prompt(f"Selection policy JSON [{pol_path}]: ", str(pol_path))
@@ -313,16 +297,9 @@ def _menu_plan() -> None:
         return
 
     settings = phase_config.load()
-    default_forms = settings.target_forms
-    default_amendment = settings.amendment
-    if default_forms:
-        forms_default = ", ".join(default_forms)
-        forms_raw = _prompt(
-            f"Forms filter (comma-separated, Enter for {forms_default}): ",
-            forms_default,
-        )
-    else:
-        forms_raw = _prompt("Forms filter (comma-separated, Enter for all): ", "")
+    default_forms, default_amendment = settings.target_forms, settings.amendment
+    forms_default = ", ".join(default_forms) if default_forms else ""
+    forms_raw = _prompt(f"Forms filter [{forms_default}]: ", forms_default)
     forms = (
         tuple(f.strip() for f in forms_raw.split(",") if f.strip())
         if forms_raw
@@ -407,28 +384,11 @@ def _menu_expand() -> None:
     try:
         target_units = int(raw_units)
     except ValueError:
-        print(f"  invalid integer: {raw_units!r}")
+        print("  target units must be an integer")
         return
-    default_pol = str(
-        resolve_paths("filing_extraction").phase_root / "selection_policy.json"
-    )
-    pol_path = _prompt(f"Selection policy JSON [{default_pol}]: ", default_pol)
-    if not Path(pol_path).is_file():
-        print(f"  selection policy file not found: {pol_path}")
-        return
-    seed_cik = _prompt("Seed CIK file (blank for none): ", "")
-    runs_root = str(resolve_paths("filing_extraction").runs_root)
-    out_root = _prompt(f"Output root [{runs_root}]: ", runs_root)
-    bar = _StageBar("expand plan")
+    bar = _StageBar("expand target plan")
     try:
-        result = expand(
-            parent_plan=parent_plan,
-            target_units=target_units,
-            selection_policy_path=pol_path,
-            seed_cik_path=seed_cik or None,
-            output_root=out_root or None,
-            progress=bar,
-        )
+        result = expand(parent_plan, target_units, progress=bar)
     except KeyboardInterrupt:
         print("\n  interrupted; no child plan was published")
         return
@@ -440,6 +400,42 @@ def _menu_expand() -> None:
     print(json.dumps(result, indent=2, sort_keys=True))
 
 
+def _menu_prune() -> None:
+    fp = resolve_filing_paths()
+    print("\n" + "=" * 70)
+    print("Pruning Scratch & Non-Snapshot Directories")
+    print("-" * 70)
+    pruned_count = 0
+    transient_dir = fp.transient_root
+    if transient_dir.exists():
+        for item in transient_dir.iterdir():
+            shutil.rmtree(item, ignore_errors=True)
+            pruned_count += 1
+            print(f"  Removed transient directory: {item.name}")
+
+    meta_sub = fp.meta_submission_metadata_dir
+    if meta_sub.exists():
+        for sub_dir in meta_sub.iterdir():
+            if sub_dir.is_dir() and sub_dir.name != "snapshots":
+                shutil.rmtree(sub_dir, ignore_errors=True)
+                pruned_count += 1
+                print(f"  Removed obsolete directory: {sub_dir.name}")
+
+    fe_root = fp.manifests_filing_extraction_dir
+    if fe_root.exists():
+        for sub_dir in fe_root.iterdir():
+            if sub_dir.is_dir() and sub_dir.name not in (
+                "filing_catalog",
+                "target_plans",
+            ):
+                shutil.rmtree(sub_dir, ignore_errors=True)
+                pruned_count += 1
+                print(f"  Removed obsolete catalog directory: {sub_dir.name}")
+
+    print(f"Pruning complete. {pruned_count} directories cleaned.")
+    print("=" * 70 + "\n")
+
+
 def interactive_menu() -> int:
     while True:
         print()
@@ -448,6 +444,7 @@ def interactive_menu() -> int:
         print("  2. Plan filing targets")
         print("  3. Expand plan (child plan with additional locators)")
         print("  4. Show status")
+        print("  5. Prune transient & scratch files")
         print("  0. Exit")
         choice = _prompt("\nChoice [0]: ", "0")
         if choice == "0":
@@ -460,6 +457,8 @@ def interactive_menu() -> int:
             _menu_expand()
         elif choice == "4":
             _menu_status()
+        elif choice == "5":
+            _menu_prune()
         else:
             print("  unknown choice")
 

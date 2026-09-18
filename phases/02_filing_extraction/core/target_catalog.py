@@ -2,48 +2,94 @@
 
 from __future__ import annotations
 
-import json
 from pathlib import Path
 
-from defs.runtime.artifacts import load_manifest
-from defs.storage import StorageError
+from defs.runtime.artifacts import get_current_snapshot_pointer
+from defs.storage import StorageError, load_json
+
+from .paths import resolve_filing_paths
 
 
 def resolve_catalog_manifests(
     catalog: str, artifacts_root: Path, manifests_root: Path
 ) -> tuple[str, list[dict]]:
-    catalog_path = Path(catalog) if catalog else None
-    if catalog_path and catalog_path.is_file():
-        candidate_paths = [catalog_path]
-    elif catalog_path and catalog_path.is_dir():
-        candidate_paths = sorted(catalog_path.glob("*.json"))
+    """Resolve catalog target manifests from snapshots."""
+    fp = resolve_filing_paths()
+    snap_root = fp.catalog_snapshots_dir
+    snap_manifest_file = None
+
+    if not catalog:
+        pointer = get_current_snapshot_pointer(
+            artifacts_root, phase="filing_extraction", dataset="filing_catalog"
+        )
+        if pointer and "manifest_path" in pointer:
+            cand = artifacts_root / pointer["manifest_path"]
+            if cand.is_file():
+                snap_manifest_file = cand
+    elif (snap_root / catalog / "snapshot.manifest.json").is_file():
+        snap_manifest_file = snap_root / catalog / "snapshot.manifest.json"
+    elif catalog.endswith("snapshot.manifest.json") and Path(catalog).is_file():
+        snap_manifest_file = Path(catalog)
+    elif (
+        Path(catalog).is_dir() and (Path(catalog) / "snapshot.manifest.json").is_file()
+    ):
+        snap_manifest_file = Path(catalog) / "snapshot.manifest.json"
+    elif (artifacts_root / catalog / "snapshot.manifest.json").is_file():
+        snap_manifest_file = artifacts_root / catalog / "snapshot.manifest.json"
     else:
-        candidate_paths = sorted((manifests_root / "filing_extraction").rglob("*.json"))
-    distinct_manifests = {}
-    for path in candidate_paths:
-        try:
-            item = load_manifest(path)
-        except (OSError, ValueError, json.JSONDecodeError):
-            continue
-        art_id = item.get("artifact_id")
-        if not art_id or art_id in distinct_manifests:
-            continue
-        if (
-            not catalog
-            or (catalog_path and catalog_path.exists())
-            or str(catalog)
-            in {
-                str(item.get("run_id")),
-                str(item.get("provenance", {}).get("catalog_id")),
-            }
-        ):
-            distinct_manifests[art_id] = item
-    manifests = list(distinct_manifests.values())
-    target_manifests = [m for m in manifests if m.get("dataset") == "filing_targets"]
-    if not target_manifests:
-        raise StorageError("no published filing_targets manifests found for catalog")
-    catalog_id = str(target_manifests[0].get("run_id") or "")
-    return catalog_id, [m for m in manifests if str(m.get("run_id")) == catalog_id]
+        pointer = get_current_snapshot_pointer(
+            artifacts_root, phase="filing_extraction", dataset="filing_catalog"
+        )
+        if pointer and "manifest_path" in pointer:
+            cand = artifacts_root / pointer["manifest_path"]
+            if cand.is_file():
+                data = load_json(cand, default={})
+                if str(data.get("snapshot_id")) == str(catalog) or str(
+                    data.get("catalog_id")
+                ) == str(catalog):
+                    snap_manifest_file = cand
+        if not snap_manifest_file and catalog:
+            for snap_cand in artifacts_root.rglob("snapshot.manifest.json"):
+                if snap_cand.parent.name == catalog:
+                    snap_manifest_file = snap_cand
+                    break
+
+    if not snap_manifest_file or not snap_manifest_file.is_file():
+        raise StorageError(
+            f"no published filing_catalog snapshot found for catalog {catalog or '(current)'}"
+        )
+
+    data = load_json(snap_manifest_file)
+    cat_id = str(
+        data.get("snapshot_id")
+        or data.get("catalog_id")
+        or snap_manifest_file.parent.name
+    )
+    manifests = []
+    target_dir = snap_manifest_file.parent / "filing_targets"
+    for form_dir in sorted(target_dir.glob("form=*")):
+        form_key = form_dir.name.split("=", 1)[1]
+        data_file = form_dir / "data.parquet"
+        if data_file.is_file():
+            row_cnt = data.get("form_partitions", {}).get(form_key, 0)
+            manifests.append(
+                {
+                    "artifact_id": f"{cat_id}_{form_key}",
+                    "run_id": cat_id,
+                    "dataset": "filing_targets",
+                    "artifact_path": str(data_file),
+                    "row_count": row_cnt,
+                    "provenance": {
+                        "catalog_id": cat_id,
+                        "form_partition_key": form_key,
+                    },
+                }
+            )
+
+    if not manifests:
+        raise StorageError(f"no filing targets found in catalog snapshot {cat_id}")
+
+    return cat_id, manifests
 
 
 __all__ = ["resolve_catalog_manifests"]

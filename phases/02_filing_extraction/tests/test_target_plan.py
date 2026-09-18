@@ -7,7 +7,6 @@ from pathlib import Path
 
 import pytest
 
-from defs.runtime.artifacts import make_manifest, publish_manifest
 from defs.storage import pa, write_table_atomic
 
 target_plan = importlib.import_module("phases.02_filing_extraction.core.target_plan")
@@ -31,10 +30,12 @@ def catalog_fixture(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> Path:
     manifests_root = tmp_path / "manifests"
     manifests_root.mkdir(parents=True)
 
-    # 1. Target Parquet
-    target_dir = (
-        manifests_root / "filing_extraction" / "filing_targets" / "final" / "form=10-K"
+    # 1. Target Snapshot Directory
+    snap_dir = (
+        manifests_root / "filing_extraction" / "filing_catalog" / "snapshots" / "cat123"
     )
+    snap_dir.mkdir(parents=True)
+    target_dir = snap_dir / "filing_targets" / "form=10-K"
     target_dir.mkdir(parents=True)
     target_file = target_dir / "data.parquet"
 
@@ -57,53 +58,92 @@ def catalog_fixture(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> Path:
     }
     write_table_atomic(pa.Table.from_pydict(data), target_file)
 
-    target_manifest = make_manifest(
-        dataset="filing_targets",
-        phase="filing_extraction",
-        run_id="cat123",
-        schema_version="1.0",
-        artifact_path=str(target_file),
-        artifacts_root=str(tmp_path),
-        row_count=3,
-        partition="",
-    )
-    publish_manifest(target_manifest, artifacts_root=str(tmp_path))
-
     # 2. Profile Parquet
-    profile_dir = manifests_root / "filing_extraction" / "company_profiles" / "final"
-    profile_dir.mkdir(parents=True)
-    profile_file = profile_dir / "company_profiles.parquet"
+    profile_file = snap_dir / "company_profiles.parquet"
 
     prof_data = {
         "cik": ["0000000001", "0000000002", "0000000003"],
-        "sic": ["1000", "2000", "3000"],
-        "sic_description": ["Mining", "Manufacturing", "Tech"],
-        "owner_org_cik": ["0000000001", None, None],
-        "owner_org_name": ["Parent Co", None, None],
-        "entity_type": ["operating", "operating", "operating"],
-        "filer_category": [
-            "Large Accelerated Filer",
-            "Accelerated Filer",
-            "Non-accelerated Filer",
+        "identity": [
+            {"name": "Co One", "former_names": []},
+            {"name": "Co Two", "former_names": []},
+            {"name": "Co Three", "former_names": []},
         ],
-        "state_of_incorporation": ["DE", "NY", "CA"],
-        "state_of_business": ["CA", "TX", "WA"],
-        "foreign_country_code": [None, None, "CA"],
-        "company_name": ["Co One", "Co Two", "Co Three"],
+        "classification": [
+            {
+                "entity_type": "operating",
+                "sic_code": "1000",
+                "sic_description": "Mining",
+                "owner_org": None,
+                "filer_category": "Large Accelerated Filer",
+            },
+            {
+                "entity_type": "operating",
+                "sic_code": "2000",
+                "sic_description": "Manufacturing",
+                "owner_org": None,
+                "filer_category": "Accelerated Filer",
+            },
+            {
+                "entity_type": "operating",
+                "sic_code": "3000",
+                "sic_description": "Tech",
+                "owner_org": None,
+                "filer_category": "Non-accelerated Filer",
+            },
+        ],
+        "identifiers": [
+            {"ein": None, "lei": None},
+            {"ein": None, "lei": None},
+            {"ein": None, "lei": None},
+        ],
+        "contact": [
+            {
+                "phone": None,
+                "website": None,
+                "investor_website": None,
+                "description": None,
+            }
+        ]
+        * 3,
+        "incorporation": [
+            {"state": "DE", "state_description": None},
+            {"state": "NY", "state_description": None},
+            {"state": "CA", "state_description": None},
+        ],
+        "reporting": [{"fiscal_year_end": "1231"}] * 3,
+        "insider_transactions": [{"owner_exists": False, "issuer_exists": False}] * 3,
+        "addresses": [{"mailing": None, "business": None}] * 3,
+        "listings": [[]] * 3,
+        "input_name": ["Co One", "Co Two", "Co Three"],
+        "status": ["ok", "ok", "ok"],
+        "error": [None, None, None],
+        "anomalies": [[]] * 3,
+        "extra_fields": [None, None, None],
+        "snapshot_id": ["S0", "S0", "S0"],
+        "fetched_at": ["2024-01-01T00:00:00Z"] * 3,
+        "source_url": ["http://sec.gov"] * 3,
+        "response_sha256": ["sha"] * 3,
+        "byte_count": [1000] * 3,
+        "input_fingerprint": ["fp"] * 3,
+        "schema_version": ["1.0.0"] * 3,
+        "profile_schema_version": ["1.0.0"] * 3,
     }
     write_table_atomic(pa.Table.from_pydict(prof_data), profile_file)
 
-    profile_manifest = make_manifest(
-        dataset="company_profiles",
-        phase="filing_extraction",
-        run_id="cat123",
-        schema_version="1.0",
-        artifact_path=str(profile_file),
-        artifacts_root=str(tmp_path),
-        row_count=3,
-        partition="",
+    import json
+
+    manifest = {
+        "manifest_kind": "filing_catalog_snapshot",
+        "snapshot_id": "cat123",
+        "catalog_id": "cat123",
+        "target_rows": 3,
+        "form_count": 1,
+        "form_partitions": {"10-K": 3},
+        "company_profiles_rows": 3,
+    }
+    (snap_dir / "snapshot.manifest.json").write_text(
+        json.dumps(manifest), encoding="utf-8"
     )
-    publish_manifest(profile_manifest, artifacts_root=str(tmp_path))
 
     return tmp_path
 
