@@ -106,6 +106,24 @@ class MetadataPhasePaths:
             "metadata", "submission_metadata"
         )
 
+    def run_paths(self, run_id: str):
+        return self.phase_paths.run(_safe(run_id))
+
+    def augmentation_partition_dataset_path(
+        self,
+        run_id: str,
+        partition_id: int | str,
+        storage_format: str = "parquet",
+    ) -> Path:
+        return self.project.published_augmentation_partition_dataset_path(
+            "metadata",
+            "submission_metadata",
+            _safe(run_id),
+            partition_id,
+            storage_format,
+        )
+
+
 
 def resolve_metadata_paths(
     run_id: str | None = None,

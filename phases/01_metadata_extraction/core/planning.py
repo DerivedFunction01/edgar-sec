@@ -17,6 +17,7 @@ from .augmentation import (
 from .chunks import assign_chunks, assign_partitions, plan_hash, verify_chunk_assignment
 from .config import RunOptions
 from .input_manifest import input_fingerprint, read_input_manifest
+from .paths import resolve_metadata_paths
 from .registry import compare_sources
 from .schemas import SCHEMA_VERSION
 from .source_registry import load_source_snapshot
@@ -33,10 +34,34 @@ def build_plan(options: RunOptions) -> dict:
     base_manifest = None
     source_manifest = None
     effective_input_fingerprint = None
+    root = artifacts_root(options.base_metadata_manifest or options.artifacts_dir)
+    metadata_paths = resolve_metadata_paths(run_id=options.run_id, env={"ARTIFACTS_ROOT": str(root)})
+
     if options.augmentation:
-        root = artifacts_root(options.base_metadata_manifest or options.artifacts_dir)
+        if not options.base_metadata_manifest:
+            from defs.runtime.artifacts import get_current_snapshot_pointer
+
+            pointer = get_current_snapshot_pointer(
+                root, phase="metadata", dataset="submission_metadata"
+            )
+            if pointer is not None:
+                options.base_metadata_manifest = str(root / pointer["manifest_path"])
+        if not options.run_id or options.run_id == "default":
+            from defs.runtime.artifacts import next_snapshot_id
+
+            options.run_id = next_snapshot_id(
+                phase="metadata", dataset="submission_metadata", artifacts_root=root
+            )
+            metadata_paths = resolve_metadata_paths(
+                run_id=options.run_id, env={"ARTIFACTS_ROOT": str(root)}
+            )
+            from .config import DEFAULT_ARTIFACTS
+
+            if options.artifacts_dir == DEFAULT_ARTIFACTS:
+                options.artifacts_dir = str(metadata_paths.run_paths(options.run_id).run_root)
         source = load_source_snapshot(options.source_manifest, artifacts_root=root)
         source_manifest = source.manifest
+
         base_manifest, _base_artifact, base_ciks_set = base_ciks(
             options.base_metadata_manifest, root
         )
@@ -70,7 +95,6 @@ def build_plan(options: RunOptions) -> dict:
     chunks = assign_chunks(ciks, options.chunk_size)
     partitions = assign_partitions(ciks, options.partition_count, options.chunk_size)
     verify_chunk_assignment(rows, chunks)
-    root = artifacts_root(options.base_metadata_manifest or options.artifacts_dir)
     plan = {
         "schema_version": SCHEMA_VERSION,
         "created_at": _utc_now_iso(),
@@ -110,40 +134,37 @@ def build_plan(options: RunOptions) -> dict:
         },
     }
     if options.augmentation:
-        partition_root = (
-            Path("manifests")
-            / "metadata"
-            / "submission_metadata"
-            / "augmentations"
-            / options.run_id
-        )
         plan["partition_artifacts"] = {
             str(partition.partition_id): (
-                partition_root
-                / f"partition-{partition.partition_id:05d}"
-                / "submission_metadata.parquet"
-            ).as_posix()
+                metadata_paths.augmentation_partition_dataset_path(
+                    options.run_id, partition.partition_id, options.storage_format
+                )
+                .relative_to(root)
+                .as_posix()
+            )
             for partition in partitions
         }
     plan["plan_hash"] = plan_hash(plan)
-    os.makedirs(options.artifacts_dir, exist_ok=True)
-    plan_path = os.path.join(options.artifacts_dir, "plan.json")
-    atomic_write_json(plan_path, plan, indent=2, sort_keys=True)
-    partitions_dir = os.path.join(options.artifacts_dir, "partitions")
+    run_dir = Path(options.artifacts_dir)
+    partitions_dir = run_dir / "partitions"
+    partitions_dir.mkdir(parents=True, exist_ok=True)
+    plan_path = run_dir / "plan.json"
+    atomic_write_json(str(plan_path), plan, indent=2, sort_keys=True)
+
     for partition in partitions:
-        partition_path = os.path.join(
-            partitions_dir, f"partition-{partition.partition_id:05d}.json"
-        )
-        atomic_write_json(partition_path, partition.to_dict(), indent=2, sort_keys=True)
+        partition_path = partitions_dir / f"partition-{partition.partition_id:05d}.json"
+        atomic_write_json(str(partition_path), partition.to_dict(), indent=2, sort_keys=True)
     logger.info(
         "plan: %d CIKs, %d chunks, %d malformed, %d duplicates -> %s",
         len(rows),
         len(chunks),
         len(report["malformed"]),
         len(report["duplicates"]),
-        plan_path,
+        str(plan_path),
     )
     return plan
 
 
 __all__ = ["build_plan"]
+
+

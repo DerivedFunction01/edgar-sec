@@ -708,6 +708,83 @@ def resolve_snapshot_manifest(
     return manifest, snapshot_manifest_file
 
 
+def list_snapshots(
+    *,
+    phase: str = "metadata",
+    dataset: str = "submission_metadata",
+    artifacts_root: str | os.PathLike[str],
+) -> list[dict]:
+    """Return all available snapshots for a dataset, sorted by snapshot_id / creation."""
+    from defs.runtime.paths import resolve_paths
+
+    root = Path(artifacts_root).resolve()
+    paths = resolve_paths(env={"ARTIFACTS_ROOT": str(root)})
+    snapshots_dir = paths.dataset_snapshots_dir(phase, dataset)
+    if not snapshots_dir.is_dir():
+        return []
+
+    snapshots: list[dict] = []
+    for entry in snapshots_dir.iterdir():
+        if not entry.is_dir():
+            continue
+        manifest_p = entry / "snapshot.manifest.json"
+        if not manifest_p.is_file():
+            manifest_p = entry / "snapshot.json"
+        if manifest_p.is_file():
+            try:
+                manifest = load_json(manifest_p)
+                snapshots.append(
+                    {
+                        "snapshot_id": manifest.get("snapshot_id", entry.name),
+                        "parent_snapshot_id": manifest.get("parent_snapshot_id"),
+                        "effective_cik_count": manifest.get(
+                            "effective_cik_count", manifest.get("row_count", 0)
+                        ),
+                        "part_count": len(manifest.get("resolved_parts", [])),
+                        "schema_version": manifest.get("schema_version", ""),
+                        "manifest_path": str(manifest_p.relative_to(root)),
+                        "dir_path": str(entry.relative_to(root)),
+                        "manifest": manifest,
+                    }
+                )
+            except Exception:
+                continue
+
+    def _sort_key(s: dict) -> tuple[int, int, str]:
+        sid = s["snapshot_id"]
+        if sid.startswith("S") and sid[1:].isdigit():
+            return (0, int(sid[1:]), sid)
+        return (1, 0, sid)
+
+    snapshots.sort(key=_sort_key)
+    return snapshots
+
+
+def next_snapshot_id(
+    *,
+    phase: str = "metadata",
+    dataset: str = "submission_metadata",
+    artifacts_root: str | os.PathLike[str],
+) -> str:
+    """Determine the next sequential snapshot ID (e.g. S0 -> S1 -> S2)."""
+    snapshots = list_snapshots(
+        phase=phase, dataset=dataset, artifacts_root=artifacts_root
+    )
+    if not snapshots:
+        return "S0"
+
+    monotonic_indices: list[int] = []
+    for s in snapshots:
+        sid = s["snapshot_id"]
+        if sid.startswith("S") and sid[1:].isdigit():
+            monotonic_indices.append(int(sid[1:]))
+
+    if monotonic_indices:
+        return f"S{max(monotonic_indices) + 1}"
+
+    return f"S{len(snapshots)}"
+
+
 __all__ = [
     "MANIFEST_DIR",
     "artifact_id",
@@ -715,10 +792,12 @@ __all__ = [
     "find_manifests",
     "get_current_snapshot_pointer",
     "import_bundle",
+    "list_snapshots",
     "load_manifest",
     "make_manifest",
     "make_snapshot_manifest",
     "manifest_relative_path",
+    "next_snapshot_id",
     "prepare_bundle_for_phase",
     "publish_manifest",
     "publish_snapshot_manifest",

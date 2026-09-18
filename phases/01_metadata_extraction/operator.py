@@ -10,6 +10,11 @@ from pathlib import Path
 from tqdm import tqdm
 from tqdm.contrib.logging import logging_redirect_tqdm
 
+from defs.runtime.artifacts import (
+    get_current_snapshot_pointer,
+    list_snapshots,
+    update_current_snapshot_pointer,
+)
 from defs.runtime.cli import coalesce
 from defs.runtime.interactive import ExtraAction, InteractivePhase, run_interactive
 from defs.runtime.progress import make_merge_progress_callback, make_tqdm_callback
@@ -291,15 +296,17 @@ def interactive_wizard(args, project_config) -> int:
             return None
         bases = discover_base_metadata_manifests(root)
         if not bases:
-            print(
-                "  no finalized metadata manifest found; complete a fresh"
-                " Phase 1 run first"
-            )
+            print("  no base metadata snapshot / manifest found")
             return None
-        print("\nFinalized metadata manifests:")
+        pointer = get_current_snapshot_pointer(
+            root, phase="metadata", dataset="submission_metadata"
+        )
+        current_id = pointer.get("snapshot_id") if pointer else None
+        print("\nFinalized metadata snapshots / manifests:")
         for index, item in enumerate(bases, start=1):
+            is_cur = " [current]" if item.get("run_id") == current_id else ""
             print(
-                f"  {index}. {item['kind']} rows={item['row_count']}"
+                f"  {index}. {item['kind']}{is_cur} rows={item['row_count']}"
                 f" run={item['run_id']}"
                 f" sha={item['artifact_sha256'][:12]}"
             )
@@ -395,12 +402,13 @@ def interactive_wizard(args, project_config) -> int:
                 .lower()
             )
             if answer in ("y", "yes"):
-                plan = build_plan(options)
+                plan = build_plan(_options())
                 print(
                     f"Plan created: {len(plan['chunks'])} chunks,"
                     f" {plan['row_count']} CIKs"
                 )
                 return plan
+
             raise SystemExit(
                 "aborted: plan identity mismatch; rerun with the matching"
                 " --augmentation/--source-manifest/--base-metadata-manifest flags"
@@ -462,6 +470,51 @@ def interactive_wizard(args, project_config) -> int:
             "source_manifest": state["source_manifest"],
         }
 
+    def _action_manage_snapshots():
+        root = _root()
+        snaps = list_snapshots(
+            phase="metadata", dataset="submission_metadata", artifacts_root=root
+        )
+        pointer = get_current_snapshot_pointer(
+            root, phase="metadata", dataset="submission_metadata"
+        )
+        current_id = pointer.get("snapshot_id") if pointer else None
+        if not snaps:
+            print("\nNo published metadata snapshots found.")
+            return "no_snapshots"
+        print("\nMetadata Snapshots:")
+        print(
+            f"{'#':<3} {'Snapshot ID':<14} {'Status':<10} {'CIKs':>8} {'Parts':>6} {'Parent':<10}"
+        )
+        print("-" * 60)
+        for idx, s in enumerate(snaps, start=1):
+            is_cur = "[current]" if s["snapshot_id"] == current_id else ""
+            parent = s.get("parent_snapshot_id") or "none"
+            print(
+                f"{idx:<3} {s['snapshot_id']:<14} {is_cur:<10} {s['effective_cik_count']:>8,d} {s['part_count']:>6d} {parent:<10}"
+            )
+        print("-" * 60)
+        choice = input(
+            "\nEnter # to switch active pointer (or Enter to keep current): "
+        ).strip()
+        if not choice:
+            return "kept_current"
+        try:
+            sel_idx = int(choice) - 1
+            selected = snaps[sel_idx]
+            update_current_snapshot_pointer(
+                selected["snapshot_id"],
+                manifest_path=selected["manifest_path"],
+                phase="metadata",
+                dataset="submission_metadata",
+                artifacts_root=root,
+            )
+            print(f"\nActive snapshot pointer updated to: {selected['snapshot_id']}")
+            return {"active_snapshot": selected["snapshot_id"]}
+        except (ValueError, IndexError):
+            print("Invalid selection.")
+            return "invalid_selection"
+
     return run_interactive(
         InteractivePhase(
             ensure_plan=lambda: ensure_plan(_options()),
@@ -493,6 +546,11 @@ def interactive_wizard(args, project_config) -> int:
                     "a",
                     "Prepare augmentation (source + base + delta plan)",
                     _action_prepare_augmentation,
+                ),
+                ExtraAction(
+                    "p",
+                    "Inspect or switch active snapshot pointer",
+                    _action_manage_snapshots,
                 ),
             ),
         )

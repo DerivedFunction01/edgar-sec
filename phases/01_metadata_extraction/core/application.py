@@ -402,7 +402,9 @@ def merge(
             options,
             delta_report,
             delta_path,
-            full_path_override=default_full_path,
+            full_path_override=Path(output_path).resolve()
+            if output_path is not None
+            else None,
         )
     if output_path is None:
         artifact_root = Path(options.artifacts_dir).resolve()

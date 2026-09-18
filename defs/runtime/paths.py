@@ -257,6 +257,37 @@ class ProjectPaths:
             / f"{dataset_safe}.{extension}"
         )
 
+    def published_augmentation_partition_dataset_path(
+        self,
+        phase: str,
+        dataset: str,
+        run_id: str,
+        partition: int | str,
+        storage_format: str,
+    ) -> Path:
+        phase_safe = _safe_id(phase, "phase")
+        dataset_safe = _safe_id(dataset, "dataset")
+        run_safe = _safe_id(run_id, "run_id")
+        partition_safe = _safe_id(
+            f"partition-{partition:05d}"
+            if isinstance(partition, int)
+            else str(partition),
+            "partition",
+        )
+        extension = {"parquet": "parquet", "jsonl": "jsonl"}.get(storage_format)
+        if extension is None:
+            raise ValueError(f"unsupported storage format: {storage_format}")
+        return (
+            self.manifests_root
+            / phase_safe
+            / dataset_safe
+            / "augmentations"
+            / run_safe
+            / partition_safe
+            / f"{dataset_safe}.{extension}"
+        )
+
+
 
 @dataclass(frozen=True)
 class PhasePaths:

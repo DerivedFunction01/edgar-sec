@@ -203,22 +203,32 @@ def discover_base_metadata_manifests(root: str | Path) -> list[dict]:
         )
     metadata_paths = resolve_metadata_paths(env={"ARTIFACTS_ROOT": str(root)})
     snapshot_dir = metadata_paths.snapshots_dir
-    for path in sorted(snapshot_dir.glob("*/snapshot.json")):
-        try:
-            snapshot = load_json(path)
-        except (OSError, ValueError):
-            continue
-        if snapshot.get("manifest_kind") != "submission_metadata_snapshot":
-            continue
-        entries.append(
-            {
-                "kind": "snapshot",
-                "manifest_path": str(path),
-                "row_count": int(snapshot.get("row_count", 0)),
-                "artifact_sha256": str(snapshot.get("full_artifact_sha256", "")),
-                "run_id": str(snapshot.get("snapshot_id", "")),
-            }
-        )
+    if snapshot_dir.is_dir():
+        for path in sorted(snapshot_dir.glob("*/snapshot*.json")):
+            try:
+                snapshot = load_json(path)
+            except (OSError, ValueError):
+                continue
+            if snapshot.get("manifest_kind") != "submission_metadata_snapshot":
+                continue
+            entries.append(
+                {
+                    "kind": "snapshot",
+                    "manifest_path": str(path),
+                    "row_count": int(
+                        snapshot.get(
+                            "effective_cik_count", snapshot.get("row_count", 0)
+                        )
+                    ),
+                    "artifact_sha256": str(
+                        snapshot.get(
+                            "effective_input_fingerprint",
+                            snapshot.get("artifact_sha256", ""),
+                        )
+                    ),
+                    "run_id": str(snapshot.get("snapshot_id", "")),
+                }
+            )
     entries.sort(key=lambda item: item["manifest_path"])
     return entries
 
@@ -235,7 +245,7 @@ def publish_snapshot(
 ) -> MergeReport:
     from .paths import resolve_metadata_paths
 
-    root, _default_delta_path, default_full_path, _snapshot_manifest_path = (
+    root, _default_delta_path, _default_full_path, _snapshot_manifest_path = (
         output_paths(options)
     )
     metadata_paths = resolve_metadata_paths(env={"ARTIFACTS_ROOT": str(root)})
@@ -270,19 +280,25 @@ def publish_snapshot(
             raise MergeError(
                 f"augmentation merge found {overlap} CIKs in both base and delta"
             )
-        full_path = (
-            full_path_override if full_path_override is not None else default_full_path
-        )
-        if full_path is not None and not Path(full_path).exists():
-            Path(full_path).parent.mkdir(parents=True, exist_ok=True)
-            base.copy_union(delta_path, full_path)
+        if full_path_override is not None and not Path(full_path_override).exists():
+            Path(full_path_override).parent.mkdir(parents=True, exist_ok=True)
+            base.copy_union(delta_path, full_path_override)
     finally:
         base.close()
         delta.close()
 
+    # Resolve snapshot ID
+    snapshot_id = options.run_id
+    if not snapshot_id or snapshot_id == "default":
+        from defs.runtime.artifacts import next_snapshot_id
+
+        snapshot_id = next_snapshot_id(
+            phase="metadata", dataset="submission_metadata", artifacts_root=root
+        )
+
     # Move/copy delta part to snapshot parts directory
     delta_part_path = (
-        metadata_paths.snapshot_parts_dir(options.run_id, "shard-0000")
+        metadata_paths.snapshot_parts_dir(snapshot_id, "shard-0000")
         / "part-000.parquet"
     )
     delta_part_path.parent.mkdir(parents=True, exist_ok=True)
@@ -322,7 +338,7 @@ def publish_snapshot(
     delta_manifest = make_manifest(
         dataset="submission_metadata",
         phase="metadata",
-        run_id=options.run_id,
+        run_id=snapshot_id,
         schema_version=SCHEMA_VERSION,
         artifact_path=str(delta_part_path),
         artifacts_root=str(root),
@@ -333,7 +349,7 @@ def publish_snapshot(
     publish_manifest(delta_manifest, artifacts_root=str(root))
 
     snapshot_manifest_data = make_snapshot_manifest(
-        snapshot_id=options.run_id,
+        snapshot_id=snapshot_id,
         parent_snapshot_id=base_manifest.get(
             "snapshot_id", base_manifest.get("artifact_id")
         ),
@@ -341,7 +357,7 @@ def publish_snapshot(
         resolved_parts=resolved_parts,
         added_parts=[delta_part_entry],
         effective_cik_count=full_count,
-        plan_id=options.run_id,
+        plan_id=snapshot_id,
         dataset="submission_metadata",
         phase="metadata",
         provenance={
@@ -356,6 +372,7 @@ def publish_snapshot(
         artifacts_root=root,
         set_current=True,
     )
+
 
     delta_report.output_path = str(manifest_path)
     delta_report.artifact_sha256 = file_sha256(str(manifest_path))

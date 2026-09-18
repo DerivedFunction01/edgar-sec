@@ -224,3 +224,38 @@ def test_finalized_dataset_errors(tmp_path):
     empty_manifest.write_text('{"manifest_kind": "test", "resolved_parts": []}')
     with pytest.raises(StorageError):
         FinalizedDataset(empty_manifest)
+
+
+def test_list_and_next_snapshot_id(tmp_path):
+    from defs.runtime.artifacts import list_snapshots, next_snapshot_id
+
+    root = tmp_path / "artifacts"
+    assert next_snapshot_id(phase="metadata", dataset="submission_metadata", artifacts_root=root) == "S0"
+    assert list_snapshots(phase="metadata", dataset="submission_metadata", artifacts_root=root) == []
+
+    # Publish S0
+    s0_manifest = make_snapshot_manifest(
+        snapshot_id="S0",
+        schema_version="1.0.0",
+        resolved_parts=[],
+        effective_cik_count=100,
+    )
+    publish_snapshot_manifest(s0_manifest, artifacts_root=root, set_current=True)
+    assert next_snapshot_id(phase="metadata", dataset="submission_metadata", artifacts_root=root) == "S1"
+
+    # Publish S1
+    s1_manifest = make_snapshot_manifest(
+        snapshot_id="S1",
+        schema_version="1.0.0",
+        resolved_parts=[],
+        parent_snapshot_id="S0",
+        effective_cik_count=150,
+    )
+    publish_snapshot_manifest(s1_manifest, artifacts_root=root, set_current=True)
+    assert next_snapshot_id(phase="metadata", dataset="submission_metadata", artifacts_root=root) == "S2"
+
+    snaps = list_snapshots(phase="metadata", dataset="submission_metadata", artifacts_root=root)
+    assert len(snaps) == 2
+    assert [s["snapshot_id"] for s in snaps] == ["S0", "S1"]
+    assert snaps[1]["parent_snapshot_id"] == "S0"
+
