@@ -68,6 +68,47 @@ def test_discover_catalogs_valid_and_skips_noise(tmp_path) -> None:
     assert summary["target_rows"] == 3
 
 
+def test_discover_catalogs_ignores_metadata_snapshot_manifests(tmp_path) -> None:
+    manifests_root = tmp_path / "manifests"
+    meta_snap = manifests_root / "metadata" / "submission_metadata" / "snapshots" / "S1"
+    meta_snap.mkdir(parents=True)
+    (meta_snap / "snapshot.manifest.json").write_text(
+        json.dumps(
+            {
+                "manifest_kind": "submission_metadata_snapshot",
+                "snapshot_id": "S1",
+                "schema_version": "1.0.0",
+                "resolved_parts": [],
+            }
+        ),
+        encoding="utf-8",
+    )
+    cat_snap = (
+        manifests_root / "filing_extraction" / "filing_catalog" / "snapshots" / "S0"
+    )
+    cat_snap.mkdir(parents=True)
+    (cat_snap / "snapshot.manifest.json").write_text(
+        json.dumps(
+            {
+                "manifest_kind": "filing_catalog_snapshot",
+                "snapshot_id": "S0",
+                "dataset": "filing_catalog",
+                "schema_version": "1.1.0",
+                "target_rows": 42,
+                "form_count": 2,
+                "form_counts": {"10-K": 30, "10-Q": 12},
+                "parts": [],
+            }
+        ),
+        encoding="utf-8",
+    )
+
+    result = discovery.discover_catalogs(str(manifests_root))
+    assert [c["catalog_id"] for c in result] == ["S0"]
+    assert result[0]["target_rows"] == 42
+    assert result[0]["form_count"] == 2
+
+
 def test_discover_plans_valid_and_skips_noise(tmp_path, monkeypatch) -> None:
     monkeypatch.setenv("ARTIFACTS_ROOT", str(tmp_path))
     runs = tmp_path / "runs"
@@ -97,6 +138,33 @@ def test_discover_plans_valid_and_skips_noise(tmp_path, monkeypatch) -> None:
     assert summary["forms"] == ["10-K"]
     assert summary["amendment"] == "both"
     assert summary["selected_rows"] == 3
+
+
+def test_discover_plans_scans_immutable_collection(tmp_path, monkeypatch) -> None:
+    monkeypatch.setenv("ARTIFACTS_ROOT", str(tmp_path))
+    plans_root = tmp_path / "manifests" / "filing_extraction" / "target_plans"
+    published = plans_root / "planABC"
+    published.mkdir(parents=True)
+    (published / "plan.json").write_text(
+        json.dumps(
+            {
+                "plan_id": "planABC",
+                "scope": "deterministic",
+                "counts": {"10-K": 2},
+            }
+        ),
+        encoding="utf-8",
+    )
+    staging = plans_root / ".staging-planABC-123"
+    staging.mkdir()
+    (staging / "plan.json").write_text(
+        json.dumps({"plan_id": "planABC"}), encoding="utf-8"
+    )
+
+    result = discovery.discover_plans(str(tmp_path / "runs"))
+    by_id = {p["plan_id"]: p for p in result}
+    assert set(by_id) == {"planABC"}
+    assert by_id["planABC"]["scope"] == "deterministic"
 
 
 def test_status_does_not_scan_parquet(tmp_path, monkeypatch) -> None:
@@ -161,9 +229,9 @@ def test_materialize_menu_uses_manifest_phase_one_default(
     run._menu_materialize()
 
     assert captured["source_artifact"] == str(source)
-    assert captured["output_root"] == str(
-        tmp_path / "transient" / "filing_extraction" / "catalogs"
-    )
+    # The durable engine default applies; the runner never redirects the
+    # snapshot into the transient catalogs scratch tree.
+    assert "output_root" not in captured
     assert callable(captured["progress"])
 
 
@@ -186,6 +254,7 @@ def test_plan_menu_uses_only_discovered_catalog_default(monkeypatch, tmp_path) -
     run._menu_plan()
 
     assert captured["catalog"] == "catalog-1"
+    assert captured["scope"] == "deterministic"
     assert captured["output_root"] == str(
         tmp_path / "transient" / "filing_extraction" / "runs"
     )
@@ -201,7 +270,7 @@ def test_menu_plan_fixture_scope_generates_template_and_stops(
     monkeypatch.setenv("ARTIFACTS_ROOT", str(tmp_path))
     catalog = {"catalog_id": "catalog-1", "target_rows": 10, "form_count": 2}
     monkeypatch.setattr(run.discovery, "discover_catalogs", lambda *_args: [catalog])
-    responses = iter(["2"])  # Scope 2 = fixture
+    responses = iter(["2", ""])  # Scope 2 = policy, then default-Y for template
     monkeypatch.setattr(builtins, "input", lambda *a, **k: next(responses))
 
     policy_created = []
@@ -223,6 +292,7 @@ def test_menu_plan_fixture_scope_generates_template_and_stops(
     assert len(plan_called) == 0  # Should NOT run plan immediately
     out = capsys.readouterr().out
     assert "Created default selection policy template at:" in out
+    assert "Edit it, then rerun" in out
 
 
 def test_menu_plan_fixture_scope_runs_with_existing_policy(
@@ -234,9 +304,12 @@ def test_menu_plan_fixture_scope_runs_with_existing_policy(
 
     pol_file = resolve_paths("filing_extraction").phase_root / "selection_policy.json"
     pol_file.parent.mkdir(parents=True, exist_ok=True)
-    pol_file.write_text("{}", encoding="utf-8")
+    pol_file.write_text(
+        json.dumps({"corpus_id": "menu_corpus", "forms": ["10-K"]}),
+        encoding="utf-8",
+    )
 
-    responses = iter(["2", ""])  # Scope 2 = fixture, default policy path
+    responses = iter(["2", ""])  # Scope 2 = policy, then default policy selection
     monkeypatch.setattr(builtins, "input", lambda *a, **k: next(responses))
 
     captured = {}
@@ -252,8 +325,89 @@ def test_menu_plan_fixture_scope_runs_with_existing_policy(
     run._menu_plan()
 
     assert captured["catalog"] == "catalog-1"
-    assert captured["scope"] == "fixture"
+    assert captured["scope"] == "policy"
     assert captured["selection_policy_path"] == str(pol_file)
+
+
+def test_menu_plan_policy_scope_toggles_between_valid_policies(
+    tmp_path: Path, monkeypatch, capsys
+) -> None:
+    monkeypatch.setenv("ARTIFACTS_ROOT", str(tmp_path))
+    catalog = {"catalog_id": "catalog-1", "target_rows": 10, "form_count": 2}
+    monkeypatch.setattr(run.discovery, "discover_catalogs", lambda *_args: [catalog])
+
+    phase_root = resolve_paths("filing_extraction").phase_root
+    phase_root.mkdir(parents=True, exist_ok=True)
+    first = phase_root / "selection_policy.json"
+    second = phase_root / "selection_policy_copy.json"
+    first.write_text(
+        json.dumps({"corpus_id": "corpus_one", "forms": ["10-K"]}),
+        encoding="utf-8",
+    )
+    second.write_text(
+        json.dumps({"corpus_id": "corpus_two", "forms": ["10-K", "10-Q"]}),
+        encoding="utf-8",
+    )
+    # Unrelated JSON in the same directory must be excluded from the picker.
+    (phase_root / "config.json").write_text(
+        json.dumps({"source_batch_size": 512}), encoding="utf-8"
+    )
+
+    responses = iter(["2", "2"])  # Scope 2 = policy, then pick the second policy
+    monkeypatch.setattr(builtins, "input", lambda *a, **k: next(responses))
+
+    captured = {}
+
+    def fake_plan(catalog_path, output_root, **kwargs):
+        captured.update(kwargs)
+        return {"run_id": "r"}
+
+    monkeypatch.setattr(run, "plan", fake_plan)
+
+    run._menu_plan()
+
+    assert captured["scope"] == "policy"
+    assert captured["selection_policy_path"] == str(second)
+    out = capsys.readouterr().out
+    assert "corpus_one" in out
+    assert "corpus_two" in out
+
+
+def test_menu_plan_policy_scope_accepts_custom_path(
+    tmp_path: Path, monkeypatch
+) -> None:
+    monkeypatch.setenv("ARTIFACTS_ROOT", str(tmp_path))
+    catalog = {"catalog_id": "catalog-1", "target_rows": 10, "form_count": 2}
+    monkeypatch.setattr(run.discovery, "discover_catalogs", lambda *_args: [catalog])
+
+    phase_root = resolve_paths("filing_extraction").phase_root
+    phase_root.mkdir(parents=True, exist_ok=True)
+    (phase_root / "selection_policy.json").write_text(
+        json.dumps({"corpus_id": "corpus_one", "forms": ["10-K"]}),
+        encoding="utf-8",
+    )
+    custom = tmp_path / "elsewhere" / "custom_policy.json"
+    custom.parent.mkdir(parents=True)
+    custom.write_text(
+        json.dumps({"corpus_id": "custom_corpus", "forms": ["10-K"]}),
+        encoding="utf-8",
+    )
+
+    responses = iter(["2", str(custom)])  # Scope 2, then a custom policy path
+    monkeypatch.setattr(builtins, "input", lambda *a, **k: next(responses))
+
+    captured = {}
+
+    def fake_plan(catalog_path, output_root, **kwargs):
+        captured.update(kwargs)
+        return {"run_id": "r"}
+
+    monkeypatch.setattr(run, "plan", fake_plan)
+
+    run._menu_plan()
+
+    assert captured["scope"] == "policy"
+    assert captured["selection_policy_path"] == str(custom)
 
 
 def test_main_help_returns_zero() -> None:

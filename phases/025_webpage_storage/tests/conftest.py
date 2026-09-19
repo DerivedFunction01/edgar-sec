@@ -81,7 +81,7 @@ def build_phase02_bundle(
     (root / "plan.json").write_text(
         json.dumps(
             {
-                "scope": "full",
+                "scope": "deterministic",
                 "plan_schema_version": 1,
                 "unique_locators_count": len(locator_rows),
             }

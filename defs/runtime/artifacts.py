@@ -529,6 +529,7 @@ def make_snapshot_manifest(
     plan_id: str | None = None,
     effective_cik_count: int | None = None,
     effective_input_fingerprint: str | None = None,
+    filing_record_count: int | None = None,
     dataset: str = "submission_metadata",
     phase: str = "metadata",
     validation_status: str = "ok",
@@ -559,6 +560,8 @@ def make_snapshot_manifest(
         "validation_status": validation_status,
         "provenance": provenance or {},
     }
+    if filing_record_count is not None:
+        manifest["filing_record_count"] = int(filing_record_count)
     return manifest
 
 

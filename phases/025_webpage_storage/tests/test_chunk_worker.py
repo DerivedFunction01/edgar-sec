@@ -153,18 +153,6 @@ def test_fetch_failures_are_reported_and_successes_commit(tmp_path):
     assert failures_in_db[0]["status"] == "missing"
 
 
-def test_raw_only_mode_has_no_normalized_record(tmp_path):
-    result = worker_module.process_chunk(
-        "raw-only",
-        "worker",
-        [_locator()],
-        [_occurrence()],
-        FakeFetcher({"a": b"raw"}),
-        tmp_path / "raw-only.db",
-    )
-    assert _rows(result.path, schemas.NORMALIZED_DOCUMENTS_TABLE) == []
-
-
 def test_processor_failure_keeps_raw_and_records_normalization_failure(tmp_path):
     class FailingProcessor:
         processor_fingerprint = "failing:v1"
@@ -361,7 +349,7 @@ def _clear_committed_audit(db_path):
         executor.close()
 
 
-def test_resume_with_processor_normalizes_existing_raw_blobs(tmp_path):
+def test_resume_with_changed_processor_reprocesses_normalized_blobs(tmp_path):
     db_path = tmp_path / "resume-normalize.db"
     loc = _locator("a", "a.htm")
     occ = _occurrence("0000000001", "a.htm")
@@ -375,10 +363,11 @@ def test_resume_with_processor_normalizes_existing_raw_blobs(tmp_path):
         db_path,
     )
     assert len(_rows(db_path, schemas.DOCUMENT_BLOBS_TABLE)) == 1
-    assert _rows(db_path, schemas.NORMALIZED_DOCUMENTS_TABLE) == []
+    initial_normalized = _rows(db_path, schemas.NORMALIZED_DOCUMENTS_TABLE)
+    assert len(initial_normalized) == 1
     assert (
         _rows(db_path, schemas.COMMITTED_CHUNKS_TABLE)[0]["processor_fingerprint"]
-        == "raw-only"
+        != "raw-only"
     )
 
     _clear_committed_audit(db_path)
@@ -397,12 +386,12 @@ def test_resume_with_processor_normalizes_existing_raw_blobs(tmp_path):
 
     assert resumed_fetcher.calls == ["a"]
     normalized = _rows(db_path, schemas.NORMALIZED_DOCUMENTS_TABLE)
-    assert len(normalized) == 1
-    assert normalized[0]["processor_fingerprint"] == "upper:v1"
-    assert (
-        schemas.decompress_payload(normalized[0]["normalized_payload"]) == b"PAYLOAD-A"
-    )
-    assert normalized[0]["source_doc_id"] == schemas.doc_id("0001-0001", "a.htm")
+    assert len(normalized) == 2
+    selected = [row for row in normalized if row["processor_fingerprint"] == "upper:v1"]
+    assert len(selected) == 1
+    assert selected[0]["processor_fingerprint"] == "upper:v1"
+    assert schemas.decompress_payload(selected[0]["normalized_payload"]) == b"PAYLOAD-A"
+    assert selected[0]["source_doc_id"] == schemas.doc_id("0001-0001", "a.htm")
     audit = _rows(db_path, schemas.COMMITTED_CHUNKS_TABLE)[0]
     assert audit["processor_fingerprint"] == "upper:v1"
 

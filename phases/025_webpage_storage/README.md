@@ -1,4 +1,4 @@
-# Phase 2.5: Webpage Storage (Raw Document Acquisition)
+# Phase 2.5: Webpage Storage and Temporal Normalized Snapshots
 
 Acquires and stores raw SEC filing documents (HTML, SGML, iXBRL XML) as
 content-addressed, zstd-compressed SQLite BLOBs, linked to corporate
@@ -15,7 +15,7 @@ goldens live under `defs/tests/fixtures/tables/`.
   `locator_groups.parquet`, `selection_report.json`); never reads Phase 01
   metadata directly.
 - Fetches each unique document locator exactly once; deduplicates by
-  `doc_id = sha256(accession + "/" + document_path)`.
+  `doc_id = sha256(canonical_accession + ":" + document_path)`.
 - `document_blobs` stores only the exact fetched source bytes plus their
   SHA-256 digest (`raw_payload_sha256`); processor output never replaces them.
 - Provenance rows (`filing_occurrences`) carry `source_cik`, `accession`,
@@ -32,9 +32,9 @@ goldens live under `defs/tests/fixtures/tables/`.
 # Validate inputs and report planned acquisition counts (no network)
 .venv/bin/python -m phases.025_webpage_storage.cli preview --plan-dir <phase02-plan>
 
-# Acquire + store production target plan directly (resolves full 10-K production plan)
+# Acquire + store production target plan directly (resolves deterministic 10-K production plan)
 .venv/bin/python -m phases.025_webpage_storage.cli run \
-  --scope full --mode production --workers 8
+  --scope deterministic --mode production --workers 8
 
 # Or target a specific plan directory or plan ID:
 .venv/bin/python -m phases.025_webpage_storage.cli run \
@@ -47,11 +47,6 @@ goldens live under `defs/tests/fixtures/tables/`.
 
 # Monitor live acquisition progress in real-time (terminal UI with live throughput and disk usage):
 python scripts/monitor_progress.py --watch
-
-# Same run but store raw payloads without normalization
-.venv/bin/python -m phases.025_webpage_storage.cli run \
-  --plan-dir <phase02-plan> --mode fixture --fixtures <fixture_id> \
-  --partition-id 1 --partition-count 1 --workers 4 --no-normalize
 
 # Fill/update one shared offline fixture from live SEC using machine-local
 # fetch threads; omit --workers to use runtime resource defaults
@@ -81,6 +76,13 @@ python scripts/monitor_progress.py --watch
 
 # Report partition database integrity
 .venv/bin/python -m phases.025_webpage_storage.cli status --database <partition.sqlite>
+
+# Publish finalized partition databases as an immutable normalized snapshot
+.venv/bin/python -m phases.025_webpage_storage.cli merge-to-snapshot \
+  --partition-db <partition-00001.sqlite> --artifacts-root <artifacts-root>
+
+# Consolidate selected snapshots in parallel (workers default to runtime capacity)
+.venv/bin/python -m phases.025_webpage_storage.cli vacuum --all --workers 8
 ```
 
 ## Architecture
@@ -99,9 +101,13 @@ ChunkWorkers (ThreadPoolExecutor, concurrent) → isolated chunk-XXXXX.db
 Fixture fill uses fetch threads with one coordinator SQLite writer. Production
 process workers route through one broker-owned SEC client and aggregate limiter.
    │
-   ▼
-PartitionMerger → single atomic merge into partition-000XX.sqlite
-    (all chunk tables copied verbatim, then indexes)
+    ▼
+PartitionMerger → finalized partition-000XX.sqlite + handoff manifest
+    (portable across machines; chunks remain local)
+    │
+    ▼
+Snapshot publisher → normalized_documents/snapshots/<snapshot-id>/
+    index.parquet + payload-000NN.parquet by filing year/quarter
 ```
 
 All SQLite access goes through `defs.sql` AST nodes + `SqlExecutor`; the phase
@@ -188,8 +194,8 @@ Raw acquisition and normalization are separate artifacts:
   furniture is replaced by compact `[[SEC:PAGE_BREAK id=N]]`-style tokens in
   the normalized payload; the id resolves only against metadata whose
   `source_identity` matches. Absent key means legacy `strip` behavior.
-- `--no-normalize` runs raw-only acquisition: no normalized rows are written,
-  and `_committed_chunks` records the `raw-only` processor fingerprint.
+- Every supported form runs through a normalizer. Forms without a specialized
+  processor use the generic/minimal normalization path.
 - Committed chunks record their processor fingerprint and normalized schema
   version. A committed chunk never satisfies a run with a different
   fingerprint; the stale audit row is dropped and the chunk is reprocessed,
@@ -199,6 +205,27 @@ Raw acquisition and normalization are separate artifacts:
 
 The boundary is normalization only — parsing and section extraction are later
 phases.
+
+## Snapshot contract
+
+Canonical normalized data lives below
+`manifests/webpage_storage/normalized_documents/snapshots/`. Each snapshot
+manifest resolves lightweight occurrence indexes and payload parts. Index rows
+contain the existing occurrence identity plus a snapshot-local artifact path;
+payload rows contain only `doc_id` and native UTF-8 `clean_text`.
+
+Incremental merges may inherit immutable payload files, so a newly discovered
+CIK can add an occurrence without rewriting the shared document payload.
+`SnapshotReader` resolves the effective index and exact payload paths. Queries
+that need only metadata never open payload files. `vacuum` materializes selected
+snapshots into a self-contained layout in parallel and can purge a validated
+dependency closure.
+
+Finalized partition databases are portable handoff artifacts. Machines may
+process partitions independently and copy only finalized databases plus their
+handoff manifests to a coordinator. Full snapshot publication requires complete
+partition coverage; downstream phases should target the published snapshot,
+not the Phase 2.5 worker chunks.
 
 - `DeepNormalizer` — coordinates form-specific and generic normalization passes
 - **SGML Multi-Document Unpacking** — `defs.sec_documents.sgml` unpacks concatenated submission envelopes (`<DOCUMENT>...</DOCUMENT>`), extracts target primary documents and exhibits (`EX-10`, `EX-21`, `EX-99`), parses filing headers (`<SEC-HEADER>`), and assigns distinct document identifiers.

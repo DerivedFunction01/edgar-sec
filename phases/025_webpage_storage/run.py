@@ -71,7 +71,7 @@ def _select_target_plan() -> str | None:
 def _default_partition_db() -> str:
     """Find latest published or transient partition database."""
     phase_paths = resolve_paths("webpage_storage")
-    pub = phase_paths.published_dataset("filing_documents", "sqlite")
+    pub = phase_paths.published_dataset("partition_artifacts", "sqlite")
     if pub.is_file():
         return str(pub)
 
@@ -88,7 +88,8 @@ def _usage() -> str:
         "usage: python run.py webpage-storage            interactive menu\n"
         "       python run.py webpage-storage run --plan-dir <p> --mode fixture\n"
         "       python run.py webpage-storage preview --plan-dir <p>\n"
-        "       python run.py webpage-storage append --plan-dir <p> --fixture-id <id>\n"
+        "       python run.py webpage-storage merge-to-snapshot --partition-db <path>\n"
+        "       python run.py webpage-storage vacuum --all\n"
         "       python run.py webpage-storage status --database <path>"
     )
 
@@ -105,13 +106,15 @@ def interactive_menu() -> int:
     default_workers = str(max(1, derive_resources().workers))
 
     while True:
-        print("\nPhase 2.5: Webpage Storage (raw document acquisition)")
+        print("\nPhase 2.5: Webpage Storage and normalized snapshots")
         print("  1. Preview target plan")
         print("  2. Run acquisition (fixture mode)")
         print("  3. Run acquisition (production mode - live SEC)")
         print("  4. Fill / update offline fixture from live SEC")
         print("  5. Append fixture cache")
         print("  6. Show status")
+        print("  7. Merge finalized partitions to snapshot")
+        print("  8. Vacuum all snapshots")
         print("  0. Exit")
         choice = _read("\nChoice [0]: ", "0")
         if choice == "0":
@@ -196,6 +199,13 @@ def interactive_menu() -> int:
                 cli_main(["status", "--database", database])
             else:
                 print("  no database specified or found")
+        elif choice == "7":
+            partition_dir = _read("  Finalized partition directory: ", "")
+            if partition_dir:
+                cli_main(["merge-to-snapshot", "--partition-dir", partition_dir])
+        elif choice == "8":
+            workers = _read(f"  Workers [{default_workers}]: ", default_workers)
+            cli_main(["vacuum", "--all", "--workers", workers])
         else:
             print("  unknown choice")
 

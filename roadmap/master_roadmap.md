@@ -73,7 +73,7 @@ To balance long-term analytical capability with rigorous software engineering, t
 #### Phase 02: Filing Catalog & Target Planner (Zero-Network)
 - Materializes flat filing occurrences from finalized Phase 01 Parquet artifacts via memory-bounded DuckDB staging.
 - Normalizes corporate entities into `company_family` clusters to prevent multi-subsidiary duplicate over-representation.
-- Plans deterministic target selections across form families (`10-K`, `10-K/A`, `10-KSB`, `10-KT`, `10-Q`, etc.) with expandable fixture support.
+- Plans target selections across form families (`10-K`, `10-K/A`, `10-KSB`, `10-KT`, `10-Q`, etc.): deterministic whole-catalog filtering (`--scope deterministic`) or policy-driven deficit selection (`--scope policy`) with expandable child plans; plan bundles are immutable, selectable work orders and the selection scope is independent of the Phase 2.5 acquisition mode.
 
 #### Phase 2.5: Raw Webpage Storage & Multi-Era Text Normalization
 - Consumes Phase 02 target plans and fetches each unique `(accession, document_path)` locator exactly once.
@@ -84,7 +84,9 @@ To balance long-term analytical capability with rigorous software engineering, t
   - Form-scoped checkbox constraint solver evaluating report-period, filer-status, and statutory Boolean hypotheses (`defs.sec_forms.cover`).
   - Canonical body-start alignment past cover and TOC pages using tiered lexical evidence scoring (`defs.sec_forms.cover.body_start`).
   - Geometry-first ASCII reflow: hard-wrapped prose and multi-line bullet/list items are cleanly reflowed (`is_list_or_bullet_marker`), while untagged multi-column ASCII tables are automatically detected and preserved in `<TABLE>` tags (`defs.text.reflow`).
-- **Storage Layout**: Persists sha256-addressed raw bytes (`document_blobs`) and versioned normalized representations (`normalized_documents`) in isolated worker SQLite chunks before atomic partition merge.
+- **Storage Layout**: Persists sha256-addressed raw bytes (`document_blobs`) and versioned normalized representations (`normalized_documents`) in isolated worker SQLite chunks before atomic partition merge. Finalized normalized rows publish to temporal immutable snapshots under `manifests/webpage_storage/normalized_documents/snapshots/`, split into lightweight occurrence indexes and deduplicated native-text payload Parquet parts.
+- **Distributed Handoff**: Finalized partition databases and handoff manifests are portable between machines; snapshot publication validates complete partition coverage but downstream plans can read an immutable normalized snapshot directly.
+- **Snapshot Lifecycle**: Incremental publication may inherit immutable payload parts for late CIK augmentation. Parallel `vacuum` materializes and compacts selected snapshots, validates dependency closure, and atomically advances the current pointer.
 - **Live Monitoring**: Real-time progress, throughput, and disk usage tracking via `scripts/monitor_progress.py`.
 - **Review Workflow**: Document corpus review toolchain (`promote_document_corpus`, `build_document_review_artifacts`, `chunk_document_reviews`) with exact golden promotion.
 

@@ -50,6 +50,19 @@ class FilingExtractionPhasePaths:
         return self.project.manifests_root / "filing_extraction"
 
     @property
+    def target_plans_root(self) -> Path:
+        """Immutable collection of published target-plan bundles."""
+        return self.manifests_filing_extraction_dir / "target_plans"
+
+    def target_plan_dir(self, plan_id: str) -> Path:
+        return self.target_plans_root / _safe(plan_id)
+
+    @property
+    def legacy_target_plans_dir(self) -> Path:
+        """Pre-snapshot publication root; read-only discovery fallback."""
+        return self.target_plans_root / "final"
+
+    @property
     def meta_submission_metadata_dir(self) -> Path:
         return self.project.manifests_root / "metadata" / "submission_metadata"
 

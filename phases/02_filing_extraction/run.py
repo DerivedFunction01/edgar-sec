@@ -79,9 +79,9 @@ def _get_context_summary() -> dict:
             ctx["p1_snapshot_id"] = p1.get("snapshot_id", "current")
             with suppress(Exception):
                 sm = load_json(sp)
-                ctx["p1_ciks"] = sm.get("row_count", 0)
+                ctx["p1_ciks"] = sm.get("effective_cik_count", sm.get("row_count", 0))
                 ctx["p1_filings"] = sm.get("filing_record_count", 0)
-                ctx["p1_parts"] = len(sm.get("parts", []))
+                ctx["p1_parts"] = len(sm.get("resolved_parts", []))
 
     p2 = get_current_snapshot_pointer(
         paths.artifacts_root, phase="filing_extraction", dataset="filing_catalog"
@@ -201,7 +201,6 @@ def _menu_materialize() -> None:
     source_kind, source_default = _default_source()
     res = derive_resources()
     kwargs: dict = {
-        "output_root": str(resolve_paths("filing_extraction").catalogs_root),
         "source_batch_size": phase_config.load().source_batch_size,
         "threads": res.threads,
         "memory_limit": res.memory_limit,
@@ -221,7 +220,9 @@ def _menu_materialize() -> None:
     else:
         kwargs["source_artifact"] = source
 
-    print(f"  Output: {kwargs['output_root']}")
+    # No output_root: the engine stages transiently and publishes the durable
+    # manifest-tree snapshot, advancing the filing_catalog current pointer.
+    print(f"  Output: {resolve_filing_paths().catalog_snapshots_dir}")
     print(f"  Batch size: {kwargs['source_batch_size']} rows")
     print(
         f"  DuckDB: {res.threads} threads, {res.memory_limit}, spill={res.temp_directory}"
@@ -251,37 +252,82 @@ def _auto_generate_policy(catalog_id: str, dest: Path | None = None) -> Path:
     return dest
 
 
+def _select_policy(catalog: str) -> str | None:
+    """Interactively choose a valid selection policy JSON for policy scope."""
+    policies: list[dict] = []
+    with suppress(ImportError, OSError, ValueError):
+        policies = discovery.discover_policies()
+    if not policies:
+        default_path = (
+            resolve_paths("filing_extraction").phase_root / "selection_policy.json"
+        )
+        answer = _prompt(
+            f"  No valid selection policy JSON found. "
+            f"Generate template at {default_path}? [Y/n]: ",
+            "Y",
+        )
+        if answer.strip().lower() in ("", "y", "yes"):
+            _auto_generate_policy(catalog, default_path)
+            print(
+                f"\n  Created default selection policy template at:\n"
+                f"    {default_path}\n"
+                f"  Edit it, then rerun 'Plan filing targets' to select it."
+            )
+        return None
+    if len(policies) == 1:
+        p = policies[0]
+        chosen = _prompt(
+            f"  Selection policy: {p['name']} (corpus {p['corpus_id']}, "
+            f"{len(p['forms'])} forms, {p['base_content_units']} units) "
+            f"[{p['path']}]: ",
+            p["path"],
+        )
+        if not Path(chosen).is_file():
+            print(f"  selection policy file not found: {chosen}")
+            return None
+        return chosen
+    print("  Valid selection policies found:")
+    for idx, p in enumerate(policies, start=1):
+        print(
+            f"    {idx}. {p['name']} (corpus {p['corpus_id']}, "
+            f"{len(p['forms'])} forms, {p['base_content_units']} units, "
+            f"level {p['level']})"
+        )
+    choice = _prompt(f"  Select policy [1-{len(policies)}] or enter a path: ", "1")
+    try:
+        idx = int(choice) - 1
+        if 0 <= idx < len(policies):
+            return policies[idx]["path"]
+    except ValueError:
+        pass
+    if not Path(choice).is_file():
+        print(f"  selection policy file not found: {choice}")
+        return None
+    return choice
+
+
 def _menu_plan() -> None:
     catalog = _select_catalog()
     if not catalog:
         return
     scope_choice = _prompt(
-        "Selection scope [1. Full plan, 2. Fixture selection] [1]: ", "1"
+        "Selection scope [1. Deterministic plan, 2. Policy-driven selection] [1]: ",
+        "1",
     )
-    scope = "fixture" if scope_choice in ("2", "fixture") else "full"
+    scope = "policy" if scope_choice in ("2", "policy") else "deterministic"
     out_root = str(resolve_paths("filing_extraction").runs_root)
-    bar = _StageBar("plan targets")
 
-    if scope == "fixture":
-        pol_path = (
-            resolve_paths("filing_extraction").phase_root / "selection_policy.json"
-        )
-        if not pol_path.is_file():
-            _auto_generate_policy(catalog, pol_path)
-            print(
-                f"\n  Created default selection policy template at:\n    {pol_path}\n"
-            )
+    if scope == "policy":
+        pol_path = _select_policy(catalog)
+        if not pol_path:
             return
-        pol_in = _prompt(f"Selection policy JSON [{pol_path}]: ", str(pol_path))
-        if not Path(pol_in).is_file():
-            print(f"  selection policy file not found: {pol_in}")
-            return
+        bar = _StageBar("plan targets")
         try:
             result = plan(
                 catalog,
                 out_root,
-                scope="fixture",
-                selection_policy_path=pol_in,
+                scope="policy",
+                selection_policy_path=pol_path,
                 progress=bar,
             )
         except KeyboardInterrupt:
@@ -305,11 +351,12 @@ def _menu_plan() -> None:
         else default_forms
     )
     amendment = _prompt(f"Amendment policy [{default_amendment}]: ", default_amendment)
+    bar = _StageBar("plan targets")
     try:
         result = plan(
             catalog,
             out_root,
-            scope="full",
+            scope="deterministic",
             forms=forms,
             amendment=amendment,
             limit=None,

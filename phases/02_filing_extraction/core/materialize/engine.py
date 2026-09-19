@@ -6,9 +6,9 @@ import hashlib
 import importlib
 import json
 import logging
+import os
 import shutil
 from collections.abc import Callable
-from contextlib import suppress
 from pathlib import Path
 
 from defs.runtime import resolve_paths
@@ -108,9 +108,16 @@ def materialize(
     threads: int | None = None,
     memory_limit: str | None = None,
     temp_directory: str | None = None,
-    base_catalog_manifest: str | None = None,
 ) -> dict:
-    """Materialize Phase 2 filing catalog snapshot from Phase 1 metadata snapshot."""
+    """Materialize Phase 2 filing catalog snapshot from Phase 1 metadata snapshot.
+
+    Without ``output_root`` the catalog snapshot is staged under the transient
+    scratch tree and published atomically into the durable
+    ``manifests/filing_extraction/filing_catalog/snapshots/<snapshot_id>/``
+    tree, advancing the ``filing_catalog`` current-snapshot pointer. An explicit
+    ``output_root`` (tests, external tools) writes the snapshot directory in
+    place and never touches the pointer.
+    """
     source_batch_size = source_batch_size or DEFAULT_SOURCE_BATCH_SIZE
     if source_batch_size < 1:
         raise ValueError("source_batch_size must be >= 1")
@@ -162,15 +169,25 @@ def materialize(
             )
         )
         catalog_id = snapshot_id
-        snapshot_dir = (
-            Path(output_root).resolve() / snapshot_id
-            if output_root
-            else fp.catalog_snapshot_dir(snapshot_id)
-        )
+        durable = output_root is None
+        if durable:
+            final_dir = fp.catalog_snapshot_dir(snapshot_id)
+            staging_dir = fp.catalog_dir(snapshot_id)
+            if final_dir.exists():
+                raise StorageError(
+                    "immutable catalog snapshot already exists: "
+                    f"{final_dir}; prune it or advance to a new upstream snapshot"
+                )
+        else:
+            final_dir = Path(output_root).resolve() / snapshot_id
+            staging_dir = final_dir
 
-        if snapshot_dir.exists():
-            shutil.rmtree(snapshot_dir, ignore_errors=True)
-        snapshot_dir.mkdir(parents=True, exist_ok=True)
+        # Stage into transient scratch; the durable snapshot directory only
+        # appears through one atomic publish step after all parts validate.
+        if staging_dir.exists():
+            shutil.rmtree(staging_dir, ignore_errors=True)
+        staging_dir.mkdir(parents=True, exist_ok=True)
+        snapshot_dir = staging_dir
 
         # Stage 1: Company Profiles
         profile_path = snapshot_dir / "company_profiles.parquet"
@@ -240,10 +257,12 @@ def materialize(
                     form_counts[str(form_name)] = int(cnt)
 
         # Stage 3: Snapshot Manifest & Active Pointer
+        # Recorded paths always describe the final snapshot location, never
+        # the transient staging directory used to assemble it.
         try:
-            rel_dir = snapshot_dir.relative_to(artifacts_root)
+            rel_dir = final_dir.relative_to(artifacts_root)
         except ValueError:
-            rel_dir = snapshot_dir
+            rel_dir = final_dir
 
         manifest = {
             "manifest_kind": "filing_catalog_snapshot",
@@ -270,15 +289,16 @@ def materialize(
             encoding="utf-8",
         )
 
-        if not output_root or str(artifacts_root) in str(snapshot_dir):
-            with suppress(Exception):
-                update_current_snapshot_pointer(
-                    snapshot_id=snapshot_id,
-                    manifest_path=manifest["snapshot_path"],
-                    phase="filing_extraction",
-                    dataset="filing_catalog",
-                    artifacts_root=artifacts_root,
-                )
+        if durable:
+            final_dir.parent.mkdir(parents=True, exist_ok=True)
+            os.replace(staging_dir, final_dir)
+            update_current_snapshot_pointer(
+                snapshot_id=snapshot_id,
+                manifest_path=final_dir / "snapshot.manifest.json",
+                phase="filing_extraction",
+                dataset="filing_catalog",
+                artifacts_root=artifacts_root,
+            )
         _emit(
             progress,
             {

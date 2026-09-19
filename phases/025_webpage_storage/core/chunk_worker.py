@@ -84,6 +84,12 @@ def process_chunk(
     if not chunk_id or not worker_id:
         raise ValueError("chunk_id and worker_id are required")
 
+    if processor is None:
+        import importlib
+
+        processor = importlib.import_module(
+            "phases.025_webpage_storage.processors"
+        ).DefaultFilingProcessor()
     effective_processor = processor
     path = Path(output_path)
     path.parent.mkdir(parents=True, exist_ok=True)

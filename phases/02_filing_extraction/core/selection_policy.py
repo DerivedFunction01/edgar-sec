@@ -10,10 +10,12 @@ from __future__ import annotations
 import csv
 import hashlib
 import json
+from collections.abc import Sequence
 from dataclasses import asdict, dataclass, field
 from pathlib import Path
 from typing import Any
 
+from defs.runtime.paths import resolve_paths
 from defs.storage import atomic_write_json, canonical_json, load_json
 
 POLICY_SCHEMA_VERSION = "1.0"
@@ -351,6 +353,50 @@ def auto_generate_policy(
     return policy
 
 
+def discover_policies(
+    search_dirs: Sequence[str | Path] | None = None,
+) -> list[dict[str, Any]]:
+    """Summarize valid selection policy JSON files found in the given directories.
+
+    Candidate files that fail policy validation (including unrelated
+    configuration JSON) are skipped, so callers can scan directories holding
+    mixed JSON content. Defaults to the Phase 2 artifact root plus its
+    ``policies/`` subdirectory when it exists.
+    """
+    if search_dirs is None:
+        phase_root = resolve_paths("filing_extraction").phase_root
+        search_dirs = [phase_root, phase_root / "policies"]
+
+    summaries: list[dict[str, Any]] = []
+    seen: set[Path] = set()
+    for raw_dir in search_dirs:
+        root = Path(raw_dir)
+        if not root.is_dir():
+            continue
+        for candidate in sorted(root.glob("*.json")):
+            resolved = candidate.resolve()
+            if resolved in seen:
+                continue
+            seen.add(resolved)
+            try:
+                policy = SelectionPolicy.from_path(resolved)
+            except (OSError, ValueError, TypeError, KeyError):
+                continue
+            summaries.append(
+                {
+                    "path": str(resolved),
+                    "name": resolved.name,
+                    "corpus_id": policy.corpus_id,
+                    "forms": list(policy.forms),
+                    "level": policy.level,
+                    "base_content_units": policy.base_content_units,
+                    "policy_fingerprint": policy.policy_fingerprint,
+                    "seed_cik_path": policy.seed_cik_path,
+                }
+            )
+    return summaries
+
+
 def normalize_value(value: Any) -> str:
     """Normalize a dimension value for policy comparisons and reports."""
     if value is None:
@@ -368,6 +414,7 @@ __all__ = [
     "SelectionPolicy",
     "auto_generate_policy",
     "compute_seed_fingerprint",
+    "discover_policies",
     "load_seed_cik_csv",
     "normalize_value",
 ]

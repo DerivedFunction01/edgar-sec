@@ -351,3 +351,72 @@ def test_manifest_contains_form_counts(tmp_path):
     manifest = materializer.materialize(str(source), str(tmp_path / "catalogs"))
     assert "form_counts" in manifest
     assert isinstance(manifest["form_counts"], dict)
+
+
+def test_materialize_publishes_durable_snapshot_and_pointer(tmp_path, monkeypatch):
+    monkeypatch.setenv("ARTIFACTS_ROOT", str(tmp_path))
+    part = tmp_path / "s9_part.parquet"
+    pq.write_table(
+        pa.Table.from_pylist(
+            [row("0000000009", accession="0000000009-24-000001", form="10-K")],
+            schema=schemas.SUBMISSION_METADATA_SCHEMA,
+        ),
+        part,
+    )
+    manifest_path = tmp_path / "s9.manifest.json"
+    manifest_path.write_text(
+        json.dumps(
+            {
+                "manifest_kind": "submission_metadata_snapshot",
+                "snapshot_id": "S9",
+                "schema_version": "1.0.0",
+                "resolved_parts": [
+                    {
+                        "path": str(part),
+                        "artifact_sha256": file_sha256(str(part)),
+                        "row_count": 1,
+                    }
+                ],
+            }
+        ),
+        encoding="utf-8",
+    )
+
+    manifest = materializer.materialize(source_manifest=str(manifest_path))
+
+    snap_dir = (
+        tmp_path
+        / "manifests"
+        / "filing_extraction"
+        / "filing_catalog"
+        / "snapshots"
+        / "S9"
+    )
+    assert (snap_dir / "snapshot.manifest.json").is_file()
+    assert (snap_dir / "company_profiles.parquet").is_file()
+    assert (snap_dir / "filing_targets" / "part-00000.parquet").is_file()
+    # Manifest paths describe the durable location, never transient staging.
+    expected_rel = "manifests/filing_extraction/filing_catalog/snapshots/S9"
+    assert manifest["snapshot_path"] == f"{expected_rel}/snapshot.manifest.json"
+    assert manifest["company_profiles_path"] == (
+        f"{expected_rel}/company_profiles.parquet"
+    )
+    assert manifest["filing_targets_dir"] == f"{expected_rel}/filing_targets"
+    pointer = json.loads(
+        (
+            tmp_path
+            / "manifests"
+            / "filing_extraction"
+            / "filing_catalog"
+            / "current.json"
+        ).read_text(encoding="utf-8")
+    )
+    assert pointer["snapshot_id"] == "S9"
+    assert pointer["manifest_path"] == manifest["snapshot_path"]
+    # Transient staging is consumed by the atomic publish step.
+    assert not (
+        tmp_path / "transient" / "filing_extraction" / "catalogs" / "S9"
+    ).exists()
+    # A published catalog snapshot is immutable.
+    with pytest.raises(StorageError, match="already exists"):
+        materializer.materialize(source_manifest=str(manifest_path))

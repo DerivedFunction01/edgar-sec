@@ -298,11 +298,11 @@ ORDER BY f.value_numeric DESC;
 ## 10. Summary Roadmap Checklist
 
 ```text
-[ ] 1. Phase 025 Lakehouse Exporter: Add CLI command to project finalized SQLite partition databases into Hive Parquet.
-[ ] 2. Text Sanitization Gate: Enforce null byte (\x00) and control character stripping during Parquet serialization.
-[ ] 3. Two-Table Lakehouse Split: Maintain strict separation between occurrences (1:N) and normalized documents (1:1).
-[ ] 4. Monotonic Partitioning: Ensure directory paths reflect filing_year and filing_quarter, not fiscal period dates.
+[x] 1. Phase 025 Lakehouse Exporter: `merge-to-snapshot` projects finalized SQLite partition databases into temporal Parquet snapshots.
+[x] 2. Text Sanitization Gate: Remove null bytes and decode normalized payloads as native UTF-8 during Parquet serialization.
+[x] 3. Two-Table Lakehouse Split: Maintain strict separation between occurrence indexes (1:N) and normalized document payloads (1:1).
+[x] 4. Monotonic Partitioning: Ensure directory paths reflect filing_year and filing_quarter, not fiscal period dates.
 [ ] 5. Pure Functional Cores: Validate that Phase 03 and Phase 04 engines accept pure domain objects, independent of storage backends.
 [ ] 6. Live Orchestrator Service: Construct services/live/ to chain phase core libraries for single-filing streaming workflows.
-[ ] 7. Micro-Batch Compaction: Implement intraday buffer compaction to preserve optimal 50MB-250MB Parquet file budgets.
+[x] 7. Snapshot vacuum: Parallelize temporal-quarter compaction with immutable publication and dependency-aware purge.
 ```

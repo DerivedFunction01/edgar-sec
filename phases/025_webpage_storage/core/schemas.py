@@ -336,12 +336,12 @@ def create_chunk_schema(executor) -> None:
 
 def doc_id(accession: str, document_path: str) -> str:
     """Content address of one archived document."""
-    return hashlib.sha256(f"{accession}/{document_path}".encode()).hexdigest()
+    return hashlib.sha256(f"{accession}:{document_path}".encode()).hexdigest()
 
 
 def occurrence_id(source_cik: str, accession: str, document_path: str) -> str:
     """Identity of one corporate occurrence pointing at a stored blob."""
-    key = f"{source_cik}{accession}{document_path}"
+    key = f"{source_cik}:{accession}:{document_path}"
     return hashlib.sha256(key.encode("utf-8")).hexdigest()
 
 

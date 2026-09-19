@@ -53,7 +53,8 @@ def _write_bundle(
         root / "targets" / "form=10-K" / "data.parquet",
     )
     (root / "plan.json").write_text(
-        json.dumps({"scope": "full", "plan_schema_version": 1}), encoding="utf-8"
+        json.dumps({"scope": "deterministic", "plan_schema_version": 1}),
+        encoding="utf-8",
     )
     (root / "selection_report.json").write_text(
         json.dumps({"active_targets_count": 1}), encoding="utf-8"

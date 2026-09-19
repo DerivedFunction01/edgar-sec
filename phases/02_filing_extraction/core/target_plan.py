@@ -10,7 +10,6 @@ from __future__ import annotations
 import hashlib
 import json
 import logging
-import shutil
 from collections.abc import Callable
 from pathlib import Path
 from typing import Any
@@ -31,6 +30,12 @@ from .plan_expansion import (
     plan_fingerprint,
     prepare_parent,
     validate_target,
+)
+from .plan_publication import (
+    SCOPE_DETERMINISTIC,
+    SCOPE_POLICY,
+    reuse_existing_plan,
+    staged_plan_bundle,
 )
 from .selection import DeficitSelector
 from .selection_features import FeatureSnapshotBuilder
@@ -59,7 +64,7 @@ def plan(
     catalog: str = "",
     output_root: str | None = None,
     *,
-    scope: str = "full",
+    scope: str = SCOPE_DETERMINISTIC,
     selection_policy_path: str | Path | None = None,
     seed_cik_path: str | Path | None = None,
     forms: tuple[str, ...] | None = None,
@@ -70,18 +75,28 @@ def plan(
     target_units: int | None = None,
     document_suffixes: tuple[str, ...] | None = None,
 ) -> dict[str, Any]:
+    """Publish an immutable target-plan bundle for Phase 2.5 consumption.
+
+    ``scope`` is the selection strategy only: ``deterministic`` filters the
+    whole catalog by form, ``policy`` selects locators with a selection policy.
+    Phase 2.5 chooses its acquisition mode (fixture or production) when it
+    executes the plan; the bundle itself stays mode-neutral.
+    """
     cfg = phase_config.load()
     forms = forms if forms is not None else cfg.target_forms
     amendment = amendment if amendment is not None else cfg.amendment
     document_suffixes = normalize_suffixes(
         document_suffixes if document_suffixes is not None else cfg.document_suffixes
     )
-    if scope not in {"full", "fixture"}:
-        raise ValueError(f"scope must be 'full' or 'fixture', got {scope!r}")
+    if scope not in {SCOPE_DETERMINISTIC, SCOPE_POLICY}:
+        raise ValueError(
+            f"scope must be '{SCOPE_DETERMINISTIC}' or '{SCOPE_POLICY}', got {scope!r}"
+        )
     if amendment not in {"both", "original", "amendments"}:
         raise ValueError("amendment must be both, original, or amendments")
 
     resolved_paths = resolve_paths("filing_extraction")
+    filing_paths = resolve_filing_paths()
     artifacts_root = resolved_paths.project.artifacts_root.resolve()
     manifests_root = resolved_paths.project.manifests_root.resolve()
     transient_root = (
@@ -99,7 +114,7 @@ def plan(
 
     resources = derive_resources()
 
-    if scope == "fixture":
+    if scope == SCOPE_POLICY:
         if not selection_policy_path:
             selection_policy_path = resolved_paths.phase_root / "selection_policy.json"
         pol_path = Path(selection_policy_path)
@@ -143,8 +158,7 @@ def plan(
 
         profile_art_path = target_base_dir.parent / "company_profiles.parquet"
         if not profile_art_path.exists():
-            fp = resolve_filing_paths()
-            profile_art_path = fp.company_profiles_path(catalog_id)
+            profile_art_path = filing_paths.company_profiles_path(catalog_id)
 
         snapshot_builder = FeatureSnapshotBuilder(
             target_root=target_base_dir,
@@ -188,138 +202,142 @@ def plan(
             json.dumps(plan_hash_payload, sort_keys=True).encode()
         ).hexdigest()[:24]
 
-        final_plan_dir = (
-            resolved_paths.project.dataset_manifests(
-                "filing_extraction", "target_plans"
+        final_plan_dir = filing_paths.target_plan_dir(plan_id)
+        existing = reuse_existing_plan(final_plan_dir, plan_id, scope)
+        if existing is not None:
+            _emit(
+                progress,
+                {
+                    "type": "merge_stage",
+                    "stage": "publish_plan",
+                    "rows": int(existing.get("selected_rows") or 0),
+                    "reused": True,
+                },
             )
-            / plan_id
-        )
-        if final_plan_dir.exists():
-            shutil.rmtree(final_plan_dir, ignore_errors=True)
-        final_plan_dir.mkdir(parents=True, exist_ok=True)
+            return existing
 
-        _emit(progress, {"type": "merge_stage", "stage": "materialize_targets"})
-        counts: dict[str, int] = {}
-        target_root = final_plan_dir / "targets"
-        target_root.mkdir(parents=True, exist_ok=True)
+        with staged_plan_bundle(final_plan_dir, plan_id) as staging_bundle:
+            _emit(progress, {"type": "merge_stage", "stage": "materialize_targets"})
+            counts: dict[str, int] = {}
+            target_root = staging_bundle / "targets"
+            target_root.mkdir(parents=True, exist_ok=True)
 
-        db_file = final_plan_dir / "materialize_staging.duckdb"
-        try:
-            db_file.unlink(missing_ok=True)
-        except OSError:
-            pass
-        with DuckDBStaging(
-            db_file,
-            threads=resources.threads,
-            memory_limit=resources.memory_limit,
-            cleanup_root=False,
-        ) as staging:
-            occ_parquet = snapshot_paths.occurrence_features
-            loc_parquet = snapshot_paths.locator_features
-            active_keys = selection_res.active_locators
+            db_file = staging_bundle / "materialize_staging.duckdb"
+            with DuckDBStaging(
+                db_file,
+                threads=resources.threads,
+                memory_limit=resources.memory_limit,
+                cleanup_root=False,
+            ) as staging:
+                occ_parquet = snapshot_paths.occurrence_features
+                loc_parquet = snapshot_paths.locator_features
+                active_keys = selection_res.active_locators
 
-            staging.execute(
-                "CREATE TEMP TABLE selected_locs (document_locator_key VARCHAR)"
-            )
-            step = 5000
-            for idx in range(0, len(active_keys), step):
-                chunk = [[k] for k in active_keys[idx : idx + step]]
-                staging.executemany("INSERT INTO selected_locs VALUES (?)", chunk)
-
-            forms_in_selection = [
-                r[0]
-                for r in staging.execute(f"""
-                    SELECT DISTINCT form
-                    FROM read_parquet('{occ_parquet}') o
-                    JOIN selected_locs s ON o.document_locator_key = s.document_locator_key
-                """)
-            ]
-
-            for form_name in sorted(forms_in_selection):
-                form_part = form_name.replace("/", "_")
-                dest_file = target_root / f"form={form_part}" / "data.parquet"
-                val_q = f"""
-                    SELECT
-                        o.occurrence_id, o.document_locator_key, o.source_cik, o.accession,
-                        o.form, o.is_amendment, o.filing_date, o.report_date, o.primary_document,
-                        o.document_path, o.archive_url, o.document_path_source, o.reported_size,
-                        o.is_xbrl, o.is_inline_xbrl, o.is_xbrl_numeric
-                    FROM read_parquet('{occ_parquet}') o
-                    JOIN selected_locs s ON o.document_locator_key = s.document_locator_key
-                    WHERE o.form = '{form_name}'
-                      AND (
-                        {suffix_sql("o.document_path", document_suffixes)}
-                      )
-                    ORDER BY o.document_locator_key, o.occurrence_id
-                """
-                cnt = staging.copy_query(val_q, dest_file)
-                counts[form_name] = int(cnt)
-
-            loc_dest = final_plan_dir / "locator_groups.parquet"
-            loc_q = f"""
-                SELECT
-                    l.document_locator_key, l.form, l.form_family, l.era, l.suffix,
-                    l.xbrl_state, l.size_band, l.owner_org_presence, l.foreign_status,
-                    l.lifecycle_class, l.stub_suspect, l.representative_cik,
-                    l.representative_accession, l.primary_document, l.document_path,
-                    l.archive_url, l.document_path_source, l.company_name
-                FROM read_parquet('{loc_parquet}') l
-                JOIN selected_locs s ON l.document_locator_key = s.document_locator_key
-                WHERE {suffix_sql("l.document_path", document_suffixes)}
-                ORDER BY l.document_locator_key
-            """
-            staging.copy_query(loc_q, loc_dest)
-
-            if selection_res.reserve_locators:
-                res_keys = selection_res.reserve_locators
                 staging.execute(
-                    "CREATE TEMP TABLE reserve_locs (document_locator_key VARCHAR)"
+                    "CREATE TEMP TABLE selected_locs (document_locator_key VARCHAR)"
                 )
-                for idx in range(0, len(res_keys), step):
-                    chunk = [[k] for k in res_keys[idx : idx + step]]
-                    staging.executemany("INSERT INTO reserve_locs VALUES (?)", chunk)
+                step = 5000
+                for idx in range(0, len(active_keys), step):
+                    chunk = [[k] for k in active_keys[idx : idx + step]]
+                    staging.executemany("INSERT INTO selected_locs VALUES (?)", chunk)
 
-                res_dest = final_plan_dir / "reserve_targets.parquet"
-                res_q = f"""
-                    SELECT l.*
+                forms_in_selection = [
+                    r[0]
+                    for r in staging.execute(f"""
+                        SELECT DISTINCT form
+                        FROM read_parquet('{occ_parquet}') o
+                        JOIN selected_locs s ON o.document_locator_key = s.document_locator_key
+                    """)
+                ]
+
+                for form_name in sorted(forms_in_selection):
+                    form_part = form_name.replace("/", "_")
+                    dest_file = target_root / f"form={form_part}" / "data.parquet"
+                    val_q = f"""
+                        SELECT
+                            o.occurrence_id, o.document_locator_key, o.source_cik, o.accession,
+                            o.form, o.is_amendment, o.filing_date, o.report_date, o.primary_document,
+                            o.document_path, o.archive_url, o.document_path_source, o.reported_size,
+                            o.is_xbrl, o.is_inline_xbrl, o.is_xbrl_numeric
+                        FROM read_parquet('{occ_parquet}') o
+                        JOIN selected_locs s ON o.document_locator_key = s.document_locator_key
+                        WHERE o.form = '{form_name}'
+                          AND (
+                            {suffix_sql("o.document_path", document_suffixes)}
+                          )
+                        ORDER BY o.document_locator_key, o.occurrence_id
+                    """
+                    cnt = staging.copy_query(val_q, dest_file)
+                    counts[form_name] = int(cnt)
+
+                loc_dest = staging_bundle / "locator_groups.parquet"
+                loc_q = f"""
+                    SELECT
+                        l.document_locator_key, l.form, l.form_family, l.era, l.suffix,
+                        l.xbrl_state, l.size_band, l.owner_org_presence, l.foreign_status,
+                        l.lifecycle_class, l.stub_suspect, l.representative_cik,
+                        l.representative_accession, l.primary_document, l.document_path,
+                        l.archive_url, l.document_path_source, l.company_name
                     FROM read_parquet('{loc_parquet}') l
-                    JOIN reserve_locs r ON l.document_locator_key = r.document_locator_key
+                    JOIN selected_locs s ON l.document_locator_key = s.document_locator_key
+                    WHERE {suffix_sql("l.document_path", document_suffixes)}
                     ORDER BY l.document_locator_key
                 """
-                staging.copy_query(res_q, res_dest)
+                staging.copy_query(loc_q, loc_dest)
 
-        atomic_write_json(
-            final_plan_dir / "selection_report.json", selection_res.report
-        )
+                if selection_res.reserve_locators:
+                    res_keys = selection_res.reserve_locators
+                    staging.execute(
+                        "CREATE TEMP TABLE reserve_locs (document_locator_key VARCHAR)"
+                    )
+                    for idx in range(0, len(res_keys), step):
+                        chunk = [[k] for k in res_keys[idx : idx + step]]
+                        staging.executemany(
+                            "INSERT INTO reserve_locs VALUES (?)", chunk
+                        )
 
-        plan_meta = {
-            "plan_schema_version": TARGET_PLAN_SCHEMA_VERSION,
-            "run_id": plan_id,
-            "plan_id": plan_id,
-            "catalog_id": catalog_id,
-            "scope": "fixture",
-            "policy_corpus": policy.corpus_id,
-            "policy_fingerprint": policy.policy_fingerprint,
-            "seed_fingerprint": compute_seed_fingerprint(seed_filers),
-            "level": policy.level,
-            "active_targets_count": len(selection_res.active_occurrences),
-            "unique_locators_count": len(selection_res.active_locators),
-            "reserve_count": len(selection_res.reserve_locators),
-            "forms": list(policy.forms),
-            "counts": counts,
-            "selected_rows": sum(counts.values()),
-            "selection_policy": policy.to_dict(),
-            "document_suffixes": list(document_suffixes),
-        }
-        plan_meta.update(
-            expansion_metadata(
-                policy, parent_meta, parent_keys, selection_res.active_locators
+                    res_dest = staging_bundle / "reserve_targets.parquet"
+                    res_q = f"""
+                        SELECT l.*
+                        FROM read_parquet('{loc_parquet}') l
+                        JOIN reserve_locs r ON l.document_locator_key = r.document_locator_key
+                        ORDER BY l.document_locator_key
+                    """
+                    staging.copy_query(res_q, res_dest)
+
+            atomic_write_json(
+                staging_bundle / "selection_report.json", selection_res.report
             )
-        )
-        plan_meta["plan_fingerprint"] = plan_fingerprint(
-            plan_meta, selection_res.active_locators
-        )
-        atomic_write_json(final_plan_dir / "plan.json", plan_meta)
+
+            plan_meta = {
+                "plan_schema_version": TARGET_PLAN_SCHEMA_VERSION,
+                "run_id": plan_id,
+                "plan_id": plan_id,
+                "catalog_id": catalog_id,
+                "scope": SCOPE_POLICY,
+                "policy_corpus": policy.corpus_id,
+                "policy_fingerprint": policy.policy_fingerprint,
+                "seed_fingerprint": compute_seed_fingerprint(seed_filers),
+                "level": policy.level,
+                "active_targets_count": len(selection_res.active_occurrences),
+                "unique_locators_count": len(selection_res.active_locators),
+                "reserve_count": len(selection_res.reserve_locators),
+                "forms": list(policy.forms),
+                "counts": counts,
+                "selected_rows": sum(counts.values()),
+                "selection_policy": policy.to_dict(),
+                "document_suffixes": list(document_suffixes),
+            }
+            plan_meta.update(
+                expansion_metadata(
+                    policy, parent_meta, parent_keys, selection_res.active_locators
+                )
+            )
+            plan_meta["plan_fingerprint"] = plan_fingerprint(
+                plan_meta, selection_res.active_locators
+            )
+            atomic_write_json(staging_bundle / "plan.json", plan_meta)
+
         _emit(
             progress,
             {
@@ -335,157 +353,176 @@ def plan(
 
         full_hash_payload = {
             "catalog_id": catalog_id,
-            "scope": "full",
+            "scope": SCOPE_DETERMINISTIC,
             "forms": sorted(selected_forms) if selected_forms else "all",
             "amendment": amendment,
             "limit": limit,
+            "document_suffixes": list(document_suffixes),
         }
         run_id = hashlib.sha256(
             json.dumps(full_hash_payload, sort_keys=True).encode()
         ).hexdigest()[:24]
 
-        destination = (
-            resolved_paths.project.dataset_manifests(
-                "filing_extraction", "target_plans"
-            )
-            / run_id
-        )
-        if destination.exists():
-            shutil.rmtree(destination, ignore_errors=True)
-        destination.mkdir(parents=True, exist_ok=True)
-
-        target_root = destination / "targets"
-        target_root.mkdir(parents=True, exist_ok=True)
-
-        target_files = [m["artifact_path"] for m in target_manifests]
-        plan_target_files = []
-        for art_path in target_files:
-            p = Path(art_path)
-            if not p.is_absolute():
-                p = artifacts_root / p
-            plan_target_files.append(str(p))
-
-        if not selected_forms:
-            file_list = ", ".join(f"'{p}'" for p in plan_target_files)
-            with DuckDBStaging(
-                transient_root / "_form_discovery.duckdb",
-                threads=resources.threads,
-                memory_limit=resources.memory_limit,
-                cleanup_root=False,
-            ) as staging:
-                selected_forms = {
-                    str(row[0])
-                    for row in staging.execute(
-                        f"SELECT DISTINCT form FROM read_parquet([{file_list}]) WHERE form IS NOT NULL"
-                    )
-                }
-
-        _emit(
-            progress,
-            {
-                "type": "merge_stage",
-                "stage": "select_targets",
-                "forms": len(selected_forms),
-                "total_units": len(selected_forms) + 2,
+        destination = filing_paths.target_plan_dir(run_id)
+        existing = reuse_existing_plan(
+            destination,
+            run_id,
+            scope,
+            expected_meta={
+                "forms": list(forms),
+                "amendment": amendment,
+                "limit": limit,
+                "document_suffixes": list(document_suffixes),
             },
         )
-
-        counts = {}
-        for form_name in sorted(selected_forms):
-            form_part = form_name.replace("/", "_")
-            destination_file = target_root / f"form={form_part}" / "data.parquet"
-            if destination_file.exists():
-                destination_file.unlink()
-            destination_file.parent.mkdir(parents=True, exist_ok=True)
-            where = ""
-            params = []
-            if limit is not None:
-                if limit < 0:
-                    raise ValueError("limit must be non-negative")
-                where = "LIMIT ?"
-                params = [limit]
-            if document_suffixes:
-                suffix_filter = suffix_sql("document_path", document_suffixes)
-                where = f"WHERE ({suffix_filter}) " + where
-            file_list = ", ".join(f"'{p}'" for p in plan_target_files)
-            query = f"""
-                SELECT * FROM read_parquet([{file_list}])
-                WHERE form = '{form_name}'
-                  AND ({suffix_sql("document_path", document_suffixes)})
-                ORDER BY document_locator_key, occurrence_id
-                {where}
-            """
-            with DuckDBStaging(
-                destination.parent / "_plan_staging.duckdb",
-                threads=resources.threads,
-                memory_limit=resources.memory_limit,
-                cleanup_root=False,
-            ) as staging:
-                counts[form_name] = staging.copy_query(query, destination_file, params)
+        if existing is not None:
             _emit(
                 progress,
                 {
                     "type": "merge_stage",
-                    "stage": f"targets:{form_name}",
-                    "rows": counts[form_name],
+                    "stage": "publish_plan",
+                    "rows": int(existing.get("selected_rows") or 0),
+                    "reused": True,
+                },
+            )
+            return existing
+
+        with staged_plan_bundle(destination, run_id) as staging_bundle:
+            target_root = staging_bundle / "targets"
+            target_root.mkdir(parents=True, exist_ok=True)
+
+            target_files = [m["artifact_path"] for m in target_manifests]
+            plan_target_files = []
+            for art_path in target_files:
+                p = Path(art_path)
+                if not p.is_absolute():
+                    p = artifacts_root / p
+                plan_target_files.append(str(p))
+
+            if not selected_forms:
+                file_list = ", ".join(f"'{p}'" for p in plan_target_files)
+                with DuckDBStaging(
+                    transient_root / "_form_discovery.duckdb",
+                    threads=resources.threads,
+                    memory_limit=resources.memory_limit,
+                    cleanup_root=False,
+                ) as staging:
+                    selected_forms = {
+                        str(row[0])
+                        for row in staging.execute(
+                            f"SELECT DISTINCT form FROM read_parquet([{file_list}]) WHERE form IS NOT NULL"
+                        )
+                    }
+
+            _emit(
+                progress,
+                {
+                    "type": "merge_stage",
+                    "stage": "select_targets",
+                    "forms": len(selected_forms),
+                    "total_units": len(selected_forms) + 2,
                 },
             )
 
-        target_files_out = sorted(target_root.glob("form=*/data.parquet"))
-        unique_locators = 0
-        if target_files_out:
-            file_list = ", ".join(f"'{p}'" for p in target_files_out)
-            loc_dest = destination / "locator_groups.parquet"
-            with DuckDBStaging(
-                destination / "_plan_staging.duckdb",
-                threads=resources.threads,
-                memory_limit=resources.memory_limit,
-                cleanup_root=False,
-            ) as staging:
-                unique_locators = staging.copy_query(
-                    f"""
-                    SELECT DISTINCT
-                        document_locator_key,
-                        form,
-                        source_cik AS representative_cik,
-                        accession AS representative_accession,
-                        primary_document,
-                        document_path,
-                        archive_url,
-                        document_path_source
-                    FROM read_parquet([{file_list}])
-                    WHERE {suffix_sql("document_path", document_suffixes)}
-                    ORDER BY document_locator_key
-                    """,
-                    loc_dest,
+            counts = {}
+            for form_name in sorted(selected_forms):
+                form_part = form_name.replace("/", "_")
+                destination_file = target_root / f"form={form_part}" / "data.parquet"
+                destination_file.parent.mkdir(parents=True, exist_ok=True)
+                where = ""
+                params = []
+                if limit is not None:
+                    if limit < 0:
+                        raise ValueError("limit must be non-negative")
+                    where = "LIMIT ?"
+                    params = [limit]
+                if document_suffixes:
+                    suffix_filter = suffix_sql("document_path", document_suffixes)
+                    where = f"WHERE ({suffix_filter}) " + where
+                file_list = ", ".join(f"'{p}'" for p in plan_target_files)
+                query = f"""
+                    SELECT * FROM read_parquet([{file_list}])
+                    WHERE form = '{form_name}'
+                      AND ({suffix_sql("document_path", document_suffixes)})
+                    ORDER BY document_locator_key, occurrence_id
+                    {where}
+                """
+                with DuckDBStaging(
+                    transient_root / "_plan_staging.duckdb",
+                    threads=resources.threads,
+                    memory_limit=resources.memory_limit,
+                    cleanup_root=False,
+                ) as staging:
+                    counts[form_name] = staging.copy_query(
+                        query, destination_file, params
+                    )
+                _emit(
+                    progress,
+                    {
+                        "type": "merge_stage",
+                        "stage": f"targets:{form_name}",
+                        "rows": counts[form_name],
+                    },
                 )
 
-        total_rows = sum(counts.values())
-        selection_report = {
-            "scope": "full",
-            "catalog_id": catalog_id,
-            "active_targets_count": total_rows,
-            "unique_locators_count": int(unique_locators),
-            "counts": counts,
-        }
-        atomic_write_json(destination / "selection_report.json", selection_report)
+            target_files_out = sorted(target_root.glob("form=*/data.parquet"))
+            unique_locators = 0
+            if target_files_out:
+                file_list = ", ".join(f"'{p}'" for p in target_files_out)
+                loc_dest = staging_bundle / "locator_groups.parquet"
+                with DuckDBStaging(
+                    transient_root / "_plan_staging.duckdb",
+                    threads=resources.threads,
+                    memory_limit=resources.memory_limit,
+                    cleanup_root=False,
+                ) as staging:
+                    unique_locators = staging.copy_query(
+                        f"""
+                        SELECT DISTINCT
+                            document_locator_key,
+                            form,
+                            source_cik AS representative_cik,
+                            accession AS representative_accession,
+                            primary_document,
+                            document_path,
+                            archive_url,
+                            document_path_source
+                        FROM read_parquet([{file_list}])
+                        WHERE {suffix_sql("document_path", document_suffixes)}
+                        ORDER BY document_locator_key
+                        """,
+                        loc_dest,
+                    )
 
-        plan_meta = {
-            "plan_schema_version": TARGET_PLAN_SCHEMA_VERSION,
-            "run_id": run_id,
-            "plan_id": run_id,
-            "catalog_id": catalog_id,
-            "scope": "full",
-            "forms": list(forms),
-            "amendment": amendment,
-            "limit": limit,
-            "counts": counts,
-            "selected_rows": total_rows,
-            "active_targets_count": total_rows,
-            "unique_locators_count": int(unique_locators),
-            "document_suffixes": list(document_suffixes),
-        }
-        atomic_write_json(destination / "plan.json", plan_meta)
+            total_rows = sum(counts.values())
+            selection_report = {
+                "scope": SCOPE_DETERMINISTIC,
+                "catalog_id": catalog_id,
+                "active_targets_count": total_rows,
+                "unique_locators_count": int(unique_locators),
+                "counts": counts,
+            }
+            atomic_write_json(
+                staging_bundle / "selection_report.json", selection_report
+            )
+
+            plan_meta = {
+                "plan_schema_version": TARGET_PLAN_SCHEMA_VERSION,
+                "run_id": run_id,
+                "plan_id": run_id,
+                "catalog_id": catalog_id,
+                "scope": SCOPE_DETERMINISTIC,
+                "forms": list(forms),
+                "amendment": amendment,
+                "limit": limit,
+                "counts": counts,
+                "selected_rows": total_rows,
+                "active_targets_count": total_rows,
+                "unique_locators_count": int(unique_locators),
+                "document_suffixes": list(document_suffixes),
+            }
+            atomic_write_json(staging_bundle / "plan.json", plan_meta)
+
         _emit(
             progress,
             {"type": "merge_stage", "stage": "publish_plan", "rows": total_rows},
@@ -493,4 +530,10 @@ def plan(
         return plan_meta
 
 
-__all__ = ["TARGET_PLAN_SCHEMA_VERSION", "expand", "plan"]
+__all__ = [
+    "SCOPE_DETERMINISTIC",
+    "SCOPE_POLICY",
+    "TARGET_PLAN_SCHEMA_VERSION",
+    "expand",
+    "plan",
+]

@@ -67,14 +67,18 @@ def main(argv: list[str] | None = None) -> int:
     plan_parser.add_argument("--output-root", default=None)
     plan_parser.add_argument(
         "--scope",
-        choices=("full", "fixture"),
-        default="full",
-        help="selection scope: 'full' for deterministic filtering, 'fixture' for policy-driven selection",
+        choices=("deterministic", "policy"),
+        default="deterministic",
+        help=(
+            "selection scope: 'deterministic' for full deterministic filtering, "
+            "'policy' for policy-driven selection (selection strategy only; "
+            "Phase 2.5 acquisition mode is chosen separately)"
+        ),
     )
     plan_parser.add_argument(
         "--selection-policy",
         default=None,
-        help="path to selection policy JSON file (required when scope=fixture)",
+        help="path to selection policy JSON file (required when scope=policy)",
     )
     plan_parser.add_argument(
         "--seed-cik",
@@ -102,7 +106,7 @@ def main(argv: list[str] | None = None) -> int:
     )
 
     expand_parser = commands.add_parser(
-        "expand", help="create an expanded fixture-scope child plan"
+        "expand", help="create an expanded policy-driven child plan"
     )
     expand_parser.add_argument("--parent-plan", required=True)
     expand_parser.add_argument("--target-units", type=int, required=True)

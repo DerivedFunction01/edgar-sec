@@ -9,6 +9,7 @@ estimated time to completion (ETA), and per-chunk worker status.
 from __future__ import annotations
 
 import argparse
+import importlib
 import json
 import math
 import os
@@ -181,25 +182,30 @@ def _inspect_run_metadata(
     return None, ""
 
 
+def _filing_phase_paths(env: dict[str, str] | None):
+    """Resolve typed Phase 2 filing paths for the given artifacts root."""
+    paths_module = importlib.import_module("phases.02_filing_extraction.core.paths")
+    return paths_module.resolve_filing_paths(env=env)
+
+
 def _discover_target_plan(
     artifacts_root: Path, run_id: str | None = None
 ) -> tuple[int | None, str | None, str | None]:
     """Discover total planned documents, plan ID, and scope from target plans."""
     env = {"ARTIFACTS_ROOT": str(artifacts_root)} if artifacts_root else None
-    plans_dir = resolve_paths(env=env).dataset_manifests(
-        "filing_extraction", "target_plans"
-    )
+    plans_dir = _filing_phase_paths(env).target_plans_root
     if not plans_dir.is_dir():
         return None, None, None
 
-    for plan_path in sorted(
-        plans_dir.iterdir(),
-        key=lambda p: p.stat().st_mtime if p.exists() else 0,
-        reverse=True,
-    ):
-        if not plan_path.is_dir() or (
-            run_id and run_id != "local" and plan_path.name != run_id
-        ):
+    def _mtime_sorted(root: Path) -> list[Path]:
+        return sorted(
+            (p for p in root.iterdir() if p.is_dir() and not p.name.startswith(".")),
+            key=lambda p: p.stat().st_mtime if p.exists() else 0,
+            reverse=True,
+        )
+
+    for plan_path in _mtime_sorted(plans_dir):
+        if run_id and run_id != "local" and plan_path.name != run_id:
             continue
         plan_file = plan_path / "plan.json"
         if plan_file.is_file():

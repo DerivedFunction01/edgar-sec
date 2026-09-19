@@ -178,7 +178,9 @@ def find_target_databases(
         found.extend(sorted(phase_paths.runs_root.rglob("*.sqlite")))
 
     # Search in finalized manifests directory
-    manifests_dir = paths_resolver.dataset_manifests("filing_documents", "final")
+    manifests_dir = paths_resolver.dataset_manifests(
+        "webpage_storage", "partition_artifacts"
+    )
     if manifests_dir.is_dir():
         found.extend(sorted(manifests_dir.rglob("*.sqlite")))
         found.extend(sorted(manifests_dir.rglob("*.db")))

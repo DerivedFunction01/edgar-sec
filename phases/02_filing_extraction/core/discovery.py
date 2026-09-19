@@ -9,6 +9,7 @@ from defs.runtime.paths import resolve_paths
 from defs.storage import load_json
 
 from .paths import resolve_filing_paths
+from .selection_policy import discover_policies as _discover_policies
 
 
 def _safe_int(value: Any) -> int:
@@ -36,6 +37,10 @@ def discover_catalogs(manifests_root: str | None = None) -> list[dict]:
         try:
             data = load_json(snap_manifest)
             if not isinstance(data, dict):
+                continue
+            # The manifests tree also holds upstream Phase 1 metadata
+            # snapshot manifests; only filing-catalog snapshots are catalogs.
+            if data.get("manifest_kind") != "filing_catalog_snapshot":
                 continue
             cat_id = str(
                 data.get("snapshot_id")
@@ -68,15 +73,20 @@ def discover_plans(
     runs_root: str | None = None, manifests_root: str | None = None
 ) -> list[dict]:
     """Return summaries for published and transient target plans."""
+    if manifests_root is None:
+        filing_paths = resolve_filing_paths()
+    else:
+        filing_paths = resolve_filing_paths(
+            env={"ARTIFACTS_ROOT": str(Path(manifests_root).parent)}
+        )
     resolved = resolve_paths("filing_extraction")
     if runs_root is None:
         runs_root = str(resolved.runs_root)
-    if manifests_root is None:
-        manifests_root = str(resolved.project.manifests_root)
 
     roots_to_scan = [
         Path(runs_root),
-        Path(manifests_root) / "filing_extraction" / "target_plans" / "final",
+        # Immutable published collection of target-plan bundles.
+        filing_paths.target_plans_root,
     ]
 
     seen_plan_ids = set()
@@ -86,6 +96,9 @@ def discover_plans(
         if not root.exists():
             continue
         for plan_file in sorted(root.glob("*/plan.json")):
+            # Skip transient staging bundles during atomic publication.
+            if plan_file.parent.name.startswith("."):
+                continue
             plan = load_json(plan_file, default=None)
             if not isinstance(plan, dict):
                 continue
@@ -107,7 +120,7 @@ def discover_plans(
                     "plan_id": plan_id,
                     "path": str(plan_file.parent),
                     "catalog_id": plan.get("catalog_id"),
-                    "scope": plan.get("scope", "full"),
+                    "scope": plan.get("scope", "deterministic"),
                     "policy_corpus": plan.get("policy_corpus"),
                     "policy_fingerprint": plan.get("policy_fingerprint"),
                     "forms": list(plan.get("forms") or []),
@@ -122,6 +135,14 @@ def discover_plans(
     return summaries
 
 
+def discover_policies() -> list[dict]:
+    """Summarize valid selection policy JSON files in the Phase 2 artifact tree."""
+    try:
+        return _discover_policies()
+    except (OSError, ValueError):
+        return []
+
+
 def status(manifests_root: str | None = None, runs_root: str | None = None) -> dict:
     """Combined published-catalog and plan discovery."""
     return {
@@ -130,4 +151,9 @@ def status(manifests_root: str | None = None, runs_root: str | None = None) -> d
     }
 
 
-__all__ = ["discover_catalogs", "discover_plans", "status"]
+__all__ = [
+    "discover_catalogs",
+    "discover_plans",
+    "discover_policies",
+    "status",
+]

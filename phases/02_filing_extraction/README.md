@@ -22,10 +22,15 @@ The interactive menu offers:
 
 1. Materialize catalog — pick a finalized Phase 01 artifact or manifest and an
    output root; produces a catalog directory through bounded DuckDB staging.
-2. Plan filing targets — pick a catalog, optional form filters (defaulting to
-     any configured `target_forms`), repeatable `--document-suffix` filters,
-     an amendment policy (`both`/`original`/`amendments`), and an optional
-     limit; writes an immutable target-plan directory.
+2. Plan filing targets — pick a catalog, then a selection scope:
+   `deterministic` applies form, amendment, and document-suffix filters to the
+   whole catalog; `policy-driven` selects locators with a selection policy.
+   The policy picker lists every valid selection policy JSON found in the
+   Phase 02 artifact tree (for example `selection_policy.json` and
+   `selection_policy_copy.json`), accepts an explicit path, and can generate a
+   default template when none exist. Both scopes write an immutable
+   target-plan bundle; Phase 2.5 acquisition mode is chosen later and is
+   independent of this scope.
 3. Show status — lists discovered catalogs and target plans from their manifests
    and `plan.json` files without scanning Parquet rows or re-fetching source data.
 0. Exit
@@ -82,13 +87,16 @@ environment → machine-derived value.
 .venv/bin/python -m phases.02_filing_extraction.cli materialize \
   --source-manifest .artifacts/manifests/metadata/submission_metadata/final/<artifact-id>.json
 .venv/bin/python -m phases.02_filing_extraction.cli plan \
-  --catalog <catalog-id-or-final-manifest-directory> \
+  --catalog <catalog-id-or-snapshot-directory> --scope deterministic \
   --form 10-K --form 10-K/A --form 10-K405 --form 10-KSB --form 10-KT --form 10KSB
+.venv/bin/python -m phases.02_filing_extraction.cli plan \
+  --catalog <catalog-id> --scope policy \
+  --selection-policy .artifacts/filing_extraction/selection_policy.json
 # Or plan with custom config override:
 .venv/bin/python -m phases.02_filing_extraction.cli plan \
   --catalog <catalog-id> --config .artifacts/filing_extraction/config.json
 .venv/bin/python -m phases.02_filing_extraction.cli expand \
-  --parent-plan <fixture-plan-directory> --target-units 10000 \
+  --parent-plan <policy-plan-directory> --target-units 10000 \
   --selection-policy <selection-policy.json>
 .venv/bin/python -m phases.02_filing_extraction.cli status
 ```
@@ -116,11 +124,41 @@ accession, and document path.
 Target and occurrence-source artifacts are physically unordered in Phase 02.
 Identity and provenance fields are retained; later phases may create keys,
 indexes, or sorted derivatives. Staging tables are removed after success or
-failure and are never included in artifact bundles. Published outputs are
-`manifests/filing_extraction/company_profiles/final/company_profiles.parquet`,
-and `manifests/filing_extraction/filing_targets/final/form=<key>/data.parquet`.
+failure and are never included in artifact bundles. The materialized catalog
+is published as the durable snapshot
+`manifests/filing_extraction/filing_catalog/snapshots/<snapshot-id>/`
+(`snapshot.manifest.json`, `company_profiles.parquet`, and
+`filing_targets/part-*.parquet`) with a `current.json` pointer.
 
-Fixture-scope plans can be expanded without rerunning Phase 01 or fetching SEC
+## Target plans
+
+Target plans are immutable, selectable work-order bundles consumed by Phase
+2.5, not dataset snapshots: every published plan stays addressable and no plan
+is implicitly "current". `plan` publishes to
+`manifests/filing_extraction/target_plans/<plan-id>/` containing `plan.json`
+(the Phase 2.5 entry point), `selection_report.json`,
+`locator_groups.parquet`, and `targets/form=<key>/data.parquet` (plus
+`reserve_targets.parquet` when a reserve selection exists).
+
+Publication is atomic: the bundle is built in a transient staging directory
+beside its destination and renamed into place only when complete, so a
+published plan is never partially visible. Plan IDs are content-derived. An
+exact rerun validates the published bundle and reuses it; an incomplete or
+diverging directory is reported as a conflict and must be removed manually —
+published plans are never rewritten or deleted in place.
+
+The `--scope` value records the selection strategy only:
+
+- `deterministic` — filter the whole catalog by form, amendment policy, and
+  document suffixes (the default);
+- `policy` — policy-driven deficit selection via a selection policy JSON.
+
+It does not encode how documents are fetched. Phase 2.5 chooses its acquisition
+mode (`--mode fixture` for the offline fixture CAS or `--mode production` for
+the live SEC broker) when it executes the plan, and the same plan bundle can be
+consumed in either mode.
+
+Policy-driven plans can be expanded without rerunning Phase 01 or fetching SEC
 documents. `expand` creates a new immutable child plan, preserves every parent
 locator, and adds locators until the absolute `--target-units` count is met.
 The count is for unique document locators; occurrence fan-out is reported
@@ -192,7 +230,7 @@ Finalized Phase 01 Artifact (submission_metadata.parquet)
 
 ## Expanding Fixtures and Sample Datasets (e.g. 5,000 → 10,000 Locators)
 
-For an existing fixture-scope selection, retain the original plan and expand it:
+For an existing policy-driven selection, retain the original plan and expand it:
 
 ```bash
 .venv/bin/python -m phases.02_filing_extraction.cli expand \

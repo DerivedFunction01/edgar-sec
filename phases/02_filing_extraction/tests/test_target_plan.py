@@ -1,4 +1,4 @@
-"""Unit and contract tests for Phase 02 target plan (full and fixture scopes)."""
+"""Unit and contract tests for Phase 02 target plans (deterministic and policy scopes)."""
 
 from __future__ import annotations
 
@@ -160,14 +160,14 @@ def catalog_fixture(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> Path:
     return tmp_path
 
 
-def test_plan_full_scope(catalog_fixture: Path) -> None:
+def test_plan_deterministic_scope(catalog_fixture: Path) -> None:
     result = plan(
         catalog="cat123",
-        scope="full",
+        scope="deterministic",
         forms=("10-K",),
     )
 
-    assert result["scope"] == "full"
+    assert result["scope"] == "deterministic"
     assert result["catalog_id"] == "cat123"
     assert result["counts"]["10-K"] == 3
     assert result["unique_locators_count"] == 3
@@ -177,16 +177,70 @@ def test_plan_full_scope(catalog_fixture: Path) -> None:
         / "manifests"
         / "filing_extraction"
         / "target_plans"
-        / "final"
         / result["plan_id"]
     )
     assert (plan_dir / "plan.json").is_file()
     assert (plan_dir / "targets" / "form=10-K" / "data.parquet").is_file()
     assert (plan_dir / "locator_groups.parquet").is_file()
     assert (plan_dir / "selection_report.json").is_file()
+    assert not list(plan_dir.parent.glob(".staging-*"))
 
 
-def test_plan_fixture_scope(catalog_fixture: Path) -> None:
+def test_plan_deterministic_scope_reuses_existing_bundle(
+    catalog_fixture: Path,
+) -> None:
+    first = plan(
+        catalog="cat123",
+        scope="deterministic",
+        forms=("10-K",),
+    )
+    plan_dir = (
+        catalog_fixture
+        / "manifests"
+        / "filing_extraction"
+        / "target_plans"
+        / first["plan_id"]
+    )
+    marker = plan_dir / "reuse_marker.txt"
+    marker.write_text("untouched", encoding="utf-8")
+
+    second = plan(
+        catalog="cat123",
+        scope="deterministic",
+        forms=("10-K",),
+    )
+
+    assert second == first
+    assert marker.is_file()
+
+
+def test_plan_deterministic_scope_fails_on_incomplete_bundle(
+    catalog_fixture: Path,
+) -> None:
+    first = plan(
+        catalog="cat123",
+        scope="deterministic",
+        forms=("10-K",),
+    )
+    plan_dir = (
+        catalog_fixture
+        / "manifests"
+        / "filing_extraction"
+        / "target_plans"
+        / first["plan_id"]
+    )
+    (plan_dir / "locator_groups.parquet").unlink()
+
+    with pytest.raises(ValueError, match="incomplete or conflicts"):
+        plan(
+            catalog="cat123",
+            scope="deterministic",
+            forms=("10-K",),
+        )
+    assert plan_dir.is_dir()
+
+
+def test_plan_policy_scope(catalog_fixture: Path) -> None:
     policy = SelectionPolicy(
         corpus_id="test_corpus",
         forms=["10-K"],
@@ -203,11 +257,11 @@ def test_plan_fixture_scope(catalog_fixture: Path) -> None:
 
     result = plan(
         catalog="cat123",
-        scope="fixture",
+        scope="policy",
         selection_policy_path=pol_file,
     )
 
-    assert result["scope"] == "fixture"
+    assert result["scope"] == "policy"
     assert result["catalog_id"] == "cat123"
     assert result["policy_corpus"] == "test_corpus"
     assert result["active_targets_count"] == 2
@@ -218,7 +272,6 @@ def test_plan_fixture_scope(catalog_fixture: Path) -> None:
         / "manifests"
         / "filing_extraction"
         / "target_plans"
-        / "final"
         / result["plan_id"]
     )
     assert (plan_dir / "plan.json").is_file()
@@ -226,9 +279,60 @@ def test_plan_fixture_scope(catalog_fixture: Path) -> None:
     assert (plan_dir / "locator_groups.parquet").is_file()
     assert (plan_dir / "reserve_targets.parquet").is_file()
     assert (plan_dir / "selection_report.json").is_file()
+    assert not list(plan_dir.parent.glob(".staging-*"))
 
 
-def test_expand_fixture_plan_preserves_parent_selection(catalog_fixture: Path) -> None:
+def test_plan_policy_scope_reuses_existing_bundle(catalog_fixture: Path) -> None:
+    policy = SelectionPolicy(
+        corpus_id="test_corpus",
+        forms=["10-K"],
+        era_bands=[
+            EraBand(name="era_2021", start_year=2021, end_year=2022),
+            EraBand(name="era_2022", start_year=2022, end_year=2023),
+            EraBand(name="era_2023", start_year=2023, end_year=2024),
+        ],
+        base_content_units=2,
+        reserve_size=1,
+    )
+    pol_file = catalog_fixture / "policy.json"
+    policy.write(pol_file)
+
+    first = plan(
+        catalog="cat123",
+        scope="policy",
+        selection_policy_path=pol_file,
+    )
+    plan_dir = (
+        catalog_fixture
+        / "manifests"
+        / "filing_extraction"
+        / "target_plans"
+        / first["plan_id"]
+    )
+    marker = plan_dir / "reuse_marker.txt"
+    marker.write_text("untouched", encoding="utf-8")
+
+    second = plan(
+        catalog="cat123",
+        scope="policy",
+        selection_policy_path=pol_file,
+    )
+
+    assert second["plan_id"] == first["plan_id"]
+    assert second["plan_fingerprint"] == first["plan_fingerprint"]
+    assert marker.is_file()
+
+
+def test_plan_rejects_invalid_scope(catalog_fixture: Path) -> None:
+    with pytest.raises(ValueError, match="scope must be"):
+        plan(
+            catalog="cat123",
+            scope="fixture",
+            forms=("10-K",),
+        )
+
+
+def test_expand_policy_plan_preserves_parent_selection(catalog_fixture: Path) -> None:
     policy = SelectionPolicy(
         corpus_id="test_corpus",
         forms=["10-K"],
@@ -244,7 +348,7 @@ def test_expand_fixture_plan_preserves_parent_selection(catalog_fixture: Path) -
     policy.write(pol_file)
     parent = plan(
         catalog="cat123",
-        scope="fixture",
+        scope="policy",
         selection_policy_path=pol_file,
     )
     parent_dir = (
@@ -252,7 +356,6 @@ def test_expand_fixture_plan_preserves_parent_selection(catalog_fixture: Path) -
         / "manifests"
         / "filing_extraction"
         / "target_plans"
-        / "final"
         / parent["plan_id"]
     )
 

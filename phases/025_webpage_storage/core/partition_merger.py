@@ -22,6 +22,7 @@ from defs.sql import (
     Star,
     Table,
     col,
+    insert_values,
     make_sql_executor,
 )
 
@@ -309,4 +310,32 @@ def merge_partition(
     )
 
 
-__all__ = ["PartitionMergeResult", "merge_partition"]
+def append_occurrences(
+    partition_db_path: str | Path, occurrences: Iterable[dict]
+) -> int:
+    """Append occurrence-only rows resolved from an existing snapshot."""
+    rows = list(occurrences)
+    if not rows:
+        return 0
+    executor = make_sql_executor(partition_db_path, dialect="sqlite")
+    try:
+        create_schema(executor, partition_tables_ddl())
+        executor.transaction(
+            [
+                executor.compiler.compile(
+                    insert_values(
+                        FILING_OCCURRENCES_TABLE,
+                        row,
+                        on_conflict=DoNothing(),
+                    )
+                )
+                for row in rows
+            ]
+        )
+        create_partition_indexes(executor)
+    finally:
+        executor.close()
+    return len(rows)
+
+
+__all__ = ["PartitionMergeResult", "append_occurrences", "merge_partition"]

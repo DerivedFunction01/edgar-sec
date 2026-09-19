@@ -9,18 +9,25 @@ from dataclasses import asdict, dataclass
 from pathlib import Path
 from typing import Any
 
+from defs.runtime.artifacts import get_current_snapshot_pointer
 from defs.runtime.paths import resolve_paths
 
 from .chunk_cache import find_completed_chunk_db, try_load_completed_chunk
 from .chunk_persistence import ChunkResult
 from .chunk_worker import process_chunk
 from .fetcher import ArchiveFetcher, make_archive_fetcher
-from .partition_merger import PartitionMergeResult, merge_partition
+from .partition_handoff import write_handoff
+from .partition_merger import (
+    PartitionMergeResult,
+    append_occurrences,
+    merge_partition,
+)
 from .schemas import (
     DocumentLocator,
     FilingOccurrence,
     doc_id,
 )
+from .snapshot import SnapshotReader
 from .targets import (
     calculate_optimal_chunk_size,
     load_targets,
@@ -45,7 +52,7 @@ def run_partition(
     mode: str = "fixture",
     fixture_paths: list[str | Path] | None = None,
     http_client=None,
-    run_id: str = "local",
+    run_id: str | None = None,
     partition_id: int = 1,
     partition_count: int = 1,
     chunk_size: int | None = None,
@@ -56,6 +63,8 @@ def run_partition(
     broker_socket: str | Path | None = None,
     progress=None,
     processor=None,
+    base_snapshot_id: str | None = None,
+    artifacts_root: str | Path | None = None,
 ) -> dict[str, Any]:
     """Acquire one deterministic partition and merge its worker chunks.
 
@@ -67,16 +76,48 @@ def run_partition(
     if workers < 1:
         raise ValueError("workers must be positive")
     locators, occurrences, plan = load_targets(plan_dir)
+    if run_id is None:
+        run_id = f"run-{plan.get('plan_id') or Path(plan_dir).name}"
+    if processor is None:
+        import importlib
+
+        processor = importlib.import_module(
+            "phases.025_webpage_storage.processors"
+        ).DefaultFilingProcessor()
     selected = partition_locators(locators, partition_id, partition_count)
+    root = Path(artifacts_root or resolve_paths().artifacts_root)
+    if base_snapshot_id is None:
+        pointer = get_current_snapshot_pointer(
+            root, phase="webpage_storage", dataset="normalized_documents"
+        )
+        base_snapshot_id = pointer.get("snapshot_id") if pointer else None
+    base_reader = SnapshotReader(root, base_snapshot_id) if base_snapshot_id else None
+    selected_doc_ids = {
+        doc_id(locator.accession, locator.document_path) for locator in selected
+    }
+    cached_doc_ids = set()
+    if base_reader is not None:
+        cached_doc_ids = {
+            str(row["doc_id"])
+            for row in base_reader.index_rows()
+            if str(row["doc_id"]) in selected_doc_ids
+        }
+    fetch_selected = [
+        locator
+        for locator in selected
+        if doc_id(locator.accession, locator.document_path) not in cached_doc_ids
+    ]
 
     effective_chunk_size = (
         chunk_size
         if (chunk_size is not None and chunk_size > 0)
-        else calculate_optimal_chunk_size(len(selected), workers)
+        else calculate_optimal_chunk_size(len(fetch_selected), workers)
     )
 
     occurrences_by_doc_id: dict[str, list[FilingOccurrence]] = defaultdict(list)
     for occurrence in occurrences:
+        if occurrence.doc_id not in selected_doc_ids:
+            continue
         occurrences_by_doc_id[occurrence.doc_id].append(occurrence)
 
     if fetcher is None:
@@ -130,6 +171,8 @@ def run_partition(
         "total_plan_docs": len(locators),
         "partition_id": partition_id,
         "partition_count": partition_count,
+        "base_snapshot_id": base_snapshot_id,
+        "cached_document_count": len(cached_doc_ids),
         "chunk_size": effective_chunk_size,
         "workers": workers,
         "fixture_paths": (
@@ -141,8 +184,8 @@ def run_partition(
     atomic_write_json(meta_file, run_meta)
 
     chunk_count = (
-        (len(selected) + effective_chunk_size - 1) // effective_chunk_size
-        if selected
+        (len(fetch_selected) + effective_chunk_size - 1) // effective_chunk_size
+        if fetch_selected
         else 0
     )
     chunk_results: list[ChunkResult | None] = [None] * chunk_count
@@ -151,8 +194,10 @@ def run_partition(
     # lazily: only the in-flight window ever holds chunk slices and their
     # occurrence lists instead of the whole partition.
     pending_indices: list[int] = []
-    for chunk_idx, start in enumerate(range(0, len(selected), effective_chunk_size)):
-        chunk = selected[start : start + effective_chunk_size]
+    for chunk_idx, start in enumerate(
+        range(0, len(fetch_selected), effective_chunk_size)
+    ):
+        chunk = fetch_selected[start : start + effective_chunk_size]
         chunk_id = f"chunk-{chunk_idx + 1:05d}"
 
         # Preflight check for already completed chunk
@@ -177,7 +222,7 @@ def run_partition(
     def _pending_tasks():
         for chunk_idx in pending_indices:
             start = chunk_idx * effective_chunk_size
-            chunk = selected[start : start + effective_chunk_size]
+            chunk = fetch_selected[start : start + effective_chunk_size]
             chunk_id = f"chunk-{chunk_idx + 1:05d}"
 
             assigned_worker_num = (chunk_idx % workers) + 1
@@ -315,9 +360,16 @@ def run_partition(
     # Execution complete: release coordinator-side target state before merge.
     # Reassign rather than ``del`` — the lazy task generator closes over these
     # names, and it is fully consumed by the time execution finishes.
+    cached_occurrences = [
+        occurrence.to_row()
+        for doc_id_value, occurrence_rows in occurrences_by_doc_id.items()
+        if doc_id_value in cached_doc_ids
+        for occurrence in occurrence_rows
+    ]
     occurrences_by_doc_id = None
     occurrences = None
     selected = None
+    fetch_selected = None
 
     final_chunk_results: list[ChunkResult] = [
         result for result in chunk_results if result is not None
@@ -328,7 +380,7 @@ def run_partition(
     partition_name = (
         resolve_paths()
         .dataset_manifests(
-            "webpage_storage", "filing_documents", f"partition-{partition_id:05d}"
+            "webpage_storage", "partition_artifacts", f"partition-{partition_id:05d}"
         )
         .name
         + ".sqlite"
@@ -336,6 +388,16 @@ def run_partition(
     partition_path = output / partition_name
     merge_result: PartitionMergeResult = merge_partition(
         partition_path, [result.path for result in final_chunk_results]
+    )
+    cached_count = append_occurrences(partition_path, cached_occurrences)
+    handoff = write_handoff(
+        partition_path,
+        plan_id=plan.get("plan_id"),
+        run_id=run_id,
+        partition_id=partition_id,
+        partition_count=partition_count,
+        base_snapshot_id=base_snapshot_id,
+        merge_result=merge_result,
     )
 
     with suppress(Exception):
@@ -353,7 +415,8 @@ def run_partition(
         "chunk_size": effective_chunk_size,
         "occurrence_count": sum(
             result.occurrence_count for result in final_chunk_results
-        ),
+        )
+        + cached_count,
         "failures": [
             asdict(failure)
             for result in final_chunk_results
@@ -365,6 +428,7 @@ def run_partition(
         ],
         "merge": merge_result.to_dict(),
         "partition_db": str(partition_path),
+        "partition_handoff": handoff,
     }
 
 

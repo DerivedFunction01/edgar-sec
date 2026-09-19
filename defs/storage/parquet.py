@@ -28,13 +28,20 @@ def _atomic_write_table(
     final_path: str | os.PathLike[str],
     expected_rows: int | None = None,
     expected_schema: pa.Schema | None = None,
+    compression: str = "zstd",
+    row_group_size: int | None = None,
 ) -> int:
     final_path_str = os.fspath(final_path)
     directory = os.path.dirname(os.path.abspath(final_path_str))
     os.makedirs(directory, exist_ok=True)
     tmp_path = final_path_str + ".tmp"
     try:
-        pq.write_table(table, tmp_path)
+        pq.write_table(
+            table,
+            tmp_path,
+            compression=compression,
+            row_group_size=row_group_size,
+        )
         written = pq.read_table(tmp_path)
         if expected_rows is not None and written.num_rows != expected_rows:
             raise SchemaMismatchError(
@@ -69,9 +76,16 @@ def write_table_atomic(
     *,
     expected_rows: int | None = None,
     expected_schema: pa.Schema | None = None,
+    compression: str = "zstd",
+    row_group_size: int | None = None,
 ) -> int:
     return _atomic_write_table(
-        table, final_path, expected_rows=expected_rows, expected_schema=expected_schema
+        table,
+        final_path,
+        expected_rows=expected_rows,
+        expected_schema=expected_schema,
+        compression=compression,
+        row_group_size=row_group_size,
     )
 
 

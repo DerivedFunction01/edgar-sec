@@ -19,7 +19,7 @@ defs/              # domain-neutral infrastructure (SEC HTTP, storage, runtime, 
 phases/            # phase-owned schemas, normalization, planning, validation, merge
   01_metadata_extraction/   # Phase 01 — submissions metadata (data.sec.gov)
   02_filing_extraction/     # Phase 02 — filing catalog and target planning (no network)
-  025_webpage_storage/      # Phase 2.5 — raw document acquisition and text normalization
+  025_webpage_storage/      # Phase 2.5 — acquisition, normalization, temporal snapshots
   #   (future) Phase 03 — section segmentation and boundary discovery
 roadmap/           # product and extraction specifications (Milestones M1–M5)
 scripts/           # operations and diagnostics (e.g. monitor_progress.py)
@@ -46,7 +46,8 @@ python scripts/monitor_progress.py --watch
 .venv/bin/python -m phases.01_metadata_extraction.cli plan \
     --config .artifacts/metadata/config.json
 .venv/bin/python -m phases.025_webpage_storage.cli run \
-    --scope full --mode production --workers 8
+    --scope deterministic --mode production --workers 8
+.venv/bin/python -m phases.025_webpage_storage.cli vacuum --all
 .venv/bin/python -m defs.viewer --artifacts-root .artifacts
 # Portable published-artifact transport:
 .venv/bin/python -m defs.runtime.bundle create --artifact-id <id> \
@@ -81,11 +82,14 @@ wizard expose the listing-source refresh and augmentation flow.
 ### [Phase 02 — Filing Catalog](phases/02_filing_extraction/README.md)
 
 Materializes form-partitioned filing occurrences from the finalized Phase 01
-artifact without network access or Phase 01 chunk reads, then plans deterministic
-target selections for later archive resolution. Phase 02 is no-network metadata
-preparation only; it does not fetch filing documents. Supports `--scope full`
-for comprehensive annual/quarterly multi-form target plans and deterministic
-`--config` overrides.
+artifact without network access or Phase 01 chunk reads, then plans target
+selections for later archive resolution. Phase 02 is no-network metadata
+preparation only; it does not fetch filing documents. Supports `--scope
+deterministic` for comprehensive annual/quarterly multi-form target plans,
+`--scope policy` for policy-driven deficit selection, and deterministic
+`--config` overrides. Target plans are immutable, selectable work-order bundles
+published under `manifests/filing_extraction/target_plans/<plan-id>/`; the
+selection scope is independent of the Phase 2.5 acquisition mode.
 
 Materialization is memory-bounded: source rows are processed in CIK-keyset
 batches (configurable, default 1,000) through disk-backed DuckDB staging tables
@@ -98,11 +102,13 @@ The interactive launcher (`python run.py filing-catalog`) and the canonical CLI
 contract. Filing document acquisition is a separate Phase 2.5 boundary that
 consumes these target plans; see the Phase 02 README for the scope split.
 
-### [Phase 2.5 — Webpage Storage & Normalization](phases/025_webpage_storage/README.md)
+### [Phase 2.5 — Webpage Storage, Normalization & Temporal Snapshots](phases/025_webpage_storage/README.md)
 
 Acquires and stores raw SEC filing documents (HTML, SGML, iXBRL) as
 content-addressed, zstd-compressed SQLite BLOBs, linked to Phase 02 corporate
-occurrences, and applies multi-era text normalization:
+occurrences, and applies multi-era text normalization. Successful normalized
+rows are published through immutable temporal snapshots with lightweight
+`index.parquet` files and deduplicated native-text payload Parquet files:
 - **SGML multi-document envelope unpacking**: Extracts target filings and exhibits from concatenated SGML submission envelopes (`defs.sec_documents.sgml`).
 - **String-first HTML preprocessing**: Renders HTML to canonical text, preserves tagged `<TABLE>` blocks, and unrolls nested markup (`defs.text.html`).
 - **Form-scoped checkbox constraint solver**: Evaluates glyph penalty hypotheses for report periods, filer statuses, and statutory Booleans (`defs.sec_forms.cover`).
@@ -111,9 +117,11 @@ occurrences, and applies multi-era text normalization:
 - **Live monitoring**: Real-time read-only status and throughput inspection via `scripts/monitor_progress.py`.
 
 Fixture IDs provide reusable appendable test caches: an expanded child plan reuses
-existing blobs and fetches only missing locators. Document section segmentation and
-financial table extraction are downstream phases built on `document_blobs` and
-`normalized_documents`.
+existing blobs and fetches only missing locators. Finalized partitions can move
+between machines with handoff manifests; downstream phases plan against the
+published normalized snapshot rather than worker chunks. Document section
+segmentation and financial table extraction are downstream phases built on stable
+document/occurrence identities and the snapshot reader.
 
 ## Tools
 

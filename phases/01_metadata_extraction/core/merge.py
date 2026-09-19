@@ -724,6 +724,7 @@ def merge_partition_artifacts(
             resolved_parts=resolved_parts,
             effective_cik_count=carried_rows,
             effective_input_fingerprint=expected_fingerprint,
+            filing_record_count=carried_filings,
             plan_id=plan.get("plan_id", snapshot_id),
             dataset="submission_metadata",
             phase="metadata",

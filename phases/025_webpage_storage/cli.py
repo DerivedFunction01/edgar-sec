@@ -11,6 +11,7 @@ from pathlib import Path
 from tqdm import tqdm
 from tqdm.contrib.logging import logging_redirect_tqdm
 
+from defs.runtime.artifacts import get_current_snapshot_pointer
 from defs.runtime.cli import print_json
 from defs.runtime.paths import resolve_paths
 from defs.runtime.progress import make_tqdm_callback
@@ -26,6 +27,7 @@ from defs.sql import (
 )
 
 from .core import pipeline
+from .core.partition_handoff import handoff_path, validate_handoffs, write_handoff
 from .core.partition_merger import merge_partition
 from .core.schemas import (
     ACQUISITION_FAILURES_TABLE,
@@ -33,6 +35,8 @@ from .core.schemas import (
     DOCUMENT_BLOBS_TABLE,
     FILING_OCCURRENCES_TABLE,
 )
+from .core.snapshot_merge import merge_partitions_to_snapshot
+from .core.vacuum import vacuum_snapshots
 
 
 def _add_plan_args(parser: argparse.ArgumentParser) -> None:
@@ -48,9 +52,12 @@ def _add_plan_args(parser: argparse.ArgumentParser) -> None:
     )
     parser.add_argument(
         "--scope",
-        choices=("full", "fixture"),
+        choices=("deterministic", "policy"),
         default=None,
-        help="target plan scope filter ('full' or 'fixture')",
+        help=(
+            "target plan selection-scope filter ('deterministic' or 'policy'); "
+            "independent of the acquisition mode"
+        ),
     )
     parser.add_argument(
         "--output-dir", default=None, help="published partition database directory"
@@ -117,11 +124,10 @@ def build_parser() -> argparse.ArgumentParser:
         help="worker threads (defaults to system CPU budget)",
     )
     run_parser.add_argument(
-        "--no-normalize",
-        action="store_true",
-        help="store raw payloads without running the normalization pipeline",
+        "--run-id", default=None, help="run ID (defaults to run-<plan_id>)"
     )
-    run_parser.add_argument("--run-id", default="local")
+    run_parser.add_argument("--base-snapshot", default=None)
+    run_parser.add_argument("--artifacts-root", default=None)
     run_parser.add_argument(
         "--fixtures", default=None, help="comma-separated fixture ids for fixture mode"
     )
@@ -134,12 +140,44 @@ def build_parser() -> argparse.ArgumentParser:
         help="merge transient worker chunks into a partition database",
     )
     merge_partition_parser.add_argument("--partition-id", type=int, required=True)
-    merge_partition_parser.add_argument("--run-id", default="local")
+    merge_partition_parser.add_argument("--partition-count", type=int, default=1)
+    merge_partition_parser.add_argument("--run-id", required=True)
     merge_partition_parser.add_argument(
         "--output-dir",
         default=None,
         help="published partition directory (defaults to canonical dataset path)",
     )
+
+    merge_snapshot_parser = subparsers.add_parser(
+        "merge-to-snapshot",
+        help="publish normalized documents from finalized partition databases",
+    )
+    merge_snapshot_parser.add_argument(
+        "--partition-db",
+        action="append",
+        default=None,
+        help="finalized partition database path; repeat for distributed handoffs",
+    )
+    merge_snapshot_parser.add_argument(
+        "--partition-dir",
+        default=None,
+        help="directory containing finalized partition databases",
+    )
+    merge_snapshot_parser.add_argument("--run-id", default=None)
+    merge_snapshot_parser.add_argument("--base-snapshot", default=None)
+    merge_snapshot_parser.add_argument("--target-mb", type=int, default=96)
+    merge_snapshot_parser.add_argument("--artifacts-root", default=None)
+
+    vacuum_parser = subparsers.add_parser(
+        "vacuum", help="compact normalized snapshots into one immutable snapshot"
+    )
+    vacuum_parser.add_argument("--snapshots", nargs="*", default=None)
+    vacuum_parser.add_argument("--all", action="store_true", dest="include_all")
+    vacuum_parser.add_argument("--workers", type=int, default=None)
+    vacuum_parser.add_argument("--target-mb", type=int, default=96)
+    vacuum_parser.add_argument("--purge-sources", action="store_true")
+    vacuum_parser.add_argument("--purge-dependency-closure", action="store_true")
+    vacuum_parser.add_argument("--artifacts-root", default=None)
 
     status_parser = subparsers.add_parser(
         "status", help="report partition database integrity and record counts"
@@ -150,8 +188,10 @@ def build_parser() -> argparse.ArgumentParser:
     status_parser.add_argument(
         "--run-id",
         default=None,
-        help="transient run ID to inspect (defaults to 'local' when --database is omitted)",
+        help="transient run ID to inspect",
     )
+    status_parser.add_argument("--snapshot", default=None)
+    status_parser.add_argument("--artifacts-root", default=None)
 
     fill_fixture_parser = subparsers.add_parser(
         "fill-fixture",
@@ -236,9 +276,7 @@ def _resolved_output(args) -> str:
     if getattr(args, "output_dir", None):
         return args.output_dir
     return str(
-        resolve_paths("webpage_storage").project.manifests_root
-        / "filing_documents"
-        / "final"
+        resolve_paths().dataset_manifests("webpage_storage", "partition_artifacts")
     )
 
 
@@ -279,7 +317,7 @@ def _status(database: str | None = None, run_id: str | None = None) -> dict:
         finally:
             executor.close()
 
-    target_run_id = run_id or "local"
+    target_run_id = run_id or "run-default"
     run_paths = resolve_paths("webpage_storage", target_run_id)
     meta_file = run_paths.run_root / "run_metadata.json"
     meta = {}
@@ -358,31 +396,89 @@ def main(argv: list[str] | None = None) -> int:
 
             with logging_redirect_tqdm():
                 try:
-                    processor = None
-                    if not getattr(args, "no_normalize", False):
-                        processors_mod = importlib.import_module(
-                            "phases.025_webpage_storage.processors"
-                        )
-                        processor = processors_mod.DefaultFilingProcessor()
+                    processors_mod = importlib.import_module(
+                        "phases.025_webpage_storage.processors"
+                    )
+                    processor = processors_mod.DefaultFilingProcessor()
+                    plan_id = (
+                        pipeline.load_targets(plan_dir)[2].get("plan_id")
+                        or Path(plan_dir).name
+                    )
                     result = pipeline.run_partition(
                         plan_dir,
                         _resolved_output(args),
                         mode=args.mode,
                         fixture_paths=_fixture_paths(getattr(args, "fixtures", None)),
                         http_client=http_client,
-                        run_id=args.run_id,
+                        run_id=args.run_id or f"run-{plan_id}",
                         partition_id=args.partition_id,
                         partition_count=args.partition_count,
                         chunk_size=args.chunk_size,
                         workers=workers,
                         progress=progress_cb,
                         processor=processor,
+                        base_snapshot_id=args.base_snapshot,
+                        artifacts_root=args.artifacts_root,
                     )
                 finally:
                     if pbar is not None:
                         pbar.close()
 
             print_json(result)
+            return 0
+        if args.command == "merge-to-snapshot":
+            paths: list[Path] = []
+            for value in args.partition_db or []:
+                path = Path(value)
+                if not path.is_file():
+                    raise FileNotFoundError(f"partition database not found: {path}")
+                paths.append(path)
+            if args.partition_dir:
+                paths.extend(
+                    sorted(Path(args.partition_dir).rglob("partition-*.sqlite"))
+                )
+            if not paths and args.run_id:
+                run_paths = resolve_paths("webpage_storage", args.run_id)
+                paths.extend(sorted(run_paths.run_root.rglob("partition-*.sqlite")))
+            if not paths:
+                raise ValueError(
+                    "merge-to-snapshot requires finalized partition databases"
+                )
+            handoff_paths = [path for path in paths if handoff_path(path).is_file()]
+            if handoff_paths:
+                if len(handoff_paths) != len(paths):
+                    raise ValueError("all partition databases need handoff manifests")
+                validate_handoffs(paths)
+            root = Path(args.artifacts_root or resolve_paths().artifacts_root)
+            base = args.base_snapshot
+            if base is None:
+                pointer = get_current_snapshot_pointer(
+                    root, phase="webpage_storage", dataset="normalized_documents"
+                )
+                base = pointer.get("snapshot_id") if pointer else None
+            manifest = merge_partitions_to_snapshot(
+                paths,
+                artifacts_root=root,
+                base_snapshot_id=base,
+                target_bytes=max(1, args.target_mb) * 1024 * 1024,
+            )
+            print_json(manifest)
+            return 0
+        if args.command == "vacuum":
+            root = Path(args.artifacts_root or resolve_paths().artifacts_root)
+            workers = args.workers
+            if workers is None:
+                workers = max(1, derive_resources().workers)
+            manifest = vacuum_snapshots(
+                artifacts_root=root,
+                snapshot_ids=args.snapshots,
+                include_all=args.include_all,
+                workers=workers,
+                target_bytes=max(1, args.target_mb) * 1024 * 1024,
+                purge_sources=args.purge_sources,
+                purge_dependency_closure=args.purge_dependency_closure,
+            )
+            print_json(manifest)
             return 0
         if args.command == "merge-partition":
             run_paths = resolve_paths("webpage_storage", args.run_id)
@@ -397,16 +493,42 @@ def main(argv: list[str] | None = None) -> int:
                 resolve_paths()
                 .dataset_manifests(
                     "webpage_storage",
-                    "filing_documents",
+                    "partition_artifacts",
                     f"partition-{args.partition_id:05d}",
                 )
                 .name
                 + ".sqlite"
             )
             merge_result = merge_partition(output / partition_name, chunk_dbs)
-            print_json(merge_result.to_dict())
+            handoff = write_handoff(
+                output / partition_name,
+                plan_id=None,
+                run_id=args.run_id,
+                partition_id=args.partition_id,
+                partition_count=args.partition_count,
+                merge_result=merge_result,
+            )
+            print_json({**merge_result.to_dict(), "partition_handoff": handoff})
             return 0
         if args.command == "status":
+            if args.snapshot is not None:
+                from .core.snapshot import SnapshotReader
+
+                root = Path(args.artifacts_root or resolve_paths().artifacts_root)
+                reader = SnapshotReader(root, args.snapshot)
+                rows = reader.index_rows()
+                print_json(
+                    {
+                        "snapshot_id": reader.snapshot_id,
+                        "logical_fingerprint": reader.manifest.get(
+                            "logical_fingerprint"
+                        ),
+                        "part_count": len(reader.manifest.get("resolved_parts", [])),
+                        "occurrence_count": len(rows),
+                        "payload_count": len({row["doc_id"] for row in rows}),
+                    }
+                )
+                return 0
             print_json(_status(args.database, args.run_id))
             return 0
         if args.command == "fill-fixture":

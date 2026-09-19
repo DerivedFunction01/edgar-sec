@@ -198,7 +198,7 @@ def find_target_databases(
             found.extend(sorted(runs_dir.rglob("*.sqlite")))
 
     manifests_dir = resolve_paths(env=env).dataset_manifests(
-        "filing_documents", "final"
+        "webpage_storage", "partition_artifacts"
     )
     if manifests_dir.is_dir():
         found.extend(sorted(manifests_dir.rglob("*.sqlite")))

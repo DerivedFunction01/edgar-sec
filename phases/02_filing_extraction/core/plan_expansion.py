@@ -9,6 +9,7 @@ from typing import Any
 
 from defs.storage import DuckDBStaging, canonical_json, load_json
 
+from .plan_publication import SCOPE_POLICY
 from .selection_policy import SelectionPolicy
 
 
@@ -62,8 +63,8 @@ def _validate_parent(
     catalog_id: str,
     seed_fingerprint: str,
 ) -> None:
-    if parent_meta.get("scope") != "fixture":
-        raise ValueError("plan expansion requires a fixture-scope parent plan")
+    if parent_meta.get("scope") != SCOPE_POLICY:
+        raise ValueError("plan expansion requires a policy-driven parent plan")
     if str(parent_meta.get("catalog_id")) != catalog_id:
         raise ValueError("parent and child plans must use the same catalog")
     if parent_meta.get("policy_corpus") not in (None, policy.corpus_id):
@@ -154,19 +155,19 @@ def expand(
     output_root: str | None = None,
     progress=None,
 ) -> dict[str, Any]:
-    """Create an immutable fixture child plan with the parent selection retained."""
+    """Create an immutable policy-driven child plan with the parent selection retained."""
     if target_units < 1:
         raise ValueError("target_units must be positive")
     parent_meta = load_json(Path(parent_plan).resolve() / "plan.json")
     catalog_id = parent_meta.get("catalog_id")
     if not catalog_id:
         raise ValueError("parent plan is missing catalog_id")
-    from .target_plan import plan
+    from .target_plan import SCOPE_POLICY, plan
 
     return plan(
         str(catalog_id),
         output_root,
-        scope="fixture",
+        scope=SCOPE_POLICY,
         selection_policy_path=selection_policy_path,
         seed_cik_path=seed_cik_path,
         progress=progress,
@@ -176,6 +177,7 @@ def expand(
 
 
 __all__ = [
+    "SCOPE_POLICY",
     "expand",
     "expansion_metadata",
     "plan_fingerprint",
