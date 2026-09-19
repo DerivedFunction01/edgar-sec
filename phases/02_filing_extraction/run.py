@@ -267,7 +267,11 @@ def _select_policy(catalog: str) -> str | None:
             "Y",
         )
         if answer.strip().lower() in ("", "y", "yes"):
-            _auto_generate_policy(catalog, default_path)
+            try:
+                _auto_generate_policy(catalog, default_path)
+            except (ValueError, OSError) as exc:
+                print(f"  could not generate a policy template: {exc}")
+                return None
             print(
                 f"\n  Created default selection policy template at:\n"
                 f"    {default_path}\n"

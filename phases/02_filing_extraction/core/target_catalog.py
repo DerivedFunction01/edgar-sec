@@ -14,8 +14,10 @@ def resolve_catalog_manifests(
     catalog: str, artifacts_root: Path, manifests_root: Path
 ) -> tuple[str, list[dict]]:
     """Resolve catalog target manifests from snapshots."""
-    fp = resolve_filing_paths()
-    snap_root = fp.catalog_snapshots_dir
+    filing_paths = resolve_filing_paths(
+        env={"ARTIFACTS_ROOT": str(manifests_root.parent)}
+    )
+    snap_root = filing_paths.catalog_snapshots_dir
     snap_manifest_file = None
 
     if not catalog:

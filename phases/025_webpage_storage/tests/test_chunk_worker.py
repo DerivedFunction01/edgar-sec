@@ -10,6 +10,8 @@ worker_module = importlib.import_module("phases.025_webpage_storage.core.chunk_w
 persistence_module = importlib.import_module(
     "phases.025_webpage_storage.core.chunk_persistence"
 )
+processor_module = importlib.import_module("phases.025_webpage_storage.processors")
+NoOpDocumentProcessor = processor_module.NoOpDocumentProcessor
 
 
 @dataclass
@@ -361,6 +363,7 @@ def test_resume_with_changed_processor_reprocesses_normalized_blobs(tmp_path):
         [occ],
         FakeFetcher({"a": b"payload-a"}),
         db_path,
+        processor=NoOpDocumentProcessor(),
     )
     assert len(_rows(db_path, schemas.DOCUMENT_BLOBS_TABLE)) == 1
     initial_normalized = _rows(db_path, schemas.NORMALIZED_DOCUMENTS_TABLE)

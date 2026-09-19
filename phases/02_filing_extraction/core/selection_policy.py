@@ -281,31 +281,40 @@ def auto_generate_policy(
     manifests_root: str | Path | None = None,
     dest: Path | None = None,
 ) -> SelectionPolicy:
-    """Generate a dynamic baseline selection policy from catalog year boundaries."""
+    """Generate a dynamic baseline selection policy from catalog year boundaries.
+
+    Forms are derived from the catalog snapshot manifest
+    (``form_counts``), falling back to the first filing-target shard when
+    the manifest is absent. Year boundaries are read from the same shard.
+    """
     import datetime
     from math import ceil
 
     from defs.runtime.paths import resolve_paths
-    from defs.storage import FinalizedArtifact
+    from defs.storage import FinalizedArtifact, load_json
 
-    resolved = (
-        resolve_paths("filing_extraction")
-        if manifests_root is None
-        else resolve_paths(
-            "filing_extraction",
-            env={"ARTIFACTS_ROOT": str(Path(manifests_root).parent)},
-        )
-    )
-    target_dir = resolved.project.dataset_manifests(
-        "filing_extraction", "filing_targets"
-    )
+    if manifests_root is None:
+        manifests_root = resolve_paths("filing_extraction").project.manifests_root
+    else:
+        manifests_root = Path(manifests_root)
+    manifests_root = manifests_root.resolve()
 
+    catalog_snap = (
+        manifests_root
+        / "filing_extraction"
+        / "filing_catalog"
+        / "snapshots"
+        / catalog_id
+    )
+    cat_manifest = load_json(catalog_snap / "snapshot.manifest.json", default=None)
+    forms = list((cat_manifest or {}).get("form_counts", {}).keys())
+
+    target_dir = catalog_snap / "filing_targets"
     target_files = sorted(target_dir.glob("*.parquet"))
     target_pattern = str(target_dir / "*.parquet")
     current_year = datetime.datetime.now(datetime.UTC).year
-    forms = [p.stem.replace("_", "/") for p in target_files]
+
     if not target_files:
-        forms = []
         min_year, max_year = current_year - 10, current_year
     else:
         with FinalizedArtifact(target_files[0]) as artifact:

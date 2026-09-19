@@ -178,6 +178,7 @@ def fill_fixture(
         fetch_workers=workers,
         allow_append=True,
         retry_failures=retry_failures,
+        processor=None,
     )
 
     after_failure_rows = _fixture_rows(fixture_db, ACQUISITION_FAILURES_TABLE)
