@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from collections.abc import Iterator
+from collections.abc import Iterator, Sequence
 from pathlib import Path
 from typing import Any, Self
 
@@ -83,33 +83,24 @@ class PartitionBatchReader:
         self._closed = False
 
     def iter_rows(
-        self, *, batch_size: int = 512, include_missing: bool = False
+        self,
+        *,
+        batch_size: int = 512,
+        include_missing: bool = False,
+        with_payload: bool = True,
     ) -> Iterator[list[dict[str, Any]]]:
-        """Yield deterministic batches containing one selected normalized row."""
+        """Yield deterministic batches containing one selected normalized row.
+
+        With ``with_payload=False`` the compressed blob column is excluded from
+        the projection so metadata-only planning passes can read very large
+        batches without touching blob pages.
+        """
         if batch_size < 1:
             raise ValueError("batch_size must be positive")
         last_doc_id: str | None = None
         last_occurrence_id: str | None = None
-        occurrence_columns = (
-            "occurrence_id",
-            "source_cik",
-            "accession",
-            "document_path",
-            "form",
-            "filing_date",
-            "report_date",
-            "doc_id",
-        )
-        normalized_columns = (
-            "normalized_artifact_id",
-            "source_doc_id",
-            "byte_size",
-            "normalized_payload",
-            "payload_sha256",
-            "mime_type",
-            "processor_fingerprint",
-            "schema_version",
-        )
+        occurrence_columns = OCCURRENCE_COLUMNS
+        normalized_columns = _normalized_columns(with_payload)
         while True:
             keyset = None
             if last_doc_id is not None and last_occurrence_id is not None:
@@ -164,6 +155,34 @@ class PartitionBatchReader:
             last_doc_id = str(occurrences[-1]["doc_id"])
             last_occurrence_id = str(occurrences[-1]["occurrence_id"])
 
+    def fetch_payloads(
+        self, doc_ids: Sequence[str], *, chunk_size: int = 512
+    ) -> Iterator[list[dict[str, Any]]]:
+        """Fetch selected compressed payloads for a bounded doc_id set.
+
+        Yields one list per chunk of ``doc_ids``. Each row carries the winning
+        normalized artifact for its ``source_doc_id`` including the compressed
+        ``normalized_payload`` blob and stored ``payload_sha256``. Only chunks
+        containing at least one requested doc_id are queried.
+        """
+        if chunk_size < 1:
+            raise ValueError("chunk_size must be positive")
+        unique = list(dict.fromkeys(str(doc_id) for doc_id in doc_ids))
+        for start in range(0, len(unique), chunk_size):
+            chunk = tuple(unique[start : start + chunk_size])
+            query = Select(
+                source=Table("normalized_documents"),
+                projection=tuple(col(column) for column in _normalized_columns(True)),
+                where=Membership(col("source_doc_id"), ValueList(chunk)),
+            )
+            rows: list[dict[str, Any]] = []
+            for batch in self.executor.query_batches(
+                self.executor.compiler.compile(query), batch_size=chunk_size
+            ):
+                rows.extend(batch)
+            chosen = choose_normalized(rows)
+            yield [chosen[doc_id] for doc_id in chunk if doc_id in chosen]
+
     def close(self) -> None:
         if not self._closed:
             self.executor.close()
@@ -174,6 +193,34 @@ class PartitionBatchReader:
 
     def __exit__(self, *_: object) -> None:
         self.close()
+
+
+OCCURRENCE_COLUMNS = (
+    "occurrence_id",
+    "source_cik",
+    "accession",
+    "document_path",
+    "form",
+    "filing_date",
+    "report_date",
+    "doc_id",
+)
+NORMALIZED_METADATA_COLUMNS = (
+    "normalized_artifact_id",
+    "source_doc_id",
+    "byte_size",
+    "payload_sha256",
+    "mime_type",
+    "processor_fingerprint",
+    "schema_version",
+)
+PAYLOAD_COLUMN = "normalized_payload"
+
+
+def _normalized_columns(with_payload: bool) -> tuple[str, ...]:
+    if with_payload:
+        return NORMALIZED_METADATA_COLUMNS + (PAYLOAD_COLUMN,)
+    return NORMALIZED_METADATA_COLUMNS
 
 
 __all__ = ["PartitionBatchReader"]

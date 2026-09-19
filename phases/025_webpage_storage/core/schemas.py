@@ -280,6 +280,11 @@ def partition_indexes() -> tuple[CreateIndex, ...]:
             table=DOCUMENT_BLOBS_TABLE,
             columns=(IndexColumn(col("accession")),),
         ),
+        CreateIndex(
+            name="idx_normalized_source_doc",
+            table=NORMALIZED_DOCUMENTS_TABLE,
+            columns=(IndexColumn(col("source_doc_id")),),
+        ),
     )
 
 

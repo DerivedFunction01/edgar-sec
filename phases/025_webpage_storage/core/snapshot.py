@@ -74,67 +74,33 @@ def filing_quarter(value: object) -> tuple[int, str]:
     return parsed.year, f"QTR{((parsed.month - 1) // 3) + 1}"
 
 
-def _project_source_row(row: dict) -> ProjectedOccurrence:
-    doc_id = str(row["doc_id"])
-    compressed = bytes(row["normalized_payload"])
+def _decompress(compressed: bytes) -> bytes:
     try:
-        clean_bytes = decompress_payload(compressed)
+        return decompress_payload(compressed)
     except zstandard.ZstdError:
-        clean_bytes = compressed
-    clean_text = clean_bytes.decode("utf-8", errors="replace").replace("\x00", "")
-    year, quarter = filing_quarter(row["filing_date"])
-    payload = NormalizedPayload(
-        doc_id=doc_id,
-        clean_text=clean_text,
-        payload_sha256=str(row["payload_sha256"]),
-    )
-    index_row = {
-        "occurrence_id": str(row["occurrence_id"]),
-        "source_cik": str(row["source_cik"]),
-        "accession": str(row["accession"]),
-        "form": str(row["form"]),
-        "filing_date": str(row["filing_date"])[:10],
+        return compressed
+
+
+def _clean_text(clean_bytes: bytes) -> str:
+    return clean_bytes.decode("utf-8", errors="replace").replace("\x00", "")
+
+
+def _project_index_row(raw: dict) -> dict:
+    """Build one index row from metadata-only source fields."""
+    return {
+        "occurrence_id": str(raw["occurrence_id"]),
+        "source_cik": str(raw["source_cik"]),
+        "accession": str(raw["accession"]),
+        "form": str(raw["form"]),
+        "filing_date": str(raw["filing_date"])[:10],
         "report_date": None
-        if row["report_date"] is None
-        else str(row["report_date"])[:10],
-        "document_path": str(row["document_path"]),
-        "doc_id": doc_id,
-        "mime_type": str(row["mime_type"]),
-        "byte_size": int(row["byte_size"]),
+        if raw["report_date"] is None
+        else str(raw["report_date"])[:10],
+        "document_path": str(raw["document_path"]),
+        "doc_id": str(raw["doc_id"]),
+        "mime_type": str(raw["mime_type"]),
+        "byte_size": int(raw["byte_size"]),
     }
-    return ProjectedOccurrence(index_row, payload, year, quarter)
-
-
-def iter_project_partition(
-    partition_db: str | Path,
-    *,
-    batch_size: int = 512,
-    threads: int | None = None,
-    memory_limit: str | None = None,
-    temp_directory: str | Path | None = None,
-    include_missing: bool = False,
-) -> Iterable[list[ProjectedOccurrence]]:
-    """Yield projected partition rows in bounded decompressed batches."""
-    with PartitionBatchReader(
-        partition_db,
-        threads=threads,
-        memory_limit=memory_limit,
-        temp_directory=temp_directory,
-    ) as reader:
-        for batch in reader.iter_rows(
-            batch_size=batch_size, include_missing=include_missing
-        ):
-            yield [
-                _project_source_row(row) for row in batch if "normalized_payload" in row
-            ]
-
-
-def project_partition(partition_db: str | Path) -> list[ProjectedOccurrence]:
-    """Project one partition; retained for small offline callers/tests."""
-    result: list[ProjectedOccurrence] = []
-    for batch in iter_project_partition(partition_db):
-        result.extend(batch)
-    return result
 
 
 def _index_schema() -> pa.Schema:
@@ -186,43 +152,144 @@ def _part(
     return result
 
 
-def _payload_batches(
-    payloads: list[NormalizedPayload], target_bytes: int
-) -> list[list[NormalizedPayload]]:
-    batches: list[list[NormalizedPayload]] = []
-    current: list[NormalizedPayload] = []
-    current_size = 0
-    for payload in sorted(payloads, key=lambda item: item.doc_id):
-        size = len(payload.clean_text.encode("utf-8"))
-        if current and current_size + size > target_bytes:
-            batches.append(current)
-            current = []
-            current_size = 0
-        current.append(payload)
-        current_size += size
-    if current:
-        batches.append(current)
-    return batches
+@dataclass(frozen=True, slots=True)
+class PlannedPayloadPart:
+    """One deterministically planned payload part awaiting materialization."""
+
+    year: int
+    quarter: str
+    path: Path
+    doc_ids: tuple[str, ...]
 
 
-def _logical_fingerprint(
-    index_rows: list[dict], payloads: list[NormalizedPayload]
-) -> str:
-    payload_hashes = [
-        {"doc_id": row.doc_id, "payload_sha256": row.payload_sha256}
-        for row in sorted(payloads, key=lambda item: item.doc_id)
-    ]
-    values = {
-        "index": sorted(
-            (
-                {key: value for key, value in row.items() if key != "payload_file"}
-                for row in index_rows
-            ),
-            key=lambda row: str(row["occurrence_id"]),
-        ),
-        "payloads": payload_hashes,
-    }
-    return hashlib.sha256(canonical_json(values).encode("utf-8")).hexdigest()
+def plan_payload_parts(
+    doc_sizes: dict[tuple[int, str], list[tuple[str, int]]],
+    *,
+    root: Path,
+    snapshot: str,
+    target_bytes: int,
+) -> list[PlannedPayloadPart]:
+    """Pack new documents into payload parts of at most ``target_bytes``.
+
+    Documents are packed in ``doc_id`` order within each quarter. A single
+    document larger than ``target_bytes`` becomes its own part. The layout
+    depends only on the metadata sizes, never on the source batch size.
+    """
+    planned: list[PlannedPayloadPart] = []
+    for (year, quarter), entries in sorted(doc_sizes.items()):
+        quarter_dir = (
+            root
+            / "manifests"
+            / PHASE
+            / DATASET
+            / "snapshots"
+            / snapshot
+            / str(year)
+            / quarter
+        )
+        sequence = 0
+        current: list[str] = []
+        current_bytes = 0
+        for doc_id, size in sorted(entries):
+            if current and current_bytes + size > target_bytes:
+                sequence += 1
+                planned.append(
+                    PlannedPayloadPart(
+                        year,
+                        quarter,
+                        quarter_dir / f"payload-{sequence:05d}.parquet",
+                        tuple(current),
+                    )
+                )
+                current = []
+                current_bytes = 0
+            current.append(doc_id)
+            current_bytes += size
+        if current:
+            sequence += 1
+            planned.append(
+                PlannedPayloadPart(
+                    year,
+                    quarter,
+                    quarter_dir / f"payload-{sequence:05d}.parquet",
+                    tuple(current),
+                )
+            )
+    return planned
+
+
+def _write_payload_part(
+    root: Path,
+    part: PlannedPayloadPart,
+    payload_rows: list[tuple[str, str]],
+) -> dict:
+    """Write one planned payload part and return its manifest entry."""
+    part.path.parent.mkdir(parents=True, exist_ok=True)
+    table = pa.Table.from_pylist(
+        [{"doc_id": doc_id, "clean_text": text} for doc_id, text in payload_rows],
+        schema=_payload_schema(),
+    )
+    write_table_atomic(
+        table,
+        part.path,
+        expected_rows=len(payload_rows),
+        expected_schema=_payload_schema(),
+        compression="zstd",
+        row_group_size=5000,
+    )
+    entry = _part(
+        root,
+        part.path,
+        kind="payload",
+        year=part.year,
+        quarter=part.quarter,
+        row_count=len(payload_rows),
+    )
+    del table
+    force_reclaim_memory()
+    return entry
+
+
+def _write_quarter_index_part(
+    root: Path,
+    snapshot: str,
+    year: int,
+    quarter: str,
+    index_rows: list[dict],
+) -> dict:
+    """Write the single index part for one quarter of a publication."""
+    quarter_dir = (
+        root
+        / "manifests"
+        / PHASE
+        / DATASET
+        / "snapshots"
+        / snapshot
+        / str(year)
+        / quarter
+    )
+    quarter_dir.mkdir(parents=True, exist_ok=True)
+    index_path = quarter_dir / "index-00001.parquet"
+    ordered = sorted(index_rows, key=lambda row: str(row["occurrence_id"]))
+    write_table_atomic(
+        pa.Table.from_pylist(ordered, schema=_index_schema()),
+        index_path,
+        expected_rows=len(ordered),
+        expected_schema=_index_schema(),
+        compression="zstd",
+        row_group_size=5000,
+    )
+    entry = _part(
+        root,
+        index_path,
+        kind="index",
+        year=year,
+        quarter=quarter,
+        row_count=len(ordered),
+    )
+    del ordered
+    force_reclaim_memory()
+    return entry
 
 
 def snapshot_id(
@@ -243,108 +310,81 @@ def snapshot_id(
     )
 
 
-def _write_projected_quarter_batch(
+def _materialize_planned_parts(
+    planned_parts: list[PlannedPayloadPart],
     *,
     root: Path,
-    snapshot: str,
-    year: int,
-    quarter: str,
-    occurrences: list[ProjectedOccurrence],
-    payload_paths: dict[str, str],
-    payload_hashes: dict[str, str],
-    payload_sequence: int,
-    index_sequence: int,
+    partition_paths: list[Path],
+    doc_meta: dict[str, dict],
     target_bytes: int,
-) -> tuple[list[dict], int, int]:
-    """Write one bounded quarter batch without retaining prior payload text."""
-    quarter_dir = (
-        root
-        / "manifests"
-        / PHASE
-        / DATASET
-        / "snapshots"
-        / snapshot
-        / str(year)
-        / quarter
-    )
-    quarter_dir.mkdir(parents=True, exist_ok=True)
-    current_payloads: dict[str, NormalizedPayload] = {}
-    for occurrence in occurrences:
-        doc_id = occurrence.payload.doc_id
-        prior_hash = payload_hashes.get(doc_id)
-        if prior_hash is not None and prior_hash != occurrence.payload.payload_sha256:
-            raise ValueError(f"conflicting payload for doc_id {doc_id}")
-        if prior_hash is None:
-            payload_hashes[doc_id] = occurrence.payload.payload_sha256
-            current_payloads[doc_id] = occurrence.payload
+    batch_size: int,
+    threads: int | None,
+    memory_limit: str | None,
+    temp_directory: str | Path | None,
+    progress=None,
+) -> list[dict]:
+    """Fetch blobs per planned part, verify hashes, and write payload parts."""
     parts: list[dict] = []
-    for payload_batch in _payload_batches(
-        list(current_payloads.values()), target_bytes
-    ):
-        payload_sequence += 1
-        path = quarter_dir / f"payload-{payload_sequence:05d}.parquet"
-        table = pa.Table.from_pylist(
-            [
-                {"doc_id": item.doc_id, "clean_text": item.clean_text}
-                for item in payload_batch
-            ],
-            schema=_payload_schema(),
-        )
-        write_table_atomic(
-            table,
+    if not planned_parts:
+        return parts
+    readers = [
+        PartitionBatchReader(
             path,
-            expected_rows=len(payload_batch),
-            expected_schema=_payload_schema(),
-            compression="zstd",
-            row_group_size=5000,
+            threads=threads,
+            memory_limit=memory_limit,
+            temp_directory=temp_directory,
         )
-        relative = _path_for(root, path)
-        for item in payload_batch:
-            payload_paths[item.doc_id] = relative
-        parts.append(
-            _part(
-                root,
-                path,
-                kind="payload",
-                year=year,
-                quarter=quarter,
-                row_count=len(payload_batch),
-            )
-        )
-        del table, payload_batch
-        force_reclaim_memory()
-    index_sequence += 1
-    index_path = quarter_dir / f"index-{index_sequence:05d}.parquet"
-    index_rows = [
-        {
-            **occurrence.row,
-            "payload_file": payload_paths[occurrence.payload.doc_id],
-        }
-        for occurrence in sorted(
-            occurrences, key=lambda item: str(item.row["occurrence_id"])
-        )
+        for path in partition_paths
     ]
-    write_table_atomic(
-        pa.Table.from_pylist(index_rows, schema=_index_schema()),
-        index_path,
-        expected_rows=len(index_rows),
-        expected_schema=_index_schema(),
-        compression="zstd",
-        row_group_size=5000,
-    )
-    parts.append(
-        _part(
-            root,
-            index_path,
-            kind="index",
-            year=year,
-            quarter=quarter,
-            row_count=len(index_rows),
-        )
-    )
-    del index_rows
-    force_reclaim_memory()
-    return parts, payload_sequence, index_sequence
+    try:
+        for part in planned_parts:
+            by_partition: dict[int, list[str]] = defaultdict(list)
+            for doc_id in part.doc_ids:
+                by_partition[int(doc_meta[doc_id]["partition_index"])].append(doc_id)
+            texts: dict[str, str] = {}
+            for partition_index, doc_ids in by_partition.items():
+                for chunk in readers[partition_index - 1].fetch_payloads(
+                    doc_ids, chunk_size=max(1, batch_size)
+                ):
+                    for row in chunk:
+                        doc_id = str(row["source_doc_id"])
+                        clean_bytes = _decompress(bytes(row["normalized_payload"]))
+                        if hashlib.sha256(clean_bytes).hexdigest() != str(
+                            row["payload_sha256"]
+                        ):
+                            raise ValueError(
+                                f"payload hash mismatch for doc_id {doc_id}"
+                            )
+                        texts[doc_id] = _clean_text(clean_bytes)
+                        del clean_bytes
+            missing = [doc_id for doc_id in part.doc_ids if doc_id not in texts]
+            if missing:
+                raise ValueError(
+                    f"missing payload for doc_id(s): {', '.join(missing[:5])}"
+                )
+            parts.append(
+                _write_payload_part(
+                    root,
+                    part,
+                    [(doc_id, texts[doc_id]) for doc_id in part.doc_ids],
+                )
+            )
+            if progress:
+                progress(
+                    {
+                        "type": "part_written",
+                        "year": part.year,
+                        "quarter": part.quarter,
+                        "payloads": len(part.doc_ids),
+                        "path": str(part.path),
+                    }
+                )
+            del texts
+            force_reclaim_memory()
+    finally:
+        for reader in readers:
+            reader.close()
+    return parts
 
 
 def publish_projected_snapshot(
@@ -355,13 +395,13 @@ def publish_projected_snapshot(
     operation: str = "merge",
     target_bytes: int = 96 * 1024 * 1024,
     set_current: bool = True,
-    batch_size: int = 512,
+    batch_size: int = 4096,
     threads: int | None = None,
     memory_limit: str | None = None,
     temp_directory: str | Path | None = None,
     progress=None,
 ) -> dict:
-    """Project finalized partition databases and publish a snapshot."""
+    """Publish a snapshot via a two-pass metadata plan and blob materialization."""
     root = Path(artifacts_root).resolve()
     partition_paths = [Path(path) for path in partition_dbs]
     if not partition_paths:
@@ -373,90 +413,66 @@ def publish_projected_snapshot(
         artifact_hashes=artifact_hashes,
         schema_version=f"{SNAPSHOT_SCHEMA_VERSION}:{NORMALIZED_SCHEMA_VERSION}",
     )
-    occurrence_rows: dict[str, tuple] = {}
+
+    # Pass 1: metadata-only scan; conflict checks and part planning need no blobs.
+    index_rows: dict[str, dict] = {}
     doc_quarters: dict[str, tuple[int, str]] = {}
-    payload_paths: dict[str, str] = {}
-    payload_hashes: dict[str, str] = {}
+    doc_meta: dict[str, dict] = {}
+    doc_sizes: dict[tuple[int, str], list[tuple[str, int]]] = defaultdict(list)
     logical_hasher = hashlib.sha256()
-    parts: list[dict] = []
-    payload_sequences: dict[tuple[int, str], int] = defaultdict(int)
-    index_sequences: dict[tuple[int, str], int] = defaultdict(int)
-    occurrence_count = 0
-    payload_count = 0
     for partition_index, path in enumerate(partition_paths, start=1):
         if progress:
             progress({"type": "partition_started", "partition_id": partition_index})
         partition_rows = 0
-        for projected_batch in iter_project_partition(
+        with PartitionBatchReader(
             path,
-            batch_size=batch_size,
             threads=threads,
             memory_limit=memory_limit,
             temp_directory=temp_directory,
-        ):
-            grouped: dict[tuple[int, str], list[ProjectedOccurrence]] = defaultdict(
-                list
-            )
-            for row in projected_batch:
-                occurrence_id = str(row.row["occurrence_id"])
-                fingerprint = tuple(sorted(row.row.items()))
-                prior = occurrence_rows.get(occurrence_id)
-                if prior is not None and prior != fingerprint:
-                    raise ValueError(f"conflicting occurrence {occurrence_id}")
-                if prior is not None:
-                    continue
-                occurrence_rows[occurrence_id] = fingerprint
-                current_quarter = (row.year, row.quarter)
-                prior_quarter = doc_quarters.get(row.payload.doc_id)
-                if prior_quarter is not None and prior_quarter != current_quarter:
-                    raise ValueError(
-                        f"doc_id {row.payload.doc_id} occurs in multiple quarters"
-                    )
-                doc_quarters[row.payload.doc_id] = current_quarter
-                logical_hasher.update(
-                    canonical_json(
-                        {
-                            "index": row.row,
-                            "payload_sha256": row.payload.payload_sha256,
+        ) as reader:
+            for batch in reader.iter_rows(
+                batch_size=max(1, batch_size),
+                include_missing=True,
+                with_payload=False,
+            ):
+                for raw in batch:
+                    if "payload_sha256" not in raw:
+                        continue
+                    row = _project_index_row(raw)
+                    occurrence_id = row["occurrence_id"]
+                    doc_id = row["doc_id"]
+                    year, quarter = filing_quarter(raw["filing_date"])
+                    prior = index_rows.get(occurrence_id)
+                    if prior is not None:
+                        if prior != row:
+                            raise ValueError(f"conflicting occurrence {occurrence_id}")
+                        continue
+                    prior_quarter = doc_quarters.get(doc_id)
+                    if prior_quarter is not None and prior_quarter != (year, quarter):
+                        raise ValueError(f"doc_id {doc_id} occurs in multiple quarters")
+                    doc_quarters[doc_id] = (year, quarter)
+                    payload_sha = str(raw["payload_sha256"])
+                    meta = doc_meta.get(doc_id)
+                    if meta is None:
+                        doc_meta[doc_id] = {
+                            "payload_sha256": payload_sha,
+                            "byte_size": int(raw["byte_size"]),
+                            "partition_index": partition_index,
                         }
-                    ).encode("utf-8")
-                )
-                grouped[current_quarter].append(row)
-            for (year, quarter), rows in sorted(grouped.items()):
-                before = len(payload_paths)
-                (
-                    batch_parts,
-                    payload_sequences[(year, quarter)],
-                    index_sequences[(year, quarter)],
-                ) = _write_projected_quarter_batch(
-                    root=root,
-                    snapshot=physical_id,
-                    year=year,
-                    quarter=quarter,
-                    occurrences=rows,
-                    payload_paths=payload_paths,
-                    payload_hashes=payload_hashes,
-                    payload_sequence=payload_sequences[(year, quarter)],
-                    index_sequence=index_sequences[(year, quarter)],
-                    target_bytes=target_bytes,
-                )
-                parts.extend(batch_parts)
-                payload_count += len(payload_paths) - before
-                if progress:
-                    progress(
-                        {
-                            "type": "quarter_done",
-                            "year": year,
-                            "quarter": quarter,
-                            "rows": len(rows),
-                            "payloads": len(payload_paths) - before,
-                            "parts": len(batch_parts),
-                        }
+                        doc_sizes[(year, quarter)].append(
+                            (doc_id, int(raw["byte_size"]))
+                        )
+                    elif meta["payload_sha256"] != payload_sha:
+                        raise ValueError(f"conflicting payload for doc_id {doc_id}")
+                    index_rows[occurrence_id] = row
+                    logical_hasher.update(
+                        canonical_json(
+                            {"index": row, "payload_sha256": payload_sha}
+                        ).encode("utf-8")
                     )
-            partition_rows += len(projected_batch)
-            occurrence_count += len(projected_batch)
-            del projected_batch
-            force_reclaim_memory()
+                partition_rows += len(batch)
+                del batch
+                force_reclaim_memory()
         if progress:
             progress(
                 {
@@ -465,6 +481,53 @@ def publish_projected_snapshot(
                     "rows": partition_rows,
                 }
             )
+
+    planned_parts = plan_payload_parts(
+        doc_sizes,
+        root=root,
+        snapshot=physical_id,
+        target_bytes=target_bytes,
+    )
+    doc_payload_file = {
+        doc_id: _path_for(root, part.path)
+        for part in planned_parts
+        for doc_id in part.doc_ids
+    }
+    for row in index_rows.values():
+        row["payload_file"] = doc_payload_file[row["doc_id"]]
+
+    # Pass 2: materialize one planned part at a time.
+    parts = _materialize_planned_parts(
+        planned_parts,
+        root=root,
+        partition_paths=partition_paths,
+        doc_meta=doc_meta,
+        target_bytes=target_bytes,
+        batch_size=batch_size,
+        threads=threads,
+        memory_limit=memory_limit,
+        temp_directory=temp_directory,
+        progress=progress,
+    )
+    quarter_groups: dict[tuple[int, str], list[dict]] = defaultdict(list)
+    for row in index_rows.values():
+        quarter_groups[doc_quarters[row["doc_id"]]].append(row)
+    for (year, quarter), rows in sorted(quarter_groups.items()):
+        parts.append(_write_quarter_index_part(root, physical_id, year, quarter, rows))
+        if progress:
+            progress(
+                {
+                    "type": "quarter_done",
+                    "year": year,
+                    "quarter": quarter,
+                    "rows": len(rows),
+                    "payloads": sum(
+                        1 for part in planned_parts if part.quarter == quarter
+                    ),
+                    "parts": 1,
+                }
+            )
+    parts.sort(key=lambda part: str(part["path"]))
     logical = logical_hasher.hexdigest()
     manifest = make_snapshot_manifest(
         snapshot_id=physical_id,
@@ -474,12 +537,13 @@ def publish_projected_snapshot(
         source_snapshot_ids=sorted(set(source_snapshot_ids)),
         dataset=DATASET,
         phase=PHASE,
-        effective_cik_count=occurrence_count,
+        effective_cik_count=len(index_rows),
         effective_input_fingerprint=logical,
         provenance={"operation": operation, "logical_fingerprint": logical},
     )
     manifest["logical_fingerprint"] = logical
     manifest["normalized_schema_version"] = NORMALIZED_SCHEMA_VERSION
+    manifest["effective_payload_count"] = len(doc_meta)
     publish_snapshot_manifest(
         manifest,
         artifacts_root=root,
@@ -492,8 +556,8 @@ def publish_projected_snapshot(
             {
                 "type": "publish_manifest",
                 "snapshot_id": physical_id,
-                "rows": occurrence_count,
-                "payloads": payload_count,
+                "rows": len(index_rows),
+                "payloads": len(doc_meta),
             }
         )
     return manifest
@@ -590,10 +654,11 @@ __all__ = [
     "PAYLOAD_COLUMNS",
     "PHASE",
     "NormalizedPayload",
+    "PlannedPayloadPart",
     "ProjectedOccurrence",
     "SnapshotReader",
     "filing_quarter",
-    "project_partition",
+    "plan_payload_parts",
     "publish_projected_snapshot",
     "snapshot_id",
 ]

@@ -22,6 +22,7 @@ from defs.storage import (
 
 from .queries import (
     effective_quarter_batches,
+    effective_quarter_index_rows,
     effective_snapshot_relations,
     ranked_union_relations,
     relation_group_keys,
@@ -30,10 +31,11 @@ from .queries import (
 from .snapshot import (
     DATASET,
     PHASE,
-    NormalizedPayload,
-    ProjectedOccurrence,
     SnapshotReader,
-    _write_projected_quarter_batch,
+    _path_for,
+    _write_payload_part,
+    _write_quarter_index_part,
+    plan_payload_parts,
     snapshot_id,
 )
 
@@ -168,77 +170,118 @@ def _vacuum_quarter(
     temp_directory: str | Path | None,
     progress,
 ) -> tuple[list[dict], int, int, str]:
+    """Materialize one quarter via a metadata plan and doc-bounded payload reads."""
     executor = make_sql_executor(
         dialect="duckdb",
         threads=threads,
         memory_limit=memory_limit,
         temp_directory=temp_directory,
     )
-    payload_paths: dict[str, str] = {}
-    payload_hashes: dict[str, str] = {}
-    payload_sequence = 0
-    index_sequence = 0
-    parts: list[dict] = []
-    row_count = 0
-    payload_count = 0
     logical_hasher = hashlib.sha256()
     try:
-        batches = effective_quarter_batches(
+        # Pass 1: metadata-only index rows for the quarter; plan parts by byte_size.
+        index_rows: list[dict] = []
+        doc_sizes: dict[str, int] = {}
+        for batch in effective_quarter_index_rows(
             executor,
             effective_index,
-            effective_payload,
             year=year,
             quarter=quarter,
-            batch_size=batch_size,
+            batch_size=max(1, batch_size),
+        ):
+            for row in batch:
+                row = dict(row)
+                row.pop("payload_file", None)
+                index_rows.append(row)
+                doc_sizes.setdefault(str(row["doc_id"]), int(row["byte_size"]))
+            del batch
+            force_reclaim_memory()
+        if not index_rows:
+            return [], 0, 0, hashlib.sha256(b"").hexdigest()
+        doc_sizes_by_quarter = {(year, quarter): sorted(doc_sizes.items())}
+        planned_parts = plan_payload_parts(
+            doc_sizes_by_quarter,
+            root=root,
+            snapshot=snapshot_id_value,
+            target_bytes=target_bytes,
         )
-        for rows in batches:
-            projected: list[ProjectedOccurrence] = []
-            for row in rows:
-                clean_text = str(row.pop("clean_text"))
-                index_row = dict(row)
-                payload = NormalizedPayload(
-                    str(row["doc_id"]),
-                    clean_text,
-                    hashlib.sha256(clean_text.encode("utf-8")).hexdigest(),
+        doc_payload_file = {
+            doc_id: _path_for(root, part.path)
+            for part in planned_parts
+            for doc_id in part.doc_ids
+        }
+        # Pass 2: one doc-range payload read per planned part.
+        parts: list[dict] = []
+        for part in planned_parts:
+            texts: dict[str, str] = {}
+            doc_lo = part.doc_ids[0]
+            doc_hi = part.doc_ids[-1]
+            for rows in effective_quarter_batches(
+                executor,
+                effective_index,
+                effective_payload,
+                year=year,
+                quarter=quarter,
+                doc_lo=doc_lo,
+                doc_hi=doc_hi,
+                batch_size=max(1, batch_size),
+            ):
+                for row in rows:
+                    clean_text = str(row.pop("clean_text"))
+                    row.pop("payload_file", None)
+                    doc_id = str(row["doc_id"])
+                    if doc_id not in texts:
+                        texts[doc_id] = clean_text
+                    logical_hasher.update(
+                        canonical_json(
+                            {
+                                "index": row,
+                                "payload_sha256": hashlib.sha256(
+                                    clean_text.encode("utf-8")
+                                ).hexdigest(),
+                            }
+                        ).encode("utf-8")
+                    )
+                del rows
+                force_reclaim_memory()
+            missing = [doc_id for doc_id in part.doc_ids if doc_id not in texts]
+            if missing:
+                raise ValueError(
+                    f"missing payload for doc_id(s): {', '.join(missing[:5])}"
                 )
-                projected.append(ProjectedOccurrence(index_row, payload, year, quarter))
-                logical_hasher.update(
-                    canonical_json(
-                        {"index": index_row, "payload_sha256": payload.payload_sha256}
-                    ).encode("utf-8")
-                )
-            before = len(payload_paths)
-            batch_parts, payload_sequence, index_sequence = (
-                _write_projected_quarter_batch(
-                    root=root,
-                    snapshot=snapshot_id_value,
-                    year=year,
-                    quarter=quarter,
-                    occurrences=projected,
-                    payload_paths=payload_paths,
-                    payload_hashes=payload_hashes,
-                    payload_sequence=payload_sequence,
-                    index_sequence=index_sequence,
-                    target_bytes=target_bytes,
-                )
-            )
-            parts.extend(batch_parts)
-            row_count += len(projected)
-            payload_count += len(payload_paths) - before
+            payload_rows = [(doc_id, texts[doc_id]) for doc_id in part.doc_ids]
+            parts.append(_write_payload_part(root, part, payload_rows))
             if progress:
                 progress(
                     {
-                        "type": "quarter_done",
+                        "type": "part_written",
                         "year": year,
                         "quarter": quarter,
-                        "rows": len(projected),
-                        "payloads": len(payload_paths) - before,
-                        "parts": len(batch_parts),
+                        "payloads": len(payload_rows),
+                        "path": str(part.path),
                     }
                 )
-            del projected, rows
+            del texts, payload_rows
             force_reclaim_memory()
-        return parts, row_count, payload_count, logical_hasher.hexdigest()
+        for row in index_rows:
+            row["payload_file"] = doc_payload_file[str(row["doc_id"])]
+        parts.append(
+            _write_quarter_index_part(
+                root, snapshot_id_value, year, quarter, index_rows
+            )
+        )
+        if progress:
+            progress(
+                {
+                    "type": "quarter_done",
+                    "year": year,
+                    "quarter": quarter,
+                    "rows": len(index_rows),
+                    "payloads": len(doc_sizes),
+                    "parts": len(parts),
+                }
+            )
+        return parts, len(index_rows), len(doc_sizes), logical_hasher.hexdigest()
     finally:
         executor.close()
 
@@ -255,7 +298,7 @@ def vacuum_snapshots(
     threads: int | None = None,
     memory_limit: str | None = None,
     temp_directory: str | Path | None = None,
-    batch_size: int = 512,
+    batch_size: int = 4096,
     progress=None,
 ) -> dict:
     """Materialize selected snapshots with bounded DuckDB quarter workers."""

@@ -114,21 +114,50 @@ def effective_quarter_batches(
     year: int,
     quarter: str,
     batch_size: int,
+    doc_lo: str | None = None,
+    doc_hi: str | None = None,
 ) -> Iterator[list[dict[str, Any]]]:
+    """Stream joined index/payload rows for one quarter, optionally doc-bounded."""
+    bounds = ""
+    parameters: list[Any] = [year, quarter]
+    if doc_lo is not None and doc_hi is not None:
+        bounds = " AND i.doc_id BETWEEN ? AND ?"
+        parameters.extend([doc_lo, doc_hi])
     query = f"""
         SELECT i.occurrence_id, i.source_cik, i.accession, i.form,
                i.filing_date, i.report_date, i.document_path, i.doc_id,
                i.mime_type, i.byte_size, p.clean_text
         FROM ({index_relation}) AS i
         INNER JOIN ({payload_relation}) AS p ON p.doc_id = i.doc_id
-        WHERE i.filing_year = ? AND i.filing_quarter = ?
+        WHERE i.filing_year = ? AND i.filing_quarter = ?{bounds}
         ORDER BY i.occurrence_id
+    """
+    return executor.query_sql_batches(query, tuple(parameters), batch_size=batch_size)
+
+
+def effective_quarter_index_rows(
+    executor,
+    index_relation: str,
+    *,
+    year: int,
+    quarter: str,
+    batch_size: int,
+) -> Iterator[list[dict[str, Any]]]:
+    """Stream metadata-only index rows for one quarter without payload joins."""
+    query = f"""
+        SELECT occurrence_id, source_cik, accession, form, filing_date,
+               report_date, document_path, doc_id, mime_type, byte_size,
+               payload_file
+        FROM ({index_relation}) AS effective_index
+        WHERE filing_year = ? AND filing_quarter = ?
+        ORDER BY doc_id, occurrence_id
     """
     return executor.query_sql_batches(query, (year, quarter), batch_size=batch_size)
 
 
 __all__ = [
     "effective_quarter_batches",
+    "effective_quarter_index_rows",
     "effective_snapshot_relations",
     "ranked_union_relations",
     "relation_group_keys",

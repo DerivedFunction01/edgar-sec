@@ -195,7 +195,12 @@ def build_parser() -> argparse.ArgumentParser:
     merge_snapshot_parser.add_argument("--base-snapshot", default=None)
     merge_snapshot_parser.add_argument("--target-mb", type=int, default=96)
     merge_snapshot_parser.add_argument("--artifacts-root", default=None)
-    merge_snapshot_parser.add_argument("--batch-size", type=int, default=512)
+    merge_snapshot_parser.add_argument(
+        "--batch-size",
+        type=int,
+        default=4096,
+        help="metadata read batch and payload fetch chunk; does not affect part layout",
+    )
     _add_materialization_resource_args(merge_snapshot_parser)
 
     vacuum_parser = subparsers.add_parser(
@@ -208,6 +213,12 @@ def build_parser() -> argparse.ArgumentParser:
     vacuum_parser.add_argument("--purge-sources", action="store_true")
     vacuum_parser.add_argument("--purge-dependency-closure", action="store_true")
     vacuum_parser.add_argument("--artifacts-root", default=None)
+    vacuum_parser.add_argument(
+        "--batch-size",
+        type=int,
+        default=4096,
+        help="metadata read batch and payload fetch chunk; does not affect part layout",
+    )
     _add_materialization_resource_args(vacuum_parser)
 
     status_parser = subparsers.add_parser(
@@ -470,6 +481,7 @@ def main(argv: list[str] | None = None) -> int:
                         target_bytes=max(1, args.target_mb) * 1024 * 1024,
                         purge_sources=args.purge_sources,
                         purge_dependency_closure=args.purge_dependency_closure,
+                        batch_size=max(1, args.batch_size),
                         progress=progress_cb,
                         **resources,
                     )

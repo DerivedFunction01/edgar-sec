@@ -22,7 +22,12 @@ cli = importlib.import_module("phases.025_webpage_storage.cli")
 vacuum = importlib.import_module("phases.025_webpage_storage.core.vacuum")
 
 
-def _partition(path: Path, rows: list[tuple[dict, bytes | None]]) -> Path:
+def _partition(
+    path: Path,
+    rows: list[tuple[dict, bytes | None]],
+    *,
+    stored_hash_override: str | None = None,
+) -> Path:
     path.touch()
     executor = make_sql_executor(path, dialect="sqlite")
     schemas.create_partition_schema(executor)
@@ -58,7 +63,8 @@ def _partition(path: Path, rows: list[tuple[dict, bytes | None]]) -> Path:
                             "source_doc_id": doc,
                             "byte_size": len(payload),
                             "normalized_payload": schemas.compress_payload(payload),
-                            "payload_sha256": hashlib.sha256(payload).hexdigest(),
+                            "payload_sha256": stored_hash_override
+                            or hashlib.sha256(payload).hexdigest(),
                             "mime_type": "text/html",
                             "representation": "clean_text",
                             "processor_fingerprint": "fixture:v1",
@@ -118,8 +124,10 @@ def test_bounded_materialization_emits_stage_progress(tmp_path: Path):
         progress=events.append,
     )
     assert manifest["snapshot_id"]
-    assert [event["type"] for event in events].count("partition_done") == 1
-    assert [event["type"] for event in events].count("quarter_done") == 2
+    types = [event["type"] for event in events]
+    assert types.count("partition_done") == 1
+    assert types.count("part_written") == 2
+    assert types.count("quarter_done") == 1
     assert events[-1]["type"] == "publish_manifest"
 
     vacuum_events: list[dict] = []
@@ -134,6 +142,87 @@ def test_bounded_materialization_emits_stage_progress(tmp_path: Path):
     assert compacted["snapshot_id"]
     assert any(event["type"] == "vacuum_sources_resolved" for event in vacuum_events)
     assert vacuum_events[-1]["type"] == "publish_manifest"
+
+
+def test_publication_layout_is_independent_of_batch_size(tmp_path: Path):
+    rows = [
+        (
+            _occurrence(f"{index:04d}", f"acc-{index}", "doc.htm", f"occ-{index}"),
+            f"payload text {index}".encode(),
+        )
+        for index in range(1, 6)
+    ]
+    partition = _partition(tmp_path / "partition-00001.sqlite", rows)
+
+    tight = tmp_path / "tight"
+    loose = tmp_path / "loose"
+    tight_manifest = snapshot.publish_projected_snapshot(
+        [partition], artifacts_root=tight, batch_size=1, target_bytes=1 << 30
+    )
+    loose_manifest = snapshot.publish_projected_snapshot(
+        [partition], artifacts_root=loose, batch_size=4096, target_bytes=1 << 30
+    )
+    assert tight_manifest["snapshot_id"] == loose_manifest["snapshot_id"]
+
+    def _layout(root: Path, manifest_id: str) -> list[tuple[str, int]]:
+        snapshot_dir = (
+            root
+            / "manifests"
+            / "webpage_storage"
+            / "normalized_documents"
+            / "snapshots"
+            / manifest_id
+        )
+        payload_parts = sorted(p.name for p in snapshot_dir.rglob("payload-*.parquet"))
+        index_parts = sorted(p.name for p in snapshot_dir.rglob("index-*.parquet"))
+        return [(name, 1) for name in payload_parts] + [
+            (name, 1) for name in index_parts
+        ]
+
+    tight_layout = _layout(tight, tight_manifest["snapshot_id"])
+    loose_layout = _layout(loose, loose_manifest["snapshot_id"])
+    assert tight_layout == loose_layout
+    assert len([name for name, _ in tight_layout if name.startswith("payload")]) == 1
+    assert len([name for name, _ in tight_layout if name.startswith("index")]) == 1
+
+
+def test_payload_parts_split_and_oversized_document_gets_own_part(tmp_path: Path):
+    rows = [
+        (_occurrence("0001", "acc-1", "doc.htm", "occ-1"), b"aaaaaa"),
+        (_occurrence("0002", "acc-2", "doc.htm", "occ-2"), b"bbbbbb"),
+        (_occurrence("0003", "acc-3", "doc.htm", "occ-3"), b"cccccc"),
+        (
+            _occurrence("0004", "acc-4", "doc.htm", "occ-4"),
+            b"h" * 64,
+        ),
+    ]
+    partition = _partition(tmp_path / "partition-00001.sqlite", rows)
+    manifest = snapshot.publish_projected_snapshot(
+        [partition], artifacts_root=tmp_path, target_bytes=16
+    )
+    payload_parts = [
+        part for part in manifest["resolved_parts"] if part["kind"] == "payload"
+    ]
+    # Greedy packing in doc_id order: the 64-byte document always occupies a
+    # single-row part; the three 6-byte documents pack two per part at most.
+    assert sorted(part["row_count"] for part in payload_parts) == [1, 1, 2]
+
+
+def test_payload_hash_mismatch_fails_before_publication(tmp_path: Path):
+    partition = _partition(
+        tmp_path / "partition-00001.sqlite",
+        [(_occurrence("0001", "acc-1", "doc.htm", "occ-1"), b"content")],
+        stored_hash_override="deadbeef",
+    )
+    with pytest.raises(ValueError, match="payload hash mismatch"):
+        snapshot.publish_projected_snapshot([partition], artifacts_root=tmp_path)
+    assert not (
+        tmp_path
+        / "manifests"
+        / "webpage_storage"
+        / "normalized_documents"
+        / "current.json"
+    ).exists()
 
 
 def test_cli_imports_finalized_partition_handoff(tmp_path: Path, capsys):

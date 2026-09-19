@@ -7,10 +7,8 @@ from collections import defaultdict
 from collections.abc import Iterable
 from pathlib import Path
 
-import zstandard
-
 from defs.runtime.artifacts import make_snapshot_manifest, publish_snapshot_manifest
-from defs.sql import Select, Table, col, make_sql_executor
+from defs.sql import make_sql_executor
 from defs.storage import (
     FinalizedDataset,
     canonical_json,
@@ -18,155 +16,21 @@ from defs.storage import (
     force_reclaim_memory,
 )
 
-from .partition_reader import PartitionBatchReader, choose_normalized
+from .partition_reader import PartitionBatchReader
 from .queries import relation_key_rows
-from .schemas import (
-    FILING_OCCURRENCES_TABLE,
-    NORMALIZED_DOCUMENTS_TABLE,
-    decompress_payload,
-)
 from .snapshot import (
     DATASET,
     PHASE,
-    NormalizedPayload,
-    ProjectedOccurrence,
     SnapshotReader,
-    _project_source_row,
-    _write_projected_quarter_batch,
+    _materialize_planned_parts,
+    _path_for,
+    _project_index_row,
+    _write_quarter_index_part,
     filing_quarter,
+    plan_payload_parts,
     publish_projected_snapshot,
     snapshot_id,
 )
-
-
-def _rows(path: Path, table: str, columns: tuple[str, ...]) -> list[dict]:
-    executor = make_sql_executor(path, dialect="sqlite")
-    try:
-        query = Select(
-            source=Table(table),
-            projection=tuple(col(column) for column in columns),
-        )
-        return executor.query(executor.compiler.compile(query))
-    finally:
-        executor.close()
-
-
-def _normalized_payload(row: dict) -> tuple[str, str]:
-    compressed = bytes(row["normalized_payload"])
-    try:
-        clean_bytes = decompress_payload(compressed)
-    except zstandard.ZstdError:
-        clean_bytes = compressed
-    return clean_bytes.decode("utf-8", errors="replace").replace("\x00", ""), str(
-        row["payload_sha256"]
-    )
-
-
-def project_incremental_partition(
-    partition_db: str | Path,
-    base_reader: SnapshotReader | None,
-) -> list[ProjectedOccurrence]:
-    """Project new and occurrence-only rows against an optional base snapshot."""
-    path = Path(partition_db)
-    occurrences = _rows(
-        path,
-        FILING_OCCURRENCES_TABLE,
-        (
-            "occurrence_id",
-            "source_cik",
-            "accession",
-            "document_path",
-            "form",
-            "filing_date",
-            "report_date",
-            "doc_id",
-        ),
-    )
-    normalized = choose_normalized(
-        _rows(
-            path,
-            NORMALIZED_DOCUMENTS_TABLE,
-            (
-                "source_doc_id",
-                "byte_size",
-                "normalized_payload",
-                "payload_sha256",
-                "mime_type",
-            ),
-        )
-    )
-    base_rows = base_reader.index_rows() if base_reader else []
-    base_by_doc = {str(row["doc_id"]): row for row in base_rows}
-    base_payloads = (
-        {str(row["doc_id"]): row for row in base_reader.payload_rows(base_rows)}
-        if base_reader
-        else {}
-    )
-    result: list[ProjectedOccurrence] = []
-    for occurrence in occurrences:
-        doc_id = str(occurrence["doc_id"])
-        normalized_row = normalized.get(doc_id)
-        existing = base_by_doc.get(doc_id)
-        if normalized_row is not None:
-            clean_text, payload_sha256 = _normalized_payload(normalized_row)
-            index_row = {
-                "occurrence_id": str(occurrence["occurrence_id"]),
-                "source_cik": str(occurrence["source_cik"]),
-                "accession": str(occurrence["accession"]),
-                "form": str(occurrence["form"]),
-                "filing_date": str(occurrence["filing_date"])[:10],
-                "report_date": (
-                    None
-                    if occurrence["report_date"] is None
-                    else str(occurrence["report_date"])[:10]
-                ),
-                "document_path": str(occurrence["document_path"]),
-                "doc_id": doc_id,
-                "mime_type": str(normalized_row["mime_type"]),
-                "byte_size": int(normalized_row["byte_size"]),
-            }
-            if existing is not None:
-                current_payload = base_payloads.get(doc_id)
-                if current_payload is None:
-                    continue
-                current_hash = hashlib.sha256(
-                    str(current_payload["clean_text"]).encode("utf-8")
-                ).hexdigest()
-                if current_hash != payload_sha256:
-                    raise ValueError(
-                        f"conflicting normalized content for doc_id {doc_id}"
-                    )
-                index_row["payload_file"] = existing["payload_file"]
-            payload = NormalizedPayload(doc_id, clean_text, payload_sha256)
-        elif existing is not None and doc_id in base_payloads:
-            index_row = {
-                "occurrence_id": str(occurrence["occurrence_id"]),
-                "source_cik": str(occurrence["source_cik"]),
-                "accession": str(occurrence["accession"]),
-                "form": str(occurrence["form"]),
-                "filing_date": str(occurrence["filing_date"])[:10],
-                "report_date": (
-                    None
-                    if occurrence["report_date"] is None
-                    else str(occurrence["report_date"])[:10]
-                ),
-                "document_path": str(occurrence["document_path"]),
-                "doc_id": doc_id,
-                "mime_type": existing["mime_type"],
-                "byte_size": existing["byte_size"],
-            }
-            index_row["payload_file"] = existing["payload_file"]
-            clean_text = str(base_payloads[doc_id]["clean_text"])
-            payload = NormalizedPayload(
-                doc_id,
-                clean_text,
-                hashlib.sha256(clean_text.encode("utf-8")).hexdigest(),
-            )
-        else:
-            continue
-        year, quarter = filing_quarter(occurrence["filing_date"])
-        result.append(ProjectedOccurrence(index_row, payload, year, quarter))
-    return result
 
 
 def _manifest_relation(root: Path, reader: SnapshotReader, kind: str) -> str:
@@ -245,6 +109,196 @@ def _bounded_base_rows(
     return index_rows, payload_rows
 
 
+def _plan_delta_rows(
+    partition_dbs: list[Path],
+    *,
+    index_relation: str,
+    payload_relation: str,
+    lookup,
+    batch_size: int,
+    threads: int | None,
+    memory_limit: str | None,
+    temp_directory: str | Path | None,
+    progress,
+) -> tuple[
+    dict[str, dict],
+    dict[str, tuple[int, str]],
+    dict[str, dict],
+    dict[tuple[int, str], list[tuple[str, int]]],
+    int,
+    str,
+]:
+    """Pass 1: metadata-only scan with bounded base lookups; no blob reads."""
+    delta_rows: dict[str, dict] = {}
+    delta_quarters: dict[str, tuple[int, str]] = {}
+    doc_meta: dict[str, dict] = {}
+    doc_sizes: dict[tuple[int, str], list[tuple[str, int]]] = defaultdict(list)
+    seen_occurrences: set[str] = set()
+    new_count = 0
+    delta_hasher = hashlib.sha256()
+    try:
+        for partition_index, partition_db in enumerate(partition_dbs, start=1):
+            if progress:
+                progress({"type": "partition_started", "partition_id": partition_index})
+            partition_rows = 0
+            with PartitionBatchReader(
+                partition_db,
+                threads=threads,
+                memory_limit=memory_limit,
+                temp_directory=temp_directory,
+            ) as source:
+                for raw_batch in source.iter_rows(
+                    batch_size=max(1, batch_size),
+                    include_missing=True,
+                    with_payload=False,
+                ):
+                    occurrence_ids = tuple(
+                        str(row["occurrence_id"]) for row in raw_batch
+                    )
+                    doc_ids = tuple(str(row["doc_id"]) for row in raw_batch)
+                    base_rows, base_payloads = _bounded_base_rows(
+                        lookup,
+                        index_relation,
+                        payload_relation,
+                        occurrence_ids,
+                        doc_ids,
+                    )
+                    base_docs = {str(row["doc_id"]): row for row in base_rows.values()}
+                    for raw in raw_batch:
+                        occurrence_id = str(raw["occurrence_id"])
+                        doc_id = str(raw["doc_id"])
+                        existing = base_rows.get(occurrence_id)
+                        if existing is not None:
+                            if "payload_sha256" in raw:
+                                projected = _project_index_row(raw)
+                                comparable = {
+                                    key: value
+                                    for key, value in existing.items()
+                                    if key != "payload_file"
+                                }
+                                if comparable != projected:
+                                    raise ValueError(
+                                        f"conflicting occurrence {occurrence_id}"
+                                    )
+                                base_payload = base_payloads.get(doc_id)
+                                if base_payload is None:
+                                    raise ValueError(
+                                        f"missing base payload for doc_id {doc_id}"
+                                    )
+                                if (
+                                    str(raw["payload_sha256"])
+                                    != hashlib.sha256(
+                                        str(base_payload["clean_text"]).encode("utf-8")
+                                    ).hexdigest()
+                                ):
+                                    raise ValueError(
+                                        f"conflicting normalized content for doc_id {doc_id}"
+                                    )
+                            continue
+                        if occurrence_id in seen_occurrences:
+                            raise ValueError(f"duplicate occurrence {occurrence_id}")
+                        seen_occurrences.add(occurrence_id)
+                        year, quarter = filing_quarter(raw["filing_date"])
+                        base_doc = base_docs.get(doc_id)
+                        if base_doc is not None and filing_quarter(
+                            base_doc["filing_date"]
+                        ) != (year, quarter):
+                            raise ValueError(
+                                f"doc_id {doc_id} occurs in multiple quarters"
+                            )
+                        if "payload_sha256" in raw:
+                            row = _project_index_row(raw)
+                            payload_sha = str(raw["payload_sha256"])
+                            if base_doc is not None:
+                                base_payload = base_payloads.get(doc_id)
+                                if base_payload is None:
+                                    raise ValueError(
+                                        f"missing base payload for doc_id {doc_id}"
+                                    )
+                                if (
+                                    payload_sha
+                                    != hashlib.sha256(
+                                        str(base_payload["clean_text"]).encode("utf-8")
+                                    ).hexdigest()
+                                ):
+                                    raise ValueError(
+                                        f"conflicting normalized content for doc_id {doc_id}"
+                                    )
+                                row["payload_file"] = str(base_doc["payload_file"])
+                            else:
+                                meta = doc_meta.get(doc_id)
+                                if meta is None:
+                                    doc_meta[doc_id] = {
+                                        "payload_sha256": payload_sha,
+                                        "byte_size": int(raw["byte_size"]),
+                                        "partition_index": partition_index,
+                                    }
+                                    doc_sizes[(year, quarter)].append(
+                                        (doc_id, int(raw["byte_size"]))
+                                    )
+                                elif meta["payload_sha256"] != payload_sha:
+                                    raise ValueError(
+                                        f"conflicting payload for doc_id {doc_id}"
+                                    )
+                        else:
+                            if base_doc is None or doc_id not in base_payloads:
+                                continue
+                            row = {
+                                "occurrence_id": occurrence_id,
+                                "source_cik": str(raw["source_cik"]),
+                                "accession": str(raw["accession"]),
+                                "form": str(raw["form"]),
+                                "filing_date": str(raw["filing_date"])[:10],
+                                "report_date": None
+                                if raw["report_date"] is None
+                                else str(raw["report_date"])[:10],
+                                "document_path": str(raw["document_path"]),
+                                "doc_id": doc_id,
+                                "mime_type": str(base_doc["mime_type"]),
+                                "byte_size": int(base_doc["byte_size"]),
+                                "payload_file": str(base_doc["payload_file"]),
+                            }
+                            payload_sha = hashlib.sha256(
+                                str(base_payloads[doc_id]["clean_text"]).encode("utf-8")
+                            ).hexdigest()
+                        delta_rows[occurrence_id] = row
+                        delta_quarters[occurrence_id] = (year, quarter)
+                        new_count += 1
+                        delta_hasher.update(
+                            canonical_json(
+                                {
+                                    "index": {
+                                        key: value
+                                        for key, value in row.items()
+                                        if key != "payload_file"
+                                    },
+                                    "payload_sha256": payload_sha,
+                                }
+                            ).encode("utf-8")
+                        )
+                    partition_rows += len(raw_batch)
+                    del raw_batch
+                    force_reclaim_memory()
+            if progress:
+                progress(
+                    {
+                        "type": "partition_done",
+                        "partition_id": partition_index,
+                        "rows": partition_rows,
+                    }
+                )
+    finally:
+        lookup.close()
+    return (
+        delta_rows,
+        delta_quarters,
+        doc_meta,
+        doc_sizes,
+        new_count,
+        delta_hasher.hexdigest(),
+    )
+
+
 def _merge_incremental_bounded(
     partition_dbs: list[Path],
     *,
@@ -272,182 +326,75 @@ def _merge_incremental_bounded(
         artifact_hashes=[file_sha256(path) for path in partition_dbs],
         schema_version=str(reader.manifest["schema_version"]),
     )
-    parts: list[dict] = []
-    payload_paths: dict[str, str] = {}
-    payload_hashes: dict[str, str] = {}
-    payload_sequences: dict[tuple[int, str], int] = defaultdict(int)
-    index_sequences: dict[tuple[int, str], int] = defaultdict(int)
-    seen_occurrences: set[str] = set()
-    new_count = 0
-    payload_count = 0
-    delta_hasher = hashlib.sha256()
-    try:
-        for partition_index, partition_db in enumerate(partition_dbs, start=1):
-            if progress:
-                progress({"type": "partition_started", "partition_id": partition_index})
-            with PartitionBatchReader(
-                partition_db,
-                threads=threads,
-                memory_limit=memory_limit,
-                temp_directory=temp_directory,
-            ) as source:
-                for raw_batch in source.iter_rows(
-                    batch_size=max(1, batch_size), include_missing=True
-                ):
-                    occurrence_ids = tuple(
-                        str(row["occurrence_id"]) for row in raw_batch
-                    )
-                    doc_ids = tuple(str(row["doc_id"]) for row in raw_batch)
-                    base_rows, base_payloads = _bounded_base_rows(
-                        lookup,
-                        index_relation,
-                        payload_relation,
-                        occurrence_ids,
-                        doc_ids,
-                    )
-                    base_docs = {str(row["doc_id"]): row for row in base_rows.values()}
-                    grouped: dict[tuple[int, str], list[ProjectedOccurrence]] = (
-                        defaultdict(list)
-                    )
-                    for raw in raw_batch:
-                        occurrence_id = str(raw["occurrence_id"])
-                        existing = base_rows.get(occurrence_id)
-                        if existing is not None:
-                            if "normalized_payload" in raw:
-                                projected = _project_source_row(raw)
-                                comparable = {
-                                    key: value
-                                    for key, value in existing.items()
-                                    if key != "payload_file"
-                                }
-                                if comparable != projected.row:
-                                    raise ValueError(
-                                        f"conflicting occurrence {occurrence_id}"
-                                    )
-                                base_payload = base_payloads.get(str(raw["doc_id"]))
-                                if base_payload is None:
-                                    raise ValueError(
-                                        f"missing base payload for doc_id {raw['doc_id']}"
-                                    )
-                                if (
-                                    hashlib.sha256(
-                                        projected.payload.clean_text.encode("utf-8")
-                                    ).hexdigest()
-                                    != hashlib.sha256(
-                                        str(base_payload["clean_text"]).encode("utf-8")
-                                    ).hexdigest()
-                                ):
-                                    raise ValueError(
-                                        f"conflicting normalized content for doc_id {raw['doc_id']}"
-                                    )
-                            continue
-                        if occurrence_id in seen_occurrences:
-                            raise ValueError(f"duplicate occurrence {occurrence_id}")
-                        seen_occurrences.add(occurrence_id)
-                        base_doc = base_docs.get(str(raw["doc_id"]))
-                        base_payload = base_payloads.get(str(raw["doc_id"]))
-                        if "normalized_payload" in raw:
-                            projected = _project_source_row(raw)
-                        elif base_doc is not None and base_payload is not None:
-                            clean_text = str(base_payload["clean_text"])
-                            payload = NormalizedPayload(
-                                str(raw["doc_id"]),
-                                clean_text,
-                                hashlib.sha256(clean_text.encode("utf-8")).hexdigest(),
-                            )
-                            year, quarter = filing_quarter(raw["filing_date"])
-                            projected = ProjectedOccurrence(
-                                {
-                                    "occurrence_id": occurrence_id,
-                                    "source_cik": str(raw["source_cik"]),
-                                    "accession": str(raw["accession"]),
-                                    "form": str(raw["form"]),
-                                    "filing_date": str(raw["filing_date"])[:10],
-                                    "report_date": None
-                                    if raw["report_date"] is None
-                                    else str(raw["report_date"])[:10],
-                                    "document_path": str(raw["document_path"]),
-                                    "doc_id": str(raw["doc_id"]),
-                                    "mime_type": str(base_doc["mime_type"]),
-                                    "byte_size": int(base_doc["byte_size"]),
-                                },
-                                payload,
-                                year,
-                                quarter,
-                            )
-                        else:
-                            continue
-                        if base_doc is not None and base_payload is not None:
-                            projected = ProjectedOccurrence(
-                                {
-                                    **projected.row,
-                                    "payload_file": base_doc["payload_file"],
-                                },
-                                NormalizedPayload(
-                                    projected.payload.doc_id,
-                                    str(base_payload["clean_text"]),
-                                    hashlib.sha256(
-                                        str(base_payload["clean_text"]).encode("utf-8")
-                                    ).hexdigest(),
-                                ),
-                                projected.year,
-                                projected.quarter,
-                            )
-                            payload_paths[projected.payload.doc_id] = str(
-                                base_doc["payload_file"]
-                            )
-                            payload_hashes[projected.payload.doc_id] = (
-                                projected.payload.payload_sha256
-                            )
-                        delta_hasher.update(
-                            canonical_json(
-                                {
-                                    "index": projected.row,
-                                    "payload_sha256": projected.payload.payload_sha256,
-                                }
-                            ).encode("utf-8")
-                        )
-                        grouped[(projected.year, projected.quarter)].append(projected)
-                    for (year, quarter), rows in sorted(grouped.items()):
-                        before = len(payload_paths)
-                        (
-                            batch_parts,
-                            payload_sequences[(year, quarter)],
-                            index_sequences[(year, quarter)],
-                        ) = _write_projected_quarter_batch(
-                            root=root,
-                            snapshot=physical_id,
-                            year=year,
-                            quarter=quarter,
-                            occurrences=rows,
-                            payload_paths=payload_paths,
-                            payload_hashes=payload_hashes,
-                            payload_sequence=payload_sequences[(year, quarter)],
-                            index_sequence=index_sequences[(year, quarter)],
-                            target_bytes=target_bytes,
-                        )
-                        parts.extend(batch_parts)
-                        new_count += len(rows)
-                        payload_count += len(payload_paths) - before
-                        if progress:
-                            progress(
-                                {
-                                    "type": "quarter_done",
-                                    "year": year,
-                                    "quarter": quarter,
-                                    "rows": len(rows),
-                                    "payloads": len(payload_paths) - before,
-                                    "parts": len(batch_parts),
-                                }
-                            )
-                    force_reclaim_memory()
-            if progress:
-                progress({"type": "partition_done", "partition_id": partition_index})
-    finally:
-        lookup.close()
-    if not new_count:
+    (
+        delta_rows,
+        delta_quarters,
+        doc_meta,
+        doc_sizes,
+        new_count,
+        delta_digest,
+    ) = _plan_delta_rows(
+        partition_dbs,
+        index_relation=index_relation,
+        payload_relation=payload_relation,
+        lookup=lookup,
+        batch_size=batch_size,
+        threads=threads,
+        memory_limit=memory_limit,
+        temp_directory=temp_directory,
+        progress=progress,
+    )
+    if not delta_rows:
         return reader.manifest
-    delta_digest = delta_hasher.hexdigest()
+
+    # Pass 1.5: plan new payload parts; inherited rows already carry payload_file.
+    planned_parts = plan_payload_parts(
+        doc_sizes,
+        root=root,
+        snapshot=physical_id,
+        target_bytes=target_bytes,
+    )
+    doc_payload_file = {
+        doc_id: _path_for(root, part.path)
+        for part in planned_parts
+        for doc_id in part.doc_ids
+    }
+    for row in delta_rows.values():
+        if "payload_file" not in row:
+            row["payload_file"] = doc_payload_file[row["doc_id"]]
+
+    # Pass 2: materialize one planned payload part at a time.
+    parts = _materialize_planned_parts(
+        planned_parts,
+        root=root,
+        partition_paths=partition_dbs,
+        doc_meta=doc_meta,
+        target_bytes=target_bytes,
+        batch_size=batch_size,
+        threads=threads,
+        memory_limit=memory_limit,
+        temp_directory=temp_directory,
+        progress=progress,
+    )
+    quarter_groups: dict[tuple[int, str], list[dict]] = defaultdict(list)
+    for occurrence_id, row in delta_rows.items():
+        quarter_groups[delta_quarters[occurrence_id]].append(row)
+    for (year, quarter), rows in sorted(quarter_groups.items()):
+        parts.append(_write_quarter_index_part(root, physical_id, year, quarter, rows))
+        if progress:
+            progress(
+                {
+                    "type": "quarter_done",
+                    "year": year,
+                    "quarter": quarter,
+                    "rows": len(rows),
+                    "payloads": sum(
+                        1 for part in planned_parts if part.quarter == quarter
+                    ),
+                    "parts": 1,
+                }
+            )
+    parts.sort(key=lambda part: str(part["path"]))
     inherited = list(reader.manifest.get("resolved_parts", []))
     paths = {str(part["path"]) for part in inherited}
     resolved = inherited + [part for part in parts if part["path"] not in paths]
@@ -473,7 +420,7 @@ def _merge_incremental_bounded(
             }
         ).encode("utf-8")
     ).hexdigest()
-    manifest["effective_payload_count"] = payload_count
+    manifest["effective_payload_count"] = len(doc_meta)
     publish_snapshot_manifest(
         manifest,
         artifacts_root=root,
@@ -487,7 +434,7 @@ def _merge_incremental_bounded(
                 "type": "publish_manifest",
                 "snapshot_id": physical_id,
                 "rows": new_count,
-                "payloads": payload_count,
+                "payloads": len(doc_meta),
             }
         )
     return manifest
@@ -500,7 +447,7 @@ def merge_partitions_to_snapshot(
     base_snapshot_id: str | None = None,
     target_bytes: int = 96 * 1024 * 1024,
     set_current: bool = True,
-    batch_size: int = 512,
+    batch_size: int = 4096,
     threads: int | None = None,
     memory_limit: str | None = None,
     temp_directory: str | Path | None = None,
@@ -535,4 +482,4 @@ def merge_partitions_to_snapshot(
     )
 
 
-__all__ = ["merge_partitions_to_snapshot", "project_incremental_partition"]
+__all__ = ["merge_partitions_to_snapshot"]

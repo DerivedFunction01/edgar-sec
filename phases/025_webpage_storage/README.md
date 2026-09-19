@@ -224,15 +224,30 @@ payload rows contain only `doc_id` and native UTF-8 `clean_text`.
 Incremental merges may inherit immutable payload files, so a newly discovered
 CIK can add an occurrence without rewriting the shared document payload.
 `SnapshotReader` resolves the effective index and exact payload paths. Queries
-that need only metadata never open payload files. Snapshot merge reads finalized
-SQLite partitions in bounded batches, decompresses only the current batch, and
-writes immutable quarter/index/payload parts without retaining the full
-partition in Python memory. Parquet snapshot joins and vacuum deduplication run
-through DuckDB with spill-to-disk settings (`--threads`, `--memory-limit`, and
-`--temp-directory`). `vacuum` materializes selected snapshots in a bounded
-number of quarter workers and can purge a validated dependency closure. Merge
-and vacuum report partition/quarter progress on stderr; `--no-progress` is
-available for automation.
+that need only metadata never open payload files.
+
+Snapshot publication is a two-pass planner. Pass one selects all occurrence and
+normalized metadata except the compressed blob in large batches, resolves
+conflicts from stored `payload_sha256` values, and deterministically packs new
+documents into payload parts of at most `--target-mb` (a single oversized
+document becomes its own part). Pass two fetches only each planned part's
+blobs, verifies the decompressed bytes against the planned hash, and writes the
+payload part plus one index part per quarter. Part layout therefore depends
+only on the source data and `--target-mb` — never on `--batch-size`, which only
+bounds metadata read batches and payload fetch chunks. Sparse source batches no
+longer produce sparse parts, and `--batch-size 1` still publishes one
+well-sized part per quarter. Peak memory is one planned part of decompressed
+text plus metadata for the whole publication.
+
+Incremental merges plan only genuinely new documents; occurrences that resolve
+to inherited base payloads reuse the base `payload_file` without new parts.
+Parquet snapshot joins and vacuum deduplication run through DuckDB with
+spill-to-disk settings (`--threads`, `--memory-limit`, and
+`--temp-directory`). `vacuum` plans parts from effective-relation metadata and
+materializes each part with a doc-range query, in a bounded number of quarter
+workers, and can purge a validated dependency closure. Merge and vacuum report
+partition/part/quarter progress on stderr; `--no-progress` is available for
+automation.
 
 Finalized partition databases are portable handoff artifacts. Machines may
 process partitions independently and copy only finalized databases plus their
