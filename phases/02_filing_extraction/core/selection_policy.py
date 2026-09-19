@@ -19,6 +19,9 @@ from defs.runtime.paths import resolve_paths
 from defs.storage import atomic_write_json, canonical_json, load_json
 
 POLICY_SCHEMA_VERSION = "1.0"
+AMENDMENT_POLICIES = ("both", "original", "amendments")
+DEFAULT_AMENDMENT = "both"
+DEFAULT_DOCUMENT_SUFFIXES: tuple[str, ...] = ()
 
 KNOWN_DIMENSIONS = (
     "form",
@@ -179,6 +182,8 @@ class SelectionPolicy:
 
     corpus_id: str
     forms: list[str]
+    amendment: str = DEFAULT_AMENDMENT
+    document_suffixes: list[str] = field(default_factory=list)
     policy_schema_version: str = POLICY_SCHEMA_VERSION
     era_bands: list[EraBand] = field(default_factory=list)
     seed_cik_path: str = "uploads/cik-sec.csv"
@@ -195,7 +200,6 @@ class SelectionPolicy:
     reserve_size: int = 100
     seed: str = "fixture-selection-v1"
     max_reported_size: int | None = None
-    exclude_amendments: bool = False
     anchor_forms: list[str] = field(default_factory=list)
     comparison_forms: list[str] = field(default_factory=list)
     max_per_company_classification: int = 1
@@ -209,6 +213,22 @@ class SelectionPolicy:
             raise ValueError("corpus_id must be a non-empty string")
         if not self.forms or not isinstance(self.forms, list):
             raise ValueError("forms must be a non-empty list of form strings")
+        self.forms = [
+            str(form).strip().upper() for form in self.forms if str(form).strip()
+        ]
+        if not self.forms:
+            raise ValueError("forms must contain at least one form string")
+        if self.amendment not in AMENDMENT_POLICIES:
+            raise ValueError(
+                f"amendment must be one of {', '.join(AMENDMENT_POLICIES)}"
+            )
+        self.document_suffixes = list(
+            dict.fromkeys(
+                str(suffix).strip().lower().lstrip(".")
+                for suffix in self.document_suffixes
+                if str(suffix).strip().lstrip(".")
+            )
+        )
         if self.base_content_units < 1:
             raise ValueError("base_content_units must be positive")
         if self.level < 1:

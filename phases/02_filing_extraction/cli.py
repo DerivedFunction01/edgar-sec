@@ -6,9 +6,9 @@ import argparse
 import json
 import sys
 
-from .core import config as phase_config
 from .core import discovery
 from .core.materialize import materialize
+from .core.selection_policy import DEFAULT_AMENDMENT
 from .core.target_plan import expand, plan
 
 
@@ -45,20 +45,17 @@ def main(argv: list[str] | None = None) -> int:
     materialize_parser = commands.add_parser("materialize")
     materialize_parser.add_argument("--source-artifact")
     materialize_parser.add_argument("--source-manifest")
-    materialize_parser.add_argument("--config", default=None)
     materialize_parser.add_argument("--output-root", default=None)
     materialize_parser.add_argument(
         "--progress",
         action="store_true",
         help="report stage progress on stderr",
     )
-    materialize_parser.add_argument("--source-batch-size", type=int, default=None)
     materialize_parser.add_argument("--threads", type=int, default=None)
     materialize_parser.add_argument("--memory-limit", default=None)
     materialize_parser.add_argument("--temp-directory", default=None)
 
     plan_parser = commands.add_parser("plan")
-    plan_parser.add_argument("--config", default=None)
     plan_parser.add_argument(
         "--catalog",
         default=None,
@@ -96,7 +93,7 @@ def main(argv: list[str] | None = None) -> int:
         "--amendment",
         choices=("both", "original", "amendments"),
         default=None,
-        help="amendment policy override (default from config)",
+        help="amendment policy for deterministic planning (default: both)",
     )
     plan_parser.add_argument("--limit", type=int)
     plan_parser.add_argument(
@@ -123,30 +120,19 @@ def main(argv: list[str] | None = None) -> int:
     args = parser.parse_args(argv)
 
     if args.command == "materialize":
-        config = phase_config.load(args.config)
         result = materialize(
             args.source_artifact,
             args.output_root,
             source_manifest=args.source_manifest,
             progress=_stderr_progress if args.progress else None,
-            source_batch_size=(
-                args.source_batch_size
-                if args.source_batch_size is not None
-                else config.source_batch_size
-            ),
             threads=args.threads,
             memory_limit=args.memory_limit,
             temp_directory=args.temp_directory,
         )
     elif args.command == "plan":
-        config = phase_config.load(args.config)
-        forms = tuple(args.form) if args.form else config.target_forms
-        amendment = args.amendment if args.amendment is not None else config.amendment
-        document_suffixes = (
-            tuple(args.document_suffix)
-            if args.document_suffix is not None
-            else config.document_suffixes
-        )
+        forms = tuple(args.form)
+        amendment = args.amendment or DEFAULT_AMENDMENT
+        document_suffixes = tuple(args.document_suffix or ())
         result = plan(
             args.catalog,
             args.output_root,

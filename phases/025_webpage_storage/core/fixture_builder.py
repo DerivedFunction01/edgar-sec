@@ -11,8 +11,25 @@ from typing import Any
 
 from defs.runtime.paths import resolve_paths
 from defs.runtime.resources import derive_resources
-from defs.sec_http import SecHttpClient, make_sec_http_client
-from defs.sql import Select, SqlDialect, Star, Table, make_sql_executor
+from defs.sec_http import (
+    SecHttpClient,
+    make_sec_http_client,
+    resolve_sec_transport_profile,
+)
+from defs.sql import (
+    ColumnDef,
+    ColumnType,
+    CreateTable,
+    NotNull,
+    PrimaryKey,
+    Select,
+    SqlDialect,
+    Star,
+    Table,
+    col,
+    insert_values,
+    make_sql_executor,
+)
 from defs.storage import atomic_write_json, load_json
 
 from .chunk_worker import process_chunk
@@ -22,9 +39,25 @@ from .schemas import (
     ACQUISITION_FAILURES_TABLE,
     DOCUMENT_BLOBS_TABLE,
     doc_id,
+    compress_payload,
 )
 
 FIXTURE_MANIFEST_SCHEMA_VERSION = 1
+FIXTURE_PAYLOADS_TABLE = "fixture_payloads"
+
+
+def _create_fixture_payloads(executor) -> None:
+    executor.exec(
+        executor.compiler.compile(
+            CreateTable(
+                table=FIXTURE_PAYLOADS_TABLE,
+                columns=(
+                    ColumnDef("doc_id", ColumnType.TEXT, (PrimaryKey(), NotNull())),
+                    ColumnDef("raw_payload", ColumnType.BLOB, (NotNull(),)),
+                ),
+            )
+        )
+    )
 
 
 def _fixture_rows(path: Path, table: str) -> list[dict[str, Any]]:
@@ -116,7 +149,9 @@ def _build_default_http_client(workers: int) -> SecHttpClient:
     failure ledger, and metrics are aggregated through a single rate limiter
     instead of one independent limiter per thread.
     """
-    return make_sec_http_client(max_concurrency=max(4, workers))
+    return make_sec_http_client(
+        profile=resolve_sec_transport_profile(max_concurrency=max(4, workers))
+    )
 
 
 def fill_fixture(
@@ -167,6 +202,25 @@ def fill_fixture(
     client = http_client or _build_default_http_client(workers)
     fetcher = LiveSecArchiveFetcher(client)
 
+    payload_table_ready = False
+
+    def payload_sink(executor, document_id: str, payload: bytes) -> None:
+        nonlocal payload_table_ready
+        if not payload_table_ready:
+            _create_fixture_payloads(executor)
+            payload_table_ready = True
+        executor.exec(
+            executor.compiler.compile(
+                insert_values(
+                    FIXTURE_PAYLOADS_TABLE,
+                    {
+                        "doc_id": document_id,
+                        "raw_payload": compress_payload(payload),
+                    },
+                )
+            )
+        )
+
     chunk_result = process_chunk(
         chunk_id=f"fixture-{resolved_id}",
         worker_id="fixture-builder",
@@ -179,6 +233,7 @@ def fill_fixture(
         allow_append=True,
         retry_failures=retry_failures,
         processor=None,
+        payload_sink=payload_sink,
     )
 
     after_failure_rows = _fixture_rows(fixture_db, ACQUISITION_FAILURES_TABLE)

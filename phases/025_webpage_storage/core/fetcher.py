@@ -33,12 +33,13 @@ from defs.sql import (
 )
 
 from .schemas import (
-    DOCUMENT_BLOBS_TABLE,
     DocumentLocator,
     FetchResult,
     decompress_payload,
     doc_id,
 )
+
+FIXTURE_PAYLOADS_TABLE = "fixture_payloads"
 
 
 @runtime_checkable
@@ -124,7 +125,7 @@ class FixtureArchiveFetcher:
     def fetch(self, locator: DocumentLocator) -> FetchResult:
         expected_doc_id = doc_id(locator.accession, locator.document_path)
         query = Select(
-            source=Table(DOCUMENT_BLOBS_TABLE),
+            source=Table(FIXTURE_PAYLOADS_TABLE),
             projection=(col("raw_payload"),),
             where=Compare(col("doc_id"), ComparisonOp.EQ, param(expected_doc_id)),
             limit=1,
@@ -149,7 +150,7 @@ class FixtureArchiveFetcher:
                     dashed = accession_hyphenated(canonical)
                     full_doc_id = doc_id(locator.accession, f"{dashed}.txt")
                     query_full = Select(
-                        source=Table(DOCUMENT_BLOBS_TABLE),
+                        source=Table(FIXTURE_PAYLOADS_TABLE),
                         projection=(col("raw_payload"),),
                         where=Compare(
                             col("doc_id"), ComparisonOp.EQ, param(full_doc_id)

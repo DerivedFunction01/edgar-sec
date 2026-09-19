@@ -38,6 +38,8 @@ defs/
 
 - `sec_http/` — the SEC HTTP boundary. `client.py` owns the production
   `SecHttpClient` (pacing, retries, cache, failure ledger, metrics) plus the
+  `SecTransportProfile`/`resolve_sec_transport_profile` contract used by
+  direct clients across phases,
   read-only `peek_cache()` probe the broker fast path uses. `cache.py` defines
   the SQLite-backed response cache, the writer `SqlCache`, and `SqlCacheReader`,
   a read-only (`mode=ro`) view that fails open on missing or drifted databases.
@@ -59,12 +61,11 @@ defs/
 ## Settings registry and environment resolution
 
 All application settings are declared once as typed specs under
-`defs/runtime/settings/` (`runtime.py`, `paths.py`, `sec.py`);
-phases add their own `settings.py` module registered in the
-`phases/settings.py` barrel. Setting identity is a logical dotted path
-(`runtime.threads`, `sec.user_agent`, `filing_extraction.source_batch_size`);
+`defs/runtime/settings/` (`runtime.py`, `paths.py`, `sec.py`).
+Setting identity is a logical dotted path
+(`runtime.threads`, `sec.user_agent`, `cache.root`);
 environment names are generated from it (`RUNTIME_THREADS`,
-`FILING_EXTRACTION_SOURCE_BATCH_SIZE`) — modules never hardcode env names.
+`SEC_USER_AGENT`, `CACHE_ROOT`) — modules never hardcode env names.
 
 - `defs/runtime/env.py` is the only direct-environment boundary: dotenv
   parsing, direct-process-environment precedence, and `DOTENV_PATH`
@@ -78,7 +79,7 @@ environment names are generated from it (`RUNTIME_THREADS`,
   are factories over `psutil`/`os` probes and are never persisted
   automatically. Secret settings (SEC contact identity) resolve normally but
   are excluded from flattened reports and generated dotenv output.
-- `python run.py settings generate-dotenv [--path .env] [--force] [--phase ID]`
+- `python run.py settings generate-dotenv [--path .env] [--force]`
   atomically renders a documented `.env` template from the same specs used at
   runtime: static defaults as values, machine-derived defaults as commented
   suggestions, secrets omitted.

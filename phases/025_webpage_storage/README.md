@@ -119,9 +119,10 @@ never imports `sqlite3`/`duckdb` or issues raw SQL. Merge uses compiled
 Acquisition runs are parallel at two independent levels, and the two levels
 never share a writer:
 
-- **Chunk workers** (`--workers`, defaults to `derive_resources().threads`,
-  rejected if < 1) run as a `ProcessPoolExecutor` in production mode. Each
-  process owns its own isolated `chunk-XXXXX.db`; the coordinator is the only
+- **Chunk workers** (`--workers`, defaults to `derive_resources().workers`
+  (process workers), rejected if < 1) run as a `ProcessPoolExecutor` in
+  production mode. Each process owns its own isolated `chunk-XXXXX.db` under
+  the run's partition-scoped worker directory; the coordinator is the only
   SQLite writer and merges the published chunks afterward.
 - **Fetch threads** inside a single chunk (`fetch_workers`) use a bounded
   in-flight window (`wait(..., FIRST_COMPLETED)`) so at most `fetch_workers`
@@ -276,12 +277,13 @@ Form-family aliases live in `defs.sec_forms.families` (`FORM_FAMILY_ALIASES`, `f
 
 ## Settings
 
-Declared in `settings.py` under `webpage_storage.*`
-(`WEBPAGE_STORAGE_ZSTD_LEVEL`, `WEBPAGE_STORAGE_MODE`, `WEBPAGE_STORAGE_WORKERS`);
-resolved from the shared settings registry. `WEBPAGE_STORAGE_WORKERS` is the
-process-pool worker count; the fetch-thread count inside a chunk is the
-`--workers` CLI flag, which defaults to `derive_resources().threads`. The
-managed broker socket path comes from `BrokerPaths.broker_paths()` and is not
+Phase 2.5 does not participate in the shared settings registry.
+`--workers`, `--mode`, and `--zstd-level` are CLI-only options resolved
+directly by the phase CLI and pipeline. The process-pool worker count for
+acquisition runs is `--workers` and defaults to `derive_resources().workers`;
+thread-based paths (fixture fill, vacuum) default to
+`derive_resources().threads`. The managed
+broker socket path comes from `BrokerPaths.broker_paths()` and is not
 a persisted setting.
 
 ## Testing

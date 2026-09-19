@@ -10,7 +10,6 @@ from datetime import UTC, datetime
 from pathlib import Path
 from typing import Any
 
-from defs.sec_http import make_sec_http_client
 from defs.storage import (
     atomic_write_bytes,
     atomic_write_json,
@@ -174,25 +173,14 @@ def _paths(root: Path, snapshot_id: str) -> tuple[Path, Path]:
 def refresh_company_tickers(
     *,
     artifacts_root: str | Path,
-    user_agent: str,
-    timeout_s: float = 30.0,
-    max_retries: int = 3,
-    rate_limit_rps: float = 5.0,
-    cache_dir: str | Path | None = None,
     client: Any | None = None,
 ) -> dict:
     """Fetch and publish one immutable company ticker source snapshot."""
     root = Path(artifacts_root).resolve()
     if client is None:
-        from defs.sec_http import RateLimiter, RetryPolicy
+        from defs.sec_http import make_sec_http_client, resolve_sec_transport_profile
 
-        client = make_sec_http_client(
-            user_agent=user_agent,
-            timeout_s=timeout_s,
-            rate_limiter=RateLimiter(min_interval_s=1.0 / rate_limit_rps),
-            retry_policy=RetryPolicy(max_retries=max_retries),
-            cache_dir=cache_dir,
-        )
+        client = make_sec_http_client(profile=resolve_sec_transport_profile())
     raw_bytes = client.get_bytes(SOURCE_URL)
     raw_sha256 = hashlib.sha256(raw_bytes).hexdigest()
     snapshot_id = _snapshot_id(raw_sha256)

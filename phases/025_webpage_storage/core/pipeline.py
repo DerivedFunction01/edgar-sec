@@ -201,7 +201,9 @@ def run_partition(
         chunk_id = f"chunk-{chunk_idx + 1:05d}"
 
         # Preflight check for already completed chunk
-        existing_path = find_completed_chunk_db(run_paths, attempt_id, chunk_id)
+        existing_path = find_completed_chunk_db(
+            run_paths, attempt_id, chunk_id, partition_id
+        )
         if existing_path is not None:
             cached = try_load_completed_chunk(chunk_id, existing_path, processor)
             if cached is not None:
@@ -230,9 +232,9 @@ def run_partition(
                 worker_id if workers == 1 else f"worker-{assigned_worker_num:05d}"
             )
             chunk_path = run_paths.worker_chunk_db(
-                chunk_worker_id, attempt_id, chunk_id
+                chunk_worker_id, attempt_id, chunk_id, partition_id
             )
-            run_paths.ensure_worker_layout(chunk_worker_id, attempt_id)
+            run_paths.ensure_worker_layout(chunk_worker_id, attempt_id, partition_id)
 
             chunk_doc_ids = {
                 doc_id(locator.accession, locator.document_path) for locator in chunk

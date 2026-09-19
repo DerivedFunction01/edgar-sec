@@ -216,9 +216,9 @@ uploads/                           # input manifests
   root `.env` file (direct environment wins; `DOTENV_PATH` may relocate the file)
   resolved through `defs.runtime.env.get_env`; do not store provider API keys in config.
 - Application settings are declared once as typed specs with logical dotted
-  paths in `defs/runtime/settings/` plus one `settings.py` per phase
-  (registered in `phases/settings.py`); environment names are generated from
-  the logical paths. New settings never add `os.environ` reads, env-name
+  paths in `defs/runtime/settings/`; phases do not define parallel settings
+  registries. Environment names are generated from the logical paths. New
+  settings never add `os.environ` reads, env-name
   constants, or exports outside that registry — direct environment access is
   confined to `defs/runtime/env.py` and the settings resolution boundary and
   is enforced by the policy scanners registered in `defs/runtime/checks.py`

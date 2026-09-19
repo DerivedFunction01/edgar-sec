@@ -21,7 +21,6 @@ from defs.storage import (
     atomic_write_json,
 )
 
-from . import config as phase_config
 from .document_filters import normalize_suffixes, suffix_sql
 from .paths import resolve_filing_paths
 from .plan_expansion import (
@@ -40,6 +39,9 @@ from .plan_publication import (
 from .selection import DeficitSelector
 from .selection_features import FeatureSnapshotBuilder
 from .selection_policy import (
+    AMENDMENT_POLICIES,
+    DEFAULT_AMENDMENT,
+    DEFAULT_DOCUMENT_SUFFIXES,
     SelectionPolicy,
     compute_seed_fingerprint,
     load_seed_cik_csv,
@@ -82,17 +84,18 @@ def plan(
     Phase 2.5 chooses its acquisition mode (fixture or production) when it
     executes the plan; the bundle itself stays mode-neutral.
     """
-    cfg = phase_config.load()
-    forms = forms if forms is not None else cfg.target_forms
-    amendment = amendment if amendment is not None else cfg.amendment
+    forms = tuple(forms or ())
+    amendment = amendment or DEFAULT_AMENDMENT
     document_suffixes = normalize_suffixes(
-        document_suffixes if document_suffixes is not None else cfg.document_suffixes
+        document_suffixes
+        if document_suffixes is not None
+        else DEFAULT_DOCUMENT_SUFFIXES
     )
     if scope not in {SCOPE_DETERMINISTIC, SCOPE_POLICY}:
         raise ValueError(
             f"scope must be '{SCOPE_DETERMINISTIC}' or '{SCOPE_POLICY}', got {scope!r}"
         )
-    if amendment not in {"both", "original", "amendments"}:
+    if amendment not in AMENDMENT_POLICIES:
         raise ValueError("amendment must be both, original, or amendments")
 
     resolved_paths = resolve_paths("filing_extraction")
@@ -125,6 +128,8 @@ def plan(
                 catalog_id, manifests_root=manifests_root, dest=pol_path
             )
         policy = SelectionPolicy.from_path(pol_path)
+        document_suffixes = tuple(policy.document_suffixes)
+        amendment = policy.amendment
         actual_seed_path = Path(seed_cik_path or policy.seed_cik_path)
         seed_filers = {}
         if actual_seed_path.exists():
@@ -178,7 +183,6 @@ def plan(
             seed_filers=seed_filers,
             threads=resources.threads,
             memory_limit=resources.memory_limit,
-            document_suffixes=document_suffixes,
         )
         selection_res = selector.select(parent_active_keys=parent_keys)
 
@@ -323,6 +327,7 @@ def plan(
                 "unique_locators_count": len(selection_res.active_locators),
                 "reserve_count": len(selection_res.reserve_locators),
                 "forms": list(policy.forms),
+                "amendment": policy.amendment,
                 "counts": counts,
                 "selected_rows": sum(counts.values()),
                 "selection_policy": policy.to_dict(),

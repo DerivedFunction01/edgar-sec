@@ -468,7 +468,7 @@ def main(argv: list[str] | None = None) -> int:
             root = Path(args.artifacts_root or resolve_paths().artifacts_root)
             workers = args.workers
             if workers is None:
-                workers = max(1, derive_resources().workers)
+                workers = max(1, derive_resources().threads)
             manifest = vacuum_snapshots(
                 artifacts_root=root,
                 snapshot_ids=args.snapshots,
@@ -484,7 +484,11 @@ def main(argv: list[str] | None = None) -> int:
             run_paths = resolve_paths("webpage_storage", args.run_id)
             chunk_dbs = [
                 p
-                for p in sorted(run_paths.workers_root.rglob("chunk-*.db"))
+                for p in sorted(
+                    (run_paths.partition_root(args.partition_id) / "workers").rglob(
+                        "chunk-*.db"
+                    )
+                )
                 if p.is_file()
             ]
             output = Path(_resolved_output(args))

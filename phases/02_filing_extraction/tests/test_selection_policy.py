@@ -64,6 +64,22 @@ def test_selection_policy_validation_and_fingerprinting() -> None:
     assert roundtrip.policy_fingerprint == policy.policy_fingerprint
 
 
+def test_selection_policy_owns_amendment_and_suffix_filters() -> None:
+    policy = SelectionPolicy(
+        corpus_id="filters",
+        forms=["10-k"],
+        amendment="original",
+        document_suffixes=[".TXT", "xml", "txt"],
+    )
+
+    assert policy.forms == ["10-K"]
+    assert policy.amendment == "original"
+    assert policy.document_suffixes == ["txt", "xml"]
+
+    with pytest.raises(ValueError, match="amendment must be one of"):
+        SelectionPolicy(corpus_id="invalid", forms=["10-K"], amendment="invalid")
+
+
 def test_selection_policy_rejects_unknown_dimensions() -> None:
     with pytest.raises(ValueError, match="unknown policy dimensions"):
         SelectionPolicy(

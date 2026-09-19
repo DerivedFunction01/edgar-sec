@@ -52,7 +52,7 @@ def fake_sec(monkeypatch):
 
         client = imp("phases.01_metadata_extraction.core.sec_client").SubmissionsClient(
             http=sec_http.SecHttpClient(
-                user_agent=options.user_agent,
+                user_agent="Test/1.0 test@example.com",
                 rate_limiter=sec_http.RateLimiter(min_interval_s=0.001),
                 retry_policy=sec_http.RetryPolicy(
                     max_retries=1, backoff_base_s=0.001, jitter=0.0
@@ -73,7 +73,6 @@ def _options(tmp_path, **overrides):
         "artifacts_dir": str(tmp_path / "run"),
         "chunk_size": 10,
         "partition_count": 1,
-        "user_agent": "Test/1.0 test@example.com",
     }
     values.update(overrides)
     return config.RunOptions(**values)
@@ -127,7 +126,6 @@ def test_augmentation_uses_existing_manifest_and_publishes_new_snapshot(
     ).encode("utf-8")
     source = source_registry.refresh_company_tickers(
         artifacts_root=tmp_path,
-        user_agent="Test/1.0 test@example.com",
         client=FakeSourceClient(source_payload),
     )
     source_manifest_path = paths_core.resolve_metadata_paths(

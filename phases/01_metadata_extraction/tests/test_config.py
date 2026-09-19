@@ -16,8 +16,10 @@ def test_default_project_config_has_sensible_values():
     assert cfg.input_path == "uploads/cik-sec.csv"
     assert cfg.chunk_size == 1000
     assert cfg.storage_format == "parquet"
-    # Workers are memory-derived at runtime; the default config leaves them unset.
-    assert cfg.workers is None
+    # Concurrency is machine-derived at runtime; the config does not persist it.
+    assert "threads" not in cfg.to_dict()["execution"]
+    # SEC transport settings are shared, never phase-owned.
+    assert "sec_http" not in cfg.to_dict()
 
 
 def test_write_and_load_project_config_round_trip(tmp_path):
@@ -25,13 +27,6 @@ def test_write_and_load_project_config_round_trip(tmp_path):
         input_path="uploads/other.csv",
         artifacts_dir=str(tmp_path / "run"),
         chunk_size=500,
-        workers=2,
-        timeout_s=30.0,
-        max_retries=2,
-        rate_limit_rps=2.0,
-        user_agent="MyApp/1.0 me@example.com",
-        cache_dir=str(tmp_path / "cache"),
-        max_failure_attempts=5,
         limit=100,
         storage_format="jsonl",
     )
@@ -42,7 +37,6 @@ def test_write_and_load_project_config_round_trip(tmp_path):
     assert loaded.input_path == cfg.input_path
     assert loaded.chunk_size == cfg.chunk_size
     assert loaded.storage_format == cfg.storage_format
-    assert loaded.user_agent == config_mod.default_user_agent()
     assert loaded.limit == cfg.limit
 
 
@@ -60,30 +54,43 @@ def test_load_project_config_rejects_missing_config_object(tmp_path):
         config_mod.load_project_config(str(config_path))
 
 
-def test_load_project_config_rejects_unknown_fields(tmp_path):
+def test_load_project_config_ignores_unknown_fields(tmp_path):
     config_path = tmp_path / "bad.json"
     config_path.write_text(
         '{"version": 2, "config": {"unknown_field": 1}}', encoding="utf-8"
     )
-    with pytest.raises(ValueError, match="unknown config fields"):
-        config_mod.load_project_config(str(config_path))
+    loaded = config_mod.load_project_config(str(config_path))
+    assert loaded.input_path == "uploads/cik-sec.csv"
 
 
-def test_load_project_config_rejects_removed_user_agent_env(tmp_path):
-    """The obsolete user_agent_env branch is gone; it fails as unknown."""
+def test_load_project_config_ignores_removed_user_agent_env(tmp_path):
+    """Obsolete credentials fields are ignored; configs can be regenerated."""
     config_path = tmp_path / "bad.json"
     config_path.write_text(
         '{"version": 2, "config": {"dataset": {}, '
         '"credentials": {"user_agent_env": "SEC_USER_AGENT"}}}',
         encoding="utf-8",
     )
-    with pytest.raises(ValueError, match="unknown config fields.*user_agent_env"):
-        config_mod.load_project_config(str(config_path))
+    loaded = config_mod.load_project_config(str(config_path))
+    assert loaded.input_path == "uploads/cik-sec.csv"
 
 
-def test_persisted_config_omits_credentials(tmp_path):
-    cfg = config_mod.ProjectConfig(user_agent="App/1.0 a@b.com")
-    assert "credentials" not in cfg.to_dict()
+def test_load_project_config_ignores_legacy_sec_http_sections(tmp_path):
+    """SEC transport values were moved to shared settings; old sections are ignored."""
+    config_path = tmp_path / "legacy.json"
+    config_path.write_text(
+        '{"version": 2, "config": {'
+        '"dataset": {"input_path": "uploads/cik-sec.csv"},'
+        '"execution": {"chunk_size": 250, "workers": 4},'
+        '"sec_http": {"timeout_s": 99.0, "user_agent": "Legacy/1.0 legacy@example.com"},'
+        '"metadata": {"max_failure_attempts": 9}'
+        "}}",
+        encoding="utf-8",
+    )
+    loaded = config_mod.load_project_config(str(config_path))
+    assert loaded.chunk_size == 250
+    assert not hasattr(loaded, "timeout_s")
+    assert not hasattr(loaded, "user_agent")
 
 
 def test_load_project_config_rejects_invalid_storage_format(tmp_path):
@@ -93,15 +100,6 @@ def test_load_project_config_rejects_invalid_storage_format(tmp_path):
     )
     with pytest.raises(ValueError, match="storage_format must be"):
         config_mod.load_project_config(str(config_path))
-
-
-def test_load_project_config_accepts_empty_user_agent(tmp_path):
-    config_path = tmp_path / "config.json"
-    config_path.write_text(
-        '{"version": 2, "config": {"user_agent": ""}}', encoding="utf-8"
-    )
-    loaded = config_mod.load_project_config(str(config_path))
-    assert loaded.user_agent == ""
 
 
 def test_load_project_config_rejects_wrong_version(tmp_path):
@@ -130,10 +128,10 @@ def test_atomic_write_uses_temp_file_and_rename(tmp_path):
     assert "config" in data
 
 
-def test_project_config_validate_requires_workers_at_least_one():
+def test_project_config_validate_rejects_bad_chunk_size():
     cfg = config_mod.default_project_config()
-    cfg.workers = 0
-    with pytest.raises(ValueError, match="workers must be >= 1"):
+    cfg.chunk_size = 0
+    with pytest.raises(ValueError, match="chunk_size must be >= 1"):
         cfg.validate()
 
 
@@ -142,21 +140,13 @@ def test_project_config_to_run_options_round_trip():
         input_path="uploads/cik-sec.csv",
         artifacts_dir=".artifacts/metadata/runs/local",
         chunk_size=1000,
-        workers=4,
-        timeout_s=15.0,
-        max_retries=4,
-        rate_limit_rps=4.0,
-        user_agent="App/1.0 a@b.com",
-        cache_dir="",
-        max_failure_attempts=3,
         limit=None,
         storage_format="parquet",
     )
-    options = cfg.to_run_options(chunk_id=5, log_level="DEBUG", run_id="test")
+    options = cfg.to_run_options(chunk_id=5, run_id="test")
     assert options.input_path == cfg.input_path
     assert options.chunk_size == cfg.chunk_size
     assert options.chunk_id == 5
-    assert options.log_level == "DEBUG"
     assert options.run_id == "test"
 
 
@@ -169,7 +159,6 @@ def test_build_plan_records_run_options(tmp_path):
         input_path=str(input_path),
         artifacts_dir=str(tmp_path / "run"),
         chunk_size=2,
-        user_agent="TestClient/1.0 test@example.com",
     )
     plan = application.build_plan(options)
     assert "run_options" in plan
@@ -187,7 +176,6 @@ def test_validate_plan_against_options_rejects_stale_chunk_size(tmp_path):
         input_path=str(input_path),
         artifacts_dir=str(tmp_path / "run"),
         chunk_size=1,
-        user_agent="TestClient/1.0 test@example.com",
     )
     plan = application.build_plan(options)
     # Modify plan to simulate stale config
@@ -207,7 +195,6 @@ def test_validate_plan_against_options_rejects_stale_input_path(tmp_path):
         input_path=str(input_path),
         artifacts_dir=str(tmp_path / "run"),
         chunk_size=1,
-        user_agent="TestClient/1.0 test@example.com",
     )
     plan = application.build_plan(options)
     plan.pop("plan_hash", None)
@@ -226,7 +213,6 @@ def test_validate_plan_against_options_rejects_stale_storage_format(tmp_path):
         input_path=str(input_path),
         artifacts_dir=str(tmp_path / "run"),
         chunk_size=1,
-        user_agent="TestClient/1.0 test@example.com",
     )
     plan = application.build_plan(options)
     plan.pop("plan_hash", None)
@@ -245,7 +231,6 @@ def test_validate_plan_against_options_accepts_matching_run_options(tmp_path):
         input_path=str(input_path),
         artifacts_dir=str(tmp_path / "run"),
         chunk_size=1,
-        user_agent="TestClient/1.0 test@example.com",
     )
     application.build_plan(options)
     # Loading with matching options should succeed
@@ -274,17 +259,20 @@ def test_run_configure_writes_config_and_exits(tmp_path):
             "--config",
             str(config_path),
             "--configure",
-            "--user-agent",
-            "NewApp/1.0 new@example.com",
             "--chunk-size",
             "500",
+            "--limit",
+            "100",
         ]
     )
     assert exit_code == 0
     assert config_path.exists()
     loaded = config_mod.load_project_config(str(config_path))
     assert loaded.chunk_size == 500
-    assert loaded.user_agent == config_mod.default_user_agent()
+    assert loaded.limit == 100
+    persisted = json.loads(config_path.read_text(encoding="utf-8"))["config"]
+    assert "sec_http" not in persisted
+    assert "credentials" not in persisted
 
 
 def test_cli_override_does_not_modify_config_file(tmp_path):
@@ -295,96 +283,63 @@ def test_cli_override_does_not_modify_config_file(tmp_path):
         input_path="uploads/cik-sec.csv",
         artifacts_dir=str(tmp_path / "run"),
         chunk_size=1000,
-        workers=4,
-        rate_limit_rps=4.0,
-        user_agent="App/1.0 a@b.com",
         storage_format="parquet",
     )
     config_mod.write_project_config(str(config_path), cfg)
     original_text = config_path.read_text(encoding="utf-8")
 
     options = run_mod.options_from_args(
-        type(
-            "Args",
-            (),
-            {
-                "config": str(config_path),
-                "configure": False,
-                "input": None,
-                "artifacts": None,
-                "chunk_size": 500,
-                "storage_format": None,
-                "chunk_id": None,
-                "workers": None,
-                "timeout": None,
-                "max_retries": None,
-                "rate_limit": None,
-                "user_agent": None,
-                "cache_dir": None,
-                "max_failure_attempts": None,
-                "ignore_failure_history": False,
-                "limit": None,
-                "log_level": "INFO",
-                "run_id": "local",
-                "no_progress": False,
-            },
-        )(),
+        _args(chunk_size=500),
         cfg,
     )
     assert options.chunk_size == 500
     assert config_path.read_text(encoding="utf-8") == original_text
 
 
-def test_empty_config_user_agent_falls_back_to_dotenv(tmp_path, monkeypatch):
-    """A config persisted with an empty user agent must not shadow .env."""
-    env_file = tmp_path / ".env"
-    env_file.write_text(
-        "SEC_USER_AGENT=EnvAgent/1.0 env@example.com\n", encoding="utf-8"
-    )
-    monkeypatch.delenv("SEC_USER_AGENT", raising=False)
-    monkeypatch.setenv("DOTENV_PATH", str(env_file))
-    cfg = config_mod.ProjectConfig(
-        input_path="uploads/cik-sec.csv",
-        artifacts_dir=str(tmp_path / "run"),
-        user_agent="",
-    )
-    args = type(
-        "Args",
-        (),
-        {
-            "config": str(tmp_path / "config.json"),
-            "configure": False,
-            "input": None,
-            "artifacts": None,
-            "chunk_size": None,
-            "storage_format": None,
-            "chunk_id": None,
-            "workers": None,
-            "timeout": None,
-            "max_retries": None,
-            "rate_limit": None,
-            "user_agent": None,
-            "cache_dir": None,
-            "max_failure_attempts": None,
-            "ignore_failure_history": False,
-            "limit": None,
-            "log_level": "INFO",
-            "run_id": "local",
-            "no_progress": False,
-        },
-    )()
-    options = run_mod.options_from_args(args, cfg)
-    assert options.user_agent == "EnvAgent/1.0 env@example.com"
+def _args(**overrides):
+    values = {
+        "config": "x",
+        "configure": False,
+        "input": None,
+        "artifacts": None,
+        "chunk_size": None,
+        "partition_count": None,
+        "partition_id": None,
+        "storage_format": None,
+        "chunk_id": None,
+        "threads": None,
+        "limit": None,
+        "log_level": "INFO",
+        "run_id": "local",
+        "no_progress": False,
+        "source_manifest": None,
+        "base_metadata_manifest": None,
+        "augmentation": False,
+    }
+    values.update(overrides)
+    return type("Args", (), values)()
 
 
 def test_partition_command_includes_config_path():
     options = config_mod.RunOptions(
         input_path="uploads/cik-sec.csv",
         artifacts_dir=".artifacts/metadata/runs/r1",
-        user_agent="App/1.0 a@b.com",
     )
     command = operator_mod.partition_command(options, 7)
     assert "--config .artifacts/metadata/config.json" in command
+
+
+def test_partition_command_uses_threads_and_omits_sec_flags():
+    options = config_mod.RunOptions(
+        input_path="uploads/cik-sec.csv",
+        artifacts_dir=".artifacts/metadata/runs/r1",
+        threads=4,
+    )
+    command = operator_mod.partition_command(options, 7)
+    assert "--threads 4" in command
+    assert "--workers" not in command
+    assert "--user-agent" not in command
+    assert "--rate-limit" not in command
 
 
 def test_plan_creation_records_run_options_for_jsonl(tmp_path):
@@ -395,115 +350,68 @@ def test_plan_creation_records_run_options_for_jsonl(tmp_path):
         input_path=str(input_path),
         artifacts_dir=str(tmp_path / "run"),
         chunk_size=1,
-        user_agent="TestClient/1.0 test@example.com",
         storage_format="jsonl",
     )
     plan = application.build_plan(options)
     assert plan["run_options"]["storage_format"] == "jsonl"
     assert plan["storage_format"] == "jsonl"
+    assert "user_agent" not in plan["run_options"]
 
 
-def test_run_options_workers_default_is_unset():
-    opts = config_mod.RunOptions(
-        input_path="uploads/cik-sec.csv", user_agent="App/1.0 a@b.com"
-    )
-    assert opts.workers is None
+def test_run_options_threads_default_is_unset():
+    opts = config_mod.RunOptions(input_path="uploads/cik-sec.csv")
+    assert opts.threads is None
 
 
-def test_effective_workers_honors_explicit_value():
-    opts = config_mod.RunOptions(
-        input_path="uploads/cik-sec.csv", user_agent="App/1.0 a@b.com", workers=3
-    )
-    assert opts.effective_workers() == 3
+def test_effective_threads_honors_explicit_value():
+    opts = config_mod.RunOptions(input_path="uploads/cik-sec.csv", threads=3)
+    assert opts.effective_threads() == 3
 
 
-def test_effective_workers_derives_when_unset(monkeypatch):
+def test_effective_threads_derives_when_unset(monkeypatch):
     from types import SimpleNamespace
 
     import defs.runtime.resources as res
 
-    monkeypatch.setattr(res, "derive_resources", lambda: SimpleNamespace(workers=1))
-    opts = config_mod.RunOptions(
-        input_path="uploads/cik-sec.csv", user_agent="App/1.0 a@b.com"
-    )
-    # Unset workers defer to the shared memory-based runtime profile, which
-    # always returns at least one worker.
-    assert opts.effective_workers() == 1
+    monkeypatch.setattr(res, "derive_resources", lambda: SimpleNamespace(threads=1))
+    opts = config_mod.RunOptions(input_path="uploads/cik-sec.csv")
+    # Unset thread overrides defer to the shared thread resource profile.
+    assert opts.effective_threads() == 1
 
 
-def _args_with_workers(workers):
-    return type(
-        "Args",
-        (),
-        {
-            "config": "x",
-            "configure": False,
-            "input": None,
-            "artifacts": None,
-            "chunk_size": None,
-            "storage_format": None,
-            "chunk_id": None,
-            "partition_id": None,
-            "workers": workers,
-            "timeout": None,
-            "max_retries": None,
-            "rate_limit": None,
-            "user_agent": None,
-            "cache_dir": None,
-            "max_failure_attempts": None,
-            "ignore_failure_history": False,
-            "limit": None,
-            "log_level": "INFO",
-            "run_id": "local",
-            "no_progress": False,
-        },
-    )()
-
-
-def test_options_from_args_resolves_omitted_workers_to_auto():
+def test_options_from_args_resolves_omitted_threads_to_auto():
     run_mod = imp("phases.01_metadata_extraction.run")
-    cfg = config_mod.ProjectConfig(
-        input_path="uploads/cik-sec.csv", user_agent="App/1.0 a@b.com"
-    )
-    options = run_mod.options_from_args(_args_with_workers(None), cfg)
-    assert options.effective_workers() >= 1
+    cfg = config_mod.ProjectConfig(input_path="uploads/cik-sec.csv")
+    options = run_mod.options_from_args(_args(threads=None), cfg)
+    assert options.effective_threads() >= 1
 
 
-def test_options_from_args_honors_explicit_workers():
+def test_options_from_args_honors_explicit_threads():
     run_mod = imp("phases.01_metadata_extraction.run")
-    cfg = config_mod.ProjectConfig(
-        input_path="uploads/cik-sec.csv", user_agent="App/1.0 a@b.com"
+    cfg = config_mod.ProjectConfig(input_path="uploads/cik-sec.csv")
+    options = run_mod.options_from_args(_args(threads=7), cfg)
+    assert options.threads == 7
+
+
+def test_legacy_workers_config_key_is_ignored(tmp_path):
+    config_path = tmp_path / "legacy.json"
+    config_path.write_text(
+        '{"version": 2, "config": {"workers": 4, "chunk_size": 100}}',
+        encoding="utf-8",
     )
-    options = run_mod.options_from_args(_args_with_workers(7), cfg)
-    assert options.workers == 7
+    loaded = config_mod.load_project_config(str(config_path))
+    assert loaded.chunk_size == 100
+    assert "workers" not in loaded.to_dict()["execution"]
 
 
-def test_preserved_workers_four_remains_explicit(tmp_path):
-    cfg = config_mod.ProjectConfig(
-        input_path="uploads/cik-sec.csv",
-        artifacts_dir=str(tmp_path / "run"),
-        workers=4,
-        user_agent="App/1.0 a@b.com",
-    )
-    path = tmp_path / "config.json"
-    config_mod.write_project_config(str(path), cfg)
-    loaded = config_mod.load_project_config(str(path))
-    assert loaded.workers == 4
-    # Regeneration leaves the explicit worker value intact in the persisted form.
-    assert loaded.to_dict()["execution"]["workers"] == 4
+def test_run_options_to_dict_omits_threads_when_unset():
+    opts = config_mod.RunOptions(input_path="uploads/cik-sec.csv")
+    assert "threads" not in opts.to_dict()
 
 
-def test_regenerated_config_omits_workers_when_unset():
-    cfg = config_mod.ProjectConfig(
-        input_path="uploads/cik-sec.csv", user_agent="App/1.0 a@b.com"
-    )
-    assert cfg.workers is None
-    data = cfg.to_dict()
-    assert "workers" not in data["execution"]
-
-
-def test_run_options_to_dict_omits_workers_when_unset():
-    opts = config_mod.RunOptions(
-        input_path="uploads/cik-sec.csv", user_agent="App/1.0 a@b.com"
-    )
-    assert "workers" not in opts.to_dict()
+def test_build_client_resolves_identity_from_shared_settings(tmp_path, monkeypatch):
+    """The phase client inherits SEC identity from the shared settings registry."""
+    fetch = imp("phases.01_metadata_extraction.core.fetch")
+    monkeypatch.delenv("SEC_USER_AGENT", raising=False)
+    client = fetch.build_client(config_mod.RunOptions())
+    assert "@" in client.http.headers["User-Agent"]

@@ -31,12 +31,9 @@ def add_common_options(
     if include_partition:
         parser.add_argument("--partition-id", type=int, default=None)
     parser.add_argument("--storage-format", choices=("parquet", "jsonl"), default=None)
-    parser.add_argument("--workers", type=int, default=None)
-    parser.add_argument("--timeout", type=float, default=None)
-    parser.add_argument("--max-retries", type=int, default=None)
-    parser.add_argument("--rate-limit", type=float, default=None)
-    parser.add_argument("--user-agent", default=None)
-    parser.add_argument("--cache-dir", default=None)
+    parser.add_argument(
+        "--threads", type=int, default=None, help="temporary thread-pool override"
+    )
     parser.add_argument("--limit", type=int, default=None)
     parser.add_argument("--log-level", default="INFO")
     parser.add_argument("--run-id", default="local")

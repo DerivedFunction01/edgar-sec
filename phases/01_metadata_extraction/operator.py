@@ -26,7 +26,6 @@ from .core import (
     RunOptions,
     artifacts_root,
     build_plan,
-    default_user_agent,
     discover_base_metadata_manifests,
     discover_source_manifests,
     get_status,
@@ -63,36 +62,14 @@ def options_from_args(args, project_config) -> RunOptions:
             RunOptions.storage_format,
         ),
         chunk_id=args.chunk_id,
-        workers=coalesce(args.workers, project_config.workers, RunOptions.workers),
-        timeout_s=coalesce(
-            args.timeout, project_config.timeout_s, RunOptions.timeout_s
-        ),
-        max_retries=coalesce(
-            args.max_retries, project_config.max_retries, RunOptions.max_retries
-        ),
-        rate_limit_rps=coalesce(
-            args.rate_limit, project_config.rate_limit_rps, RunOptions.rate_limit_rps
-        ),
-        user_agent=(
-            args.user_agent
-            if getattr(args, "user_agent", None) is not None
-            else (project_config.user_agent or default_user_agent())
-        ),
-        cache_dir=coalesce(args.cache_dir, project_config.cache_dir, ""),
-        max_failure_attempts=coalesce(
-            args.max_failure_attempts,
-            project_config.max_failure_attempts,
-            RunOptions.max_failure_attempts,
-        ),
-        ignore_failure_history=getattr(args, "ignore_failure_history", False),
+        threads=coalesce(getattr(args, "threads", None), None, RunOptions.threads),
         limit=coalesce(args.limit, project_config.limit, RunOptions.limit),
-        log_level=args.log_level,
         run_id=args.run_id,
         source_manifest=getattr(args, "source_manifest", None),
         base_metadata_manifest=getattr(args, "base_metadata_manifest", None),
         augmentation=bool(getattr(args, "augmentation", False)),
     )
-    options.workers = options.effective_workers()
+    options.threads = options.effective_threads()
     return options
 
 
@@ -101,7 +78,6 @@ def print_json(payload: dict) -> None:
 
 
 def partition_command(options: RunOptions, partition_id: int) -> str:
-    agent = options.user_agent or "$SEC_USER_AGENT"
     storage = (
         f" --storage-format {options.storage_format}"
         if options.storage_format != "parquet"
@@ -114,8 +90,7 @@ def partition_command(options: RunOptions, partition_id: int) -> str:
         f" --source-manifest '{options.source_manifest or ''}'"
         f" --base-metadata-manifest '{options.base_metadata_manifest or ''}'"
         f" {'--augmentation' if options.augmentation else ''}"
-        f" --workers {options.effective_workers()} --rate-limit {options.rate_limit_rps}"
-        f" --user-agent '{agent}'{storage}"
+        f" --threads {options.effective_threads()}{storage}"
     )
 
 
@@ -294,11 +269,6 @@ def interactive_wizard(args, project_config) -> int:
         options = _options()
         result = refresh_company_tickers(
             artifacts_root=artifacts_root(options.artifacts_dir),
-            user_agent=options.user_agent,
-            timeout_s=options.timeout_s,
-            max_retries=options.max_retries,
-            rate_limit_rps=options.rate_limit_rps,
-            cache_dir=options.cache_dir or None,
         )
         manifest_path = artifacts_root(options.artifacts_dir) / result["manifest_path"]
         print(

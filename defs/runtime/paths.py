@@ -370,17 +370,30 @@ class RunPaths:
     def partition_chunks(self, partition_id: int) -> Path:
         return self.partition_root(partition_id) / "chunks"
 
-    def worker_root(self, worker_id: str, attempt_id: str) -> Path:
+    def worker_root(
+        self, worker_id: str, attempt_id: str, partition_id: int | None = None
+    ) -> Path:
+        root = (
+            self.partition_root(partition_id) / "workers"
+            if partition_id is not None
+            else self.workers_root
+        )
         return (
-            self.workers_root
-            / _safe_id(worker_id, "worker_id")
-            / _safe_id(attempt_id, "attempt_id")
+            root / _safe_id(worker_id, "worker_id") / _safe_id(attempt_id, "attempt_id")
         )
 
-    def worker_chunk_db(self, worker_id: str, attempt_id: str, chunk_id: str) -> Path:
+    def worker_chunk_db(
+        self,
+        worker_id: str,
+        attempt_id: str,
+        chunk_id: str,
+        partition_id: int | None = None,
+    ) -> Path:
         """Private transient chunk database file for one worker attempt."""
         safe_chunk = _safe_id(chunk_id, "chunk_id")
-        return self.worker_root(worker_id, attempt_id) / f"{safe_chunk}.db"
+        return (
+            self.worker_root(worker_id, attempt_id, partition_id) / f"{safe_chunk}.db"
+        )
 
     def worker_chunk_glob(self) -> Path:
         """Glob pattern matching all transient worker chunk databases."""
@@ -390,8 +403,10 @@ class RunPaths:
         self.partitions_root.mkdir(parents=True, exist_ok=True)
         self.workers_root.mkdir(parents=True, exist_ok=True)
 
-    def ensure_worker_layout(self, worker_id: str, attempt_id: str) -> Path:
-        path = self.worker_root(worker_id, attempt_id)
+    def ensure_worker_layout(
+        self, worker_id: str, attempt_id: str, partition_id: int | None = None
+    ) -> Path:
+        path = self.worker_root(worker_id, attempt_id, partition_id)
         path.mkdir(parents=True, exist_ok=True)
         return path
 

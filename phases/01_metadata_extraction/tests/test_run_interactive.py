@@ -70,12 +70,12 @@ def test_partition_command_contains_required_flags():
     options = config.RunOptions(
         input_path="uploads/cik-sec.csv",
         artifacts_dir=".artifacts/metadata/runs/r1",
-        user_agent="App/1.0 a@b.com",
     )
     command = operator_mod.partition_command(options, 7)
     assert "--partition-id 7" in command
     assert "--artifacts '.artifacts/metadata/runs/r1'" in command
-    assert "a@b.com" in command
+    assert "--threads" in command
+    assert "--user-agent" not in command
 
 
 def test_interactive_wizard_end_to_end(tmp_path, monkeypatch):
@@ -104,7 +104,7 @@ def test_interactive_wizard_end_to_end(tmp_path, monkeypatch):
 
         return imp("phases.01_metadata_extraction.core.sec_client").SubmissionsClient(
             http=sec_http.SecHttpClient(
-                user_agent=options.user_agent or "TestClient/1.0 test@example.com",
+                user_agent="TestClient/1.0 test@example.com",
                 rate_limiter=sec_http.RateLimiter(min_interval_s=0.001),
                 retry_policy=sec_http.RetryPolicy(
                     max_retries=1, backoff_base_s=0.001, jitter=0.0
@@ -130,9 +130,6 @@ def test_interactive_wizard_end_to_end(tmp_path, monkeypatch):
             input_path=str(input_csv),
             artifacts_dir=str(artifacts),
             chunk_size=2,
-            workers=2,
-            rate_limit_rps=10.0,
-            user_agent="TestClient/1.0 test@example.com",
             storage_format="parquet",
         ),
     )
@@ -163,7 +160,6 @@ def test_interactive_wizard_end_to_end(tmp_path, monkeypatch):
     status_options = config.load_project_config(str(config_path)).to_run_options(
         input_path=str(input_csv),
         artifacts_dir=str(artifacts),
-        user_agent="x@y.com",
     )
     status = application.get_status(status_options, partition_id=1)
     assert status["rows_total"] == 3
@@ -193,7 +189,7 @@ def _write_wizard_config(tmp_path, session, monkeypatch, **config_kwargs):
 
         return imp("phases.01_metadata_extraction.core.sec_client").SubmissionsClient(
             http=sec_http.SecHttpClient(
-                user_agent=options.user_agent or "TestClient/1.0 test@example.com",
+                user_agent="TestClient/1.0 test@example.com",
                 rate_limiter=sec_http.RateLimiter(min_interval_s=0.001),
                 retry_policy=sec_http.RetryPolicy(
                     max_retries=1, backoff_base_s=0.001, jitter=0.0
@@ -213,9 +209,6 @@ def _write_wizard_config(tmp_path, session, monkeypatch, **config_kwargs):
     config_kwargs.setdefault("input_path", str(input_csv))
     config_kwargs.setdefault("artifacts_dir", str(tmp_path / "run"))
     config_kwargs.setdefault("chunk_size", 2)
-    config_kwargs.setdefault("workers", 2)
-    config_kwargs.setdefault("rate_limit_rps", 10.0)
-    config_kwargs.setdefault("user_agent", "TestClient/1.0 test@example.com")
     config_kwargs.setdefault("storage_format", "parquet")
     config_path = tmp_path / "config.json"
     run_mod.write_project_config(
@@ -244,7 +237,7 @@ def test_interactive_wizard_merge_menu_end_to_end(tmp_path, monkeypatch):
 
         return imp("phases.01_metadata_extraction.core.sec_client").SubmissionsClient(
             http=sec_http.SecHttpClient(
-                user_agent=options.user_agent or "TestClient/1.0 test@example.com",
+                user_agent="TestClient/1.0 test@example.com",
                 rate_limiter=sec_http.RateLimiter(min_interval_s=0.001),
                 retry_policy=sec_http.RetryPolicy(
                     max_retries=1, backoff_base_s=0.001, jitter=0.0
@@ -269,9 +262,6 @@ def test_interactive_wizard_merge_menu_end_to_end(tmp_path, monkeypatch):
             artifacts_dir=str(artifacts),
             chunk_size=2,
             partition_count=1,
-            workers=2,
-            rate_limit_rps=10.0,
-            user_agent="TestClient/1.0 test@example.com",
             storage_format="parquet",
         ),
     )
@@ -279,7 +269,6 @@ def test_interactive_wizard_merge_menu_end_to_end(tmp_path, monkeypatch):
     options = config.load_project_config(str(config_path)).to_run_options(
         input_path=str(input_csv),
         artifacts_dir=str(artifacts),
-        user_agent="TestClient/1.0 test@example.com",
     )
     # Produce the completed partition chunks via the core runner.
     application.build_plan(options)
@@ -351,7 +340,7 @@ def test_interactive_wizard_merge_bars_honor_no_progress(tmp_path, monkeypatch):
 
         return imp("phases.01_metadata_extraction.core.sec_client").SubmissionsClient(
             http=sec_http.SecHttpClient(
-                user_agent=options.user_agent or "TestClient/1.0 test@example.com",
+                user_agent="TestClient/1.0 test@example.com",
                 rate_limiter=sec_http.RateLimiter(min_interval_s=0.001),
                 retry_policy=sec_http.RetryPolicy(
                     max_retries=1, backoff_base_s=0.001, jitter=0.0
@@ -375,14 +364,11 @@ def test_interactive_wizard_merge_bars_honor_no_progress(tmp_path, monkeypatch):
             artifacts_dir=str(artifacts),
             chunk_size=2,
             partition_count=1,
-            workers=3,
-            user_agent="TestClient/1.0 test@example.com",
         ),
     )
     options = config.load_project_config(str(config_path)).to_run_options(
         input_path=str(input_csv),
         artifacts_dir=str(artifacts),
-        user_agent="TestClient/1.0 test@example.com",
     )
     application.build_plan(options)
     application.run_chunk(
@@ -442,13 +428,19 @@ def test_interactive_wizard_preview_menu(tmp_path, monkeypatch):
     ).exists()
 
 
-def test_interactive_wizard_rejects_missing_sec_identity(tmp_path, monkeypatch):
-    """A missing SEC identity exits with a clear error, never a traceback."""
+def test_invalid_sec_identity_fails_at_client_build(tmp_path, monkeypatch):
+    """SEC identity is owned by shared settings; an invalid value fails clearly."""
     config_path, _ = _write_wizard_config(tmp_path, FakeSession(), monkeypatch)
-    answers = iter([])
-    monkeypatch.setattr("builtins.input", lambda prompt="": next(answers))
-    exit_code = run_mod.main(["--config", str(config_path), "--user-agent", ""])
-    assert exit_code == 2
+    fetch = imp("phases.01_metadata_extraction.core.fetch")
+    monkeypatch.setenv("SEC_USER_AGENT", "badagent-without-email")
+    with pytest.raises(ValueError, match="SEC contact identity is required"):
+        fetch.build_client(
+            config.RunOptions(
+                input_path="uploads/cik-sec.csv",
+                artifacts_dir=str(tmp_path / "run"),
+            )
+        )
+    assert config_path.exists()
 
 
 class _FakeSourceClient:
@@ -473,7 +465,7 @@ def _prepare_base_and_source(tmp_path, monkeypatch) -> tuple[str, str]:
 
         return imp("phases.01_metadata_extraction.core.sec_client").SubmissionsClient(
             http=sec_http.SecHttpClient(
-                user_agent=options.user_agent or "TestClient/1.0 test@example.com",
+                user_agent="TestClient/1.0 test@example.com",
                 rate_limiter=sec_http.RateLimiter(min_interval_s=0.001),
                 retry_policy=sec_http.RetryPolicy(
                     max_retries=1, backoff_base_s=0.001, jitter=0.0
@@ -495,7 +487,6 @@ def _prepare_base_and_source(tmp_path, monkeypatch) -> tuple[str, str]:
         artifacts_dir=str(base_dir),
         chunk_size=2,
         partition_count=1,
-        user_agent="TestClient/1.0 test@example.com",
         storage_format="parquet",
     )
     application.build_plan(options)
@@ -507,7 +498,6 @@ def _prepare_base_and_source(tmp_path, monkeypatch) -> tuple[str, str]:
 
     source = source_registry.refresh_company_tickers(
         artifacts_root=tmp_path,
-        user_agent="TestClient/1.0 test@example.com",
         client=_FakeSourceClient(
             json.dumps(
                 {
@@ -545,7 +535,6 @@ def _write_augment_config(config_path: Path, artifacts_dir: Path, input_csv: Pat
             artifacts_dir=str(artifacts_dir),
             chunk_size=2,
             partition_count=1,
-            user_agent="TestClient/1.0 test@example.com",
             storage_format="parquet",
         ),
     )
@@ -629,7 +618,6 @@ def test_wizard_adopts_existing_augmentation_plan_without_flags(tmp_path, monkey
         artifacts_dir=str(augment_dir),
         chunk_size=2,
         partition_count=1,
-        user_agent="TestClient/1.0 test@example.com",
         storage_format="parquet",
         source_manifest=source_manifest,
         base_metadata_manifest=base_manifest,

@@ -8,7 +8,6 @@ import json
 
 import pyarrow as pa
 import pyarrow.parquet as pq
-import pytest
 
 run = importlib.import_module("phases.02_filing_extraction.run")
 discovery = importlib.import_module("phases.02_filing_extraction.core.discovery")
@@ -16,7 +15,6 @@ schemas = importlib.import_module("phases.01_metadata_extraction.core.schemas")
 materializer = importlib.import_module("phases.02_filing_extraction.core.materialize")
 target_plan = importlib.import_module("phases.02_filing_extraction.core.target_plan")
 fixtures = importlib.import_module("phases.02_filing_extraction.tests.test_materialize")
-phase_config = importlib.import_module("phases.02_filing_extraction.core.config")
 
 row = fixtures.row
 
@@ -349,9 +347,6 @@ def test_menu_plan_policy_scope_toggles_between_valid_policies(
         encoding="utf-8",
     )
     # Unrelated JSON in the same directory must be excluded from the picker.
-    (phase_root / "config.json").write_text(
-        json.dumps({"source_batch_size": 512}), encoding="utf-8"
-    )
 
     responses = iter(["2", "2"])  # Scope 2 = policy, then pick the second policy
     monkeypatch.setattr(builtins, "input", lambda *a, **k: next(responses))
@@ -499,49 +494,10 @@ def test_materialize_appends_multiple_cik_batches(tmp_path) -> None:
     assert pq.read_table(target).num_rows == 2
 
 
-def test_phase2_config_serializes_target_forms_and_amendment() -> None:
-    cfg = phase_config.Phase2Config(
-        source_batch_size=500,
-        target_forms=("10-K", "10-Q"),
-        amendment="original",
-    )
-    data = cfg.to_dict()
-    assert data["source_batch_size"] == 500
-    assert data["target_forms"] == ["10-K", "10-Q"]
-    assert data["amendment"] == "original"
-    restored = phase_config.Phase2Config.from_dict(data)
-    assert restored.target_forms == ("10-K", "10-Q")
-    assert restored.amendment == "original"
-
-
-def test_phase2_config_normalizes_target_forms() -> None:
-    cfg = phase_config.Phase2Config(
-        target_forms=("  10-k  ", "10-Q", "", "8-K"),
-    )
-    assert cfg.target_forms == ("10-K", "10-Q", "8-K")
-
-
-def test_phase2_config_rejects_invalid_amendment() -> None:
-    with pytest.raises(ValueError, match="amendment must be both"):
-        phase_config.Phase2Config(amendment="invalid")
-
-
-def test_plan_menu_uses_config_defaults_for_full_scope(monkeypatch, tmp_path) -> None:
+def test_plan_menu_uses_selection_defaults_for_full_scope(
+    monkeypatch, tmp_path
+) -> None:
     monkeypatch.setenv("ARTIFACTS_ROOT", str(tmp_path))
-    config_path = tmp_path / "filing_extraction" / "config.json"
-    config_path.parent.mkdir(parents=True, exist_ok=True)
-    config_path.write_text(
-        json.dumps(
-            {
-                "version": 1,
-                "config": {
-                    "target_forms": ["10-K", "10-Q"],
-                    "amendment": "original",
-                },
-            }
-        ),
-        encoding="utf-8",
-    )
     catalog = {"catalog_id": "catalog-1", "target_rows": 100, "form_count": 5}
     monkeypatch.setattr(run.discovery, "discover_catalogs", lambda *_args: [catalog])
     responses = iter(["1", "", ""])
@@ -558,28 +514,12 @@ def test_plan_menu_uses_config_defaults_for_full_scope(monkeypatch, tmp_path) ->
 
     run._menu_plan()
 
-    assert captured["forms"] == ("10-K", "10-Q")
-    assert captured["amendment"] == "original"
+    assert captured["forms"] == ()
+    assert captured["amendment"] == "both"
 
 
-def test_plan_menu_allows_form_override_from_config_default(
-    monkeypatch, tmp_path
-) -> None:
+def test_plan_menu_allows_form_override(monkeypatch, tmp_path) -> None:
     monkeypatch.setenv("ARTIFACTS_ROOT", str(tmp_path))
-    config_path = tmp_path / "filing_extraction" / "config.json"
-    config_path.parent.mkdir(parents=True, exist_ok=True)
-    config_path.write_text(
-        json.dumps(
-            {
-                "version": 1,
-                "config": {
-                    "target_forms": ["10-K"],
-                    "amendment": "both",
-                },
-            }
-        ),
-        encoding="utf-8",
-    )
     catalog = {"catalog_id": "catalog-1", "target_rows": 100, "form_count": 5}
     monkeypatch.setattr(run.discovery, "discover_catalogs", lambda *_args: [catalog])
     responses = iter(["1", "8-K, 10-Q", ""])

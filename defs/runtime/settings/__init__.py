@@ -83,22 +83,14 @@ def _flatten_group(
             )
 
 
-def collect_specs(phase: str | None = None) -> dict[str, SettingSpec]:
-    """Collect shared specs, plus one phase's specs when requested.
+def collect_specs() -> dict[str, SettingSpec]:
+    """Collect all shared specs.
 
     Duplicate logical paths or malformed spec trees raise ``ValueError``
     before any command runs.
     """
     specs: dict[str, SettingSpec] = {}
     for module_name in SHARED_SPEC_MODULES:
-        module = importlib.import_module(module_name)
-        group = getattr(module, "SETTING_SPECS", None)
-        if not isinstance(group, Mapping):
-            raise ValueError(f"{module_name} must export a SETTING_SPECS mapping")
-        _flatten_group(group, "", specs)
-    if phase is not None:
-        barrel = importlib.import_module("phases.settings")
-        module_name = barrel.phase_settings_module(phase)
         module = importlib.import_module(module_name)
         group = getattr(module, "SETTING_SPECS", None)
         if not isinstance(group, Mapping):
@@ -187,7 +179,6 @@ def _included(path: str, include: Iterable[str]) -> bool:
 
 
 def resolve_settings(
-    phase: str | None = None,
     config: Mapping[str, object] | None = None,
     cli_overrides: Mapping[str, object] | None = None,
     env: Mapping[str, str] | None = None,
@@ -203,7 +194,7 @@ def resolve_settings(
     environment values count as unset so false/zero defaults survive, while
     explicit ``"0"``/``"false"`` values parse normally.
     """
-    specs = collect_specs(phase)
+    specs = collect_specs()
     if include is not None:
         include = tuple(include)
         specs = {p: s for p, s in specs.items() if _included(p, include)}
@@ -253,7 +244,6 @@ def resolve_runtime_settings(
 ) -> dict[str, object]:
     """Resolve shared runtime settings."""
     return resolve_settings(
-        phase=None,
         config=config,
         cli_overrides=cli_overrides,
         env=env,
@@ -261,29 +251,9 @@ def resolve_runtime_settings(
     )
 
 
-def resolve_phase_settings(
-    phase: str,
-    phase_config: Mapping[str, object] | None = None,
-    runtime_settings: Mapping[str, object] | None = None,
-    cli_overrides: Mapping[str, object] | None = None,
-    env: Mapping[str, str] | None = None,
-) -> dict[str, object]:
-    """Resolve phase settings combined with runtime settings."""
-    merged_config = dict(runtime_settings or {})
-    if phase_config:
-        merged_config.update(phase_config)
-    return resolve_settings(
-        phase=phase,
-        config=merged_config,
-        cli_overrides=cli_overrides,
-        env=env,
-    )
-
-
 def get_setting(
     path: str,
     *,
-    phase: str | None = None,
     config: Mapping[str, object] | None = None,
     cli_overrides: Mapping[str, object] | None = None,
     env: Mapping[str, str] | None = None,
@@ -292,7 +262,6 @@ def get_setting(
     """Resolve one setting, expanding to its whole top-level group so
     dependent defaults see the values they rely on."""
     resolved = resolve_settings(
-        phase=phase,
         config=config,
         cli_overrides=cli_overrides,
         env=env,
@@ -373,7 +342,6 @@ __all__ = [
     "flatten_settings",
     "get_setting",
     "render_dotenv",
-    "resolve_phase_settings",
     "resolve_runtime_settings",
     "resolve_settings",
 ]

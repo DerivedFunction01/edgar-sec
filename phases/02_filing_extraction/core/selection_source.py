@@ -35,7 +35,7 @@ class CandidateSource:
         memory_limit: str | None = None,
         page_size: int = 5_000,
         max_reported_size: int | None = None,
-        exclude_amendments: bool = False,
+        amendment: str = "both",
         document_suffixes: tuple[str, ...] = (),
     ) -> None:
         self.snapshot_dir = Path(snapshot_dir).resolve()
@@ -47,7 +47,9 @@ class CandidateSource:
         self.memory_limit = memory_limit or res.memory_limit
         self.page_size = page_size
         self.max_reported_size = max_reported_size
-        self.exclude_amendments = exclude_amendments
+        if amendment not in {"both", "original", "amendments"}:
+            raise ValueError(f"invalid amendment policy: {amendment!r}")
+        self.amendment = amendment
         self.document_suffixes = tuple(document_suffixes)
         self._staging: DuckDBStaging | None = None
 
@@ -100,8 +102,10 @@ class CandidateSource:
         ]
         if self.max_reported_size is not None:
             clauses.append(f"l.reported_size <= {int(self.max_reported_size)}")
-        if self.exclude_amendments:
+        if self.amendment == "original":
             clauses.append("l.is_amendment = false")
+        elif self.amendment == "amendments":
+            clauses.append("l.is_amendment = true")
         if self.document_suffixes:
             # Suffix filters apply to the effective document path: identical
             # to primary_document for observed paths, and the synthetic

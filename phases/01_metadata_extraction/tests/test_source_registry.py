@@ -34,12 +34,10 @@ def test_refresh_publishes_immutable_source_snapshot(tmp_path):
     client = FakeClient(_payload())
     first = source_registry.refresh_company_tickers(
         artifacts_root=tmp_path,
-        user_agent="Test/1.0 test@example.com",
         client=client,
     )
     second = source_registry.refresh_company_tickers(
         artifacts_root=tmp_path,
-        user_agent="Test/1.0 test@example.com",
         client=client,
     )
 
@@ -59,7 +57,6 @@ def test_compare_sources_writes_registry_and_effective_csv(tmp_path):
     client = FakeClient(_payload())
     source = source_registry.refresh_company_tickers(
         artifacts_root=tmp_path,
-        user_agent="Test/1.0 test@example.com",
         client=client,
     )
     curated = tmp_path / "curated.csv"

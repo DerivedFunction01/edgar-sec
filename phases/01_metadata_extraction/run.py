@@ -18,15 +18,12 @@ from .core import (
     ProjectConfig,
     RunOptions,
     default_project_config,
-    default_user_agent,
     load_plan,
     load_project_config,
     run_chunk,
     write_project_config,
 )
 from .operator import interactive_wizard, options_from_args, print_json
-
-log = logging.getLogger("metadata.run")
 
 log = logging.getLogger("metadata.run")
 
@@ -88,39 +85,10 @@ def build_parser() -> argparse.ArgumentParser:
         default=None,
         help="omit to start the interactive wizard",
     )
-    parser.add_argument("--workers", type=int, default=None, help="concurrent workers")
     parser.add_argument(
-        "--timeout", type=float, default=None, help="request timeout in seconds"
-    )
-    parser.add_argument(
-        "--max-retries", type=int, default=None, help="per-request retry budget"
-    )
-    parser.add_argument(
-        "--rate-limit",
-        type=float,
-        default=None,
-        help="target requests/second per process",
-    )
-    parser.add_argument(
-        "--user-agent",
-        default=None,
-        help="SEC identity: 'AppName/1.0 contact@example.com'",
-    )
-    parser.add_argument(
-        "--cache-dir", default=None, help="optional raw-response cache directory"
-    )
-    parser.add_argument(
-        "--max-failure-attempts",
-        type=int,
-        default=None,
-        help="independent failed runs after which a URL is skipped without retrying",
+        "--threads", type=int, default=None, help="temporary thread-pool override"
     )
     parser.add_argument("--limit", type=int, default=None, help="bounded test run size")
-    parser.add_argument(
-        "--ignore-failure-history",
-        action="store_true",
-        help="attempt every URL regardless of recorded failures",
-    )
     parser.add_argument("--log-level", default="INFO")
     parser.add_argument("--run-id", default="default")
     parser.add_argument(
@@ -171,26 +139,10 @@ def main(argv=None) -> int:
             chunk_size=coalesce(
                 args.chunk_size, project_config.chunk_size, RunOptions.chunk_size
             ),
-            workers=coalesce(args.workers, project_config.workers, RunOptions.workers),
-            timeout_s=coalesce(
-                args.timeout, project_config.timeout_s, RunOptions.timeout_s
-            ),
-            max_retries=coalesce(
-                args.max_retries, project_config.max_retries, RunOptions.max_retries
-            ),
-            rate_limit_rps=coalesce(
-                args.rate_limit,
-                project_config.rate_limit_rps,
-                RunOptions.rate_limit_rps,
-            ),
-            user_agent=args.user_agent
-            or project_config.user_agent
-            or default_user_agent(),
-            cache_dir=coalesce(args.cache_dir, project_config.cache_dir, ""),
-            max_failure_attempts=coalesce(
-                args.max_failure_attempts,
-                project_config.max_failure_attempts,
-                RunOptions.max_failure_attempts,
+            partition_count=coalesce(
+                getattr(args, "partition_count", None),
+                project_config.partition_count,
+                RunOptions.partition_count,
             ),
             limit=coalesce(args.limit, project_config.limit, RunOptions.limit),
             storage_format=coalesce(

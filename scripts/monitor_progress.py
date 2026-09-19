@@ -108,27 +108,11 @@ def _find_chunk_dbs(
     """Find all chunk databases under transient webpage_storage runs."""
     env = {"ARTIFACTS_ROOT": str(artifacts_root)} if artifacts_root else None
     if run_id:
-        w_root = resolve_paths("webpage_storage", run_id, env=env).workers_root
-        return (
-            [
-                m
-                for m in sorted(w_root.rglob("*.db"))
-                if m.is_file() and m.name.startswith("chunk-")
-            ]
-            if w_root.exists()
-            else []
-        )
+        run_paths = resolve_paths("webpage_storage", run_id, env=env)
+        return sorted(run_paths.partitions_root.rglob("chunk-*.db"))
 
     base = resolve_paths("webpage_storage", env=env).runs_root
-    return (
-        [
-            m
-            for m in sorted(base.rglob("*.db"))
-            if m.is_file() and m.name.startswith("chunk-")
-        ]
-        if base.exists()
-        else []
-    )
+    return sorted(base.rglob("chunk-*.db")) if base.exists() else []
 
 
 def _detect_run_id(chunk_paths: Sequence[Path]) -> str:
@@ -138,9 +122,21 @@ def _detect_run_id(chunk_paths: Sequence[Path]) -> str:
     parts = chunk_paths[0].parts
     if "runs" in parts:
         idx = parts.index("runs")
-        if idx + 1 < len(parts):
+        if idx + 2 < len(parts):
             return parts[idx + 1]
     return ""
+
+
+def _detect_partition_id(chunk_paths: Sequence[Path]) -> str | None:
+    """Extract partition id from discovered chunk paths."""
+    if not chunk_paths:
+        return None
+    parts = chunk_paths[0].parts
+    if "partitions" in parts:
+        idx = parts.index("partitions")
+        if idx + 1 < len(parts):
+            return parts[idx + 1]
+    return None
 
 
 def _inspect_run_metadata(
@@ -177,7 +173,7 @@ def _inspect_run_metadata(
         if meta_file.is_file():
             with suppress(Exception), open(meta_file, encoding="utf-8") as f:
                 return json.load(f), r_dir.name
-        if (r_dir / "workers").is_dir():
+        if (r_dir / "partitions").is_dir():
             return None, r_dir.name
     return None, ""
 
@@ -249,6 +245,8 @@ def render_dashboard(
     plan_scope: str | None = None,
     run_id: str = "",
     mode: str | None = None,
+    partition_id: str | None = None,
+    partition_count: int | None = None,
     window_s: float = 60.0,
     stall_threshold_s: float = 60.0,
     stalled_only: bool = False,
@@ -318,6 +316,11 @@ def render_dashboard(
         print(
             f" Active Run ID : {run_id} ({active_chunks + committed_chunks} chunk DBs)"
         )
+    if partition_id:
+        partition_line = f" Partition     : \033[1;35m{partition_id}\033[0m"
+        if partition_count:
+            partition_line += f" of {partition_count}"
+        print(partition_line)
     print(f" Broker Daemon : {broker_status_str}")
     print("=" * term_width)
 
@@ -512,12 +515,15 @@ def main() -> int:
     chunk_activity: dict[str, dict[str, float | int]] = {}
     start_time = time.monotonic()
     cache_dir = resolve_paths(env={"ARTIFACTS_ROOT": str(artifacts_root)}).cache_root
+    detected_partition_id: str | None = None
 
     try:
         while True:
             chunk_paths = _find_chunk_dbs(artifacts_root, detected_run_id)
             if not detected_run_id:
                 detected_run_id = _detect_run_id(chunk_paths)
+            if chunk_paths:
+                detected_partition_id = _detect_partition_id(chunk_paths)
 
             if not chunk_paths:
                 ts = datetime.now(UTC).strftime("%H:%M:%S")
@@ -564,6 +570,8 @@ def main() -> int:
                     plan_scope=discovered_scope,
                     run_id=detected_run_id,
                     mode=exec_mode,
+                    partition_id=detected_partition_id,
+                    partition_count=run_meta.get("partition_count") if run_meta else None,
                     window_s=args.window,
                     stall_threshold_s=args.stall_threshold,
                     stalled_only=args.stalled_only,

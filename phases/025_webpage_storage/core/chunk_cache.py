@@ -29,8 +29,15 @@ from .schemas import (
 )
 
 
-def find_completed_chunk_db(run_paths, attempt_id: str, chunk_id: str) -> Path | None:
-    matches = sorted(run_paths.workers_root.glob(f"*/{attempt_id}/{chunk_id}.db"))
+def find_completed_chunk_db(
+    run_paths, attempt_id: str, chunk_id: str, partition_id: int | None = None
+) -> Path | None:
+    root = (
+        run_paths.partition_root(partition_id) / "workers"
+        if partition_id is not None
+        else run_paths.workers_root
+    )
+    matches = sorted(root.glob(f"*/{attempt_id}/{chunk_id}.db"))
     for path in matches:
         if path.is_file():
             return path

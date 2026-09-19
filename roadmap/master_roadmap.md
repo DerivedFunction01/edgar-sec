@@ -488,11 +488,11 @@ To prevent SQL double-counting and enable sub-second queries across 200,000 fili
 ## Operator Configuration Boundary (implemented)
 
 All application settings are declared once as typed specs with logical dotted
-paths in the shared settings registry (`defs/runtime/settings/`) plus one
-`settings.py` per phase, registered through the `phases/settings.py` barrel.
+paths in the shared settings registry (`defs/runtime/settings/`).
 Environment names are generated from the logical paths (e.g.
-`filing_extraction.source_batch_size` -> `FILING_EXTRACTION_SOURCE_BATCH_SIZE`),
-so new phases add a spec module — never environment exports or ad-hoc
+`runtime.chunk_size` -> `RUNTIME_CHUNK_SIZE`),
+so new phases register a spec module when they need one — never environment
+exports or ad-hoc
 `os.environ` reads. Direct environment access is confined to the generic
 `defs/runtime/env.py` boundary and the settings registry; an automated
 environment-access scanner in the `check.py` validation gate enforces this on

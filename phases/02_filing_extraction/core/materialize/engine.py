@@ -17,6 +17,7 @@ from defs.runtime.artifacts import (
     update_current_snapshot_pointer,
 )
 from defs.runtime.resources import derive_resources
+from defs.runtime.settings.runtime import DEFAULT_CHUNK_SIZE
 from defs.storage import (
     FinalizedDataset,
     StorageError,
@@ -25,7 +26,6 @@ from defs.storage import (
     load_json,
 )
 
-from ..config import DEFAULT_SOURCE_BATCH_SIZE
 from ..paths import resolve_filing_paths
 from ..schemas import (
     PROFILE_COLUMNS,
@@ -118,7 +118,7 @@ def materialize(
     ``output_root`` (tests, external tools) writes the snapshot directory in
     place and never touches the pointer.
     """
-    source_batch_size = source_batch_size or DEFAULT_SOURCE_BATCH_SIZE
+    source_batch_size = source_batch_size or DEFAULT_CHUNK_SIZE
     if source_batch_size < 1:
         raise ValueError("source_batch_size must be >= 1")
 

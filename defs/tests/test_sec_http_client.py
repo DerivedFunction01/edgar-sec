@@ -20,7 +20,9 @@ from defs.sec_http import (
     RetryExhausted,
     RetryPolicy,
     SecHttpClient,
+    SecTransportProfile,
     make_sec_http_client,
+    resolve_sec_transport_profile,
 )
 
 
@@ -59,6 +61,53 @@ def test_sec_default_max_concurrency_is_eight():
 def test_sec_client_honors_explicit_concurrency_cap():
     client = SecHttpClient(user_agent="App/1.0 a@b.com", max_concurrency=4)
     assert client._transport.max_concurrency == 4
+
+
+def test_shared_transport_profile_carries_all_client_controls():
+    profile = resolve_sec_transport_profile(
+        user_agent="App/1.0 a@b.com",
+        rate_limit_rps=2.0,
+        timeout_s=30.0,
+        max_retries=6,
+        max_failure_attempts=9,
+        cache_dir="/tmp/sec-cache",
+        max_concurrency=3,
+        json_ttl_s=0,
+    )
+    assert profile == SecTransportProfile(
+        user_agent="App/1.0 a@b.com",
+        rate_limit_rps=2.0,
+        timeout_s=30.0,
+        max_retries=6,
+        max_failure_attempts=9,
+        cache_dir="/tmp/sec-cache",
+        max_concurrency=3,
+        json_ttl_s=0,
+    )
+
+
+def test_shared_transport_profile_rejects_invalid_identity(monkeypatch):
+    monkeypatch.setenv("SEC_USER_AGENT", "not-an-identity")
+    with pytest.raises(ValueError, match="SEC contact identity is required"):
+        resolve_sec_transport_profile()
+
+
+def test_make_client_accepts_shared_transport_profile(tmp_path):
+    profile = SecTransportProfile(
+        user_agent="App/1.0 a@b.com",
+        rate_limit_rps=2.0,
+        timeout_s=30.0,
+        max_retries=6,
+        max_failure_attempts=9,
+        cache_dir=str(tmp_path),
+        max_concurrency=3,
+        json_ttl_s=0,
+    )
+    client = make_sec_http_client(profile=profile)
+    assert client.timeout_s == 30.0
+    assert client.retry_policy.max_retries == 6
+    assert client.max_failure_attempts == 9
+    assert client._transport.max_concurrency == 3
 
 
 def test_sec_client_rejects_invalid_concurrency():

@@ -44,7 +44,7 @@ def fake_sec(monkeypatch):
         # build client with injected session
         client = imp("phases.01_metadata_extraction.core.sec_client").SubmissionsClient(
             http=sec_http.SecHttpClient(
-                user_agent=options.user_agent or "TestClient/1.0 test@example.com",
+                user_agent="TestClient/1.0 test@example.com",
                 rate_limiter=sec_http.RateLimiter(min_interval_s=0.001),
                 retry_policy=sec_http.RetryPolicy(
                     max_retries=1, backoff_base_s=0.001, jitter=0.0
@@ -65,7 +65,6 @@ def make_options(tmp_path, **kw):
         "artifacts_dir": str(tmp_path / "run"),
         "chunk_size": 2,
         "partition_count": 1,
-        "user_agent": "TestClient/1.0 test@example.com",
     }
     defaults.update(kw)
     options = config.RunOptions(**defaults)
@@ -179,7 +178,6 @@ def test_run_chunk_end_to_end_with_fake_http(tmp_path, fake_sec):
                 **options.to_dict(),
                 "chunk_id": 1,
                 "partition_id": 1,
-                "user_agent": options.user_agent,
             }
         )
     )
@@ -193,7 +191,6 @@ def test_run_chunk_end_to_end_with_fake_http(tmp_path, fake_sec):
                 **options.to_dict(),
                 "chunk_id": 2,
                 "partition_id": 1,
-                "user_agent": options.user_agent,
             }
         )
     )
@@ -213,7 +210,6 @@ def test_run_chunk_end_to_end_with_fake_http(tmp_path, fake_sec):
                 **options.to_dict(),
                 "chunk_id": 1,
                 "partition_id": 1,
-                "user_agent": options.user_agent,
             }
         )
     )
@@ -237,7 +233,6 @@ def test_run_chunk_rejects_chunk_id_outside_plan(tmp_path, fake_sec):
                 **{
                     **options.to_dict(),
                     "chunk_id": 99,
-                    "user_agent": options.user_agent,
                 }
             )
         )
@@ -251,11 +246,7 @@ def test_run_chunk_rejects_modified_input(tmp_path, fake_sec):
     with open(input_path, "a", encoding="utf-8") as fh:
         fh.write("1,Newco\n")
     with pytest.raises(ValueError, match="fingerprint"):
-        application.run_chunk(
-            config.RunOptions(
-                **{**options.to_dict(), "chunk_id": 1, "user_agent": options.user_agent}
-            )
-        )
+        application.run_chunk(config.RunOptions(**{**options.to_dict(), "chunk_id": 1}))
 
 
 def test_jsonl_storage_end_to_end(tmp_path, fake_sec):
@@ -300,7 +291,6 @@ def test_jsonl_storage_end_to_end(tmp_path, fake_sec):
                 **options.to_dict(),
                 "chunk_id": 1,
                 "partition_id": 1,
-                "user_agent": options.user_agent,
             }
         )
     )
@@ -311,7 +301,6 @@ def test_jsonl_storage_end_to_end(tmp_path, fake_sec):
                 **options.to_dict(),
                 "chunk_id": 2,
                 "partition_id": 1,
-                "user_agent": options.user_agent,
             }
         )
     )
@@ -350,9 +339,7 @@ def test_run_chunk_emits_progress_events(tmp_path, fake_sec):
 
     events = []
     summary = application.run_chunk(
-        config.RunOptions(
-            **{**options.to_dict(), "chunk_id": 1, "user_agent": options.user_agent}
-        ),
+        config.RunOptions(**{**options.to_dict(), "chunk_id": 1}),
         progress=events.append,
     )
     assert summary["rows"] == 2
@@ -390,9 +377,7 @@ def test_run_chunk_progress_callback_failure_does_not_break_run(tmp_path, fake_s
         raise RuntimeError("callback exploded")
 
     summary = application.run_chunk(
-        config.RunOptions(
-            **{**options.to_dict(), "chunk_id": 1, "user_agent": options.user_agent}
-        ),
+        config.RunOptions(**{**options.to_dict(), "chunk_id": 1}),
         progress=bad_callback,
     )
     assert summary["rows"] == 2
@@ -429,7 +414,7 @@ def test_run_partition_with_automerge_success(tmp_path, fake_sec):
 
     events = []
     result = application.run_partition_with_automerge(
-        config.RunOptions(**{**options.to_dict(), "user_agent": options.user_agent}),
+        config.RunOptions(**options.to_dict()),
         partition_id=1,
         progress=events.append,
     )
@@ -461,7 +446,7 @@ def test_run_partition_with_automerge_skips_on_failure(tmp_path, fake_sec):
     application.build_plan(options)
 
     result = application.run_partition_with_automerge(
-        config.RunOptions(**{**options.to_dict(), "user_agent": options.user_agent}),
+        config.RunOptions(**options.to_dict()),
         partition_id=1,
     )
     assert result.get("auto_merged") is not True
@@ -498,7 +483,7 @@ def test_run_partition_with_automerge_emits_merge_stage_events(tmp_path, fake_se
 
     events = []
     application.run_partition_with_automerge(
-        config.RunOptions(**{**options.to_dict(), "user_agent": options.user_agent}),
+        config.RunOptions(**options.to_dict()),
         partition_id=1,
         progress=events.append,
     )

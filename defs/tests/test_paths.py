@@ -200,6 +200,28 @@ def test_worker_chunk_db_path_is_under_worker_attempt_root(tmp_path):
     )
 
 
+def test_partition_worker_chunk_db_path_is_partition_scoped(tmp_path):
+    run = (
+        resolve_paths(env={"ARTIFACTS_ROOT": str(tmp_path)})
+        .phase("webpage_storage")
+        .run("run-1")
+    )
+    chunk = run.worker_chunk_db("worker-1", "attempt-1", "chunk-00001", 2)
+    assert chunk == (
+        tmp_path
+        / "transient"
+        / "webpage_storage"
+        / "runs"
+        / "run-1"
+        / "partitions"
+        / "partition-00002"
+        / "workers"
+        / "worker-1"
+        / "attempt-1"
+        / "chunk-00001.db"
+    )
+
+
 def test_worker_chunk_db_rejects_unsafe_ids(tmp_path):
     run = (
         resolve_paths(env={"ARTIFACTS_ROOT": str(tmp_path)})

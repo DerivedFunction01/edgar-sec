@@ -4,10 +4,12 @@ Pipeline A, Part 1. Transforms the SEC `data.sec.gov/submissions` feed into a
 versioned, queryable `submission_metadata` dataset (Parquet / JSONL) with
 provenance and resumable runs.
 
-Omitted workers are derived from the shared cgroup-aware memory profile. The
-512 MiB per-worker estimate and safety fraction are machine-local settings;
-explicit worker values remain overrides and are not plan-defining fields. SEC
-transport concurrency is capped at 8 independently of request-start pacing.
+Phase 1 metadata acquisition uses threads because its work is SEC I/O-bound.
+Omitted concurrency is derived from the shared `runtime.threads` setting;
+explicit values remain temporary overrides and are not plan-defining fields.
+Process workers are reserved for process-pool workloads such as Phase 2.5
+partition acquisition. SEC transport concurrency is capped independently of
+request-start pacing.
 
 One output row per CIK. For each filing CIK the phase fetches the current
 submissions JSON, follows every historical submissions file, and combines all
@@ -240,19 +242,21 @@ statuses still fail the merge.
 
 `--configure` is the only writer of `.artifacts/metadata/config.json`. A missing
 config is created as a validated template and the run stops before any network
-work so the SEC contact identity (`--user-agent`, `AppName/1.0
+work so shared settings (SEC identity via `SEC_USER_AGENT`, `AppName/1.0
 contact@example.com`) can be added first. CLI flags are temporary overrides and
 are never persisted.
 
-SEC identity and cache settings are declared in the shared settings registry
-(`defs/runtime/settings/sec.py`) and resolved through it: `sec.user_agent`
-(environment name `SEC_USER_AGENT`, also persisted in the config's
-`credentials` section) and `sec.cache_dir` (`SEC_CACHE_DIR`). Precedence is
-direct environment → `.env` → persisted config → default. The legacy
-`user_agent_env` config field was removed: configurations containing it fail
-validation as an unknown field instead of silently resolving. Phase-specific
-options (e.g. `metadata.max_failure_attempts`) are declared in this phase's
-`settings.py` and registered through the `phases/settings.py` barrel.
+The persisted phase config holds only dataset/layout values (`input_path`,
+`artifacts_dir`, `chunk_size`, `partition_count`, `limit`, `storage_format`).
+SEC identity, transport, failure-ledger, and cache settings are declared in the
+shared settings registry (`defs/runtime/settings/`) and resolved through the
+shared SEC transport profile when the client is constructed; they are never
+persisted in the phase config, plans, or manifests. Concurrency is thread-based
+for this phase: an explicit `--threads` value is a temporary override, and
+omitted values derive from `runtime.threads`. Obsolete config fields (including
+legacy `sec_http`/`metadata` sections and `workers` keys) are ignored because
+the one-time template can be regenerated; no legacy migration layer is
+maintained.
 
 `plan.json` is an immutable snapshot of the effective run options plus an input
 fingerprint and plan hash. If the effective options or input CSV change, the plan

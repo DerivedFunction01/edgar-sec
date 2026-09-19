@@ -54,6 +54,7 @@ def make_sec_http_client(
     ignore_failure_history: bool = False,
     max_concurrency: int = DEFAULT_SEC_MAX_CONCURRENCY,
     json_ttl_s: int = DEFAULT_JSON_TTL_S,
+    profile: SecTransportProfile | None = None,
 ) -> SecHttpClient:
     """Construct a production ``SecHttpClient`` bound to runtime settings.
 
@@ -63,30 +64,26 @@ def make_sec_http_client(
     Importing the settings/path layer is deferred to call time so this factory
     can live in the shared HTTP boundary without a circular import.
     """
-    from defs.runtime.paths import resolve_paths
-    from defs.runtime.settings import get_setting
-
-    resolved_ua = user_agent or str(get_setting("sec.user_agent") or DEFAULT_USER_AGENT)
-    resolved_cache = (
-        str(cache_dir)
-        if cache_dir is not None
-        else str(get_setting("cache.root") or resolve_paths().cache_root)
-    )
-    raw_json_ttl = get_setting("cache.json_ttl_s")
-    resolved_json_ttl = (
-        DEFAULT_JSON_TTL_S if raw_json_ttl is None else int(raw_json_ttl)
+    profile = profile or resolve_sec_transport_profile(
+        user_agent=user_agent,
+        cache_dir=cache_dir,
+        timeout_s=timeout_s,
+        max_failure_attempts=max_failure_attempts,
+        max_concurrency=max_concurrency,
+        json_ttl_s=json_ttl_s,
     )
     return SecHttpClient(
-        user_agent=resolved_ua,
+        user_agent=profile.user_agent,
         rate_limiter=rate_limiter,
         retry_policy=retry_policy,
-        timeout_s=timeout_s,
-        cache_dir=resolved_cache,
+        timeout_s=profile.timeout_s,
+        cache_dir=profile.cache_dir,
         metrics=metrics,
-        max_failure_attempts=max_failure_attempts,
+        max_failure_attempts=profile.max_failure_attempts,
         ignore_failure_history=ignore_failure_history,
-        max_concurrency=max_concurrency,
-        json_ttl_s=resolved_json_ttl,
+        max_concurrency=profile.max_concurrency,
+        json_ttl_s=profile.json_ttl_s,
+        profile=profile,
     )
 
 
@@ -104,6 +101,71 @@ class SecTransportProfile:
     ignore_failure_history: bool = False
     max_concurrency: int = DEFAULT_SEC_MAX_CONCURRENCY
     json_ttl_s: int = DEFAULT_JSON_TTL_S
+
+
+def resolve_sec_transport_profile(
+    *,
+    user_agent: str | None = None,
+    rate_limit_rps: float | None = None,
+    timeout_s: float | None = None,
+    max_retries: int | None = None,
+    max_failure_attempts: int | None = None,
+    cache_dir: str | Path | None = None,
+    ignore_failure_history: bool = False,
+    max_concurrency: int | None = None,
+    json_ttl_s: int | None = None,
+) -> SecTransportProfile:
+    """Resolve one shared SEC transport profile with optional call overrides."""
+    from defs.runtime.paths import resolve_paths
+    from defs.runtime.settings import get_setting
+
+    resolved_user_agent = user_agent or str(
+        get_setting("sec.user_agent") or DEFAULT_USER_AGENT
+    )
+    if "@" not in resolved_user_agent:
+        raise ValueError(
+            "SEC contact identity is required: set SEC_USER_AGENT to "
+            "'AppName/1.0 your-email@example.com'"
+        )
+    return SecTransportProfile(
+        user_agent=resolved_user_agent,
+        rate_limit_rps=(
+            float(rate_limit_rps)
+            if rate_limit_rps is not None
+            else float(get_setting("sec.rate_limit_rps"))
+        ),
+        timeout_s=(
+            float(timeout_s)
+            if timeout_s is not None
+            else float(get_setting("sec.timeout_s"))
+        ),
+        max_retries=(
+            int(max_retries)
+            if max_retries is not None
+            else int(get_setting("sec.max_retries"))
+        ),
+        max_failure_attempts=(
+            int(max_failure_attempts)
+            if max_failure_attempts is not None
+            else int(get_setting("sec.max_failure_attempts"))
+        ),
+        cache_dir=(
+            str(cache_dir)
+            if cache_dir is not None
+            else str(get_setting("cache.root") or resolve_paths().cache_root)
+        ),
+        ignore_failure_history=ignore_failure_history,
+        max_concurrency=(
+            int(max_concurrency)
+            if max_concurrency is not None
+            else DEFAULT_SEC_MAX_CONCURRENCY
+        ),
+        json_ttl_s=(
+            int(json_ttl_s)
+            if json_ttl_s is not None
+            else int(get_setting("cache.json_ttl_s"))
+        ),
+    )
 
 
 class SecHttpClient:

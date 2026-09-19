@@ -55,29 +55,23 @@ generated environment names `RUNTIME_THREADS`, `RUNTIME_MEMORY_LIMIT`,
 
 ## Phase settings vs machine-local settings
 
-Phase behavior is declared in this phase's `settings.py`
-(`filing_extraction.source_batch_size`, `filing_extraction.target_forms`,
-`filing_extraction.document_suffixes`, `filing_extraction.amendment`) and
-registered through the
-`phases/settings.py` barrel; persistable dataset-relevant settings are written
-to `.artifacts/filing_extraction/config.json`. Shared runtime execution settings
-live in the shared registry
-(`defs/runtime/settings/runtime.py`) and are machine-local: they affect how a
-machine executes work but are never part of dataset identity, so they default
-to machine detection and are not written to config or plans.
+Phase 2 does not participate in the phase settings barrel. Selection behavior
+belongs to the immutable target plan: deterministic plans receive explicit CLI
+filters, while policy plans read forms, amendment policy, and document
+suffixes from the editable selection-policy JSON, which is embedded and
+fingerprinted in the published plan. Shared runtime execution settings live in
+the shared registry (`defs/runtime/settings/runtime.py`): `runtime.chunk_size`
+sizes materialization batches, while `runtime.threads`, `runtime.memory_limit`,
+and `runtime.temp_directory` are machine-local — they affect how a machine
+executes work but are never part of dataset identity, so they default to
+machine detection and are not written to config or plans.
 
-Resolution precedence for `source_batch_size`: explicit `--source-batch-size`
-flag → direct environment/`.env` (`FILING_EXTRACTION_SOURCE_BATCH_SIZE`) →
-persisted Phase 02 config → default. Resolution precedence for `target_forms`
-and `amendment`: explicit `--form`/`--amendment` flags → direct environment/`.env`
-(`FILING_EXTRACTION_TARGET_FORMS`, `FILING_EXTRACTION_AMENDMENT`) → persisted
-Phase 02 config → default (`target_forms` empty means all forms, `amendment`
-defaults to `both`). Repeat `--document-suffix` for a union of
-case-insensitive path suffixes; leading dots are normalized away. The filter
-is recorded in `plan.json` and its fingerprint. A suffix identifies the SEC
-document path only; `.txt` does not guarantee plain-text content. Runtime
-execution settings resolve as CLI flag →
-environment → machine-derived value.
+Deterministic planning takes forms, amendment, and suffix filters directly
+from its command arguments. Policy planning takes all three from the selected
+policy JSON; policy values are normalized, recorded in `plan.json`, and
+included in the policy fingerprint. A suffix identifies the SEC document path
+only; `.txt` does not guarantee plain-text content. Runtime execution
+settings resolve as CLI flag → environment → machine-derived value.
 
 ## Canonical command surface
 
@@ -92,22 +86,17 @@ environment → machine-derived value.
 .venv/bin/python -m phases.02_filing_extraction.cli plan \
   --catalog <catalog-id> --scope policy \
   --selection-policy .artifacts/filing_extraction/selection_policy.json
-# Or plan with custom config override:
-.venv/bin/python -m phases.02_filing_extraction.cli plan \
-  --catalog <catalog-id> --config .artifacts/filing_extraction/config.json
 .venv/bin/python -m phases.02_filing_extraction.cli expand \
   --parent-plan <policy-plan-directory> --target-units 10000 \
   --selection-policy <selection-policy.json>
 .venv/bin/python -m phases.02_filing_extraction.cli status
 ```
 
-`materialize` accepts machine-tuning overrides: `--source-batch-size`,
-`--threads`, `--memory-limit`, `--temp-directory`, and `--progress`. Explicit
-flags override the persisted Phase 02 configuration at
-`.artifacts/filing_extraction/config.json` (`--config` relocates it), which
-holds `source_batch_size`, `target_forms`, and `amendment`; when neither is
-present the conservative defaults (1,000 source rows per batch, all forms, and
-`both` amendments) apply. DuckDB threads, memory budget,
+`materialize` accepts machine-tuning overrides: `--threads`, `--memory-limit`,
+`--temp-directory`, and `--progress`. The materialization batch size is the
+shared `runtime.chunk_size` (`RUNTIME_CHUNK_SIZE`), also used by Phase 1
+chunking. Selection-policy JSON is the source of truth
+for policy-driven forms, amendment handling, and document suffixes. DuckDB threads, memory budget,
 and spill directory default to machine-derived values (`psutil` with an `os`
 fallback) and may be overridden per environment through
 `DUCKDB_THREADS`, `DUCKDB_MEMORY_LIMIT`,

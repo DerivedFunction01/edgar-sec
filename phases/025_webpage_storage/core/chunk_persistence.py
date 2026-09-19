@@ -155,6 +155,7 @@ def _persist_fetch_result(
     chunk_failures: list[ChunkFailure],
     progress: Callable[[dict], None] | None,
     error: str | None = None,
+    payload_sink: Callable[[object, str, bytes], None] | None = None,
 ) -> str:
     """Persist one fetch result into the chunk database and emit a progress event.
 
@@ -236,6 +237,8 @@ def _persist_fetch_result(
 
     # The blob is always the exact fetched source; normalization is separate.
     raw_payload = fetched.payload
+    if payload_sink is not None:
+        payload_sink(executor, target_doc_id, raw_payload)
     blob = build_blob(locator.accession, locator.document_path, raw_payload)
     blob_stmt = insert_values(
         DOCUMENT_BLOBS_TABLE,
@@ -326,6 +329,7 @@ def _run_pipelined_acquisitions(
     chunk_failures: list[ChunkFailure],
     progress: Callable[[dict], None] | None,
     fetch_workers: int = 1,
+    payload_sink: Callable[[object, str, bytes], None] | None = None,
 ) -> None:
     """Acquire and persist uncached locators via a bounded producer-consumer pipeline.
 
@@ -411,6 +415,7 @@ def _run_pipelined_acquisitions(
                 chunk_failures=chunk_failures,
                 progress=progress,
                 error=err,
+                payload_sink=payload_sink,
             )
         finally:
             if reserved:

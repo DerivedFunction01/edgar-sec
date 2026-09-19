@@ -33,7 +33,6 @@ from .core import (
     RunOptions,
     build_plan,
     default_project_config,
-    default_user_agent,
     get_status,
     load_project_config,
     merge,
@@ -89,47 +88,16 @@ def options_from_args(args, project_config) -> RunOptions:
             project_config.storage_format,
             RunOptions.storage_format,
         ),
-        workers=coalesce(
-            getattr(args, "workers", None), project_config.workers, RunOptions.workers
-        ),
-        timeout_s=coalesce(
-            getattr(args, "timeout", None),
-            project_config.timeout_s,
-            RunOptions.timeout_s,
-        ),
-        max_retries=coalesce(
-            getattr(args, "max_retries", None),
-            project_config.max_retries,
-            RunOptions.max_retries,
-        ),
-        rate_limit_rps=coalesce(
-            getattr(args, "rate_limit", None),
-            project_config.rate_limit_rps,
-            RunOptions.rate_limit_rps,
-        ),
-        user_agent=(
-            getattr(args, "user_agent", None)
-            or project_config.user_agent
-            or default_user_agent()
-        ),
-        cache_dir=coalesce(
-            getattr(args, "cache_dir", None), project_config.cache_dir, ""
-        ),
-        max_failure_attempts=coalesce(
-            getattr(args, "max_failure_attempts", None),
-            project_config.max_failure_attempts,
-            RunOptions.max_failure_attempts,
-        ),
+        threads=coalesce(getattr(args, "threads", None), None, RunOptions.threads),
         limit=coalesce(
             getattr(args, "limit", None), project_config.limit, RunOptions.limit
         ),
-        log_level=getattr(args, "log_level", "INFO"),
         run_id=getattr(args, "run_id", "default"),
         source_manifest=getattr(args, "source_manifest", None),
         base_metadata_manifest=getattr(args, "base_metadata_manifest", None),
         augmentation=bool(getattr(args, "augmentation", False)),
     )
-    options.workers = options.effective_workers()
+    options.threads = options.effective_threads()
     return options
 
 
@@ -153,11 +121,6 @@ def build_parser() -> argparse.ArgumentParser:
         "refresh", help="fetch and publish a company ticker source snapshot"
     )
     refresh_parser.add_argument("--artifacts-root", default=None)
-    refresh_parser.add_argument("--user-agent", default=None)
-    refresh_parser.add_argument("--timeout", type=float, default=30.0)
-    refresh_parser.add_argument("--max-retries", type=int, default=3)
-    refresh_parser.add_argument("--rate-limit", type=float, default=5.0)
-    refresh_parser.add_argument("--cache-dir", default=None)
     compare_parser = source_subparsers.add_parser(
         "compare", help="build a CIK registry and difference artifacts"
     )
@@ -247,15 +210,7 @@ def main(argv=None) -> int:
                 args.artifacts_root or str(resolve_paths().artifacts_root)
             ).resolve()
             if args.source_command == "refresh":
-                user_agent = args.user_agent or default_user_agent()
-                result = refresh_company_tickers(
-                    artifacts_root=artifacts_root,
-                    user_agent=user_agent,
-                    timeout_s=args.timeout,
-                    max_retries=args.max_retries,
-                    rate_limit_rps=args.rate_limit,
-                    cache_dir=args.cache_dir,
-                )
+                result = refresh_company_tickers(artifacts_root=artifacts_root)
             else:
                 result = compare_sources(
                     curated_input_path=args.input,

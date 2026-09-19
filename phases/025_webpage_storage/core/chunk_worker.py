@@ -70,6 +70,7 @@ def process_chunk(
     fetch_workers: int = 1,
     allow_append: bool = False,
     retry_failures: bool = False,
+    payload_sink: Callable[[object, str, bytes], None] | None = None,
 ) -> ChunkResult:
     """Fetch locators and stream records directly into a self-contained SQLite chunk database.
 
@@ -336,8 +337,9 @@ def process_chunk(
                     existing_blobs=existing_blobs,
                     existing_failures=existing_failures,
                     chunk_failures=chunk_failures,
-                    progress=progress,
-                )
+                progress=progress,
+                payload_sink=payload_sink,
+            )
 
         def emit(event: dict) -> None:
             if progress is not None:
@@ -378,6 +380,7 @@ def process_chunk(
             chunk_failures=chunk_failures,
             progress=progress,
             fetch_workers=fetch_workers,
+            payload_sink=payload_sink,
         )
 
         # Count total stored occurrences and blobs

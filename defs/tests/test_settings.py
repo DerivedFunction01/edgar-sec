@@ -80,31 +80,12 @@ def test_invalid_setting_names_are_rejected():
         ("runtime.threads", "RUNTIME_THREADS"),
         ("runtime.memory_limit", "RUNTIME_MEMORY_LIMIT"),
         ("runtime.workers", "RUNTIME_WORKERS"),
-        (
-            "filing_extraction.source_batch_size",
-            "FILING_EXTRACTION_SOURCE_BATCH_SIZE",
-        ),
         ("sec.user_agent", "SEC_USER_AGENT"),
         ("group.with-hyphen", "GROUP_WITH_HYPHEN"),
     ],
 )
 def test_environment_names_are_generated_from_logical_paths(logical, expected):
     assert environment_name(logical) == expected
-
-
-def test_phase_specs_collect_alongside_shared_specs():
-    specs = collect_specs("filing_extraction")
-    assert "filing_extraction.source_batch_size" in specs
-    assert "runtime.threads" in specs
-    assert "metadata.max_failure_attempts" not in specs
-
-    metadata = collect_specs("metadata")
-    assert "metadata.max_failure_attempts" in metadata
-
-
-def test_unknown_phase_is_rejected():
-    with pytest.raises(ValueError, match="unknown phase"):
-        collect_specs("nope")
 
 
 # --- typed parsing -------------------------------------------------------------
@@ -180,22 +161,27 @@ def test_cli_override_beats_environment(tmp_path):
     assert resolved["runtime.threads"] == 4
 
 
-def test_persistable_setting_env_beats_config_beats_default():
-    resolved = resolve_settings(
-        phase="filing_extraction",
-        config={"filing_extraction.source_batch_size": 42},
-        env={"FILING_EXTRACTION_SOURCE_BATCH_SIZE": "7"},
-    )
-    assert resolved["filing_extraction.source_batch_size"] == 7
+def test_persistable_setting_env_beats_config_beats_default(tmp_path, monkeypatch):
+    dotenv = tmp_path / ".env"
+    dotenv.write_text("RUNTIME_THREADS=5\n", encoding="utf-8")
+    monkeypatch.delenv("RUNTIME_THREADS", raising=False)
+    monkeypatch.setenv("DOTENV_PATH", str(dotenv))
 
     resolved = resolve_settings(
-        phase="filing_extraction",
-        config={"filing_extraction.source_batch_size": 42},
+        include=["runtime"],
+        config={"runtime.threads": 42},
+        env={"RUNTIME_THREADS": "7"},
     )
-    assert resolved["filing_extraction.source_batch_size"] == 42
+    assert resolved["runtime.threads"] == 7
 
-    resolved = _resolve_all(phase="filing_extraction")
-    assert resolved["filing_extraction.source_batch_size"] == 1000
+    resolved = resolve_settings(
+        include=["runtime"],
+        config={"runtime.threads": 42},
+    )
+    assert resolved["runtime.threads"] == 5
+
+    resolved = _resolve_all(include=["runtime"])
+    assert resolved["runtime.threads"] == 5
 
 
 def test_settings_without_env_flag_ignore_environment(monkeypatch):

@@ -16,13 +16,14 @@ from defs.runtime import resolve_paths, resolve_source
 from defs.runtime.artifacts import get_current_snapshot_pointer
 from defs.runtime.progress import make_merge_progress_callback
 from defs.runtime.resources import derive_resources
+from defs.runtime.settings.runtime import DEFAULT_CHUNK_SIZE
 from defs.storage import StorageError, load_json
 
 from .cli import main as cli_main
-from .core import config as phase_config
 from .core import discovery
 from .core.materialize import materialize
 from .core.paths import resolve_filing_paths
+from .core.selection_policy import DEFAULT_AMENDMENT
 from .core.target_plan import expand, plan
 
 log = logging.getLogger("filing_extraction.run")
@@ -201,7 +202,7 @@ def _menu_materialize() -> None:
     source_kind, source_default = _default_source()
     res = derive_resources()
     kwargs: dict = {
-        "source_batch_size": phase_config.load().source_batch_size,
+        "source_batch_size": DEFAULT_CHUNK_SIZE,
         "threads": res.threads,
         "memory_limit": res.memory_limit,
         "temp_directory": res.temp_directory,
@@ -345,16 +346,11 @@ def _menu_plan() -> None:
         print(json.dumps(result, indent=2, sort_keys=True))
         return
 
-    settings = phase_config.load()
-    default_forms, default_amendment = settings.target_forms, settings.amendment
-    forms_default = ", ".join(default_forms) if default_forms else ""
-    forms_raw = _prompt(f"Forms filter [{forms_default}]: ", forms_default)
+    forms_raw = _prompt("Forms filter (blank for all): ", "")
     forms = (
-        tuple(f.strip() for f in forms_raw.split(",") if f.strip())
-        if forms_raw
-        else default_forms
+        tuple(f.strip() for f in forms_raw.split(",") if f.strip()) if forms_raw else ()
     )
-    amendment = _prompt(f"Amendment policy [{default_amendment}]: ", default_amendment)
+    amendment = _prompt(f"Amendment policy [{DEFAULT_AMENDMENT}]: ", DEFAULT_AMENDMENT)
     bar = _StageBar("plan targets")
     try:
         result = plan(

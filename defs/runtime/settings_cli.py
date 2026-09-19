@@ -7,7 +7,7 @@ workspace does not freeze one machine's resources.
 
 Usage via the root launcher:
 
-    python run.py settings generate-dotenv [--path PATH] [--force] [--phase ID]
+    python run.py settings generate-dotenv [--path PATH] [--force]
 """
 
 from __future__ import annotations
@@ -33,7 +33,6 @@ def generate_dotenv(
     path: str | os.PathLike[str] = DEFAULT_GENERATED_PATH,
     *,
     force: bool = False,
-    phase: str | None = None,
 ) -> str:
     """Atomically write a documented dotenv template; return the path.
 
@@ -42,12 +41,11 @@ def generate_dotenv(
     target = Path(path)
     if target.exists() and not force:
         raise ValueError(f"{target} already exists; pass --force to overwrite")
-    specs = collect_specs(phase)
+    specs = collect_specs()
     # Specs whose default is MISSING expect a caller-provided value; the
     # template renders them as commented empty suggestions. This stays
     # spec-model-driven: no application-specific names live here.
     resolved = resolve_settings(
-        phase,
         fallbacks={
             spec_path: ""
             for spec_path, spec in specs.items()
@@ -70,12 +68,11 @@ def generate_dotenv(
     return str(target)
 
 
-def _summary(specs: dict, phase: str | None) -> list[str]:
+def _summary(specs: dict) -> list[str]:
     secrets = [p for p, s in specs.items() if s.secret]
     machine = [p for p, s in specs.items() if callable(s.default)]
     lines = [
-        f"settings included: {len(specs)}"
-        + (f" (phase: {phase})" if phase else " (shared only)"),
+        f"settings included: {len(specs)}",
         f"secrets omitted: {len(secrets)}",
     ]
     for path in sorted(secrets):
@@ -98,11 +95,6 @@ def main(argv: list[str] | None = None) -> int:
     generate.add_argument(
         "--force", action="store_true", help="overwrite an existing file"
     )
-    generate.add_argument(
-        "--phase",
-        default=None,
-        help="include a phase's settings in addition to shared settings",
-    )
     args = parser.parse_args(argv)
     # `python run.py settings` (menu selection) passes no command; default to
     # the template generator so the click does something useful. Without a
@@ -111,14 +103,13 @@ def main(argv: list[str] | None = None) -> int:
     if command == "generate-dotenv":
         path = getattr(args, "path", DEFAULT_GENERATED_PATH)
         force = getattr(args, "force", False)
-        phase = getattr(args, "phase", None)
         try:
-            written = generate_dotenv(path, force=force, phase=phase)
+            written = generate_dotenv(path, force=force)
         except ValueError as exc:
             print(f"error: {exc}", file=sys.stderr)
             return 2
-        specs = collect_specs(phase)
-        for line in _summary(specs, phase):
+        specs = collect_specs()
+        for line in _summary(specs):
             print(line)
         print(f"wrote: {written}")
         return 0

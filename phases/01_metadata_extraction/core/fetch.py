@@ -2,26 +2,16 @@
 
 from __future__ import annotations
 
-from defs.sec_http import RateLimiter, RetryPolicy, make_sec_http_client
+from defs.sec_http import make_sec_http_client, resolve_sec_transport_profile
 
-from .config import RunOptions, rate_limit_to_interval
+from .config import RunOptions
 from .normalize import normalize_submissions
 from .sec_client import SubmissionsClient
 
 
 def build_client(options: RunOptions) -> SubmissionsClient:
     options.validate()
-    http = make_sec_http_client(
-        user_agent=options.user_agent,
-        rate_limiter=RateLimiter(
-            min_interval_s=rate_limit_to_interval(options.rate_limit_rps)
-        ),
-        retry_policy=RetryPolicy(max_retries=options.max_retries),
-        timeout_s=options.timeout_s,
-        cache_dir=options.cache_dir,
-        max_failure_attempts=options.max_failure_attempts,
-        ignore_failure_history=options.ignore_failure_history,
-    )
+    http = make_sec_http_client(profile=resolve_sec_transport_profile())
     return SubmissionsClient(http=http)
 
 

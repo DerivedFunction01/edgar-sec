@@ -32,15 +32,6 @@ def build_parser() -> argparse.ArgumentParser:
         default=RunOptions.storage_format,
         help="preview artifact format",
     )
-    parser.add_argument("--timeout", type=float, default=RunOptions.timeout_s)
-    parser.add_argument("--max-retries", type=int, default=RunOptions.max_retries)
-    parser.add_argument("--rate-limit", type=float, default=RunOptions.rate_limit_rps)
-    parser.add_argument("--user-agent", default="")
-    parser.add_argument("--cache-dir", default="")
-    parser.add_argument(
-        "--max-failure-attempts", type=int, default=RunOptions.max_failure_attempts
-    )
-    parser.add_argument("--ignore-failure-history", action="store_true")
     parser.add_argument("--limit", type=int, default=None)
     parser.add_argument("--log-level", default="INFO")
     return parser
@@ -56,13 +47,6 @@ def main(argv=None) -> int:
         input_path=args.input,
         artifacts_dir=args.artifacts,
         storage_format=args.storage_format,
-        timeout_s=args.timeout,
-        max_retries=args.max_retries,
-        rate_limit_rps=args.rate_limit,
-        user_agent=args.user_agent,
-        cache_dir=args.cache_dir,
-        max_failure_attempts=args.max_failure_attempts,
-        ignore_failure_history=getattr(args, "ignore_failure_history", False),
         limit=args.limit,
     )
     try:

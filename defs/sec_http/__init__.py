@@ -10,6 +10,7 @@ from .client import (
     SecTransportProfile,
     default_headers,
     make_sec_http_client,
+    resolve_sec_transport_profile,
 )
 from .errors import PermanentHttpError, ResponseTooLargeError, RetryExhausted
 from .metrics import HttpMetrics
@@ -58,4 +59,5 @@ __all__ = [
     "default_headers",
     "make_cache_reader",
     "make_sec_http_client",
+    "resolve_sec_transport_profile",
 ]
