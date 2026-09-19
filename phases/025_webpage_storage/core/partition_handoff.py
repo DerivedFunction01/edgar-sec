@@ -9,11 +9,51 @@ from defs.storage import atomic_write_json, file_sha256, load_json
 from .schemas import SCHEMA_VERSION
 
 HANDOFF_SUFFIX = ".manifest.json"
+PHASE = "webpage_storage"
+DATASET = "partition_artifacts"
 
 
 def handoff_path(partition_db: str | Path) -> Path:
     path = Path(partition_db)
     return path.with_name(path.name + HANDOFF_SUFFIX)
+
+
+def finalized_partition_dir(
+    run_id: str, artifacts_root: str | Path | None = None
+) -> Path:
+    """Return the canonical run-namespaced finalized partition directory."""
+    from defs.runtime.paths import resolve_paths
+
+    root = (
+        resolve_paths().artifacts_root
+        if artifacts_root is None
+        else Path(artifacts_root)
+    )
+    return resolve_paths(env={"ARTIFACTS_ROOT": str(root)}).partition_artifacts_dir(
+        PHASE, DATASET, run_id
+    )
+
+
+def discover_finalized_partitions(
+    run_id: str,
+    *,
+    artifacts_root: str | Path | None = None,
+    validate: bool = True,
+) -> list[Path]:
+    """Discover finalized partition databases for one acquisition run."""
+    directory = finalized_partition_dir(run_id, artifacts_root)
+    paths = sorted(directory.glob("partition-*.sqlite")) if directory.is_dir() else []
+    if validate:
+        manifests = [validate_handoff(path) for path in paths]
+        for manifest in manifests:
+            if str(manifest.get("run_id")) != run_id:
+                raise ValueError(
+                    f"partition handoff belongs to run {manifest.get('run_id')!r}, "
+                    f"not {run_id!r}"
+                )
+        if paths:
+            validate_handoffs(paths)
+    return paths
 
 
 def write_handoff(
@@ -91,7 +131,11 @@ def validate_handoffs(partition_dbs: list[str | Path]) -> list[dict]:
 
 
 __all__ = [
+    "DATASET",
     "HANDOFF_SUFFIX",
+    "PHASE",
+    "discover_finalized_partitions",
+    "finalized_partition_dir",
     "handoff_path",
     "validate_handoff",
     "validate_handoffs",

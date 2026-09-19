@@ -337,9 +337,9 @@ def process_chunk(
                     existing_blobs=existing_blobs,
                     existing_failures=existing_failures,
                     chunk_failures=chunk_failures,
-                progress=progress,
-                payload_sink=payload_sink,
-            )
+                    progress=progress,
+                    payload_sink=payload_sink,
+                )
 
         def emit(event: dict) -> None:
             if progress is not None:

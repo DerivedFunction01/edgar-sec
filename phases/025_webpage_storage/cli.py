@@ -16,25 +16,17 @@ from defs.runtime.cli import print_json
 from defs.runtime.paths import resolve_paths
 from defs.runtime.progress import make_tqdm_callback
 from defs.runtime.resources import derive_resources
-from defs.sql import (
-    Aggregate,
-    AggregateFunction,
-    Select,
-    SqlDialect,
-    Star,
-    Table,
-    make_sql_executor,
-)
 
 from .core import pipeline
-from .core.partition_handoff import handoff_path, validate_handoffs, write_handoff
-from .core.partition_merger import merge_partition
-from .core.schemas import (
-    ACQUISITION_FAILURES_TABLE,
-    COMMITTED_CHUNKS_TABLE,
-    DOCUMENT_BLOBS_TABLE,
-    FILING_OCCURRENCES_TABLE,
+from .core.partition_handoff import (
+    discover_finalized_partitions,
+    finalized_partition_dir,
+    handoff_path,
+    validate_handoffs,
+    write_handoff,
 )
+from .core.partition_merger import merge_partition
+from .core.run_status import status as run_status
 from .core.snapshot_merge import merge_partitions_to_snapshot
 from .core.vacuum import vacuum_snapshots
 
@@ -272,70 +264,14 @@ def _fixture_paths(fixtures_arg: str | None) -> list[str] | None:
     return None
 
 
-def _resolved_output(args) -> str:
+def _resolved_output(args, run_id: str | None = None) -> str:
     if getattr(args, "output_dir", None):
         return args.output_dir
+    if run_id:
+        return str(finalized_partition_dir(run_id))
     return str(
         resolve_paths().dataset_manifests("webpage_storage", "partition_artifacts")
     )
-
-
-def _count_table(executor, table: str) -> int:
-    query = Select(
-        source=Table(table),
-        projection=(Aggregate(AggregateFunction.COUNT, Star()),),
-    )
-    row = executor.query_one(executor.compiler.compile(query))
-    if row:
-        val = next(iter(row.values()))
-        return int(val) if val is not None else 0
-    return 0
-
-
-def _status(database: str | None = None, run_id: str | None = None) -> dict:
-    if database:
-        path = Path(database)
-        if not path.is_file():
-            return {
-                "database": database,
-                "exists": False,
-                "blobs": 0,
-                "occurrences": 0,
-                "failures": 0,
-                "committed_chunks": 0,
-            }
-        executor = make_sql_executor(database, dialect=SqlDialect.SQLITE)
-        try:
-            return {
-                "database": database,
-                "exists": True,
-                "blobs": _count_table(executor, DOCUMENT_BLOBS_TABLE),
-                "occurrences": _count_table(executor, FILING_OCCURRENCES_TABLE),
-                "failures": _count_table(executor, ACQUISITION_FAILURES_TABLE),
-                "committed_chunks": _count_table(executor, COMMITTED_CHUNKS_TABLE),
-            }
-        finally:
-            executor.close()
-
-    target_run_id = run_id or "run-default"
-    run_paths = resolve_paths("webpage_storage", target_run_id)
-    meta_file = run_paths.run_root / "run_metadata.json"
-    meta = {}
-    if meta_file.is_file():
-        with suppress(Exception):
-            from defs.storage import load_json
-
-            meta = load_json(meta_file)
-
-    chunk_dbs = [
-        p for p in sorted(run_paths.workers_root.rglob("chunk-*.db")) if p.is_file()
-    ]
-    return {
-        "run_id": target_run_id,
-        "exists": run_paths.run_root.exists(),
-        "metadata": meta,
-        "chunk_dbs_count": len(chunk_dbs),
-    }
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -404,13 +340,14 @@ def main(argv: list[str] | None = None) -> int:
                         pipeline.load_targets(plan_dir)[2].get("plan_id")
                         or Path(plan_dir).name
                     )
+                    effective_run_id = args.run_id or f"run-{plan_id}"
                     result = pipeline.run_partition(
                         plan_dir,
-                        _resolved_output(args),
+                        _resolved_output(args, effective_run_id),
                         mode=args.mode,
                         fixture_paths=_fixture_paths(getattr(args, "fixtures", None)),
                         http_client=http_client,
-                        run_id=args.run_id or f"run-{plan_id}",
+                        run_id=effective_run_id,
                         partition_id=args.partition_id,
                         partition_count=args.partition_count,
                         chunk_size=args.chunk_size,
@@ -438,8 +375,11 @@ def main(argv: list[str] | None = None) -> int:
                     sorted(Path(args.partition_dir).rglob("partition-*.sqlite"))
                 )
             if not paths and args.run_id:
-                run_paths = resolve_paths("webpage_storage", args.run_id)
-                paths.extend(sorted(run_paths.run_root.rglob("partition-*.sqlite")))
+                paths.extend(
+                    discover_finalized_partitions(
+                        args.run_id, artifacts_root=args.artifacts_root
+                    )
+                )
             if not paths:
                 raise ValueError(
                     "merge-to-snapshot requires finalized partition databases"
@@ -491,7 +431,7 @@ def main(argv: list[str] | None = None) -> int:
                 )
                 if p.is_file()
             ]
-            output = Path(_resolved_output(args))
+            output = Path(_resolved_output(args, args.run_id))
             output.mkdir(parents=True, exist_ok=True)
             partition_name = (
                 resolve_paths()
@@ -533,7 +473,7 @@ def main(argv: list[str] | None = None) -> int:
                     }
                 )
                 return 0
-            print_json(_status(args.database, args.run_id))
+            print_json(run_status(args.database, args.run_id))
             return 0
         if args.command == "fill-fixture":
             from .core.fixture_builder import fill_fixture

@@ -18,6 +18,7 @@ from defs.runtime.paths import resolve_paths
 from defs.runtime.resources import derive_resources
 
 from .cli import main as cli_main
+from .core.partition_handoff import discover_finalized_partitions
 
 log = logging.getLogger("webpage_storage.run")
 
@@ -81,6 +82,86 @@ def _default_partition_db() -> str:
         if dbs:
             return str(dbs[0])
     return ""
+
+
+def _finalized_run_candidates() -> list[dict]:
+    """Discover run namespaces with finalized partition handoffs."""
+    phase_paths = resolve_paths("webpage_storage")
+    root = phase_paths.project.partition_artifacts_root(
+        "webpage_storage", "partition_artifacts"
+    )
+    candidates = []
+    if not root.is_dir():
+        return candidates
+    for entry in sorted(
+        (item for item in root.iterdir() if item.is_dir()), key=lambda item: item.name
+    ):
+        run_id = entry.name
+        try:
+            paths = discover_finalized_partitions(run_id, validate=False)
+        except ValueError:
+            continue
+        if not paths:
+            continue
+        meta_path = phase_paths.run(run_id).run_root / "run_metadata.json"
+        metadata = {}
+        if meta_path.is_file():
+            with suppress(Exception):
+                from defs.storage import load_json
+
+                metadata = load_json(meta_path)
+        expected = int(metadata.get("partition_count") or 0)
+        partition_ids = []
+        for path in paths:
+            try:
+                partition_ids.append(int(path.stem.split("-")[-1]))
+            except ValueError:
+                continue
+        complete = bool(
+            expected and sorted(partition_ids) == list(range(1, expected + 1))
+        )
+        candidates.append(
+            {
+                "run_id": run_id,
+                "plan_id": metadata.get("plan_id"),
+                "partition_count": expected,
+                "partition_ids": sorted(partition_ids),
+                "complete": complete,
+            }
+        )
+    return sorted(candidates, key=lambda item: (not item["complete"], item["run_id"]))
+
+
+def _select_finalized_run() -> str | None:
+    candidates = _finalized_run_candidates()
+    complete = [item for item in candidates if item["complete"]]
+    if not candidates:
+        print("  no finalized partition runs found")
+        return None
+    print("  Finalized partition runs:")
+    for index, item in enumerate(candidates, start=1):
+        state = "complete" if item["complete"] else "incomplete"
+        print(
+            f"    {index}. {item['run_id']} ({state}; "
+            f"partitions {item['partition_ids'] or 'none'})"
+        )
+    default_index = next(
+        (index for index, item in enumerate(candidates, start=1) if item["complete"]), 1
+    )
+    choice = _read(f"  Select run [{default_index}]: ", str(default_index))
+    try:
+        index = int(choice) - 1
+        if 0 <= index < len(candidates):
+            selected = candidates[index]
+        else:
+            selected = candidates[default_index - 1]
+    except ValueError:
+        selected = candidates[default_index - 1]
+    if not selected["complete"] and complete:
+        print(
+            "  selected run is incomplete; snapshot merge will report missing partitions"
+        )
+    return selected["run_id"]
 
 
 def _usage() -> str:
@@ -192,17 +273,20 @@ def interactive_menu() -> int:
                     cmd.append("--retry-failures")
                 append_fixture(cmd)
         elif choice == "6":
-            def_db = _default_partition_db()
-            prompt = f"  Database path [{def_db}]: " if def_db else "  Database path: "
-            database = _read(prompt, def_db)
-            if database:
-                cli_main(["status", "--database", database])
+            candidates = _finalized_run_candidates()
+            default_run = candidates[0]["run_id"] if candidates else ""
+            run_id = _read(
+                f"  Run ID [{default_run}]: " if default_run else "  Run ID: ",
+                default_run,
+            )
+            if run_id:
+                cli_main(["status", "--run-id", run_id])
             else:
-                print("  no database specified or found")
+                print("  no finalized run specified or found")
         elif choice == "7":
-            partition_dir = _read("  Finalized partition directory: ", "")
-            if partition_dir:
-                cli_main(["merge-to-snapshot", "--partition-dir", partition_dir])
+            run_id = _select_finalized_run()
+            if run_id:
+                cli_main(["merge-to-snapshot", "--run-id", run_id])
         elif choice == "8":
             workers = _read(f"  Workers [{default_workers}]: ", default_workers)
             cli_main(["vacuum", "--all", "--workers", workers])

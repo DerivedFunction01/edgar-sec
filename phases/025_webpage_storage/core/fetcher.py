@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import logging
 import re
 import threading
 from collections.abc import Iterable, Sequence
@@ -33,6 +34,7 @@ from defs.sql import (
 )
 
 from .schemas import (
+    DOCUMENT_BLOBS_TABLE,
     DocumentLocator,
     FetchResult,
     decompress_payload,
@@ -40,6 +42,8 @@ from .schemas import (
 )
 
 FIXTURE_PAYLOADS_TABLE = "fixture_payloads"
+FIXTURE_TABLES = (FIXTURE_PAYLOADS_TABLE, DOCUMENT_BLOBS_TABLE)
+log = logging.getLogger("webpage_storage.fetcher")
 
 
 @runtime_checkable
@@ -124,49 +128,64 @@ class FixtureArchiveFetcher:
 
     def fetch(self, locator: DocumentLocator) -> FetchResult:
         expected_doc_id = doc_id(locator.accession, locator.document_path)
-        query = Select(
-            source=Table(FIXTURE_PAYLOADS_TABLE),
-            projection=(col("raw_payload"),),
-            where=Compare(col("doc_id"), ComparisonOp.EQ, param(expected_doc_id)),
-            limit=1,
-        )
-
         try:
             for executor in self._get_executors():
-                row = executor.query_one(executor.compiler.compile(query))
-                if row is not None and row.get("raw_payload") is not None:
-                    payload = decompress_payload(row["raw_payload"])
-                    extracted = extract_from_sgml_envelope(payload, locator)
-                    if extracted is not None:
-                        return FetchResult(
-                            locator=locator,
-                            payload=extracted,
-                            status="ok",
-                        )
-
-                # Fallback to full submission blob if present in fixture
-                canonical = normalize_accession(locator.accession)
-                if canonical:
-                    dashed = accession_hyphenated(canonical)
-                    full_doc_id = doc_id(locator.accession, f"{dashed}.txt")
-                    query_full = Select(
-                        source=Table(FIXTURE_PAYLOADS_TABLE),
+                for table in FIXTURE_TABLES:
+                    query = Select(
+                        source=Table(table),
                         projection=(col("raw_payload"),),
                         where=Compare(
-                            col("doc_id"), ComparisonOp.EQ, param(full_doc_id)
+                            col("doc_id"), ComparisonOp.EQ, param(expected_doc_id)
                         ),
                         limit=1,
                     )
-                    row_full = executor.query_one(executor.compiler.compile(query_full))
-                    if row_full is not None:
-                        sgml_payload = decompress_payload(row_full["raw_payload"])
-                        extracted = extract_from_sgml_envelope(sgml_payload, locator)
+                    try:
+                        row = executor.query_one(executor.compiler.compile(query))
+                    except Exception as exc:  # noqa: BLE001 - absent compatibility table
+                        log.debug("fixture table %s unavailable: %s", table, exc)
+                        continue
+                    if row is not None and row.get("raw_payload") is not None:
+                        payload = decompress_payload(row["raw_payload"])
+                        extracted = extract_from_sgml_envelope(payload, locator)
                         if extracted is not None:
                             return FetchResult(
                                 locator=locator,
                                 payload=extracted,
                                 status="ok",
                             )
+
+                # Fallback to full submission blob if present in fixture
+                canonical = normalize_accession(locator.accession)
+                if canonical:
+                    dashed = accession_hyphenated(canonical)
+                    full_doc_id = doc_id(locator.accession, f"{dashed}.txt")
+                    for table in FIXTURE_TABLES:
+                        query_full = Select(
+                            source=Table(table),
+                            projection=(col("raw_payload"),),
+                            where=Compare(
+                                col("doc_id"), ComparisonOp.EQ, param(full_doc_id)
+                            ),
+                            limit=1,
+                        )
+                        try:
+                            row_full = executor.query_one(
+                                executor.compiler.compile(query_full)
+                            )
+                        except Exception as exc:  # noqa: BLE001 - absent compatibility table
+                            log.debug("fixture table %s unavailable: %s", table, exc)
+                            continue
+                        if row_full is not None:
+                            sgml_payload = decompress_payload(row_full["raw_payload"])
+                            extracted = extract_from_sgml_envelope(
+                                sgml_payload, locator
+                            )
+                            if extracted is not None:
+                                return FetchResult(
+                                    locator=locator,
+                                    payload=extracted,
+                                    status="ok",
+                                )
         except Exception as exc:  # noqa: BLE001 - fetch failures become result statuses
             return FetchResult(
                 locator=locator, payload=None, status="failed", error=str(exc)

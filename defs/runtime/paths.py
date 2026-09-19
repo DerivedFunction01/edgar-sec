@@ -172,6 +172,41 @@ class ProjectPaths:
         )
         return self.manifests_root / phase_safe / dataset_safe / scope_dir
 
+    def partition_artifacts_dir(self, phase: str, dataset: str, run_id: str) -> Path:
+        """Return the run-namespaced directory for finalized partition artifacts."""
+        phase_safe = _safe_id(phase, "phase")
+        dataset_safe = _safe_id(dataset, "dataset")
+        run_safe = _safe_id(run_id, "run_id")
+        return self.manifests_root / phase_safe / dataset_safe / run_safe
+
+    def partition_artifacts_root(self, phase: str, dataset: str) -> Path:
+        """Return the root containing run-namespaced partition artifacts."""
+        phase_safe = _safe_id(phase, "phase")
+        dataset_safe = _safe_id(dataset, "dataset")
+        return self.manifests_root / phase_safe / dataset_safe
+
+    def partition_artifact_path(
+        self,
+        phase: str,
+        dataset: str,
+        run_id: str,
+        partition_id: int,
+        storage_format: str,
+    ) -> Path:
+        """Return one finalized partition artifact in a run namespace."""
+        if (
+            not isinstance(partition_id, int)
+            or isinstance(partition_id, bool)
+            or partition_id < 1
+        ):
+            raise ValueError("partition_id must be a positive integer")
+        extension = {"sqlite": "sqlite"}.get(storage_format.lower())
+        if extension is None:
+            raise ValueError(f"unsupported partition artifact format: {storage_format}")
+        return self.partition_artifacts_dir(phase, dataset, run_id) / (
+            f"partition-{partition_id:05d}.{extension}"
+        )
+
     def dataset_snapshots_dir(self, phase: str, dataset: str) -> Path:
         """Directory containing multi-part snapshots for a dataset."""
         phase_safe = _safe_id(phase, "phase")

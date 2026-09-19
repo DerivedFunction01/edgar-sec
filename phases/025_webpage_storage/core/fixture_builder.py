@@ -26,7 +26,6 @@ from defs.sql import (
     SqlDialect,
     Star,
     Table,
-    col,
     insert_values,
     make_sql_executor,
 )
@@ -38,8 +37,8 @@ from .pipeline import load_targets
 from .schemas import (
     ACQUISITION_FAILURES_TABLE,
     DOCUMENT_BLOBS_TABLE,
-    doc_id,
     compress_payload,
+    doc_id,
 )
 
 FIXTURE_MANIFEST_SCHEMA_VERSION = 1

@@ -70,16 +70,16 @@ python scripts/monitor_progress.py --watch
 .venv/bin/python -m defs.sec_http.broker status
 .venv/bin/python -m defs.sec_http.broker stop
 
-# Merge transient worker chunk DBs into the published partition database
+# Merge transient worker chunk DBs into a run-namespaced finalized partition
 .venv/bin/python -m phases.025_webpage_storage.cli merge-partition \
-  --partition-id 1 --run-id <run-id> --output-dir <dir>
+  --partition-id 1 --run-id <run-id>
 
-# Report partition database integrity
-.venv/bin/python -m phases.025_webpage_storage.cli status --database <partition.sqlite>
+# Report run-level chunk/finalized-partition coverage
+.venv/bin/python -m phases.025_webpage_storage.cli status --run-id <run-id>
 
-# Publish finalized partition databases as an immutable normalized snapshot
+# Publish all finalized partitions for one run as an immutable normalized snapshot
 .venv/bin/python -m phases.025_webpage_storage.cli merge-to-snapshot \
-  --partition-db <partition-00001.sqlite> --artifacts-root <artifacts-root>
+  --run-id <run-id>
 
 # Consolidate selected snapshots in parallel (workers default to runtime capacity)
 .venv/bin/python -m phases.025_webpage_storage.cli vacuum --all --workers 8
@@ -101,9 +101,9 @@ ChunkWorkers (ThreadPoolExecutor, concurrent) → isolated chunk-XXXXX.db
 Fixture fill uses fetch threads with one coordinator SQLite writer. Production
 process workers route through one broker-owned SEC client and aggregate limiter.
    │
-    ▼
-PartitionMerger → finalized partition-000XX.sqlite + handoff manifest
-    (portable across machines; chunks remain local)
+     ▼
+     PartitionMerger → manifests/webpage_storage/partition_artifacts/<run-id>/
+     (partition-000XX.sqlite + handoff manifest; chunks remain local)
     │
     ▼
 Snapshot publisher → normalized_documents/snapshots/<snapshot-id>/

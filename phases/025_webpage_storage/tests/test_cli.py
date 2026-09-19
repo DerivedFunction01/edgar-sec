@@ -95,3 +95,52 @@ def test_cli_run_no_progress(
     captured = capsys.readouterr()
     run_data = json.loads(captured.out)
     assert run_data["occurrence_count"] == 2
+
+
+def test_cli_run_derives_run_namespaced_partition_output(
+    phase02_bundle: Path,
+    fixture_database: Path,
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+    capsys: pytest.CaptureFixture[str],
+):
+    artifacts_root = tmp_path / "artifacts"
+    monkeypatch.setenv("ARTIFACTS_ROOT", str(artifacts_root))
+    run_id = f"derived-run-{uuid.uuid4().hex}"
+    code = cli.main(
+        [
+            "run",
+            "--plan-dir",
+            str(phase02_bundle),
+            "--mode",
+            "fixture",
+            "--fixtures",
+            str(fixture_database),
+            "--run-id",
+            run_id,
+            "--no-progress",
+        ]
+    )
+    assert code == 0
+    run_data = json.loads(capsys.readouterr().out)
+    expected = (
+        artifacts_root
+        / "manifests"
+        / "webpage_storage"
+        / "partition_artifacts"
+        / run_id
+        / "partition-00001.sqlite"
+    )
+    assert Path(run_data["partition_db"]) == expected
+    assert expected.is_file()
+    assert expected.with_name(expected.name + ".manifest.json").is_file()
+
+    status_code = cli.main(["status", "--run-id", run_id])
+    assert status_code == 0
+    status = json.loads(capsys.readouterr().out)
+    assert status["snapshot_eligible"] is True
+
+    merge_code = cli.main(["merge-to-snapshot", "--run-id", run_id])
+    assert merge_code == 0
+    manifest = json.loads(capsys.readouterr().out)
+    assert manifest["dataset"] == "normalized_documents"

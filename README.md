@@ -115,9 +115,11 @@ rows are published through immutable temporal snapshots with lightweight
 - **Live monitoring**: Real-time read-only status and throughput inspection via `scripts/monitor_progress.py`.
 
 Fixture IDs provide reusable appendable test caches: an expanded child plan reuses
-existing blobs and fetches only missing locators. Finalized partitions can move
-between machines with handoff manifests; downstream phases plan against the
-published normalized snapshot rather than worker chunks. Document section
+existing blobs and fetches only missing locators. Finalized partitions are
+namespaced by acquisition run ID and can move between machines with handoff
+manifests; `merge-to-snapshot --run-id <run-id>` discovers the complete set and
+downstream phases plan against the published normalized snapshot rather than
+worker chunks. Document section
 segmentation and financial table extraction are downstream phases built on stable
 document/occurrence identities and the snapshot reader.
 

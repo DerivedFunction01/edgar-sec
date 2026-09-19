@@ -571,7 +571,9 @@ def main() -> int:
                     run_id=detected_run_id,
                     mode=exec_mode,
                     partition_id=detected_partition_id,
-                    partition_count=run_meta.get("partition_count") if run_meta else None,
+                    partition_count=run_meta.get("partition_count")
+                    if run_meta
+                    else None,
                     window_s=args.window,
                     stall_threshold_s=args.stall_threshold,
                     stalled_only=args.stalled_only,
