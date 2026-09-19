@@ -101,6 +101,41 @@ def test_index_payload_split_and_reader(tmp_path: Path):
     ]
 
 
+def test_bounded_materialization_emits_stage_progress(tmp_path: Path):
+    partition = _partition(
+        tmp_path / "partition-00001.sqlite",
+        [
+            (_occurrence("0001", "acc-1", "doc.htm", "occ-1"), b"one"),
+            (_occurrence("0002", "acc-2", "doc.htm", "occ-2"), b"two"),
+        ],
+    )
+    events: list[dict] = []
+    manifest = snapshot.publish_projected_snapshot(
+        [partition],
+        artifacts_root=tmp_path,
+        batch_size=1,
+        target_bytes=1,
+        progress=events.append,
+    )
+    assert manifest["snapshot_id"]
+    assert [event["type"] for event in events].count("partition_done") == 1
+    assert [event["type"] for event in events].count("quarter_done") == 2
+    assert events[-1]["type"] == "publish_manifest"
+
+    vacuum_events: list[dict] = []
+    compacted = vacuum.vacuum_snapshots(
+        artifacts_root=tmp_path,
+        snapshot_ids=[manifest["snapshot_id"]],
+        workers=1,
+        batch_size=1,
+        target_bytes=1,
+        progress=vacuum_events.append,
+    )
+    assert compacted["snapshot_id"]
+    assert any(event["type"] == "vacuum_sources_resolved" for event in vacuum_events)
+    assert vacuum_events[-1]["type"] == "publish_manifest"
+
+
 def test_cli_imports_finalized_partition_handoff(tmp_path: Path, capsys):
     partition = _partition(
         tmp_path / "partition-00001.sqlite",

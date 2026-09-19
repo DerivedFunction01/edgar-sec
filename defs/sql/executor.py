@@ -11,7 +11,7 @@ from __future__ import annotations
 
 import os
 import sqlite3
-from collections.abc import Sequence
+from collections.abc import Iterator, Sequence
 from pathlib import Path
 from typing import Any, Protocol, runtime_checkable
 
@@ -69,6 +69,14 @@ class SqlBackend(Protocol):
 
     def query(self, statement: CompiledQuery) -> list[dict[str, Any]]: ...
     def query_one(self, statement: CompiledQuery) -> dict[str, Any] | None: ...
+
+    def query_batches(
+        self, statement: CompiledQuery, *, batch_size: int
+    ) -> Iterator[list[dict[str, Any]]]: ...
+
+    def query_sql_batches(
+        self, sql: str, parameters: Sequence[Any] = (), *, batch_size: int
+    ) -> Iterator[list[dict[str, Any]]]: ...
     def exec(self, statement: CompiledQuery) -> None: ...
     def transaction(self, statements: Sequence[CompiledQuery]) -> None: ...
     def close(self) -> None: ...
@@ -119,6 +127,44 @@ class DbApiBackend:
                 return None
             names = [column[0] for column in (cursor.description or ())]
             return dict(zip(names, row))
+        finally:
+            cursor.close()
+
+    def query_batches(
+        self, statement: CompiledQuery, *, batch_size: int
+    ) -> Iterator[list[dict[str, Any]]]:
+        """Fetch a compiled query in bounded batches.
+
+        The returned outer list contains batches so callers can consume and
+        release each batch before requesting the next one.  The backend keeps
+        the cursor open only for this call; this is intentionally a bounded
+        convenience contract rather than an unbounded ``query`` alias.
+        """
+        if batch_size < 1:
+            raise ValueError("batch_size must be positive")
+        cursor = self._cursor(statement)
+        try:
+            names = [column[0] for column in (cursor.description or ())]
+            while rows := cursor.fetchmany(batch_size):
+                yield [dict(zip(names, row)) for row in rows]
+        finally:
+            cursor.close()
+
+    def query_sql_batches(
+        self,
+        sql: str,
+        parameters: Sequence[Any] = (),
+        *,
+        batch_size: int,
+    ) -> Iterator[list[dict[str, Any]]]:
+        if batch_size < 1:
+            raise ValueError("batch_size must be positive")
+        cursor = self.connection.cursor()
+        try:
+            cursor.execute(sql, list(parameters))
+            names = [column[0] for column in (cursor.description or ())]
+            while rows := cursor.fetchmany(batch_size):
+                yield [dict(zip(names, row)) for row in rows]
         finally:
             cursor.close()
 
@@ -226,6 +272,20 @@ class SqlExecutor:
     def query_one(self, statement: CompiledQuery) -> dict[str, Any] | None:
         return self.backend.query_one(statement)
 
+    def query_batches(
+        self, statement: CompiledQuery, *, batch_size: int
+    ) -> Iterator[list[dict[str, Any]]]:
+        return self.backend.query_batches(statement, batch_size=batch_size)
+
+    def query_sql_batches(
+        self,
+        sql: str,
+        parameters: Sequence[Any] = (),
+        *,
+        batch_size: int,
+    ) -> Iterator[list[dict[str, Any]]]:
+        return self.backend.query_sql_batches(sql, parameters, batch_size=batch_size)
+
     def exec(self, statement: CompiledQuery) -> None:
         self.backend.exec(statement)
 
@@ -265,6 +325,9 @@ def make_sql_executor(
     dialect: SqlDialect | str | None = None,
     sqlite_sources: dict[str, str | Path] | None = None,
     dataset_views: dict[str, str | Path] | None = None,
+    threads: int | None = None,
+    memory_limit: str | None = None,
+    temp_directory: str | Path | None = None,
 ) -> SqlExecutor:
     """Instantiate a unified SqlExecutor with driver auto-detection, view aliasing, and attachment."""
     resolved_dialect: SqlDialect | None = (
@@ -341,6 +404,20 @@ def make_sql_executor(
     if dataset_views:
         for view_name, path_or_glob in dataset_views.items():
             executor.register_dataset_view(view_name, path_or_glob)
+
+    if resolved_dialect is SqlDialect.DUCKDB:
+        connection = getattr(executor.backend, "connection", None)
+        if connection is not None:
+            if threads is not None:
+                connection.execute("SET threads = ?", [max(1, int(threads))])
+            if memory_limit is not None:
+                connection.execute("SET memory_limit = ?", [memory_limit])
+            if temp_directory is not None:
+                Path(temp_directory).mkdir(parents=True, exist_ok=True)
+                connection.execute(
+                    "SET temp_directory = ?", [str(Path(temp_directory).resolve())]
+                )
+            connection.execute("SET preserve_insertion_order = false")
 
     return executor
 

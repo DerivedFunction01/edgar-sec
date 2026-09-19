@@ -1,4 +1,4 @@
-"""Document blob storage access primitives.
+"""Document blob storage access primitives for taxonomy probes.
 
 Provides engine-neutral (SQLite & DuckDB) streaming iterators over document blobs
 compiled via the defs.sql AST compiler and executed through SqlExecutor.

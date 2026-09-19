@@ -12,9 +12,12 @@ import re
 from pathlib import Path
 from typing import Any
 
+import pyarrow as pa
+
 from defs.runtime.paths import resolve_paths
-from defs.storage import pa, stream_document_blobs, write_table_atomic
+from defs.storage.parquet import write_table_atomic
 from defs.tables.ascii_html import convert_html_table, render_grid_to_ascii
+from defs.taxonomy.probe.blobs import stream_document_blobs
 from defs.taxonomy.probe.cache import (
     decompress_payload,
     default_fixture_db_path,

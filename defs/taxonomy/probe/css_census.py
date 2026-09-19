@@ -17,9 +17,11 @@ from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Any
 
+import pyarrow as pa
 from selectolax.parser import HTMLParser, Node
 
-from defs.storage import pa, stream_document_blobs, write_table_atomic
+from defs.storage.parquet import write_table_atomic
+from defs.taxonomy.probe.blobs import stream_document_blobs
 from defs.taxonomy.probe.cache import decompress_payload, default_fixture_db_path
 
 _STYLE_DECL_RE = re.compile(r"(?:^|;)\s*([\w-]+)\s*:", re.IGNORECASE)

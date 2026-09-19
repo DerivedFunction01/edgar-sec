@@ -25,9 +25,18 @@ _ALLOWED_PREFIXES = (
     "scripts/",
 )
 
+# This module is the single phase-owned relation-builder boundary for the
+# DuckDB snapshot queries. Keep the exception file-specific so new raw SQL in
+# phase code remains visible to the policy scanner.
+_ALLOWED_FILES = frozenset(
+    {os.path.join("phases", "025_webpage_storage", "core", "queries.py")}
+)
+
 
 def _is_allowed(path: str) -> bool:
     normalized = path.replace(os.sep, "/")
+    if normalized in _ALLOWED_FILES:
+        return True
     if any(normalized.startswith(prefix) for prefix in _ALLOWED_PREFIXES):
         return True
     return is_test_file(path)

@@ -81,8 +81,14 @@ python scripts/monitor_progress.py --watch
 .venv/bin/python -m phases.025_webpage_storage.cli merge-to-snapshot \
   --run-id <run-id>
 
-# Consolidate selected snapshots in parallel (workers default to runtime capacity)
-.venv/bin/python -m phases.025_webpage_storage.cli vacuum --all --workers 8
+# Consolidate selected snapshots with bounded DuckDB memory and quarter workers
+.venv/bin/python -m phases.025_webpage_storage.cli vacuum --all \
+  --workers 2 --threads 4 --memory-limit 8GB \
+  --temp-directory /var/tmp/edgar-sec-duckdb
+
+# Disable terminal progress for automation while preserving final JSON output
+.venv/bin/python -m phases.025_webpage_storage.cli merge-to-snapshot \
+  --run-id <run-id> --no-progress
 ```
 
 ## Architecture
@@ -218,9 +224,15 @@ payload rows contain only `doc_id` and native UTF-8 `clean_text`.
 Incremental merges may inherit immutable payload files, so a newly discovered
 CIK can add an occurrence without rewriting the shared document payload.
 `SnapshotReader` resolves the effective index and exact payload paths. Queries
-that need only metadata never open payload files. `vacuum` materializes selected
-snapshots into a self-contained layout in parallel and can purge a validated
-dependency closure.
+that need only metadata never open payload files. Snapshot merge reads finalized
+SQLite partitions in bounded batches, decompresses only the current batch, and
+writes immutable quarter/index/payload parts without retaining the full
+partition in Python memory. Parquet snapshot joins and vacuum deduplication run
+through DuckDB with spill-to-disk settings (`--threads`, `--memory-limit`, and
+`--temp-directory`). `vacuum` materializes selected snapshots in a bounded
+number of quarter workers and can purge a validated dependency closure. Merge
+and vacuum report partition/quarter progress on stderr; `--no-progress` is
+available for automation.
 
 Finalized partition databases are portable handoff artifacts. Machines may
 process partitions independently and copy only finalized databases plus their

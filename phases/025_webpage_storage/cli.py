@@ -56,6 +56,42 @@ def _add_plan_args(parser: argparse.ArgumentParser) -> None:
     )
 
 
+def _add_materialization_resource_args(parser: argparse.ArgumentParser) -> None:
+    parser.add_argument("--threads", type=int, default=None)
+    parser.add_argument("--memory-limit", default=None)
+    parser.add_argument("--temp-directory", default=None)
+    parser.add_argument("--no-progress", action="store_true")
+
+
+def _materialization_resources(args):
+    profile = derive_resources()
+    return {
+        "threads": args.threads if args.threads is not None else profile.threads,
+        "memory_limit": args.memory_limit or profile.memory_limit,
+        "temp_directory": args.temp_directory or profile.temp_directory,
+    }
+
+
+def _materialization_progress(enabled: bool):
+    if not enabled:
+        return None, None
+    bar = tqdm(desc="Materializing snapshot", unit="stage")
+
+    def callback(event: dict) -> None:
+        event_type = event.get("type")
+        if event_type in {"partition_done", "quarter_done", "publish_manifest"}:
+            bar.update(1)
+        details = {
+            key: event[key]
+            for key in ("year", "quarter", "rows", "payloads", "snapshot_id")
+            if key in event
+        }
+        if details:
+            bar.set_postfix(details)
+
+    return bar, callback
+
+
 def _resolve_plan_dir(
     plan_dir: str | None = None,
     plan_id: str | None = None,
@@ -159,6 +195,8 @@ def build_parser() -> argparse.ArgumentParser:
     merge_snapshot_parser.add_argument("--base-snapshot", default=None)
     merge_snapshot_parser.add_argument("--target-mb", type=int, default=96)
     merge_snapshot_parser.add_argument("--artifacts-root", default=None)
+    merge_snapshot_parser.add_argument("--batch-size", type=int, default=512)
+    _add_materialization_resource_args(merge_snapshot_parser)
 
     vacuum_parser = subparsers.add_parser(
         "vacuum", help="compact normalized snapshots into one immutable snapshot"
@@ -170,6 +208,7 @@ def build_parser() -> argparse.ArgumentParser:
     vacuum_parser.add_argument("--purge-sources", action="store_true")
     vacuum_parser.add_argument("--purge-dependency-closure", action="store_true")
     vacuum_parser.add_argument("--artifacts-root", default=None)
+    _add_materialization_resource_args(vacuum_parser)
 
     status_parser = subparsers.add_parser(
         "status", help="report partition database integrity and record counts"
@@ -396,28 +435,47 @@ def main(argv: list[str] | None = None) -> int:
                     root, phase="webpage_storage", dataset="normalized_documents"
                 )
                 base = pointer.get("snapshot_id") if pointer else None
-            manifest = merge_partitions_to_snapshot(
-                paths,
-                artifacts_root=root,
-                base_snapshot_id=base,
-                target_bytes=max(1, args.target_mb) * 1024 * 1024,
-            )
+            resources = _materialization_resources(args)
+            bar, progress_cb = _materialization_progress(not args.no_progress)
+            try:
+                with logging_redirect_tqdm():
+                    manifest = merge_partitions_to_snapshot(
+                        paths,
+                        artifacts_root=root,
+                        base_snapshot_id=base,
+                        target_bytes=max(1, args.target_mb) * 1024 * 1024,
+                        batch_size=max(1, args.batch_size),
+                        progress=progress_cb,
+                        **resources,
+                    )
+            finally:
+                if bar is not None:
+                    bar.close()
             print_json(manifest)
             return 0
         if args.command == "vacuum":
             root = Path(args.artifacts_root or resolve_paths().artifacts_root)
             workers = args.workers
+            resources = _materialization_resources(args)
             if workers is None:
-                workers = max(1, derive_resources().threads)
-            manifest = vacuum_snapshots(
-                artifacts_root=root,
-                snapshot_ids=args.snapshots,
-                include_all=args.include_all,
-                workers=workers,
-                target_bytes=max(1, args.target_mb) * 1024 * 1024,
-                purge_sources=args.purge_sources,
-                purge_dependency_closure=args.purge_dependency_closure,
-            )
+                workers = max(1, min(derive_resources().workers, resources["threads"]))
+            bar, progress_cb = _materialization_progress(not args.no_progress)
+            try:
+                with logging_redirect_tqdm():
+                    manifest = vacuum_snapshots(
+                        artifacts_root=root,
+                        snapshot_ids=args.snapshots,
+                        include_all=args.include_all,
+                        workers=workers,
+                        target_bytes=max(1, args.target_mb) * 1024 * 1024,
+                        purge_sources=args.purge_sources,
+                        purge_dependency_closure=args.purge_dependency_closure,
+                        progress=progress_cb,
+                        **resources,
+                    )
+            finally:
+                if bar is not None:
+                    bar.close()
             print_json(manifest)
             return 0
         if args.command == "merge-partition":

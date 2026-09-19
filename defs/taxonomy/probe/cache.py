@@ -15,21 +15,19 @@ import re
 from pathlib import Path
 from typing import Any
 
+import pyarrow as pa
 import zstandard as zstd
 from tqdm import tqdm
 
 from defs.runtime.paths import resolve_paths
 from defs.runtime.resources import derive_resources
 from defs.sec_forms.cover.structure import parse_section_heading
-from defs.storage import (
-    pa,
-    stream_document_blobs,
-    write_table_atomic,
-)
+from defs.storage.parquet import write_table_atomic
 from defs.tables.ascii_html import build_span_matrix, extract_source_table
 from defs.tables.ascii_html.renderer import render_source_table
 from defs.tables.toc import looks_like_toc_text
 from defs.tables.tokens import ALL_CURRENCY_SYMBOLS, is_numeric_cell
+from defs.taxonomy.probe.blobs import stream_document_blobs
 from defs.text.html import FastHtmlNode, FastHtmlTree, parse_html
 
 
