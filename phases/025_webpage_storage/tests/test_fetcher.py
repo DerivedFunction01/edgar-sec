@@ -378,3 +378,57 @@ def test_make_archive_fetcher_wires_cache_reader(tmp_path):
     assert isinstance(fetcher, fetcher_module.BrokerArchiveFetcher)
     assert fetcher._cache is not None
     assert plain._cache is None
+
+
+def _pem_wrapped(inner: bytes) -> bytes:
+    return (
+        b"-----BEGIN PRIVACY-ENHANCED MESSAGE-----\n"
+        b"Proc-Type: 2001,MIC-CLEAR\n"
+        b"Originator-Name: webmaster@www.sec.gov\n"
+        b"MIC-Info: RSA-MD5,RSA,\n"
+        b" abc==\n"
+        b"\n" + inner + b"-----END PRIVACY-ENHANCED MESSAGE-----\n"
+    )
+
+
+_PEM_BUNDLE = _pem_wrapped(
+    b"<SEC-DOCUMENT>0000947716-97-000009.txt : 19970313\n"
+    b"<SEC-HEADER>0000947716-97-000009.hdr.sgml : 19970313\n"
+    + b"COMPANY CONFORMED NAME: PADDED HEADER LINE\n"
+    * 40
+    + b"</SEC-HEADER>\n"
+    b"<DOCUMENT>\n<TYPE>10-K\n<SEQUENCE>1\n<FILENAME>10k.txt\n<TEXT>\n"
+    b"PRIMARY 10-K BODY\n"
+    b"</TEXT>\n</DOCUMENT>\n"
+    b"<DOCUMENT>\n<TYPE>EX-13\n<SEQUENCE>2\n<FILENAME>ex13.txt\n<TEXT>\n"
+    b"EXHIBIT 13 BODY\n"
+    b"</TEXT>\n</DOCUMENT>\n"
+    b"</SEC-DOCUMENT>\n"
+)
+
+
+def _extract(payload: bytes, form: str, path: str):
+    locator = schemas.DocumentLocator("k", "0000947716-97-000009", path, "", form)
+    return fetcher_module.extract_from_sgml_envelope(payload, locator)
+
+
+def test_extract_from_sgml_envelope_pem_wrapped_bundle():
+    # PEM headers push <DOCUMENT> past byte 1000; the old head-guard failed here.
+    assert b"<DOCUMENT>" not in _PEM_BUNDLE[:1000]
+    payload, source_bundle = _extract(_PEM_BUNDLE, "10-K", "0000947716-97-000009.txt")
+    assert payload == b"PRIMARY 10-K BODY"
+    assert source_bundle is not None
+    assert b"<TYPE>EX-13" in source_bundle
+
+
+def test_extract_from_sgml_envelope_plain_payload_unchanged():
+    raw = b"<html><body>plain document</body></html>"
+    payload, source_bundle = _extract(raw, "10-K", "doc.htm")
+    assert payload == raw
+    assert source_bundle is None
+
+
+def test_locate_sub_document_in_bundle_resolves_exhibit():
+    _, bundle = _extract(_PEM_BUNDLE, "10-K", "0000947716-97-000009.txt")
+    exhibit = fetcher_module.locate_sub_document_in_bundle(bundle, ("EX-13",), None)
+    assert exhibit == b"EXHIBIT 13 BODY"

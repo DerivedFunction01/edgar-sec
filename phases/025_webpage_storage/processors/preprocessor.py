@@ -11,6 +11,11 @@ import re
 from typing import Any
 
 from defs.regex import build_alternation
+from defs.sec_documents.sgml import (
+    extract_target_sub_document,
+    has_sgml_documents,
+    strip_pem_envelope,
+)
 from defs.text import (
     clean_html_for_parsing,
     count_words,
@@ -39,6 +44,27 @@ def strip_sgml_document_wrapper(raw_text: str) -> str:
         if doc_end != -1:
             return raw_text[start_pos + 6 : end_pos].strip()
     return raw_text
+
+
+def _strip_envelope_text(text: str) -> str:
+    """Defense-in-depth envelope stripping for fetcher-bypass callers.
+
+    Handles PEM transport wrappers and any payload still carrying SGML
+    ``<DOCUMENT>`` blocks. Plain single documents pass through unchanged.
+    """
+    raw = text.encode("latin-1", errors="replace")
+    stripped = strip_pem_envelope(raw)
+    if not has_sgml_documents(stripped):
+        return strip_sgml_document_wrapper(stripped.decode("latin-1"))
+    selected = extract_target_sub_document(
+        stripped,
+        target_types=(),
+        primary_filename=None,
+        fallback_to_sequence_one=True,
+    )
+    if selected is not None:
+        return selected.decode("latin-1")
+    return strip_sgml_document_wrapper(stripped.decode("latin-1"))
 
 
 # HTML structural and styling tag discriminators (excludes SGML ASCII <TABLE><S><C>)
@@ -102,7 +128,7 @@ class GenericPreprocessor:
         meta = dict(metadata or {})
 
         # Strip outer SGML <DOCUMENT>...</DOCUMENT> wrapper if present
-        content_text = strip_sgml_document_wrapper(raw_text)
+        content_text = _strip_envelope_text(raw_text)
 
         # Strip non-displaying script and style blocks
         clean = _RE_HEAD_SCRIPT_STYLE.sub(" ", content_text)

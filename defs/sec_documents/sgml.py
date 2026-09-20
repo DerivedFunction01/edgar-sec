@@ -20,6 +20,9 @@ _RE_TAG_FILENAME = re.compile(r"(?im)^\s*<FILENAME>\s*([^\r\n<]+)")
 _RE_TAG_DESCRIPTION = re.compile(r"(?im)^\s*<DESCRIPTION>\s*([^\r\n<]+)")
 _RE_TAG_TEXT = re.compile(r"(?is)<TEXT>(.*?)</TEXT>")
 
+_PEM_BEGIN = b"-----BEGIN PRIVACY-ENHANCED MESSAGE-----"
+_PEM_END = b"-----END PRIVACY-ENHANCED MESSAGE-----"
+
 # Bytes twins of the header regexes for the selective extractor: scanning the
 # raw envelope avoids the full latin-1 str decode of ``unpack_sgml_submission``
 # while matching exactly the same ASCII tag shapes.
@@ -238,6 +241,51 @@ def resolve_target_sub_document(
     return None
 
 
+def strip_pem_envelope(raw: bytes) -> bytes:
+    """Remove a leading PEM (privacy-enhanced message) transport wrapper.
+
+    SEC EDGAR occasionally delivers whole submission bundles wrapped in a
+    cleartext PEM envelope: ``-----BEGIN PRIVACY-ENHANCED MESSAGE-----``, a
+    short header block (``Proc-Type``, ``Originator-*``, ``MIC-Info``), a blank
+    separator line, then the actual SGML submission, closed by
+    ``-----END PRIVACY-ENHANCED MESSAGE-----``.
+
+    Only the transport framing is removed: the begin/end delimiter lines and
+    the RFC-1113 header block that precedes the first blank line. The enclosed
+    SEC bytes are returned unchanged. Payloads without a well-formed leading
+    envelope are returned unmodified.
+    """
+    if not raw:
+        return raw
+    start = raw.find(_PEM_BEGIN)
+    if start == -1:
+        return raw
+    content_at = start + len(_PEM_BEGIN)
+    end = raw.find(_PEM_END, content_at)
+    if end == -1:
+        return raw
+
+    # The header block ends at the first blank line; the enclosed submission
+    # starts after it. Fall back to the content immediately following the
+    # begin marker when no separator exists.
+    header_end = raw.find(b"\n\n", content_at)
+    if header_end == -1 or header_end > end:
+        header_end = raw.find(b"\r\n\r\n", content_at)
+        if header_end == -1 or header_end > end:
+            header_end = content_at - 1
+    else:
+        crlf = raw.find(b"\r\n\r\n", content_at)
+        if crlf != -1 and crlf < header_end:
+            header_end = crlf
+
+    body = raw[header_end + 1 : end]
+    # Drop the leading newline of the body delimiter pair.
+    if body.startswith((b"\n", b"\r")):
+        body = body[1:]
+    tail = raw[end + len(_PEM_END) :]
+    return body.lstrip(b"\r\n") + tail
+
+
 def has_sgml_documents(raw_bytes: bytes) -> bool:
     """True when the envelope contains at least one ``<DOCUMENT>`` block."""
     if not raw_bytes:
@@ -325,5 +373,6 @@ __all__ = [
     "find_sub_document",
     "has_sgml_documents",
     "resolve_target_sub_document",
+    "strip_pem_envelope",
     "unpack_sgml_submission",
 ]

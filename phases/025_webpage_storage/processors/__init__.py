@@ -35,11 +35,11 @@ from .router import FormRouter
 class DefaultFilingProcessor(DocumentProcessor):
     """Default end-to-end filing processor executing the multi-stage lifecycle."""
 
-    # v2: page-marker engine rewritten for local-cohort multi-line furniture
-    # (cohort clusters, retention roles, HTML table-furniture removal, and
-    # sentinel-safe table separation). Cached chunks produced by v1 carry
-    # stale normalized text and must not be reused.
-    processor_fingerprint = "default-filing-processor:v2"
+    # v3: fetch-layer PEM/SGM envelope extraction fixed (PEM-wrapped and bare
+    # submission bundles now resolve their target <TEXT> body) plus exhibit
+    # second pass. Cached chunks produced by v1/v2 carry envelope text as
+    # "normalized" payload and must not be reused.
+    processor_fingerprint = "default-filing-processor:v3"
     representation = "normalized-text"
 
     def __init__(
@@ -172,10 +172,13 @@ class DefaultFilingProcessor(DocumentProcessor):
         locator: DocumentLocator,
     ) -> ProcessedDocument:
         """Process raw filing bytes through the normalization pipeline."""
+        metadata = {"form": locator.form}
+        filing_year = getattr(locator, "filing_year", None)
+        if filing_year is not None:
+            metadata["filing_year"] = filing_year
+
         # Stage 1: Generic Preprocessing
-        preprocessed = self.preprocessor.preprocess(
-            raw_bytes, metadata={"form": locator.form}
-        )
+        preprocessed = self.preprocessor.preprocess(raw_bytes, metadata=metadata)
 
         # Stage 2 & 3: Deep Normalization & Table Alignment
         normalization = self.normalizer.normalize_result(

@@ -3,6 +3,7 @@ from defs.sec_documents.sgml import (
     extract_target_sub_document,
     has_sgml_documents,
     resolve_target_sub_document,
+    strip_pem_envelope,
     unpack_sgml_submission,
 )
 
@@ -340,3 +341,94 @@ def test_extract_target_sub_document_crlf_and_multibyte_payloads():
     )
     payload = _selective_equivalent(raw)
     assert payload == b"caf\xe9 line\r\nsecond line"
+
+
+# ---------------------------------------------------------------------------
+# PEM transport-envelope stripping
+# ---------------------------------------------------------------------------
+
+_PEM_HEADERS = (
+    b"-----BEGIN PRIVACY-ENHANCED MESSAGE-----\n"
+    b"Proc-Type: 2001,MIC-CLEAR\n"
+    b"Originator-Name: webmaster@www.sec.gov\n"
+    b"Originator-Key-Asymmetric:\n"
+    b" MFgwCgYEVQgBAQICAf8DSgAwRwJAW2sNKK9AVtBzYZmr6aGjlWyK3XmZv3dTINen\n"
+    b" TWSM7vrzLADbmYQaionwg5sDW3P6oaM5D3tdezXMm7z1T+B+twIDAQAB\n"
+    b"MIC-Info: RSA-MD5,RSA,\n"
+    b" SjfsMbL2B5nukmq9Cmr8hy0n1r+OVs8OZNhkyQrEpOF3wdx7L8gvG1XlgW249d4C\n"
+    b" /kHfEjJ6L8+7CN0xseWSRg==\n"
+    b"\n"
+)
+_PEM_ENVELOPE = (
+    _PEM_HEADERS
+    + b"<SEC-DOCUMENT>0001039300-00-000003.txt : 20000313\n"
+    + SAMPLE_SGML
+    + b"-----END PRIVACY-ENHANCED MESSAGE-----\n"
+)
+
+
+def test_strip_pem_envelope_removes_only_transport_framing():
+    stripped = strip_pem_envelope(_PEM_ENVELOPE)
+    assert stripped.startswith(b"<SEC-DOCUMENT>")
+    assert b"PRIVACY-ENHANCED" not in stripped
+    assert b"MIC-Info" not in stripped
+    # Enclosed submission content survives byte-for-byte.
+    assert SAMPLE_SGML in stripped
+    assert b"</SUBMISSION>" in stripped
+
+
+def test_strip_pem_envelope_bare_bundle_body():
+    raw = (
+        _PEM_HEADERS
+        + b"<DOCUMENT>\n<TYPE>10-K\n<TEXT>Body</TEXT>\n</DOCUMENT>\n"
+        + b"-----END PRIVACY-ENHANCED MESSAGE-----"
+    )
+    stripped = strip_pem_envelope(raw)
+    assert stripped.startswith(b"<DOCUMENT>")
+    assert stripped.rstrip().endswith(b"</DOCUMENT>")
+    assert b"PRIVACY" not in stripped
+
+
+def test_strip_pem_envelope_without_pem_returns_unchanged():
+    assert strip_pem_envelope(SAMPLE_SGML) == SAMPLE_SGML
+    assert strip_pem_envelope(b"plain text") == b"plain text"
+    assert strip_pem_envelope(b"") == b""
+
+
+def test_strip_pem_envelope_malformed_returns_unchanged():
+    # Begin marker without end marker.
+    raw = _PEM_HEADERS + b"<DOCUMENT>body</DOCUMENT>"
+    assert strip_pem_envelope(raw) == raw
+    # End marker without begin marker.
+    raw = b"<DOCUMENT>body</DOCUMENT>\n-----END PRIVACY-ENHANCED MESSAGE-----\n"
+    assert strip_pem_envelope(raw) == raw
+
+
+def test_strip_pem_envelope_preserves_latin1_bytes():
+    raw = (
+        _PEM_HEADERS
+        + b"<DOCUMENT>\n<TYPE>10-K\n<TEXT>caf\xe9 line</TEXT>\n</DOCUMENT>\n"
+        + b"-----END PRIVACY-ENHANCED MESSAGE-----"
+    )
+    stripped = strip_pem_envelope(raw)
+    assert b"caf\xe9 line" in stripped
+
+
+def test_strip_pem_envelope_crlf_headers():
+    raw = _PEM_HEADERS.replace(b"\n", b"\r\n") + (
+        b"<DOCUMENT>\r\n<TYPE>10-K\r\n<TEXT>Body</TEXT>\r\n</DOCUMENT>\r\n"
+        b"-----END PRIVACY-ENHANCED MESSAGE-----\r\n"
+    )
+    stripped = strip_pem_envelope(raw)
+    assert stripped.startswith(b"<DOCUMENT>")
+    assert b"PRIVACY" not in stripped
+
+
+def test_extract_target_sub_document_through_pem_envelope():
+    stripped = strip_pem_envelope(_PEM_ENVELOPE)
+    payload = extract_target_sub_document(stripped, target_types=("10-K",))
+    assert payload is not None
+    assert b"Annual Report" in payload
+    exhibit = extract_target_sub_document(stripped, target_types=("EX-13",))
+    assert exhibit is not None
+    assert b"Item 1. Business" in exhibit

@@ -119,3 +119,43 @@ def test_preprocess_pre_payload_with_visible_layout_markup_stays_html() -> None:
     doc = GenericPreprocessor().preprocess(raw)
     assert doc.has_html_tags is True
     assert doc.metadata.get("ascii_pre_wrapper") is not True
+
+
+def _pem_bundle_text() -> str:
+    return (
+        "-----BEGIN PRIVACY-ENHANCED MESSAGE-----\n"
+        "Proc-Type: 2001,MIC-CLEAR\n"
+        "Originator-Name: webmaster@www.sec.gov\n"
+        "MIC-Info: RSA-MD5,RSA,\n"
+        " abc==\n"
+        "\n"
+        "<SEC-DOCUMENT>0000947716-97-000009.txt : 19970313\n"
+        "<SEC-HEADER>hdr</SEC-HEADER>\n"
+        "<DOCUMENT>\n<TYPE>10-K\n<SEQUENCE>1\n<FILENAME>10k.txt\n<TEXT>\n"
+        "ITEM 1. BUSINESS BODY TEXT\n"
+        "</TEXT>\n</DOCUMENT>\n"
+        "</SEC-DOCUMENT>\n"
+        "-----END PRIVACY-ENHANCED MESSAGE-----\n"
+    )
+
+
+def test_preprocess_strips_pem_envelope_fallback() -> None:
+    doc = GenericPreprocessor().preprocess(_pem_bundle_text().encode("latin-1"))
+    assert doc.cleaned_text.startswith("ITEM 1. BUSINESS BODY TEXT")
+    assert "PRIVACY" not in doc.cleaned_text
+    assert "<SEC-HEADER>" not in doc.cleaned_text
+    assert "<DOCUMENT>" not in doc.cleaned_text
+    assert "<TYPE>" not in doc.cleaned_text
+    assert "<TEXT>" not in doc.cleaned_text
+
+
+def test_preprocess_strips_bare_document_bundle_fallback() -> None:
+    raw = (
+        "<DOCUMENT>\n<TYPE>10-K\n<SEQUENCE>1\n<FILENAME>10k.txt\n<TEXT>\n"
+        "BARE BUNDLE BODY\n"
+        "</TEXT>\n</DOCUMENT>\n"
+    )
+    doc = GenericPreprocessor().preprocess(raw.encode("latin-1"))
+    assert "BARE BUNDLE BODY" in doc.cleaned_text
+    assert "<DOCUMENT>" not in doc.cleaned_text
+    assert "<TYPE>" not in doc.cleaned_text

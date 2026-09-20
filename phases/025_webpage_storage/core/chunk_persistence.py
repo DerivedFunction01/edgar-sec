@@ -18,6 +18,11 @@ from defs.sql import (
 )
 
 from ..processors import DocumentProcessor, execute_processor
+from .exhibit_second_pass import (
+    annotate_primary_exhibit_link,
+    run_exhibit_second_pass,
+    with_filing_year,
+)
 from .schemas import (
     ACQUISITION_FAILURES_TABLE,
     DOCUMENT_BLOBS_TABLE,
@@ -142,6 +147,14 @@ def _get_metrics(fetcher: object) -> dict[str, Any] | None:
     return None
 
 
+def _with_filing_year(
+    locator: DocumentLocator,
+    matching_occs: Sequence[FilingOccurrence],
+) -> DocumentLocator | object:
+    """Return a locator view annotated with the occurrence's filing year."""
+    return with_filing_year(locator, matching_occs)
+
+
 def _persist_fetch_result(
     locator: DocumentLocator,
     fetched: FetchResult | None,
@@ -259,7 +272,11 @@ def _persist_fetch_result(
 
     if processor is not None:
         try:
-            processed = execute_processor(processor, raw_payload, locator)
+            processed = execute_processor(
+                processor,
+                raw_payload,
+                _with_filing_year(locator, matching_occs),
+            )
             normalized = NormalizedDocument(
                 normalized_artifact_id=normalized_artifact_id(
                     blob.raw_payload_sha256, processed.processor_fingerprint
@@ -283,6 +300,24 @@ def _persist_fetch_result(
                     )
                 )
             )
+            exhibit_doc_id = run_exhibit_second_pass(
+                processed,
+                locator,
+                fetched.source_payload if fetched is not None else None,
+                fetcher,
+                processor,
+                executor,
+                payload_sink,
+            )
+            if exhibit_doc_id is not None:
+                annotate_primary_exhibit_link(
+                    executor,
+                    normalized_artifact_id(
+                        blob.raw_payload_sha256, processed.processor_fingerprint
+                    ),
+                    processed.metadata,
+                    exhibit_doc_id,
+                )
         except Exception as exc:  # noqa: BLE001 - failures are durable records
             failure = NormalizationFailure(
                 source_doc_id=target_doc_id,

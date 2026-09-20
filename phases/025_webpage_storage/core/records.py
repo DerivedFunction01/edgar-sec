@@ -168,6 +168,11 @@ class FetchResult:
     payload: bytes | None
     status: str  # "ok" | "missing" | "failed"
     error: str | None = None
+    # Non-persisted acquisition context: when ``payload`` was selected from an
+    # SGML/PEM bundle, this holds the PEM-stripped bundle so the worker's
+    # exhibit second pass can resolve in-bundle exhibits without a refetch.
+    # Dropped after processing; never written to storage.
+    source_payload: bytes | None = None
 
 
 __all__ = [

@@ -39,6 +39,18 @@ def _occurrence(cik="0000000001", path="index.htm"):
     )
 
 
+def _canonical_locator(key="a", path="index.htm"):
+    return schemas.DocumentLocator(
+        key, "0000000123-24-000001", path, f"https://example/{key}", "10-K"
+    )
+
+
+def _canonical_occurrence(cik="0000000001", path="index.htm"):
+    return schemas.build_occurrence(
+        cik, "0000000123-24-000001", path, "10-K", "2024-01-02", "2023-12-31"
+    )
+
+
 def _rows(path, table):
     executor = make_sql_executor(path, dialect=SqlDialect.SQLITE)
     try:
@@ -490,3 +502,171 @@ def test_processor_failure_keeps_raw_blob_and_records_normalization_failure(tmp_
     assert failures[0]["processor_fingerprint"] == "failing:v1"
     assert "normalization exploded" in failures[0]["error_message"]
     assert len(_rows(db_path, schemas.FILING_OCCURRENCES_TABLE)) == 1
+
+
+def _stub_bundle_10k() -> bytes:
+    return (
+        b"<DOCUMENT>\n<TYPE>10-K\n<SEQUENCE>1\n<FILENAME>10k.htm\n<TEXT>\n"
+        b"ITEM 15. Exhibits.\n"
+        b"The financial statements are incorporated herein by reference to "
+        b"Exhibit 13.\n"
+        b"</TEXT>\n</DOCUMENT>\n"
+        b"<DOCUMENT>\n<TYPE>EX-13\n<SEQUENCE>2\n<FILENAME>ex13.htm\n<TEXT>\n"
+        b"ANNUAL REPORT BODY with Item 1 Business content\n"
+        b"</TEXT>\n</DOCUMENT>\n"
+    )
+
+
+class _StubRefetchProcessor:
+    """Processor mimicking a 10-K evaluator stub decision for EX-13."""
+
+    processor_fingerprint = "stub-refetch:v1"
+    representation = "normalized-text"
+
+    async def process(self, raw_bytes, locator):
+        return processor_module.ProcessedDocument(
+            doc_id=schemas.doc_id(locator.accession, locator.document_path),
+            payload=raw_bytes,
+            byte_size=len(raw_bytes),
+            mime_type="text/plain",
+            metadata={
+                "decision_action": "refetch_sub_doc",
+                "target_exhibit": "EX-13",
+                "is_stub": True,
+            },
+            processor_fingerprint=self.processor_fingerprint,
+            representation=self.representation,
+        )
+
+
+class _BundleFetcher(FakeFetcher):
+    """Fetcher returning PEM-stripped bundle context like the real fetcher."""
+
+    def __init__(self, bundles, **kw):
+        super().__init__(bundles, **kw)
+
+    def fetch(self, locator):
+        result = super().fetch(locator)
+        if result.status == "ok":
+            return schemas.FetchResult(
+                result.locator,
+                result.payload,
+                "ok",
+                source_payload=result.payload,
+            )
+        return result
+
+
+def test_stub_second_pass_persists_exhibit_from_bundle(tmp_path):
+    bundle = _stub_bundle_10k()
+    fetcher = _BundleFetcher({"a": bundle})
+    result = worker_module.process_chunk(
+        "chunk",
+        "worker",
+        [_locator()],
+        [_occurrence()],
+        fetcher,
+        tmp_path / "chunk.db",
+        processor=_StubRefetchProcessor(),
+    )
+    blobs = _rows(result.path, schemas.DOCUMENT_BLOBS_TABLE)
+    normalized = _rows(result.path, schemas.NORMALIZED_DOCUMENTS_TABLE)
+    assert len(blobs) == 2
+    assert len(normalized) == 2
+    exhibit_blob = [row for row in blobs if row["document_path"] == "ex13.htm"]
+    assert len(exhibit_blob) == 1
+    # No extra fetch calls: exhibit came from the retained bundle.
+    assert fetcher.calls == ["a"]
+
+
+def test_stub_without_exhibit_in_bundle_fetches_bundle(tmp_path):
+    # Primary payload has no bundle context; the worker fetches the bundle.
+    class SingleDocFetcher(FakeFetcher):
+        def fetch(self, locator):
+            if (
+                locator.document_path.endswith(".txt")
+                and locator.document_path[:10].isdigit()
+            ):
+                self.calls.append(locator.locator_key)
+                return schemas.FetchResult(
+                    locator,
+                    _stub_bundle_10k(),
+                    "ok",
+                    source_payload=_stub_bundle_10k(),
+                )
+            return super().fetch(locator)
+
+    fetcher = SingleDocFetcher({"a": b"stub text", "bundle": _stub_bundle_10k()})
+    result = worker_module.process_chunk(
+        "chunk",
+        "worker",
+        [_canonical_locator()],
+        [_canonical_occurrence()],
+        fetcher,
+        tmp_path / "chunk.db",
+        processor=_StubRefetchProcessor(),
+    )
+    assert len(_rows(result.path, schemas.NORMALIZED_DOCUMENTS_TABLE)) == 2
+    assert sum(1 for call in fetcher.calls if call.endswith(":full-submission")) == 1
+
+
+def test_proceed_decision_persists_single_row(tmp_path):
+    class ProceedProcessor(_StubRefetchProcessor):
+        async def process(self, raw_bytes, locator):
+            doc = await super().process(raw_bytes, locator)
+            return processor_module.ProcessedDocument(
+                doc_id=doc.doc_id,
+                payload=doc.payload,
+                byte_size=doc.byte_size,
+                mime_type=doc.mime_type,
+                metadata={"decision_action": "proceed", "is_stub": False},
+                processor_fingerprint=self.processor_fingerprint,
+                representation=self.representation,
+            )
+
+    fetcher = _BundleFetcher({"a": _stub_bundle_10k()})
+    result = worker_module.process_chunk(
+        "chunk",
+        "worker",
+        [_locator()],
+        [_occurrence()],
+        fetcher,
+        tmp_path / "chunk.db",
+        processor=ProceedProcessor(),
+    )
+    assert len(_rows(result.path, schemas.NORMALIZED_DOCUMENTS_TABLE)) == 1
+
+
+def test_filing_year_injected_from_occurrence(tmp_path):
+    captured = {}
+
+    class CaptureProcessor:
+        processor_fingerprint = "capture:v1"
+        representation = "normalized-text"
+
+        async def process(self, raw_bytes, locator):
+            captured["filing_year"] = getattr(locator, "filing_year", None)
+            return processor_module.ProcessedDocument(
+                doc_id=schemas.doc_id(locator.accession, locator.document_path),
+                payload=raw_bytes,
+                byte_size=len(raw_bytes),
+                mime_type="text/plain",
+                metadata={"decision_action": "proceed"},
+                processor_fingerprint=self.processor_fingerprint,
+                representation=self.representation,
+            )
+
+    occurrence = schemas.build_occurrence(
+        "0000000001", "0001-0001", "index.htm", "10-K", "2004-06-15", "2003-12-31"
+    )
+    fetcher = FakeFetcher({"a": b"payload"})
+    worker_module.process_chunk(
+        "chunk",
+        "worker",
+        [_locator()],
+        [occurrence],
+        fetcher,
+        tmp_path / "chunk.db",
+        processor=CaptureProcessor(),
+    )
+    assert captured["filing_year"] == 2004

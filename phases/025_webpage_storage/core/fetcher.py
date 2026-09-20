@@ -19,6 +19,7 @@ from defs.filing_identity import (
 from defs.sec_documents.sgml import (
     extract_target_sub_document,
     has_sgml_documents,
+    strip_pem_envelope,
 )
 from defs.sec_http import HttpMetrics, SecHttpClient, SqlCacheReader
 from defs.sec_http.cache import make_cache_reader
@@ -76,19 +77,27 @@ def is_stub_document_path(document_path: str | None) -> bool:
 def extract_from_sgml_envelope(
     raw_payload: bytes,
     locator: DocumentLocator,
-) -> bytes | None:
+) -> tuple[bytes | None, bytes | None]:
     """Extract the target sub-document if the payload is an SGML submission envelope.
 
-    Scans the envelope and materializes only the resolved target's payload;
-    block-less payloads (plain documents) are returned unchanged.
+    Returns ``(payload, source_bundle)``. ``payload`` is the selected
+    sub-document's ``<TEXT>`` bytes (or the unchanged payload when the input
+    is not an envelope). ``source_bundle`` carries the PEM-stripped bundle
+    bytes when ``payload`` was selected from an envelope so the worker's
+    exhibit second pass can resolve in-bundle exhibits without a refetch; it
+    is ``None`` otherwise.
+
+    PEM-wrapped payloads (``-----BEGIN PRIVACY-ENHANCED MESSAGE-----``) are
+    unwrapped first, then the full payload is scanned for ``<DOCUMENT>``
+    blocks — never just a fixed-size prefix, because PEM transport headers
+    push the first block past the start of the file. Block-less payloads
+    (plain documents) are returned unchanged.
     """
     if not raw_payload:
-        return None
-    head = raw_payload[:1000].lower()
-    if b"<document>" not in head and b"<submission>" not in head:
-        return raw_payload
-    if not has_sgml_documents(raw_payload):
-        return raw_payload
+        return None, None
+    payload = strip_pem_envelope(raw_payload)
+    if not has_sgml_documents(payload):
+        return payload, None
 
     form_val = locator.form.strip().upper() if locator.form else None
     targets = ()
@@ -98,12 +107,13 @@ def extract_from_sgml_envelope(
             if form_val.endswith("/A")
             else (form_val, f"{form_val}/A")
         )
-    return extract_target_sub_document(
-        raw_payload,
+    selected = extract_target_sub_document(
+        payload,
         target_types=targets,
         primary_filename=locator.document_path,
         fallback_to_sequence_one=True,
     )
+    return selected, payload
 
 
 class FixtureArchiveFetcher:
@@ -146,12 +156,15 @@ class FixtureArchiveFetcher:
                         continue
                     if row is not None and row.get("raw_payload") is not None:
                         payload = decompress_payload(row["raw_payload"])
-                        extracted = extract_from_sgml_envelope(payload, locator)
+                        extracted, source_bundle = extract_from_sgml_envelope(
+                            payload, locator
+                        )
                         if extracted is not None:
                             return FetchResult(
                                 locator=locator,
                                 payload=extracted,
                                 status="ok",
+                                source_payload=source_bundle,
                             )
 
                 # Fallback to full submission blob if present in fixture
@@ -177,7 +190,7 @@ class FixtureArchiveFetcher:
                             continue
                         if row_full is not None:
                             sgml_payload = decompress_payload(row_full["raw_payload"])
-                            extracted = extract_from_sgml_envelope(
+                            extracted, source_bundle = extract_from_sgml_envelope(
                                 sgml_payload, locator
                             )
                             if extracted is not None:
@@ -185,6 +198,7 @@ class FixtureArchiveFetcher:
                                     locator=locator,
                                     payload=extracted,
                                     status="ok",
+                                    source_payload=source_bundle,
                                 )
         except Exception as exc:  # noqa: BLE001 - fetch failures become result statuses
             return FetchResult(
@@ -249,9 +263,14 @@ class LiveSecArchiveFetcher:
         if not is_stub:
             try:
                 payload = self._http_client.get_bytes(locator.archive_url)
-                extracted = extract_from_sgml_envelope(payload, locator)
+                extracted, source_bundle = extract_from_sgml_envelope(payload, locator)
                 if extracted is not None:
-                    return FetchResult(locator=locator, payload=extracted, status="ok")
+                    return FetchResult(
+                        locator=locator,
+                        payload=extracted,
+                        status="ok",
+                        source_payload=source_bundle,
+                    )
             except Exception as exc:  # noqa: BLE001 - client errors fall back to full submission
                 primary_error = str(exc)
 
@@ -259,9 +278,16 @@ class LiveSecArchiveFetcher:
         if full_sub_url and full_sub_url != locator.archive_url:
             try:
                 sgml_payload = self._http_client.get_bytes(full_sub_url)
-                extracted = extract_from_sgml_envelope(sgml_payload, locator)
+                extracted, source_bundle = extract_from_sgml_envelope(
+                    sgml_payload, locator
+                )
                 if extracted is not None:
-                    return FetchResult(locator=locator, payload=extracted, status="ok")
+                    return FetchResult(
+                        locator=locator,
+                        payload=extracted,
+                        status="ok",
+                        source_payload=source_bundle,
+                    )
                 return FetchResult(
                     locator=locator,
                     payload=None,
@@ -382,17 +408,27 @@ class BrokerArchiveFetcher:
         if not is_stub:
             payload, primary_error = self._payload_from(locator.archive_url)
             if payload is not None:
-                extracted = extract_from_sgml_envelope(payload, locator)
+                extracted, source_bundle = extract_from_sgml_envelope(payload, locator)
                 if extracted is not None:
-                    return FetchResult(locator=locator, payload=extracted, status="ok")
+                    return FetchResult(
+                        locator=locator,
+                        payload=extracted,
+                        status="ok",
+                        source_payload=source_bundle,
+                    )
 
         # Fallback to full SGML submission bundle if direct fetch failed or was a stub
         if full_sub_url and full_sub_url != locator.archive_url:
             payload, fallback_error = self._payload_from(full_sub_url)
             if payload is not None:
-                extracted = extract_from_sgml_envelope(payload, locator)
+                extracted, source_bundle = extract_from_sgml_envelope(payload, locator)
                 if extracted is not None:
-                    return FetchResult(locator=locator, payload=extracted, status="ok")
+                    return FetchResult(
+                        locator=locator,
+                        payload=extracted,
+                        status="ok",
+                        source_payload=source_bundle,
+                    )
                 return FetchResult(
                     locator=locator,
                     payload=None,
@@ -430,5 +466,58 @@ __all__ = [
     "LiveSecArchiveFetcher",
     "extract_from_sgml_envelope",
     "is_stub_document_path",
+    "locate_sub_document_in_bundle",
+    "locate_sub_document_with_filename",
     "make_archive_fetcher",
 ]
+
+
+def locate_sub_document_in_bundle(
+    bundle: bytes, target_types: Sequence[str], primary_filename: str | None
+) -> bytes | None:
+    """Resolve one exhibit's ``<TEXT>`` payload from a retained bundle.
+
+    Used by the worker's exhibit second pass (Checkpoint C): the bundle bytes
+    are already PEM-stripped acquisition context, so exhibit resolution costs
+    no additional fetch. Returns ``None`` when the bundle has no matching
+    sub-document.
+    """
+    if not bundle:
+        return None
+    return extract_target_sub_document(
+        bundle,
+        target_types=tuple(target_types),
+        primary_filename=primary_filename,
+        fallback_to_sequence_one=False,
+    )
+
+
+_RE_BUNDLE_FILENAME = re.compile(
+    rb"<DOCUMENT>(?:(?!</DOCUMENT>).)*?<TYPE>\s*([^\r\n<]+)"
+    rb"(?:(?!</DOCUMENT>).)*?<FILENAME>\s*([^\r\n<]+)",
+    re.IGNORECASE | re.DOTALL,
+)
+
+
+def locate_sub_document_with_filename(
+    bundle: bytes, target_types: Sequence[str]
+) -> tuple[bytes | None, str | None]:
+    """Resolve an exhibit payload plus its ``<FILENAME>`` from a bundle.
+
+    Second pass helper: returns ``(payload, filename)`` where ``filename`` is
+    the matching sub-document's declared ``<FILENAME>`` (or ``None``).
+    """
+    if not bundle:
+        return None, None
+    targets = {t.strip().upper() for t in target_types}
+    for match in _RE_BUNDLE_FILENAME.finditer(bundle):
+        doc_type = match.group(1).decode("latin-1", errors="replace").strip().upper()
+        if doc_type in targets:
+            payload = extract_target_sub_document(
+                bundle, target_types=(doc_type,), fallback_to_sequence_one=False
+            )
+            filename = (
+                match.group(2).decode("latin-1", errors="replace").strip() or None
+            )
+            return payload, filename
+    return None, None

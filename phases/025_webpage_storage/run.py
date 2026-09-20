@@ -207,7 +207,6 @@ def interactive_menu() -> int:
         elif choice == "2":
             plan_dir = _select_target_plan()
             if plan_dir:
-                workers = _read(f"  Workers [{default_workers}]: ", default_workers)
                 cli_main(
                     [
                         "run",
@@ -216,13 +215,12 @@ def interactive_menu() -> int:
                         "--mode",
                         "fixture",
                         "--workers",
-                        workers,
+                        default_workers,
                     ]
                 )
         elif choice == "3":
             plan_dir = _select_target_plan()
             if plan_dir:
-                workers = _read(f"  Workers [{default_workers}]: ", default_workers)
                 cli_main(
                     [
                         "run",
@@ -231,7 +229,7 @@ def interactive_menu() -> int:
                         "--mode",
                         "production",
                         "--workers",
-                        workers,
+                        default_workers,
                     ]
                 )
         elif choice == "4":
@@ -255,7 +253,7 @@ def interactive_menu() -> int:
             if plan_dir:
                 def_fix_id = f"fix-{Path(plan_dir).name[:8]}"
                 fixture_id = _read(f"  Fixture ID [{def_fix_id}]: ", def_fix_id)
-                workers = _read(f"  Workers [{default_workers}]: ", default_workers)
+
                 limit = _read("  Limit (blank for all): ", "")
                 retry = _read("  Retry previous failures? [y/N]: ", "N")
                 cmd = [
@@ -265,7 +263,7 @@ def interactive_menu() -> int:
                     "--fixture-id",
                     fixture_id,
                     "--workers",
-                    workers,
+                    default_workers,
                 ]
                 if limit:
                     cmd.extend(["--limit", limit])
@@ -288,8 +286,7 @@ def interactive_menu() -> int:
             if run_id:
                 cli_main(["merge-to-snapshot", "--run-id", run_id])
         elif choice == "8":
-            workers = _read(f"  Workers [{default_workers}]: ", default_workers)
-            cli_main(["vacuum", "--all", "--workers", workers])
+            cli_main(["vacuum", "--all", "--workers", default_workers])
         else:
             print("  unknown choice")
 
