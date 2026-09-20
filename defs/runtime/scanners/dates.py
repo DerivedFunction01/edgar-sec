@@ -5,54 +5,24 @@ from __future__ import annotations
 import os
 import re
 
-from defs.regex import build_alternation
 from defs.runtime.checks import ScannerFinding
 from defs.runtime.scanners.engine import is_test_file, scan_patch_and_untracked
+from defs.text.dates import MONTH_PATTERN
 
 _CANDIDATE_RE = (
-    r"(?i)january|february|march|april|june|july|august|september|october|november|december"
-    r"|\b(?:jan|feb|mar|apr|jun|jul|aug|sep|sept|oct|nov|dec)\b"
+    rf"(?i){MONTH_PATTERN}"
     r"|\\d\{[1-4]\}\s*[/\\-]\s*\\d\{[1-4]\}"
     r"|month_name|month_map|month_dict|month_list"
 )
 
-# 1. Month names / abbreviations in sequence (lists, tuples, dicts, sets)
-_MONTH_TOKENS = [
-    r"january",
-    r"february",
-    r"march",
-    r"april",
-    r"may",
-    r"june",
-    r"july",
-    r"august",
-    r"september",
-    r"october",
-    r"november",
-    r"december",
-    r"jan",
-    r"feb",
-    r"mar",
-    r"apr",
-    r"jun",
-    r"jul",
-    r"aug",
-    r"sep",
-    r"sept",
-    r"oct",
-    r"nov",
-    r"dec",
-]
-_MONTH_ALT = build_alternation(_MONTH_TOKENS, auto_escape=True)
-
 # Matches 2+ month literals in a sequence, e.g. ["jan", "feb"] or {"january": 1, ...}
 _MONTH_SEQUENCE_RE = re.compile(
-    rf"""(?i)["']\b(?:{_MONTH_ALT})[.,]?["']\s*[,:]\s*["']\b(?:{_MONTH_ALT})[.,]?["']"""
+    rf"""(?i)["']\b(?:{MONTH_PATTERN})[.,]?["']\s*[,:]\s*["']\b(?:{MONTH_PATTERN})[.,]?["']"""
 )
 
 # 2. Raw month alternations in regexes, e.g. (?:january|february|...) or jan|feb|mar
 _MONTH_REGEX_ALT_RE = re.compile(
-    rf"""(?i)\b(?:{_MONTH_ALT})\s*\|\s*(?:{_MONTH_ALT})\b"""
+    rf"""(?i)\b(?:{MONTH_PATTERN})\s*\|\s*(?:{MONTH_PATTERN})\b"""
 )
 
 # 3. Ad-hoc date separator regexes, e.g. \d{1,2}/\d{1,2}/\d{2,4} or \d{4}-\d{2}-\d{2}

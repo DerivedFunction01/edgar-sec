@@ -23,30 +23,31 @@ _RE_LETTER_NUMBER = re.compile(
     r"(?im)^\s*(?:page\s+)?(?P<prefix>[A-Z])\s*[-–—]\s*(?P<page>\d+)\s*[-–—]?\s*$"
 )
 _RE_SGML_LINE = re.compile(
-    r"(?im)^[ \t]*</?PAGE\b[^>]*>[ \t]*(?P<page>\d+)?[ \t]*"
+    r"(?im)^[ \t]*</?PAGE\b[^>]*>[ \t]*"
+    r"(?P<page>(?:[A-Z](?:\s*[-–—]\s*\d+)?|\d+))?[ \t]*"
     r"(?:</?PAGE\b[^>]*>)?[ \t]*$"
 )
 _RE_SGML_INLINE = re.compile(r"(?i)</?PAGE\b[^>]*>")
 _RE_BOUNDARY = re.compile(r"(?im)^[ \t]*(?:\(PAGE\)|\[PAGE\])[ \t]*$")
 _WRAPPERS = build_alternation(["-", "–", "—", ".", "·", "•", "▪"], auto_escape=True)
+_PAGE_ARABIC = r"\d{1,4}"
+_PAGE_ROMAN = r"[ivxlcdm]{1,8}"
+_PAGE_VALUE = rf"(?:{_PAGE_ARABIC}|{_PAGE_ROMAN})"
 _RE_DASH_LABEL = re.compile(
     rf"^(?=.*(?:{_WRAPPERS}))(?:{_WRAPPERS}|\s)+"
-    rf"(?P<value>\d{{1,4}}|[ivxlcdm]{{1,8}})"
+    rf"(?P<value>{_PAGE_VALUE})"
     rf"(?:{_WRAPPERS}|\s)+$",
     re.IGNORECASE,
 )
-_RE_PIPE_LABEL = re.compile(
-    r"^\|\s*(?P<value>\d{1,4}|[ivxlcdm]{1,8})\s*\|$", re.IGNORECASE
-)
-_RE_PAREN_LABEL = re.compile(
-    r"^\(\s*(?P<value>\d{1,4}|[ivxlcdm]{1,8})\s*\)$", re.IGNORECASE
-)
+_RE_PIPE_LABEL = re.compile(rf"^\|\s*(?P<value>{_PAGE_VALUE})\s*\|$", re.IGNORECASE)
+_RE_PAREN_LABEL = re.compile(rf"^\(\s*(?P<value>{_PAGE_VALUE})\s*\)$", re.IGNORECASE)
 _RE_SIMPLE_WRAPPED_LABEL = re.compile(
-    r"^(?:[|]\s*\d{1,4}\s*[|]|\(\s*\d{1,4}\s*\)|\d{1,4}\.)$"
+    rf"^(?:[|]\s*{_PAGE_ARABIC}\s*[|]|\(\s*{_PAGE_ARABIC}\s*\)|{_PAGE_ARABIC}\.)$"
 )
-_RE_DOTTED_LABEL = re.compile(r"^(?P<value>\d{1,4})\.$")
-_RE_BARE_ARABIC = re.compile(r"^(?P<value>\d{1,4})$")
-_RE_BARE_ROMAN = re.compile(r"^(?P<value>[ivxlcdm]{1,8})$", re.IGNORECASE)
+_RE_DOTTED_LABEL = re.compile(rf"^(?P<value>{_PAGE_ARABIC})\.$")
+_RE_BARE_ARABIC = re.compile(rf"^(?P<value>{_PAGE_ARABIC})$")
+_RE_BARE_ROMAN = re.compile(rf"^(?P<value>{_PAGE_ROMAN})$", re.IGNORECASE)
+RE_PAGE_VALUE = re.compile(rf"{_PAGE_VALUE}", re.IGNORECASE)
 _RE_LEADING_NUMBER = re.compile(r"^(?P<value>\d{1,4})\s{1,}\S.*$")
 _RE_TRAILING_NUMBER = re.compile(r"^\S.*?\s{2,}(?P<value>\d{1,4})$")
 _RE_PIPE_HEADER_NUMBER = re.compile(
@@ -110,12 +111,11 @@ _TOC_WORDS = build_alternation(
     auto_escape=True,
 )
 _VALUE_RE = re.compile(
-    r"^(?:page\s+)?(?P<value>\d{1,4}|[ivxlcdm]{1,8})$|"
-    r"^(?:[-–—|·•▪()]\s*)+(?P<wrapped>\d{1,4}|[ivxlcdm]{1,8})"
+    rf"^(?:page\s+)?(?P<value>{_PAGE_VALUE})$|"
+    rf"^(?:[-–—|·•▪()]\s*)+(?P<wrapped>{_PAGE_VALUE})"
     r"(?:\s*[-–—|·•▪()])+$",
     re.IGNORECASE,
 )
-_NUMERIC_RE = re.compile(r"^(?P<value>\d{1,4})$")
 _HIDDEN_STYLE_VALUES = build_alternation(
     [r"display\s*:\s*none", r"visibility\s*:\s*hidden", "hidden"]
 )
@@ -320,7 +320,6 @@ __all__ = [
     "_HIDDEN_STYLE_RE",
     "_HIDDEN_STYLE_VALUES",
     "_NUMERALS",
-    "_NUMERIC_RE",
     "_PAGE_MARKER_PATTERNS",
     "_PAGE_WORDS",
     "_RE_APPENDIX_ROMAN",

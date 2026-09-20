@@ -15,11 +15,10 @@ from __future__ import annotations
 import re
 from dataclasses import dataclass
 
-from defs.text.tokens import BULLET_MARKER_RE
+from defs.text.patterns import RE_SEPARATOR_LINE
+from defs.text.tokens import is_list_or_bullet_marker
 
-_RE_SEPARATOR_LINE = re.compile(r"^[-=_+]+$")
 _RE_GUTTER = re.compile(r"(?<=\S) {2,}(?=\S)")
-_RE_LIST_ITEM = re.compile(r"^\s*[\(\[]?[a-zA-Z0-9]+[\.\)\]]")
 _RE_TRAILING_PUNCT = re.compile(r"[-,;:]$")
 
 
@@ -59,7 +58,7 @@ def _is_table_row(line: str) -> bool:
     stripped = line.strip()
     if not stripped:
         return False
-    if _RE_SEPARATOR_LINE.match(stripped.replace(" ", "")):
+    if RE_SEPARATOR_LINE.fullmatch(stripped):
         return True
     return bool(_RE_GUTTER.search(line))
 
@@ -97,9 +96,7 @@ def _is_list_item(line: str) -> bool:
     if not stripped:
         return False
     first_token = stripped.split(maxsplit=1)[0]
-    if BULLET_MARKER_RE.match(first_token):
-        return True
-    return bool(_RE_LIST_ITEM.match(stripped))
+    return is_list_or_bullet_marker(first_token)
 
 
 def _heal_paragraph(lines: list[str]) -> str:

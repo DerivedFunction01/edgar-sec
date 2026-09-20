@@ -21,6 +21,8 @@ FORM_FAMILY_ALIASES: dict[str, tuple[str, ...]] = {
         "10KSB40",
         "10-KT",
         "10-KT/A",
+        "10KT405",
+        "10KT405/A",
     ),
     "10-Q": (
         "10-Q",
@@ -102,6 +104,9 @@ def resolve_alias(form: str | None) -> str | None:
     if direct is not None:
         return direct
     family = form_family(form)
+    direct = _ALIAS_LOOKUP.get(family)
+    if direct is not None:
+        return direct
     return family if family in FORM_FAMILY_ALIASES else None
 
 

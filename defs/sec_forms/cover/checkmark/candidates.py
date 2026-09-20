@@ -4,9 +4,11 @@ from __future__ import annotations
 
 import re
 from collections.abc import Sequence
+from dataclasses import dataclass, replace
 
-from defs.sec_forms.cover.checkmark_frames import build_masked_offset_translator
-from defs.sec_forms.cover.checkmark_models import CheckboxCandidate
+from defs.sec_forms.cover.checkmark.frames import build_masked_offset_translator
+from defs.sec_forms.cover.checkmark.models import CheckboxCandidate
+from defs.sec_forms.cover.checkmark.yes_no_pairs import YES_NO_WORD_RE
 from defs.sec_forms.cover.models import CoverBoundary
 from defs.tables.protection import mask_tagged_tables
 from defs.taxonomy.components.cover import (
@@ -30,10 +32,15 @@ from defs.taxonomy.components.cover import (
     STAT_WKSI,
     STATUTORY_BINARY_GROUP,
 )
-from defs.text.checkmarks import CHECKMARK_MARK_RE
+from defs.text.checkmarks import (
+    CHECKMARK_MARK_RE,
+    is_fill_in_mark_token,
+    is_unchecked_mark_token,
+)
 from defs.text.dates import parse_date
+from defs.text.patterns import RE_SEPARATOR_LINE
 
-_RE_YES_NO = re.compile(r"\b(yes|no)\b", re.IGNORECASE)
+_RE_DASH_ONLY_LINE = RE_SEPARATOR_LINE
 
 _LABELS: tuple[tuple[str, tuple[str, ...], str], ...] = (
     (REPORT_ANNUAL, ("annual report", "annual report pursuant"), REPORT_PERIOD_GROUP),
@@ -111,6 +118,17 @@ for _key, _phrases, _group in _LABELS:
         )
 
 
+@dataclass(frozen=True, slots=True)
+class CoverLineSignals:
+    """Cached lexical signals used by line-level cover extraction."""
+
+    labels: tuple[tuple[str, str, int, int, str], ...]
+    marks: tuple[re.Match[str], ...]
+    answers: tuple[re.Match[str], ...]
+    date_present: bool
+    dash_only: bool
+
+
 def _label_matches(text: str) -> list[tuple[str, str, int, int, str]]:
     matches: list[tuple[str, str, int, int, str]] = []
     for _key, _phrase, _a, _b, _group, _re in _LABEL_RE_PATTERNS:
@@ -127,19 +145,23 @@ def _label_matches(text: str) -> list[tuple[str, str, int, int, str]]:
     return accepted
 
 
-def _mark_matches(text: str, *, allow_asterisk: bool = False) -> list[re.Match[str]]:
-    matches = list(CHECKMARK_MARK_RE.finditer(text))
-    if allow_asterisk:
-        return matches
-    return [
-        match for match in matches if match.group(0) != "*" or _RE_YES_NO.search(text)
-    ]
+def _mark_matches(
+    text: str,
+    *,
+    answers: Sequence[re.Match[str]] = (),
+) -> list[re.Match[str]]:
+    del answers
+    return list(CHECKMARK_MARK_RE.finditer(text))
 
 
-def _answer_for_mark(text: str, start: int, end: int) -> str | None:
+def _answer_for_mark(
+    start: int,
+    end: int,
+    answers: Sequence[re.Match[str]],
+) -> str | None:
     nearby = [
-        (abs(match.start() - end), match.group(1).lower())
-        for match in _RE_YES_NO.finditer(text)
+        (abs(match.start() - end), match.group("answer").lower())
+        for match in answers
         if start - 32 <= match.start() <= end + 32
     ]
     return min(nearby)[1] if nearby else None
@@ -147,6 +169,18 @@ def _answer_for_mark(text: str, start: int, end: int) -> str | None:
 
 def _date_present(text: str) -> bool:
     return parse_date(text) is not None
+
+
+def _line_signals(text: str) -> CoverLineSignals:
+    answers = tuple(YES_NO_WORD_RE.finditer(text))
+    marks = tuple(_mark_matches(text, answers=answers))
+    return CoverLineSignals(
+        labels=tuple(_label_matches(text)),
+        marks=marks,
+        answers=answers,
+        date_present=_date_present(text),
+        dash_only=bool(_RE_DASH_ONLY_LINE.fullmatch(text)),
+    )
 
 
 def _yes_no_candidates(
@@ -162,7 +196,7 @@ def _yes_no_candidates(
         return []
     entries: list[tuple[str, int, int, re.Match[str]]] = []
     for _, text, _, marks in cells:
-        answers = list(_RE_YES_NO.finditer(text))
+        answers = list(YES_NO_WORD_RE.finditer(text))
         if len(answers) != 1 or len(marks) != 1:
             continue
         entries.append(
@@ -178,7 +212,7 @@ def _yes_no_candidates(
     question_key = f"table_yes_no:{table_index}:{row_index}"
     candidates: list[CheckboxCandidate] = []
     for column, text, _, marks in cells:
-        answers = list(_RE_YES_NO.finditer(text))
+        answers = list(YES_NO_WORD_RE.finditer(text))
         if len(answers) != 1 or len(marks) != 1:
             continue
         answer = answers[0]
@@ -211,9 +245,16 @@ def _candidate_from_match(
     column: int | None = None,
     orientation: str = "",
     mark_span: tuple[int, int] | None = None,
+    answer_matches: Sequence[re.Match[str]] | None = None,
+    date_valid: bool | None = None,
 ) -> CheckboxCandidate:
     label_text, label_start, label_end = label
-    answer = _answer_for_mark(row_text, token.start(), token.end())
+    answers = (
+        tuple(answer_matches)
+        if answer_matches is not None
+        else tuple(YES_NO_WORD_RE.finditer(row_text))
+    )
+    answer = _answer_for_mark(token.start(), token.end(), answers)
     return CheckboxCandidate(
         semantic_key=key,
         source_token=token.group(0),
@@ -224,11 +265,69 @@ def _candidate_from_match(
         row=row,
         column=column,
         orientation=orientation,
-        date_valid=_date_present(row_text),
+        date_valid=_date_present(row_text) if date_valid is None else date_valid,
         label_span=(label_start, label_end),
         mark_span=mark_span or (token.start(), token.end()),
         label_text=label_text,
     )
+
+
+def _line_yes_no_candidates(
+    line: str,
+    *,
+    line_index: int,
+    line_offset: int,
+    signals: CoverLineSignals | None = None,
+) -> list[CheckboxCandidate]:
+    """Extract one explicit Yes/No pair from an ASCII cover line."""
+
+    signals = signals or _line_signals(line)
+    answers = signals.answers
+    if len(answers) < 2 or len(answers) % 2:
+        return []
+    marks = signals.marks
+    if len(marks) != len(answers):
+        return []
+    candidates: list[CheckboxCandidate] = []
+    for pair_index in range(0, len(answers), 2):
+        pair_answers = answers[pair_index : pair_index + 2]
+        if {answer.group("answer").lower() for answer in pair_answers} != {
+            "yes",
+            "no",
+        }:
+            return []
+        question_key = f"line_yes_no:{line_index}:{pair_index // 2}"
+        for answer, mark in zip(
+            pair_answers, marks[pair_index : pair_index + 2], strict=True
+        ):
+            candidates.append(
+                replace(
+                    _candidate_from_match(
+                        key=question_key,
+                        group=STATUTORY_BINARY_GROUP,
+                        token=mark,
+                        label=(answer.group(0), answer.start(), answer.end()),
+                        row_text=line,
+                        source_region=(
+                            f"line-{line_index}-mark-{line_offset + mark.start()}"
+                        ),
+                        row=line_index,
+                        orientation="same_line",
+                        mark_span=(
+                            line_offset + mark.start(),
+                            line_offset + mark.end(),
+                        ),
+                        answer_matches=pair_answers,
+                        date_valid=signals.date_present,
+                    ),
+                    answer=answer.group("answer").lower(),
+                    question_key=question_key,
+                    state=(
+                        "unchecked" if is_unchecked_mark_token(mark.group(0)) else None
+                    ),
+                )
+            )
+    return candidates
 
 
 def extract_table_candidates(
@@ -248,9 +347,7 @@ def extract_table_candidates(
         for column, cell in enumerate(cells):
             text = str(cell)
             labels = () if text.lstrip().startswith("(") else _label_matches(text)
-            row_data.append(
-                (column, text, list(labels), _mark_matches(text, allow_asterisk=True))
-            )
+            row_data.append((column, text, list(labels), _mark_matches(text)))
         row_cells.append(row_data)
 
     used_vertical_labels: set[tuple[int, int]] = set()
@@ -372,7 +469,11 @@ def extract_cover_candidates(
         return ()
     candidates: list[CheckboxCandidate] = []
     masked, table_spans = mask_tagged_tables(text)
-    start_line = boundary.start_line or 0
+    # ASCII cover boundaries can have an approximate late start line when the
+    # detector identifies a continued-cover region.  The end line is the
+    # reliable cover/body fence; scanning from the document start prevents
+    # valid report-period checkboxes near the cover header from being skipped.
+    start_line = 0
     for table_index, geometry in enumerate(table_geometries):
         if table_index >= len(table_spans):
             break
@@ -396,6 +497,10 @@ def extract_cover_candidates(
         offset += len(raw_line)
 
     masked_to_original = build_masked_offset_translator(masked, table_spans)
+    line_signals = {
+        index: _line_signals(raw_line.rstrip("\r\n"))
+        for index, raw_line in enumerate(lines)
+    }
 
     for line_index, raw_line in enumerate(lines):
         line_offset = masked_line_offsets[line_index]
@@ -405,11 +510,27 @@ def extract_cover_candidates(
         if unmasked_index < start_line:
             continue
         line = raw_line.rstrip("\r\n")
-        labels = _label_matches(line)
+        candidates.extend(
+            _line_yes_no_candidates(
+                line,
+                line_index=line_index,
+                line_offset=masked_to_original(line_offset),
+                signals=line_signals[line_index],
+            )
+        )
+        signals = line_signals[line_index]
+        labels = signals.labels
         if not labels:
             continue
-        line_marks = _mark_matches(line)
+        all_line_marks = signals.marks
         for label_index, (key, phrase, start, end, group) in enumerate(labels):
+            line_marks = all_line_marks
+            if key in {REPORT_TRANSITION, REPORT_ANNUAL, REPORT_QUARTERLY}:
+                line_marks = [
+                    mark
+                    for mark in all_line_marks
+                    if not is_fill_in_mark_token(mark.group(0))
+                ]
             if len(labels) == len(line_marks):
                 mark_refs = [(line_index, line_marks[label_index])]
             elif len(labels) == 1:
@@ -424,6 +545,8 @@ def extract_cover_candidates(
             else:
                 mark_refs = []
             if not mark_refs:
+                if key in {REPORT_TRANSITION, REPORT_ANNUAL, REPORT_QUARTERLY}:
+                    continue
                 for nearby_index in range(
                     max(0, line_index - 2),
                     min(len(lines), line_index + 3),
@@ -432,7 +555,7 @@ def extract_cover_candidates(
                         continue
                     mark_refs.extend(
                         (nearby_index, mark)
-                        for mark in _mark_matches(lines[nearby_index].rstrip("\r\n"))
+                        for mark in line_signals[nearby_index].marks
                     )
             row_text = " ".join(
                 [line]
@@ -468,6 +591,8 @@ def extract_cover_candidates(
                             else "right_of_label"
                         ),
                         mark_span=(mark_start, mark_end),
+                        answer_matches=line_signals[mark_line].answers,
+                        date_valid=signals.date_present,
                     )
                 )
     return tuple(candidates)

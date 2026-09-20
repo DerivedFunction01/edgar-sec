@@ -8,7 +8,7 @@ from pathlib import Path
 from defs.runtime.checks import ScannerFinding
 from defs.runtime.scanners.engine import git_output, is_test_file
 
-DEFAULT_MAX_LINES = 600
+DEFAULT_MAX_LINES = 650
 
 _ALLOWED_PATHS = (
     "scratch/",

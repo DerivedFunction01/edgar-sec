@@ -6,6 +6,7 @@ import re
 
 from defs.regex import build_alternation
 from defs.sec_forms.cover.models import ItemDefinition
+from defs.text.patterns import RE_NON_ALNUM
 
 PARTS: tuple[str, ...] = ("PART I", "PART II", "PART III", "PART IV")
 
@@ -402,7 +403,7 @@ ITEMS: dict[str, str] = {d.item: d.names[0].title() for d in FORM_10K_ITEMS}
 
 
 def _normalize_token(text: str) -> str:
-    sanitized = re.sub(r"[^a-z0-9]+", " ", text.lower())
+    sanitized = RE_NON_ALNUM.sub(" ", text.lower())
     return " ".join(sanitized.split()).strip()
 
 

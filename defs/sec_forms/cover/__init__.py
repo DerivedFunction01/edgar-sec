@@ -8,28 +8,22 @@ from defs.sec_forms.cover.boundary import (
     find_cover_boundary_for_profile,
     resolve_document_topology,
 )
-from defs.sec_forms.cover.checkmark_candidates import (
-    extract_cover_candidates,
-    extract_table_candidates,
-)
-from defs.sec_forms.cover.checkmark_models import (
+from defs.sec_forms.cover.checkmark import (
     CheckboxCandidate,
     ConstraintViolation,
     CoverCheckmarkResult,
     HypothesisScore,
     InferenceStatus,
     PenaltyScorer,
-)
-from defs.sec_forms.cover.checkmark_rewrite import (
     apply_cover_checkmark_decisions,
-    update_table_geometries,
-)
-from defs.sec_forms.cover.checkmark_solver import (
+    extract_cover_candidates,
+    extract_table_candidates,
     infer_cover_checkmarks,
     solve_cover_constraints,
     solve_filer_constraints,
     solve_report_period,
     solve_statutory_constraints,
+    update_table_geometries,
 )
 from defs.sec_forms.cover.closing import ClosingSpan, find_closing_span
 from defs.sec_forms.cover.cover_start import find_cover_start

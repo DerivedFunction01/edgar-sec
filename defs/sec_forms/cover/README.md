@@ -9,26 +9,29 @@ Owns cover boundary policies, body root backward search, cover start clustering,
 ```text
 defs/sec_forms/cover/
   __init__.py          # Public cover API surface
-  boundary.py          # Cover boundary detection policies and coordinator
+  boundary/            # Cover boundary detection policies and coordinator
+  checkmark/           # Checkbox extraction, inference, and rewrite
+    __init__.py        # Public checkmark API surface
+    candidates.py      # Geometry/text candidate extraction
+    frames.py          # Masked-frame to original-frame coordinate translation
+    models.py          # Immutable checkbox candidates, results, and penalty models
+    rewrite.py         # Decision application to cover text and table metadata
+    solver.py          # Public form-profiled solver entry points
+    yes_no_pairs.py    # Yes/No checkbox pair normalization
   closing.py           # Conservative closing-region detection (signatures, exhibit index)
   cover_start.py       # Cover start cluster detection and candidate search
   body_search.py       # Backward body root search and boundary confirmation
   body_start.py        # Forward body-start detection after cover/TOC
   body_context.py      # Unit indexing, eligibility context, lexical pack glue
   healing.py           # Representation-neutral cover healing on normalized text frames
-  inference.py         # Form-scoped checkbox candidates, constraints, and decisions
+  inference.py         # Constraint scoring internals and compatibility exports
   structure.py         # Structural line and Part/Item heading parsers
-  toc.py               # Table of Contents detection and row classification
+  toc/                 # Table of Contents detection and row classification
   extractors.py        # Universal text-based cover extractors (EIN, CIK, fiscal year)
   profiles.py          # Form-family cover profiles and boundary policies
   rules.py             # Compiled cover regexes and compiled lexical pack
   models.py            # Immutable data models (CoverBoundary, BodyStart, BodyRoot, ...)
   topology.py          # 4-zone document topology resolution
-  checkmark_models.py  # Immutable checkbox candidates, results, and penalty models
-  checkmark_candidates.py # Geometry/text candidate extraction
-  checkmark_rewrite.py # Decision application to cover text and table metadata
-  checkmark_solver.py  # Public form-profiled solver entry points
-  inference.py         # Constraint scoring internals and compatibility exports
 ```
 
 ---
@@ -36,9 +39,12 @@ defs/sec_forms/cover/
 ## Key Modules
 
 - **`healing.py`** — `heal_cover_text()`: representation-neutral cover healing on normalized text frames; applies checkbox, phrase-sequence, and date healing only to the bounded cover line slice with tagged-table protection.
-- **`checkmark_solver.py`** — `infer_cover_checkmarks()` and the pure `solve_*()` entry points: form-profiled report-period, filer-status, and statutory Boolean inference. It evaluates ambiguous glyph hypotheses with the configurable `PenaltyScorer`, applies only the unique lowest-penalty assignment, and preserves unresolved/tied groups with diagnostics. `8-K`, `6-K`, and generic no-cover profiles return `not_applicable` without scanning checkbox groups.
-- **`checkmark_candidates.py`** — geometry-aware semantic candidate extraction for left/right and above/below mark/label layouts.
-- **`checkmark_rewrite.py`** — applies resolved source decisions to cover prose, tagged tables, and retained table metadata without importing cover taxonomy into the renderer.
+- **`checkmark/`** — Checkbox extraction, inference, and rewrite subpackage.
+  - **`checkmark/solver.py`** — `infer_cover_checkmarks()` and the pure `solve_*()` entry points: form-profiled report-period, filer-status, and statutory Boolean inference. It evaluates ambiguous glyph hypotheses with the configurable `PenaltyScorer`, applies only the unique lowest-penalty assignment, and preserves unresolved/tied groups with diagnostics. `8-K`, `6-K`, and generic no-cover profiles return `not_applicable` without scanning checkbox groups.
+  - **`checkmark/candidates.py`** — geometry-aware semantic candidate extraction for left/right and above/below mark/label layouts.
+  - **`checkmark/rewrite.py`** — applies resolved source decisions to cover prose, tagged tables, and retained table metadata without importing cover taxonomy into the renderer.
+  - **`checkmark/models.py`** — immutable checkbox candidates, results, and penalty models.
+  - **`checkmark/yes_no_pairs.py`** — canonicalization of complete inline Yes/No checkbox pairs.
 - **`boundary.py`** — `find_cover_boundary()`, `find_cover_boundary_for_profile()`: multi-signal boundary detection across cover identity, incorporated references, TOC transitions, and Part/Item fallbacks.
 - **`closing.py`** — `find_closing_span()`, `ClosingSpan`: exact standalone `SIGNATURES` headings, `By: /s/` signature lines, and `EXHIBIT INDEX` headings after a validated body anchor; dotted TOC rows are rejected, and an absent signal means "no closing region" rather than a guess.
 - **`cover_start.py`** — `find_cover_start()`, `CoverStart`: anchors start of cover via SEC header, form titles, and registrant names.

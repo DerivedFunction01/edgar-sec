@@ -34,7 +34,13 @@ class CheckmarkScope(StrEnum):
     ALL = "all"
 
 
-BRACKET_PAIRS = (("[", "]"), ("(", ")"), ("/", "/"), ("|", "|"))
+BRACKET_PAIRS = (
+    ("[", "]"),
+    ("(", ")"),
+    ("{", "}"),
+    ("/", "/"),
+    ("|", "|"),
+)
 CHECKED_INNER = (
     "x",
     "X",
@@ -63,10 +69,10 @@ CHECKED_SYMBOLS = (
 )
 UNCHECKED_SYMBOLS = ("☐", "□", "¨")
 
-# These marks are meaningful only when a cover/binary/grid decision supplies
-# the missing semantic context.  They are intentionally not part of the safe
-# regexes below.
-CONTEXT_CHECKED_SYMBOLS = ("●", "■", "▪", "•", "*", "+", "-")
+# Filled geometric glyphs remain available for explicit filer-grid geometry.
+# Asterisks and plus signs are excluded because they are commonly footnotes,
+# operators, or prose punctuation rather than checkbox glyphs.
+CONTEXT_CHECKED_SYMBOLS = ("●", "■", "▪", "•")
 CONTEXT_UNCHECKED_SYMBOLS = ("o", "O")
 
 # The cleaner is the only stage allowed to interpret these encoded glyphs.
@@ -178,17 +184,12 @@ RAW_UNCHECKED_TOKENS = (
     ),
 )
 
-RE_RAW_CHECKED = re.compile(
-    rf"(?<![A-Za-z0-9_])(?:{build_alternation(RAW_CHECKED_TOKENS, auto_escape=True)})(?![A-Za-z0-9_])",
-    re.IGNORECASE,
-)
-RE_RAW_UNCHECKED = re.compile(
-    rf"(?<![A-Za-z0-9_])(?:{build_alternation(RAW_UNCHECKED_TOKENS, auto_escape=True)})(?![A-Za-z0-9_])",
-    re.IGNORECASE,
-)
-
 CHECKED_TOKENS = frozenset(RAW_CHECKED_TOKENS)
 UNCHECKED_TOKENS = frozenset(RAW_UNCHECKED_TOKENS)
+
+# Bare glyphs are candidates only; their semantic state may depend on the
+# source font or cover/grid context.
+BARE_MARK_TOKENS = ("x", "X", "o", "O", "þ", "ý", "r", "R")
 
 # Candidate extraction uses the complete mark vocabulary, including marks
 # whose meaning requires cover context. Semantic association remains phase-owned.
@@ -196,15 +197,7 @@ CHECKMARK_MARK_TOKENS = (
     *RAW_CHECKED_TOKENS,
     *RAW_UNCHECKED_TOKENS,
     *CONTEXT_CHECKED_SYMBOLS,
-    *CONTEXT_UNCHECKED_SYMBOLS,
-    "x",
-    "X",
-    "o",
-    "O",
-    "þ",
-    "ý",
-    "r",
-    "R",
+    *BARE_MARK_TOKENS,
 )
 # Bracketed tokens match without trailing word-boundary constraints
 # so that `[X]No` and `company[X]` are recognized as checkmark tokens.
@@ -216,12 +209,44 @@ _BRACKETED_MARK_TOKENS = tuple(
     for left, right in BRACKET_PAIRS
     for inner in CHECKED_INNER + UNCHECKED_INNER
 )
-_BARE_MARK_TOKENS = ("x", "X", "o", "O", "þ", "ý", "r", "R")
+_BARE_MARK_TOKENS = BARE_MARK_TOKENS
 # Non-bracketed, non-bare tokens: symbols, HTML entities, context symbols
 _OTHER_MARK_TOKENS = tuple(
     t
     for t in CHECKMARK_MARK_TOKENS
     if t not in _BRACKETED_MARK_TOKENS and t not in _BARE_MARK_TOKENS
+)
+
+MARK_OPEN = r"[\[\(\{]"
+MARK_CLOSE = r"[\]\)\}]"
+CHECKED_SYMBOL = r"[xX✓✔☑☒✘]"
+SPACED_BLANK = r"\s{1,8}"
+UNDERSCORE_RUN = r"_{1,8}"
+
+
+def _wrapped_mark_pattern(symbol: str) -> str:
+    """Build the shared bracket, slash, and pipe wrapper structure."""
+    return (
+        rf"(?:{MARK_OPEN}\s*{symbol}\s*{MARK_CLOSE}|"
+        rf"/\s*{symbol}\s*/|\|\s*{symbol}\s*\|)"
+    )
+
+
+_VARIABLE_CHECKED_SAFE_PATTERN = _wrapped_mark_pattern(CHECKED_SYMBOL)
+_VARIABLE_CHECKED_PATTERN = (
+    rf"(?:{_VARIABLE_CHECKED_SAFE_PATTERN}|"
+    rf"{UNDERSCORE_RUN}\s*{CHECKED_SYMBOL}\s*{UNDERSCORE_RUN}|"
+    rf"{UNDERSCORE_RUN}\s*{CHECKED_SYMBOL}|"
+    rf"{CHECKED_SYMBOL}\s*{UNDERSCORE_RUN})"
+)
+_VARIABLE_UNCHECKED_SAFE_PATTERN = (
+    rf"(?:{MARK_OPEN}{SPACED_BLANK}{MARK_CLOSE}|"
+    rf"{MARK_OPEN}\s*[_-]{{1,8}}\s*{MARK_CLOSE}|"
+    rf"/\s{{1,8}}/|\|\s{{1,8}}\|)"
+)
+_VARIABLE_UNCHECKED_PATTERN = (
+    rf"(?:{_VARIABLE_UNCHECKED_SAFE_PATTERN}|"
+    rf"_\s{{1,8}}_|{UNDERSCORE_RUN})"
 )
 
 CHECKMARK_MARK_RE = re.compile(
@@ -231,10 +256,44 @@ CHECKMARK_MARK_RE = re.compile(
     "|(?<![\\w[({])(?:"
     + build_alternation(_BARE_MARK_TOKENS, auto_escape=True)
     + ")(?![\\w])"
+    + f"|{_VARIABLE_CHECKED_PATTERN}"
+    + f"|{_VARIABLE_UNCHECKED_PATTERN}"
     "|" + build_alternation(_BRACKETED_MARK_TOKENS, auto_escape=True)
 )
 
+RE_VARIABLE_CHECKED = re.compile(rf"^{_VARIABLE_CHECKED_PATTERN}$")
+RE_VARIABLE_UNCHECKED = re.compile(rf"^{_VARIABLE_UNCHECKED_PATTERN}$")
+
+# Keep variable-width wrappers in the state recognizers as well as candidate
+# extraction; otherwise a token can be found but still be treated as unknown.
+RE_RAW_CHECKED = re.compile(
+    rf"(?<![A-Za-z0-9_])(?:{build_alternation(RAW_CHECKED_TOKENS, auto_escape=True)}|"
+    rf"{_VARIABLE_CHECKED_SAFE_PATTERN})(?![A-Za-z0-9_])",
+    re.IGNORECASE,
+)
+RE_RAW_UNCHECKED = re.compile(
+    rf"(?<![A-Za-z0-9_])(?:{build_alternation(RAW_UNCHECKED_TOKENS, auto_escape=True)}|"
+    rf"{_VARIABLE_UNCHECKED_SAFE_PATTERN})(?![A-Za-z0-9_])",
+    re.IGNORECASE,
+)
+
+
+def is_unchecked_mark_token(value: str) -> bool:
+    """Return whether a token is a variable-width blank mark candidate."""
+    token = value.strip()
+    return bool(RE_VARIABLE_UNCHECKED.fullmatch(token)) or (
+        len(token) >= 2 and set(token) <= {"_", "-"}
+    )
+
+
+def is_fill_in_mark_token(value: str) -> bool:
+    """Return whether a token is an underscore/dash cover fill-in run."""
+    token = value.strip()
+    return bool(token) and set(token) <= {"_", "-"}
+
+
 __all__ = [
+    "BARE_MARK_TOKENS",
     "BRACKET_PAIRS",
     "CANONICAL_CHECKED",
     "CANONICAL_UNCHECKED",
@@ -260,4 +319,6 @@ __all__ = [
     "CheckmarkScope",
     "font_bullet_glyph_state",
     "font_glyph_state",
+    "is_fill_in_mark_token",
+    "is_unchecked_mark_token",
 ]

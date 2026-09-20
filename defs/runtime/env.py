@@ -18,6 +18,7 @@ import re
 from pathlib import Path
 
 DEFAULT_DOTENV_PATH = ".env"
+_UNSAFE_ENV_VALUE_RE = re.compile(r"[\s\'\"#]")
 
 
 def load_dotenv(path: str | os.PathLike[str] = DEFAULT_DOTENV_PATH) -> dict[str, str]:
@@ -75,7 +76,7 @@ def render_dotenv_value(value: str) -> str:
     in double quotes with embedded double quotes escaped; other values pass
     through unchanged.
     """
-    if value == "" or not re.search(r"[\s'\"#]", value):
+    if value == "" or not _UNSAFE_ENV_VALUE_RE.search(value):
         return value
     escaped = value.replace('"', '\\"')
     return '"' + escaped + '"'

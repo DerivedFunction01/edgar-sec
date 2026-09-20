@@ -164,6 +164,7 @@ def write_review_artifacts(
 
     output_dir.mkdir(parents=True, exist_ok=True)
     current = result.normalized_text
+    serialized_current = current + "\n"
     case_id = result.document_id
     metadata = {
         "document_id": case_id,
@@ -172,12 +173,14 @@ def write_review_artifacts(
         "source_sha256": result.source_sha256,
         "representation": result.preprocessed.representation,
         "source_bytes": len(result.source_text.encode("utf-8")),
-        "current_output_sha256": hashlib.sha256(current.encode("utf-8")).hexdigest(),
+        "current_output_sha256": hashlib.sha256(
+            serialized_current.encode("utf-8")
+        ).hexdigest(),
         "expected_metadata": (
             json.loads(expected_metadata) if expected_metadata else None
         ),
     }
-    (output_dir / f"{case_id}.txt").write_text(current + "\n", encoding="utf-8")
+    (output_dir / f"{case_id}.txt").write_text(serialized_current, encoding="utf-8")
     (output_dir / f"{case_id}.analysis.json").write_text(
         json.dumps(bounded_analysis(result), indent=2, sort_keys=True) + "\n",
         encoding="utf-8",

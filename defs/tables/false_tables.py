@@ -27,8 +27,13 @@ from typing import TYPE_CHECKING
 from defs.sec_forms.cover.structure import RE_ITEM_REFERENCE, RE_PART_REFERENCE
 from defs.sec_forms.cover.toc import looks_like_toc_row, looks_like_toc_tabular
 from defs.tables.patterns import FOOTNOTE_RE
-from defs.text.patterns import roman_to_int
-from defs.text.tokens import BULLET_MARKER_RE, is_list_or_bullet_marker
+from defs.text.patterns import CONTINUATION_PUNCTUATION, roman_to_int
+from defs.text.tokens import (
+    BULLET_MARKER_RE,
+    ORDERED_MARKER_PREFIX_RE,
+    WRAPPED_MARKER_PREFIX_RE,
+    is_list_or_bullet_marker,
+)
 
 from .numeric_cells import is_numeric_cell
 
@@ -37,16 +42,6 @@ if TYPE_CHECKING:
 
 _RE_TABLE_BLOCK = re.compile(r"<TABLE>.*?</TABLE>", re.DOTALL)
 _RE_NUMERIC_SEPARATOR = re.compile(r"^[-=\s]+$")
-_RE_ORDERED_MARKER = re.compile(
-    r"^(?:(?P<number>\d{1,3})\s*[.)]\s*"
-    r"|(?P<roman>[ivxlcdm]+)\s*[.)]\s*"
-    r"|(?P<letter>[a-z])\s*[.)]\s*)",
-    re.IGNORECASE,
-)
-_RE_WRAPPED_MARKER = re.compile(
-    r"^\(\s*(?P<token>\d{1,3}|[ivxlcdm]+|[a-z])\s*\)\s*",
-    re.IGNORECASE,
-)
 _RE_UNAMBIGUOUS_MARKER = re.compile(r"\[\d{1,3}\]|[\*\†\‡\§\#]+")
 
 
@@ -97,7 +92,7 @@ def _marker_candidates(value: str) -> list[tuple[str, int, str]]:
     way as their bare ``1.``, ``iv.``, and ``a.`` counterparts.
     """
     value = value.strip()
-    match = _RE_ORDERED_MARKER.match(value)
+    match = ORDERED_MARKER_PREFIX_RE.match(value)
     if match is None:
         return _wrapped_marker_candidates(value)
     rest = value[match.end() :].strip()
@@ -121,7 +116,7 @@ def _marker_candidates(value: str) -> list[tuple[str, int, str]]:
 
 def _wrapped_marker_candidates(value: str) -> list[tuple[str, int, str]]:
     """Return marker candidates for a parenthesized ``(1)``/``(iv)``/``(a)`` cell."""
-    match = _RE_WRAPPED_MARKER.match(value)
+    match = WRAPPED_MARKER_PREFIX_RE.match(value)
     if match is None:
         return []
     token = match.group("token").lower()
@@ -278,7 +273,7 @@ def is_false_grid(
             )
         non_empty_first = [cell for cell in first_column if cell]
         if non_empty_first and all(
-            bool(_RE_ORDERED_MARKER.match(cell)) for cell in non_empty_first
+            bool(ORDERED_MARKER_PREFIX_RE.match(cell)) for cell in non_empty_first
         ):
             if any(is_numeric_cell(cell) for cell in second_column if cell):
                 return False
@@ -366,7 +361,7 @@ def _join_prose_rows(rows: list[list[str]]) -> str:
     for index, text in enumerate(texts):
         if index > 0:
             previous = texts[index - 1].rstrip()
-            pieces.append("\n" if previous.endswith((".", ";", ":", "!", "?")) else " ")
+            pieces.append("\n" if previous.endswith(CONTINUATION_PUNCTUATION) else " ")
         pieces.append(text)
     return "".join(pieces)
 

@@ -23,6 +23,7 @@ from defs.sec_forms.context.models import TableNode
 from defs.sec_forms.cover.structure import SectionKind, parse_section_heading
 from defs.sec_forms.forms.registry import _taxonomy_normalize, get_taxonomy_matcher
 from defs.text.html import FastHtmlNode, FastHtmlTree, parse_html
+from defs.text.patterns import RE_WHITESPACE
 
 __all__ = [
     "SKIP_TAGS",
@@ -178,7 +179,7 @@ def _classify_heading(text: str) -> tuple[bool, bool]:
 
 
 def _fingerprint(text: str) -> str:
-    normalized = re.sub(r"\s+", " ", text.casefold()).strip()
+    normalized = RE_WHITESPACE.sub(" ", text.casefold()).strip()
     return hashlib.sha256(normalized.encode("utf-8")).hexdigest()
 
 

@@ -7,6 +7,7 @@ import re
 from dataclasses import replace
 
 from defs.text.healing import NEGATIVE_BOUNDARY_RE
+from defs.text.patterns import RE_TERMINAL_BOUNDARY
 
 from ..artifacts import (
     note_template,
@@ -23,7 +24,7 @@ from ..models import (
 )
 from .orchestrator import analyze_page_markers
 
-_TERMINAL_PUNCT = re.compile(r"[.:;!?\"\x27\u201d\u2019)]\s*$")
+_TERMINAL_PUNCT = RE_TERMINAL_BOUNDARY
 _TAGGED_TABLE = re.compile(r"<TABLE\b.*?</TABLE\s*>", re.IGNORECASE | re.DOTALL)
 
 
@@ -320,8 +321,7 @@ def apply_page_markers(
         else:
             segments.insert(0, intervening)
 
-    result = "".join(segments)
-    return result, tuple(artifacts), templates, next_id
+    return "".join(segments), tuple(artifacts), templates, next_id
 
 
 __all__ = [

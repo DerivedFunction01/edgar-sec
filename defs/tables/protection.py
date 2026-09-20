@@ -19,11 +19,15 @@ from dataclasses import dataclass
 __all__ = [
     "SENTINEL_PREFIX",
     "SENTINEL_SUFFIX",
+    "TAGGED_TABLE_CLOSE_RE",
+    "TAGGED_TABLE_OPEN_RE",
     "ProtectedText",
     "TableSpan",
+    "ensure_table_tag_boundaries",
     "find_table_spans",
     "mask_tagged_tables",
     "restore_tagged_tables",
+    "strip_table_wrapper_tags",
 ]
 
 _SENTINEL_PREFIX = "__SEC_TBL_"
@@ -31,6 +35,12 @@ _SENTINEL_SUFFIX = "__"
 _RE_RESTORE_SENTINEL = re.compile(
     rf"{re.escape(_SENTINEL_PREFIX)}(\d+){re.escape(_SENTINEL_SUFFIX)}"
 )
+TAGGED_TABLE_OPEN_RE = re.compile(r"<TABLE\b", re.IGNORECASE)
+TAGGED_TABLE_CLOSE_RE = re.compile(r"</TABLE\s*>", re.IGNORECASE)
+_RE_TABLE_OPEN_WITH_SPACE = re.compile(r"[ \t]*<TABLE\b", re.IGNORECASE)
+_RE_TABLE_CLOSE_WITH_SPACE = re.compile(r"</TABLE\s*>[ \t]*", re.IGNORECASE)
+_RE_TABLE_OPEN_TAG = re.compile(r"<TABLE\b[^>]*>", re.IGNORECASE)
+_RE_TABLE_CLOSE_TAG = re.compile(r"</TABLE\s*>", re.IGNORECASE)
 
 # Public sentinel boundary constants: whitespace normalization passes must
 # treat whitespace adjacent to these tokens as line separators, not spaces.
@@ -206,4 +216,30 @@ def restore_tagged_tables(text: str, spans: tuple[TableSpan, ...]) -> str:
         for position in range(len(spans)):
             if position not in seen_positions:
                 raise ValueError(f"masked table sentinel {position} missing at restore")
+
     return restored
+
+
+def strip_table_wrapper_tags(text: str) -> str:
+    """Remove tagged-table wrapper elements while preserving table contents."""
+    result = _RE_TABLE_OPEN_TAG.sub("", text)
+    return _RE_TABLE_CLOSE_TAG.sub("", result)
+
+
+def ensure_table_tag_boundaries(text: str) -> str:
+    """Put restored table tags on standalone lines without changing contents."""
+
+    def _open(match: re.Match[str]) -> str:
+        if match.start() == 0 or text[match.start() - 1] == "\n":
+            return match.group(0)
+        return f"\n{match.group(0).lstrip()}"
+
+    result = _RE_TABLE_OPEN_WITH_SPACE.sub(_open, text)
+
+    def _close(match: re.Match[str]) -> str:
+        tag = match.group(0).rstrip()
+        if match.end() < len(result) and result[match.end()] != "\n":
+            return f"{tag}\n"
+        return tag
+
+    return _RE_TABLE_CLOSE_WITH_SPACE.sub(_close, result)

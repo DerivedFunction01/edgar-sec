@@ -4,15 +4,15 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 
-from defs.tables.numeric_cells import NUMERIC_CELL_RE
+from defs.tables.tokens import is_numeric_cell, is_prefix_token
 from defs.text.patterns import (
     RE_COLUMN_GAP,
     RE_DOT_LEADER,
     RE_PAGE_NUMBER_SUFFIX,
     RE_SEPARATOR_RUN,
-    RE_SIGNATURE_LABEL_LINE,
     RE_STRUCTURAL_SGML,
 )
+from defs.text.signatures import is_signature_label_line
 
 
 @dataclass(frozen=True, slots=True)
@@ -26,6 +26,7 @@ class _Features:
     max_gap: int
     gap_start_rows: tuple[tuple[int, ...], ...]
     numeric_cell_rows: int
+    shared_numeric_columns: int
     alpha_density: float
     any_lowercase: bool
 
@@ -57,8 +58,20 @@ def _numeric_cell_starts(line: str) -> tuple[int, ...]:
         if match.start() < content_start:
             continue
         tail = line[match.end() :].strip().split()
-        if tail and NUMERIC_CELL_RE.match(tail[0]):
+        if not tail:
+            continue
+        if is_numeric_cell(tail[0]):
             starts.append(match.end())
+        elif len(tail) > 1 and is_prefix_token(tail[0]):
+            candidate = f"{tail[0]}{tail[1]}"
+            if is_numeric_cell(candidate) or is_numeric_cell(f"{tail[0]} {tail[1]}"):
+                starts.append(match.end())
+            elif len(tail) > 2 and is_prefix_token(tail[1]):
+                candidate3 = f"{tail[0]}{tail[1]}{tail[2]}"
+                if is_numeric_cell(candidate3) or is_numeric_cell(
+                    f"{tail[0]} {tail[1]} {tail[2]}"
+                ):
+                    starts.append(match.end())
     return tuple(starts)
 
 
@@ -107,7 +120,7 @@ def _compute_features(lines: tuple[str, ...]) -> _Features:
             has_tab = True
         if RE_DOT_LEADER.search(stripped) and RE_PAGE_NUMBER_SUFFIX.search(stripped):
             has_dot_leader = True
-        if RE_SIGNATURE_LABEL_LINE.match(line):
+        if is_signature_label_line(line):
             has_signature = True
         if RE_SEPARATOR_RUN.search(stripped):
             has_separator = True
@@ -131,6 +144,7 @@ def _compute_features(lines: tuple[str, ...]) -> _Features:
         total_chars += len(stripped)
 
     alpha_density = alpha_chars / total_chars if total_chars else 0.0
+    shared_numeric_columns = _shared_columns(tuple(numeric_cell_rows), min_rows=3)
     return _Features(
         non_blank=non_blank,
         has_structural=has_structural,
@@ -141,6 +155,7 @@ def _compute_features(lines: tuple[str, ...]) -> _Features:
         max_gap=max_gap,
         gap_start_rows=tuple(gap_start_rows),
         numeric_cell_rows=tuple(numeric_cell_rows),
+        shared_numeric_columns=shared_numeric_columns,
         alpha_density=alpha_density,
         any_lowercase=any_lowercase,
     )

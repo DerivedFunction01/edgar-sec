@@ -22,6 +22,7 @@ from defs.taxonomy.probe.cache import default_probe_cache_path
 from defs.taxonomy.probe.constants import STOP_WORDS
 from defs.taxonomy.probe.inspector import inspect_table_record
 from defs.taxonomy.tables.families import FAMILY_SPECS
+from defs.text.patterns import RE_WHITESPACE
 
 if TYPE_CHECKING:
     from defs.taxonomy.tables.specs import TableFamilySpec
@@ -109,7 +110,7 @@ def _extract_frequent_lines(
         # Deduplicate per table so count represents table occurrence frequency
         seen = set()
         for line in lines:
-            line_clean = re.sub(r"\s+", " ", line).strip()
+            line_clean = RE_WHITESPACE.sub(" ", line).strip()
             if len(line_clean) >= min_len and line_clean not in STOP_WORDS:
                 seen.add(line_clean)
         for item in seen:

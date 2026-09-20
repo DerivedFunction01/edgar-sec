@@ -30,6 +30,17 @@ def test_repeating_numeric_page_sequence_is_analyzed() -> None:
     assert [marker.page_number for marker in analysis.markers] == [1, 2, 3]
 
 
+def test_namespaced_sgml_page_marker_is_removed_without_namespace_rules() -> None:
+    text = "before\n<page>F-15\nafter\n"
+
+    analysis = analyze_page_markers(text)
+    normalized, *_ = apply_text_policy(text, analysis)
+
+    assert len(analysis.markers) == 1
+    assert analysis.markers[0].kind == PageMarkerKind.SGML
+    assert "F-15" not in normalized
+
+
 def test_page_policy_operates_on_text_frame_without_dom() -> None:
     text = "Header\n<PAGE> 1\nBody\n<PAGE> 2\n"
     normalized, analysis, artifacts, templates, _ = apply_text_policy(text)

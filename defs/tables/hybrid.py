@@ -20,6 +20,8 @@ from enum import Enum
 from defs.tables.ascii_html import convert_html_table
 from defs.text.html import FastHtmlNode, FastHtmlTree
 
+_MONOSPACE_DIVIDER_RE = re.compile(r"^[-=]{3,}\s*$")
+
 
 class PreBlockKind(str, Enum):
     """Classification of content inside a <pre> block."""
@@ -108,7 +110,9 @@ def _looks_like_monospace_text(inner: str) -> bool:
     if len(lines) < 2:
         return False
 
-    dash_lines = sum(1 for line in lines if re.match(r"^[-=]{3,}\s*$", line.strip()))
+    dash_lines = sum(
+        1 for line in lines if _MONOSPACE_DIVIDER_RE.fullmatch(line.strip())
+    )
     if dash_lines >= 1:
         return True
 

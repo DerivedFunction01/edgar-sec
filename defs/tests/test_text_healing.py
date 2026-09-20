@@ -35,6 +35,10 @@ def test_normalize_checkbox_tokens() -> None:
     assert "þ" in normalized
 
 
+def test_unchecked_token_after_word_is_not_reclassified_as_checked() -> None:
+    assert normalize_checkbox_tokens("Yes [X] No[ ]") == "Yes [X] No [ ]"
+
+
 def test_should_join_two_lines_and_negative_guards() -> None:
     rules = [
         PhraseSequenceRule(

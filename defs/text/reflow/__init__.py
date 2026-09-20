@@ -26,6 +26,7 @@ from .types import (
     ACTION_PRESERVE,
     ACTION_TAG_AND_PRESERVE,
     ACTION_UNWRAP,
+    ReflowPolicy,
     ReflowResult,
     SpanDecision,
 )
@@ -34,6 +35,7 @@ __all__ = [
     "ACTION_PRESERVE",
     "ACTION_TAG_AND_PRESERVE",
     "ACTION_UNWRAP",
+    "ReflowPolicy",
     "ReflowResult",
     "SpanDecision",
     "reflow_ascii",

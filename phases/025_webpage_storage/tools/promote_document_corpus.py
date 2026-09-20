@@ -120,6 +120,33 @@ def _fixture_rows(
         executor.close()
 
 
+def _fixture_rows_by_doc_id(
+    paths: FixturePaths,
+    table_name: str,
+    document_ids: set[str],
+) -> list[dict[str, Any]]:
+    """Load auxiliary fixture rows for a bounded document selection."""
+
+    if not document_ids:
+        return []
+    executor = make_sql_executor(paths.db_path, dialect=SqlDialect.SQLITE)
+    try:
+        statement = Select(
+            source=Table(table_name),
+            projection=(Star(),),
+            where=Membership(
+                col("doc_id"),
+                source=ValueList(
+                    tuple(Parameter(value) for value in sorted(document_ids))
+                ),
+            ),
+            order_by=(OrderBy(col("doc_id")),),
+        )
+        return executor.query(executor.compiler.compile(statement))
+    finally:
+        executor.close()
+
+
 def build_records(
     paths: FixturePaths,
     *,
@@ -133,15 +160,25 @@ def build_records(
     if limit is not None and limit <= 0:
         raise ValueError("limit must be positive")
     rows = _fixture_rows(paths, ids, limit=limit, extensions=extensions)
+    document_ids = {str(row["doc_id"]) for row in rows}
+    payload_rows = _fixture_rows_by_doc_id(paths, "fixture_payloads", document_ids)
+    payload_by_id = {str(row["doc_id"]): row["raw_payload"] for row in payload_rows}
+    occurrence_rows = _fixture_rows_by_doc_id(paths, "filing_occurrences", document_ids)
+    forms_by_id: dict[str, set[str]] = {}
+    for occurrence in occurrence_rows:
+        forms_by_id.setdefault(str(occurrence["doc_id"]), set()).add(
+            str(occurrence["form"])
+        )
     fixture_manifest = _load_fixture_manifest(paths)
     manifest_forms = fixture_manifest.get("forms", [])
     single_form = manifest_forms[0] if len(manifest_forms) == 1 else None
     records: list[dict[str, Any]] = []
 
     for row in rows:
-        payload = row.get("raw_payload")
+        document_id = str(row["doc_id"])
+        payload = payload_by_id.get(document_id)
         if payload is None:
-            continue
+            raise ValueError(f"missing fixture payload for {document_id}")
         raw = decompress_payload(bytes(payload))
         digest = hashlib.sha256(raw).hexdigest()
         source_hash = str(row.get("raw_payload_sha256") or "")
@@ -149,7 +186,6 @@ def build_records(
             raise ValueError(f"missing source hash for {row['doc_id']}")
         if digest != source_hash:
             raise ValueError(f"source hash mismatch for {row['doc_id']}")
-        document_id = str(row["doc_id"])
         previous = (existing or {}).get(document_id)
         if previous is not None and previous.get("source_sha256") != digest:
             raise ValueError(f"source changed for existing corpus row {document_id}")
@@ -175,11 +211,14 @@ def build_records(
         }
         # Join `form` from the fixture manifest directly into each
         # record, eliminating fragile unparsed byte regex inference.
-        row_form = str(row.get("form", "")) if row.get("form") else ""
-        if single_form:
-            record["form"] = single_form
-        elif row_form:
+        forms = forms_by_id.get(document_id, set())
+        if len(forms) > 1:
+            raise ValueError(f"conflicting filing forms for {document_id}: {forms}")
+        row_form = next(iter(forms), "")
+        if row_form:
             record["form"] = row_form
+        elif single_form:
+            record["form"] = single_form
         elif manifest_forms:
             record["form"] = manifest_forms[0]
         records.append(record)
@@ -245,18 +284,29 @@ def promote(
 
 
 def main(argv: list[str] | None = None) -> int:
+    def read_ids_file(path: Path | None) -> list[str]:
+        if path is None:
+            return []
+        return [
+            line.strip()
+            for line in path.read_text(encoding="utf-8").splitlines()
+            if line.strip() and not line.lstrip().startswith("#")
+        ]
+
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--fixture-id", required=True)
     parser.add_argument("--output", type=Path)
     parser.add_argument("--version", default="v1")
     parser.add_argument("--doc-id", action="append", default=[])
+    parser.add_argument("--ids-file", type=Path)
     parser.add_argument("--limit", type=int)
     args = parser.parse_args(argv)
+    ids = [*args.doc_id, *read_ids_file(args.ids_file)]
     target = promote(
         args.fixture_id,
         output=args.output,
         version=args.version,
-        ids=set(args.doc_id) or None,
+        ids=set(ids) or None,
         limit=args.limit,
     )
     print(f"wrote document corpus to {target}")

@@ -20,7 +20,16 @@ from defs.sec_forms.cover import (
     infer_cover_checkmarks,
     update_table_geometries,
 )
-from defs.sec_forms.cover.checkmark_rewrite import _has_labeled_checkmark_candidates
+from defs.sec_forms.cover.checkmark.rewrite import (
+    _has_labeled_checkmark_candidates,
+    _has_resolvable_line_yes_no_candidates,
+)
+from defs.sec_forms.cover.checkmark.yes_no_pairs import normalize_yes_no_pairs
+from defs.sec_forms.cover.reflow import (
+    is_checkbox_answer_line,
+    is_cover_layout_line,
+    is_page_marker_line,
+)
 from defs.sec_forms.page_markers import (
     PageArtifactPolicy,
     apply_html_policy,
@@ -28,7 +37,7 @@ from defs.sec_forms.page_markers import (
     build_page_artifact_metadata,
 )
 from defs.text import count_lines, normalize_final_text_whitespace
-from defs.text.reflow import reflow_ascii
+from defs.text.reflow import ReflowPolicy, reflow_ascii
 
 from .forms.base import PreprocessedDocument
 from .router import FormRouter
@@ -194,6 +203,22 @@ class DeepNormalizer:
             profile,
         )
 
+        text, pair_changed = normalize_yes_no_pairs(
+            text,
+            start_line=boundary.start_line or 0,
+            end_line=boundary.end_line,
+        )
+        if pair_changed:
+            stage_trace.append(
+                {
+                    "stage": "after_yes_no_pair_normalization",
+                    "text_identity": sha256_text(text),
+                    "representation": representation,
+                    "line_count": count_lines(text),
+                    "char_count": len(text),
+                }
+            )
+
         checkmark_inference = infer_cover_checkmarks(
             text,
             boundary,
@@ -201,8 +226,10 @@ class DeepNormalizer:
             table_geometries=table_geometries,
             schema=profile.checkbox_schema,
         )
-        if checkmark_inference.decisions or _has_labeled_checkmark_candidates(
-            checkmark_inference.candidates
+        if (
+            checkmark_inference.decisions
+            or _has_labeled_checkmark_candidates(checkmark_inference.candidates)
+            or _has_resolvable_line_yes_no_candidates(checkmark_inference.candidates)
         ):
             text, checkmark_changed, unwrapped_indices = (
                 apply_cover_checkmark_decisions(
@@ -249,9 +276,18 @@ class DeepNormalizer:
             text,
             boundary,
             tuple(profile.healing_rules),
+            merge_binary_blocks=is_html,
         )
         if cover_changed:
             text = healed_text
+            boundary = find_cover_boundary_for_profile(
+                BoundaryInput(
+                    text,
+                    representation=representation,
+                    page_analysis=page_analysis,
+                ),
+                profile,
+            )
             stage_trace.append(
                 {
                     "stage": "after_cover_healing",
@@ -315,8 +351,24 @@ class DeepNormalizer:
                 text,
                 body_start_line=body_start_line,
                 page_analysis=page_analysis,
+                policy=ReflowPolicy(
+                    unwrap_pre_body_prose=True,
+                    relax_prose_layout_gaps=True,
+                    unwrap_bullet_continuations=True,
+                    is_checkbox_answer_line=is_checkbox_answer_line,
+                    is_page_boundary_line=is_page_marker_line,
+                    is_structural_line=is_cover_layout_line,
+                ),
             )
             text = reflow_result.text
+            boundary = find_cover_boundary_for_profile(
+                BoundaryInput(
+                    text,
+                    representation=representation,
+                    page_analysis=page_analysis,
+                ),
+                profile,
+            )
             stage_trace.append(
                 {
                     "stage": "after_reflow",
@@ -325,6 +377,22 @@ class DeepNormalizer:
                     "line_count": count_lines(text),
                     "char_count": len(text),
                 }
+            )
+            # Reflow may remove hard-wrap newlines before the body. Refresh
+            # coordinate-bearing TOC/body spans before downstream consumers use
+            # their line numbers.
+            toc_span = find_toc_span(
+                text,
+                start_line=boundary.start_line or 0,
+                page_analysis=page_analysis,
+                derived_taxonomy=profile.derived_taxonomy,
+            )
+            body_start = find_body_start(
+                text,
+                cover_end=boundary.end_line,
+                toc_end=toc_span.end_line if toc_span is not None else None,
+                evidence=profile.body_evidence,
+                toc_span=toc_span,
             )
         if body_start is not None and body_start.first_unit_line is not None:
             closing_span = find_closing_span(

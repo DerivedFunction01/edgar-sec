@@ -129,6 +129,10 @@ _ITEM_HEADING_RE = re.compile(
 )
 _PART_INLINE_RE = re.compile(r"\bPART\s+([IVXLCDM]+|\d+)\b", re.IGNORECASE)
 _ITEM_INLINE_RE = re.compile(r"\bITEMS?\s+(\d+[A-Z]?(?:\.\d{1,2})?)\b", re.IGNORECASE)
+_SECTION_REFERENCE_RE = re.compile(
+    r"\b(?:PART|ITEM)\s+(?:[IVX]+|[0-9]+[A-Z]?)\b\s*(.*)",
+    re.IGNORECASE,
+)
 
 
 def parse_section_heading(
@@ -313,11 +317,7 @@ def is_preceding_continuation(line: str) -> bool:
 
 def _extract_continuation(stripped: str) -> str:
     """Extract the text after a section reference token."""
-    match = re.search(
-        r"\b(?:PART|ITEM)\s+(?:[IVX]+|[0-9]+[A-Z]?)\b\s*(.*)",
-        stripped,
-        re.IGNORECASE,
-    )
+    match = _SECTION_REFERENCE_RE.search(stripped)
     if match:
         return match.group(1).strip()
     return ""

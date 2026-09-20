@@ -2,14 +2,14 @@
 
 from __future__ import annotations
 
-import re
+from defs.tables.protection import TAGGED_TABLE_CLOSE_RE, TAGGED_TABLE_OPEN_RE
 
 # Maximum lines between a TOC heading and its first row for the heading to act
 # as an incorporated-reference transition; mirrors the TOC span gap gate.
 _TOC_TRANSITION_ROW_GAP = 10
 
-_RE_TAGGED_TABLE_OPEN = re.compile(r"<TABLE\b", re.IGNORECASE)
-_RE_TAGGED_TABLE_CLOSE = re.compile(r"</TABLE\s*>", re.IGNORECASE)
+_RE_TAGGED_TABLE_OPEN = TAGGED_TABLE_OPEN_RE
+_RE_TAGGED_TABLE_CLOSE = TAGGED_TABLE_CLOSE_RE
 
 # Lines describing other sections (for example inside an incorporated-reference
 # sentence) must not trigger the body-prose depth guard.

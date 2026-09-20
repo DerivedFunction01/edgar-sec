@@ -6,8 +6,10 @@ from defs.text.reflow import (
     ACTION_PRESERVE,
     ACTION_TAG_AND_PRESERVE,
     ACTION_UNWRAP,
+    ReflowPolicy,
     reflow_ascii,
 )
+from defs.text.reflow.table_policy import split_structural_table_intro
 
 BODY_START = 3
 
@@ -60,6 +62,32 @@ def test_pre_body_region_is_never_reflowed() -> None:
         d.trace == "fast_noop" and d.evidence == ("pre_body_region",)
         for d in result.decisions
     )
+
+
+def test_policy_unwraps_front_matter_prose_but_preserves_structure() -> None:
+    text = (
+        "FORM 10-K/A\n"
+        "\n"
+        "The purpose of this amendment is to clarify the following\n"
+        "disclosures and update the related explanatory note.\n"
+        "\n"
+        "PART I\n"
+        "\n"
+        "ITEM 1. BUSINESS\n"
+        "\n"
+        "The company operates worldwide.\n"
+    )
+    result = reflow_ascii(
+        text,
+        body_start_line=9,
+        policy=ReflowPolicy(
+            unwrap_pre_body_prose=True,
+            relax_prose_layout_gaps=True,
+        ),
+    )
+
+    assert "clarify the following disclosures and update" in result.text
+    assert "note.\n\nPART I" in result.text
 
 
 def test_single_line_block_is_noop() -> None:
@@ -156,6 +184,46 @@ def test_signature_block_is_preserved_not_tagged() -> None:
     assert all(d.action == ACTION_PRESERVE for d in result.decisions)
 
 
+def test_complete_signature_layout_is_protected_across_blank_lines() -> None:
+    text = (
+        "Signature                     Title                         Date\n\n"
+        "/s/Gary L. Westerholm\n"
+        "_____________________\n"
+        "Gary L. Westerholm       President, Chief Executive\n"
+        "                         Officer and Director           January 13, 2004\n\n"
+        "/s/John DiMora\n"
+        "______________\n"
+        "John DiMora                    Director                 January 13, 2004\n\n"
+        "John W. Sawarin                Director\n\n"
+        "After section"
+    )
+    result = reflow_ascii(text, body_start_line=0)
+    assert result.text == text
+    assert len(result.protected_signatures) == 1
+    assert result.protected_signatures[0].start_line == 0
+    assert result.protected_signatures[0].end_line == 12
+    assert "<TABLE>" not in result.text
+
+
+def test_generic_table_intro_cue_splits_only_before_table_geometry() -> None:
+    intro = "The following information is presented below"
+    table = "Name                  2024       2023\nAlpha                 10         9"
+    narrative, table_lines = split_structural_table_intro((intro, table))
+    assert narrative == (intro,)
+    assert table_lines == (table,)
+
+
+def test_filing_specific_prose_is_not_a_table_intro_cue() -> None:
+    lines = (
+        "The fair value was estimated using assumptions",
+        "Name                  2024       2023",
+        "Alpha                 10         9",
+    )
+    narrative, table_lines = split_structural_table_intro(lines)
+    assert narrative == ()
+    assert table_lines == lines
+
+
 def test_existing_tagged_table_survives_exactly() -> None:
     tagged = "<TABLE>\n<S>     <C>   <C>\nAssets   1,000   900\n</TABLE>"
     text = f"PART I\nITEM 1. BUSINESS\n\n{tagged}\n\nafter prose"
@@ -170,6 +238,107 @@ def test_existing_tagged_table_adjacent_to_prose_is_not_joined() -> None:
     result = reflow_ascii(text, body_start_line=3)
     assert tagged in result.text
     assert "prose line\n<TABLE>" in result.text
+
+
+def test_reflow_puts_inline_table_tags_on_own_lines() -> None:
+    text = "prefix <TABLE>\nA 1\n</TABLE> suffix"
+
+    result = reflow_ascii(text, body_start_line=0)
+
+    assert result.text == "prefix\n<TABLE>\nA 1\n</TABLE>\nsuffix"
+
+
+def test_table_continuity_bridges_header_body_blank_line() -> None:
+    text = (
+        "Revenue by segment       2024       2023\n"
+        "-----------------------  ---------- ----------\n"
+        "\n"
+        "Automotive               $1,200     $1,100\n"
+        "Industrial               $2,050     $1,980\n"
+    )
+
+    result = reflow_ascii(text, body_start_line=0)
+
+    assert result.text.count("<TABLE>") == 1
+    assert "-----------------------" in result.text
+    assert "Industrial               $2,050     $1,980" in result.text
+
+
+def test_table_continuity_bridges_page_marker() -> None:
+    text = (
+        "Revenue by segment       2024       2023\n"
+        "-----------------------  ---------- ----------\n"
+        "Automotive               $1,200     $1,100\n"
+        "<page>F-1\n"
+        "Industrial               $2,050     $1,980\n"
+        "Total                    $3,250     $3,080\n"
+    )
+
+    result = reflow_ascii(text, body_start_line=0)
+
+    assert result.text.count("<TABLE>") == 1
+    assert "<page>F-1" in result.text
+    assert "Total                    $3,250     $3,080" in result.text
+
+
+def test_table_continuity_bridges_wrapped_description_to_numeric_tail() -> None:
+    text = (
+        "Description                         2024       2023\n"
+        "-----------------------------------  ---------  ---------\n"
+        "Government assistance, non-interest\n"
+        "bearing, repayable in quarterly\n"
+        "payments commencing October 1, 2024       395,778    369,550\n"
+        "-----------------------------------  ---------  ---------\n"
+        "Following prose begins here.\n"
+    )
+
+    result = reflow_ascii(text, body_start_line=0)
+
+    assert result.text.count("<TABLE>") == 1
+    assert "payments commencing October 1, 2024       395,778    369,550" in result.text
+    assert "Following prose begins here." in result.text.split("</TABLE>", 1)[1]
+
+
+def test_table_continuity_bridges_structural_statement_section() -> None:
+    text = (
+        "Total liabilities             4,868,402    3,856,168\n"
+        "                              ----------   ----------\n"
+        "\n"
+        "Commitments and Contingencies (note 15)\n"
+        "\n"
+        "Stockholders' equity (deficit):\n"
+        "\n"
+        "Common stock                       24,818       23,649\n"
+        "Additional paid in capital     20,133,739   16,781,788\n"
+        "Total stockholders' deficit    (3,252,981)  (2,983,592)\n"
+        "                              ------------ ------------\n"
+        "Total liabilities and stockholders' deficit\t     $\t1,615,421  $\t872,576\n"
+        "                              ============ ============"
+    )
+    result = reflow_ascii(text, body_start_line=0)
+    assert result.text.count("<TABLE>") == 1
+    assert "Commitments and Contingencies (note 15)" in result.text
+    assert "Total liabilities and stockholders' deficit" in result.text
+    assert (
+        result.text.endswith("</TABLE>")
+        or "</TABLE>"
+        in result.text.split("Total liabilities and stockholders' deficit")[1]
+    )
+
+
+def test_tab_indented_bullet_continuation_unwraps_without_table_policy() -> None:
+    text = "o   First line of a prose bullet\n\tcontinuation of the same bullet\n"
+
+    result = reflow_ascii(
+        text,
+        body_start_line=0,
+        policy=ReflowPolicy(unwrap_bullet_continuations=True),
+    )
+
+    assert (
+        result.text
+        == "o   First line of a prose bullet continuation of the same bullet\n"
+    )
 
 
 def test_decisions_are_deterministic() -> None:

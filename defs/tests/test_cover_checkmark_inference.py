@@ -104,6 +104,268 @@ def test_prose_decisions_report_that_text_changed() -> None:
     assert "TRANSITION REPORT [ ]" in updated
 
 
+def test_variable_width_ascii_checkbox_pair_is_canonicalized() -> None:
+    boundary = CoverBoundary(
+        end_line=3,
+        end_offset=None,
+        method="test",
+        confidence=1.0,
+        start_line=0,
+    )
+    text = "FORM 10-K\nANNUAL REPORT [X]\nTRANSITION REPORT /   /\n"
+
+    candidates = extract_cover_candidates(text, boundary, family="10-K")
+    assert {candidate.source_token for candidate in candidates} == {"[X]", "/   /"}
+    assert {candidate.known_state for candidate in candidates} == {
+        "checked",
+        "unchecked",
+    }
+
+    result = infer_cover_checkmarks(text, boundary, family="10-K")
+    updated, changed, _ = apply_cover_checkmark_decisions(text, result)
+
+    assert changed
+    assert "ANNUAL REPORT [X]" in updated
+    assert "TRANSITION REPORT [ ]" in updated
+
+
+def test_variable_width_parenthesized_checked_mark_is_canonicalized() -> None:
+    boundary = CoverBoundary(
+        end_line=3,
+        end_offset=None,
+        method="test",
+        confidence=1.0,
+        start_line=0,
+    )
+    text = "FORM 10-K\nANNUAL REPORT (X )\nTRANSITION REPORT [ ]\n"
+
+    candidates = extract_cover_candidates(text, boundary, family="10-K")
+    assert {candidate.source_token for candidate in candidates} == {"(X )", "[ ]"}
+    assert {candidate.known_state for candidate in candidates} == {
+        "checked",
+        "unchecked",
+    }
+
+    result = infer_cover_checkmarks(text, boundary, family="10-K")
+    updated, changed, _ = apply_cover_checkmark_decisions(text, result)
+
+    assert changed
+    assert "ANNUAL REPORT [X]" in updated
+    assert "TRANSITION REPORT [ ]" in updated
+
+
+def test_ascii_blank_and_braced_marks_are_canonicalized_in_cover_context() -> None:
+    boundary = CoverBoundary(
+        end_line=4,
+        end_offset=None,
+        method="test",
+        confidence=1.0,
+        start_line=0,
+    )
+    text = (
+        "FORM 10-K\n"
+        "ANNUAL REPORT [X]\n"
+        "TRANSITION REPORT [_]\n"
+        "Indicate reports: Yes [X] No ___\n"
+    )
+
+    candidates = extract_cover_candidates(text, boundary, family="10-K")
+    assert {candidate.source_token for candidate in candidates} >= {"[X]", "[_]"}
+    assert all(candidate.known_state is not None for candidate in candidates)
+
+    result = infer_cover_checkmarks(text, boundary, family="10-K")
+    updated, changed, _ = apply_cover_checkmark_decisions(text, result)
+
+    assert changed
+    assert "TRANSITION REPORT [ ]" in updated
+
+
+def test_braced_unchecked_mark_is_recognized() -> None:
+    boundary = CoverBoundary(
+        end_line=3,
+        end_offset=None,
+        method="test",
+        confidence=1.0,
+        start_line=0,
+    )
+    candidates = extract_cover_candidates(
+        "FORM 10-K\nANNUAL REPORT [X]\nTRANSITION REPORT { }\n",
+        boundary,
+        family="10-K",
+    )
+
+    transition = [
+        candidate for candidate in candidates if candidate.semantic_key == "transition"
+    ]
+    assert len(transition) == 1
+    assert transition[0].source_token == "{ }"
+    assert transition[0].known_state == "unchecked"
+
+
+def test_plain_ascii_yes_no_pair_is_canonicalized() -> None:
+    boundary = CoverBoundary(
+        end_line=2,
+        end_offset=None,
+        method="test",
+        confidence=1.0,
+        start_line=0,
+    )
+    text = "FORM 10-K\nYes   [X]          No ___\n"
+
+    result = infer_cover_checkmarks(text, boundary, family="10-K")
+    updated, changed, _ = apply_cover_checkmark_decisions(text, result)
+
+    assert changed
+    assert "Yes   [X]          No [ ]" in updated
+
+
+def test_multiple_yes_no_pairs_on_one_line_are_canonicalized() -> None:
+    boundary = CoverBoundary(
+        end_line=2,
+        end_offset=None,
+        method="test",
+        confidence=1.0,
+        start_line=0,
+    )
+    text = "FORM 10-K\nYes __X__ No _____ Yes _____ No __X__\n"
+
+    result = infer_cover_checkmarks(text, boundary, family="10-K")
+    updated, changed, _ = apply_cover_checkmark_decisions(text, result)
+
+    assert changed
+    assert updated == "FORM 10-K\nYes [X] No [ ] Yes [ ] No [X]\n"
+
+
+def test_yes_no_pairs_accept_marks_before_or_after_answers() -> None:
+    text = "[X] Yes No____; Yes____ No /X/\n"
+
+    updated, changed, _ = apply_cover_checkmark_decisions(
+        text,
+        CoverCheckmarkResult(status=InferenceStatus.ABSENT),
+    )
+
+    assert changed
+    assert updated == "[X] Yes No [ ]; Yes [ ] No [X]\n"
+
+
+def test_adjacent_incomplete_pair_does_not_block_complete_pair() -> None:
+    text = "(1) Yes X No             (2) Yes X No___\n"
+
+    updated, changed, _ = apply_cover_checkmark_decisions(
+        text,
+        CoverCheckmarkResult(status=InferenceStatus.ABSENT),
+    )
+
+    assert changed
+    assert updated == "(1) Yes X No             (2) Yes [X] No [ ]\n"
+
+
+def test_repeated_underscore_checked_mark_is_one_token() -> None:
+    boundary = CoverBoundary(
+        end_line=2,
+        end_offset=None,
+        method="test",
+        confidence=1.0,
+        start_line=0,
+    )
+    text = "FORM 10-K\nYes _X__ No ___\n"
+
+    result = infer_cover_checkmarks(text, boundary, family="10-K")
+    updated, changed, _ = apply_cover_checkmark_decisions(text, result)
+
+    assert changed
+    assert "Yes [X] No [ ]" in updated
+    assert "[X][ ]" not in updated
+
+
+def test_asymmetric_trailing_underscore_belongs_to_checked_mark() -> None:
+    boundary = CoverBoundary(
+        end_line=2,
+        end_offset=None,
+        method="test",
+        confidence=1.0,
+        start_line=0,
+    )
+    text = "FORM 10-KSB\nYes __ No X_\n"
+
+    result = infer_cover_checkmarks(text, boundary, family="10-KSB")
+    updated, changed, _ = apply_cover_checkmark_decisions(text, result)
+
+    assert changed
+    assert "Yes [ ] No [X]" in updated
+    assert "[X][ ]" not in updated
+
+
+def test_yes_no_dash_decoration_is_removed_after_explicit_mark() -> None:
+    boundary = CoverBoundary(
+        end_line=3,
+        end_offset=None,
+        method="test",
+        confidence=1.0,
+        start_line=0,
+    )
+    text = "FORM 10-K\nYes [X] No\n---      ---\n"
+
+    result = infer_cover_checkmarks(text, boundary, family="10-K")
+    updated, changed, _ = apply_cover_checkmark_decisions(text, result)
+
+    assert changed
+    assert "---" not in updated
+    assert "Yes [X] No" in updated
+
+
+def test_unmarked_yes_no_dash_layout_is_preserved() -> None:
+    boundary = CoverBoundary(
+        end_line=3,
+        end_offset=None,
+        method="test",
+        confidence=1.0,
+        start_line=0,
+    )
+    text = "FORM 10-K\nYes No\n---  ---\n"
+
+    result = infer_cover_checkmarks(text, boundary, family="10-K")
+    updated, _, _ = apply_cover_checkmark_decisions(text, result)
+
+    assert "---  ---" in updated
+
+
+def test_transition_period_date_blanks_are_not_report_marks() -> None:
+    boundary = CoverBoundary(
+        end_line=2,
+        end_offset=None,
+        method="test",
+        confidence=1.0,
+        start_line=0,
+    )
+    text = "FORM 10-K\nTRANSITION REPORT for the period from _________ to _________\n"
+
+    candidates = extract_cover_candidates(text, boundary, family="10-K")
+
+    assert candidates == ()
+
+
+def test_filer_grid_underscore_marks_are_scoped_to_labels() -> None:
+    boundary = CoverBoundary(
+        end_line=3,
+        end_offset=None,
+        method="test",
+        confidence=1.0,
+        start_line=0,
+    )
+    text = (
+        "FORM 10-K\n"
+        "Non-accelerated filer___X__ Smaller reporting company___\n"
+        "January __, 1998\n"
+    )
+
+    result = infer_cover_checkmarks(text, boundary, family="10-K")
+    updated, _, _ = apply_cover_checkmark_decisions(text, result)
+
+    assert "Non-accelerated filer [X] Smaller reporting company [ ]" in updated
+    assert "January __, 1998" in updated
+
+
 def test_wingdings_unchecked_glyph_is_a_shared_cover_mark() -> None:
     boundary = CoverBoundary(
         end_line=2,

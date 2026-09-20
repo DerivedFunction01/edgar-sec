@@ -95,3 +95,14 @@ def test_nested_adjacent_tables_span_separately() -> None:
     masked, spans = mask_tagged_tables(text)
     assert len(spans) == 2
     assert restore_tagged_tables(masked, spans) == text
+
+
+def test_restore_preserves_inline_table_tags_exactly() -> None:
+    first = "<TABLE>\nA 1\n</TABLE>"
+    second = "<TABLE>\nB 2\n</TABLE>"
+    text = f"prefix {first} suffix {second} tail"
+
+    masked, spans = mask_tagged_tables(text)
+    restored = restore_tagged_tables(masked, spans)
+
+    assert restored == text

@@ -2,26 +2,35 @@
 
 from __future__ import annotations
 
-import re
-
 from defs.tables.protection import (
     _SENTINEL_PREFIX,
+    ensure_table_tag_boundaries,
     mask_tagged_tables,
     restore_tagged_tables,
 )
-from defs.text.healing import NEGATIVE_BOUNDARY_RE
+from defs.text.patterns import RE_SEPARATOR_LINE
+from defs.text.signatures import mask_signature_regions, restore_signature_regions
+from defs.text.tokens import is_bullet_line
 
 from .classifier import _decide
-from .features import _compute_features
+from .features import _compute_features, _numeric_cell_starts
+from .table_policy import (
+    expand_table_headers,
+    extend_multiline_table_rows,
+    is_tableish_block,
+    merge_bridged_tables,
+    merge_structural_table_regions,
+    split_structural_table_intro,
+    unify_table_prose,
+)
 from .types import (
     ACTION_PRESERVE,
     ACTION_TAG_AND_PRESERVE,
     ACTION_UNWRAP,
+    ReflowPolicy,
     ReflowResult,
     SpanDecision,
 )
-
-_TERMINAL_PUNCT = re.compile(r"[.!?][\"\x27\u201d\u2019)]?\s*$")
 
 
 def _render_block(action: str, lines: tuple[str, ...]) -> str:
@@ -40,6 +49,8 @@ def _render_block(action: str, lines: tuple[str, ...]) -> str:
 
 def _segment(
     lines: list[str],
+    *,
+    policy: ReflowPolicy,
 ) -> list[tuple[int, int, tuple[str, ...]]]:
     """Group into blocks of consecutive non-blank lines (blank lines excluded)."""
     blocks: list[tuple[int, int, tuple[str, ...]]] = []
@@ -47,6 +58,22 @@ def _segment(
     start = 0
     for index, line in enumerate(lines):
         if line.strip():
+            if current and RE_SEPARATOR_LINE.fullmatch(current[-1].strip()):
+                has_numeric_tail = bool(_numeric_cell_starts(line))
+                if not has_numeric_tail and line.lstrip()[:1].isalpha():
+                    blocks.append((start, index, tuple(current)))
+                    current = []
+            starts_block = (
+                bool(policy.is_structural_line and policy.is_structural_line(line))
+                or (policy.split_bullet_items and is_bullet_line(line))
+                or bool(
+                    policy.is_checkbox_answer_line
+                    and policy.is_checkbox_answer_line(line)
+                )
+            )
+            if starts_block and current:
+                blocks.append((start, index, tuple(current)))
+                current = []
             if not current:
                 start = index
             current.append(line)
@@ -58,86 +85,18 @@ def _segment(
     return blocks
 
 
-def _merge_bridged_tables(
-    decisions: list[SpanDecision],
-    max_blank_lines: int = 1,
-) -> list[SpanDecision]:
-    """Merge adjacent TAG_AND_PRESERVE blocks across a bounded blank line."""
-    if len(decisions) < 2:
-        return decisions
-    merged: list[SpanDecision] = []
-    for decision in decisions:
-        previous = merged[-1] if merged else None
-        if (
-            previous is not None
-            and previous.action == ACTION_TAG_AND_PRESERVE
-            and decision.action == ACTION_TAG_AND_PRESERVE
-            and 0 < decision.start_line - previous.end_line <= max_blank_lines
-        ):
-            merged[-1] = SpanDecision(
-                ACTION_TAG_AND_PRESERVE,
-                previous.start_line,
-                decision.end_line,
-                min(previous.confidence, decision.confidence),
-                previous.evidence + ("bridged_blank_line",),
-                previous.trace,
-            )
-            continue
-        merged.append(decision)
-    return merged
-
-
-def _try_unify_table_prose(
-    decisions: list[SpanDecision],
-    blocks: list[tuple[int, int, tuple[str, ...]]],
-    decision_index: int,
-    skip_decision_indices: set[int],
-    group: list[tuple[int, int, tuple[str, ...]]],
-) -> tuple[str, ...] | None:
-    is_table = decisions[decision_index].action == ACTION_TAG_AND_PRESERVE or any(
-        _SENTINEL_PREFIX in line for _, _, b_lines in group for line in b_lines
+def _is_bullet_prose_block(
+    block_lines: tuple[str, ...], features: object, policy: ReflowPolicy
+) -> bool:
+    return bool(
+        policy.unwrap_bullet_continuations
+        and len(block_lines) > 1
+        and is_bullet_line(block_lines[0])
+        and getattr(features, "alpha_density", 0.0) >= 0.55
+        and getattr(features, "any_lowercase", False)
+        and not getattr(features, "has_separator", False)
+        and len(getattr(features, "numeric_cell_rows", ())) < 3
     )
-    if not (
-        is_table
-        and 0 < decision_index < len(decisions) - 1
-        and (decision_index + 1) not in skip_decision_indices
-        and decisions[decision_index - 1].action != ACTION_TAG_AND_PRESERVE
-        and decisions[decision_index + 1].action != ACTION_TAG_AND_PRESERVE
-    ):
-        return None
-    prev_g = [
-        (s, e, b)
-        for s, e, b in blocks
-        if decisions[decision_index - 1].start_line <= s
-        and e <= decisions[decision_index - 1].end_line
-    ]
-    next_g = [
-        (s, e, b)
-        for s, e, b in blocks
-        if decisions[decision_index + 1].start_line <= s
-        and e <= decisions[decision_index + 1].end_line
-    ]
-    if any(_SENTINEL_PREFIX in line for _, _, b in prev_g for line in b) or any(
-        _SENTINEL_PREFIX in line for _, _, b in next_g for line in b
-    ):
-        return None
-    prev_nb = [line for _, _, b in prev_g for line in b if line.strip()]
-    next_nb = [line for _, _, b in next_g for line in b if line.strip()]
-    if not (
-        prev_nb
-        and next_nb
-        and not _TERMINAL_PUNCT.search(prev_nb[-1])
-        and next_nb[0][:1].islower()
-        and not NEGATIVE_BOUNDARY_RE.search(next_nb[0])
-    ):
-        return None
-    token = next_nb[0].split()[0] if next_nb[0].split() else ""
-    if len(token) > 1 or token == "a":
-        return tuple(
-            [line for _, _, b in prev_g for line in b]
-            + [line for _, _, b in next_g for line in b]
-        )
-    return None
 
 
 def reflow_ascii(
@@ -145,6 +104,7 @@ def reflow_ascii(
     *,
     body_start_line: int | None = None,
     page_analysis: object | None = None,
+    policy: ReflowPolicy | None = None,
 ) -> ReflowResult:
     """Run the conservative gate cascade over plain-text filing content."""
     if not text or "\n" not in text or body_start_line is None:
@@ -152,6 +112,7 @@ def reflow_ascii(
 
     page_context = bool(getattr(page_analysis, "page_number_runs", ()))
     masked, spans = mask_tagged_tables(text)
+    masked, signature_regions = mask_signature_regions(masked)
     masked_body_start_line = body_start_line
     for span in spans:
         span_start_line = text.count("\n", 0, span.start)
@@ -163,11 +124,12 @@ def reflow_ascii(
             masked_body_start_line -= body_start_line - span_start_line
     masked_body_start_line = max(0, masked_body_start_line)
 
+    active_policy = policy or ReflowPolicy()
     lines = masked.split("\n")
-    blocks = _segment(lines)
+    blocks = _segment(lines, policy=active_policy)
     per_block: list[tuple[tuple[int, int, tuple[str, ...]], SpanDecision]] = []
     for start, end, block_lines in blocks:
-        if end <= masked_body_start_line:
+        if end <= masked_body_start_line and not active_policy.unwrap_pre_body_prose:
             per_block.append(
                 (
                     (start, end, block_lines),
@@ -184,7 +146,62 @@ def reflow_ascii(
             continue
         features = _compute_features(block_lines)
         has_masked = any(_SENTINEL_PREFIX in line for line in block_lines)
-        decision = _decide(features, len(block_lines), has_masked)
+        base_decision = _decide(features, len(block_lines), has_masked)
+        if _is_bullet_prose_block(block_lines, features, active_policy):
+            decision = SpanDecision(
+                ACTION_UNWRAP,
+                0,
+                len(block_lines),
+                0.8,
+                ("bullet_prose_continuation",),
+                "bullet_reflow",
+            )
+        elif (
+            is_tableish_block(features)
+            and base_decision.action != ACTION_TAG_AND_PRESERVE
+        ):
+            decision = SpanDecision(
+                ACTION_TAG_AND_PRESERVE,
+                0,
+                len(block_lines),
+                0.8,
+                ("inferred_table_layout",),
+                "table_continuity",
+            )
+        elif active_policy.unwrap_pre_body_prose and any(
+            active_policy.is_structural_line is not None
+            and active_policy.is_structural_line(line)
+            for line in block_lines
+        ):
+            decision = SpanDecision(
+                ACTION_PRESERVE,
+                0,
+                len(block_lines),
+                1.0,
+                ("front_matter_form_layout",),
+                "hard_preserve",
+            )
+        elif (
+            active_policy.relax_prose_layout_gaps
+            and features.alpha_density >= 0.55
+            and features.any_lowercase
+            and not features.has_structural
+            and not features.has_tab
+            and not features.has_separator
+            and not features.has_dot_leader
+            and not features.has_signature
+            and len(features.numeric_cell_rows) < 3
+        ):
+            decision = SpanDecision(
+                ACTION_UNWRAP,
+                0,
+                len(block_lines),
+                0.65,
+                ("relaxed_prose_layout",),
+                "front_matter_prose",
+            )
+        else:
+            decision = base_decision
         if page_context and decision.action == ACTION_UNWRAP:
             decision = SpanDecision(
                 decision.action,
@@ -208,7 +225,10 @@ def reflow_ascii(
             )
         )
 
-    decisions = _merge_bridged_tables([decision for _, decision in per_block])
+    decisions = expand_table_headers([decision for _, decision in per_block], blocks)
+    decisions = extend_multiline_table_rows(decisions, blocks, policy=active_policy)
+    decisions = merge_bridged_tables(decisions, blocks=blocks, policy=active_policy)
+    decisions = merge_structural_table_regions(decisions, blocks)
     rendered: list[str] = []
     cursor = decision_index = 0
     skip_decision_indices: set[int] = set()
@@ -226,7 +246,7 @@ def reflow_ascii(
             if decision.start_line <= s and e <= decision.end_line
         ]
 
-        unified = _try_unify_table_prose(
+        unified = unify_table_prose(
             decisions, blocks, decision_index, skip_decision_indices, group
         )
         if unified is not None:
@@ -244,18 +264,44 @@ def reflow_ascii(
                 if pos:
                     merged_lines.extend(lines[group[pos - 1][1] : s])
                 merged_lines.extend(b)
-            rendered.append(_render_block(decision.action, tuple(merged_lines)))
+            table_lines = tuple(merged_lines)
+            if "inferred_table_layout" in decision.evidence:
+                splitter = (
+                    active_policy.split_table_intro or split_structural_table_intro
+                )
+                intro, table_lines = splitter(table_lines)
+                if intro:
+                    rendered.append(_render_block(ACTION_UNWRAP, intro))
+            rendered.append(_render_block(decision.action, table_lines))
         else:
             for _, _, block_lines in group:
-                rendered.append(_render_block(decision.action, block_lines))
+                table_lines = block_lines
+                if (
+                    decision.action == ACTION_TAG_AND_PRESERVE
+                    and "inferred_table_layout" in decision.evidence
+                ):
+                    splitter = (
+                        active_policy.split_table_intro or split_structural_table_intro
+                    )
+                    intro, table_lines = splitter(table_lines)
+                    if intro:
+                        rendered.append(_render_block(ACTION_UNWRAP, intro))
+                rendered.append(_render_block(decision.action, table_lines))
         cursor = decision.end_line
         decision_index += 1
 
     if cursor < len(lines):
         rendered.append("\n".join(lines[cursor:]))
 
-    result_text = restore_tagged_tables("\n".join(rendered), spans)
-    return ReflowResult(result_text, tuple(decisions), spans)
+    result_text = restore_signature_regions("\n".join(rendered), signature_regions)
+    result_text = restore_tagged_tables(result_text, spans)
+    result_text = ensure_table_tag_boundaries(result_text)
+    return ReflowResult(
+        result_text,
+        tuple(decisions),
+        spans,
+        signature_regions,
+    )
 
 
 __all__ = [

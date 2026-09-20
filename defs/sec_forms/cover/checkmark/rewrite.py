@@ -7,11 +7,21 @@ from collections import defaultdict
 from collections.abc import Mapping, Sequence
 from dataclasses import replace as dataclass_replace
 
-from defs.sec_forms.cover.checkmark_models import (
+from defs.regex import build_alternation
+from defs.sec_forms.cover.checkmark.models import (
     CheckboxCandidate,
     CoverCheckmarkResult,
 )
-from defs.tables.protection import mask_tagged_tables, restore_tagged_tables
+from defs.sec_forms.cover.checkmark.yes_no_pairs import (
+    YES_NO_LINE_RE,
+    normalize_yes_no_pair_line,
+)
+from defs.tables.protection import (
+    mask_tagged_tables,
+    restore_tagged_tables,
+    strip_table_wrapper_tags,
+)
+from defs.taxonomy.components.cover import FILER_STATUS_TERMS
 from defs.text.checkmarks import (
     CANONICAL_CHECKED,
     CANONICAL_UNCHECKED,
@@ -19,11 +29,51 @@ from defs.text.checkmarks import (
     CheckmarkDecision,
     CheckmarkScope,
 )
+from defs.text.patterns import RE_SEPARATOR_LINE
 
 _RE_DIVIDER_LINE = re.compile(r"\s*[+|:\-=_]+\s*\n?")
-_RE_TABLE_TAG = re.compile(r"</?TABLE\b[^>]*>", re.IGNORECASE)
+_RE_DASH_DECORATION = RE_SEPARATOR_LINE
+_RE_FILER_CHECKED = re.compile(r"_{1,8}\s*[Xx]\s*_{1,8}")
+_RE_FILER_BLANK = re.compile(r"_{2,}")
+_RE_FILER_LABEL = re.compile(
+    rf"(?:{build_alternation(FILER_STATUS_TERMS, auto_escape=True)})",
+    re.IGNORECASE,
+)
+_RE_CANONICAL_ADJACENCY = re.compile(r"([A-Za-z0-9])(\[(?:X| )\])")
 _RE_TABLE_REGION = re.compile(r"table-(\d+)")
 _RE_TABLE_REGION_DETAILED = re.compile(r"table-(\d+)/row-(\d+)/column-(\d+)")
+
+
+def _normalize_filer_line(line: str) -> str:
+    """Normalize marks only when they are adjacent to a filer label."""
+
+    labels = tuple(_RE_FILER_LABEL.finditer(line))
+    if not labels:
+        return line
+    checked_matches = tuple(_RE_FILER_CHECKED.finditer(line))
+    spans = list(checked_matches)
+    spans.extend(
+        match
+        for match in _RE_FILER_BLANK.finditer(line)
+        if not any(
+            match.start() < checked.end() and match.end() > checked.start()
+            for checked in checked_matches
+        )
+    )
+    spans = [
+        match
+        for match in spans
+        if any(abs(match.start() - label.end()) <= 48 for label in labels)
+    ]
+    for match in sorted(spans, key=lambda item: item.start(), reverse=True):
+        token = match.group(0)
+        replacement = (
+            CANONICAL_CHECKED
+            if _RE_FILER_CHECKED.fullmatch(token)
+            else CANONICAL_UNCHECKED
+        )
+        line = line[: match.start()] + replacement + line[match.end() :]
+    return line
 
 
 def _replace_mark_in_text(text: str, source_token: str, replacement: str) -> str:
@@ -98,7 +148,7 @@ def _replace_table_text(
 
 def _unwrap_pure_yes_no_table(table_text: str) -> str:
     """Remove a wrapper that contained only one rendered Yes/No row."""
-    content = _RE_TABLE_TAG.sub("", table_text)
+    content = strip_table_wrapper_tags(table_text)
     return content.strip()
 
 
@@ -114,6 +164,49 @@ def _has_pure_yes_no_candidates(
     return bool(candidates) and all(
         candidate.semantic_key.startswith("table_yes_no:") for candidate in candidates
     )
+
+
+def _has_resolvable_line_yes_no_candidates(
+    candidates: Sequence[CheckboxCandidate],
+) -> bool:
+    """Return whether an extracted line-level Yes/No pair is fully known."""
+
+    groups: dict[str, list[CheckboxCandidate]] = defaultdict(list)
+    for candidate in candidates:
+        if candidate.question_key and candidate.question_key.startswith("line_yes_no:"):
+            groups[candidate.question_key].append(candidate)
+    return any(
+        len(group) == 2
+        and {candidate.answer for candidate in group} == {"yes", "no"}
+        and all(candidate.known_state is not None for candidate in group)
+        for group in groups.values()
+    )
+
+
+def _strip_yes_no_dash_decoration(text: str) -> str:
+    """Canonicalize marked Yes/No rows and remove aligned dash underlines."""
+
+    lines = text.splitlines(keepends=True)
+    kept: list[str] = []
+    index = 0
+    while index < len(lines):
+        line = lines[index]
+        line = normalize_yes_no_pair_line(line)
+        if _RE_FILER_LABEL.search(line):
+            line = _normalize_filer_line(line)
+            line = _RE_CANONICAL_ADJACENCY.sub(r"\1 \2", line)
+        if (
+            index + 1 < len(lines)
+            and YES_NO_LINE_RE.search(line)
+            and CHECKMARK_MARK_RE.search(line)
+            and _RE_DASH_DECORATION.fullmatch(lines[index + 1].rstrip("\r\n"))
+        ):
+            kept.append(line)
+            index += 2
+            continue
+        kept.append(line)
+        index += 1
+    return "".join(kept)
 
 
 def apply_cover_checkmark_decisions(
@@ -135,8 +228,10 @@ def apply_cover_checkmark_decisions(
         not result.decisions
         and not _has_pure_yes_no_candidates(result.candidates)
         and not _has_labeled_checkmark_candidates(result.candidates)
+        and not _has_resolvable_line_yes_no_candidates(result.candidates)
     ):
-        return text, False, frozenset()
+        stripped = _strip_yes_no_dash_decoration(text)
+        return stripped, stripped != text, frozenset()
     original_text = text
     decisions = {
         (decision.source_region, decision.source_token): decision
@@ -164,6 +259,18 @@ def apply_cover_checkmark_decisions(
     candidates_by_region: dict[str, list[CheckboxCandidate]] = defaultdict(list)
     for candidate in result.candidates:
         candidates_by_region[candidate.source_region].append(candidate)
+    # Multiple semantic extractors can point at the same physical mark (for
+    # example, a statutory ``Yes/No`` row also matching a nearby cover label).
+    # Reconcile those references before rewriting so one interpretation cannot
+    # overwrite another or expand the same source span twice.
+    span_states: dict[tuple[int, int], set[str]] = defaultdict(set)
+    for region_candidates in candidates_by_region.values():
+        for candidate in region_candidates:
+            decision = decisions.get((candidate.source_region, candidate.source_token))
+            state = decision.state if decision is not None else candidate.known_state
+            if state is not None and candidate.mark_span is not None:
+                span_states[candidate.mark_span].add(state)
+    conflicted_spans = {span for span, states in span_states.items() if len(states) > 1}
     replacements: list[tuple[int, int, str, str]] = []
     claimed_spans: set[tuple[int, int]] = set()
     for region, candidates in candidates_by_region.items():
@@ -171,7 +278,19 @@ def apply_cover_checkmark_decisions(
             decision = decisions.get((region, candidate.source_token))
             if decision is None or decision.span is None or region.startswith("table-"):
                 continue
+            if decision.span in conflicted_spans:
+                continue
             start, end = decision.span
+            if (
+                text[start:end] != candidate.source_token
+                and candidate.question_key
+                and candidate.question_key.startswith("line_yes_no:")
+            ):
+                nearby_start = max(0, start - 16)
+                nearby_end = min(len(text), end + 16)
+                nearby = text.find(candidate.source_token, nearby_start, nearby_end)
+                if nearby >= 0:
+                    start, end = nearby, nearby + len(candidate.source_token)
             # Spans must land on the token they were extracted from. A stale
             # or foreign-frame span would corrupt unrelated text (including
             # structural table tags) and is dropped instead of applied.
@@ -231,6 +350,7 @@ def apply_cover_checkmark_decisions(
                 table_text,
             )
         masked = restore_tagged_tables(masked, tuple(updated_spans))
+    masked = _strip_yes_no_dash_decoration(masked)
     return masked, masked != original_text, frozenset(unwrapped_table_indices)
 
 

@@ -27,6 +27,7 @@ from ..constants import (
     _RE_STRUCTURAL_MATCH,
     _RE_TRAILING_NUMBER,
     RE_PAGE_SUFFIX,
+    RE_PAGE_VALUE,
 )
 from ..models import PageCandidate, PageMarker, PageMarkerKind, PageNumberRun
 from ..sequence import (
@@ -198,7 +199,7 @@ def classify_candidate(
     if _RE_STRUCTURAL_MATCH.match(stripped):
         return None
     if has_numeric_data_shape(line) and not (
-        re.fullmatch(r"(?:\d{1,4}|[ivxlcdm]{1,8})", stripped, re.IGNORECASE)
+        RE_PAGE_VALUE.fullmatch(stripped)
         or _RE_SIMPLE_WRAPPED_LABEL.fullmatch(stripped)
         or _RE_PIPE_HEADER_NUMBER.match(stripped)
     ):

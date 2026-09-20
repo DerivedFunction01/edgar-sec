@@ -6,6 +6,8 @@ import re
 
 from defs.regex import build_alternation
 
+_ENTITY_TOKEN_RE = re.compile(r"[a-z0-9]+")
+
 STATE_POSTAL_CODES = frozenset(
     {
         "AL",
@@ -204,7 +206,7 @@ def strip_jurisdiction(raw: str) -> str:
 def entity_name_tokens(name: str) -> list[str]:
     """Return normalized lexical tokens without legal forms or stopwords."""
     cleaned = strip_jurisdiction(name).lower()
-    tokens = re.findall(r"[a-z0-9]+", cleaned)
+    tokens = _ENTITY_TOKEN_RE.findall(cleaned)
     return [
         token
         for token in tokens

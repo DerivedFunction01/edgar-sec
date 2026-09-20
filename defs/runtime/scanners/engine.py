@@ -12,6 +12,8 @@ from typing import TYPE_CHECKING
 if TYPE_CHECKING:
     from defs.runtime.checks import ScannerFinding
 
+_HUNK_LINE_RE = re.compile(r"\+(\d+)")
+
 
 def git_output(repo_root: Path | None, *args: str) -> str:
     """Execute a git command and return stripped stdout; raise on failure."""
@@ -37,7 +39,7 @@ def added_patch_lines(patch: str):
         elif raw.startswith("+++ /dev/null"):
             path = None
         elif raw.startswith("@@"):
-            match = re.search(r"\+(\d+)", raw)
+            match = _HUNK_LINE_RE.search(raw)
             if match is not None:
                 line_number = int(match.group(1))
         elif path is None:

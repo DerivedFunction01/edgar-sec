@@ -4,6 +4,11 @@ from __future__ import annotations
 
 from collections.abc import Sequence
 
+from defs.sec_forms.cover.reflow import (
+    is_checkbox_answer_line,
+    is_cover_layout_line,
+    is_page_marker_line,
+)
 from defs.tables.protection import (
     SENTINEL_PREFIX,
     SENTINEL_SUFFIX,
@@ -18,6 +23,7 @@ from defs.text import (
     normalize_checkbox_tokens,
 )
 from defs.text.healing import PhraseSequenceRule
+from defs.text.reflow import ReflowPolicy, reflow_ascii
 
 from .models import CoverBoundary
 
@@ -26,6 +32,9 @@ def heal_cover_text(
     text: str,
     boundary: CoverBoundary,
     healing_rules: Sequence[PhraseSequenceRule],
+    *,
+    merge_binary_blocks: bool = False,
+    reflow_prose: bool = True,
 ) -> tuple[str, bool]:
     """Apply configured healing only to the bounded cover line slice.
 
@@ -47,10 +56,29 @@ def heal_cover_text(
 
     # Ambiguous marks are resolved by the form-scoped constraint pass before
     # this layout-only stage. Do not infer state from a broad cover boundary.
-    healed_cover_lines = merge_yes_no_binary_blocks(
-        masked_cover_lines, scope=CheckmarkScope.GLOBAL_SAFE
+    healed_cover_lines = (
+        merge_yes_no_binary_blocks(
+            masked_cover_lines,
+            scope=CheckmarkScope.GLOBAL_SAFE,
+        )
+        if merge_binary_blocks
+        else masked_cover_lines
     )
-    if healing_rules:
+    if reflow_prose:
+        reflowed = reflow_ascii(
+            "\n".join(healed_cover_lines),
+            body_start_line=0,
+            policy=ReflowPolicy(
+                unwrap_pre_body_prose=True,
+                relax_prose_layout_gaps=True,
+                unwrap_bullet_continuations=True,
+                is_checkbox_answer_line=is_checkbox_answer_line,
+                is_page_boundary_line=is_page_marker_line,
+                is_structural_line=is_cover_layout_line,
+            ),
+        )
+        healed_cover_lines = reflowed.text.splitlines()
+    elif healing_rules:
         healed_cover_lines = heal_split_lines(
             healed_cover_lines, rules=tuple(healing_rules)
         )

@@ -5,6 +5,8 @@ from __future__ import annotations
 import re
 
 from defs.regex import build_alternation, compact_alternation
+from defs.tables.protection import TAGGED_TABLE_CLOSE_RE as _RE_TAGGED_TABLE_END
+from defs.tables.protection import TAGGED_TABLE_OPEN_RE as _RE_TAGGED_TABLE
 from defs.text.patterns import RE_DOT_LEADER
 
 RE_TOC_HEADING = re.compile(
@@ -32,9 +34,6 @@ _RE_WEAK_HEADING = re.compile(
 )
 
 RE_TOC_LEADER = re.compile(rf"\s{RE_DOT_LEADER.pattern}\s")
-
-_RE_TAGGED_TABLE = re.compile(r"<TABLE\b", re.IGNORECASE)
-_RE_TAGGED_TABLE_END = re.compile(r"</TABLE\s*>", re.IGNORECASE)
 
 _RE_NON_ALPHANUM = re.compile(r"[^a-z0-9]+")
 _RE_MULTI_SPACE = re.compile(r"\s+")

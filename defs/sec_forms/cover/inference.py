@@ -5,7 +5,7 @@ from __future__ import annotations
 from collections import defaultdict
 from collections.abc import Iterable, Mapping, Sequence
 
-from defs.sec_forms.cover.checkmark_models import (
+from defs.sec_forms.cover.checkmark.models import (
     DEFAULT_PENALTY_SCORER,
     CheckboxCandidate,
     ConstraintViolation,
@@ -111,7 +111,9 @@ def _candidate_map(
 def _ambiguous_glyphs(candidates: Iterable[CheckboxCandidate]) -> tuple[str, ...]:
     return tuple(
         dict.fromkeys(
-            candidate.glyph for candidate in candidates if candidate.known_state is None
+            candidate.glyph
+            for candidate in candidates
+            if candidate.known_state is None and candidate.semantic_key is not None
         )
     )
 
@@ -416,12 +418,11 @@ def __getattr__(name: str) -> object:
     """Keep the original inference-module imports lazy after the split."""
     if name in _PUBLIC_SOLVER_NAMES:
         from defs.sec_forms.cover import (
-            checkmark_candidates,
-            checkmark_rewrite,
-            checkmark_solver,
+            checkmark,
         )
 
-        for module in (checkmark_candidates, checkmark_rewrite, checkmark_solver):
+        for module_name in ("candidates", "rewrite", "solver"):
+            module = getattr(checkmark, module_name)
             if hasattr(module, name):
                 return getattr(module, name)
     raise AttributeError(name)

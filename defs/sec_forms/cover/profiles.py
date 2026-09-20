@@ -14,6 +14,7 @@ from dataclasses import replace as _dataclass_replace
 from typing import TYPE_CHECKING
 
 from defs.sec_forms.cover.boundary import BoundarySignal, CoverBoundaryPolicy
+from defs.sec_forms.families import resolve_alias
 from defs.sec_forms.forms.annual import ANNUAL_ADDITIONAL_PHRASE_RULES
 from defs.sec_forms.forms.common import BodyEvidencePack, CoverEvidencePack
 from defs.sec_forms.forms.profiles import (
@@ -235,6 +236,7 @@ def get_profile(family: str | None) -> CoverProfile:
     """Return the cover profile for a form family, falling back to generic."""
     if not family:
         return COVER_PROFILES["GENERIC"]
+    family = resolve_alias(family) or family
     return COVER_PROFILES.get(family.upper(), COVER_PROFILES["GENERIC"])
 
 

@@ -18,14 +18,22 @@ import re
 from defs.regex import build_alternation
 
 __all__ = [
+    "CONTINUATION_PUNCTUATION",
     "PAGE_NUMBER_CORE",
     "RE_COLUMN_GAP",
     "RE_CONFORMED_SIGNATURE",
     "RE_DOT_LEADER",
+    "RE_FILL_IN_RUN",
+    "RE_NON_ALNUM",
     "RE_PAGE_NUMBER_SUFFIX",
+    "RE_SENTENCE_TERMINAL",
+    "RE_SEPARATOR_LINE",
     "RE_SEPARATOR_RUN",
     "RE_SIGNATURE_LABEL_LINE",
     "RE_STRUCTURAL_SGML",
+    "RE_TERMINAL_BOUNDARY",
+    "RE_TRAILING_FILL_IN",
+    "RE_WHITESPACE",
     "SIGNATURE_LABEL_PREFIXES",
     "roman_to_int",
 ]
@@ -103,7 +111,11 @@ RE_PAGE_NUMBER_SUFFIX = re.compile(rf"{PAGE_NUMBER_CORE}\s*$", re.IGNORECASE)
 
 # Conformed signature line: an optional ``By:`` label followed by ``/s/``.
 # Shared by closing-region detection and layout hard-preservation.
-RE_CONFORMED_SIGNATURE = re.compile(r"^\s*(?:By\s*:\s*)?/s/\s")
+RE_CONFORMED_SIGNATURE = re.compile(r"^\s*(?:By\s*:\s*)?/s/\s*")
+
+RE_SENTENCE_TERMINAL = re.compile(r"[.!?][\"\x27\u201d\u2019)]?\s*$")
+RE_TERMINAL_BOUNDARY = re.compile(r"[.:;!?\"\x27\u201d\u2019)]\s*$")
+CONTINUATION_PUNCTUATION = (".", ";", ":", "!", "?")
 
 # Signature/officer label prefixes that begin a signature-block line.
 SIGNATURE_LABEL_PREFIXES: tuple[str, ...] = (
@@ -122,6 +134,11 @@ RE_SIGNATURE_LABEL_LINE = re.compile(
 # Fill-in/divider runs (dashes, equals, underscores, asterisks) that mark
 # separator or fill-in lines.
 RE_SEPARATOR_RUN = re.compile(r"[-=_*]{4,}")
+RE_SEPARATOR_LINE = re.compile(r"^\s*[-=_+]{2,}(?:\s+[-=_+]{2,})*\s*$")
+RE_FILL_IN_RUN = re.compile(r"[-_=]{2,}")
+RE_TRAILING_FILL_IN = re.compile(r"\s*[-_=]{2,}\s*$")
+RE_WHITESPACE = re.compile(r"\s+")
+RE_NON_ALNUM = re.compile(r"[^a-z0-9]+")
 
 # Structural SGML markers that must never be treated as reflowable prose.
 RE_STRUCTURAL_SGML = re.compile(

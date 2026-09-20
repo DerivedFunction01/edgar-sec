@@ -4,15 +4,15 @@ from __future__ import annotations
 
 from collections.abc import Sequence
 
-from defs.sec_forms.cover.checkmark_candidates import extract_cover_candidates
-from defs.sec_forms.cover.checkmark_models import (
+from defs.sec_forms.cover.checkmark.candidates import extract_cover_candidates
+from defs.sec_forms.cover.checkmark.models import (
     DEFAULT_PENALTY_SCORER,
     CheckboxCandidate,
     CoverCheckmarkResult,
     InferenceStatus,
     PenaltyScorer,
 )
-from defs.sec_forms.cover.checkmark_rewrite import (
+from defs.sec_forms.cover.checkmark.rewrite import (
     apply_cover_checkmark_decisions,
     update_table_geometries,
 )
