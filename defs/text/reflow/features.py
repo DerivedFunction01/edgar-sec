@@ -124,7 +124,7 @@ def _compute_features(lines: tuple[str, ...]) -> _Features:
             has_signature = True
         if RE_SEPARATOR_RUN.search(stripped):
             has_separator = True
-        if any(ch.islower() for ch in stripped):
+        if any(map(str.islower, stripped)):
             any_lowercase = True
 
         content_start = len(line) - len(line.lstrip())
@@ -139,7 +139,7 @@ def _compute_features(lines: tuple[str, ...]) -> _Features:
         if cells:
             numeric_cell_rows.append(cells)
 
-        letters = sum(ch.isalpha() for ch in stripped)
+        letters = sum(map(str.isalpha, stripped))
         alpha_chars += letters
         total_chars += len(stripped)
 

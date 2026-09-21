@@ -112,12 +112,28 @@ class DeepNormalizer:
         stage_trace: list[dict[str, Any]] = []
 
         source_identity = sha256_text(text)
+        # Stage metadata reuse: equal text content implies equal identity and
+        # line counts, so unchanged stages reuse the cached values instead of
+        # re-hashing and re-counting multi-megabyte strings. The source
+        # identity of the preprocessed text stays fixed for artifact metadata.
+        cached_text = text
+        cached_identity = source_identity
+        cached_line_count = count_lines(text)
+
+        def _stage_metadata(current_text: str) -> tuple[str, int]:
+            nonlocal cached_text, cached_identity, cached_line_count
+            if current_text is not cached_text and current_text != cached_text:
+                cached_identity = sha256_text(current_text)
+                cached_line_count = count_lines(current_text)
+                cached_text = current_text
+            return cached_identity, cached_line_count
+
         stage_trace.append(
             {
                 "stage": "preprocessed",
                 "text_identity": source_identity,
                 "representation": representation,
-                "line_count": count_lines(text),
+                "line_count": cached_line_count,
                 "char_count": len(text),
             }
         )
@@ -147,12 +163,13 @@ class DeepNormalizer:
             )
         else:
             first_ascii_id = next_artifact_id
+            input_identity, input_line_count = _stage_metadata(text)
             stage_trace.append(
                 {
                     "stage": "page_policy_input",
-                    "text_identity": source_identity,
+                    "text_identity": input_identity,
                     "representation": representation,
-                    "line_count": count_lines(text),
+                    "line_count": input_line_count,
                     "char_count": len(text),
                     "marker_count": 0,
                     "page_boundary_count": 0,
@@ -179,12 +196,13 @@ class DeepNormalizer:
                 )
             )
 
+        output_identity, output_line_count = _stage_metadata(text)
         stage_trace.append(
             {
                 "stage": "page_policy_output",
-                "text_identity": sha256_text(text),
+                "text_identity": output_identity,
                 "representation": representation,
-                "line_count": count_lines(text),
+                "line_count": output_line_count,
                 "char_count": len(text),
                 "marker_count": len(getattr(page_analysis, "markers", ()))
                 if page_analysis
@@ -217,12 +235,13 @@ class DeepNormalizer:
             end_line=boundary.end_line,
         )
         if pair_changed:
+            pair_identity, pair_line_count = _stage_metadata(text)
             stage_trace.append(
                 {
                     "stage": "after_yes_no_pair_normalization",
-                    "text_identity": sha256_text(text),
+                    "text_identity": pair_identity,
                     "representation": representation,
-                    "line_count": count_lines(text),
+                    "line_count": pair_line_count,
                     "char_count": len(text),
                 }
             )
@@ -251,12 +270,13 @@ class DeepNormalizer:
                 unwrapped_indices,
             )
             if checkmark_changed:
+                checkmark_identity, checkmark_line_count = _stage_metadata(text)
                 stage_trace.append(
                     {
                         "stage": "after_checkmark_rewrite",
-                        "text_identity": sha256_text(text),
+                        "text_identity": checkmark_identity,
                         "representation": representation,
-                        "line_count": count_lines(text),
+                        "line_count": checkmark_line_count,
                         "char_count": len(text),
                     }
                 )
@@ -270,12 +290,13 @@ class DeepNormalizer:
             )
             if cleaned_cover_text != text:
                 text = cleaned_cover_text
+                cover_clean_identity, cover_clean_line_count = _stage_metadata(text)
                 stage_trace.append(
                     {
                         "stage": "after_cover_table_cleaning",
-                        "text_identity": sha256_text(text),
+                        "text_identity": cover_clean_identity,
                         "representation": representation,
-                        "line_count": count_lines(text),
+                        "line_count": cover_clean_line_count,
                         "char_count": len(text),
                     }
                 )
@@ -289,12 +310,13 @@ class DeepNormalizer:
         )
         if cover_changed:
             text = healed_text
+            healing_identity, healing_line_count = _stage_metadata(text)
             stage_trace.append(
                 {
                     "stage": "after_cover_healing",
-                    "text_identity": sha256_text(text),
+                    "text_identity": healing_identity,
                     "representation": representation,
-                    "line_count": count_lines(text),
+                    "line_count": healing_line_count,
                     "char_count": len(text),
                 }
             )
@@ -302,12 +324,13 @@ class DeepNormalizer:
         text = form_normalizer.normalize(text, metadata)
 
         text = normalize_final_text_whitespace(text)
+        final_identity, final_line_count = _stage_metadata(text)
         stage_trace.append(
             {
                 "stage": "after_final_whitespace",
-                "text_identity": sha256_text(text),
+                "text_identity": final_identity,
                 "representation": representation,
-                "line_count": count_lines(text),
+                "line_count": final_line_count,
                 "char_count": len(text),
             }
         )
@@ -339,12 +362,13 @@ class DeepNormalizer:
             )
         )
         if not is_html and body_start_line > 0:
+            reflow_input_identity, reflow_input_line_count = _stage_metadata(text)
             stage_trace.append(
                 {
                     "stage": "before_reflow",
-                    "text_identity": sha256_text(text),
+                    "text_identity": reflow_input_identity,
                     "representation": representation,
-                    "line_count": count_lines(text),
+                    "line_count": reflow_input_line_count,
                     "char_count": len(text),
                 }
             )
@@ -388,12 +412,13 @@ class DeepNormalizer:
                     if body_start.first_unit_line is not None
                     else None,
                 )
+            reflow_identity, reflow_line_count = _stage_metadata(text)
             stage_trace.append(
                 {
                     "stage": "after_reflow",
-                    "text_identity": sha256_text(text),
+                    "text_identity": reflow_identity,
                     "representation": representation,
-                    "line_count": count_lines(text),
+                    "line_count": reflow_line_count,
                     "char_count": len(text),
                 }
             )

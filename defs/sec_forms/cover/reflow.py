@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 
+from functools import lru_cache
+
 from defs.sec_forms.cover.checkmark.yes_no_pairs import YES_NO_LINE_RE
 from defs.sec_forms.cover.structure import is_exact_heading
 from defs.sec_forms.cover.toc.patterns import RE_TOC_HEADING
@@ -22,8 +24,14 @@ def is_checkbox_answer_line(line: str) -> bool:
     return bool(YES_NO_LINE_RE.search(line) and CHECKMARK_MARK_RE.search(line))
 
 
+@lru_cache(maxsize=16384)
 def is_cover_layout_line(line: str) -> bool:
-    """Return whether a line is a standalone cover/layout structure."""
+    """Return whether a line is a standalone cover/layout structure.
+
+    The predicate is a pure function of the line text and runs up to seven
+    regex searches per call; the reflow engine invokes it for every line in
+    several passes, so results are memoized per line string.
+    """
     stripped = line.strip()
     if not stripped:
         return False

@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import re
+from bisect import bisect_right
 from collections.abc import Sequence
 from dataclasses import dataclass, replace
 
@@ -474,10 +475,17 @@ def extract_cover_candidates(
     # reliable cover/body fence; scanning from the document start prevents
     # valid report-period checkboxes near the cover header from being skipped.
     start_line = 0
+    # One indexed scan replaces repeated prefix counts for table placement.
+    text_line_starts = [0]
+    text_line_starts.extend(match.end() for match in re.finditer("\n", text))
+
+    def _text_line_at(offset: int) -> int:
+        return bisect_right(text_line_starts, offset) - 1
+
     for table_index, geometry in enumerate(table_geometries):
         if table_index >= len(table_spans):
             break
-        table_line = text.count("\n", 0, table_spans[table_index].start)
+        table_line = _text_line_at(table_spans[table_index].start)
         if table_line >= boundary.end_line:
             break
         if table_line < start_line:
@@ -497,14 +505,40 @@ def extract_cover_candidates(
         offset += len(raw_line)
 
     masked_to_original = build_masked_offset_translator(masked, table_spans)
-    line_signals = {
-        index: _line_signals(raw_line.rstrip("\r\n"))
-        for index, raw_line in enumerate(lines)
-    }
+    # Offset-to-line mapping via a single indexed scan: repeated
+    # text.count("\n", 0, offset) calls rescan the document prefix per line.
+    masked_line_starts = [0]
+    masked_line_starts.extend(
+        offset + len(raw_line) for offset, raw_line in zip(masked_line_offsets, lines)
+    )
+
+    # Candidate extraction stops at the cover boundary, but the nearby-line
+    # fallback (±2 rows) can still consult signals for lines past it. Signals
+    # are therefore computed lazily and memoized instead of eagerly for the
+    # whole document.
+    line_signals: dict[int, CoverLineSignals] = {}
+
+    def _signals_for(index: int) -> CoverLineSignals:
+        signals = line_signals.get(index)
+        if signals is None:
+            signals = _line_signals(lines[index].rstrip("\r\n"))
+            line_signals[index] = signals
+        return signals
+
+    unmasked_line_starts: list[int] | None = None
+
+    def _unmasked_line_at(offset: int) -> int:
+        nonlocal unmasked_line_starts
+        if unmasked_line_starts is None:
+            unmasked_line_starts = [0]
+            unmasked_line_starts.extend(
+                match.end() for match in re.finditer("\n", text)
+            )
+        return bisect_right(unmasked_line_starts, offset) - 1
 
     for line_index, raw_line in enumerate(lines):
         line_offset = masked_line_offsets[line_index]
-        unmasked_index = text.count("\n", 0, masked_to_original(line_offset))
+        unmasked_index = _unmasked_line_at(masked_to_original(line_offset))
         if unmasked_index >= boundary.end_line:
             break
         if unmasked_index < start_line:
@@ -515,10 +549,10 @@ def extract_cover_candidates(
                 line,
                 line_index=line_index,
                 line_offset=masked_to_original(line_offset),
-                signals=line_signals[line_index],
+                signals=_signals_for(line_index),
             )
         )
-        signals = line_signals[line_index]
+        signals = _signals_for(line_index)
         labels = signals.labels
         if not labels:
             continue
@@ -555,7 +589,7 @@ def extract_cover_candidates(
                         continue
                     mark_refs.extend(
                         (nearby_index, mark)
-                        for mark in line_signals[nearby_index].marks
+                        for mark in _signals_for(nearby_index).marks
                     )
             row_text = " ".join(
                 [line]
@@ -591,7 +625,7 @@ def extract_cover_candidates(
                             else "right_of_label"
                         ),
                         mark_span=(mark_start, mark_end),
-                        answer_matches=line_signals[mark_line].answers,
+                        answer_matches=_signals_for(mark_line).answers,
                         date_valid=signals.date_present,
                     )
                 )

@@ -16,7 +16,10 @@ def _decide(
     features: _Features, line_count: int, has_masked: bool = False
 ) -> SpanDecision:
     if features.non_blank <= 1:
-        if features.alpha_density >= _MIN_PROSE_ALPHA_DENSITY and features.any_lowercase:
+        if (
+            features.alpha_density >= _MIN_PROSE_ALPHA_DENSITY
+            and features.any_lowercase
+        ):
             return SpanDecision(
                 ACTION_UNWRAP, 0, line_count, 0.7, ("ordinary_prose",), "fast_prose"
             )

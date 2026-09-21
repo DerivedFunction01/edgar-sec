@@ -212,8 +212,20 @@ def strip_alphanumeric_words(text: str) -> list[str]:
     return _RE_WORD_TOKENS.findall(text.lower())
 
 
-def _token_to_regex(token: str | Sequence[str]) -> re.Pattern:
-    """Convert string or sequence of alternation choices to a compiled word pattern."""
+_TOKEN_REGEX_CACHE: dict[object, re.Pattern] = {}
+_ANCHOR_REGEX_CACHE: dict[object, re.Pattern | None] = {}
+
+
+def _frozen_pattern_key(value: object) -> object:
+    """Return a hashable cache key for a token/anchor value."""
+    if isinstance(value, str):
+        return value
+    if isinstance(value, Sequence):
+        return tuple(_frozen_pattern_key(item) for item in value)
+    return value
+
+
+def _build_token_regex(token: str | Sequence[str]) -> re.Pattern:
     if isinstance(token, str):
         pat = token if "|" in token or token.startswith(r"\d") else re.escape(token)
     else:
@@ -221,8 +233,7 @@ def _token_to_regex(token: str | Sequence[str]) -> re.Pattern:
     return re.compile(rf"(?i)^{pat}$")
 
 
-def _anchor_to_regex(anchor: str | Sequence[str] | None) -> re.Pattern | None:
-    """Convert string or sequence of anchor keywords to a compiled search pattern."""
+def _build_anchor_regex(anchor: str | Sequence[str] | None) -> re.Pattern | None:
     if anchor is None:
         return None
     if isinstance(anchor, str):
@@ -230,6 +241,33 @@ def _anchor_to_regex(anchor: str | Sequence[str] | None) -> re.Pattern | None:
     else:
         pat = compact_alternation(anchor)
     return re.compile(rf"(?i)\b(?:{pat})\b")
+
+
+def _token_to_regex(token: str | Sequence[str]) -> re.Pattern:
+    """Convert string or sequence of alternation choices to a compiled word pattern.
+
+    Callers evaluate rules per line pair while token values come from a small
+    static ruleset, so compiled patterns are cached by value.
+    """
+    key = _frozen_pattern_key(token)
+    pattern = _TOKEN_REGEX_CACHE.get(key)
+    if pattern is None:
+        pattern = _build_token_regex(token)
+        _TOKEN_REGEX_CACHE[key] = pattern
+    return pattern
+
+
+def _anchor_to_regex(anchor: str | Sequence[str] | None) -> re.Pattern | None:
+    """Convert string or sequence of anchor keywords to a compiled search pattern.
+
+    Compiled patterns are cached by value; see :func:`_token_to_regex`.
+    """
+    key = _frozen_pattern_key(anchor)
+    pattern = _ANCHOR_REGEX_CACHE.get(key)
+    if key not in _ANCHOR_REGEX_CACHE:
+        pattern = _build_anchor_regex(anchor)
+        _ANCHOR_REGEX_CACHE[key] = pattern
+    return pattern
 
 
 def should_join_two_lines(

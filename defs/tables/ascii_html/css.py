@@ -63,6 +63,7 @@ def _iter_cell_descendants(node: Any):
             stack.extend(c for c in child.iter(include_text=False) if c.tag)
 
 
+@lru_cache(maxsize=2048)
 def parse_dimension_px(value: str | None) -> tuple[float | None, str, bool]:
     """Parse a CSS or HTML dimension string into pixels, unit, and percent flag.
 
@@ -73,6 +74,9 @@ def parse_dimension_px(value: str | None) -> tuple[float | None, str, bool]:
     - em/rem: 1em = 16px
     - %: preserved with is_percent=True
     - unitless: treated as px (standard in HTML width/height attributes)
+
+    Dimensions repeat heavily across table cells, so parsed results are
+    memoized by input string; the result tuple is immutable.
     """
     if not value:
         return None, "px", False
@@ -106,6 +110,7 @@ def parse_dimension_px(value: str | None) -> tuple[float | None, str, bool]:
         return num, "px", False
 
 
+@lru_cache(maxsize=1024)
 def _parse_border_shorthand(
     val: str,
 ) -> tuple[float, BorderStyle, str | None]:
@@ -134,6 +139,7 @@ def _parse_border_shorthand(
     return width, style, color
 
 
+@lru_cache(maxsize=1024)
 def _parse_box_4values(
     val: str,
 ) -> tuple[float | None, float | None, float | None, float | None]:
@@ -161,6 +167,7 @@ def _parse_box_4values(
     return None, None, None, None
 
 
+@lru_cache(maxsize=256)
 def _parse_horizontal_align(val: str | None) -> HorizontalAlign:
     if not val:
         return HorizontalAlign.AUTO
@@ -176,6 +183,7 @@ def _parse_horizontal_align(val: str | None) -> HorizontalAlign:
     return HorizontalAlign.AUTO
 
 
+@lru_cache(maxsize=256)
 def _parse_vertical_align(val: str | None) -> VerticalAlign:
     if not val:
         return VerticalAlign.AUTO
