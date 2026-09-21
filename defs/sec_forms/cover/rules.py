@@ -46,11 +46,22 @@ def _lexical_for(body_evidence: object | None) -> CompiledEvidencePack:
     )
 
 
+_COMPILE_CACHE: dict[tuple[int, int], CompiledCoverRules] = {}
+
+
 def compile_cover_rules(
     cover_evidence: object | None = None,
     body_evidence: object | None = None,
 ) -> CompiledCoverRules:
-    """Compile profile evidence without hardcoded form-family assumptions."""
+    """Compile profile evidence without hardcoded form-family assumptions.
+
+    Results are cached by object identity since evidence packs are
+    profile-level objects reused across all documents in a batch.
+    """
+    key = (id(cover_evidence), id(body_evidence))
+    cached = _COMPILE_CACHE.get(key)
+    if cached is not None:
+        return cached
     labels = tuple(getattr(cover_evidence, "labels", COVER_LABELS_FLAT))
     identity = tuple(
         getattr(cover_evidence, "identity_terms", COVER_START_IDENTITY_TERMS)
@@ -58,7 +69,7 @@ def compile_cover_rules(
     shape = tuple(getattr(cover_evidence, "shape_terms", COVER_LABELS_FLAT))
     headings = tuple(getattr(body_evidence, "semantic_headings", ()))
     incorporated = tuple(getattr(cover_evidence, "cover_end_terms", ()))
-    return CompiledCoverRules(
+    result = CompiledCoverRules(
         incorporated=re.compile(
             build_alternation(
                 incorporated,
@@ -95,6 +106,8 @@ def compile_cover_rules(
         ),
         lexical=_lexical_for(body_evidence),
     )
+    _COMPILE_CACHE[key] = result
+    return result
 
 
 __all__ = ["CompiledCoverRules", "compile_cover_rules"]

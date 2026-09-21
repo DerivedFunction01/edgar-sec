@@ -28,8 +28,8 @@ from defs.sec_forms.vocabulary import COVER_LABELS_FLAT
 from defs.text import PhraseSequenceRule
 
 if TYPE_CHECKING:
+    from defs.sec_forms.cover.checkmark.schemas import CoverCheckboxSchema
     from defs.tables.scope import TableScope
-    from defs.taxonomy.components.cover import CoverCheckboxSchema
 
 
 # --- Label groups --------------------------------------------------------------
@@ -108,16 +108,16 @@ def _make_profile(
 
 
 def _build_profiles() -> dict[str, CoverProfile]:
+    from defs.sec_forms.cover.checkmark.schemas import (
+        ANNUAL_CHECKBOX_SCHEMA,
+        QUARTERLY_CHECKBOX_SCHEMA,
+    )
     from defs.sec_forms.forms.annual.taxonomy import (
         FORM_10K_DERIVED,
         FORM_20F_DERIVED,
     )
     from defs.sec_forms.forms.quarterly.taxonomy import FORM_10Q_DERIVED
     from defs.tables.templates import TableScope
-    from defs.taxonomy.components.cover import (
-        ANNUAL_CHECKBOX_SCHEMA,
-        QUARTERLY_CHECKBOX_SCHEMA,
-    )
 
     annual_evidence = build_annual_profile("10-K")
     quarterly_evidence = build_quarterly_profile("10-Q")

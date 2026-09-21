@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+from defs.tables.table_policy import split_structural_table_intro
 from defs.text.reflow import (
     ACTION_PRESERVE,
     ACTION_TAG_AND_PRESERVE,
@@ -9,7 +10,8 @@ from defs.text.reflow import (
     ReflowPolicy,
     reflow_ascii,
 )
-from defs.text.reflow.table_policy import split_structural_table_intro
+from defs.text.reflow.engine import _merge_adjacent_prose_decisions
+from defs.text.reflow.types import SpanDecision
 
 BODY_START = 3
 
@@ -47,6 +49,32 @@ def test_hard_wrapped_prose_is_unwrapped() -> None:
     unwrap = [d for d in result.decisions if d.action == ACTION_UNWRAP]
     assert len(unwrap) == 1
     assert unwrap[0].trace == "fast_prose"
+
+
+def test_adjacent_prose_decisions_are_joined() -> None:
+    decisions = _merge_adjacent_prose_decisions(
+        [
+            SpanDecision(ACTION_UNWRAP, 10, 14, 0.7, ("ordinary_prose",), "fast_prose"),
+            SpanDecision(
+                ACTION_UNWRAP,
+                14,
+                18,
+                0.65,
+                ("relaxed_prose_layout",),
+                "front_matter_prose",
+            ),
+        ]
+    )
+    assert decisions == [
+        SpanDecision(
+            ACTION_UNWRAP,
+            10,
+            18,
+            0.65,
+            ("ordinary_prose", "relaxed_prose_layout"),
+            "fast_prose",
+        )
+    ]
 
 
 def test_no_body_anchor_returns_text_unchanged() -> None:
@@ -88,6 +116,35 @@ def test_policy_unwraps_front_matter_prose_but_preserves_structure() -> None:
 
     assert "clarify the following disclosures and update" in result.text
     assert "note.\n\nPART I" in result.text
+
+
+def test_policy_unwraps_explanatory_note_with_form_references() -> None:
+    from defs.sec_forms.cover.reflow import is_cover_layout_line
+
+    text = (
+        "FORM 10-K\n"
+        "\n"
+        "Explanatory Note\n"
+        "\n"
+        "This amendment does not reflect events occurring after the original filing of\n"
+        "the Annual Report on Form 10-K, as previously amended, or modify or update those\n"
+        "disclosures as presented in the Form 10-K, as previously amended.\n"
+        "\n"
+        "PART I\n"
+    )
+    result = reflow_ascii(
+        text,
+        body_start_line=8,
+        policy=ReflowPolicy(
+            unwrap_pre_body_prose=True,
+            relax_prose_layout_gaps=True,
+            is_structural_line=is_cover_layout_line,
+        ),
+    )
+    assert (
+        "original filing of the Annual Report on Form 10-K, as previously amended, or modify"
+        in result.text
+    )
 
 
 def test_single_line_block_is_noop() -> None:
@@ -139,6 +196,21 @@ def test_justified_prose_with_double_spaces_is_still_unwrapped() -> None:
         "We believe  the company  will continue  to grow because  demand "
         "remains  strong across  regions."
     ) in result.text
+
+
+def test_justified_prose_with_inline_numbers_is_unwrapped() -> None:
+    text = (
+        "PART I\n"
+        "ITEM 1. BUSINESS\n"
+        "\n"
+        "Metals  Packaging,  which accounted for  approximately  82% of consolidated  net\n"
+        "sales  and  approximately  81% of  consolidated  operating  income  in 1997,\n"
+        "employed  approximately  32,000 persons  across  various manufacturing sites."
+    )
+    result = reflow_ascii(text, body_start_line=3)
+    assert "<TABLE>" not in result.text
+    assert "82% of consolidated  net sales" in result.text
+    assert any(d.action == ACTION_UNWRAP for d in result.decisions)
 
 
 def test_justified_prose_with_layout_gaps_is_preserved() -> None:
@@ -264,6 +336,56 @@ def test_table_continuity_bridges_header_body_blank_line() -> None:
     assert "Industrial               $2,050     $1,980" in result.text
 
 
+def test_multiline_financial_header_is_inside_inferred_table() -> None:
+    text = (
+        "CONSOLIDATED BALANCE SHEETS\n"
+        "For the Years Ended December 31, 2004 and 2003\n"
+        "\n"
+        "(Amounts in thousands)\n"
+        "\n"
+        "2004                         2003\n"
+        "-------------------------    -------------------------\n"
+        "Cash                         100        90\n"
+        "Other assets                 200       180\n"
+        "Total assets                 300       270\n"
+    )
+
+    result = reflow_ascii(text, body_start_line=0)
+
+    assert result.text.count("<TABLE>") == 1
+    table = result.text.split("<TABLE>\n", 1)[1].split("\n</TABLE>", 1)[0]
+    assert "CONSOLIDATED BALANCE SHEETS" in table
+    assert "For the Years Ended December 31, 2004 and 2003" in table
+    assert "(Amounts in thousands)" in table
+    assert "2004                         2003" in table
+    assert "-------------------------" in table
+
+
+def test_balance_sheet_sections_and_tail_form_one_table() -> None:
+    text = (
+        "CONSOLIDATED BALANCE SHEETS\n"
+        "2004                         2003\n"
+        "Cash                         100        90\n"
+        "Other assets                 200       180\n"
+        "Total assets                 300       270\n"
+        "\n"
+        "LIABILITIES AND STOCKHOLDERS' EQUITY\n"
+        "\n"
+        "Current liabilities           50        45\n"
+        "Long-term debt                50        45\n"
+        "Total liabilities and stockholders' equity  100  90\n"
+        "=======================================  ======\n"
+    )
+
+    result = reflow_ascii(text, body_start_line=0)
+
+    assert result.text.count("<TABLE>") == 1
+    assert result.text.count("</TABLE>") == 1
+    table = result.text.split("<TABLE>\n", 1)[1].split("\n</TABLE>", 1)[0]
+    assert "LIABILITIES AND STOCKHOLDERS' EQUITY" in table
+    assert "Total liabilities and stockholders' equity" in table
+
+
 def test_table_continuity_bridges_page_marker() -> None:
     text = (
         "Revenue by segment       2024       2023\n"
@@ -338,6 +460,49 @@ def test_tab_indented_bullet_continuation_unwraps_without_table_policy() -> None
     assert (
         result.text
         == "o   First line of a prose bullet continuation of the same bullet\n"
+    )
+
+
+def test_tab_indented_paragraph_unwraps_with_indent() -> None:
+    text = (
+        "PART I\n"
+        "ITEM 1. BUSINESS\n"
+        "\n"
+        "\tMcKenzie Bay International, Ltd. and subsidiaries (Company) is a\n"
+        "\tdevelopment stage company with no operations.  The Company's primary\n"
+        "\tbusiness activity is the development of wind powered alternative energy\n"
+        "\tsystems.\n"
+    )
+    result = reflow_ascii(text, body_start_line=3)
+    assert "<TABLE>" not in result.text
+    assert (
+        "\tMcKenzie Bay International, Ltd. and subsidiaries (Company) is a development stage "
+        "company with no operations.  The Company's primary business activity is the development "
+        "of wind powered alternative energy systems."
+    ) in result.text
+
+
+def test_bracketed_list_marker_unwraps() -> None:
+    text = (
+        "PART I\n"
+        "ITEM 1. BUSINESS\n"
+        "\n"
+        " 1.\tNature of operations\n"
+        "\n"
+        " \t[a]\tBasis of presentation\n"
+        "\n"
+        " \t\tThe financial statements of the Company have been prepared on\n"
+        "\t\tthe basis of the Company continuing as a going concern, which\n"
+        "\t\tcontemplates the realization of assets and the payment of\n"
+        "\t\tliabilities in the ordinary course of business.\n"
+    )
+    result = reflow_ascii(text, body_start_line=3)
+    assert "<TABLE>" not in result.text
+    assert " 1.\tNature of operations" in result.text
+    assert " \t[a]\tBasis of presentation" in result.text
+    assert (
+        "The financial statements of the Company have been prepared on the basis of the Company continuing"
+        in result.text
     )
 
 
@@ -448,3 +613,37 @@ def test_table_interrupted_prose_is_unified() -> None:
         "years ended December 31, 2024 and 2023: and shows strong growth across all segments."
         in result.text
     )
+
+
+def test_policy_callbacks_recognize_domain_specific_table_sections() -> None:
+    text = (
+        "Assets                    2024       2023\n"
+        "Cash                      100        90\n"
+        "Other assets              200        180\n"
+        "\n"
+        "LIABILITIES AND STOCKHOLDERS' EQUITY\n"
+        "\n"
+        "Total liabilities         100        90\n"
+        "                              ======== ========\n"
+    )
+    result = reflow_ascii(
+        text,
+        body_start_line=0,
+        policy=ReflowPolicy(
+            is_table_bridge_line=lambda line: "LIABILITIES" in line.upper(),
+            is_table_tail_line=lambda line: line.lower().startswith(
+                "total liabilities"
+            ),
+        ),
+    )
+
+    assert result.text.count("<TABLE>") == 1
+    assert "LIABILITIES AND STOCKHOLDERS' EQUITY" in result.text
+    assert "Total liabilities" in result.text
+
+
+def test_default_tail_policy_does_not_match_generic_total_word() -> None:
+    text = "Description                 2024       2023\nTotal commentary follows"
+    result = reflow_ascii(text, body_start_line=0)
+
+    assert "<TABLE>" not in result.text

@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from dataclasses import dataclass
+from dataclasses import dataclass, replace
 from typing import Any
 
 from defs.runtime.memory import sha256_text
@@ -36,8 +36,16 @@ from defs.sec_forms.page_markers import (
     apply_text_policy,
     build_page_artifact_metadata,
 )
+from defs.taxonomy.components.financials.reflow import (
+    is_financial_table_bridge_line,
+    is_financial_table_tail_line,
+)
 from defs.text import count_lines, normalize_final_text_whitespace
-from defs.text.reflow import ReflowPolicy, reflow_ascii
+from defs.text.reflow import (
+    ReflowPolicy,
+    build_line_mapper,
+    reflow_ascii,
+)
 
 from .forms.base import PreprocessedDocument
 from .router import FormRouter
@@ -277,17 +285,10 @@ class DeepNormalizer:
             boundary,
             tuple(profile.healing_rules),
             merge_binary_blocks=is_html,
+            reflow_prose=False,
         )
         if cover_changed:
             text = healed_text
-            boundary = find_cover_boundary_for_profile(
-                BoundaryInput(
-                    text,
-                    representation=representation,
-                    page_analysis=page_analysis,
-                ),
-                profile,
-            )
             stage_trace.append(
                 {
                     "stage": "after_cover_healing",
@@ -358,17 +359,35 @@ class DeepNormalizer:
                     is_checkbox_answer_line=is_checkbox_answer_line,
                     is_page_boundary_line=is_page_marker_line,
                     is_structural_line=is_cover_layout_line,
+                    is_table_bridge_line=is_financial_table_bridge_line,
+                    is_table_tail_line=is_financial_table_tail_line,
                 ),
             )
             text = reflow_result.text
-            boundary = find_cover_boundary_for_profile(
-                BoundaryInput(
-                    text,
-                    representation=representation,
-                    page_analysis=page_analysis,
-                ),
-                profile,
-            )
+            map_line = build_line_mapper(reflow_result.decisions)
+            if boundary.end_line is not None:
+                boundary = replace(boundary, end_line=map_line(boundary.end_line))
+            if boundary.start_line is not None:
+                boundary = replace(boundary, start_line=map_line(boundary.start_line))
+            if toc_span is not None:
+                toc_span = replace(
+                    toc_span,
+                    start_line=map_line(toc_span.start_line),
+                    end_line=map_line(toc_span.end_line),
+                )
+            if body_start is not None:
+                body_start = replace(
+                    body_start,
+                    line=map_line(body_start.line)
+                    if body_start.line is not None
+                    else None,
+                    heading_line=map_line(body_start.heading_line)
+                    if body_start.heading_line is not None
+                    else None,
+                    first_unit_line=map_line(body_start.first_unit_line)
+                    if body_start.first_unit_line is not None
+                    else None,
+                )
             stage_trace.append(
                 {
                     "stage": "after_reflow",
@@ -377,22 +396,6 @@ class DeepNormalizer:
                     "line_count": count_lines(text),
                     "char_count": len(text),
                 }
-            )
-            # Reflow may remove hard-wrap newlines before the body. Refresh
-            # coordinate-bearing TOC/body spans before downstream consumers use
-            # their line numbers.
-            toc_span = find_toc_span(
-                text,
-                start_line=boundary.start_line or 0,
-                page_analysis=page_analysis,
-                derived_taxonomy=profile.derived_taxonomy,
-            )
-            body_start = find_body_start(
-                text,
-                cover_end=boundary.end_line,
-                toc_end=toc_span.end_line if toc_span is not None else None,
-                evidence=profile.body_evidence,
-                toc_span=toc_span,
             )
         if body_start is not None and body_start.first_unit_line is not None:
             closing_span = find_closing_span(

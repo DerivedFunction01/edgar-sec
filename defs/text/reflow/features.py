@@ -116,7 +116,7 @@ def _compute_features(lines: tuple[str, ...]) -> _Features:
         non_blank += 1
         if RE_STRUCTURAL_SGML.search(stripped):
             has_structural = True
-        if "\t" in line:
+        if "\t" in line.lstrip():
             has_tab = True
         if RE_DOT_LEADER.search(stripped) and RE_PAGE_NUMBER_SUFFIX.search(stripped):
             has_dot_leader = True

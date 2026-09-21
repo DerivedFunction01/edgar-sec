@@ -2,67 +2,23 @@
 
 from __future__ import annotations
 
-import re
-
-from defs.regex import build_alternation
+from defs.tables.patterns import TABLE_INTRO_CUE_RE as _RE_TABLE_INTRO_CUE
 from defs.tables.protection import _SENTINEL_PREFIX
+from defs.tables.structural import (
+    _RE_WIDE_COLUMN_GAP,
+    is_header_prefix,
+    is_structural_table_bridge,
+    is_structural_table_tail,
+)
 from defs.text.healing import NEGATIVE_BOUNDARY_RE
 from defs.text.patterns import RE_SENTENCE_TERMINAL, RE_SEPARATOR_LINE
-
-from .features import _compute_features, _numeric_cell_starts
-from .types import (
+from defs.text.reflow.features import _compute_features, _numeric_cell_starts
+from defs.text.reflow.types import (
     ACTION_PRESERVE,
     ACTION_TAG_AND_PRESERVE,
     ACTION_UNWRAP,
     ReflowPolicy,
     SpanDecision,
-)
-
-_RE_WIDE_COLUMN_GAP = re.compile(r"\s{3,}")
-_TABLE_INTRO_NOUNS = build_alternation(
-    (
-        "table",
-        "tables",
-        "schedule",
-        "schedules",
-        "information",
-        "data",
-        "amounts",
-        "analysis",
-        "summary",
-        "breakdown",
-        "reconciliation",
-    ),
-    auto_escape=True,
-)
-_TABLE_INTRO_LAYOUT_NOUNS = build_alternation(
-    ("table", "tables", "schedule", "schedules"), auto_escape=True
-)
-_TABLE_INTRO_TABLE_VERBS = build_alternation(
-    ("below", "above", "presents", "present", "shows", "show", "sets forth"),
-    auto_escape=True,
-)
-_TABLE_INTRO_FOLLOWING = build_alternation(
-    ("below", "in the following"), auto_escape=True
-)
-_TABLE_INTRO_DISPLAY_VERBS = build_alternation(
-    ("presented", "shown", "summarized"), auto_escape=True
-)
-_TABLE_INTRO_RELATION = build_alternation(("as", "are"), auto_escape=True)
-_TABLE_INTRO_COLLECTION_VERBS = build_alternation(
-    ("consists", "includes"), auto_escape=True
-)
-_TABLE_INTRO_PATTERNS = (
-    rf"the\s+following\s+(?:{_TABLE_INTRO_NOUNS})",
-    rf"the\s+(?:{_TABLE_INTRO_LAYOUT_NOUNS})\s+(?:{_TABLE_INTRO_TABLE_VERBS})",
-    rf"{_TABLE_INTRO_RELATION}\s+follows",
-    rf"set\s+forth\s+(?:{_TABLE_INTRO_FOLLOWING})",
-    rf"(?:{_TABLE_INTRO_DISPLAY_VERBS})\s+(?:{_TABLE_INTRO_FOLLOWING})",
-    rf"(?:{_TABLE_INTRO_COLLECTION_VERBS})\s+of\s+the\s+following",
-)
-_RE_TABLE_INTRO_CUE = re.compile(
-    rf"\b(?:{build_alternation(_TABLE_INTRO_PATTERNS)})\b",
-    re.IGNORECASE,
 )
 
 
@@ -107,61 +63,71 @@ def is_tableish_block(features: object) -> bool:
     )
 
 
-def _is_header_prefix(lines: tuple[str, ...]) -> bool:
-    nonblank = tuple(line.strip() for line in lines if line.strip())
-    if not nonblank or len(nonblank) > 4:
-        return False
-    if any(RE_SENTENCE_TERMINAL.search(line) for line in nonblank):
-        return False
-    if any(line.startswith(("<", "/", "o ", "- ", "* ")) for line in nonblank):
-        return False
-    return all(len(line.split()) <= 8 for line in nonblank) and any(
-        "\t" in line or _RE_WIDE_COLUMN_GAP.search(line) or line[:1].isspace()
-        for line in lines
-    )
-
-
 def expand_table_headers(
     decisions: list[SpanDecision],
     blocks: list[tuple[int, int, tuple[str, ...]]],
 ) -> list[SpanDecision]:
-    """Absorb a short geometry-compatible title/header before an inferred table."""
+    """Absorb up to 3 preceding preserve-blocks that look like table headers.
+
+    Looks backward across multiple consecutive PRESERVE blocks before an inferred
+    table, absorbing statement titles, date subtitles, unit qualifiers,
+    column-year rows, and column dash rules into the top of the <TABLE>.
+    """
     expanded = list(decisions)
     for index, decision in enumerate(tuple(expanded)):
-        if (
-            decision.action != ACTION_TAG_AND_PRESERVE
-            or "inferred_table_layout" not in decision.evidence
-        ):
+        if decision.action != ACTION_TAG_AND_PRESERVE:
             continue
         if index == 0:
             continue
-        previous = expanded[index - 1]
-        if (
-            previous.action != ACTION_PRESERVE
-            or decision.start_line - previous.end_line > 3
-        ):
-            continue
-        prefix = _block_lines(blocks, previous)
+
         table_lines = _block_lines(blocks, decision)
         table_features = _compute_features(table_lines)
-        if not _is_header_prefix(prefix) or not table_features.numeric_cell_rows:
+        if not table_features.numeric_cell_rows:
             continue
+
+        header_indices: list[int] = []
+        for back in range(1, min(4, index + 1)):
+            candidate_idx = index - back
+            candidate = expanded[candidate_idx]
+            if candidate.action not in (ACTION_PRESERVE, ACTION_UNWRAP):
+                break
+            next_start = (
+                expanded[candidate_idx + 1].start_line
+                if candidate_idx + 1 <= index
+                else decision.start_line
+            )
+            if next_start - candidate.end_line > 3:
+                break
+            prefix = _block_lines(blocks, candidate)
+            if is_header_prefix(prefix):
+                header_indices.append(candidate_idx)
+            else:
+                break
+
+        if not header_indices:
+            continue
+
+        first_idx = header_indices[-1]
+        first_block = expanded[first_idx]
+
         expanded[index] = SpanDecision(
             ACTION_TAG_AND_PRESERVE,
-            previous.start_line,
+            first_block.start_line,
             decision.end_line,
-            min(previous.confidence, decision.confidence),
+            min(first_block.confidence, decision.confidence),
             decision.evidence + ("expanded_table_header",),
             decision.trace,
         )
-        expanded[index - 1] = SpanDecision(
-            ACTION_PRESERVE,
-            previous.start_line,
-            previous.start_line,
-            previous.confidence,
-            ("absorbed_table_header",),
-            previous.trace,
-        )
+        for absorbed_idx in header_indices:
+            prev = expanded[absorbed_idx]
+            expanded[absorbed_idx] = SpanDecision(
+                ACTION_PRESERVE,
+                prev.start_line,
+                prev.start_line,
+                prev.confidence,
+                ("absorbed_table_header",),
+                prev.trace,
+            )
     return [
         decision for decision in expanded if decision.start_line < decision.end_line
     ]
@@ -257,31 +223,6 @@ def _block_lines(
     )
 
 
-def _is_structural_table_bridge(lines: tuple[str, ...]) -> bool:
-    """Recognize short section labels between parts of one aligned statement."""
-    nonblank = tuple(line.strip() for line in lines if line.strip())
-    if not nonblank or len(nonblank) > 4:
-        return False
-    return all(
-        len(line) <= 80
-        and len(line.split()) <= 10
-        and not RE_SENTENCE_TERMINAL.search(line)
-        and len(_numeric_cell_starts(line)) < 2
-        and not RE_SEPARATOR_LINE.fullmatch(line)
-        for line in nonblank
-    )
-
-
-def _is_structural_table_tail(lines: tuple[str, ...]) -> bool:
-    """Recognize a final aligned total that follows a statement body."""
-    nonblank = tuple(line.strip() for line in lines if line.strip())
-    return bool(
-        nonblank
-        and any(RE_SEPARATOR_LINE.fullmatch(line) for line in nonblank)
-        and any(len(_numeric_cell_starts(line)) >= 2 for line in nonblank)
-    )
-
-
 def merge_bridged_tables(
     decisions: list[SpanDecision],
     blocks: list[tuple[int, int, tuple[str, ...]]] | None = None,
@@ -370,7 +311,12 @@ def merge_bridged_tables(
             following = decisions[following_index]
             if (
                 following.action == ACTION_TAG_AND_PRESERVE
-                and _is_structural_table_bridge(tuple(bridge_lines))
+                and is_structural_table_bridge(
+                    tuple(bridge_lines),
+                    is_bridge_line=(
+                        policy.is_table_bridge_line if policy is not None else None
+                    ),
+                )
                 and following.start_line - previous.end_line <= 8
             ):
                 merged[-1] = SpanDecision(
@@ -442,6 +388,7 @@ def merge_bridged_tables(
 def merge_structural_table_regions(
     decisions: list[SpanDecision],
     blocks: list[tuple[int, int, tuple[str, ...]]],
+    policy: ReflowPolicy | None = None,
 ) -> list[SpanDecision]:
     """Coalesce table decisions separated by short structural blocks."""
     result: list[SpanDecision] = []
@@ -462,13 +409,25 @@ def merge_structural_table_regions(
                     for line in _block_lines(blocks, decision)
                 )
                 if (
-                    _is_structural_table_bridge(middle)
+                    is_structural_table_bridge(
+                        middle,
+                        is_bridge_line=(
+                            policy.is_table_bridge_line if policy is not None else None
+                        ),
+                    )
                     and candidate.start_line - current.end_line <= 8
                 ):
                     tail_index = next_index + 1
                     if tail_index < len(decisions):
                         tail_lines = _block_lines(blocks, decisions[tail_index])
-                        if _is_structural_table_tail(tail_lines):
+                        if is_structural_table_tail(
+                            tail_lines,
+                            is_tail_line=(
+                                policy.is_table_tail_line
+                                if policy is not None
+                                else None
+                            ),
+                        ):
                             current = SpanDecision(
                                 ACTION_TAG_AND_PRESERVE,
                                 current.start_line,
@@ -578,6 +537,50 @@ def extend_multiline_table_rows(
     return extended
 
 
+def tag_discipline_gate(
+    decisions: list[SpanDecision],
+    blocks: list[tuple[int, int, tuple[str, ...]]],
+) -> list[SpanDecision]:
+    """Downgrade isolated inferred <TABLE> fragments with insufficient column structure.
+
+    An inferred table (ACTION_TAG_AND_PRESERVE from 'inferred_table_layout') that
+    has fewer than 2 numeric rows and no shared numeric columns is almost certainly
+    a false positive (e.g. a single isolated currency line or 1-row total).  These
+    are demoted to ACTION_PRESERVE so they are emitted as plain ASCII without a
+    synthetic <TABLE> wrapper.
+
+    Decisions produced by header expansion or region merging are validated using
+    the complete merged span. The only unconditional exemption is an existing
+    SGML sentinel (raw ``<TABLE>``), which is protected before inference.
+    """
+    result: list[SpanDecision] = []
+    for decision in decisions:
+        if decision.action != ACTION_TAG_AND_PRESERVE:
+            result.append(decision)
+            continue
+        block_lines = _block_lines(blocks, decision)
+        if any(_SENTINEL_PREFIX in line for line in block_lines):
+            result.append(decision)
+            continue
+        features = _compute_features(block_lines)
+        numeric_rows = len(getattr(features, "numeric_cell_rows", ()))
+        shared_cols = getattr(features, "shared_numeric_columns", 0)
+        if numeric_rows >= 2 or shared_cols >= 2:
+            result.append(decision)
+            continue
+        result.append(
+            SpanDecision(
+                ACTION_PRESERVE,
+                decision.start_line,
+                decision.end_line,
+                decision.confidence,
+                decision.evidence + ("tag_discipline_downgrade",),
+                decision.trace,
+            )
+        )
+    return result
+
+
 __all__ = [
     "expand_table_headers",
     "extend_multiline_table_rows",
@@ -586,5 +589,6 @@ __all__ = [
     "merge_bridged_tables",
     "merge_structural_table_regions",
     "split_structural_table_intro",
+    "tag_discipline_gate",
     "unify_table_prose",
 ]

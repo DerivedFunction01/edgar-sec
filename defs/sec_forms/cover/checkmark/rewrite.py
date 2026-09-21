@@ -16,12 +16,12 @@ from defs.sec_forms.cover.checkmark.yes_no_pairs import (
     YES_NO_LINE_RE,
     normalize_yes_no_pair_line,
 )
+from defs.sec_forms.vocabulary import FILER_STATUS_TERMS
 from defs.tables.protection import (
     mask_tagged_tables,
     restore_tagged_tables,
     strip_table_wrapper_tags,
 )
-from defs.taxonomy.components.cover import FILER_STATUS_TERMS
 from defs.text.checkmarks import (
     CANONICAL_CHECKED,
     CANONICAL_UNCHECKED,

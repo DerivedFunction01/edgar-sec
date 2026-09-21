@@ -16,6 +16,10 @@ def _decide(
     features: _Features, line_count: int, has_masked: bool = False
 ) -> SpanDecision:
     if features.non_blank <= 1:
+        if features.alpha_density >= _MIN_PROSE_ALPHA_DENSITY and features.any_lowercase:
+            return SpanDecision(
+                ACTION_UNWRAP, 0, line_count, 0.7, ("ordinary_prose",), "fast_prose"
+            )
         return SpanDecision(
             ACTION_PRESERVE, 0, line_count, 1.0, ("single_line_block",), "fast_noop"
         )
@@ -75,6 +79,21 @@ def _decide(
                 0.75,
                 ("separator_grid", f"repeated_gap_columns:{shared_gaps}"),
                 "high_confidence_table",
+            )
+        if (
+            not features.has_separator
+            and features.max_gap < 3
+            and shared_numeric == 0
+            and features.alpha_density >= _MIN_PROSE_ALPHA_DENSITY
+            and features.any_lowercase
+        ):
+            return SpanDecision(
+                ACTION_UNWRAP,
+                0,
+                line_count,
+                0.7,
+                ("ordinary_prose",),
+                "fast_prose",
             )
         return SpanDecision(
             ACTION_PRESERVE,

@@ -14,7 +14,7 @@ from defs.sec_forms.cover import (
     solve_report_period,
     solve_statutory_constraints,
 )
-from defs.taxonomy.components.cover import ANNUAL_CHECKBOX_SCHEMA
+from defs.sec_forms.cover.checkmark.schemas import ANNUAL_CHECKBOX_SCHEMA
 
 
 def _filer_candidates(glyphs: tuple[str, str, str, str, str]):

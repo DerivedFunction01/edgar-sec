@@ -25,6 +25,13 @@ from defs.sec_forms.cover.checkmark.rewrite import (
     apply_cover_checkmark_decisions,
     update_table_geometries,
 )
+from defs.sec_forms.cover.checkmark.schemas import (
+    ANNUAL_CHECKBOX_SCHEMA,
+    QUARTERLY_CHECKBOX_SCHEMA,
+    STATUTORY_CHECKBOX_CONSTRAINTS,
+    CheckboxConstraint,
+    CoverCheckboxSchema,
+)
 from defs.sec_forms.cover.checkmark.solver import (
     infer_cover_checkmarks,
     solve_cover_constraints,
@@ -40,11 +47,16 @@ from defs.sec_forms.cover.checkmark.yes_no_pairs import (
 )
 
 __all__ = [
+    "ANNUAL_CHECKBOX_SCHEMA",
     "DEFAULT_PENALTY_SCORER",
+    "QUARTERLY_CHECKBOX_SCHEMA",
+    "STATUTORY_CHECKBOX_CONSTRAINTS",
     "YES_NO_LINE_RE",
     "YES_NO_WORD_RE",
     "CheckboxCandidate",
+    "CheckboxConstraint",
     "ConstraintViolation",
+    "CoverCheckboxSchema",
     "CoverCheckmarkResult",
     "HypothesisScore",
     "InferenceStatus",

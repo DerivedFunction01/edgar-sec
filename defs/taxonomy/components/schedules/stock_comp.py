@@ -2,6 +2,9 @@
 
 from __future__ import annotations
 
+import re
+
+from defs.regex import build_alternation
 from defs.taxonomy.tables.shapes import ShapeConstraint
 from defs.taxonomy.tables.specs import (
     RepairPolicy,
@@ -22,6 +25,11 @@ STOCK_COMP_PRIMARY_TERMS: tuple[str, ...] = (
     "weighted-average grant date fair value",
     "unrecognized compensation",
     "restricted stock units",
+    "option grants",
+    "stock awards",
+    "unvested shares",
+    "outstanding equity awards",
+    "named executive officers",
 )
 
 STOCK_COMP_SUPPORTING_TERMS: tuple[str, ...] = (
@@ -31,6 +39,22 @@ STOCK_COMP_SUPPORTING_TERMS: tuple[str, ...] = (
     "intrinsic value",
     "aggregate intrinsic value",
     "weighted-average remaining contractual term",
+)
+
+STOCK_COMP_TAIL_TERMS: tuple[str, ...] = (
+    "weighted-average shares outstanding",
+    "weighted average shares outstanding",
+    "ending balance",
+    "beginning balance",
+)
+_STOCK_COMP_TAIL_PATTERN = build_alternation(
+    STOCK_COMP_TAIL_TERMS,
+    auto_escape=True,
+    flexible_whitespace=True,
+    compact=True,
+)
+STOCK_COMP_TAIL_RE = re.compile(
+    rf"^\s*{_STOCK_COMP_TAIL_PATTERN}(?=\s|$)", re.IGNORECASE
 )
 
 STOCK_COMP_VETOES: tuple[str, ...] = ("activities",)

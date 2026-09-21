@@ -2,6 +2,9 @@
 
 from __future__ import annotations
 
+import re
+
+from defs.regex import build_alternation
 from defs.taxonomy.tables.shapes import ShapeConstraint
 from defs.taxonomy.tables.specs import (
     RepairPolicy,
@@ -58,6 +61,11 @@ PRETAX_INCOME_TERMS: tuple[str, ...] = (
     "income (loss) before income taxes",
     "loss before income taxes",
     "pretax income",
+    "provision for income taxes",
+    "benefit for income taxes",
+    "other income",
+    "other expense",
+    "other income (expense)",
 )
 
 NET_INCOME_TERMS: tuple[str, ...] = (
@@ -78,6 +86,24 @@ EPS_TERMS: tuple[str, ...] = (
     "diluted per share",
     "per share - basic",
     "per share - diluted",
+)
+
+INCOME_STATEMENT_TAIL_TERMS: tuple[str, ...] = (
+    "net income",
+    "net loss",
+    "net income (loss)",
+    "basic earnings per share",
+    "diluted earnings per share",
+    "basic and diluted earnings per share",
+)
+_INCOME_STATEMENT_TAIL_PATTERN = build_alternation(
+    INCOME_STATEMENT_TAIL_TERMS,
+    auto_escape=True,
+    flexible_whitespace=True,
+    compact=True,
+)
+INCOME_STATEMENT_TAIL_RE = re.compile(
+    rf"^\s*{_INCOME_STATEMENT_TAIL_PATTERN}(?=\s|$)", re.IGNORECASE
 )
 
 INCOME_STATEMENT_VETOES: tuple[str, ...] = ("activities",)

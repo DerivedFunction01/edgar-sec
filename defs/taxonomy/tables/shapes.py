@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 
-from defs.tables.tokens import is_numeric_cell
+from defs.tables.numeric_cells import is_numeric_cell
 
 
 @dataclass(frozen=True, slots=True)

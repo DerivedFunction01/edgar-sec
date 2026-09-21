@@ -24,11 +24,15 @@ def is_checkbox_answer_line(line: str) -> bool:
 
 def is_cover_layout_line(line: str) -> bool:
     """Return whether a line is a standalone cover/layout structure."""
+    stripped = line.strip()
+    if not stripped:
+        return False
+    if is_exact_heading(line) or RE_TOC_HEADING.match(line):
+        return True
+    if len(stripped.split()) <= 4 and _FORM_PATTERN.search(stripped):
+        return True
     return bool(
-        is_exact_heading(line)
-        or RE_TOC_HEADING.match(line)
-        or _FORM_PATTERN.search(line)
-        or any(
+        any(
             pattern.search(line)
             for pattern in (
                 REGISTRANT_NAME_RE,

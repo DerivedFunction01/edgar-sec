@@ -89,9 +89,10 @@ def is_year_token(value: str, valid_range: tuple[int, int] = YEAR_RANGE) -> bool
     )
 
 
-YEAR_TOKEN_RE = re.compile(
-    rf"^\b({build_alternation([r'19[0-9]{2}', r'[2-9][0-9]{3}'], auto_escape=False)})\b$"
+YEAR_TOKEN_PATTERN = build_alternation(
+    [r"19[0-9]{2}", r"[2-9][0-9]{3}"], auto_escape=False
 )
+YEAR_TOKEN_RE = re.compile(rf"^\b({YEAR_TOKEN_PATTERN})\b$")
 YEAR_IN_TEXT_RE = re.compile(r"\b(\d{4})\b")
 NUMERIC_YEAR_RE = re.compile(r"\b(\d{2,4})\b")
 TABLE_YEAR_RE = re.compile(
@@ -99,6 +100,25 @@ TABLE_YEAR_RE = re.compile(
         [r"(?:\d{1,2}/)+(\d{2,4})", r"\b(\d{4})\b", r"['’](\d{2})\b"],
         auto_escape=False,
     )
+)
+
+# Multi-column period/year header row (e.g. "   2004       2003       2002   " or "   Q1 2004   Q1 2003   ")
+_Q_TOKEN_PAT = rf"Q[1-4]\s+{YEAR_TOKEN_PATTERN}"
+_DATE_TOKEN_PAT = rf"(?:{MONTH_PATTERN})\s+\d{{1,2}},?\s+{YEAR_TOKEN_PATTERN}"
+_PERIOD_TOKEN_PAT = build_alternation(
+    [YEAR_TOKEN_PATTERN, _Q_TOKEN_PAT, _DATE_TOKEN_PAT],
+    auto_escape=False,
+    compact=False,
+)
+_PERIOD_HEADER_SUFFIX_PAT = build_alternation(
+    [_PERIOD_TOKEN_PAT, MONTH_PATTERN, r"Q[1-4]"],
+    auto_escape=False,
+    compact=False,
+)
+
+COLUMN_YEAR_ROW_RE = re.compile(
+    rf"^\s*(?:{_PERIOD_TOKEN_PAT})(?:\s+(?:{_PERIOD_HEADER_SUFFIX_PAT}).*)?\s*$",
+    re.IGNORECASE,
 )
 
 
@@ -459,6 +479,7 @@ def _looks_like_date_fragment(parts: list[str]) -> bool:
 
 __all__ = [
     "CENTURY_PIVOT",
+    "COLUMN_YEAR_ROW_RE",
     "MONTH_ALIASES",
     "MONTH_NAMES",
     "MONTH_NAME_RE",
@@ -471,6 +492,7 @@ __all__ = [
     "TABLE_YEAR_RE",
     "YEAR_IN_TEXT_RE",
     "YEAR_RANGE",
+    "YEAR_TOKEN_PATTERN",
     "YEAR_TOKEN_RE",
     "DateComponents",
     "DateFormat",

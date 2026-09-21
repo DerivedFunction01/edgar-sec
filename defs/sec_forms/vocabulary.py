@@ -141,6 +141,44 @@ FILER_CATEGORY_PATTERNS: tuple[tuple[str, str], ...] = (
     (EMERGING_GROWTH_COMPANY.capitalize(), _phrase_pattern(EMERGING_GROWTH_COMPANY)),
 )
 
+# --- Checkbox constraint vocabulary --------------------------------------------
+
+REPORT_PERIOD_GROUP = "report_period"
+FILER_STATUS_GROUP = "filer_status"
+STATUTORY_BINARY_GROUP = "statutory_binary"
+
+REPORT_ANNUAL = "annual"
+REPORT_QUARTERLY = "quarterly"
+REPORT_TRANSITION = "transition"
+
+FILER_LARGE_ACCELERATED = "large_accelerated_filer"
+FILER_ACCELERATED = "accelerated_filer"
+FILER_NON_ACCELERATED = "non_accelerated_filer"
+FILER_SMALLER_REPORTING = "smaller_reporting_company"
+FILER_EMERGING_GROWTH = "emerging_growth_company"
+
+STAT_WKSI = "well_known_seasoned_issuer"
+STAT_SHELL = "shell_company"
+STAT_VOLUNTARY = "voluntary_filer"
+STAT_COMPLIANT_12_MONTHS = "compliant_12_months"
+STAT_SOX_404B = "sox_404b"
+STAT_EGC_TRANSITION_OPTOUT = "egc_transition_optout"
+STAT_ERROR_CORRECTION = "error_correction"
+STAT_RECOVERY_ANALYSIS = "recovery_analysis"
+
+FILER_STATUS_TERMS: tuple[str, ...] = (
+    LARGE_ACCELERATED_FILER,
+    ACCELERATED_FILER,
+    NON_ACCELERATED_FILER,
+    SMALLER_REPORTING_COMPANY,
+    EMERGING_GROWTH_COMPANY,
+    SHELL_COMPANY,
+    WELL_KNOWN_SEASONED_ISSUER,
+    VOLUNTARY_FILER,
+    "indicate by check mark",
+    "auditor attestation",
+)
+
 # --- Checkbox Keywords & Grids -------------------------------------------------
 
 CHECKBOX_KEYWORDS: tuple[str, ...] = (
@@ -388,13 +426,24 @@ __all__ = [
     "CURRENCY_SPACING_RE",
     "EIN_VALUE_RE",
     "EMERGING_GROWTH_COMPANY",
+    "FILER_ACCELERATED",
     "FILER_CATEGORY_PATTERNS",
+    "FILER_EMERGING_GROWTH",
+    "FILER_LARGE_ACCELERATED",
+    "FILER_NON_ACCELERATED",
+    "FILER_SMALLER_REPORTING",
+    "FILER_STATUS_GROUP",
+    "FILER_STATUS_TERMS",
     "IRS_EIN_RE",
     "IXBRL_FACT_RE",
     "LARGE_ACCELERATED_FILER",
     "NON_ACCELERATED_FILER",
     "PUNCT_SPACING_RE",
     "REGISTRANT_NAME_RE",
+    "REPORT_ANNUAL",
+    "REPORT_PERIOD_GROUP",
+    "REPORT_QUARTERLY",
+    "REPORT_TRANSITION",
     "SECURITIES_12B_ANCHOR_TERMS",
     "SECURITIES_12B_RE",
     "SECURITIES_12B_SUPPORT_TERMS",
@@ -402,6 +451,15 @@ __all__ = [
     "SHELL_COMPANY",
     "SMALLER_REPORTING_COMPANY",
     "STATE_INCORPORATION_RE",
+    "STATUTORY_BINARY_GROUP",
+    "STAT_COMPLIANT_12_MONTHS",
+    "STAT_EGC_TRANSITION_OPTOUT",
+    "STAT_ERROR_CORRECTION",
+    "STAT_RECOVERY_ANALYSIS",
+    "STAT_SHELL",
+    "STAT_SOX_404B",
+    "STAT_VOLUNTARY",
+    "STAT_WKSI",
     "TELEPHONE_RE",
     "VOLUNTARY_FILER",
     "WELL_KNOWN_SEASONED_ISSUER",

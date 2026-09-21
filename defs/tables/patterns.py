@@ -76,13 +76,16 @@ LAST_HEADER_PATTERN = build_regex(
 )
 
 # Multipliers constructed via build_alternation
-_MULT_PREFIX = build_alternation([r"in", r"dollars\s+in"])
+_MULT_PREFIX = build_alternation([r"in", r"dollars\s+in", r"amounts?\s+in"])
 _UNIT_TERMS = build_alternation(
     [
         r"thousands?",
         r"millions?",
         r"billions?",
         r"trillions?",
+        r"shares?",
+        r"dollars?",
+        r"percent(?:age)?",
     ]
 )
 
@@ -95,9 +98,9 @@ MILLION_RE = re.compile(
 BILLION_RE = re.compile(rf"(?:{_MULT_PREFIX})\s+billions", re.IGNORECASE)
 UNIT_RE = re.compile(rf"\s*{_UNIT_TERMS}", re.IGNORECASE)
 
-# Single-cell units-qualifier row: ``(dollars in millions)``, ``(in thousands)``.
+# Scale/units qualifier: ``(dollars in millions)``, ``(in thousands)``, ``(amounts in millions)``.
 UNITS_LABEL_RE = re.compile(
-    rf"^\(\s*(?:dollars\s+)?in\s+(?:{_UNIT_TERMS})\s*\)$",
+    rf"\(\s*(?:(?:dollars|amounts?)\s+)?in\s+(?:{_UNIT_TERMS})[^)]*\)",
     re.IGNORECASE,
 )
 
@@ -116,6 +119,58 @@ NUMERIC_PERCENT_SPACE_RE = re.compile(
 COMMA_SPACE_RE = re.compile(r",\s+")
 SPACE_COMMA_RE = re.compile(r"\s+,")
 
+# Short column-underline dash rule (multiple short groups like "---   ---")
+COLUMN_DASH_RULE_RE = re.compile(r"^\s*[-=]{1,25}(?:\s+[-=]{1,25}){1,}\s*$")
+
+# Table introduction cues
+_TABLE_INTRO_NOUNS = build_alternation(
+    (
+        "table",
+        "tables",
+        "schedule",
+        "schedules",
+        "information",
+        "data",
+        "amounts",
+        "analysis",
+        "summary",
+        "breakdown",
+        "reconciliation",
+    ),
+    auto_escape=True,
+    compact=True,
+)
+_TABLE_INTRO_LAYOUT_NOUNS = build_alternation(
+    ("table", "tables", "schedule", "schedules"), auto_escape=True, compact=True
+)
+_TABLE_INTRO_TABLE_VERBS = build_alternation(
+    ("below", "above", "presents", "present", "shows", "show", "sets forth"),
+    auto_escape=True,
+    compact=True,
+)
+_TABLE_INTRO_FOLLOWING = build_alternation(
+    ("below", "in the following"), auto_escape=True, compact=True
+)
+_TABLE_INTRO_DISPLAY_VERBS = build_alternation(
+    ("presented", "shown", "summarized"), auto_escape=True, compact=True
+)
+_TABLE_INTRO_RELATION = build_alternation(("as", "are"), auto_escape=True, compact=True)
+_TABLE_INTRO_COLLECTION_VERBS = build_alternation(
+    ("consists", "includes"), auto_escape=True, compact=True
+)
+_TABLE_INTRO_PATTERNS = (
+    rf"the\s+following\s+(?:{_TABLE_INTRO_NOUNS})",
+    rf"the\s+(?:{_TABLE_INTRO_LAYOUT_NOUNS})\s+(?:{_TABLE_INTRO_TABLE_VERBS})",
+    rf"{_TABLE_INTRO_RELATION}\s+follows",
+    rf"set\s+forth\s+(?:{_TABLE_INTRO_FOLLOWING})",
+    rf"(?:{_TABLE_INTRO_DISPLAY_VERBS})\s+(?:{_TABLE_INTRO_FOLLOWING})",
+    rf"(?:{_TABLE_INTRO_COLLECTION_VERBS})\s+of\s+the\s+following",
+)
+TABLE_INTRO_CUE_RE = re.compile(
+    rf"\b(?:{build_alternation(_TABLE_INTRO_PATTERNS, auto_escape=False, compact=False)})\b",
+    re.IGNORECASE,
+)
+
 # Paragraph masquerading detection: the shared dot-leader core.
 TABLE_OF_CONTENTS_RE = RE_DOT_LEADER
 PARAGRAPH_THRESHOLD = 250
@@ -125,6 +180,7 @@ __all__ = [
     "BULLET_MARKER_RE",
     "CAPTION_RE",
     "CLOSE_PAREN_SPACE_RE",
+    "COLUMN_DASH_RULE_RE",
     "COMMA_SPACE_RE",
     "CURRENCY_SPACE_RE",
     "C_MARKER_RE",
@@ -144,6 +200,7 @@ __all__ = [
     "PERCENT_HEADER_RE",
     "SPACE_COMMA_RE",
     "S_MARKER_RE",
+    "TABLE_INTRO_CUE_RE",
     "TABLE_OF_CONTENTS_RE",
     "TABLE_TAG_RE",
     "THOUSAND_RE",

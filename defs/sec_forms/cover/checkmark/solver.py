@@ -16,6 +16,7 @@ from defs.sec_forms.cover.checkmark.rewrite import (
     apply_cover_checkmark_decisions,
     update_table_geometries,
 )
+from defs.sec_forms.cover.checkmark.schemas import CoverCheckboxSchema
 from defs.sec_forms.cover.inference import (
     _FILER_KEYS,
     _candidate_map,
@@ -24,14 +25,13 @@ from defs.sec_forms.cover.inference import (
     _score_candidates,
 )
 from defs.sec_forms.cover.models import CoverBoundary
-from defs.taxonomy.components.cover import (
+from defs.sec_forms.vocabulary import (
     FILER_STATUS_GROUP,
     REPORT_ANNUAL,
     REPORT_PERIOD_GROUP,
     REPORT_QUARTERLY,
     REPORT_TRANSITION,
     STATUTORY_BINARY_GROUP,
-    CoverCheckboxSchema,
 )
 
 

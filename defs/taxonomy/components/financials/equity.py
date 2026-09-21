@@ -2,6 +2,9 @@
 
 from __future__ import annotations
 
+import re
+
+from defs.regex import build_alternation
 from defs.taxonomy.tables.shapes import ShapeConstraint
 from defs.taxonomy.tables.specs import (
     RepairPolicy,
@@ -27,6 +30,25 @@ EQUITY_SUPPORTING_TERMS: tuple[str, ...] = (
     "dividends declared",
     "net income",
     "repurchase of common stock",
+)
+
+EQUITY_STATEMENT_TAIL_TERMS: tuple[str, ...] = (
+    "balance at beginning of period",
+    "balance at end of period",
+    "ending balance",
+    "beginning balance",
+    "total stockholders' equity",
+    "total shareholders' equity",
+    "total equity",
+)
+_EQUITY_STATEMENT_TAIL_PATTERN = build_alternation(
+    EQUITY_STATEMENT_TAIL_TERMS,
+    auto_escape=True,
+    flexible_whitespace=True,
+    compact=True,
+)
+EQUITY_STATEMENT_TAIL_RE = re.compile(
+    rf"^\s*{_EQUITY_STATEMENT_TAIL_PATTERN}(?=\s|$)", re.IGNORECASE
 )
 
 EQUITY_VETOES: tuple[str, ...] = ("activities",)

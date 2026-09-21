@@ -47,8 +47,9 @@ defs/taxonomy/
      - **Shape Constraints**: Validated column counts, row bounds, and numeric density thresholds.
 
 2. **Strict Layering & Non-Circular Imports**:
-   - `defs.taxonomy` imports from `defs.tables` and `defs.text.bow`.
-   - `defs.tables` (and its rendering templates) **never** import from `defs.taxonomy`.
+    - `defs.taxonomy` imports from `defs.tables` and `defs.text.bow`.
+    - `defs.tables` (and its rendering templates) **never** import from `defs.taxonomy`.
+    - Financial statement reflow predicates are owned by `defs.taxonomy.components.financials.reflow` and are supplied to the generic reflow engine via `ReflowPolicy` callbacks.
 
 3. **Collision-Free Orthogonality**:
    - Table families enforce single unigram exclusion rules (veto terms) and priority tiers.

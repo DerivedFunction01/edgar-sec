@@ -10,8 +10,7 @@ from defs.sec_forms.cover.checkmark.frames import build_masked_offset_translator
 from defs.sec_forms.cover.checkmark.models import CheckboxCandidate
 from defs.sec_forms.cover.checkmark.yes_no_pairs import YES_NO_WORD_RE
 from defs.sec_forms.cover.models import CoverBoundary
-from defs.tables.protection import mask_tagged_tables
-from defs.taxonomy.components.cover import (
+from defs.sec_forms.vocabulary import (
     FILER_ACCELERATED,
     FILER_EMERGING_GROWTH,
     FILER_LARGE_ACCELERATED,
@@ -32,6 +31,7 @@ from defs.taxonomy.components.cover import (
     STAT_WKSI,
     STATUTORY_BINARY_GROUP,
 )
+from defs.tables.protection import mask_tagged_tables
 from defs.text.checkmarks import (
     CHECKMARK_MARK_RE,
     is_fill_in_mark_token,

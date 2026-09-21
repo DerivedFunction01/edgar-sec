@@ -8,21 +8,22 @@ from defs.tables.protection import (
     mask_tagged_tables,
     restore_tagged_tables,
 )
-from defs.text.patterns import RE_SEPARATOR_LINE
-from defs.text.signatures import mask_signature_regions, restore_signature_regions
-from defs.text.tokens import is_bullet_line
-
-from .classifier import _decide
-from .features import _compute_features, _numeric_cell_starts
-from .table_policy import (
+from defs.tables.table_policy import (
     expand_table_headers,
     extend_multiline_table_rows,
     is_tableish_block,
     merge_bridged_tables,
     merge_structural_table_regions,
     split_structural_table_intro,
+    tag_discipline_gate,
     unify_table_prose,
 )
+from defs.text.patterns import RE_SEPARATOR_LINE
+from defs.text.signatures import mask_signature_regions, restore_signature_regions
+from defs.text.tokens import is_bullet_line
+
+from .classifier import _decide
+from .features import _compute_features, _numeric_cell_starts
 from .types import (
     ACTION_PRESERVE,
     ACTION_TAG_AND_PRESERVE,
@@ -99,6 +100,38 @@ def _is_bullet_prose_block(
     )
 
 
+def _merge_adjacent_prose_decisions(
+    decisions: list[SpanDecision],
+) -> list[SpanDecision]:
+    """Join contiguous prose blocks split by removable layout boundaries."""
+    merged: list[SpanDecision] = []
+    prose_traces = {"fast_prose", "front_matter_prose"}
+    for decision in decisions:
+        if (
+            merged
+            and decision.action == ACTION_UNWRAP
+            and merged[-1].action == ACTION_UNWRAP
+            and decision.start_line - merged[-1].end_line <= 1
+            and merged[-1].trace in prose_traces
+            and decision.trace in prose_traces
+            and "bullet_prose_continuation" not in merged[-1].evidence
+            and "bullet_prose_continuation" not in decision.evidence
+        ):
+            previous = merged[-1]
+            evidence = tuple(dict.fromkeys((*previous.evidence, *decision.evidence)))
+            merged[-1] = SpanDecision(
+                ACTION_UNWRAP,
+                previous.start_line,
+                decision.end_line,
+                min(previous.confidence, decision.confidence),
+                evidence,
+                previous.trace,
+            )
+        else:
+            merged.append(decision)
+    return merged
+
+
 def reflow_ascii(
     text: str,
     *,
@@ -169,7 +202,8 @@ def reflow_ascii(
                 "table_continuity",
             )
         elif active_policy.unwrap_pre_body_prose and any(
-            active_policy.is_structural_line is not None
+            end <= masked_body_start_line
+            and active_policy.is_structural_line is not None
             and active_policy.is_structural_line(line)
             for line in block_lines
         ):
@@ -190,7 +224,7 @@ def reflow_ascii(
             and not features.has_separator
             and not features.has_dot_leader
             and not features.has_signature
-            and len(features.numeric_cell_rows) < 3
+            and features.shared_numeric_columns == 0
         ):
             decision = SpanDecision(
                 ACTION_UNWRAP,
@@ -202,6 +236,15 @@ def reflow_ascii(
             )
         else:
             decision = base_decision
+        if end <= masked_body_start_line and decision.action == ACTION_TAG_AND_PRESERVE:
+            decision = SpanDecision(
+                ACTION_PRESERVE,
+                0,
+                len(block_lines),
+                1.0,
+                ("front_matter_form_layout",),
+                "hard_preserve",
+            )
         if page_context and decision.action == ACTION_UNWRAP:
             decision = SpanDecision(
                 decision.action,
@@ -228,7 +271,9 @@ def reflow_ascii(
     decisions = expand_table_headers([decision for _, decision in per_block], blocks)
     decisions = extend_multiline_table_rows(decisions, blocks, policy=active_policy)
     decisions = merge_bridged_tables(decisions, blocks=blocks, policy=active_policy)
-    decisions = merge_structural_table_regions(decisions, blocks)
+    decisions = merge_structural_table_regions(decisions, blocks, policy=active_policy)
+    decisions = tag_discipline_gate(decisions, blocks)
+    decisions = _merge_adjacent_prose_decisions(decisions)
     rendered: list[str] = []
     cursor = decision_index = 0
     skip_decision_indices: set[int] = set()

@@ -29,6 +29,7 @@ from .types import (
     ReflowPolicy,
     ReflowResult,
     SpanDecision,
+    build_line_mapper,
 )
 
 __all__ = [
@@ -38,5 +39,6 @@ __all__ = [
     "ReflowPolicy",
     "ReflowResult",
     "SpanDecision",
+    "build_line_mapper",
     "reflow_ascii",
 ]

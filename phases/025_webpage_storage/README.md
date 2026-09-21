@@ -260,7 +260,7 @@ not the Phase 2.5 worker chunks.
 - Shared cover boundary and healing — `find_cover_boundary_for_profile()` and `heal_cover_text()` are representation-neutral and operate on the normalized text frame; form normalizers expose heading normalization only
 - Form-family normalizers — `Form10KNormalizer`, `Form10QNormalizer`, `Form8KNormalizer` route through the shared text-frame coordinator; `GenericFormNormalizer` is the fallback
 - `FormRouter` — routes documents to form-specific evaluators and normalizers
-- **ASCII Reflow & Table Recognition** — after body-start detection, non-HTML text runs through `defs.text.reflow.reflow_ascii`:
+- **ASCII Reflow & Table Recognition** — after body-start detection, non-HTML text runs through `defs.text.reflow.reflow_ascii`, with financial statement section bridging and family-owned tail recognition supplied from `defs.taxonomy.components.financials.reflow`:
   - **Prose Unwrapping**: Hard-wrapped text and multi-line bullet/list items (e.g. `(a)`, `(1)`, `•`, `-`) are cleanly reflowed into single logical lines while preserving paragraph boundaries (`is_list_or_bullet_marker`).
   - **Fixed-Width Table Recognition**: Untagged multi-column ASCII tables (with aligned numeric columns and headers) are automatically detected and wrapped in canonical `<TABLE>`/`</TABLE>` tags with row geometry preserved exactly.
   - **Table Protection**: Existing tagged tables are masked and restored byte-for-byte; ambiguous blocks stay preserved and untagged.

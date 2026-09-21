@@ -111,7 +111,7 @@ rows are published through immutable temporal snapshots with lightweight
 - **String-first HTML preprocessing**: Renders HTML to canonical text, preserves tagged `<TABLE>` blocks, and unrolls nested markup (`defs.text.html`).
 - **Form-scoped checkbox constraint solver**: Evaluates glyph penalty hypotheses for report periods, filer statuses, and statutory Booleans (`defs.sec_forms.cover`).
 - **Canonical body start alignment**: Uses tiered lexical scoring to anchor the start of substantive body text past cover and TOC pages.
-- **ASCII table recognition & reflow**: Detects untagged multi-column ASCII tables and unwraps hard-wrapped prose and list/bullet markers (`defs.text.reflow`).
+- **ASCII table recognition & reflow**: Detects untagged multi-column ASCII tables and unwraps hard-wrapped prose and list/bullet markers (`defs.text.reflow`); table boundary policy and structural detection live in `defs.tables`.
 - **Live monitoring**: Real-time read-only status and throughput inspection via `scripts/monitor_progress.py`.
 
 Fixture IDs provide reusable appendable test caches: an expanded child plan reuses
@@ -132,7 +132,7 @@ with read-only warm-cache readers for workers), canonical filing identity
 (accessions, archive URLs, occurrence IDs, document locator keys), storage
 backends, SQL boundary, SEC document handling (`defs/sec_documents/`),
 `sec_forms/` (shared form definitions, cover-page contracts, coordinate-safe
-`page_markers/` analysis), text reflow/lexical evidence (`defs/text/`), and the
+`page_markers/` analysis), text reflow/lexical evidence (`defs/text/`), table boundary policy (`defs/tables/`), and the
 shared phase runtime.
 
 ### [Dataset Viewer](defs/viewer/README.md)

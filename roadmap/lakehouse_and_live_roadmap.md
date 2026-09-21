@@ -249,7 +249,7 @@ The "Live" system must not duplicate parsing or normalization code. It sits abov
 defs/                              # Shared foundation (sec_http, storage, sql, llm)
 phases/                            # Domain modules & batch backfill CLIs
   01_metadata_extraction/core/     # Metadata extraction logic
-  025_webpage_storage/core/        # Normalizer & ASCII reflow engines
+  025_webpage_storage/core/        # Normalizer, ASCII reflow engine, table boundary policy, and financial bridging
   03_sectioning/core/              # Section & Item boundary detection
   04_domain_extraction/core/       # Regex & LLM structured fact extractors
 services/                          # Live operational daemons

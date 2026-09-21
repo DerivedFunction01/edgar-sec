@@ -2,6 +2,9 @@
 
 from __future__ import annotations
 
+import re
+
+from defs.regex import build_alternation
 from defs.taxonomy.tables.shapes import ShapeConstraint
 from defs.taxonomy.tables.specs import (
     RepairPolicy,
@@ -39,7 +42,26 @@ CASH_FLOW_ACTIVITIES_TRIO: tuple[str, ...] = (
     "operating activities",
     "investing activities",
     "financing activities",
+    "supplemental disclosures",
+    "supplemental cash flow disclosures",
+    "supplemental cash flow information",
 )
+
+CASH_FLOW_TAIL_TERMS: tuple[str, ...] = (
+    "cash and cash equivalents at end of year",
+    "cash and cash equivalents at end of period",
+    "cash and cash equivalents at beginning of year",
+    "cash and cash equivalents at beginning of period",
+    "net increase in cash and cash equivalents",
+    "net decrease in cash and cash equivalents",
+)
+_CASH_FLOW_TAIL_PATTERN = build_alternation(
+    CASH_FLOW_TAIL_TERMS,
+    auto_escape=True,
+    flexible_whitespace=True,
+    compact=True,
+)
+CASH_FLOW_TAIL_RE = re.compile(rf"^\s*{_CASH_FLOW_TAIL_PATTERN}(?=\s|$)", re.IGNORECASE)
 
 _cf_primary: tuple[str, ...] = (
     *OPERATING_ACTIVITIES_TERMS,

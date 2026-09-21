@@ -30,6 +30,11 @@ WRAPPED_ORDERED_MARKER_RE: re.Pattern = re.compile(
     rf"^\(\s*(?:{_ORDERED_TOKEN_ALT})\s*\)$", re.IGNORECASE
 )
 
+# Bracketed ordered markers: [1], [a], [i], [iv]
+BRACKETED_ORDERED_MARKER_RE: re.Pattern = re.compile(
+    rf"^\[\s*(?:{_ORDERED_TOKEN_ALT})\s*\]$", re.IGNORECASE
+)
+
 ORDERED_MARKER_PREFIX_RE: re.Pattern = re.compile(
     r"^(?:(?P<number>\d{1,3})|(?P<roman>[ivxlcdm]+)|(?P<letter>[a-zA-Z]))\s*[.)]\s*",
     re.IGNORECASE,
@@ -51,6 +56,7 @@ def is_list_or_bullet_marker(token: str) -> bool:
     return bool(
         DELIMITED_ORDERED_MARKER_RE.match(cleaned)
         or WRAPPED_ORDERED_MARKER_RE.match(cleaned)
+        or BRACKETED_ORDERED_MARKER_RE.match(cleaned)
     )
 
 

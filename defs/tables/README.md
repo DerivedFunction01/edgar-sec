@@ -6,6 +6,14 @@ that resolves 2D cell coordinate grids, rowspan/colspan regions, border dividers
 affix fusion, multi-page table continuation detection and pre-render fusion, and
 balanced column width budgeting to render standardized SEC `<TABLE>` blocks.
 
+`structural.py` provides form-neutral, geometry-aware structural detection for
+plain-text table boundaries: header-prefix validation, section-label bridging,
+and total-row / double-underline tail recognition.
+
+`table_policy.py` implements the ASCII reflow boundary cascade: multi-block
+header expansion, bounded table bridging, structural region merging, and tag
+discipline gating that downgrades thin inferred fragments to preserved text.
+
 `continuation.py` provides form-neutral, structural continuation detection:
 consecutive multi-row tables across page furniture without intervening narrative prose
 and matching column structure/header rows are fused pre-render, calculating global

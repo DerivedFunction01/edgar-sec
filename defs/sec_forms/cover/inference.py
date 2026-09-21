@@ -14,14 +14,18 @@ from defs.sec_forms.cover.checkmark.models import (
     InferenceStatus,
     PenaltyScorer,
 )
-from defs.taxonomy.components.cover import (
+from defs.sec_forms.cover.checkmark.schemas import (
     ANNUAL_CHECKBOX_SCHEMA,
+    QUARTERLY_CHECKBOX_SCHEMA,
+    CheckboxConstraint,
+    CoverCheckboxSchema,
+)
+from defs.sec_forms.vocabulary import (
     FILER_ACCELERATED,
     FILER_EMERGING_GROWTH,
     FILER_LARGE_ACCELERATED,
     FILER_NON_ACCELERATED,
     FILER_SMALLER_REPORTING,
-    QUARTERLY_CHECKBOX_SCHEMA,
     REPORT_ANNUAL,
     REPORT_QUARTERLY,
     REPORT_TRANSITION,
@@ -33,8 +37,6 @@ from defs.taxonomy.components.cover import (
     STAT_SOX_404B,
     STAT_VOLUNTARY,
     STAT_WKSI,
-    CheckboxConstraint,
-    CoverCheckboxSchema,
 )
 from defs.text.checkmarks import (
     CANONICAL_CHECKED,
