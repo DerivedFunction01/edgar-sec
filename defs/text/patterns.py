@@ -16,6 +16,12 @@ from __future__ import annotations
 import re
 
 from defs.regex import build_alternation
+from defs.text.signatures import (
+    RE_CONFORMED_SIGNATURE,
+    RE_SIGNATURE_LABEL_LINE,
+    SIGNATURE_LABEL_PREFIXES,
+)
+from defs.text.tokens import ROMAN_NUMERAL_PATTERN
 
 __all__ = [
     "CONTINUATION_PUNCTUATION",
@@ -24,6 +30,7 @@ __all__ = [
     "RE_CONFORMED_SIGNATURE",
     "RE_DOT_LEADER",
     "RE_FILL_IN_RUN",
+    "RE_GRAMMATICAL_COMMA",
     "RE_NON_ALNUM",
     "RE_PAGE_NUMBER_SUFFIX",
     "RE_SENTENCE_TERMINAL",
@@ -35,63 +42,7 @@ __all__ = [
     "RE_TRAILING_FILL_IN",
     "RE_WHITESPACE",
     "SIGNATURE_LABEL_PREFIXES",
-    "roman_to_int",
 ]
-
-# Roman numeral character-to-value mapping used by roman_to_int.
-_ROMAN_VALUES = {
-    "i": 1,
-    "v": 5,
-    "x": 10,
-    "l": 50,
-    "c": 100,
-    "d": 500,
-    "m": 1000,
-}
-
-_RE_ROMAN = re.compile(r"[ivxlcdm]{1,8}")
-
-# Canonical numeral-value pairs ordered largest to smallest, used for
-# validating that a roman numeral string is in canonical form.
-_NUMERALS = (
-    ("m", 1000),
-    ("cm", 900),
-    ("d", 500),
-    ("cd", 400),
-    ("c", 100),
-    ("xc", 90),
-    ("l", 50),
-    ("xl", 40),
-    ("x", 10),
-    ("ix", 9),
-    ("v", 5),
-    ("iv", 4),
-    ("i", 1),
-)
-
-
-def roman_to_int(value: str) -> int | None:
-    """Parse a canonical bounded Roman numeral string to an integer.
-
-    Returns ``None`` if ``value`` is not a valid canonical Roman numeral
-    (e.g. non-canonical forms like ``iiiv`` or values exceeding 3000).
-    """
-    text = value.casefold()
-    if not _RE_ROMAN.fullmatch(text):
-        return None
-    total = previous = 0
-    for char in reversed(text):
-        current = _ROMAN_VALUES[char]
-        total += -current if current < previous else current
-        previous = max(previous, current)
-    if not 0 < total <= 3000:
-        return None
-    remaining, canonical = total, ""
-    for numeral, amount in _NUMERALS:
-        count, remaining = divmod(remaining, amount)
-        canonical += numeral * count
-    return total if canonical == text else None
-
 
 # Dot-leader runs used by TOC and index rows.
 RE_DOT_LEADER = re.compile(r"\.{3,}")
@@ -104,32 +55,17 @@ RE_COLUMN_GAP = re.compile(r"[ \t]{2,}")
 # Core "digits or roman numerals" page-number fragment. Page-marker, TOC,
 # and layout detectors compose their positional variants from this core so
 # the accepted number forms stay identical everywhere.
-PAGE_NUMBER_CORE = r"(?:\d+|[ivxlcdm]+\b)"
+PAGE_NUMBER_CORE = rf"(?:\d+|{ROMAN_NUMERAL_PATTERN}\b)"
 
 # Trailing page-number suffix with no surrounding context requirements.
 RE_PAGE_NUMBER_SUFFIX = re.compile(rf"{PAGE_NUMBER_CORE}\s*$", re.IGNORECASE)
 
-# Conformed signature line: an optional ``By:`` label followed by ``/s/``.
-# Shared by closing-region detection and layout hard-preservation.
-RE_CONFORMED_SIGNATURE = re.compile(r"^\s*(?:By\s*:\s*)?/s/\s*")
+# Grammatical clause commas separating alpha words (e.g. "apples, oranges")
+RE_GRAMMATICAL_COMMA = re.compile(r"[a-zA-Z],\s+[a-zA-Z]")
 
 RE_SENTENCE_TERMINAL = re.compile(r"[.!?][\"\x27\u201d\u2019)]?\s*$")
 RE_TERMINAL_BOUNDARY = re.compile(r"[.:;!?\"\x27\u201d\u2019)]\s*$")
 CONTINUATION_PUNCTUATION = (".", ";", ":", "!", "?")
-
-# Signature/officer label prefixes that begin a signature-block line.
-SIGNATURE_LABEL_PREFIXES: tuple[str, ...] = (
-    "/s/ ",
-    "By:",
-    "Name:",
-    "Title:",
-    "Date:",
-    "Signature:",
-)
-RE_SIGNATURE_LABEL_LINE = re.compile(
-    rf"^\s*(?:{build_alternation(SIGNATURE_LABEL_PREFIXES, auto_escape=True)})\s*",
-    re.IGNORECASE,
-)
 
 # Fill-in/divider runs (dashes, equals, underscores, asterisks) that mark
 # separator or fill-in lines.

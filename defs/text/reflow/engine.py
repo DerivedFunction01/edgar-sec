@@ -8,14 +8,10 @@ from defs.tables.protection import (
     mask_tagged_tables,
     restore_tagged_tables,
 )
+from defs.tables.resolver import resolve_table_regions
 from defs.tables.table_policy import (
-    expand_table_headers,
-    extend_multiline_table_rows,
     is_tableish_block,
-    merge_bridged_tables,
-    merge_structural_table_regions,
     split_structural_table_intro,
-    tag_discipline_gate,
     unify_table_prose,
 )
 from defs.text.patterns import RE_SEPARATOR_LINE
@@ -23,7 +19,8 @@ from defs.text.signatures import mask_signature_regions, restore_signature_regio
 from defs.text.tokens import is_bullet_line
 
 from .classifier import _decide
-from .features import _compute_features, _numeric_cell_starts
+from .context import BlockContext
+from .features import _Features, _numeric_cell_starts
 from .types import (
     ACTION_PRESERVE,
     ACTION_TAG_AND_PRESERVE,
@@ -132,6 +129,118 @@ def _merge_adjacent_prose_decisions(
     return merged
 
 
+def _classify_block(
+    block_lines: tuple[str, ...],
+    *,
+    start_line: int,
+    end_line: int,
+    body_start_line: int,
+    page_context: bool,
+    policy: ReflowPolicy,
+    features: _Features | None = None,
+) -> SpanDecision:
+    """Return the production first-pass decision for one segmented block."""
+    if end_line <= body_start_line and not policy.unwrap_pre_body_prose:
+        return SpanDecision(
+            ACTION_PRESERVE,
+            start_line,
+            end_line,
+            1.0,
+            ("pre_body_region",),
+            "fast_noop",
+        )
+
+    has_masked = any(_SENTINEL_PREFIX in line for line in block_lines)
+    ctx = BlockContext(block_lines) if features is None else features
+    base_decision = _decide(ctx, len(block_lines), has_masked)
+    features = ctx
+    if _is_bullet_prose_block(block_lines, features, policy):
+        decision = SpanDecision(
+            ACTION_UNWRAP,
+            0,
+            len(block_lines),
+            0.8,
+            ("bullet_prose_continuation",),
+            "bullet_reflow",
+        )
+    elif (
+        is_tableish_block(features) and base_decision.action != ACTION_TAG_AND_PRESERVE
+    ):
+        target_action = (
+            ACTION_TAG_AND_PRESERVE if policy.tag_untagged_tables else ACTION_PRESERVE
+        )
+        decision = SpanDecision(
+            target_action,
+            0,
+            len(block_lines),
+            0.8,
+            ("inferred_table_layout",),
+            "table_continuity",
+        )
+    elif policy.unwrap_pre_body_prose and any(
+        end_line <= body_start_line
+        and policy.is_structural_line is not None
+        and policy.is_structural_line(line)
+        for line in block_lines
+    ):
+        decision = SpanDecision(
+            ACTION_PRESERVE,
+            0,
+            len(block_lines),
+            1.0,
+            ("front_matter_form_layout",),
+            "hard_preserve",
+        )
+    elif (
+        policy.relax_prose_layout_gaps
+        and features.alpha_density >= 0.55
+        and features.any_lowercase
+        and not features.has_structural
+        and not features.has_tab
+        and not features.has_separator
+        and not features.has_dot_leader
+        and not features.has_signature
+        and features.shared_numeric_columns == 0
+    ):
+        decision = SpanDecision(
+            ACTION_UNWRAP,
+            0,
+            len(block_lines),
+            0.65,
+            ("relaxed_prose_layout",),
+            "front_matter_prose",
+        )
+    else:
+        decision = base_decision
+
+    if end_line <= body_start_line and decision.action == ACTION_TAG_AND_PRESERVE:
+        decision = SpanDecision(
+            ACTION_PRESERVE,
+            0,
+            len(block_lines),
+            1.0,
+            ("front_matter_form_layout",),
+            "hard_preserve",
+        )
+    if page_context and decision.action == ACTION_UNWRAP:
+        decision = SpanDecision(
+            decision.action,
+            decision.start_line,
+            decision.end_line,
+            decision.confidence,
+            decision.evidence + ("page_boundary_context",),
+            decision.trace,
+        )
+    return SpanDecision(
+        decision.action,
+        start_line,
+        end_line,
+        decision.confidence,
+        decision.evidence,
+        decision.trace,
+    )
+
+
 def reflow_ascii(
     text: str,
     *,
@@ -162,117 +271,39 @@ def reflow_ascii(
     blocks = _segment(lines, policy=active_policy)
     per_block: list[tuple[tuple[int, int, tuple[str, ...]], SpanDecision]] = []
     for start, end, block_lines in blocks:
-        if end <= masked_body_start_line and not active_policy.unwrap_pre_body_prose:
-            per_block.append(
-                (
-                    (start, end, block_lines),
-                    SpanDecision(
-                        ACTION_PRESERVE,
-                        start,
-                        end,
-                        1.0,
-                        ("pre_body_region",),
-                        "fast_noop",
-                    ),
-                )
-            )
-            continue
-        features = _compute_features(block_lines)
-        has_masked = any(_SENTINEL_PREFIX in line for line in block_lines)
-        base_decision = _decide(features, len(block_lines), has_masked)
-        if _is_bullet_prose_block(block_lines, features, active_policy):
-            decision = SpanDecision(
-                ACTION_UNWRAP,
-                0,
-                len(block_lines),
-                0.8,
-                ("bullet_prose_continuation",),
-                "bullet_reflow",
-            )
-        elif (
-            is_tableish_block(features)
-            and base_decision.action != ACTION_TAG_AND_PRESERVE
-        ):
-            decision = SpanDecision(
-                ACTION_TAG_AND_PRESERVE,
-                0,
-                len(block_lines),
-                0.8,
-                ("inferred_table_layout",),
-                "table_continuity",
-            )
-        elif active_policy.unwrap_pre_body_prose and any(
-            end <= masked_body_start_line
-            and active_policy.is_structural_line is not None
-            and active_policy.is_structural_line(line)
-            for line in block_lines
-        ):
-            decision = SpanDecision(
-                ACTION_PRESERVE,
-                0,
-                len(block_lines),
-                1.0,
-                ("front_matter_form_layout",),
-                "hard_preserve",
-            )
-        elif (
-            active_policy.relax_prose_layout_gaps
-            and features.alpha_density >= 0.55
-            and features.any_lowercase
-            and not features.has_structural
-            and not features.has_tab
-            and not features.has_separator
-            and not features.has_dot_leader
-            and not features.has_signature
-            and features.shared_numeric_columns == 0
-        ):
-            decision = SpanDecision(
-                ACTION_UNWRAP,
-                0,
-                len(block_lines),
-                0.65,
-                ("relaxed_prose_layout",),
-                "front_matter_prose",
-            )
-        else:
-            decision = base_decision
-        if end <= masked_body_start_line and decision.action == ACTION_TAG_AND_PRESERVE:
-            decision = SpanDecision(
-                ACTION_PRESERVE,
-                0,
-                len(block_lines),
-                1.0,
-                ("front_matter_form_layout",),
-                "hard_preserve",
-            )
-        if page_context and decision.action == ACTION_UNWRAP:
-            decision = SpanDecision(
-                decision.action,
-                decision.start_line,
-                decision.end_line,
-                decision.confidence,
-                decision.evidence + ("page_boundary_context",),
-                decision.trace,
-            )
+        decision = _classify_block(
+            block_lines,
+            start_line=start,
+            end_line=end,
+            body_start_line=masked_body_start_line,
+            page_context=page_context,
+            policy=active_policy,
+        )
         per_block.append(
             (
                 (start, end, block_lines),
-                SpanDecision(
-                    decision.action,
-                    start,
-                    end,
-                    decision.confidence,
-                    decision.evidence,
-                    decision.trace,
-                ),
+                decision,
             )
         )
 
-    decisions = expand_table_headers([decision for _, decision in per_block], blocks)
-    decisions = extend_multiline_table_rows(decisions, blocks, policy=active_policy)
-    decisions = merge_bridged_tables(decisions, blocks=blocks, policy=active_policy)
-    decisions = merge_structural_table_regions(decisions, blocks, policy=active_policy)
-    decisions = tag_discipline_gate(decisions, blocks)
+    if active_policy.tag_untagged_tables:
+        decisions = resolve_table_regions(
+            [decision for _, decision in per_block], blocks, policy=active_policy
+        )
+    else:
+        decisions = [
+            SpanDecision(
+                ACTION_PRESERVE,
+                d.start_line,
+                d.end_line,
+                d.confidence,
+                d.evidence,
+                d.trace,
+            )
+            if d.action == ACTION_TAG_AND_PRESERVE
+            else d
+            for _, d in per_block
+        ]
     decisions = _merge_adjacent_prose_decisions(decisions)
     rendered: list[str] = []
     cursor = decision_index = 0

@@ -4,22 +4,50 @@ from __future__ import annotations
 
 import re
 
+from defs.regex import build_alternation
 from defs.text.checkmarks import CANONICAL_CHECKED, CANONICAL_UNCHECKED
 
 YES_NO_WORD_RE = re.compile(
-    r"\b(?P<answer>yes|no)(?=\s|[:.]|[_\[\(\{/|]|$)", re.IGNORECASE
+    r"\b(?P<answer>yes|no)(?=\s|[:.]|[_\[\(\{/|\\]|$)", re.IGNORECASE
 )
 YES_NO_LINE_RE = re.compile(
-    r"\b(?:yes|no)(?=\s|[:.]|[_\[\(\{/|]|$).*"
-    r"\b(?:yes|no)(?=\s|[:.]|[_\[\(\{/|]|$)",
+    r"\b(?:yes|no)(?=\s|[:.]|[_\[\(\{/|\\]|$).*"
+    r"\b(?:yes|no)(?=\s|[:.]|[_\[\(\{/|\\]|$)",
     re.IGNORECASE,
 )
 
-_MARK_PATTERN = (
-    r"(?:_{1,8}\s*[Xx]\s*_{1,8}|_{1,8}\s*[Xx]|[Xx]\s*_{1,8}"
-    r"|_{1,8}\s*[Cc][Kk]\s*_{1,8}|/\s*[Xx]\s*/|\|\s*[Xx]\s*\|"
-    r"|\bX{1,2}\b|\bCK\b|_{1,8}(?:\s+_{1,8})+|\[(?:X| )\]|_{2,}"
-    r"|\[\s*[_-]{1,8}\s*\]|\{\s*\}|/\s{1,8}/|\(\s{1,8}\))"
+_CHECKED_PATTERNS: tuple[str, ...] = (
+    r"_{1,8}\s*[Xx]\s*_{1,8}",
+    r"_{1,8}\s*[Xx]",
+    r"[Xx]\s*_{1,8}",
+    r"_{1,8}\s*[Cc][Kk]\s*_{1,8}",
+    r"/\s*[Xx]\s*/",
+    r"\|\s*[Xx]\s*\|",
+    r"\\\s*[Xx]\s*\\",
+    r"\[[Xx]\]",
+    r"\bX{1,2}\b",
+    r"\bCK\b",
+)
+
+_UNCHECKED_PATTERNS: tuple[str, ...] = (
+    r"_{1,8}(?:\s+_{1,8})+",
+    r"\[ \]",
+    r"_{2,}",
+    r"\[\s*[_-]{1,8}\s*\]",
+    r"\{\s*\}",
+    r"/\s{1,8}/",
+    r"\|\s{1,8}\|",
+    r"\\\s{1,8}\\",
+    r"\(\s{1,8}\)",
+)
+
+_CHECKED_RE = re.compile(
+    build_alternation(_CHECKED_PATTERNS, sort_longest_first=False),
+    re.IGNORECASE,
+)
+_MARK_PATTERN = build_alternation(
+    (*_CHECKED_PATTERNS, *_UNCHECKED_PATTERNS),
+    sort_longest_first=False,
 )
 _PAIR_RE = re.compile(
     rf"(?:(?P<before>{_MARK_PATTERN})\s*)?"
@@ -27,16 +55,13 @@ _PAIR_RE = re.compile(
     rf"(?:(?P<after>{_MARK_PATTERN}))?",
     re.IGNORECASE,
 )
-_CHECKED_RE = re.compile(
-    r"(?:_{1,8}\s*[Xx]\s*_{1,8}|_{1,8}\s*[Xx]|[Xx]\s*_{1,8}"
-    r"|/\s*[Xx]\s*/|\|\s*[Xx]\s*\||\[[Xx]\]|\bX{1,2}\b"
-    r"|_{1,8}\s*[Cc][Kk]\s*_{1,8}|\bCK\b)",
-    re.IGNORECASE,
-)
 
 
 def normalize_yes_no_pair_line(line: str) -> str:
     """Canonicalize a line only when both opposite answers are explicitly marked."""
+    lower = line.casefold()
+    if "yes" not in lower or "no" not in lower:
+        return line
     matches = tuple(_PAIR_RE.finditer(line))
     pair_matches: list[re.Match[str]] = []
     for index in range(len(matches) - 1):

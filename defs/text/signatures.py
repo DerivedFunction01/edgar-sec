@@ -19,9 +19,28 @@ from dataclasses import dataclass
 
 from defs.regex import build_alternation
 from defs.text.dates import MONTH_RE
-from defs.text.patterns import RE_CONFORMED_SIGNATURE, RE_SIGNATURE_LABEL_LINE
+
+# Conformed signature line: an optional ``By:`` label followed by ``/s/``.
+RE_CONFORMED_SIGNATURE = re.compile(r"^\s*(?:By\s*:\s*)?/s/\s*")
+
+# Signature/officer label prefixes that begin a signature-block line.
+SIGNATURE_LABEL_PREFIXES: tuple[str, ...] = (
+    "/s/ ",
+    "By:",
+    "Name:",
+    "Title:",
+    "Date:",
+    "Signature:",
+)
+RE_SIGNATURE_LABEL_LINE = re.compile(
+    rf"^\s*(?:{build_alternation(SIGNATURE_LABEL_PREFIXES, auto_escape=True)})\s*",
+    re.IGNORECASE,
+)
 
 __all__ = [
+    "RE_CONFORMED_SIGNATURE",
+    "RE_SIGNATURE_LABEL_LINE",
+    "SIGNATURE_LABEL_PREFIXES",
     "SignatureRegion",
     "find_signature_regions",
     "heal_mangled_signature_text",

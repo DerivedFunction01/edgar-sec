@@ -21,7 +21,16 @@ line ranges in the coordinate frame of the text passed in.
 
 from __future__ import annotations
 
+from .context import BlockContext
 from .engine import reflow_ascii
+from .registry import (
+    FEATURE_REGISTRY,
+    FeatureSpec,
+)
+from .rules import (
+    RuleEngine,
+    decide_block,
+)
 from .types import (
     ACTION_PRESERVE,
     ACTION_TAG_AND_PRESERVE,
@@ -36,9 +45,14 @@ __all__ = [
     "ACTION_PRESERVE",
     "ACTION_TAG_AND_PRESERVE",
     "ACTION_UNWRAP",
+    "FEATURE_REGISTRY",
+    "BlockContext",
+    "FeatureSpec",
     "ReflowPolicy",
     "ReflowResult",
+    "RuleEngine",
     "SpanDecision",
     "build_line_mapper",
+    "decide_block",
     "reflow_ascii",
 ]

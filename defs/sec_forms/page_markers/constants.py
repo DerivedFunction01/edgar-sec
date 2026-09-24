@@ -6,6 +6,7 @@ import re
 
 from defs.regex import build_alternation
 from defs.text.patterns import PAGE_NUMBER_CORE
+from defs.text.tokens import ROMAN_NUMERAL_PATTERN
 
 from .models import PageMarkerKind
 
@@ -31,7 +32,7 @@ _RE_SGML_INLINE = re.compile(r"(?i)</?PAGE\b[^>]*>")
 _RE_BOUNDARY = re.compile(r"(?im)^[ \t]*(?:\(PAGE\)|\[PAGE\])[ \t]*$")
 _WRAPPERS = build_alternation(["-", "–", "—", ".", "·", "•", "▪"], auto_escape=True)
 _PAGE_ARABIC = r"\d{1,4}"
-_PAGE_ROMAN = r"[ivxlcdm]{1,8}"
+_PAGE_ROMAN = ROMAN_NUMERAL_PATTERN
 _PAGE_VALUE = rf"(?:{_PAGE_ARABIC}|{_PAGE_ROMAN})"
 _RE_DASH_LABEL = re.compile(
     rf"^(?=.*(?:{_WRAPPERS}))(?:{_WRAPPERS}|\s)+"
@@ -73,22 +74,6 @@ _PAGE_MARKER_PATTERNS = (
 RE_PAGE_SUFFIX = re.compile(
     rf"(?:\b[A-Z])?[\.\-\s]?{PAGE_NUMBER_CORE}(?:\s*[\|+])?\s*$",
     re.IGNORECASE,
-)
-
-_NUMERALS = (
-    ("m", 1000),
-    ("cm", 900),
-    ("d", 500),
-    ("cd", 400),
-    ("c", 100),
-    ("xc", 90),
-    ("l", 50),
-    ("xl", 40),
-    ("x", 10),
-    ("ix", 9),
-    ("v", 5),
-    ("iv", 4),
-    ("i", 1),
 )
 
 _PAGE_WORDS = build_alternation(
@@ -180,7 +165,7 @@ PROSE_GUARD_STOP_WORDS = frozenset(
     ]
 )
 _RE_APPENDIX_ROMAN = re.compile(
-    r"^(?P<prefix>[A-Za-z])-(?P<value>[ivxlcdm]{1,8})$",
+    rf"^(?P<prefix>[A-Za-z])-(?P<value>{ROMAN_NUMERAL_PATTERN})$",
     re.IGNORECASE,
 )
 
@@ -319,7 +304,6 @@ __all__ = [
     "RE_PAGE_SUFFIX",
     "_HIDDEN_STYLE_RE",
     "_HIDDEN_STYLE_VALUES",
-    "_NUMERALS",
     "_PAGE_MARKER_PATTERNS",
     "_PAGE_WORDS",
     "_RE_APPENDIX_ROMAN",

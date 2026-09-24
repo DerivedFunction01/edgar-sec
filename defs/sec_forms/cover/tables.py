@@ -14,12 +14,11 @@ from collections.abc import Sequence
 from typing import TYPE_CHECKING
 
 from defs.regex import build_alternation
+from defs.tables.patterns import RE_TABLE_BLOCK
 
 if TYPE_CHECKING:
     from defs.sec_forms.cover.models import CoverBoundary
     from defs.tables.ascii_html import TableGeometry
-
-_RE_TABLE_BLOCK = re.compile(r"<TABLE>.*?</TABLE>", re.DOTALL)
 
 _REPORT_TYPE_ALT = build_alternation(["annual", "transition", "quarterly"])
 _REPORT_STATUTE_ALT = build_alternation(
@@ -89,7 +88,7 @@ def clean_cover_tables(
     else:
         cover_char_end = sum(len(line) for line in lines[: boundary.end_line])
 
-    matches = list(_RE_TABLE_BLOCK.finditer(text))
+    matches = list(RE_TABLE_BLOCK.finditer(text))
     if not matches:
         return text, table_geometries
 

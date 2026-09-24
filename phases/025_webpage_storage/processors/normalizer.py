@@ -83,8 +83,14 @@ class NormalizationResult:
 class DeepNormalizer:
     """Stage 3 normalizer; coordinates generic table and form-aware structural normalization."""
 
-    def __init__(self, router: FormRouter | None = None) -> None:
+    def __init__(
+        self,
+        router: FormRouter | None = None,
+        *,
+        tag_untagged_tables: bool = False,
+    ) -> None:
         self._router = router or FormRouter()
+        self.tag_untagged_tables = tag_untagged_tables
 
     def normalize(
         self,
@@ -385,6 +391,7 @@ class DeepNormalizer:
                     is_structural_line=is_cover_layout_line,
                     is_table_bridge_line=is_financial_table_bridge_line,
                     is_table_tail_line=is_financial_table_tail_line,
+                    tag_untagged_tables=self.tag_untagged_tables,
                 ),
             )
             text = reflow_result.text

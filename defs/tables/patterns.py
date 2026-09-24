@@ -6,6 +6,8 @@ import re
 
 from defs.regex import build_alternation, build_regex
 from defs.text.dates import (
+    PERIOD_SUBHEADING_PAT,
+    PERIOD_SUBHEADING_RE,
     TABLE_YEAR_RE,
     YEAR_IN_TEXT_RE,
 )
@@ -26,6 +28,7 @@ CAPTION_RE = re.compile(
     re.IGNORECASE | re.DOTALL,
 )
 TABLE_TAG_RE = re.compile(r"<TABLE.*?>", re.DOTALL | re.IGNORECASE)
+RE_TABLE_BLOCK = re.compile(r"<TABLE>.*?</TABLE>", re.DOTALL)
 S_MARKER_RE = re.compile(r"<S>")
 C_MARKER_RE = re.compile(r"<C>")
 HTML_TAG_RE = re.compile(r"<[^>]+>")
@@ -198,6 +201,9 @@ __all__ = [
     "PARAGRAPH_THRESHOLD",
     "PAREN_SPACES_RE",
     "PERCENT_HEADER_RE",
+    "PERIOD_SUBHEADING_PAT",
+    "PERIOD_SUBHEADING_RE",
+    "RE_TABLE_BLOCK",
     "SPACE_COMMA_RE",
     "S_MARKER_RE",
     "TABLE_INTRO_CUE_RE",

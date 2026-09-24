@@ -83,7 +83,7 @@ def test_default_filing_processor_lifecycle() -> None:
 def test_default_filing_processor_persists_topology_metadata(tmp_path) -> None:
     from defs.sql import Commit, insert_values, make_sql_executor
 
-    processor = DefaultFilingProcessor()
+    processor = DefaultFilingProcessor(tag_untagged_tables=True)
 
     raw_ascii = b"""<DOCUMENT>
 <TYPE>10-K
@@ -236,4 +236,62 @@ Revenues grew 40% year over year.
     # Metadata must stay deterministic JSON for processor_metadata.
     assert json.loads(schemas.deterministic_metadata(processed.metadata)) == (
         processed.metadata
+    )
+
+
+def test_default_filing_processor_tag_untagged_tables_policy() -> None:
+    raw_ascii = b"""<DOCUMENT>
+<TYPE>10-K
+<TEXT>
+FORM 10-K
+
+ANNUAL REPORT PURSUANT TO SECTION 13
+
+Registrant: Example Corp
+
+TABLE OF CONTENTS
+
+PART I
+ITEM 1. BUSINESS
+
+We are an enterprise software company founded in 1998 that sells
+products across multiple market segments today.
+
+2. PROPERTY AND EQUIPMENT:
+
+Property and equipment consist of the following at December 31, 1998:
+
+    Machinery and equipment                                     $465,498
+    Furniture and fixtures                                       177,904
+                                                               ---------
+                                                                $643,402
+                                                               =========
+</TEXT>
+</DOCUMENT>"""
+    locator = DocumentLocator(
+        locator_key="k2",
+        accession="0000123456-02-000002",
+        document_path="form10k.txt",
+        archive_url="https://www.sec.gov/Archives/edgar/data/123456/000012345602000002/form10k.txt",
+        form="10-K",
+    )
+    # Default processor: tag_untagged_tables=False
+    processor_default = DefaultFilingProcessor()
+    processed_default = asyncio.run(processor_default.process(raw_ascii, locator))
+    decoded_default = processed_default.payload.decode("utf-8")
+    assert "<TABLE>" not in decoded_default
+    assert "$643,402" in decoded_default
+    assert (
+        "We are an enterprise software company founded in 1998 that sells products"
+        in decoded_default
+    )
+
+    # Explicit review processor: tag_untagged_tables=True
+    processor_review = DefaultFilingProcessor(tag_untagged_tables=True)
+    processed_review = asyncio.run(processor_review.process(raw_ascii, locator))
+    decoded_review = processed_review.payload.decode("utf-8")
+    assert "<TABLE>" in decoded_review
+    assert (
+        "$643,402\n                                                               =========\n</TABLE>"
+        in decoded_review
     )

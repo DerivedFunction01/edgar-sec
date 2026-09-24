@@ -68,7 +68,7 @@ NUMERIC_CELL_RE = re.compile(
     rf"^(?:{_CURRENCY_ALTERNATION}\s*)?\(?\s*"
     rf"(?:{_CURRENCY_ALTERNATION}\s*)?[\d,\.]+"
     rf"(?:\s*(?:{_UNIT_ALTERNATION}|%))?"
-    rf"(?:\s*-\s*(?:{_CURRENCY_ALTERNATION}\s*)?[\d,\.]+"
+    rf"(?:\s*[-/]\s*(?:{_CURRENCY_ALTERNATION}\s*)?[\d,\.]+"
     rf"(?:\s*(?:{_UNIT_ALTERNATION}|%))?)?"
     rf"\s*(?:{_CURRENCY_ALTERNATION})?\s*\)?\s*%?$"
 )

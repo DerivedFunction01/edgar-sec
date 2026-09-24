@@ -7,7 +7,7 @@ import re
 from collections import defaultdict
 from typing import Any
 
-from defs.text.patterns import roman_to_int
+from defs.text.tokens import roman_to_int
 
 from ..constants import (
     _PAGE_MARKER_PATTERNS,
@@ -479,6 +479,22 @@ def promote_groups(
             marker_for_candidate(candidate, 0.88 if anchored else 0.8, evidence)
             for candidate in healed.candidates
         )
+        if anchored:
+            accepted_lines = {c.start_line for c in healed.candidates}
+            accepted_values = {c.value for c in healed.candidates}
+            dup_evidence = (
+                "anchor_relative_sequence",
+                "anchored_duplicate_page",
+                f"monotone:{healed.monotone_fraction:.2f}",
+            )
+            for candidate in members:
+                if (
+                    candidate.start_line not in accepted_lines
+                    and candidate.value in accepted_values
+                ):
+                    accepted_lines.add(candidate.start_line)
+                    accepted.append(candidate)
+                    markers.append(marker_for_candidate(candidate, 0.88, dup_evidence))
     runs = unify_alternating_runs(runs)
     return markers, runs, accepted, tuple(rejections)
 

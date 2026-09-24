@@ -26,13 +26,14 @@ from typing import TYPE_CHECKING
 
 from defs.sec_forms.cover.structure import RE_ITEM_REFERENCE, RE_PART_REFERENCE
 from defs.sec_forms.cover.toc import looks_like_toc_row, looks_like_toc_tabular
-from defs.tables.patterns import FOOTNOTE_RE
-from defs.text.patterns import CONTINUATION_PUNCTUATION, roman_to_int
+from defs.tables.patterns import FOOTNOTE_RE, RE_TABLE_BLOCK
+from defs.text.patterns import CONTINUATION_PUNCTUATION
 from defs.text.tokens import (
     BULLET_MARKER_RE,
     ORDERED_MARKER_PREFIX_RE,
     WRAPPED_MARKER_PREFIX_RE,
     is_list_or_bullet_marker,
+    roman_to_int,
 )
 
 from .numeric_cells import is_numeric_cell
@@ -40,7 +41,7 @@ from .numeric_cells import is_numeric_cell
 if TYPE_CHECKING:
     from defs.tables.ascii_html import TableGeometry
 
-_RE_TABLE_BLOCK = re.compile(r"<TABLE>.*?</TABLE>", re.DOTALL)
+_RE_TABLE_BLOCK = RE_TABLE_BLOCK
 _RE_NUMERIC_SEPARATOR = re.compile(r"^[-=\s]+$")
 _RE_UNAMBIGUOUS_MARKER = re.compile(r"\[\d{1,3}\]|[\*\†\‡\§\#]+")
 
@@ -184,6 +185,8 @@ def _passes_monotonic(
 
 def _is_ordered_prose_grid(grid: list[tuple[str, ...]]) -> bool:
     rows: list[list[tuple[str, int]]] = []
+    has_plain_letter = False
+    has_wide_roman = False
     for row in grid:
         marker_cells: list[tuple[str, list[tuple[str, int, str]]]] = []
         for cell in row:
@@ -203,16 +206,14 @@ def _is_ordered_prose_grid(grid: list[tuple[str, ...]]) -> bool:
             prose = f"{rest} {prose}".strip()
         if not _is_prose_text(prose):
             return False
+        if len(candidates) == 1:
+            fam = candidates[0][0]
+            if fam == "letter":
+                has_plain_letter = True
+            elif fam == "roman":
+                has_wide_roman = True
         rows.append([(family, value) for family, value, _ in candidates])
 
-    has_plain_letter = any(
-        len(candidates) == 1 and candidates[0][0] == "letter" for candidates in rows
-    )
-    has_wide_roman = any(
-        len(candidates) == 1 and candidates[0][0] == "roman" for candidates in rows
-    )
-    # Letters stay letters: when unambiguous letter rows exist, ambiguous
-    # single characters (``i)``, ``v)`` ...) must read as letters, never roman.
     if has_plain_letter and _passes_monotonic(rows, "letter"):
         return True
     if has_wide_roman and _passes_monotonic(rows, "roman"):
@@ -368,13 +369,25 @@ def _join_prose_rows(rows: list[list[str]]) -> str:
 
 def unwrap_grid(grid_rows: Sequence[Sequence[str]]) -> str:
     """Unwrap a false grid into formatted prose or bullet text."""
-    rows = [[cell.strip() for cell in row if cell.strip()] for row in grid_rows]
-    rows = [row for row in rows if row]
+    rows: list[list[str]] = []
+    has_markers = False
+    for raw_row in grid_rows:
+        row: list[str] = []
+        for cell in raw_row:
+            stripped = cell.strip()
+            if not stripped:
+                continue
+            row.append(stripped)
+            if not has_markers and (
+                BULLET_MARKER_RE.match(stripped) or bool(_marker_candidates(stripped))
+            ):
+                has_markers = True
+        if row:
+            rows.append(row)
+
     if not rows:
         return ""
-    has_bullets = any(BULLET_MARKER_RE.match(cell) for row in rows for cell in row)
-    has_ordered = any(_marker_candidates(cell) for row in rows for cell in row)
-    if has_bullets or has_ordered:
+    if has_markers:
         return "\n".join(" ".join(row) for row in rows)
     return _join_prose_rows(rows)
 

@@ -32,20 +32,16 @@ from .patterns import (
     PAREN_SPACES_RE,
     YEAR_TOKEN_RE,
 )
+from .resolver import resolve_table_regions
 from .structural import (
     is_header_prefix,
     is_structural_table_bridge,
     is_structural_table_tail,
 )
 from .table_policy import (
-    expand_table_headers,
-    extend_multiline_table_rows,
     is_table_row_continuation,
     is_tableish_block,
-    merge_bridged_tables,
-    merge_structural_table_regions,
     split_structural_table_intro,
-    tag_discipline_gate,
     unify_table_prose,
 )
 from .tokens import (
@@ -82,8 +78,6 @@ __all__ = [
     "convert_html_table",
     "convert_html_tables_to_ascii",
     "convert_html_tables_to_ascii_with_metadata",
-    "expand_table_headers",
-    "extend_multiline_table_rows",
     "is_false_table",
     "is_financial_placeholder",
     "is_header_prefix",
@@ -95,13 +89,11 @@ __all__ = [
     "is_suffix_token",
     "is_table_row_continuation",
     "is_tableish_block",
-    "merge_bridged_tables",
-    "merge_structural_table_regions",
     "normalize_hybrid_pre_blocks",
     "normalize_hybrid_pre_text",
     "render_grid_to_ascii",
+    "resolve_table_regions",
     "restore_hybrid_pre_text",
     "split_structural_table_intro",
-    "tag_discipline_gate",
     "unify_table_prose",
 ]

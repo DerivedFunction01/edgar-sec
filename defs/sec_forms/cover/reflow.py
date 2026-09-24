@@ -24,6 +24,15 @@ def is_checkbox_answer_line(line: str) -> bool:
     return bool(YES_NO_LINE_RE.search(line) and CHECKMARK_MARK_RE.search(line))
 
 
+_COVER_PATTERNS = (
+    REGISTRANT_NAME_RE,
+    STATE_INCORPORATION_RE,
+    ADDRESS_RE,
+    COMMISSION_FILE_RE,
+    SECURITIES_12B_RE,
+)
+
+
 @lru_cache(maxsize=16384)
 def is_cover_layout_line(line: str) -> bool:
     """Return whether a line is a standalone cover/layout structure.
@@ -39,18 +48,10 @@ def is_cover_layout_line(line: str) -> bool:
         return True
     if len(stripped.split()) <= 4 and _FORM_PATTERN.search(stripped):
         return True
-    return bool(
-        any(
-            pattern.search(line)
-            for pattern in (
-                REGISTRANT_NAME_RE,
-                STATE_INCORPORATION_RE,
-                ADDRESS_RE,
-                COMMISSION_FILE_RE,
-                SECURITIES_12B_RE,
-            )
-        )
-    )
+    for pattern in _COVER_PATTERNS:
+        if pattern.search(line):
+            return True
+    return False
 
 
 __all__ = [

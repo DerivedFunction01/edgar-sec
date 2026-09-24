@@ -40,6 +40,7 @@ BRACKET_PAIRS = (
     ("{", "}"),
     ("/", "/"),
     ("|", "|"),
+    ("\\", "\\"),
 )
 CHECKED_INNER = (
     "x",
@@ -225,10 +226,10 @@ UNDERSCORE_RUN = r"_{1,8}"
 
 
 def _wrapped_mark_pattern(symbol: str) -> str:
-    """Build the shared bracket, slash, and pipe wrapper structure."""
+    """Build the shared bracket, slash, pipe, and backslash wrapper structure."""
     return (
         rf"(?:{MARK_OPEN}\s*{symbol}\s*{MARK_CLOSE}|"
-        rf"/\s*{symbol}\s*/|\|\s*{symbol}\s*\|)"
+        rf"/\s*{symbol}\s*/|\|\s*{symbol}\s*\||\\\s*{symbol}\s*\\)"
     )
 
 
@@ -242,7 +243,7 @@ _VARIABLE_CHECKED_PATTERN = (
 _VARIABLE_UNCHECKED_SAFE_PATTERN = (
     rf"(?:{MARK_OPEN}{SPACED_BLANK}{MARK_CLOSE}|"
     rf"{MARK_OPEN}\s*[_-]{{1,8}}\s*{MARK_CLOSE}|"
-    rf"/\s{{1,8}}/|\|\s{{1,8}}\|)"
+    rf"/\s{{1,8}}/|\|\s{{1,8}}\||\\\s{{1,8}}\\)"
 )
 _VARIABLE_UNCHECKED_PATTERN = (
     rf"(?:{_VARIABLE_UNCHECKED_SAFE_PATTERN}|"

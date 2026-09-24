@@ -120,6 +120,36 @@ COLUMN_YEAR_ROW_RE = re.compile(
     rf"^\s*(?:{_PERIOD_TOKEN_PAT})(?:\s+(?:{_PERIOD_HEADER_SUFFIX_PAT}).*)?\s*$",
     re.IGNORECASE,
 )
+RE_FULL_DATE = re.compile(rf"\b(?:{_DATE_TOKEN_PAT})\b", re.IGNORECASE)
+
+_PERIOD_SPAN_WORDS = build_alternation(
+    [
+        "three months",
+        "six months",
+        "nine months",
+        "fiscal year",
+        "fiscal",
+        "year",
+        "years",
+        "quarter",
+        "quarters",
+        "period",
+        "periods",
+    ],
+    auto_escape=True,
+    compact=True,
+)
+_PERIOD_SUBHEADING_PATTERNS = [
+    rf"(?:{_PERIOD_SPAN_WORDS})\s+(?:ended\s+)?{YEAR_TOKEN_PATTERN}",
+    rf"(?:{_PERIOD_SPAN_WORDS})\s+(?:ended\s+)?Q[1-4]",
+    rf"Q[1-4]\s+{YEAR_TOKEN_PATTERN}",
+]
+PERIOD_SUBHEADING_PAT = build_alternation(
+    _PERIOD_SUBHEADING_PATTERNS, auto_escape=False, compact=False
+)
+PERIOD_SUBHEADING_RE = re.compile(
+    rf"^\s*(?:{PERIOD_SUBHEADING_PAT})\s*:?\s*$", re.IGNORECASE
+)
 
 
 @dataclass(frozen=True, slots=True)
@@ -488,6 +518,9 @@ __all__ = [
     "MONTH_SUFFIX_RE",
     "ORDINAL_SUFFIX_PATTERN",
     "ORDINAL_SUFFIX_RE",
+    "PERIOD_SUBHEADING_PAT",
+    "PERIOD_SUBHEADING_RE",
+    "RE_FULL_DATE",
     "SEC_DATE_FORMATS",
     "TABLE_YEAR_RE",
     "YEAR_IN_TEXT_RE",

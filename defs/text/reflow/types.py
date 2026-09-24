@@ -30,6 +30,7 @@ class ReflowPolicy:
     is_structural_line: Callable[[str], bool] | None = None
     is_table_bridge_line: Callable[[str], bool] | None = None
     is_table_tail_line: Callable[[str], bool] | None = None
+    tag_untagged_tables: bool = True
     split_table_intro: (
         Callable[[tuple[str, ...]], tuple[tuple[str, ...], tuple[str, ...]]] | None
     ) = None

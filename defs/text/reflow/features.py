@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 
-from defs.tables.tokens import is_numeric_cell, is_prefix_token
+from defs.tables.tokens import numeric_cell_starts
 from defs.text.patterns import (
     RE_COLUMN_GAP,
     RE_DOT_LEADER,
@@ -44,35 +44,12 @@ def _line_gap_starts(line: str) -> tuple[int, ...]:
     for match in RE_COLUMN_GAP.finditer(line[:stripped_end]):
         if match.start() < content_start:
             continue
-        if len(match.group()) >= 3:
+        if (match.end() - match.start()) >= 3:
             starts.append(match.start())
     return tuple(starts)
 
 
-def _numeric_cell_starts(line: str) -> tuple[int, ...]:
-    """Positions where a numeric/currency cell begins right after a gap."""
-    stripped_end = len(line.rstrip())
-    content_start = len(line) - len(line.lstrip())
-    starts: list[int] = []
-    for match in RE_COLUMN_GAP.finditer(line[:stripped_end]):
-        if match.start() < content_start:
-            continue
-        tail = line[match.end() :].strip().split()
-        if not tail:
-            continue
-        if is_numeric_cell(tail[0]):
-            starts.append(match.end())
-        elif len(tail) > 1 and is_prefix_token(tail[0]):
-            candidate = f"{tail[0]}{tail[1]}"
-            if is_numeric_cell(candidate) or is_numeric_cell(f"{tail[0]} {tail[1]}"):
-                starts.append(match.end())
-            elif len(tail) > 2 and is_prefix_token(tail[1]):
-                candidate3 = f"{tail[0]}{tail[1]}{tail[2]}"
-                if is_numeric_cell(candidate3) or is_numeric_cell(
-                    f"{tail[0]} {tail[1]} {tail[2]}"
-                ):
-                    starts.append(match.end())
-    return tuple(starts)
+_numeric_cell_starts = numeric_cell_starts
 
 
 def _shared_columns(

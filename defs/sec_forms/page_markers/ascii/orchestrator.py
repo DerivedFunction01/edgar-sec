@@ -115,10 +115,11 @@ def _decision_for_marker(
 def _unresolved(
     candidates: list[PageCandidate], accepted: set[PageCandidate]
 ) -> tuple[str, ...]:
+    accepted_spans = {(candidate.start, candidate.end) for candidate in accepted}
     return tuple(
         f"{candidate.start_line}:{candidate.text}"
         for candidate in candidates
-        if candidate not in accepted
+        if (candidate.start, candidate.end) not in accepted_spans
     )
 
 

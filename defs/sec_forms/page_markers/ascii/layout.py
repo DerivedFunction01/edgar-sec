@@ -7,6 +7,7 @@ from itertools import pairwise
 from statistics import median
 
 from defs.tables.tokens import ALL_CURRENCY_SYMBOLS, is_numeric_cell
+from defs.text.tokens import ROMAN_NUMERAL_PATTERN
 
 from ..models import PageCandidate
 
@@ -17,7 +18,9 @@ _GROUPED_RE = re.compile(r"\d{1,3}(?:,\d{3})+")
 _PROSE_END_RE = re.compile(r"[,;:]$")
 
 _COLLAPSE_WS_RE = re.compile(r"\s+")
-_ROMAN_NUMERAL_RE = re.compile(r"(?<![A-Za-z0-9])[ivxlcdm]{1,8}(?![A-Za-z0-9])")
+_ROMAN_NUMERAL_RE = re.compile(
+    rf"(?<![A-Za-z0-9]){ROMAN_NUMERAL_PATTERN}(?![A-Za-z0-9])"
+)
 
 
 def line_shape(line: str) -> dict[str, float | int | bool]:

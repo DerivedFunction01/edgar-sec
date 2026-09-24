@@ -52,7 +52,7 @@ def run_document_case(record: dict[str, Any]) -> DocumentCaseResult:
         archive_url="",
         form=form,
     )
-    processor = DefaultFilingProcessor()
+    processor = DefaultFilingProcessor(tag_untagged_tables=True)
     preprocessed = processor.preprocessor.preprocess(
         raw, metadata={"form": locator.form}
     )

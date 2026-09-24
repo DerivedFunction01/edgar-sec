@@ -48,10 +48,14 @@ class DefaultFilingProcessor(DocumentProcessor):
         router: FormRouter | None = None,
         normalizer: DeepNormalizer | None = None,
         page_artifact_policy: PageArtifactPolicy = PageArtifactPolicy.STRIP,
+        *,
+        tag_untagged_tables: bool = False,
     ) -> None:
         self.preprocessor = preprocessor or GenericPreprocessor()
         self.router = router or FormRouter()
-        self.normalizer = normalizer or DeepNormalizer(router=self.router)
+        self.normalizer = normalizer or DeepNormalizer(
+            router=self.router, tag_untagged_tables=tag_untagged_tables
+        )
         self.page_artifact_policy = page_artifact_policy
 
     def build_processed_document(

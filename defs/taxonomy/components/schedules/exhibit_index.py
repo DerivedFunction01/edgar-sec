@@ -2,6 +2,9 @@
 
 from __future__ import annotations
 
+import re
+
+from defs.regex import build_alternation
 from defs.taxonomy.tables.shapes import ShapeConstraint
 from defs.taxonomy.tables.specs import (
     RepairPolicy,
@@ -48,6 +51,11 @@ EXHIBIT_INDEX_STATUTORY_PHRASES: dict[str, tuple[str, ...]] = {
         "commission file number",
         "commission file no.",
     ),
+    "P7_compensatory_plan": (
+        "management contract",
+        "compensatory plan",
+        "compensatory plan or arrangement",
+    ),
 }
 
 CANONICAL_EXHIBIT_HEADERS: tuple[str, ...] = (
@@ -62,6 +70,18 @@ CANONICAL_EXHIBIT_HEADERS: tuple[str, ...] = (
 
 _exhibit_phrases: tuple[str, ...] = tuple(
     phrase for phrases in EXHIBIT_INDEX_STATUTORY_PHRASES.values() for phrase in phrases
+)
+
+# Compiled pattern matching standard exhibit index numbers (e.g. 10.1, 10(a), 4.2)
+RE_EXHIBIT_NUMBER = re.compile(
+    r"\b\d{1,2}(?:\.\d{1,2}|\([a-z0-9]+\))\b",
+    re.IGNORECASE,
+)
+
+# Compiled alternation matching statutory exhibit phrases and Item 601 footnote cues
+RE_EXHIBIT_STATUTORY_PHRASE = re.compile(
+    rf"\b(?:{build_alternation(_exhibit_phrases, auto_escape=True, sort_longest_first=True)})\b",
+    re.IGNORECASE,
 )
 
 _EXHIBIT_INDEX_PACK = compile_evidence_pack(
@@ -95,4 +115,6 @@ __all__ = [
     "CANONICAL_EXHIBIT_HEADERS",
     "EXHIBIT_INDEX_SPEC",
     "EXHIBIT_INDEX_STATUTORY_PHRASES",
+    "RE_EXHIBIT_NUMBER",
+    "RE_EXHIBIT_STATUTORY_PHRASE",
 ]

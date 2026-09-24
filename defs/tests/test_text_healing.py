@@ -39,6 +39,20 @@ def test_unchecked_token_after_word_is_not_reclassified_as_checked() -> None:
     assert normalize_checkbox_tokens("Yes [X] No[ ]") == "Yes [X] No [ ]"
 
 
+def test_normalize_checkbox_tokens_backslash_delimiters() -> None:
+    raw = "Accelerated filer \\X\\ Non-accelerated filer \\ \\"
+    normalized = normalize_checkbox_tokens(raw)
+    assert CANONICAL_CHECKED in normalized
+    assert CANONICAL_UNCHECKED in normalized
+
+
+def test_normalize_yes_no_pair_backslash_delimiters() -> None:
+    from defs.sec_forms.cover.checkmark.yes_no_pairs import normalize_yes_no_pair_line
+
+    line = "Yes \\X\\ No \\ \\"
+    assert normalize_yes_no_pair_line(line) == "Yes [X] No [ ]"
+
+
 def test_should_join_two_lines_and_negative_guards() -> None:
     rules = [
         PhraseSequenceRule(

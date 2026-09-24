@@ -79,6 +79,62 @@ def is_wrapped_marker_prefix(value: str) -> bool:
 FOOTNOTE_MARKERS: frozenset[str] = frozenset({"*", "+", "†", "‡", "§", "u"})
 FOOTNOTE_MARKER_RE: re.Pattern = re.compile(r"^(?:[*+†‡§u]+)(?:\s+[*+†‡§u]+)*$")
 
+# Roman numeral character-to-value mapping used by roman_to_int.
+_ROMAN_VALUES = {
+    "i": 1,
+    "v": 5,
+    "x": 10,
+    "l": 50,
+    "c": 100,
+    "d": 500,
+    "m": 1000,
+}
+
+ROMAN_NUMERAL_PATTERN: str = r"[ivxlcdm]{1,8}"
+_RE_ROMAN = re.compile(rf"^{ROMAN_NUMERAL_PATTERN}$")
+
+# Canonical numeral-value pairs ordered largest to smallest, used for
+# validating that a roman numeral string is in canonical form.
+_NUMERALS = (
+    ("m", 1000),
+    ("cm", 900),
+    ("d", 500),
+    ("cd", 400),
+    ("c", 100),
+    ("xc", 90),
+    ("l", 50),
+    ("xl", 40),
+    ("x", 10),
+    ("ix", 9),
+    ("v", 5),
+    ("iv", 4),
+    ("i", 1),
+)
+
+
+def roman_to_int(value: str) -> int | None:
+    """Parse a canonical bounded Roman numeral string to an integer.
+
+    Returns ``None`` if ``value`` is not a valid canonical Roman numeral
+    (e.g. non-canonical forms like ``iiiv`` or values exceeding 3000).
+    """
+    text = value.casefold()
+    if not _RE_ROMAN.fullmatch(text):
+        return None
+    total = previous = 0
+    for char in reversed(text):
+        current = _ROMAN_VALUES[char]
+        total += -current if current < previous else current
+        previous = max(previous, current)
+    if not 0 < total <= 3000:
+        return None
+    remaining, canonical = total, ""
+    for numeral, amount in _NUMERALS:
+        count, remaining = divmod(remaining, amount)
+        canonical += numeral * count
+    return total if canonical == text else None
+
+
 __all__ = [
     "BULLET_MARKERS",
     "BULLET_MARKER_RE",
@@ -87,10 +143,12 @@ __all__ = [
     "FOOTNOTE_MARKER_RE",
     "GLYPH_BULLET_MARKERS",
     "ORDERED_MARKER_PREFIX_RE",
+    "ROMAN_NUMERAL_PATTERN",
     "WRAPPED_MARKER_PREFIX_RE",
     "WRAPPED_ORDERED_MARKER_RE",
     "is_bullet_line",
     "is_list_or_bullet_marker",
     "is_ordered_marker_prefix",
     "is_wrapped_marker_prefix",
+    "roman_to_int",
 ]

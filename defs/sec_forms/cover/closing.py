@@ -20,7 +20,7 @@ from dataclasses import dataclass
 from defs.sec_forms.cover.models import BoundaryEvidence
 from defs.sec_forms.cover.toc import RE_TOC_LEADER, is_toc_row
 from defs.sec_forms.page_markers import RE_PAGE_SUFFIX
-from defs.text.patterns import RE_CONFORMED_SIGNATURE
+from defs.text.signatures import RE_CONFORMED_SIGNATURE
 
 __all__ = ["ClosingSpan", "find_closing_span"]
 

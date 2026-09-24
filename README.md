@@ -49,6 +49,10 @@ python scripts/monitor_progress.py --watch
     --scope deterministic --mode production --workers 8
 .venv/bin/python -m phases.025_webpage_storage.cli vacuum --all
 .venv/bin/python -m defs.viewer --artifacts-root .artifacts
+.venv/bin/python -m defs.text.reflow.tools.analysis inventory \
+    --review-root scratch/target_review
+.venv/bin/python -m defs.text.reflow.tools.analysis export \
+    --inventory-id <inventory-id> --annotations <completed-labels.jsonl>
 # Portable published-artifact transport:
 .venv/bin/python -m defs.runtime.bundle create --artifact-id <id> \
     --output artifacts.bundle.zip
