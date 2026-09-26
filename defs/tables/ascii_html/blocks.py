@@ -280,7 +280,7 @@ def fuse_data_affix_blocks(
                     is_safe_n = (
                         not n_txt
                         or is_numeric_cell(n_txt)
-                        or any(c in suffix_positions for c in next_b.span_cols)
+                        or not suffix_positions.isdisjoint(next_b.span_cols)
                     )
                     if is_safe_p and is_safe_n:
                         combined_span = curr_b.span_cols + next_b.span_cols
@@ -506,8 +506,8 @@ def align_terminal_numeric_headers(
         if (
             block.text.strip()
             and len(block.span_cols) <= 3
-            and any(col in affix_positions for col in block.span_cols)
-            and any(col in numeric_positions for col in block.span_cols)
+            and not affix_positions.isdisjoint(block.span_cols)
+            and not numeric_positions.isdisjoint(block.span_cols)
         ):
             block = RenderBlock(
                 cell=block.cell,

@@ -137,24 +137,32 @@ def render_source_table(
     # subheaders, so the border-based header score can stop too early. Detect
     # only text-only rows immediately before the first numeric data row for the
     # narrow affix-header alignment adjustment.
+    # Single pass: classify each row once as (is_empty, has_numeric)
+    row_profiles: list[tuple[bool, bool]] = []
+    for row in raw_grid:
+        has_text = False
+        has_num = False
+        for cell in row:
+            stripped = cell.strip()
+            if stripped:
+                has_text = True
+                if is_numeric_cell(stripped):
+                    has_num = True
+                    break
+        row_profiles.append((not has_text, has_num))
+
     terminal_header_rows: set[int] = set()
-    for row_idx, row in enumerate(raw_grid[:-1]):
-        if not any(cell.strip() for cell in row):
-            continue
-        if any(is_numeric_cell(cell.strip()) for cell in row if cell.strip()):
-            continue
-        next_non_empty = next(
-            (
-                candidate
-                for candidate in raw_grid[row_idx + 1 :]
-                if any(cell.strip() for cell in candidate)
-            ),
-            (),
-        )
-        if next_non_empty and any(
-            is_numeric_cell(cell.strip()) for cell in next_non_empty if cell.strip()
-        ):
-            terminal_header_rows.add(row_idx)
+    next_non_empty_idx = -1
+    for r in range(len(raw_grid) - 1, -1, -1):
+        is_empty, has_num = row_profiles[r]
+        if not is_empty:
+            if (
+                next_non_empty_idx != -1
+                and not has_num
+                and row_profiles[next_non_empty_idx][1]
+            ):
+                terminal_header_rows.add(r)
+            next_non_empty_idx = r
 
     # 6. Compute column widths adhering to RenderBudget
     col_widths, layout_diags = compute_column_widths(
@@ -199,22 +207,28 @@ def render_source_table(
 
     # 9. Format ASCII text output
     num_cols = len(active_cols)
+    non_empty_cols: set[int] = set()
+    for row in raw_grid:
+        for c, cell in enumerate(row):
+            if c < num_cols and cell.strip():
+                non_empty_cols.add(c)
     visible_col_indices: list[int] = [
-        c
-        for c in range(num_cols)
-        if col_widths[c] > 0
-        and any((c < len(row) and bool(row[c].strip())) for row in raw_grid)
+        c for c in range(num_cols) if col_widths[c] > 0 and c in non_empty_cols
     ]
     if not visible_col_indices:
         visible_col_indices = list(range(num_cols))
 
     col_sep = " " * budget.column_spacing
-    table_has_affix_token = any(
-        cell is not None
-        and (is_prefix_token(cell.text.strip()) or is_suffix_token(cell.text.strip()))
-        for source_row in grid_matrix
-        for cell in source_row
-    )
+    table_has_affix_token = False
+    for source_row in grid_matrix:
+        for cell in source_row:
+            if cell is not None and (
+                is_prefix_token(cell.text.strip()) or is_suffix_token(cell.text.strip())
+            ):
+                table_has_affix_token = True
+                break
+        if table_has_affix_token:
+            break
 
     lines: list[str] = ["<TABLE>"]
 
@@ -317,7 +331,7 @@ def render_source_table(
             if (
                 len(block.span_cols) > 1
                 and is_numeric_cell(block.text.strip())
-                and any(col in suffix_positions for col in block.span_cols)
+                and not suffix_positions.isdisjoint(block.span_cols)
             )
         )
         if r_idx in terminal_header_rows:
@@ -333,8 +347,8 @@ def render_source_table(
                 if (
                     block.text.strip()
                     and len(block.span_cols) <= 3
-                    and any(col in affix_positions for col in block.span_cols)
-                    and any(col in numeric_positions for col in block.span_cols)
+                    and not affix_positions.isdisjoint(block.span_cols)
+                    and not numeric_positions.isdisjoint(block.span_cols)
                     and block.span_cols[-1] + 1 not in suffix_positions
                 )
             }

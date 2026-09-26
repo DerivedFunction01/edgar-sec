@@ -288,14 +288,16 @@ def repair_header_band_spans(
 
     # Header band repairs only apply to top header rows (e.g. within top 5 rows)
     max_header_row = min(len(grid_matrix) - 1, 5)
+    row_has_financial = [
+        any(cell and _is_financial_data_token(cell.text) for cell in grid_matrix[r])
+        for r in range(max_header_row + 1)
+    ]
     for row_idx in range(max_header_row):
         row = grid_matrix[row_idx]
         next_row = grid_matrix[row_idx + 1]
 
         # A header band row and its subheaders must not contain financial data
-        if any(cell and _is_financial_data_token(cell.text) for cell in row):
-            continue
-        if any(cell and _is_financial_data_token(cell.text) for cell in next_row):
+        if row_has_financial[row_idx] or row_has_financial[row_idx + 1]:
             continue
 
         band_cells: list[tuple[int, SourceCell]] = []

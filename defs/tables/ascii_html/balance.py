@@ -166,13 +166,34 @@ def balance_span_widths(
 
         target = max(minimums)
         target = max(target, total // len(spans))
-        desired = [max(target, minimum) for minimum in minimums]
-        while sum(desired) > total:
-            reducible = [i for i, value in enumerate(desired) if value > minimums[i]]
+        desired = [target] * len(spans)
+        excess = sum(desired) - total
+        while excess > 0:
+            reducible = [i for i, val in enumerate(desired) if val > minimums[i]]
             if not reducible:
                 break
-            idx = max(reducible, key=lambda i: desired[i])
-            desired[idx] -= 1
+            max_val = max(desired[i] for i in reducible)
+            candidates = [desired[i] for i in reducible if desired[i] < max_val]
+            candidates += [minimums[i] for i in reducible if minimums[i] < max_val]
+            next_val = (
+                max(candidates) if candidates else min(minimums[i] for i in reducible)
+            )
+            at_max = [i for i in reducible if desired[i] == max_val]
+            step = max_val - next_val
+            if step == 0:
+                step = 1
+            total_possible = step * len(at_max)
+            if excess >= total_possible:
+                for i in at_max:
+                    desired[i] -= step
+                excess -= total_possible
+            else:
+                q, r = divmod(excess, len(at_max))
+                for i in at_max:
+                    desired[i] -= q
+                for i in at_max[:r]:
+                    desired[i] -= 1
+                break
         desired_by_index = desired
 
         donors = [
@@ -290,22 +311,43 @@ def balance_span_widths(
             continue
         header_requests.append((receiver_cols, need))
 
-    while header_requests:
+    if header_requests:
         visible = sum(width > 0 for width in widths)
         available = budget.max_table_width - (
             sum(widths) + budget.column_spacing * max(0, visible - 1)
         )
-        if available <= 0:
-            break
-        request_idx = max(
-            range(len(header_requests)), key=lambda i: header_requests[i][1]
-        )
-        receiver_cols, need = header_requests[request_idx]
-        widths[receiver_cols[0]] += 1
-        if need <= 1:
-            header_requests.pop(request_idx)
-        else:
-            header_requests[request_idx] = (receiver_cols, need - 1)
+        if available > 0:
+            curr_needs = [need for _, need in header_requests]
+            excess = available
+            alloc = [0] * len(header_requests)
+            while excess > 0:
+                max_val = max(curr_needs)
+                if max_val == 0:
+                    break
+                candidates = [v for v in curr_needs if v < max_val]
+                next_val = max(candidates) if candidates else 0
+                at_max = [i for i, v in enumerate(curr_needs) if v == max_val]
+                step = max_val - next_val
+                if step == 0:
+                    step = 1
+                total_step = step * len(at_max)
+                if excess >= total_step:
+                    for i in at_max:
+                        curr_needs[i] -= step
+                        alloc[i] += step
+                    excess -= total_step
+                else:
+                    q, r = divmod(excess, len(at_max))
+                    for i in at_max:
+                        curr_needs[i] -= q
+                        alloc[i] += q
+                    for i in at_max[:r]:
+                        curr_needs[i] -= 1
+                        alloc[i] += 1
+                    break
+            for (receiver_cols, _), added in zip(header_requests, alloc):
+                if added > 0:
+                    widths[receiver_cols[0]] += added
 
 
 __all__ = [

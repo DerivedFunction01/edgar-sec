@@ -22,6 +22,7 @@ if TYPE_CHECKING:
 def is_structural_spacer(
     col_idx: int,
     grid_matrix: list[list[SourceCell | None]],
+    row_has_content: list[bool] | None = None,
 ) -> bool:
     """Determine whether an empty column has structural significance to retain.
 
@@ -34,7 +35,7 @@ def is_structural_spacer(
     has_content = False
     has_styling = False
 
-    for row in grid_matrix:
+    for r_idx, row in enumerate(grid_matrix):
         if col_idx >= len(row):
             continue
         cell = row[col_idx]
@@ -51,12 +52,16 @@ def is_structural_spacer(
 
             # Check styling for empty origin cells (borders, background, or explicit spacer width on content rows)
             s = cell.style
-            has_row_content = any(c is not None and bool(c.text.strip()) for c in row)
+            has_content_in_row = (
+                row_has_content[r_idx]
+                if row_has_content is not None and r_idx < len(row_has_content)
+                else any(c is not None and bool(c.text.strip()) for c in row)
+            )
             if (
                 s.background_color is not None
                 or s.border_left_style != BorderStyle.NONE
                 or s.border_right_style != BorderStyle.NONE
-                or (s.width is not None and s.width > 5.0 and has_row_content)
+                or (s.width is not None and s.width > 5.0 and has_content_in_row)
             ):
                 has_styling = True
 
@@ -87,8 +92,13 @@ def resolve_columns(
     active_cols: list[int] = []
     spacer_cols: list[int] = []
 
+    # Single pass: precompute content presence per row
+    row_has_content = [
+        any(c is not None and bool(c.text.strip()) for c in row) for row in grid_matrix
+    ]
+
     for c_idx in range(num_cols):
-        if is_structural_spacer(c_idx, grid_matrix):
+        if is_structural_spacer(c_idx, grid_matrix, row_has_content=row_has_content):
             active_cols.append(c_idx)
         else:
             spacer_cols.append(c_idx)
