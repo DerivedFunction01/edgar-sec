@@ -18,7 +18,8 @@ import re
 from dataclasses import dataclass
 
 from defs.regex import build_alternation
-from defs.text.dates import MONTH_RE
+
+from .dates import MONTH_RE
 
 # Conformed signature line: an optional ``By:`` label followed by ``/s/``.
 RE_CONFORMED_SIGNATURE = re.compile(r"^\s*(?:By\s*:\s*)?/s/\s*")

@@ -5,8 +5,8 @@ from __future__ import annotations
 import re
 
 from defs.regex import build_alternation
-from defs.text.patterns import PAGE_NUMBER_CORE
-from defs.text.tokens import ROMAN_NUMERAL_PATTERN
+from defs.text.structure.patterns import PAGE_NUMBER_CORE
+from defs.text.syntax.tokens import ROMAN_NUMERAL_PATTERN
 
 from .models import PageMarkerKind
 

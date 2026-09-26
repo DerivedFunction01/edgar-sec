@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from defs.text.dates import YEAR_RANGE, extract_years
+from defs.text.syntax.dates import YEAR_RANGE, extract_years
 
 from .currencies import MAJOR_CURRENCIES
 from .patterns import (

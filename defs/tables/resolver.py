@@ -12,7 +12,6 @@ from defs.tables.table_policy import (
     _block_lines,
     is_table_row_continuation,
 )
-from defs.text.patterns import RE_SEPARATOR_LINE
 from defs.text.reflow.features import _compute_features
 from defs.text.reflow.types import (
     ACTION_PRESERVE,
@@ -21,6 +20,7 @@ from defs.text.reflow.types import (
     ReflowPolicy,
     SpanDecision,
 )
+from defs.text.structure.patterns import RE_SEPARATOR_LINE
 
 
 def _validate_table_discipline(

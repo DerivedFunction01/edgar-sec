@@ -9,13 +9,13 @@ from defs.tables.structural import (
     _RE_WIDE_COLUMN_GAP,
 )
 from defs.tables.tokens import numeric_cell_starts as _numeric_cell_starts
-from defs.text.healing import NEGATIVE_BOUNDARY_RE
-from defs.text.patterns import RE_SENTENCE_TERMINAL, RE_SEPARATOR_LINE
+from defs.text.healing.lines import NEGATIVE_BOUNDARY_RE
 from defs.text.reflow.types import (
     ACTION_TAG_AND_PRESERVE,
     ReflowPolicy,
     SpanDecision,
 )
+from defs.text.structure.patterns import RE_SENTENCE_TERMINAL, RE_SEPARATOR_LINE
 
 
 def split_structural_table_intro(

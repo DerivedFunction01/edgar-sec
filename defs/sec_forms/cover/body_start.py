@@ -36,7 +36,7 @@ from defs.sec_forms.cover.structure import (
 )
 from defs.sec_forms.cover.toc import TocSpan
 from defs.text.bow import BowScore, CompiledEvidencePack, score_unit
-from defs.text.logical_units import LogicalUnit, classify_units
+from defs.text.structure.logical_units import LogicalUnit, classify_units
 
 # Bounded forward search window after COVER_END/TOC_END.
 _BODY_START_SEARCH_WINDOW = 300

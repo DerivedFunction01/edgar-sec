@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from defs.sec_forms.cover.structure import is_continuation_prose
 from defs.sec_forms.page_markers import is_page_marker_line
-from defs.text.tokens import BULLET_MARKERS
+from defs.text.syntax.tokens import BULLET_MARKERS
 
 from .analysis import (
     is_anachronistic_late_item,

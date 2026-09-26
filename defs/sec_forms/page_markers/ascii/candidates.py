@@ -7,7 +7,7 @@ import re
 from collections import defaultdict
 from typing import Any
 
-from defs.text.tokens import roman_to_int
+from defs.text.syntax.tokens import roman_to_int
 
 from ..constants import (
     _PAGE_MARKER_PATTERNS,

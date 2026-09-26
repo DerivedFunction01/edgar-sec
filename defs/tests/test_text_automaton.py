@@ -4,15 +4,15 @@ from __future__ import annotations
 
 from defs.taxonomy.tables.shapes import ShapeConstraint
 from defs.taxonomy.tables.specs import TableFamilySpec, TableScope
-from defs.text.automaton import (
-    compile_family_automaton,
-    compile_lexical_matcher,
-)
 from defs.text.bow import (
     EvidenceTier,
     LexicalEvidencePack,
     compile_evidence_pack,
     tokenize,
+)
+from defs.text.bow.automaton import (
+    compile_family_automaton,
+    compile_lexical_matcher,
 )
 
 

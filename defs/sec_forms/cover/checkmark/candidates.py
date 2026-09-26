@@ -33,13 +33,13 @@ from defs.sec_forms.vocabulary import (
     STATUTORY_BINARY_GROUP,
 )
 from defs.tables.protection import mask_tagged_tables
-from defs.text.checkmarks import (
+from defs.text.structure.patterns import RE_SEPARATOR_LINE
+from defs.text.syntax.checkmarks import (
     CHECKMARK_MARK_RE,
     is_fill_in_mark_token,
     is_unchecked_mark_token,
 )
-from defs.text.dates import parse_date
-from defs.text.patterns import RE_SEPARATOR_LINE
+from defs.text.syntax.dates import parse_date
 
 _RE_DASH_ONLY_LINE = RE_SEPARATOR_LINE
 

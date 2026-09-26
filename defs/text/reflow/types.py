@@ -7,7 +7,7 @@ from collections.abc import Callable
 from dataclasses import dataclass
 
 from defs.tables.protection import TableSpan
-from defs.text.signatures import SignatureRegion
+from defs.text.syntax.signatures import SignatureRegion
 
 ACTION_UNWRAP = "unwrap"
 ACTION_PRESERVE = "preserve"

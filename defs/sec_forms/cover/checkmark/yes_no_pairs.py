@@ -5,7 +5,7 @@ from __future__ import annotations
 import re
 
 from defs.regex import build_alternation
-from defs.text.checkmarks import CANONICAL_CHECKED, CANONICAL_UNCHECKED
+from defs.text.syntax.checkmarks import CANONICAL_CHECKED, CANONICAL_UNCHECKED
 
 YES_NO_WORD_RE = re.compile(
     r"\b(?P<answer>yes|no)(?=\s|[:.]|[_\[\(\{/|\\]|$)", re.IGNORECASE

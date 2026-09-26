@@ -16,12 +16,12 @@ from __future__ import annotations
 import re
 
 from defs.regex import build_alternation
-from defs.text.signatures import (
+from defs.text.syntax.signatures import (
     RE_CONFORMED_SIGNATURE,
     RE_SIGNATURE_LABEL_LINE,
     SIGNATURE_LABEL_PREFIXES,
 )
-from defs.text.tokens import ROMAN_NUMERAL_PATTERN
+from defs.text.syntax.tokens import ROMAN_NUMERAL_PATTERN
 
 __all__ = [
     "CONTINUATION_PUNCTUATION",

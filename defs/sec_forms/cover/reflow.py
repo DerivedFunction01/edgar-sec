@@ -16,7 +16,7 @@ from defs.sec_forms.vocabulary import (
     SECURITIES_12B_RE,
     STATE_INCORPORATION_RE,
 )
-from defs.text.checkmarks import CHECKMARK_MARK_RE
+from defs.text.syntax.checkmarks import CHECKMARK_MARK_RE
 
 
 def is_checkbox_answer_line(line: str) -> bool:

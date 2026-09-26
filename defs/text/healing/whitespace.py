@@ -5,12 +5,9 @@ from __future__ import annotations
 import re
 
 from defs.regex import build_alternation
-from defs.tables.protection import (
-    SENTINEL_PREFIX,
-    mask_tagged_tables,
-    restore_tagged_tables,
-)
-from defs.text.tokens import BULLET_MARKERS, GLYPH_BULLET_MARKERS
+
+_SENTINEL_PREFIX = "__SEC_TBL_"
+from defs.text.syntax.tokens import BULLET_MARKERS, GLYPH_BULLET_MARKERS
 
 _ALL_BULLET_ALT = build_alternation(sorted(BULLET_MARKERS), auto_escape=True)
 _GLYPH_BULLET_ALT = build_alternation(sorted(GLYPH_BULLET_MARKERS), auto_escape=True)
@@ -34,7 +31,7 @@ def _split_bullets_on_masked(masked: str) -> str:
     new_lines = []
     for line in lines:
         stripped = line.rstrip(" \t")
-        if SENTINEL_PREFIX in stripped:
+        if _SENTINEL_PREFIX in stripped:
             new_lines.append(stripped)
             continue
         cleaned = _RE_SEMICOLON_BULLET_SPLIT.sub(r"\1\n", stripped)
@@ -51,6 +48,8 @@ def split_concatenated_bullets(text: str) -> str:
     hyphenated phrases are preserved, while list items concatenated onto a
     single line (e.g. following semicolons or periods) are split onto their own lines.
     """
+    from defs.tables.protection import mask_tagged_tables, restore_tagged_tables
+
     masked, table_spans = mask_tagged_tables(text)
     result = _split_bullets_on_masked(masked)
     if table_spans:
@@ -64,6 +63,8 @@ def normalize_final_text_whitespace(text: str) -> str:
     Tagged tables are masked before whitespace cleanup so their internal
     spacing is preserved byte-for-byte.
     """
+    from defs.tables.protection import mask_tagged_tables, restore_tagged_tables
+
     masked, table_spans = mask_tagged_tables(text)
     cleaned = _split_bullets_on_masked(masked)
     cleaned = _RE_MULTIPLE_BLANKS.sub("\n\n", cleaned)

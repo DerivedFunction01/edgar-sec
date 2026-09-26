@@ -18,13 +18,13 @@ from __future__ import annotations
 import re
 
 from defs.regex import build_alternation
-from defs.text.checkmarks import (
+from defs.text.syntax.checkmarks import (
     CANONICAL_CHECKED,
     CANONICAL_UNCHECKED,
     font_bullet_glyph_state,
     font_glyph_state,
 )
-from defs.text.unicode import sanitize_unicode_whitespace
+from defs.text.syntax.unicode import sanitize_unicode_whitespace
 
 # ---------------------------------------------------------------------------
 # Inline XBRL wrappers

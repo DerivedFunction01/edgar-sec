@@ -12,13 +12,14 @@ from collections.abc import Sequence
 from dataclasses import dataclass, field
 from typing import TYPE_CHECKING, Any
 
-from defs.text.bow import tokenize
-from defs.text.bow_match import tier_confidence
-from defs.text.bow_types import Token
+from .engine import tokenize
+from .match import tier_confidence
+from .types import Token
 
 if TYPE_CHECKING:
     from defs.taxonomy.tables.specs import TableFamilySpec
-    from defs.text.bow import CompiledEvidencePack, LexicalEvidencePack
+
+    from .engine import CompiledEvidencePack, LexicalEvidencePack
 
 
 @dataclass(frozen=True, slots=True)

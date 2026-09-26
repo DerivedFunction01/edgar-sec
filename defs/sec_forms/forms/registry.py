@@ -5,7 +5,7 @@ from __future__ import annotations
 import re
 from typing import Any
 
-from defs.text.automaton import LexicalMatcher, compile_lexical_matcher
+from defs.text.bow.automaton import LexicalMatcher, compile_lexical_matcher
 
 _TAXONOMY_REGISTRY: dict[str, dict[str, Any]] = {}
 _AGGREGATE_MATCHER: LexicalMatcher | None = None

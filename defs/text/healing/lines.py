@@ -7,7 +7,8 @@ from collections.abc import Sequence
 from dataclasses import dataclass
 
 from defs.regex import build_alternation, compact_alternation
-from defs.text.checkmarks import (
+from defs.text.structure.patterns import RE_SEPARATOR_LINE
+from defs.text.syntax.checkmarks import (
     CANONICAL_CHECKED,
     CANONICAL_UNCHECKED,
     CONTEXT_CHECKED_SYMBOLS,
@@ -18,8 +19,7 @@ from defs.text.checkmarks import (
     RE_RAW_UNCHECKED,
     CheckmarkScope,
 )
-from defs.text.dates import MONTH_RE
-from defs.text.patterns import RE_SEPARATOR_LINE
+from defs.text.syntax.dates import MONTH_RE
 
 _RE_MULTI_SPACE = re.compile(r"[ \t]+")
 _RE_DASH_ONLY_LINE = RE_SEPARATOR_LINE

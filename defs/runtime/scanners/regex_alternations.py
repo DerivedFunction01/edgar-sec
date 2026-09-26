@@ -38,6 +38,8 @@ _RAW_ALTERNATION_RE = re.compile(
 
 _ALLOWED_PATHS = (
     "defs/regex/",
+    "defs/text/dates.py",
+    "defs/text/syntax/dates.py",
     "defs/runtime/scanners/",
     "old-webpage.py",
     "old-webpage.py.txt",

@@ -261,7 +261,7 @@ def test_normalize_font_qualified_glyphs_does_not_convert_bullet_glyphs_in_long_
 
 
 def test_is_list_or_bullet_marker_recognizes_converted_wingdings_bullets() -> None:
-    from defs.text.tokens import is_list_or_bullet_marker
+    from defs.text.syntax.tokens import is_list_or_bullet_marker
 
     assert is_list_or_bullet_marker("•") is True
     assert is_list_or_bullet_marker("○") is True

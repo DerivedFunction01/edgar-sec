@@ -2,64 +2,27 @@
 
 from __future__ import annotations
 
-from .automaton import (
-    ClassificationMatch,
-    LexicalMatcher,
-    MatchedTerm,
-    MatchPayload,
-    MultiPatternAutomaton,
-    compile_family_automaton,
-    compile_lexical_matcher,
-)
 from .bow import (
     BowScore,
     CaseMode,
+    ClassificationMatch,
     CompiledEvidencePack,
     EvidenceContext,
     EvidenceHit,
     EvidenceTier,
     LexicalEvidencePack,
+    LexicalMatcher,
+    MatchedTerm,
+    MatchPayload,
+    MultiPatternAutomaton,
     Token,
     compile_evidence_pack,
+    compile_family_automaton,
+    compile_lexical_matcher,
     normalize_tokens,
     score_tokens,
     score_unit,
     tokenize,
-)
-from .checkmarks import CheckmarkDecision, CheckmarkScope
-from .compounds import (
-    expand_alternations,
-    expand_compounds,
-    expand_variants,
-)
-from .counts import count_lines, count_words
-from .dates import (
-    CENTURY_PIVOT,
-    MONTH_ALIASES,
-    MONTH_NAME_RE,
-    MONTH_NAMES,
-    MONTH_PATTERN,
-    MONTH_RE,
-    MONTH_SUFFIX_RE,
-    ORDINAL_SUFFIX_PATTERN,
-    ORDINAL_SUFFIX_RE,
-    SEC_DATE_FORMATS,
-    TABLE_YEAR_RE,
-    YEAR_IN_TEXT_RE,
-    YEAR_RANGE,
-    YEAR_TOKEN_RE,
-    DateComponents,
-    DateFormat,
-    ParsedDate,
-    expand_2digit_year,
-    extract_years,
-    heal_date_fragments,
-    is_valid_year,
-    is_year_token,
-    month_name_to_index,
-    parse_date,
-    parse_numeric_year,
-    parse_year_token,
 )
 from .healing import (
     CANONICAL_CHECKED,
@@ -69,11 +32,16 @@ from .healing import (
     RE_RAW_UNCHECKED,
     PhraseSequenceRule,
     classify_mark_line,
+    expand_alternations,
+    expand_compounds,
+    expand_variants,
     heal_split_lines,
     merge_yes_no_binary_blocks,
     normalize_checkbox_tokens,
+    normalize_final_text_whitespace,
     normalize_whitespace_and_tabs,
     should_join_two_lines,
+    split_concatenated_bullets,
     strip_alphanumeric_words,
     strip_boxdot_spacers,
 )
@@ -90,22 +58,45 @@ from .html import (
     strip_ixbrl_inline_tags,
     strip_office_metadata_attributes,
 )
-from .tokens import (
+from .structure import count_lines, count_words
+from .syntax import (
     BULLET_MARKER_RE,
     BULLET_MARKERS,
+    CENTURY_PIVOT,
     DELIMITED_ORDERED_MARKER_RE,
     GLYPH_BULLET_MARKERS,
-    WRAPPED_ORDERED_MARKER_RE,
-    is_list_or_bullet_marker,
-)
-from .unicode import (
+    MONTH_ALIASES,
+    MONTH_NAME_RE,
+    MONTH_NAMES,
+    MONTH_PATTERN,
+    MONTH_RE,
+    MONTH_SUFFIX_RE,
     NORMALIZE_TO_SPACE,
+    ORDINAL_SUFFIX_PATTERN,
+    ORDINAL_SUFFIX_RE,
+    SEC_DATE_FORMATS,
     STRIP_ZERO_WIDTH,
+    TABLE_YEAR_RE,
+    WRAPPED_ORDERED_MARKER_RE,
+    YEAR_IN_TEXT_RE,
+    YEAR_RANGE,
+    YEAR_TOKEN_RE,
+    CheckmarkDecision,
+    CheckmarkScope,
+    DateComponents,
+    DateFormat,
+    ParsedDate,
+    expand_2digit_year,
+    extract_years,
+    heal_date_fragments,
+    is_list_or_bullet_marker,
+    is_valid_year,
+    is_year_token,
+    month_name_to_index,
+    parse_date,
+    parse_numeric_year,
+    parse_year_token,
     sanitize_unicode_whitespace,
-)
-from .whitespace import (
-    normalize_final_text_whitespace,
-    split_concatenated_bullets,
 )
 
 __all__ = [

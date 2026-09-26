@@ -7,8 +7,8 @@ import textwrap
 from typing import Any
 
 from defs.tables.ascii_html.model import HorizontalAlign
-from defs.text.tokens import BULLET_MARKER_RE
-from defs.text.unicode import NORMALIZE_TO_SPACE, STRIP_ZERO_WIDTH
+from defs.text.syntax.tokens import BULLET_MARKER_RE
+from defs.text.syntax.unicode import NORMALIZE_TO_SPACE, STRIP_ZERO_WIDTH
 
 # Single-pass character translation table
 _NORMALIZE_TRANS = str.maketrans(

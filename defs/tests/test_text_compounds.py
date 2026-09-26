@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from enum import Enum
 
-from defs.text.compounds import (
+from defs.text.healing.compounds import (
     expand_alternations,
     expand_compounds,
     expand_variants,

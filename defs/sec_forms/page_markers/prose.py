@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from defs.text.automaton import compile_lexical_matcher
+from defs.text.bow.automaton import compile_lexical_matcher
 
 from .constants import PROSE_GUARD_STOP_WORDS
 

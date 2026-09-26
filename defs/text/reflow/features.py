@@ -5,14 +5,14 @@ from __future__ import annotations
 from dataclasses import dataclass
 
 from defs.tables.tokens import numeric_cell_starts
-from defs.text.patterns import (
+from defs.text.structure.patterns import (
     RE_COLUMN_GAP,
     RE_DOT_LEADER,
     RE_PAGE_NUMBER_SUFFIX,
     RE_SEPARATOR_RUN,
     RE_STRUCTURAL_SGML,
 )
-from defs.text.signatures import is_signature_label_line
+from defs.text.syntax.signatures import is_signature_label_line
 
 
 @dataclass(frozen=True, slots=True)

@@ -30,3 +30,28 @@ def test_reflow_can_be_imported_through_text_package() -> None:
 
 def test_reflow_direct_import_is_order_independent() -> None:
     _fresh_import("import defs.text.reflow")
+
+
+def test_text_syntax_can_import_in_isolation() -> None:
+    _fresh_import("import defs.text.syntax")
+
+
+def test_text_structure_can_import_in_isolation() -> None:
+    _fresh_import("import defs.text.structure")
+
+
+def test_text_bow_can_import_in_isolation() -> None:
+    _fresh_import("import defs.text.bow")
+
+
+def test_text_healing_can_import_in_isolation() -> None:
+    _fresh_import("import defs.text.healing")
+
+
+def test_tables_and_text_subpackages_order_independence() -> None:
+    _fresh_import(
+        "import defs.tables; import defs.text.syntax; import defs.text.structure"
+    )
+    _fresh_import(
+        "import defs.text.syntax; import defs.tables; import defs.text.healing"
+    )

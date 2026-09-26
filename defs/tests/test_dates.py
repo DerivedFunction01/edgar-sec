@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import pytest
 
-from defs.text.dates import (
+from defs.text.syntax.dates import (
     MONTH_SUFFIX_RE,
     YEAR_IN_TEXT_RE,
     YEAR_TOKEN_RE,

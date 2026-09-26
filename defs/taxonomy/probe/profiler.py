@@ -22,7 +22,7 @@ from defs.taxonomy.probe.cache import default_probe_cache_path
 from defs.taxonomy.probe.constants import STOP_WORDS
 from defs.taxonomy.probe.inspector import inspect_table_record
 from defs.taxonomy.tables.families import FAMILY_SPECS
-from defs.text.patterns import RE_WHITESPACE
+from defs.text.structure.patterns import RE_WHITESPACE
 
 if TYPE_CHECKING:
     from defs.taxonomy.tables.specs import TableFamilySpec

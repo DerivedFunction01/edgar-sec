@@ -5,16 +5,16 @@ from __future__ import annotations
 import re
 
 from defs.regex import build_alternation, build_regex
-from defs.text.dates import (
+from defs.text.structure.patterns import RE_DOT_LEADER
+from defs.text.syntax.dates import (
     PERIOD_SUBHEADING_PAT,
     PERIOD_SUBHEADING_RE,
     TABLE_YEAR_RE,
     YEAR_IN_TEXT_RE,
 )
-from defs.text.dates import (
+from defs.text.syntax.dates import (
     YEAR_TOKEN_RE as SHARED_YEAR_TOKEN_RE,
 )
-from defs.text.patterns import RE_DOT_LEADER
 
 from .numeric_cells import (
     CURRENCY_TOKEN_RE,
@@ -39,7 +39,7 @@ PERCENT_HEADER_RE = re.compile(
     rf"\b(?:%|{build_alternation(['percentage', 'percent'])})\b", re.IGNORECASE
 )
 
-from defs.text.tokens import BULLET_MARKER_RE
+from defs.text.syntax.tokens import BULLET_MARKER_RE
 
 PAREN_SPACES_RE = re.compile(r"\(\s*([^\)]+?)\s*\)")
 FOOTNOTE_RE = re.compile(r"^\(?[a-zA-Z0-9\*\†\‡\§\d]{1,3}\)?$")

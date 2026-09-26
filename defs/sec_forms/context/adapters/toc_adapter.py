@@ -36,7 +36,7 @@ from defs.sec_forms.cover.structure import SectionKind, parse_section_heading
 from defs.sec_forms.cover.toc.analysis import normalize_for_matching
 from defs.sec_forms.cover.toc.models import TocSpan
 from defs.text.html import FastHtmlNode, FastHtmlTree, parse_html
-from defs.text.patterns import PAGE_NUMBER_CORE, RE_PAGE_NUMBER_SUFFIX
+from defs.text.structure.patterns import PAGE_NUMBER_CORE, RE_PAGE_NUMBER_SUFFIX
 
 __all__ = [
     "TocEntry",

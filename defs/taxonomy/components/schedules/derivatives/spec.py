@@ -28,7 +28,7 @@ from defs.taxonomy.tables.specs import (
     build_ngram_tier,
 )
 from defs.text.bow import LexicalEvidencePack, compile_evidence_pack
-from defs.text.compounds import expand_alternations
+from defs.text.healing import expand_alternations
 
 # Combined Primary Tier for all derivative asset classes, cross-asset structures, and ASC 815 master schedules
 DERIVATIVES_PRIMARY_TERMS: tuple[str, ...] = expand_alternations(

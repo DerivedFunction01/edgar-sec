@@ -12,18 +12,27 @@ from typing import Any
 
 import numpy as np
 
-from defs.sec_forms.cover.reflow import is_checkbox_answer_line
 from defs.tables.numeric_cells import is_numeric_cell
 from defs.tables.patterns import COLUMN_DASH_RULE_RE
 from defs.tables.protection import TAGGED_TABLE_CLOSE_RE, TAGGED_TABLE_OPEN_RE
-from defs.taxonomy.components.financials.reflow import is_financial_table_bridge_line
-from defs.taxonomy.components.schedules.exhibit_index import (
-    RE_EXHIBIT_NUMBER,
-    RE_EXHIBIT_STATUTORY_PHRASE,
+from defs.text.reflow.features import (
+    _line_gap_starts,
+    _numeric_cell_starts,
+    _shared_columns,
 )
-from defs.text.checkmarks import CHECKMARK_MARK_RE
-from defs.text.dates import RE_FULL_DATE
-from defs.text.grammar import (
+from defs.text.reflow.registry import FEATURE_REGISTRY
+from defs.text.structure.patterns import (
+    RE_COLUMN_GAP,
+    RE_DOT_LEADER,
+    RE_GRAMMATICAL_COMMA,
+    RE_SENTENCE_TERMINAL,
+    RE_SEPARATOR_LINE,
+    RE_SEPARATOR_RUN,
+    RE_STRUCTURAL_SGML,
+)
+from defs.text.syntax.checkmarks import CHECKMARK_MARK_RE
+from defs.text.syntax.dates import RE_FULL_DATE
+from defs.text.syntax.grammar import (
     FUNCTION_WORDS,
     RE_ARTICLE,
     RE_POSSESSIVE,
@@ -33,22 +42,7 @@ from defs.text.grammar import (
     RE_VERBAL_PARTICIPLE,
     RE_WORD_TOKEN,
 )
-from defs.text.patterns import (
-    RE_COLUMN_GAP,
-    RE_DOT_LEADER,
-    RE_GRAMMATICAL_COMMA,
-    RE_SENTENCE_TERMINAL,
-    RE_SEPARATOR_LINE,
-    RE_SEPARATOR_RUN,
-    RE_STRUCTURAL_SGML,
-)
-from defs.text.reflow.features import (
-    _line_gap_starts,
-    _numeric_cell_starts,
-    _shared_columns,
-)
-from defs.text.reflow.registry import FEATURE_REGISTRY
-from defs.text.signatures import is_signature_label_line
+from defs.text.syntax.signatures import is_signature_label_line
 
 
 class BlockContext:
@@ -114,6 +108,8 @@ class BlockContext:
 
     @cached_property
     def has_checkbox(self) -> bool:
+        from defs.sec_forms.cover.reflow import is_checkbox_answer_line
+
         return bool(
             CHECKMARK_MARK_RE.search(self._raw_text)
             or any(is_checkbox_answer_line(l) for l in self.non_blank_lines)
@@ -121,6 +117,10 @@ class BlockContext:
 
     @cached_property
     def is_financial_bridge(self) -> bool:
+        from defs.taxonomy.components.financials.reflow import (
+            is_financial_table_bridge_line,
+        )
+
         return any(is_financial_table_bridge_line(l) for l in self.non_blank_lines)
 
     @cached_property
@@ -612,10 +612,16 @@ class BlockContext:
 
     @cached_property
     def exhibit_numbering_count(self) -> int:
+        from defs.taxonomy.components.schedules.exhibit_index import RE_EXHIBIT_NUMBER
+
         return len(RE_EXHIBIT_NUMBER.findall(self._raw_text))
 
     @cached_property
     def exhibit_phrase_count(self) -> int:
+        from defs.taxonomy.components.schedules.exhibit_index import (
+            RE_EXHIBIT_STATUTORY_PHRASE,
+        )
+
         return len(RE_EXHIBIT_STATUTORY_PHRASE.findall(self._raw_text))
 
     # -------------------------------------------------------------------------

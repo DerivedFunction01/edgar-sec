@@ -5,7 +5,7 @@ from __future__ import annotations
 from defs.taxonomy.components.schedules.derivatives.engine import (
     build_derivative_grammar,
 )
-from defs.text.compounds import (
+from defs.text.healing import (
     expand_variants,
 )
 

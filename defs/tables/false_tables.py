@@ -24,11 +24,9 @@ import re
 from collections.abc import Sequence
 from typing import TYPE_CHECKING
 
-from defs.sec_forms.cover.structure import RE_ITEM_REFERENCE, RE_PART_REFERENCE
-from defs.sec_forms.cover.toc import looks_like_toc_row, looks_like_toc_tabular
 from defs.tables.patterns import FOOTNOTE_RE, RE_TABLE_BLOCK
-from defs.text.patterns import CONTINUATION_PUNCTUATION
-from defs.text.tokens import (
+from defs.text.structure.patterns import CONTINUATION_PUNCTUATION
+from defs.text.syntax.tokens import (
     BULLET_MARKER_RE,
     ORDERED_MARKER_PREFIX_RE,
     WRAPPED_MARKER_PREFIX_RE,
@@ -254,6 +252,9 @@ def is_false_grid(
     effective_grid = [tuple(row[index] for index in effective) for row in grid]
     if len(effective) > 2:
         return _is_ordered_prose_grid(effective_grid)
+    from defs.sec_forms.cover.structure import RE_ITEM_REFERENCE, RE_PART_REFERENCE
+    from defs.sec_forms.cover.toc import looks_like_toc_row, looks_like_toc_tabular
+
     if len(effective) == 2:
         if _is_ordered_prose_grid(effective_grid):
             return True
@@ -340,6 +341,9 @@ def is_false_table(
     text = lines[0]
     if not text:
         return True
+    from defs.sec_forms.cover.structure import RE_ITEM_REFERENCE, RE_PART_REFERENCE
+    from defs.sec_forms.cover.toc import looks_like_toc_row, looks_like_toc_tabular
+
     if (RE_PART_REFERENCE.match(text) or RE_ITEM_REFERENCE.match(text)) and (
         looks_like_toc_row(text) or looks_like_toc_tabular(text)
     ):

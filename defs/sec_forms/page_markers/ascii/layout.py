@@ -7,7 +7,7 @@ from itertools import pairwise
 from statistics import median
 
 from defs.tables.tokens import ALL_CURRENCY_SYMBOLS, is_numeric_cell
-from defs.text.tokens import ROMAN_NUMERAL_PATTERN
+from defs.text.syntax.tokens import ROMAN_NUMERAL_PATTERN
 
 from ..models import PageCandidate
 

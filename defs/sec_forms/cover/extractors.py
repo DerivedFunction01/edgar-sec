@@ -11,7 +11,7 @@ from defs.sec_forms.vocabulary import (
     EIN_VALUE_RE,
     IRS_EIN_RE,
 )
-from defs.text.dates import YEAR_IN_TEXT_RE, parse_date
+from defs.text.syntax.dates import YEAR_IN_TEXT_RE, parse_date
 
 _FISCAL_ANCHOR_TERMS = ("fiscal", "period", "year")
 _FISCAL_END_TERMS = ("end", "ended", "ending")

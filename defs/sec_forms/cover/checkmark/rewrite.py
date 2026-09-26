@@ -22,14 +22,14 @@ from defs.tables.protection import (
     restore_tagged_tables,
     strip_table_wrapper_tags,
 )
-from defs.text.checkmarks import (
+from defs.text.structure.patterns import RE_SEPARATOR_LINE
+from defs.text.syntax.checkmarks import (
     CANONICAL_CHECKED,
     CANONICAL_UNCHECKED,
     CHECKMARK_MARK_RE,
     CheckmarkDecision,
     CheckmarkScope,
 )
-from defs.text.patterns import RE_SEPARATOR_LINE
 
 _RE_DIVIDER_LINE = re.compile(r"\s*[+|:\-=_]+\s*\n?")
 _RE_DASH_DECORATION = RE_SEPARATOR_LINE

@@ -6,8 +6,8 @@ import html as html_lib
 import re
 
 from defs.regex import build_alternation
-from defs.text.tokens import is_list_or_bullet_marker
-from defs.text.unicode import sanitize_unicode_whitespace
+from defs.text.syntax.tokens import is_list_or_bullet_marker
+from defs.text.syntax.unicode import sanitize_unicode_whitespace
 
 from .tags import CONTAINER_BLOCK_TAGS, INLINE_TAGS, PARAGRAPH_TAGS
 

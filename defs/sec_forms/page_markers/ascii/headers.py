@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from collections import defaultdict
 
-from defs.text.logical_units import classify_units
+from defs.text.structure.logical_units import classify_units
 
 from ..models import (
     PageMarker,

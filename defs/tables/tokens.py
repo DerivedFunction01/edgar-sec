@@ -2,8 +2,8 @@
 
 from __future__ import annotations
 
-from defs.text.dates import YEAR_RANGE, is_valid_year, is_year_token
-from defs.text.tokens import BULLET_MARKERS
+from defs.text.syntax.dates import YEAR_RANGE, is_valid_year, is_year_token
+from defs.text.syntax.tokens import BULLET_MARKERS
 
 from .currencies import detect_currency_affix, format_currency
 from .numeric_cells import (
@@ -37,7 +37,7 @@ def is_suffix_token(value: str) -> bool:
     return value.strip() in SUFFIX_SYMBOLS or value.strip().casefold() in SUFFIX_TOKENS
 
 
-from defs.text.patterns import RE_COLUMN_GAP
+from defs.text.structure.patterns import RE_COLUMN_GAP
 
 
 def is_range_marker(value: str) -> bool:

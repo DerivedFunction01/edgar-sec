@@ -38,7 +38,7 @@ from defs.sec_forms.vocabulary import (
     STAT_VOLUNTARY,
     STAT_WKSI,
 )
-from defs.text.checkmarks import (
+from defs.text.syntax.checkmarks import (
     CANONICAL_CHECKED,
     CANONICAL_UNCHECKED,
     CheckmarkDecision,

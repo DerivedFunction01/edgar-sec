@@ -20,7 +20,7 @@ from defs.text.reflow.classifier import _decide
 from defs.text.reflow.engine import _classify_block, _segment, reflow_ascii
 from defs.text.reflow.features import _compute_features
 from defs.text.reflow.types import ACTION_TAG_AND_PRESERVE, ACTION_UNWRAP, ReflowPolicy
-from defs.text.signatures import mask_signature_regions
+from defs.text.syntax.signatures import mask_signature_regions
 
 from .analysis_features import (
     CONTROL_ROLES,

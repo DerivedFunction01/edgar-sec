@@ -7,7 +7,7 @@ import re
 
 from defs.runtime.checks import ScannerFinding
 from defs.runtime.scanners.engine import is_test_file, scan_patch_and_untracked
-from defs.text.dates import MONTH_PATTERN
+from defs.text.syntax.dates import MONTH_PATTERN
 
 _CANDIDATE_RE = (
     rf"(?i){MONTH_PATTERN}"
@@ -37,6 +37,7 @@ _MONTH_VAR_RE = re.compile(
 
 _ALLOWED_PATHS = (
     "defs/text/dates.py",
+    "defs/text/syntax/dates.py",
     "defs/runtime/scanners/",
     "old-webpage.py",
     "old-webpage.py.txt",
@@ -78,7 +79,7 @@ def _match_line(
                 path=path,
                 line=line_number,
                 message="ad-hoc month list, month regex alternation, or date regex literal",
-                hint="import MONTH_NAMES, MONTH_ALIASES, MONTH_RE, TABLE_YEAR_RE, or parse_date from defs.text.dates instead of recreating date parsing",
+                hint="import MONTH_NAMES, MONTH_ALIASES, MONTH_RE, TABLE_YEAR_RE, or parse_date from defs.text.syntax.dates instead of recreating date parsing",
             )
         )
     return findings

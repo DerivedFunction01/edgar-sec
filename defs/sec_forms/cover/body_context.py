@@ -18,7 +18,7 @@ from defs.text.bow import (
     compile_evidence_pack,
 )
 from defs.text.healing import strip_alphanumeric_words
-from defs.text.logical_units import LogicalUnit
+from defs.text.structure.logical_units import LogicalUnit
 
 _PROTECTED_UNIT_KINDS = frozenset({"table", "list", "signature", "toc"})
 

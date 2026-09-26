@@ -6,7 +6,7 @@ from defs.taxonomy.components.schedules.derivatives.engine import (
     build_derivative_grammar,
     build_pay_receive_swaps,
 )
-from defs.text.compounds import (
+from defs.text.healing import (
     expand_alternations,
     expand_variants,
 )

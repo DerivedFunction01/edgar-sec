@@ -11,7 +11,7 @@ from defs.sec_forms.cover.structure import (
     is_continuation_prose,
 )
 from defs.sec_forms.page_markers import RE_PAGE_SUFFIX, is_page_marker_line
-from defs.text.patterns import RE_DOT_LEADER
+from defs.text.structure.patterns import RE_DOT_LEADER
 
 from .patterns import (
     _RE_MULTI_SPACE,

@@ -17,7 +17,7 @@ from defs.taxonomy.components.schedules.legal import (
     LEGAL_ALL_TERMS,
     LEGAL_UNIGRAM_VETOES,
 )
-from defs.text.compounds import expand_alternations
+from defs.text.healing import expand_alternations
 
 # Central fast-veto unigrams for LexicalEvidencePack table classification
 DERIVATIVE_UNIGRAM_VETOES: tuple[str, ...] = (

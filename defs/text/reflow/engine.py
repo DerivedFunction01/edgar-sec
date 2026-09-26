@@ -8,15 +8,12 @@ from defs.tables.protection import (
     mask_tagged_tables,
     restore_tagged_tables,
 )
-from defs.tables.resolver import resolve_table_regions
-from defs.tables.table_policy import (
-    is_tableish_block,
-    split_structural_table_intro,
-    unify_table_prose,
+from defs.text.structure.patterns import RE_SEPARATOR_LINE
+from defs.text.syntax.signatures import (
+    mask_signature_regions,
+    restore_signature_regions,
 )
-from defs.text.patterns import RE_SEPARATOR_LINE
-from defs.text.signatures import mask_signature_regions, restore_signature_regions
-from defs.text.tokens import is_bullet_line
+from defs.text.syntax.tokens import is_bullet_line
 
 from .classifier import _decide
 from .context import BlockContext
@@ -154,6 +151,8 @@ def _classify_block(
     ctx = BlockContext(block_lines) if features is None else features
     base_decision = _decide(ctx, len(block_lines), has_masked)
     features = ctx
+    from defs.tables.table_policy import is_tableish_block
+
     if _is_bullet_prose_block(block_lines, features, policy):
         decision = SpanDecision(
             ACTION_UNWRAP,
@@ -267,6 +266,11 @@ def reflow_ascii(
     masked_body_start_line = max(0, masked_body_start_line)
 
     active_policy = policy or ReflowPolicy()
+    from defs.tables.table_policy import (
+        split_structural_table_intro,
+        unify_table_prose,
+    )
+
     lines = masked.split("\n")
     blocks = _segment(lines, policy=active_policy)
     per_block: list[tuple[tuple[int, int, tuple[str, ...]], SpanDecision]] = []
@@ -287,6 +291,8 @@ def reflow_ascii(
         )
 
     if active_policy.tag_untagged_tables:
+        from defs.tables.resolver import resolve_table_regions
+
         decisions = resolve_table_regions(
             [decision for _, decision in per_block], blocks, policy=active_policy
         )
@@ -342,6 +348,8 @@ def reflow_ascii(
                 merged_lines.extend(b)
             table_lines = tuple(merged_lines)
             if "inferred_table_layout" in decision.evidence:
+                from defs.tables.table_policy import split_structural_table_intro
+
                 splitter = (
                     active_policy.split_table_intro or split_structural_table_intro
                 )

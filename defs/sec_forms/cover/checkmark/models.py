@@ -5,7 +5,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 from enum import StrEnum
 
-from defs.text.checkmarks import (
+from defs.text.syntax.checkmarks import (
     RE_RAW_CHECKED,
     RE_RAW_UNCHECKED,
     CheckmarkDecision,

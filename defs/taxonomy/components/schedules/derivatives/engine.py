@@ -8,7 +8,7 @@ from defs.taxonomy.components.schedules.derivatives.bases import (
     CONTRACT_SUFFIXES,
     UNIVERSAL_BASES,
 )
-from defs.text.compounds import (
+from defs.text.healing import (
     expand_compounds,
     expand_variants,
 )

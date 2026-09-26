@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from defs.text.grammar import (
+from defs.text.syntax.grammar import (
     ARTICLES,
     FUNCTION_WORDS,
     PROSE_TRANSITION_PHRASES,

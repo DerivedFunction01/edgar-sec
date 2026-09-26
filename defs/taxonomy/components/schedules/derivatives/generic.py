@@ -6,7 +6,7 @@ from defs.taxonomy.components.schedules.derivatives.bases import (
     UNAMBIGUOUS_DERIVATIVE_SUFFIXES,
     UNIVERSAL_UNAMBIGUOUS_BASES,
 )
-from defs.text.compounds import (
+from defs.text.healing import (
     expand_alternations,
     expand_variants,
 )

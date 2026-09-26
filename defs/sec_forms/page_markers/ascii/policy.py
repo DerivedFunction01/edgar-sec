@@ -6,8 +6,8 @@ import hashlib
 import re
 from dataclasses import replace
 
-from defs.text.healing import NEGATIVE_BOUNDARY_RE
-from defs.text.patterns import RE_TERMINAL_BOUNDARY
+from defs.text.healing.lines import NEGATIVE_BOUNDARY_RE
+from defs.text.structure.patterns import RE_TERMINAL_BOUNDARY
 
 from ..artifacts import (
     note_template,

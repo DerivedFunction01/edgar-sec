@@ -7,7 +7,7 @@ import re
 from defs.regex import build_alternation, compact_alternation
 from defs.tables.protection import TAGGED_TABLE_CLOSE_RE as _RE_TAGGED_TABLE_END
 from defs.tables.protection import TAGGED_TABLE_OPEN_RE as _RE_TAGGED_TABLE
-from defs.text.patterns import RE_DOT_LEADER
+from defs.text.structure.patterns import RE_DOT_LEADER
 
 RE_TOC_HEADING = re.compile(
     r"^\s*(?:[\|+]\s*)?(?:table\s+of\s+)?contents(?:\s*\([^)]*\))?(?:\s*[\|+])?\s*$",

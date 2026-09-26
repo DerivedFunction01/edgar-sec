@@ -6,7 +6,7 @@ import re
 
 from defs.regex import build_alternation
 from defs.sec_forms.cover.models import ItemDefinition
-from defs.text.patterns import RE_NON_ALNUM
+from defs.text.structure.patterns import RE_NON_ALNUM
 
 PARTS: tuple[str, ...] = ("PART I", "PART II", "PART III", "PART IV")
 
@@ -444,7 +444,7 @@ def build_taxonomy_derived(
         + ("reserved", "[reserved]", "(reserved)")
     )
 
-    from defs.text.automaton import compile_lexical_matcher
+    from defs.text.bow.automaton import compile_lexical_matcher
 
     norm_toc = tuple(_normalize_token(t) for t in toc_keywords if _normalize_token(t))
     norm_late = tuple(_normalize_token(t) for t in late_names if _normalize_token(t))

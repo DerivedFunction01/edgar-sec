@@ -642,10 +642,16 @@ def test_date_patterns_scanner_allows_defs_dates_and_tests(repo):
     t.write_text('MONTHS = ["january", "february"]\n', encoding="utf-8")
     _git(repo, "add", "-A")
 
-    # defs/text/dates.py is exempt
+    # defs/text/dates.py and defs/text/syntax/dates.py are exempt
     dates_module = repo / "defs" / "text"
     dates_module.mkdir(parents=True, exist_ok=True)
     (dates_module / "dates.py").write_text(
+        'MONTH_NAMES = ("january", "february")\n',
+        encoding="utf-8",
+    )
+    syntax_dates = repo / "defs" / "text" / "syntax"
+    syntax_dates.mkdir(parents=True, exist_ok=True)
+    (syntax_dates / "dates.py").write_text(
         'MONTH_NAMES = ("january", "february")\n',
         encoding="utf-8",
     )
@@ -655,7 +661,7 @@ def test_date_patterns_scanner_allows_defs_dates_and_tests(repo):
     phase = repo / "phases" / "02_filing_extraction" / "core"
     phase.mkdir(parents=True, exist_ok=True)
     (phase / "clean.py").write_text(
-        "from defs.text.dates import parse_date\n\ndate = parse_date('2025-01-01')\n",
+        "from defs.text.syntax.dates import parse_date\n\ndate = parse_date('2025-01-01')\n",
         encoding="utf-8",
     )
     _git(repo, "add", "-A")

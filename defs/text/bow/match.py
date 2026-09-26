@@ -8,7 +8,7 @@ appears here.
 
 from __future__ import annotations
 
-from defs.text.bow_types import CompiledTier, Token, token_to_key, window_key
+from .types import CompiledTier, Token, token_to_key, window_key
 
 
 def match_unigrams(

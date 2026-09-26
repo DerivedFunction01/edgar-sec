@@ -5,7 +5,7 @@ from __future__ import annotations
 from collections import Counter
 
 from defs.sec_forms.page_markers import RE_PAGE_SUFFIX, is_page_marker_line
-from defs.text.tokens import roman_to_int
+from defs.text.syntax.tokens import roman_to_int
 
 from .analysis import (
     _row_lines,

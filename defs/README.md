@@ -21,10 +21,13 @@ defs/
     page_markers/        # coordinate-safe ASCII page-marker analysis and string-first HTML adapter
   sec_documents/         # SEC submission envelope unpacking and exhibit extraction
     sgml.py              # SGML multi-document envelope unpacker and target exhibit extraction
-  text/                  # text normalization, logical-unit classification, lexical evidence engine;
-                         # html/pipeline.py is the string-first HTML normalizer (canonical tags,
-                         # table protection); tree.py retained for parser/table/context consumers;
-                         # shared iXBRL cleanup and final whitespace helper
+  text/                  # domain-neutral text normalization and repair:
+                         # syntax/ (unicode, tokens, dates, checkmarks, signatures, grammar)
+                         # structure/ (patterns, logical_units, counts)
+                         # bow/ (lexical evidence engine, types, matching, Aho-Corasick automaton)
+                         # healing/ (line healing, compound expansions, whitespace normalization)
+                         # html/ (string-first HTML parser, tag decomposition, iXBRL cleaner)
+                         # reflow/ (ASCII line reflow, table protection, feature classifier)
   regex/                # hierarchical regex builders, prefix-tree (trie) compaction, lookarounds
   storage/              # logical datasets, chunk backends, manifests, atomic publication
   sql/                  # SQL AST/compiler/executor boundary
@@ -56,7 +59,14 @@ defs/
 - `sec_documents/` — SEC submission envelope unpacking and exhibit extraction (`sgml.py`). Unpacks multi-document envelopes (`<DOCUMENT>...</DOCUMENT>`), separates primary filing documents from exhibits (`EX-10`, `EX-21`, `EX-99`), parses `<SEC-HEADER>` metadata blocks, and generates deterministic document locators.
 - `sec_forms/` — shared SEC form definitions, semantic concepts, and cover-page contracts (see `sec_forms/README.md`). The `page_markers/` package provides coordinate-safe ASCII page-marker analysis; the HTML page-marker DOM package has been removed in favor of the string-first `fast_html/` adapter.
 - `taxonomy/` — financial table taxonomy specifications, multi-zone BoW classification, vocabulary census, keyword density optimizer, and empirical probe engine (see `taxonomy/README.md`).
-- `text/` — domain-neutral text normalization, ASCII logical-unit classification (`logical_units.py`), grammatical token classification and function words (`grammar.py`), the shared token-boundary lexical evidence engine (`bow.py`): ordered evidence tiers, distinct-hit policies, priority short-circuiting, and a compiled pack cache, and the conservative ASCII span/action reflow engine (`reflow/`): `UNWRAP`/`PRESERVE`/`TAG_AND_PRESERVE` block decisions evaluated via a two-tier Feature Registry (`registry.py`, `tools/clustering/experimental_registry.py`), `BlockContext`, and declarative `RuleEngine` (`rules.py`) with zero table corruption guarantees, exact source-span rendering, automated multi-column ASCII table recognition, list/bullet item unwrapping (`is_list_or_bullet_marker`), bounded blank-line table bridging, and no-reflow without a validated body anchor. `html/pipeline.py` is the string-first HTML normalizer: it renders HTML to text with canonical tag handling and tagged-table protection, delegating DOM parsing to `tree.py` which is retained for parser, table, and context consumers. Shared iXBRL cleanup lives in `html/cleaner.py` (`strip_ixbrl_inline_tags`) and final whitespace normalization in `text/whitespace.py` (`normalize_final_text_whitespace`). Form-specific and extraction-specific vocabulary lives in the owning evidence packs (`sec_forms/forms/<form>/` or the consuming phase); these modules stay form- and domain-neutral. Table boundary policy (`table_policy.py`) and structural detection (`structural.py`) live in `defs/tables/`.
+- `text/` — domain-neutral text normalization, repair, and evidence extraction organized into focused subpackages:
+  - `syntax/`: leaf character/glyph syntax, date parsing, checkbox marks, conformed signatures, bullet tokens, and grammar stop words.
+  - `structure/`: document layout patterns, line and paragraph logical unit classification (`classify_units`), and line/word counters.
+  - `bow/`: token-boundary lexical evidence engine (`engine.py`, `types.py`, `match.py`) and token-level Aho-Corasick multi-pattern automaton (`automaton.py`).
+  - `healing/`: representation-neutral line repair (`lines.py`), Cartesian compound phrase expansion (`compounds.py`), and final text whitespace normalization (`whitespace.py`).
+  - `html/`: string-first HTML normalizer (`pipeline.py`), DOM tree parser (`tree.py`), structure decomposer (`decompose.py`), and iXBRL/font cleaner (`cleaner.py`).
+  - `reflow/`: conservative ASCII span/action reflow engine (`UNWRAP`/`PRESERVE`/`TAG_AND_PRESERVE`) with table protection guarantees, exact source-span rendering, and feature classification.
+  The top-level `defs.text` facade maintains backward-compatible re-exports for common operations. Form-specific and extraction-specific vocabulary lives in the owning evidence packs (`sec_forms/forms/<form>/` or the consuming phase); these modules stay form- and domain-neutral. Table boundary policy (`table_policy.py`) and structural detection (`structural.py`) live in `defs/tables/`.
 - `python -m defs.text.reflow.tools.analysis inventory` builds a hash-verified, offline block/token inventory from the local review corpus; `export` joins completed human labels and publishes immutable Parquet shards under the resolved acceptance-artifact root. Both outputs include versioned manifests and use the shared storage contract; raw review text and generated Parquet artifacts are not committed.
 
 ## Settings registry and environment resolution

@@ -6,7 +6,7 @@ import re
 
 import pytest
 
-from defs.text.tokens import (
+from defs.text.syntax.tokens import (
     ROMAN_NUMERAL_PATTERN,
     is_bullet_line,
     is_list_or_bullet_marker,

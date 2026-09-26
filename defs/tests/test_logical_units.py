@@ -6,7 +6,7 @@ import importlib
 
 import pytest
 
-lu_mod = importlib.import_module("defs.text.logical_units")
+lu_mod = importlib.import_module("defs.text.structure.logical_units")
 
 classify_units = lu_mod.classify_units
 units_after = lu_mod.units_after

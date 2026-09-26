@@ -12,7 +12,7 @@ from dataclasses import dataclass
 from enum import Enum
 
 from defs.regex import build_alternation
-from defs.text.tokens import BULLET_MARKER_RE, BULLET_MARKERS
+from defs.text.syntax.tokens import BULLET_MARKER_RE, BULLET_MARKERS
 
 _HEADING_SEPARATOR_CHARS = ":.- |+\t" + "".join(BULLET_MARKERS)
 

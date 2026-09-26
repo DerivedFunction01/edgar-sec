@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from defs.taxonomy.tables.specs import build_ngram_tier
 from defs.text.bow import LexicalEvidencePack, compile_evidence_pack
-from defs.text.compounds import (
+from defs.text.healing import (
     expand_alternations,
     expand_variants,
 )

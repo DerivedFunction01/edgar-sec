@@ -15,8 +15,9 @@ from __future__ import annotations
 import re
 from dataclasses import dataclass
 
-from defs.text.patterns import RE_SEPARATOR_LINE
-from defs.text.tokens import is_list_or_bullet_marker
+from defs.text.syntax.tokens import is_list_or_bullet_marker
+
+from .patterns import RE_SEPARATOR_LINE
 
 _RE_GUTTER = re.compile(r"(?<=\S) {2,}(?=\S)")
 _RE_TRAILING_PUNCT = re.compile(r"[-,;:]$")

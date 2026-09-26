@@ -12,14 +12,14 @@ import re
 from dataclasses import dataclass
 from functools import lru_cache
 
-from defs.text.bow_match import (
+from .match import (
     band_max_values,
     build_reason,
     match_ngrams,
     match_unigrams,
     tier_confidence,
 )
-from defs.text.bow_types import (
+from .types import (
     CaseMode,
     CompiledEvidencePack,
     CompiledTier,
@@ -268,7 +268,7 @@ def compile_evidence_pack(pack: LexicalEvidencePack) -> CompiledEvidencePack:
         names.add(tier.name)
         compiled.append(_build_compiled_tier(tier))
 
-    from defs.text.automaton import compile_family_automaton
+    from defs.text.bow.automaton import compile_family_automaton
 
     automaton = compile_family_automaton([pack])
 

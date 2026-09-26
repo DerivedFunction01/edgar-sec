@@ -6,9 +6,9 @@ import re
 from collections.abc import Callable
 
 from defs.tables.tokens import numeric_cell_starts as _numeric_cell_starts
-from defs.text.dates import COLUMN_YEAR_ROW_RE
-from defs.text.patterns import RE_SENTENCE_TERMINAL, RE_SEPARATOR_LINE
-from defs.text.tokens import (
+from defs.text.structure.patterns import RE_SENTENCE_TERMINAL, RE_SEPARATOR_LINE
+from defs.text.syntax.dates import COLUMN_YEAR_ROW_RE
+from defs.text.syntax.tokens import (
     is_bullet_line,
     is_list_or_bullet_marker,
     is_ordered_marker_prefix,
