@@ -255,21 +255,19 @@ handoff manifests to a coordinator. Full snapshot publication requires complete
 partition coverage; downstream phases should target the published snapshot,
 not the Phase 2.5 worker chunks.
 
-- `DeepNormalizer` — coordinates form-specific and generic normalization passes
+- `DefaultFilingProcessor` (`phases/025_webpage_storage/core/processor.py`) — coordinates the document storage lifecycle, delegating raw bytes preprocessing to `defs.sec_documents.preprocessor`, form-aware normalization to `defs.sec_forms.normalization`, and stub evaluation to `defs.sec_forms.forms.evaluator`.
 - **SGML Multi-Document Unpacking** — `defs.sec_documents.sgml` unpacks concatenated submission envelopes (`<DOCUMENT>...</DOCUMENT>`), extracts target primary documents and exhibits (`EX-10`, `EX-21`, `EX-99`), parses filing headers (`<SEC-HEADER>`), and assigns distinct document identifiers.
-- Shared cover boundary and healing — `find_cover_boundary_for_profile()` and `heal_cover_text()` are representation-neutral and operate on the normalized text frame; form normalizers expose heading normalization only
-- Form-family normalizers — `Form10KNormalizer`, `Form10QNormalizer`, `Form8KNormalizer` route through the shared text-frame coordinator; `GenericFormNormalizer` is the fallback
-- `FormRouter` — routes documents to form-specific evaluators and normalizers
+- Shared cover boundary and healing — `find_cover_boundary_for_profile()` and `heal_cover_text()` in `defs.sec_forms` are representation-neutral and operate on the normalized text frame.
+- Form-family pipelines & evaluators — `AnnualPipeline`, `QuarterlyPipeline`, `CurrentReportPipeline`, and `AnnualEvaluator` live in `defs.sec_forms`. Phase 025 is completely form-agnostic.
 - **ASCII Reflow & Table Recognition** — after body-start detection, non-HTML text runs through `defs.text.reflow.reflow_ascii`, with financial statement section bridging and family-owned tail recognition supplied from `defs.taxonomy.components.financials.reflow`:
   - **Prose Unwrapping**: Hard-wrapped text and multi-line bullet/list items (e.g. `(a)`, `(1)`, `•`, `-`) are cleanly reflowed into single logical lines while preserving paragraph boundaries (`is_list_or_bullet_marker`).
   - **Fixed-Width Table Recognition**: Untagged multi-column ASCII tables (with aligned numeric columns and headers) are automatically detected and wrapped in canonical `<TABLE>`/`</TABLE>` tags with row geometry preserved exactly.
   - **Table Protection**: Existing tagged tables are masked and restored byte-for-byte; ambiguous blocks stay preserved and untagged.
   - Everything before the validated body anchor is preserved; with no body anchor the pass is skipped. Decision counts are published in processor metadata (`reflow_unwrap_blocks`, `reflow_preserve_blocks`, `reflow_tag_blocks`).
 
-The processing pipeline is `GenericPreprocessor` → representation-specific page
-policy and text-frame rendering → shared cover boundary/healing → form-specific
-header normalization → `DeepNormalizer` downstream structure analysis. HTML
+The processing pipeline is `defs.sec_documents.DocumentPreprocessor` → `defs.sec_forms.normalization.normalize_document` → chunk SQLite persistence. HTML
 documents use `defs.text.html.normalize_html_document()`, which renders tables
+
 to canonical `<TABLE>...</TABLE>` blocks and decomposes HTML as strings. Shared
 table processing lives under `defs/tables/`; cover-specific table templates
 live under `defs/tables/templates/cover.py`.

@@ -18,8 +18,12 @@ defs/
                         # occurrence IDs, document locator keys, date-derived years
   sec_forms/             # shared SEC form definitions, semantic concepts, cover-page contracts
     cover/               # canonical cover labels, regex matchers, text-based extractors, shared cover healing
+    forms/               # form-family evidence packs and stub/refetch evaluators (annual, quarterly, current_report)
+    normalization/       # form-driven normalization engine, registry, and pipelines (annual, quarterly, current_report)
     page_markers/        # coordinate-safe ASCII page-marker analysis and string-first HTML adapter
-  sec_documents/         # SEC submission envelope unpacking and exhibit extraction
+  sec_documents/         # SEC submission envelope unpacking, exhibit extraction, and document preprocessing
+    models.py            # PreprocessedDocument model and DocumentRepresentation types
+    preprocessor.py      # encoding detection, SGML/PEM envelope extraction, representation typing, sanitization
     sgml.py              # SGML multi-document envelope unpacker and target exhibit extraction
   text/                  # domain-neutral text normalization and repair:
                          # syntax/ (unicode, tokens, dates, checkmarks, signatures, grammar)
@@ -56,8 +60,8 @@ defs/
   `broker_cache_dir()`, which reads the cache directory the running broker
   records in its registry. Manage it with
   `python -m defs.sec_http.broker {start,stop,status} [--socket PATH]`.
-- `sec_documents/` — SEC submission envelope unpacking and exhibit extraction (`sgml.py`). Unpacks multi-document envelopes (`<DOCUMENT>...</DOCUMENT>`), separates primary filing documents from exhibits (`EX-10`, `EX-21`, `EX-99`), parses `<SEC-HEADER>` metadata blocks, and generates deterministic document locators.
-- `sec_forms/` — shared SEC form definitions, semantic concepts, and cover-page contracts (see `sec_forms/README.md`). The `page_markers/` package provides coordinate-safe ASCII page-marker analysis; the HTML page-marker DOM package has been removed in favor of the string-first `fast_html/` adapter.
+- `sec_documents/` — SEC submission envelope unpacking, exhibit extraction (`sgml.py`), and raw document preprocessing (`preprocessor.py`, `models.py`). Safely decodes encodings (`utf-8`, `cp1252`, `latin-1`), extracts SGML `<DOCUMENT>` bodies and PEM envelopes, strips non-rendering tags, detects ASCII `<PRE>` wrappers, sanitizes HTML, and classifies representations (`DocumentRepresentation`).
+- `sec_forms/` — shared SEC form definitions, semantic concepts, cover-page contracts, and form-driven normalization (see `sec_forms/README.md`). The `forms/` package provides form-family evidence packs and stub/refetch evaluators (`AnnualEvaluator`, `QuarterlyEvaluator`, `CurrentReportEvaluator`). The `normalization/` package provides form-driven normalization pipelines (`AnnualPipeline`, `QuarterlyPipeline`, `CurrentReportPipeline`, `FallbackPipeline`) and the `DocumentNormalizer` engine. The `page_markers/` package provides coordinate-safe ASCII page-marker analysis and string-first HTML policy adapters.
 - `taxonomy/` — financial table taxonomy specifications, multi-zone BoW classification, vocabulary census, keyword density optimizer, and empirical probe engine (see `taxonomy/README.md`).
 - `text/` — domain-neutral text normalization, repair, and evidence extraction organized into focused subpackages:
   - `syntax/`: leaf character/glyph syntax, date parsing, checkbox marks, conformed signatures, bullet tokens, and grammar stop words.

@@ -17,12 +17,12 @@ from defs.sql import (
     insert_values,
 )
 
-from ..processors import DocumentProcessor, execute_processor
 from .exhibit_second_pass import (
     annotate_primary_exhibit_link,
     run_exhibit_second_pass,
     with_filing_year,
 )
+from .processor import DocumentProcessor, execute_processor
 from .schemas import (
     ACQUISITION_FAILURES_TABLE,
     DOCUMENT_BLOBS_TABLE,

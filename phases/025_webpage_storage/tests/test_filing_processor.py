@@ -6,7 +6,7 @@ import asyncio
 import importlib
 
 schemas = importlib.import_module("phases.025_webpage_storage.core.schemas")
-processors = importlib.import_module("phases.025_webpage_storage.processors")
+processors = importlib.import_module("phases.025_webpage_storage.core.processor")
 
 DocumentLocator = schemas.DocumentLocator
 DefaultFilingProcessor = processors.DefaultFilingProcessor

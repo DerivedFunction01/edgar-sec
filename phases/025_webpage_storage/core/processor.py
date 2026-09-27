@@ -1,71 +1,121 @@
-"""Document processors package for Phase 025 webpage & document storage."""
+"""Async document processor protocol, execution runner, and DefaultFilingProcessor."""
 
 from __future__ import annotations
 
+import asyncio
+import threading
+from concurrent.futures import ThreadPoolExecutor
+from dataclasses import dataclass, field
+from typing import Protocol, runtime_checkable
+
+from defs.sec_documents import DocumentPreprocessor
+from defs.sec_forms.forms.evaluator import get_evaluator
+from defs.sec_forms.normalization import DocumentNormalizer, NormalizationResult
 from defs.sec_forms.page_markers import PageArtifactPolicy
 from defs.text import count_words
 
-from ..core.schemas import DocumentLocator, doc_id
-from .base import (
-    DocumentProcessor,
-    NoOpDocumentProcessor,
-    ProcessedDocument,
-    execute_processor,
-)
-from .forms import (
-    DecisionAction,
-    Form8KEvaluator,
-    Form8KNormalizer,
-    Form10KEvaluator,
-    Form10KNormalizer,
-    Form10QEvaluator,
-    Form10QNormalizer,
-    FormEvaluator,
-    FormNormalizer,
-    GenericFormEvaluator,
-    GenericFormNormalizer,
-    PreprocessedDocument,
-    RefetchDecision,
-)
-from .normalizer import DeepNormalizer, NormalizationResult
-from .preprocessor import GenericPreprocessor
-from .router import FormRouter
+from .schemas import DocumentLocator, detect_mime, doc_id
+
+_thread_local = threading.local()
+
+
+def _get_thread_loop() -> asyncio.AbstractEventLoop:
+    loop = getattr(_thread_local, "loop", None)
+    if loop is None or loop.is_closed():
+        loop = asyncio.new_event_loop()
+        asyncio.set_event_loop(loop)
+        _thread_local.loop = loop
+    return loop
+
+
+@dataclass(frozen=True, slots=True)
+class ProcessedDocument:
+    """Outcome of processing one raw filing document through an async pipeline."""
+
+    doc_id: str
+    payload: bytes
+    byte_size: int
+    mime_type: str
+    metadata: dict[str, object] = field(default_factory=dict)
+    processor_fingerprint: str = "custom:unspecified"
+    representation: str = "application/octet-stream"
+
+
+@runtime_checkable
+class DocumentProcessor(Protocol):
+    """Async pipeline processor for transforming, cleaning, and extracting documents."""
+
+    async def process(
+        self, raw_bytes: bytes, locator: DocumentLocator
+    ) -> ProcessedDocument:
+        """Asynchronously process raw bytes for a given locator."""
+        ...
+
+
+class NoOpDocumentProcessor:
+    """Default async pass-through document processor."""
+
+    async def process(
+        self, raw_bytes: bytes, locator: DocumentLocator
+    ) -> ProcessedDocument:
+        return ProcessedDocument(
+            doc_id=doc_id(locator.accession, locator.document_path),
+            payload=raw_bytes,
+            byte_size=len(raw_bytes),
+            mime_type=detect_mime(locator.document_path),
+            metadata={},
+            processor_fingerprint="raw-pass-through",
+            representation="raw",
+        )
+
+
+def execute_processor(
+    processor: DocumentProcessor,
+    raw_bytes: bytes,
+    locator: DocumentLocator,
+) -> ProcessedDocument:
+    """Execute an async DocumentProcessor from synchronous worker threads reusing thread event loops."""
+    coro = processor.process(raw_bytes, locator)
+    try:
+        current_loop = asyncio.get_running_loop()
+    except RuntimeError:
+        current_loop = None
+
+    if current_loop is not None and current_loop.is_running():
+        with ThreadPoolExecutor() as pool:
+            return pool.submit(_get_thread_loop().run_until_complete, coro).result()
+    return _get_thread_loop().run_until_complete(coro)
 
 
 class DefaultFilingProcessor(DocumentProcessor):
-    """Default end-to-end filing processor executing the multi-stage lifecycle."""
+    """Default end-to-end filing processor delegating preprocessing & normalization to defs."""
 
-    # v3: fetch-layer PEM/SGM envelope extraction fixed (PEM-wrapped and bare
-    # submission bundles now resolve their target <TEXT> body) plus exhibit
-    # second pass. Cached chunks produced by v1/v2 carry envelope text as
-    # "normalized" payload and must not be reused.
     processor_fingerprint = "default-filing-processor:v3"
     representation = "normalized-text"
 
     def __init__(
         self,
-        preprocessor: GenericPreprocessor | None = None,
-        router: FormRouter | None = None,
-        normalizer: DeepNormalizer | None = None,
+        preprocessor: DocumentPreprocessor | None = None,
+        normalizer: DocumentNormalizer | None = None,
         page_artifact_policy: PageArtifactPolicy = PageArtifactPolicy.STRIP,
         *,
         tag_untagged_tables: bool = False,
     ) -> None:
-        self.preprocessor = preprocessor or GenericPreprocessor()
-        self.router = router or FormRouter()
-        self.normalizer = normalizer or DeepNormalizer(
-            router=self.router, tag_untagged_tables=tag_untagged_tables
+        self.preprocessor = preprocessor or DocumentPreprocessor()
+        self.normalizer = normalizer or DocumentNormalizer(
+            tag_untagged_tables=tag_untagged_tables
         )
         self.page_artifact_policy = page_artifact_policy
 
     def build_processed_document(
         self,
-        preprocessed: PreprocessedDocument,
+        preprocessed: object,
         normalization: NormalizationResult,
         locator: DocumentLocator,
     ) -> ProcessedDocument:
         """Construct canonical ProcessedDocument from completed preprocessing and normalization."""
-        decision = self.router.evaluate(preprocessed, locator)
+        evaluator = get_evaluator(locator.form)
+        decision = evaluator.evaluate(preprocessed, locator)
         normalized_text = normalization.text
         output_payload = normalized_text.encode("utf-8")
 
@@ -76,24 +126,32 @@ class DefaultFilingProcessor(DocumentProcessor):
         reflow = normalization.reflow
         reflow_counts: dict[str, int] = {}
         if reflow is not None:
-            for span_decision in reflow.decisions:
+            for span_decision in getattr(reflow, "decisions", ()):
                 reflow_counts[span_decision.action] = (
                     reflow_counts.get(span_decision.action, 0) + 1
                 )
         page_analysis = normalization.page_analysis
-        page_decisions = page_analysis.decisions if page_analysis is not None else ()
+        page_decisions = (
+            getattr(page_analysis, "decisions", ()) if page_analysis is not None else ()
+        )
         meta = {
             "is_stub": decision.is_stub,
             "category": decision.category,
             "decision_action": decision.action.value,
             "decision_reason": decision.reason,
             "target_exhibit": decision.target_exhibit,
-            "detected_encoding": preprocessed.detected_encoding,
+            "detected_encoding": getattr(preprocessed, "detected_encoding", "utf-8"),
             "word_count": count_words(normalized_text),
-            "cover_boundary_method": cover_boundary.method.value,
-            "cover_boundary_line": cover_boundary.end_line,
-            "cover_boundary_confidence": cover_boundary.confidence,
-            "cover_boundary_start_line": cover_boundary.start_line,
+            "cover_boundary_method": cover_boundary.method.value
+            if cover_boundary
+            else "none",
+            "cover_boundary_line": cover_boundary.end_line if cover_boundary else None,
+            "cover_boundary_confidence": cover_boundary.confidence
+            if cover_boundary
+            else 0.0,
+            "cover_boundary_start_line": cover_boundary.start_line
+            if cover_boundary
+            else None,
             "toc_start_line": toc.start_line if toc is not None else None,
             "toc_end_line": toc.end_line if toc is not None else None,
             "body_start_line": getattr(body, "line", None),
@@ -111,17 +169,25 @@ class DefaultFilingProcessor(DocumentProcessor):
             "reflow_unwrap_blocks": reflow_counts.get("unwrap", 0),
             "reflow_preserve_blocks": reflow_counts.get("preserve", 0),
             "reflow_tag_blocks": reflow_counts.get("tag_and_preserve", 0),
-            "page_marker_count": len(page_analysis.markers) if page_analysis else 0,
+            "page_marker_count": len(getattr(page_analysis, "markers", ()))
+            if page_analysis
+            else 0,
             "page_marker_removed_count": sum(
-                decision.action.value == "remove" for decision in page_decisions
+                getattr(dec, "action", None) is not None
+                and getattr(dec.action, "value", None) == "remove"
+                for dec in page_decisions
             ),
             "page_marker_normalized_count": sum(
-                decision.action.value == "normalize" for decision in page_decisions
+                getattr(dec, "action", None) is not None
+                and getattr(dec.action, "value", None) == "normalize"
+                for dec in page_decisions
             ),
             "page_marker_preserved_count": sum(
-                decision.action.value == "preserve" for decision in page_decisions
+                getattr(dec, "action", None) is not None
+                and getattr(dec.action, "value", None) == "preserve"
+                for dec in page_decisions
             ),
-            "page_marker_run_count": len(page_analysis.page_number_runs)
+            "page_marker_run_count": len(getattr(page_analysis, "page_number_runs", ()))
             if page_analysis
             else 0,
             "page_marker_accepted_runs": (
@@ -136,13 +202,13 @@ class DefaultFilingProcessor(DocumentProcessor):
                         "source_end_line": run.source_end_line,
                         "strategy": run.strategy,
                     }
-                    for run in page_analysis.page_number_runs[:64]
+                    for run in getattr(page_analysis, "page_number_runs", ())[:64]
                 ]
                 if page_analysis
                 else []
             ),
             "page_marker_inferred_boundary_count": len(
-                page_analysis.inferred_boundaries
+                getattr(page_analysis, "inferred_boundaries", ())
             )
             if page_analysis
             else 0,
@@ -154,7 +220,9 @@ class DefaultFilingProcessor(DocumentProcessor):
                 if page_analysis
                 else False
             ),
-            "page_marker_unresolved_count": len(page_analysis.unresolved)
+            "page_marker_unresolved_count": len(
+                getattr(page_analysis, "unresolved", ())
+            )
             if page_analysis
             else 0,
             "page_artifacts": normalization.page_artifacts,
@@ -181,10 +249,10 @@ class DefaultFilingProcessor(DocumentProcessor):
         if filing_year is not None:
             metadata["filing_year"] = filing_year
 
-        # Stage 1: Generic Preprocessing
+        # Stage 1: Generic Preprocessing (in defs.sec_documents)
         preprocessed = self.preprocessor.preprocess(raw_bytes, metadata=metadata)
 
-        # Stage 2 & 3: Deep Normalization & Table Alignment
+        # Stage 2: Form-driven Normalization (in defs.sec_forms.normalization)
         normalization = self.normalizer.normalize_result(
             preprocessed,
             metadata={"form": locator.form},
@@ -195,26 +263,9 @@ class DefaultFilingProcessor(DocumentProcessor):
 
 
 __all__ = [
-    "DecisionAction",
-    "DeepNormalizer",
     "DefaultFilingProcessor",
     "DocumentProcessor",
-    "Form8KEvaluator",
-    "Form8KNormalizer",
-    "Form10KEvaluator",
-    "Form10KNormalizer",
-    "Form10QEvaluator",
-    "Form10QNormalizer",
-    "FormEvaluator",
-    "FormNormalizer",
-    "FormRouter",
-    "GenericFormEvaluator",
-    "GenericFormNormalizer",
-    "GenericPreprocessor",
     "NoOpDocumentProcessor",
-    "NormalizationResult",
-    "PreprocessedDocument",
     "ProcessedDocument",
-    "RefetchDecision",
     "execute_processor",
 ]

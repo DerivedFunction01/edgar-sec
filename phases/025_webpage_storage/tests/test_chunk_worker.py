@@ -10,7 +10,7 @@ worker_module = importlib.import_module("phases.025_webpage_storage.core.chunk_w
 persistence_module = importlib.import_module(
     "phases.025_webpage_storage.core.chunk_persistence"
 )
-processor_module = importlib.import_module("phases.025_webpage_storage.processors")
+processor_module = importlib.import_module("phases.025_webpage_storage.core.processor")
 NoOpDocumentProcessor = processor_module.NoOpDocumentProcessor
 
 
@@ -287,7 +287,7 @@ def test_process_chunk_progress_events(tmp_path):
 
 
 def test_process_chunk_with_async_processor(tmp_path):
-    proc_module = importlib.import_module("phases.025_webpage_storage.processors")
+    proc_module = importlib.import_module("phases.025_webpage_storage.core.processor")
     ProcessedDocument = proc_module.ProcessedDocument
 
     class AsyncPipelineProcessor:
@@ -330,7 +330,7 @@ def test_process_chunk_with_async_processor(tmp_path):
 
 
 def _upper_processor_class(fingerprint: str):
-    proc_module = importlib.import_module("phases.025_webpage_storage.processors")
+    proc_module = importlib.import_module("phases.025_webpage_storage.core.processor")
     ProcessedDocument = proc_module.ProcessedDocument
 
     class UpperProcessor:
@@ -434,7 +434,7 @@ def test_committed_chunk_with_different_processor_is_reprocessed(tmp_path):
 
         async def process(self, raw_bytes, locator):
             proc_module = importlib.import_module(
-                "phases.025_webpage_storage.processors"
+                "phases.025_webpage_storage.core.processor"
             )
             payload = raw_bytes[::-1]
             return proc_module.ProcessedDocument(

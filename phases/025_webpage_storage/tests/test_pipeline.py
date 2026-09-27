@@ -325,7 +325,7 @@ Title: Chief Executive Officer
     )
 
     DefaultFilingProcessor = importlib.import_module(
-        "phases.025_webpage_storage.processors"
+        "phases.025_webpage_storage.core.processor"
     ).DefaultFilingProcessor
 
     out_dir = tmp_path / "out_meta"

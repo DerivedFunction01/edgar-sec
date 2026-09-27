@@ -1,14 +1,14 @@
-"""Deep document normalization and form-aware SEC content standardization."""
+"""Shared profile-driven normalization pipeline base."""
 
 from __future__ import annotations
 
-from dataclasses import dataclass, replace
+from dataclasses import replace
 from typing import Any
 
 from defs.runtime.memory import sha256_text
+from defs.sec_documents.models import PreprocessedDocument
 from defs.sec_forms.cover import (
     BoundaryInput,
-    CoverBoundary,
     apply_cover_checkmark_decisions,
     clean_cover_tables,
     find_body_start,
@@ -25,11 +25,13 @@ from defs.sec_forms.cover.checkmark.rewrite import (
     _has_resolvable_line_yes_no_candidates,
 )
 from defs.sec_forms.cover.checkmark.yes_no_pairs import normalize_yes_no_pairs
+from defs.sec_forms.cover.profiles import CoverProfile
 from defs.sec_forms.cover.reflow import (
     is_checkbox_answer_line,
     is_cover_layout_line,
     is_page_marker_line,
 )
+from defs.sec_forms.normalization.models import NormalizationResult
 from defs.sec_forms.page_markers import (
     PageArtifactPolicy,
     apply_html_policy,
@@ -47,69 +49,45 @@ from defs.text.reflow import (
     reflow_ascii,
 )
 
-from .forms.base import PreprocessedDocument
-from .router import FormRouter
 
-
-@dataclass(frozen=True, slots=True)
-class NormalizationResult:
-    """Normalized text plus structural metadata discovered during processing.
-
-    ``cover_boundary`` is detected on the cover-healed representation while
-    ``toc_span`` and ``body_start`` are resolved on the final normalized text.
-    ``closing_span`` is the conservative start of the signature/exhibit tail,
-    or ``None`` when no exact closing signal exists after the body.
-    ``reflow`` is the ASCII span/action decision trace (empty for HTML input).
-    ``checkmark_inference`` records form-scoped cover glyph hypotheses and
-    decisions; no-cover profiles expose a ``not_applicable`` result.
-    ``page_analysis`` is the immutable page-marker analysis of the canonical
-    source frame, performed exactly once before marker removal.
-    ``stage_trace`` records bounded metadata at each normalization stage.
-    """
-
-    text: str
-    cover_boundary: CoverBoundary
-    body_start: object | None = None
-    toc_span: object | None = None
-    closing_span: object | None = None
-    reflow: object | None = None
-    page_analysis: object | None = None
-    page_artifacts: dict | None = None
-    table_geometries: tuple = ()
-    checkmark_inference: object | None = None
-    stage_trace: tuple = ()
-
-
-class DeepNormalizer:
-    """Stage 3 normalizer; coordinates generic table and form-aware structural normalization."""
+class ProfileDrivenPipeline:
+    """Base profile-driven document normalization pipeline."""
 
     def __init__(
         self,
-        router: FormRouter | None = None,
+        family: str | None = None,
         *,
-        tag_untagged_tables: bool = False,
+        enable_toc: bool = True,
+        enable_body_start: bool = True,
     ) -> None:
-        self._router = router or FormRouter()
-        self.tag_untagged_tables = tag_untagged_tables
+        self.family = family
+        self.enable_toc = enable_toc
+        self.enable_body_start = enable_body_start
+
+    def get_effective_profile(self, form: str | None) -> CoverProfile:
+        """Resolve effective cover profile for this pipeline and form."""
+        return get_profile(self.family or form)
+
+    def transform_form_content(
+        self,
+        text: str,
+        metadata: dict[str, Any] | None = None,
+    ) -> str:
+        """Form-specific content transformations hook before final whitespace."""
+        _ = metadata
+        return text
 
     def normalize(
         self,
         preprocessed: PreprocessedDocument,
         metadata: dict[str, Any] | None = None,
-    ) -> str:
-        return self.normalize_result(preprocessed, metadata).text
-
-    def normalize_result(
-        self,
-        preprocessed: PreprocessedDocument,
-        metadata: dict[str, Any] | None = None,
         *,
         page_artifact_policy: PageArtifactPolicy = PageArtifactPolicy.STRIP,
+        tag_untagged_tables: bool = False,
     ) -> NormalizationResult:
-        """Normalize preprocessed document using form-specific and generic rules."""
+        """Execute normalization for this profile pipeline."""
         form = (metadata or {}).get("form") or preprocessed.metadata.get("form")
-        form_normalizer = self._router.get_normalizer(form)
-        profile = get_profile(form)
+        profile = self.get_effective_profile(form)
         representation = preprocessed.representation or (
             "html" if preprocessed.has_html_tags else "ascii"
         )
@@ -118,10 +96,6 @@ class DeepNormalizer:
         stage_trace: list[dict[str, Any]] = []
 
         source_identity = sha256_text(text)
-        # Stage metadata reuse: equal text content implies equal identity and
-        # line counts, so unchanged stages reuse the cached values instead of
-        # re-hashing and re-counting multi-megabyte strings. The source
-        # identity of the preprocessed text stays fixed for artifact metadata.
         cached_text = text
         cached_identity = source_identity
         cached_line_count = count_lines(text)
@@ -148,6 +122,7 @@ class DeepNormalizer:
         artifact_records: list[tuple[int, object]] = []
         table_geometries: tuple = ()
         next_artifact_id = 1
+
         if is_html:
             first_html_id = next_artifact_id
             (
@@ -327,7 +302,7 @@ class DeepNormalizer:
                 }
             )
 
-        text = form_normalizer.normalize(text, metadata)
+        text = self.transform_form_content(text, metadata)
 
         text = normalize_final_text_whitespace(text)
         final_identity, final_line_count = _stage_metadata(text)
@@ -345,13 +320,19 @@ class DeepNormalizer:
         toc_span = None
         closing_span = None
         reflow_result = None
-        if profile.boundary is not None and profile.body_evidence is not None:
-            toc_span = find_toc_span(
-                text,
-                start_line=boundary.start_line or 0,
-                page_analysis=page_analysis,
-                derived_taxonomy=profile.derived_taxonomy,
-            )
+
+        if (
+            self.enable_body_start
+            and profile.boundary is not None
+            and profile.body_evidence is not None
+        ):
+            if self.enable_toc:
+                toc_span = find_toc_span(
+                    text,
+                    start_line=boundary.start_line or 0,
+                    page_analysis=page_analysis,
+                    derived_taxonomy=profile.derived_taxonomy,
+                )
             body_start = find_body_start(
                 text,
                 cover_end=boundary.end_line,
@@ -359,6 +340,7 @@ class DeepNormalizer:
                 evidence=profile.body_evidence,
                 toc_span=toc_span,
             )
+
         body_start_line = (
             body_start.first_unit_line
             if (body_start is not None and body_start.first_unit_line is not None)
@@ -367,6 +349,7 @@ class DeepNormalizer:
                 (toc_span.end_line or 0) if toc_span else 0,
             )
         )
+
         if not is_html and body_start_line > 0:
             reflow_input_identity, reflow_input_line_count = _stage_metadata(text)
             stage_trace.append(
@@ -391,7 +374,7 @@ class DeepNormalizer:
                     is_structural_line=is_cover_layout_line,
                     is_table_bridge_line=is_financial_table_bridge_line,
                     is_table_tail_line=is_financial_table_tail_line,
-                    tag_untagged_tables=self.tag_untagged_tables,
+                    tag_untagged_tables=tag_untagged_tables,
                 ),
             )
             text = reflow_result.text
@@ -429,10 +412,12 @@ class DeepNormalizer:
                     "char_count": len(text),
                 }
             )
+
         if body_start is not None and body_start.first_unit_line is not None:
             closing_span = find_closing_span(
                 text, search_from=body_start.first_unit_line + 1
             )
+
         return NormalizationResult(
             text=text.strip(),
             cover_boundary=boundary,
@@ -453,4 +438,4 @@ class DeepNormalizer:
         )
 
 
-__all__ = ["DeepNormalizer", "NormalizationResult"]
+__all__ = ["ProfileDrivenPipeline"]

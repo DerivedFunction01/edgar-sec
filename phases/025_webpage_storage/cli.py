@@ -383,9 +383,10 @@ def main(argv: list[str] | None = None) -> int:
             with logging_redirect_tqdm():
                 try:
                     processors_mod = importlib.import_module(
-                        "phases.025_webpage_storage.processors"
+                        "phases.025_webpage_storage.core.processor"
                     )
                     processor = processors_mod.DefaultFilingProcessor()
+
                     plan_id = (
                         pipeline.load_targets(plan_dir)[2].get("plan_id")
                         or Path(plan_dir).name

@@ -1,18 +1,24 @@
-"""Form 8-K family stub and refetch evaluator."""
+"""Current report (Form 8-K) stub and refetch evaluator."""
 
 from __future__ import annotations
 
-from ....core.schemas import DocumentLocator
-from ..base import DecisionAction, FormEvaluator, PreprocessedDocument, RefetchDecision
+from typing import Any
+
+from defs.sec_documents.models import PreprocessedDocument
+from defs.sec_forms.forms.evaluator import (
+    DecisionAction,
+    FormEvaluator,
+    RefetchDecision,
+)
 
 
-class Form8KEvaluator(FormEvaluator):
+class CurrentReportEvaluator(FormEvaluator):
     """Evaluator for Form 8-K, 8-K12B, and 8-K12G3 filings."""
 
     def evaluate(
         self,
         preprocessed: PreprocessedDocument,
-        locator: DocumentLocator,
+        locator: Any = None,
     ) -> RefetchDecision:
         """Evaluate a Form 8-K filing document."""
         _ = locator
@@ -27,4 +33,6 @@ class Form8KEvaluator(FormEvaluator):
         )
 
 
-__all__ = ["Form8KEvaluator"]
+Form8KEvaluator = CurrentReportEvaluator
+
+__all__ = ["CurrentReportEvaluator", "Form8KEvaluator"]

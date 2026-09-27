@@ -1,7 +1,7 @@
-"""Generic preprocessor shared across all form types.
+"""Generic SEC document preprocessor shared across all form types and phases.
 
-Handles encoding decoding, XML/HTML entity unescaping, and lightweight preliminary
-normalization.
+Handles encoding decoding, XML/HTML entity unescaping, envelope extraction,
+and preliminary representation classification.
 """
 
 from __future__ import annotations
@@ -11,6 +11,7 @@ import re
 from typing import Any
 
 from defs.regex import build_alternation
+from defs.sec_documents.models import DocumentRepresentation, PreprocessedDocument
 from defs.sec_documents.sgml import (
     extract_target_sub_document,
     has_sgml_documents,
@@ -22,50 +23,11 @@ from defs.text import (
     extract_ascii_pre,
 )
 
-from .forms.base import PreprocessedDocument
-
 # Fast regexes for envelope and structural markers
 _TAG_NAMES = build_alternation(["script", "style", "head"])
 _RE_HEAD_SCRIPT_STYLE = re.compile(
     rf"(?is)<(?:{_TAG_NAMES})\b[^>]*>.*?</(?:{_TAG_NAMES})>"
 )
-
-
-def strip_sgml_document_wrapper(raw_text: str) -> str:
-    """Extract inner content from SGML <DOCUMENT>...<TEXT>...</TEXT></DOCUMENT> wrappers."""
-    s = raw_text.lstrip()
-    if not s.upper().startswith("<DOCUMENT>"):
-        return raw_text
-    upper = raw_text.upper()
-    start_pos = upper.find("<TEXT>")
-    end_pos = upper.rfind("</TEXT>")
-    if start_pos != -1 and end_pos != -1 and end_pos > start_pos:
-        doc_end = upper.find("</DOCUMENT>", end_pos)
-        if doc_end != -1:
-            return raw_text[start_pos + 6 : end_pos].strip()
-    return raw_text
-
-
-def _strip_envelope_text(text: str) -> str:
-    """Defense-in-depth envelope stripping for fetcher-bypass callers.
-
-    Handles PEM transport wrappers and any payload still carrying SGML
-    ``<DOCUMENT>`` blocks. Plain single documents pass through unchanged.
-    """
-    raw = text.encode("latin-1", errors="replace")
-    stripped = strip_pem_envelope(raw)
-    if not has_sgml_documents(stripped):
-        return strip_sgml_document_wrapper(stripped.decode("latin-1"))
-    selected = extract_target_sub_document(
-        stripped,
-        target_types=(),
-        primary_filename=None,
-        fallback_to_sequence_one=True,
-    )
-    if selected is not None:
-        return selected.decode("latin-1")
-    return strip_sgml_document_wrapper(stripped.decode("latin-1"))
-
 
 # HTML structural and styling tag discriminators (excludes SGML ASCII <TABLE><S><C>)
 _HTML_TAG_NAMES = build_alternation(
@@ -94,8 +56,44 @@ _HTML_TAG_NAMES = build_alternation(
 _RE_HTML_DISCRIMINATOR = re.compile(rf"(?i)<\/?(?:{_HTML_TAG_NAMES})\b")
 
 
-class GenericPreprocessor:
-    """Stage 1 generic preprocessor for raw document bytes."""
+def strip_sgml_document_wrapper(raw_text: str) -> str:
+    """Extract inner content from SGML <DOCUMENT>...<TEXT>...</TEXT></DOCUMENT> wrappers."""
+    s = raw_text.lstrip()
+    if not s.upper().startswith("<DOCUMENT>"):
+        return raw_text
+    upper = raw_text.upper()
+    start_pos = upper.find("<TEXT>")
+    end_pos = upper.rfind("</TEXT>")
+    if start_pos != -1 and end_pos != -1 and end_pos > start_pos:
+        doc_end = upper.find("</DOCUMENT>", end_pos)
+        if doc_end != -1:
+            return raw_text[start_pos + 6 : end_pos].strip()
+    return raw_text
+
+
+def strip_envelope_text(text: str) -> str:
+    """Defense-in-depth envelope stripping for fetcher-bypass callers.
+
+    Handles PEM transport wrappers and any payload still carrying SGML
+    ``<DOCUMENT>`` blocks. Plain single documents pass through unchanged.
+    """
+    raw = text.encode("latin-1", errors="replace")
+    stripped = strip_pem_envelope(raw)
+    if not has_sgml_documents(stripped):
+        return strip_sgml_document_wrapper(stripped.decode("latin-1"))
+    selected = extract_target_sub_document(
+        stripped,
+        target_types=(),
+        primary_filename=None,
+        fallback_to_sequence_one=True,
+    )
+    if selected is not None:
+        return selected.decode("latin-1")
+    return strip_sgml_document_wrapper(stripped.decode("latin-1"))
+
+
+class DocumentPreprocessor:
+    """Generic preprocessor for raw document bytes and payloads."""
 
     @staticmethod
     def decode_bytes(raw_bytes: bytes) -> tuple[str, str]:
@@ -128,7 +126,7 @@ class GenericPreprocessor:
         meta = dict(metadata or {})
 
         # Strip outer SGML <DOCUMENT>...</DOCUMENT> wrapper if present
-        content_text = _strip_envelope_text(raw_text)
+        content_text = strip_envelope_text(raw_text)
 
         # Strip non-displaying script and style blocks
         clean = _RE_HEAD_SCRIPT_STYLE.sub(" ", content_text)
@@ -141,12 +139,12 @@ class GenericPreprocessor:
         if ascii_pre is not None:
             clean = html.unescape(ascii_pre)
             meta["ascii_pre_wrapper"] = True
-            meta["representation"] = "ascii"
+            representation = DocumentRepresentation.ASCII_PRE.value
         elif not has_html:
             clean = html.unescape(clean)
-            meta["representation"] = "ascii"
+            representation = DocumentRepresentation.ASCII_PLAIN.value
         else:
-            meta["representation"] = "html"
+            representation = DocumentRepresentation.HTML.value
             # Stage-1 sanitization: drop inline XBRL wrappers, benign font
             # declarations, and Office metadata attributes before any
             # downstream DOM work, so every later stage sees a leaner,
@@ -154,6 +152,8 @@ class GenericPreprocessor:
             # containing escaped angle brackets (&lt;...&gt;) do not create
             # synthetic HTML tags that corrupt the DOM hierarchy.
             clean = clean_html_for_parsing(clean)
+
+        meta["representation"] = representation
 
         # Compute preliminary word count (lazy scan; no word-list materialization)
         word_count = count_words(clean)
@@ -167,3 +167,10 @@ class GenericPreprocessor:
             metadata=meta,
             representation="html" if has_html else "ascii",
         )
+
+
+__all__ = [
+    "DocumentPreprocessor",
+    "strip_envelope_text",
+    "strip_sgml_document_wrapper",
+]

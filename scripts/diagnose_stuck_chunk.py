@@ -96,7 +96,7 @@ def _document_id(locator) -> str:
 def _profile_one(args: argparse.Namespace) -> int:
     schemas = importlib.import_module("phases.025_webpage_storage.core.schemas")
     cache_module = importlib.import_module("defs.sec_http.cache")
-    processors = importlib.import_module("phases.025_webpage_storage.processors")
+    processors = importlib.import_module("phases.025_webpage_storage.core.processor")
 
     locator = schemas.DocumentLocator(
         locator_key=args.locator_key,

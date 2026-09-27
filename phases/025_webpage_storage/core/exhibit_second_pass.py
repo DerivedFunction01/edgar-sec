@@ -28,8 +28,8 @@ from defs.sql import (
     param,
 )
 
-from ..processors import DocumentProcessor, execute_processor
 from .fetcher import locate_sub_document_with_filename
+from .processor import DocumentProcessor, execute_processor
 from .schemas import (
     DOCUMENT_BLOBS_TABLE,
     NORMALIZATION_FAILURES_TABLE,

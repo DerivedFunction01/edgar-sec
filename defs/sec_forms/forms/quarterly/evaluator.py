@@ -1,24 +1,32 @@
-"""Form 10-Q family stub and refetch evaluator."""
+"""Quarterly report (Form 10-Q) stub and refetch evaluator."""
 
 from __future__ import annotations
 
-from ....core.schemas import DocumentLocator
-from ..base import DecisionAction, FormEvaluator, PreprocessedDocument, RefetchDecision
+from typing import Any
+
+from defs.sec_documents.models import PreprocessedDocument
+from defs.sec_forms.forms.evaluator import (
+    DecisionAction,
+    FormEvaluator,
+    RefetchDecision,
+)
 
 
-class Form10QEvaluator(FormEvaluator):
+class QuarterlyEvaluator(FormEvaluator):
     """Evaluator for Form 10-Q, 10-QSB, and 10-QT filings."""
 
     def evaluate(
         self,
         preprocessed: PreprocessedDocument,
-        locator: DocumentLocator,
+        locator: Any = None,
     ) -> RefetchDecision:
         """Evaluate a Form 10-Q filing document."""
         _ = locator
 
         # Tier 1: Post-2011 XBRL mandate bypass
         filing_year = preprocessed.metadata.get("filing_year")
+        if filing_year is None and locator is not None:
+            filing_year = getattr(locator, "filing_year", None)
         if filing_year is not None and int(filing_year) >= 2012:
             return RefetchDecision(
                 action=DecisionAction.PROCEED,
@@ -54,4 +62,6 @@ class Form10QEvaluator(FormEvaluator):
         )
 
 
-__all__ = ["Form10QEvaluator"]
+Form10QEvaluator = QuarterlyEvaluator
+
+__all__ = ["Form10QEvaluator", "QuarterlyEvaluator"]

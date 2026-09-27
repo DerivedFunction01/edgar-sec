@@ -79,11 +79,10 @@ def run_partition(
     if run_id is None:
         run_id = f"run-{plan.get('plan_id') or Path(plan_dir).name}"
     if processor is None:
-        import importlib
+        from .processor import DefaultFilingProcessor
 
-        processor = importlib.import_module(
-            "phases.025_webpage_storage.processors"
-        ).DefaultFilingProcessor()
+        processor = DefaultFilingProcessor()
+
     selected = partition_locators(locators, partition_id, partition_count)
     root = Path(artifacts_root or resolve_paths().artifacts_root)
     if base_snapshot_id is None:

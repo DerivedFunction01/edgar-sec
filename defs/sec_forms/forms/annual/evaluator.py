@@ -1,13 +1,17 @@
-"""Form 10-K family stub and refetch evaluator."""
+"""Annual report (Form 10-K, 20-F) stub and refetch evaluator."""
 
 from __future__ import annotations
 
 import re
+from typing import Any
 
 from defs.regex import build_alternation
-
-from ....core.schemas import DocumentLocator
-from ..base import DecisionAction, FormEvaluator, PreprocessedDocument, RefetchDecision
+from defs.sec_documents.models import PreprocessedDocument
+from defs.sec_forms.forms.evaluator import (
+    DecisionAction,
+    FormEvaluator,
+    RefetchDecision,
+)
 
 # Optimized anchor pattern: rare in documents (0-2 occurrences)
 _EX13_VARIANTS = [
@@ -35,10 +39,10 @@ _RE_DELEGATION_VERB = re.compile(
 )
 
 
-class Form10KEvaluator(FormEvaluator):
-    """Evaluator for Form 10-K, 10-K405, 10-KSB, and 10-KT filings.
+class AnnualEvaluator(FormEvaluator):
+    """Evaluator for Form 10-K, 10-K405, 10-KSB, 10-KT, and 20-F filings.
 
-    Evaluates whether the primary 10-K document is complete or an incomplete
+    Evaluates whether the primary report document is complete or an incomplete
     stub delegating substantive disclosures to Exhibit 13 or the Annual Report
     to Shareholders.
     """
@@ -46,9 +50,9 @@ class Form10KEvaluator(FormEvaluator):
     def evaluate(
         self,
         preprocessed: PreprocessedDocument,
-        locator: DocumentLocator,
+        locator: Any = None,
     ) -> RefetchDecision:
-        """Evaluate a Form 10-K filing document.
+        """Evaluate an Annual Report filing document.
 
         Lifecycle:
             fetch -> parse (doc 10-K) -> stub? -> refetch -> parse (doc 10-K already done, Ex-13) -> store.
@@ -57,6 +61,8 @@ class Form10KEvaluator(FormEvaluator):
 
         # Tier 1: Post-2011 XBRL mandate bypass (zero text operations for ~65% of filings)
         filing_year = preprocessed.metadata.get("filing_year")
+        if filing_year is None and locator is not None:
+            filing_year = getattr(locator, "filing_year", None)
         if filing_year is not None and int(filing_year) >= 2012:
             return RefetchDecision(
                 action=DecisionAction.PROCEED,
@@ -134,4 +140,6 @@ class Form10KEvaluator(FormEvaluator):
         )
 
 
-__all__ = ["Form10KEvaluator"]
+Form10KEvaluator = AnnualEvaluator
+
+__all__ = ["AnnualEvaluator", "Form10KEvaluator"]

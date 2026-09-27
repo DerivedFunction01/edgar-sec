@@ -11,8 +11,8 @@ from typing import Any
 
 from defs.text.html import parse_html
 
-from ..core.records import DocumentLocator
-from ..processors import DefaultFilingProcessor
+from ..core.processor import DefaultFilingProcessor
+from ..core.schemas import DocumentLocator
 
 
 @dataclass(frozen=True, slots=True)

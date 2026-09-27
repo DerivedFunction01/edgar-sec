@@ -26,7 +26,6 @@ from defs.sql import (
     param,
 )
 
-from ..processors import DocumentProcessor
 from .chunk_persistence import (
     ArchiveFetcher,
     ChunkFailure,
@@ -35,6 +34,7 @@ from .chunk_persistence import (
     _persist_fetch_result,
     _run_pipelined_acquisitions,
 )
+from .processor import DocumentProcessor
 from .schemas import (
     ACQUISITION_FAILURES_TABLE,
     COMMITTED_CHUNKS_TABLE,
