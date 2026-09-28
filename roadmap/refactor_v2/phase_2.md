@@ -1022,7 +1022,29 @@ silently in 2.5:
 > becomes `form=10-K_A`. A consumer mapping one onto the other must apply the
 > same escape. This is asserted rather than left for 2.5 to discover.
 
-### 15.9 Files changed outside `engine/selection/`
+### 15.9 Two pre-full-corpus fixes
+
+Both were found while rehearsing the Phase 2.5 hand-off, and both are recorded
+here because neither is visible in a passing test suite.
+
+**A silent parallel artifacts tree.** `resolve_paths()` treats the working
+directory as the project root. Running from inside `edgar_sec/` therefore did
+not fail — it derived `edgar_sec/.artifacts/`, `edgar_sec/uploads/`, and
+`edgar_sec/cache/`, and every subsequent command reported an empty catalog. A
+full-corpus run would have published real work into a tree nothing reads.
+`resolve_paths()` now raises `ProjectRootError` when the CWD is inside the
+package. An explicit `repo_root` argument still works from anywhere, since
+naming the root is how a caller answers the question.
+
+**`reclaim()` was missing from the feature builder.** AGENTS §2.2 requires
+reclamation at bounded intervals, and `catalog_job.py` calls it twice; the
+Stage B feature builder ran six heavy DuckDB stages back to back with none, so
+the Python-side arenas they grew were never returned to the OS. v1 had the same
+gap, which is why a v1 live run survived it — but the contract asks for it and
+it costs nothing between the four independent scans and the two wide collapse
+queries.
+
+### 15.10 Files changed outside `engine/selection/`
 
 `domain/filing_catalog/filters.py` and `schemas.py` (§15.4),
 `infra/storage/duckdb_catalog.py` (§15.4 and the `suffix_sql` parenthesization),

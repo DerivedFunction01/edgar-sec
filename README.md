@@ -35,6 +35,13 @@ Layer 0: foundation/   # Crypto, cgroup resources, memory reclamation, settings 
 
 ## Quick Start
 
+> [!IMPORTANT]
+> **Run every command from the repository root.** The artifacts, uploads, and
+> cache roots are all derived from the current working directory, so running
+> from inside `edgar_sec/` would derive a second, parallel `.artifacts/` tree
+> beside the package and silently report an empty catalog. The engine now
+> refuses to start in that directory.
+
 ### 1. Interactive Launcher
 ```bash
 # Launch interactive dispatcher menu:
