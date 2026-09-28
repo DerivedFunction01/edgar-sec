@@ -1,8 +1,8 @@
 # Plan: Phase 1 Clean Slate Implementation (`edgar_sec.pipelines.metadata_sync`)
 
 > [!NOTE]
-> **Status:** Active Execution Plan for the Clean Slate v2 Branch  
-> **Progress:** ~60% Completed (Milestone 0, 1, 2, 4 fully implemented, tested, and passing all quality gates).  
+> **Status:** Phase 1 Complete  
+> **Progress:** 100% — Milestones 0, 1, 2, 3, 4, 5, 6, and 6.1 implemented, tested, and passing all quality gates.  
 > **Repository Context:** All legacy v1 code has been moved to `.v1/` as a read-only historical specification. The repository root is a 100% clean workspace. We are constructing the production v2 architecture from the ground up without legacy shims or technical debt.
 
 ---
@@ -154,87 +154,133 @@ edgar-sec/ (v2 Root)
 
 ### 3.1. Layer 3 Engine: Submissions Normalizer (`edgar_sec/engine/submissions/`)
 
-**Invariant**: Layer 3 is 100% pure computation. Zero disk I/O, zero network calls, zero stateful side-effects.
+**Contract**: 100% pure computation. Zero disk I/O, zero network calls, zero stateful side-effects.
 
-1. **`helpers.py`**:
-   - `parse_date(val: Any) -> str | None`: Parses dates to ISO `YYYY-MM-DD`. Returns `None` on invalid/missing input.
-   - `safe_int(val: Any) -> int | None`: Parses integers, strips commas/spaces, returns `None` on failure.
-   - `safe_float(val: Any) -> float | None`: Parses floats, handles NaN/Inf, returns `None` on failure.
-   - `normalize_str(val: Any) -> str | None`: Strips whitespace, returns `None` if empty string or None.
-   - `clean_list(val: Any) -> list[str]`: Ensures output is a list of strings, filtering nulls.
+#### 1. Constants & Base URLs (`helpers.py`)
+- `SEC_ARCHIVE_BASE = "https://www.sec.gov/Archives/edgar/data"`
+- `SEC_SUBMISSIONS_BASE = "https://data.sec.gov/submissions"`
+- `ACCESSION_RE = re.compile(r"^\d{10}-\d{2}-\d{6}$")`
 
-2. **`profile.py`**:
-   - `extract_entity_profile(raw_data: dict[str, Any], cik_padded: str) -> dict[str, Any]`:
-     - Identity: `cik`, `entity_name` (`name`), `entity_type`, `sic`, `sic_description`.
-     - Classification: `category`, `fiscal_year_end`, `state_of_incorporation`, `state_of_incorporation_description`.
-     - Listings: `tickers` (list of str), `exchanges` (list of str), `ein`.
-     - Addresses: `mailing` and `business` addresses (street1, street2, city, stateOrCountry, zipCode, stateOrCountryDescription).
-     - `former_names`: list of former company names with date ranges.
+#### 2. Helpers Surface (`helpers.py`)
+- `add_anomaly(anomalies: list[dict], code: str, detail: str, source: str = "") -> None`: Standard anomaly recorder appending `{"code": code, "detail": detail, "source": source}`.
+- `resolve_alias(payload: dict, aliases: list[str]) -> tuple[str | None, Any | None, bool, list[dict]]`:
+  - Case-insensitive search over `payload.keys()`.
+  - Canonical key selection.
+  - Conflict detection: if multiple alias forms exist with differing values, emits `alias_conflict` anomaly.
+- `accession_normalized(raw: str | None) -> str | None`: Strips hyphens, validates 18 digits. Returns `None` if invalid.
+- `build_archive_url(cik_padded: str, accession_raw: str | None, primary_document: str | None) -> tuple[str | None, str | None]`:
+  - Formats: `{SEC_ARCHIVE_BASE}/{int(cik_padded)}/{accession_normalized}/{primary_doc}`.
+  - Returns `(url, fallback_reason)`. If primary doc is missing or stub (`.txt`, `0001.htm`), returns reason (`primary_document_missing`, `primary_document_stub:{doc}`).
+- `normalize_items(value: Any) -> list[str]`:
+  - If `None`: returns `[]`.
+  - If `list`: returns `[str(x) for x in value]`.
+  - If `str`: comma-splits and strips whitespace (handling historical filing item formats).
+- `to_bool(value: Any) -> bool | None`: Handles `1/0`, `"true"/"false"`, `"1"/"0"`. Preserves `None`.
+- `to_int(value: Any) -> int | None`: Parses numeric values, handling strings safely. Returns `None` if invalid.
+- `normalize_cik_padded(raw: Any) -> str`: Normalizes raw CIK to 10-digit zero-padded string.
 
-3. **`unroller.py`**:
-   - Columnar unrolling of SEC filings:
-     - Input SEC JSONs contain `filings.recent` with parallel columnar lists (`accessionNumber`, `filingDate`, `reportDate`, `acceptanceDateTime`, `act`, `form`, `fileNumber`, `filmNumber`, `items`, `size`, `isXBRL`, `isInlineXBRL`, `primaryDocument`, `primaryDocDescription`).
-     - Ragged array handling: Column lists can have mismatched lengths (tested by `mismatched_arrays.json`). Clip arrays to the length of `accessionNumber` or pad with `None` where missing.
-     - Merging historical files: When historical payloads are present (`files` array), unroll and append their records.
-     - Deduplication: Deduplicate filings by `accessionNumber`. If duplicates exist, preserve the entry with the latest `acceptanceDateTime`.
-     - Sorting: Chronological descending sort order: `filingDate` DESC, `acceptanceDateTime` DESC.
+#### 3. Firm Profile & Structural Normalization (`profile.py`)
+- `PROFILE_KEYS`: All 23 top-level SEC submission profile keys (`cik`, `entityType`, `sic`, `sicDescription`, `ownerOrg`, `name`, `tickers`, `exchanges`, `ein`, `lei`, `description`, `website`, `investorWebsite`, `category`, `fiscalYearEnd`, `stateOfIncorporation`, `stateOfIncorporationDescription`, `phone`, `flags`, `formerNames`, `addresses`, `filings`, etc.).
+- `ADDRESS_KEYS`: `street1`, `street2`, `city`, `stateOrCountry`, `zipCode`, `stateOrCountryDescription`, `country`, `countryCode`, `foreignStateTerritory`, `isForeignLocation`.
+- `address_field(raw_key: str) -> str`: Maps camelCase address keys to snake_case.
+- `normalize_address(value: Any, anomalies: list[dict], source: str) -> dict | None`:
+  - Missing address key (`None`) &rarr; returns `None`.
+  - Empty dict `{}` &rarr; returns all-null dict (preserves "supplied but empty" vs "not supplied").
+  - Maps keys via `address_field()`; coerces `is_foreign_location` with `to_bool`.
+  - Unrecognized keys are recorded under `unknown_address_keys` anomaly and omitted from the struct.
+- `zip_listings(tickers: Any, exchanges: Any, anomalies: list[dict]) -> list[dict]`:
+  - Zips by index. Length mismatch pads shorter side with `None` and records `listings_length_mismatch`.
+- `normalize_former_names(value: Any, anomalies: list[dict]) -> list[dict]`:
+  - Handles SEC 3-element lists `[name, from, to]` and dicts `{"name": ..., "from": ..., "to": ...}`.
 
-4. **`builder.py`**:
-   - `build_submission_table(profile_data: dict[str, Any], filings: list[dict[str, Any]], cik_padded: str, status: str, payload_sha256: str, anomalies: list[dict[str, Any]]) -> pa.Table`:
-     - Creates a 1-row PyArrow `Table` matching `SUBMISSION_METADATA_SCHEMA` exactly.
-     - Top-level fields:
-       1. `cik` (string)
-       2. `status` (string, must be in `{"ok", "partial", "failed"}`)
-       3. `processed_at` (timestamp[us, "UTC"])
-       4. `payload_sha256` (string)
-       5. `entity_name` (string)
-       6. `entity_type` (string)
-       7. `sic` (string)
-       8. `sic_description` (string)
-       9. `category` (string)
-       10. `fiscal_year_end` (string)
-       11. `state_of_incorporation` (string)
-       12. `state_of_incorporation_description` (string)
-       13. `addresses` (struct: mailing, business)
-       14. `former_names` (list of structs)
-       15. `listings` (list of structs: ticker, exchange)
-       16. `filings` (list of filing structs)
-       17. `anomalies` (list of anomaly structs)
+#### 4. Columnar Array Unrolling & Oracle Invariants (`filings.py`)
+- `FILING_ARRAY_KEYS`: 16 parallel column names (`accessionNumber`, `filingDate`, `reportDate`, `acceptanceDateTime`, `act`, `form`, `fileNumber`, `filmNumber`, `items`, `core_type`, `size`, `isXBRL`, `isInlineXBRL`, `isXBRLNumeric`, `primaryDocument`, `primaryDocDescription`).
+- **Ragged Array Rule**: `row_count = max(lengths.values()) if lengths else 0`. Missing or shorter arrays pad with `None`; **never truncate**. Records `filing_array_length_mismatch`.
+- **Preserve Source Order (No Invented Sorting)**: Filings preserve exact input order: `recent` filings first (index 0..N), followed by `historical` files in order. Never sort by filingDate.
+- **First-Occurrence-Wins Dedup**:
+  - Deduplicate on `accession_number_normalized`.
+  - First occurrence wins. If subsequent duplicate has conflicting core metadata (`form`, `filing_date`, `report_date`, `primary_document`), record `accession_conflict` anomaly.
+- `normalize_submission_files(files: Any, anomalies: list[dict]) -> list[dict]`: Normalizes historical file descriptors (`name`, `FilingCount`, `FilingFrom`, `FilingTo`).
 
-5. **`normalizer.py`**:
-   - Master entry point:
-     ```python
-     def normalize_submissions(
-         raw_recent: dict[str, Any],
-         cik: str,
-         raw_historical: list[dict[str, Any]] | None = None,
-         payload_sha256: str = "",
-     ) -> pa.Table:
-     ```
-   - Gracefully handles empty, missing, or corrupted input by logging an anomaly and returning a table with `status="partial"` or `status="failed"`.
+#### 5. Row Assembly & Schema Conformance (`builder.py`)
+- `normalize_submissions(...) -> dict[str, Any]`:
+  ```python
+  def normalize_submissions(
+      payload: dict,
+      *,
+      cik_padded: str,
+      input_name: str,
+      snapshot_id: str,
+      fetched_at: str,
+      source_url: str,
+      byte_count: int,
+      historical_payloads: list[tuple[str, str, dict | None]],
+      historical_errors: list[str],
+      response_sha256: str = "",
+  ) -> dict[str, Any]:
+  ```
+  - Populates all **28 canonical schema fields** matching `SUBMISSION_METADATA_SCHEMA`:
+    1. `cik` (str)
+    2. `snapshot_id` (str)
+    3. `fetched_at` (str)
+    4. `source_url` (str)
+    5. `response_sha256` (str)
+    6. `byte_count` (int)
+    7. `schema_version` (str: "1.0.0")
+    8. `status` (str: "ok" | "partial" | "failed")
+    9. `error` (str | None)
+    10. `anomalies` (list[dict])
+    11. `extra_fields` (canonical JSON str | None)
+    12. `identity` (struct: name, former_names)
+    13. `classification` (struct: entity_type, sic_code, sic_description, owner_org, filer_category)
+    14. `identifiers` (struct: ein, lei)
+    15. `contact` (struct: phone, website, investor_website, description)
+    16. `incorporation` (struct: state, state_description)
+    17. `reporting` (struct: fiscal_year_end)
+    18. `insider_transactions` (struct: owner_exists, issuer_exists)
+    19. `addresses` (struct: mailing, business)
+    20. `listings` (list of struct: ticker, exchange)
+    21. `filings` (list of filing structs, 21 fields)
+    22. `submission_files` (list of struct: name, filing_count, filing_from, filing_to)
+    23. `input_name` (str)
+    24. `input_fingerprint` (str)
+    25. `chunk_id` (int | None)
+    26. `historical_files_total` (int)
+    27. `historical_files_failed` (int)
+    28. `historical_records_total` (int)
+  - Empty string values in `website`, `description`, `investor_website` are preserved as `""`, not converted to `None`.
+  - Missing `filings.recent` yields `status="ok"` with 0 filings and a `recent_missing` anomaly (not `partial` or `failed`).
+  - Terminal statuses:
+    - `"ok"`: payload parsed without terminal historical errors.
+    - `"partial"`: historical errors occurred but at least one filing record was extracted.
+    - `"failed"`: unparseable top-level payload or zero filings extracted with errors.
+- `validate_row_shapes(row: dict) -> None`: Validates row types against `SUBMISSION_METADATA_SCHEMA`.
+- `build_submission_table(rows: list[dict[str, Any]]) -> pa.Table`: Converts normalized row dicts into an Arrow Table conforming strictly to `SUBMISSION_METADATA_SCHEMA`.
 
 ---
 
 ### 3.2. Layer 4 Pipelines: Metadata Sync (`edgar_sec/pipelines/metadata_sync/`)
+
+**Chunking Invariant**: The default Phase 1 chunk size is **1,000 CIKs**, sourced directly from `edgar_sec.foundation.runtime.settings.runtime.DEFAULT_CHUNK_SIZE`. Mini-runs and test suites override `chunk_size` via CLI or options (e.g. `chunk_size = 2` or `10` for `cik_sec_mini.csv`).
 
 1. **`paths.py`**:
    - Pipeline directory structure:
      - Plan: `.artifacts/metadata/plans/{plan_id}/plan.json`
      - Transient checkpoints: `.artifacts/transient/metadata/{plan_id}/chunk_{chunk_id:04d}.parquet`
      - Snapshot publishing: `.artifacts/metadata/snapshots/{snapshot_id}/metadata.parquet`
-     - Current pointer: `.artifacts/metadata/snapshots/current` (symlink or atomic JSON pointer)
+     - Current pointer: `.artifacts/metadata/snapshots/current/`
 
 2. **`manifest.py`**:
-   - Reads input CSV (e.g. `uploads/cik-sec.csv` or `tests/fixtures/cik_sec_mini.csv`).
+   - Reads input CSV (default `uploads/cik-sec.csv` or user specified `tests/fixtures/cik_sec_mini.csv`).
    - Normalizes CIKs to 10-digit zero-padded strings.
    - Computes deterministic input SHA-256 fingerprint.
 
 3. **`planner.py`**:
-   - Partitions CIK list into fixed-size chunks (default 1,000 CIKs, or 100 for mini runs).
+   - Partitions CIK list into fixed-size chunks (`options.chunk_size`, defaulting to 1,000 CIKs).
    - Generates deterministic `plan.json` recording schema version, timestamp, total CIK count, chunk count, and chunk boundaries.
 
 4. **`checkpoints.py`**:
-   - Discovers completed chunk Parquet files.
+   - Discovers completed chunk Parquet files (`chunk_{chunk_id:04d}.parquet`).
    - Validates row counts and schema compliance. Enables instant restart after interruption without re-fetching completed chunks.
 
 5. **`worker.py`**:
@@ -242,7 +288,7 @@ edgar-sec/ (v2 Root)
      - Takes a chunk of CIKs.
      - For each CIK: checks `SqlCache` or requests via `SecHttpClient`.
      - Calls `normalize_submissions` in `engine`.
-     - Accumulates batch tables and writes an atomic chunk Parquet file using `write_parquet_table`.
+     - Accumulates row dicts, calls `build_submission_table`, and writes an atomic chunk Parquet file via `write_parquet_table`.
      - Calls `reclaim()` at regular intervals to return glibc arena memory to the OS.
 
 6. **`merger.py`**:
@@ -291,8 +337,8 @@ edgar-sec/ (v2 Root)
 
 ### Milestone 2: Domain Leaf Models & Schemas (Layer 1)
 - [x] Create `edgar_sec/domain/identity.py` (`Cik`, `AccessionNumber`).
-- [x] Create `edgar_sec/domain/submissions/models.py` (`EntityProfile`, `FilingRecord`, `SubmissionsAggregate`).
-- [x] Create `edgar_sec/domain/submissions/schemas.py` (`SUBMISSION_METADATA_SCHEMA` v1.0.0, terminal statuses `ok`, `partial`, `failed`).
+- [x] Create `edgar_sec/domain/submissions/models.py` (`EntityProfile`, nullable `FilingRecord`, `SubmissionsAggregate`).
+- [x] Create `edgar_sec/domain/submissions/schemas.py` (`SUBMISSION_METADATA_SCHEMA` v1.0.0, 28 top-level columns, terminal statuses `ok`, `partial`, `failed`).
 - [x] Create `tests/domain/test_identity.py` and `tests/domain/test_schemas.py` (all tests passing).
 
 ### Milestone 3: Infrastructure Adapters (Layer 2)
@@ -304,29 +350,38 @@ edgar-sec/ (v2 Root)
 - [x] Create `edgar_sec/infra/storage/parquet.py` (`write_parquet_table`, `count_parquet_rows`).
 - [x] Create `tests/infra/test_sec_http.py` and `tests/infra/test_storage.py` (all tests passing).
 
-### Milestone 4: Engine Submissions Normalizer (Layer 3) - CURRENT FOCUS
+### Milestone 4: Engine Submissions Normalizer (Layer 3) - COMPLETE
 - [x] Golden fixtures ready under `tests/fixtures/` (`recent_submissions.json`, `historical_submissions.json`, `mismatched_arrays.json`, `cik_sec_mini.csv`).
-- [ ] Create `edgar_sec/engine/submissions/helpers.py`.
-- [ ] Create `edgar_sec/engine/submissions/profile.py`.
-- [ ] Create `edgar_sec/engine/submissions/unroller.py`.
-- [ ] Create `edgar_sec/engine/submissions/builder.py`.
-- [ ] Create `edgar_sec/engine/submissions/normalizer.py`.
-- [ ] Create `tests/engine/test_normalizer.py` verifying against all 3 golden submission fixtures.
+- [x] Create `edgar_sec/engine/submissions/helpers.py` (`resolve_alias`, `build_archive_url`, `normalize_items`, `to_bool`, `to_int`, `accession_normalized`).
+- [x] Create `edgar_sec/engine/submissions/profile.py` (`normalize_address`, `zip_listings`, `normalize_former_names`).
+- [x] Create `edgar_sec/engine/submissions/filings.py` (max-length ragged array unroller, source-order preservation, first-occurrence dedup on normalized accession, `normalize_submission_files`).
+- [x] Create `edgar_sec/engine/submissions/builder.py` (`normalize_submissions`, `validate_row_shapes`, `build_submission_table`).
+- [x] Create `tests/engine/test_normalizer.py` verifying against all 3 golden submission fixtures (21 tests).
+- [x] Oracle parity confirmed by direct diff against `.v1` across 7 payload cases: byte-identical on every field except the `submission_files.url` key, which is dropped because it is not a `SUBMISSION_FILE_STRUCT` field and fails the Arrow build.
 
-### Milestone 5: Pipeline & Interactive Operator (Layer 4)
-- [ ] Create `edgar_sec/pipelines/metadata_sync/paths.py`.
-- [ ] Create `edgar_sec/pipelines/metadata_sync/manifest.py`.
-- [ ] Create `edgar_sec/pipelines/metadata_sync/planner.py`.
-- [ ] Create `edgar_sec/pipelines/metadata_sync/checkpoints.py`.
-- [ ] Create `edgar_sec/pipelines/metadata_sync/worker.py`.
-- [ ] Create `edgar_sec/pipelines/metadata_sync/merger.py`.
-- [ ] Create `edgar_sec/pipelines/metadata_sync/augmentation.py`.
-- [ ] Create `edgar_sec/pipelines/metadata_sync/source_registry.py`.
-- [ ] Create `edgar_sec/pipelines/metadata_sync/operator.py`.
-- [ ] Create `edgar_sec/pipelines/metadata_sync/cli.py`.
-- [ ] Connect `run.py` to `metadata_sync.operator`.
+### Milestone 5: Pipeline & Interactive Operator (Layer 4) - COMPLETE
+- [x] Create `edgar_sec/pipelines/metadata_sync/paths.py`.
+- [x] Create `edgar_sec/pipelines/metadata_sync/manifest.py`.
+- [x] Create `edgar_sec/pipelines/metadata_sync/planner.py` (1,000 CIK default chunk size, content-derived `plan_id`).
+- [x] Create `edgar_sec/pipelines/metadata_sync/checkpoints.py`.
+- [x] Create `edgar_sec/pipelines/metadata_sync/sec_client.py` (`SubmissionsClient`, injected `SecHttpClient`).
+- [x] Create `edgar_sec/pipelines/metadata_sync/worker.py` (threaded, machine-derived worker count, resumable chunks).
+- [x] Create `edgar_sec/pipelines/metadata_sync/merger.py` (single-stage validated DuckDB merge; duplicate accessions warn, duplicate/null CIKs fail).
+- [x] Create `edgar_sec/pipelines/metadata_sync/operator.py`.
+- [x] Create `edgar_sec/pipelines/metadata_sync/cli.py` (`plan`, `status`, `run`, `merge`, `augment`).
+- [x] `run.py` dispatches to `metadata_sync.operator` (verified: `python run.py metadata --help`).
+- [x] Layer 2 addition: `SecHttpClient.get_json_ex` (returns `byte_count`/`response_sha256`) and `session_factory` (test seam).
 
-### Milestone 6: Verification, Oracle Parity & End-to-End Gate
-- [ ] Replay `cik_sec_mini.csv` end-to-end through `run.py metadata run`.
-- [ ] Validate generated Parquet dataset schema and row count against legacy `.v1` golden reference.
-- [ ] Run full gate `.venv/bin/python check.py` (format, lint, all scanners, 100% test pass).
+### Milestone 6: Verification, Oracle Parity & End-to-End Gate - COMPLETE
+- [x] Replay `cik_sec_mini.csv` end-to-end (plan -> run -> checkpoint -> merge -> publish) offline via a scripted transport, asserting schema, row count, CIK ordering, and the `current` pointer (`tests/pipelines/test_end_to_end.py`).
+- [x] Validate normalized Parquet against legacy `.v1` golden reference (row-level diff, 7 cases).
+- [x] Verify resume semantics: a completed chunk is never refetched.
+- [x] Create `metadata_sync/smoke_test.py` as a standalone, credential-gated live script outside the pytest gate, refusing non-preview artifacts roots.
+- [x] Run full gate `.venv/bin/python check.py` (format, lint, all scanners, 113 tests passing).
+- [x] Add `tests/foundation/test_scanners.py` so a loosened policy scanner fails the gate.
+
+### Milestone 6.1: Delta Augmentation - COMPLETE
+- [x] Create `edgar_sec/pipelines/metadata_sync/augmentation.py` (`plan_delta`, `base_snapshot_ciks`, `augment`).
+- [x] Create `edgar_sec/pipelines/metadata_sync/source_registry.py` (content-addressed immutable `company_tickers` snapshots).
+- [x] Wire `augment` into the CLI and the interactive operator.
+- [x] Verify: a snapshot with N CIKs augmented with K new CIKs publishes N+K rows, preserves base rows byte-for-byte, and refetches only the K new CIKs.

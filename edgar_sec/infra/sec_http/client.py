@@ -2,10 +2,10 @@
 
 from __future__ import annotations
 
-import hashlib
 import json
 import threading
 import time
+from collections.abc import Callable
 from pathlib import Path
 from typing import Any
 
@@ -13,6 +13,7 @@ import requests
 from requests.adapters import HTTPAdapter
 from urllib3.util.retry import Retry
 
+from edgar_sec.foundation.hashing import sha256_bytes
 from edgar_sec.foundation.runtime.settings.paths import DEFAULT_CACHE_JSON_TTL_S
 from edgar_sec.foundation.runtime.settings.sec import (
     DEFAULT_MAX_FAILURE_ATTEMPTS,
@@ -58,6 +59,7 @@ class SecHttpClient:
         max_failure_attempts: int = DEFAULT_MAX_FAILURE_ATTEMPTS,
         ignore_failure_history: bool = False,
         max_response_bytes: int | None = None,
+        session_factory: Callable[[], Any] | None = None,
     ) -> None:
         if not user_agent:
             raise ValueError("user_agent is required for SecHttpClient")
@@ -75,15 +77,18 @@ class SecHttpClient:
         self.ignore_failure_history = ignore_failure_history
         self.max_response_bytes = max_response_bytes
 
-        # Configure session connection pool
-        self._session = requests.Session()
-        adapter = HTTPAdapter(
-            pool_connections=16,
-            pool_maxsize=16,
-            max_retries=Retry(total=0, connect=0, read=0),
-        )
-        self._session.mount("https://", adapter)
-        self._session.mount("http://", adapter)
+        # Configure session connection pool. A caller-supplied factory lets
+        # tests substitute a scripted session while keeping pacing, retry,
+        # caching, and failure-ledger behavior under test.
+        self._session = session_factory() if session_factory else requests.Session()
+        if hasattr(self._session, "mount"):
+            adapter = HTTPAdapter(
+                pool_connections=16,
+                pool_maxsize=16,
+                max_retries=Retry(total=0, connect=0, read=0),
+            )
+            self._session.mount("https://", adapter)
+            self._session.mount("http://", adapter)
         self._lock = threading.Lock()
 
     @classmethod
@@ -247,7 +252,7 @@ class SecHttpClient:
                     raise ResponseTooLargeError(
                         url, f"response exceeded {self.max_response_bytes} bytes", 200
                     )
-                sha = hashlib.sha256(content).hexdigest()
+                sha = sha256_bytes(content)
                 self._cache_put(url, content, sha, len(content), content_kind)
                 if self._cache:
                     self._cache.clear_failure(url)
@@ -340,6 +345,32 @@ class SecHttpClient:
         if not isinstance(parsed, dict):
             raise PermanentHttpError(url, "expected JSON object at root")
         return parsed
+
+    def get_json_ex(
+        self, url: str, *, force_refresh: bool = False
+    ) -> tuple[dict[str, Any], int, str]:
+        """Like :meth:`get_json` but also returns ``(payload, byte_count, response_sha256)``.
+
+        The submissions dataset records per-row acquisition provenance, so the
+        byte count and digest of the exact response body must survive the
+        parse rather than being discarded by it.
+        """
+        raw = self.get_bytes(url, content_kind="json", force_refresh=force_refresh)
+        try:
+            parsed = json.loads(raw.decode("utf-8", errors="replace"))
+        except json.JSONDecodeError as exc:
+            if self._cache:
+                self._cache.record_failure(
+                    url,
+                    kind="bad_json",
+                    detail=f"malformed JSON: {exc}",
+                    status_code=200,
+                    permanent=True,
+                )
+            raise PermanentHttpError(url, f"invalid JSON response: {exc}") from exc
+        if not isinstance(parsed, dict):
+            raise PermanentHttpError(url, "expected JSON object at root")
+        return parsed, len(raw), sha256_bytes(raw)
 
     # ------------------------------------------------------------------ SEC URL Helpers
 

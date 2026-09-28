@@ -1,0 +1,268 @@
+"""Resumable chunk execution.
+
+One chunk is the unit of work and of checkpointing. Within a chunk, CIKs are
+fetched concurrently on threads: the shared HTTP client and its SQLite cache
+are both thread-safe, the work is network-bound rather than CPU-bound, and
+DuckDB is confined to the coordinator, so nothing here needs process isolation.
+
+Every requested CIK produces exactly one row, including failures, so completion
+is determinable from the data rather than from queue state.
+"""
+
+from __future__ import annotations
+
+from collections.abc import Callable
+from concurrent.futures import ThreadPoolExecutor
+from dataclasses import dataclass, field
+from typing import Any
+
+from edgar_sec.domain.submissions.schemas import TERMINAL_STATUSES
+from edgar_sec.engine.submissions.builder import (
+    build_submission_table,
+    normalize_submissions,
+)
+from edgar_sec.foundation.runtime.memory import reclaim
+from edgar_sec.infra.storage.parquet import write_parquet_table
+
+from .checkpoints import inspect_chunk
+from .paths import RunPaths
+from .planner import utc_now_iso
+from .sec_client import CikFetchResult, SubmissionsClient
+
+RECLAIM_INTERVAL = 64
+
+__all__ = [
+    "ChunkResult",
+    "normalize_one_cik",
+    "resolve_workers",
+    "run_chunk",
+    "run_partition",
+]
+
+
+def resolve_workers(workers: int | None = None) -> int:
+    """Resolve the worker count, deriving it from the machine when unset."""
+    if workers is not None and workers > 0:
+        return workers
+    from edgar_sec.foundation.runtime.resources import derive_resources
+
+    return max(1, derive_resources().workers)
+
+
+@dataclass(slots=True)
+class ChunkResult:
+    """Outcome of executing one chunk."""
+
+    chunk_id: int
+    path: str
+    row_count: int
+    skipped_existing: bool = False
+    statuses: dict[str, int] = field(default_factory=dict)
+    historical_files: int = 0
+
+
+def normalize_one_cik(
+    client: SubmissionsClient,
+    cik_padded: str,
+    *,
+    input_name: str,
+    snapshot_id: str,
+    input_fingerprint: str,
+    chunk_id: int,
+    fetched_at: str | None = None,
+) -> tuple[dict[str, Any], CikFetchResult]:
+    """Fetch and normalize one CIK into a canonical row dict."""
+    stamp = fetched_at or utc_now_iso()
+    result = client.fetch_cik(cik_padded)
+    row = normalize_submissions(
+        result.payload if result.payload is not None else {},
+        cik_padded=cik_padded,
+        input_name=input_name,
+        snapshot_id=snapshot_id,
+        fetched_at=stamp,
+        source_url=result.source_url,
+        byte_count=result.byte_count,
+        historical_payloads=result.historical_payloads,
+        historical_errors=result.historical_errors,
+        response_sha256=result.response_sha256,
+        input_fingerprint=input_fingerprint,
+        chunk_id=chunk_id,
+    )
+    terminal = result.terminal_error()
+    if terminal and row["status"] == "ok":
+        row["status"] = "partial" if row["filings"] else "failed"
+        row["error"] = terminal
+    if row["status"] not in TERMINAL_STATUSES:
+        row["status"] = "failed"
+        row["error"] = row["error"] or f"non-terminal status for CIK {cik_padded}"
+    return row, result
+
+
+def _run_chunk_rows(
+    client: SubmissionsClient,
+    ciks: tuple[str, ...],
+    *,
+    chunk_id: int,
+    input_name: str,
+    snapshot_id: str,
+    input_fingerprint: str,
+    workers: int,
+    progress: Callable[[dict[str, Any]], None] | None,
+) -> tuple[list[dict[str, Any]], int]:
+    """Fetch every CIK in a chunk, returning rows in plan order."""
+    rows: dict[str, dict[str, Any]] = {}
+    historical_files = 0
+
+    def emit(cik_padded: str, row: dict, result: CikFetchResult) -> None:
+        nonlocal historical_files
+        rows[cik_padded] = row
+        historical_files += result.historical_files_fetched
+        if progress is not None:
+            progress(
+                {
+                    "type": "cik_normalized",
+                    "cik": cik_padded,
+                    "status": row["status"],
+                    "historical_files": result.historical_files_fetched,
+                }
+            )
+
+    with ThreadPoolExecutor(max_workers=resolve_workers(workers)) as pool:
+        futures = [
+            pool.submit(
+                normalize_one_cik,
+                client,
+                cik_padded,
+                input_name=input_name,
+                snapshot_id=snapshot_id,
+                input_fingerprint=input_fingerprint,
+                chunk_id=chunk_id,
+            )
+            for cik_padded in ciks
+        ]
+        for processed, future in enumerate(futures, start=1):
+            row, result = future.result()
+            emit(cik_padded=ciks[processed - 1], row=row, result=result)
+            if processed % RECLAIM_INTERVAL == 0:
+                reclaim()
+
+    reclaim()
+    return [rows[cik] for cik in ciks], historical_files
+
+
+def run_chunk(
+    client: SubmissionsClient,
+    plan: dict,
+    run_paths: RunPaths,
+    chunk_id: int,
+    *,
+    snapshot_id: str,
+    workers: int | None = None,
+    force: bool = False,
+    progress: Callable[[dict[str, Any]], None] | None = None,
+) -> ChunkResult:
+    """Execute one chunk and atomically write its checkpoint Parquet.
+
+    A valid existing checkpoint short-circuits the run, so completed chunks
+    are never refetched. The guarantee lives here rather than in each caller,
+    because a refetch is exactly what makes a resume slow and a rerun
+    non-idempotent.
+    """
+    chunk = next(
+        (item for item in plan["chunks"] if int(item["chunk_id"]) == chunk_id), None
+    )
+    if chunk is None:
+        raise ValueError(f"chunk {chunk_id} is not present in plan {plan['plan_id']}")
+
+    path = run_paths.chunk_file(chunk_id)
+    if not force:
+        existing = inspect_chunk(
+            chunk_id,
+            path,
+            expected_ciks=tuple(chunk["cik_padded"]),
+            expected_fingerprint=str(plan.get("input_fingerprint", "")) or None,
+        )
+        if existing is not None:
+            return ChunkResult(
+                chunk_id=chunk_id,
+                path=str(path),
+                row_count=existing.row_count,
+                skipped_existing=True,
+            )
+
+    ciks = tuple(chunk["cik_padded"])
+    rows, historical_files = _run_chunk_rows(
+        client,
+        ciks,
+        chunk_id=chunk_id,
+        input_name=str(plan.get("input_name", "")),
+        snapshot_id=snapshot_id,
+        input_fingerprint=str(plan.get("input_fingerprint", "")),
+        workers=workers,
+        progress=progress,
+    )
+    table = build_submission_table(rows)
+    write_parquet_table(table, path)
+
+    statuses: dict[str, int] = {}
+    for row in rows:
+        statuses[row["status"]] = statuses.get(row["status"], 0) + 1
+
+    return ChunkResult(
+        chunk_id=chunk_id,
+        path=str(path),
+        row_count=table.num_rows,
+        statuses=statuses,
+        historical_files=historical_files,
+    )
+
+
+def run_partition(
+    client: SubmissionsClient,
+    plan: dict,
+    run_paths: RunPaths,
+    partition_id: int,
+    *,
+    snapshot_id: str,
+    workers: int | None = None,
+    completed: dict[int, Any] | None = None,
+    progress: Callable[[dict[str, Any]], None] | None = None,
+) -> list[ChunkResult]:
+    """Run every outstanding chunk in one partition, skipping completed ones."""
+    done = completed or {}
+    partition = next(
+        (
+            item
+            for item in plan.get("partitions", [])
+            if int(item["partition_id"]) == partition_id
+        ),
+        None,
+    )
+    if partition is None:
+        raise ValueError(f"partition {partition_id} is not present in plan")
+
+    results: list[ChunkResult] = []
+    for chunk_id in partition["chunk_ids"]:
+        chunk_id = int(chunk_id)
+        if chunk_id in done:
+            results.append(
+                ChunkResult(
+                    chunk_id=chunk_id,
+                    path=str(run_paths.chunk_file(chunk_id)),
+                    row_count=0,
+                    skipped_existing=True,
+                )
+            )
+            continue
+        results.append(
+            run_chunk(
+                client,
+                plan,
+                run_paths,
+                chunk_id,
+                snapshot_id=snapshot_id,
+                workers=workers,
+                progress=progress,
+            )
+        )
+    return results

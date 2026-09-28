@@ -143,3 +143,28 @@ Scanners are defined modularly in `edgar_sec/foundation/scanners/` and collected
 - Default unit tests must be offline, deterministic, and fast (< 1s total).
 - Committed fixtures live under `tests/fixtures/`: sanitized, minimal golden reference JSON and CSVs.
 - Generated test outputs must use pytest's `tmp_path` fixture or transient paths, never dirtying the repository tree.
+
+### Test Tree Mirrors the Source Tree
+
+`tests/` mirrors `edgar_sec/` package-for-package, so a test file sits at the same relative path as the module it covers:
+
+```text
+edgar_sec/pipelines/metadata_sync/worker.py  ->  tests/pipelines/metadata_sync/test_worker.py
+edgar_sec/infra/sec_http/cache.py             ->  tests/infra/sec_http/test_cache.py
+edgar_sec/foundation/runtime/settings/        ->  tests/foundation/runtime/test_settings.py
+```
+
+This is a hard requirement, not a preference: as modules and pipelines accumulate, a flat test list makes it impossible to tell which tests a given pipeline requires.
+
+1. **Every test directory is a package.** Each owns `__init__.py`, so pytest module names stay unambiguous and cannot collide across the tree.
+2. **Add tests at the mirrored path.** Adding `foo/bar.py` means adding `tests/foo/test_bar.py`, not appending to an existing flat module.
+3. **Do not merge unrelated modules into one test file.** One test file per source module. Shared setup lives in `conftest.py` at the narrowest directory that needs it.
+4. **Fixture access goes through `tests.support`.** Never compute fixture paths with `parents[N]` depth arithmetic; it silently breaks when the tree is reorganized. Use `tests.support.load_fixture` / `fixture_path`.
+5. **Offline test doubles live in `tests.support`.** Network fakes are injected at the transport seam (`SecHttpClient(session_factory=...)`), never by reaching into module internals.
+
+> [!IMPORTANT]
+> Committed fixtures and `ruff.toml` are un-ignored at the end of `.gitignore`. The blanket `.*` / `*.csv` / `*.parquet` rules would otherwise swallow them, and a fresh clone missing `tests/fixtures/` fails the gate.
+
+### Lint Configuration
+
+Lint suppression belongs in `ruff.toml`, not scattered `# noqa` comments. When a rule is noisy for a deliberate pattern, add a per-file ignore with a rationale comment rather than bypassing the gate.

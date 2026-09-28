@@ -59,6 +59,32 @@ python run.py
 python -c "from edgar_sec.foundation.runtime.settings import render_dotenv; print(render_dotenv())" > .env
 ```
 
+### 4. Metadata Sync Pipeline
+```bash
+# Plan (deterministic, no network):
+python run.py metadata plan --input uploads/cik-sec.csv
+
+# Inspect progress and outstanding chunks (no network):
+python run.py metadata status --input uploads/cik-sec.csv
+
+# Execute outstanding chunks (resumable; completed chunks are never refetched):
+python run.py metadata run --input uploads/cik-sec.csv
+
+# Validate every chunk and publish a sorted snapshot:
+python run.py metadata merge --input uploads/cik-sec.csv
+
+# Add newly requested CIKs to an existing snapshot without refetching the base:
+python run.py metadata augment --input uploads/cik-sec-new.csv \
+    --base-snapshot-id <id> --new-snapshot-id <id>
+```
+
+### 5. Live Smoke Test (Credential-Gated, Outside the Gate)
+```bash
+# Bounded live SEC check. Never publishes a snapshot; requires a preview root.
+python -m edgar_sec.pipelines.metadata_sync.smoke_test \
+    --input tests/fixtures/cik_sec_mini.csv --sample-size 3 --artifacts preview/metadata
+```
+
 ---
 
 ## Repository Layout
@@ -71,19 +97,61 @@ edgar_sec/
 ├── engine/             # Layer 3: Submissions normalizer, array unroller, arrow builder
 └── pipelines/          # Layer 4: metadata_sync operator, planner, worker, merger, CLI
 
-tests/
-├── foundation/         # Tests for resources, memory, hashing, serialization, settings, partitions
-
-├── domain/             # Tests for CIK, accession number, Arrow schemas
-├── infra/              # Tests for HTTP client, cache, storage
-├── engine/             # Tests for normalizer, unroller, builder with golden fixtures
-└── pipelines/          # End-to-end integration and replay tests
+tests/                      # Test tree mirrors the edgar_sec/ package tree
+├── support.py              # Shared fixture access and offline HTTP test doubles
+├── fixtures/               # Committed golden fixtures (cross-layer)
+├── foundation/             # hashing, serialization
+│   ├── runtime/            # env, memory, paths, settings, partitions, resources
+│   └── scanners/           # policy scanner behavior
+├── domain/                 # identity
+│   └── submissions/         # Arrow schema contract
+├── infra/
+│   ├── sec_http/           # client, cache, rate_limit, retry
+│   └── storage/            # atomic, parquet, duckdb
+├── engine/
+│   └── submissions/        # normalizer oracle-parity tests
+└── pipelines/
+    └── metadata_sync/      # manifest, planner, checkpoints, worker, merger,
+                            # augmentation, source_registry, end-to-end replay
 
 check.py                # Unified repository quality gate runner
 run.py                  # Interactive terminal workflow dispatcher
+ruff.toml               # Lint configuration (suppressions live here, not in code)
 AGENTS.md               # Binding engineering contract and design guidelines
 roadmap/                # Multi-phase product roadmap specifications
 ```
+
+### Test Layout Convention
+
+The test tree mirrors the source package tree, so a test file sits beside the
+module it covers at the same relative path. This keeps a module's tests
+discoverable by path and stops the suite from degrading into a flat list as
+more modules and pipelines are added. Every test directory is a package
+(owns `__init__.py`), which keeps pytest module names unambiguous.
+
+Fixture access goes through `tests.support` rather than `parents[N]` depth
+arithmetic, so reorganizing the tree does not break test paths.
+
+---
+
+## Artifact Layout
+
+All generated paths derive from the artifacts root; no module hardcodes them.
+
+```text
+{artifacts_root}/metadata/plans/{plan_id}/plan.json          # Immutable plan
+{artifacts_root}/transient/metadata/{plan_id}/chunk_NNNN.parquet  # Resumable checkpoints
+{artifacts_root}/metadata/snapshots/{snapshot_id}/metadata.parquet # Published dataset
+{artifacts_root}/metadata/snapshots/current/pointer.json     # Current snapshot pointer
+{artifacts_root}/metadata/sources/{name}/{snapshot_id}/      # Immutable source snapshots
+```
+
+### Merge Semantics
+
+Two classes of finding are deliberately distinguished:
+
+- **Failures** — duplicate or null CIKs, schema drift, plan coverage gaps, mismatched row counts, foreign chunk files, non-terminal statuses.
+- **Reportable fan-out** — duplicate accessions. The same filing is legitimately listed by more than one registrant, so duplicates are surfaced as a warning and never reject a merge.
 
 ---
 

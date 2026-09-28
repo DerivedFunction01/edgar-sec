@@ -1,0 +1,29 @@
+# Ruff configuration for the edgar-sec repository.
+#
+# Ruff's default rule set is already broad (pyflakes/pycodestyle plus the
+# bugbear, bandit, tryceratops, simplify, pylint, and ruff families). The
+# ignores below are deliberate: they silence patterns that are intentional in
+# this codebase while keeping the checks that catch real defects.
+#
+# Lint suppression belongs here, not scattered across modules as `# noqa`.
+# When a rule is noisy for a deliberate pattern, suppress it here with a
+# rationale, and prefer a per-file ignore over a global one.
+
+target-version = "py312"
+
+[lint]
+# TRY004 (type-check-without-type-error) is disabled: config and payload
+# validation in this repo intentionally raises ValueError. A malformed plan
+# or manifest is a data problem, not an API type error, and the CLI maps both
+# ValueError and TypeError to the same nonzero exit.
+ignore = ["TRY004"]
+
+[lint.per-file-ignores]
+# init_venv.py is an environment bootstrap script, not production code:
+# subprocess probes inspect return codes manually (PLW1510) and dependency
+# detection is deliberately best-effort (BLE001, S110).
+"init_venv.py" = ["BLE001", "PLW1510", "S110"]
+
+# check.py is the gate runner: it inspects subprocess return codes to decide
+# which step failed and must not swallow them.
+"check.py" = ["PLW1510"]

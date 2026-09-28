@@ -37,27 +37,27 @@ class Listing:
 
 @dataclass(frozen=True, slots=True)
 class FilingRecord:
-    accession_number: str
-    accession_number_normalized: str
-    filing_date: str
-    report_date: str | None
-    acceptance_datetime: str | None
-    act: str | None
-    form: str
-    file_number: str | None
-    film_number: str | None
-    items: tuple[str, ...]
-    core_type: str | None
-    size: int
-    is_xbrl: bool
-    is_inline_xbrl: bool
-    is_xbrl_numeric: bool | None
-    primary_document: str | None
-    primary_doc_description: str | None
-    archive_url: str
-    source_section: str
-    source_file: str
-    source_array_index: int
+    accession_number: str | None = None
+    accession_number_normalized: str | None = None
+    filing_date: str | None = None
+    report_date: str | None = None
+    acceptance_datetime: str | None = None
+    act: str | None = None
+    form: str | None = None
+    file_number: str | None = None
+    film_number: str | None = None
+    items: tuple[str, ...] = ()
+    core_type: str | None = None
+    size: int | None = None
+    is_xbrl: bool | None = None
+    is_inline_xbrl: bool | None = None
+    is_xbrl_numeric: bool | None = None
+    primary_document: str | None = None
+    primary_doc_description: str | None = None
+    archive_url: str | None = None
+    source_section: str = ""
+    source_file: str = ""
+    source_array_index: int = 0
 
 
 @dataclass(frozen=True, slots=True)
