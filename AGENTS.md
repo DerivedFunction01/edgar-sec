@@ -41,6 +41,17 @@ Layer 0: foundation/      edgar_sec.foundation
 - **Foundation (Layer 0)** has **zero** internal dependencies on upper layers.
 - The `layer-boundary` scanner automatically validates this graph in `check.py`.
 
+### Package Import & Export Contract (No Shims, No Barrel Re-exports)
+1. **Zero Backward-Compatibility Shims**:
+   - Never create alias modules, forwarding functions, or legacy shims when refactoring or moving code.
+   - When a component is relocated or renamed, update all call sites immediately.
+2. **No Barrel Re-exports in `__init__.py`**:
+   - `__init__.py` files must not re-export symbols from child submodules.
+   - Consumers must import directly from the leaf module (e.g. `from edgar_sec.domain.identity import Cik`, `from edgar_sec.infra.storage.duckdb import connect`).
+   - This prevents eager initialization of heavy dependencies (DuckDB, PyArrow), eliminates circular import cycles, and makes symbol ownership explicit.
+   - Allowed in `__init__.py`: package docstrings, `__version__`, or true dynamic registries (e.g. `ALL_SCANNERS`).
+
+
 ---
 
 ## 2. Memory & Performance Non-Regression Guarantees
