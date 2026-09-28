@@ -26,9 +26,10 @@ Layer 1: domain/          edgar_sec.domain
                            └── Submission schemas and data models
                             │
 Layer 0: foundation/      edgar_sec.foundation
-                           ├── Crypto (file_sha256, canonical_json)
+                           ├── Hashing & Serialization (file_sha256, canonical_json)
                            ├── Scanners (modular policy scanner registry)
                            └── Runtime (env, paths, resources, memory, settings/)
+
 
 ```
 

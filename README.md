@@ -65,14 +65,15 @@ python -c "from edgar_sec.foundation.runtime.settings import render_dotenv; prin
 
 ```text
 edgar_sec/
-├── foundation/         # Layer 0: Runtime, memory, crypto, settings registry, scanners
+├── foundation/         # Layer 0: Runtime, memory, hashing, serialization, settings registry, scanners
 ├── domain/             # Layer 1: Cik, Accession, submission schemas
 ├── infra/              # Layer 2: SEC HTTP client, token bucket, disk cache, storage
 ├── engine/             # Layer 3: Submissions normalizer, array unroller, arrow builder
 └── pipelines/          # Layer 4: metadata_sync operator, planner, worker, merger, CLI
 
 tests/
-├── foundation/         # Tests for resources, memory, crypto, settings, partitions
+├── foundation/         # Tests for resources, memory, hashing, serialization, settings, partitions
+
 ├── domain/             # Tests for CIK, accession number, Arrow schemas
 ├── infra/              # Tests for HTTP client, cache, storage
 ├── engine/             # Tests for normalizer, unroller, builder with golden fixtures

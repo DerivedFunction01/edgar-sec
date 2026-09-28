@@ -1,11 +1,11 @@
-"""Unit tests for foundation runtime, memory, crypto, and resource management."""
+"""Unit tests for foundation runtime, memory, hashing, serialization, and resource management."""
 
 from __future__ import annotations
 
 import hashlib
 from pathlib import Path
 
-from edgar_sec.foundation.crypto import canonical_hash, canonical_json, file_sha256
+from edgar_sec.foundation.hashing import file_sha256, sha256_bytes
 from edgar_sec.foundation.runtime.env import (
     get_env,
     get_env_bool,
@@ -28,15 +28,17 @@ from edgar_sec.foundation.runtime.resources import (
     usable_memory_bytes,
 )
 from edgar_sec.foundation.runtime.settings import resolve_settings
+from edgar_sec.foundation.serialization import canonical_hash, canonical_json
 
 
-def test_crypto_primitives(tmp_path: Path) -> None:
+def test_hashing_and_serialization(tmp_path: Path) -> None:
     test_file = tmp_path / "hello.txt"
     test_file.write_text("hello world", encoding="utf-8")
     assert (
         file_sha256(test_file)
         == "b94d27b9934d3e08a52e52d7da7dabfac484efe37a5380ee9088f7ace2efcde9"
     )
+    assert sha256_bytes(b"hello world") == file_sha256(test_file)
 
     obj1 = {"b": 2, "a": 1}
     obj2 = {"a": 1, "b": 2}
