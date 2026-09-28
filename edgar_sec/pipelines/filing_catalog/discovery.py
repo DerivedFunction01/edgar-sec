@@ -12,14 +12,29 @@ import json
 from pathlib import Path
 from typing import Any
 
+from edgar_sec.engine.selection.policy import (
+    SelectionPolicy,
+    auto_generate_policy,
+)
+from edgar_sec.engine.selection.policy import (
+    discover_policies as scan_policies,
+)
+from edgar_sec.infra.storage.duckdb_catalog import sql_literal
 from edgar_sec.pipelines.filing_catalog.paths import (
     CURRENT_ALIAS,
     PLAN_FILE_NAME,
+    POLICIES_DIR_NAME,
     SNAPSHOT_MANIFEST_NAME,
     FilingCatalogPaths,
     resolve_filing_catalog_paths,
     safe_identifier,
 )
+from edgar_sec.pipelines.filing_catalog.publication import PlanConflictError
+
+# EDGAR's full-text coverage begins in 1994 and 1990 is a safe lower bound for
+# "a plausible filing year"; anything earlier in a report_date is bad data and
+# would otherwise stretch the generated era bands across empty decades.
+_MIN_PLAUSIBLE_YEAR = 1990
 
 
 def _read_json(path: Path) -> dict[str, Any] | None:
@@ -57,6 +72,28 @@ def resolve_catalog_manifest(
     else:
         catalog_id = safe_identifier(catalog)
     return _read_json(paths.snapshot_manifest(catalog_id))
+
+
+def resolve_catalog_reference(paths: FilingCatalogPaths, catalog: str) -> str:
+    """Resolve a catalog reference to a concrete catalog id.
+
+    Accepts a literal id or the ``current`` alias, which the pointer resolves.
+    A literal id is validated as a path segment, so a caller-supplied string can
+    never escape the snapshots tree.
+
+    This lives in ``discovery`` rather than ``planner`` because resolving a
+    reference against the published pointer is the same question
+    :func:`current_catalog_id` and :func:`discover_catalogs` answer, and three
+    callers now need it.
+    """
+    if catalog == CURRENT_ALIAS:
+        resolved = current_catalog_id(paths)
+        if resolved is None:
+            raise PlanConflictError(
+                "no catalog is published as current; pass an explicit catalog id"
+            )
+        return resolved
+    return safe_identifier(catalog)
 
 
 def discover_catalogs(
@@ -115,9 +152,77 @@ def discover_plans(paths: FilingCatalogPaths | None = None) -> list[dict[str, An
                 "selected_rows": plan.get("selected_rows"),
                 "unique_locators_count": plan.get("unique_locators_count"),
                 "counts": plan.get("counts") or {},
+                "target_units": plan.get("target_units"),
+                "parent_plan_id": plan.get("parent_plan_id"),
+                "policy_fingerprint": plan.get("policy_fingerprint"),
             }
         )
     return found
+
+
+def policy_search_dirs(paths: FilingCatalogPaths | None = None) -> list[Path]:
+    """Directories a selection policy may be published in.
+
+    The layout lives in Layer 4, so the engine cannot resolve it; this is the
+    resolver that hands explicit directories to the engine-level scan.
+    """
+    resolved = paths or resolve_filing_catalog_paths()
+    policies_root = resolved.catalog_root / POLICIES_DIR_NAME
+    return [policies_root, resolved.catalog_root]
+
+
+def discover_policies(paths: FilingCatalogPaths | None = None) -> list[dict[str, Any]]:
+    """List every valid selection policy published under the catalog root."""
+    return scan_policies(policy_search_dirs(paths))
+
+
+def auto_policy(
+    catalog: str,
+    paths: FilingCatalogPaths | None = None,
+    dest: Path | None = None,
+) -> SelectionPolicy:
+    """Derive a baseline policy from a published catalog's own forms and years.
+
+    The engine derives the policy from observed data; locating that data is a
+    layout concern, so it is resolved here.
+    """
+    resolved = paths or resolve_filing_catalog_paths()
+    catalog_id = resolve_catalog_reference(resolved, catalog)
+    manifests = discover_catalogs(resolved)
+    manifest = next((m for m in manifests if m.get("catalog_id") == catalog_id), {})
+    forms = list((manifest.get("form_counts") or {}).keys())
+    min_year, max_year = _catalog_year_bounds(resolved, catalog_id)
+    return auto_generate_policy(catalog_id, forms, min_year, max_year, dest=dest)
+
+
+def _catalog_year_bounds(paths: FilingCatalogPaths, catalog_id: str) -> tuple[int, int]:
+    """Return the observed report-year range of a catalog, clipped to EDGAR."""
+    import datetime
+
+    from edgar_sec.infra.storage.duckdb import connect
+
+    current_year = datetime.datetime.now(datetime.UTC).year
+    target_files = sorted(paths.snapshot_targets_dir(catalog_id).glob("part-*.parquet"))
+    if not target_files:
+        return current_year - 10, current_year
+
+    file_list = ", ".join(sql_literal(str(path)) for path in target_files)
+    with connect() as con:
+        row = con.execute(
+            f"""
+            SELECT
+                MIN(CAST(substring(report_date, 1, 4) AS INTEGER)),
+                MAX(CAST(substring(report_date, 1, 4) AS INTEGER))
+            FROM read_parquet([{file_list}])
+            WHERE report_date IS NOT NULL
+              AND length(report_date) >= 4
+              AND CAST(substring(report_date, 1, 4) AS INTEGER)
+                  BETWEEN {_MIN_PLAUSIBLE_YEAR} AND {current_year}
+            """
+        ).fetchone()
+    minimum = int(row[0]) if row and row[0] is not None else current_year - 10
+    maximum = int(row[1]) if row and row[1] is not None else current_year
+    return minimum, maximum
 
 
 def status(paths: FilingCatalogPaths | None = None) -> dict[str, Any]:
@@ -141,9 +246,13 @@ def status(paths: FilingCatalogPaths | None = None) -> dict[str, Any]:
 
 __all__ = [
     "CURRENT_ALIAS",
+    "auto_policy",
     "current_catalog_id",
     "discover_catalogs",
     "discover_plans",
+    "discover_policies",
+    "policy_search_dirs",
     "resolve_catalog_manifest",
+    "resolve_catalog_reference",
     "status",
 ]

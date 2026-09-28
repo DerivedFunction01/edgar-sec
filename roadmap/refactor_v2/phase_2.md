@@ -1,11 +1,11 @@
 # Plan: Phase 2 Clean Slate Implementation (`edgar_sec.pipelines.filing_catalog`)
 
 > [!IMPORTANT]
-> **Status:** Stage A IMPLEMENTED — Milestones 0–4 complete, full gate green. Stage B (Milestones 5–9) not started.  
-> **Progress:** 5 of 9 milestones. 350 tests pass (162 pre-existing + 188 Phase 2); all seven policy scanners clean.  
+> **Status:** COMPLETE — Milestones 0–9 done. Stage A (M0–M4) and Stage B (M5–M9) both implemented.  
+> **Progress:** 9 of 9 milestones. 612 tests pass; all seven policy scanners clean.  
 > **Predecessor:** `phase_1.md` is complete (158 tests, full gate green). Phase 2 consumes the Phase 1 `submission_metadata` snapshot and **must not change Phase 1 behaviour** or its schema. (The original wording here was "must not modify any Phase 1 module," which proved too strong during the Stage A consolidation pass in §12: deduplicating the shared artifact-layout convention and the operator entrypoint required behaviour-preserving edits to two Phase 1 modules. The contract is behavioural, not textual.)  
 > **Readiness:** Every symbol, signature, path layout, and schema named below was verified against `.v1` source or the v2 tree. No signature in this document is speculative; where v1 behaviour is unsafe it is flagged explicitly and the v2 replacement is specified.  
-> **Implementation:** §11 records the deviations from this plan that Stage A actually adopted, and the three v1 defects found while porting. Read it before changing Stage A behaviour.
+> **Implementation:** §11 records the deviations from this plan that Stage A actually adopted, and the three v1 defects found while porting. §15 is the equivalent record for Stage B, including the six v1 defects found while porting the selection engine. Read them before changing behaviour.
 
 ---
 
@@ -357,7 +357,8 @@ Phase 1's `cli.py` is the template: `build_parser()` → `add_subparsers(dest="c
 | Command | Flags | Notes |
 | :--- | :--- | :--- |
 | `materialize` | `--source`, `--source-manifest`, `--output-root`, `--batch-size` | `--output-root` bypasses the pointer, matching v1 |
-| `plan` | `--catalog`, `--forms`, `--amendment`, `--suffixes`, `--limit` | No date flags — a date flag is a `TypeError` (Correction 3) |
+| `plan` | `--catalog`, `--scope`, `--policy`, `--auto-policy`, `--forms`, `--amendment`, `--suffixes`, `--limit` | `--scope deterministic` (default) takes the four filters and rejects date flags with `TypeError` (Correction 3). `--scope policy` takes `--policy PATH` **or** `--auto-policy`; supplying neither is an error |
+| `expand` | `--parent-plan`, `--target-units` | Stage B only. Publishes a child plan retaining 100% of the parent's locators |
 | `status` | — | Manifest reads only; zero Parquet I/O |
 
 `run.py` registration is a dataclass registry entry, not an import. The existing entry is `id="metadata"`, `module="edgar_sec.pipelines.metadata_sync.operator"` (`run.py:19-22`), dispatched via `runpy` (`run.py:54-74`). Add:
@@ -455,47 +456,55 @@ Stage A is the critical path. Stage B is additive and can be implemented indepen
 
 ### Milestone 5 — Taxonomy & Entity Lexicons *(Stage B)*
 
-- [ ] Create `edgar_sec/domain/taxonomy/__init__.py`, `legal_forms.py` (`LEGAL_FORMS`, from `.v1/defs/entities/lexicon.py:129`).
-- [ ] Create `jurisdictions.py` (`STATE_POSTAL_CODES`, from `lexicon.py:11`).
-- [ ] Create `family_vocab.py`: `ABBR_MAP`, `CONTEXT_RULES`, `PLURAL_MAP`, `ROMAN`, `PLACEHOLDER`, `STATE_CODES`, and the clustering tuning constants `HEAD_TOKENS`, `MIN_ALIAS_CHARS`, `MIN_CLUSTER_ATTACH`, `MAX_PARENT_TOKENS`, `STRUCTURAL_THRESHOLD`, `SEED`.
-- [ ] Create `tests/domain/taxonomy/test_taxonomy.py`.
-- [ ] *Gate:* lexicons are frozensets/immutable; zero upward imports.
+- [x] Create `edgar_sec/domain/taxonomy/__init__.py`, `legal_forms.py` (`LEGAL_FORMS`, from `.v1/defs/entities/lexicon.py:129`).
+- [x] Create `jurisdictions.py` (`STATE_POSTAL_CODES`, from `lexicon.py:11`).
+- [x] Create `family_vocab.py`: `ABBR_MAP`, `CONTEXT_RULES`, `PLURAL_MAP`, `ROMAN`, `PLACEHOLDER`, `STATE_CODES`, and the clustering tuning constants `HEAD_TOKENS`, `MIN_ALIAS_CHARS`, `MIN_CLUSTER_ATTACH`, `MAX_PARENT_TOKENS`, `STRUCTURAL_THRESHOLD`, `SEED`.
+- [x] Create `tests/domain/taxonomy/test_taxonomy.py`.
+- [x] *Gate:* lexicons are frozensets/immutable; zero upward imports.
 
 ### Milestone 6 — Company Family Clustering *(Stage B)*
 
-- [ ] Create `edgar_sec/engine/company_family/__init__.py`, `normalizer.py`: `normalize_name()`, `post_normalize()`, `strip_legal_forms()`, `mine_structural_vocabulary()`.
-- [ ] Create `clustering.py`: `CompanyFamilyInfo`, `CompanyFamilyIndex` with `build_from_seed()`, `from_existing_profiles()`, `build_from_records()`, `resolve(cik, company_name)`, `derive_company_family(name)`.
-- [ ] Create `tests/engine/company_family/test_clustering.py`, porting v1 `test_company_family.py` (109 lines) invariants with committed fixtures.
-- [ ] *Gate:* pure in-memory; zero I/O, zero network.
+- [x] Create `edgar_sec/engine/company_family/__init__.py`, `normalizer.py`: `normalize_name()`, `post_normalize()`, `strip_legal_forms()`, `mine_structural_vocabulary()`.
+- [x] Create `clustering.py`: `CompanyFamilyInfo`, `CompanyFamilyIndex` with `build_from_seed()`, `from_existing_profiles()`, `build_from_records()`, `resolve(cik, company_name)`, `derive_company_family(name)`.
+- [x] Create `tests/engine/company_family/test_clustering.py`, porting v1 `test_company_family.py` (109 lines) invariants with committed fixtures.
+- [x] *Gate:* pure in-memory; zero I/O, zero network.
 
 ### Milestone 7 — Stratified Selection Engine *(Stage B)*
 
-- [ ] Create `edgar_sec/engine/selection/__init__.py`, `features.py`: `FeatureSnapshotBuilder`, `SnapshotPaths`, `era_of()`; 6-dimension signature `(company_family, form, era, sic_code, entity_type, lifecycle_class)`.
-- [ ] Create `policy.py`: `POLICY_SCHEMA_VERSION`, `EraBand`, `SeedFiler`, `SelectionPolicy`, `load_seed_cik_csv()`, `compute_seed_fingerprint()`, `auto_generate_policy()`, `discover_policies()`, `normalize_value()`. Date-bound filtering and era stratification reside **exclusively** here.
-- [ ] Create `selector.py`: `DeficitSelector`, `SelectionResult`. Create `source.py`: `CandidateSource`. Create `inventory.py`: `InventoryStatistics`.
-- [ ] Widen `locator_groups.parquet` to the 18-column policy schema (§3.4).
-- [ ] Create `tests/engine/selection/test_features.py`, `test_policy.py`, `test_selector.py`.
-- [ ] Test: corporate families cannot dominate via subsidiaries; quota invariants hold; seed fingerprint is stable across runs.
-- [ ] *Gate:* quota invariants proven; policies versioned and fingerprinted.
+- [x] Create `edgar_sec/engine/selection/__init__.py`, `features.py`: `FeatureSnapshotBuilder`, `SnapshotPaths`, `era_of()`; 6-dimension signature `(company_family, form, era, sic_code, entity_type, lifecycle_class)`.
+- [x] Create `policy.py`: `POLICY_SCHEMA_VERSION`, `EraBand`, `SeedFiler`, `SelectionPolicy`, `load_seed_cik_csv()`, `compute_seed_fingerprint()`, `auto_generate_policy()`, `discover_policies()`, `normalize_value()`. Date-bound filtering and era stratification reside **exclusively** here.
+- [x] Create `selector.py`: `DeficitSelector`, `SelectionResult`. Create `source.py`: `CandidateSource`. Create `inventory.py`: `InventoryStatistics`.
+- [x] Widen `locator_groups.parquet` to the 18-column policy schema (§3.4).
+- [x] Create `tests/engine/selection/test_features.py`, `test_policy.py`, `test_selector.py`,
+  plus `test_source.py` and `test_inventory.py` (AGENTS §6.3: one test file per source module).
+- [x] Test: corporate families cannot dominate via subsidiaries; quota invariants hold; seed fingerprint is stable across runs.
+- [x] *Gate:* quota invariants proven; policies versioned and fingerprinted.
 
 ### Milestone 8 — Target Plan Expansion *(Stage B)*
 
-- [ ] Create `edgar_sec/pipelines/filing_catalog/expansion.py`: `expand()`.
-- [ ] Scale locator target count (e.g. 5,000 → 10,000) while strictly preserving all parent plan locators.
-- [ ] Persist lineage in `expansion_metadata.json`: `parent_plan_id`, `expansion_ratio`, `retained_locator_count`, `added_locator_count`.
-- [ ] Extend `plan.json` with `target_units` and `parent_plan_id`.
-- [ ] Create `tests/pipelines/filing_catalog/test_expansion.py`.
-- [ ] Test: child plan contains 100% of parent locators; duplicate expansion is idempotent; invalid parent plan IDs raise cleanly.
-- [ ] *Gate:* expansion lineage and parent locator preservation proven.
+- [x] Create `edgar_sec/pipelines/filing_catalog/expansion.py`: `expand()`.
+- [x] Scale locator target count (e.g. 5,000 → 10,000) while strictly preserving all parent plan locators.
+- [x] Persist lineage in `expansion_metadata.json`: `parent_plan_id`, `expansion_ratio`, `retained_locator_count`, `added_locator_count`.
+- [x] Extend `plan.json` with `target_units` and `parent_plan_id`.
+- [x] Create `tests/pipelines/filing_catalog/test_expansion.py`,
+  plus `test_policy_planner.py` for the Stage B plan bundle.
+- [x] Test: child plan contains 100% of parent locators; duplicate expansion is idempotent; invalid parent plan IDs raise cleanly.
+- [x] *Gate:* expansion lineage and parent locator preservation proven.
 
 ### Milestone 9 — Full Gate & Sign-off
 
-- [ ] Run `.venv/bin/python check.py` — full gate, all policy scanners clean, 100% tests passing.
-- [ ] Verify Phase 1 non-regression: all 158 tests pass with zero Phase 1 edits.
-- [ ] Run AST verification confirming zero reachable imports of `infra.sec_http` from `pipelines.filing_catalog` and `engine.selection`.
-- [ ] Confirm every new module is under the 800-line `file-length` advisory cap.
-- [ ] Update `README.md` (artifact layout, command surface) and `AGENTS.md` if the contract changed.
-- [ ] *Gate:* full gate green; zero Phase 1 regression; sign-off complete.
+- [x] Run `.venv/bin/python check.py` — full gate, all policy scanners clean, 100% tests passing.
+  **612 passed.**
+- [x] Verify Phase 1 non-regression: all 158 tests pass with zero Phase 1 edits.
+  Phase 1 gained no tests and no edits; the 612-test suite includes all 158.
+- [x] Run AST verification confirming zero reachable imports of `infra.sec_http` from `pipelines.filing_catalog` and `engine.selection`.
+  `tests/test_network_isolation.py` walks the import graph (not a grep) and includes a
+  sensitivity check that Phase 1's `metadata_sync` *does* still reach it.
+- [x] Confirm every new module is under the 800-line `file-length` advisory cap.
+  Longest: `features.py` 697, `planner.py` 562, `policy.py` 500.
+- [x] Update `README.md` (artifact layout, command surface) and `AGENTS.md` if the contract changed.
+- [x] *Gate:* full gate green; zero Phase 1 regression; sign-off complete.
+  **Stage B complete.**
 
 ---
 
@@ -755,3 +764,267 @@ Changes:
 - `tests/domain/filing_catalog/test_schemas.py` now asserts the catalog's base
   **is** the canonical object and that the engine's URL shape matches it, so the
   two layers cannot drift without failing the gate.
+
+---
+
+## 14. Stage B Record (Milestones 5–6)
+
+### 14.1 M5 — Taxonomic vocabulary
+
+`edgar_sec/domain/taxonomy/` holds the statutory reference data as
+`jurisdictions.py`, `legal_forms.py`, and `family_vocab.py`. All tables are
+immutable: `frozenset` for membership sets, `MappingProxyType` for mappings,
+and `frozenset` for the neighbour sets inside `CONTEXT_RULES`. A mutable dict or
+set here would let one caller corrupt the vocabulary for the process, and
+clustering would then depend on call order rather than on its input.
+
+Decisions taken while porting:
+
+- **`build_alternation` was a v1-only helper** in `defs.regex`, with no v2
+  equivalent. The two call sites (the state alternation and the trademark
+  pattern) each inlined the one-line `"|".join(re.escape(...))`, with the
+  alternation built in sorted order so the compiled pattern is byte-identical
+  on every run. Introducing a shared module for a single expression would have
+  cost more than it saved.
+- **`clean_entity_name` lives with jurisdictions** (it is jurisdiction
+  stripping plus whitespace normalization) and `entity_name_tokens` with legal
+  forms (it filters on both legal forms and stopwords). This keeps the
+  dependency direction between the two modules one-way.
+
+### 14.2 M6 — Company-family clustering
+
+`normalizer.py` and `clustering.py` split the v1 496-line module along the
+pure/impure seam: everything that is a function of one name, and everything that
+needs a corpus.
+
+Four departures from v1, all deliberate:
+
+- **The global `_SEED_CACHE` is gone.** v1 memoized `build_from_seed` in a
+  module-level dict keyed on `(path, seed, mtime)`. That is hidden global
+  mutable state: it leaks memory, it is never invalidated when a file is
+  rewritten within the same mtime tick, and it makes results depend on call
+  order. The index is built once per plan, so the cache bought nothing.
+- **Family ids use SHA-256, not MD5.** The id is a content digest used as a
+  display label, not a security primitive, and there is no reason to reach for
+  a broken hash. Values therefore differ from v1, which is acceptable under
+  D4: no family id was published by Stage A, and the algorithm is pinned by
+  invariant tests rather than by hash values.
+- **`from_existing_profiles` uses v2 `connect()` and `sql_literal`**, and the
+  column read happens outside the connection context rather than inside it.
+- **The index is frozen after construction** (`MappingProxyType` lookups,
+  `frozenset` vocabulary), so a caller cannot mutate it mid-resolution.
+
+### 14.3 Parity result
+
+Every v1 clustering benchmark reproduces exactly on a committed 10-registrant
+fixture, with the family keys v1 asserted on a full-corpus seed:
+
+| Benchmark | Result |
+| :--- | :--- |
+| Santander four deal trusts plus the LLC collapse to one family | `santander drive`, representative is the LLC parent |
+| JPMorgan parent and its series merge via head alias | `jpmorgan chase` |
+| Honda Motor and Honda Auto stay separate | `honda motor` vs `honda auto` |
+| Morgan Stanley resolves to its parent | `morgan stanley`, representative `Morgan Stanley` |
+| Short operating companies keep their identity | `autozone`, `mortgage one`, `auto zone` |
+| Stateless deriver with an explicit vocabulary | `santander drive` |
+
+v1's version of this test skipped unless a local 10k-row `uploads/cik-sec.csv`
+happened to be present, so it usually proved nothing. The v2 fixture is
+committed at `tests/fixtures/company_family/seed_ciks.csv`, and the tests assert
+the *invariants* — one entity collapses, unrelated companies that share a word
+do not — rather than hash values.
+
+### 14.4 Outstanding
+
+None. M7, M8, and M9 are complete; see §15.
+
+---
+
+## 15. Stage B Implementation Record (M7–M9)
+
+Stage B adds the stratified selection engine and plan expansion. 612 tests pass;
+all seven policy scanners are clean; Phase 1 received no edits and no new tests.
+
+### 15.1 Module map
+
+| Module | Role |
+| :--- | :--- |
+| `engine/selection/policy.py` | `SelectionPolicy`, `EraBand`, `SeedFiler`, seed CSV loading, fingerprinting, `auto_generate_policy()`, `discover_policies()`, `normalize_value()`. The only place date-bound and era reasoning lives. |
+| `engine/selection/features.py` | `FeatureSnapshotBuilder`, `SnapshotPaths`, `era_of()`, `form_family()`, `form_family_sql()`. |
+| `engine/selection/source.py` | `CandidateSource`, `CandidateFilters`, `POOL_COLUMNS`, `OCCURRENCE_COLUMNS`. Bounded, storage-backed pool access. |
+| `engine/selection/selector.py` | `DeficitSelector`, `SelectionResult`, `classification_signature()`. The five-phase fill. |
+| `engine/selection/inventory.py` | `InventoryStatistics`. Pre-selection floor feasibility. |
+| `pipelines/filing_catalog/expansion.py` | `expand()`, `ExpansionLineage`, `plan_fingerprint()`, `plan_locator_keys()`, `validate_parent()`, `validate_target()`. |
+| `tests/test_network_isolation.py` | The AST zero-network proof, as a gate. |
+
+### 15.2 Six defects found in v1 during the port
+
+Each of these is a behaviour change, not a refactor, and each is pinned by a test.
+
+1. **The Python and SQL form-family rules disagreed.** v1's SQL was a
+   `$`-anchored `REGEXP_REPLACE` alternation, so it stripped exactly one
+   trailing suffix; the Python loop stripped one of *each* kind. `10-K/A-POS`
+   became `10-K` in Python and `10-K/A` in SQL. `form_family_sql()` is now
+   **generated from the same suffix tuple** `form_family()` consumes, and
+   `test_form_family_sql_matches_the_python_rule` runs both over a 16-form
+   battery that includes the double-suffix case.
+2. **Every registrant was `foreign_status = 'domestic'`.** v1's nested-profile
+   branch hardcoded the literal, so a Canadian or UK filer was indistinguishable
+   from a Delaware corporation on the one dimension a policy floors to control
+   international mix. Now derived from `incorporation.state` against the M5
+   `STATE_POSTAL_CODES` vocabulary — which is the M5 dependency §4.2 declared
+   for Stage B and which nothing had consumed until now.
+3. **A policy document was a SQL injection surface.** v1 wrote
+   `ORDER BY md5('{seed}' || key)` with the seed read from the policy file.
+   Every value reaching SQL is now a bound parameter, and dimension names are
+   validated against `KNOWN_DIMENSIONS` (v1 interpolated those too).
+4. **Composite filter typos passed construction.** v1 validated only the
+   top-level `floors`/`weights`/`caps` keys, so `composites[].filters.erra`
+   produced a stratum nothing could ever match and a floor that silently
+   underfilled. `SelectionPolicy.__post_init__` now validates every referenced
+   dimension.
+5. **`plan_bundle_complete` conflated "empty" with "incomplete" — already fixed
+   in Stage A (§14) and unchanged here.**
+6. **In-memory DuckDB replaces the on-disk session file.** v1 opened
+   `selection_session.duckdb` inside the snapshot directory and
+   `parent_plan_read.duckdb` inside the plan directory, deleting both
+   afterwards, so an interrupted run left stray state inside an immutable
+   published bundle. Both are now in-memory connections.
+
+### 15.3 A DuckDB constant-folding trap worth recording
+
+The tie-break ordering is `sha256(seed || document_locator_key)`. Written as
+`sha256(?) || key` with the seed bound as a parameter, it **silently sorts every
+row equal** — DuckDB constant-folds `constant || column`, so the `ORDER BY`
+became a no-op and candidate pools came back in Parquet file order. The result
+looked deterministic and reproducible, which is exactly what made it dangerous:
+a changed seed would have had no effect on selection at all, and no test would
+have failed.
+
+The fix is to put the seed *inside* the concatenation:
+`sha256(CAST(? AS VARCHAR) || l.document_locator_key)`. The seed stays bound —
+no injection — and the expression is column-dependent. `test_a_different_seed_selects_differently`
+is the test that catches it.
+
+### 15.4 A structural change: filter vocabulary moved down two layers
+
+Stage A put the amendment/suffix vocabulary in
+`pipelines/filing_catalog/filters.py` (Layer 4) alongside its two SQL builders.
+Stage B could not reuse it — the layer graph is acyclic downward-only, so
+Layer 3 (`engine`) may not import Layer 4 — and restating `AMENDMENT_POLICIES`
+in the selection policy would have produced two closed sets that could never
+agree about what `original` means.
+
+Split by kind instead of by module:
+
+- `domain/filing_catalog/filters.py` (Layer 1) — vocabulary and
+  `normalize_suffixes()`, both pure.
+- `infra/storage/duckdb_catalog.py` (Layer 2) — `amendment_sql()`, `suffix_sql()`,
+  which need `sql_literal` and reference the catalog's own `is_amendment` column.
+
+`pipelines/filing_catalog/filters.py` is deleted, and the planner imports from
+both new homes. While there, `suffix_sql()` now **parenthesizes** its
+disjunction: a predicate that is `a OR b` is a precedence hazard for any caller
+conjoining it with `AND`.
+
+The Stage A test for `duckdb_catalog` also moved from
+`tests/pipelines/filing_catalog/` to `tests/infra/storage/`, which is its
+mirrored path under AGENTS §6.
+
+### 15.5 The two engineering decisions that needed a judgement call
+
+**`auto_generate_policy` and `discover_policies` take data, not paths.** The
+plan assigns both to `engine/selection/policy.py`, and v1 implemented them there
+by concatenating `manifests_root / "filing_extraction" / "filing_catalog"` by
+hand — a layout change that had to be mirrored in the engine or policy
+generation would silently read nothing. The `layer-boundary` scanner rejected
+the first v2 attempt for exactly this reason. Resolved by splitting along the
+same seam as everything else: the engine derives a policy from observed forms
+and a year range, and `pipelines/filing_catalog/discovery.py` locates those
+facts and delegates. `resolve_catalog_reference` moved to `discovery` for the
+same reason — three callers needed it and it is a path-resolution question.
+
+**The selector's phase ordering and cap semantics are preserved from v1
+deliberately.** Seed filers bypass the family cap, because a cap that silently
+dropped a declared mandatory anchor would be worse than slight
+over-representation. That is noted in the module docstring so it reads as a
+decision rather than an oversight.
+
+### 15.6 Verification
+
+- **612 tests pass**; all seven policy scanners clean.
+- **Zero-network proof is a gate, not a claim.**
+  `tests/test_network_isolation.py` walks the `edgar_sec` import graph from
+  every module of the four Stage 2 packages and asserts
+  `infra.sec_http` is unreachable. Two things make it non-vacuous: it walks
+  *function-local* imports (`ast.walk`, not module-body only), and it includes a
+  **sensitivity check** asserting Phase 1's `metadata_sync` *does* still reach
+  the HTTP client. An earlier draft of this test resolved zero modules and
+  passed anyway; the sensitivity check exists because of that.
+- **Family dominance is proven, not assumed.** `test_a_dominant_family_cannot_fill_the_selection`
+  uses a corpus where one group holds 12 of 18 locators in a single
+  classification signature, and asserts the cap admits exactly one of them.
+  `test_the_cap_is_what_bounds_dominance` lifts the cap and shows the same
+  corpus then fills normally — so the cap is the binding constraint, not a side
+  effect of pool ordering.
+- **Expansion's load-bearing guarantee is proven.** A child plan is asserted to
+  contain 100% of its parent's locator keys, and a child that cannot reach its
+  requested size is asserted to publish *nothing* rather than a smaller bundle.
+- **Unreachable quotas are reported.** An underfilled floor appears in both
+  `plan.json` and `selection_report.json`, so a published plan cannot assert a
+  quota it never met.
+
+### 15.7 Command surface
+
+```text
+materialize   build a catalog snapshot from a Phase 1 snapshot
+plan          publish a deterministic or policy-driven target plan
+  --scope deterministic   (default) forms / amendment / suffixes / limit
+  --scope policy          --policy PATH  |  --auto-policy
+expand        scale a policy plan while retaining every parent locator
+status        report published catalogs and plans from manifests
+```
+
+`plan --scope policy` requires an explicit policy source. Silently assuming a
+quota profile would make a defaulted plan indistinguishable from a deliberate
+one in the published `plan.json`, and that distinction is the point of the
+artifact.
+
+### 15.8 The Phase 2.5 entry contract
+
+Phase 2.5 consumes a published plan bundle and nothing else, which makes the
+bundle an *interface* between two independently-developed phases.
+`tests/pipelines/filing_catalog/test_phase25_contract.py` (11 tests) asserts
+that contract rather than documenting it, so a drift fails here instead of
+silently in 2.5:
+
+1. The bundle is complete: every `REQUIRED_PLAN_FILES` entry is present, and
+   `locator_groups.parquet` enumerates the documents to fetch.
+2. Every locator row carries the four columns an acquirer cannot work without,
+   with no nulls — a null `archive_url` or `document_path` would stall a fetch.
+3. **One row per unique document.** `document_locator_key` is
+   `sha256(accession || ':' || document_path)`, so a co-filed document appears
+   once and 2.5 fetches it once. The fan-out collapse is asserted against the
+   archive URL as well, so the key and the URL cannot disagree.
+4. `targets/form=<FORM>/data.parquet` carries the *occurrences* — the
+   registrant's claim on a document — and every row keys to a locator present in
+   the work order. 2.5 needs both surfaces: locators to fetch, occurrences to
+   attribute what came back.
+5. A policy plan's reserve is disjoint from the active work order, so an
+   acquirer that ignores the reserve never double-fetches.
+6. Either scope satisfies the same contract, so 2.5 does not branch on scope.
+7. `plan.json` states the bundle contents, and its `counts` keys map onto the
+   on-disk partitions through `form_partition_name()`.
+
+> [!IMPORTANT]
+> **Point 7 is a trap worth naming.** `plan.json` keys `counts` by the *raw*
+> form name, while the partition directory escapes `/` to `_` — `10-K/A`
+> becomes `form=10-K_A`. A consumer mapping one onto the other must apply the
+> same escape. This is asserted rather than left for 2.5 to discover.
+
+### 15.9 Files changed outside `engine/selection/`
+
+`domain/filing_catalog/filters.py` and `schemas.py` (§15.4),
+`infra/storage/duckdb_catalog.py` (§15.4 and the `suffix_sql` parenthesization),
+`pipelines/filing_catalog/{planner,discovery,expansion,cli,paths}.py`, the
+Stage A test that moved to its mirrored path, and this document.

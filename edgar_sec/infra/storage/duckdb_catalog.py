@@ -23,6 +23,7 @@ import os
 import re
 from pathlib import Path
 
+from edgar_sec.domain.filing_catalog.filters import AMENDMENT_POLICIES
 from edgar_sec.domain.filing_catalog.schemas import (
     PATH_SOURCE_BUNDLE,
     PATH_SOURCE_PRIMARY,
@@ -52,12 +53,17 @@ def sql_literal(value: str) -> str:
 
 
 def _qualified_identifier(name: str) -> str:
-    """Return ``name`` if it is a bare SQL identifier, else raise.
+    """Return ``name`` if it is a dotted path of bare SQL identifiers, else raise.
 
     Relation names are passed through here so a catalog or table name can never
-    smuggle SQL into a query.
+    smuggle SQL into a query. An optional ``alias.`` prefix is accepted because
+    a predicate built once and reused inside a joined query still has to name
+    the column it filters on; each segment is validated independently, so the
+    allowance cannot become a hole.
     """
-    if not _IDENTIFIER_RE.match(name):
+    if not name or not all(
+        _IDENTIFIER_RE.match(segment) for segment in name.split(".")
+    ):
         raise ValueError(f"unsafe SQL identifier: {name!r}")
     return name
 
@@ -258,10 +264,52 @@ def copy_query_to_parquet(
     return count_parquet_rows(path)
 
 
+def suffix_sql(column: str, suffixes: tuple[str, ...]) -> str:
+    """Return a SQL predicate matching ``column`` against any allowed suffix.
+
+    An empty suffix tuple yields ``TRUE`` so a caller can always apply the
+    predicate unconditionally. A non-empty one is parenthesized: the predicate
+    is a disjunction, and a caller that conjoins it with ``AND`` without
+    adding its own parentheses would silently change the meaning to
+    ``a AND b OR c``.
+    """
+    _qualified_identifier(column)
+    if not suffixes:
+        return "TRUE"
+    return (
+        "("
+        + " OR ".join(
+            f"lower({column}) LIKE {sql_literal('%.' + suffix)}" for suffix in suffixes
+        )
+        + ")"
+    )
+
+
+def amendment_sql(policy: str) -> str:
+    """Return the SQL predicate implementing an amendment policy.
+
+    ``original`` keeps filings whose form is not an amendment and
+    ``amendments`` keeps only amendments. The predicate is derived from the
+    catalog's own ``is_amendment`` column rather than recomputing the suffix
+    rule, so the two can never drift.
+    """
+    if policy not in AMENDMENT_POLICIES:
+        raise ValueError(
+            f"amendment must be one of {', '.join(AMENDMENT_POLICIES)}; got {policy!r}"
+        )
+    if policy == "original":
+        return "is_amendment = false"
+    if policy == "amendments":
+        return "is_amendment = true"
+    return "TRUE"
+
+
 __all__ = [
+    "amendment_sql",
     "build_merged_targets_query",
     "build_part_unnest_query",
     "build_profile_query",
     "copy_query_to_parquet",
     "sql_literal",
+    "suffix_sql",
 ]

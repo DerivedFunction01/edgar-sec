@@ -23,26 +23,37 @@ import json
 from pathlib import Path
 from typing import Any
 
-from edgar_sec.foundation.runtime.progress import ProgressCallback, emit_progress
-from edgar_sec.infra.storage.duckdb import connect
-from edgar_sec.infra.storage.duckdb_catalog import copy_query_to_parquet, sql_literal
-from edgar_sec.infra.storage.parquet import DEFAULT_ROW_GROUP_SIZE
-from edgar_sec.pipelines.filing_catalog.filters import (
+from edgar_sec.domain.filing_catalog.filters import (
     AMENDMENT_POLICIES,
     DEFAULT_AMENDMENT,
     DEFAULT_DOCUMENT_SUFFIXES,
-    amendment_sql,
     normalize_suffixes,
+)
+from edgar_sec.domain.filing_catalog.schemas import LOCATOR_POLICY_COLUMNS
+from edgar_sec.engine.selection.features import FeatureSnapshotBuilder
+from edgar_sec.engine.selection.policy import (
+    SeedFiler,
+    SelectionPolicy,
+    compute_seed_fingerprint,
+)
+from edgar_sec.engine.selection.selector import DeficitSelector
+from edgar_sec.foundation.runtime.progress import ProgressCallback, emit_progress
+from edgar_sec.infra.storage.duckdb import connect
+from edgar_sec.infra.storage.duckdb_catalog import (
+    amendment_sql,
+    copy_query_to_parquet,
+    sql_literal,
     suffix_sql,
 )
+from edgar_sec.infra.storage.parquet import DEFAULT_ROW_GROUP_SIZE
+from edgar_sec.pipelines.filing_catalog.discovery import resolve_catalog_reference
 from edgar_sec.pipelines.filing_catalog.paths import (
-    CURRENT_ALIAS,
     LOCATOR_GROUPS_NAME,
     PLAN_TARGETS_DIR_NAME,
+    RESERVE_TARGETS_NAME,
     FilingCatalogPaths,
     form_partition_name,
     resolve_filing_catalog_paths,
-    safe_identifier,
 )
 from edgar_sec.pipelines.filing_catalog.publication import (
     TARGET_PLAN_SCHEMA_VERSION,
@@ -54,9 +65,11 @@ from edgar_sec.pipelines.filing_catalog.publication import (
 )
 
 SCOPE_DETERMINISTIC = "deterministic"
+SCOPE_POLICY = "policy"
 
 # Characters permitted in a form filter. '/' is allowed because amendment forms
 # are written that way ("8-K/A") and are escaped at partition time.
+_KEY_INSERT_BATCH = 5_000
 _ID_SAFE = set("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_-.")
 _FORM_SEPARATOR = "/"
 
@@ -117,25 +130,6 @@ def _catalog_target_files(paths: FilingCatalogPaths, catalog_id: str) -> list[Pa
     if not files:
         raise PlanConflictError(f"catalog target directory is empty: {targets_dir}")
     return files
-
-
-def resolve_catalog_reference(paths: FilingCatalogPaths, catalog: str) -> str:
-    """Resolve a catalog reference to a concrete catalog id.
-
-    Accepts a literal id or the ``current`` alias, which the pointer resolves.
-    A literal id is validated as a path segment, so a caller-supplied string
-    can never escape the snapshots tree.
-    """
-    if catalog == CURRENT_ALIAS:
-        from edgar_sec.pipelines.filing_catalog.discovery import current_catalog_id
-
-        resolved = current_catalog_id(paths)
-        if resolved is None:
-            raise PlanConflictError(
-                "no catalog is published as current; pass an explicit catalog id"
-            )
-        return resolved
-    return safe_identifier(catalog)
 
 
 def plan(
@@ -318,9 +312,251 @@ def plan(
     return plan_meta
 
 
+def _policy_locator_groups_query(locator_source: str) -> str:
+    """Stage B locator projection: the 18-column policy schema.
+
+    Same one-row-per-document guarantee as the Stage A variant, widened with the
+    stratification dimensions. A consumer that audits a published sample --
+    "is this actually era-balanced, or is it all one SIC band?" -- needs those
+    values in the plan itself, not only in the transient feature snapshot.
+    """
+    projection = ", ".join(f"l.{column}" for column in LOCATOR_POLICY_COLUMNS)
+    return f"""
+    SELECT {projection}
+    FROM {locator_source}
+    ORDER BY document_locator_key
+    """
+
+
+def _register_selected_keys(con: object, keys: list[str]) -> None:
+    """Load the selected locator keys into a temp table for the bundle writes.
+
+    One temp table rather than an interpolated list: an expanded plan carries
+    thousands of keys, and a list that long would be re-parsed per query.
+    """
+    con.execute(
+        "CREATE OR REPLACE TEMP TABLE selected_locator_keys "
+        "(document_locator_key VARCHAR)"
+    )
+    for start in range(0, len(keys), _KEY_INSERT_BATCH):
+        chunk = [[key] for key in keys[start : start + _KEY_INSERT_BATCH]]
+        con.executemany("INSERT INTO selected_locator_keys VALUES (?)", chunk)
+
+
+def _register_reserve_keys(con: object, keys: list[str]) -> None:
+    con.execute(
+        "CREATE OR REPLACE TEMP TABLE reserve_locator_keys "
+        "(document_locator_key VARCHAR)"
+    )
+    for start in range(0, len(keys), _KEY_INSERT_BATCH):
+        chunk = [[key] for key in keys[start : start + _KEY_INSERT_BATCH]]
+        con.executemany("INSERT INTO reserve_locator_keys VALUES (?)", chunk)
+
+
+def plan_policy(
+    catalog: str,
+    policy: SelectionPolicy,
+    output_root: str | Path | None = None,
+    *,
+    seed_filers: dict[str, SeedFiler] | None = None,
+    parent_active_keys: list[str] | None = None,
+    progress: ProgressCallback = None,
+    row_group_size: int = DEFAULT_ROW_GROUP_SIZE,
+) -> dict[str, Any]:
+    """Publish one immutable policy-driven target-plan bundle.
+
+    The scope counterpart to :func:`plan`. Where deterministic planning slices a
+    catalog on four filters, this runs the Stage B selection engine against a
+    declared quota profile and publishes the result: quota-balanced locators, the
+    18-column locator projection, a reserve pool, and the policy that produced
+    it, all recorded in ``plan.json``.
+
+    The bundle is written from SQL against the feature snapshot rather than from
+    the selector's in-memory candidate list, so publishing a large expanded plan
+    does not scale with the plan size in the Python heap.
+    """
+    if not policy.forms:
+        raise ValueError("policy must configure at least one form")
+
+    paths = (
+        resolve_filing_catalog_paths(output_root)
+        if output_root is not None
+        else resolve_filing_catalog_paths()
+    )
+    catalog = resolve_catalog_reference(paths, catalog)
+    # Guard, not an input: the builder re-globs the same directory, but this
+    # raises "catalog has no published targets" instead of letting the failure
+    # surface as a missing-parts error from inside feature building.
+    _catalog_target_files(paths, catalog)
+
+    seed_fingerprint = compute_seed_fingerprint(seed_filers or {})
+    request = {
+        "catalog_id": catalog,
+        "scope": SCOPE_POLICY,
+        "policy_fingerprint": policy.policy_fingerprint,
+        "seed_fingerprint": seed_fingerprint,
+        "target_units": policy.requested_units(),
+        "level": policy.level,
+        "plan_schema_version": TARGET_PLAN_SCHEMA_VERSION,
+    }
+    plan_id = plan_identity(request)
+    final_dir = paths.plan_dir(plan_id)
+
+    existing = reuse_existing_plan(final_dir, plan_id, SCOPE_POLICY)
+    if existing is not None:
+        emit_progress(
+            progress,
+            {"type": "merge_stage", "stage": "reuse_plan", "plan_id": plan_id},
+        )
+        return existing
+
+    emit_progress(
+        progress,
+        {
+            "type": "merge_stage",
+            "stage": "policy_plan",
+            "plan_id": plan_id,
+            "catalog": catalog,
+        },
+    )
+
+    builder = FeatureSnapshotBuilder(
+        target_root=paths.snapshot_targets_dir(catalog),
+        profile_path=paths.snapshot_profiles_file(catalog),
+        output_root=paths.catalog_root,
+        policy=policy,
+        row_group_size=row_group_size,
+    )
+    snapshot = builder.build()
+    emit_progress(
+        progress,
+        {
+            "type": "merge_stage",
+            "stage": "features",
+            "snapshot": snapshot.snapshot_dir.name,
+        },
+    )
+
+    selector = DeficitSelector(snapshot.snapshot_dir, policy, seed_filers=seed_filers)
+    selection = selector.select(parent_active_keys=parent_active_keys)
+
+    counts: dict[str, int] = {}
+    total_rows = 0
+    with staged_plan_bundle(final_dir, plan_id) as staging:
+        targets_root = staging / PLAN_TARGETS_DIR_NAME
+        targets_root.mkdir(parents=True, exist_ok=True)
+        with connect() as con:
+            _register_selected_keys(con, selection.active_locators)
+            locator_source = (
+                "read_parquet("
+                f"{sql_literal(str(snapshot.locator_features))}) l "
+                "JOIN selected_locator_keys s "
+                "ON l.document_locator_key = s.document_locator_key"
+            )
+            occurrence_source = (
+                "read_parquet("
+                f"{sql_literal(str(snapshot.occurrence_features))}) o "
+                "JOIN selected_locator_keys s "
+                "ON o.document_locator_key = s.document_locator_key"
+            )
+
+            selected_forms = [
+                str(row[0])
+                for row in con.execute(
+                    f"SELECT DISTINCT form FROM ({occurrence_source}) ORDER BY form"
+                ).fetchall()
+            ]
+            for form_name in selected_forms:
+                destination = (
+                    targets_root
+                    / f"form={form_partition_name(form_name)}"
+                    / "data.parquet"
+                )
+                query = (
+                    f"SELECT * FROM ({occurrence_source}) "
+                    f"WHERE form = {sql_literal(form_name)} "
+                    "ORDER BY o.document_locator_key, o.occurrence_id"
+                )
+                counts[form_name] = copy_query_to_parquet(
+                    con, query, destination, row_group_size
+                )
+                total_rows += counts[form_name]
+                emit_progress(
+                    progress,
+                    {
+                        "type": "merge_stage",
+                        "stage": f"targets:{form_name}",
+                        "rows": counts[form_name],
+                    },
+                )
+
+            locator_count = copy_query_to_parquet(
+                con,
+                _policy_locator_groups_query(locator_source),
+                staging / LOCATOR_GROUPS_NAME,
+                row_group_size,
+            )
+
+            if selection.reserve_locators:
+                _register_reserve_keys(con, selection.reserve_locators)
+                copy_query_to_parquet(
+                    con,
+                    "SELECT l.* FROM "
+                    f"read_parquet({sql_literal(str(snapshot.locator_features))}) l "
+                    "JOIN reserve_locator_keys r "
+                    "ON l.document_locator_key = r.document_locator_key "
+                    "ORDER BY l.document_locator_key",
+                    staging / RESERVE_TARGETS_NAME,
+                    row_group_size,
+                )
+
+        selection_report = {
+            "scope": SCOPE_POLICY,
+            "catalog_id": catalog,
+            "plan_id": plan_id,
+            "active_targets_count": total_rows,
+            "unique_locators_count": locator_count,
+            "reserve_count": len(selection.reserve_locators),
+            "counts": counts,
+            **{
+                k: v
+                for k, v in selection.report.items()
+                if k != "coverage_distributions"
+            },
+        }
+        plan_meta = {
+            "plan_schema_version": TARGET_PLAN_SCHEMA_VERSION,
+            "plan_id": plan_id,
+            "catalog_id": catalog,
+            "scope": SCOPE_POLICY,
+            "policy_corpus": policy.corpus_id,
+            "policy_fingerprint": policy.policy_fingerprint,
+            "seed_fingerprint": seed_fingerprint,
+            "level": policy.level,
+            "target_units": policy.requested_units(),
+            "parent_plan_id": policy.parent_plan_id,
+            "forms": list(policy.forms),
+            "amendment": policy.amendment,
+            "document_suffixes": list(policy.document_suffixes),
+            "counts": counts,
+            "selected_rows": total_rows,
+            "active_targets_count": total_rows,
+            "unique_locators_count": locator_count,
+            "reserve_count": len(selection.reserve_locators),
+            "underfilled_floors": selection.report["underfilled_floors"],
+            "selection_policy": policy.to_dict(),
+            "request_fingerprint": hashlib.sha256(
+                json.dumps(request, sort_keys=True).encode("utf-8")
+            ).hexdigest(),
+        }
+        write_plan_documents(staging, plan_meta, selection_report)
+
+    return plan_meta
+
+
 __all__ = [
-    "CURRENT_ALIAS",
     "SCOPE_DETERMINISTIC",
+    "SCOPE_POLICY",
     "plan",
-    "resolve_catalog_reference",
+    "plan_policy",
 ]

@@ -78,7 +78,65 @@ python run.py metadata augment --input uploads/cik-sec-new.csv \
     --base-snapshot-id <id> --new-snapshot-id <id>
 ```
 
-### 5. Live Smoke Test (Credential-Gated, Outside the Gate)
+### 5. Filing Catalog Pipeline (Zero Network)
+
+Phase 2 turns a finalized Phase 1 `metadata.parquet` into immutable,
+content-addressed **target plans** for a future acquisition phase to consume.
+It never performs network I/O, and `tests/test_network_isolation.py` proves
+that by walking the import graph rather than by grep.
+
+```bash
+# Materialize a catalog snapshot from a Phase 1 snapshot:
+python run.py filing-catalog materialize --source <phase1>/metadata.parquet
+
+# Deterministic plan: four filters, no dates, 8-column locator projection.
+python run.py filing-catalog plan --catalog current --forms 10-K --amendment original
+
+# Policy plan: fill a declared quota profile. Era-stratified, 18 columns.
+python run.py filing-catalog plan --catalog current --scope policy \
+    --policy artifacts/filing_catalog/policies/corpus.json
+# ...or derive a baseline policy from the catalog's own forms and year range:
+python run.py filing-catalog plan --catalog current --scope policy --auto-policy
+
+# Scale a policy plan. The child retains 100% of the parent's locators.
+python run.py filing-catalog expand --parent-plan artifacts/filing_catalog/plans/<id> \
+    --target-units 10000
+
+# Published state, from manifests only (zero Parquet reads):
+python run.py filing-catalog status
+```
+
+**Artifact layout.** Snapshots and plans are published immutable; staging lives
+under `artifacts_root/transient/`.
+
+```text
+artifacts_root/filing_catalog/
+├── <catalog_id>/                       # immutable snapshot
+│   ├── snapshot.manifest.json
+│   ├── company_profiles.parquet        # 23 columns, projected from Phase 1
+│   ├── filing_targets/part-00000.parquet
+│   └── snapshots/<digest>/             # content-addressed feature snapshot
+├── plans/<plan_id>/                    # immutable plan bundle
+│   ├── plan.json
+│   ├── selection_report.json
+│   ├── locator_groups.parquet          # 8 cols (deterministic) or 18 (policy)
+│   ├── reserve_targets.parquet         # policy scope only
+│   ├── expansion_metadata.json         # child plans only
+│   └── targets/form=<FORM>/data.parquet
+├── policies/
+└── current/pointer.json
+```
+
+**Selecting a balanced sample.** The one property that matters most: a corporate
+group with 400 subsidiaries files 400 documents, so a naive sample of filings is
+mostly that group. Every candidate is keyed by a six-part classification
+signature — `(company_family, form, era, sic_code, entity_type, lifecycle_class)`
+— and at most `max_per_company_classification` candidates may share one. Because
+every subsidiary of a group resolves to one `company_family`, the cap suppresses
+the group without special-casing it. A floor the corpus cannot satisfy is
+reported in `plan.json` rather than silently absorbed.
+
+### 6. Live Smoke Test (Credential-Gated, Outside the Gate)
 ```bash
 # Bounded live SEC check. Never publishes a snapshot; requires a preview root.
 python -m edgar_sec.pipelines.metadata_sync.smoke_test \
@@ -95,7 +153,7 @@ edgar_sec/
 ├── domain/             # Layer 1: Cik, Accession, submission schemas
 ├── infra/              # Layer 2: SEC HTTP client, token bucket, disk cache, storage
 ├── engine/             # Layer 3: Submissions normalizer, array unroller, arrow builder
-└── pipelines/          # Layer 4: metadata_sync operator, planner, worker, merger, CLI
+└── pipelines/          # Layer 4: metadata_sync and filing_catalog operators, planners, CLI
 
 tests/                      # Test tree mirrors the edgar_sec/ package tree
 ├── support.py              # Shared fixture access and offline HTTP test doubles
@@ -144,6 +202,11 @@ All generated paths derive from the artifacts root; no module hardcodes them.
 {artifacts_root}/metadata/snapshots/{snapshot_id}/metadata.parquet # Published dataset
 {artifacts_root}/metadata/snapshots/current/pointer.json     # Current snapshot pointer
 {artifacts_root}/metadata/sources/{name}/{snapshot_id}/      # Immutable source snapshots
+
+{artifacts_root}/filing_catalog/<catalog_id>/               # Immutable catalog snapshot
+{artifacts_root}/filing_catalog/plans/<plan_id>/             # Immutable plan bundle
+{artifacts_root}/filing_catalog/current/pointer.json        # Current catalog pointer
+{artifacts_root}/transient/filing_catalog/<catalog_id>/     # Staging; never published
 ```
 
 ### Merge Semantics

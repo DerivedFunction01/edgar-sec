@@ -43,6 +43,11 @@ PLAN_TARGETS_DIR_NAME = "targets"
 SELECTION_REPORT_NAME = "selection_report.json"
 LOCATOR_GROUPS_NAME = "locator_groups.parquet"
 EXPANSION_METADATA_NAME = "expansion_metadata.json"
+# Reserve candidates: locator rows held back from the active set, so a
+# downstream acquirer has replacements without a second selection run.
+RESERVE_TARGETS_NAME = "reserve_targets.parquet"
+# Selection policies live beside the plans they produce.
+POLICIES_DIR_NAME = "policies"
 
 REQUIRED_PLAN_FILES = (
     PLAN_FILE_NAME,
@@ -168,7 +173,9 @@ __all__ = [
     "PLAN_FILE_NAME",
     "PLAN_TARGETS_DIR_NAME",
     "POINTER_FILE_NAME",
+    "POLICIES_DIR_NAME",
     "REQUIRED_PLAN_FILES",
+    "RESERVE_TARGETS_NAME",
     "SELECTION_REPORT_NAME",
     "SNAPSHOT_FILE_NAME",
     "SNAPSHOT_MANIFEST_NAME",

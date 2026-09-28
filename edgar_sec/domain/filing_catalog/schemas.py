@@ -114,9 +114,49 @@ LOCATOR_BASE_COLUMNS = (
     "document_path_source",
 )
 
+# The Stage B (policy) widening: the same eight identity columns plus the ten
+# stratification dimensions a selection can be audited against. Declared here,
+# in the order the published file uses, so the writer and any consumer share
+# one ordering rather than each keeping a copy of the list.
+LOCATOR_POLICY_FEATURES = (
+    "form_family",
+    "era",
+    "suffix",
+    "xbrl_state",
+    "size_band",
+    "owner_org_presence",
+    "foreign_status",
+    "lifecycle_class",
+    "stub_suspect",
+    "company_name",
+)
+
+LOCATOR_POLICY_COLUMNS = (
+    "document_locator_key",
+    "form",
+    "form_family",
+    "era",
+    "suffix",
+    "xbrl_state",
+    "size_band",
+    "owner_org_presence",
+    "foreign_status",
+    "lifecycle_class",
+    "stub_suspect",
+    "representative_cik",
+    "representative_accession",
+    "primary_document",
+    "document_path",
+    "archive_url",
+    "document_path_source",
+    "company_name",
+)
+
 __all__ = [
     "DATASET_NAME",
     "LOCATOR_BASE_COLUMNS",
+    "LOCATOR_POLICY_COLUMNS",
+    "LOCATOR_POLICY_FEATURES",
     "PATH_SOURCE_BUNDLE",
     "PATH_SOURCE_PRIMARY",
     "PROFILE_COLUMNS",

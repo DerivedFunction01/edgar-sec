@@ -16,17 +16,9 @@ from edgar_sec.pipelines.filing_catalog.paths import (
     resolve_filing_catalog_paths,
     target_part_name,
 )
-from tests.support import catalog_fixture_path
 
-SAMPLE_SUBMISSION_METADATA = "sample_submission_metadata.parquet"
 EXPECTED_TARGETS = "expected_filing_targets.csv"
 EXPECTED_PROFILES = "expected_company_profiles.csv"
-
-
-@pytest.fixture
-def sample_source() -> Path:
-    """Path to the committed Phase 1 dataset the catalog consumes."""
-    return catalog_fixture_path(SAMPLE_SUBMISSION_METADATA)
 
 
 @pytest.fixture

@@ -7,7 +7,11 @@ from pathlib import Path
 
 import pytest
 
-from edgar_sec.pipelines.filing_catalog.cli import build_parser, main
+from edgar_sec.pipelines.filing_catalog.cli import (
+    build_parser,
+    cmd_expand,
+    main,
+)
 from edgar_sec.pipelines.filing_catalog.operator import build_operator_menu
 
 SAMPLE = "tests/fixtures/catalog/sample_submission_metadata.parquet"
@@ -25,7 +29,7 @@ def test_parser_requires_a_command() -> None:
         build_parser().parse_args([])
 
 
-def test_parser_exposes_exactly_three_commands() -> None:
+def test_parser_exposes_exactly_the_four_commands() -> None:
     parser = build_parser()
     actions = [
         action
@@ -33,7 +37,7 @@ def test_parser_exposes_exactly_three_commands() -> None:
         if getattr(action, "choices", None) and "status" in (action.choices or {})
     ]
     assert actions
-    assert set(actions[0].choices) == {"materialize", "plan", "status"}
+    assert set(actions[0].choices) == {"materialize", "plan", "expand", "status"}
 
 
 def test_plan_defaults_to_the_both_amendment_policy() -> None:
@@ -185,3 +189,82 @@ def test_cli_main_is_reachable_through_the_launcher_registry() -> None:
     assert "filing-catalog" in ids
     entry = next(e for e in run.ENTRIES if e.id == "filing-catalog")
     assert entry.module == "edgar_sec.pipelines.filing_catalog.operator"
+
+
+def test_plan_defaults_to_the_deterministic_scope() -> None:
+    args = build_parser().parse_args(["plan", "--catalog", "abc"])
+    assert args.scope == "deterministic"
+    assert args.policy == ""
+    assert args.auto_policy is False
+
+
+def test_plan_accepts_the_policy_scope_with_a_policy_document() -> None:
+    args = build_parser().parse_args(
+        ["plan", "--catalog", "abc", "--scope", "policy", "--policy", "p.json"]
+    )
+    assert args.scope == "policy"
+    assert args.policy == "p.json"
+
+
+def test_plan_accepts_the_policy_scope_with_auto_generation() -> None:
+    args = build_parser().parse_args(
+        ["plan", "--catalog", "abc", "--scope", "policy", "--auto-policy"]
+    )
+    assert args.auto_policy is True
+
+
+def test_plan_rejects_an_unknown_scope() -> None:
+    with pytest.raises(SystemExit):
+        build_parser().parse_args(["plan", "--catalog", "abc", "--scope", "guess"])
+
+
+def test_policy_scope_requires_a_policy_source() -> None:
+    """Silently assuming a quota profile would be indistinguishable from a chosen one."""
+    from edgar_sec.pipelines.filing_catalog.cli import cmd_plan
+
+    args = build_parser().parse_args(["plan", "--catalog", "abc", "--scope", "policy"])
+    assert cmd_plan(args) == 1
+
+
+def test_policy_scope_rejects_two_policy_sources() -> None:
+    from edgar_sec.pipelines.filing_catalog.cli import cmd_plan
+
+    args = build_parser().parse_args(
+        [
+            "plan",
+            "--catalog",
+            "abc",
+            "--scope",
+            "policy",
+            "--policy",
+            "p.json",
+            "--auto-policy",
+        ]
+    )
+    assert cmd_plan(args) == 1
+
+
+def test_expand_requires_a_parent_and_a_target() -> None:
+    args = build_parser().parse_args(
+        ["expand", "--parent-plan", "/tmp/p", "--target-units", "10"]
+    )
+    assert args.parent_plan == "/tmp/p"
+    assert args.target_units == 10
+
+
+def test_expand_reports_a_missing_parent_cleanly(tmp_path, capsys) -> None:
+    assert (
+        cmd_expand(
+            build_parser().parse_args(
+                [
+                    "expand",
+                    "--parent-plan",
+                    str(tmp_path / "absent"),
+                    "--target-units",
+                    "5",
+                ]
+            )
+        )
+        == 1
+    )
+    assert "error:" in capsys.readouterr().err

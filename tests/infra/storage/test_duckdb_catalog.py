@@ -4,12 +4,15 @@ from __future__ import annotations
 
 import pytest
 
+from edgar_sec.domain.filing_catalog.filters import normalize_suffixes
 from edgar_sec.domain.filing_catalog.schemas import TARGET_COLUMNS
 from edgar_sec.infra.storage.duckdb_catalog import (
+    amendment_sql,
     build_merged_targets_query,
     build_part_unnest_query,
     build_profile_query,
     sql_literal,
+    suffix_sql,
 )
 
 
@@ -75,3 +78,39 @@ def test_profile_query_dedups_on_latest_fetched_at() -> None:
     assert "ORDER BY fetched_at DESC NULLS LAST" in query
     assert "WHERE rn = 1" in query
     assert "ORDER BY cik" in query
+
+
+def test_suffix_sql_is_true_when_unconstrained() -> None:
+    """An empty suffix set yields a predicate the caller can apply unconditionally."""
+    assert suffix_sql("document_path", ()) == "TRUE"
+
+
+def test_suffix_sql_matches_each_allowed_suffix() -> None:
+    predicate = suffix_sql("document_path", ("htm", "txt"))
+    assert predicate == (
+        "(lower(document_path) LIKE '%.htm' OR lower(document_path) LIKE '%.txt')"
+    )
+
+
+def test_suffix_sql_binds_suffixes_as_literals() -> None:
+    """A suffix is user input; the allowlist rejects anything quote-shaped."""
+    with pytest.raises(ValueError, match="invalid document suffix"):
+        normalize_suffixes(("x'; DROP TABLE t; --",))
+    with pytest.raises(ValueError, match="invalid document suffix"):
+        normalize_suffixes(("--",))
+
+
+def test_suffix_sql_rejects_an_unsafe_column() -> None:
+    with pytest.raises(ValueError, match="unsafe SQL identifier"):
+        suffix_sql("document_path) OR 1=1 --", ("htm",))
+
+
+def test_amendment_sql_covers_every_policy() -> None:
+    assert amendment_sql("both") == "TRUE"
+    assert amendment_sql("original") == "is_amendment = false"
+    assert amendment_sql("amendments") == "is_amendment = true"
+
+
+def test_amendment_sql_rejects_an_unknown_policy() -> None:
+    with pytest.raises(ValueError, match="amendment must be one of"):
+        amendment_sql("amendmented")
