@@ -10,14 +10,17 @@ from __future__ import annotations
 from dataclasses import dataclass
 from pathlib import Path
 
-from edgar_sec.foundation.runtime.paths import ProjectPaths, resolve_paths
+from edgar_sec.foundation.runtime.paths import (
+    PLAN_FILE_NAME,
+    ProjectPaths,
+    current_pointer_path,
+    resolve_paths,
+    transient_dir,
+)
 
 METADATA_DIR = "metadata"
-TRANSIENT_DIR = "transient"
-PLAN_FILE_NAME = "plan.json"
 SNAPSHOT_FILE_NAME = "metadata.parquet"
 SNAPSHOT_MANIFEST_NAME = "metadata.manifest.json"
-POINTER_FILE_NAME = "pointer.json"
 
 
 @dataclass(frozen=True, slots=True)
@@ -42,7 +45,7 @@ class MetadataPaths:
 
     def transient_dir(self, plan_id: str) -> Path:
         """Directory holding one plan's transient chunk checkpoints."""
-        return self.artifacts_root / TRANSIENT_DIR / METADATA_DIR / plan_id
+        return transient_dir(self.artifacts_root, METADATA_DIR, plan_id)
 
     def snapshot_dir(self, snapshot_id: str) -> Path:
         """Directory holding one published snapshot."""
@@ -59,7 +62,7 @@ class MetadataPaths:
     @property
     def current_pointer(self) -> Path:
         """Atomic JSON pointer naming the currently published snapshot."""
-        return self.snapshots_root / "current" / POINTER_FILE_NAME
+        return current_pointer_path(self.snapshots_root)
 
     def source_dir(self, source_name: str, snapshot_id: str) -> Path:
         """Directory holding one immutable external source snapshot."""

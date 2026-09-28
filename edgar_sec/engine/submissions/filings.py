@@ -16,8 +16,9 @@ from __future__ import annotations
 
 from typing import Any
 
+from edgar_sec.domain.sec_urls import historical_submissions_url
+
 from .helpers import (
-    SEC_SUBMISSIONS_BASE,
     accession_normalized,
     add_anomaly,
     build_archive_url,
@@ -223,7 +224,7 @@ def normalize_submission_files(files: Any, anomalies: list[dict]) -> list[dict]:
                 )
         record["filing_count"] = to_int(record["filing_count"])
         record["url"] = (
-            f"{SEC_SUBMISSIONS_BASE}/{record['name']}" if record["name"] else None
+            historical_submissions_url(record["name"]) if record["name"] else None
         )
         out.append(record)
     return out

@@ -11,14 +11,16 @@ import sys
 
 from edgar_sec.foundation.runtime.interactive import (
     MenuAction,
+    operator_entrypoint,
     prompt_text,
-    run_interactive_menu,
 )
 
 from .cli import cmd_augment, cmd_merge, cmd_plan, cmd_run, cmd_status
 from .cli import main as cli_main
 
-__all__ = ["build_operator_menu", "main", "run_operator"]
+__all__ = ["build_operator_menu", "main"]
+
+MENU_TITLE = "Metadata Sync (Phase 01)"
 
 DEFAULT_INPUT = "uploads/cik-sec.csv"
 
@@ -121,26 +123,9 @@ def _action_augment() -> None:
     cmd_augment(args)
 
 
-def run_operator() -> int:
-    """Run the interactive menu loop."""
-    return run_interactive_menu(
-        "Metadata Sync (Phase 01)",
-        build_operator_menu(),
-        exit_key="0",
-    )
-
-
 def main(argv: list[str] | None = None) -> int:
     """Operator entrypoint: interactive by default, CLI when given a command."""
-    args = sys.argv[1:] if argv is None else argv
-    if not args:
-        return run_operator()
-    return main_cli(args)
-
-
-def main_cli(args: list[str]) -> int:
-    """Delegate to the shared CLI command surface."""
-    return cli_main(args)
+    return operator_entrypoint(MENU_TITLE, build_operator_menu(), cli_main, argv)
 
 
 if __name__ == "__main__":

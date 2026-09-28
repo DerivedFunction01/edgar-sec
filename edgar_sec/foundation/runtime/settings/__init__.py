@@ -16,6 +16,7 @@ from dataclasses import dataclass
 from pathlib import Path
 
 from ..env import get_env
+from .catalog import get_catalog_specs
 from .paths import get_paths_specs
 from .runtime import get_runtime_specs
 from .sec import SecSettings, get_sec_specs
@@ -71,7 +72,12 @@ def _flatten_group(
 def collect_specs() -> dict[str, SettingSpec]:
     """Collect all shared setting specifications."""
     specs: dict[str, SettingSpec] = {}
-    for spec_provider in (get_runtime_specs, get_paths_specs, get_sec_specs):
+    for spec_provider in (
+        get_runtime_specs,
+        get_paths_specs,
+        get_sec_specs,
+        get_catalog_specs,
+    ):
         group = spec_provider()
         _flatten_group(group, "", specs)
     return specs

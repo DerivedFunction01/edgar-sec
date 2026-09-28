@@ -7,6 +7,38 @@ from pathlib import Path
 
 from .env import get_env
 
+# Shared artifact-layout convention. Every pipeline publishes an immutable
+# dataset under a dataset root and records the "currently published" identity in
+# a pointer file; resumable work lives under a transient root. These names are
+# the cross-pipeline contract, so they are declared once here rather than being
+# restated in each pipeline's paths module, where a rename in one place would
+# silently desynchronize the others.
+TRANSIENT_DIR = "transient"
+CURRENT_DIR = "current"
+POINTER_FILE_NAME = "pointer.json"
+PLAN_FILE_NAME = "plan.json"
+SNAPSHOTS_DIR = "snapshots"
+PLANS_DIR = "plans"
+
+
+def current_pointer_path(snapshots_root: Path) -> Path:
+    """Return the pointer file naming the currently published snapshot.
+
+    Shared so every dataset resolves "current" identically; a pipeline that
+    invented its own shape would make ``status`` ambiguous across datasets.
+    """
+    return snapshots_root / CURRENT_DIR / POINTER_FILE_NAME
+
+
+def plan_dir(plans_root: Path, plan_id: str) -> Path:
+    """Return the directory holding one immutable plan bundle."""
+    return plans_root / plan_id
+
+
+def transient_dir(artifacts_root: Path, dataset: str, run_id: str) -> Path:
+    """Return the staging directory for one resumable run of a dataset."""
+    return artifacts_root / TRANSIENT_DIR / dataset / run_id
+
 
 @dataclass(frozen=True, slots=True)
 class ProjectPaths:
@@ -50,4 +82,16 @@ def resolve_paths(repo_root: Path | str | None = None) -> ProjectPaths:
     )
 
 
-__all__ = ["ProjectPaths", "resolve_paths"]
+__all__ = [
+    "CURRENT_DIR",
+    "PLANS_DIR",
+    "PLAN_FILE_NAME",
+    "POINTER_FILE_NAME",
+    "SNAPSHOTS_DIR",
+    "TRANSIENT_DIR",
+    "ProjectPaths",
+    "current_pointer_path",
+    "plan_dir",
+    "resolve_paths",
+    "transient_dir",
+]

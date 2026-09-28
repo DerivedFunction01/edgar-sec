@@ -12,17 +12,15 @@ import threading
 from pathlib import Path
 from typing import Any
 
+from edgar_sec.domain.sec_urls import historical_submissions_url, submissions_url
 from edgar_sec.infra.sec_http.client import SecHttpClient
 from edgar_sec.infra.sec_http.rate_limit import RateLimiter
 from edgar_sec.infra.sec_http.retry import RetryPolicy
-from edgar_sec.pipelines.metadata_sync.sec_client import (
-    SUBMISSIONS_BASE,
-    SubmissionsClient,
-    submissions_url,
-)
+from edgar_sec.pipelines.metadata_sync.sec_client import SubmissionsClient
 
 TESTS_ROOT = Path(__file__).resolve().parent
 FIXTURES = TESTS_ROOT / "fixtures"
+CATALOG_FIXTURES = FIXTURES / "catalog"
 
 
 def load_fixture(name: str) -> Any:
@@ -35,6 +33,16 @@ def fixture_path(name: str) -> Path:
     return FIXTURES / name
 
 
+def catalog_fixture_path(name: str) -> Path:
+    """Return the path of a committed filing-catalog oracle fixture."""
+    return CATALOG_FIXTURES / name
+
+
+def load_catalog_fixture(name: str) -> Any:
+    """Load a committed filing-catalog oracle fixture by filename."""
+    return json.loads((CATALOG_FIXTURES / name).read_text(encoding="utf-8"))
+
+
 def submissions_document(cik_padded: str) -> str:
     """Submissions endpoint URL for a zero-padded CIK."""
     return submissions_url(cik_padded)
@@ -42,7 +50,7 @@ def submissions_document(cik_padded: str) -> str:
 
 def historical_url(name: str) -> str:
     """Historical submissions file URL."""
-    return f"{SUBMISSIONS_BASE}/{name}"
+    return historical_submissions_url(name)
 
 
 def cik_payload(cik: str, name: str, accession: str | None = None) -> dict[str, Any]:
@@ -129,15 +137,18 @@ def build_test_client(session: FakeSession) -> SubmissionsClient:
 
 
 __all__ = [
+    "CATALOG_FIXTURES",
     "FIXTURES",
     "TESTS_ROOT",
     "FakeResponse",
     "FakeSession",
     "build_test_client",
     "build_test_http",
+    "catalog_fixture_path",
     "cik_payload",
     "fixture_path",
     "historical_url",
+    "load_catalog_fixture",
     "load_fixture",
     "submissions_document",
 ]

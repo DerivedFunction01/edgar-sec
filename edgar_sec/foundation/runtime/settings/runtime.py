@@ -6,6 +6,8 @@ import tempfile
 from pathlib import Path
 from typing import TYPE_CHECKING
 
+from .validators import validate_fraction, validate_positive_int
+
 if TYPE_CHECKING:
     from . import SettingSpec
 
@@ -49,16 +51,6 @@ def _default_temp_directory() -> str:
     return str(Path(tempfile.gettempdir()) / "edgar-sec-spill")
 
 
-def _validate_fraction(value: object) -> None:
-    if not 0 < float(value) <= 1:
-        raise ValueError("must be between 0 and 1")
-
-
-def _validate_positive_int(value: object) -> None:
-    if int(value) < 1:
-        raise ValueError("must be >= 1")
-
-
 def get_runtime_specs() -> dict[str, dict[str, SettingSpec]]:
     from . import SettingSpec
 
@@ -69,7 +61,7 @@ def get_runtime_specs() -> dict[str, dict[str, SettingSpec]]:
                 default=DEFAULT_WORKER_MEMORY_MIB,
                 env=True,
                 machine_local=True,
-                validate=_validate_positive_int,
+                validate=validate_positive_int,
                 description="peak memory estimate per worker process (MiB)",
             ),
             "worker_memory_safety": SettingSpec(
@@ -77,7 +69,7 @@ def get_runtime_specs() -> dict[str, dict[str, SettingSpec]]:
                 default=DEFAULT_WORKER_MEMORY_SAFETY,
                 env=True,
                 machine_local=True,
-                validate=_validate_fraction,
+                validate=validate_fraction,
                 description="available-memory safety fraction for automatic workers",
             ),
             "workers": SettingSpec(
@@ -86,7 +78,7 @@ def get_runtime_specs() -> dict[str, dict[str, SettingSpec]]:
                 env=True,
                 cli=True,
                 machine_local=True,
-                validate=_validate_positive_int,
+                validate=validate_positive_int,
                 description="worker processes; memory-derived when unset",
             ),
             "chunk_size": SettingSpec(
@@ -111,7 +103,7 @@ def get_runtime_specs() -> dict[str, dict[str, SettingSpec]]:
                 env=True,
                 cli=True,
                 machine_local=True,
-                validate=_validate_positive_int,
+                validate=validate_positive_int,
                 description="worker threads for engine staging; machine-derived when unset",
             ),
             "memory_fraction": SettingSpec(
@@ -119,7 +111,7 @@ def get_runtime_specs() -> dict[str, dict[str, SettingSpec]]:
                 default=DEFAULT_MEMORY_FRACTION,
                 env=True,
                 machine_local=True,
-                validate=_validate_fraction,
+                validate=validate_fraction,
                 description="fraction of physical memory used to derive the memory limit",
             ),
             "memory_limit": SettingSpec(

@@ -372,21 +372,6 @@ class SecHttpClient:
             raise PermanentHttpError(url, "expected JSON object at root")
         return parsed, len(raw), sha256_bytes(raw)
 
-    # ------------------------------------------------------------------ SEC URL Helpers
-
-    @staticmethod
-    def submissions_url(cik: str | int) -> str:
-        """Canonical SEC submission metadata JSON URL for a CIK."""
-        padded_cik = str(cik).zfill(10)
-        return f"https://data.sec.gov/submissions/CIK{padded_cik}.json"
-
-    @staticmethod
-    def archives_url(cik: str | int, accession_number: str, document_name: str) -> str:
-        """Canonical SEC archive filing document URL."""
-        cik_int = int(cik)
-        accession_clean = accession_number.replace("-", "")
-        return f"https://www.sec.gov/Archives/edgar/data/{cik_int}/{accession_clean}/{document_name}"
-
 
 __all__ = [
     "PermanentHttpError",

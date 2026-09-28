@@ -1,0 +1,267 @@
+"""DuckDB SQL construction for filing-catalog materialization.
+
+The derivation rules encoded here are the executable form of the section 3.3
+table in ``roadmap/refactor_v2/phase_2.md`` and are the counterpart to the
+Milestone 0 oracle, which transcribes the same rules in plain Python. The two
+must agree; when they diverge, one of them is wrong and the test says which.
+
+Two deliberate departures from the v1 SQL, both narrowing behaviour:
+
+* ``trim`` is applied before the primary-document branch. v1 tested
+  ``primary_document != ''``, so a whitespace-only value counted as a real
+  document and produced a literal path of spaces. The Phase 1 engine
+  (``build_archive_url``) already strips and treats such a value as missing, so
+  v1 could emit a ``document_path_source`` that contradicted the ``archive_url``
+  on the same row. v2 aligns the SQL with the engine.
+* File paths are emitted as escaped SQL literals rather than interpolated
+  raw, so a path containing a quote cannot terminate the string.
+"""
+
+from __future__ import annotations
+
+import os
+import re
+from pathlib import Path
+
+from edgar_sec.domain.filing_catalog.schemas import (
+    PATH_SOURCE_BUNDLE,
+    PATH_SOURCE_PRIMARY,
+    PROFILE_COLUMNS,
+    PROFILE_SCHEMA_VERSION,
+    SEC_ARCHIVE_BASE,
+    TARGET_COLUMNS,
+)
+from edgar_sec.infra.storage.parquet import (
+    DEFAULT_COMPRESSION,
+    DEFAULT_ROW_GROUP_SIZE,
+    count_parquet_rows,
+)
+
+_IDENTIFIER_RE = re.compile(r"^[A-Za-z_][A-Za-z0-9_]*$")
+
+
+def sql_literal(value: str) -> str:
+    """Return ``value`` as a single-quoted SQL string literal.
+
+    Embedded single quotes are doubled, which is the SQL-standard escape. Path
+    segments reaching this function are already constrained to
+    ``[A-Za-z0-9_.-]`` by the path resolver, so this is defence in depth rather
+    than the primary control.
+    """
+    return "'" + str(value).replace("'", "''") + "'"
+
+
+def _qualified_identifier(name: str) -> str:
+    """Return ``name`` if it is a bare SQL identifier, else raise.
+
+    Relation names are passed through here so a catalog or table name can never
+    smuggle SQL into a query.
+    """
+    if not _IDENTIFIER_RE.match(name):
+        raise ValueError(f"unsafe SQL identifier: {name!r}")
+    return name
+
+
+def build_part_unnest_query(part_path: str) -> str:
+    """Unnest one Phase 1 part into flat filing-occurrence rows.
+
+    ``part_path`` is the single parameter. It is emitted as an escaped literal
+    so the caller can pass any real path without risking injection.
+    """
+    path = sql_literal(part_path)
+    return f"""
+    WITH raw_unnest AS (
+        SELECT
+            t.cik AS source_cik,
+            f.form AS form,
+            f.accession_number AS accession_number,
+            f.filing_date AS filing_date,
+            f.report_date AS report_date,
+            f.primary_document AS primary_document,
+            f.archive_url AS archive_url,
+            f.size AS size,
+            f.is_xbrl AS is_xbrl,
+            f.is_inline_xbrl AS is_inline_xbrl,
+            f.is_xbrl_numeric AS is_xbrl_numeric
+        FROM read_parquet({path}) AS t,
+             LATERAL (SELECT UNNEST(t.filings) AS f) AS sub
+        WHERE t.filings IS NOT NULL
+    ),
+    normalized AS (
+        SELECT
+            source_cik,
+            form,
+            accession_number,
+            replace(accession_number, '-', '') AS accession,
+            coalesce(nullif(trim(form), ''), '') AS form_clean,
+            coalesce(nullif(trim(filing_date), ''), '') AS filing_date,
+            coalesce(nullif(trim(report_date), ''), '') AS report_date,
+            nullif(trim(primary_document), '') AS primary_document,
+            coalesce(nullif(trim(archive_url), ''), '') AS archive_url,
+            coalesce(size, 0) AS reported_size,
+            coalesce(is_xbrl, false) AS is_xbrl,
+            coalesce(is_inline_xbrl, false) AS is_inline_xbrl,
+            coalesce(is_xbrl_numeric, false) AS is_xbrl_numeric
+        FROM raw_unnest
+    ),
+    with_derived AS (
+        SELECT
+            source_cik,
+            accession,
+            form_clean AS form,
+            (upper(form_clean) LIKE '%/A' OR upper(form_clean) LIKE '%_A')
+                AS is_amendment,
+            filing_date,
+            report_date,
+            coalesce(primary_document, '') AS primary_document,
+            CASE
+                WHEN primary_document IS NOT NULL
+                    THEN primary_document
+                ELSE accession_number || '.txt'
+            END AS document_path,
+            CASE
+                WHEN primary_document IS NOT NULL
+                    THEN {sql_literal(PATH_SOURCE_PRIMARY)}
+                ELSE {sql_literal(PATH_SOURCE_BUNDLE)}
+            END AS document_path_source,
+            CASE
+                WHEN archive_url != ''
+                    THEN archive_url
+                ELSE {sql_literal(SEC_ARCHIVE_BASE)} || '/' ||
+                     ltrim(source_cik, '0') || '/' || accession || '/' ||
+                     CASE
+                         WHEN primary_document IS NOT NULL
+                             THEN primary_document
+                         ELSE accession_number || '.txt'
+                     END
+            END AS archive_url,
+            reported_size,
+            is_xbrl,
+            is_inline_xbrl,
+            is_xbrl_numeric
+        FROM normalized
+        WHERE form IS NOT NULL AND accession_number IS NOT NULL
+          AND accession_number != ''
+    )
+    SELECT
+        sha256(source_cik || ':' || accession || ':' || document_path)
+            AS occurrence_id,
+        sha256(accession || ':' || document_path) AS document_locator_key,
+        source_cik,
+        accession,
+        form,
+        is_amendment,
+        filing_date,
+        report_date,
+        primary_document,
+        document_path,
+        archive_url,
+        document_path_source,
+        reported_size,
+        is_xbrl,
+        is_inline_xbrl,
+        is_xbrl_numeric
+    FROM (
+        SELECT
+            *,
+            ROW_NUMBER() OVER (
+                PARTITION BY sha256(
+                    source_cik || ':' || accession || ':' || document_path
+                )
+                ORDER BY source_cik, accession, document_path, filing_date
+            ) AS occurrence_rank
+        FROM with_derived
+    ) ranked
+    WHERE occurrence_rank = 1
+    ORDER BY source_cik, accession, document_path
+    """
+
+
+def build_profile_query(relation: str) -> str:
+    """Project deduplicated registrant profiles from a Phase 1 relation.
+
+    The dedup window keeps the most recent ``fetched_at`` per CIK, which is what
+    lets a later re-fetch of an already-seeded registrant supersede the earlier
+    row without a second profile.
+    """
+    source = _qualified_identifier(relation)
+    profile_cols = ", ".join(f'"{name}"' for name in PROFILE_COLUMNS[:-1])
+    return f"""
+    SELECT
+        {profile_cols},
+        {sql_literal(PROFILE_SCHEMA_VERSION)} AS profile_schema_version
+    FROM (
+        SELECT *,
+               ROW_NUMBER() OVER (
+                   PARTITION BY cik
+                   ORDER BY fetched_at DESC NULLS LAST
+               ) AS rn
+        FROM {source}
+        WHERE cik IS NOT NULL
+    ) ranked
+    WHERE rn = 1
+    ORDER BY cik
+    """
+
+
+def build_merged_targets_query(relations: list[str]) -> str:
+    """Union several unnest relations into one ordered target projection.
+
+    Each relation is an unnest query already wrapped in a named subquery (for
+    example ``unnest_0``), so the branches are unioned and the result is
+    re-sorted once. DuckDB reads the underlying Parquet lazily, so the union
+    stays out-of-core.
+    """
+    if not relations:
+        raise ValueError("at least one relation is required")
+    columns = ", ".join(TARGET_COLUMNS)
+    branches = "\n        UNION ALL\n        ".join(
+        f"SELECT {columns} FROM {_qualified_identifier(name)}" for name in relations
+    )
+    return f"""
+    SELECT {columns}
+    FROM (
+        {branches}
+    ) combined
+    ORDER BY source_cik, accession, document_path
+    """
+
+
+def copy_query_to_parquet(
+    con: object,
+    query: str,
+    destination: os.PathLike[str] | str,
+    row_group_size: int = DEFAULT_ROW_GROUP_SIZE,
+    *,
+    compression: str = DEFAULT_COMPRESSION,
+) -> int:
+    """Write one query result to Parquet out-of-core and atomically.
+
+    The COPY runs inside DuckDB, so a large result never materializes in the
+    Python heap. The file is staged beside its destination and renamed, so a
+    failed write never leaves a half-written shard in a published directory.
+    Returns the row count.
+    """
+    path = Path(destination)
+    path.parent.mkdir(parents=True, exist_ok=True)
+    tmp = path.with_name(f".{path.name}.tmp.{os.getpid()}")
+    try:
+        con.execute(
+            f"COPY ({query}) TO {sql_literal(str(tmp))} "
+            f"(FORMAT PARQUET, COMPRESSION {compression}, "
+            f"ROW_GROUP_SIZE {int(row_group_size)})"
+        )
+        os.replace(tmp, path)
+    finally:
+        if tmp.exists():
+            tmp.unlink()
+    return count_parquet_rows(path)
+
+
+__all__ = [
+    "build_merged_targets_query",
+    "build_part_unnest_query",
+    "build_profile_query",
+    "copy_query_to_parquet",
+    "sql_literal",
+]

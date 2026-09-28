@@ -11,6 +11,7 @@ from pathlib import Path
 
 import pyarrow.parquet as pq
 
+from edgar_sec.domain.sec_urls import submissions_url
 from edgar_sec.pipelines.metadata_sync.augmentation import (
     augment,
     base_snapshot_ciks,
@@ -24,7 +25,6 @@ from edgar_sec.pipelines.metadata_sync.paths import (
     resolve_run_paths,
 )
 from edgar_sec.pipelines.metadata_sync.planner import build_plan, write_plan
-from edgar_sec.pipelines.metadata_sync.sec_client import submissions_url
 from edgar_sec.pipelines.metadata_sync.source_registry import (
     SOURCE_NAME,
     SourceRegistryError,

@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import sys
 from collections.abc import Callable
 from dataclasses import dataclass
 from typing import Any
@@ -81,4 +82,30 @@ def run_interactive_menu(
             print("Invalid choice, please select again.")
 
 
-__all__ = ["MenuAction", "prompt_choice", "prompt_text", "run_interactive_menu"]
+def operator_entrypoint(
+    title: str,
+    menu: tuple[MenuAction, ...] | list[MenuAction],
+    cli_main: Callable[[list[str]], int],
+    argv: list[str] | None = None,
+) -> int:
+    """Dispatch a pipeline operator: menu with no arguments, CLI otherwise.
+
+    Every pipeline operator needs this same entrypoint policy, so it is stated
+    once here instead of restated per pipeline. The pipeline supplies its title,
+    its menu, and its CLI entrypoint; nothing else about its behavior is
+    assumed. Kept in this module because it is pure presentation wiring -- it
+    decides which surface to show, never what a command does.
+    """
+    args = sys.argv[1:] if argv is None else argv
+    if not args:
+        return run_interactive_menu(title, menu, exit_key="0")
+    return cli_main(args)
+
+
+__all__ = [
+    "MenuAction",
+    "operator_entrypoint",
+    "prompt_choice",
+    "prompt_text",
+    "run_interactive_menu",
+]

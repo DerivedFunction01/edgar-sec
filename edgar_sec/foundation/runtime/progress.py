@@ -8,6 +8,23 @@ from typing import Any
 
 from tqdm import tqdm
 
+# Callback signature shared by every stage-oriented pipeline function. Passing
+# None is legal and means "no progress reporting".
+ProgressCallback = Callable[[dict[str, Any]], None] | None
+
+
+def emit_progress(progress: ProgressCallback, event: dict[str, Any]) -> None:
+    """Deliver one progress event, tolerating an absent callback.
+
+    Every stage-oriented function in this repository takes an optional
+    ``progress`` callback so library code stays usable from tests and other
+    pipelines. The None check belongs in one place rather than being repeated
+    at each call site, which is how it was duplicated across the filing-catalog
+    modules before this helper existed.
+    """
+    if progress is not None:
+        progress(event)
+
 
 def make_tqdm_callback(
     pbar: tqdm,
@@ -75,4 +92,9 @@ def make_merge_progress_callback(pbar: tqdm) -> Callable[[dict[str, Any]], None]
     return callback
 
 
-__all__ = ["make_merge_progress_callback", "make_tqdm_callback"]
+__all__ = [
+    "ProgressCallback",
+    "emit_progress",
+    "make_merge_progress_callback",
+    "make_tqdm_callback",
+]

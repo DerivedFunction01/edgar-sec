@@ -12,13 +12,13 @@ from pathlib import Path
 
 import pyarrow.parquet as pq
 
+from edgar_sec.domain.sec_urls import submissions_url
 from edgar_sec.domain.submissions.schemas import SUBMISSION_METADATA_SCHEMA
 from edgar_sec.pipelines.metadata_sync.checkpoints import discover_completed_chunks
 from edgar_sec.pipelines.metadata_sync.manifest import read_cik_manifest
 from edgar_sec.pipelines.metadata_sync.merger import merge_chunks, publish_snapshot
 from edgar_sec.pipelines.metadata_sync.paths import resolve_run_paths
 from edgar_sec.pipelines.metadata_sync.planner import build_plan, write_plan
-from edgar_sec.pipelines.metadata_sync.sec_client import submissions_url
 from edgar_sec.pipelines.metadata_sync.worker import run_chunk
 from tests.support import FakeSession, fixture_path, load_fixture
 

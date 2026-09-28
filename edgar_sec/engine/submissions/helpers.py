@@ -11,17 +11,15 @@ from __future__ import annotations
 import re
 from typing import Any
 
+from edgar_sec.domain.sec_urls import (
+    archives_url,
+)
 from edgar_sec.foundation.serialization import canonical_json
-
-SEC_ARCHIVE_BASE = "https://www.sec.gov/Archives/edgar/data"
-SEC_SUBMISSIONS_BASE = "https://data.sec.gov/submissions"
 
 ACCESSION_RE = re.compile(r"^\d{10}-\d{2}-\d{6}$")
 
 __all__ = [
     "ACCESSION_RE",
-    "SEC_ARCHIVE_BASE",
-    "SEC_SUBMISSIONS_BASE",
     "accession_normalized",
     "add_anomaly",
     "build_archive_url",
@@ -106,7 +104,7 @@ def build_archive_url(
     if not primary_document or not str(primary_document).strip():
         return None, "primary_document_missing"
     doc = str(primary_document).strip()
-    url = f"{SEC_ARCHIVE_BASE}/{int(cik_padded)}/{accession_norm}/{doc}"
+    url = archives_url(cik_padded, accession_norm, doc)
     if doc.endswith((".txt", "0001.htm")):
         return url, f"primary_document_stub:{doc}"
     return url, None

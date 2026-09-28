@@ -10,6 +10,8 @@ from __future__ import annotations
 from pathlib import Path
 from typing import TYPE_CHECKING
 
+from .validators import validate_non_negative_int
+
 if TYPE_CHECKING:
     from . import SettingSpec
 
@@ -20,11 +22,6 @@ DEFAULT_CACHE_JSON_TTL_S = 90 * 24 * 60 * 60  # 90 days
 def _cache_root(resolved: dict) -> Path:
     root = resolved.get("artifacts.root", DEFAULT_ARTIFACTS_ROOT)
     return Path(root) / "caches"
-
-
-def _validate_non_negative_int(value: object) -> None:
-    if int(value) < 0:
-        raise ValueError("must be >= 0")
 
 
 def get_paths_specs() -> dict[str, dict[str, SettingSpec]]:
@@ -53,7 +50,7 @@ def get_paths_specs() -> dict[str, dict[str, SettingSpec]]:
                 default=DEFAULT_CACHE_JSON_TTL_S,
                 env=True,
                 machine_local=True,
-                validate=_validate_non_negative_int,
+                validate=validate_non_negative_int,
                 description="HTTP cache lifetime for mutable JSON URLs in seconds; zero means forever",
             ),
         },

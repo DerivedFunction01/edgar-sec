@@ -7,6 +7,7 @@ from pathlib import Path
 
 import pytest
 
+from edgar_sec.domain.sec_urls import archives_url, submissions_url
 from edgar_sec.infra.sec_http.client import SecHttpClient, default_headers
 from edgar_sec.infra.sec_http.errors import PermanentHttpError
 
@@ -17,20 +18,28 @@ def test_default_headers_carry_user_agent() -> None:
     assert headers["Accept-Encoding"] == "gzip, deflate"
 
 
-def test_sec_url_helpers(tmp_path: Path) -> None:
-    client = SecHttpClient(
-        user_agent="Sample Company test@sample.com",
-        cache_dir=tmp_path,
-    )
-    assert client.submissions_url("320193") == (
+def test_submissions_url_pads_short_ciks() -> None:
+    """Padded and unpadded CIKs must resolve to the same document.
+
+    Two definitions of this builder used to exist, one of which padded and one
+    of which did not, so the same CIK produced two different URLs depending on
+    the caller.
+    """
+    assert submissions_url("320193") == (
         "https://data.sec.gov/submissions/CIK0000320193.json"
     )
-    assert client.archives_url(
-        "320193", "0000320193-23-000106", "aapl-20230930.htm"
-    ) == (
+    assert submissions_url("0000320193") == submissions_url("320193")
+    assert submissions_url(320193) == submissions_url("320193")
+
+
+def test_archives_url_unpads_cik_and_hyphens() -> None:
+    assert archives_url("320193", "0000320193-23-000106", "aapl-20230930.htm") == (
         "https://www.sec.gov/Archives/edgar/data/320193/"
         "000032019323000106/aapl-20230930.htm"
     )
+    assert archives_url(
+        "0000320193", "0000320193-23-000106", "aapl-20230930.htm"
+    ) == archives_url("320193", "000032019323000106", "aapl-20230930.htm")
 
 
 def test_cache_probe_and_hit_metric(tmp_path: Path) -> None:
@@ -38,7 +47,7 @@ def test_cache_probe_and_hit_metric(tmp_path: Path) -> None:
         user_agent="Sample Company test@sample.com",
         cache_dir=tmp_path,
     )
-    sub_url = client.submissions_url("320193")
+    sub_url = submissions_url("320193")
     assert client.peek_cache(sub_url) is None
     client._cache_put(sub_url, b'{"status":"ok"}', "hash", 15, "json")
     assert client.peek_cache(sub_url) == b'{"status":"ok"}'

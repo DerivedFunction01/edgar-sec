@@ -15,18 +15,12 @@ from __future__ import annotations
 from dataclasses import dataclass, field
 from typing import Any
 
+from edgar_sec.domain.sec_urls import historical_submissions_url, submissions_url
 from edgar_sec.foundation.runtime.settings.sec import SecSettings
 from edgar_sec.infra.sec_http.client import SecHttpClient
 from edgar_sec.infra.sec_http.errors import PermanentHttpError, RetryExhausted
 
-SUBMISSIONS_BASE = "https://data.sec.gov/submissions"
-
-__all__ = ["SUBMISSIONS_BASE", "CikFetchResult", "SubmissionsClient", "submissions_url"]
-
-
-def submissions_url(cik_padded: str) -> str:
-    """Canonical submissions document URL for a zero-padded CIK."""
-    return f"{SUBMISSIONS_BASE}/CIK{cik_padded}.json"
+__all__ = ["CikFetchResult", "SubmissionsClient"]
 
 
 @dataclass
@@ -98,7 +92,7 @@ class SubmissionsClient:
         result.response_sha256 = sha256
 
         for name in self._historical_names(payload):
-            file_url = f"{SUBMISSIONS_BASE}/{name}"
+            file_url = historical_submissions_url(name)
             try:
                 hist_payload = self.http.get_json(file_url)
             except PermanentHttpError as exc:
