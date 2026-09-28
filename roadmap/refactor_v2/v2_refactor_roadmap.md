@@ -1,8 +1,62 @@
 # Blueprint: Architecture & Repository Redesign (v2)
 
 > [!NOTE]
-> **Status:** Draft / Architectural Specification for Review & Refinement.  
+> **Status:** Track 1 stages for **Phase 1 and Phase 2 are implemented** (627 tests, full gate green). Phases 2.5+ not started.  
+> **Reading note:** §§1.1, 1.4, and 1.5 inventory the **v1** tree and are kept as the historical record. The **8-layer** layout sketched in §2/§3/§6 was reconciled down to the **5-layer** contract in `AGENTS.md`, which is normative and is what `check.py` enforces. §0 records that reconciliation.  
 > This document captures the target architecture for transitioning `edgar-sec` from its v1 architecture (`defs/` + numbered `phases/` with raw string coordinate remapping) to a mature, layered Domain-Driven Design (DDD) incorporating proven Document AST patterns from `edgartools` while preserving our production data-warehouse foundations.
+
+---
+
+## 0. Layer Reconciliation (8-Layer Proposal → 5-Layer Contract)
+
+> [!IMPORTANT]
+> **This section is normative and supersedes the 8-layer layout sketched in
+> §§2, 3, 3.1, and 6 below.** Those sections are retained as the original design
+> intent; where they disagree with this section, this section is what the code
+> does and what the gate enforces.
+
+The original proposal used eight layers, giving `documents/` and `forms/` their
+own tier above `infra/`. Implementation collapsed that to the five layers already
+normative in `AGENTS.md`, for two reasons.
+
+**1. The extra tiers bought nothing the scanner could not enforce.** With
+`documents/` between `infra/` and `engine/`, the scanner's rule set grows to
+eight clauses and two of them ("may import `documents`", "may import `forms`")
+exist only to permit a layer that was going to be reached anyway. Five clauses
+cover the same ground.
+
+**2. `documents/` was not a layer, it was a package.** `DocumentRepresentation`
+and the block stream are domain models — typed, pure, no I/O. Placing them at a
+tier that may import `infra` would have let a document model reach a database
+driver, which is precisely the leak §1.4 exists to stop. They now live in
+`domain/documents/`, where that is structurally impossible.
+
+| 8-layer proposal | 5-layer contract | Rationale |
+| :--- | :--- | :--- |
+| `apps/` | root `run.py` launcher | A launcher, not a package. It dispatches by registry entry and imports no pipeline internals. |
+| `pipelines/` | `pipelines/` (Layer 4) | Unchanged. |
+| `engine/` | `engine/` (Layer 3) | Unchanged; additionally owns `engine/forms/` (below). |
+| `forms/` | `engine/forms/` | Form plugins are *transformations* over a document representation, so they belong with the other engines rather than in a tier that can reach `infra`. |
+| `documents/` | `domain/documents/` | Typed block stream and representation are pure domain models. |
+| `infra/` | `infra/` (Layer 2) | Unchanged. |
+| `domain/` | `domain/` (Layer 1) | Unchanged. |
+| `foundation/` | `foundation/` (Layer 0) | Unchanged. |
+
+The five layers are what `check.py`'s `layer-boundary` scanner enforces, in the
+direction written in `AGENTS.md` §1:
+
+```text
+Layer 4  pipelines/    may import  engine, infra, domain, foundation
+Layer 3  engine/       may import  infra, domain, foundation
+Layer 2  infra/        may import  domain, foundation
+Layer 1  domain/       may import  foundation
+Layer 0  foundation/   zero internal dependencies on upper layers
+```
+
+`documents/`, `forms/`, and `apps/` are therefore **future packages under
+existing layers**, not future layers. Phase 2.5 introduces
+`domain/documents/` and `engine/forms/`; no change to the scanner is required,
+and none will be granted.
 
 ---
 
@@ -39,7 +93,7 @@ To prevent designing against nonexistent abstractions or mischaracterizing exist
 
 | Dimension | What Remains Unchanged (Preserved from v1) | What is Newly Proposed (v2 Changes) |
 | :--- | :--- | :--- |
-| **Package Structure** | All underlying algorithmic logic and data models survive. | **Eliminate numbered directories** (`01_`, `02_`, `025_`). Transition into clean, unnumbered, acyclic layers (`foundation/`, `domain/`, `infra/`, `documents/`, `forms/`, `engine/`, `pipelines/`, `apps/`). |
+| **Package Structure** | All underlying algorithmic logic and data models survive. | **Eliminate numbered directories** (`01_`, `02_`, `025_`). Transition into clean, unnumbered, acyclic layers. *(Proposed as eight tiers including `documents/`, `forms/`, and `apps/`; reconciled to the five-layer contract of §0, which is what ships.)* |
 | **Phases & Pipelines** | Algorithmic logic of Phases 01, 02, and 025 remains intact. | Map to semantic names: `pipelines/metadata_sync` (Phase 01), `pipelines/filing_catalog` (Phase 02), `pipelines/document_storage` (Phase 025). |
 | **Document Ingestion** | Primary document fetched by default (~2MB); Exhibit 13 refetched on delegation. | **Document AST (`documents/`)**: Tree of `Node` subclasses replacing raw string line-offset manipulation (`build_line_mapper()`). |
 | **Form Evaluators** | Form evaluation contract (detecting stubs/delegation). | Evaluator returns multi-scope `DecisionAction` (`ACCEPT`, `REFETCH_EXHIBIT`, `REFETCH_BUNDLE`, `REFETCH_SUMMARY_XML`), allowing dynamic acquisition scope per form. |
@@ -47,7 +101,7 @@ To prevent designing against nonexistent abstractions or mischaracterizing exist
 | **Extraction Format** | Clean plain-text normalized documents. | **Native GitHub-Flavored Markdown (GFM)** rendered directly from AST nodes for LLM phases. |
 | **SEC Broker & Pacing** | **Unix-socket `SecBroker`** (4 RPS aggregate token bucket, warm-cache probe). | Preserved 100%. Relocated to `infra/broker/`. |
 | **Persistence & Storage** | PyArrow datasets, SQLite chunks, DuckDB queries via `defs.sql`. | Preserved 100%. Relocated to `infra/storage/`. |
-| **Quality Gate** | `check.py` with 14 policy scanners, ruff format/check, test suites. | Preserved 100%, plus an automated **AST Layer-Boundary Scanner** to enforce downward-only imports. |
+| **Quality Gate** | `check.py` with policy scanners, ruff format/check, test suites. | Preserved 100%, plus an automated **AST Layer-Boundary Scanner** to enforce downward-only imports. (v1 had 14 scanners; v2 ships **7** — `environment-access`, `artifact-paths`, `secrets-leakage`, `clean-exit`, `file-length`, `layer-boundary`, `resource-allocation`.) |
 
 ---
 
@@ -84,7 +138,7 @@ graph LR
     R1 --> P1
     R2 --> P2
     R3 --> P3
-    Track1 -.->|Enables Cleanly| Track2
+    R6 -.->|Enables Cleanly| F1
 ```
 
 ### 1. Track 1: Pure Structural Refactoring (Zero Feature Creep, Zero Behavioral Change)
@@ -101,7 +155,7 @@ This track addresses code health, modularity, and circular import risks without 
 
 ### 2. The "Untouched & Protected" Performance Core
 The following components are already highly optimized and **must NOT be rewritten or degraded** during refactoring:
-- **Normalization Algorithm**: The character-level whitespace normalization, cover-page checkmark solver, and regex rules run in microseconds and pass 1,409 tests. They remain functionally intact.
+- **Normalization Algorithm**: The character-level whitespace normalization, cover-page checkmark solver, and regex rules run in microseconds and pass v1's 1,409-test suite. They remain functionally intact. *(1,409 is v1's baseline. The v2 tree currently holds **627** tests: 158 migrated from Phase 1 plus 469 new across Phases 1 and 2. None of the character-level algorithms have been rewritten, so that coverage is preserved in substance but not yet in count — the engine's own relocation to `engine/` is Phase 2.5+ work.)*
 - **Table Border & Geometry Detection**: The coordinate-based table detection in `defs/tables/` protects financial tables from corrupted wrapping. It must not be replaced by slow DOM-based parsing.
 - **Unix-Socket `SecBroker`**: The 4 RPS central token bucket and SQLite warm-cache probe mechanism survive 100% intact, moving to `infra/broker/`.
 - **Two-Tier Storage Backend**: SQLite worker chunking (`chunk-00001.db`) and atomic Parquet publishing remain the core persistence mechanism.
@@ -173,15 +227,24 @@ phases/
 ### 2. Trapped Domain/Infra Realignment Matrix
 Just as the document normalizer was extracted from `phases/025_` because it is generic document modeling, these trapped files must be relocated to their proper v2 architectural layers:
 
-| Current File Location | Trapped Functionality | Target v2 Layer | Target File / Package | Rationale |
+| Current File Location | Trapped Functionality | Target v2 Layer | Target File / Package | Status |
 | :--- | :--- | :--- | :--- | :--- |
-| `phases/025/.../records.py` | `DocumentLocator`, `FilingOccurrence`, `DocumentOccurrenceResult` | `domain/` | `domain/records.py` | Universal domain models required by storage, evaluators, and viewer. |
-| `phases/02/.../family_vocab.py` | SEC form classifications (`10-K`, `10-Q`, `8-K`, `20-F`) | `domain/` | `domain/taxonomy.py` | Statutory SEC form categories, not Phase 02-specific code. |
-| `phases/01/.../registry.py` | CIK master parsing and registration | `domain/` | `domain/identity.py` | Fundamental filer identity logic used across all phases. |
-| `phases/01/.../normalize/` | Parses SEC `submissions/CIK*.json` into tabular rows | `engine/` | `engine/submissions.py` | The domain normalizer for SEC Submissions feeds. |
-| `phases/02/.../materialize/` | DuckDB SQL unnest engine for flattening JSON arrays | `infra/` | `infra/storage/duckdb_catalog.py` | Storage query compilation and unnesting engine. |
-| `phases/025/.../chunk_persistence.py` | SQLite chunk schema, WAL pragma setup, CAS inserts | `infra/` | `infra/storage/sqlite_cas.py` | Physical CAS storage repository. |
-| `phases/025/.../testing/` & `tools/` | Golden corpus comparison & review toolchain | `testing/` | `testing/golden_corpus/` | Cross-pipeline testing harness reusable by future phases. |
+| `phases/025/.../records.py` | `DocumentLocator`, `FilingOccurrence`, `DocumentOccurrenceResult` | `domain/` | `domain/records.py` | **Pending** (Phase 2.5) |
+| `phases/02/.../family_vocab.py` | *Company-name* clustering vocabulary: `ABBR_MAP`, `CONTEXT_RULES`, `PLURAL_MAP`, `STATE_CODES` | `domain/` | `domain/taxonomy/family_vocab.py` | **Built** |
+| `phases/01/.../registry.py` | CIK master parsing and registration | `domain/` | `domain/identity.py` | **Built** |
+| `phases/01/.../normalize/` | Parses SEC `submissions/CIK*.json` into tabular rows | `engine/` | `engine/submissions/` | **Built** |
+| `phases/02/.../materialize/` | DuckDB SQL unnest engine for flattening JSON arrays | `infra/` | `infra/storage/duckdb_catalog.py` | **Built** |
+| `phases/02/.../company_family.py` | Family clustering from the company-name vocabulary | `engine/` | `engine/company_family/` | **Built** |
+| `phases/02/.../selection*.py` | Policy model, feature snapshot, deficit selector, candidate source, inventory | `engine/` | `engine/selection/` | **Built** |
+| `phases/025/.../chunk_persistence.py` | SQLite chunk schema, WAL pragma setup, CAS inserts | `infra/` | `infra/storage/sqlite_cas.py` | **Pending** (Phase 2.5) |
+| `phases/025/.../testing/` & `tools/` | Golden corpus comparison & review toolchain | `testing/` | `testing/goldens/` | **Pending** (Phase 2.5) |
+
+> [!IMPORTANT]
+> **Correction.** The original matrix described `phases/02/.../family_vocab.py` as *"SEC form classifications (`10-K`, `10-Q`, `8-K`, `20-F`)"* and targeted a single `domain/taxonomy.py`. Both were wrong on the merits.
+>
+> `family_vocab.py` contains **company-name** vocabulary for entity resolution — abbreviations, context disambiguation rules, plural forms, state codes. Form-family classification (`10-K/A` → `10-K`) lived in v1's `defs/sec_forms/families.py` and is a *selection* concern, not a taxonomy one: it is built by `form_family()` in `engine/selection/features.py` and emitted into the feature snapshot.
+>
+> The package is `domain/taxonomy/` with three modules, not one file: `jurisdictions.py` (`STATE_POSTAL_CODES`, `STATE_NAMES`), `legal_forms.py` (`LEGAL_FORMS`), and `family_vocab.py`. Every table is immutable — `frozenset` for membership, `MappingProxyType` for mappings — because a mutable table would let one caller corrupt the vocabulary process-wide and make clustering depend on call order.
 
 ### 3. What Strictly Remains in `pipelines/` (The Application Concurrency Core)
 Once domain entities, normalizers, and storage repositories are decoupled, **what remains in `pipelines/` is purely orchestration and concurrency**:
@@ -191,9 +254,21 @@ Once domain entities, normalizers, and storage repositories are decoupled, **wha
   - `checkpoints.py` & `augmentation.py`: Resumability and delta tracking.
   - `merger.py`: Merging worker Parquets into `submission_metadata.parquet`.
 - **`pipelines/filing_catalog/`** (Was Phase 02):
-  - `planner.py`: Generates `target_plan.parquet` from the catalog.
-  - `selection_policy.py`: Policy filtering rules (e.g. latest 10-K, annual only).
-  - `catalog_job.py`: Drives DuckDB unnest job (Zero Network calls).
+  - `catalog_job.py`: Drives the DuckDB unnest job (zero network calls).
+  - `planner.py`: `plan()` for deterministic scope, `plan_policy()` for policy scope.
+  - `publication.py`: Immutable bundle staging, plan identity, conflict detection.
+  - `discovery.py`: Manifest-only discovery; resolves the artifact layout.
+  - `expansion.py`: `expand()` — scales a plan while retaining every parent locator.
+  - `cli.py` / `operator.py` / `paths.py`: Command surface, menu, typed layout.
+
+  > [!NOTE]
+  > The matrix above originally listed `selection_policy.py` here. It was **not**
+  > built there. Selection is a Layer 3 transformation, not orchestration, and
+  > putting the policy model in `pipelines/` would have made it unreachable from
+  > the engine that consumes it. The whole subsystem now lives in
+  > `engine/selection/` (`policy`, `features`, `source`, `selector`, `inventory`),
+  > and `pipelines/` reaches downward into it. `engine/company_family/` and
+  > `domain/taxonomy/` follow the same reasoning.
 - **`pipelines/document_storage/`** (Was Phase 025):
   - `chunk_worker.py`: Process pool driving acquisition (`SecBroker`) and normalization (`engine`).
   - `fetcher.py`: Acquisition adapter (live broker vs offline SQLite CAS).
@@ -318,14 +393,12 @@ graph TD
         V1_Strings["Raw String Slices & Line Mappers"]
     end
 
-    subgraph "edgar-sec v2 (Target)"
-        V2_Apps["apps/ (cli, viewer)"] --> V2_Pipe["pipelines/ (metadata, storage, extraction)"]
-        V2_Pipe --> V2_Engine["engine/ (normalization, reflow, tables)"]
-        V2_Engine --> V2_Forms["forms/ (FormPlugin SPI, 10-K, 10-Q, 8-K, XML)"]
-        V2_Forms --> V2_Docs["documents/ (Document Representation, Blocks)"]
-        V2_Docs --> V2_Infra["infra/ (broker, sec_http, sqlite, parquet)"]
-        V2_Domain --> V2_Found["foundation/ (text, regex, sql, runtime)"]
-        V2_Infra --> V2_Domain["domain/ (identity, locators, models)"]
+    subgraph "edgar-sec v2 (Reconciled: 5 layers, see §0)"
+        V2_Apps["run.py launcher (dispatch, menu, gate)"] --> V2_Pipe["pipelines/ (metadata_sync, filing_catalog, document_storage)"]
+        V2_Pipe --> V2_Engine["engine/ (submissions, company_family, selection; + forms/, normalization, reflow)"]
+        V2_Engine --> V2_Infra["infra/ (sec_http, storage, + broker/, sgml/)"]
+        V2_Infra --> V2_Domain["domain/ (identity, submissions, filing_catalog, taxonomy; + documents/, records)"]
+        V2_Domain --> V2_Found["foundation/ (runtime, hashing, scanners; + text/, regex/, sql/)"]
     end
 ```
 
@@ -343,73 +416,99 @@ graph TD
 
 ## 3. v2 Target Package Layout
 
+> [!NOTE]
+> Reconciled to the **5-layer contract** per §0. `documents/`, `forms/`, and
+> `apps/` appear below as *planned packages under existing layers*, not as
+> layers. **Built** marks what exists in the tree today; **pending** marks what
+> Phase 2.5+ introduces.
+
 ```text
 edgar_sec/
 ├── foundation/                           # [LAYER 0] Zero SEC knowledge. Pure utilities.
-│   ├── text/                             # Syntax, tokens, dates, Aho-Corasick automaton, compounds
-│   ├── regex/                            # Trie builders, alternation optimizers
-│   ├── sql/                              # Typed AST, compiler, security query guard
-│   └── runtime/                          # Settings, paths, memory budgets, logging, progress
+│   ├── runtime/                          # **BUILT**  Settings, paths, memory budgets, progress
+│   │   ├── settings/                     # **BUILT**  Modular registry (sec/paths/runtime/catalog)
+│   │   ├── paths.py                      # **BUILT**  Root resolution + shared artifact conventions
+│   │   ├── memory.py, resources.py       # **BUILT**  reclaim(); cgroup-aware derive_resources()
+│   │   ├── env.py                        # **BUILT**  Sole os.environ access point
+│   │   └── interactive.py, progress.py   # **BUILT**  Operator entrypoint, progress dispatch
+│   ├── serialization.py, hashing.py      # **BUILT**  canonical_json/hash; streamed file_sha256
+│   ├── scanners/                         # **BUILT**  Modular policy-scanner registry (ALL_SCANNERS)
+│   ├── text/ regex/ sql/                 # **PENDING** Phase 2.5+ (ASCII/HTML engine relocation)
 │
-├── domain/                               # [LAYER 1] Fundamental SEC domain types & Leaf Models.
-│   ├── identity.py                       # Cik, AccessionNumber, FilingDate, DocumentLocator
-│   ├── records.py                        # DocumentBlob, NormalizedDocument, Manifest
-│   └── taxonomy.py                       # Financial table taxonomy specs & BoW classifiers
+├── domain/                               # [LAYER 1] Fundamental SEC domain types & leaf models.
+│   ├── identity.py                       # **BUILT**  Cik, AccessionNumber
+│   ├── sec_urls.py                       # **BUILT**  Sole EDGAR URL builder (submissions/archive/historical)
+│   ├── submissions/                      # **BUILT**  SUBMISSION_METADATA_SCHEMA (Phase 1 output contract)
+│   ├── filing_catalog/                   # **BUILT**  TARGET/PROFILE/LOCATOR schemas, filter vocabulary
+│   ├── taxonomy/                         # **BUILT**  jurisdictions, legal_forms, family_vocab (immutable tables)
+│   ├── documents/                        # **PENDING** DocumentRepresentation + 1D block stream (§0)
+│   └── records.py                        # **PENDING** DocumentLocator, FilingOccurrence, FilingAggregate
 │
 ├── infra/                                # [LAYER 2] External systems, protocols, and persistence.
-│   ├── http/                             # SecHttpClient, cache, rate limits, headers
-│   ├── broker/                           # Managed Unix-socket acquisition broker daemon
-│   ├── sgml/                             # SGML multi-document envelope unpacker & FilingSummary.xml parser
-│   └── storage/                          # SQLite chunk repositories, Parquet sharding, DuckDB reader
+│   ├── sec_http/                         # **BUILT**  SecHttpClient, RateLimiter, RetryPolicy, FailureLedger
+│   ├── storage/                          # **BUILT**  Atomic IO, Parquet writer, DuckDB connect
+│   │   └── duckdb_catalog.py             # **BUILT**  Catalog SQL builders (unnest, profile, targets, filters)
+│   ├── broker/                           # **PENDING** Unix-socket SecBroker daemon (Phase 2.5)
+│   └── sgml/ sqlite_cas.py               # **PENDING** SGML unpacker; SQLite CAS chunks (Phase 2.5)
 │
-├── documents/                            # [LAYER 3] Document Intermediate Representation.
-│   ├── models.py                         # DocumentRepresentation (1D Flat Block Stream)
-│   ├── blocks.py                         # DocumentBlock, BlockType (PARAGRAPH, TABLE, PRESERVED, PAGE_BREAK)
-│   ├── parser.py                         # Preprocessor + DocumentRepresentation builder
-│   └── renderers/                        # Block-to-Markdown (GFM), Block-to-Clean-Text
+├── engine/                               # [LAYER 3] Transformation & processing engines.
+│   ├── submissions/                      # **BUILT**  Unroller, Profile, Normalizer (Phase 1)
+│   ├── company_family/                   # **BUILT**  normalizer, clustering (SHA-256 family keys)
+│   ├── selection/                        # **BUILT**  policy, features, source, selector, inventory
+│   ├── forms/                            # **PENDING** FormPlugin SPI (§0)
+│   ├── normalization.py, tables.py, reflow.py   # **PENDING** Character/geometry engine relocation
 │
-├── forms/                                # [LAYER 4] Form-Family Plugin Architecture.
-│   ├── base.py                           # FormPlugin SPI (interface & lifecycle contracts)
-│   ├── registry.py                       # Zero-import FormRegistry (Inversion of Control)
-│   ├── reports.py                        # Queryable report models (AnnualReport, QuarterlyReport, etc.)
-│   ├── components/                       # Shared extractors: cover boundary, checkmark solver, page markers
-│   └── plugins/                          # Self-contained Form Plugins
-│       ├── annual.py                     # 10-K, 10-K405, 10-KSB, 10-KT, 20-F plugin
-│       ├── quarterly.py                  # 10-Q, 10-QSB plugin
-│       ├── current.py                    # 8-K, 8-K12B, 8-K12G plugin
-│       └── insider_xml.py                # Future: Form 3, 4, 5 XML DOM plugin
+├── pipelines/                            # [LAYER 4] Batch workflows & orchestrators.
+│   ├── metadata_sync/                    # **BUILT**  (v1 Phase 01) fetch, checkpoint, merge, augment
+│   ├── filing_catalog/                   # **BUILT**  (v1 Phase 02) catalog_job, planner, discovery,
+│   │                                     #           publication, expansion, cli, operator, paths
+│   ├── document_storage/                 # **PENDING** (v1 Phase 025) acquisition + normalized snapshots
+│   └── filing_extraction/                # **PENDING** Phase 03+ AST Section/Item extraction
 │
-├── engine/                               # [LAYER 5] Transformation & Processing Engines.
-│   ├── normalization.py                  # Normalization engine (drives Document AST through FormPlugin)
-│   ├── tables.py                         # Untagged ASCII table geometry detector & protection
-│   └── reflow.py                         # Prose unwrapping and paragraph reflow
-│
-├── pipelines/                            # [LAYER 6] Batch Workflows & Orchestrators.
-│   ├── metadata_sync/                    # (v1 Phase 01) Submissions metadata fetch & Parquet publication
-│   ├── filing_catalog/                   # (v1 Phase 02) Offline DuckDB catalog materialization & target planning
-│   ├── document_storage/                 # (v1 Phase 025) Document acquisition (broker/fixture) & normalized snapshot publishing
-│   └── filing_extraction/                # (Future Phase) AST Section/Item extraction & financial table parsing
-│
-└── apps/                                 # [LAYER 7] Standalone Applications & User Surfaces.
-    ├── cli/                              # Root launcher (menu, direct dispatch, check gate)
-    └── viewer/                           # Dataset browser & DuckDB SQL query UI (isolated from library)
+└── run.py                                # Launcher: dispatch registry, menu, gate. Not a layer.
 ```
 
-### 3.1. Java / Spring Enterprise DDD Mapping
-Had this repository been engineered in Java under Spring Boot / Jakarta EE DDD conventions, the layered breakdown would map directly as follows:
+### 3.0. What Phase 1 and Phase 2 Actually Produced
 
-| v2 Python Layer | Java Enterprise / Spring DDD Counterpart | Stereotype / Pattern | Responsibilities & Constraints |
+The two shipped phases, with the test counts the gate enforces:
+
+| Phase | Package | Tests | Key artifacts |
 | :--- | :--- | :--- | :--- |
-| `foundation/` | `com.edgar.foundation.*` | Core Commons / Utilities | Pure utility algorithms (Aho-Corasick, Trie, Date parsers). Zero dependencies on domain or framework. |
-| `domain/` | `com.edgar.domain.model.*` | Domain Model (Entities, Value Objects) | Record leaf classes (`Cik`, `AccessionNumber`, `DocumentBlob`). Completely pure, no database annotations or I/O. |
-| `infra/` | `com.edgar.infra.{http,storage}` | Infrastructure / Secondary Adapters | Repositories (`SqliteChunkRepository`, `ParquetDatasetWriter`), SEC HTTP Client, Unix Socket IPC client. |
-| `documents/` | `com.edgar.domain.document.*` | Aggregate Root / Document Model | The Document Representation (`DocumentRepresentation`, `DocumentBlock` stream) and markdown renderers. |
-| `forms/` | `com.edgar.forms.spi.*` | Service Provider Interface (SPI) | Form plugins implementing `FormPlugin` interface (`@Component` or `java.util.ServiceLoader` provider). |
-| `engine/` | `com.edgar.domain.service.*` | Domain Services | Transformation logic (normalization orchestrator, table geometry detector, reflow engine). |
-| `pipelines/` | `com.edgar.application.batch.*` | Application Services / Spring Batch | Multi-step job orchestrators (`ItemReader`, `ItemProcessor`, `ItemWriter`), resumable chunk workers. |
-| `apps/` | `com.edgar.apps.{cli,viewer}` | Driving Adapters (CLI & REST) | Spring Boot CLI runner (`CommandLineRunner`) and Web UI controller/view layer. |
+| **1 — Submissions metadata** | `pipelines/metadata_sync` | 63 | `submission_metadata.parquet`, `metadata.manifest.json`, `current/pointer.json` |
+| **2 — Filing catalog (zero network)** | `pipelines/filing_catalog` | 180 | `company_profiles.parquet`, `filing_targets/part-*.parquet`, immutable plan bundles |
 
----
+Cross-cutting, built once for both: `domain/taxonomy` (33), `engine/company_family`
+(37), `engine/selection` (112), `infra/storage` + `infra/sec_http` (39),
+`foundation` (60), `domain` (108). Total **627**.
+
+Two properties worth stating because Phase 2.5 depends on them:
+
+* **Phase 2 performs zero network I/O.** This is not a convention but a gate:
+  `tests/test_network_isolation.py` walks the `edgar_sec` import graph and fails
+  if `infra.sec_http` is reachable from any Phase 2 package. The walk includes a
+  sensitivity check asserting Phase 1's `metadata_sync` *does* still reach it, so
+  the assertion cannot pass vacuously.
+* **The Phase 2 → Phase 2.5 hand-off is a tested contract.**
+  `tests/pipelines/filing_catalog/test_phase25_contract.py` asserts that a
+  published plan bundle is a complete, deduplicated, fetchable work order: one
+  row per unique document, every `archive_url` well-formed, and
+  `targets/form=*/data.parquet` keyed to locators the work order actually
+  contains.
+
+### 3.1. Java / Spring Enterprise DDD Mapping
+
+Had this repository been engineered in Java under Spring Boot DDD conventions, the five-layer breakdown of §3 would map directly:
+
+| v2 Python Layer | Java Counterpart | Stereotype / Pattern | Responsibilities & Constraints |
+| :--- | :--- | :--- | :--- |
+| `foundation/` | `com.edgar.foundation.*` | Core Commons / Utilities | Pure utility algorithms. Zero dependencies on domain or framework. |
+| `domain/` | `com.edgar.domain.model.*` | Domain Model (Entities, Value Objects) | Record leaf classes (`Cik`, `AccessionNumber`, `DocumentLocator`). Pure: no database annotations, no I/O. |
+| `infra/` | `com.edgar.infra.{sec_http,storage}` | Infrastructure / Secondary Adapters | Repositories (`ParquetDatasetWriter`, `DuckdbCatalog`), SEC HTTP client, broker IPC client. |
+| `engine/` | `com.edgar.domain.service.*` | Domain Services | Transformation logic: normalizer, company-family clustering, selection engine, form plugins. |
+| `pipelines/` | `com.edgar.application.batch.*` | Application Services / Spring Batch | Multi-step job orchestrators, resumable chunk workers, plan publication. |
+| `run.py` | `CommandLineRunner` | Driving Adapter | Launcher, dispatch registry, quality gate. |
+
+The two tiers the 8-layer proposal added map onto existing layers rather than gaining their own: `documents/` is a domain model (`com.edgar.domain.document.*` — Aggregate Root), and `forms/` is a domain service (`com.edgar.domain.service.form.*` — Strategy/SPI). Spring would not make either one a layer, which is a useful sanity check on the original eight.
 
 ### 3.2. Detailed Analysis: What to Adopt vs What to Avoid from `edgartools`
 
@@ -486,7 +585,12 @@ Because later phases are analytical extractors, they do **not** need heavy Pytho
 
 ## 4. Key Subsystem Blueprints
 
-### Blueprint A: The Document Representation — Flat 1D Block Stream + TOC Index (`documents/`)
+> [!NOTE]
+> All four blueprints are **Track 2 / Phase 2.5+** and are unstarted. Their
+> package paths are the reconciled ones from §0 (`domain/documents/`,
+> `engine/forms/`), not the original eight-tier proposal.
+
+### Blueprint A: The Document Representation — Flat 1D Block Stream + TOC Index (`domain/documents/`)
 
 Rather than forcing Phase 025 into building a complex, deeply nested recursive AST (`SectionNode[children=[ParagraphNode, TableNode]]`), v2 establishes a clear separation of concerns:
 1. **Phase 025 (Document Normalization & Storage)** produces a **Flat 1D Stream of Typed Blocks**.
@@ -573,7 +677,7 @@ In v2, the hierarchical document tree is **materialized on demand** simply by co
 
 ---
 
-### Blueprint B: The `FormPlugin` SPI & Adaptive Scope Evaluator (`forms/`)
+### Blueprint B: The `FormPlugin` SPI & Adaptive Scope Evaluator (`engine/forms/`)
 Forms register themselves with an inversion-of-control registry. Each plugin owns its structural validation and tells the pipeline runner what acquisition scope is required to satisfy its domain needs.
 
 Furthermore, **external pipelines and research applications can supply custom evaluators** to adaptively fetch arbitrary exhibits (e.g., Exhibit 21 Subsidiaries, Exhibit 10 Material Contracts) or demand the full submission bundle:
@@ -904,20 +1008,31 @@ Not all flexibility was flawed. The following architectural systems in `defs/` p
 
 ## 6. Circular Import Elimination & Rule Enforcement
 
-To permanently prevent circular imports in v2, three structural rules will be enforced:
+Three structural rules are enforced, the first two by convention and the third mechanically:
 
-1. **Leaf Types Isolation**: `domain/identity.py`, `domain/records.py`, and `documents/models.py` contain only pure dataclasses and enums. They import nothing from `engine`, `forms`, or `infra`.
-2. **Registry Inversion of Control**: `forms/registry.py` never imports any plugin file. Plugins import `registry.py` and call `register_form()`.
-3. **Automated AST Layer-Boundary Scanner (`check.py`)**:
-   Add a scanner in `check.py` that verifies:
-   - `foundation` imports only standard library or third-party packages.
-   - `domain` imports only `foundation`.
-   - `infra` imports only `domain` and `foundation`.
-   - `documents` imports only `domain` and `foundation`.
-   - `forms` imports only `documents`, `infra`, `domain`, `foundation`.
-   - `engine` imports only `forms`, `documents`, `infra`, `domain`, `foundation`.
-   - `pipelines` orchestrates layers `0` through `5`.
-   - Any upward import causes an immediate gate failure before tests even run.
+1. **Leaf Types Isolation**: `domain/identity.py`, `domain/submissions/`, and the future `domain/documents/` contain only pure dataclasses, schemas, and enums. They import nothing from `engine`, `infra`, or `pipelines`.
+2. **Registry Inversion of Control**: the future `engine/forms/registry.py` will never import any plugin file. Plugins import the registry and call `register_form()`. *(Deferred to Phase 2.5+; the pattern is adopted there, not here.)*
+3. **Automated AST Layer-Boundary Scanner (`check.py`)**: `foundation/scanners/layer_boundary.py` walks every import in the tree and fails the gate on an upward one.
+
+> [!NOTE]
+> The rule set below is the **reconciled 5-layer contract** of §0, not the original 8-layer proposal. This is the version the scanner implements.
+
+| Layer | May import |
+| :--- | :--- |
+| `foundation/` | standard library and third-party packages only |
+| `domain/` | `foundation` |
+| `infra/` | `domain`, `foundation` |
+| `engine/` | `infra`, `domain`, `foundation` |
+| `pipelines/` | `engine`, `infra`, `domain`, `foundation` |
+
+Any upward import causes a gate failure before tests run. The scanner is the reason the 8→5 reconciliation cost nothing: enforcing "five clauses" is a strictly smaller surface than "eight clauses, two of which permit a layer that does not exist."
+
+### 6.1. Two Import Conventions Enforced Alongside the Scanner
+
+Neither is a layer rule, but both are contract:
+
+- **No backward-compatibility shims.** When a component moves or is renamed, every call site is updated in the same commit. No alias modules, no forwarding functions, no re-exporting a moved symbol from its old home.
+- **No barrel re-exports.** `__init__.py` files carry a docstring and `__version__`, nothing more; consumers import from the leaf module. This prevents eager initialization of heavy dependencies (DuckDB, PyArrow), makes symbol ownership explicit, and keeps the scanner's import graph equal to the real one. Dynamic registries such as `ALL_SCANNERS` are the one allowed exception, because they *are* registries.
 
 ---
 
@@ -942,13 +1057,18 @@ graph TD
     S4 --> S5 --> S6
 ```
 
+> [!NOTE]
+> Stage 3 is **done for Phase 1 and Phase 2** (627 tests), covering Phase 1 and
+> Phase 2 de-numbering and layout scoping. Stages 4–6 are Track 2 and have not
+> started; they also depend on Phase 2.5, which is still to come.
+
 ### Track 1: Pure Structural Refactoring (Zero Feature Changes, 100% Parity)
 
 | Stage | Focus Area | Deliverables | Backwards Compatibility |
 | :--- | :--- | :--- | :--- |
 | **Stage 1** | **Leaf Types & Infra Unbundling** | Establish `foundation/`, `domain/`, and `infra/`. Relocate `SecBroker`, SQLite CAS, and `defs.sql`. Define typed DTOs (`DocumentLocator`, `FilingOccurrence`). | Legacy `defs/` re-exports from new packages. All existing tests pass. |
 | **Stage 2** | **Engine & FormPlugin Packaging** | Relocate normalization and evaluator pipelines to `engine/` and `forms/`. **Preserve exact regex and character-level algorithms intact.** | `defs/sec_forms/` delegates to `forms/`. |
-| **Stage 3** | **Pipeline De-numbering & Layout Scoping** | Move `phases/01_*`, `phases/02_*`, `phases/025_*` to `pipelines/metadata_sync`, `pipelines/filing_catalog`, and `pipelines/document_storage`. Replace 700-line `paths.py` with scoped layouts. Deprecate dead JSONL. | Root launcher dispatches to `pipelines/`. Deprecate numbered `phases/`. |
+| **Stage 3** | **Pipeline De-numbering & Layout Scoping** | Move `phases/01_*`, `phases/02_*`, `phases/025_*` to `pipelines/metadata_sync`, `pipelines/filing_catalog`, and `pipelines/document_storage`. Replace 700-line `paths.py` with scoped layouts. Deprecate dead JSONL. | Root launcher dispatches to `pipelines/`. Deprecate numbered `phases/`. **Phase 1 and Phase 2 complete**; `document_storage` deferred to Phase 2.5. |
 
 ### Track 2: Feature Additions (Net-New Capabilities on Clean Foundation)
 
@@ -975,3 +1095,200 @@ graph TD
 4. **Acquisition Strategy (Accession Link vs Full Bundle) (RESOLVED)**:  
    Target the primary accession document (`{primary_doc}.htm`, ~2MB) by default. Use a **Sparse Aggregate model** so secondary attachments/exhibits remain `None` unless an evaluator triggers `REFETCH_EXHIBIT` (e.g. EX-13, EX-21) or an optional XBRL pipeline requests `*-xbrl.zip`. Never fetch the monolithic 50MB–200MB submission `.txt` by default.
 
+
+---
+
+## 9. v1 → v2 Parity Inventory
+
+> [!IMPORTANT]
+> **This section is measured, not estimated.** Every figure below is re-derived
+> from `parity_inventory.csv` (570 rows, one per v1 `.py` file) and every path and
+> line count in that CSV was re-stat'd against disk by a mechanical gate
+> (`.kilo/plans/parity-inventory/verify_c1.py`, checks C1.1–C1.10).
+>
+> **It supersedes the "Preserved 100%" / "preserved in substance" phrasing used
+> in §§1.2, 1.4, 1.5 and 2.** Those sentences describe the *intent* that v1
+> assets be carried forward. They do not describe the current tree, and several
+> of them read as work already banked when it is not. See §9.4.
+
+### 9.1 Roll-up by workstream
+
+| WS | v1 scope | files | v1 loc | PORTED | DIVERGED | PARTIAL | DROPPED | NOT_STARTED | clean % |
+| :-- | :-- | --: | --: | --: | --: | --: | --: | --: | --: |
+| W1 | `defs/sec_forms/{cover,forms}` | 55 | 8,916 | 0 | 0 | 1 | 0 | 54 | 0.0% |
+| W2 | `defs/sec_forms/` rest | 38 | 6,175 | 0 | 0 | 1 | 0 | 37 | 0.0% |
+| W3 | `defs/{text,regex}` | 54 | 11,262 | 0 | 0 | 0 | 0 | 54 | 0.0% |
+| W4 | `defs/{tables,taxonomy}` | 88 | 14,909 | 0 | 0 | 0 | 0 | 88 | 0.0% |
+| W5 | `defs/{storage,sql}` | 40 | 6,443 | 0 | 0 | 7 | 7 | 26 | 0.0% |
+| W6 | `defs/{sec_http,http,sec_documents}` | 16 | 2,780 | 2 | 0 | 4 | 1 | 9 | 3.2% |
+| W7 | `defs/{runtime,entities,viewer,testing}` | 39 | 6,274 | 5 | 3 | 13 | 2 | 16 | 15.3% |
+| W8 | `phases/{01_metadata_extraction,02_filing_extraction}` | 49 | 10,623 | 11 | 21 | 12 | 2 | 3 | 54.0% |
+| W9 | `phases/025_webpage_storage` | 31 | 8,138 | 0 | 0 | 4 | 0 | 27 | 0.0% |
+| W10 | v1 root, `filing_identity`, `scripts/`, `scratch/` | 26 | 4,871 | 0 | 0 | 3 | 4 | 19 | 0.0% |
+| B | `defs/tests/` + phase test dirs (test axis) | 134 | 29,831 | 14 | 2 | 23 | 1 | 94 | 6.6% |
+| **all** | | **570** | **110,222** | **32** | **26** | **68** | **17** | **427** | **7.9%** |
+
+By line count: **7.9% clean-ported** (`PORTED` + `PORTED_DIVERGED`),
+**24.4%** reached a v2 equivalent at all (adding `PARTIAL`), **73.8%
+`NOT_STARTED`**.
+
+**Read this number as a floor, not a ceiling, and with one caveat.** It is a
+*file*-disposition figure, and a document engine's value density is not linear —
+`reflow/context.py` at 649 lines encodes more contract than most of W6 at
+2,780. Conversely it is a floor because the enum requires a **named v2 test**
+for `PORTED`, and §9.3 shows large amounts of shipped-but-untested v2 code that
+no verdict can credit.
+
+Two workstream numbers deserve emphasis:
+
+- **W8 (phases 1 and 2) is 54.0%** — the phases just completed are the
+  genuinely finished work. Phase 02 = 83.6% clean; phase 01 = 23.3%.
+- **W9 (phase 2.5) is 0.0%**, and W1/W2/W3/W4 — the document, table, taxonomy
+  and form layers — are 0.0%. **The document engine has not started.**
+
+### 9.2 Phase 2.5 Scope Boundary
+
+This is the reason the inventory exists. Phase 2.5 is the only remaining phase
+whose scope was not bounded by a written plan.
+
+**Must be built from scratch (no v2 equivalent at any layer).** All figures are
+measured v1 line counts; they are the cost, not a schedule estimate.
+
+| component | v1 loc | v1 source | note |
+| :-- | --: | :-- | :-- |
+| Acquisition engine | 2,060 | `core/{fetcher,chunk_persistence,chunk_worker,exhibit_second_pass,fixture_builder}.py` | `ArchiveFetcher` SPI, SGML `<DOCUMENT>` unpacking, stub policy, full-submission fallback, broker RPC fetcher, bounded byte-budgeted pipeline |
+| Temporal snapshot engine | 1,990 | `core/{snapshot,snapshot_merge,vacuum,partition_reader,queries}.py` | largest single cluster; part-tree with inheritance + vacuum. v2 snapshots are single Parquet files — no part tree, no inheritance |
+| Storage spine | 1,067 | `core/{schemas,records,partition_handoff,processor}.py` | six-table SQLite chunk/partition DBs, zstd BLOB payloads, ATTACH-batched merge, and the `processor` SPI |
+| Document engine (§§1–4 above) | ~42,500 | `defs/{text,regex,tables,taxonomy,sec_forms,sec_documents}` | reflow cascade, geometry-first table renderer, BoW evidence packs, checkmark solver, SGML unpacker. **0.0% ported** |
+| SQL AST + compiler | 2,629 | `defs/sql/` | v2 emits SQL as f-strings; there is no typed AST |
+| `SecBroker` daemon | 749 | `defs/sec_http/{broker,broker_cli}.py` | see §9.4 — the roadmap claims this is already preserved |
+| Operator tooling | 1,569 | `scripts/{monitor_progress,diagnose_stuck_chunk,compress_partition_db,prune_chunk_blobs}.py` | §1.5 Tier 3 is **stated but unexecuted**: no `tools/` dir, no `pipelines/document_storage/` package, 0 hits for `vacuum` |
+
+**Can be reused from v2 today.** This is the short list, and it is real:
+
+- `SecHttpClient` (`infra/sec_http/client.py`, 382 loc, tested) — the only byte transport.
+- The plan-bundle producer: `filing_catalog/paths.py`, `publication.plan_bundle_complete`, `domain/filing_catalog/schemas.TARGET_COLUMNS`.
+- `derive_resources()`, `memory.reclaim()`, `atomic_write_json`, `write_parquet_table`, `file_sha256`, `canonical_json`.
+- `metadata_sync`'s checkpoint / merge / operator machinery as the pattern to copy.
+- The `catalog_snapshot` conftest fixture, so 2.5 need not hand-write Parquet.
+
+**One identity note that is easy to get wrong.** v1's `doc_id()` is
+`sha256(f"{accession}:{document_path}")`. That is **already** v2's
+`document_locator_key` (`infra/storage/duckdb_catalog.py:153-155`), pinned by
+`tests/pipelines/filing_catalog/test_phase25_contract.py:124-127`. Phase 2.5
+must reuse that key. v1 also carried a *second*, conflicting identity
+implementation in `defs/filing_identity.py` (canonical-JSON hash) which v2 did
+**not** adopt — so reusing the v2 key resolves a v1 internal inconsistency
+rather than introducing a new break. Do not mint a third digest.
+
+**The interface 2.5 must satisfy already exists and is tested:**
+`tests/pipelines/filing_catalog/test_phase25_contract.py` (236 loc) — plan-bundle
+completeness, one row per unique document, non-null HTTPS `archive_url`,
+occurrences keyed to the work order, reserve disjointness, scope-agnostic.
+
+**Two decisions 2.5 must make rather than inherit:**
+1. v2's phase 1 is single-process (`metadata_sync/cli.py:159` loops chunks
+   serially; `worker.py:130` uses threads *inside* a chunk). v1's
+   `ProcessPoolExecutor(max_tasks_per_child=8)` in `pipeline.py` is a genuine
+   divergence, not a regression.
+2. `ProjectPaths` (`foundation/runtime/paths.py`, 141 loc) has no
+   `fixture()`, `FixturePaths`, `test_run_root()`, or `fixtures_root`. v1's
+   `defs/runtime/paths.py` has all of them, and 2.5's fixture cache, review-run
+   roots and corpus fixtures need them. **This blocks 2.5's path layer from even
+   being named today.**
+
+### 9.3 Inherited Test Gaps
+
+v1's suite is 19,859 lines of behavioural specification. It is the axis a
+file-by-file code audit structurally cannot see, so it was audited separately
+(workstream B). **16 of 134 v1 test files (6.6%) have a v2 successor.**
+
+Gaps that matter, because they are v1 invariants v2 enforces *nowhere*:
+
+1. **The cgroup memory-probe fallback ladder.** No v2 test calls any probe.
+   `AGENTS.md` §2.1's central "cgroup-aware, never raw CPU count" guarantee is
+   unverified; a reordering would pass CI.
+2. **The golden-document regression gate.** `test_document_goldens.py` was the
+   only document-fidelity oracle. §1.5 Tier 2 commits `testing/goldens/` and
+   `check.py --goldens`; neither exists.
+3. **The SEC in-flight concurrency cap.** `BoundedTransport` / `ConcurrencyPolicy`
+   are 0 hits in v2 — v2 has three `Lock()`s and no semaphore. Phase 2.5's chunk
+   fan-out needs exactly this.
+4. **The read-only SQL guard**, and the `sql-boundary` / `storage-boundary`
+   scanners that policed it. Both the guard and its enforcement are gone, and
+   raw SQL now appears at `pipelines/filing_catalog/planner.py:343,353` and
+   `engine/selection/source.py:215,218,241`.
+5. **Import-cycle freedom within a layer.** `scanners/layers.py:86` flags only
+   `callee_rank > caller_rank`, so a cycle *inside* `domain/` is invisible,
+   while `AGENTS.md` §1 claims acyclicity.
+
+**Separately: 679 lines of `[DONE]`-marked shipped code that no test in
+`tests/` references** — including `runtime/progress.py` (marked `[DONE]` in
+`phase_1.md:85,333`), `runtime/interactive.py`, `metadata_sync/cli.py`,
+`domain/submissions/models.py`, and `sec_http/metrics.py`. The `resource-allocation`
+and `length` scanners are registered in `ALL_SCANNERS` but absent from
+`tests/foundation/scanners/test_scanners.py`, so `AGENTS.md` §2's claim that
+hardcoded thread/memory values "cannot silently regress" is currently unbacked.
+There is also no `tests/infra/sec_http/test_errors.py` although `cache`,
+`client`, `rate_limit` and `retry` each have a mirror.
+
+### 9.4 Doc Discrepancies
+
+Recorded, **not fixed**. "The roadmap is stale" and "the inventory is stale"
+have opposite remedies, so adjudication is a human decision. Full evidence in
+`.kilo/plans/parity-inventory/c2_d1_v2_docs.txt` (18 findings) and
+`c2_d2_v1_docs.txt` (21 findings). High severity:
+
+| # | doc claim | reality | verdict |
+| :-- | :-- | :-- | :-- |
+| 1 | `:158` — checkmark solver & normalization "remain functionally intact", coverage "preserved in substance" | 0 hits in `edgar_sec/`+`tests/` for `PenaltyScorer`, `HypothesisScore`, `CoverCheckmarkResult`, `solve_filer_constraints`, `ConstraintViolation`, `CHECKBOX_SCHEMA`, `infer_cover_checkmarks`. 99.3% of the 42,553 loc in the six named packages is `NOT_STARTED` | doc stale — reads as shipped, is deferred |
+| 2 | `:102`, `:160` — `SecBroker` "Preserved 100%. Relocated to `infra/broker/`" | `edgar_sec/infra/` holds only `__init__.py`, `sec_http`, `storage`. `grep SecBroker` = 0 hits. `:451` itself says PENDING | doc self-contradicts |
+| 3 | `:103` — Persistence & Storage "Preserved 100%" | 1 of 3 named subsystems exists; `defs/sql` is 18 `NOT_STARTED` rows and `sqlite_cas.py` is a 481-line `NOT_STARTED` file | doc stale |
+| 4 | `:96` — "All underlying algorithmic logic and data models survive" | `PORTED`+`PORTED_DIVERGED` = 58 files / 8,762 loc = **7.9%** of 110,222 | doc stale |
+| 5 | `:75,88,102,160,945,990` — "4 RPS" token bucket | v1 `defs/sec_http/rate_limit.py:8` **and** v2 `foundation/runtime/settings/sec.py:17` both default to **8.0**. A third figure, "10 RPS", appears at `:535`. The error is inherited from v1 prose, not v2 code | doc stale (3-way) |
+| 6 | §1.5 Tier 3 — `monitor_progress.py` → `tools/ops/monitor.py`, two scripts → `pipelines.document_storage.cli vacuum` | no `tools/` dir, no `pipelines/document_storage/`, 0 hits for `vacuum\|monitor\|diagnose` | stated, unexecuted — reclassify as 2.5 scope |
+| 7 | `:234` — `phases/01/.../registry.py → domain/identity.py` **Built** | `compare_sources` is `NOT_STARTED`; `domain/identity.py` holds only `Cik` / `AccessionNumber`. No `effective_cik_input.csv`, registrant registry, or `cik_diff.json` | doc stale — undocumented drop |
+| 8 | §1.5 Tier 2 + §1.5 purge rationale — goldens and viewer "supersede" the document scripts | neither `testing/goldens/review.py` nor a dataset viewer exists; `defs/viewer/` is entirely `NOT_STARTED` (1,104 loc) | doc stale |
+
+Also unresolved: v1 `defs/taxonomy/` vs v2 `domain/taxonomy/` share a name but
+are **different layers** — `phase_2.md:219-220` (M5) is the only place the
+disambiguation is written down, and `:88` reads as though the latter were the
+former's destination.
+
+### 9.5 Maintenance
+
+`parity_inventory.csv` is a tracking artifact meant to be re-run and diffed as
+phases land, not a one-off report. Schema:
+
+```csv
+v1_path,v1_loc,v1_kind,v1_tests,v2_path,v2_loc,parity,v2_test,evidence,notes,workstream
+```
+
+`parity` ∈ `PORTED` · `PORTED_DIVERGED` · `PARTIAL` · `NOT_STARTED` · `DROPPED` ·
+`UNDETERMINED`. **`NOT_STARTED` is the default; `UNDETERMINED` beats a guess.**
+
+Re-running lives under `.kilo/plans/` (gitignored, by design): `CONTEXT.md`
+(shared ground truth), `manifests/W*.txt` (the partition, `wc -l`-measured),
+`parts/*.csv` (one per workstream), and `verify_c1.py`, the mechanical gate that
+re-derives every path and line count from disk and rejects the rows that do not
+hold. The partition reconciles to exactly 570 files; changing it requires
+re-running that arithmetic, because completeness is checked against the file
+set, not against the CSVs.
+
+**A note on how this audit went, because it constrains how much the numbers can
+be trusted.** Stage C3 sampled 10% of `PORTED` rows and re-derived them from the
+v1 file alone. It failed at **40%** disagreement, then **20%** on a fresh
+sample, with a single defect class: a v2 test named by *topical adjacency*
+rather than by whether it exercises the responsibility. W5, W10 and W6 were
+re-run, and W6's re-run used **mutation probes** rather than reading — which
+found defects a reading pass had passed (it downgraded `rate_limit.py`, whose
+`acquire()` is unpinned: the existing `acquire() == 0.0` assertion is satisfied
+by both real code and a mutant that returns a constant).
+
+Two things follow. First, the residual uncertainty is **biased toward
+under-reporting** ported work, which is the safe direction: a Phase 2.5 plan
+built on this inventory will over-estimate the work remaining rather than
+under-estimate it. Second, the decisive check for any future `PORTED` verdict is
+a mutation, not a citation. The audit's own mechanical gate cannot catch this
+class of error, because a wrong-but-existing path and an existing-but-irrelevant
+test file both pass every check C1 makes.

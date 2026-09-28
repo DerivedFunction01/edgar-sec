@@ -20,4 +20,9 @@ def sha256_bytes(data: bytes) -> str:
     return hashlib.sha256(data).hexdigest()
 
 
-__all__ = ["file_sha256", "sha256_bytes"]
+def sha256_text(text: str) -> str:
+    """Compute SHA-256 hex digest of UTF-8 text."""
+    return hashlib.sha256(text.encode("utf-8")).hexdigest()
+
+
+__all__ = ["file_sha256", "sha256_bytes", "sha256_text"]

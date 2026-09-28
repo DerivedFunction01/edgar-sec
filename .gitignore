@@ -387,3 +387,7 @@ vite.config.ts.timestamp-*
 # manifests, which are local run inputs rather than repository content.
 !tests/fixtures/
 !tests/fixtures/**
+# roadmap/refactor_v2/parity_inventory.csv is the committed v1 -> v2 tracking
+# artifact. It must stay tracked: Phase 2.5 scope is measured against it, and
+# it is meant to diff cleanly as phases land.
+!roadmap/refactor_v2/parity_inventory.csv
