@@ -5,12 +5,18 @@ from __future__ import annotations
 from pathlib import Path
 
 import pyarrow.parquet as pq
+import pytest
 
 from edgar_sec.domain.sec_urls import submissions_url
 from edgar_sec.pipelines.metadata_sync.manifest import read_cik_manifest
 from edgar_sec.pipelines.metadata_sync.paths import resolve_run_paths
 from edgar_sec.pipelines.metadata_sync.planner import build_plan
-from edgar_sec.pipelines.metadata_sync.worker import normalize_one_cik, run_chunk
+from edgar_sec.pipelines.metadata_sync.roster import RosterError, roster_from_manifest
+from edgar_sec.pipelines.metadata_sync.worker import (
+    normalize_one_cik,
+    run_chunk,
+    run_chunk_ids,
+)
 from tests.support import FakeSession, fixture_path, load_fixture
 
 FORD = "0000037996"
@@ -26,8 +32,13 @@ def _ford_pair(session: FakeSession) -> None:
 
 def _plan(tmp_path: Path, chunk_size: int = 2):
     manifest = read_cik_manifest(fixture_path("cik_sec_mini.csv"))
-    plan = build_plan(manifest, chunk_size=chunk_size, partition_count=1)
-    return plan, resolve_run_paths(plan["plan_id"], tmp_path)
+    plan = build_plan(
+        roster_from_manifest(manifest),
+        chunk_size=chunk_size,
+        input_name=manifest.input_name,
+        input_fingerprint=manifest.input_fingerprint,
+    )
+    return plan, resolve_run_paths(plan.plan_id, tmp_path)
 
 
 # ----------------------------------------------------------------- sec_client
@@ -157,12 +168,8 @@ def test_run_chunk_emits_one_row_per_requested_cik_even_on_failure(
 
 def test_run_chunk_rejects_unknown_chunk_id(client, tmp_path: Path) -> None:
     plan, run_paths = _plan(tmp_path)
-    try:
+    with pytest.raises(RosterError, match="not present in plan"):
         run_chunk(client, plan, run_paths, 99, snapshot_id="snap1")
-    except ValueError as exc:
-        assert "not present in plan" in str(exc)
-    else:  # pragma: no cover
-        raise AssertionError("expected ValueError")
 
 
 def test_run_chunk_records_progress_events(
@@ -186,3 +193,52 @@ def test_run_chunk_records_progress_events(
     )
     assert [e["cik"] for e in events] == ["0000000020", FORD]
     assert all(e["type"] == "cik_normalized" for e in events)
+
+
+def test_run_chunk_ids_runs_only_the_chunks_it_is_given(
+    client, session: FakeSession, tmp_path: Path
+) -> None:
+    """A worker's scope comes from its assignment, not from the whole plan."""
+    plan, run_paths = _plan(tmp_path, chunk_size=2)
+    _ford_pair(session)
+    session.register(
+        submissions_url("0000001985"),
+        {"name": "A", "filings": {"recent": {}, "files": []}},
+    )
+    session.register(
+        submissions_url("0000001761"),
+        {"name": "B", "filings": {"recent": {}, "files": []}},
+    )
+
+    results = run_chunk_ids(
+        client, plan, run_paths, [1], snapshot_id="snap1", workers=2
+    )
+    assert [result.chunk_id for result in results] == [1]
+    assert run_paths.chunk_file(0).exists() is False
+
+
+def test_run_chunk_ids_skips_chunks_already_marked_complete(
+    client, session: FakeSession, tmp_path: Path
+) -> None:
+    plan, run_paths = _plan(tmp_path, chunk_size=2)
+    _ford_pair(session)
+    first = run_chunk_ids(client, plan, run_paths, [1], snapshot_id="snap1", workers=2)
+    assert first[0].skipped_existing is False
+    calls = len(session.calls)
+
+    second = run_chunk_ids(client, plan, run_paths, [1], snapshot_id="snap1", workers=2)
+    assert second[0].skipped_existing is True
+    assert len(session.calls) == calls
+
+
+def test_run_chunk_ids_never_refetches_a_valid_checkpoint(
+    client, session: FakeSession, tmp_path: Path
+) -> None:
+    """The never-refetch guarantee survives the move to an explicit chunk list."""
+    plan, run_paths = _plan(tmp_path, chunk_size=2)
+    _ford_pair(session)
+    run_chunk_ids(client, plan, run_paths, [1], snapshot_id="snap1", workers=2)
+    calls = len(session.calls)
+
+    run_chunk_ids(client, plan, run_paths, [1], snapshot_id="snap1", workers=2)
+    assert len(session.calls) == calls

@@ -21,6 +21,10 @@ from edgar_sec.pipelines.metadata_sync.merger import (
 )
 from edgar_sec.pipelines.metadata_sync.paths import resolve_run_paths
 from edgar_sec.pipelines.metadata_sync.planner import build_plan
+from edgar_sec.pipelines.metadata_sync.roster import (
+    read_cik_index,
+    roster_from_manifest,
+)
 from tests.support import fixture_path
 
 ACCESSION = "0000037996-26-000039"
@@ -74,17 +78,27 @@ def _row(
 
 def _plan(tmp_path: Path, chunk_size: int = 2):
     manifest = read_cik_manifest(fixture_path("cik_sec_mini.csv"))
-    plan = build_plan(manifest, chunk_size=chunk_size, partition_count=1)
-    return plan, resolve_run_paths(plan["plan_id"], tmp_path)
+    plan = build_plan(
+        roster_from_manifest(manifest),
+        chunk_size=chunk_size,
+        input_name=manifest.input_name,
+        input_fingerprint=manifest.input_fingerprint,
+    )
+    return plan, resolve_run_paths(plan.plan_id, tmp_path)
+
+
+def _write_chunk(run_paths, chunk_id: int, rows: list[dict]) -> None:
+    path = run_paths.chunk_file(chunk_id)
+    path.parent.mkdir(parents=True, exist_ok=True)
+    pq.write_table(build_submission_table(rows), path)
 
 
 def _complete(plan, run_paths, *, fingerprint: str | None = None) -> None:
-    fp = fingerprint if fingerprint is not None else plan["input_fingerprint"]
-    for chunk in plan["chunks"]:
-        rows = [_row(cik, fp) for cik in chunk["cik_padded"]]
-        path = run_paths.chunk_file(int(chunk["chunk_id"]))
-        path.parent.mkdir(parents=True, exist_ok=True)
-        pq.write_table(build_submission_table(rows), path)
+    fp = fingerprint if fingerprint is not None else plan.input_fingerprint
+    for chunk_id in plan.chunk_ids():
+        _write_chunk(
+            run_paths, chunk_id, [_row(cik, fp) for cik in plan.chunk_ciks(chunk_id)]
+        )
 
 
 # ------------------------------------------------------------------ happy path
@@ -104,7 +118,7 @@ def test_merge_publishes_sorted_snapshot(tmp_path: Path) -> None:
     table = pq.read_table(output)
     assert table.schema.equals(SUBMISSION_METADATA_SCHEMA, check_metadata=False)
     assert table.column("cik").to_pylist() == sorted(table.column("cik").to_pylist())
-    assert set(table.column("cik").to_pylist()) == set(plan["cik_padded"])
+    assert set(table.column("cik").to_pylist()) == set(plan.roster.ciks)
 
 
 def test_publish_snapshot_writes_manifest_and_pointer(tmp_path: Path) -> None:
@@ -136,11 +150,57 @@ def test_merge_emits_progress_events(tmp_path: Path) -> None:
         "merge_start",
         "chunks_validated",
         "merge_stage",
+        "cik_index",
         "readback_done",
     ]
-    assert events[0]["plan_id"] == plan["plan_id"]
+    assert events[0]["plan_id"] == plan.plan_id
     assert events[1]["chunks"] == 2
     assert events[-1]["rows"] == 4
+
+
+def test_published_cik_index_matches_the_payload(tmp_path: Path) -> None:
+    """The index is a statement about the artifact on disk.
+
+    It is derived from the published rows rather than from the request, so a
+    plan that asked for something the merge did not deliver shows up here rather
+    than in a later consumer's row count.
+    """
+    plan, run_paths = _plan(tmp_path)
+    _complete(plan, run_paths)
+    report = merge_chunks(plan, run_paths, "snap1")
+
+    index = read_cik_index(run_paths.metadata.snapshot_cik_index("snap1"))
+    payload = pq.read_table(run_paths.metadata.snapshot_file("snap1"))
+    assert list(index) == sorted(set(payload.column("cik").to_pylist()))
+    assert report.cik_count == len(index)
+    assert report.cik_index_sha256
+    assert report.cik_index_path.endswith("ciks.parquet")
+
+
+def test_snapshot_manifest_records_the_index_beside_the_payload(
+    tmp_path: Path,
+) -> None:
+    """The Phase 2 handoff is unchanged; the index is recorded alongside it."""
+    plan, run_paths = _plan(tmp_path)
+    _complete(plan, run_paths)
+    manifest = publish_snapshot(
+        merge_chunks(plan, run_paths, "snap1"), run_paths.metadata
+    )
+
+    assert manifest["output_path"].endswith("metadata.parquet")
+    assert manifest["artifact_sha256"]
+    assert manifest["cik_index_sha256"]
+    assert manifest["cik_count"] == 4
+    assert manifest["roster_id"] == plan.roster.roster_id
+    assert manifest["kind"] == "full"
+    assert manifest["parent_snapshot_id"] == ""
+
+    on_disk = json.loads(
+        run_paths.metadata.snapshot_manifest("snap1").read_text(encoding="utf-8")
+    )
+    assert on_disk["artifact_sha256"] == manifest["artifact_sha256"]
+    pointer = json.loads(run_paths.metadata.current_pointer.read_text(encoding="utf-8"))
+    assert pointer["artifact_sha256"] == manifest["artifact_sha256"]
 
 
 def test_a_failing_progress_callback_does_not_fail_the_merge(tmp_path: Path) -> None:
@@ -159,19 +219,17 @@ def test_a_failing_progress_callback_does_not_fail_the_merge(tmp_path: Path) -> 
 def test_merge_records_the_plan_id_as_snapshot_identity(tmp_path: Path) -> None:
     """Snapshot identity is plan-derived, so rows and artifact cannot disagree."""
     plan, run_paths = _plan(tmp_path)
-    for chunk in plan["chunks"]:
-        rows = [_row(cik, plan["input_fingerprint"]) for cik in chunk["cik_padded"]]
+    for chunk_id in plan.chunk_ids():
+        rows = [_row(cik, plan.input_fingerprint) for cik in plan.chunk_ciks(chunk_id)]
         for row in rows:
-            row["snapshot_id"] = plan["plan_id"]
-        path = run_paths.chunk_file(int(chunk["chunk_id"]))
-        path.parent.mkdir(parents=True, exist_ok=True)
-        pq.write_table(build_submission_table(rows), path)
+            row["snapshot_id"] = plan.plan_id
+        _write_chunk(run_paths, chunk_id, rows)
 
-    report = merge_chunks(plan, run_paths, plan["plan_id"])
+    report = merge_chunks(plan, run_paths, plan.plan_id)
 
-    assert report.snapshot_id == report.plan_id == plan["plan_id"]
-    table = pq.read_table(run_paths.metadata.snapshot_file(plan["plan_id"]))
-    assert set(table.column("snapshot_id").to_pylist()) == {plan["plan_id"]}
+    assert report.snapshot_id == report.plan_id == plan.plan_id
+    table = pq.read_table(run_paths.metadata.snapshot_file(plan.plan_id))
+    assert set(table.column("snapshot_id").to_pylist()) == {plan.plan_id}
     assert report.to_dict()["schema_version"] == SCHEMA_VERSION
 
 
@@ -202,7 +260,7 @@ def test_foreign_chunk_file_rejected(tmp_path: Path) -> None:
     path = run_paths.chunk_file(7)
     path.parent.mkdir(parents=True, exist_ok=True)
     pq.write_table(
-        build_submission_table([_row("0000000007", plan["input_fingerprint"])]), path
+        build_submission_table([_row("0000000007", plan.input_fingerprint)]), path
     )
     try:
         merge_chunks(plan, run_paths, "snap1")
@@ -221,12 +279,13 @@ def test_wrong_cik_is_rejected_by_coverage_guard(tmp_path: Path) -> None:
     the cross-chunk case, exercised directly below.
     """
     plan, run_paths = _plan(tmp_path)
-    fp = plan["input_fingerprint"]
-    for chunk in plan["chunks"]:
-        rows = [_row("0000000001", fp) for _ in chunk["cik_padded"]]
-        path = run_paths.chunk_file(int(chunk["chunk_id"]))
-        path.parent.mkdir(parents=True, exist_ok=True)
-        pq.write_table(build_submission_table(rows), path)
+    fp = plan.input_fingerprint
+    for chunk_id in plan.chunk_ids():
+        _write_chunk(
+            run_paths,
+            chunk_id,
+            [_row("0000000001", fp) for _ in plan.chunk_ciks(chunk_id)],
+        )
     try:
         merge_chunks(plan, run_paths, "snap1")
     except MergeError as exc:
@@ -255,9 +314,9 @@ def test_null_cik_rejected_by_coverage_guard(tmp_path: Path) -> None:
     plan, run_paths = _plan(tmp_path)
     _complete(plan, run_paths)
     path = run_paths.chunk_file(0)
-    ciks = [None, *plan["chunks"][0]["cik_padded"][1:]]
+    ciks = [None, *plan.chunk_ciks(0)[1:]]
     pq.write_table(
-        build_submission_table([_row(cik, plan["input_fingerprint"]) for cik in ciks]),
+        build_submission_table([_row(cik, plan.input_fingerprint) for cik in ciks]),
         path,
     )
     try:
@@ -300,9 +359,9 @@ def test_row_count_mismatch_rejected(tmp_path: Path) -> None:
     plan, run_paths = _plan(tmp_path)
     _complete(plan, run_paths)
     path = run_paths.chunk_file(0)
-    ciks = plan["chunks"][0]["cik_padded"]
+    ciks = plan.chunk_ciks(0)
     pq.write_table(
-        build_submission_table([_row(ciks[0], plan["input_fingerprint"])]), path
+        build_submission_table([_row(ciks[0], plan.input_fingerprint)]), path
     )
     try:
         merge_chunks(plan, run_paths, "snap1")
@@ -319,7 +378,7 @@ def test_schema_drift_rejected(tmp_path: Path) -> None:
     reduced = pa.schema([("cik", pa.string()), ("status", pa.string())])
     pq.write_table(
         pa.table(
-            {"cik": plan["chunks"][0]["cik_padded"], "status": ["ok", "ok"]},
+            {"cik": list(plan.chunk_ciks(0)), "status": ["ok", "ok"]},
             schema=reduced,
         ),
         path,
@@ -335,13 +394,13 @@ def test_schema_drift_rejected(tmp_path: Path) -> None:
 def test_non_terminal_status_rejected(tmp_path: Path) -> None:
     plan, run_paths = _plan(tmp_path)
     _complete(plan, run_paths)
-    path = run_paths.chunk_file(0)
-    ciks = plan["chunks"][0]["cik_padded"]
-    pq.write_table(
-        build_submission_table(
-            [_row(cik, plan["input_fingerprint"], status="pending") for cik in ciks]
-        ),
-        path,
+    _write_chunk(
+        run_paths,
+        0,
+        [
+            _row(cik, plan.input_fingerprint, status="pending")
+            for cik in plan.chunk_ciks(0)
+        ],
     )
     try:
         merge_chunks(plan, run_paths, "snap1")
@@ -356,12 +415,13 @@ def test_non_terminal_status_rejected(tmp_path: Path) -> None:
 
 def test_duplicate_accessions_warn_but_do_not_fail(tmp_path: Path) -> None:
     plan, run_paths = _plan(tmp_path)
-    fp = plan["input_fingerprint"]
-    for chunk in plan["chunks"]:
-        rows = [_row(cik, fp, accession=ACCESSION) for cik in chunk["cik_padded"]]
-        path = run_paths.chunk_file(int(chunk["chunk_id"]))
-        path.parent.mkdir(parents=True, exist_ok=True)
-        pq.write_table(build_submission_table(rows), path)
+    fp = plan.input_fingerprint
+    for chunk_id in plan.chunk_ids():
+        _write_chunk(
+            run_paths,
+            chunk_id,
+            [_row(cik, fp, accession=ACCESSION) for cik in plan.chunk_ciks(chunk_id)],
+        )
 
     report = merge_chunks(plan, run_paths, "snap1")
     assert report.row_count == 4

@@ -1,9 +1,13 @@
 """Chunk checkpoint discovery and validation.
 
 A chunk checkpoint is considered complete only when it exists, matches the
-canonical schema, holds exactly the planned CIKs, and carries the expected
-input fingerprint. Anything else is treated as absent so the chunk is refetched
-rather than merged into a snapshot.
+canonical schema, holds exactly the CIKs its plan range covers, and carries the
+plan's input fingerprint. Anything else is treated as absent so the chunk is
+refetched rather than merged into a snapshot.
+
+Expected CIKs are derived from the plan's roster range rather than read out of a
+plan document, so the same check applies to a chunk that arrived from another
+machine under a copied bundle.
 """
 
 from __future__ import annotations
@@ -18,6 +22,7 @@ from edgar_sec.foundation.hashing import file_sha256
 from edgar_sec.infra.storage.parquet import count_parquet_rows, read_parquet_schema
 
 from .paths import RunPaths
+from .planner import Plan
 
 __all__ = [
     "ChunkInfo",
@@ -110,23 +115,16 @@ def _read_columns(path: Path, columns: tuple[str, ...]) -> pa.Table | None:
         return None
 
 
-def discover_completed_chunks(
-    plan: dict,
-    run_paths: RunPaths,
-) -> dict[int, ChunkInfo]:
+def discover_completed_chunks(plan: Plan, run_paths: RunPaths) -> dict[int, ChunkInfo]:
     """Return every valid chunk checkpoint for a plan, keyed by chunk id."""
-    expected_by_id = {
-        int(chunk["chunk_id"]): tuple(chunk["cik_padded"])
-        for chunk in plan.get("chunks", [])
-    }
-    fingerprint = plan.get("input_fingerprint")
     completed: dict[int, ChunkInfo] = {}
-    for chunk_id, expected_ciks in expected_by_id.items():
+    fingerprint = plan.input_fingerprint or None
+    for chunk_id in plan.chunk_ids():
         info = inspect_chunk(
             chunk_id,
             run_paths.chunk_file(chunk_id),
-            expected_ciks=expected_ciks,
-            expected_fingerprint=fingerprint if isinstance(fingerprint, str) else None,
+            expected_ciks=plan.chunk_ciks(chunk_id),
+            expected_fingerprint=fingerprint,
         )
         if info is not None:
             completed[chunk_id] = info

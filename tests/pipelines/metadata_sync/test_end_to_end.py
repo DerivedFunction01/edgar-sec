@@ -19,8 +19,22 @@ from edgar_sec.pipelines.metadata_sync.manifest import read_cik_manifest
 from edgar_sec.pipelines.metadata_sync.merger import merge_chunks, publish_snapshot
 from edgar_sec.pipelines.metadata_sync.paths import resolve_run_paths
 from edgar_sec.pipelines.metadata_sync.planner import build_plan, write_plan
-from edgar_sec.pipelines.metadata_sync.worker import run_chunk
+from edgar_sec.pipelines.metadata_sync.roster import (
+    roster_from_manifest,
+)
+from edgar_sec.pipelines.metadata_sync.worker import run_chunk, run_chunk_ids
 from tests.support import FakeSession, fixture_path, load_fixture
+
+
+def _plan_for(tmp_path: Path, manifest, chunk_size: int):
+    plan = build_plan(
+        roster_from_manifest(manifest),
+        chunk_size=chunk_size,
+        input_name=manifest.input_name,
+        input_fingerprint=manifest.input_fingerprint,
+    )
+    return plan, resolve_run_paths(plan.plan_id, tmp_path)
+
 
 FORD = "0000037996"
 FORD_HIST = "CIK0000037996-submissions-001.json"
@@ -53,26 +67,24 @@ def test_full_replay_produces_publishable_snapshot(
 ) -> None:
     _seed_session(session)
     manifest = read_cik_manifest(fixture_path("cik_sec_mini.csv"))
-    plan = build_plan(manifest, chunk_size=2, partition_count=1)
-    run_paths = resolve_run_paths(plan["plan_id"], tmp_path)
+    plan, run_paths = _plan_for(tmp_path, manifest, 2)
     write_plan(plan, run_paths)
 
     assert discover_completed_chunks(plan, run_paths) == {}
 
-    for chunk in plan["chunks"]:
-        run_chunk(
-            client,
-            plan,
-            run_paths,
-            int(chunk["chunk_id"]),
-            snapshot_id=plan["plan_id"],
-            workers=2,
-        )
+    run_chunk_ids(
+        client,
+        plan,
+        run_paths,
+        plan.chunk_ids(),
+        snapshot_id=plan.plan_id,
+        workers=2,
+    )
 
     completed = discover_completed_chunks(plan, run_paths)
     assert set(completed) == {0, 1}
 
-    report = merge_chunks(plan, run_paths, plan["plan_id"])
+    report = merge_chunks(plan, run_paths, plan.plan_id)
     assert report.row_count == manifest.row_count == 4
     assert report.chunk_count == 2
     assert report.duplicate_accessions == []
@@ -80,14 +92,14 @@ def test_full_replay_produces_publishable_snapshot(
     manifest_payload = publish_snapshot(report, run_paths.metadata)
     assert manifest_payload["row_count"] == 4
 
-    table = pq.read_table(run_paths.metadata.snapshot_file(plan["plan_id"]))
+    table = pq.read_table(run_paths.metadata.snapshot_file(plan.plan_id))
     assert table.schema.equals(SUBMISSION_METADATA_SCHEMA, check_metadata=False)
     ciks = table.column("cik").to_pylist()
     assert ciks == sorted(ciks)
     assert ciks == sorted(manifest.ciks)
 
     pointer = json.loads(run_paths.metadata.current_pointer.read_text())
-    assert pointer["snapshot_id"] == plan["plan_id"]
+    assert pointer["snapshot_id"] == plan.plan_id
     assert pointer["row_count"] == 4
 
 
@@ -96,29 +108,26 @@ def test_replay_is_resumable_and_does_not_refetch(
 ) -> None:
     _seed_session(session)
     manifest = read_cik_manifest(fixture_path("cik_sec_mini.csv"))
-    plan = build_plan(manifest, chunk_size=2, partition_count=1)
-    run_paths = resolve_run_paths(plan["plan_id"], tmp_path)
+    plan, run_paths = _plan_for(tmp_path, manifest, 2)
     write_plan(plan, run_paths)
 
-    run_chunk(client, plan, run_paths, 0, snapshot_id=plan["plan_id"], workers=2)
+    run_chunk(client, plan, run_paths, 0, snapshot_id=plan.plan_id, workers=2)
     calls_after_first_chunk = len(session.calls)
     assert calls_after_first_chunk > 0
 
     completed = discover_completed_chunks(plan, run_paths)
     assert set(completed) == {0}
 
-    run_chunk(client, plan, run_paths, 0, snapshot_id=plan["plan_id"], workers=2)
+    run_chunk(client, plan, run_paths, 0, snapshot_id=plan.plan_id, workers=2)
     assert len(session.calls) == calls_after_first_chunk
 
-    skipped = run_chunk(
-        client, plan, run_paths, 0, snapshot_id=plan["plan_id"], workers=2
-    )
+    skipped = run_chunk(client, plan, run_paths, 0, snapshot_id=plan.plan_id, workers=2)
     assert skipped.skipped_existing is True
     assert skipped.row_count == 2
     assert len(session.calls) == calls_after_first_chunk
 
-    run_chunk(client, plan, run_paths, 1, snapshot_id=plan["plan_id"], workers=2)
-    report = merge_chunks(plan, run_paths, plan["plan_id"])
+    run_chunk(client, plan, run_paths, 1, snapshot_id=plan.plan_id, workers=2)
+    report = merge_chunks(plan, run_paths, plan.plan_id)
     assert report.row_count == 4
 
 
@@ -127,10 +136,9 @@ def test_ford_row_preserves_oracle_shape(
 ) -> None:
     _seed_session(session)
     manifest = read_cik_manifest(fixture_path("cik_sec_mini.csv"))
-    plan = build_plan(manifest, chunk_size=4, partition_count=1)
-    run_paths = resolve_run_paths(plan["plan_id"], tmp_path)
+    plan, run_paths = _plan_for(tmp_path, manifest, 4)
     write_plan(plan, run_paths)
-    run_chunk(client, plan, run_paths, 0, snapshot_id=plan["plan_id"], workers=2)
+    run_chunk(client, plan, run_paths, 0, snapshot_id=plan.plan_id, workers=2)
 
     table = pq.read_table(run_paths.chunk_file(0))
     row = next(record for record in table.to_pylist() if record["cik"] == FORD)

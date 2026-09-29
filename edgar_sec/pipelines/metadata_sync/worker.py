@@ -6,7 +6,9 @@ are both thread-safe, the work is network-bound rather than CPU-bound, and
 DuckDB is confined to the coordinator, so nothing here needs process isolation.
 
 Every requested CIK produces exactly one row, including failures, so completion
-is determinable from the data rather than from queue state.
+is determinable from the data rather than from queue state. A chunk's CIKs come
+from the plan's roster range, so the same call works against a plan this process
+planned and a plan it was handed as a copied bundle.
 """
 
 from __future__ import annotations
@@ -26,7 +28,7 @@ from edgar_sec.infra.storage.parquet import write_parquet_table
 
 from .checkpoints import inspect_chunk
 from .paths import RunPaths
-from .planner import utc_now_iso
+from .planner import Plan, utc_now_iso
 from .sec_client import CikFetchResult, SubmissionsClient
 
 RECLAIM_INTERVAL = 64
@@ -36,7 +38,7 @@ __all__ = [
     "normalize_one_cik",
     "resolve_workers",
     "run_chunk",
-    "run_partition",
+    "run_chunk_ids",
 ]
 
 
@@ -152,7 +154,7 @@ def _run_chunk_rows(
 
 def run_chunk(
     client: SubmissionsClient,
-    plan: dict,
+    plan: Plan,
     run_paths: RunPaths,
     chunk_id: int,
     *,
@@ -168,19 +170,14 @@ def run_chunk(
     because a refetch is exactly what makes a resume slow and a rerun
     non-idempotent.
     """
-    chunk = next(
-        (item for item in plan["chunks"] if int(item["chunk_id"]) == chunk_id), None
-    )
-    if chunk is None:
-        raise ValueError(f"chunk {chunk_id} is not present in plan {plan['plan_id']}")
-
+    ciks = plan.chunk_ciks(chunk_id)
     path = run_paths.chunk_file(chunk_id)
     if not force:
         existing = inspect_chunk(
             chunk_id,
             path,
-            expected_ciks=tuple(chunk["cik_padded"]),
-            expected_fingerprint=str(plan.get("input_fingerprint", "")) or None,
+            expected_ciks=ciks,
+            expected_fingerprint=plan.input_fingerprint or None,
         )
         if existing is not None:
             return ChunkResult(
@@ -190,14 +187,13 @@ def run_chunk(
                 skipped_existing=True,
             )
 
-    ciks = tuple(chunk["cik_padded"])
     rows, historical_files = _run_chunk_rows(
         client,
         ciks,
         chunk_id=chunk_id,
-        input_name=str(plan.get("input_name", "")),
+        input_name=plan.input_name,
         snapshot_id=snapshot_id,
-        input_fingerprint=str(plan.get("input_fingerprint", "")),
+        input_fingerprint=plan.input_fingerprint,
         workers=workers,
         progress=progress,
     )
@@ -217,33 +213,27 @@ def run_chunk(
     )
 
 
-def run_partition(
+def run_chunk_ids(
     client: SubmissionsClient,
-    plan: dict,
+    plan: Plan,
     run_paths: RunPaths,
-    partition_id: int,
+    chunk_ids: list[int],
     *,
     snapshot_id: str,
     workers: int | None = None,
     completed: dict[int, Any] | None = None,
     progress: Callable[[dict[str, Any]], None] | None = None,
 ) -> list[ChunkResult]:
-    """Run every outstanding chunk in one partition, skipping completed ones."""
-    done = completed or {}
-    partition = next(
-        (
-            item
-            for item in plan.get("partitions", [])
-            if int(item["partition_id"]) == partition_id
-        ),
-        None,
-    )
-    if partition is None:
-        raise ValueError(f"partition {partition_id} is not present in plan")
+    """Run an explicit chunk list, skipping chunks already complete on disk.
 
+    This is the single execution path for one host and for many. A local run
+    passes every planned chunk; a worker running a copied bundle passes the
+    chunk ids its assignment names, which is why assignment carries no
+    scheduling logic of its own.
+    """
+    done = completed or {}
     results: list[ChunkResult] = []
-    for chunk_id in partition["chunk_ids"]:
-        chunk_id = int(chunk_id)
+    for chunk_id in chunk_ids:
         if chunk_id in done:
             results.append(
                 ChunkResult(

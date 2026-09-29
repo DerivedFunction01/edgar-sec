@@ -94,10 +94,10 @@ def _fake_run_chunk(statuses: list[str], captured: dict[str, object]):
         from edgar_sec.infra.storage.parquet import write_parquet_table
 
         captured["snapshot_id"] = kwargs["snapshot_id"]
-        captured["plan_id"] = plan["plan_id"]
+        captured["plan_id"] = plan.plan_id
         rows = [
-            _row(cik, plan["input_fingerprint"], kwargs["snapshot_id"])
-            for cik in plan["cik_padded"]
+            _row(cik, plan.input_fingerprint, kwargs["snapshot_id"])
+            for cik in plan.chunk_ciks(chunk_id)
         ]
         for index, status in enumerate(statuses):
             rows[index]["status"] = status

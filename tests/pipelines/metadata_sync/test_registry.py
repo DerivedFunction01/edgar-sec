@@ -25,8 +25,10 @@ from edgar_sec.pipelines.metadata_sync.registry import (
     RegistryError,
     compare_sources,
     load_registry_manifest,
+    load_registry_roster,
     registry_id_for,
 )
+from edgar_sec.pipelines.metadata_sync.roster import build_roster, write_roster
 from edgar_sec.pipelines.metadata_sync.source_registry import (
     SOURCE_NAME,
     SOURCE_URL,
@@ -156,6 +158,70 @@ def test_compare_preserves_curated_only_ciks(published_source) -> None:
     assert curated_only["activity_class"] == "curated_only"
     assert curated_only["source_snapshot_ids"] == []
     assert curated_only["refresh_cadence"] == "unknown"
+
+
+def test_the_effective_roster_is_published_as_a_loadable_dataset(
+    published_source,
+) -> None:
+    """The roster dataset is the carrier a plan consumes.
+
+    Without it the CSV stays the only real input format and the datasets a
+    comparison publishes are read by nothing.
+    """
+    manifest_path, metadata = published_source
+    result = compare_sources(
+        curated_input_path=fixture_path("cik_sec_mini.csv"),
+        source_manifest_path=manifest_path,
+        metadata_paths=metadata,
+    )
+    registry_id = result["registry_id"]
+    roster = load_registry_roster(registry_id, metadata)
+    assert roster.row_count == result["registry_row_count"]
+    assert result["roster_id"] == roster.roster_id
+    assert roster.name_map()["0000005555"] == "NEWCO INC"
+
+    sidecar = metadata.effective_cik_roster(registry_id).with_name(
+        "effective_ciks.parquet.manifest.json"
+    )
+    published = json.loads(sidecar.read_text(encoding="utf-8"))
+    assert published["roster_id"] == roster.roster_id
+    assert published["registry_id"] == registry_id
+    assert published["row_count"] == roster.row_count
+
+
+def test_the_roster_and_the_csv_describe_the_same_union(
+    published_source,
+) -> None:
+    manifest_path, metadata = published_source
+    result = compare_sources(
+        curated_input_path=fixture_path("cik_sec_mini.csv"),
+        source_manifest_path=manifest_path,
+        metadata_paths=metadata,
+    )
+    roster = load_registry_roster(result["registry_id"], metadata)
+    parsed = read_cik_manifest(metadata.effective_input_file(result["registry_id"]))
+    assert sorted(parsed.ciks) == sorted(roster.ciks)
+
+
+def test_load_registry_roster_refuses_a_swapped_dataset(published_source) -> None:
+    """A cohort replaced after publication must not drive a fetch."""
+    manifest_path, metadata = published_source
+    result = compare_sources(
+        curated_input_path=fixture_path("cik_sec_mini.csv"),
+        source_manifest_path=manifest_path,
+        metadata_paths=metadata,
+    )
+    registry_id = result["registry_id"]
+    write_roster(
+        build_roster(("0000099999",)), metadata.effective_cik_roster(registry_id)
+    )
+    with pytest.raises(RegistryError, match="digest does not match"):
+        load_registry_roster(registry_id, metadata)
+
+
+def test_load_registry_roster_reports_a_missing_manifest(tmp_path) -> None:
+    with pytest.raises(FileNotFoundError):
+        load_registry_roster("deadbeef", resolve_metadata_paths(tmp_path))
 
 
 def test_effective_csv_covers_the_union_and_is_usable_as_input(

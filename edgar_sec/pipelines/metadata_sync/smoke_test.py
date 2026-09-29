@@ -28,6 +28,7 @@ from edgar_sec.foundation.runtime.settings.runtime import DEFAULT_CHUNK_SIZE
 from .manifest import read_cik_manifest
 from .paths import resolve_run_paths
 from .planner import build_plan, write_plan
+from .roster import roster_from_manifest
 from .sec_client import SubmissionsClient
 from .worker import resolve_workers, run_chunk
 
@@ -79,15 +80,19 @@ def main(argv: list[str] | None = None) -> int:
 
     sample = manifest.ciks[: max(1, args.sample_size)]
     plan = build_plan(
-        replace(
-            manifest,
-            ciks=sample,
-            names=manifest.names[: len(sample)],
+        roster_from_manifest(
+            replace(
+                manifest,
+                ciks=sample,
+                names=manifest.names[: len(sample)],
+            )
         ),
         chunk_size=(
             settings.default_chunk_size if args.chunk_size is None else args.chunk_size
         ),
-        partition_count=1,
+        input_name=manifest.input_name,
+        input_fingerprint=manifest.input_fingerprint,
+        selected_limit=max(1, args.sample_size),
     )
 
     artifacts = Path(args.artifacts).resolve()
@@ -101,7 +106,7 @@ def main(argv: list[str] | None = None) -> int:
         )
         return 2
 
-    run_paths = resolve_run_paths(plan["plan_id"], artifacts)
+    run_paths = resolve_run_paths(plan.plan_id, artifacts)
     write_plan(plan, run_paths)
 
     client = _build_client(run_paths.metadata.artifacts_root)
@@ -112,7 +117,7 @@ def main(argv: list[str] | None = None) -> int:
         plan,
         run_paths,
         0,
-        snapshot_id=plan["plan_id"],
+        snapshot_id=plan.plan_id,
         workers=workers,
     )
     reclaim()

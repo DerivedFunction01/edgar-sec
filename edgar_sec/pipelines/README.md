@@ -12,13 +12,16 @@ Three pipelines, each a complete vertical from a published input to a published
 output:
 
 - `metadata_sync/` — Phase 1, feature-complete with documented scope reductions.
-  Ingests EDGAR submissions metadata for a fingerprinted CIK manifest, chunks it,
-  writes resumable Parquet checkpoints, and publishes a sorted
-  `metadata.parquet` snapshot. It also captures immutable external source
-  snapshots and projects the curated input against them (`sources refresh`,
-  `sources compare`). Retired relative to v1: persisted project configuration,
-  a merge-only snapshot rename, the two-stage partition merge, and a `preview`
-  subcommand — see that package's README for each decision and its reason.
+  Turns a content-addressed CIK roster into a sorted `metadata.parquet`
+  snapshot. The cohort lives once, in an immutable roster dataset; the plan
+  references it by identity and records only the chunk layout, so a plan is
+  constant in size and moving a cohort to another machine keeps its plan and its
+  completed chunks. It also captures immutable external source snapshots and
+  projects the curated input against them (`sources refresh`, `sources compare`),
+  and supports copy-based multi-machine distribution (`export`, `worker`,
+  `import`). Retired relative to v1: persisted project configuration, a merge-only
+  snapshot rename, the two-stage partition merge, and a `preview` subcommand —
+  see that package's README for each decision and its reason.
 - `filing_catalog/` — Phase 2, complete. Zero network. Materializes a catalog
   snapshot from a Phase 1 snapshot and publishes immutable, content-addressed
   target plans for the next phase to consume.
@@ -98,19 +101,23 @@ sits at Layer 4.
 | :--- | :--- |
 | `__init__.py` | Docstring only (1 loc). No re-exports, per AGENTS.md §1.2. |
 | `metadata_sync/__init__.py` | Docstring only (1 loc). |
-| `metadata_sync/cli.py` | The five pipeline commands, the nested `sources` group, and the argparse surface; each `cmd_*` is a plain callable the operator also calls (372 loc). |
-| `metadata_sync/operator.py` | Interactive wizard; a presentation shim over the same `cmd_*` functions (146 loc). |
-| `metadata_sync/planner.py` | Deterministic chunk/partition planning, `plan.json` write, partition-coverage invariant, and stale-plan/schema-version rejection (195 loc). |
+| `metadata_sync/cli.py` | The nine commands, the nested `sources` group, and the argparse surface; each `cmd_*` is a plain callable the operator also calls (632 loc). |
+| `metadata_sync/operator.py` | Interactive wizard; a presentation layer over the same `cmd_*` functions (214 loc). |
+| `metadata_sync/roster.py` | The content-addressed CIK roster: identity, atomic Parquet IO, set operations, and the published CIK index (297 loc). |
 | `metadata_sync/manifest.py` | CIK CSV ingestion, normalization, deduplication, curated names, and the input fingerprint (110 loc). |
-| `metadata_sync/worker.py` | Resumable chunk and partition execution over a thread pool; the never-refetch guarantee (268 loc). |
-| `metadata_sync/checkpoints.py` | What counts as a *complete* chunk on disk (133 loc). |
-| `metadata_sync/merger.py` | Coordinator validation, out-of-core sorted merge, progress events, snapshot manifest, pointer (278 loc). |
-| `metadata_sync/augmentation.py` | Delta merge onto a published snapshot without refetching the base (234 loc). |
+| `metadata_sync/planner.py` | `Plan`: chunk layout as roster ordinal ranges, plan identity, bundle write, and validated load (359 loc). |
+| `metadata_sync/assignment.py` | Static chunk-to-worker assignment and the worker receipt that crosses the machine boundary (355 loc). |
+| `metadata_sync/distribution.py` | Copy-based multi-machine distribution: export, select, and the import trust boundary (270 loc). |
+| `metadata_sync/options.py` | The one typed options model the CLI and the operator both build; bundle path resolution (386 loc). |
+| `metadata_sync/worker.py` | Resumable chunk execution over a thread pool; the never-refetch guarantee (258 loc). |
+| `metadata_sync/checkpoints.py` | What counts as a *complete* chunk on disk (131 loc). |
+| `metadata_sync/merger.py` | Coordinator validation, out-of-core sorted merge, progress events, CIK index, snapshot manifest, pointer (336 loc). |
+| `metadata_sync/augmentation.py` | Delta planning and merge onto a published snapshot without refetching the base (297 loc). |
 | `metadata_sync/sec_client.py` | One CIK to its submissions document plus every historical file it lists (120 loc). |
-| `metadata_sync/paths.py` | `MetadataPaths` / `RunPaths`; the published-vs-transient split plus source and registry locations (148 loc). |
+| `metadata_sync/paths.py` | `MetadataPaths` / `RunPaths`; the published-vs-transient split, plan bundle, source and registry locations (212 loc). |
 | `metadata_sync/source_registry.py` | Write-once, content-addressed `company_tickers.json` snapshots, reached by `sources refresh` (215 loc). |
-| `metadata_sync/registry.py` | Curated-versus-source comparison and the effective-input projection, reached by `sources compare` (348 loc). |
-| `metadata_sync/smoke_test.py` | Credential-gated live check that never publishes; replaces v1's `preview` command (141 loc). |
+| `metadata_sync/registry.py` | Curated-versus-source comparison, the effective CIK roster, and the CSV export, reached by `sources compare` (419 loc). |
+| `metadata_sync/smoke_test.py` | Credential-gated live check that never publishes; replaces v1's `preview` command (146 loc). |
 | `filing_catalog/__init__.py` | Docstring only (1 loc). |
 | `filing_catalog/cli.py` | The four commands, policy resolution, and the stdout/stderr split (231 loc). |
 | `filing_catalog/operator.py` | Interactive wizard over `cmd_materialize` / `cmd_plan` / `cmd_status` (83 loc). |
@@ -132,9 +139,9 @@ sits at Layer 4.
 | `document_storage/queries.py` | The direct SQL for consolidation; the only module that holds it (263 loc). |
 | `document_storage/review.py` | `render_review_set()`: stratified, diffable review bundles (332 loc). |
 
-Total 7,923 lines across 34 files: 31 modules plus three one-line `__init__.py`
-docstrings. Per package: `metadata_sync` 2,157; `filing_catalog` 2,184;
-`document_storage` 3,581.
+Total 10,545 lines across 39 files: 36 modules plus three one-line `__init__.py`
+docstrings. Per package: `metadata_sync` 4,758; `filing_catalog` 2,183;
+`document_storage` 3,603.
 
 ## Contracts
 
@@ -144,15 +151,18 @@ docstrings. Per package: `metadata_sync` 2,157; `filing_catalog` 2,184;
   `metadata_sync/planner.py:1-7` and `filing_catalog/planner.py` both derive an
   identity from the plan-defining inputs rather than a timestamp, so replanning
   an unchanged input is idempotent while changing the chunking produces a
-  distinct plan.
+  distinct plan. Phase 1's plan identity is the CIK *roster* plus the chunk
+  layout, never an assignment, a worker count, or a timestamp, so moving a
+  cohort to another machine keeps its plan directory and its completed chunks.
 - A worker never writes the canonical dataset. Every worker writes an immutable,
   schema-versioned fragment under a transient root; only a coordinator publishes.
-  `metadata_sync/paths.py:1-6` names the split explicitly ("chunks are
+  `metadata_sync/paths.py:1-11` names the split explicitly ("chunks are
   resumability state, snapshots are output"), and `filing_catalog/paths.py:8-12`
-  gives the same shape.
+  gives the same shape. A chunk arriving from another machine under a copied
+  bundle is held to the same completeness check as a local one.
 - A partial file is never treated as complete. `metadata_sync/checkpoints.py:1-6`
-  requires existence, canonical schema, exactly the planned CIKs, and the
-  expected input fingerprint before a chunk counts; `document_storage/worker.py:109-130`
+  requires existence, canonical schema, exactly the CIKs its plan's roster range
+  covers, and the expected input fingerprint before a chunk counts; `document_storage/worker.py:109-130`
   additionally requires a matching processor fingerprint.
 - Every DuckDB connection is bounded. All three pipelines call
   `infra.storage.duckdb.connect()` and never a raw `duckdb.connect()`;
@@ -164,7 +174,9 @@ docstrings. Per package: `metadata_sync` 2,157; `filing_catalog` 2,184;
   exempts only `foundation/runtime/resources.py`, `runtime/settings/`,
   `scanners/`, `scratch/`, and tests.
 - Workers are sized from cgroup-aware memory, never from raw CPU count.
-  `metadata_sync/worker.py:43-49` uses `derive_resources().workers`;
+  `metadata_sync/worker.py:43-49` uses `derive_resources().workers` through
+  `resolve_workers()`, which treats an unset value as "derive it" rather than as
+  zero;
   `document_storage/worker.py:360-373` calls
   `auto_worker_count(resolved.available_memory_bytes, worker_memory_mib=512,
   safety_fraction=0.9)`. `filing_catalog` has no worker: the planner is
@@ -222,27 +234,45 @@ entry points, grouped by pipeline.
 - `operator_entrypoint`, `MenuAction`, `prompt_text` — the shared operator
   policy: menu with no arguments, CLI otherwise. `foundation/runtime/interactive.py`.
 - `main`, `build_parser`, `cmd_plan`, `cmd_status`, `cmd_run`, `cmd_merge`,
-  `cmd_augment`, `RunOptions` — Phase 1 command surface.
-  `metadata_sync/cli.py`.
-- `build_operator_menu` — the five-item Phase 1 wizard.
+  `cmd_worker`, `cmd_export`, `cmd_import`, `cmd_augment`, `cmd_refresh`,
+  `cmd_compare` — Phase 1 command surface. `metadata_sync/cli.py`.
+- `build_operator_menu` — the nine-item Phase 1 wizard.
   `metadata_sync/operator.py`.
-- `build_plan`, `derive_plan_id`, `load_plan`, `write_plan`, `plan_chunk_ids`,
+- `PlanOptions`, `RunOptions`, `BundleRunPaths`, `SelectedCohort`,
+  `plan_options`, `run_options`, `augment_options`, `derive_plan_id`,
+  `read_bundle_plan_id` — the one typed options model.
+  `metadata_sync/options.py`.
+- `Roster`, `build_roster`, `derive_roster_id`, `read_roster`, `write_roster`,
+  `without_ciks`, `union_rosters`, `read_cik_index`, `write_cik_index`,
+  `roster_to_csv_text`, `RosterError` — the content-addressed CIK cohort.
+  `metadata_sync/roster.py`.
+- `Plan`, `build_plan`, `derive_plan_id`, `load_plan`, `write_plan`,
   `PLAN_FORMAT_VERSION` — Phase 1 planning. `metadata_sync/planner.py`.
+- `Assignment`, `ChunkReceipt`, `ChunkResultRecord`, `build_assignment`,
+  `divide_chunks`, `write_assignment`, `read_assignment`, `write_receipt`,
+  `read_receipt`, `AssignmentError` — the static mapping and the receipt that
+  crosses the machine boundary. `metadata_sync/assignment.py`.
+- `export_bundle`, `select_assignment`, `adopt_chunks`, `copy_bundle`,
+  `load_returned_plan`, `build_worker_receipt` — copy-based distribution and its
+  import trust boundary. `metadata_sync/distribution.py`.
 - `read_cik_manifest`, `InputManifest` — CIK CSV ingestion and the input
   fingerprint. `metadata_sync/manifest.py`.
-- `run_chunk`, `run_partition`, `resolve_workers`, `normalize_one_cik`,
+- `run_chunk`, `run_chunk_ids`, `resolve_workers`, `normalize_one_cik`,
   `ChunkResult` — Phase 1 execution. `metadata_sync/worker.py`.
 - `discover_completed_chunks`, `inspect_chunk`, `schema_matches`, `ChunkInfo` —
   what counts as complete. `metadata_sync/checkpoints.py`.
 - `merge_chunks`, `publish_snapshot`, `validate_chunks`, `MergeReport`,
   `MergeError` — Phase 1 coordination. `metadata_sync/merger.py`.
-- `augment`, `augment_from_manifest`, `plan_delta`, `base_snapshot_ciks`,
-  `AugmentResult` — delta augmentation. `metadata_sync/augmentation.py`.
+- `augment`, `augment_from_manifest`, `augment_from_roster`, `derive_delta_plan`,
+  `base_snapshot_ciks`, `snapshot_cik_roster`, `AugmentResult` — delta
+  augmentation. `metadata_sync/augmentation.py`.
 - `SubmissionsClient`, `CikFetchResult` — the fan-out to historical files.
   `metadata_sync/sec_client.py`.
 - `refresh_company_tickers`, `load_source_snapshot`, `parse_company_tickers`,
   `source_snapshot_id`, `SourceSnapshot`, `SourceRegistryError`,
   `SOURCE_NAME`, `SOURCE_URL`. `metadata_sync/source_registry.py`.
+- `compare_sources`, `load_registry_roster`, `load_registry_manifest`,
+  `registry_id_for`, `RegistryError`. `metadata_sync/registry.py`.
 - `MetadataPaths`, `RunPaths`, `resolve_metadata_paths`, `resolve_run_paths`.
   `metadata_sync/paths.py`.
 - `main` of `smoke_test` — the bounded live check.
@@ -326,14 +356,27 @@ stderr and returning 1. Every successful command returns 0
 
 | Subcommand | Flags | Returns |
 | :--- | :--- | :--- |
-| `plan` | `--input` (required), `--artifacts`, `--chunk-size` (default `DEFAULT_CHUNK_SIZE`), `--partition-count` (default `DEFAULT_PARTITION_COUNT`), `--workers` (default 0), `--limit` | 0; prints `plan <id> written: N CIKs, C chunks, P partitions`. No network. |
-| `status` | the five common flags | 0; prints a JSON object with `plan_id`, `input_fingerprint`, `schema_version`, `planned_chunks`, `completed_chunks`, `outstanding_chunks`, `mergeable`. No network. |
-| `run` | the five common flags, plus `--chunk` (int), `--partition` (int) | 0 normally; **1 when no chunks are selected** (`cli.py:155-157`). |
-| `merge` | the five common flags, plus `--snapshot-id` (default `""`) | 0; prints the snapshot manifest JSON. |
-| `augment` | the five common flags, plus `--base-snapshot-id` and `--new-snapshot-id` (both required) | 0; prints a JSON object with `base_snapshot_id`, `new_snapshot_id`, `base_row_count`, `delta_row_count`, `total_row_count`, `refetched_ciks`. |
+| `plan` | `--input` \| `--roster` (one required), `--limit`, `--artifacts`, `--chunk-size`, `--workers` | 0; prints `plan_id`, `roster_id`, `row_count`, `chunk_size`, `chunk_count`, `plan_dir`. No network. |
+| `status` | one plan reference, plus `--artifacts`, `--chunk-size`, `--workers` | 0; prints a JSON object with `plan_id`, `roster_id`, `row_count`, `input_fingerprint`, `schema_version`, `planned_chunks`, `completed_chunks`, `outstanding_chunks`, `mergeable`. No network. |
+| `run` | one plan reference, plus `--chunks` (`0-3,7`), `--chunk`, and the common flags | 0; **1 when a selected chunk is not in the plan**. |
+| `merge` | one plan reference, plus the common flags | 0; prints the snapshot manifest JSON. |
+| `worker` | one plan reference, plus `--worker` and the common flags | 0; prints `plan_id`, `assignment_id`, `worker_id`, `chunks`, `row_count`, `receipt_path`. |
+| `export` | one plan reference, plus `--worker-count` (required) and `--destination` (required) | 0; prints one entry per worker. |
+| `import` | one plan reference, plus `--source` (required) | 0; prints `imported_chunks` and `already_present`. **1 on any verification failure.** |
+| `augment` | `--input` \| `--roster`, `--base-snapshot-id` and `--new-snapshot-id` (both required), plus the common flags | 0; prints `base_snapshot_id`, `new_snapshot_id`, `delta_plan_id`, `delta_roster_id`, `base_row_count`, `delta_row_count`, `total_row_count`, `refetched_ciks`. |
+| `sources refresh` | `--artifacts` | 0; prints the source snapshot manifest. Network. |
+| `sources compare` | `--input` (required), `--source-manifest` (required), `--artifacts` | 0; prints the comparison summary. No network. |
 
-`--workers 0` means machine-derived, not zero workers: `resolve_workers(0)` falls
-through to `derive_resources().workers` (`worker.py:43-49`).
+A **plan reference** is one of `--plan-id`, `--bundle` (a copied bundle names
+its own plan in its manifest), or a cohort reference (`--input` / `--roster`) to
+re-derive. There is no `--partition-count` anywhere: partitioning is a scheduling
+choice, and it used to be part of the plan identity, so changing it moved the plan
+directory and orphaned every completed checkpoint.
+
+`--workers` unset means machine-derived, not zero: `resolve_workers(None)` falls
+through to `derive_resources().workers` (`worker.py:43-49`). There is no
+`--snapshot-id` on `merge`; snapshot identity is plan-derived, so a row's
+`snapshot_id` can never disagree with the artifact containing it.
 
 ### `python run.py filing-catalog <command>` (Phase 2)
 
@@ -381,58 +424,84 @@ client (`document_storage/cli.py:9-11`).
 
 ### Phase 1 — the full plan / worker / merge lifecycle
 
-1. **`plan`.** `read_cik_manifest` normalizes the CSV and takes
-   `file_sha256(path)` as `input_fingerprint` (`manifest.py:95`);
-   `build_plan` slices the CIK list into `chunk_size` chunks and assigns each
-   chunk to a partition by `chunk_index % partition_count` (`planner.py:44-91`).
-   `derive_plan_id` hashes `fingerprint:chunk_size:partition_count` and takes
-   the first 16 hex characters (`planner.py:36-41`), so replanning is idempotent
-   and re-chunking changes the id. The plan records `plan_format_version`,
-   `schema_version`, `input_fingerprint`, chunk boundaries, and `row_count`, and
-   is written atomically to `metadata/plans/<plan_id>/plan.json`.
+1. **`plan`.** A cohort reference resolves to a `Roster`: a curated CSV through
+   `read_cik_manifest`, or a published registry roster through its manifest
+   (`options.py:resolve_cohort`). `--limit` is applied to the roster *before*
+   identity is derived, so a bounded plan and a full plan over one file are
+   different plans — the previous identity hashed the raw file and truncated
+   afterwards, so they collided on one directory. `build_plan` derives
+   `plan_id` from the roster identity, the chunk size, the plan kind, and — for a
+   delta — the base snapshot (`planner.py:derive_plan_id`). Assignment, worker
+   count, and time are excluded by construction. Chunks are *ranges over roster
+   ordinals*, not embedded CIK lists, so the written `plan.json` is constant in
+   cohort size: a 250,000-CIK plan is under 2 KB, where the previous format
+   produced a 15 MB document that stored the CIK list three times.
 2. **`run`.** For each target chunk, `run_chunk` first calls `inspect_chunk`;
    a valid checkpoint short-circuits the run and returns
-   `ChunkResult(skipped_existing=True)` (`worker.py:177-191`). Otherwise CIKs
-   are fetched concurrently on a `ThreadPoolExecutor` sized by
-   `resolve_workers` (`worker.py:130`) — a thread pool, not a process pool,
-   because the work is network-bound, the HTTP client and its SQLite cache are
-   thread-safe, and DuckDB is confined to the coordinator
-   (`worker.py:1-10`). **Every requested CIK produces exactly one row,
-   including failures**, so completion is determinable from the data
-   (`worker.py:8-9`). A non-terminal status is rewritten to `failed`
-   (`worker.py:95-97`). The chunk is written to
+   `ChunkResult(skipped_existing=True)`. Otherwise CIKs are fetched
+   concurrently on a `ThreadPoolExecutor` sized by `resolve_workers` — a thread
+   pool, not a process pool, because the work is network-bound, the HTTP client
+   and its SQLite cache are thread-safe, and DuckDB is confined to the
+   coordinator (`worker.py:1-10`). **Every requested CIK produces exactly one
+   row, including failures**, so completion is determinable from the data. A
+   non-terminal status is rewritten to `failed`. The chunk is written to
    `transient/metadata/<plan_id>/chunk_NNNN.parquet`.
 3. **`status`.** `discover_completed_chunks` revalidates every planned chunk
-   against schema, CIK coverage, and fingerprint, and reports `mergeable:
-    not outstanding`. No network.
+   against schema, CIK coverage, and fingerprint, and reports `mergeable: not
+   outstanding`. No network.
 4. **`merge`.** `validate_chunks` rejects the merge on plan coverage gaps,
    foreign chunk files, missing checkpoints, schema drift, row-count mismatch,
-   CIK coverage drift, a foreign input fingerprint, or a non-terminal status
-   (`merger.py:88-160`). `merge_chunks` then opens one DuckDB connection and
-   refuses null CIKs and duplicate CIKs, records duplicate accessions as a
-   *warning* rather than a failure, and calls
-   `concat_to_parquet(..., order_by=("cik",))` — the out-of-core
-   `ORDER BY cik` COPY. The merged row count must equal `plan["row_count"]` and
-   the published schema must match, or the merge is rejected.
-   `publish_snapshot` writes `metadata.manifest.json` and then advances
-   `current/pointer.json`, both atomically.
-5. **`augment`.** A separate entry point on the same machinery: plan only the
-   CIKs absent from the base snapshot, run those chunks, then merge the base
-   Parquet alongside the delta checkpoints. A base holding N CIKs receiving K
-   new ones ends at N+K rows after exactly K fetches
-   (`augmentation.py:1-7`).
+   CIK coverage drift, a foreign input fingerprint, or a non-terminal status.
+   `merge_chunks` then opens one DuckDB connection and refuses null CIKs and
+   duplicate CIKs, records duplicate accessions as a *warning* rather than a
+   failure, and calls `concat_to_parquet(..., order_by=("cik",))` — the
+   out-of-core `ORDER BY cik` COPY. The merged row count must equal the plan's
+   row count and the published schema must match, or the merge is rejected. A
+   sorted distinct `ciks.parquet` is then written *from the published rows* and
+   both digests go into the manifest, which `publish_snapshot` writes before it
+   advances `current/pointer.json`.
+5. **`export` / `worker` / `import`.** The multi-machine path. `export` writes
+   one bundle per worker: a byte-identical copy of `plan.json` and the roster
+   plus a distinct `assignments/<assignment_id>.parquet`. `worker` runs only its
+   assignment's chunks from the bundle and writes a content-verified
+   `receipt.json`. `import` proves the return before adopting anything — plan
+   identity, assignment identity, per-file SHA-256, canonical schema, row count,
+   and CIK coverage. A byte-identical re-import is a no-op; a conflicting one is
+   an error (`distribution.py:adopt_chunks`).
+6. **`augment`.** A separate entry point on the same machinery. `derive_delta_plan`
+   anti-joins the request against the base snapshot's CIK set and binds the
+   resulting plan to `base_snapshot_id`, so the same requested list against two
+   different bases is two different plans — the previous identity used the
+   request file's digest, so both resolved to one directory and one chunk
+   namespace. Only the delta is fetched; the base Parquet is merged forward
+   untouched, and copied base rows keep their original row-level `snapshot_id`
+   because that field is provenance, not the containing artifact's identity. A
+   base holding N CIKs receiving K new ones ends at N+K rows after exactly K
+   fetches.
 
-On resume, nothing is refetched. `run` re-derives the plan id from the manifest
-fingerprint and the effective chunking settings — there is no `--plan-id`
-override, because the plan id is derived rather than chosen — `load_plan`
-rejects a plan whose recorded `plan_id` does not match its own inputs or whose
-`schema_version`/`plan_format_version` differs from the running build, and each
-chunk is re-validated before it is skipped.
+On resume, nothing is refetched. `load_plan` rejects a plan whose recorded
+`plan_id` does not match its own inputs, whose roster does not match the recorded
+roster identity, whose `schema_version` or `plan_format_version` differs from the
+running build, or whose row count disagrees with its roster. Each chunk is
+re-validated before it is skipped, which is also what makes a chunk from another
+plan unusable even when the two plans share a directory.
+
+There is no persisted run configuration: effective values follow the environment
+and the settings registry, resolved once at the options boundary. Because the
+plan id follows the effective chunk size, planning with one `--chunk-size` and
+running with another resolves a *different* plan, and the command says so rather
+than reusing another plan's checkpoints. The settings regression this replaces:
+`runtime.chunk_size` and `runtime.partition_count` were declared with `env=True`,
+`config=True`, `cli=True` and read by *nothing*; the parser hardcoded the module
+constant, so `RUNTIME_CHUNK_SIZE=2` still produced a plan claiming 1000.
 
 The checkpoint contract in one line: **a chunk checkpoint is complete only when
 it exists, its Parquet footer schema equals `SUBMISSION_METADATA_SCHEMA`, it
-holds exactly the planned CIKs, and it carries the expected input fingerprint;
-anything else is treated as absent** (`checkpoints.py:1-6`).
+holds exactly the CIKs its plan's roster range covers, and it carries the
+expected input fingerprint; anything else is treated as absent**
+(`checkpoints.py:1-7`). Because the expected CIKs come from the plan's roster
+range rather than from a plan document, the same check applies to a chunk that
+arrived from another machine under a copied bundle.
 
 ### Phase 2 — no workers, but the same staging discipline
 
@@ -491,15 +560,41 @@ merged Parquet file, because a Parquet file is not byte-stable across writes
 ## Tests
 
 The test tree mirrors the source tree, one test file per source module, every
-directory a package. 6,785 lines across 25 files.
+directory a package. 11,027 lines across 42 files.
 
-- `tests/pipelines/metadata_sync/test_manifest.py` (71 loc, 6 tests)
-- `tests/pipelines/metadata_sync/test_planner.py` (121 loc, 11)
-- `tests/pipelines/metadata_sync/test_checkpoints.py` (110 loc, 7)
-- `tests/pipelines/metadata_sync/test_worker.py` (188 loc, 10)
-- `tests/pipelines/metadata_sync/test_merger.py` (315 loc, 14)
-- `tests/pipelines/metadata_sync/test_augmentation.py` (303 loc, 12)
-- `tests/pipelines/metadata_sync/test_end_to_end.py` (150 loc, 3) — the
+- `tests/pipelines/metadata_sync/test_roster.py` (236 loc) — roster identity,
+  set operations, atomic IO, and a 250,000-CIK derivation budget.
+- `tests/pipelines/metadata_sync/test_manifest.py` (71 loc)
+- `tests/pipelines/metadata_sync/test_planner.py` (303 loc) — chunk ranges,
+  identity, manifest size, and every staleness rejection.
+- `tests/pipelines/metadata_sync/test_assignment.py` (298 loc) — assignment and
+  receipt identity, and receipt tampering.
+- `tests/pipelines/metadata_sync/test_distribution.py` (518 loc) — export,
+  worker, import, and every import refusal.
+- `tests/pipelines/metadata_sync/test_options.py` (223 loc) — the settings
+  boundary and bundle-rooted plan resolution.
+- `tests/pipelines/metadata_sync/test_paths.py` (180 loc) — the
+  published-vs-transient split and the plan bundle layout.
+- `tests/pipelines/metadata_sync/test_checkpoints.py` (137 loc) — completeness,
+  including a chunk belonging to a different plan.
+- `tests/pipelines/metadata_sync/test_worker.py` (244 loc)
+- `tests/pipelines/metadata_sync/test_merger.py` (438 loc) — every hard
+  failure, the duplicate-accession warning, and the published CIK index.
+- `tests/pipelines/metadata_sync/test_augmentation.py` (408 loc) — delta
+  identity, base preservation, and union semantics.
+- `tests/pipelines/metadata_sync/test_registry.py` (384 loc) — the comparison
+  projection and the published roster.
+- `tests/pipelines/metadata_sync/test_scale.py` (349 loc) — constant-size plans
+  at scale, reassignment stability, and single-host/distributed convergence.
+- `tests/pipelines/metadata_sync/test_cli.py` (605 loc) — the parser, the
+  settings regression, and the refresh → compare → plan → merge chain.
+- `tests/pipelines/metadata_sync/test_operator.py` (363 loc) — the wizard's
+  action bindings and cancellation.
+- `tests/pipelines/metadata_sync/test_sec_client.py` (126 loc)
+- `tests/pipelines/metadata_sync/test_source_registry.py` (180 loc)
+- `tests/pipelines/metadata_sync/test_smoke_test.py` (201 loc) — the guards only;
+  the live fetch is credential-gated.
+- `tests/pipelines/metadata_sync/test_end_to_end.py` (158 loc) — the
   plan → run → merge replay.
 - `tests/pipelines/metadata_sync/conftest.py` (24 loc) — shared setup.
 - `tests/pipelines/filing_catalog/test_catalog_job.py` (297 loc, 24)
@@ -534,8 +629,7 @@ and the default gate stays offline and deterministic
 (`metadata_sync/smoke_test.py:12-14`).
 
 Coverage is not complete against AGENTS.md §6.3's one-file-per-source-module
-rule: `metadata_sync/{cli,operator,paths,sec_client,source_registry}.py`,
-`filing_catalog/{paths,operator}.py`, and
+rule: `filing_catalog/{paths,operator}.py`, and
 `document_storage/{processor,queries}.py` have no mirrored test module. See
 "Deliberate gaps".
 

@@ -68,8 +68,16 @@ python -c "from edgar_sec.foundation.runtime.settings import render_dotenv; prin
 
 ### 4. Metadata Sync Pipeline
 ```bash
-# Plan (deterministic, no network):
+# Capture an immutable external source snapshot, then project the curated input
+# against it to find registrants upstream that the CSV does not cover:
+python run.py metadata sources refresh
+python run.py metadata sources compare --input uploads/cik-sec.csv \
+    --source-manifest <artifacts-root>/metadata/sources/company_tickers/<id>/manifest.json
+
+# Plan a cohort (deterministic, no network). --input takes a curated CSV;
+# --roster takes a published effective CIK roster id from `sources compare`.
 python run.py metadata plan --input uploads/cik-sec.csv
+python run.py metadata plan --roster <registry_id>
 
 # Inspect progress and outstanding chunks (no network):
 python run.py metadata status --input uploads/cik-sec.csv
@@ -83,20 +91,34 @@ python run.py metadata merge --input uploads/cik-sec.csv
 # Add newly requested CIKs to an existing snapshot without refetching the base:
 python run.py metadata augment --input uploads/cik-sec-new.csv \
     --base-snapshot-id <id> --new-snapshot-id <id>
-
-# Capture an immutable external source snapshot, then project the curated input
-# against it to find registrants upstream that the CSV does not cover:
-python run.py metadata sources refresh
-python run.py metadata sources compare --input uploads/cik-sec.csv \
-    --source-manifest <artifacts-root>/metadata/sources/company_tickers/<id>/manifest.json
 ```
 
-Effective chunking comes from `--chunk-size` / `--partition-count`, else
-`RUNTIME_CHUNK_SIZE` / `RUNTIME_PARTITION_COUNT`, else the code default. Keep
-those stable across `plan`, `run`, and `merge`: the plan id is derived from the
-input fingerprint and the effective chunking, so changing them mid-run resolves a
-different plan and the command fails loudly rather than reusing mismatched
-checkpoints. There is no persisted project configuration and no `--configure`.
+Run one cohort across several machines by copying the plan bundle out. The
+bundle is byte-identical for every worker; only the assignment differs.
+```bash
+# Coordinator: one bundle per worker, each with a disjoint chunk list.
+python run.py metadata export --plan-id <plan_id> --worker-count 4 \
+    --destination /tmp/metadata-out
+
+# On each machine, after copying the bundle across:
+python run.py metadata worker --bundle /tmp/metadata-out/worker-00
+
+# Back on the coordinator: verify and adopt the returned chunks.
+python run.py metadata import --plan-id <plan_id> \
+    --source /tmp/metadata-out/worker-00
+```
+
+`--plan-id`, `--bundle`, and `--input`/`--roster` are interchangeable ways to
+name a plan; a copied bundle names its own plan in its manifest. Effective
+chunking comes from `--chunk-size`, else `RUNTIME_CHUNK_SIZE`, else the code
+default. Keep it stable across `plan`, `run`, and `merge`: the plan id is derived
+from the roster identity and the effective chunk size, so changing the chunking
+resolves a different plan and the command fails loudly rather than reusing
+mismatched checkpoints. There is no persisted project configuration and no
+`--configure`. Assigning work is a separate artifact, so changing the worker
+count never moves the plan or discards completed chunks. Note that each worker
+process builds its own rate limiter, so divide the budget with
+`SEC_RATE_LIMIT_RPS` when distributing across machines.
 
 ### 5. Filing Catalog Pipeline (Zero Network)
 
@@ -269,9 +291,10 @@ tests/                      # Test tree mirrors the edgar_sec/ package tree
 │   ├── company_family/     # normalizer, clustering
 │   └── submissions/        # unroller, builder, profile
 └── pipelines/
-    ├── metadata_sync/      # manifest, planner, checkpoints, worker, merger,
-    │                       # augmentation, source_registry, registry,
-    │                       # smoke_test, operator, cli
+    ├── metadata_sync/      # manifest, roster, planner, assignment,
+    │                       # distribution, options, checkpoints, worker,
+    │                       # merger, augmentation, source_registry,
+    │                       # registry, sec_client, smoke_test, operator, cli
     ├── filing_catalog/     # discovery, expansion, planner, publication, cli
     └── document_storage/   # fetching, processor, worker, delegation, merger,
                             # vacuum, queries, operator, cli, review
@@ -301,11 +324,16 @@ arithmetic, so reorganizing the tree does not break test paths.
 All generated paths derive from the artifacts root; no module hardcodes them.
 
 ```text
-{artifacts_root}/metadata/plans/{plan_id}/plan.json          # Immutable plan
-{artifacts_root}/transient/metadata/{plan_id}/chunk_NNNN.parquet  # Resumable checkpoints
-{artifacts_root}/metadata/snapshots/{snapshot_id}/metadata.parquet # Published dataset
-{artifacts_root}/metadata/snapshots/current/pointer.json     # Current snapshot pointer
-{artifacts_root}/metadata/sources/{name}/{snapshot_id}/      # Immutable source snapshots
+{artifacts_root}/metadata/plans/{plan_id}/plan.json            # Small plan manifest
+{artifacts_root}/metadata/plans/{plan_id}/roster/ciks.parquet    # The CIK cohort, once
+{artifacts_root}/metadata/plans/{plan_id}/input/                 # Where the cohort came from
+{artifacts_root}/metadata/plans/{plan_id}/assignments/*.parquet   # One chunk set per worker
+{artifacts_root}/transient/metadata/{plan_id}/chunk_NNNN.parquet # Resumable checkpoints
+{artifacts_root}/metadata/registries/{registry_id}/             # Source comparison outputs
+{artifacts_root}/metadata/snapshots/{snapshot_id}/metadata.parquet  # Published dataset
+{artifacts_root}/metadata/snapshots/{snapshot_id}/ciks.parquet     # Published CIK index
+{artifacts_root}/metadata/snapshots/current/pointer.json        # Current snapshot pointer
+{artifacts_root}/metadata/sources/{name}/{snapshot_id}/         # Immutable source snapshots
 
 {artifacts_root}/filing_catalog/<catalog_id>/               # Immutable catalog snapshot
 {artifacts_root}/filing_catalog/plans/<plan_id>/             # Immutable plan bundle

@@ -3,11 +3,17 @@
 > [!NOTE]
 > **Status:** Phase 1 feature-complete, with documented scope reductions
 > **Progress:** Milestones 0, 1, 2, 3, 4, 5, 6, and 6.1 implemented and passing
-> all quality gates. Every `metadata_sync` source module now has a mirrored test
+> all quality gates. Every `metadata_sync` source module has a mirrored test
 > file. A parity audit against the v1 reference found four v1 capabilities that
 > are **deliberately not carried forward** and one that was **missing and has
 > been restored**; they are enumerated in §10 rather than being implied by the
 > "complete" label.
+>
+> **M7 — plan and distribution format, landed.** The plan document no longer
+> embeds the CIK list three times; the cohort is a content-addressed roster
+> dataset beside a small manifest, plan identity is the roster plus the chunk
+> layout rather than the request file plus the worker count, and multi-machine
+> work is a copy-out / run / copy-back with a verified receipt. See §10.1.
 > **Repository Context:** All legacy v1 code has been moved to `.v1/` as a read-only historical specification. The repository root is a 100% clean workspace. We are constructing the production v2 architecture from the ground up without legacy shims or technical debt.
 
 ---
@@ -131,12 +137,17 @@ edgar-sec/ (v2 Root)
 │           ├── __init__.py               # Package docstring
 │           ├── paths.py                  # Scoped metadata pipeline directory layout (.artifacts/metadata/...)
 │           ├── manifest.py               # CIK CSV ingestion & input SHA-256 fingerprinting
-│           ├── planner.py                # Deterministic chunk (1000 CIK) & partition planning (plan.json)
+│           ├── roster.py                 # Content-addressed CIK roster dataset + published CIK index
+│           ├── planner.py                # Plan identity, chunk layout as roster ranges, bundle write/load
+│           ├── assignment.py             # Static chunk-to-worker assignment & the worker receipt
+│           ├── distribution.py           # Copy-based multi-machine export / adopt trust boundary
+│           ├── options.py                # The one typed options model (CLI + operator)
 │           ├── checkpoints.py            # Atomic chunk checkpoint verification & discovery
 │           ├── worker.py                 # Resumable multi-threaded worker fetching submissions & writing chunk Parquets
 │           ├── merger.py                 # DuckDB coordinator merge: out-of-core sorted concat_to_parquet
 │           ├── augmentation.py           # Delta planning against base snapshots
 │           ├── source_registry.py        # SEC listing source discovery
+│           ├── registry.py               # Curated-vs-source comparison & effective CIK roster
 │           ├── operator.py               # Interactive terminal wizard
 │           └── cli.py                    # Unified CLI command surface
 │
@@ -270,9 +281,12 @@ edgar-sec/ (v2 Root)
 
 1. **`paths.py`**:
    - Pipeline directory structure:
-     - Plan: `.artifacts/metadata/plans/{plan_id}/plan.json`
+     - Plan bundle: `.artifacts/metadata/plans/{plan_id}/` — `plan.json`,
+       `roster/ciks.parquet`, `input/input_manifest.json`, `assignments/*.parquet`
      - Transient checkpoints: `.artifacts/transient/metadata/{plan_id}/chunk_{chunk_id:04d}.parquet`
      - Snapshot publishing: `.artifacts/metadata/snapshots/{snapshot_id}/metadata.parquet`
+     - Published CIK index: `.artifacts/metadata/snapshots/{snapshot_id}/ciks.parquet`
+     - Registry outputs: `.artifacts/metadata/registries/{registry_id}/`
      - Current pointer: `.artifacts/metadata/snapshots/current/`
 
 2. **`manifest.py`**:
@@ -280,15 +294,34 @@ edgar-sec/ (v2 Root)
    - Normalizes CIKs to 10-digit zero-padded strings.
    - Computes deterministic input SHA-256 fingerprint.
 
-3. **`planner.py`**:
-   - Partitions CIK list into fixed-size chunks (`options.chunk_size`, defaulting to 1,000 CIKs).
-   - Generates deterministic `plan.json` recording schema version, timestamp, total CIK count, chunk count, and chunk boundaries.
+3. **`roster.py`**:
+   - The CIK cohort as one immutable Parquet dataset with a content-derived
+     identity over the ordered normalized CIKs, their names, and the roster
+     schema version. Reformatting an input file therefore yields the same roster;
+     reordering its rows does not.
+   - Derives identity row by row, so a 250,000-CIK cohort does not materialize a
+     multi-megabyte canonical JSON string.
+   - Also owns the published single-column CIK index written beside a snapshot.
 
-4. **`checkpoints.py`**:
+4. **`planner.py`**:
+   - Splits the roster into fixed-size chunks (`options.chunk_size`, defaulting
+     to 1,000 CIKs) expressed as **ranges over roster ordinals**, not embedded
+     CIK lists.
+   - Derives the plan id from the roster identity, the chunk size, the plan kind,
+     and — for a delta — the base snapshot. Assignment, worker count, and time
+     are excluded by construction, so reassignment keeps the plan directory and
+     its completed chunks.
+   - Generates deterministic `plan.json` recording schema version, plan format
+     version, roster identity and digest, chunk layout, and lineage. The document
+     is constant in cohort size: a 250,000-CIK plan is under 2 KB, where the
+     previous format produced a 15 MB document that stored the CIK list three
+     times.
+
+5. **`checkpoints.py`**:
    - Discovers completed chunk Parquet files (`chunk_{chunk_id:04d}.parquet`).
    - Validates row counts and schema compliance. Enables instant restart after interruption without re-fetching completed chunks.
 
-5. **`worker.py`**:
+6. **`worker.py`**:
    - Worker execution loop:
      - Takes a chunk of CIKs.
      - For each CIK: checks `SqlCache` or requests via `SecHttpClient`.
@@ -296,26 +329,52 @@ edgar-sec/ (v2 Root)
      - Accumulates row dicts, calls `build_submission_table`, and writes an atomic chunk Parquet file via `write_parquet_table`.
      - Calls `reclaim()` at regular intervals to return glibc arena memory to the OS.
 
-6. **`merger.py`**:
+7. **`merger.py`**:
    - Coordinator merge using DuckDB:
      - Scans all chunk checkpoints.
      - Validates zero missing CIKs, zero null primary keys, and no duplicate accessions.
      - Uses `concat_to_parquet` with `ORDER BY cik` for out-of-core sorted final dataset creation.
      - Emits `metadata.manifest.json` with record count, chunk count, and SHA-256 digests.
 
-7. **`augmentation.py`**:
-   - Delta planner: Given a new CIK list or source, compares against the current published snapshot.
-   - Schedules work only for new or updated CIKs.
-   - Merges delta Parquet into a new published snapshot.
+8. **`assignment.py` & `distribution.py`**:
+   - A static `chunk_id -> worker_id` mapping stored as its own content-addressed
+     artifact under the plan, excluded from the plan identity.
+   - `export` writes one bundle per worker: a byte-identical copy of `plan.json`
+     and the roster, plus that worker's assignment.
+   - `worker` runs only the chunks its assignment names, from a copied bundle, and
+     emits a receipt carrying the plan, the assignment, the worker, and a SHA-256
+     per produced chunk file.
+   - `import` is the trust boundary: it verifies the plan identity, the
+     assignment identity, that the receipt only names chunks its assignment
+     claims, the per-file digest, the canonical schema, the row count, and the
+     chunk's CIK coverage before adopting anything. A byte-identical re-import is
+     a no-op; a conflicting one is an error.
 
-8. **`operator.py` & `cli.py`**:
-   - Interactive wizard supporting:
-     1. Plan generation
-     2. Status & resume inspect
-     3. Run partition / all chunks
-     4. Merge completed chunks into snapshot
-     5. Augment existing snapshot
-   - CLI commands matching all wizard actions.
+9. **`augmentation.py`**:
+   - Delta planner: anti-joins the requested cohort against the base snapshot's
+     published CIK index (falling back to projecting the payload's CIK column for
+     snapshots published before the index existed).
+   - Binds the delta plan to `base_snapshot_id`, so the same requested list
+     against two different bases is two different plans with disjoint chunk
+     namespaces.
+   - Merges the base Parquet alongside the delta checkpoints into a new published
+     snapshot whose CIK index is `base_ciks ∪ delta_ciks` and whose manifest
+     records the parent, the delta roster, and both digests. Copied base rows
+     keep their original row-level `snapshot_id`, because that field is row
+     provenance rather than the containing artifact's identity.
+
+10. **`options.py`, `operator.py` & `cli.py`**:
+   - One typed options model, `PlanOptions` and `RunOptions`, built by both the
+     parser and the wizard. Effective values resolve from the settings registry
+     at that boundary; building a parser reads no environment.
+   - Interactive wizard and CLI commands covering the whole lifecycle:
+     1. `sources refresh` / `sources compare`
+     2. `plan`
+     3. `status`
+     4. `run` / `worker`
+     5. `export` / `import`
+     6. `merge`
+     7. `augment`
    - Root `run.py` delegates directly to `operator.py`.
 
 ---
@@ -437,7 +496,44 @@ not an oversight, and each is stated in
   never read by the options boundary, while workers had already stamped every
   row with the plan id. Rather than wire a late rename that would publish an
   artifact whose rows disagreed with it, snapshot identity is plan-derived
-  throughout.
+  throughout, and the flag is gone from the parser.
+
+### 10.1 M7 — the plan and distribution format
+
+The plan document embedded the same CIK list three times, so a 250,000-CIK
+cohort produced a 15 MB `plan.json`; plan identity mixed the request file's raw
+digest with the worker count, so a bounded run collided with a full run over the
+same file and any change of worker count moved the plan directory and orphaned
+every completed checkpoint; and `sources refresh` / `sources compare` published
+artifacts that nothing downstream could consume. M7 replaces all three with one
+arrangement:
+
+- **The cohort is its own artifact.** `roster.py` owns a content-addressed
+  Parquet roster referenced by digest from a manifest that is constant in cohort
+  size. Chunk membership became a range over roster ordinals. A 250,000-CIK plan
+  is under 2 KB.
+- **Identity is the cohort, not the schedule.** A plan id is derived from the
+  roster identity, the chunk size, the plan kind, and — for a delta — the base
+  snapshot. Assignment, worker count, and time are excluded by construction.
+  `--limit` is applied before identity is derived. The delta plan is bound to
+  its base, so the same requested list against two bases no longer shares a
+  directory and a chunk namespace.
+- **Multi-machine work is a copy.** `assignment.py` and `distribution.py` add
+  `export`, `worker`, and `import`: a byte-identical bundle per worker with a
+  distinct static assignment, a content-verified receipt, and an import that
+  proves a returned chunk before adopting it. There is no scheduler, no lease,
+  and no coordinator the worker depends on.
+- **Publication gained an index, not a change.** A merge still writes one sorted
+  `metadata.parquet` at the existing path with the same manifest fields and the
+  same pointer advance. It additionally writes a sorted distinct `ciks.parquet`
+  derived from the published rows and records both digests. Phase 2 resolves a
+  single Parquet path from the pointer and compares its column list to the
+  canonical schema, so the index is invisible to it; the handoff is unchanged.
+
+Deferred, and named in the package README: multi-part published snapshots (a
+Phase 2 source-contract change, not a Phase 1 one), dynamic claiming, and
+worker-level rate-limit division — each worker process builds its own limiter,
+which was already true of `--partition N`.
 
 ### Corrected defects found by the audit
 
@@ -449,6 +545,21 @@ not an oversight, and each is stated in
 - `load_plan` recorded `schema_version` and displayed it in `status` but never
   enforced it; a forged version was accepted.
 - `build_plan` derived partitions by modulo with no coverage assertion.
+- `plan_delta` rebuilt an `InputManifest` that kept the *request file's*
+  fingerprint, so `build_plan` derived a delta plan's identity from the request
+  rather than from the delta. Two augmentations of one CSV against different bases
+  resolved to a single plan directory, and a full ingest of the same CSV resolved
+  to the same one; the second `write_plan` overwrote the first's record, and a
+  subsequent `merge` read back a plan describing 2 CIKs against a 4-CIK roster.
+  Reproduced end to end before the fix. Now the delta plan is bound to its base
+  snapshot, and the two plan kinds can never share a directory.
+- `plan --limit N` truncated the cohort *after* the raw file digest was taken and
+  the limit was never hashed, so a bounded run and a full run over one file
+  resolved to the same plan id — reproduced, both `c490595c5e3e3d1b`.
+- `InputManifest.name_for` searched a parallel tuple with `.index()`, so
+  `plan_delta` and `compare_sources` were quadratic in the cohort: 20,000 name
+  lookups over a 200,000-CIK roster took 2.99 s. Names now travel with their CIK
+  in the roster and resolve from one map.
 - `worker.run_partition` and `augmentation.augment_from_manifest` were exported
   and documented with no caller; `engine/submissions/helpers.normalize_cik_padded`
   was an unused weaker duplicate of `domain.identity.Cik`.

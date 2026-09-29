@@ -14,8 +14,13 @@ from edgar_sec.foundation.runtime.paths import (
     ProjectPaths,
     resolve_paths,
 )
+from edgar_sec.pipelines.metadata_sync.options import BundleRunPaths
 from edgar_sec.pipelines.metadata_sync.paths import (
+    ASSIGNMENTS_DIR_NAME,
     METADATA_DIR,
+    RECEIPT_FILE_NAME,
+    ROSTER_DIR_NAME,
+    SNAPSHOT_CIK_INDEX_NAME,
     SNAPSHOT_FILE_NAME,
     SNAPSHOT_MANIFEST_NAME,
     MetadataPaths,
@@ -61,6 +66,48 @@ def test_plan_paths_are_scoped_by_plan_id(tmp_path: Path) -> None:
     assert run_paths.chunk_file(12).name == "chunk_0012.parquet"
 
 
+def test_a_plan_is_a_directory_of_artifacts_not_one_file(tmp_path: Path) -> None:
+    """The bundle is what a worker is handed, so its shape is a contract.
+
+    The manifest, the roster, and the assignments are separate files because they
+    are separately copied, separately versioned, and separately trusted: a worker
+    can verify the cohort it was given without re-deriving it from a CSV.
+    """
+    run_paths = resolve_run_paths("plan42", tmp_path)
+    bundle = tmp_path / "metadata" / "plans" / "plan42"
+    assert run_paths.plan_bundle == bundle
+    assert run_paths.plan_file == bundle / PLAN_FILE_NAME
+    assert run_paths.roster_file == bundle / ROSTER_DIR_NAME / "ciks.parquet"
+    assert run_paths.input_manifest_file == bundle / "input" / "input_manifest.json"
+    assert run_paths.assignments_dir == bundle / ASSIGNMENTS_DIR_NAME
+    assert (
+        run_paths.assignment_file("abc")
+        == bundle / ASSIGNMENTS_DIR_NAME / "abc.parquet"
+    )
+
+
+def test_a_copied_bundle_resolves_the_same_shape(tmp_path: Path) -> None:
+    """A worker holding only a directory must resolve the same plan layout.
+
+    This is what lets the worker and the coordinator run identical code against
+    one plan without either of them owning the other's filesystem.
+    """
+    bundle = BundleRunPaths(bundle_root=tmp_path / "out" / "worker-00", plan_id="p")
+    assert bundle.plan_file == tmp_path / "out" / "worker-00" / "plan.json"
+    assert (
+        bundle.roster_file == tmp_path / "out" / "worker-00" / "roster" / "ciks.parquet"
+    )
+    assert bundle.assignment_file("a") == (
+        tmp_path / "out" / "worker-00" / "assignments" / "a.parquet"
+    )
+    assert (
+        bundle.chunk_file(3)
+        == tmp_path / "out" / "worker-00" / "chunks" / "chunk_0003.parquet"
+    )
+    assert bundle.receipt_file == tmp_path / "out" / "worker-00" / RECEIPT_FILE_NAME
+    assert "transient" not in bundle.chunk_file(0).parts
+
+
 def test_source_paths_are_content_addressed(tmp_path: Path) -> None:
     metadata = MetadataPaths(artifacts_root=tmp_path)
     source = metadata.source_dir("company_tickers", "snap1")
@@ -82,6 +129,29 @@ def test_registry_paths_are_content_addressed(tmp_path: Path) -> None:
         root / "datasets" / "registrant_registry.parquet"
     )
     assert metadata.effective_input_file("reg1") == root / "effective_cik_input.csv"
+
+
+def test_the_effective_roster_is_published_beside_the_csv(tmp_path: Path) -> None:
+    """The CSV is an export; the roster dataset is what a plan consumes."""
+    metadata = MetadataPaths(artifacts_root=tmp_path)
+    assert metadata.effective_cik_roster("reg1") == (
+        tmp_path
+        / "metadata"
+        / "registries"
+        / "reg1"
+        / "datasets"
+        / "effective_ciks.parquet"
+    )
+
+
+def test_the_published_cik_index_sits_beside_the_payload(tmp_path: Path) -> None:
+    metadata = MetadataPaths(artifacts_root=tmp_path)
+    assert metadata.snapshot_cik_index("snap1") == (
+        tmp_path / "metadata" / "snapshots" / "snap1" / SNAPSHOT_CIK_INDEX_NAME
+    )
+    assert metadata.snapshot_cik_index("snap1").parent == (
+        metadata.snapshot_file("snap1").parent
+    )
 
 
 def _project_paths(artifacts_root: Path) -> ProjectPaths:

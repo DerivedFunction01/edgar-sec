@@ -3,6 +3,12 @@
 All paths derive from the shared artifacts root so the pipeline never embeds a
 literal artifact directory. Plan-scoped transient checkpoints are separated
 from published snapshots: chunks are resumability state, snapshots are output.
+
+A plan is a directory, not a file. ``plan.json`` is the small execution manifest,
+``roster/ciks.parquet`` holds the CIK cohort once, ``input/`` holds diagnostics
+about where the cohort came from, and ``assignments/`` holds one chunk-to-worker
+mapping per distribution. Splitting them is what lets a worker be handed a copy
+of the bundle and reassigned without changing what the plan *is*.
 """
 
 from __future__ import annotations
@@ -18,9 +24,20 @@ from edgar_sec.foundation.runtime.paths import (
     transient_dir,
 )
 
+from .roster import ROSTER_FILE_NAME, SNAPSHOT_CIK_INDEX_NAME
+
 METADATA_DIR = "metadata"
 SNAPSHOT_FILE_NAME = "metadata.parquet"
 SNAPSHOT_MANIFEST_NAME = "metadata.manifest.json"
+ROSTER_DIR_NAME = "roster"
+INPUT_DIR_NAME = "input"
+INPUT_MANIFEST_NAME = "input_manifest.json"
+ASSIGNMENTS_DIR_NAME = "assignments"
+ASSIGNMENT_FILE_SUFFIX = ".parquet"
+RECEIPT_FILE_NAME = "receipt.json"
+
+REGISTRY_EFFECTIVE_CIK_DATASET = "effective_ciks"
+REGISTRY_EFFECTIVE_CIK_INPUT_NAME = "effective_cik_input.csv"
 
 
 @dataclass(frozen=True, slots=True)
@@ -59,6 +76,13 @@ class MetadataPaths:
         """Merge manifest for one snapshot."""
         return self.snapshot_dir(snapshot_id) / SNAPSHOT_MANIFEST_NAME
 
+    def snapshot_cik_index(self, snapshot_id: str) -> Path:
+        """Sorted distinct CIK index published beside one snapshot payload.
+
+        Phase 1 reads this for membership and coverage; Phase 2 never opens it.
+        """
+        return self.snapshot_dir(snapshot_id) / SNAPSHOT_CIK_INDEX_NAME
+
     @property
     def current_pointer(self) -> Path:
         """Atomic JSON pointer naming the currently published snapshot."""
@@ -89,21 +113,53 @@ class MetadataPaths:
         return self.registry_manifest_root(registry_id) / f"{dataset}.parquet"
 
     def effective_input_file(self, registry_id: str) -> Path:
-        """Path of the effective CIK input CSV for one registry."""
-        return self.registry_root(registry_id) / "effective_cik_input.csv"
+        """Path of the effective CIK input CSV for one registry.
+
+        An export for people and v1-era scripts, not the internal carrier: the
+        roster Parquet dataset beside it is what a plan consumes.
+        """
+        return self.registry_root(registry_id) / REGISTRY_EFFECTIVE_CIK_INPUT_NAME
+
+    def effective_cik_roster(self, registry_id: str) -> Path:
+        """Path of the effective CIK roster dataset for one registry."""
+        return self.registry_dataset(registry_id, REGISTRY_EFFECTIVE_CIK_DATASET)
 
 
 @dataclass(frozen=True, slots=True)
 class RunPaths:
-    """Plan-scoped paths for plan persistence and chunk checkpoints."""
+    """Plan-scoped paths for the plan bundle and chunk checkpoints."""
 
     metadata: MetadataPaths
     plan_id: str
 
     @property
     def plan_file(self) -> Path:
-        """Immutable plan document for this run."""
+        """Small execution manifest for this plan."""
         return self.metadata.plan_dir(self.plan_id) / PLAN_FILE_NAME
+
+    @property
+    def plan_bundle(self) -> Path:
+        """Root of the immutable bundle copied to a worker."""
+        return self.metadata.plan_dir(self.plan_id)
+
+    @property
+    def roster_file(self) -> Path:
+        """The CIK cohort, stored once for the whole plan."""
+        return self.plan_bundle / ROSTER_DIR_NAME / ROSTER_FILE_NAME
+
+    @property
+    def input_manifest_file(self) -> Path:
+        """Diagnostics about where the selected cohort came from."""
+        return self.plan_bundle / INPUT_DIR_NAME / INPUT_MANIFEST_NAME
+
+    @property
+    def assignments_dir(self) -> Path:
+        """Directory holding one chunk-to-worker mapping per distribution."""
+        return self.plan_bundle / ASSIGNMENTS_DIR_NAME
+
+    def assignment_file(self, assignment_id: str) -> Path:
+        """Path of one worker assignment dataset."""
+        return self.assignments_dir / f"{assignment_id}{ASSIGNMENT_FILE_SUFFIX}"
 
     @property
     def chunk_dir(self) -> Path:
@@ -140,7 +196,15 @@ def resolve_run_paths(
 
 
 __all__ = [
+    "ASSIGNMENTS_DIR_NAME",
+    "ASSIGNMENT_FILE_SUFFIX",
+    "INPUT_DIR_NAME",
+    "INPUT_MANIFEST_NAME",
     "METADATA_DIR",
+    "RECEIPT_FILE_NAME",
+    "REGISTRY_EFFECTIVE_CIK_DATASET",
+    "REGISTRY_EFFECTIVE_CIK_INPUT_NAME",
+    "ROSTER_DIR_NAME",
     "MetadataPaths",
     "RunPaths",
     "resolve_metadata_paths",

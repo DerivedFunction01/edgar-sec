@@ -12,8 +12,10 @@ consumed by the existing CSV-driven augmentation path:
 * ``registrant_registry`` — one row per CIK in the union of curated and active.
 * ``new_ciks`` — the subset the curated input does not cover.
 * ``augmentation_worklist`` — the new CIKs shaped for an augmentation run.
-* ``effective_cik_input.csv`` — the full union as a CIK manifest, consumable by
-  ``augment --input``.
+* ``effective_ciks`` — the full union as a CIK roster dataset, the carrier a plan
+  consumes.
+* ``effective_cik_input.csv`` — the same union as a CIK manifest, retained as an
+  export for people and v1-era scripts.
 
 Every Parquet dataset is published beside a manifest carrying its content digest
 and upstream chain, so a consumer can prove which source snapshot and curated
@@ -31,10 +33,7 @@ from typing import Any
 import pyarrow as pa
 
 from edgar_sec.foundation.hashing import file_sha256, sha256_bytes
-from edgar_sec.foundation.runtime.settings.runtime import (
-    DEFAULT_CHUNK_SIZE,
-    DEFAULT_PARTITION_COUNT,
-)
+from edgar_sec.foundation.runtime.settings.runtime import DEFAULT_CHUNK_SIZE
 from edgar_sec.foundation.serialization import canonical_json
 from edgar_sec.infra.storage.atomic import atomic_write_json, atomic_write_text
 from edgar_sec.infra.storage.parquet import (
@@ -44,12 +43,23 @@ from edgar_sec.infra.storage.parquet import (
 )
 
 from .manifest import read_cik_manifest
-from .paths import MetadataPaths
+from .paths import REGISTRY_EFFECTIVE_CIK_DATASET, MetadataPaths
+from .roster import (
+    ROSTER_SCHEMA_VERSION,
+    Roster,
+    RosterError,
+    build_roster,
+    read_roster,
+    roster_from_manifest,
+    roster_to_csv_text,
+    write_roster,
+)
 from .source_registry import SOURCE_NAME, load_source_snapshot, parse_company_tickers
 
 REGISTRY_SCHEMA_VERSION = "1.0.0"
 REGISTRY_MANIFEST_KIND = "registry_artifact"
 EFFECTIVE_INPUT_MANIFEST_KIND = "effective_cik_input"
+ROSTER_MANIFEST_KIND = "effective_cik_roster"
 
 LISTING_SCHEMA = pa.schema(
     [
@@ -96,9 +106,12 @@ __all__ = [
     "REGISTRY_MANIFEST_KIND",
     "REGISTRY_SCHEMA",
     "REGISTRY_SCHEMA_VERSION",
+    "ROSTER_MANIFEST_KIND",
     "WORKLIST_SCHEMA",
     "RegistryError",
     "compare_sources",
+    "load_registry_manifest",
+    "load_registry_roster",
     "registry_id_for",
 ]
 
@@ -118,14 +131,6 @@ def registry_id_for(source_snapshot_id: str, curated_fingerprint: str) -> str:
         ]
     ).encode("utf-8")
     return sha256_bytes(material)[:32]
-
-
-def _csv_escape(value: str) -> str:
-    text = str(value or "")
-    if any(character in text for character in (",", '"', "\n", "\r")):
-        escaped = text.replace('"', '""')
-        return f'"{escaped}"'
-    return text
 
 
 def _write_dataset(
@@ -231,7 +236,8 @@ def compare_sources(
     )
 
     manifest = read_cik_manifest(curated_input_path)
-    curated_by_cik = {cik: manifest.name_for(cik) for cik in manifest.ciks}
+    curated_roster = roster_from_manifest(manifest)
+    curated_by_cik = curated_roster.name_map()
     active_by_cik: dict[str, list[dict[str, Any]]] = defaultdict(list)
     for listing in listings:
         active_by_cik[listing["cik_padded"]].append(listing)
@@ -279,12 +285,11 @@ def compare_sources(
             source_snapshot_id=source_snapshot_id,
         )
 
-    effective_csv = metadata_paths.effective_input_file(registry_id)
-    csv_text = "cik,name\n" + "".join(
-        f"{row['cik_padded']},{_csv_escape(row['canonical_name'])}\n"
-        for row in registry_rows
+    effective_roster = _publish_effective_roster(
+        registry_id, registry_rows, metadata_paths, artifacts_root
     )
-    atomic_write_text(effective_csv, csv_text)
+    effective_csv = metadata_paths.effective_input_file(registry_id)
+    atomic_write_text(effective_csv, roster_to_csv_text(effective_roster))
     effective_manifest = {
         "manifest_kind": EFFECTIVE_INPUT_MANIFEST_KIND,
         "manifest_schema_version": REGISTRY_SCHEMA_VERSION,
@@ -296,9 +301,9 @@ def compare_sources(
         "artifact_path": effective_csv.relative_to(artifacts_root).as_posix(),
         "artifact_sha256": file_sha256(effective_csv),
         "row_count": len(registry_rows),
+        "roster_id": effective_roster.roster_id,
         "columns": ["cik", "name"],
         "chunk_size_default": DEFAULT_CHUNK_SIZE,
-        "partition_count_default": DEFAULT_PARTITION_COUNT,
         "validation_status": "ok",
     }
     atomic_write_json(
@@ -317,6 +322,8 @@ def compare_sources(
         "registry_root": str(root),
         "datasets_root": str(datasets_root),
         "effective_input_path": str(effective_csv),
+        "effective_roster_path": str(metadata_paths.effective_cik_roster(registry_id)),
+        "roster_id": effective_roster.roster_id,
         "curated_cik_count": len(curated_by_cik),
         "active_cik_count": len(active_by_cik),
         "registry_row_count": len(registry_rows),
@@ -330,10 +337,74 @@ def compare_sources(
     }
 
 
+def _publish_effective_roster(
+    registry_id: str,
+    registry_rows: list[dict[str, Any]],
+    metadata_paths: MetadataPaths,
+    artifacts_root: Path,
+) -> Roster:
+    """Publish the effective CIK roster a plan consumes, with its manifest.
+
+    This is the artifact that replaces the CSV as the internal carrier: the CSV
+    is still written beside it, but nothing in the fetch path has to parse a
+    text manifest to learn which CIKs a run covers.
+    """
+    try:
+        roster = build_roster(
+            [str(row["cik_padded"]) for row in registry_rows],
+            [str(row["canonical_name"] or "") for row in registry_rows],
+        )
+    except RosterError as exc:
+        raise RegistryError(f"effective CIK roster is not publishable: {exc}") from exc
+    path = metadata_paths.effective_cik_roster(registry_id)
+    digest = write_roster(roster, path)
+    atomic_write_json(
+        path.with_name(path.name + ".manifest.json"),
+        {
+            "manifest_kind": ROSTER_MANIFEST_KIND,
+            "manifest_schema_version": ROSTER_SCHEMA_VERSION,
+            "dataset": REGISTRY_EFFECTIVE_CIK_DATASET,
+            "producer_phase": "metadata",
+            "registry_id": registry_id,
+            "roster_id": roster.roster_id,
+            "artifact_path": path.relative_to(artifacts_root).as_posix(),
+            "storage_format": "parquet",
+            "artifact_sha256": digest,
+            "row_count": roster.row_count,
+            "upstream_artifact_ids": [registry_id],
+        },
+        canonical=False,
+        indent=2,
+    )
+    return roster
+
+
+def load_registry_roster(registry_id: str, metadata_paths: MetadataPaths) -> Roster:
+    """Load one registry's effective CIK roster, verifying its published digest.
+
+    The manifest is the trust boundary: a roster swapped after publication is
+    refused, so a plan built from it provably covers the cohort the comparison
+    actually published.
+    """
+    path = metadata_paths.effective_cik_roster(registry_id)
+    manifest_path = path.with_name(path.name + ".manifest.json")
+    if not manifest_path.is_file():
+        raise FileNotFoundError(f"registry roster manifest not found: {manifest_path}")
+    manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+    if file_sha256(path) != manifest.get("artifact_sha256"):
+        raise RegistryError("effective CIK roster digest does not match its manifest")
+
+    return read_roster(path, expected_roster_id=str(manifest.get("roster_id", "")))
+
+
 def load_registry_manifest(
     registry_id: str, metadata_paths: MetadataPaths
 ) -> dict[str, Any]:
-    """Load one registry's effective-input manifest and verify its CSV digest."""
+    """Load one registry's effective-input manifest and verify its CSV digest.
+
+    Retained for the CSV export contract. A plan consumes the roster dataset via
+    :func:`load_registry_roster`; this reads the human-facing manifest beside it.
+    """
     path = metadata_paths.effective_input_file(registry_id).with_name(
         "effective_cik_input.csv.manifest.json"
     )
