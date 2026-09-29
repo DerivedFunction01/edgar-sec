@@ -180,7 +180,6 @@ def write_plan_documents(
 
 
 __all__ = [
-    "REQUIRED_PLAN_FILES",
     "TARGET_PLAN_SCHEMA_VERSION",
     "PlanConflictError",
     "plan_bundle_complete",

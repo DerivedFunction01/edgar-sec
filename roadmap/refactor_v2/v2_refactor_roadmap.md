@@ -72,7 +72,7 @@ The v1 architecture successfully solved critical algorithmic challenges: multi-p
 - **Layered Clean Architecture (No numbered folders)**: Strict downward-only imports enforced at CI time.
 - **Flat 1D Block Representation**: Parse filings into a linear stream of typed blocks (`DocumentRepresentation` -> `DocumentBlock[PARAGRAPH, TABLE, PRESERVED, PAGE_BREAK]`). Section bookmarks are established separately in Phase 03 TOC Spine, guaranteeing zero coordinate drift without recursive JSON overhead.
 - **FormPlugin SPI (Inversion of Control)**: Each SEC form (10-K, 10-Q, 8-K, Form 4 XML, Form 13F) is a self-contained plugin registering with a lightweight registry. Adding a form never touches core engines or storage pipelines.
-- **Preserve Industrial Data-Engineering Strengths**: Retain our central Unix-socket `SecBroker` (4 RPS token bucket), immutable PyArrow/DuckDB dataset publishing, SQLite chunk isolation, and policy scanners.
+- **Preserve Industrial Data-Engineering Strengths**: Retain our central Unix-socket `SecBroker` (adaptive 8 RPS slot-spaced limiter), immutable PyArrow/DuckDB dataset publishing, SQLite chunk isolation, and policy scanners.
 
 ---
 
@@ -85,7 +85,7 @@ To prevent designing against nonexistent abstractions or mischaracterizing exist
 | **Phase 01** | `phases/01_metadata_extraction/` | **Submissions Metadata Extraction** (`README.md`): Fetches SEC `data.sec.gov/submissions` feed via thread pool. Normalizes historical + recent filings into one row per CIK in `submission_metadata.parquet`. Owns CIK source registry, listing snapshots, and augmentation delta planning. |
 | **Phase 02** | `phases/02_filing_extraction/` | **Filing Catalog & Planning** (`README.md`): **Zero network calls**. Materializes nested filing observations from Phase 01 Parquet into form-partitioned catalogs using DuckDB staging. Generates immutable target plans (`deterministic` or `policy-driven`) for Phase 2.5. |
 | **Phase 2.5** | `phases/025_webpage_storage/` | **Webpage Storage & Normalized Snapshots** (`README.md`): Consumes Phase 02 target plans. Fetches raw HTML/SGML/iXBRL documents via managed `SecBroker` (production) or offline SQLite CAS (fixture). Runs `DocumentPreprocessor` and `DocumentNormalizer`. Persists isolated SQLite chunks and publishes versioned snapshot Parquets. |
-| **Shared Infra** | `defs/` | **Reusable Infrastructure** (`README.md`):<br>• `sec_http/`: Managed Unix-socket `SecBroker` (aggregate 4 RPS limiter, SQLite response cache, failure ledger).<br>• `sec_documents/`: `DocumentPreprocessor`, `DocumentRepresentation`, SGML multi-document unpacker.<br>• `sec_forms/`: Form evaluators (`AnnualEvaluator`, `QuarterlyEvaluator`, `CurrentReportEvaluator`), normalization pipelines, and cover page matchers.<br>• `storage/`: PyArrow dataset partitioning, SQLite chunk backends, atomic publication.<br>• `sql/`: Typed SQL AST compiler and `SqlExecutor`.<br>• `text/`: Syntax, structure, Aho-Corasick automaton, compounds, HTML parser, and table-protecting ASCII reflow.<br>• `tables/` & `taxonomy/`: Geometry-first table detection and financial table taxonomy classification.<br>• `runtime/`: Dotted settings registry, paths, env resolution, progress adapters.<br>• `viewer/`: Read-only dataset browser and DuckDB query UI. |
+| **Shared Infra** | `defs/` | **Reusable Infrastructure** (`README.md`):<br>• `sec_http/`: Managed Unix-socket `SecBroker` (aggregate adaptive limiter, SQLite response cache, failure ledger).<br>• `sec_documents/`: `DocumentPreprocessor`, `DocumentRepresentation`, SGML multi-document unpacker.<br>• `sec_forms/`: Form evaluators (`AnnualEvaluator`, `QuarterlyEvaluator`, `CurrentReportEvaluator`), normalization pipelines, and cover page matchers.<br>• `storage/`: PyArrow dataset partitioning, SQLite chunk backends, atomic publication.<br>• `sql/`: Typed SQL AST compiler and `SqlExecutor`.<br>• `text/`: Syntax, structure, Aho-Corasick automaton, compounds, HTML parser, and table-protecting ASCII reflow.<br>• `tables/` & `taxonomy/`: Geometry-first table detection and financial table taxonomy classification.<br>• `runtime/`: Dotted settings registry, paths, env resolution, progress adapters.<br>• `viewer/`: Read-only dataset browser and DuckDB query UI. |
 
 ---
 
@@ -96,12 +96,12 @@ To prevent designing against nonexistent abstractions or mischaracterizing exist
 | **Package Structure** | All underlying algorithmic logic and data models survive. | **Eliminate numbered directories** (`01_`, `02_`, `025_`). Transition into clean, unnumbered, acyclic layers. *(Proposed as eight tiers including `documents/`, `forms/`, and `apps/`; reconciled to the five-layer contract of §0, which is what ships.)* |
 | **Phases & Pipelines** | Algorithmic logic of Phases 01, 02, and 025 remains intact. | Map to semantic names: `pipelines/metadata_sync` (Phase 01), `pipelines/filing_catalog` (Phase 02), `pipelines/document_storage` (Phase 025). |
 | **Document Ingestion** | Primary document fetched by default (~2MB); Exhibit 13 refetched on delegation. | **Document AST (`documents/`)**: Tree of `Node` subclasses replacing raw string line-offset manipulation (`build_line_mapper()`). |
-| **Form Evaluators** | Form evaluation contract (detecting stubs/delegation). | Evaluator returns multi-scope `DecisionAction` (`ACCEPT`, `REFETCH_EXHIBIT`, `REFETCH_BUNDLE`, `REFETCH_SUMMARY_XML`), allowing dynamic acquisition scope per form. |
+| **Form Evaluators** | Form evaluation contract (detecting stubs/delegation). | Evaluator returns a `DecisionAction`. **As implemented** (`domain/forms/decisions.py`) the enum has three members — `PROCEED`, `REFETCH_SUB_DOC`, `SKIP_HARD_STUB` — and only one refetch scope is exercised (Exhibit 13). The wider multi-scope design (`REFETCH_BUNDLE`, `REFETCH_SUMMARY_XML`, EX-21/EX-10 targeting) is a future extension, not existing behaviour. |
 | **Filing Model** | Underlying identifiers (`source_cik`, `accession`, `document_path`). | Unified **`FilingAggregate`** (inspired by `edgartools`, but sparse/partially-filled by default). |
 | **Extraction Format** | Clean plain-text normalized documents. | **Native GitHub-Flavored Markdown (GFM)** rendered directly from AST nodes for LLM phases. |
-| **SEC Broker & Pacing** | **Unix-socket `SecBroker`** (4 RPS aggregate token bucket, warm-cache probe). | Preserved 100%. Relocated to `infra/broker/`. |
+| **SEC Broker & Pacing** | **Unix-socket `SecBroker`** (adaptive 8 RPS aggregate slot-spacing limiter, warm-cache probe). | Preserved 100%. Relocated to `infra/broker/`. |
 | **Persistence & Storage** | PyArrow datasets, SQLite chunks, DuckDB queries via `defs.sql`. | Preserved 100%. Relocated to `infra/storage/`. |
-| **Quality Gate** | `check.py` with policy scanners, ruff format/check, test suites. | Preserved 100%, plus an automated **AST Layer-Boundary Scanner** to enforce downward-only imports. (v1 had 14 scanners; v2 ships **7** — `environment-access`, `artifact-paths`, `secrets-leakage`, `clean-exit`, `file-length`, `layer-boundary`, `resource-allocation`.) |
+| **Quality Gate** | `check.py` with policy scanners, ruff format/check, test suites. | Preserved 100%, plus an automated **AST Layer-Boundary Scanner** to enforce downward-only imports. (v1 had 14 scanners; v2 ships **11** — `environment-access`, `artifact-paths`, `secrets-leakage`, `clean-exit`, `file-length`, `layer-boundary`, `resource-allocation`, `regex-alternations`, `legacy-shims`, `json-io`, `date-patterns`. The last four were restored from v1 because v2 still states the rules they enforce and still ships the infrastructure they guard; see §9.6.) |
 
 ---
 
@@ -157,7 +157,7 @@ This track addresses code health, modularity, and circular import risks without 
 The following components are already highly optimized and **must NOT be rewritten or degraded** during refactoring:
 - **Normalization Algorithm**: The character-level whitespace normalization, cover-page checkmark solver, and regex rules run in microseconds and pass v1's 1,409-test suite. They remain functionally intact. *(1,409 is v1's baseline. The v2 tree currently holds **627** tests: 158 migrated from Phase 1 plus 469 new across Phases 1 and 2. None of the character-level algorithms have been rewritten, so that coverage is preserved in substance but not yet in count — the engine's own relocation to `engine/` is Phase 2.5+ work.)*
 - **Table Border & Geometry Detection**: The coordinate-based table detection in `defs/tables/` protects financial tables from corrupted wrapping. It must not be replaced by slow DOM-based parsing.
-- **Unix-Socket `SecBroker`**: The 4 RPS central token bucket and SQLite warm-cache probe mechanism survive 100% intact, moving to `infra/broker/`.
+- **Unix-Socket `SecBroker`**: The central adaptive slot-spaced limiter (8 RPS default) and SQLite warm-cache probe mechanism survive 100% intact, moving to `infra/broker/`.
 - **Two-Tier Storage Backend**: SQLite worker chunking (`chunk-00001.db`) and atomic Parquet publishing remain the core persistence mechanism.
 
 ### 3. Track 2: Feature Additions (New Capabilities Built on the Clean Architecture)
@@ -167,7 +167,7 @@ These are net-new capabilities that build on the refactored architecture without
 - **Feature B: Polymorphic Form Projections**:
   Introduces specialized report models (`AnnualReport` with `sections` / `financial_statements`, `CurrentReport` with `items`, `InsiderOwnershipReport` with transactions) rather than forcing every form into a 10-K shape.
 - **Feature C: Multi-Scope Evaluator Actions**:
-  Expands form evaluators to return `DecisionAction` (`ACCEPT`, `REFETCH_EXHIBIT` for EX-21/EX-10, `REFETCH_BUNDLE` for pre-1998 SGML, or `REFETCH_SUMMARY_XML`).
+  *Future extension.* Expands form evaluators beyond the single `REFETCH_SUB_DOC` scope that is implemented today, to also target EX-21/EX-10, pre-1998 SGML bundles, or summary XML.
 - **Feature D: Downstream DuckDB-Native Warehouse Layers (Roadmap Phases 03–07)**:
   Analytical relational joins over Parquet datasets (`filing_sections.parquet`, `table_cells.parquet`, `thematic_spines.parquet`) executed in DuckDB.
 - **Feature E: Optional XBRL Extension Slot & Standalone Pipeline**:
@@ -373,7 +373,7 @@ edgar_sec/ (or repository root)
 #### Tier 3: Production Operations & Run Diagnostics (`tools/ops/`)
 - **Nature**: Operational tooling for monitoring long-running multi-worker batch pipelines and diagnosing process deadlocks.
 - **Consolidation**:
-  - `scripts/monitor_progress.py` &rarr; `tools/ops/monitor.py` (also exposed via root `python run.py monitor`). Provides rich real-time visual tracking of partition completion, worker throughput, and broker token-bucket pacing.
+  - `scripts/monitor_progress.py` &rarr; `tools/ops/monitor.py` (also exposed via root `python run.py monitor`). Provides rich real-time visual tracking of partition completion, worker throughput, and broker limiter pacing.
   - `scripts/diagnose_stuck_chunk.py` &rarr; `tools/ops/diagnose_chunk.py`. Inspects SQLite chunk locks, process IDs, and uncommitted transactions to identify hung workers.
   - `scripts/compress_partition_db.py` & `scripts/prune_chunk_blobs.py` &rarr; Consolidated natively into the storage pipeline CLI (`python -m pipelines.document_storage.cli vacuum`), eliminating loose scripts.
 
@@ -407,7 +407,7 @@ graph TD
 | **Package Structure** | Flat `defs/` + numbered `phases/` | Single package with 32KB `__init__.py` | **Strict Acyclic Layers** (no numbers, clean imports) |
 | **Document Model** | Raw `str` + line offsets + line mappers | Document Node Tree (`nodes.py`, `table_nodes.py`) | **Flat Typed Block Stream** (`blocks.py`) + **Phase 03 TOC Spine** |
 | **Form Extensibility** | Scattered profiles, routers, and evaluators | Subclasses inheriting from `CompanyReport` | **`FormPlugin` SPI** (self-registering plugins) |
-| **Concurrency & Pacing** | **Unix Socket `SecBroker`** (Central token bucket) | Client-side headers + `time.sleep` | **Unix Socket `SecBroker`** (Preserved from v1) |
+| **Concurrency & Pacing** | **Unix Socket `SecBroker`** (Central adaptive limiter) | Client-side headers + `time.sleep` | **Unix Socket `SecBroker`** (Preserved from v1) |
 | **Storage & Warehouse** | PyArrow Parquet, SQLite chunks, JSONL | Ad-hoc local disk cache | **Two-Tier (SQLite Chunks + Parquet Snapshots)** with DuckDB Middleware (**JSONL Removed**) |
 | **Downstream Scope** | Ad-hoc phase scripts | Single filing in-memory exploration | **DuckDB-Native Relational Joins** across 200,000+ filings (TOC, Facts, Statements) |
 | **Output Formats** | Flat text + metadata dictionary | Markdown, HTML, Rich console, DataFrames | **Structured Parquet + GFM Markdown + 1D Document Blocks** |
@@ -532,7 +532,7 @@ We performed a deep inspection of `dgunning/edgartools` (under `scratch/edgartoo
 - **32KB Monolithic `__init__.py` & Heavy Startup**:
   `edgartools` imports virtually the entire library upon `import edgar`, creating a sluggish startup time and high memory overhead. In `edgar-sec v2`, package `__init__.py` files will remain lean leaf points.
 - **Client-Side Ad-Hoc Rate Limiting**:
-  `edgartools` relies on client-side headers and inline `time.sleep()`. When running multi-process worker pools (e.g. 16 workers), client-side sleeps fail SEC IP-level 10 RPS thresholds. We **must retain our centralized Unix-socket `SecBroker` token bucket**.
+  `edgartools` relies on client-side headers and inline `time.sleep()`. When running multi-process worker pools (e.g. 16 workers), client-side sleeps fail SEC IP-level 10 RPS thresholds. We **must retain our centralized Unix-socket `SecBroker` limiter**.
 - **In-Memory Pandas Footprint**:
   `edgartools` instantiates Pandas DataFrames freely. For a 20-year, 50,000-filing research corpus, in-memory Pandas objects cause severe memory leaks and OOM kills. We retain `edgar-sec`'s immutable PyArrow dataset writing and SQLite chunk isolation.
 
@@ -942,7 +942,7 @@ class AnnualReport(FormReport):
 ##### 3. How a Future / Parallel XBRL Pipeline Plugs In
 If an external pipeline or future module wants to ingest XBRL facts using our high-throughput infrastructure:
 1. **Evaluator Scope**: The custom evaluator returns `REFETCH_EXHIBITS` (targeting `_htm.xml` or `FilingSummary.xml`).
-2. **Concurrency**: Requests route through our managed Unix-socket `SecBroker` token bucket (4 RPS limit preserved across all processes).
+2. **Concurrency**: Requests route through our managed Unix-socket `SecBroker` adaptive slot-spaced limiter (8 RPS default, preserved across all processes).
 3. **Storage**: Extracted XBRL facts are written directly to `xbrl_facts.parquet` via isolated worker SQLite chunks.
 4. **Hydration**: When an analyst accesses `report.xbrl`, DuckDB dynamically joins `xbrl_facts.parquet` on `doc_id`—with zero impact on the core text/table pipeline!
 
@@ -1292,3 +1292,89 @@ under-estimate it. Second, the decisive check for any future `PORTED` verdict is
 a mutation, not a citation. The audit's own mechanical gate cannot catch this
 class of error, because a wrong-but-existing path and an existing-but-irrelevant
 test file both pass every check C1 makes.
+
+### 9.6 Scanner Restoration
+
+The first pass graded v1's `defs/runtime/scanners/` against v2 and found **7
+registered scanners against v1's 14**, recording the other 7 as `DROPPED`. That
+reading was mechanically defensible and substantively wrong. Four of the seven
+enforce rules v2 still *states* while guarding infrastructure v2 still *ships*:
+
+| v1 scanner | rule it enforces | v2 rule text | v2 infrastructure it guards |
+| :--- | :--- | :--- | :--- |
+| `regex_alternations` | no hand-crafted 3+ branch alternations | — (unwritten) | `foundation/regex/builder.py` |
+| `compat` (`legacy-shims`) | zero backward-compatibility shims | §1.1 | the whole package contract |
+| `json_io` | shared, atomic JSON I/O | §1.1 | `foundation/serialization.canonical_json`, `infra/storage/atomic.atomic_write_json` |
+| `dates` (`date-patterns`) | shared date vocabulary | — (unwritten) | `foundation/text/dates.py` |
+
+Dropping them left the rules stated but unenforced, and left the builder DSL
+decorative — a future implementation could hand-write `(?:\d{1,2}/\d{1,2}/\d{4})`
+or a private month table, and the disagreement would surface as a mis-partitioned
+dataset rather than as a failure. All four are restored, registered, and tested
+at `tests/foundation/scanners/test_<name>.py`. The scanner count is now **11**.
+
+Three still-dormant v1 checks were **not** restored, because in each case the
+*rule* changed rather than merely losing its enforcement, and restoring the old
+check would enforce a contract the architecture has since abandoned:
+
+- `sql-boundary` policed a `defs/sql/` AST layer that v2 removed. v2 executes
+  direct SQL deliberately (§2.5). A guard here needs a new rule — "no
+  concatenated string SQL" — not the old one.
+- `path-construction` policed chained `os.path.join` calls. v2's `artifact-paths`
+  covers the same ground far more cheaply, and `ProjectPaths` makes the
+  construction unreachable in practice.
+- `form_isolation` and `storage-boundary` policed contracts §1 no longer states
+  (per-package pyarrow confinement, form-set isolation between phases).
+
+### 9.7 v1 Retirement Readiness
+
+`v1_retirement.tsv` (570 rows, one per v1 `.py`) answers a different question from
+§9: not *is this ported* but *may this file be deleted*. The two are not the same,
+and the difference is where deletions go wrong.
+
+A v1 file is a deletion candidate only when **all three** hold:
+
+1. a v2 module carries the same responsibility, established by symbol-definition
+   match rather than by name similarity;
+2. a v2 test file **imports** that module — parsed with `ast`, not grepped, since
+   a substring search counts a module named in a test's *docstring* as coverage,
+   which is the "topical adjacency" defect §9.5 measured at 40%;
+3. no v1 file that is *not itself superseded* still imports it.
+
+Condition 3 is what a per-file parity verdict cannot see. Deleting a module a
+retained file imports breaks the retained file, so deletion safety is a property
+of a set, not of a row.
+
+| verdict | files | v1 loc | meaning |
+| :--- | ---: | ---: | :--- |
+| `DELETE_NOW` | 25 | 6,551 | safe to delete individually today |
+| `BLOCKED_FOREVER` | 34 | 7,364 | superseded and tested, but a retained v1 file imports it |
+| `NEEDS_EVIDENCE` | 34 | 10,706 | counterpart untested, or a known non-superseded divergence |
+| `UNCLAIMED` | 477 | 85,601 | no verified counterpart *yet* — provisional pending §9's re-audit |
+
+`UNCLAIMED` is deliberately not "KEEP". The Stage A re-audit has not run; 477 rows
+are unsettled, and this column is expected to shrink. Treating an unexamined row
+as a permanent verdict is the same error as grading it from a docstring.
+
+Of the 59 superseded-and-tested files, only **25** can go today. The other 34 are
+blocked by retained dependents — `defs/runtime/paths.py` alone has 44, and
+`resources.py` has 20. Dependency-ordered waves exist for the rest (47 / 6 / 6),
+so retirement is incremental rather than all-or-nothing, but each wave is gated
+on its dependents leaving too.
+
+**Four conditions before any deletion:**
+
+- **`.v1` is not in git.** It is matched by `.gitignore:225:.*`; `git ls-files .v1/`
+  returns 0. Deletion is therefore **irrecoverable**. Archive it first.
+- **v1's own 111 test files are the audit's evidence base.** 57 of the 25
+  `DELETE_NOW` files have v1 tests that reference them, so deleting a module
+  without its tests leaves the v1 suite reporting failures that mean nothing.
+  Delete module and tests together.
+- **A test import is not behavioural completeness.** It proves a test can fail
+  against the module, not that every v1 behaviour is covered. `DELETE_NOW` means
+  *no v1 behaviour is known to be lost*, not *v2 is provably complete*.
+- **`filing_identity.py` is a deliberate exception.** v2 ports its URL half but
+  adopted the *other* v1 identity implementation (`core/schemas.py`'s
+  `sha256(accession:path)`), not this file's canonical-JSON hashing with a
+  `filing-identity-v1` domain prefix. Deleting it destroys the only record of the
+  alternative scheme, so it is `NEEDS_EVIDENCE` despite being well tested.

@@ -27,3 +27,11 @@ ignore = ["TRY004"]
 # check.py is the gate runner: it inspects subprocess return codes to decide
 # which step failed and must not swallow them.
 "check.py" = ["PLW1510"]
+
+# One-off audit tooling under .kilo/plans/ is not part of the shipped package
+# and is not covered by check.py, but it is still linted. ISC004 is suppressed
+# because the implementation ledger stores audit evidence as long prose in
+# tuple elements, and wrapping every one in parentheses would bury the data under
+# punctuation. SIM115 is suppressed because these scripts write their reports
+# once at the end of a run and a context manager per write adds nothing.
+".kilo/plans/parity-inventory/*.py" = ["ISC004", "SIM115"]

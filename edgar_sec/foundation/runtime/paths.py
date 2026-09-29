@@ -20,6 +20,17 @@ PLAN_FILE_NAME = "plan.json"
 SNAPSHOTS_DIR = "snapshots"
 PLANS_DIR = "plans"
 
+# Document-storage layout. Kept beside the shared names above because the
+# snapshot root, the pointer that names the published snapshot, and the
+# transient run root are the *same* cross-pipeline contract the generic
+# constants encode; only the dataset name differs.
+DOCUMENTS_DATASET = "document_storage"
+RUNS_DIR = "runs"
+CHECKPOINTS_DIR = "checkpoints"
+FIXTURES_DIR = "fixtures"
+PAYLOAD_DB_NAME = "payloads.sqlite"
+FIXTURE_MANIFEST_NAME = "fixture_manifest.json"
+
 
 def current_pointer_path(snapshots_root: Path) -> Path:
     """Return the pointer file naming the currently published snapshot.
@@ -54,6 +65,69 @@ class ProjectPaths:
         self.artifacts_root.mkdir(parents=True, exist_ok=True)
         self.cache_root.mkdir(parents=True, exist_ok=True)
         self.uploads_root.mkdir(parents=True, exist_ok=True)
+        self.runtime_root.mkdir(parents=True, exist_ok=True)
+
+    @property
+    def runtime_root(self) -> Path:
+        return self.artifacts_root / "runtime"
+
+    @property
+    def broker_socket_path(self) -> Path:
+        return self.runtime_root / "sec_broker.sock"
+
+    # --- Document storage -------------------------------------------------
+    #
+    # The document-storage pipeline is the one consumer of a *fixture root*:
+    # the raw-payload store that makes the offline fetch path work, and the
+    # review bundles the review tool renders. Both outlive a single run, so
+    # neither belongs under the run-scoped transient tree.
+
+    @property
+    def documents_root(self) -> Path:
+        """Published document snapshots, one directory per snapshot id."""
+        return self.artifacts_root / DOCUMENTS_DATASET / SNAPSHOTS_DIR
+
+    @property
+    def document_transient_root(self) -> Path:
+        """Run-scoped staging for the document-storage pipeline."""
+        return self.artifacts_root / TRANSIENT_DIR / DOCUMENTS_DATASET
+
+    @property
+    def fixtures_root(self) -> Path:
+        """Committed raw-payload fixtures, one directory per fixture id."""
+        return self.artifacts_root / DOCUMENTS_DATASET / FIXTURES_DIR
+
+    def run_dir(self, run_id: str) -> Path:
+        """Return the staging directory for one document-storage run."""
+        return self.document_transient_root / RUNS_DIR / run_id
+
+    def run_checkpoints_dir(self, run_id: str) -> Path:
+        """Return the resumable-checkpoint directory for one run."""
+        return self.run_dir(run_id) / CHECKPOINTS_DIR
+
+    def run_chunks_dir(self, run_id: str) -> Path:
+        """Return the worker chunk directory for one run."""
+        return self.run_dir(run_id) / "chunks"
+
+    def snapshot_dir(self, snapshot_id: str) -> Path:
+        """Return the directory for one published document snapshot."""
+        return self.documents_root / snapshot_id
+
+    def fixture_dir(self, fixture_id: str) -> Path:
+        """Return the directory for one raw-payload fixture."""
+        return self.fixtures_root / fixture_id
+
+    def fixture_db_path(self, fixture_id: str) -> Path:
+        """Return the SQLite path holding one fixture's raw payloads."""
+        return self.fixture_dir(fixture_id) / PAYLOAD_DB_NAME
+
+    def fixture_manifest_path(self, fixture_id: str) -> Path:
+        """Return the lineage manifest for one fixture."""
+        return self.fixture_dir(fixture_id) / FIXTURE_MANIFEST_NAME
+
+    def review_dir(self, run_id: str) -> Path:
+        """Return the directory review bundles are rendered into."""
+        return self.run_dir(run_id) / "review"
 
 
 # edgar_sec/, i.e. three levels up from this file (foundation/runtime/paths.py).
@@ -125,11 +199,17 @@ def resolve_paths(repo_root: Path | str | None = None) -> ProjectPaths:
 
 
 __all__ = [
+    "CHECKPOINTS_DIR",
     "CURRENT_DIR",
+    "DOCUMENTS_DATASET",
+    "FIXTURES_DIR",
+    "FIXTURE_MANIFEST_NAME",
     "PACKAGE_ROOT",
+    "PAYLOAD_DB_NAME",
     "PLANS_DIR",
     "PLAN_FILE_NAME",
     "POINTER_FILE_NAME",
+    "RUNS_DIR",
     "SNAPSHOTS_DIR",
     "TRANSIENT_DIR",
     "ProjectPaths",

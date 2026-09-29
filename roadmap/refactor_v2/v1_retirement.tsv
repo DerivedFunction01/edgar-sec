@@ -1,0 +1,571 @@
+v1_path	v1_loc	v1_kind	workstream	prior_parity	v2_counterpart	v2_test	v1_tests_broken	deletion_verdict	deletion_wave	reason
+.v1/check.py	74	code	W10	PARTIAL			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/__init__.py	21	code	W10	DROPPED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/entities/__init__.py	23	code	W7	DROPPED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/entities/lexicon.py	231	code	W7	PORTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/filing_identity.py	219	code	W10	PARTIAL	edgar_sec/domain/sec_urls.py;edgar_sec/domain/identity.py	tests/domain/document/test_models.py;tests/domain/filing_catalog/test_schemas.py;tests/domain/test_identity.py;tests/domain/test_sec_urls.py;tests/domain/test_sec_urls_archive.py;tests/infra/sec_http/test_client.py;tests/infra/storage/test_document_parquet.py;tests/pipelines/document_storage/test_delegation.py;tests/pipelines/document_storage/test_fetching.py;tests/pipelines/document_storage/test_merger.py;tests/pipelines/document_storage/test_operator_and_cli.py;tests/pipelines/document_storage/test_review.py;tests/pipelines/document_storage/test_vacuum.py;tests/pipelines/document_storage/test_worker.py;tests/pipelines/filing_catalog/test_phase25_contract.py;tests/pipelines/metadata_sync/test_augmentation.py;tests/pipelines/metadata_sync/test_end_to_end.py;tests/pipelines/metadata_sync/test_worker.py;tests/support.py	yes	NEEDS_EVIDENCE		v2 ports the URL half of this file but adopted the OTHER v1 identity implementation (core/schemas.py sha256(accession:path)), not this file's canonical-JSON hashing with a 'filing-identity-v1' domain prefix. Deleting it destroys the only record of the alternative scheme.
+.v1/defs/http/__init__.py	19	code	W6	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/http/policy.py	28	code	W6	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/http/transport.py	59	code	W6	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/regex/__init__.py	30	code	W3	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/regex/builder.py	234	code	W3	NOT_STARTED	edgar_sec/foundation/regex/builder.py	tests/foundation/regex/test_builder.py	yes	DELETE_NOW	1	tested by 1 v2 test file(s)
+.v1/defs/regex/formatting.py	88	code	W3	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/regex/trie.py	103	code	W3	NOT_STARTED	edgar_sec/foundation/regex/trie.py	tests/foundation/regex/test_trie.py	yes	DELETE_NOW	1	tested by 1 v2 test file(s)
+.v1/defs/runtime/__init__.py	141	code	W7	DROPPED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/runtime/artifacts.py	833	code	W7	PARTIAL			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/runtime/bundle.py	160	code	W7	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/runtime/checks.py	295	code	W7	PARTIAL	edgar_sec/foundation/checks.py;edgar_sec/foundation/scanners/base.py;edgar_sec/foundation/scanners/environment.py	tests/foundation/scanners/test_scanners.py	yes	BLOCKED_FOREVER	2	7 v1 file(s) that are NOT superseded still import it: defs/runtime/scanners/engine.py, defs/runtime/scanners/form_isolation.py, defs/runtime/scanners/length.py, defs/runtime/scanners/resources.py
+.v1/defs/runtime/cli.py	57	code	W7	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/runtime/config_io.py	83	code	W7	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/runtime/env.py	185	code	W7	PARTIAL	edgar_sec/foundation/runtime/env.py	tests/foundation/runtime/test_env.py	yes	BLOCKED_FOREVER	1	2 v1 file(s) that are NOT superseded still import it: defs/tests/test_checks.py, defs/tests/test_env.py
+.v1/defs/runtime/interactive.py	164	code	W7	PARTIAL			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/runtime/memory.py	67	code	W7	PORTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/runtime/partitions.py	39	code	W7	PARTIAL	edgar_sec/foundation/runtime/partitions.py	tests/foundation/runtime/test_partitions.py	yes	BLOCKED_FOREVER	1	1 v1 file(s) that are NOT superseded still import it: phases/01_metadata_extraction/tests/test_run_interactive.py
+.v1/defs/runtime/paths.py	698	code	W7	PARTIAL	edgar_sec/foundation/runtime/paths.py	tests/foundation/runtime/test_paths.py;tests/pipelines/document_storage/test_operator_and_cli.py	yes	BLOCKED_FOREVER	1	44 v1 file(s) that are NOT superseded still import it: defs/sec_http/broker_cli.py, defs/sec_http/client.py, defs/taxonomy/probe/cache.py, defs/taxonomy/probe/exporter.py
+.v1/defs/runtime/progress.py	78	code	W7	PARTIAL	edgar_sec/foundation/runtime/progress.py		yes	NEEDS_EVIDENCE		counterpart exists but no v2 test references it
+.v1/defs/runtime/registry.py	123	code	W7	PARTIAL			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/runtime/resources.py	229	code	W7	PORTED	edgar_sec/foundation/runtime/resources.py	tests/foundation/runtime/test_resources.py;tests/pipelines/document_storage/test_worker.py	yes	BLOCKED_FOREVER	1	20 v1 file(s) that are NOT superseded still import it: defs/taxonomy/probe/cache.py, defs/taxonomy/probe/cli.py, defs/tests/test_runtime_resources.py, phases/01_metadata_extraction/core/augmentation.py
+.v1/defs/runtime/scanners/clean_exit.py	76	code	W7	PORTED	edgar_sec/foundation/scanners/clean_exit.py	tests/foundation/scanners/test_scanners.py	yes	BLOCKED_FOREVER	1	1 v1 file(s) that are NOT superseded still import it: defs/tests/test_checks.py
+.v1/defs/runtime/scanners/compat.py	88	code	W7	NOT_STARTED	edgar_sec/foundation/scanners/legacy_shims.py	tests/foundation/scanners/test_legacy_shims.py	yes	BLOCKED_FOREVER	1	1 v1 file(s) that are NOT superseded still import it: defs/tests/test_checks.py
+.v1/defs/runtime/scanners/dates.py	101	code	W7	NOT_STARTED	edgar_sec/foundation/scanners/date_patterns.py	tests/foundation/scanners/test_date_patterns.py	yes	BLOCKED_FOREVER	1	1 v1 file(s) that are NOT superseded still import it: defs/tests/test_checks.py
+.v1/defs/runtime/scanners/engine.py	154	code	W7	PARTIAL			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/runtime/scanners/form_isolation.py	87	code	W7	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/runtime/scanners/json_io.py	87	code	W7	NOT_STARTED	edgar_sec/foundation/scanners/json_io.py	tests/foundation/scanners/test_json_io.py	yes	BLOCKED_FOREVER	1	1 v1 file(s) that are NOT superseded still import it: defs/tests/test_checks.py
+.v1/defs/runtime/scanners/length.py	86	code	W7	PARTIAL	edgar_sec/foundation/scanners/length.py		yes	NEEDS_EVIDENCE		counterpart exists but no v2 test references it
+.v1/defs/runtime/scanners/paths.py	86	code	W7	NOT_STARTED	edgar_sec/foundation/scanners/paths.py	tests/foundation/scanners/test_scanners.py	yes	BLOCKED_FOREVER	1	1 v1 file(s) that are NOT superseded still import it: defs/tests/test_checks.py
+.v1/defs/runtime/scanners/regex_alternations.py	99	code	W7	NOT_STARTED	edgar_sec/foundation/scanners/regex_alternations.py	tests/foundation/scanners/test_regex_alternations.py	yes	BLOCKED_FOREVER	1	1 v1 file(s) that are NOT superseded still import it: defs/tests/test_checks.py
+.v1/defs/runtime/scanners/resources.py	77	code	W7	PARTIAL	edgar_sec/foundation/scanners/resources.py		yes	NEEDS_EVIDENCE		counterpart exists but no v2 test references it
+.v1/defs/runtime/scanners/secrets.py	89	code	W7	PORTED	edgar_sec/foundation/scanners/secrets.py	tests/foundation/scanners/test_scanners.py	yes	BLOCKED_FOREVER	1	1 v1 file(s) that are NOT superseded still import it: defs/tests/test_checks.py
+.v1/defs/runtime/settings/__init__.py	347	code	W7	PARTIAL			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/runtime/settings/paths.py	57	code	W7	PORTED_DIVERGED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/runtime/settings/runtime.py	145	code	W7	PORTED_DIVERGED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/runtime/settings/sec.py	64	code	W7	PORTED_DIVERGED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/runtime/settings_cli.py	121	code	W7	PARTIAL			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/sec_documents/__init__.py	28	code	W6	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/sec_documents/models.py	51	code	W6	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/sec_documents/preprocessor.py	176	code	W6	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/sec_documents/sgml.py	378	code	W6	NOT_STARTED	edgar_sec/engine/document/unpacker.py	tests/engine/document/test_unpacker.py	yes	BLOCKED_FOREVER	2	2 v1 file(s) that are NOT superseded still import it: defs/tests/test_sgml.py, scratch/probe_pem_pipeline.py
+.v1/defs/sec_forms/__init__.py	89	code	W2	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/sec_forms/concepts.py	51	code	W2	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/sec_forms/context/__init__.py	59	code	W2	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/sec_forms/context/adapters/__init__.py	26	code	W2	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/sec_forms/context/adapters/cover_scope.py	56	code	W2	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/sec_forms/context/adapters/toc_adapter.py	271	code	W2	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/sec_forms/context/models.py	184	code	W2	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/sec_forms/context/structure.py	345	code	W2	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/sec_forms/cover/__init__.py	158	code	W1	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/sec_forms/cover/body_context.py	127	code	W1	NOT_STARTED	edgar_sec/domain/forms/body_evidence.py;edgar_sec/engine/forms/cover/body_evidence.py	tests/engine/forms/cover/test_body_evidence.py	yes	DELETE_NOW	2	tested by 1 v2 test file(s)
+.v1/defs/sec_forms/cover/body_search.py	235	code	W1	NOT_STARTED	edgar_sec/engine/forms/cover/body_search.py		yes	NEEDS_EVIDENCE		counterpart exists but no v2 test references it
+.v1/defs/sec_forms/cover/body_start.py	481	code	W1	NOT_STARTED	edgar_sec/engine/forms/cover/body_start.py	tests/engine/forms/cover/test_body_start.py	yes	BLOCKED_FOREVER	1	1 v1 file(s) that are NOT superseded still import it: defs/sec_forms/cover/topology.py
+.v1/defs/sec_forms/cover/boundary/__init__.py	99	code	W1	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/sec_forms/cover/boundary/body_prose.py	99	code	W1	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/sec_forms/cover/boundary/detection.py	398	code	W1	NOT_STARTED	edgar_sec/engine/forms/cover/boundary.py	tests/engine/forms/cover/test_boundary.py	yes	DELETE_NOW	1	tested by 1 v2 test file(s)
+.v1/defs/sec_forms/cover/boundary/finalize.py	58	code	W1	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/sec_forms/cover/boundary/helpers.py	61	code	W1	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/sec_forms/cover/boundary/transition.py	139	code	W1	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/sec_forms/cover/checkmark/__init__.py	76	code	W1	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/sec_forms/cover/checkmark/candidates.py	638	code	W1	NOT_STARTED	edgar_sec/engine/forms/checkmarks/extractor.py;edgar_sec/engine/forms/checkmarks/extractor.py		yes	NEEDS_EVIDENCE		counterpart exists but no v2 test references it
+.v1/defs/sec_forms/cover/checkmark/frames.py	48	code	W1	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/sec_forms/cover/checkmark/models.py	121	code	W1	NOT_STARTED	edgar_sec/engine/forms/checkmarks/solver.py	tests/engine/forms/checkmarks/test_solver_core.py	yes	BLOCKED_FOREVER	1	3 v1 file(s) that are NOT superseded still import it: defs/sec_forms/cover/checkmark/rewrite.py, defs/sec_forms/cover/checkmark/solver.py, defs/sec_forms/cover/inference.py
+.v1/defs/sec_forms/cover/checkmark/rewrite.py	429	code	W1	NOT_STARTED	edgar_sec/engine/forms/checkmarks/rewrite.py		yes	NEEDS_EVIDENCE		counterpart exists but no v2 test references it
+.v1/defs/sec_forms/cover/checkmark/schemas.py	116	code	W1	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/sec_forms/cover/checkmark/solver.py	187	code	W1	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/sec_forms/cover/checkmark/yes_no_pairs.py	134	code	W1	NOT_STARTED	edgar_sec/engine/forms/checkmarks/_yesno.py	tests/engine/forms/checkmarks/test_yesno.py	yes	BLOCKED_FOREVER	1	3 v1 file(s) that are NOT superseded still import it: defs/sec_forms/cover/reflow.py, defs/sec_forms/normalization/pipelines/common.py, defs/tests/test_text_healing.py
+.v1/defs/sec_forms/cover/closing.py	117	code	W1	NOT_STARTED	edgar_sec/engine/forms/cover/closing.py	tests/engine/forms/cover/test_closing.py	yes	BLOCKED_FOREVER	1	1 v1 file(s) that are NOT superseded still import it: defs/tests/test_closing.py
+.v1/defs/sec_forms/cover/cover_start.py	134	code	W1	NOT_STARTED	edgar_sec/engine/forms/cover/cover_start.py		yes	NEEDS_EVIDENCE		counterpart exists but no v2 test references it
+.v1/defs/sec_forms/cover/extractors.py	177	code	W1	PARTIAL	edgar_sec/engine/forms/cover/extractors.py;edgar_sec/engine/forms/cover/extractors.py	tests/engine/forms/cover/test_extractors.py	yes	BLOCKED_FOREVER	1	1 v1 file(s) that are NOT superseded still import it: defs/tests/test_sec_forms.py
+.v1/defs/sec_forms/cover/healing.py	106	code	W1	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/sec_forms/cover/inference.py	441	code	W1	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/sec_forms/cover/models.py	177	code	W1	NOT_STARTED	edgar_sec/engine/forms/cover/models.py	tests/engine/forms/cover/test_body_start.py;tests/engine/forms/cover/test_boundary.py;tests/engine/forms/plugins/test_models.py;tests/engine/forms/test_normalize.py	yes	BLOCKED_FOREVER	1	9 v1 file(s) that are NOT superseded still import it: defs/sec_forms/cover/tables.py, defs/sec_forms/cover/topology.py, defs/sec_forms/forms/annual/taxonomy.py, defs/sec_forms/forms/current_report/taxonomy.py
+.v1/defs/sec_forms/cover/profiles.py	261	code	W1	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/sec_forms/cover/reflow.py	61	code	W1	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/sec_forms/cover/rules.py	113	code	W1	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/sec_forms/cover/structure.py	342	code	W1	NOT_STARTED	edgar_sec/engine/forms/cover/structure.py	tests/engine/forms/cover/test_structure.py	yes	BLOCKED_FOREVER	1	6 v1 file(s) that are NOT superseded still import it: defs/sec_forms/cover/toc/analysis.py, defs/sec_forms/cover/toc/residue.py, defs/tables/false_tables.py, defs/tables/toc.py
+.v1/defs/sec_forms/cover/tables.py	161	code	W1	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/sec_forms/cover/toc/__init__.py	54	code	W1	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/sec_forms/cover/toc/analysis.py	203	code	W1	NOT_STARTED	edgar_sec/engine/tables/toc.py		yes	NEEDS_EVIDENCE		counterpart exists but no v2 test references it
+.v1/defs/sec_forms/cover/toc/finder.py	454	code	W1	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/sec_forms/cover/toc/models.py	31	code	W1	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/sec_forms/cover/toc/patterns.py	56	code	W1	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/sec_forms/cover/toc/residue.py	140	code	W1	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/sec_forms/cover/topology.py	139	code	W1	NOT_STARTED			yes	NEEDS_EVIDENCE		counterpart exists but no v2 test references it
+.v1/defs/sec_forms/families.py	125	code	W2	PARTIAL	edgar_sec/domain/forms/families.py	tests/domain/forms/test_families.py	yes	BLOCKED_FOREVER	3	1 v1 file(s) that are NOT superseded still import it: defs/sec_forms/normalization/registry.py
+.v1/defs/sec_forms/forms/__init__.py	8	code	W1	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/sec_forms/forms/annual/__init__.py	50	code	W1	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/sec_forms/forms/annual/evaluator.py	145	code	W1	NOT_STARTED	edgar_sec/engine/forms/evaluators/annual.py	tests/engine/forms/evaluators/test_annual.py	yes	BLOCKED_FOREVER	3	1 v1 file(s) that are NOT superseded still import it: defs/tests/test_sec_forms_normalization.py
+.v1/defs/sec_forms/forms/annual/evidence.py	340	code	W1	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/sec_forms/forms/annual/sequences.py	106	code	W1	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/sec_forms/forms/annual/taxonomy.py	489	code	W1	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/sec_forms/forms/annual/vocabulary.py	128	code	W1	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/sec_forms/forms/common.py	109	code	W1	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/sec_forms/forms/current_report/__init__.py	25	code	W1	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/sec_forms/forms/current_report/evaluator.py	38	code	W1	NOT_STARTED	edgar_sec/engine/forms/evaluators/current_report.py	tests/engine/forms/evaluators/test_current_report.py	yes	BLOCKED_FOREVER	3	1 v1 file(s) that are NOT superseded still import it: defs/tests/test_sec_forms_normalization.py
+.v1/defs/sec_forms/forms/current_report/evidence.py	99	code	W1	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/sec_forms/forms/current_report/taxonomy.py	40	code	W1	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/sec_forms/forms/evaluator.py	97	code	W1	NOT_STARTED	edgar_sec/engine/forms/evaluators/base.py;edgar_sec/domain/forms/decisions.py	tests/domain/forms/test_decisions.py;tests/engine/forms/evaluators/test_annual.py;tests/engine/forms/evaluators/test_base.py;tests/engine/forms/evaluators/test_current_report.py;tests/engine/forms/evaluators/test_quarterly.py;tests/engine/forms/test_normalize.py	yes	BLOCKED_FOREVER	2	1 v1 file(s) that are NOT superseded still import it: defs/tests/test_sec_forms_normalization.py
+.v1/defs/sec_forms/forms/profiles.py	162	code	W1	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/sec_forms/forms/quarterly/__init__.py	8	code	W1	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/sec_forms/forms/quarterly/evaluator.py	67	code	W1	NOT_STARTED	edgar_sec/engine/forms/evaluators/quarterly.py	tests/engine/forms/evaluators/test_quarterly.py	yes	BLOCKED_FOREVER	1	1 v1 file(s) that are NOT superseded still import it: defs/tests/test_sec_forms_normalization.py
+.v1/defs/sec_forms/forms/quarterly/evidence.py	64	code	W1	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/sec_forms/forms/quarterly/taxonomy.py	97	code	W1	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/sec_forms/forms/registry.py	73	code	W1	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/sec_forms/models.py	89	code	W2	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/sec_forms/normalization/__init__.py	15	code	W2	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/sec_forms/normalization/base.py	28	code	W2	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/sec_forms/normalization/engine.py	62	code	W2	NOT_STARTED	edgar_sec/engine/forms/normalize.py	tests/engine/forms/test_normalization_goldens.py;tests/engine/forms/test_normalize.py	yes	DELETE_NOW	1	tested by 2 v2 test file(s)
+.v1/defs/sec_forms/normalization/models.py	40	code	W2	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/sec_forms/normalization/pipelines/annual.py	15	code	W2	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/sec_forms/normalization/pipelines/common.py	441	code	W2	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/sec_forms/normalization/pipelines/current_report.py	15	code	W2	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/sec_forms/normalization/pipelines/fallback.py	15	code	W2	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/sec_forms/normalization/pipelines/quarterly.py	15	code	W2	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/sec_forms/normalization/registry.py	47	code	W2	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/sec_forms/page_markers/__init__.py	83	code	W2	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/sec_forms/page_markers/artifacts.py	179	code	W2	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/sec_forms/page_markers/ascii/__init__.py	31	code	W2	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/sec_forms/page_markers/ascii/candidates.py	515	code	W2	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/sec_forms/page_markers/ascii/headers.py	454	code	W2	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/sec_forms/page_markers/ascii/layout.py	92	code	W2	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/sec_forms/page_markers/ascii/orchestrator.py	363	code	W2	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/sec_forms/page_markers/ascii/policy.py	330	code	W2	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/sec_forms/page_markers/ascii/windows.py	270	code	W2	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/sec_forms/page_markers/constants.py	339	code	W2	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/sec_forms/page_markers/fast_html/__init__.py	15	code	W2	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/sec_forms/page_markers/fast_html/converter.py	182	code	W2	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/sec_forms/page_markers/models.py	245	code	W2	NOT_STARTED	edgar_sec/engine/document/page_markers.py	tests/engine/document/test_page_markers.py;tests/engine/forms/test_normalize.py	yes	BLOCKED_FOREVER	1	2 v1 file(s) that are NOT superseded still import it: defs/tests/test_anchored_duplicate_markers.py, defs/tests/test_fast_html_page_markers.py
+.v1/defs/sec_forms/page_markers/orchestrator.py	107	code	W2	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/sec_forms/page_markers/prose.py	43	code	W2	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/sec_forms/page_markers/sequence.py	289	code	W2	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/sec_forms/sequences.py	181	code	W2	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/sec_forms/vocabulary.py	469	code	W2	NOT_STARTED	edgar_sec/domain/forms/schemas.py;edgar_sec/domain/forms/vocabulary.py;edgar_sec/domain/forms/vocabulary.py	tests/domain/forms/test_schemas.py;tests/domain/forms/test_vocabulary.py;tests/engine/forms/checkmarks/test_solver_core.py;tests/engine/forms/plugins/test_models.py;tests/engine/forms/plugins/test_registry.py	yes	BLOCKED_FOREVER	1	2 v1 file(s) that are NOT superseded still import it: defs/taxonomy/components/cover.py, defs/tests/test_sec_forms.py
+.v1/defs/sec_http/__init__.py	63	code	W6	DROPPED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/sec_http/broker.py	409	code	W6	NOT_STARTED	edgar_sec/infra/broker/sec_broker.py	tests/infra/broker/test_broker.py	yes	BLOCKED_FOREVER	2	2 v1 file(s) that are NOT superseded still import it: defs/tests/test_sec_http_broker.py, phases/025_webpage_storage/tests/test_fetcher.py
+.v1/defs/sec_http/broker_cli.py	340	code	W6	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/sec_http/cache.py	421	code	W6	PARTIAL			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/sec_http/client.py	536	code	W6	PARTIAL			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/sec_http/errors.py	36	code	W6	PORTED	edgar_sec/infra/sec_http/errors.py	tests/infra/sec_http/test_client.py	yes	DELETE_NOW	1	tested by 1 v2 test file(s)
+.v1/defs/sec_http/metrics.py	77	code	W6	PARTIAL			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/sec_http/rate_limit.py	106	code	W6	PARTIAL			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/sec_http/retry.py	53	code	W6	PORTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/sql/__init__.py	46	code	W5	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/sql/checks.py	77	code	W5	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/sql/compiler/__init__.py	82	code	W5	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/sql/compiler/common.py	85	code	W5	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/sql/compiler/ddl.py	143	code	W5	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/sql/compiler/expressions.py	334	code	W5	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/sql/compiler/predicates.py	124	code	W5	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/sql/compiler/relations.py	182	code	W5	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/sql/compiler/statements.py	281	code	W5	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/sql/context.py	76	code	W5	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/sql/dialects.py	98	code	W5	PARTIAL			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/sql/errors.py	39	code	W5	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/sql/executor.py	433	code	W5	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/sql/expressions.py	158	code	W5	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/sql/models.py	213	code	W5	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/sql/predicates.py	94	code	W5	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/sql/relations.py	132	code	W5	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/sql/schema.py	169	code	W5	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/sql/statements.py	322	code	W5	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/storage/__init__.py	148	code	W5	DROPPED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/storage/artifacts.py	207	code	W5	PARTIAL			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/storage/checks.py	119	code	W5	DROPPED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/storage/converter.py	64	code	W5	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/storage/dataset.py	110	code	W5	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/storage/duckdb_merge.py	303	code	W5	PARTIAL			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/storage/errors.py	30	code	W5	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/storage/executor.py	127	code	W5	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/storage/factory.py	18	code	W5	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/storage/finalized.py	455	code	W5	PARTIAL			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/storage/jsonl/__init__.py	14	code	W5	DROPPED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/storage/jsonl/chunk.py	246	code	W5	DROPPED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/storage/jsonl/codec.py	46	code	W5	DROPPED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/storage/jsonl/kv.py	165	code	W5	DROPPED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/storage/jsonl/wal.py	107	code	W5	DROPPED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/storage/memory.py	95	code	W5	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/storage/models.py	134	code	W5	PARTIAL			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/storage/parquet.py	486	code	W5	PARTIAL			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/storage/predicates.py	215	code	W5	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/storage/protocols.py	70	code	W5	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/storage/staging.py	196	code	W5	PARTIAL			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/tables/__init__.py	99	code	W4	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/tables/ascii_html/__init__.py	360	code	W4	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/tables/ascii_html/balance.py	359	code	W4	NOT_STARTED	edgar_sec/engine/tables/ascii_html/balance.py		yes	NEEDS_EVIDENCE		counterpart exists but no v2 test references it
+.v1/defs/tables/ascii_html/blocks.py	532	code	W4	NOT_STARTED	edgar_sec/engine/tables/ascii_html/blocks.py		yes	NEEDS_EVIDENCE		counterpart exists but no v2 test references it
+.v1/defs/tables/ascii_html/borders.py	264	code	W4	NOT_STARTED	edgar_sec/engine/tables/ascii_html/borders.py		yes	NEEDS_EVIDENCE		counterpart exists but no v2 test references it
+.v1/defs/tables/ascii_html/columns.py	260	code	W4	NOT_STARTED	edgar_sec/engine/tables/ascii_html/columns.py		yes	NEEDS_EVIDENCE		counterpart exists but no v2 test references it
+.v1/defs/tables/ascii_html/continuation.py	220	code	W4	NOT_STARTED	edgar_sec/engine/tables/ascii_html/continuation.py		yes	NEEDS_EVIDENCE		counterpart exists but no v2 test references it
+.v1/defs/tables/ascii_html/css.py	493	code	W4	NOT_STARTED	edgar_sec/engine/tables/ascii_html/css.py		yes	NEEDS_EVIDENCE		counterpart exists but no v2 test references it
+.v1/defs/tables/ascii_html/diagnostics.py	62	code	W4	NOT_STARTED	edgar_sec/engine/tables/ascii_html/diagnostics.py		yes	NEEDS_EVIDENCE		counterpart exists but no v2 test references it
+.v1/defs/tables/ascii_html/dividers.py	323	code	W4	NOT_STARTED	edgar_sec/engine/tables/ascii_html/dividers.py		yes	NEEDS_EVIDENCE		counterpart exists but no v2 test references it
+.v1/defs/tables/ascii_html/geometry.py	150	code	W4	NOT_STARTED	edgar_sec/engine/tables/ascii_html/geometry.py		yes	NEEDS_EVIDENCE		counterpart exists but no v2 test references it
+.v1/defs/tables/ascii_html/model.py	280	code	W4	NOT_STARTED	edgar_sec/engine/tables/ascii_html/model.py	tests/engine/tables/ascii_html/test_renderer.py	yes	BLOCKED_FOREVER	2	4 v1 file(s) that are NOT superseded still import it: defs/tables/ascii_html/spans.py, defs/tables/ascii_html/text.py, defs/tables/ascii_html/widths.py, defs/tests/test_html_pipeline.py
+.v1/defs/tables/ascii_html/quick_grid.py	81	code	W4	NOT_STARTED	edgar_sec/engine/tables/ascii_html/quick_grid.py		no	NEEDS_EVIDENCE		counterpart exists but no v2 test references it
+.v1/defs/tables/ascii_html/renderer.py	519	code	W4	NOT_STARTED	edgar_sec/engine/tables/ascii_html/renderer.py	tests/engine/tables/ascii_html/test_renderer.py	yes	BLOCKED_FOREVER	1	1 v1 file(s) that are NOT superseded still import it: defs/taxonomy/probe/cache.py
+.v1/defs/tables/ascii_html/spans.py	438	code	W4	NOT_STARTED	edgar_sec/engine/tables/ascii_html/spans.py		yes	NEEDS_EVIDENCE		counterpart exists but no v2 test references it
+.v1/defs/tables/ascii_html/text.py	217	code	W4	NOT_STARTED	edgar_sec/engine/tables/ascii_html/text.py		yes	NEEDS_EVIDENCE		counterpart exists but no v2 test references it
+.v1/defs/tables/ascii_html/widths.py	434	code	W4	NOT_STARTED	edgar_sec/engine/tables/ascii_html/widths.py		yes	NEEDS_EVIDENCE		counterpart exists but no v2 test references it
+.v1/defs/tables/currencies.py	156	code	W4	NOT_STARTED	edgar_sec/engine/tables/currencies.py	tests/engine/tables/test_currencies.py;tests/engine/tables/test_numeric_cells.py	no	DELETE_NOW	1	tested by 2 v2 test file(s)
+.v1/defs/tables/false_tables.py	498	code	W4	NOT_STARTED	edgar_sec/engine/tables/false_tables.py		yes	NEEDS_EVIDENCE		counterpart exists but no v2 test references it
+.v1/defs/tables/hybrid.py	284	code	W4	NOT_STARTED			yes	NEEDS_EVIDENCE		counterpart exists but no v2 test references it
+.v1/defs/tables/numeric_cells.py	110	code	W4	NOT_STARTED	edgar_sec/engine/tables/numeric_cells.py	tests/engine/tables/test_numeric_cells.py	no	BLOCKED_FOREVER	3	2 v1 file(s) that are NOT superseded still import it: defs/taxonomy/tables/shapes.py, defs/text/reflow/context.py
+.v1/defs/tables/patterns.py	219	code	W4	NOT_STARTED	edgar_sec/engine/tables/patterns.py		no	NEEDS_EVIDENCE		counterpart exists but no v2 test references it
+.v1/defs/tables/protection.py	245	code	W4	NOT_STARTED	edgar_sec/engine/tables/protection.py	tests/engine/tables/test_protection.py	yes	BLOCKED_FOREVER	3	4 v1 file(s) that are NOT superseded still import it: defs/tests/test_table_protection.py, defs/text/html/decompose.py, defs/text/reflow/context.py, defs/text/reflow/tools/analysis_records.py
+.v1/defs/tables/resolver.py	301	code	W4	NOT_STARTED	edgar_sec/engine/tables/resolver.py	tests/engine/tables/test_resolver.py	yes	BLOCKED_FOREVER	2	1 v1 file(s) that are NOT superseded still import it: defs/tests/test_reflow.py
+.v1/defs/tables/structural.py	213	code	W4	NOT_STARTED	edgar_sec/engine/tables/structural.py	tests/engine/tables/test_structural.py	yes	BLOCKED_FOREVER	3	1 v1 file(s) that are NOT superseded still import it: defs/tests/test_reflow.py
+.v1/defs/tables/table_policy.py	183	code	W4	NOT_STARTED	edgar_sec/engine/tables/table_policy.py	tests/engine/tables/test_table_policy.py	yes	BLOCKED_FOREVER	2	1 v1 file(s) that are NOT superseded still import it: defs/tests/test_reflow.py
+.v1/defs/tables/templates/__init__.py	10	code	W4	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/tables/templates/scope.py	52	code	W4	NOT_STARTED	edgar_sec/engine/tables/ascii_html/dividers.py		yes	NEEDS_EVIDENCE		counterpart exists but no v2 test references it
+.v1/defs/tables/toc.py	45	code	W4	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/tables/tokens.py	106	code	W4	NOT_STARTED	edgar_sec/engine/tables/numeric_cells.py	tests/engine/tables/test_numeric_cells.py	yes	BLOCKED_FOREVER	1	2 v1 file(s) that are NOT superseded still import it: defs/taxonomy/probe/cache.py, defs/text/reflow/features.py
+.v1/defs/tables/types.py	253	code	W4	NOT_STARTED			no	NEEDS_EVIDENCE		counterpart exists but no v2 test references it
+.v1/defs/tables/units.py	120	code	W4	NOT_STARTED			no	NEEDS_EVIDENCE		counterpart exists but no v2 test references it
+.v1/defs/taxonomy/__init__.py	3	code	W4	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/taxonomy/components/__init__.py	3	code	W4	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/taxonomy/components/cover.py	172	code	W4	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/taxonomy/components/financials/__init__.py	3	code	W4	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/taxonomy/components/financials/balance.py	120	code	W4	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/taxonomy/components/financials/cash_flow.py	101	code	W4	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/taxonomy/components/financials/equity.py	92	code	W4	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/taxonomy/components/financials/income.py	156	code	W4	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/taxonomy/components/financials/reflow.py	69	code	W4	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/taxonomy/components/schedules/__init__.py	50	code	W4	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/taxonomy/components/schedules/debt_maturity.py	70	code	W4	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/taxonomy/components/schedules/deferred_tax.py	70	code	W4	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/taxonomy/components/schedules/derivatives/__init__.py	51	code	W4	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/taxonomy/components/schedules/derivatives/aoci.py	100	code	W4	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/taxonomy/components/schedules/derivatives/bases.py	79	code	W4	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/taxonomy/components/schedules/derivatives/cp.py	139	code	W4	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/taxonomy/components/schedules/derivatives/credit.py	30	code	W4	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/taxonomy/components/schedules/derivatives/engine.py	71	code	W4	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/taxonomy/components/schedules/derivatives/eq.py	97	code	W4	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/taxonomy/components/schedules/derivatives/fx.py	50	code	W4	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/taxonomy/components/schedules/derivatives/generic.py	170	code	W4	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/taxonomy/components/schedules/derivatives/guards.py	46	code	W4	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/taxonomy/components/schedules/derivatives/ir.py	64	code	W4	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/taxonomy/components/schedules/derivatives/spec.py	141	code	W4	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/taxonomy/components/schedules/eps_reconciliation.py	75	code	W4	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/taxonomy/components/schedules/exhibit_index.py	120	code	W4	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/taxonomy/components/schedules/fair_value.py	72	code	W4	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/taxonomy/components/schedules/intangibles.py	136	code	W4	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/taxonomy/components/schedules/inventory.py	128	code	W4	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/taxonomy/components/schedules/labor.py	371	code	W4	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/taxonomy/components/schedules/lease_maturity.py	71	code	W4	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/taxonomy/components/schedules/legal.py	187	code	W4	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/taxonomy/components/schedules/pension.py	72	code	W4	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/taxonomy/components/schedules/ppe.py	122	code	W4	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/taxonomy/components/schedules/shares_purchased.py	81	code	W4	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/taxonomy/components/schedules/stock_comp.py	97	code	W4	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/taxonomy/components/schedules/tax_reconciliation.py	70	code	W4	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/taxonomy/components/signatures.py	67	code	W4	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/taxonomy/probe/__init__.py	25	code	W4	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/taxonomy/probe/audit.py	182	code	W4	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/taxonomy/probe/blobs.py	151	code	W4	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/taxonomy/probe/cache.py	470	code	W4	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/taxonomy/probe/census.py	248	code	W4	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/taxonomy/probe/cli.py	533	code	W4	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/taxonomy/probe/constants.py	87	code	W4	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/taxonomy/probe/css_census.py	237	code	W4	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/taxonomy/probe/exporter.py	232	code	W4	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/taxonomy/probe/inspector.py	51	code	W4	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/taxonomy/probe/optimizer.py	204	code	W4	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/taxonomy/probe/profiler.py	415	code	W4	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/taxonomy/probe/rules.py	119	code	W4	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/taxonomy/tables/__init__.py	3	code	W4	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/taxonomy/tables/classifier.py	197	code	W4	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/taxonomy/tables/families.py	67	code	W4	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/taxonomy/tables/shapes.py	79	code	W4	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/taxonomy/tables/specs.py	107	code	W4	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/testing/__init__.py	1	code	B-tests	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/testing/goldens.py	94	code	B-tests	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/tests/build_table_corpus.py	83	script	B-tests	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/tests/build_table_review_artifacts.py	94	script	B-tests	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/tests/chunk_table_reviews.py	56	script	B-tests	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/tests/conftest.py	10	test	B-tests	PORTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/tests/debug_table_conversion.py	33	script	B-tests	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/tests/dump_table_corpus.py	172	script	B-tests	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/tests/dump_table_review_set.py	69	script	B-tests	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/tests/promote_table_corpus.py	110	script	B-tests	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/tests/query_table_corpus.py	215	script	B-tests	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/tests/test_anchored_duplicate_markers.py	73	test	B-tests	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/tests/test_artifact_handoff.py	232	test	B-tests	PARTIAL			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/tests/test_ascii_html.py	1286	test	B-tests	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/tests/test_body_start.py	402	test	B-tests	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/tests/test_bow_scorer.py	732	test	B-tests	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/tests/test_checks.py	669	test	B-tests	PARTIAL			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/tests/test_closing.py	99	test	B-tests	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/tests/test_config_io.py	60	test	B-tests	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/tests/test_context_contracts.py	378	test	B-tests	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/tests/test_cover_boundary.py	983	test	B-tests	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/tests/test_cover_checkmark_inference.py	631	test	B-tests	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/tests/test_cover_profiles.py	141	test	B-tests	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/tests/test_cover_tables.py	154	test	B-tests	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/tests/test_cover_toc.py	155	test	B-tests	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/tests/test_dates.py	204	test	B-tests	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/tests/test_entities.py	22	test	B-tests	PORTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/tests/test_env.py	71	test	B-tests	PARTIAL			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/tests/test_false_tables.py	612	test	B-tests	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/tests/test_fast_html_page_markers.py	191	test	B-tests	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/tests/test_filing_identity.py	229	test	B-tests	PARTIAL			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/tests/test_finalized_dataset.py	282	test	B-tests	PARTIAL			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/tests/test_grammar.py	75	test	B-tests	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/tests/test_html_cleaner.py	268	test	B-tests	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/tests/test_html_pipeline.py	228	test	B-tests	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/tests/test_http_transport.py	110	test	B-tests	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/tests/test_hybrid_tables.py	191	test	B-tests	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/tests/test_import_cycles.py	57	test	B-tests	PARTIAL			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/tests/test_logical_units.py	110	test	B-tests	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/tests/test_page_markers.py	259	test	B-tests	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/tests/test_paths.py	256	test	B-tests	PARTIAL			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/tests/test_progress.py	68	test	B-tests	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/tests/test_reflow.py	1013	test	B-tests	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/tests/test_regex_builder.py	314	test	B-tests	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/tests/test_runtime_interactive.py	161	test	B-tests	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/tests/test_runtime_memory.py	31	test	B-tests	PORTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/tests/test_runtime_registry.py	99	test	B-tests	PARTIAL			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/tests/test_runtime_resources.py	303	test	B-tests	PARTIAL			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/tests/test_sec_documents_preprocessor.py	94	test	B-tests	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/tests/test_sec_forms.py	183	test	B-tests	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/tests/test_sec_forms_normalization.py	208	test	B-tests	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/tests/test_sec_http_broker.py	396	test	B-tests	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/tests/test_sec_http_cache_migration.py	82	test	B-tests	DROPPED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/tests/test_sec_http_cache_reader.py	124	test	B-tests	PARTIAL			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/tests/test_sec_http_client.py	361	test	B-tests	PARTIAL			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/tests/test_sec_http_headers.py	24	test	B-tests	PARTIAL			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/tests/test_settings.py	322	test	B-tests	PARTIAL			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/tests/test_sgml.py	434	test	B-tests	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/tests/test_sql_ast_stress.py	813	test	B-tests	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/tests/test_sql_contract.py	354	test	B-tests	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/tests/test_sql_executor.py	251	test	B-tests	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/tests/test_storage_artifacts.py	68	test	B-tests	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/tests/test_storage_contract.py	230	test	B-tests	PARTIAL			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/tests/test_storage_merge.py	178	test	B-tests	PARTIAL			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/tests/test_storage_staging.py	36	test	B-tests	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/tests/test_table_boundary_fragmentation.py	53	test	B-tests	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/tests/test_table_continuation.py	165	test	B-tests	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/tests/test_table_probe.py	87	test	B-tests	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/tests/test_table_protection.py	108	test	B-tests	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/tests/test_table_taxonomy_contracts.py	553	test	B-tests	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/tests/test_taxonomy_exporter.py	409	test	B-tests	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/tests/test_taxonomy_profiler.py	127	test	B-tests	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/tests/test_taxonomy_tail_patterns.py	32	test	B-tests	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/tests/test_text_automaton.py	156	test	B-tests	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/tests/test_text_compounds.py	71	test	B-tests	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/tests/test_text_counts.py	28	test	B-tests	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/tests/test_text_healing.py	362	test	B-tests	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/tests/test_text_whitespace.py	52	test	B-tests	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/tests/test_toc_engine.py	510	test	B-tests	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/tests/test_tokens.py	99	test	B-tests	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/tests/test_viewer_datasets.py	305	test	B-tests	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/tests/test_viewer_discover.py	161	test	B-tests	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/tests/test_viewer_duckdb_engine.py	104	test	B-tests	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/tests/test_viewer_server.py	182	test	B-tests	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/tests/test_viewer_sql_guard.py	50	test	B-tests	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/tests/viewer_fixtures.py	96	test	B-tests	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/text/__init__.py	217	code	W3	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/text/bow/__init__.py	76	code	W3	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/text/bow/automaton.py	474	code	W3	NOT_STARTED	edgar_sec/foundation/text/automaton.py	tests/foundation/text/test_automaton.py	yes	BLOCKED_FOREVER	1	1 v1 file(s) that are NOT superseded still import it: defs/text/bow/engine.py
+.v1/defs/text/bow/engine.py	494	code	W3	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/text/bow/match.py	106	code	W3	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/text/bow/types.py	84	code	W3	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/text/healing/__init__.py	56	code	W3	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/text/healing/compounds.py	209	code	W3	NOT_STARTED	edgar_sec/foundation/text/compounds.py	tests/foundation/text/test_compounds.py	yes	DELETE_NOW	1	tested by 1 v2 test file(s)
+.v1/defs/text/healing/lines.py	513	code	W3	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/text/healing/whitespace.py	76	code	W3	NOT_STARTED	edgar_sec/engine/document/whitespace.py	tests/engine/document/test_whitespace.py	yes	DELETE_NOW	1	tested by 1 v2 test file(s)
+.v1/defs/text/html/__init__.py	42	code	W3	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/text/html/cleaner.py	360	code	W3	NOT_STARTED	edgar_sec/engine/document/html_cleaner.py	tests/engine/document/test_html_cleaner.py	yes	DELETE_NOW	1	tested by 1 v2 test file(s)
+.v1/defs/text/html/decompose.py	198	code	W3	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/text/html/pipeline.py	86	code	W3	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/text/html/pre.py	49	code	W3	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/text/html/tags.py	78	code	W3	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/text/html/tree.py	437	code	W3	NOT_STARTED	edgar_sec/engine/document/html.py	tests/engine/document/test_html.py	yes	DELETE_NOW	1	tested by 1 v2 test file(s)
+.v1/defs/text/reflow/__init__.py	58	code	W3	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/text/reflow/classifier.py	179	code	W3	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/text/reflow/context.py	649	code	W3	NOT_STARTED	edgar_sec/engine/reflow/context.py		yes	NEEDS_EVIDENCE		counterpart exists but no v2 test references it
+.v1/defs/text/reflow/engine.py	393	code	W3	NOT_STARTED	edgar_sec/engine/reflow/engine.py	tests/engine/reflow/test_reflow.py	yes	BLOCKED_FOREVER	1	3 v1 file(s) that are NOT superseded still import it: defs/text/reflow/tools/analysis_inventory.py, defs/text/reflow/tools/analysis_records.py, scratch/probe_block_trace.py
+.v1/defs/text/reflow/features.py	147	code	W3	NOT_STARTED	edgar_sec/engine/reflow/features.py		yes	NEEDS_EVIDENCE		counterpart exists but no v2 test references it
+.v1/defs/text/reflow/registry.py	423	code	W3	NOT_STARTED	edgar_sec/engine/reflow/registry.py		yes	NEEDS_EVIDENCE		counterpart exists but no v2 test references it
+.v1/defs/text/reflow/rules.py	587	code	W3	NOT_STARTED	edgar_sec/engine/reflow/rules.py		yes	NEEDS_EVIDENCE		counterpart exists but no v2 test references it
+.v1/defs/text/reflow/tools/__init__.py	0	code	W3	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/text/reflow/tools/analysis.py	105	script	W3	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/text/reflow/tools/analysis_export.py	184	code	W3	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/text/reflow/tools/analysis_features.py	420	code	W3	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/text/reflow/tools/analysis_inventory.py	317	code	W3	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/text/reflow/tools/analysis_records.py	415	code	W3	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/text/reflow/tools/clustering/__init__.py	51	code	W3	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/text/reflow/tools/clustering/audit.py	259	code	W3	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/text/reflow/tools/clustering/context.py	9	code	W3	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/text/reflow/tools/clustering/dataset.py	322	code	W3	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/text/reflow/tools/clustering/experimental_registry.py	102	code	W3	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/text/reflow/tools/clustering/registry.py	27	code	W3	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/text/reflow/tools/clustering/rules.py	23	code	W3	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/text/reflow/tools/clustering/tests/__init__.py	1	test	B-tests	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/text/reflow/tools/clustering/tests/test_clustering.py	63	test	B-tests	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/text/reflow/tools/clustering/tests/test_context.py	89	test	B-tests	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/text/reflow/tools/clustering/tests/test_dataset.py	152	test	B-tests	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/text/reflow/tools/clustering/tests/test_experimental_registry.py	60	test	B-tests	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/text/reflow/tools/clustering/tests/test_rules.py	70	test	B-tests	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/text/reflow/tools/clustering/unsupervised.py	280	code	W3	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/text/reflow/tools/tests/__init__.py	0	test	B-tests	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/text/reflow/tools/tests/test_analysis.py	223	test	B-tests	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/text/reflow/types.py	106	code	W3	NOT_STARTED	edgar_sec/engine/reflow/types.py	tests/engine/reflow/test_reflow.py;tests/engine/tables/test_resolver.py	yes	BLOCKED_FOREVER	1	1 v1 file(s) that are NOT superseded still import it: scratch/probe_block_trace.py
+.v1/defs/text/structure/__init__.py	70	code	W3	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/text/structure/counts.py	42	code	W3	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/text/structure/logical_units.py	208	code	W3	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/text/structure/patterns.py	83	code	W3	NOT_STARTED	edgar_sec/foundation/text/patterns.py	tests/foundation/text/test_patterns.py	yes	DELETE_NOW	1	tested by 1 v2 test file(s)
+.v1/defs/text/syntax/__init__.py	221	code	W3	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/text/syntax/checkmarks.py	325	code	W3	NOT_STARTED	edgar_sec/domain/forms/checkmarks.py	tests/domain/forms/test_checkmarks.py	yes	DELETE_NOW	1	tested by 1 v2 test file(s)
+.v1/defs/text/syntax/dates.py	543	code	W3	NOT_STARTED	edgar_sec/foundation/text/dates.py	tests/foundation/text/test_dates.py	yes	DELETE_NOW	1	tested by 1 v2 test file(s)
+.v1/defs/text/syntax/grammar.py	248	code	W3	NOT_STARTED	edgar_sec/foundation/text/grammar.py	tests/foundation/text/test_grammar.py	yes	DELETE_NOW	1	tested by 1 v2 test file(s)
+.v1/defs/text/syntax/signatures.py	239	code	W3	NOT_STARTED	edgar_sec/engine/document/signatures.py	tests/engine/document/test_signatures.py	yes	DELETE_NOW	1	tested by 1 v2 test file(s)
+.v1/defs/text/syntax/tokens.py	154	code	W3	NOT_STARTED	edgar_sec/foundation/text/tokens.py	tests/foundation/text/test_tokens.py	yes	DELETE_NOW	1	tested by 1 v2 test file(s)
+.v1/defs/text/syntax/unicode.py	63	code	W3	NOT_STARTED	edgar_sec/foundation/text/normalize.py	tests/foundation/text/test_normalize.py	yes	DELETE_NOW	1	tested by 1 v2 test file(s)
+.v1/defs/viewer/__init__.py	1	code	W7	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/viewer/__main__.py	40	code	W7	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/viewer/datasets.py	478	code	W7	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/viewer/discover.py	255	code	W7	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/viewer/serialize.py	43	code	W7	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/viewer/server.py	189	code	W7	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/defs/viewer/sql_guard.py	98	code	W7	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/phases/01_metadata_extraction/__init__.py	1	code	W8	PORTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/phases/01_metadata_extraction/cli.py	295	code	W8	PARTIAL			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/phases/01_metadata_extraction/core/__init__.py	85	code	W8	DROPPED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/phases/01_metadata_extraction/core/application.py	519	code	W8	PARTIAL			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/phases/01_metadata_extraction/core/augmentation.py	405	code	W8	PARTIAL			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/phases/01_metadata_extraction/core/checkpoints.py	165	code	W8	PORTED_DIVERGED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/phases/01_metadata_extraction/core/chunks.py	179	code	W8	PARTIAL			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/phases/01_metadata_extraction/core/config.py	247	code	W8	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/phases/01_metadata_extraction/core/fetch.py	41	code	W8	PORTED_DIVERGED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/phases/01_metadata_extraction/core/input_manifest.py	116	code	W8	PORTED_DIVERGED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/phases/01_metadata_extraction/core/merge.py	780	code	W8	PARTIAL			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/phases/01_metadata_extraction/core/normalize/__init__.py	62	code	W8	DROPPED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/phases/01_metadata_extraction/core/normalize/builder.py	295	code	W8	PORTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/phases/01_metadata_extraction/core/normalize/filings.py	232	code	W8	PORTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/phases/01_metadata_extraction/core/normalize/helpers.py	130	code	W8	PORTED_DIVERGED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/phases/01_metadata_extraction/core/normalize/profile.py	153	code	W8	PORTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/phases/01_metadata_extraction/core/paths.py	138	code	W8	PORTED_DIVERGED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/phases/01_metadata_extraction/core/planning.py	176	code	W8	PARTIAL			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/phases/01_metadata_extraction/core/preview.py	90	code	W8	PARTIAL			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/phases/01_metadata_extraction/core/registry.py	272	code	W8	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/phases/01_metadata_extraction/core/schemas.py	160	code	W8	PORTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/phases/01_metadata_extraction/core/sec_client.py	127	code	W8	PORTED_DIVERGED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/phases/01_metadata_extraction/core/source_registry.py	278	code	W8	PARTIAL			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/phases/01_metadata_extraction/core/storage.py	86	code	W8	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/phases/01_metadata_extraction/operator.py	603	code	W8	PARTIAL			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/phases/01_metadata_extraction/run.py	207	code	W8	PARTIAL			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/phases/01_metadata_extraction/smoke_test.py	67	script	W8	PARTIAL			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/phases/01_metadata_extraction/tests/conftest.py	16	test	B-tests	PORTED_DIVERGED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/phases/01_metadata_extraction/tests/test_application.py	491	test	B-tests	PARTIAL			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/phases/01_metadata_extraction/tests/test_augmentation.py	189	test	B-tests	PORTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/phases/01_metadata_extraction/tests/test_checkpoints.py	114	test	B-tests	PARTIAL			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/phases/01_metadata_extraction/tests/test_chunks.py	56	test	B-tests	PORTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/phases/01_metadata_extraction/tests/test_config.py	417	test	B-tests	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/phases/01_metadata_extraction/tests/test_failure_ledger.py	183	test	B-tests	PARTIAL			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/phases/01_metadata_extraction/tests/test_input_manifest.py	70	test	B-tests	PORTED_DIVERGED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/phases/01_metadata_extraction/tests/test_merge.py	435	test	B-tests	PARTIAL			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/phases/01_metadata_extraction/tests/test_normalize.py	311	test	B-tests	PORTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/phases/01_metadata_extraction/tests/test_run_interactive.py	686	test	B-tests	PARTIAL			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/phases/01_metadata_extraction/tests/test_sec_http.py	215	test	B-tests	PARTIAL			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/phases/01_metadata_extraction/tests/test_source_registry.py	103	test	B-tests	PARTIAL			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/phases/025_webpage_storage/__init__.py	1	code	W9	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/phases/025_webpage_storage/cli.py	601	code	W9	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/phases/025_webpage_storage/core/__init__.py	1	code	W9	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/phases/025_webpage_storage/core/chunk_cache.py	135	code	W9	PARTIAL			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/phases/025_webpage_storage/core/chunk_persistence.py	481	code	W9	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/phases/025_webpage_storage/core/chunk_worker.py	483	code	W9	NOT_STARTED	edgar_sec/pipelines/document_storage/worker.py	tests/pipelines/document_storage/test_merger.py;tests/pipelines/document_storage/test_operator_and_cli.py;tests/pipelines/document_storage/test_vacuum.py;tests/pipelines/document_storage/test_worker.py	yes	DELETE_NOW	1	tested by 4 v2 test file(s)
+.v1/phases/025_webpage_storage/core/exhibit_second_pass.py	280	code	W9	NOT_STARTED	edgar_sec/pipelines/document_storage/delegation.py	tests/pipelines/document_storage/test_delegation.py	yes	DELETE_NOW	1	tested by 1 v2 test file(s)
+.v1/phases/025_webpage_storage/core/fetcher.py	523	code	W9	NOT_STARTED	edgar_sec/pipelines/document_storage/fetching.py	tests/pipelines/document_storage/test_delegation.py;tests/pipelines/document_storage/test_fetching.py;tests/pipelines/document_storage/test_worker.py	yes	DELETE_NOW	1	tested by 3 v2 test file(s)
+.v1/phases/025_webpage_storage/core/fixture_builder.py	293	code	W9	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/phases/025_webpage_storage/core/partition_handoff.py	143	code	W9	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/phases/025_webpage_storage/core/partition_merger.py	341	code	W9	PARTIAL			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/phases/025_webpage_storage/core/partition_reader.py	226	code	W9	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/phases/025_webpage_storage/core/pipeline.py	444	code	W9	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/phases/025_webpage_storage/core/processor.py	271	code	W9	NOT_STARTED	edgar_sec/pipelines/document_storage/processor.py	tests/pipelines/document_storage/test_delegation.py;tests/pipelines/document_storage/test_worker.py	yes	DELETE_NOW	1	tested by 2 v2 test file(s)
+.v1/phases/025_webpage_storage/core/queries.py	166	code	W9	NOT_STARTED	edgar_sec/pipelines/document_storage/queries.py	tests/pipelines/document_storage/test_settings_contract.py;tests/pipelines/document_storage/test_vacuum.py	yes	DELETE_NOW	1	tested by 2 v2 test file(s)
+.v1/phases/025_webpage_storage/core/records.py	187	code	W9	NOT_STARTED	edgar_sec/domain/document/acquisition.py;edgar_sec/domain/document/models.py	tests/domain/document/test_acquisition.py;tests/domain/document/test_models.py;tests/foundation/test_hashing.py;tests/infra/storage/test_document_parquet.py;tests/pipelines/document_storage/test_delegation.py;tests/pipelines/document_storage/test_fetching.py;tests/pipelines/document_storage/test_merger.py;tests/pipelines/document_storage/test_operator_and_cli.py;tests/pipelines/document_storage/test_review.py;tests/pipelines/document_storage/test_vacuum.py;tests/pipelines/document_storage/test_worker.py	yes	DELETE_NOW	1	tested by 11 v2 test file(s)
+.v1/phases/025_webpage_storage/core/run_status.py	115	code	W9	PARTIAL			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/phases/025_webpage_storage/core/schemas.py	466	code	W9	NOT_STARTED	edgar_sec/infra/storage/payload_store.py	tests/infra/storage/test_payload_store.py;tests/pipelines/document_storage/test_fetching.py;tests/pipelines/document_storage/test_operator_and_cli.py;tests/pipelines/document_storage/test_worker.py	yes	DELETE_NOW	1	tested by 4 v2 test file(s)
+.v1/phases/025_webpage_storage/core/snapshot.py	664	code	W9	NOT_STARTED	edgar_sec/infra/storage/document_parts.py;edgar_sec/infra/storage/manifests.py;edgar_sec/pipelines/document_storage/merger.py;edgar_sec/infra/storage/document_parquet.py	tests/infra/storage/test_document_parquet.py;tests/pipelines/document_storage/test_merger.py;tests/pipelines/document_storage/test_operator_and_cli.py;tests/pipelines/document_storage/test_review.py;tests/pipelines/document_storage/test_vacuum.py;tests/pipelines/document_storage/test_worker.py	yes	DELETE_NOW	1	tested by 6 v2 test file(s)
+.v1/phases/025_webpage_storage/core/snapshot_merge.py	485	code	W9	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/phases/025_webpage_storage/core/targets.py	203	code	W9	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/phases/025_webpage_storage/core/vacuum.py	449	code	W9	NOT_STARTED	edgar_sec/pipelines/document_storage/vacuum.py	tests/pipelines/document_storage/test_settings_contract.py;tests/pipelines/document_storage/test_vacuum.py	yes	DELETE_NOW	1	tested by 2 v2 test file(s)
+.v1/phases/025_webpage_storage/run.py	311	code	W9	PARTIAL			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/phases/025_webpage_storage/testing/__init__.py	23	code	B-tests	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/phases/025_webpage_storage/testing/corpus.py	208	code	B-tests	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/phases/025_webpage_storage/testing/paths.py	76	code	B-tests	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/phases/025_webpage_storage/testing/review.py	263	code	B-tests	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/phases/025_webpage_storage/tests/__init__.py	1	test	B-tests	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/phases/025_webpage_storage/tests/conftest.py	199	test	B-tests	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/phases/025_webpage_storage/tests/test_chunk_worker.py	672	test	B-tests	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/phases/025_webpage_storage/tests/test_cli.py	146	test	B-tests	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/phases/025_webpage_storage/tests/test_document_corpus.py	242	test	B-tests	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/phases/025_webpage_storage/tests/test_document_goldens.py	104	test	B-tests	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/phases/025_webpage_storage/tests/test_fetcher.py	434	test	B-tests	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/phases/025_webpage_storage/tests/test_filing_processor.py	297	test	B-tests	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/phases/025_webpage_storage/tests/test_fixture_builder.py	365	test	B-tests	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/phases/025_webpage_storage/tests/test_partition_merger.py	202	test	B-tests	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/phases/025_webpage_storage/tests/test_pipeline.py	366	test	B-tests	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/phases/025_webpage_storage/tests/test_schemas.py	81	test	B-tests	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/phases/025_webpage_storage/tests/test_target_provenance.py	100	test	B-tests	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/phases/025_webpage_storage/tests/test_temporal_snapshot.py	343	test	B-tests	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/phases/025_webpage_storage/tools/__init__.py	1	code	W9	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/phases/025_webpage_storage/tools/build_document_review_artifacts.py	153	code	W9	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/phases/025_webpage_storage/tools/chunk_document_reviews.py	52	code	W9	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/phases/025_webpage_storage/tools/dump_document_review_set.py	64	code	W9	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/phases/025_webpage_storage/tools/dump_documents.py	130	code	W9	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/phases/025_webpage_storage/tools/promote_document_corpus.py	317	code	W9	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/phases/025_webpage_storage/tools/promote_document_expectations.py	97	code	W9	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/phases/025_webpage_storage/tools/query_document_corpus.py	55	code	W9	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/phases/02_filing_extraction/__init__.py	1	code	W8	PORTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/phases/02_filing_extraction/cli.py	164	code	W8	PORTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/phases/02_filing_extraction/core/__init__.py	1	code	W8	PORTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/phases/02_filing_extraction/core/company_family.py	496	code	W8	PORTED_DIVERGED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/phases/02_filing_extraction/core/discovery.py	159	code	W8	PORTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/phases/02_filing_extraction/core/document_filters.py	19	code	W8	PORTED_DIVERGED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/phases/02_filing_extraction/core/family_vocab.py	126	code	W8	PORTED_DIVERGED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/phases/02_filing_extraction/core/materialize/__init__.py	21	code	W8	PORTED_DIVERGED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/phases/02_filing_extraction/core/materialize/engine.py	319	code	W8	PORTED_DIVERGED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/phases/02_filing_extraction/core/materialize/sql.py	106	code	W8	PORTED_DIVERGED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/phases/02_filing_extraction/core/paths.py	115	code	W8	PORTED_DIVERGED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/phases/02_filing_extraction/core/plan_expansion.py	187	code	W8	PORTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/phases/02_filing_extraction/core/plan_publication.py	115	code	W8	PORTED_DIVERGED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/phases/02_filing_extraction/core/schemas.py	66	code	W8	PORTED_DIVERGED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/phases/02_filing_extraction/core/selection.py	278	code	W8	PORTED_DIVERGED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/phases/02_filing_extraction/core/selection_features.py	486	code	W8	PORTED_DIVERGED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/phases/02_filing_extraction/core/selection_inventory.py	145	code	W8	PORTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/phases/02_filing_extraction/core/selection_policy.py	449	code	W8	PORTED_DIVERGED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/phases/02_filing_extraction/core/selection_source.py	273	code	W8	PORTED_DIVERGED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/phases/02_filing_extraction/core/target_catalog.py	111	code	W8	PORTED_DIVERGED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/phases/02_filing_extraction/core/target_plan.py	544	code	W8	PORTED_DIVERGED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/phases/02_filing_extraction/run.py	533	code	W8	PARTIAL	edgar_sec/foundation/runtime/interactive.py		yes	NEEDS_EVIDENCE		counterpart exists but no v2 test references it
+.v1/phases/02_filing_extraction/tests/__init__.py	0	test	B-tests	PORTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/phases/02_filing_extraction/tests/conftest.py	10	test	B-tests	PORTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/phases/02_filing_extraction/tests/test_company_family.py	109	test	B-tests	PORTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/phases/02_filing_extraction/tests/test_materialize.py	422	test	B-tests	PORTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/phases/02_filing_extraction/tests/test_runner.py	540	test	B-tests	PARTIAL			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/phases/02_filing_extraction/tests/test_selection.py	129	test	B-tests	PORTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/phases/02_filing_extraction/tests/test_selection_features.py	111	test	B-tests	PORTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/phases/02_filing_extraction/tests/test_selection_policy.py	118	test	B-tests	PORTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/phases/02_filing_extraction/tests/test_target_plan.py	372	test	B-tests	PORTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/phases/__init__.py	0	code	W10	DROPPED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/run.py	112	code	W10	PARTIAL			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/scratch/audit_rule_engine.py	519	script	W10	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/scratch/compare_thresholds.py	169	script	W10	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/scratch/diff_review_3_vs_4.py	111	script	W10	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/scratch/extract_txt_to_parquet.py	67	script	W10	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/scratch/freddie_case/generate_baseline.py	85	script	W10	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/scratch/inventory_table_tagging.py	139	script	W10	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/scratch/probe_block_trace.py	121	script	W10	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/scratch/probe_financial_statements.py	164	script	W10	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/scratch/probe_grammar.py	102	script	W10	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/scratch/probe_incomplete_tables.py	220	script	W10	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/scratch/probe_mixed_checkmarks.py	121	script	W10	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/scratch/probe_pem_pipeline.py	160	script	W10	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/scratch/profile_hotspots_deep.py	64	script	W10	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/scratch/profile_pipeline_full.py	123	script	W10	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/scratch/select_checkmark_targets.py	80	script	W10	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/scripts/compress_partition_db.py	332	script	W10	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/scripts/diagnose_stuck_chunk.py	319	script	W10	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/scripts/migrate_http_cache_json_ttl.py	153	script	W10	DROPPED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/scripts/migrate_submission_metadata_snapshot.py	478	script	W10	DROPPED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/scripts/monitor_progress.py	592	script	W10	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A
+.v1/scripts/prune_chunk_blobs.py	326	script	W10	NOT_STARTED			unknown	UNCLAIMED		no verified v2 counterpart established yet; provisional pending Stage A

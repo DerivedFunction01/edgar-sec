@@ -28,7 +28,7 @@ These modules have **zero dependencies on database drivers, HTTP clients, or dow
 | `defs/sec_documents/records.py` | 145 | `domain/document/models.py` | `DocumentLocator`, `FilingOccurrence`, `DocumentRepresentation`, `DocumentKind` (`HTML`, `ASCII_TXT`, `XML`). |
 | *New in v2 (Track 2)* | — | `domain/document/blocks.py` | **Flat 1D Typed Block Stream**: `ParagraphBlock`, `TableBlock`, `PreservedBlock`, `PageBreakMarker`. Decoupled from Phase 03 TOC Spine. |
 | `defs/sec_forms/cover/checkmark/schemas.py` | 116 | `domain/forms/schemas.py` | Declarative `STATUTORY_CHECKBOX_CONSTRAINTS` (7 statutory relations: WKSI exclusion, 404(b) exemption, etc.). |
-| `defs/sec_forms/evaluators/base.py` | 85 | `domain/forms/decisions.py` | `DecisionAction` enum (`ACCEPT`, `REFETCH_EXHIBIT`, `REFETCH_BUNDLE`, `REFETCH_SUMMARY_XML`) and `EvaluatorDecision`. |
+| `defs/sec_forms/evaluators/base.py` | 85 | `domain/forms/decisions.py` | `DecisionAction` enum and `EvaluatorDecision`. **The enum as shipped has three members, not the four listed in the original inventory:** `PROCEED`, `REFETCH_SUB_DOC`, `SKIP_HARD_STUB`. v1's actual behaviour only ever needed one refetch scope (`REFETCH_SUB_DOC`, targeting Exhibit 13), so the other three were never implemented. |
 
 ---
 

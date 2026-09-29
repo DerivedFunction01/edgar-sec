@@ -13,7 +13,26 @@
 1. **Target Plan Ingestion**: Consumes the Phase 2 `target_plan.parquet` without network access, calculating deterministic chunk assignments.
 2. **Process Pool Concurrency**: Drives a pool of isolated worker processes budgeted via `derive_resources()`.
 3. **Resumable Chunk Execution**: Workers write to isolated SQLite chunk databases (`chunk-00001.db`) with atomic checkpoint manifests. Stalled chunks resume cleanly without re-fetching SEC data.
-4. **Interactive Operator Menu**: Preserves the zero-copy-paste interactive terminal workflow (target plan discovery, mode selection, vacuuming).
+4. **Launcher Entry**: `run.py` registers `documents` alongside `metadata` and
+   `filing-catalog`, so the whole pipeline is reached from the existing root
+   launcher rather than a bespoke front end.
+
+### Implemented surface
+
+| Module | Responsibility |
+| :--- | :--- |
+| `pipelines/document_storage/processor.py` | `FilingProcessor` (normalize + triage) and `PassThroughProcessor`; stamps a processor fingerprint. |
+| `pipelines/document_storage/worker.py` | `process_chunk` / `process_chunks`; process pool with `max_tasks_per_child`; chunk checkpoints verified and skipped on resume. |
+| `pipelines/document_storage/delegation.py` | Bounded exhibit second pass: one held-bundle attempt plus at most one bundle fetch. |
+| `pipelines/document_storage/merger.py` | Out-of-core merge into an immutable snapshot, part projection, and the `current` pointer. |
+| `pipelines/document_storage/operator.py` | `run_document_storage`: acquire → delegate → merge → publish. |
+| `pipelines/document_storage/queries.py` | Direct SQL for consolidation. |
+| `pipelines/document_storage/vacuum.py` | `vacuum_snapshots`: cross-run consolidation. |
+| `pipelines/document_storage/cli.py` | `run.py documents {run,status,review}`. |
+
+The worker reports each stub decision as a `DelegationTarget` rather than the
+operator re-deriving it, so a primary document is fetched and normalized exactly
+once per run.
 5. **Snapshot Publication**: Assembles final versioned Parquet datasets via DuckDB out-of-core COPY.
 
 ---
@@ -27,9 +46,9 @@
 | `phases/025/.../core/fetcher.py` | 420 | `pipelines/document_storage/fetcher.py` | Acquisition adapter (live broker fetch vs. offline fixture CAS extraction). |
 | `phases/025/.../core/exhibit_second_pass.py` | 260 | `pipelines/document_storage/exhibit_delegator.py` | Evaluator dispatch for secondary exhibit refetching (EX-13, EX-21). |
 | `phases/025/.../core/snapshot_merge.py` | 410 | `pipelines/document_storage/merger.py` | Validates chunk invariants and publishes canonical Parquet dataset. |
-| `phases/025/.../core/vacuum.py` | 380 | `pipelines/document_storage/vacuum.py` | CLI defragmentation and orphan blob pruning engine. |
+| `phases/025/.../core/vacuum.py` | 449 | `pipelines/document_storage/vacuum.py` | **Cross-run snapshot consolidation**, not defragmentation. See the correction in sub-plan 02. |
 | `phases/025_webpage_storage/run.py` | 312 | `pipelines/document_storage/operator.py` | Interactive terminal UI menu for operators. |
-| `phases/025_webpage_storage/cli.py` | 580 | `pipelines/document_storage/cli.py` | Canonical CLI subcommands (`preview`, `run`, `status`, `merge`, `vacuum`). |
+| `phases/025_webpage_storage/cli.py` | 580 | `pipelines/document_storage/cli.py` | Canonical CLI, reached as `python run.py documents {run,status,review}`. |
 
 ---
 
@@ -65,7 +84,7 @@ def process_chunk(chunk: ChunkSpec, config: PipelineConfig) -> ChunkResult:
         
         # 4. Check for exhibit delegation
         decision = form_plugin.evaluate(doc_rep)
-        if decision.action == DecisionAction.REFETCH_EXHIBIT:
+        if decision.action == DecisionAction.REFETCH_SUB_DOC:
             exhibit_bytes = fetcher.acquire(decision.target_locator)
             normalized.append_exhibit(exhibit_bytes)
             

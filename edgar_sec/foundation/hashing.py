@@ -5,6 +5,11 @@ from __future__ import annotations
 import hashlib
 import os
 
+#: Characters per encoding slice for :func:`sha256_text`. One million code
+#: points is about a megabyte of ASCII, so a whole filing is hashed without
+#: ever holding a second full-size bytes copy.
+_TEXT_CHUNK_CHARS = 1 << 20
+
 
 def file_sha256(path: str | os.PathLike[str]) -> str:
     """Compute SHA-256 hex digest of a file in streaming 64KB blocks."""
@@ -21,8 +26,22 @@ def sha256_bytes(data: bytes) -> str:
 
 
 def sha256_text(text: str) -> str:
-    """Compute SHA-256 hex digest of UTF-8 text."""
-    return hashlib.sha256(text.encode("utf-8")).hexdigest()
+    """Hash a string without holding a second full-size bytes copy.
+
+    Python ``str`` indices are code points and UTF-8 encodes each code point
+    independently, so encoding bounded slices and concatenating their bytes
+    yields exactly the bytes of the whole string. The digest is therefore
+    identical to ``hashlib.sha256(text.encode())`` while never allocating more
+    than one chunk of encoded text, which is what keeps hashing a
+    multi-megabyte filing from spiking.
+    """
+    if len(text) <= _TEXT_CHUNK_CHARS:
+        return hashlib.sha256(text.encode("utf-8")).hexdigest()
+
+    digest = hashlib.sha256()
+    for offset in range(0, len(text), _TEXT_CHUNK_CHARS):
+        digest.update(text[offset : offset + _TEXT_CHUNK_CHARS].encode("utf-8"))
+    return digest.hexdigest()
 
 
 __all__ = ["file_sha256", "sha256_bytes", "sha256_text"]

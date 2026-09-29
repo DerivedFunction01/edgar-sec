@@ -19,26 +19,70 @@ class DocumentKind(StrEnum):
 
 
 def derive_document_locator_key(accession: str, document_path: str) -> str:
-    """Generate deterministic content-addressed key for an accession + document path pair."""
+    """Generate deterministic content-addressed key for an accession + document path pair.
+
+    Must stay byte-identical to the SQL spelling in
+    ``infra/storage/duckdb_catalog.py``:
+    ``sha256(accession || ':' || document_path)``. The catalog materialises
+    locator keys inside DuckDB while this module derives them in Python, and a
+    locator join between the two worlds is how a published snapshot is read
+    back. ``tests/foundation/test_hashing.py`` pins the byte equality.
+    """
     return sha256_text(f"{accession.strip()}:{document_path.strip()}")
 
 
-def derive_occurrence_id(source_cik: str, document_locator_key: str) -> str:
-    """Generate deterministic occurrence identifier linking a CIK to a document locator."""
-    return sha256_text(f"{source_cik.strip()}:{document_locator_key.strip()}")
+def derive_occurrence_id(source_cik: str, accession: str, document_path: str) -> str:
+    """Generate deterministic occurrence identifier linking a CIK to a document.
+
+    Must stay byte-identical to the SQL spelling in
+    ``infra/storage/duckdb_catalog.py``:
+    ``sha256(source_cik || ':' || accession || ':' || document_path)``.
+
+    The three **raw parts**, not a derived key: an earlier revision took
+    ``(source_cik, document_locator_key)`` and hashed the locator key, which is
+    a hash of a hash. The SQL side hashes the raw parts, so the same document
+    produced two different occurrence ids and any locator-to-occurrence join
+    between the catalog and a snapshot matched nothing, silently. v1 had the
+    same two live schemes and contained the damage only because its phases
+    never joined on the id.
+    """
+    return sha256_text(
+        f"{source_cik.strip()}:{accession.strip()}:{document_path.strip()}"
+    )
 
 
 @dataclass(frozen=True, slots=True)
 class DocumentLocator:
-    """Content-addressed reference to a filing document."""
+    """Content-addressed reference to a filing document, plus how to acquire it.
+
+    ``document_locator_key`` is the canonical identity of the document and is
+    derived from accession plus path, never supplied independently: the payload
+    store, the fetchers, and the Parquet snapshot all key on it, so a locator
+    that disagreed with its own key would silently split one document across
+    two identities.
+
+    The acquisition fields are optional because not every caller can reach the
+    network: a replay from a fixture needs only the key.
+    """
 
     accession: AccessionNumber
     document_path: str
     document_locator_key: str
+    archive_url: str | None = None
+    form: str | None = None
+    source_cik: str | None = None
+    document_type: str | None = None
 
     @classmethod
     def from_parts(
-        cls, accession: AccessionNumber | str, document_path: str
+        cls,
+        accession: AccessionNumber | str,
+        document_path: str,
+        *,
+        archive_url: str | None = None,
+        form: str | None = None,
+        source_cik: str | None = None,
+        document_type: str | None = None,
     ) -> DocumentLocator:
         acc = (
             accession
@@ -47,7 +91,22 @@ class DocumentLocator:
         )
         path = document_path.strip()
         key = derive_document_locator_key(str(acc), path)
-        return cls(accession=acc, document_path=path, document_locator_key=key)
+        return cls(
+            accession=acc,
+            document_path=path,
+            document_locator_key=key,
+            archive_url=archive_url,
+            form=form,
+            source_cik=source_cik,
+            document_type=document_type,
+        )
+
+    @property
+    def is_stub_path(self) -> bool:
+        """Whether the path names a placeholder rather than substantive content."""
+        from edgar_sec.domain.document.acquisition import is_stub_document_path
+
+        return is_stub_document_path(self.document_path)
 
 
 @dataclass(frozen=True, slots=True)

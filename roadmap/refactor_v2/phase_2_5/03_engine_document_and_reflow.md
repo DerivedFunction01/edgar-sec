@@ -14,7 +14,6 @@ This subsystem converts raw, unstructured SEC documents (ranging from 1990s raw 
 2. **High-Performance HTML Parsing**: Uses `selectolax` (C-based Modest engine) for sub-millisecond DOM traversal, tag unrolling, and whitespace normalization.
 3. **Bounded Page-Marker Stripping**: Identifies and removes running headers, footers, and page numbers across sliding block windows without over-removing table content.
 4. **Conservative ASCII Reflow**: Re-wraps artificially hard-wrapped prose while strictly protecting tabular structures and bulleted lists.
-5. **Research Lab Integration**: Houses the empirical layout feature engineering and unsupervised 2D clustering lab.
 
 ---
 
@@ -69,7 +68,7 @@ In `.v1`, reflow research was coupled to an elaborate ML/clustering apparatus (`
 #### 1. What is Preserved in v2:
 - **Specifications (`RULE_ENGINE_SPEC.md`, `HYPOTHESES.md`)**: Stored in `docs/reflow/` or `engine/reflow/` as the formal scientific reference for layout invariants and scalar threshold derivations.
 - **Calibrated Production Engine (`context.py`, `rules.py`, `engine.py`)**: The deterministic 6-tier rule cascade that actually executes rewrapping in production.
-- **Direct Visual Verification**: Verified via the unified developer review tool (`python run.py review`) rather than separate Parquet annotation exporters.
+- **Direct Visual Verification**: Verified via the review harness (`python run.py documents review`) rather than separate Parquet annotation exporters.
 
 #### 2. What is Dropped (Archived in `.v1`):
 - `clustering/` (`unsupervised.py`, `audit.py`, `dataset.py`, `experimental_registry.py`): Scikit-Learn 2D space clustering was used once to discover threshold constants; carrying over this ML training harness creates dead maintenance overhead.
@@ -85,5 +84,5 @@ In `.v1`, reflow research was coupled to an elaborate ML/clustering apparatus (`
 - [ ] **M3.2**: Implement `edgar_sec/engine/document/html.py` with `selectolax`.
 - [ ] **M3.3**: Implement `edgar_sec/engine/document/page_markers.py` with sliding window tests.
 - [ ] **M3.4**: Implement `edgar_sec/engine/reflow/context.py`, `rules.py`, and `engine.py`.
-- [ ] **M3.5**: Relocate layout research tools to `edgar_sec/engine/reflow/research/`.
-- [ ] **M3.6**: Verify zero regression on reflow character accuracy using `.v1/defs/tests/test_reflow.py`.
+- [ ] **M3.5**: Verify zero regression on reflow character accuracy using unit tests and golden samples.
+- [ ] **Verification**: Run `python check.py --scan` to guarantee zero upward dependencies from Layer 3.

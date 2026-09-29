@@ -2,11 +2,17 @@
 
 from __future__ import annotations
 
+import hashlib
 from pathlib import Path
 
 import pytest
 
-from edgar_sec.foundation.hashing import file_sha256, sha256_bytes
+from edgar_sec.foundation.hashing import (
+    _TEXT_CHUNK_CHARS,
+    file_sha256,
+    sha256_bytes,
+    sha256_text,
+)
 from edgar_sec.infra.storage.duckdb import connect
 
 HELLO_SHA256 = "b94d27b9934d3e08a52e52d7da7dabfac484efe37a5380ee9088f7ace2efcde9"
@@ -49,3 +55,95 @@ def test_duckdb_sha256_agrees_with_python(text: str) -> None:
     with connect() as con:
         duckdb_digest = con.execute("SELECT sha256(?)", [text]).fetchone()[0]
     assert duckdb_digest == sha256_bytes(text.encode("utf-8"))
+
+
+def test_sha256_text_matches_hashlib() -> None:
+    assert sha256_text("test string") == hashlib.sha256(b"test string").hexdigest()
+
+
+def test_sha256_text_streams_across_the_chunk_boundary() -> None:
+    """Digest must be identical whether the input fits one chunk or many."""
+    for size in (
+        _TEXT_CHUNK_CHARS - 1,
+        _TEXT_CHUNK_CHARS,
+        _TEXT_CHUNK_CHARS + 1,
+        2 * _TEXT_CHUNK_CHARS + 17,
+    ):
+        text = "A" * size
+        assert sha256_text(text) == hashlib.sha256(text.encode()).hexdigest()
+
+
+def test_sha256_text_chunking_preserves_multibyte_boundaries() -> None:
+    """Slicing at a code point must never split a UTF-8 sequence."""
+    text = "café" * (_TEXT_CHUNK_CHARS // 2 + 3)
+    assert sha256_text(text) == hashlib.sha256(text.encode()).hexdigest()
+
+
+def test_sha256_text_is_the_only_public_definition() -> None:
+    """§1.1: two functions of one name with different behaviour is a shim."""
+    from edgar_sec.foundation.runtime import memory
+
+    assert not hasattr(memory, "sha256_text")
+
+
+def test_occurrence_id_matches_duckdb_catalog_sql() -> None:
+    """The identity contract, pinned in both languages.
+
+    ``domain/document/models.py`` derives occurrence and locator ids in Python
+    while ``infra/storage/duckdb_catalog.py`` materialises them inside DuckDB.
+    Both spellings must produce the same digest for the same document, or a
+    locator-to-occurrence join between the catalog and a snapshot matches
+    nothing and fails silently. An earlier revision of ``derive_occurrence_id``
+    hashed the locator key (a hash of a hash) and diverged from the SQL by
+    exactly this failure.
+    """
+    from edgar_sec.domain.document.models import (
+        derive_document_locator_key,
+        derive_occurrence_id,
+    )
+
+    documents = [
+        ("0000320193", "0000320193-23-000106", "aapl-20230930.htm"),
+        ("0000320193", "000032019323000106", "aapl-20230930.htm"),
+        ("0001961704", "000196170424000040", "jpm-20231231.htm"),
+        ("4515", "000000620126000014", "aal-20251231.htm"),
+        ("0", "000000000000000000", "unknown.htm"),
+    ]
+
+    with connect() as con:
+        for cik, accession, path in documents:
+            row = con.execute(
+                """
+                SELECT sha256(?1 || ':' || ?2 || ':' || ?3),
+                       sha256(?2 || ':' || ?3)
+                """,
+                [cik, accession, path],
+            ).fetchone()
+            occurrence_sql, locator_sql = row
+
+            assert derive_occurrence_id(cik, accession, path) == occurrence_sql, (
+                f"occurrence_id diverged from SQL for {cik}:{accession}:{path}"
+            )
+            assert derive_document_locator_key(accession, path) == locator_sql, (
+                f"locator key diverged from SQL for {accession}:{path}"
+            )
+
+
+def test_occurrence_id_is_hash_of_parts_not_of_locator_key() -> None:
+    """The two constructions must differ, or the divergence cannot be detected.
+
+    A hash of a hash is not the same digest as a hash of the parts, and the
+    whole point of unifying on the raw-parts form is that the catalog hashes
+    the parts. If someone reintroduces the locator-key form, this test catches
+    it even if the SQL column happens to be absent from the fixture.
+    """
+    from edgar_sec.domain.document.models import (
+        derive_document_locator_key,
+        derive_occurrence_id,
+    )
+
+    cik, accession, path = "0000320193", "0000320193-23-000106", "aapl.htm"
+    locator_key = derive_document_locator_key(accession, path)
+    assert derive_occurrence_id(cik, accession, path) != sha256_text(
+        f"{cik}:{locator_key}"
+    )

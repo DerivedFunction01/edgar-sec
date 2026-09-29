@@ -39,30 +39,62 @@ def scan_layer_boundary() -> list[ScannerFinding]:
             continue
 
         for node in ast.walk(tree):
-            imported_mod: str | None = None
             if isinstance(node, ast.Import):
                 for alias in node.names:
-                    imported_mod = alias.name
                     _check_import(
                         findings,
                         path_str,
                         node.lineno,
                         caller_layer,
                         caller_rank,
-                        imported_mod,
+                        alias.name,
                     )
-            elif isinstance(node, ast.ImportFrom) and node.module:
-                imported_mod = node.module
-                _check_import(
-                    findings,
-                    path_str,
-                    node.lineno,
-                    caller_layer,
-                    caller_rank,
-                    imported_mod,
-                )
+            elif isinstance(node, ast.ImportFrom):
+                module = _resolve_relative(node, path_str, caller_layer)
+                if module is None:
+                    continue
+                for alias in node.names:
+                    _check_import(
+                        findings,
+                        path_str,
+                        node.lineno,
+                        caller_layer,
+                        caller_rank,
+                        f"{module}.{alias.name}",
+                    )
 
     return findings
+
+
+def _resolve_relative(
+    node: ast.ImportFrom, path_str: str, caller_layer: str
+) -> str | None:
+    """Resolve an ``ImportFrom`` to a dotted path, relative or absolute.
+
+    ``from ..infra.storage import duckdb`` inside a Layer 0 module is exactly as
+    much an upward import as the absolute spelling, and the absolute form was
+    the only one this scanner caught. Relative imports carry no package prefix,
+    so the target has to be reconstructed from the importing file's own depth:
+    one leading dot means the current package, and each additional dot climbs
+    one parent directory.
+    """
+    if node.level == 0:
+        return node.module
+
+    parts = path_str.split("/")
+    # The last element is the file itself; everything before it is the package
+    # path, and the first element is the ``edgar_sec`` prefix that
+    # ``_check_import`` matches on. Climbing past the package root must never
+    # happen, so the walk is bounded by the file's depth inside the package.
+    package_parts = parts[:-1]
+    climb = node.level - 1
+    if climb > len(package_parts) - 1:
+        return None
+    base = package_parts[: len(package_parts) - climb] if climb else package_parts
+
+    if node.module:
+        return ".".join([*base, *node.module.split(".")])
+    return ".".join(base)
 
 
 def _check_import(

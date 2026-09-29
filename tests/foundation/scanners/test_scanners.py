@@ -154,6 +154,44 @@ def test_layers_flag_upward_import(synthetic_repo: Path) -> None:
     assert layers.scan_layer_boundary()
 
 
+def test_layers_flag_relative_upward_import(synthetic_repo: Path) -> None:
+    """A relative spelling must not smuggle an upward import past the scanner.
+
+    ``..`` from a module directly inside ``foundation/`` is the package root, so
+    ``..infra.storage`` is ``edgar_sec.infra.storage`` — Layer 0 reaching Layer 2.
+    Only the absolute form was caught before 2026-09-29.
+    """
+    _build_repo(
+        synthetic_repo,
+        {"edgar_sec/foundation/checks.py": ("from ..infra.storage import duckdb\n")},
+    )
+    findings = layers.scan_layer_boundary()
+    assert findings
+    assert "infra" in findings[0].message
+
+
+def test_layers_flag_relative_upward_import_from_nested_module(
+    synthetic_repo: Path,
+) -> None:
+    """Depth matters: two dots from foundation/x/y.py is foundation, not root."""
+    _build_repo(
+        synthetic_repo,
+        {"edgar_sec/foundation/x/y.py": ("from ..infra.storage import duckdb\n")},
+    )
+    # `..` from package edgar_sec.foundation.x is edgar_sec.foundation, so this
+    # names a *nonexistent* module rather than an upward import. It must not be
+    # reported as a layer violation.
+    assert layers.scan_layer_boundary() == []
+
+
+def test_layers_flag_relative_sibling_layer_import(synthetic_repo: Path) -> None:
+    _build_repo(
+        synthetic_repo,
+        {"edgar_sec/domain/a.py": ("from ..infra.broker import sec_broker\n")},
+    )
+    assert layers.scan_layer_boundary()
+
+
 def test_layers_allow_downward_import(synthetic_repo: Path) -> None:
     _build_repo(
         synthetic_repo,

@@ -6,7 +6,12 @@ from pathlib import Path
 
 
 def discover_python_files() -> list[str]:
-    """Return all python files in edgar_sec and tests, ignoring .v1, .venv, etc."""
+    """Return all python files in edgar_sec and tests, ignoring .v1, .venv, etc.
+
+    The result is sorted so that scanner findings are reported in a stable order.
+    ``Path.rglob`` yields filesystem order, which varies between machines, and a
+    gate whose output reshuffles between runs cannot be diffed against itself.
+    """
     repo_root = Path.cwd()
     py_files: list[str] = []
     scan_roots = [repo_root / "edgar_sec", repo_root / "tests"]
@@ -19,4 +24,4 @@ def discover_python_files() -> list[str]:
     for root_file in ["check.py", "run.py"]:
         if (repo_root / root_file).exists():
             py_files.append(root_file)
-    return py_files
+    return sorted(py_files)

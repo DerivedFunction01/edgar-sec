@@ -27,6 +27,12 @@ ENTRIES: tuple[PipelineEntry, ...] = (
         description="Offline DuckDB catalog materialization and target planning",
         module="edgar_sec.pipelines.filing_catalog.operator",
     ),
+    PipelineEntry(
+        id="documents",
+        label="Document Storage (Phase 2.5)",
+        description="Document acquisition, normalization, snapshots, and review",
+        module="edgar_sec.pipelines.document_storage.cli",
+    ),
 )
 
 

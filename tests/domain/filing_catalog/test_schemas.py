@@ -12,7 +12,6 @@ from edgar_sec.domain.filing_catalog.schemas import (
     PROFILE_SCHEMA,
     PROFILE_SCHEMA_VERSION,
     SCHEMA_VERSION,
-    SEC_ARCHIVE_BASE,
     TARGET_COLUMNS,
     TARGET_SCHEMA,
     TARGET_SCHEMA_VERSION,
@@ -92,12 +91,12 @@ def test_archive_base_is_the_canonical_one() -> None:
     """
     from edgar_sec.domain.sec_urls import SEC_ARCHIVE_BASE as canonical_base
 
-    assert SEC_ARCHIVE_BASE is canonical_base
+    assert canonical_base == "https://www.sec.gov/Archives/edgar/data"
 
 
 def test_catalog_archive_url_shape_matches_the_engine() -> None:
     """The SQL fallback must build the URL the Phase 1 engine would build."""
-    from edgar_sec.domain.sec_urls import archives_url
+    from edgar_sec.domain.sec_urls import SEC_ARCHIVE_BASE, archives_url
     from edgar_sec.engine.submissions.helpers import build_archive_url
 
     engine_url, reason = build_archive_url(

@@ -118,11 +118,13 @@ under `artifacts_root/transient/`.
 
 ```text
 artifacts_root/filing_catalog/
-├── <catalog_id>/                       # immutable snapshot
+├── <catalog_id>/                       # immutable catalog snapshot
 │   ├── snapshot.manifest.json
 │   ├── company_profiles.parquet        # 23 columns, projected from Phase 1
-│   ├── filing_targets/part-00000.parquet
-│   └── snapshots/<digest>/             # content-addressed feature snapshot
+│   └── filing_targets/part-00000.parquet
+├── snapshots/<digest>/                 # content-addressed feature snapshot
+│                                       #   (sibling of <catalog_id>/: paths.py
+│                                       #   sets snapshots_root = catalog_root)
 ├── plans/<plan_id>/                    # immutable plan bundle
 │   ├── plan.json
 │   ├── selection_report.json
@@ -152,32 +154,113 @@ python -m edgar_sec.pipelines.metadata_sync.smoke_test \
 
 ---
 
+## Component Documentation
+
+Every package owns a `README.md` stating its purpose, a module
+layout table, the contracts it guarantees, its mirrored tests, and its
+**deliberate gaps** — what it intentionally does not contain, so an absent
+capability is never mistaken for an oversight. `AGENTS.md` is normative where
+the two disagree.
+
+### (package root)
+
+- [`README.md`](edgar_sec/README.md)
+
+### foundation
+
+- [`foundation/README.md`](edgar_sec/foundation/README.md)
+- [`foundation/regex/README.md`](edgar_sec/foundation/regex/README.md)
+- [`foundation/runtime/README.md`](edgar_sec/foundation/runtime/README.md)
+- [`foundation/runtime/settings/README.md`](edgar_sec/foundation/runtime/settings/README.md)
+- [`foundation/scanners/README.md`](edgar_sec/foundation/scanners/README.md)
+- [`foundation/text/README.md`](edgar_sec/foundation/text/README.md)
+
+### domain
+
+- [`domain/README.md`](edgar_sec/domain/README.md)
+- [`domain/document/README.md`](edgar_sec/domain/document/README.md)
+- [`domain/filing_catalog/README.md`](edgar_sec/domain/filing_catalog/README.md)
+- [`domain/forms/README.md`](edgar_sec/domain/forms/README.md)
+- [`domain/submissions/README.md`](edgar_sec/domain/submissions/README.md)
+- [`domain/taxonomy/README.md`](edgar_sec/domain/taxonomy/README.md)
+
+### infra
+
+- [`infra/README.md`](edgar_sec/infra/README.md)
+- [`infra/broker/README.md`](edgar_sec/infra/broker/README.md)
+- [`infra/sec_http/README.md`](edgar_sec/infra/sec_http/README.md)
+- [`infra/storage/README.md`](edgar_sec/infra/storage/README.md)
+
+### engine
+
+- [`engine/README.md`](edgar_sec/engine/README.md)
+- [`engine/company_family/README.md`](edgar_sec/engine/company_family/README.md)
+- [`engine/document/README.md`](edgar_sec/engine/document/README.md)
+- [`engine/forms/README.md`](edgar_sec/engine/forms/README.md)
+- [`engine/forms/checkmarks/README.md`](edgar_sec/engine/forms/checkmarks/README.md)
+- [`engine/forms/cover/README.md`](edgar_sec/engine/forms/cover/README.md)
+- [`engine/forms/evaluators/README.md`](edgar_sec/engine/forms/evaluators/README.md)
+- [`engine/forms/plugins/README.md`](edgar_sec/engine/forms/plugins/README.md)
+- [`engine/reflow/README.md`](edgar_sec/engine/reflow/README.md)
+- [`engine/selection/README.md`](edgar_sec/engine/selection/README.md)
+- [`engine/submissions/README.md`](edgar_sec/engine/submissions/README.md)
+- [`engine/tables/README.md`](edgar_sec/engine/tables/README.md)
+- [`engine/tables/ascii_html/README.md`](edgar_sec/engine/tables/ascii_html/README.md)
+
+### pipelines
+
+- [`pipelines/README.md`](edgar_sec/pipelines/README.md)
+- [`pipelines/document_storage/README.md`](edgar_sec/pipelines/document_storage/README.md)
+- [`pipelines/filing_catalog/README.md`](edgar_sec/pipelines/filing_catalog/README.md)
+- [`pipelines/metadata_sync/README.md`](edgar_sec/pipelines/metadata_sync/README.md)
+
+---
+
 ## Repository Layout
 
 ```text
-edgar_sec/
-├── foundation/         # Layer 0: Runtime, memory, hashing, serialization, settings registry, scanners
-├── domain/             # Layer 1: Cik, Accession, submission schemas
-├── infra/              # Layer 2: SEC HTTP client, token bucket, disk cache, storage
-├── engine/             # Layer 3: Submissions normalizer, array unroller, arrow builder
-└── pipelines/          # Layer 4: metadata_sync and filing_catalog operators, planners, CLI
+edgar_sec/               # 34 packages, each with its own README.md (see above)
+├── foundation/         # Layer 0: runtime, memory, hashing, serialization,
+│                       #   settings registry, 11 policy scanners
+├── domain/             # Layer 1: Cik/Accession, document, forms and cover
+│                       #   vocabulary, taxonomy, submission and catalog schemas
+├── infra/              # Layer 2: SEC HTTP client, broker, atomic IO, DuckDB,
+│                       #   Parquet, snapshot manifests, part tree, payload store
+├── engine/             # Layer 3: SGML/HTML document parsing, page markers,
+│                       #   signature regions, table resolution, ASCII table
+│                       #   rendering, cover boundaries, checkmark solving,
+│                       #   evaluators, the FormPlugin SPI, reflow, selection,
+│                       #   company families, submission building
+└── pipelines/          # Layer 4: metadata_sync (Phase 1), filing_catalog
+                        #   (Phase 2), document_storage (Phase 2.5)
 
 tests/                      # Test tree mirrors the edgar_sec/ package tree
 ├── support.py              # Shared fixture access and offline HTTP test doubles
 ├── fixtures/               # Committed golden fixtures (cross-layer)
 ├── foundation/             # hashing, serialization
+│   ├── regex/              # builder DSL, trie compaction
 │   ├── runtime/            # env, memory, paths, settings, partitions, resources
-│   └── scanners/           # policy scanner behavior
-├── domain/                 # identity
-│   └── submissions/         # Arrow schema contract
+│   ├── scanners/           # one test module per policy scanner
+│   └── text/               # dates, tokens, grammar, patterns, automaton
+├── domain/                 # identity, document, forms, taxonomy, submissions
 ├── infra/
-│   ├── sec_http/           # client, cache, rate_limit, retry
-│   └── storage/            # atomic, parquet, duckdb
+│   ├── broker/             # Unix-socket broker client/server
+│   ├── sec_http/           # client, cache, rate_limit, retry, errors
+│   └── storage/            # atomic, duckdb, parquet, manifests, payload store
 ├── engine/
-│   └── submissions/        # normalizer oracle-parity tests
+│   ├── document/           # unpacker, html, cleaner, page markers, signatures
+│   ├── forms/              # normalize seam, cover, checkmarks, evaluators, plugins
+│   ├── reflow/             # rule engine, features, registry, types
+│   ├── tables/             # resolver, structural, false tables, ascii_html
+│   ├── selection/          # features, inventory, policy, selector, source
+│   ├── company_family/     # normalizer, clustering
+│   └── submissions/        # unroller, builder, profile
 └── pipelines/
-    └── metadata_sync/      # manifest, planner, checkpoints, worker, merger,
-                            # augmentation, source_registry, end-to-end replay
+    ├── metadata_sync/      # manifest, planner, checkpoints, worker, merger,
+    │                       # augmentation, source_registry, end_to_end
+    ├── filing_catalog/     # discovery, expansion, planner, publication, cli
+    └── document_storage/   # fetching, processor, worker, delegation, merger,
+                            # vacuum, queries, operator, cli, review
 
 check.py                # Unified repository quality gate runner
 run.py                  # Interactive terminal workflow dispatcher

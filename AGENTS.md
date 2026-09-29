@@ -73,7 +73,12 @@ To prevent OOM kills, glibc fragmentation, and thread thrashing in containerized
 4. **Hardcoded Limits Prohibited**:
    - Hardcoding `threads=`, `max_workers=`, or `memory_limit=` in library/pipeline code is blocked by the `resource-allocation` policy scanner.
 5. **Streaming & Bounded IO**:
-   - `sha256_text()` streams memory views in 1MB chunks to eliminate memory spikes on large SEC files.
+   - `file_sha256()` streams a file in 64KB blocks. `sha256_text()` does **not**
+     stream: `foundation/hashing.py` encodes the whole string in one call. A
+     chunked `sha256_text()` does exist in `foundation/runtime/memory.py` (1MB
+     chunks) and is currently imported only by its own test. **Hashing a whole
+     filing therefore still spikes.** Prefer the streaming variant, or move it,
+     rather than assuming the call is already memory-safe.
    - Parquet files use `row_group_size = 128_000` and `compression = "zstd"`.
 
 ---
@@ -122,6 +127,7 @@ Before submitting any turn or completing work, run the unified quality gate:
 
 > [!NOTE]
 > Do NOT run `check.py --fix` and then immediately `check.py` unless you actually need to auto-format.
+> Do NOT run `check.py` more than once consecutively; it is redundant.
 > Use `check.py --fast` during iteration for instant (~1s) AST/layer/cgroup feedback, and run `check.py` when concluding a turn.
 
 
@@ -131,9 +137,59 @@ Scanners are defined modularly in `edgar_sec/foundation/scanners/` and collected
 - `artifact-paths`: Bans hardcoded `".artifacts"` path literals outside path resolvers.
 - `secrets-leakage`: Bans committed API keys, tokens, or credentials.
 - `clean-exit`: Bans `sys.exit()` in library modules (only allowed in `run.py`, `check.py`, and CLI entrypoints).
-- `file-length`: Advises on files exceeding a set line limit to prevent monolithic growth.
+- `file-length`: **Fails the gate** on files exceeding the line limit (800) to prevent monolithic growth. Any finding from any scanner returns a nonzero exit code, so "advisory" is not how it behaves.
 - `layer-boundary`: Enforces strict downward-only import hierarchy.
 - `resource-allocation`: Bans hardcoded thread counts or memory limits in pipeline/engine code.
+- `regex-alternations`: Bans hand-crafted 3+ branch alternation literals, so `foundation.regex.builder` stays load-bearing.
+- `legacy-shims`: Bans backward-compatibility aliases and transitional shims (enforces §1.1).
+- `json-io`: Bans redundant JSON helper definitions and non-atomic JSON writes.
+- `date-patterns`: Bans private month tables and hand-crafted date patterns.
+
+> [!NOTE]
+> The last four exist to keep a rule *enforced* rather than merely *stated*.
+> Each points at infrastructure the repository already ships — the regex builder
+> DSL, the "zero shims" rule in §1.1, `foundation.serialization.canonical_json`,
+> `infra.storage.atomic.atomic_write_json`, and `foundation.text.dates`. A rule
+> with no scanner erodes, because the cost of ignoring it is invisible until the
+> damage is. Each exempts only the module that owns the vocabulary, plus tests
+> and the scanners themselves.
+
+Adding a scanner means: a module in `edgar_sec/foundation/scanners/`, an entry in
+`ALL_SCANNERS`, a mirrored `tests/foundation/scanners/test_<name>.py` (§6), and a
+line in the list above.
+
+### Documentation Contract
+
+This is the rule whose absence let the package ship with **zero** per-package
+documentation while v1 had fifteen component READMEs. Stating a rule is not
+enough — §5 exists because an unenforced rule erodes silently — so treat the
+checks below as the enforcement.
+
+- **Every package owns a `README.md`** at `edgar_sec/<layer>/<pkg>/README.md`,
+  plus one per layer root and one for `edgar_sec/` itself. Each states: purpose,
+  a module→responsibility layout table, the contracts it guarantees, its public
+  surface, its command surface if it has one, its mirrored tests, and its
+  **deliberate gaps**.
+- **The deliberate-gaps section is load-bearing.** A reader must never mistake an
+  absent capability for an oversight. Where a v1 capability was substituted,
+  dropped, or deferred, say so and name the alternative or the roadmap item.
+- **`AGENTS.md` is normative.** Where a README and this file disagree, this file
+  wins — and the README is the thing that is wrong, so fix it.
+- On any **major change** — new public entry point, schema or contract change,
+  resumability/merge behaviour change, added dependency or tooling, a new
+  pipeline — update that package's README, the root `README.md` layout section,
+  and `roadmap/refactor_v2/v2_refactor_roadmap.md` where product direction moves.
+- **Documentation describes verified behaviour, not intent.** Every claim must be
+  checkable against the code, and a documented capability that does not work is
+  itself a defect: if you find one, write it in the package README's
+  deliberate-gaps or known-defects section rather than describing the capability
+  as working.
+- Documentation is not a substitute for tests. Default tests remain
+  deterministic, offline, and credential-free.
+
+Adding a package means: a `README.md` in it, an entry in the parent layer's
+README layout table, and an entry in `edgar_sec/README.md` and the root
+`README.md`.
 
 
 ---

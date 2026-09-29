@@ -211,9 +211,6 @@ class RuntimeResourceProfile:
         return Path(self.temp_directory)
 
 
-SystemResources = RuntimeResourceProfile
-
-
 def derive_resources(
     requested_threads: int | None = None,
     requested_memory_limit: str | None = None,
@@ -265,7 +262,6 @@ __all__ = [
     "DEFAULT_WORKER_MEMORY_SAFETY",
     "MIN_MEMORY_MIB",
     "RuntimeResourceProfile",
-    "SystemResources",
     "auto_worker_count",
     "available_memory_bytes",
     "default_cpu_cores",

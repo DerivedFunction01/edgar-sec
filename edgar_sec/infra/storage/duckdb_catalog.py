@@ -29,9 +29,9 @@ from edgar_sec.domain.filing_catalog.schemas import (
     PATH_SOURCE_PRIMARY,
     PROFILE_COLUMNS,
     PROFILE_SCHEMA_VERSION,
-    SEC_ARCHIVE_BASE,
     TARGET_COLUMNS,
 )
+from edgar_sec.domain.sec_urls import SEC_ARCHIVE_BASE
 from edgar_sec.infra.storage.parquet import (
     DEFAULT_COMPRESSION,
     DEFAULT_ROW_GROUP_SIZE,

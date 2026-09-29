@@ -391,3 +391,8 @@ vite.config.ts.timestamp-*
 # artifact. It must stay tracked: Phase 2.5 scope is measured against it, and
 # it is meant to diff cleanly as phases land.
 !roadmap/refactor_v2/parity_inventory.csv
+# The same applies to the two companion tracking artifacts measured from the
+# same census: v1_retirement.tsv (which v1 files may be deleted) and
+# test_coverage_census.tsv (which source modules lack a mirrored test).
+!roadmap/refactor_v2/v1_retirement.tsv
+!roadmap/refactor_v2/test_coverage_census.tsv

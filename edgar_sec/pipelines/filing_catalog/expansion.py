@@ -137,7 +137,7 @@ def _read_plan_json(plan_dir: Path) -> dict[str, Any]:
         raise ParentPlanError(f"parent plan.json is unreadable: {plan_dir}") from error
 
 
-def _compatibility_key(policy: SelectionPolicy) -> dict[str, Any]:
+def _inherited_policy_fields(policy: SelectionPolicy) -> dict[str, Any]:
     """The policy fields a child must inherit unchanged from its parent."""
     data = policy.to_dict()
     for field_name in _CHILD_ONLY_FIELDS:
@@ -176,9 +176,9 @@ def validate_parent(
         embedded = parent_meta.get("selection_policy")
         if isinstance(embedded, dict):
             parent_policy = SelectionPolicy.from_dict(embedded)
-    if parent_policy is not None and _compatibility_key(
+    if parent_policy is not None and _inherited_policy_fields(
         parent_policy
-    ) != _compatibility_key(policy):
+    ) != _inherited_policy_fields(policy):
         raise ParentPlanError(
             "child selection policy differs from the parent outside base_content_units"
         )

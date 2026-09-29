@@ -41,6 +41,7 @@ from dataclasses import dataclass
 from pathlib import Path
 
 from edgar_sec.domain.filing_catalog.schemas import TARGET_COLUMNS
+from edgar_sec.domain.forms.families import FORM_FAMILY_SUFFIXES
 from edgar_sec.domain.sec_urls import normalize_cik
 from edgar_sec.domain.taxonomy.jurisdictions import STATE_POSTAL_CODES
 from edgar_sec.engine.company_family.clustering import CompanyFamilyIndex
@@ -53,17 +54,8 @@ from edgar_sec.infra.storage.parquet import DEFAULT_ROW_GROUP_SIZE
 FEATURE_SCHEMA_VERSION = "1.0"
 
 # Amendment and submission suffixes stripped when collapsing a raw form string
-# to its base family. Order matters: each entry is removed at most once, so
-# "10-K/A-POS" needs "-POS" before "/A".
-FORM_FAMILY_SUFFIXES: tuple[str, ...] = (
-    "_A",
-    "_W",
-    "_POS",
-    "-POS",
-    "MEF",
-    "-W",
-    "/A",
-)
+# to its base family are owned by domain.forms.families and imported here, so
+# the engine's collapse order cannot drift from the domain registry's.
 
 UNMATCHED_ERA = "unknown"
 

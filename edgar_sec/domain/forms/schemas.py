@@ -112,6 +112,27 @@ ANNUAL_CHECKBOX_SCHEMA = CoverCheckboxSchema(
     constraints=STATUTORY_CHECKBOX_CONSTRAINTS,
 )
 
+QUARTERLY_CHECKBOX_SCHEMA = CoverCheckboxSchema(
+    family="quarterly",
+    groups=(REPORT_PERIOD_GROUP, FILER_STATUS_GROUP, STATUTORY_BINARY_GROUP),
+    constraints=STATUTORY_CHECKBOX_CONSTRAINTS,
+)
+
+# Canonical display phrases that appear on cover pages near filer checkboxes.
+# Used by the cover rewrite engine to scope mark normalization.
+FILER_STATUS_TERMS: tuple[str, ...] = (
+    "large accelerated filer",
+    "accelerated filer",
+    "non-accelerated filer",
+    "smaller reporting company",
+    "emerging growth company",
+    "shell company",
+    "well-known seasoned issuer",
+    "voluntary filer",
+    "indicate by check mark",
+    "auditor attestation",
+)
+
 __all__ = [
     "ANNUAL_CHECKBOX_SCHEMA",
     "FILER_ACCELERATED",
@@ -120,6 +141,8 @@ __all__ = [
     "FILER_NON_ACCELERATED",
     "FILER_SMALLER_REPORTING",
     "FILER_STATUS_GROUP",
+    "FILER_STATUS_TERMS",
+    "QUARTERLY_CHECKBOX_SCHEMA",
     "REPORT_ANNUAL",
     "REPORT_PERIOD_GROUP",
     "REPORT_QUARTERLY",

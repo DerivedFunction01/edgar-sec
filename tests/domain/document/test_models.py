@@ -39,7 +39,7 @@ def test_raw_document_blob_serialization() -> None:
 
 
 def test_filing_occurrence_creation() -> None:
-    occ_id = derive_occurrence_id("0000320193", "locator_key_123")
+    occ_id = derive_occurrence_id("0000320193", "0000320193-23-000106", "form10k.htm")
     occ = FilingOccurrence(
         occurrence_id=occ_id,
         source_cik=Cik.from_raw("0000320193"),

@@ -14,7 +14,6 @@ from __future__ import annotations
 
 import pyarrow as pa
 
-from edgar_sec.domain.sec_urls import SEC_ARCHIVE_BASE
 from edgar_sec.domain.submissions.schemas import SUBMISSION_METADATA_SCHEMA
 
 DATASET_NAME = "filing_catalog"
@@ -163,7 +162,6 @@ __all__ = [
     "PROFILE_SCHEMA",
     "PROFILE_SCHEMA_VERSION",
     "SCHEMA_VERSION",
-    "SEC_ARCHIVE_BASE",
     "SUBMISSION_METADATA_SCHEMA",
     "TARGET_COLUMNS",
     "TARGET_SCHEMA",

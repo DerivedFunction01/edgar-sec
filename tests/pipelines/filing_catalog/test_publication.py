@@ -7,8 +7,8 @@ from pathlib import Path
 
 import pytest
 
+from edgar_sec.pipelines.filing_catalog.paths import REQUIRED_PLAN_FILES
 from edgar_sec.pipelines.filing_catalog.publication import (
-    REQUIRED_PLAN_FILES,
     TARGET_PLAN_SCHEMA_VERSION,
     PlanConflictError,
     plan_bundle_complete,

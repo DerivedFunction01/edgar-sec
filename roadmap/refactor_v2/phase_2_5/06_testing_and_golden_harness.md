@@ -2,7 +2,7 @@
 
 > [!NOTE]
 > **Parent Plan:** [Phase 2.5 Master Plan (`phase_2_5.md`)](file:///home/denny/edgar-sec/roadmap/refactor_v2/phase_2_5.md)  
-> **Scope:** Developer Visual Inspection Tool (`python run.py review`), Plain-Text Archetype Goldens, and Non-Regression Test Suites  
+> **Scope:** Review harness (`python run.py documents review`), pinned normalization goldens, and non-regression suites. **M6.3/M6.4 are deferred** — see §5.  
 > **Source Grounding:** `.v1/phases/025_webpage_storage/tools/build_document_review_artifacts.py`, `.v1/defs/tests/`
 
 ---
@@ -11,7 +11,16 @@
 
 Because Phase 2.5 normalizes multi-megabyte filings across three distinct eras (1990s ASCII, 2000s HTML, 2010s+ iXBRL), developers need immediate, visible feedback when changing algorithms:
 
-1. **Source-First Visual Review Tooling**: Rebuild the one tool that was actively used in `.v1` (`build_document_review_artifacts.py`) into a clean, standalone review command (`python run.py review`). It takes a filing or fixture directory and emits readable side-by-side bundles (`.source.txt`, `.source.html`, `.clean.txt`, `.diff`, `.stats.json`).
+1. **Review Tooling**: Rebuild the one tool that was actively used in `.v1`
+   (`build_document_review_artifacts.py`) into a clean review command
+   (`python run.py documents review`). It reads a published snapshot and emits a
+   bounded set of self-contained review bundles plus a manifest.
+
+   The selection is **stratified by outcome, not sampled**. A uniform sample of a
+   99.9%-clean corpus shows only clean documents, so the surprising outcomes
+   (failed, missing, empty text) are filled first and the limit is spent only
+   then on ordinary ones. Selection is deterministic for a given snapshot, which
+   is what makes a review diffable across runs.
 2. **Plain-Text Golden Archetypes**: Eliminate the speculative and never-built Parquet corpus promotion ceremony (`promote_document_corpus.py`, `promote_document_expectations.py`). Instead, commit 5–10 real historical archetype filings directly as plain files under `tests/fixtures/archetypes/` (1995 unformatted ASCII JNJ, 2005 HTML Apple, 2023 complex table Berkshire).
 3. **Instant Automated Pytest Gate**: Archetype regressions run in `< 0.5s` via standard `pytest tests/engine/test_normalization_goldens.py`. If an algorithm change scrambles tables or alters reflow boundaries, pytest and `git diff` surface the exact character drift immediately.
 
@@ -21,15 +30,15 @@ Because Phase 2.5 normalizes multi-megabyte filings across three distinct eras (
 
 | `.v1` Source File | Lines | Target v2 Location | Responsibility & Action |
 | :--- | ---: | :--- | :--- |
-| `phases/025/.../tools/build_document_review_artifacts.py` | 153 | `engine/document/review.py` | **REDESIGNED & PRESERVED**: The core visual review tool, exposed via `python run.py review`. |
+| `phases/025/.../tools/build_document_review_artifacts.py` | 153 | `pipelines/document_storage/review.py` | **REDESIGNED & PRESERVED**: renders bounded, outcome-stratified review bundles from a published snapshot. Reached via `python run.py documents review`. |
 | `phases/025/.../testing/review.py` | 290 | `engine/document/review_bundle.py` | Generates visual review bundles (.txt, .html, .diff, .stats.json). |
 | `defs/tests/test_reflow.py` | 420 | `tests/engine/test_reflow.py` | **PRESERVED**: Strict whitespace, bullet splitting, and line rewrap regression suite. |
 | `defs/tests/test_cover_checkmark_inference.py` | 380 | `tests/engine/test_cover_checkmark.py` | **PRESERVED**: Verifies quadratic penalty solver across 20+ statutory cover constraints. |
 | `defs/tests/test_cas_concurrency.py` | 290 | `tests/infra/storage/test_cas_concurrency.py` | **PRESERVED**: Concurrency and lock contention verification for SQLite CAS. |
 | `phases/025/.../tools/promote_document_corpus.py` | 310 | *DROPPED* (Archived in `.v1`) | Never built/populated in repository; Parquet corpus is clunky and not diffable in git. |
-| `phases/025/.../tools/promote_document_expectations.py` | 140 | *DROPPED* (Archived in `.v1`) | Replaced by direct plain-text expected files in `tests/fixtures/archetypes/`. |
+| `phases/025/.../tools/promote_document_expectations.py` | 140 | *DROPPED* (Archived in `.v1`) | Replaced by committed expectation files. The promotion ceremony is what was dropped. |
 | `phases/025/.../tools/chunk_document_reviews.py` | 52 | *DROPPED* (Archived in `.v1`) | Dead code (20-line review splitter with 0 callers and 0 tests). |
-| `phases/025/.../tools/dump_document_review_set.py` | 64 | *DROPPED* (Archived in `.v1`) | Dead code (dumped to `/tmp/`). Superseded by `python run.py review`. |
+| `phases/025/.../tools/dump_document_review_set.py` | 64 | *DROPPED* (Archived in `.v1`) | Dead code (dumped to `/tmp/`). Superseded by the review harness. |
 | `phases/025/.../tools/dump_documents.py` | 130 | *DROPPED* (Archived in `.v1`) | Dead code (dumped zstd blobs to disk). Superseded by viewer. |
 | `phases/025/.../tools/query_document_corpus.py` | 55 | *DROPPED* (Archived in `.v1`) | Dead code (grep wrapper). Superseded by DuckDB queries. |
 
@@ -37,15 +46,15 @@ Because Phase 2.5 normalizes multi-megabyte filings across three distinct eras (
 
 ## 3. Detailed Component Specifications
 
-### 3.1. Unified Developer Review Tool (`python run.py review`)
+### 3.1. Review Harness (`python run.py documents review`)
 A lean, zero-ceremony visual verification tool:
 
 ```bash
 # Review a single filing directly:
-python run.py review --input path/to/filing.htm --output .artifacts/review/
+python run.py documents review --limit 20 --json
 
 # Review a test fixture batch:
-python run.py review --fixture mini --output .artifacts/review/
+python run.py documents status
 ```
 
 #### What It Emits:
@@ -58,7 +67,13 @@ python run.py review --fixture mini --output .artifacts/review/
 └── <doc_id>.stats.json          # Table counts, reflowed block counts, checkmark solver scores
 ```
 
-### 3.2. Plain-Text Archetype Golden Testing (`tests/fixtures/archetypes/`)
+### 3.2. Normalization Goldens (`tests/fixtures/document_storage/`)
+
+> [!NOTE]
+> The original design here was `tests/fixtures/archetypes/` holding 5-10 *real*
+> historical filings. That is M6.3 and it is **deferred** — see §5. What ships
+> instead is described there; this section documents the committed synthetic
+> goldens.
 Rather than maintaining a binary Parquet database that cannot be diffed, v2 stores 5–10 canonical filing archetypes directly as plain files:
 
 ```text
@@ -86,7 +101,7 @@ def test_archetype_normalization(archetype_case):
     # Assert character-for-character equality
     assert normalized.text == expected_text, (
         f"Normalization drifted for {archetype_case.name}. "
-        f"Run 'python run.py review --input {archetype_case.source_path}' to inspect diff."
+        f"Run 'python run.py documents review' to inspect the stored snapshot."
     )
 ```
 
@@ -95,8 +110,40 @@ def test_archetype_normalization(archetype_case):
 ## 4. Milestone Checklist & Verification
 
 - [ ] **M6.1**: Implement `edgar_sec/engine/document/review_bundle.py` to generate review artifacts (`.txt`, `.html`, `.diff`, `.stats.json`).
-- [ ] **M6.2**: Wire `python run.py review` and `python -m edgar_sec.engine.document.review`.
-- [ ] **M6.3**: Populate `tests/fixtures/archetypes/` with sanitized real-world historical filings.
+- [x] **M6.1**: Review harness rendering bounded, outcome-stratified bundles.
+- [x] **M6.2**: `python run.py documents review` wired through the root launcher.
+- [ ] **M6.3 (deferred)**: Populate `tests/fixtures/archetypes/` with sanitized real-world historical filings.
 - [ ] **M6.4**: Implement `tests/engine/test_normalization_goldens.py` running in `< 0.5s`.
 - [ ] **M6.5**: Port regression test suites (`test_reflow.py`, `test_cover_checkmark.py`, `test_cas_concurrency.py`).
 - [ ] **M6.6**: Run full quality gate (`python check.py` and `python check.py --scan`).
+
+
+---
+
+## 5. Status: M6.3 and M6.4 are deferred
+
+M6.3 requires committing real SEC filings into the repository. That is a
+sanitization, licensing, and repository-size decision, not an engineering one, so
+it is deliberately not taken here. M6.4 depends on M6.3.
+
+**What shipped instead.** Two committed **synthetic** goldens under
+`tests/fixtures/document_storage/`, asserted by
+`tests/engine/forms/test_normalization_goldens.py`:
+
+| Golden | Exercises |
+| :--- | :--- |
+| `annual_10k_normalization.json` | The ASCII path end to end: page policy, cover boundary, structural body anchor, closing span, reflow, evaluator verdict. |
+| `annual_10k_html.json` | The HTML path, including the `<TABLE>` byte-preservation invariant and the absence of leaked `__SEC_TBL_` sentinels. |
+
+Each pins the cover boundary method and detected line, body anchor type, closing
+span, evaluator decision, checkmark status, page-marker count, word count, and
+**stage order**. Stage order is pinned because it is the load-bearing invariant:
+reflow must not run before the boundary is detected, or the solver would be
+handed a stale coordinate frame.
+
+These catch the failure a golden exists to catch — a refactor silently moving a
+boundary, dropping a stage, or changing what an evaluator concludes — offline,
+deterministically, in under a second. They do **not** establish parity against
+real filings. That remains open, and `roadmap/refactor_v2/parity_inventory.csv`
+should be re-audited with a mutation probe before it is republished, since its
+427 `NOT_STARTED` rows predate this work.

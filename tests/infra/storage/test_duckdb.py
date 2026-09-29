@@ -104,3 +104,41 @@ def test_duplicate_nested_values_detects_fan_out(tmp_path: Path) -> None:
     finally:
         con.close()
     assert "0001-02-000003" in found
+
+
+def test_every_connection_carries_the_resource_budget() -> None:
+    """The four settings are applied through the single connect() seam.
+
+    AGENTS.md section 2 requires every DuckDB connection to set threads,
+    memory_limit, temp_directory and preserve_insertion_order from the
+    cgroup-aware resource profile. The structural guarantee is that
+    ``duckdb.connect`` is reachable from exactly one place, so nothing can open
+    an unconfigured connection; this test pins both halves of that.
+    """
+    from pathlib import Path as _Path
+
+    import edgar_sec
+
+    package_root = _Path(edgar_sec.__file__).parent
+    offenders = sorted(
+        f"edgar_sec/{p.relative_to(package_root)}"
+        for p in package_root.rglob("*.py")
+        if "__pycache__" not in p.parts
+        and "duckdb.connect(" in p.read_text(encoding="utf-8", errors="ignore")
+    )
+    assert offenders == ["edgar_sec/infra/storage/duckdb.py"], offenders
+
+    with connect() as con:
+        threads = con.execute("SELECT current_setting('threads')").fetchone()[0]
+        memory_limit = con.execute("SELECT current_setting('memory_limit')").fetchone()[
+            0
+        ]
+        preserve = con.execute(
+            "SELECT current_setting('preserve_insertion_order')"
+        ).fetchone()[0]
+        temp_dir = con.execute("SELECT current_setting('temp_directory')").fetchone()[0]
+
+    assert int(threads) >= 1
+    assert memory_limit, "memory_limit is unset"
+    assert bool(preserve) is False, "preserve_insertion_order must be false"
+    assert temp_dir, "temp_directory is unset"

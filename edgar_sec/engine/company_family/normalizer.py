@@ -24,13 +24,17 @@ from edgar_sec.domain.taxonomy.family_vocab import (
 )
 from edgar_sec.domain.taxonomy.jurisdictions import JURISDICTION_RE
 from edgar_sec.domain.taxonomy.legal_forms import LEGAL_FORMS
+from edgar_sec.foundation.regex.builder import build_alternation
 
 # Separators that carry no identity. Includes the em dash and typographic quotes
 # that appear in EDGAR names.
 PUNCT_RE = re.compile(r"[/\\,._\-—()\[\]{}'\"’`&]+")
 
 # Bare parenthesised trademark markers: (R), (TM), (SM), (C).
-TRADEMARK_RE = re.compile(r"\((?:sm|tm|r|c)\)", re.IGNORECASE)
+TRADEMARK_RE = re.compile(
+    rf"\({build_alternation(['sm', 'tm', 'r', 'c'])}\)",
+    re.IGNORECASE,
+)
 
 DIGIT_PLACEHOLDER = "D"
 SINGLE_LETTER_PLACEHOLDER = "S"

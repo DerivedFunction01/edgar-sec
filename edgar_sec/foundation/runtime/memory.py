@@ -1,21 +1,23 @@
-"""Shared memory reclaim and memory-efficient hashing for long-lived processes.
+"""Shared memory reclaim for long-lived processes.
 
 Python garbage collection frees large C-backed objects (HTML trees, decompressed
 payloads, Arrow tables) to the C allocator, but glibc only returns freed pages
 to the operating system on malloc_trim. Batch workers and brokers therefore
 call reclaim() at bounded intervals to keep resident memory near the live
 working set instead of the high-water mark.
+
+Streaming text hashing lives in :mod:`edgar_sec.foundation.hashing`: this module
+used to carry a second ``sha256_text`` with different behaviour from the
+``hashing`` one, which is exactly the shape of defect AGENTS.md §1.1 bans.
 """
 
 from __future__ import annotations
 
 import ctypes
 import gc
-import hashlib
 
 _LIBC = None
 _TRIM_DISABLED = False
-_SHA256_CHUNK_CHARS = 1 << 20  # 1MB text chunk
 
 
 def _malloc_trim() -> bool:
@@ -46,22 +48,4 @@ def reclaim() -> None:
     _malloc_trim()
 
 
-def sha256_text(text: str) -> str:
-    """Hash a string without materializing a second full-size bytes copy.
-
-    Encodes in bounded 1MB chunks to prevent memory spikes on multi-megabyte documents.
-    """
-    digest = hashlib.sha256()
-    if len(text) <= _SHA256_CHUNK_CHARS:
-        digest.update(text.encode("utf-8"))
-        return digest.hexdigest()
-
-    # Stream in 1MB chunks without allocating the entire string as bytes at once
-    view = memoryview(text.encode("utf-8"))
-    chunk_size = 1 << 20
-    for offset in range(0, len(view), chunk_size):
-        digest.update(view[offset : offset + chunk_size])
-    return digest.hexdigest()
-
-
-__all__ = ["reclaim", "sha256_text"]
+__all__ = ["reclaim"]
