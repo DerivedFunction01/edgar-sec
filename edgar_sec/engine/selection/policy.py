@@ -410,11 +410,11 @@ class SelectionPolicy:
             raise ValueError(f"unknown policy dimensions: {sorted(unknown)}")
 
         # A composite is selected from the locator table, so a stratum filtered
-        # on a dimension that only exists per filing cannot be matched. Policy
-        # construction accepts it -- the vocabulary check above cannot tell
-        # grains apart -- and the failure otherwise surfaces as a DuckDB Binder
-        # Error from deep inside selection, naming a column rather than the
-        # policy field that caused it. Refusing it here names both.
+        # on a dimension that only exists per filing can never be matched. The
+        # vocabulary check above cannot tell grains apart, so without this the
+        # failure surfaces as a DuckDB Binder Error from deep inside selection,
+        # naming a column rather than the policy field that caused it. Refusing
+        # it here names both.
         occurrence_only = sorted(
             {
                 dimension

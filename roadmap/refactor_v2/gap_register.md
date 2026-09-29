@@ -201,11 +201,11 @@ locators. v1 re-derived and compared a fingerprint and rejected the mismatch.
 
 ## Part 4 — Contract violations
 
-### 4.1 Phase 1 settings bypass — the only finding that produces silently wrong output
+### 4.1 Phase 1 settings bypass — **CLOSED**
 
-`runtime.chunk_size` and `runtime.partition_count` are declared
-`SettingSpec(env=True, config=True, cli=True)`, resolve correctly, and are read
-by **nothing**. `cli.py:227-238` wires argparse defaults to module constants.
+`runtime.chunk_size` and `runtime.partition_count` were declared
+`SettingSpec(env=True, config=True, cli=True)`, resolved correctly, and were read
+by **nothing**. `cli.py:227-238` wired argparse defaults to module constants.
 
 ```
 $ RUNTIME_CHUNK_SIZE=2 RUNTIME_PARTITION_COUNT=3 … plan --input …
@@ -214,9 +214,18 @@ plan written: 4 CIKs, 1 chunks, 1 partitions
   partition_count: 1      <-- env said 3
 ```
 
-An operator who sets the documented env vars gets a different plan than the
-environment declares, with a success line printed. This is the v1
+An operator who set the documented env vars got a different plan than the
+environment declared, with a success line printed. This was the v1
 `validate_plan_against_options` guard, with both halves gone.
+
+**Closed.** The CLI resolves the registry at the options boundary, the
+unsupported `config=True` flags are removed, and `runtime.partition_count` is
+now **retired from the registry entirely** — once the bypass was fixed, nothing
+in `metadata_sync` or `filing_catalog` read a partition count, and
+`test_no_command_exposes_a_partition_count` already recorded that no command
+accepts one. `runtime.chunk_size` remains a plan-defining input. See
+[phase_1.md](phase_1.md) "Closure note" and
+[phase_2_closure_plan_expansion.md](phase_2_closure_plan_expansion.md).
 
 ### 4.2 The policy-scope occurrence partition ships a duplicate column — **CLOSED**
 
@@ -248,12 +257,31 @@ Parquet reader handed JSON. A documented CLI option could not work.
 streaming `file_sha256`. A missing path, a missing required field, or a digest
 mismatch raises `CatalogError`. Covered in `test_catalog_job.py`.
 
-### 4.3 `validate_chunks` is far weaker than AGENTS.md §4.3
+### 4.3 `validate_chunks` is far weaker than AGENTS.md §4.3 — **STALE, corrected**
 
-§4.3 requires the coordinator to validate "schema conformance, row count,
-uniqueness of CIKs, null checks, fan-out accession records". `merger.py:79-98`
-does two checks: `path.is_file()` and column names. Everything else is a warning.
-v1's `snapshot_merge.py:199` raised on duplicate occurrences; v2 cannot.
+This entry previously claimed that `merger.py:79-98` performs "two checks:
+`path.is_file()` and column names" and that "everything else is a warning". Both
+statements were wrong on re-measurement, and the cited line range no longer
+pointed at validation code at all.
+
+Coordinator validation is split across two functions:
+
+- `validate_chunks()` checks planned chunk coverage, rejects missing and foreign
+  chunk files, and per chunk verifies schema conformance, row count, and CIK
+  coverage including uniqueness.
+- `merge_chunks()` then rejects null CIKs and duplicate CIK rows across chunks,
+  and verifies the final row count and published schema.
+
+`tests/pipelines/metadata_sync/test_merger.py` covers null-CIK rejection and
+duplicate-CIK rejection.
+
+The one item in the old §4.3 wording that is **deliberately not** a hard check is
+fan-out accession records. Duplicate accessions are reportable, not fatal: the
+same filing is legitimately listed by more than one registrant, so they are
+collected on the merge report and raised as warnings. v1's
+`snapshot_merge.py:199` raised on duplicate occurrences; v2 deliberately does
+not, and `AGENTS.md` §4.3 has been corrected to say so. Document-level
+validation for the Phase 2.5 output model belongs with that phase.
 
 ### 4.4 Also open
 

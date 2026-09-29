@@ -425,10 +425,13 @@ holds, and returns the stamped document so a later rewrite cannot drop it.
 A policy plan's `selection_report.json` carries an `inventory_feasibility` block
 computed from the feature snapshot after selection has run. It answers, per
 declared floor and composite, how many locators the corpus actually held
-(`available`) against how many the policy asked for (`required`), with the
-`deficit` and a flat `infeasible_floors` / `infeasible_composites` list for the
-ones that could not have been met. A policy declaring neither floors nor
-composites records `checked: false` rather than scanning for nothing.
+(`available`) against how many the policy asked for (`required`). Floors also
+carry a `deficit`, which is the actionable part; composites carry `feasible`
+alone, because a stratum's shortfall is not a number of filings a policy author
+can adjust the way a floor minimum is. The two flat lists `infeasible_floors`
+and `infeasible_composites` name the ones that could not have been met. A policy
+declaring neither floors nor composites records `checked: false` rather than
+scanning for nothing.
 
 It is **advisory only** and cannot fail a fresh plan — a shortfall is still
 reported in `underfilled_floors` and the plan publishes. Two reasons, both
@@ -437,6 +440,12 @@ independent and do not subtract competition between floors, the family cap, or
 the seeds; and a floor can be satisfiable yet skipped once an earlier phase has
 claimed its candidates. A prediction is weaker evidence than a completed
 selection, so a diagnostic that disagrees with the result does not override it.
+
+"Cannot fail" is scoped to the ways the inventory is known to decline. It
+catches an unknown dimension, an occurrence-grain composite, and an unreadable
+snapshot, and reports `checked: false` with the reason instead. An unexpected
+DuckDB error — a corrupt snapshot, say — still propagates and fails the plan,
+because a snapshot that cannot be read is a broken run rather than a shortfall.
 
 A composite stratum naming an occurrence-grain dimension (`accession_class`) is
 refused at `SelectionPolicy` construction rather than reported, because the

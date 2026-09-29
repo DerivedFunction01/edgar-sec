@@ -494,6 +494,9 @@ than reusing another plan's checkpoints. The settings regression this replaces:
 `runtime.chunk_size` and `runtime.partition_count` were declared with `env=True`,
 `config=True`, `cli=True` and read by *nothing*; the parser hardcoded the module
 constant, so `RUNTIME_CHUNK_SIZE=2` still produced a plan claiming 1000.
+`runtime.partition_count` is now retired outright rather than merely unwired —
+v2 has no operational partitions, since distribution is a separate static
+chunk-to-worker assignment artifact. `runtime.chunk_size` remains.
 
 The checkpoint contract in one line: **a chunk checkpoint is complete only when
 it exists, its Parquet footer schema equals `SUBMISSION_METADATA_SCHEMA`, it

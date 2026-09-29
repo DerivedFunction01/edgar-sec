@@ -16,6 +16,14 @@ Two things make that guarantee hold rather than merely be intended:
   selection runs, so a mismatched catalog, corpus, form set, or seed set fails
   immediately instead of after an expensive build.
 
+Expansion is strict about *which* parent it will accept, because it is handed a
+directory rather than resolving one: the parent must be a plan of the schema
+this build publishes, carrying every field a child compares against, with a
+selection fingerprint that still matches the locators beside it. A bundle from
+an older schema is refused and must be republished, not adapted. Without that,
+"the child contains 100% of the parent's locators" would be a claim about a
+parent whose locators were never verified.
+
 The lineage record lands in ``expansion_metadata.json`` beside the plan, and
 the child records ``parent_plan_id`` and ``parent_plan_fingerprint`` in
 ``plan.json``, so a plan's provenance is readable from the plan itself.
@@ -38,10 +46,12 @@ from edgar_sec.infra.storage.atomic import atomic_write_json
 from edgar_sec.pipelines.filing_catalog.paths import (
     EXPANSION_METADATA_NAME,
     PLAN_FILE_NAME,
+    FilingCatalogPaths,
     resolve_filing_catalog_paths,
 )
 from edgar_sec.pipelines.filing_catalog.planner import SCOPE_POLICY, plan_policy
 from edgar_sec.pipelines.filing_catalog.publication import (
+    TARGET_PLAN_SCHEMA_VERSION,
     plan_fingerprint,
     plan_locator_keys,
 )
@@ -54,6 +64,17 @@ _CHILD_ONLY_FIELDS = (
     "level",
     "parent_plan_id",
     "parent_plan_fingerprint",
+)
+
+# Fields every published policy plan of the current schema carries. They are
+# what makes a parent comparable to a child, so a parent missing one cannot be
+# validated and is refused rather than reinterpreted.
+_REQUIRED_PARENT_FIELDS = (
+    "plan_id",
+    "catalog_id",
+    "policy_corpus",
+    "seed_fingerprint",
+    "plan_fingerprint",
 )
 
 
@@ -105,12 +126,60 @@ def _read_plan_json(plan_dir: Path) -> dict[str, Any]:
         raise ParentPlanError(f"parent plan.json is unreadable: {plan_dir}") from error
 
 
+def _read_parent_seed_filers(
+    paths: FilingCatalogPaths, plan_id: str, parent_root: Path
+) -> dict[str, Any]:
+    """Load a parent plan's published seed sidecar, or explain why it cannot be.
+
+    The reader raises bare ``FileNotFoundError`` and ``ValueError``, which are
+    accurate but useless here: the operator did not mis-type a path, the bundle
+    is incomplete. Both are restated as a parent-plan failure naming the file.
+    """
+    sidecar = paths.plan_seed_filers(plan_id)
+    try:
+        return read_seed_filers_csv(sidecar)
+    except (FileNotFoundError, ValueError) as error:
+        raise ParentPlanError(
+            f"parent plan seed sidecar is unusable ({error}); the bundle at "
+            f"{parent_root} is incomplete and must be republished"
+        ) from error
+
+
 def _inherited_policy_fields(policy: SelectionPolicy) -> dict[str, Any]:
     """The policy fields a child must inherit unchanged from its parent."""
     data = policy.to_dict()
     for field_name in _CHILD_ONLY_FIELDS:
         data.pop(field_name, None)
     return data
+
+
+def validate_parent_schema(parent_meta: dict[str, Any]) -> None:
+    """Reject a parent plan this build cannot expand from.
+
+    Expansion takes an explicit directory, so unlike an ordinary plan lookup it
+    gets no protection from plan identity: a bundle published under an older
+    schema has a different ``plan_id`` and lives in a different directory, but
+    nothing stops an operator from pointing ``--parent`` straight at it. Every
+    required field below is written unconditionally by the current planner, so a
+    field that is absent is a plan from another schema or a malformed bundle,
+    never a legitimate parent. There is no compatibility path: republish it.
+    """
+    version = parent_meta.get("plan_schema_version")
+    if version != TARGET_PLAN_SCHEMA_VERSION:
+        raise ParentPlanError(
+            f"parent plan schema is {version!r}, this build expands "
+            f"{TARGET_PLAN_SCHEMA_VERSION!r} plans only; republish the parent plan"
+        )
+    missing = [
+        name
+        for name in _REQUIRED_PARENT_FIELDS
+        if not str(parent_meta.get(name) or "").strip()
+    ]
+    if missing:
+        raise ParentPlanError(
+            f"parent plan is missing required {TARGET_PLAN_SCHEMA_VERSION} fields "
+            f"{missing}: republish the parent plan"
+        )
 
 
 def validate_parent(
@@ -130,9 +199,9 @@ def validate_parent(
         raise ParentPlanError("plan expansion requires a policy-driven parent plan")
     if str(parent_meta.get("catalog_id")) != catalog_id:
         raise ParentPlanError("parent and child plans must use the same catalog")
-    if parent_meta.get("policy_corpus") not in (None, policy.corpus_id):
+    if parent_meta["policy_corpus"] != policy.corpus_id:
         raise ParentPlanError("parent and child plans must use the same policy corpus")
-    if parent_meta.get("seed_fingerprint") not in (None, seed_fingerprint):
+    if parent_meta["seed_fingerprint"] != seed_fingerprint:
         raise ParentPlanError("parent and child plans must use the same seed CIK set")
 
     parent_forms = {str(form).upper() for form in parent_meta.get("forms") or []}
@@ -164,20 +233,32 @@ def prepare_parent(
     parent_meta = _read_plan_json(parent_root)
     parent_keys = plan_locator_keys(parent_root)
 
+    # Re-run the gate for direct callers: ``expand`` performs it before reading
+    # the seed sidecar, and this is a public entry point of its own.
+    validate_parent_schema(parent_meta)
+
     if target_units < len(parent_keys):
         raise ParentPlanError(
             "expanded target_units cannot be smaller than the parent selection"
+        )
+
+    # The fingerprint is checked against the selection the parent actually
+    # published, not merely read. A parent whose recorded fingerprint disagrees
+    # with its own locators is not the plan it claims to be, and inheriting it
+    # would give the child a lineage that describes something else.
+    recorded_fingerprint = str(parent_meta["plan_fingerprint"])
+    if plan_fingerprint(parent_meta, parent_keys) != recorded_fingerprint:
+        raise ParentPlanError(
+            "parent plan fingerprint does not match its published selection; "
+            "the bundle was modified after publication"
         )
 
     child_policy = replace(
         policy,
         base_content_units=target_units,
         level=max(policy.level, int(parent_meta.get("level", 1)) + 1),
-        parent_plan_id=str(parent_meta.get("plan_id") or parent_root.name),
-        parent_plan_fingerprint=str(
-            parent_meta.get("plan_fingerprint")
-            or plan_fingerprint(parent_meta, parent_keys)
-        ),
+        parent_plan_id=str(parent_meta["plan_id"]),
+        parent_plan_fingerprint=recorded_fingerprint,
     )
     validate_parent(parent_meta, None, child_policy, catalog_id, seed_fingerprint)
     return parent_meta, parent_keys, child_policy
@@ -237,9 +318,12 @@ def expand(
     if parent_meta.get("scope") != SCOPE_POLICY:
         raise ParentPlanError("plan expansion requires a policy-driven parent plan")
 
-    catalog_id = str(parent_meta.get("catalog_id") or "")
-    if not catalog_id:
-        raise ParentPlanError("parent plan is missing catalog_id")
+    # Then the schema, before the seed sidecar is touched. A bundle from an older
+    # schema has no sidecar to read, and reporting a missing file for it would
+    # send the operator looking for the wrong problem.
+    validate_parent_schema(parent_meta)
+
+    catalog_id = str(parent_meta["catalog_id"])
 
     embedded = parent_meta.get("selection_policy")
     if not isinstance(embedded, dict):
@@ -253,8 +337,8 @@ def expand(
         # comes from the parent's published sidecar. Re-reading the configured
         # CSV here would let a moved, edited, or deleted file change the
         # mandatory filers of a child whose parent cannot be reproduced.
-        seed_filers = read_seed_filers_csv(
-            paths.plan_seed_filers(str(parent_meta.get("plan_id") or parent_root.name))
+        seed_filers = _read_parent_seed_filers(
+            paths, str(parent_meta["plan_id"]), parent_root
         )
     seed_fingerprint = compute_seed_fingerprint(seed_filers)
     _parent_meta, parent_keys, child_policy = prepare_parent(
@@ -322,5 +406,6 @@ __all__ = [
     "prepare_parent",
     "read_expansion_metadata",
     "validate_parent",
+    "validate_parent_schema",
     "validate_target",
 ]

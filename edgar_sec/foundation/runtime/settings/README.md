@@ -27,7 +27,7 @@ takes a mapping the caller supplies; nothing here reads or writes a file.
 | Module | Responsibility |
 | :--- | :--- |
 | `__init__.py` | `SettingSpec`, `environment_name`, `collect_specs`, `resolve_settings`, `flatten_settings`, `render_dotenv`, `RuntimeSettings` (315 loc). |
-| `runtime.py` | Concurrency, memory, chunk, and partition specs (143 loc). |
+| `runtime.py` | Concurrency, memory, and chunk specs (134 loc). |
 | `sec.py` | SEC identity, rate limit, timeout, retry, and failure-history specs; `SecSettings` (99 loc). |
 | `paths.py` | Artifacts and cache root specs (64 loc). |
 | `catalog.py` | Filing-catalog batch and row-group specs (63 loc). |
@@ -41,7 +41,7 @@ package and its providers is closed only at call time.
 
 ## The registry
 
-Nineteen settings are registered. `env` names below are derived, never
+Eighteen settings are registered. `env` names below are derived, never
 hand-written.
 
 | Logical path | Env name | Type | Default | env | config | cli | secret | machine_local |
@@ -50,7 +50,6 @@ hand-written.
 | `runtime.worker_memory_safety` | `RUNTIME_WORKER_MEMORY_SAFETY` | float | `0.9` | yes | no | no | no | yes |
 | `runtime.workers` | `RUNTIME_WORKERS` | int | `auto_worker_count(...)` | yes | no | yes | no | yes |
 | `runtime.chunk_size` | `RUNTIME_CHUNK_SIZE` | int | `1000` | yes | yes | yes | no | no |
-| `runtime.partition_count` | `RUNTIME_PARTITION_COUNT` | int | `1` | yes | yes | yes | no | no |
 | `runtime.threads` | `RUNTIME_THREADS` | int | `default_threads()` | yes | no | yes | no | yes |
 | `runtime.memory_fraction` | `RUNTIME_MEMORY_FRACTION` | float | `0.6` | yes | no | no | no | yes |
 | `runtime.memory_limit` | `RUNTIME_MEMORY_LIMIT` | str | `default_memory_limit(fraction)` | yes | no | yes | no | yes |
@@ -139,14 +138,14 @@ hand-written.
 - `collect_specs` — flatten all four providers into `dict[str, SettingSpec]`. `__init__.py`.
 - `resolve_settings` — the precedence resolver, returning `dict[str, object]`. `__init__.py`.
 - `resolve_runtime_settings` — resolve everything and return a typed `RuntimeSettings`. `__init__.py`.
-- `RuntimeSettings` — frozen slotted dataclass: `sec`, `worker_memory_mib`, `worker_memory_safety`, `memory_fraction`, `default_chunk_size`, `default_partition_count`, `artifacts_root`, `cache_root`, `temp_directory`, `log_level`. `__init__.py`.
+- `RuntimeSettings` — frozen slotted dataclass: `sec`, `worker_memory_mib`, `worker_memory_safety`, `memory_fraction`, `default_chunk_size`, `artifacts_root`, `cache_root`, `temp_directory`, `log_level`. `__init__.py`.
 - `flatten_settings` — strip `secret=True` paths from a resolved mapping. `__init__.py`.
 - `render_dotenv` — produce a documented `.env` template string. `__init__.py`.
 - `MISSING` — sentinel distinguishing "not supplied" from a value. `__init__.py`.
 - `SecSettings` — frozen slotted dataclass of the five SEC values, plus `header_user_agent`. `sec.py`.
 - `get_runtime_specs` / `get_paths_specs` / `get_sec_specs` / `get_catalog_specs` — the four providers. `runtime.py`, `paths.py`, `sec.py`, `catalog.py`.
 - `validate_positive_int` / `validate_non_negative_int` / `validate_fraction` — shared bounds checks. `validators.py`.
-- `DEFAULT_CHUNK_SIZE` (1000), `DEFAULT_PARTITION_COUNT` (1), `DEFAULT_WORKER_MEMORY_MIB` (512), `DEFAULT_WORKER_MEMORY_SAFETY` (0.9), `DEFAULT_MEMORY_FRACTION` (0.6). `runtime.py`.
+- `DEFAULT_CHUNK_SIZE` (1000), `DEFAULT_WORKER_MEMORY_MIB` (512), `DEFAULT_WORKER_MEMORY_SAFETY` (0.9), `DEFAULT_MEMORY_FRACTION` (0.6). `runtime.py`.
 - `DEFAULT_ARTIFACTS_ROOT` (`Path(".artifacts")`), `DEFAULT_CACHE_JSON_TTL_S` (7776000). `paths.py`.
 - `DEFAULT_USER_AGENT`, `DEFAULT_RATE_LIMIT_RPS` (8.0), `DEFAULT_TIMEOUT_S` (15.0), `DEFAULT_MAX_RETRIES` (3), `DEFAULT_MAX_FAILURE_ATTEMPTS` (3). `sec.py`.
 - `DEFAULT_SOURCE_BATCH_SIZE` (1000), `DEFAULT_ROW_GROUP_SIZE` (128000). `catalog.py`.
@@ -177,18 +176,30 @@ There are no separate test modules for `catalog.py`, `paths.py`, `sec.py`, or
   argument. v1's `.v1/defs/runtime/config_io.py` and `settings_cli.py` were not
   ported, and neither was v1's Phase 1 `ProjectConfig` / `--configure`; the
   retirement is recorded in `roadmap/refactor_v2/phase_1.md` §10. A phase needing
-  persistence must supply the mapping. The `config=True` flags that
-  `runtime.chunk_size` and `runtime.partition_count` previously carried have been
-  **removed**: a spec declaring persistence with no backing store advertises a
-  capability that does not exist, and
-  `tests/foundation/runtime/test_runtime_settings.py` now fails if either
-  reintroduces it.
+  persistence must supply the mapping. The `config=True` flag that
+  `runtime.chunk_size` previously carried has been **removed**: a spec declaring
+  persistence with no backing store advertises a capability that does not exist,
+  and `tests/foundation/runtime/test_runtime_settings.py` now fails if it
+  reintroduces one.
+- **`runtime.partition_count` is retired, not reserved.** v1 declared the setting
+  and only Phase 2.5 ever read it. In v2 it had no production consumer at all:
+  Phase 1 distributes work through static per-worker chunk assignments
+  (`assignment.divide_chunks`) rather than a fixed partition count, and Phase 2
+  publishes form-partitioned targets that no operator selects. A spec that
+  resolves and is addressable by environment variable implies an operator can
+  change behaviour, so `RUNTIME_PARTITION_COUNT=3` was accepted and silently
+  discarded. The spec, its `RuntimeSettings` field, and its default constant are
+  removed, and
+  `tests/foundation/runtime/test_runtime_settings.py::test_the_retired_partition_count_setting_is_gone`
+  fails if any of them returns. If Phase 2.5's distribution design needs a count,
+  it registers a phase-owned setting with its own settings provider; see
+  `roadmap/refactor_v2/phase_2_closure_plan_expansion.md` §Deferral.
 - **`render_dotenv` has no callers.** It returns a template string; no writer
   in this package places it on disk, and nothing in `edgar_sec/` invokes it.
   Callers that want a `.env` must write the string themselves, and
   `load_dotenv` in `runtime/env.py` is what reads it back.
 - **`machine_local` is declared and never read.** The flag is on the
-  `SettingSpec` dataclass and set on 15 of the 19 specs, but no code branches on
+  `SettingSpec` dataclass and set on 15 of the 18 specs, but no code branches on
   it. It documents intent — that a value should not be persisted or shared
   across machines — and AGENTS.md §3 treats that as a real requirement, so the
   guarantee currently rests on convention rather than on enforcement. Anything
@@ -201,9 +212,9 @@ There are no separate test modules for `catalog.py`, `paths.py`, `sec.py`, or
   is not read from any spec, and no logger in this repository is configured by
   it.
 - **No validation of cross-setting consistency.** Each spec is validated in
-  isolation. Nothing checks that, for example, `runtime.partition_count` is
-  reachable by the available `runtime.workers`, or that a `sec.timeout_s` is
-  compatible with a configured rate limit.
+  isolation. Nothing checks that, for example, `runtime.chunk_size` is compatible
+  with the cohort being planned, or that a `sec.timeout_s` is compatible with a
+  configured rate limit.
 - **No coercion of near-miss strings.** `_parse_value` is strict: `"8"` will not
   satisfy a `float` spec, and an unrecognised boolean word raises rather than
   defaulting. The looser behaviour lives in `runtime/env.py`'s

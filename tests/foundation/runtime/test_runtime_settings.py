@@ -1,12 +1,19 @@
 """Runtime settings spec tests.
 
-The chunking specs are plan-defining, so a defect in one produces a silently
-wrong plan rather than a crash. Two properties are pinned here: every spec that
-an operator can set from the environment validates its own bounds, and none
+The chunking spec is plan-defining, so a defect in one produces a silently wrong
+plan rather than a crash. Two properties are pinned here: every spec that an
+operator can set from the environment validates its own bounds, and none
 declares ``config=True`` while no settings mapping is persisted. The second
 matters because a ``config=True`` flag advertises a backing store that does not
-exist, which is how `runtime.chunk_size` and `runtime.partition_count` came to
-be declared with persistence that nothing implemented.
+exist, which is how ``runtime.chunk_size`` came to be declared with persistence
+that nothing implemented.
+
+``runtime.partition_count`` is deliberately absent. It survived v1, was consumed
+there only by Phase 2.5, and in v2 it had no production reader at all: Phase 1
+distributes chunks through static per-worker assignments instead, and Phase 2
+publishes form-partitioned targets that no operator selects. A setting nobody
+reads is a capability advertised but not delivered, so it is retired rather than
+parked for a future phase to adopt.
 """
 
 from __future__ import annotations
@@ -19,9 +26,9 @@ from edgar_sec.foundation.runtime.settings import (
     resolve_runtime_settings,
     resolve_settings,
 )
+from edgar_sec.foundation.runtime.settings import runtime as runtime_specs
 from edgar_sec.foundation.runtime.settings.runtime import (
     DEFAULT_CHUNK_SIZE,
-    DEFAULT_PARTITION_COUNT,
     get_runtime_specs,
 )
 from edgar_sec.foundation.runtime.settings.validators import (
@@ -30,7 +37,7 @@ from edgar_sec.foundation.runtime.settings.validators import (
     validate_positive_int,
 )
 
-PLAN_DEFINING = ("runtime.chunk_size", "runtime.partition_count")
+PLAN_DEFINING = ("runtime.chunk_size",)
 
 
 def _specs() -> dict:
@@ -44,9 +51,20 @@ def _specs() -> dict:
 def test_the_module_constants_are_the_spec_defaults() -> None:
     specs = _specs()
     assert specs["chunk_size"].default == DEFAULT_CHUNK_SIZE
-    assert specs["partition_count"].default == DEFAULT_PARTITION_COUNT
     assert DEFAULT_CHUNK_SIZE == 1000
-    assert DEFAULT_PARTITION_COUNT == 1
+
+
+def test_the_retired_partition_count_setting_is_gone() -> None:
+    """Nothing reads it, so the registry must not keep advertising it.
+
+    A spec that resolves and addresses by env var implies an operator can change
+    the behaviour. With no consumer, ``RUNTIME_PARTITION_COUNT`` was accepted and
+    silently discarded.
+    """
+    assert "partition_count" not in _specs()
+    assert not hasattr(RuntimeSettings, "default_partition_count")
+    assert "runtime.partition_count" not in resolve_settings()
+    assert not hasattr(runtime_specs, "DEFAULT_PARTITION_COUNT")
 
 
 def test_plan_defining_specs_are_env_and_cli_addressable() -> None:
@@ -76,15 +94,11 @@ def test_plan_defining_specs_reject_non_positive_values() -> None:
 def test_runtime_settings_surface_the_resolved_chunking() -> None:
     settings: RuntimeSettings = resolve_runtime_settings()
     assert settings.default_chunk_size == DEFAULT_CHUNK_SIZE
-    assert settings.default_partition_count == DEFAULT_PARTITION_COUNT
 
 
 def test_runtime_settings_accept_cli_overrides() -> None:
-    settings = resolve_runtime_settings(
-        cli_overrides={"runtime.chunk_size": 3, "runtime.partition_count": 2}
-    )
+    settings = resolve_runtime_settings(cli_overrides={"runtime.chunk_size": 3})
     assert settings.default_chunk_size == 3
-    assert settings.default_partition_count == 2
 
 
 def test_resolution_rejects_an_invalid_override() -> None:
@@ -92,16 +106,10 @@ def test_resolution_rejects_an_invalid_override() -> None:
         resolve_runtime_settings(cli_overrides={"runtime.chunk_size": 0})
 
 
-def test_env_overrides_beat_defaults(
-    monkeypatch: pytest.MonkeyPatch,
-) -> None:
+def test_env_overrides_beat_defaults(monkeypatch: pytest.MonkeyPatch) -> None:
     monkeypatch.setenv("RUNTIME_CHUNK_SIZE", "9")
-    monkeypatch.setenv("RUNTIME_PARTITION_COUNT", "4")
-    resolved = resolve_settings(
-        env={"RUNTIME_CHUNK_SIZE": "9", "RUNTIME_PARTITION_COUNT": "4"}
-    )
+    resolved = resolve_settings(env={"RUNTIME_CHUNK_SIZE": "9"})
     assert resolved["runtime.chunk_size"] == 9
-    assert resolved["runtime.partition_count"] == 4
 
 
 def test_machine_derived_specs_are_marked_local() -> None:
@@ -115,7 +123,7 @@ def test_machine_derived_specs_are_marked_local() -> None:
         "worker_memory_safety",
     ):
         assert specs[name].machine_local is True, name
-    for name in ("chunk_size", "partition_count"):
+    for name in ("chunk_size",):
         assert specs[name].machine_local is False, name
 
 

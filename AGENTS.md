@@ -102,13 +102,14 @@ To prevent OOM kills, glibc fragmentation, and thread thrashing in containerized
 ## 4. Phase 1 Pipeline & Resumability Contract
 
 1. **Deterministic Planning**:
-   - `plan` divides work into fixed-size chunks (default 1000 CIKs, or 100 for mini tests) and operational partitions without network access.
-   - `plan.json` records input fingerprint, chunk boundaries, and schema version.
+   - `plan` divides work into fixed-size chunks (default 1000 CIKs, or 100 for mini tests) without network access. It does **not** create operational partitions: v1's `--partition` split is retired, and chunk-to-worker distribution is a separate content-addressed assignment (`assignment.divide_chunks`), so reassigning machines never moves a plan or discards a checkpoint.
+   - `plan.json` records input fingerprint, chunk boundaries, and schema version. Plan identity is the cohort and chunk layout only; assignment and worker count are excluded by construction.
 2. **Resumable Workers**:
    - Workers execute individual chunks, outputting validated atomic Parquet checkpoints (`.artifacts/transient/...`).
    - Completed chunks are verified and skipped on subsequent runs.
 3. **Coordinator Merge**:
-   - The coordinator validates all chunk checkpoints (schema conformance, row count, uniqueness of CIKs, null checks, fan-out accession records).
+   - The coordinator validates all chunk checkpoints (schema conformance, row count, uniqueness of CIKs, null checks, and foreign-chunk rejection), then rejects null or duplicate CIKs across the merged set.
+   - Duplicate accession numbers are **reportable fan-out, not a failure**: the same filing is legitimately listed by more than one registrant, so they are surfaced as warnings on the merge report.
    - Assembles final sorted Parquet artifact via DuckDB out-of-core COPY (`ORDER BY cik`).
 
 ---

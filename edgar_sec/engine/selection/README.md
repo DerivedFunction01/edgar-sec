@@ -222,6 +222,10 @@ The order *is* the design:
   floor can be satisfiable yet skipped once a cap or an earlier phase has claimed
   the candidates. A prediction is weaker evidence than a completed selection.
   Making it a gate would need a joint model of the quotas, not per-dimension counts.
+  The planner catches the three ways the inventory is known to decline — unknown
+  dimension, occurrence-grain composite, unreadable snapshot — and records
+  `checked: false` with the reason; an unexpected DuckDB error is deliberately
+  left to propagate, since an unreadable snapshot is a broken run, not a shortfall.
 - **A composite stratum cannot name an occurrence-grain dimension.** Composites
   are drawn from `locator_features`, which carries no `accession_class` column.
   `SelectionPolicy` construction refuses such a policy, naming the offending

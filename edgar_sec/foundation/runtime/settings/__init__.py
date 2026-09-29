@@ -214,7 +214,6 @@ class RuntimeSettings:
     worker_memory_safety: float
     memory_fraction: float
     default_chunk_size: int
-    default_partition_count: int
     artifacts_root: Path
     cache_root: Path
     temp_directory: Path | None
@@ -250,7 +249,6 @@ def resolve_runtime_settings(
         worker_memory_safety=float(raw["runtime.worker_memory_safety"]),
         memory_fraction=float(raw["runtime.memory_fraction"]),
         default_chunk_size=int(raw["runtime.chunk_size"]),
-        default_partition_count=int(raw["runtime.partition_count"]),
         artifacts_root=Path(str(raw["artifacts.root"])),
         cache_root=Path(str(raw["cache.root"])),
         temp_directory=temp_dir,

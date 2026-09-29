@@ -121,6 +121,180 @@ def test_a_root_plan_has_no_lineage_record(
     assert not (parent_dir / EXPANSION_METADATA_NAME).exists()
 
 
+# --------------------------------------------------------- parent compatibility
+
+
+def _rewrite_plan(plan_dir: Path, mutate: Any) -> None:
+    """Apply ``mutate`` to a published ``plan.json`` in place."""
+    document = json.loads((plan_dir / PLAN_FILE_NAME).read_text(encoding="utf-8"))
+    mutate(document)
+    (plan_dir / PLAN_FILE_NAME).write_text(
+        json.dumps(document, indent=2, sort_keys=True), encoding="utf-8"
+    )
+
+
+def _child_plan_ids(artifacts_root: Path, exclude: str) -> set[str]:
+    plans_root = resolve_filing_catalog_paths(artifacts_root).plans_root
+    return {
+        child.name
+        for child in plans_root.iterdir()
+        if child.is_dir() and child.name != exclude
+    }
+
+
+def test_a_downgraded_parent_is_refused_even_when_the_sidecar_survives(
+    catalog_snapshot: tuple[dict[str, Any], Path],
+) -> None:
+    """A parent missing its seed fingerprint must not slip through as a match.
+
+    The guard compared against ``(None, fingerprint)``, so an absent field
+    satisfied it. A 1.0 bundle has no sidecar to reproduce its seed set from,
+    so accepting it published a child whose lineage points at a plan that never
+    declared one.
+    """
+    artifacts_root = _root(catalog_snapshot)
+    parent_dir, _ = _publish_parent(catalog_snapshot, base_content_units=2)
+    _rewrite_plan(
+        parent_dir,
+        lambda document: (
+            document.__setitem__("plan_schema_version", "1.0"),
+            document.pop("seed_fingerprint"),
+        ),
+    )
+    before = _child_plan_ids(artifacts_root, parent_dir.name)
+
+    with pytest.raises(ParentPlanError, match="republish the parent plan"):
+        expand(parent_dir, 4, artifacts_root=artifacts_root)
+    assert _child_plan_ids(artifacts_root, parent_dir.name) == before
+
+
+def test_a_downgraded_parent_reports_the_schema_mismatch_not_a_missing_file(
+    catalog_snapshot: tuple[dict[str, Any], Path],
+) -> None:
+    """The authentic probe: sidecar removed too, error must still name the schema.
+
+    The sidecar read ran before any version check, so a bare ``FileNotFoundError``
+    escaped and the operator was sent looking for a file rather than told the
+    bundle is from an older schema.
+    """
+    artifacts_root = _root(catalog_snapshot)
+    parent_dir, _ = _publish_parent(catalog_snapshot, base_content_units=2)
+    _rewrite_plan(
+        parent_dir,
+        lambda document: document.__setitem__("plan_schema_version", "1.0"),
+    )
+    (parent_dir / SEED_FILERS_NAME).unlink()
+
+    with pytest.raises(ParentPlanError) as failure:
+        expand(parent_dir, 4, artifacts_root=artifacts_root)
+    message = str(failure.value)
+    assert "1.0" in message
+    assert "republish the parent plan" in message
+    assert "not found" not in message
+
+
+@pytest.mark.parametrize("version", [None, "0.9", "1.2", ""])
+def test_only_the_current_schema_is_expandable(
+    catalog_snapshot: tuple[dict[str, Any], Path],
+    version: str | None,
+) -> None:
+    """Older, newer, absent and empty all fail closed, with no compat shim."""
+    artifacts_root = _root(catalog_snapshot)
+    parent_dir, _ = _publish_parent(catalog_snapshot, base_content_units=2)
+
+    def drop_or_set(document: dict[str, Any]) -> None:
+        if version is None:
+            document.pop("plan_schema_version", None)
+        else:
+            document["plan_schema_version"] = version
+
+    _rewrite_plan(parent_dir, drop_or_set)
+    with pytest.raises(ParentPlanError, match="republish the parent plan"):
+        expand(parent_dir, 4, artifacts_root=artifacts_root)
+
+
+@pytest.mark.parametrize(
+    "field", ["policy_corpus", "seed_fingerprint", "plan_fingerprint", "catalog_id"]
+)
+def test_a_current_parent_missing_a_required_field_is_refused(
+    catalog_snapshot: tuple[dict[str, Any], Path],
+    field: str,
+) -> None:
+    """A required field absent at the current schema is malformed, not optional."""
+    artifacts_root = _root(catalog_snapshot)
+    parent_dir, _ = _publish_parent(catalog_snapshot, base_content_units=2)
+    _rewrite_plan(parent_dir, lambda document: document.pop(field))
+
+    with pytest.raises(ParentPlanError, match=f"{field}"):
+        expand(parent_dir, 4, artifacts_root=artifacts_root)
+
+
+def test_a_tampered_parent_fingerprint_is_refused(
+    catalog_snapshot: tuple[dict[str, Any], Path],
+) -> None:
+    """The recorded fingerprint must still describe the locators beside it.
+
+    ``prepare_parent`` recomputed the fingerprint when the stored one was
+    missing, so a parent whose selection had been altered was re-stamped with
+    its *new* contents and handed to the child as an unverified parent.
+    """
+    artifacts_root = _root(catalog_snapshot)
+    parent_dir, parent_meta = _publish_parent(catalog_snapshot, base_content_units=2)
+    _rewrite_plan(
+        parent_dir,
+        lambda document: document.__setitem__("plan_fingerprint", "0" * 16),
+    )
+
+    with pytest.raises(ParentPlanError, match="fingerprint does not match"):
+        expand(parent_dir, 4, artifacts_root=artifacts_root)
+    assert parent_meta["plan_fingerprint"] != "0" * 16
+
+
+def test_a_parent_with_a_missing_sidecar_is_a_parent_plan_error(
+    catalog_snapshot: tuple[dict[str, Any], Path],
+) -> None:
+    """An incomplete but current-schema bundle is still a bundle that must be fixed."""
+    artifacts_root = _root(catalog_snapshot)
+    parent_dir, _ = _publish_parent(catalog_snapshot, base_content_units=2)
+    (parent_dir / SEED_FILERS_NAME).unlink()
+
+    with pytest.raises(ParentPlanError) as failure:
+        expand(parent_dir, 4, artifacts_root=artifacts_root)
+    assert "seed sidecar is unusable" in str(failure.value)
+
+
+def test_a_malformed_parent_sidecar_is_a_parent_plan_error(
+    catalog_snapshot: tuple[dict[str, Any], Path],
+) -> None:
+    """A truncated sidecar is reported as the bundle fault it is."""
+    artifacts_root = _root(catalog_snapshot)
+    parent_dir, _ = _publish_parent(catalog_snapshot, base_content_units=2)
+    (parent_dir / SEED_FILERS_NAME).write_text("cik\n0000320193\n", encoding="utf-8")
+
+    with pytest.raises(ParentPlanError, match="seed sidecar is unusable"):
+        expand(parent_dir, 4, artifacts_root=artifacts_root)
+
+
+def test_the_schema_gate_protects_direct_prepare_parent_callers(
+    catalog_snapshot: tuple[dict[str, Any], Path],
+) -> None:
+    """``prepare_parent`` is public; it must not be a way around the gate."""
+    parent_dir, parent_meta = _publish_parent(catalog_snapshot, base_content_units=2)
+    _rewrite_plan(
+        parent_dir,
+        lambda document: document.__setitem__("plan_schema_version", "1.0"),
+    )
+
+    with pytest.raises(ParentPlanError, match="republish the parent plan"):
+        prepare_parent(
+            parent_dir,
+            _policy(),
+            4,
+            str(parent_meta["catalog_id"]),
+            compute_seed_fingerprint({}),
+        )
+
+
 def test_duplicate_expansion_is_idempotent(
     catalog_snapshot: tuple[dict[str, Any], Path],
 ) -> None:
@@ -208,7 +382,7 @@ def test_a_child_with_different_forms_is_refused(
             _policy(),
             4,
             str(catalog_snapshot[0]["catalog_id"]),
-            parent_meta.get("seed_fingerprint", ""),
+            parent_meta["seed_fingerprint"],
         )
 
 

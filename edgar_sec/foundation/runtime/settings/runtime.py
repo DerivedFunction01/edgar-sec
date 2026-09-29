@@ -12,7 +12,6 @@ if TYPE_CHECKING:
     from . import SettingSpec
 
 DEFAULT_CHUNK_SIZE = 1000
-DEFAULT_PARTITION_COUNT = 1
 DEFAULT_WORKER_MEMORY_MIB = 512
 DEFAULT_WORKER_MEMORY_SAFETY = 0.9
 DEFAULT_MEMORY_FRACTION = 0.6
@@ -89,14 +88,6 @@ def get_runtime_specs() -> dict[str, dict[str, SettingSpec]]:
                 validate=validate_positive_int,
                 description="source rows per resumable work unit (chunk)",
             ),
-            "partition_count": SettingSpec(
-                value_type=int,
-                default=DEFAULT_PARTITION_COUNT,
-                env=True,
-                cli=True,
-                validate=validate_positive_int,
-                description="partitions the run is distributed into",
-            ),
             "threads": SettingSpec(
                 value_type=int,
                 default=_default_threads,
@@ -136,7 +127,6 @@ def get_runtime_specs() -> dict[str, dict[str, SettingSpec]]:
 __all__ = [
     "DEFAULT_CHUNK_SIZE",
     "DEFAULT_MEMORY_FRACTION",
-    "DEFAULT_PARTITION_COUNT",
     "DEFAULT_WORKER_MEMORY_MIB",
     "DEFAULT_WORKER_MEMORY_SAFETY",
     "get_runtime_specs",

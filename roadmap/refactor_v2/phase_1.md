@@ -541,10 +541,17 @@ which was already true of `--partition N`.
   that nothing read: the CLI supplied module constants, so
   `RUNTIME_CHUNK_SIZE=2` still produced a plan recording `1000`. The CLI now
   resolves the registry at the options boundary, and the unsupported `config=True`
-  flags on those two specs were removed.
+  flags on those two specs were removed. `runtime.partition_count` has since been
+  **retired outright** — see the closure note at the end of this section.
 - `load_plan` recorded `schema_version` and displayed it in `status` but never
   enforced it; a forged version was accepted.
-- `build_plan` derived partitions by modulo with no coverage assertion.
+- `build_plan` derived partitions by modulo with no coverage assertion. The
+  modulo assignment is gone entirely: a v2 plan fixes chunk membership by roster
+  ordinal and distributes chunks through `assignment.divide_chunks`
+  (`assignment.py`), so worker count is a property of a separate assignment
+  artifact and never of the plan. `parity_inventory.csv` described the removed
+  `chunk_index % partition_count` split as though it were current; that row is
+  corrected.
 - `plan_delta` rebuilt an `InputManifest` that kept the *request file's*
   fingerprint, so `build_plan` derived a delta plan's identity from the request
   rather than from the delta. Two augmentations of one CSV against different bases
@@ -566,3 +573,31 @@ which was already true of `--partition N`.
 - Six `metadata_sync` source modules had no mirrored test file, and Parquet
   write atomicity and the `max_response_bytes` permanent-failure classification
   were unverified. All now have named tests.
+
+### Closure note — `runtime.partition_count` retired
+
+M7 replaced v1's operational partitions with chunks plus separate static
+assignments, and the audit fix above stopped the settings bypass. The setting
+itself then remained registered with **no production reader**: Phase 1 fixed
+`chunk_size` at the options boundary, but nothing in `metadata_sync` or
+`filing_catalog` ever consumed a partition count, and
+`test_no_command_exposes_a_partition_count` had already recorded that no command
+accepts one. A spec that resolves and is addressable by environment variable
+implies an operator can change behaviour, so `RUNTIME_PARTITION_COUNT=3` was
+accepted and silently discarded.
+
+It is removed: the spec, `RuntimeSettings.default_partition_count`, and
+`DEFAULT_PARTITION_COUNT`. `runtime.chunk_size` stays — it remains a
+plan-defining input recorded in `plan.json`.
+
+This is a retirement, not a deferral, and not a claim that partitioning is wrong.
+v1's Phase 2.5 genuinely consumed `partition_count` for locator distribution and
+handoff coverage validation. v2's Phase 2.5 has not chosen its distribution unit
+yet, so it will define its own control at that time — as a phase-owned setting
+registered with its own provider, not as a dormant foundation default. See
+[phase_2_closure_plan_expansion.md](phase_2_closure_plan_expansion.md) §Deferral
+for the open question.
+
+`AGENTS.md` §4.1 previously stated that `plan` divides work into "fixed-size
+chunks … and operational partitions". That was false of v2 and is now corrected
+to describe chunking plus static chunk-to-worker assignment.
