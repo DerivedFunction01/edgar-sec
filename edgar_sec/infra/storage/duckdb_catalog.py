@@ -21,6 +21,7 @@ from __future__ import annotations
 
 import os
 import re
+from collections.abc import Sequence
 from pathlib import Path
 
 from edgar_sec.domain.filing_catalog.filters import AMENDMENT_POLICIES
@@ -52,6 +53,16 @@ def sql_literal(value: str) -> str:
     return "'" + str(value).replace("'", "''") + "'"
 
 
+def sql_path_list(paths: Sequence[str]) -> str:
+    """Return ``paths`` as a SQL list literal for ``read_parquet([...])``.
+
+    A snapshot is a dataset, so a consumer may need to read several parts. The
+    list is built element by element with :func:`sql_literal` rather than by
+    joining a string, so a path cannot break out of its own element.
+    """
+    return "[" + ", ".join(sql_literal(str(path)) for path in paths) + "]"
+
+
 def _qualified_identifier(name: str) -> str:
     """Return ``name`` if it is a dotted path of bare SQL identifiers, else raise.
 
@@ -68,13 +79,17 @@ def _qualified_identifier(name: str) -> str:
     return name
 
 
-def build_part_unnest_query(part_path: str) -> str:
-    """Unnest one Phase 1 part into flat filing-occurrence rows.
+def build_part_unnest_query(part_paths: Sequence[str] | str) -> str:
+    """Unnest one or more Phase 1 parts into flat filing-occurrence rows.
 
-    ``part_path`` is the single parameter. It is emitted as an escaped literal
-    so the caller can pass any real path without risking injection.
+    A Phase 1 snapshot is a dataset, so this accepts the whole part list. A bare
+    string is treated as a one-element list, which keeps a legacy single-file
+    snapshot readable through the same query.
     """
-    path = sql_literal(part_path)
+    paths = [part_paths] if isinstance(part_paths, str) else list(part_paths)
+    if not paths:
+        raise ValueError("build_part_unnest_query requires at least one source part")
+    path = sql_path_list(paths)
     return f"""
     WITH raw_unnest AS (
         SELECT

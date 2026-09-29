@@ -18,24 +18,26 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
 
-from edgar_sec.domain.submissions.schemas import SUBMISSION_METADATA_SCHEMA
-from edgar_sec.foundation.hashing import file_sha256
 from edgar_sec.foundation.runtime.settings.runtime import DEFAULT_CHUNK_SIZE
 from edgar_sec.infra.storage.duckdb import (
-    concat_to_parquet,
     connect,
     find_duplicate_keys,
     find_duplicate_nested_values,
     find_null_keys,
 )
-from edgar_sec.infra.storage.parquet import (
-    count_parquet_rows,
-    read_parquet_schema,
-    read_parquet_table,
-)
+from edgar_sec.infra.storage.parquet import read_parquet_table
 
 from .manifest import InputManifest, read_cik_manifest
-from .merger import MergeError, MergeReport, publish_cik_index, publish_snapshot
+from .merger import (
+    MergeError,
+    MergeReport,
+    _filing_record_count,
+    _published_ciks,
+    parts_digest,
+    publish_cik_index,
+    publish_parts,
+    publish_snapshot,
+)
 from .paths import MetadataPaths, resolve_run_paths
 from .planner import Plan, build_plan, utc_now_iso, write_plan
 from .roster import (
@@ -47,6 +49,7 @@ from .roster import (
     without_ciks,
 )
 from .sec_client import SubmissionsClient
+from .snapshot import read_snapshot_parts
 from .worker import run_chunk_ids
 
 __all__ = [
@@ -87,18 +90,26 @@ def snapshot_cik_roster(
 
     The published index is read when one exists, because it is the artifact the
     snapshot claims to hold. A snapshot published before the index existed falls
-    back to projecting the payload's CIK column, and a missing base is still an
-    error: an unreadable base must never be mistaken for an empty one.
+    back to projecting the CIK column of every part its manifest lists, and a
+    missing base is still an error: an unreadable base must never be mistaken for
+    an empty one.
     """
     index_path = metadata_paths.snapshot_cik_index(snapshot_id)
     if index_path.is_file():
         ciks = read_cik_index(index_path)
     else:
-        payload = metadata_paths.snapshot_file(snapshot_id)
-        if not payload.is_file():
-            raise FileNotFoundError(f"base snapshot not found: {payload}")
-        table = read_parquet_table(payload, columns=["cik"])
-        ciks = tuple(str(value) for value in table.column("cik").to_pylist() if value)
+        parts = read_snapshot_parts(metadata_paths.snapshot_manifest(snapshot_id))
+        ciks = tuple(
+            str(value)
+            for value in (
+                value
+                for path in parts.paths
+                for value in read_parquet_table(path, columns=["cik"])
+                .column("cik")
+                .to_pylist()
+                if value
+            )
+        )
     if names:
         return build_roster(
             sorted(set(ciks)), [names.get(cik, "") for cik in sorted(set(ciks))]
@@ -152,17 +163,22 @@ def augment(
 ) -> AugmentResult:
     """Augment a published snapshot with any newly requested CIKs.
 
-    The base snapshot file is merged alongside the delta checkpoints, so base
-    CIKs are carried forward untouched and are never refetched. Copied base rows
-    keep their original row-level ``snapshot_id``: that field is row provenance,
-    not the identity of whichever artifact later contains the row, and rewriting
-    it would misstate where the data came from.
+    The base snapshot is read as the ordered part list its manifest declares, so a
+    multipart base contributes all of its parts and a legacy single-file base
+    contributes one. Delta chunks are published as the remaining parts of the new
+    snapshot, so base CIKs are carried forward untouched and never refetched.
+
+    Copied base rows keep their original row-level ``snapshot_id``: that field is
+    row provenance, not the identity of whichever artifact later contains the row,
+    and rewriting it would misstate where the data came from.
     """
-    base_path = metadata_paths.snapshot_file(base_snapshot_id)
-    if not base_path.is_file():
-        raise FileNotFoundError(f"base snapshot not found: {base_path}")
+    base_parts = read_snapshot_parts(metadata_paths.snapshot_manifest(base_snapshot_id))
     base = snapshot_cik_roster(metadata_paths, base_snapshot_id)
-    base_rows = count_parquet_rows(base_path)
+    base_rows = (
+        sum(int(part["row_count"]) for part in base_parts.layout.manifest["parts"])
+        if base_parts.layout.multipart
+        else base_parts.row_count
+    )
 
     plan = derive_delta_plan(
         roster_from_manifest(manifest),
@@ -189,8 +205,8 @@ def augment(
             refetched.extend(plan.chunk_ciks(result.chunk_id))
 
     delta_paths = [str(run_paths.chunk_file(chunk_id)) for chunk_id in plan.chunk_ids()]
-    inputs = [str(base_path), *delta_paths]
-    output_path = metadata_paths.snapshot_file(new_snapshot_id)
+    inputs = [str(path) for path in base_parts.paths]
+    inputs.extend(delta_paths)
 
     report = MergeReport(
         snapshot_id=new_snapshot_id,
@@ -223,30 +239,36 @@ def augment(
                 f"{len(report.duplicate_accessions)} duplicate accession(s) observed; "
                 "accession is not globally unique"
             )
-        row_count = concat_to_parquet(con, inputs, output_path, order_by=("cik",))
     finally:
         con.close()
 
+    sources: list[tuple[str, Path]] = [
+        (f"base:{base_snapshot_id}#{index}", path)
+        for index, path in enumerate(base_parts.paths)
+    ]
+    sources.extend(
+        (f"chunk:{path.stem}", path)
+        for path in (run_paths.chunk_file(chunk_id) for chunk_id in plan.chunk_ids())
+    )
+    part_paths = publish_parts(report, metadata_paths, sources)
+
+    row_count = sum(int(part["row_count"]) for part in report.parts)
     expected = base_rows + plan.row_count
     if row_count != expected:
         raise MergeError(
-            f"augmentation rejected: merged row count {row_count} "
+            f"augmentation rejected: published row count {row_count} "
             f"!= expected {expected} ({base_rows} base + {plan.row_count} delta)"
         )
-    if not read_parquet_schema(output_path).equals(
-        SUBMISSION_METADATA_SCHEMA, check_metadata=False
-    ):
-        raise MergeError("augmentation rejected: published artifact schema drifted")
-
-    merged = snapshot_cik_roster(metadata_paths, new_snapshot_id)
-    expected_ciks = union_rosters(base, plan.roster)
-    if set(merged.ciks) != set(expected_ciks.ciks):
-        raise MergeError("augmentation rejected: merged CIK set differs from union")
 
     report.row_count = row_count
-    report.output_path = str(output_path)
-    report.artifact_sha256 = file_sha256(output_path)
-    publish_cik_index(report, metadata_paths, expected_ciks.ciks)
+    report.parts_digest = parts_digest(report.parts)
+    report.filing_record_count = _filing_record_count([str(p) for p in part_paths])
+    merged = _published_ciks(part_paths)
+    expected_ciks = union_rosters(base, plan.roster)
+    if set(merged) != set(expected_ciks.ciks):
+        raise MergeError("augmentation rejected: merged CIK set differs from union")
+
+    publish_cik_index(report, metadata_paths, merged)
     report.merged_at = utc_now_iso()
     publish_snapshot(report, metadata_paths)
 

@@ -122,14 +122,15 @@ process builds its own rate limiter, so divide the budget with
 
 ### 5. Filing Catalog Pipeline (Zero Network)
 
-Phase 2 turns a finalized Phase 1 `metadata.parquet` into immutable,
+Phase 2 turns a finalized Phase 1 snapshot dataset into immutable,
 content-addressed **target plans** for a future acquisition phase to consume.
 It never performs network I/O, and `tests/test_network_isolation.py` proves
 that by walking the import graph rather than by grep.
 
 ```bash
 # Materialize a catalog snapshot from a Phase 1 snapshot:
-python run.py filing-catalog materialize --source <phase1>/metadata.parquet
+python run.py filing-catalog materialize \
+    --source-manifest <phase1>/metadata/snapshots/<id>/metadata.manifest.json
 
 # Deterministic plan: four filters, no dates, 8-column locator projection.
 python run.py filing-catalog plan --catalog current --forms 10-K --amendment original
@@ -340,7 +341,7 @@ All generated paths derive from the artifacts root; no module hardcodes them.
 {artifacts_root}/metadata/plans/{plan_id}/assignments/*.parquet   # One chunk set per worker
 {artifacts_root}/transient/metadata/{plan_id}/chunk_NNNN.parquet # Resumable checkpoints
 {artifacts_root}/metadata/registries/{registry_id}/             # Source comparison outputs
-{artifacts_root}/metadata/snapshots/{snapshot_id}/metadata.parquet  # Published dataset
+{artifacts_root}/metadata/snapshots/{snapshot_id}/parts/*.parquet   # Published dataset
 {artifacts_root}/metadata/snapshots/{snapshot_id}/ciks.parquet     # Published CIK index
 {artifacts_root}/metadata/snapshots/current/pointer.json        # Current snapshot pointer
 {artifacts_root}/metadata/sources/{name}/{snapshot_id}/         # Immutable source snapshots

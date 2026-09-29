@@ -20,11 +20,18 @@ from edgar_sec.domain.filing_catalog.schemas import (
     TARGET_COLUMNS,
     TARGET_SCHEMA,
 )
+from edgar_sec.domain.submissions.schemas import (
+    SCHEMA_VERSION as SOURCE_SCHEMA_VERSION,
+)
 from edgar_sec.domain.submissions.schemas import SUBMISSION_METADATA_SCHEMA
+from edgar_sec.foundation.hashing import file_sha256
 from edgar_sec.pipelines.filing_catalog.catalog_job import (
     CatalogError,
     materialize,
     resolve_source,
+)
+from edgar_sec.pipelines.filing_catalog.paths import (
+    resolve_filing_catalog_paths,
 )
 from tests.support import catalog_fixture_path
 
@@ -129,11 +136,137 @@ def test_source_manifest_resolves_the_parquet_payload(
     """A manifest is metadata; the Parquet it names is the data."""
     manifest = _phase1_manifest(sample_source, tmp_path / "art")
 
-    source, handoff = resolve_source(None, manifest)
+    dataset = resolve_source(None, manifest)
 
+    assert dataset.part_count == 1
+    source = dataset.first
     assert source.suffix == ".parquet", "the JSON manifest was returned as the source"
-    assert handoff is not None and handoff["snapshot_id"] == "snap-1"
+    assert dataset.handoff is not None and dataset.handoff["snapshot_id"] == "snap-1"
     assert pq.read_schema(source).names == SUBMISSION_METADATA_SCHEMA.names
+
+
+def _multipart_manifest(sample_source: Path, root: Path, parts: int = 2) -> Path:
+    """Publish a Phase 1 multipart manifest splitting the fixture into parts.
+
+    The rows are the committed fixture split by row count, so materializing this
+    and materializing the legacy single-file snapshot must agree exactly.
+    """
+    from edgar_sec.foundation.hashing import file_sha256
+
+    payload = root / "snapshots" / "snap-multi"
+    parts_dir = payload / "parts"
+    parts_dir.mkdir(parents=True)
+    table = pq.read_table(sample_source)
+    per_part = max(1, -(-table.num_rows // parts))
+
+    entries = []
+    offset = 0
+    index = 0
+    while offset < table.num_rows:
+        chunk = table.slice(offset, per_part)
+        path = parts_dir / f"part-{index:05d}.parquet"
+        pq.write_table(chunk, path)
+        entries.append(
+            {
+                "path": f"parts/{path.name}",
+                "part_index": index,
+                "source": f"chunk:{index}",
+                "row_count": chunk.num_rows,
+                "byte_count": path.stat().st_size,
+                "sha256": file_sha256(path),
+                "schema_version": SOURCE_SCHEMA_VERSION,
+            }
+        )
+        offset += per_part
+        index += 1
+
+    manifest = payload / "metadata.manifest.json"
+    manifest.write_text(
+        json.dumps(
+            {
+                "manifest_version": "2.0.0",
+                "snapshot_id": "snap-multi",
+                "output_path": "",
+                "artifact_sha256": "",
+                "row_count": table.num_rows,
+                "part_count": index,
+                "parts": entries,
+                "schema_version": SOURCE_SCHEMA_VERSION,
+            }
+        ),
+        encoding="utf-8",
+    )
+    return manifest
+
+
+def test_a_multipart_source_materializes_the_same_catalog(
+    tmp_path: Path, sample_source: Path
+) -> None:
+    """Splitting the payload into parts must not change the catalog.
+
+    This is the equivalence that makes the multipart publication safe: the same
+    rows in several parts and the same rows in one file are the same dataset, so
+    profiles, targets, and form counts must be identical.
+    """
+    legacy = _phase1_manifest(sample_source, tmp_path / "legacy-art")
+    multipart = _multipart_manifest(sample_source, tmp_path / "multi-art")
+
+    from_legacy = materialize(None, tmp_path / "out-legacy", source_manifest=legacy)
+    from_parts = materialize(None, tmp_path / "out-multi", source_manifest=multipart)
+
+    assert from_parts["source_part_count"] > 1
+    assert from_legacy["profile_row_count"] == from_parts["profile_row_count"]
+    assert from_legacy["target_row_count"] == from_parts["target_row_count"]
+    assert from_legacy["form_counts"] == from_parts["form_counts"]
+
+    legacy_profiles = pq.read_table(
+        resolve_filing_catalog_paths(tmp_path / "out-legacy").snapshot_profiles_file(
+            "snap-1"
+        )
+    )
+    multi_profiles = pq.read_table(
+        resolve_filing_catalog_paths(tmp_path / "out-multi").snapshot_profiles_file(
+            "snap-multi"
+        )
+    )
+    assert legacy_profiles.equals(multi_profiles)
+
+
+def test_a_multipart_source_with_a_tampered_part_is_refused(
+    tmp_path: Path, sample_source: Path
+) -> None:
+    manifest = _multipart_manifest(sample_source, tmp_path / "art")
+    victim = next((manifest.parent / "parts").glob("part-0000*.parquet"))
+    victim.write_bytes(b"truncated")
+
+    with pytest.raises(CatalogError, match="digest mismatch"):
+        resolve_source(None, manifest)
+
+
+def test_a_part_with_a_foreign_schema_is_refused(
+    tmp_path: Path, sample_source: Path
+) -> None:
+    """A part that does not carry the Phase 1 schema fails before any query."""
+    from edgar_sec.infra.storage.parquet import write_parquet_table
+
+    manifest = _multipart_manifest(sample_source, tmp_path / "art")
+    victim = next((manifest.parent / "parts").glob("part-0000*.parquet"))
+    write_parquet_table(pa.table({"cik": ["0000000001"]}), victim)
+
+    # The digest check fires first, which is the correct order: bytes before shape.
+    with pytest.raises(CatalogError, match="digest mismatch"):
+        resolve_source(None, manifest)
+
+    # Re-point the manifest at the tampered part and the schema guard catches it.
+    document = json.loads(manifest.read_text(encoding="utf-8"))
+    name = victim.name
+    for part in document["parts"]:
+        if part["path"].endswith(name):
+            part["sha256"] = file_sha256(victim)
+    manifest.write_text(json.dumps(document), encoding="utf-8")
+
+    with pytest.raises(CatalogError, match="columns do not match"):
+        materialize(None, tmp_path / "out", source_manifest=manifest)
 
 
 def test_materialize_accepts_an_explicit_manifest(
@@ -176,7 +309,7 @@ def test_source_manifest_without_an_output_path_is_refused(
     document.pop("output_path")
     manifest.write_text(json.dumps(document), encoding="utf-8")
 
-    with pytest.raises(CatalogError, match="names no output_path"):
+    with pytest.raises(CatalogError, match="names no payload"):
         resolve_source(None, manifest)
 
 

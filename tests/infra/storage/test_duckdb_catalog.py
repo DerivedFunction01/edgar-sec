@@ -47,9 +47,26 @@ def test_build_merged_targets_query_requires_a_relation() -> None:
 
 def test_unnest_query_embeds_the_path_as_a_literal() -> None:
     query = build_part_unnest_query("data/part-00000.parquet")
-    assert "read_parquet('data/part-00000.parquet')" in query
+    assert "read_parquet(['data/part-00000.parquet'])" in query
     for column in TARGET_COLUMNS:
         assert column in query
+
+
+def test_unnest_query_embeds_every_part_of_a_snapshot() -> None:
+    """A snapshot is a dataset, so the whole part list must reach the query."""
+    query = build_part_unnest_query(["data/a.parquet", "data/b.parquet"])
+    assert "read_parquet(['data/a.parquet', 'data/b.parquet'])" in query
+
+
+def test_unnest_query_escapes_a_path_rather_than_concatenating_it() -> None:
+    query = build_part_unnest_query(["data/it's.parquet"])
+    assert "it''s.parquet" in query
+    assert "read_parquet(['data/it's.parquet'])" not in query
+
+
+def test_unnest_query_refuses_an_empty_part_list() -> None:
+    with pytest.raises(ValueError, match="at least one source part"):
+        build_part_unnest_query([])
 
 
 def test_unnest_query_applies_the_documented_derivation_rules() -> None:

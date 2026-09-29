@@ -1,6 +1,6 @@
 # `edgar_sec/pipelines/filing_catalog` — Phase 2: zero-network catalog materialization and target planning
 
-This package turns a finalized Phase 1 `metadata.parquet` into an immutable
+This package turns a finalized Phase 1 snapshot dataset into an immutable
 filing catalog and then into immutable, content-addressed **target plans** that
 Phase 2.5 consumes. It performs no network I/O at all. It is not a fetcher, and
 nothing in it constructs an HTTP client.
@@ -257,6 +257,9 @@ to `edgar_sec/pipelines/filing_catalog/operator.py`. With no argument,
 `operator_entrypoint` shows the wizard; with an argument it calls `cli.main`.
 
 ```bash
+python run.py filing-catalog materialize \
+    --source-manifest <phase1>/metadata/snapshots/<id>/metadata.manifest.json
+# or, for a snapshot published as one file:
 python run.py filing-catalog materialize --source <phase1>/metadata.parquet
 python run.py filing-catalog plan --catalog current --forms 10-K --amendment original
 python run.py filing-catalog plan --catalog current --scope policy \
@@ -269,7 +272,7 @@ python run.py filing-catalog status
 
 | Subcommand | Flags | Returns |
 | :--- | :--- | :--- |
-| `materialize` | `--source` (Phase 1 `metadata.parquet` path), `--source-manifest` (Phase 1 snapshot manifest path), `--artifacts`, `--batch-size` (int, default `None`) | 0 with the manifest JSON on stdout, or 1 on `CatalogError` with `error: <msg>` on stderr. |
+| `materialize` | `--source` (one Parquet part, treated as a one-part dataset), `--source-manifest` (Phase 1 snapshot manifest; its declared parts are resolved and verified), `--artifacts`, `--batch-size` (int, default `None`) | 0 with the manifest JSON on stdout, or 1 on `CatalogError` with `error: <msg>` on stderr. |
 | `plan` | `--catalog` (**required**), `--scope` (`deterministic` default; choices `deterministic`, `policy`), `--policy`, `--auto-policy`, `--artifacts`, `--forms` (nargs `*`), `--amendment` (`both` default; choices `both`, `original`, `amendments`), `--suffixes` (nargs `*`), `--limit` (int) | 0 with the plan document on stdout, or 1 on `PlanConflictError`, `ValueError`, or `OSError`. |
 | `expand` | `--parent-plan` (**required**, a published policy plan directory), `--target-units` (**required**, int), `--artifacts` | 0 with the child plan document, or 1 on `PlanConflictError`, `ParentPlanError`, `ValueError`, or `OSError`. |
 | `status` | `--artifacts` | 0, with the published-state JSON on stdout. |
@@ -379,15 +382,24 @@ Phase 1 `snapshot_id` when the handoff supplies one, otherwise
 FALLBACK_POLICY_VERSION])[:24]` (`catalog_job.py:75-81, 190-191`).
 
 An explicit `--source-manifest` names a Phase 1 *snapshot manifest*, not a
-Parquet file. `resolve_source` reads the manifest, resolves the payload from its
-`output_path`, and verifies that payload against the `artifact_sha256` the
-manifest records before any Parquet is read. A missing path, a missing required
-field, or a digest mismatch raises `CatalogError`. The manifest JSON itself is
-never handed to the Parquet reader.
+Parquet file. A Phase 1 snapshot is a dataset, so `resolve_source` reads the
+manifest and returns the ordered `SourceDataset` it declares, verifying every
+part against the digest the manifest records before any Parquet is read. A
+snapshot published before the multipart contract carries a single
+`output_path`/`artifact_sha256` pair and resolves as a one-part dataset, so the
+same reader covers both formats. A missing part, a tampered part, a missing
+required field, or a digest mismatch raises `CatalogError`. The manifest JSON
+itself is never handed to the Parquet reader.
 
-Inside one DuckDB connection it builds a temp view over the source and runs
-`build_profile_query` to write `company_profiles.parquet`; after `reclaim()` it
-reconnects and runs `build_part_unnest_query` to write
+The part list is read from the manifest, never by globbing a directory: a file
+that is present but unlisted is not part of the snapshot, and a listed file that
+is absent means the snapshot was not fully published. Every part must match the
+canonical `SUBMISSION_METADATA_SCHEMA` column list before any query runs.
+
+Inside one DuckDB connection it builds a temp view over the whole part list and
+runs `build_profile_query` to write `company_profiles.parquet`; after
+`reclaim()` it reconnects and runs `build_part_unnest_query` over the same parts
+to write
 `filing_targets/part-00000.parquet`, accumulating per-form counts. The manifest
 records `manifest_kind`, both schema versions, profile and target row counts,
 `target_columns`, `form_counts`, per-part digests, `source_batch_size`, and

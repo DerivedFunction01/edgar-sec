@@ -12,7 +12,7 @@ Three pipelines, each a complete vertical from a published input to a published
 output:
 
 - `metadata_sync/` — Phase 1, feature-complete with documented scope reductions.
-  Turns a content-addressed CIK roster into a sorted `metadata.parquet`
+  Turns a content-addressed CIK roster into a manifest-described Parquet dataset
   snapshot. The cohort lives once, in an immutable roster dataset; the plan
   references it by identity and records only the chunk layout, so a plan is
   constant in size and moving a cohort to another machine keeps its plan and its
@@ -111,10 +111,11 @@ sits at Layer 4.
 | `metadata_sync/options.py` | The one typed options model the CLI and the operator both build; bundle path resolution (386 loc). |
 | `metadata_sync/worker.py` | Resumable chunk execution over a thread pool; the never-refetch guarantee (258 loc). |
 | `metadata_sync/checkpoints.py` | What counts as a *complete* chunk on disk (131 loc). |
-| `metadata_sync/merger.py` | Coordinator validation, out-of-core sorted merge, progress events, CIK index, snapshot manifest, pointer (336 loc). |
+| `metadata_sync/snapshot.py` | Resolve a published snapshot to a verified, ordered Parquet part list. |
+| `metadata_sync/merger.py` | Coordinator validation, multipart publication, progress events, CIK index, snapshot manifest, pointer (336 loc). |
 | `metadata_sync/augmentation.py` | Delta planning and merge onto a published snapshot without refetching the base (297 loc). |
 | `metadata_sync/sec_client.py` | One CIK to its submissions document plus every historical file it lists (120 loc). |
-| `metadata_sync/paths.py` | `MetadataPaths` / `RunPaths`; the published-vs-transient split, plan bundle, source and registry locations (212 loc). |
+| `metadata_sync/paths.py` | `MetadataPaths` / `RunPaths`; the published-vs-transient split, plan bundle, source, registry, and snapshot-part locations (230 loc). |
 | `metadata_sync/source_registry.py` | Write-once, content-addressed `company_tickers.json` snapshots, reached by `sources refresh` (215 loc). |
 | `metadata_sync/registry.py` | Curated-versus-source comparison, the effective CIK roster, and the CSV export, reached by `sources compare` (419 loc). |
 | `metadata_sync/smoke_test.py` | Credential-gated live check that never publishes; replaces v1's `preview` command (146 loc). |

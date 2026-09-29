@@ -11,10 +11,12 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
+import pyarrow as pa
 import pyarrow.parquet as pq
 import pytest
 
 from edgar_sec.domain.sec_urls import submissions_url
+from edgar_sec.domain.submissions.schemas import SUBMISSION_METADATA_SCHEMA
 from edgar_sec.pipelines.metadata_sync.augmentation import (
     augment,
     augment_from_manifest,
@@ -25,7 +27,11 @@ from edgar_sec.pipelines.metadata_sync.augmentation import (
 )
 from edgar_sec.pipelines.metadata_sync.checkpoints import discover_completed_chunks
 from edgar_sec.pipelines.metadata_sync.manifest import read_cik_manifest
-from edgar_sec.pipelines.metadata_sync.merger import MergeError, merge_chunks
+from edgar_sec.pipelines.metadata_sync.merger import (
+    MergeError,
+    merge_chunks,
+    publish_snapshot,
+)
 from edgar_sec.pipelines.metadata_sync.paths import (
     resolve_metadata_paths,
     resolve_run_paths,
@@ -36,6 +42,7 @@ from edgar_sec.pipelines.metadata_sync.roster import (
     read_cik_index,
     roster_from_manifest,
 )
+from edgar_sec.pipelines.metadata_sync.snapshot import read_snapshot_parts
 from edgar_sec.pipelines.metadata_sync.worker import run_chunk
 from tests.support import FakeSession, cik_payload, fixture_path, load_fixture
 
@@ -57,6 +64,19 @@ def _seed(session: FakeSession, extra: bool = False) -> None:
         session.register(submissions_url(EXTRA), cik_payload(EXTRA, "EXTRA CO"))
 
 
+def _snapshot_rows(metadata, snapshot_id: str) -> list[dict]:
+    """Every row of a published snapshot, across all of its parts.
+
+    A snapshot is a dataset, not a file, so tests read it the way a consumer
+    does: through the part list its manifest declares.
+    """
+    parts = read_snapshot_parts(metadata.snapshot_manifest(snapshot_id))
+    rows: list[dict] = []
+    for path in parts.paths:
+        rows.extend(pq.read_table(path).to_pylist())
+    return rows
+
+
 def _publish_baseline(client, session: FakeSession, tmp_path: Path):
     _seed(session)
     metadata = resolve_metadata_paths(tmp_path)
@@ -72,6 +92,9 @@ def _publish_baseline(client, session: FakeSession, tmp_path: Path):
     for chunk_id in plan.chunk_ids():
         run_chunk(client, plan, run_paths, chunk_id, snapshot_id="base", workers=2)
     report = merge_chunks(plan, run_paths, "base")
+    # A merge is not a publication. The base of an augmentation must be a
+    # published snapshot, so the manifest is the commit record that makes it one.
+    publish_snapshot(report, metadata)
     return metadata, manifest, plan, report
 
 
@@ -228,10 +251,23 @@ def test_augment_merges_base_and_delta_without_refetching_base(
     assert not (refetched_urls & base_urls)
     assert submissions_url(EXTRA) in refetched_urls
 
-    table = pq.read_table(metadata.snapshot_file("next"))
+    table = pa.Table.from_pylist(
+        _snapshot_rows(metadata, "next"), schema=SUBMISSION_METADATA_SCHEMA
+    )
     ciks = table.column("cik").to_pylist()
     assert sorted(ciks) == sorted([*manifest.ciks, EXTRA])
-    assert ciks == sorted(ciks)
+    # An augmented snapshot is in part order (base parts, then delta chunks), not
+    # globally CIK-sorted. Membership is the contract; the manifest records the
+    # ordering as `sort_order`.
+    parts = read_snapshot_parts(metadata.snapshot_manifest("next"))
+    assert [
+        part["source"].split(":")[0] for part in parts.layout.manifest["parts"]
+    ] == [
+        "base",
+        "base",
+        "chunk",
+    ]
+    assert parts.layout.manifest["sort_order"] == "chunk_order"
 
     pointer = json.loads(metadata.current_pointer.read_text())
     assert pointer["snapshot_id"] == "next"
@@ -299,8 +335,7 @@ def test_augment_preserves_base_row_provenance(
     """
     metadata, _, _, _ = _publish_baseline(client, session, tmp_path)
     base_stamps = {
-        row["cik"]: row["snapshot_id"]
-        for row in pq.read_table(metadata.snapshot_file("base")).to_pylist()
+        row["cik"]: row["snapshot_id"] for row in _snapshot_rows(metadata, "base")
     }
     widened = tmp_path / "widened.csv"
     widened.write_text("cik,name\n5555,EXTRA CO\n", encoding="utf-8")
@@ -314,7 +349,7 @@ def test_augment_preserves_base_row_provenance(
         chunk_size=2,
         workers=2,
     )
-    for row in pq.read_table(metadata.snapshot_file("next")).to_pylist():
+    for row in _snapshot_rows(metadata, "next"):
         if row["cik"] in base_stamps:
             assert row["snapshot_id"] == base_stamps[row["cik"]]
         else:

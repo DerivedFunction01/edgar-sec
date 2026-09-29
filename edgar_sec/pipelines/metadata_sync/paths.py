@@ -29,6 +29,7 @@ from .roster import ROSTER_FILE_NAME, SNAPSHOT_CIK_INDEX_NAME
 METADATA_DIR = "metadata"
 SNAPSHOT_FILE_NAME = "metadata.parquet"
 SNAPSHOT_MANIFEST_NAME = "metadata.manifest.json"
+PARTS_DIR_NAME = "parts"
 ROSTER_DIR_NAME = "roster"
 INPUT_DIR_NAME = "input"
 INPUT_MANIFEST_NAME = "input_manifest.json"
@@ -69,8 +70,22 @@ class MetadataPaths:
         return self.snapshots_root / snapshot_id
 
     def snapshot_file(self, snapshot_id: str) -> Path:
-        """Sorted Parquet dataset for one snapshot."""
+        """Sorted Parquet dataset for one snapshot.
+
+        Retained for single-part snapshots and for Phase 1's own augmentation
+        reads. A snapshot may instead publish a ``parts/`` directory described
+        by ``metadata.manifest.json``; use ``read_snapshot_parts`` to resolve one
+        to an ordered part list regardless of layout.
+        """
         return self.snapshot_dir(snapshot_id) / SNAPSHOT_FILE_NAME
+
+    def snapshot_parts_dir(self, snapshot_id: str) -> Path:
+        """Directory holding the Parquet parts of a multipart snapshot."""
+        return self.snapshot_dir(snapshot_id) / PARTS_DIR_NAME
+
+    def snapshot_part(self, snapshot_id: str, part_name: str) -> Path:
+        """Path of one metadata part within a multipart snapshot."""
+        return self.snapshot_parts_dir(snapshot_id) / part_name
 
     def snapshot_manifest(self, snapshot_id: str) -> Path:
         """Merge manifest for one snapshot."""
@@ -201,10 +216,13 @@ __all__ = [
     "INPUT_DIR_NAME",
     "INPUT_MANIFEST_NAME",
     "METADATA_DIR",
+    "PARTS_DIR_NAME",
     "RECEIPT_FILE_NAME",
     "REGISTRY_EFFECTIVE_CIK_DATASET",
     "REGISTRY_EFFECTIVE_CIK_INPUT_NAME",
     "ROSTER_DIR_NAME",
+    "SNAPSHOT_FILE_NAME",
+    "SNAPSHOT_MANIFEST_NAME",
     "MetadataPaths",
     "RunPaths",
     "resolve_metadata_paths",

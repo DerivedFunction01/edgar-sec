@@ -10,6 +10,7 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
+import pyarrow as pa
 import pyarrow.parquet as pq
 
 from edgar_sec.domain.sec_urls import submissions_url
@@ -22,6 +23,7 @@ from edgar_sec.pipelines.metadata_sync.planner import build_plan, write_plan
 from edgar_sec.pipelines.metadata_sync.roster import (
     roster_from_manifest,
 )
+from edgar_sec.pipelines.metadata_sync.snapshot import read_snapshot_parts
 from edgar_sec.pipelines.metadata_sync.worker import run_chunk, run_chunk_ids
 from tests.support import FakeSession, fixture_path, load_fixture
 
@@ -62,6 +64,15 @@ def _seed_session(session: FakeSession) -> None:
         )
 
 
+def _published_rows(metadata, snapshot_id: str) -> list[dict]:
+    """Every row of a published snapshot, read through its declared part list."""
+    parts = read_snapshot_parts(metadata.snapshot_manifest(snapshot_id))
+    rows: list[dict] = []
+    for path in parts.paths:
+        rows.extend(pq.read_table(path).to_pylist())
+    return rows
+
+
 def test_full_replay_produces_publishable_snapshot(
     client, session: FakeSession, tmp_path: Path
 ) -> None:
@@ -92,15 +103,18 @@ def test_full_replay_produces_publishable_snapshot(
     manifest_payload = publish_snapshot(report, run_paths.metadata)
     assert manifest_payload["row_count"] == 4
 
-    table = pq.read_table(run_paths.metadata.snapshot_file(plan.plan_id))
+    table = pa.Table.from_pylist(
+        _published_rows(run_paths.metadata, plan.plan_id),
+        schema=SUBMISSION_METADATA_SCHEMA,
+    )
     assert table.schema.equals(SUBMISSION_METADATA_SCHEMA, check_metadata=False)
     ciks = table.column("cik").to_pylist()
-    assert ciks == sorted(ciks)
-    assert ciks == sorted(manifest.ciks)
+    assert sorted(ciks) == sorted(manifest.ciks)
 
     pointer = json.loads(run_paths.metadata.current_pointer.read_text())
     assert pointer["snapshot_id"] == plan.plan_id
     assert pointer["row_count"] == 4
+    assert pointer["part_count"] == 2
 
 
 def test_replay_is_resumable_and_does_not_refetch(

@@ -11,6 +11,7 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
+import pyarrow as pa
 import pyarrow.parquet as pq
 import pytest
 
@@ -44,6 +45,7 @@ from edgar_sec.pipelines.metadata_sync.roster import (
     roster_from_manifest,
 )
 from edgar_sec.pipelines.metadata_sync.sec_client import SubmissionsClient
+from edgar_sec.pipelines.metadata_sync.snapshot import read_snapshot_parts
 from edgar_sec.pipelines.metadata_sync.worker import run_chunk_ids
 from tests.support import FakeSession, build_test_http, fixture_path
 
@@ -85,6 +87,15 @@ def _prepare(tmp_path: Path, chunk_size: int = 1):
 
 
 # ------------------------------------------------------------------- identity
+
+
+def _snapshot_rows(metadata, snapshot_id: str) -> list[dict]:
+    """Every row of a published snapshot, read through its declared part list."""
+    parts = read_snapshot_parts(metadata.snapshot_manifest(snapshot_id))
+    rows: list[dict] = []
+    for path in parts.paths:
+        rows.extend(pq.read_table(path).to_pylist())
+    return rows
 
 
 def test_the_plan_document_stays_small_at_every_scale() -> None:
@@ -210,8 +221,14 @@ def test_two_machines_with_one_bundle_merge_to_the_same_snapshot(
     distributed_report = merge_chunks(plan, coordinator_paths, plan.plan_id)
     publish_snapshot(distributed_report, coordinator_paths.metadata)
 
-    single = pq.read_table(single_paths.metadata.snapshot_file(plan.plan_id))
-    distributed = pq.read_table(coordinator_paths.metadata.snapshot_file(plan.plan_id))
+    single = pa.Table.from_pylist(
+        _snapshot_rows(single_paths.metadata, plan.plan_id),
+        schema=SUBMISSION_METADATA_SCHEMA,
+    )
+    distributed = pa.Table.from_pylist(
+        _snapshot_rows(coordinator_paths.metadata, plan.plan_id),
+        schema=SUBMISSION_METADATA_SCHEMA,
+    )
     assert single.num_rows == distributed.num_rows == plan.row_count
     assert single.schema.equals(distributed.schema)
     assert single.column("cik").to_pylist() == distributed.column("cik").to_pylist()
@@ -220,11 +237,14 @@ def test_two_machines_with_one_bundle_merge_to_the_same_snapshot(
         == {plan.plan_id}
         == set(distributed.column("snapshot_id").to_pylist())
     )
-    # The CIK index is derived from the payload's key column, so it is
-    # deterministic across runs even though the fetch timestamps are not.
+    # The CIK index is derived from the published rows' key column, so it is
+    # deterministic across runs even though the fetch timestamps are not. The
+    # per-part digests are not, for exactly the same reason the old monolithic
+    # artifact digest was not.
     assert single_report.cik_index_sha256 == distributed_report.cik_index_sha256
     assert single_report.cik_count == distributed_report.cik_count == plan.row_count
-    assert single_report.artifact_sha256 and distributed_report.artifact_sha256
+    assert single_report.part_count == distributed_report.part_count == plan.chunk_count
+    assert single_report.parts_digest != ""
 
 
 def test_a_worker_running_a_copied_bundle_cannot_widen_its_scope(
@@ -291,27 +311,28 @@ def test_a_published_snapshot_is_verifiable_from_its_own_directory(
     )
     metadata = run_paths.metadata
 
-    payload = pq.read_table(metadata.snapshot_file(plan.plan_id))
-    assert payload.schema.equals(SUBMISSION_METADATA_SCHEMA, check_metadata=False)
+    rows = _snapshot_rows(metadata, plan.plan_id)
     index = read_cik_index(metadata.snapshot_cik_index(plan.plan_id))
-    assert list(index) == sorted(set(payload.column("cik").to_pylist()))
+    assert list(index) == sorted({row["cik"] for row in rows})
+    parts = read_snapshot_parts(metadata.snapshot_manifest(plan.plan_id))
+    assert all(part["sha256"] for part in parts.layout.manifest["parts"])
 
     on_disk = json.loads(
         metadata.snapshot_manifest(plan.plan_id).read_text(encoding="utf-8")
     )
-    assert on_disk["row_count"] == payload.num_rows
+    assert on_disk["row_count"] == len(rows)
     assert on_disk["cik_count"] == len(index)
     pointer = json.loads(metadata.current_pointer.read_text(encoding="utf-8"))
     assert pointer["snapshot_id"] == on_disk["snapshot_id"] == plan.plan_id
-    assert manifest["row_count"] == payload.num_rows
+    assert manifest["row_count"] == len(rows)
 
 
-def test_phase_two_reads_only_the_payload(tmp_path: Path) -> None:
-    """The CIK index is an addition, not a change to the handoff.
+def test_phase_two_reads_exactly_the_declared_parts(tmp_path: Path) -> None:
+    """The handoff is a part list, not a single file.
 
-    Phase 2 resolves exactly one Parquet path from the pointer and compares its
-    schema to the canonical column list, so an extra sibling file cannot be
-    mistaken for a dataset.
+    Phase 2 must consume exactly the parts the manifest names. The CIK index is a
+    Phase 1 sibling, not a part, so a consumer resolving the part list cannot
+    mistake it for a dataset.
     """
     plan, run_paths = _prepare(tmp_path, chunk_size=2)
     client = _client(_session())
@@ -326,12 +347,17 @@ def test_phase_two_reads_only_the_payload(tmp_path: Path) -> None:
     publish_snapshot(merge_chunks(plan, run_paths, plan.plan_id), run_paths.metadata)
     metadata = run_paths.metadata
 
-    payload = metadata.snapshot_file(plan.plan_id)
     index = metadata.snapshot_cik_index(plan.plan_id)
-    assert payload.is_file() and index.is_file()
-    assert payload.name == "metadata.parquet"
-    assert pq.read_schema(payload).names == SUBMISSION_METADATA_SCHEMA.names
+    assert index.is_file()
     assert pq.read_schema(index).names == ["cik"]
+    parts = read_snapshot_parts(metadata.snapshot_manifest(plan.plan_id))
+    assert parts.part_count >= 1
+    for path in parts.paths:
+        assert pq.read_schema(path).names == SUBMISSION_METADATA_SCHEMA.names
+    assert index not in parts.paths
+    pointer = json.loads(metadata.current_pointer.read_text(encoding="utf-8"))
+    assert pointer["part_count"] == parts.part_count
+    assert pointer["parts_digest"]
 
 
 def test_an_empty_selection_is_refused_before_any_work(tmp_path: Path) -> None:

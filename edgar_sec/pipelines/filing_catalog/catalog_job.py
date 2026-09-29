@@ -22,7 +22,7 @@ import json
 import os
 import shutil
 from pathlib import Path
-from typing import Any
+from typing import Any, NamedTuple
 
 from edgar_sec.domain.filing_catalog.schemas import (
     PROFILE_SCHEMA_VERSION,
@@ -45,6 +45,7 @@ from edgar_sec.infra.storage.duckdb_catalog import (
     build_profile_query,
     copy_query_to_parquet,
     sql_literal,
+    sql_path_list,
 )
 from edgar_sec.infra.storage.parquet import (
     DEFAULT_ROW_GROUP_SIZE,
@@ -58,7 +59,12 @@ from edgar_sec.pipelines.filing_catalog.paths import (
     resolve_filing_catalog_paths,
     target_part_name,
 )
+from edgar_sec.pipelines.metadata_sync.merger import parts_digest
 from edgar_sec.pipelines.metadata_sync.paths import resolve_metadata_paths
+from edgar_sec.pipelines.metadata_sync.snapshot import (
+    SnapshotLayoutError,
+    read_snapshot_parts,
+)
 
 # Version of the archive-URL fallback policy baked into catalog_id derivation.
 # Bump when the fallback rule changes, so the derived id changes with it.
@@ -99,90 +105,102 @@ def _verify_source_digest(candidate: Path, expected: str, origin: Path) -> None:
         )
 
 
+class SourceDataset(NamedTuple):
+    """A resolved Phase 1 source: the parts to read and their handoff metadata."""
+
+    paths: tuple[Path, ...]
+    handoff: dict[str, Any] | None
+
+    @property
+    def part_count(self) -> int:
+        return len(self.paths)
+
+    @property
+    def first(self) -> Path:
+        """The first part; used for messages and single-file display."""
+        return self.paths[0]
+
+
 def resolve_source(
     source_artifact: str | os.PathLike[str] | None,
     source_manifest: str | os.PathLike[str] | None = None,
-) -> tuple[Path, dict[str, Any] | None]:
+) -> SourceDataset:
     """Resolve the Phase 1 dataset this catalog consumes.
 
-    With neither argument the currently published Phase 1 snapshot is used. An
-    explicit manifest is read for its handoff metadata and the payload it names
-    is what gets read as Parquet; a bare Parquet path is used directly.
+    A Phase 1 snapshot is a dataset, so resolution yields an ordered part list
+    rather than one path. Three entry points converge on that list:
+
+    * an explicit manifest is read, and the parts it declares are verified
+      against the digests it recorded;
+    * an explicit Parquet path is taken as a one-part dataset;
+    * with neither, the current Phase 1 pointer names a snapshot whose manifest
+      supplies the parts.
 
     A manifest is metadata, not data. Returning the manifest path itself as the
     source would hand the JSON to the Parquet reader, so the payload is resolved
-    from the manifest's ``output_path`` and checked against the
-    ``artifact_sha256`` Phase 1 recorded with it.
+    from what the manifest declares. Snapshots published before the multipart
+    contract are single-file and resolve through the same reader.
     """
-    handoff: dict[str, Any] | None = None
-    candidate: Path | None = None
-    expected_digest = ""
-
     if source_manifest is not None:
-        manifest_path = Path(source_manifest).resolve()
-        if not manifest_path.is_file():
-            raise CatalogError(f"source manifest does not exist: {manifest_path}")
-        handoff = json.loads(manifest_path.read_text(encoding="utf-8"))
-        output_path = str(handoff.get("output_path") or "")
-        if not output_path:
-            raise CatalogError(
-                f"Phase 1 manifest names no output_path: {manifest_path}"
-            )
-        candidate = Path(output_path)
-        if not candidate.is_absolute():
-            candidate = (manifest_path.parent / candidate).resolve()
-        expected_digest = str(handoff.get("artifact_sha256") or "")
-    elif source_artifact is not None:
+        return _source_from_manifest(Path(source_manifest))
+    if source_artifact is not None:
         candidate = Path(source_artifact).resolve()
+        if not candidate.is_file():
+            raise CatalogError(f"source artifact does not exist: {candidate}")
+        return SourceDataset(paths=(candidate,), handoff=None)
+    return _source_from_pointer()
 
-    if candidate is None:
-        metadata_paths = resolve_metadata_paths()
-        pointer = metadata_paths.current_pointer
-        if not pointer.is_file():
-            raise CatalogError(
-                "no Phase 1 snapshot is published; run 'metadata merge' first or "
-                "pass source_artifact explicitly"
-            )
-        handoff = json.loads(pointer.read_text(encoding="utf-8"))
-        snapshot_id = handoff.get("snapshot_id")
-        if not snapshot_id:
-            raise CatalogError(f"Phase 1 pointer names no snapshot: {pointer}")
-        candidate = metadata_paths.snapshot_file(str(snapshot_id))
-        # The pointer is a discovery record rather than a manifest, so a pointer
-        # written without a digest is usable; one that carries a digest is held
-        # to it.
-        expected_digest = str(handoff.get("artifact_sha256") or "")
 
-    if not candidate.is_file():
-        raise CatalogError(f"source artifact does not exist: {candidate}")
-    if source_manifest is not None or expected_digest:
-        _verify_source_digest(
-            candidate,
-            expected_digest,
-            Path(source_manifest) if source_manifest is not None else candidate,
+def _source_from_manifest(manifest_path: Path) -> SourceDataset:
+    if not manifest_path.is_file():
+        raise CatalogError(f"source manifest does not exist: {manifest_path}")
+    try:
+        parts = read_snapshot_parts(manifest_path)
+    except SnapshotLayoutError as exc:
+        raise CatalogError(str(exc)) from exc
+    return SourceDataset(paths=parts.paths, handoff=parts.layout.manifest)
+
+
+def _source_from_pointer() -> SourceDataset:
+    metadata_paths = resolve_metadata_paths()
+    pointer = metadata_paths.current_pointer
+    if not pointer.is_file():
+        raise CatalogError(
+            "no Phase 1 snapshot is published; run 'metadata merge' first or "
+            "pass source_artifact explicitly"
         )
-    return candidate, handoff
+    handoff = json.loads(pointer.read_text(encoding="utf-8"))
+    snapshot_id = handoff.get("snapshot_id")
+    if not snapshot_id:
+        raise CatalogError(f"Phase 1 pointer names no snapshot: {pointer}")
+    try:
+        parts = read_snapshot_parts(metadata_paths.snapshot_manifest(str(snapshot_id)))
+    except SnapshotLayoutError as exc:
+        raise CatalogError(str(exc)) from exc
+    return SourceDataset(paths=parts.paths, handoff=parts.layout.manifest)
 
 
-def _guard_not_transient(source: Path) -> None:
+def _guard_not_transient(source: SourceDataset) -> None:
     """Guard 1: refuse a transient Phase 1 work unit as a catalog source."""
-    if any(part in TRANSIENT_SOURCE_PARTS for part in source.parts):
-        raise CatalogError(
-            f"Phase 2 requires a finalized artifact, not a chunk/checkpoint: {source}"
-        )
+    for path in source.paths:
+        if any(part in TRANSIENT_SOURCE_PARTS for part in path.parts):
+            raise CatalogError(
+                f"Phase 2 requires a finalized artifact, not a chunk/checkpoint: {path}"
+            )
 
 
-def _guard_schema_matches(source: Path) -> None:
-    """Guard 2: the source must be exactly the declared Phase 1 dataset."""
-    actual = read_parquet_schema(source).names
+def _guard_schema_matches(source: SourceDataset) -> None:
+    """Guard 2: every part must be exactly the declared Phase 1 dataset."""
     expected = SUBMISSION_METADATA_SCHEMA.names
-    if list(actual) != list(expected):
-        missing = [name for name in expected if name not in actual]
-        extra = [name for name in actual if name not in expected]
-        raise CatalogError(
-            "source artifact columns do not match submission_metadata schema; "
-            f"missing={missing} unexpected={extra}"
-        )
+    for path in source.paths:
+        actual = read_parquet_schema(path).names
+        if list(actual) != list(expected):
+            missing = [name for name in expected if name not in actual]
+            extra = [name for name in actual if name not in expected]
+            raise CatalogError(
+                f"source artifact columns do not match submission_metadata schema; "
+                f"missing={missing} unexpected={extra} ({path})"
+            )
 
 
 def materialize(
@@ -220,17 +238,28 @@ def materialize(
         else settings.get("catalog.row_group_size", DEFAULT_ROW_GROUP_SIZE)
     )
 
-    source, handoff = resolve_source(source_artifact, source_manifest)
+    source = resolve_source(source_artifact, source_manifest)
     _guard_not_transient(source)
     _guard_schema_matches(source)
     emit_progress(
         progress,
-        {"type": "merge_stage", "stage": "validate_source", "source": str(source)},
+        {
+            "type": "merge_stage",
+            "stage": "validate_source",
+            "parts": source.part_count,
+        },
     )
 
     paths = resolve_filing_catalog_paths(output_root)
-    source_hash = file_sha256(source)
-    snapshot_id = str((handoff or {}).get("snapshot_id") or _catalog_id(source_hash))
+    # A catalog id must identify the dataset, not one file of it. An upstream
+    # handoff id wins; otherwise the id is derived from the ordered part digests,
+    # so two layouts holding the same rows resolve to the same catalog.
+    source_hash = str((source.handoff or {}).get("parts_digest") or "") or parts_digest(
+        [{"sha256": file_sha256(path)} for path in source.paths]
+    )
+    snapshot_id = str(
+        (source.handoff or {}).get("snapshot_id") or _catalog_id(source_hash)
+    )
     catalog_id = snapshot_id
 
     # An explicit output_root is interpreted as an artifacts root, so the layout
@@ -258,8 +287,8 @@ def materialize(
 
     with connect() as con:
         con.execute(
-            f"CREATE OR REPLACE TEMP VIEW source AS "
-            f"SELECT * FROM read_parquet({sql_literal(str(source))})"
+            "CREATE OR REPLACE TEMP VIEW source AS SELECT * FROM "
+            f"read_parquet({sql_path_list([str(path) for path in source.paths])})"
         )
 
         profile_query = build_profile_query("source")
@@ -285,7 +314,7 @@ def materialize(
     form_counts: dict[str, int] = {}
     total_target_rows = 0
     with connect() as con:
-        unnest = build_part_unnest_query(str(source))
+        unnest = build_part_unnest_query([str(path) for path in source.paths])
         shard_name = target_part_name(0)
         shard_path = targets_dir / shard_name
         total_target_rows = copy_query_to_parquet(con, unnest, shard_path, groups)
@@ -308,7 +337,9 @@ def materialize(
         "manifest_kind": "filing_catalog_snapshot",
         "catalog_id": catalog_id,
         "snapshot_id": snapshot_id,
-        "source_artifact": str(source),
+        "source_artifact": str(source.first),
+        "source_parts": [str(path) for path in source.paths],
+        "source_part_count": source.part_count,
         "source_sha256": source_hash,
         "schema_version": SCHEMA_VERSION,
         "target_schema_version": TARGET_SCHEMA_VERSION,

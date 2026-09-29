@@ -18,16 +18,17 @@ and recorded in the manifest. Phase 2 does not open it.
 
 from __future__ import annotations
 
-from collections.abc import Callable
+import shutil
+from collections.abc import Callable, Sequence
 from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Any
 
 from edgar_sec.domain.submissions.schemas import SCHEMA_VERSION
-from edgar_sec.foundation.hashing import file_sha256
+from edgar_sec.foundation.hashing import file_sha256, sha256_bytes
+from edgar_sec.foundation.serialization import canonical_json
 from edgar_sec.infra.storage.atomic import atomic_write_json
 from edgar_sec.infra.storage.duckdb import (
-    concat_to_parquet,
     connect,
     find_duplicate_keys,
     find_duplicate_nested_values,
@@ -35,11 +36,19 @@ from edgar_sec.infra.storage.duckdb import (
 )
 from edgar_sec.infra.storage.parquet import count_parquet_rows, read_parquet_schema
 
-from .paths import MetadataPaths, RunPaths
+from .paths import PARTS_DIR_NAME, MetadataPaths, RunPaths
 from .planner import Plan, utc_now_iso
 from .roster import read_cik_index, write_cik_index
+from .snapshot import SNAPSHOT_MANIFEST_VERSION
 
-__all__ = ["MergeError", "MergeReport", "merge_chunks", "publish_snapshot"]
+__all__ = [
+    "MergeError",
+    "MergeReport",
+    "merge_chunks",
+    "parts_digest",
+    "publish_parts",
+    "publish_snapshot",
+]
 
 
 class MergeError(RuntimeError):
@@ -68,18 +77,30 @@ class MergeReport:
     registry_id: str = ""
     source_snapshot_id: str = ""
     schema_version: str = SCHEMA_VERSION
+    manifest_version: str = SNAPSHOT_MANIFEST_VERSION
+    sort_order: str = "chunk_order"
+    parts: list[dict[str, Any]] = field(default_factory=list)
+    parts_digest: str = ""
     merged_at: str = ""
     duplicate_accessions: list[str] = field(default_factory=list)
     warnings: list[str] = field(default_factory=list)
 
+    @property
+    def part_count(self) -> int:
+        """Number of Parquet parts carrying this snapshot's rows."""
+        return len(self.parts) or 1
+
     def to_dict(self) -> dict[str, Any]:
         """Serializable report for the snapshot manifest.
 
-        ``artifact_sha256`` and ``output_path`` keep their existing names and
-        meaning: they describe the payload Phase 2 reads. The CIK index is
-        recorded alongside rather than in place of them.
+        A published snapshot is described by its ordered ``parts`` list. The
+        singular ``output_path``/``artifact_sha256`` pair is left empty for a
+        multipart snapshot on purpose: pointing them at the first part would let
+        a reader that understands only the legacy shape silently ingest a
+        fraction of the dataset. A reader must either honour the part list or fail
+        loudly on the empty payload.
         """
-        return {
+        manifest = {
             "snapshot_id": self.snapshot_id,
             "output_path": self.output_path,
             "cik_index_path": self.cik_index_path,
@@ -102,6 +123,40 @@ class MergeReport:
             "duplicate_accessions": self.duplicate_accessions,
             "warnings": self.warnings,
         }
+        if self.parts:
+            manifest["manifest_version"] = self.manifest_version
+            manifest["part_count"] = len(self.parts)
+            manifest["parts_digest"] = self.parts_digest
+            manifest["sort_order"] = self.sort_order
+            manifest["parts"] = self.parts
+        return manifest
+
+
+def _published_ciks(part_paths: tuple[Path, ...]) -> list[str]:
+    """Read the CIK column of the published parts.
+
+    The index is built from what is on disk rather than from the roster, so a
+    snapshot whose parts do not carry the planned cohort is visible in the index
+    instead of surfacing as a surprise in a later consumer.
+    """
+    import pyarrow.parquet as pq
+
+    ciks: list[str] = []
+    for path in part_paths:
+        table = pq.read_table(path, columns=["cik"])
+        ciks.extend(str(value) for value in table.column("cik").to_pylist())
+    return ciks
+
+
+def parts_digest(parts: list[dict[str, Any]]) -> str:
+    """One digest over the ordered part digests.
+
+    A snapshot is identified by the ordered set of files that carry it, so a
+    single value can bind a pointer or a downstream manifest to the exact dataset
+    without rehashing every part at discovery time.
+    """
+    material = canonical_json([str(part["sha256"]) for part in parts]).encode("utf-8")
+    return sha256_bytes(material)
 
 
 def _safe_progress(
@@ -229,6 +284,71 @@ def publish_cik_index(
     return report
 
 
+def publish_parts(
+    report: MergeReport,
+    metadata_paths: MetadataPaths,
+    sources: Sequence[tuple[str, Path]],
+) -> tuple[Path, ...]:
+    """Publish validated source files as a snapshot's ordered Parquet parts.
+
+    Parts are byte copies of already-validated files, not a re-materialization.
+    The previous single-file publication decompressed, sorted, and recompressed
+    every row; copying performs the same validation work at a fraction of the
+    I/O, and it makes the published dataset exactly the set of files the merge
+    accepted. A full merge passes its chunk files; an augmentation passes the
+    base snapshot's parts followed by its delta chunks.
+
+    Each source label is recorded on its part, so a consumer can tell which
+    chunk or which base part a row came from without inspecting the file.
+
+    The trade is row order. A snapshot is in part order and each part is in the
+    order its source file held, so the dataset is *not* globally sorted by CIK the
+    way the old single sorted file was. That is recorded in the manifest as
+    ``sort_order`` so a consumer cannot mistake one for the other, and
+    ``ciks.parquet`` remains the sorted membership index for lookups by CIK.
+    """
+    parts_dir = metadata_paths.snapshot_parts_dir(report.snapshot_id)
+    parts_dir.mkdir(parents=True, exist_ok=True)
+    published: list[Path] = []
+    for index, (label, source) in enumerate(sources):
+        name = f"part-{index:05d}.parquet"
+        destination = parts_dir / name
+        shutil.copy2(source, destination)
+        if not read_parquet_schema(destination).equals(
+            plan_schema(), check_metadata=False
+        ):
+            destination.unlink(missing_ok=True)
+            raise MergeError(
+                f"merge rejected: published part {name} (from {label}) schema drifted "
+                "from the dataset contract"
+            )
+        report.parts.append(
+            {
+                "path": f"{PARTS_DIR_NAME}/{name}",
+                "part_index": index,
+                "source": label,
+                "row_count": count_parquet_rows(destination),
+                "byte_count": destination.stat().st_size,
+                "sha256": file_sha256(destination),
+                "schema_version": report.schema_version,
+            }
+        )
+        published.append(destination)
+    return tuple(published)
+
+
+def _publish_chunk_parts(
+    report: MergeReport,
+    metadata_paths: MetadataPaths,
+    chunk_paths: list[Path],
+) -> tuple[Path, ...]:
+    return publish_parts(
+        report,
+        metadata_paths,
+        [(f"chunk:{path.stem}", path) for path in chunk_paths],
+    )
+
+
 def merge_chunks(
     plan: Plan,
     run_paths: RunPaths,
@@ -268,7 +388,6 @@ def merge_chunks(
     )
     emit({"type": "chunks_validated", "chunks": len(chunk_paths)})
 
-    output_path = run_paths.metadata.snapshot_file(snapshot_id)
     con = connect()
     try:
         null_keys = find_null_keys(con, str_paths, "cik")
@@ -287,25 +406,25 @@ def merge_chunks(
                 f"{len(report.duplicate_accessions)} duplicate accession(s) observed; "
                 "accession is not globally unique"
             )
-        emit({"type": "merge_stage", "stage": "sorting"})
-        row_count = concat_to_parquet(con, str_paths, output_path, order_by=("cik",))
     finally:
         con.close()
 
+    emit({"type": "merge_stage", "stage": "publishing_parts"})
+    part_paths = _publish_chunk_parts(report, run_paths.metadata, chunk_paths)
+
+    row_count = sum(int(part["row_count"]) for part in report.parts)
     if row_count != plan.row_count:
         raise MergeError(
-            f"merge rejected: merged row count {row_count} != planned {plan.row_count}"
+            f"merge rejected: published row count {row_count} != planned {plan.row_count}"
         )
 
-    if not read_parquet_schema(output_path).equals(plan_schema(), check_metadata=False):
-        raise MergeError("merge rejected: published artifact schema drifted")
-
     report.row_count = row_count
-    report.output_path = str(output_path)
-    report.artifact_sha256 = file_sha256(output_path)
-    report.filing_record_count = _filing_record_count([str(output_path)])
+    report.parts_digest = parts_digest(report.parts)
+    report.filing_record_count = _filing_record_count(
+        [str(path) for path in part_paths]
+    )
     emit({"type": "cik_index", "stage": "publishing"})
-    publish_cik_index(report, run_paths.metadata, plan.roster.ciks)
+    publish_cik_index(report, run_paths.metadata, _published_ciks(part_paths))
     emit({"type": "readback_done", "rows": row_count})
     return report
 
@@ -313,7 +432,13 @@ def merge_chunks(
 def publish_snapshot(
     report: MergeReport, metadata_paths: MetadataPaths
 ) -> dict[str, Any]:
-    """Write the snapshot manifest and advance the current pointer atomically."""
+    """Write the snapshot manifest and advance the current pointer atomically.
+
+    The manifest is the snapshot's commit record and is written first; the
+    pointer is written last. A crash between the two leaves an unpublished but
+    complete snapshot directory, which the next merge overwrites, rather than a
+    pointer naming a dataset that was never finished.
+    """
     manifest = report.to_dict()
     atomic_write_json(
         metadata_paths.snapshot_manifest(report.snapshot_id),
@@ -321,16 +446,21 @@ def publish_snapshot(
         canonical=False,
         indent=2,
     )
+    pointer: dict[str, Any] = {
+        "snapshot_id": report.snapshot_id,
+        "plan_id": report.plan_id,
+        "row_count": report.row_count,
+        "updated_at": report.merged_at,
+    }
+    if report.parts:
+        pointer["part_count"] = len(report.parts)
+        pointer["parts_digest"] = report.parts_digest
+        pointer["snapshot_manifest"] = metadata_paths.snapshot_manifest(
+            report.snapshot_id
+        ).name
+    else:
+        pointer["artifact_sha256"] = report.artifact_sha256
     atomic_write_json(
-        metadata_paths.current_pointer,
-        {
-            "snapshot_id": report.snapshot_id,
-            "plan_id": report.plan_id,
-            "row_count": report.row_count,
-            "artifact_sha256": report.artifact_sha256,
-            "updated_at": report.merged_at,
-        },
-        canonical=False,
-        indent=2,
+        metadata_paths.current_pointer, pointer, canonical=False, indent=2
     )
     return manifest

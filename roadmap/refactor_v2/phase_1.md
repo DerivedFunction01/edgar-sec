@@ -284,7 +284,7 @@ edgar-sec/ (v2 Root)
      - Plan bundle: `.artifacts/metadata/plans/{plan_id}/` — `plan.json`,
        `roster/ciks.parquet`, `input/input_manifest.json`, `assignments/*.parquet`
      - Transient checkpoints: `.artifacts/transient/metadata/{plan_id}/chunk_{chunk_id:04d}.parquet`
-     - Snapshot publishing: `.artifacts/metadata/snapshots/{snapshot_id}/metadata.parquet`
+     - Snapshot publishing: `.artifacts/metadata/snapshots/{snapshot_id}/parts/part-NNNNN.parquet`
      - Published CIK index: `.artifacts/metadata/snapshots/{snapshot_id}/ciks.parquet`
      - Registry outputs: `.artifacts/metadata/registries/{registry_id}/`
      - Current pointer: `.artifacts/metadata/snapshots/current/`
@@ -523,17 +523,29 @@ arrangement:
   distinct static assignment, a content-verified receipt, and an import that
   proves a returned chunk before adopting it. There is no scheduler, no lease,
   and no coordinator the worker depends on.
-- **Publication gained an index, not a change.** A merge still writes one sorted
-  `metadata.parquet` at the existing path with the same manifest fields and the
-  same pointer advance. It additionally writes a sorted distinct `ciks.parquet`
-  derived from the published rows and records both digests. Phase 2 resolves a
-  single Parquet path from the pointer and compares its column list to the
-  canonical schema, so the index is invisible to it; the handoff is unchanged.
+- **Publication is multipart, and the handoff changed with it.** A merge
+  publishes the validated chunks as an ordered set of Parquet parts under
+  `parts/`, and the manifest lists every part with its digest, row count, and
+  originating source. `ciks.parquet` remains the sorted distinct CIK index. The
+  manifest is the commit record and is written before the pointer.
 
-Deferred, and named in the package README: multi-part published snapshots (a
-Phase 2 source-contract change, not a Phase 1 one), dynamic claiming, and
-worker-level rate-limit division — each worker process builds its own limiter,
-which was already true of `--partition N`.
+  Parts are byte copies of the validated chunks rather than a re-materialization:
+  the previous single file was produced by a decompress/sort/recompress of every
+  row, and copying performs the same validation at a fraction of the I/O. The
+  trade is that a snapshot is no longer globally CIK-sorted; the manifest records
+  `sort_order: chunk_order`, and the CIK index remains the sorted membership
+  lookup.
+
+  A multipart manifest deliberately leaves `output_path` and `artifact_sha256`
+  empty, because pointing them at part zero would let a reader that understands
+  only the legacy shape silently ingest a fraction of the dataset. Phase 2 was
+  changed in the same commit to resolve and verify the part list, and snapshots
+  published before the multipart contract still resolve as a one-part dataset.
+
+Deferred, and named in the package README: dynamic claiming, worker-level
+rate-limit division — each worker process builds its own limiter, which was
+already true of `--partition N` — and part moving rather than copying, which is
+tied to snapshot vacuuming.
 
 ### Corrected defects found by the audit
 

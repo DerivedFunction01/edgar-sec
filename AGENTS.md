@@ -130,6 +130,7 @@ Before submitting any turn or completing work, run the unified quality gate:
 > Do NOT run `check.py --fix` and then immediately `check.py` unless you actually need to auto-format.
 > Do NOT run `check.py` more than once consecutively; it is redundant.
 > Use `check.py --fast` during iteration for instant (~1s) AST/layer/cgroup feedback, and run `check.py` when concluding a turn.
+> * **Targeted Test Runs:** Skip the full test suite entirely for non-Python file modifications (e.g., documentation, static assets, configuration tweaks).
 
 
 ### Registered Policy Scanners

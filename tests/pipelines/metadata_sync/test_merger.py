@@ -13,6 +13,8 @@ from edgar_sec.domain.submissions.schemas import (
     SUBMISSION_METADATA_SCHEMA,
 )
 from edgar_sec.engine.submissions.builder import build_submission_table
+from edgar_sec.foundation.hashing import file_sha256
+from edgar_sec.infra.storage.parquet import count_parquet_rows
 from edgar_sec.pipelines.metadata_sync.manifest import read_cik_manifest
 from edgar_sec.pipelines.metadata_sync.merger import (
     MergeError,
@@ -24,6 +26,10 @@ from edgar_sec.pipelines.metadata_sync.planner import build_plan
 from edgar_sec.pipelines.metadata_sync.roster import (
     read_cik_index,
     roster_from_manifest,
+)
+from edgar_sec.pipelines.metadata_sync.snapshot import (
+    SNAPSHOT_MANIFEST_VERSION,
+    read_snapshot_parts,
 )
 from tests.support import fixture_path
 
@@ -104,21 +110,82 @@ def _complete(plan, run_paths, *, fingerprint: str | None = None) -> None:
 # ------------------------------------------------------------------ happy path
 
 
-def test_merge_publishes_sorted_snapshot(tmp_path: Path) -> None:
+def test_merge_publishes_a_multipart_snapshot(tmp_path: Path) -> None:
+    """A snapshot is an ordered set of parts, not one rewritten monolith.
+
+    Parts are byte copies of the validated chunks, so the published dataset is in
+    chunk order rather than globally CIK-sorted. The manifest says so explicitly
+    so a consumer cannot mistake one for the other.
+    """
     plan, run_paths = _plan(tmp_path)
     _complete(plan, run_paths)
 
     report = merge_chunks(plan, run_paths, "snap1")
     assert report.row_count == 4
     assert report.chunk_count == 2
-    assert report.artifact_sha256
+    assert report.part_count == 2
     assert report.filing_record_count == 0
 
-    output = run_paths.metadata.snapshot_file("snap1")
-    table = pq.read_table(output)
-    assert table.schema.equals(SUBMISSION_METADATA_SCHEMA, check_metadata=False)
-    assert table.column("cik").to_pylist() == sorted(table.column("cik").to_pylist())
-    assert set(table.column("cik").to_pylist()) == set(plan.roster.ciks)
+    publish_snapshot(report, run_paths.metadata)
+    parts = read_snapshot_parts(run_paths.metadata.snapshot_manifest("snap1"))
+    assert parts.part_count == 2
+    assert [part["part_index"] for part in report.parts] == [0, 1]
+    assert [part["source"] for part in report.parts] == [
+        "chunk:chunk_0000",
+        "chunk:chunk_0001",
+    ]
+    assert report.to_dict()["sort_order"] == "chunk_order"
+
+    ciks: list[str] = []
+    for path in parts.paths:
+        table = pq.read_table(path)
+        assert table.schema.equals(SUBMISSION_METADATA_SCHEMA, check_metadata=False)
+        ciks.extend(table.column("cik").to_pylist())
+    assert set(ciks) == set(plan.roster.ciks)
+    assert len(ciks) == plan.row_count
+
+
+def test_published_parts_are_byte_copies_of_the_validated_chunks(
+    tmp_path: Path,
+) -> None:
+    """Publication must not re-materialize rows it already validated."""
+    plan, run_paths = _plan(tmp_path)
+    _complete(plan, run_paths)
+    report = merge_chunks(plan, run_paths, "snap1")
+
+    for index, part in enumerate(report.parts):
+        source = run_paths.chunk_file(index)
+        assert part["sha256"] == file_sha256(source)
+        assert part["row_count"] == count_parquet_rows(source)
+        assert part["byte_count"] == source.stat().st_size
+
+
+def test_multipart_manifest_names_no_single_payload(tmp_path: Path) -> None:
+    """A legacy reader must fail loudly rather than ingest only the first part.
+
+    Pointing ``output_path`` at part zero would let a reader that understands
+    only the singular shape silently read a fraction of the dataset, so the
+    singular fields stay empty and the part list is authoritative.
+    """
+    plan, run_paths = _plan(tmp_path)
+    _complete(plan, run_paths)
+    manifest = publish_snapshot(
+        merge_chunks(plan, run_paths, "snap1"), run_paths.metadata
+    )
+
+    assert manifest["output_path"] == ""
+    assert manifest["artifact_sha256"] == ""
+    assert manifest["part_count"] == 2
+    assert manifest["manifest_version"] == SNAPSHOT_MANIFEST_VERSION
+    assert [part["path"] for part in manifest["parts"]] == [
+        "parts/part-00000.parquet",
+        "parts/part-00001.parquet",
+    ]
+
+    pointer = json.loads(run_paths.metadata.current_pointer.read_text(encoding="utf-8"))
+    assert pointer["part_count"] == 2
+    assert pointer["parts_digest"] == manifest["parts_digest"]
+    assert "artifact_sha256" not in pointer
 
 
 def test_publish_snapshot_writes_manifest_and_pointer(tmp_path: Path) -> None:
@@ -130,9 +197,9 @@ def test_publish_snapshot_writes_manifest_and_pointer(tmp_path: Path) -> None:
     manifest_path = run_paths.metadata.snapshot_manifest("snap1")
     assert json.loads(manifest_path.read_text())["row_count"] == 4
 
-    pointer = run_paths.metadata.current_pointer
-    assert json.loads(pointer.read_text())["snapshot_id"] == "snap1"
-    assert manifest["artifact_sha256"] == report.artifact_sha256
+    pointer = json.loads(run_paths.metadata.current_pointer.read_text(encoding="utf-8"))
+    assert pointer["snapshot_id"] == "snap1"
+    assert manifest["parts_digest"] == report.parts_digest
 
 
 # ------------------------------------------------------------------- progress
@@ -168,27 +235,29 @@ def test_published_cik_index_matches_the_payload(tmp_path: Path) -> None:
     plan, run_paths = _plan(tmp_path)
     _complete(plan, run_paths)
     report = merge_chunks(plan, run_paths, "snap1")
+    publish_snapshot(report, run_paths.metadata)
 
     index = read_cik_index(run_paths.metadata.snapshot_cik_index("snap1"))
-    payload = pq.read_table(run_paths.metadata.snapshot_file("snap1"))
-    assert list(index) == sorted(set(payload.column("cik").to_pylist()))
+    parts = read_snapshot_parts(run_paths.metadata.snapshot_manifest("snap1"))
+    published: list[str] = []
+    for path in parts.paths:
+        published.extend(pq.read_table(path, columns=["cik"]).column("cik").to_pylist())
+    assert list(index) == sorted(set(published))
     assert report.cik_count == len(index)
     assert report.cik_index_sha256
     assert report.cik_index_path.endswith("ciks.parquet")
 
 
-def test_snapshot_manifest_records_the_index_beside_the_payload(
+def test_snapshot_manifest_records_lineage_beside_the_parts(
     tmp_path: Path,
 ) -> None:
-    """The Phase 2 handoff is unchanged; the index is recorded alongside it."""
+    """Lineage and the CIK index travel with the part list."""
     plan, run_paths = _plan(tmp_path)
     _complete(plan, run_paths)
     manifest = publish_snapshot(
         merge_chunks(plan, run_paths, "snap1"), run_paths.metadata
     )
 
-    assert manifest["output_path"].endswith("metadata.parquet")
-    assert manifest["artifact_sha256"]
     assert manifest["cik_index_sha256"]
     assert manifest["cik_count"] == 4
     assert manifest["roster_id"] == plan.roster.roster_id
@@ -198,9 +267,8 @@ def test_snapshot_manifest_records_the_index_beside_the_payload(
     on_disk = json.loads(
         run_paths.metadata.snapshot_manifest("snap1").read_text(encoding="utf-8")
     )
-    assert on_disk["artifact_sha256"] == manifest["artifact_sha256"]
-    pointer = json.loads(run_paths.metadata.current_pointer.read_text(encoding="utf-8"))
-    assert pointer["artifact_sha256"] == manifest["artifact_sha256"]
+    assert on_disk["parts_digest"] == manifest["parts_digest"]
+    assert len(on_disk["parts"]) == 2
 
 
 def test_a_failing_progress_callback_does_not_fail_the_merge(tmp_path: Path) -> None:
@@ -213,7 +281,9 @@ def test_a_failing_progress_callback_does_not_fail_the_merge(tmp_path: Path) -> 
 
     report = merge_chunks(plan, run_paths, "snap1", progress=explode)
     assert report.row_count == 4
-    assert run_paths.metadata.snapshot_file("snap1").is_file()
+    assert report.part_count == 2
+    for part in report.parts:
+        assert (run_paths.metadata.snapshot_dir("snap1") / part["path"]).is_file()
 
 
 def test_merge_records_the_plan_id_as_snapshot_identity(tmp_path: Path) -> None:
@@ -226,10 +296,15 @@ def test_merge_records_the_plan_id_as_snapshot_identity(tmp_path: Path) -> None:
         _write_chunk(run_paths, chunk_id, rows)
 
     report = merge_chunks(plan, run_paths, plan.plan_id)
+    publish_snapshot(report, run_paths.metadata)
 
     assert report.snapshot_id == report.plan_id == plan.plan_id
-    table = pq.read_table(run_paths.metadata.snapshot_file(plan.plan_id))
-    assert set(table.column("snapshot_id").to_pylist()) == {plan.plan_id}
+    parts = read_snapshot_parts(run_paths.metadata.snapshot_manifest(plan.plan_id))
+    stamped: set[str] = set()
+    for path in parts.paths:
+        table = pq.read_table(path, columns=["snapshot_id"])
+        stamped.update(table.column("snapshot_id").to_pylist())
+    assert stamped == {plan.plan_id}
     assert report.to_dict()["schema_version"] == SCHEMA_VERSION
 
 

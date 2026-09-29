@@ -1,13 +1,14 @@
 # metadata_sync — Phase 1
 
 Builds the SEC submissions metadata dataset from a CIK cohort: plan a cohort,
-fetch each CIK's submissions document, checkpoint the work, and publish one
-sorted Parquet snapshot that Phase 2 consumes.
+fetch each CIK's submissions document, checkpoint the work, and publish an
+immutable Parquet *dataset* — a manifest-described set of parts — that Phase 2
+consumes.
 
 ## Purpose
 
-The pipeline exists to turn a *roster* — a set of CIKs — into a *snapshot*: a
-sorted, immutable, verified dataset of one row per registrant. Everything else in
+The pipeline exists to turn a *roster* — a set of CIKs — into a *snapshot*: an
+immutable, verified dataset of one row per registrant. Everything else in
 this package is in service of that, and the whole design is arranged so that the
 snapshot is reproducible from immutable inputs, resumable after interruption, and
 producible by more than one machine.
@@ -26,7 +27,8 @@ worker  --bundle <dir>    -> <dir>/chunks/chunk_NNNN.parquet + receipt.json
 import  --source <dir>    -> adopts verified chunks for the merge
 run     (single host)     -> same chunk execution, no distribution step
 merge                    -> metadata/snapshots/<snapshot_id>/
-                            metadata.parquet, ciks.parquet, metadata.manifest.json
+                            parts/part-NNNNN.parquet, ciks.parquet,
+                            metadata.manifest.json
 augment                  -> a new snapshot holding base + only the new CIKs
 ```
 
@@ -47,7 +49,8 @@ no network access. `plan` performs no network access. Only `run`, `worker`, and
 | `paths.py` | `MetadataPaths` / `RunPaths`; the published-vs-transient split, plan bundle, registry, and source locations. |
 | `checkpoints.py` | What counts as a *complete* chunk on disk. |
 | `worker.py` | Resumable chunk execution over a thread pool; the never-refetch guarantee. |
-| `merger.py` | Coordinator validation, out-of-core sorted merge, progress events, CIK index, snapshot manifest, pointer. |
+| `snapshot.py` | Resolve a published snapshot to a verified, ordered Parquet part list; both manifest versions. |
+| `merger.py` | Coordinator validation, multipart publication, progress events, CIK index, snapshot manifest, pointer. |
 | `augmentation.py` | Delta planning and merge onto a published snapshot without refetching the base. |
 | `registry.py` | Curated-versus-source comparison, the effective CIK roster, and the CSV export. |
 | `source_registry.py` | Write-once, content-addressed `company_tickers.json` snapshots. |
@@ -92,10 +95,18 @@ plan's roster range rather than from a plan document, so the same check applies
 to a chunk that arrived from another machine under a copied bundle.
 
 **Published artifacts are immutable and self-describing.** A merge validates every
-chunk, then publishes one sorted `metadata.parquet`, a sorted distinct
-`ciks.parquet` derived from the published rows, a manifest recording both
-digests, and a pointer advance. The CIK index is a statement about the artifact
-on disk, not about what was requested.
+chunk, then publishes the validated chunks as an ordered set of Parquet parts
+under `parts/`, a sorted distinct `ciks.parquet` derived from the published rows,
+a manifest listing every part with its digest and row count, and a pointer
+advance. The CIK index is a statement about the artifact on disk, not about what
+was requested.
+
+**The manifest is the commit record.** A snapshot is read through the part list
+its manifest declares, and every listed part is verified against the digest
+recorded for it. A part that is listed but absent means the snapshot was not
+fully published; a file that is present but unlisted is not part of the snapshot.
+The manifest is written before the pointer, so a crash between the two leaves an
+unpublished but complete snapshot rather than a pointer naming an unfinished one.
 
 **A returned chunk is proven before it is adopted.** Import checks the plan
 identity, the assignment identity, that the receipt only names chunks its
@@ -121,7 +132,8 @@ registry roster, and both resolve to the same `Roster`.
 | `resolve_metadata_paths`, `resolve_run_paths` | `paths` | The published-vs-transient split. |
 | `discover_completed_chunks`, `inspect_chunk` | `checkpoints` | Completeness of a chunk on disk. |
 | `run_chunk`, `run_chunk_ids` | `worker` | Resumable execution; the never-refetch guarantee. |
-| `merge_chunks`, `publish_snapshot`, `MergeReport` | `merger` | Validation, merge, manifest, pointer. |
+| `merge_chunks`, `publish_snapshot`, `publish_parts`, `parts_digest`, `MergeReport` | `merger` | Validation, multipart publication, manifest, pointer. |
+| `read_snapshot_parts`, `load_snapshot_manifest`, `SnapshotParts`, `SnapshotLayout`, `SnapshotLayoutError`, `SNAPSHOT_MANIFEST_VERSION` | `snapshot` | Resolve and verify a snapshot's part list. |
 | `augment`, `derive_delta_plan`, `snapshot_cik_roster` | `augmentation` | Delta planning and merge. |
 | `compare_sources`, `load_registry_roster`, `load_registry_manifest` | `registry` | The curated-versus-source projection. |
 | `refresh_company_tickers`, `load_source_snapshot` | `source_registry` | Immutable external source snapshots. |
@@ -160,12 +172,26 @@ same nine actions and builds the same options objects.
 
 These are decisions, not oversights. Each names the alternative.
 
-- **No multi-part published snapshot.** A merge still publishes exactly one
-  `metadata.parquet`, because Phase 2 resolves a single Parquet path from
-  `pointer.json` and compares its schema to the canonical column list. Publishing
-  parts requires a separate Phase 2 source-contract change: a manifest over an
-  explicit part list with whole-file hashing replaced by streaming. Roadmap:
-  `roadmap/refactor_v2/phase_2.md`.
+- **A published snapshot is no longer globally sorted by CIK.** Parts are byte
+  copies of the validated chunk files, so the snapshot is in chunk order and each
+  part is in roster order. The previous single file was produced by a
+  decompress/sort/recompress of every row; copying the already-validated chunks
+  performs the same validation at a fraction of the I/O. The manifest records
+  this as `sort_order: chunk_order` so a consumer cannot mistake one for the
+  other, and `ciks.parquet` remains the sorted membership index for lookups by
+  CIK. Anything that needs globally sorted rows must sort in its own query;
+  Phase 2 aggregates, so it does not.
+- **Parts are copied, not moved.** Publication copies each validated chunk into
+  the snapshot, so a resumed plan still finds its checkpoints and an aborted
+  publication leaves the transient tree intact. The cost is that the transient
+  and published trees each hold the data. Phase 1 has no snapshot garbage
+  collector; that trade is revisited with vacuuming.
+- **A multipart manifest deliberately names no single payload.** `output_path`
+  and `artifact_sha256` are left empty for a multipart snapshot. Pointing them at
+  part zero would let a reader that understands only the legacy shape silently
+  ingest a fraction of the dataset, so a reader must honour the part list or
+  fail loudly. Snapshots published before the multipart contract keep both fields
+  and still resolve as a one-part dataset.
 - **No dynamic claiming, leases, or scheduler.** Assignment is static and copied.
   A worker that dies mid-run is not detected or reassigned; the coordinator simply
   re-exports, because a chunk nobody returned is a chunk nobody fetched. A real
@@ -183,10 +209,12 @@ These are decisions, not oversights. Each names the alternative.
 - **No persisted run configuration.** Options are resolved once, held in memory,
   and recorded in the artifacts they produce. A `project.json` would add a second
   source of truth for values that the settings registry already owns.
-- **Snapshots published before this format have no CIK index.** Reading a base
-  snapshot's membership falls back to projecting the payload's `cik` column, so
-  the index is an addition rather than a migration. A missing base is still an
-  error: an unreadable base must never be read as an empty one.
+- **Snapshots published before the CIK index existed still resolve.** Reading a
+  base snapshot's membership falls back to projecting the `cik` column of every
+  part its manifest lists, so the index is an addition rather than a migration.
+  A base with no manifest is *not* readable: a merge that was never published is
+  not a snapshot. A missing base is still an error, because an unreadable base
+  must never be read as an empty one.
 - **`smoke_test.py` remains credential-gated and excluded from the default
   gate.** Its guards are pure and are covered by `test_smoke_test.py`.
 - **No `--limit` in augmentation.** A bounded augmentation would fetch a bounded
@@ -210,6 +238,9 @@ These are decisions, not oversights. Each names the alternative.
   including a chunk belonging to a different plan.
 - `tests/pipelines/metadata_sync/test_worker.py` — per-CIK fan-out and the
   never-refetch guarantee.
+- `tests/pipelines/metadata_sync/test_snapshot.py` — part-list resolution and
+  verification: legacy single-file manifests, tampered parts, incomplete
+  publications, unlisted files, and repeated or digestless part entries.
 - `tests/pipelines/metadata_sync/test_merger.py` — every hard failure, the
   duplicate-accession warning, and the published CIK index.
 - `tests/pipelines/metadata_sync/test_augmentation.py` — delta identity, base

@@ -22,7 +22,7 @@ In one sentence: read the finalized Phase 1 `submission_metadata` Parquet, unnes
 
 ```mermaid
 graph TD
-    A["Phase 1 snapshot<br/>metadata.parquet"] --> M0
+    A["Phase 1 snapshot dataset<br/>manifest part list"] --> M0
     subgraph SA["Stage A — Core Catalog & Deterministic Planning"]
         M0["M0 Oracle Fixtures"] --> M1["M1 Schemas + Settings"]
         M1 --> M2["M2 DuckDB Materialization"]
@@ -343,7 +343,7 @@ artifacts_root/
         └── <catalog_id>/                         # staging; never published
 ```
 
-Phase 1's equivalent names its snapshot file `metadata.parquet` and its manifest `metadata.manifest.json`. Phase 2 keeps `company_profiles.parquet` / `snapshot.manifest.json` because the artifact names are contractual with Phase 2.5.
+Phase 1's equivalent names its manifest `metadata.manifest.json` and describes its payload as an ordered part list under `parts/`. Phase 2 keeps `company_profiles.parquet` / `snapshot.manifest.json` because the artifact names are contractual with Phase 2.5.
 
 **Path rules:**
 - `FilingCatalogPaths` is a frozen, slotted dataclass (Phase 1 convention) with a `resolve_filing_catalog_paths(artifacts_root=None)` factory returning `FilingCatalogPaths(resolve_paths().artifacts_root)` when no override is given.
@@ -624,8 +624,8 @@ are fixed in v2 and covered by tests.
 | Plan said | Implementation adopted | Why |
 | :--- | :--- | :--- |
 | §4.3: "Keep the `threads` / `memory_limit` / `temp_directory` parameters for testability" | **Dropped from `materialize()`.** | `connect()` already derives all three from cgroup-aware `derive_resources()`. Re-exposing them as arguments that production code must leave `None` is dead surface that invites exactly the hardcoded allocation the `resource-allocation` scanner exists to block. |
-| §3.5/§4.6: register catalog settings | Registered `catalog.source_batch_size` and `catalog.row_group_size`. **`catalog.part_count` was dropped.** | v1 sharded by *upstream* part, because the source arrived as many Parquet shards. v2's source is one merged Phase 1 snapshot, so there is no part list to align to and a single shard is correct. A registered-but-unused knob is worse than none. |
-| §4.3: `build_merged_targets_query(relations)` | **Removed.** | Unreachable. The v2 source is a single dataset, so targets come from one unnest query; the union helper had no caller. |
+| §3.5/§4.6: register catalog settings | Registered `catalog.source_batch_size` and `catalog.row_group_size`. **`catalog.part_count` was dropped.** | v1 sharded by *upstream* part. The source is now a manifest-described part list that `materialize` reads as one dataset, so the catalog's own output is still one shard and there is no knob to align. A registered-but-unused knob is worse than none. |
+| §4.3: `build_merged_targets_query(relations)` | **Removed.** | Unreachable. The source is one dataset, so targets come from one unnest query over its part list; the union helper had no caller. |
 | §M0: derive the seed from local `.artifacts` target plans | **Payloads synthesized** through the verified Phase 1 engine instead. | Minimality and byte-determinism matter more than real-world variety for a unit fixture, and a mined snapshot drags megabytes of unrelated real company data into the committed tree. |
 | §3.4/§4.3: `plan_bundle_complete` requires a `form=*/data.parquet` glob | **Matches the on-disk partition set against `plan.json` counts.** | v1's `any(glob(...))` reports a legitimately empty plan (every filter excluded everything) as incomplete, so such a bundle could never be reused. The new check is also stronger: it detects a bundle that lost a shard. |
 | §4.3: zero-row plans are not discussed | **A zero-row plan still publishes `targets/` and a schema-correct zero-row `locator_groups.parquet`.** | Otherwise its own bundle fails the completeness check and is permanently unreusable. |
