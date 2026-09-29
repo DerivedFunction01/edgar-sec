@@ -12,7 +12,7 @@ from edgar_sec.pipelines.filing_catalog.discovery import (
     current_catalog_id,
     discover_catalogs,
     discover_plans,
-    resolve_catalog_manifest,
+    resolve_catalog_reference,
     status,
 )
 from edgar_sec.pipelines.filing_catalog.paths import (
@@ -22,6 +22,7 @@ from edgar_sec.pipelines.filing_catalog.paths import (
     safe_identifier,
 )
 from edgar_sec.pipelines.filing_catalog.planner import plan
+from edgar_sec.pipelines.filing_catalog.publication import PlanConflictError
 
 
 @pytest.fixture
@@ -81,20 +82,19 @@ def test_a_damaged_manifest_is_skipped_not_fatal(published: tuple[Path, str]) ->
     assert [c["catalog_id"] for c in found] == [catalog_id]
 
 
-def test_resolve_catalog_manifest_by_id(published: tuple[Path, str]) -> None:
+def test_resolve_reference_returns_a_literal_id(published: tuple[Path, str]) -> None:
     root, catalog_id = published
-    manifest = resolve_catalog_manifest(_paths(root), catalog_id)
-    assert manifest is not None
-    assert manifest["manifest_kind"] == "filing_catalog_snapshot"
+    assert resolve_catalog_reference(_paths(root), catalog_id) == catalog_id
 
 
 def test_resolve_current_requires_a_pointer(tmp_path: Path) -> None:
-    assert resolve_catalog_manifest(_paths(tmp_path), "current") is None
+    with pytest.raises(PlanConflictError, match="no catalog is published"):
+        resolve_catalog_reference(_paths(tmp_path), "current")
 
 
-def test_resolve_manifest_rejects_an_unsafe_identifier(tmp_path: Path) -> None:
+def test_resolve_reference_rejects_an_unsafe_identifier(tmp_path: Path) -> None:
     with pytest.raises(ValueError, match="unsafe identifier"):
-        resolve_catalog_manifest(_paths(tmp_path), "../../etc")
+        resolve_catalog_reference(_paths(tmp_path), "../../etc")
 
 
 def test_safe_identifier_allows_expected_shapes() -> None:
@@ -164,7 +164,7 @@ def test_current_pointer_is_read_when_durable(
     manifest = materialize(sample_source)
     paths = resolve_filing_catalog_paths()
     assert current_catalog_id(paths) == manifest["catalog_id"]
-    assert resolve_catalog_manifest(paths, "current") is not None
+    assert resolve_catalog_reference(paths, "current") == manifest["catalog_id"]
 
 
 def test_pointer_contents_are_authoritative(published: tuple[Path, str]) -> None:

@@ -10,7 +10,7 @@
 ## 1. Objectives & Architectural Role
 
 `pipelines/document_storage` is the orchestration layer that executes large-scale batch acquisition and normalization:
-1. **Target Plan Ingestion**: Consumes the Phase 2 `target_plan.parquet` without network access, calculating deterministic chunk assignments.
+1. **Target Plan Ingestion**: Consumes a published Phase 2 plan bundle without network access, calculating deterministic chunk assignments. See the master spec §3 for the real layout and the scope-specific occurrence schemas.
 2. **Process Pool Concurrency**: Drives a pool of isolated worker processes budgeted via `derive_resources()`.
 3. **Resumable Chunk Execution**: Workers write to isolated SQLite chunk databases (`chunk-00001.db`) with atomic checkpoint manifests. Stalled chunks resume cleanly without re-fetching SEC data.
 4. **Launcher Entry**: `run.py` registers `documents` alongside `metadata` and

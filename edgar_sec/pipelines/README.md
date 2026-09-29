@@ -291,7 +291,7 @@ entry points, grouped by pipeline.
   `PlanConflictError`, `TARGET_PLAN_SCHEMA_VERSION`, `REQUIRED_PLAN_FILES`.
   `filing_catalog/publication.py`.
 - `discover_catalogs`, `discover_plans`, `discover_policies`,
-  `current_catalog_id`, `resolve_catalog_reference`, `resolve_catalog_manifest`,
+  `current_catalog_id`, `resolve_catalog_reference`,
   `policy_search_dirs`, `auto_policy`, `status`, `CURRENT_ALIAS`.
   `filing_catalog/discovery.py`.
 - `FilingCatalogPaths`, `resolve_filing_catalog_paths`, `safe_identifier`,

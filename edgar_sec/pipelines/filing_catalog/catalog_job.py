@@ -34,6 +34,7 @@ from edgar_sec.domain.submissions.schemas import (
     SCHEMA_VERSION as SOURCE_SCHEMA_VERSION,
 )
 from edgar_sec.domain.submissions.schemas import SUBMISSION_METADATA_SCHEMA
+from edgar_sec.foundation.hashing import file_sha256
 from edgar_sec.foundation.runtime.memory import reclaim
 from edgar_sec.foundation.runtime.progress import ProgressCallback, emit_progress
 from edgar_sec.foundation.runtime.settings import resolve_settings
@@ -81,24 +82,56 @@ def _catalog_id(source_hash: str) -> str:
     return hashlib.sha256(payload.encode("utf-8")).hexdigest()[:24]
 
 
+def _verify_source_digest(candidate: Path, expected: str, origin: Path) -> None:
+    """Refuse a source whose bytes do not match the digest Phase 1 published.
+
+    Phase 1 hashes the artifact it wrote, so a mismatch means the file was
+    replaced or truncated after publication. Both call sites hash whole Parquet
+    files, so this streams rather than reading them into memory.
+    """
+    if not expected:
+        raise CatalogError(f"Phase 1 manifest records no artifact digest: {origin}")
+    actual = file_sha256(candidate)
+    if actual != expected:
+        raise CatalogError(
+            f"source artifact digest mismatch for {candidate}: "
+            f"manifest {expected}, file {actual}"
+        )
+
+
 def resolve_source(
     source_artifact: str | os.PathLike[str] | None,
     source_manifest: str | os.PathLike[str] | None = None,
 ) -> tuple[Path, dict[str, Any] | None]:
     """Resolve the Phase 1 dataset this catalog consumes.
 
-    With neither argument the currently published Phase 1 snapshot is used.
-    A manifest path is read for its handoff metadata; a bare Parquet path is
-    used directly.
+    With neither argument the currently published Phase 1 snapshot is used. An
+    explicit manifest is read for its handoff metadata and the payload it names
+    is what gets read as Parquet; a bare Parquet path is used directly.
+
+    A manifest is metadata, not data. Returning the manifest path itself as the
+    source would hand the JSON to the Parquet reader, so the payload is resolved
+    from the manifest's ``output_path`` and checked against the
+    ``artifact_sha256`` Phase 1 recorded with it.
     """
     handoff: dict[str, Any] | None = None
     candidate: Path | None = None
+    expected_digest = ""
 
     if source_manifest is not None:
         manifest_path = Path(source_manifest).resolve()
-        if manifest_path.is_file():
-            handoff = json.loads(manifest_path.read_text(encoding="utf-8"))
-        candidate = manifest_path
+        if not manifest_path.is_file():
+            raise CatalogError(f"source manifest does not exist: {manifest_path}")
+        handoff = json.loads(manifest_path.read_text(encoding="utf-8"))
+        output_path = str(handoff.get("output_path") or "")
+        if not output_path:
+            raise CatalogError(
+                f"Phase 1 manifest names no output_path: {manifest_path}"
+            )
+        candidate = Path(output_path)
+        if not candidate.is_absolute():
+            candidate = (manifest_path.parent / candidate).resolve()
+        expected_digest = str(handoff.get("artifact_sha256") or "")
     elif source_artifact is not None:
         candidate = Path(source_artifact).resolve()
 
@@ -115,9 +148,19 @@ def resolve_source(
         if not snapshot_id:
             raise CatalogError(f"Phase 1 pointer names no snapshot: {pointer}")
         candidate = metadata_paths.snapshot_file(str(snapshot_id))
+        # The pointer is a discovery record rather than a manifest, so a pointer
+        # written without a digest is usable; one that carries a digest is held
+        # to it.
+        expected_digest = str(handoff.get("artifact_sha256") or "")
 
     if not candidate.is_file():
         raise CatalogError(f"source artifact does not exist: {candidate}")
+    if source_manifest is not None or expected_digest:
+        _verify_source_digest(
+            candidate,
+            expected_digest,
+            Path(source_manifest) if source_manifest is not None else candidate,
+        )
     return candidate, handoff
 
 
@@ -186,7 +229,7 @@ def materialize(
     )
 
     paths = resolve_filing_catalog_paths(output_root)
-    source_hash = hashlib.sha256(source.read_bytes()).hexdigest()
+    source_hash = file_sha256(source)
     snapshot_id = str((handoff or {}).get("snapshot_id") or _catalog_id(source_hash))
     catalog_id = snapshot_id
 
@@ -250,7 +293,7 @@ def materialize(
             {
                 "path": f"filing_targets/{shard_name}",
                 "row_count": total_target_rows,
-                "artifact_sha256": hashlib.sha256(shard_path.read_bytes()).hexdigest(),
+                "artifact_sha256": file_sha256(shard_path),
             }
         )
         for form_name, count in con.execute(

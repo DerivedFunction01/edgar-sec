@@ -218,14 +218,35 @@ An operator who sets the documented env vars gets a different plan than the
 environment declares, with a success line printed. This is the v1
 `validate_plan_against_options` guard, with both halves gone.
 
-### 4.2 The policy-scope occurrence partition ships a duplicate column
+### 4.2 The policy-scope occurrence partition ships a duplicate column — **CLOSED**
 
-`planner.py:476` uses `SELECT *` over a **two-way join**, projecting
+`planner.py:476` used `SELECT *` over a **two-way join**, projecting
 `document_locator_key` twice. Probe: the published policy-scope occurrence file
-has **45 columns including `document_locator_key_1`** where the deterministic
-scope has 16. `test_phase25_contract.py:168` asserts column *containment*, never
-schema equality, so the bundle that Phase 2.5 consumes as its sole input is
-unpinned. One-word fix (`SELECT o.*`).
+had **45 columns including `document_locator_key_1`** where the deterministic
+scope had 16. `test_phase25_contract.py:168` asserted column *containment*,
+never schema equality, so the bundle that Phase 2.5 consumes as its sole input
+was unpinned.
+
+**Closed in the Phase 2 closure pass.** The query now projects `o.*`, and the
+contract test pins each scope against its own schema — deterministic against
+`TARGET_COLUMNS`, policy against its feature snapshot's occurrence schema. The
+two schemas are deliberately different; see [phase_2_closure.md](phase_2_closure.md)
+and `phase_2.md` §16.1.
+
+### 4.2b `--source-manifest` resolved to the manifest, not the Parquet it names — **CLOSED**
+
+Not among the original fifteen findings. Found while reading `catalog_job.py` to
+fix 4.4's hashing call sites, ten lines below them.
+
+`resolve_source` parsed the manifest JSON into `handoff` and then used the
+*manifest path* as the source candidate. The `is_file()` check passed — a JSON
+file is a file — and the failure surfaced later at `read_parquet_schema`, as a
+Parquet reader handed JSON. A documented CLI option could not work.
+
+**Closed.** `resolve_source` now resolves the payload from the manifest's
+`output_path` and verifies it against the manifest's `artifact_sha256` using the
+streaming `file_sha256`. A missing path, a missing required field, or a digest
+mismatch raises `CatalogError`. Covered in `test_catalog_job.py`.
 
 ### 4.3 `validate_chunks` is far weaker than AGENTS.md §4.3
 
@@ -237,7 +258,8 @@ v1's `snapshot_merge.py:199` raised on duplicate occurrences; v2 cannot.
 ### 4.4 Also open
 
 - **Three workers, not a token bucket.** `daemon.py` has 0 occurrences of token/bucket; pacing is `RateLimiter` inside each `SecHttpClient`. `M2.2 [x]` claims a "soak test proving token bucket caps throughput" — the test injects a pacing-free double and asserts 10 requests return `"ok"`.
-- **`catalog_job.py:189,253` hash the two largest files in the pipeline with `read_bytes()`.** Measured with `tracemalloc` on a 210 MB file: 209.7 MB peak vs 0.1 MB for the existing streaming `file_sha256` — **1542× amplification**, and `resource-allocation` cannot see it.
+- **`catalog_job.py:189,253` hashed the two largest files in the pipeline with `read_bytes()` — CLOSED.** Measured with `tracemalloc` on a 210 MB file: 209.7 MB peak vs 0.1 MB for the existing streaming `file_sha256` — **1542× amplification**, and `resource-allocation` cannot see it. Both call sites now use `file_sha256`, and a new **`whole-file-read`** scanner flags `read_bytes()` consumed by a digest constructor so the class cannot recur. The scanner deliberately does *not* flag `metadata_sync/registry.py`, whose `read_bytes()` feeds `json.loads` on a ~1 MB payload and is correct as written.
+- **`inventory.py` had no production caller — CLOSED as an advisory.** Dead in v1 *and* v2; not a port regression. `plan_policy` now calls it and publishes an `inventory_feasibility` block in `selection_report.json` (required vs available, with the deficit). It cannot fail a plan: the counts are per-dimension and independent, so they do not subtract competition between floors, the family cap, or the seeds. Wiring it exposed two latent bugs — `sic_code` was misclassified as occurrence-grain (the locator projection carries it), and a composite on the genuinely occurrence-only `accession_class` crashed selection with a raw DuckDB `BinderException` instead of being refused at policy construction. `phase_2.md` §16.9.
 - **Delegation link direction reversed.** v1 rewrote the *primary*'s metadata to point at its exhibits; v2 annotates the *exhibit* to point at its primary, and `exhibits_for` (the only primary→exhibits lookup) has no production caller.
 - **`plan["schema_version"]` is recorded, displayed and never enforced.** Probe: a forged `0.0.1-FORGED` was accepted by `load_plan`. Mitigated — chunk validation compares against the live schema, which is stronger — but `status` reports a version the code may not honour.
 
@@ -270,9 +292,9 @@ v1's `snapshot_merge.py:199` raised on duplicate occurrences; v2 cannot.
 | `02_infra_broker_and_cas.md:104` `M2.2 [x]` token-bucket soak test | no token bucket; the test asserts concurrency only |
 | `03_engine_document_and_reflow.md:69` specs "stored in `docs/reflow/` or `engine/reflow/`" | `RULE_ENGINE_SPEC.md` and `HYPOTHESES.md` exist **only** in `.v1/` |
 | `04_engine_tables_and_forms.md:32` §1.4 "covers 10-K, 10-Q, 8-K, 6-K, 20-F, Form 3/4/5, 13F" | `registry.py` seeds **four**; the other six fall through to `_default_plugin()` with no evaluator |
-| `filing_catalog/README.md:197-199` `plan_fingerprint` "binds identity to its selection" | `plan_id` is derived from the request alone, which contains no locator keys. Two runs with different selections **do** share a `plan_id` |
-| `filing_catalog/paths.py:8-10` `snapshots/` and `plans/` subdirectories | both resolve to `catalog_root`; `snapshot_dir(X) == plan_dir(X)` |
-| `phase_2_5.md` §3 Phase 2 input contract | names `target_plan.parquet`, `plan_manifest.json`, `partitions/`, a `selection_weight` column, and a 20-char dashed `accession_number` — **none exist**. The real bundle is `plan.json` + `locator_groups.parquet` with an 18-char stripped accession |
+| `filing_catalog/README.md:197-199` `plan_fingerprint` "binds identity to its selection" | **CLOSED** — `plan_id` was derived from the request alone, so two runs with different selections *did* share an id. Publication now stamps `plan_fingerprint` (identity + selected locator keys) and reuse recomputes it. `phase_2.md` §16.3 |
+| `filing_catalog/paths.py:8-10` `snapshots/` and `plans/` subdirectories | **CLOSED** — both resolve to `catalog_root`; `snapshot_dir(X) == plan_dir(X)`. The docstring now states the real layout and `test_paths.py` pins it. `phase_2.md` §16.7 |
+| `phase_2_5.md` §3 Phase 2 input contract | **CLOSED** — it named `target_plan.parquet`, `plan_manifest.json`, `partitions/`, a `selection_weight` column, and a 20-char dashed `accession_number`, none of which exist. §3 now documents the real bundle, the 18-char stripped accession, and the scope-specific occurrence schemas. `phase_2.md` §16.7 |
 | `engine/forms/README.md:113-119` | discloses `DocumentTopology`; omits `BodyRoot`, `BoundaryInput`, `ItemDefinition` (all dead) |
 | `implementation_ledger.tsv` `worker.py` row | claims `_ByteBudget` was absorbed; it was not (Part 3.1) |
 
@@ -323,8 +345,9 @@ Largest untested blocks: 14 `ascii_html` sub-modules · 5 `reflow` modules
 
 ## Suggested order of work
 
-1. **Fix the shipped-artifact and wrong-output defects** — 4.2 (`SELECT o.*`,
-   one word), 4.1 (settings bypass), Part 0 regression test.
+1. **Fix the shipped-artifact and wrong-output defects** — 4.2 and 4.2b are now
+   closed by the Phase 2 closure pass; 4.1 (settings bypass) and the Part 0
+   regression test remain.
 2. **Make the built-but-unreachable reachable** — 1.1 `vacuum` subcommand first
    (it gates the corpus story), then 1.2 reflow callbacks, then 1.3 table
    rendering. Each converts a green test into a real capability.

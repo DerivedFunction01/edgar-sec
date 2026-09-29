@@ -17,14 +17,15 @@ import pyarrow.parquet as pq
 import pytest
 
 from edgar_sec.engine.selection.policy import (
+    SeedFiler,
     compute_seed_fingerprint,
+    load_seed_cik_csv,
+    read_seed_filers_csv,
 )
 from edgar_sec.pipelines.filing_catalog.expansion import (
     ExpansionLineage,
     ParentPlanError,
     expand,
-    plan_fingerprint,
-    plan_locator_keys,
     prepare_parent,
     read_expansion_metadata,
     validate_target,
@@ -33,9 +34,14 @@ from edgar_sec.pipelines.filing_catalog.paths import (
     EXPANSION_METADATA_NAME,
     LOCATOR_GROUPS_NAME,
     PLAN_FILE_NAME,
+    SEED_FILERS_NAME,
     resolve_filing_catalog_paths,
 )
 from edgar_sec.pipelines.filing_catalog.planner import plan_policy
+from edgar_sec.pipelines.filing_catalog.publication import (
+    plan_fingerprint,
+    plan_locator_keys,
+)
 from tests.pipelines.filing_catalog.test_policy_planner import _policy
 
 
@@ -313,3 +319,80 @@ def test_prepare_parent_derives_the_child_level_and_lineage(
     assert child_policy.parent_plan_id == parent_meta["plan_id"]
     assert child_policy.parent_plan_fingerprint
     assert parent_keys
+
+
+# --- seeded expansion ------------------------------------------------------
+
+
+def _seed_csv(path: Path, rows: list[tuple[str, str]] = ()) -> Path:
+    """Write a seed manifest naming registrants that exist in the fixture.
+
+    A seed also defines the company-family index, so a manifest full of CIKs
+    absent from the corpus collapses the strata and starves selection of
+    candidates. Naming real registrants keeps these tests about seed
+    inheritance rather than about corpus arithmetic.
+    """
+    rows = rows or [("0000320193", "APPLE FIXTURE INC")]
+    path.write_text(
+        "cik,name,seed_group,coverage_tags,notes\n"
+        + "".join(f"{cik},{name},default,,\n" for cik, name in rows),
+        encoding="utf-8",
+    )
+    return path
+
+
+def test_a_seeded_parent_expands_from_its_own_published_seed_set(
+    catalog_snapshot: tuple[dict[str, Any], Path], tmp_path: Path
+) -> None:
+    """Expansion inherits the parent's seed set, not the file it came from."""
+    artifacts_root = _root(catalog_snapshot)
+    catalog_id = str(catalog_snapshot[0]["catalog_id"])
+    seed_path = _seed_csv(tmp_path / "seed-cik.csv")
+
+    parent = plan_policy(
+        catalog_id, _policy(seed_cik_path=str(seed_path)), artifacts_root
+    )
+    parent_dir = resolve_filing_catalog_paths(artifacts_root).plan_dir(
+        parent["plan_id"]
+    )
+    assert parent["seed_filer_count"] == 1
+    # The configured manifest is gone. The parent can still be expanded, because
+    # the bundle it published carries the seed set with it.
+    seed_path.unlink()
+
+    child = expand(parent_dir, 4, artifacts_root=artifacts_root)
+    child_dir = resolve_filing_catalog_paths(artifacts_root).plan_dir(child["plan_id"])
+    assert child["seed_fingerprint"] == parent["seed_fingerprint"]
+    assert read_seed_filers_csv(child_dir / SEED_FILERS_NAME) == {
+        "0000320193": SeedFiler(cik="0000320193", name="APPLE FIXTURE INC")
+    }
+    assert set(plan_locator_keys(parent_dir)) <= set(plan_locator_keys(child_dir))
+
+
+def test_expanding_a_plan_whose_seed_set_was_edited_is_refused(
+    catalog_snapshot: tuple[dict[str, Any], Path], tmp_path: Path
+) -> None:
+    """A different seed set is a different plan, not a compatible one."""
+    artifacts_root = _root(catalog_snapshot)
+    catalog_id = str(catalog_snapshot[0]["catalog_id"])
+    seed_path = _seed_csv(tmp_path / "seed-cik.csv")
+
+    parent = plan_policy(
+        catalog_id,
+        _policy(base_content_units=2, seed_cik_path=str(seed_path)),
+        artifacts_root,
+    )
+    parent_dir = resolve_filing_catalog_paths(artifacts_root).plan_dir(
+        parent["plan_id"]
+    )
+
+    other = _seed_csv(
+        tmp_path / "other.csv", [("0000019617", "JPMORGAN FIXTURE CHASE")]
+    )
+    with pytest.raises(ParentPlanError, match="same seed CIK set"):
+        expand(
+            parent_dir,
+            4,
+            artifacts_root=artifacts_root,
+            seed_filers=load_seed_cik_csv(other),
+        )

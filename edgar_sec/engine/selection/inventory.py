@@ -16,46 +16,23 @@ from __future__ import annotations
 from pathlib import Path
 from typing import Any
 
-from edgar_sec.engine.selection.policy import KNOWN_DIMENSIONS
+from edgar_sec.engine.selection.policy import (
+    KNOWN_DIMENSIONS,
+    OCCURRENCE_ONLY_DIMENSIONS,
+)
 from edgar_sec.infra.storage.duckdb import connect
 from edgar_sec.infra.storage.duckdb_catalog import sql_literal
 
 LOCATOR_TABLE = "locator_features.parquet"
 OCCURRENCE_TABLE = "occurrence_features.parquet"
 
-# Dimensions resolved once per locator. Counting these on the locator table is
-# correct because each dimension describes the *document*, not the filing.
-LOCATOR_ONLY_DIMENSIONS = frozenset(
-    {
-        "form",
-        "form_family",
-        "era",
-        "suffix",
-        "xbrl_state",
-        "size_band",
-        "owner_org_presence",
-        "foreign_status",
-        "foreign_country_code",
-        "entity_type",
-        "filer_category_primary",
-        "lifecycle_class",
-        "has_revival_gap",
-        "locator_class",
-        "stub_suspect",
-        "anchor_status",
-        "comparison_status",
-        "company_name",
-        "company_family",
-    }
-)
-
-# Dimensions only present at occurrence grain. Counting them on the locator
-# table would silently return zero rows rather than an error.
-OCCURRENCE_ONLY_DIMENSIONS = frozenset({"sic_code", "accession_class"})
-
 
 class UnknownDimensionError(ValueError):
     """A statistic was requested for a dimension the policy vocabulary rejects."""
+
+
+class OccurrenceOnlyDimensionError(ValueError):
+    """A composite stratum was filtered on a dimension with no locator grain."""
 
 
 class InventoryStatistics:
@@ -139,7 +116,16 @@ class InventoryStatistics:
     def check_composite_feasibility(
         self, composites: list[dict[str, Any]]
     ) -> list[dict[str, Any]]:
-        """Report whether each composite stratum has enough matching locators."""
+        """Report whether each composite stratum has enough matching locators.
+
+        Counted on the locator table, because that is the grain a composite
+        selects candidates at: the selector draws composites from
+        ``locator_features``, so a count taken at any other grain would answer a
+        different question than the one selection asks. A composite filtered on an
+        occurrence-only dimension is therefore refused rather than answered -- the
+        locator table has no such column, and a count that silently returned zero
+        would look like an undersupplied stratum rather than an invalid one.
+        """
         results: list[dict[str, Any]] = []
         if not composites:
             return results
@@ -152,6 +138,11 @@ class InventoryStatistics:
                 params: list[Any] = []
                 for dimension, value in filters.items():
                     self._require_dimension(dimension)
+                    if dimension in OCCURRENCE_ONLY_DIMENSIONS:
+                        raise OccurrenceOnlyDimensionError(
+                            f"composite stratum filters on {dimension!r}, which has no "
+                            "locator grain; composites select from locator_features"
+                        )
                     clauses.append(f"{dimension} = ?")
                     params.append(str(value))
                 where = " AND ".join(clauses) if clauses else "TRUE"
@@ -172,10 +163,9 @@ class InventoryStatistics:
 
 
 __all__ = [
-    "LOCATOR_ONLY_DIMENSIONS",
     "LOCATOR_TABLE",
-    "OCCURRENCE_ONLY_DIMENSIONS",
     "OCCURRENCE_TABLE",
     "InventoryStatistics",
+    "OccurrenceOnlyDimensionError",
     "UnknownDimensionError",
 ]

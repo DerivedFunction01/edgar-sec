@@ -1,9 +1,14 @@
 # Plan: Phase 2 Clean Slate Implementation (`edgar_sec.pipelines.filing_catalog`)
 
 > [!IMPORTANT]
-> **Status:** COMPLETE — Milestones 0–9 done. Stage A (M0–M4) and Stage B (M5–M9) both implemented.  
-> **Progress:** 9 of 9 milestones. 612 tests pass; all seven policy scanners clean.  
-> **Predecessor:** `phase_1.md` is complete (158 tests, full gate green). Phase 2 consumes the Phase 1 `submission_metadata` snapshot and **must not change Phase 1 behaviour** or its schema. (The original wording here was "must not modify any Phase 1 module," which proved too strong during the Stage A consolidation pass in §12: deduplicating the shared artifact-layout convention and the operator entrypoint required behaviour-preserving edits to two Phase 1 modules. The contract is behavioural, not textual.)  
+> **Status:** REMEDIATED — Milestones 0–9 done, plus the closure pass in §16.
+> Stage A (M0–M4) and Stage B (M5–M9) both implemented. The parity audit found
+> real defects after the phase was first signed off; they are fixed and recorded
+> in [§16](phase_2_closure.md), which supersedes this document's earlier
+> "complete, nothing outstanding" claim.
+> **Progress:** 9 of 9 milestones, plus closure. The full quality gate passes,
+> including the `whole-file-read` scanner added by the closure pass.
+> **Predecessor:** `phase_1.md` is complete. Phase 2 consumes the Phase 1 `submission_metadata` snapshot and **must not change Phase 1 behaviour** or its schema. (The original wording here was "must not modify any Phase 1 module," which proved too strong during the Stage A consolidation pass in §12: deduplicating the shared artifact-layout convention and the operator entrypoint required behaviour-preserving edits to two Phase 1 modules. The contract is behavioural, not textual.)  
 > **Readiness:** Every symbol, signature, path layout, and schema named below was verified against `.v1` source or the v2 tree. No signature in this document is speculative; where v1 behaviour is unsafe it is flagged explicitly and the v2 replacement is specified.  
 > **Implementation:** §11 records the deviations from this plan that Stage A actually adopted, and the three v1 defects found while porting. §15 is the equivalent record for Stage B, including the six v1 defects found while porting the selection engine. Read them before changing behaviour.
 
@@ -836,7 +841,11 @@ do not — rather than hash values.
 
 ### 14.4 Outstanding
 
-None. M7, M8, and M9 are complete; see §15.
+None outstanding *within Milestones 0–9*. A parity audit run after this section
+was first written found defects outside those milestones — a malformed
+policy-plan schema, a broken `--source-manifest` path, missing reuse integrity,
+unwired seed selection, and unbounded whole-file hashing. All are fixed; see
+[§16](phase_2_closure.md).
 
 ---
 
@@ -1050,3 +1059,172 @@ queries.
 `infra/storage/duckdb_catalog.py` (§15.4 and the `suffix_sql` parenthesization),
 `pipelines/filing_catalog/{planner,discovery,expansion,cli,paths}.py`, the
 Stage A test that moved to its mirrored path, and this document.
+
+---
+
+## 16. Closure Pass (parity audit remediation)
+
+A parity audit run after this phase was signed off as complete found defects
+that no milestone owned. The full plan, with the decisions taken and the
+evidence behind them, is in [phase_2_closure.md](phase_2_closure.md). What
+follows is what changed and what it cost.
+
+### 16.1 A published policy plan shipped a spurious column
+
+The policy scope wrote its occurrence partitions with `SELECT *` over a join to
+the selected locator keys. The join projects `document_locator_key` twice, and
+DuckDB dedups the second to `document_locator_key_1`, so the published,
+immutable bundle carried a phantom column. The query now projects `o.*`.
+
+The deeper problem was the test, not the query. `test_phase25_contract.py`
+asserted *containment* (`"document_locator_key" in schema.names`) where the
+contract is *equality*, and its cross-scope test read only `locator_groups`,
+never the occurrence partitions where the divergence lived. The suite now pins
+each scope's own occurrence schema: deterministic equals `TARGET_COLUMNS`,
+policy equals its feature snapshot's occurrence schema.
+
+The two scopes publish **deliberately different** occurrence schemas. That is not
+a bug to be fixed by forcing both to `TARGET_COLUMNS`; a policy plan is written
+from the feature snapshot, and stripping its features would break the selection
+audit trail. `phase_2_5.md` §3 now states both shapes.
+
+### 16.2 `--source-manifest` handed JSON to the Parquet reader
+
+`resolve_source` parsed the manifest for its handoff metadata and then used the
+*manifest path* as the source candidate. The file-exists check passed, and the
+Parquet read failed. It now resolves the payload from the manifest's
+`output_path` and verifies it against the manifest's `artifact_sha256` with the
+streaming `file_sha256`. A missing path, missing field, or digest mismatch
+raises `CatalogError`.
+
+This was not in the audit's fifteen findings. It was found while reading
+`catalog_job.py` to fix the hashing call sites, which sit ten lines below it.
+
+### 16.3 Reuse verified structure, not content
+
+`reuse_existing_plan` checked that a bundle's files existed, that its partition
+*set* matched the recorded counts, and that the plan id and scope matched. It
+never opened a file. A bundle whose `locator_groups.parquet` was rewritten from
+two rows to one passed every check while `plan.json` kept claiming two.
+
+Publication now stamps `plan_fingerprint` — the plan identity plus the selected
+locator keys — from the locator groups the bundle actually holds, and reuse
+recomputes it. A bundle recording no fingerprint is refused rather than
+accepted. `TARGET_PLAN_SCHEMA_VERSION` moved `1.0` → `1.1`; per the no-legacy-shims
+rule there is no fallback, so a `1.0` bundle is not reusable as a `1.1` one and
+must be republished.
+
+The guarantee is deliberately narrow: it covers the work order, not every
+Parquet byte in the bundle. A digest over all payloads would make publication
+proportional to the size of the plan being published.
+
+### 16.4 Seed selection was implemented but unreachable
+
+`plan_policy` and `expand` both accept `seed_filers`, `DeficitSelector` has a
+mandatory seed phase, and `load_seed_cik_csv` existed — with no caller. No CLI
+flag loaded a seed set, so expansion fingerprinted the empty set and rejected
+any parent that was actually seeded. Separately, `FeatureSnapshotBuilder` read
+`seed_cik_path` off disk, so a changed CSV could reuse a feature snapshot with
+stale company-family assignments.
+
+The seed set is now resolved once per plan, normalized, and used for both
+selection and family clustering. It is published with the plan as
+`seed_filers.csv`, its fingerprint participates in both the plan identity and
+the feature-snapshot cache identity, and **expansion reads the parent's
+sidecar** rather than the configured CSV — so a child reproduces its parent's
+selection even if the original file has moved or been deleted. A policy naming
+a missing manifest is not an error: families fall back to the profile corpus and
+an empty seed set is published.
+
+`SeedFiler` gained `name`, because the same manifest defines company families
+and the sidecar has to serve both consumers.
+
+### 16.5 Whole-file hashing, and a scanner to keep it fixed
+
+`catalog_job.py` hashed the Phase 1 source and every materialized Parquet shard
+with `hashlib.sha256(path.read_bytes())`, materializing each whole file to prove
+it intact. Both now use the streaming `file_sha256`; the digests are unchanged.
+
+Because `resource-allocation` only matches `threads=`/`max_workers=`/
+`memory_limit=`, it could not catch this class. A new **`whole-file-read`**
+scanner flags `read_bytes()` consumed by a digest constructor. It is
+deliberately narrow: the `metadata_sync/registry.py` call that feeds `json.loads`
+reads a ~1 MB payload whole on purpose and is *not* flagged.
+
+The audit asserted `read_bytes()` "appears nowhere else in `edgar_sec/`". It
+does — that registry call. The audit was wrong in a way that would have sent a
+fix through a JSON parser that never had the memory problem.
+
+### 16.6 The operator's plan action crashed
+
+Writing the missing `test_operator.py` surfaced a defect no existing test
+covered: `_namespace` never set `scope`, and `cmd_plan` dereferences
+`args.scope`. The wizard's plan action raised `AttributeError` on every
+invocation. The old coverage checked that the menu *had* three actions and that
+the callbacks were the CLI's functions; it never dispatched one.
+
+`paths.py` and `operator.py` now have mirrored test files (`test_paths.py`,
+`test_operator.py`), and the operator assertions moved out of `test_cli.py`.
+
+`test_paths.py` also records something the old docstring got wrong in the other
+direction: catalog ids and plan ids share one directory. They are both 24-char
+content digests, so collision needs a hash collision, but there is no separate
+`plans/` namespace.
+
+### 16.7 Documentation corrections
+
+- `paths.py`'s docstring described `snapshots/<catalog_id>` and `plans/<plan_id>`
+  subdirectories. Neither exists; `snapshots_root` and `plans_root` both return
+  `catalog_root`. The `snapshots/` subtree that *does* exist holds feature
+  snapshots, written by the selection engine.
+- `phase_2_5.md` §3 named `target_plan.parquet`, `plan_manifest.json`,
+  `partitions/`, a `selection_weight` column, and a 20-char dashed
+  `accession_number`. None exist. Corrected to the real bundle.
+- The audit reported a *blank* census entry for `paths.py`/`operator.py`. Both
+  were `IMPORTED` with long importer lists; the real gap was the absence of
+  dedicated mirrored files.
+- Stale hard-coded test and scanner counts in this document were removed rather
+  than replaced with new ones.
+
+### 16.8 Closed by documentation, not code
+
+The lower-severity parity findings were closed as deliberate gaps, not by
+restoring v1 behaviour: the operator's 5→3 menu reduction, the narrowed catalog
+reference forms, the audit-only expansion artifacts, and `selection_report.json`
+having no machine reader. No unused feature was added to shorten the audit's
+table. `catalog.row_group_size` keeps its existing configuration surface; the
+audit's suggested environment override was not adopted.
+
+### 16.9 `inventory.py` wired as an advisory, and a latent policy bug fixed
+
+`inventory.py` had no production caller in **v1 or v2** — it was dead code in
+both. It is now called by `plan_policy`, which publishes an
+`inventory_feasibility` block in `selection_report.json`: per floor and
+composite, what the corpus held against what the policy asked for, with the
+deficit quantified.
+
+It is advisory and cannot fail a plan. The counts are per-dimension and
+independent, so they do not subtract competition between floors, the family cap,
+or the seeds; a set of individually feasible floors can still underfill
+together. A floor can also be satisfiable and skipped once an earlier phase
+claimed its candidates. A prediction is weaker evidence than a completed
+selection, so it explains `underfilled_floors` rather than overriding it.
+
+Wiring it surfaced a defect the dead module had been hiding. `sic_code` was
+classified as an occurrence-grain dimension, but the locator projection carries
+the representative registrant's `sic_code`, so it resolves at locator grain.
+Two consequences followed. Every `sic_code` count was issued against the wider
+occurrence table, and a composite stratum filtered on `sic_code` was being
+counted at a grain the selector never uses. A test that had been passing
+(`test_composite_feasibility_counts_matching_locators`, which filters on
+`sic_code`) was asserting the count rather than the routing.
+
+The same investigation found a worse one. `accession_class` is genuinely
+occurrence-only and is in `KNOWN_DIMENSIONS`, so a policy could legally declare a
+composite on it — and then the selector died with a raw DuckDB
+`BinderException: Table "l" does not have a column named "accession_class"`,
+naming a column rather than the policy field that caused it. `SelectionPolicy`
+construction now refuses such a stratum, naming the field. The grain sets moved
+from `inventory.py` to `policy.py` beside `KNOWN_DIMENSIONS`, since the
+vocabulary check and the counting now both need them and only `policy.py` can be
+imported by both.

@@ -17,6 +17,7 @@ from edgar_sec.foundation.runtime.interactive import (
 
 from .cli import cmd_materialize, cmd_plan, cmd_status
 from .cli import main as cli_main
+from .planner import SCOPE_DETERMINISTIC
 
 __all__ = ["build_operator_menu", "main"]
 
@@ -26,10 +27,21 @@ MENU_TITLE = "Filing Catalog (Phase 02)"
 def _namespace(
     command: str, catalog: str = "", forms: str = "", artifacts: str = ""
 ) -> argparse.Namespace:
+    """Build a namespace with every field the dispatched command reads.
+
+    The menu plans deterministically, so ``scope`` is pinned here rather than
+    read from the parser: ``cmd_plan`` dereferences it, and a namespace that
+    omitted it raised ``AttributeError`` inside the wizard instead of reaching
+    the plan. The policy fields are present for the same reason, even though no
+    menu action sets a policy scope today.
+    """
     return argparse.Namespace(
         command=command,
         catalog=catalog,
         forms=[f for f in forms.replace(",", " ").split() if f],
+        scope=SCOPE_DETERMINISTIC,
+        policy="",
+        auto_policy=False,
         amendment="both",
         suffixes=[],
         limit=None,

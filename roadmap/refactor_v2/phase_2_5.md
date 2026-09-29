@@ -5,7 +5,7 @@
 > **Predecessors:** 
 > - [Phase 1 (`metadata_sync`)](file:///home/denny/edgar-sec/roadmap/refactor_v2/phase_1.md): feature-complete, with documented scope reductions (see that document's §10).
 > - [Phase 2 (`filing_catalog`)](file:///home/denny/edgar-sec/roadmap/refactor_v2/phase_2.md): COMPLETE.
-> **Target Scope:** Comprehensive implementation of Phase 2.5 (Document Storage, HTML/ASCII Normalization, Reflow, Table Tagging, and Cover Checkmark Solving). Phase 2.5 consumes the Phase 2 `target_plan.parquet` and produces content-addressed normalized document snapshots.
+> **Target Scope:** Comprehensive implementation of Phase 2.5 (Document Storage, HTML/ASCII Normalization, Reflow, Table Tagging, and Cover Checkmark Solving). Phase 2.5 consumes a published Phase 2 plan bundle and produces content-addressed normalized document snapshots.
 > **Scope Scale:** Phase 2.5 encompasses ~363 unported `.v1` files (~50,000+ lines of dense engine, layout, and storage code). Because of this scale, the implementation plan is decomposed into **six modular, linked sub-plans** anchored by this master specification.
 
 ---
@@ -15,7 +15,7 @@
 Phase 1 established submissions metadata extraction; Phase 2 established zero-network catalog materialization and deterministic/stratified target planning.
 
 **Phase 2.5 is the heavy industrial core of `edgar-sec`:**
-1. It ingests the Phase 2 `target_plan.parquet` (containing accession numbers, form types, primary documents, and policy weights).
+1. It ingests a published Phase 2 plan bundle: `locator_groups.parquet` (documents to fetch) and `targets/form=*/data.parquet` (the registrants claiming them).
 2. It fetches primary SEC filings via a managed Unix-socket broker (`SecBroker`, enforcing configured rate limits across arbitrary worker pools through adaptive slot spacing).
 3. It unrolls multi-document SGML containers (`.nc`, `.txt`), parses HTML trees via `selectolax`, and strips page markers and non-body boilerplate.
 4. It detects and protects table geometry, and executes conservative ASCII reflow to produce clean plain-text representations.
@@ -25,7 +25,7 @@ Phase 1 established submissions metadata extraction; Phase 2 established zero-ne
 
 ```mermaid
 graph TD
-    P2["Phase 2 Snapshot<br/>target_plan.parquet"] --> Pipe["pipelines/document_storage<br/>(Sub-plan 05)"]
+    P2["Phase 2 Plan Bundle<br/>locator_groups + targets"] --> Pipe["pipelines/document_storage<br/>(Sub-plan 05)"]
     
     subgraph "Layer 2: Infrastructure Adapters (Sub-plan 02)"
         Broker["infra/broker/sec_broker.py<br/>(Unix-Socket Token Bucket)"]
@@ -110,25 +110,70 @@ Due to the substantial size and distinct failure domains of the subsystems in Ph
 
 ## 3. Upstream Handoff: Consuming Phase 2 Artifacts
 
-Phase 2.5 does **not** read Phase 1 metadata directly. It consumes the published output of Phase 2:
+Phase 2.5 does **not** read Phase 1 metadata directly. It consumes the published output of Phase 2.
 
-### Input Contract: `target_plan.parquet`
+### Input Contract: the published plan bundle
+
+A plan bundle is a **directory** under the artifacts root. The layout below is
+what Phase 2 actually publishes; an earlier version of this section named
+`target_plan.parquet`, `plan_manifest.json`, and a `partitions/` directory, none
+of which exist.
+
 ```text
-.artifacts/filing_extraction/target_plans/<plan_id>/
-├── target_plan.parquet              # Canonical document targets to fetch and normalize
-├── plan_manifest.json               # Input fingerprint, locator counts, parameters
-└── partitions/                      # Sharded target lists for distributed processing
+{artifacts_root}/filing_catalog/<plan_id>/
+├── plan.json                          # Identity, counts, selection policy, plan_fingerprint
+├── selection_report.json              # Audit-only; no machine reads it
+├── seed_filers.csv                    # policy scope only: the normalized seed set
+├── locator_groups.parquet             # THE WORK ORDER: one row per unique document
+├── reserve_targets.parquet            # policy scope only: held-back locators
+├── expansion_metadata.json            # child plans only: parent/child lineage
+└── targets/form=<FORM>/data.parquet   # THE OCCURRENCES: one row per registrant
 ```
 
-### Schema Invariants Expected from Phase 2
-- `document_locator_key`: Unique string identifier: `sha256(accession_number + ":" + document_path)`.
-- `accession_number`: Canonical 20-character accession string (`0000320193-23-000106`).
-- `source_cik`: 10-digit zero-padded CIK string.
-- `form`: Normalized form type (`10-K`, `10-Q`, `8-K`, etc.).
-- `filing_date`: Date string `YYYY-MM-DD`.
-- `document_path`: Relative document path within accession (`form10k.htm`, `primary_doc.txt`).
-- `document_path_source`: Origin indicator (`primary_document`, `submission_bundle`).
-- `selection_weight`: Priority weight (from Phase 2 policy selection).
+There are two surfaces, and they are not interchangeable:
+
+- **`locator_groups.parquet`** is the work order. One row per unique
+  `document_locator_key`, already sorted. This is what Phase 2.5 fetches.
+- **`targets/form=<FORM>/data.parquet`** carries occurrences — a registrant's
+  claim on a document. Phase 2.5 needs these to attribute fetched content back
+  to registrants.
+
+### Schema invariants expected from Phase 2
+
+Verified against `edgar_sec/pipelines/filing_catalog/`, the Phase 2.5 contract
+tests, and `domain/filing_catalog/schemas.py`.
+
+On the work order (`locator_groups.parquet`):
+
+- `document_locator_key`: `sha256(accession + ":" + document_path)`. Unique
+  across the file and sorted. A document co-filed by two registrants appears
+  **once** — this is what lets Phase 2.5 fetch it once.
+- `representative_accession`: the canonical accession, **18 characters, no
+  dashes** (`000032019323000106`). It is not `accession_number`, and it is not
+  the 20-character dashed form.
+- `representative_cik`: 10-digit zero-padded CIK.
+- `document_path`: relative path within the accession.
+- `archive_url`: an HTTPS URL agreeing with the one Phase 1's engine would
+  build. Phase 2 rejects the bundle if any row disagrees.
+- Column count differs by scope: 8 for a deterministic plan, 18 for a policy
+  plan. The identity columns are common to both; do not hard-code either count.
+
+On the occurrences (`targets/form=<FORM>/data.parquet`):
+
+- The schema is **scope-specific and must not be assumed identical between
+  scopes.** A deterministic plan publishes the raw `TARGET_COLUMNS` (16 columns).
+  A policy plan publishes the feature-enriched occurrence rows it selected from,
+  which add the stratification dimensions. Both are pinned in
+  `tests/pipelines/filing_catalog/test_phase25_contract.py`.
+- What both scopes guarantee: `occurrence_id` and `document_locator_key` are
+  present, and every `document_locator_key` appears in the work order.
+- There is **no `selection_weight` column.** Priority lives in the policy
+  document embedded in `plan.json`, not as a per-row weight.
+
+Integrity: a published bundle records a `plan_fingerprint` in `plan.json`,
+covering the plan identity plus its selected locator keys. Phase 2 refuses to
+reuse a bundle whose work order no longer matches. Phase 2.5 should treat the
+bundle as immutable input and verify the fingerprint if it copies or caches it.
 
 ---
 
@@ -149,7 +194,7 @@ sequenceDiagram
     participant Merger as Snapshot Merger
 
     Operator->>CLI: run --plan-dir <plan_id> --workers 8
-    CLI->>Plan: Load target_plan.parquet and chunk boundaries (default 50 locators)
+    CLI->>Plan: Load locator_groups.parquet and chunk boundaries (default 50 locators)
     CLI->>WorkerPool: Dispatch chunks
     loop For Each Locator in Chunk
         WorkerPool->>Broker: Request document fetch / token lease

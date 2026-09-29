@@ -29,18 +29,22 @@ from pathlib import Path
 from typing import Any
 
 from edgar_sec.domain.filing_catalog.filters import normalize_suffixes
-from edgar_sec.engine.selection.policy import SelectionPolicy, compute_seed_fingerprint
-from edgar_sec.foundation.serialization import canonical_hash
+from edgar_sec.engine.selection.policy import (
+    SelectionPolicy,
+    compute_seed_fingerprint,
+    read_seed_filers_csv,
+)
 from edgar_sec.infra.storage.atomic import atomic_write_json
-from edgar_sec.infra.storage.duckdb import connect
-from edgar_sec.infra.storage.duckdb_catalog import sql_literal
 from edgar_sec.pipelines.filing_catalog.paths import (
     EXPANSION_METADATA_NAME,
-    LOCATOR_GROUPS_NAME,
     PLAN_FILE_NAME,
     resolve_filing_catalog_paths,
 )
 from edgar_sec.pipelines.filing_catalog.planner import SCOPE_POLICY, plan_policy
+from edgar_sec.pipelines.filing_catalog.publication import (
+    plan_fingerprint,
+    plan_locator_keys,
+)
 
 # Fields that legitimately differ between a parent and its child. Everything
 # else must match, or the two plans were built against different intents and
@@ -89,42 +93,6 @@ class ExpansionLineage:
             "added_locator_count": self.added_locator_count,
             "expansion_ratio": self.expansion_ratio,
         }
-
-
-def plan_fingerprint(plan_meta: dict[str, Any], locator_keys: list[str]) -> str:
-    """Content digest of a plan's identity and its selected locators.
-
-    Binds the fingerprint to the *selection*, not just the request, so two runs
-    that requested the same thing but selected differently do not share an id.
-    """
-    return canonical_hash(
-        {
-            "plan_id": plan_meta.get("plan_id"),
-            "catalog_id": plan_meta.get("catalog_id"),
-            "scope": plan_meta.get("scope"),
-            "locator_keys": sorted(locator_keys),
-        }
-    )[:32]
-
-
-def plan_locator_keys(plan_dir: str | Path) -> list[str]:
-    """Read a published plan's selected locator keys, in file order.
-
-    An in-memory DuckDB connection is used rather than a database file beside
-    the plan: v1 wrote ``parent_plan_read.duckdb`` into the plan directory and
-    deleted it afterwards, so an interrupted read left stray state inside an
-    immutable published bundle.
-    """
-    root = Path(plan_dir).resolve()
-    locator_path = root / LOCATOR_GROUPS_NAME
-    if not locator_path.is_file():
-        raise FileNotFoundError(f"parent plan locator groups not found: {locator_path}")
-    with connect() as con:
-        rows = con.execute(
-            f"SELECT document_locator_key FROM read_parquet("
-            f"{sql_literal(str(locator_path))}) ORDER BY document_locator_key"
-        ).fetchall()
-    return [str(row[0]) for row in rows]
 
 
 def _read_plan_json(plan_dir: Path) -> dict[str, Any]:
@@ -280,7 +248,15 @@ def expand(
         )
     parent_policy = SelectionPolicy.from_dict(embedded)
 
-    seed_fingerprint = compute_seed_fingerprint(seed_filers or {})
+    if seed_filers is None:
+        # An expansion must reproduce its parent's selection, so the seed set
+        # comes from the parent's published sidecar. Re-reading the configured
+        # CSV here would let a moved, edited, or deleted file change the
+        # mandatory filers of a child whose parent cannot be reproduced.
+        seed_filers = read_seed_filers_csv(
+            paths.plan_seed_filers(str(parent_meta.get("plan_id") or parent_root.name))
+        )
+    seed_fingerprint = compute_seed_fingerprint(seed_filers)
     _parent_meta, parent_keys, child_policy = prepare_parent(
         parent_root, parent_policy, target_units, catalog_id, seed_fingerprint
     )
@@ -343,8 +319,6 @@ __all__ = [
     "ExpansionLineage",
     "ParentPlanError",
     "expand",
-    "plan_fingerprint",
-    "plan_locator_keys",
     "prepare_parent",
     "read_expansion_metadata",
     "validate_parent",

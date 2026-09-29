@@ -12,10 +12,13 @@ from pathlib import Path
 import pytest
 
 from edgar_sec.engine.selection.inventory import (
+    InventoryStatistics,
+    OccurrenceOnlyDimensionError,
+    UnknownDimensionError,
+)
+from edgar_sec.engine.selection.policy import (
     LOCATOR_ONLY_DIMENSIONS,
     OCCURRENCE_ONLY_DIMENSIONS,
-    InventoryStatistics,
-    UnknownDimensionError,
 )
 from tests.engine.selection.conftest import make_locator, write_snapshot
 
@@ -76,8 +79,17 @@ def test_dimension_grain_sets_cover_the_vocabulary() -> None:
     """A dimension in neither set would silently count on the wrong table."""
 
     assert not (LOCATOR_ONLY_DIMENSIONS & OCCURRENCE_ONLY_DIMENSIONS)
-    assert "sic_code" in OCCURRENCE_ONLY_DIMENSIONS
     assert "era" in LOCATOR_ONLY_DIMENSIONS
+    # sic_code resolves at locator grain: the locator projection carries the
+    # representative registrant's sic_code, so counting it on the wider
+    # occurrence table is both slower and a different question. v1 classified
+    # it as occurrence-only, which made a composite filter on it look
+    # unmatchable.
+    assert "sic_code" in LOCATOR_ONLY_DIMENSIONS
+    assert "sic_code" not in OCCURRENCE_ONLY_DIMENSIONS
+    # accession_class is genuinely occurrence-only: it is derived per filing and
+    # the locator projection does not carry it.
+    assert "accession_class" in OCCURRENCE_ONLY_DIMENSIONS
 
 
 def test_floor_feasibility_reports_a_satisfiable_floor(
@@ -143,6 +155,21 @@ def test_composite_feasibility_rejects_an_unknown_dimension(
     with pytest.raises(UnknownDimensionError, match="unknown selection dimension"):
         inventory.check_composite_feasibility(
             [{"filters": {"erra": "modern"}, "min": 1}]
+        )
+
+
+def test_composite_feasibility_rejects_an_occurrence_only_dimension(
+    inventory: InventoryStatistics,
+) -> None:
+    """A count at the wrong grain would read as an undersupplied stratum.
+
+    The locator table has no ``accession_class`` column, so the honest answer to
+    "how many locators are high_4_plus" is that the question is not well posed
+    for a composite, not a zero.
+    """
+    with pytest.raises(OccurrenceOnlyDimensionError, match="no locator grain"):
+        inventory.check_composite_feasibility(
+            [{"filters": {"accession_class": "high_4_plus"}, "min": 1}]
         )
 
 

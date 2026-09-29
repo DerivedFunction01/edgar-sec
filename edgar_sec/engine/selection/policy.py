@@ -40,7 +40,7 @@ from edgar_sec.domain.filing_catalog.filters import (
     normalize_suffixes,
 )
 from edgar_sec.foundation.serialization import canonical_hash
-from edgar_sec.infra.storage.atomic import atomic_write_json
+from edgar_sec.infra.storage.atomic import atomic_write_json, atomic_write_text
 
 POLICY_SCHEMA_VERSION = "1.0"
 
@@ -68,6 +68,18 @@ KNOWN_DIMENSIONS = (
     "comparison_status",
     "company_name",
     "company_family",
+)
+
+# The two grains a dimension can be counted at, kept beside the vocabulary they
+# partition rather than inside the module that happens to count. Selection draws
+# candidates and composites from `locator_features`, so a composite stratum can
+# only name a locator-grain dimension; counting a per-filing dimension on the
+# locator table would read as an undersupplied stratum rather than a bad policy.
+# `sic_code` is locator-grain: the locator projection carries the representative
+# registrant's value. v1 classified it as occurrence-only.
+OCCURRENCE_ONLY_DIMENSIONS = frozenset({"accession_class"})
+LOCATOR_ONLY_DIMENSIONS = frozenset(
+    name for name in KNOWN_DIMENSIONS if name not in OCCURRENCE_ONLY_DIMENSIONS
 )
 
 _DIGEST_LENGTH = 32
@@ -154,12 +166,23 @@ class SeedFiler:
 
     Seed filers are registrants that must appear in the output regardless of
     quota arithmetic -- an anchor tenant, a known-good counterparty.
+
+    ``name`` is carried because the same manifest also defines company-family
+    boundaries, and family clustering is keyed on the registrant name as well as
+    the CIK. A seed set that cannot rebuild the family index would let a plan
+    depend on a second, unpinned file.
     """
 
     cik: str
+    name: str = ""
     seed_group: str = "default"
     coverage_tags: str = ""
     notes: str = ""
+
+
+# The CSV header a seed sidecar is written and read with. One owner for the
+# format, so the writer and the reader cannot drift.
+SEED_FILER_COLUMNS = ("cik", "name", "seed_group", "coverage_tags", "notes")
 
 
 def load_seed_cik_csv(path: str | Path) -> dict[str, SeedFiler]:
@@ -199,6 +222,7 @@ def load_seed_cik_csv(path: str | Path) -> dict[str, SeedFiler]:
 
             seed_map[normalized_cik] = SeedFiler(
                 cik=normalized_cik,
+                name=(row.get("name") or "").strip(),
                 seed_group=(row.get("seed_group") or "default").strip(),
                 coverage_tags=(row.get("coverage_tags") or "").strip(),
                 notes=(row.get("notes") or "").strip(),
@@ -206,15 +230,96 @@ def load_seed_cik_csv(path: str | Path) -> dict[str, SeedFiler]:
     return seed_map
 
 
+def resolve_seed_filers(policy: SelectionPolicy) -> dict[str, SeedFiler]:
+    """Return the seed set a policy configures, or an empty set when it has none.
+
+    A policy pointing at a file that does not exist is a normal state, not an
+    error: company-family data then falls back to the profile corpus and
+    selection runs without mandatory filers. The distinction is recorded in the
+    plan rather than raised, because an absent optional manifest is a different
+    situation from a malformed one -- a malformed manifest still raises, from
+    :func:`load_seed_cik_csv`.
+    """
+    path = Path(policy.seed_cik_path)
+    if not path.is_absolute() and not path.is_file():
+        candidate = Path.cwd() / path
+        if candidate.is_file():
+            path = candidate
+    if not path.is_file():
+        return {}
+    return load_seed_cik_csv(path)
+
+
+def write_seed_filers_csv(path: str | Path, seed_map: dict[str, SeedFiler]) -> None:
+    """Write the normalized seed set as the plan's immutable seed sidecar.
+
+    Sorted by CIK so the file is byte-stable for a given seed set, which is what
+    lets a published plan be reproduced from its own bundle.
+    """
+    destination = Path(path)
+    destination.parent.mkdir(parents=True, exist_ok=True)
+    lines = [",".join(SEED_FILER_COLUMNS)]
+    for entry in sorted(seed_map.values(), key=lambda item: item.cik):
+        lines.append(
+            ",".join(
+                _csv_field(value)
+                for value in (
+                    entry.cik,
+                    entry.name,
+                    entry.seed_group,
+                    entry.coverage_tags,
+                    entry.notes,
+                )
+            )
+        )
+    atomic_write_text(destination, "\n".join(lines) + "\n")
+
+
+def read_seed_filers_csv(path: str | Path) -> dict[str, SeedFiler]:
+    """Read a published seed sidecar back into a normalized seed set."""
+    source = Path(path)
+    if not source.is_file():
+        raise FileNotFoundError(f"plan seed sidecar not found: {source}")
+    with source.open("r", encoding="utf-8", newline="") as handle:
+        reader = csv.DictReader(handle)
+        missing = [
+            name for name in SEED_FILER_COLUMNS if name not in (reader.fieldnames or [])
+        ]
+        if missing:
+            raise ValueError(f"seed sidecar is missing columns {missing}: {source}")
+        seed_map: dict[str, SeedFiler] = {}
+        for row in reader:
+            cik = (row.get("cik") or "").strip()
+            if not cik:
+                continue
+            seed_map[cik] = SeedFiler(
+                cik=cik,
+                name=(row.get("name") or "").strip(),
+                seed_group=(row.get("seed_group") or "default").strip(),
+                coverage_tags=(row.get("coverage_tags") or "").strip(),
+                notes=(row.get("notes") or "").strip(),
+            )
+    return seed_map
+
+
+def _csv_field(value: str) -> str:
+    """Quote a seed field only when it would otherwise break the row."""
+    if any(character in value for character in (",", '"', "\n", "\r")):
+        return '"' + value.replace('"', '""') + '"'
+    return value
+
+
 def compute_seed_fingerprint(seed_map: dict[str, SeedFiler]) -> str:
     """Hash the seed set by value, not by file order.
 
     Sorting by CIK makes the fingerprint independent of row order in the CSV, so
     re-sorting the manifest does not invalidate every plan built from it, while
-    editing any seed's group or notes does.
+    editing any seed's name, group, or notes does. The name participates because
+    it decides company-family boundaries, which are part of what the seed set
+    produces.
     """
     rows = [
-        [entry.cik, entry.seed_group, entry.coverage_tags, entry.notes]
+        [entry.cik, entry.name, entry.seed_group, entry.coverage_tags, entry.notes]
         for entry in sorted(seed_map.values(), key=lambda item: item.cik)
     ]
     return _fingerprint(rows)
@@ -303,6 +408,26 @@ class SelectionPolicy:
         unknown -= set(KNOWN_DIMENSIONS)
         if unknown:
             raise ValueError(f"unknown policy dimensions: {sorted(unknown)}")
+
+        # A composite is selected from the locator table, so a stratum filtered
+        # on a dimension that only exists per filing cannot be matched. Policy
+        # construction accepts it -- the vocabulary check above cannot tell
+        # grains apart -- and the failure otherwise surfaces as a DuckDB Binder
+        # Error from deep inside selection, naming a column rather than the
+        # policy field that caused it. Refusing it here names both.
+        occurrence_only = sorted(
+            {
+                dimension
+                for composite in self.composites
+                for dimension in composite.get("filters", {})
+                if dimension in OCCURRENCE_ONLY_DIMENSIONS
+            }
+        )
+        if occurrence_only:
+            raise ValueError(
+                "composite strata select from locator_features, which has no "
+                f"column for {occurrence_only}; use a locator-grain dimension"
+            )
 
     def to_dict(self) -> dict[str, Any]:
         data = asdict(self)
@@ -488,6 +613,7 @@ __all__ = [
     "DEFAULT_DOCUMENT_SUFFIXES",
     "KNOWN_DIMENSIONS",
     "POLICY_SCHEMA_VERSION",
+    "SEED_FILER_COLUMNS",
     "EraBand",
     "SeedFiler",
     "SelectionPolicy",
@@ -497,4 +623,7 @@ __all__ = [
     "load_seed_cik_csv",
     "normalize_suffixes",
     "normalize_value",
+    "read_seed_filers_csv",
+    "resolve_seed_filers",
+    "write_seed_filers_csv",
 ]

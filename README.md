@@ -141,7 +141,8 @@ python run.py filing-catalog plan --catalog current --scope policy \
 python run.py filing-catalog plan --catalog current --scope policy --auto-policy
 
 # Scale a policy plan. The child retains 100% of the parent's locators.
-python run.py filing-catalog expand --parent-plan artifacts/filing_catalog/plans/<id> \
+# Plan bundles are direct children of filing_catalog/, not under plans/:
+python run.py filing-catalog expand --parent-plan artifacts/filing_catalog/<plan_id> \
     --target-units 10000
 
 # Published state, from manifests only (zero Parquet reads):
@@ -160,9 +161,10 @@ artifacts_root/filing_catalog/
 ├── snapshots/<digest>/                 # content-addressed feature snapshot
 │                                       #   (sibling of <catalog_id>/: paths.py
 │                                       #   sets snapshots_root = catalog_root)
-├── plans/<plan_id>/                    # immutable plan bundle
+├── <plan_id>/                          # immutable plan bundle
 │   ├── plan.json
 │   ├── selection_report.json
+│   ├── seed_filers.csv                 # policy scope only
 │   ├── locator_groups.parquet          # 8 cols (deterministic) or 18 (policy)
 │   ├── reserve_targets.parquet         # policy scope only
 │   ├── expansion_metadata.json         # child plans only
@@ -170,6 +172,14 @@ artifacts_root/filing_catalog/
 ├── policies/
 └── current/pointer.json
 ```
+
+Catalog snapshots and plan bundles are direct children of `filing_catalog/`:
+`paths.py` sets `snapshots_root` and `plans_root` to the same `catalog_root`, so
+there is no `plans/` directory. Both ids are 24-character content digests.
+`targets/form=<FORM>/data.parquet` is scope-specific: a deterministic plan
+publishes the raw `TARGET_COLUMNS`, a policy plan the feature-enriched
+occurrence rows it selected from. `locator_groups.parquet` is the scope-
+independent work order.
 
 **Selecting a balanced sample.** The one property that matters most: a corporate
 group with 400 subsidiaries files 400 documents, so a naive sample of filings is
@@ -336,7 +346,7 @@ All generated paths derive from the artifacts root; no module hardcodes them.
 {artifacts_root}/metadata/sources/{name}/{snapshot_id}/         # Immutable source snapshots
 
 {artifacts_root}/filing_catalog/<catalog_id>/               # Immutable catalog snapshot
-{artifacts_root}/filing_catalog/plans/<plan_id>/             # Immutable plan bundle
+{artifacts_root}/filing_catalog/<plan_id>/                  # Immutable plan bundle
 {artifacts_root}/filing_catalog/current/pointer.json        # Current catalog pointer
 {artifacts_root}/transient/filing_catalog/<catalog_id>/     # Staging; never published
 ```

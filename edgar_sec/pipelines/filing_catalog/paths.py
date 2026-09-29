@@ -7,8 +7,16 @@ transient/published split are the interface Phase 2.5 consumes:
 
     artifacts_root/filing_catalog/snapshots/<catalog_id>/     published, immutable
     artifacts_root/filing_catalog/snapshots/current/pointer.json
-    artifacts_root/filing_catalog/plans/<plan_id>/             published, immutable
+    artifacts_root/filing_catalog/snapshots/<feature_id>/     selection features, immutable
+    artifacts_root/filing_catalog/<plan_id>/                  published, immutable
     artifacts_root/transient/filing_catalog/<catalog_id>/      staging, never published
+
+Catalog snapshots and plan bundles are direct children of ``filing_catalog/``:
+``snapshots_root`` and ``plans_root`` are the same directory, so a catalog id
+and a plan id share one namespace. Both are 24-character content digests taken
+from different inputs, so the only way to collide is a hash collision. The
+``snapshots/`` subtree holds the catalog snapshots and the selection feature
+snapshots, which are content-addressed by different rules and never collide.
 
 No ``.artifacts`` literal appears here; the root always arrives from
 ``resolve_paths()``.
@@ -46,6 +54,10 @@ EXPANSION_METADATA_NAME = "expansion_metadata.json"
 # Reserve candidates: locator rows held back from the active set, so a
 # downstream acquirer has replacements without a second selection run.
 RESERVE_TARGETS_NAME = "reserve_targets.parquet"
+# The normalized seed set a policy plan was selected against. Published with the
+# plan so an expansion reproduces the parent's selection without re-reading a
+# mutable external CSV.
+SEED_FILERS_NAME = "seed_filers.csv"
 # Selection policies live beside the plans they produce.
 POLICIES_DIR_NAME = "policies"
 
@@ -146,6 +158,10 @@ class FilingCatalogPaths:
         """Parent/child lineage record written by Stage B expansion."""
         return self.plan_dir(plan_id) / EXPANSION_METADATA_NAME
 
+    def plan_seed_filers(self, plan_id: str) -> Path:
+        """The plan's normalized seed sidecar, published with a policy plan."""
+        return self.plan_dir(plan_id) / SEED_FILERS_NAME
+
     def transient_catalog_dir(self, catalog_id: str) -> Path:
         """Staging directory for one catalog, never published."""
         return transient_dir(
@@ -176,6 +192,7 @@ __all__ = [
     "POLICIES_DIR_NAME",
     "REQUIRED_PLAN_FILES",
     "RESERVE_TARGETS_NAME",
+    "SEED_FILERS_NAME",
     "SELECTION_REPORT_NAME",
     "SNAPSHOT_FILE_NAME",
     "SNAPSHOT_MANIFEST_NAME",

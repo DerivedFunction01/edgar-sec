@@ -61,19 +61,6 @@ def current_catalog_id(paths: FilingCatalogPaths) -> str | None:
     return str(catalog_id) if catalog_id else None
 
 
-def resolve_catalog_manifest(
-    paths: FilingCatalogPaths, catalog: str
-) -> dict[str, Any] | None:
-    """Resolve a catalog id, or the literal ``current``, to its manifest."""
-    if catalog == CURRENT_ALIAS:
-        catalog_id = current_catalog_id(paths)
-        if catalog_id is None:
-            return None
-    else:
-        catalog_id = safe_identifier(catalog)
-    return _read_json(paths.snapshot_manifest(catalog_id))
-
-
 def resolve_catalog_reference(paths: FilingCatalogPaths, catalog: str) -> str:
     """Resolve a catalog reference to a concrete catalog id.
 
@@ -252,7 +239,6 @@ __all__ = [
     "discover_plans",
     "discover_policies",
     "policy_search_dirs",
-    "resolve_catalog_manifest",
     "resolve_catalog_reference",
     "status",
 ]

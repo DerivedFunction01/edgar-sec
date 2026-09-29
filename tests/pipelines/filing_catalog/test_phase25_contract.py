@@ -24,19 +24,29 @@ The contract, in full:
   to attribute what came back.
 * A policy plan's ``reserve_targets.parquet`` is disjoint from the active work
   order, so an acquirer that ignores the reserve never double-fetches.
-* Either scope, deterministic or policy, satisfies the same contract, so
-  Phase 2.5 does not branch on scope.
+* The *work order* (``locator_groups.parquet``) satisfies the same contract for
+  either scope, so Phase 2.5 does not branch on scope to fetch.
+
+The occurrence partitions are deliberately scope-specific and are **not** part of
+that shared surface: a deterministic plan publishes the raw target rows while a
+policy plan publishes the feature-enriched occurrence rows it selected from. The
+two schemas are pinned separately, because a shared name like
+"the targets contract" is exactly what let a malformed policy schema ship
+unnoticed.
 """
 
 from __future__ import annotations
 
+import re
 from pathlib import Path
 from typing import Any
 
 import pyarrow.parquet as pq
 import pytest
 
+from edgar_sec.domain.filing_catalog.schemas import TARGET_COLUMNS
 from edgar_sec.domain.sec_urls import archives_url
+from edgar_sec.engine.selection.features import FeatureSnapshotBuilder
 from edgar_sec.engine.selection.policy import EraBand, SelectionPolicy
 from edgar_sec.pipelines.filing_catalog.paths import (
     LOCATOR_GROUPS_NAME,
@@ -60,6 +70,37 @@ FETCH_REQUIRED = (
 # A staged plan bundle built by either scope, for the contract tests to read.
 BUNDLES = ("deterministic", "policy")
 
+# DuckDB disambiguates a duplicate column by appending _1, _2, ... Naming that
+# pattern is what turns "the policy scope emits a stray column" from a silent
+# schema drift into a failed test.
+DEDUPED_COLUMN = re.compile(r"^(?P<name>.+)_(?P<ordinal>\d+)$")
+
+# Features the policy snapshot adds to a raw target row. Asserted by name so a
+# "fix" that strips the feature columns -- which would satisfy a narrower
+# equality check -- cannot pass.
+POLICY_FEATURE_COLUMNS = (
+    "form_family",
+    "era",
+    "size_band",
+    "lifecycle_class",
+    "active_years",
+    "anchor_status",
+    "comparison_status",
+    "accession_class",
+    "locator_class",
+)
+
+
+def _contract_policy() -> SelectionPolicy:
+    return SelectionPolicy(
+        corpus_id="contract_corpus",
+        forms=["10-K", "10-Q", "8-K", "10-K/A"],
+        era_bands=[EraBand(name="modern", start_year=2010)],
+        base_content_units=3,
+        reserve_size=1,
+        seed_cik_path="__absent__",
+    )
+
 
 def _publish(
     scope: str, catalog_id: str, artifacts_root: Path
@@ -67,17 +108,27 @@ def _publish(
     if scope == "deterministic":
         meta = plan(catalog_id, artifacts_root, forms=("10-K", "10-Q", "8-K", "10-K/A"))
     else:
-        policy = SelectionPolicy(
-            corpus_id="contract_corpus",
-            forms=["10-K", "10-Q", "8-K", "10-K/A"],
-            era_bands=[EraBand(name="modern", start_year=2010)],
-            base_content_units=3,
-            reserve_size=1,
-            seed_cik_path="__absent__",
-        )
-        meta = plan_policy(catalog_id, policy, artifacts_root)
+        meta = plan_policy(catalog_id, _contract_policy(), artifacts_root)
     plan_dir = resolve_filing_catalog_paths(artifacts_root).plan_dir(meta["plan_id"])
     return plan_dir, meta
+
+
+def _feature_occurrence_columns(catalog_id: str, artifacts_root: Path) -> list[str]:
+    """Resolve the occurrence schema the policy scope publishes from.
+
+    ``FeatureSnapshotBuilder`` is content-addressed and reuses an existing
+    snapshot, so this returns the schema the planner already wrote rather than
+    rebuilding it.
+    """
+    paths = resolve_filing_catalog_paths(artifacts_root)
+    builder = FeatureSnapshotBuilder(
+        target_root=paths.snapshot_targets_dir(catalog_id),
+        profile_path=paths.snapshot_profiles_file(catalog_id),
+        output_root=paths.catalog_root,
+        policy=_contract_policy(),
+    )
+    snapshot = builder.build()
+    return pq.read_schema(snapshot.occurrence_features).names
 
 
 def _plan_dir(
@@ -176,6 +227,79 @@ def test_occurrences_are_the_registrants_claim_not_the_document(
     assert total == meta["selected_rows"] == meta["active_targets_count"]
 
 
+def test_deterministic_targets_publish_the_raw_target_schema(
+    catalog_snapshot: tuple[dict[str, Any], Path],
+) -> None:
+    """The deterministic scope publishes exactly the declared target schema.
+
+    Equality, not containment: this is the one scope whose output is the raw
+    catalog target row, so an extra column here is unambiguously drift.
+    """
+    plan_dir, _ = _plan_dir("deterministic", catalog_snapshot)
+    for partition in sorted(plan_dir.glob("targets/form=*/data.parquet")):
+        names = pq.read_schema(partition).names
+        assert names == list(TARGET_COLUMNS), (
+            f"{partition.name} does not match TARGET_COLUMNS"
+        )
+
+
+def test_policy_targets_publish_the_feature_occurrence_schema(
+    catalog_snapshot: tuple[dict[str, Any], Path],
+) -> None:
+    """The policy scope publishes its feature snapshot's occurrence schema.
+
+    Policy plans are written from the joined feature snapshot, so the published
+    partition must equal that source schema exactly. The regression this pins is
+    a ``SELECT *`` over the join to the selected keys, which projected
+    ``document_locator_key`` a second time and shipped a spurious
+    ``document_locator_key_1`` column into the published bundle.
+    """
+    manifest, snapshot_dir = catalog_snapshot
+    artifacts_root = snapshot_dir.parent.parent
+    expected = _feature_occurrence_columns(str(manifest["catalog_id"]), artifacts_root)
+
+    plan_dir, _ = _plan_dir("policy", catalog_snapshot)
+    for partition in sorted(plan_dir.glob("targets/form=*/data.parquet")):
+        names = pq.read_schema(partition).names
+
+        deduped = [
+            f"{name} -> {match.group('name')}"
+            for name in names
+            if (match := DEDUPED_COLUMN.match(name)) and match.group("name") in names
+        ]
+        assert not deduped, (
+            f"{partition.name} repeats a column as a numbered copy: {deduped}"
+        )
+        assert names == expected, (
+            f"{partition.name} does not match the feature occurrence schema"
+        )
+        missing = [column for column in POLICY_FEATURE_COLUMNS if column not in names]
+        assert not missing, f"policy targets lost their feature columns: {missing}"
+
+
+def test_the_two_scopes_publish_deliberately_different_occurrences(
+    catalog_snapshot: tuple[dict[str, Any], Path],
+) -> None:
+    """The scopes are not interchangeable, and Phase 2.5 is told so.
+
+    A test named "either scope satisfies the same contract" is what let a
+    malformed policy schema pass review: it read one file. This one states the
+    difference outright so the distinction cannot be quietly collapsed again.
+    """
+    deterministic_plan, _ = _plan_dir("deterministic", catalog_snapshot)
+    policy_plan, _ = _plan_dir("policy", catalog_snapshot)
+
+    deterministic = pq.read_schema(
+        min(deterministic_plan.glob("targets/form=*/data.parquet"))
+    ).names
+    policy = pq.read_schema(min(policy_plan.glob("targets/form=*/data.parquet"))).names
+
+    assert deterministic == list(TARGET_COLUMNS)
+    assert set(TARGET_COLUMNS) < set(policy), (
+        "policy scope is expected to widen the raw target schema with features"
+    )
+
+
 def test_reserve_is_disjoint_from_the_work_order(
     catalog_snapshot: tuple[dict[str, Any], Path],
 ) -> None:
@@ -224,10 +348,16 @@ def test_plan_json_states_what_the_bundle_contains(
         assert published == expected
 
 
-def test_either_scope_satisfies_the_same_contract(
+def test_both_scopes_publish_the_same_work_order_contract(
     catalog_snapshot: tuple[dict[str, Any], Path],
 ) -> None:
-    """Phase 2.5 must not have to branch on which scope produced the plan."""
+    """The fetch work order is scope-independent; the occurrences are not.
+
+    Phase 2.5 must not branch on scope to *fetch*: both scopes publish the same
+    locator columns. Its attribution step does branch, and
+    ``test_the_two_scopes_publish_deliberately_different_occurrences`` is what
+    keeps that asymmetry visible.
+    """
     surfaces = set()
     for scope in BUNDLES:
         plan_dir, _ = _plan_dir(scope, catalog_snapshot)

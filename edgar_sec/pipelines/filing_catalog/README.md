@@ -196,7 +196,10 @@ Total 2,184 lines across 9 files: 8 modules plus a one-line `__init__.py`.
   refusals. `expansion.py`.
 - `plan_fingerprint` — a content digest binding a plan's identity to its
   *selection*, so two runs that requested the same thing but selected
-  differently do not share an id. `expansion.py`.
+  differently do not share a fingerprint. It covers the work order (the selected
+  locator keys), not the bytes of every Parquet in the bundle. Publication stamps
+  it into `plan.json` and `reuse_existing_plan` refuses a bundle whose locator
+  groups no longer match it. `publication.py`.
 - `plan_locator_keys` — read a published plan's locator keys via an in-memory
   DuckDB connection. `expansion.py`.
 - `read_expansion_metadata` — a plan's lineage record, or `{}` for a root plan.
@@ -224,8 +227,7 @@ Total 2,184 lines across 9 files: 8 modules plus a one-line `__init__.py`.
   `publication.py`.
 - `discover_catalogs`, `discover_plans`, `discover_policies` — manifest-only
   enumeration. `discovery.py`.
-- `current_catalog_id`, `resolve_catalog_reference`, `resolve_catalog_manifest`
-  — `current` resolution. `discovery.py`.
+- `current_catalog_id`, `resolve_catalog_reference` — `current` resolution.
 - `policy_search_dirs` — the directories a policy may live in. Exists because
   "the layout lives in Layer 4, so the engine cannot resolve it"
   (`discovery.py:163-171`). `discovery.py`.
@@ -303,9 +305,10 @@ other half of the contract, and it holds it strictly.
 │   ├── snapshot.manifest.json
 │   ├── company_profiles.parquet
 │   └── filing_targets/part-00000.parquet
-├── plans/{plan_id}/                          immutable plan bundle
+├── <plan_id>/                                immutable plan bundle
 │   ├── plan.json
 │   ├── selection_report.json
+│   ├── seed_filers.csv                       policy scope only
 │   ├── locator_groups.parquet                8 cols (deterministic) or 18 (policy)
 │   ├── reserve_targets.parquet               policy scope only
 │   ├── expansion_metadata.json               child plans only
@@ -319,6 +322,14 @@ other half of the contract, and it holds it strictly.
 
 {artifacts_root}/transient/filing_catalog/{catalog_id}/    staging, never published
 ```
+
+Catalog snapshots and plan bundles are **direct children of `filing_catalog/`**:
+`snapshots_root` and `plans_root` both return `catalog_root`, so a catalog id and
+a plan id share one namespace. Both are 24-character content digests taken from
+different inputs, so colliding them would take a hash collision. The
+`snapshots/` subtree holds the catalog snapshots and the selection feature
+snapshots; the two are content-addressed by different rules and never collide.
+`tests/pipelines/filing_catalog/test_paths.py` pins this.
 
 The feature snapshot is a *sibling* of the catalog directories, not a child:
 `FeatureSnapshotBuilder.snapshot_dir` returns
@@ -336,6 +347,28 @@ shape otherwise matches the v1 contract "because the artifact names and the
 transient/published split are the interface Phase 2.5 consumes"
 (`paths.py:1-15`).
 
+### Bundle contents are scope-specific
+
+`targets/form=<FORM>/data.parquet` is the *occurrence* surface, and its schema
+depends on the scope:
+
+- A **deterministic** plan writes the raw catalog target rows, exactly
+  `TARGET_COLUMNS`.
+- A **policy** plan writes the feature-enriched occurrence rows it selected from
+  (the `occurrence_features.parquet` schema, which adds the stratification
+  dimensions).
+
+`locator_groups.parquet` is the *work order* and is scope-independent in shape
+for the columns a consumer needs. The asymmetry is deliberate and pinned
+separately in `tests/pipelines/filing_catalog/test_phase25_contract.py`; the
+occurrences are not interchangeable between scopes.
+
+A published bundle also carries a `plan_fingerprint` in `plan.json`, stamped
+from the locator groups actually written. Reuse recomputes it, so a bundle whose
+work order was edited after publication is refused rather than served. The plan
+schema version is `1.1`; bundles published under `1.0` carry neither the
+fingerprint nor the seed sidecar and are not accepted as `1.1` bundles.
+
 ### `materialize`
 
 `resolve_source` picks the Phase 1 dataset (explicit path, explicit manifest, or
@@ -344,6 +377,13 @@ exactly matches, target directory not already published. The `catalog_id` is the
 Phase 1 `snapshot_id` when the handoff supplies one, otherwise
 `sha256([source_hash, SOURCE_SCHEMA_VERSION, SCHEMA_VERSION,
 FALLBACK_POLICY_VERSION])[:24]` (`catalog_job.py:75-81, 190-191`).
+
+An explicit `--source-manifest` names a Phase 1 *snapshot manifest*, not a
+Parquet file. `resolve_source` reads the manifest, resolves the payload from its
+`output_path`, and verifies that payload against the `artifact_sha256` the
+manifest records before any Parquet is read. A missing path, a missing required
+field, or a digest mismatch raises `CatalogError`. The manifest JSON itself is
+never handed to the Parquet reader.
 
 Inside one DuckDB connection it builds a temp view over the source and runs
 `build_profile_query` to write `company_profiles.parquet`; after `reclaim()` it
@@ -376,7 +416,51 @@ Both then write `plan.json` and `selection_report.json` via
 `write_plan_documents`, and the context manager publishes with `os.replace`. The
 plan document records `request_fingerprint` (a SHA-256 over the canonicalized
 request) alongside the derived `plan_id`, so a plan's identity and the request
-that produced it are both readable from the file.
+that produced it are both readable from the file. `write_plan_documents` also
+stamps `plan_fingerprint`, derived from the locator groups the bundle actually
+holds, and returns the stamped document so a later rewrite cannot drop it.
+
+### Advisory inventory feasibility
+
+A policy plan's `selection_report.json` carries an `inventory_feasibility` block
+computed from the feature snapshot after selection has run. It answers, per
+declared floor and composite, how many locators the corpus actually held
+(`available`) against how many the policy asked for (`required`), with the
+`deficit` and a flat `infeasible_floors` / `infeasible_composites` list for the
+ones that could not have been met. A policy declaring neither floors nor
+composites records `checked: false` rather than scanning for nothing.
+
+It is **advisory only** and cannot fail a fresh plan — a shortfall is still
+reported in `underfilled_floors` and the plan publishes. Two reasons, both
+recorded in `engine/selection/README.md`: the per-dimension counts are
+independent and do not subtract competition between floors, the family cap, or
+the seeds; and a floor can be satisfiable yet skipped once an earlier phase has
+claimed its candidates. A prediction is weaker evidence than a completed
+selection, so a diagnostic that disagrees with the result does not override it.
+
+A composite stratum naming an occurrence-grain dimension (`accession_class`) is
+refused at `SelectionPolicy` construction rather than reported, because the
+selector draws composites from `locator_features` and could never match it.
+
+### Seeded selection
+
+A policy plan's seed set is the policy's `seed_cik_path`, loaded once and
+normalized before anything consumes it. The same set feeds both the mandatory
+seed-filer phase in `DeficitSelector` and the `CompanyFamilyIndex` that defines
+family boundaries, so a plan and the features behind it cannot disagree about
+which registrants are mandatory.
+
+The normalized set is published with the plan as `seed_filers.csv` and its
+fingerprint participates in both the plan identity and the feature-snapshot
+cache identity. Editing the seed manifest therefore produces a different plan
+rather than silently reusing stale family assignments. A policy naming a
+manifest that does not exist is not an error: company-family data falls back to
+the profile corpus, an empty seed set is published, and `seed_filer_count` says
+so.
+
+Expansion reads the seed set from the **parent's published sidecar**, not from
+the configured CSV, so a child reproduces its parent's selection even if the
+original file has moved, been edited, or been deleted.
 
 ### `expand`
 
@@ -387,45 +471,57 @@ complaint about a policy field it was never going to have
 
 1. requires `selection_policy` to be embedded in the parent's `plan.json` —
    without it the plan "cannot be expanded" (`expansion.py:276-281`);
-2. refuses `target_units` smaller than the parent's selected locator count,
+2. reads the parent's `seed_filers.csv` sidecar when no seed set is supplied;
+3. refuses `target_units` smaller than the parent's selected locator count,
    because that is a contraction, not an expansion
    (`expansion.py:199-202`);
-3. derives the child policy with `dataclasses.replace`, setting
+4. derives the child policy with `dataclasses.replace`, setting
    `base_content_units=target_units`, `level = max(child level, parent level +
    1)`, and the parent's id and fingerprint (`expansion.py:204-213`);
-4. runs `validate_parent`, which compares the parent and child policies
+5. runs `validate_parent`, which compares the parent and child policies
    **field by field after removing the child-only fields**
    (`expansion.py:140-146, 179-184`);
-5. takes the suffix vocabulary from the parent, "so a child cannot silently
+6. takes the suffix vocabulary from the parent, "so a child cannot silently
    narrow the surface its parent committed to" (`expansion.py:288-292`);
-6. calls `plan_policy` with `parent_active_keys=parent_keys`;
-7. refuses to publish if the child's `unique_locators_count` fell short of
+7. calls `plan_policy` with `parent_active_keys=parent_keys`;
+8. refuses to publish if the child's `unique_locators_count` fell short of
    `target_units` (`expansion.py:302`, `validate_target` at 218-230);
-8. writes `expansion_metadata.json` and rewrites `plan.json` with the lineage
+9. writes `expansion_metadata.json` and rewrites `plan.json` with the lineage
    keys.
 
-Step 8 rewrites a file that is already published. The rewrite is atomic and
+Step 9 rewrites a file that is already published. The rewrite is atomic and
 "only ever gains keys, so a concurrent reader sees either the pre-lineage or the
-post-lineage document, never a partial one" (`expansion.py:330-339`). The
-reason is that the bundle must be published before the lineage is known, because
-the lineage is a function of the selection the plan just recorded
-(`expansion.py:331-337`).
+post-lineage document, never a partial one". The reason is that the bundle must
+be published before the lineage is known, because the lineage is a function of
+the selection the plan just recorded. The rewrite carries the stamped
+`plan_fingerprint` with it, so the child still verifies.
 
 ## Tests
 
-- `tests/pipelines/filing_catalog/test_catalog_job.py` (297 loc, 24 tests) — the
-  three guards, both publication modes, the pointer rule.
-- `tests/pipelines/filing_catalog/test_planner.py` (307 loc, 22) — the four
-  filters, form discovery, the zero-row plan, the locator projection.
-- `tests/pipelines/filing_catalog/test_policy_planner.py` (303 loc, 17) — the
-  quota profile, the 18-column projection, the reserve pool.
-- `tests/pipelines/filing_catalog/test_expansion.py` (315 loc, 20) — the
-  100%-retention invariant and every parent refusal.
-- `tests/pipelines/filing_catalog/test_publication.py` (218 loc, 20) — plan
-  identity, completeness, reuse-versus-conflict, staging.
-- `tests/pipelines/filing_catalog/test_discovery.py` (177 loc, 14) —
+One test file per source module, per `AGENTS.md` §6. The two files that were
+previously missing now exist: `test_paths.py` pins the artifact layout and
+`test_operator.py` pins the wizard.
+
+- `tests/pipelines/filing_catalog/test_catalog_job.py` — the three guards, both
+  publication modes, the pointer rule, and manifest source resolution.
+- `tests/pipelines/filing_catalog/test_planner.py` — the four filters, form
+  discovery, the zero-row plan, the locator projection.
+- `tests/pipelines/filing_catalog/test_policy_planner.py` — the quota profile,
+  the 18-column projection, the reserve pool, the pinned seed set, and an
+  independent-root rebuild comparison.
+- `tests/pipelines/filing_catalog/test_expansion.py` — the 100%-retention
+  invariant, every parent refusal, and seeded expansion from the sidecar.
+- `tests/pipelines/filing_catalog/test_publication.py` — plan identity,
+  completeness, reuse-versus-conflict, staging, the selection fingerprint.
+- `tests/pipelines/filing_catalog/test_phase25_contract.py` — the Phase 2.5
+  entry contract, with the per-scope occurrence schemas pinned separately.
+- `tests/pipelines/filing_catalog/test_paths.py` — the artifact layout, the
+  shared catalog/plan namespace, and identifier safety.
+- `tests/pipelines/filing_catalog/test_operator.py` — the three menu actions
+  and their delegation to the CLI.
+- `tests/pipelines/filing_catalog/test_discovery.py` —
   manifest-only enumeration and `current` resolution.
-- `tests/pipelines/filing_catalog/test_cli.py` (270 loc, 25) — flags, the
+- `tests/pipelines/filing_catalog/test_cli.py` — flags, the
   policy requirement, exit codes, the stdout/stderr split.
 - `tests/pipelines/filing_catalog/test_catalog_fixtures.py` (235 loc, 20) — the
   DuckDB catalog materialization against committed fixtures.
@@ -456,8 +552,50 @@ rather than `parents[N]` arithmetic.
   the gate if anything under this package reaches `edgar_sec.infra.sec_http`.
 - **No operator action for `expand`, and none for `plan --scope policy`.** The
   wizard offers status, materialize, and deterministic plan
-  (`operator.py:68-74`). Policy-scoped planning and expansion are CLI-only,
-  because both need arguments an interactive prompt has no vocabulary for.
+  (`operator.py:68-80`). Policy-scoped planning and expansion are CLI-only,
+  because both need arguments an interactive prompt has no vocabulary for. v1
+  offered five menu actions; this is a deliberate 5→3 reduction, not a partial
+  port. `test_operator.py` asserts the three-action contract as the current
+  shape, not as v1 parity.
+- **`selection_report.json` is an audit artifact; `inventory_feasibility` inside
+  it is computed, not consumed.** No production machine reads either. The
+  selection figures and the feasibility prediction exist for a human reviewing a
+  run: "this policy asked for 40 filings in an era the corpus does not have" is
+  the question the advisory answers, and `expansion_metadata.json`'s
+  `added_locator_count` and `expansion_ratio` answer "how much did this expand".
+  A diagnostic that cannot be read by a machine is not a regression, and no
+  consumer was added to make the file look load-bearing.
+- **`inventory.py` is no longer unwired, but it is still not a gate.**
+  `plan_policy` calls it after selection and publishes an `inventory_feasibility`
+  block in `selection_report.json`; see `engine/selection/README.md` for why the
+  result cannot fail a plan. Nothing consults it before or during a run, so
+  feasibility is still discovered rather than predicted for a *fresh* plan — the
+  advisory explains a shortfall that has already happened.
+- **The selection fingerprint covers the work order, not every bundle byte.**
+  `plan_fingerprint` hashes the plan identity plus the selected locator keys.
+  A digest over all Parquet payloads would make publication proportional to the
+  size of the plan being published, which is the opposite of what the
+  non-regression rules want. Per-file digests for the target shards are recorded
+  in the *catalog* manifest, not the plan.
+- **Catalog references accept an id or `current`, not a path.** v1's
+  `resolve_catalog_manifests` accepted seven input forms, including a path to a
+  `snapshot.manifest.json`, a directory containing one, and — as a last resort —
+  an `rglob` across the whole artifacts root taking the first directory-name
+  match. That last branch made a bare id resolve against whatever the filesystem
+  enumerated first, with no error when the match was ambiguous. v2 resolves
+  against a configured root, which is stricter and correct. The cost is that a
+  snapshot outside the configured `--artifacts` root cannot be targeted by path;
+  a user with one should point the root at it instead.
+- **A catalog manifest is not returned to callers.** v1's resolver returned
+  `(catalog_id, manifests)`, where `manifests` was a descriptor list of every
+  `filing_targets/part-*.parquet` with row counts. v2 splits that: the planner
+  globs the target files itself (`_catalog_target_files`) and reads the profile
+  file by path, and `discover_catalogs` reads manifests in its own listing loop.
+  The descriptor list was never ported because nothing consumes it.
+- **Catalog snapshots and plan bundles are siblings, not a tree.** They are
+  both 24-character content digests, so a collision needs a hash collision, but
+  there is no separate `plans/` namespace to keep them apart. This is the
+  current layout and is pinned in `test_paths.py`.
 - **Deterministic planning has no date filter at all.** Not a missing flag: a
   date argument raises `TypeError` at the signature, "rather than being ignored"
   (`planner.py:1-7`). Date slicing belongs to the Stage B selection engine, and

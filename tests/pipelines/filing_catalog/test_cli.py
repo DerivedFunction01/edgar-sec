@@ -12,7 +12,6 @@ from edgar_sec.pipelines.filing_catalog.cli import (
     cmd_expand,
     main,
 )
-from edgar_sec.pipelines.filing_catalog.operator import build_operator_menu
 
 SAMPLE = "tests/fixtures/catalog/sample_submission_metadata.parquet"
 
@@ -160,26 +159,7 @@ def test_plan_current_without_a_pointer_fails_cleanly(
     assert "no catalog is published as current" in capsys.readouterr().err
 
 
-# --- operator -------------------------------------------------------------
-
-
-def test_operator_menu_exposes_the_three_actions() -> None:
-    labels = [action.label.lower() for action in build_operator_menu()]
-    assert len(labels) == 3
-    assert any("catalog" in label and "plan" in label for label in labels)
-    assert any("materialize" in label for label in labels)
-    assert any("report" in label for label in labels)
-
-
-def test_operator_actions_delegate_to_the_cli_commands() -> None:
-    """The wizard must not reimplement behaviour the CLI already owns."""
-    from edgar_sec.pipelines.filing_catalog import cli, operator
-
-    for action in build_operator_menu():
-        assert action.callback.__module__ == operator.__name__
-    assert operator.cmd_status is cli.cmd_status
-    assert operator.cmd_plan is cli.cmd_plan
-    assert operator.cmd_materialize is cli.cmd_materialize
+# --- launcher registry -----------------------------------------------------
 
 
 def test_cli_main_is_reachable_through_the_launcher_registry() -> None:

@@ -21,17 +21,25 @@ from contextlib import contextmanager
 from pathlib import Path
 from typing import Any
 
+from edgar_sec.domain.filing_catalog.schemas import SCOPE_POLICY
+from edgar_sec.foundation.serialization import canonical_hash
 from edgar_sec.infra.storage.atomic import atomic_write_json
+from edgar_sec.infra.storage.duckdb import connect
+from edgar_sec.infra.storage.duckdb_catalog import sql_literal
 from edgar_sec.pipelines.filing_catalog.paths import (
+    LOCATOR_GROUPS_NAME,
     PLAN_FILE_NAME,
     PLAN_TARGETS_DIR_NAME,
     REQUIRED_PLAN_FILES,
+    SEED_FILERS_NAME,
     SELECTION_REPORT_NAME,
     form_partition_name,
 )
 
-# Bump when the plan document or selection report changes shape.
-TARGET_PLAN_SCHEMA_VERSION = "1.0"
+# Bump when the plan document or selection report changes shape. 1.1 added the
+# pinned seed sidecar and the selection fingerprint, both of which a reused
+# bundle must now carry, so bundles published under 1.0 are not reusable as 1.1.
+TARGET_PLAN_SCHEMA_VERSION = "1.1"
 
 
 class PlanConflictError(RuntimeError):
@@ -48,7 +56,48 @@ def plan_identity(payload: dict[str, Any]) -> str:
     return hashlib.sha256(canonical.encode("utf-8")).hexdigest()[:24]
 
 
-def plan_bundle_complete(plan_dir: Path) -> bool:
+def plan_locator_keys(plan_dir: str | Path) -> list[str]:
+    """Read a published plan's selected locator keys, in file order.
+
+    An in-memory DuckDB connection is used rather than a database file beside
+    the plan: v1 wrote ``parent_plan_read.duckdb`` into the plan directory and
+    deleted it afterwards, so an interrupted read left stray state inside an
+    immutable published bundle.
+    """
+    root = Path(plan_dir).resolve()
+    locator_path = root / LOCATOR_GROUPS_NAME
+    if not locator_path.is_file():
+        raise FileNotFoundError(f"plan locator groups not found: {locator_path}")
+    with connect() as con:
+        rows = con.execute(
+            f"SELECT document_locator_key FROM read_parquet("
+            f"{sql_literal(str(locator_path))}) ORDER BY document_locator_key"
+        ).fetchall()
+    return [str(row[0]) for row in rows]
+
+
+def plan_fingerprint(plan_meta: dict[str, Any], locator_keys: list[str]) -> str:
+    """Content digest of a plan's identity and its selected locators.
+
+    Binds the fingerprint to the *selection*, not just the request, so two runs
+    that requested the same thing but selected differently do not share one.
+
+    The guarantee is deliberately narrow: this covers the work order -- the set
+    of documents the plan says to fetch -- and not the bytes of every Parquet in
+    the bundle. A digest over every file would make publication proportional to
+    the size of the plan it is publishing.
+    """
+    return canonical_hash(
+        {
+            "plan_id": plan_meta.get("plan_id"),
+            "catalog_id": plan_meta.get("catalog_id"),
+            "scope": plan_meta.get("scope"),
+            "locator_keys": sorted(locator_keys),
+        }
+    )[:32]
+
+
+def plan_bundle_complete(plan_dir: Path, scope: str = "") -> bool:
     """Report whether a plan bundle holds every required published artifact.
 
     Completeness is checked against the plan's own recorded counts rather than
@@ -56,8 +105,13 @@ def plan_bundle_complete(plan_dir: Path) -> bool:
     which reports a legitimately empty plan (every filter excluded everything) as
     incomplete and therefore unreusable. Matching the on-disk partition set
     against ``plan.json`` also catches a bundle that lost a shard.
+
+    A policy plan additionally owns the seed sidecar it was selected against, so
+    a bundle missing it cannot reproduce its own selection and is not complete.
     """
     if not all((plan_dir / name).is_file() for name in REQUIRED_PLAN_FILES):
+        return False
+    if scope == SCOPE_POLICY and not (plan_dir / SEED_FILERS_NAME).is_file():
         return False
     targets_dir = plan_dir / PLAN_TARGETS_DIR_NAME
     if not targets_dir.is_dir():
@@ -87,6 +141,33 @@ def _load_plan_json(plan_dir: Path) -> dict[str, Any] | None:
         return None
 
 
+def _verify_selection_fingerprint(plan_dir: Path, published: dict[str, Any]) -> None:
+    """Refuse a bundle whose work order no longer matches its recorded selection.
+
+    A plan is reused rather than rebuilt whenever the request is unchanged, so
+    the published locator list is trusted on the strength of the fingerprint
+    written with it. Without this check a bundle whose ``locator_groups.parquet``
+    was edited or truncated still passes every structural test, and the next
+    acquirer fetches a work order the plan never committed to.
+
+    A bundle that records no fingerprint is refused rather than accepted: it was
+    published under a contract that did not carry one, and silently recomputing
+    it here would bless an unverifiable artifact.
+    """
+    recorded = str(published.get("plan_fingerprint") or "")
+    if not recorded:
+        raise PlanConflictError(
+            f"plan bundle at {plan_dir} records no selection fingerprint; "
+            "remove it and rerun to republish under the current plan contract"
+        )
+    actual = plan_fingerprint(published, plan_locator_keys(plan_dir))
+    if actual != recorded:
+        raise PlanConflictError(
+            f"plan bundle at {plan_dir} no longer matches its selection fingerprint "
+            f"(recorded {recorded}, found {actual}); remove it and republish"
+        )
+
+
 def reuse_existing_plan(
     final_dir: Path,
     plan_id: str,
@@ -104,20 +185,26 @@ def reuse_existing_plan(
     if not final_dir.exists():
         return None
 
-    if not plan_bundle_complete(final_dir):
-        raise PlanConflictError(
-            f"incomplete plan bundle at {final_dir}; remove it and rerun to republish"
-        )
-
     published = _load_plan_json(final_dir)
     if published is None:
         raise PlanConflictError(f"plan bundle at {final_dir} has no readable plan.json")
 
+    # Identity before completeness: a directory holding a different request is
+    # a request conflict whether or not it is also incomplete, and reporting it
+    # as merely incomplete would send an operator to rebuild a bundle that can
+    # never satisfy this request.
     if published.get("plan_id") != plan_id or published.get("scope") != scope:
         raise PlanConflictError(
             f"plan bundle at {final_dir} describes a different request; remove "
             "it or publish under a different plan id"
         )
+
+    if not plan_bundle_complete(final_dir, scope):
+        raise PlanConflictError(
+            f"incomplete plan bundle at {final_dir}; remove it and rerun to republish"
+        )
+
+    _verify_selection_fingerprint(final_dir, published)
 
     if expected_meta:
         mismatched = {
@@ -173,17 +260,34 @@ def write_plan_documents(
     staging_dir: Path,
     plan_meta: dict[str, Any],
     selection_report: dict[str, Any],
-) -> None:
-    """Write the two required JSON documents of a plan bundle."""
-    atomic_write_json(staging_dir / PLAN_FILE_NAME, plan_meta, indent=2)
+) -> dict[str, Any]:
+    """Write the two required JSON documents of a plan bundle.
+
+    The selection fingerprint is stamped here, from the locator groups the
+    bundle already holds, so it describes what was actually published rather
+    than what the caller intended to publish. Stamping at one point also means
+    no scope can forget it.
+
+    Returns the stamped document, because a caller that later rewrites
+    ``plan.json`` -- expansion does, to add lineage -- must carry the stamp with
+    it or the bundle stops verifying.
+    """
+    stamped = dict(plan_meta)
+    stamped["plan_fingerprint"] = plan_fingerprint(
+        stamped, plan_locator_keys(staging_dir)
+    )
+    atomic_write_json(staging_dir / PLAN_FILE_NAME, stamped, indent=2)
     atomic_write_json(staging_dir / SELECTION_REPORT_NAME, selection_report, indent=2)
+    return stamped
 
 
 __all__ = [
     "TARGET_PLAN_SCHEMA_VERSION",
     "PlanConflictError",
     "plan_bundle_complete",
+    "plan_fingerprint",
     "plan_identity",
+    "plan_locator_keys",
     "publish_plan_bundle",
     "reuse_existing_plan",
     "staged_plan_bundle",

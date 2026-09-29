@@ -45,7 +45,12 @@ from edgar_sec.domain.forms.families import FORM_FAMILY_SUFFIXES
 from edgar_sec.domain.sec_urls import normalize_cik
 from edgar_sec.domain.taxonomy.jurisdictions import STATE_POSTAL_CODES
 from edgar_sec.engine.company_family.clustering import CompanyFamilyIndex
-from edgar_sec.engine.selection.policy import EraBand, SelectionPolicy
+from edgar_sec.engine.selection.policy import (
+    EraBand,
+    SeedFiler,
+    SelectionPolicy,
+    compute_seed_fingerprint,
+)
 from edgar_sec.foundation.serialization import canonical_hash
 from edgar_sec.infra.storage.duckdb import connect
 from edgar_sec.infra.storage.duckdb_catalog import copy_query_to_parquet, sql_literal
@@ -163,6 +168,7 @@ class FeatureSnapshotBuilder:
         output_root: str | Path,
         policy: SelectionPolicy,
         *,
+        seed_filers: dict[str, SeedFiler] | None = None,
         row_group_size: int = DEFAULT_ROW_GROUP_SIZE,
         gap_years: int = DEFAULT_GAP_YEARS,
         cessation_grace_years: int = DEFAULT_CESSATION_GRACE_YEARS,
@@ -179,6 +185,10 @@ class FeatureSnapshotBuilder:
         self.profile_path = Path(profile_path).resolve()
         self.output_root = Path(output_root).resolve()
         self.policy = policy
+        # The seed set is passed in already normalized rather than re-read from
+        # the policy's path, so the snapshot is a function of the pinned input
+        # the caller published, not of whatever the file holds at build time.
+        self.seed_filers = dict(seed_filers or {})
         self.row_group_size = row_group_size
         self.options = _build_options(
             gap_years, cessation_grace_years, stub_size_threshold
@@ -194,6 +204,7 @@ class FeatureSnapshotBuilder:
             "forms": sorted(forms),
             "options": self.options,
             "policy_fingerprint": self.policy.policy_fingerprint,
+            "seed_fingerprint": compute_seed_fingerprint(self.seed_filers),
         }
         return self.output_root / "snapshots" / canonical_hash(payload)[:32]
 
@@ -359,19 +370,19 @@ class FeatureSnapshotBuilder:
     def _family_index(
         self, profile_records: list[tuple[str, str]]
     ) -> CompanyFamilyIndex:
-        """Prefer the policy's seed manifest; fall back to the profile corpus.
+        """Prefer the pinned seed manifest; fall back to the profile corpus.
 
-        The seed file, when present, is an explicit statement of which
-        registrants define family boundaries, so it wins over deriving them from
-        whatever happens to be in the catalog.
+        The seed set is an explicit statement of which registrants define family
+        boundaries, so it wins over deriving them from whatever happens to be in
+        the catalog. It is read from the caller's normalized seed map rather than
+        from disk, so a snapshot can never be built from a different seed set
+        than the one its plan published.
         """
-        seed_path = Path(self.policy.seed_cik_path)
-        if not seed_path.is_absolute() and not seed_path.is_file():
-            candidate = Path.cwd() / seed_path
-            if candidate.is_file():
-                seed_path = candidate
-        if seed_path.is_file():
-            return CompanyFamilyIndex.build_from_seed(seed_path)
+        records = [
+            (entry.cik, entry.name) for entry in self.seed_filers.values() if entry.name
+        ]
+        if records:
+            return CompanyFamilyIndex.build_from_records(records)
         return CompanyFamilyIndex.build_from_records(profile_records)
 
     def _write_lifecycle(self, con: object, union_sql: str, staging_dir: Path) -> int:

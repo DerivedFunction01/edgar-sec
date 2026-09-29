@@ -32,11 +32,11 @@ The package splits on the pure/impure seam, the same split
 
 | Module | Responsibility |
 | :--- | :--- |
-| `policy.py` | Pure. The declarative `SelectionPolicy` (27 fields), `EraBand` with half-open year and date bounds, `SeedFiler`, `KNOWN_DIMENSIONS` (the 21 names a policy may stratify on), policy JSON serialization, `load_seed_cik_csv`, `compute_seed_fingerprint`, `auto_generate_policy`, `discover_policies`, `normalize_value`. |
+| `policy.py` | Pure. The declarative `SelectionPolicy` (27 fields), `EraBand` with half-open year and date bounds, `SeedFiler` (carrying `cik`, `name`, `seed_group`, `coverage_tags`, `notes`), `KNOWN_DIMENSIONS` (the 21 names a policy may stratify on) and the two grain sets `LOCATOR_ONLY_DIMENSIONS` / `OCCURRENCE_ONLY_DIMENSIONS` that partition it, policy JSON serialization, the seed manifest vocabulary: `SEED_FILER_COLUMNS`, `load_seed_cik_csv`, `resolve_seed_filers`, `read_seed_filers_csv`, `write_seed_filers_csv`, plus `compute_seed_fingerprint`, `auto_generate_policy`, `discover_policies`, `normalize_value`. |
 | `features.py` | I/O. `FeatureSnapshotBuilder` materialises the snapshot; the pure functions it wraps are `form_family`, `form_family_sql`, and `era_of`. Also `SnapshotPaths`, `FORM_FAMILY_SUFFIXES`, and the three tunables `DEFAULT_GAP_YEARS`, `DEFAULT_CESSATION_GRACE_YEARS`, `DEFAULT_STUB_SIZE_THRESHOLD`. |
 | `source.py` | I/O. `CandidateSource` is the only component that opens a DuckDB connection, and it returns bounded pages. `CandidateFilters` builds the policy-level predicate once. `POOL_COLUMNS` (25) and `OCCURRENCE_COLUMNS` (26) are the two projections. |
 | `selector.py` | The five-phase deficit fill: `DeficitSelector`, `SelectionResult`, `classification_signature`, `CLASSIFICATION_DIMENSIONS`, `DEFAULT_RESERVE_MAX_PAGES`. |
-| `inventory.py` | Feasibility statistics. `InventoryStatistics.value_counts`, `check_floor_feasibility`, `check_composite_feasibility`; `LOCATOR_ONLY_DIMENSIONS` and `OCCURRENCE_ONLY_DIMENSIONS` say which grain a dimension is counted at. |
+| `inventory.py` | Feasibility statistics, used to build the advisory `inventory_feasibility` block in a policy plan's `selection_report.json`. `InventoryStatistics.value_counts`, `check_floor_feasibility`, `check_composite_feasibility`; `LOCATOR_TABLE` / `OCCURRENCE_TABLE` name the snapshot files it counts. |
 
 ## The five phases
 
@@ -175,17 +175,20 @@ The order *is* the design:
   the cap. `edgar_sec/engine/selection/selector.py:73` and `:47`.
 - `DEFAULT_RESERVE_MAX_PAGES` — `100`. `edgar_sec/engine/selection/selector.py:58`.
 - `InventoryStatistics` — `value_counts`, `check_floor_feasibility`,
-  `check_composite_feasibility`. `edgar_sec/engine/selection/inventory.py:61`.
+  `check_composite_feasibility`. `edgar_sec/engine/selection/inventory.py`.
 - `UnknownDimensionError` — a statistic requested for a dimension outside the policy vocabulary.
-  `edgar_sec/engine/selection/inventory.py:57`.
+- `OccurrenceOnlyDimensionError` — a composite stratum filtered on a dimension with no
+  locator grain. `SelectionPolicy` refuses this at construction, so the class is the
+  direct-API guard on the same rule. `edgar_sec/engine/selection/inventory.py`.
 - `LOCATOR_ONLY_DIMENSIONS` / `OCCURRENCE_ONLY_DIMENSIONS` — the grain each dimension is counted
-  at. Counting an occurrence-only dimension on the locator table would return zero rows silently
-  rather than error. `edgar_sec/engine/selection/inventory.py:28` and `:54`.
+  at. A composite stratum selects from `locator_features`, so naming an occurrence-only
+  dimension there is a policy error rather than an undersupplied stratum.
+  `edgar_sec/engine/selection/policy.py`.
 
 ## Tests
 
 - `tests/engine/selection/test_features.py` (276 lines)
-- `tests/engine/selection/test_inventory.py` (162 lines)
+- `tests/engine/selection/test_inventory.py` (171 lines)
 - `tests/engine/selection/test_policy.py` (330 lines)
 - `tests/engine/selection/test_selector.py` (393 lines)
 - `tests/engine/selection/test_source.py` (286 lines)
@@ -209,7 +212,31 @@ The order *is* the design:
   (`selector.py:378-398`).
 - **No rebalancing pass.** Once `_select_floors` exhausts its rounds the underfilled floors are
   recorded and left underfilled; nothing swaps a selected candidate out to make room.
-  `check_floor_feasibility` in `inventory.py` is the tool for predicting this *before* a run.
+- **Feasibility is advisory, never a gate.** `check_floor_feasibility` and
+  `check_composite_feasibility` run after selection and publish an
+  `inventory_feasibility` block in the plan's `selection_report.json`, but they
+  cannot fail a fresh plan: a shortfall is still reported in `underfilled_floors`
+  rather than refused. Two reasons. The per-dimension counts are independent, so
+  they do not subtract competition between floors, the family cap, or the seeds
+  — a set of individually feasible floors can still underfill together. And a
+  floor can be satisfiable yet skipped once a cap or an earlier phase has claimed
+  the candidates. A prediction is weaker evidence than a completed selection.
+  Making it a gate would need a joint model of the quotas, not per-dimension counts.
+- **A composite stratum cannot name an occurrence-grain dimension.** Composites
+  are drawn from `locator_features`, which carries no `accession_class` column.
+  `SelectionPolicy` construction refuses such a policy, naming the offending
+  field, rather than letting it fail as a DuckDB Binder Error from inside
+  selection. `OCCURRENCE_ONLY_DIMENSIONS` currently holds only
+  `accession_class`: `sic_code` resolves at locator grain, because the locator
+  projection carries the representative registrant's value. v1 classified
+  `sic_code` as occurrence-only, which sent its counts to the wider table and
+  made a composite filter on it look unmatchable.
+- **The seed set is pinned by the plan, not by the policy path.** A policy names
+  `seed_cik_path`, but `FeatureSnapshotBuilder` receives the already-normalized seed map
+  and never re-reads the file. This means a builder constructed directly with a
+  `seed_cik_path` set and no `seed_filers` will fall back to profile-derived company
+  families, ignoring the configured file. The pipeline always resolves the seed set first
+  (`resolve_seed_filers`) and passes it in, so this only affects direct API use.
 - **v1's form-family alias registry has no v2 home here.** v1's
   `defs/sec_forms/families.py` carried `FORM_FAMILY_ALIASES` (30 entries: `10-K405`, `10-KSB`,
   `10KSB40`, `10-KT`, `10KT405`, `10-QSB`, `10-QT`, `8-K12B`, `8-K12G3`, `8-K15D5`,

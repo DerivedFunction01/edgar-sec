@@ -27,6 +27,14 @@ PROFILE_SCHEMA_VERSION = "1.0.0"
 PATH_SOURCE_PRIMARY = "primary_document"
 PATH_SOURCE_BUNDLE = "submission_bundle"
 
+# The two planning scopes. A deterministic plan slices a catalog on filters; a
+# policy plan fills a quota profile. They publish deliberately different
+# occurrence schemas, so a scope is part of every contract that reads a bundle.
+# They live here rather than in the planner because both the planner and the
+# publication layer must name them.
+SCOPE_DETERMINISTIC = "deterministic"
+SCOPE_POLICY = "policy"
+
 # The 22 registrant-level columns borrowed from Phase 1, in projection order,
 # followed by the catalog-owned profile version column.
 PROFILE_COLUMNS = (
@@ -162,6 +170,8 @@ __all__ = [
     "PROFILE_SCHEMA",
     "PROFILE_SCHEMA_VERSION",
     "SCHEMA_VERSION",
+    "SCOPE_DETERMINISTIC",
+    "SCOPE_POLICY",
     "SUBMISSION_METADATA_SCHEMA",
     "TARGET_COLUMNS",
     "TARGET_SCHEMA",

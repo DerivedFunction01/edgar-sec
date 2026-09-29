@@ -191,7 +191,8 @@ Once domain entities, normalizers, and storage repositories are decoupled, **wha
   - `checkpoints.py` & `augmentation.py`: Resumability and delta tracking.
   - `merger.py`: Merging worker Parquets into `submission_metadata.parquet`.
 - **`pipelines/filing_catalog/`** (Was Phase 02):
-  - `planner.py`: Generates `target_plan.parquet` from the catalog.
+  - `planner.py`: Publishes a plan bundle — `locator_groups.parquet` (the work
+    order) plus `targets/form=*/data.parquet` (the occurrences) — from the catalog.
   - `selection_policy.py`: Policy filtering rules (e.g. latest 10-K, annual only).
   - `catalog_job.py`: Drives DuckDB unnest job (Zero Network calls).
 - **`pipelines/document_storage/`** (Was Phase 025):

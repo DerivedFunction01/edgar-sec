@@ -5,6 +5,8 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
+import pyarrow as pa
+import pyarrow.parquet as pq
 import pytest
 
 from edgar_sec.pipelines.filing_catalog.paths import REQUIRED_PLAN_FILES
@@ -12,6 +14,7 @@ from edgar_sec.pipelines.filing_catalog.publication import (
     TARGET_PLAN_SCHEMA_VERSION,
     PlanConflictError,
     plan_bundle_complete,
+    plan_fingerprint,
     plan_identity,
     publish_plan_bundle,
     reuse_existing_plan,
@@ -20,17 +23,40 @@ from edgar_sec.pipelines.filing_catalog.publication import (
 )
 
 
-def _stage_bundle(staging: Path, *, counts: dict[str, int] | None = None) -> None:
+def _write_locator_groups(staging: Path, keys: list[str]) -> None:
+    """Write a real work order.
+
+    Reuse recomputes the selection fingerprint by reading the published locator
+    groups, so a byte stub can no longer stand in for the file: the contract is
+    about the work order's actual contents.
+    """
+    table = pa.table({"document_locator_key": pa.array(keys, pa.string())})
+    pq.write_table(table, staging / "locator_groups.parquet")
+
+
+def _stage_bundle(
+    staging: Path,
+    *,
+    counts: dict[str, int] | None = None,
+    scope: str = "deterministic",
+    keys: list[str] | None = None,
+) -> None:
     counts = counts if counts is not None else {"10-K": 1}
     for form in counts:
         partition = staging / "targets" / f"form={form}"
         partition.mkdir(parents=True, exist_ok=True)
         (partition / "data.parquet").write_bytes(b"PAR1stub")
-    (staging / "locator_groups.parquet").write_bytes(b"PAR1stub")
+    if keys is None:
+        keys = [f"{form}-locator" for form in counts]
+    _write_locator_groups(staging, keys)
+    if scope == "policy":
+        (staging / "seed_filers.csv").write_text(
+            "cik,name,seed_group,coverage_tags,notes\n", encoding="utf-8"
+        )
     write_plan_documents(
         staging,
-        {"plan_id": "p1", "scope": "deterministic", "counts": counts},
-        {"scope": "deterministic", "counts": counts},
+        {"plan_id": "p1", "scope": scope, "counts": counts},
+        {"scope": scope, "counts": counts},
     )
 
 
@@ -78,7 +104,7 @@ def test_empty_counts_plan_is_complete(tmp_path: Path) -> None:
     bundle = tmp_path / "p1"
     bundle.mkdir()
     (bundle / "targets").mkdir()
-    (bundle / "locator_groups.parquet").write_bytes(b"x")
+    _write_locator_groups(bundle, [])
     write_plan_documents(
         bundle, {"plan_id": "p1", "scope": "deterministic", "counts": {}}, {}
     )
@@ -215,4 +241,48 @@ def test_publish_moves_the_whole_bundle(tmp_path: Path) -> None:
 
 
 def test_target_plan_schema_version_is_declared() -> None:
-    assert TARGET_PLAN_SCHEMA_VERSION == "1.0"
+    # 1.1 added the pinned seed sidecar and the selection fingerprint. Both are
+    # required to reuse a bundle, so a 1.0 bundle must not resolve as a 1.1 one.
+    assert TARGET_PLAN_SCHEMA_VERSION == "1.1"
+
+
+def test_publication_stamps_a_selection_fingerprint(tmp_path: Path) -> None:
+    bundle = tmp_path / "p1"
+    bundle.mkdir()
+    _stage_bundle(bundle, keys=["a", "b"])
+    document = json.loads((bundle / "plan.json").read_text(encoding="utf-8"))
+    assert document["plan_fingerprint"]
+    assert document["plan_fingerprint"] == plan_fingerprint(document, ["a", "b"])
+
+
+def test_reuse_refuses_a_work_order_that_was_edited(tmp_path: Path) -> None:
+    """The guard the structural checks alone could not make."""
+    bundle = tmp_path / "p1"
+    bundle.mkdir()
+    _stage_bundle(bundle, keys=["a", "b"])
+    _write_locator_groups(bundle, ["a"])
+    with pytest.raises(PlanConflictError, match="selection fingerprint"):
+        reuse_existing_plan(bundle, "p1", "deterministic")
+
+
+def test_reuse_refuses_a_bundle_with_no_fingerprint(tmp_path: Path) -> None:
+    bundle = tmp_path / "p1"
+    bundle.mkdir()
+    _stage_bundle(bundle)
+    document = json.loads((bundle / "plan.json").read_text(encoding="utf-8"))
+    document.pop("plan_fingerprint")
+    (bundle / "plan.json").write_text(json.dumps(document), encoding="utf-8")
+    with pytest.raises(PlanConflictError, match="no selection fingerprint"):
+        reuse_existing_plan(bundle, "p1", "deterministic")
+
+
+def test_a_policy_bundle_without_its_seed_sidecar_is_incomplete(
+    tmp_path: Path,
+) -> None:
+    bundle = tmp_path / "p1"
+    bundle.mkdir()
+    _stage_bundle(bundle, scope="policy")
+    (bundle / "seed_filers.csv").unlink()
+    assert not plan_bundle_complete(bundle, "policy")
+    with pytest.raises(PlanConflictError, match="incomplete"):
+        reuse_existing_plan(bundle, "p1", "policy")

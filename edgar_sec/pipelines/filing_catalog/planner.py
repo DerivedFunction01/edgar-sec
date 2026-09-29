@@ -29,12 +29,26 @@ from edgar_sec.domain.filing_catalog.filters import (
     DEFAULT_DOCUMENT_SUFFIXES,
     normalize_suffixes,
 )
-from edgar_sec.domain.filing_catalog.schemas import LOCATOR_POLICY_COLUMNS
-from edgar_sec.engine.selection.features import FeatureSnapshotBuilder
+from edgar_sec.domain.filing_catalog.schemas import (
+    LOCATOR_POLICY_COLUMNS,
+    SCOPE_DETERMINISTIC,
+    SCOPE_POLICY,
+)
+from edgar_sec.engine.selection.features import (
+    FeatureSnapshotBuilder,
+    SnapshotPaths,
+)
+from edgar_sec.engine.selection.inventory import (
+    InventoryStatistics,
+    OccurrenceOnlyDimensionError,
+    UnknownDimensionError,
+)
 from edgar_sec.engine.selection.policy import (
     SeedFiler,
     SelectionPolicy,
     compute_seed_fingerprint,
+    resolve_seed_filers,
+    write_seed_filers_csv,
 )
 from edgar_sec.engine.selection.selector import DeficitSelector
 from edgar_sec.foundation.runtime.progress import ProgressCallback, emit_progress
@@ -51,6 +65,7 @@ from edgar_sec.pipelines.filing_catalog.paths import (
     LOCATOR_GROUPS_NAME,
     PLAN_TARGETS_DIR_NAME,
     RESERVE_TARGETS_NAME,
+    SEED_FILERS_NAME,
     FilingCatalogPaths,
     form_partition_name,
     resolve_filing_catalog_paths,
@@ -63,9 +78,6 @@ from edgar_sec.pipelines.filing_catalog.publication import (
     staged_plan_bundle,
     write_plan_documents,
 )
-
-SCOPE_DETERMINISTIC = "deterministic"
-SCOPE_POLICY = "policy"
 
 # Characters permitted in a form filter. '/' is allowed because amendment forms
 # are written that way ("8-K/A") and are escaped at partition time.
@@ -307,7 +319,7 @@ def plan(
                     json.dumps(request, sort_keys=True).encode("utf-8")
                 ).hexdigest(),
             }
-            write_plan_documents(staging, plan_meta, selection_report)
+            plan_meta = write_plan_documents(staging, plan_meta, selection_report)
 
     return plan_meta
 
@@ -326,6 +338,57 @@ def _policy_locator_groups_query(locator_source: str) -> str:
     FROM {locator_source}
     ORDER BY document_locator_key
     """
+
+
+def _inventory_feasibility(
+    snapshot: SnapshotPaths, policy: SelectionPolicy
+) -> dict[str, Any]:
+    """Predict, before selection ran, whether the corpus could have met the quotas.
+
+    Advisory only. A fresh policy plan publishes whatever the corpus could
+    supply and records the shortfall in ``underfilled_floors``; this report never
+    changes that, because a feasibility prediction is weaker evidence than a
+    completed selection. Two things make it a prediction rather than a promise:
+
+    * The per-dimension counts are independent. They do not subtract competition
+      between floors, the family cap, or the seeds, so a set of individually
+      feasible floors can still underfill together.
+    * A floor can be satisfiable and still be skipped once a cap or an earlier
+      phase has claimed the candidates.
+
+    It is still the cheapest way to turn "this policy produced an empty plan" into
+    "this policy asked for 40 filings in an era the corpus does not have".
+    """
+    if not policy.floors and not policy.composites:
+        return {"checked": False, "reason": "policy declares no floors or composites"}
+    statistics = InventoryStatistics(snapshot.snapshot_dir)
+    try:
+        floors = (
+            statistics.check_floor_feasibility(policy.floors) if policy.floors else {}
+        )
+        composites = (
+            statistics.check_composite_feasibility(policy.composites)
+            if policy.composites
+            else []
+        )
+    except (UnknownDimensionError, OccurrenceOnlyDimensionError, OSError) as error:
+        # A policy the inventory cannot evaluate is a policy problem, not a
+        # reason to fail a plan that selection has already completed.
+        return {"checked": False, "reason": f"inventory unavailable: {error}"}
+    return {
+        "checked": True,
+        "floors": floors,
+        "composites": composites,
+        "infeasible_floors": sorted(
+            value
+            for dimension in floors.values()
+            for value, entry in dimension.items()
+            if not entry["feasible"]
+        ),
+        "infeasible_composites": [
+            entry["filters"] for entry in composites if not entry["feasible"]
+        ],
+    }
 
 
 def _register_selected_keys(con: object, keys: list[str]) -> None:
@@ -389,7 +452,14 @@ def plan_policy(
     # surface as a missing-parts error from inside feature building.
     _catalog_target_files(paths, catalog)
 
-    seed_fingerprint = compute_seed_fingerprint(seed_filers or {})
+    # Normalized once, then carried everywhere: the feature snapshot, the
+    # selector, the published sidecar, and the plan identity. Reading the seed
+    # manifest per consumer is what let a plan and the features behind it
+    # disagree about which registrants were mandatory.
+    pinned_seed = (
+        dict(seed_filers) if seed_filers is not None else resolve_seed_filers(policy)
+    )
+    seed_fingerprint = compute_seed_fingerprint(pinned_seed)
     request = {
         "catalog_id": catalog,
         "scope": SCOPE_POLICY,
@@ -425,6 +495,7 @@ def plan_policy(
         profile_path=paths.snapshot_profiles_file(catalog),
         output_root=paths.catalog_root,
         policy=policy,
+        seed_filers=pinned_seed,
         row_group_size=row_group_size,
     )
     snapshot = builder.build()
@@ -437,12 +508,13 @@ def plan_policy(
         },
     )
 
-    selector = DeficitSelector(snapshot.snapshot_dir, policy, seed_filers=seed_filers)
+    selector = DeficitSelector(snapshot.snapshot_dir, policy, seed_filers=pinned_seed)
     selection = selector.select(parent_active_keys=parent_active_keys)
 
     counts: dict[str, int] = {}
     total_rows = 0
     with staged_plan_bundle(final_dir, plan_id) as staging:
+        write_seed_filers_csv(staging / SEED_FILERS_NAME, pinned_seed)
         targets_root = staging / PLAN_TARGETS_DIR_NAME
         targets_root.mkdir(parents=True, exist_ok=True)
         with connect() as con:
@@ -472,8 +544,13 @@ def plan_policy(
                     / f"form={form_partition_name(form_name)}"
                     / "data.parquet"
                 )
+                # `o.*`, not `*`: the relation is a join whose second input only
+                # filters rows, and `SELECT *` would project the join key a
+                # second time, publishing a `document_locator_key_1` column
+                # alongside the real one. The published partition must keep
+                # exactly the feature snapshot's occurrence schema.
                 query = (
-                    f"SELECT * FROM ({occurrence_source}) "
+                    f"SELECT o.* FROM ({occurrence_source}) "
                     f"WHERE form = {sql_literal(form_name)} "
                     "ORDER BY o.document_locator_key, o.occurrence_id"
                 )
@@ -518,6 +595,7 @@ def plan_policy(
             "unique_locators_count": locator_count,
             "reserve_count": len(selection.reserve_locators),
             "counts": counts,
+            "inventory_feasibility": _inventory_feasibility(snapshot, policy),
             **{
                 k: v
                 for k, v in selection.report.items()
@@ -532,6 +610,7 @@ def plan_policy(
             "policy_corpus": policy.corpus_id,
             "policy_fingerprint": policy.policy_fingerprint,
             "seed_fingerprint": seed_fingerprint,
+            "seed_filer_count": len(pinned_seed),
             "level": policy.level,
             "target_units": policy.requested_units(),
             "parent_plan_id": policy.parent_plan_id,
@@ -549,7 +628,7 @@ def plan_policy(
                 json.dumps(request, sort_keys=True).encode("utf-8")
             ).hexdigest(),
         }
-        write_plan_documents(staging, plan_meta, selection_report)
+        plan_meta = write_plan_documents(staging, plan_meta, selection_report)
 
     return plan_meta
 

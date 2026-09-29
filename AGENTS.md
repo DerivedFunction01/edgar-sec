@@ -140,6 +140,9 @@ Scanners are defined modularly in `edgar_sec/foundation/scanners/` and collected
 - `file-length`: **Fails the gate** on files exceeding the line limit (800) to prevent monolithic growth. Any finding from any scanner returns a nonzero exit code, so "advisory" is not how it behaves.
 - `layer-boundary`: Enforces strict downward-only import hierarchy.
 - `resource-allocation`: Bans hardcoded thread counts or memory limits in pipeline/engine code.
+- `whole-file-read`: Bans `read_bytes()` consumed by a digest constructor. Hashing a whole
+  artifact to prove it intact materializes the file; use `file_sha256`. Narrow on purpose —
+  a `read_bytes()` feeding `json.loads` on a small payload is a different trade and is not flagged.
 - `regex-alternations`: Bans hand-crafted 3+ branch alternation literals, so `foundation.regex.builder` stays load-bearing.
 - `legacy-shims`: Bans backward-compatibility aliases and transitional shims (enforces §1.1).
 - `json-io`: Bans redundant JSON helper definitions and non-atomic JSON writes.

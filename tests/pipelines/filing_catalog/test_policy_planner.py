@@ -18,11 +18,19 @@ from edgar_sec.domain.filing_catalog.schemas import (
     LOCATOR_BASE_COLUMNS,
     LOCATOR_POLICY_COLUMNS,
 )
-from edgar_sec.engine.selection.policy import EraBand, SeedFiler, SelectionPolicy
+from edgar_sec.engine.selection.policy import (
+    EraBand,
+    SeedFiler,
+    SelectionPolicy,
+    compute_seed_fingerprint,
+    read_seed_filers_csv,
+)
+from edgar_sec.pipelines.filing_catalog.catalog_job import materialize
 from edgar_sec.pipelines.filing_catalog.paths import (
     LOCATOR_GROUPS_NAME,
     REQUIRED_PLAN_FILES,
     RESERVE_TARGETS_NAME,
+    SEED_FILERS_NAME,
     resolve_filing_catalog_paths,
 )
 from edgar_sec.pipelines.filing_catalog.planner import (
@@ -34,6 +42,7 @@ from edgar_sec.pipelines.filing_catalog.planner import (
 from edgar_sec.pipelines.filing_catalog.publication import (
     PlanConflictError,
     plan_bundle_complete,
+    plan_locator_keys,
 )
 
 
@@ -301,3 +310,249 @@ def test_plan_rejects_an_unsafe_catalog_reference(
     artifacts_root = _artifacts_root(catalog_snapshot)
     with pytest.raises(ValueError, match="unsafe identifier"):
         plan_policy("../../etc", _policy(), artifacts_root)
+
+
+# --- the pinned seed input -------------------------------------------------
+
+
+def _seed_csv(path: Path, rows: list[tuple[str, str]]) -> Path:
+    path.write_text(
+        "cik,name,seed_group,coverage_tags,notes\n"
+        + "".join(f"{cik},{name},default,,\n" for cik, name in rows),
+        encoding="utf-8",
+    )
+    return path
+
+
+def test_a_policy_plan_publishes_its_normalized_seed_set(
+    catalog_snapshot: tuple[dict[str, object], Path], tmp_path: Path
+) -> None:
+    """The plan carries the seed set it selected against, not a path to one."""
+    manifest, _ = catalog_snapshot
+    artifacts_root = _artifacts_root(catalog_snapshot)
+    seed_path = _seed_csv(tmp_path / "seed-cik.csv", [("0000000001", "Acme")])
+    policy = _policy(seed_cik_path=str(seed_path))
+
+    meta = plan_policy(str(manifest["catalog_id"]), policy, artifacts_root)
+    plan_dir = resolve_filing_catalog_paths(artifacts_root).plan_dir(meta["plan_id"])
+
+    sidecar = plan_dir / SEED_FILERS_NAME
+    assert sidecar.is_file()
+    published = read_seed_filers_csv(sidecar)
+    assert set(published) == {"0000000001"}
+    assert published["0000000001"].name == "Acme"
+    assert meta["seed_filer_count"] == 1
+    assert meta["seed_fingerprint"] == compute_seed_fingerprint(published)
+
+
+def test_editing_the_seed_csv_changes_the_plan_identity(
+    catalog_snapshot: tuple[dict[str, object], Path], tmp_path: Path
+) -> None:
+    manifest, _ = catalog_snapshot
+    artifacts_root = _artifacts_root(catalog_snapshot)
+    seed_path = _seed_csv(tmp_path / "seed-cik.csv", [("0000000001", "Acme")])
+
+    first = plan_policy(
+        str(manifest["catalog_id"]),
+        _policy(seed_cik_path=str(seed_path)),
+        artifacts_root,
+    )
+    _seed_csv(seed_path, [("0000000001", "Renamed")])
+    second = plan_policy(
+        str(manifest["catalog_id"]),
+        _policy(seed_cik_path=str(seed_path)),
+        artifacts_root,
+    )
+    assert first["seed_fingerprint"] != second["seed_fingerprint"]
+    assert first["plan_id"] != second["plan_id"]
+
+
+def test_a_seed_plan_reused_after_the_csv_changes_is_refused(
+    catalog_snapshot: tuple[dict[str, object], Path], tmp_path: Path
+) -> None:
+    """The identity guard that stops a moved file silently changing a plan."""
+    manifest, _ = catalog_snapshot
+    artifacts_root = _artifacts_root(catalog_snapshot)
+    seed_path = _seed_csv(tmp_path / "seed-cik.csv", [("0000000001", "Acme")])
+    policy = _policy(seed_cik_path=str(seed_path))
+
+    first = plan_policy(str(manifest["catalog_id"]), policy, artifacts_root)
+    plan_dir = resolve_filing_catalog_paths(artifacts_root).plan_dir(first["plan_id"])
+
+    _seed_csv(seed_path, [("0000000001", "Acme"), ("0000000002", "Beta")])
+    second = plan_policy(str(manifest["catalog_id"]), policy, artifacts_root)
+
+    assert second["plan_id"] != first["plan_id"]
+    # The old bundle is untouched and still verifies against its own recorded
+    # selection; it simply is not the bundle this request resolves to.
+    assert plan_bundle_complete(plan_dir)
+
+
+def test_a_plan_with_no_seed_file_publishes_an_empty_seed_set(
+    catalog_snapshot: tuple[dict[str, object], Path],
+) -> None:
+    manifest, _ = catalog_snapshot
+    artifacts_root = _artifacts_root(catalog_snapshot)
+    meta = plan_policy(str(manifest["catalog_id"]), _policy(), artifacts_root)
+    plan_dir = resolve_filing_catalog_paths(artifacts_root).plan_dir(meta["plan_id"])
+    assert read_seed_filers_csv(plan_dir / SEED_FILERS_NAME) == {}
+    assert meta["seed_filer_count"] == 0
+
+
+# --- determinism -----------------------------------------------------------
+
+
+# --- advisory inventory feasibility ---------------------------------------
+
+
+def _advisory(plan_dir: Path) -> dict[str, object]:
+    report = json.loads(
+        (plan_dir / "selection_report.json").read_text(encoding="utf-8")
+    )
+    return dict(report["inventory_feasibility"])
+
+
+def test_a_floor_policy_reports_inventory_feasibility(
+    catalog_snapshot: tuple[dict[str, object], Path],
+) -> None:
+    """The report says whether the corpus could have met the quota, and by how much."""
+    manifest, _ = catalog_snapshot
+    artifacts_root = _artifacts_root(catalog_snapshot)
+    meta = plan_policy(
+        str(manifest["catalog_id"]),
+        _policy(floors={"era": {"modern": 2, "ancient": 5}}),
+        artifacts_root,
+    )
+    plan_dir = resolve_filing_catalog_paths(artifacts_root).plan_dir(meta["plan_id"])
+
+    advisory = _advisory(plan_dir)
+    assert advisory["checked"] is True
+    assert advisory["floors"]["era"]["modern"]["feasible"] is True
+    assert advisory["floors"]["era"]["ancient"] == {
+        "required": 5,
+        "available": 0,
+        "feasible": False,
+        "deficit": 5,
+    }
+    assert advisory["infeasible_floors"] == ["ancient"]
+
+
+def test_feasibility_is_advisory_and_does_not_fail_a_plan(
+    catalog_snapshot: tuple[dict[str, object], Path],
+) -> None:
+    """An impossible floor must not turn a fresh plan into a refusal.
+
+    A fresh policy plan publishes what the corpus could supply and records the
+    shortfall; the feasibility report explains it. Only an expansion is refused
+    for failing to reach its target.
+    """
+    manifest, _ = catalog_snapshot
+    artifacts_root = _artifacts_root(catalog_snapshot)
+    meta = plan_policy(
+        str(manifest["catalog_id"]),
+        _policy(floors={"era": {"ancient": 500}}),
+        artifacts_root,
+    )
+    plan_dir = resolve_filing_catalog_paths(artifacts_root).plan_dir(meta["plan_id"])
+    assert _advisory(plan_dir)["infeasible_floors"] == ["ancient"]
+    assert plan_bundle_complete(plan_dir)
+
+
+def test_a_policy_with_no_quotas_skips_the_inventory(
+    catalog_snapshot: tuple[dict[str, object], Path],
+) -> None:
+    """Nothing to predict, so the report says so instead of scanning."""
+    manifest, _ = catalog_snapshot
+    artifacts_root = _artifacts_root(catalog_snapshot)
+    meta = plan_policy(str(manifest["catalog_id"]), _policy(), artifacts_root)
+    plan_dir = resolve_filing_catalog_paths(artifacts_root).plan_dir(meta["plan_id"])
+    assert _advisory(plan_dir) == {
+        "checked": False,
+        "reason": "policy declares no floors or composites",
+    }
+
+
+def test_a_composite_policy_reports_feasibility(
+    catalog_snapshot: tuple[dict[str, object], Path],
+) -> None:
+    manifest, _ = catalog_snapshot
+    artifacts_root = _artifacts_root(catalog_snapshot)
+    meta = plan_policy(
+        str(manifest["catalog_id"]),
+        _policy(composites=[{"filters": {"era": "modern"}, "min": 2}]),
+        artifacts_root,
+    )
+    plan_dir = resolve_filing_catalog_paths(artifacts_root).plan_dir(meta["plan_id"])
+    advisory = _advisory(plan_dir)
+    assert advisory["checked"] is True
+    assert advisory["composites"][0]["filters"] == {"era": "modern"}
+    assert advisory["infeasible_composites"] == []
+
+
+def test_an_occurrence_only_composite_is_refused_at_the_policy(
+    catalog_snapshot: tuple[dict[str, object], Path],
+) -> None:
+    """A stratum the selector could never match is refused where it is written.
+
+    Composites are drawn from locator_features, which has no accession_class
+    column. Without this check the failure surfaces as a DuckDB Binder Error from
+    inside selection, naming a column rather than the policy field that caused it.
+    """
+    manifest, _ = catalog_snapshot
+    artifacts_root = _artifacts_root(catalog_snapshot)
+    with pytest.raises(ValueError, match="locator_features"):
+        plan_policy(
+            str(manifest["catalog_id"]),
+            _policy(composites=[{"filters": {"accession_class": "high"}, "min": 1}]),
+            artifacts_root,
+        )
+
+
+def test_a_sic_code_composite_is_accepted(
+    catalog_snapshot: tuple[dict[str, object], Path],
+) -> None:
+    """sic_code is locator-grain, so a composite on it is a valid policy."""
+    manifest, _ = catalog_snapshot
+    artifacts_root = _artifacts_root(catalog_snapshot)
+    meta = plan_policy(
+        str(manifest["catalog_id"]),
+        _policy(composites=[{"filters": {"sic_code": "3571"}, "min": 1}]),
+        artifacts_root,
+    )
+    assert meta["plan_id"]
+
+
+def test_a_policy_rebuild_into_an_independent_root_is_identical(
+    catalog_snapshot: tuple[dict[str, object], Path],
+    tmp_path: Path,
+    sample_source: Path,
+) -> None:
+    """Two builds from separate inputs must agree on the whole bundle.
+
+    The existing same-root test cannot see drift: the second call reuses the
+    published bundle instead of rebuilding it, so it proves reuse works, not
+    that selection is reproducible. This rebuilds.
+    """
+    manifest, _ = catalog_snapshot
+    policy = _policy()
+
+    # Two independent artifacts roots, each with its own catalog snapshot, so
+    # nothing about the publication is shared between the two builds.
+    first_root = tmp_path / "a"
+    second_root = tmp_path / "b"
+    materialize(sample_source, first_root)
+    materialize(sample_source, second_root)
+
+    first = plan_policy(str(manifest["catalog_id"]), policy, first_root)
+    second = plan_policy(str(manifest["catalog_id"]), policy, second_root)
+
+    assert first["plan_id"] == second["plan_id"]
+    assert first["plan_fingerprint"] == second["plan_fingerprint"]
+    assert first["counts"] == second["counts"]
+
+    first_dir = resolve_filing_catalog_paths(first_root).plan_dir(first["plan_id"])
+    second_dir = resolve_filing_catalog_paths(second_root).plan_dir(second["plan_id"])
+    assert plan_locator_keys(first_dir) == plan_locator_keys(second_dir)
+    for partition in sorted(first_dir.glob("targets/form=*/data.parquet")):
+        mirror = second_dir / partition.relative_to(first_dir)
+        assert pq.read_table(partition).to_pylist() == pq.read_table(mirror).to_pylist()

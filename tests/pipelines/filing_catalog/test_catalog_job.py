@@ -7,6 +7,7 @@ which was derived by an independent Python transcription of the same rules.
 from __future__ import annotations
 
 import csv
+import json
 from pathlib import Path
 from typing import Any
 
@@ -19,6 +20,7 @@ from edgar_sec.domain.filing_catalog.schemas import (
     TARGET_COLUMNS,
     TARGET_SCHEMA,
 )
+from edgar_sec.domain.submissions.schemas import SUBMISSION_METADATA_SCHEMA
 from edgar_sec.pipelines.filing_catalog.catalog_job import (
     CatalogError,
     materialize,
@@ -93,6 +95,94 @@ def test_guard_refuses_to_overwrite_a_published_snapshot(
         str(first["catalog_id"])
     )
     assert (snapshot / "company_profiles.parquet").is_file()
+
+
+# --- explicit source manifests ---------------------------------------------
+
+
+def _phase1_manifest(sample_source: Path, root: Path) -> Path:
+    """Write the manifest Phase 1 publishes beside a snapshot payload."""
+    from edgar_sec.foundation.hashing import file_sha256
+
+    payload = root / "snapshots" / "snap-1"
+    payload.mkdir(parents=True)
+    target = payload / "metadata.parquet"
+    target.write_bytes(sample_source.read_bytes())
+
+    manifest = payload / "metadata.manifest.json"
+    manifest.write_text(
+        json.dumps(
+            {
+                "snapshot_id": "snap-1",
+                "output_path": str(target),
+                "artifact_sha256": file_sha256(target),
+            }
+        ),
+        encoding="utf-8",
+    )
+    return manifest
+
+
+def test_source_manifest_resolves_the_parquet_payload(
+    tmp_path: Path, sample_source: Path
+) -> None:
+    """A manifest is metadata; the Parquet it names is the data."""
+    manifest = _phase1_manifest(sample_source, tmp_path / "art")
+
+    source, handoff = resolve_source(None, manifest)
+
+    assert source.suffix == ".parquet", "the JSON manifest was returned as the source"
+    assert handoff is not None and handoff["snapshot_id"] == "snap-1"
+    assert pq.read_schema(source).names == SUBMISSION_METADATA_SCHEMA.names
+
+
+def test_materialize_accepts_an_explicit_manifest(
+    tmp_path: Path, sample_source: Path
+) -> None:
+    manifest = _phase1_manifest(sample_source, tmp_path / "art")
+    result = materialize(None, tmp_path / "out", source_manifest=manifest)
+    assert result["profile_row_count"] > 0
+
+
+def test_source_manifest_rejects_a_tampered_payload(
+    tmp_path: Path, sample_source: Path
+) -> None:
+    manifest = _phase1_manifest(sample_source, tmp_path / "art")
+    payload = json.loads(manifest.read_text(encoding="utf-8"))["output_path"]
+    table = pq.read_table(payload).drop_columns(["listings"])
+    pq.write_table(table, payload)
+
+    with pytest.raises(CatalogError, match="digest mismatch"):
+        resolve_source(None, manifest)
+
+
+def test_source_manifest_without_a_digest_is_refused(
+    tmp_path: Path, sample_source: Path
+) -> None:
+    manifest = _phase1_manifest(sample_source, tmp_path / "art")
+    document = json.loads(manifest.read_text(encoding="utf-8"))
+    document.pop("artifact_sha256")
+    manifest.write_text(json.dumps(document), encoding="utf-8")
+
+    with pytest.raises(CatalogError, match="no artifact digest"):
+        resolve_source(None, manifest)
+
+
+def test_source_manifest_without_an_output_path_is_refused(
+    tmp_path: Path, sample_source: Path
+) -> None:
+    manifest = _phase1_manifest(sample_source, tmp_path / "art")
+    document = json.loads(manifest.read_text(encoding="utf-8"))
+    document.pop("output_path")
+    manifest.write_text(json.dumps(document), encoding="utf-8")
+
+    with pytest.raises(CatalogError, match="names no output_path"):
+        resolve_source(None, manifest)
+
+
+def test_missing_source_manifest_is_refused(tmp_path: Path) -> None:
+    with pytest.raises(CatalogError, match="manifest does not exist"):
+        resolve_source(None, tmp_path / "absent.manifest.json")
 
 
 def test_explicit_output_root_never_advances_a_pointer(

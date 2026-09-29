@@ -1,0 +1,152 @@
+"""Unit tests for the filing-catalog artifact layout.
+
+The layout is an interface: Phase 2.5 and the operator resolve paths through
+this module rather than concatenating strings. A layout that is wrong in a
+document but right in code still misleads a consumer, and a layout that drifts
+silently makes a published bundle unfindable, so the shape is pinned here rather
+than described in a docstring.
+"""
+
+from __future__ import annotations
+
+from pathlib import Path
+
+import pytest
+
+from edgar_sec.pipelines.filing_catalog.paths import (
+    CURRENT_ALIAS,
+    PIPELINE_DIR,
+    PLAN_FILE_NAME,
+    PLAN_TARGETS_DIR_NAME,
+    REQUIRED_PLAN_FILES,
+    SEED_FILERS_NAME,
+    form_partition_dir,
+    form_partition_name,
+    resolve_filing_catalog_paths,
+    safe_identifier,
+    target_part_name,
+)
+
+
+@pytest.fixture()
+def paths(tmp_path: Path):
+    return resolve_filing_catalog_paths(tmp_path / "artifacts")
+
+
+# --- roots -----------------------------------------------------------------
+
+
+def test_catalog_root_is_under_the_pipeline_directory(paths) -> None:
+    assert paths.catalog_root == paths.artifacts_root / PIPELINE_DIR
+
+
+def test_snapshots_and_plans_share_one_directory(paths) -> None:
+    """Catalog snapshots and plan bundles are siblings, not nested.
+
+    v1 documented ``snapshots/<id>`` and ``plans/<id>`` subdirectories. Neither
+    exists: both roots resolve to ``catalog_root``, so a catalog id and a plan
+    id live in one namespace (see the collision test below). The feature
+    snapshot subtree under ``snapshots/`` is written by the selection engine and
+    does not collide with either.
+    """
+    assert paths.snapshots_root == paths.catalog_root
+    assert paths.plans_root == paths.catalog_root
+    assert paths.snapshot_dir("cat-1").parent == paths.catalog_root
+    assert paths.plan_dir("plan-1").parent == paths.catalog_root
+
+
+def test_catalog_and_plan_ids_share_one_namespace(paths) -> None:
+    """Stated rather than assumed: the layout has no separate plan namespace.
+
+    A catalog id and a plan id that were equal would name the same directory.
+    In practice both are 24-character content digests taken from different
+    inputs, so this needs a hash collision to go wrong. It is pinned here
+    because the docstring used to claim two subdirectories that do not exist,
+    and the correction should not read as a stronger guarantee than the code
+    makes.
+    """
+    assert paths.snapshot_dir("same-id") == paths.plan_dir("same-id")
+
+
+# --- identifiers -----------------------------------------------------------
+
+
+def test_safe_identifier_rejects_a_path_traversal(tmp_path: Path) -> None:
+    paths = resolve_filing_catalog_paths(tmp_path)
+    with pytest.raises(ValueError, match="unsafe identifier"):
+        paths.plan_dir("../../etc")
+    with pytest.raises(ValueError, match="unsafe identifier"):
+        safe_identifier("a/b")
+
+
+def test_an_unsafe_identifier_never_becomes_a_directory(paths) -> None:
+    """A traversal must fail before it can escape the artifacts root."""
+    with pytest.raises(ValueError):
+        paths.snapshot_dir("../escape")
+
+
+def test_form_partition_name_escapes_a_slash() -> None:
+    assert form_partition_name("10-K/A") == "10-K_A"
+    assert form_partition_name("10-K") == "10-K"
+
+
+def test_form_partition_dir_escapes_the_form() -> None:
+    partition = form_partition_dir(Path("/plans/p1"), "8-K/A")
+    assert partition == Path("/plans/p1") / PLAN_TARGETS_DIR_NAME / "form=8-K_A"
+    assert "/" not in partition.name
+
+
+def test_target_parts_are_numbered_not_named_after_the_source() -> None:
+    assert target_part_name(0) == "part-00000.parquet"
+    assert target_part_name(12) == "part-00012.parquet"
+
+
+# --- plan bundle members ---------------------------------------------------
+
+
+def test_plan_targets_dir_is_inside_the_plan(paths) -> None:
+    plan_dir = paths.plan_dir("p1")
+    assert paths.plan_targets_dir("p1") == plan_dir / PLAN_TARGETS_DIR_NAME
+
+
+def test_plan_seed_sidecar_is_inside_the_plan(paths) -> None:
+    assert paths.plan_seed_filers("p1").parent == paths.plan_dir("p1")
+    assert paths.plan_seed_filers("p1").name == SEED_FILERS_NAME
+
+
+def test_expansion_metadata_is_inside_the_plan(paths) -> None:
+    assert paths.expansion_metadata("p1").parent == paths.plan_dir("p1")
+
+
+def test_transient_staging_is_outside_the_published_root(paths) -> None:
+    """Staging must never land where a consumer looks for published state."""
+    staging = paths.transient_catalog_dir("cat-1")
+    assert "transient" in staging.parts
+    assert paths.catalog_root not in staging.parents
+
+
+def test_required_plan_files_are_named_constants() -> None:
+    assert PLAN_FILE_NAME in REQUIRED_PLAN_FILES
+    for name in REQUIRED_PLAN_FILES:
+        assert "/" not in name, "a required file must be a name, not a path"
+        assert ".." not in name
+
+
+def test_current_alias_is_not_an_interpolated_path(paths) -> None:
+    assert CURRENT_ALIAS == "current"
+    assert paths.snapshot_dir(CURRENT_ALIAS) == paths.catalog_root / "current"
+
+
+# --- resolution ------------------------------------------------------------
+
+
+def test_an_explicit_root_is_resolved_to_an_absolute_path(tmp_path: Path) -> None:
+    paths = resolve_filing_catalog_paths(tmp_path / "sub" / ".." / "art")
+    assert paths.artifacts_root == (tmp_path / "art").resolve()
+
+
+def test_resolution_is_stable_for_one_root(tmp_path: Path) -> None:
+    first = resolve_filing_catalog_paths(tmp_path)
+    second = resolve_filing_catalog_paths(tmp_path)
+    assert first.catalog_root == second.catalog_root
+    assert first.plan_dir("p1") == second.plan_dir("p1")
