@@ -10,10 +10,10 @@ edgar_sec/domain/forms/decisions.py	34	tests/domain/forms/test_decisions.py	25	t
 edgar_sec/domain/forms/families.py	125	tests/domain/forms/test_families.py	67	tests.domain.forms.test_families	MIRRORED
 edgar_sec/domain/forms/schemas.py	162	tests/domain/forms/test_schemas.py	40	tests.domain.forms.test_schemas;tests.engine.forms.checkmarks.test_solver_core;tests.engine.forms.plugins.test_models;tests.engine.forms.plugins.test_registry	MIRRORED
 edgar_sec/domain/forms/vocabulary.py	369	tests/domain/forms/test_vocabulary.py	102	tests.domain.forms.test_vocabulary;tests.engine.forms.checkmarks.test_solver_core	MIRRORED
-edgar_sec/domain/identity.py	61	tests/domain/test_identity.py	40	tests.domain.document.test_models;tests.domain.test_identity;tests.infra.storage.test_document_parquet;tests.pipelines.document_storage.test_merger;tests.pipelines.document_storage.test_operator_and_cli;tests.pipelines.document_storage.test_review;tests.pipelines.document_storage.test_vacuum;tests.pipelines.document_storage.test_worker	MIRRORED
-edgar_sec/domain/sec_urls.py	156	tests/domain/test_sec_urls.py	76	tests.domain.filing_catalog.test_schemas;tests.domain.test_sec_urls;tests.domain.test_sec_urls_archive;tests.infra.sec_http.test_client;tests.pipelines.document_storage.test_delegation;tests.pipelines.document_storage.test_fetching;tests.pipelines.filing_catalog.test_phase25_contract;tests.pipelines.metadata_sync.test_augmentation;tests.pipelines.metadata_sync.test_end_to_end;tests.pipelines.metadata_sync.test_worker;tests.support	MIRRORED
-edgar_sec/domain/submissions/models.py	105				UNTESTED
-edgar_sec/domain/submissions/schemas.py	168	tests/domain/submissions/test_schemas.py	55	tests.domain.filing_catalog.test_schemas;tests.domain.submissions.test_schemas;tests.engine.submissions.test_normalizer;tests.pipelines.filing_catalog.test_catalog_fixtures;tests.pipelines.metadata_sync.test_checkpoints;tests.pipelines.metadata_sync.test_end_to_end;tests.pipelines.metadata_sync.test_merger	MIRRORED
+edgar_sec/domain/identity.py	61	tests/domain/test_identity.py	40	tests.domain.document.test_models;tests.domain.submissions.test_models;tests.domain.test_identity;tests.engine.submissions.test_helpers;tests.infra.storage.test_document_parquet;tests.pipelines.document_storage.test_merger;tests.pipelines.document_storage.test_operator_and_cli;tests.pipelines.document_storage.test_review;tests.pipelines.document_storage.test_vacuum;tests.pipelines.document_storage.test_worker	MIRRORED
+edgar_sec/domain/sec_urls.py	156	tests/domain/test_sec_urls.py	76	tests.domain.filing_catalog.test_schemas;tests.domain.test_sec_urls;tests.domain.test_sec_urls_archive;tests.infra.sec_http.test_client;tests.pipelines.document_storage.test_delegation;tests.pipelines.document_storage.test_fetching;tests.pipelines.filing_catalog.test_phase25_contract;tests.pipelines.metadata_sync.test_augmentation;tests.pipelines.metadata_sync.test_cli;tests.pipelines.metadata_sync.test_end_to_end;tests.pipelines.metadata_sync.test_sec_client;tests.pipelines.metadata_sync.test_worker;tests.support	MIRRORED
+edgar_sec/domain/submissions/models.py	105	tests/domain/submissions/test_models.py	125	tests.domain.submissions.test_models	MIRRORED
+edgar_sec/domain/submissions/schemas.py	168	tests/domain/submissions/test_schemas.py	55	tests.domain.filing_catalog.test_schemas;tests.domain.submissions.test_schemas;tests.engine.submissions.test_normalizer;tests.pipelines.filing_catalog.test_catalog_fixtures;tests.pipelines.metadata_sync.test_checkpoints;tests.pipelines.metadata_sync.test_end_to_end;tests.pipelines.metadata_sync.test_merger;tests.pipelines.metadata_sync.test_planner	MIRRORED
 edgar_sec/domain/taxonomy/family_vocab.py	204			tests.domain.taxonomy.test_taxonomy	IMPORTED
 edgar_sec/domain/taxonomy/jurisdictions.py	162			tests.domain.forms.test_vocabulary;tests.domain.taxonomy.test_taxonomy	IMPORTED
 edgar_sec/domain/taxonomy/legal_forms.py	104			tests.domain.taxonomy.test_taxonomy;tests.engine.company_family.test_clustering	IMPORTED
@@ -56,10 +56,10 @@ edgar_sec/engine/selection/inventory.py	181	tests/engine/selection/test_inventor
 edgar_sec/engine/selection/policy.py	500	tests/engine/selection/test_policy.py	330	tests.engine.selection.conftest;tests.engine.selection.test_features;tests.engine.selection.test_policy;tests.engine.selection.test_selector;tests.pipelines.filing_catalog.test_expansion;tests.pipelines.filing_catalog.test_phase25_contract;tests.pipelines.filing_catalog.test_policy_planner	MIRRORED
 edgar_sec/engine/selection/selector.py	407	tests/engine/selection/test_selector.py	393	tests.engine.selection.test_selector	MIRRORED
 edgar_sec/engine/selection/source.py	386	tests/engine/selection/test_source.py	286	tests.engine.selection.conftest;tests.engine.selection.test_source	MIRRORED
-edgar_sec/engine/submissions/builder.py	297			tests.engine.submissions.test_normalizer;tests.pipelines.metadata_sync.test_checkpoints;tests.pipelines.metadata_sync.test_merger	IMPORTED
-edgar_sec/engine/submissions/filings.py	230			tests.engine.submissions.test_normalizer	IMPORTED
-edgar_sec/engine/submissions/helpers.py	148			tests.domain.filing_catalog.test_schemas;tests.domain.test_sec_urls;tests.engine.submissions.test_normalizer;tests.pipelines.filing_catalog.test_catalog_job	IMPORTED
-edgar_sec/engine/submissions/profile.py	160			tests.engine.submissions.test_normalizer	IMPORTED
+edgar_sec/engine/submissions/builder.py	297			tests.domain.submissions.test_models;tests.engine.submissions.test_normalizer;tests.pipelines.metadata_sync.test_checkpoints;tests.pipelines.metadata_sync.test_merger;tests.pipelines.metadata_sync.test_smoke_test	IMPORTED
+edgar_sec/engine/submissions/filings.py	230			tests.domain.submissions.test_models;tests.engine.submissions.test_normalizer	IMPORTED
+edgar_sec/engine/submissions/helpers.py	141	tests/engine/submissions/test_helpers.py	165	tests.domain.filing_catalog.test_schemas;tests.domain.test_sec_urls;tests.engine.submissions.test_helpers;tests.engine.submissions.test_normalizer;tests.pipelines.filing_catalog.test_catalog_job	MIRRORED
+edgar_sec/engine/submissions/profile.py	160			tests.domain.submissions.test_models;tests.engine.submissions.test_normalizer	IMPORTED
 edgar_sec/engine/tables/ascii_html/balance.py	359				UNTESTED
 edgar_sec/engine/tables/ascii_html/blocks.py	532				UNTESTED
 edgar_sec/engine/tables/ascii_html/borders.py	265				UNTESTED
@@ -85,19 +85,19 @@ edgar_sec/engine/tables/structural.py	249	tests/engine/tables/test_structural.py
 edgar_sec/engine/tables/table_policy.py	243	tests/engine/tables/test_table_policy.py	45	tests.engine.tables.test_table_policy	MIRRORED
 edgar_sec/engine/tables/toc.py	70				UNTESTED
 edgar_sec/foundation/checks.py	29				UNTESTED
-edgar_sec/foundation/hashing.py	47	tests/foundation/test_hashing.py	149	tests.foundation.test_hashing;tests.infra.storage.test_payload_store;tests.pipelines.document_storage.test_fetching;tests.pipelines.document_storage.test_operator_and_cli;tests.pipelines.document_storage.test_worker;tests.pipelines.metadata_sync.test_augmentation	MIRRORED
+edgar_sec/foundation/hashing.py	47	tests/foundation/test_hashing.py	149	tests.foundation.test_hashing;tests.infra.storage.test_payload_store;tests.pipelines.document_storage.test_fetching;tests.pipelines.document_storage.test_operator_and_cli;tests.pipelines.document_storage.test_worker;tests.pipelines.metadata_sync.test_source_registry	MIRRORED
 edgar_sec/foundation/regex/builder.py	209	tests/foundation/regex/test_builder.py	56	tests.foundation.regex.test_builder	MIRRORED
 edgar_sec/foundation/regex/trie.py	99	tests/foundation/regex/test_trie.py	49	tests.foundation.regex.test_trie	MIRRORED
 edgar_sec/foundation/runtime/env.py	108	tests/foundation/runtime/test_env.py	51	tests.foundation.runtime.test_env	MIRRORED
 edgar_sec/foundation/runtime/interactive.py	111				UNTESTED
 edgar_sec/foundation/runtime/memory.py	51	tests/foundation/runtime/test_memory.py	9	tests.foundation.runtime.test_memory;tests.foundation.test_hashing	MIRRORED
 edgar_sec/foundation/runtime/partitions.py	49	tests/foundation/runtime/test_partitions.py	42	tests.foundation.runtime.test_partitions	MIRRORED
-edgar_sec/foundation/runtime/paths.py	221	tests/foundation/runtime/test_paths.py	135	tests.foundation.runtime.test_paths;tests.pipelines.document_storage.test_operator_and_cli	MIRRORED
+edgar_sec/foundation/runtime/paths.py	221	tests/foundation/runtime/test_paths.py	135	tests.foundation.runtime.test_paths;tests.pipelines.document_storage.test_operator_and_cli;tests.pipelines.metadata_sync.test_paths	MIRRORED
 edgar_sec/foundation/runtime/progress.py	100				UNTESTED
 edgar_sec/foundation/runtime/resources.py	275	tests/foundation/runtime/test_resources.py	70	tests.foundation.runtime.test_resources;tests.pipelines.document_storage.test_worker	MIRRORED
 edgar_sec/foundation/runtime/settings/catalog.py	102			tests.infra.storage.test_parquet	IMPORTED
 edgar_sec/foundation/runtime/settings/paths.py	64				UNTESTED
-edgar_sec/foundation/runtime/settings/runtime.py	143				UNTESTED
+edgar_sec/foundation/runtime/settings/runtime.py	143			tests.pipelines.metadata_sync.test_cli	IMPORTED
 edgar_sec/foundation/runtime/settings/sec.py	99				UNTESTED
 edgar_sec/foundation/runtime/settings/validators.py	38				UNTESTED
 edgar_sec/foundation/scanners/base.py	27				UNTESTED
@@ -125,19 +125,19 @@ edgar_sec/foundation/text/tokens.py	147	tests/foundation/text/test_tokens.py	108
 edgar_sec/infra/broker/daemon.py	61			tests.infra.broker.test_broker	IMPORTED
 edgar_sec/infra/broker/sec_broker.py	361			tests.infra.broker.test_broker	IMPORTED
 edgar_sec/infra/sec_http/cache.py	252	tests/infra/sec_http/test_cache.py	62	tests.infra.sec_http.test_cache	MIRRORED
-edgar_sec/infra/sec_http/client.py	382	tests/infra/sec_http/test_client.py	104	tests.infra.sec_http.test_client;tests.support	MIRRORED
+edgar_sec/infra/sec_http/client.py	382	tests/infra/sec_http/test_client.py	187	tests.infra.sec_http.test_client;tests.support	MIRRORED
 edgar_sec/infra/sec_http/errors.py	36			tests.infra.sec_http.test_client	IMPORTED
 edgar_sec/infra/sec_http/metrics.py	74			tests.infra.broker.test_broker	IMPORTED
 edgar_sec/infra/sec_http/rate_limit.py	103	tests/infra/sec_http/test_rate_limit.py	26	tests.infra.sec_http.test_client;tests.infra.sec_http.test_rate_limit;tests.support	MIRRORED
 edgar_sec/infra/sec_http/retry.py	56	tests/infra/sec_http/test_retry.py	33	tests.infra.sec_http.test_client;tests.infra.sec_http.test_retry;tests.support	MIRRORED
-edgar_sec/infra/storage/atomic.py	69	tests/infra/storage/test_atomic.py	34	tests.infra.storage.test_atomic	MIRRORED
+edgar_sec/infra/storage/atomic.py	69	tests/infra/storage/test_atomic.py	34	tests.infra.storage.test_atomic;tests.pipelines.metadata_sync.test_registry;tests.pipelines.metadata_sync.test_source_registry	MIRRORED
 edgar_sec/infra/storage/document_parquet.py	211	tests/infra/storage/test_document_parquet.py	104	tests.infra.storage.test_document_parquet;tests.pipelines.document_storage.test_merger;tests.pipelines.document_storage.test_review;tests.pipelines.document_storage.test_vacuum;tests.pipelines.document_storage.test_worker	MIRRORED
 edgar_sec/infra/storage/document_parts.py	252			tests.pipelines.document_storage.test_review;tests.pipelines.document_storage.test_vacuum	IMPORTED
 edgar_sec/infra/storage/duckdb.py	184	tests/infra/storage/test_duckdb.py	144	tests.engine.selection.test_features;tests.foundation.test_hashing;tests.infra.storage.test_duckdb;tests.pipelines.document_storage.test_vacuum;tests.pipelines.metadata_sync.test_merger	MIRRORED
 edgar_sec/infra/storage/duckdb_catalog.py	315	tests/infra/storage/test_duckdb_catalog.py	116	tests.infra.storage.test_duckdb_catalog;tests.infra.storage.test_parquet	MIRRORED
 edgar_sec/infra/storage/fixture_lineage.py	96	tests/infra/storage/test_fixture_lineage.py	91	tests.infra.storage.test_fixture_lineage	MIRRORED
 edgar_sec/infra/storage/manifests.py	321			tests.pipelines.document_storage.test_review;tests.pipelines.document_storage.test_vacuum	IMPORTED
-edgar_sec/infra/storage/parquet.py	72	tests/infra/storage/test_parquet.py	65	tests.infra.storage.test_duckdb;tests.infra.storage.test_parquet	MIRRORED
+edgar_sec/infra/storage/parquet.py	72	tests/infra/storage/test_parquet.py	120	tests.infra.storage.test_duckdb;tests.infra.storage.test_parquet;tests.pipelines.metadata_sync.test_smoke_test	MIRRORED
 edgar_sec/infra/storage/payload_store.py	347	tests/infra/storage/test_payload_store.py	223	tests.infra.storage.test_payload_store;tests.pipelines.document_storage.test_fetching;tests.pipelines.document_storage.test_operator_and_cli;tests.pipelines.document_storage.test_worker	MIRRORED
 edgar_sec/pipelines/document_storage/cli.py	231			tests.pipelines.document_storage.test_operator_and_cli	IMPORTED
 edgar_sec/pipelines/document_storage/delegation.py	292	tests/pipelines/document_storage/test_delegation.py	307	tests.pipelines.document_storage.test_delegation	MIRRORED
@@ -148,7 +148,7 @@ edgar_sec/pipelines/document_storage/processor.py	231			tests.pipelines.document
 edgar_sec/pipelines/document_storage/queries.py	267			tests.pipelines.document_storage.test_settings_contract;tests.pipelines.document_storage.test_vacuum	IMPORTED
 edgar_sec/pipelines/document_storage/review.py	332	tests/pipelines/document_storage/test_review.py	314	tests.pipelines.document_storage.test_review	MIRRORED
 edgar_sec/pipelines/document_storage/vacuum.py	568	tests/pipelines/document_storage/test_vacuum.py	730	tests.pipelines.document_storage.test_settings_contract;tests.pipelines.document_storage.test_vacuum	MIRRORED
-edgar_sec/pipelines/document_storage/worker.py	502	tests/pipelines/document_storage/test_worker.py	550	tests.pipelines.document_storage.test_merger;tests.pipelines.document_storage.test_operator_and_cli;tests.pipelines.document_storage.test_vacuum;tests.pipelines.document_storage.test_worker	MIRRORED
+edgar_sec/pipelines/document_storage/worker.py	502	tests/pipelines/document_storage/test_worker.py	579	tests.pipelines.document_storage.test_merger;tests.pipelines.document_storage.test_operator_and_cli;tests.pipelines.document_storage.test_vacuum;tests.pipelines.document_storage.test_worker	MIRRORED
 edgar_sec/pipelines/filing_catalog/catalog_job.py	316	tests/pipelines/filing_catalog/test_catalog_job.py	297	tests.engine.company_family.test_clustering;tests.engine.selection.test_features;tests.pipelines.filing_catalog.conftest;tests.pipelines.filing_catalog.test_catalog_job;tests.pipelines.filing_catalog.test_discovery;tests.pipelines.filing_catalog.test_planner	MIRRORED
 edgar_sec/pipelines/filing_catalog/cli.py	231	tests/pipelines/filing_catalog/test_cli.py	270	tests.pipelines.filing_catalog.test_cli	MIRRORED
 edgar_sec/pipelines/filing_catalog/discovery.py	258	tests/pipelines/filing_catalog/test_discovery.py	177	tests.pipelines.filing_catalog.test_discovery	MIRRORED
@@ -157,15 +157,16 @@ edgar_sec/pipelines/filing_catalog/operator.py	83			tests.pipelines.filing_catal
 edgar_sec/pipelines/filing_catalog/paths.py	189			tests.engine.company_family.test_clustering;tests.engine.selection.test_features;tests.pipelines.filing_catalog.conftest;tests.pipelines.filing_catalog.test_catalog_job;tests.pipelines.filing_catalog.test_discovery;tests.pipelines.filing_catalog.test_expansion;tests.pipelines.filing_catalog.test_phase25_contract;tests.pipelines.filing_catalog.test_planner;tests.pipelines.filing_catalog.test_policy_planner;tests.pipelines.filing_catalog.test_publication	IMPORTED
 edgar_sec/pipelines/filing_catalog/planner.py	562	tests/pipelines/filing_catalog/test_planner.py	307	tests.pipelines.filing_catalog.test_discovery;tests.pipelines.filing_catalog.test_expansion;tests.pipelines.filing_catalog.test_phase25_contract;tests.pipelines.filing_catalog.test_planner;tests.pipelines.filing_catalog.test_policy_planner	MIRRORED
 edgar_sec/pipelines/filing_catalog/publication.py	191	tests/pipelines/filing_catalog/test_publication.py	218	tests.pipelines.filing_catalog.test_phase25_contract;tests.pipelines.filing_catalog.test_planner;tests.pipelines.filing_catalog.test_policy_planner;tests.pipelines.filing_catalog.test_publication	MIRRORED
-edgar_sec/pipelines/metadata_sync/augmentation.py	228	tests/pipelines/metadata_sync/test_augmentation.py	303	tests.pipelines.metadata_sync.test_augmentation	MIRRORED
+edgar_sec/pipelines/metadata_sync/augmentation.py	234	tests/pipelines/metadata_sync/test_augmentation.py	251	tests.pipelines.metadata_sync.test_augmentation	MIRRORED
 edgar_sec/pipelines/metadata_sync/checkpoints.py	133	tests/pipelines/metadata_sync/test_checkpoints.py	110	tests.pipelines.metadata_sync.test_augmentation;tests.pipelines.metadata_sync.test_checkpoints;tests.pipelines.metadata_sync.test_end_to_end	MIRRORED
-edgar_sec/pipelines/metadata_sync/cli.py	289				UNTESTED
-edgar_sec/pipelines/metadata_sync/manifest.py	99	tests/pipelines/metadata_sync/test_manifest.py	71	tests.pipelines.metadata_sync.test_augmentation;tests.pipelines.metadata_sync.test_checkpoints;tests.pipelines.metadata_sync.test_end_to_end;tests.pipelines.metadata_sync.test_manifest;tests.pipelines.metadata_sync.test_merger;tests.pipelines.metadata_sync.test_planner;tests.pipelines.metadata_sync.test_worker	MIRRORED
-edgar_sec/pipelines/metadata_sync/merger.py	248	tests/pipelines/metadata_sync/test_merger.py	315	tests.pipelines.metadata_sync.test_augmentation;tests.pipelines.metadata_sync.test_end_to_end;tests.pipelines.metadata_sync.test_merger	MIRRORED
-edgar_sec/pipelines/metadata_sync/operator.py	132				UNTESTED
-edgar_sec/pipelines/metadata_sync/paths.py	132			tests.pipelines.metadata_sync.test_augmentation;tests.pipelines.metadata_sync.test_checkpoints;tests.pipelines.metadata_sync.test_end_to_end;tests.pipelines.metadata_sync.test_merger;tests.pipelines.metadata_sync.test_planner;tests.pipelines.metadata_sync.test_worker	IMPORTED
-edgar_sec/pipelines/metadata_sync/planner.py	166	tests/pipelines/metadata_sync/test_planner.py	121	tests.pipelines.metadata_sync.test_augmentation;tests.pipelines.metadata_sync.test_checkpoints;tests.pipelines.metadata_sync.test_end_to_end;tests.pipelines.metadata_sync.test_merger;tests.pipelines.metadata_sync.test_planner;tests.pipelines.metadata_sync.test_worker	MIRRORED
-edgar_sec/pipelines/metadata_sync/sec_client.py	120			tests.pipelines.metadata_sync.conftest;tests.support	IMPORTED
-edgar_sec/pipelines/metadata_sync/smoke_test.py	126				UNTESTED
-edgar_sec/pipelines/metadata_sync/source_registry.py	215			tests.pipelines.metadata_sync.test_augmentation	IMPORTED
-edgar_sec/pipelines/metadata_sync/worker.py	268	tests/pipelines/metadata_sync/test_worker.py	188	tests.pipelines.metadata_sync.test_augmentation;tests.pipelines.metadata_sync.test_end_to_end;tests.pipelines.metadata_sync.test_worker	MIRRORED
+edgar_sec/pipelines/metadata_sync/cli.py	372	tests/pipelines/metadata_sync/test_cli.py	358	tests.pipelines.metadata_sync.test_cli;tests.pipelines.metadata_sync.test_operator	MIRRORED
+edgar_sec/pipelines/metadata_sync/manifest.py	110	tests/pipelines/metadata_sync/test_manifest.py	71	tests.pipelines.metadata_sync.test_augmentation;tests.pipelines.metadata_sync.test_checkpoints;tests.pipelines.metadata_sync.test_end_to_end;tests.pipelines.metadata_sync.test_manifest;tests.pipelines.metadata_sync.test_merger;tests.pipelines.metadata_sync.test_planner;tests.pipelines.metadata_sync.test_registry;tests.pipelines.metadata_sync.test_worker	MIRRORED
+edgar_sec/pipelines/metadata_sync/merger.py	278	tests/pipelines/metadata_sync/test_merger.py	378	tests.pipelines.metadata_sync.test_augmentation;tests.pipelines.metadata_sync.test_end_to_end;tests.pipelines.metadata_sync.test_merger	MIRRORED
+edgar_sec/pipelines/metadata_sync/operator.py	146	tests/pipelines/metadata_sync/test_operator.py	264	tests.pipelines.metadata_sync.test_operator	MIRRORED
+edgar_sec/pipelines/metadata_sync/paths.py	148	tests/pipelines/metadata_sync/test_paths.py	110	tests.pipelines.metadata_sync.test_augmentation;tests.pipelines.metadata_sync.test_checkpoints;tests.pipelines.metadata_sync.test_end_to_end;tests.pipelines.metadata_sync.test_merger;tests.pipelines.metadata_sync.test_paths;tests.pipelines.metadata_sync.test_planner;tests.pipelines.metadata_sync.test_registry;tests.pipelines.metadata_sync.test_source_registry;tests.pipelines.metadata_sync.test_worker	MIRRORED
+edgar_sec/pipelines/metadata_sync/planner.py	195	tests/pipelines/metadata_sync/test_planner.py	173	tests.pipelines.metadata_sync.test_augmentation;tests.pipelines.metadata_sync.test_checkpoints;tests.pipelines.metadata_sync.test_end_to_end;tests.pipelines.metadata_sync.test_merger;tests.pipelines.metadata_sync.test_planner;tests.pipelines.metadata_sync.test_worker	MIRRORED
+edgar_sec/pipelines/metadata_sync/registry.py	348	tests/pipelines/metadata_sync/test_registry.py	318	tests.pipelines.metadata_sync.test_registry	MIRRORED
+edgar_sec/pipelines/metadata_sync/sec_client.py	120	tests/pipelines/metadata_sync/test_sec_client.py	126	tests.pipelines.metadata_sync.conftest;tests.pipelines.metadata_sync.test_cli;tests.pipelines.metadata_sync.test_sec_client;tests.support	MIRRORED
+edgar_sec/pipelines/metadata_sync/smoke_test.py	141	tests/pipelines/metadata_sync/test_smoke_test.py	201	tests.pipelines.metadata_sync.test_smoke_test	MIRRORED
+edgar_sec/pipelines/metadata_sync/source_registry.py	215	tests/pipelines/metadata_sync/test_source_registry.py	180	tests.pipelines.metadata_sync.test_registry;tests.pipelines.metadata_sync.test_source_registry	MIRRORED
+edgar_sec/pipelines/metadata_sync/worker.py	268	tests/pipelines/metadata_sync/test_worker.py	188	tests.domain.submissions.test_models;tests.pipelines.metadata_sync.test_augmentation;tests.pipelines.metadata_sync.test_end_to_end;tests.pipelines.metadata_sync.test_worker	MIRRORED

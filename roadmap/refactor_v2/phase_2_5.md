@@ -3,7 +3,7 @@
 > [!IMPORTANT]
 > **Status:** IMPLEMENTED, with M6.3/M6.4 deferred (see §7).  
 > **Predecessors:** 
-> - [Phase 1 (`metadata_sync`)](file:///home/denny/edgar-sec/roadmap/refactor_v2/phase_1.md): COMPLETE.
+> - [Phase 1 (`metadata_sync`)](file:///home/denny/edgar-sec/roadmap/refactor_v2/phase_1.md): feature-complete, with documented scope reductions (see that document's §10).
 > - [Phase 2 (`filing_catalog`)](file:///home/denny/edgar-sec/roadmap/refactor_v2/phase_2.md): COMPLETE.
 > **Target Scope:** Comprehensive implementation of Phase 2.5 (Document Storage, HTML/ASCII Normalization, Reflow, Table Tagging, and Cover Checkmark Solving). Phase 2.5 consumes the Phase 2 `target_plan.parquet` and produces content-addressed normalized document snapshots.
 > **Scope Scale:** Phase 2.5 encompasses ~363 unported `.v1` files (~50,000+ lines of dense engine, layout, and storage code). Because of this scale, the implementation plan is decomposed into **six modular, linked sub-plans** anchored by this master specification.

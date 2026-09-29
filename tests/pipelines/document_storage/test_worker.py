@@ -548,3 +548,32 @@ def test_filing_processor_records_the_cover_boundary() -> None:
     assert processed.metadata["cover_boundary_detected_line"] == 17
     assert processed.metadata["cover_boundary_line"] is not None
     assert processed.metadata["cover_start_detected_line"] == 1
+
+
+def test_filing_processor_survives_a_payload_carrying_page_markers() -> None:
+    """Regression: `_page_counts` compared against a non-existent enum member.
+
+    `PageMarkerAction` has REMOVE / NORMALIZE / PRESERVE. The counting helper
+    asked for `STRIP`, so any acquired payload that actually contained page
+    furniture raised AttributeError inside the worker — and the 1,387-test suite
+    stayed green because neither committed golden nor any prior test fed a
+    payload with a page marker. Real EDGAR HTML always has page furniture, so
+    this aborted essentially every production acquisition.
+    """
+    payload = b"\n".join(
+        [
+            b"UNITED STATES SECURITIES AND EXCHANGE COMMISSION",
+            b"FORM 10-K",
+            b"ACME INDUSTRIES, INC.",
+            b"<PAGE>",
+            b"PART I",
+            b"ITEM 1. BUSINESS",
+            b"The Company manufactures widgets and services for customers.",
+            b"</PAGE>",
+        ]
+    )
+    processed = FilingProcessor().process(payload, _locator())
+
+    assert "page_marker_count" in processed.metadata
+    assert processed.metadata["page_marker_count"] > 0
+    assert processed.metadata["page_marker_stripped_count"] > 0

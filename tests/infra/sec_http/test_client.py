@@ -102,3 +102,86 @@ def test_get_json_ex_rejects_non_object_root(tmp_path: Path) -> None:
     client = _client(tmp_path, session)
     with pytest.raises(PermanentHttpError, match="expected JSON object"):
         client.get_json_ex("https://data.sec.gov/submissions/CIK0000000001.json")
+
+
+class _BytesSession:
+    """A session returning a fixed oversized body."""
+
+    def __init__(self, content: bytes) -> None:
+        self.content = content
+        self.calls: list[str] = []
+
+    def get(self, url: str, headers=None, timeout=None) -> _Response:
+        self.calls.append(url)
+        return _Response(200, self.content)
+
+
+def _size_limited_client(
+    tmp_path: Path, session: _BytesSession, limit: int
+) -> SecHttpClient:
+    from edgar_sec.infra.sec_http.rate_limit import RateLimiter
+    from edgar_sec.infra.sec_http.retry import RetryPolicy
+
+    return SecHttpClient(
+        user_agent="Sample Company test@sample.com",
+        cache_dir=tmp_path,
+        max_response_bytes=limit,
+        rate_limiter=RateLimiter(min_interval_s=0.001),
+        retry_policy=RetryPolicy(max_retries=1, backoff_base_s=0.001, jitter=0.0),
+        timeout_s=1.0,
+        session_factory=lambda: session,
+    )
+
+
+def test_response_too_large_is_permanent(tmp_path: Path) -> None:
+    """An oversized body is never retried; retrying cannot make it smaller.
+
+    The guard is off by default, so the classification is what needs pinning:
+    once a caller opts in, an over-limit response must surface as a permanent
+    error rather than burning the retry budget against a deterministic outcome.
+    """
+    from edgar_sec.infra.sec_http.errors import ResponseTooLargeError
+
+    body = b"x" * 4096
+    session = _BytesSession(body)
+    client = _size_limited_client(tmp_path, session, limit=1024)
+
+    with pytest.raises(ResponseTooLargeError, match="exceeded 1024 bytes"):
+        client.get_bytes("https://www.sec.gov/files/company_tickers.json")
+
+    assert len(session.calls) == 1
+    assert client.peek_cache("https://www.sec.gov/files/company_tickers.json") is None
+
+
+def test_response_too_large_is_recorded_as_a_permanent_failure(
+    tmp_path: Path,
+) -> None:
+    from edgar_sec.infra.sec_http.errors import ResponseTooLargeError
+
+    url = "https://www.sec.gov/files/company_tickers.json"
+    session = _BytesSession(b"y" * 2048)
+    client = _size_limited_client(tmp_path, session, limit=512)
+
+    with pytest.raises(ResponseTooLargeError):
+        client.get_bytes(url)
+
+    # The ledger recorded it permanently, so the next attempt is skipped
+    # outright rather than re-fetching a response that cannot change.
+    with pytest.raises(PermanentHttpError, match="size_exceeded"):
+        client.get_bytes(url)
+    assert len(session.calls) == 1
+
+
+def test_a_response_at_the_limit_is_accepted(tmp_path: Path) -> None:
+    body = b"z" * 512
+    session = _BytesSession(body)
+    client = _size_limited_client(tmp_path, session, limit=512)
+    assert client.get_bytes("https://www.sec.gov/files/company_tickers.json") == body
+
+
+def test_the_size_guard_is_off_by_default(tmp_path: Path) -> None:
+    body = b"w" * 10_000
+    session = _BytesSession(body)
+    client = _client(tmp_path, session)  # type: ignore[arg-type]
+    assert client.max_response_bytes is None
+    assert client.get_bytes("https://www.sec.gov/files/company_tickers.json") == body

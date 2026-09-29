@@ -158,24 +158,31 @@ hand-written.
   `flatten_settings` / `render_dotenv` behaviour.
 - `tests/foundation/runtime/test_resources.py` — exercises the `runtime` group
   through `derive_resources()`.
+- `tests/foundation/runtime/test_runtime_settings.py` — the mirrored test for
+  `runtime.py`: spec defaults against the exported constants, the `env`/`cli`/
+  `config` flags, bounds validation, and the `machine_local` partition between
+  plan-defining and machine-derived settings.
 - `tests/infra/storage/test_parquet.py` — pins `catalog.row_group_size` to the
   Parquet writer's `DEFAULT_ROW_GROUP_SIZE`.
 
-There are no separate test modules for `catalog.py`, `paths.py`, `runtime.py`,
-`sec.py`, or `validators.py`.
+There are no separate test modules for `catalog.py`, `paths.py`, `sec.py`, or
+`validators.py`; `validators.py` is covered through
+`test_runtime_settings.py::test_validators_enforce_their_documented_bounds`.
 
 ## Deliberate gaps
 
 - **No persistence.** `resolve_settings(config=...)` takes a `Mapping` the
   caller has already loaded. Nothing in `edgar_sec/foundation/` opens, reads, or
-  writes a settings file. Every call site in the repository — `derive_resources`,
-  `pipelines/metadata_sync/cli.py`, `source_registry.py`, `smoke_test.py`, and
-  `pipelines/filing_catalog/catalog_job.py` — calls `resolve_settings()` or
-  `resolve_runtime_settings()` with no `config` argument at all. The
-  `config=True` flag on `runtime.chunk_size` and `runtime.partition_count`
-  therefore describes a capability with no backing store. v1's
-  `.v1/defs/runtime/config_io.py` and `settings_cli.py` were not ported. A phase
-  needing persistence must supply the mapping.
+  writes a settings file, and no call site in the repository passes a `config`
+  argument. v1's `.v1/defs/runtime/config_io.py` and `settings_cli.py` were not
+  ported, and neither was v1's Phase 1 `ProjectConfig` / `--configure`; the
+  retirement is recorded in `roadmap/refactor_v2/phase_1.md` §10. A phase needing
+  persistence must supply the mapping. The `config=True` flags that
+  `runtime.chunk_size` and `runtime.partition_count` previously carried have been
+  **removed**: a spec declaring persistence with no backing store advertises a
+  capability that does not exist, and
+  `tests/foundation/runtime/test_runtime_settings.py` now fails if either
+  reintroduces it.
 - **`render_dotenv` has no callers.** It returns a template string; no writer
   in this package places it on disk, and nothing in `edgar_sec/` invokes it.
   Callers that want a `.env` must write the string themselves, and

@@ -8,6 +8,7 @@ chunking produces a distinct plan.
 
 from __future__ import annotations
 
+from pathlib import Path
 from typing import Any
 
 from edgar_sec.domain.submissions.schemas import SCHEMA_VERSION
@@ -43,6 +44,16 @@ def derive_plan_id(
 
 def _partition_for(chunk_index: int, partition_count: int) -> int:
     return chunk_index % partition_count
+
+
+def _check_plan_version(plan: dict, key: str, expected: str, path: Path) -> None:
+    """Reject a plan whose recorded version the current code no longer honours."""
+    recorded = plan.get(key)
+    if recorded != expected:
+        raise ValueError(
+            f"incompatible plan at {path}: {key} is {recorded!r}, this build "
+            f"requires {expected!r}; regenerate the plan"
+        )
 
 
 def build_plan(
@@ -90,6 +101,18 @@ def build_plan(
             }
         )
 
+    assigned = [
+        chunk_id
+        for partition in partitions
+        for chunk_id in partition["chunk_ids"]  # type: ignore[index]
+    ]
+    planned = [chunk["chunk_id"] for chunk in chunks]
+    if sorted(assigned) != sorted(planned):
+        raise ValueError(
+            "partition assignment does not cover every planned chunk exactly once: "
+            f"planned {planned}, assigned {assigned}"
+        )
+
     plan_id = derive_plan_id(manifest.input_fingerprint, chunk_size, partition_count)
     return {
         "plan_id": plan_id,
@@ -118,7 +141,10 @@ def load_plan(run_paths: RunPaths) -> dict[str, Any]:
     """Load and validate a previously written plan.
 
     A plan written for different plan-defining inputs is rejected rather than
-    silently reused, so a stale plan can never produce a mislabeled snapshot.
+    silently reused, so a stale plan can never produce a mislabeled snapshot. A
+    plan written under a different schema or plan format is rejected too: the
+    recorded versions are part of the plan's identity, and replaying a plan the
+    current code no longer honours would silently mislabel the snapshot.
     """
     import json
 
@@ -128,6 +154,9 @@ def load_plan(run_paths: RunPaths) -> dict[str, Any]:
     plan = json.loads(path.read_text(encoding="utf-8"))
     if not isinstance(plan, dict):
         raise ValueError(f"plan is not a JSON object: {path}")
+
+    _check_plan_version(plan, "plan_format_version", PLAN_FORMAT_VERSION, path)
+    _check_plan_version(plan, "schema_version", SCHEMA_VERSION, path)
 
     expected = derive_plan_id(
         str(plan.get("input_fingerprint", "")),

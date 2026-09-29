@@ -76,6 +76,22 @@ class MetadataPaths:
         """Manifest describing one immutable source snapshot."""
         return self.source_dir(source_name, snapshot_id) / "manifest.json"
 
+    def registry_root(self, registry_id: str) -> Path:
+        """Directory holding one content-addressed curated-input projection."""
+        return self.metadata_root / "registries" / registry_id
+
+    def registry_manifest_root(self, registry_id: str) -> Path:
+        """Directory holding one registry's published Parquet datasets."""
+        return self.registry_root(registry_id) / "datasets"
+
+    def registry_dataset(self, registry_id: str, dataset: str) -> Path:
+        """Path of one published registry Parquet dataset."""
+        return self.registry_manifest_root(registry_id) / f"{dataset}.parquet"
+
+    def effective_input_file(self, registry_id: str) -> Path:
+        """Path of the effective CIK input CSV for one registry."""
+        return self.registry_root(registry_id) / "effective_cik_input.csv"
+
 
 @dataclass(frozen=True, slots=True)
 class RunPaths:

@@ -83,7 +83,20 @@ python run.py metadata merge --input uploads/cik-sec.csv
 # Add newly requested CIKs to an existing snapshot without refetching the base:
 python run.py metadata augment --input uploads/cik-sec-new.csv \
     --base-snapshot-id <id> --new-snapshot-id <id>
+
+# Capture an immutable external source snapshot, then project the curated input
+# against it to find registrants upstream that the CSV does not cover:
+python run.py metadata sources refresh
+python run.py metadata sources compare --input uploads/cik-sec.csv \
+    --source-manifest <artifacts-root>/metadata/sources/company_tickers/<id>/manifest.json
 ```
+
+Effective chunking comes from `--chunk-size` / `--partition-count`, else
+`RUNTIME_CHUNK_SIZE` / `RUNTIME_PARTITION_COUNT`, else the code default. Keep
+those stable across `plan`, `run`, and `merge`: the plan id is derived from the
+input fingerprint and the effective chunking, so changing them mid-run resolves a
+different plan and the command fails loudly rather than reusing mismatched
+checkpoints. There is no persisted project configuration and no `--configure`.
 
 ### 5. Filing Catalog Pipeline (Zero Network)
 
@@ -257,7 +270,8 @@ tests/                      # Test tree mirrors the edgar_sec/ package tree
 │   └── submissions/        # unroller, builder, profile
 └── pipelines/
     ├── metadata_sync/      # manifest, planner, checkpoints, worker, merger,
-    │                       # augmentation, source_registry, end_to_end
+    │                       # augmentation, source_registry, registry,
+    │                       # smoke_test, operator, cli
     ├── filing_catalog/     # discovery, expansion, planner, publication, cli
     └── document_storage/   # fetching, processor, worker, delegation, merger,
                             # vacuum, queries, operator, cli, review

@@ -18,10 +18,12 @@ from __future__ import annotations
 
 import argparse
 import sys
+from dataclasses import replace
 from pathlib import Path
 
 from edgar_sec.foundation.runtime.memory import reclaim
 from edgar_sec.foundation.runtime.settings import resolve_runtime_settings
+from edgar_sec.foundation.runtime.settings.runtime import DEFAULT_CHUNK_SIZE
 
 from .manifest import read_cik_manifest
 from .paths import resolve_run_paths
@@ -43,14 +45,31 @@ def build_parser() -> argparse.ArgumentParser:
         help="preview artifacts root; never a production snapshot root",
     )
     parser.add_argument("--sample-size", type=int, default=3)
-    parser.add_argument("--chunk-size", type=int, default=1000)
-    parser.add_argument("--workers", type=int, default=0)
+    parser.add_argument(
+        "--chunk-size",
+        type=int,
+        default=None,
+        help=f"CIKs per chunk (default: runtime.chunk_size, {DEFAULT_CHUNK_SIZE})",
+    )
+    parser.add_argument(
+        "--workers",
+        type=int,
+        default=None,
+        help="worker threads; machine-derived if unset",
+    )
     return parser
+
+
+def _build_client(artifacts_root: Path) -> SubmissionsClient:
+    """Build the live client, caching inside the preview root only."""
+    settings = resolve_runtime_settings()
+    return SubmissionsClient(settings=settings.sec, cache_dir=str(artifacts_root))
 
 
 def main(argv: list[str] | None = None) -> int:
     """Run a bounded live fetch and report per-CIK status."""
     args = build_parser().parse_args(argv)
+    settings = resolve_runtime_settings()
 
     try:
         manifest = read_cik_manifest(args.input)
@@ -60,15 +79,14 @@ def main(argv: list[str] | None = None) -> int:
 
     sample = manifest.ciks[: max(1, args.sample_size)]
     plan = build_plan(
-        manifest.__class__(
-            input_name=manifest.input_name,
-            input_path=manifest.input_path,
-            input_fingerprint=manifest.input_fingerprint,
+        replace(
+            manifest,
             ciks=sample,
-            skipped=manifest.skipped,
-            duplicate_count=manifest.duplicate_count,
+            names=manifest.names[: len(sample)],
         ),
-        chunk_size=args.chunk_size,
+        chunk_size=(
+            settings.default_chunk_size if args.chunk_size is None else args.chunk_size
+        ),
         partition_count=1,
     )
 
@@ -86,10 +104,7 @@ def main(argv: list[str] | None = None) -> int:
     run_paths = resolve_run_paths(plan["plan_id"], artifacts)
     write_plan(plan, run_paths)
 
-    settings = resolve_runtime_settings()
-    client = SubmissionsClient(
-        settings=settings.sec, cache_dir=str(run_paths.metadata.artifacts_root)
-    )
+    client = _build_client(run_paths.metadata.artifacts_root)
     workers = resolve_workers(args.workers or None)
 
     result = run_chunk(

@@ -28,6 +28,12 @@ ignore = ["TRY004"]
 # which step failed and must not swallow them.
 "check.py" = ["PLW1510"]
 
+# merger.py isolates progress-callback failures. A progress callback is
+# presentation supplied by a caller (a stderr line, a tqdm bar, a test recorder);
+# a broken bar must never reject an already-validated snapshot, so the callback
+# is wrapped in a deliberately blind except with no logging.
+"edgar_sec/pipelines/metadata_sync/merger.py" = ["BLE001", "S110"]
+
 # One-off audit tooling under .kilo/plans/ is not part of the shipped package
 # and is not covered by check.py, but it is still linted. ISC004 is suppressed
 # because the implementation ledger stores audit evidence as long prose in

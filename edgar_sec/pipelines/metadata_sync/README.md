@@ -37,20 +37,21 @@ quality gates."
 | Module | Responsibility |
 | :--- | :--- |
 | `__init__.py` | Docstring only (1 loc). No re-exports, per AGENTS.md §1.2. |
-| `cli.py` | The five commands and the argparse surface; each `cmd_*` is a plain callable the operator also calls (289 loc). |
-| `operator.py` | Interactive wizard; a presentation shim over the same `cmd_*` functions (132 loc). |
-| `manifest.py` | CIK CSV ingestion, header detection, normalization, deduplication, skipped-row reporting, and the input fingerprint (99 loc). |
-| `planner.py` | Deterministic chunk/partition planning, `plan_id` derivation, atomic `plan.json` write, and stale-plan rejection (166 loc). |
-| `paths.py` | `MetadataPaths` / `RunPaths`; the published-vs-transient split (132 loc). |
+| `cli.py` | The five pipeline commands plus the nested `sources` group and the argparse surface; each `cmd_*` is a plain callable the operator also calls (372 loc). |
+| `operator.py` | Interactive wizard; a presentation shim over the same `cmd_*` functions (146 loc). |
+| `manifest.py` | CIK CSV ingestion, header detection, normalization, deduplication, skipped-row reporting, curated names, and the input fingerprint (110 loc). |
+| `planner.py` | Deterministic chunk/partition planning, `plan_id` derivation, partition-coverage invariant, atomic `plan.json` write, and stale-plan/schema-version rejection (195 loc). |
+| `paths.py` | `MetadataPaths` / `RunPaths`; the published-vs-transient split plus source and registry locations (148 loc). |
 | `sec_client.py` | One CIK to its submissions document plus every historical file listed under `filings.files` (120 loc). |
-| `worker.py` | Resumable chunk execution over a thread pool; the never-refetch guarantee (268 loc). |
+| `worker.py` | Resumable chunk and partition execution over a thread pool; the never-refetch guarantee (268 loc). |
 | `checkpoints.py` | What counts as a *complete* chunk on disk (133 loc). |
-| `merger.py` | Coordinator validation, out-of-core sorted merge, snapshot manifest, pointer advance (248 loc). |
-| `augmentation.py` | Delta merge onto a published snapshot without refetching the base (228 loc). |
-| `source_registry.py` | Write-once, content-addressed `company_tickers.json` snapshots (215 loc). |
-| `smoke_test.py` | Credential-gated live check that never publishes; deliberately outside pytest (126 loc). |
+| `merger.py` | Coordinator validation, out-of-core sorted merge, progress events, snapshot manifest, pointer advance (278 loc). |
+| `augmentation.py` | Delta merge onto a published snapshot without refetching the base (234 loc). |
+| `source_registry.py` | Write-once, content-addressed `company_tickers.json` snapshots, reached by `sources refresh` (215 loc). |
+| `registry.py` | Curated-versus-source comparison and the effective-input projection, reached by `sources compare` (348 loc). |
+| `smoke_test.py` | Credential-gated live check that never publishes, and the documented replacement for v1's `preview` command (141 loc). |
 
-Total 2,157 lines across 13 files: 12 modules plus a one-line `__init__.py`.
+Total 2,807 lines across 14 files: 13 modules plus a one-line `__init__.py`.
 
 ## Contracts
 
@@ -184,7 +185,8 @@ Total 2,157 lines across 13 files: 12 modules plus a one-line `__init__.py`.
 - `schema_matches` — Parquet footer schema equals the canonical schema.
   `checkpoints.py`.
 - `merge_chunks` — validate all chunks and publish a sorted snapshot dataset;
-  raises `MergeError` on any failure. `merger.py`.
+  raises `MergeError` on any failure. Accepts an optional `progress` callback
+  that receives one event per merge stage. `merger.py`.
 - `validate_chunks` — the full rejection list, returning ordered checkpoint
   paths. `merger.py`.
 - `publish_snapshot` — write the snapshot manifest and advance the pointer.
@@ -204,7 +206,7 @@ Total 2,157 lines across 13 files: 12 modules plus a one-line `__init__.py`.
   `delta_row_count`, `refetched_ciks`, `report`, and the `total_row_count`
   property. `augmentation.py`.
 - `refresh_company_tickers` — fetch and publish one immutable source snapshot.
-  `source_registry.py`.
+  Reached from the CLI by `sources refresh`. `source_registry.py`.
 - `load_source_snapshot` — load a source manifest and verify the referenced
   payload digest. `source_registry.py`.
 - `parse_company_tickers`, `source_snapshot_id` — listing normalization and
@@ -212,6 +214,18 @@ Total 2,157 lines across 13 files: 12 modules plus a one-line `__init__.py`.
 - `SourceSnapshot`, `SourceRegistryError`, `SOURCE_NAME`
   (`"company_tickers"`), `SOURCE_URL`, `SOURCE_SCHEMA_VERSION`, and
   `SOURCE_MANIFEST_KIND`. `source_registry.py`.
+- `compare_sources` — project the curated CIK input against a published source
+  snapshot into listing observations, the registrant registry, new CIKs, an
+  augmentation worklist, and an effective CIK input CSV, each with a published
+  manifest. Performs no network access. Reached from the CLI by
+  `sources compare`. `registry.py`.
+- `registry_id_for` — content-derived registry identity for one
+  source/curated-input pair. `registry.py`.
+- `load_registry_manifest` — load one effective-input manifest and verify its CSV
+  digest. `registry.py`.
+- `RegistryError`, `REGISTRY_SCHEMA_VERSION`, `REGISTRY_MANIFEST_KIND`,
+  `EFFECTIVE_INPUT_MANIFEST_KIND`, `LISTING_SCHEMA`, `REGISTRY_SCHEMA`,
+  `WORKLIST_SCHEMA`. `registry.py`.
 - `build_parser`, `main` — the bounded live smoke test's command surface.
   `smoke_test.py`.
 
@@ -228,6 +242,9 @@ python run.py metadata run    --input uploads/cik-sec.csv
 python run.py metadata merge  --input uploads/cik-sec.csv
 python run.py metadata augment --input uploads/cik-sec-new.csv \
     --base-snapshot-id <id> --new-snapshot-id <id>
+python run.py metadata sources refresh
+python run.py metadata sources compare --input uploads/cik-sec.csv \
+    --source-manifest <artifacts-root>/metadata/sources/company_tickers/<id>/manifest.json
 ```
 
 Common flags, added to every subcommand by `add_common` (`cli.py:224-244`):
@@ -236,9 +253,16 @@ Common flags, added to every subcommand by `add_common` (`cli.py:224-244`):
 | :--- | :--- | :--- | :--- |
 | `--input` | str | required | CIK manifest CSV. |
 | `--artifacts` | str | `""` | Artifacts root override; empty means `resolve_paths().artifacts_root`. |
-| `--chunk-size` | int | `DEFAULT_CHUNK_SIZE` (1000) | CIKs per resumable chunk. |
-| `--partition-count` | int | `DEFAULT_PARTITION_COUNT` (1) | Operational partitions; chunk *i* goes to partition `i % partition_count`. |
-| `--workers` | int | `0` | Worker threads; `0` means machine-derived. |
+| `--chunk-size` | int | `runtime.chunk_size` (1000) | CIKs per resumable chunk. |
+| `--partition-count` | int | `runtime.partition_count` (1) | Operational partitions; chunk *i* goes to partition `i % partition_count`. |
+| `--workers` | int | `runtime.workers` (machine-derived) | Worker threads; unset means machine-derived. |
+
+Each of these three flags defaults to *unset* in the parser and is resolved at
+the options boundary in `cli.py`, so building a parser never reads the process
+environment. Resolution order is **CLI flag → environment/`.env` → code
+default**. `test_cli.py` pins each tier, including the regression that
+`RUNTIME_CHUNK_SIZE=2 RUNTIME_PARTITION_COUNT=3` must produce a plan recording
+`2` and `3`.
 
 Per-subcommand flags:
 
@@ -246,11 +270,14 @@ Per-subcommand flags:
   planning, for a bounded plan.
 - `status`: none beyond the common set.
 - `run`: `--chunk` (int), `--partition` (int). `--chunk` takes precedence over
-  `--partition`; with neither, every planned chunk is a target
-  (`cli.py:149-154`).
-- `merge`: `--snapshot-id` (str, default `""`) — the snapshot name; empty falls
-  back to the plan id.
+  `--partition`; with neither, every planned chunk is a target. The partition
+  branch calls `worker.run_partition` and rejects an id absent from the plan.
+- `merge`: none beyond the common set. Snapshot identity is **plan-derived**;
+  see the deliberate gap below.
 - `augment`: `--base-snapshot-id` and `--new-snapshot-id`, **both required**.
+- `sources refresh`: `--artifacts` only.
+- `sources compare`: `--input`, `--source-manifest`, and `--artifacts` — the
+  first two required.
 
 Exit behaviour. `main` wraps the dispatch in `try/except` for
 `FileNotFoundError`, `ValueError`, and `RuntimeError`, printing
@@ -385,41 +412,79 @@ both checked, both `MergeError` otherwise (`augmentation.py:186-200`).
 
 Nothing is refetched and nothing is re-planned unnecessarily:
 
-- `run` and `status` re-derive the plan id from the manifest fingerprint when
-  `--plan-id` is absent, so an unchanged input resolves to the same plan
-  directory and the same chunk checkpoints.
-- `load_plan` refuses a plan whose recorded inputs do not reproduce its id, so a
-  stale plan cannot silently produce a mislabeled snapshot.
+- `run` and `status` re-derive the plan id from the manifest fingerprint and the
+  *effective* chunking settings, so an unchanged input resolves to the same plan
+  directory and the same chunk checkpoints. There is no `--plan-id` override:
+  the plan id is derived, never chosen.
+- `load_plan` refuses a plan whose recorded inputs do not reproduce its id, and
+  refuses a plan whose `schema_version` or `plan_format_version` differs from the
+  running build, so a stale plan cannot silently produce a mislabeled snapshot.
+  A plan written by an older build must be regenerated.
 - Each chunk is revalidated before it is skipped, so a truncated or
   schema-drifted checkpoint is refetched rather than trusted.
 - `merge` is idempotent in the sense that it re-validates everything and then
   publishes; it does not itself skip already-merged chunks, because the snapshot
-  directory is content-addressed by `plan_id` by default.
+  directory is content-addressed by `plan_id`.
+
+Because the plan id follows the effective chunking, changing `RUNTIME_CHUNK_SIZE`
+between `plan` and `run`/`merge` resolves a *different* plan and the command
+fails with `error: missing plan: ...` rather than reusing the wrong checkpoints.
+`test_cli.py::test_changed_effective_chunking_fails_loudly` pins that.
 
 ## Tests
 
 - `tests/pipelines/metadata_sync/test_manifest.py` (71 loc, 6 tests) — CSV
   ingestion, header detection, malformed rows, duplicates, fingerprint.
-- `tests/pipelines/metadata_sync/test_planner.py` (121 loc, 11) — plan identity,
-  chunking, partition assignment, stale-plan rejection.
+- `tests/pipelines/metadata_sync/test_planner.py` (173 loc, 16) — plan identity,
+  chunking, partition assignment, partition-coverage invariant,
+  stale-plan/schema-version/format-version rejection.
 - `tests/pipelines/metadata_sync/test_checkpoints.py` (110 loc, 7) — what counts
   as complete.
 - `tests/pipelines/metadata_sync/test_worker.py` (188 loc, 10) — one-row-per-CIK,
   status coercion, never-refetch.
-- `tests/pipelines/metadata_sync/test_merger.py` (315 loc, 14) — the rejection
-  list and the merge itself.
-- `tests/pipelines/metadata_sync/test_augmentation.py` (303 loc, 12) — the delta
-  path.
+- `tests/pipelines/metadata_sync/test_merger.py` (378 loc, 18) — the rejection
+  list, the merge itself, progress events, and plan-derived snapshot identity.
+- `tests/pipelines/metadata_sync/test_augmentation.py` (251 loc, 8) — the delta
+  path and its documented `augment_from_manifest` wrapper.
 - `tests/pipelines/metadata_sync/test_end_to_end.py` (150 loc, 3) — the
   plan → run → merge replay.
+- `tests/pipelines/metadata_sync/test_cli.py` (358 loc, 19) — the command
+  surface, the settings-resolution tiers, `sources` routing, partition
+  execution, launcher registration.
+- `tests/pipelines/metadata_sync/test_operator.py` (264 loc, 17) — menu
+  bindings, namespace shape, action-to-command delegation.
+- `tests/pipelines/metadata_sync/test_paths.py` (110 loc, 7) — the
+  published-vs-transient split, snapshot/plan/source/registry locations.
+- `tests/pipelines/metadata_sync/test_sec_client.py` (126 loc, 9) — submissions
+  fan-out, historical-file outcomes, permanent vs transient errors.
+- `tests/pipelines/metadata_sync/test_source_registry.py` (180 loc, 10) — the
+  immutable source snapshot lifecycle.
+- `tests/pipelines/metadata_sync/test_registry.py` (318 loc, 14) — the
+  curated-versus-source comparison, its published artifacts and manifests, and
+  the effective-input CSV contract.
+- `tests/pipelines/metadata_sync/test_smoke_test.py` (201 loc, 8) — the
+  preview-root guard and exit codes. The live fetch itself is not exercised.
 - `tests/pipelines/metadata_sync/conftest.py` (24 loc) — shared setup.
 
-1,283 lines total. Offline and deterministic; the network fakes are injected at
-the `SecHttpClient` transport seam through `tests.support`, never by reaching
-into module internals (AGENTS.md §6.5).
+Mirrored tests in the dependency closure:
 
-`smoke_test.py` is not collected by pytest. It is the credential-gated live path
-and the default gate stays offline (`smoke_test.py:12-14`).
+- `tests/domain/submissions/test_models.py` (125 loc, 8) — the deferred domain
+  models' own invariants.
+- `tests/engine/submissions/test_helpers.py` (165 loc, 14) — coercion and alias
+  resolution.
+- `tests/infra/storage/test_parquet.py` (120 loc, 8) — including Parquet write
+  atomicity, which the chunk-checkpoint contract depends on.
+- `tests/infra/sec_http/test_client.py` (187 loc, 12) — including the
+  `max_response_bytes` permanent-failure classification.
+
+Every source module in this package now has a mirrored test file. Offline and
+deterministic; the network fakes are injected at the `SecHttpClient` transport
+seam through `tests.support`, never by reaching into module internals
+(AGENTS.md §6.5).
+
+`smoke_test.py` is itself not collected by pytest as a live run, but its parser
+and its preview-root guard are covered offline by `test_smoke_test.py`
+(`smoke_test.py:12-14`).
 
 `tests/test_network_isolation.py` deliberately includes
 `pipelines.metadata_sync` in its final walk — the package that *does* import
@@ -428,22 +493,67 @@ dependency that exists.
 
 ## Deliberate gaps
 
-- **No mirrored tests for five modules.** `cli.py`, `operator.py`, `paths.py`,
-  `sec_client.py`, and `source_registry.py` have no
-  `tests/pipelines/metadata_sync/test_<module>.py`, which falls short of
-  AGENTS.md §6.3's one-test-file-per-source-module rule. The CLI is covered only
-  indirectly, through `test_end_to_end.py`; `sec_client.py` and
-  `source_registry.py` have no test module at all. This is a real gap, not a
-  design choice, and adding a module here should come with its mirrored test.
+- **No persisted project configuration.** v1 wrote `.artifacts/metadata/config.json`
+  through a `--configure` command and validated plans against saved options. That
+  is not carried forward. Effective settings are the CLI flag, then
+  environment/`.env`, then the code default, and `plan.json` is the record of
+  what a run actually used. There is no `--configure`, no stored operator
+  defaults, and `--input` must be supplied on every command. The plan-defining
+  stale-plan guard v1 paired with the config file is not lost with it:
+  `load_plan` re-derives the plan id from the plan's own recorded fingerprint and
+  chunking, and now also refuses a plan whose `schema_version` or
+  `plan_format_version` differs from the running build. The cost is that an
+  operator must keep effective chunking stable across `plan`/`run`/`merge`; when
+  it changes, the derived plan id changes and the command fails loudly with
+  `error: missing plan` instead of reusing mismatched checkpoints.
+  `runtime.chunk_size` and `runtime.partition_count` are declared `env=True,
+  cli=True` only; the `config=True` flags they previously carried described a
+  capability that had no backing store and were removed.
+- **Snapshot identity is plan-derived.** There is no `--snapshot-id` override.
+  The chunk rows, the `MergeReport`, the published manifest, and the snapshot
+  directory all use the plan id, so a row's `snapshot_id` can never disagree with
+  the artifact containing it. A merge-only rename flag would have published an
+  artifact whose rows still carried the plan id, so it was removed rather than
+  wired.
+- **The v1 two-stage merge protocol is retired.** v1 published one finalized
+  artifact per partition (`merge-partition`) and then merged only those
+  artifacts, binding each to the plan with `plan_hash` and `artifact_sha256`.
+  This package validates every chunk directly against the canonical schema and
+  publishes one sorted snapshot in a single stage, keeping all of AGENTS.md
+  §4.3's validation requirements and additionally binding the published manifest
+  to its plan id. What v2 does **not** have is partition-level intermediate
+  artifacts, receipts, or report regeneration from a finalized artifact without
+  chunk access. With `runtime.partition_count` defaulting to 1 the boundary would
+  be inert anyway. Merge *progress* events were restored: `merge_chunks` takes an
+  optional `progress` callback and the CLI renders stage events to stderr.
+- **`preview` is replaced by `smoke_test.py`, not a subcommand.** v1's lifecycle
+  listed `preview` as a bounded, explicitly non-production command. This package
+  has no `preview` subcommand; `smoke_test.py` performs the same bounded live
+  fetch under a mandatory preview-root guard and never publishes. It is a
+  standalone module command rather than part of the CLI, and its parser and guard
+  are covered offline by `test_smoke_test.py`.
+- **The domain submission models are deferred, not produced.** `EntityProfile`,
+  `SubmissionsAggregate`, `FilingRecord`, `Listing`, `FormerName`, and `Address`
+  in `edgar_sec/domain/submissions/models.py` have **no producer in this
+  pipeline**. The live row contract is `SUBMISSION_METADATA_SCHEMA` and the
+  engine builder; `normalize_one_cik` returns a row dict, never a typed aggregate.
+  They are retained as the domain vocabulary a future rendering/projection layer
+  will read published Arrow rows into, and
+  `tests/domain/submissions/test_models.py` pins their invariants *and* asserts
+  that no current pipeline module constructs them, so the deferred status stays
+  checkable. Building the adapter that consumes them is out of scope here.
+- **`engine/submissions/helpers.normalize_cik_padded` was removed.** It was an
+  unused orphan that zero-filled a raw value with no validation, weaker than the
+  `edgar_sec.domain.identity.Cik` path that actually performs padding. `Cik` is
+  the single padding authority.
 - **No parallel settings registry, deliberately.** AGENTS.md §3.1 says a new
   phase registers its own spec dictionaries. This package registers none: it
-  reads `resolve_runtime_settings().sec` for SEC identity and rate limits
-  (`cli.py:81-82`, `source_registry.py:147`, `smoke_test.py:89`) and takes
-  chunk size, partition count, and worker count as command-line arguments
-  defaulting to `foundation/runtime/settings/runtime.py`'s `DEFAULT_CHUNK_SIZE`
-  and `DEFAULT_PARTITION_COUNT`. The specs they default to are declared once, in
-  Layer 0. There is no `settings.py` in this package, and `os.environ` is
-  unreachable here under the `environment-access` scanner.
+  reads `resolve_runtime_settings()` for SEC identity, rate limits, and the
+  chunk/partition/worker defaults (`cli.py`, `source_registry.py`,
+  `smoke_test.py`) and overrides chunk size, partition count, and worker count
+  from the command line. The specs it reads are declared once, in Layer 0.
+  There is no `settings.py` in this package, and `os.environ` is unreachable here
+  under the `environment-access` scanner.
 - **`--workers` is threads, not processes.** A reader looking for a process pool
   in Phase 1 will not find one, and that is correct: the reason is written at
   `worker.py:1-7`. Process isolation enters at Phase 2.5, where a worker
@@ -456,22 +566,24 @@ dependency that exists.
   the fetch moves on (`sec_client.py:94-105`). Historical files are "required
   inputs rather than best-effort extras" in the sense that a missing one changes
   the row to `partial`; it does not mean they are re-requested.
+- **The source registry is one hardcoded source.** `SOURCE_NAME` and `SOURCE_URL`
+  are module constants for `company_tickers.json`. `sources refresh` publishes an
+  immutable, content-addressed snapshot and `sources compare` projects the
+  curated input against it, but there is no other external source, and nothing
+  in the fetch path consults a source snapshot: a CIK manifest still arrives as a
+  CSV. `compare_sources` is a pure projection over its two inputs and performs no
+  network access, so a comparison is reproducible from immutable evidence.
 - **No date, era, or cohort reasoning.** Planning slices on CIK identity and
   nothing else. Everything downstream of identity — form filters, amendment
   policy, suffixes, quotas, stratification — belongs to
   `filing_catalog/planner.py`. The `SelectionPolicy` type is not referenced in
   this package.
 - **No deletion or garbage collection.** There is no command that prunes
-  snapshots, plans, chunk checkpoints, or source snapshots. A published snapshot
-  directory is never removed by this package, and nothing compacts the transient
-  tree. Phase 2.5 has `vacuum_snapshots()`; Phase 1 has no equivalent, by
-  design — a Phase 1 dataset is a direct function of its input manifest, so
-  re-planning is cheaper than vacuuming.
-- **`source_registry.py` is a single hardcoded source.** `SOURCE_NAME` and
-  `SOURCE_URL` are module constants for `company_tickers.json`, and no CLI
-  command invokes `refresh_company_tickers()`. It is library surface, exercised
-  by the module's own logic, not a pipeline step: a CIK manifest still arrives
-  as a CSV.
+  snapshots, plans, chunk checkpoints, source snapshots, or registries. A
+  published snapshot directory is never removed by this package, and nothing
+  compacts the transient tree. Phase 2.5 has `vacuum_snapshots()`; Phase 1 has no
+  equivalent, by design — a Phase 1 dataset is a direct function of its input
+  manifest, so re-planning is cheaper than vacuuming.
 - **`filing_record_count` is computed by a second full read.**
   `_filing_record_count` re-opens the published Parquet and sums the `filings`
   list lengths (`merger.py:76-85`) after the COPY has already run. It is
@@ -480,5 +592,5 @@ dependency that exists.
 - **`plan.json` embeds the full CIK list.** `cik_padded` is stored alongside the
   chunk boundaries, which is redundant by roughly a factor of the chunk count.
   The redundancy is what makes `load_plan` able to verify that the chunk
-  boundaries reconstruct the CIK list (`planner.py:143-150`), so it is a
-  deliberate integrity check rather than an oversight.
+  boundaries reconstruct the CIK list (`planner.py`), so it is a deliberate
+  integrity check rather than an oversight.

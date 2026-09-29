@@ -12,6 +12,7 @@ classes of finding are deliberately distinguished:
 
 from __future__ import annotations
 
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Any
@@ -71,6 +72,22 @@ class MergeReport:
             "duplicate_accessions": self.duplicate_accessions,
             "warnings": self.warnings,
         }
+
+
+def _safe_progress(
+    progress: Callable[[dict[str, Any]], None] | None,
+) -> Callable[[dict[str, Any]], None]:
+    """Wrap a progress callback so presentation failure cannot fail a merge."""
+
+    def emit(event: dict[str, Any]) -> None:
+        if progress is None:
+            return
+        try:
+            progress(event)
+        except Exception:
+            pass
+
+    return emit
 
 
 def _filing_record_count(paths: list[str]) -> int:
@@ -171,8 +188,18 @@ def merge_chunks(
     plan: dict,
     run_paths: RunPaths,
     snapshot_id: str,
+    *,
+    progress: Callable[[dict[str, Any]], None] | None = None,
 ) -> MergeReport:
-    """Validate all chunks and publish a sorted snapshot dataset."""
+    """Validate all chunks and publish a sorted snapshot dataset.
+
+    ``progress`` receives one event per merge stage. A merge over millions of
+    rows is long enough that silence is indistinguishable from a hang, so the
+    stages are reported. A failing progress callback never aborts publication:
+    presentation must not be able to reject a validated snapshot.
+    """
+    emit = _safe_progress(progress)
+    emit({"type": "merge_start", "plan_id": str(plan.get("plan_id", ""))})
     chunk_paths = validate_chunks(plan, run_paths)
     str_paths = [str(path) for path in chunk_paths]
     report = MergeReport(
@@ -182,6 +209,7 @@ def merge_chunks(
         input_fingerprint=str(plan.get("input_fingerprint", "")),
         merged_at=utc_now_iso(),
     )
+    emit({"type": "chunks_validated", "chunks": len(chunk_paths)})
 
     output_path = run_paths.metadata.snapshot_file(snapshot_id)
     con = connect()
@@ -202,6 +230,7 @@ def merge_chunks(
                 f"{len(report.duplicate_accessions)} duplicate accession(s) observed; "
                 "accession is not globally unique"
             )
+        emit({"type": "merge_stage", "stage": "sorting"})
         row_count = concat_to_parquet(con, str_paths, output_path, order_by=("cik",))
     finally:
         con.close()
@@ -219,6 +248,7 @@ def merge_chunks(
     report.output_path = str(output_path)
     report.artifact_sha256 = file_sha256(output_path)
     report.filing_record_count = _filing_record_count([str(output_path)])
+    emit({"type": "readback_done", "rows": row_count})
     return report
 
 

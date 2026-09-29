@@ -28,7 +28,7 @@ It is pure computation. No disk I/O, no network, no ambient state
 | `builder.py` | The assembly. `normalize_submissions` builds one canonical row; `validate_row_shapes` fail-fasts on any value that will not fit the declared Arrow field type; `build_submission_table` assembles rows into a `pa.Table`; `_failed_row` emits a terminal row carrying every schema field. |
 | `filings.py` | The columnar unroller. `zip_filing_arrays` turns one `filings.recent`-shaped section into one record dict per index; `dedupe_filings` is first-occurrence-wins on the normalized accession; `normalize_submission_files` normalizes the historical file descriptors. `FILING_ARRAY_KEYS` names the 16 columns. |
 | `profile.py` | Entity identity. `PROFILE_KEYS` (the 24 recognised payload keys), `ADDRESS_KEYS` (the 10 address fields), `address_field` (camelCase → snake_case), `zip_listings`, `normalize_address`, `normalize_former_names`. |
-| `helpers.py` | The coercion primitives. `add_anomaly`, `resolve_alias`, `normalize_cik_padded`, `accession_normalized`, `build_archive_url`, `normalize_items`, `to_bool`, `to_int`, plus `ACCESSION_RE` and a re-export of `canonical_json`. |
+| `helpers.py` | The coercion primitives. `add_anomaly`, `resolve_alias`, `accession_normalized`, `build_archive_url`, `normalize_items`, `to_bool`, `to_int`, plus `ACCESSION_RE` and a re-export of `canonical_json`. |
 
 ## Contracts
 
@@ -109,8 +109,6 @@ It is pure computation. No disk I/O, no network, no ambient state
   `edgar_sec/engine/submissions/helpers.py:35`.
 - `resolve_alias` — resolve a case-insensitive known alias, flagging disagreeing duplicates.
   `edgar_sec/engine/submissions/helpers.py:42`.
-- `normalize_cik_padded` — ten-digit zero-padded CIK from an int or string.
-  `edgar_sec/engine/submissions/helpers.py:71`.
 - `accession_normalized` — hyphen-free 18-digit accession, or `None`.
   `edgar_sec/engine/submissions/helpers.py:77`.
 - `ACCESSION_RE` — `^\d{10}-\d{2}-\d{6}$`, the hyphenated form.
@@ -130,11 +128,17 @@ It is pure computation. No disk I/O, no network, no ambient state
   golden values captured from the legacy `.v1` normalizer run against the same committed
   fixtures; the module docstring states that a deviation is a parity regression, not a
   preference change.
+- `tests/engine/submissions/test_helpers.py` — the mirrored test for `helpers.py`. It pins the
+  public export list, the total-by-contract coercion helpers, alias conflict reporting, and the
+  accession and archive-URL bounds. It also asserts `normalize_cik_padded` is *absent*: CIK
+  padding belongs to `edgar_sec.domain.identity.Cik`, which validates range, and the removed
+  helper was a weaker unvalidated zero-fill with no caller.
 
 Note the filename: the test is `test_normalizer.py`, but there is no `normalizer.py` in
 `edgar_sec/engine/submissions/`. The name is inherited from v1's `phases/01/.../normalize/`
 and is the one place in this package where the test tree does not mirror the source tree
-(`AGENTS.md` §6.2). It does cover all four source modules.
+(`AGENTS.md` §6.2). It covers `builder.py`, `filings.py`, and `profile.py`;
+`helpers.py` has its own mirrored module.
 
 ## Deliberate gaps
 

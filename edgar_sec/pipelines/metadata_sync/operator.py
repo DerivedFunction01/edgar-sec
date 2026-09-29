@@ -11,9 +11,10 @@ import sys
 
 from edgar_sec.foundation.runtime.interactive import (
     MenuAction,
-    operator_entrypoint,
     prompt_text,
+    run_interactive_menu,
 )
+from edgar_sec.foundation.runtime.settings import resolve_runtime_settings
 
 from .cli import cmd_augment, cmd_merge, cmd_plan, cmd_run, cmd_status
 from .cli import main as cli_main
@@ -28,17 +29,21 @@ DEFAULT_INPUT = "uploads/cik-sec.csv"
 def _namespace(
     input_path: str, chunk_size: str, partition_count: str, workers: str
 ) -> argparse.Namespace:
+    """Build a command namespace from wizard answers.
+
+    A blank numeric answer stays ``None`` so the settings registry supplies the
+    effective value; only an explicit answer overrides it.
+    """
     return argparse.Namespace(
         command="run",
         input=input_path,
         artifacts="",
-        chunk_size=int(chunk_size),
-        partition_count=int(partition_count),
-        workers=int(workers),
+        chunk_size=int(chunk_size) if chunk_size else None,
+        partition_count=int(partition_count) if partition_count else None,
+        workers=int(workers) if workers else None,
         chunk=None,
         partition=None,
         limit=None,
-        snapshot_id="",
     )
 
 
@@ -47,14 +52,20 @@ def _ask_configuration() -> tuple[str, str, str, str] | None:
     input_path = prompt_text("Input CIK manifest", DEFAULT_INPUT)
     if not input_path:
         return None
-    chunk_size = prompt_text("CIKs per chunk", "1000")
-    partition_count = prompt_text("Partition count", "1")
-    workers = prompt_text("Worker threads (0 = machine-derived)", "0")
+    settings = resolve_runtime_settings()
+    chunk_size = prompt_text(
+        "CIKs per chunk (blank = configured default)", str(settings.default_chunk_size)
+    )
+    partition_count = prompt_text(
+        "Partition count (blank = configured default)",
+        str(settings.default_partition_count),
+    )
+    workers = prompt_text("Worker threads (blank = machine-derived)", "")
     return input_path, chunk_size, partition_count, workers
 
 
 def build_operator_menu() -> tuple[MenuAction, ...]:
-    """Build the four operator actions bound to the shared commands."""
+    """Build the five operator actions bound to the shared commands."""
     return (
         MenuAction("1", "Plan generation", _action_plan),
         MenuAction("2", "Status and resume inspect", _action_status),
@@ -125,7 +136,10 @@ def _action_augment() -> None:
 
 def main(argv: list[str] | None = None) -> int:
     """Operator entrypoint: interactive by default, CLI when given a command."""
-    return operator_entrypoint(MENU_TITLE, build_operator_menu(), cli_main, argv)
+    args = sys.argv[1:] if argv is None else argv
+    if not args:
+        return run_interactive_menu(MENU_TITLE, build_operator_menu(), exit_key="0")
+    return cli_main(args)
 
 
 if __name__ == "__main__":

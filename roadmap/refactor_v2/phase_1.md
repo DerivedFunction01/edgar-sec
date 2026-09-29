@@ -1,8 +1,13 @@
 # Plan: Phase 1 Clean Slate Implementation (`edgar_sec.pipelines.metadata_sync`)
 
 > [!NOTE]
-> **Status:** Phase 1 Complete  
-> **Progress:** 100% — Milestones 0, 1, 2, 3, 4, 5, 6, and 6.1 implemented, tested, and passing all quality gates.  
+> **Status:** Phase 1 feature-complete, with documented scope reductions
+> **Progress:** Milestones 0, 1, 2, 3, 4, 5, 6, and 6.1 implemented and passing
+> all quality gates. Every `metadata_sync` source module now has a mirrored test
+> file. A parity audit against the v1 reference found four v1 capabilities that
+> are **deliberately not carried forward** and one that was **missing and has
+> been restored**; they are enumerated in §10 rather than being implied by the
+> "complete" label.
 > **Repository Context:** All legacy v1 code has been moved to `.v1/` as a read-only historical specification. The repository root is a 100% clean workspace. We are constructing the production v2 architecture from the ground up without legacy shims or technical debt.
 
 ---
@@ -385,3 +390,68 @@ edgar-sec/ (v2 Root)
 - [x] Create `edgar_sec/pipelines/metadata_sync/source_registry.py` (content-addressed immutable `company_tickers` snapshots).
 - [x] Wire `augment` into the CLI and the interactive operator.
 - [x] Verify: a snapshot with N CIKs augmented with K new CIKs publishes N+K rows, preserves base rows byte-for-byte, and refetches only the K new CIKs.
+
+---
+
+## 10. v1 Parity Scope Decisions (added by the parity audit)
+
+A line-by-line audit of the v1 Phase 1 closure (28 modules, 5,909 loc) against
+v2 found the pipeline functionally complete but the *record* of that completion
+inaccurate: several v1 capabilities had been dropped without being recorded, one
+was wired to nothing, and the pipeline published a wrong plan whenever an
+operator set a documented environment variable. Each item below is a decision,
+not an oversight, and each is stated in
+`edgar_sec/pipelines/metadata_sync/README.md` under **Deliberate gaps**.
+
+### Restored
+
+- **Curated-versus-source projection.** v1's `core/registry.py` built a
+  registrant registry, listing observations, a new-CIK set, an augmentation
+  worklist, an effective CIK input CSV, and a diff, and exposed them as
+  `compare_sources`. v2 shipped neither the projection nor a CLI path to the
+  source snapshots that existed beside it, leaving 215 loc of `source_registry`
+  with zero production callers. v2 now has `registry.py`, `sources refresh`, and
+  `sources compare`, restoring the input side of the augmentation story: the
+  worklist and effective CSV feed the existing `augment --input` flow.
+
+### Retired, deliberately
+
+- **Persisted project configuration.** v1's `core/config.py` wrote
+  `.artifacts/metadata/config.json` through `--configure`. Not carried forward.
+  Effective settings are CLI flag → environment/`.env` → code default, and
+  `plan.json` records what a run used. v1's stale-plan guard is not lost with
+  it: `load_plan` re-derives the plan id from the plan's own recorded inputs and
+  now also rejects a plan whose `schema_version` or `plan_format_version`
+  differs from the running build.
+- **Two-stage merge protocol.** v1's `merge-partition` published finalized
+  per-partition artifacts bound to the plan by `plan_hash` and
+  `artifact_sha256`, and a final merge consumed only those. v2 validates every
+  chunk directly against the canonical schema and publishes one sorted snapshot.
+  All of AGENTS.md §4.3's requirements are kept. Partition-level intermediates,
+  receipts, and chunk-free report regeneration are not. Merge *progress* events,
+  which v1 emitted and v2 had dropped, are restored.
+- **`preview` command.** v1 listed `preview` in its five-command lifecycle. v2's
+  bounded, credential-gated, non-publishing `smoke_test.py` performs the same
+  function and is documented as the replacement; it is not a CLI subcommand.
+- **Merge-only snapshot rename.** `--snapshot-id` existed on `merge` but was
+  never read by the options boundary, while workers had already stamped every
+  row with the plan id. Rather than wire a late rename that would publish an
+  artifact whose rows disagreed with it, snapshot identity is plan-derived
+  throughout.
+
+### Corrected defects found by the audit
+
+- `runtime.chunk_size` and `runtime.partition_count` were registered settings
+  that nothing read: the CLI supplied module constants, so
+  `RUNTIME_CHUNK_SIZE=2` still produced a plan recording `1000`. The CLI now
+  resolves the registry at the options boundary, and the unsupported `config=True`
+  flags on those two specs were removed.
+- `load_plan` recorded `schema_version` and displayed it in `status` but never
+  enforced it; a forged version was accepted.
+- `build_plan` derived partitions by modulo with no coverage assertion.
+- `worker.run_partition` and `augmentation.augment_from_manifest` were exported
+  and documented with no caller; `engine/submissions/helpers.normalize_cik_padded`
+  was an unused weaker duplicate of `domain.identity.Cik`.
+- Six `metadata_sync` source modules had no mirrored test file, and Parquet
+  write atomicity and the `max_response_bytes` permanent-failure classification
+  were unverified. All now have named tests.

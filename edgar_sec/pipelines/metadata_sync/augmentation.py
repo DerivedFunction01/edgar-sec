@@ -13,6 +13,10 @@ from typing import Any
 
 from edgar_sec.domain.submissions.schemas import SUBMISSION_METADATA_SCHEMA
 from edgar_sec.foundation.hashing import file_sha256
+from edgar_sec.foundation.runtime.settings.runtime import (
+    DEFAULT_CHUNK_SIZE,
+    DEFAULT_PARTITION_COUNT,
+)
 from edgar_sec.infra.storage.duckdb import (
     concat_to_parquet,
     connect,
@@ -36,6 +40,7 @@ from .worker import run_chunk
 __all__ = [
     "AugmentResult",
     "augment",
+    "augment_from_manifest",
     "base_snapshot_ciks",
     "plan_delta",
 ]
@@ -72,7 +77,7 @@ def plan_delta(
     base_ciks: set[str],
     *,
     chunk_size: int,
-    partition_count: int = 1,
+    partition_count: int = DEFAULT_PARTITION_COUNT,
 ) -> dict[str, Any]:
     """Build a plan covering only CIKs absent from the base snapshot."""
     delta_ciks = tuple(cik for cik in manifest.ciks if cik not in base_ciks)
@@ -90,6 +95,7 @@ def plan_delta(
         input_path=manifest.input_path,
         input_fingerprint=manifest.input_fingerprint,
         ciks=delta_ciks,
+        names=tuple(manifest.name_for(cik) for cik in delta_ciks),
         skipped=manifest.skipped,
         duplicate_count=manifest.duplicate_count,
     )
@@ -108,8 +114,8 @@ def augment(
     *,
     base_snapshot_id: str,
     new_snapshot_id: str,
-    chunk_size: int = 1000,
-    partition_count: int = 1,
+    chunk_size: int = DEFAULT_CHUNK_SIZE,
+    partition_count: int = DEFAULT_PARTITION_COUNT,
     workers: int | None = None,
 ) -> AugmentResult:
     """Augment a published snapshot with any newly requested CIKs.

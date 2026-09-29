@@ -8,7 +8,10 @@ from pathlib import Path
 import pyarrow as pa
 import pyarrow.parquet as pq
 
-from edgar_sec.domain.submissions.schemas import SUBMISSION_METADATA_SCHEMA
+from edgar_sec.domain.submissions.schemas import (
+    SCHEMA_VERSION,
+    SUBMISSION_METADATA_SCHEMA,
+)
 from edgar_sec.engine.submissions.builder import build_submission_table
 from edgar_sec.pipelines.metadata_sync.manifest import read_cik_manifest
 from edgar_sec.pipelines.metadata_sync.merger import (
@@ -116,6 +119,66 @@ def test_publish_snapshot_writes_manifest_and_pointer(tmp_path: Path) -> None:
     pointer = run_paths.metadata.current_pointer
     assert json.loads(pointer.read_text())["snapshot_id"] == "snap1"
     assert manifest["artifact_sha256"] == report.artifact_sha256
+
+
+# ------------------------------------------------------------------- progress
+
+
+def test_merge_emits_progress_events(tmp_path: Path) -> None:
+    """A merge over millions of rows is long enough that silence reads as a hang."""
+    plan, run_paths = _plan(tmp_path)
+    _complete(plan, run_paths)
+    events: list[dict] = []
+
+    merge_chunks(plan, run_paths, "snap1", progress=events.append)
+
+    assert [event["type"] for event in events] == [
+        "merge_start",
+        "chunks_validated",
+        "merge_stage",
+        "readback_done",
+    ]
+    assert events[0]["plan_id"] == plan["plan_id"]
+    assert events[1]["chunks"] == 2
+    assert events[-1]["rows"] == 4
+
+
+def test_a_failing_progress_callback_does_not_fail_the_merge(tmp_path: Path) -> None:
+    """Presentation must not be able to reject a validated snapshot."""
+    plan, run_paths = _plan(tmp_path)
+    _complete(plan, run_paths)
+
+    def explode(_event: dict) -> None:
+        raise RuntimeError("the progress bar is on fire")
+
+    report = merge_chunks(plan, run_paths, "snap1", progress=explode)
+    assert report.row_count == 4
+    assert run_paths.metadata.snapshot_file("snap1").is_file()
+
+
+def test_merge_records_the_plan_id_as_snapshot_identity(tmp_path: Path) -> None:
+    """Snapshot identity is plan-derived, so rows and artifact cannot disagree."""
+    plan, run_paths = _plan(tmp_path)
+    for chunk in plan["chunks"]:
+        rows = [_row(cik, plan["input_fingerprint"]) for cik in chunk["cik_padded"]]
+        for row in rows:
+            row["snapshot_id"] = plan["plan_id"]
+        path = run_paths.chunk_file(int(chunk["chunk_id"]))
+        path.parent.mkdir(parents=True, exist_ok=True)
+        pq.write_table(build_submission_table(rows), path)
+
+    report = merge_chunks(plan, run_paths, plan["plan_id"])
+
+    assert report.snapshot_id == report.plan_id == plan["plan_id"]
+    table = pq.read_table(run_paths.metadata.snapshot_file(plan["plan_id"]))
+    assert set(table.column("snapshot_id").to_pylist()) == {plan["plan_id"]}
+    assert report.to_dict()["schema_version"] == SCHEMA_VERSION
+
+
+def test_merge_progress_is_optional(tmp_path: Path) -> None:
+    plan, run_paths = _plan(tmp_path)
+    _complete(plan, run_paths)
+    assert merge_chunks(plan, run_paths, "snap1").row_count == 4
 
 
 # --------------------------------------------------------------- hard failures

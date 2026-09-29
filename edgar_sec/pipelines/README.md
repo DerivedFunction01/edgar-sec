@@ -11,9 +11,14 @@ in a lower layer and consumed here.
 Three pipelines, each a complete vertical from a published input to a published
 output:
 
-- `metadata_sync/` — Phase 1, complete. Ingests EDGAR submissions metadata for a
-  fingerprinted CIK manifest, chunks it, writes resumable Parquet checkpoints,
-  and publishes a sorted `metadata.parquet` snapshot.
+- `metadata_sync/` — Phase 1, feature-complete with documented scope reductions.
+  Ingests EDGAR submissions metadata for a fingerprinted CIK manifest, chunks it,
+  writes resumable Parquet checkpoints, and publishes a sorted
+  `metadata.parquet` snapshot. It also captures immutable external source
+  snapshots and projects the curated input against them (`sources refresh`,
+  `sources compare`). Retired relative to v1: persisted project configuration,
+  a merge-only snapshot rename, the two-stage partition merge, and a `preview`
+  subcommand — see that package's README for each decision and its reason.
 - `filing_catalog/` — Phase 2, complete. Zero network. Materializes a catalog
   snapshot from a Phase 1 snapshot and publishes immutable, content-addressed
   target plans for the next phase to consume.
@@ -93,18 +98,19 @@ sits at Layer 4.
 | :--- | :--- |
 | `__init__.py` | Docstring only (1 loc). No re-exports, per AGENTS.md §1.2. |
 | `metadata_sync/__init__.py` | Docstring only (1 loc). |
-| `metadata_sync/cli.py` | The five commands and the argparse surface; each `cmd_*` is a plain callable the operator also calls (289 loc). |
-| `metadata_sync/operator.py` | Interactive wizard; a presentation shim over the same `cmd_*` functions (132 loc). |
-| `metadata_sync/planner.py` | Deterministic chunk/partition planning, `plan.json` write and stale-plan rejection (166 loc). |
-| `metadata_sync/manifest.py` | CIK CSV ingestion, normalization, deduplication, and the input fingerprint (99 loc). |
-| `metadata_sync/worker.py` | Resumable chunk execution over a thread pool; the never-refetch guarantee (268 loc). |
+| `metadata_sync/cli.py` | The five pipeline commands, the nested `sources` group, and the argparse surface; each `cmd_*` is a plain callable the operator also calls (372 loc). |
+| `metadata_sync/operator.py` | Interactive wizard; a presentation shim over the same `cmd_*` functions (146 loc). |
+| `metadata_sync/planner.py` | Deterministic chunk/partition planning, `plan.json` write, partition-coverage invariant, and stale-plan/schema-version rejection (195 loc). |
+| `metadata_sync/manifest.py` | CIK CSV ingestion, normalization, deduplication, curated names, and the input fingerprint (110 loc). |
+| `metadata_sync/worker.py` | Resumable chunk and partition execution over a thread pool; the never-refetch guarantee (268 loc). |
 | `metadata_sync/checkpoints.py` | What counts as a *complete* chunk on disk (133 loc). |
-| `metadata_sync/merger.py` | Coordinator validation, out-of-core sorted merge, snapshot manifest, pointer (248 loc). |
-| `metadata_sync/augmentation.py` | Delta merge onto a published snapshot without refetching the base (228 loc). |
+| `metadata_sync/merger.py` | Coordinator validation, out-of-core sorted merge, progress events, snapshot manifest, pointer (278 loc). |
+| `metadata_sync/augmentation.py` | Delta merge onto a published snapshot without refetching the base (234 loc). |
 | `metadata_sync/sec_client.py` | One CIK to its submissions document plus every historical file it lists (120 loc). |
-| `metadata_sync/paths.py` | `MetadataPaths` / `RunPaths`; the published-vs-transient split (132 loc). |
-| `metadata_sync/source_registry.py` | Write-once, content-addressed `company_tickers.json` snapshots (215 loc). |
-| `metadata_sync/smoke_test.py` | Credential-gated live check that never publishes; outside pytest (126 loc). |
+| `metadata_sync/paths.py` | `MetadataPaths` / `RunPaths`; the published-vs-transient split plus source and registry locations (148 loc). |
+| `metadata_sync/source_registry.py` | Write-once, content-addressed `company_tickers.json` snapshots, reached by `sources refresh` (215 loc). |
+| `metadata_sync/registry.py` | Curated-versus-source comparison and the effective-input projection, reached by `sources compare` (348 loc). |
+| `metadata_sync/smoke_test.py` | Credential-gated live check that never publishes; replaces v1's `preview` command (141 loc). |
 | `filing_catalog/__init__.py` | Docstring only (1 loc). |
 | `filing_catalog/cli.py` | The four commands, policy resolution, and the stdout/stderr split (231 loc). |
 | `filing_catalog/operator.py` | Interactive wizard over `cmd_materialize` / `cmd_plan` / `cmd_status` (83 loc). |
@@ -417,9 +423,11 @@ client (`document_storage/cli.py:9-11`).
    (`augmentation.py:1-7`).
 
 On resume, nothing is refetched. `run` re-derives the plan id from the manifest
-fingerprint when `--plan-id` is absent, `load_plan` rejects a plan whose recorded
-`plan_id` does not match its own inputs (`planner.py:132-141`), and each chunk is
-re-validated before it is skipped.
+fingerprint and the effective chunking settings — there is no `--plan-id`
+override, because the plan id is derived rather than chosen — `load_plan`
+rejects a plan whose recorded `plan_id` does not match its own inputs or whose
+`schema_version`/`plan_format_version` differs from the running build, and each
+chunk is re-validated before it is skipped.
 
 The checkpoint contract in one line: **a chunk checkpoint is complete only when
 it exists, its Parquet footer schema equals `SUBMISSION_METADATA_SCHEMA`, it

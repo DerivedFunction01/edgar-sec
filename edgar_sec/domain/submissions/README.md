@@ -96,17 +96,24 @@ tests/domain/submissions/test_schemas.py    1 test function, 55 lines
 
 ## Deliberate gaps
 
-- **`models.py` has no importer anywhere in the repository.** `EntityProfile`,
+- **`models.py` is deferred: no producer constructs these types.** `EntityProfile`,
   `SubmissionsAggregate`, `FilingRecord`, `Address`, `FormerName`, and
-  `Listing` appear in `edgar_sec/` only in their own defining module. The
-  pipeline and the engine both work against the Arrow schema
-  (`engine/submissions/builder.py:9` imports from `schemas.py`) and against raw
-  dicts. `roadmap/refactor_v2/phase_1.md:340` records `models.py` as created in
-  Milestone 1, and it remains a declared contract with no consumer — treat it as
-  the in-memory shape a future caller may adopt, not as live plumbing.
-- **`models.py` has no mirrored test file.** `AGENTS.md` §6.3 requires one test
-  per source module; `tests/domain/submissions/test_models.py` does not exist.
-  Combined with the previous point, the module is both unconsumed and unasserted.
+  `Listing` still have no importer anywhere in `edgar_sec/`. The pipeline and the
+  engine work against the Arrow schema (`engine/submissions/builder.py:9` imports
+  from `schemas.py`) and against raw dicts: `worker.normalize_one_cik` returns a
+  row dict and never a typed aggregate. These types are retained deliberately, as
+  the domain vocabulary a future **rendering/projection layer** will read published
+  Arrow rows into; that adapter does not exist, so the retirement is recorded in
+  `roadmap/refactor_v2/phase_1.md` §10 as deferred rather than as dead code to be
+  deleted. Do not read them as live plumbing: the Arrow schema is the row
+  contract.
+- **`models.py` is now tested, and the test pins the deferral.**
+  `tests/domain/submissions/test_models.py` covers the models' own invariants
+  (frozen slotted dataclasses, default construction, `Cik` identity, nested
+  composition) *and* asserts that `builder`, `filings`, `profile`, and `worker`
+  construct none of them. That last assertion is what makes the deferred status
+  checkable; when the projection adapter lands, that test is what should be
+  replaced, rather than left passing.
 - **`test_schemas.py` holds a single test function.** The 28-column schema, six
   struct types, and `TERMINAL_STATUSES` are pinned by one test. The transitive
   coverage is real — `tests/domain/filing_catalog/test_schemas.py:20` imports

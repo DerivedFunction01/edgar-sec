@@ -27,6 +27,7 @@ class InputManifest:
     input_path: Path
     input_fingerprint: str
     ciks: tuple[str, ...]
+    names: tuple[str, ...] = ()
     skipped: tuple[dict, ...] = field(default=())
     duplicate_count: int = 0
 
@@ -34,6 +35,13 @@ class InputManifest:
     def row_count(self) -> int:
         """Number of usable, deduplicated CIKs."""
         return len(self.ciks)
+
+    def name_for(self, cik: str) -> str:
+        """Curated display name for a CIK, or an empty string when unnamed."""
+        if not self.names:
+            return ""
+        index = self.ciks.index(cik)
+        return self.names[index]
 
 
 def _parse_cik(raw: str) -> str | None:
@@ -65,6 +73,7 @@ def read_cik_manifest(input_path: str | Path) -> InputManifest:
         raise FileNotFoundError(f"input manifest not found: {path}")
 
     ciks: list[str] = []
+    names: list[str] = []
     seen: set[str] = set()
     skipped: list[dict] = []
     duplicates = 0
@@ -85,6 +94,7 @@ def read_cik_manifest(input_path: str | Path) -> InputManifest:
                 continue
             seen.add(cik)
             ciks.append(cik)
+            names.append(row[1].strip() if len(row) > 1 else "")
 
     if not ciks:
         raise ValueError(f"input manifest contains no usable CIKs: {path}")
@@ -94,6 +104,7 @@ def read_cik_manifest(input_path: str | Path) -> InputManifest:
         input_path=path,
         input_fingerprint=file_sha256(path),
         ciks=tuple(ciks),
+        names=tuple(names),
         skipped=tuple(skipped),
         duplicate_count=duplicates,
     )

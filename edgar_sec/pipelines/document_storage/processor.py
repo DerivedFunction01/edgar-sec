@@ -69,7 +69,7 @@ def _page_counts(result: NormalizationResult) -> tuple[int, int, int]:
     stripped = sum(
         1
         for decision in analysis.decisions
-        if decision.action == PageMarkerAction.STRIP
+        if decision.action == PageMarkerAction.REMOVE
     )
     return len(analysis.markers), stripped, len(analysis.decisions) - stripped
 

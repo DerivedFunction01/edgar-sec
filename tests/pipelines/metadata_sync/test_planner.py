@@ -6,9 +6,12 @@ from pathlib import Path
 
 import pytest
 
+from edgar_sec.domain.submissions.schemas import SCHEMA_VERSION
+from edgar_sec.pipelines.metadata_sync import planner
 from edgar_sec.pipelines.metadata_sync.manifest import read_cik_manifest
 from edgar_sec.pipelines.metadata_sync.paths import resolve_run_paths
 from edgar_sec.pipelines.metadata_sync.planner import (
+    PLAN_FORMAT_VERSION,
     build_plan,
     derive_plan_id,
     load_plan,
@@ -112,6 +115,55 @@ def test_load_missing_plan_raises(tmp_path: Path) -> None:
     run_paths = resolve_run_paths("deadbeef", tmp_path)
     with pytest.raises(FileNotFoundError):
         load_plan(run_paths)
+
+
+def test_load_rejects_forged_schema_version(tmp_path: Path) -> None:
+    plan = _plan(chunk_size=2)
+    run_paths = resolve_run_paths(plan["plan_id"], tmp_path)
+    plan["schema_version"] = "0.0.1-FORGED"
+    write_plan(plan, run_paths)
+    with pytest.raises(ValueError, match="schema_version"):
+        load_plan(run_paths)
+
+
+def test_load_rejects_missing_schema_version(tmp_path: Path) -> None:
+    plan = _plan(chunk_size=2)
+    run_paths = resolve_run_paths(plan["plan_id"], tmp_path)
+    del plan["schema_version"]
+    write_plan(plan, run_paths)
+    with pytest.raises(ValueError, match="schema_version"):
+        load_plan(run_paths)
+
+
+def test_load_rejects_foreign_plan_format_version(tmp_path: Path) -> None:
+    plan = _plan(chunk_size=2)
+    run_paths = resolve_run_paths(plan["plan_id"], tmp_path)
+    plan["plan_format_version"] = "99.0.0"
+    write_plan(plan, run_paths)
+    with pytest.raises(ValueError, match="plan_format_version"):
+        load_plan(run_paths)
+
+
+def test_plan_records_the_current_versions() -> None:
+    plan = _plan(chunk_size=2)
+    assert plan["schema_version"] == SCHEMA_VERSION
+    assert plan["plan_format_version"] == PLAN_FORMAT_VERSION
+
+
+def test_build_plan_rejects_incomplete_partition_coverage(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    """The coverage assertion is a build-time invariant, not a test-time hope.
+
+    ``_partition_for`` is the only thing standing between the chunk list and the
+    partition list. If it ever drops or double-assigns a chunk, every downstream
+    guarantee silently weakens, so the plan refuses to build.
+    """
+    monkeypatch.setattr(
+        planner, "_partition_for", lambda index, count: count if index == 0 else index
+    )
+    with pytest.raises(ValueError, match="does not cover every planned chunk"):
+        _plan(chunk_size=1, partition_count=2)
 
 
 def test_plan_chunk_ids_filters_by_partition() -> None:

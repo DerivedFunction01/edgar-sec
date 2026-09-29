@@ -85,16 +85,16 @@ def get_runtime_specs() -> dict[str, dict[str, SettingSpec]]:
                 value_type=int,
                 default=DEFAULT_CHUNK_SIZE,
                 env=True,
-                config=True,
                 cli=True,
+                validate=validate_positive_int,
                 description="source rows per resumable work unit (chunk)",
             ),
             "partition_count": SettingSpec(
                 value_type=int,
                 default=DEFAULT_PARTITION_COUNT,
                 env=True,
-                config=True,
                 cli=True,
+                validate=validate_positive_int,
                 description="partitions the run is distributed into",
             ),
             "threads": SettingSpec(

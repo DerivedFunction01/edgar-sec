@@ -24,7 +24,6 @@ __all__ = [
     "add_anomaly",
     "build_archive_url",
     "canonical_json",
-    "normalize_cik_padded",
     "normalize_items",
     "resolve_alias",
     "to_bool",
@@ -66,12 +65,6 @@ def resolve_alias(
                 ",".join(matches),
             )
     return canonical, value, conflicting, anomalies
-
-
-def normalize_cik_padded(raw: Any) -> str:
-    """Return a 10-digit zero-padded CIK string from a raw integer or string."""
-    text = str(raw or "").strip()
-    return text.zfill(10)
 
 
 def accession_normalized(raw: str | None) -> str | None:
