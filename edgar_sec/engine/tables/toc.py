@@ -8,7 +8,9 @@ from edgar_sec.foundation.text.patterns import RE_DOT_LEADER, RE_PAGE_NUMBER_SUF
 
 RE_PART_REFERENCE = re.compile(r"\bPART\s+(?:[IVXLCDM]+|\d+)\b", re.IGNORECASE)
 RE_ITEM_REFERENCE = re.compile(r"\bITEM\s+\d+(?:\.\d+)*[A-Z]?\b", re.IGNORECASE)
-RE_TOC_ITEM_ROW = re.compile(r"^\s*(?:ITEM|PART)\b.*?(?:\d+|[ivxlc]+\b)", re.IGNORECASE)
+RE_TOC_ITEM_ROW = re.compile(
+    r"^\s*(?:[\|+]\s*)?ITEMS?\s+(\d{1,2})([A-Z])?\b", re.IGNORECASE
+)
 RE_TOC_LEADER = re.compile(r"\.{3,}|[-_]{4,}")
 RE_TOC_PART_TEXT = re.compile(r"\bPART\s+[IVXLCDM]+\b", re.IGNORECASE)
 PART_HEADING_RE = re.compile(r"^\s*PART\s+[IVXLCDM]+\s*$", re.IGNORECASE)

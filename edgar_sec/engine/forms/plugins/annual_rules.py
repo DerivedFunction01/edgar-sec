@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+from edgar_sec.engine.forms.plugins.common_rules import COMMON_PHRASE_RULES
 from edgar_sec.foundation.text.healing import PhraseSequenceRule
 
 # 1. Shares Outstanding & Capital Stock (annual covers)
@@ -102,7 +103,7 @@ EXTENDED_TRANSITION_RULES: list[PhraseSequenceRule] = [
     ),
 ]
 
-ANNUAL_PHRASE_RULES: list[PhraseSequenceRule] = [
+ANNUAL_ADDITIONAL_PHRASE_RULES: list[PhraseSequenceRule] = [
     *SHARES_RULES,
     *PUBLIC_FLOAT_RULES,
     *DOCUMENTS_INCORPORATED_RULES,
@@ -110,7 +111,13 @@ ANNUAL_PHRASE_RULES: list[PhraseSequenceRule] = [
     *EXTENDED_TRANSITION_RULES,
 ]
 
+ANNUAL_PHRASE_RULES: list[PhraseSequenceRule] = [
+    *COMMON_PHRASE_RULES,
+    *ANNUAL_ADDITIONAL_PHRASE_RULES,
+]
+
 __all__ = [
+    "ANNUAL_ADDITIONAL_PHRASE_RULES",
     "ANNUAL_PHRASE_RULES",
     "AUDITOR_RULES",
     "DOCUMENTS_INCORPORATED_RULES",

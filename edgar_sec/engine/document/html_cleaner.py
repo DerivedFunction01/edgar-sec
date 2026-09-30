@@ -368,8 +368,35 @@ def strip_toc_navigation_links(html: str) -> str:
     return _RE_TOC_NAV_LINK.sub("", html)
 
 
+_NON_DISPLAYING_TAGS = build_alternation(
+    ["head", "script", "style", "noscript", "xml"], auto_escape=True
+)
+_RE_NON_DISPLAYING_BLOCKS = re.compile(
+    rf"(?is)<(?:{_NON_DISPLAYING_TAGS})\b[^>]*>.*?</(?:{_NON_DISPLAYING_TAGS})>"
+)
+
+
+def strip_non_displaying_blocks(html: str) -> str:
+    """Strip script, style, head, noscript, and xml blocks."""
+    if (
+        "<head" not in html
+        and "<HEAD" not in html
+        and "<script" not in html
+        and "<SCRIPT" not in html
+        and "<style" not in html
+        and "<STYLE" not in html
+        and "<noscript" not in html
+        and "<NOSCRIPT" not in html
+        and "<xml" not in html
+        and "<XML" not in html
+    ):
+        return html
+    return _RE_NON_DISPLAYING_BLOCKS.sub(" ", html)
+
+
 def clean_html_for_parsing(html: str) -> str:
     """Unified Stage-1 cleaning entry point."""
+    html = strip_non_displaying_blocks(html)
     html = strip_ixbrl_inline_tags(html)
     html = normalize_font_qualified_glyphs(html)
     html = strip_benign_font_styles(html)
@@ -547,6 +574,7 @@ __all__ = [
     "strip_benign_font_styles",
     "strip_font_tag_and_noise_attributes",
     "strip_ixbrl_inline_tags",
+    "strip_non_displaying_blocks",
     "strip_office_metadata_attributes",
     "strip_toc_navigation_links",
 ]

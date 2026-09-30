@@ -16,6 +16,7 @@ from edgar_sec.domain.forms.schemas import (
 )
 from edgar_sec.engine.forms.cover.models import BoundarySignal
 from edgar_sec.engine.forms.plugins.annual_rules import ANNUAL_PHRASE_RULES
+from edgar_sec.engine.forms.plugins.common_rules import COMMON_PHRASE_RULES
 from edgar_sec.engine.forms.plugins.models import (
     GENERIC_FAMILY,
     Evaluator,
@@ -89,6 +90,7 @@ _PLUGINS: dict[str, FormPlugin] = {
         evaluator=_lazy_evaluator(
             "edgar_sec.engine.forms.evaluators.quarterly", "evaluate_quarterly"
         ),
+        healing_rules=tuple(COMMON_PHRASE_RULES),
     ),
     "8-K": FormPlugin(
         family="8-K",

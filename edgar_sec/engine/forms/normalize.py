@@ -75,6 +75,7 @@ from edgar_sec.engine.forms.cover.reflow import (
     is_cover_layout_line,
     is_page_marker_line,
 )
+from edgar_sec.engine.forms.cover.tables import clean_cover_tables
 from edgar_sec.engine.forms.plugins.models import FormPlugin
 from edgar_sec.engine.forms.plugins.registry import get_plugin
 from edgar_sec.engine.reflow.engine import reflow_ascii
@@ -247,7 +248,7 @@ class DocumentNormalizer:
         plugin: FormPlugin | None = None,
         *,
         form: str | None = None,
-        tag_untagged_tables: bool = False,
+        tag_untagged_tables: bool = True,
     ) -> None:
         self._plugin = plugin if plugin is not None else get_plugin(form)
         self.tag_untagged_tables = tag_untagged_tables
@@ -329,11 +330,22 @@ class DocumentNormalizer:
             text = self._plugin.transform_content(text)
             tracer.record("after_form_content", text)
 
+        if boundary.end_line is not None and "<TABLE>" in text:
+            cleaned_cover_text, table_geometries = clean_cover_tables(
+                text,
+                boundary,
+                table_geometries=table_geometries,
+                enabled_cleaners=("report_period",),
+            )
+            if cleaned_cover_text != text:
+                text = tracer.record("after_cover_table_cleaning", cleaned_cover_text)
+
         healing_rules = getattr(self._plugin, "healing_rules", ())
         text, cover_healed = heal_cover_text(
             text,
             boundary,
             healing_rules=healing_rules,
+            merge_binary_blocks=is_html,
             reflow_prose=False,
         )
         if cover_healed:
@@ -452,7 +464,7 @@ def normalize_document(
     target_types: tuple[str, ...] | None = None,
     primary_filename: str | None = None,
     page_artifact_policy: PageArtifactPolicy = PageArtifactPolicy.STRIP,
-    tag_untagged_tables: bool = False,
+    tag_untagged_tables: bool = True,
 ) -> NormalizationResult:
     """Normalize a raw filing payload through the shared chain for its form.
 

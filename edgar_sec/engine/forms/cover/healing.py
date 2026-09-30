@@ -2,14 +2,11 @@
 
 from __future__ import annotations
 
-import re
 from collections.abc import Sequence
 
-from edgar_sec.domain.forms.checkmarks import (
-    CANONICAL_CHECKED,
-    CANONICAL_UNCHECKED,
-    RE_RAW_CHECKED,
-    RE_RAW_UNCHECKED,
+from edgar_sec.engine.forms.cover.binary_blocks import (
+    merge_yes_no_binary_blocks,
+    normalize_checkbox_tokens,
 )
 from edgar_sec.engine.forms.cover.models import CoverBoundary
 from edgar_sec.engine.forms.cover.reflow import (
@@ -25,35 +22,8 @@ from edgar_sec.engine.tables.protection import (
     mask_tagged_tables,
     restore_tagged_tables,
 )
-from edgar_sec.foundation.regex.builder import build_alternation
 from edgar_sec.foundation.text.dates import heal_date_fragments
 from edgar_sec.foundation.text.healing import PhraseSequenceRule, heal_split_lines
-
-_BARE_CHECKED = ("x", "X")
-_RE_BARE_CHECKED = re.compile(
-    rf"(?<!\S)(?:{build_alternation(_BARE_CHECKED, auto_escape=True)})(?!\S)",
-    re.IGNORECASE,
-)
-_RE_BRACKET_CHECKED = re.compile(r"(\[[Xx]\])(?=[A-Za-z0-9])")
-_RE_BRACKET_CHECKED_AFTER = re.compile(r"([A-Za-z0-9])(\[[Xx]\])")
-_RE_BRACKET_UNCHECKED = re.compile(r"(\[ \])(?=[A-Za-z0-9])")
-_RE_BRACKET_UNCHECKED_AFTER = re.compile(r"([A-Za-z0-9])(\[ \])")
-_RE_PAREN_CHECKED = re.compile(r"(\([Xx]\))(?=[A-Za-z0-9])")
-_RE_PAREN_CHECKED_AFTER = re.compile(r"([A-Za-z0-9])(\([Xx]\))")
-
-
-def normalize_checkbox_tokens(text: str) -> str:
-    """Normalize safe checkbox tokens."""
-    text = RE_RAW_CHECKED.sub(CANONICAL_CHECKED, text)
-    text = RE_RAW_UNCHECKED.sub(CANONICAL_UNCHECKED, text)
-    text = _RE_BARE_CHECKED.sub(CANONICAL_CHECKED, text)
-    text = _RE_BRACKET_CHECKED.sub(f"{CANONICAL_CHECKED} ", text)
-    text = _RE_BRACKET_CHECKED_AFTER.sub(rf"\1 {CANONICAL_CHECKED}", text)
-    text = _RE_BRACKET_UNCHECKED.sub(f"{CANONICAL_UNCHECKED} ", text)
-    text = _RE_BRACKET_UNCHECKED_AFTER.sub(rf"\1 {CANONICAL_UNCHECKED}", text)
-    text = _RE_PAREN_CHECKED.sub(f"{CANONICAL_CHECKED} ", text)
-    text = _RE_PAREN_CHECKED_AFTER.sub(rf"\1 {CANONICAL_CHECKED}", text)
-    return text
 
 
 def heal_cover_text(
@@ -80,7 +50,11 @@ def heal_cover_text(
     masked_cover, table_spans = mask_tagged_tables(cover_text)
     masked_cover_lines = masked_cover.splitlines()
 
-    healed_cover_lines = masked_cover_lines
+    healed_cover_lines = (
+        merge_yes_no_binary_blocks(masked_cover_lines)
+        if merge_binary_blocks
+        else masked_cover_lines
+    )
     if reflow_prose:
         reflowed = reflow_ascii(
             "\n".join(healed_cover_lines),

@@ -267,10 +267,30 @@ def _next_cover_transition(
     return None
 
 
+_BODY_SEMANTIC_HEADINGS = (
+    "management's discussion and analysis",
+    "risk factors",
+    "forward-looking statements",
+    "forward looking statements",
+    "forward looking information",
+    "special note regarding forward-looking",
+    "special note regarding forward looking",
+    "cautionary statements",
+    "cautionary note",
+    "safe harbor",
+    "glossary of",
+    "definitions",
+)
+_RE_BODY_SEMANTIC_HEADINGS = re.compile(
+    build_alternation(_BODY_SEMANTIC_HEADINGS, auto_escape=True),
+    re.IGNORECASE,
+)
+
+
 def _first_body_semantic_line(
     lines: list[str], start_line: int, end_line: int
 ) -> int | None:
-    """First body-like prose line between the reference block and the transition.
+    """First body-like semantic heading line between the reference block and the transition.
 
     Used as a depth guard: forward-looking statements and other body-semantic
     sections sometimes sit between the incorporated-reference block and the
@@ -295,16 +315,16 @@ def _first_body_semantic_line(
             or RE_TOC_NUMERIC_LABEL.match(stripped)
         ):
             continue
+        if not _RE_BODY_SEMANTIC_HEADINGS.search(stripped):
+            continue
         lower = stripped.lower()
-        if any(marker in lower for marker in _REFERENCE_DESCRIPTION_MARKERS):
+        if any(marker in lower for marker in ("incorporated", "portions of")):
             continue
         sentence = " ".join(lines[index : min(len(lines), index + 3)]).lower()
         if any(marker in sentence for marker in _QUOTED_SECTION_MARKERS):
             continue
         match = match_structural_line(stripped, index)
         if match is not None and match.is_exact_heading:
-            continue
-        if not is_body_prose(sentence):
             continue
         return index
     return None

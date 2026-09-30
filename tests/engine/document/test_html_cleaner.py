@@ -121,6 +121,19 @@ def test_strip_toc_navigation_links() -> None:
     assert "href" not in cleaned
 
 
+def test_strip_non_displaying_blocks() -> None:
+    html = (
+        "<html><head><title>Document Title</title><style>.a{color:red;}</style></head>"
+        "<body><script>var x=1;</script><noscript>No JS</noscript><p>Visible content</p></body></html>"
+    )
+    cleaned = clean_html_for_parsing(html)
+    assert "Document Title" not in cleaned
+    assert "color:red" not in cleaned
+    assert "var x=1" not in cleaned
+    assert "No JS" not in cleaned
+    assert "Visible content" in cleaned
+
+
 def test_decompose_html_structures() -> None:
     html = "<p>First paragraph.</p><p>Second paragraph.</p>"
     text = decompose_html_structures(html)
