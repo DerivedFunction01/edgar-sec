@@ -22,6 +22,7 @@ from __future__ import annotations
 
 import json
 from collections.abc import Callable
+from pathlib import Path
 from typing import Any
 
 from edgar_sec.infra.storage.manifests import list_snapshots as _scan_snapshot_manifests
@@ -34,18 +35,26 @@ from .paths import (
 )
 from .registry import RegistryError
 from .roster import RosterError
+from .source_registry import SOURCE_MANIFEST_KIND, SOURCE_NAME
 
 __all__ = [
+    "InputSummary",
     "PlanSummary",
     "RosterSummary",
+    "SourceSummary",
     "current_snapshot_id",
     "describe_roster",
+    "describe_source",
+    "list_input_manifests",
     "list_plans",
     "list_rosters",
     "list_snapshots",
+    "list_source_snapshots",
     "plan_summary",
+    "resolve_input_choice",
     "resolve_plan_choice",
     "resolve_snapshot_choice",
+    "resolve_source_choice",
 ]
 
 
@@ -55,6 +64,14 @@ class PlanSummary(dict[str, Any]):
 
 class RosterSummary(dict[str, Any]):
     """One discovered effective-CIK roster, as plain pickable data."""
+
+
+class SourceSummary(dict[str, Any]):
+    """One published external source snapshot, as plain pickable data."""
+
+
+class InputSummary(dict[str, Any]):
+    """One candidate CIK manifest CSV, as plain pickable data."""
 
 
 def _read_plan_manifest(metadata: MetadataPaths, plan_id: str) -> dict[str, Any]:
@@ -250,6 +267,177 @@ def describe_roster(roster: RosterSummary) -> str:
     return f"{roster['registry_id']}  " + ", ".join(parts)
 
 
+def list_source_snapshots(metadata: MetadataPaths) -> list[SourceSummary]:
+    """Every published external source snapshot, newest retrieval first.
+
+    The curated CSV this pipeline plans over is a *seed*: it is a file someone
+    curated at a point in time, and it goes stale as registrants are added.
+    Augmentation exists to close that gap, which means the operator has to be
+    able to see which SEC listing observations are already on disk and how old
+    they are before choosing a cohort. Ordering by ``retrieved_at`` is what makes
+    "the latest" mean something.
+
+    Only manifests are read, matching every other listing here. A snapshot whose
+    manifest is unreadable is reported as such rather than dropped, so an
+    operator is told a source exists and that it cannot currently be read.
+    """
+    root = metadata.sources_root / SOURCE_NAME
+    if not root.is_dir():
+        return []
+    found: list[SourceSummary] = []
+    for entry in sorted(root.iterdir()):
+        if not entry.is_dir():
+            continue
+        path = metadata.source_manifest_file(SOURCE_NAME, entry.name)
+        try:
+            manifest = json.loads(path.read_text(encoding="utf-8"))
+        except (OSError, json.JSONDecodeError) as exc:
+            found.append(
+                SourceSummary(
+                    snapshot_id=entry.name,
+                    manifest_path=str(path),
+                    retrieved_at="",
+                    unique_cik_count=0,
+                    listing_row_count=0,
+                    readable=False,
+                    readable_reason=str(exc),
+                )
+            )
+            continue
+        if not isinstance(manifest, dict):
+            manifest = {}
+        readable = manifest.get("manifest_kind") == SOURCE_MANIFEST_KIND
+        found.append(
+            SourceSummary(
+                snapshot_id=str(manifest.get("snapshot_id", "") or entry.name),
+                manifest_path=str(path),
+                retrieved_at=str(manifest.get("retrieved_at", "")),
+                unique_cik_count=int(manifest.get("unique_cik_count", 0) or 0),
+                listing_row_count=int(manifest.get("listing_row_count", 0) or 0),
+                readable=readable,
+                readable_reason="" if readable else "not a source manifest",
+            )
+        )
+    found.sort(
+        key=lambda item: (item["retrieved_at"], item["snapshot_id"]), reverse=True
+    )
+    return found
+
+
+def describe_source(source: SourceSummary) -> str:
+    """One-line human summary of a source snapshot's age and coverage."""
+    if not source["readable"]:
+        return f"{source['snapshot_id']}  unreadable ({source['readable_reason']})"
+    parts = [f"retrieved {source['retrieved_at'] or 'unknown'}"]
+    if source["unique_cik_count"]:
+        parts.append(f"{source['unique_cik_count']:,} CIKs")
+    if source["listing_row_count"]:
+        parts.append(f"{source['listing_row_count']:,} listings")
+    return f"{source['snapshot_id']}  " + ", ".join(parts)
+
+
+def resolve_source_choice(
+    sources: list[SourceSummary], *, select: Callable[[list[str]], str]
+) -> str:
+    """Choose one source snapshot id from discovered snapshots.
+
+    Returns the empty string when the operator cancels, which the caller reads
+    as "do not proceed". A lone snapshot is still offered rather than adopted:
+    which observations a cohort is built from is a decision, and the whole point
+    of restoring this listing is that the answer is visible before it is made.
+    """
+    if not sources:
+        return ""
+    lines = [
+        f"  {index}. {describe_source(source)}"
+        for index, source in enumerate(sources, start=1)
+    ]
+    choice = select(lines)
+    if not choice:
+        return ""
+    try:
+        index = int(choice)
+    except ValueError:
+        return ""
+    if not 1 <= index <= len(sources):
+        return ""
+    return str(sources[index - 1]["snapshot_id"])
+
+
+def list_input_manifests(directory: str | Path | None = None) -> list[InputSummary]:
+    """Candidate CIK manifest CSVs, by path.
+
+    The curated seed and any hand-supplied delta list both live here, and neither
+    is distinguishable by name: a file called ``cik-sec.csv`` may be the original
+    universe or an increment over it. Guessing from the filename is how an
+    operator ends up silently augmenting against the wrong idea of what they
+    asked for, so a candidate is reported as a CIK manifest and nothing more. The
+    authoritative question -- which of its CIKs the base snapshot is missing -- is
+    answered by subtraction against the chosen base, not here.
+
+    Each candidate is parsed once so an unreadable or empty file is reported as
+    unusable rather than offered and then failing mid-run. The row count is shown
+    because it is the only thing that distinguishes a two-year-old seed from a
+    hand-built increment.
+    """
+    from edgar_sec.foundation.runtime.paths import resolve_paths
+
+    root = Path(directory) if directory is not None else resolve_paths().uploads_root
+    if not root.is_dir():
+        return []
+    from .manifest import read_cik_manifest
+
+    found: list[InputSummary] = []
+    for path in sorted(root.glob("*.csv")):
+        summary = InputSummary(
+            input_path=str(path),
+            name=path.name,
+            row_count=0,
+            readable=False,
+            readable_reason="",
+        )
+        try:
+            manifest = read_cik_manifest(path)
+        except (OSError, ValueError) as exc:
+            summary["readable_reason"] = str(exc)
+        else:
+            summary["row_count"] = len(manifest.ciks)
+            summary["readable"] = True
+        found.append(summary)
+    found.sort(key=lambda item: item["name"])
+    return found
+
+
+def resolve_input_choice(
+    inputs: list[InputSummary], *, select: Callable[[list[str]], str]
+) -> str:
+    """Choose one CIK manifest path from discovered candidates.
+
+    Returns the empty string when the operator cancels or types an answer that
+    names no candidate, which leaves a hand-typed path available: the listing
+    exists to save remembering, not to forbid typing.
+    """
+    if not inputs:
+        return ""
+    lines = [
+        f"  {index}. {item['name']}  ({item['row_count']:,} CIKs)"
+        if item["readable"]
+        else f"  {index}. {item['name']}  unreadable ({item['readable_reason']})"
+        for index, item in enumerate(inputs, start=1)
+    ]
+    choice = select(lines)
+    if not choice:
+        return ""
+    try:
+        index = int(choice)
+    except ValueError:
+        return ""
+    if not 1 <= index <= len(inputs):
+        return ""
+    chosen = inputs[index - 1]
+    return str(chosen["input_path"]) if chosen["readable"] else ""
+
+
 def resolve_snapshot_choice(
     manifests: list[dict[str, Any]],
     current_id: str,
@@ -297,13 +485,22 @@ def _describe_snapshot(manifest: dict[str, Any], current_id: str) -> str:
 
 
 def _describe(plan: PlanSummary) -> str:
-    """One-line human summary of a plan's size and progress."""
+    """One-line human summary of a plan's size, progress, and kind.
+
+    The kind and parent are shown because a delta plan is a plan the ordinary
+    run/merge path cannot publish on its own: merging one would publish the delta
+    alone and drop the base rows it names as its parent. Rendering both kinds
+    identically gave an operator no way to tell which one they were looking at.
+    """
     parts = [f"{plan['row_count']:,} CIKs", f"{plan['chunk_count']} chunks"]
     completed = plan["completed_chunks"]
     if completed < 0:
         parts.append("progress unknown (plan unreadable)")
     else:
         parts.append(f"{completed}/{plan['chunk_count']} done")
+    if plan["kind"] == "delta":
+        parent = plan["parent_snapshot_id"]
+        parts.append(f"delta on {parent}" if parent else "delta (no parent recorded)")
     if plan["published"]:
         parts.append("published")
     return ", ".join(parts)

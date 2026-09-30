@@ -105,6 +105,11 @@ class MetadataPaths:
         """Atomic JSON pointer naming the currently published snapshot."""
         return current_pointer_path(self.snapshots_root)
 
+    @property
+    def sources_root(self) -> Path:
+        """Root of the published external source snapshots, by source name."""
+        return self.metadata_root / "sources"
+
     def source_dir(self, source_name: str, snapshot_id: str) -> Path:
         """Directory holding one immutable external source snapshot."""
         return self.metadata_root / "sources" / source_name / snapshot_id

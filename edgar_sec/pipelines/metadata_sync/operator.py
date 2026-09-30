@@ -45,9 +45,7 @@ from edgar_sec.foundation.runtime.interactive import (
 )
 from edgar_sec.foundation.runtime.settings import resolve_runtime_settings
 
-from .assignment import divide_chunks
 from .cli import (
-    cmd_augment,
     cmd_compare,
     cmd_export,
     cmd_merge,
@@ -64,9 +62,11 @@ from .discovery import (
     list_plans,
     list_rosters,
     list_snapshots,
+    list_source_snapshots,
     plan_summary,
     resolve_plan_choice,
     resolve_snapshot_choice,
+    resolve_source_choice,
 )
 from .merger import MergeError, publish_current_snapshot
 from .options import (
@@ -440,30 +440,17 @@ def merge(state: WizardState) -> None:
 
 
 def augment(state: WizardState) -> None:
-    options = _ask_plan_options(state)
-    if options is None:
-        return
-    state.input_path = str(options.input_path or "")
-    state.registry_id = options.registry_id
-    base = prompt_text(
-        "Base snapshot id", current_snapshot_id(state.metadata())
-    ).strip()
-    if not base:
-        print("cancelled; an augment needs a base snapshot id")
-        return
-    new = prompt_text("New snapshot id (blank = the derived delta plan id)", "").strip()
-    if not confirm_network("This fetches the delta from SEC. Continue? (y/N) "):
-        print("cancelled; nothing was fetched")
-        return
-    cmd_augment(
-        options,
-        base_snapshot_id=base,
-        new_snapshot_id=new,
-        workers=_ask_int("Worker threads (blank = machine-derived)"),
-    )
-    published = current_snapshot_id(state.metadata())
-    if published:
-        print(f"current snapshot is now {published}")
+    """Add the CIKs a chosen cohort has and the base snapshot lacks.
+
+    The journey itself -- which source observations exist, which cohort to
+    request, which snapshot to build on, and what the delta would be -- lives in
+    ``augment_flow``. It is split out because it is the only action needing a
+    source snapshot, a base snapshot, and a preflight, and folding it back in here
+    put two unrelated surfaces in one file.
+    """
+    from .augment_flow import run_augment
+
+    run_augment(state)
 
 
 def export(state: WizardState) -> None:
@@ -506,49 +493,41 @@ def refresh(state: WizardState) -> None:
 
 
 def compare(state: WizardState) -> None:
+    """Compare a curated seed against a published SEC listing snapshot.
+
+    This is the explicit form of what augmentation now does for you. It used to
+    list published *metadata* snapshots under a "Source snapshots" heading and
+    then resolve a source manifest from that id, so the command could not have
+    worked: the two namespaces are different directories and a metadata snapshot
+    id is never a source snapshot id.
+    """
     source = prompt_text("CIK manifest CSV", state.input_path or DEFAULT_INPUT)
     if not source:
         return
     metadata = state.metadata()
-    manifests = list_snapshots(metadata)
-    if not manifests:
+    sources = list_source_snapshots(metadata)
+    if not sources:
         print("no source snapshot published; run 'Refresh external source' first")
         return
-    print("\nSource snapshots:")
-    for index, item in enumerate(manifests, start=1):
-        print(f"  {index}. {item.get('snapshot_id', '?')}")
-    answer = prompt_text("Source snapshot number", "1").strip() or "1"
-    try:
-        chosen = manifests[int(answer) - 1]
-    except (ValueError, IndexError):
-        print("invalid selection")
+
+    def select(lines: list[str]) -> str:
+        print("\nSource snapshots (newest first):")
+        for line in lines:
+            print(line)
+        return prompt_text("Source snapshot number", "1").strip() or "1"
+
+    chosen = resolve_source_choice(sources, select=select)
+    if not chosen:
+        print("cancelled; no source snapshot selected")
         return
-    # The manifest path is derived from the snapshot id, not read out of the
-    # manifest: a source manifest describes the listing it published, and carries
-    # no path to itself. Taking it from a field that does not exist resolved to
-    # the working directory, so the comparison failed on a directory.
     artifacts = prompt_text("Artifacts root (blank = project default)", "").strip()
     cmd_compare(
         plan_options(
             input_path=source,
             artifacts_root=artifacts or None or state.artifacts_root or None,
         ),
-        source_manifest=metadata.source_manifest_file(
-            SOURCE_NAME, str(chosen.get("snapshot_id", ""))
-        ),
+        source_manifest=metadata.source_manifest_file(SOURCE_NAME, chosen),
     )
-
-
-def _shell_arg(value: str) -> str:
-    """Quote one emitted argument so a destination with spaces stays executable.
-
-    The commands below are meant to be copied and pasted, so a destination chosen
-    as ``distrib/q3 run`` must survive the shell rather than becoming two
-    arguments and a parse error on the receiving machine.
-    """
-    if value and all(char not in value for char in " \t\n\"'\\$`*?[]{}();&|<>#~!()"):
-        return value
-    return "'" + value.replace("'", "'\\''") + "'"
 
 
 def commands(state: WizardState) -> None:
@@ -558,66 +537,16 @@ def commands(state: WizardState) -> None:
     the alternative is remembering the flags, and a worker given the wrong
     arguments runs chunks it was not assigned.
 
-    The sequence is the one the pipeline actually implements, and every step is
-    load-bearing. ``export`` copies the bundle out; each machine runs ``worker``
-    against its own bundle; the coordinator must ``import`` each returned bundle
-    through the trust boundary before ``merge`` will see those chunks. Emitting
-    export/worker/merge and omitting ``import`` produced a workflow whose final
-    command silently merged nothing, because the returned chunks were never
-    adopted.
-
-    Worker ids and bundle names come from the same assignment division ``export``
-    uses, and workers with no chunk are not listed, so the printed set matches the
-    directories the export will actually create.
+    The rendering lives in ``worker_commands``: it is an assignment division and a
+    plan summary, not a wizard concern, and keeping it here meant the menu file
+    carried a second unrelated surface. This hands over the plan the session
+    resolved and the layout it resolved against.
     """
-    if not _ensure_plan(state):
-        return
-    metadata = state.metadata()
-    summary = plan_summary(metadata, state.plan_id)
-    if not summary["readable"]:
-        print(
-            f"plan {state.plan_id} is unreadable; run status for why, then plan again"
-        )
-        return
+    from .worker_commands import render_worker_commands
 
-    workers = _ask_int("Number of worker bundles", 2) or 2
-    plan_id = state.plan_id
-    destination = prompt_text("Destination directory", f"distrib/{plan_id[:8]}").strip()
-    if not destination:
-        return
-    dest = Path(destination)
-    try:
-        assignments = divide_chunks(summary["chunk_count"], workers)
-    except ValueError as exc:
-        print(f"cannot divide this plan across {workers} workers: {exc}")
-        return
-    assigned = [
-        (worker_id, dest / worker_id) for worker_id, ids in assignments.items() if ids
-    ]
-
-    print("\nCoordinator (run this first):")
-    print(
-        "  python run.py metadata export"
-        f" --plan-id {_shell_arg(plan_id)}"
-        f" --worker-count {workers}"
-        f" --destination {_shell_arg(destination)}"
+    render_worker_commands(
+        state.metadata(), lambda: state.plan_id if _ensure_plan(state) else None
     )
-    for index, (worker_id, bundle) in enumerate(assigned, start=1):
-        print(f"\nMachine {index} ({worker_id}):")
-        print(
-            "  python run.py metadata worker"
-            f" --bundle {_shell_arg(str(bundle))}"
-            f" --worker {_shell_arg(worker_id)}"
-        )
-    print("\nCoordinator, once every bundle has come back:")
-    for _, bundle in assigned:
-        print(
-            "  python run.py metadata import"
-            f" --plan-id {_shell_arg(plan_id)}"
-            f" --source {_shell_arg(str(bundle))}"
-        )
-    print("\nCoordinator, once the imports are done:")
-    print(f"  python run.py metadata merge --plan-id {_shell_arg(plan_id)}")
 
 
 # ----------------------------------------------------------------------- menu

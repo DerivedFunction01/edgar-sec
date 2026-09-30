@@ -11,16 +11,13 @@ is blank. Every action must either work, ask, or say why it cannot.
 from __future__ import annotations
 
 import json
-import shlex
 from pathlib import Path
 
 import pytest
 
+from edgar_sec.pipelines.metadata_sync import augment_flow
 from edgar_sec.pipelines.metadata_sync import operator as operator_module
-from edgar_sec.pipelines.metadata_sync.assignment import divide_chunks
 from edgar_sec.pipelines.metadata_sync.cli import (
-    build_parser,
-    cmd_augment,
     cmd_compare,
     cmd_export,
     cmd_merge,
@@ -43,7 +40,6 @@ from edgar_sec.pipelines.metadata_sync.operator import (
     _ask_run_options,
     _ensure_plan,
     build_operator_menu,
-    commands,
     confirm_network,
     main,
     render_plan_header,
@@ -66,7 +62,6 @@ COMMANDS = {
     "status": cmd_status,
     "run": cmd_run,
     "merge": cmd_merge,
-    "augment": cmd_augment,
     "export": cmd_export,
     "worker": cmd_worker,
     "refresh": cmd_refresh,
@@ -456,127 +451,6 @@ def test_action_merge_delegates_to_cmd_merge(
     assert len(seen) == 1
 
 
-def test_action_augment_needs_only_a_base_snapshot_id(
-    state: WizardState, monkeypatch: pytest.MonkeyPatch
-) -> None:
-    """A blank new-snapshot id now means "derive it", not "cancel".
-
-    Requiring a hand-typed id was the one Phase 1 identity that was not derived
-    from its content, while ``merge`` in the same pipeline already defaulted to
-    the plan id. Cancelling now requires declining the fetch instead.
-    """
-    monkeypatch.setattr(
-        operator_module,
-        "_ask_plan_options",
-        lambda *a, **k: plan_options(
-            input_path=fixture_path("cik_sec_mini.csv"),
-            artifacts_root=Path(state.artifacts_root),
-        ),
-    )
-    monkeypatch.setattr(operator_module, "confirm_network", lambda *a, **k: True)
-    seen: list[dict] = []
-    monkeypatch.setattr(
-        operator_module, "cmd_augment", lambda options, **kwargs: seen.append(kwargs)
-    )
-
-    def answers_for(label: str, default: str = "") -> str:
-        if "Base snapshot" in label:
-            return "base"
-        if "New snapshot" in label:
-            return ""
-        return default
-
-    monkeypatch.setattr(operator_module, "prompt_text", answers_for)
-    operator_module.augment(state)
-    assert seen[0]["base_snapshot_id"] == "base"
-    assert seen[0]["new_snapshot_id"] == ""
-
-
-def test_action_augment_still_cancels_without_a_base(
-    state: WizardState, monkeypatch: pytest.MonkeyPatch
-) -> None:
-    monkeypatch.setattr(
-        operator_module,
-        "_ask_plan_options",
-        lambda *a, **k: plan_options(
-            input_path=fixture_path("cik_sec_mini.csv"),
-            artifacts_root=Path(state.artifacts_root),
-        ),
-    )
-    monkeypatch.setattr(operator_module, "confirm_network", lambda *a, **k: True)
-    seen: list[dict] = []
-    monkeypatch.setattr(
-        operator_module, "cmd_augment", lambda options, **kwargs: seen.append(kwargs)
-    )
-    monkeypatch.setattr(operator_module, "prompt_text", lambda label, default: "")
-    operator_module.augment(state)
-    assert seen == []
-
-
-def test_a_declined_augment_fetches_nothing(
-    state: WizardState, monkeypatch: pytest.MonkeyPatch, capsys
-) -> None:
-    monkeypatch.setattr(
-        operator_module,
-        "_ask_plan_options",
-        lambda *a, **k: plan_options(
-            input_path=fixture_path("cik_sec_mini.csv"),
-            artifacts_root=Path(state.artifacts_root),
-        ),
-    )
-    monkeypatch.setattr(operator_module, "confirm_network", lambda *a, **k: False)
-    seen: list[dict] = []
-    monkeypatch.setattr(
-        operator_module, "cmd_augment", lambda options, **kwargs: seen.append(kwargs)
-    )
-
-    def answers(label: str, default: str = "") -> str:
-        if "Base snapshot" in label:
-            return "base"
-        return default
-
-    monkeypatch.setattr(operator_module, "prompt_text", answers)
-    operator_module.augment(state)
-    assert seen == []
-    assert "nothing was fetched" in capsys.readouterr().out
-
-
-def test_augment_defaults_its_base_to_the_current_snapshot(
-    state: WizardState, tmp_path: Path, monkeypatch: pytest.MonkeyPatch
-) -> None:
-    """An operator augmenting usually means augmenting what is published."""
-    pointer = state.metadata().current_pointer
-    pointer.parent.mkdir(parents=True, exist_ok=True)
-    pointer.write_text('{"snapshot_id": "published-id"}', encoding="utf-8")
-
-    monkeypatch.setattr(
-        operator_module,
-        "_ask_plan_options",
-        lambda *a, **k: plan_options(
-            input_path=fixture_path("cik_sec_mini.csv"), artifacts_root=tmp_path
-        ),
-    )
-    monkeypatch.setattr(operator_module, "confirm_network", lambda *a, **k: True)
-    seen: list[dict] = []
-    monkeypatch.setattr(
-        operator_module, "cmd_augment", lambda options, **kwargs: seen.append(kwargs)
-    )
-
-    def answers(label: str, default: str = "") -> str:
-        # The base prompt offers the published snapshot as its default. The new
-        # snapshot id is left blank so the pipeline derives it.
-        if "Base snapshot" in label:
-            return default
-        if "New snapshot" in label:
-            return ""
-        return default
-
-    monkeypatch.setattr(operator_module, "prompt_text", answers)
-    operator_module.augment(state)
-    assert seen[0]["base_snapshot_id"] == "published-id"
-    assert seen[0]["new_snapshot_id"] == ""
-
-
 def test_cancelled_answers_short_circuit_every_action(
     state: WizardState, monkeypatch: pytest.MonkeyPatch
 ) -> None:
@@ -584,6 +458,9 @@ def test_cancelled_answers_short_circuit_every_action(
     monkeypatch.setattr(operator_module, "_ask_run_options", lambda *a, **k: None)
     monkeypatch.setattr(operator_module, "prompt_text", lambda label, default: "")
     monkeypatch.setattr(operator_module, "_ensure_plan", lambda _s: False)
+    # Augmentation asks its cohort question in its own module now, so a cancelled
+    # cohort is stubbed there. It is still an action that must short-circuit.
+    monkeypatch.setattr(augment_flow, "ask_augment_cohort", lambda *a, **k: None)
     called: list[object] = []
     for command in COMMANDS.values():
         monkeypatch.setattr(
@@ -591,6 +468,11 @@ def test_cancelled_answers_short_circuit_every_action(
             command.__name__,
             lambda *a, _n=command.__name__, **k: called.append(_n),
         )
+    monkeypatch.setattr(
+        augment_flow,
+        "cmd_augment",
+        lambda *a, **k: called.append("cmd_augment"),
+    )
     operator_module.plan(state)
     operator_module.status(state)
     operator_module.run(state)
@@ -602,159 +484,14 @@ def test_cancelled_answers_short_circuit_every_action(
     assert called == []
 
 
-# ------------------------------------------------------------- emitted commands
-
-
-def _emitted_commands(out: str) -> list[list[str]]:
-    """Every ``python run.py metadata ...`` line, tokenized the way a shell would."""
-    return [
-        shlex.split(line.strip())
-        for line in out.splitlines()
-        if line.strip().startswith("python run.py metadata")
-    ]
-
-
-def _emitted_subcommands(out: str) -> list[tuple[str, dict[str, str]]]:
-    parsed: list[tuple[str, dict[str, str]]] = []
-    for argv in _emitted_commands(out):
-        body = argv[argv.index("metadata") + 1 :]
-        parsed.append((body[0], _options_of(body)))
-    return parsed
-
-
-def _options_of(body: list[str]) -> dict[str, str]:
-    options: dict[str, str] = {}
-    key = ""
-    for token in body[1:]:
-        if token.startswith("--"):
-            key = token
-            options[key] = ""
-        elif key:
-            options[key] = token
-    return options
-
-
-def test_every_emitted_command_is_accepted_by_the_parser(
-    state: WizardState, tmp_path: Path, monkeypatch: pytest.MonkeyPatch, capsys
-) -> None:
-    """The emitted text must parse, not merely contain the right substrings.
-
-    Both flag mistakes in this renderer were invisible to substring assertions: a
-    ``--workers`` that the parser read as a different argument, and a ``--worker-id``
-    that does not exist at all. Round-tripping each line through the real parser is
-    what makes that class of defect fail here instead of on a remote machine.
-    """
-    state.plan_id = _write_plan(tmp_path, chunk_size=1)
-    monkeypatch.setattr(operator_module, "prompt_text", lambda label, default: default)
-    commands(state)
-    out = capsys.readouterr().out
-
-    emitted = _emitted_commands(out)
-    assert emitted, "the renderer printed no commands"
-    parser = build_parser()
-    for argv in emitted:
-        body = argv[argv.index("metadata") + 1 :]
-        parsed = parser.parse_args(body)
-        assert parsed.func is not None, body
-
-
-def test_emitted_commands_describe_the_whole_distributed_lifecycle(
-    state: WizardState, tmp_path: Path, monkeypatch: pytest.MonkeyPatch, capsys
-) -> None:
-    """Import is the step that adopts returned chunks; omitting it merges nothing."""
-    state.plan_id = _write_plan(tmp_path, chunk_size=1)
-    monkeypatch.setattr(operator_module, "prompt_text", lambda label, default: default)
-    commands(state)
-    subcommands = [name for name, _ in _emitted_subcommands(capsys.readouterr().out)]
-
-    assert subcommands[0] == "export"
-    assert subcommands[-1] == "merge"
-    assert "worker" in subcommands
-    # One import per worker, and every import precedes the merge.
-    assert subcommands.count("import") == subcommands.count("worker")
-    assert subcommands.index("import") < subcommands.index("merge")
-
-
-def test_emitted_worker_commands_name_the_real_bundles(
-    state: WizardState, tmp_path: Path, monkeypatch: pytest.MonkeyPatch, capsys
-) -> None:
-    """Bundle names and worker ids come from the same division export performs."""
-    state.plan_id = _write_plan(tmp_path, chunk_size=1)
-    monkeypatch.setattr(operator_module, "prompt_text", lambda label, default: default)
-    commands(state)
-    pairs = _emitted_subcommands(capsys.readouterr().out)
-
-    export = next(options for name, options in pairs if name == "export")
-    expected = {
-        worker_id
-        for worker_id, chunk_ids in divide_chunks(
-            4, int(export["--worker-count"])
-        ).items()
-        if chunk_ids
-    }
-    for name, options in pairs:
-        if name != "worker":
-            continue
-        worker_id = options["--worker"]
-        assert worker_id in expected
-        assert Path(options["--bundle"]).name == worker_id
-
-
-def test_emitted_commands_omit_workers_with_no_chunk(
-    state: WizardState, tmp_path: Path, monkeypatch: pytest.MonkeyPatch, capsys
-) -> None:
-    """More workers than chunks would otherwise print a command for a bundle
-    ``export`` never creates, because empty assignments are skipped."""
-    state.plan_id = _write_plan(tmp_path, chunk_size=4)
-    answers = iter(["8", "distrib/spread"])
-    monkeypatch.setattr(
-        operator_module, "prompt_text", lambda label, default: next(answers)
-    )
-    commands(state)
-    pairs = _emitted_subcommands(capsys.readouterr().out)
-    assert [name for name, _ in pairs].count("worker") == 1
-
-
-def test_emitted_commands_survive_a_destination_with_spaces(
-    state: WizardState, tmp_path: Path, monkeypatch: pytest.MonkeyPatch, capsys
-) -> None:
-    """A copy-pasteable command that breaks on a path with a space is not one."""
-    state.plan_id = _write_plan(tmp_path, chunk_size=1)
-    answers = iter(["2", "distrib/q3 run"])
-    monkeypatch.setattr(
-        operator_module, "prompt_text", lambda label, default: next(answers)
-    )
-    commands(state)
-    pairs = _emitted_subcommands(capsys.readouterr().out)
-
-    export = next(options for name, options in pairs if name == "export")
-    assert export["--destination"] == "distrib/q3 run"
-    for name, options in pairs:
-        if name in {"worker", "import"}:
-            assert options["--bundle" if name == "worker" else "--source"].startswith(
-                "distrib/q3 run/"
-            )
-
-
-def test_commands_refuse_to_render_for_an_unreadable_plan(
-    state: WizardState, monkeypatch: pytest.MonkeyPatch, capsys
-) -> None:
-    """Emitting commands for a plan this build cannot load would point workers at
-    a bundle that does not exist."""
-    state.plan_id = "does-not-exist"
-    monkeypatch.setattr(operator_module, "_ensure_plan", lambda _s: True)
-    monkeypatch.setattr(operator_module, "prompt_text", lambda label, default: default)
-    commands(state)
-    out = capsys.readouterr().out
-    assert "unreadable" in out
-    assert _emitted_commands(out) == []
+# ------------------------------------------------------- refresh and compare
 
 
 def test_refresh_needs_no_reference_and_still_reaches_the_library(
     state: WizardState, monkeypatch: pytest.MonkeyPatch
 ) -> None:
     """Refreshing is not scoped to a plan, so a blank answer is not a cancel."""
-    monkeypatch.setattr(operator_module, "prompt_text", lambda label, default: "")
+    monkeypatch.setattr(operator_module, "prompt_text", lambda label, default="": "")
     monkeypatch.setattr(operator_module, "confirm_network", lambda *a, **k: True)
     seen: list[object] = []
     monkeypatch.setattr(operator_module, "cmd_refresh", seen.append)
@@ -765,7 +502,9 @@ def test_refresh_needs_no_reference_and_still_reaches_the_library(
 def test_compare_says_so_when_no_source_snapshot_exists(
     state: WizardState, monkeypatch: pytest.MonkeyPatch, capsys
 ) -> None:
-    monkeypatch.setattr(operator_module, "prompt_text", lambda label, default: default)
+    monkeypatch.setattr(
+        operator_module, "prompt_text", lambda label, default="": default
+    )
     operator_module.compare(state)
     assert "no source snapshot published" in capsys.readouterr().out
 
@@ -785,11 +524,24 @@ def test_compare_resolves_the_source_manifest_from_its_snapshot_id(
     manifest_path.write_text(
         '{"snapshot_id": "src-1", "manifest_kind": "x"}', encoding="utf-8"
     )
-
     monkeypatch.setattr(
-        operator_module, "list_snapshots", lambda _paths: [{"snapshot_id": "src-1"}]
+        operator_module,
+        "list_source_snapshots",
+        lambda _paths: [
+            {
+                "snapshot_id": "src-1",
+                "manifest_path": str(manifest_path),
+                "retrieved_at": "2026-09-30T00:00:00Z",
+                "unique_cik_count": 2,
+                "listing_row_count": 2,
+                "readable": True,
+                "readable_reason": "",
+            }
+        ],
     )
-    monkeypatch.setattr(operator_module, "prompt_text", lambda label, default: default)
+    monkeypatch.setattr(
+        operator_module, "prompt_text", lambda label, default="": default
+    )
     seen: list[Path] = []
     monkeypatch.setattr(
         operator_module,
@@ -801,16 +553,24 @@ def test_compare_resolves_the_source_manifest_from_its_snapshot_id(
     assert seen[0].is_file()
 
 
-# ----------------------------------------------------------------- command text
-
-
-def test_commands_default_to_a_destination_named_for_the_plan(
-    state: WizardState, tmp_path: Path, monkeypatch: pytest.MonkeyPatch, capsys
+def test_compare_lists_source_snapshots_not_published_metadata_snapshots(
+    state: WizardState, monkeypatch: pytest.MonkeyPatch
 ) -> None:
-    state.plan_id = _write_plan(tmp_path, chunk_size=2)
-    monkeypatch.setattr(operator_module, "prompt_text", lambda label, default: default)
-    commands(state)
-    assert f"distrib/{state.plan_id[:8]}" in capsys.readouterr().out
+    """The two namespaces are different directories.
+
+    This listed published *metadata* snapshots under a "Source snapshots" heading
+    and then resolved a source manifest from that id, so the command could not have
+    worked: a metadata snapshot id is never a source snapshot id.
+    """
+    _write_plan(Path(state.artifacts_root))
+    monkeypatch.setattr(operator_module, "list_source_snapshots", lambda _paths: [])
+    monkeypatch.setattr(
+        operator_module, "prompt_text", lambda label, default="": default
+    )
+    seen: list[object] = []
+    monkeypatch.setattr(operator_module, "cmd_compare", lambda *a, **k: seen.append(k))
+    operator_module.compare(state)
+    assert seen == []
 
 
 # ----------------------------------------------------------------- the pointer

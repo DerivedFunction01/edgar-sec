@@ -16,12 +16,17 @@ from edgar_sec.foundation.hashing import file_sha256
 from edgar_sec.pipelines.metadata_sync.discovery import (
     current_snapshot_id,
     describe_roster,
+    describe_source,
+    list_input_manifests,
     list_plans,
     list_rosters,
     list_snapshots,
+    list_source_snapshots,
     plan_summary,
+    resolve_input_choice,
     resolve_plan_choice,
     resolve_snapshot_choice,
+    resolve_source_choice,
 )
 from edgar_sec.pipelines.metadata_sync.manifest import read_cik_manifest
 from edgar_sec.pipelines.metadata_sync.paths import resolve_metadata_paths
@@ -363,3 +368,191 @@ def test_a_roster_summary_reads_as_size_and_source(tmp_path: Path) -> None:
     assert "2 CIKs" in described
     assert "2 active in source" in described
     assert "src-1" in described
+
+
+# --------------------------------------------------------- source snapshots
+
+
+def _write_source(
+    metadata,
+    snapshot_id: str,
+    *,
+    retrieved_at: str,
+    unique_cik_count: int = 4,
+    kind: str = "metadata_source_snapshot",
+) -> None:
+    """Publish a source manifest so discovery reads a real one."""
+    path = metadata.source_manifest_file("company_tickers", snapshot_id)
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(
+        json.dumps(
+            {
+                "manifest_kind": kind,
+                "source": "company_tickers",
+                "snapshot_id": snapshot_id,
+                "retrieved_at": retrieved_at,
+                "unique_cik_count": unique_cik_count,
+                "listing_row_count": unique_cik_count + 1,
+            }
+        ),
+        encoding="utf-8",
+    )
+
+
+def test_source_snapshots_are_listed_newest_retrieval_first(tmp_path: Path) -> None:
+    """A source snapshot's age is the reason it is worth listing at all."""
+    metadata = resolve_metadata_paths(tmp_path)
+    _write_source(metadata, "older", retrieved_at="2026-01-01T00:00:00Z")
+    _write_source(metadata, "newer", retrieved_at="2026-09-30T00:00:00Z")
+
+    found = list_source_snapshots(metadata)
+
+    assert [item["snapshot_id"] for item in found] == ["newer", "older"]
+    assert found[0]["retrieved_at"] == "2026-09-30T00:00:00Z"
+    assert found[0]["readable"] is True
+    assert found[0]["unique_cik_count"] == 4
+
+
+def test_a_source_summary_names_when_it_was_retrieved(tmp_path: Path) -> None:
+    metadata = resolve_metadata_paths(tmp_path)
+    _write_source(metadata, "src-1", retrieved_at="2026-09-30T00:00:00Z")
+    described = describe_source(list_source_snapshots(metadata)[0])
+    assert "retrieved 2026-09-30T00:00:00Z" in described
+    assert "4 CIKs" in described
+
+
+def test_an_unreadable_source_snapshot_is_listed_with_its_reason(
+    tmp_path: Path,
+) -> None:
+    """A damaged source must not read as an absent one."""
+    metadata = resolve_metadata_paths(tmp_path)
+    _write_source(
+        metadata, "foreign", retrieved_at="2026-01-01T00:00:00Z", kind="other"
+    )
+
+    found = list_source_snapshots(metadata)
+
+    assert [item["snapshot_id"] for item in found] == ["foreign"]
+    assert found[0]["readable"] is False
+    assert "unreadable" in describe_source(found[0])
+
+
+def test_no_source_snapshots_lists_nothing(tmp_path: Path) -> None:
+    metadata = resolve_metadata_paths(tmp_path)
+    assert list_source_snapshots(metadata) == []
+
+
+def test_a_source_picker_returns_the_chosen_id(tmp_path: Path) -> None:
+    metadata = resolve_metadata_paths(tmp_path)
+    _write_source(metadata, "older", retrieved_at="2026-01-01T00:00:00Z")
+    _write_source(metadata, "newer", retrieved_at="2026-09-30T00:00:00Z")
+    sources = list_source_snapshots(metadata)
+
+    seen: list[str] = []
+    chosen = resolve_source_choice(
+        sources, select=lambda lines: (seen.extend(lines), "2")[1]
+    )
+
+    assert chosen == "older"
+    assert len(seen) == 2
+    assert "newer" in seen[0]
+
+
+def test_a_blank_source_picker_cancels(tmp_path: Path) -> None:
+    metadata = resolve_metadata_paths(tmp_path)
+    _write_source(metadata, "only", retrieved_at="2026-01-01T00:00:00Z")
+    assert (
+        resolve_source_choice(list_source_snapshots(metadata), select=lambda _: "")
+        == ""
+    )
+
+
+# ----------------------------------------------------------- input manifests
+
+
+def test_input_manifests_are_discovered_with_their_size(tmp_path: Path) -> None:
+    """The row count is the only thing separating a seed from an increment."""
+    (tmp_path / "cik-sec.csv").write_text(
+        "cik,name\n0000001985,ACCEL\n", encoding="utf-8"
+    )
+    (tmp_path / "delta.csv").write_text("cik,name\n0000001761,TRZ\n", encoding="utf-8")
+
+    found = list_input_manifests(tmp_path)
+
+    assert [item["name"] for item in found] == ["cik-sec.csv", "delta.csv"]
+    assert all(item["readable"] for item in found)
+    assert found[1]["row_count"] == 1
+
+
+def test_an_unreadable_input_candidate_is_listed_with_its_reason(
+    tmp_path: Path,
+) -> None:
+    (tmp_path / "broken.csv").write_text("not,a,manifest\n", encoding="utf-8")
+
+    found = list_input_manifests(tmp_path)
+
+    assert [item["name"] for item in found] == ["broken.csv"]
+    assert found[0]["readable"] is False
+    assert found[0]["readable_reason"]
+
+
+def test_a_missing_input_directory_lists_nothing(tmp_path: Path) -> None:
+    assert list_input_manifests(tmp_path / "absent") == []
+
+
+def test_an_input_picker_returns_the_chosen_path(tmp_path: Path) -> None:
+    (tmp_path / "cik-sec.csv").write_text(
+        "cik,name\n0000001985,ACCEL\n", encoding="utf-8"
+    )
+
+    chosen = resolve_input_choice(list_input_manifests(tmp_path), select=lambda _: "1")
+
+    assert chosen == str(tmp_path / "cik-sec.csv")
+
+
+def test_a_blank_input_picker_cancels(tmp_path: Path) -> None:
+    (tmp_path / "cik-sec.csv").write_text(
+        "cik,name\n0000001985,ACCEL\n", encoding="utf-8"
+    )
+    assert (
+        resolve_input_choice(list_input_manifests(tmp_path), select=lambda _: "") == ""
+    )
+
+
+# ------------------------------------------------------------------ plan kind
+
+
+def test_a_delta_plan_is_labelled_as_one_in_the_picker(tmp_path: Path) -> None:
+    """A delta plan cannot be merged on its own, so the picker must say which it is.
+
+    A delta plan publishes only the CIKs missing from its base, so merging it
+    generically would drop every base row. Rendering both plan kinds identically
+    left an operator no way to tell a safe plan from an unsafe one.
+    """
+    metadata = resolve_metadata_paths(tmp_path)
+    manifest = read_cik_manifest(fixture_path("cik_sec_mini.csv"))
+    from edgar_sec.pipelines.metadata_sync.paths import resolve_run_paths
+
+    delta = build_plan(
+        roster_from_manifest(manifest),
+        chunk_size=2,
+        kind="delta",
+        parent_id="base-snap",
+    )
+    write_plan(delta, resolve_run_paths(delta.plan_id, metadata.artifacts_root))
+    full = build_plan(roster_from_manifest(manifest), chunk_size=2)
+    write_plan(full, resolve_run_paths(full.plan_id, metadata.artifacts_root))
+
+    summaries = [plan_summary(metadata, plan.plan_id) for plan in (full, delta)]
+    assert summaries[0]["kind"] != "delta"
+    assert summaries[1]["kind"] == "delta"
+    assert summaries[1]["parent_snapshot_id"] == "base-snap"
+
+    # Two plans, so the picker renders rather than auto-adopting the only one.
+    lines: list[str] = []
+    resolve_plan_choice(
+        summaries, select=lambda rendered: (lines.extend(rendered), "1")[1]
+    )
+
+    assert "delta on base-snap" in lines[1]
+    assert "delta" not in lines[0]

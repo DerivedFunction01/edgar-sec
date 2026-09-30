@@ -22,7 +22,7 @@ from typing import Any
 from edgar_sec.foundation.runtime.settings import resolve_runtime_settings
 
 from .assignment import AssignmentError
-from .augmentation import augment_from_manifest
+from .augmentation import augment_from_manifest, preflight_augment
 from .checkpoints import discover_completed_chunks
 from .distribution import (
     adopt_chunks,
@@ -37,6 +37,7 @@ from .merger import merge_chunks, publish_snapshot
 from .options import (
     PlanOptions,
     RunOptions,
+    SelectedCohort,
     augment_options,
     plan_options,
     resolve_cohort,
@@ -47,6 +48,7 @@ from .planner import load_plan, write_plan
 from .registry import compare_sources
 from .roster import RosterError
 from .sec_client import SubmissionsClient
+from .snapshot import read_snapshot_parts
 from .source_registry import refresh_company_tickers
 from .worker import resolve_workers, run_chunk_ids
 
@@ -313,9 +315,40 @@ def cmd_augment(
 
     An empty ``new_snapshot_id`` publishes under the derived delta plan id, so
     the command needs no hand-typed identity and is idempotent across reruns.
+
+    The cohort is reduced against the base before the submissions client is
+    built. A request the base already satisfies is the ordinary case for a
+    stale seed, and answering it costs no client, no SEC request, and no
+    published delta plan; it exits 0 with ``no_op`` set, because nothing failed.
     """
     if options.input_path is None and not options.registry_id:
         raise ValueError("augment needs --input or --roster")
+    metadata = resolve_metadata_paths(options.artifacts_root)
+    cohort = resolve_cohort(options)
+    check = preflight_augment(
+        cohort.roster, metadata, base_snapshot_id=base_snapshot_id
+    )
+    if check.is_empty:
+        rows = _snapshot_row_count(metadata, base_snapshot_id)
+        _emit(
+            {
+                "no_op": True,
+                "base_snapshot_id": base_snapshot_id,
+                "new_snapshot_id": "",
+                "base_row_count": rows,
+                "delta_row_count": 0,
+                "total_row_count": rows,
+                "requested_cik_count": check.requested_count,
+                "already_present_count": check.already_present_count,
+                "refetched_ciks": [],
+                "message": (
+                    "every requested CIK is already present in the base snapshot;"
+                    " nothing fetched and nothing published"
+                ),
+            }
+        )
+        return 0
+
     if options.registry_id:
         result = _augment_from_registry(
             options,
@@ -323,20 +356,24 @@ def cmd_augment(
             new_snapshot_id=new_snapshot_id,
             workers=workers,
             lineage=lineage,
+            cohort=cohort,
+            preflight=check,
         )
     else:
         result = augment_from_manifest(
             _build_client(),
             str(options.input_path),
-            resolve_metadata_paths(options.artifacts_root),
+            metadata,
             base_snapshot_id=base_snapshot_id,
             new_snapshot_id=new_snapshot_id,
             chunk_size=options.chunk_size,
             workers=workers,
             lineage=lineage,
+            preflight=check,
         )
     _emit(
         {
+            "no_op": False,
             "base_snapshot_id": result.base_snapshot_id,
             "new_snapshot_id": result.new_snapshot_id,
             "delta_plan_id": result.report.plan_id,
@@ -344,10 +381,20 @@ def cmd_augment(
             "base_row_count": result.base_row_count,
             "delta_row_count": result.delta_row_count,
             "total_row_count": result.total_row_count,
+            "requested_cik_count": result.requested_cik_count,
+            "already_present_count": result.already_present_count,
             "refetched_ciks": list(result.refetched_ciks),
         }
     )
     return 0
+
+
+def _snapshot_row_count(metadata, snapshot_id: str) -> int:
+    """Rows in a published snapshot, read through its manifest's part list."""
+    parts = read_snapshot_parts(metadata.snapshot_manifest(snapshot_id))
+    if parts.layout.multipart:
+        return sum(int(part["row_count"]) for part in parts.layout.manifest["parts"])
+    return parts.row_count
 
 
 def _augment_from_registry(
@@ -357,22 +404,24 @@ def _augment_from_registry(
     new_snapshot_id: str = "",
     workers: int | None,
     lineage: dict[str, str] | None,
+    cohort: SelectedCohort | None = None,
+    preflight: object = None,
 ):
     from .augmentation import augment_from_roster
-    from .registry import load_registry_roster
 
     metadata = resolve_metadata_paths(options.artifacts_root)
-    roster = load_registry_roster(options.registry_id, metadata)
+    selected = cohort or resolve_cohort(options)
     return augment_from_roster(
         _build_client(),
-        roster,
+        selected.roster,
         metadata,
         base_snapshot_id=base_snapshot_id,
         new_snapshot_id=new_snapshot_id,
         chunk_size=options.chunk_size,
-        input_name=f"registry:{options.registry_id}",
-        input_fingerprint=roster.roster_id,
+        input_name=selected.input_name,
+        input_fingerprint=selected.input_fingerprint,
         workers=workers,
+        preflight=preflight,
         lineage=lineage,
     )
 

@@ -369,7 +369,21 @@ def merge_chunks(
     ``lineage`` carries the parent, roster, and source identities an augmented
     artifact must record. It is optional because a full ingest has no parent, and
     a full ingest must not invent one.
+
+    A delta plan is refused. This function publishes exactly the chunks the plan
+    produced, and a delta plan's chunks hold only the CIKs missing from its base,
+    so merging one would publish a dataset that drops every base row while
+    recording that base as its parent. Recombining base and delta is
+    :mod:`augmentation`'s job, which passes the base parts in as merge inputs;
+    doing it here would mean silently guessing which snapshot to resurrect.
     """
+    if plan.kind == "delta":
+        raise MergeError(
+            f"plan {plan.plan_id} is a delta plan over base {plan.parent_id or '?'}"
+            " and cannot be merged on its own: a plain merge would publish only the"
+            " delta and drop the base rows. Publish it with"
+            " 'metadata augment --base-snapshot-id <base>'"
+        )
     emit = _safe_progress(progress)
     emit({"type": "merge_start", "plan_id": plan.plan_id})
     chunk_paths = validate_chunks(plan, run_paths)

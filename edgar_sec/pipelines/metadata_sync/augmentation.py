@@ -62,31 +62,104 @@ from .snapshot import read_snapshot_parts
 from .worker import run_chunk_ids
 
 __all__ = [
+    "AugmentPreflight",
     "AugmentResult",
     "augment",
     "augment_from_manifest",
     "augment_from_roster",
     "base_snapshot_ciks",
     "derive_delta_plan",
+    "preflight_augment",
     "snapshot_cik_roster",
 ]
 
 
 @dataclass(frozen=True, slots=True)
+class AugmentPreflight:
+    """What an augmentation would do, decided before anything is fetched.
+
+    Separating this from the run is the point. "How many CIKs does the chosen
+    cohort add to the chosen base?" is answerable from two published artifacts,
+    so answering it before the client exists means the common boring outcome --
+    the base already covers the request -- costs no network request, no
+    rate-limit budget, and no published delta plan, and it reads as a result
+    rather than as a failure.
+    """
+
+    base_snapshot_id: str
+    requested: Roster
+    base: Roster
+    delta: Roster
+
+    @property
+    def is_empty(self) -> bool:
+        """True when the base already holds every requested CIK."""
+        return self.delta.is_empty
+
+    @property
+    def requested_count(self) -> int:
+        return self.requested.row_count
+
+    @property
+    def already_present_count(self) -> int:
+        return self.requested_count - self.delta.row_count
+
+    def describe(self) -> str:
+        """One operator-facing line describing the pending work."""
+        return (
+            f"{self.requested_count:,} requested, "
+            f"{self.already_present_count:,} already in base {self.base_snapshot_id}, "
+            f"{self.delta.row_count:,} to fetch"
+        )
+
+
+@dataclass(frozen=True, slots=True)
 class AugmentResult:
-    """Outcome of one augmentation run."""
+    """Outcome of one augmentation run.
+
+    ``report`` is ``None`` for a no-op: nothing was published, so there is no
+    merge report, and returning an empty one would describe a publication that did
+    not happen. ``no_op`` is therefore the field to branch on, and
+    ``total_row_count`` reports the unchanged base rather than a fabricated total.
+    """
 
     base_snapshot_id: str
     new_snapshot_id: str
     base_row_count: int
     delta_row_count: int
     refetched_ciks: tuple[str, ...]
-    report: MergeReport
+    report: MergeReport | None
+    no_op: bool = False
+    requested_cik_count: int = 0
+    already_present_count: int = 0
 
     @property
     def total_row_count(self) -> int:
-        """Rows in the newly published snapshot."""
-        return self.report.row_count
+        """Rows in the newly published snapshot, or in the unchanged base."""
+        return self.report.row_count if self.report is not None else self.base_row_count
+
+
+def preflight_augment(
+    requested: Roster,
+    metadata_paths: MetadataPaths,
+    *,
+    base_snapshot_id: str,
+) -> AugmentPreflight:
+    """Decide what an augmentation would fetch, reading only published artifacts.
+
+    Every cohort is treated as a *requested* set and reduced against the base,
+    including one that is already called a delta. An operator who points this at a
+    hand-built increment, or re-runs an augmentation that already succeeded, gets
+    the correct answer either way, and a request that the base already satisfies
+    is reported as no work rather than refused.
+    """
+    base = snapshot_cik_roster(metadata_paths, base_snapshot_id)
+    return AugmentPreflight(
+        base_snapshot_id=base_snapshot_id,
+        requested=requested,
+        base=base,
+        delta=without_ciks(requested, base.ciks),
+    )
 
 
 def snapshot_cik_roster(
@@ -169,6 +242,7 @@ def augment(
     chunk_size: int = DEFAULT_CHUNK_SIZE,
     workers: int | None = None,
     lineage: dict[str, str] | None = None,
+    preflight: AugmentPreflight | None = None,
 ) -> AugmentResult:
     """Augment a published snapshot with any newly requested CIKs.
 
@@ -183,18 +257,42 @@ def augment(
 
     An empty ``new_snapshot_id`` resolves to the delta plan id once the plan is
     derived, so the published identity is derived rather than supplied.
+
+    A pre-computed ``preflight`` is accepted so a caller that already reduced the
+    cohort against the base does not pay for the same read twice, and so the
+    decision to fetch is made in exactly one place.
     """
+    check = preflight or preflight_augment(
+        roster_from_manifest(manifest),
+        metadata_paths,
+        base_snapshot_id=base_snapshot_id,
+    )
     base_parts = read_snapshot_parts(metadata_paths.snapshot_manifest(base_snapshot_id))
-    base = snapshot_cik_roster(metadata_paths, base_snapshot_id)
+    base = check.base
     base_rows = (
         sum(int(part["row_count"]) for part in base_parts.layout.manifest["parts"])
         if base_parts.layout.multipart
         else base_parts.row_count
     )
+    if check.is_empty:
+        # Nothing to fetch is a result, not a failure: the base already holds the
+        # request, so no client call is made, no delta plan is written, and no
+        # snapshot or pointer is published.
+        return AugmentResult(
+            base_snapshot_id=base_snapshot_id,
+            new_snapshot_id="",
+            base_row_count=base_rows,
+            delta_row_count=0,
+            refetched_ciks=(),
+            report=None,
+            no_op=True,
+            requested_cik_count=check.requested_count,
+            already_present_count=check.already_present_count,
+        )
 
     plan = derive_delta_plan(
-        roster_from_manifest(manifest),
-        base,
+        check.requested,
+        check.base,
         chunk_size=chunk_size,
         base_snapshot_id=base_snapshot_id,
         input_name=manifest.input_name,
@@ -292,6 +390,9 @@ def augment(
         delta_row_count=plan.row_count,
         refetched_ciks=tuple(refetched),
         report=report,
+        no_op=False,
+        requested_cik_count=check.requested_count,
+        already_present_count=check.already_present_count,
     )
 
 

@@ -110,6 +110,7 @@ __all__ = [
     "WORKLIST_SCHEMA",
     "RegistryError",
     "compare_sources",
+    "ensure_registry",
     "load_registry_manifest",
     "load_registry_roster",
     "registry_id_for",
@@ -417,3 +418,63 @@ def load_registry_manifest(
     if file_sha256(csv_path) != manifest.get("artifact_sha256"):
         raise RegistryError("effective CIK input digest does not match its manifest")
     return manifest
+
+
+def ensure_registry(
+    *,
+    curated_input_path: str | Path,
+    source_snapshot_id: str,
+    metadata_paths: MetadataPaths,
+) -> dict[str, Any]:
+    """Return the effective roster for one curated input and source snapshot.
+
+    This is the projection the augmentation journey is built on. A curated CSV is
+    a seed curated at a point in time, so it does not describe who files with the
+    SEC *now*; the union of the seed's CIKs with the active listings in a source
+    snapshot is the cohort that does. The comparison is a pure projection of two
+    immutable files, so running it needs no network and is safe to run on demand.
+
+    Registry identity is content-derived from the pair, so an already-computed
+    projection is reused rather than rewritten. That matters here because the
+    operator reaches this on the augmentation path, where a redundant comparison
+    would be invisible work published on every invocation.
+
+    Both branches return the same keys. A reused registry has to be described the
+    same way a freshly computed one is, and the reuse path deliberately does not
+    re-read the comparison's own manifest to recover counts it could recompute --
+    so it fills them in rather than leaving the caller to discover which keys exist.
+    """
+    curated = Path(curated_input_path)
+    if not curated.is_file():
+        raise FileNotFoundError(f"curated CIK manifest not found: {curated}")
+    fingerprint = read_cik_manifest(curated).input_fingerprint
+    registry_id = registry_id_for(source_snapshot_id, fingerprint)
+    try:
+        roster = load_registry_roster(registry_id, metadata_paths)
+    except (OSError, ValueError, RosterError):
+        pass
+    else:
+        return {
+            "registry_id": registry_id,
+            "roster_id": roster.roster_id,
+            "source_snapshot_id": source_snapshot_id,
+            "curated_input_path": str(curated),
+            "curated_input_fingerprint": fingerprint,
+            "curated_cik_count": 0,
+            "active_cik_count": 0,
+            "registry_row_count": roster.row_count,
+            "row_count": roster.row_count,
+            "reused": True,
+        }
+    result = compare_sources(
+        curated_input_path=curated,
+        source_manifest_path=metadata_paths.source_manifest_file(
+            SOURCE_NAME, source_snapshot_id
+        ),
+        metadata_paths=metadata_paths,
+    )
+    return {
+        **result,
+        "row_count": result["registry_row_count"],
+        "reused": False,
+    }

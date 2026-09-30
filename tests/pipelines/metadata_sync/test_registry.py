@@ -24,6 +24,7 @@ from edgar_sec.pipelines.metadata_sync.registry import (
     WORKLIST_SCHEMA,
     RegistryError,
     compare_sources,
+    ensure_registry,
     load_registry_manifest,
     load_registry_roster,
     registry_id_for,
@@ -33,6 +34,7 @@ from edgar_sec.pipelines.metadata_sync.source_registry import (
     SOURCE_NAME,
     SOURCE_URL,
     SourceRegistryError,
+    load_source_snapshot,
     refresh_company_tickers,
 )
 from tests.support import FakeSession, build_test_http, fixture_path
@@ -382,3 +384,131 @@ def test_a_stale_manifest_is_detected_on_load(tmp_path) -> None:
     )
     with pytest.raises(RegistryError, match="digest does not match"):
         load_registry_manifest(registry_id, metadata)
+
+
+# ------------------------------------------------------------- ensure_registry
+
+
+def test_ensure_registry_projects_the_seed_against_the_source(
+    published_source,
+) -> None:
+    """The union of curated CIKs and active listings is the augmentation cohort.
+
+    The curated CSV is a seed, so it cannot describe who files with the SEC now.
+    This is the projection augmentation builds on, and it must be reachable in one
+    call from the operator rather than only as an explicit two-step command.
+    """
+    manifest_path, metadata = published_source
+    result = ensure_registry(
+        curated_input_path=fixture_path("cik_sec_mini.csv"),
+        source_snapshot_id=load_source_snapshot(manifest_path).manifest["snapshot_id"],
+        metadata_paths=metadata,
+    )
+    roster = load_registry_roster(result["registry_id"], metadata)
+    # The seed's four CIKs, plus NEWCO, which the seed does not cover but the
+    # live listing does.
+    assert roster.ciks == (
+        "0000000020",
+        "0000001761",
+        "0000001985",
+        "0000005555",
+        "0000037996",
+    )
+    assert result["reused"] is False
+
+
+def test_ensure_registry_reuses_an_already_computed_projection(
+    published_source,
+) -> None:
+    """Registry identity is content-derived, so the second request is free.
+
+    The operator reaches this on the augmentation path, where an unnoticed
+    re-comparison would republish a registry on every invocation.
+    """
+    manifest_path, metadata = published_source
+    source_id = load_source_snapshot(manifest_path).manifest["snapshot_id"]
+    first = ensure_registry(
+        curated_input_path=fixture_path("cik_sec_mini.csv"),
+        source_snapshot_id=source_id,
+        metadata_paths=metadata,
+    )
+    second = ensure_registry(
+        curated_input_path=fixture_path("cik_sec_mini.csv"),
+        source_snapshot_id=source_id,
+        metadata_paths=metadata,
+    )
+    assert second["registry_id"] == first["registry_id"]
+    assert second["roster_id"] == first["roster_id"]
+    assert first["reused"] is False
+    assert second["reused"] is True
+
+
+def test_ensure_registry_answers_the_same_questions_either_way(
+    published_source,
+) -> None:
+    """A freshly computed and a reused projection must be described identically.
+
+    The two paths build their answer from different sources -- one from the
+    comparison's own return value, the other from the roster it loads -- and the
+    comparison calls that count ``registry_row_count``. Reading ``row_count`` from
+    a fresh comparison therefore raised ``KeyError`` on the *first* run for a
+    pair, and only worked on later runs once the reuse branch existed to answer
+    it. The caller renders a count to the operator, so the key set is part of the
+    contract, not an implementation detail.
+    """
+    manifest_path, metadata = published_source
+    source_id = load_source_snapshot(manifest_path).manifest["snapshot_id"]
+    fresh = ensure_registry(
+        curated_input_path=fixture_path("cik_sec_mini.csv"),
+        source_snapshot_id=source_id,
+        metadata_paths=metadata,
+    )
+    reused = ensure_registry(
+        curated_input_path=fixture_path("cik_sec_mini.csv"),
+        source_snapshot_id=source_id,
+        metadata_paths=metadata,
+    )
+    for key in (
+        "registry_id",
+        "roster_id",
+        "source_snapshot_id",
+        "curated_input_path",
+        "curated_input_fingerprint",
+        "curated_cik_count",
+        "active_cik_count",
+        "row_count",
+    ):
+        assert key in fresh, key
+        assert key in reused, key
+    assert fresh["row_count"] == reused["row_count"] == 5
+
+
+def test_ensure_registry_recomputes_when_the_roster_digest_is_wrong(
+    published_source,
+) -> None:
+    """A swapped roster is not reused; the comparison republishes the truth."""
+    manifest_path, metadata = published_source
+    source_id = load_source_snapshot(manifest_path).manifest["snapshot_id"]
+    first = ensure_registry(
+        curated_input_path=fixture_path("cik_sec_mini.csv"),
+        source_snapshot_id=source_id,
+        metadata_paths=metadata,
+    )
+    metadata.effective_cik_roster(first["registry_id"]).write_bytes(b"corrupted")
+    second = ensure_registry(
+        curated_input_path=fixture_path("cik_sec_mini.csv"),
+        source_snapshot_id=source_id,
+        metadata_paths=metadata,
+    )
+    assert second["reused"] is False
+    assert second["registry_id"] == first["registry_id"]
+
+
+def test_ensure_registry_names_a_missing_seed(tmp_path) -> None:
+    metadata = resolve_metadata_paths(tmp_path)
+    with pytest.raises(FileNotFoundError, match="curated CIK manifest"):
+        ensure_registry(
+            curated_input_path=tmp_path / "absent.csv",
+            source_snapshot_id="src-1",
+            metadata_paths=metadata,
+        )

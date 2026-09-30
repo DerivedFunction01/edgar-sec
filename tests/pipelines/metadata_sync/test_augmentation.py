@@ -23,6 +23,7 @@ from edgar_sec.pipelines.metadata_sync.augmentation import (
     augment_from_roster,
     base_snapshot_ciks,
     derive_delta_plan,
+    preflight_augment,
     snapshot_cik_roster,
 )
 from edgar_sec.pipelines.metadata_sync.checkpoints import discover_completed_chunks
@@ -44,7 +45,19 @@ from edgar_sec.pipelines.metadata_sync.roster import (
 )
 from edgar_sec.pipelines.metadata_sync.snapshot import read_snapshot_parts
 from edgar_sec.pipelines.metadata_sync.worker import run_chunk
-from tests.support import FakeSession, cik_payload, fixture_path, load_fixture
+from tests.support import (
+    FakeSession,
+    cik_payload,
+    fixture_path,
+    load_fixture,
+)
+
+# A live listing that names a registrant the curated seed does not cover.
+SOURCE_TICKERS = {
+    "0": {"cik_str": "37996", "ticker": "F", "title": "FORD MOTOR CO"},
+    "1": {"cik_str": "20", "ticker": "KTC", "title": "K Tron International Inc"},
+    "2": {"cik_str": "5555", "ticker": "NEW", "title": "NEWCO INC"},
+}
 
 FORD = "0000037996"
 EXTRA = "0000005555"
@@ -524,19 +537,86 @@ def test_augment_from_roster_agrees_with_the_csv_wrapper(
     assert result.report.input_fingerprint == roster.roster_id
 
 
-def test_augment_rejects_when_nothing_new(
+def test_augment_is_a_no_op_when_the_base_already_covers_the_request(
+    client, session: FakeSession, tmp_path: Path
+) -> None:
+    """Re-requesting a fully-covered cohort is the ordinary case, not a failure.
+
+    The seed this pipeline plans over is a file someone curated at a point in
+    time. Re-augmenting it after it has been fully ingested is the *expected*
+    outcome, and it used to raise "augmentation requested no work" from inside
+    the run, after the operator had already answered the fetch-consent and
+    worker-count questions.
+    """
+    metadata, manifest, _, _ = _publish_baseline(client, session, tmp_path)
+    pointer_before = metadata.current_pointer.read_bytes()
+    sessions_before = session.calls
+
+    result = augment(
+        client,
+        manifest,
+        metadata,
+        base_snapshot_id="base",
+        new_snapshot_id="next",
+        chunk_size=2,
+    )
+
+    assert result.no_op is True
+    assert result.report is None
+    assert result.new_snapshot_id == ""
+    assert result.delta_row_count == 0
+    assert result.refetched_ciks == ()
+    assert result.requested_cik_count == len(manifest.ciks)
+    assert result.already_present_count == len(manifest.ciks)
+    assert result.total_row_count == result.base_row_count
+    # No request, no plan, no snapshot, no pointer movement.
+    assert session.calls == sessions_before
+    assert metadata.snapshot_manifest("next").exists() is False
+    assert metadata.current_pointer.read_bytes() == pointer_before
+
+
+def test_preflight_reports_the_work_before_anything_is_fetched(
+    client, session: FakeSession, tmp_path: Path
+) -> None:
+    """The arithmetic is answerable from published artifacts alone."""
+    metadata, manifest, _, _ = _publish_baseline(client, session, tmp_path)
+    requested = build_roster((*manifest.ciks, EXTRA))
+
+    check = preflight_augment(requested, metadata, base_snapshot_id="base")
+
+    assert check.is_empty is False
+    assert check.requested_count == len(manifest.ciks) + 1
+    assert check.already_present_count == len(manifest.ciks)
+    assert check.delta.ciks == (EXTRA,)
+    assert "to fetch" in check.describe()
+
+
+def test_preflight_reports_an_empty_delta_without_raising(
     client, session: FakeSession, tmp_path: Path
 ) -> None:
     metadata, manifest, _, _ = _publish_baseline(client, session, tmp_path)
-    with pytest.raises(MergeError, match="no work"):
-        augment(
-            client,
-            manifest,
-            metadata,
-            base_snapshot_id="base",
-            new_snapshot_id="next",
-            chunk_size=2,
-        )
+    check = preflight_augment(
+        roster_from_manifest(manifest), metadata, base_snapshot_id="base"
+    )
+    assert check.is_empty is True
+    assert check.delta.is_empty is True
+    assert check.already_present_count == check.requested_count
+
+
+def test_a_delta_calling_itself_a_delta_is_still_reduced_against_the_base(
+    client, session: FakeSession, tmp_path: Path
+) -> None:
+    """A hand-supplied increment is a *request*, not a claim about what is missing.
+
+    The operator may point augmentation at a file that already looks like the
+    delta. Treating that file's contents as the work list would refetch CIKs the
+    base already holds and then reject the merge for containing them, so every
+    cohort is reduced against the base no matter what it is named.
+    """
+    metadata, manifest, _, _ = _publish_baseline(client, session, tmp_path)
+    already_covered = build_roster(manifest.ciks)
+    check = preflight_augment(already_covered, metadata, base_snapshot_id="base")
+    assert check.is_empty is True
 
 
 def test_augment_requires_an_existing_base(

@@ -7,6 +7,7 @@ from pathlib import Path
 
 import pyarrow as pa
 import pyarrow.parquet as pq
+import pytest
 
 from edgar_sec.domain.submissions.schemas import (
     SCHEMA_VERSION,
@@ -15,6 +16,7 @@ from edgar_sec.domain.submissions.schemas import (
 from edgar_sec.engine.submissions.builder import build_submission_table
 from edgar_sec.foundation.hashing import file_sha256
 from edgar_sec.infra.storage.parquet import count_parquet_rows
+from edgar_sec.pipelines.metadata_sync.augmentation import derive_delta_plan
 from edgar_sec.pipelines.metadata_sync.manifest import read_cik_manifest
 from edgar_sec.pipelines.metadata_sync.merger import (
     MergeError,
@@ -24,6 +26,7 @@ from edgar_sec.pipelines.metadata_sync.merger import (
 from edgar_sec.pipelines.metadata_sync.paths import resolve_run_paths
 from edgar_sec.pipelines.metadata_sync.planner import build_plan
 from edgar_sec.pipelines.metadata_sync.roster import (
+    build_roster,
     read_cik_index,
     roster_from_manifest,
 )
@@ -315,6 +318,36 @@ def test_merge_progress_is_optional(tmp_path: Path) -> None:
 
 
 # --------------------------------------------------------------- hard failures
+
+
+def test_a_delta_plan_cannot_be_merged_on_its_own(tmp_path: Path) -> None:
+    """A plain merge over a delta plan would silently drop the base.
+
+    ``merge_chunks`` publishes exactly the chunks a plan produced, and a delta
+    plan's chunks hold only the CIKs its base is missing. Because the delta plan
+    id is also the snapshot id an augmentation publishes under, a generic merge
+    over it would rewrite that same snapshot manifest with a delta-only payload
+    and advance the current pointer onto it -- destroying the base rows the
+    manifest names as its parent. Recombining base and delta is augmentation's
+    job, so the refusal belongs here.
+    """
+    manifest = read_cik_manifest(fixture_path("cik_sec_mini.csv"))
+    delta = derive_delta_plan(
+        roster_from_manifest(manifest),
+        build_roster(manifest.ciks[:1]),
+        chunk_size=2,
+        base_snapshot_id="base-snap",
+    )
+    run_paths = resolve_run_paths(delta.plan_id, tmp_path)
+    _complete(delta, run_paths)
+    with pytest.raises(MergeError) as excinfo:
+        merge_chunks(delta, run_paths, delta.plan_id)
+    message = str(excinfo.value)
+    assert "delta plan" in message
+    assert "base-snap" in message
+    assert "metadata augment" in message
+    # Nothing was published as a side effect of the refusal.
+    assert not (tmp_path / "metadata" / "snapshots" / delta.plan_id).exists()
 
 
 def test_missing_chunk_rejected(tmp_path: Path) -> None:

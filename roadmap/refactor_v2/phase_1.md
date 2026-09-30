@@ -777,3 +777,80 @@ emitted command text, a `get` on a field no manifest carries, and a header funct
 whose only callers were its own tests. Asserting that something exists is not
 asserting that it works; the tests that would have caught all three execute the
 thing instead of describing it.
+
+## 13. Augmentation against a stale seed
+
+**The gap.** The curated CSV is a *seed*: `uploads/cik-sec.csv` is a list curated
+at a point in time, and it goes stale as registrants appear. Augmentation existed
+to close that gap, and v1 implemented it correctly — the worklist was the union of
+the curated CIKs and the active listings in a source snapshot, minus the base
+(`core/planning.py:65-92`, `core/registry.py:93-124`), and the wizard offered to
+refresh the listing when none was published (`operator.py:282-308`).
+
+v2 kept the mechanism but inverted the default. `augment` took `--input` or
+`--roster`, and the operator's default was the curated CSV, so the ordinary
+augmentation of an already-ingested seed asked the base to confirm what it already
+had. The source-aware cohort existed but was only reachable if a registry had
+*already* been published — and the wizard listed published *metadata* snapshots
+under a "Source snapshots" heading while resolving a source manifest from that id,
+so the comparison command could not have worked at all.
+
+**What the operator meets now.** Cohort, then base, then the arithmetic, then
+consent:
+
+```text
+Choice: 5
+Curated seed CSV [uploads/cik-sec.csv]:
+Cohort to request:
+  1. uploads/cik-sec.csv + d80ed84d52dba74b25cd54374435e857  retrieved 2026-09-30T04:14:37Z, 8,006 CIKs, 10,431 listings  (seed and active listings)
+  2. 9c911a4632ff64f73c13580e74b04757  40,914 CIKs, source d80ed84d52dba74b25cd54374435e857
+  3. cik-sec.csv  (37,547 CIKs)
+  4. Another path...
+Cohort number [1]:
+  seed and active listings: 40,914 CIKs (source d80ed84d52dba74b25cd54374435e857)
+Current snapshot: f259fde5d9c69335
+40,914 requested, 37,547 already in base f259fde5d9c69335, 3,367 to fetch
+CIKs per chunk (blank = configured default) [1000]: Fetching 3,367 CIKs from SEC. Continue? (y/N) [n]:
+```
+
+The 3,367 is the delta the seed-based flow could not express: registrants the live
+listing knows about and the two-year-old seed does not. The seed is never
+rewritten.
+
+**The preflight is the design.** `preflight_augment` reduces the cohort against
+the base's published CIK index — two published artifacts, no client — and the
+result is shown *before* the fetch question. A base that already covers the request
+is a `no_op`: exit 0, no submissions client constructed, no delta plan written, no
+pointer movement. Previously the operator answered the chunk size, the consent,
+and the worker count, and *then* learned there was nothing to do, from a
+`MergeError` traceback. The seed being fully ingested is the ordinary case, not a
+failure.
+
+**Every cohort is a request.** The delta is `requested - base` even for a file that
+already looks like a delta, so a hand-built increment and a re-run are both safe.
+Nothing infers intent from a filename, because `cik-sec.csv` may be the original
+universe or a two-CIK addition and the file does not say.
+
+**A delta plan cannot be merged.** `merge_chunks` publishes exactly a plan's
+chunks, and a delta plan's chunks hold only what its base lacks. Since the delta
+plan id is *also* the snapshot id an augmentation publishes under, a generic
+`merge` over it would have rewritten a correct snapshot with a delta-only manifest
+and pointed `current` at it. `merge_chunks` now refuses, and the plan picker names
+the kind — a delta plan is now visibly `delta on <base>`.
+
+**What was deliberately left alone.** v1's `worklist.parquet` is not ported: the
+roster is the content-addressed cohort and the CIK index answers membership, so a
+second artifact holding the same set would need its own hash check. v1's
+`--augmentation` flag on every command is not ported either — one verb owns the
+recombination instead of four. v1's finalized-but-unpublished base is not
+restored, and the source refresh still defaults to no rather than v1's yes,
+because it is a live SEC request that publishes an immutable artifact.
+
+**The recurring lesson, third instance.** The `KeyError('row_count')` above was
+mine, and it is the same shape as §12: `ensure_registry`'s two branches answered
+from different sources and disagreed on the key set, so the *first* comparison for
+a pair raised and only later runs — taking the other branch — worked. Driving the
+real wizard against a populated `.artifacts` is what surfaced it; the unit test
+that exercised the same branch asserted the roster it loaded, never the dict it
+returned. A contract with two construction paths is one test unless both are held
+to the same keys.

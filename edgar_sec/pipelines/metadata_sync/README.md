@@ -57,6 +57,8 @@ no network access. `plan` performs no network access. Only `run`, `worker`, and
 | `sec_client.py` | One CIK to its submissions document plus every historical file it lists. |
 | `cli.py` | The argparse surface; each `cmd_*` is a plain callable the operator also calls. |
 | `operator.py` | Interactive wizard: session state, on-disk discovery, auto-resolution, and network consent over the same `cmd_*` functions. |
+| `augment_flow.py` | The augmentation journey: source observation, cohort choice, base choice, and the preflight that settles the arithmetic before any fetch. |
+| `worker_commands.py` | Renders the distributed lifecycle as copy-pasteable shell commands. |
 | `discovery.py` | What is already on disk: plans with progress, published snapshots, the current pointer, and published effective-CIK rosters. Manifests only; never opens a Parquet payload. |
 | `smoke_test.py` | Credential-gated live check that never publishes. |
 
@@ -117,7 +119,33 @@ is an error.
 
 **Published input is never implicitly refreshed.** `plan`, `run`, and `augment`
 never fetch an external source. A cohort is either a curated CSV or a published
-registry roster, and both resolve to the same `Roster`.
+registry roster, and both resolve to the same `Roster`. Building a registry roster
+from a seed and a source snapshot *is* a comparison, and that is a pure projection
+of two immutable files, so augmentation may run one on demand without touching the
+network. Fetching a new source observation is always a separate, consented act.
+
+**An augmentation decides its work before it spends any.** The cohort is reduced
+against the base snapshot's published CIK index, which is answerable from two
+published artifacts, and the result is shown as requested / already present / to
+fetch before the operator is asked for fetch consent. When the base already covers
+the request the command exits 0 with `no_op` set: no submissions client is
+constructed, no delta plan is written, no snapshot is published, and the current
+pointer does not move. This is the ordinary outcome for a curated seed that has
+already been fully ingested, and it used to surface as a failure after the
+operator had already answered the fetch question.
+
+**Every cohort is a request, not a claim.** The delta is always
+`requested - base`, including for a file that already looks like a delta. An
+operator pointing augmentation at a hand-built increment, or re-running one that
+already succeeded, gets the same correct answer either way.
+
+**A delta plan cannot be merged.** `merge_chunks` publishes exactly the chunks a
+plan produced, and a delta plan's chunks hold only what its base is missing, so
+merging one would publish a dataset that drops every base row while recording
+that base as its parent. Because the delta plan id is also the snapshot id an
+augmentation publishes under, that would overwrite a correct snapshot. Generic
+`merge` therefore refuses a delta plan and names `augment` instead; recombination
+is augmentation's job, and only augmentation knows which base to carry forward.
 
 ## Public surface
 
@@ -138,6 +166,10 @@ registry roster, and both resolve to the same `Roster`.
 | `augment`, `derive_delta_plan`, `snapshot_cik_roster` | `augmentation` | Delta planning and merge. |
 | `compare_sources`, `load_registry_roster`, `load_registry_manifest` | `registry` | The curated-versus-source projection. |
 | `refresh_company_tickers`, `load_source_snapshot` | `source_registry` | Immutable external source snapshots. |
+| `ensure_registry` | `registry` | The seed-and-listings projection, reusing an identical prior comparison. |
+| `preflight_augment`, `AugmentPreflight` | `augmentation` | What an augmentation would fetch, decided from published artifacts alone. |
+| `list_source_snapshots`, `list_input_manifests` | `discovery` | Candidate cohorts and the source observations behind them. |
+| `render_worker_commands` | `worker_commands` | The emitted multi-machine command sequence. |
 | `RUNTIME_CHUNK_SIZE` | `foundation.runtime.settings` | Env name for the default chunk size. |
 
 ## Command surface
@@ -304,6 +336,31 @@ These are decisions, not oversights. Each names the alternative.
 - **No `--limit` in augmentation.** A bounded augmentation would fetch a bounded
   delta, which is legitimate, but the flag is not offered because the requested
   cohort is normally a comparison's output rather than an ad-hoc subset.
+- **Source freshness is shown, never enforced.** A source snapshot carries its
+  retrieval time and the operator sees it, and a refresh is offered explicitly,
+  but nothing refuses to build a cohort from an old observation and no TTL is
+  imposed. A stale *source* is as misleading as a stale seed, and silently
+  rejecting one would be a policy this pipeline does not have. Verifying the
+  listing is fresh enough is the operator's call, made with the date in view.
+- **Input manifests are discovered from the project `uploads` directory**, not
+  from the session's artifacts root. `uploads` is an input location and
+  `ARTIFACTS_ROOT` is an output location, so a session scoped to another artifacts
+  root still finds the committed inputs. A path outside `uploads` is still
+  accepted by typing it.
+- **A candidate CIK manifest is never classified.** `cik-sec.csv` might be the
+  original universe or a two-CIK increment, and nothing in the file says which.
+  Candidates are listed with their row count and no interpretation, because the
+  only question that matters -- what the base is missing -- is answered by
+  subtraction, not by the filename. Guessing would let an operator silently
+  augment against the wrong idea of what they asked for.
+- **`augment` is a single-host command.** It derives its delta plan, runs every
+  chunk in-process, and publishes; there is no export/worker/import path for a
+  delta, because recombination happens inside the call. A delta large enough to
+  want distributing is not currently expressible. Roadmap: the multi-machine
+  section of `roadmap/refactor_v2/phase_1.md`.
+- **Augmentation cannot build on an unpublished artifact.** Only published
+  snapshots are offered as bases. v1 also offered a finalized-but-unpublished
+  manifest, which would publish a delta over data no reader can resolve to.
 
 ## Mirrored tests
 
@@ -329,6 +386,11 @@ These are decisions, not oversights. Each names the alternative.
   duplicate-accession warning, and the published CIK index.
 - `tests/pipelines/metadata_sync/test_augmentation.py` — delta identity, base
   preservation, and union semantics.
+- `tests/pipelines/metadata_sync/test_augment_flow.py` — the cohort journey, the
+  consented source refresh, the preflight shown before consent, and the no-op
+  path through both the wizard and the `augment` command.
+- `tests/pipelines/metadata_sync/test_worker_commands.py` — parser round-tripping
+  of every emitted command, bundle naming, and destination quoting.
 - `tests/pipelines/metadata_sync/test_registry.py` — the comparison projection
   and the published roster.
 - `tests/pipelines/metadata_sync/test_options.py` — the options boundary and
