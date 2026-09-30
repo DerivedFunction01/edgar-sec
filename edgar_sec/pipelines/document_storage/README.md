@@ -49,20 +49,20 @@ phase_2_5.md:4`). See "Deliberate gaps" — real-filing parity is unverified.
 | Module | Responsibility |
 | :--- | :--- |
 | `__init__.py` | Docstring only (7 loc); states the Layer 4 placement rationale. No re-exports, per AGENTS.md §1.2. |
-| `cli.py` | `run` / `status` / `review` and plan-file ingestion (231 loc). |
-| `operator.py` | `run_document_storage()`: process chunks, resolve delegations, publish (updated loc). |
-| `fixture_operator.py` | Fixture discovery, live raw fill, append/resume, and v2 manifest publication. |
-| `worker.py` | Chunk processing, the process pool, and the checkpoint-reuse rule (498 loc). |
+| `cli.py` | Six subcommands (`run`/`status`/`review`/`review-artifacts`/`fill`/`fixtures`), plan-file ingestion, and the phase-local menu (505 loc). |
+| `operator.py` | `run_document_storage()`: process chunks, resolve delegations, publish (350 loc). |
+| `fixture_operator.py` | Fixture discovery, live raw fill, append/resume, and v2 manifest publication (369 loc). |
+| `worker.py` | Chunk processing, the process pool, and the checkpoint-reuse rule (502 loc). |
 | `fetching.py` | `ArchiveFetcher` protocol and the fixture / broker / live backends (442 loc). |
 | `processor.py` | `FilingProcessor`, `PassThroughProcessor`, and the processor fingerprint (231 loc). |
-| `delegation.py` | The exhibit second pass for stub primaries (282 loc). |
+| `delegation.py` | The exhibit second pass for stub primaries (292 loc). |
 | `merger.py` | Per-run snapshot publication: assemble, split into parts, write manifest, move pointer (403 loc). |
-| `vacuum.py` | `vacuum_snapshots()`: cross-run consolidation into one canonical snapshot (564 loc). |
-| `queries.py` | The direct SQL for consolidation; the only module that holds it (263 loc). |
-| `review.py` | `compare_review_runs()`: base-vs-new review-run comparison (322 loc). |
-| `review_artifacts.py` | Fixture-backed review artifact generation: selection, per-case files, manifest (545 loc). |
+| `vacuum.py` | `vacuum_snapshots()`: cross-run consolidation into one canonical snapshot (568 loc). **Unwired.** |
+| `queries.py` | The direct SQL for consolidation; the only module that holds it (267 loc). |
+| `review.py` | `compare_review_runs()`: base-vs-new review-run comparison (374 loc). |
+| `review_artifacts.py` | Fixture-backed review artifact generation: selection, per-case files, manifest (553 loc). |
 
-Total 4,100+ lines across 12 files: 11 modules plus a 7-line `__init__.py`
+Total 4,863 lines across 13 files: 12 modules plus a 7-line `__init__.py`
 docstring.
 
 ## Contracts
@@ -239,7 +239,9 @@ docstring.
 - `DelegationTarget` — a stub decision a worker observed, for the delegation pass
   to resolve; only the *identity* of the target travels. `worker.py`.
 - `ChunkError`, `RECLAIM_INTERVAL` (64), `WORKER_SCHEMA_VERSION` (1).
-  `worker.py`.
+  `worker.py`. **`WORKER_SCHEMA_VERSION` is currently dead**: it is exported and
+  documented, but nothing writes it to a checkpoint and nothing reads it. See
+  "Deliberate gaps".
 - `ArchiveFetcher` — the runtime-checkable protocol every backend satisfies.
   `fetching.py`.
 - `FixtureArchiveFetcher` — offline; reads content-addressed payloads from one or
@@ -424,6 +426,8 @@ name either (`cli.py:157-162`).
 {artifacts_root}/transient/document_storage/runs/{run_id}/
 ├── chunks/chunk-{chunk_id}.parquet          resumable checkpoints
 ├── chunks/chunk-{chunk_id}.fingerprint      processor identity sidecar
+├── chunks/chunk-{chunk_id}.parquet.tmp      in-progress staging (intra-chunk resume)
+├── chunks/chunk-{chunk_id}.parquet.tmp.delegations.json
 ├── chunks/chunk-delegated.parquet           exhibit second-pass output
 └── review/                                  review bundles
 ```
@@ -448,8 +452,11 @@ no module in this package contains an `.artifacts` literal.
    locator with no recorded occurrence gets a synthetic one, and a document that
    failed to process still gets a row, because "the snapshot records *what
    happened*, not only what succeeded" (`worker.py:290-308`).
-4. **Write and stamp.** `write_chunk_snapshot` writes the Parquet;
-   `_stamp_fingerprint` writes the sidecar.
+4. **Write and stamp.** `process_chunk` streams each processed document straight
+   into a `StagedParquetWriter` and frees its raw bytes and intermediate text
+   immediately, then `_stamp_fingerprint` writes the sidecar. Promotion is an
+   atomic rename, so a `.tmp` staging file is never discovered as a complete
+   checkpoint (`test_a_temp_checkpoint_is_never_discovered_as_complete`).
 5. **Dispatch.** With a `payload_sink` (the fixture builder) or a resolved worker
    count of 1, chunks run inline in the parent; otherwise they go to a
    `ProcessPoolExecutor` with `max_tasks_per_child=64` (`worker.py:437-464`).
@@ -634,11 +641,14 @@ see "Deliberate gaps".
   is offline and self-limiting. There is no separate migration tool.
 - **v1's `defs/sql/` AST layer was deliberately removed, so the `sql-boundary`
   scanner was retired rather than ported.** v2 executes direct SQL. The AGENTS.md
-  scanner list registers eleven scanners and `sql-boundary` is not among them.
-  The compensating invariant is a convention: **all consolidation SQL lives in
-  `document_storage/queries.py` and executes only on connections from
-  `infra/storage/duckdb.py`** (`queries.py:1-16`). Do not scatter SQL into
-  `vacuum.py`, and do not read the missing scanner as permission to.
+  scanner list registers twelve scanners and `sql-boundary` is not among them.
+  `foundation/sql/guard.py` does **not** replace it: that module validates
+  operator-typed SQL inside the viewer console and returns a string, not a
+  policy. Nothing in the gate inspects SQL. The compensating invariant is a
+  convention: **all consolidation SQL lives in `document_storage/queries.py` and
+  executes only on connections from `infra/storage/duckdb.py`**
+  (`queries.py:1-16`). Do not scatter SQL into `vacuum.py`, and do not read the
+  missing scanner as permission to.
 - **No legacy plan/history compatibility gate.** Fill consumes the current v2
   target-plan JSON shape accepted by the document CLI. It records a portable
   target fingerprint/reference but does not require a v1 plan directory or its
@@ -654,6 +664,51 @@ see "Deliberate gaps".
   docstring says so: the client "owns a rate limiter that must stay
   single-owner", so the broker is the supported path there
   (`fetching.py:14-17, 313-320`).
+- **`vacuum_snapshots` has no production caller and no CLI route.** It is
+  implemented and tested (`test_vacuum.py`, 28 call sites), but `cli.py` registers
+  no `vacuum` subcommand and nothing outside the test file calls it, so
+  cross-run consolidation is unreachable by an operator. `relation_key_rows`
+  (`queries.py:142`) is worse: no caller and no test. Both are green in the gate
+  precisely because the gate does not check reachability. `vacuum.py:491` also
+  defaults quarter concurrency to a hardcoded `1` rather than deriving it from
+  `derive_resources()`, even though the function accepts a
+  `RuntimeResourceProfile` and ignores it.
+- **Checkpoint validation checks column names, not the schema.**
+  `validate_chunk_snapshot` (`document_parquet.py:142-163`) compares
+  `schema.names` against `DOCUMENT_SNAPSHOT_SCHEMA.names` and nothing else. Arrow
+  **types** are never compared, and there is no schema or version marker on a
+  checkpoint, so a Parquet file with the right column names and wrong types is
+  accepted and reused. `WORKER_SCHEMA_VERSION` (`worker.py:60`) exists and is
+  exported but is written nowhere. The suite has a corrupt-bytes rejection test
+  and a writer-output schema assertion, but **no test that a wrong-Arrow-type
+  checkpoint is rejected** — which is what makes the gap invisible.
+- **Resume is whole-chunk, then sub-chunk — but only by primary key.**
+  `StagedParquetWriter` (`infra/storage/parquet.py:68`) stages each chunk to a
+  sibling `.tmp` and promotes it with an atomic `os.replace` plus directory
+  fsync. On restart, `get_existing_ids()` reads the committed `occurrence_id`s
+  and the worker skips those locators, so an interrupt mid-chunk no longer
+  discards the payloads already staged
+  (`test_chunk_resumes_from_partial_staging_file`,
+  `test_chunk_resumes_when_all_documents_already_staged`).
+  What is still absent: there is **no `retry_failures` path**, so a locator
+  recorded `missing`/`failed` in a *completed* checkpoint is never re-attempted —
+  `is_chunk_complete` returns `True` and the chunk is skipped wholesale. There is
+  no cross-attempt search either: `worker_id` is recorded in `ChunkResult` but
+  never used in a path, and v1's `workers/<id>/<attempt>/` discovery has no v2
+  equivalent. A `.tmp.delegations.json` sidecar carries delegation targets across
+  an interrupt.
+- **Skipped chunks still fabricate their counts.** `is_chunk_complete` returns a
+  bare `bool`; `_skipped_result` hardcodes `failed_count=0, missing_count=0`. A
+  chunk that was entirely missing or failed is reported to the caller as fully
+  normalized. v1 reconstructed the real failure rows from persisted
+  `acquisition_failures`; v2 persists none.
+- **`documents run` has no producer for its `--plan` input.** `_load_plan` /
+  `_plan_to_inputs` expect a `{"chunks": [{"locators": [...], "occurrences":
+  [...]}]}` JSON document. `filing_catalog` publishes Parquet, and no v2 module
+  writes that shape. Until the bundle adapter lands, the runnable Phase 2.5 paths
+  are `fill`, `fixtures`, `status`, `review-artifacts`, and `review` — and
+  `review-artifacts` is the only one that exercises the normalizer end to end
+  from a fixture alone.
 - **No test modules for `processor.py` or `queries.py`.** Both are exercised
   through `test_worker.py`, `test_delegation.py`, and `test_vacuum.py`, but
   neither has a mirrored `tests/pipelines/document_storage/test_processor.py` or

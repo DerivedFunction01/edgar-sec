@@ -22,7 +22,7 @@ in `duckdb_catalog.py` that exist because a specific pipeline needs them.
 | Module | Responsibility |
 | :--- | :--- |
 | `atomic.py` | `atomic_write_bytes` / `_text` / `_json` plus `_fsync_dir`, the tmp-then-rename discipline the rest of the layer copies (69 loc). |
-| `parquet.py` | The two format constants and thin `pyarrow` read/write wrappers (72 loc). |
+| `parquet.py` | `StagedParquetWriter` (incremental chunk staging and resumption), format constants, and `pyarrow` read/write wrappers. |
 | `duckdb.py` | `connect()` — the only `duckdb.connect()` call in the package — plus out-of-core merge and merge-validation queries (184 loc). |
 | `duckdb_catalog.py` | Filing-catalog SQL builders and the atomic query-to-Parquet COPY (315 loc). |
 | `document_parquet.py` | Phase 2.5 chunk snapshot write / validate / assemble (211 loc). |

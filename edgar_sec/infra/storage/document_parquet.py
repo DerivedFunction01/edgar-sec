@@ -18,7 +18,11 @@ from edgar_sec.domain.document.models import (
 from edgar_sec.foundation.runtime.resources import RuntimeResourceProfile
 from edgar_sec.infra.storage.atomic import _fsync_dir
 from edgar_sec.infra.storage.duckdb import connect
-from edgar_sec.infra.storage.parquet import DEFAULT_COMPRESSION, DEFAULT_ROW_GROUP_SIZE
+from edgar_sec.infra.storage.parquet import (
+    DEFAULT_COMPRESSION,
+    DEFAULT_ROW_GROUP_SIZE,
+    StagedParquetWriter,
+)
 
 DOCUMENT_SNAPSHOT_SCHEMA = pa.schema(
     [
@@ -117,24 +121,13 @@ def write_chunk_snapshot(
         "error_message": error_list,
     }
 
-    table = pa.Table.from_pydict(data, schema=DOCUMENT_SNAPSHOT_SCHEMA)
-
-    tmp_path = dest.with_name(f"{dest.name}.tmp.{os.getpid()}")
-    try:
-        pq.write_table(
-            table,
-            tmp_path,
-            compression=DEFAULT_COMPRESSION,
-            row_group_size=DEFAULT_ROW_GROUP_SIZE,
-        )
-        os.replace(tmp_path, dest)
-        _fsync_dir(str(dest.parent))
-    finally:
-        if tmp_path.exists():
-            try:
-                tmp_path.unlink()
-            except OSError:
-                pass
+    with StagedParquetWriter(
+        dest,
+        schema=DOCUMENT_SNAPSHOT_SCHEMA,
+        id_column="occurrence_id",
+    ) as writer:
+        writer.write_batch(data)
+        writer.commit(expected_count=len(occurrences))
 
     return dest
 

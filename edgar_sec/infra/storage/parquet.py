@@ -3,6 +3,9 @@
 from __future__ import annotations
 
 import os
+import types
+from pathlib import Path
+from typing import Any, Self
 
 import pyarrow as pa
 import pyarrow.parquet as pq
@@ -62,9 +65,175 @@ def read_parquet_table(
     return pq.read_table(path, columns=columns)
 
 
+class StagedParquetWriter:
+    """Atomic, incremental Parquet writer for streaming chunk checkpoints.
+
+    Stages all writes to a sibling `.tmp` file and supports reading already
+    committed primary key IDs for intra-chunk resumption upon restart.
+    Promoting the `.tmp` to final is an atomic rename (`os.replace`) with directory fsync.
+    """
+
+    def __init__(
+        self,
+        final_path: str | os.PathLike[str],
+        schema: pa.Schema,
+        *,
+        compression: str = DEFAULT_COMPRESSION,
+        row_group_size: int = DEFAULT_ROW_GROUP_SIZE,
+        id_column: str | None = None,
+    ) -> None:
+        self.final_path = Path(final_path).resolve()
+        self.tmp_path = self.final_path.with_name(f"{self.final_path.name}.tmp")
+        self.schema = schema
+        self.compression = compression
+        self.row_group_size = row_group_size
+        self.id_column = id_column
+        self._writer: pq.ParquetWriter | None = None
+        self._row_count: int = 0
+        self._closed: bool = False
+        self._preloaded_table: pa.Table | None = None
+
+    @property
+    def row_count(self) -> int:
+        return self._row_count
+
+    def get_existing_ids(self) -> set[str]:
+        """Read committed primary key IDs from an existing .tmp file for partial resumption.
+
+        If the .tmp file is valid and readable, its rows are preloaded to be preserved
+        when the stream opens. If corrupted or schema-mismatched, the .tmp is cleanly reset.
+        """
+        if not self.tmp_path.is_file() or not self.id_column:
+            return set()
+        try:
+            actual_schema = pq.read_schema(self.tmp_path)
+            if self.id_column not in actual_schema.names:
+                self.reset()
+                return set()
+            table = pq.read_table(self.tmp_path)
+            if table.schema != self.schema:
+                self.reset()
+                return set()
+            self._preloaded_table = table
+            ids = set(table.column(self.id_column).to_pylist())
+            return {str(x) for x in ids if x is not None}
+        except (OSError, pa.ArrowInvalid, pq.ParquetException):
+            self.reset()
+            return set()
+
+    def reset(self) -> None:
+        """Remove the staging .tmp file and reset in-memory state."""
+        if self._writer is not None:
+            try:
+                self._writer.close()
+            except (OSError, pa.ArrowInvalid, pq.ParquetException):
+                pass
+            self._writer = None
+        if self.tmp_path.is_file():
+            try:
+                self.tmp_path.unlink()
+            except OSError:
+                pass
+        self._row_count = 0
+        self._closed = False
+        self._preloaded_table = None
+
+    def _ensure_writer(self) -> pq.ParquetWriter:
+        if self._writer is None:
+            self.tmp_path.parent.mkdir(parents=True, exist_ok=True)
+            self._writer = pq.ParquetWriter(
+                str(self.tmp_path),
+                self.schema,
+                compression=self.compression,
+            )
+            if self._preloaded_table is not None and self._preloaded_table.num_rows > 0:
+                self._writer.write_table(
+                    self._preloaded_table, row_group_size=self.row_group_size
+                )
+                self._row_count += self._preloaded_table.num_rows
+                self._preloaded_table = None
+        return self._writer
+
+    def write_batch(
+        self,
+        batch: pa.RecordBatch | pa.Table | dict[str, list[Any]],
+    ) -> int:
+        """Incrementally append a batch to the staging .tmp Parquet file."""
+        if self._closed:
+            raise RuntimeError("cannot write to a closed StagedParquetWriter")
+
+        writer = self._ensure_writer()
+        if isinstance(batch, dict):
+            table = pa.Table.from_pydict(batch, schema=self.schema)
+            writer.write_table(table, row_group_size=self.row_group_size)
+            num_rows = table.num_rows
+        elif isinstance(batch, pa.RecordBatch):
+            writer.write_batch(batch)
+            num_rows = batch.num_rows
+        elif isinstance(batch, pa.Table):
+            writer.write_table(batch, row_group_size=self.row_group_size)
+            num_rows = batch.num_rows
+        else:
+            raise TypeError(f"unsupported batch type: {type(batch)}")
+
+        self._row_count += num_rows
+        return num_rows
+
+    def commit(self, expected_count: int | None = None) -> int:
+        """Close writer, validate row count, atomically rename .tmp -> final, and fsync."""
+        if self._closed:
+            return self._row_count
+
+        if self._writer is None and not self.tmp_path.is_file():
+            # Nothing was written yet (e.g. empty chunk); create valid empty Parquet file
+            self._ensure_writer()
+
+        if self._writer is not None:
+            self._writer.close()
+            self._writer = None
+        elif self._preloaded_table is not None:
+            # If nothing new was written, flush preloaded table
+            self._ensure_writer()
+            assert self._writer is not None
+            self._writer.close()
+            self._writer = None
+
+        self._closed = True
+
+        if not self.tmp_path.is_file():
+            raise FileNotFoundError(f"staging file {self.tmp_path} does not exist")
+
+        actual_rows = count_parquet_rows(self.tmp_path)
+        if expected_count is not None and actual_rows != expected_count:
+            raise ValueError(
+                f"staged chunk row count mismatch for {self.final_path.name}: "
+                f"expected {expected_count}, got {actual_rows}"
+            )
+
+        os.replace(self.tmp_path, self.final_path)
+        _fsync_dir(str(self.final_path.parent))
+        return actual_rows
+
+    def __enter__(self) -> Self:
+        return self
+
+    def __exit__(
+        self,
+        exc_type: type[BaseException] | None,
+        exc_val: BaseException | None,
+        exc_tb: types.TracebackType | None,
+    ) -> None:
+        if exc_type is not None:
+            self.reset()
+        elif not self._closed and self._writer is not None:
+            self._writer.close()
+            self._writer = None
+
+
 __all__ = [
     "DEFAULT_COMPRESSION",
     "DEFAULT_ROW_GROUP_SIZE",
+    "StagedParquetWriter",
     "count_parquet_rows",
     "read_parquet_schema",
     "read_parquet_table",

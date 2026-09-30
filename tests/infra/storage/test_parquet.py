@@ -9,6 +9,7 @@ import pytest
 
 from edgar_sec.infra.storage.parquet import (
     DEFAULT_ROW_GROUP_SIZE,
+    StagedParquetWriter,
     count_parquet_rows,
     read_parquet_schema,
     read_parquet_table,
@@ -118,3 +119,71 @@ def test_a_temp_checkpoint_is_never_discovered_as_complete(tmp_path: Path) -> No
     (tmp_path / "chunk_0001.parquet.tmp.99999").write_bytes(b"partial")
 
     assert sorted(glob.glob(str(tmp_path / "chunk_*.parquet"))) == [str(path)]
+
+
+# ------------------------------------------------------------------ staged streaming
+
+
+def test_staged_parquet_writer_streaming_and_commit(tmp_path: Path) -> None:
+    path = tmp_path / "chunk_stream.parquet"
+    with StagedParquetWriter(path, schema=SCHEMA, id_column="cik") as writer:
+        assert writer.get_existing_ids() == set()
+        writer.write_batch({"cik": ["0000000001"], "val": [100]})
+        writer.write_batch({"cik": ["0000000002"], "val": [200]})
+        assert (tmp_path / "chunk_stream.parquet.tmp").is_file()
+        assert not path.is_file()
+        committed = writer.commit(expected_count=2)
+        assert committed == 2
+
+    assert path.is_file()
+    assert not (tmp_path / "chunk_stream.parquet.tmp").exists()
+    table = read_parquet_table(path)
+    assert table.column("cik").to_pylist() == ["0000000001", "0000000002"]
+    assert table.column("val").to_pylist() == [100, 200]
+
+
+def test_staged_parquet_writer_intra_chunk_resumption(tmp_path: Path) -> None:
+    path = tmp_path / "chunk_resume.parquet"
+    # 1. Simulate a partial run that gets interrupted after writing first batch
+    writer1 = StagedParquetWriter(path, schema=SCHEMA, id_column="cik")
+    writer1.write_batch({"cik": ["0000000001", "0000000002"], "val": [10, 20]})
+    # Intentionally do not commit, close writer leaves .tmp intact
+    if writer1._writer is not None:
+        writer1._writer.close()
+        writer1._writer = None
+
+    assert (tmp_path / "chunk_resume.parquet.tmp").is_file()
+    assert not path.is_file()
+
+    # 2. Re-open to resume
+    with StagedParquetWriter(path, schema=SCHEMA, id_column="cik") as writer2:
+        existing_ids = writer2.get_existing_ids()
+        assert existing_ids == {"0000000001", "0000000002"}
+
+        # Write remaining item
+        writer2.write_batch({"cik": ["0000000003"], "val": [30]})
+        writer2.commit(expected_count=3)
+
+    assert path.is_file()
+    assert not (tmp_path / "chunk_resume.parquet.tmp").exists()
+    table = read_parquet_table(path)
+    assert table.column("cik").to_pylist() == [
+        "0000000001",
+        "0000000002",
+        "0000000003",
+    ]
+    assert table.column("val").to_pylist() == [10, 20, 30]
+
+
+def test_staged_parquet_writer_resets_on_exception(tmp_path: Path) -> None:
+    path = tmp_path / "chunk_error.parquet"
+    with (
+        pytest.raises(ValueError, match="simulated failure"),
+        StagedParquetWriter(path, schema=SCHEMA, id_column="cik") as writer,
+    ):
+        writer.write_batch({"cik": ["0000000001"], "val": [1]})
+        assert (tmp_path / "chunk_error.parquet.tmp").is_file()
+        raise ValueError("simulated failure")
+
+    assert not (tmp_path / "chunk_error.parquet.tmp").exists()
+    assert not path.is_file()

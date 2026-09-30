@@ -18,13 +18,16 @@ from concurrent.futures import ThreadPoolExecutor
 from dataclasses import dataclass, field
 from typing import Any
 
-from edgar_sec.domain.submissions.schemas import TERMINAL_STATUSES
+from edgar_sec.domain.submissions.schemas import (
+    SUBMISSION_METADATA_SCHEMA,
+    TERMINAL_STATUSES,
+)
 from edgar_sec.engine.submissions.builder import (
     build_submission_table,
     normalize_submissions,
 )
 from edgar_sec.foundation.runtime.memory import reclaim
-from edgar_sec.infra.storage.parquet import write_parquet_table
+from edgar_sec.infra.storage.parquet import StagedParquetWriter, read_parquet_table
 
 from .checkpoints import inspect_chunk
 from .paths import RunPaths
@@ -187,27 +190,45 @@ def run_chunk(
                 skipped_existing=True,
             )
 
-    rows, historical_files = _run_chunk_rows(
-        client,
-        ciks,
-        chunk_id=chunk_id,
-        input_name=plan.input_name,
-        snapshot_id=snapshot_id,
-        input_fingerprint=plan.input_fingerprint,
-        workers=workers,
-        progress=progress,
-    )
-    table = build_submission_table(rows)
-    write_parquet_table(table, path)
+    with StagedParquetWriter(
+        path,
+        schema=SUBMISSION_METADATA_SCHEMA,
+        id_column="cik",
+    ) as writer:
+        existing_ciks = set() if force else writer.get_existing_ids()
+        remaining_ciks = [c for c in ciks if c not in existing_ciks]
+
+        rows: list[dict[str, Any]] = []
+        if remaining_ciks:
+            rows, _ = _run_chunk_rows(
+                client,
+                tuple(remaining_ciks),
+                chunk_id=chunk_id,
+                input_name=plan.input_name,
+                snapshot_id=snapshot_id,
+                input_fingerprint=plan.input_fingerprint,
+                workers=workers,
+                progress=progress,
+            )
+            table = build_submission_table(rows)
+            writer.write_batch(table)
+
+        total_rows = writer.commit(expected_count=len(ciks))
 
     statuses: dict[str, int] = {}
-    for row in rows:
-        statuses[row["status"]] = statuses.get(row["status"], 0) + 1
+    historical_files = 0
+    if total_rows > 0:
+        table = read_parquet_table(path, columns=["status", "historical_files_total"])
+        for status_val in table.column("status").to_pylist():
+            statuses[status_val] = statuses.get(status_val, 0) + 1
+        historical_files = sum(
+            c for c in table.column("historical_files_total").to_pylist() if c
+        )
 
     return ChunkResult(
         chunk_id=chunk_id,
         path=str(path),
-        row_count=table.num_rows,
+        row_count=total_rows,
         statuses=statuses,
         historical_files=historical_files,
     )

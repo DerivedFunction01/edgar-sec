@@ -90,12 +90,15 @@ To prevent OOM kills, glibc fragmentation, and thread thrashing in containerized
 4. **Hardcoded Limits Prohibited**:
    - Hardcoding `threads=`, `max_workers=`, or `memory_limit=` in library/pipeline code is blocked by the `resource-allocation` policy scanner.
 5. **Streaming & Bounded IO**:
-   - `file_sha256()` streams a file in 64KB blocks. `sha256_text()` does **not**
-     stream: `foundation/hashing.py` encodes the whole string in one call. A
-     chunked `sha256_text()` does exist in `foundation/runtime/memory.py` (1MB
-     chunks) and is currently imported only by its own test. **Hashing a whole
-     filing therefore still spikes.** Prefer the streaming variant, or move it,
-     rather than assuming the call is already memory-safe.
+   - `file_sha256()` streams a file in 64KB blocks. `sha256_text()` also streams:
+     `foundation/hashing.py:28-44` encodes the text in 1 MiB code-point slices and
+     updates one hasher, so hashing a multi-megabyte filing never allocates a
+     second full-size bytes copy. Its digest is byte-identical to
+     `hashlib.sha256(text.encode("utf-8"))` — Python `str` indices are code points
+     and UTF-8 encodes each independently, so bounded slices concatenate to the
+     whole string's bytes. `tests/foundation/test_hashing.py` pins the equality.
+     Prefer this over `read_bytes()` into a digest anywhere; the `whole-file-read`
+     scanner enforces that for the obvious cases.
    - Parquet files use `row_group_size = 128_000` and `compression = "zstd"`.
 
 ---

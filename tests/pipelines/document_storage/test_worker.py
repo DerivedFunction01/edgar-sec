@@ -569,3 +569,143 @@ def test_filing_processor_survives_a_payload_carrying_page_markers() -> None:
     assert "page_marker_count" in processed.metadata
     assert processed.metadata["page_marker_count"] > 0
     assert processed.metadata["page_marker_stripped_count"] > 0
+
+
+def test_chunk_resumes_from_partial_staging_file(tmp_path: Path) -> None:
+    from edgar_sec.infra.storage.document_parquet import DOCUMENT_SNAPSHOT_SCHEMA
+    from edgar_sec.infra.storage.parquet import StagedParquetWriter
+    from edgar_sec.pipelines.document_storage.worker import _build_snapshot_batch
+
+    loc1 = _locator("doc1.htm")
+    occ1 = _occurrence(loc1)
+    loc2 = _locator("doc2.htm")
+    occ2 = FilingOccurrence(
+        occurrence_id="occ-2",
+        source_cik=Cik.from_raw("1234567"),
+        accession=loc2.accession,
+        document_path=loc2.document_path,
+        form="10-K",
+        filing_date="2012-02-15",
+        report_date="2011-12-31",
+        doc_id=loc2.document_locator_key,
+    )
+
+    chunk_path = chunk_checkpoint_path(tmp_path, "c_resume")
+    with StagedParquetWriter(
+        chunk_path, schema=DOCUMENT_SNAPSHOT_SCHEMA, id_column="occurrence_id"
+    ) as writer:
+        batch = _build_snapshot_batch(
+            [occ1],
+            raw_payload=b"DOC1 TEXT",
+            norm_text="DOC1 TEXT",
+            status="ok",
+            error=None,
+        )
+        writer.write_batch(batch)
+
+    assert (tmp_path / "chunk-c_resume.parquet.tmp").is_file()
+    assert not chunk_path.is_file()
+
+    fetcher = DictFetcher({"doc1.htm": b"DOC1 TEXT", "doc2.htm": b"DOC2 TEXT"})
+    result = process_chunk(
+        "c_resume",
+        "w1",
+        [loc1, loc2],
+        [occ1, occ2],
+        fetcher=fetcher,
+        processor=PassThroughProcessor(),
+        chunks_dir=tmp_path,
+    )
+
+    assert result.occurrences == 2
+    assert result.normalized_count == 2
+    assert result.failed_count == 0
+    assert result.missing_count == 0
+    assert result.ok is True
+    assert chunk_path.is_file()
+    assert not (tmp_path / "chunk-c_resume.parquet.tmp").exists()
+    # Fetcher was only called for doc2.htm, doc1.htm was skipped because it was already staged
+    assert fetcher.calls == ["doc2.htm"]
+
+
+def test_chunk_resumes_when_all_documents_already_staged(tmp_path: Path) -> None:
+    """When a worker is interrupted right before commit(), all documents are in .tmp.
+
+    Resuming must report all normalized documents (not 0), ensuring operator _partial_ok succeeds
+    and payload_sha256 is deterministic and identical to a fresh run.
+    """
+    from edgar_sec.infra.storage.document_parquet import DOCUMENT_SNAPSHOT_SCHEMA
+    from edgar_sec.infra.storage.parquet import StagedParquetWriter
+    from edgar_sec.pipelines.document_storage.operator import _partial_ok
+    from edgar_sec.pipelines.document_storage.worker import _build_snapshot_batch
+
+    loc1 = _locator("doc1.htm")
+    occ1 = _occurrence(loc1)
+    loc2 = _locator("doc2.htm")
+    occ2 = FilingOccurrence(
+        occurrence_id="occ-2",
+        source_cik=Cik.from_raw("1234567"),
+        accession=loc2.accession,
+        document_path=loc2.document_path,
+        form="10-K",
+        filing_date="2012-02-15",
+        report_date="2011-12-31",
+        doc_id=loc2.document_locator_key,
+    )
+
+    # First, run a fresh chunk in a separate directory to get the reference payload_sha256
+    fresh_dir = tmp_path / "fresh"
+    fresh_fetcher = DictFetcher({"doc1.htm": b"DOC1 TEXT", "doc2.htm": b"DOC2 TEXT"})
+    fresh_result = process_chunk(
+        "c_test",
+        "w_fresh",
+        [loc1, loc2],
+        [occ1, occ2],
+        fetcher=fresh_fetcher,
+        processor=PassThroughProcessor(),
+        chunks_dir=fresh_dir,
+    )
+    assert fresh_result.normalized_count == 2
+    assert fresh_result.ok is True
+
+    # Now stage ALL documents into .tmp in resume_dir
+    resume_dir = tmp_path / "resume"
+    chunk_path = chunk_checkpoint_path(resume_dir, "c_test")
+    with StagedParquetWriter(
+        chunk_path, schema=DOCUMENT_SNAPSHOT_SCHEMA, id_column="occurrence_id"
+    ) as writer:
+        batch = _build_snapshot_batch(
+            [occ1, occ2],
+            raw_payload=b"DOC TEXT",
+            norm_text="DOC TEXT",
+            status="ok",
+            error=None,
+        )
+        writer.write_batch(batch)
+
+    assert (resume_dir / "chunk-c_test.parquet.tmp").is_file()
+
+    # Re-run: 0 new fetches needed
+    resume_fetcher = DictFetcher({})
+    resumed_result = process_chunk(
+        "c_test",
+        "w_resume",
+        [loc1, loc2],
+        [occ1, occ2],
+        fetcher=resume_fetcher,
+        processor=PassThroughProcessor(),
+        chunks_dir=resume_dir,
+    )
+
+    # 1. Total normalized count must be 2, not 0
+    assert resumed_result.normalized_count == 2
+    assert resumed_result.failed_count == 0
+    assert resumed_result.missing_count == 0
+    assert resumed_result.ok is True
+
+    # 2. Operator _partial_ok must return True!
+    assert _partial_ok([resumed_result]) is True
+
+    # 3. Provenance payload_sha256 must match the reference run over same counts
+    assert resumed_result.payload_sha256 == fresh_result.payload_sha256
+    assert resume_fetcher.calls == []

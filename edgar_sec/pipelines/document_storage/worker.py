@@ -19,8 +19,10 @@ enforced and it is tested at that boundary.
 
 from __future__ import annotations
 
+import json
 import logging
 import os
+from collections import Counter
 from collections.abc import Callable, Mapping, Sequence
 from concurrent.futures import ProcessPoolExecutor
 from dataclasses import dataclass
@@ -40,10 +42,13 @@ from edgar_sec.foundation.runtime.resources import (
     auto_worker_count,
     derive_resources,
 )
+from edgar_sec.foundation.runtime.settings import resolve_runtime_settings
+from edgar_sec.infra.storage.atomic import atomic_write_json
 from edgar_sec.infra.storage.document_parquet import (
+    DOCUMENT_SNAPSHOT_SCHEMA,
     validate_chunk_snapshot,
-    write_chunk_snapshot,
 )
+from edgar_sec.infra.storage.parquet import StagedParquetWriter, read_parquet_table
 from edgar_sec.pipelines.document_storage.fetching import ArchiveFetcher
 from edgar_sec.pipelines.document_storage.processor import (
     DocumentProcessor,
@@ -149,6 +154,63 @@ def _unique_locators(
     return unique
 
 
+def _build_snapshot_batch(
+    occurrences: Sequence[FilingOccurrence],
+    *,
+    raw_payload: bytes,
+    norm_text: str,
+    status: str,
+    error: str | None,
+) -> dict[str, list[Any]]:
+    """Assemble a columnar batch dictionary conforming to DOCUMENT_SNAPSHOT_SCHEMA."""
+    occurrence_ids: list[str] = []
+    source_ciks: list[str] = []
+    accessions: list[str] = []
+    document_paths: list[str] = []
+    document_locator_keys: list[str] = []
+    blob_hashes: list[str] = []
+    forms: list[str] = []
+    filing_dates: list[str] = []
+    raw_payloads: list[bytes] = []
+    byte_sizes: list[int] = []
+    norm_texts: list[str] = []
+    status_list: list[str] = []
+    error_list: list[str | None] = []
+
+    byte_size = len(raw_payload)
+    for occ in occurrences:
+        occurrence_ids.append(occ.occurrence_id)
+        source_ciks.append(occ.source_cik.to_10digit())
+        accessions.append(str(occ.accession))
+        document_paths.append(occ.document_path)
+        doc_key = derive_document_locator_key(str(occ.accession), occ.document_path)
+        document_locator_keys.append(doc_key)
+        blob_hashes.append(occ.doc_id)
+        forms.append(occ.form)
+        filing_dates.append(occ.filing_date)
+        raw_payloads.append(raw_payload)
+        byte_sizes.append(byte_size)
+        norm_texts.append(norm_text)
+        status_list.append(status)
+        error_list.append(error)
+
+    return {
+        "occurrence_id": occurrence_ids,
+        "source_cik": source_ciks,
+        "accession": accessions,
+        "document_path": document_paths,
+        "document_locator_key": document_locator_keys,
+        "blob_hash": blob_hashes,
+        "form": forms,
+        "filing_date": filing_dates,
+        "raw_payload": raw_payloads,
+        "byte_size": byte_sizes,
+        "normalized_text": norm_texts,
+        "status": status_list,
+        "error_message": error_list,
+    }
+
+
 def process_chunk(
     chunk_id: str,
     worker_id: str,
@@ -163,6 +225,9 @@ def process_chunk(
 ) -> ChunkResult:
     """Fetch and normalize one chunk, publishing it as a Parquet checkpoint.
 
+    Streams normalized documents directly to a staging .tmp Parquet file,
+    discarding raw byte arrays and intermediate text from memory immediately.
+
     Args:
         chunk_id: identity of this chunk, used for the checkpoint filename.
         worker_id: identity of the executing worker, recorded in the result.
@@ -171,6 +236,7 @@ def process_chunk(
         fetcher: acquisition backend.
         processor: normalization backend; defaults to the filing processor.
         chunks_dir: directory the checkpoint Parquet is written to.
+        profile: optional resource budget.
         payload_sink: optional callback invoked with each acquired raw payload,
             used by the fixture builder to record what was fetched.
     """
@@ -188,80 +254,138 @@ def process_chunk(
     for occurrence in occurrences:
         by_key.setdefault(occurrence.doc_id, []).append(occurrence)
 
-    # The Parquet writer looks records up by ``occurrence_id`` (text, status,
-    # error) and by ``doc_id`` (raw bytes), so these maps use exactly those keys.
-    normalized_texts: dict[str, str] = {}
-    raw_blobs: dict[str, bytes] = {}
-    processed_text: dict[str, str] = {}
+    expanded_occurrences = _expand_occurrences(unique, by_key, {})
+    total_occurrences = len(expanded_occurrences)
+
+    delegations_file = output_path.with_name(f"{output_path.name}.tmp.delegations.json")
     delegations: list[DelegationTarget] = []
-    statuses: dict[str, str] = {}
-    error_messages: dict[str, str | None] = {}
-    processed_by_key: dict[str, str] = {}
-    normalized = 0
-    failed = 0
-    missing = 0
-
-    for index, locator in enumerate(unique):
-        result = fetcher.fetch(locator)
-        if not result.ok:
-            missing += 1
-            processed_by_key[locator.document_locator_key] = "missing"
-            error_messages[locator.document_locator_key] = (
-                result.error or "payload unavailable"
-            )
-            continue
-        assert result.payload is not None  # guaranteed by result.ok
-        if payload_sink is not None:
-            payload_sink(locator, result.payload)
+    if delegations_file.is_file():
         try:
-            processed: ProcessedDocument = effective_processor.process(
-                result.payload, locator
-            )
-        except Exception as exc:  # noqa: BLE001 - one bad document is not a bad chunk
-            log.warning("processing failed for %s: %s", locator.document_path, exc)
-            failed += 1
-            processed_by_key[locator.document_locator_key] = "failed"
-            error_messages[locator.document_locator_key] = str(exc)
-            continue
-
-        normalized += 1
-        processed_by_key[locator.document_locator_key] = "ok"
-        decision = processed.decision
-        if decision is not None and decision.target_exhibit:
-            delegations.append(
+            stored = json.loads(delegations_file.read_text(encoding="utf-8"))
+            delegations = [
                 DelegationTarget(
+                    document_locator_key=d["document_locator_key"],
+                    document_path=d["document_path"],
+                    target_exhibit=d["target_exhibit"],
+                )
+                for d in stored
+            ]
+        except (ValueError, KeyError, OSError):
+            delegations = []
+
+    with StagedParquetWriter(
+        output_path,
+        schema=DOCUMENT_SNAPSHOT_SCHEMA,
+        id_column="occurrence_id",
+    ) as writer:
+        existing_ids = writer.get_existing_ids()
+
+        for index, locator in enumerate(unique):
+            occ_list = by_key.get(locator.document_locator_key)
+            if not occ_list:
+                occ_list = [_synthetic_occurrence(locator)]
+
+            if existing_ids and all(
+                occ.occurrence_id in existing_ids for occ in occ_list
+            ):
+                continue
+
+            result = fetcher.fetch(locator)
+            if not result.ok:
+                batch = _build_snapshot_batch(
+                    occ_list,
+                    raw_payload=b"",
+                    norm_text="",
+                    status="missing",
+                    error=result.error or "payload unavailable",
+                )
+                writer.write_batch(batch)
+                continue
+
+            assert result.payload is not None  # guaranteed by result.ok
+            if payload_sink is not None:
+                payload_sink(locator, result.payload)
+
+            try:
+                processed: ProcessedDocument = effective_processor.process(
+                    result.payload, locator
+                )
+            except Exception as exc:  # noqa: BLE001 - one bad document is not a bad chunk
+                log.warning("processing failed for %s: %s", locator.document_path, exc)
+                batch = _build_snapshot_batch(
+                    occ_list,
+                    raw_payload=b"",
+                    norm_text="",
+                    status="failed",
+                    error=str(exc),
+                )
+                writer.write_batch(batch)
+                continue
+
+            decision = processed.decision
+            if decision is not None and decision.target_exhibit:
+                target = DelegationTarget(
                     document_locator_key=locator.document_locator_key,
                     document_path=locator.document_path,
                     target_exhibit=decision.target_exhibit,
                 )
-            )
-        raw_blobs[key_of(locator)] = processed.payload
-        processed_text[key_of(locator)] = processed.text
+                delegations.append(target)
+                try:
+                    atomic_write_json(
+                        delegations_file,
+                        [
+                            {
+                                "document_locator_key": d.document_locator_key,
+                                "document_path": d.document_path,
+                                "target_exhibit": d.target_exhibit,
+                            }
+                            for d in delegations
+                        ],
+                        canonical=True,
+                    )
+                except OSError:
+                    pass
 
-        if index and index % RECLAIM_INTERVAL == 0:
-            reclaim()
-
-    expanded_occurrences = _expand_occurrences(unique, by_key, processed_by_key)
-    for occurrence in expanded_occurrences:
-        state = processed_by_key.get(document_key_of(occurrence), "ok")
-        statuses[occurrence.occurrence_id] = state
-        if state == "ok":
-            normalized_texts[occurrence.occurrence_id] = processed_text[
-                occurrence.doc_id
-            ]
-        else:
-            error_messages[occurrence.occurrence_id] = error_messages.get(
-                document_key_of(occurrence)
+            batch = _build_snapshot_batch(
+                occ_list,
+                raw_payload=processed.payload,
+                norm_text=processed.text,
+                status="ok",
+                error=None,
             )
-    write_chunk_snapshot(
-        output_path,
-        expanded_occurrences,
-        raw_blobs,
-        normalized_texts,
-        statuses,
-        error_messages,
-    )
-    _stamp_fingerprint(output_path, fingerprint)
+            writer.write_batch(batch)
+
+            if index and index % RECLAIM_INTERVAL == 0:
+                reclaim()
+
+        writer.commit(expected_count=total_occurrences)
+        _stamp_fingerprint(output_path, fingerprint)
+
+    if delegations_file.is_file():
+        try:
+            delegations_file.unlink()
+        except OSError:
+            pass
+
+    # Derive counts directly from the committed Parquet table so they are
+    # deterministic, invariant to restarts, and accurately reflect total
+    # normalized/failed/missing documents in the chunk.
+    status_by_doc: dict[str, str] = {}
+    if total_occurrences > 0:
+        table = read_parquet_table(
+            output_path, columns=["document_locator_key", "status"]
+        )
+        for doc_key, status in zip(
+            table.column("document_locator_key").to_pylist(),
+            table.column("status").to_pylist(),
+            strict=False,
+        ):
+            status_by_doc[doc_key] = status
+
+    counts = Counter(status_by_doc.values())
+    normalized = counts.get("ok", 0)
+    failed = counts.get("failed", 0)
+    missing = counts.get("missing", 0)
 
     return ChunkResult(
         chunk_id=chunk_id,
@@ -271,7 +395,7 @@ def process_chunk(
         normalized_count=normalized,
         failed_count=failed,
         missing_count=missing,
-        occurrences=len(expanded_occurrences),
+        occurrences=total_occurrences,
         processor_fingerprint=fingerprint,
         payload_sha256=sha256_text(
             f"{chunk_id}:{normalized}:{failed}:{missing}:{len(unique)}"
@@ -368,12 +492,19 @@ def resolved_worker_count(
 
     A worker holds a full filing document in memory, so the count is derived from
     available bytes rather than from how many cores the host happens to expose.
+    The per-worker budget and safety fraction come from the settings registry, not
+    from literals here: an operator who sets ``RUNTIME_WORKER_MEMORY_MIB`` must
+    not be silently ignored, and the ``resource-allocation`` scanner cannot catch
+    that because its rule only matches ``threads``/``max_workers``/``memory_limit``.
     """
     if requested is not None and requested > 0:
         return requested
     resolved = profile if profile is not None else derive_resources()
+    settings = resolve_runtime_settings()
     return auto_worker_count(
-        resolved.available_memory_bytes, worker_memory_mib=512, safety_fraction=0.9
+        resolved.available_memory_bytes,
+        worker_memory_mib=settings.worker_memory_mib,
+        safety_fraction=settings.worker_memory_safety,
     )
 
 

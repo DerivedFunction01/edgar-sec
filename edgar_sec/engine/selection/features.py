@@ -52,6 +52,7 @@ from edgar_sec.engine.selection.policy import (
     compute_seed_fingerprint,
 )
 from edgar_sec.foundation.serialization import canonical_hash
+from edgar_sec.infra.storage.atomic import atomic_write_text
 from edgar_sec.infra.storage.duckdb import connect
 from edgar_sec.infra.storage.duckdb_catalog import copy_query_to_parquet, sql_literal
 from edgar_sec.infra.storage.parquet import DEFAULT_ROW_GROUP_SIZE
@@ -679,8 +680,9 @@ class FeatureSnapshotBuilder:
             "options": self.options,
             "counts": counts,
         }
-        paths.manifest.write_text(
-            json.dumps(manifest, indent=2, sort_keys=True) + "\n", encoding="utf-8"
+        atomic_write_text(
+            paths.manifest,
+            json.dumps(manifest, indent=2, sort_keys=True) + "\n",
         )
         return paths
 

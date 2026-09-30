@@ -5,7 +5,7 @@
 > **Predecessors:** 
 > - [Phase 1 (`metadata_sync`)](file:///home/denny/edgar-sec/roadmap/refactor_v2/phase_1.md): feature-complete, with documented scope reductions (see that document's §10).
 > - [Phase 2 (`filing_catalog`)](file:///home/denny/edgar-sec/roadmap/refactor_v2/phase_2.md): COMPLETE.
-> **Target Scope:** Comprehensive implementation of Phase 2.5 (Document Storage, HTML/ASCII Normalization, Reflow, Table Tagging, and Cover Checkmark Solving). Phase 2.5 consumes a published Phase 2 plan bundle and produces content-addressed normalized document snapshots.
+> **Target Scope:** Comprehensive implementation of Phase 2.5 (Document Storage, HTML/ASCII Normalization, Reflow, Table Tagging, and Cover Checkmark Solving). Phase 2.5 is *designed* to consume a published Phase 2 plan bundle and produce content-addressed normalized document snapshots. The bundle→input bridge is not built yet: `documents run` reads a chunk-plan JSON that no v2 module writes, and the only end-to-end Phase 2.5 path today is `documents review-artifacts`, which needs no plan. See sub-plan 05 §M5.8.
 > **Scope Scale:** Phase 2.5 encompasses ~363 unported `.v1` files (~50,000+ lines of dense engine, layout, and storage code). Because of this scale, the implementation plan is decomposed into **six modular, linked sub-plans** anchored by this master specification.
 
 ---
@@ -188,6 +188,16 @@ covering the plan identity plus its selected locator keys. Phase 2 refuses to
 reuse a bundle whose work order no longer matches. Phase 2.5 should treat the
 bundle as immutable input and verify the fingerprint if it copies or caches it.
 
+> [!WARNING]
+> **This section describes the contract, not the implementation.** The layout
+> above is what `filing_catalog` publishes, and it is correct. What does not exist
+> yet is the Phase 2.5 reader for it. `documents run --plan` takes a JSON file
+> with a `chunks`/`locators`/`occurrences` shape (sub-plan 05, "What `--plan`
+> actually is"), and no v2 module writes that file. The bridge from this bundle to
+> that JSON is the first thing still to be built, and it is the reason Plan 08
+> exists. Read this section as the target contract an adapter must satisfy, not as
+> a description of a path that runs today.
+
 ---
 
 ## 4. Phase 2.5 Execution & Resumability Lifecycle
@@ -206,8 +216,8 @@ sequenceDiagram
     participant PQ as Parquet Chunk Snapshot
     participant Merger as Snapshot Merger
 
-    Operator->>CLI: run --plan-dir <plan_id> --workers 8
-    CLI->>Plan: Load locator_groups.parquet and chunk boundaries (default 50 locators)
+    Operator->>CLI: run --plan <chunk-plan.json> --fixture <id> --workers 8
+    CLI->>Plan: Load chunks/locators/occurrences (NOT the Phase 2 bundle — see sub-plan 05)
     CLI->>WorkerPool: Dispatch chunks
     loop For Each Locator in Chunk
         WorkerPool->>Broker: Request document fetch / token lease
@@ -248,8 +258,8 @@ gantt
 - [x] **Stage 1 (Sub-plans 01 & 02)**: Foundation text algorithms, domain models, Unix-socket `SecBroker`, and direct Parquet chunk snapshot writer.
 - [x] **Stage 2 (Sub-plan 03)**: SGML unpacker, HTML normalization, page-marker cleaner, and conservative ASCII reflow engine.
 - [x] **Stage 3 (Sub-plan 04)**: Table boundary detection, tagged table formatting, cover checkmark quadratic-penalty solver, cover region detection, evaluators, and the `FormPlugin` SPI — including the composition seam itself.
-- [x] **Stage 4 (Sub-plan 05)**: Process-pool chunk workers, resumable chunk checkpoints, exhibit delegation, snapshot merger, cross-run consolidation (`vacuum_snapshots`), and the `run.py documents` CLI.
-- [x] **Stage 5 (Sub-plan 06, partial)**: Review harness (`run.py documents review`), pinned normalization goldens in `tests/fixtures/document_storage/`, and verification against all **11** registered policy scanners. M6.3/M6.4 are deferred — see §7.
+- [x] **Stage 4 (Sub-plan 05, partial)**: Process-pool chunk workers, resumable chunk checkpoints, exhibit delegation, snapshot merger, the `run.py documents` CLI, and the fixture fill/replay lifecycle. Cross-run consolidation (`vacuum_snapshots`) is **implemented and tested but unwired** — no production caller, no CLI route (sub-plan 05 §M5.9).
+- [x] **Stage 5 (Sub-plan 06, partial)**: Review harness (`run.py documents review-artifacts` and `... review`), pinned normalization goldens in `tests/fixtures/document_storage/`, and verification against all **12** registered policy scanners. M6.3/M6.4 are deferred — see §7.
 - [x] **Fixture store correction**: the raw fixture lifecycle is restored in v2. `fill_fixture` (`pipelines/document_storage/fixture_operator.py`) acquires missing locator payloads through one shared SEC HTTP client and one coordinator-owned SQLite writer, skips keys already stored, appends successes idempotently, and publishes a v2 manifest atomically after the writes commit. `FixtureStore` (`infra/storage/fixture_store.py`) defines the single canonical table `fixture_payloads(doc_id, raw_payload)` at `{artifacts_root}/fixtures/<id>/fixture.sqlite`, and `FixtureArchiveFetcher` replays from it read-only, preserving direct-locator and full-submission-bundle lookup. CLI surface: `documents fill`, `documents fixtures`, repeatable `documents run --fixture` (first store with a matching key wins), and a phase-local menu when the document entry is invoked with no subcommand.
 
 ### Fixture scope: deliberately not ported
@@ -332,7 +342,7 @@ parsing and reflow — `text/html/{tree,cleaner}.py`, `text/reflow/{engine,types
 | **Pacing Compliance** | Never exceeds configured rate limits across multi-process workers; zero 429 rate-limit errors from SEC. | Multi-worker soak test with mock/live broker |
 | **Memory Invariance** | glibc arena reclamation (`malloc_trim(0)`) at bounded intervals, and `max_tasks_per_child` recycling in the process pool. | cgroup memory monitoring during a 1,000-document run |
 | **Snapshot Immutability** | A published snapshot is never overwritten; consolidation refuses a re-derived id; a purge is refused while a retained snapshot references a source part. | `tests/pipelines/document_storage/test_vacuum.py` |
-| **Zero Code Leaks** | 0 direct `os.environ` reads outside `foundation/runtime/env.py`, 0 hardcoded `.artifacts` literals outside path resolvers, no secrets, no `sys.exit()` in library code, 0 upward imports, 0 hardcoded thread/memory limits. | All **7** registered policy scanners in `.venv/bin/python check.py --scan` |
+| **Zero Code Leaks** | 0 direct `os.environ` reads outside `foundation/runtime/env.py`, 0 hardcoded `.artifacts` literals outside path resolvers, no secrets, no `sys.exit()` in library code, 0 upward imports, 0 hardcoded thread/memory limits. | All **12** registered policy scanners in `.venv/bin/python check.py --scan` |
 
 > [!NOTE]
 > There is no raw-SQL boundary in v2 and never was. The `sql-boundary` scanner was
@@ -341,6 +351,9 @@ parsing and reflow — `text/html/{tree,cleaner}.py`, `text/reflow/{engine,types
 > strings in `pipelines/document_storage/queries.py`, and the invariant actually
 > worth holding is a convention: all consolidation SQL text lives in that one
 > module and executes only on connections from `infra/storage/duckdb.py`.
+> `foundation/sql/guard.py` does not change this: it validates operator-typed SQL
+> for the viewer console and returns a string, and its own README states it is
+> not the repository's SQL boundary. Nothing in the gate inspects SQL.
 
 ---
 

@@ -22,7 +22,7 @@ This subsystem converts raw, unstructured SEC documents (ranging from 1990s raw 
 | `.v1` Source File | Lines | Target v2 Location | Responsibility & Invariants |
 | :--- | ---: | :--- | :--- |
 | `defs/sec_documents/preprocessor.py` | 240 | `engine/document/unpacker.py` | Parses `<DOCUMENT>` tags, extracts primary document and secondary exhibits. |
-| `defs/text/html.py` | 310 | `engine/document/html.py` | `selectolax` parser: strips scripts/styles, unrolls inline formatting, normalizes block tags. |
+| `defs/text/html.py` | 310 | `engine/document/html.py` + `html_cleaner.py` | `selectolax` parser: strips scripts/styles, unrolls inline formatting, normalizes block tags. Whitespace policy is a separate module. |
 | `defs/text/page_markers.py` | 280 | `engine/document/page_markers.py` | Bounded-window running header/footer and page number detection. |
 | `defs/text/reflow/context.py` | 190 | `engine/reflow/context.py` | `BlockContext`: Lazy memoization of scalar layout metrics (`cached_property`). |
 | `defs/text/reflow/rules.py` | 340 | `engine/reflow/rules.py` | Rule cascades with orthogonal quorums (Macro-Grammar, Micro-Line-Wrap, Geometric Anchors). |
@@ -80,9 +80,20 @@ In `.v1`, reflow research was coupled to an elaborate ML/clustering apparatus (`
 
 ## 4. Milestone Checklist & Verification
 
-- [ ] **M3.1**: Implement `edgar_sec/engine/document/unpacker.py` and test against multi-doc SGML fixtures.
-- [ ] **M3.2**: Implement `edgar_sec/engine/document/html.py` with `selectolax`.
-- [ ] **M3.3**: Implement `edgar_sec/engine/document/page_markers.py` with sliding window tests.
-- [ ] **M3.4**: Implement `edgar_sec/engine/reflow/context.py`, `rules.py`, and `engine.py`.
-- [ ] **M3.5**: Verify zero regression on reflow character accuracy using unit tests and golden samples.
-- [ ] **Verification**: Run `python check.py --scan` to guarantee zero upward dependencies from Layer 3.
+All six modules exist and are covered by mirrored tests
+(`tests/engine/document/`, `tests/engine/reflow/`), but the checklist was
+never updated when they landed, so every box below was still open against
+shipped code:
+
+- [x] **M3.1**: `edgar_sec/engine/document/unpacker.py`, tested against multi-doc SGML fixtures.
+- [x] **M3.2**: `edgar_sec/engine/document/html.py` with `selectolax`.
+- [x] **M3.3**: `edgar_sec/engine/document/page_markers.py` with sliding-window tests.
+- [x] **M3.4**: `edgar_sec/engine/reflow/{context,rules,engine}.py`.
+- [x] **M3.5**: reflow character-accuracy regression suite
+  (`tests/engine/reflow/test_reflow.py`).
+- [x] **Verification**: `check.py --scan` confirms zero upward dependencies from Layer 3.
+
+> [!NOTE]
+> `engine/document/` also contains `signatures.py` and `whitespace.py`, which no
+> row in this table accounts for. The v1 `defs/text/reflow/tools/` disposition
+> itself (clustering lab and Parquet exporters archived) remains accurate.

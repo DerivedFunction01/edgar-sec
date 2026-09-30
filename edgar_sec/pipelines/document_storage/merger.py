@@ -243,7 +243,7 @@ def _write_manifest(
         "logical_fingerprint": logical_fingerprint,
     }
     path = snapshot_dir / SNAPSHOT_MANIFEST_NAME
-    path.write_text(canonical_json(manifest), encoding="utf-8")
+    _atomic_write(path, canonical_json(manifest))
     return path
 
 

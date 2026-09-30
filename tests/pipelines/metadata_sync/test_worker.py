@@ -242,3 +242,100 @@ def test_run_chunk_ids_never_refetches_a_valid_checkpoint(
 
     run_chunk_ids(client, plan, run_paths, [1], snapshot_id="snap1", workers=2)
     assert len(session.calls) == calls
+
+
+def test_run_chunk_resumes_from_partial_staging_file(
+    client, session: FakeSession, tmp_path: Path
+) -> None:
+    from edgar_sec.domain.submissions.schemas import SUBMISSION_METADATA_SCHEMA
+    from edgar_sec.engine.submissions.builder import build_submission_table
+    from edgar_sec.infra.storage.parquet import StagedParquetWriter
+
+    plan, run_paths = _plan(tmp_path, chunk_size=2)
+    _ford_pair(session)
+    session.register(
+        submissions_url(SMALL),
+        {"name": "SMALL CO", "filings": {"recent": {}, "files": []}},
+    )
+
+    # 1. Pre-stage first CIK into chunk-1.parquet.tmp
+    row, _ = normalize_one_cik(
+        client,
+        SMALL,
+        input_name=plan.input_name,
+        snapshot_id="snap1",
+        input_fingerprint=plan.input_fingerprint,
+        chunk_id=1,
+    )
+    chunk_path = run_paths.chunk_file(1)
+    with StagedParquetWriter(
+        chunk_path, schema=SUBMISSION_METADATA_SCHEMA, id_column="cik"
+    ) as writer:
+        writer.write_batch(build_submission_table([row]))
+
+    calls_before = len(session.calls)
+    assert calls_before == 1
+    assert chunk_path.with_name(f"{chunk_path.name}.tmp").is_file()
+
+    # 2. Run chunk - should resume and fetch only FORD
+    result = run_chunk(client, plan, run_paths, 1, snapshot_id="snap1", workers=2)
+    assert result.row_count == 2
+    assert result.statuses == {"ok": 2}
+    assert result.historical_files == 1
+    assert chunk_path.is_file()
+    assert not chunk_path.with_name(f"{chunk_path.name}.tmp").exists()
+
+    # Only 2 additional calls made for FORD (recent + historical)
+    assert len(session.calls) == calls_before + 2
+    table = pq.read_table(chunk_path)
+    assert set(table.column("cik").to_pylist()) == {SMALL, FORD}
+
+
+def test_run_chunk_resumes_when_all_ciks_already_staged(
+    client, session: FakeSession, tmp_path: Path
+) -> None:
+    from edgar_sec.domain.submissions.schemas import SUBMISSION_METADATA_SCHEMA
+    from edgar_sec.engine.submissions.builder import build_submission_table
+    from edgar_sec.infra.storage.parquet import StagedParquetWriter
+
+    plan, run_paths = _plan(tmp_path, chunk_size=2)
+    _ford_pair(session)
+    session.register(
+        submissions_url(SMALL),
+        {"name": "SMALL CO", "filings": {"recent": {}, "files": []}},
+    )
+
+    # Pre-stage BOTH CIKs into chunk-1.parquet.tmp
+    row_small, _ = normalize_one_cik(
+        client,
+        SMALL,
+        input_name=plan.input_name,
+        snapshot_id="snap1",
+        input_fingerprint=plan.input_fingerprint,
+        chunk_id=1,
+    )
+    row_ford, _ = normalize_one_cik(
+        client,
+        FORD,
+        input_name=plan.input_name,
+        snapshot_id="snap1",
+        input_fingerprint=plan.input_fingerprint,
+        chunk_id=1,
+    )
+    chunk_path = run_paths.chunk_file(1)
+    with StagedParquetWriter(
+        chunk_path, schema=SUBMISSION_METADATA_SCHEMA, id_column="cik"
+    ) as writer:
+        writer.write_batch(build_submission_table([row_small, row_ford]))
+
+    assert chunk_path.with_name(f"{chunk_path.name}.tmp").is_file()
+    calls_before = len(session.calls)
+
+    # Re-run: should resume and make 0 new calls
+    result = run_chunk(client, plan, run_paths, 1, snapshot_id="snap1", workers=2)
+    assert result.row_count == 2
+    assert result.statuses == {"ok": 2}
+    assert result.historical_files == 1
+    assert chunk_path.is_file()
+    assert not chunk_path.with_name(f"{chunk_path.name}.tmp").exists()
+    assert len(session.calls) == calls_before
