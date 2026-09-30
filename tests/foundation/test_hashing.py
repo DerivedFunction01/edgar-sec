@@ -112,10 +112,14 @@ def test_occurrence_id_matches_duckdb_catalog_sql() -> None:
 
     with connect() as con:
         for cik, accession, path in documents:
+            # Mirrors `duckdb_catalog.build_catalog_query`, which materialises
+            # `replace(accession_number, '-', '') AS accession` and then hashes
+            # that column. The query below must normalize the same way, or it
+            # pins parity with a spelling production never emits.
             row = con.execute(
                 """
-                SELECT sha256(?1 || ':' || ?2 || ':' || ?3),
-                       sha256(?2 || ':' || ?3)
+                SELECT sha256(?1 || ':' || replace(?2, '-', '') || ':' || ?3),
+                       sha256(replace(?2, '-', '') || ':' || ?3)
                 """,
                 [cik, accession, path],
             ).fetchone()
@@ -127,6 +131,38 @@ def test_occurrence_id_matches_duckdb_catalog_sql() -> None:
             assert derive_document_locator_key(accession, path) == locator_sql, (
                 f"locator key diverged from SQL for {accession}:{path}"
             )
+
+
+def test_both_accession_spellings_hash_to_one_identity() -> None:
+    """A hyphenated and an unhyphenated accession are one filing, not two.
+
+    The catalog hashes ``replace(accession_number, '-', '')`` inside DuckDB, so
+    the unhyphenated column is what lands on disk, and a committed Phase 2.5
+    fixture keys its ``doc_id`` the same way. A ``DocumentLocator`` built from
+    the hyphenated EDGAR spelling has to reach the identical digest or a
+    replay matches nothing. Deriving both spellings separately hid this: the
+    cross-boundary test above feeds one string to both languages and so never
+    exercised the pairing that actually occurs at runtime.
+    """
+    from edgar_sec.domain.document.models import (
+        DocumentLocator,
+        derive_document_locator_key,
+        derive_occurrence_id,
+    )
+
+    path = "aapl-20230930.htm"
+    hyphenated, unhyphenated = "0000320193-23-000106", "000032019323000106"
+
+    assert derive_document_locator_key(hyphenated, path) == (
+        derive_document_locator_key(unhyphenated, path)
+    )
+    assert derive_occurrence_id("320193", hyphenated, path) == (
+        derive_occurrence_id("320193", unhyphenated, path)
+    )
+    assert (
+        DocumentLocator.from_parts(hyphenated, path).document_locator_key
+        == DocumentLocator.from_parts(unhyphenated, path).document_locator_key
+    )
 
 
 def test_occurrence_id_is_hash_of_parts_not_of_locator_key() -> None:

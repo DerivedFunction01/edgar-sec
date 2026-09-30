@@ -50,7 +50,7 @@ today.
 
 | Module | Responsibility |
 | :--- | :--- |
-| `identity.py` | `Cik` rejects any value outside `0..9_999_999_999` and renders as a 10-digit zero-padded string via `to_10digit()`; `AccessionNumber` accepts only `^\d{10}-\d{2}-\d{6}$` and exposes the unhyphenated form as `.normalized` |
+| `identity.py` | `Cik` rejects any value outside `0..9_999_999_999` and renders as a 10-digit zero-padded string via `to_10digit()`; `AccessionNumber` holds the `^\d{10}-\d{2}-\d{6}$` form, accepts either EDGAR spelling via `from_any()`, and exposes the unhyphenated form as `.normalized` |
 | `sec_urls.py` | The only place an EDGAR URL is assembled or parsed. Declares `SEC_SUBMISSIONS_BASE`, `SEC_ARCHIVE_BASE`, `submissions_url()`, `historical_submissions_url()`, `archives_url()`, `parse_archive_url()`, `full_submission_url_for()` |
 | `document/models.py` | `DocumentLocator`, `FilingOccurrence`, `RawDocumentBlob`, `NormalizedDocument`, `NormalizationFailure`, and the two key-derivation functions |
 | `document/acquisition.py` | `FetchResult`, `AcquisitionFailure`, `FetchStatus`, and `is_stub_document_path()` |

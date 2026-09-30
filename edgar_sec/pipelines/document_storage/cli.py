@@ -1,10 +1,12 @@
-"""Command line for the document-storage pipeline.
+"""Command line and interactive operator for document storage.
 
 Three subcommands, matching the three things a run does:
 
 ``run``      acquire, normalize, and publish a snapshot from a fixture
 ``status``   report what is currently published
 ``review``   render review bundles from a published snapshot (M6.1)
+``fill``     fetch missing raw payloads into a fixture
+``fixtures`` list available fixture stores
 
 ``run`` is offline by design: a corpus must be reproducible from a fixture before
 a live acquisition is worth trusting. Live acquisition goes through the broker,
@@ -46,7 +48,12 @@ def _build_parser() -> argparse.ArgumentParser:
 
     run = sub.add_parser("run", help="acquire and publish a snapshot from a fixture")
     run.add_argument("--plan", required=True, help="path to a chunk plan JSON file")
-    run.add_argument("--fixture", required=True, help="fixture id to replay from")
+    run.add_argument(
+        "--fixture",
+        required=True,
+        action="append",
+        help="fixture id to replay from; repeat to define lookup precedence",
+    )
     run.add_argument("--run-id", default=None, help="run identity; generated if absent")
     run.add_argument("--workers", type=int, default=None, help="explicit worker count")
     run.add_argument(
@@ -61,6 +68,18 @@ def _build_parser() -> argparse.ArgumentParser:
     review.add_argument("--limit", type=int, default=None, help="max bundles to render")
     review.add_argument("--run-id", default=None, help="run to render under")
     review.add_argument("--json", action="store_true", help="emit JSON")
+
+    fill = sub.add_parser("fill", help="fetch missing raw payloads into a fixture")
+    fill.add_argument(
+        "--plan", required=True, help="path to a v2 target plan JSON file"
+    )
+    fill.add_argument("--fixture", required=True, help="fixture id to create or extend")
+    fill.add_argument("--workers", type=int, default=None, help="fetch worker count")
+    fill.add_argument("--limit", type=int, default=None, help="cap target locators")
+    fill.add_argument("--json", action="store_true", help="emit the report as JSON")
+
+    fixtures = sub.add_parser("fixtures", help="list available fixture stores")
+    fixtures.add_argument("--json", action="store_true", help="emit JSON")
     return parser
 
 
@@ -150,6 +169,58 @@ def _cmd_run(args: argparse.Namespace, paths: ProjectPaths) -> int:
     return 0 if report.ok else 1
 
 
+def _cmd_fill(args: argparse.Namespace, paths: ProjectPaths) -> int:
+    from edgar_sec.pipelines.document_storage.fixture_operator import fill_fixture
+
+    plan = _load_plan(Path(args.plan))
+    _chunk_ids, locators_by_chunk, _occurrences = _plan_to_inputs(plan, None)
+    locators = [locator for chunk in locators_by_chunk.values() for locator in chunk]
+    report = fill_fixture(
+        paths=paths,
+        fixture_id=args.fixture,
+        locators=locators,
+        limit=args.limit,
+        workers=args.workers,
+        target_reference=args.plan,
+    )
+    if args.json:
+        print(json.dumps(report.to_dict(), indent=2, sort_keys=True))
+    else:
+        print(f"fixture       {report.fixture_id}")
+        print(f"requested     {report.requested}")
+        print(f"already       {report.already_present}")
+        print(f"new           {report.newly_written}")
+        print(f"failed        {report.failed}")
+        for failure in report.failures:
+            print(f"error         {failure['doc_id']}: {failure['error']}")
+    return 0 if report.failed == 0 else 1
+
+
+def _cmd_fixtures(args: argparse.Namespace, paths: ProjectPaths) -> int:
+    from edgar_sec.pipelines.document_storage.fixture_operator import list_fixtures
+
+    fixtures = list_fixtures(paths)
+    payload = [
+        {
+            "fixture_id": item.fixture_id,
+            "payload_count": item.payload_count,
+            "manifest_status": item.manifest_status,
+        }
+        for item in fixtures
+    ]
+    if args.json:
+        print(json.dumps(payload, indent=2, sort_keys=True))
+    elif not fixtures:
+        print("no fixture stores found")
+    else:
+        for item in payload:
+            print(
+                f"{item['fixture_id']:<24} payloads={item['payload_count']} "
+                f"manifest={item['manifest_status']}"
+            )
+    return 0
+
+
 def _cmd_status(args: argparse.Namespace, paths: ProjectPaths) -> int:
     pointer = read_pointer(paths.documents_root)
     directory = current_snapshot_dir(paths.documents_root)
@@ -208,11 +279,88 @@ def _cmd_review(args: argparse.Namespace, paths: ProjectPaths) -> int:
     return 0 if not result.errors else 1
 
 
-_COMMANDS = {"run": _cmd_run, "status": _cmd_status, "review": _cmd_review}
+_COMMANDS = {
+    "run": _cmd_run,
+    "status": _cmd_status,
+    "review": _cmd_review,
+    "fill": _cmd_fill,
+    "fixtures": _cmd_fixtures,
+}
+
+
+def _interactive(paths: ProjectPaths) -> int:
+    """Present the narrow fixture lifecycle menu used by the root launcher."""
+    from edgar_sec.pipelines.document_storage.fixture_operator import list_fixtures
+
+    while True:
+        print("\nDocument Storage (Phase 2.5)")
+        print("  1. Fill or extend a fixture")
+        print("  2. Run a plan from a fixture")
+        print("  3. List fixtures")
+        print("  0. Exit")
+        try:
+            choice = input("Choice [0]: ").strip()
+        except EOFError:
+            return 0
+        if not choice or choice == "0":
+            return 0
+        try:
+            if choice == "3":
+                _cmd_fixtures(argparse.Namespace(json=False), paths)
+                continue
+            if choice == "1":
+                plan_path = input("Target plan JSON path: ").strip()
+                fixture_id = input("Fixture ID: ").strip()
+                if plan_path and fixture_id:
+                    _cmd_fill(
+                        argparse.Namespace(
+                            plan=plan_path,
+                            fixture=fixture_id,
+                            workers=None,
+                            limit=None,
+                            json=False,
+                        ),
+                        paths,
+                    )
+                continue
+            if choice == "2":
+                fixtures = list_fixtures(paths)
+                if not fixtures:
+                    print("no fixture stores found; fill one first")
+                    continue
+                for index, fixture in enumerate(fixtures, 1):
+                    print(
+                        f"  {index}. {fixture.fixture_id} "
+                        f"({fixture.payload_count} payloads; manifest {fixture.manifest_status})"
+                    )
+                selected = input("Fixture number: ").strip()
+                index = int(selected) - 1
+                if index < 0 or index >= len(fixtures):
+                    print("invalid fixture selection")
+                    continue
+                plan_path = input("Target plan JSON path: ").strip()
+                if plan_path:
+                    _cmd_run(
+                        argparse.Namespace(
+                            plan=plan_path,
+                            fixture=[fixtures[index].fixture_id],
+                            run_id=None,
+                            workers=None,
+                            limit=None,
+                            json=False,
+                        ),
+                        paths,
+                    )
+                continue
+            print("Invalid choice, please select again.")
+        except (ValueError, FileNotFoundError, RuntimeError) as exc:
+            print(f"error: {exc}", file=sys.stderr)
 
 
 def main(argv: Sequence[str] | None = None) -> int:
     """Entry point for ``python run.py documents ...``."""
+    if argv is None and len(sys.argv) == 1:
+        return _interactive(resolve_paths())
     parser = _build_parser()
     args = parser.parse_args(list(argv) if argv is not None else None)
     paths = resolve_paths()

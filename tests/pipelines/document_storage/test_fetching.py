@@ -8,8 +8,7 @@ from pathlib import Path
 import pytest
 
 from edgar_sec.domain.document.models import DocumentLocator
-from edgar_sec.foundation.hashing import sha256_bytes
-from edgar_sec.infra.storage.payload_store import make_payload_store
+from edgar_sec.infra.storage.fixture_store import FixtureStore
 from edgar_sec.pipelines.document_storage.fetching import (
     ArchiveFetcher,
     BrokerArchiveFetcher,
@@ -147,15 +146,8 @@ def test_single_document_bundle_resolves_to_that_document() -> None:
 
 
 def _seed_fixture(db_path: Path, locator: DocumentLocator, payload: bytes) -> None:
-    with make_payload_store(db_path) as store:
-        store.put(
-            document_locator_key=locator.document_locator_key,
-            blob_hash=sha256_bytes(payload),
-            accession=str(locator.accession),
-            document_path=locator.document_path,
-            raw_payload=payload,
-            stored_at="2024-01-01T00:00:00Z",
-        )
+    with FixtureStore(db_path) as store:
+        store.put_many([(locator.document_locator_key, payload)])
 
 
 def test_fixture_fetcher_returns_stored_payload(tmp_path: Path) -> None:

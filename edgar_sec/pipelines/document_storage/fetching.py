@@ -138,12 +138,12 @@ class FixtureArchiveFetcher:
     def _stores(self) -> list[Any]:
         stores = getattr(self._local, "stores", None)
         if stores is None:
-            from edgar_sec.infra.storage.payload_store import PayloadStore
+            from edgar_sec.infra.storage.fixture_store import FixtureStore
 
             stores = []
             for path in self._db_paths:
                 if Path(path).is_file():
-                    stores.append(PayloadStore(path))
+                    stores.append(FixtureStore(path, read_only=True))
             self._local.stores = stores
         return stores
 

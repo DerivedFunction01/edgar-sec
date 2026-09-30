@@ -68,10 +68,13 @@ normalizer emits. It is not the fetcher (that is
 
 - `DocumentKind` — `StrEnum` of `HTML`, `ASCII_TXT`, `XML`; `models.py:13-18`.
 - `derive_document_locator_key(accession, document_path)` — `sha256_text` of
-  `"<accession>:<document_path>"`; `models.py:21`.
-- `derive_occurrence_id(source_cik, document_locator_key)` — `sha256_text` of
-  `"<source_cik>:<document_locator_key>"`; `models.py:26`. Read the deliberate
-  gaps before using it.
+  `"<accession>:<document_path>"`, where the accession is reduced to its
+  **unhyphenated** form first; `models.py:38`.
+- `canonical_accession_part(accession)` — the hyphen-free accession used inside
+  every content-addressed digest; `models.py:21`.
+- `derive_occurrence_id(source_cik, accession, document_path)` — `sha256_text` of
+  `"<source_cik>:<accession>:<document_path>"`, accession likewise unhyphenated;
+  `models.py:57`. Read the deliberate gaps before using it.
 - `DocumentLocator` — frozen dataclass with `accession`, `document_path`,
   `document_locator_key`, optional `archive_url`, `form`, `source_cik`,
   `document_type`; classmethod `from_parts()`; property `is_stub_path`;
@@ -110,21 +113,22 @@ tests/domain/document/test_blocks.py         2 test functions, 50 lines
 ```
 
 ## Deliberate gaps
-
-- **`derive_occurrence_id()` does not compute the `occurrence_id` the catalog
-  SQL computes.** This is verified, not suspected:
-  `derive_occurrence_id(source_cik, document_locator_key)` hashes
-  `"<cik>:<64-hex-digest>"`, because its second argument is already a digest,
-  while `infra/storage/duckdb_catalog.py:152-153` computes
-  `sha256(source_cik || ':' || accession || ':' || document_path)` over three raw
-  parts. For accession `0000320193-20-000096` and path
-  `aapl-20200930.htm` the two produce different digests. The Python function is
-  used only by `pipelines/document_storage/worker.py` and
-  `pipelines/document_storage/delegation.py`, so the divergence is contained;
-  but `roadmap/refactor_v2/phase_2.md:1006` presents the two as one key, and
-  they are not. Before Phase 2.5 unifies on one `occurrence_id`, decide which
-  form is canonical and make the other call it. The `document_locator_key` half
-  of the same problem is already unified and needs no work.
+- **Both content-addressed digests normalize the accession to its unhyphenated
+  form, and this was a real divergence before it was fixed.** An earlier
+  revision of `derive_occurrence_id` hashed the locator key (a hash of a hash)
+  while `infra/storage/duckdb_catalog.py:167-169` hashes three raw parts; the
+  two therefore disagreed for every document. Separately, the catalog
+  materialises `accession` as `replace(accession_number, '-', '')`
+  (`duckdb_catalog.py:116`) and hashes *that* column, so a Python caller holding
+  the hyphenated EDGAR spelling produced a different digest from the row already
+  on disk — a locator join against a published snapshot, and a replay against a
+  committed Phase 2.5 fixture, matched nothing and failed silently. Both
+  functions now reduce the accession through `canonical_accession_part` first,
+  `DocumentLocator.from_parts` accepts either spelling via
+  `AccessionNumber.from_any`, and the cross-boundary test in
+  `tests/foundation/test_hashing.py` pins the SQL/Python equality using the
+  *same* normalization the catalog query performs. `roadmap/refactor_v2/phase_2.md:1006`
+  presented the two `occurrence_id` forms as one key; they now are one.
 - **`NormalizedDocument` and `NormalizationFailure` have no consumer.** Neither
   symbol is referenced anywhere in `edgar_sec/` or `tests/` outside this
   package. They are the declared record shapes for the Phase 2.5 storage

@@ -35,6 +35,10 @@ from edgar_sec.pipelines.document_storage.delegation import (
     write_exhibit_snapshot,
 )
 from edgar_sec.pipelines.document_storage.fetching import make_archive_fetcher
+from edgar_sec.pipelines.document_storage.fixture_operator import (
+    FixtureOperatorError,
+    validate_fixture_id,
+)
 from edgar_sec.pipelines.document_storage.merger import (
     MergeResult,
     publish_snapshot,
@@ -122,7 +126,7 @@ def make_fetcher(
     mode: FetchMode,
     paths: ProjectPaths,
     *,
-    fixture_id: str | None = None,
+    fixture_id: str | Sequence[str] | None = None,
     http_client: Any | None = None,
     broker_socket: str | Path | None = None,
     cache_reader: Any | None = None,
@@ -134,12 +138,30 @@ def make_fetcher(
     like a successful acquisition.
     """
     if mode == "fixture":
-        if not fixture_id:
+        fixture_ids = (
+            [fixture_id] if isinstance(fixture_id, str) else list(fixture_id or ())
+        )
+        if not fixture_ids:
             raise OperatorError("fixture mode requires a fixture id")
-        db_path = paths.fixture_db_path(fixture_id)
-        if not db_path.is_file():
-            raise OperatorError(f"fixture database not found: {db_path}")
-        return make_archive_fetcher("fixture", db_paths=[db_path])
+        from edgar_sec.infra.storage.fixture_store import (
+            FixtureStore,
+            FixtureStoreError,
+        )
+
+        db_paths = []
+        for raw_id in fixture_ids:
+            try:
+                safe_id = validate_fixture_id(raw_id)
+            except FixtureOperatorError as exc:
+                raise OperatorError(str(exc)) from exc
+            db_path = paths.fixture_db_path(safe_id)
+            try:
+                with FixtureStore(db_path, read_only=True):
+                    pass
+            except FixtureStoreError as exc:
+                raise OperatorError(str(exc)) from exc
+            db_paths.append(db_path)
+        return make_archive_fetcher("fixture", db_paths=db_paths)
     return make_archive_fetcher(
         mode,
         http_client=http_client,
@@ -156,7 +178,7 @@ def run_document_storage(
     locators_by_chunk: Mapping[str, Sequence[DocumentLocator]],
     occurrences_by_chunk: Mapping[str, Sequence[FilingOccurrence]],
     mode: FetchMode = "fixture",
-    fixture_id: str | None = None,
+    fixture_id: str | Sequence[str] | None = None,
     processor: DocumentProcessor | None = None,
     workers: int | None = None,
     profile: RuntimeResourceProfile | None = None,

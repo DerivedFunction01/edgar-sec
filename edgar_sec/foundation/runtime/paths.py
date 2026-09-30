@@ -28,8 +28,8 @@ DOCUMENTS_DATASET = "document_storage"
 RUNS_DIR = "runs"
 CHECKPOINTS_DIR = "checkpoints"
 FIXTURES_DIR = "fixtures"
-PAYLOAD_DB_NAME = "payloads.sqlite"
-FIXTURE_MANIFEST_NAME = "fixture_manifest.json"
+PAYLOAD_DB_NAME = "fixture.sqlite"
+FIXTURE_MANIFEST_NAME = "fixture.manifest.json"
 
 
 def current_pointer_path(snapshots_root: Path) -> Path:
@@ -93,7 +93,7 @@ class ProjectPaths:
     @property
     def fixtures_root(self) -> Path:
         """Committed raw-payload fixtures, one directory per fixture id."""
-        return self.artifacts_root / DOCUMENTS_DATASET / FIXTURES_DIR
+        return self.artifacts_root / FIXTURES_DIR
 
     def run_dir(self, run_id: str) -> Path:
         """Return the staging directory for one document-storage run."""

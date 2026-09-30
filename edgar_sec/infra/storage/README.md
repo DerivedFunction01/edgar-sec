@@ -28,7 +28,8 @@ in `duckdb_catalog.py` that exist because a specific pipeline needs them.
 | `document_parquet.py` | Phase 2.5 chunk snapshot write / validate / assemble (211 loc). |
 | `document_parts.py` | Byte-budgeted part planning and the index/payload column contracts (252 loc). |
 | `manifests.py` | Snapshot identity, immutable manifest publication, and the `current` pointer (321 loc). |
-| `payload_store.py` | Content-addressed zstd raw-payload store, plus a fail-open reader (347 loc). |
+| `payload_store.py` | Generic content-addressed `document_payloads` runtime store and fail-open reader (347 loc); not the fixture format. |
+| `fixture_store.py` | Append-only `fixture_payloads(doc_id, raw_payload)` SQLite store used by offline replay and fixture fill. |
 | `fixture_lineage.py` | Pure comparison of a fixture manifest against a plan (96 loc). |
 | `__init__.py` | Docstring only (1 loc). No re-exports. |
 
@@ -296,6 +297,8 @@ in `duckdb_catalog.py` that exist because a specific pipeline needs them.
 - `PayloadStore`, `PayloadStoreReader`, `PayloadRecord`, `PayloadStoreError`,
   `make_payload_store`, `make_payload_store_reader`, `compress_payload`,
   `decompress_payload`. `payload_store.py`.
+- `FixtureStore`, `FixtureStoreError`. `fixture_store.py`; stores compressed bytes
+  using the established `fixture.sqlite` / `fixture_payloads` fixture contract.
 - `check_fixture_lineage`, `is_fixture_compatible`, `fixture_lineage_status`,
   `FixtureLineageError`. `fixture_lineage.py`.
 
@@ -308,6 +311,8 @@ in `duckdb_catalog.py` that exist because a specific pipeline needs them.
   `filings.accession_number` fan-out detection.
 - `tests/infra/storage/test_duckdb_catalog.py` (116 loc)
 - `tests/infra/storage/test_fixture_lineage.py` (91 loc)
+- `tests/infra/storage/test_fixture_store.py` — raw-table contract, immutable
+  writes, read-only access, and the existing 10,000-row fixture when present.
 - `tests/infra/storage/test_parquet.py` (65 loc)
 - `tests/infra/storage/test_payload_store.py` (223 loc)
 
@@ -355,8 +360,8 @@ imports it only to read `inspect.signature`.
   (`duckdb.py:78`). The claim is stale.
 - **No SQLite chunk backend, no `ATTACH`-batched merge, no partition DBs.** Those
   are Phase 2.5 scope, not present work; `v2_refactor_roadmap.md` §9.2 is where
-  the boundary is drawn. The one SQLite in this package is
-  `payload_store.py`, one file per fixture id.
+  the boundary is drawn. The raw fixture store is a separate, narrow
+  `fixture_store.py` contract and does not hold processing/chunk state.
 - **No schema migration, versioning, or table registry.** The only versioning
   mechanism is the `schema_version` string inside a manifest
   (`manifests.py`, read back by `SnapshotReader.schema_version`) and
@@ -385,10 +390,10 @@ imports it only to read `inspect.signature`.
   outside `tests/infra/storage/test_fixture_lineage.py`. The guard that stops a
   plan being replayed against a fixture built from a different plan is not yet
   wired into the offline fetch path.
-- **`make_payload_store` / `make_payload_store_reader` have no callers.** The
-  pipeline constructs `PayloadStore` directly
-  (`pipelines/document_storage/fetching.py`). The two factories exist for
-  symmetry with `make_cache_store` and are currently unused.
+- **`PayloadStore` is not the fixture schema.** It remains a generic
+  content-addressed store with `document_payloads`; Phase 2.5 fixture replay and
+  fill use `FixtureStore` and its `fixture_payloads` table. The generic payload
+  store is not opened by `FixtureArchiveFetcher`.
 - **`document_parts.__all__` re-exports two constants it does not define.**
   `PART_KIND_INDEX` and `PART_KIND_PAYLOAD` are imported from `manifests.py`
   (`document_parts.py:32-36`) and then listed in `__all__`

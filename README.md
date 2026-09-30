@@ -192,7 +192,33 @@ every subsidiary of a group resolves to one `company_family`, the cap suppresses
 the group without special-casing it. A floor the corpus cannot satisfy is
 reported in `plan.json` rather than silently absorbed.
 
-### 6. Live Smoke Test (Credential-Gated, Outside the Gate)
+### 6. Document Storage (Phase 2.5)
+
+Phase 2.5 fills append-only raw-payload fixture stores, then replays document
+plans offline from those stores. A fixture uses
+`artifacts_root/fixtures/<fixture_id>/fixture.sqlite` with the single canonical
+table `fixture_payloads(doc_id, raw_payload)` and a sibling
+`fixture.manifest.json`. Existing locator rows are skipped, successful responses
+are never overwritten, and unsuccessful locators can be retried on a later fill.
+An SGML submission bundle is stored intact when fetched so replay can repeat
+subdocument extraction.
+
+```bash
+# Fetch missing raw responses from a document chunk-plan JSON:
+python run.py documents fill --plan corpus.json --fixture fix-corpus --workers 4
+
+# List fixture IDs, payload counts, and manifest validity:
+python run.py documents fixtures
+
+# Replay offline; repeat --fixture to define first-store-wins precedence:
+python run.py documents run --plan corpus.json --fixture fix-corpus
+```
+
+Running `python run.py documents` opens a phase-local menu for fill, replay, and
+fixture listing. The CLI does not require v1 plan history or legacy processing
+tables; those tables are neither migrated nor read.
+
+### 7. Live Smoke Test (Credential-Gated, Outside the Gate)
 ```bash
 # Bounded live SEC check. Never publishes a snapshot; requires a preview root.
 python -m edgar_sec.pipelines.metadata_sync.smoke_test \
@@ -275,7 +301,7 @@ edgar_sec/               # 36 packages, each with its own README.md (see above)
 ├── domain/             # Layer 1: Cik/Accession, document, forms and cover
 │                       #   vocabulary, taxonomy, submission and catalog schemas
 ├── infra/              # Layer 2: SEC HTTP client, broker, atomic IO, DuckDB,
-│                       #   Parquet, snapshot manifests, part tree, payload store
+│                       #   Parquet, snapshot manifests, part tree, payload stores
 ├── engine/             # Layer 3: SGML/HTML document parsing, page markers,
 │                       #   signature regions, table resolution, ASCII table
 │                       #   rendering, cover boundaries, checkmark solving,
@@ -297,7 +323,7 @@ tests/                      # Test tree mirrors the edgar_sec/ package tree
 ├── infra/
 │   ├── broker/             # Unix-socket broker client/server
 │   ├── sec_http/           # client, cache, rate_limit, retry, errors
-│   └── storage/            # atomic, duckdb, parquet, manifests, payload store
+│   └── storage/            # atomic, duckdb, parquet, manifests, generic + fixture payload stores
 ├── engine/
 │   ├── document/           # unpacker, html, cleaner, page markers, signatures
 │   ├── forms/              # normalize seam, cover, checkmarks, evaluators, plugins
@@ -312,8 +338,9 @@ tests/                      # Test tree mirrors the edgar_sec/ package tree
     │                       # merger, augmentation, source_registry,
     │                       # registry, sec_client, smoke_test, operator, cli
     ├── filing_catalog/     # discovery, expansion, planner, publication, cli
-    └── document_storage/   # fetching, processor, worker, delegation, merger,
-                            # vacuum, queries, operator, cli, review
+    └── document_storage/   # fixture_operator, fetching, processor, worker,
+                            # delegation, merger, vacuum, queries, operator,
+                            # cli, review
 └── apps/
     └── viewer/             # model, loaders, tree, session, datasets,
                             # console, server, cli, ui/ (React client,
@@ -359,6 +386,11 @@ All generated paths derive from the artifacts root; no module hardcodes them.
 {artifacts_root}/filing_catalog/<plan_id>/                  # Immutable plan bundle
 {artifacts_root}/filing_catalog/current/pointer.json        # Current catalog pointer
 {artifacts_root}/transient/filing_catalog/<catalog_id>/     # Staging; never published
+
+{artifacts_root}/fixtures/<fixture_id>/fixture.sqlite      # Raw replay payloads
+{artifacts_root}/fixtures/<fixture_id>/fixture.manifest.json
+{artifacts_root}/document_storage/snapshots/<snapshot_id>/  # Published documents
+{artifacts_root}/transient/document_storage/runs/<run_id>/ # Resumable run staging
 ```
 
 ### Merge Semantics

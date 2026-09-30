@@ -29,18 +29,19 @@ What this package is not:
 - Not the phase that decides *which* documents to fetch. That is
   `filing_catalog/planner.py`; this package consumes the plan.
 - Not an HTTP client. It uses `infra/sec_http` or the `infra/broker` socket, and
-  its own CLI is fixture-mode by construction.
+its document-run CLI replays fixtures; a separate `fill` command acquires raw
+bytes into those fixtures through the shared SEC HTTP client.
 - Not a normalizer owner. `engine/forms/normalize.py` and
   `engine/document/unpacker.py` own text conventions and SGML structure; this
   package sequences them and records what they decided.
 
 **Why this package sits in Layer 4 rather than Layer 2.** Its fetchers call
 `engine.document.unpacker` to select a sub-document out of an SGML envelope, and
-a fetcher that has to call the engine cannot live below it. The payload store it
-reads *is* infrastructure and stays in `infra/storage/payload_store.py`
+a fetcher that has to call the engine cannot live below it. The raw fixture store
+it reads *is* infrastructure and stays in `infra/storage/fixture_store.py`
 (`__init__.py:3-6`).
 
-Status: **IMPLEMENTED, with M6.3/M6.4 deferred** (`roadmap/refactor_v2/
+Status: **IMPLEMENTED, with fixture fill/replay available and M6.3/M6.4 deferred** (`roadmap/refactor_v2/
 phase_2_5.md:4`). See "Deliberate gaps" — real-filing parity is unverified.
 
 ## Layout
@@ -49,7 +50,8 @@ phase_2_5.md:4`). See "Deliberate gaps" — real-filing parity is unverified.
 | :--- | :--- |
 | `__init__.py` | Docstring only (7 loc); states the Layer 4 placement rationale. No re-exports, per AGENTS.md §1.2. |
 | `cli.py` | `run` / `status` / `review` and plan-file ingestion (231 loc). |
-| `operator.py` | `run_document_storage()`: process chunks, resolve delegations, publish (328 loc). |
+| `operator.py` | `run_document_storage()`: process chunks, resolve delegations, publish (updated loc). |
+| `fixture_operator.py` | Fixture discovery, live raw fill, append/resume, and v2 manifest publication. |
 | `worker.py` | Chunk processing, the process pool, and the checkpoint-reuse rule (498 loc). |
 | `fetching.py` | `ArchiveFetcher` protocol and the fixture / broker / live backends (442 loc). |
 | `processor.py` | `FilingProcessor`, `PassThroughProcessor`, and the processor fingerprint (231 loc). |
@@ -162,12 +164,11 @@ docstring.
   a synthetic name is only a fallback for a bundle that omits it"
   (`delegation.py:12-15, 112-119`).
 - **This CLI is fixture-mode by construction.** `mode="fixture"` is hardcoded and
-  `--fixture` is required, because "a corpus must be reproducible from a fixture
-  before a live acquisition is worth trusting" and the CLI "does not construct
-  its own HTTP client" (`cli.py:9-11, 133`). In fixture mode a missing fixture id
-  is an error, not an empty run: replaying with no payloads "would publish an
-  empty snapshot that looks like a successful acquisition"
-  (`operator.py:132-138`).
+  `--fixture` is required for `run`; missing or malformed fixture stores fail
+  before processing. The distinct `fill` action is the only CLI path that makes
+  live requests, and it stores only raw response bytes. `--fixture` may be
+  repeated for replay; lookups honor the supplied order, so the first store with
+  a matching locator key wins.
 - **Review selection is stratified by outcome, not sampled.** Strata are filled
   in the order `failed`, `missing`, `empty_text`, `ok`, and within a stratum
   documents are taken in `document_locator_key` order, "so two runs over the same
@@ -219,6 +220,8 @@ docstring.
   `finished_at`, with `snapshot_id`, `artifact_path`, `ok`, `total_documents`,
   `failed_documents`, and `to_dict()`. `operator.py`.
 - `OperatorError`. `operator.py`.
+- `fill_fixture`, `list_fixtures`, `FixtureFillReport`, `FixtureInfo`,
+  `FixtureOperatorError`. `fixture_operator.py`.
 - `process_chunk` — fetch and normalize one chunk, publishing it as a Parquet
   checkpoint; `payload_sink` is the fixture-builder hook. `worker.py`.
 - `process_chunks` — process every chunk not already published, returning all
@@ -324,13 +327,15 @@ docstring.
 ## Commands
 
 Entry point: `python run.py documents <command>`, dispatched through `runpy`
-directly to `edgar_sec/pipelines/document_storage/cli.py` — this pipeline's
-module is its CLI, not an `operator.py`. The `operator.py` module is the library
-entry point (`run_document_storage`), not a menu.
+directly to `edgar_sec/pipelines/document_storage/cli.py`. Invoking the document
+entry without a subcommand opens its phase-local fixture menu.
 
 ```bash
 python run.py documents status
 python run.py documents run --plan corpus.json --fixture fix-001
+python run.py documents run --plan corpus.json --fixture fix-a --fixture fix-b
+python run.py documents fill --plan corpus.json --fixture fix-001 --workers 4
+python run.py documents fixtures
 python run.py documents review --limit 20
 ```
 
@@ -339,6 +344,8 @@ python run.py documents review --limit 20
 | `run` | `--plan` (**required**, chunk plan JSON path), `--fixture` (**required**, fixture id), `--run-id`, `--workers` (int), `--limit` (int), `--json` | 0 when `report.ok`, else **1**. Returns 1 with `plan contains no chunks` on stderr when the plan yields no chunks. |
 | `status` | `--json` | 0 when a snapshot is published, else **1** (`cli.py:176`). |
 | `review` | `--limit` (int), `--run-id`, `--json` | 0 when no bundle failed to write, else **1** (`cli.py:208`). Returns 1 with `no snapshot is published; run 'documents run' first` on stderr when nothing is published. |
+| `fill` | `--plan` (**required**, target plan JSON), `--fixture` (**required**), `--workers`, `--limit` (locator count), `--json` | Fetch missing locators; stores successful raw bytes and exits 1 when any fetch failed. |
+| `fixtures` | `--json` | Lists fixture IDs, readable payload counts, and manifest status. |
 
 `main` resolves paths once through `resolve_paths()`, dispatches through
 `_COMMANDS`, and catches `FileNotFoundError`, `ValueError`, and `RuntimeError`,
@@ -348,15 +355,27 @@ Details worth knowing before running:
 
 - `--limit` on `run` truncates the chunk list for a smoke run, not the plan file
   (`cli.py:84-86`).
+- `--limit` on `fill` caps unique target locators. Existing rows are skipped;
+  failed/missing rows have no fixture payload and are eligible for another fill.
+- A fill shares one settings-backed SEC HTTP client across fetch threads and uses
+  one coordinator-owned SQLite writer. The fetch result's full SGML source bundle
+  is stored when present, preserving replay extraction behavior.
+- Fixture paths are `{artifacts_root}/fixtures/{fixture_id}/fixture.sqlite` and
+  the sibling `fixture.manifest.json`. New stores contain only
+  `fixture_payloads(doc_id, raw_payload)`; existing legacy processing tables are
+  left untouched and are never read by v2.
+- The v2 manifest records fixture/schema identity, relative database path,
+  timestamps, payload count, and the latest fill summary. It is atomically
+  replaced after the SQLite writes have committed; plan history and legacy
+  catalog/policy compatibility fields are not required for replay.
 - `--run-id` defaults to `new_run_id()`; omitting it is safe, because the id is
   microsecond-stamped and randomly suffixed.
 - `--workers` is passed to `resolved_worker_count`, where a non-positive value
   falls through to cgroup-aware derivation.
 - `--json` on any subcommand switches from the human summary to a JSON object;
   `run --json` emits `RunReport.to_dict()`.
-- `run` is offline by design. `mode="fixture"` is hardcoded at `cli.py:133` and
-  `--fixture` is required, so this CLI has no live path. Live acquisition goes
-  through the broker, which owns pacing.
+- `run` remains offline by design. `fill` is a separate explicit live-acquisition
+  operation and shares the SEC client's configured limiter/cache.
 - `_plan_to_inputs` builds `DocumentLocator` and `FilingOccurrence` objects from
   the plan's `chunks` array, defaulting a missing `chunk_id` to
   `f"c{index:05d}"` (`cli.py:73-110`).
@@ -378,7 +397,9 @@ name either (`cli.py:157-162`).
 │       ├── index/run.parquet         (part-kind tree: metadata)
 │       └── payload/run.parquet       (part-kind tree: text)
 ├── snapshots/current/pointer.json
-└── fixtures/{fixture_id}/payloads.sqlite   offline raw-payload store
+└── fixtures/{fixture_id}/                   offline raw-payload store
+    ├── fixture.sqlite                      fixture_payloads(doc_id, raw_payload)
+    └── fixture.manifest.json
 
 {artifacts_root}/transient/document_storage/runs/{run_id}/
 ├── chunks/chunk-{chunk_id}.parquet          resumable checkpoints
@@ -572,14 +593,13 @@ see "Deliberate gaps".
   bounded partition reader** in this package and no run-status module: `status`
   is a three-subcommand CLI over a pointer, and `review` reads either published
   shape directly.
-- **v1's `core/fixture_builder.py` (293 loc) was not ported either**, though the
-  seam it needed survives: `process_chunk` accepts a `payload_sink` callback "used
-  by the fixture builder to record what was fetched" (`worker.py:174-175`), and
-  `resolve_delegated_exhibit` accepts one too. The builder itself is not in this
-  package, so building a fixture requires calling `process_chunks` with a sink.
-  `ProjectPaths.fixture_db_path` and `fixture_manifest_path` exist
-  (`foundation/runtime/paths.py:116-126`), and `infra/storage/fixture_lineage.py`
-  compares a manifest to a plan, but no v2 command populates a fixture.
+- **Legacy fixture processing semantics are not ported.** Raw fill/replay is
+  implemented by `fixture_operator.py` and `infra/storage/fixture_store.py`.
+  V2 does not depend on `document_blobs`, `_committed_chunks`, acquisition or
+  normalization failure tables, normalized rows, or v1 `plan_history`; these
+  tables may remain untouched in old fixture databases. The pure
+  `fixture_lineage.py` helper still describes legacy plan lineage and is not a
+  gate for fixture replay.
 - **v1's `defs/sql/` AST layer was deliberately removed, so the `sql-boundary`
   scanner was retired rather than ported.** v2 executes direct SQL. The AGENTS.md
   scanner list registers eleven scanners and `sql-boundary` is not among them.
@@ -587,13 +607,10 @@ see "Deliberate gaps".
   `document_storage/queries.py` and executes only on connections from
   `infra/storage/duckdb.py`** (`queries.py:1-16`). Do not scatter SQL into
   `vacuum.py`, and do not read the missing scanner as permission to.
-- **No live acquisition through the CLI.** `run` is fixture-mode by
-  construction. `make_fetcher` accepts `broker` and `live` modes and
-  `run_document_storage` accepts `mode`, `http_client`, `broker_socket`, and an
-  explicit `fetcher` — so a library caller can go live — but no shipped command
-  exercises that path. The reason is stated at `cli.py:9-11`: a corpus must be
-  reproducible from a fixture before a live acquisition is worth trusting, and
-  the broker owns pacing.
+- **No legacy plan/history compatibility gate.** Fill consumes the current v2
+  target-plan JSON shape accepted by the document CLI. It records a portable
+  target fingerprint/reference but does not require a v1 plan directory or its
+  catalog, policy, seed, forms, or parent-plan lineage fields.
 - **No read-only cache reader in v2.** `BrokerArchiveFetcher` accepts a
   `cache_reader` and probes it before every socket call, but the fetcher does not
   fabricate one from a directory: "v2 has no read-only cache reader yet, so this
@@ -618,10 +635,10 @@ see "Deliberate gaps".
   `EXCERPT_CHARS = 4_000` — "long enough to judge a cover boundary, short
   enough that fifty bundles stay readable in an editor" (`review.py:33-35`). The
   full text stays in the snapshot; a bundle is for inspection, not extraction.
-- **`operator.py` here is a library, not a wizard.** Unlike
-  `metadata_sync/operator.py` and `filing_catalog/operator.py`, it exposes no
-  `build_operator_menu` and is not an interactive entry point. `run.py` points
-  this pipeline at `cli.py`, not `operator.py`. A menu is not planned.
+- **The phase-local menu is intentionally narrow.** It offers fixture fill,
+  fixture replay, and fixture listing only. V1 preview, production-mode run,
+  partition merge, vacuum, and normalization/review workflows are not restored
+  by this fixture correction.
 - **No settings registry, and no phase-local specs.** The pipeline takes worker
   count, batch size, and part byte budget as function arguments defaulting to
   literals in this package (`DEFAULT_TARGET_BYTES`, `queries.DEFAULT_BATCH_SIZE`),

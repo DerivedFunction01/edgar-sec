@@ -10,10 +10,10 @@ import pytest
 from edgar_sec.domain.document.acquisition import FetchResult
 from edgar_sec.domain.document.models import DocumentLocator, FilingOccurrence
 from edgar_sec.domain.identity import Cik
-from edgar_sec.foundation.hashing import sha256_bytes
 from edgar_sec.foundation.runtime.paths import ProjectPaths
-from edgar_sec.infra.storage.payload_store import make_payload_store
+from edgar_sec.infra.storage.fixture_store import FixtureStore
 from edgar_sec.pipelines.document_storage import cli
+from edgar_sec.pipelines.document_storage.fixture_operator import list_fixtures
 from edgar_sec.pipelines.document_storage.operator import (
     OperatorError,
     make_fetcher,
@@ -103,17 +103,10 @@ def _seed_fixture(
     paths: ProjectPaths, fixture_id: str, locators, payload: bytes
 ) -> None:
     db_path = paths.fixture_db_path(fixture_id)
-    db_path.parent.mkdir(parents=True, exist_ok=True)
-    with make_payload_store(db_path) as store:
-        for locator in locators:
-            store.put(
-                document_locator_key=locator.document_locator_key,
-                blob_hash=sha256_bytes(payload),
-                accession=str(locator.accession),
-                document_path=locator.document_path,
-                raw_payload=payload,
-                stored_at="2024-01-01T00:00:00Z",
-            )
+    with FixtureStore(db_path) as store:
+        store.put_many(
+            [(locator.document_locator_key, payload) for locator in locators]
+        )
 
 
 # --- run identity ---------------------------------------------------------
@@ -294,6 +287,7 @@ def _write_plan(path: Path, locators) -> Path:
                     {
                         "accession": str(locator.accession),
                         "document_path": locator.document_path,
+                        "archive_url": locator.archive_url,
                         "form": locator.form,
                         "source_cik": locator.source_cik,
                     }
@@ -450,6 +444,45 @@ def test_cli_review_renders_bundles(
 def test_cli_requires_a_command() -> None:
     with pytest.raises(SystemExit):
         cli.main([])
+
+
+def test_cli_fill_and_fixture_discovery(
+    paths: ProjectPaths,
+    tmp_path: Path,
+    capsys: pytest.CaptureFixture[str],
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    locator = _locator()
+    plan = _write_plan(tmp_path / "plan.json", [locator])
+
+    class Client:
+        def get_bytes(self, url: str) -> bytes:
+            assert url == locator.archive_url
+            return BODY.encode()
+
+    monkeypatch.setattr(
+        "edgar_sec.pipelines.document_storage.fixture_operator._make_http_client",
+        lambda: Client(),
+    )
+    monkeypatch.setattr(cli, "resolve_paths", lambda: paths)
+    assert (
+        cli.main(["fill", "--plan", str(plan), "--fixture", "fix-cli", "--json"]) == 0
+    )
+    report = json.loads(capsys.readouterr().out)
+    assert report["newly_written"] == 1
+    assert list_fixtures(paths)[0].fixture_id == "fix-cli"
+
+    assert cli.main(["fixtures"]) == 0
+    assert "manifest=valid" in capsys.readouterr().out
+
+
+def test_fixture_replay_precedence_follows_cli_order(paths: ProjectPaths) -> None:
+    locator = _locator()
+    _seed_fixture(paths, "first", [locator], b"first payload")
+    _seed_fixture(paths, "second", [locator], b"second payload")
+    fetcher = make_fetcher("fixture", paths, fixture_id=["first", "second"])
+    assert fetcher.fetch(locator).payload == b"first payload"
+    fetcher.close()
 
 
 def test_cli_rejects_an_unknown_command() -> None:

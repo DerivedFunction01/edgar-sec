@@ -136,7 +136,7 @@ To prevent OOM kills, glibc fragmentation, and thread thrashing in containerized
 Before submitting any turn or completing work, run the unified quality gate:
 
 ```bash
-.venv/bin/python check.py          # full gate: ruff format check, ruff lint check, policy scanners, pytest
+.venv/bin/python check.py          # full gate: ruff format check, ruff lint check, policy scanners, pytest. Do not run it for non python changes or git ignored file changes.
 .venv/bin/python check.py --fix    # format & safe lint fixes only (< 0.5s; does NOT run tests)
 .venv/bin/python check.py --fast   # fast static check: format check, lint check, scanners (skips tests)
 .venv/bin/python check.py --scan   # runs only the registered policy scanners

@@ -6,6 +6,7 @@ import re
 from dataclasses import dataclass
 
 _ACCESSION_RE = re.compile(r"^\d{10}-\d{2}-\d{6}$")
+_ACCESSION_DIGITS_RE = re.compile(r"^\d{18}$")
 
 
 @dataclass(frozen=True, slots=True)
@@ -39,7 +40,7 @@ class Cik:
 
 @dataclass(frozen=True, slots=True)
 class AccessionNumber:
-    """SEC Accession Number (e.g. '0000320193-23-000106')."""
+    """SEC Accession Number, held in the hyphenated form (e.g. '0000320193-23-000106')."""
 
     raw: str
 
@@ -48,6 +49,27 @@ class AccessionNumber:
         if not _ACCESSION_RE.match(cleaned):
             raise ValueError(f"invalid SEC accession number format: '{self.raw}'")
         object.__setattr__(self, "raw", cleaned)
+
+    @classmethod
+    def from_any(cls, raw: AccessionNumber | str) -> AccessionNumber:
+        """Accept either EDGAR spelling and return the hyphenated form.
+
+        EDGAR serves ``0000320193-23-000106`` and ``000032019320000106`` for the
+        same filing, and both spellings are load-bearing on their own: the
+        hyphenated form is the human and bundle-filename convention, while the
+        filing catalog and committed fixture rows carry the unhyphenated one.
+        Accepting only the hyphenated form made a real catalog plan unloadable
+        and split one document across two identities. Normalizing at the
+        boundary is what keeps a single identity per filing.
+        """
+        if isinstance(raw, AccessionNumber):
+            return raw
+        text = str(raw).strip()
+        if not _ACCESSION_RE.match(text):
+            digits = text.replace("-", "")
+            if _ACCESSION_DIGITS_RE.match(digits):
+                text = f"{digits[:10]}-{digits[10:12]}-{digits[12:]}"
+        return cls(text)
 
     @property
     def normalized(self) -> str:

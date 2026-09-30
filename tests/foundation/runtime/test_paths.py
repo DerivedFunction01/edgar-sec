@@ -96,9 +96,7 @@ def test_document_roots_are_segregated(paths: ProjectPaths) -> None:
         paths.document_transient_root
         == paths.artifacts_root / TRANSIENT_DIR / DOCUMENTS_DATASET
     )
-    assert (
-        paths.fixtures_root == paths.artifacts_root / DOCUMENTS_DATASET / FIXTURES_DIR
-    )
+    assert paths.fixtures_root == paths.artifacts_root / FIXTURES_DIR
 
 
 def test_run_layout_hangs_off_the_transient_root(paths: ProjectPaths) -> None:
@@ -123,6 +121,8 @@ def test_fixture_paths(paths: ProjectPaths) -> None:
         paths.fixture_manifest_path("fix-1")
         == paths.fixtures_root / "fix-1" / FIXTURE_MANIFEST_NAME
     )
+    assert paths.fixture_db_path("fix-1").name == "fixture.sqlite"
+    assert paths.fixture_manifest_path("fix-1").name == "fixture.manifest.json"
 
 
 def test_fixtures_do_not_live_under_a_run(paths: ProjectPaths) -> None:

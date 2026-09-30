@@ -250,6 +250,30 @@ gantt
 - [x] **Stage 3 (Sub-plan 04)**: Table boundary detection, tagged table formatting, cover checkmark quadratic-penalty solver, cover region detection, evaluators, and the `FormPlugin` SPI — including the composition seam itself.
 - [x] **Stage 4 (Sub-plan 05)**: Process-pool chunk workers, resumable chunk checkpoints, exhibit delegation, snapshot merger, cross-run consolidation (`vacuum_snapshots`), and the `run.py documents` CLI.
 - [x] **Stage 5 (Sub-plan 06, partial)**: Review harness (`run.py documents review`), pinned normalization goldens in `tests/fixtures/document_storage/`, and verification against all **11** registered policy scanners. M6.3/M6.4 are deferred — see §7.
+- [x] **Fixture store correction**: the raw fixture lifecycle is restored in v2. `fill_fixture` (`pipelines/document_storage/fixture_operator.py`) acquires missing locator payloads through one shared SEC HTTP client and one coordinator-owned SQLite writer, skips keys already stored, appends successes idempotently, and publishes a v2 manifest atomically after the writes commit. `FixtureStore` (`infra/storage/fixture_store.py`) defines the single canonical table `fixture_payloads(doc_id, raw_payload)` at `{artifacts_root}/fixtures/<id>/fixture.sqlite`, and `FixtureArchiveFetcher` replays from it read-only, preserving direct-locator and full-submission-bundle lookup. CLI surface: `documents fill`, `documents fixtures`, repeatable `documents run --fixture` (first store with a matching key wins), and a phase-local menu when the document entry is invoked with no subcommand.
+
+### Fixture scope: deliberately not ported
+
+The correction ports the raw fill/replay lifecycle only. The following v1 behaviours are
+**not** reimplemented, and existing fixture databases are left untouched rather than
+migrated:
+
+- v1 plan serialization, plan-ID derivation, `plan_history` accumulation, and Phase 02
+  plan discovery used for fixture identity. Fixture identity in v2 is an explicit
+  `--fixture` id; the target plan is recorded only as a portable fingerprint and filename.
+- The `catalog_id` / `policy_corpus` / `seed_fingerprint` / `forms` compatibility gates
+  that blocked replaying a plan against a fixture built from a different plan.
+  `infra/storage/fixture_lineage.py` still exists as a pure helper describing those v1
+  axes; it is not a gate on v2 fixture replay.
+- `document_blobs`, `_committed_chunks`, `acquisition_failures`, `filing_occurrences`,
+  `normalized_documents`, and `normalization_failures` as fixture read or write
+  requirements. New fixtures contain `fixture_payloads` only; those tables may remain in
+  pre-existing fixture files and are never queried.
+- The DuckDB fixture dialect (never created on disk) and any per-document failure ledger.
+  A locator that failed a fill has no row, so a later fill retries it naturally; the
+  shared HTTP failure ledger and retry policy own the reattempt decision.
+- Fixture *replacement*. An existing key is evidence and is never overwritten; changed
+  content belongs in a new fixture id.
 
 These stage completions establish the current implementation surface; they do not
 establish byte-for-byte v1 normalized-text parity. Plan 07 is the first sequential
