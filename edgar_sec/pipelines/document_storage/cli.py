@@ -33,7 +33,8 @@ USAGE_EPILOG = """\
 examples:
   python run.py documents status
   python run.py documents run --plan corpus.json --fixture fix-001
-  python run.py documents review --limit 20
+  python run.py documents review-artifacts --fixture fix-001 --limit 100
+  python run.py documents review --base <run-a> --new <run-b>
 """
 
 
@@ -64,10 +65,49 @@ def _build_parser() -> argparse.ArgumentParser:
     status = sub.add_parser("status", help="report the published snapshot")
     status.add_argument("--json", action="store_true", help="emit JSON")
 
-    review = sub.add_parser("review", help="render review bundles from a snapshot")
-    review.add_argument("--limit", type=int, default=None, help="max bundles to render")
-    review.add_argument("--run-id", default=None, help="run to render under")
+    review = sub.add_parser(
+        "review", help="compare two review runs and report what changed"
+    )
+    review.add_argument("--base", required=True, help="earlier review run directory")
+    review.add_argument("--new", required=True, help="later review run directory")
+    review.add_argument(
+        "--output", default=None, help="diff output directory; must be empty"
+    )
     review.add_argument("--json", action="store_true", help="emit JSON")
+
+    artifacts = sub.add_parser(
+        "review-artifacts",
+        help="render source-first review artifacts from a fixture",
+    )
+    artifacts.add_argument("--fixture", required=True, help="fixture id to review")
+    artifacts.add_argument("--limit", type=int, default=None, help="max documents")
+    artifacts.add_argument(
+        "--id",
+        action="append",
+        dest="ids",
+        default=[],
+        help="document id or document-path suffix; repeatable",
+    )
+    artifacts.add_argument(
+        "--ids-file", type=Path, default=None, help="file of ids, one per line"
+    )
+    artifacts.add_argument(
+        "--extension",
+        "--ext",
+        action="append",
+        default=[],
+        help="restrict to a document extension, e.g. htm; repeatable",
+    )
+    artifacts.add_argument(
+        "--run-id", default=None, help="run identity; generated if absent"
+    )
+    artifacts.add_argument(
+        "--output", type=Path, default=None, help="output directory; must not exist"
+    )
+    artifacts.add_argument("--workers", type=int, default=None, help="worker processes")
+    artifacts.add_argument(
+        "--json", action="store_true", help="emit the report as JSON"
+    )
 
     fill = sub.add_parser("fill", help="fetch missing raw payloads into a fixture")
     fill.add_argument(
@@ -247,42 +287,98 @@ def _cmd_status(args: argparse.Namespace, paths: ProjectPaths) -> int:
     return 0 if payload["published"] else 1
 
 
-def _cmd_review(args: argparse.Namespace, paths: ProjectPaths) -> int:
-    from edgar_sec.pipelines.document_storage.review import render_review_set
+def _ids_file(path: Path | None) -> list[str]:
+    """Read selection tokens from a file, one per line, ``#`` comments allowed."""
+    if path is None:
+        return []
+    if not path.is_file():
+        raise FileNotFoundError(f"ids file not found: {path}")
+    return [
+        line.strip()
+        for line in path.read_text(encoding="utf-8").splitlines()
+        if line.strip() and not line.lstrip().startswith("#")
+    ]
 
-    directory = current_snapshot_dir(paths.documents_root)
-    if directory is None:
-        print("no snapshot is published; run 'documents run' first", file=sys.stderr)
+
+def _cmd_review_artifacts(args: argparse.Namespace, paths: ProjectPaths) -> int:
+    from edgar_sec.pipelines.document_storage.review_artifacts import (
+        ReviewArtifactError,
+        new_review_run_id,
+        render_review_run,
+    )
+
+    if args.limit is not None and args.limit <= 0:
+        print("--limit must be positive", file=sys.stderr)
+        return 2
+    if args.workers is not None and args.workers <= 0:
+        print("--workers must be positive", file=sys.stderr)
+        return 2
+    ids = [*args.ids, *_ids_file(args.ids_file)]
+    run_id = args.run_id or new_review_run_id()
+    output = Path(args.output) if args.output else paths.review_run_dir(run_id)
+    try:
+        result = render_review_run(
+            paths,
+            args.fixture,
+            output,
+            ids=ids,
+            extensions=args.extension,
+            limit=args.limit,
+            workers=args.workers,
+        )
+    except ReviewArtifactError as exc:
+        print(f"error: {exc}", file=sys.stderr)
         return 1
-    # A run snapshot reads from its assembled artifact; a consolidated one from
-    # its part tree. Both are passed as a path the review harness recognizes.
-    source = current_snapshot_artifact(paths.documents_root) or directory
-    run_id = (
-        args.run_id
-        or (read_pointer(paths.documents_root) or {}).get("run_id")
-        or "latest"
-    )
-    result = render_review_set(
-        artifact_path=source,
-        output_dir=paths.review_dir(str(run_id)),
-        limit=args.limit,
-    )
     if args.json:
         print(json.dumps(result.to_dict(), indent=2, sort_keys=True))
     else:
-        print(f"run           {run_id}")
-        print(f"bundles       {result.rendered}")
-        print(f"skipped       {result.skipped}")
+        print(f"fixture       {args.fixture}")
+        print(f"selected      {result.selected}")
+        print(f"rendered      {result.rendered}")
         print(f"output        {result.output_dir}")
-        for item in result.errors:
-            print(f"error         {item}")
-    return 0 if not result.errors else 1
+        if result.forms_inferred:
+            print(
+                f"note          {result.forms_inferred} document(s) reviewed under a "
+                "manifest-declared form, not a per-document one"
+            )
+        for failure in result.failures:
+            print(f"error         {failure}")
+    return 0 if not result.failures else 1
+
+
+def _cmd_review(args: argparse.Namespace, paths: ProjectPaths) -> int:
+    from edgar_sec.pipelines.document_storage.review import (
+        ReviewDiffError,
+        compare_review_runs,
+    )
+    from edgar_sec.pipelines.document_storage.review_artifacts import new_review_run_id
+
+    base = Path(args.base)
+    new = Path(args.new)
+    output = (
+        Path(args.output)
+        if args.output
+        else paths.review_runs_root / f"diff-{new_review_run_id()}"
+    )
+    try:
+        result = compare_review_runs(base, new, output)
+    except ReviewDiffError as exc:
+        print(f"error: {exc}", file=sys.stderr)
+        return 1
+    if args.json:
+        print(json.dumps(result.to_dict(), indent=2, sort_keys=True))
+    else:
+        print((output / "summary.txt").read_text(encoding="utf-8"), end="")
+    # Differences are a result, not a failure: a reviewer reads them. A non-zero
+    # status is what makes the comparison usable from a script.
+    return 1 if result.has_changes else 0
 
 
 _COMMANDS = {
     "run": _cmd_run,
     "status": _cmd_status,
     "review": _cmd_review,
+    "review-artifacts": _cmd_review_artifacts,
     "fill": _cmd_fill,
     "fixtures": _cmd_fixtures,
 }
@@ -297,6 +393,8 @@ def _interactive(paths: ProjectPaths) -> int:
         print("  1. Fill or extend a fixture")
         print("  2. Run a plan from a fixture")
         print("  3. List fixtures")
+        print("  4. Build review artifacts from a fixture")
+        print("  5. Compare two review runs")
         print("  0. Exit")
         try:
             choice = input("Choice [0]: ").strip()
@@ -307,6 +405,34 @@ def _interactive(paths: ProjectPaths) -> int:
         try:
             if choice == "3":
                 _cmd_fixtures(argparse.Namespace(json=False), paths)
+                continue
+            if choice == "4":
+                fixture_id = input("Fixture ID: ").strip()
+                limit = input("Document limit (blank for all): ").strip()
+                if fixture_id:
+                    _cmd_review_artifacts(
+                        argparse.Namespace(
+                            fixture=fixture_id,
+                            limit=int(limit) if limit else None,
+                            ids=[],
+                            ids_file=None,
+                            extension=[],
+                            run_id=None,
+                            output=None,
+                            workers=None,
+                            json=False,
+                        ),
+                        paths,
+                    )
+                continue
+            if choice == "5":
+                base = input("Base review run: ").strip()
+                new = input("New review run: ").strip()
+                if base and new:
+                    _cmd_review(
+                        argparse.Namespace(base=base, new=new, output=None, json=False),
+                        paths,
+                    )
                 continue
             if choice == "1":
                 plan_path = input("Target plan JSON path: ").strip()

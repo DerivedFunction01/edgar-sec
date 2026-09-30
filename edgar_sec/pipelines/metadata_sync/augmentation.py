@@ -23,6 +23,7 @@ content-addressed and this one is not required to be.
 
 from __future__ import annotations
 
+from collections.abc import Callable
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
@@ -42,6 +43,7 @@ from .merger import (
     MergeReport,
     _filing_record_count,
     _published_ciks,
+    _safe_progress,
     parts_digest,
     publish_cik_index,
     publish_parts,
@@ -243,6 +245,7 @@ def augment(
     workers: int | None = None,
     lineage: dict[str, str] | None = None,
     preflight: AugmentPreflight | None = None,
+    progress: Callable[[dict[str, Any]], None] | None = None,
 ) -> AugmentResult:
     """Augment a published snapshot with any newly requested CIKs.
 
@@ -261,7 +264,15 @@ def augment(
     A pre-computed ``preflight`` is accepted so a caller that already reduced the
     cohort against the base does not pay for the same read twice, and so the
     decision to fetch is made in exactly one place.
+
+    ``progress`` carries the two event shapes ``run`` and ``merge`` already emit --
+    per-CIK fetch events, then merge stage events -- because an augmentation does
+    the longest silent work in the pipeline otherwise: a rate-limited network fetch
+    followed by a full null and duplicate scan over every input. The delta plan is
+    announced as a ``delta_plan`` event because its size is not knowable before
+    this call, so a caller cannot size a fetch bar for it in advance.
     """
+    emit = _safe_progress(progress)
     check = preflight or preflight_augment(
         roster_from_manifest(manifest),
         metadata_paths,
@@ -302,6 +313,10 @@ def augment(
     run_paths = resolve_run_paths(plan.plan_id, metadata_paths.artifacts_root)
     write_plan(plan, run_paths)
 
+    # Announced rather than pre-known: the delta size depends on which CIKs the
+    # base already holds, so a caller cannot size a bar for the fetch the way
+    # ``cmd_run`` does. It gets the plan here and sizes from this event.
+    emit({"type": "delta_plan", "plan_id": plan.plan_id, "row_count": plan.row_count})
     results = run_chunk_ids(
         client,
         plan,
@@ -309,6 +324,7 @@ def augment(
         plan.chunk_ids(),
         snapshot_id=resolved_snapshot_id,
         workers=workers,
+        progress=emit,
     )
     refetched: list[str] = []
     for result in results:
@@ -334,6 +350,7 @@ def augment(
 
     con = connect()
     try:
+        emit({"type": "merge_stage", "stage": "validating"})
         if find_null_keys(con, inputs, "cik"):
             raise MergeError("augmentation rejected: null CIK in merged inputs")
         duplicates = find_duplicate_keys(con, inputs, "cik")
@@ -361,6 +378,7 @@ def augment(
         (f"chunk:{path.stem}", path)
         for path in (run_paths.chunk_file(chunk_id) for chunk_id in plan.chunk_ids())
     )
+    emit({"type": "merge_stage", "stage": "publishing_parts"})
     part_paths = publish_parts(report, metadata_paths, sources)
 
     row_count = sum(int(part["row_count"]) for part in report.parts)
@@ -382,6 +400,7 @@ def augment(
     publish_cik_index(report, metadata_paths, merged)
     report.merged_at = utc_now_iso()
     publish_snapshot(report, metadata_paths)
+    emit({"type": "readback_done", "rows": row_count})
 
     return AugmentResult(
         base_snapshot_id=base_snapshot_id,

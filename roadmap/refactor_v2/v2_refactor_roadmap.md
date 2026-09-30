@@ -314,7 +314,9 @@ edgar_sec/ (or repository root)
 │
 ├── testing/goldens/                      # [TIER 2] Unified Golden Document Corpus & QA Harness
 │   ├── corpus.py                         # Golden corpus loader & fixture resolver (from phase 025 testing/corpus.py)
-│   ├── review.py                         # Visual review generator (.txt, .html, .diff, .analysis.json)
+│   ├── review.py                         # SUPERSEDED: shipped instead as
+│   │                                     #   pipelines/document_storage/review_artifacts.py (generate)
+│   │                                     #   and review.py (compare two runs)
 │   ├── cli.py                            # Developer QA CLI:
 │   │                                     #   python -m testing.goldens review --corpus <parquet>
 │   │                                     #   python -m testing.goldens promote-corpus --fixture-id <id>

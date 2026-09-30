@@ -145,7 +145,8 @@ sits at Layer 4.
 | `document_storage/merger.py` | Per-run snapshot publication: assemble, split into parts, write manifest, move pointer (403 loc). |
 | `document_storage/vacuum.py` | `vacuum_snapshots()`: cross-run consolidation into one canonical snapshot (564 loc). |
 | `document_storage/queries.py` | The direct SQL for consolidation; the only module that holds it (263 loc). |
-| `document_storage/review.py` | `render_review_set()`: stratified, diffable review bundles (332 loc). |
+| `document_storage/review.py` | `compare_review_runs()`: base-vs-new review-run comparison. |
+| `document_storage/review_artifacts.py` | Fixture-backed review artifact generation: selection, per-case files, manifest. |
 
 Total 10,545 lines across 39 files: 36 modules plus three one-line `__init__.py`
 docstrings. Per package: `metadata_sync` 4,758; `filing_catalog` 2,183;
@@ -339,9 +340,13 @@ entry points, grouped by pipeline.
   `relation_key_rows`, `relation_payload_conflicts`, `relation_group_keys`,
   `effective_quarter_batches`, `effective_quarter_index_rows`,
   `DEFAULT_BATCH_SIZE`. `document_storage/queries.py`.
-- `render_review_set`, `select_bundles`, `classify_outcome`, `write_bundle`,
-  `write_manifest`, `ReviewBundle`, `ReviewResult`, `ReviewError`,
-  `OUTCOME_STRATA`, `EXCERPT_CHARS`, `DEFAULT_BUNDLE_LIMIT`.
+- `select_review_cases`, `run_review_case`, `write_review_artifacts`,
+  `render_review_run`, `sanitized_source_html`, `bounded_analysis`,
+  `ReviewArtifactError`, `ReviewSelection`, `ReviewCase`, `ReviewCaseResult`,
+  `ReviewRunResult` — the generator's surface. `document_storage/review_artifacts.py`.
+- `compare_review_runs`, `load_run_manifest`, `render_summary`, `ReviewDiffError`,
+  `DocumentDiff`, `ReviewDiffResult` — the comparison surface.
+  `document_storage/review.py`.
   `document_storage/review.py`.
 
 ## Commands

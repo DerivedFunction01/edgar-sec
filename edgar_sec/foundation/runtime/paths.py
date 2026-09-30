@@ -30,6 +30,7 @@ CHECKPOINTS_DIR = "checkpoints"
 FIXTURES_DIR = "fixtures"
 PAYLOAD_DB_NAME = "fixture.sqlite"
 FIXTURE_MANIFEST_NAME = "fixture.manifest.json"
+REVIEW_RUNS_DIR = "review-runs"
 
 
 def current_pointer_path(snapshots_root: Path) -> Path:
@@ -123,9 +124,23 @@ class ProjectPaths:
         """Return the lineage manifest for one fixture."""
         return self.fixture_dir(fixture_id) / FIXTURE_MANIFEST_NAME
 
-    def review_dir(self, run_id: str) -> Path:
-        """Return the directory review bundles are rendered into."""
-        return self.run_dir(run_id) / "review"
+    @property
+    def review_runs_root(self) -> Path:
+        """Durable root of generated review runs, one directory per run id.
+
+        A review run is a deliverable, not staging. The workflow is "generate,
+        change code, generate again, compare the two", which means the output has
+        to outlive the command that wrote it and sit beside the snapshots and
+        fixtures it was derived from. Filing it under the run-scoped transient
+        tree would be wrong twice over: it is not a resumable pipeline run, and
+        a directory you intend to diff against a sibling must not be somewhere a
+        reader assumes the pipeline is free to reclaim.
+        """
+        return self.artifacts_root / DOCUMENTS_DATASET / REVIEW_RUNS_DIR
+
+    def review_run_dir(self, run_id: str) -> Path:
+        """Return the directory one review run's artifacts are written into."""
+        return self.review_runs_root / run_id
 
 
 # edgar_sec/, i.e. three levels up from this file (foundation/runtime/paths.py).
@@ -218,6 +233,7 @@ __all__ = [
     "PLANS_DIR",
     "PLAN_FILE_NAME",
     "POINTER_FILE_NAME",
+    "REVIEW_RUNS_DIR",
     "RUNS_DIR",
     "SNAPSHOTS_DIR",
     "TRANSIENT_DIR",

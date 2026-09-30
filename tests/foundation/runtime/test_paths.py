@@ -14,6 +14,7 @@ from edgar_sec.foundation.runtime.paths import (
     FIXTURES_DIR,
     PACKAGE_ROOT,
     PAYLOAD_DB_NAME,
+    REVIEW_RUNS_DIR,
     RUNS_DIR,
     SNAPSHOTS_DIR,
     TRANSIENT_DIR,
@@ -104,7 +105,18 @@ def test_run_layout_hangs_off_the_transient_root(paths: ProjectPaths) -> None:
     assert run == paths.document_transient_root / RUNS_DIR / "2024-01-01"
     assert paths.run_checkpoints_dir("2024-01-01") == run / CHECKPOINTS_DIR
     assert paths.run_chunks_dir("2024-01-01") == run / "chunks"
-    assert paths.review_dir("2024-01-01") == run / "review"
+
+
+def test_review_runs_are_durable_and_not_under_the_transient_root(
+    paths: ProjectPaths,
+) -> None:
+    """A review run is a deliverable compared across runs, not pipeline staging."""
+    review = paths.review_run_dir("review-1")
+    assert review == paths.review_runs_root / "review-1"
+    assert paths.review_runs_root == (
+        paths.artifacts_root / DOCUMENTS_DATASET / REVIEW_RUNS_DIR
+    )
+    assert paths.document_transient_root not in review.parents
 
 
 def test_snapshot_dir(paths: ProjectPaths) -> None:

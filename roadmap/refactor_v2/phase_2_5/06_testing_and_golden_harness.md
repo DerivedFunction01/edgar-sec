@@ -46,26 +46,45 @@ Because Phase 2.5 normalizes multi-megabyte filings across three distinct eras (
 
 ## 3. Detailed Component Specifications
 
-### 3.1. Review Harness (`python run.py documents review`)
-A lean, zero-ceremony visual verification tool:
+### 3.1. Review Harness (`review-artifacts` + `review`)
+A lean, zero-ceremony verification tool, split so generation and comparison
+are separate commands:
 
 ```bash
 # Review a single filing directly:
 python run.py documents review --limit 20 --json
 
-# Review a test fixture batch:
-python run.py documents status
+# Render one review run from a fixture, then compare two runs:
+python run.py documents review-artifacts --fixture <fixture-id> --limit 100
+python run.py documents review --base <run-a> --new <run-b>
 ```
+
+> [!IMPORTANT]
+> This section previously described `.source.txt` / `.source.html` / `.clean.txt`
+> / `.diff` / `.stats.json` under `.artifacts/review/`. **No v1 tool ever emitted
+> that layout.** `build_document_review_artifacts.py` wrote
+> `<doc_id>.txt`, `<doc_id>.analysis.json`, `<doc_id>.metadata.json`, and a
+> conditional `<doc_id>.html`, and its `.diff` files came from a promoted
+> `document_corpus_v1.parquet` with an `expected_output` column — not from
+> comparing two runs. The layout below is what v2 actually implements.
 
 #### What It Emits:
 ```text
-.artifacts/review/<doc_id>/
-├── <doc_id>.source.txt          # Raw source text
-├── <doc_id>.source.html         # Sanitized source HTML for browser inspection
-├── <doc_id>.clean.txt           # The normalized output text
-├── <doc_id>.diff                # Character/line diff against expected golden (if available)
-└── <doc_id>.stats.json          # Table counts, reflowed block counts, checkmark solver scores
+.artifacts/document_storage/review-runs/<run-id>/
+├── review_manifest.jsonl        # One line per document: identity, form, source and output hashes
+└── cases/<doc_id>/
+    ├── <doc_id>.source.txt      # The stored source bytes, verbatim
+    ├── <doc_id>.txt             # The full normalized output
+    ├── <doc_id>.analysis.json   # Page-marker analysis and stage trace, capped
+    └── <doc_id>.html            # Sanitized source HTML, for HTML inputs only
 ```
+
+`documents review --base A --new B` then writes `.artifacts/document_storage/review-runs/diff-<id>/`
+containing `summary.txt`, `review_diff.json`, and per-document
+`<doc_id>.diff.patch` / `<doc_id>.diff.html`. It exits 1 when differences exist.
+
+Generation is refused into a non-empty directory: two runs sharing an output
+root cannot be compared, so a code change means a new run id.
 
 ### 3.2. Normalization Goldens (`tests/fixtures/document_storage/`)
 

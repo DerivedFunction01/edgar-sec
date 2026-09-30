@@ -418,27 +418,100 @@ def test_cli_missing_fixture_is_reported(
     assert "not found" in capsys.readouterr().err
 
 
-def test_cli_review_without_a_snapshot(
+def _review_run(root: Path, documents: dict[str, str]) -> Path:
+    """Write a minimal review run on disk, for the compare command."""
+    from edgar_sec.pipelines.document_storage.review_artifacts import (
+        REVIEW_MANIFEST_NAME,
+    )
+
+    run = root
+    (run / "cases").mkdir(parents=True, exist_ok=True)
+    entries = []
+    for document_id, text in documents.items():
+        case_dir = run / "cases" / document_id
+        case_dir.mkdir(parents=True, exist_ok=True)
+        (case_dir / f"{document_id}.txt").write_text(text, encoding="utf-8")
+        entries.append(
+            {
+                "document_id": document_id,
+                "document_path": f"{document_id}.htm",
+                "fixture_id": "fix-cli",
+                "source_sha256": "a" * 64,
+                "current_output_sha256": "b" * 64,
+            }
+        )
+    (run / REVIEW_MANIFEST_NAME).write_text(
+        "".join(json.dumps(entry, sort_keys=True) + "\n" for entry in entries),
+        encoding="utf-8",
+    )
+    return run
+
+
+def test_cli_review_requires_two_runs(
     paths: ProjectPaths,
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    """A comparison needs both sides named; there is no implicit "latest"."""
+    monkeypatch.setattr(cli, "resolve_paths", lambda: paths)
+    with pytest.raises(SystemExit):
+        cli.main(["review"])
+
+
+def test_cli_review_reports_differences_and_exits_non_zero(
+    paths: ProjectPaths,
+    tmp_path: Path,
+    capsys: pytest.CaptureFixture[str],
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    base = _review_run(tmp_path / "run-a", {"doc-a": "one\n"})
+    new = _review_run(tmp_path / "run-b", {"doc-a": "two\n"})
+    output = tmp_path / "diff"
+    monkeypatch.setattr(cli, "resolve_paths", lambda: paths)
+    assert (
+        cli.main(
+            ["review", "--base", str(base), "--new", str(new), "--output", str(output)]
+        )
+        == 1
+    )
+    assert "changed" in capsys.readouterr().out
+    assert (output / "summary.txt").is_file()
+
+
+def test_cli_review_exits_zero_when_nothing_moved(
+    paths: ProjectPaths,
+    tmp_path: Path,
+    capsys: pytest.CaptureFixture[str],
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    base = _review_run(tmp_path / "run-a", {"doc-a": "same\n"})
+    new = _review_run(tmp_path / "run-b", {"doc-a": "same\n"})
+    monkeypatch.setattr(cli, "resolve_paths", lambda: paths)
+    assert (
+        cli.main(
+            [
+                "review",
+                "--base",
+                str(base),
+                "--new",
+                str(new),
+                "--output",
+                str(tmp_path / "diff"),
+            ]
+        )
+        == 0
+    )
+    assert "no differences" in capsys.readouterr().out
+
+
+def test_cli_review_artifacts_rejects_a_non_positive_limit(
+    paths: ProjectPaths,
+    tmp_path: Path,
     capsys: pytest.CaptureFixture[str],
     monkeypatch: pytest.MonkeyPatch,
 ) -> None:
     monkeypatch.setattr(cli, "resolve_paths", lambda: paths)
-    assert cli.main(["review"]) == 1
-    assert "no snapshot is published" in capsys.readouterr().err
-
-
-def test_cli_review_renders_bundles(
-    paths: ProjectPaths,
-    capsys: pytest.CaptureFixture[str],
-    monkeypatch: pytest.MonkeyPatch,
-) -> None:
-    _run(paths)
-    monkeypatch.setattr(cli, "resolve_paths", lambda: paths)
-    assert cli.main(["review", "--json"]) == 0
-    payload = json.loads(capsys.readouterr().out)
-    assert payload["rendered"] == 1
-    assert Path(payload["output_dir"]).is_dir()
+    assert cli.main(["review-artifacts", "--fixture", "fix-1", "--limit", "0"]) == 2
+    assert "--limit must be positive" in capsys.readouterr().err
 
 
 def test_cli_requires_a_command() -> None:

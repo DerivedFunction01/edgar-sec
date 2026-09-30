@@ -59,9 +59,10 @@ phase_2_5.md:4`). See "Deliberate gaps" — real-filing parity is unverified.
 | `merger.py` | Per-run snapshot publication: assemble, split into parts, write manifest, move pointer (403 loc). |
 | `vacuum.py` | `vacuum_snapshots()`: cross-run consolidation into one canonical snapshot (564 loc). |
 | `queries.py` | The direct SQL for consolidation; the only module that holds it (263 loc). |
-| `review.py` | `render_review_set()`: stratified, diffable review bundles (332 loc). |
+| `review.py` | `compare_review_runs()`: base-vs-new review-run comparison (322 loc). |
+| `review_artifacts.py` | Fixture-backed review artifact generation: selection, per-case files, manifest (545 loc). |
 
-Total 3,581 lines across 11 files: 10 modules plus a 7-line `__init__.py`
+Total 4,100+ lines across 12 files: 11 modules plus a 7-line `__init__.py`
 docstring.
 
 ## Contracts
@@ -313,16 +314,24 @@ docstring.
   readers. `queries.py`.
 - `DEFAULT_BATCH_SIZE` (4096) — "bounded so a consolidation never materializes a
   whole quarter's text in memory at once". `queries.py`.
-- `render_review_set` — render a review set from a published snapshot artifact.
+- `select_review_cases` — load the documents one run will process, in document-id
+  order, verifying every payload against its recorded hash.
+  `review_artifacts.py`.
+- `run_review_case` — normalize one document exactly as a pipeline worker does.
+  `review_artifacts.py`.
+- `write_review_artifacts` — write one case directory: `.txt`, `.source.txt`,
+  `.analysis.json`, and `.html` for HTML inputs. `review_artifacts.py`.
+- `render_review_run` — process the selection and write the run manifest.
+  `review_artifacts.py`.
+- `sanitized_source_html`, `bounded_analysis` — the two renderers.
+  `review_artifacts.py`.
+- `compare_review_runs` — diff two review runs into per-document patches.
   `review.py`.
-- `select_bundles` — the stratified selection, returning `(bundles, skipped)`.
-  `review.py`.
-- `classify_outcome` — `failed`, `missing`, `empty_text`, or `ok`.
-  `review.py`.
-- `write_bundle`, `write_manifest` — the review writers. `review.py`.
-- `ReviewBundle`, `ReviewResult`, `ReviewError`, `OUTCOME_STRATA`, `EXCERPT_CHARS`
-  (4,000), `DEFAULT_BUNDLE_LIMIT` (50), `REVIEW_BUNDLE_SUFFIX`,
-  `REVIEW_MANIFEST_NAME`. `review.py`.
+- `load_run_manifest` — read a run's manifest, keyed by document id. `review.py`.
+- `render_summary` — the human-readable comparison report. `review.py`.
+- `ReviewArtifactError`, `ReviewDiffError`, `ReviewSelection`, `ReviewCase`,
+  `ReviewCaseResult`, `ReviewRunResult`, `DocumentDiff`, `ReviewDiffResult`,
+  `REVIEW_MANIFEST_NAME`, `CASES_DIR`, `SUMMARY_NAME`. Across both modules.
 
 ## Commands
 
@@ -336,14 +345,16 @@ python run.py documents run --plan corpus.json --fixture fix-001
 python run.py documents run --plan corpus.json --fixture fix-a --fixture fix-b
 python run.py documents fill --plan corpus.json --fixture fix-001 --workers 4
 python run.py documents fixtures
-python run.py documents review --limit 20
+python run.py documents review-artifacts --fixture fix-001 --limit 100
+python run.py documents review --base <run-a> --new <run-b>
 ```
 
 | Subcommand | Flags | Returns |
 | :--- | :--- | :--- |
 | `run` | `--plan` (**required**, chunk plan JSON path), `--fixture` (**required**, fixture id), `--run-id`, `--workers` (int), `--limit` (int), `--json` | 0 when `report.ok`, else **1**. Returns 1 with `plan contains no chunks` on stderr when the plan yields no chunks. |
 | `status` | `--json` | 0 when a snapshot is published, else **1** (`cli.py:176`). |
-| `review` | `--limit` (int), `--run-id`, `--json` | 0 when no bundle failed to write, else **1** (`cli.py:208`). Returns 1 with `no snapshot is published; run 'documents run' first` on stderr when nothing is published. |
+| `review-artifacts` | `--fixture` (**required**), `--limit` (int), `--id` (repeatable), `--ids-file` (path), `--extension`/`--ext` (repeatable), `--run-id`, `--output` (path), `--workers` (int), `--json` | Renders one review run from a fixture. **0** when every selected document rendered, else **1**. Refuses a non-empty `--output`. Prints one note when documents were reviewed under a manifest-declared form. |
+| `review` | `--base` (**required**), `--new` (**required**), `--output` (path), `--json` | Compares two review runs. **0** when nothing changed, **1** when differences exist (a result, not a failure) or when the runs could not be compared. |
 | `fill` | `--plan` (**required**, target plan JSON), `--fixture` (**required**), `--workers`, `--limit` (locator count), `--json` | Fetch missing locators; stores successful raw bytes and exits 1 when any fetch failed. |
 | `fixtures` | `--json` | Lists fixture IDs, readable payload counts, and manifest status. |
 
@@ -600,15 +611,27 @@ see "Deliberate gaps".
   Parquet chunk checkpoints plus a part tree (`infra/storage/document_parts.py`)
   plus manifests (`infra/storage/manifests.py`). Consequently there is **no
   bounded partition reader** in this package and no run-status module: `status`
-  is a three-subcommand CLI over a pointer, and `review` reads either published
-  shape directly.
-- **Legacy fixture processing semantics are not ported.** Raw fill/replay is
-  implemented by `fixture_operator.py` and `infra/storage/fixture_store.py`.
-  V2 does not depend on `document_blobs`, `_committed_chunks`, acquisition or
-  normalization failure tables, normalized rows, or v1 `plan_history`; these
-  tables may remain untouched in old fixture databases. The pure
-  `fixture_lineage.py` helper still describes legacy plan lineage and is not a
-  gate for fixture replay.
+  is a CLI over a pointer. Review no longer reads a published snapshot at all:
+  `review-artifacts` reads a fixture directly and `review` compares two review
+  runs, so neither depends on a snapshot existing.
+- **Legacy fixture processing semantics are mostly not ported.** Raw
+  fill/replay is implemented by `fixture_operator.py` and
+  `infra/storage/fixture_store.py`. V2 does not depend on `_committed_chunks`,
+  acquisition or normalization failure tables, normalized rows, or v1
+  `plan_history`; these tables may remain untouched in old fixture databases.
+  The one v1 table v2 *does* depend on is **`document_blobs`** — a payload key is
+  a one-way digest, so accession, path, MIME and source hash cannot be recovered
+  without it, and the normalizer needs a `DocumentLocator` (including its filing
+  form) to run at all. v2 writes that table with v1's exact six-column shape, so
+  a fixture recorded by v1 opens with no migration. `fill_fixture` also writes
+  per-document forms to `fixture_document_forms`, a v2-only table that keeps
+  `document_blobs` shape-compatible; when it is absent, review falls back to the
+  manifest. The pure `fixture_lineage.py` helper still describes legacy plan
+  lineage and is not a gate for fixture replay.
+- **A payload-only fixture is repaired by re-running the same fill.**
+  `fill_fixture` backfills metadata for documents that have a payload but no
+  metadata row, reading the stored bytes rather than re-fetching, so the repair
+  is offline and self-limiting. There is no separate migration tool.
 - **v1's `defs/sql/` AST layer was deliberately removed, so the `sql-boundary`
   scanner was retired rather than ported.** v2 executes direct SQL. The AGENTS.md
   scanner list registers eleven scanners and `sql-boundary` is not among them.
@@ -640,14 +663,49 @@ see "Deliberate gaps".
   record `failed` or `missing` and the review reader reports `"ok"`
   unconditionally for that shape (`review.py:160-165`). A reviewer auditing
   failure rates must read the per-run snapshots, not the consolidated one.
-- **Review bundles carry a 4,000-character excerpt, not the document.**
-  `EXCERPT_CHARS = 4_000` — "long enough to judge a cover boundary, short
-  enough that fifty bundles stay readable in an editor" (`review.py:33-35`). The
-  full text stays in the snapshot; a bundle is for inspection, not extraction.
+- **Review artifacts are not excerpts.** Each case directory holds the *full*
+  normalized text, the source bytes verbatim, the structural analysis, and a
+  sanitized browser view. The old snapshot-bundle command truncated to 4,000
+  characters so fifty bundles stayed readable in an editor; a review run is
+  compared mechanically, so truncation would have thrown away exactly the
+  evidence a diff needs.
+- **Page-artifact analysis is not reproduced.** v1's `.analysis.json` carried
+  `page_artifacts`, `artifacts`, `header_footer_templates`, `regions`,
+  `page_boundaries`, `occupied_lines`, `page_number_runs`, `inferred_boundaries`,
+  `rejection_diagnostics`, `source_identity`, and `coordinate_frame`. v2's
+  `PageMarkerAnalysis` has six fields and renames `unresolved` to
+  `unresolved_candidates`, so the v2 analysis file is a strict subset. The
+  missing fields belonged to `PageArtifactPolicy.ANNOTATE`, which the engine
+  README already records as having no distinct behaviour; re-adding an engine
+  field to serialize evidence of a mode that does nothing is not a gap worth
+  closing. v1's `table_count` and `stage_trace_count` are also gone — they
+  duplicated the analysis, and `table_count` was a substring count of `<table`
+  in the source, which was a proxy for quality only while the normalizer was
+  incomplete.
+- **The per-case `.metadata.json` is gone.** Every field in it also appeared in
+  the run manifest, so it was a second copy of the same facts in a second file
+  that had to be diffed alongside the manifest. The manifest now carries the
+  provenance the comparison needs: `document_id`, `accession`, `document_path`,
+  `form`, `fixture_id`, `processor_fingerprint`, `representation`,
+  `source_sha256`, `current_output_sha256`.
+- **A fixture with no per-document form reviews under a manifest-declared one,
+  and says so.** The form selects the processing plugin, so this is a caveat the
+  reviewer must see. `documents review-artifacts` prints one run-level note
+  rather than repeating the caveat per document. The recorded
+  `fix-99fdcf53` fixture has no per-document forms, so its documents are
+  reviewed as `10-K` (the first entry of a 14-form manifest) — v1's fallback,
+  reproduced so v2 output stays comparable with the v1 reference artifacts.
+- **A corrupt or missing payload skips one document, not the run.** It is named
+  in `ReviewSelection.failures` and sets a non-zero exit status, so it is
+  reported rather than hidden. Refusing to review 9,999 sound documents because
+  one is corrupt is the wrong trade for a 10,000-document fixture.
+- **The `documents review` exit status is 1 when differences exist.** That is a
+  result, not a failure, and it is what makes the comparison usable from a
+  script. It must not be wired into `check.py`.
 - **The phase-local menu is intentionally narrow.** It offers fixture fill,
-  fixture replay, and fixture listing only. V1 preview, production-mode run,
-  partition merge, vacuum, and normalization/review workflows are not restored
-  by this fixture correction.
+  fixture replay, fixture listing, review-artifact generation, and review-run
+  comparison. V1 preview, production-mode run, partition merge, and vacuum are
+  not restored by this fixture correction.
 - **No settings registry, and no phase-local specs.** The pipeline takes worker
   count, batch size, and part byte budget as function arguments defaulting to
   literals in this package (`DEFAULT_TARGET_BYTES`, `queries.DEFAULT_BATCH_SIZE`),

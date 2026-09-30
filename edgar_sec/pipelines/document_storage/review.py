@@ -1,332 +1,374 @@
-"""Review bundles: a bounded, inspectable set of documents from a snapshot.
+"""Compare two review runs and report what the change did.
 
-The snapshot is the product; review is how a human checks it. A review set is
-deliberately *not* a dump. It selects a bounded number of documents that between
-them exercise the interesting outcomes — a normal filing, a cover whose boundary
-was only approximately located, a document that failed, one pulled in by a
-stub's delegation — and writes each as a self-contained bundle.
+The workflow is generate, change the normalizer, generate again, compare. This
+module is the compare step, and it exists because `diff -ru` over two review
+directories answers the wrong question first: it opens with the sanitized
+`.html` files, which are the largest artifacts and the least likely to have
+moved. A reviewer then has to filter a filesystem diff down to the documents
+whose normalized text actually changed.
 
-Why a selection rather than an export: a corpus snapshot can hold hundreds of
-thousands of documents, and a reviewer reads a few. The interesting thing to
-review is not a sample of documents but the *outcomes*, so the selection is
-stratified by outcome rather than sampled uniformly. A uniform sample of a
-99.9%-clean corpus shows only clean documents.
+This reads the two run manifests, joins them on document id, and writes one
+unified diff per document whose output changed. Everything else is a count.
+
+Scope is deliberately narrow. It does not know which change was intended, and
+it does not judge whether the new output is better -- that is what reading the
+diff is for. It also never regenerates anything, so it cannot be the reason a
+review run is stale.
 """
 
 from __future__ import annotations
 
 import json
-import logging
-from collections.abc import Iterable, Sequence
-from dataclasses import dataclass, field
+from dataclasses import dataclass
+from difflib import HtmlDiff, unified_diff
 from pathlib import Path
 from typing import Any
 
-from edgar_sec.foundation.serialization import canonical_json
+from edgar_sec.infra.storage.atomic import atomic_write_text
+from edgar_sec.pipelines.document_storage.review_artifacts import (
+    CASES_DIR,
+    REVIEW_MANIFEST_NAME,
+)
 
-log = logging.getLogger("document_storage.review")
+SUMMARY_NAME = "summary.txt"
+PATCH_SUFFIX = ".diff.patch"
+HTML_SUFFIX = ".diff.html"
 
-REVIEW_MANIFEST_NAME = "review_manifest.json"
-REVIEW_BUNDLE_SUFFIX = ".json"
-DEFAULT_BUNDLE_LIMIT = 50
+UNCHANGED = "unchanged"
+CHANGED = "changed"
+METADATA_ONLY = "metadata-only"
+ADDED = "added"
+REMOVED = "removed"
 
-#: Text excerpt length per bundle. Long enough to judge a cover boundary, short
-#: enough that fifty bundles stay readable in an editor.
-EXCERPT_CHARS = 4_000
+#: Manifest fields that describe *this* run rather than the document, so they
+#: are excluded when deciding whether a document's own metadata drifted.
+_RUN_FIELDS = frozenset({"fixture_id"})
+
+#: Provenance fields worth comparing when both runs record them. Deliberately a
+#: closed vocabulary: see `_document_metadata`.
+_COMPARED_FIELDS = (
+    "accession",
+    "document_path",
+    "form",
+    "processor_fingerprint",
+    "representation",
+)
 
 
-class ReviewError(RuntimeError):
-    """A review set could not be rendered."""
+class ReviewDiffError(RuntimeError):
+    """Two review runs could not be compared."""
 
 
 @dataclass(frozen=True, slots=True)
-class ReviewBundle:
-    """One document's review material."""
+class DocumentDiff:
+    """One document's verdict between two runs."""
 
-    document_locator_key: str
-    accession: str
+    document_id: str
     document_path: str
     status: str
-    representation: str
-    word_count: int
-    normalized_text: str
-    outcome: str
+    source_changed: bool
+    added_lines: int = 0
+    removed_lines: int = 0
+    patch_path: Path | None = None
+    html_path: Path | None = None
 
     def to_dict(self) -> dict[str, Any]:
         return {
-            "document_locator_key": self.document_locator_key,
-            "accession": self.accession,
+            "document_id": self.document_id,
             "document_path": self.document_path,
             "status": self.status,
-            "representation": self.representation,
-            "word_count": self.word_count,
-            "outcome": self.outcome,
-            "normalized_text": self.normalized_text,
+            "source_changed": self.source_changed,
+            "added_lines": self.added_lines,
+            "removed_lines": self.removed_lines,
+            "patch": str(self.patch_path) if self.patch_path else None,
+            "html": str(self.html_path) if self.html_path else None,
         }
 
 
 @dataclass(frozen=True, slots=True)
-class ReviewResult:
-    """What a render produced."""
+class ReviewDiffResult:
+    """The whole comparison."""
 
     output_dir: Path
-    rendered: int
-    skipped: int
-    bundles: tuple[ReviewBundle, ...] = ()
-    errors: tuple[str, ...] = field(default_factory=tuple)
+    base_dir: Path
+    new_dir: Path
+    documents: tuple[DocumentDiff, ...] = ()
+    fixture_mismatch: str | None = None
+
+    @property
+    def counts(self) -> dict[str, int]:
+        tally: dict[str, int] = {}
+        for item in self.documents:
+            tally[item.status] = tally.get(item.status, 0) + 1
+        return tally
+
+    @property
+    def has_changes(self) -> bool:
+        """Whether anything moved. Drives the command's exit status."""
+        return any(item.status != UNCHANGED for item in self.documents)
+
+    def changed(self) -> tuple[DocumentDiff, ...]:
+        return tuple(
+            item for item in self.documents if item.status in {CHANGED, METADATA_ONLY}
+        )
 
     def to_dict(self) -> dict[str, Any]:
         return {
             "output_dir": str(self.output_dir),
-            "rendered": self.rendered,
-            "skipped": self.skipped,
-            "errors": list(self.errors),
+            "base": str(self.base_dir),
+            "new": str(self.new_dir),
+            "counts": self.counts,
+            "fixture_mismatch": self.fixture_mismatch,
+            "documents": [item.to_dict() for item in self.documents],
         }
 
 
-def _read_rows(artifact_path: Path) -> list[dict[str, Any]]:
-    """Read a snapshot into row dicts, from either published shape.
-
-    Two shapes exist, and a review must handle both because the ``current``
-    pointer can name either:
-
-    * a **run** snapshot — one assembled ``documents.parquet`` holding every
-      column in a single table;
-    * a **consolidated** snapshot — a repartitioned part tree, where index
-      (metadata) and payload (text) live in separate files.
-
-    Only the columns a bundle needs are projected, including the large text
-    column, because the payload column is dead weight for review and dominates
-    file size.
-
-    Note the run schema carries no ``form`` column: a document's form lives on its
-    catalog occurrence, not on the stored artifact. A review of a run snapshot
-    therefore cannot stratify by form and does not pretend to.
-    """
-    from edgar_sec.infra.storage.parquet import read_parquet_table
-
-    path = Path(artifact_path)
-    if path.is_dir():
-        return _read_rows_from_parts(path)
-    table = read_parquet_table(
-        path,
-        [
-            "document_locator_key",
-            "accession",
-            "document_path",
-            "status",
-            "normalized_text",
-        ],
-    )
-    columns = {name: table.column(name).to_pylist() for name in table.schema.names}
-    return [
-        {name: values[index] for name, values in columns.items()}
-        for index in range(table.num_rows)
-    ]
-
-
-def _read_rows_from_parts(snapshot_dir: Path) -> list[dict[str, Any]]:
-    """Read a consolidated snapshot by joining its index and payload parts."""
-    import pyarrow as pa
-
-    from edgar_sec.infra.storage.manifests import SnapshotPart
-    from edgar_sec.infra.storage.parquet import read_parquet_table
-
-    manifest_path = snapshot_dir / "manifest.json"
-    if not manifest_path.is_file():
-        raise ReviewError(f"snapshot manifest not found: {manifest_path}")
-    manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
-    parts = [SnapshotPart.from_dict(row) for row in manifest.get("resolved_parts", ())]
-
-    def _concat(kind: str, columns: tuple[str, ...]) -> Any:
-        matching = [part for part in parts if part.kind == kind]
-        if not matching:
-            raise ReviewError(f"snapshot has no {kind} parts to review")
-        tables = [
-            read_parquet_table(snapshot_dir / part.path, list(columns))
-            for part in matching
-        ]
-        return tables[0] if len(tables) == 1 else pa.concat_tables(tables)
-
-    index_rows = _concat("index", ("accession", "document_path", "doc_id")).to_pylist()
-    text_by_doc = {
-        str(row["doc_id"]): str(row["clean_text"] or "")
-        for row in _concat("payload", ("doc_id", "clean_text")).to_pylist()
-    }
-    return [
-        {
-            "accession": str(row["accession"] or ""),
-            "document_path": str(row["document_path"] or ""),
-            "document_locator_key": str(row["doc_id"] or ""),
-            # A consolidated part tree records no per-document status: a document
-            # only reaches consolidation if it was acquired.
-            "status": "ok",
-            "normalized_text": text_by_doc.get(str(row["doc_id"]), ""),
-        }
-        for row in index_rows
-    ]
-
-
-def classify_outcome(row: dict[str, Any]) -> str:
-    """Classify one row into the review outcome it represents.
-
-    Outcomes are ordered from "needs attention" to "unremarkable" so the
-    selection can be stratified by interest rather than by probability.
-    """
-    status = str(row.get("status") or "")
-    if status == "failed":
-        return "failed"
-    if status == "missing":
-        return "missing"
-    text = str(row.get("normalized_text") or "")
-    if not text.strip():
-        return "empty_text"
-    return "ok"
-
-
-#: Outcome strata, most interesting first. Each is filled before the next starts,
-#: so a small limit still shows the surprising documents.
-OUTCOME_STRATA: tuple[str, ...] = (
-    "failed",
-    "missing",
-    "empty_text",
-    "ok",
-)
-
-
-def select_bundles(
-    rows: Iterable[dict[str, Any]], limit: int | None
-) -> tuple[list[ReviewBundle], int]:
-    """Select a stratified review set, returning ``(bundles, skipped)``.
-
-    Within a stratum documents are taken in a stable order (by
-    ``document_locator_key``) so two runs over the same snapshot render the same
-    set, which is what makes a review diffable.
-    """
-    buckets: dict[str, list[dict[str, Any]]] = {name: [] for name in OUTCOME_STRATA}
-    total = 0
-    for row in rows:
-        total += 1
-        buckets[classify_outcome(row)].append(row)
-    for bucket in buckets.values():
-        bucket.sort(key=lambda row: str(row.get("document_locator_key") or ""))
-
-    cap = DEFAULT_BUNDLE_LIMIT if limit is None else max(0, limit)
-    selected: list[ReviewBundle] = []
-    for name in OUTCOME_STRATA:
-        if len(selected) >= cap:
-            break
-        for row in buckets[name][: cap - len(selected)]:
-            selected.append(_to_bundle(row, name))
-    return selected, total - len(selected)
-
-
-def _to_bundle(row: dict[str, Any], outcome: str) -> ReviewBundle:
-    text = str(row.get("normalized_text") or "")
-    return ReviewBundle(
-        document_locator_key=str(row.get("document_locator_key") or ""),
-        accession=str(row.get("accession") or ""),
-        document_path=str(row.get("document_path") or ""),
-        status=str(row.get("status") or ""),
-        representation="",
-        word_count=len(text.split()),
-        normalized_text=text[:EXCERPT_CHARS],
-        outcome=outcome,
-    )
-
-
-def write_bundle(output_dir: Path, bundle: ReviewBundle) -> Path:
-    """Write one review bundle as a self-contained JSON file."""
-    safe_key = bundle.document_locator_key or "unknown"
-    path = output_dir / f"{safe_key}{REVIEW_BUNDLE_SUFFIX}"
-    path.write_text(canonical_json(bundle.to_dict()), encoding="utf-8")
-    return path
-
-
-def write_manifest(
-    output_dir: Path,
-    bundles: Sequence[ReviewBundle],
-    *,
-    artifact_path: Path,
-    skipped: int,
-) -> Path:
-    """Write the manifest describing a rendered review set."""
-    path = output_dir / REVIEW_MANIFEST_NAME
-    payload = {
-        "artifact": str(artifact_path),
-        "rendered": len(bundles),
-        "skipped": skipped,
-        "strata": list(OUTCOME_STRATA),
-        "bundles": [
-            {
-                "document_locator_key": bundle.document_locator_key,
-                "accession": bundle.accession,
-                "document_path": bundle.document_path,
-                "status": bundle.status,
-                "outcome": bundle.outcome,
-                "word_count": bundle.word_count,
-            }
-            for bundle in bundles
-        ],
-    }
-    path.write_text(canonical_json(payload), encoding="utf-8")
-    return path
-
-
-def render_review_set(
-    *,
-    artifact_path: Path,
-    output_dir: Path,
-    limit: int | None = None,
-) -> ReviewResult:
-    """Render a review set from a published snapshot artifact.
-
-    A row that cannot be turned into a bundle is reported and skipped rather
-    than failing the render: one malformed row should not cost a reviewer the
-    other forty-nine documents.
-    """
-    artifact = Path(artifact_path)
-    if not artifact.exists():
-        raise ReviewError(f"snapshot not found: {artifact}")
-
-    rows = _read_rows(artifact)
-    bundles, skipped = select_bundles(rows, limit)
-
-    destination = Path(output_dir)
-    destination.mkdir(parents=True, exist_ok=True)
-    errors: list[str] = []
-    written = 0
-    for bundle in bundles:
+def load_run_manifest(run_dir: Path) -> dict[str, dict[str, Any]]:
+    """Read one run's manifest, keyed by document id."""
+    path = run_dir / REVIEW_MANIFEST_NAME
+    if not path.is_file():
+        raise ReviewDiffError(
+            f"no {REVIEW_MANIFEST_NAME} in {run_dir}; this is not a review run"
+        )
+    entries: dict[str, dict[str, Any]] = {}
+    for number, line in enumerate(path.read_text(encoding="utf-8").splitlines(), 1):
+        if not line.strip():
+            continue
         try:
-            write_bundle(destination, bundle)
-            written += 1
-        except OSError as exc:
-            log.warning(
-                "could not write bundle for %s: %s", bundle.document_locator_key, exc
-            )
-            errors.append(f"{bundle.document_locator_key}: {exc}")
-    write_manifest(destination, bundles, artifact_path=artifact, skipped=skipped)
-    return ReviewResult(
-        output_dir=destination,
-        rendered=written,
-        skipped=skipped,
-        bundles=tuple(bundles),
-        errors=tuple(errors),
+            entry = json.loads(line)
+        except json.JSONDecodeError as exc:
+            raise ReviewDiffError(f"{path}:{number} is not valid JSON: {exc}") from exc
+        if not isinstance(entry, dict) or "document_id" not in entry:
+            raise ReviewDiffError(f"{path}:{number} is missing document_id")
+        document_id = str(entry["document_id"])
+        if document_id in entries:
+            raise ReviewDiffError(f"{path}:{number} repeats document {document_id}")
+        entries[document_id] = entry
+    return entries
+
+
+def _document_metadata(entry: dict[str, Any]) -> dict[str, Any]:
+    """The provenance fields recorded for a document.
+
+    Read off a fixed vocabulary rather than from whatever keys a manifest
+    happens to hold, so a field a run does not compute (v1's marker and table
+    counts) is ignored instead of read as a change. Within that vocabulary an
+    absent field is a real difference rather than a schema difference: a run
+    reporting no processor fingerprint is not the same evidence as one reporting
+    a different one, and a fingerprint present in only one run is exactly the
+    "which code produced this?" answer the comparison exists to give.
+    """
+    return {field: entry.get(field) for field in _COMPARED_FIELDS}
+
+
+def _metadata_changed(base_entry: dict[str, Any], new_entry: dict[str, Any]) -> bool:
+    """Whether either run records a provenance field differently."""
+    base_meta = _document_metadata(base_entry)
+    new_meta = _document_metadata(new_entry)
+    return any(base_meta[field] != new_meta[field] for field in _COMPARED_FIELDS)
+
+
+def _read_text(path: Path) -> str:
+    return path.read_text(encoding="utf-8") if path.is_file() else ""
+
+
+def _write_document_diff(
+    document_id: str, base_text: str, new_text: str, cases_root: Path
+) -> tuple[Path, Path, int, int]:
+    """Write one document's patch and HTML diff; return paths and line counts."""
+    case_dir = cases_root / document_id
+    case_dir.mkdir(parents=True, exist_ok=True)
+    patch_lines = list(
+        unified_diff(
+            base_text.splitlines(keepends=True),
+            new_text.splitlines(keepends=True),
+            fromfile="base",
+            tofile="new",
+        )
     )
+    patch_path = case_dir / f"{document_id}{PATCH_SUFFIX}"
+    atomic_write_text(patch_path, "".join(patch_lines))
+    html_path = case_dir / f"{document_id}{HTML_SUFFIX}"
+    atomic_write_text(
+        html_path,
+        HtmlDiff().make_file(
+            base_text.splitlines(),
+            new_text.splitlines(),
+            fromdesc="base",
+            todesc="new",
+        ),
+    )
+    added = sum(
+        1 for line in patch_lines if line.startswith("+") and not line.startswith("+++")
+    )
+    removed = sum(
+        1 for line in patch_lines if line.startswith("-") and not line.startswith("---")
+    )
+    return patch_path, html_path, added, removed
+
+
+def compare_review_runs(
+    base_dir: Path, new_dir: Path, output_dir: Path
+) -> ReviewDiffResult:
+    """Diff two review runs and write the differences under ``output_dir``."""
+    for directory in (base_dir, new_dir):
+        if not directory.is_dir():
+            raise ReviewDiffError(f"review run not found: {directory}")
+    if base_dir.resolve() == new_dir.resolve():
+        raise ReviewDiffError(
+            f"base and new are the same review run ({base_dir}); a comparison "
+            "needs two runs, and regenerating in place would overwrite the "
+            "evidence"
+        )
+    if output_dir.exists() and any(output_dir.iterdir()):
+        raise ReviewDiffError(
+            f"diff output already contains artifacts: {output_dir}. "
+            "Choose a new output directory."
+        )
+
+    base_entries = load_run_manifest(base_dir)
+    new_entries = load_run_manifest(new_dir)
+    fixture_mismatch = _fixture_mismatch(base_entries, new_entries)
+    cases_root = output_dir / CASES_DIR
+    output_dir.mkdir(parents=True, exist_ok=True)
+
+    documents: list[DocumentDiff] = []
+    for document_id in sorted(base_entries.keys() | new_entries.keys()):
+        base_entry = base_entries.get(document_id)
+        new_entry = new_entries.get(document_id)
+        reference = base_entry or new_entry
+        assert reference is not None
+        document_path = str(reference.get("document_path") or "")
+        if base_entry is None:
+            documents.append(
+                DocumentDiff(document_id, document_path, ADDED, source_changed=False)
+            )
+            continue
+        if new_entry is None:
+            documents.append(
+                DocumentDiff(document_id, document_path, REMOVED, source_changed=False)
+            )
+            continue
+        # A changed source hash means the fixture itself was re-filled between
+        # the two runs. Every output difference for this document is then
+        # uninterpretable, so it is called out rather than blended into the
+        # change count.
+        source_changed = base_entry.get("source_sha256") != new_entry.get(
+            "source_sha256"
+        )
+        base_text = _read_text(
+            base_dir / CASES_DIR / document_id / f"{document_id}.txt"
+        )
+        new_text = _read_text(new_dir / CASES_DIR / document_id / f"{document_id}.txt")
+        if base_text != new_text:
+            patch, html, added, removed = _write_document_diff(
+                document_id, base_text, new_text, cases_root
+            )
+            documents.append(
+                DocumentDiff(
+                    document_id,
+                    document_path,
+                    CHANGED,
+                    source_changed,
+                    added,
+                    removed,
+                    patch,
+                    html,
+                )
+            )
+            continue
+        if _metadata_changed(base_entry, new_entry):
+            # The text is identical but something about how it was produced
+            # moved. Surfaced because it is a real behavioural change that a
+            # text diff cannot show.
+            documents.append(
+                DocumentDiff(document_id, document_path, METADATA_ONLY, source_changed)
+            )
+            continue
+        documents.append(
+            DocumentDiff(document_id, document_path, UNCHANGED, source_changed)
+        )
+
+    result = ReviewDiffResult(
+        output_dir=output_dir,
+        base_dir=base_dir,
+        new_dir=new_dir,
+        documents=tuple(documents),
+        fixture_mismatch=fixture_mismatch,
+    )
+    atomic_write_text(output_dir / SUMMARY_NAME, render_summary(result))
+    return result
+
+
+def _fixture_mismatch(
+    base_entries: dict[str, dict[str, Any]], new_entries: dict[str, dict[str, Any]]
+) -> str | None:
+    """Report when the two runs reviewed different fixtures."""
+    base = {str(entry.get("fixture_id")) for entry in base_entries.values()}
+    new = {str(entry.get("fixture_id")) for entry in new_entries.values()}
+    if len(base) == 1 and len(new) == 1 and base != new:
+        return f"base={base.pop()} new={new.pop()}"
+    return None
+
+
+def render_summary(result: ReviewDiffResult) -> str:
+    """Render the human-readable comparison summary."""
+    counts = result.counts
+    lines = [
+        f"base  {result.base_dir}",
+        f"new   {result.new_dir}",
+        f"out   {result.output_dir}",
+        "",
+        f"documents   {len(result.documents)}",
+        f"changed     {counts.get(CHANGED, 0)}",
+        f"metadata    {counts.get(METADATA_ONLY, 0)}",
+        f"unchanged   {counts.get(UNCHANGED, 0)}",
+        f"added       {counts.get(ADDED, 0)}",
+        f"removed     {counts.get(REMOVED, 0)}",
+    ]
+    source_changed = [item for item in result.documents if item.source_changed]
+    if source_changed:
+        lines.append(f"resourced   {len(source_changed)}")
+    if result.fixture_mismatch:
+        lines.append("")
+        lines.append(
+            f"warning: the two runs reviewed different fixtures ({result.fixture_mismatch})"
+        )
+    if source_changed:
+        lines.append("")
+        lines.append(
+            "warning: the fixture was re-filled between runs; output diffs for "
+            "these documents compare different source bytes and cannot be read "
+            "as normalisation changes:"
+        )
+        for item in source_changed:
+            lines.append(f"  {item.document_id}  {item.document_path}")
+    moved = result.changed()
+    if moved:
+        lines.append("")
+        lines.append("changed documents:")
+        for item in moved:
+            suffix = "  [source changed]" if item.source_changed else ""
+            lines.append(
+                f"  {item.document_id}  +{item.added_lines}/-{item.removed_lines}"
+                f"  {item.document_path}{suffix}"
+            )
+    lines.append("")
+    lines.append("no differences" if not result.has_changes else "differences found")
+    return "\n".join(lines) + "\n"
 
 
 __all__ = [
-    "DEFAULT_BUNDLE_LIMIT",
-    "EXCERPT_CHARS",
-    "OUTCOME_STRATA",
-    "REVIEW_BUNDLE_SUFFIX",
-    "REVIEW_MANIFEST_NAME",
-    "ReviewBundle",
-    "ReviewError",
-    "ReviewResult",
-    "classify_outcome",
-    "render_review_set",
-    "select_bundles",
-    "write_bundle",
-    "write_manifest",
+    "ADDED",
+    "CHANGED",
+    "METADATA_ONLY",
+    "REMOVED",
+    "SUMMARY_NAME",
+    "UNCHANGED",
+    "DocumentDiff",
+    "ReviewDiffError",
+    "ReviewDiffResult",
+    "compare_review_runs",
+    "load_run_manifest",
+    "render_summary",
 ]

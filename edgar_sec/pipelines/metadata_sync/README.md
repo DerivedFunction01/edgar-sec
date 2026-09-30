@@ -36,6 +36,27 @@ augment                  -> a new snapshot holding base + only the new CIKs
 no network access. `plan` performs no network access. Only `run`, `worker`, and
 `augment` fetch.
 
+Every long command reports progress to stderr, choosing on `isatty`: a terminal
+gets a live `tqdm` bar, and a pipe or a captured log gets one plain line per event
+prefixed with the phase that emitted it. `run` shows one per-CIK bar; `merge` one
+per-stage bar; `augment` shows both in sequence, because it is the only command
+that runs two phases end to end — a rate-limited fetch of the delta, then a merge
+that scans every input for null and duplicate CIKs before publishing parts. Its
+fetch bar cannot be sized in advance (the delta depends on which CIKs the base
+already holds), so the augmentation announces its own plan with a `delta_plan`
+event and the bar is sized from that. A no-op augmentation prints its preflight
+line and returns without opening a bar at all, because there is no work to show.
+
+All of that rendering lives in `progress.py`, not `cli.py`. `cli.py` owns the
+argparse surface and the `cmd_*` callables both surfaces share; a renderer calls
+none of those and is called by none of them, so it is not part of that contract.
+It is also deliberately *not* in `foundation`: `foundation.runtime.progress` owns
+the tqdm adapters and knows nothing about which phase a pipeline is in, while
+"this pipeline has a per-CIK phase and a per-stage phase, and an augmentation runs
+both" is Phase 1 knowledge. The roadmap records what happens when shared
+infrastructure encodes one phase's model — v1's shared `run_interactive`
+"hardcoded Phase 01's exact model ... [and] became dead code outside Phase 01".
+
 ## Module layout
 
 | Module | Responsibility |
@@ -46,6 +67,7 @@ no network access. `plan` performs no network access. Only `run`, `worker`, and
 | `assignment.py` | Static chunk-to-worker assignment, and the worker receipt that crosses the machine boundary. |
 | `distribution.py` | Copy-based multi-machine distribution: export, select, adopt. The import trust boundary. |
 | `options.py` | The one typed options model the CLI and the operator both build; bundle path resolution. |
+| `progress.py` | How this pipeline's progress events become something a person can watch: phase-labelled log lines, single-phase bars, and the two-phase augment router. |
 | `paths.py` | `MetadataPaths` / `RunPaths`; the published-vs-transient split, plan bundle, registry, and source locations. |
 | `checkpoints.py` | What counts as a *complete* chunk on disk. |
 | `worker.py` | Resumable chunk execution over a thread pool; the never-refetch guarantee. |
@@ -55,8 +77,7 @@ no network access. `plan` performs no network access. Only `run`, `worker`, and
 | `registry.py` | Curated-versus-source comparison, the effective CIK roster, and the CSV export. |
 | `source_registry.py` | Write-once, content-addressed `company_tickers.json` snapshots. |
 | `sec_client.py` | One CIK to its submissions document plus every historical file it lists. |
-| `cli.py` | The argparse surface; each `cmd_*` is a plain callable the operator also calls. |
-| `operator.py` | Interactive wizard: session state, on-disk discovery, auto-resolution, and network consent over the same `cmd_*` functions. |
+| `cli.py` | The argparse surface; each `cmd_*` is a plain callable the operator also calls. || `operator.py` | Interactive wizard: session state, on-disk discovery, auto-resolution, and network consent over the same `cmd_*` functions. |
 | `augment_flow.py` | The augmentation journey: source observation, cohort choice, base choice, and the preflight that settles the arithmetic before any fetch. |
 | `worker_commands.py` | Renders the distributed lifecycle as copy-pasteable shell commands. |
 | `discovery.py` | What is already on disk: plans with progress, published snapshots, the current pointer, and published effective-CIK rosters. Manifests only; never opens a Parquet payload. |
@@ -385,7 +406,10 @@ These are decisions, not oversights. Each names the alternative.
 - `tests/pipelines/metadata_sync/test_merger.py` — every hard failure, the
   duplicate-accession warning, and the published CIK index.
 - `tests/pipelines/metadata_sync/test_augmentation.py` — delta identity, base
-  preservation, and union semantics.
+  preservation, union semantics, and the two-phase progress event sequence.
+- `tests/pipelines/metadata_sync/test_progress.py` — phase-labelled log lines, the
+  single-phase renderers, the two-phase router's bar lifecycle, and that closing a
+  run that never reached its merge opens no bar.
 - `tests/pipelines/metadata_sync/test_augment_flow.py` — the cohort journey, the
   consented source refresh, the preflight shown before consent, and the no-op
   path through both the wizard and the `augment` command.

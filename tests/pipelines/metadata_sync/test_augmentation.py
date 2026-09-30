@@ -287,6 +287,113 @@ def test_augment_merges_base_and_delta_without_refetching_base(
     assert pointer["row_count"] == 5
 
 
+# --------------------------------------------------------------- progress
+
+
+def test_an_augmentation_reports_both_of_its_phases(
+    client, session: FakeSession, tmp_path: Path
+) -> None:
+    """An augmentation is the pipeline's longest silent wait without this.
+
+    It does a rate-limited network fetch and then scans every input for null and
+    duplicate CIKs, so it emits the same two event shapes ``run`` and ``merge``
+    already emit. Asserting the whole sequence matters: a caller that renders a
+    bar needs the delta size before the first fetch event, which is why
+    ``delta_plan`` comes first.
+    """
+    metadata, _, _, _ = _publish_baseline(client, session, tmp_path)
+    widened = _widen(tmp_path, session, EXTRA)
+
+    events: list[dict] = []
+    augment(
+        client,
+        read_cik_manifest(widened),
+        metadata,
+        base_snapshot_id="base",
+        chunk_size=2,
+        workers=2,
+        progress=events.append,
+    )
+
+    types = [event["type"] for event in events]
+    assert types[0] == "delta_plan", (
+        "the delta size must be known before any fetch event"
+    )
+    plan_event = events[0]
+    assert plan_event["row_count"] == 1, "the delta is one CIK, not the base count"
+    assert plan_event["plan_id"]
+    # Per-CIK fetch events, so a bar advances per unit of real work.
+    assert "cik_normalized" in types
+    fetch_events = [event for event in events if event["type"] == "cik_normalized"]
+    assert [event["cik"] for event in fetch_events] == [EXTRA]
+    # Both merge stages, then the readback, so the merge bar can complete.
+    stages = [event["stage"] for event in events if event["type"] == "merge_stage"]
+    assert stages == ["validating", "publishing_parts"]
+    assert events[-1]["type"] == "readback_done"
+    assert events[-1]["rows"] == 5
+
+
+def test_progress_comes_before_the_publish_so_a_bar_never_overruns(
+    client, session: FakeSession, tmp_path: Path
+) -> None:
+    """The readback event is the last thing, so it reports the verified total."""
+    metadata, _, _, _ = _publish_baseline(client, session, tmp_path)
+    widened = _widen(tmp_path, session, EXTRA)
+
+    events: list[dict] = []
+    result = augment(
+        client,
+        read_cik_manifest(widened),
+        metadata,
+        base_snapshot_id="base",
+        chunk_size=2,
+        workers=2,
+        progress=events.append,
+    )
+    assert events[-1] == {
+        "type": "readback_done",
+        "rows": result.total_row_count,
+    }
+
+
+def test_a_broken_progress_callback_cannot_fail_an_augmentation(
+    client, session: FakeSession, tmp_path: Path
+) -> None:
+    """Presentation must not be able to fail a fetch, same as a merge."""
+    metadata, _, _, _ = _publish_baseline(client, session, tmp_path)
+    widened = _widen(tmp_path, session, EXTRA)
+
+    def explode(event: dict) -> None:
+        raise RuntimeError("bar went away")
+
+    result = augment(
+        client,
+        read_cik_manifest(widened),
+        metadata,
+        base_snapshot_id="base",
+        chunk_size=2,
+        workers=2,
+        progress=explode,
+    )
+    assert result.delta_row_count == 1
+
+
+def test_omitting_progress_is_still_supported(
+    client, session: FakeSession, tmp_path: Path
+) -> None:
+    metadata, _, _, _ = _publish_baseline(client, session, tmp_path)
+    widened = _widen(tmp_path, session, EXTRA)
+    result = augment(
+        client,
+        read_cik_manifest(widened),
+        metadata,
+        base_snapshot_id="base",
+        chunk_size=2,
+        workers=2,
+    )
+    assert result.delta_row_count == 1
+
+
 # --------------------------------------------------- derived snapshot identity
 
 

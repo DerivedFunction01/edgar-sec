@@ -3,9 +3,11 @@
 from __future__ import annotations
 
 import json
+import sqlite3
 from pathlib import Path
 
 from edgar_sec.domain.document.models import DocumentLocator
+from edgar_sec.foundation.hashing import sha256_bytes
 from edgar_sec.foundation.runtime.paths import ProjectPaths
 from edgar_sec.infra.storage.fixture_store import FixtureStore
 from edgar_sec.pipelines.document_storage.fetching import FixtureArchiveFetcher
@@ -127,6 +129,80 @@ def test_fill_persists_the_complete_submission_bundle(tmp_path: Path) -> None:
     assert result.payload == b"<html>body</html>"
     assert result.source_payload == bundle
     fetcher.close()
+
+
+def test_fill_records_document_metadata_for_every_locator(tmp_path: Path) -> None:
+    """A filled fixture must be self-describing, or nothing can review it.
+
+    A payload key is a one-way digest, so accession, path, MIME and source hash
+    are only recoverable if the fill wrote them down.
+    """
+    paths = _paths(tmp_path)
+    html = _locator("page.htm")
+    text = DocumentLocator.from_parts(
+        "0001234567-11-000002",
+        "notes.txt",
+        archive_url="https://www.sec.gov/Archives/notes.txt",
+        form="10-Q",
+    )
+    fill_fixture(
+        paths=paths,
+        fixture_id="fix-meta",
+        locators=[html, text],
+        workers=2,
+        http_client=FakeClient(
+            {"page.htm": b"<html>body</html>", "notes.txt": b"plain text"}
+        ),
+    )
+    with FixtureStore(paths.fixture_db_path("fix-meta"), read_only=True) as store:
+        assert store.has_document_metadata
+        recorded = {item.doc_id: item for item in store.documents()}
+        assert set(recorded) == {html.document_locator_key, text.document_locator_key}
+        page = recorded[html.document_locator_key]
+        assert page.accession == "0001234567-11-000001"
+        assert page.document_path == "page.htm"
+        assert page.mime_type == "text/html"
+        assert page.byte_size == len(b"<html>body</html>")
+        assert recorded[text.document_locator_key].mime_type == "text/plain"
+        # The form selects the processing plugin, so losing it would make a
+        # review normalize under a different plugin than the pipeline.
+        assert store.document_forms() == {
+            html.document_locator_key: "10-K",
+            text.document_locator_key: "10-Q",
+        }
+
+
+def test_refill_backfills_metadata_without_refetching(tmp_path: Path) -> None:
+    """A payload-only fixture is repaired by re-running the same fill.
+
+    This is the migration path for a fixture recorded before the metadata table
+    existed, and it must not touch the network: the payloads are already there.
+    """
+    paths = _paths(tmp_path)
+    locator = _locator("legacy.htm")
+    with FixtureStore(paths.fixture_db_path("fix-legacy")) as store:
+        store.put_many([(locator.document_locator_key, b"legacy payload")])
+    with sqlite3.connect(paths.fixture_db_path("fix-legacy")) as connection:
+        connection.execute("DROP TABLE document_blobs")
+        connection.commit()
+
+    client = FakeClient({"legacy.htm": b"must not be fetched"})
+    report = fill_fixture(
+        paths=paths,
+        fixture_id="fix-legacy",
+        locators=[locator],
+        workers=1,
+        http_client=client,
+    )
+    assert report.already_present == 1
+    assert report.newly_written == 0
+    assert report.backfilled_metadata == 1
+    assert client.calls == []
+    with FixtureStore(paths.fixture_db_path("fix-legacy"), read_only=True) as store:
+        assert store.documents()[0].raw_payload_sha256 == sha256_bytes(
+            b"legacy payload"
+        )
+        assert store.get(locator.document_locator_key) == b"legacy payload"
 
 
 def test_fixture_discovery_reports_manifest_and_payload_count(tmp_path: Path) -> None:

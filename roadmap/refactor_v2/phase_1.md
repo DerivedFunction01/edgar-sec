@@ -854,3 +854,52 @@ real wizard against a populated `.artifacts` is what surfaced it; the unit test
 that exercised the same branch asserted the roster it loaded, never the dict it
 returned. A contract with two construction paths is one test unless both are held
 to the same keys.
+
+**Augmentation was the one long command with no progress at all.** An operator
+reported being unable to tell whether an augment was working. It was silent across
+*two* phases, not one: `run_chunk_ids` already accepted a `progress` callback and
+`augment` simply did not pass it, and the merge half — a null and duplicate CIK
+scan over every input, then a Parquet write — emitted nothing either. `run` and
+`merge` both had bars; `augment`, which does the most work, had silence.
+
+The fix is wiring, not infrastructure: `augment` now takes the same optional
+callback the other two do and emits the same two event shapes, with a broken
+callback unable to fail a fetch for the same reason it cannot fail a merge.
+
+The fetch bar cannot be sized before the call, and that is the one design
+constraint. `cmd_run` sizes its bar from a plan it loaded; the delta size depends
+on which CIKs the base snapshot already holds, which only the augmentation knows
+while it runs. So `augment` announces its plan with a `delta_plan` event and
+`_AugmentProgress` routes from there — one bar per phase, the fetch bar closed
+before the merge bar opens so two never overlap.
+
+A second, pre-existing defect surfaced while wiring it. `_emit_progress` printed a
+hardcoded `merge:` prefix, so a redirected `run` logged `merge: ok` for every
+per-CIK fetch event: a log consumer could not distinguish the phase it was
+reading. The prefix is now derived from the event, and the non-TTY output carries
+`fetch:` or `merge:` accordingly. This is the third instance of the §13 lesson —
+`_emit_progress` was exercised, just never checked for what it printed.
+
+Two things were deliberately left alone. `worker` stays barless: it runs from a
+copied bundle for a handful of assigned chunks, and the receipt is its record. A
+no-op augmentation prints its preflight line and opens no bar, because showing
+progress for zero work is worse than showing nothing.
+
+**The progress code was then moved out of `cli.py` for ownership, not length.**
+Extracting it brought `cli.py` to 884 lines, past the 800-line threshold the
+`file-length` scanner treats as a gate failure, so the move was required — but the
+reason it belongs somewhere else came first. `cli.py` owns two things: the argparse
+surface, and the `cmd_*` callables that the CLI and the wizard both invoke. A
+renderer calls none of those and none calls it, so it was never part of that
+contract, and a command module that grows a presentation class is a module whose
+purpose is no longer single.
+
+The new home is phase-local, `metadata_sync/progress.py`, alongside `discovery.py`
+and `options.py`, and it is deliberately *not* `foundation`. The tqdm adapters
+already live in `foundation.runtime.progress` and know nothing about which phase a
+pipeline is in; what is Phase 1's to know is that this pipeline has a per-CIK
+fetch shape, a per-stage merge shape, and an augmentation that runs both in one
+command. §11 records what happens when shared infrastructure encodes one phase's
+model, and promoting this on the strength of one caller would be speculative
+besides. If a second pipeline needs the same sequencing, promote it then, with two
+callers to shape it.

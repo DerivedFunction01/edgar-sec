@@ -1,4 +1,4 @@
-"""Tests for the review bundle harness."""
+"""Tests for comparing two review runs."""
 
 from __future__ import annotations
 
@@ -7,308 +7,198 @@ from pathlib import Path
 
 import pytest
 
-from edgar_sec.domain.document.models import DocumentLocator, FilingOccurrence
-from edgar_sec.domain.identity import Cik
-from edgar_sec.infra.storage.document_parquet import write_chunk_snapshot
 from edgar_sec.pipelines.document_storage.review import (
-    EXCERPT_CHARS,
-    OUTCOME_STRATA,
-    REVIEW_MANIFEST_NAME,
-    ReviewError,
-    classify_outcome,
-    render_review_set,
-    select_bundles,
+    ADDED,
+    CHANGED,
+    METADATA_ONLY,
+    REMOVED,
+    SUMMARY_NAME,
+    UNCHANGED,
+    ReviewDiffError,
+    compare_review_runs,
+    load_run_manifest,
 )
 
-ACCESSION = "0001234567-11-000001"
 
-
-def _artifact(path: Path, rows: list[tuple[str, str, str, str]]) -> Path:
-    occurrences = []
-    raw = {}
-    texts = {}
-    statuses = {}
-    errors = {}
-    for document_path, form, status, text in rows:
-        locator = DocumentLocator.from_parts(ACCESSION, document_path)
-        occurrence = FilingOccurrence(
-            occurrence_id=f"occ-{locator.document_locator_key[:8]}",
-            source_cik=Cik.from_raw("1234567"),
-            accession=locator.accession,
-            document_path=document_path,
-            form=form,
-            filing_date="2012-02-15",
-            report_date=None,
-            doc_id=locator.document_locator_key,
-        )
-        occurrences.append(occurrence)
-        raw[locator.document_locator_key] = document_path.encode()
-        texts[occurrence.occurrence_id] = text
-        statuses[occurrence.occurrence_id] = status
-        if status != "ok":
-            errors[occurrence.occurrence_id] = "acquisition failed"
-    write_chunk_snapshot(path, occurrences, raw, texts, statuses, errors)
-    return path
-
-
-# --- outcome classification ----------------------------------------------
-
-
-@pytest.mark.parametrize(
-    ("row", "expected"),
-    [
-        ({"status": "failed", "normalized_text": "x", "form": "10-K"}, "failed"),
-        ({"status": "missing", "normalized_text": "", "form": "10-K"}, "missing"),
-        ({"status": "ok", "normalized_text": "   "}, "empty_text"),
-        ({"status": "ok", "normalized_text": "body"}, "ok"),
-    ],
-)
-def test_outcome_classification(row: dict, expected: str) -> None:
-    assert classify_outcome(row) == expected
-
-
-def test_failure_outranks_empty_text() -> None:
-    assert classify_outcome({"status": "failed", "normalized_text": ""}) == "failed"
-
-
-# --- selection ------------------------------------------------------------
-
-
-def _row(key: str, outcome_status: str, text: str = "body") -> dict:
-    return {
-        "document_locator_key": key,
-        "accession": ACCESSION,
-        "document_path": f"{key}.htm",
-        "status": outcome_status,
-        "normalized_text": text,
-    }
-
-
-def test_selection_prefers_surprising_outcomes() -> None:
-    rows = [_row(f"ok{i}", "ok") for i in range(50)]
-    rows.append(_row("bad", "failed"))
-    bundles, _skipped = select_bundles(rows, limit=5)
-    assert len(bundles) == 5
-    assert bundles[0].outcome == "failed"
-    assert {bundle.outcome for bundle in bundles} == {"failed", "ok"}
-
-
-def test_selection_is_deterministic() -> None:
-    rows = [_row(f"k{i:03d}", "ok") for i in range(20)]
-    first, _ = select_bundles(rows, limit=5)
-    second, _ = select_bundles(list(reversed(rows)), limit=5)
-    assert [b.document_locator_key for b in first] == [
-        b.document_locator_key for b in second
-    ]
-
-
-def test_selection_reports_what_it_left_out() -> None:
-    rows = [_row(f"k{i}", "ok") for i in range(10)]
-    bundles, skipped = select_bundles(rows, limit=3)
-    assert len(bundles) == 3
-    assert skipped == 7
-
-
-def test_zero_limit_selects_nothing() -> None:
-    bundles, skipped = select_bundles([_row("a", "ok")], limit=0)
-    assert bundles == []
-    assert skipped == 1
-
-
-def test_every_stratum_is_represented_when_budget_allows() -> None:
-    rows = [
-        _row("f", "failed"),
-        _row("m", "missing"),
-        _row("e", "ok", text="   "),
-        _row("o", "ok"),
-    ]
-    bundles, skipped = select_bundles(rows, limit=10)
-    assert skipped == 0
-    assert [bundle.outcome for bundle in bundles] == list(OUTCOME_STRATA)
-
-
-def test_long_text_is_truncated() -> None:
-    bundles, _ = select_bundles([_row("a", "ok", text="x" * (EXCERPT_CHARS + 500))], 1)
-    assert len(bundles[0].normalized_text) == EXCERPT_CHARS
-
-
-# --- rendering ------------------------------------------------------------
-
-
-def test_render_writes_bundles_and_a_manifest(tmp_path: Path) -> None:
-    artifact = _artifact(
-        tmp_path / "documents.parquet",
-        [
-            ("a.htm", "10-K", "ok", "alpha body"),
-            ("b.htm", "10-K", "failed", ""),
-        ],
+def _run(
+    root: Path,
+    name: str,
+    documents: dict[str, str],
+    *,
+    fixture_id: str = "fix-1",
+    source_hashes: dict[str, str] | None = None,
+    extra: dict[str, dict[str, object]] | None = None,
+) -> Path:
+    """Write a minimal review run: one case per document, plus a manifest."""
+    run = root / name
+    (run / "cases").mkdir(parents=True, exist_ok=True)
+    entries = []
+    for document_id, text in documents.items():
+        case_dir = run / "cases" / document_id
+        case_dir.mkdir(parents=True, exist_ok=True)
+        (case_dir / f"{document_id}.txt").write_text(text, encoding="utf-8")
+        entry = {
+            "accession": "0001234567-11-000001",
+            "current_output_sha256": "ignored",
+            "document_id": document_id,
+            "document_path": f"{document_id}.htm",
+            "fixture_id": fixture_id,
+            "form": "10-K",
+            "representation": "html",
+            "source_sha256": (source_hashes or {}).get(document_id, "a" * 64),
+        }
+        if extra and document_id in extra:
+            entry.update(extra[document_id])
+        entries.append(entry)
+    (run / "review_manifest.jsonl").write_text(
+        "".join(json.dumps(entry, sort_keys=True) + "\n" for entry in entries),
+        encoding="utf-8",
     )
-    out = tmp_path / "review"
-    result = render_review_set(artifact_path=artifact, output_dir=out)
-    assert result.rendered == 2
-    assert result.skipped == 0
-    assert result.errors == ()
-    assert (out / REVIEW_MANIFEST_NAME).is_file()
-
-    manifest = json.loads((out / REVIEW_MANIFEST_NAME).read_text())
-    assert manifest["rendered"] == 2
-    assert len(manifest["bundles"]) == 2
-    assert {b["outcome"] for b in manifest["bundles"]} == {"ok", "failed"}
+    return run
 
 
-def test_bundle_files_are_self_contained_json(tmp_path: Path) -> None:
-    artifact = _artifact(
-        tmp_path / "documents.parquet", [("a.htm", "10-K", "ok", "body")]
-    )
-    out = tmp_path / "review"
-    render_review_set(artifact_path=artifact, output_dir=out)
-    bundles = [p for p in out.iterdir() if p.name != REVIEW_MANIFEST_NAME]
-    assert len(bundles) == 1
-    payload = json.loads(bundles[0].read_text())
-    assert payload["document_path"] == "a.htm"
-    assert payload["normalized_text"] == "body"
-    assert payload["word_count"] == 1
+def test_identical_runs_report_no_changes(tmp_path: Path) -> None:
+    documents = {"doc-a": "alpha\n", "doc-b": "beta\n"}
+    base = _run(tmp_path, "run-a", documents)
+    new = _run(tmp_path, "run-b", documents)
+    result = compare_review_runs(base, new, tmp_path / "diff")
+    assert not result.has_changes
+    assert result.counts == {UNCHANGED: 2}
+    assert (tmp_path / "diff" / SUMMARY_NAME).is_file()
 
 
-def test_render_respects_the_limit(tmp_path: Path) -> None:
-    artifact = _artifact(
-        tmp_path / "documents.parquet",
-        [(f"d{i}.htm", "10-K", "ok", "body") for i in range(10)],
-    )
-    result = render_review_set(
-        artifact_path=artifact, output_dir=tmp_path / "review", limit=3
-    )
-    assert result.rendered == 3
-    assert result.skipped == 7
+def test_changed_text_produces_a_patch_and_html_diff(tmp_path: Path) -> None:
+    base = _run(tmp_path, "run-a", {"doc-a": "one\ntwo\n"})
+    new = _run(tmp_path, "run-b", {"doc-a": "one\nthree\n"})
+    result = compare_review_runs(base, new, tmp_path / "diff")
+    assert result.has_changes
+    changed = result.changed()
+    assert len(changed) == 1
+    document = changed[0]
+    assert document.status == CHANGED
+    assert (document.added_lines, document.removed_lines) == (1, 1)
+    patch = document.patch_path.read_text(encoding="utf-8")
+    assert "-two" in patch
+    assert "+three" in patch
+    assert document.html_path.is_file()
 
 
-def test_render_recreates_a_missing_output_directory(tmp_path: Path) -> None:
-    artifact = _artifact(tmp_path / "documents.parquet", [("a.htm", "10-K", "ok", "x")])
-    out = tmp_path / "nested" / "review"
-    result = render_review_set(artifact_path=artifact, output_dir=out)
-    assert out.is_dir()
-    assert result.rendered == 1
+def test_added_and_removed_documents_are_classified(tmp_path: Path) -> None:
+    base = _run(tmp_path, "run-a", {"doc-a": "a\n", "doc-b": "b\n"})
+    new = _run(tmp_path, "run-b", {"doc-b": "b\n", "doc-c": "c\n"})
+    result = compare_review_runs(base, new, tmp_path / "diff")
+    statuses = {item.document_id: item.status for item in result.documents}
+    assert statuses == {"doc-a": REMOVED, "doc-b": UNCHANGED, "doc-c": ADDED}
+    assert result.has_changes
 
 
-def test_missing_artifact_is_an_error(tmp_path: Path) -> None:
-    with pytest.raises(ReviewError, match="not found"):
-        render_review_set(
-            artifact_path=tmp_path / "absent.parquet", output_dir=tmp_path / "out"
-        )
-
-
-def test_render_is_repeatable(tmp_path: Path) -> None:
-    artifact = _artifact(
-        tmp_path / "documents.parquet",
-        [("a.htm", "10-K", "ok", "alpha"), ("b.htm", "10-K", "failed", "")],
-    )
-    first = render_review_set(artifact_path=artifact, output_dir=tmp_path / "r1")
-    second = render_review_set(artifact_path=artifact, output_dir=tmp_path / "r2")
-    assert [b.document_locator_key for b in first.bundles] == [
-        b.document_locator_key for b in second.bundles
-    ]
-
-
-def test_empty_snapshot_renders_an_empty_manifest(tmp_path: Path) -> None:
-    artifact = _artifact(tmp_path / "documents.parquet", [])
-    out = tmp_path / "review"
-    result = render_review_set(artifact_path=artifact, output_dir=out)
-    assert result.rendered == 0
-    manifest = json.loads((out / REVIEW_MANIFEST_NAME).read_text())
-    assert manifest["rendered"] == 0
-    assert manifest["bundles"] == []
-
-
-def test_result_serializes_for_the_cli(tmp_path: Path) -> None:
-    artifact = _artifact(tmp_path / "documents.parquet", [("a.htm", "10-K", "ok", "x")])
-    result = render_review_set(artifact_path=artifact, output_dir=tmp_path / "review")
-    payload = result.to_dict()
-    assert payload["rendered"] == 1
-    assert payload["errors"] == []
-    assert "output_dir" in payload
-
-
-def test_review_reads_a_consolidated_part_tree(tmp_path: Path) -> None:
-    """The ``current`` pointer can name a part tree, not just an assembled file.
-
-    A run snapshot is one ``documents.parquet``; a consolidated snapshot is a
-    repartitioned part tree with index and payload in separate files. A review
-    that only understood the first would report "not published" for a perfectly
-    good snapshot.
-    """
-    from edgar_sec.infra.storage.document_parts import (
-        PlannedPart,
-        write_index_part,
-        write_payload_part,
-    )
-    from edgar_sec.infra.storage.manifests import SnapshotPart, write_manifest
-
-    snapshot_dir = tmp_path / "snap-parts"
-    index_part = PlannedPart(
-        path="parts/index/run.parquet",
-        kind="index",
-        doc_ids=("d1",),
-        estimated_bytes=10,
-    )
-    payload_part = PlannedPart(
-        path="parts/payload/run.parquet",
-        kind="payload",
-        doc_ids=("d1",),
-        estimated_bytes=10,
-    )
-    write_index_part(
-        snapshot_dir,
-        index_part,
-        [
-            {
-                "occurrence_id": "occ-1",
-                "source_cik": "1234567",
-                "accession": "0001234567-11-000001",
-                "form": "10-K",
-                "filing_date": "2011-02-15",
-                "report_date": None,
-                "document_path": "a.htm",
-                "doc_id": "d1",
-                "mime_type": "text/plain",
-                "byte_size": "5",
-                "payload_file": payload_part.path,
-            }
-        ],
-    )
-    payload_entry = write_payload_part(snapshot_dir, payload_part, [("d1", "body")])
-    parts = [
-        SnapshotPart(
-            path=index_part.path,
-            kind=index_part.kind,
-            doc_ids=index_part.doc_ids,
-            row_count=1,
-        ).to_dict(),
-        payload_entry.to_dict(),
-    ]
-    write_manifest(
+def test_metadata_change_is_reported_even_when_text_is_identical(
+    tmp_path: Path,
+) -> None:
+    """A behavioural change the text diff cannot show must still surface."""
+    base = _run(tmp_path, "run-a", {"doc-a": "same\n"})
+    new = _run(
         tmp_path,
-        {
-            "snapshot_id": "snap-parts",
-            "schema_version": "1",
-            "resolved_parts": parts,
-            "source_snapshot_ids": ["run-1"],
-            "dataset": "document_storage",
-            "phase": "025_webpage_storage",
-            "logical_fingerprint": "fp",
-        },
-        set_current=False,
+        "run-b",
+        {"doc-a": "same\n"},
+        extra={"doc-a": {"processor_fingerprint": "normalizer:v2"}},
+    )
+    result = compare_review_runs(base, new, tmp_path / "diff")
+    assert result.counts == {METADATA_ONLY: 1}
+    assert result.has_changes
+
+
+def test_changed_source_is_flagged_separately_from_text_changes(
+    tmp_path: Path,
+) -> None:
+    """A re-filled fixture makes every output diff for that document unreadable."""
+    base = _run(
+        tmp_path, "run-a", {"doc-a": "one\n"}, source_hashes={"doc-a": "a" * 64}
+    )
+    new = _run(tmp_path, "run-b", {"doc-a": "two\n"}, source_hashes={"doc-a": "b" * 64})
+    result = compare_review_runs(base, new, tmp_path / "diff")
+    document = result.changed()[0]
+    assert document.status == CHANGED
+    assert document.source_changed is True
+    summary = (tmp_path / "diff" / SUMMARY_NAME).read_text(encoding="utf-8")
+    assert "re-filled between runs" in summary
+    assert "doc-a" in summary
+
+
+def test_different_fixtures_are_called_out(tmp_path: Path) -> None:
+    base = _run(tmp_path, "run-a", {"doc-a": "a\n"}, fixture_id="fix-1")
+    new = _run(tmp_path, "run-b", {"doc-a": "a\n"}, fixture_id="fix-2")
+    result = compare_review_runs(base, new, tmp_path / "diff")
+    assert result.fixture_mismatch == "base=fix-1 new=fix-2"
+    assert "different fixtures" in (
+        (tmp_path / "diff" / SUMMARY_NAME).read_text(encoding="utf-8")
     )
 
-    result = render_review_set(
-        artifact_path=snapshot_dir, output_dir=tmp_path / "review"
-    )
-    assert result.rendered == 1
-    assert result.bundles[0].document_path == "a.htm"
-    assert result.bundles[0].normalized_text == "body"
+
+def test_comparing_a_run_with_itself_is_refused(tmp_path: Path) -> None:
+    """A self-comparison would be a clean diff that proves nothing."""
+    run = _run(tmp_path, "run-a", {"doc-a": "a\n"})
+    with pytest.raises(ReviewDiffError, match="same review run"):
+        compare_review_runs(run, run, tmp_path / "diff")
 
 
-def test_review_rejects_a_directory_without_a_manifest(tmp_path: Path) -> None:
-    empty = tmp_path / "snap-empty"
+def test_missing_manifest_is_rejected_with_a_clear_message(tmp_path: Path) -> None:
+    empty = tmp_path / "not-a-run"
     empty.mkdir()
-    with pytest.raises(ReviewError, match="manifest not found"):
-        render_review_set(artifact_path=empty, output_dir=tmp_path / "review")
+    good = _run(tmp_path, "run-b", {"doc-a": "a\n"})
+    with pytest.raises(ReviewDiffError, match="not a review run"):
+        compare_review_runs(empty, good, tmp_path / "diff")
+
+
+def test_malformed_manifest_line_names_its_line(tmp_path: Path) -> None:
+    run = _run(tmp_path, "run-a", {"doc-a": "a\n"})
+    manifest = run / "review_manifest.jsonl"
+    manifest.write_text('{"document_id": "doc-a"}\nnot json\n', encoding="utf-8")
+    with pytest.raises(ReviewDiffError, match=r":2 is not valid JSON"):
+        load_run_manifest(run)
+
+
+def test_repeated_document_id_is_rejected(tmp_path: Path) -> None:
+    run = _run(tmp_path, "run-a", {"doc-a": "a\n"})
+    manifest = run / "review_manifest.jsonl"
+    lines = manifest.read_text(encoding="utf-8").splitlines()
+    manifest.write_text("\n".join(lines + lines) + "\n", encoding="utf-8")
+    with pytest.raises(ReviewDiffError, match="repeats document"):
+        load_run_manifest(run)
+
+
+def test_non_empty_output_is_refused(tmp_path: Path) -> None:
+    base = _run(tmp_path, "run-a", {"doc-a": "a\n"})
+    new = _run(tmp_path, "run-b", {"doc-a": "b\n"})
+    output = tmp_path / "diff"
+    output.mkdir()
+    (output / "stale").write_text("x", encoding="utf-8")
+    with pytest.raises(ReviewDiffError, match="already contains artifacts"):
+        compare_review_runs(base, new, output)
+
+
+def test_manifest_schema_differences_are_not_reported_as_changes(
+    tmp_path: Path,
+) -> None:
+    """A field present in one manifest and absent in the other is not a change.
+
+    v1's manifest carried marker and table counts that v2 no longer computes.
+    Comparing against a v1 reference run would otherwise report every document as
+    metadata-only changed and bury the real signal.
+    """
+    base = _run(
+        tmp_path, "run-a", {"doc-a": "same\n"}, extra={"doc-a": {"marker_count": 4}}
+    )
+    new = _run(tmp_path, "run-b", {"doc-a": "same\n"})
+    result = compare_review_runs(base, new, tmp_path / "diff")
+    assert not result.has_changes
+    assert result.counts == {UNCHANGED: 1}
+
+
+def test_json_report_carries_counts_and_documents(tmp_path: Path) -> None:
+    base = _run(tmp_path, "run-a", {"doc-a": "a\n"})
+    new = _run(tmp_path, "run-b", {"doc-a": "b\n"})
+    payload = compare_review_runs(base, new, tmp_path / "diff").to_dict()
+    assert payload["counts"] == {CHANGED: 1}
+    assert payload["documents"][0]["document_id"] == "doc-a"
+    assert payload["base"].endswith("run-a")

@@ -45,6 +45,7 @@ from .options import (
 )
 from .paths import resolve_metadata_paths, resolve_run_paths
 from .planner import load_plan, write_plan
+from .progress import MERGE_PROGRESS_STAGES, AugmentProgress, progress_renderer
 from .registry import compare_sources
 from .roster import RosterError
 from .sec_client import SubmissionsClient
@@ -92,56 +93,8 @@ def _build_client() -> SubmissionsClient:
     )
 
 
-def _emit_progress(event: dict[str, Any]) -> None:
-    """Render one merge progress event to stderr.
-
-    Merge output owns stdout, so progress goes to stderr and a non-TTY run stays
-    quiet rather than emitting bar control characters into a captured log.
-    """
-    stage = event.get("type", "progress")
-    rows = event.get("rows")
-    detail = f" ({rows} rows)" if rows is not None else ""
-    print(f"merge: {stage}{detail}", file=sys.stderr)
-
-
 def _emit(payload: dict[str, Any]) -> None:
     print(json.dumps(payload, indent=2))
-
-
-# Merge emits one progress event per stage, and the stage count is part of the
-# contract the merge-reporting callback already understands.
-MERGE_PROGRESS_STAGES = 4
-
-
-def _progress_renderer(
-    kind: str, total: int, *, desc: str
-) -> tuple[Callable[[dict[str, Any]], None] | None, Any]:
-    """Build a progress callback for a long-running command, and its bar to close.
-
-    A terminal gets a live bar; a pipe or a captured log gets the plain event
-    lines. Choosing on ``isatty`` is what keeps a redirected run readable --
-    bar control characters in a log file help nobody -- while a long run over
-    tens of thousands of CIKs is visibly progressing rather than silent, which
-    is indistinguishable from a hang.
-
-    The tqdm adapters in ``foundation.runtime.progress`` already implement both
-    event shapes this pipeline emits: per-CIK fetch events and per-stage merge
-    events. Routing through them gives those adapters a real caller and keeps
-    the rendering in one place instead of per action.
-    """
-    if not sys.stderr.isatty():
-        return (lambda event: _emit_progress(event)), None
-    from tqdm import tqdm
-
-    if kind == "merge":
-        bar = tqdm(total=total, unit="stage", desc=desc, leave=False)
-        from edgar_sec.foundation.runtime.progress import make_merge_progress_callback
-
-        return make_merge_progress_callback(bar), bar
-    bar = tqdm(total=total, unit="cik", desc=desc, leave=False)
-    from edgar_sec.foundation.runtime.progress import make_tqdm_callback
-
-    return make_tqdm_callback(bar), bar
 
 
 def cmd_refresh(artifacts_root: Path | None = None) -> int:
@@ -245,7 +198,7 @@ def cmd_run(options: RunOptions, *, client: SubmissionsClient | None = None) -> 
     outstanding = sum(
         plan.chunk_length(chunk_id) for chunk_id in targets if chunk_id not in completed
     )
-    progress, bar = _progress_renderer(
+    progress, bar = progress_renderer(
         "fetch", outstanding, desc=f"plan {plan.plan_id[:8]}"
     )
     try:
@@ -281,7 +234,7 @@ def cmd_merge(options: RunOptions, *, lineage: dict[str, str] | None = None) -> 
     """Validate every chunk and publish a snapshot."""
     run_paths = options.run_paths()
     plan = load_plan(run_paths)
-    progress, bar = _progress_renderer(
+    progress, bar = progress_renderer(
         "merge", MERGE_PROGRESS_STAGES, desc=f"merge {plan.plan_id[:8]}"
     )
     try:
@@ -349,28 +302,34 @@ def cmd_augment(
         )
         return 0
 
-    if options.registry_id:
-        result = _augment_from_registry(
-            options,
-            base_snapshot_id=base_snapshot_id,
-            new_snapshot_id=new_snapshot_id,
-            workers=workers,
-            lineage=lineage,
-            cohort=cohort,
-            preflight=check,
-        )
-    else:
-        result = augment_from_manifest(
-            _build_client(),
-            str(options.input_path),
-            metadata,
-            base_snapshot_id=base_snapshot_id,
-            new_snapshot_id=new_snapshot_id,
-            chunk_size=options.chunk_size,
-            workers=workers,
-            lineage=lineage,
-            preflight=check,
-        )
+    progress = AugmentProgress(f"augment {base_snapshot_id[:8]}")
+    try:
+        if options.registry_id:
+            result = _augment_from_registry(
+                options,
+                base_snapshot_id=base_snapshot_id,
+                new_snapshot_id=new_snapshot_id,
+                workers=workers,
+                lineage=lineage,
+                cohort=cohort,
+                preflight=check,
+                progress=progress,
+            )
+        else:
+            result = augment_from_manifest(
+                _build_client(),
+                str(options.input_path),
+                metadata,
+                base_snapshot_id=base_snapshot_id,
+                new_snapshot_id=new_snapshot_id,
+                chunk_size=options.chunk_size,
+                workers=workers,
+                lineage=lineage,
+                preflight=check,
+                progress=progress,
+            )
+    finally:
+        progress.close()
     _emit(
         {
             "no_op": False,
@@ -406,6 +365,7 @@ def _augment_from_registry(
     lineage: dict[str, str] | None,
     cohort: SelectedCohort | None = None,
     preflight: object = None,
+    progress: Callable[[dict[str, Any]], None] | None = None,
 ):
     from .augmentation import augment_from_roster
 
@@ -423,6 +383,7 @@ def _augment_from_registry(
         workers=workers,
         preflight=preflight,
         lineage=lineage,
+        progress=progress,
     )
 
 

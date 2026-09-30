@@ -11,8 +11,8 @@ from datetime import UTC, datetime
 from pathlib import Path
 from typing import Any
 
-from edgar_sec.domain.document.models import DocumentLocator
-from edgar_sec.foundation.hashing import sha256_text
+from edgar_sec.domain.document.models import DocumentLocator, RawDocumentBlob
+from edgar_sec.foundation.hashing import sha256_bytes, sha256_text
 from edgar_sec.foundation.runtime.paths import ProjectPaths
 from edgar_sec.foundation.runtime.resources import derive_resources
 from edgar_sec.foundation.serialization import canonical_json
@@ -23,6 +23,23 @@ from edgar_sec.pipelines.document_storage.fetching import LiveArchiveFetcher
 MANIFEST_SCHEMA_VERSION = 2
 _FIXTURE_ID = re.compile(r"[A-Za-z0-9][A-Za-z0-9._-]*\Z")
 _WRITE_BATCH_SIZE = 128
+
+#: Extension to MIME, matching v1's fixture vocabulary so a fixture filled here
+#: and one filled by v1 describe the same document identically.
+_MIME_BY_SUFFIX = {
+    ".htm": "text/html",
+    ".html": "text/html",
+    ".xhtml": "text/html",
+    ".txt": "text/plain",
+    ".xml": "text/xml",
+}
+_DEFAULT_MIME = "application/octet-stream"
+
+
+def mime_type_for(document_path: str) -> str:
+    """Infer a document's MIME type from its extension."""
+    suffix = Path(document_path.strip().lower()).suffix
+    return _MIME_BY_SUFFIX.get(suffix, _DEFAULT_MIME)
 
 
 class FixtureOperatorError(RuntimeError):
@@ -46,6 +63,7 @@ class FixtureFillReport:
     failed: int
     failures: tuple[dict[str, str], ...]
     target_fingerprint: str
+    backfilled_metadata: int = 0
 
     def to_dict(self) -> dict[str, Any]:
         return {
@@ -53,6 +71,7 @@ class FixtureFillReport:
             "requested": self.requested,
             "already_present": self.already_present,
             "newly_written": self.newly_written,
+            "metadata_backfilled": self.backfilled_metadata,
             "failed": self.failed,
             "failures": list(self.failures),
             "target_fingerprint": self.target_fingerprint,
@@ -118,6 +137,62 @@ def _make_http_client() -> Any:
     )
 
 
+def _document_blob(locator: DocumentLocator, raw_payload: bytes) -> RawDocumentBlob:
+    """Describe one fetched payload in the fixture's ``document_blobs`` shape."""
+    return RawDocumentBlob(
+        doc_id=locator.document_locator_key,
+        accession=str(locator.accession),
+        document_path=locator.document_path,
+        byte_size=len(raw_payload),
+        mime_type=mime_type_for(locator.document_path),
+        raw_payload_sha256=sha256_bytes(raw_payload),
+    )
+
+
+def _backfill_document_metadata(
+    store: FixtureStore,
+    locators: Sequence[DocumentLocator],
+    failures: list[dict[str, str]],
+) -> int:
+    """Re-derive metadata rows for payloads recorded before the table existed.
+
+    A payload is a one-way digest, so the accession, path, MIME and source hash
+    of a document fetched by an older fill cannot be recovered from the payload
+    table alone -- the bytes have to be read back. That costs local I/O, so it
+    runs only for documents that have a payload but no metadata row, which makes
+    it self-limiting: a fully-recorded fixture pays nothing on a later fill.
+
+    The alternative, refusing a fill until the operator migrated the fixture
+    separately, would have made the common case (extend a fixture) fail for a
+    reason with no user-visible cause.
+    """
+    if not locators:
+        return 0
+    recovered: list[RawDocumentBlob] = []
+    forms: dict[str, str] = {}
+    for locator in locators:
+        key = locator.document_locator_key
+        try:
+            payload = store.get(key)
+        except FixtureStoreError as exc:
+            failures.append({"doc_id": key, "error": str(exc)})
+            continue
+        if payload is None:
+            failures.append(
+                {
+                    "doc_id": key,
+                    "error": "payload present in index but not stored",
+                }
+            )
+            continue
+        recovered.append(_document_blob(locator, payload))
+        if locator.form:
+            forms[key] = locator.form
+    if recovered:
+        store.put_documents(recovered, forms)
+    return len(recovered)
+
+
 def fill_fixture(
     *,
     paths: ProjectPaths,
@@ -153,17 +228,24 @@ def fill_fixture(
     fetcher = LiveArchiveFetcher(client)
     failures: list[dict[str, str]] = []
     staged: list[tuple[str, bytes]] = []
+    staged_meta: list[RawDocumentBlob] = []
+    staged_forms: dict[str, str] = {}
     already_present = 0
     newly_written = 0
 
     try:
         with FixtureStore(database) as store:
-            pending = []
+            pending: list[DocumentLocator] = []
+            to_backfill: list[DocumentLocator] = []
             for locator in unique:
-                if store.has(locator.document_locator_key):
+                key = locator.document_locator_key
+                if store.has(key):
                     already_present += 1
+                    if not store.has_document(key):
+                        to_backfill.append(locator)
                 else:
                     pending.append(locator)
+            backfilled = _backfill_document_metadata(store, to_backfill, failures)
 
             def fetch(locator: DocumentLocator) -> tuple[DocumentLocator, Any]:
                 return locator, fetcher.fetch(locator)
@@ -186,6 +268,11 @@ def fill_fixture(
                                 staged.append(
                                     (locator.document_locator_key, raw_payload)
                                 )
+                                staged_meta.append(_document_blob(locator, raw_payload))
+                                if locator.form:
+                                    staged_forms[locator.document_locator_key] = (
+                                        locator.form
+                                    )
                             else:
                                 failures.append(
                                     {
@@ -203,6 +290,9 @@ def fill_fixture(
                         if len(staged) >= _WRITE_BATCH_SIZE:
                             newly_written += store.put_many(staged)
                             staged.clear()
+                            store.put_documents(staged_meta, staged_forms)
+                            staged_meta.clear()
+                            staged_forms.clear()
                         try:
                             next_locator = next(iterator)
                         except StopIteration:
@@ -210,6 +300,10 @@ def fill_fixture(
                         active[pool.submit(fetch, next_locator)] = next_locator
             if staged:
                 newly_written += store.put_many(staged)
+                staged.clear()
+            store.put_documents(staged_meta, staged_forms)
+            staged_meta.clear()
+            staged_forms.clear()
             payload_count = store.count()
 
         prior: dict[str, Any] = {}
@@ -261,6 +355,7 @@ def fill_fixture(
         failed=len(failures),
         failures=tuple(failures),
         target_fingerprint=fingerprint,
+        backfilled_metadata=backfilled,
     )
 
 
