@@ -134,3 +134,35 @@ def test_table_year_patterns() -> None:
         PERIOD_SUBHEADING_RE.match("Three months ended December 31, 2024:") is not None
         or PERIOD_SUBHEADING_RE.match("Three months ended 2024:") is not None
     )
+
+
+def test_heal_date_fragments() -> None:
+    from edgar_sec.foundation.text.dates import heal_date_fragments
+
+    assert heal_date_fragments(["December", "31,", "2024"]) == ["December 31, 2024"]
+    assert heal_date_fragments(["Dec", "08,", "2024"]) == ["Dec 08, 2024"]
+
+
+def test_heal_date_fragments_idempotent() -> None:
+    from edgar_sec.foundation.text.dates import heal_date_fragments
+
+    once = heal_date_fragments(["December", "31,", "2024"])
+    twice = heal_date_fragments(once)
+    assert once == twice
+
+
+def test_heal_date_fragments_protects_non_dates() -> None:
+    from edgar_sec.foundation.text.dates import heal_date_fragments
+
+    lines = ["Revenue", "1000000", "Expenses", "500000"]
+    assert heal_date_fragments(lines) == lines
+
+
+def test_heal_date_fragments_preserves_prose_with_embedded_date() -> None:
+    from edgar_sec.foundation.text.dates import heal_date_fragments
+
+    lines = [
+        "[X] ANNUAL REPORT PURSUANT TO SECTION 13 OR 15(d)",
+        "For the fiscal year ended December 31, 2024",
+    ]
+    assert heal_date_fragments(lines) == lines

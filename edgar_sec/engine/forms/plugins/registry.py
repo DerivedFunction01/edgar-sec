@@ -15,6 +15,7 @@ from edgar_sec.domain.forms.schemas import (
     QUARTERLY_CHECKBOX_SCHEMA,
 )
 from edgar_sec.engine.forms.cover.models import BoundarySignal
+from edgar_sec.engine.forms.plugins.annual_rules import ANNUAL_PHRASE_RULES
 from edgar_sec.engine.forms.plugins.models import (
     GENERIC_FAMILY,
     Evaluator,
@@ -68,6 +69,7 @@ _PLUGINS: dict[str, FormPlugin] = {
         evaluator=_lazy_evaluator(
             "edgar_sec.engine.forms.evaluators.annual", "evaluate_annual"
         ),
+        healing_rules=tuple(ANNUAL_PHRASE_RULES),
     ),
     "20-F": FormPlugin(
         family="20-F",
@@ -77,6 +79,7 @@ _PLUGINS: dict[str, FormPlugin] = {
         evaluator=_lazy_evaluator(
             "edgar_sec.engine.forms.evaluators.annual", "evaluate_annual"
         ),
+        healing_rules=tuple(ANNUAL_PHRASE_RULES),
     ),
     "10-Q": FormPlugin(
         family="10-Q",

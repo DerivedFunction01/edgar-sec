@@ -15,6 +15,7 @@ from dataclasses import dataclass
 from edgar_sec.domain.forms.decisions import DecisionAction, EvaluatorDecision
 from edgar_sec.domain.forms.schemas import CoverCheckboxSchema
 from edgar_sec.engine.forms.cover.models import BoundarySignal
+from edgar_sec.foundation.text.healing import PhraseSequenceRule
 
 #: Family key used for forms with no modeled profile.
 GENERIC_FAMILY = "GENERIC"
@@ -38,6 +39,7 @@ class FormPlugin:
     enable_body_start: bool = True
     transform_content: ContentTransform | None = None
     evaluator: Evaluator | None = None
+    healing_rules: tuple[PhraseSequenceRule, ...] = ()
 
 
 __all__ = [

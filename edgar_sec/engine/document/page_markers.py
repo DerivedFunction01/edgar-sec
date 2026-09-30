@@ -100,6 +100,32 @@ class PageCandidate:
 
 
 @dataclass(frozen=True, slots=True)
+class PageNumberRun:
+    """One independently validated observed page-number run."""
+
+    family: str
+    namespace: str
+    candidates: tuple[PageCandidate, ...]
+    monotone_fraction: float
+    gap_mean: float
+    gap_median: float
+    alignment_fraction: float
+    source_start_line: int
+    source_end_line: int
+    strategy: str
+
+
+@dataclass(frozen=True, slots=True)
+class InferredBoundary:
+    """Metadata-only page boundary with no removable source span."""
+
+    line: float
+    page_number: int | None
+    namespace: str
+    reason: str
+
+
+@dataclass(frozen=True, slots=True)
 class PageMarkerDecision:
     """Decision action for one marker."""
 
@@ -127,6 +153,10 @@ class PageMarkerAnalysis:
     markers: tuple[PageMarker, ...]
     decisions: tuple[PageMarkerDecision, ...]
     unresolved_candidates: tuple[str, ...] = ()
+    rejection_diagnostics: tuple[str, ...] = ()
+    page_boundaries: tuple[int, ...] = ()
+    page_number_runs: tuple[PageNumberRun, ...] = ()
+    occupied_lines: tuple[int, ...] = ()
     representation: str = "ascii"
     source_text: str = ""
     terminal_state: PageMarkerTerminalState = PageMarkerTerminalState.NONE
@@ -369,13 +399,32 @@ def analyze_page_markers(
             )
         )
 
+    terminal_state = (
+        PageMarkerTerminalState.NONE
+        if all_markers
+        else PageMarkerTerminalState.NO_VISIBLE_LABELS
+    )
+    page_boundaries = tuple(
+        m.start_line for m in all_markers if m.start_line is not None
+    )
+    occupied_lines = tuple(
+        line
+        for m in all_markers
+        if m.start_line is not None
+        for line in range(m.start_line, m.end_line or (m.start_line + 1))
+    )
+
     return PageMarkerAnalysis(
         markers=tuple(all_markers),
         decisions=tuple(decisions),
         unresolved_candidates=(),
+        rejection_diagnostics=(),
+        page_boundaries=page_boundaries,
+        page_number_runs=(),
+        occupied_lines=occupied_lines,
         representation=representation,
         source_text=document,
-        terminal_state=PageMarkerTerminalState.NONE,
+        terminal_state=terminal_state,
     )
 
 
@@ -445,12 +494,13 @@ def apply_text_policy(
     policy: PageArtifactPolicy = PageArtifactPolicy.STRIP,
     *,
     first_id: int = 1,
+    representation: str = "ascii",
 ) -> tuple[
     str, PageMarkerAnalysis, tuple[PageBreakArtifact, ...], dict[str, dict], int
 ]:
     """Apply policy to text-frame page markers."""
     if analysis is None:
-        analysis = analyze_page_markers(text, representation="ascii")
+        analysis = analyze_page_markers(text, representation=representation)
 
     if policy == PageArtifactPolicy.PRESERVE:
         return text, analysis, (), {}, first_id
@@ -469,7 +519,90 @@ def apply_text_policy(
     return cleaned, analysis, tuple(artifacts), {}, first_id + len(artifacts)
 
 
+def apply_html_policy(
+    html: str,
+    analysis: PageMarkerAnalysis | None = None,
+    policy: PageArtifactPolicy = PageArtifactPolicy.STRIP,
+    *,
+    first_id: int = 1,
+    context: dict[str, Any] | None = None,
+    allow_letter_number: bool = True,
+) -> tuple[
+    str,
+    PageMarkerAnalysis,
+    tuple[PageBreakArtifact, ...],
+    dict[str, dict],
+    int,
+    tuple,
+]:
+    """Render fast HTML text and apply page-marker decisions."""
+    from edgar_sec.engine.document.html import normalize_html_document
+    from edgar_sec.engine.document.html_breaks import (
+        convert_sentinels_to_page_markers,
+        insert_page_sentinels,
+    )
+
+    if not html:
+        empty_analysis = PageMarkerAnalysis(
+            (),
+            (),
+            (),
+            representation="html",
+            source_text="",
+            terminal_state=PageMarkerTerminalState.NO_VISIBLE_LABELS,
+        )
+        return "", empty_analysis, (), {}, first_id, ()
+
+    break_html = insert_page_sentinels(html)
+    normalized = normalize_html_document(break_html)
+    text = convert_sentinels_to_page_markers(str(normalized))
+
+    if analysis is None or analysis.representation == "html":
+        analysis = analyze_page_markers(
+            text,
+            context=context,
+            representation="html",
+            allow_letter_number=allow_letter_number,
+        )
+
+    if policy == PageArtifactPolicy.PRESERVE:
+        return text, analysis, (), {}, first_id, normalized.table_geometries
+
+    cleaned = strip_page_markers(text, analysis)
+    artifacts: list[PageBreakArtifact] = [
+        PageBreakArtifact(
+            artifact_id=first_id + i,
+            kind=d.marker.kind,
+            template_id=d.reason,
+            attributes={"text": d.marker.text},
+        )
+        for i, d in enumerate(analysis.decisions)
+        if d.action == PageMarkerAction.REMOVE
+    ]
+    return (
+        cleaned,
+        analysis,
+        tuple(artifacts),
+        {},
+        first_id + len(artifacts),
+        normalized.table_geometries,
+    )
+
+
+def is_page_marker_line(line: str) -> bool:
+    """Return whether a line is a standalone firm marker or boundary token."""
+    stripped = line.strip()
+    if not stripped:
+        return False
+    return any(
+        pattern.match(stripped)
+        for kind, pattern in _PAGE_MARKER_PATTERNS
+        if kind != PageMarkerKind.LETTER_NUMBER
+    ) or bool(_RE_BOUNDARY.match(stripped))
+
+
 __all__ = [
+    "InferredBoundary",
     "PageArtifactPolicy",
     "PageBreakArtifact",
     "PageCandidate",
@@ -479,7 +612,10 @@ __all__ = [
     "PageMarkerDecision",
     "PageMarkerKind",
     "PageMarkerTerminalState",
+    "PageNumberRun",
     "analyze_page_markers",
+    "apply_html_policy",
     "apply_text_policy",
+    "is_page_marker_line",
     "strip_page_markers",
 ]

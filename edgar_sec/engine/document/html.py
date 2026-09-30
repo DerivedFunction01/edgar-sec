@@ -337,10 +337,33 @@ def normalize_html_document(
     if not html:
         return NormalizedHtmlText("", ())
 
+    metadata_cleanup = cleanup_tables is None
+    from edgar_sec.engine.tables.ascii_html import (
+        convert_html_tables_to_ascii_with_metadata,
+    )
+    from edgar_sec.engine.tables.false_tables import (
+        cleanup_false_tables_with_metadata,
+    )
+    from edgar_sec.engine.tables.hybrid import (
+        normalize_hybrid_pre_text,
+        restore_hybrid_pre_text,
+    )
+
     cleaned = clean_html_for_parsing(html)
-    rendered = cleanup_tables(cleaned) if cleanup_tables else cleaned
+    hybrid = normalize_hybrid_pre_text(cleaned)
+    rendered, geometries = convert_html_tables_to_ascii_with_metadata(
+        hybrid.text,
+        convert_to_text=False,
+        early_unwrap_false_tables=metadata_cleanup,
+    )
+    if metadata_cleanup:
+        rendered, geometries = cleanup_false_tables_with_metadata(rendered, geometries)
+    else:
+        rendered = cleanup_tables(rendered)
     normalized = decompose_html_structures(rendered)
-    return NormalizedHtmlText(normalized, ())
+    if hybrid.protected:
+        normalized = restore_hybrid_pre_text(normalized, hybrid.protected)
+    return NormalizedHtmlText(normalized, geometries)
 
 
 __all__ = [

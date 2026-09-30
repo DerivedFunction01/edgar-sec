@@ -36,6 +36,10 @@ from dataclasses import dataclass, replace
 from typing import Any
 
 from edgar_sec.engine.document.html import normalize_html_document
+from edgar_sec.engine.document.html_breaks import (
+    convert_sentinels_to_page_markers,
+    insert_page_sentinels,
+)
 from edgar_sec.engine.document.page_markers import (
     PageArtifactPolicy,
     PageMarkerAnalysis,
@@ -61,9 +65,15 @@ from edgar_sec.engine.forms.checkmarks.solver import (
 from edgar_sec.engine.forms.cover.body_start import find_body_start
 from edgar_sec.engine.forms.cover.boundary import find_cover_boundary
 from edgar_sec.engine.forms.cover.closing import ClosingSpan, find_closing_span
+from edgar_sec.engine.forms.cover.healing import heal_cover_text
 from edgar_sec.engine.forms.cover.models import (
     BodyStart,
     CoverBoundary,
+)
+from edgar_sec.engine.forms.cover.reflow import (
+    is_checkbox_answer_line,
+    is_cover_layout_line,
+    is_page_marker_line,
 )
 from edgar_sec.engine.forms.plugins.models import FormPlugin
 from edgar_sec.engine.forms.plugins.registry import get_plugin
@@ -166,13 +176,27 @@ def _unpack(
                 raw = extracted
         else:
             payload = raw
-    text = payload.decode("latin-1") if isinstance(payload, bytes) else payload
+    if isinstance(payload, bytes):
+        for enc in ("utf-8", "cp1252", "latin-1"):
+            try:
+                text = payload.decode(enc)
+                break
+            except UnicodeDecodeError:
+                continue
+        else:
+            text = payload.decode("latin-1", errors="replace")
+    else:
+        text = payload
     if not text:
         return "", _REPRESENTATION_ASCII
-    head = text[:2048].lower()
-    is_html = "<html" in head or "<!doctype html" in head or "<body" in head
-    if not is_html and "<table" in head:
-        is_html = True
+    head = text[:65536].lower()
+    lowered_filename = primary_filename.lower() if primary_filename else ""
+    is_html = (
+        lowered_filename.endswith((".htm", ".html", ".xhtml"))
+        or "<html" in head
+        or "<!doctype html" in head
+        or "<body" in head
+    )
     return text, (_REPRESENTATION_HTML if is_html else _REPRESENTATION_ASCII)
 
 
@@ -207,6 +231,9 @@ def _reflow_policy() -> ReflowPolicy:
         unwrap_pre_body_prose=True,
         relax_prose_layout_gaps=True,
         unwrap_bullet_continuations=True,
+        is_checkbox_answer_line=is_checkbox_answer_line,
+        is_page_boundary_line=is_page_marker_line,
+        is_structural_line=is_cover_layout_line,
     )
 
 
@@ -247,13 +274,23 @@ class DocumentNormalizer:
         tracer.record("unpacked", text, representation=representation)
 
         is_html = representation == _REPRESENTATION_HTML
+        table_geometries: tuple = ()
         if is_html:
-            text = tracer.record("html_cleaned", _html_clean(text))
-
-        text, page_analysis, _artifacts, _templates, _next_id = apply_text_policy(
-            text, None, page_artifact_policy
-        )
-        tracer.record("page_policy", text, marker_count=len(page_analysis.markers))
+            break_html = insert_page_sentinels(text)
+            normalized = normalize_html_document(break_html)
+            text = tracer.record(
+                "html_cleaned", convert_sentinels_to_page_markers(str(normalized))
+            )
+            table_geometries = normalized.table_geometries
+            text, page_analysis, _artifacts, _templates, _next_id = apply_text_policy(
+                text, None, page_artifact_policy, representation="html"
+            )
+            tracer.record("page_policy", text, marker_count=len(page_analysis.markers))
+        else:
+            text, page_analysis, _artifacts, _templates, _next_id = apply_text_policy(
+                text, None, page_artifact_policy, representation=representation
+            )
+            tracer.record("page_policy", text, marker_count=len(page_analysis.markers))
 
         boundary = find_cover_boundary(
             text,
@@ -269,7 +306,6 @@ class DocumentNormalizer:
         if pair_changed:
             tracer.record("after_yes_no_pairs", text)
 
-        table_geometries: tuple = ()
         checkmark_inference: CoverCheckmarkResult | None = None
         if self._plugin.cover_schema is not None:
             checkmark_inference = infer_cover_checkmarks(
@@ -292,6 +328,16 @@ class DocumentNormalizer:
         if self._plugin.transform_content is not None:
             text = self._plugin.transform_content(text)
             tracer.record("after_form_content", text)
+
+        healing_rules = getattr(self._plugin, "healing_rules", ())
+        text, cover_healed = heal_cover_text(
+            text,
+            boundary,
+            healing_rules=healing_rules,
+            reflow_prose=False,
+        )
+        if cover_healed:
+            tracer.record("after_cover_healing", text)
 
         text = tracer.record(
             "after_final_whitespace", normalize_final_text_whitespace(text)
@@ -337,13 +383,33 @@ class DocumentNormalizer:
             closing_span=closing_span,
             reflow=reflow_result,
             page_analysis=page_analysis,
-            table_geometries=table_geometries,
+            table_geometries=_serialize_table_geometries(table_geometries),
             checkmark_inference=checkmark_inference,
             family=self._plugin.family,
             stage_trace=tracer.trace,
             cover_boundary_detected_line=detected_end_line,
             cover_start_detected_line=detected_start_line,
         )
+
+
+def _serialize_table_geometries(
+    geometries: Any,
+) -> tuple[dict[str, Any], ...]:
+    serialized: list[dict[str, Any]] = []
+    for g in geometries:
+        if hasattr(g, "table_index"):
+            serialized.append(
+                {
+                    "table_index": g.table_index,
+                    "confidence": getattr(g, "confidence", 1.0),
+                    "diagnostics": list(getattr(g, "diagnostics", ())),
+                    "is_fallback_to_legacy": getattr(g, "is_fallback_to_legacy", False),
+                    "row_count": len(getattr(g, "rows", ())),
+                }
+            )
+        elif isinstance(g, dict):
+            serialized.append(g)
+    return tuple(serialized)
 
 
 def _effective_body_start_line(
