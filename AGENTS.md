@@ -11,6 +11,9 @@ for how code must be structured, bounded, and verified.
 The codebase follows a strict **acyclic downward-only layered architecture**:
 
 ```text
+Layer 5: apps/            edgar_sec.apps.viewer
+                           ├── read-only consumers of published artifacts
+                            │
 Layer 4: pipelines/       edgar_sec.pipelines.metadata_sync
                            ├── CLI, Operator, Planner, Worker, Merger, Augmentation
                             │
@@ -34,12 +37,26 @@ Layer 0: foundation/      edgar_sec.foundation
 ```
 
 ### Layer Dependency Rules (Enforced by AST Scanner)
-- **Pipelines (Layer 4)** may import from: `engine`, `infra`, `domain`, `foundation`.
-- **Engine (Layer 3)** may import from: `infra`, `domain`, `foundation`. Never `pipelines`.
-- **Infra (Layer 2)** may import from: `domain`, `foundation`. Never `engine` or `pipelines`.
-- **Domain (Layer 1)** may import from: `foundation`. Never `infra`, `engine`, or `pipelines`.
+- **Apps (Layer 5)** may import from: `pipelines`, `engine`, `infra`, `domain`, `foundation`.
+- **Pipelines (Layer 4)** may import from: `engine`, `infra`, `domain`, `foundation`. Never `apps`.
+- **Engine (Layer 3)** may import from: `infra`, `domain`, `foundation`. Never `pipelines` or `apps`.
+- **Infra (Layer 2)** may import from: `domain`, `foundation`. Never `engine`, `pipelines`, or `apps`.
+- **Domain (Layer 1)** may import from: `foundation`. Never `infra`, `engine`, `pipelines`, or `apps`.
 - **Foundation (Layer 0)** has **zero** internal dependencies on upper layers.
 - The `layer-boundary` scanner automatically validates this graph in `check.py`.
+
+> [!NOTE]
+> **What `apps/` is, and what the layer does not buy.** An app is a
+> read-only, operator-facing consumer of published artifacts — it browses and
+> queries what a pipeline already published, and it never fetches, transforms,
+> or publishes anything. The one invariant this layer adds over Layer 4 is the
+> clause above: **nothing below `apps/` may import it**, so a batch pipeline can
+> never take a dependency on an application. Beyond that clause an app has the
+> same read access a pipeline has. Treat it as an organizational boundary first;
+> do not cite it as a safety boundary it does not provide.
+> It is deliberately *not* a batch layer. An app has no chunks, no plan, no
+> worker, and no resumability, and it is exempt from none of §4's pipeline
+> contracts because it is not subject to them.
 
 ### Package Import & Export Contract (No Shims, No Barrel Re-exports)
 1. **Zero Backward-Compatibility Shims**:

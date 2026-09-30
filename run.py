@@ -1,4 +1,10 @@
-"""Root interactive launcher and CLI dispatcher for edgar_sec pipelines."""
+"""Root interactive launcher and CLI dispatcher for edgar_sec.
+
+Dispatches into two kinds of entry: the Layer 4 pipelines that do the work, and
+the Layer 5 apps that only read what a pipeline published. The entry is named
+``LauncherEntry`` rather than ``PipelineEntry`` because it holds both; v1 used
+the same name.
+"""
 
 from __future__ import annotations
 
@@ -7,39 +13,45 @@ from dataclasses import dataclass
 
 
 @dataclass(frozen=True)
-class PipelineEntry:
+class LauncherEntry:
     id: str
     label: str
     description: str
     module: str
 
 
-ENTRIES: tuple[PipelineEntry, ...] = (
-    PipelineEntry(
+ENTRIES: tuple[LauncherEntry, ...] = (
+    LauncherEntry(
         id="metadata",
         label="Metadata Sync (Phase 01)",
         description="SEC submissions metadata extraction and partition sync",
         module="edgar_sec.pipelines.metadata_sync.operator",
     ),
-    PipelineEntry(
+    LauncherEntry(
         id="filing-catalog",
         label="Filing Catalog (Phase 02)",
         description="Offline DuckDB catalog materialization and target planning",
         module="edgar_sec.pipelines.filing_catalog.operator",
     ),
-    PipelineEntry(
+    LauncherEntry(
         id="documents",
         label="Document Storage (Phase 2.5)",
         description="Document acquisition, normalization, snapshots, and review",
         module="edgar_sec.pipelines.document_storage.cli",
     ),
+    LauncherEntry(
+        id="viewer",
+        label="Dataset Viewer",
+        description="Read-only browser and SQL console over published artifacts",
+        module="edgar_sec.apps.viewer.cli",
+    ),
 )
 
 
 def _menu() -> int:
-    print("\n========================================")
-    print("   EDGAR SEC Pipeline Launcher (v2)     ")
-    print("========================================")
+    print("\n==========================================")
+    print("   EDGAR SEC Launcher (v2)                ")
+    print("==========================================")
     while True:
         for idx, entry in enumerate(ENTRIES, start=1):
             print(f"  {idx}. {entry.label} - {entry.description}")

@@ -1,0 +1,491 @@
+"""Bounded, read-only DuckDB access to one browsed dataset.
+
+Every query here is shaped by a constraint the caller does not control. The
+column name in a sort, the filter operator, and the search term all arrive from
+a browser, so each is either checked against the dataset's own schema or passed
+as a bound parameter. Nothing from the request is interpolated into SQL except a
+column name, and a column name is only ever interpolated **after** being matched
+against the columns DuckDB actually reported.
+
+Two invariants are worth stating because they are what make "read-only" and
+"bounded" true rather than aspirational:
+
+**No artifact is ever opened as a database.** The connection is in-memory and
+every artifact is bound as a *table-function argument* (``read_parquet([...])``).
+Opening a file as a DuckDB database would take locks on it and could write; a
+table function only reads. This is stronger than an ``access_mode='read_only'``
+flag, because there is no write path to flag off.
+
+**"Is there more?" is answered by fetching one extra row**, not by a COUNT. A
+COUNT over a large snapshot is a full scan; the caller is asking a cursor
+question, and ``LIMIT limit + 1`` answers it for the price of the page.
+"""
+
+from __future__ import annotations
+
+from dataclasses import dataclass
+from pathlib import Path
+
+from edgar_sec.apps.viewer.model import DatasetError
+from edgar_sec.apps.viewer.session import (
+    DEFAULT_QUERY_TIMEOUT_S,
+)
+from edgar_sec.apps.viewer.session import (
+    execute_bounded as _execute,
+)
+from edgar_sec.apps.viewer.session import (
+    open_connection as _open,
+)
+from edgar_sec.foundation.serialization import json_safe
+
+__all__ = [
+    "MAX_BLOB_PREVIEW",
+    "MAX_LIMIT",
+    "DatasetError",
+    "DatasetRef",
+    "dataset_blob",
+    "dataset_column_stats",
+    "dataset_rows",
+    "dataset_schema",
+]
+
+MAX_LIMIT = 1000
+MIN_LIMIT = 1
+DEFAULT_LIMIT = 200
+MAX_SEARCH_COLUMNS = 64
+
+# DuckDB's zstd frame magic. A payload that starts with it is compressed; the
+# viewer never guesses otherwise, because a coincidental match would corrupt the
+# output rather than merely mislabel it.
+_ZSTD_MAGIC = b"\x28\xb5\x2f\xfd"
+_INLINE_BLOB_LIMIT = 128
+MAX_BLOB_PREVIEW = 500
+
+_ROWS_CTE = "__viewer_page"
+
+_ORDER_OPS = frozenset({"gt", "ge", "lt", "le"})
+_TEXT_OPS = frozenset({"contains", "not_contains"})
+_COMPARISON_OPS = frozenset({"eq", "ne", "gt", "ge", "lt", "le"})
+_NULL_OPS = frozenset({"empty", "not_empty"})
+_ALL_OPS = _ORDER_OPS | _TEXT_OPS | _COMPARISON_OPS | _NULL_OPS
+
+# DuckDB types where a range comparison is meaningful. A range operator on a
+# VARCHAR compares lexicographically, which is almost never what an operator
+# clicking "greater than" on a name column meant, so it is refused rather than
+# silently answering a different question.
+_ORDERABLE_TYPE_PREFIXES = (
+    "DECIMAL",
+    "DOUBLE",
+    "FLOAT",
+    "REAL",
+    "NUMERIC",
+    "DATE",
+    "TIME",
+    "TIMESTAMP",
+    "INTERVAL",
+)
+
+
+def _quote_ident(name: str) -> str:
+    return '"' + name.replace('"', '""') + '"'
+
+
+def _quote_path(path: Path) -> str:
+    return "'" + str(path).replace("'", "''") + "'"
+
+
+@dataclass(frozen=True)
+class DatasetRef:
+    """One browsed dataset: its resolved part list and how to read it.
+
+    ``paths`` is the whole definition of the relation. A dataset is never
+    reassembled into a single file first — DuckDB reads the list directly, so a
+    snapshot with 37 parts costs no more than a copy step would and no extra
+    disk.
+    """
+
+    dataset_id: str
+    paths: tuple[Path, ...]
+    fmt: str = "parquet"
+    table: str | None = None
+
+    def __post_init__(self) -> None:
+        if not self.paths:
+            raise DatasetError("dataset must have at least one part")
+        if any(not path.is_file() for path in self.paths):
+            missing = next(path for path in self.paths if not path.is_file())
+            raise DatasetError(f"dataset part is absent: {missing}")
+
+    @property
+    def first(self) -> Path:
+        return self.paths[0]
+
+    @property
+    def reader_expression(self) -> str:
+        """A DuckDB relation over every part, with server-bound paths only."""
+        if self.fmt == "parquet":
+            listed = ", ".join(_quote_path(path) for path in self.paths)
+            if len(self.paths) == 1:
+                return f"read_parquet({listed})"
+            return f"read_parquet([{listed}], union_by_name=true)"
+        if self.fmt == "sqlite":
+            if not self.table:
+                raise DatasetError("a SQLite dataset must name a table")
+            return f"sqlite_scan({_quote_path(self.first)}, {_quote_path(Path(self.table))})"
+        raise DatasetError(f"unsupported dataset format: {self.fmt}")
+
+
+def _error(ref: DatasetRef, exc: Exception) -> DatasetError:
+    if "INTERRUPT" in str(exc).upper():
+        return DatasetError("query exceeded its time budget and was interrupted")
+    return DatasetError(f"cannot read {ref.first.name}: {exc}")
+
+
+def dataset_schema(
+    ref: DatasetRef, timeout_s: float = DEFAULT_QUERY_TIMEOUT_S
+) -> list[dict]:
+    """Column names, DuckDB types, null counts, and approximate distinct counts.
+
+    The null and distinct counts are computed in the same pass as the row total
+    rather than in separate queries: DuckDB scans the relation once for the
+    combined aggregate, and three scans of a large snapshot is three times the
+    I/O for one answer.
+    """
+    conn = _open()
+    try:
+        described = _execute(
+            conn, f"DESCRIBE SELECT * FROM {ref.reader_expression}", [], timeout_s
+        ).fetchall()
+        names = [str(row[0]) for row in described]
+        types = [str(row[1]) for row in described]
+        if not names:
+            return []
+        aggregates = ", ".join(
+            f"COUNT({_quote_ident(name)}) AS {_quote_ident('non_null_' + name)}, "
+            f"APPROX_COUNT_DISTINCT({_quote_ident(name)}) AS "
+            f"{_quote_ident('distinct_' + name)}"
+            for name in names
+        )
+        totals = _execute(
+            conn,
+            f"SELECT COUNT(*), {aggregates} FROM {ref.reader_expression}",
+            [],
+            timeout_s,
+        ).fetchone()
+        rows_total = int(totals[0])
+        return [
+            {
+                "name": name,
+                "duckdb_type": types[index],
+                "null_count": rows_total - int(totals[1 + index * 2]),
+                "approx_distinct": int(totals[2 + index * 2]),
+            }
+            for index, name in enumerate(names)
+        ]
+    except Exception as exc:
+        raise _error(ref, exc) from exc
+    finally:
+        conn.close()
+
+
+def dataset_rows(
+    ref: DatasetRef,
+    *,
+    offset: int = 0,
+    limit: int = DEFAULT_LIMIT,
+    sort: str | None = None,
+    direction: str = "asc",
+    filters: list[dict] | None = None,
+    search: str | None = None,
+    search_columns: list[str] | None = None,
+    include_total: bool | None = None,
+    timeout_s: float = DEFAULT_QUERY_TIMEOUT_S,
+) -> dict:
+    """One bounded page of rows, with cursor information.
+
+    ``has_more`` comes from fetching ``limit + 1`` rows, never from a COUNT, so
+    paging forward never costs more than the page itself. ``total_rows`` is
+    optional and defaults to off for a filtered page, where it would mean
+    counting the whole dataset to answer a question the cursor already answered.
+    """
+    if not MIN_LIMIT <= limit <= MAX_LIMIT:
+        raise DatasetError(f"limit must be between {MIN_LIMIT} and {MAX_LIMIT}")
+    if offset < 0:
+        raise DatasetError("offset must be >= 0")
+    if direction not in {"asc", "desc"}:
+        raise DatasetError("direction must be 'asc' or 'desc'")
+
+    columns = dataset_schema(ref, timeout_s)
+    by_name = {column["name"]: column for column in columns}
+
+    if sort is not None and sort not in by_name:
+        raise DatasetError(f"unknown sort column: {sort!r}")
+
+    params: list = []
+    # Search clauses are OR-composed with each other, then the whole search is
+    # AND-composed with the filters. Keeping them in one list would make a
+    # two-column search require every column to match, which returns nothing.
+    search_clauses: list[str] = []
+    filter_clauses: list[str] = []
+
+    if search:
+        targets = search_columns or list(by_name)
+        if len(targets) > MAX_SEARCH_COLUMNS:
+            raise DatasetError("too many search columns")
+        unknown = [name for name in targets if name not in by_name]
+        if unknown:
+            raise DatasetError(f"unknown search columns: {unknown}")
+        # CAST because ILIKE on a non-VARCHAR column is a type error in DuckDB,
+        # and a heterogeneous struct column would otherwise fail the whole page
+        # rather than the one cell that does not match.
+        pattern = f"%{search}%"
+        for name in targets:
+            search_clauses.append(f"CAST({_quote_ident(name)} AS VARCHAR) ILIKE ?")
+            params.append(pattern)
+
+    for item in filters or []:
+        filter_clauses.append(_filter_clause(item, by_name, params))
+
+    # A search is one OR-group; the filters are one AND-group; the two groups
+    # are AND-ed together. Composing all clauses in a single list is what made a
+    # two-column search require every column to match.
+    groups: list[str] = []
+    if search_clauses:
+        groups.append(" OR ".join(search_clauses))
+    if filter_clauses:
+        groups.append(" AND ".join(filter_clauses))
+    where_clause = f" WHERE {' AND '.join(groups)}" if groups else ""
+    order_clause = f" ORDER BY {_quote_ident(sort)} {direction.upper()}" if sort else ""
+
+    conn = _open()
+    try:
+        page_sql = (
+            f"SELECT * FROM (SELECT * FROM {ref.reader_expression}{where_clause}"
+            f"{order_clause}) {_ROWS_CTE} LIMIT ? OFFSET ?"
+        )
+        result = _execute(conn, page_sql, [*params, limit + 1, offset], timeout_s)
+        records = result.arrow().read_all().to_pylist()
+        has_more = len(records) > limit
+        items = [_render_row(record) for record in records[:limit]]
+
+        if include_total is None:
+            include_total = ref.fmt == "parquet" and not filters and not search
+        total_rows = None
+        if include_total:
+            total_rows = int(
+                _execute(
+                    conn,
+                    f"SELECT COUNT(*) FROM (SELECT * FROM {ref.reader_expression}"
+                    f"{where_clause}) {_ROWS_CTE}",
+                    params,
+                    timeout_s,
+                ).fetchone()[0]
+            )
+
+        return {
+            "items": items,
+            "has_more": has_more,
+            "next_cursor": offset + limit if has_more else None,
+            "total_rows": total_rows,
+            "truncated": False,
+        }
+    except DatasetError:
+        raise
+    except Exception as exc:
+        raise _error(ref, exc) from exc
+    finally:
+        conn.close()
+
+
+def _filter_clause(item: dict, by_name: dict, params: list) -> str:
+    """Build one ``AND``-composed filter clause.
+
+    Every failure mode here is a request the dataset cannot answer rather than a
+    server error: an unknown column, an unknown operator, or a range operator
+    on a column where a range is meaningless. Each is refused by name so the
+    operator can see which part of the request was wrong.
+    """
+    if not isinstance(item, dict):
+        raise DatasetError("each filter must be an object")
+    name = item.get("column")
+    op = item.get("op")
+    if not isinstance(name, str) or name not in by_name:
+        raise DatasetError(f"unknown filter column: {name!r}")
+    if not isinstance(op, str) or op not in _ALL_OPS:
+        raise DatasetError(f"unknown filter operator: {op!r}")
+
+    duckdb_type = by_name[name]["duckdb_type"].upper()
+    orderable = "INT" in duckdb_type or duckdb_type.startswith(_ORDERABLE_TYPE_PREFIXES)
+    if op in _ORDER_OPS and not orderable:
+        raise DatasetError(f"operator {op!r} is invalid for column {name!r}")
+
+    ident = _quote_ident(name)
+    if op == "empty":
+        return f"({ident} IS NULL OR CAST({ident} AS VARCHAR) = '')"
+    if op == "not_empty":
+        return f"({ident} IS NOT NULL AND CAST({ident} AS VARCHAR) <> '')"
+    if op in _TEXT_OPS:
+        keyword = "NOT " if op == "not_contains" else ""
+        clauses = [f"CAST({ident} AS VARCHAR) {keyword}ILIKE ?"]
+        params.append(f"%{item.get('value', '')}%")
+        return " OR ".join(clauses)
+    sql_op = {
+        "eq": "=",
+        "ne": "<>",
+        "gt": ">",
+        "ge": ">=",
+        "lt": "<",
+        "le": "<=",
+    }[op]
+    params.append(item.get("value"))
+    return f"{ident} {sql_op} ?"
+
+
+def _render_row(record: dict) -> dict:
+    """Convert one Arrow row to a JSON-safe mapping.
+
+    A bytes value becomes a *marker* rather than the bytes themselves. The
+    document payload parts hold whole filings; inlining them into a table page
+    would mean base64-encoding megabytes per cell. The marker tells the client
+    the cell exists and how big it is, and the client asks for the content
+    separately. Short byte values are inlined, since a marker for a two-byte
+    value is more bytes than the value.
+    """
+    rendered: dict = {}
+    for key, value in record.items():
+        if isinstance(value, bytes) and (
+            len(value) > _INLINE_BLOB_LIMIT or value.startswith(_ZSTD_MAGIC)
+        ):
+            rendered[key] = {
+                "__blob__": True,
+                "size_bytes": len(value),
+                "is_compressed": value.startswith(_ZSTD_MAGIC),
+            }
+        else:
+            rendered[key] = json_safe(value)
+    return rendered
+
+
+def dataset_column_stats(
+    ref: DatasetRef, top_k: int = 5, timeout_s: float = DEFAULT_QUERY_TIMEOUT_S
+) -> list[dict]:
+    """Per-column stats, with top values for low-cardinality string columns.
+
+    The distinct-count threshold is what keeps this cheap: a high-cardinality
+    column would otherwise be grouped in full just to show the top five, and on
+    a document id that is a sort of the entire column.
+    """
+    columns = dataset_schema(ref, timeout_s)
+    conn = _open()
+    try:
+        for column in columns:
+            column["top_values"] = []
+            if not column["duckdb_type"].upper().startswith("VARCHAR"):
+                continue
+            if not 0 < column["approx_distinct"] <= 20:
+                continue
+            values = _execute(
+                conn,
+                f"SELECT {_quote_ident(column['name'])} AS value, COUNT(*) AS n "
+                f"FROM {ref.reader_expression} "
+                f"WHERE {_quote_ident(column['name'])} IS NOT NULL "
+                f"GROUP BY 1 ORDER BY n DESC, value LIMIT ?",
+                [top_k],
+                timeout_s,
+            ).fetchall()
+            column["top_values"] = [
+                {"value": json_safe(value), "count": int(count)}
+                for value, count in values
+            ]
+        return columns
+    except Exception as exc:
+        raise _error(ref, exc) from exc
+    finally:
+        conn.close()
+
+
+def dataset_blob(
+    ref: DatasetRef,
+    *,
+    column: str,
+    pk_col: str | None = None,
+    pk_val: object | None = None,
+    row_index: int | None = None,
+    timeout_s: float = DEFAULT_QUERY_TIMEOUT_S,
+) -> dict:
+    """Fetch and decompress one BLOB cell, addressed by key or by row index.
+
+    The document payload parts store a filing's bytes in a zstd frame, so
+    decompressing is the normal path rather than a special case. Decompression
+    happens here and the result is capped: a 20 MB filing returned in full is a
+    response nobody can use, and the client already renders a truncated preview.
+    """
+    if not (pk_col and pk_val is not None) and row_index is None:
+        raise DatasetError("either (pk_col, pk_val) or row_index must be provided")
+    if row_index is not None and row_index < 0:
+        raise DatasetError("row_index must be >= 0")
+
+    conn = _open()
+    try:
+        ident = _quote_ident(column)
+        if pk_col and pk_val is not None:
+            sql = (
+                f"SELECT {ident} FROM {ref.reader_expression} "
+                f"WHERE {_quote_ident(pk_col)} = ? LIMIT 1"
+            )
+            row = _execute(conn, sql, [pk_val], timeout_s).fetchone()
+        else:
+            sql = f"SELECT {ident} FROM {ref.reader_expression} LIMIT 1 OFFSET ?"
+            row = _execute(conn, sql, [row_index], timeout_s).fetchone()
+
+        if not row or row[0] is None:
+            raise DatasetError(f"no blob at {column!r} for the given locator")
+
+        raw = bytes(row[0])
+        compressed = raw.startswith(_ZSTD_MAGIC)
+        if compressed:
+            from edgar_sec.infra.storage.payload_store import decompress_payload
+
+            try:
+                expanded = decompress_payload(raw)
+            except Exception as exc:
+                raise DatasetError(f"blob could not be decompressed: {exc}") from exc
+        else:
+            expanded = raw
+
+        text: str | None
+        try:
+            text = expanded.decode("utf-8")
+        except UnicodeDecodeError:
+            text = None
+
+        return {
+            "column": column,
+            "is_compressed": compressed,
+            "compressed_bytes": len(raw),
+            "decompressed_bytes": len(expanded),
+            "compression_ratio": round(len(expanded) / len(raw), 2) if raw else 1.0,
+            "mime_type": _sniff_mime(text),
+            "text": text,
+            "preview": text[:MAX_BLOB_PREVIEW] if text else None,
+        }
+    except DatasetError:
+        raise
+    except Exception as exc:
+        raise _error(ref, exc) from exc
+    finally:
+        conn.close()
+
+
+def _sniff_mime(text: str | None) -> str:
+    if not text:
+        return "application/octet-stream"
+    stripped = text.lstrip()
+    lowered = stripped[:9].lower()
+    if lowered.startswith(("<!doctype", "<html")):
+        return "text/html"
+    if stripped[0] in "{[":
+        return "application/json"
+    if stripped[0] in "#`|":
+        return "text/markdown"
+    return "text/plain"

@@ -12,6 +12,8 @@ and never from the layers above. This is not a convention — the
 gate on a violation.
 
 ```text
+Layer 5  apps/          read-only, operator-facing consumers of published artifacts
+           │            may read every layer below; nothing may import it
 Layer 4  pipelines/    orchestration: CLI, operator, planner, worker, merger
            │            the only layer permitted to sequence the others
 Layer 3  engine/       pure transformation: parsing, normalization, solving
@@ -56,6 +58,8 @@ Layer 0  foundation/   runtime, memory, hashing, settings, policy scanners
 | 3 | [`engine/selection/`](engine/selection/README.md) | Phase 2 target-plan selection: features, policy, selector, source |
 | 3 | [`engine/company_family/`](engine/company_family/README.md) | name normalization and family clustering |
 | 3 | [`engine/submissions/`](engine/submissions/README.md) | submission unrolling, profiling, building |
+| 5 | [`apps/`](apps/README.md) | layer root; read-only operator-facing consumers of published artifacts |
+| 5 | [`apps/viewer/`](apps/viewer/README.md) | the dataset viewer: manifest-driven discovery, paged DuckDB reads, a guarded read-only SQL console |
 | 4 | [`pipelines/`](pipelines/README.md) | layer root; orchestration |
 | 4 | [`pipelines/metadata_sync/`](pipelines/metadata_sync/README.md) | **Phase 1, complete.** Submissions metadata ingest, chunked and resumable |
 | 4 | [`pipelines/filing_catalog/`](pipelines/filing_catalog/README.md) | **Phase 2, complete.** Zero-network catalog materialisation and target planning |
@@ -68,6 +72,10 @@ Layer 0  foundation/   runtime, memory, hashing, settings, policy scanners
   This keeps heavy dependencies lazy and symbol ownership explicit.
 - **No backward-compatibility shims.** When a component moves, call sites move with
   it. The `legacy-shims` scanner enforces this.
+- **Apps are not batch pipelines.** An app has no chunks, no plan, no worker,
+  and no resumability, so §4's pipeline contracts do not bind it. The
+  `layer-boundary` scanner enforces exactly one clause for it: nothing below
+  `apps/` may import it.
 - **No direct `os.environ` access** outside `edgar_sec.foundation.runtime.env`.
   The `environment-access` scanner enforces this.
 - **No hardcoded thread counts or memory limits** outside the resource helpers.

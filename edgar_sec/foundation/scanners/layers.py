@@ -1,4 +1,16 @@
-"""AST Scanner enforcing acyclic downward-only layer dependencies."""
+"""AST Scanner enforcing acyclic downward-only layer dependencies.
+
+The layer table is the whole rule. ``_check_import`` compares ranks and nothing
+else, so a new layer costs one entry here plus a documented clause in
+AGENTS.md -- no new scanner and no new clause in this module.
+
+Adding a layer is not free of consequences, and the one that matters is
+asymmetry: the new layer may import everything below it, but nothing below may
+import it. ``apps`` (rank 5) buys exactly that clause -- a batch pipeline cannot
+depend on an operator-facing application. It does **not** buy apps any
+restriction the rank below did not already have, so it is an organizational
+boundary first and a safety boundary second.
+"""
 
 from __future__ import annotations
 
@@ -14,6 +26,7 @@ _LAYER_RANK = {
     "infra": 2,
     "engine": 3,
     "pipelines": 4,
+    "apps": 5,
 }
 
 

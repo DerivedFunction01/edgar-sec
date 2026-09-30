@@ -1,0 +1,28 @@
+.u-truncate {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.u-mono {
+	font-family: "JetBrains Mono", "SF Mono", Menlo, Consolas, monospace;
+}
+
+.u-spacer {
+	flex: 1;
+}
+
+.u-row {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+}
+
+.u-muted {
+	color: var(--theme-content-tertiary);
+}
+
+.u-scroll-y {
+	overflow-y: auto;
+	min-height: 0;
+}

@@ -33,7 +33,7 @@ driver, which is precisely the leak §1.4 exists to stop. They now live in
 
 | 8-layer proposal | 5-layer contract | Rationale |
 | :--- | :--- | :--- |
-| `apps/` | root `run.py` launcher | A launcher, not a package. It dispatches by registry entry and imports no pipeline internals. |
+| `apps/` | Layer 5: read-only consumers of published artifacts | **Re-opened and adopted.** This row originally read *"A launcher, not a package. It dispatches by registry entry and imports no pipeline internals."* The dataset viewer falsified that premise: it resolves published snapshots by reading pipeline manifests, so it imports pipeline internals by design. Adopted at rank 5, above `pipelines/`. The one clause it adds is that nothing below `apps/` may import it. The root `run.py` launcher remains a launcher, not a package, and is not this layer. |
 | `pipelines/` | `pipelines/` (Layer 4) | Unchanged. |
 | `engine/` | `engine/` (Layer 3) | Unchanged; additionally owns `engine/forms/` (below). |
 | `forms/` | `engine/forms/` | Form plugins are *transformations* over a document representation, so they belong with the other engines rather than in a tier that can reach `infra`. |
@@ -85,7 +85,7 @@ To prevent designing against nonexistent abstractions or mischaracterizing exist
 | **Phase 01** | `phases/01_metadata_extraction/` | **Submissions Metadata Extraction** (`README.md`): Fetches SEC `data.sec.gov/submissions` feed via thread pool. Normalizes historical + recent filings into one row per CIK in `submission_metadata.parquet`. Owns CIK source registry, listing snapshots, and augmentation delta planning. |
 | **Phase 02** | `phases/02_filing_extraction/` | **Filing Catalog & Planning** (`README.md`): **Zero network calls**. Materializes nested filing observations from Phase 01 Parquet into form-partitioned catalogs using DuckDB staging. Generates immutable target plans (`deterministic` or `policy-driven`) for Phase 2.5. |
 | **Phase 2.5** | `phases/025_webpage_storage/` | **Webpage Storage & Normalized Snapshots** (`README.md`): Consumes Phase 02 target plans. Fetches raw HTML/SGML/iXBRL documents via managed `SecBroker` (production) or offline SQLite CAS (fixture). Runs `DocumentPreprocessor` and `DocumentNormalizer`. Persists isolated SQLite chunks and publishes versioned snapshot Parquets. |
-| **Shared Infra** | `defs/` | **Reusable Infrastructure** (`README.md`):<br>• `sec_http/`: Managed Unix-socket `SecBroker` (aggregate adaptive limiter, SQLite response cache, failure ledger).<br>• `sec_documents/`: `DocumentPreprocessor`, `DocumentRepresentation`, SGML multi-document unpacker.<br>• `sec_forms/`: Form evaluators (`AnnualEvaluator`, `QuarterlyEvaluator`, `CurrentReportEvaluator`), normalization pipelines, and cover page matchers.<br>• `storage/`: PyArrow dataset partitioning, SQLite chunk backends, atomic publication.<br>• `sql/`: Typed SQL AST compiler and `SqlExecutor`.<br>• `text/`: Syntax, structure, Aho-Corasick automaton, compounds, HTML parser, and table-protecting ASCII reflow.<br>• `tables/` & `taxonomy/`: Geometry-first table detection and financial table taxonomy classification.<br>• `runtime/`: Dotted settings registry, paths, env resolution, progress adapters.<br>• `viewer/`: Read-only dataset browser and DuckDB query UI. |
+| **Shared Infra** | `defs/` | **Reusable Infrastructure** (`README.md`):<br>• `sec_http/`: Managed Unix-socket `SecBroker` (aggregate adaptive limiter, SQLite response cache, failure ledger).<br>• `sec_documents/`: `DocumentPreprocessor`, `DocumentRepresentation`, SGML multi-document unpacker.<br>• `sec_forms/`: Form evaluators (`AnnualEvaluator`, `QuarterlyEvaluator`, `CurrentReportEvaluator`), normalization pipelines, and cover page matchers.<br>• `storage/`: PyArrow dataset partitioning, SQLite chunk backends, atomic publication.<br>• `sql/`: Typed SQL AST compiler and `SqlExecutor`.<br>• `text/`: Syntax, structure, Aho-Corasick automaton, compounds, HTML parser, and table-protecting ASCII reflow.<br>• `tables/` & `taxonomy/`: Geometry-first table detection and financial table taxonomy classification.<br>• `runtime/`: Dotted settings registry, paths, env resolution, progress adapters.<br>• `viewer/`: Read-only dataset browser and DuckDB query UI. → **now Layer 5**, `edgar_sec/apps/viewer/`. |
 
 ---
 
@@ -332,8 +332,8 @@ edgar_sec/ (or repository root)
     ├── scripts/migrate_submission_metadata_snapshot.py # Obsolete one-off submission metadata migration
     ├── phases/025/.../tools/chunk_document_reviews.py  # Dead code (20-line review splitter with 0 callers)
     ├── phases/025/.../tools/dump_document_review_set.py# Hardcoded /tmp dumper; superseded by testing/goldens/review.py
-    ├── phases/025/.../tools/dump_documents.py          # Ad-hoc blob dumper; superseded by viewer & export CLI
-    └── phases/025/.../tools/query_document_corpus.py   # Ad-hoc grep; superseded by DuckDB and defs/viewer
+    ├── phases/025/.../tools/dump_documents.py          # Ad-hoc blob dumper; superseded by the Phase 2.5 export CLI
+    └── phases/025/.../tools/query_document_corpus.py   # Ad-hoc grep; superseded by DuckDB and edgar_sec/apps/viewer
 ```
 
 ---
@@ -379,7 +379,7 @@ edgar_sec/ (or repository root)
 
 #### Tier 4: Deprecations & Clean Purge
 - **Legacy Migrations**: `migrate_http_cache_json_ttl.py` and `migrate_submission_metadata_snapshot.py` were temporary one-off scripts created during early schema transitions. They have no place in production v2 and will be safely deleted.
-- **Ad-Hoc One-Offs**: `chunk_document_reviews.py` (which just chopped a JSONL file into 20-line chunks for manual review), `dump_document_review_set.py` (which dumped text files to `/tmp/`), and `dump_documents.py` have zero callers in the repository and are completely superseded by `testing/goldens/review.py` and the local dataset viewer (`defs/viewer/`).
+- **Ad-Hoc One-Offs**: `chunk_document_reviews.py` (which just chopped a JSONL file into 20-line chunks for manual review), `dump_document_review_set.py` (which dumped text files to `/tmp/`), and `dump_documents.py` have zero callers in the repository and are completely superseded by `review.py` and the local dataset viewer (`edgar_sec/apps/viewer/`).
 
 ---
 
@@ -418,7 +418,10 @@ graph TD
 
 > [!NOTE]
 > Reconciled to the **5-layer contract** per §0. `documents/`, `forms/`, and
-> `apps/` appear below as *planned packages under existing layers*, not as
+> `apps/` is now a real layer, not a planned package. `viewer/` landed at
+> `edgar_sec/apps/viewer/` (Layer 5) with its own README, mirrored tests, and a
+> registered `run.py` entry. The entries that remain below appear as *planned
+> packages under existing layers*, not as
 > layers. **Built** marks what exists in the tree today; **pending** marks what
 > Phase 2.5+ introduces.
 
@@ -1248,7 +1251,7 @@ have opposite remedies, so adjudication is a human decision. Full evidence in
 | 5 | `:75,88,102,160,945,990` — "4 RPS" token bucket | v1 `defs/sec_http/rate_limit.py:8` **and** v2 `foundation/runtime/settings/sec.py:17` both default to **8.0**. A third figure, "10 RPS", appears at `:535`. The error is inherited from v1 prose, not v2 code | doc stale (3-way) |
 | 6 | §1.5 Tier 3 — `monitor_progress.py` → `tools/ops/monitor.py`, two scripts → `pipelines.document_storage.cli vacuum` | no `tools/` dir, no `pipelines/document_storage/`, 0 hits for `vacuum\|monitor\|diagnose` | stated, unexecuted — reclassify as 2.5 scope |
 | 7 | `:234` — `phases/01/.../registry.py → domain/identity.py` **Built** | `compare_sources` is `NOT_STARTED`; `domain/identity.py` holds only `Cik` / `AccessionNumber`. No `effective_cik_input.csv`, registrant registry, or `cik_diff.json` | doc stale — undocumented drop |
-| 8 | §1.5 Tier 2 + §1.5 purge rationale — goldens and viewer "supersede" the document scripts | neither `testing/goldens/review.py` nor a dataset viewer exists; `defs/viewer/` is entirely `NOT_STARTED` (1,104 loc) | doc stale |
+| 8 | §1.5 Tier 2 + §1.5 purge rationale — goldens and viewer "supersede" the document scripts | **resolved**: `review.py` exists and the viewer has landed at `edgar_sec/apps/viewer/` (Layer 5), with manifest-driven discovery, bounded DuckDB reads, and a guarded read-only SQL console. All 13 W7 viewer rows are no longer `NOT_STARTED`. | resolved |
 
 Also unresolved: v1 `defs/taxonomy/` vs v2 `domain/taxonomy/` share a name but
 are **different layers** — `phase_2.md:219-220` (M5) is the only place the

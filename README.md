@@ -9,6 +9,7 @@ High-performance, memory-safe SEC EDGAR extraction engine and pipeline. Transfor
 `edgar_sec` is built from Layer 0 up with strict acyclic downward-only dependencies:
 
 ```text
+Layer 5: apps/         # Read-only, operator-facing consumers of published artifacts
 Layer 4: pipelines/    # High-level orchestrators, CLI, and resumable execution
 Layer 3: engine/       # Normalization, array unrolling, Arrow batch construction
 Layer 2: infra/        # SEC HTTP transport, token-bucket rate limiter, DuckDB storage
@@ -255,6 +256,9 @@ the two disagree.
 
 ### pipelines
 
+- [`apps/README.md`](edgar_sec/apps/README.md)
+- [`apps/viewer/README.md`](edgar_sec/apps/viewer/README.md)
+- [`foundation/sql/README.md`](edgar_sec/foundation/sql/README.md)
 - [`pipelines/README.md`](edgar_sec/pipelines/README.md)
 - [`pipelines/document_storage/README.md`](edgar_sec/pipelines/document_storage/README.md)
 - [`pipelines/filing_catalog/README.md`](edgar_sec/pipelines/filing_catalog/README.md)
@@ -265,7 +269,7 @@ the two disagree.
 ## Repository Layout
 
 ```text
-edgar_sec/               # 34 packages, each with its own README.md (see above)
+edgar_sec/               # 36 packages, each with its own README.md (see above)
 ├── foundation/         # Layer 0: runtime, memory, hashing, serialization,
 │                       #   settings registry, 11 policy scanners
 ├── domain/             # Layer 1: Cik/Accession, document, forms and cover
@@ -277,8 +281,9 @@ edgar_sec/               # 34 packages, each with its own README.md (see above)
 │                       #   rendering, cover boundaries, checkmark solving,
 │                       #   evaluators, the FormPlugin SPI, reflow, selection,
 │                       #   company families, submission building
-└── pipelines/          # Layer 4: metadata_sync (Phase 1), filing_catalog
-                        #   (Phase 2), document_storage (Phase 2.5)
+├── pipelines/          # Layer 4: metadata_sync (Phase 1), filing_catalog
+│                       #   (Phase 2), document_storage (Phase 2.5)
+└── apps/               # Layer 5: the dataset viewer (read-only, no publishing)
 
 tests/                      # Test tree mirrors the edgar_sec/ package tree
 ├── support.py              # Shared fixture access and offline HTTP test doubles
@@ -309,6 +314,9 @@ tests/                      # Test tree mirrors the edgar_sec/ package tree
     ├── filing_catalog/     # discovery, expansion, planner, publication, cli
     └── document_storage/   # fetching, processor, worker, delegation, merger,
                             # vacuum, queries, operator, cli, review
+└── apps/
+    └── viewer/             # model, loaders, session, datasets, console,
+                            # server, cli, ui/ (React client, dist committed)
 
 check.py                # Unified repository quality gate runner
 run.py                  # Interactive terminal workflow dispatcher

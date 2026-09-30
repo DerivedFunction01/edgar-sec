@@ -1,0 +1,54 @@
+.shell {
+	display: grid;
+	grid-template-columns: 280px minmax(0, 1fr) auto;
+	grid-template-rows: auto minmax(0, 1fr) auto;
+	grid-template-areas:
+		"topbar topbar topbar"
+		"sidebar main right"
+		"status status status";
+	height: 100vh;
+	background: var(--theme-surface-canvas);
+}
+
+.shell[data-console="closed"] {
+	grid-template-columns: 280px minmax(0, 1fr);
+	grid-template-areas:
+		"topbar topbar"
+		"sidebar main"
+		"status status";
+}
+
+.shell[data-sidebar="collapsed"] {
+	grid-template-columns: 48px minmax(0, 1fr) auto;
+}
+.shell[data-sidebar="collapsed"][data-console="closed"] {
+	grid-template-columns: 48px minmax(0, 1fr);
+}
+
+.shell-topbar {
+	grid-area: topbar;
+}
+
+.shell-sidebar {
+	grid-area: sidebar;
+}
+
+.shell-main {
+	grid-area: main;
+	min-height: 0;
+	display: flex;
+	flex-direction: column;
+}
+
+.shell-right {
+	grid-area: right;
+	width: 480px;
+	min-height: 0;
+	border-left: 1px solid var(--theme-border-default);
+	display: flex;
+	flex-direction: column;
+}
+
+.shell-status {
+	grid-area: status;
+}

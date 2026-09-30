@@ -28,11 +28,12 @@ performs is directory creation in `runtime/resources.derive_resources()` and
 | :--- | :--- |
 | `checks.py` | Runs every registered scanner and returns a gate exit code (29 loc). |
 | `hashing.py` | `file_sha256`, `sha256_bytes`, `sha256_text` hex digests (28 loc). |
-| `serialization.py` | `canonical_json` / `canonical_hash` for identity-stable payloads (21 loc). |
+| `serialization.py` | `canonical_json` / `canonical_hash` for identity-stable payloads, and `json_safe` / `safe_dumps` for representability (78 loc). |
 | `regex/` | Regex builder DSL and prefix-tree factorisation. See `regex/README.md`. |
 | `runtime/` | Environment, paths, resources, memory, progress, partitions, interactive dispatch, `settings/`. See `runtime/README.md`. |
 | `runtime/settings/` | Typed settings specs and resolution. See `runtime/settings/README.md`. |
 | `scanners/` | The 11 registered policy scanners. See `scanners/README.md`. |
+| `sql/` | Read-only validation for operator-supplied queries. See `sql/README.md`. |
 | `text/` | Shared pattern vocabulary: dates, tokens, grammar, compounds, normalisation, the Aho-Corasick automaton. See `text/README.md`. |
 
 Every `__init__.py` in this layer is a one-line docstring. There are no barrel
@@ -155,6 +156,10 @@ code, or `1` when a scanner reported findings.
 - `sha256_text` — SHA-256 hex digest of UTF-8 text. `hashing.py`. A second, 1 MiB-chunked `sha256_text` lives in `runtime/memory.py`; see "Deliberate gaps".
 - `canonical_json` — deterministic JSON with sorted keys and compact separators. `serialization.py`.
 - `canonical_hash` — SHA-256 of the canonical JSON encoding of a payload. `serialization.py`.
+- `json_safe` — coerce a value into something `json.dumps` can encode: `Decimal` to its exact string, `bytes` to base64, non-finite floats to `None`, dates to ISO-8601, nested containers recursively. Lossy by design and carries no determinism guarantee. `serialization.py`.
+- `safe_dumps` — `json.dumps` after `json_safe`, preserving insertion order. `serialization.py`.
+- `validate_read_only` — return a single read statement or raise `SqlGuardError`. `sql/guard.py`.
+- `ALLOWED_LEADING_KEYWORDS` — the console's verb allowlist, exported so the rule and its error message cannot drift. `sql/guard.py`.
 - `registered()` — the `ALL_SCANNERS` tuple. `checks.py`.
 - `run_all()` — execute every registered scanner, print findings, return `0` or `1`. `checks.py`.
 - `ALL_SCANNERS` — the 11-entry registry tuple, in gate order. `scanners/__init__.py`.
@@ -178,6 +183,7 @@ Mirrored test paths under `tests/`:
 
 - `tests/foundation/test_hashing.py`
 - `tests/foundation/test_serialization.py`
+- `tests/foundation/sql/test_guard.py`
 - `tests/foundation/regex/test_builder.py`, `tests/foundation/regex/test_trie.py`
 - `tests/foundation/runtime/test_env.py`, `test_memory.py`, `test_partitions.py`, `test_paths.py`, `test_resources.py`, `test_settings.py`
 - `tests/foundation/scanners/test_scanners.py`, `test_lines.py`, `test_regex_alternations.py`, `test_legacy_shims.py`, `test_json_io.py`, `test_date_patterns.py`

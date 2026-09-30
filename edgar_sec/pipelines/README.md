@@ -34,6 +34,12 @@ orchestrate.** Orchestration means ordering, chunking, checkpointing,
 validating, and publishing — deciding *what happens next*. Lower layers expose
 capabilities; a layer-4 module sequences them into a run.
 
+Layer 4 is no longer the top of the graph. `apps/` (Layer 5) sits above it and
+may read everything here; the clause the scanner enforces is the reverse one —
+**nothing in this package may import `apps/`**, so a batch pipeline can never
+take a dependency on an operator-facing application. A non-batch consumer
+belongs in `apps/`, not here.
+
 The unifying rule of publication is that **nothing is published by a worker.**
 Workers emit immutable, schema-versioned fragments into a transient tree; a
 coordinator validates identity, provenance, schema, and duplicates, and only
@@ -43,9 +49,10 @@ only `metadata_sync` and `document_storage` have workers at all.
 
 ## Layer map
 
-Layer 4 is the top of the graph. Nothing may import it.
-
 ```text
+Layer 5  apps/                 read-only consumers of what this package
+              |                publishes. May import anything below.
+              |  BUT NOTHING HERE MAY IMPORT IT
 Layer 4  pipelines/            <-- this package
               |  may import engine, infra, domain, foundation
               |  ORCHESTRATION IS ALLOWED ONLY HERE
@@ -230,8 +237,10 @@ This layer publishes no re-exports: every `__init__.py` is a docstring, and
 consumers import from the leaf module (AGENTS.md §1.2). The surface below is the
 entry points, grouped by pipeline.
 
-- `PipelineEntry`, `ENTRIES`, `main` — the root dispatcher registry and its
-  three pipeline ids. `run.py` (repository root, not in this package).
+- `LauncherEntry`, `ENTRIES`, `main` — the root dispatcher registry. It holds
+  this package's three pipeline ids plus the Layer 5 `viewer` app, which is why
+  the entry class is not named `PipelineEntry`. `run.py` (repository root, not
+  in this package).
 - `operator_entrypoint`, `MenuAction`, `prompt_text` — the shared operator
   policy: menu with no arguments, CLI otherwise. `foundation/runtime/interactive.py`.
 - `main`, `build_parser`, `cmd_plan`, `cmd_status`, `cmd_run`, `cmd_merge`,

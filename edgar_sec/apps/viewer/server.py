@@ -1,0 +1,233 @@
+"""HTTP surface for the dataset viewer.
+
+Seven read-only endpoints over one artifacts root. Three properties hold across
+all of them:
+
+**The client never names a path.** A request carries an opaque dataset id; the
+server resolves it through :func:`apps.viewer.model.artifact_path`, which refuses
+anything outside the artifacts root. The browser cannot ask for a file by name
+even if it wanted to.
+
+**The client never names a column or a SQL path** for its own queries either.
+Column names are checked against the schema DuckDB reported, and the console's
+own relation is bound server-side.
+
+**A listing is a listing, not a promise.** Each entry carries a ``revision``
+token, and the browser treats a cached payload as valid only while its revision
+matches. A published snapshot's revision is a digest of its manifest, so it
+cannot miss a change the way a filesystem timestamp can.
+
+Discovery re-runs per request rather than being cached. That is deliberate: the
+whole point of the revision token is that the listing is the invalidation
+source, and a cached listing would defeat it. Stat-only discovery over a
+published tree is cheap, and correctness beats a micro-optimization here.
+"""
+
+from __future__ import annotations
+
+import json
+from pathlib import Path
+
+from fastapi import FastAPI, HTTPException, Query
+from fastapi.responses import JSONResponse
+
+from edgar_sec.apps.viewer.console import run_dataset_sql
+from edgar_sec.apps.viewer.datasets import (
+    MAX_LIMIT,
+    DatasetError,
+    DatasetRef,
+    dataset_blob,
+    dataset_column_stats,
+    dataset_rows,
+    dataset_schema,
+)
+from edgar_sec.apps.viewer.loaders import iter_documents, run_all
+from edgar_sec.apps.viewer.model import (
+    ArtifactSummary,
+    artifact_id,
+    artifact_path,
+    artifact_table,
+    summary_to_dict,
+)
+
+__all__ = ["UI_DIST", "create_app"]
+
+UI_DIST = Path(__file__).parent / "ui" / "dist"
+
+
+def _ref(summary: ArtifactSummary, root: Path) -> DatasetRef:
+    """Turn a listing entry into a readable dataset.
+
+    Parts are re-resolved from the entry's own ``source_paths`` rather than
+    globbed, so a file that appeared next to a snapshot *after* it was published
+    cannot join a read that a different set of bytes described. A single-file
+    dataset has no ``source_paths`` beyond itself, so it resolves from the id.
+    """
+    if summary.source_paths:
+        paths = tuple(
+            artifact_path(artifact_id(item), root) for item in summary.source_paths
+        )
+    else:
+        paths = (artifact_path(summary.id, root),)
+    return DatasetRef(
+        dataset_id=summary.id,
+        paths=paths,
+        fmt=summary.format,
+        table=summary.table or artifact_table(summary.id),
+    )
+
+
+def _find(summaries: list[ArtifactSummary], dataset_id: str) -> ArtifactSummary:
+    for summary in summaries:
+        if summary.id == dataset_id:
+            return summary
+    raise HTTPException(status_code=404, detail="dataset not found")
+
+
+def create_app(artifacts_root: Path | None = None) -> FastAPI:
+    """Build the viewer application.
+
+    ``artifacts_root`` defaults to the resolved project root, so the app finds
+    the same artifacts the pipelines write to without being told twice. Passing
+    it explicitly is how the tests and ``--artifacts-root`` override that.
+    """
+    if artifacts_root is None:
+        from edgar_sec.foundation.runtime.paths import resolve_paths
+
+        root = resolve_paths().artifacts_root.resolve()
+    else:
+        root = Path(artifacts_root).resolve()
+
+    # The OpenAPI document lives under /api so it can never collide with the
+    # static UI mount at "/", and so every endpoint the server owns is namespaced.
+    app = FastAPI(
+        title="EDGAR Dataset Viewer",
+        docs_url="/api/docs",
+        openapi_url="/api/openapi.json",
+    )
+
+    @app.get("/api/health")
+    def health() -> dict:
+        return {"status": "ok", "artifacts_root": str(root)}
+
+    @app.get("/api/datasets")
+    def list_datasets() -> list[dict]:
+        return [summary_to_dict(item) for item in run_all(root)]
+
+    @app.get("/api/documents")
+    def list_documents() -> list[dict]:
+        return [summary_to_dict(item) for item in iter_documents(root)]
+
+    @app.get("/api/datasets/{dataset_id}/schema")
+    def get_schema(dataset_id: str) -> list[dict]:
+        summary = _find(run_all(root), dataset_id)
+        try:
+            return dataset_schema(_ref(summary, root))
+        except DatasetError as exc:
+            raise HTTPException(status_code=400, detail=str(exc)) from exc
+
+    @app.get("/api/datasets/{dataset_id}/stats")
+    def get_stats(dataset_id: str) -> list[dict]:
+        summary = _find(run_all(root), dataset_id)
+        try:
+            return dataset_column_stats(_ref(summary, root))
+        except DatasetError as exc:
+            raise HTTPException(status_code=400, detail=str(exc)) from exc
+
+    @app.get("/api/datasets/{dataset_id}/rows")
+    def get_rows(
+        dataset_id: str,
+        offset: int = Query(default=0, ge=0),
+        limit: int = Query(default=200, ge=1, le=MAX_LIMIT),
+        sort: str | None = None,
+        dir: str = Query(default="asc", pattern="^(asc|desc)$"),
+        filters: str | None = None,
+        search: str | None = None,
+    ) -> dict:
+        summary = _find(run_all(root), dataset_id)
+        parsed = _parse_filters(filters)
+        try:
+            return dataset_rows(
+                _ref(summary, root),
+                offset=offset,
+                limit=limit,
+                sort=sort,
+                direction=dir,
+                filters=parsed,
+                search=search,
+            )
+        except (DatasetError, ValueError) as exc:
+            raise HTTPException(status_code=400, detail=str(exc)) from exc
+
+    @app.get("/api/datasets/{dataset_id}/blob")
+    def get_blob(
+        dataset_id: str,
+        column: str = Query(..., description="Target blob column name"),
+        pk_col: str | None = Query(default=None),
+        pk_val: str | None = Query(default=None),
+        row_index: int | None = Query(default=None, ge=0),
+    ) -> dict:
+        summary = _find(run_all(root), dataset_id)
+        try:
+            return dataset_blob(
+                _ref(summary, root),
+                column=column,
+                pk_col=pk_col,
+                pk_val=pk_val,
+                row_index=row_index,
+            )
+        except (DatasetError, ValueError) as exc:
+            raise HTTPException(status_code=400, detail=str(exc)) from exc
+
+    @app.post("/api/datasets/{dataset_id}/sql")
+    def post_sql(dataset_id: str, body: dict) -> JSONResponse:
+        summary = _find(run_all(root), dataset_id)
+        query = body.get("query")
+        if not isinstance(query, str):
+            raise HTTPException(status_code=400, detail="body must include 'query'")
+        try:
+            return JSONResponse(content=run_dataset_sql(_ref(summary, root), query))
+        except DatasetError as exc:
+            return JSONResponse(status_code=400, content={"detail": str(exc)})
+
+    @app.get("/api/documents/{dataset_id}")
+    def get_document(dataset_id: str) -> dict:
+        summary = _find(iter_documents(root), dataset_id)
+        try:
+            content = json.loads(artifact_path(summary.id, root).read_text("utf-8"))
+        except (OSError, json.JSONDecodeError, DatasetError) as exc:
+            raise HTTPException(status_code=400, detail=str(exc)) from exc
+        return {"summary": summary_to_dict(summary), "content": content}
+
+    if UI_DIST.is_dir():
+        from fastapi.staticfiles import StaticFiles
+
+        app.mount("/", StaticFiles(directory=UI_DIST, html=True), name="ui")
+    else:
+
+        @app.get("/")
+        def root_info() -> dict:
+            return {
+                "service": "edgar-dataset-viewer",
+                "ui": (
+                    "not built; run `bun install && bun run build` in "
+                    "edgar_sec/apps/viewer/ui, or use `--api-only`"
+                ),
+            }
+
+    return app
+
+
+def _parse_filters(raw: str | None) -> list[dict] | None:
+    """Parse the ``filters`` query parameter as a JSON array of filter objects."""
+    if raw is None:
+        return None
+    try:
+        parsed = json.loads(raw)
+    except json.JSONDecodeError as exc:
+        raise HTTPException(
+            status_code=400, detail="filters must be valid JSON"
+        ) from exc
+    if not isinstance(parsed, list):
+        raise HTTPException(status_code=400, detail="filters must be a JSON array")
+    return parsed

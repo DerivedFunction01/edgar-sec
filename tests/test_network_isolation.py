@@ -26,14 +26,22 @@ import pytest
 PACKAGE_ROOT = Path(__file__).resolve().parent.parent / "edgar_sec"
 FORBIDDEN = "edgar_sec.infra.sec_http"
 
-# The packages Stage 2 introduced. Phase 1's metadata_sync pipeline is
-# deliberately absent: it *is* the network phase, and the last test here uses it
-# to prove the walk is sensitive enough to find a dependency that does exist.
+# The packages Stage 2 introduced, plus the Layer 5 apps. Phase 1's
+# metadata_sync pipeline is deliberately absent: it *is* the network phase, and
+# the last test here uses it to prove the walk is sensitive enough to find a
+# dependency that does exist.
+#
+# ``edgar_sec.apps`` earns its place for a different reason than the Phase 2
+# packages. A viewer browses artifacts that a *network* pipeline produced, so the
+# temptation to reach for the client is structurally higher here, not lower. It
+# reads what was already fetched; re-fetching would be both wrong and a way for
+# a read-only tool to acquire a network surface.
 OFFLINE_PACKAGES = (
     "edgar_sec.pipelines.filing_catalog",
     "edgar_sec.engine.selection",
     "edgar_sec.domain.taxonomy",
     "edgar_sec.domain.filing_catalog",
+    "edgar_sec.apps.viewer",
 )
 
 

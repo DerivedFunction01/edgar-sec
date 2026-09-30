@@ -293,8 +293,15 @@ class SnapshotReader:
         )
 
     def part_path(self, part: SnapshotPart) -> Path:
-        """Resolve a part's recorded path against the snapshots root."""
-        return snapshots_dir(self.snapshots_root) / part.path
+        """Resolve a part's recorded path against *this snapshot's* directory.
+
+        A recorded ``part.path`` is relative to the snapshot directory, not to
+        the snapshots root: ``write_index_part(snapshot_dir, ...)`` stores
+        ``snapshot_dir / part.path`` and ``read_part`` resolves it the same way.
+        Anchoring at the root instead would drop the snapshot id and resolve
+        every part of every snapshot into the same wrong location.
+        """
+        return snapshot_dir(self.snapshots_root, self.snapshot_id) / part.path
 
 
 __all__ = [

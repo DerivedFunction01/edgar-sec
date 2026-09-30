@@ -1,7 +1,7 @@
 # Master Plan: Phase 2.5 Clean Slate Implementation (`edgar_sec.pipelines.document_storage`)
 
 > [!IMPORTANT]
-> **Status:** IMPLEMENTED, with M6.3/M6.4 deferred (see §7).  
+> **Status:** The original implementation surface is present, with M6.3/M6.4 deferred (see §7); end-to-end byte-for-byte v1 normalized-text parity is **not yet certified**. Begin the sequential completion track with [Plan 07: End-to-End Normalized Text Parity Gate](phase_2_5/07_end_to_end_normalized_text_parity.md).
 > **Predecessors:** 
 > - [Phase 1 (`metadata_sync`)](file:///home/denny/edgar-sec/roadmap/refactor_v2/phase_1.md): feature-complete, with documented scope reductions (see that document's §10).
 > - [Phase 2 (`filing_catalog`)](file:///home/denny/edgar-sec/roadmap/refactor_v2/phase_2.md): COMPLETE.
@@ -105,6 +105,19 @@ Due to the substantial size and distinct failure domains of the subsystems in Ph
 | **04** | [Engine: Tables & Forms](file:///home/denny/edgar-sec/roadmap/refactor_v2/phase_2_5/04_engine_tables_and_forms.md) | Geometry-first table detection, tagged table markers (`<TABLE>`), cover checkmark quadratic-penalty solver, evaluators (delegation), and `FormPlugin` SPI. | `defs/tables/`, `defs/sec_forms/cover/`, `defs/sec_forms/normalization/`, `defs/sec_forms/evaluators/` | `engine/tables/`, `engine/forms/` |
 | **05** | [Pipeline Orchestration](file:///home/denny/edgar-sec/roadmap/refactor_v2/phase_2_5/05_pipeline_orchestration.md) | Batch chunk workers, process pool concurrency, target plan execution, resumable checkpoints, exhibit delegation, vacuuming, interactive operator menu, and CLI. | `phases/025_webpage_storage/core/`, `phases/025_webpage_storage/run.py`, `cli.py` | `pipelines/document_storage/` |
 | **06** | [Testing & Golden Harness](file:///home/denny/edgar-sec/roadmap/refactor_v2/phase_2_5/06_testing_and_golden_harness.md) | Review harness (`python run.py documents review`), pinned normalization goldens in `tests/fixtures/document_storage/`, and engine regression suites. Real-filing archetypes (M6.3/M6.4) are deferred. | `phases/025_webpage_storage/tools/build_document_review_artifacts.py`, `defs/tests/` | `tests/fixtures/document_storage/`, `tests/engine/`, `tests/pipelines/document_storage/` |
+
+---
+
+## 2.1 Sequential Completion Track
+
+The six sub-plans describe the original subsystem implementation. Their
+completion checklists do not prove that the v2 pipeline produces the same
+normalized text as v1 for the same input. The first acceptance plan is
+[07: End-to-End Normalized Text Parity Gate](phase_2_5/07_end_to_end_normalized_text_parity.md).
+It uses the existing offline fixture pipeline and synthetic cases to establish
+an exact text comparison before expanding to the published Phase 2 handoff,
+additional normalization behaviors, live acquisition, or any migration of v1
+state. Passing Plan 07 is a first gate, not a claim of complete v1 parity.
 
 ---
 
@@ -238,6 +251,11 @@ gantt
 - [x] **Stage 4 (Sub-plan 05)**: Process-pool chunk workers, resumable chunk checkpoints, exhibit delegation, snapshot merger, cross-run consolidation (`vacuum_snapshots`), and the `run.py documents` CLI.
 - [x] **Stage 5 (Sub-plan 06, partial)**: Review harness (`run.py documents review`), pinned normalization goldens in `tests/fixtures/document_storage/`, and verification against all **11** registered policy scanners. M6.3/M6.4 are deferred — see §7.
 
+These stage completions establish the current implementation surface; they do not
+establish byte-for-byte v1 normalized-text parity. Plan 07 is the first sequential
+completion gate. Do not use the legacy “IMPLEMENTED” checklist alone as evidence
+that v2 text matches v1.
+
 ### v1 Retirement Readiness (measured, not projected)
 
 The Phase 2.5 sub-plans each closed by claiming a v1 file was superseded. The
@@ -286,6 +304,7 @@ parsing and reflow — `text/html/{tree,cleaner}.py`, `text/reflow/{engine,types
 | :--- | :--- | :--- |
 | **Layer Acyclicity** | Downward-only imports: `pipelines` &rarr; `engine` &rarr; `infra` &rarr; `domain` &rarr; `foundation`. | `check.py --scan` (`layer-boundary` scanner) |
 | **Deterministic Output** | Pinned cover boundary, body anchor, closing span, evaluator verdict, and stage order for every committed golden. | `.venv/bin/pytest tests/engine/forms/test_normalization_goldens.py` |
+| **v1 Normalized-Text Parity** | For every case in the approved matrix, the v2 snapshot's `normalized_text` bytes exactly equal a captured v1 output from identical inputs. | Plan 07: `roadmap/refactor_v2/phase_2_5/07_end_to_end_normalized_text_parity.md` and its pipeline-level parity tests |
 | **Pacing Compliance** | Never exceeds configured rate limits across multi-process workers; zero 429 rate-limit errors from SEC. | Multi-worker soak test with mock/live broker |
 | **Memory Invariance** | glibc arena reclamation (`malloc_trim(0)`) at bounded intervals, and `max_tasks_per_child` recycling in the process pool. | cgroup memory monitoring during a 1,000-document run |
 | **Snapshot Immutability** | A published snapshot is never overwritten; consolidation refuses a re-derived id; a purge is refused while a retained snapshot references a source part. | `tests/pipelines/document_storage/test_vacuum.py` |
