@@ -16,6 +16,7 @@ from dataclasses import dataclass, field
 from typing import Any
 
 from edgar_sec.domain.sec_urls import historical_submissions_url, submissions_url
+from edgar_sec.foundation.runtime.settings.paths import DEFAULT_CACHE_JSON_TTL_S
 from edgar_sec.foundation.runtime.settings.sec import SecSettings
 from edgar_sec.infra.sec_http.client import SecHttpClient
 from edgar_sec.infra.sec_http.errors import PermanentHttpError, RetryExhausted
@@ -54,18 +55,30 @@ class SubmissionsClient:
         user_agent: str = "",
         settings: SecSettings | None = None,
         cache_dir: str | None = None,
+        json_ttl_s: int = DEFAULT_CACHE_JSON_TTL_S,
     ) -> None:
+        """Build a submissions client.
+
+        ``cache_dir`` and ``json_ttl_s`` are forwarded to the HTTP client so the
+        response cache and the failure ledger are reachable from the settings
+        registry rather than fixed at construction. Passing ``http`` bypasses
+        construction entirely, which is how tests inject a scripted transport.
+        """
         if http is not None:
             self.http = http
             return
         if settings is not None:
-            self.http = SecHttpClient.from_settings(settings, cache_dir=cache_dir)
+            self.http = SecHttpClient.from_settings(
+                settings, cache_dir=cache_dir, json_ttl_s=json_ttl_s
+            )
             return
         if not user_agent:
             raise ValueError(
                 "user_agent or settings is required to build the SEC HTTP client"
             )
-        self.http = SecHttpClient(user_agent=user_agent, cache_dir=cache_dir)
+        self.http = SecHttpClient(
+            user_agent=user_agent, cache_dir=cache_dir, json_ttl_s=json_ttl_s
+        )
 
     def fetch_cik(self, cik_padded: str) -> CikFetchResult:
         """Fetch the submissions document and all of its historical files."""

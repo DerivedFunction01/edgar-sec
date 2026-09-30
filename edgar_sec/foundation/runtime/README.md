@@ -80,10 +80,29 @@ to keep the cycle open only at call time.
   `edgar_sec` package directory or anywhere beneath it
   (`paths.py:141-162`). Passing an explicit `repo_root` bypasses that check,
   because a caller that names the root has already answered the question.
-- `EDGAR_ARTIFACTS_DIR` overrides the artifacts root and `EDGAR_CACHE_DIR`
-  overrides the cache root, both resolved to absolute paths
-  (`paths.py:179-189`). The uploads root is always `repo_root / "uploads"` and
-  has no override.
+- The artifacts root is the registered setting `artifacts.root` (env
+  `ARTIFACTS_ROOT`, default `.artifacts`), read by `resolve_paths()` through the
+  registry. A relative value is anchored to the project root; an absolute value
+  is taken as given. The uploads root is always `repo_root / "uploads"` and has
+  no override.
+- **`EDGAR_ARTIFACTS_DIR` is retired.** `resolve_paths()` used to read it
+  directly, which meant the resolver and the registry each answered "where is
+  the artifacts root?" and ignored the other: setting `ARTIFACTS_ROOT` changed
+  what the registry reported while the paths actually used stayed at the
+  default. The variable is now inert. `ARTIFACTS_ROOT` is the one global
+  artifacts-root setting, as
+  `roadmap/refactor_v2/unified-runtime-phase-ownership-plan.md` already
+  required.
+- **There is no cache root here.** The cache root is the registered setting
+  `cache.root` (env `CACHE_ROOT`, defaulting to `<artifacts>/caches`) and is
+  read through `resolve_runtime_settings().cache_root`. `ProjectPaths` used to
+  carry a second answer under `EDGAR_CACHE_DIR` defaulting to
+  `<artifacts>/cache`; the two disagreed on both the variable and the directory,
+  and nothing read the `ProjectPaths` one. It was removed rather than pointed at
+  the registry, so there is now exactly one answer to "where is the cache?".
+  The same split has been closed for the artifacts root: the resolver now reads
+  `artifacts.root` from the registry, so both roots have exactly one
+  authority.
 - `current_pointer_path()`, `plan_dir()`, and `transient_dir()` are the shared
   artifact-layout helpers, so every dataset resolves "current" and "staging"
   identically (`paths.py:35-51`).

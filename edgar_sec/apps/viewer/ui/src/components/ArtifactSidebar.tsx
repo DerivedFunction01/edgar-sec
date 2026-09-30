@@ -1,227 +1,167 @@
-import { useEffect, useMemo, useState } from "react";
-import type { DatasetSummary } from "../api";
-
-const KIND_LABELS: Record<string, string> = {
-  // Phase 1
-  metadata_snapshot: "snapshot",
-  metadata_cik_index: "cik index",
-  // Phase 2
-  catalog_profiles: "profiles",
-  catalog_targets: "targets",
-  // Phase 2.5
-  document_index: "doc index",
-  document_payload: "payloads",
-  // Transient: one label serves every dataset's chunks and run unions
-  manifest: "manifest",
-  sqlite_table: "table",
-};
-
-function kindLabel(kind: string): string {
-  if (KIND_LABELS[kind]) return KIND_LABELS[kind];
-  // Transient kinds are generated per dataset (`metadata_run_union`,
-  // `document_storage_chunk`, …). Fall back to the trailing noun so a new
-  // dataset gets a sensible label without a frontend change.
-  if (kind.endsWith("_run_union")) return "all chunks";
-  if (kind.endsWith("_chunk")) return "chunk";
-  return kind;
-}
-
-const OPEN_GROUPS_KEY = "viewer-open-groups";
-
-function loadOpenGroups(): Set<string> {
-  try {
-    const raw = localStorage.getItem(OPEN_GROUPS_KEY);
-    return new Set(raw ? (JSON.parse(raw) as string[]) : []);
-  } catch {
-    return new Set();
-  }
-}
-
-interface Group {
-  phase: string;
-  runs: Map<string, DatasetSummary[]>;
-}
-
-function groupDatasets(datasets: DatasetSummary[]): Group[] {
-  const groups = new Map<string, Group>();
-  for (const dataset of datasets) {
-    const phase = dataset.phase ?? "(unclassified)";
-    let group = groups.get(phase);
-    if (!group) {
-      group = { phase, runs: new Map() };
-      groups.set(phase, group);
-    }
-    const run = dataset.run_id ?? "(no run)";
-    const existing = group.runs.get(run);
-    if (existing) {
-      existing.push(dataset);
-    } else {
-      group.runs.set(run, [dataset]);
-    }
-  }
-  return [...groups.values()].sort((a, b) => a.phase.localeCompare(b.phase));
-}
+import { type ReactNode, useEffect, useState } from "react";
+import { fetchTreeChildren, type TreeEntry } from "../api";
 
 interface Props {
-  datasets: DatasetSummary[];
-  documents: DatasetSummary[];
   selectedId: string | null;
-  onSelect: (dataset: DatasetSummary) => void;
-  onRefresh: () => void;
+  onSelect: (entry: TreeEntry) => void;
   collapsed: boolean;
-}
-
-export default function ArtifactSidebar({
-  datasets,
-  documents,
-  selectedId,
-  onSelect,
-  onRefresh,
-  collapsed,
-}: Props) {
-  const [query, setQuery] = useState("");
-  const [openGroups, setOpenGroups] = useState<Set<string>>(() => loadOpenGroups());
-
-  useEffect(() => {
-    localStorage.setItem(OPEN_GROUPS_KEY, JSON.stringify([...openGroups]));
-  }, [openGroups]);
-
-  const needle = query.trim().toLowerCase();
-  const matches = (item: DatasetSummary) =>
-    needle === "" || item.relative_path.toLowerCase().includes(needle);
-
-  const groups = useMemo(
-    () => groupDatasets(datasets.filter(matches)),
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [datasets, needle],
-  );
-  const filteredDocuments = useMemo(
-    () => documents.filter(matches),
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [documents, needle],
-  );
-
-  const toggle = (key: string) =>
-    setOpenGroups((current) => {
-      const next = new Set(current);
-      if (next.has(key)) {
-        next.delete(key);
-      } else {
-        next.add(key);
-      }
-      return next;
-    });
-
-  if (collapsed) {
-    return (
-      <nav className="sidebar shell-sidebar" data-collapsed={collapsed}>
-        <div className="sidebar-collapsed">DS</div>
-      </nav>
-    );
-  }
-
-  return (
-    <nav className="sidebar shell-sidebar" data-collapsed={collapsed}>
-      <div className="sidebar-filter">
-        <input
-          className="input"
-          placeholder="Filter artifacts…"
-          value={query}
-          onChange={(event) => setQuery(event.target.value)}
-        />
-        <button
-          className="btn btn-secondary sidebar-refresh"
-          onClick={onRefresh}
-          title="Refresh listings (re-check for new chunks)"
-        >
-          ⟳
-        </button>
-      </div>
-      <div className="sidebar-group">
-        <div className="sidebar-group-header">Datasets · {datasets.length}</div>
-        {groups.length === 0 && (
-          <div className="sidebar-item">
-            <span className="sidebar-item-label u-muted">
-              {datasets.length === 0 ? "no artifacts found" : "no matches"}
-            </span>
-          </div>
-        )}
-        {groups.map((group) => {
-          const phaseKey = `phase:${group.phase}`;
-          const phaseOpen = !openGroups.has(phaseKey);
-          const phaseItems = [...group.runs.values()].flat();
-          return (
-            <div key={group.phase}>
-              <button
-                className="sidebar-group-header sidebar-toggle"
-                data-open={phaseOpen}
-                onClick={() => toggle(phaseKey)}
-                title={`artifacts/${group.phase}`}
-              >
-                <span className="chevron">{phaseOpen ? "▾" : "▸"}</span>
-                <span className="sidebar-toggle-label">artifacts/{group.phase}</span>
-                <span className="badge badge-kind">{phaseItems.length}</span>
-              </button>
-              {phaseOpen &&
-                [...group.runs.entries()].map(([run, items]) => {
-                  const runKey = `run:${group.phase}:${run}`;
-                  const runOpen = !openGroups.has(runKey);
-                  return (
-                    <div key={run}>
-                      <button
-                        className="sidebar-item sidebar-toggle sidebar-run"
-                        data-open={runOpen}
-                        onClick={() => toggle(runKey)}
-                      >
-                        <span className="chevron">{runOpen ? "▾" : "▸"}</span>
-                        <span className="sidebar-item-label u-muted">{run}</span>
-                        <span className="badge badge-kind">{items.length}</span>
-                      </button>
-                      {runOpen &&
-                        items.map((item) => (
-                          <button
-                            key={item.id}
-                            className="sidebar-item sidebar-leaf"
-                            data-active={item.id === selectedId}
-                            onClick={() => onSelect(item)}
-                            title={`${item.relative_path} (${formatBytes(item.size_bytes)})`}
-                          >
-                            <span className="sidebar-item-label">
-                              {item.relative_path.split("/").pop()}
-                            </span>
-                            <span className={`badge badge-${item.kind}`}>
-                              {kindLabel(item.kind)}
-                            </span>
-                          </button>
-                        ))}
-                    </div>
-                  );
-                })}
-            </div>
-          );
-        })}
-      </div>
-      <div className="sidebar-group">
-        <div className="sidebar-group-header">Documents · {filteredDocuments.length}</div>
-        {filteredDocuments.map((item) => (
-          <button
-            key={item.id}
-            className="sidebar-item"
-            data-active={item.id === selectedId}
-            onClick={() => onSelect(item)}
-            title={`${item.relative_path} (${formatBytes(item.size_bytes)})`}
-          >
-            <span className="sidebar-item-label">{item.relative_path.split("/").pop()}</span>
-            <span className="badge badge-kind">json</span>
-          </button>
-        ))}
-      </div>
-    </nav>
-  );
 }
 
 function formatBytes(size: number): string {
   if (size < 1024) return `${size} B`;
   if (size < 1024 * 1024) return `${(size / 1024).toFixed(1)} KB`;
   return `${(size / (1024 * 1024)).toFixed(1)} MB`;
+}
+
+function badge(entry: TreeEntry): string {
+  if (entry.kind) return entry.kind.replaceAll("_", " ");
+  if (entry.node_type === "directory") return "directory";
+  if (entry.node_type === "database") return `${entry.format} database`;
+  if (entry.node_type === "table") return "table";
+  return entry.format ?? "file";
+}
+
+export default function ArtifactSidebar({ selectedId, onSelect, collapsed }: Props) {
+  const [root, setRoot] = useState<TreeEntry[]>([]);
+  const [children, setChildren] = useState<Record<string, TreeEntry[]>>({});
+  const [expanded, setExpanded] = useState<Set<string>>(new Set());
+  const [loading, setLoading] = useState<Set<string>>(new Set());
+  const [error, setError] = useState<string | null>(null);
+  const [query, setQuery] = useState("");
+  const [rootLoaded, setRootLoaded] = useState(false);
+
+  const loadRoot = async () => {
+    setError(null);
+    try {
+      const entries = await fetchTreeChildren();
+      setRoot(entries);
+      setChildren({ root: entries });
+      setRootLoaded(true);
+    } catch (exc) {
+      setError(exc instanceof Error ? exc.message : String(exc));
+      setRootLoaded(true);
+    }
+  };
+
+  useEffect(() => {
+    void loadRoot();
+  }, []);
+
+  const refresh = async () => {
+    setChildren({});
+    setExpanded(new Set());
+    await loadRoot();
+  };
+
+  const toggle = async (entry: TreeEntry) => {
+    if (expanded.has(entry.id)) {
+      setExpanded((current) => {
+        const next = new Set(current);
+        next.delete(entry.id);
+        return next;
+      });
+      return;
+    }
+    setExpanded((current) => new Set(current).add(entry.id));
+    if (Object.hasOwn(children, entry.id)) return;
+    setLoading((current) => new Set(current).add(entry.id));
+    try {
+      const entries = await fetchTreeChildren(entry.id);
+      setChildren((current) => ({ ...current, [entry.id]: entries }));
+    } catch (exc) {
+      setError(exc instanceof Error ? exc.message : String(exc));
+    } finally {
+      setLoading((current) => {
+        const next = new Set(current);
+        next.delete(entry.id);
+        return next;
+      });
+    }
+  };
+
+  if (collapsed) {
+    return (
+      <nav className="sidebar shell-sidebar" data-collapsed={collapsed}>
+        <div className="sidebar-collapsed">FS</div>
+      </nav>
+    );
+  }
+
+  const needle = query.trim().toLowerCase();
+  const renderNodes = (nodes: TreeEntry[], depth: number): ReactNode =>
+    nodes
+      .filter(
+        (entry) => !needle || `${entry.name} ${entry.relative_path}`.toLowerCase().includes(needle),
+      )
+      .map((entry) => {
+        const isExpanded = expanded.has(entry.id);
+        const canExpand = entry.has_children;
+        const isActive = entry.id === selectedId;
+        return (
+          <div key={entry.id}>
+            <button
+              className="sidebar-item tree-item"
+              style={{ paddingLeft: `${8 + depth * 13}px` }}
+              data-active={isActive}
+              title={`${entry.relative_path} (${formatBytes(entry.size_bytes)})`}
+              onClick={() => {
+                if (canExpand) void toggle(entry);
+                else onSelect(entry);
+              }}
+            >
+              <span className="tree-item-main">
+                {canExpand ? (
+                  <span className="tree-chevron">{isExpanded ? "▾" : "▸"}</span>
+                ) : (
+                  <span className="tree-chevron" />
+                )}
+                <span className="sidebar-item-label">{entry.name}</span>
+              </span>
+              <span className="badge badge-kind tree-badge">{badge(entry)}</span>
+            </button>
+            {isExpanded && loading.has(entry.id) && (
+              <div className="tree-message" style={{ paddingLeft: `${18 + depth * 13}px` }}>
+                loading…
+              </div>
+            )}
+            {isExpanded && children[entry.id]?.length === 0 && !loading.has(entry.id) && (
+              <div className="tree-message" style={{ paddingLeft: `${18 + depth * 13}px` }}>
+                no tables or supported files
+              </div>
+            )}
+            {isExpanded && children[entry.id]?.length
+              ? renderNodes(children[entry.id], depth + 1)
+              : null}
+          </div>
+        );
+      });
+
+  return (
+    <nav className="sidebar shell-sidebar" data-collapsed={collapsed}>
+      <div className="sidebar-filter">
+        <input
+          className="input"
+          placeholder="Filter loaded files…"
+          value={query}
+          onChange={(event) => setQuery(event.target.value)}
+        />
+        <button
+          className="btn btn-secondary sidebar-refresh"
+          onClick={() => void refresh()}
+          title="Refresh explorer"
+        >
+          ⟳
+        </button>
+      </div>
+      <div className="sidebar-group-header">Artifacts root · {root.length}</div>
+      {error && <div className="tree-message console-error">{error}</div>}
+      {root.length === 0 && !rootLoaded && !error ? (
+        <div className="tree-message">loading artifacts…</div>
+      ) : root.length === 0 ? (
+        <div className="tree-message">no supported files found</div>
+      ) : (
+        renderNodes(root, 0)
+      )}
+    </nav>
+  );
 }

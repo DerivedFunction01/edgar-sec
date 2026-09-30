@@ -57,7 +57,6 @@ def paths(tmp_path: Path) -> ProjectPaths:
     return ProjectPaths(
         repo_root=tmp_path,
         artifacts_root=tmp_path / ".artifacts",
-        cache_root=tmp_path / "cache",
         uploads_root=tmp_path / "uploads",
     )
 

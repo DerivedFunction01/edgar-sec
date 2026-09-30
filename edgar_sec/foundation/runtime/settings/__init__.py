@@ -216,6 +216,7 @@ class RuntimeSettings:
     default_chunk_size: int
     artifacts_root: Path
     cache_root: Path
+    json_ttl_s: int
     temp_directory: Path | None
     log_level: str = "INFO"
 
@@ -251,6 +252,7 @@ def resolve_runtime_settings(
         default_chunk_size=int(raw["runtime.chunk_size"]),
         artifacts_root=Path(str(raw["artifacts.root"])),
         cache_root=Path(str(raw["cache.root"])),
+        json_ttl_s=int(raw["cache.json_ttl_s"]),
         temp_directory=temp_dir,
     )
 

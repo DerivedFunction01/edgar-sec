@@ -59,7 +59,7 @@ Layer 0  foundation/   runtime, memory, hashing, settings, policy scanners
 | 3 | [`engine/company_family/`](engine/company_family/README.md) | name normalization and family clustering |
 | 3 | [`engine/submissions/`](engine/submissions/README.md) | submission unrolling, profiling, building |
 | 5 | [`apps/`](apps/README.md) | layer root; read-only operator-facing consumers of published artifacts |
-| 5 | [`apps/viewer/`](apps/viewer/README.md) | the dataset viewer: manifest-driven discovery, paged DuckDB reads, a guarded read-only SQL console |
+| 5 | [`apps/viewer/`](apps/viewer/README.md) | the dataset viewer: a lazy filesystem explorer, manifest-driven virtual datasets, paged DuckDB reads, a guarded read-only SQL console |
 | 4 | [`pipelines/`](pipelines/README.md) | layer root; orchestration |
 | 4 | [`pipelines/metadata_sync/`](pipelines/metadata_sync/README.md) | **Phase 1, complete.** Submissions metadata ingest, chunked and resumable |
 | 4 | [`pipelines/filing_catalog/`](pipelines/filing_catalog/README.md) | **Phase 2, complete.** Zero-network catalog materialisation and target planning |

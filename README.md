@@ -315,8 +315,9 @@ tests/                      # Test tree mirrors the edgar_sec/ package tree
     └── document_storage/   # fetching, processor, worker, delegation, merger,
                             # vacuum, queries, operator, cli, review
 └── apps/
-    └── viewer/             # model, loaders, session, datasets, console,
-                            # server, cli, ui/ (React client, dist committed)
+    └── viewer/             # model, loaders, tree, session, datasets,
+                            # console, server, cli, ui/ (React client,
+                            # dist committed)
 
 check.py                # Unified repository quality gate runner
 run.py                  # Interactive terminal workflow dispatcher

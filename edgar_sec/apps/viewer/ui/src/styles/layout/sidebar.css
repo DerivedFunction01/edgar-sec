@@ -134,3 +134,35 @@
 .sidebar-leaf {
 	padding-left: 30px;
 }
+
+.tree-item {
+	min-width: 0;
+	padding-top: 6px;
+	padding-bottom: 6px;
+}
+
+.tree-item-main {
+	display: flex;
+	align-items: center;
+	gap: 4px;
+	min-width: 0;
+}
+
+.tree-chevron {
+	flex: none;
+	width: 10px;
+	color: var(--theme-content-tertiary);
+	text-align: center;
+}
+
+.tree-badge {
+	flex: none;
+	max-width: 92px;
+	font-size: 9px;
+}
+
+.tree-message {
+	padding: 5px 8px;
+	color: var(--theme-content-tertiary);
+	font-size: 11px;
+}

@@ -185,3 +185,61 @@ def test_the_size_guard_is_off_by_default(tmp_path: Path) -> None:
     client = _client(tmp_path, session)  # type: ignore[arg-type]
     assert client.max_response_bytes is None
     assert client.get_bytes("https://www.sec.gov/files/company_tickers.json") == body
+
+
+# ------------------------------------------------- settings construction path
+#
+# `from_settings` is the only construction path that turns resolved settings
+# into a live client, and it is reached by every fetching action: the metadata
+# pipeline's run/worker/augment via `SubmissionsClient(settings=...)`, and
+# `sources refresh` directly. A single mistyped attribute name disables all of
+# them. That is not hypothetical: `from_settings` read `settings.timeout_seconds`
+# while the field is `timeout_s`, which broke every settings-built client while
+# the whole suite stayed green -- tests inject a fake transport rather than
+# constructing from settings, so the path was never executed.
+
+
+def test_from_settings_maps_every_declared_setting() -> None:
+    """Sentinel values prove each declared field reaches the client.
+
+    Asserting on sentinels rather than defaults is what makes this a drift guard:
+    a renamed or mistyped attribute raises before any value can be compared.
+    """
+    from edgar_sec.foundation.runtime.settings.sec import SecSettings
+
+    client = SecHttpClient.from_settings(
+        SecSettings(
+            user_agent="Sentinel Co sentinel@example.com",
+            rate_limit_rps=2.0,
+            timeout_s=11.5,
+            max_retries=7,
+            max_failure_attempts=5,
+        )
+    )
+    assert client.user_agent == "Sentinel Co sentinel@example.com"
+    assert client.timeout_s == 11.5
+    assert client.rate_limiter.interval == pytest.approx(0.5)
+    assert client.retry_policy.max_retries == 7
+    assert client.max_failure_attempts == 5
+
+
+def test_from_settings_accepts_the_resolved_registry() -> None:
+    """The production path constructs from the registry, not a literal."""
+    from edgar_sec.foundation.runtime.settings import resolve_runtime_settings
+
+    settings = resolve_runtime_settings().sec
+    client = SecHttpClient.from_settings(settings)
+    assert client.user_agent == settings.user_agent
+    assert client.timeout_s == settings.timeout_s
+    assert client.retry_policy.max_retries == settings.max_retries
+    assert client.rate_limiter.interval == pytest.approx(1.0 / settings.rate_limit_rps)
+
+
+def test_from_settings_honors_its_optional_arguments(tmp_path: Path) -> None:
+    from edgar_sec.foundation.runtime.settings.sec import SecSettings
+
+    client = SecHttpClient.from_settings(
+        SecSettings(), cache_dir=tmp_path, json_ttl_s=99
+    )
+    assert client.cache_dir == tmp_path.resolve()
+    assert client.max_response_bytes is None

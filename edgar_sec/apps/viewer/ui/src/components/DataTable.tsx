@@ -83,8 +83,11 @@ export default function DataTable({
                   const active = sort?.column === column.name;
                   const filter = filterFor(column.name);
                   const expandableType = hasTypeArgs(column.duckdb_type);
-                  const denominator = totalRows !== null && totalRows > 0 ? totalRows : 1;
-                  const nullShare = (column.null_count / denominator) * 100;
+                  const denominator = column.total_rows ?? totalRows ?? 0;
+                  const nullShare =
+                    column.null_count !== null && denominator > 0
+                      ? (column.null_count / denominator) * 100
+                      : 0;
                   return (
                     <th key={column.name}>
                       <div className="table-headcell">
@@ -114,7 +117,9 @@ export default function DataTable({
                           >
                             {shortType(column.duckdb_type)}
                           </span>
-                          <span title="approx distinct">~{column.approx_distinct}</span>
+                          <span title="approx distinct">
+                            {column.approx_distinct === null ? "·" : `~${column.approx_distinct}`}
+                          </span>
                           <span
                             className="minibar"
                             title={`nulls: ${column.null_count}, ~distinct: ${column.approx_distinct}`}

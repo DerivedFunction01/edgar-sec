@@ -613,3 +613,93 @@ for the open question.
 `AGENTS.md` §4.1 previously stated that `plan` divides work into "fixed-size
 chunks … and operational partitions". That was false of v2 and is now corrected
 to describe chunking plus static chunk-to-worker assignment.
+
+### 11. Operator Interactivity Parity and a Broken Construction Path
+
+A report that the Phase 1 wizard had "regressed" from v1 turned out to cover two
+separate problems, one of them much more serious than the wizard.
+
+**The P0.** `SecHttpClient.from_settings` read `settings.timeout_seconds`, but
+`SecSettings` declares `timeout_s`. That one attribute name broke every
+settings-built client, and its callers are the whole live fetch path:
+`_build_client` in `cli.py`, which serves `run`, `worker`, and `augment`, and
+`refresh_company_tickers` in `source_registry.py`. The three wizard actions that
+fetch were dead in production and reported nothing, because a blank plan id
+returned early before a client was ever constructed; the fourth, `sources
+refresh`, surfaced the `AttributeError` and killed the session.
+
+No test caught it. The suite injects a fake transport through
+`tests.support.build_test_http`, so the settings-to-client construction path was
+executed by no test at all, under a fully green gate. The lesson is recorded
+rather than just fixed: a path nothing executes is a path nothing protects. The
+regression tests drive sentinel values through every declared setting so a
+renamed field raises instead of silently comparing equal, and the pipeline's own
+`_build_client` is now exercised too.
+
+**The parity gap.** v1's wizard ran an `ensure_plan` step at the top of every loop
+iteration: it auto-resumed an in-progress run, adopted an existing plan, offered
+regeneration on a stale one, marked the current snapshot in a numbered list, and
+told the operator that completed chunks survive an interrupt. v2's re-prompted
+for a plan id every action, and a blank answer did nothing. Restored in
+`operator.py` with discovery in a new phase-local `discovery.py`: session state
+across menu visits, auto-resolution, a numbered plan pick, a plan header, network
+consent defaulting to no, copy-pasteable per-worker commands, and an interrupt
+message that states what survives.
+
+Two decisions are worth recording because they were not obvious:
+
+- The behavior is **phase-local**, not shared. `v2_refactor_roadmap.md` already
+  diagnosed and closed v1's shared `run_interactive`: it "hardcoded Phase 01's
+  exact model ... [and] became dead code outside Phase 01." Rebuilding it in
+  shared infrastructure would re-create that failure. What genuinely is shared —
+  the entrypoint policy, terminal prompting, and the manifest scan — is consumed
+  rather than rewritten. `list_snapshots` gained an optional `manifest_name`
+  parameter so Phase 1 reuses the directory scan and warn-and-skip handling
+  rather than copying them, with document_storage's existing calls unchanged.
+
+- Three defects in the shared menu loop were fixed because they are defects for
+  every pipeline, not because Phase 1 needs them: a blank menu answer defaulted
+  to running the first action, so a stray Return started whatever was listed
+  first; the exception handler covered only `(RuntimeError, ValueError, OSError)`,
+  so an `AttributeError` ended the session — which is exactly how the P0
+  presented; and a `KeyboardInterrupt` reported only "Action cancelled by user"
+  when a pipeline may be able to say what survives it.
+
+### 12. Restoring the HTTP Response Cache, and a Split Authority
+
+Phase 1 was building its live client with no `cache_dir`, so it ran with no
+response cache and no failure ledger. v1 did not: its `build_client` resolved a
+transport profile that defaulted `cache_dir` to the project cache root. On a
+first run the two pace identically — both are bounded by the same rate limiter at
+the same `sec.rate_limit_rps` with the same machine-derived thread count — so the
+cost only appears when something is re-fetched: a partially failed chunk, or a
+re-plan at a different `--chunk-size` that produces a new plan id and therefore
+skips nothing. In those cases v1 served from disk and spent no request budget.
+
+**Which store to use.** Two implementations exist, v1's
+`.v1/defs/sec_http/cache.py` and v2's `edgar_sec/infra/sec_http/cache.py`, and
+one file on disk. The v2 implementation is the one to keep, and it reads the v1
+file in place with no migration: both tables are column-for-column identical,
+both name the file `responses.sqlite`, both use WAL with the same busy timeout,
+and both compress with zstd through the same framing and expiry rule. Verified
+against the live file — 3,367 submissions documents and 271 of the 272
+historical files they reference decompress correctly and their recorded payload
+digests match.
+
+**The split authority, which is the part worth recording.** Two sources claimed
+the cache root and disagreed:
+
+- `settings/paths.py` — `cache.root`, env `CACHE_ROOT`, default `<artifacts>/caches`
+- `runtime/paths.py:186-189` — env `EDGAR_CACHE_DIR`, default `<artifacts>/cache`
+
+They differ in both the variable name and the directory, and the populated store
+is at the *first* one. Phase 1 now resolves the cache root and its TTL from the
+settings registry, so it opens the store that exists. The inventory already
+recorded the divergence as "root-setting env names are inconsistent"; reconciling
+`resolve_paths()` with the registry is deliberately left as separate work rather
+than folded in here, because it is a foundation change affecting pipelines beyond
+Phase 1.
+
+`cache.json_ttl_s` was registered and resolvable but carried on no
+`RuntimeSettings` field, so nothing could honour an override of it — the same
+shape as the ignored chunk size. It is now exposed and forwarded.

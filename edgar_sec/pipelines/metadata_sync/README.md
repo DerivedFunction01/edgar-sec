@@ -56,7 +56,8 @@ no network access. `plan` performs no network access. Only `run`, `worker`, and
 | `source_registry.py` | Write-once, content-addressed `company_tickers.json` snapshots. |
 | `sec_client.py` | One CIK to its submissions document plus every historical file it lists. |
 | `cli.py` | The argparse surface; each `cmd_*` is a plain callable the operator also calls. |
-| `operator.py` | Interactive wizard; a presentation layer over the same `cmd_*` functions. |
+| `operator.py` | Interactive wizard: session state, on-disk discovery, auto-resolution, and network consent over the same `cmd_*` functions. |
+| `discovery.py` | What is already on disk: plans with progress, published snapshots, the current pointer. Manifests only; never opens a Parquet payload. |
 | `smoke_test.py` | Credential-gated live check that never publishes. |
 
 ## Contracts this package guarantees
@@ -166,11 +167,62 @@ another therefore resolves a *different* plan, and the command says so rather
 than reusing another plan's checkpoints.
 
 The interactive operator (`python run.py metadata` with no command) offers the
-same nine actions and builds the same options objects.
+same actions and builds the same options objects, and it discovers rather than
+demands. It keeps a `WizardState` across menu visits, so a plan chosen once is
+not asked for twice; when nothing is chosen it lists the plans on disk with their
+size and progress and takes a number, adopting a lone plan without prompting. A
+blank plan id therefore resolves instead of doing nothing, which is the specific
+regression this surface had. Anything that reaches SEC confirms first, defaults to
+no, and an interrupt reports that completed chunks survive. Discovery lives in
+`discovery.py` and reads manifests only.
 
 ## Deliberate gaps
 
 These are decisions, not oversights. Each names the alternative.
+
+- **The HTTP response cache is wired to the settings registry, deliberately not
+  to `resolve_paths()`.** v2 had two competing authorities for the cache root:
+  the registered `cache.root` spec (`CACHE_ROOT`, defaulting to
+  `<artifacts>/caches`) and `resolve_paths()` (`EDGAR_CACHE_DIR`, defaulting to
+  `<artifacts>/cache`). They disagree on both the variable and the directory.
+  Phase 1 reads the registry, because that is where the store actually is — the
+  populated one is `.artifacts/caches/responses.sqlite`. Reading `resolve_paths()`
+  would have opened a second, empty store beside it and silently forfeited every
+  cached response. The inventory already records the divergence as "root-setting
+  env names are inconsistent"; the two authorities are still unresolved, and
+  reconciling them is separate work.
+  v1's store is read in place with no migration: the schema is column-for-column
+  identical, the filename is the same, and both use zstd framing with the same
+  expiry rule. It carried 3,367 submissions documents and 271 of the 272
+  historical files those reference, so a re-fetch over the covered CIKs consumes
+  no request budget and the failure ledger skips known-bad URLs without a
+  request. Against a 37.5K cohort that is currently ~9% coverage, so the saving on
+  a first full run is modest; the value compounds as the store grows and is
+  largest on re-runs and re-plans.
+- **The wizard discovers; it does not orchestrate.** It finds the plan, shows its
+  progress, and runs the command the operator picked. It never sequences the
+  pipeline and never runs a step that was not chosen. This is v1's behaviour
+  restored and deliberately bounded: v1's `ensure_plan` offered to adopt or
+  regenerate a plan, and every mutating step stayed behind a prompt, so the same
+  bound applies here.
+- **A settings-to-client break can hide behind a fully green gate.** The suite
+  injects a fake transport, so the path turning resolved settings into a live
+  client is executed by almost nothing. That path did break: `SecHttpClient
+  .from_settings` read `SecSettings.timeout_seconds` when the field is `timeout_s`,
+  which disabled *every* fetching action — run, worker, augment, and source
+  refresh — while the whole suite passed. The regression tests are
+  `test_from_settings_maps_every_declared_setting`, which drives sentinels so a
+  renamed field raises rather than silently comparing, and
+  `test_client_builds_from_resolved_settings`, which exercises the pipeline's own
+  construction path. The underlying risk is unchanged: a path nothing executes is
+  a path nothing protects.
+- **Shared interactive infrastructure stays thin.** The discovery, state, and
+  consent behaviour is phase-local. `v2_refactor_roadmap.md` records why v1's
+  shared `run_interactive` was not kept: it "hardcoded Phase 01's exact model ...
+  [and] became dead code outside Phase 01." Only the genuinely shared parts are
+  consumed — the entrypoint policy, terminal prompting, and the manifest scan,
+  which `list_snapshots` now serves for this pipeline's manifest filename. If a
+  second pipeline needs this behaviour, promote it then, with two consumers.
 
 - **A published snapshot is no longer globally sorted by CIK.** Parts are byte
   copies of the validated chunk files, so the snapshot is in chunk order and each
@@ -254,8 +306,12 @@ These are decisions, not oversights. Each names the alternative.
   handoff surface.
 - `tests/pipelines/metadata_sync/test_cli.py` — the parser, the settings
   regression, and the refresh/compare/plan/merge chain.
-- `tests/pipelines/metadata_sync/test_operator.py` — the wizard's action
-  bindings and cancellation.
+- `tests/pipelines/metadata_sync/test_operator.py` — session state across menu
+  visits, plan auto-resolution, the numbered pick, the plan header, network
+  consent, command emission, and the interrupt message.
+- `tests/pipelines/metadata_sync/test_discovery.py` — plan and snapshot
+  listing, ordering, unreadable and version-incompatible plans, pointer marking,
+  and the numbered picker.
 - `tests/pipelines/metadata_sync/test_end_to_end.py` — the full chain over a
   scripted transport.
 - `tests/pipelines/metadata_sync/test_manifest.py`, `test_paths.py`,

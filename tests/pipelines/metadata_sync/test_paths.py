@@ -158,7 +158,6 @@ def _project_paths(artifacts_root: Path) -> ProjectPaths:
     return ProjectPaths(
         repo_root=artifacts_root.parent,
         artifacts_root=artifacts_root,
-        cache_root=artifacts_root / "cache",
         uploads_root=artifacts_root / "uploads",
     )
 

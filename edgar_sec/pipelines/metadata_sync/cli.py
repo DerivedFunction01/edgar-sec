@@ -15,6 +15,7 @@ from __future__ import annotations
 import argparse
 import json
 import sys
+from collections.abc import Callable
 from pathlib import Path
 from typing import Any
 
@@ -66,8 +67,27 @@ __all__ = [
 
 
 def _build_client() -> SubmissionsClient:
+    """Build the live submissions client, cached against the shared response store.
+
+    The cache root and its TTL come from the settings registry, not from a local
+    constant and not from ``resolve_paths()``. The registry is the declared
+    source for both, and its ``cache.root`` default is the directory the store
+    already lives in. ``resolve_paths()`` computes a *different* directory from a
+    *different* environment variable -- a divergence the parity inventory records
+    as "root-setting env names are inconsistent" -- so reading it here would
+    silently open a second, empty store next to the populated one.
+
+    With the store wired, a repeated fetch, a resumed chunk, or a re-plan that
+    re-covers CIKs already seen serves from disk and consumes no request-budget.
+    The failure ledger rides along in the same file, so a URL already known bad
+    is skipped without a request.
+    """
     settings = resolve_runtime_settings()
-    return SubmissionsClient(settings=settings.sec)
+    return SubmissionsClient(
+        settings=settings.sec,
+        cache_dir=settings.cache_root,
+        json_ttl_s=settings.json_ttl_s,
+    )
 
 
 def _emit_progress(event: dict[str, Any]) -> None:
@@ -84,6 +104,42 @@ def _emit_progress(event: dict[str, Any]) -> None:
 
 def _emit(payload: dict[str, Any]) -> None:
     print(json.dumps(payload, indent=2))
+
+
+# Merge emits one progress event per stage, and the stage count is part of the
+# contract the merge-reporting callback already understands.
+MERGE_PROGRESS_STAGES = 4
+
+
+def _progress_renderer(
+    kind: str, total: int, *, desc: str
+) -> tuple[Callable[[dict[str, Any]], None] | None, Any]:
+    """Build a progress callback for a long-running command, and its bar to close.
+
+    A terminal gets a live bar; a pipe or a captured log gets the plain event
+    lines. Choosing on ``isatty`` is what keeps a redirected run readable --
+    bar control characters in a log file help nobody -- while a long run over
+    tens of thousands of CIKs is visibly progressing rather than silent, which
+    is indistinguishable from a hang.
+
+    The tqdm adapters in ``foundation.runtime.progress`` already implement both
+    event shapes this pipeline emits: per-CIK fetch events and per-stage merge
+    events. Routing through them gives those adapters a real caller and keeps
+    the rendering in one place instead of per action.
+    """
+    if not sys.stderr.isatty():
+        return (lambda event: _emit_progress(event)), None
+    from tqdm import tqdm
+
+    if kind == "merge":
+        bar = tqdm(total=total, unit="stage", desc=desc, leave=False)
+        from edgar_sec.foundation.runtime.progress import make_merge_progress_callback
+
+        return make_merge_progress_callback(bar), bar
+    bar = tqdm(total=total, unit="cik", desc=desc, leave=False)
+    from edgar_sec.foundation.runtime.progress import make_tqdm_callback
+
+    return make_tqdm_callback(bar), bar
 
 
 def cmd_refresh(artifacts_root: Path | None = None) -> int:
@@ -180,15 +236,30 @@ def cmd_run(options: RunOptions, *, client: SubmissionsClient | None = None) -> 
     targets = list(options.chunk_ids) or plan.chunk_ids()
     if not targets:
         raise ValueError("no chunks selected")
-    results = run_chunk_ids(
-        client or _build_client(),
-        plan,
-        run_paths,
-        targets,
-        snapshot_id=options.effective_snapshot_id(plan),
-        workers=resolve_workers(options.workers),
-        completed=discover_completed_chunks(plan, run_paths),
+    completed = discover_completed_chunks(plan, run_paths)
+    # The final chunk of a roster is usually partial, so the total has to be the
+    # sum of actual chunk lengths rather than chunk_size per chunk. Summing
+    # chunk_size overstated the cohort and skewed the bar's ETA.
+    outstanding = sum(
+        plan.chunk_length(chunk_id) for chunk_id in targets if chunk_id not in completed
     )
+    progress, bar = _progress_renderer(
+        "fetch", outstanding, desc=f"plan {plan.plan_id[:8]}"
+    )
+    try:
+        results = run_chunk_ids(
+            client or _build_client(),
+            plan,
+            run_paths,
+            targets,
+            snapshot_id=options.effective_snapshot_id(plan),
+            workers=resolve_workers(options.workers),
+            completed=completed,
+            progress=progress,
+        )
+    finally:
+        if bar is not None:
+            bar.close()
     for result in results:
         if result.skipped_existing:
             _emit({"chunk_id": result.chunk_id, "status": "already_complete"})
@@ -208,13 +279,20 @@ def cmd_merge(options: RunOptions, *, lineage: dict[str, str] | None = None) -> 
     """Validate every chunk and publish a snapshot."""
     run_paths = options.run_paths()
     plan = load_plan(run_paths)
-    report = merge_chunks(
-        plan,
-        run_paths,
-        options.effective_snapshot_id(plan),
-        lineage=lineage,
-        progress=_emit_progress,
+    progress, bar = _progress_renderer(
+        "merge", MERGE_PROGRESS_STAGES, desc=f"merge {plan.plan_id[:8]}"
     )
+    try:
+        report = merge_chunks(
+            plan,
+            run_paths,
+            options.effective_snapshot_id(plan),
+            lineage=lineage,
+            progress=progress,
+        )
+    finally:
+        if bar is not None:
+            bar.close()
     _emit(publish_snapshot(report, run_paths.metadata))
     return 0
 

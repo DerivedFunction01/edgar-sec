@@ -10,9 +10,11 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
+import duckdb
 import pytest
 from fastapi.testclient import TestClient
 
+from edgar_sec.apps.viewer.model import artifact_id
 from edgar_sec.apps.viewer.server import create_app
 from tests.apps.viewer.conftest import build_metadata_snapshot
 
@@ -39,6 +41,82 @@ def test_listing_carries_a_revision_for_every_dataset(client: TestClient) -> Non
     items = client.get("/api/datasets").json()
     assert items
     assert all(item["revision"] for item in items)
+
+
+def test_tree_and_text_endpoints_browse_root_files(tmp_path: Path) -> None:
+    root = tmp_path / "artifacts"
+    root.mkdir()
+    (root / "notes.txt").write_text("hello world", encoding="utf-8")
+    (root / "records.csv").write_text("id,name\n1,a\n", encoding="utf-8")
+    (root / "ignored.bin").write_bytes(b"\x00\x01")
+    client = TestClient(create_app(root))
+
+    listing = client.get("/api/tree").json()
+    assert {node["name"] for node in listing} == {"notes.txt", "records.csv"}
+    text_id = next(node["id"] for node in listing if node["name"] == "notes.txt")
+    response = client.get(f"/api/files/{text_id}/text", params={"limit": 5})
+    assert response.status_code == 200
+    assert response.json()["text"] == "hello"
+    assert response.json()["next_offset"] == 5
+
+
+def test_csv_and_jsonl_nodes_are_read_as_duckdb_relations(tmp_path: Path) -> None:
+    root = tmp_path / "artifacts"
+    root.mkdir()
+    (root / "records.csv").write_text("id,name\n1,alpha\n", encoding="utf-8")
+    (root / "records.jsonl").write_text('{"id":2,"name":"beta"}\n', encoding="utf-8")
+    client = TestClient(create_app(root))
+    nodes = {node["name"]: node for node in client.get("/api/tree").json()}
+
+    csv_rows = client.get(f"/api/datasets/{nodes['records.csv']['id']}/rows").json()
+    jsonl_rows = client.get(f"/api/datasets/{nodes['records.jsonl']['id']}/rows").json()
+    assert csv_rows["items"] == [{"id": 1, "name": "alpha"}]
+    assert jsonl_rows["items"] == [{"id": 2, "name": "beta"}]
+
+
+def test_native_duckdb_tables_browse_read_only_and_console_is_disabled(
+    tmp_path: Path,
+) -> None:
+    root = tmp_path / "artifacts"
+    root.mkdir()
+    db_path = root / "source.duckdb"
+    conn = duckdb.connect(str(db_path))
+    try:
+        conn.execute("CREATE TABLE visible (value INTEGER)")
+        conn.execute("INSERT INTO visible VALUES (7)")
+    finally:
+        conn.close()
+    before = db_path.read_bytes()
+    client = TestClient(create_app(root))
+    database = client.get("/api/tree").json()[0]
+    table = client.get("/api/tree", params={"parent_id": database["id"]}).json()[0]
+
+    rows = client.get(f"/api/datasets/{table['id']}/rows").json()
+    assert rows["items"] == [{"value": 7}]
+    response = client.post(
+        f"/api/datasets/{table['id']}/sql", json={"query": "SELECT * FROM dataset"}
+    )
+    assert response.status_code == 400
+    assert "disabled" in response.json()["detail"]
+    assert db_path.read_bytes() == before
+
+
+def test_tree_preserves_manifest_backed_logical_dataset(metadata_tree: Path) -> None:
+    client = TestClient(create_app(metadata_tree))
+    metadata = next(
+        node
+        for node in client.get(
+            "/api/tree", params={"parent_id": artifact_id("metadata")}
+        ).json()
+        if node["name"].startswith("snapshots")
+    )
+    snapshot_dir = client.get("/api/tree", params={"parent_id": metadata["id"]}).json()[
+        0
+    ]
+    children = client.get("/api/tree", params={"parent_id": snapshot_dir["id"]}).json()
+    logical = [node for node in children if node["node_type"] == "dataset"]
+    assert any(node["kind"] == "metadata_snapshot" for node in logical)
+    assert any(node["kind"] == "metadata_cik_index" for node in logical)
 
 
 def test_schema_endpoint_reports_columns(client: TestClient) -> None:

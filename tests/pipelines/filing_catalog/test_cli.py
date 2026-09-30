@@ -128,7 +128,7 @@ def test_materialize_reports_a_transient_source(
 def test_materialize_without_a_source_fails_cleanly(
     tmp_path: Path, capsys: pytest.CaptureFixture[str], monkeypatch: pytest.MonkeyPatch
 ) -> None:
-    monkeypatch.setenv("EDGAR_ARTIFACTS_DIR", str(tmp_path / "empty"))
+    monkeypatch.setenv("ARTIFACTS_ROOT", str(tmp_path / "empty"))
     assert main(["materialize"]) == 1
     assert "no Phase 1 snapshot" in capsys.readouterr().err
 
@@ -143,7 +143,7 @@ def test_plan_reports_an_unpublished_catalog(
 def test_plan_current_alias_resolves_via_the_pointer(
     tmp_path: Path, capsys: pytest.CaptureFixture[str], monkeypatch: pytest.MonkeyPatch
 ) -> None:
-    monkeypatch.setenv("EDGAR_ARTIFACTS_DIR", str(tmp_path / "durable"))
+    monkeypatch.setenv("ARTIFACTS_ROOT", str(tmp_path / "durable"))
     assert main(["materialize", "--source", SAMPLE]) == 0
     capsys.readouterr()
     assert main(["plan", "--catalog", "current", "--forms", "10-K"]) == 0

@@ -52,8 +52,26 @@ def run_interactive_menu(
     title: str,
     actions: tuple[MenuAction, ...] | list[MenuAction],
     exit_key: str = "0",
+    *,
+    interrupted_message: str | None = None,
 ) -> int:
-    """Run an interactive action loop until user selects exit."""
+    """Run an interactive action loop until user selects exit.
+
+    A blank answer re-renders the menu rather than running the first action.
+    Defaulting it to an action meant a stray Return silently started whichever
+    action happened to be listed first, which for a mutating command is not a
+    harmless default.
+
+    Any exception from an action is reported and the loop continues. A terminal
+    wizard that dies on an unexpected error -- an ``AttributeError`` from a
+    settings field, say -- loses the session the operator was holding. The
+    message is printed with its type because a broad handler that hides the
+    class of failure is harder to diagnose than the failure.
+
+    ``interrupted_message`` lets a pipeline state what survives an interrupt,
+    which is phase knowledge: this module cannot know that some workflows
+    preserve completed work and others do not.
+    """
     action_map = {a.key.lower(): a for a in actions}
 
     while True:
@@ -62,24 +80,23 @@ def run_interactive_menu(
             print(f"  {a.key}. {a.label}")
         print(f"  {exit_key}. Exit")
 
-        choice = (
-            prompt_text("\nChoice", default=actions[0].key if actions else exit_key)
-            .strip()
-            .lower()
-        )
-        if choice == exit_key or not choice:
+        raw = prompt_text("\nChoice", "").strip()
+        if raw == exit_key:
             return 0
+        if not raw:
+            continue
+        choice = raw.lower()
 
         action = action_map.get(choice)
-        if action is not None:
-            try:
-                action.callback()
-            except KeyboardInterrupt:
-                print("\nAction cancelled by user.")
-            except (RuntimeError, ValueError, OSError) as exc:
-                print(f"\nError executing action '{action.label}': {exc}")
-        else:
+        if action is None:
             print("Invalid choice, please select again.")
+            continue
+        try:
+            action.callback()
+        except KeyboardInterrupt:
+            print(f"\n{interrupted_message or 'Action cancelled by user.'}")
+        except Exception as exc:  # noqa: BLE001 - a wizard must outlive one failure
+            print(f"\nError executing action '{action.label}': {exc!r}")
 
 
 def operator_entrypoint(
@@ -87,6 +104,8 @@ def operator_entrypoint(
     menu: tuple[MenuAction, ...] | list[MenuAction],
     cli_main: Callable[[list[str]], int],
     argv: list[str] | None = None,
+    *,
+    interrupted_message: str | None = None,
 ) -> int:
     """Dispatch a pipeline operator: menu with no arguments, CLI otherwise.
 
@@ -98,7 +117,9 @@ def operator_entrypoint(
     """
     args = sys.argv[1:] if argv is None else argv
     if not args:
-        return run_interactive_menu(title, menu, exit_key="0")
+        return run_interactive_menu(
+            title, menu, exit_key="0", interrupted_message=interrupted_message
+        )
     return cli_main(args)
 
 

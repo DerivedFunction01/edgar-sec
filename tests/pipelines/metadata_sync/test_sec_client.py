@@ -8,7 +8,11 @@ decides ``partial`` versus ``failed`` downstream.
 
 from __future__ import annotations
 
+from pathlib import Path
+
 from edgar_sec.domain.sec_urls import historical_submissions_url, submissions_url
+from edgar_sec.foundation.runtime.settings import resolve_runtime_settings
+from edgar_sec.infra.sec_http.client import SecHttpClient
 from edgar_sec.pipelines.metadata_sync.sec_client import (
     CikFetchResult,
     SubmissionsClient,
@@ -124,3 +128,68 @@ def test_client_accepts_an_explicit_user_agent(session: FakeSession) -> None:
     client = SubmissionsClient(http=build_test_client(session).http)
     session.register(submissions_url(FORD), _payload())
     assert client.fetch_cik(FORD).fetched_ok is True
+
+
+def test_client_builds_from_resolved_settings() -> None:
+    """The production construction path, exercised from the pipeline side.
+
+    `cmd_run`, `cmd_worker`, and `cmd_augment` all reach the network through
+    `_build_client()` -> `SubmissionsClient(settings=...)` ->
+    `SecHttpClient.from_settings`. That chain was broken once and no pipeline
+    test reached it, because every other test injects a fake transport.
+    """
+    from edgar_sec.foundation.runtime.settings import resolve_runtime_settings
+    from edgar_sec.pipelines.metadata_sync.cli import _build_client
+
+    settings = resolve_runtime_settings().sec
+    client = _build_client()
+    assert client.http.user_agent == settings.user_agent
+    assert client.http.timeout_s == settings.timeout_s
+    assert client.http.retry_policy.max_retries == settings.max_retries
+
+
+def test_cache_configuration_is_forwarded_to_the_http_client(tmp_path: Path) -> None:
+    """The store is reachable configuration, not a construction-time accident.
+
+    Without a forwarded cache root the client silently runs with no response
+    cache and no failure ledger, which costs a request per URL on every
+    re-fetch and makes a known-bad URL cost its retries again.
+    """
+    client = SubmissionsClient(
+        settings=resolve_runtime_settings().sec,
+        cache_dir=tmp_path,
+        json_ttl_s=1234,
+    )
+    assert client.http.cache_dir == tmp_path.resolve()
+    assert client.http._cache is not None
+    assert client.http._cache.json_ttl_s == 1234
+    assert client.http._cache.db_path == tmp_path.resolve() / "responses.sqlite"
+
+
+def test_a_cached_url_is_served_without_touching_the_transport(tmp_path: Path) -> None:
+    """A cache hit must not consume a request-budget slot."""
+
+    class Tripwire:
+        def get(self, *_args, **_kwargs):
+            raise AssertionError("the transport was reached for a cached URL")
+
+    http = SecHttpClient(
+        user_agent="Cache Probe probe@example.com",
+        cache_dir=tmp_path,
+        json_ttl_s=600,
+        session_factory=Tripwire,
+    )
+    http._cache.put(
+        "https://data.sec.gov/submissions/CIK0000000020.json",
+        b'{"cik":"20"}',
+        "d41d8cd98f00b204e9800998ecf8427e",
+        12,
+        "application/json",
+    )
+
+    client = SubmissionsClient(http=http)
+    result = client.fetch_cik("0000000020")
+
+    assert result.fetched_ok is True
+    assert result.payload == {"cik": "20"}
+    assert result.terminal_error() is None

@@ -336,7 +336,7 @@ def test_resolve_source_rejects_a_missing_artifact(tmp_path: Path) -> None:
 def test_resolve_source_without_arguments_reports_no_snapshot(
     tmp_path: Path, monkeypatch: pytest.MonkeyPatch
 ) -> None:
-    monkeypatch.setenv("EDGAR_ARTIFACTS_DIR", str(tmp_path))
+    monkeypatch.setenv("ARTIFACTS_ROOT", str(tmp_path))
     with pytest.raises(CatalogError, match="no Phase 1 snapshot"):
         resolve_source(None)
 

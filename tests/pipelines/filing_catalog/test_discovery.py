@@ -160,7 +160,7 @@ def test_status_does_not_open_any_parquet(
 def test_current_pointer_is_read_when_durable(
     tmp_path: Path, sample_source: Path, monkeypatch: pytest.MonkeyPatch
 ) -> None:
-    monkeypatch.setenv("EDGAR_ARTIFACTS_DIR", str(tmp_path / "durable"))
+    monkeypatch.setenv("ARTIFACTS_ROOT", str(tmp_path / "durable"))
     manifest = materialize(sample_source)
     paths = resolve_filing_catalog_paths()
     assert current_catalog_id(paths) == manifest["catalog_id"]

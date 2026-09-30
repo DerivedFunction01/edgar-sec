@@ -1,5 +1,5 @@
 import { afterEach, beforeEach, describe, expect, it } from "bun:test";
-import { revisions, runSql, type SqlResult } from "./api";
+import { fetchTreeChildren, revisions, runSql, type SqlResult } from "./api";
 
 const SAMPLE: SqlResult = {
   columns: ["n"],
@@ -60,5 +60,27 @@ describe("runSql memory LRU", () => {
     await runSql("d3", "SELECT 90");
     await runSql("d3", "SELECT 91");
     expect(calls).toBe(2);
+  });
+});
+
+describe("GET request coalescing", () => {
+  beforeEach(() => {
+    revisions.clear();
+    originalFetch = globalThis.fetch;
+  });
+  afterEach(() => {
+    globalThis.fetch = originalFetch;
+  });
+
+  it("shares the same in-flight tree request", async () => {
+    let calls = 0;
+    globalThis.fetch = (async () => {
+      calls++;
+      await Promise.resolve();
+      return new Response("[]", { status: 200 });
+    }) as typeof globalThis.fetch;
+    const [first, second] = await Promise.all([fetchTreeChildren(), fetchTreeChildren()]);
+    expect(first).toEqual(second);
+    expect(calls).toBe(1);
   });
 });

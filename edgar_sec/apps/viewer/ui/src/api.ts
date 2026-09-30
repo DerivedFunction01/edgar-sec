@@ -17,7 +17,7 @@ import { type CacheStore, cache, estimateBytes, MAX_ENTRY_BYTES } from "./lib/ca
  * and the transient chunk writer both produce `.db` files, and the server
  * exposes one dataset per table. This list mirrors what the server emits.
  */
-export type ArtifactFormat = "parquet" | "sqlite" | "json";
+export type ArtifactFormat = "parquet" | "sqlite" | "duckdb" | "csv" | "jsonl" | "text" | "json";
 
 /**
  * The dataset kinds the server reports.
@@ -64,11 +64,38 @@ export interface DatasetSummary {
   source_paths?: string[];
 }
 
+export interface TreeEntry {
+  id: string;
+  name: string;
+  relative_path: string;
+  node_type: "directory" | "database" | "table" | "dataset" | "file";
+  format: ArtifactFormat | null;
+  has_children: boolean;
+  size_bytes: number;
+  mtime: string | null;
+  revision: string;
+  kind: string | null;
+  phase: string | null;
+  run_id: string | null;
+  source_paths: string[];
+  table: string | null;
+}
+
+export interface TextPage {
+  relative_path: string;
+  text: string;
+  offset: number;
+  next_offset: number | null;
+  has_more: boolean;
+  size_bytes: number;
+}
+
 export interface ColumnSchema {
   name: string;
   duckdb_type: string;
-  null_count: number;
-  approx_distinct: number;
+  null_count: number | null;
+  approx_distinct: number | null;
+  total_rows?: number;
   top_values?: { value: unknown; count: number }[];
 }
 
@@ -151,7 +178,9 @@ export function isCurrent(id: string, revision: string): boolean {
  * Merge a fresh listing into the revision map, pruning stale cache entries for
  * any artifact whose revision changed. Returns the same list for chaining.
  */
-async function recordRevisions(list: DatasetSummary[]): Promise<DatasetSummary[]> {
+async function recordRevisions<T extends { id: string; revision: string }>(
+  list: T[],
+): Promise<T[]> {
   const prune: Promise<void>[] = [];
   for (const item of list) {
     const previous = revisions.get(item.id);
@@ -166,13 +195,25 @@ async function recordRevisions(list: DatasetSummary[]): Promise<DatasetSummary[]
   return list;
 }
 
+const inFlightGets = new Map<string, Promise<unknown>>();
+
 async function getJson<T>(url: string): Promise<T> {
-  const response = await fetch(url);
-  if (!response.ok) {
-    const detail = await response.text();
-    throw new Error(`GET ${url} failed: ${response.status} ${detail}`);
+  const existing = inFlightGets.get(url);
+  if (existing) return (await existing) as T;
+  const request = (async () => {
+    const response = await fetch(url);
+    if (!response.ok) {
+      const detail = await response.text();
+      throw new Error(`GET ${url} failed: ${response.status} ${detail}`);
+    }
+    return response.json();
+  })();
+  inFlightGets.set(url, request);
+  try {
+    return (await request) as T;
+  } finally {
+    if (inFlightGets.get(url) === request) inFlightGets.delete(url);
   }
-  return (await response.json()) as T;
 }
 
 export async function fetchDatasets(): Promise<DatasetSummary[]> {
@@ -185,6 +226,17 @@ export async function fetchDocuments(): Promise<DatasetSummary[]> {
   return recordRevisions(list);
 }
 
+export async function fetchTreeChildren(parentId?: string): Promise<TreeEntry[]> {
+  const query = parentId ? `?parent_id=${encodeURIComponent(parentId)}` : "";
+  const list = await getJson<TreeEntry[]>(`/api/tree${query}`);
+  return recordRevisions(list);
+}
+
+export function fetchText(id: string, offset = 0): Promise<TextPage> {
+  const query = new URLSearchParams({ offset: String(offset) });
+  return getJson<TextPage>(`/api/files/${encodeURIComponent(id)}/text?${query}`);
+}
+
 /**
  * Fetch a revision-gated payload (schema/stats/document). Serves from cache
  * instantly when the listing revision is unchanged; otherwise fetches and
@@ -194,7 +246,7 @@ async function gatedMeta<T>(id: string, kind: string, fetchFn: () => Promise<T>)
   const revision = revisions.get(id);
   if (revision) {
     try {
-      const cached = await cache.get(metaKey(id, revision));
+      const cached = await cache.get(metaKey(id, revision, kind));
       if (cached) {
         await cache.touch(cached.key);
         return cached.payload as T;
@@ -209,7 +261,7 @@ async function gatedMeta<T>(id: string, kind: string, fetchFn: () => Promise<T>)
       const bytes = estimateBytes(payload);
       if (bytes <= MAX_ENTRY_BYTES) {
         await cache.put({
-          key: metaKey(id, revision),
+          key: metaKey(id, revision, kind),
           kind,
           revision,
           payload,

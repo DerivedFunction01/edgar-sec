@@ -2,21 +2,18 @@ import { type UIEvent, useCallback, useEffect, useRef, useState } from "react";
 import {
   type ColumnFilter,
   type ColumnSchema,
-  type DatasetSummary,
-  type DocumentContent,
-  fetchDatasets,
-  fetchDocument,
-  fetchDocuments,
   fetchRows,
   fetchSchema,
   fetchStats,
   type SqlResult,
+  type TreeEntry,
 } from "./api";
 import ArtifactSidebar from "./components/ArtifactSidebar";
 import CellFocus from "./components/CellFocus";
 import DataTable from "./components/DataTable";
-import RowDetail, { JsonDocument } from "./components/RowDetail";
+import RowDetail from "./components/RowDetail";
 import SqlConsole from "./components/SqlConsole";
+import TextFileView from "./components/TextFileView";
 
 const PAGE_SIZE = 200;
 const MAX_LOADED_ROWS = 2000;
@@ -34,10 +31,7 @@ export default function App() {
     () => localStorage.getItem("viewer-sidebar") === "true",
   );
 
-  const [datasets, setDatasets] = useState<DatasetSummary[]>([]);
-  const [documents, setDocuments] = useState<DatasetSummary[]>([]);
-  const [selected, setSelected] = useState<DatasetSummary | null>(null);
-  const [documentView, setDocumentView] = useState<DocumentContent | null>(null);
+  const [selected, setSelected] = useState<TreeEntry | null>(null);
 
   const [schema, setSchema] = useState<ColumnSchema[]>([]);
   const [rows, setRows] = useState<Record<string, unknown>[]>([]);
@@ -47,6 +41,8 @@ export default function App() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [selectedRowIndex, setSelectedRowIndex] = useState<number | null>(null);
+  const [statsLoaded, setStatsLoaded] = useState(false);
+  const [statsLoading, setStatsLoading] = useState(false);
 
   const [filters, setFilters] = useState<ColumnFilter[]>([]);
   const [sqlResults, setSqlResults] = useState<{ result: SqlResult; query: string } | null>(null);
@@ -75,53 +71,10 @@ export default function App() {
     localStorage.setItem("viewer-theme", theme);
   }, [theme]);
 
-  const selectedRef = useRef<DatasetSummary | null>(null);
+  const selectedRef = useRef<TreeEntry | null>(null);
   selectedRef.current = selected;
-
-  const refreshListings = useCallback(async () => {
-    try {
-      const [datasetList, documentList] = await Promise.all([fetchDatasets(), fetchDocuments()]);
-      setDatasets(datasetList);
-      setDocuments(documentList);
-
-      // If the open artifact's backing file changed while the viewer was idle,
-      // flip its revision so the data effects re-run against fresh data.
-      const current = selectedRef.current;
-      if (current) {
-        const updated =
-          current.format === "json"
-            ? documentList.find((item) => item.id === current.id)
-            : datasetList.find((item) => item.id === current.id);
-        if (updated && updated.revision !== current.revision) {
-          if (current.format === "json") {
-            void fetchDocument(updated.id)
-              .then(setDocumentView)
-              .catch(() => {});
-          }
-          setSelected(updated);
-        }
-      }
-    } catch (exc) {
-      setError(exc instanceof Error ? exc.message : String(exc));
-    }
-  }, []);
-
-  useEffect(() => {
-    void refreshListings();
-  }, [refreshListings]);
-
-  useEffect(() => {
-    const onVisible = () => {
-      if (document.visibilityState === "visible") void refreshListings();
-    };
-    const onFocus = () => void refreshListings();
-    window.addEventListener("visibilitychange", onVisible);
-    window.addEventListener("focus", onFocus);
-    return () => {
-      window.removeEventListener("visibilitychange", onVisible);
-      window.removeEventListener("focus", onFocus);
-    };
-  }, [refreshListings]);
+  const rowRequestVersion = useRef(0);
+  const statsRequestVersion = useRef(0);
 
   useEffect(() => {
     localStorage.setItem("viewer-console", String(consoleOpen));
@@ -131,7 +84,9 @@ export default function App() {
   }, [sidebarCollapsed]);
 
   const loadFirstPage = useCallback(async () => {
-    if (!selected || selected.format === "json") return;
+    const version = ++rowRequestVersion.current;
+    if (!selected || selected.format === "text") return;
+    loadingRef.current = true;
     setLoading(true);
     setError(null);
     setSelectedRowIndex(null);
@@ -143,44 +98,44 @@ export default function App() {
         dir: sort?.dir,
         filters,
       });
+      if (version !== rowRequestVersion.current || selectedRef.current?.id !== selected.id) {
+        return;
+      }
       setRows(page.items);
       setHasMore(page.has_more);
       setNextCursor(page.next_cursor);
       setTotalRows(page.total_rows);
     } catch (exc) {
-      setError(exc instanceof Error ? exc.message : String(exc));
+      if (version === rowRequestVersion.current) {
+        setError(exc instanceof Error ? exc.message : String(exc));
+      }
     } finally {
-      setLoading(false);
+      if (version === rowRequestVersion.current) {
+        loadingRef.current = false;
+        setLoading(false);
+      }
     }
   }, [selected, filters, sort]);
 
   useEffect(() => {
-    setDocumentView(null);
+    statsRequestVersion.current++;
     setSchema([]);
     setRows([]);
     setHasMore(false);
     setNextCursor(null);
     setTotalRows(null);
-    setFilters([]);
     setSqlResults(null);
-    setSort(null);
     setSelectedRowIndex(null);
     setCellFocus(null);
     setError(null);
-    if (!selected || selected.format === "json") return;
+    setStatsLoaded(false);
+    setStatsLoading(false);
+    if (!selected || selected.format === "text") return;
     let cancelled = false;
-    Promise.all([fetchSchema(selected.id), fetchStats(selected.id)])
-      .then(([base, withStats]) => {
+    void fetchSchema(selected.id)
+      .then((base) => {
         if (cancelled) return;
-        const topByColumn = new Map(
-          withStats.map((column) => [column.name, column.top_values ?? []]),
-        );
-        setSchema(
-          base.map((column) => ({
-            ...column,
-            top_values: topByColumn.get(column.name),
-          })),
-        );
+        setSchema(base);
       })
       .catch((exc) => setError(exc instanceof Error ? exc.message : String(exc)));
     return () => {
@@ -203,6 +158,9 @@ export default function App() {
     ) {
       return;
     }
+    const version = rowRequestVersion.current;
+    const datasetId = selected.id;
+    loadingRef.current = true;
     setLoading(true);
     try {
       const page = await fetchRows(selected.id, {
@@ -212,6 +170,9 @@ export default function App() {
         dir: sort?.dir,
         filters,
       });
+      if (version !== rowRequestVersion.current || selectedRef.current?.id !== datasetId) {
+        return;
+      }
       setRows((current) => {
         const merged = [...current, ...page.items];
         return merged.slice(0, MAX_LOADED_ROWS);
@@ -219,9 +180,14 @@ export default function App() {
       setHasMore(page.has_more);
       setNextCursor(page.next_cursor);
     } catch (exc) {
-      setError(exc instanceof Error ? exc.message : String(exc));
+      if (version === rowRequestVersion.current) {
+        setError(exc instanceof Error ? exc.message : String(exc));
+      }
     } finally {
-      setLoading(false);
+      if (version === rowRequestVersion.current) {
+        loadingRef.current = false;
+        setLoading(false);
+      }
     }
   }, [selected, filters, sort]);
 
@@ -263,16 +229,35 @@ export default function App() {
     [],
   );
 
-  const onSelectDocument = useCallback(async (item: DatasetSummary) => {
-    setSelected(item);
-    try {
-      setDocumentView(await fetchDocument(item.id));
-    } catch (exc) {
-      setError(exc instanceof Error ? exc.message : String(exc));
-    }
+  const onSelect = useCallback((entry: TreeEntry) => {
+    if (selectedRef.current?.id === entry.id) return;
+    selectedRef.current = entry;
+    setFilters([]);
+    setSort(null);
+    setSelected(entry);
   }, []);
 
-  const isDocument = selected?.format === "json";
+  const loadStats = async () => {
+    if (!selected || statsLoading || statsLoaded) return;
+    const id = selected.id;
+    const version = ++statsRequestVersion.current;
+    setStatsLoading(true);
+    try {
+      const stats = await fetchStats(id);
+      if (version === statsRequestVersion.current && selectedRef.current?.id === id) {
+        setSchema(stats);
+        setStatsLoaded(true);
+      }
+    } catch (exc) {
+      if (version === statsRequestVersion.current && selectedRef.current?.id === id) {
+        setError(exc instanceof Error ? exc.message : String(exc));
+      }
+    } finally {
+      if (version === statsRequestVersion.current) setStatsLoading(false);
+    }
+  };
+
+  const isText = selected?.format === "text";
   const windowCapped = rows.length >= MAX_LOADED_ROWS && hasMore;
 
   return (
@@ -307,26 +292,12 @@ export default function App() {
       </div>
       <ArtifactSidebar
         collapsed={sidebarCollapsed}
-        datasets={datasets}
-        documents={documents}
         selectedId={selected?.id ?? null}
-        onRefresh={() => void refreshListings()}
-        onSelect={(item) => {
-          if (item.format === "json") {
-            void onSelectDocument(item);
-          } else {
-            setSelected(item);
-          }
-        }}
+        onSelect={onSelect}
       />
       <main className="shell-main">
-        {isDocument && documentView ? (
-          <div className="detail" style={{ flex: 1 }}>
-            <div className="detail-header">
-              <span className="panel-title mono">{documentView.summary.relative_path}</span>
-            </div>
-            <JsonDocument content={documentView.content} />
-          </div>
+        {isText && selected ? (
+          <TextFileView key={selected.id} id={selected.id} path={selected.relative_path} />
         ) : sqlResults ? (
           <div className="results-view">
             <div className="table-toolbar">
@@ -394,6 +365,15 @@ export default function App() {
               {totalRows !== null && (
                 <span className="topbar-meta">{totalRows.toLocaleString()} rows</span>
               )}
+              {selected && schema.length > 0 && !statsLoaded && (
+                <button
+                  className="btn btn-ghost"
+                  onClick={() => void loadStats()}
+                  disabled={statsLoading}
+                >
+                  {statsLoading ? "Calculating stats…" : "Load column stats"}
+                </button>
+              )}
               {rows.length > 0 && (
                 <span className="topbar-meta">
                   showing {rows.length.toLocaleString()}
@@ -441,11 +421,21 @@ export default function App() {
       </main>
       {consoleOpen && (
         <aside className="shell-right">
-          <SqlConsole
-            datasetId={selected && !isDocument ? selected.id : null}
-            datasetName={selected ? (selected.relative_path.split("/").pop() ?? null) : null}
-            onResult={(result, query) => setSqlResults({ result, query })}
-          />
+          {selected?.format === "duckdb" ? (
+            <div className="console">
+              <div className="panel-header">SQL Console</div>
+              <div className="tree-message">
+                The console is disabled for native DuckDB files to keep queries scoped to one
+                selected table.
+              </div>
+            </div>
+          ) : (
+            <SqlConsole
+              datasetId={selected && !isText ? selected.id : null}
+              datasetName={selected?.name ?? null}
+              onResult={(result, query) => setSqlResults({ result, query })}
+            />
+          )}
         </aside>
       )}
       <footer className="statusbar shell-status">

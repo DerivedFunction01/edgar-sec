@@ -40,20 +40,22 @@ which is what re-opened the decision.
 
 | Module | Responsibility |
 | :--- | :--- |
-| `viewer/` | The dataset viewer: manifest-driven discovery, paged DuckDB reads, and a guarded read-only SQL console. See [`viewer/README.md`](viewer/README.md). |
+| `viewer/` | The dataset viewer: a lazy filesystem explorer over the artifacts root, manifest-driven virtual datasets, paged DuckDB reads, and a guarded read-only SQL console. See [`viewer/README.md`](viewer/README.md). |
 
 ## Contracts this package guarantees
 
-- **Read-only, structurally.** The viewer opens an in-memory DuckDB connection
-  and binds artifacts only as *table-function arguments*. It never opens an
-  artifact path as a database, so there is no code path on which a browse
-  operation could take a write lock on a published file.
-- **Server-bound paths.** The browser supplies opaque dataset ids. Paths are
-  resolved server-side and confined to the artifacts root; the client never
-  supplies a SQL path or an identifier.
+- **Read-only, structurally.** The viewer opens an in-memory DuckDB connection.
+  Columnar, CSV, JSONL, and SQLite artifacts are bound only as *table-function
+  arguments*, which cannot write. A native `.duckdb` file is the one exception:
+  it is `ATTACH`ed `READ_ONLY` so its tables can be browsed, and it never
+  reaches the SQL console.
+- **Server-bound paths.** The browser supplies opaque ids. Paths are resolved
+  server-side and confined to the artifacts root; symlinks and dot-paths are
+  skipped, so neither the tree walk nor an id can escape the root.
 - **Bounded reads.** Row paging uses `LIMIT ? OFFSET ?` with `limit + 1` to
   compute `has_more` — never an unbounded scan and never a `COUNT` to answer
-  "is there more".
+  "is there more" — and is additionally capped by serialized response bytes.
+  Opening a table is a `DESCRIBE`; column statistics are opt-in.
 - **Guarded console SQL.** The console is read-only and single-statement, gated
   by `foundation.sql.guard`, with row and payload caps and an interrupt-based
   timeout.

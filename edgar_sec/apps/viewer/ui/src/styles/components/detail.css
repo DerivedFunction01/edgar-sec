@@ -49,3 +49,19 @@
 	padding: 3px 0;
 	border-bottom: 1px solid var(--theme-border-subtle);
 }
+
+.text-file-view {
+	display: flex;
+	flex-direction: column;
+	flex: 1;
+	min-height: 0;
+}
+
+.text-file-content {
+	flex: 1;
+	min-height: 0;
+	margin: 0;
+	overflow: auto;
+	white-space: pre;
+	word-break: normal;
+}

@@ -107,7 +107,7 @@ class SecHttpClient:
             user_agent=settings.header_user_agent,
             rate_limiter=limiter,
             retry_policy=retry_policy,
-            timeout_s=settings.timeout_seconds,
+            timeout_s=settings.timeout_s,
             cache_dir=cache_dir,
             json_ttl_s=json_ttl_s,
             metrics=metrics,

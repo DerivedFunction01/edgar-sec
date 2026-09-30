@@ -603,3 +603,27 @@ def test_metadata_is_registered_in_the_launcher() -> None:
 
     entry = next(item for item in launcher.ENTRIES if item.id == "metadata")
     assert entry.module == "edgar_sec.pipelines.metadata_sync.operator"
+
+
+def test_built_client_is_cached_against_the_registered_store() -> None:
+    """Phase 1 must reach the shared response cache, not run without one.
+
+    The cache root comes from the settings registry rather than
+    `resolve_paths()`: the registry's `cache.root` is the directory the store
+    already occupies, and `resolve_paths()` computes a different one from a
+    different environment variable. Reading the wrong authority opens a second,
+    empty store beside the populated one and silently forfeits every cached
+    response.
+    """
+    from edgar_sec.foundation.runtime.settings import resolve_runtime_settings
+    from edgar_sec.pipelines.metadata_sync.cli import _build_client
+
+    settings = resolve_runtime_settings()
+    client = _build_client()
+
+    assert client.http.cache_dir == Path(settings.cache_root).resolve()
+    assert client.http._cache is not None
+    assert client.http._cache.json_ttl_s == settings.json_ttl_s
+    # The store the pipeline opens must be the one the registry names.
+    assert settings.cache_root.name == "caches"
+    assert client.http._cache.db_path.name == "responses.sqlite"

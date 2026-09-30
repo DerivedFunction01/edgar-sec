@@ -490,7 +490,7 @@ LOADERS: tuple[DatasetLoader, ...] = (
 )
 
 
-def run_all(root: Path) -> list[ArtifactSummary]:
+def run_all(root: Path, *, include_sqlite: bool = True) -> list[ArtifactSummary]:
     """Run every loader over ``root`` and return the combined listing.
 
     A loader that raises is logged and skipped rather than failing the whole
@@ -499,8 +499,13 @@ def run_all(root: Path) -> list[ArtifactSummary]:
     """
     combined: list[ArtifactSummary] = []
     for loader in LOADERS:
+        if not include_sqlite and loader.name == "sqlite":
+            continue
         try:
-            combined.extend(loader.load(Path(root)))
+            loaded = loader.load(Path(root))
+            if not include_sqlite:
+                loaded = [item for item in loaded if item.format != "sqlite"]
+            combined.extend(loaded)
         except (DatasetError, OSError, ValueError) as exc:
             log.warning("loader %s failed: %s", loader.name, exc)
     combined.sort(

@@ -10,19 +10,20 @@ against the columns DuckDB actually reported.
 Two invariants are worth stating because they are what make "read-only" and
 "bounded" true rather than aspirational:
 
-**No artifact is ever opened as a database.** The connection is in-memory and
-every artifact is bound as a *table-function argument* (``read_parquet([...])``).
-Opening a file as a DuckDB database would take locks on it and could write; a
-table function only reads. This is stronger than an ``access_mode='read_only'``
-flag, because there is no write path to flag off.
+**The connection is always in-memory.** Columnar and text-backed data is read
+through DuckDB table functions. Native DuckDB files are attached explicitly with
+``READ_ONLY``; SQLite files use ``sqlite_scan``. The viewer never opens a source
+database with a writable connection.
 
 **"Is there more?" is answered by fetching one extra row**, not by a COUNT. A
 COUNT over a large snapshot is a full scan; the caller is asking a cursor
-question, and ``LIMIT limit + 1`` answers it for the price of the page.
+question, and ``LIMIT limit + 1`` answers it for the price of the page. Each
+response is bounded by both row count and encoded bytes.
 """
 
 from __future__ import annotations
 
+import json
 from dataclasses import dataclass
 from pathlib import Path
 
@@ -41,6 +42,7 @@ from edgar_sec.foundation.serialization import json_safe
 __all__ = [
     "MAX_BLOB_PREVIEW",
     "MAX_LIMIT",
+    "MAX_PAGE_BYTES",
     "DatasetError",
     "DatasetRef",
     "dataset_blob",
@@ -52,6 +54,7 @@ __all__ = [
 MAX_LIMIT = 1000
 MIN_LIMIT = 1
 DEFAULT_LIMIT = 200
+MAX_PAGE_BYTES = 4 * 1024 * 1024
 MAX_SEARCH_COLUMNS = 64
 
 # DuckDB's zstd frame magic. A payload that starts with it is compressed; the
@@ -128,11 +131,43 @@ class DatasetRef:
             if len(self.paths) == 1:
                 return f"read_parquet({listed})"
             return f"read_parquet([{listed}], union_by_name=true)"
+        if self.fmt == "csv":
+            if self.first.suffix.lower() == ".tsv":
+                return f"read_csv_auto({_quote_path(self.first)}, delim='\\t')"
+            return f"read_csv_auto({_quote_path(self.first)})"
+        if self.fmt == "jsonl":
+            return (
+                f"read_json_auto({_quote_path(self.first)}, format='newline_delimited')"
+            )
         if self.fmt == "sqlite":
             if not self.table:
                 raise DatasetError("a SQLite dataset must name a table")
             return f"sqlite_scan({_quote_path(self.first)}, {_quote_path(Path(self.table))})"
+        if self.fmt == "duckdb":
+            if not self.table:
+                raise DatasetError("a DuckDB dataset must name a table")
+            schema, separator, table = self.table.partition("::")
+            if not separator:
+                schema, table = "main", schema
+            return f'"viewer_database".{_quote_ident(schema)}.{_quote_ident(table)}'
         raise DatasetError(f"unsupported dataset format: {self.fmt}")
+
+    def prepare_connection(self, conn) -> None:
+        """Attach native DuckDB sources read-only before using their relation."""
+        if self.fmt == "duckdb":
+            conn.execute(
+                f"ATTACH {_quote_path(self.first)} AS viewer_database (READ_ONLY)"
+            )
+
+
+def _open_ref(ref: DatasetRef):
+    conn = _open()
+    try:
+        ref.prepare_connection(conn)
+    except Exception as exc:
+        conn.close()
+        raise _error(ref, exc) from exc
+    return conn
 
 
 def _error(ref: DatasetRef, exc: Exception) -> DatasetError:
@@ -144,41 +179,20 @@ def _error(ref: DatasetRef, exc: Exception) -> DatasetError:
 def dataset_schema(
     ref: DatasetRef, timeout_s: float = DEFAULT_QUERY_TIMEOUT_S
 ) -> list[dict]:
-    """Column names, DuckDB types, null counts, and approximate distinct counts.
-
-    The null and distinct counts are computed in the same pass as the row total
-    rather than in separate queries: DuckDB scans the relation once for the
-    combined aggregate, and three scans of a large snapshot is three times the
-    I/O for one answer.
-    """
-    conn = _open()
+    """Return column names and types without scanning the full relation."""
+    conn = _open_ref(ref)
     try:
         described = _execute(
             conn, f"DESCRIBE SELECT * FROM {ref.reader_expression}", [], timeout_s
         ).fetchall()
         names = [str(row[0]) for row in described]
         types = [str(row[1]) for row in described]
-        if not names:
-            return []
-        aggregates = ", ".join(
-            f"COUNT({_quote_ident(name)}) AS {_quote_ident('non_null_' + name)}, "
-            f"APPROX_COUNT_DISTINCT({_quote_ident(name)}) AS "
-            f"{_quote_ident('distinct_' + name)}"
-            for name in names
-        )
-        totals = _execute(
-            conn,
-            f"SELECT COUNT(*), {aggregates} FROM {ref.reader_expression}",
-            [],
-            timeout_s,
-        ).fetchone()
-        rows_total = int(totals[0])
         return [
             {
                 "name": name,
                 "duckdb_type": types[index],
-                "null_count": rows_total - int(totals[1 + index * 2]),
-                "approx_distinct": int(totals[2 + index * 2]),
+                "null_count": None,
+                "approx_distinct": None,
             }
             for index, name in enumerate(names)
         ]
@@ -257,19 +271,39 @@ def dataset_rows(
     where_clause = f" WHERE {' AND '.join(groups)}" if groups else ""
     order_clause = f" ORDER BY {_quote_ident(sort)} {direction.upper()}" if sort else ""
 
-    conn = _open()
+    conn = _open_ref(ref)
     try:
         page_sql = (
             f"SELECT * FROM (SELECT * FROM {ref.reader_expression}{where_clause}"
             f"{order_clause}) {_ROWS_CTE} LIMIT ? OFFSET ?"
         )
         result = _execute(conn, page_sql, [*params, limit + 1, offset], timeout_s)
-        records = result.arrow().read_all().to_pylist()
-        has_more = len(records) > limit
-        items = [_render_row(record) for record in records[:limit]]
+        column_names = [column[0] for column in result.description]
+        items: list[dict] = []
+        payload_bytes = 0
+        has_more = False
+        while len(items) < limit + 1:
+            record = result.fetchone()
+            if record is None:
+                break
+            rendered = _render_row(dict(zip(column_names, record, strict=True)))
+            row_bytes = len(
+                json.dumps(rendered, separators=(",", ":"), ensure_ascii=False).encode(
+                    "utf-8"
+                )
+            )
+            if len(items) >= limit or payload_bytes + row_bytes > MAX_PAGE_BYTES:
+                has_more = True
+                if not items:
+                    raise DatasetError(
+                        "a single row exceeds the viewer's response-size limit"
+                    )
+                break
+            items.append(rendered)
+            payload_bytes += row_bytes
 
         if include_total is None:
-            include_total = ref.fmt == "parquet" and not filters and not search
+            include_total = False
         total_rows = None
         if include_total:
             total_rows = int(
@@ -285,7 +319,7 @@ def dataset_rows(
         return {
             "items": items,
             "has_more": has_more,
-            "next_cursor": offset + limit if has_more else None,
+            "next_cursor": offset + len(items) if has_more else None,
             "total_rows": total_rows,
             "truncated": False,
         }
@@ -376,8 +410,28 @@ def dataset_column_stats(
     a document id that is a sort of the entire column.
     """
     columns = dataset_schema(ref, timeout_s)
-    conn = _open()
+    if not columns:
+        return columns
+    conn = _open_ref(ref)
     try:
+        names = [column["name"] for column in columns]
+        aggregates = ", ".join(
+            f"COUNT({_quote_ident(name)}) AS {_quote_ident('non_null_' + name)}, "
+            f"APPROX_COUNT_DISTINCT({_quote_ident(name)}) AS "
+            f"{_quote_ident('distinct_' + name)}"
+            for name in names
+        )
+        totals = _execute(
+            conn,
+            f"SELECT COUNT(*), {aggregates} FROM {ref.reader_expression}",
+            [],
+            timeout_s,
+        ).fetchone()
+        rows_total = int(totals[0])
+        for index, column in enumerate(columns):
+            column["null_count"] = rows_total - int(totals[1 + index * 2])
+            column["approx_distinct"] = int(totals[2 + index * 2])
+            column["total_rows"] = rows_total
         for column in columns:
             column["top_values"] = []
             if not column["duckdb_type"].upper().startswith("VARCHAR"):
@@ -425,7 +479,7 @@ def dataset_blob(
     if row_index is not None and row_index < 0:
         raise DatasetError("row_index must be >= 0")
 
-    conn = _open()
+    conn = _open_ref(ref)
     try:
         ident = _quote_ident(column)
         if pk_col and pk_val is not None:

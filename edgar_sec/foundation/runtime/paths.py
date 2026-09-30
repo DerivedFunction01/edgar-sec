@@ -5,7 +5,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 from pathlib import Path
 
-from .env import get_env
+from .settings import resolve_settings
 
 # Shared artifact-layout convention. Every pipeline publishes an immutable
 # dataset under a dataset root and records the "currently published" identity in
@@ -57,13 +57,11 @@ class ProjectPaths:
 
     repo_root: Path
     artifacts_root: Path
-    cache_root: Path
     uploads_root: Path
 
     def ensure_directories(self) -> None:
         """Create standard runtime directories if they do not exist."""
         self.artifacts_root.mkdir(parents=True, exist_ok=True)
-        self.cache_root.mkdir(parents=True, exist_ok=True)
         self.uploads_root.mkdir(parents=True, exist_ok=True)
         self.runtime_root.mkdir(parents=True, exist_ok=True)
 
@@ -162,6 +160,19 @@ def _reject_package_working_directory(root: Path) -> None:
         )
 
 
+def _resolve_artifacts_root(root: Path) -> Path:
+    """Resolve the registered artifacts root against the project root.
+
+    The setting defaults to a relative ``.artifacts``, which is anchored here so
+    it lands beside the package. An absolute value is taken as given, which is
+    how a test or a side-by-side tree redirects the whole workspace.
+    """
+    configured = Path(str(resolve_settings()["artifacts.root"]))
+    if configured.is_absolute():
+        return configured
+    return (root / configured).resolve()
+
+
 def resolve_paths(repo_root: Path | str | None = None) -> ProjectPaths:
     """Resolve standard project layout from environment or current working directory.
 
@@ -169,6 +180,15 @@ def resolve_paths(repo_root: Path | str | None = None) -> ProjectPaths:
     Run the CLI from the repository root: the artifacts, uploads, and cache
     roots are all derived from it, and running from anywhere else silently
     publishes into a parallel tree.
+
+    The artifacts root is read from the registered ``artifacts.root`` setting, so
+    there is one authority for it. It used to be read here from a private
+    ``EDGAR_ARTIFACTS_DIR``, which meant two settings answered the same question
+    and ignored each other: setting ``ARTIFACTS_ROOT`` changed what the registry
+    reported while the resolver kept using ``.artifacts``, and setting
+    ``EDGAR_ARTIFACTS_DIR`` did the reverse. A relative value is anchored to the
+    project root so the default stays beside the package rather than wherever
+    the process happens to be.
     """
     if repo_root is not None:
         root = Path(repo_root)
@@ -176,24 +196,13 @@ def resolve_paths(repo_root: Path | str | None = None) -> ProjectPaths:
         root = Path.cwd()
         _reject_package_working_directory(root)
 
-    artifacts_override = get_env("EDGAR_ARTIFACTS_DIR", default="")
-    artifacts_root = (
-        Path(artifacts_override).resolve()
-        if artifacts_override
-        else root / ".artifacts"
-    )
-
-    cache_override = get_env("EDGAR_CACHE_DIR", default="")
-    cache_root = (
-        Path(cache_override).resolve() if cache_override else artifacts_root / "cache"
-    )
+    artifacts_root = _resolve_artifacts_root(root)
 
     uploads_root = root / "uploads"
 
     return ProjectPaths(
         repo_root=root,
         artifacts_root=artifacts_root,
-        cache_root=cache_root,
         uploads_root=uploads_root,
     )
 

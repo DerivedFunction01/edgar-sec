@@ -110,22 +110,24 @@ def blobbed(tmp_path: Path) -> DatasetRef:
 # --- schema ----------------------------------------------------------------
 
 
-def test_schema_reports_names_types_and_nulls(one_part: DatasetRef) -> None:
+def test_schema_reports_names_and_types_without_scanning_rows(
+    one_part: DatasetRef,
+) -> None:
     columns = dataset_schema(one_part)
     assert [column["name"] for column in columns] == ["cik", "name"]
     assert columns[0]["duckdb_type"] == "BIGINT"
-    assert all(column["null_count"] == 0 for column in columns)
-    assert columns[0]["approx_distinct"] == 3
+    assert all(column["null_count"] is None for column in columns)
+    assert columns[0]["approx_distinct"] is None
 
 
-def test_schema_counts_nulls(typed: DatasetRef) -> None:
-    by_name = {column["name"]: column for column in dataset_schema(typed)}
+def test_explicit_column_stats_count_nulls(typed: DatasetRef) -> None:
+    by_name = {column["name"]: column for column in dataset_column_stats(typed)}
     assert by_name["flag"]["null_count"] == 1
     assert by_name["blank"]["null_count"] == 1
 
 
-def test_schema_spans_every_part(three_parts: DatasetRef) -> None:
-    columns = {column["name"]: column for column in dataset_schema(three_parts)}
+def test_explicit_column_stats_span_every_part(three_parts: DatasetRef) -> None:
+    columns = {column["name"]: column for column in dataset_column_stats(three_parts)}
     assert columns["cik"]["approx_distinct"] == 3
 
 
@@ -160,7 +162,7 @@ def test_last_page_reports_no_more(one_part: DatasetRef) -> None:
     page = dataset_rows(one_part, limit=10, sort="cik")
     assert page["has_more"] is False
     assert page["next_cursor"] is None
-    assert page["total_rows"] == 3
+    assert page["total_rows"] is None
 
 
 def test_rows_offset_pages_forward(one_part: DatasetRef) -> None:
@@ -263,7 +265,7 @@ def test_total_rows_is_suppressed_for_a_filtered_page(typed: DatasetRef) -> None
 
 
 def test_total_rows_is_available_for_an_unfiltered_page(one_part: DatasetRef) -> None:
-    assert dataset_rows(one_part)["total_rows"] == 3
+    assert dataset_rows(one_part, include_total=True)["total_rows"] == 3
 
 
 def test_rows_preserve_nulls(typed: DatasetRef) -> None:

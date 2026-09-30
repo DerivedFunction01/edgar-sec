@@ -47,7 +47,17 @@ from edgar_sec.apps.viewer.model import (
     artifact_id,
     artifact_path,
     artifact_table,
+    compute_revision,
+    decode_artifact_id,
+    file_size,
+    mtime_iso,
     summary_to_dict,
+)
+from edgar_sec.apps.viewer.tree import (
+    MAX_TEXT_BYTES,
+    ROOT_NODE_ID,
+    read_text_file,
+    tree_children,
 )
 
 __all__ = ["UI_DIST", "create_app"]
@@ -84,6 +94,52 @@ def _find(summaries: list[ArtifactSummary], dataset_id: str) -> ArtifactSummary:
     raise HTTPException(status_code=404, detail="dataset not found")
 
 
+def _find_dataset(dataset_id: str, root: Path) -> ArtifactSummary:
+    """Resolve a manifest-backed dataset or a supported physical table file."""
+    for summary in run_all(root, include_sqlite=False):
+        if summary.id == dataset_id:
+            return summary
+    try:
+        _, table = decode_artifact_id(dataset_id)
+        path = artifact_path(dataset_id, root)
+    except DatasetError as exc:
+        raise HTTPException(status_code=404, detail="dataset not found") from exc
+    formats = {
+        ".parquet": "parquet",
+        ".csv": "csv",
+        ".tsv": "csv",
+        ".jsonl": "jsonl",
+        ".ndjson": "jsonl",
+        ".db": "sqlite",
+        ".sqlite": "sqlite",
+        ".duckdb": "duckdb",
+    }
+    fmt = formats.get(path.suffix.lower())
+    if not path.is_file() or fmt is None:
+        raise HTTPException(status_code=404, detail="dataset not found")
+    if fmt in {"sqlite", "duckdb"} and not table:
+        raise HTTPException(
+            status_code=400, detail="expand the database and select a table"
+        )
+    if fmt not in {"sqlite", "duckdb"} and table:
+        raise HTTPException(status_code=404, detail="dataset not found")
+    relative_path = path.resolve().relative_to(root.resolve()).as_posix()
+    size = file_size(path)
+    return ArtifactSummary(
+        id=dataset_id,
+        relative_path=relative_path,
+        phase="files",
+        run_id=None,
+        kind="file_table" if table else "file_dataset",
+        format=fmt,
+        size_bytes=size,
+        mtime=mtime_iso(path),
+        revision=compute_revision(size, path.stat().st_mtime_ns),
+        source_paths=(relative_path,),
+        table=table,
+    )
+
+
 def create_app(artifacts_root: Path | None = None) -> FastAPI:
     """Build the viewer application.
 
@@ -112,15 +168,35 @@ def create_app(artifacts_root: Path | None = None) -> FastAPI:
 
     @app.get("/api/datasets")
     def list_datasets() -> list[dict]:
-        return [summary_to_dict(item) for item in run_all(root)]
+        return [summary_to_dict(item) for item in run_all(root, include_sqlite=False)]
 
     @app.get("/api/documents")
     def list_documents() -> list[dict]:
         return [summary_to_dict(item) for item in iter_documents(root)]
 
+    @app.get("/api/tree")
+    def get_tree(parent_id: str | None = None) -> list[dict]:
+        try:
+            return tree_children(
+                root, None if parent_id in {None, ROOT_NODE_ID} else parent_id
+            )
+        except DatasetError as exc:
+            raise HTTPException(status_code=400, detail=str(exc)) from exc
+
+    @app.get("/api/files/{file_id}/text")
+    def get_text(
+        file_id: str,
+        offset: int = Query(default=0, ge=0),
+        limit: int = Query(default=MAX_TEXT_BYTES, ge=1, le=MAX_TEXT_BYTES),
+    ) -> dict:
+        try:
+            return read_text_file(root, file_id, offset=offset, limit=limit)
+        except DatasetError as exc:
+            raise HTTPException(status_code=400, detail=str(exc)) from exc
+
     @app.get("/api/datasets/{dataset_id}/schema")
     def get_schema(dataset_id: str) -> list[dict]:
-        summary = _find(run_all(root), dataset_id)
+        summary = _find_dataset(dataset_id, root)
         try:
             return dataset_schema(_ref(summary, root))
         except DatasetError as exc:
@@ -128,7 +204,7 @@ def create_app(artifacts_root: Path | None = None) -> FastAPI:
 
     @app.get("/api/datasets/{dataset_id}/stats")
     def get_stats(dataset_id: str) -> list[dict]:
-        summary = _find(run_all(root), dataset_id)
+        summary = _find_dataset(dataset_id, root)
         try:
             return dataset_column_stats(_ref(summary, root))
         except DatasetError as exc:
@@ -144,7 +220,7 @@ def create_app(artifacts_root: Path | None = None) -> FastAPI:
         filters: str | None = None,
         search: str | None = None,
     ) -> dict:
-        summary = _find(run_all(root), dataset_id)
+        summary = _find_dataset(dataset_id, root)
         parsed = _parse_filters(filters)
         try:
             return dataset_rows(
@@ -167,7 +243,7 @@ def create_app(artifacts_root: Path | None = None) -> FastAPI:
         pk_val: str | None = Query(default=None),
         row_index: int | None = Query(default=None, ge=0),
     ) -> dict:
-        summary = _find(run_all(root), dataset_id)
+        summary = _find_dataset(dataset_id, root)
         try:
             return dataset_blob(
                 _ref(summary, root),
@@ -181,10 +257,15 @@ def create_app(artifacts_root: Path | None = None) -> FastAPI:
 
     @app.post("/api/datasets/{dataset_id}/sql")
     def post_sql(dataset_id: str, body: dict) -> JSONResponse:
-        summary = _find(run_all(root), dataset_id)
+        summary = _find_dataset(dataset_id, root)
         query = body.get("query")
         if not isinstance(query, str):
             raise HTTPException(status_code=400, detail="body must include 'query'")
+        if summary.format == "duckdb":
+            raise HTTPException(
+                status_code=400,
+                detail="SQL console is disabled for native DuckDB files",
+            )
         try:
             return JSONResponse(content=run_dataset_sql(_ref(summary, root), query))
         except DatasetError as exc:

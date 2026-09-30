@@ -75,6 +75,8 @@ def run_dataset_sql(
     timeout_s: float = CONSOLE_TIMEOUT_S,
 ) -> dict:
     """Run one guarded read against one dataset and return a bounded result set."""
+    if ref.fmt == "duckdb":
+        raise DatasetError("SQL console is disabled for native DuckDB files")
     try:
         validated = validate_read_only(query)
     except SqlGuardError as exc:
@@ -88,6 +90,7 @@ def run_dataset_sql(
     conn = _open()
     started = time.monotonic()
     try:
+        ref.prepare_connection(conn)
         conn.execute(f"CREATE VIEW dataset AS SELECT * FROM {ref.reader_expression}")
         result = _execute(conn, wrapped, [], timeout_s)
         columns = [str(description[0]) for description in result.description]

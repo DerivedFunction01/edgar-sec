@@ -155,19 +155,28 @@ def read_manifest(snapshots_root: Path, snapshot_id: str) -> dict[str, Any]:
     return json.loads(path.read_text(encoding="utf-8"))
 
 
-def list_snapshots(snapshots_root: Path) -> list[dict[str, Any]]:
+def list_snapshots(
+    snapshots_root: Path, manifest_name: str = MANIFEST_NAME
+) -> list[dict[str, Any]]:
     """List every readable snapshot manifest, sorted by id.
 
     A snapshot whose manifest is unreadable is skipped with a warning rather than
     failing the listing: consolidation must still be able to see the healthy
     snapshots when one directory is damaged.
+
+    ``manifest_name`` is a parameter because the directory scan, the
+    warn-and-skip handling, and the parse are one concern, but the manifest
+    filename is a per-pipeline convention: Phase 1 metadata publishes
+    ``metadata.manifest.json`` where this module's own dataset publishes
+    ``manifest.json``. Defaulting the parameter keeps existing callers unchanged
+    and lets a second pipeline reuse the logic instead of copying it.
     """
     root = snapshots_dir(snapshots_root)
     if not root.is_dir():
         return []
     found: list[dict[str, Any]] = []
     for entry in sorted(root.iterdir()):
-        manifest_path = entry / MANIFEST_NAME
+        manifest_path = entry / manifest_name
         if not manifest_path.is_file():
             continue
         try:

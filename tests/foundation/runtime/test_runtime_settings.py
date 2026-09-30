@@ -138,3 +138,29 @@ def test_validators_enforce_their_documented_bounds() -> None:
         validate_fraction(0.0)
     with pytest.raises(ValueError, match="must be between 0 and 1"):
         validate_fraction(1.5)
+
+
+def test_cache_settings_are_exposed_on_the_resolved_model() -> None:
+    """The cache root and its TTL must be readable, not merely declared.
+
+    `cache.json_ttl_s` was registered and resolvable but carried on no
+    `RuntimeSettings` field, so nothing in the codebase could honour an
+    override of it. A setting that exists and is read by no one is the same
+    defect shape as a chunk size that exists and is ignored.
+    """
+    from pathlib import Path
+
+    settings = resolve_runtime_settings()
+    resolved = resolve_settings()
+
+    assert settings.cache_root == Path(str(resolved["cache.root"]))
+    assert settings.json_ttl_s == int(resolved["cache.json_ttl_s"])
+    assert settings.json_ttl_s == 90 * 24 * 60 * 60
+
+
+def test_cache_settings_honor_the_environment(monkeypatch: pytest.MonkeyPatch) -> None:
+    monkeypatch.setenv("CACHE_ROOT", "/tmp/alternate-cache")
+    monkeypatch.setenv("CACHE_JSON_TTL_S", "60")
+    resolved = resolve_settings()
+    assert str(resolved["cache.root"]) == "/tmp/alternate-cache"
+    assert resolved["cache.json_ttl_s"] == 60
