@@ -1,1 +1,1 @@
-"""SEC form structural plugins (item taxonomies and boundary profiles)."""
+"""Form plugin package."""
