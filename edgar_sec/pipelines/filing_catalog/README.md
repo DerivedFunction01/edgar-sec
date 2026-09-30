@@ -38,7 +38,7 @@ a function-local import; all three are real ways a network dependency creeps in.
 | :--- | :--- |
 | `__init__.py` | Docstring only (1 loc). No re-exports, per AGENTS.md §1.2. |
 | `cli.py` | The four commands, policy resolution, and the stdout/stderr split (231 loc). |
-| `operator.py` | Interactive wizard over `cmd_materialize` / `cmd_plan` / `cmd_status` (83 loc). |
+| `operator.py` | Interactive wizard over `cmd_materialize` / `cmd_plan` / `cmd_status` / `cmd_expand`, with discovery-driven catalog and parent-plan selection. |
 | `catalog_job.py` | `materialize()`: one Phase 1 snapshot in, one immutable catalog out, behind three guards (316 loc). |
 | `planner.py` | `plan()` (four filters, 8 columns) and `plan_policy()` (quota profile, 18 columns) (562 loc). |
 | `expansion.py` | Parent validation, child derivation, and the 100%-retention invariant (352 loc). |
@@ -171,7 +171,7 @@ Total 2,184 lines across 9 files: 8 modules plus a one-line `__init__.py`.
   `python run.py filing-catalog`. `cli.py`.
 - `cmd_materialize`, `cmd_plan`, `cmd_expand`, `cmd_status` — the four command
   implementations. `cli.py`.
-- `build_operator_menu` — three `MenuAction` entries. `operator.py`.
+- `build_operator_menu` — four `MenuAction` entries. `operator.py`.
 - `materialize` — build one immutable catalog snapshot; returns the manifest.
   `catalog_job.py`.
 - `resolve_source` — resolve the Phase 1 dataset from an explicit artifact, an
@@ -255,6 +255,11 @@ are a cross-package contract rather than an internal detail.
 Entry point: `python run.py filing-catalog <command>`, dispatched through `runpy`
 to `edgar_sec/pipelines/filing_catalog/operator.py`. With no argument,
 `operator_entrypoint` shows the wizard; with an argument it calls `cli.main`.
+
+The wizard's four actions cover `status`, `materialize`, deterministic `plan`, and
+`expand`. The catalog for a plan and the parent plan for an expansion are chosen
+by number from what is published, with the pointer-resolved catalog offered as the
+default, so neither a catalog id nor a plan directory has to be typed from memory.
 
 ```bash
 python run.py filing-catalog materialize \
@@ -538,8 +543,9 @@ previously missing now exist: `test_paths.py` pins the artifact layout and
   entry contract, with the per-scope occurrence schemas pinned separately.
 - `tests/pipelines/filing_catalog/test_paths.py` — the artifact layout, the
   shared catalog/plan namespace, and identifier safety.
-- `tests/pipelines/filing_catalog/test_operator.py` — the three menu actions
-  and their delegation to the CLI.
+- `tests/pipelines/filing_catalog/test_operator.py` — the four menu actions,
+  their delegation to the CLI, and discovery-driven catalog and expansion-parent
+  selection.
 - `tests/pipelines/filing_catalog/test_discovery.py` —
   manifest-only enumeration and `current` resolution.
 - `tests/pipelines/filing_catalog/test_cli.py` — flags, the
@@ -571,13 +577,14 @@ rather than `parents[N]` arithmetic.
 - **No `run` command and no network client, deliberately.** Covered above. Do not
   read the absence as a missing feature: `tests/test_network_isolation.py` fails
   the gate if anything under this package reaches `edgar_sec.infra.sec_http`.
-- **No operator action for `expand`, and none for `plan --scope policy`.** The
-  wizard offers status, materialize, and deterministic plan
-  (`operator.py:68-80`). Policy-scoped planning and expansion are CLI-only,
-  because both need arguments an interactive prompt has no vocabulary for. v1
-  offered five menu actions; this is a deliberate 5→3 reduction, not a partial
-  port. `test_operator.py` asserts the three-action contract as the current
-  shape, not as v1 parity.
+- **No operator action for `plan --scope policy`.** The wizard offers status,
+  materialize, deterministic plan, and expand, and every one of those inputs is
+  discoverable or defaultable. A policy scope is not: choosing one interactively
+  means authoring or deriving a quota profile, which is a design decision with no
+  menu vocabulary. `plan --scope policy` stays CLI-only. `expand` *is* offered —
+  its two inputs are a parent plan and a target size, both discoverable — and the
+  menu lists only policy-scope plans, because `expand` refuses a deterministic
+  parent outright and listing one would be a choice that cannot succeed.
 - **`selection_report.json` is an audit artifact; `inventory_feasibility` inside
   it is computed, not consumed.** No production machine reads either. The
   selection figures and the feasibility prediction exist for a human reviewing a

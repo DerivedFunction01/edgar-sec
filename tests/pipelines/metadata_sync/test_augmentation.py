@@ -274,6 +274,128 @@ def test_augment_merges_base_and_delta_without_refetching_base(
     assert pointer["row_count"] == 5
 
 
+# --------------------------------------------------- derived snapshot identity
+
+
+def _widen(tmp_path: Path, session: FakeSession, *extra: str) -> Path:
+    """Write a manifest adding CIKs to the baseline cohort, and register them."""
+    rows = "cik,name\n1985,A\n1761,B\n20,C\n37996,FORD\n"
+    rows += "".join(f"{cik},EXTRA {cik}\n" for cik in extra)
+    path = tmp_path / "widened.csv"
+    path.write_text(rows, encoding="utf-8")
+    _seed(session, extra=bool(extra))
+    return path
+
+
+def test_an_omitted_snapshot_id_publishes_under_the_delta_plan_id(
+    client, session: FakeSession, tmp_path: Path
+) -> None:
+    """Every other Phase 1 identity is content-derived; this one now is too.
+
+    The snapshot was the single hand-typed identifier on this surface while
+    ``merge`` in the same pipeline already defaulted to the plan id. The delta plan
+    id is a content address over the base snapshot, the delta cohort, and the chunk
+    layout, so deriving it makes the operation idempotent.
+    """
+    metadata, _, _, _ = _publish_baseline(client, session, tmp_path)
+    widened = _widen(tmp_path, session, EXTRA)
+
+    result = augment(
+        client,
+        read_cik_manifest(widened),
+        metadata,
+        base_snapshot_id="base",
+        chunk_size=2,
+        workers=2,
+    )
+
+    assert result.new_snapshot_id == result.report.plan_id
+    assert result.new_snapshot_id
+    # The derived id is what actually got written, not just what was reported.
+    manifest = json.loads(
+        metadata.snapshot_manifest(result.new_snapshot_id).read_text()
+    )
+    assert manifest["snapshot_id"] == result.report.plan_id
+    assert manifest["parent_snapshot_id"] == "base"
+    assert json.loads(metadata.current_pointer.read_text())["snapshot_id"] == (
+        result.new_snapshot_id
+    )
+
+
+def test_the_derived_id_is_stable_for_the_same_base_and_cohort(
+    client, session: FakeSession, tmp_path: Path
+) -> None:
+    """Idempotency is the point: rerunning the same delta must resolve the same id."""
+    metadata, _, _, _ = _publish_baseline(client, session, tmp_path)
+    widened = _widen(tmp_path, session, EXTRA)
+    first = augment(
+        client,
+        read_cik_manifest(widened),
+        metadata,
+        base_snapshot_id="base",
+        chunk_size=2,
+        workers=2,
+    )
+    second = augment(
+        client,
+        read_cik_manifest(widened),
+        metadata,
+        base_snapshot_id="base",
+        chunk_size=2,
+        workers=2,
+    )
+    assert first.new_snapshot_id == second.new_snapshot_id
+
+
+def test_a_different_base_or_chunk_layout_yields_a_different_id(
+    client, session: FakeSession, tmp_path: Path
+) -> None:
+    """The derivation is only meaningful if the bound inputs actually move it."""
+    metadata, _, _, _ = _publish_baseline(client, session, tmp_path)
+    widened = _widen(tmp_path, session, EXTRA)
+    manifest = read_cik_manifest(widened)
+
+    chunk_size_two = augment(
+        client,
+        manifest,
+        metadata,
+        base_snapshot_id="base",
+        chunk_size=2,
+        workers=2,
+    )
+    chunk_size_one = augment(
+        client,
+        manifest,
+        metadata,
+        base_snapshot_id="base",
+        chunk_size=1,
+        workers=2,
+    )
+    assert chunk_size_two.new_snapshot_id != chunk_size_one.new_snapshot_id
+
+
+def test_an_explicit_snapshot_id_still_overrides_the_derivation(
+    client, session: FakeSession, tmp_path: Path
+) -> None:
+    """The distribution path stamps rows with a chosen id, so the override stays."""
+    metadata, _, _, _ = _publish_baseline(client, session, tmp_path)
+    widened = _widen(tmp_path, session, EXTRA)
+
+    result = augment(
+        client,
+        read_cik_manifest(widened),
+        metadata,
+        base_snapshot_id="base",
+        new_snapshot_id="chosen",
+        chunk_size=2,
+        workers=2,
+    )
+    assert result.new_snapshot_id == "chosen"
+    assert result.report.plan_id != "chosen"
+    rows = _snapshot_rows(metadata, "chosen")
+    assert {row["snapshot_id"] for row in rows if row["cik"] == EXTRA} == {"chosen"}
+
+
 def test_augmented_index_is_the_union_of_base_and_delta(
     client, session: FakeSession, tmp_path: Path
 ) -> None:

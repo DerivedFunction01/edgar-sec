@@ -50,14 +50,14 @@ no network access. `plan` performs no network access. Only `run`, `worker`, and
 | `checkpoints.py` | What counts as a *complete* chunk on disk. |
 | `worker.py` | Resumable chunk execution over a thread pool; the never-refetch guarantee. |
 | `snapshot.py` | Resolve a published snapshot to a verified, ordered Parquet part list; both manifest versions. |
-| `merger.py` | Coordinator validation, multipart publication, progress events, CIK index, snapshot manifest, pointer. |
+| `merger.py` | Coordinator validation, multipart publication, progress events, CIK index, snapshot manifest, pointer advance, and explicit pointer selection. |
 | `augmentation.py` | Delta planning and merge onto a published snapshot without refetching the base. |
 | `registry.py` | Curated-versus-source comparison, the effective CIK roster, and the CSV export. |
 | `source_registry.py` | Write-once, content-addressed `company_tickers.json` snapshots. |
 | `sec_client.py` | One CIK to its submissions document plus every historical file it lists. |
 | `cli.py` | The argparse surface; each `cmd_*` is a plain callable the operator also calls. |
 | `operator.py` | Interactive wizard: session state, on-disk discovery, auto-resolution, and network consent over the same `cmd_*` functions. |
-| `discovery.py` | What is already on disk: plans with progress, published snapshots, the current pointer. Manifests only; never opens a Parquet payload. |
+| `discovery.py` | What is already on disk: plans with progress, published snapshots, the current pointer, and published effective-CIK rosters. Manifests only; never opens a Parquet payload. |
 | `smoke_test.py` | Credential-gated live check that never publishes. |
 
 ## Contracts this package guarantees
@@ -133,7 +133,7 @@ registry roster, and both resolve to the same `Roster`.
 | `resolve_metadata_paths`, `resolve_run_paths` | `paths` | The published-vs-transient split. |
 | `discover_completed_chunks`, `inspect_chunk` | `checkpoints` | Completeness of a chunk on disk. |
 | `run_chunk`, `run_chunk_ids` | `worker` | Resumable execution; the never-refetch guarantee. |
-| `merge_chunks`, `publish_snapshot`, `publish_parts`, `parts_digest`, `MergeReport` | `merger` | Validation, multipart publication, manifest, pointer. |
+| `merge_chunks`, `publish_snapshot`, `publish_current_snapshot`, `publish_parts`, `parts_digest`, `MergeReport` | `merger` | Validation, multipart publication, manifest, pointer. |
 | `read_snapshot_parts`, `load_snapshot_manifest`, `SnapshotParts`, `SnapshotLayout`, `SnapshotLayoutError`, `SNAPSHOT_MANIFEST_VERSION` | `snapshot` | Resolve and verify a snapshot's part list. |
 | `augment`, `derive_delta_plan`, `snapshot_cik_roster` | `augmentation` | Delta planning and merge. |
 | `compare_sources`, `load_registry_roster`, `load_registry_manifest` | `registry` | The curated-versus-source projection. |
@@ -149,9 +149,9 @@ python run.py metadata status   --plan-id <plan_id>
 python run.py metadata run      --plan-id <plan_id> [--chunks 0-3,7]
 python run.py metadata merge    --plan-id <plan_id>
 python run.py metadata augment  --input uploads/cik-sec-new.csv \
-    --base-snapshot-id <id> --new-snapshot-id <id>
+    --base-snapshot-id <id> [--new-snapshot-id <id>]
 python run.py metadata export   --plan-id <plan_id> --worker-count 4 --destination <dir>
-python run.py metadata worker   --bundle <dir>/worker-00
+python run.py metadata worker   --bundle <dir>/worker-00 [--worker worker-00]
 python run.py metadata import   --plan-id <plan_id> --source <dir>/worker-00
 python run.py metadata sources refresh [--artifacts <dir>]
 python run.py metadata sources compare --input uploads/cik-sec.csv \
@@ -166,15 +166,47 @@ id follows the effective chunk size. Planning with one chunk size and running wi
 another therefore resolves a *different* plan, and the command says so rather
 than reusing another plan's checkpoints.
 
+`--new-snapshot-id` is optional. Omitting it publishes under the derived delta
+plan id, which is a content address over the base snapshot, the effective delta
+roster, and the chunk layout — the same rule `merge` already follows, where the
+snapshot id defaults to the plan id so a row's `snapshot_id` can never disagree
+with the artifact holding it. Supply it only when the distribution path needs a
+worker to stamp rows with a snapshot the coordinator will publish under.
+
 The interactive operator (`python run.py metadata` with no command) offers the
 same actions and builds the same options objects, and it discovers rather than
 demands. It keeps a `WizardState` across menu visits, so a plan chosen once is
 not asked for twice; when nothing is chosen it lists the plans on disk with their
 size and progress and takes a number, adopting a lone plan without prompting. A
 blank plan id therefore resolves instead of doing nothing, which is the specific
-regression this surface had. Anything that reaches SEC confirms first, defaults to
-no, and an interrupt reports that completed chunks survive. Discovery lives in
-`discovery.py` and reads manifests only.
+regression this surface had. Above every menu it prints the working plan's size
+and chunk progress alongside the current snapshot, so the session's target is
+visible without running status first. Anything that reaches SEC confirms first,
+defaults to no, and an interrupt reports that completed chunks survive. Discovery
+lives in `discovery.py` and reads manifests only.
+
+Two menu actions exist because the CLI operations needed a way in that prompting
+did not provide:
+
+- `p` switches the current published snapshot. A merge advances the pointer as a
+  side effect, so `publish_current_snapshot` is the only operation that can move
+  it *back* to an earlier snapshot that is still on disk. It is a pointer move
+  and nothing else: no snapshot is written, removed, or rewritten, an unknown or
+  missing target is refused, and the next successful merge advances the pointer
+  again.
+- `c` prints the distributed lifecycle for the current plan — coordinator
+  `export`, one `worker` per machine, one `import` per returned bundle, then
+  `merge`. Worker ids and bundle names come from the same assignment division
+  `export` performs, empty assignments are omitted, and every emitted line is
+  round-tripped through the real parser in `test_operator.py`, because two earlier
+  revisions printed `--workers` (a different flag meaning worker *threads*) and
+  `--worker-id` (which does not exist) and a workflow that skipped `import`
+  entirely, which merges nothing.
+
+The plan and augment cohort prompt offers published effective-CIK rosters
+alongside the curated CSV, so the roster that `sources compare` mints is reachable
+from the menu. The CSV stays the default and the CLI's `--input`/`--roster`
+exclusivity is unchanged.
 
 ## Deliberate gaps
 
@@ -307,11 +339,13 @@ These are decisions, not oversights. Each names the alternative.
 - `tests/pipelines/metadata_sync/test_cli.py` — the parser, the settings
   regression, and the refresh/compare/plan/merge chain.
 - `tests/pipelines/metadata_sync/test_operator.py` — session state across menu
-  visits, plan auto-resolution, the numbered pick, the plan header, network
-  consent, command emission, and the interrupt message.
-- `tests/pipelines/metadata_sync/test_discovery.py` — plan and snapshot
+  visits, plan auto-resolution, the numbered pick, the plan and session headers,
+  roster cohort choice, snapshot-pointer selection, network consent, the emitted
+  distributed commands (round-tripped through the real parser), and the interrupt
+  message.
+- `tests/pipelines/metadata_sync/test_discovery.py` — plan, snapshot, and roster
   listing, ordering, unreadable and version-incompatible plans, pointer marking,
-  and the numbered picker.
+  and the numbered pickers.
 - `tests/pipelines/metadata_sync/test_end_to_end.py` — the full chain over a
   scripted transport.
 - `tests/pipelines/metadata_sync/test_manifest.py`, `test_paths.py`,

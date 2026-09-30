@@ -301,7 +301,7 @@ def cmd_augment(
     options: PlanOptions,
     *,
     base_snapshot_id: str,
-    new_snapshot_id: str,
+    new_snapshot_id: str = "",
     workers: int | None = None,
     lineage: dict[str, str] | None = None,
 ) -> int:
@@ -310,6 +310,9 @@ def cmd_augment(
     The delta plan is bound to its base snapshot, so the same requested list
     against two different bases is two different plans. Only the delta is
     fetched; the base is merged forward untouched.
+
+    An empty ``new_snapshot_id`` publishes under the derived delta plan id, so
+    the command needs no hand-typed identity and is idempotent across reruns.
     """
     if options.input_path is None and not options.registry_id:
         raise ValueError("augment needs --input or --roster")
@@ -351,7 +354,7 @@ def _augment_from_registry(
     options: PlanOptions,
     *,
     base_snapshot_id: str,
-    new_snapshot_id: str,
+    new_snapshot_id: str = "",
     workers: int | None,
     lineage: dict[str, str] | None,
 ):
@@ -631,7 +634,14 @@ def build_parser() -> argparse.ArgumentParser:
     _add_cohort_source(augment_parser, with_limit=False)
     _add_common(augment_parser)
     augment_parser.add_argument("--base-snapshot-id", required=True)
-    augment_parser.add_argument("--new-snapshot-id", required=True)
+    augment_parser.add_argument(
+        "--new-snapshot-id",
+        default="",
+        help=(
+            "snapshot id to publish under; defaults to the derived delta plan id, "
+            "which is content-addressed over the base snapshot and delta cohort"
+        ),
+    )
     augment_parser.set_defaults(func=lambda args: _augment_from_args(args))
 
     sources_parser = subparsers.add_parser(

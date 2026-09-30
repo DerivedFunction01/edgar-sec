@@ -131,6 +131,32 @@ def test_execution_commands_accept_a_plan_reference() -> None:
         assert {"--plan-id", "--bundle", "--input"} <= _flags(command)
 
 
+def test_augment_needs_a_base_but_not_a_hand_typed_snapshot_id() -> None:
+    """The one free-form identity left on the command surface is now optional.
+
+    Requiring it forced an operator to invent an id on both the CLI and the menu,
+    and switching surfaces did not help, because the CLI demanded it too.
+    """
+    assert "--base-snapshot-id" in _flags("augment")
+    assert "--new-snapshot-id" in _flags("augment")
+
+    parsed = build_parser().parse_args(
+        [
+            "augment",
+            "--input",
+            "x.csv",
+            "--base-snapshot-id",
+            "base",
+        ]
+    )
+    assert parsed.new_snapshot_id == ""
+
+
+def test_augment_still_refuses_to_run_without_a_base() -> None:
+    with pytest.raises(SystemExit):
+        build_parser().parse_args(["augment", "--input", "x.csv"])
+
+
 def test_merge_rejects_a_snapshot_id_override() -> None:
     """Snapshot identity is plan-derived, so a rename flag cannot be accepted.
 
@@ -565,6 +591,12 @@ def test_augment_options_carry_the_lineage_binding() -> None:
     assert lineage["parent_snapshot_id"] == "base"
     assert lineage["registry_id"] == ""
     assert options.chunk_size == DEFAULT_CHUNK_SIZE
+
+
+def test_augment_options_need_no_new_snapshot_id() -> None:
+    """Omitting it is how the caller asks for the derived delta plan id."""
+    _options, lineage = augment_options(input_path="x.csv", base_snapshot_id="base")
+    assert lineage["parent_snapshot_id"] == "base"
 
 
 def test_augment_options_record_a_registry_lineage() -> None:

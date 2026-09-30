@@ -54,6 +54,7 @@ def run_interactive_menu(
     exit_key: str = "0",
     *,
     interrupted_message: str | None = None,
+    before_menu: Callable[[], str | None] | None = None,
 ) -> int:
     """Run an interactive action loop until user selects exit.
 
@@ -71,10 +72,25 @@ def run_interactive_menu(
     ``interrupted_message`` lets a pipeline state what survives an interrupt,
     which is phase knowledge: this module cannot know that some workflows
     preserve completed work and others do not.
+
+    ``before_menu`` runs once per render, before the menu is printed, and may
+    return a line to display above it. It is how a pipeline shows the state it
+    resolved for this session -- the working plan, the active snapshot -- so the
+    operator can see what an action is about to act on. A failure inside it is
+    reported and the menu is still drawn, because refusing to show the menu would
+    strand the operator with no way back to the surface they started from.
     """
     action_map = {a.key.lower(): a for a in actions}
 
     while True:
+        if before_menu is not None:
+            try:
+                header = before_menu()
+                if header:
+                    print(f"\n{header}")
+            except Exception as exc:  # noqa: BLE001 - a header must not hide the menu
+                print(f"\nCould not resolve session state: {exc!r}")
+
         print(f"\n{title}")
         for a in actions:
             print(f"  {a.key}. {a.label}")
@@ -106,6 +122,7 @@ def operator_entrypoint(
     argv: list[str] | None = None,
     *,
     interrupted_message: str | None = None,
+    before_menu: Callable[[], str | None] | None = None,
 ) -> int:
     """Dispatch a pipeline operator: menu with no arguments, CLI otherwise.
 
@@ -114,11 +131,19 @@ def operator_entrypoint(
     its menu, and its CLI entrypoint; nothing else about its behavior is
     assumed. Kept in this module because it is pure presentation wiring -- it
     decides which surface to show, never what a command does.
+
+    ``before_menu`` is only consulted on the interactive path. A command
+    dispatched with arguments must not resolve or print session state, because
+    there is no session: the arguments already name what the command acts on.
     """
     args = sys.argv[1:] if argv is None else argv
     if not args:
         return run_interactive_menu(
-            title, menu, exit_key="0", interrupted_message=interrupted_message
+            title,
+            menu,
+            exit_key="0",
+            interrupted_message=interrupted_message,
+            before_menu=before_menu,
         )
     return cli_main(args)
 

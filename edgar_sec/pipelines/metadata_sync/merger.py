@@ -18,6 +18,7 @@ and recorded in the manifest. Phase 2 does not open it.
 
 from __future__ import annotations
 
+import json
 import shutil
 from collections.abc import Callable, Sequence
 from dataclasses import dataclass, field
@@ -46,6 +47,7 @@ __all__ = [
     "MergeReport",
     "merge_chunks",
     "parts_digest",
+    "publish_current_snapshot",
     "publish_parts",
     "publish_snapshot",
 ]
@@ -464,3 +466,54 @@ def publish_snapshot(
         metadata_paths.current_pointer, pointer, canonical=False, indent=2
     )
     return manifest
+
+
+def publish_current_snapshot(metadata_paths: MetadataPaths, snapshot_id: str) -> Path:
+    """Point ``current`` at an already-published snapshot.
+
+    ``publish_snapshot`` advances the pointer as a side effect of a merge, which
+    means the pointer can only ever move forward. This is the explicit operation
+    that moves it back, so a reader can be sent to an earlier snapshot that is
+    still on disk and still valid.
+
+    It is deliberately a pointer move and nothing else: no snapshot is written,
+    removed, or rewritten. Selecting an older snapshot does not unpublish a newer
+    one, and the next successful merge advances the pointer again.
+
+    The target is validated first. Pointing at a snapshot whose manifest is
+    absent or names a different id would send a reader to a dataset that does not
+    exist, which is strictly worse than leaving a stale pointer in place.
+    """
+    manifest_path = metadata_paths.snapshot_manifest(snapshot_id)
+    try:
+        manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError) as exc:
+        raise MergeError(
+            f"cannot point current at {snapshot_id!r}: {manifest_path} is unreadable "
+            f"({exc})"
+        ) from exc
+    if (
+        not isinstance(manifest, dict)
+        or str(manifest.get("snapshot_id", "")) != snapshot_id
+    ):
+        raise MergeError(
+            f"cannot point current at {snapshot_id!r}: {manifest_path} does not "
+            "describe that snapshot"
+        )
+
+    pointer: dict[str, Any] = {
+        "snapshot_id": snapshot_id,
+        "plan_id": str(manifest.get("plan_id", "")),
+        "row_count": int(manifest.get("row_count", 0) or 0),
+        "updated_at": str(manifest.get("merged_at", "")),
+    }
+    if manifest.get("parts"):
+        pointer["part_count"] = len(manifest["parts"])
+        pointer["parts_digest"] = str(manifest.get("parts_digest", ""))
+        pointer["snapshot_manifest"] = manifest_path.name
+    else:
+        pointer["artifact_sha256"] = str(manifest.get("artifact_sha256", ""))
+    atomic_write_json(
+        metadata_paths.current_pointer, pointer, canonical=False, indent=2
+    )
+    return metadata_paths.current_pointer

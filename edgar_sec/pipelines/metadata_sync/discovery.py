@@ -26,20 +26,35 @@ from typing import Any
 
 from edgar_sec.infra.storage.manifests import list_snapshots as _scan_snapshot_manifests
 
-from .paths import SNAPSHOT_MANIFEST_NAME, MetadataPaths, resolve_run_paths
+from .paths import (
+    REGISTRIES_DIR_NAME,
+    SNAPSHOT_MANIFEST_NAME,
+    MetadataPaths,
+    resolve_run_paths,
+)
+from .registry import RegistryError
+from .roster import RosterError
 
 __all__ = [
     "PlanSummary",
+    "RosterSummary",
     "current_snapshot_id",
+    "describe_roster",
     "list_plans",
+    "list_rosters",
     "list_snapshots",
     "plan_summary",
     "resolve_plan_choice",
+    "resolve_snapshot_choice",
 ]
 
 
 class PlanSummary(dict[str, Any]):
     """One discovered plan, as plain data the operator renders and picks from."""
+
+
+class RosterSummary(dict[str, Any]):
+    """One discovered effective-CIK roster, as plain pickable data."""
 
 
 def _read_plan_manifest(metadata: MetadataPaths, plan_id: str) -> dict[str, Any]:
@@ -123,6 +138,63 @@ def list_snapshots(metadata: MetadataPaths) -> list[dict[str, Any]]:
     return _scan_snapshot_manifests(metadata.snapshots_root, SNAPSHOT_MANIFEST_NAME)
 
 
+def list_rosters(metadata: MetadataPaths) -> list[RosterSummary]:
+    """Every published effective-CIK roster a plan can be built from.
+
+    A roster is what ``sources compare`` publishes, and it is a content address
+    over one source snapshot plus one curated input. Listing them is what lets a
+    plan be created from a discovered cohort instead of a hand-typed roster id the
+    operator was never shown.
+
+    A registry whose roster dataset or its manifest is missing, or whose digest no
+    longer matches what was published, is reported as unreadable rather than
+    dropped: the operator is told a registry exists and that it cannot currently
+    be planned from, which is different from never having run ``compare``.
+    """
+    root = metadata.metadata_root / REGISTRIES_DIR_NAME
+    if not root.is_dir():
+        return []
+    from .registry import load_registry_manifest, load_registry_roster
+
+    found: list[RosterSummary] = []
+    for entry in sorted(root.iterdir()):
+        if not entry.is_dir():
+            continue
+        # Key assignment, not attribute assignment: these summaries are dicts, and
+        # a plain attribute would leave the key every reader looks up empty.
+        summary = RosterSummary(
+            {
+                "registry_id": entry.name,
+                "row_count": 0,
+                "readable": False,
+                "readable_reason": "",
+                "source_snapshot_id": "",
+                "curated_cik_count": 0,
+                "active_cik_count": 0,
+            }
+        )
+        try:
+            roster = load_registry_roster(entry.name, metadata)
+        except (OSError, ValueError, RosterError) as exc:
+            summary["readable_reason"] = str(exc)
+        else:
+            summary["row_count"] = roster.row_count
+            summary["readable"] = True
+        try:
+            manifest = load_registry_manifest(entry.name, metadata)
+        except (OSError, ValueError, KeyError, RegistryError):
+            # The manifest is provenance, not the plan's input: the roster digest
+            # above already decided whether this registry is usable. A missing or
+            # foreign manifest leaves the counts unknown, which is reported as
+            # such rather than as a registry that cannot be planned from.
+            manifest = {}
+        summary["source_snapshot_id"] = str(manifest.get("source_snapshot_id", ""))
+        summary["curated_cik_count"] = int(manifest.get("curated_cik_count", 0) or 0)
+        summary["active_cik_count"] = int(manifest.get("active_cik_count", 0) or 0)
+        found.append(summary)
+    return found
+
+
 def current_snapshot_id(metadata: MetadataPaths) -> str:
     """Snapshot id named by the ``current`` pointer, or empty when unset."""
     pointer = metadata.current_pointer
@@ -165,6 +237,63 @@ def resolve_plan_choice(
     if not 1 <= index <= len(plans):
         return None
     return plans[index - 1]
+
+
+def describe_roster(roster: RosterSummary) -> str:
+    """One-line human summary of a roster's provenance and size."""
+    if not roster["readable"]:
+        return f"{roster['registry_id']}  unusable ({roster['readable_reason']})"
+    parts = [f"{roster['row_count']:,} CIKs"]
+    if roster["active_cik_count"]:
+        parts.append(f"{roster['active_cik_count']:,} active in source")
+    parts.append(f"source {roster['source_snapshot_id'] or 'unknown'}")
+    return f"{roster['registry_id']}  " + ", ".join(parts)
+
+
+def resolve_snapshot_choice(
+    manifests: list[dict[str, Any]],
+    current_id: str,
+    *,
+    select: Callable[[list[str]], str],
+) -> str:
+    """Choose one published snapshot id from discovered manifests.
+
+    Returns the empty string when the operator keeps the current pointer or
+    cancels, which the caller reads as "leave the pointer alone". A lone snapshot
+    is still offered rather than adopted: switching which dataset a reader
+    resolves to is a decision, not an inference, even when there is only one
+    candidate to decide about.
+    """
+    if not manifests:
+        return ""
+    lines = []
+    for index, manifest in enumerate(manifests, start=1):
+        lines.append(f"  {index}. {_describe_snapshot(manifest, current_id)}")
+    choice = select(lines)
+    if not choice:
+        return ""
+    try:
+        index = int(choice)
+    except ValueError:
+        return ""
+    if not 1 <= index <= len(manifests):
+        return ""
+    return str(manifests[index - 1].get("snapshot_id", ""))
+
+
+def _describe_snapshot(manifest: dict[str, Any], current_id: str) -> str:
+    """One-line human summary of a published snapshot."""
+    snapshot_id = str(manifest.get("snapshot_id", "?"))
+    marker = " [current]" if snapshot_id == current_id else ""
+    parts = [f"{int(manifest.get('row_count', 0) or 0):,} rows"]
+    if manifest.get("parts"):
+        parts.append(f"{len(manifest['parts'])} parts")
+    parent = str(manifest.get("parent_snapshot_id", "") or "")
+    if parent:
+        parts.append(f"augments {parent}")
+    if str(manifest.get("kind", "")) == "delta":
+        parts.append("delta")
+    return f"{snapshot_id}{marker}  " + ", ".join(parts)
 
 
 def _describe(plan: PlanSummary) -> str:

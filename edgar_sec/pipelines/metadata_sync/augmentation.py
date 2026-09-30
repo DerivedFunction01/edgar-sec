@@ -10,6 +10,15 @@ base snapshot *and* its delta roster, never by the request file that named the
 CIKs. The same requested list against two different bases is two different
 deltas, and the earlier request-fingerprinted identity gave both the same plan
 directory and let one overwrite the other's record.
+
+The published snapshot follows the same rule. ``new_snapshot_id`` defaults to
+the delta plan id, which is already a content address over the base snapshot, the
+effective delta roster, and the chunk layout, so an augmentation is idempotent
+and needs no identifier typed by an operator. An explicit id remains an override
+for the distribution path, where a worker stamps rows with the snapshot the
+coordinator will publish under. This mirrors ``RunOptions.effective_snapshot_id``
+for a full ingest, and it is the reason every other Phase 1 artifact is
+content-addressed and this one is not required to be.
 """
 
 from __future__ import annotations
@@ -156,7 +165,7 @@ def augment(
     metadata_paths: MetadataPaths,
     *,
     base_snapshot_id: str,
-    new_snapshot_id: str,
+    new_snapshot_id: str = "",
     chunk_size: int = DEFAULT_CHUNK_SIZE,
     workers: int | None = None,
     lineage: dict[str, str] | None = None,
@@ -171,6 +180,9 @@ def augment(
     Copied base rows keep their original row-level ``snapshot_id``: that field is
     row provenance, not the identity of whichever artifact later contains the row,
     and rewriting it would misstate where the data came from.
+
+    An empty ``new_snapshot_id`` resolves to the delta plan id once the plan is
+    derived, so the published identity is derived rather than supplied.
     """
     base_parts = read_snapshot_parts(metadata_paths.snapshot_manifest(base_snapshot_id))
     base = snapshot_cik_roster(metadata_paths, base_snapshot_id)
@@ -188,6 +200,7 @@ def augment(
         input_name=manifest.input_name,
         input_fingerprint=manifest.input_fingerprint,
     )
+    resolved_snapshot_id = new_snapshot_id or plan.plan_id
     run_paths = resolve_run_paths(plan.plan_id, metadata_paths.artifacts_root)
     write_plan(plan, run_paths)
 
@@ -196,7 +209,7 @@ def augment(
         plan,
         run_paths,
         plan.chunk_ids(),
-        snapshot_id=new_snapshot_id,
+        snapshot_id=resolved_snapshot_id,
         workers=workers,
     )
     refetched: list[str] = []
@@ -209,7 +222,7 @@ def augment(
     inputs.extend(delta_paths)
 
     report = MergeReport(
-        snapshot_id=new_snapshot_id,
+        snapshot_id=resolved_snapshot_id,
         chunk_count=plan.chunk_count,
         plan_id=plan.plan_id,
         input_fingerprint=plan.input_fingerprint,
@@ -274,7 +287,7 @@ def augment(
 
     return AugmentResult(
         base_snapshot_id=base_snapshot_id,
-        new_snapshot_id=new_snapshot_id,
+        new_snapshot_id=resolved_snapshot_id,
         base_row_count=base_rows,
         delta_row_count=plan.row_count,
         refetched_ciks=tuple(refetched),
@@ -288,7 +301,7 @@ def augment_from_roster(
     metadata_paths: MetadataPaths,
     *,
     base_snapshot_id: str,
-    new_snapshot_id: str,
+    new_snapshot_id: str = "",
     **kwargs: Any,
 ) -> AugmentResult:
     """Augment from an already-resolved roster rather than a manifest file."""

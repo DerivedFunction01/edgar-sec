@@ -371,9 +371,10 @@ def augment_options(
 ) -> tuple[PlanOptions, dict[str, str]]:
     """Build the options and lineage an augmentation run needs.
 
-    The base and new snapshot ids are both explicit because an augmented
-    snapshot is a new artifact with a new identity: the delta plan is bound to
-    its base, and the published manifest records that binding.
+    The base snapshot is explicit because a delta is meaningless without one. The
+    new snapshot id is optional and defaults to the derived delta plan id, so an
+    augmentation neither requires nor invents a free-form identity; a supplied
+    value stays an explicit override for the distribution path.
     """
     options = plan_options(
         input_path=input_path,

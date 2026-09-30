@@ -12,12 +12,16 @@ from pathlib import Path
 
 import pytest
 
+from edgar_sec.foundation.hashing import file_sha256
 from edgar_sec.pipelines.metadata_sync.discovery import (
     current_snapshot_id,
+    describe_roster,
     list_plans,
+    list_rosters,
     list_snapshots,
     plan_summary,
     resolve_plan_choice,
+    resolve_snapshot_choice,
 )
 from edgar_sec.pipelines.metadata_sync.manifest import read_cik_manifest
 from edgar_sec.pipelines.metadata_sync.paths import resolve_metadata_paths
@@ -209,3 +213,153 @@ def test_no_plans_means_nothing_to_choose(tmp_path: Path) -> None:
     metadata = resolve_metadata_paths(tmp_path)
     assert list_plans(metadata) == []
     assert resolve_plan_choice([], select=lambda _lines: "1") is None
+
+
+# ----------------------------------------------------------------- snapshots
+
+
+def test_snapshots_render_with_size_lineage_and_the_current_marker(
+    tmp_path: Path,
+) -> None:
+    manifests = [
+        {
+            "snapshot_id": "newer",
+            "row_count": 1200,
+            "parts": [{"path": "a"}, {"path": "b"}],
+            "kind": "full",
+        },
+        {
+            "snapshot_id": "older",
+            "row_count": 900,
+            "kind": "delta",
+            "parent_snapshot_id": "base-1",
+        },
+    ]
+    captured: list[str] = []
+    chosen = resolve_snapshot_choice(
+        manifests, "newer", select=lambda lines: captured.extend(lines) or "2"
+    )
+    assert chosen == "older"
+    assert "[current]" in captured[0] and "2 parts" in captured[0]
+    assert "1,200 rows" in captured[0]
+    assert "augments base-1" in captured[1] and "delta" in captured[1]
+
+
+@pytest.mark.parametrize("answer", ["", "0", "5", "nope"])
+def test_a_kept_or_invalid_snapshot_choice_returns_nothing(answer: str) -> None:
+    manifests = [{"snapshot_id": "only", "row_count": 1}]
+    assert (
+        resolve_snapshot_choice(manifests, "only", select=lambda _lines: answer) == ""
+    )
+
+
+def test_no_snapshots_means_nothing_to_choose() -> None:
+    assert resolve_snapshot_choice([], "", select=lambda _lines: "1") == ""
+
+
+# ------------------------------------------------------------------- rosters
+
+
+def _write_registry(
+    metadata,
+    *,
+    registry_id: str = "reg-1",
+    ciks: tuple[str, ...] = ("0000001985", "0000001761"),
+    source_snapshot_id: str = "src-1",
+) -> str:
+    """Publish a real registry so discovery reads genuine manifests and digests."""
+    from edgar_sec.pipelines.metadata_sync.registry import (
+        EFFECTIVE_INPUT_MANIFEST_KIND,
+        REGISTRY_SCHEMA_VERSION,
+    )
+    from edgar_sec.pipelines.metadata_sync.roster import (
+        ROSTER_MANIFEST_KIND,
+        ROSTER_SCHEMA_VERSION,
+        build_roster,
+        write_roster,
+    )
+
+    roster_path = metadata.effective_cik_roster(registry_id)
+    roster_path.parent.mkdir(parents=True, exist_ok=True)
+    roster = build_roster(ciks)
+    digest = write_roster(roster, roster_path)
+    roster_path.with_name(roster_path.name + ".manifest.json").write_text(
+        json.dumps(
+            {
+                "manifest_kind": ROSTER_MANIFEST_KIND,
+                "schema_version": ROSTER_SCHEMA_VERSION,
+                "registry_id": registry_id,
+                "artifact_sha256": digest,
+                # The loader re-derives the roster id and refuses a mismatch, so a
+                # fixture that omits it would not be the manifest a comparison leaves.
+                "roster_id": roster.roster_id,
+                "row_count": roster.row_count,
+            }
+        ),
+        encoding="utf-8",
+    )
+    # The effective-input manifest is verified against the CSV's own digest, so a
+    # fixture that skips the CSV would not be the artifact a real comparison leaves.
+    csv_path = metadata.effective_input_file(registry_id)
+    csv_path.write_text(
+        "".join(f"{cik},name-{cik}\n" for cik in ciks), encoding="utf-8"
+    )
+    input_manifest = csv_path.with_name(csv_path.name + ".manifest.json")
+    input_manifest.write_text(
+        json.dumps(
+            {
+                "manifest_kind": EFFECTIVE_INPUT_MANIFEST_KIND,
+                "manifest_schema_version": REGISTRY_SCHEMA_VERSION,
+                "registry_id": registry_id,
+                "source_snapshot_id": source_snapshot_id,
+                "artifact_path": str(csv_path),
+                "artifact_sha256": file_sha256(csv_path),
+                "curated_cik_count": len(ciks),
+                "active_cik_count": len(ciks),
+            }
+        ),
+        encoding="utf-8",
+    )
+    return registry_id
+
+
+def test_published_rosters_are_discoverable_with_their_provenance(
+    tmp_path: Path,
+) -> None:
+    """A roster is the durable cohort a comparison publishes; it must be listable."""
+    metadata = resolve_metadata_paths(tmp_path)
+    _write_registry(metadata)
+
+    found = list_rosters(metadata)
+    assert len(found) == 1
+    assert found[0]["registry_id"] == "reg-1"
+    assert found[0]["readable"] is True
+    assert found[0]["row_count"] == 2
+    assert found[0]["source_snapshot_id"] == "src-1"
+
+
+def test_an_unusable_registry_is_listed_with_its_reason(tmp_path: Path) -> None:
+    """Hiding it would make a populated directory look like an empty one."""
+    metadata = resolve_metadata_paths(tmp_path)
+    registry_root = metadata.registry_root("reg-broken")
+    registry_root.mkdir(parents=True)
+
+    found = list_rosters(metadata)
+    assert [item["registry_id"] for item in found] == ["reg-broken"]
+    assert found[0]["readable"] is False
+    assert found[0]["readable_reason"]
+    assert "unusable" in describe_roster(found[0])
+
+
+def test_no_registries_lists_nothing(tmp_path: Path) -> None:
+    metadata = resolve_metadata_paths(tmp_path)
+    assert list_rosters(metadata) == []
+
+
+def test_a_roster_summary_reads_as_size_and_source(tmp_path: Path) -> None:
+    metadata = resolve_metadata_paths(tmp_path)
+    _write_registry(metadata)
+    described = describe_roster(list_rosters(metadata)[0])
+    assert "2 CIKs" in described
+    assert "2 active in source" in described
+    assert "src-1" in described

@@ -703,3 +703,77 @@ Phase 1.
 `cache.json_ttl_s` was registered and resolvable but carried on no
 `RuntimeSettings` field, so nothing could honour an override of it — the same
 shape as the ignored chunk size. It is now exposed and forwarded.
+
+### 13. Derived Identities, and the Commands the Menu Printed But Never Ran
+
+A follow-up pass over `run.py` asked which surfaces still demanded input an
+operator was never shown. It found three defects rather than only friction, and
+all three share one cause: nothing executed the thing being described.
+
+**The emitted commands did not parse.** The worker's "Show worker commands" action
+printed `--workers` (a *valid* flag meaning worker *threads*, not assignment count)
+and `--worker-id` (which does not exist; the flag is `--worker`), and it omitted
+`import` from the lifecycle entirely, so the final `merge` silently merged nothing —
+the returned chunks had never been adopted through the trust boundary. The tests
+asserted substrings such as `"metadata export" in out`, which is why a command that
+errored on the receiving machine passed. Those assertions are replaced with
+`shlex` tokenization plus a round trip through the real `build_parser()`, and the
+action now derives worker ids and bundle names from the same `divide_chunks` call
+`export` performs, skipping empty assignments, and quotes arguments so a
+destination containing a space survives copy-paste.
+
+**Compare handed its own discovery result to a directory.** A source manifest
+describes the listing it published and carries no path to itself, so
+`chosen.get("manifest_path", "")` resolved to `""` and then to the working
+directory. The path is derived from the selected `snapshot_id` through
+`MetadataPaths.source_manifest_file`, which is a value the operator had already been
+shown.
+
+**The plan header was defined, tested, and never called.** `render_plan_header` had
+callers in the test file only, while the module docstring claimed the wizard
+"shows the active plan before each menu". Shared infrastructure now takes a
+generic `before_menu` callback, and the Phase 1 operator supplies the session line
+— working plan size and chunk progress, current snapshot — which is v1's
+`ensure_plan`-then-print-header behaviour. A failing header reports and still draws
+the menu, because refusing to render it would strand the operator with no way back
+to the surface they started from.
+
+**Two identities stopped being typed.** `augment` required `--new-snapshot-id` on
+both the CLI and the menu, and switching surfaces did not help, which is what made
+it read as a downgrade rather than a route around one. It now defaults to the
+derived delta plan id — a content address over the base snapshot, the effective
+delta roster, and the chunk layout — exactly as `RunOptions.effective_snapshot_id`
+already defaults a full merge to its plan id, and an explicit value stays an
+override for the distribution path. The pointer had the same shape of problem from
+the other end: `publish_snapshot` advanced it as a side effect of a merge, so it
+could only ever move forward. `publish_current_snapshot` is the explicit operation
+v1 had as `update_current_snapshot_pointer` ("advance or roll back"); it validates
+the target manifest before writing, and it is a pointer move only — no snapshot is
+written, removed, or rewritten.
+
+**One existing capability was unreachable.** `--roster` planning was CLI-only, so
+an operator ran `sources compare`, produced a content-addressed roster, and was
+then asked for a 1.3 MB CSV. The cohort prompt now offers published rosters
+alongside the CSV and keeps the CSV as the default; the CLI's exclusivity is
+unchanged. `filing_catalog`'s `expand` was the only Phase 2 subcommand with no menu
+entry, and it is the one whose inputs are hardest to guess: `--parent-plan` is a
+directory path nothing had ever displayed. It is now offered, filtered to
+policy-scope plans (a deterministic parent is refused by `expand` itself, so
+listing one would offer a choice that cannot succeed), with the target size
+defaulting to the parent's locator count and a contraction refused before the
+command runs.
+
+**What was deliberately left alone.** `documents run` and `fill` still require
+`--plan <target-plan.json>`. That is not a v1 regression: the plan is a Phase 2
+artifact, `filing_catalog` owns it, and Phase 2.5 consumes it without enumerating
+it. A sibling-pipeline import or a shared plan-discovery contract would couple the
+two stages that are separate packages by design, so the path stays and the
+document_storage README says so. The fixture side of the same prompt is discovered,
+because fixtures are that package's own artifact.
+
+**The recurring lesson, second instance.** The P0 in §11 was a path no test
+executed. These three were paths no test *checked*: substring assertions over
+emitted command text, a `get` on a field no manifest carries, and a header function
+whose only callers were its own tests. Asserting that something exists is not
+asserting that it works; the tests that would have caught all three execute the
+thing instead of describing it.

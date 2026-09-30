@@ -2,13 +2,14 @@
 
 The wizard is a thin presentation layer over the same typed options and the same
 command functions the CLI uses, so the two surfaces cannot drift. What it adds is
-*discovery*: it looks at what is already on disk, shows the active plan before
-each menu, carries that state across visits, and offers a numbered pick instead
-of asking the operator to remember an identifier they were never shown.
+*discovery*: it looks at what is already on disk, shows the active plan and the
+current snapshot before each menu, carries that state across visits, and offers a
+numbered pick instead of asking the operator to remember an identifier they were
+never shown.
 
 That is the capability v1 had and v2 dropped. v1 ran an ``ensure_plan`` step at
 the top of every loop iteration, so it could auto-resume an in-progress run,
-adopt an existing plan, and offer regeneration on a stale one. v2 re-prompted
+adopt an existing plan, and show a plan header before every menu. v2 re-prompted
 for a plan id every time and a blank answer did nothing, which made a pipeline
 with a plan file on disk feel like a hand-typed CLI.
 
@@ -16,9 +17,16 @@ Restoring this here rather than in shared infrastructure is deliberate.
 ``roadmap/refactor_v2/v2_refactor_roadmap.md`` records why v1's equivalent was
 not kept: the shared ``run_interactive`` "hardcoded Phase 01's exact model ...
 [and] became dead code outside Phase 01". What is genuinely shared -- entrypoint
-policy, terminal prompting, the manifest scan behind ``discovery`` -- is consumed
-from ``foundation.runtime.interactive`` and ``infra.storage.manifests`` instead
-of being rewritten here.
+policy, terminal prompting, the per-render header hook, the manifest scan behind
+``discovery`` -- is consumed from ``foundation.runtime.interactive`` and
+``infra.storage.manifests`` instead of being rewritten here.
+
+Discovery also keeps every identifier derived rather than typed. A plan comes
+from a listing, the augmentation's published snapshot id defaults to its derived
+delta plan id, and the current-snapshot pointer is moved by an explicit operation
+over an already-published manifest. The one identifier a menu still asks for is
+the Phase 2.5 target-plan path, which is deliberately a cross-pipeline handoff
+rather than a Phase 1 discovery surface.
 
 State is passed in rather than held in a module global so the actions close over
 it and a test can drive the whole wizard without a terminal or a leaked session.
@@ -37,6 +45,7 @@ from edgar_sec.foundation.runtime.interactive import (
 )
 from edgar_sec.foundation.runtime.settings import resolve_runtime_settings
 
+from .assignment import divide_chunks
 from .cli import (
     cmd_augment,
     cmd_compare,
@@ -51,11 +60,15 @@ from .cli import (
 from .cli import main as cli_main
 from .discovery import (
     current_snapshot_id,
+    describe_roster,
     list_plans,
+    list_rosters,
     list_snapshots,
     plan_summary,
     resolve_plan_choice,
+    resolve_snapshot_choice,
 )
+from .merger import MergeError, publish_current_snapshot
 from .options import (
     PlanOptions,
     RunOptions,
@@ -65,6 +78,7 @@ from .options import (
     run_options,
 )
 from .paths import resolve_metadata_paths
+from .source_registry import SOURCE_NAME
 
 __all__ = [
     "WizardState",
@@ -72,6 +86,7 @@ __all__ = [
     "confirm_network",
     "main",
     "render_plan_header",
+    "render_session_header",
 ]
 
 MENU_TITLE = "Metadata Sync (Phase 01)"
@@ -102,6 +117,7 @@ class WizardState:
     bundle_root: str = ""
     worker_id: str = ""
     input_path: str = ""
+    registry_id: str = ""
     artifacts_root: str = ""
 
     def metadata(self):
@@ -140,6 +156,26 @@ def _ask_int(label: str, default: int | None = None) -> int | None:
 def confirm_network(prompt: str = NETWORK_PROMPT) -> bool:
     """Ask before a live SEC request. Defaults to no."""
     return prompt_text(prompt.strip(), "n").strip().lower() in ("y", "yes")
+
+
+def render_session_header(state: WizardState) -> str:
+    """One line describing what this session is currently pointed at.
+
+    Shown above every menu, so an operator can see the working plan and the
+    published snapshot without having to run status first. A session with
+    nothing resolved says so and points at the action that creates it, rather
+    than showing a blank where a plan id used to be.
+    """
+    metadata = state.metadata()
+    current = current_snapshot_id(metadata)
+    parts: list[str] = []
+    header = render_plan_header(state)
+    if header:
+        parts.append(header)
+    else:
+        parts.append("No plan selected")
+    parts.append(f"current snapshot: {current}" if current else "no snapshot published")
+    return "  |  ".join(parts)
 
 
 def render_plan_header(state: WizardState) -> str | None:
@@ -184,7 +220,8 @@ def resolve_plan(state: WizardState) -> bool:
         if current:
             print(f"\nNo plan on disk. Snapshot {current} is published.")
             choice = prompt_text(
-                "Next: 1 Plan generation, 2 Augment, 3 Status, 0 Exit", "1"
+                "Next: 1 Plan generation, 2 Augment, 3 Status, 4 Switch snapshot, 0 Exit",
+                "1",
             ).strip()
         else:
             print("\nNo plan on disk yet.")
@@ -193,6 +230,8 @@ def resolve_plan(state: WizardState) -> bool:
             augment(state)
         elif choice == "3":
             status(state)
+        elif choice == "4":
+            select_snapshot(state)
         return False
 
     def select(lines: list[str]) -> str:
@@ -204,6 +243,15 @@ def resolve_plan(state: WizardState) -> bool:
     chosen = resolve_plan_choice(plans, select=select)
     if chosen is None:
         state.clear()
+        return False
+    if not chosen["readable"]:
+        # Adopting it would point every later action at a plan this build cannot
+        # load. Report why and leave the session unresolved so the operator is
+        # told to plan again rather than silently acting on nothing.
+        print(
+            f"plan {chosen['plan_id']} is unreadable or not compatible with this "
+            "build; use 'Plan generation' to create one this build can run"
+        )
         return False
     state.plan_id = chosen["plan_id"]
     state.bundle_root = ""
@@ -222,17 +270,102 @@ def _ensure_plan(state: WizardState) -> bool:
     return resolve_plan(state)
 
 
-def _ask_plan_options(*, with_limit: bool = False) -> PlanOptions | None:
-    """Collect the cohort reference and chunk layout a plan needs."""
+def select_snapshot(state: WizardState) -> None:
+    """Point ``current`` at a published snapshot, including an earlier one.
+
+    A merge advances the pointer as a side effect, so without this the pointer can
+    only ever move forward and a reader cannot be sent back to a snapshot that is
+    still on disk. Selecting one is a pointer move only: no snapshot is written,
+    removed, or republished, and the next successful merge advances it again.
+    """
+    metadata = state.metadata()
+    manifests = list_snapshots(metadata)
+    if not manifests:
+        print("no published snapshots; merge a plan first")
+        return
+
+    def select(lines: list[str]) -> str:
+        print("\nPublished snapshots:")
+        for line in lines:
+            print(line)
+        return prompt_text("Snapshot number (blank = keep current)", "").strip()
+
+    chosen = resolve_snapshot_choice(
+        manifests, current_snapshot_id(metadata), select=select
+    )
+    if not chosen:
+        print("current snapshot unchanged")
+        return
+    try:
+        publish_current_snapshot(metadata, chosen)
+    except MergeError as exc:
+        print(f"could not switch snapshot: {exc}")
+        return
+    print(f"current snapshot is now {chosen}")
+
+
+def _ask_cohort_source(state: WizardState) -> tuple[str, str] | None:
+    """Choose the cohort a plan is built over: a curated CSV or a published roster.
+
+    A roster is what ``sources compare`` publishes, and it is a content address over
+    one source snapshot plus one curated input, so it is the durable form of a
+    cohort. Prompting only for a CSV made that workflow unreachable from the menu:
+    the operator ran a comparison, produced a roster, and was then asked for a file
+    instead.
+
+    Returns ``(input_path, registry_id)`` with exactly one of the two set, or
+    ``None`` to cancel. The CSV is offered first and stays the default, so the
+    common case is unchanged; the roster list is appended only when one exists.
+    """
     source = prompt_text("CIK manifest CSV (blank = cancel)", DEFAULT_INPUT)
     if not source:
         return None
+    rosters = list_rosters(state.metadata())
+    if not rosters:
+        return source, ""
+
+    print("\nCohort sources:")
+    print(f"  1. {source}  (curated manifest CSV)")
+    for index, roster in enumerate(rosters, start=2):
+        print(f"  {index}. {describe_roster(roster)}")
+    raw = prompt_text("Cohort source number", "1").strip() or "1"
+    try:
+        choice = int(raw)
+    except ValueError:
+        choice = 1
+    if choice == 1:
+        return source, ""
+    if not 2 <= choice <= len(rosters) + 1:
+        print("invalid selection; using the curated manifest CSV")
+        return source, ""
+    chosen = rosters[choice - 2]
+    if not chosen["readable"]:
+        print(
+            f"{chosen['registry_id']} cannot be planned from: {chosen['readable_reason']}"
+        )
+        return source, ""
+    return "", str(chosen["registry_id"])
+
+
+def _ask_plan_options(
+    state: WizardState, *, with_limit: bool = False
+) -> PlanOptions | None:
+    """Collect the cohort reference and chunk layout a plan needs."""
+    cohort = _ask_cohort_source(state)
+    if cohort is None:
+        return None
+    input_path, registry_id = cohort
     settings = resolve_runtime_settings()
     chunk_size = _ask_int(
         "CIKs per chunk (blank = configured default)", settings.default_chunk_size
     )
     limit = _ask_int("Limit CIKs (blank = all)") if with_limit else None
-    return plan_options(input_path=source, chunk_size=chunk_size, limit=limit)
+    return plan_options(
+        input_path=input_path or None,
+        registry_id=registry_id,
+        chunk_size=chunk_size,
+        limit=limit,
+    )
 
 
 def _ask_run_options(
@@ -267,7 +400,7 @@ def _ask_run_options(
 
 
 def plan(state: WizardState) -> None:
-    options = _ask_plan_options(with_limit=True)
+    options = _ask_plan_options(state, with_limit=True)
     if options is None:
         return
     cmd_plan(options)
@@ -276,6 +409,7 @@ def plan(state: WizardState) -> None:
     state.plan_id = derive_plan_id(options)
     state.bundle_root = ""
     state.input_path = str(options.input_path or "")
+    state.registry_id = options.registry_id
 
 
 def status(state: WizardState) -> None:
@@ -306,19 +440,18 @@ def merge(state: WizardState) -> None:
 
 
 def augment(state: WizardState) -> None:
-    options = _ask_plan_options()
+    options = _ask_plan_options(state)
     if options is None:
         return
+    state.input_path = str(options.input_path or "")
+    state.registry_id = options.registry_id
     base = prompt_text(
         "Base snapshot id", current_snapshot_id(state.metadata())
     ).strip()
     if not base:
         print("cancelled; an augment needs a base snapshot id")
         return
-    new = prompt_text("New snapshot id", "").strip()
-    if not new:
-        print("cancelled; an augment needs a new snapshot id")
-        return
+    new = prompt_text("New snapshot id (blank = the derived delta plan id)", "").strip()
     if not confirm_network("This fetches the delta from SEC. Continue? (y/N) "):
         print("cancelled; nothing was fetched")
         return
@@ -328,6 +461,9 @@ def augment(state: WizardState) -> None:
         new_snapshot_id=new,
         workers=_ask_int("Worker threads (blank = machine-derived)"),
     )
+    published = current_snapshot_id(state.metadata())
+    if published:
+        print(f"current snapshot is now {published}")
 
 
 def export(state: WizardState) -> None:
@@ -373,7 +509,8 @@ def compare(state: WizardState) -> None:
     source = prompt_text("CIK manifest CSV", state.input_path or DEFAULT_INPUT)
     if not source:
         return
-    manifests = list_snapshots(state.metadata())
+    metadata = state.metadata()
+    manifests = list_snapshots(metadata)
     if not manifests:
         print("no source snapshot published; run 'Refresh external source' first")
         return
@@ -386,40 +523,101 @@ def compare(state: WizardState) -> None:
     except (ValueError, IndexError):
         print("invalid selection")
         return
+    # The manifest path is derived from the snapshot id, not read out of the
+    # manifest: a source manifest describes the listing it published, and carries
+    # no path to itself. Taking it from a field that does not exist resolved to
+    # the working directory, so the comparison failed on a directory.
     artifacts = prompt_text("Artifacts root (blank = project default)", "").strip()
     cmd_compare(
-        plan_options(input_path=source, artifacts_root=artifacts or None),
-        source_manifest=Path(str(chosen.get("manifest_path", ""))).resolve(),
+        plan_options(
+            input_path=source,
+            artifacts_root=artifacts or None or state.artifacts_root or None,
+        ),
+        source_manifest=metadata.source_manifest_file(
+            SOURCE_NAME, str(chosen.get("snapshot_id", ""))
+        ),
     )
 
 
+def _shell_arg(value: str) -> str:
+    """Quote one emitted argument so a destination with spaces stays executable.
+
+    The commands below are meant to be copied and pasted, so a destination chosen
+    as ``distrib/q3 run`` must survive the shell rather than becoming two
+    arguments and a parse error on the receiving machine.
+    """
+    if value and all(char not in value for char in " \t\n\"'\\$`*?[]{}();&|<>#~!()"):
+        return value
+    return "'" + value.replace("'", "'\\''") + "'"
+
+
 def commands(state: WizardState) -> None:
-    """Print copy-pasteable commands for distributing this plan across machines.
+    """Print the full distributed lifecycle for this plan, in execution order.
 
     v1 rendered a command per machine from the operator menu. It matters because
     the alternative is remembering the flags, and a worker given the wrong
     arguments runs chunks it was not assigned.
+
+    The sequence is the one the pipeline actually implements, and every step is
+    load-bearing. ``export`` copies the bundle out; each machine runs ``worker``
+    against its own bundle; the coordinator must ``import`` each returned bundle
+    through the trust boundary before ``merge`` will see those chunks. Emitting
+    export/worker/merge and omitting ``import`` produced a workflow whose final
+    command silently merged nothing, because the returned chunks were never
+    adopted.
+
+    Worker ids and bundle names come from the same assignment division ``export``
+    uses, and workers with no chunk are not listed, so the printed set matches the
+    directories the export will actually create.
     """
     if not _ensure_plan(state):
         return
+    metadata = state.metadata()
+    summary = plan_summary(metadata, state.plan_id)
+    if not summary["readable"]:
+        print(
+            f"plan {state.plan_id} is unreadable; run status for why, then plan again"
+        )
+        return
+
     workers = _ask_int("Number of worker bundles", 2) or 2
     plan_id = state.plan_id
     destination = prompt_text("Destination directory", f"distrib/{plan_id[:8]}").strip()
     if not destination:
         return
+    dest = Path(destination)
+    try:
+        assignments = divide_chunks(summary["chunk_count"], workers)
+    except ValueError as exc:
+        print(f"cannot divide this plan across {workers} workers: {exc}")
+        return
+    assigned = [
+        (worker_id, dest / worker_id) for worker_id, ids in assignments.items() if ids
+    ]
+
     print("\nCoordinator (run this first):")
     print(
-        f"  python run.py metadata export --plan-id {plan_id}"
-        f" --workers {workers} --destination {destination}"
+        "  python run.py metadata export"
+        f" --plan-id {_shell_arg(plan_id)}"
+        f" --worker-count {workers}"
+        f" --destination {_shell_arg(destination)}"
     )
-    for index in range(1, workers + 1):
-        print(f"\nMachine {index}:")
+    for index, (worker_id, bundle) in enumerate(assigned, start=1):
+        print(f"\nMachine {index} ({worker_id}):")
         print(
-            f"  python run.py metadata worker --bundle {destination}/worker-{index}"
-            f" --worker-id worker-{index}"
+            "  python run.py metadata worker"
+            f" --bundle {_shell_arg(str(bundle))}"
+            f" --worker {_shell_arg(worker_id)}"
         )
-    print("\nCoordinator, once the workers return their bundles:")
-    print(f"  python run.py metadata merge --plan-id {plan_id}")
+    print("\nCoordinator, once every bundle has come back:")
+    for _, bundle in assigned:
+        print(
+            "  python run.py metadata import"
+            f" --plan-id {_shell_arg(plan_id)}"
+            f" --source {_shell_arg(str(bundle))}"
+        )
+    print("\nCoordinator, once the imports are done:")
+    print(f"  python run.py metadata merge --plan-id {_shell_arg(plan_id)}")
 
 
 # ----------------------------------------------------------------------- menu
@@ -441,19 +639,26 @@ def build_operator_menu(state: WizardState | None = None) -> tuple[MenuAction, .
             "9", "Compare curated input against a source", lambda: compare(session)
         ),
         MenuAction(
-            "p", "Show worker commands for this plan", lambda: commands(session)
+            "p",
+            "Switch the current published snapshot",
+            lambda: select_snapshot(session),
+        ),
+        MenuAction(
+            "c", "Show worker commands for this plan", lambda: commands(session)
         ),
     )
 
 
 def main(argv: list[str] | None = None) -> int:
     """Operator entrypoint: interactive by default, CLI when given a command."""
+    state = WizardState()
     return operator_entrypoint(
         MENU_TITLE,
-        build_operator_menu(),
+        build_operator_menu(state),
         cli_main,
         argv,
         interrupted_message=INTERRUPTED_MESSAGE,
+        before_menu=lambda: render_session_header(state),
     )
 
 

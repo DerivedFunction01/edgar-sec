@@ -351,6 +351,15 @@ python run.py documents review --limit 20
 `_COMMANDS`, and catches `FileNotFoundError`, `ValueError`, and `RuntimeError`,
 printing `error: <msg>` to stderr and returning 1 (`cli.py:211-228`).
 
+`--plan` is required by `run` and `fill`, and the interactive menu still asks for
+that path. This is an explicit artifact handoff, not a missing discovery surface:
+the plan is a Phase 2 target plan, `filing_catalog` owns it, and Phase 2.5 consumes
+it without owning or enumerating it. A sibling-pipeline import or a shared
+plan-discovery contract would couple the two stages that are separate pipelines by
+design, so the path stays. The fixture side of the same prompt *is* discovered —
+the menu lists fixture stores with their payload counts — because fixtures are
+this package's own artifact.
+
 Details worth knowing before running:
 
 - `--limit` on `run` truncates the chunk list for a smoke run, not the plan file
