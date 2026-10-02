@@ -3,7 +3,7 @@
 Zero network: this module reads one published Parquet dataset and writes one
 immutable catalog snapshot. It never constructs an HTTP client.
 
-Three guards are load-bearing invariants:
+Four guards are load-bearing invariants:
 
 1. a source path under ``chunks``, ``checkpoints``, or ``workers`` is refused,
    so a transient Phase 1 work unit can never be mistaken for a finalized
@@ -12,7 +12,16 @@ Three guards are load-bearing invariants:
    exactly, so a Phase 1 schema change fails loudly instead of producing a
    silently truncated catalog;
 3. an existing snapshot directory is refused rather than overwritten, so a
-   published snapshot stays immutable.
+   published snapshot stays immutable;
+4. the source parts must be CIK-disjoint. The target pass deduplicates
+   occurrences per shard and keys them on ``source_cik``, so a CIK spanning two
+   parts would publish the same ``occurrence_id`` twice.
+
+The target pass reads **one source part per query**. A Phase 1 registrant row
+carries its entire filing history as a nested array, so the whole cohort arrives
+as a few tens of thousands of very large nested values; unnesting them together
+both pins all of that at once and makes peak memory a function of the cohort
+rather than of a part.
 """
 
 from __future__ import annotations
@@ -73,6 +82,16 @@ FALLBACK_POLICY_VERSION = "1.1.0"
 # Path components that identify transient Phase 1 state rather than a finalized
 # snapshot. Present in these means the source is a work unit, not an artifact.
 TRANSIENT_SOURCE_PARTS = frozenset({"chunks", "checkpoints", "workers"})
+
+# How the published target shards are ordered, recorded so a consumer cannot
+# mistake one shard's local ordering for a dataset-wide guarantee. Each shard is
+# sorted by (source_cik, accession, document_path), and shard N is the unnest of
+# source part N — but the shards are NOT globally sorted by CIK, because Phase 1
+# publishes parts in chunk order (`sort_order: "chunk_order"`) whose CIK ranges
+# overlap. Phase 1 made exactly this tradeoff and recorded it the same way; a
+# consumer that needs a total order must impose one, as `plan` does with its own
+# ORDER BY. See merger.publish_parts for the upstream precedent.
+TARGET_SORT_ORDER = "source_part_order"
 
 
 class CatalogError(RuntimeError):
@@ -203,13 +222,48 @@ def _guard_schema_matches(source: SourceDataset) -> None:
             )
 
 
+def _guard_ciks_are_disjoint(source: SourceDataset) -> None:
+    """Guard 4: each CIK must appear in exactly one source part.
+
+    The target pass unnests one source part at a time and deduplicates occurrences
+    within that part, so a CIK spanning two parts would publish the same
+    ``occurrence_id`` into two shards — a dataset-wide duplicate that no per-shard
+    check could catch. A published Phase 1 snapshot already carries one row per
+    CIK, but this guard is what makes that an enforced precondition of the sharded
+    write rather than an assumption about a particular artifact.
+
+    The check is a cheap column-pruned aggregate over ``cik`` alone; it never
+    expands the nested ``filings`` arrays.
+    """
+    if source.part_count < 2:
+        return
+    listed = sql_path_list([str(path) for path in source.paths])
+    with connect() as con:
+        conflicts = con.execute(
+            f"""
+            SELECT cik, count(DISTINCT filename) AS parts
+            FROM read_parquet({listed}, filename = true)
+            WHERE cik IS NOT NULL
+            GROUP BY cik
+            HAVING count(DISTINCT filename) > 1
+            ORDER BY cik
+            LIMIT 5
+            """
+        ).fetchall()
+    if conflicts:
+        detail = ", ".join(f"{cik} in {parts} parts" for cik, parts in conflicts)
+        raise CatalogError(
+            "source parts share CIKs; a sharded catalog would publish duplicate "
+            f"occurrence ids across shards ({detail})"
+        )
+
+
 def materialize(
     source_artifact: str | os.PathLike[str] | None = None,
     output_root: str | os.PathLike[str] | None = None,
     *,
     source_manifest: str | os.PathLike[str] | None = None,
     progress: ProgressCallback = None,
-    source_batch_size: int | None = None,
     row_group_size: int | None = None,
 ) -> dict[str, Any]:
     """Materialize one immutable filing-catalog snapshot.
@@ -223,15 +277,16 @@ def materialize(
     derives threads, memory limit, and spill directory from the cgroup-aware
     ``derive_resources()``; re-exposing them as arguments invites the hardcoded
     allocations the ``resource-allocation`` scanner exists to block.
+
+    The target pass is bounded by the *source part*, not by a tunable batch size.
+    Each Phase 1 part is unnested on its own and written to its own shard, so peak
+    memory tracks the densest part rather than the whole cohort, and an earlier
+    ``source_batch_size`` setting that was validated and recorded without ever
+    batching anything is gone. There is deliberately no size knob: the unit of
+    work is a published dataset boundary, and inventing a second one is what left
+    the original unbounded.
     """
     settings = resolve_settings()
-    batch_size = int(
-        source_batch_size
-        if source_batch_size is not None
-        else settings.get("catalog.source_batch_size", 1000)
-    )
-    if batch_size < 1:
-        raise ValueError("source_batch_size must be >= 1")
     groups = int(
         row_group_size
         if row_group_size is not None
@@ -241,6 +296,7 @@ def materialize(
     source = resolve_source(source_artifact, source_manifest)
     _guard_not_transient(source)
     _guard_schema_matches(source)
+    _guard_ciks_are_disjoint(source)
     emit_progress(
         progress,
         {
@@ -311,23 +367,43 @@ def materialize(
     part_metadata: list[dict[str, Any]] = []
     form_counts: dict[str, int] = {}
     total_target_rows = 0
+    # One source part per query and per shard. Reusing a single connection keeps
+    # the per-part queries cheap; reclaim() between parts returns the previous
+    # part's arena pages to the OS so a dense part does not push the next one into
+    # a fragmented heap. Peak memory is therefore set by the densest single part.
     with connect() as con:
-        unnest = build_part_unnest_query([str(path) for path in source.paths])
-        shard_name = target_part_name(0)
-        shard_path = targets_dir / shard_name
-        total_target_rows = copy_query_to_parquet(con, unnest, shard_path, groups)
-        part_metadata.append(
-            {
-                "path": f"filing_targets/{shard_name}",
-                "row_count": total_target_rows,
-                "artifact_sha256": file_sha256(shard_path),
-            }
-        )
-        for form_name, count in con.execute(
-            f"SELECT form, COUNT(*) FROM read_parquet({sql_literal(str(shard_path))}) "
-            f"WHERE form IS NOT NULL GROUP BY form ORDER BY form"
-        ).fetchall():
-            form_counts[str(form_name)] = int(count)
+        for index, source_path in enumerate(source.paths):
+            shard_name = target_part_name(index)
+            shard_path = targets_dir / shard_name
+            rows = copy_query_to_parquet(
+                con, build_part_unnest_query(str(source_path)), shard_path, groups
+            )
+            total_target_rows += rows
+            part_metadata.append(
+                {
+                    "path": f"{TARGETS_DIR_NAME}/{shard_name}",
+                    "part_index": index,
+                    "source_part": str(source_path),
+                    "row_count": rows,
+                    "artifact_sha256": file_sha256(shard_path),
+                }
+            )
+            for form_name, count in con.execute(
+                f"SELECT form, COUNT(*) FROM read_parquet({sql_literal(str(shard_path))}) "
+                f"WHERE form IS NOT NULL GROUP BY form ORDER BY form"
+            ).fetchall():
+                form_counts[str(form_name)] = form_counts.get(str(form_name), 0) + int(
+                    count
+                )
+            emit_progress(
+                progress,
+                {
+                    "type": "merge_stage",
+                    "stage": f"filing_targets:{shard_name}",
+                    "rows": rows,
+                },
+            )
+            reclaim()
 
     reclaim()
 
@@ -347,7 +423,8 @@ def materialize(
         "target_columns": TARGET_SCHEMA.names,
         "form_counts": form_counts,
         "parts": part_metadata,
-        "source_batch_size": batch_size,
+        "target_part_count": len(part_metadata),
+        "sort_order": TARGET_SORT_ORDER,
         "pipeline": PIPELINE_DIR,
     }
     atomic_write_json(staging_dir / SNAPSHOT_MANIFEST_NAME, manifest, indent=2)
@@ -381,6 +458,7 @@ def materialize(
 
 __all__ = [
     "FALLBACK_POLICY_VERSION",
+    "TARGET_SORT_ORDER",
     "TRANSIENT_SOURCE_PARTS",
     "CatalogError",
     "materialize",

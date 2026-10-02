@@ -45,14 +45,16 @@ from edgar_sec.pipelines.filing_catalog.publication import (
 from tests.pipelines.filing_catalog.test_policy_planner import _policy
 
 
-def _root(catalog_snapshot: tuple[dict[str, Any], Path]) -> Path:
-    return catalog_snapshot[1].parent.parent
+def _root(catalog_artifacts_root: Path) -> Path:
+    return catalog_artifacts_root
 
 
 def _publish_parent(
-    catalog_snapshot: tuple[dict[str, Any], Path], **overrides: Any
+    catalog_snapshot: tuple[dict[str, Any], Path],
+    catalog_artifacts_root: Path,
+    **overrides: Any,
 ) -> tuple[Path, dict[str, Any]]:
-    artifacts_root = _root(catalog_snapshot)
+    artifacts_root = _root(catalog_artifacts_root)
     catalog_id = str(catalog_snapshot[0]["catalog_id"])
     meta = plan_policy(catalog_id, _policy(**overrides), artifacts_root)
     paths = resolve_filing_catalog_paths(artifacts_root)
@@ -61,13 +63,16 @@ def _publish_parent(
 
 def test_child_plan_retains_every_parent_locator(
     catalog_snapshot: tuple[dict[str, Any], Path],
+    catalog_artifacts_root: Path,
 ) -> None:
     """The load-bearing guarantee: expansion adds, it never replaces."""
-    parent_dir, _ = _publish_parent(catalog_snapshot, base_content_units=2)
+    parent_dir, _ = _publish_parent(
+        catalog_snapshot, catalog_artifacts_root, base_content_units=2
+    )
     parent_keys = set(plan_locator_keys(parent_dir))
 
-    child = expand(parent_dir, 4, artifacts_root=_root(catalog_snapshot))
-    child_dir = resolve_filing_catalog_paths(_root(catalog_snapshot)).plan_dir(
+    child = expand(parent_dir, 4, artifacts_root=_root(catalog_artifacts_root))
+    child_dir = resolve_filing_catalog_paths(_root(catalog_artifacts_root)).plan_dir(
         child["plan_id"]
     )
     child_keys = set(plan_locator_keys(child_dir))
@@ -79,10 +84,13 @@ def test_child_plan_retains_every_parent_locator(
 
 def test_expansion_records_its_lineage(
     catalog_snapshot: tuple[dict[str, Any], Path],
+    catalog_artifacts_root: Path,
 ) -> None:
-    parent_dir, parent_meta = _publish_parent(catalog_snapshot, base_content_units=2)
-    child = expand(parent_dir, 4, artifacts_root=_root(catalog_snapshot))
-    child_dir = resolve_filing_catalog_paths(_root(catalog_snapshot)).plan_dir(
+    parent_dir, parent_meta = _publish_parent(
+        catalog_snapshot, catalog_artifacts_root, base_content_units=2
+    )
+    child = expand(parent_dir, 4, artifacts_root=_root(catalog_artifacts_root))
+    child_dir = resolve_filing_catalog_paths(_root(catalog_artifacts_root)).plan_dir(
         child["plan_id"]
     )
 
@@ -100,11 +108,14 @@ def test_expansion_records_its_lineage(
 
 def test_child_plan_json_records_its_parent(
     catalog_snapshot: tuple[dict[str, Any], Path],
+    catalog_artifacts_root: Path,
 ) -> None:
     """A plan's provenance must be readable from the plan itself."""
-    parent_dir, parent_meta = _publish_parent(catalog_snapshot, base_content_units=2)
-    child = expand(parent_dir, 4, artifacts_root=_root(catalog_snapshot))
-    child_dir = resolve_filing_catalog_paths(_root(catalog_snapshot)).plan_dir(
+    parent_dir, parent_meta = _publish_parent(
+        catalog_snapshot, catalog_artifacts_root, base_content_units=2
+    )
+    child = expand(parent_dir, 4, artifacts_root=_root(catalog_artifacts_root))
+    child_dir = resolve_filing_catalog_paths(_root(catalog_artifacts_root)).plan_dir(
         child["plan_id"]
     )
     document = json.loads((child_dir / PLAN_FILE_NAME).read_text(encoding="utf-8"))
@@ -115,8 +126,11 @@ def test_child_plan_json_records_its_parent(
 
 def test_a_root_plan_has_no_lineage_record(
     catalog_snapshot: tuple[dict[str, Any], Path],
+    catalog_artifacts_root: Path,
 ) -> None:
-    parent_dir, _ = _publish_parent(catalog_snapshot, base_content_units=2)
+    parent_dir, _ = _publish_parent(
+        catalog_snapshot, catalog_artifacts_root, base_content_units=2
+    )
     assert read_expansion_metadata(parent_dir) == {}
     assert not (parent_dir / EXPANSION_METADATA_NAME).exists()
 
@@ -144,6 +158,7 @@ def _child_plan_ids(artifacts_root: Path, exclude: str) -> set[str]:
 
 def test_a_downgraded_parent_is_refused_even_when_the_sidecar_survives(
     catalog_snapshot: tuple[dict[str, Any], Path],
+    catalog_artifacts_root: Path,
 ) -> None:
     """A parent missing its seed fingerprint must not slip through as a match.
 
@@ -152,8 +167,10 @@ def test_a_downgraded_parent_is_refused_even_when_the_sidecar_survives(
     so accepting it published a child whose lineage points at a plan that never
     declared one.
     """
-    artifacts_root = _root(catalog_snapshot)
-    parent_dir, _ = _publish_parent(catalog_snapshot, base_content_units=2)
+    artifacts_root = _root(catalog_artifacts_root)
+    parent_dir, _ = _publish_parent(
+        catalog_snapshot, catalog_artifacts_root, base_content_units=2
+    )
     _rewrite_plan(
         parent_dir,
         lambda document: (
@@ -170,6 +187,7 @@ def test_a_downgraded_parent_is_refused_even_when_the_sidecar_survives(
 
 def test_a_downgraded_parent_reports_the_schema_mismatch_not_a_missing_file(
     catalog_snapshot: tuple[dict[str, Any], Path],
+    catalog_artifacts_root: Path,
 ) -> None:
     """The authentic probe: sidecar removed too, error must still name the schema.
 
@@ -177,8 +195,10 @@ def test_a_downgraded_parent_reports_the_schema_mismatch_not_a_missing_file(
     escaped and the operator was sent looking for a file rather than told the
     bundle is from an older schema.
     """
-    artifacts_root = _root(catalog_snapshot)
-    parent_dir, _ = _publish_parent(catalog_snapshot, base_content_units=2)
+    artifacts_root = _root(catalog_artifacts_root)
+    parent_dir, _ = _publish_parent(
+        catalog_snapshot, catalog_artifacts_root, base_content_units=2
+    )
     _rewrite_plan(
         parent_dir,
         lambda document: document.__setitem__("plan_schema_version", "1.0"),
@@ -197,10 +217,13 @@ def test_a_downgraded_parent_reports_the_schema_mismatch_not_a_missing_file(
 def test_only_the_current_schema_is_expandable(
     catalog_snapshot: tuple[dict[str, Any], Path],
     version: str | None,
+    catalog_artifacts_root: Path,
 ) -> None:
     """Older, newer, absent and empty all fail closed, with no compat shim."""
-    artifacts_root = _root(catalog_snapshot)
-    parent_dir, _ = _publish_parent(catalog_snapshot, base_content_units=2)
+    artifacts_root = _root(catalog_artifacts_root)
+    parent_dir, _ = _publish_parent(
+        catalog_snapshot, catalog_artifacts_root, base_content_units=2
+    )
 
     def drop_or_set(document: dict[str, Any]) -> None:
         if version is None:
@@ -219,10 +242,13 @@ def test_only_the_current_schema_is_expandable(
 def test_a_current_parent_missing_a_required_field_is_refused(
     catalog_snapshot: tuple[dict[str, Any], Path],
     field: str,
+    catalog_artifacts_root: Path,
 ) -> None:
     """A required field absent at the current schema is malformed, not optional."""
-    artifacts_root = _root(catalog_snapshot)
-    parent_dir, _ = _publish_parent(catalog_snapshot, base_content_units=2)
+    artifacts_root = _root(catalog_artifacts_root)
+    parent_dir, _ = _publish_parent(
+        catalog_snapshot, catalog_artifacts_root, base_content_units=2
+    )
     _rewrite_plan(parent_dir, lambda document: document.pop(field))
 
     with pytest.raises(ParentPlanError, match=f"{field}"):
@@ -231,6 +257,7 @@ def test_a_current_parent_missing_a_required_field_is_refused(
 
 def test_a_tampered_parent_fingerprint_is_refused(
     catalog_snapshot: tuple[dict[str, Any], Path],
+    catalog_artifacts_root: Path,
 ) -> None:
     """The recorded fingerprint must still describe the locators beside it.
 
@@ -238,8 +265,10 @@ def test_a_tampered_parent_fingerprint_is_refused(
     missing, so a parent whose selection had been altered was re-stamped with
     its *new* contents and handed to the child as an unverified parent.
     """
-    artifacts_root = _root(catalog_snapshot)
-    parent_dir, parent_meta = _publish_parent(catalog_snapshot, base_content_units=2)
+    artifacts_root = _root(catalog_artifacts_root)
+    parent_dir, parent_meta = _publish_parent(
+        catalog_snapshot, catalog_artifacts_root, base_content_units=2
+    )
     _rewrite_plan(
         parent_dir,
         lambda document: document.__setitem__("plan_fingerprint", "0" * 16),
@@ -252,10 +281,13 @@ def test_a_tampered_parent_fingerprint_is_refused(
 
 def test_a_parent_with_a_missing_sidecar_is_a_parent_plan_error(
     catalog_snapshot: tuple[dict[str, Any], Path],
+    catalog_artifacts_root: Path,
 ) -> None:
     """An incomplete but current-schema bundle is still a bundle that must be fixed."""
-    artifacts_root = _root(catalog_snapshot)
-    parent_dir, _ = _publish_parent(catalog_snapshot, base_content_units=2)
+    artifacts_root = _root(catalog_artifacts_root)
+    parent_dir, _ = _publish_parent(
+        catalog_snapshot, catalog_artifacts_root, base_content_units=2
+    )
     (parent_dir / SEED_FILERS_NAME).unlink()
 
     with pytest.raises(ParentPlanError) as failure:
@@ -265,10 +297,13 @@ def test_a_parent_with_a_missing_sidecar_is_a_parent_plan_error(
 
 def test_a_malformed_parent_sidecar_is_a_parent_plan_error(
     catalog_snapshot: tuple[dict[str, Any], Path],
+    catalog_artifacts_root: Path,
 ) -> None:
     """A truncated sidecar is reported as the bundle fault it is."""
-    artifacts_root = _root(catalog_snapshot)
-    parent_dir, _ = _publish_parent(catalog_snapshot, base_content_units=2)
+    artifacts_root = _root(catalog_artifacts_root)
+    parent_dir, _ = _publish_parent(
+        catalog_snapshot, catalog_artifacts_root, base_content_units=2
+    )
     (parent_dir / SEED_FILERS_NAME).write_text("cik\n0000320193\n", encoding="utf-8")
 
     with pytest.raises(ParentPlanError, match="seed sidecar is unusable"):
@@ -277,9 +312,12 @@ def test_a_malformed_parent_sidecar_is_a_parent_plan_error(
 
 def test_the_schema_gate_protects_direct_prepare_parent_callers(
     catalog_snapshot: tuple[dict[str, Any], Path],
+    catalog_artifacts_root: Path,
 ) -> None:
     """``prepare_parent`` is public; it must not be a way around the gate."""
-    parent_dir, parent_meta = _publish_parent(catalog_snapshot, base_content_units=2)
+    parent_dir, parent_meta = _publish_parent(
+        catalog_snapshot, catalog_artifacts_root, base_content_units=2
+    )
     _rewrite_plan(
         parent_dir,
         lambda document: document.__setitem__("plan_schema_version", "1.0"),
@@ -297,10 +335,13 @@ def test_the_schema_gate_protects_direct_prepare_parent_callers(
 
 def test_duplicate_expansion_is_idempotent(
     catalog_snapshot: tuple[dict[str, Any], Path],
+    catalog_artifacts_root: Path,
 ) -> None:
     """Re-expanding to the same size must reuse the published child, not fork one."""
-    artifacts_root = _root(catalog_snapshot)
-    parent_dir, _ = _publish_parent(catalog_snapshot, base_content_units=2)
+    artifacts_root = _root(catalog_artifacts_root)
+    parent_dir, _ = _publish_parent(
+        catalog_snapshot, catalog_artifacts_root, base_content_units=2
+    )
     first = expand(parent_dir, 4, artifacts_root=artifacts_root)
     second = expand(parent_dir, 4, artifacts_root=artifacts_root)
     assert first["plan_id"] == second["plan_id"]
@@ -308,9 +349,10 @@ def test_duplicate_expansion_is_idempotent(
 
 def test_different_parents_produce_different_children(
     catalog_snapshot: tuple[dict[str, Any], Path],
+    catalog_artifacts_root: Path,
 ) -> None:
     """The child's identity must bind to its parent, not just its target size."""
-    artifacts_root = _root(catalog_snapshot)
+    artifacts_root = _root(catalog_artifacts_root)
     catalog_id = str(catalog_snapshot[0]["catalog_id"])
     paths = resolve_filing_catalog_paths(artifacts_root)
 
@@ -323,32 +365,39 @@ def test_different_parents_produce_different_children(
 
 def test_expanding_below_the_parent_size_is_refused(
     catalog_snapshot: tuple[dict[str, Any], Path],
+    catalog_artifacts_root: Path,
 ) -> None:
     """A smaller request is a contraction, and truncating would drop documents."""
-    parent_dir, parent_meta = _publish_parent(catalog_snapshot, base_content_units=3)
+    parent_dir, parent_meta = _publish_parent(
+        catalog_snapshot, catalog_artifacts_root, base_content_units=3
+    )
     with pytest.raises(ParentPlanError, match="cannot be smaller than the parent"):
         expand(
             parent_dir,
             int(parent_meta["unique_locators_count"]) - 1,
-            artifacts_root=_root(catalog_snapshot),
+            artifacts_root=_root(catalog_artifacts_root),
         )
 
 
 def test_a_non_positive_target_is_refused(
     catalog_snapshot: tuple[dict[str, Any], Path],
+    catalog_artifacts_root: Path,
 ) -> None:
-    parent_dir, _ = _publish_parent(catalog_snapshot, base_content_units=2)
+    parent_dir, _ = _publish_parent(
+        catalog_snapshot, catalog_artifacts_root, base_content_units=2
+    )
     with pytest.raises(ValueError, match="target_units must be positive"):
-        expand(parent_dir, 0, artifacts_root=_root(catalog_snapshot))
+        expand(parent_dir, 0, artifacts_root=_root(catalog_artifacts_root))
 
 
 def test_a_deterministic_parent_cannot_be_expanded(
     catalog_snapshot: tuple[dict[str, Any], Path],
+    catalog_artifacts_root: Path,
 ) -> None:
     """A deterministic plan has no policy to extend and no quota to preserve."""
     from edgar_sec.pipelines.filing_catalog.planner import plan
 
-    artifacts_root = _root(catalog_snapshot)
+    artifacts_root = _root(catalog_artifacts_root)
     catalog_id = str(catalog_snapshot[0]["catalog_id"])
     meta = plan(catalog_id, artifacts_root, forms=("10-K",))
     parent_dir = resolve_filing_catalog_paths(artifacts_root).plan_dir(meta["plan_id"])
@@ -358,20 +407,26 @@ def test_a_deterministic_parent_cannot_be_expanded(
 
 def test_a_parent_without_a_recorded_policy_cannot_be_expanded(
     catalog_snapshot: tuple[dict[str, Any], Path],
+    catalog_artifacts_root: Path,
 ) -> None:
-    parent_dir, _ = _publish_parent(catalog_snapshot, base_content_units=2)
+    parent_dir, _ = _publish_parent(
+        catalog_snapshot, catalog_artifacts_root, base_content_units=2
+    )
     document = json.loads((parent_dir / PLAN_FILE_NAME).read_text(encoding="utf-8"))
     del document["selection_policy"]
     (parent_dir / PLAN_FILE_NAME).write_text(json.dumps(document), encoding="utf-8")
     with pytest.raises(ParentPlanError, match="does not record its selection policy"):
-        expand(parent_dir, 4, artifacts_root=_root(catalog_snapshot))
+        expand(parent_dir, 4, artifacts_root=_root(catalog_artifacts_root))
 
 
 def test_a_child_with_different_forms_is_refused(
     catalog_snapshot: tuple[dict[str, Any], Path],
+    catalog_artifacts_root: Path,
 ) -> None:
     """Combining selections built against different form sets is meaningless."""
-    parent_dir, _ = _publish_parent(catalog_snapshot, base_content_units=2)
+    parent_dir, _ = _publish_parent(
+        catalog_snapshot, catalog_artifacts_root, base_content_units=2
+    )
     parent_meta = json.loads((parent_dir / PLAN_FILE_NAME).read_text(encoding="utf-8"))
     parent_meta["forms"] = ["10-Q"]
     (parent_dir / PLAN_FILE_NAME).write_text(json.dumps(parent_meta), encoding="utf-8")
@@ -388,8 +443,11 @@ def test_a_child_with_different_forms_is_refused(
 
 def test_a_child_with_a_different_corpus_is_refused(
     catalog_snapshot: tuple[dict[str, Any], Path],
+    catalog_artifacts_root: Path,
 ) -> None:
-    parent_dir, _ = _publish_parent(catalog_snapshot, base_content_units=2)
+    parent_dir, _ = _publish_parent(
+        catalog_snapshot, catalog_artifacts_root, base_content_units=2
+    )
     with pytest.raises(ParentPlanError, match="same policy corpus"):
         prepare_parent(
             parent_dir,
@@ -402,8 +460,11 @@ def test_a_child_with_a_different_corpus_is_refused(
 
 def test_a_child_with_a_different_seed_set_is_refused(
     catalog_snapshot: tuple[dict[str, Any], Path],
+    catalog_artifacts_root: Path,
 ) -> None:
-    parent_dir, _ = _publish_parent(catalog_snapshot, base_content_units=2)
+    parent_dir, _ = _publish_parent(
+        catalog_snapshot, catalog_artifacts_root, base_content_units=2
+    )
     with pytest.raises(ParentPlanError, match="same seed CIK set"):
         prepare_parent(
             parent_dir,
@@ -416,14 +477,17 @@ def test_a_child_with_a_different_seed_set_is_refused(
 
 def test_a_child_that_cannot_reach_its_target_publishes_nothing(
     catalog_snapshot: tuple[dict[str, Any], Path],
+    catalog_artifacts_root: Path,
 ) -> None:
     """A short child must be refused, not published as a smaller plan.
 
     Otherwise a caller asking for 5,000 locators would receive a bundle that
     silently contains 40 and no error.
     """
-    parent_dir, _ = _publish_parent(catalog_snapshot, base_content_units=2)
-    artifacts_root = _root(catalog_snapshot)
+    parent_dir, _ = _publish_parent(
+        catalog_snapshot, catalog_artifacts_root, base_content_units=2
+    )
+    artifacts_root = _root(catalog_artifacts_root)
     with pytest.raises(ParentPlanError, match="could not reach target_units"):
         expand(parent_dir, 5_000, artifacts_root=artifacts_root)
 
@@ -465,12 +529,15 @@ def test_expansion_lineage_ratios() -> None:
 
 def test_expanded_child_keeps_the_18_column_locator_schema(
     catalog_snapshot: tuple[dict[str, Any], Path],
+    catalog_artifacts_root: Path,
 ) -> None:
     """Expansion must not silently degrade the artifact a consumer audits."""
     from edgar_sec.domain.filing_catalog.schemas import LOCATOR_POLICY_COLUMNS
 
-    artifacts_root = _root(catalog_snapshot)
-    parent_dir, _ = _publish_parent(catalog_snapshot, base_content_units=2)
+    artifacts_root = _root(catalog_artifacts_root)
+    parent_dir, _ = _publish_parent(
+        catalog_snapshot, catalog_artifacts_root, base_content_units=2
+    )
     child = expand(parent_dir, 4, artifacts_root=artifacts_root)
     child_dir = resolve_filing_catalog_paths(artifacts_root).plan_dir(child["plan_id"])
     schema = pq.read_schema(child_dir / LOCATOR_GROUPS_NAME)
@@ -479,8 +546,11 @@ def test_expanded_child_keeps_the_18_column_locator_schema(
 
 def test_prepare_parent_derives_the_child_level_and_lineage(
     catalog_snapshot: tuple[dict[str, Any], Path],
+    catalog_artifacts_root: Path,
 ) -> None:
-    parent_dir, _ = _publish_parent(catalog_snapshot, base_content_units=2)
+    parent_dir, _ = _publish_parent(
+        catalog_snapshot, catalog_artifacts_root, base_content_units=2
+    )
     parent_meta, parent_keys, child_policy = prepare_parent(
         parent_dir,
         _policy(),
@@ -516,10 +586,12 @@ def _seed_csv(path: Path, rows: list[tuple[str, str]] = ()) -> Path:
 
 
 def test_a_seeded_parent_expands_from_its_own_published_seed_set(
-    catalog_snapshot: tuple[dict[str, Any], Path], tmp_path: Path
+    catalog_snapshot: tuple[dict[str, Any], Path],
+    tmp_path: Path,
+    catalog_artifacts_root: Path,
 ) -> None:
     """Expansion inherits the parent's seed set, not the file it came from."""
-    artifacts_root = _root(catalog_snapshot)
+    artifacts_root = _root(catalog_artifacts_root)
     catalog_id = str(catalog_snapshot[0]["catalog_id"])
     seed_path = _seed_csv(tmp_path / "seed-cik.csv")
 
@@ -544,10 +616,12 @@ def test_a_seeded_parent_expands_from_its_own_published_seed_set(
 
 
 def test_expanding_a_plan_whose_seed_set_was_edited_is_refused(
-    catalog_snapshot: tuple[dict[str, Any], Path], tmp_path: Path
+    catalog_snapshot: tuple[dict[str, Any], Path],
+    tmp_path: Path,
+    catalog_artifacts_root: Path,
 ) -> None:
     """A different seed set is a different plan, not a compatible one."""
-    artifacts_root = _root(catalog_snapshot)
+    artifacts_root = _root(catalog_artifacts_root)
     catalog_id = str(catalog_snapshot[0]["catalog_id"])
     seed_path = _seed_csv(tmp_path / "seed-cik.csv")
 

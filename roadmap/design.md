@@ -492,3 +492,248 @@ flowchart LR
 - **Deliverables**:
   - Relational table extraction (cell-grain Parquet dataset).
   - Unpopulated extension slot on `FilingAggregate` for optional `*-xbrl.zip` processing.
+
+# Phase 2.5 Execution Lifecycle & Sparse Aggregate Architecture
+
+Comprehensive specification and operational diagrams for taking an SEC filing link, acquiring, normalizing, triaging, recovering exhibits, populating the `FilingAggregate`, and persisting to Parquet/SQLite.
+
+---
+
+## 1. End-to-End System Flow (From Link to Storage)
+
+```mermaid
+flowchart TD
+    %% Phase 02 Target Link
+    Link["1. Target Link / Locator<br/>(from Phase 02 Target Plan)"] --> Fetch["2. Document Acquisition<br/>(SecBroker: 8 RPS / Fixture CAS)"]
+    
+    %% Raw Payload Triage
+    Fetch --> IsSGML{"Payload is SGML<br/>Submission Envelope?"}
+    
+    %% SGML Branch
+    IsSGML -- Yes --> UnpackSGML["Unpack SGML Sub-Documents<br/>(Match Expected Form vs Seq 1)"]
+    IsSGML -- No --> DirectDoc["Raw Document Body<br/>(HTML / Plain ASCII)"]
+    
+    UnpackSGML --> Preprocess["3. Preprocessor<br/>(Strip SGML tags, clean page markers)"]
+    DirectDoc --> Preprocess
+    
+    %% Profile & Boundary
+    Preprocess --> ProfileCheck{"Form Profile Selection"}
+    ProfileCheck -- "Annual Profile<br/>(10-K, 10-KSB, 20-F)" --> CoverDet["Cover Boundary Detection<br/>(Masthead, Checkmarks, TOC exclusion)<br/>body_start_line > 0"]
+    ProfileCheck -- "Other Periodic / Event<br/>(10-Q, 8-K, 6-K, GENERIC, EXHIBIT)" --> NoCover["Explicit Zero Boundary<br/>(start=0, end=0, DISABLED)<br/>body_start_line = 0"]
+    
+    %% Normalization & Reflow
+    CoverDet --> Reflow["4. Table Protection & Reflow<br/>- Protect Table Grids<br/>- Unwrap hardwrapped prose<br/>(Start from body_start_line)"]
+    NoCover --> Reflow
+    
+    %% 1D Block Stream
+    Reflow --> BlockStream["5. Emit 1D BlockStream<br/>(PARAGRAPH, TABLE, PRESERVED, PAGE_BREAK)"]
+    
+    %% Evaluator Dispatch Seam
+    BlockStream --> EvalDispatch{"6. Form Evaluator Dispatch<br/>(plugin = get_plugin(form))"}
+    
+    %% Generic Company Report / Periodic Behavior
+    EvalDispatch -- "Form 8-K / CurrentReportEvaluator" --> Ev8K["Unconditional PROCEED<br/>(category='standard_full')"]
+    EvalDispatch -- "Form 10-Q / QuarterlyEvaluator" --> Ev10Q["Check Post-2011 XBRL / Size Ceiling<br/>PROCEED (category='standard_full')"]
+    EvalDispatch -- "Generic / Other Forms (No Evaluator)" --> EvGen["Unconditional PROCEED<br/>(decision = None / standard)"]
+    
+    %% Specific Form 10-K Annual Evaluator Branch
+    EvalDispatch -- "Form 10-K / AnnualEvaluator" --> Ev10K{"10-K Specific Triage"}
+    
+    Ev10K -- "ACCEPT / PROCEED<br/>(Complete 10-K)" --> PopBase["7. Populate FilingAggregate<br/>(primary_document populated,<br/>exhibits empty)"]
+    
+    Ev10K -- "REFETCH_SUB_DOC<br/>(Exhibit 13 Delegation Stub)" --> DelegEx13["8a. Second Pass: Fetch EX-13<br/>- Resolve from bundle/URL<br/>- Normalize with No-Cover profile<br/>- Store in aggregate.attachments['EX-13']"]
+    
+    Ev10K -- "REFETCH_BUNDLE<br/>(Seq 1 Exhibit Inversion)" --> RecoverInv["8b. Second Pass: Inversion Recovery<br/>- Fetch <accession>.txt bundle<br/>- Extract true TYPE: 10-K<br/>- Swap into primary_document<br/>- Demote original to exhibits"]
+    
+    Ev10K -- "SKIP<br/>(Corrupt / Hard Stub)" --> PopSkip["Record Skipped / Failed<br/>in Checkpoint"]
+    
+    Ev8K --> PopBase
+    Ev10Q --> PopBase
+    EvGen --> PopBase
+    DelegEx13 --> PopBase
+    RecoverInv --> PopBase
+    
+    %% Storage & Checkpointing
+    PopBase --> StageStore["9. Atomic Persistence<br/>- Write StagedParquetWriter checkpoint<br/>- Store SQLite CAS blobs (doc_id)<br/>- Heap Reclaim (every 64 docs)"]
+    PopSkip --> StageStore
+    
+    StageStore --> Commit["10. Coordinator Merge<br/>- Validate chunk Parquets<br/>- DuckDB sorted COPY to final snapshot"]
+```
+
+---
+
+## 2. Detailed Step-by-Step Lifecycle
+
+### Step 1: Input Specification (Phase 02 Target Link)
+Each work unit enters from `filing_targets.parquet`:
+- **Identity**: `source_cik`, `accession`, `form`, `filing_date`.
+- **Target Location**: `document_path` (e.g. `edgar/data/1018724/000101872420000004/amzn-20191231x10k.htm`).
+- **Archive URL**: SEC HTTPS archive URL or local fixture CAS URI.
+- **Computed Key**: `document_locator_key = sha256(accession + ":" + document_path)`.
+
+### Step 2: Document Acquisition
+- **Production Mode**: Managed Unix-socket `SecBroker` enforcing aggregate 8.0 RPS token bucket across processes with warm-cache probe.
+- **Fixture / Offline Mode**: Local SQLite CAS (`fixture.sqlite`) looking up by content-addressed key.
+- **Output**: Immutable `raw_bytes`.
+
+### Step 3: Unpacking & Format Triage
+- If payload begins with `<SUBMISSION>` or contains `<DOCUMENT>` tags:
+  - `unpack_sgml_submission(raw_bytes)` extracts `list[SgmlSubDocument]`.
+  - **Form Matching**: Prioritizes matching target form type (`10-K`, `10KSB`, `10-K/A`) rather than naively selecting Sequence 1.
+- If payload is raw HTML or plain text:
+  - Bypasses unpacking; passes directly to preprocessor.
+
+### Step 4: Preprocessing & Profile Selection
+- **Preprocessor**:
+  - Strips outer envelope SGML headers.
+  - Normalizes ASCII/UTF-8 character encodings.
+  - Detects page marker comments (`<PAGE>`, form feeds).
+- **Profile Selection**:
+  - **Cover Profiles** (`10-K`, `10-KSB`, `20-F`): Runs regex-based cover boundary detector to identify SEC masthead, checkmark grids, and TOC anchors. Sets `body_start_line > 0`.
+  - **No-Cover Profiles** (`GENERIC`, `8-K`, `6-K`, `10-Q`, `EXHIBIT`): Cover boundary is explicitly disabled (`start_line=0, end_line=0, method=DISABLED`). Sets `body_start_line = 0`.
+
+### Step 5: Table Protection & Reflow
+- **Table Preservation**: Untagged ASCII table borders (columns, spacing) and HTML `<table>` elements are locked into preformatted boundaries.
+- **Prose Reflow**:
+  - For cover documents: unwraps hardwrapped lines starting *after* `body_start_line`.
+  - For no-cover documents: unwraps hardwrapped lines starting directly from **line 0 to EOF**. (Resolves the defect where no-cover forms skipped reflow entirely).
+- **Block Stream Emission**: Emits 1D sequence of `DocumentBlock` records (`PARAGRAPH`, `TABLE`, `PRESERVED`, `PAGE_BREAK`).
+
+---
+
+### Step 6: Evaluator Triage Architecture (Generic vs Form-Specific)
+
+Document triage operates through a pluggable SPI dispatch (`plugin = get_plugin(locator.form)`):
+
+#### 6.1 Generic Form & Company Report Evaluation
+The default contract across all ~500 SEC forms is lightweight and conservative:
+1. **Unmodeled Forms & Fallback (`plugin.evaluator is None`)**:
+   - Proceeds unconditionally with `decision = None`. The primary document is stored as-is without stub delegation.
+2. **Current Reports (`Form 8-K`, `CurrentReportEvaluator`)**:
+   - An 8-K is an event report and has no annual report or Exhibit 13 to delegate to.
+   - Evaluator proceeds unconditionally with `DecisionAction.PROCEED`, `category="standard_full"`, `confidence=1.0`.
+3. **Quarterly Reports (`Form 10-Q`, `QuarterlyReportEvaluator`)**:
+   - Fast paths: Post-2011 XBRL mandate (`post_2011_xbrl_full`) and payload size ceiling checks (`ASCII_SIZE_CEILING = 300_000`, `HTML_SIZE_CEILING = 750_000`).
+   - Normal text evaluation proceeds with `DecisionAction.PROCEED`, `category="standard_full"`.
+
+#### 6.2 Specific Form 10-K Annual Evaluator (`AnnualEvaluator`)
+The Form 10-K family is uniquely subject to historical delegation stubs and pre-2005 sequence inversions:
+1. **Sequence 1 Exhibit Inversion Detection**:
+   - Condition: First 3,000 characters match `_RE_EXHIBIT_START` AND lack `_RE_10K_HEADER`.
+   - Decision: `REFETCH_BUNDLE` (target: `"10-K"`, category: `"exhibit_primary_inversion"`).
+2. **Exhibit 13 Financial Delegation Stub**:
+   - Condition: Windowed anchor scan identifies Item 7/8 explicitly incorporating financial statements by reference from Exhibit 13.
+   - Decision: `REFETCH_SUB_DOC` (target: `"EX-13"`).
+3. **Self-Contained Standard**:
+   - Condition: Complete 10-K document (or post-2011 XBRL mandate).
+   - Decision: `ACCEPT` (`is_stub = False`, `category = "standard_full"`).
+
+---
+
+### Step 7: Second Pass Delegation Execution (Annual Report Recovery)
+- **Case A: Sequence 1 Inversion Recovery (`10-K` only)**:
+  1. Pipeline fetches full `<accession>.txt` submission bundle.
+  2. Unpacks sub-documents searching specifically for `TYPE: 10-K` (or `10KSB`, `10-K/A`).
+  3. Re-runs normalization on the true Form 10-K text $\rightarrow$ assigns to `primary_document`.
+  4. Stores the original mislabeled exhibit (e.g. `ex231.txt`) into `attachments["EX-23.1"]`.
+- **Case B: Exhibit 13 Financial Delegation (`10-K` only)**:
+  1. Resolves Exhibit 13 filename from bundle or filing index.
+  2. Normalizes Exhibit 13 under No-Cover profile (`body_start_line = 0`).
+  3. Stores normalized Exhibit 13 into `attachments["EX-13"]`.
+
+---
+
+## 3. How `FilingAggregate` is Populated
+
+```mermaid
+classDiagram
+    class FilingAggregate {
+        +AccessionNumber accession
+        +Cik source_cik
+        +str form
+        +str filing_date
+        +DocumentLocator primary_locator
+        +str primary_document_locator_key
+        +bytes primary_payload
+        +str primary_representation
+        +BlockStream primary_document
+        +int primary_word_count
+        +dict~str, FilingAttachment~ attachments
+        +EvaluatorDecision decision
+        +bytes raw_bundle
+        +XBRLData xbrl
+        +bool is_normalized
+        +bool is_complete
+        +dict~str, FilingAttachment~ exhibits
+        +FormReport as_report()
+    }
+
+    class FilingAttachment {
+        +str sequence_number
+        +str filename
+        +str description
+        +str document_type
+        +str url
+        +int size
+        +str content
+    }
+
+    class BlockStream {
+        +tuple~DocumentBlock~ blocks
+        +to_text() str
+        +filter_kind(kind) tuple
+    }
+
+    class DocumentBlock {
+        +int block_index
+        +BlockKind kind
+        +str text
+        +tuple~str~ raw_lines
+        +int char_start
+        +int char_end
+        +bool is_table
+    }
+
+    FilingAggregate *-- BlockStream : owns primary
+    FilingAggregate *-- FilingAttachment : owns sparse attachments
+    BlockStream *-- DocumentBlock : contains 1D units
+```
+
+### Aggregate Population Invariants:
+1. **Sparse by Default**:
+   - `primary_payload` and `primary_document` (`BlockStream`) are populated during Step 5.
+   - `attachments` is an empty dictionary (`{}`) for all forms unless Exhibit 13 delegation or exhibit inversion recovery runs on Form 10-K.
+   - `raw_bundle` is `None` unless fetched during recovery; in workers, raw bundle bytes are ephemeral and discarded after sub-document extraction to respect the 512 MiB memory budget.
+   - `xbrl` is `None` by default (0 bytes overhead).
+2. **Exhibit View**:
+   - `filing.exhibits` is a dynamic property filtering `attachments` where `document_type.upper().startswith("EX-")`.
+3. **Polymorphic Projections**:
+   - Calling `filing.as_report()` inspects `filing.form` and returns the appropriate `CompanyReport` projection (`AnnualReport`, `QuarterlyReport`, `CurrentReport`) without duplicating aggregate state.
+
+---
+
+## 4. Current Phase 2.5 Defaults & Operating Parameters
+
+| Parameter | Current Default Value | Architectural Purpose |
+| :--- | :--- | :--- |
+| **Worker Concurrency** | Process pool (`ProcessPoolExecutor`) | Eliminates Python GIL bottleneck during CPU-bound text unwrapping and regex parsing. |
+| **Worker Budgeting** | `auto_worker_count(512 MiB)` | Cgroup-aware worker sizing via `derive_resources()`. Prevents OOM kills in containers. |
+| **Process Recycling** | `max_tasks_per_child = 8` | Recycles worker processes to eliminate glibc arena fragmentation and heap bloat. |
+| **Heap Reclamation** | `RECLAIM_INTERVAL = 64` | Calls `reclaim()` (`gc.collect()` + `malloc_trim(0)`) every 64 documents. |
+| **SEC Rate Limiting** | `8.0 RPS` (token bucket) | Central Unix-socket limiter preventing IP bans across concurrent workers. |
+| **Chunk Sizing** | `1000` filings per chunk | Resumable unit size; smaller chunks for test runs (`100`). |
+| **Checkpoint Storage** | `chunk-XXXXX.parquet` | Staged atomic Parquet writer with `.tmp` staging and ID deduplication. |
+| **Parquet Compression** | `zstd` (`row_group_size = 128_000`) | High compression ratio with fast columnar scan performance in DuckDB. |
+| **Second Pass Delegation** | Single bounded attempt | Max 1 bundle fetch per stub; prevents unbounded retry network stalls. |
+| **No-Cover Reflow Gate** | `body_start_line = 0` | Forces prose unwrapping from line 0 to EOF for all non-cover filings/exhibits. |
+
+---
+
+## 5. Sign-Off Checklist & Invariants
+
+- [ ] **Clean Evaluator Boundary**: General company reports (8-K, 10-Q, Generic) proceed directly; only Form 10-K invokes Exhibit 13 delegation and Sequence 1 inversion detection.
+- [ ] **Sparse Acquisition Guarantee**: Default execution acquires only the primary document (~2MB). Monolithic bundles (50MB–200MB) are fetched strictly as fallback recovery for 10-K inversions or stubs.
+- [ ] **No-Cover Reflow Contract**: Documents under no-cover profiles unwrap paragraphs from line 0 without searching for non-existent Item headings.
+- [ ] **Sibling Inversion Swap**: When Sequence 1 is an exhibit, the true primary form is restored as `primary_document`, and the exhibit is preserved in `attachments`.
+- [ ] **Ownership Separation**: `FilingAggregate` is the sole owner of submission artifacts (`attachments`, `xbrl`, `raw_bundle`); `FormReport` is a lightweight view with zero duplicate storage fields.
+- [ ] **Parquet Contract Preservation**: Existing Parquet schemas and DuckDB analytical query compatibility remain 100% intact.

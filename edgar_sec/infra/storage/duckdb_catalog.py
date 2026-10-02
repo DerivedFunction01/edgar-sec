@@ -30,7 +30,6 @@ from edgar_sec.domain.filing_catalog.schemas import (
     PATH_SOURCE_PRIMARY,
     PROFILE_COLUMNS,
     PROFILE_SCHEMA_VERSION,
-    TARGET_COLUMNS,
 )
 from edgar_sec.domain.sec_urls import SEC_ARCHIVE_BASE
 from edgar_sec.infra.storage.parquet import (
@@ -79,17 +78,32 @@ def _qualified_identifier(name: str) -> str:
     return name
 
 
-def build_part_unnest_query(part_paths: Sequence[str] | str) -> str:
-    """Unnest one or more Phase 1 parts into flat filing-occurrence rows.
+def build_part_unnest_query(part_path: str) -> str:
+    """Unnest one Phase 1 part into flat filing-occurrence rows.
 
-    A Phase 1 snapshot is a dataset, so this accepts the whole part list. A bare
-    string is treated as a one-element list, which keeps a legacy single-file
-    snapshot readable through the same query.
+    Exactly one source part per query. The materializer walks the snapshot's
+    ordered parts and writes one shard per part, which is what keeps peak memory
+    proportional to a part rather than to the whole cohort.
+
+    Two properties of the SQL are load-bearing and must not be "simplified":
+
+    * The unnest is **uncorrelated** — ``UNNEST(filings)`` in the select list of a
+      subquery over the file. The correlated spelling
+      (``FROM read_parquet(...) AS t, LATERAL (SELECT UNNEST(t.filings))``) is
+      rewritten by DuckDB into a delim join, whose ``DELIM_SCAN`` must materialize
+      the whole nested ``filings`` value for every source row before it can emit
+      anything. That is an unspillable pin proportional to the entire part set, and
+      it exhausts the memory limit on a part list that streams fine when unnested
+      this way. ``tests/infra/storage/test_duckdb_catalog.py`` pins the absence of
+      a delim join in the plan.
+    * Deduplication is **per source part**. ``occurrence_id`` is keyed on
+      ``source_cik``, and the catalog guard requires each CIK to appear in exactly
+      one source part, so the window below cannot miss a duplicate that lives in a
+      different part.
     """
-    paths = [part_paths] if isinstance(part_paths, str) else list(part_paths)
-    if not paths:
-        raise ValueError("build_part_unnest_query requires at least one source part")
-    path = sql_path_list(paths)
+    if not str(part_path):
+        raise ValueError("build_part_unnest_query requires a source part")
+    path = sql_literal(str(part_path))
     return f"""
     WITH raw_unnest AS (
         SELECT
@@ -104,9 +118,11 @@ def build_part_unnest_query(part_paths: Sequence[str] | str) -> str:
             f.is_xbrl AS is_xbrl,
             f.is_inline_xbrl AS is_inline_xbrl,
             f.is_xbrl_numeric AS is_xbrl_numeric
-        FROM read_parquet({path}) AS t,
-             LATERAL (SELECT UNNEST(t.filings) AS f) AS sub
-        WHERE t.filings IS NOT NULL
+        FROM (
+            SELECT cik, UNNEST(filings) AS f
+            FROM read_parquet({path})
+        ) AS t
+        WHERE t.f IS NOT NULL
     ),
     normalized AS (
         SELECT
@@ -225,29 +241,6 @@ def build_profile_query(relation: str) -> str:
     """
 
 
-def build_merged_targets_query(relations: list[str]) -> str:
-    """Union several unnest relations into one ordered target projection.
-
-    Each relation is an unnest query already wrapped in a named subquery (for
-    example ``unnest_0``), so the branches are unioned and the result is
-    re-sorted once. DuckDB reads the underlying Parquet lazily, so the union
-    stays out-of-core.
-    """
-    if not relations:
-        raise ValueError("at least one relation is required")
-    columns = ", ".join(TARGET_COLUMNS)
-    branches = "\n        UNION ALL\n        ".join(
-        f"SELECT {columns} FROM {_qualified_identifier(name)}" for name in relations
-    )
-    return f"""
-    SELECT {columns}
-    FROM (
-        {branches}
-    ) combined
-    ORDER BY source_cik, accession, document_path
-    """
-
-
 def copy_query_to_parquet(
     con: object,
     query: str,
@@ -321,10 +314,10 @@ def amendment_sql(policy: str) -> str:
 
 __all__ = [
     "amendment_sql",
-    "build_merged_targets_query",
     "build_part_unnest_query",
     "build_profile_query",
     "copy_query_to_parquet",
     "sql_literal",
+    "sql_path_list",
     "suffix_sql",
 ]

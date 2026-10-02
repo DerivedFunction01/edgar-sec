@@ -61,7 +61,6 @@ def cmd_materialize(args: argparse.Namespace) -> int:
             args.source or None,
             _resolve_artifacts(args.artifacts),
             source_manifest=args.source_manifest or None,
-            source_batch_size=args.batch_size,
             progress=_emit_progress,
         )
     except CatalogError as error:
@@ -153,9 +152,6 @@ def build_parser() -> argparse.ArgumentParser:
     )
     materialize_parser.add_argument(
         "--artifacts", default="", help="artifacts root override"
-    )
-    materialize_parser.add_argument(
-        "--batch-size", type=int, default=None, help="registrant rows staged per batch"
     )
     materialize_parser.set_defaults(func=cmd_materialize)
 

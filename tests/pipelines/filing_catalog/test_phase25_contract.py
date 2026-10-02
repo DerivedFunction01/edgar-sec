@@ -132,17 +132,21 @@ def _feature_occurrence_columns(catalog_id: str, artifacts_root: Path) -> list[s
 
 
 def _plan_dir(
-    scope: str, catalog_snapshot: tuple[dict[str, Any], Path]
+    scope: str,
+    catalog_snapshot: tuple[dict[str, Any], Path],
+    catalog_artifacts_root: Path,
 ) -> tuple[Path, dict[str, Any]]:
-    manifest, snapshot_dir = catalog_snapshot
-    return _publish(scope, str(manifest["catalog_id"]), snapshot_dir.parent.parent)
+    manifest, _ = catalog_snapshot
+    return _publish(scope, str(manifest["catalog_id"]), catalog_artifacts_root)
 
 
 @pytest.mark.parametrize("scope", BUNDLES)
 def test_bundle_is_a_complete_work_order(
-    scope: str, catalog_snapshot: tuple[dict[str, Any], Path]
+    scope: str,
+    catalog_snapshot: tuple[dict[str, Any], Path],
+    catalog_artifacts_root: Path,
 ) -> None:
-    plan_dir, _ = _plan_dir(scope, catalog_snapshot)
+    plan_dir, _ = _plan_dir(scope, catalog_snapshot, catalog_artifacts_root)
     assert plan_bundle_complete(plan_dir)
     for name in REQUIRED_PLAN_FILES:
         assert (plan_dir / name).is_file(), f"Phase 2.5 requires {name}"
@@ -150,10 +154,12 @@ def test_bundle_is_a_complete_work_order(
 
 @pytest.mark.parametrize("scope", BUNDLES)
 def test_every_locator_row_is_fetchable(
-    scope: str, catalog_snapshot: tuple[dict[str, Any], Path]
+    scope: str,
+    catalog_snapshot: tuple[dict[str, Any], Path],
+    catalog_artifacts_root: Path,
 ) -> None:
     """The columns Phase 2.5 needs, present, non-null, and HTTPS."""
-    plan_dir, _ = _plan_dir(scope, catalog_snapshot)
+    plan_dir, _ = _plan_dir(scope, catalog_snapshot, catalog_artifacts_root)
     table = pq.read_table(plan_dir / LOCATOR_GROUPS_NAME)
     for column in FETCH_REQUIRED:
         assert column in table.schema.names, f"Phase 2.5 needs {column}"
@@ -168,7 +174,9 @@ def test_every_locator_row_is_fetchable(
 
 @pytest.mark.parametrize("scope", BUNDLES)
 def test_occurrences_collapse_to_one_locator_per_document(
-    scope: str, catalog_snapshot: tuple[dict[str, Any], Path]
+    scope: str,
+    catalog_snapshot: tuple[dict[str, Any], Path],
+    catalog_artifacts_root: Path,
 ) -> None:
     """The invariant that lets Phase 2.5 fetch a co-filed document once.
 
@@ -176,7 +184,7 @@ def test_occurrences_collapse_to_one_locator_per_document(
     Two registrants filing one document share it, and it must appear exactly
     once in the work order.
     """
-    plan_dir, _ = _plan_dir(scope, catalog_snapshot)
+    plan_dir, _ = _plan_dir(scope, catalog_snapshot, catalog_artifacts_root)
     rows = pq.read_table(plan_dir / LOCATOR_GROUPS_NAME).to_pylist()
     keys = [row["document_locator_key"] for row in rows]
 
@@ -197,14 +205,16 @@ def test_occurrences_collapse_to_one_locator_per_document(
 
 @pytest.mark.parametrize("scope", BUNDLES)
 def test_occurrences_are_the_registrants_claim_not_the_document(
-    scope: str, catalog_snapshot: tuple[dict[str, Any], Path]
+    scope: str,
+    catalog_snapshot: tuple[dict[str, Any], Path],
+    catalog_artifacts_root: Path,
 ) -> None:
     """Partitions carry occurrences: one row per registrant, keyed by locator.
 
     Phase 2.5 attributes a fetched document back through these rows, so the
     partition must key to the same locator the work order enumerates.
     """
-    plan_dir, meta = _plan_dir(scope, catalog_snapshot)
+    plan_dir, meta = _plan_dir(scope, catalog_snapshot, catalog_artifacts_root)
     partitions = sorted(plan_dir.glob("targets/form=*/data.parquet"))
     assert partitions, "Phase 2.5 has no per-form targets"
 
@@ -229,13 +239,14 @@ def test_occurrences_are_the_registrants_claim_not_the_document(
 
 def test_deterministic_targets_publish_the_raw_target_schema(
     catalog_snapshot: tuple[dict[str, Any], Path],
+    catalog_artifacts_root: Path,
 ) -> None:
     """The deterministic scope publishes exactly the declared target schema.
 
     Equality, not containment: this is the one scope whose output is the raw
     catalog target row, so an extra column here is unambiguously drift.
     """
-    plan_dir, _ = _plan_dir("deterministic", catalog_snapshot)
+    plan_dir, _ = _plan_dir("deterministic", catalog_snapshot, catalog_artifacts_root)
     for partition in sorted(plan_dir.glob("targets/form=*/data.parquet")):
         names = pq.read_schema(partition).names
         assert names == list(TARGET_COLUMNS), (
@@ -245,6 +256,7 @@ def test_deterministic_targets_publish_the_raw_target_schema(
 
 def test_policy_targets_publish_the_feature_occurrence_schema(
     catalog_snapshot: tuple[dict[str, Any], Path],
+    catalog_artifacts_root: Path,
 ) -> None:
     """The policy scope publishes its feature snapshot's occurrence schema.
 
@@ -254,11 +266,11 @@ def test_policy_targets_publish_the_feature_occurrence_schema(
     ``document_locator_key`` a second time and shipped a spurious
     ``document_locator_key_1`` column into the published bundle.
     """
-    manifest, snapshot_dir = catalog_snapshot
-    artifacts_root = snapshot_dir.parent.parent
+    manifest, _ = catalog_snapshot
+    artifacts_root = catalog_artifacts_root
     expected = _feature_occurrence_columns(str(manifest["catalog_id"]), artifacts_root)
 
-    plan_dir, _ = _plan_dir("policy", catalog_snapshot)
+    plan_dir, _ = _plan_dir("policy", catalog_snapshot, catalog_artifacts_root)
     for partition in sorted(plan_dir.glob("targets/form=*/data.parquet")):
         names = pq.read_schema(partition).names
 
@@ -279,6 +291,7 @@ def test_policy_targets_publish_the_feature_occurrence_schema(
 
 def test_the_two_scopes_publish_deliberately_different_occurrences(
     catalog_snapshot: tuple[dict[str, Any], Path],
+    catalog_artifacts_root: Path,
 ) -> None:
     """The scopes are not interchangeable, and Phase 2.5 is told so.
 
@@ -286,8 +299,10 @@ def test_the_two_scopes_publish_deliberately_different_occurrences(
     malformed policy schema pass review: it read one file. This one states the
     difference outright so the distinction cannot be quietly collapsed again.
     """
-    deterministic_plan, _ = _plan_dir("deterministic", catalog_snapshot)
-    policy_plan, _ = _plan_dir("policy", catalog_snapshot)
+    deterministic_plan, _ = _plan_dir(
+        "deterministic", catalog_snapshot, catalog_artifacts_root
+    )
+    policy_plan, _ = _plan_dir("policy", catalog_snapshot, catalog_artifacts_root)
 
     deterministic = pq.read_schema(
         min(deterministic_plan.glob("targets/form=*/data.parquet"))
@@ -302,9 +317,10 @@ def test_the_two_scopes_publish_deliberately_different_occurrences(
 
 def test_reserve_is_disjoint_from_the_work_order(
     catalog_snapshot: tuple[dict[str, Any], Path],
+    catalog_artifacts_root: Path,
 ) -> None:
     """An acquirer that ignores the reserve must never double-fetch."""
-    plan_dir, meta = _plan_dir("policy", catalog_snapshot)
+    plan_dir, meta = _plan_dir("policy", catalog_snapshot, catalog_artifacts_root)
     reserve = plan_dir / RESERVE_TARGETS_NAME
     assert reserve.is_file()
 
@@ -320,12 +336,13 @@ def test_reserve_is_disjoint_from_the_work_order(
 
 def test_plan_json_states_what_the_bundle_contains(
     catalog_snapshot: tuple[dict[str, Any], Path],
+    catalog_artifacts_root: Path,
 ) -> None:
     """Phase 2.5 reads a bundle without rescanning it; these are its index keys."""
     import json
 
     for scope in BUNDLES:
-        plan_dir, meta = _plan_dir(scope, catalog_snapshot)
+        plan_dir, meta = _plan_dir(scope, catalog_snapshot, catalog_artifacts_root)
         document = json.loads((plan_dir / PLAN_FILE_NAME).read_text(encoding="utf-8"))
         for key in (
             "plan_schema_version",
@@ -350,6 +367,7 @@ def test_plan_json_states_what_the_bundle_contains(
 
 def test_both_scopes_publish_the_same_work_order_contract(
     catalog_snapshot: tuple[dict[str, Any], Path],
+    catalog_artifacts_root: Path,
 ) -> None:
     """The fetch work order is scope-independent; the occurrences are not.
 
@@ -360,7 +378,7 @@ def test_both_scopes_publish_the_same_work_order_contract(
     """
     surfaces = set()
     for scope in BUNDLES:
-        plan_dir, _ = _plan_dir(scope, catalog_snapshot)
+        plan_dir, _ = _plan_dir(scope, catalog_snapshot, catalog_artifacts_root)
         table = pq.read_table(plan_dir / LOCATOR_GROUPS_NAME)
         surfaces.add(set(FETCH_REQUIRED) <= set(table.schema.names))
     assert surfaces == {True}

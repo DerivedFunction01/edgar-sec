@@ -62,6 +62,15 @@ ways a network dependency creeps in.
   publication modes, not only the durable one — v1 enforced it only on the durable
   path, so an explicit `--artifacts` root could silently destroy a published
   snapshot.
+- **`materialize` writes one target shard per source part, and refuses source
+  parts that share a CIK.** Occurrence dedup is per shard and keyed on
+  `source_cik`; a CIK spanning two parts would publish one `occurrence_id` into
+  two shards. Peak memory is set by the densest single part rather than by the
+  cohort.
+- **Target shards are not globally sorted, and the manifest says so.** Each shard
+  is ordered by the projection key; shards follow Phase 1 source-part order, whose
+  CIK ranges overlap. `sort_order: "source_part_order"` is recorded so a consumer
+  cannot read one shard's ordering as a dataset-wide guarantee.
 - **Publication is atomic and never partially visible.** A catalog is staged
   under the transient tree and published with a single `os.replace`; a plan
   bundle is staged as a *sibling* of its destination precisely so `os.replace`
@@ -118,8 +127,10 @@ ways a network dependency creeps in.
 - **Resource limits are not parameters.** `materialize` accepts no `threads` or
   `memory_limit`: `connect()` derives them from the cgroup-aware
   `derive_resources()`, and re-exposing them as arguments invites the hardcoded
-  allocations the `resource-allocation` scanner exists to block. Heap is reclaimed
-  between the two heavy stages.
+  allocations the `resource-allocation` scanner exists to block. There is no batch
+  size parameter either — the Phase 1 part is the unit of work, and a knob that
+  appears to bound staging but does not is worse than none. Heap is reclaimed
+  between the profile and target passes and between target shards.
 
 **Obligations callers place on this package**
 
@@ -150,7 +161,7 @@ ways a network dependency creeps in.
 | `expand`, `prepare_parent`, `validate_parent`, `validate_parent_schema`, `validate_target`, `ExpansionLineage`, `ParentPlanError`, `read_expansion_metadata` | `expansion` |
 | `plan_identity`, `plan_fingerprint`, `plan_locator_keys`, `plan_bundle_complete`, `reuse_existing_plan`, `staged_plan_bundle`, `publish_plan_bundle`, `write_plan_documents`, `PlanConflictError`, `TARGET_PLAN_SCHEMA_VERSION` (`"1.1"`) | `publication` |
 | `discover_catalogs`, `discover_plans`, `discover_policies`, `current_catalog_id`, `resolve_catalog_reference`, `policy_search_dirs`, `auto_policy`, `status` | `discovery` |
-| `FilingCatalogPaths`, `resolve_filing_catalog_paths`, `safe_identifier`, `form_partition_name`, `form_partition_dir`, `target_part_name`, `PIPELINE_DIR`, `CURRENT_ALIAS`, `REQUIRED_PLAN_FILES`, and every artifact-name constant | `paths` |
+| `FilingCatalogPaths`, `resolve_filing_catalog_paths`, `safe_identifier`, `form_partition_name`, `form_partition_dir`, `target_part_name`, `PIPELINE_DIR`, `SNAPSHOTS_DIR_NAME`, `PLANS_DIR_NAME`, `CURRENT_ALIAS`, `REQUIRED_PLAN_FILES`, and every artifact-name constant | `paths` |
 | `build_operator_menu` — four `MenuAction` entries | `operator` |
 | `build_parser`, `main`, `cmd_materialize`, `cmd_plan`, `cmd_expand`, `cmd_status` | `cli` |
 
@@ -178,7 +189,7 @@ are in the [root README](../../../README.md#5-filing-catalog-pipeline-zero-netwo
 
 | Subcommand | Flags | Returns |
 | :--- | :--- | :--- |
-| `materialize` | `--source` (one Parquet part, treated as a one-part dataset), `--source-manifest` (Phase 1 snapshot manifest; its declared parts are resolved and verified), `--artifacts`, `--batch-size` | 0 with the manifest JSON on stdout, or 1 on `CatalogError` with `error: <msg>` on stderr. |
+| `materialize` | `--source` (one Parquet part, treated as a one-part dataset), `--source-manifest` (Phase 1 snapshot manifest; its declared parts are resolved and verified), `--artifacts` | 0 with the manifest JSON on stdout, or 1 on `CatalogError` with `error: <msg>` on stderr. |
 | `plan` | `--catalog` (**required**), `--scope` (`deterministic` default; choices `deterministic`, `policy`), `--policy`, `--auto-policy`, `--artifacts`, `--forms` (nargs `*`), `--amendment` (`both` default; choices `both`, `original`, `amendments`), `--suffixes` (nargs `*`), `--limit` | 0 with the plan document on stdout, or 1 on `PlanConflictError`, `ValueError`, or `OSError`. |
 | `expand` | `--parent-plan` (**required**, a published policy plan directory), `--target-units` (**required**, int), `--artifacts` | 0 with the child plan document, or 1 on `PlanConflictError`, `ParentPlanError`, `ValueError`, or `OSError`. |
 | `status` | `--artifacts` | 0, with the published-state JSON on stdout. |
@@ -221,18 +232,25 @@ The published layout is in the
 [root README](../../../README.md#5-filing-catalog-pipeline-zero-network); three
 facts are specific to this package:
 
-- **Catalog snapshots and plan bundles share one namespace.** They are direct
-  children of `filing_catalog/`: `snapshots_root` and `plans_root` both return
-  `catalog_root`, so there is no `plans/` directory. Both ids are 24-character
-  content digests taken from different inputs, so colliding them would take a hash
-  collision. `tests/pipelines/filing_catalog/test_paths.py` pins this.
-- **The feature snapshot is a sibling of the catalog directories, not a child.**
-  `FeatureSnapshotBuilder.snapshot_dir` returns
-  `output_root / "snapshots" / canonical_hash(payload)[:32]` and `plan_policy`
-  passes `output_root=paths.catalog_root`. It is written only by the policy scope.
-  `discover_catalogs` ignores the `snapshots` directory because it requires a
-  `snapshot.manifest.json` inside each entry and the feature directory holds
-  `feature_snapshot.json`.
+- **Catalog snapshots, plan bundles, and the pointer are three siblings**, shaped
+  like Phase 1's: `filing_catalog/snapshots/<catalog_id>/`,
+  `filing_catalog/snapshots/current/pointer.json`, and
+  `filing_catalog/plans/<plan_id>/`. An earlier revision put both kinds directly
+  under `filing_catalog/` and justified the shared namespace by noting that a
+  catalog id and a plan id are both 24-character content digests and could only
+  collide through a hash collision. The reasoning was sound and the trade was
+  wrong: nothing in the published tree let a reader tell a snapshot from a plan by
+  name, and the artifacts root stopped resembling every other pipeline's.
+  `tests/pipelines/filing_catalog/test_paths.py` pins the separated roots.
+- **The feature snapshot shares `snapshots/` with catalog snapshots, and is
+  identified by manifest rather than by name.** `FeatureSnapshotBuilder.snapshot_dir`
+  returns `output_root / "snapshots" / canonical_hash(payload)[:32]`, and
+  `plan_policy` passes `output_root=paths.catalog_root`. Two different kinds of
+  snapshot therefore sit in one directory, which is a deliberate gap rather than
+  an oversight — see deliberate gaps below. `discover_catalogs` requires
+  `snapshot.manifest.json` in an entry, so a feature directory
+  (`feature_snapshot.json`) is skipped, and the ids cannot collide: a catalog id
+  is 24 hex characters, a feature digest 32.
 - **Bundle contents are scope-specific.** `targets/form=<FORM>/data.parquet` is the
   *occurrence* surface: a deterministic plan writes the raw catalog target rows,
   exactly `TARGET_COLUMNS`; a policy plan writes the feature-enriched occurrence
@@ -262,14 +280,80 @@ the dataset, not one file of it.
 
 Inside one DuckDB connection it builds a temp view over the whole part list and
 runs `build_profile_query` to write `company_profiles.parquet`; after `reclaim()`
-it reconnects and runs `build_part_unnest_query` over the same parts to write
-`filing_targets/part-00000.parquet`, accumulating per-form counts. The manifest
+it reconnects and walks the ordered source parts, running `build_part_unnest_query`
+over **one part at a time** and writing each result to its own
+`filing_targets/part-NNNNN.parquet`, reclaiming between parts. The manifest
 records `manifest_kind`, `catalog_id`/`snapshot_id`, the source part list and
 digests, all three schema versions (`schema_version`, `target_schema_version`,
 `profile_schema_version`), profile and target row counts, `target_columns`,
-`form_counts`, per-part digests, `source_batch_size`, and `pipeline`. The manifest
-is written into staging, `os.replace` publishes, and only then — and only for the
-durable tree — is `current/pointer.json` written.
+accumulated `form_counts`, per-shard metadata (path, index, originating source
+part, row count, SHA-256), `target_part_count`, `sort_order`, and `pipeline`. The
+manifest is written into staging, `os.replace` publishes, and only then — and only
+for the durable tree — is `current/pointer.json` written.
+
+#### Why the target pass is sharded, and why there is no batch-size knob
+
+Each Phase 1 registrant row carries its whole filing history as a nested
+`filings` array — a single CIK in the current snapshot holds 167,865 of them — so
+the cohort's 13.8M occurrences arrive as 40,914 very large nested values. Two
+things follow.
+
+The unnest must be **uncorrelated**. `LATERAL (SELECT UNNEST(t.filings))` is
+rewritten by DuckDB into a delim join whose `DELIM_SCAN` pins the entire nested
+value of every source row before emitting anything; that pin does not spill, so
+it exhausts the memory limit on a part list that streams fine when unnested as
+`UNNEST(filings)` in a select list. The shape and its plan are both pinned by
+`tests/infra/storage/test_duckdb_catalog.py`.
+
+The unnest must be **bounded**. Reading every part in one query makes peak memory
+a function of the cohort rather than of a part, so each part is unnested alone and
+written to its own shard. Peak usage is now set by the densest single part.
+
+There was once a `catalog.source_batch_size` setting, `--batch-size` flag, and
+`source_batch_size` manifest field, described as "registrant rows staged into
+DuckDB per batch". They only ever validated the number and copied it into the
+manifest — nothing batched on it, so an operator watching memory climb would tune
+it and see nothing change. All three are gone; the Phase 1 part is the unit of
+work.
+
+#### Shard ordering is per shard, and the manifest says so
+
+Each shard is sorted by `(source_cik, accession, document_path)`, but the shards
+are concatenated in Phase 1 **source-part order**, and Phase 1 publishes parts in
+`sort_order: "chunk_order"` whose CIK ranges overlap. The published catalog is
+therefore *not* globally sorted by CIK. `snapshot.manifest.json` records
+`sort_order: "source_part_order"` so a consumer cannot mistake one shard's
+ordering for a dataset-wide guarantee. Phase 1 makes the same tradeoff and
+documents it identically (`merger.publish_parts`). Consumers that need a total
+order impose one — `plan` writes `ORDER BY document_locator_key, occurrence_id`
+per form partition.
+
+#### Guards, and the one that sharding added
+
+Three guards are load-bearing invariants:
+
+1. a source path under `chunks`, `checkpoints`, or `workers` is refused, so a
+   transient Phase 1 work unit can never be mistaken for a finalized snapshot;
+2. the source column list must equal `SUBMISSION_METADATA_SCHEMA.names` exactly,
+   so a Phase 1 schema change fails loudly instead of producing a silently
+   truncated catalog;
+3. an existing snapshot directory is refused rather than overwritten, so a
+   published snapshot stays immutable.
+
+A fourth follows from sharding. Occurrence dedup is **per shard** and keyed on
+`source_cik`, so it can only collapse duplicates it can see. If one CIK appeared in
+two source parts, the same `occurrence_id` would be published into two shards — a
+dataset-wide duplicate no per-shard check could catch. `_guard_ciks_are_disjoint`
+therefore refuses a source whose parts share a CIK, using a column-pruned
+aggregate over `cik` that never expands the nested arrays.
+
+That guard is a precondition, not a repair. Phase 1 chunks partition the CIK index
+and the merger already rejects a duplicate CIK, so a published snapshot satisfies
+it; an input that violates the upstream contract is refused rather than silently
+published. It is also why the committed fixture — which deliberately carries a
+re-fetched registrant, `0000320193` twice with an identical `filings` array a week
+apart — is split into test parts **by CIK**, as real chunks are. A row-count split
+would put its two rows in different parts and be refused, correctly.
 
 ### `plan` and `plan_policy`
 
@@ -386,13 +470,33 @@ each to say something weaker."
 
 ## Deliberate gaps
 
+- **`snapshots/` holds two kinds of snapshot, told apart by manifest.** Catalog
+  snapshots are `<catalog_id>/` holding `snapshot.manifest.json`; the Stage B
+  feature snapshot is a 32-hex directory holding `feature_snapshot.json`. Both
+  land under `snapshots/` because `FeatureSnapshotBuilder` appends its own
+  `snapshots/<digest>` segment to the root it is handed and `plan_policy` passes
+  `catalog_root`. A separate `features/` directory would be cleaner, but the
+  segment name lives in Layer 3 (`engine/selection/features.py`) while the layout
+  is Layer 4's, so separating them means either changing the engine's published
+  contract or passing a path shape designed to cancel out its hardcoded segment.
+  Neither is worth a cross-layer change. `discover_catalogs` requires
+  `snapshot.manifest.json`, so feature directories are skipped, and the two id
+  spaces are disjoint by length (24 vs 32 hex characters).
+- **Target shards are not globally sorted, and no consumer can make them so
+  without a full re-sort.** Shard N is the unnest of source part N, so shards are
+  ordered by Phase 1's `chunk_order`, whose CIK ranges overlap. Each shard is
+  internally sorted by the projection key and the manifest records
+  `sort_order: "source_part_order"`, so nothing claims more. Restoring a dataset
+  total order would mean one sort over 13.8M rows, which is the memory ceiling
+  this layout exists to avoid; `plan` imposes its own order per form partition
+  instead.
 - **No chunk workers, no resume, no partial progress.** The Phase 1
   plan/worker/merge lifecycle has no analogue here because there is nothing to
-  fetch: a catalog materialization is a single DuckDB pass, and a plan is a single
-  publish. `cli.py` says so directly. If Phase 2 ever needs to fetch, it must be a
-  new pipeline, not a `run` command added here — and
-  `tests/test_network_isolation.py` fails the gate if anything under this package
-  reaches `edgar_sec.infra.sec_http`.
+  fetch: a catalog materialization is a bounded DuckDB pass over one source part
+  at a time, and a plan is a single publish. `cli.py` says so directly. If Phase 2
+  ever needs to fetch, it must be a new pipeline, not a `run` command added here —
+  and `tests/test_network_isolation.py` fails the gate if anything under this
+  package reaches `edgar_sec.infra.sec_http`.
 - **No operator action for `plan --scope policy`.** The wizard offers status,
   materialize, deterministic plan, and expand, and every one of those inputs is
   discoverable or defaultable. A policy scope is not: choosing one interactively

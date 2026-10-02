@@ -18,8 +18,10 @@ from edgar_sec.pipelines.filing_catalog.paths import (
     PIPELINE_DIR,
     PLAN_FILE_NAME,
     PLAN_TARGETS_DIR_NAME,
+    PLANS_DIR_NAME,
     REQUIRED_PLAN_FILES,
     SEED_FILERS_NAME,
+    SNAPSHOTS_DIR_NAME,
     form_partition_dir,
     form_partition_name,
     resolve_filing_catalog_paths,
@@ -40,32 +42,41 @@ def test_catalog_root_is_under_the_pipeline_directory(paths) -> None:
     assert paths.catalog_root == paths.artifacts_root / PIPELINE_DIR
 
 
-def test_snapshots_and_plans_share_one_directory(paths) -> None:
+def test_snapshots_and_plans_are_sibling_directories(paths) -> None:
     """Catalog snapshots and plan bundles are siblings, not nested.
 
-    v1 documented ``snapshots/<id>`` and ``plans/<id>`` subdirectories. Neither
-    exists: both roots resolve to ``catalog_root``, so a catalog id and a plan
-    id live in one namespace (see the collision test below). The feature
-    snapshot subtree under ``snapshots/`` is written by the selection engine and
-    does not collide with either.
+    This mirrors ``pipelines.metadata_sync.paths``: one published root per kind,
+    both directly under the pipeline directory. An earlier revision resolved both
+    to ``catalog_root`` and justified the shared namespace by noting that a
+    catalog id and a plan id are both 24-character digests and could only collide
+    through a hash collision. True, and the wrong trade — it left a published tree
+    in which nothing distinguished a snapshot from a plan by name.
     """
-    assert paths.snapshots_root == paths.catalog_root
-    assert paths.plans_root == paths.catalog_root
-    assert paths.snapshot_dir("cat-1").parent == paths.catalog_root
-    assert paths.plan_dir("plan-1").parent == paths.catalog_root
+    assert paths.snapshots_root == paths.catalog_root / SNAPSHOTS_DIR_NAME
+    assert paths.plans_root == paths.catalog_root / PLANS_DIR_NAME
+    assert paths.snapshot_dir("cat-1").parent == paths.snapshots_root
+    assert paths.plan_dir("plan-1").parent == paths.plans_root
 
 
-def test_catalog_and_plan_ids_share_one_namespace(paths) -> None:
-    """Stated rather than assumed: the layout has no separate plan namespace.
+def test_catalog_and_plan_ids_have_separate_namespaces(paths) -> None:
+    """An equal catalog id and plan id must name different directories.
 
-    A catalog id and a plan id that were equal would name the same directory.
-    In practice both are 24-character content digests taken from different
-    inputs, so this needs a hash collision to go wrong. It is pinned here
-    because the docstring used to claim two subdirectories that do not exist,
-    and the correction should not read as a stronger guarantee than the code
-    makes.
+    This is the property the shared namespace gave up. It held only because both
+    ids are content digests of different inputs, which is an argument rather than
+    a guarantee, so the layout now separates the two roots instead.
     """
-    assert paths.snapshot_dir("same-id") == paths.plan_dir("same-id")
+    assert paths.snapshot_dir("same-id") != paths.plan_dir("same-id")
+
+
+def test_the_current_pointer_lives_inside_the_snapshots_root(paths) -> None:
+    """One published root, one pointer, alongside the directories it can name.
+
+    Matches Phase 1, where the pointer sits in ``metadata/snapshots/current/``.
+    """
+    assert paths.current_pointer == (
+        paths.snapshots_root / CURRENT_ALIAS / "pointer.json"
+    )
+    assert paths.current_pointer.parent.parent == paths.snapshots_root
 
 
 # --- identifiers -----------------------------------------------------------
@@ -134,7 +145,7 @@ def test_required_plan_files_are_named_constants() -> None:
 
 def test_current_alias_is_not_an_interpolated_path(paths) -> None:
     assert CURRENT_ALIAS == "current"
-    assert paths.snapshot_dir(CURRENT_ALIAS) == paths.catalog_root / "current"
+    assert paths.snapshot_dir(CURRENT_ALIAS) == paths.snapshots_root / CURRENT_ALIAS
 
 
 # --- resolution ------------------------------------------------------------

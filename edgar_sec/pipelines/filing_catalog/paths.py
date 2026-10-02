@@ -2,21 +2,37 @@
 
 The layout composes from ``ProjectPaths.artifacts_root`` rather than from the
 v1 ``manifests_root``/``transient_root`` accessors, which do not exist in v2.
-The shape otherwise matches the v1 contract, because the artifact names and the
-transient/published split are the interface Phase 2.5 consumes:
+It mirrors ``pipelines.metadata_sync.paths``, which is the fully developed
+reference for this shape:
 
-    artifacts_root/filing_catalog/<catalog_id>/              published, immutable
-    artifacts_root/filing_catalog/current/pointer.json
-    artifacts_root/filing_catalog/<feature_id>/              selection features, immutable
-    artifacts_root/filing_catalog/<plan_id>/                  published, immutable
-    artifacts_root/transient/filing_catalog/<catalog_id>/      staging, never published
+    artifacts_root/filing_catalog/snapshots/<catalog_id>/   published, immutable
+    artifacts_root/filing_catalog/snapshots/current/pointer.json
+    artifacts_root/filing_catalog/plans/<plan_id>/          published, immutable
+    artifacts_root/filing_catalog/policies/                 selection policies
+    artifacts_root/transient/filing_catalog/<catalog_id>/   staging, never published
 
-Catalog snapshots and plan bundles are direct children of ``filing_catalog/``:
-``snapshots_root`` and ``plans_root`` are the same directory, so a catalog id
-and a plan id share one namespace. Both are 24-character content digests taken
-from different inputs, so the only way to collide is a hash collision. The
-feature snapshots named above share that same namespace and are content-addressed
-by different rules, so they never collide either.
+Snapshots and plans are siblings under the pipeline root, not one flat
+namespace. An earlier revision put both directly under ``filing_catalog/`` and
+justified it by arguing that a catalog id and a plan id are both 24-character
+digests and could only collide through a hash collision. That reasoning was
+sound but it optimised for an argument rather than for legibility: a reader
+listing published state had no way to tell a snapshot from a plan by name, and
+the published tree did not look like the tree every other pipeline publishes.
+Matching ``metadata_sync`` costs nothing — the ids were always distinct — and
+makes the artifact root readable at a glance.
+
+The ``current`` pointer lives *inside* ``snapshots/``, as it does for Phase 1 and
+Phase 2.5. One published root, one pointer, and the pointer's siblings are exactly
+the snapshot directories it can name.
+
+``snapshots/`` also holds the Stage B *feature* snapshot directories, written by
+``FeatureSnapshotBuilder``, which appends its own ``snapshots/<digest>`` segment
+to the root it is given. They are told apart by manifest, not by name: a catalog
+directory carries ``snapshot.manifest.json`` and a feature directory carries
+``feature_snapshot.json``, and ``discover_catalogs`` requires the former. Their
+ids cannot collide either — a catalog id is 24 hex characters and a feature
+digest is 32. This is a deliberate gap rather than an oversight; see the
+deliberate-gaps section of this package's README.
 
 No ``.artifacts`` literal appears here; the root always arrives from
 ``resolve_paths()``.
@@ -37,6 +53,10 @@ from edgar_sec.foundation.runtime.paths import (
 )
 
 PIPELINE_DIR = "filing_catalog"
+
+# Published subdirectories, named so this pipeline's tree reads like Phase 1's.
+SNAPSHOTS_DIR_NAME = "snapshots"
+PLANS_DIR_NAME = "plans"
 
 # Reference that resolves to whichever catalog the pointer names.
 CURRENT_ALIAS = "current"
@@ -117,13 +137,18 @@ class FilingCatalogPaths:
 
     @property
     def snapshots_root(self) -> Path:
-        """Root of published catalog snapshot directories."""
-        return self.catalog_root
+        """Root of published catalog snapshot directories, and of the pointer."""
+        return self.catalog_root / SNAPSHOTS_DIR_NAME
 
     @property
     def plans_root(self) -> Path:
         """Root of published target-plan bundles."""
-        return self.catalog_root
+        return self.catalog_root / PLANS_DIR_NAME
+
+    @property
+    def policies_root(self) -> Path:
+        """Root of published selection policies."""
+        return self.catalog_root / POLICIES_DIR_NAME
 
     def snapshot_dir(self, catalog_id: str) -> Path:
         """Directory holding one immutable catalog snapshot."""
@@ -186,6 +211,7 @@ __all__ = [
     "EXPANSION_METADATA_NAME",
     "LOCATOR_GROUPS_NAME",
     "PIPELINE_DIR",
+    "PLANS_DIR_NAME",
     "PLAN_FILE_NAME",
     "PLAN_TARGETS_DIR_NAME",
     "POINTER_FILE_NAME",
@@ -194,6 +220,7 @@ __all__ = [
     "RESERVE_TARGETS_NAME",
     "SEED_FILERS_NAME",
     "SELECTION_REPORT_NAME",
+    "SNAPSHOTS_DIR_NAME",
     "SNAPSHOT_FILE_NAME",
     "SNAPSHOT_MANIFEST_NAME",
     "TARGETS_DIR_NAME",

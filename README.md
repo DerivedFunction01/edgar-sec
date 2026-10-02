@@ -128,6 +128,15 @@ content-addressed **target plans** for a future acquisition phase to consume.
 It never performs network I/O, and `tests/test_network_isolation.py` proves
 that by walking the import graph rather than by grep.
 
+`materialize` writes **one target shard per Phase 1 source part**. A Phase 1
+registrant row carries its whole filing history as a nested array, so unnesting
+the entire cohort at once exhausts the memory limit; staging part by part bounds
+peak memory by the densest single part. The shards are each ordered by the
+projection key but are **not** globally sorted — they follow Phase 1 source-part
+order, and `snapshot.manifest.json` records `sort_order: "source_part_order"` so a
+consumer cannot mistake one shard's ordering for a dataset-wide guarantee. There
+is no `--batch-size` flag; the Phase 1 part is the unit of work.
+
 ```bash
 # Materialize a catalog snapshot from a Phase 1 snapshot:
 python run.py filing-catalog materialize \
@@ -156,14 +165,13 @@ under `artifacts_root/transient/`.
 
 ```text
 artifacts_root/filing_catalog/
-├── <catalog_id>/                       # immutable catalog snapshot
-│   ├── snapshot.manifest.json
-│   ├── company_profiles.parquet        # 23 columns, projected from Phase 1
-│   └── filing_targets/part-00000.parquet
-├── snapshots/<digest>/                 # content-addressed feature snapshot
-│                                       #   (sibling of <catalog_id>/: paths.py
-│                                       #   sets snapshots_root = catalog_root)
-├── <plan_id>/                          # immutable plan bundle
+├── snapshots/                          # mirrors metadata/snapshots/
+│   ├── <catalog_id>/                   # immutable catalog snapshot
+│   │   ├── snapshot.manifest.json
+│   │   ├── company_profiles.parquet    # 23 columns, projected from Phase 1
+│   │   └── filing_targets/part-NNNNN.parquet   # one shard per Phase 1 source part
+│   └── current/pointer.json            # current catalog pointer
+├── plans/<plan_id>/                    # immutable plan bundle
 │   ├── plan.json
 │   ├── selection_report.json
 │   ├── seed_filers.csv                 # policy scope only
@@ -172,13 +180,18 @@ artifacts_root/filing_catalog/
 │   ├── expansion_metadata.json         # child plans only
 │   └── targets/form=<FORM>/data.parquet
 ├── policies/
-└── current/pointer.json
+└── snapshots/<feature-digest>/           # Stage B feature snapshot (policy
+                                         #   scope only; identified by
+                                         #   feature_snapshot.json, not by name)
 ```
 
-Catalog snapshots and plan bundles are direct children of `filing_catalog/`:
-`paths.py` sets `snapshots_root` and `plans_root` to the same `catalog_root`, so
-there is no `plans/` directory. Both ids are 24-character content digests.
-`targets/form=<FORM>/data.parquet` is scope-specific: a deterministic plan
+Catalog snapshots and plan bundles are siblings under `filing_catalog/`, matching
+`metadata/snapshots/` and `metadata/plans/`, and the `current` pointer lives
+inside `snapshots/`. An earlier revision put both kinds directly under
+`filing_catalog/` and argued they could never collide because both ids are
+24-character digests — true, but it left a tree in which nothing distinguished a
+snapshot from a plan by name. `targets/form=<FORM>/data.parquet` is
+scope-specific: a deterministic plan
 publishes the raw `TARGET_COLUMNS`, a policy plan the feature-enriched
 occurrence rows it selected from. `locator_groups.parquet` is the scope-
 independent work order.

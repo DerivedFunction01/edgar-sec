@@ -78,7 +78,6 @@ def _namespace(
         source="",
         source_manifest="",
         artifacts="",
-        batch_size=None,
         parent_plan=parent_plan,
         target_units=target_units,
     )

@@ -23,7 +23,6 @@ from edgar_sec.infra.storage.duckdb_catalog import sql_literal
 from edgar_sec.pipelines.filing_catalog.paths import (
     CURRENT_ALIAS,
     PLAN_FILE_NAME,
-    POLICIES_DIR_NAME,
     SNAPSHOT_MANIFEST_NAME,
     FilingCatalogPaths,
     resolve_filing_catalog_paths,
@@ -96,6 +95,9 @@ def discover_catalogs(
     if not resolved.snapshots_root.is_dir():
         return found
     for entry in sorted(resolved.snapshots_root.iterdir()):
+        # ``current`` is the pointer, and a Stage B feature snapshot is also a
+        # directory here; both are told apart by what they do not hold. Only a
+        # directory carrying snapshot.manifest.json is a catalog snapshot.
         if not entry.is_dir() or entry.name == CURRENT_ALIAS:
             continue
         manifest = _read_json(entry / SNAPSHOT_MANIFEST_NAME)
@@ -150,12 +152,16 @@ def discover_plans(paths: FilingCatalogPaths | None = None) -> list[dict[str, An
 def policy_search_dirs(paths: FilingCatalogPaths | None = None) -> list[Path]:
     """Directories a selection policy may be published in.
 
+    ``policies/`` is the declared location; the pipeline root is also scanned so a
+    policy dropped there is still found. The root holds only directories
+    (``snapshots/``, ``plans/``, ``policies/``) and the scan skips anything that
+    does not parse as a policy, so the extra entry cannot surface a false match.
+
     The layout lives in Layer 4, so the engine cannot resolve it; this is the
     resolver that hands explicit directories to the engine-level scan.
     """
     resolved = paths or resolve_filing_catalog_paths()
-    policies_root = resolved.catalog_root / POLICIES_DIR_NAME
-    return [policies_root, resolved.catalog_root]
+    return [resolved.policies_root, resolved.catalog_root]
 
 
 def discover_policies(paths: FilingCatalogPaths | None = None) -> list[dict[str, Any]]:

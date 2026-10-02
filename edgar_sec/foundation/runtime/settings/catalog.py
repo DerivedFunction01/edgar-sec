@@ -1,13 +1,15 @@
 """Filing-catalog and document-storage settings.
 
-Logical paths are chosen so derived environment names read naturally:
-``catalog.source_batch_size`` -> ``CATALOG_SOURCE_BATCH_SIZE``.
+``catalog.row_group_size`` -> ``CATALOG_ROW_GROUP_SIZE``.
 
-``source_batch_size`` is deliberately distinct from ``runtime.chunk_size``.
-The latter sizes Phase 1's resumable *network* chunks; this one sizes how many
-registrant rows Phase 2 stages into DuckDB per batch. They share a default of
-1,000 but describe different concerns, so they are registered separately rather
-than aliased.
+There is deliberately no Phase 2 batch-size setting. An earlier revision
+registered ``catalog.source_batch_size`` here and described it as "registrant rows
+staged into DuckDB per batch", but ``materialize`` only ever validated it and
+copied it into the snapshot manifest — nothing batched on it. The unit of work is
+now the Phase 1 part itself: each part is unnested alone and written to its own
+target shard. A knob that appears to bound work and does not is worse than no
+knob, because an operator watching memory climb would tune it and see nothing
+change.
 
 ``documents.*`` is Phase 2.5's group, registered here rather than in the
 pipeline so the environment contract stays in the registry. An earlier
@@ -24,8 +26,6 @@ from .validators import validate_positive_int
 
 if TYPE_CHECKING:
     from . import SettingSpec
-
-DEFAULT_SOURCE_BATCH_SIZE = 1000
 
 # This mirrors DEFAULT_ROW_GROUP_SIZE in edgar_sec.infra.storage.parquet, which
 # is the authority for the value. The duplication is forced by the enforced
@@ -48,17 +48,6 @@ def get_catalog_specs() -> dict[str, dict[str, SettingSpec]]:
 
     return {
         "catalog": {
-            "source_batch_size": SettingSpec(
-                value_type=int,
-                default=DEFAULT_SOURCE_BATCH_SIZE,
-                env=True,
-                machine_local=True,
-                validate=validate_positive_int,
-                description=(
-                    "registrant rows staged into DuckDB per batch while "
-                    "materializing the filing catalog"
-                ),
-            ),
             "row_group_size": SettingSpec(
                 value_type=int,
                 default=DEFAULT_ROW_GROUP_SIZE,
@@ -96,7 +85,6 @@ def get_catalog_specs() -> dict[str, dict[str, SettingSpec]]:
 __all__ = [
     "DEFAULT_DOCUMENT_BATCH_SIZE",
     "DEFAULT_ROW_GROUP_SIZE",
-    "DEFAULT_SOURCE_BATCH_SIZE",
     "DEFAULT_TARGET_BYTES",
     "get_catalog_specs",
 ]

@@ -60,10 +60,12 @@ def _policy(**overrides: object) -> SelectionPolicy:
 
 
 def test_policy_plan_publishes_a_complete_bundle(
-    catalog_snapshot: tuple[dict[str, object], Path], tmp_path: Path
+    catalog_snapshot: tuple[dict[str, object], Path],
+    tmp_path: Path,
+    catalog_artifacts_root: Path,
 ) -> None:
     manifest, _ = catalog_snapshot
-    artifacts_root = _artifacts_root(catalog_snapshot)
+    artifacts_root = _artifacts_root(catalog_artifacts_root)
     policy = _policy()
     meta = plan_policy(str(manifest["catalog_id"]), policy, artifacts_root)
 
@@ -73,20 +75,23 @@ def test_policy_plan_publishes_a_complete_bundle(
         assert (plan_dir / name).is_file()
 
 
-def _artifacts_root(catalog_snapshot: tuple[dict[str, object], Path]) -> Path:
-    """The artifacts root the catalog fixture was materialized into."""
-    _, snapshot_dir = catalog_snapshot
-    # .../artifacts/filing_catalog/<catalog_id> -> .../artifacts
-    return snapshot_dir.parent.parent
+def _artifacts_root(catalog_artifacts_root: Path) -> Path:
+    """The artifacts root the catalog fixture was materialized into.
+
+    Takes the shared fixture rather than walking ``parents[N]`` off the snapshot
+    directory, which would encode the published depth into the test.
+    """
+    return catalog_artifacts_root
 
 
 def test_policy_plan_locator_groups_are_the_eighteen_column_schema(
     catalog_snapshot: tuple[dict[str, object], Path],
+    catalog_artifacts_root: Path,
 ) -> None:
     """A Stage B bundle must carry the stratification dimensions a consumer
     audits a sample with, not just the identity triple Stage A emits."""
     manifest, _ = catalog_snapshot
-    artifacts_root = _artifacts_root(catalog_snapshot)
+    artifacts_root = _artifacts_root(catalog_artifacts_root)
     meta = plan_policy(str(manifest["catalog_id"]), _policy(), artifacts_root)
     plan_dir = resolve_filing_catalog_paths(artifacts_root).plan_dir(meta["plan_id"])
 
@@ -98,10 +103,11 @@ def test_policy_plan_locator_groups_are_the_eighteen_column_schema(
 
 def test_stage_a_locator_schema_stays_narrow(
     catalog_snapshot: tuple[dict[str, object], Path],
+    catalog_artifacts_root: Path,
 ) -> None:
     """A consumer must not be able to assume 18 columns in a deterministic plan."""
     manifest, _ = catalog_snapshot
-    artifacts_root = _artifacts_root(catalog_snapshot)
+    artifacts_root = _artifacts_root(catalog_artifacts_root)
     meta = plan(str(manifest["catalog_id"]), artifacts_root, forms=("10-K",))
     plan_dir = resolve_filing_catalog_paths(artifacts_root).plan_dir(meta["plan_id"])
     schema = pq.read_schema(plan_dir / LOCATOR_GROUPS_NAME)
@@ -111,9 +117,10 @@ def test_stage_a_locator_schema_stays_narrow(
 
 def test_policy_plan_partitions_targets_by_form(
     catalog_snapshot: tuple[dict[str, object], Path],
+    catalog_artifacts_root: Path,
 ) -> None:
     manifest, _ = catalog_snapshot
-    artifacts_root = _artifacts_root(catalog_snapshot)
+    artifacts_root = _artifacts_root(catalog_artifacts_root)
     meta = plan_policy(str(manifest["catalog_id"]), _policy(), artifacts_root)
     plan_dir = resolve_filing_catalog_paths(artifacts_root).plan_dir(meta["plan_id"])
 
@@ -127,10 +134,11 @@ def test_policy_plan_partitions_targets_by_form(
 
 def test_policy_plan_records_the_policy_that_produced_it(
     catalog_snapshot: tuple[dict[str, object], Path],
+    catalog_artifacts_root: Path,
 ) -> None:
     """A plan must be self-describing: the quota profile is part of the record."""
     manifest, _ = catalog_snapshot
-    artifacts_root = _artifacts_root(catalog_snapshot)
+    artifacts_root = _artifacts_root(catalog_artifacts_root)
     policy = _policy(base_content_units=2)
     meta = plan_policy(str(manifest["catalog_id"]), policy, artifacts_root)
 
@@ -147,9 +155,10 @@ def test_policy_plan_records_the_policy_that_produced_it(
 
 def test_policy_plan_writes_a_reserve_pool(
     catalog_snapshot: tuple[dict[str, object], Path],
+    catalog_artifacts_root: Path,
 ) -> None:
     manifest, _ = catalog_snapshot
-    artifacts_root = _artifacts_root(catalog_snapshot)
+    artifacts_root = _artifacts_root(catalog_artifacts_root)
     meta = plan_policy(str(manifest["catalog_id"]), _policy(), artifacts_root)
     plan_dir = resolve_filing_catalog_paths(artifacts_root).plan_dir(meta["plan_id"])
 
@@ -160,9 +169,10 @@ def test_policy_plan_writes_a_reserve_pool(
 
 def test_reserve_is_disjoint_from_the_active_locators(
     catalog_snapshot: tuple[dict[str, object], Path],
+    catalog_artifacts_root: Path,
 ) -> None:
     manifest, _ = catalog_snapshot
-    artifacts_root = _artifacts_root(catalog_snapshot)
+    artifacts_root = _artifacts_root(catalog_artifacts_root)
     meta = plan_policy(str(manifest["catalog_id"]), _policy(), artifacts_root)
     plan_dir = resolve_filing_catalog_paths(artifacts_root).plan_dir(meta["plan_id"])
 
@@ -181,9 +191,10 @@ def test_reserve_is_disjoint_from_the_active_locators(
 
 def test_a_zero_reserve_writes_no_reserve_file(
     catalog_snapshot: tuple[dict[str, object], Path],
+    catalog_artifacts_root: Path,
 ) -> None:
     manifest, _ = catalog_snapshot
-    artifacts_root = _artifacts_root(catalog_snapshot)
+    artifacts_root = _artifacts_root(catalog_artifacts_root)
     meta = plan_policy(
         str(manifest["catalog_id"]), _policy(reserve_size=0), artifacts_root
     )
@@ -194,10 +205,11 @@ def test_a_zero_reserve_writes_no_reserve_file(
 
 def test_policy_plan_id_is_content_derived_and_stable(
     catalog_snapshot: tuple[dict[str, object], Path],
+    catalog_artifacts_root: Path,
 ) -> None:
     """The same catalog and policy must resolve to the same bundle, not fork one."""
     manifest, _ = catalog_snapshot
-    artifacts_root = _artifacts_root(catalog_snapshot)
+    artifacts_root = _artifacts_root(catalog_artifacts_root)
     policy = _policy()
     first = plan_policy(str(manifest["catalog_id"]), policy, artifacts_root)
     second = plan_policy(str(manifest["catalog_id"]), policy, artifacts_root)
@@ -206,9 +218,10 @@ def test_policy_plan_id_is_content_derived_and_stable(
 
 def test_a_different_policy_publishes_a_different_plan(
     catalog_snapshot: tuple[dict[str, object], Path],
+    catalog_artifacts_root: Path,
 ) -> None:
     manifest, _ = catalog_snapshot
-    artifacts_root = _artifacts_root(catalog_snapshot)
+    artifacts_root = _artifacts_root(catalog_artifacts_root)
     baseline = plan_policy(str(manifest["catalog_id"]), _policy(), artifacts_root)
     other = plan_policy(
         str(manifest["catalog_id"]),
@@ -220,10 +233,11 @@ def test_a_different_policy_publishes_a_different_plan(
 
 def test_policy_and_deterministic_scopes_never_collide(
     catalog_snapshot: tuple[dict[str, object], Path],
+    catalog_artifacts_root: Path,
 ) -> None:
     """Both scopes publish locator_groups.parquet under a content-derived id."""
     manifest, _ = catalog_snapshot
-    artifacts_root = _artifacts_root(catalog_snapshot)
+    artifacts_root = _artifacts_root(catalog_artifacts_root)
     deterministic = plan(str(manifest["catalog_id"]), artifacts_root, forms=("10-K",))
     policy = plan_policy(str(manifest["catalog_id"]), _policy(), artifacts_root)
     assert deterministic["plan_id"] != policy["plan_id"]
@@ -232,10 +246,11 @@ def test_policy_and_deterministic_scopes_never_collide(
 
 def test_an_incomplete_bundle_is_a_conflict_not_an_overwrite(
     catalog_snapshot: tuple[dict[str, object], Path],
+    catalog_artifacts_root: Path,
 ) -> None:
     """A published bundle is immutable, even when it is damaged."""
     manifest, _ = catalog_snapshot
-    artifacts_root = _artifacts_root(catalog_snapshot)
+    artifacts_root = _artifacts_root(catalog_artifacts_root)
     policy = _policy()
     meta = plan_policy(str(manifest["catalog_id"]), policy, artifacts_root)
     plan_dir = resolve_filing_catalog_paths(artifacts_root).plan_dir(meta["plan_id"])
@@ -247,10 +262,11 @@ def test_an_incomplete_bundle_is_a_conflict_not_an_overwrite(
 
 def test_selection_report_carries_the_quota_evidence(
     catalog_snapshot: tuple[dict[str, object], Path],
+    catalog_artifacts_root: Path,
 ) -> None:
     """The report is what a reader checks to see the sample is actually balanced."""
     manifest, _ = catalog_snapshot
-    artifacts_root = _artifacts_root(catalog_snapshot)
+    artifacts_root = _artifacts_root(catalog_artifacts_root)
     meta = plan_policy(str(manifest["catalog_id"]), _policy(), artifacts_root)
     plan_dir = resolve_filing_catalog_paths(artifacts_root).plan_dir(meta["plan_id"])
     report = json.loads(
@@ -269,10 +285,11 @@ def test_selection_report_carries_the_quota_evidence(
 
 def test_an_unsatisfiable_floor_is_reported_in_the_plan(
     catalog_snapshot: tuple[dict[str, object], Path],
+    catalog_artifacts_root: Path,
 ) -> None:
     """A published plan must not assert a quota it never met."""
     manifest, _ = catalog_snapshot
-    artifacts_root = _artifacts_root(catalog_snapshot)
+    artifacts_root = _artifacts_root(catalog_artifacts_root)
     policy = _policy(floors={"era": {"prehistoric": 2}})
     meta = plan_policy(str(manifest["catalog_id"]), policy, artifacts_root)
     assert meta["underfilled_floors"]["era"]["prehistoric"]["deficit"] == 2
@@ -280,9 +297,10 @@ def test_an_unsatisfiable_floor_is_reported_in_the_plan(
 
 def test_seed_filers_are_recorded_in_the_plan(
     catalog_snapshot: tuple[dict[str, object], Path],
+    catalog_artifacts_root: Path,
 ) -> None:
     manifest, _ = catalog_snapshot
-    artifacts_root = _artifacts_root(catalog_snapshot)
+    artifacts_root = _artifacts_root(catalog_artifacts_root)
     seeds = {"0000000019": SeedFiler(cik="0000000019", seed_group="anchor")}
     policy = _policy()
     with_seeds = plan_policy(
@@ -295,9 +313,10 @@ def test_seed_filers_are_recorded_in_the_plan(
 
 def test_policy_plan_rejects_a_policy_with_no_forms(
     catalog_snapshot: tuple[dict[str, object], Path],
+    catalog_artifacts_root: Path,
 ) -> None:
     manifest, _ = catalog_snapshot
-    artifacts_root = _artifacts_root(catalog_snapshot)
+    artifacts_root = _artifacts_root(catalog_artifacts_root)
     policy = _policy()
     policy.forms = []
     with pytest.raises(ValueError, match="at least one form"):
@@ -306,8 +325,9 @@ def test_policy_plan_rejects_a_policy_with_no_forms(
 
 def test_plan_rejects_an_unsafe_catalog_reference(
     catalog_snapshot: tuple[dict[str, object], Path],
+    catalog_artifacts_root: Path,
 ) -> None:
-    artifacts_root = _artifacts_root(catalog_snapshot)
+    artifacts_root = _artifacts_root(catalog_artifacts_root)
     with pytest.raises(ValueError, match="unsafe identifier"):
         plan_policy("../../etc", _policy(), artifacts_root)
 
@@ -325,11 +345,13 @@ def _seed_csv(path: Path, rows: list[tuple[str, str]]) -> Path:
 
 
 def test_a_policy_plan_publishes_its_normalized_seed_set(
-    catalog_snapshot: tuple[dict[str, object], Path], tmp_path: Path
+    catalog_snapshot: tuple[dict[str, object], Path],
+    tmp_path: Path,
+    catalog_artifacts_root: Path,
 ) -> None:
     """The plan carries the seed set it selected against, not a path to one."""
     manifest, _ = catalog_snapshot
-    artifacts_root = _artifacts_root(catalog_snapshot)
+    artifacts_root = _artifacts_root(catalog_artifacts_root)
     seed_path = _seed_csv(tmp_path / "seed-cik.csv", [("0000000001", "Acme")])
     policy = _policy(seed_cik_path=str(seed_path))
 
@@ -346,10 +368,12 @@ def test_a_policy_plan_publishes_its_normalized_seed_set(
 
 
 def test_editing_the_seed_csv_changes_the_plan_identity(
-    catalog_snapshot: tuple[dict[str, object], Path], tmp_path: Path
+    catalog_snapshot: tuple[dict[str, object], Path],
+    tmp_path: Path,
+    catalog_artifacts_root: Path,
 ) -> None:
     manifest, _ = catalog_snapshot
-    artifacts_root = _artifacts_root(catalog_snapshot)
+    artifacts_root = _artifacts_root(catalog_artifacts_root)
     seed_path = _seed_csv(tmp_path / "seed-cik.csv", [("0000000001", "Acme")])
 
     first = plan_policy(
@@ -368,11 +392,13 @@ def test_editing_the_seed_csv_changes_the_plan_identity(
 
 
 def test_a_seed_plan_reused_after_the_csv_changes_is_refused(
-    catalog_snapshot: tuple[dict[str, object], Path], tmp_path: Path
+    catalog_snapshot: tuple[dict[str, object], Path],
+    tmp_path: Path,
+    catalog_artifacts_root: Path,
 ) -> None:
     """The identity guard that stops a moved file silently changing a plan."""
     manifest, _ = catalog_snapshot
-    artifacts_root = _artifacts_root(catalog_snapshot)
+    artifacts_root = _artifacts_root(catalog_artifacts_root)
     seed_path = _seed_csv(tmp_path / "seed-cik.csv", [("0000000001", "Acme")])
     policy = _policy(seed_cik_path=str(seed_path))
 
@@ -390,9 +416,10 @@ def test_a_seed_plan_reused_after_the_csv_changes_is_refused(
 
 def test_a_plan_with_no_seed_file_publishes_an_empty_seed_set(
     catalog_snapshot: tuple[dict[str, object], Path],
+    catalog_artifacts_root: Path,
 ) -> None:
     manifest, _ = catalog_snapshot
-    artifacts_root = _artifacts_root(catalog_snapshot)
+    artifacts_root = _artifacts_root(catalog_artifacts_root)
     meta = plan_policy(str(manifest["catalog_id"]), _policy(), artifacts_root)
     plan_dir = resolve_filing_catalog_paths(artifacts_root).plan_dir(meta["plan_id"])
     assert read_seed_filers_csv(plan_dir / SEED_FILERS_NAME) == {}
@@ -414,10 +441,11 @@ def _advisory(plan_dir: Path) -> dict[str, object]:
 
 def test_a_floor_policy_reports_inventory_feasibility(
     catalog_snapshot: tuple[dict[str, object], Path],
+    catalog_artifacts_root: Path,
 ) -> None:
     """The report says whether the corpus could have met the quota, and by how much."""
     manifest, _ = catalog_snapshot
-    artifacts_root = _artifacts_root(catalog_snapshot)
+    artifacts_root = _artifacts_root(catalog_artifacts_root)
     meta = plan_policy(
         str(manifest["catalog_id"]),
         _policy(floors={"era": {"modern": 2, "ancient": 5}}),
@@ -439,6 +467,7 @@ def test_a_floor_policy_reports_inventory_feasibility(
 
 def test_feasibility_is_advisory_and_does_not_fail_a_plan(
     catalog_snapshot: tuple[dict[str, object], Path],
+    catalog_artifacts_root: Path,
 ) -> None:
     """An impossible floor must not turn a fresh plan into a refusal.
 
@@ -447,7 +476,7 @@ def test_feasibility_is_advisory_and_does_not_fail_a_plan(
     for failing to reach its target.
     """
     manifest, _ = catalog_snapshot
-    artifacts_root = _artifacts_root(catalog_snapshot)
+    artifacts_root = _artifacts_root(catalog_artifacts_root)
     meta = plan_policy(
         str(manifest["catalog_id"]),
         _policy(floors={"era": {"ancient": 500}}),
@@ -460,10 +489,11 @@ def test_feasibility_is_advisory_and_does_not_fail_a_plan(
 
 def test_a_policy_with_no_quotas_skips_the_inventory(
     catalog_snapshot: tuple[dict[str, object], Path],
+    catalog_artifacts_root: Path,
 ) -> None:
     """Nothing to predict, so the report says so instead of scanning."""
     manifest, _ = catalog_snapshot
-    artifacts_root = _artifacts_root(catalog_snapshot)
+    artifacts_root = _artifacts_root(catalog_artifacts_root)
     meta = plan_policy(str(manifest["catalog_id"]), _policy(), artifacts_root)
     plan_dir = resolve_filing_catalog_paths(artifacts_root).plan_dir(meta["plan_id"])
     assert _advisory(plan_dir) == {
@@ -474,9 +504,10 @@ def test_a_policy_with_no_quotas_skips_the_inventory(
 
 def test_a_composite_policy_reports_feasibility(
     catalog_snapshot: tuple[dict[str, object], Path],
+    catalog_artifacts_root: Path,
 ) -> None:
     manifest, _ = catalog_snapshot
-    artifacts_root = _artifacts_root(catalog_snapshot)
+    artifacts_root = _artifacts_root(catalog_artifacts_root)
     meta = plan_policy(
         str(manifest["catalog_id"]),
         _policy(composites=[{"filters": {"era": "modern"}, "min": 2}]),
@@ -491,6 +522,7 @@ def test_a_composite_policy_reports_feasibility(
 
 def test_an_occurrence_only_composite_is_refused_at_the_policy(
     catalog_snapshot: tuple[dict[str, object], Path],
+    catalog_artifacts_root: Path,
 ) -> None:
     """A stratum the selector could never match is refused where it is written.
 
@@ -499,7 +531,7 @@ def test_an_occurrence_only_composite_is_refused_at_the_policy(
     inside selection, naming a column rather than the policy field that caused it.
     """
     manifest, _ = catalog_snapshot
-    artifacts_root = _artifacts_root(catalog_snapshot)
+    artifacts_root = _artifacts_root(catalog_artifacts_root)
     with pytest.raises(ValueError, match="locator_features"):
         plan_policy(
             str(manifest["catalog_id"]),
@@ -510,10 +542,11 @@ def test_an_occurrence_only_composite_is_refused_at_the_policy(
 
 def test_a_sic_code_composite_is_accepted(
     catalog_snapshot: tuple[dict[str, object], Path],
+    catalog_artifacts_root: Path,
 ) -> None:
     """sic_code is locator-grain, so a composite on it is a valid policy."""
     manifest, _ = catalog_snapshot
-    artifacts_root = _artifacts_root(catalog_snapshot)
+    artifacts_root = _artifacts_root(catalog_artifacts_root)
     meta = plan_policy(
         str(manifest["catalog_id"]),
         _policy(composites=[{"filters": {"sic_code": "3571"}, "min": 1}]),

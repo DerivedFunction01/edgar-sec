@@ -11,6 +11,7 @@ import json
 from pathlib import Path
 from typing import Any
 
+import duckdb
 import pyarrow as pa
 import pyarrow.parquet as pq
 import pytest
@@ -148,8 +149,17 @@ def test_source_manifest_resolves_the_parquet_payload(
 def _multipart_manifest(sample_source: Path, root: Path, parts: int = 2) -> Path:
     """Publish a Phase 1 multipart manifest splitting the fixture into parts.
 
-    The rows are the committed fixture split by row count, so materializing this
-    and materializing the legacy single-file snapshot must agree exactly.
+    Rows are grouped **by CIK** before being cut into parts, because that is what a
+    real Phase 1 snapshot is: chunks partition the CIK index, and the merger
+    rejects a duplicate CIK across parts. The fixture deliberately carries a
+    re-fetched registrant (``0000320193`` appears twice with an identical filings
+    array one week apart), and a naive row-count split would land its two rows in
+    different parts — which the catalog's CIK-disjointness guard correctly refuses,
+    because per-shard occurrence dedup could not collapse them.
+
+    Materializing this and materializing the single-file snapshot must agree
+    exactly, and they now do for the same reason two layouts of one dataset do:
+    every CIK contributes its rows to exactly one part.
     """
     from edgar_sec.foundation.hashing import file_sha256
 
@@ -157,13 +167,21 @@ def _multipart_manifest(sample_source: Path, root: Path, parts: int = 2) -> Path
     parts_dir = payload / "parts"
     parts_dir.mkdir(parents=True)
     table = pq.read_table(sample_source)
-    per_part = max(1, -(-table.num_rows // parts))
+
+    # Keep every row of a CIK together, then distribute whole CIK groups evenly.
+    groups: dict[str, list[int]] = {}
+    for offset, cik in enumerate(table.column("cik").to_pylist()):
+        groups.setdefault(str(cik), []).append(offset)
+    ordered = [sorted(groups[cik]) for cik in sorted(groups)]
+    per_part = max(1, -(-len(ordered) // parts))
 
     entries = []
-    offset = 0
     index = 0
-    while offset < table.num_rows:
-        chunk = table.slice(offset, per_part)
+    for start in range(0, len(ordered), per_part):
+        offsets = [
+            offset for group in ordered[start : start + per_part] for offset in group
+        ]
+        chunk = table.take(pa.array(offsets, type=pa.int64()))
         path = parts_dir / f"part-{index:05d}.parquet"
         pq.write_table(chunk, path)
         entries.append(
@@ -177,7 +195,6 @@ def _multipart_manifest(sample_source: Path, root: Path, parts: int = 2) -> Path
                 "schema_version": SOURCE_SCHEMA_VERSION,
             }
         )
-        offset += per_part
         index += 1
 
     manifest = payload / "metadata.manifest.json"
@@ -356,6 +373,141 @@ def test_snapshot_layout_matches_the_documented_contract(
     assert (snapshot_dir / "snapshot.manifest.json").is_file()
 
 
+def test_one_target_shard_is_written_per_source_part(
+    tmp_path: Path, sample_source: Path
+) -> None:
+    """A multipart source yields one shard per part, in source-part order.
+
+    Sharding is what bounds memory: the catalog unnests a single source part per
+    query, so peak usage tracks the densest part rather than the whole cohort.
+    """
+    manifest_path = _multipart_manifest(sample_source, tmp_path / "art", parts=3)
+    manifest = materialize(None, tmp_path / "out", source_manifest=manifest_path)
+
+    assert manifest["source_part_count"] == 3
+    assert manifest["target_part_count"] == 3
+    assert [part["path"] for part in manifest["parts"]] == [
+        "filing_targets/part-00000.parquet",
+        "filing_targets/part-00001.parquet",
+        "filing_targets/part-00002.parquet",
+    ]
+    # Each shard records the source part it came from, so lineage is checkable
+    # without re-deriving it from the hash.
+    assert all(part["source_part"] for part in manifest["parts"])
+    assert manifest["target_row_count"] == sum(
+        part["row_count"] for part in manifest["parts"]
+    )
+
+
+def test_form_counts_sum_across_shards(tmp_path: Path, sample_source: Path) -> None:
+    """Per-shard form tallies must accumulate, not overwrite.
+
+    Reading the tally back per shard and adding is how a single-file implementation
+    got it right; the sharded loop has to accumulate explicitly or the last shard
+    silently wins.
+    """
+    manifest_path = _multipart_manifest(sample_source, tmp_path / "art", parts=3)
+    manifest = materialize(None, tmp_path / "out", source_manifest=manifest_path)
+
+    expected: dict[str, int] = {}
+    catalog_paths = resolve_filing_catalog_paths(tmp_path / "out")
+    snapshot_dir = catalog_paths.snapshot_dir(str(manifest["catalog_id"]))
+    for part in manifest["parts"]:
+        with duckdb.connect() as con:
+            rows = con.execute(
+                f"SELECT form, count(*) FROM read_parquet("
+                f"'{snapshot_dir / part['path']}') WHERE form IS NOT NULL "
+                "GROUP BY form"
+            ).fetchall()
+        for form, count in rows:
+            expected[form] = expected.get(form, 0) + int(count)
+    assert manifest["form_counts"] == expected
+
+
+def test_manifest_records_that_shards_are_not_globally_sorted(
+    catalog_snapshot: tuple[dict[str, Any], Path],
+) -> None:
+    """Ordering is declared, not implied.
+
+    Each shard is sorted by the projection key, but the shards are concatenated in
+    Phase 1 source-part order and Phase 1 publishes parts in chunk order, whose CIK
+    ranges overlap. A consumer must not read one shard's ordering as a dataset-wide
+    guarantee, so the manifest says which it is.
+    """
+    manifest, _ = catalog_snapshot
+    assert manifest["sort_order"] == "source_part_order"
+
+
+def test_each_shard_is_sorted_by_the_projection_key(
+    published_target_files: list[Path],
+) -> None:
+    for path in published_target_files:
+        keys = [
+            (row["source_cik"], row["accession"], row["document_path"])
+            for row in pq.read_table(path).to_pylist()
+        ]
+        assert keys == sorted(keys), f"{path.name} is not ordered"
+
+
+def test_a_cik_split_across_source_parts_is_refused(
+    tmp_path: Path, sample_source: Path
+) -> None:
+    """A repeated CIK landing in two parts would publish duplicate occurrence ids.
+
+    Occurrence dedup is per shard and keyed on ``source_cik``, so it can only
+    collapse duplicates it can see. Phase 1 never produces this layout — chunks
+    partition the CIK index and the merger rejects a duplicate CIK — which is
+    exactly why the catalog treats it as a guard rather than a repair: an input
+    that violates the upstream contract is refused, not silently published.
+    """
+    table = pq.read_table(sample_source)
+    # The fixture's re-fetched registrant is two rows with an identical filings
+    # array; put one in each part so the CIK genuinely spans the part boundary.
+    repeated = "0000320193"
+    rows = table.to_pylist()
+    keep = [i for i, row in enumerate(rows) if row["cik"] == repeated]
+    rest = [i for i, row in enumerate(rows) if row["cik"] != repeated]
+    assert len(keep) == 2, "fixture no longer carries a re-fetched registrant"
+
+    payload = tmp_path / "art" / "snapshots" / "snap-split"
+    parts_dir = payload / "parts"
+    parts_dir.mkdir(parents=True)
+    entries = []
+    for index, offsets in enumerate([rest + keep[:1], keep[1:]]):
+        path = parts_dir / f"part-{index:05d}.parquet"
+        pq.write_table(table.take(pa.array(offsets, type=pa.int64())), path)
+        entries.append(
+            {
+                "path": f"parts/{path.name}",
+                "part_index": index,
+                "source": f"chunk:{index}",
+                "row_count": len(offsets),
+                "byte_count": path.stat().st_size,
+                "sha256": file_sha256(path),
+                "schema_version": SOURCE_SCHEMA_VERSION,
+            }
+        )
+    manifest_path = payload / "metadata.manifest.json"
+    manifest_path.write_text(
+        json.dumps(
+            {
+                "manifest_version": "2.0.0",
+                "snapshot_id": "snap-split",
+                "output_path": "",
+                "artifact_sha256": "",
+                "row_count": table.num_rows,
+                "part_count": len(entries),
+                "parts": entries,
+                "schema_version": SOURCE_SCHEMA_VERSION,
+            }
+        ),
+        encoding="utf-8",
+    )
+
+    with pytest.raises(CatalogError, match="share CIKs"):
+        materialize(None, tmp_path / "out", source_manifest=manifest_path)
+
+
 def test_published_targets_match_the_declared_schema(
     published_targets: pa.Table,
 ) -> None:
@@ -505,11 +657,6 @@ def test_null_size_and_xbrl_flags_are_coalesced(
         assert row["reported_size"] is not None
         for column in _BOOL_COLUMNS:
             assert isinstance(row[column], bool)
-
-
-def test_source_batch_size_is_validated(tmp_path: Path, sample_source: Path) -> None:
-    with pytest.raises(ValueError, match="source_batch_size must be >= 1"):
-        materialize(sample_source, tmp_path / "out", source_batch_size=0)
 
 
 def test_materialization_is_deterministic(tmp_path: Path, sample_source: Path) -> None:
