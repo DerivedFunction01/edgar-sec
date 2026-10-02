@@ -37,3 +37,8 @@ def test_form_20f_derived_lookups() -> None:
     assert "early_items" in FORM_20F_DERIVED
     assert "late_items" in FORM_20F_DERIVED
     assert "matcher" in FORM_20F_DERIVED
+    assert "ITEM 1" in FORM_20F_DERIVED["early_items"]
+    assert "ITEM 16J" in FORM_20F_DERIVED["late_items"]
+    assert "ITEM 16K" in FORM_20F_DERIVED["late_items"]
+    assert FORM_20F_DERIVED["late_item_re"].search("ITEM 16K. Cybersecurity")
+    assert FORM_20F_DERIVED["late_item_re"].search("ITEM 16J. Insider Trading Policies")

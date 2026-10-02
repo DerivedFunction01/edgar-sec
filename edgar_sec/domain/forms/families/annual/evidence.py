@@ -5,6 +5,11 @@ from __future__ import annotations
 import re
 from dataclasses import dataclass, field
 
+from edgar_sec.domain.forms.common.forward_looking import (
+    FORWARD_LOOKING_PHRASES,
+    FORWARD_LOOKING_TERMS,
+    FORWARD_LOOKING_VERBS,
+)
 from edgar_sec.foundation.regex.builder import build_alternation
 from edgar_sec.foundation.text.automaton import CaseMode
 from edgar_sec.foundation.text.evidence import EvidenceTier, LexicalEvidencePack
@@ -70,21 +75,10 @@ PUBLIC_FLOAT_PHRASES: tuple[str, ...] = (
     "non-affiliates",
 )
 
-SHARES_PHRASES: tuple[str, ...] = (
-    "indicate the number of shares outstanding of each of the registrant's classes of common stock",
-    "indicate the number of shares outstanding of each of the issuer's classes of common stock",
-    "indicate the number of shares outstanding of each of the registrant's classes of common stock as of",
-    "indicate the number of shares outstanding of each of the issuer's classes of common stock as of",
-    "indicate the number of shares outstanding of each of the registrant's classes of common equity",
-    "indicate the number of shares outstanding of each of the issuer's classes of common equity",
-    "number of shares of common stock outstanding",
-    "shares of common stock outstanding",
-    "number of shares of common stock",
-    "number of shares outstanding",
-    "shares of the issuer",
-    "par value outstanding",
-    "shares outstanding",
-)
+from edgar_sec.domain.forms.common.rules import COMMON_SHARES_RULES
+from edgar_sec.domain.forms.common.vocabulary import COMMON_SHARES_PHRASES
+
+SHARES_PHRASES: tuple[str, ...] = COMMON_SHARES_PHRASES
 
 # Decisive annual body phrases: one distinct phrase hit confirms body prose.
 # Includes phrases that are specific to audit-opinion paragraphs (10-K/A filings
@@ -148,7 +142,7 @@ ANNUAL_BODY_STRONG_TERMS: tuple[str, ...] = (
     "competition",
 )
 
-ANNUAL_BODY_VERBS: tuple[str, ...] = (
+ANNUAL_BUSINESS_VERBS: tuple[str, ...] = (
     "provides",
     "operates",
     "manufactures",
@@ -156,9 +150,11 @@ ANNUAL_BODY_VERBS: tuple[str, ...] = (
     "develops",
     "distributes",
     "manages",
-    "expects",
-    "believes",
-    "anticipates",
+)
+
+ANNUAL_BODY_VERBS: tuple[str, ...] = (
+    *ANNUAL_BUSINESS_VERBS,
+    *FORWARD_LOOKING_VERBS[:5],
 )
 
 ANNUAL_BODY_WEAK_TERMS: tuple[str, ...] = (
@@ -175,24 +171,7 @@ ANNUAL_BODY_WEAK_TERMS: tuple[str, ...] = (
     "network",
 )
 
-ANNUAL_BODY_FORWARD_TERMS: tuple[str, ...] = (
-    "forward",
-    "looking",
-    "actual",
-    "results",
-    "materially",
-    "risks",
-    "differ",
-    "uncertainties",
-    "believe",
-    "expect",
-    "anticipate",
-    "estimate",
-    "intend",
-    "following",
-    "certain",
-    "may",
-)
+ANNUAL_BODY_FORWARD_TERMS: tuple[str, ...] = FORWARD_LOOKING_TERMS
 
 ANNUAL_BODY_HEADER_TERMS: tuple[str, ...] = (
     "business",
@@ -356,18 +335,7 @@ SHARES_VALUE_RE = re.compile(
 )
 
 # Phrase sequence healing rules
-_SHARES_RULES: list[PhraseSequenceRule] = [
-    PhraseSequenceRule(
-        name="shares_outstanding_caption",
-        tokens=SHARES_PHRASES[2].split(),
-        anchor=["shares outstanding", "common stock"],
-    ),
-    PhraseSequenceRule(
-        name="shares_common_stock_outstanding",
-        tokens=SHARES_PHRASES[3].split(),
-        anchor=["shares", "outstanding"],
-    ),
-]
+_SHARES_RULES: list[PhraseSequenceRule] = list(COMMON_SHARES_RULES)
 
 _PUBLIC_FLOAT_RULES: list[PhraseSequenceRule] = [
     PhraseSequenceRule(
@@ -445,11 +413,6 @@ class AnnualReportEvidence:
     """Evidence specific to annual and foreign annual reports."""
 
     incorporated_reference_terms: tuple[str, ...] = INCORPORATED_REFERENCE_TERMS
-    cover_end_signals: tuple[str, ...] = (
-        "table of contents",
-        "part i",
-        "item 1",
-    )
     shape_terms: tuple[str, ...] = (
         *PUBLIC_FLOAT_PHRASES,
         *SHARES_PHRASES,
@@ -485,11 +448,7 @@ class AnnualReportEvidence:
     semantic_headings: tuple[str, ...] = (
         "management's discussion and analysis",
         "risk factors",
-        "forward-looking statements",
-        "forward looking statements",
-        "forward looking information",
-        "forward-looking information",
-        "safe harbor",
+        *FORWARD_LOOKING_PHRASES,
         "quantitative and qualitative disclosures",
         "properties",
         "legal proceedings",
@@ -528,6 +487,7 @@ __all__ = [
     "ANNUAL_BODY_STRONG_TERMS",
     "ANNUAL_BODY_VERBS",
     "ANNUAL_BODY_WEAK_TERMS",
+    "ANNUAL_BUSINESS_VERBS",
     "ANNUAL_COVER_EXCLUSION_TERMS",
     "ANNUAL_REPORT_TITLES",
     "ANNUAL_TARGET_EXHIBITS",

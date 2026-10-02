@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from edgar_sec.domain.forms.families.current_report.taxonomy import (
+from edgar_sec.domain.forms.families.current.taxonomy import (
     FORM_8K_DERIVED,
     FORM_8K_ITEMS,
     ITEMS,

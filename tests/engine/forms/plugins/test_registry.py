@@ -10,8 +10,8 @@ from edgar_sec.engine.forms.plugins.base import (
     evaluate_generic,
 )
 from edgar_sec.engine.forms.plugins.evaluators.annual import evaluate_annual
-from edgar_sec.engine.forms.plugins.evaluators.current_report import (
-    evaluate_current_report,
+from edgar_sec.engine.forms.plugins.evaluators.current import (
+    evaluate_current,
 )
 from edgar_sec.engine.forms.plugins.evaluators.quarterly import evaluate_quarterly
 from edgar_sec.engine.forms.plugins.registry import (
@@ -73,7 +73,7 @@ def test_current_report_gates_both_stages_off() -> None:
     assert plugin.family == "8-K"
     assert plugin.enable_toc is False
     assert plugin.enable_body_start is False
-    assert plugin.evaluator is evaluate_current_report
+    assert plugin.evaluator is evaluate_current
 
 
 @pytest.mark.parametrize(

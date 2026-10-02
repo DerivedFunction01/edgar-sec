@@ -90,9 +90,9 @@ class BlockStream:
     def __getitem__(self, index: int) -> DocumentBlock:
         return self.blocks[index]
 
-    def to_text(self) -> str:
-        """Materialize full plain-text document."""
-        return "\n\n".join(b.text for b in self.blocks if b.text)
+    def to_full_text(self, block_separator: str = "\n\n") -> str:
+        """Reconstruct full document text by joining block texts."""
+        return block_separator.join(b.text for b in self.blocks if b.text)
 
     def filter_kind(self, kind: BlockKind) -> tuple[DocumentBlock, ...]:
         return tuple(b for b in self.blocks if b.kind == kind)
@@ -106,9 +106,9 @@ Only universal invariants are held in the base root; secondary exhibits and raw 
 from dataclasses import dataclass, field
 from typing import Optional, Mapping, Any
 from edgar_sec.domain.identity import Cik, AccessionNumber
-from edgar_sec.domain.document.locator import DocumentLocator
+from edgar_sec.domain.document.models import DocumentLocator
 from edgar_sec.domain.document.blocks import BlockStream
-from edgar_sec.domain.forms.decisions import EvaluatorDecision
+from edgar_sec.domain.forms.common.decisions import EvaluatorDecision
 
 @dataclass(frozen=True, slots=True)
 class FilingAttachment:
@@ -178,9 +178,8 @@ class FilingAggregate:
 
     def as_report(self) -> "FormReport":
         """Polymorphic projection into specialized form report model (inspired by edgartools filing.obj())."""
-        from edgar_sec.engine.forms.registry import get_form_plugin
-        plugin = get_form_plugin(self.form)
-        return plugin.build_report(self)
+        from edgar_sec.domain.forms.reports import get_report_projection
+        return get_report_projection(self)
 ```
 
 ### 2.3 Polymorphic Form Projections (`domain/forms/reports.py`)
@@ -191,7 +190,7 @@ Putting `sections` or form-specific fields directly onto `FilingAggregate` would
 - **`FilingAggregate` is the sole owner of all filing submission artifacts**: the primary document, attachments/exhibits collections, SGML envelopes, and optional `xbrl` interactive data packages.
 - **`FormReport` is a view/projection over `FilingAggregate`**: it holds `filing: FilingAggregate` and provides form-family specific accessors. It does **not** duplicate `xbrl` or exhibit collections; it accesses them via delegation to `self.filing`.
 
-#### Shared Base: `CompanyReport`
+#### Form Projections: `FormReport` & `CompanyReport`
 `AnnualReport` (10-K), `QuarterlyReport` (10-Q), and `CurrentReport` (8-K) are all corporate periodic/event reports that share similar structural concepts (Item/Section bookmarks, Item text/markdown extraction, exhibit lookups). They inherit from a common `CompanyReport` base:
 
 ```python
@@ -369,75 +368,70 @@ WHERE sec.item_code = '1A';
 Forms register with an inversion-of-control registry. Each plugin owns its structural validation and returns a decision instructing the storage runner what acquisition scope is required.
 
 ```python
-from enum import Enum
-from typing import Protocol, Optional
+from enum import StrEnum
+from dataclasses import dataclass
+from typing import Optional, Callable
 
-class DecisionAction(str, Enum):
-    ACCEPT = "accept"                     # Primary document satisfies form requirements (98% of cases)
-    REFETCH_EXHIBIT = "refetch_exhibit"   # Need targeted exhibits (e.g. EX-13, EX-21 subsidiaries, EX-10)
-    REFETCH_BUNDLE = "refetch_bundle"     # Need full SGML bundle (.txt) (archival or Sequence 1 inversion)
-    REFETCH_SUMMARY_XML = "refetch_summary_xml"  # Need FilingSummary.xml (statement maps)
-    SKIP = "skip"                         # Corrupted, truncated, or unparseable stub
+class DecisionAction(StrEnum):
+    PROCEED = "proceed"                    # Primary document satisfies form requirements
+    REFETCH_SUB_DOC = "refetch_sub_doc"    # Need targeted exhibit (e.g. EX-13 incorporation stub)
+    SKIP_HARD_STUB = "skip_hard_stub"      # Corrupted, truncated, or unparseable stub
 
 @dataclass(frozen=True, slots=True)
-class RefetchDecision:
+class EvaluatorDecision:
     action: DecisionAction
-    target_exhibit_types: tuple[str, ...] = ()  # e.g. ("EX-13", "EX-21.1")
-    target_urls: tuple[str, ...] = ()           # Direct explicit URLs if known
+    target_exhibit: Optional[str] = None   # e.g. "ex13.htm" or "EX-13"
     reason: Optional[str] = None
+    is_stub: bool = False
+    category: str = "standard"
+    confidence: float = 1.0
 
-class FormPlugin(Protocol):
-    @property
-    def family(self) -> str: ...
-    @property
-    def aliases(self) -> tuple[str, ...]: ...
-    
-    def evaluate(self, filing: FilingAggregate) -> RefetchDecision: ...
-    def normalize(self, doc: BlockStream) -> BlockStream: ...
-    def build_report(self, filing: FilingAggregate) -> FormReport: ...
+# Evaluator SPI is a pure text-to-decision callable:
+Evaluator = Callable[[str], EvaluatorDecision]
 ```
 
-#### Example: Research Pipeline Injecting a Custom Evaluator
-Because blobs in `edgar_sec` are content-addressed by `doc_id = sha256(accession + ":" + document_path)`, storing additional exhibits or full bundles requires zero storage schema changes:
+#### Pluggable Form Evaluators & Delegation
+Because documents in `edgar_sec` are content-addressed by `document_locator_key = sha256(accession + ":" + document_path)`, storing additional exhibits, recovering inverted primaries, or delegating stubs requires zero storage schema changes:
 
 ```python
-from edgar_sec.engine.forms.protocols import FormEvaluator
-from edgar_sec.domain.document.aggregate import FilingAggregate
-from edgar_sec.engine.forms.decisions import DecisionAction, RefetchDecision
+from edgar_sec.domain.forms.common.decisions import DecisionAction, EvaluatorDecision
 
-class CorporateGraphEvaluator(FormEvaluator):
-    """Custom evaluator fetching Form 10-K primary documents AND Exhibit 21 (Subsidiaries)."""
-    def evaluate(self, filing: FilingAggregate) -> RefetchDecision:
-        if "EX-21" not in filing.exhibits and "EX-21.1" not in filing.exhibits:
-            return RefetchDecision(
-                action=DecisionAction.REFETCH_EXHIBIT,
-                target_exhibit_types=("EX-21", "EX-21.1"),
-                reason="Extracting global corporate ownership graph"
-            )
-        return RefetchDecision(action=DecisionAction.ACCEPT)
+def custom_exhibit_evaluator(text: str) -> EvaluatorDecision:
+    """Example evaluator checking for specific statutory delegation triggers."""
+    if "incorporated by reference to Exhibit 13" in text:
+        return EvaluatorDecision(
+            action=DecisionAction.REFETCH_SUB_DOC,
+            target_exhibit="EX-13",
+            reason="Financial statements incorporated by reference from Annual Report to Security Holders",
+            is_stub=True,
+        )
+    return EvaluatorDecision(action=DecisionAction.PROCEED)
 ```
 
 ---
 
-### Blueprint C: Sequence 1 Exhibit Inversion Recovery
-When filers uploaded exhibit attachments before the primary form in pre-2005 EDGAR submissions, the SEC's API erroneously recorded Sequence 1 (`ex231.txt`, `amendedarticles.txt`) as `primaryDocument`.
+### Blueprint C: Sequence 1 Exhibit Inversion Recovery & Dual-Write
+When filers uploaded exhibit attachments before the primary form in pre-2005 EDGAR submissions (2000–2004), the SEC automated submission feed recorded Sequence 1 (`ex21.txt`, `exhibit16.txt`) as `primaryDocument`.
 
 #### Detection & Recovery Protocol:
-1. **Evaluator Detection**: The Form 10-K evaluator detects the absence of the statutory Form 10-K SEC masthead and the presence of exhibit cues (`RE_EXHIBIT_START`).
-2. **Refetch Trigger**: The evaluator returns `RefetchDecision(action=REFETCH_BUNDLE, reason="Sequence 1 exhibit inversion detected")`.
-3. **Delegation**: The pipeline fetches `<accession>.txt` via the managed rate limiter, unpacks the SGML documents, locates the true primary Form 10-K document (the document with `TYPE: 10-K`), and resumes normalization.
+1. **Transport / Unpacker Seam**: When a pre-2005 filing's target link points to an exhibit, the fetcher promotes the target to the accession bundle `<accession>.txt`.
+2. **Form-Typed Tier 1 Unpacking**: `unpacker.extract_target_sub_document` locates the true primary form matching `target_types=(form, form/A)` (e.g. `10-K`, `10-Q`, `8-K`).
+3. **Dual-Write Storage**: The worker normalizes both the recovered primary document and the original exhibit, writing:
+   - Recovered primary form under `document_locator_key = sha256(acc + ":" + primary_path)` (`role: "primary"`).
+   - Original exhibit under `document_locator_key = sha256(acc + ":" + exhibit_path)` (`role: "exhibit"`, `parent_locator_key`).
+   This satisfies the target plan's original locator key while preserving the normalized exhibit.
 
 ---
 
-### Blueprint D: The No-Cover Reflow Contract
-Periodic forms (10-K, 10-Q, 20-F) require cover boundary detection, checkmark inference, and TOC exclusion before prose reflow.
-Conversely, **exhibits and event filings (8-K, 6-K, GENERIC) have no cover pages**.
+### Blueprint D: Cover Boundary Profiles vs Unsegmented (Zero-Boundary) Reflow Contract
+While periodic reports (10-K, 10-Q, 20-F) and current event reports (8-K, 6-K) possess statutory SEC cover pages (SEC mastheads, registrant headers, checkmarks) and execute active cover boundary detection before prose reflow, **unspecialized forms (`GENERIC`) and standalone exhibits operate under unsegmented zero-boundary profiles (`profile.boundary is None`)**:
 
-1. **Explicit Zero Boundary**:
-   - `cover_boundary.start_line = 0`, `cover_boundary.end_line = 0`, `method = DISABLED`.
-   - `body_start_line = 0`.
-2. **Reflow Gating**:
-   - Documents under no-cover profiles execute `reflow_ascii` starting directly from **line 0**, unwrapping hardwrapped paragraphs across the entire file without searching for non-existent Item headings.
+1. **Current Reports (8-K, 6-K) Cover Pages**:
+   - Form 8-K and Form 6-K possess statutory SEC cover pages with dedicated profiles (`build_current_profile("8-K")`, `generic_6k`) detecting cover headers and item event / signature boundaries. Reflow begins at their detected `body_start_line`.
+2. **Explicit Zero Boundary for No-Cover Profiles**:
+   - Standalone exhibits (`EX-13`, `EX-99`) and unspecialized forms (`GENERIC`) declare no cover boundary (`profile.boundary is None` or `body_start_line = 0`).
+3. **Reflow Gating**:
+   - Documents under zero-boundary profiles execute `reflow_ascii` starting directly from **line 0 to EOF**, unwrapping hardwrapped paragraphs across the entire file without searching for non-existent Item headings.
 
 ---
 
@@ -493,13 +487,13 @@ flowchart LR
   - Relational table extraction (cell-grain Parquet dataset).
   - Unpopulated extension slot on `FilingAggregate` for optional `*-xbrl.zip` processing.
 
-# Phase 2.5 Execution Lifecycle & Sparse Aggregate Architecture
-
-Comprehensive specification and operational diagrams for taking an SEC filing link, acquiring, normalizing, triaging, recovering exhibits, populating the `FilingAggregate`, and persisting to Parquet/SQLite.
-
 ---
 
-## 1. End-to-End System Flow (From Link to Storage)
+## 5. Phase 2.5 Execution Lifecycle & Sparse Aggregate Architecture
+
+Comprehensive operational specifications and execution diagrams for taking an SEC filing link, acquiring, normalizing, triaging, recovering exhibits, populating the `FilingAggregate`, and persisting to Parquet/SQLite.
+
+### 5.1 End-to-End System Flow (From Link to Storage)
 
 ```mermaid
 flowchart TD
@@ -507,7 +501,9 @@ flowchart TD
     Link["1. Target Link / Locator<br/>(from Phase 02 Target Plan)"] --> Fetch["2. Document Acquisition<br/>(SecBroker: 8 RPS / Fixture CAS)"]
     
     %% Raw Payload Triage
-    Fetch --> IsSGML{"Payload is SGML<br/>Submission Envelope?"}
+    Fetch --> IsPre2005Exhibit{"Pre-2005 Target<br/>is Exhibit Name?"}
+    IsPre2005Exhibit -- Yes --> FetchBundle["Promote to <accession>.txt<br/>Submission Bundle"] --> UnpackSGML
+    IsPre2005Exhibit -- No --> IsSGML{"Payload is SGML<br/>Submission Envelope?"}
     
     %% SGML Branch
     IsSGML -- Yes --> UnpackSGML["Unpack SGML Sub-Documents<br/>(Match Expected Form vs Seq 1)"]
@@ -518,15 +514,15 @@ flowchart TD
     
     %% Profile & Boundary
     Preprocess --> ProfileCheck{"Form Profile Selection"}
-    ProfileCheck -- "Annual Profile<br/>(10-K, 10-KSB, 20-F)" --> CoverDet["Cover Boundary Detection<br/>(Masthead, Checkmarks, TOC exclusion)<br/>body_start_line > 0"]
-    ProfileCheck -- "Other Periodic / Event<br/>(10-Q, 8-K, 6-K, GENERIC, EXHIBIT)" --> NoCover["Explicit Zero Boundary<br/>(start=0, end=0, DISABLED)<br/>body_start_line = 0"]
+    ProfileCheck -- "Cover Profiles<br/>(10-K, 10-Q, 20-F, 8-K, 6-K)" --> CoverDet["Cover Boundary Detection<br/>(Masthead, Checkmarks, TOC/Item anchors)<br/>body_start_line > 0"]
+    ProfileCheck -- "No-Cover Profiles<br/>(GENERIC, Exhibits)" --> NoCover["Explicit Zero Boundary<br/>(profile.boundary is None)<br/>body_start_line = 0"]
     
     %% Normalization & Reflow
     CoverDet --> Reflow["4. Table Protection & Reflow<br/>- Protect Table Grids<br/>- Unwrap hardwrapped prose<br/>(Start from body_start_line)"]
     NoCover --> Reflow
     
     %% 1D Block Stream
-    Reflow --> BlockStream["5. Emit 1D BlockStream<br/>(PARAGRAPH, TABLE, PRESERVED, PAGE_BREAK)"]
+    Reflow --> BlockStream["5. Normalized Document Stream<br/>(Emits normalized_text & structural metadata)"]
     
     %% Evaluator Dispatch Seam
     BlockStream --> EvalDispatch{"6. Form Evaluator Dispatch<br/>(plugin = get_plugin(form))"}
@@ -539,22 +535,19 @@ flowchart TD
     %% Specific Form 10-K Annual Evaluator Branch
     EvalDispatch -- "Form 10-K / AnnualEvaluator" --> Ev10K{"10-K Specific Triage"}
     
-    Ev10K -- "ACCEPT / PROCEED<br/>(Complete 10-K)" --> PopBase["7. Populate FilingAggregate<br/>(primary_document populated,<br/>exhibits empty)"]
+    Ev10K -- "PROCEED<br/>(Complete 10-K)" --> PopBase["7. Populate Snapshot Row<br/>(Primary text + metadata JSON)"]
     
-    Ev10K -- "REFETCH_SUB_DOC<br/>(Exhibit 13 Delegation Stub)" --> DelegEx13["8a. Second Pass: Fetch EX-13<br/>- Resolve from bundle/URL<br/>- Normalize with No-Cover profile<br/>- Store in aggregate.attachments['EX-13']"]
+    Ev10K -- "REFETCH_SUB_DOC<br/>(Exhibit 13 Delegation Stub)" --> DelegEx13["8. Second Pass: Fetch EX-13<br/>- Resolve from bundle/URL<br/>- Normalize with No-Cover profile<br/>- Dual-write companion exhibit row"]
     
-    Ev10K -- "REFETCH_BUNDLE<br/>(Seq 1 Exhibit Inversion)" --> RecoverInv["8b. Second Pass: Inversion Recovery<br/>- Fetch <accession>.txt bundle<br/>- Extract true TYPE: 10-K<br/>- Swap into primary_document<br/>- Demote original to exhibits"]
-    
-    Ev10K -- "SKIP<br/>(Corrupt / Hard Stub)" --> PopSkip["Record Skipped / Failed<br/>in Checkpoint"]
+    Ev10K -- "SKIP_HARD_STUB<br/>(Corrupt / Hard Stub)" --> PopSkip["Record Skipped / Failed<br/>in Checkpoint"]
     
     Ev8K --> PopBase
     Ev10Q --> PopBase
     EvGen --> PopBase
     DelegEx13 --> PopBase
-    RecoverInv --> PopBase
     
     %% Storage & Checkpointing
-    PopBase --> StageStore["9. Atomic Persistence<br/>- Write StagedParquetWriter checkpoint<br/>- Store SQLite CAS blobs (doc_id)<br/>- Heap Reclaim (every 64 docs)"]
+    PopBase --> StageStore["9. Atomic Persistence<br/>- 14-Column DOCUMENT_SNAPSHOT_SCHEMA<br/>- Store SQLite CAS blobs (doc_id)<br/>- Heap Reclaim (every 64 docs)"]
     PopSkip --> StageStore
     
     StageStore --> Commit["10. Coordinator Merge<br/>- Validate chunk Parquets<br/>- DuckDB sorted COPY to final snapshot"]
@@ -562,7 +555,7 @@ flowchart TD
 
 ---
 
-## 2. Detailed Step-by-Step Lifecycle
+### 5.2 Detailed Step-by-Step Lifecycle
 
 ### Step 1: Input Specification (Phase 02 Target Link)
 Each work unit enters from `filing_targets.parquet`:
@@ -583,14 +576,15 @@ Each work unit enters from `filing_targets.parquet`:
 - If payload is raw HTML or plain text:
   - Bypasses unpacking; passes directly to preprocessor.
 
-### Step 4: Preprocessing & Profile Selection
-- **Preprocessor**:
+### Step 4: Preprocessing, Profile Selection & Form-Aware XML Validity
+- **Preprocessor & Form-Aware XML Validity**:
   - Strips outer envelope SGML headers.
   - Normalizes ASCII/UTF-8 character encodings.
   - Detects page marker comments (`<PAGE>`, form feeds).
+  - **Form-Aware XML Validation**: `.xml` files are valid primary documents for XML-native forms (e.g. `FORM TYPE: 144`, `Form 4`, `Form 3`, `Form 13F`), decoded without being skipped as non-text and recorded with `representation: "xml"`. For narrative periodic/current corporate reports (10-K, 10-Q, 8-K, 6-K), `.xml` files represent ancillary metadata/XBRL linkbases and are filtered out in favor of narrative HTML/ASCII text.
 - **Profile Selection**:
-  - **Cover Profiles** (`10-K`, `10-KSB`, `20-F`): Runs regex-based cover boundary detector to identify SEC masthead, checkmark grids, and TOC anchors. Sets `body_start_line > 0`.
-  - **No-Cover Profiles** (`GENERIC`, `8-K`, `6-K`, `10-Q`, `EXHIBIT`): Cover boundary is explicitly disabled (`start_line=0, end_line=0, method=DISABLED`). Sets `body_start_line = 0`.
+  - **Cover Profiles** (`10-K`, `10-KSB`, `10-Q`, `20-F`, `8-K`, `6-K`): Runs cover boundary detection. Periodic reports (10-K, 10-Q, 20-F) detect masthead, checkmarks, and TOC/Part I anchors. Current reports (8-K, 6-K) detect statutory SEC cover mastheads, registrant metadata, and item event / signature boundaries. Sets `body_start_line > 0`.
+  - **Zero-Boundary Profiles** (`GENERIC`, standalone exhibits): Cover boundary is explicitly unsegmented (`profile.boundary is None`). Sets `body_start_line = 0`.
 
 ### Step 5: Table Protection & Reflow
 - **Table Preservation**: Untagged ASCII table borders (columns, spacing) and HTML `<table>` elements are locked into preformatted boundaries.
@@ -603,47 +597,54 @@ Each work unit enters from `filing_targets.parquet`:
 
 ### Step 6: Evaluator Triage Architecture (Generic vs Form-Specific)
 
-Document triage operates through a pluggable SPI dispatch (`plugin = get_plugin(locator.form)`):
+Document triage operates through a pluggable SPI dispatch (`plugin = get_plugin(locator.form)`), strictly separating **form-agnostic link behavior** from **Form 10-K statutory delegation**:
 
-#### 6.1 Generic Form & Company Report Evaluation
-The default contract across all ~500 SEC forms is lightweight and conservative:
-1. **Unmodeled Forms & Fallback (`plugin.evaluator is None`)**:
-   - Proceeds unconditionally with `decision = None`. The primary document is stored as-is without stub delegation.
-2. **Current Reports (`Form 8-K`, `CurrentReportEvaluator`)**:
-   - An 8-K is an event report and has no annual report or Exhibit 13 to delegate to.
-   - Evaluator proceeds unconditionally with `DecisionAction.PROCEED`, `category="standard_full"`, `confidence=1.0`.
-3. **Quarterly Reports (`Form 10-Q`, `QuarterlyReportEvaluator`)**:
-   - Fast paths: Post-2011 XBRL mandate (`post_2011_xbrl_full`) and payload size ceiling checks (`ASCII_SIZE_CEILING = 300_000`, `HTML_SIZE_CEILING = 750_000`).
-   - Normal text evaluation proceeds with `DecisionAction.PROCEED`, `category="standard_full"`.
+#### 6.1 Generic Link-Level & Form-Agnostic Contracts (All Forms: 10-K, 10-Q, 8-K, Generic)
+Based on empirical analysis across 3,191,541 filings, the following triage rules apply generically across all form families:
+1. **Monolithic Bundle Unpacking (Pre-2000 Era: 1993–1999)**:
+   - 100% of filings are submitted as `<accession>.txt`. Unpacking generically inspects `<DOCUMENT>` records and extracts the sub-document where `sub_doc.type.upper() == expected_form.upper()` (e.g. `10-K`, `10-Q`, `8-K`).
+2. **Modern Direct Acceptance (Post-2005 Era: 2005–present)**:
+   - Modernized EDGARLink eliminated sequence displacement (**0.0% true sequence inversions** across 3.19M filings). Any target link (even with exhibit-like names like `bylawamendment.htm` or `ex99-1.htm`) is officially registered as Sequence 1 with the primary form type. All post-2005 targets unconditionally `PROCEED`.
+3. **Pre-2005 Sequence 1 Exhibit Inversion Recovery (2000–2004 Legacy Anomaly)**:
+   - When a pre-2005 filing's target link points to an exhibit (`ex*.txt`, `ex*.htm`), the fetcher promotes the fetch to the submission bundle `<accession>.txt`.
+   - Form-typed Tier 1 unpacking (`unpacker.extract_target_sub_document`) extracts the true primary form matching `target_types=(form, form/A)`.
+   - The worker dual-writes **both** the recovered primary document (`role: "primary"`) and the original exhibit (`role: "exhibit"`, `parent_locator_key`).
+4. **Current Reports (`Form 8-K`, `CurrentReportEvaluator`)**:
+   - Event reports have no statutory incorporation-by-reference stubs or Exhibit 13. Evaluates directly with `DecisionAction.PROCEED`, `category="standard_full"`.
+5. **Quarterly Reports (`Form 10-Q`, `QuarterlyReportEvaluator`)**:
+   - Complete interim reports; checks post-2011 XBRL mandate or size ceilings and evaluates with `DecisionAction.PROCEED`, `category="standard_full"`.
+6. **Unmodeled Forms & Fallback (`plugin.evaluator is None`)**:
+   - Proceeds unconditionally with `decision = None`.
 
-#### 6.2 Specific Form 10-K Annual Evaluator (`AnnualEvaluator`)
-The Form 10-K family is uniquely subject to historical delegation stubs and pre-2005 sequence inversions:
-1. **Sequence 1 Exhibit Inversion Detection**:
-   - Condition: First 3,000 characters match `_RE_EXHIBIT_START` AND lack `_RE_10K_HEADER`.
-   - Decision: `REFETCH_BUNDLE` (target: `"10-K"`, category: `"exhibit_primary_inversion"`).
-2. **Exhibit 13 Financial Delegation Stub**:
-   - Condition: Windowed anchor scan identifies Item 7/8 explicitly incorporating financial statements by reference from Exhibit 13.
+#### 6.2 Form 10-K Specific Statutory Evaluator (`AnnualEvaluator`)
+Only Form 10-K (and 10-KSB / 20-F) contains statutory Item 7 / Item 8 incorporation-by-reference provisions:
+1. **Exhibit 13 Financial Delegation Stub**:
+   - Condition: SEC Form 10-K rules allow filers to issue an abbreviated glossy wrap and incorporate MD&A (Item 7) and Financial Statements (Item 8) by reference from **Exhibit 13** (Annual Report to Security Holders).
+   - Windowed anchor scan identifies the incorporation clause in Item 7/8.
    - Decision: `REFETCH_SUB_DOC` (target: `"EX-13"`).
+2. **Cover Boundary & Part I TOC Exclusion**:
+   - Only Form 10-K (and 10-KSB / 20-F / 10-Q) parses complex cover mastheads and corporate checkmark tables (`body_start_line > 0`) to locate statutory Part I. (Forms 8-K and 6-K detect cover mastheads transitioning to event items/signatures, while GENERIC and standalone exhibits use the No-Cover profile: line 0 to EOF).
 3. **Self-Contained Standard**:
    - Condition: Complete 10-K document (or post-2011 XBRL mandate).
-   - Decision: `ACCEPT` (`is_stub = False`, `category = "standard_full"`).
+   - Decision: `PROCEED` (`is_stub = False`, `category = "standard_full"`).
 
 ---
 
-### Step 7: Second Pass Delegation Execution (Annual Report Recovery)
-- **Case A: Sequence 1 Inversion Recovery (`10-K` only)**:
+### Step 7: Second Pass Delegation Execution
+
+- **Case A: Sibling Sequence Inversion Recovery (Generic across forms, 2000–2004)**:
   1. Pipeline fetches full `<accession>.txt` submission bundle.
-  2. Unpacks sub-documents searching specifically for `TYPE: 10-K` (or `10KSB`, `10-K/A`).
-  3. Re-runs normalization on the true Form 10-K text $\rightarrow$ assigns to `primary_document`.
-  4. Stores the original mislabeled exhibit (e.g. `ex231.txt`) into `attachments["EX-23.1"]`.
-- **Case B: Exhibit 13 Financial Delegation (`10-K` only)**:
-  1. Resolves Exhibit 13 filename from bundle or filing index.
+  2. Unpacks sub-documents searching specifically for `TYPE: {expected_form}` (e.g. `10-K`, `10-Q`, `8-K`).
+  3. Re-runs normalization on the true form text $\rightarrow$ assigns to `primary_document`.
+  4. Stores the original mislabeled exhibit into `attachments`.
+- **Case B: Exhibit 13 Financial Delegation (Form 10-K Specific)**:
+  1. Resolves Exhibit 13 filename from bundle or filing directory index.
   2. Normalizes Exhibit 13 under No-Cover profile (`body_start_line = 0`).
   3. Stores normalized Exhibit 13 into `attachments["EX-13"]`.
 
 ---
 
-## 3. How `FilingAggregate` is Populated
+### 5.3 How `FilingAggregate` is Populated
 
 ```mermaid
 classDiagram
@@ -680,7 +681,7 @@ classDiagram
 
     class BlockStream {
         +tuple~DocumentBlock~ blocks
-        +to_text() str
+        +to_full_text() str
         +filter_kind(kind) tuple
     }
 
@@ -712,7 +713,7 @@ classDiagram
 
 ---
 
-## 4. Current Phase 2.5 Defaults & Operating Parameters
+### 5.4 Current Phase 2.5 Defaults & Operating Parameters
 
 | Parameter | Current Default Value | Architectural Purpose |
 | :--- | :--- | :--- |
@@ -725,15 +726,24 @@ classDiagram
 | **Checkpoint Storage** | `chunk-XXXXX.parquet` | Staged atomic Parquet writer with `.tmp` staging and ID deduplication. |
 | **Parquet Compression** | `zstd` (`row_group_size = 128_000`) | High compression ratio with fast columnar scan performance in DuckDB. |
 | **Second Pass Delegation** | Single bounded attempt | Max 1 bundle fetch per stub; prevents unbounded retry network stalls. |
-| **No-Cover Reflow Gate** | `body_start_line = 0` | Forces prose unwrapping from line 0 to EOF for all non-cover filings/exhibits. |
+| **No-Cover Reflow Gate** | `body_start_line = 0` | Forces prose unwrapping from line 0 to EOF for all unsegmented filings (`GENERIC`, standalone exhibits). |
 
 ---
 
-## 5. Sign-Off Checklist & Invariants
+### 5.5 Sign-Off Checklist & Invariants
 
-- [ ] **Clean Evaluator Boundary**: General company reports (8-K, 10-Q, Generic) proceed directly; only Form 10-K invokes Exhibit 13 delegation and Sequence 1 inversion detection.
-- [ ] **Sparse Acquisition Guarantee**: Default execution acquires only the primary document (~2MB). Monolithic bundles (50MB–200MB) are fetched strictly as fallback recovery for 10-K inversions or stubs.
-- [ ] **No-Cover Reflow Contract**: Documents under no-cover profiles unwrap paragraphs from line 0 without searching for non-existent Item headings.
+- [ ] **Clean Evaluator Boundary**: Distinguish generic link-level behavior (form-typed bundle unpacking, post-2005 unconditional PROCEED, and pre-2005 exhibit link recovery across all forms) from Form 10-K statutory evaluation (which exclusively handles Exhibit 13 incorporation delegation and cover/TOC boundary detection).
+- [ ] **Sparse Acquisition Guarantee**: Default execution acquires only the primary document (~2MB). Monolithic bundles (50MB–200MB) are fetched strictly as fallback recovery for pre-2005 inversions or Form 10-K stubs.
+- [ ] **No-Cover Reflow Contract**: Documents under unsegmented no-cover profiles (`GENERIC`, standalone exhibits) unwrap paragraphs from line 0 without searching for non-existent Item headings.
 - [ ] **Sibling Inversion Swap**: When Sequence 1 is an exhibit, the true primary form is restored as `primary_document`, and the exhibit is preserved in `attachments`.
 - [ ] **Ownership Separation**: `FilingAggregate` is the sole owner of submission artifacts (`attachments`, `xbrl`, `raw_bundle`); `FormReport` is a lightweight view with zero duplicate storage fields.
 - [ ] **Parquet Contract Preservation**: Existing Parquet schemas and DuckDB analytical query compatibility remain 100% intact.
+
+---
+
+### 5.6 Deliberate Gaps & Future Acquisition Policies
+
+1. **Forced Full-Bundle Acquisition (`--acquisition-policy full_bundle`)**:
+   - **Architectural Readiness**: `FilingAggregate.attachments: dict[str, FilingAttachment]` and the underlying `unpack_sgml_submission` parser natively support extracting and storing any number of exhibits without modifying the schema or breaking downstream consumers.
+   - **Deliberate Deferral**: The Phase 2.5 CLI currently defaults to **Sparse Acquisition** (primary document only, ~2MB) and consumes a Phase 02 target plan that assigns one primary locator per filing. Unconditionally downloading full bundles (50MB–200MB) across millions of filings would multiply bandwidth and storage by 50×–100× and violate worker memory budgets.
+   - **Roadmap Path**: Future iterations can expose `--acquisition-policy {sparse, selective, full_bundle}` and `--include-exhibits EX-10,EX-21` at the CLI or catalog planner level. The aggregate root and storage writer require zero structural refactoring to support this.

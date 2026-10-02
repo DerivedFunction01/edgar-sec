@@ -17,7 +17,7 @@ both ignore their `text` argument outright.
 | :--- | :--- |
 | `annual.py` | `evaluate_annual` — Exhibit 13 incorporation-by-reference detection. |
 | `quarterly.py` | `evaluate_quarterly` — the XBRL-year and HTML/ASCII size-ceiling shortcuts. |
-| `current_report.py` | `evaluate_current_report` — unconditional proceed. |
+| `current.py` | `evaluate_current` — unconditional proceed. |
 | `__init__.py` | One-line docstring only. No re-exports, per AGENTS.md §1.2. |
 
 ## Contracts
@@ -31,7 +31,7 @@ both ignore their `text` argument outright.
   `REFETCH_SUB_DOC` when an Exhibit 13 mention falls inside a delegation-verb
   window — the financials live in an exhibit and this document should be
   refetched, not published whole. Its reason embeds a quoted snippet.
-- **`evaluate_quarterly` and `evaluate_current_report` never read `text`.** Both
+- **`evaluate_quarterly` and `evaluate_current` never read `text`.** Both
   bind it to `_` and decide on metadata alone, so both return `PROCEED` /
   `standard_full` when no metadata is supplied.
 - **An unknown family is never an error.** It routes to `evaluate_generic` via
@@ -42,7 +42,7 @@ both ignore their `text` argument outright.
 - `evaluate_annual` — `annual.py`.
 - `evaluate_quarterly`, `HTML_SIZE_CEILING`, `ASCII_SIZE_CEILING` —
   `quarterly.py`.
-- `evaluate_current_report` — `current_report.py`.
+- `evaluate_current` — `current.py`.
 
 ## Command surface
 
@@ -57,7 +57,7 @@ None. Library package, no CLI.
 
 - `tests/engine/forms/plugins/evaluators/test_annual.py`
 - `tests/engine/forms/plugins/evaluators/test_quarterly.py`
-- `tests/engine/forms/plugins/evaluators/test_current_report.py`
+- `tests/engine/forms/plugins/evaluators/test_current.py`
 
 ## Deliberate gaps
 

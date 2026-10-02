@@ -7,6 +7,7 @@ import dataclasses
 import pytest
 
 from edgar_sec.domain.forms.common.aliases import FORM_FAMILY_ALIASES
+from edgar_sec.domain.forms.common.forward_looking import FORWARD_LOOKING_PHRASES
 from edgar_sec.domain.forms.common.rules import COMMON_PHRASE_RULES
 from edgar_sec.domain.forms.common.vocabulary import (
     COVER_EVIDENCE_TERMS,
@@ -22,7 +23,7 @@ from edgar_sec.domain.forms.families.annual.taxonomy import (
     FORM_10K_DERIVED,
     FORM_20F_DERIVED,
 )
-from edgar_sec.domain.forms.families.current_report.taxonomy import FORM_8K_ITEMS
+from edgar_sec.domain.forms.families.current.taxonomy import FORM_8K_ITEMS
 from edgar_sec.domain.forms.families.quarterly.checkmarks import (
     QUARTERLY_CHECKBOX_SCHEMA,
 )
@@ -38,7 +39,7 @@ from edgar_sec.engine.forms.cover.profiles import (
     QUARTERLY_PHRASE_RULES,
     CoverProfile,
     build_annual_profile,
-    build_current_report_profile,
+    build_current_profile,
     build_no_cover_profile,
     build_quarterly_profile,
     get_profile,
@@ -47,7 +48,8 @@ from edgar_sec.engine.forms.cover.rules import compile_cover_rules
 from edgar_sec.foundation.text.evidence import LexicalEvidencePack
 
 COVER_FAMILIES = ("10-K", "20-F", "10-Q")
-NO_COVER_FAMILIES = ("8-K", "6-K", "GENERIC")
+GENERIC_FAMILIES = ("8-K", "6-K", "GENERIC")
+NO_COVER_FAMILIES = GENERIC_FAMILIES
 LEXICAL_FAMILIES = ("10-K", "20-F", "10-Q", "8-K", "6-K")
 
 
@@ -61,11 +63,11 @@ def test_profile_boundary_capability_matrix() -> None:
     assert get_profile("10-K").boundary is not None
     assert get_profile("20-F").boundary is not None
     assert get_profile("10-Q").boundary is not None
-    assert get_profile("8-K").boundary is None
-    assert get_profile("6-K").boundary is None
-    assert get_profile("GENERIC").boundary is None
-    assert get_profile(None).boundary is None
-    assert get_profile("S-1").boundary is None
+    assert get_profile("8-K").boundary is not None
+    assert get_profile("6-K").boundary is not None
+    assert get_profile("GENERIC").boundary is not None
+    assert get_profile(None).boundary is not None
+    assert get_profile("S-1").boundary is not None
 
 
 def test_annual_profiles_enable_incorporated_reference() -> None:
@@ -80,13 +82,13 @@ def test_annual_profiles_enable_incorporated_reference() -> None:
         assert annual_only not in quarterly_names
 
 
-def test_no_cover_profiles_have_no_rules_or_labels() -> None:
-    for family in NO_COVER_FAMILIES:
+def test_generic_cover_profiles_have_common_rules_and_labels() -> None:
+    for family in GENERIC_FAMILIES:
         profile = get_profile(family)
-        assert profile.healing_rules == ()
-        assert profile.labels == ()
-        assert profile.boundary is None
-        assert profile.evidence_terms == ()
+        assert profile.healing_rules == tuple(COMMON_PHRASE_RULES)
+        assert profile.labels == COMMON_COVER_LABELS
+        assert profile.boundary is not None
+        assert profile.evidence_terms == COMMON_COVER_LABELS
 
 
 def test_annual_boundary_enables_incorporated_reference() -> None:
@@ -156,12 +158,12 @@ def test_label_groups_are_the_canonical_cover_captions() -> None:
     assert COMMON_COVER_LABELS == COVER_LABELS_FLAT
     assert ANNUAL_COVER_LABELS == COMMON_COVER_LABELS
     assert QUARTERLY_COVER_LABELS == COMMON_COVER_LABELS
-    assert NO_COVER_LABELS == ()
+    assert NO_COVER_LABELS == COMMON_COVER_LABELS
 
 
 def test_phrase_rule_groups() -> None:
     assert QUARTERLY_PHRASE_RULES == tuple(COMMON_PHRASE_RULES)
-    assert NO_COVER_PHRASE_RULES == ()
+    assert NO_COVER_PHRASE_RULES == tuple(COMMON_PHRASE_RULES)
 
 
 @pytest.mark.parametrize("family", (*COVER_FAMILIES, *NO_COVER_FAMILIES))
@@ -204,7 +206,7 @@ def test_annual_body_anchors_start_earlier_than_quarterly() -> None:
     # Quarterly retains a narrow window.
     assert quarterly.structural_headings == ("PART I", "ITEM 1")
     assert annual.cover_terms != ()
-    assert quarterly.cover_terms == ()
+    assert quarterly.cover_terms != ()
 
 
 def test_current_report_body_anchors_on_the_eight_k_item_list() -> None:
@@ -223,9 +225,7 @@ def test_6_k_body_evidence_drops_item_headings_for_foreign_ones() -> None:
         "signature",
         "exhibit",
         "press release",
-        "forward-looking statements",
-        "forward looking statements",
-        "cautionary note",
+        *FORWARD_LOOKING_PHRASES,
     )
     assert six_k.body_ngrams == eight_k.body_ngrams
     assert six_k.body_verbs == eight_k.body_verbs
@@ -233,10 +233,10 @@ def test_6_k_body_evidence_drops_item_headings_for_foreign_ones() -> None:
     assert six_k.lexical == eight_k.lexical
 
 
-def test_no_cover_profile_declares_no_body_evidence() -> None:
+def test_generic_profile_declares_baseline_body_evidence() -> None:
     body = get_profile("GENERIC").body_evidence
     assert body.structural_headings == ()
-    assert body.semantic_headings == ()
+    assert body.semantic_headings == FORWARD_LOOKING_PHRASES
     assert body.body_ngrams == ()
     assert body.body_verbs == ()
     assert body.body_terms == ()
@@ -268,8 +268,8 @@ def test_generic_profile_declares_no_lexical_pack() -> None:
         ("10-K", "annual_body_start"),
         ("20-F", "annual_body_start"),
         ("10-Q", "quarterly_body_start"),
-        ("8-K", "current_report_body_start"),
-        ("6-K", "current_report_body_start"),
+        ("8-K", "current_body_start"),
+        ("6-K", "current_body_start"),
     ],
 )
 def test_lexical_pack_identity_per_family(family: str, expected: str) -> None:
@@ -309,21 +309,21 @@ def test_builders_compose_the_registry_entries() -> None:
     assert quarterly.labels == QUARTERLY_COVER_LABELS
     assert quarterly.healing_rules == QUARTERLY_PHRASE_RULES
 
-    current = build_current_report_profile("8-K")
-    assert current.boundary is None
-    assert current.labels == NO_COVER_LABELS
+    current = build_current_profile("8-K")
+    assert current.boundary is not None
+    assert current.labels == COMMON_COVER_LABELS
 
     generic = build_no_cover_profile("S-1")
-    assert generic.boundary is None
-    assert generic.healing_rules == NO_COVER_PHRASE_RULES
+    assert generic.boundary is not None
+    assert generic.healing_rules == tuple(COMMON_PHRASE_RULES)
     assert generic.cover_evidence is not None
-    assert generic.cover_evidence.shape_terms == ()
+    assert generic.cover_evidence.shape_terms == COMMON_COVER_LABELS
 
 
 def test_builders_leave_taxonomy_attachment_to_the_registry() -> None:
     assert build_annual_profile("10-K").derived_taxonomy is None
     assert build_quarterly_profile("10-Q").derived_taxonomy is None
-    assert build_current_report_profile("8-K").derived_taxonomy is None
+    assert build_current_profile("8-K").derived_taxonomy is None
 
 
 @pytest.mark.parametrize("family", (*COVER_FAMILIES, *NO_COVER_FAMILIES))

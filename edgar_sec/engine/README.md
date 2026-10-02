@@ -152,7 +152,7 @@ respectively.
   the v1 cover-boundary signal set that sub-plan 04 restores.
 - **`engine/forms/plugins/registry.py` is 27 lines and resolves to a single no-op plugin.**
   `get_plugin` returns `_default_plugin()` for every form; there is no per-form plugin
-  registry, and `domain/forms/families/{annual,quarterly,current_report}/` — which do carry
+  registry, and `domain/forms/families/{annual,quarterly,current}/` — which do carry
   the evidence packs — have no engine-side consumer. Sub-plan 04 §1.4 is scoped to close
   this.
 - **No HTTP client, no cache, no rate limiter here.** Those live in

@@ -41,16 +41,22 @@ from edgar_sec.engine.forms.cover.structure import (
 )
 from edgar_sec.engine.forms.cover.toc.finder import find_toc_span
 from edgar_sec.engine.forms.cover.toc.patterns import RE_TOC_HEADING
+from edgar_sec.foundation.regex.builder import build_alternation
 
 # Amendment-specific structural transitions that end a 10-K/A cover page when
-# no PART I / ITEM 1 / TOC sequence is present.  Matched case-insensitively
-# against trimmed lines.  Order matters: more-specific patterns first.
+# no PART I / ITEM 1 / TOC sequence is present. Matched case-insensitively
+# against trimmed lines. Order matters: more-specific patterns first.
+_AMENDMENT_TRANSITION_PATTERNS = [
+    r"explanatory\s+(?:note|statement)",
+    r"report\s+of\s+independent\s+(?:registered\s+public\s+accounting\s+firm|auditors?)",
+    r"index\s+to\s+(?:consolidated\s+)?financial\s+statements",
+    r"index\s+to\s+exhibits",
+    r"exhibit\s+index",
+    r"signatures?",
+]
+
 _RE_AMENDMENT_TRANSITION = _re.compile(
-    r"^\s*(?:"
-    r"explanatory\s+(?:note|statement)"
-    r"|report\s+of\s+independent\s+(?:registered\s+public\s+accounting\s+firm|auditors?)"
-    r"|signatures?"
-    r")\s*$",
+    rf"^\s*{build_alternation(_AMENDMENT_TRANSITION_PATTERNS)}\s*$",
     _re.IGNORECASE,
 )
 

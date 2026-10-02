@@ -85,7 +85,7 @@ Subpackages, each with its own README:
   `ParsedSection`, `StructuralRole`, `StructuralMatch`, `RE_PART`, `RE_ITEM_EXACT`
   — `structure.py`.
 - `CoverProfile`, `COVER_PROFILES`, `get_profile`, `build_annual_profile`,
-  `build_quarterly_profile`, `build_current_report_profile`,
+  `build_quarterly_profile`, `build_current_profile`,
   `build_no_cover_profile` — `profiles.py`.
 - `find_body_start` — `body_start.py`.
 - `find_closing_span`, `ClosingSpan` — `closing.py`.

@@ -21,7 +21,7 @@ variance as data, so the normalization chain stays one chain.
 | `registry.py` | The seeded family table, its module-level generic fallback, `get_plugin`, `register_plugin`, `registered_families`. |
 | `evaluators/annual.py` | `evaluate_annual` — Exhibit 13 incorporation-by-reference detection. |
 | `evaluators/quarterly.py` | `evaluate_quarterly` — XBRL-year and size-ceiling shortcuts. |
-| `evaluators/current_report.py` | `evaluate_current_report` — unconditional proceed. |
+| `evaluators/current.py` | `evaluate_current` — unconditional proceed. |
 | `__init__.py` | One-line docstring only. No re-exports, per AGENTS.md §1.2. |
 
 ## Contracts
@@ -57,7 +57,7 @@ variance as data, so the normalization chain stays one chain.
 - `evaluate_annual` — `evaluators/annual.py`.
 - `evaluate_quarterly`, `HTML_SIZE_CEILING`, `ASCII_SIZE_CEILING` —
   `evaluators/quarterly.py`.
-- `evaluate_current_report` — `evaluators/current_report.py`.
+- `evaluate_current` — `evaluators/current.py`.
 
 ## Command surface
 
@@ -79,7 +79,7 @@ the stored snapshot gains those fields.
 `tests/engine/forms/plugins/test_base.py`,
 `tests/engine/forms/plugins/test_registry.py`, and
 `tests/engine/forms/plugins/evaluators/test_annual.py`, `test_quarterly.py`,
-`test_current_report.py`.
+`test_current.py`.
 
 ## Deliberate gaps
 

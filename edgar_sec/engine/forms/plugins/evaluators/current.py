@@ -9,8 +9,8 @@ from __future__ import annotations
 from edgar_sec.domain.forms.common.decisions import DecisionAction, EvaluatorDecision
 
 
-def evaluate_current_report(text: str) -> EvaluatorDecision:
-    """Proceed with a Form 8-K's primary payload, unconditionally."""
+def evaluate_current(text: str) -> EvaluatorDecision:
+    """Proceed with a Form 8-K/6-K's primary payload, unconditionally."""
     _ = text
     return EvaluatorDecision(
         action=DecisionAction.PROCEED,
@@ -22,4 +22,4 @@ def evaluate_current_report(text: str) -> EvaluatorDecision:
     )
 
 
-__all__ = ["evaluate_current_report"]
+__all__ = ["evaluate_current"]

@@ -99,6 +99,23 @@ SECURITIES_12B_SUPPORT_TERMS: tuple[str, ...] = (
     "par value",
 )
 
+# --- Common Share Count Phrases (Shared across 10-K and 10-Q covers) ----------
+COMMON_SHARES_PHRASES: tuple[str, ...] = (
+    "indicate the number of shares outstanding of each of the registrant's classes of common stock",
+    "indicate the number of shares outstanding of each of the issuer's classes of common stock",
+    "indicate the number of shares outstanding of each of the registrant's classes of common stock as of",
+    "indicate the number of shares outstanding of each of the issuer's classes of common stock as of",
+    "indicate the number of shares outstanding of each of the registrant's classes of common equity",
+    "indicate the number of shares outstanding of each of the issuer's classes of common equity",
+    "number of shares of common stock outstanding",
+    "shares of common stock outstanding",
+    "number of shares of common stock",
+    "number of shares outstanding",
+    "shares of the issuer",
+    "par value outstanding",
+    "shares outstanding",
+)
+
 # --- Standard SEC Header Terms -------------------------------------------------
 
 SEC_HEADER_TERMS: tuple[str, ...] = (

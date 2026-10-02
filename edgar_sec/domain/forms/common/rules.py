@@ -188,6 +188,46 @@ SECURITIES_EXCHANGE_RULES: list[PhraseSequenceRule] = [
     ),
 ]
 
+# 6. Shares Outstanding Rules (Shared across 10-K and 10-Q)
+COMMON_SHARES_RULES: list[PhraseSequenceRule] = [
+    PhraseSequenceRule(
+        name="shares_outstanding_caption",
+        tokens=[
+            "indicate",
+            "the",
+            "number",
+            "of",
+            "shares",
+            "outstanding",
+            "of",
+            "each",
+            "of",
+            "the",
+            ["registrant's", "issuer's", "registrant", "issuer"],
+            "classes",
+            "of",
+            "common",
+            ["stock", "equity"],
+            "as",
+            "of",
+        ],
+        anchor=["shares outstanding", "common stock"],
+    ),
+    PhraseSequenceRule(
+        name="shares_common_stock_outstanding",
+        tokens=[
+            "number",
+            "of",
+            "shares",
+            "of",
+            "common",
+            ["stock", "equity"],
+            "outstanding",
+        ],
+        anchor=["shares", "outstanding"],
+    ),
+]
+
 COMMON_PHRASE_RULES: list[PhraseSequenceRule] = [
     *BANNER_RULES,
     *FORM_TITLE_RULES,
@@ -201,6 +241,7 @@ __all__ = [
     "ADDRESS_RULES",
     "BANNER_RULES",
     "COMMON_PHRASE_RULES",
+    "COMMON_SHARES_RULES",
     "FORM_TITLE_RULES",
     "JURISDICTION_RULES",
     "PERIOD_FILE_REGISTRANT_RULES",

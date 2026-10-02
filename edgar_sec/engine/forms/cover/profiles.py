@@ -25,6 +25,7 @@ from dataclasses import replace as _dataclass_replace
 from typing import TYPE_CHECKING
 
 from edgar_sec.domain.forms.common.aliases import resolve_alias
+from edgar_sec.domain.forms.common.forward_looking import FORWARD_LOOKING_PHRASES
 from edgar_sec.domain.forms.common.models import (
     BodyEvidencePack,
     CoverEvidencePack,
@@ -44,10 +45,10 @@ from edgar_sec.domain.forms.families.annual.taxonomy import (
     FORM_10K_DERIVED,
     FORM_20F_DERIVED,
 )
-from edgar_sec.domain.forms.families.current_report.evidence import (
+from edgar_sec.domain.forms.families.current.evidence import (
     CurrentReportEvidence,
 )
-from edgar_sec.domain.forms.families.current_report.taxonomy import FORM_8K_ITEMS
+from edgar_sec.domain.forms.families.current.taxonomy import FORM_8K_ITEMS
 from edgar_sec.domain.forms.families.quarterly.checkmarks import (
     QUARTERLY_CHECKBOX_SCHEMA,
 )
@@ -69,10 +70,12 @@ COMMON_COVER_LABELS: tuple[str, ...] = COVER_LABELS_FLAT
 
 ANNUAL_COVER_LABELS: tuple[str, ...] = COMMON_COVER_LABELS
 QUARTERLY_COVER_LABELS: tuple[str, ...] = COMMON_COVER_LABELS
-NO_COVER_LABELS: tuple[str, ...] = ()
+GENERIC_COVER_LABELS: tuple[str, ...] = COMMON_COVER_LABELS
+NO_COVER_LABELS: tuple[str, ...] = COMMON_COVER_LABELS
 
 QUARTERLY_PHRASE_RULES: tuple[PhraseSequenceRule, ...] = tuple(COMMON_PHRASE_RULES)
-NO_COVER_PHRASE_RULES: tuple[PhraseSequenceRule, ...] = ()
+GENERIC_PHRASE_RULES: tuple[PhraseSequenceRule, ...] = tuple(COMMON_PHRASE_RULES)
+NO_COVER_PHRASE_RULES: tuple[PhraseSequenceRule, ...] = tuple(COMMON_PHRASE_RULES)
 
 
 @dataclass(frozen=True, slots=True)
@@ -206,14 +209,7 @@ def build_annual_profile(family: str) -> CoverProfile:
             semantic_headings=(
                 "management's discussion and analysis",
                 "risk factors",
-                "forward-looking statements",
-                "forward looking statements",
-                "forward looking information",
-                "special note regarding forward-looking",
-                "special note regarding forward looking",
-                "cautionary statements",
-                "cautionary note",
-                "safe harbor",
+                *FORWARD_LOOKING_PHRASES,
                 "glossary of",
                 "definitions",
                 # Amendment-specific semantic anchors
@@ -237,9 +233,9 @@ def build_annual_profile(family: str) -> CoverProfile:
 def build_quarterly_profile(family: str) -> CoverProfile:
     """Build a cover profile for quarterly reports.
 
-    A quarterly cover carries no incorporated-by-reference block, so it enables
-    the same signals as the annual profile minus that one and heals only the
-    shared cover vocabulary.
+    A quarterly cover carries no incorporated-by-reference or public-float block,
+    so it enables the shared identity and share-count vocabulary alongside
+    quarterly-specific boundary signals and interim body evidence.
     """
     quarterly = QuarterlyReportEvidence()
     return _make_profile(
@@ -266,15 +262,14 @@ def build_quarterly_profile(family: str) -> CoverProfile:
             semantic_headings=(
                 "management's discussion and analysis",
                 "quantitative and qualitative disclosures",
-                "forward-looking statements",
-                "forward looking statements",
-                "forward looking information",
-                "cautionary statements",
-                "cautionary note",
-                "safe harbor",
+                *FORWARD_LOOKING_PHRASES,
+                "notes to condensed consolidated financial statements",
+                "condensed consolidated financial statements",
             ),
             body_ngrams=quarterly.body_ngrams,
             body_verbs=quarterly.body_verbs,
+            body_terms=quarterly.body_terms,
+            cover_terms=quarterly.cover_terms,
             lexical=quarterly.body_lexical,
         ),
         checkbox_schema=QUARTERLY_CHECKBOX_SCHEMA,
@@ -282,59 +277,77 @@ def build_quarterly_profile(family: str) -> CoverProfile:
     )
 
 
-def build_current_report_profile(family: str) -> CoverProfile:
+def build_current_profile(family: str) -> CoverProfile:
     """Build a cover profile for current reports (8-K, 6-K).
 
-    A current report has no cover page, so it declares no boundary policy and
-    no cover evidence; the item headings are its only structural evidence.
+    Current reports possess statutory SEC cover pages (SEC mastheads, IRS EINs,
+    commission file numbers, registrant addresses, and checkmarks) transitioning
+    directly into item events or signatures.
     """
     current = CurrentReportEvidence()
     structural_headings = tuple(d.item for d in FORM_8K_ITEMS)
     return _make_profile(
         family=family,
-        boundary=None,
-        labels=NO_COVER_LABELS,
-        healing_rules=NO_COVER_PHRASE_RULES,
+        boundary=CoverBoundaryPolicy(
+            signals=(
+                BoundarySignal.COVER_IDENTITY_AND_LAYOUT,
+                BoundarySignal.PAGE_MARKERS,
+                BoundarySignal.ITEM_FALLBACK,
+                BoundarySignal.BODY_PROSE_FALLBACK,
+            )
+        ),
+        labels=GENERIC_COVER_LABELS,
+        healing_rules=GENERIC_PHRASE_RULES,
         cover_evidence=CoverEvidencePack(
-            identity_terms=(),
-            shape_terms=(),
-            labels=NO_COVER_LABELS,
+            identity_terms=COVER_START_IDENTITY_TERMS,
+            shape_terms=COMMON_COVER_LABELS,
+            labels=COMMON_COVER_LABELS,
         ),
         body_evidence=BodyEvidencePack(
             structural_headings=structural_headings,
             semantic_headings=(
                 "item",
-                "forward-looking statements",
-                "forward looking statements",
-                "forward looking information",
-                "cautionary statements",
-                "cautionary note",
-                "safe harbor",
+                *current.body_ngrams,
+                *FORWARD_LOOKING_PHRASES,
                 "signature",
                 "signatures",
             ),
             body_ngrams=current.body_ngrams,
             body_verbs=current.body_verbs,
             body_terms=current.body_terms,
+            cover_terms=current.cover_terms,
             lexical=current.body_lexical,
         ),
     )
 
 
-def build_no_cover_profile(family: str) -> CoverProfile:
-    """Build a no-cover profile for event-driven and other forms."""
+def build_generic_cover_profile(family: str) -> CoverProfile:
+    """Build a generic baseline cover profile for unspecialized or event-driven forms."""
     return _make_profile(
         family=family,
-        boundary=None,
-        labels=NO_COVER_LABELS,
-        healing_rules=NO_COVER_PHRASE_RULES,
-        cover_evidence=CoverEvidencePack(
-            identity_terms=(),
-            shape_terms=(),
-            labels=NO_COVER_LABELS,
+        boundary=CoverBoundaryPolicy(
+            signals=(
+                BoundarySignal.COVER_IDENTITY_AND_LAYOUT,
+                BoundarySignal.PAGE_MARKERS,
+                BoundarySignal.BODY_PROSE_FALLBACK,
+            )
         ),
-        body_evidence=BodyEvidencePack(),
+        labels=GENERIC_COVER_LABELS,
+        healing_rules=GENERIC_PHRASE_RULES,
+        cover_evidence=CoverEvidencePack(
+            identity_terms=COVER_START_IDENTITY_TERMS,
+            shape_terms=COMMON_COVER_LABELS,
+            labels=COMMON_COVER_LABELS,
+        ),
+        body_evidence=BodyEvidencePack(
+            semantic_headings=FORWARD_LOOKING_PHRASES,
+        ),
     )
+
+
+def build_no_cover_profile(family: str) -> CoverProfile:
+    """Build a generic baseline cover profile (alias for build_generic_cover_profile)."""
+    return build_generic_cover_profile(family)
 
 
 def _build_profiles() -> dict[str, CoverProfile]:
@@ -347,10 +360,10 @@ def _build_profiles() -> dict[str, CoverProfile]:
     quarterly = _dataclass_replace(
         build_quarterly_profile("10-Q"), derived_taxonomy=FORM_10Q_DERIVED
     )
-    no_cover_8k = build_current_report_profile("8-K")
+    generic_8k = build_current_profile("8-K")
     current = CurrentReportEvidence()
-    no_cover_6k = _dataclass_replace(
-        no_cover_8k,
+    generic_6k = _dataclass_replace(
+        generic_8k,
         family="6-K",
         body_evidence=BodyEvidencePack(
             structural_headings=(),
@@ -359,9 +372,7 @@ def _build_profiles() -> dict[str, CoverProfile]:
                 "signature",
                 "exhibit",
                 "press release",
-                "forward-looking statements",
-                "forward looking statements",
-                "cautionary note",
+                *FORWARD_LOOKING_PHRASES,
             ),
             body_ngrams=current.body_ngrams,
             body_verbs=current.body_verbs,
@@ -369,13 +380,13 @@ def _build_profiles() -> dict[str, CoverProfile]:
             lexical=current.body_lexical,
         ),
     )
-    generic = build_no_cover_profile("GENERIC")
+    generic = build_generic_cover_profile("GENERIC")
     return {
         "10-K": annual_common,
         "20-F": annual_foreign,
         "10-Q": quarterly,
-        "8-K": no_cover_8k,
-        "6-K": no_cover_6k,
+        "8-K": generic_8k,
+        "6-K": generic_6k,
         "GENERIC": generic,
     }
 
@@ -402,13 +413,16 @@ __all__ = [
     "ANNUAL_COVER_LABELS",
     "COMMON_COVER_LABELS",
     "COVER_PROFILES",
+    "GENERIC_COVER_LABELS",
+    "GENERIC_PHRASE_RULES",
     "NO_COVER_LABELS",
     "NO_COVER_PHRASE_RULES",
     "QUARTERLY_COVER_LABELS",
     "QUARTERLY_PHRASE_RULES",
     "CoverProfile",
     "build_annual_profile",
-    "build_current_report_profile",
+    "build_current_profile",
+    "build_generic_cover_profile",
     "build_no_cover_profile",
     "build_quarterly_profile",
     "get_profile",

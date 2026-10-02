@@ -229,6 +229,8 @@ FORM_20F_ITEMS: tuple[ItemDefinition, ...] = (
         1,
         (
             "information on the company",
+            "information about the company",
+            "information about",
             "description of business",
             "business overview",
             "property, plants and equipment",
@@ -265,7 +267,12 @@ FORM_20F_ITEMS: tuple[ItemDefinition, ...] = (
     ItemDefinition(
         "ITEM 7",
         1,
-        ("major shareholders and related party transactions", "major shareholders"),
+        (
+            "major shareholders and related party transactions",
+            "major shareholders and related-party transactions",
+            "related-party transactions",
+            "major shareholders",
+        ),
     ),
     ItemDefinition(
         "ITEM 8",
@@ -315,8 +322,10 @@ FORM_20F_ITEMS: tuple[ItemDefinition, ...] = (
         "ITEM 14",
         2,
         (
+            "material modifications to the rights of security holders and use of proceeds",
             "material modifications to the rights of security holders",
             "material modifications",
+            "use of proceeds",
         ),
     ),
     ItemDefinition(
@@ -360,13 +369,20 @@ FORM_20F_ITEMS: tuple[ItemDefinition, ...] = (
     ItemDefinition(
         "ITEM 16F",
         2,
-        ("change in registrant's certifying accountant",),
+        (
+            "changes in registrant's certifying accountant",
+            "change in registrant's certifying accountant",
+        ),
         optional=True,
     ),
     ItemDefinition(
         "ITEM 16G",
         2,
-        ("corporate governance",),
+        (
+            "differences in corporate governance practices",
+            "corporate governance practices",
+            "corporate governance",
+        ),
         optional=True,
     ),
     ItemDefinition(
@@ -379,6 +395,21 @@ FORM_20F_ITEMS: tuple[ItemDefinition, ...] = (
         "ITEM 16I",
         2,
         ("disclosure regarding foreign jurisdictions that prevent inspections",),
+        optional=True,
+    ),
+    ItemDefinition(
+        "ITEM 16J",
+        2,
+        ("insider trading policies", "insider trading policies and procedures"),
+        optional=True,
+    ),
+    ItemDefinition(
+        "ITEM 16K",
+        2,
+        (
+            "cybersecurity",
+            "cybersecurity risk management, strategy and governance",
+        ),
         optional=True,
     ),
     # PART III

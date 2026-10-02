@@ -14,7 +14,7 @@ is data; none of it reads or fetches documents.
 | Subpackage | Responsibility |
 | :--- | :--- |
 | `common/` | Form-agnostic contracts: aliases, checkbox schemas, checkmark tokens, cover rules, label vocabulary, decision models |
-| `families/` | Per-family evidence packs and Part/Item taxonomies (`annual/`, `quarterly/`, `current_report/`) |
+| `families/` | Per-family evidence packs and Part/Item taxonomies (`annual/`, `quarterly/`, `current/`) |
 
 See `common/README.md` and `families/README.md`.
 
@@ -41,7 +41,7 @@ See `common/README.md` and `families/README.md`.
 - `common.vocabulary`: `COVER_LABELS`, `COVER_LABELS_FLAT`, `CHECKBOX_GRID_RE`, filer category constants, `is_state_value`
 - `families.annual`: `AnnualReportEvidence`, `FORM_10K_ITEMS`, `FORM_20F_ITEMS`, `FORM_10K_DERIVED`, `FORM_20F_DERIVED`, `ANNUAL_CHECKBOX_SCHEMA`, `ANNUAL_BODY_LEXICAL_PACK`
 - `families.quarterly`: `QuarterlyReportEvidence`, `FORM_10Q_ITEMS`, `FORM_10Q_DERIVED`, `QUARTERLY_CHECKBOX_SCHEMA`, `QUARTERLY_BODY_LEXICAL_PACK`
-- `families.current_report`: `CurrentReportEvidence`, `FORM_8K_ITEMS`, `FORM_8K_DERIVED`, `CURRENT_REPORT_BODY_LEXICAL_PACK`
+- `families.current`: `CurrentReportEvidence`, `FORM_8K_ITEMS`, `FORM_8K_DERIVED`, `CURRENT_BODY_LEXICAL_PACK`
 
 No command surface.
 

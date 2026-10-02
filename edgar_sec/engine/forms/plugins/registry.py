@@ -19,9 +19,7 @@ from edgar_sec.engine.forms.plugins.base import (
     evaluate_generic,
 )
 from edgar_sec.engine.forms.plugins.evaluators.annual import evaluate_annual
-from edgar_sec.engine.forms.plugins.evaluators.current_report import (
-    evaluate_current_report,
-)
+from edgar_sec.engine.forms.plugins.evaluators.current import evaluate_current
 from edgar_sec.engine.forms.plugins.evaluators.quarterly import evaluate_quarterly
 
 _PLUGINS: dict[str, FormPlugin] = {
@@ -44,7 +42,7 @@ _PLUGINS: dict[str, FormPlugin] = {
     ),
     "8-K": FormPlugin(
         family="8-K",
-        evaluator=evaluate_current_report,
+        evaluator=evaluate_current,
     ),
 }
 
