@@ -413,10 +413,37 @@ def custom_exhibit_evaluator(text: str) -> EvaluatorDecision:
 ### Blueprint C: Sequence 1 Exhibit Inversion Recovery & Dual-Write
 When filers uploaded exhibit attachments before the primary form in pre-2005 EDGAR submissions (2000–2004), the SEC automated submission feed recorded Sequence 1 (`ex21.txt`, `exhibit16.txt`) as `primaryDocument`.
 
-#### Detection & Recovery Protocol:
-1. **Transport / Unpacker Seam**: When a pre-2005 filing's target link points to an exhibit, the fetcher promotes the target to the accession bundle `<accession>.txt`.
-2. **Form-Typed Tier 1 Unpacking**: `unpacker.extract_target_sub_document` locates the true primary form matching `target_types=(form, form/A)` (e.g. `10-K`, `10-Q`, `8-K`).
-3. **Dual-Write Storage**: The worker normalizes both the recovered primary document and the original exhibit, writing:
+#### 1. Precision Exhibit vs. Ticker Discrimination (Built via `build_alternation`)
+To prevent false-positive bundle promotions on company names and ticker prefixes (`EXC`, `EXAS`, `EXPO`, `exxon10k.htm`, `ex-10k.htm`, `exp_10q.txt`), exhibit link recognition requires Item 601 statutory exhibit numbering (1–105) built with `build_alternation`, and dynamically excludes form tokens derived from the target form's canonical family:
+- **Statutory Exhibit Regex**:
+  ```python
+  _EXHIBIT_PREFIX_ALT = build_alternation(["dex", "exhibit", "ex"], auto_escape=True)
+  _EXHIBIT_EXT_ALT = build_alternation(["txt", "htm", "html"], auto_escape=True)
+  _STATUTORY_NUM_PATTERN = r"(?:[1-9]|[1-9]\d|10[0-5])"
+  RE_STATUTORY_EXHIBIT_FILENAME = re.compile(
+      rf"(?i)^(?:{_EXHIBIT_PREFIX_ALT})[-_]?{_STATUTORY_NUM_PATTERN}(?:[-._][a-z0-9]+)?\.(?:{_EXHIBIT_EXT_ALT})$"
+  )
+  ```
+- **Grammatical Atoms & Multipliers Decomposition**:
+  - Unit Atoms (1..9): `one`, `two`, `three`, `four`, `five`, `six`, `seven`, `eight`, `nine`
+  - Teen Atoms (10..19): `ten`, `eleven`, `twelve`, `thirteen`, `fourteen`, `fifteen`, `sixteen`, `seventeen`, `eighteen`, `nineteen`
+  - Decade Atoms (20..90): `twenty`, `thirty`, `forty`, `fifty`, `sixty`, `seventy`, `eighty`, `ninety`
+  - Multipliers: `hundred`, `thousand`
+  - 2-Digit Compounds (21..99): `decade[-_]?unit` (e.g. `twenty-four`)
+  - 3-Digit Hundreds (e.g. 144, 424, 425):
+    1. Full Formal: `(unit[-_]?)?hundred(?:[-_]?(?:and[-_]?)?compound)?` (`one-hundred-forty-four`, `hundred-forty-four`)
+    2. Colloquial (omitting 'hundred'): `unit[-_]?compound` (`one-forty-four` for 144, `four-twenty-five` for 425)
+    3. Digit-Hybrid / Component: `unit[-_]?two_digit` (`four24` for 424, `four25` for 425)
+- **Dynamic Family Form Token Pattern**: Generated and memoized on-demand per canonical form family via `@lru_cache(maxsize=64)` (e.g. `get_primary_form_token_pattern(form)` compiling `aliases_for_family(family)` + `{"form", "report", "annual", "quarterly"}`) using `build_alternation`. For single-form plans (350k filings of 10-K), this compiles a compact 6-token pattern once on doc 1 with 100% cache hits, avoiding giant monolithic global regexes.
+
+#### 2. Bundle Call Minimization (99.98% Reduction):
+1. **Temporal Gating**: Restricted strictly to `2000-01-01 <= filing_date < 2005-01-01` (1993–1999 are already bundles; 2005+ has 0.0% inversions).
+2. **Dynamic Profile Form Token Exclusion**: Filenames matching the form's dynamic token pattern (`ex-10k.htm`, `ex10k.txt`) are directly fetched.
+3. **Statutory Number Match**: Non-numbered tickers (`exxon.htm`, `exp.txt`) are directly fetched.
+
+#### 3. Envelope Tier 1 `<TYPE>` Extraction & Dual-Write:
+- When `<accession>.txt` is unpacked, `unpacker.resolve_target_sub_document` extracts the sub-document matching `target_types=(form, form/A)` via its `<TYPE>` tag (regardless of whether it sits at Sequence 1 or Sequence 2).
+- The worker dual-writes both:
    - Recovered primary form under `document_locator_key = sha256(acc + ":" + primary_path)` (`role: "primary"`).
    - Original exhibit under `document_locator_key = sha256(acc + ":" + exhibit_path)` (`role: "exhibit"`, `parent_locator_key`).
    This satisfies the target plan's original locator key while preserving the normalized exhibit.
@@ -606,8 +633,8 @@ Based on empirical analysis across 3,191,541 filings, the following triage rules
 2. **Modern Direct Acceptance (Post-2005 Era: 2005–present)**:
    - Modernized EDGARLink eliminated sequence displacement (**0.0% true sequence inversions** across 3.19M filings). Any target link (even with exhibit-like names like `bylawamendment.htm` or `ex99-1.htm`) is officially registered as Sequence 1 with the primary form type. All post-2005 targets unconditionally `PROCEED`.
 3. **Pre-2005 Sequence 1 Exhibit Inversion Recovery (2000–2004 Legacy Anomaly)**:
-   - When a pre-2005 filing's target link points to an exhibit (`ex*.txt`, `ex*.htm`), the fetcher promotes the fetch to the submission bundle `<accession>.txt`.
-   - Form-typed Tier 1 unpacking (`unpacker.extract_target_sub_document`) extracts the true primary form matching `target_types=(form, form/A)`.
+   - When a pre-2005 filing's target link matches `RE_STATUTORY_EXHIBIT_FILENAME` (and does not match primary form tokens or non-statutory ticker names), the fetcher promotes the fetch to the submission bundle `<accession>.txt`.
+   - Form-typed Tier 1 unpacking (`unpacker.extract_target_sub_document`) extracts the true primary form matching `target_types=(form, form/A)` via its `<TYPE>` tag.
    - The worker dual-writes **both** the recovered primary document (`role: "primary"`) and the original exhibit (`role: "exhibit"`, `parent_locator_key`).
 4. **Current Reports (`Form 8-K`, `CurrentReportEvaluator`)**:
    - Event reports have no statutory incorporation-by-reference stubs or Exhibit 13. Evaluates directly with `DecisionAction.PROCEED`, `category="standard_full"`.

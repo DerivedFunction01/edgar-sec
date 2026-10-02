@@ -9,9 +9,11 @@ policy document.
 from __future__ import annotations
 
 from pathlib import Path
+from typing import Any
 
 import pytest
 
+from edgar_sec.domain.filing_catalog.filters import parse_date_selection
 from edgar_sec.engine.selection.source import (
     OCCURRENCE_COLUMNS,
     POOL_COLUMNS,
@@ -284,3 +286,118 @@ def test_an_invalid_amendment_policy_is_rejected(snapshot_dir: Path) -> None:
 
 def test_an_unconstrained_filter_predicate_is_true() -> None:
     assert CandidateFilters().predicate() == "TRUE"
+
+
+# --- the date selection -----------------------------------------------------
+
+
+def _dated_locators() -> list[dict[str, Any]]:
+    """Locators across four quarters, two forms, and one unreadable date."""
+    rows: list[dict[str, Any]] = []
+    index = 0
+    for form, dates in (
+        ("10-K", ["2023-03-31", "2023-06-30", "2023-09-30", "2023-12-31"]),
+        ("8-K", ["2024-03-31", "2024-06-30"]),
+    ):
+        for report_date in dates:
+            index += 1
+            rows.append(
+                make_locator(
+                    index,
+                    company_family=f"f{index}",
+                    form=form,
+                    report_date=report_date,
+                    report_year=int(report_date[:4]),
+                )
+            )
+    index += 1
+    rows.append(
+        make_locator(index, company_family="nodate", report_date="", report_year=None)
+    )
+    return rows
+
+
+def test_no_date_selection_keeps_every_locator(tmp_path: Path) -> None:
+    snapshot = write_snapshot(tmp_path / "all", _dated_locators())
+    with _source(snapshot).session() as source:
+        rows = source.candidate_page(0)
+    assert len(rows) == 7
+
+
+def test_a_date_selection_excludes_a_locator_with_no_readable_date(
+    tmp_path: Path,
+) -> None:
+    """The same asymmetry the catalog contract states: nonempty excludes them."""
+    snapshot = write_snapshot(tmp_path / "dated", _dated_locators())
+    with _source(
+        snapshot,
+        filters=CandidateFilters(date_selection=parse_date_selection("2000..2030")),
+    ).session() as source:
+        rows = source.candidate_page(0)
+    assert len(rows) == 6
+    assert all(row["document_locator_key"] != "loc-0007" for row in rows)
+
+
+def test_recurring_periods_narrow_the_pool(tmp_path: Path) -> None:
+    snapshot = write_snapshot(tmp_path / "q1", _dated_locators())
+    with _source(
+        snapshot,
+        filters=CandidateFilters(date_selection=parse_date_selection("@Q1")),
+    ).session() as source:
+        rows = source.candidate_page(0)
+    assert sorted(row["document_locator_key"] for row in rows) == [
+        "loc-0001",
+        "loc-0005",
+    ]
+
+
+def test_the_date_filter_reaches_every_pool_kind(tmp_path: Path) -> None:
+    """Not just paging: a floor must not be able to draw an out-of-range row."""
+    snapshot = write_snapshot(tmp_path / "kinds", _dated_locators())
+    filters = CandidateFilters(
+        date_selection=parse_date_selection("2023-12"), document_suffixes=()
+    )
+    with _source(snapshot, filters=filters).session() as source:
+        by_value = source.pool_for_value("form", "8-K", limit=10)
+        by_composite = source.pool_for_composite({"form": "8-K"}, limit=10)
+        by_cik = source.pool_for_ciks(["0000000005"], limit_per_cik=5)
+        page = source.candidate_page(0)
+        availability = source.cell_availability()
+    assert by_value == []
+    assert by_composite == []
+    assert by_cik == []
+    # Only the one December 2023 row survives, and every pool kind agrees.
+    assert [row["document_locator_key"] for row in page] == ["loc-0004"]
+    assert availability == [("10-K", "modern", 1)]
+
+
+def test_cell_availability_counts_only_the_rows_a_pool_could_draw(
+    tmp_path: Path,
+) -> None:
+    locators = [
+        make_locator(1, company_family="a", form="10-K", era="modern"),
+        make_locator(2, company_family="b", form="10-K", era="modern"),
+        make_locator(3, company_family="c", form="8-K", era="legacy"),
+    ]
+    snapshot = write_snapshot(tmp_path / "cells", locators)
+    with _source(snapshot).session() as source:
+        assert source.cell_availability() == [
+            ("10-K", "modern", 2),
+            ("8-K", "legacy", 1),
+        ]
+        source.register_selected(["loc-0001"])
+        assert source.cell_availability() == [
+            ("10-K", "modern", 1),
+            ("8-K", "legacy", 1),
+        ]
+
+
+def test_a_pool_for_one_cell_returns_only_that_cell(tmp_path: Path) -> None:
+    locators = [
+        make_locator(1, company_family="a", form="10-K", era="modern"),
+        make_locator(2, company_family="b", form="10-K", era="legacy"),
+    ]
+    snapshot = write_snapshot(tmp_path / "one-cell", locators)
+    with _source(snapshot).session() as source:
+        rows = source.pool_for_cell("10-K", "legacy", limit=10)
+    assert [row["document_locator_key"] for row in rows] == ["loc-0002"]

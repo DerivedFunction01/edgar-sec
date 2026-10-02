@@ -15,12 +15,14 @@ for a future acquisition phase.
 Two planning scopes with genuinely different jobs:
 
 - **Deterministic** (`plan --scope deterministic`, the default) — a fast,
-  zero-heuristic slice on exactly four filters (`forms`, `amendment`,
-  `document_suffixes`, `limit`), producing an **8-column** locator projection. It
-  deliberately refuses to reason about dates, eras, or cohort balance.
+  zero-heuristic slice on exactly five filters (`forms`, `amendment`,
+  `document_suffixes`, `dates`, `limit`), producing an **8-column** locator
+  projection. `dates` narrows which rows are *eligible*; it deliberately refuses
+  to reason about eras or cohort balance.
 - **Policy** (`plan --scope policy`) — the Stage B selection engine against a
   declared quota profile, producing an **18-column** locator projection plus a
-  reserve pool. The only scope that reasons about dates.
+  reserve pool. The only scope that stratifies: era bands and a form-by-era
+  allocation.
 
 Status: **Phase 2, complete.** `roadmap/refactor_v2/phase_2.md` records
 "Milestones 0–9 done. Stage A (M0–M4) and Stage B (M5–M9) both implemented."
@@ -39,7 +41,7 @@ ways a network dependency creeps in.
 | `cli.py` | The four commands, policy resolution, and the stdout/stderr split. |
 | `operator.py` | Interactive wizard over `cmd_materialize` / `cmd_plan` / `cmd_expand` / `cmd_status`, with discovery-driven catalog and parent-plan selection. |
 | `catalog_job.py` | `materialize()`: one Phase 1 snapshot in, one immutable catalog out, behind three guards. |
-| `planner.py` | `plan()` (four filters, 8 columns) and `plan_policy()` (quota profile, 18 columns). |
+| `planner.py` | `plan()` (five filters, 8 columns) and `plan_policy()` (quota profile, resolved era bands, form-by-era allocation, 18 columns). |
 | `expansion.py` | Parent validation, child derivation, and the 100%-retention invariant. |
 | `publication.py` | Content-addressed plan ids, staged bundles, the selection fingerprint, and the reuse-or-conflict policy. |
 | `discovery.py` | Manifest-only catalog/plan/policy enumeration and `current` resolution. |
@@ -106,8 +108,11 @@ ways a network dependency creeps in.
   discovery*, so a filter that removes a form removes its partition instead of
   writing an empty one. v1 validated the value, recorded it, and never filtered on
   it, so `--amendment original` silently behaved like `both`.
-- **`plan()` accepts exactly four filters.** Passing a date is a `TypeError` at
-  the signature, not a silently ignored argument.
+- **`plan()` accepts exactly five filters**, one of which is a date selection.
+  Per-field date flags (`start_date`, `end_date`, `filing_date`) are still a
+  `TypeError` at the signature: the selection is one union over `report_date`, and
+  a caller passing a single bound expects a half-specified interval that no
+  grammar here accepts.
 - **Expansion retains 100% of the parent.** The child's selection runs with the
   parent's keys as `parent_active_keys`, so they are in the exclusion set before
   any candidate pool is drawn.
@@ -159,7 +164,7 @@ ways a network dependency creeps in.
 | `materialize`, `resolve_source`, `CatalogError`, `TRANSIENT_SOURCE_PARTS`, `FALLBACK_POLICY_VERSION` (`"1.1.0"`) | `catalog_job` |
 | `plan`, `plan_policy`, `SCOPE_DETERMINISTIC`, `SCOPE_POLICY` | `planner` |
 | `expand`, `prepare_parent`, `validate_parent`, `validate_parent_schema`, `validate_target`, `ExpansionLineage`, `ParentPlanError`, `read_expansion_metadata` | `expansion` |
-| `plan_identity`, `plan_fingerprint`, `plan_locator_keys`, `plan_bundle_complete`, `reuse_existing_plan`, `staged_plan_bundle`, `publish_plan_bundle`, `write_plan_documents`, `PlanConflictError`, `TARGET_PLAN_SCHEMA_VERSION` (`"1.1"`) | `publication` |
+| `plan_identity`, `plan_fingerprint`, `plan_locator_keys`, `plan_bundle_complete`, `reuse_existing_plan`, `staged_plan_bundle`, `publish_plan_bundle`, `write_plan_documents`, `PlanConflictError`, `TARGET_PLAN_SCHEMA_VERSION` (`"1.2"`) | `publication` |
 | `discover_catalogs`, `discover_plans`, `discover_policies`, `current_catalog_id`, `resolve_catalog_reference`, `policy_search_dirs`, `auto_policy`, `status` | `discovery` |
 | `FilingCatalogPaths`, `resolve_filing_catalog_paths`, `safe_identifier`, `form_partition_name`, `form_partition_dir`, `target_part_name`, `PIPELINE_DIR`, `SNAPSHOTS_DIR_NAME`, `PLANS_DIR_NAME`, `CURRENT_ALIAS`, `REQUIRED_PLAN_FILES`, and every artifact-name constant | `paths` |
 | `build_operator_menu` — four `MenuAction` entries | `operator` |
@@ -190,7 +195,7 @@ are in the [root README](../../../README.md#5-filing-catalog-pipeline-zero-netwo
 | Subcommand | Flags | Returns |
 | :--- | :--- | :--- |
 | `materialize` | `--source` (one Parquet part, treated as a one-part dataset), `--source-manifest` (Phase 1 snapshot manifest; its declared parts are resolved and verified), `--artifacts` | 0 with the manifest JSON on stdout, or 1 on `CatalogError` with `error: <msg>` on stderr. |
-| `plan` | `--catalog` (**required**), `--scope` (`deterministic` default; choices `deterministic`, `policy`), `--policy`, `--auto-policy`, `--artifacts`, `--forms` (nargs `*`), `--amendment` (`both` default; choices `both`, `original`, `amendments`), `--suffixes` (nargs `*`), `--limit` | 0 with the plan document on stdout, or 1 on `PlanConflictError`, `ValueError`, or `OSError`. |
+| `plan` | `--catalog` (**required**), `--scope` (`deterministic` default; choices `deterministic`, `policy`), `--policy`, `--auto-policy`, `--artifacts`, `--forms` (nargs `*`), `--amendment` (`both` default; choices `both`, `original`, `amendments`), `--suffixes` (nargs `*`), `--dates` (one comma-separated union; blank selects every date), `--limit` | 0 with the plan document on stdout, or 1 on `PlanConflictError`, `ValueError`, or `OSError`. |
 | `expand` | `--parent-plan` (**required**, a published policy plan directory), `--target-units` (**required**, int), `--artifacts` | 0 with the child plan document, or 1 on `PlanConflictError`, `ParentPlanError`, `ValueError`, or `OSError`. |
 | `status` | `--artifacts` | 0, with the published-state JSON on stdout. |
 
@@ -212,10 +217,20 @@ pipeline's own `sys.exit(main())` raises `SystemExit` through that boundary, so 
 process exit code does propagate: `0` on success, `1` on a handled error, `2` on a
 bad flag.
 
-The wizard's four actions cover `status`, `materialize`, deterministic `plan`, and
-`expand`. The catalog for a plan and the parent plan for an expansion are chosen by
-number from what is published, with the pointer-resolved catalog offered as the
-default, so neither a catalog id nor a plan directory has to be typed from memory.
+The wizard's five actions cover `status`, `materialize`, deterministic `plan`,
+`plan --scope policy`, and `expand`. The catalog for a plan and the parent plan for
+an expansion are chosen by number from what is published, with the pointer-resolved
+catalog offered as the default, so neither a catalog id nor a plan directory has to
+be typed from memory.
+
+**The policy action creates or runs a draft; it never invents one.** It lists the
+valid policy documents under `policies/` with their forms, unit count, date
+selection, and whether they declare era bands or derive them. A blank answer writes
+a catalog-derived all-forms draft, prints its path, and returns **without planning**
+— New and Run are separate decisions, and auto-selecting the first draft would
+publish a plan nobody chose from a profile they may not have read. A number runs
+that draft; a number outside the list is re-asked rather than falling through to
+New, so a typo cannot silently become a new draft.
 
 **The wizard never asks for an artifacts root.** Every action resolves through
 `resolve_filing_catalog_paths()`, which is the configured project root — the
@@ -362,7 +377,7 @@ whether the bundle is already published (raising on a conflict), and only then
 enter `staged_plan_bundle`.
 
 The deterministic scope discovers the available forms *after* applying the
-amendment and suffix filters, writes one `targets/form=<FORM>/data.parquet` per
+amendment, suffix, and date filters, writes one `targets/form=<FORM>/data.parquet` per
 form with `ORDER BY document_locator_key, occurrence_id`, applies `limit` as a
 wrapping `LIMIT` inside the ordered subquery, and always writes
 `locator_groups.parquet`. The policy scope builds a `FeatureSnapshotBuilder` over
@@ -375,6 +390,77 @@ the bundle actually holds and returns the stamped document so a later rewrite
 cannot drop it. The plan document records `request_fingerprint` — a SHA-256 over
 the canonicalized request — alongside the derived `plan_id`, so a plan's identity
 and the request that produced it are both readable from the file.
+
+The deterministic scope's fifth filter is a *date selection* over `report_date`:
+`--dates` takes one comma-separated union of absolute intervals (`2005Q3..2008Q1`)
+and recurring calendar periods (`@Q1[1999..2001]`). The grammar, its canonical
+form, and its persisted representation live in
+`domain.filing_catalog.filters`; both the CLI and the wizard go through that one
+parser. Two consequences are deliberate:
+
+- The **normalized** clauses, not the caller's spelling, enter the request, so
+  `2023` and `2023-01-01..2023-12-31` resolve to one published plan rather than
+  forking two bundles of the same rows.
+- An empty selection is no date predicate at all and keeps rows whose
+  `report_date` is unreadable; a nonempty one cannot place such a row and
+  excludes it. Form discovery runs the date predicate too, so a form excluded
+  only by date publishes no partition rather than an empty one.
+
+The date filter runs on a parsed `DATE` column the planner projects once into a
+`catalog_dated` view, so the predicate does not re-parse `report_date` per
+reference. Partitions therefore project `TARGET_COLUMNS` by name rather than
+taking that view's shape — selecting it would publish a column no consumer
+declared.
+
+### A policy's date selection and its era bands
+
+A policy declares a **date selection** in the same grammar `--dates` uses, over
+`report_date`, and it is enforced by the selection engine rather than applied to
+the published rows afterwards. `CandidateFilters` compiles it into every pool
+query — value pools, composite pools, seed-CIK pools, the weighted page, and the
+cell-availability aggregate — so no phase can draw an out-of-range candidate, not
+even transiently to consume quota on the way to being dropped. The same
+single-parse relation wrapping the deterministic planner uses applies, keyed on
+the feature snapshot's `report_date` column.
+
+An **empty** `era_bands` list means *derived*, not unstratified: the planner
+resolves bands from the report years the policy's own forms and date selection can
+reach. Deriving from the unfiltered year range instead would band years selection
+can never reach, and each would be an empty stratum in the report. Resolution
+happens before the feature build because era is baked into the snapshot, and
+before the request is hashed because the plan id should name the bands its locators
+were chosen under. The resolved bands are written into `plan.json`, so a reader
+never re-derives them. A selection that matches no dated row falls back to the
+catalog's own year range rather than a synthetic one — a fabricated band would put
+a coverage figure in the report that was never derived from data.
+
+Because a published plan embeds its *resolved* policy, expansion compares a derived-band
+draft against those bands leniently: a draft that derives bands inherits whatever its
+parent resolved, while a draft that declares bands must declare the same ones. Editing
+strata therefore produces a new root plan, never an expansion.
+
+### Form-by-era allocation
+
+Between the floor phase and the weighted fill, the selector allocates the remaining
+budget across nonempty `(form, era)` cells. The weighted fill is proportional, so
+without this the largest form takes the leftover budget and a rare form appears
+only as far as a declared floor pushed it; with it, the default sample is balanced
+and a floor becomes a *raise* above the balance.
+
+Availability is read once per run, in one grouped aggregate. Allocation then runs in
+rounds: each round gives every cell with room left an equal share of what remains,
+and a later round redistributes what an exhausted cell could not take. Cells are
+visited era-first, so a cap smaller than the cell count gives every era one row
+before any era takes a second — ordering by form would spend the whole budget on
+whichever form sorts first. Seeds, composites, and floors run before allocation and
+share the same global cap, so allocation only ever draws from what they left, and a
+floor that already filled a cell is credited rather than handed a second share. A
+round refused in full ends allocation: that means the family cap rejected every
+candidate, and re-querying the same cells would be refused identically.
+
+`selection_report.json` carries `form_era_allocation` with per-cell
+`available`/`selected`/`shortfall` plus the `equal_quota` and `unallocated` totals,
+so a plan never claims a target it could not meet.
 
 ### Advisory inventory feasibility
 
@@ -429,8 +515,12 @@ the parent's `seed_filers.csv` when no seed set is supplied; refuse `target_unit
 smaller than the parent's selected locator count (a contraction, not an expansion);
 derive the child policy with `dataclasses.replace`, setting
 `base_content_units=target_units`, `level = max(child level, parent level + 1)`, and
-the parent's id and fingerprint; run `validate_parent`, which compares parent and
-child policies field by field after removing the child-only fields; take the suffix
+the parent's id and fingerprint — from the **parent's embedded policy** rather than
+the caller's draft, so the child inherits the era bands the parent was stratified
+under and reuses its feature snapshot instead of building a second one; run
+`validate_parent`, which compares parent and child policies field by field after
+removing the child-only fields, treating a derived-band draft as agreeing with any
+resolved bands; take the suffix
 vocabulary from the parent so a child cannot silently narrow the surface its parent
 committed to; call `plan_policy` with `parent_active_keys=parent_keys`; refuse to
 publish if the child's `unique_locators_count` fell short of `target_units`; and
@@ -451,13 +541,13 @@ verifies.
 | File | Covers |
 | :--- | :--- |
 | `test_catalog_job.py` | The three guards, both publication modes, the pointer rule, and manifest source resolution. |
-| `test_planner.py` | The four filters, form discovery, the zero-row plan, the locator projection. |
-| `test_policy_planner.py` | The quota profile, the 18-column projection, the reserve pool, the pinned seed set, and an independent-root rebuild comparison. |
-| `test_expansion.py` | The 100%-retention invariant, every parent refusal, and seeded expansion from the sidecar. |
+| `test_planner.py` | The five filters including the date selection, form discovery, the zero-row plan, the locator projection. |
+| `test_policy_planner.py` | The quota profile, the resolved era bands, a policy's date selection, the allocation block, the 18-column projection, the reserve pool, the pinned seed set, and an independent-root rebuild comparison. |
+| `test_expansion.py` | The 100%-retention invariant, every parent refusal, seeded expansion from the sidecar, and inheriting the parent's resolved era bands. |
 | `test_publication.py` | Plan identity, completeness, reuse-versus-conflict, staging, the selection fingerprint. |
 | `test_paths.py` | The artifact layout, the shared catalog/plan namespace, and identifier safety. |
 | `test_discovery.py` | Manifest-only enumeration and `current` resolution. |
-| `test_operator.py` | The four menu actions, their delegation to the CLI, and discovery-driven catalog and expansion-parent selection. |
+| `test_operator.py` | The five menu actions, their delegation to the CLI, discovery-driven catalog, draft, and expansion-parent selection, and the blank-is-New rule. |
 | `test_cli.py` | Flags, the policy requirement, exit codes, the stdout/stderr split. |
 | `test_phase25_contract.py` | The Phase 2 → 2.5 hand-off: the layout Phase 2.5 binds to, with the per-scope occurrence schemas pinned separately. |
 | `test_catalog_fixtures.py` | DuckDB catalog materialization against committed fixtures. |
@@ -470,6 +560,21 @@ each to say something weaker."
 
 ## Deliberate gaps
 
+- **`locator_groups.parquet` does not scale past a mid-sized plan.** Known defect,
+  not a design choice. `_locator_groups_query` aggregates one row per
+  `document_locator_key` carrying eight `arg_min` states, and those states are
+  pinned rather than spilled: planning the full 13.85M-occurrence catalog fails
+  with `OutOfMemoryException` at the locator copy (measured: identical failure
+  with and without a date selection, so it is independent of any filter), while a
+  selection of 347k occurrences across 85 forms completes in about two minutes.
+  The determinism the grouping buys — a representative row chosen by a total
+  order rather than by scan order — is worth keeping, but the current spelling
+  holds all states for all groups at once. The fix is to make the aggregate
+  spillable (ordering and deduplicating by `document_locator_key` before the
+  representative is picked, or sorting the input so the aggregate streams), which
+  is a change to a Stage A query that every consumer's expected output depends on.
+  Until then, a large deterministic plan must be narrowed with `--forms`,
+  `--dates`, or `--limit`.
 - **`snapshots/` holds two kinds of snapshot, told apart by manifest.** Catalog
   snapshots are `<catalog_id>/` holding `snapshot.manifest.json`; the Stage B
   feature snapshot is a 32-hex directory holding `feature_snapshot.json`. Both
@@ -497,14 +602,6 @@ each to say something weaker."
   ever needs to fetch, it must be a new pipeline, not a `run` command added here —
   and `tests/test_network_isolation.py` fails the gate if anything under this
   package reaches `edgar_sec.infra.sec_http`.
-- **No operator action for `plan --scope policy`.** The wizard offers status,
-  materialize, deterministic plan, and expand, and every one of those inputs is
-  discoverable or defaultable. A policy scope is not: choosing one interactively
-  means authoring or deriving a quota profile, a design decision with no menu
-  vocabulary. `plan --scope policy` stays CLI-only. `expand` *is* offered — its two
-  inputs are a parent plan and a target size, both discoverable — and the menu
-  lists only policy-scope plans, because `expand` refuses a deterministic parent
-  outright and listing one would be a choice that cannot succeed.
 - **The wizard cannot target a non-default artifacts root.** Deliberate, not an
   oversight. The root already has one authority — the registered `artifacts.root`
   setting that `resolve_paths()` reads from `ARTIFACTS_ROOT`, `.env`, or the

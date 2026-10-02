@@ -142,8 +142,11 @@ is no `--batch-size` flag; the Phase 1 part is the unit of work.
 python run.py filing-catalog materialize \
     --source-manifest <phase1>/metadata/snapshots/<id>/metadata.manifest.json
 
-# Deterministic plan: four filters, no dates, 8-column locator projection.
+# Deterministic plan: five filters including --dates, 8-column locator projection.
 python run.py filing-catalog plan --catalog current --forms 10-K --amendment original
+# Narrow it by report_date: one quoted union of absolute windows and recurring periods.
+python run.py filing-catalog plan --catalog current \
+    --dates "@Q1[1999..2001],2005Q3..2008Q1,2011-12-31..2019-11-03"
 
 # Policy plan: fill a declared quota profile. Era-stratified, 18 columns.
 python run.py filing-catalog plan --catalog current --scope policy \

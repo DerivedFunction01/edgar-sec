@@ -31,6 +31,7 @@ from edgar_sec.pipelines.filing_catalog.paths import (
     REQUIRED_PLAN_FILES,
     RESERVE_TARGETS_NAME,
     SEED_FILERS_NAME,
+    SELECTION_REPORT_NAME,
     resolve_filing_catalog_paths,
 )
 from edgar_sec.pipelines.filing_catalog.planner import (
@@ -367,6 +368,28 @@ def test_a_policy_plan_publishes_its_normalized_seed_set(
     assert meta["seed_fingerprint"] == compute_seed_fingerprint(published)
 
 
+def test_a_different_target_or_level_still_separates_plan_identities(
+    catalog_snapshot: tuple[dict[str, object], Path],
+    catalog_artifacts_root: Path,
+) -> None:
+    """The request names neither, and must still distinguish both.
+
+    ``target_units`` and ``level`` were removed from the request because they
+    restate policy fields the fingerprint already covers. Removing a key is
+    only safe if the fact it carried still moves the identity, so this pins
+    that the fingerprint really is what separates the two plans.
+    """
+    manifest, _ = catalog_snapshot
+    artifacts_root = _artifacts_root(catalog_artifacts_root)
+    catalog = str(manifest["catalog_id"])
+
+    base = plan_policy(catalog, _policy(), artifacts_root)
+    bigger = plan_policy(catalog, _policy(base_content_units=4), artifacts_root)
+    deeper = plan_policy(catalog, _policy(level=2), artifacts_root)
+
+    assert len({base["plan_id"], bigger["plan_id"], deeper["plan_id"]}) == 3
+
+
 def test_editing_the_seed_csv_changes_the_plan_identity(
     catalog_snapshot: tuple[dict[str, object], Path],
     tmp_path: Path,
@@ -589,3 +612,174 @@ def test_a_policy_rebuild_into_an_independent_root_is_identical(
     for partition in sorted(first_dir.glob("targets/form=*/data.parquet")):
         mirror = second_dir / partition.relative_to(first_dir)
         assert pq.read_table(partition).to_pylist() == pq.read_table(mirror).to_pylist()
+
+
+# --- the date selection and derived era bands --------------------------------
+
+
+def _selection_report(
+    artifacts_root: Path, meta: dict[str, object]
+) -> dict[str, object]:
+    plan_dir = resolve_filing_catalog_paths(artifacts_root).plan_dir(
+        str(meta["plan_id"])
+    )
+    return json.loads((plan_dir / SELECTION_REPORT_NAME).read_text("utf-8"))
+
+
+def _derived_bands_policy(**overrides: object) -> SelectionPolicy:
+    return _policy(era_bands=[], **overrides)
+
+
+def test_a_policy_declaring_no_bands_gets_bands_from_the_catalog(
+    catalog_snapshot: tuple[dict[str, object], Path], catalog_artifacts_root: Path
+) -> None:
+    """Automatic mode bands the years this selection can reach.
+
+    The fixture's dated 10-K and 10-Q targets report in 2023 and 2024, so the
+    derived bands tile exactly those two years rather than the decades around
+    them.
+    """
+    manifest, _ = catalog_snapshot
+    meta = plan_policy(
+        str(manifest["catalog_id"]),
+        _derived_bands_policy(forms=["10-K", "10-Q"]),
+        catalog_artifacts_root,
+    )
+    bands = SelectionPolicy.from_dict(meta["selection_policy"]).era_bands
+    assert bands, "automatic mode must resolve bands"
+    assert bands[0].start_year == 2023
+    assert bands[-1].end_year == 2025
+    # The plan records the bands selection actually used, so a reader never
+    # re-derives them and a later rebuild cannot disagree.
+    assert (
+        SelectionPolicy.from_dict(meta["selection_policy"]).derives_era_bands is False
+    )
+    assert (
+        meta["policy_fingerprint"]
+        == SelectionPolicy.from_dict(meta["selection_policy"]).policy_fingerprint
+    )
+
+
+def test_derived_bands_follow_the_reachable_years(
+    catalog_snapshot: tuple[dict[str, object], Path], catalog_artifacts_root: Path
+) -> None:
+    """A 2024-only selection must not band a year it can never select.
+
+    The fixture's only 2024 report date belongs to a 10-Q, so the policy has to
+    declare that form for the selection to reach 2024 at all.
+    """
+    manifest, _ = catalog_snapshot
+    meta = plan_policy(
+        str(manifest["catalog_id"]),
+        _derived_bands_policy(
+            forms=["10-Q"],
+            date_selection=[
+                {
+                    "kind": "absolute",
+                    "start_date": "2024-01-01",
+                    "end_date": "2024-12-31",
+                }
+            ],
+        ),
+        catalog_artifacts_root,
+    )
+    bands = SelectionPolicy.from_dict(meta["selection_policy"]).era_bands
+    assert [band.start_year for band in bands] == [2024]
+
+
+def test_a_declared_band_list_is_left_alone(
+    catalog_snapshot: tuple[dict[str, object], Path], catalog_artifacts_root: Path
+) -> None:
+    manifest, _ = catalog_snapshot
+    meta = plan_policy(
+        str(manifest["catalog_id"]),
+        _policy(era_bands=[EraBand(name="declared", start_year=1990, end_year=1991)]),
+        catalog_artifacts_root,
+    )
+    bands = SelectionPolicy.from_dict(meta["selection_policy"]).era_bands
+    assert [band.name for band in bands] == ["declared"]
+
+
+def test_a_date_selection_narrows_what_the_plan_selects(
+    catalog_snapshot: tuple[dict[str, object], Path], catalog_artifacts_root: Path
+) -> None:
+    """The selection is enforced by the engine, not merely recorded.
+
+    The fixture's declared forms report 2023 dates, so restricting to 2024 leaves
+    nothing and the plan publishes empty rather than out-of-range filings.
+    """
+    manifest, _ = catalog_snapshot
+    meta = plan_policy(
+        str(manifest["catalog_id"]),
+        _policy(
+            date_selection=[
+                {
+                    "kind": "absolute",
+                    "start_date": "2024-01-01",
+                    "end_date": "2024-12-31",
+                }
+            ]
+        ),
+        catalog_artifacts_root,
+    )
+    report = _selection_report(catalog_artifacts_root, meta)
+    assert report["date_selection_text"] == "2024-01-01..2024-12-31"
+    assert report["form_era_allocation"]["cell_count"] == 0
+    assert meta["selected_rows"] == 0
+
+
+def test_the_report_states_the_selection_and_the_allocation(
+    catalog_snapshot: tuple[dict[str, object], Path], catalog_artifacts_root: Path
+) -> None:
+    manifest, _ = catalog_snapshot
+    meta = plan_policy(str(manifest["catalog_id"]), _policy(), catalog_artifacts_root)
+    report = _selection_report(catalog_artifacts_root, meta)
+    assert report["date_selection"] == []
+    assert report["date_selection_text"] == ""
+    assert report["era_band_count"] == len(meta["selection_policy"]["era_bands"])
+    assert report["derives_era_bands"] is False
+    allocation = report["form_era_allocation"]
+    assert {"cells", "cell_count", "equal_quota", "unallocated"} <= set(allocation)
+
+
+def test_a_policy_document_without_the_new_field_is_still_readable(
+    catalog_snapshot: tuple[dict[str, object], Path], catalog_artifacts_root: Path
+) -> None:
+    """A draft written before the field existed is a policy, not an error."""
+    manifest, _ = catalog_snapshot
+    legacy = _policy().to_dict()
+    legacy.pop("date_selection")
+    meta = plan_policy(
+        str(manifest["catalog_id"]),
+        SelectionPolicy.from_dict(legacy),
+        catalog_artifacts_root,
+    )
+    assert meta["selection_policy"]["date_selection"] == []
+
+
+def test_a_selection_that_reaches_nothing_falls_back_to_the_catalogs_years(
+    catalog_snapshot: tuple[dict[str, object], Path], catalog_artifacts_root: Path
+) -> None:
+    """A plan still needs bands when the selection matches no dated row.
+
+    The fallback is the catalog's own year range rather than a synthetic one: a
+    fabricated band would put a coverage figure in the report that was never
+    derived from data.
+    """
+    manifest, _ = catalog_snapshot
+    meta = plan_policy(
+        str(manifest["catalog_id"]),
+        _derived_bands_policy(
+            date_selection=[
+                {
+                    "kind": "absolute",
+                    "start_date": "2024-01-01",
+                    "end_date": "2024-12-31",
+                }
+            ]
+        ),
+        catalog_artifacts_root,
+    )
+    bands = SelectionPolicy.from_dict(meta["selection_policy"]).era_bands
+    assert [band.start_year for band in bands] == [2023, 2024]
+    assert meta["selected_rows"] == 0

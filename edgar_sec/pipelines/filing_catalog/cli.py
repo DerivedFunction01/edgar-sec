@@ -8,10 +8,10 @@ locators, and ``status`` reports published state from manifests only.
 There is deliberately no ``run`` command. Nothing in this phase performs network
 work, so the resumable-chunk lifecycle of Phase 1 has no analogue here.
 
-``plan --scope deterministic`` accepts exactly four filters and no date flags;
-date slicing belongs to the Stage B selection engine, and passing a date to
-that scope is an error rather than a no-op. ``--scope policy`` takes the
-quota profile instead, and it is the only scope that reasons about dates.
+``plan --scope deterministic`` accepts exactly five filters, one of which is a
+date selection over ``report_date``; eras and cohort balance still belong to the
+Stage B selection engine. ``--scope policy`` takes the quota profile instead, and
+it is the only scope that reasons about balance.
 """
 
 from __future__ import annotations
@@ -85,6 +85,7 @@ def cmd_plan(args: argparse.Namespace) -> int:
                 forms=tuple(args.forms) if args.forms else None,
                 amendment=args.amendment,
                 document_suffixes=tuple(args.suffixes) if args.suffixes else None,
+                dates=args.dates,
                 limit=args.limit,
                 progress=_emit_progress,
             )
@@ -163,7 +164,7 @@ def build_parser() -> argparse.ArgumentParser:
         "--scope",
         default=SCOPE_DETERMINISTIC,
         choices=[SCOPE_DETERMINISTIC, SCOPE_POLICY],
-        help="deterministic slices on four filters; policy fills a quota profile",
+        help="deterministic slices on five filters; policy fills a quota profile",
     )
     plan_parser.add_argument(
         "--policy", default="", help="selection policy document (policy scope)"
@@ -188,6 +189,19 @@ def build_parser() -> argparse.ArgumentParser:
         nargs="*",
         default=[],
         help="allowed document suffixes, e.g. .htm .txt",
+    )
+    plan_parser.add_argument(
+        "--dates",
+        default="",
+        metavar="SELECTION",
+        help=(
+            "report_date selection as one comma-separated union of absolute "
+            "intervals and recurring periods, e.g. "
+            "'@Q1[1999..2001],2005Q3..2008Q1,2011-12-31..2019-11-03'. "
+            "Atoms: YYYY, YYYYQn, YYYY-MM, YYYY-MM-DD; ranges use '..' and may "
+            "be open on either side. Recurring: @Q1-@Q4, @M01-@M12, each with "
+            "optional inclusive years '@Q1[2011..2015]'. Blank selects every date"
+        ),
     )
     plan_parser.add_argument(
         "--limit", type=int, default=None, help="max rows per form partition"

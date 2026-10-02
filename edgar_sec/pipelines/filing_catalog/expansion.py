@@ -188,12 +188,17 @@ def validate_parent(
     policy: SelectionPolicy,
     catalog_id: str,
     seed_fingerprint: str,
-) -> None:
+) -> SelectionPolicy | None:
     """Reject a child policy that does not extend its parent.
 
     Checked before selection so a mismatched expansion costs a validation error
     rather than a full feature build. A deterministic plan has no selection to
     extend, so it is refused outright.
+
+    Returns the parent's *resolved* policy when the plan embedded one, so the
+    caller derives the child from the constraints the parent was actually built
+    under rather than from the draft that produced it. That is what keeps era
+    bands -- and therefore the feature snapshot -- identical between the two.
     """
     if parent_meta.get("scope") != SCOPE_POLICY:
         raise ParentPlanError("plan expansion requires a policy-driven parent plan")
@@ -213,12 +218,50 @@ def validate_parent(
         embedded = parent_meta.get("selection_policy")
         if isinstance(embedded, dict):
             parent_policy = SelectionPolicy.from_dict(embedded)
-    if parent_policy is not None and _inherited_policy_fields(
-        parent_policy
-    ) != _inherited_policy_fields(policy):
+    if parent_policy is not None and not _inherits_resolution(parent_policy, policy):
         raise ParentPlanError(
             "child selection policy differs from the parent outside base_content_units"
         )
+    return parent_policy
+
+
+def _inherits_resolution(
+    parent_policy: SelectionPolicy, child: SelectionPolicy
+) -> bool:
+    """Whether the child declares the same policy as its resolved parent.
+
+    A published plan embeds the policy *with its bands resolved*, because the
+    locators it holds were stratified under those bands and era is baked into the
+    feature snapshot. A draft that still asks for derived bands would compare
+    unequal against that, even though it declares nothing different.
+
+    So a draft that derives bands inherits whatever its parent resolved; a draft
+    that declares bands must declare the same ones. That is the whole
+    compatibility rule, and it is why editing a draft's strata produces a new
+    root plan rather than an expansion.
+    """
+    parent_fields = _inherited_policy_fields(parent_policy)
+    child_fields = _inherited_policy_fields(child)
+    if child.derives_era_bands:
+        child_fields.pop("era_bands", None)
+        parent_fields.pop("era_bands", None)
+    return parent_fields == child_fields
+
+
+def _child_policy(
+    policy: SelectionPolicy,
+    base: SelectionPolicy,
+    target_units: int,
+    parent_meta: dict[str, Any],
+    recorded_fingerprint: str,
+) -> SelectionPolicy:
+    return replace(
+        base,
+        base_content_units=target_units,
+        level=max(policy.level, int(parent_meta.get("level", 1)) + 1),
+        parent_plan_id=str(parent_meta["plan_id"]),
+        parent_plan_fingerprint=recorded_fingerprint,
+    )
 
 
 def prepare_parent(
@@ -253,14 +296,23 @@ def prepare_parent(
             "the bundle was modified after publication"
         )
 
-    child_policy = replace(
-        policy,
-        base_content_units=target_units,
-        level=max(policy.level, int(parent_meta.get("level", 1)) + 1),
-        parent_plan_id=str(parent_meta["plan_id"]),
-        parent_plan_fingerprint=recorded_fingerprint,
+    # Validated once against the caller's declaration, then again against the
+    # parent's resolved policy when one is embedded. The second pass is what
+    # makes the child inherit the bands its parent was stratified under; it is
+    # cheap because both checks are dictionary comparisons.
+    child_policy = _child_policy(
+        policy, policy, target_units, parent_meta, recorded_fingerprint
     )
-    validate_parent(parent_meta, None, child_policy, catalog_id, seed_fingerprint)
+    parent_policy = validate_parent(
+        parent_meta, None, child_policy, catalog_id, seed_fingerprint
+    )
+    if parent_policy is not None:
+        child_policy = _child_policy(
+            policy, parent_policy, target_units, parent_meta, recorded_fingerprint
+        )
+        validate_parent(
+            parent_meta, parent_policy, child_policy, catalog_id, seed_fingerprint
+        )
     return parent_meta, parent_keys, child_policy
 
 

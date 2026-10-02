@@ -39,7 +39,10 @@ from edgar_sec.pipelines.filing_catalog.paths import (
 # Bump when the plan document or selection report changes shape. 1.1 added the
 # pinned seed sidecar and the selection fingerprint, both of which a reused
 # bundle must now carry, so bundles published under 1.0 are not reusable as 1.1.
-TARGET_PLAN_SCHEMA_VERSION = "1.1"
+# 1.2 adds the date selection to the deterministic plan document, and to the
+# selection report along with the resolved era bands and the form-by-era
+# allocation, so a reader no longer has to re-derive what a plan selected.
+TARGET_PLAN_SCHEMA_VERSION = "1.2"
 
 
 class PlanConflictError(RuntimeError):

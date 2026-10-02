@@ -74,6 +74,10 @@ To balance long-term analytical capability with rigorous software engineering, t
 - Materializes flat filing occurrences from finalized Phase 01 Parquet artifacts via memory-bounded DuckDB staging.
 - Normalizes corporate entities into `company_family` clusters to prevent multi-subsidiary duplicate over-representation.
 - Plans target selections across form families (`10-K`, `10-K/A`, `10-KSB`, `10-KT`, `10-Q`, etc.): deterministic whole-catalog filtering (`--scope deterministic`) or policy-driven deficit selection (`--scope policy`) with expandable child plans; plan bundles are immutable, selectable work orders and the selection scope is independent of the Phase 2.5 acquisition mode.
+- **Date selection**: both scopes narrow on `report_date` through one grammar, a comma-separated union of absolute calendar intervals (`2005Q3..2008Q1`) and recurring calendar periods (`@Q1[1999..2001]`). Quarters are calendar quarters of `report_date`, not issuer fiscal quarters. An empty selection applies no date predicate; a nonempty one excludes rows whose `report_date` cannot be read.
+- **Era stratification**: a policy declaring no era bands derives them from the report years its own forms and date selection can reach, so a policy selecting only `@Q1` never band a quarter it cannot select. The resolved bands are recorded in the plan, and an expansion inherits its parent's.
+- **Form-by-era allocation**: the remaining budget is spread evenly across nonempty `(form, era)` cells with redistribution from exhausted cells and era-first ordering, so the default sample is balanced rather than dominated by the largest form; per-cell availability, allocation, and shortfall are reported.
+- **Operator workflow**: the wizard lists the policy drafts under `policies/`, writes a catalog-derived all-forms draft for editing on a blank answer, and never plans a draft the operator did not choose.
 
 #### Phase 2.5: Raw Webpage Storage & Multi-Era Text Normalization
 - Consumes Phase 02 target plans and fetches each unique `(accession, document_path)` locator exactly once.

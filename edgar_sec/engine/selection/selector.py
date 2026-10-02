@@ -70,6 +70,24 @@ class SelectionResult:
     report: dict[str, Any] = field(default_factory=dict)
 
 
+@dataclass(slots=True)
+class _CellBudget:
+    """One ``(form, era)`` cell's share of the remaining selection budget.
+
+    ``taken`` counts what this phase drew, while ``selected`` counts everything
+    the plan holds in the cell including earlier phases. The difference matters:
+    a floor that already filled a cell reduces how much is left to allocate there,
+    and the report has to say the cell is covered rather than that allocation
+    covered it.
+    """
+
+    form: str
+    era: str
+    available: int
+    selected: int = 0
+    taken: int = 0
+
+
 def classification_signature(candidate: dict[str, Any]) -> tuple[str, ...]:
     """Return the capped classification tuple for one candidate.
 
@@ -116,6 +134,7 @@ class DeficitSelector:
                 amendment=self.policy.amendment,
                 document_suffixes=tuple(self.policy.document_suffixes),
                 max_reported_size=self.policy.max_reported_size,
+                date_selection=self.policy.date_selection_clauses,
             ),
             threads=self._threads,
             memory_limit=self._memory_limit,
@@ -171,6 +190,13 @@ class DeficitSelector:
             self._select_seed_filers(source, _record, selected_keys, target_units)
             self._select_composites(source, _record, selected_keys, target_units)
             self._select_floors(source, _record, selected_keys, target_units, coverage)
+            allocation = self._allocate_form_era_cells(
+                source,
+                _record,
+                selected_keys,
+                selected_candidates,
+                target_units,
+            )
             self._fill_weighted(source, _record, selected_keys, target_units, coverage)
 
             reserve_keys, reserve_candidates = self._select_reserve(
@@ -192,6 +218,7 @@ class DeficitSelector:
                 deduplicated_signatures=deduplicated_signatures,
                 signature_counts=signature_counts,
                 coverage=coverage,
+                allocation=allocation,
             ),
         )
 
@@ -285,6 +312,148 @@ class DeficitSelector:
         deficits.sort(key=lambda item: -item[0])
         return deficits
 
+    def _allocate_form_era_cells(
+        self,
+        source: CandidateSource,
+        record: Any,
+        selected_keys: list[str],
+        selected_candidates: list[dict[str, Any]],
+        target_units: int,
+    ) -> dict[str, Any]:
+        """Fill the remaining budget evenly across nonempty form-by-era cells.
+
+        The weighted fill after this phase is proportional: whichever form is
+        largest takes the leftover budget, which on a real corpus means the
+        abundant form wins every time and the rare ones are represented only as
+        far as a declared floor pushed them. Allocating across cells first makes
+        the default sample balanced, and a floor stays a *raise* above that
+        balance rather than the only thing producing it.
+
+        Availability is read once per run. Re-deriving it per cell would cost one
+        aggregate scan per cell, and the whole point of the phase is that its
+        result is reported: a cell that could not fill its share is named, not
+        quietly replaced.
+
+        The global cap is shared with the earlier phases, so this one only ever
+        draws from what they left. Allocation can therefore underfill when seeds
+        or floors have already claimed the budget, and says so. It also stops
+        when a round is refused in full: a cell whose every candidate is blocked
+        by the family cap will be refused identically on every later round, and
+        the honest outcome is a named shortfall rather than a spin.
+        """
+        availability = source.cell_availability()
+        budget = max(0, target_units - len(selected_keys))
+        if not availability:
+            return {"budget": budget, "unallocated": budget, "rounds": 0, "cells": []}
+
+        # What the earlier phases already hold counts toward its cell, so a cell
+        # credited by a floor is not then handed a second full share. Keyed on
+        # the raw column values rather than the normalized dimension values:
+        # ``cell_availability`` reports raw strings and ``pool_for_cell`` binds
+        # one straight back into the query, so normalizing on only one side
+        # would silently credit nothing.
+        already: dict[tuple[str, str], int] = {}
+        for candidate in selected_candidates:
+            cell_key = (str(candidate.get("form")), str(candidate.get("era")))
+            already[cell_key] = already.get(cell_key, 0) + 1
+
+        cells = [
+            _CellBudget(
+                form=form,
+                era=era,
+                available=count,
+                selected=already.get((form, era), 0),
+            )
+            for form, era, count in availability
+        ]
+        # Era-first ordering: when the cap is smaller than the cell count, a
+        # chronological pass gives every era at least one row before any era
+        # takes a second. Form-then-era would instead spend the whole budget on
+        # whichever form sorts first.
+        cells.sort(key=lambda cell: (self._era_rank(cell.era), cell.form, cell.era))
+
+        remaining = budget
+        rounds = 0
+        while remaining > 0:
+            open_cells = [cell for cell in cells if cell.taken < cell.available]
+            if not open_cells:
+                break
+            rounds += 1
+            added_this_round = 0
+            share = max(1, remaining // len(open_cells))
+            for cell in open_cells:
+                if remaining <= 0:
+                    break
+                room = min(cell.available - cell.taken, remaining, share)
+                if room <= 0:
+                    continue
+                added = self._fill_cell(source, record, cell, room)
+                cell.taken += added
+                cell.selected += added
+                remaining -= added
+                added_this_round += added
+            if added_this_round == 0:
+                # Every open cell was refused, which here means the family cap:
+                # the rows exist but cannot be admitted without collapsing the
+                # sample onto one classification. Another round would re-query
+                # the same cells and be refused identically.
+                break
+
+        quota = max(1, budget // len(cells)) if cells else 0
+        return {
+            "budget": budget,
+            "unallocated": remaining,
+            "rounds": rounds,
+            "equal_quota": quota,
+            "cells": [
+                {
+                    "form": cell.form,
+                    "era": cell.era,
+                    "available": cell.available,
+                    "selected": cell.selected,
+                    "shortfall": max(0, quota - cell.selected),
+                }
+                for cell in cells
+            ],
+        }
+
+    def _fill_cell(
+        self,
+        source: CandidateSource,
+        record: Any,
+        cell: _CellBudget,
+        room: int,
+    ) -> int:
+        """Draw up to ``room`` candidates from one cell, respecting the cap.
+
+        ``record`` enforces the family cap, so a cell that is entirely one
+        corporate group's filings yields fewer rows than it asked for. That is
+        counted as a shortfall rather than backfilled from elsewhere: the
+        balance is over distinct filings, and padding a cell with a neighbour's
+        rows would defeat it.
+        """
+        pool = source.pool_for_cell(cell.form, cell.era, limit=room)
+        added = 0
+        for candidate in pool:
+            if added >= room:
+                break
+            if record(candidate):
+                added += 1
+        return added
+
+    def _era_rank(self, era: str) -> tuple[int, int]:
+        """Order eras by their declared band, so allocation walks the calendar.
+
+        Ranked by the band's own start rather than by name: names are ``1999`` or
+        ``2003_2006`` and sort correctly only for one width. An era the policy
+        did not declare -- ``unknown``, or a band no longer in effect -- sorts
+        last, because it is not part of the declared coverage.
+        """
+        for rank, band in enumerate(self.policy.era_bands):
+            if band.name == era:
+                return (rank, 0)
+        return (len(self.policy.era_bands), 1)
+
     def _fill_weighted(
         self,
         source: CandidateSource,
@@ -364,6 +533,7 @@ class DeficitSelector:
         deduplicated_signatures: int,
         signature_counts: Counter[tuple[str, ...]],
         coverage: dict[str, dict[str, int]],
+        allocation: dict[str, Any],
     ) -> dict[str, Any]:
         underfilled: dict[str, dict[str, dict[str, int]]] = {}
         for dimension, requirements in self.policy.floors.items():
@@ -375,6 +545,7 @@ class DeficitSelector:
                         "selected": filled,
                         "deficit": required - filled,
                     }
+        allocation_cells = allocation.get("cells") or []
         return {
             "policy_fingerprint": self.policy.policy_fingerprint,
             "corpus_id": self.policy.corpus_id,
@@ -392,6 +563,21 @@ class DeficitSelector:
                 }
             ),
             "underfilled_floors": underfilled,
+            "era_band_count": len(self.policy.era_bands),
+            "derives_era_bands": self.policy.derives_era_bands,
+            "date_selection": list(self.policy.date_selection),
+            "date_selection_text": self.policy.date_selection_text,
+            "form_era_allocation": {
+                "budget": allocation.get("budget", 0),
+                "equal_quota": allocation.get("equal_quota", 0),
+                "rounds": allocation.get("rounds", 0),
+                "unallocated": allocation.get("unallocated", 0),
+                "cell_count": len(allocation_cells),
+                "underfilled_cells": sum(
+                    1 for cell in allocation_cells if cell["shortfall"] > 0
+                ),
+                "cells": allocation_cells,
+            },
             "coverage_distributions": {
                 dimension: counts for dimension, counts in coverage.items() if counts
             },

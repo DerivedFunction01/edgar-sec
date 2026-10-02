@@ -63,11 +63,92 @@ def test_plan_requires_a_catalog() -> None:
         build_parser().parse_args(["plan"])
 
 
-def test_no_date_flag_exists_on_plan() -> None:
-    """Date slicing is Stage B; a date flag must not be silently accepted."""
-    for flag in ("--start-date", "--end-date", "--filing-date", "--era"):
+def test_no_per_keyword_date_flag_exists_on_plan() -> None:
+    """``--dates`` is one selection; per-field date flags are not a vocabulary.
+
+    A caller reaching for ``--start-date`` expects a half-specified interval, and
+    no grammar in this repository accepts one. Silently ignoring the flag would
+    publish a plan over every date instead.
+    """
+    for flag in ("--start-date", "--end-date", "--filing-date", "--era", "--years"):
         with pytest.raises(SystemExit):
             build_parser().parse_args(["plan", "--catalog", "abc", flag, "2020-01-01"])
+
+
+def test_plan_defaults_to_no_date_selection() -> None:
+    args = build_parser().parse_args(["plan", "--catalog", "abc"])
+    assert args.dates == ""
+
+
+def test_plan_takes_the_date_selection_as_one_quoted_value() -> None:
+    """One value, not ``nargs="*"``: a comma separates clauses, not arguments."""
+    args = build_parser().parse_args(
+        [
+            "plan",
+            "--catalog",
+            "abc",
+            "--dates",
+            "@Q1[1999..2001],2005Q3..2008Q1,2011-12-31..2019-11-03",
+        ]
+    )
+    assert args.dates == "@Q1[1999..2001],2005Q3..2008Q1,2011-12-31..2019-11-03"
+
+
+def test_plan_does_not_split_the_date_selection_into_a_list() -> None:
+    args = build_parser().parse_args(
+        ["plan", "--catalog", "abc", "--dates", "2023,2024"]
+    )
+    assert args.dates == "2023,2024"
+
+
+def test_an_invalid_date_selection_is_reported_not_published(
+    tmp_path: Path, capsys: pytest.CaptureFixture[str]
+) -> None:
+    artifacts = tmp_path / "art"
+    main(["materialize", "--source", SAMPLE, "--artifacts", str(artifacts)])
+    catalog_id = _json_output(capsys)["catalog_id"]
+    code = main(
+        [
+            "plan",
+            "--catalog",
+            catalog_id,
+            "--artifacts",
+            str(artifacts),
+            "--dates",
+            "2024Q5",
+        ]
+    )
+    captured = capsys.readouterr()
+    assert code == 1
+    assert "2024Q5" in captured.err
+    assert captured.out == ""
+
+
+def test_plan_publishes_the_requested_date_selection(
+    tmp_path: Path, capsys: pytest.CaptureFixture[str]
+) -> None:
+    artifacts = tmp_path / "art"
+    main(["materialize", "--source", SAMPLE, "--artifacts", str(artifacts)])
+    catalog_id = _json_output(capsys)["catalog_id"]
+    assert (
+        main(
+            [
+                "plan",
+                "--catalog",
+                catalog_id,
+                "--artifacts",
+                str(artifacts),
+                "--dates",
+                "2024",
+            ]
+        )
+        == 0
+    )
+    plan = _json_output(capsys)
+    assert plan["date_selection"] == [
+        {"kind": "absolute", "start_date": "2024-01-01", "end_date": "2024-12-31"}
+    ]
+    assert plan["selected_rows"] == 1
 
 
 # --- commands -------------------------------------------------------------

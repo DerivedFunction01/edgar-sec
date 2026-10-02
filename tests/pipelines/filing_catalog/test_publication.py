@@ -241,9 +241,13 @@ def test_publish_moves_the_whole_bundle(tmp_path: Path) -> None:
 
 
 def test_target_plan_schema_version_is_declared() -> None:
-    # 1.1 added the pinned seed sidecar and the selection fingerprint. Both are
-    # required to reuse a bundle, so a 1.0 bundle must not resolve as a 1.1 one.
-    assert TARGET_PLAN_SCHEMA_VERSION == "1.1"
+    # 1.1 added the pinned seed sidecar and the selection fingerprint, both of
+    # which a reused bundle must carry. 1.2 added the date selection to both plan
+    # scopes, and the resolved era bands and form-by-era allocation to the
+    # selection report. Every bump makes the previous bundles non-reusable
+    # rather than quietly reinterpreted, so the version is pinned rather than
+    # merely carried.
+    assert TARGET_PLAN_SCHEMA_VERSION == "1.2"
 
 
 def test_publication_stamps_a_selection_fingerprint(tmp_path: Path) -> None:

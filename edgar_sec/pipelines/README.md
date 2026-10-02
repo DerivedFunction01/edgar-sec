@@ -130,7 +130,7 @@ sits at Layer 4.
 | `filing_catalog/cli.py` | The four commands, policy resolution, and the stdout/stderr split (231 loc). |
 | `filing_catalog/operator.py` | Interactive wizard over `cmd_materialize` / `cmd_plan` / `cmd_status` / `cmd_expand`, with discovery-driven catalog and parent-plan selection. |
 | `filing_catalog/catalog_job.py` | `materialize()`: one Phase 1 snapshot in, one immutable catalog out (316 loc). |
-| `filing_catalog/planner.py` | `plan()` (four filters, 8 columns) and `plan_policy()` (quota profile, 18 columns) (562 loc). |
+| `filing_catalog/planner.py` | `plan()` (five filters, 8 columns) and `plan_policy()` (quota profile, resolved era bands, form-by-era allocation, 18 columns). |
 | `filing_catalog/expansion.py` | Parent validation, child derivation, and the 100%-retention invariant (352 loc). |
 | `filing_catalog/publication.py` | Content-addressed plan ids, staged bundles, and the reuse-or-conflict policy (192 loc). |
 | `filing_catalog/discovery.py` | Manifest-only catalog/plan/policy enumeration and `current` resolution (258 loc). |

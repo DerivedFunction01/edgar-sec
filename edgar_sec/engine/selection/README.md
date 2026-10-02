@@ -1,6 +1,6 @@
 # `edgar_sec/engine/selection` — quota-driven, family-capped target selection
 
-Answers the question deterministic planning cannot: not "which rows match these four filters"
+Answers the question deterministic planning cannot: not "which rows match these five filters"
 but "which rows best fill a declared quota profile, without letting one corporate family or one
 form crowd out the rest".
 
@@ -28,10 +28,10 @@ Split on the pure/impure seam, the same split `../company_family/` uses.
 
 | Module | Responsibility |
 | :--- | :--- |
-| `policy.py` | Pure. `SelectionPolicy` (27 fields, validated in `__post_init__`) with its `to_dict`/`from_path`/`write` serialization; `EraBand` with half-open year and date bounds; `SeedFiler` and the `SEED_FILER_COLUMNS` manifest vocabulary (`load_seed_cik_csv`, `read_seed_filers_csv`, `write_seed_filers_csv`, `resolve_seed_filers`, `compute_seed_fingerprint`); `KNOWN_DIMENSIONS` — the 21 stratifiable names — partitioned by grain into `LOCATOR_ONLY_DIMENSIONS` / `OCCURRENCE_ONLY_DIMENSIONS`; `auto_generate_policy`, `discover_policies`, `normalize_value`. |
+| `policy.py` | Pure. `SelectionPolicy` (24 fields, validated in `__post_init__`) with its `to_dict`/`from_path`/`write` serialization; `EraBand` with half-open year and date bounds; `SeedFiler` and the `SEED_FILER_COLUMNS` manifest vocabulary (`load_seed_cik_csv`, `read_seed_filers_csv`, `write_seed_filers_csv`, `resolve_seed_filers`, `compute_seed_fingerprint`); `KNOWN_DIMENSIONS` — the 21 stratifiable names — partitioned by grain into `LOCATOR_ONLY_DIMENSIONS` / `OCCURRENCE_ONLY_DIMENSIONS`; `auto_generate_policy`, `discover_policies`, `normalize_value`. |
 | `features.py` | I/O. `FeatureSnapshotBuilder` builds or reuses the snapshot; `SnapshotPaths` names its four files. The pure functions it wraps are `form_family`, `form_family_sql`, `era_of`. Tunables: `DEFAULT_GAP_YEARS`, `DEFAULT_CESSATION_GRACE_YEARS`, `DEFAULT_STUB_SIZE_THRESHOLD`. |
 | `source.py` | I/O. `CandidateSource` returns bounded pages over one in-memory DuckDB session; `CandidateFilters` builds the policy predicate once. `POOL_COLUMNS` (25) and `OCCURRENCE_COLUMNS` (26) are the two projections. |
-| `selector.py` | The five-phase deficit fill: `DeficitSelector`, `SelectionResult`, `classification_signature`, `CLASSIFICATION_DIMENSIONS`, `DEFAULT_RESERVE_MAX_PAGES`. |
+| `selector.py` | The six-phase deficit fill: `DeficitSelector`, `SelectionResult`, `classification_signature`, `CLASSIFICATION_DIMENSIONS`, `DEFAULT_RESERVE_MAX_PAGES`. |
 | `inventory.py` | Feasibility statistics for the advisory `inventory_feasibility` block a Layer 4 plan publishes: `InventoryStatistics`, `UnknownDimensionError`, `OccurrenceOnlyDimensionError`. |
 
 ## Contracts
@@ -47,9 +47,26 @@ Split on the pure/impure seam, the same split `../company_family/` uses.
   feature rows through `_account` before any phase runs, so they consume quota and register in
   coverage — otherwise an expansion would report coverage the published plan does not have.
   Duplicate parent keys raise `ValueError`.
-- **Phase order is the design.** The five phases run in fixed order of decreasing authority:
-  mandatory seeds, composite strata, single-dimension floors by relative deficit, weighted pool
-  fill, reserve. Two consequences worth naming: **seed filers bypass the family cap**
+- **Phase order is the design.** The six phases run in fixed order of decreasing authority:
+  mandatory seeds, composite strata, single-dimension floors by relative deficit, **form-by-era
+  allocation**, weighted pool fill, reserve. Allocation sits before the weighted fill because that
+  fill is proportional: whichever form is largest would otherwise take the whole leftover budget,
+  and a rare form would appear only as far as a declared floor pushed it. Allocation reads cell
+  availability once, visits cells era-first so a cap smaller than the cell count still gives every
+  era one row, redistributes what an exhausted cell could not take across later rounds, and stops
+  when a round is refused in full — which means the family cap, and re-querying would be refused
+  identically. The remaining budget after the earlier phases is what it draws from, so the global
+  cap is shared and a floor that already filled a cell is credited rather than given a second share.
+- **A declared date selection is enforced by every pool, not applied afterwards.** `CandidateFilters`
+  compiles it into the value, composite, seed-CIK, page, and cell-availability queries alike, so no
+  phase can draw an out-of-range candidate even transiently to consume quota on the way to being
+  dropped. An empty selection is no predicate and keeps rows with no readable `report_date`; a
+  nonempty one cannot place such a row and excludes it.
+- **An empty `era_bands` list means derived, not unstratified.** The caller resolves bands from
+  the years the policy's own forms and date selection reach, because era is baked into the feature
+  snapshot and a reader must not have to re-derive a stratification the locators were not chosen
+  under. `SelectionPolicy` has no catalog access, so it declares the mode (`derives_era_bands`) and
+  the resolver (`with_era_bands`) rather than deriving. Two consequences worth naming: **seed filers bypass the family cap**
   (`check_cap=False`) — a cap that silently dropped a mandatory anchor would be worse than a
   slight over-representation — and a reserve row is added to the exclusion set as it is taken, so
   it cannot also be admitted to the active set later.
@@ -78,8 +95,15 @@ Split on the pure/impure seam, the same split `../company_family/` uses.
   raising, so a filing with no usable report date stays visible instead of being dropped. Bounds
   are half-open, which is what lets adjacent bands tile a range without overlap.
 - **The policy is validated where it is written.** `SelectionPolicy.__post_init__` rejects an
-  unknown dimension *anywhere* — in `floors`, `weights`, `caps`, `value_weights`, or inside a
-  composite's `filters` — and refuses a composite naming an occurrence-grain dimension.
+  unknown dimension *anywhere* — in `floors`, `caps`, or inside a composite's `filters` — and
+  refuses a composite naming an occurrence-grain dimension.
+- **A key nothing reads is not configuration.** `seed_groups`, `weights`, `value_weights`, and
+  `policy_schema_version` were all carried and none was consulted: the final fill is sequential
+  under the cap check rather than weighted, the seed CSV already labels each filer's own group,
+  and the enforced schema version lives in the plan document that expansion checks. They are
+  gone, and `from_dict` refuses a draft that still declares one rather than loading the rest —
+  a silently dropped key would leave a policy whose text describes a weighting nothing applies.
+  The enforced version is `publication.TARGET_PLAN_SCHEMA_VERSION`.
 - **Layer discipline.** This package imports only `domain`, `foundation` and `infra.storage`,
   plus the sibling `engine.company_family`. Never `pipelines`; where it needs a Layer 4 path it
   takes a parameter instead (see `auto_generate_policy`, `discover_policies`).
@@ -94,14 +118,16 @@ and the seed sidecar), `discovery.py` (`SelectionPolicy`, `auto_generate_policy`
 
 ## Public surface
 
-- **From `policy.py`** — `SelectionPolicy` (27 fields; `__post_init__` validates, `to_dict` /
+- **From `policy.py`** — `SelectionPolicy` (24 fields; `__post_init__` validates, `to_dict` /
   `to_json` / `from_dict` / `from_json` / `from_path` / `write` serialize, `policy_fingerprint`
-  and `requested_units` are derived, `validate_dimensions` cross-checks against a snapshot);
-  `EraBand` (`matches(year, date_str)`); `SeedFiler`; `POLICY_SCHEMA_VERSION` (`"1.0"`);
-  `KNOWN_DIMENSIONS` (21 names); `LOCATOR_ONLY_DIMENSIONS` / `OCCURRENCE_ONLY_DIMENSIONS`;
+  and `requested_units` are derived, `validate_dimensions` cross-checks against a snapshot,
+  `date_selection_clauses` / `date_selection_text` / `derives_era_bands` decode the declared
+  selection, and `with_era_bands` returns the resolved copy a plan embeds);
+  `EraBand` (`matches(year, date_str)`); `SeedFiler`; `KNOWN_DIMENSIONS` (21 names); `LOCATOR_ONLY_DIMENSIONS` / `OCCURRENCE_ONLY_DIMENSIONS`;
   `SEED_FILER_COLUMNS` with `load_seed_cik_csv` / `read_seed_filers_csv` /
   `write_seed_filers_csv` / `resolve_seed_filers` / `compute_seed_fingerprint`;
-  `auto_generate_policy`; `discover_policies`; `normalize_value`.
+  `auto_generate_policy`; `era_bands_for_range` (the automatic tiling a caller resolves against);
+  `discover_policies`; `normalize_value`.
   `load_seed_cik_csv` normalizes every CIK to ten digits and falls back from `seed-cik.csv` to a
   sibling `cik-sec.csv`; `compute_seed_fingerprint` hashes the seed set *by value*, sorted by
   CIK, so re-sorting the manifest does not invalidate every plan built from it; `normalize_value`
@@ -113,16 +139,22 @@ and the seed sidecar), `discovery.py` (`SelectionPolicy`, `auto_generate_policy`
   `FORM_FAMILY_SUFFIXES` so the two cannot diverge, rejecting any column identifier outside
   `[A-Za-z_][A-Za-z0-9_.]*`); `era_of`; the three `DEFAULT_*` tunables. `FORM_FAMILY_SUFFIXES` is
   re-exported here but owned by `domain/forms/common/aliases.py`.
-- **From `source.py`** — `CandidateSource` (`session`, `pool_for_value`, `pool_for_composite`,
-  `pool_for_ciks`, `candidate_page`, `register_selected`, `add_selected`,
-  `load_candidates_for_locators`, `load_occurrences_for_locators`); `CandidateFilters`
-  (`amendment`, `document_suffixes`, `max_reported_size`, `.predicate()`); `POOL_COLUMNS` /
+- **From `source.py`** — `CandidateSource` (`session`, `pool_for_value`, `pool_for_cell`,
+  `pool_for_composite`, `pool_for_ciks`, `cell_availability`, `candidate_page`,
+  `register_selected`, `add_selected`, `load_candidates_for_locators`,
+  `load_occurrences_for_locators`); `CandidateFilters` (`amendment`, `document_suffixes`,
+  `max_reported_size`, `date_selection`, `.filters_dates()`, `.predicate()`); `POOL_COLUMNS` /
   `OCCURRENCE_COLUMNS`; `SelectionSessionError` (a query attempted outside an open session).
+  `cell_availability` returns every nonempty `(form, era)` cell with its eligible count in one
+  grouped pass, excluding the already-selected set so a drained cell is not counted as capacity.
 - **From `selector.py`** — `DeficitSelector.select(parent_active_keys=None)`;
   `SelectionResult` (`active_locators`, `active_candidates`, `active_occurrences`,
   `reserve_locators`, `reserve_candidates`, `report`); `classification_signature` /
   `CLASSIFICATION_DIMENSIONS` — falling back to `company_name` when no family resolved, so an
   unclustered candidate still participates in the cap; `DEFAULT_RESERVE_MAX_PAGES` (`100`).
+  The report carries `form_era_allocation` (per-cell availability, allocation, selection and
+  shortfall, plus `equal_quota` and `unallocated`) alongside `date_selection_text`,
+  `era_band_count`, and `derives_era_bands`.
 - **From `inventory.py`** — `InventoryStatistics` (`value_counts`, `check_floor_feasibility`,
   `check_composite_feasibility`); `UnknownDimensionError` (a statistic requested for a dimension
   outside the policy vocabulary); `OccurrenceOnlyDimensionError` (a composite stratum filtered on

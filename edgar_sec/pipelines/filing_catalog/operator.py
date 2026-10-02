@@ -23,19 +23,34 @@ from __future__ import annotations
 
 import argparse
 import sys
+from pathlib import Path
 from typing import Any
 
+from edgar_sec.domain.filing_catalog.filters import parse_date_selection
+from edgar_sec.domain.filing_catalog.schemas import (
+    SCOPE_DETERMINISTIC,
+    SCOPE_POLICY,
+)
 from edgar_sec.foundation.runtime.interactive import (
     MenuAction,
     operator_entrypoint,
     prompt_text,
 )
+from edgar_sec.pipelines.filing_catalog.discovery import (
+    auto_policy,
+    current_catalog_id,
+    discover_catalogs,
+    discover_plans,
+    discover_policies,
+)
+from edgar_sec.pipelines.filing_catalog.paths import (
+    FilingCatalogPaths,
+    resolve_filing_catalog_paths,
+    safe_identifier,
+)
 
 from .cli import cmd_expand, cmd_materialize, cmd_plan, cmd_status
 from .cli import main as cli_main
-from .discovery import current_catalog_id, discover_catalogs, discover_plans
-from .paths import FilingCatalogPaths, resolve_filing_catalog_paths
-from .planner import SCOPE_DETERMINISTIC, SCOPE_POLICY
 
 __all__ = ["build_operator_menu", "main"]
 
@@ -46,21 +61,24 @@ def _namespace(
     command: str,
     catalog: str = "",
     forms: str = "",
+    dates: str = "",
+    policy: str = "",
+    scope: str = SCOPE_DETERMINISTIC,
     parent_plan: str = "",
     target_units: int = 0,
 ) -> argparse.Namespace:
     """Build a namespace with every field the dispatched command reads.
 
-    The menu plans deterministically, so ``scope`` is pinned here rather than
-    read from the parser: ``cmd_plan`` dereferences it, and a namespace that
-    omitted it raised ``AttributeError`` inside the wizard instead of reaching the
-    plan. The policy fields are present for the same reason, even though no
-    menu action sets a policy scope today. The expansion fields are here for the
-    same reason: ``cmd_expand`` reads both, and a menu-driven namespace that
-    omitted them would fail the moment expansion was selected.
+    ``scope`` and ``policy`` default to the deterministic plan rather than being
+    absent: ``cmd_plan`` dereferences both, and a namespace that omitted them
+    raised ``AttributeError`` inside the wizard instead of reaching the plan. The
+    defaults describe what most actions do, not what every action must do -- the
+    policy-plan action overrides both. The expansion fields are here for the same
+    reason: ``cmd_expand`` reads both, and a menu-driven namespace that omitted
+    them would fail the moment expansion was selected.
 
     ``artifacts`` is pinned to the empty string for the same class of reason:
-    every ``cmd_*`` reads it through ``_resolve_artifacts``, and a namespace that
+    every ``cmd_*`` reads it through the project default, and a namespace that
     omitted it would raise before the command ran. Empty is not an override --
     it resolves to the configured project root, which is the only root the menu
     acts on.
@@ -69,11 +87,12 @@ def _namespace(
         command=command,
         catalog=catalog,
         forms=[f for f in forms.replace(",", " ").split() if f],
-        scope=SCOPE_DETERMINISTIC,
-        policy="",
+        scope=scope,
+        policy=policy,
         auto_policy=False,
         amendment="both",
         suffixes=[],
+        dates=dates,
         limit=None,
         source="",
         source_manifest="",
@@ -173,10 +192,120 @@ def _action_materialize() -> None:
     cmd_materialize(args)
 
 
+def _ask_dates() -> str:
+    """Prompt for a report_date selection, re-asking until it parses.
+
+    The answer is handed to ``planner.plan`` unchanged, and this calls the same
+    parser rather than a second copy of the grammar: a wizard with its own
+    accepted spellings would accept things the CLI rejects and reject things it
+    accepts, which is exactly the drift a menu is supposed to prevent. Blank
+    stays a valid answer -- it is "no date predicate", not "no answer".
+    """
+    while True:
+        answer = prompt_text(
+            "Report dates, e.g. '@Q1[1999..2001],2005Q3..2008Q1' (blank for all)",
+            "",
+        ).strip()
+        try:
+            parse_date_selection(answer)
+        except ValueError as error:
+            print(f"invalid date selection: {error}")
+            continue
+        return answer
+
+
 def _action_plan() -> None:
     catalog = _ask_catalog()
     forms = prompt_text("Forms (space separated, blank for all)", "")
-    cmd_plan(_namespace("plan", catalog=catalog, forms=forms))
+    dates = _ask_dates()
+    cmd_plan(_namespace("plan", catalog=catalog, forms=forms, dates=dates))
+
+
+def _draft_path(paths: FilingCatalogPaths, name: str) -> Path:
+    """Return the path of a named policy draft, or report why the name is unusable.
+
+    The name becomes a filename, so it is reduced to a safe identifier rather
+    than sanitized by hand: two names that reduce alike are refused instead of
+    overwriting each other's draft.
+    """
+    candidate = f"{name.strip().lower().replace(' ', '-')}.json"
+    try:
+        return paths.policies_root / safe_identifier(candidate)
+    except ValueError:
+        raise ValueError(
+            f"draft name {name!r} must reduce to letters, digits, dashes, or "
+            "underscores"
+        ) from None
+
+
+def _write_policy_draft(paths: FilingCatalogPaths, catalog: str) -> Path:
+    """Write an all-forms draft for ``catalog`` and return its path.
+
+    The draft is derived from the catalog's own form list so an operator can
+    inspect and edit it rather than author one from a blank file. It declares an
+    empty date selection and no era bands, which is the honest starting point:
+    both are resolved at plan time from whatever the operator goes on to put
+    there.
+    """
+    policy = auto_policy(catalog, paths)
+    destination = _draft_path(paths, policy.corpus_id)
+    policy.write(destination)
+    print(f"wrote policy draft {destination}")
+    print(f"  forms        {len(policy.forms)}")
+    print(f"  units        {policy.base_content_units}")
+    print(f"  dates        {policy.date_selection_text or '(all)'}")
+    print("  era bands    derived at plan time")
+    print("edit the draft, then choose it to plan")
+    return destination
+
+
+def _action_plan_policy() -> None:
+    """Create or run a selection policy for one catalog.
+
+    Two outcomes on one screen, because they are the two things an operator wants
+    to do: write a draft to edit, or run a draft that already exists. A blank
+    answer always means "write a new one" and never "run the first one found" --
+    auto-selecting would publish a plan nobody chose.
+    """
+    catalog = _ask_catalog()
+    paths = resolve_filing_catalog_paths()
+    drafts = discover_policies(paths)
+    if drafts:
+        print("existing policy drafts:")
+        for index, draft in enumerate(drafts, start=1):
+            dates = draft.get("date_selection_text") or "(all)"
+            bands = (
+                f"{draft.get('era_band_count')} declared"
+                if not draft.get("derives_era_bands")
+                else "derived"
+            )
+            print(
+                f"  {index}) {draft['name']} -- {len(draft['forms'])} forms, "
+                f"{draft['base_content_units']} units, dates {dates}, bands {bands}"
+            )
+    else:
+        print("no policy drafts found")
+
+    while True:
+        choice = prompt_text(
+            "Number of a draft to plan, blank to write a new one", ""
+        ).strip()
+        if not choice:
+            _write_policy_draft(paths, catalog)
+            return
+        if not choice.isdigit() or not 1 <= int(choice) <= len(drafts):
+            print(f"enter a number between 1 and {len(drafts)}, or blank")
+            continue
+        selected = drafts[int(choice) - 1]["path"]
+        cmd_plan(
+            _namespace(
+                "plan",
+                catalog=catalog,
+                policy=selected,
+                scope=SCOPE_POLICY,
+            )
+        )
+        return
 
 
 def _action_expand() -> None:
@@ -214,7 +343,8 @@ def build_operator_menu() -> tuple[MenuAction, ...]:
         MenuAction("1", "Report published catalogs and plans", _action_status),
         MenuAction("2", "Materialize a catalog snapshot", _action_materialize),
         MenuAction("3", "Publish a deterministic target plan", _action_plan),
-        MenuAction("4", "Expand a policy plan to more locators", _action_expand),
+        MenuAction("4", "Publish a selection policy plan", _action_plan_policy),
+        MenuAction("5", "Expand a policy plan to more locators", _action_expand),
     )
 
 

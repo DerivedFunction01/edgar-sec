@@ -17,6 +17,7 @@ import pyarrow.parquet as pq
 import pytest
 
 from edgar_sec.engine.selection.policy import (
+    EraBand,
     SeedFiler,
     compute_seed_fingerprint,
     load_seed_cik_csv,
@@ -213,7 +214,7 @@ def test_a_downgraded_parent_reports_the_schema_mismatch_not_a_missing_file(
     assert "not found" not in message
 
 
-@pytest.mark.parametrize("version", [None, "0.9", "1.2", ""])
+@pytest.mark.parametrize("version", [None, "0.9", "1.1", ""])
 def test_only_the_current_schema_is_expandable(
     catalog_snapshot: tuple[dict[str, Any], Path],
     version: str | None,
@@ -644,3 +645,69 @@ def test_expanding_a_plan_whose_seed_set_was_edited_is_refused(
             artifacts_root=artifacts_root,
             seed_filers=load_seed_cik_csv(other),
         )
+
+
+# --- era bands resolved in the parent ---------------------------------------
+
+
+def test_a_child_inherits_the_bands_its_parent_resolved(
+    catalog_snapshot: tuple[dict[str, Any], Path], catalog_artifacts_root: Path
+) -> None:
+    """The draft still asks for derived bands; the parent recorded real ones.
+
+    A published plan embeds its *resolved* policy because era is baked into the
+    feature snapshot. Comparing a derived-band draft against those bands verbatim
+    would refuse every expansion of every automatic-mode policy, and the child
+    would re-derive its own -- producing a snapshot the parent's locators were
+    never stratified under.
+    """
+    parent_dir, parent_meta = _publish_parent(
+        catalog_snapshot, catalog_artifacts_root, era_bands=[], base_content_units=2
+    )
+    draft = _policy(era_bands=[], base_content_units=2)
+    assert draft.derives_era_bands
+
+    child = expand(parent_dir, 4, artifacts_root=_root(catalog_artifacts_root))
+
+    parent_bands = parent_meta["selection_policy"]["era_bands"]
+    assert parent_bands, "the parent must have resolved bands to inherit"
+    assert child["selection_policy"]["era_bands"] == parent_bands
+
+
+def test_a_child_that_declares_different_bands_is_refused(
+    catalog_snapshot: tuple[dict[str, Any], Path], catalog_artifacts_root: Path
+) -> None:
+    """Editing the strata changes what a plan means, so it is a new root plan."""
+    parent_dir, _ = _publish_parent(
+        catalog_snapshot, catalog_artifacts_root, era_bands=[], base_content_units=2
+    )
+    with pytest.raises(ParentPlanError, match="differs from the parent"):
+        prepare_parent(
+            parent_dir,
+            _policy(era_bands=[EraBand(name="elsewhere", start_year=2015)]),
+            4,
+            str(catalog_snapshot[0]["catalog_id"]),
+            compute_seed_fingerprint({}),
+        )
+
+
+def test_a_child_that_declares_the_same_bands_is_accepted(
+    catalog_snapshot: tuple[dict[str, Any], Path], catalog_artifacts_root: Path
+) -> None:
+    """Restating the parent's bands is agreement, not a change."""
+    bands = [EraBand(name="only", start_year=2010)]
+    parent_dir, _ = _publish_parent(
+        catalog_snapshot,
+        catalog_artifacts_root,
+        era_bands=bands,
+        base_content_units=2,
+    )
+    _, _, child = prepare_parent(
+        parent_dir,
+        _policy(era_bands=bands),
+        4,
+        str(catalog_snapshot[0]["catalog_id"]),
+        compute_seed_fingerprint({}),
+    )
+    assert child.era_bands == bands
+    assert child.base_content_units == 4

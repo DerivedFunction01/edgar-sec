@@ -17,13 +17,13 @@ import pytest
 
 from edgar_sec.engine.selection.policy import (
     KNOWN_DIMENSIONS,
-    POLICY_SCHEMA_VERSION,
     EraBand,
     SeedFiler,
     SelectionPolicy,
     auto_generate_policy,
     compute_seed_fingerprint,
     discover_policies,
+    era_bands_for_range,
     load_seed_cik_csv,
     normalize_value,
 )
@@ -123,7 +123,6 @@ def test_policy_round_trips_to_the_same_fingerprint() -> None:
         ],
         base_content_units=300,
         floors={"form": {"10-K": 50, "20-F": 20}},
-        weights={"form": 1.0, "era": 1.5},
         caps={"form": 0.8},
     )
     data = policy.to_dict()
@@ -152,10 +151,20 @@ def test_policy_fingerprint_changes_with_a_material_edit() -> None:
     assert policy.policy_fingerprint != before
 
 
-def test_policy_schema_version_is_recorded() -> None:
-    assert SelectionPolicy(corpus_id="c", forms=["10-K"]).policy_schema_version == (
-        POLICY_SCHEMA_VERSION
-    )
+@pytest.mark.parametrize(
+    "retired",
+    ["seed_groups", "weights", "value_weights", "policy_schema_version"],
+)
+def test_a_retired_key_is_refused_rather_than_ignored(retired: str) -> None:
+    """A draft carrying a key selection never reads must fail to load.
+
+    Dropping the key and loading the rest would publish a plan from a policy
+    whose own text describes a weighting, a seed grouping, or a schema that
+    nothing applies. Failing closed is the only reading that is honest.
+    """
+    document = {"corpus_id": "c", "forms": ["10-K"], retired: []}
+    with pytest.raises(ValueError, match=retired):
+        SelectionPolicy.from_dict(document)
 
 
 def test_known_dimensions_cover_every_reported_feature() -> None:
@@ -328,3 +337,142 @@ def test_discover_policies_does_not_double_count_overlapping_dirs(
 ) -> None:
     SelectionPolicy(corpus_id="found", forms=["10-K"]).write(tmp_path / "a.json")
     assert len(discover_policies([tmp_path, tmp_path])) == 1
+
+
+# --- the date selection and the derived-band mode ---------------------------
+
+
+def test_a_policy_declares_no_date_selection_by_default() -> None:
+    """Absent means no date predicate, not a selection of the whole corpus."""
+    policy = SelectionPolicy(corpus_id="c", forms=["10-K"])
+    assert policy.date_selection == []
+    assert policy.date_selection_clauses == ()
+    assert policy.date_selection_text == ""
+
+
+def test_a_policy_reads_an_absent_date_selection_as_no_predicate() -> None:
+    """A document written before the field existed is still a valid policy."""
+    data = SelectionPolicy(corpus_id="c", forms=["10-K"]).to_dict()
+    data.pop("date_selection")
+    assert SelectionPolicy.from_dict(data).date_selection == []
+
+
+def test_a_policy_canonicalizes_its_declared_date_selection() -> None:
+    """A hand-edited draft fingerprints as the parsed selection.
+
+    A draft is edited by people, who reorder and re-spell. Two files that mean
+    the same thing must produce one plan id, or every cosmetic edit forks a
+    duplicate bundle of the same rows.
+    """
+    declared = [
+        {
+            "kind": "recurring",
+            "granularity": "quarter",
+            "values": [1],
+            "start_year": None,
+            "end_year": None,
+        },
+        {"kind": "absolute", "start_date": "2024-01-01", "end_date": "2024-12-31"},
+    ]
+    reordered = [
+        {"kind": "absolute", "start_date": "2024-01-01", "end_date": "2024-12-31"},
+        {
+            "kind": "recurring",
+            "granularity": "quarter",
+            "values": [1],
+            "start_year": None,
+            "end_year": None,
+        },
+    ]
+    from_dict = SelectionPolicy.from_dict(
+        {
+            **SelectionPolicy(corpus_id="c", forms=["10-K"]).to_dict(),
+            "date_selection": declared,
+        }
+    )
+    same = SelectionPolicy.from_dict(
+        {
+            **SelectionPolicy(corpus_id="c", forms=["10-K"]).to_dict(),
+            "date_selection": reordered,
+        }
+    )
+    assert from_dict.policy_fingerprint == same.policy_fingerprint
+    # Absolute clauses sort ahead of recurring ones, so the text is stable
+    # regardless of the order a hand-edited document listed them in.
+    assert from_dict.date_selection_text == "2024-01-01..2024-12-31,@Q1"
+
+
+def test_a_policy_rejects_a_malformed_date_selection() -> None:
+    with pytest.raises(ValueError, match="date clause kind"):
+        SelectionPolicy(
+            corpus_id="c",
+            forms=["10-K"],
+            date_selection=[{"kind": "era", "name": "modern"}],
+        )
+
+
+def test_an_empty_era_band_list_means_derived_not_unstratified() -> None:
+    policy = SelectionPolicy(corpus_id="c", forms=["10-K"])
+    assert policy.derives_era_bands
+    resolved = policy.with_era_bands([EraBand(name="modern", start_year=2010)])
+    assert not resolved.derives_era_bands
+    assert [band.name for band in resolved.era_bands] == ["modern"]
+
+
+def test_resolving_bands_leaves_the_original_policy_untouched() -> None:
+    """The draft on disk must keep asking for derived bands.
+
+    If resolution mutated the policy, re-reading the draft would find explicit
+    bands and the automatic mode would silently become permanent.
+    """
+    policy = SelectionPolicy(corpus_id="c", forms=["10-K"])
+    resolved = policy.with_era_bands(era_bands_for_range(1999, 2024))
+    assert policy.era_bands == []
+    assert resolved.era_bands
+    assert policy.policy_fingerprint != resolved.policy_fingerprint
+
+
+def test_resolving_bands_refuses_to_produce_none() -> None:
+    with pytest.raises(ValueError, match="must not be empty"):
+        SelectionPolicy(corpus_id="c", forms=["10-K"]).with_era_bands([])
+
+
+def test_era_bands_for_range_refuses_an_inverted_range() -> None:
+    with pytest.raises(ValueError, match="inverted"):
+        era_bands_for_range(2024, 1999)
+
+
+def test_derived_bands_tile_the_range_without_gaps_or_overlap() -> None:
+    bands = era_bands_for_range(1999, 2024)
+    assert bands[0].start_year == 1999
+    assert bands[-1].end_year == 2025
+    for earlier, later in itertools.pairwise(bands):
+        assert earlier.end_year == later.start_year
+
+
+def test_a_menu_summary_says_what_each_draft_selects(tmp_path: Path) -> None:
+    """Two drafts that differ only in dates must be distinguishable in a menu."""
+    quiet = SelectionPolicy(corpus_id="quiet", forms=["10-K"])
+    scoped = SelectionPolicy.from_dict(
+        {
+            **quiet.to_dict(),
+            "corpus_id": "scoped",
+            "date_selection": [
+                {
+                    "kind": "recurring",
+                    "granularity": "quarter",
+                    "values": [1],
+                    "start_year": None,
+                    "end_year": None,
+                }
+            ],
+        }
+    )
+    quiet.write(tmp_path / "quiet.json")
+    scoped.write(tmp_path / "scoped.json")
+    summaries = {entry["corpus_id"]: entry for entry in discover_policies([tmp_path])}
+    assert summaries["quiet"]["date_selection_text"] == ""
+    assert summaries["quiet"]["derives_era_bands"] is True
+    assert summaries["quiet"]["era_band_count"] == 0
+    assert summaries["scoped"]["date_selection_text"] == "@Q1"
+    assert summaries["scoped"]["policy_fingerprint"] != quiet.policy_fingerprint

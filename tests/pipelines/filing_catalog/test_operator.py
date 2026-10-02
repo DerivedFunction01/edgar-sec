@@ -5,10 +5,12 @@ exposes, the delegation that keeps the two surfaces from drifting apart, and the
 discovery that lets an operator pick a catalog or an expansion parent instead of
 typing an identifier they were never shown.
 
-``--scope policy`` is still reachable only from the CLI: choosing a policy scope
-interactively would mean authoring a quota profile, which is a design decision
-rather than a menu selection. ``expand`` *is* offered, because its inputs are a
-parent plan and a target size, both of which can be discovered or defaulted.
+The policy-plan action is the one menu action that reaches a scope the CLI drives
+otherwise. What made it offerable is that a policy is *a file an operator writes
+or edits*, not a quota profile they have to author from a prompt: the action
+lists the drafts under ``policies/`` and, on a blank answer, writes a
+catalog-derived one to edit. It never plans that draft in the same step, and it
+never picks the first draft on the operator's behalf.
 
 The wizard also never asks for an artifacts root, which the pinned no-prompt
 invariant below enforces: the registered ``artifacts.root`` setting is the one
@@ -22,22 +24,53 @@ from typing import Any
 
 import pytest
 
+from edgar_sec.engine.selection.policy import SelectionPolicy
 from edgar_sec.pipelines.filing_catalog import cli, operator
 from edgar_sec.pipelines.filing_catalog.operator import (
     MENU_TITLE,
     build_operator_menu,
     main,
 )
+from edgar_sec.pipelines.filing_catalog.paths import resolve_filing_catalog_paths
 
 # --- the menu --------------------------------------------------------------
 
 
+# One discovered draft, in the shape `discover_policies` returns. Shared by the
+# tests that script the policy-plan action so the menu's rendering and its
+# selection path are driven by the same fixture.
+_DRAFT: dict[str, Any] = {
+    "path": "/artifacts/filing_catalog/policies/draft.json",
+    "name": "draft.json",
+    "corpus_id": "corpus_deadbeef",
+    "forms": ["10-K", "8-K"],
+    "level": 1,
+    "base_content_units": 400,
+    "policy_fingerprint": "0" * 32,
+    "seed_cik_path": "__absent__",
+    "date_selection_text": "@Q1",
+    "derives_era_bands": True,
+    "era_band_count": 0,
+}
+
+
+def _stub_auto_policy(catalog: str, paths: Any = None) -> SelectionPolicy:
+    """A policy that needs no catalog, so draft writing is testable offline."""
+    return SelectionPolicy(
+        corpus_id=f"corpus_{catalog}",
+        forms=["10-K"],
+        base_content_units=100,
+        seed_cik_path="__absent__",
+    )
+
+
 def test_the_menu_exposes_every_command_an_operator_can_drive() -> None:
     labels = [action.label.lower() for action in build_operator_menu()]
-    assert len(labels) == 4
+    assert len(labels) == 5
     assert any("report" in label for label in labels)
     assert any("materialize" in label for label in labels)
     assert any("catalog" in label and "plan" in label for label in labels)
+    assert any("selection policy" in label for label in labels)
     assert any("expand" in label for label in labels)
 
 
@@ -53,7 +86,7 @@ def test_every_cli_subcommand_is_reachable_one_way_or_the_other() -> None:
 
 def test_menu_actions_are_numbered_in_order() -> None:
     keys = [action.key for action in build_operator_menu()]
-    assert keys == ["1", "2", "3", "4"]
+    assert keys == ["1", "2", "3", "4", "5"]
 
 
 def test_every_action_is_callable() -> None:
@@ -117,6 +150,39 @@ def test_comma_and_space_separated_forms_agree() -> None:
     assert operator._namespace("plan", forms="10-K, 8-K").forms == ["10-K", "8-K"]
 
 
+def test_a_blank_dates_prompt_is_the_empty_selection() -> None:
+    """Blank is an answer, not a skipped question: it means no date predicate."""
+    assert operator._namespace("plan", dates="").dates == ""
+
+
+def test_the_dates_prompt_returns_what_the_operator_typed() -> None:
+    answers = iter([" @Q1[1999..2001] , 2024 "])
+
+    def _prompt(prompt: str, default: str) -> str:
+        return next(answers)
+
+    with pytest.MonkeyPatch.context() as patch:
+        patch.setattr(operator, "prompt_text", _prompt)
+        assert operator._ask_dates() == "@Q1[1999..2001] , 2024"
+
+
+@pytest.mark.parametrize("rejected", ["2024Q5", "Q1", "@M13", ".."])
+def test_the_dates_prompt_re_asks_until_the_selection_parses(
+    rejected: str, capsys: pytest.CaptureFixture[str]
+) -> None:
+    """The wizard validates with the shared parser instead of its own grammar.
+
+    A second copy of the grammar would drift: the menu would accept a spelling
+    the CLI rejects, or reject one it accepts, and the operator would only find
+    out at the planner.
+    """
+    answers = iter([rejected, "@Q1"])
+    with pytest.MonkeyPatch.context() as patch:
+        patch.setattr(operator, "prompt_text", lambda prompt, default: next(answers))
+        assert operator._ask_dates() == "@Q1"
+    assert "invalid date selection" in capsys.readouterr().out
+
+
 def test_every_prompted_action_builds_a_usable_namespace(
     monkeypatch: pytest.MonkeyPatch, tmp_path: Any
 ) -> None:
@@ -127,12 +193,16 @@ def test_every_prompted_action_builds_a_usable_namespace(
         seen.append(args)
         return 0
 
-    # In menu order: status asks nothing; materialize asks for the source; plan
-    # asks for the catalog then the forms; expand asks for the parent plan then
-    # the target size.
-    answers = iter(["src", "cat-1", "10-K", "1", "5000"])
+    # In menu order: status asks nothing; materialize asks for the source; the
+    # deterministic plan asks for the catalog, the forms, and the date
+    # selection; the policy plan asks for the catalog and then for which draft
+    # to run; expand asks for the parent plan then the target size.
+    answers = iter(
+        ["src", "cat-1", "10-K", "@Q1[1999..2001]", "cat-2", "1", "1", "5000"]
+    )
     monkeypatch.setattr(operator, "prompt_text", lambda prompt, default: next(answers))
     monkeypatch.setattr(operator, "discover_catalogs", lambda _paths: [])
+    monkeypatch.setattr(operator, "discover_policies", lambda _paths: [_DRAFT])
     monkeypatch.setattr(
         operator,
         "discover_plans",
@@ -150,12 +220,19 @@ def test_every_prompted_action_builds_a_usable_namespace(
         "status",
         "materialize",
         "plan",
+        "plan",
         "expand",
     ]
     plan_namespace = seen[2]
     assert plan_namespace.catalog == "cat-1"
     assert plan_namespace.forms == ["10-K"]
+    assert plan_namespace.dates == "@Q1[1999..2001]"
     assert plan_namespace.scope == "deterministic"
+
+    policy_namespace = seen[3]
+    assert policy_namespace.catalog == "cat-2"
+    assert policy_namespace.scope == "policy"
+    assert policy_namespace.policy == _DRAFT["path"]
 
 
 def test_no_action_ever_asks_for_the_artifacts_root(
@@ -180,6 +257,7 @@ def test_no_action_ever_asks_for_the_artifacts_root(
 
     monkeypatch.setattr(operator, "prompt_text", _record)
     monkeypatch.setattr(operator, "discover_catalogs", lambda _paths: [])
+    monkeypatch.setattr(operator, "discover_policies", lambda _paths: [_DRAFT])
     monkeypatch.setattr(
         operator,
         "discover_plans",
@@ -190,12 +268,16 @@ def test_no_action_ever_asks_for_the_artifacts_root(
     monkeypatch.setattr(
         operator, "resolve_filing_catalog_paths", lambda root=None: _paths(tmp_path)
     )
+    monkeypatch.setattr(operator, "auto_policy", _stub_auto_policy)
     for name in ("cmd_status", "cmd_plan", "cmd_materialize", "cmd_expand"):
         monkeypatch.setattr(operator, name, lambda args: seen.append(args) or 0)
 
     for action in build_operator_menu():
         action.callback()
 
+    # The policy action's prompt stub always answers blank, which is its "write
+    # a new draft" path: it writes a file and publishes no plan. So it is absent
+    # here, and that absence is the invariant being pinned.
     assert [namespace.command for namespace in seen] == [
         "status",
         "materialize",
@@ -204,6 +286,106 @@ def test_no_action_ever_asks_for_the_artifacts_root(
     ]
     assert all(namespace.artifacts == "" for namespace in seen)
     assert asked, "the actions must still prompt for their own inputs"
+
+
+# --- the policy-plan action -------------------------------------------------
+
+
+def _policy_paths(monkeypatch: pytest.MonkeyPatch, tmp_path: Any) -> Any:
+    paths = resolve_filing_catalog_paths(tmp_path)
+    monkeypatch.setattr(
+        operator, "resolve_filing_catalog_paths", lambda root=None: paths
+    )
+    monkeypatch.setattr(operator, "discover_catalogs", lambda _paths: [])
+    return paths
+
+
+def test_a_blank_draft_choice_writes_a_draft_and_plans_nothing(
+    monkeypatch: pytest.MonkeyPatch, tmp_path: Any, capsys: Any
+) -> None:
+    """New and Run are separate decisions, so New must not run anything.
+
+    Auto-selecting a draft would publish a plan the operator never chose, from a
+    profile they may not have read. Writing the draft and stopping makes the
+    next step an explicit edit followed by an explicit choice.
+    """
+    paths = _policy_paths(monkeypatch, tmp_path)
+    monkeypatch.setattr(operator, "discover_policies", lambda _paths: [_DRAFT])
+    monkeypatch.setattr(operator, "auto_policy", _stub_auto_policy)
+    monkeypatch.setattr(operator, "prompt_text", lambda prompt, default: "")
+    planned: list[argparse.Namespace] = []
+    monkeypatch.setattr(operator, "cmd_plan", lambda args: planned.append(args) or 0)
+
+    operator._action_plan_policy()
+
+    assert planned == []
+    written = list(paths.policies_root.glob("*.json"))
+    assert len(written) == 1
+    reloaded = SelectionPolicy.from_path(written[0])
+    assert reloaded.forms == ["10-K"]
+    # A draft starts unconfigured for both derived fields rather than guessing.
+    assert reloaded.date_selection == []
+    assert reloaded.derives_era_bands
+    assert str(written[0]) in capsys.readouterr().out
+
+
+def test_choosing_a_draft_by_number_plans_it(
+    monkeypatch: pytest.MonkeyPatch, tmp_path: Any
+) -> None:
+    _policy_paths(monkeypatch, tmp_path)
+    monkeypatch.setattr(operator, "discover_policies", lambda _paths: [_DRAFT])
+    monkeypatch.setattr(operator, "auto_policy", _stub_auto_policy)
+    monkeypatch.setattr(operator, "prompt_text", lambda prompt, default: "1")
+    planned: list[argparse.Namespace] = []
+    monkeypatch.setattr(operator, "cmd_plan", lambda args: planned.append(args) or 0)
+
+    operator._action_plan_policy()
+
+    assert len(planned) == 1
+    assert planned[0].scope == "policy"
+    assert planned[0].policy == _DRAFT["path"]
+
+
+def test_a_draft_choice_outside_the_list_is_re_asked(
+    monkeypatch: pytest.MonkeyPatch, tmp_path: Any, capsys: Any
+) -> None:
+    """A mistyped number must not fall through to "write a new draft"."""
+    _policy_paths(monkeypatch, tmp_path)
+    monkeypatch.setattr(operator, "discover_policies", lambda _paths: [_DRAFT])
+    monkeypatch.setattr(operator, "auto_policy", _stub_auto_policy)
+    answers = iter(["0", "nope", "2", "1"])
+    monkeypatch.setattr(operator, "prompt_text", lambda prompt, default: next(answers))
+    planned: list[argparse.Namespace] = []
+    monkeypatch.setattr(operator, "cmd_plan", lambda args: planned.append(args) or 0)
+
+    operator._action_plan_policy()
+
+    assert len(planned) == 1
+    assert "enter a number between 1 and 1" in capsys.readouterr().out
+
+
+def test_the_policy_action_reports_when_there_are_no_drafts(
+    monkeypatch: pytest.MonkeyPatch, tmp_path: Any, capsys: Any
+) -> None:
+    _policy_paths(monkeypatch, tmp_path)
+    monkeypatch.setattr(operator, "discover_policies", lambda _paths: [])
+    monkeypatch.setattr(operator, "auto_policy", _stub_auto_policy)
+    monkeypatch.setattr(operator, "prompt_text", lambda prompt, default: "")
+    monkeypatch.setattr(operator, "cmd_plan", lambda _args: pytest.fail("planned"))
+
+    operator._action_plan_policy()
+
+    assert "no policy drafts found" in capsys.readouterr().out
+
+
+def test_a_draft_name_that_is_not_a_safe_identifier_is_refused(
+    tmp_path: Any,
+) -> None:
+    """The draft name becomes a filename, so it is reduced, not trusted."""
+    paths = resolve_filing_catalog_paths(tmp_path)
+    with pytest.raises(ValueError, match="must reduce to"):
+        operator._draft_path(paths, "../../escape")
+    assert operator._draft_path(paths, "Quarterly 8-K").name == "quarterly-8-k.json"
 
 
 # --- discovery -------------------------------------------------------------

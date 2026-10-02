@@ -1,17 +1,20 @@
-"""Manifest-only discovery of published catalogs and target plans.
+"""Discovery of published catalogs, target plans, and selection policies.
 
-Every function here reads JSON manifests and directory listings only. It never
-opens a Parquet payload, never materializes a catalog, and never contacts the
-network, so ``status`` stays cheap enough to call from a menu loop or a
-preflight check.
+Most of this module reads JSON manifests and directory listings only, so
+``status`` stays cheap enough to call from a menu loop or a preflight check.
+The year-bound helpers are the exception: they run one aggregate over the
+catalog's own target shards, because the report-year range is not recorded
+anywhere a manifest could answer it.
 """
 
 from __future__ import annotations
 
 import json
+from collections.abc import Sequence
 from pathlib import Path
 from typing import Any
 
+from edgar_sec.domain.filing_catalog.filters import DateSelection
 from edgar_sec.engine.selection.policy import (
     SelectionPolicy,
     auto_generate_policy,
@@ -19,7 +22,12 @@ from edgar_sec.engine.selection.policy import (
 from edgar_sec.engine.selection.policy import (
     discover_policies as scan_policies,
 )
-from edgar_sec.infra.storage.duckdb_catalog import sql_literal
+from edgar_sec.infra.storage.duckdb import connect
+from edgar_sec.infra.storage.duckdb_catalog import (
+    date_selection_sql,
+    parsed_date_relation,
+    sql_literal,
+)
 from edgar_sec.pipelines.filing_catalog.paths import (
     CURRENT_ALIAS,
     PLAN_FILE_NAME,
@@ -184,38 +192,106 @@ def auto_policy(
     manifests = discover_catalogs(resolved)
     manifest = next((m for m in manifests if m.get("catalog_id") == catalog_id), {})
     forms = list((manifest.get("form_counts") or {}).keys())
-    min_year, max_year = _catalog_year_bounds(resolved, catalog_id)
+    min_year, max_year = catalog_year_bounds(resolved, catalog_id)
     return auto_generate_policy(catalog_id, forms, min_year, max_year, dest=dest)
 
 
-def _catalog_year_bounds(paths: FilingCatalogPaths, catalog_id: str) -> tuple[int, int]:
-    """Return the observed report-year range of a catalog, clipped to EDGAR."""
+def _year_bounds_query(
+    relation: str,
+    *,
+    forms: Sequence[str] | None = None,
+    date_selection: DateSelection = (),
+) -> str:
+    """Return the year-bound query over ``relation``, optionally narrowed.
+
+    The year is read off ``report_date`` with the same plausibility clip the
+    unfiltered bound has always used. The narrowing is optional because the two
+    callers want different things: automatic era bands want the years a
+    *selection* can reach, while the fallback for a selection that reaches
+    nothing wants every year the catalog holds.
+    """
+    clauses = [
+        "report_date IS NOT NULL",
+        "length(report_date) >= 4",
+        (
+            f"CAST(substring(report_date, 1, 4) AS INTEGER)"
+            f" BETWEEN {_MIN_PLAUSIBLE_YEAR} AND {_current_year()}"
+        ),
+    ]
+    if forms:
+        form_list = ", ".join(sql_literal(form) for form in sorted(forms))
+        clauses.append(f"form IN ({form_list})")
+    if date_selection:
+        clauses.append(date_selection_sql(date_selection))
+    return f"""
+        SELECT
+            MIN(CAST(substring(report_date, 1, 4) AS INTEGER)),
+            MAX(CAST(substring(report_date, 1, 4) AS INTEGER))
+        FROM {relation}
+        WHERE {" AND ".join(clauses)}
+    """
+
+
+def _current_year() -> int:
     import datetime
 
-    from edgar_sec.infra.storage.duckdb import connect
+    return datetime.datetime.now(datetime.UTC).year
 
-    current_year = datetime.datetime.now(datetime.UTC).year
+
+def _target_relation(paths: FilingCatalogPaths, catalog_id: str) -> str | None:
+    """Return the catalog's targets as one relation, or ``None`` when absent."""
     target_files = sorted(paths.snapshot_targets_dir(catalog_id).glob("part-*.parquet"))
     if not target_files:
-        return current_year - 10, current_year
-
+        return None
     file_list = ", ".join(sql_literal(str(path)) for path in target_files)
+    return f"read_parquet([{file_list}])"
+
+
+def catalog_year_bounds(paths: FilingCatalogPaths, catalog_id: str) -> tuple[int, int]:
+    """Return the observed report-year range of a catalog, clipped to EDGAR.
+
+    Named because automatic era bands need it as a fallback: a selection that
+    matches no dated row still has to publish bands, and the honest ones then
+    come from every year the catalog holds.
+    """
+    current_year = _current_year()
+    relation = _target_relation(paths, catalog_id)
+    if relation is None:
+        return current_year - 10, current_year
     with connect() as con:
-        row = con.execute(
-            f"""
-            SELECT
-                MIN(CAST(substring(report_date, 1, 4) AS INTEGER)),
-                MAX(CAST(substring(report_date, 1, 4) AS INTEGER))
-            FROM read_parquet([{file_list}])
-            WHERE report_date IS NOT NULL
-              AND length(report_date) >= 4
-              AND CAST(substring(report_date, 1, 4) AS INTEGER)
-                  BETWEEN {_MIN_PLAUSIBLE_YEAR} AND {current_year}
-            """
-        ).fetchone()
+        row = con.execute(_year_bounds_query(relation)).fetchone()
     minimum = int(row[0]) if row and row[0] is not None else current_year - 10
     maximum = int(row[1]) if row and row[1] is not None else current_year
     return minimum, maximum
+
+
+def eligible_year_bounds(
+    paths: FilingCatalogPaths,
+    catalog_id: str,
+    *,
+    forms: Sequence[str] | None = None,
+    date_selection: DateSelection = (),
+) -> tuple[int, int] | None:
+    """Return the report-year range a selection can reach, or ``None`` if empty.
+
+    ``None`` rather than a synthetic range, because "this selection matches no
+    dated row" is a fact the caller must handle differently from "the catalog is
+    narrow": the first means derive bands from something else, the second means
+    these are the bands.
+    """
+    relation = _target_relation(paths, catalog_id)
+    if relation is None:
+        return None
+    query = _year_bounds_query(relation, forms=forms, date_selection=date_selection)
+    if date_selection:
+        query = query.replace(
+            f"FROM {relation}", f"FROM {parsed_date_relation(relation, 'report_date')}"
+        )
+    with connect() as con:
+        row = con.execute(query).fetchone()
+    if not row or row[0] is None or row[1] is None:
+        return None
+    return int(row[0]), int(row[1])
 
 
 def status(paths: FilingCatalogPaths | None = None) -> dict[str, Any]:
@@ -240,10 +316,12 @@ def status(paths: FilingCatalogPaths | None = None) -> dict[str, Any]:
 __all__ = [
     "CURRENT_ALIAS",
     "auto_policy",
+    "catalog_year_bounds",
     "current_catalog_id",
     "discover_catalogs",
     "discover_plans",
     "discover_policies",
+    "eligible_year_bounds",
     "policy_search_dirs",
     "resolve_catalog_reference",
     "status",

@@ -1,21 +1,31 @@
 """Declarative selection policy: the quota profile a plan is built against.
 
-A policy names the corpus, the target forms, the era bands, and the floors,
-composites, weights, and caps that define a balanced sample. Nothing about
-stratification is hardcoded in the selector: the policy is the only place a
-form name, an era boundary, or a dimension weight appears, so changing the
+A policy names the corpus, the target forms, the era bands, the date selection,
+and the floors, composites, and caps that define a balanced sample. Nothing
+about stratification is hardcoded in the selector: the policy is the only place
+a form name, an era boundary, or a dimension share cap appears, so changing the
 quota profile never requires editing Python.
 
 This module owns all date-bound reasoning. :mod:`.features` maps dates onto era
 bands and :mod:`.selector` consumes the result, but neither one decides what a
 date means.
 
+A field that nothing reads is not configuration, it is a second, unenforced
+claim about what selection does. The policy carries none: ``weights`` and
+``value_weights`` were validated for dimension names and then never consulted,
+because the final fill is sequential under the cap check rather than weighted;
+``seed_groups`` named groups the seed CSV already labels per filer; and
+``policy_schema_version`` was never branched on, so the enforced version lives
+in the plan document (:data:`.publication.TARGET_PLAN_SCHEMA_VERSION`) where
+expansion checks it. A retired key is rejected outright rather than ignored, so
+an older draft fails to load instead of selecting something nobody intended.
+
 Departures from v1:
 
 * ``auto_generate_policy`` derives its corpus from the catalog id it is handed
   plus an explicit form list and year range, instead of v1's
-``manifests_root / "filing_extraction" / "filing_catalog"`` string
-concatenation, which had to be kept in sync with the layout by hand.
+  ``manifests_root / "filing_extraction" / "filing_catalog"`` string
+  concatenation, which had to be kept in sync with the layout by hand.
 * Policy validation rejects a floor or cap naming an unknown dimension at
   construction time. v1 validated only ``floors``/``weights``/``caps`` keys
   against a partial set, so a typo inside a composite's ``filters`` was only
@@ -27,7 +37,7 @@ from __future__ import annotations
 import csv
 import json
 from collections.abc import Sequence
-from dataclasses import asdict, dataclass, field
+from dataclasses import asdict, dataclass, field, replace
 from pathlib import Path
 from typing import Any
 
@@ -35,12 +45,21 @@ from edgar_sec.domain.filing_catalog.filters import (
     AMENDMENT_POLICIES,
     DEFAULT_AMENDMENT,
     DEFAULT_DOCUMENT_SUFFIXES,
+    DateSelection,
+    date_selection_from_json,
+    date_selection_to_json,
+    format_date_selection,
     normalize_suffixes,
 )
 from edgar_sec.foundation.serialization import canonical_hash
 from edgar_sec.infra.storage.atomic import atomic_write_json, atomic_write_text
 
-POLICY_SCHEMA_VERSION = "1.0"
+# Keys a policy document used to carry that nothing reads. A draft still
+# declaring one is refused rather than loaded with the key dropped, because a
+# silently ignored key is exactly the unenforced claim these fields were.
+_RETIRED_POLICY_FIELDS = frozenset(
+    {"seed_groups", "weights", "value_weights", "policy_schema_version"}
+)
 
 # Every dimension the selector is allowed to stratify on. A policy referencing
 # anything else is rejected at construction rather than silently ignored.
@@ -336,18 +355,15 @@ class SelectionPolicy:
     forms: list[str]
     amendment: str = DEFAULT_AMENDMENT
     document_suffixes: list[str] = field(default_factory=list)
-    policy_schema_version: str = POLICY_SCHEMA_VERSION
+    date_selection: list[dict[str, Any]] = field(default_factory=list)
     era_bands: list[EraBand] = field(default_factory=list)
     seed_cik_path: str = "uploads/cik-sec.csv"
-    seed_groups: list[str] = field(default_factory=list)
     base_content_units: int = 500
     level: int = 1
     parent_plan_id: str | None = None
     parent_plan_fingerprint: str | None = None
     floors: dict[str, dict[str, int]] = field(default_factory=dict)
     composites: list[dict[str, Any]] = field(default_factory=list)
-    weights: dict[str, float] = field(default_factory=dict)
-    value_weights: dict[str, dict[str, float]] = field(default_factory=dict)
     caps: dict[str, float] = field(default_factory=dict)
     reserve_size: int = 100
     seed: str = "fixture-selection-v1"
@@ -379,6 +395,13 @@ class SelectionPolicy:
         self.document_suffixes = list(
             normalize_suffixes([str(suffix) for suffix in self.document_suffixes])
         )
+        # The declared form is re-canonicalized rather than stored as written, so
+        # the fingerprint of an unchanged policy does not depend on how a human
+        # ordered or re-spelled its clauses. A policy document is hand-edited,
+        # so "these two files mean the same thing" has to hold.
+        self.date_selection = date_selection_to_json(
+            date_selection_from_json(self.date_selection)
+        )
         if self.base_content_units < 1:
             raise ValueError("base_content_units must be positive")
         if self.level < 1:
@@ -395,12 +418,7 @@ class SelectionPolicy:
         # v1 checked only the top-level dimension names, so a typo inside a
         # composite's filters passed construction and then produced an
         # unmatchable stratum. Every referenced dimension is checked here.
-        unknown = (
-            set(self.floors)
-            | set(self.weights)
-            | set(self.caps)
-            | set(self.value_weights)
-        )
+        unknown = set(self.floors) | set(self.caps)
         for composite in self.composites:
             unknown |= set(composite.get("filters", {}))
         unknown -= set(KNOWN_DIMENSIONS)
@@ -438,6 +456,13 @@ class SelectionPolicy:
     @classmethod
     def from_dict(cls, data: dict[str, Any]) -> SelectionPolicy:
         parsed = dict(data)
+        retired = sorted(set(parsed) & _RETIRED_POLICY_FIELDS)
+        if retired:
+            raise ValueError(
+                f"policy declares retired keys {retired}, which nothing reads; "
+                f"delete them and republish the draft. A key selection ignores "
+                f"is a second, unenforced claim about what the plan selects."
+            )
         if isinstance(parsed.get("era_bands"), list):
             parsed["era_bands"] = [
                 EraBand.from_dict(band) if isinstance(band, dict) else band
@@ -470,6 +495,46 @@ class SelectionPolicy:
     def policy_fingerprint(self) -> str:
         return _fingerprint(self.to_dict())
 
+    @property
+    def date_selection_clauses(self) -> DateSelection:
+        """The declared selection as typed clauses, ready to compile to SQL.
+
+        Decoding from the stored form on each access keeps one representation:
+        the policy document holds JSON, so a fingerprint and a predicate cannot
+        be taken from two different normalizations of the same clauses.
+        """
+        return date_selection_from_json(self.date_selection)
+
+    @property
+    def date_selection_text(self) -> str:
+        """The selection in the ``--dates`` grammar, for reports and prompts."""
+        return format_date_selection(self.date_selection_clauses)
+
+    @property
+    def derives_era_bands(self) -> bool:
+        """Whether era bands are derived from the catalog rather than declared.
+
+        An empty list means auto, not "no strata": a policy with no bands would
+        sample across all years at once, which is the one thing era banding
+        exists to prevent. The planner resolves the bands from the years the
+        catalog actually holds -- after the declared forms and date selection --
+        and writes the resolved bands into the published plan.
+        """
+        return not self.era_bands
+
+    def with_era_bands(self, bands: Sequence[EraBand]) -> SelectionPolicy:
+        """Return a copy carrying explicit bands, for embedding in a plan.
+
+        The plan must record the bands selection actually used. Auto bands are
+        derived from data that can change, so re-deriving them on a later read
+        of the plan could produce a different stratification than the one the
+        published locators were chosen under.
+        """
+        if not bands:
+            raise ValueError("resolved era bands must not be empty")
+        clone = replace(self, era_bands=list(bands))
+        return clone
+
     def requested_units(self) -> int:
         return self.base_content_units
 
@@ -479,7 +544,7 @@ class SelectionPolicy:
         Called by the selector against the snapshot it was handed, because only
         the snapshot knows which dimensions actually survived feature building.
         """
-        referenced = set(self.floors) | set(self.weights) | set(self.caps)
+        referenced = set(self.floors) | set(self.caps)
         for composite in self.composites:
             referenced |= set(composite.get("filters", {}))
         missing = referenced - available
@@ -489,13 +554,19 @@ class SelectionPolicy:
             )
 
 
-def _era_bands_for_range(min_year: int, max_year: int) -> list[EraBand]:
+def era_bands_for_range(min_year: int, max_year: int) -> list[EraBand]:
     """Tile ``[min_year, max_year]`` into contiguous, non-overlapping bands.
 
     A short range gets one band per year. A longer one is binned so each band
     spans roughly four years, capped at six bands: more bands than that and no
     single stratum is wide enough to fill its floor.
+
+    This is the automatic mode. A policy that declares its own bands never
+    reaches it, and the bands a published plan records are the ones its selection
+    actually used.
     """
+    if max_year < min_year:
+        raise ValueError(f"year range is inverted: {min_year}..{max_year}")
     total_years = max_year - min_year + 1
     if total_years <= 4:
         return [
@@ -537,10 +608,10 @@ def auto_generate_policy(
     normalized_forms = [
         str(form).strip().upper() for form in forms if str(form).strip()
     ]
-    bands = _era_bands_for_range(min_year, max_year)
+    bands = era_bands_for_range(min_year, max_year)
     policy = SelectionPolicy(
         corpus_id=f"corpus_{catalog_id[:8]}",
-        forms=normalized_forms or ["10-K"],
+        forms=normalized_forms,
         era_bands=bands,
         base_content_units=min(500, max(100, (max_year - min_year + 1) * 20)),
     )
@@ -586,6 +657,11 @@ def discover_policies(search_dirs: Sequence[str | Path]) -> list[dict[str, Any]]
                     "base_content_units": policy.base_content_units,
                     "policy_fingerprint": policy.policy_fingerprint,
                     "seed_cik_path": policy.seed_cik_path,
+                    # Enough to tell two drafts apart in a menu without reading
+                    # either: the fields that change what a plan selects.
+                    "date_selection_text": policy.date_selection_text,
+                    "derives_era_bands": policy.derives_era_bands,
+                    "era_band_count": len(policy.era_bands),
                 }
             )
     return summaries
@@ -610,7 +686,6 @@ __all__ = [
     "DEFAULT_AMENDMENT",
     "DEFAULT_DOCUMENT_SUFFIXES",
     "KNOWN_DIMENSIONS",
-    "POLICY_SCHEMA_VERSION",
     "SEED_FILER_COLUMNS",
     "EraBand",
     "SeedFiler",
@@ -618,6 +693,7 @@ __all__ = [
     "auto_generate_policy",
     "compute_seed_fingerprint",
     "discover_policies",
+    "era_bands_for_range",
     "load_seed_cik_csv",
     "normalize_suffixes",
     "normalize_value",

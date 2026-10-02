@@ -10,6 +10,7 @@ sample of filings is mostly that group's subsidiaries.
 from __future__ import annotations
 
 from pathlib import Path
+from typing import Any
 
 import pytest
 
@@ -391,3 +392,190 @@ def test_report_names_the_policy_that_produced_it(
     assert report["corpus_id"] == selection_policy.corpus_id
     assert report["level"] == selection_policy.level
     assert report["target_units"] == selection_policy.requested_units()
+
+
+# --- the global form-by-era allocation --------------------------------------
+
+
+def _spread_snapshot(root: Path, cells: dict[tuple[str, str], int]) -> Path:
+    """One snapshot whose locators occupy the given ``(form, era)`` cells."""
+    locators: list[dict[str, Any]] = []
+    index = 0
+    for (form, era), count in sorted(cells.items()):
+        for _ in range(count):
+            index += 1
+            locators.append(
+                make_locator(
+                    index,
+                    company_family=f"fam{index}",
+                    company_name=f"Company {index}",
+                    form=form,
+                    era=era,
+                )
+            )
+    return write_snapshot(root, locators)
+
+
+def _allocation_cells(report: dict[str, Any]) -> dict[tuple[str, str], dict[str, Any]]:
+    return {
+        (cell["form"], cell["era"]): cell
+        for cell in report["form_era_allocation"]["cells"]
+    }
+
+
+def test_allocation_spreads_a_budget_across_cells(tmp_path: Path) -> None:
+    """Two equal cells get equal shares, so the big one does not take both."""
+    snapshot = _spread_snapshot(
+        tmp_path / "spread", {("10-K", "modern"): 9, ("8-K", "legacy"): 3}
+    )
+    policy = SelectionPolicy(
+        corpus_id="spread",
+        forms=["10-K", "8-K"],
+        era_bands=[
+            EraBand(name="legacy", end_year=2010),
+            EraBand(name="modern", start_year=2010),
+        ],
+        base_content_units=6,
+        reserve_size=0,
+        seed_cik_path="__absent__",
+    )
+    result = DeficitSelector(snapshot, policy).select()
+    cells = _allocation_cells(result.report)
+    assert cells[("10-K", "modern")]["available"] == 9
+    assert cells[("8-K", "legacy")]["available"] == 3
+    assert cells[("10-K", "modern")]["selected"] == 3
+    assert cells[("8-K", "legacy")]["selected"] == 3
+    assert result.report["form_era_allocation"]["unallocated"] == 0
+    assert result.report["form_era_allocation"]["underfilled_cells"] == 0
+
+
+def test_allocation_redistributes_from_an_exhausted_cell(tmp_path: Path) -> None:
+    """A cell smaller than its share gives the remainder to the others."""
+    snapshot = _spread_snapshot(
+        tmp_path / "sparse", {("10-K", "modern"): 9, ("8-K", "legacy"): 1}
+    )
+    policy = SelectionPolicy(
+        corpus_id="sparse",
+        forms=["10-K", "8-K"],
+        era_bands=[
+            EraBand(name="legacy", end_year=2010),
+            EraBand(name="modern", start_year=2010),
+        ],
+        base_content_units=6,
+        reserve_size=0,
+        seed_cik_path="__absent__",
+    )
+    result = DeficitSelector(snapshot, policy).select()
+    cells = _allocation_cells(result.report)
+    assert cells[("8-K", "legacy")]["selected"] == 1
+    assert cells[("10-K", "modern")]["selected"] == 5
+    assert cells[("8-K", "legacy")]["shortfall"] > 0
+    assert len(result.active_locators) == 6
+
+
+def test_a_cap_smaller_than_the_cell_count_prioritizes_era_coverage(
+    tmp_path: Path,
+) -> None:
+    """Three eras, three forms, room for three rows: one row per era.
+
+    Ordering the cells form-first would instead spend all three on whichever form
+    sorts first, leaving two eras unrepresented.
+    """
+    snapshot = _spread_snapshot(
+        tmp_path / "eras",
+        {
+            ("4", "e1"): 5,
+            ("4", "e2"): 5,
+            ("4", "e3"): 5,
+        },
+    )
+    policy = SelectionPolicy(
+        corpus_id="eras",
+        forms=["4"],
+        era_bands=[
+            EraBand(name="e1", start_year=2000, end_year=2001),
+            EraBand(name="e2", start_year=2001, end_year=2002),
+            EraBand(name="e3", start_year=2002, end_year=2003),
+        ],
+        base_content_units=3,
+        reserve_size=0,
+        seed_cik_path="__absent__",
+    )
+    result = DeficitSelector(snapshot, policy).select()
+    selected_eras = {candidate["era"] for candidate in result.active_candidates}
+    assert selected_eras == {"e1", "e2", "e3"}
+
+
+def test_allocation_never_exceeds_the_global_cap(tmp_path: Path) -> None:
+    """Floors run first; allocation only draws from what they left."""
+    snapshot = _spread_snapshot(
+        tmp_path / "shared", {("10-K", "modern"): 20, ("8-K", "legacy"): 20}
+    )
+    policy = SelectionPolicy(
+        corpus_id="shared",
+        forms=["10-K", "8-K"],
+        era_bands=[
+            EraBand(name="legacy", end_year=2010),
+            EraBand(name="modern", start_year=2010),
+        ],
+        base_content_units=5,
+        reserve_size=0,
+        seed_cik_path="__absent__",
+        floors={"era": {"legacy": 4}},
+    )
+    result = DeficitSelector(snapshot, policy).select()
+    assert len(result.active_locators) == 5
+    allocation = result.report["form_era_allocation"]
+    assert sum(cell["selected"] for cell in allocation["cells"]) == 5
+    assert allocation["budget"] + 4 == 5
+
+
+def test_allocation_reports_an_empty_corpus_rather_than_claiming_balance(
+    tmp_path: Path,
+) -> None:
+    snapshot = write_snapshot(tmp_path / "empty", [])
+    policy = SelectionPolicy(
+        corpus_id="empty",
+        forms=["10-K"],
+        era_bands=[EraBand(name="modern", start_year=2010)],
+        base_content_units=10,
+        reserve_size=0,
+        seed_cik_path="__absent__",
+    )
+    result = DeficitSelector(snapshot, policy).select()
+    allocation = result.report["form_era_allocation"]
+    assert allocation["cells"] == []
+    assert allocation["cell_count"] == 0
+    assert allocation["unallocated"] == 10
+    assert result.active_locators == []
+
+
+def test_the_report_names_the_selection_the_run_used(
+    snapshot_dir: Path,
+) -> None:
+    """A reader must not have to re-derive what the plan selected."""
+    policy = SelectionPolicy.from_dict(
+        {
+            **SelectionPolicy(
+                corpus_id="reported",
+                forms=["10-K"],
+                era_bands=[EraBand(name="modern", start_year=2010)],
+                base_content_units=4,
+                reserve_size=0,
+                seed_cik_path="__absent__",
+            ).to_dict(),
+            "date_selection": [
+                {
+                    "kind": "recurring",
+                    "granularity": "quarter",
+                    "values": [1],
+                    "start_year": None,
+                    "end_year": None,
+                }
+            ],
+        }
+    )
+    report = DeficitSelector(snapshot_dir, policy).select().report
+    assert report["date_selection_text"] == "@Q1"
+    assert report["era_band_count"] == 1
+    assert report["derives_era_bands"] is False

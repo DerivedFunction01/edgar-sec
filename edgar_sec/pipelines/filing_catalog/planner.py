@@ -1,10 +1,16 @@
 """Deterministic target planning for the filing catalog.
 
 Deterministic planning is a fast, zero-heuristic slice of a materialized
-catalog. It deliberately supports exactly four filters -- ``forms``,
-``amendment``, ``document_suffixes``, and ``limit`` -- and refuses to reason
-about dates, eras, or cohort balance, which belong to the Stage B selection
-policy. Passing a date argument raises ``TypeError`` rather than being ignored.
+catalog. It supports exactly five filters -- ``forms``, ``amendment``,
+``document_suffixes``, ``dates``, and ``limit`` -- and refuses to reason about
+eras or cohort balance, which belong to the Stage B selection policy.
+
+``dates`` is a *selection*, not a year list: it is the union of absolute calendar
+intervals and recurring calendar periods spelled in the grammar
+``domain.filing_catalog.filters`` owns, and it applies to ``report_date``. An
+empty selection is no date predicate at all; a nonempty one cannot represent a
+row whose ``report_date`` is missing, so it excludes those rows. That asymmetry
+is the contract, not an accident of the SQL.
 
 The ``amendment`` policy strictly filters on the filing's amendment status,
 and policy-specific parameters (selection policies, seed CIKs) are isolated
@@ -22,12 +28,16 @@ from edgar_sec.domain.filing_catalog.filters import (
     AMENDMENT_POLICIES,
     DEFAULT_AMENDMENT,
     DEFAULT_DOCUMENT_SUFFIXES,
+    date_selection_to_json,
+    format_date_selection,
     normalize_suffixes,
+    parse_date_selection,
 )
 from edgar_sec.domain.filing_catalog.schemas import (
     LOCATOR_POLICY_COLUMNS,
     SCOPE_DETERMINISTIC,
     SCOPE_POLICY,
+    TARGET_COLUMNS,
 )
 from edgar_sec.engine.selection.features import (
     FeatureSnapshotBuilder,
@@ -42,6 +52,7 @@ from edgar_sec.engine.selection.policy import (
     SeedFiler,
     SelectionPolicy,
     compute_seed_fingerprint,
+    era_bands_for_range,
     resolve_seed_filers,
     write_seed_filers_csv,
 )
@@ -51,11 +62,17 @@ from edgar_sec.infra.storage.duckdb import connect
 from edgar_sec.infra.storage.duckdb_catalog import (
     amendment_sql,
     copy_query_to_parquet,
+    date_projection_sql,
+    date_selection_sql,
     sql_literal,
     suffix_sql,
 )
 from edgar_sec.infra.storage.parquet import DEFAULT_ROW_GROUP_SIZE
-from edgar_sec.pipelines.filing_catalog.discovery import resolve_catalog_reference
+from edgar_sec.pipelines.filing_catalog.discovery import (
+    catalog_year_bounds,
+    eligible_year_bounds,
+    resolve_catalog_reference,
+)
 from edgar_sec.pipelines.filing_catalog.paths import (
     LOCATOR_GROUPS_NAME,
     PLAN_TARGETS_DIR_NAME,
@@ -146,6 +163,7 @@ def plan(
     forms: tuple[str, ...] | None = None,
     amendment: str | None = None,
     document_suffixes: tuple[str, ...] | None = None,
+    dates: str | None = None,
     limit: int | None = None,
     progress: ProgressCallback = None,
     row_group_size: int = DEFAULT_ROW_GROUP_SIZE,
@@ -154,6 +172,11 @@ def plan(
 
     The bundle partitions the catalog's targets by form, records the request
     that produced it, and publishes atomically. Returns the plan document.
+
+    ``dates`` is the date-selection grammar, not a year list. The normalized
+    clauses -- not the caller's spelling -- go into the request, so two spellings
+    of one selection resolve to the same published plan instead of forking a
+    near-duplicate bundle.
     """
     if not catalog:
         raise ValueError("catalog is required")
@@ -173,6 +196,7 @@ def plan(
         else DEFAULT_DOCUMENT_SUFFIXES
     )
     requested_forms = _validate_forms(tuple(forms or ()))
+    date_selection = parse_date_selection(dates or "")
 
     paths = (
         resolve_filing_catalog_paths(output_root)
@@ -188,6 +212,7 @@ def plan(
         "forms": list(requested_forms),
         "amendment": amendment,
         "document_suffixes": list(suffixes),
+        "date_selection": date_selection_to_json(date_selection),
         "limit": limit,
         "plan_schema_version": TARGET_PLAN_SCHEMA_VERSION,
     }
@@ -220,10 +245,22 @@ def plan(
             f"SELECT * FROM read_parquet([{file_list}]) WHERE form IS NOT NULL"
         )
 
-        # The amendment and suffix filters are part of which partitions exist at
-        # all, so they are applied when discovering forms. v1 listed every form
-        # present in the catalog and then wrote empty partitions for the ones
-        # the filters removed.
+        # A date selection filters on a parsed DATE, so the parse is projected
+        # once here rather than repeated per reference in the predicate. Keeping
+        # it in a view is what lets the same relation serve both form discovery
+        # and every partition write without re-wrapping each query.
+        source = view
+        if date_selection:
+            source = "catalog_dated"
+            con.execute(
+                f"CREATE OR REPLACE TEMP VIEW {source} AS SELECT *, "
+                f"{date_projection_sql('report_date')} FROM {view}"
+            )
+
+        # The amendment, suffix, and date filters are part of which partitions
+        # exist at all, so they are applied when discovering forms. v1 listed
+        # every form present in the catalog and then wrote empty partitions for
+        # the ones the filters removed.
         shared_where: list[str] = []
         if requested_forms:
             form_list = ", ".join(sql_literal(form) for form in requested_forms)
@@ -234,14 +271,22 @@ def plan(
         suffix_clause = suffix_sql("document_path", suffixes)
         if suffix_clause != "TRUE":
             shared_where.append(f"({suffix_clause})")
+        date_clause = date_selection_sql(date_selection)
+        if date_clause != "TRUE":
+            shared_where.append(date_clause)
 
         discovery = " AND ".join(shared_where) if shared_where else "TRUE"
         available = [
             str(row[0])
             for row in con.execute(
-                f"SELECT DISTINCT form FROM {view} WHERE {discovery} ORDER BY form"
+                f"SELECT DISTINCT form FROM {source} WHERE {discovery} ORDER BY form"
             ).fetchall()
         ]
+
+        # The dated view carries one extra column, and a published shard is
+        # schema-checked against TARGET_COLUMNS, so partitions project the
+        # published columns by name rather than taking the relation's shape.
+        target_columns = ", ".join(TARGET_COLUMNS)
 
         counts: dict[str, int] = {}
         total_rows = 0
@@ -256,11 +301,12 @@ def plan(
                 destination = targets_root / f"form={partition}" / "data.parquet"
                 where = [*shared_where, f"form = {sql_literal(form_name)}"]
                 query = (
-                    f"SELECT * FROM {view} WHERE {' AND '.join(where)} "
+                    f"SELECT {target_columns} FROM {source} "
+                    f"WHERE {' AND '.join(where)} "
                     f"ORDER BY document_locator_key, occurrence_id"
                 )
                 if limit is not None:
-                    query = f"SELECT * FROM ({query}) LIMIT {int(limit)}"
+                    query = f"SELECT {target_columns} FROM ({query}) LIMIT {int(limit)}"
                 written.append(destination)
                 counts[form_name] = copy_query_to_parquet(
                     con, query, destination, row_group_size
@@ -281,7 +327,7 @@ def plan(
                 file_list = ", ".join(sql_literal(str(path)) for path in written)
                 locator_source = f"read_parquet([{file_list}])"
             else:
-                locator_source = f"(SELECT * FROM {view} WHERE false)"
+                locator_source = f"(SELECT * FROM {source} WHERE false)"
             locator_count = copy_query_to_parquet(
                 con,
                 _locator_groups_query(locator_source),
@@ -293,6 +339,8 @@ def plan(
                 "scope": SCOPE_DETERMINISTIC,
                 "catalog_id": catalog,
                 "plan_id": plan_id,
+                "date_selection": date_selection_to_json(date_selection),
+                "date_selection_text": format_date_selection(date_selection),
                 "active_targets_count": total_rows,
                 "unique_locators_count": locator_count,
                 "counts": counts,
@@ -305,6 +353,8 @@ def plan(
                 "forms": list(requested_forms),
                 "amendment": amendment,
                 "document_suffixes": list(suffixes),
+                "date_selection": date_selection_to_json(date_selection),
+                "date_selection_text": format_date_selection(date_selection),
                 "limit": limit,
                 "counts": counts,
                 "selected_rows": total_rows,
@@ -411,6 +461,37 @@ def _register_reserve_keys(con: object, keys: list[str]) -> None:
         con.executemany("INSERT INTO reserve_locator_keys VALUES (?)", chunk)
 
 
+def _resolve_era_bands(
+    paths: FilingCatalogPaths, catalog: str, policy: SelectionPolicy
+) -> SelectionPolicy:
+    """Return the policy carrying the era bands selection will actually use.
+
+    A policy that declares no bands derives them from the years the catalog
+    holds *after* the policy's own forms and date selection. Deriving from the
+    unfiltered year range instead would band years the selection can never reach,
+    and every one of them would be an empty stratum in the report.
+
+    The bands are resolved here, before the feature build, because era is baked
+    into the snapshot: deriving them afterwards would describe a stratification
+    the published locators were not chosen under. The snapshot is content
+    addressed on the policy fingerprint, so resolving first also means the
+    snapshot a plan reuses is the one its bands describe.
+
+    Falling back to the unfiltered range when the selection matches nothing is
+    deliberate. A policy that matches no rows still needs bands to build and
+    publish an empty plan, and a synthetic single band would make the report
+    claim a coverage that was never derived from data.
+    """
+    if not policy.derives_era_bands:
+        return policy
+    bounds = eligible_year_bounds(
+        paths, catalog, forms=policy.forms, date_selection=policy.date_selection_clauses
+    )
+    if bounds is None:
+        bounds = catalog_year_bounds(paths, catalog)
+    return policy.with_era_bands(era_bands_for_range(*bounds))
+
+
 def plan_policy(
     catalog: str,
     policy: SelectionPolicy,
@@ -424,7 +505,7 @@ def plan_policy(
     """Publish one immutable policy-driven target-plan bundle.
 
     The scope counterpart to :func:`plan`. Where deterministic planning slices a
-    catalog on four filters, this runs the Stage B selection engine against a
+    catalog on five filters, this runs the Stage B selection engine against a
     declared quota profile and publishes the result: quota-balanced locators, the
     18-column locator projection, a reserve pool, and the policy that produced
     it, all recorded in ``plan.json``.
@@ -447,6 +528,13 @@ def plan_policy(
     # surface as a missing-parts error from inside feature building.
     _catalog_target_files(paths, catalog)
 
+    # Resolved before the request is hashed, so the plan id names the bands its
+    # locators will actually be chosen under. Resolution is a pure function of
+    # the catalog and the declaration, so an unchanged draft against an unchanged
+    # catalog keeps its id; what the id deliberately does *not* depend on is the
+    # draft declaring the bands explicitly when they happen to match.
+    policy = _resolve_era_bands(paths, catalog, policy)
+
     # Normalized once, then carried everywhere: the feature snapshot, the
     # selector, the published sidecar, and the plan identity. Reading the seed
     # manifest per consumer is what let a plan and the features behind it
@@ -455,13 +543,17 @@ def plan_policy(
         dict(seed_filers) if seed_filers is not None else resolve_seed_filers(policy)
     )
     seed_fingerprint = compute_seed_fingerprint(pinned_seed)
+    # ``target_units`` and ``level`` are not repeated here. Both are policy
+    # fields, so ``policy_fingerprint`` already covers them: the target is
+    # ``base_content_units`` verbatim, and a level only ever advances alongside
+    # a ``parent_plan_id`` that the fingerprint covers too. Restating them gave
+    # the identity two encodings of one fact, which can disagree the moment
+    # either is derived rather than copied.
     request = {
         "catalog_id": catalog,
         "scope": SCOPE_POLICY,
         "policy_fingerprint": policy.policy_fingerprint,
         "seed_fingerprint": seed_fingerprint,
-        "target_units": policy.requested_units(),
-        "level": policy.level,
         "plan_schema_version": TARGET_PLAN_SCHEMA_VERSION,
     }
     plan_id = plan_identity(request)

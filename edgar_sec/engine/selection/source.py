@@ -31,10 +31,18 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
 
-from edgar_sec.domain.filing_catalog.filters import AMENDMENT_POLICIES
+from edgar_sec.domain.filing_catalog.filters import (
+    AMENDMENT_POLICIES,
+    DateSelection,
+)
 from edgar_sec.engine.selection.policy import KNOWN_DIMENSIONS
 from edgar_sec.infra.storage.duckdb import connect
-from edgar_sec.infra.storage.duckdb_catalog import sql_literal, suffix_sql
+from edgar_sec.infra.storage.duckdb_catalog import (
+    date_selection_sql,
+    parsed_date_relation,
+    sql_literal,
+    suffix_sql,
+)
 
 # The locator columns the selector reasons over. A tuple rather than a
 # comma-joined string so the SELECT list and the row-to-dict zip are generated
@@ -133,10 +141,14 @@ class CandidateFilters:
     amendment: str = "both"
     document_suffixes: tuple[str, ...] = ()
     max_reported_size: int | None = None
+    date_selection: DateSelection = ()
 
     def __post_init__(self) -> None:
         if self.amendment not in AMENDMENT_POLICIES:
             raise ValueError(f"invalid amendment policy: {self.amendment!r}")
+
+    def filters_dates(self) -> bool:
+        return bool(self.date_selection)
 
     def predicate(self) -> str:
         clauses: list[str] = []
@@ -151,6 +163,13 @@ class CandidateFilters:
             # primary document for an observed row and the synthetic
             # submission-bundle path for a fallback locator.
             clauses.append(suffix_sql("l.document_path", self.document_suffixes))
+        if self.date_selection:
+            # Applied here rather than after selection, so a locator outside the
+            # declared dates cannot be drawn by any phase: not by a floor, not by
+            # the weighted fill, not by the reserve. A date selection that only
+            # filtered the final list would still let out-of-range candidates
+            # consume quota on the way there.
+            clauses.append(date_selection_sql(self.date_selection))
         return " AND ".join(clauses) if clauses else "TRUE"
 
 
@@ -220,6 +239,20 @@ class CandidateSource:
     def _exclusion_predicate(self) -> str:
         return f"l.document_locator_key NOT IN (SELECT document_locator_key FROM {_SELECTED_TABLE})"
 
+    def _locator_source(self) -> str:
+        """The locator relation, projected so a date predicate sees one column.
+
+        Only the pool queries need this: they are the ones carrying the filter
+        set. Wrapping here rather than per query is what keeps the parse to one
+        occurrence per row instead of one per predicate reference, and the outer
+        alias stays ``l`` so every qualified reference in this module is
+        unaffected.
+        """
+        relation = f"read_parquet({sql_literal(str(self.locator))})"
+        if self.filters.filters_dates():
+            return f"{parsed_date_relation(relation, 'report_date')} l"
+        return f"{relation} l"
+
     def _rows(self, query: str, params: Sequence[Any] = ()) -> list[dict[str, Any]]:
         rows = self._require().execute(query, list(params)).fetchall()
         return [dict(zip(POOL_COLUMNS, row, strict=True)) for row in rows]
@@ -249,13 +282,55 @@ class CandidateSource:
         column = self._dimension(dimension)
         query = f"""
             SELECT {_POOL_SELECT}
-            FROM read_parquet({sql_literal(str(self.locator))}) l
+            FROM {self._locator_source()}
             WHERE {self._exclusion_predicate()} AND {self.filters.predicate()}
               AND l.{column} = ?
             ORDER BY {_ORDER_EXPR}
             LIMIT {int(limit)}
         """
         return self._rows(query, [value, self.seed])
+
+    def pool_for_cell(
+        self, form: str, era: str, limit: int = 60
+    ) -> list[dict[str, Any]]:
+        """Return candidates in one form-by-era cell, in the shared tie-break order.
+
+        The conjunction is over two columns of the same locator row, so it reads
+        as one stratum rather than a floor on each dimension separately: a floor
+        on ``form`` cannot tell a cell from any other row of that form.
+        """
+        query = f"""
+            SELECT {_POOL_SELECT}
+            FROM {self._locator_source()}
+            WHERE {self._exclusion_predicate()} AND {self.filters.predicate()}
+              AND l.form = ? AND l.era = ?
+            ORDER BY {_ORDER_EXPR}
+            LIMIT {int(limit)}
+        """
+        return self._rows(query, [form, era, self.seed])
+
+    def cell_availability(self) -> list[tuple[str, str, int]]:
+        """Return every nonempty ``(form, era)`` cell with its eligible count.
+
+        One grouped pass, so the allocator can tell a cell that is small from a
+        cell that is empty without asking per cell. Excludes the already-selected
+        set, matching what the pool query would draw from: a cell whose remaining
+        candidates are gone must not be counted as capacity.
+        """
+        rows = (
+            self._require()
+            .execute(
+                f"""
+            SELECT l.form, l.era, COUNT(*) AS available
+            FROM {self._locator_source()}
+            WHERE {self._exclusion_predicate()} AND {self.filters.predicate()}
+            GROUP BY l.form, l.era
+            ORDER BY l.form, l.era
+            """
+            )
+            .fetchall()
+        )
+        return [(str(form), str(era), int(count)) for form, era, count in rows]
 
     def pool_for_composite(
         self, filters: dict[str, Any], limit: int = 60
@@ -265,7 +340,7 @@ class CandidateSource:
         clauses.extend(f"l.{self._dimension(dimension)} = ?" for dimension in filters)
         query = f"""
             SELECT {_POOL_SELECT}
-            FROM read_parquet({sql_literal(str(self.locator))}) l
+            FROM {self._locator_source()}
             WHERE {" AND ".join(clauses)}
             ORDER BY {_ORDER_EXPR}
             LIMIT {int(limit)}
@@ -294,7 +369,7 @@ class CandidateSource:
                            PARTITION BY l.representative_cik
                            ORDER BY {_ORDER_EXPR}
                        ) AS cik_rank
-                FROM read_parquet({sql_literal(str(self.locator))}) l
+                FROM {self._locator_source()}
                 WHERE {self._exclusion_predicate()} AND {self.filters.predicate()}
                   AND l.representative_cik IN (
                       SELECT document_locator_key FROM {_CIK_TABLE}
@@ -315,7 +390,7 @@ class CandidateSource:
         """
         query = f"""
             SELECT {_POOL_SELECT}
-            FROM read_parquet({sql_literal(str(self.locator))}) l
+            FROM {self._locator_source()}
             WHERE {self._exclusion_predicate()} AND {self.filters.predicate()}
             ORDER BY {_ORDER_EXPR}
             LIMIT {int(self.page_size)} OFFSET {int(page_index) * self.page_size}
