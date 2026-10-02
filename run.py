@@ -1,60 +1,60 @@
-"""Root launcher over the static registry (``defs.runtime.registry``).
+"""Root interactive launcher and CLI dispatcher for edgar_sec.
 
-Interactive menu:
-
-    python run.py
-
-Direct dispatch (all flags after the id pass through to the target module):
-
-    python run.py viewer --port 8501
-    python run.py metadata
-    python run.py append --plan-dir <expanded-plan> --fixture-id <fixture-id>
-    python run.py --list
-
-The dispatcher owns no phase behavior: it resolves an entry, patches
-``sys.argv``, and executes the registered module in-process exactly as
-``python -m <module>`` would, propagating the child's exit code.
+Dispatches into two kinds of entry: the Layer 4 pipelines that do the work, and
+the Layer 5 apps that only read what a pipeline published. The entry is named
+``LauncherEntry`` rather than ``PipelineEntry`` because it holds both; v1 used
+the same name.
 """
 
 from __future__ import annotations
 
-import json
-import runpy
 import sys
-from dataclasses import asdict
-
-from defs.runtime.registry import ENTRIES, LauncherEntry, find_entry
-
-_PROG = "run.py"
+from dataclasses import dataclass
 
 
-def _dispatch(entry: LauncherEntry, args: list[str]) -> int:
-    """Run the entry's module with ``args`` as its argv; return its code."""
-    previous_argv = sys.argv
-    sys.argv = [entry.module, *args]
-    try:
-        runpy.run_module(entry.module, run_name="__main__", alter_sys=True)
-    except SystemExit as exc:  # child requested exit (argparse help, errors)
-        code = exc.code
-        if code is None:
-            return 0
-        if isinstance(code, int):
-            return code
-        print(code)
-        return 1
-    except KeyboardInterrupt:
-        print("\ninterrupted")
-        return 130
-    finally:
-        sys.argv = previous_argv
-    return 0
+@dataclass(frozen=True)
+class LauncherEntry:
+    id: str
+    label: str
+    description: str
+    module: str
+
+
+ENTRIES: tuple[LauncherEntry, ...] = (
+    LauncherEntry(
+        id="metadata",
+        label="Metadata Sync (Phase 01)",
+        description="SEC submissions metadata extraction and partition sync",
+        module="edgar_sec.pipelines.metadata_sync.operator",
+    ),
+    LauncherEntry(
+        id="filing-catalog",
+        label="Filing Catalog (Phase 02)",
+        description="Offline DuckDB catalog materialization and target planning",
+        module="edgar_sec.pipelines.filing_catalog.operator",
+    ),
+    LauncherEntry(
+        id="documents",
+        label="Document Storage (Phase 2.5)",
+        description="Document acquisition, normalization, snapshots, and review",
+        module="edgar_sec.pipelines.document_storage.cli",
+    ),
+    LauncherEntry(
+        id="viewer",
+        label="Dataset Viewer",
+        description="Read-only browser and SQL console over published artifacts",
+        module="edgar_sec.apps.viewer.cli",
+    ),
+)
 
 
 def _menu() -> int:
-    print("EDGAR pipeline launcher")
+    print("\n==========================================")
+    print("   EDGAR SEC Launcher (v2)                ")
+    print("==========================================")
     while True:
-        for index, entry in enumerate(ENTRIES, start=1):
-            print(f"  {index}. {entry.label} - {entry.description}")
+        for idx, entry in enumerate(ENTRIES, start=1):
+            print(f"  {idx}. {entry.label} - {entry.description}")
         print("  0. Exit")
         try:
             raw = input("\nChoice [0]: ").strip()
@@ -62,50 +62,47 @@ def _menu() -> int:
             return 0
         if not raw or raw == "0":
             return 0
-        entry: LauncherEntry | None = None
-        if raw.isdigit() and 1 <= int(raw) <= len(ENTRIES):
-            entry = ENTRIES[int(raw) - 1]
-        if entry is None:
-            entry = find_entry(raw)
-        if entry is None:
-            print(f"  unknown choice: {raw}")
-            continue
-        # Menu launches use the entry's default arguments only; pass custom
-        # flags through direct dispatch instead.
-        return _dispatch(entry, [])
+        try:
+            choice = int(raw)
+            if 1 <= choice <= len(ENTRIES):
+                entry = ENTRIES[choice - 1]
+                import runpy
 
-
-def _usage() -> str:
-    lines = [
-        f"usage: python {_PROG}                 interactive menu",
-        f"       python {_PROG} <entry> [args...]   direct dispatch",
-        f"       python {_PROG} --list          print entries as JSON",
-        "",
-        "Entries:",
-    ]
-    lines.extend(
-        f"  {entry.id:<10} {entry.label} - {entry.description}" for entry in ENTRIES
-    )
-    return "\n".join(lines)
+                runpy.run_module(entry.module, run_name="__main__", alter_sys=True)
+                return 0
+        except ValueError:
+            pass
+        print("Invalid choice, please select again.")
 
 
 def main(argv: list[str] | None = None) -> int:
-    args = list(sys.argv[1:] if argv is None else argv)
+    args = sys.argv[1:] if argv is None else argv
     if not args:
         return _menu()
-    first = args[0]
-    if first in ("-h", "--help"):
-        print(_usage())
+    if args[0] in ("-h", "--help"):
+        print(__doc__)
+        print("\nAvailable pipelines:")
+        for entry in ENTRIES:
+            print(f"  {entry.id:<15} {entry.description}")
         return 0
-    if first == "--list":
-        print(json.dumps([asdict(entry) for entry in ENTRIES], indent=2))
+    if args[0] == "--list":
+        for entry in ENTRIES:
+            print(f"{entry.id}: {entry.label}")
         return 0
-    entry = find_entry(first)
-    if entry is None:
-        valid = ", ".join(item.id for item in ENTRIES)
-        print(f"error: unknown entry {first!r} (valid: {valid})", file=sys.stderr)
-        return 2
-    return _dispatch(entry, args[1:])
+
+    cmd = args[0]
+    for entry in ENTRIES:
+        if entry.id == cmd:
+            import runpy
+
+            sys.argv = [entry.module, *args[1:]]
+            runpy.run_module(entry.module, run_name="__main__", alter_sys=True)
+            return 0
+
+    print(
+        f"Unknown pipeline: '{cmd}'. Run 'python run.py --list' to see available pipelines."
+    )
+    return 1
 
 
 if __name__ == "__main__":

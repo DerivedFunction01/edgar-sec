@@ -6,6 +6,7 @@ Supports uv (fast) with automatic fallback to pip
 """
 
 import argparse
+import re
 import subprocess
 import sys
 from pathlib import Path
@@ -16,6 +17,7 @@ USE_VENV = True
 USE_UV = False  # Set automatically by detect_uv()
 GPU_AVAILABLE = False
 CUDA_VERSION = "cu121"
+_CUDA_VERSION_RE = re.compile(r"CUDA Version: (\d+)\.(\d+)")
 UPGRADE = False
 REINSTALL_TORCH = False
 
@@ -137,9 +139,8 @@ def detect_nvidia_gpu():
                     text=True,
                     timeout=5,
                 )
-                import re
 
-                match = re.search(r"CUDA Version: (\d+)\.(\d+)", cuda_info.stdout)
+                match = _CUDA_VERSION_RE.search(cuda_info.stdout)
                 if match:
                     major, minor = match.groups()
                     CUDA_VERSION = f"cu{major}{minor}"
