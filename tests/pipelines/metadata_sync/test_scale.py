@@ -155,12 +155,18 @@ def test_derived_and_recorded_plan_ids_agree(tmp_path: Path) -> None:
     """Planning twice is idempotent, which is what makes resume safe."""
     plan, run_paths = _prepare(tmp_path, chunk_size=1)
     derived = derive_plan_id(
-        plan_options(input_path=fixture_path("cik_sec_mini.csv"), chunk_size=1)
+        plan_options(
+            input_path=fixture_path("cik_sec_mini.csv"),
+            chunk_size=1,
+            artifacts_root=tmp_path,
+        )
     )
     assert derived == plan.plan_id == load_plan(run_paths).plan_id
     assert (
         run_options(
-            input_path=str(fixture_path("cik_sec_mini.csv")), chunk_size=1
+            input_path=str(fixture_path("cik_sec_mini.csv")),
+            chunk_size=1,
+            artifacts_root=tmp_path,
         ).plan_id
         == plan.plan_id
     )

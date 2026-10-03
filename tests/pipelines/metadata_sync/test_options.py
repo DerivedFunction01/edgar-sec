@@ -200,7 +200,7 @@ def test_a_plan_id_can_be_re_derived_from_a_cohort(tmp_path: Path) -> None:
     derived = derive_plan_id(
         plan_options(input_path=MINI, artifacts_root=tmp_path, chunk_size=2)
     )
-    options = run_options(input_path=MINI, chunk_size=2)
+    options = run_options(input_path=MINI, chunk_size=2, artifacts_root=tmp_path)
     assert options.plan_id == derived
 
 

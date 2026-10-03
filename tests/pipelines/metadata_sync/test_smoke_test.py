@@ -64,7 +64,12 @@ def test_a_production_artifacts_root_is_refused(tmp_path: Path, capsys) -> None:
 
 def test_a_missing_manifest_exits_two(tmp_path: Path, capsys) -> None:
     exit_code = main(
-        ["--input", str(tmp_path / "absent.csv"), "--artifacts", "preview/metadata"]
+        [
+            "--input",
+            str(tmp_path / "absent.csv"),
+            "--artifacts",
+            str(tmp_path / "preview" / "metadata"),
+        ]
     )
     assert exit_code == 2
     assert "error:" in capsys.readouterr().err
@@ -73,7 +78,17 @@ def test_a_missing_manifest_exits_two(tmp_path: Path, capsys) -> None:
 def test_an_empty_manifest_exits_two(tmp_path: Path, capsys) -> None:
     empty = tmp_path / "empty.csv"
     empty.write_text("cik,name\n", encoding="utf-8")
-    assert main(["--input", str(empty), "--artifacts", "preview/metadata"]) == 2
+    assert (
+        main(
+            [
+                "--input",
+                str(empty),
+                "--artifacts",
+                str(tmp_path / "preview" / "metadata"),
+            ]
+        )
+        == 2
+    )
     assert "no usable CIKs" in capsys.readouterr().err
 
 

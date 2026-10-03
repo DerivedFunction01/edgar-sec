@@ -270,7 +270,11 @@ def test_load_rejects_a_foreign_manifest_kind(tmp_path: Path) -> None:
 
 def test_options_derive_the_same_plan_id_the_planner_builds(tmp_path: Path) -> None:
     derived = derive_plan_id(
-        plan_options(input_path=fixture_path("cik_sec_mini.csv"), chunk_size=2)
+        plan_options(
+            input_path=fixture_path("cik_sec_mini.csv"),
+            chunk_size=2,
+            artifacts_root=tmp_path,
+        )
     )
     assert derived == _plan(chunk_size=2).plan_id
 

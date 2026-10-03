@@ -14,7 +14,7 @@ from edgar_sec.foundation.runtime.settings import resolve_runtime_settings
 from edgar_sec.foundation.runtime.settings.runtime import DEFAULT_CHUNK_SIZE
 
 from .manifest import compile_cik_cohort
-from .paths import resolve_run_paths
+from .paths import resolve_metadata_paths, resolve_run_paths
 from .planner import build_plan, write_plan
 from .sec_client import SubmissionsClient
 from .worker import resolve_workers, run_chunk
@@ -60,8 +60,26 @@ def main(argv: list[str] | None = None) -> int:
     settings = resolve_runtime_settings()
 
     sample_size = max(1, args.sample_size)
+
+    artifacts = Path(args.artifacts).resolve()
+    if not str(artifacts).startswith(str(Path.cwd() / "preview")) and "preview" not in (
+        artifacts.parts
+    ):
+        print(
+            "error: --artifacts must point at a preview directory, never a "
+            "production snapshot root",
+            file=sys.stderr,
+        )
+        return 2
+
+    # The preview root is resolved and refused before anything is compiled, so a
+    # rejected run leaves no cohort behind in the production cache.
     try:
-        cohort = compile_cik_cohort(args.input, limit=sample_size)
+        cohort = compile_cik_cohort(
+            args.input,
+            limit=sample_size,
+            metadata_paths=resolve_metadata_paths(artifacts),
+        )
     except (FileNotFoundError, ValueError) as exc:
         print(f"error: {exc}", file=sys.stderr)
         return 2
@@ -75,17 +93,6 @@ def main(argv: list[str] | None = None) -> int:
         input_fingerprint=cohort.input_fingerprint,
         selected_limit=sample_size,
     )
-
-    artifacts = Path(args.artifacts).resolve()
-    if not str(artifacts).startswith(str(Path.cwd() / "preview")) and "preview" not in (
-        artifacts.parts
-    ):
-        print(
-            "error: --artifacts must point at a preview directory, never a "
-            "production snapshot root",
-            file=sys.stderr,
-        )
-        return 2
 
     run_paths = resolve_run_paths(plan.plan_id, artifacts)
     write_plan(plan, run_paths)

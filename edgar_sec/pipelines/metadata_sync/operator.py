@@ -422,8 +422,9 @@ def refresh(state: WizardState) -> None:
         return
 
     _label, source_name = options[choice - 1]
+    approx = "~40 MB" if source_name == SOURCE_UNIVERSE_NAME else "~1 MB"
     if not confirm_network(
-        f"Fetching {source_name} from SEC. Continue? (y/N) "
+        f"Fetching {source_name} ({approx}) from SEC. Continue? (y/N) "
     ):
         print("cancelled; nothing was fetched")
         return
