@@ -14,6 +14,7 @@ from .paths import SCANNER as PATHS_SCANNER
 from .regex_alternations import SCANNER as REGEX_ALTERNATIONS_SCANNER
 from .resources import SCANNER as RESOURCES_SCANNER
 from .secrets import SCANNER as SECRETS_SCANNER
+from .sql_interpolation import SCANNER as SQL_INTERPOLATION_SCANNER
 from .whole_file_read import SCANNER as WHOLE_FILE_READ_SCANNER
 
 ALL_SCANNERS: tuple[Scanner, ...] = (
@@ -29,6 +30,7 @@ ALL_SCANNERS: tuple[Scanner, ...] = (
     LEGACY_SHIMS_SCANNER,
     JSON_IO_SCANNER,
     DATE_PATTERNS_SCANNER,
+    SQL_INTERPOLATION_SCANNER,
 )
 
 __all__ = [
@@ -44,6 +46,7 @@ __all__ = [
     "REGEX_ALTERNATIONS_SCANNER",
     "RESOURCES_SCANNER",
     "SECRETS_SCANNER",
+    "SQL_INTERPOLATION_SCANNER",
     "WHOLE_FILE_READ_SCANNER",
     "Scanner",
     "ScannerFinding",

@@ -162,7 +162,7 @@ artifacts_root/filing_catalog/
 │   │   ├── snapshot.manifest.json
 │   │   ├── company_profiles.parquet    # projected profile data
 │   │   └── filing_targets/part-NNNNN.parquet   # source-part target shards
-│   ├── <feature-digest>/               # Stage B feature snapshot, identified by
+│   ├── <feature-digest>/               # policy-scope feature snapshot, identified by
 │   │                                   #   feature_snapshot.json, not by name
 │   └── current/pointer.json            # current catalog pointer
 ├── plans/<plan_id>/                    # immutable plan bundle

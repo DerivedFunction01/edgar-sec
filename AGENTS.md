@@ -159,6 +159,13 @@ Scanners are defined modularly in `edgar_sec/foundation/scanners/` and collected
 - `legacy-shims`: Bans backward-compatibility aliases and transitional shims (enforces §1.1).
 - `json-io`: Bans redundant JSON helper definitions and non-atomic JSON writes.
 - `date-patterns`: Bans private month tables and hand-crafted date patterns.
+- `sql-interpolation`: Bans SQL assembled from unescaped values at a query sink. It
+  inspects the argument of `execute` / `executemany` / `executescript` and reports an
+  f-string, `%`, or `+` that interpolates a value which did not reach the statement
+  through `infra.storage.duckdb.sql_literal` / `sql_path_list` / `sql_identifier`, a
+  constant, or a local derived from those. A bound parameter is never a finding, and a
+  module that composes SQL at a sink must be declared in `_SQL_COMPILER_PATHS` — an
+  audited list, each entry recording why its interpolated values are safe.
 
 > [!NOTE]
 > `regex-alternations`, `legacy-shims`, `json-io`, and `date-patterns` exist to

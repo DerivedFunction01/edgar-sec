@@ -12,8 +12,8 @@ alongside the two SQL builders. Stage B could not reuse it: the layer graph is
 acyclic downward-only, so Layer 3 (``engine``) may not import Layer 4
 (``pipelines``). Rather than restate the suffix vocabulary in the selection
 policy -- two closed sets that must never disagree -- the vocabulary moved down
-here, and the SQL builders moved down with it to
-``infra.storage.duckdb_catalog``.
+here, and the compilers that turn it into DuckDB predicates moved to
+``engine.selection.predicates``, which Layer 4 may import.
 
 v1 built its suffix predicate by interpolating both the column name and each
 suffix straight into a SQL string literal, and ``normalize_suffixes`` only

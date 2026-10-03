@@ -6,6 +6,7 @@ Mandates machine-derived resource limits to prevent out-of-memory errors on larg
 from __future__ import annotations
 
 import os
+import re
 from collections.abc import Sequence
 from pathlib import Path
 from typing import TYPE_CHECKING
@@ -16,11 +17,47 @@ if TYPE_CHECKING:
     from edgar_sec.foundation.runtime.resources import RuntimeResourceProfile
 
 from .atomic import _fsync_dir
-from .parquet import DEFAULT_COMPRESSION, DEFAULT_ROW_GROUP_SIZE
+from .parquet import (
+    DEFAULT_COMPRESSION,
+    DEFAULT_ROW_GROUP_SIZE,
+    count_parquet_rows,
+)
+
+_IDENTIFIER_RE = re.compile(r"^[A-Za-z_][A-Za-z0-9_]*$")
 
 
-def _quote(value: str) -> str:
+def sql_literal(value: str) -> str:
+    """Return ``value`` as a single-quoted SQL string literal.
+
+    Embedded single quotes are doubled, which is the SQL-standard escape.
+    """
     return "'" + str(value).replace("'", "''") + "'"
+
+
+def sql_identifier(name: str) -> str:
+    """Return ``name`` if it is a dotted path of bare SQL identifiers, else raise.
+
+    Relation names are passed through here so a catalog or table name can never
+    smuggle SQL into a query. An optional ``alias.`` prefix is accepted because
+    a predicate built once and reused inside a joined query still has to name
+    the column it filters on; each segment is validated independently, so the
+    allowance cannot become a hole.
+    """
+    if not name or not all(
+        _IDENTIFIER_RE.match(segment) for segment in name.split(".")
+    ):
+        raise ValueError(f"unsafe SQL identifier: {name!r}")
+    return name
+
+
+def sql_path_list(paths: Sequence[str]) -> str:
+    """Return ``paths`` as a SQL list literal for ``read_parquet([...])``.
+
+    A snapshot is a dataset, so a consumer may need to read several parts. The
+    list is built element by element with :func:`sql_literal` rather than by
+    joining a string, so a path cannot break out of its own element.
+    """
+    return "[" + ", ".join(sql_literal(str(path)) for path in paths) + "]"
 
 
 def _identifier(value: str) -> str:
@@ -60,63 +97,53 @@ def connect(
     return con
 
 
-def concat_to_parquet(
-    con: duckdb.DuckDBPyConnection,
-    input_paths: Sequence[str | os.PathLike[str]],
-    output_path: str | os.PathLike[str],
-    *,
-    order_by: Sequence[str] = ("cik",),
-    compression: str = DEFAULT_COMPRESSION,
+def copy_query_to_parquet(
+    con: object,
+    query: str,
+    destination: os.PathLike[str] | str,
     row_group_size: int = DEFAULT_ROW_GROUP_SIZE,
+    *,
+    compression: str = DEFAULT_COMPRESSION,
 ) -> int:
-    """Concatenate multiple Parquet or JSONL chunks into a single sorted Parquet file."""
-    if not input_paths:
-        raise ValueError("DuckDB concat requires at least one input file")
+    """Write one query result to Parquet out-of-core and atomically.
 
-    str_paths = [str(Path(p).resolve()) for p in input_paths]
-    literals = ", ".join(_quote(p) for p in str_paths)
-    source = f"read_parquet([{literals}])"
-
-    order_clauses = ", ".join(_identifier(col) for col in order_by) or _identifier(
-        "cik"
-    )
-    out_str = str(Path(output_path).resolve())
-    directory = os.path.dirname(out_str)
-    os.makedirs(directory, exist_ok=True)
-    tmp_path = f"{out_str}.tmp.{os.getpid()}"
-
-    copy_sql = f"""
-        COPY (
-            SELECT * FROM {source} ORDER BY {order_clauses}
-        ) TO {_quote(tmp_path)}
-        (FORMAT PARQUET, COMPRESSION {_quote(compression)}, ROW_GROUP_SIZE {int(row_group_size)})
+    The COPY runs inside DuckDB, so a large result never materializes in the
+    Python heap. The file is staged beside its destination and renamed, so a
+    failed write never leaves a half-written shard in a published directory.
+    Returns the row count.
     """
+    path = Path(destination)
+    path.parent.mkdir(parents=True, exist_ok=True)
+    tmp = path.with_name(f".{path.name}.tmp.{os.getpid()}")
     try:
-        con.execute(copy_sql)
-        os.replace(tmp_path, out_str)
-        _fsync_dir(directory)
-        count_res = con.execute(
-            f"SELECT count(*) FROM read_parquet({_quote(out_str)})"
-        ).fetchone()
-        return int(count_res[0]) if count_res else 0
+        con.execute(
+            f"COPY ({query}) TO {sql_literal(str(tmp))} "
+            f"(FORMAT PARQUET, COMPRESSION {compression}, "
+            f"ROW_GROUP_SIZE {int(row_group_size)})"
+        )
+        os.replace(tmp, path)
+        _fsync_dir(str(path.parent))
     finally:
-        if os.path.exists(tmp_path):
-            try:
-                os.remove(tmp_path)
-            except OSError:
-                pass
+        if tmp.exists():
+            tmp.unlink()
+    return count_parquet_rows(path)
 
 
 def find_duplicate_keys(
     con: duckdb.DuckDBPyConnection,
     paths: Sequence[str | os.PathLike[str]],
-    key_column: str = "cik",
+    key_column: str,
 ) -> list[str]:
-    """Find any duplicate primary keys across chunks."""
+    """Find any duplicate values of ``key_column`` across chunks, up to 100.
+
+    ``key_column`` is required rather than defaulted: the primary key of a
+    published dataset is a property of that dataset, so naming it at the call
+    site keeps the storage layer from asserting one on every caller's behalf.
+    """
     if not paths:
         return []
     str_paths = [str(Path(p).resolve()) for p in paths]
-    literals = ", ".join(_quote(p) for p in str_paths)
+    literals = ", ".join(sql_literal(p) for p in str_paths)
     col_id = _identifier(key_column)
     query = f"""
         SELECT {col_id}::VARCHAR
@@ -131,13 +158,16 @@ def find_duplicate_keys(
 def find_null_keys(
     con: duckdb.DuckDBPyConnection,
     paths: Sequence[str | os.PathLike[str]],
-    key_column: str = "cik",
+    key_column: str,
 ) -> int:
-    """Count null values for the primary key across chunks."""
+    """Count null values of ``key_column`` across chunks.
+
+    ``key_column`` is required for the same reason as :func:`find_duplicate_keys`.
+    """
     if not paths:
         return 0
     str_paths = [str(Path(p).resolve()) for p in paths]
-    literals = ", ".join(_quote(p) for p in str_paths)
+    literals = ", ".join(sql_literal(p) for p in str_paths)
     col_id = _identifier(key_column)
     query = f"""
         SELECT count(*)
@@ -148,37 +178,12 @@ def find_null_keys(
     return int(res[0]) if res else 0
 
 
-def find_duplicate_nested_values(
-    con: duckdb.DuckDBPyConnection,
-    paths: Sequence[str | os.PathLike[str]],
-    list_column: str = "filings",
-    field_name: str = "accession_number",
-) -> list[str]:
-    """Find duplicate values inside a nested struct array (e.g. unnesting filings.accession_number)."""
-    if not paths:
-        return []
-    str_paths = [str(Path(p).resolve()) for p in paths]
-    literals = ", ".join(_quote(p) for p in str_paths)
-    col_id = _identifier(list_column)
-    field_id = _identifier(field_name)
-    query = f"""
-        SELECT val::VARCHAR
-        FROM (
-            SELECT unnest({col_id}).{field_id} AS val
-            FROM read_parquet([{literals}])
-        )
-        WHERE val IS NOT NULL
-        GROUP BY val
-        HAVING count(*) > 1
-        LIMIT 100
-    """
-    return [row[0] for row in con.execute(query).fetchall()]
-
-
 __all__ = [
-    "concat_to_parquet",
     "connect",
+    "copy_query_to_parquet",
     "find_duplicate_keys",
-    "find_duplicate_nested_values",
     "find_null_keys",
+    "sql_identifier",
+    "sql_literal",
+    "sql_path_list",
 ]

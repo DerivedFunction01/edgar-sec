@@ -5,16 +5,17 @@ from __future__ import annotations
 from pathlib import Path
 
 import pyarrow as pa
+import pytest
 
 from edgar_sec.infra.storage.duckdb import (
-    concat_to_parquet,
     connect,
     find_duplicate_keys,
-    find_duplicate_nested_values,
     find_null_keys,
+    sql_identifier,
+    sql_literal,
+    sql_path_list,
 )
 from edgar_sec.infra.storage.parquet import (
-    read_parquet_table,
     write_parquet_table,
 )
 
@@ -27,25 +28,34 @@ def _write(path: Path, ciks: list[str], values: list[int]) -> str:
     return str(path)
 
 
-def test_concat_to_parquet_sorts_and_merges(tmp_path: Path) -> None:
-    first = _write(tmp_path / "chunk1.parquet", ["0000000002", "0000000001"], [20, 10])
-    second = _write(tmp_path / "chunk2.parquet", ["0000000004", "0000000003"], [40, 30])
-    out = tmp_path / "merged.parquet"
+def test_sql_literal_escapes_embedded_quotes() -> None:
+    assert sql_literal("a'b") == "'a''b'"
+    assert sql_literal("plain") == "'plain'"
 
-    con = connect()
-    try:
-        total = concat_to_parquet(con, [first, second], out, order_by=["cik"])
-    finally:
-        con.close()
 
-    assert total == 4
-    merged = read_parquet_table(out)
-    assert merged.column("cik").to_pylist() == [
-        "0000000001",
-        "0000000002",
-        "0000000003",
-        "0000000004",
-    ]
+def test_sql_literal_cannot_be_escaped_out_of() -> None:
+    """A hostile path must not be able to close the literal and append SQL."""
+    hostile = "x.parquet' ; DROP TABLE source; --"
+    literal = sql_literal(hostile)
+    assert literal.count("'") % 2 == 0
+    assert literal.endswith("'")
+    assert literal.startswith("'")
+
+
+def test_sql_identifier_accepts_bare_and_dotted_names() -> None:
+    assert sql_identifier("source") == "source"
+    assert sql_identifier("alias.column") == "alias.column"
+
+
+def test_sql_identifier_rejects_unsafe_names() -> None:
+    for name in ("source; DROP TABLE source", "column) OR 1=1 --", "", "a.b-c"):
+        with pytest.raises(ValueError, match="unsafe SQL identifier"):
+            sql_identifier(name)
+
+
+def test_sql_path_list_escapes_each_element() -> None:
+    listed = sql_path_list(["data/it's.parquet", "data/plain.parquet"])
+    assert listed == "['data/it''s.parquet', 'data/plain.parquet']"
 
 
 def test_duplicate_and_null_key_detection(tmp_path: Path) -> None:
@@ -69,41 +79,6 @@ def test_duplicate_and_null_keys_are_reported(tmp_path: Path) -> None:
         ]
     finally:
         con.close()
-
-
-def test_duplicate_nested_values_detects_fan_out(tmp_path: Path) -> None:
-    schema = pa.schema(
-        [
-            ("cik", pa.string()),
-            (
-                "filings",
-                pa.list_(
-                    pa.struct(
-                        [
-                            ("accession_number", pa.string()),
-                            ("form", pa.string()),
-                        ]
-                    )
-                ),
-            ),
-        ]
-    )
-    shared = [{"accession_number": "0001-02-000003", "form": "10-K"}]
-    table = pa.Table.from_arrays(
-        [pa.array(["0000000001", "0000000002"]), pa.array([shared, shared])],
-        schema=schema,
-    )
-    path = tmp_path / "fanout.parquet"
-    write_parquet_table(table, path)
-
-    con = connect()
-    try:
-        found = find_duplicate_nested_values(
-            con, [str(path)], "filings", "accession_number"
-        )
-    finally:
-        con.close()
-    assert "0001-02-000003" in found
 
 
 def test_every_connection_carries_the_resource_budget() -> None:

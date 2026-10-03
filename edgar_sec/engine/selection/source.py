@@ -23,13 +23,12 @@ from edgar_sec.domain.filing_catalog.filters import (
     DateSelection,
 )
 from edgar_sec.engine.selection.policy import KNOWN_DIMENSIONS
-from edgar_sec.infra.storage.duckdb import connect
-from edgar_sec.infra.storage.duckdb_catalog import (
+from edgar_sec.engine.selection.predicates import (
     date_selection_sql,
     parsed_date_relation,
-    sql_literal,
     suffix_sql,
 )
+from edgar_sec.infra.storage.duckdb import connect, sql_literal
 
 # The locator columns the selector reasons over. A tuple rather than a
 # comma-joined string so the SELECT list and the row-to-dict zip are generated

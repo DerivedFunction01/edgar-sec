@@ -334,11 +334,11 @@ flowchart LR
 ### Stage 1: Storage Schema Evolution (Layer 2: `infra/storage`)
 
 #### Responsibilities:
-- Add `("metadata", pa.string())` as the 14th column in `DOCUMENT_SNAPSHOT_SCHEMA` (`document_parquet.py`).
+- Add `("metadata", pa.string())` as the 14th column in `DOCUMENT_SNAPSHOT_SCHEMA` (`checkpoint.py`).
 - Update `write_chunk_snapshot`, `validate_chunk_snapshot`, and `assemble_document_snapshots` to handle the `metadata` column.
 
 #### File Modifications:
-1. **`edgar_sec/infra/storage/document_parquet.py`**:
+1. **`edgar_sec/pipelines/document_storage/checkpoint.py`**:
    - Update `DOCUMENT_SNAPSHOT_SCHEMA`:
      ```python
      DOCUMENT_SNAPSHOT_SCHEMA = pa.schema(
@@ -497,8 +497,8 @@ the bundle format:
 
 | Component File | Layer | Action | Scanners & Contracts Enforced |
 | :--- | :--- | :--- | :--- |
-| `edgar_sec/infra/storage/document_parquet.py` | Layer 2 | **EDIT** | 14-column `DOCUMENT_SNAPSHOT_SCHEMA`; atomic writer & validator updates. |
-| `tests/infra/storage/test_document_parquet.py` | Tests | **EDIT** | Mirrored path rule; verify metadata column write and validation. |
+| `edgar_sec/pipelines/document_storage/checkpoint.py` | Layer 4 | **EDIT** | 14-column `DOCUMENT_SNAPSHOT_SCHEMA`; atomic writer & validator updates. |
+| `tests/pipelines/document_storage/test_checkpoint.py` | Tests | **EDIT** | Mirrored path rule; verify metadata column write and validation. |
 | `edgar_sec/engine/forms/normalize.py` | Layer 3 | **EDIT** | Enable `is_no_cover` reflow from line 0 for `GENERIC` ASCII / exhibits, while preserving cover boundaries for `8-K`, `6-K`, `10-K`, `10-Q`. |
 | `tests/engine/forms/test_normalize.py` | Tests | **EDIT** | Verify no-cover prose unwrapping for `GENERIC`/exhibits and cover boundary reflow for `8-K`/`6-K`. |
 | `edgar_sec/pipelines/document_storage/processor.py` | Layer 4 | **EDIT** | Bump `PROCESSOR_SCHEMA_VERSION = 2`; format structural metadata. |

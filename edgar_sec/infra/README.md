@@ -17,10 +17,9 @@ Three subpackages, each a complete vertical over one external system:
   *processes* share exactly one `SecHttpClient`, and therefore one aggregate
   request pace, instead of each process pacing itself. See
   [`broker/README.md`](broker/README.md).
-- `storage/` — atomic filesystem publication, Parquet and DuckDB I/O, the
-  filing-catalog SQL builders, and the document-snapshot machinery (parts,
-  manifests, the raw-payload fixture store, chunk checkpoints). See
-  [`storage/README.md`](storage/README.md).
+- `storage/` — atomic filesystem publication, the Parquet format vocabulary, the
+  DuckDB connection factory and its SQL dialect primitives, and the immutable
+  snapshot manifest/pointer machinery. See [`storage/README.md`](storage/README.md).
 
 The unifying rule is that a resource budget, a serialization format, or a
 protocol detail is decided **once, here**, from a machine probe or a settings
@@ -32,7 +31,7 @@ lookup, and every layer above consumes the decision rather than re-making it.
 | :--- | :--- |
 | `sec_http/` | The request seam, pacing, retry classification, the compressed response cache and failure ledger, metrics, and the transport error taxonomy. |
 | `broker/` | The socket protocol and its lifecycle helper, wrapping one client for the whole host. |
-| `storage/` | Atomic publication, the Parquet format vocabulary, the DuckDB connection factory, catalog SQL builders, document snapshots, and the fixture payload store. |
+| `storage/` | Atomic publication, the Parquet format vocabulary, the DuckDB connection factory and SQL dialect primitives, and immutable snapshot manifests and pointers. |
 
 Each subpackage README carries its own module→responsibility table. The layer
 exports no symbols of its own, so there is nothing here to re-document.

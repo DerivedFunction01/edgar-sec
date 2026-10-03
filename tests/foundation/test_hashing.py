@@ -86,16 +86,16 @@ def test_sha256_text_is_the_only_public_definition() -> None:
     assert not hasattr(memory, "sha256_text")
 
 
-def test_occurrence_id_matches_duckdb_catalog_sql() -> None:
+def test_occurrence_id_matches_materialization_sql() -> None:
     """The identity contract, pinned in both languages.
 
     ``domain/document/models.py`` derives occurrence and locator ids in Python
-    while ``infra/storage/duckdb_catalog.py`` materialises them inside DuckDB.
-    Both spellings must produce the same digest for the same document, or a
-    locator-to-occurrence join between the catalog and a snapshot matches
-    nothing and fails silently. An earlier revision of ``derive_occurrence_id``
-    hashed the locator key (a hash of a hash) and diverged from the SQL by
-    exactly this failure.
+    while ``pipelines/filing_catalog/materialization.py`` materialises them
+    inside DuckDB. Both spellings must produce the same digest for the same
+    document, or a locator-to-occurrence join between the catalog and a
+    snapshot matches nothing and fails silently. An earlier revision of
+    ``derive_occurrence_id`` hashed the locator key (a hash of a hash) and
+    diverged from the SQL by exactly this failure.
     """
     from edgar_sec.domain.document.models import (
         derive_document_locator_key,
@@ -112,10 +112,11 @@ def test_occurrence_id_matches_duckdb_catalog_sql() -> None:
 
     with connect() as con:
         for cik, accession, path in documents:
-            # Mirrors `duckdb_catalog.build_catalog_query`, which materialises
-            # `replace(accession_number, '-', '') AS accession` and then hashes
-            # that column. The query below must normalize the same way, or it
-            # pins parity with a spelling production never emits.
+            # Mirrors `materialization.build_part_unnest_query`, which
+            # materialises `replace(accession_number, '-', '') AS accession`
+            # and then hashes that column. The query below must normalize the
+            # same way, or it pins parity with a spelling production never
+            # emits.
             row = con.execute(
                 """
                 SELECT sha256(?1 || ':' || replace(?2, '-', '') || ':' || ?3),

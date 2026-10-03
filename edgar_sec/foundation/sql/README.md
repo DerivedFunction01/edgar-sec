@@ -12,10 +12,11 @@ read.
 
 ## Why this exists
 
-The repository's own SQL is not untrusted. `infra.storage.duckdb_catalog` builds
-statements from validated identifiers and escaped literals, so that path needs no
-guard. What needs one is a **console** — a query string of unknown intent run
-against real files. That is the only case this package serves.
+The repository's own SQL is not untrusted. The dialect primitives in
+`infra.storage.duckdb` build statements from validated identifiers and escaped
+literals, and the `sql-interpolation` scanner holds query modules to that path, so
+it needs no guard. What needs one is a **console** — a query string of unknown
+intent run against real files. That is the only case this package serves.
 
 ## Contract
 
@@ -76,5 +77,6 @@ repeated leading comments, and the defer-malformed-input contract.
 - **No allowlist of tables or columns.** The caller scopes the query by what it
   binds as the only visible relation.
 - **Not the repository's SQL boundary.** `guard.py` validates one operator-supplied
-  query string; it is not a policy scanner, and nothing in `scanners/` enforces a
-  SQL or storage rule. A future scanner may.
+  query string; it is not a policy scanner. The repository's own SQL is held by
+  `sql-interpolation`, which checks that a value reaching a query sink was
+  escaped; see [`../scanners/sql_interpolation.py`](../scanners/sql_interpolation.py).

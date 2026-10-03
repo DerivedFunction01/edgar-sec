@@ -257,7 +257,7 @@ def write_exhibit_snapshot(
     its metadata.
     """
     from edgar_sec.domain.document.models import FilingOccurrence
-    from edgar_sec.infra.storage.document_parquet import write_chunk_snapshot
+    from edgar_sec.pipelines.document_storage.checkpoint import write_chunk_snapshot
 
     occurrences: list[FilingOccurrence] = []
     raw_blobs: dict[str, bytes] = {}

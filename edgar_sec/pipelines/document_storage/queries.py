@@ -1,11 +1,11 @@
-"""Direct SQL for document snapshot consolidation.
+"""Direct SQL for document snapshot assembly and consolidation.
 
 The functions build SQL text over DuckDB relations using safe parameter binding
 and quoted relation expressions.
 
 Every statement in this module is assembled from three sources: a literal in
 this file, a relation expression built by
-:func:`edgar_sec.infra.storage.document_parts.relation_for_parts` (which quotes
+:func:`edgar_sec.pipelines.document_storage.parts.relation_for_parts` (which quotes
 and escapes its own file list), and bound parameters. No value read from a
 manifest or a row is ever interpolated into a statement, preventing SQL injection.
 
@@ -17,6 +17,8 @@ from __future__ import annotations
 
 from collections.abc import Iterable, Iterator, Sequence
 from typing import Any
+
+from edgar_sec.infra.storage.duckdb import sql_path_list
 
 #: Rows per fetched batch. Bounded so a consolidation never materializes a whole
 #: quarter's text in memory at once.
@@ -250,8 +252,29 @@ def effective_quarter_index_rows(
     )
 
 
+def chunk_assembly_query(chunk_paths: Sequence[str]) -> str:
+    """Return the query that concatenates chunk checkpoints into one snapshot.
+
+    The sort order is an artifact contract, not a presentation choice: a
+    published snapshot is read back by streaming it, so the row order is part of
+    what the snapshot means.
+
+    Paths reach the statement through
+    :func:`edgar_sec.infra.storage.duckdb.sql_path_list`, which escapes each
+    element. A chunk directory is chosen by the caller, so a path containing a
+    quote is a legal input rather than a malformed one.
+    """
+    if not chunk_paths:
+        raise ValueError("assembly requires at least one chunk checkpoint")
+    return f"""
+        SELECT * FROM read_parquet({sql_path_list([str(path) for path in chunk_paths])})
+        ORDER BY source_cik, accession
+    """
+
+
 __all__ = [
     "DEFAULT_BATCH_SIZE",
+    "chunk_assembly_query",
     "effective_quarter_batches",
     "effective_quarter_index_rows",
     "effective_snapshot_relations",

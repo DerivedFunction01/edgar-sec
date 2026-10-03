@@ -22,8 +22,11 @@ from edgar_sec.engine.company_family.clustering import CompanyFamilyIndex
 from edgar_sec.engine.selection.policy import EraBand, SelectionPolicy
 from edgar_sec.foundation.serialization import canonical_hash
 from edgar_sec.infra.storage.atomic import atomic_write_text
-from edgar_sec.infra.storage.duckdb import connect
-from edgar_sec.infra.storage.duckdb_catalog import copy_query_to_parquet, sql_literal
+from edgar_sec.infra.storage.duckdb import (
+    connect,
+    copy_query_to_parquet,
+    sql_literal,
+)
 from edgar_sec.infra.storage.parquet import DEFAULT_ROW_GROUP_SIZE
 
 FEATURE_SCHEMA_VERSION = "1.0"

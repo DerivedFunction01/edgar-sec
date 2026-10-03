@@ -20,8 +20,7 @@ from edgar_sec.engine.selection.policy import (
     KNOWN_DIMENSIONS,
     OCCURRENCE_ONLY_DIMENSIONS,
 )
-from edgar_sec.infra.storage.duckdb import connect
-from edgar_sec.infra.storage.duckdb_catalog import sql_literal
+from edgar_sec.infra.storage.duckdb import connect, sql_literal
 
 LOCATOR_TABLE = "locator_features.parquet"
 OCCURRENCE_TABLE = "occurrence_features.parquet"

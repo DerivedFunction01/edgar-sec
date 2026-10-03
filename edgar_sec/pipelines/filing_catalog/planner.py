@@ -55,15 +55,17 @@ from edgar_sec.engine.selection.policy import (
     resolve_seed_filers,
     write_seed_filers_csv,
 )
-from edgar_sec.engine.selection.selector import DeficitSelector
-from edgar_sec.foundation.runtime.progress import ProgressCallback, emit_progress
-from edgar_sec.infra.storage.duckdb import connect
-from edgar_sec.infra.storage.duckdb_catalog import (
-    copy_query_to_parquet,
+from edgar_sec.engine.selection.predicates import (
     date_projection_sql,
     date_selection_sql,
-    sql_literal,
     suffix_sql,
+)
+from edgar_sec.engine.selection.selector import DeficitSelector
+from edgar_sec.foundation.runtime.progress import ProgressCallback, emit_progress
+from edgar_sec.infra.storage.duckdb import (
+    connect,
+    copy_query_to_parquet,
+    sql_literal,
 )
 from edgar_sec.infra.storage.parquet import DEFAULT_ROW_GROUP_SIZE
 from edgar_sec.pipelines.filing_catalog.discovery import (

@@ -49,7 +49,11 @@ Real-filing parity is unverified — see "Deliberate gaps".
 | `delegation.py` | The exhibit second pass for stub primaries. |
 | `merger.py` | Per-run snapshot publication: assemble, split into parts, write manifest, move pointer. |
 | `vacuum.py` | `vacuum_snapshots()`: cross-run consolidation. **Unwired** — no CLI route, no production caller. |
-| `queries.py` | The consolidation SQL. |
+| `queries.py` | The assembly and consolidation SQL. |
+| `checkpoint.py` | The chunk-checkpoint schema and its write/validate pair. |
+| `parts.py` | Byte-budgeted part planning, the index/payload column contracts, and the part-path boundary checks. |
+| `fixture_store.py` | The append-only raw-payload SQLite store behind fixture fill and offline replay. |
+| `fixture_lineage.py` | Pure comparison of a fixture manifest against a plan. |
 | `review.py` | `compare_review_runs()`: base-vs-new review-run comparison. |
 | `review_artifacts.py` | Fixture-backed review artifact generation: selection, per-case files, manifest. |
 
@@ -293,6 +297,16 @@ invariant) and `annual_10k_normalization.json`. Both are **synthetic** — see
   verdict, stage order), which catches a refactor silently moving a boundary or
   dropping a stage. They do not establish that the normalizer agrees with EDGAR's
   own output. Do not read the passing suite as evidence of real-filing parity.
+- **`fixture_lineage` has no consumer.** The check is called from nothing outside
+  its own test, so the guard that stops a plan being replayed against a fixture
+  built from a different plan is not wired into the offline fetch path.
+- **Parts are planned per quarter, not per snapshot.** `quarter_path` builds a
+  path from exactly one year and quarter, so a snapshot spanning several fiscal
+  quarters needs one planning call per quarter, and nothing validates that a
+  caller passes a coherent pair.
+- **`parts.py` overstates its compression story in nothing that matters.** Parts
+  are Parquet files using the `zstd` codec through PyArrow; the `zstandard`
+  library is not on that path.
 - **`vacuum_snapshots` has no production caller and no CLI route.** It is
   implemented and tested, but `cli.py` registers no `vacuum` subcommand and nothing
   outside its test module calls it, so cross-run consolidation is unreachable by an
@@ -333,14 +347,14 @@ invariant) and `annual_10k_normalization.json`. Both are **synthetic** — see
   `failed_count=0, missing_count=0`, so a chunk that was entirely missing or failed
   is reported to the caller as fully normalized.
 - **A consolidated quarter's payload parts share one file name.**
-  `infra/storage/document_parts.quarter_path` returns
+  `parts.quarter_path` returns
   `parts/payload/{year}-{quarter}.parquet` for *every* planned part in a quarter
   and `write_payload_part` writes to `part.path` verbatim. A quarter exceeding the
   payload byte budget is split into several parts that therefore resolve to the
   same path, so each write replaces the previous one and the surviving part holds
   only the last document range — silently, with the manifest recording the same
   path more than once. Index parts are unaffected because exactly one is emitted
-  per quarter. The defect is in `infra/storage/document_parts.py`.
+  per quarter. The defect is in `parts.py`.
 - **Review shares nothing with the storage pipeline.** There is no plan, chunk,
   checkpoint, Parquet, or published snapshot on the review path:
   `review-artifacts` reads a fixture directly and `review` compares two review
@@ -383,7 +397,7 @@ invariant) and `annual_10k_normalization.json`. Both are **synthetic** — see
   fixture is repaired by re-running the same fill: `fill_fixture` backfills
   metadata rows by reading the stored bytes rather than re-fetching, so the repair
   is offline and self-limiting. There is no separate migration tool, and
-  `infra/storage/fixture_lineage.py` is not a gate for fixture replay.
+  `fixture_lineage.py` is not a gate for fixture replay.
 - **There is no legacy plan/history compatibility gate, and no read-only cache
   reader.** Fill consumes the current target-plan JSON shape and records a portable
   target fingerprint and basename reference; it does not require a historical plan

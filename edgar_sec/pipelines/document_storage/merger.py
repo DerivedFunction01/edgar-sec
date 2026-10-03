@@ -29,21 +29,22 @@ from pathlib import Path
 from typing import Any
 
 from edgar_sec.foundation.hashing import file_sha256, sha256_text
-from edgar_sec.foundation.runtime.paths import current_pointer_path
+from edgar_sec.foundation.runtime.paths import DOCUMENTS_DATASET, current_pointer_path
 from edgar_sec.foundation.serialization import canonical_json
-from edgar_sec.infra.storage.document_parquet import (
-    assemble_document_snapshots,
-    validate_chunk_snapshot,
-)
+from edgar_sec.infra.storage.duckdb import connect, copy_query_to_parquet
 from edgar_sec.infra.storage.manifests import PART_KIND_INDEX, PART_KIND_PAYLOAD
 from edgar_sec.infra.storage.parquet import read_parquet_table
-from edgar_sec.pipelines.document_storage.paths import SNAPSHOT_ARTIFACT_NAME
+from edgar_sec.pipelines.document_storage.checkpoint import validate_chunk_snapshot
+from edgar_sec.pipelines.document_storage.paths import (
+    DOCUMENTS_PHASE,
+    SNAPSHOT_ARTIFACT_NAME,
+)
+from edgar_sec.pipelines.document_storage.queries import chunk_assembly_query
 
 log = logging.getLogger("document_storage.merger")
 
 SNAPSHOT_MANIFEST_NAME = "manifest.json"
 SNAPSHOT_SCHEMA_VERSION = "1"
-PHASE = "025_webpage_storage"
 
 
 class MergeError(RuntimeError):
@@ -106,12 +107,12 @@ def _write_parts(staging: Path, artifact_path: Path) -> list[dict[str, Any]]:
     published snapshot is immediately consolidatable, rather than only the ones a
     previous consolidation happened to produce.
     """
-    from edgar_sec.infra.storage.document_parts import (
+    from edgar_sec.infra.storage.parquet import read_parquet_table
+    from edgar_sec.pipelines.document_storage.parts import (
         PlannedPart,
         write_index_part,
         write_payload_part,
     )
-    from edgar_sec.infra.storage.parquet import read_parquet_table
 
     table = read_parquet_table(
         artifact_path,
@@ -222,8 +223,8 @@ def _write_manifest(
 ) -> Path:
     manifest = {
         "snapshot_id": snapshot_id,
-        "dataset": "document_storage",
-        "phase": PHASE,
+        "dataset": DOCUMENTS_DATASET,
+        "phase": DOCUMENTS_PHASE,
         "run_id": run_id,
         "published_at": _now(),
         "artifact_name": SNAPSHOT_ARTIFACT_NAME,
@@ -253,7 +254,7 @@ def _publish_pointer(snapshots_root: Path, snapshot_id: str, run_id: str) -> Pat
     pointer = current_pointer_path(snapshots_root)
     pointer.parent.mkdir(parents=True, exist_ok=True)
     payload = {
-        "dataset": "document_storage",
+        "dataset": DOCUMENTS_DATASET,
         "snapshot_id": snapshot_id,
         "run_id": run_id,
         "pointed_at": _now(),
@@ -314,7 +315,12 @@ def publish_snapshot(
     staging = Path(tempfile.mkdtemp(dir=str(snapshots_root), prefix=".staging-"))
     try:
         artifact = staging / SNAPSHOT_ARTIFACT_NAME
-        row_count = assemble_document_snapshots(usable, artifact)
+        with connect() as con:
+            row_count = copy_query_to_parquet(
+                con,
+                chunk_assembly_query([str(path) for path in usable]),
+                artifact,
+            )
         failed, missing = _failure_counts(artifact)
         artifact_sha256 = file_sha256(artifact)
         parts = _write_parts(staging, artifact)

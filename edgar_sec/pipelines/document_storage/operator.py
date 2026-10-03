@@ -143,7 +143,7 @@ def make_fetcher(
         )
         if not fixture_ids:
             raise OperatorError("fixture mode requires a fixture id")
-        from edgar_sec.infra.storage.fixture_store import (
+        from edgar_sec.pipelines.document_storage.fixture_store import (
             FixtureStore,
             FixtureStoreError,
         )

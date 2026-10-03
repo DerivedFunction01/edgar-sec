@@ -132,8 +132,7 @@ class CompanyFamilyIndex:
         seed_string: str = SEED,
     ) -> CompanyFamilyIndex:
         """Build the index from a materialized ``company_profiles.parquet``."""
-        from edgar_sec.infra.storage.duckdb import connect
-        from edgar_sec.infra.storage.duckdb_catalog import sql_literal
+        from edgar_sec.infra.storage.duckdb import connect, sql_literal
 
         path = Path(profiles_path).resolve()
         if not path.is_file():

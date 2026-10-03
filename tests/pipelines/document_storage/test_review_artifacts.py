@@ -10,7 +10,7 @@ import pytest
 
 from edgar_sec.domain.document.models import DocumentLocator
 from edgar_sec.foundation.runtime.paths import ProjectPaths
-from edgar_sec.infra.storage.fixture_store import FixtureStore
+from edgar_sec.pipelines.document_storage.fixture_store import FixtureStore
 from edgar_sec.pipelines.document_storage.paths import REVIEW_MANIFEST_NAME
 from edgar_sec.pipelines.document_storage.review_artifacts import (
     ReviewArtifactError,

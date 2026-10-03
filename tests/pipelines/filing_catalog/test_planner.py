@@ -161,7 +161,7 @@ def test_a_published_partition_keeps_the_declared_target_schema(
     relation's shape.
     """
     from edgar_sec.domain.filing_catalog.schemas import TARGET_COLUMNS
-    from edgar_sec.infra.storage.duckdb_catalog import PARSED_DATE_ALIAS
+    from edgar_sec.engine.selection.predicates import PARSED_DATE_ALIAS
 
     meta = plan(catalog_id, artifacts_root, dates="2023")
     directory = _plan_dir(artifacts_root, meta)

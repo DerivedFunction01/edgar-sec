@@ -34,10 +34,8 @@ from edgar_sec.foundation.runtime.paths import current_pointer_path
 from edgar_sec.foundation.serialization import canonical_json
 from edgar_sec.infra.storage.atomic import atomic_write_text
 
-log = logging.getLogger("document_storage.manifests")
+log = logging.getLogger("storage.manifests")
 
-DATASET = "document_storage"
-PHASE = "025_webpage_storage"
 MANIFEST_NAME = "manifest.json"
 PART_KIND_INDEX = "index"
 PART_KIND_PAYLOAD = "payload"
@@ -131,9 +129,17 @@ def write_manifest(
     snapshots_root: Path,
     manifest: dict[str, Any],
     *,
+    dataset: str,
+    phase: str,
     set_current: bool = True,
 ) -> Path:
-    """Publish a snapshot manifest, refusing to overwrite an existing snapshot."""
+    """Publish a snapshot manifest, refusing to overwrite an existing snapshot.
+
+    ``dataset`` and ``phase`` name the publisher, and are the caller's to supply:
+    which phase produced a snapshot is a fact about the pipeline, not about the
+    machinery that makes the snapshot durable. Several phases publish through
+    this one function, so a constant here would mislabel all but one of them.
+    """
     snapshot_id = str(manifest.get("snapshot_id") or "")
     if not snapshot_id:
         raise ManifestError("manifest requires a snapshot_id")
@@ -143,7 +149,13 @@ def write_manifest(
 
     atomic_write_text(target / MANIFEST_NAME, canonical_json(manifest))
     if set_current:
-        publish_pointer(snapshots_root, snapshot_id, str(manifest.get("run_id") or ""))
+        publish_pointer(
+            snapshots_root,
+            snapshot_id,
+            str(manifest.get("run_id") or ""),
+            dataset=dataset,
+            phase=phase,
+        )
     return target / MANIFEST_NAME
 
 
@@ -186,14 +198,21 @@ def list_snapshots(
     return found
 
 
-def publish_pointer(artifacts_root: Path, snapshot_id: str, run_id: str = "") -> Path:
+def publish_pointer(
+    artifacts_root: Path,
+    snapshot_id: str,
+    run_id: str = "",
+    *,
+    dataset: str,
+    phase: str,
+) -> Path:
     """Point ``current`` at a snapshot whose manifest is already on disk."""
     root = Path(artifacts_root)
     root.mkdir(parents=True, exist_ok=True)
     pointer = current_pointer_path(root)
     payload = {
-        "dataset": DATASET,
-        "phase": PHASE,
+        "dataset": dataset,
+        "phase": phase,
         "snapshot_id": snapshot_id,
         "run_id": run_id,
         "pointed_at": now_iso(),
@@ -314,11 +333,9 @@ class SnapshotReader:
 
 
 __all__ = [
-    "DATASET",
     "MANIFEST_NAME",
     "PART_KIND_INDEX",
     "PART_KIND_PAYLOAD",
-    "PHASE",
     "ManifestError",
     "SnapshotPart",
     "SnapshotReader",

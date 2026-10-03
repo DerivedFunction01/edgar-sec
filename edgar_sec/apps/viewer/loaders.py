@@ -2,12 +2,10 @@
 
 Each loader **knows** the manifest of a dataset it owns and asks the owning
 pipeline or ``infra.storage`` to interpret it, so the only thing guessed is the
-dataset's own root — a single known path per pipeline, not a pattern. Inferring
-a dataset's role from the shape of a directory name instead would have to be
-taught every naming convention and would silently mislabel anything that did not
-fit one.
-
-Adding a dataset means adding a loader. It does not mean extending a naming table.
+dataset's own root — one known path per pipeline, not a pattern. Inferring a
+dataset's role from a directory name's shape would have to be taught every naming
+convention and would silently mislabel anything that did not fit one. Adding a
+dataset means adding a loader, not extending a naming table.
 
 The pipeline manifests are not one vocabulary, which is why this module is a
 registry rather than a single function:
@@ -19,9 +17,9 @@ registry rather than a single function:
 | ``document_storage`` | ``manifest.json`` | ``infra.storage.manifests.SnapshotReader`` |
 
 A published dataset becomes browsable only if its manifest is present and its
-declared parts exist. That is deliberate: an in-flight run has no manifest, and a
-manifest naming a missing part means the publication did not finish. Neither is
-silently shown as a shorter dataset than it is.
+declared parts exist: an in-flight run has no manifest, and a manifest naming a
+missing part means the publication did not finish. Neither is silently shown as a
+shorter dataset than it is.
 """
 
 from __future__ import annotations

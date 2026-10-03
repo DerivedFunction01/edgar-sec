@@ -11,9 +11,9 @@ from edgar_sec.domain.document.acquisition import FetchResult
 from edgar_sec.domain.document.models import DocumentLocator, FilingOccurrence
 from edgar_sec.domain.identity import Cik
 from edgar_sec.foundation.runtime.paths import ProjectPaths
-from edgar_sec.infra.storage.fixture_store import FixtureStore
 from edgar_sec.pipelines.document_storage import cli
 from edgar_sec.pipelines.document_storage.fixture_operator import list_fixtures
+from edgar_sec.pipelines.document_storage.fixture_store import FixtureStore
 from edgar_sec.pipelines.document_storage.operator import (
     OperatorError,
     make_fetcher,

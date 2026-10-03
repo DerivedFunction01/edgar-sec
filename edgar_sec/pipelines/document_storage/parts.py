@@ -13,8 +13,10 @@ differ by three orders of magnitude in bytes.
 Layout lives beside the snapshots, so a part's recorded path resolves without a
 second lookup table that could disagree with the manifest.
 
-PyArrow and zstandard are confined here, next to ``document_parquet.py``, for
-the same reason they are there: one module owns the physical format.
+The fiscal-quarter partitioning and the index/payload split are this phase's
+storage *contract*, so they live with the phase that defines them. The generic
+format vocabulary they are written with is ``infra.storage.parquet``, and the
+manifest machinery they record into is ``infra.storage.manifests``.
 """
 
 from __future__ import annotations

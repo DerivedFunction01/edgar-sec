@@ -32,6 +32,13 @@ EXHIBITS_DATASET = "document_exhibits"
 EXHIBIT_SNAPSHOT_NAME = "exhibits.parquet"
 CHUNKS_DIR_NAME = "chunks"
 
+#: The phase identifier stamped into this pipeline's manifests and pointer.
+#: Which phase produced a snapshot is a fact about the pipeline, so it is owned
+#: here rather than by the publication machinery every phase shares. The dataset
+#: name is ``DOCUMENTS_DATASET`` from ``foundation.runtime.paths``, so the two
+#: cannot disagree.
+DOCUMENTS_PHASE = "025_webpage_storage"
+
 
 def chunk_checkpoint_path(chunks_dir: Path | str, chunk_id: str) -> Path:
     """Return the Parquet checkpoint path for one chunk."""
@@ -126,6 +133,7 @@ class DocumentStoragePaths:
 __all__ = [
     "CASES_DIR",
     "CHUNKS_DIR_NAME",
+    "DOCUMENTS_PHASE",
     "EXHIBITS_DATASET",
     "EXHIBIT_SNAPSHOT_NAME",
     "REVIEW_MANIFEST_NAME",

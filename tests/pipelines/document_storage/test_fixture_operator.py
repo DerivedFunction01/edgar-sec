@@ -9,7 +9,6 @@ from pathlib import Path
 from edgar_sec.domain.document.models import DocumentLocator
 from edgar_sec.foundation.hashing import sha256_bytes
 from edgar_sec.foundation.runtime.paths import ProjectPaths
-from edgar_sec.infra.storage.fixture_store import FixtureStore
 from edgar_sec.pipelines.document_storage.fetching import FixtureArchiveFetcher
 from edgar_sec.pipelines.document_storage.fixture_operator import (
     FixtureOperatorError,
@@ -17,6 +16,7 @@ from edgar_sec.pipelines.document_storage.fixture_operator import (
     list_fixtures,
     validate_fixture_id,
 )
+from edgar_sec.pipelines.document_storage.fixture_store import FixtureStore
 
 
 def _locator(name: str) -> DocumentLocator:

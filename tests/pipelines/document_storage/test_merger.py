@@ -9,7 +9,7 @@ import pytest
 
 from edgar_sec.domain.document.models import DocumentLocator, FilingOccurrence
 from edgar_sec.domain.identity import Cik
-from edgar_sec.infra.storage.document_parquet import write_chunk_snapshot
+from edgar_sec.pipelines.document_storage.checkpoint import write_chunk_snapshot
 from edgar_sec.pipelines.document_storage.merger import (
     MergeError,
     current_snapshot_artifact,

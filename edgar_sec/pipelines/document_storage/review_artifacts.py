@@ -40,7 +40,10 @@ from edgar_sec.foundation.hashing import sha256_bytes, sha256_text
 from edgar_sec.foundation.runtime.paths import ProjectPaths
 from edgar_sec.foundation.runtime.resources import derive_resources
 from edgar_sec.infra.storage.atomic import atomic_write_bytes, atomic_write_text
-from edgar_sec.infra.storage.fixture_store import FixtureStore, FixtureStoreError
+from edgar_sec.pipelines.document_storage.fixture_store import (
+    FixtureStore,
+    FixtureStoreError,
+)
 from edgar_sec.pipelines.document_storage.paths import CASES_DIR, REVIEW_MANIFEST_NAME
 from edgar_sec.pipelines.document_storage.processor import PROCESSOR_FINGERPRINT
 

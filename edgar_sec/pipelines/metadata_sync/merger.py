@@ -34,7 +34,6 @@ from edgar_sec.infra.storage.atomic import atomic_write_json
 from edgar_sec.infra.storage.duckdb import (
     connect,
     find_duplicate_keys,
-    find_duplicate_nested_values,
     find_null_keys,
 )
 from edgar_sec.infra.storage.parquet import count_parquet_rows, read_parquet_schema
@@ -43,6 +42,7 @@ from .paths import PARTS_DIR_NAME, MetadataPaths, RunPaths
 from .planner import Plan, utc_now_iso
 from .roster import read_cik_index, write_cik_index
 from .snapshot import SNAPSHOT_MANIFEST_VERSION
+from .validation import find_duplicate_accessions
 
 __all__ = [
     "MergeError",
@@ -416,9 +416,7 @@ def merge_chunks(
             raise MergeError(
                 f"merge rejected: duplicate CIK rows across chunks: {duplicates}"
             )
-        report.duplicate_accessions = find_duplicate_nested_values(
-            con, str_paths, "filings", "accession_number"
-        )
+        report.duplicate_accessions = find_duplicate_accessions(con, str_paths)
         if report.duplicate_accessions:
             report.warnings.append(
                 f"{len(report.duplicate_accessions)} duplicate accession(s) observed; "

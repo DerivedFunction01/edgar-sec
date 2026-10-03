@@ -44,11 +44,11 @@ from edgar_sec.foundation.runtime.resources import (
 )
 from edgar_sec.foundation.runtime.settings import resolve_runtime_settings
 from edgar_sec.infra.storage.atomic import atomic_write_json
-from edgar_sec.infra.storage.document_parquet import (
+from edgar_sec.infra.storage.parquet import StagedParquetWriter, read_parquet_table
+from edgar_sec.pipelines.document_storage.checkpoint import (
     DOCUMENT_SNAPSHOT_SCHEMA,
     validate_chunk_snapshot,
 )
-from edgar_sec.infra.storage.parquet import StagedParquetWriter, read_parquet_table
 from edgar_sec.pipelines.document_storage.fetching import ArchiveFetcher
 from edgar_sec.pipelines.document_storage.paths import chunk_checkpoint_path
 from edgar_sec.pipelines.document_storage.processor import (

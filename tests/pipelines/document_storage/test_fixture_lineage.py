@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import pytest
 
-from edgar_sec.infra.storage.fixture_lineage import (
+from edgar_sec.pipelines.document_storage.fixture_lineage import (
     FixtureLineageError,
     check_fixture_lineage,
     fixture_lineage_status,

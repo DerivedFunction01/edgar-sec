@@ -7,7 +7,10 @@ from pathlib import Path
 
 import pytest
 
-from edgar_sec.infra.storage.fixture_store import FixtureStore, FixtureStoreError
+from edgar_sec.pipelines.document_storage.fixture_store import (
+    FixtureStore,
+    FixtureStoreError,
+)
 
 
 def test_fixture_store_round_trips_and_never_overwrites(tmp_path: Path) -> None:

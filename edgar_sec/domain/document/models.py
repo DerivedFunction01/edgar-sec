@@ -38,7 +38,7 @@ def derive_document_locator_key(accession: str, document_path: str) -> str:
     """Generate deterministic content-addressed key for an accession + document path pair.
 
     Must stay byte-identical to the SQL spelling in
-    ``infra/storage/duckdb_catalog.py``:
+    ``pipelines/filing_catalog/materialization.py``:
     ``sha256(accession || ':' || document_path)`` over the *unhyphenated*
     ``accession`` column. The catalog materialises locator keys inside DuckDB
     while this module derives them in Python, and a locator join between the two
@@ -55,7 +55,7 @@ def derive_occurrence_id(source_cik: str, accession: str, document_path: str) ->
     """Generate deterministic occurrence identifier linking a CIK to a document.
 
     Must stay byte-identical to the SQL spelling in
-    ``infra/storage/duckdb_catalog.py``:
+    ``pipelines/filing_catalog/materialization.py``:
     ``sha256(source_cik || ':' || accession || ':' || document_path)`` over the
     *unhyphenated* ``accession`` column, so the accession part is reduced by
     :func:`canonical_accession_part` exactly as the locator key is.

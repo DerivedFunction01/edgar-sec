@@ -44,17 +44,9 @@ from typing import Any
 
 from edgar_sec.foundation.hashing import sha256_bytes
 from edgar_sec.foundation.runtime.memory import reclaim
+from edgar_sec.foundation.runtime.paths import DOCUMENTS_DATASET
 from edgar_sec.foundation.runtime.resources import RuntimeResourceProfile
 from edgar_sec.foundation.serialization import canonical_json
-from edgar_sec.infra.storage.document_parts import (
-    PlannedPart,
-    plan_parts,
-    quarter_path,
-    relation_for_parts,
-    validate_part_paths,
-    write_index_part,
-    write_payload_part,
-)
 from edgar_sec.infra.storage.duckdb import connect
 from edgar_sec.infra.storage.manifests import (
     MANIFEST_NAME,
@@ -70,6 +62,16 @@ from edgar_sec.infra.storage.manifests import (
     snapshot_identity,
     write_manifest,
 )
+from edgar_sec.pipelines.document_storage.parts import (
+    PlannedPart,
+    plan_parts,
+    quarter_path,
+    relation_for_parts,
+    validate_part_paths,
+    write_index_part,
+    write_payload_part,
+)
+from edgar_sec.pipelines.document_storage.paths import DOCUMENTS_PHASE
 from edgar_sec.pipelines.document_storage.queries import (
     effective_quarter_batches,
     effective_quarter_index_rows,
@@ -522,8 +524,8 @@ def vacuum_snapshots(
         "schema_version": schema_version,
         "resolved_parts": [part.to_dict() for part in parts],
         "source_snapshot_ids": sorted(selected),
-        "dataset": "document_storage",
-        "phase": "025_webpage_storage",
+        "dataset": DOCUMENTS_DATASET,
+        "phase": DOCUMENTS_PHASE,
         "effective_index_rows": row_count,
         "effective_payload_count": payload_count,
         "logical_fingerprint": logical,
@@ -536,7 +538,13 @@ def vacuum_snapshots(
         },
     }
 
-    write_manifest(root, manifest, set_current=True)
+    write_manifest(
+        root,
+        manifest,
+        dataset=DOCUMENTS_DATASET,
+        phase=DOCUMENTS_PHASE,
+        set_current=True,
+    )
 
     if purge_sources or purge_dependency_closure:
         for source in sorted(selected):

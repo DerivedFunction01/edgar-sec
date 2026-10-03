@@ -17,8 +17,11 @@ from edgar_sec.foundation.runtime.paths import ProjectPaths
 from edgar_sec.foundation.runtime.resources import derive_resources
 from edgar_sec.foundation.serialization import canonical_json
 from edgar_sec.infra.storage.atomic import atomic_write_json
-from edgar_sec.infra.storage.fixture_store import FixtureStore, FixtureStoreError
 from edgar_sec.pipelines.document_storage.fetching import LiveArchiveFetcher
+from edgar_sec.pipelines.document_storage.fixture_store import (
+    FixtureStore,
+    FixtureStoreError,
+)
 
 MANIFEST_SCHEMA_VERSION = 2
 _FIXTURE_ID = re.compile(r"[A-Za-z0-9][A-Za-z0-9._-]*\Z")

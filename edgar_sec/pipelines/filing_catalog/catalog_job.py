@@ -48,10 +48,8 @@ from edgar_sec.foundation.runtime.memory import reclaim
 from edgar_sec.foundation.runtime.progress import ProgressCallback, emit_progress
 from edgar_sec.foundation.runtime.settings import resolve_settings
 from edgar_sec.infra.storage.atomic import atomic_write_json
-from edgar_sec.infra.storage.duckdb import connect
-from edgar_sec.infra.storage.duckdb_catalog import (
-    build_part_unnest_query,
-    build_profile_query,
+from edgar_sec.infra.storage.duckdb import (
+    connect,
     copy_query_to_parquet,
     sql_literal,
     sql_path_list,
@@ -59,6 +57,10 @@ from edgar_sec.infra.storage.duckdb_catalog import (
 from edgar_sec.infra.storage.parquet import (
     DEFAULT_ROW_GROUP_SIZE,
     read_parquet_schema,
+)
+from edgar_sec.pipelines.filing_catalog.materialization import (
+    build_part_unnest_query,
+    build_profile_query,
 )
 from edgar_sec.pipelines.filing_catalog.paths import (
     PIPELINE_DIR,

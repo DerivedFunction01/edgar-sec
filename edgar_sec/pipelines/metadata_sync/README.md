@@ -44,6 +44,7 @@ that emitted it.
 | `snapshot.py` | Resolve a published snapshot to a verified, ordered Parquet part list; both manifest versions. |
 | `merger.py` | Coordinator validation, multipart publication, CIK index, snapshot manifest, pointer advance, and explicit pointer selection. |
 | `augmentation.py` | Delta planning and merge onto a published snapshot without refetching the base. |
+| `validation.py` | The merge-time cohort checks: one row per CIK, and reportable duplicate-accession fan-out. |
 | `registry.py` | Curated-versus-source comparison, the effective CIK roster, and the CSV export. |
 | `source_registry.py` | Write-once, content-addressed `company_tickers.json` snapshots. |
 | `sec_client.py` | One CIK to its submissions document plus every historical file it lists. |

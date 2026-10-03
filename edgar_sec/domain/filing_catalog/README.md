@@ -64,6 +64,8 @@ Mirrored coverage lives under `tests/domain/filing_catalog/`.
 
 ## Deliberate gaps
 
-- SQL construction and execution live in `infra/storage/`; selection and plan
-  publication live in their respective engine and pipeline packages. This
-  package intentionally provides their shared schema and filter vocabulary only.
+- SQL construction and execution live with whoever owns the statement: the
+  catalog materialization queries in `pipelines/filing_catalog`, the date and
+  suffix predicate compilers in `engine/selection`, and the DuckDB dialect
+  primitives in `infra/storage`. This package intentionally provides their
+  shared schema and filter vocabulary only.

@@ -22,12 +22,11 @@ from edgar_sec.engine.selection.policy import (
 from edgar_sec.engine.selection.policy import (
     discover_policies as scan_policies,
 )
-from edgar_sec.infra.storage.duckdb import connect
-from edgar_sec.infra.storage.duckdb_catalog import (
+from edgar_sec.engine.selection.predicates import (
     date_selection_sql,
     parsed_date_relation,
-    sql_literal,
 )
+from edgar_sec.infra.storage.duckdb import connect, sql_literal
 from edgar_sec.pipelines.filing_catalog.paths import (
     CURRENT_ALIAS,
     PLAN_FILE_NAME,
@@ -208,6 +207,10 @@ def _year_bounds_query(
     callers want different things: automatic era bands want the years a
     *selection* can reach, while the fallback for a selection that reaches
     nothing wants every year the catalog holds.
+
+    A non-empty selection filters on the parsed date alias, so the relation is
+    wrapped here rather than patched by the caller: the predicate and the
+    relation it reads are built together, and neither can drift from the other.
     """
     clauses = [
         "report_date IS NOT NULL",
@@ -220,13 +223,15 @@ def _year_bounds_query(
     if forms:
         form_list = ", ".join(sql_literal(form) for form in sorted(forms))
         clauses.append(f"form IN ({form_list})")
+    source = relation
     if date_selection:
         clauses.append(date_selection_sql(date_selection))
+        source = parsed_date_relation(relation, "report_date")
     return f"""
         SELECT
             MIN(CAST(substring(report_date, 1, 4) AS INTEGER)),
             MAX(CAST(substring(report_date, 1, 4) AS INTEGER))
-        FROM {relation}
+        FROM {source}
         WHERE {" AND ".join(clauses)}
     """
 
@@ -282,10 +287,6 @@ def eligible_year_bounds(
     if relation is None:
         return None
     query = _year_bounds_query(relation, forms=forms, date_selection=date_selection)
-    if date_selection:
-        query = query.replace(
-            f"FROM {relation}", f"FROM {parsed_date_relation(relation, 'report_date')}"
-        )
     with connect() as con:
         row = con.execute(query).fetchone()
     if not row or row[0] is None or row[1] is None:

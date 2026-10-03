@@ -5,7 +5,7 @@
 Record shapes for two questions: *which document is this* and *what came back when we asked for it*.
 Nothing here reads, writes, or requests anything. Fetching is
 `pipelines/document_storage/fetching.py`, payload storage is
-`infra/storage/document_parquet.py`, normalization is `engine/`.
+`pipelines/document_storage/checkpoint.py`, normalization is `engine/`.
 
 ## Layout
 

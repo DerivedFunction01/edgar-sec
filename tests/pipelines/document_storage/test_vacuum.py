@@ -14,13 +14,6 @@ import pytest
 
 from edgar_sec.domain.document.models import DocumentLocator, FilingOccurrence
 from edgar_sec.domain.identity import Cik
-from edgar_sec.infra.storage.document_parquet import write_chunk_snapshot
-from edgar_sec.infra.storage.document_parts import (
-    PartError,
-    plan_parts,
-    relation_for_parts,
-    validate_part_paths,
-)
 from edgar_sec.infra.storage.manifests import (
     ManifestError,
     SnapshotPart,
@@ -28,7 +21,14 @@ from edgar_sec.infra.storage.manifests import (
     list_snapshots,
     read_pointer,
 )
+from edgar_sec.pipelines.document_storage.checkpoint import write_chunk_snapshot
 from edgar_sec.pipelines.document_storage.merger import publish_snapshot
+from edgar_sec.pipelines.document_storage.parts import (
+    PartError,
+    plan_parts,
+    relation_for_parts,
+    validate_part_paths,
+)
 from edgar_sec.pipelines.document_storage.paths import chunk_checkpoint_path
 from edgar_sec.pipelines.document_storage.queries import (
     effective_snapshot_relations,
@@ -365,12 +365,12 @@ def _write_raw_snapshot(
     filing_dates: dict[str, str] | None = None,
 ) -> None:
     """Publish a snapshot directly from a document/text map."""
-    from edgar_sec.infra.storage.document_parts import (
+    from edgar_sec.infra.storage.manifests import write_manifest
+    from edgar_sec.pipelines.document_storage.parts import (
         PlannedPart,
         write_index_part,
         write_payload_part,
     )
-    from edgar_sec.infra.storage.manifests import write_manifest
 
     target = root / snapshot_id
     index_rows = []
@@ -428,6 +428,8 @@ def _write_raw_snapshot(
             "phase": "025_webpage_storage",
             "logical_fingerprint": snapshot_id,
         },
+        dataset="document_storage",
+        phase="025_webpage_storage",
         set_current=False,
     )
 
@@ -627,6 +629,8 @@ def _write_shared_snapshot(
             "phase": "025_webpage_storage",
             "logical_fingerprint": snapshot_id,
         },
+        dataset="document_storage",
+        phase="025_webpage_storage",
         set_current=False,
     )
     _ = documents

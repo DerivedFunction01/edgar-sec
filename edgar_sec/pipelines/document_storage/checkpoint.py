@@ -1,8 +1,13 @@
-"""Parquet storage adapter for document snapshots and chunk checkpoints."""
+"""Parquet serialization for document chunk checkpoints.
+
+A chunk checkpoint is this phase's whole resumability record, so the schema here
+is the contract the merger validates and the worker reuses. It is a phase
+contract rather than a storage format: the generic staged writer it sits on is
+``infra.storage.parquet.StagedParquetWriter``.
+"""
 
 from __future__ import annotations
 
-import os
 from collections.abc import Mapping, Sequence
 from pathlib import Path
 from typing import Any
@@ -15,14 +20,7 @@ from edgar_sec.domain.document.models import (
     RawDocumentBlob,
     derive_document_locator_key,
 )
-from edgar_sec.foundation.runtime.resources import RuntimeResourceProfile
-from edgar_sec.infra.storage.atomic import _fsync_dir
-from edgar_sec.infra.storage.duckdb import connect
-from edgar_sec.infra.storage.parquet import (
-    DEFAULT_COMPRESSION,
-    DEFAULT_ROW_GROUP_SIZE,
-    StagedParquetWriter,
-)
+from edgar_sec.infra.storage.parquet import StagedParquetWriter
 
 DOCUMENT_SNAPSHOT_SCHEMA = pa.schema(
     [
@@ -156,49 +154,8 @@ def validate_chunk_snapshot(parquet_path: Path | str) -> dict[str, Any]:
     }
 
 
-def assemble_document_snapshots(
-    chunk_paths: Sequence[Path | str],
-    destination_parquet: Path | str,
-    profile: RuntimeResourceProfile | None = None,
-) -> int:
-    """Merge completed chunk Parquet files into a sorted final artifact via DuckDB out-of-core COPY."""
-    dest = Path(destination_parquet).resolve()
-    dest.parent.mkdir(parents=True, exist_ok=True)
-
-    valid_paths = [str(Path(p).resolve()) for p in chunk_paths if Path(p).is_file()]
-    if not valid_paths:
-        raise ValueError("no valid chunk parquet files provided for assembly")
-
-    con = connect(profile)
-    try:
-        # Build SQL list of quoted file paths
-        paths_sql = "[" + ", ".join(f"'{p}'" for p in valid_paths) + "]"
-        tmp_dest = dest.with_name(f"{dest.name}.tmp.{os.getpid()}")
-        query = f"""
-            COPY (
-                SELECT * FROM read_parquet({paths_sql})
-                ORDER BY source_cik, accession
-            ) TO '{tmp_dest}' (
-                FORMAT PARQUET,
-                COMPRESSION '{DEFAULT_COMPRESSION}',
-                ROW_GROUP_SIZE {DEFAULT_ROW_GROUP_SIZE}
-            );
-        """
-        con.execute(query)
-        os.replace(tmp_dest, dest)
-        _fsync_dir(str(dest.parent))
-
-        count_res = con.execute(
-            f"SELECT count(*) FROM read_parquet('{dest}')"
-        ).fetchone()
-        return int(count_res[0]) if count_res else 0
-    finally:
-        con.close()
-
-
 __all__ = [
     "DOCUMENT_SNAPSHOT_SCHEMA",
-    "assemble_document_snapshots",
     "validate_chunk_snapshot",
     "write_chunk_snapshot",
 ]

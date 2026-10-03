@@ -32,7 +32,6 @@ from edgar_sec.foundation.runtime.settings.runtime import DEFAULT_CHUNK_SIZE
 from edgar_sec.infra.storage.duckdb import (
     connect,
     find_duplicate_keys,
-    find_duplicate_nested_values,
     find_null_keys,
 )
 from edgar_sec.infra.storage.parquet import read_parquet_table
@@ -61,6 +60,7 @@ from .roster import (
 )
 from .sec_client import SubmissionsClient
 from .snapshot import read_snapshot_parts
+from .validation import find_duplicate_accessions
 from .worker import run_chunk_ids
 
 __all__ = [
@@ -359,9 +359,7 @@ def augment(
                 f"augmentation rejected: CIKs appear in both base and delta: "
                 f"{duplicates}"
             )
-        report.duplicate_accessions = find_duplicate_nested_values(
-            con, inputs, "filings", "accession_number"
-        )
+        report.duplicate_accessions = find_duplicate_accessions(con, inputs)
         if report.duplicate_accessions:
             report.warnings.append(
                 f"{len(report.duplicate_accessions)} duplicate accession(s) observed; "

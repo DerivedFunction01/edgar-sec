@@ -61,7 +61,7 @@ def test_duckdb_copy_helper_inherits_the_same_row_group_default() -> None:
     """The SQL COPY path must use the same row group size as the Arrow writer."""
     import inspect
 
-    from edgar_sec.infra.storage.duckdb_catalog import copy_query_to_parquet
+    from edgar_sec.infra.storage.duckdb import copy_query_to_parquet
 
     default = inspect.signature(copy_query_to_parquet).parameters["row_group_size"]
     assert default.default == DEFAULT_ROW_GROUP_SIZE

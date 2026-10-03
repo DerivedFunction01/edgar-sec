@@ -11,9 +11,9 @@ import pytest
 from edgar_sec.domain.document.acquisition import FetchResult
 from edgar_sec.domain.document.models import DocumentLocator, FilingOccurrence
 from edgar_sec.domain.identity import Cik
-from edgar_sec.infra.storage.document_parquet import validate_chunk_snapshot
-from edgar_sec.infra.storage.fixture_store import FixtureStore
+from edgar_sec.pipelines.document_storage.checkpoint import validate_chunk_snapshot
 from edgar_sec.pipelines.document_storage.fetching import FixtureArchiveFetcher
+from edgar_sec.pipelines.document_storage.fixture_store import FixtureStore
 from edgar_sec.pipelines.document_storage.paths import chunk_checkpoint_path
 from edgar_sec.pipelines.document_storage.processor import (
     FilingProcessor,
@@ -572,8 +572,8 @@ def test_filing_processor_survives_a_payload_carrying_page_markers() -> None:
 
 
 def test_chunk_resumes_from_partial_staging_file(tmp_path: Path) -> None:
-    from edgar_sec.infra.storage.document_parquet import DOCUMENT_SNAPSHOT_SCHEMA
     from edgar_sec.infra.storage.parquet import StagedParquetWriter
+    from edgar_sec.pipelines.document_storage.checkpoint import DOCUMENT_SNAPSHOT_SCHEMA
     from edgar_sec.pipelines.document_storage.worker import _build_snapshot_batch
 
     loc1 = _locator("doc1.htm")
@@ -634,8 +634,8 @@ def test_chunk_resumes_when_all_documents_already_staged(tmp_path: Path) -> None
     Resuming must report all normalized documents (not 0), ensuring operator _partial_ok succeeds
     and payload_sha256 is deterministic and identical to a fresh run.
     """
-    from edgar_sec.infra.storage.document_parquet import DOCUMENT_SNAPSHOT_SCHEMA
     from edgar_sec.infra.storage.parquet import StagedParquetWriter
+    from edgar_sec.pipelines.document_storage.checkpoint import DOCUMENT_SNAPSHOT_SCHEMA
     from edgar_sec.pipelines.document_storage.operator import _partial_ok
     from edgar_sec.pipelines.document_storage.worker import _build_snapshot_batch
 

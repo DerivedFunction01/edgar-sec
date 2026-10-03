@@ -50,7 +50,9 @@ def _publish(
             for relative, kind in parts
         ],
     }
-    write_manifest(root, manifest, set_current=False)
+    write_manifest(
+        root, manifest, dataset="test_ds", phase="test_phase", set_current=False
+    )
     return target
 
 
@@ -108,7 +110,13 @@ def test_write_manifest_refuses_to_overwrite_a_published_snapshot(
     root = tmp_path / "snapshots"
     _publish(root, "snap-1")
     with pytest.raises(ManifestError, match="already published"):
-        write_manifest(root, {"snapshot_id": "snap-1"}, set_current=False)
+        write_manifest(
+            root,
+            {"snapshot_id": "snap-1"},
+            dataset="test_ds",
+            phase="test_phase",
+            set_current=False,
+        )
 
 
 def test_list_snapshots_skips_an_unreadable_manifest(tmp_path: Path) -> None:
@@ -130,7 +138,13 @@ def test_pointer_round_trip(tmp_path: Path) -> None:
     root = tmp_path / "snapshots"
     _publish(root, "snap-1")
     assert read_pointer(root) is None
-    write_manifest(root, {"snapshot_id": "snap-2", "run_id": "run-9"}, set_current=True)
+    write_manifest(
+        root,
+        {"snapshot_id": "snap-2", "run_id": "run-9"},
+        dataset="test_ds",
+        phase="test_phase",
+        set_current=True,
+    )
     pointer = read_pointer(root)
     assert pointer is not None
     assert pointer["snapshot_id"] == "snap-2"

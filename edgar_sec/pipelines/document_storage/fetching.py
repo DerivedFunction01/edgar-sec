@@ -138,7 +138,7 @@ class FixtureArchiveFetcher:
     def _stores(self) -> list[Any]:
         stores = getattr(self._local, "stores", None)
         if stores is None:
-            from edgar_sec.infra.storage.fixture_store import FixtureStore
+            from edgar_sec.pipelines.document_storage.fixture_store import FixtureStore
 
             stores = []
             for path in self._db_paths:

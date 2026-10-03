@@ -39,6 +39,7 @@ ways a network dependency creeps in.
 | `cli.py` | Command dispatch, policy resolution, and the stdout/stderr split. |
 | `operator.py` | Interactive wizard over `cmd_materialize` / `cmd_plan` / `cmd_expand` / `cmd_status`, with discovery-driven catalog and parent-plan selection. |
 | `catalog_job.py` | `materialize()`: one Phase 1 snapshot in, one immutable catalog out, refusing rather than repairing. |
+| `materialization.py` | The catalog SQL: Phase 1 part unnesting into filing occurrences and registrant profile projection. |
 | `planner.py` | `plan()` for deterministic filtering and `plan_policy()` for quota selection, resolved era bands, and form-by-era allocation. |
 | `expansion.py` | Parent validation, child derivation, and the retention invariant. |
 | `publication.py` | Content-addressed plan ids, staged bundles, the selection fingerprint, and the reuse-or-conflict policy. |
