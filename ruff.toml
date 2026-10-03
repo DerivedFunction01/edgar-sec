@@ -17,6 +17,11 @@ target-version = "py312"
 # or manifest is a data problem, not an API type error, and the CLI maps both
 # ValueError and TypeError to the same nonzero exit.
 ignore = ["TRY004"]
+# ERA001 is enabled explicitly because ruff's default set omits eradicate: dead
+# code left in comments is the same category as the prose caps in AGENTS.md §5 —
+# commentary the code no longer needs. It fires on commented-out statements, not
+# on prose, so it needs no per-file suppression.
+select = ["ERA001"]
 
 [lint.per-file-ignores]
 # init_venv.py is an environment bootstrap script, not production code:

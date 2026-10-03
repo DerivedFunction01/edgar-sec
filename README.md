@@ -73,9 +73,12 @@ python run.py metadata sources compare --input uploads/cik-sec.csv \
     --source-manifest <artifacts-root>/metadata/sources/company_tickers/<id>/manifest.json
 
 # Plan a cohort (deterministic, no network). --input takes a curated CSV;
-# --roster takes a published effective CIK roster id from `sources compare`.
+# --roster takes a published effective CIK roster id from `sources compare`;
+# --universe takes every registrant the SEC knows.
 python run.py metadata plan --input uploads/cik-sec.csv
 python run.py metadata plan --roster <registry_id>
+python run.py metadata sources refresh --source cik_lookup
+python run.py metadata plan --universe
 
 # Inspect progress and outstanding chunks (no network):
 python run.py metadata status --input uploads/cik-sec.csv

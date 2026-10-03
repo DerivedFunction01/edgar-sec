@@ -79,7 +79,8 @@ lower layers it depends on.
 | `metadata_sync/augmentation.py` | Delta planning and merge onto a published snapshot without refetching the base. |
 | `metadata_sync/sec_client.py` | One CIK to its submissions document plus every historical file it lists. |
 | `metadata_sync/paths.py` | `MetadataPaths` / `RunPaths`; the published-vs-transient split, plan bundle, source, registry, and snapshot-part locations. |
-| `metadata_sync/source_registry.py` | Write-once, content-addressed `company_tickers.json` snapshots, reached by `sources refresh`. |
+| `metadata_sync/source_registry.py` | Write-once, content-addressed snapshots of an external SEC source: `company_tickers.json` and the full `cik-lookup-data.txt` registrant index, reached by `sources refresh --source`. |
+| `metadata_sync/universe.py` | Compiling a published full-universe snapshot into a cohort for `plan --universe`. |
 | `metadata_sync/registry.py` | Curated-versus-source comparison, the effective CIK roster, and the CSV export, reached by `sources compare`. |
 | `metadata_sync/smoke_test.py` | Credential-gated live check that never publishes. |
 | `filing_catalog/__init__.py` | Docstring only. |

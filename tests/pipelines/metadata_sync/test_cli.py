@@ -1,5 +1,5 @@
-"""Command surface, settings resolution, and launcher registration; a registered
-setting the parser ignores would still reach the plan id.
+"""Command surface, settings resolution, and launcher registration; a setting the
+parser ignores would still reach the plan id.
 """
 
 from __future__ import annotations
@@ -24,7 +24,9 @@ from edgar_sec.pipelines.metadata_sync.paths import resolve_metadata_paths
 from edgar_sec.pipelines.metadata_sync.sec_client import SubmissionsClient
 from edgar_sec.pipelines.metadata_sync.source_registry import (
     SOURCE_NAME,
+    SOURCE_UNIVERSE_URL,
     SOURCE_URL,
+    refresh_cik_lookup_universe,
     refresh_company_tickers,
 )
 from edgar_sec.pipelines.metadata_sync.worker import resolve_workers
@@ -106,13 +108,25 @@ def test_sources_registers_refresh_and_compare() -> None:
 
 def test_a_plan_needs_a_cohort_reference() -> None:
     for command in ("plan", "augment"):
-        assert {"--input", "--roster"} <= _flags(command)
+        assert {"--input", "--roster", "--universe"} <= _flags(command)
 
 
 def test_a_cohort_reference_is_exclusive() -> None:
     """Two cohort sources would be two answers to one question."""
     with pytest.raises(SystemExit):
         build_parser().parse_args(["plan", "--input", "a.csv", "--roster", "r1"])
+
+
+def test_the_universe_cannot_be_combined_with_another_cohort() -> None:
+    with pytest.raises(SystemExit):
+        build_parser().parse_args(["plan", "--universe", "--input", "a.csv"])
+    with pytest.raises(SystemExit):
+        build_parser().parse_args(["plan", "--universe", "--roster", "r1"])
+
+
+def test_execution_commands_re_derive_from_the_universe() -> None:
+    for command in ("status", "run", "merge", "worker", "export", "import"):
+        assert "--universe" in _flags(command)
 
 
 def test_a_plan_with_no_cohort_reference_is_rejected() -> None:
@@ -246,6 +260,81 @@ def test_replanning_the_same_cohort_is_idempotent(tmp_path: Path, capsys) -> Non
     assert main(_plan_argv(tmp_path, "--chunk-size", "2")) == 0
     assert json.loads(capsys.readouterr().out)["plan_id"] == first
     assert len(list((tmp_path / "metadata" / "plans").iterdir())) == 1
+
+
+# ------------------------------------------------------------- plan / universe
+
+
+def _publish_universe_snapshot(session: FakeSession, tmp_path: Path) -> None:
+    session.register_bytes(
+        SOURCE_UNIVERSE_URL, fixture_path("cik_lookup_universe_mini.txt").read_bytes()
+    )
+    metadata = resolve_metadata_paths(tmp_path)
+    refresh_cik_lookup_universe(
+        metadata_paths=metadata, client=build_test_http(session)
+    )
+
+
+def test_plan_over_the_universe_needs_a_published_snapshot(
+    tmp_path: Path, capsys
+) -> None:
+    """Planning is network-free, so an absent snapshot is a message, not a fetch."""
+    assert main(["plan", "--universe", "--artifacts", str(tmp_path)]) == 1
+    assert "sources refresh --source cik_lookup" in capsys.readouterr().err
+
+
+def test_plan_over_the_universe_covers_every_registrant(
+    session: FakeSession, tmp_path: Path, capsys
+) -> None:
+    _publish_universe_snapshot(session, tmp_path)
+    assert main(["plan", "--universe", "--artifacts", str(tmp_path)]) == 0
+    payload = json.loads(capsys.readouterr().out)
+    assert payload["row_count"] == 12
+
+
+def test_plan_over_the_universe_is_idempotent(
+    session: FakeSession, tmp_path: Path, capsys
+) -> None:
+    _publish_universe_snapshot(session, tmp_path)
+    main(["plan", "--universe", "--artifacts", str(tmp_path)])
+    first = json.loads(capsys.readouterr().out)["plan_id"]
+    main(["plan", "--universe", "--artifacts", str(tmp_path)])
+    assert json.loads(capsys.readouterr().out)["plan_id"] == first
+
+
+def test_a_universe_plan_and_a_csv_plan_do_not_collide(
+    session: FakeSession, tmp_path: Path, capsys
+) -> None:
+    _publish_universe_snapshot(session, tmp_path)
+    main(["plan", "--universe", "--artifacts", str(tmp_path)])
+    universe = json.loads(capsys.readouterr().out)["plan_id"]
+    main(_plan_argv(tmp_path, "--chunk-size", "2"))
+    curated = json.loads(capsys.readouterr().out)["plan_id"]
+    assert universe != curated
+
+
+def test_a_universe_limit_bounds_the_plan(
+    session: FakeSession, tmp_path: Path, capsys
+) -> None:
+    _publish_universe_snapshot(session, tmp_path)
+    assert (
+        main(
+            [
+                "plan",
+                "--universe",
+                "--limit",
+                "3",
+                "--chunk-size",
+                "2",
+                "--artifacts",
+                str(tmp_path),
+            ]
+        )
+        == 0
+    )
+    payload = json.loads(capsys.readouterr().out)
+    assert payload["row_count"] == 3
+    assert payload["chunk_count"] == 2
 
 
 # -------------------------------------------------------------------- status
@@ -421,6 +510,33 @@ def test_sources_refresh_reports_a_failure_as_exit_1(
     monkeypatch.setattr(cli_module, "refresh_company_tickers", explode)
     assert main(["sources", "refresh", "--artifacts", str(tmp_path)]) == 1
     assert "error: source unavailable" in capsys.readouterr().err
+
+
+def test_sources_refresh_routes_the_universe_source(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    """``--source cik_lookup`` must reach the universe publisher, not the ticker one."""
+    captured: dict[str, object] = {}
+
+    def fake_universe(*, metadata_paths, client=None):
+        captured["artifacts_root"] = metadata_paths.artifacts_root
+        return {"source": "cik_lookup", "snapshot_id": "u1", "validation_status": "ok"}
+
+    monkeypatch.setattr(cli_module, "refresh_cik_lookup_universe", fake_universe)
+    assert (
+        main(
+            [
+                "sources",
+                "refresh",
+                "--source",
+                "cik_lookup",
+                "--artifacts",
+                str(tmp_path),
+            ]
+        )
+        == 0
+    )
+    assert captured["artifacts_root"] == tmp_path.resolve()
 
 
 def test_sources_compare_publishes_a_roster_and_the_csv_export(

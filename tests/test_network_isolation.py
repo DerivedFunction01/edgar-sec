@@ -15,10 +15,8 @@ import pytest
 PACKAGE_ROOT = Path(__file__).resolve().parent.parent / "edgar_sec"
 FORBIDDEN = "edgar_sec.infra.sec_http"
 
-# metadata_sync is deliberately absent: it is the network phase, and the
-# sensitivity test below uses it to prove the walk finds a real dependency.
-# edgar_sec.apps is here because a read-only tool browsing artifacts a network
-# pipeline produced has more reason to reach for the client, not less.
+# metadata_sync is absent on purpose: it is the network phase, and the sensitivity test
+# proves the walk works. edgar_sec.apps browses network-produced artifacts, so is most tempted.
 OFFLINE_PACKAGES = (
     "edgar_sec.pipelines.filing_catalog",
     "edgar_sec.engine.selection",
@@ -31,8 +29,7 @@ OFFLINE_PACKAGES = (
 def modules_in_package(package: str) -> set[str]:
     """Every module in a package and its nested packages, as dotted names.
 
-    Includes each ``__init__``, since a re-export there is a real escape hatch.
-    Expanding iteratively avoids re-globbing forever on a package's own init.
+    Each ``__init__`` counts: a re-export there is a real escape hatch.
     """
     found: set[str] = set()
     pending = [package]

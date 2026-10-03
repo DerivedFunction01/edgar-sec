@@ -1,4 +1,5 @@
-"""Immutable external source snapshots: capture, content-address, publish, verify.
+"""Immutable external source snapshots, content-addressed from the payload digest.
+
 An unchanged fetch is a no-op; a changed payload is a new snapshot, not a rewrite.
 """
 
@@ -167,7 +168,7 @@ def test_load_rejects_a_foreign_manifest(tmp_path: Path) -> None:
 
     path = tmp_path / "manifest.json"
     atomic_write_json(path, {"manifest_kind": "something_else"}, canonical=False)
-    with pytest.raises(SourceRegistryError, match="not a company ticker"):
+    with pytest.raises(SourceRegistryError, match="not a source snapshot"):
         load_source_snapshot(path)
 
 

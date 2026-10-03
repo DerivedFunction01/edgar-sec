@@ -1,7 +1,7 @@
 """SQLite-backed HTTP response cache with zstandard compression and failure ledger.
 
-Responses are keyed by URL digest in an indexed WAL store, which makes concurrent
-multi-worker access safe. Expiry is selective: only ``.json`` paths carry a TTL.
+Responses are keyed by URL digest in an indexed WAL store, so concurrent
+multi-worker access is safe. Expiry is selective: only ``.json`` paths carry a TTL.
 """
 
 from __future__ import annotations
@@ -30,12 +30,15 @@ def _expires_at(
     *,
     now: float | None = None,
     ttl_s: int = DEFAULT_CACHE_TTL_S,
+    mutable: bool = False,
 ) -> str | None:
-    """Return default expiry timestamp; static archives never expire."""
-    path = urlsplit(url).path.lower()
-    if not path.endswith(".json"):
-        return None
-    if ttl_s <= 0:
+    """Expiry timestamp, or None when a response never expires.
+
+    ``.json`` carries the TTL because archive documents are immutable; ``mutable``
+    extends it to a URL whose extension would pin the response forever.
+    """
+    governed = mutable or urlsplit(url).path.lower().endswith(".json")
+    if not governed or ttl_s <= 0:
         return None
     fetched = time.time() if now is None else now
     return time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime(fetched + ttl_s))
@@ -118,12 +121,14 @@ class SqlCache:
         sha256: str,
         byte_size: int,
         content_kind: str,
+        *,
+        mutable: bool = False,
     ) -> None:
         """Compress and persist response bytes."""
         digest = _url_sha256(url)
         compressed = compress_payload(payload)
         now = _now()
-        expires_at = _expires_at(url, ttl_s=self.ttl_s)
+        expires_at = _expires_at(url, ttl_s=self.ttl_s, mutable=mutable)
         with self._lock, self._con:
             self._con.execute(
                 """

@@ -60,8 +60,6 @@ def test_duckdb_copy_helper_inherits_the_same_row_group_default() -> None:
     assert default.default == DEFAULT_ROW_GROUP_SIZE
 
 
-# ------------------------------------------------------------------ atomicity
-#
 # A checkpoint that looked complete would let a truncated fetch merge as finished.
 
 

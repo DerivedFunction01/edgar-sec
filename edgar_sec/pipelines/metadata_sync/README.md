@@ -51,7 +51,8 @@ it has no access to the coordinator's store. The bundle copy is what
 | `augmentation.py` | Delta planning and merge onto a published snapshot without refetching the base. |
 | `validation.py` | The merge-time cohort checks: one row per CIK, and reportable duplicate-accession fan-out. |
 | `registry.py` | Curated-versus-source comparison, the effective CIK roster, and the CSV export. |
-| `source_registry.py` | Write-once, content-addressed `company_tickers.json` snapshots. |
+| `source_registry.py` | Write-once, content-addressed snapshots of an external SEC source: `company_tickers.json` and the full `cik-lookup-data.txt` registrant index. |
+| `universe.py` | Compiling a published full-universe snapshot into a cohort: split the listing at the sink, collapse to one name per registrant, refuse a malformed line. |
 | `sec_client.py` | One CIK to its submissions document plus every historical file it lists. |
 | `cli.py` | The argparse surface; each `cmd_*` is a plain callable the operator also calls. |
 | `operator.py` | Interactive wizard: session state, on-disk discovery, auto-resolution, and network consent over the same `cmd_*` functions. |
@@ -82,6 +83,28 @@ adds on top:
   the sample. Every cell is validated as text before it becomes an integer, because a
   cast alone reads `12.5` as 13, `1e5` as 100000, and `0x10` as 16 — all real
   registrants, so an unguarded compile would publish members the curator never named.
+- **A cohort comes from a named source, and the three do not mix.** A curated
+  (`--input`), a registry projection (`--roster`), and the full registrant universe
+  (`--universe`) are one mutually exclusive choice; combining two is refused, because
+  two sources would be two answers to one question. `--universe` resolves the newest
+  published `cik-lookup-data.txt` snapshot and records that snapshot's id in the plan,
+  so a later refresh cannot change what an existing plan already means.
+- **The universe cohort is one row per registrant, in CIK order.** The index lists a
+  registrant under every name it files under — CIK `0000798737` carries five — so the
+  cohort keeps the alphabetically first name and collapses the rest; the immutable
+  raw payload retains every pair for name analysis. Ordinals follow CIK value, never
+  file order, because DuckDB does not preserve the order it read rows in. A line that
+  is not `name:cik:` with a CIK in range rejects the snapshot rather than silently
+  shrinking the universe. Planning stays network-free: `--universe` needs a snapshot
+  published by `sources refresh --source cik_lookup` first.
+- **The wizard offers the same cohorts the CLI does, from one picker.** `plan` and
+  `augment` resolve their cohort through the same menu, so a choice meaningful for one
+  is meaningful for the other. Only an entry that can actually be built is listed: the
+  universe appears only once its snapshot is published, and only the
+  `seed + active listings` entry asks for a source snapshot. A curated CSV therefore
+  never requires a listing refresh, which is what the older augment flow demanded.
+  `Refresh external source` asks which source to publish and names its size in the
+  consent, because the two differ by more than a name.
 - **Plan identity is the cohort, not the schedule.** `derive_plan_id` covers the
   roster identity, the chunk size, the plan kind, and — for a delta — the base
   snapshot. It never covers an assignment, a worker count, or a timestamp, so
@@ -164,25 +187,25 @@ snapshot.
 ## Command surface
 
 ```text
-metadata plan     --input <csv> | --roster <registry_id> [--limit N]
+metadata plan     --input <csv> | --roster <registry_id> | --universe [--limit N]
 metadata status   <plan reference>
 metadata run      <plan reference> [--chunks 0-3,7] [--chunk N]
 metadata merge    <plan reference>
 metadata worker   <plan reference> [--worker <id>]
 metadata export   <plan reference> --worker-count N --destination <dir>
 metadata import   <plan reference> --source <dir>
-metadata augment  --input <csv> | --roster <registry_id> --base-snapshot-id <id>
-                  [--new-snapshot-id <id>]
-metadata sources refresh  [--artifacts <dir>]
+metadata augment  --input <csv> | --roster <registry_id> | --universe
+                  --base-snapshot-id <id> [--new-snapshot-id <id>]
+metadata sources refresh  [--artifacts <dir>] [--source company_tickers|cik_lookup]
 metadata sources compare  --input <csv> --source-manifest <manifest.json>
 ```
 
 A *plan reference* is `--plan-id`, a `--bundle` that names its own plan in its
-manifest, or a cohort (`--input` / `--roster`) to re-derive; they are one mutually
-exclusive group on `status`, `run`, `merge`, `worker`, `export`, and `import`, and
-only the cohort pair is accepted by `plan` and `augment` (required there).
-`--artifacts`, `--chunk-size`, and `--workers` are accepted on every subcommand
-except `sources refresh` / `sources compare`, which take `--artifacts` only.
+manifest, or a cohort (`--input` / `--roster` / `--universe`) to re-derive; they are
+one mutually exclusive group on `status`, `run`, `merge`, `worker`, `export`, and
+`import`, and only the cohort trio is accepted by `plan` and `augment` (required
+there). `--artifacts`, `--chunk-size`, and `--workers` are accepted on every
+subcommand except `sources refresh` / `sources compare`, which take `--artifacts` only.
 `--worker-count` and `--destination` are required on `export`; `--source` is
 required on `import`; `--base-snapshot-id` is required on `augment`; `--chunks` and
 `--chunk` exist on `run` only. Worked transcripts are in the
@@ -273,6 +296,20 @@ These are decisions, not oversights. Each names the alternative.
 - **No `--limit` in augmentation.** A bounded augmentation would fetch a bounded
   delta, which is legitimate, but the flag is not offered because the requested
   cohort is normally a comparison's output rather than an ad-hoc subset.
+- **The universe collapses names, and that is lossy.** A registrant filed under five
+  names contributes one row carrying the alphabetically first. The cohort schema is
+  one name per CIK, so retaining every pair needs either a separate published dataset
+  or a widened roster schema; neither is built. Every pair remains recoverable by
+  re-parsing the immutable raw snapshot, which is what the cohort was compiled from.
+- **The universe is not a registry input.** `sources compare` still projects against
+  `company_tickers` alone, so a comparison's roster does not include the registrants
+  the ticker listing omits — including mutual funds, trusts, and the individual
+  Section 16 filers that make up a large share of the universe. Widening the union is
+  a deliberate omission, not an oversight.
+- **The universe TTL is the shared cache TTL.** It reuses `cache.ttl_s`, defaulting
+  to 90 days, which suits immutable filing documents but leaves a mutable index stale
+  for a quarter. `CACHE_TTL_S` is the override; a per-source cadence setting is not
+  defined.
 - **The wizard discovers; it does not orchestrate.** It finds the plan, shows its
   progress, and runs the command the operator picked. It never sequences the
   pipeline and never runs a step that was not chosen. Interactive infrastructure

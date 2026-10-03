@@ -49,8 +49,6 @@ def test_all_forms_plans_every_target(catalog_id: str, artifacts_root: Path) -> 
     assert sum(meta["counts"].values()) == 13
 
 
-# --- the date selection filter ---------------------------------------------
-#
 # Six fixture targets have a readable report_date and seven an empty one.
 
 

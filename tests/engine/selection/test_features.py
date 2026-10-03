@@ -391,9 +391,7 @@ def test_the_size_anchor_is_one_row_per_family(tmp_path: Path) -> None:
     assert [(row[0], row[1]) for row in anchor] == [("10-K", 1500.0), ("4", 3500.0)]
 
 
-#
-# The producer writes '' for an absent field, never NULL. The committed fixture
-# carries no empty strings, so these tests build their own dataset.
+# The producer writes '' for an absent field; the committed fixture has none.
 
 _PROFILE_DEFAULTS: dict[str, Any] = {
     "identity": {"name": "Example Co", "former_names": []},

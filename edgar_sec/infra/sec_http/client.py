@@ -121,10 +121,19 @@ class SecHttpClient:
         return None
 
     def _cache_put(
-        self, url: str, payload: bytes, sha256: str, byte_size: int, content_kind: str
+        self,
+        url: str,
+        payload: bytes,
+        sha256: str,
+        byte_size: int,
+        content_kind: str,
+        *,
+        mutable: bool = False,
     ) -> None:
         if self._cache is not None:
-            self._cache.put(url, payload, sha256, byte_size, content_kind)
+            self._cache.put(
+                url, payload, sha256, byte_size, content_kind, mutable=mutable
+            )
 
     def peek_cache(self, url: str) -> bytes | None:
         """Read-only cache probe without consuming a rate slot."""
@@ -172,8 +181,12 @@ class SecHttpClient:
         content_kind: str = "bytes",
         *,
         force_refresh: bool = False,
+        mutable: bool = False,
     ) -> bytes:
-        """Fetch raw bytes with rate limiting, retries, caching, and failure tracking."""
+        """Fetch raw bytes with rate limiting, retries, caching, and failure tracking.
+
+        ``mutable`` applies the TTL to a payload that changes despite an archive path.
+        """
         if not force_refresh:
             cached = self._cache_get(url)
             if cached is not None:
@@ -252,7 +265,9 @@ class SecHttpClient:
                         url, f"response exceeded {self.max_response_bytes} bytes", 200
                     )
                 sha = sha256_bytes(content)
-                self._cache_put(url, content, sha, len(content), content_kind)
+                self._cache_put(
+                    url, content, sha, len(content), content_kind, mutable=mutable
+                )
                 if self._cache:
                     self._cache.clear_failure(url)
                 return content
@@ -348,8 +363,7 @@ class SecHttpClient:
     ) -> tuple[dict[str, Any], int, str]:
         """Like :meth:`get_json` but also returns ``(payload, byte_count, response_sha256)``.
 
-        The byte count and digest of the response body must survive the parse,
-        so acquisition provenance is recorded per row.
+        The body's size and digest must survive the parse, for per-row provenance.
         """
         raw = self.get_bytes(url, content_kind="json", force_refresh=force_refresh)
         try:

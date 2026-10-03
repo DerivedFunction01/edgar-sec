@@ -21,7 +21,11 @@ from .paths import (
 )
 from .registry import RegistryError
 from .roster import RosterError
-from .source_registry import SOURCE_MANIFEST_KIND, SOURCE_NAME
+from .source_registry import (
+    SOURCE_MANIFEST_KIND,
+    SOURCE_NAME,
+    SOURCE_UNIVERSE_NAME,
+)
 
 __all__ = [
     "InputSummary",
@@ -36,6 +40,8 @@ __all__ = [
     "list_rosters",
     "list_snapshots",
     "list_source_snapshots",
+    "list_universe_snapshots",
+    "newest_universe_snapshot_id",
     "plan_summary",
     "resolve_input_choice",
     "resolve_plan_choice",
@@ -225,18 +231,29 @@ def describe_roster(roster: RosterSummary) -> str:
     return f"{roster['registry_id']}  " + ", ".join(parts)
 
 
-def list_source_snapshots(metadata: MetadataPaths) -> list[SourceSummary]:
-    """Every published external source snapshot, newest retrieval first.
+def _source_count(manifest: dict[str, Any], *keys: str) -> int:
+    """First present count key as an int; a source names its counts differently."""
+    for key in keys:
+        value = manifest.get(key, 0)
+        if value:
+            return int(value)
+    return 0
+
+
+def list_source_snapshots(
+    metadata: MetadataPaths, source_name: str = SOURCE_NAME
+) -> list[SourceSummary]:
+    """Every published snapshot of one external source, newest retrieval first.
     Ordering by ``retrieved_at`` is what makes "the latest" mean something.
     """
-    root = metadata.sources_root / SOURCE_NAME
+    root = metadata.sources_root / source_name
     if not root.is_dir():
         return []
     found: list[SourceSummary] = []
     for entry in sorted(root.iterdir()):
         if not entry.is_dir():
             continue
-        path = metadata.source_manifest_file(SOURCE_NAME, entry.name)
+        path = metadata.source_manifest_file(source_name, entry.name)
         try:
             manifest = json.loads(path.read_text(encoding="utf-8"))
         except (OSError, json.JSONDecodeError) as exc:
@@ -260,8 +277,12 @@ def list_source_snapshots(metadata: MetadataPaths) -> list[SourceSummary]:
                 snapshot_id=str(manifest.get("snapshot_id", "") or entry.name),
                 manifest_path=str(path),
                 retrieved_at=str(manifest.get("retrieved_at", "")),
-                unique_cik_count=int(manifest.get("unique_cik_count", 0) or 0),
-                listing_row_count=int(manifest.get("listing_row_count", 0) or 0),
+                unique_cik_count=_source_count(
+                    manifest, "unique_cik_count", "distinct_cik_count"
+                ),
+                listing_row_count=_source_count(
+                    manifest, "listing_row_count", "line_count"
+                ),
                 readable=readable,
                 readable_reason="" if readable else "not a source manifest",
             )
@@ -270,6 +291,19 @@ def list_source_snapshots(metadata: MetadataPaths) -> list[SourceSummary]:
         key=lambda item: (item["retrieved_at"], item["snapshot_id"]), reverse=True
     )
     return found
+
+
+def list_universe_snapshots(metadata: MetadataPaths) -> list[SourceSummary]:
+    """Every published full-registrant-index snapshot, newest retrieval first."""
+    return list_source_snapshots(metadata, SOURCE_UNIVERSE_NAME)
+
+
+def newest_universe_snapshot_id(metadata: MetadataPaths) -> str:
+    """The newest readable universe snapshot id, or empty when none is usable."""
+    for snapshot in list_universe_snapshots(metadata):
+        if snapshot["readable"]:
+            return str(snapshot["snapshot_id"])
+    return ""
 
 
 def describe_source(source: SourceSummary) -> str:

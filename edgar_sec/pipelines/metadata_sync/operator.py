@@ -7,7 +7,7 @@ a terminal.
 from __future__ import annotations
 
 import sys
-from dataclasses import dataclass
+from dataclasses import dataclass, replace
 from pathlib import Path
 
 from edgar_sec.foundation.runtime.interactive import (
@@ -29,12 +29,12 @@ from .cli import (
 )
 from .cli import main as cli_main
 from .discovery import (
+    SourceSummary,
     current_snapshot_id,
-    describe_roster,
     list_plans,
-    list_rosters,
     list_snapshots,
     list_source_snapshots,
+    list_universe_snapshots,
     plan_summary,
     resolve_plan_choice,
     resolve_snapshot_choice,
@@ -50,7 +50,7 @@ from .options import (
     run_options,
 )
 from .paths import resolve_metadata_paths
-from .source_registry import SOURCE_NAME
+from .source_registry import SOURCE_NAME, SOURCE_UNIVERSE_NAME
 
 __all__ = [
     "WizardState",
@@ -250,38 +250,15 @@ def select_snapshot(state: WizardState) -> None:
     print(f"current snapshot is now {chosen}")
 
 
-def _ask_cohort_source(state: WizardState) -> tuple[str, str] | None:
-    """Choose the cohort a plan is built over: a curated CSV or a published roster.
-    Returns ``(input_path, registry_id)`` with exactly one set, or ``None`` to cancel.
-    """
-    source = prompt_text("CIK manifest CSV (blank = cancel)", DEFAULT_INPUT)
-    if not source:
-        return None
-    rosters = list_rosters(state.metadata())
-    if not rosters:
-        return source, ""
+def _ask_cohort_source(state: WizardState) -> PlanOptions | None:
+    """Choose the cohort a plan is built over.
 
-    print("\nCohort sources:")
-    print(f"  1. {source}  (curated manifest CSV)")
-    for index, roster in enumerate(rosters, start=2):
-        print(f"  {index}. {describe_roster(roster)}")
-    raw = prompt_text("Cohort source number", "1").strip() or "1"
-    try:
-        choice = int(raw)
-    except ValueError:
-        choice = 1
-    if choice == 1:
-        return source, ""
-    if not 2 <= choice <= len(rosters) + 1:
-        print("invalid selection; using the curated manifest CSV")
-        return source, ""
-    chosen = rosters[choice - 2]
-    if not chosen["readable"]:
-        print(
-            f"{chosen['registry_id']} cannot be planned from: {chosen['readable_reason']}"
-        )
-        return source, ""
-    return "", str(chosen["registry_id"])
+    The picker is shared with augmentation: the sources available are the same,
+    so a choice meaningful for planning is meaningful for augmenting.
+    """
+    from .augment_flow import ask_cohort_source
+
+    return ask_cohort_source(state, purpose="Cohort to plan over")
 
 
 def _ask_plan_options(
@@ -291,16 +268,14 @@ def _ask_plan_options(
     cohort = _ask_cohort_source(state)
     if cohort is None:
         return None
-    input_path, registry_id = cohort
     settings = resolve_runtime_settings()
     chunk_size = _ask_int(
         "CIKs per chunk (blank = configured default)", settings.default_chunk_size
     )
     limit = _ask_int("Limit CIKs (blank = all)") if with_limit else None
-    return plan_options(
-        input_path=input_path or None,
-        registry_id=registry_id,
-        chunk_size=chunk_size,
+    return replace(
+        cohort,
+        chunk_size=chunk_size if chunk_size is not None else cohort.chunk_size,
         limit=limit,
     )
 
@@ -406,11 +381,56 @@ def worker(state: WizardState) -> None:
     cmd_worker(options)
 
 
+def _source_label(source_name: str, snapshots: list[SourceSummary]) -> str:
+    """One line naming a source and what is already published from it."""
+    if not snapshots:
+        return f"{source_name}  (not published)"
+    newest = snapshots[0]
+    return (
+        f"{source_name}  ({newest['unique_cik_count']:,} CIKs published, retrieved "
+        f"{newest['retrieved_at'] or 'unknown'})"
+    )
+
+
 def refresh(state: WizardState) -> None:
-    if not confirm_network("This fetches the SEC listing source. Continue? (y/N) "):
+    """Publish an immutable snapshot of an external SEC source.
+
+    Which source is asked, because the two differ in kind and size: the ticker
+    listing is small, the registrant index large.
+    """
+    metadata = state.metadata()
+    options = [
+        (
+            _source_label(SOURCE_NAME, list_source_snapshots(metadata, SOURCE_NAME)),
+            SOURCE_NAME,
+        ),
+        (
+            _source_label(SOURCE_UNIVERSE_NAME, list_universe_snapshots(metadata)),
+            SOURCE_UNIVERSE_NAME,
+        ),
+    ]
+    print("\nSource to refresh:")
+    for index, (label, _name) in enumerate(options, start=1):
+        print(f"  {index}. {label}")
+    answer = prompt_text("Source number", "1").strip() or "1"
+    try:
+        choice = int(answer)
+    except ValueError:
+        choice = 1
+    if not 1 <= choice <= len(options):
+        print("invalid selection")
+        return
+
+    _label, source_name = options[choice - 1]
+    if not confirm_network(
+        f"Fetching {source_name} from SEC. Continue? (y/N) "
+    ):
         print("cancelled; nothing was fetched")
         return
-    cmd_refresh(Path(state.artifacts_root) if state.artifacts_root else None)
+    cmd_refresh(
+        Path(state.artifacts_root) if state.artifacts_root else None,
+        source=source_name,
+    )
 
 
 def compare(state: WizardState) -> None:

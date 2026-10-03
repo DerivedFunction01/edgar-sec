@@ -19,6 +19,7 @@ from edgar_sec.pipelines.metadata_sync.paths import resolve_metadata_paths
 from edgar_sec.pipelines.metadata_sync.registry import registry_id_for
 from edgar_sec.pipelines.metadata_sync.source_registry import (
     SOURCE_NAME,
+    SOURCE_UNIVERSE_NAME,
     SOURCE_URL,
     refresh_company_tickers,
 )
@@ -79,6 +80,40 @@ def _publish_source(state: WizardState, snapshot_id: str, *, retrieved_at: str) 
         ),
         encoding="utf-8",
     )
+
+
+def _publish_universe_source(
+    state: WizardState, snapshot_id: str, *, retrieved_at: str = "2026-10-02T00:00:00Z"
+) -> None:
+    """Publish a universe source manifest so the picker can offer it."""
+    path = state.metadata().source_manifest_file(SOURCE_UNIVERSE_NAME, snapshot_id)
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(
+        json.dumps(
+            {
+                "manifest_kind": "metadata_source_snapshot",
+                "source": SOURCE_UNIVERSE_NAME,
+                "snapshot_id": snapshot_id,
+                "retrieved_at": retrieved_at,
+                "distinct_cik_count": 987472,
+                "line_count": 1061751,
+            }
+        ),
+        encoding="utf-8",
+    )
+
+
+#: With no published rosters the menu is 1 csv, 2 registry, 3 universe, 4 another path.
+UNIVERSE_CHOICE = "3"
+
+
+def _choose(answer: str):
+    """Answer the cohort menu with one entry and every other prompt with its default."""
+
+    def prompt(label: str, default: str = "") -> str:
+        return answer if label == "Cohort number" else default
+
+    return prompt
 
 
 def _fake_preflight(*, delta_rows: int = 1, requested: int = 4, base: str = "base"):
@@ -307,7 +342,9 @@ def test_the_seed_and_the_source_listings_are_offered_together(
     monkeypatch.setattr(
         flow,
         "prompt_text",
-        lambda label, default="": prompts.append(label) or default,
+        lambda label, default="": (
+            prompts.append(label) or ("2" if label == "Cohort number" else default)
+        ),
     )
     monkeypatch.setattr(flow, "DEFAULT_INPUT", str(seed), raising=False)
 
@@ -332,13 +369,18 @@ def test_a_missing_source_is_offered_a_consented_refresh(
     monkeypatch.setattr(flow, "DEFAULT_INPUT", str(seed), raising=False)
     monkeypatch.setattr(flow, "confirm_network", lambda *a, **k: False)
     monkeypatch.setattr(flow, "cmd_refresh", lambda root: refreshed.append(root))
-    monkeypatch.setattr(flow, "prompt_text", lambda label, default="": default)
+    monkeypatch.setattr(
+        flow,
+        "prompt_text",
+        lambda label, default="": "2" if label == "Cohort number" else default,
+    )
 
     assert flow.ask_augment_cohort(state) is None
 
     out = capsys.readouterr().out
-    assert "No SEC listing source snapshot on disk" in out
-    assert "nothing was fetched" in out
+    assert "No SEC listing source snapshot is published" in out
+    # The decline names what is still possible, not a fetch that never started.
+    assert "the seed alone can still be used as a cohort" in out
     assert refreshed == []
 
 
@@ -351,7 +393,11 @@ def test_a_consented_source_refresh_targets_the_session_artifacts_root(
     monkeypatch.setattr(flow, "DEFAULT_INPUT", str(seed), raising=False)
     monkeypatch.setattr(flow, "confirm_network", lambda *a, **k: True)
     monkeypatch.setattr(flow, "cmd_refresh", lambda root: refreshed.append(root))
-    monkeypatch.setattr(flow, "prompt_text", lambda label, default="": default)
+    monkeypatch.setattr(
+        flow,
+        "prompt_text",
+        lambda label, default="": "2" if label == "Cohort number" else default,
+    )
 
     flow.ask_augment_cohort(state)
 
@@ -635,3 +681,72 @@ def test_merge_refuses_a_delta_plan_and_leaves_the_snapshot_intact(
     assert metadata.current_pointer.read_bytes() == pointer_before
     assert metadata.snapshot_manifest(base).read_bytes() == manifest_before
     assert metadata.snapshot_manifest("aug").is_file()
+
+
+# ---------------------------------------------------- the shared cohort picker
+
+
+def test_the_universe_is_offered_once_a_snapshot_is_published(
+    state: WizardState, tmp_path: Path, monkeypatch: pytest.MonkeyPatch, capsys
+) -> None:
+    """The universe is a cohort like any other, so it belongs in the same menu."""
+    seed = _write_seed(tmp_path)
+    _publish_universe_source(state, "uni-1")
+    monkeypatch.setattr(flow, "DEFAULT_INPUT", str(seed), raising=False)
+    monkeypatch.setattr(flow, "confirm_network", lambda *a, **k: False)
+    monkeypatch.setattr(flow, "prompt_text", _choose(UNIVERSE_CHOICE))
+
+    options = flow.ask_augment_cohort(state)
+
+    out = capsys.readouterr().out
+    assert options is not None
+    assert options.universe
+    assert "full registrant universe" in out
+    assert "987,472 CIKs" in out
+    assert "uni-1" in out
+
+
+def test_the_universe_is_absent_until_a_snapshot_exists(
+    state: WizardState, tmp_path: Path, monkeypatch: pytest.MonkeyPatch, capsys
+) -> None:
+    """An option that would fail later must not be offered."""
+    seed = _write_seed(tmp_path)
+    monkeypatch.setattr(flow, "DEFAULT_INPUT", str(seed), raising=False)
+    monkeypatch.setattr(flow, "prompt_text", lambda label, default="": default)
+
+    flow.ask_augment_cohort(state)
+
+    assert "full registrant universe" not in capsys.readouterr().out
+
+
+def test_a_csv_cohort_needs_no_published_source(
+    state: WizardState, tmp_path: Path, monkeypatch: pytest.MonkeyPatch, capsys
+) -> None:
+    """The regression: asking for a CSV must not require a ticker snapshot."""
+    seed = _write_seed(tmp_path)
+    monkeypatch.setattr(flow, "DEFAULT_INPUT", str(seed), raising=False)
+    monkeypatch.setattr(
+        flow, "confirm_network", lambda *a, **k: pytest.fail("asked to fetch")
+    )
+    monkeypatch.setattr(flow, "prompt_text", lambda label, default="": default)
+
+    options = flow.ask_augment_cohort(state)
+
+    assert options is not None
+    assert options.input_path == seed
+    assert "No SEC listing source snapshot" not in capsys.readouterr().out
+
+
+def test_the_picker_is_the_same_one_planning_uses(
+    state: WizardState, tmp_path: Path, monkeypatch: pytest.MonkeyPatch, capsys
+) -> None:
+    """Two near-duplicate pickers would drift; there is one, labelled per purpose."""
+    seed = _write_seed(tmp_path)
+    _publish_universe_source(state, "uni-1")
+    monkeypatch.setattr(flow, "DEFAULT_INPUT", str(seed), raising=False)
+    monkeypatch.setattr(flow, "confirm_network", lambda *a, **k: False)
+    monkeypatch.setattr(flow, "prompt_text", _choose(UNIVERSE_CHOICE))
+
+    flow.ask_cohort_source(state, purpose="Cohort to plan over")
+
+    assert "Cohort to plan over:" in capsys.readouterr().out

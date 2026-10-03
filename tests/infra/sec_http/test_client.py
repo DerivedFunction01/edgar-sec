@@ -49,6 +49,58 @@ def test_cache_probe_and_hit_metric(tmp_path: Path) -> None:
     assert client.metrics.cache_hits == 1
 
 
+class _TextSession:
+    """Serves one mutable text payload."""
+
+    def __init__(self, url: str, content: bytes) -> None:
+        self.url = url
+        self.content = content
+        self.calls: list[str] = []
+
+    def get(
+        self, url: str, headers: object = None, timeout: object = None
+    ) -> _Response:
+        self.calls.append(url)
+        return _Response(200, self.content)
+
+    def mount(self, *_args: object) -> None:  # pragma: no cover - adapter no-op
+        pass
+
+
+def test_a_mutable_text_response_is_cached_with_a_ttl(tmp_path: Path) -> None:
+    """A mutable index at an archive path must not be pinned forever."""
+    url = "https://www.sec.gov/Archives/edgar/cik-lookup-data.txt"
+    session = _TextSession(url, b"NAME:0000000001:\n")
+    client = SecHttpClient(
+        user_agent="Sample Company test@sample.com",
+        cache_dir=tmp_path,
+        ttl_s=3600,
+        session_factory=lambda: session,
+    )
+    assert client.get_bytes(url, mutable=True) == b"NAME:0000000001:\n"
+    row = client._cache._con.execute(
+        "SELECT expires_at FROM url_responses WHERE url = ?", (url,)
+    ).fetchone()
+    assert row["expires_at"] is not None
+
+
+def test_a_default_text_response_is_pinned(tmp_path: Path) -> None:
+    """Without the declaration the same URL keeps the archive default."""
+    url = "https://www.sec.gov/Archives/edgar/cik-lookup-data.txt"
+    session = _TextSession(url, b"NAME:0000000001:\n")
+    client = SecHttpClient(
+        user_agent="Sample Company test@sample.com",
+        cache_dir=tmp_path,
+        ttl_s=3600,
+        session_factory=lambda: session,
+    )
+    assert client.get_bytes(url) == b"NAME:0000000001:\n"
+    row = client._cache._con.execute(
+        "SELECT expires_at FROM url_responses WHERE url = ?", (url,)
+    ).fetchone()
+    assert row["expires_at"] is None
+
+
 class _Response:
     def __init__(self, status_code: int, content: bytes) -> None:
         self.status_code = status_code
@@ -176,8 +228,6 @@ def test_the_size_guard_is_off_by_default(tmp_path: Path) -> None:
     assert client.get_bytes("https://www.sec.gov/files/company_tickers.json") == body
 
 
-# ------------------------------------------------- settings construction path
-#
 # Every fetching action builds its client from resolved settings, so a mistyped
 # attribute name would disable all of them at once.
 

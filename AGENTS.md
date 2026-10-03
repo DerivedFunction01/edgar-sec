@@ -156,6 +156,8 @@ Scanners are defined modularly in `edgar_sec/foundation/scanners/` and collected
 - `whole-file-read`: Bans `read_bytes()` consumed by a digest constructor. Hashing a whole
   artifact to prove it intact materializes the file; use `file_sha256`. Narrow on purpose —
   a `read_bytes()` feeding `json.loads` on a small payload is a different trade and is not flagged.
+- `prose-length`: **Fails the gate** on a docstring or comment block over its cap. Enforces the
+  "Code Comments and Docstrings" caps below, with tighter caps for tests.
 - `regex-alternations`: Bans hand-crafted 3+ branch alternation literals, so `foundation.regex.builder` is used.
 - `legacy-shims`: Bans backward-compatibility aliases and transitional shims (enforces §1.1).
 - `json-io`: Bans redundant JSON helper definitions and non-atomic JSON writes.
@@ -263,10 +265,12 @@ code cannot state. The code already explains execution; a comment that describes
 what the next lines do is deleted on sight.
 
 **Hard caps.** A module docstring is at most four lines. A function or class
-docstring is at most three. A comment is at most two. A test module docstring is
-at most three lines, a test function at most two, a test comment at most one.
-Exceeding a cap requires a precondition the type system cannot express, and is
-justified in review; it is not a default to fall back on.
+docstring is at most three. A standalone comment block is at most three lines. A
+test module docstring is at most three lines, a test function at most two, a test
+comment block at most two. A trailing comment (code precedes it on the line) is
+counted alone: it labels its own line, so adjacency is irrelevant. Exceeding a cap
+requires a precondition the type system cannot express, and is justified in review;
+it is not a default to fall back on. The `prose-length` scanner enforces these.
 
 **Document intent, not execution.** Keep the conclusion and drop the derivation.
 "Rows must be sorted before merging, or the fingerprint is unstable" is worth

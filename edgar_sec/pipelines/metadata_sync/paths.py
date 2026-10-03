@@ -1,7 +1,7 @@
 """Directory layout for the metadata sync pipeline.
-Plan-scoped transient checkpoints are kept apart from published snapshots: chunks
-are resumability state, snapshots are output. A plan is a directory, so a worker
-can be handed a copy and reassigned without changing what the plan *is*.
+
+Transient checkpoints are kept apart from published snapshots, and a plan is a
+directory, so a worker can be handed a copy and reassigned unchanged.
 """
 
 from __future__ import annotations
@@ -105,9 +105,14 @@ class MetadataPaths:
         """Directory holding one immutable external source snapshot."""
         return self.metadata_root / "sources" / source_name / snapshot_id
 
-    def source_snapshot_file(self, source_name: str, snapshot_id: str) -> Path:
-        """Raw payload of one immutable source snapshot."""
-        return self.source_dir(source_name, snapshot_id) / "raw.json"
+    def source_snapshot_file(
+        self, source_name: str, snapshot_id: str, *, suffix: str = ".json"
+    ) -> Path:
+        """Raw payload of one immutable source snapshot.
+
+        The suffix follows the payload's own, so a text index is not mislabelled JSON.
+        """
+        return self.source_dir(source_name, snapshot_id) / f"raw{suffix}"
 
     def source_manifest_file(self, source_name: str, snapshot_id: str) -> Path:
         """Manifest describing one immutable source snapshot."""
@@ -126,9 +131,8 @@ class MetadataPaths:
         return self.registry_manifest_root(registry_id) / f"{dataset}.parquet"
 
     def effective_input_file(self, registry_id: str) -> Path:
-        """Path of the effective CIK input CSV for one registry.
-
-        An export for people; the roster Parquet dataset beside it is the carrier.
+        """The effective CIK input CSV is an export for people; the roster Parquet
+        dataset beside it is the carrier.
         """
         return self.registry_root(registry_id) / REGISTRY_EFFECTIVE_CIK_INPUT_NAME
 
@@ -138,8 +142,8 @@ class MetadataPaths:
 
     @property
     def cohorts_root(self) -> Path:
-        """Compiled cohorts, keyed by the fingerprint of what produced them.
-        The shared store, distinct from the copy a bundle freezes to travel.
+        """Compiled cohorts, keyed by the fingerprint that produced them: the shared
+        store, distinct from the copy a bundle freezes to travel.
         """
         return self.metadata_root / COHORTS_DIR_NAME
 

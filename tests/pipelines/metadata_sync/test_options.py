@@ -77,6 +77,7 @@ def test_plan_options_carry_no_worker_field() -> None:
     assert [field for field in PlanOptions.__slots__] == [
         "input_path",
         "registry_id",
+        "universe",
         "artifacts_root",
         "chunk_size",
         "limit",
@@ -87,7 +88,7 @@ def test_a_cohort_reference_is_required(
     monkeypatch: pytest.MonkeyPatch, tmp_path: Path
 ) -> None:
     monkeypatch.setenv("RUNTIME_CHUNK_SIZE", "1")
-    with pytest.raises(ValueError, match="--input or --roster"):
+    with pytest.raises(ValueError, match="--input, --roster, or --universe"):
         plan_options().roster()
 
 
@@ -136,6 +137,60 @@ def test_lineage_is_empty_for_a_csv_cohort(tmp_path: Path) -> None:
     assert plan_options(registry_id="reg1", artifacts_root=tmp_path).lineage() == {
         "registry_id": "reg1"
     }
+
+
+# ------------------------------------------------------------------ universe
+
+
+def _publish_universe(root: Path) -> str:
+    """Publish a real snapshot so a cohort reference resolves."""
+    from edgar_sec.pipelines.metadata_sync.source_registry import (
+        SOURCE_UNIVERSE_URL,
+        refresh_cik_lookup_universe,
+    )
+    from tests.support import FakeSession, build_test_http, fixture_path
+
+    session = FakeSession()
+    session.register_bytes(
+        SOURCE_UNIVERSE_URL, fixture_path("cik_lookup_universe_mini.txt").read_bytes()
+    )
+    metadata = resolve_metadata_paths(root)
+    manifest = refresh_cik_lookup_universe(
+        metadata_paths=metadata, client=build_test_http(session)
+    )
+    return str(manifest["snapshot_id"])
+
+
+def test_universe_needs_a_published_snapshot(tmp_path: Path) -> None:
+    """Planning stays network-free, so an absent snapshot is an instruction."""
+    with pytest.raises(ValueError, match="sources refresh --source cik_lookup"):
+        resolve_cohort(plan_options(universe=True, artifacts_root=tmp_path))
+
+
+def test_universe_resolves_a_published_snapshot(tmp_path: Path) -> None:
+    snapshot_id = _publish_universe(tmp_path)
+    cohort = resolve_cohort(plan_options(universe=True, artifacts_root=tmp_path))
+    assert cohort.input_fingerprint == snapshot_id
+    assert "cik_lookup" in cohort.input_name
+
+
+def test_universe_refuses_to_mix_with_a_file(tmp_path: Path) -> None:
+    with pytest.raises(ValueError, match="--universe alone"):
+        plan_options(universe=True, input_path=MINI, artifacts_root=tmp_path).roster()
+
+
+def test_a_universe_plan_carries_the_source_snapshot_id(tmp_path: Path) -> None:
+    snapshot_id = _publish_universe(tmp_path)
+    assert plan_options(universe=True, artifacts_root=tmp_path).lineage() == {
+        "registry_id": "",
+        "source_snapshot_id": snapshot_id,
+    }
+
+
+def test_run_options_re_derive_from_a_universe_cohort(tmp_path: Path) -> None:
+    _publish_universe(tmp_path)
+    options = run_options(universe=True, chunk_size=2, artifacts_root=tmp_path)
+    assert options.plan_id
 
 
 # ----------------------------------------------------------------- run options

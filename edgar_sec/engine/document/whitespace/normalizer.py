@@ -20,10 +20,9 @@ _GLYPH_BULLET_ALT = build_alternation(sorted(GLYPH_BULLET_MARKERS), auto_escape=
 
 _RE_MULTIPLE_BLANKS = re.compile(r"\n{3,}")
 
-# Concatenated-item splitting. Each rule is gated on punctuation so that an
-# inline column separator or a hyphenated phrase is not mistaken for a list
-# boundary, and each requires a following alphanumeric so a trailing colon
-# at end of line is left alone.
+# Concatenated-item splitting. Each rule requires punctuation plus a following
+# alphanumeric, so an inline column separator, a hyphenated phrase, or a trailing
+# colon is not mistaken for a list boundary.
 _RE_SEMICOLON_BULLET_SPLIT = re.compile(
     rf"([;:](?:[ \t]+(?:and|or))?)[ \t]+(?=(?:{_ALL_BULLET_ALT})[ \t]+[A-Za-z0-9\(\$])",
     re.IGNORECASE,

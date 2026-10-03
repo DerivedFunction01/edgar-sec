@@ -33,21 +33,9 @@ __all__ = [
     "count_cohort_rows",
 ]
 
-#: One pass over the input: normalize, validate, deduplicate, number, pad.
-#:
-#: The reader is fully specified and never auto-detected. Auto-detection types the
-#: CIK column as an integer -- discarding padding a curated file may already carry --
-#: and collapses the columns of a ragged file into one field per line.
-#:
-#: ``c0`` is validated as text before it becomes an integer, because a bare cast
-#: accepts more than a CIK: ``12.5`` is 13, ``1e5`` is 100000, ``0x10`` is 16. Each
-#: names a real registrant, so an unguarded cast would invent cohort members.
-#:
-#: ``rn`` is first-appearance order, fixing both which duplicate row is kept and the
-#: ordinal that defines chunk membership. Duplicates partition by CIK *value*, not
-#: text -- ``1985`` and ``0000001985`` are one registrant written twice -- and the
-#: ordering is stable across thread counts, so cohort identity does not depend on
-#: the machine that compiled it.
+#: One pass: normalize, validate, deduplicate, number, pad. Never auto-detect the
+#: schema; that types CIK as an integer and discards padding. ``c0`` is validated as
+#: text first, since a bare cast turns ``12.5`` into 13 and invents cohort members.
 _CIK_COHORT_QUERY = """
 WITH raw AS (
     SELECT

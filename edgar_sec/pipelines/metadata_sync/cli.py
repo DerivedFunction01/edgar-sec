@@ -1,7 +1,7 @@
 """Unified command surface for the metadata sync pipeline.
 
-Every command is a plain callable over one typed options model, so the
-interactive operator and the CLI are the same code path.
+Every command is a plain callable over one typed options model, so the operator
+and the CLI are one code path.
 """
 
 from __future__ import annotations
@@ -44,7 +44,12 @@ from .registry import compare_sources
 from .roster import RosterError
 from .sec_client import SubmissionsClient
 from .snapshot import read_snapshot_parts
-from .source_registry import refresh_company_tickers
+from .source_registry import (
+    SOURCE_NAME,
+    SOURCE_UNIVERSE_NAME,
+    refresh_cik_lookup_universe,
+    refresh_company_tickers,
+)
 from .worker import resolve_workers, run_chunk_ids
 
 __all__ = [
@@ -64,9 +69,10 @@ __all__ = [
 
 
 def _build_client() -> SubmissionsClient:
-    """Build the live submissions client against the shared response store.
-    The settings registry owns the cache root; ``resolve_paths()`` differs and
-    would open a second, empty store.
+    """Build the submissions client against the shared response store.
+
+    The settings registry owns the cache root; ``resolve_paths()`` would open a
+    second, empty store.
     """
     settings = resolve_runtime_settings()
     return SubmissionsClient(
@@ -80,10 +86,15 @@ def _emit(payload: dict[str, Any]) -> None:
     print(json.dumps(payload, indent=2))
 
 
-def cmd_refresh(artifacts_root: Path | None = None) -> int:
+def cmd_refresh(
+    artifacts_root: Path | None = None, *, source: str = SOURCE_NAME
+) -> int:
     """Fetch and publish one immutable external source snapshot."""
     metadata = resolve_metadata_paths(artifacts_root)
-    _emit(refresh_company_tickers(metadata_paths=metadata))
+    if source == SOURCE_UNIVERSE_NAME:
+        _emit(refresh_cik_lookup_universe(metadata_paths=metadata))
+    else:
+        _emit(refresh_company_tickers(metadata_paths=metadata))
     return 0
 
 
@@ -104,9 +115,7 @@ def cmd_compare(options: PlanOptions, *, source_manifest: Path) -> int:
 
 
 def cmd_plan(options: PlanOptions) -> int:
-    """Generate a deterministic plan without touching the network.
-    A registry roster and a curated CSV converge here.
-    """
+    """Generate a deterministic plan without touching the network."""
     cohort = resolve_cohort(options)
     from .planner import build_plan
 
@@ -233,12 +242,11 @@ def cmd_augment(
     workers: int | None = None,
     lineage: dict[str, str] | None = None,
 ) -> int:
-    """Add only the newly requested CIKs to a published snapshot.
-    The delta plan is bound to its base, so one request against two bases is two
-    plans; an empty ``new_snapshot_id`` makes reruns idempotent.
+    """Add only the newly requested CIKs to a published snapshot; the delta plan is
+    bound to its base, and an empty ``new_snapshot_id`` makes a rerun idempotent.
     """
-    if options.input_path is None and not options.registry_id:
-        raise ValueError("augment needs --input or --roster")
+    if options.input_path is None and not options.registry_id and not options.universe:
+        raise ValueError("augment needs --input, --roster, or --universe")
     metadata = resolve_metadata_paths(options.artifacts_root)
     cohort = resolve_cohort(options)
     check = preflight_augment(
@@ -375,8 +383,9 @@ def cmd_export(options: RunOptions, *, worker_count: int, destination: Path) -> 
 
 def cmd_worker(options: RunOptions, *, client: SubmissionsClient | None = None) -> int:
     """Run this worker's assigned chunks and emit a receipt.
-    The chunk list comes from an assignment re-derived on load, so a worker
-    cannot widen its own scope.
+
+    The chunk list comes from an assignment re-derived on load, so a worker cannot
+    widen its own scope.
     """
     run_paths = options.run_paths()
     plan = load_plan(run_paths)
@@ -447,15 +456,19 @@ def _add_common(sub: argparse.ArgumentParser) -> None:
 
 
 def _add_plan_reference(sub: argparse.ArgumentParser) -> None:
-    """Attach either an explicit plan reference or a cohort reference.
-    A plan id re-derived from a cohort makes replanning idempotent; a changed
-    chunk layout then fails loudly.
+    """Attach an explicit plan reference or a cohort reference; a cohort's plan id is
+    re-derived, so replanning is idempotent and a changed chunk layout fails loudly.
     """
     group = sub.add_mutually_exclusive_group()
     group.add_argument("--plan-id", default="", help="plan identifier to operate on")
     group.add_argument("--bundle", default="", help="copied plan bundle directory")
     group.add_argument("--input", default="", help="CIK manifest CSV to re-derive from")
     group.add_argument("--roster", default="", help="effective CIK roster id")
+    group.add_argument(
+        "--universe",
+        action="store_true",
+        help="full SEC registrant index to re-derive from",
+    )
 
 
 def _add_cohort_source(sub: argparse.ArgumentParser, *, with_limit: bool) -> None:
@@ -464,6 +477,9 @@ def _add_cohort_source(sub: argparse.ArgumentParser, *, with_limit: bool) -> Non
     group.add_argument("--input", default="", help="CIK manifest CSV")
     group.add_argument(
         "--roster", default="", help="effective CIK roster id from 'sources compare'"
+    )
+    group.add_argument(
+        "--universe", action="store_true", help="full SEC registrant index"
     )
     if with_limit:
         sub.add_argument("--limit", type=int, default=None)
@@ -478,6 +494,7 @@ def _plan_options(args: argparse.Namespace) -> PlanOptions:
     return plan_options(
         input_path=args.input or None,
         registry_id=args.roster,
+        universe=args.universe,
         artifacts_root=args.artifacts or None,
         chunk_size=args.chunk_size,
         limit=getattr(args, "limit", None),
@@ -489,6 +506,7 @@ def _run_options(args: argparse.Namespace) -> RunOptions:
         plan_id=getattr(args, "plan_id", "") or "",
         input_path=getattr(args, "input", "") or None,
         registry_id=getattr(args, "roster", "") or "",
+        universe=getattr(args, "universe", False),
         chunk_size=args.chunk_size,
         limit=getattr(args, "limit", None),
         artifacts_root=args.artifacts or None,
@@ -613,8 +631,16 @@ def build_parser() -> argparse.ArgumentParser:
         "refresh", help="publish an immutable external source snapshot"
     )
     refresh_parser.add_argument("--artifacts", default="")
+    refresh_parser.add_argument(
+        "--source",
+        default=SOURCE_NAME,
+        choices=[SOURCE_NAME, SOURCE_UNIVERSE_NAME],
+        help="which external source to refresh",
+    )
     refresh_parser.set_defaults(
-        func=lambda args: cmd_refresh(Path(args.artifacts) if args.artifacts else None)
+        func=lambda args: cmd_refresh(
+            Path(args.artifacts) if args.artifacts else None, source=args.source
+        )
     )
 
     compare_parser = sources_sub.add_parser(
@@ -644,6 +670,7 @@ def _augment_from_args(args: argparse.Namespace) -> int:
     options, lineage = augment_options(
         input_path=args.input or None,
         registry_id=args.roster,
+        universe=args.universe,
         artifacts_root=args.artifacts or None,
         chunk_size=args.chunk_size,
         base_snapshot_id=args.base_snapshot_id,

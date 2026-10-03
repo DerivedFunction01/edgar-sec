@@ -11,6 +11,7 @@ from .layers import SCANNER as LAYERS_SCANNER
 from .legacy_shims import SCANNER as LEGACY_SHIMS_SCANNER
 from .length import SCANNER as LENGTH_SCANNER
 from .paths import SCANNER as PATHS_SCANNER
+from .prose_length import SCANNER as PROSE_LENGTH_SCANNER
 from .regex_alternations import SCANNER as REGEX_ALTERNATIONS_SCANNER
 from .resources import SCANNER as RESOURCES_SCANNER
 from .secrets import SCANNER as SECRETS_SCANNER
@@ -31,6 +32,7 @@ ALL_SCANNERS: tuple[Scanner, ...] = (
     JSON_IO_SCANNER,
     DATE_PATTERNS_SCANNER,
     SQL_INTERPOLATION_SCANNER,
+    PROSE_LENGTH_SCANNER,
 )
 
 __all__ = [
@@ -43,6 +45,7 @@ __all__ = [
     "LEGACY_SHIMS_SCANNER",
     "LENGTH_SCANNER",
     "PATHS_SCANNER",
+    "PROSE_LENGTH_SCANNER",
     "REGEX_ALTERNATIONS_SCANNER",
     "RESOURCES_SCANNER",
     "SECRETS_SCANNER",

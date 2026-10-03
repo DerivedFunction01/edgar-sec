@@ -139,7 +139,7 @@ class FilingAggregate:
     """Universal aggregate root representing one SEC filing submission.
 
     Adheres to the sparse acquisition contract:
-    - Primary accession document is acquired by default (~2MB).
+    - Primary accession document is acquired by default.
     - Secondary exhibits remain empty unless an evaluator triggers delegation.
     - Raw submission bundle is None unless fetched for legacy recovery.
     - xbrl slot remains None unless hydrated via downstream fact marts.

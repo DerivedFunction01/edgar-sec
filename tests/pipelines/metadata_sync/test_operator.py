@@ -47,7 +47,10 @@ from edgar_sec.pipelines.metadata_sync.options import (
 )
 from edgar_sec.pipelines.metadata_sync.paths import resolve_run_paths
 from edgar_sec.pipelines.metadata_sync.planner import build_plan, write_plan
-from edgar_sec.pipelines.metadata_sync.source_registry import SOURCE_NAME
+from edgar_sec.pipelines.metadata_sync.source_registry import (
+    SOURCE_NAME,
+    SOURCE_UNIVERSE_NAME,
+)
 from tests.support import fixture_cohort, fixture_path
 
 COMMANDS = {
@@ -143,7 +146,7 @@ def test_an_unparsable_answer_falls_back_rather_than_crashing(
 def test_ask_plan_options_returns_none_on_cancel(
     state: WizardState, monkeypatch: pytest.MonkeyPatch
 ) -> None:
-    monkeypatch.setattr(operator_module, "prompt_text", lambda label, default: "")
+    monkeypatch.setattr(operator_module, "_ask_cohort_source", lambda _state: None)
     assert _ask_plan_options(state, with_limit=True) is None
 
 
@@ -151,6 +154,11 @@ def test_ask_plan_options_uses_registered_defaults(
     state: WizardState, monkeypatch: pytest.MonkeyPatch
 ) -> None:
     monkeypatch.setenv("RUNTIME_CHUNK_SIZE", "17")
+    monkeypatch.setattr(
+        operator_module,
+        "_ask_cohort_source",
+        lambda _state: plan_options(input_path=DEFAULT_INPUT),
+    )
     monkeypatch.setattr(operator_module, "prompt_text", lambda label, default: default)
     options = _ask_plan_options(state)
     assert options is not None
@@ -162,7 +170,12 @@ def test_ask_plan_options_uses_registered_defaults(
 def test_ask_plan_options_records_a_limit(
     state: WizardState, monkeypatch: pytest.MonkeyPatch
 ) -> None:
-    answers = iter([str(fixture_path("cik_sec_mini.csv")), "1000", "3"])
+    monkeypatch.setattr(
+        operator_module,
+        "_ask_cohort_source",
+        lambda _state: plan_options(input_path=fixture_path("cik_sec_mini.csv")),
+    )
+    answers = iter(["1000", "3"])
     monkeypatch.setattr(
         operator_module, "prompt_text", lambda label, default: next(answers)
     )
@@ -509,10 +522,14 @@ def test_refresh_needs_no_reference_and_still_reaches_the_library(
     """Refreshing is not scoped to a plan, so a blank answer is not a cancel."""
     monkeypatch.setattr(operator_module, "prompt_text", lambda label, default="": "")
     monkeypatch.setattr(operator_module, "confirm_network", lambda *a, **k: True)
-    seen: list[object] = []
-    monkeypatch.setattr(operator_module, "cmd_refresh", seen.append)
+    seen: list[tuple[object, str]] = []
+    monkeypatch.setattr(
+        operator_module,
+        "cmd_refresh",
+        lambda root, *, source: seen.append((root, source)),
+    )
     operator_module.refresh(state)
-    assert seen == [state.metadata().artifacts_root]
+    assert seen == [(state.metadata().artifacts_root, SOURCE_NAME)]
 
 
 def test_refresh_targets_the_session_artifacts_root_without_asking(
@@ -520,15 +537,20 @@ def test_refresh_targets_the_session_artifacts_root_without_asking(
 ) -> None:
     """A project-default root would publish outside the tree the session reads."""
     asked: list[str] = []
-    refreshed: list[Path | None] = []
+    refreshed: list[tuple[Path | None, str]] = []
     _forbid_artifacts_prompts(monkeypatch, asked)
     monkeypatch.setattr(operator_module, "confirm_network", lambda *a, **k: True)
-    monkeypatch.setattr(operator_module, "cmd_refresh", refreshed.append)
+    monkeypatch.setattr(
+        operator_module,
+        "cmd_refresh",
+        lambda root, *, source: refreshed.append((root, source)),
+    )
 
     operator_module.refresh(state)
 
-    assert refreshed == [state.metadata().artifacts_root]
-    assert asked == []
+    assert refreshed == [(state.metadata().artifacts_root, SOURCE_NAME)]
+    # Asking which source is expected; the helper already fails on any root prompt.
+    assert asked == ["Source number"]
 
 
 def test_compare_targets_the_session_artifacts_root(
@@ -771,3 +793,47 @@ def test_a_dispatched_command_never_resolves_session_state(
     assert main(["status", "--plan-id", "p"]) == 0
     assert seen == [["status", "--plan-id", "p"]]
     assert "No plan selected" not in capsys.readouterr().out
+
+
+def test_refresh_can_publish_the_universe_index(
+    state: WizardState, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    """The universe was reachable only from the CLI; the menu must reach it too."""
+    seen: list[tuple[object, str]] = []
+    monkeypatch.setattr(
+        operator_module,
+        "prompt_text",
+        lambda label, default="": "2" if label == "Source number" else default,
+    )
+    monkeypatch.setattr(operator_module, "confirm_network", lambda *a, **k: True)
+    monkeypatch.setattr(
+        operator_module,
+        "cmd_refresh",
+        lambda root, *, source: seen.append((root, source)),
+    )
+
+    operator_module.refresh(state)
+
+    assert seen == [(state.metadata().artifacts_root, SOURCE_UNIVERSE_NAME)]
+
+
+def test_refresh_names_the_payload_size_in_its_consent(
+    state: WizardState, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    """A 40 MB download should not be consented to as if it were a 1 MB one."""
+    prompts: list[str] = []
+    monkeypatch.setattr(
+        operator_module,
+        "prompt_text",
+        lambda label, default="": "2" if label == "Source number" else default,
+    )
+    monkeypatch.setattr(
+        operator_module,
+        "confirm_network",
+        lambda prompt="": prompts.append(prompt) or True,
+    )
+    monkeypatch.setattr(operator_module, "cmd_refresh", lambda root, *, source: None)
+
+    operator_module.refresh(state)
+
+    assert any("40 MB" in text for text in prompts)

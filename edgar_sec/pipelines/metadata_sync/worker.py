@@ -137,7 +137,8 @@ def _run_chunk_rows(
                 cik_padded = pending.pop(future)
                 try:
                     row, result = future.result()
-                except Exception as exc:  # noqa: BLE001 - re-raised after writes
+                except Exception as exc:
+                    # A raising future must not discard rows that already finished.
                     if failure is None:
                         failure = exc
                     continue
@@ -246,9 +247,8 @@ def _raise_interrupt(signum: int, frame: Any) -> None:
 def _graceful_sigterm() -> Iterator[None]:
     """Translate SIGTERM into KeyboardInterrupt for the duration of a run.
 
-    Only the main thread may install a handler; elsewhere the run proceeds
-    with the process's default disposition. The previous handler is always
-    restored, so a nested or short-lived run cannot leak the translation.
+    Only the main thread may install a handler, and the previous one is always
+    restored, so a nested run cannot leak the translation.
     """
     try:
         previous = signal.signal(signal.SIGTERM, _raise_interrupt)
