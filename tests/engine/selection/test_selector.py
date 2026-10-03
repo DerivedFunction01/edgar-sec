@@ -1,11 +1,4 @@
-"""Unit tests for engine.selection.selector: the five-phase deficit fill.
-
-The important test is
-:func:`test_a_dominant_family_cannot_fill_the_selection`. A corpus where one
-corporate group holds two thirds of the documents is the realistic shape of the
-problem the six-part classification cap exists to solve: without it, a plain
-sample of filings is mostly that group's subsidiaries.
-"""
+"""Deficit fill: classification caps, floors, cell allocation, and accounting."""
 
 from __future__ import annotations
 
@@ -46,11 +39,7 @@ def test_selection_fills_the_target_and_reports_itself(
 def test_selection_is_deterministic_for_one_seed(
     snapshot_dir: Path, selection_policy: SelectionPolicy
 ) -> None:
-    """Same snapshot, same policy, same seed, same answer.
-
-    Selection feeds acquisition, so a rerun that picked different documents
-    would make the published plan a claim rather than a record.
-    """
+    """A rerun picking different documents would make the plan a claim, not a record."""
     first = DeficitSelector(snapshot_dir, selection_policy).select()
     second = DeficitSelector(snapshot_dir, selection_policy).select()
     assert first.active_locators == second.active_locators
@@ -77,11 +66,8 @@ def test_a_different_seed_selects_differently(
 def test_a_dominant_family_cannot_fill_the_selection(
     dominant_family_snapshot: Path,
 ) -> None:
-    """One group holds 12 of 18 locators. The cap must stop it winning.
-
-    Every locator here shares one classification signature except for the family
-    name, so an uncapped fill would take all twelve. This is the invariant that
-    keeps a quota-balanced sample from being a sample of one conglomerate.
+    """Every locator shares one signature but for the family name, so an uncapped
+    fill would take all twelve.
     """
     policy = SelectionPolicy(
         corpus_id="dominant",
@@ -101,11 +87,8 @@ def test_a_dominant_family_cannot_fill_the_selection(
 
 
 def test_the_cap_is_what_bounds_dominance(tmp_path: Path) -> None:
-    """Lifting the cap must visibly admit more of the dominant family.
-
-    Paired with
-    :func:`test_a_dominant_family_cannot_fill_the_selection`, this shows the cap
-    is the binding constraint rather than a side effect of pool ordering.
+    """Paired with the dominant-family case: the cap is the binding constraint, not
+    pool ordering.
     """
     snapshot = make_dominant_snapshot(tmp_path / "lifted", others=3)
 
@@ -121,8 +104,8 @@ def test_the_cap_is_what_bounds_dominance(tmp_path: Path) -> None:
         result = DeficitSelector(snapshot, policy).select()
         return [candidate["company_family"] for candidate in result.active_candidates]
 
-    # Twelve megacorp locators in one signature, plus three others: the cap of
-    # one admits at most four candidates in total.
+    # Twelve megacorp locators in one signature plus three others: a cap of one admits
+    # at most four candidates.
     capped = select(1)
     assert len(capped) == 4
     assert capped.count("megacorp") == 1
@@ -135,11 +118,8 @@ def test_the_cap_is_what_bounds_dominance(tmp_path: Path) -> None:
 def test_an_unreachable_target_is_reported_as_a_shortfall(
     tmp_path: Path,
 ) -> None:
-    """A selection the corpus cannot satisfy must say so, not claim success.
-
-    The cap makes this reachable-set smaller than the requested budget. The
-    report has to expose the difference, or a published plan would assert a
-    quota it never met.
+    """The report must expose a shortfall, or a published plan asserts a quota it
+    never met.
     """
     snapshot = make_dominant_snapshot(tmp_path / "short", others=3)
     policy = SelectionPolicy(
@@ -213,11 +193,7 @@ def test_floors_are_satisfied_before_the_weighted_fill(
 def test_an_impossible_floor_is_reported_not_silently_ignored(
     snapshot_dir: Path,
 ) -> None:
-    """A floor nothing can satisfy must show up in the report.
-
-    Otherwise the plan publishes with a quota it never met and the reader has
-    no way to know which one.
-    """
+    """Otherwise the plan publishes with an unmet quota the reader cannot see."""
     policy = SelectionPolicy(
         corpus_id="impossible",
         forms=["10-K"],
@@ -236,7 +212,6 @@ def test_an_impossible_floor_is_reported_not_silently_ignored(
 def test_composites_are_satisfied_before_single_dimension_floors(
     tmp_path: Path,
 ) -> None:
-    """A conjunction is harder to satisfy than any one of its terms."""
     locators = [
         make_locator(index, company_family=f"fam{index % 5}") for index in range(20)
     ]
@@ -287,7 +262,6 @@ def test_caps_bound_a_dimensions_share_of_the_target(tmp_path: Path) -> None:
 
 
 def test_seed_filers_are_selected_regardless_of_quota(tmp_path: Path) -> None:
-    """A declared anchor tenant must appear even if the cap would reject it."""
     locators = [make_locator(index, company_family="megacorp") for index in range(10)]
     snapshot = write_snapshot(tmp_path / "seeds", locators)
 
@@ -350,11 +324,8 @@ def test_selection_stops_at_the_target_even_when_the_pool_is_larger(
 def test_parent_keys_are_retained_and_accounted_for(
     snapshot_dir: Path, selection_policy: SelectionPolicy
 ) -> None:
-    """An expansion must never drop a parent's documents.
-
-    The parent's rows are also loaded into coverage, so the published plan
-    reports the quota the combined set actually satisfies rather than only what
-    the child added.
+    """The parent's rows also load into coverage, so the report accounts for the
+    combined set rather than only what the child added.
     """
     baseline = DeficitSelector(snapshot_dir, selection_policy).select()
     parent = baseline.active_locators[:3]
@@ -392,9 +363,6 @@ def test_report_names_the_policy_that_produced_it(
     assert report["corpus_id"] == selection_policy.corpus_id
     assert report["level"] == selection_policy.level
     assert report["target_units"] == selection_policy.requested_units()
-
-
-# --- the global form-by-era allocation --------------------------------------
 
 
 def _spread_snapshot(root: Path, cells: dict[tuple[str, str], int]) -> Path:
@@ -476,10 +444,8 @@ def test_allocation_redistributes_from_an_exhausted_cell(tmp_path: Path) -> None
 def test_a_cap_smaller_than_the_cell_count_prioritizes_era_coverage(
     tmp_path: Path,
 ) -> None:
-    """Three eras, three forms, room for three rows: one row per era.
-
-    Ordering the cells form-first would instead spend all three on whichever form
-    sorts first, leaving two eras unrepresented.
+    """Ordering the cells form-first would instead spend all three rows on whichever
+    form sorts first, leaving two eras unrepresented.
     """
     snapshot = _spread_snapshot(
         tmp_path / "eras",

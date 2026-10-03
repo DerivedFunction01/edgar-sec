@@ -35,8 +35,7 @@ def build_prefix_trie(words: list[str]) -> TrieNode:
 def trie_to_regex(node: TrieNode, auto_escape: bool = True) -> str:
     """Convert a trie node into a minimal factored regex string.
 
-    For example, words ['swap', 'swap agreement', 'swap option'] produce:
-    'swap(?: (?:agreement|option))?'
+    Factor common prefixes so a long alternation compiles to a compact regex.
     """
     if not node.children:
         return ""
@@ -53,7 +52,6 @@ def trie_to_regex(node: TrieNode, auto_escape: bool = True) -> str:
     if len(branches) == 1:
         result = branches[0]
     else:
-        # Group single character alternatives into character classes if applicable
         if all(len(b) == 1 or (len(b) == 2 and b.startswith("\\")) for b in branches):
             chars = "".join(b for b in branches)
             result = f"[{chars}]"

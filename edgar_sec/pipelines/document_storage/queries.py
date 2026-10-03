@@ -1,16 +1,7 @@
-"""Direct SQL for document snapshot assembly and consolidation.
+"""SQL for document snapshot assembly and consolidation.
 
-The functions build SQL text over DuckDB relations using safe parameter binding
-and quoted relation expressions.
-
-Every statement in this module is assembled from three sources: a literal in
-this file, a relation expression built by
-:func:`edgar_sec.pipelines.document_storage.parts.relation_for_parts` (which quotes
-and escapes its own file list), and bound parameters. No value read from a
-manifest or a row is ever interpolated into a statement, preventing SQL injection.
-
-The functions hardcode SEC filing-specific column names and layered snapshot
-logic. They are phase-specific, not generic storage primitives.
+Only ``relation_for_parts`` output, literals in this file, and bound parameters reach
+a statement — never a manifest or row value.
 """
 
 from __future__ import annotations
@@ -23,10 +14,7 @@ from edgar_sec.infra.storage.duckdb import sql_path_list
 #: Rows per fetched batch. Bounded so a consolidation never materializes a whole
 #: quarter's text in memory at once.
 DEFAULT_BATCH_SIZE = 4096
-#: Registered as ``documents.read_batch_size`` in the settings registry, so the
-#: value is env-overridable like every other batch size. This module is the
-#: authority for the value; tests/pipelines/document_storage/test_settings_contract.py
-#: pins the pair.
+#: Env-overridable as ``documents.read_batch_size``.
 
 
 def query_sql_batches(
@@ -36,11 +24,7 @@ def query_sql_batches(
     *,
     batch_size: int = DEFAULT_BATCH_SIZE,
 ) -> Iterator[list[dict[str, Any]]]:
-    """Run a query and yield its rows in bounded batches.
-
-    Uses ``fetchmany`` rather than materializing the entire result, protecting
-    heap memory against large document payloads.
-    """
+    """Run a query and yield its rows in bounded batches, never materializing all."""
     if batch_size <= 0:
         raise ValueError("batch_size must be positive")
     # ``connection.execute`` returns the *connection* in DuckDB, so closing what it
@@ -59,12 +43,9 @@ def query_sql_batches(
 
 
 def ranked_union_relations(relations: Iterable[str]) -> str:
-    """Union relations while retaining deterministic source precedence.
+    """Union relations, tagging each with its input position as descending precedence.
 
-    Each relation is tagged with its position in the input, and every downstream
-    dedup ranks on that tag descending. Position therefore *is* precedence, so
-    the result of a consolidation depends only on the order the caller listed
-    its sources — not on filesystem or query ordering.
+    So the outcome depends only on the order the caller listed its sources.
     """
     values = [
         f"SELECT *, {rank} AS _snapshot_rank FROM {relation}"
@@ -80,25 +61,8 @@ def effective_snapshot_relations(
 ) -> tuple[str, str]:
     """Return deduplicated index and payload relations for layered snapshots.
 
-    The highest-precedence row per identity wins. ``filing_year`` and
-    ``filing_quarter`` are derived here rather than stored, so a snapshot written
-    by an older version consolidates alongside a newer one without a migration.
-
-    The quarter derivation uses ``floor((month - 1) / 3) + 1``, matching how SEC
-    fiscal quarters are numbered. Two degenerate cases are handled explicitly
-    rather than left to ``CAST``:
-
-    * A **missing or malformed** ``filing_date`` would make ``CAST(substr(...))``
-      raise a conversion error and abort the whole consolidation. It is bucketed
-      as year ``0`` / quarter ``QTR0`` instead.
-    * A date with a month outside ``1-12`` would derive a quarter outside
-      ``QTR1``-``QTR4``. It is also bucketed as ``QTR0``.
-
-    Both are reportable states, so neither drops a document: every acquired
-    document lands in exactly one bucket, and a corpus with undated documents
-    consolidates into a visibly separate ``QTR0`` partition rather than
-    disappearing. ``QTR0`` sorts before real quarters, so it is where a reviewer
-    looks first.
+    Highest ``_snapshot_rank`` wins; quarters are derived here, so old and new
+    snapshots need no migration. An absent or out-of-range month buckets as 0/``QTR0``.
     """
     effective_index = f"""
         SELECT occurrence_id, source_cik, accession, form, filing_date,
@@ -165,12 +129,9 @@ def relation_payload_conflicts(
     *,
     batch_size: int = 100,
 ) -> Iterator[list[dict[str, Any]]]:
-    """Yield document ids whose normalized text differs across sources.
+    """Yield doc_ids whose normalized text differs across sources.
 
-    Conflict detection runs on the *raw* union, not the deduplicated relation, on
-    purpose: deduplication resolves precedence by silently discarding the losing
-    row, and a consolidation that discards a different text for a document it
-    already has is the one case worth refusing rather than resolving.
+    Runs on the *raw* union: a differing text is refused, not resolved by precedence.
     """
     query = f"""
         SELECT doc_id
@@ -253,16 +214,9 @@ def effective_quarter_index_rows(
 
 
 def chunk_assembly_query(chunk_paths: Sequence[str]) -> str:
-    """Return the query that concatenates chunk checkpoints into one snapshot.
+    """Return the query concatenating chunk checkpoints into one sorted snapshot.
 
-    The sort order is an artifact contract, not a presentation choice: a
-    published snapshot is read back by streaming it, so the row order is part of
-    what the snapshot means.
-
-    Paths reach the statement through
-    :func:`edgar_sec.infra.storage.duckdb.sql_path_list`, which escapes each
-    element. A chunk directory is chosen by the caller, so a path containing a
-    quote is a legal input rather than a malformed one.
+    ``ORDER BY`` is an artifact contract: a snapshot is read back by streaming.
     """
     if not chunk_paths:
         raise ValueError("assembly requires at least one chunk checkpoint")

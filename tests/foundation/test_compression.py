@@ -12,9 +12,8 @@ from edgar_sec.foundation.compression import (
     decompress_payload,
 )
 
-#: The frame magic the viewer's BLOB sniffing depends on
-#: (``apps/viewer/datasets.py``): a column value that does not start with it is
-#: treated as stored uncompressed and never routed here.
+#: Frame magic ``apps/viewer/datasets.py`` sniffs for: a value without it is read
+#: as stored uncompressed and never routed here.
 ZSTD_FRAME_MAGIC = b"\x28\xb5\x2f\xfd"
 
 
@@ -43,10 +42,8 @@ def test_output_carries_the_zstd_frame_magic() -> None:
 
 
 def test_decompressing_a_non_frame_raises() -> None:
-    """A caller that sniffs a possibly-uncompressed column branches on this.
-
-    The viewer treats a ``ZstdError`` as "this cell claims to be compressed and
-    is not", so the raise is part of the contract rather than an accident.
+    """The viewer treats a ``ZstdError`` as "this cell claims to be compressed
+    and is not", so the raise is part of the contract.
     """
     with pytest.raises(zstd.ZstdError):
         decompress_payload(b"this is not a zstd frame at all")

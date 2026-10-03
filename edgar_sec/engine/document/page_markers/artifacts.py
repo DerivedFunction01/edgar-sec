@@ -1,20 +1,6 @@
 """Canonical page-artifact tokens, template normalization, and metadata.
-
-When a policy replaces a marker rather than deleting it, what lands in the text
-is a token carrying an id and nothing else: `[[SEC:PAGE_BREAK id=7]]`. Every
-payload attribute — the page number, the namespace, the coordinates, whether
-the span was removable — lives in the sidecar metadata keyed by that id.
-
-That split is the whole reason for the format. A token in the text is a
-position, and a position in published text must not become a second source of
-truth about page numbers: post-render rediscovery of a marker is never how a
-removal is decided, and a generated token is never reclassified as a source
-marker.
-
-Repeating furniture also normalizes. Two banners that differ only in their page
-number are one template, so captured text is normalized (whitespace collapsed,
-digit runs replaced) before it is keyed, and the id is the digest of that
-normalized text.
+A token in the text carries an id and nothing else, so a position in published text never becomes a
+second source of truth about page numbers; every payload attribute lives in the sidecar.
 """
 
 from __future__ import annotations
@@ -29,8 +15,7 @@ PAGE_BREAK_TOKEN_KIND = "PAGE_BREAK"
 REPEATING_HEADER_TOKEN_KIND = "REPEATING_HEADER"
 REPEATING_FOOTER_TOKEN_KIND = "REPEATING_FOOTER"
 
-#: The longest template id the normalizer will record, as a hexadecimal
-#: character count.
+#: Longest template id the normalizer records, as a hexadecimal character count.
 TEMPLATE_ID_LENGTH = 16
 
 _TOKEN_KINDS = {
@@ -56,11 +41,7 @@ def render_page_artifact(token_kind: str, artifact_id: int) -> str:
 
 def normalize_template_text(text: str) -> tuple[str, int | None]:
     """Collapse whitespace and replace digit runs with ``#`` placeholders.
-
-    Returns the normalized rendered text plus the zero-based slot index of the
-    ``#`` token that a page number replaced, when exactly one digit run was
-    replaced. Multiple digit runs keep every ``#`` but record no slot, because
-    the page number position is then ambiguous.
+    Returns the zero-based slot a page number occupied when exactly one digit run was replaced; several runs record no slot, as the position is then ambiguous.
     """
 
     normalized = _WHITESPACE_RE.sub(" ", text.strip())
@@ -89,12 +70,7 @@ def note_template(
     page_number: int | str | None = None,
 ) -> str:
     """Deduplicate captured furniture text into ``templates`` and return its id.
-
-    ``captured_text`` is rendered text, never raw HTML. Repeating furniture
-    whose text differs only by page number collapses into one template entry.
-    An empty or whitespace-only capture records nothing and returns an empty id,
-    so a caller that cannot normalize the text emits an artifact with no
-    template rather than one keyed by the empty string.
+    ``captured_text`` is rendered text, never raw HTML. An unnormalizable capture records nothing and returns an empty id, never a template keyed by the empty string.
     """
 
     rendered, slot = normalize_template_text(captured_text)
@@ -147,10 +123,7 @@ def build_page_artifact_metadata(
     artifacts: list[tuple[int, PageBreakArtifact]],
 ) -> dict[str, Any]:
     """Build the deterministic ``page_artifacts`` metadata dictionary.
-
-    Deterministic means byte-identical for the same input: templates are
-    emitted in id order and artifacts in assigned-id order, so two runs over the
-    same document produce the same sidecar regardless of dict iteration order.
+    Templates emit in id order and artifacts in assigned-id order, so two runs over one document agree byte for byte.
     """
 
     return {

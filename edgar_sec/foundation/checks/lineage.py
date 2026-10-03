@@ -53,9 +53,8 @@ def resolve_relative_import(
 ) -> str:
     """Canonicalize relative import (e.g. level=2 from ..common into dotted name)."""
     parts = current_module.split(".")
-    # Level 1 means relative to current package (directory)
-    # If current_module is edgar_sec.a.b, its package has len 2 (edgar_sec.a)
-    # level 1 drops 1 part; level 2 drops 2 parts
+    # If current_module is edgar_sec.a.b, its package is edgar_sec.a; level 1 drops one
+    # part, level 2 drops two.
     if level > len(parts):
         return target_name or ""
     base_parts = parts[: len(parts) - level]
@@ -82,7 +81,6 @@ def parse_file_imports(file_path: Path, rel_str: str) -> tuple[str, tuple[str, .
                     discovered.add(name)
         elif isinstance(node, ast.ImportFrom):
             if node.level and node.level > 0:
-                # Relative import
                 resolved = resolve_relative_import(module_name, node.level, node.module)
                 if resolved.startswith(("edgar_sec.", "tests.")):
                     discovered.add(resolved)
@@ -151,7 +149,7 @@ class LineageGraph:
                     for path, data in self._entries.items()
                 },
             }
-            # Write atomically to cache
+            # Write atomically; a torn cache would be read as an empty graph.
             encoded = json.dumps(payload, indent=2)
             tmp_target = self.cache_path.with_suffix(".tmp")
             tmp_target.write_text(encoded, encoding="utf-8")
@@ -187,7 +185,6 @@ class LineageGraph:
                 imports=imports,
             )
 
-        # Evict deleted files if scanning entire repository
         if paths is None:
             stale = [p for p in self._entries if p not in active_rel_paths]
             for p in stale:
@@ -211,13 +208,11 @@ class LineageGraph:
         selected_tests: set[str] = set()
         reasons: dict[str, list[str]] = defaultdict(list)
 
-        # 1. Direct test edits always run
         for t in changed_tests:
             if (self.repo_root / t).is_file():
                 selected_tests.add(t)
                 reasons[t].append("direct_test_edit")
 
-        # 2. 0-hop mirrored test files for source changes
         for s in changed_sources:
             if s == "check.py":
                 checks_tests_dir = self.repo_root / "tests" / "foundation" / "checks"
@@ -232,16 +227,13 @@ class LineageGraph:
                 selected_tests.add(mirror)
                 reasons[mirror].append(f"mirror_of:{s}")
 
-        # 3. Hierarchical conftest invalidation
         for c in changed_conftests:
             c_dir = Path(c).parent
-            # Find all test files under this conftest directory
             for t_file in (self.repo_root / c_dir).rglob("test_*.py"):
                 rel_t = str(t_file.relative_to(self.repo_root))
                 selected_tests.add(rel_t)
                 reasons[rel_t].append(f"scoped_conftest:{c}")
 
-        # 4. Transitive reverse AST closure
         reverse_map = self.build_reverse_map()
         queue: deque[str] = deque()
         visited: set[str] = set()
@@ -251,7 +243,6 @@ class LineageGraph:
             if entry:
                 queue.append(entry.module)
                 visited.add(entry.module)
-            # Also enqueue by file path
             queue.append(s)
             visited.add(s)
 
@@ -263,12 +254,10 @@ class LineageGraph:
                     continue
                 visited.add(dep)
 
-                # Check if this dependent is a test
                 if dep.startswith("tests/") and Path(dep).name.startswith("test_"):
                     selected_tests.add(dep)
                     reasons[dep].append(f"transitive_dependency_of:{current}")
                 else:
-                    # Enqueue intermediate library module
                     queue.append(dep)
                     dep_entry = self._entries.get(dep)
                     if dep_entry:

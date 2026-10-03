@@ -1,10 +1,6 @@
-"""Cover-specific policies supplied to the generic ASCII reflow engine.
-
-These two predicates are the cover's contribution to the reflow engine's
-policy: one refuses to unwrap a Yes/No answer row into prose, the other refuses
-to unwrap a standalone cover layout structure. Both are pure functions of the
-line text and are memoized because the reflow engine calls them once per line
-in several passes.
+"""Cover-specific policies supplied to the generic ASCII reflow engine: one predicate
+refuses to unwrap a Yes/No answer row into prose, the other refuses to unwrap a
+standalone cover layout structure.
 """
 
 from __future__ import annotations
@@ -42,11 +38,8 @@ _COVER_PATTERNS = (
 
 @lru_cache(maxsize=16384)
 def is_cover_layout_line(line: str) -> bool:
-    """Return whether a line is a standalone cover/layout structure.
-
-    The predicate is a pure function of the line text and runs up to seven
-    regex searches per call; the reflow engine invokes it for every line in
-    several passes, so results are memoized per line string.
+    """Whether a line is a standalone cover/layout structure. The reflow engine calls
+    this for every line in several passes, so results are memoized per line.
     """
     stripped = line.strip()
     if not stripped:

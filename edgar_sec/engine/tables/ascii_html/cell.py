@@ -1,10 +1,4 @@
-"""Cell styling and cell text: CSS normalization, whitespace, wrapping, padding.
-
-Two concerns share this module because they are the two halves of one cell.
-A cell's *box* is described by inline CSS and presentation attributes, and its
-*text* is normalized and wrapped to fit that box. Both are per-cell operations
-that no other stage of the renderer revisits.
-"""
+"""Cell styling and cell text: CSS normalization, whitespace, wrapping, padding."""
 
 from __future__ import annotations
 
@@ -19,7 +13,6 @@ from edgar_sec.foundation.text.tokens import BULLET_MARKER_RE
 from ..patterns import HIDDEN_ELEMENT_STYLE_RE
 from .model import BorderStyle, CellStyle, HorizontalAlign, VerticalAlign
 
-# CSS declaration regex: property: value
 _DECL_RE = re.compile(r"([a-zA-Z\-]+)\s*:\s*([^;]+)")
 
 
@@ -31,9 +24,7 @@ def _parse_css_declarations(style_str: str) -> tuple[tuple[str, str], ...]:
     )
 
 
-# Number + unit regex: e.g. "12.5px", "100%", "2pt", "1.5em", "300"
 _UNIT_RE = re.compile(r"^([+-]?\d+(?:\.\d+)?)\s*([a-zA-Z%]*)$")
-# Border style keywords
 _BORDER_STYLES = {
     "none": BorderStyle.NONE,
     "hidden": BorderStyle.NONE,
@@ -51,12 +42,7 @@ _ITALIC_TAGS = frozenset(("i", "em"))
 
 def _iter_cell_descendants(node: Any):
     """Yield descendant raw selectolax nodes without crossing into nested cell/table boundaries.
-
-    selectolax (lexbor) re-parents unclosed <td>/<th> siblings as children of the
-    preceding cell when parsing malformed SEC HTML.  A plain `traverse()` call would
-    therefore walk into sibling cells and inherit their inline styles (e.g. text-align)
-    onto the wrong cell.  This bounded DFS stops recursing whenever it hits a boundary
-    tag so only the current cell's own content is inspected.
+    lexbor re-parents unclosed ``<td>``/``<th>`` siblings as children of the preceding cell.
     """
     raw_node = getattr(node, "raw_node", node)
     stack = [c for c in raw_node.iter(include_text=False) if c.tag]
@@ -71,17 +57,7 @@ def _iter_cell_descendants(node: Any):
 @lru_cache(maxsize=2048)
 def parse_dimension_px(value: str | None) -> tuple[float | None, str, bool]:
     """Parse a CSS or HTML dimension string into pixels, unit, and percent flag.
-
-    Conversions:
-    - px: 1:1
-    - pt: 1pt = 1.3333px (96/72)
-    - in: 1in = 96px
-    - em/rem: 1em = 16px
-    - %: preserved with is_percent=True
-    - unitless: treated as px (standard in HTML width/height attributes)
-
-    Dimensions repeat heavily across table cells, so parsed results are
-    memoized by input string; the result tuple is immutable.
+    A unitless value is treated as px, per HTML width/height; results are memoized.
     """
     if not value:
         return None, "px", False
@@ -111,7 +87,7 @@ def parse_dimension_px(value: str | None) -> tuple[float | None, str, bool]:
         return num * (96.0 / 2.54), "px", False
     elif unit == "mm":
         return num * (96.0 / 25.4), "px", False
-    else:  # px or unitless
+    else:
         return num, "px", False
 
 
@@ -219,7 +195,6 @@ def parse_style_and_attributes(node: Any) -> CellStyle:
         if k is not None and v is not None
     }
 
-    # Initialize from HTML attributes
     w_attr, w_unit, is_pct = parse_dimension_px(attrs.get("width"))
     h_attr, _, _ = parse_dimension_px(attrs.get("height"))
     h_align = _parse_horizontal_align(attrs.get("align"))
@@ -227,7 +202,6 @@ def parse_style_and_attributes(node: Any) -> CellStyle:
     bg_color = attrs.get("bgcolor")
     is_nowrap = "nowrap" in attrs
 
-    # Border attribute
     b_attr_val = attrs.get("border")
     b_top_w, b_top_s, b_top_c = 0.0, BorderStyle.NONE, None
     b_bot_w, b_bot_s, b_bot_c = 0.0, BorderStyle.NONE, None
@@ -240,7 +214,6 @@ def parse_style_and_attributes(node: Any) -> CellStyle:
             b_top_w = b_bot_w = b_left_w = b_right_w = bw
             b_top_s = b_bot_s = b_left_s = b_right_s = BorderStyle.SOLID
 
-    # Cellpadding attribute -> padding
     pad_left = pad_right = pad_top = pad_bottom = 0.0
     cellpadding = attrs.get("cellpadding")
     if cellpadding is not None:
@@ -248,7 +221,6 @@ def parse_style_and_attributes(node: Any) -> CellStyle:
         if cp_val:
             pad_left = pad_right = pad_top = pad_bottom = cp_val
 
-    # Parse inline style declaration overrides
     style_str = attrs.get("style", "")
     is_hidden = bool(
         attrs.get("hidden") is not None
@@ -377,9 +349,7 @@ def parse_style_and_attributes(node: Any) -> CellStyle:
             elif prop == "border-top-color":
                 b_top_c = val.lower()
 
-    # Fast inline check: does the node have any element children?
-    # Text-only and childless nodes skip the entire subtree traversal block,
-    # eliminating _iter_cell_descendants and all four node.find() CSS queries.
+    # Fast inline check for element children: a text-only node skips the whole subtree walk.
     _c = raw_node.child
     _has_elem_child = False
     while _c is not None:
@@ -392,14 +362,12 @@ def parse_style_and_attributes(node: Any) -> CellStyle:
     if _has_elem_child:
         found_bold = False
         found_italic = False
-        # Check child tags and inline styles for nested borders or typography.
-        # Inline bold/italic tag detection replaces the four node.find() CSS queries.
+        # Child tags and inline styles carry nested borders and typography.
         for child in _iter_cell_descendants(raw_node):
             tag = (child.tag or "").lower()
             if tag in _CELL_BOUNDARY_TAGS:
                 continue
 
-            # Detect typography tags inline — no separate CSS selector queries needed
             if tag in _BOLD_TAGS:
                 found_bold = True
             elif tag in _ITALIC_TAGS:
@@ -450,7 +418,6 @@ def parse_style_and_attributes(node: Any) -> CellStyle:
         is_bold = font_weight in ("bold", "700", "800", "900") or found_bold
         is_italic = font_style in ("italic", "oblique") or found_italic
     else:
-        # Leaf node: typography determined solely by inline font-weight/style attrs
         is_bold = font_weight in ("bold", "700", "800", "900")
         is_italic = font_style in ("italic", "oblique")
 
@@ -492,7 +459,6 @@ def parse_style_and_attributes(node: Any) -> CellStyle:
     )
 
 
-# Single-pass character translation table
 _NORMALIZE_TRANS = str.maketrans(
     {ch: " " for ch in NORMALIZE_TO_SPACE} | {ch: None for ch in STRIP_ZERO_WIDTH}
 )
@@ -582,7 +548,6 @@ def wrap_cell_text(text: str, width: int) -> list[str]:
     if len(text) <= width and "\n" not in text:
         return [text]
 
-    # Preserve explicit newlines if present
     raw_lines = text.split("\n")
     wrapped_lines: list[str] = []
 

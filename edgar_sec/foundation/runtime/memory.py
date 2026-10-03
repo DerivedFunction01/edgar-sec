@@ -1,13 +1,7 @@
 """Shared memory reclaim for long-lived processes.
 
-Python garbage collection frees large C-backed objects (HTML trees, decompressed
-payloads, Arrow tables) to the C allocator, but glibc only returns freed pages
-to the operating system on malloc_trim. Batch workers and brokers therefore
-call reclaim() at bounded intervals to keep resident memory near the live
-working set instead of the high-water mark.
-
-Streaming text hashing lives in :mod:`edgar_sec.foundation.hashing`; this module
-owns heap reclamation only.
+gc alone frees C-backed objects only to the allocator; glibc returns pages to the OS on
+malloc_trim, so long-lived workers and brokers call reclaim() at bounded intervals.
 """
 
 from __future__ import annotations
@@ -40,8 +34,7 @@ def _malloc_trim() -> bool:
 def reclaim() -> None:
     """Collect reference cycles and release free C heap pages to the OS.
 
-    Safe to call from any thread and on any platform: trimming is a no-op
-    when glibc (or an equivalent malloc_trim) is unavailable.
+    Safe from any thread and platform; trimming is a no-op where malloc_trim is absent.
     """
     gc.collect()
     _malloc_trim()

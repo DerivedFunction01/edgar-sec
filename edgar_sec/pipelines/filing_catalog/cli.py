@@ -1,17 +1,7 @@
 """Command surface for the filing-catalog pipeline.
-
-Four commands: ``materialize`` turns a finalized Phase 1 snapshot into an
-immutable catalog snapshot, ``plan`` slices that catalog into an immutable
-target plan, ``expand`` scales a policy plan while retaining its parent's
-locators, and ``status`` reports published state from manifests only.
-
-There is deliberately no ``run`` command. Nothing in this phase performs network
-work, so the resumable-chunk lifecycle of Phase 1 has no analogue here.
-
-``plan --scope deterministic`` accepts exactly four filters, one of which is a
-date selection over ``report_date``; eras and cohort balance still belong to the
-policy-scope selection engine. ``--scope policy`` takes the quota profile instead, and
-it is the only scope that reasons about balance.
+``materialize`` turns a finalized metadata snapshot into an immutable catalog;
+``plan`` slices it into a target plan; ``expand`` scales a policy plan while
+retaining its parent's locators. Nothing here performs network work.
 """
 
 from __future__ import annotations
@@ -42,8 +32,7 @@ __all__ = ["build_parser", "main"]
 def _emit_progress(event: dict[str, Any]) -> None:
     """Write progress to stderr so stdout carries only the JSON result.
 
-    Keeping the two streams separate is what makes ``... | jq`` work; mixing a
-    human-readable trace into stdout would corrupt the payload.
+    Mixing a human-readable trace into stdout would corrupt ``... | jq``.
     """
     stage = event.get("stage", "")
     rows = event.get("rows")
@@ -97,12 +86,8 @@ def cmd_plan(args: argparse.Namespace) -> int:
 
 def _load_policy(args: argparse.Namespace) -> SelectionPolicy:
     """Resolve the policy for ``plan --scope policy``.
-
-    With ``--policy`` the document is authoritative. With ``--auto-policy`` one
-    is derived from the catalog's own forms and year range. Supplying neither
-    is an error rather than a silent default, because a policy plan built from
-    an assumed quota profile would be indistinguishable from a deliberate one in
-    the published ``plan.json``.
+    Neither ``--policy`` nor ``--auto-policy`` is an error rather than a silent default:
+    an assumed quota profile is indistinguishable from a deliberate one.
     """
     if args.policy and args.auto_policy:
         raise ValueError("pass either --policy or --auto-policy, not both")

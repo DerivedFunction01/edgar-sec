@@ -1,10 +1,5 @@
-"""Command surface, settings resolution, and launcher registration tests.
-
-The settings test is the important one. ``runtime.chunk_size`` is a
-registered spec with an env name, and for a long period nothing read it: the
-parser hardcoded the module constant, so ``RUNTIME_CHUNK_SIZE=2`` still produced
-a plan claiming 1000. Because the plan id is derived from the effective chunking,
-that plan then became the canonical record of a run the operator never asked for.
+"""Command surface, settings resolution, and launcher registration; a registered
+setting the parser ignores would still reach the plan id.
 """
 
 from __future__ import annotations
@@ -57,7 +52,6 @@ MINI = ["0000001985", "0000001761", "0000000020", "0000037996"]
 
 
 def _seed_session(session: FakeSession) -> None:
-    """Register one submissions payload per CIK in the committed mini manifest."""
     for cik in MINI:
         session.register(submissions_url(cik), cik_payload(cik, f"COMPANY {cik}"))
 
@@ -132,11 +126,7 @@ def test_execution_commands_accept_a_plan_reference() -> None:
 
 
 def test_augment_needs_a_base_but_not_a_hand_typed_snapshot_id() -> None:
-    """The one free-form identity left on the command surface is now optional.
-
-    Requiring it forced an operator to invent an id on both the CLI and the menu,
-    and switching surfaces did not help, because the CLI demanded it too.
-    """
+    """Requiring it forced an operator to invent an id on every surface."""
     assert "--base-snapshot-id" in _flags("augment")
     assert "--new-snapshot-id" in _flags("augment")
 
@@ -158,11 +148,7 @@ def test_augment_still_refuses_to_run_without_a_base() -> None:
 
 
 def test_merge_rejects_a_snapshot_id_override() -> None:
-    """Snapshot identity is plan-derived, so a rename flag cannot be accepted.
-
-    Accepting ``--snapshot-id`` here would publish an artifact whose rows still
-    carry the plan id, so the flag is removed rather than wired to a late rename.
-    """
+    """Rows keep the plan id, so a late rename could not be honoured."""
     assert "--snapshot-id" not in _flags("merge")
     with pytest.raises(SystemExit):
         build_parser().parse_args(
@@ -171,12 +157,7 @@ def test_merge_rejects_a_snapshot_id_override() -> None:
 
 
 def test_no_command_exposes_a_partition_count() -> None:
-    """Partitioning is a scheduling choice, not a plan input.
-
-    Assignment carries the split, so changing the worker configuration cannot move
-    the plan directory or orphan every completed checkpoint for an identical
-    cohort.
-    """
+    """Assignment carries the split, so worker config cannot move the plan directory."""
     for command in ("plan", "status", "run", "merge", "augment"):
         assert "--partition-count" not in _flags(command), command
 
@@ -250,11 +231,7 @@ def test_plan_command_limit_truncates_the_cohort(tmp_path: Path, capsys) -> None
 
 
 def test_a_limited_plan_and_a_full_plan_do_not_collide(tmp_path: Path, capsys) -> None:
-    """A bounded run and a full run over one file must not collide.
-
-    Applying the limit before identity is derived keeps them off a single plan
-    directory and a single chunk namespace.
-    """
+    """The limit is applied before identity is derived, so the two stay distinct."""
     assert main(_plan_argv(tmp_path, "--chunk-size", "2")) == 0
     full = json.loads(capsys.readouterr().out)["plan_id"]
     assert main(_plan_argv(tmp_path, "--chunk-size", "2", "--limit", "2")) == 0
@@ -307,12 +284,7 @@ def test_status_accepts_an_explicit_plan_id(tmp_path: Path, capsys) -> None:
 
 
 def test_changed_effective_chunking_fails_loudly(tmp_path: Path, capsys) -> None:
-    """No persisted config means the plan id follows the effective settings.
-
-    Planning with one chunk size and then running with another resolves a
-    different plan, so the command must refuse rather than quietly reuse the
-    checkpoints of a differently-chunked plan.
-    """
+    """Refuses rather than reusing a differently chunked plan's checkpoints."""
     assert main(_plan_argv(tmp_path, "--chunk-size", "2")) == 0
     capsys.readouterr()
     assert (
@@ -336,11 +308,7 @@ def test_missing_plan_reports_an_error(tmp_path: Path, capsys) -> None:
 
 
 def test_a_copied_bundle_names_its_own_plan(tmp_path: Path, capsys) -> None:
-    """A worker handed a directory is not also handed a plan id.
-
-    The bundle carries the manifest that declares the plan, so there is one
-    source of truth rather than a directory plus a separately maintained marker.
-    """
+    """The bundle carries the manifest that declares the plan, so there is one source."""
     assert main(_plan_argv(tmp_path, "--chunk-size", "2")) == 0
     plan_id = json.loads(capsys.readouterr().out)["plan_id"]
     destination = tmp_path / "out"
@@ -500,11 +468,7 @@ def test_sources_compare_publishes_a_roster_and_the_csv_export(
 def test_a_published_roster_can_be_planned_and_merged(
     session: FakeSession, tmp_path: Path, capsys, monkeypatch
 ) -> None:
-    """The lifecycle closes: compare publishes a roster, and a plan consumes it.
-
-    Without this the refresh and compare commands produce artifacts nothing
-    downstream reads, and the CSV stays the only real carrier.
-    """
+    """Nothing downstream reads the compare artifacts unless a plan consumes them."""
     session.register_bytes(SOURCE_URL, json.dumps(SOURCE_TICKERS).encode("utf-8"))
     metadata = resolve_metadata_paths(tmp_path)
     published = refresh_company_tickers(
@@ -609,12 +573,7 @@ def test_augment_options_record_a_registry_lineage() -> None:
 def test_worker_count_stays_machine_derived_when_unset(
     monkeypatch: pytest.MonkeyPatch,
 ) -> None:
-    """`--workers` unset must keep deriving from cgroups, not degrade to zero.
-
-    `runtime.workers` has a callable default, so an explicit `0` would have meant
-    "zero workers" rather than "derive it". That distinction is why the flag
-    defaults to unset rather than to 0, and the registry must still be honoured.
-    """
+    """A callable default means an explicit 0 would read as zero workers, not derive."""
     monkeypatch.setenv("RUNTIME_WORKERS", "3")
     assert run_options(plan_id="p").workers is None
     assert resolve_workers(run_options(plan_id="p").workers) == 3
@@ -637,15 +596,7 @@ def test_metadata_is_registered_in_the_launcher() -> None:
 
 
 def test_built_client_is_cached_against_the_registered_store() -> None:
-    """Phase 1 must reach the shared response cache, not run without one.
-
-    The cache root comes from the settings registry rather than
-    `resolve_paths()`: the registry's `cache.root` is the directory the store
-    already occupies, and `resolve_paths()` computes a different one from a
-    different environment variable. Reading the wrong authority opens a second,
-    empty store beside the populated one and silently forfeits every cached
-    response.
-    """
+    """`resolve_paths()` names a different directory, so reading it opens an empty store."""
     from edgar_sec.foundation.runtime.settings import resolve_runtime_settings
     from edgar_sec.pipelines.metadata_sync.cli import _build_client
 
@@ -655,6 +606,5 @@ def test_built_client_is_cached_against_the_registered_store() -> None:
     assert client.http.cache_dir == Path(settings.cache_root).resolve()
     assert client.http._cache is not None
     assert client.http._cache.json_ttl_s == settings.json_ttl_s
-    # The store the pipeline opens must be the one the registry names.
     assert settings.cache_root.name == "caches"
     assert client.http._cache.db_path.name == "responses.sqlite"

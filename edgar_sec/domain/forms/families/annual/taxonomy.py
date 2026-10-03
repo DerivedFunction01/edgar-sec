@@ -12,7 +12,6 @@ from edgar_sec.foundation.text.automaton import compile_lexical_matcher
 PARTS: tuple[str, ...] = ("PART I", "PART II", "PART III", "PART IV")
 
 FORM_10K_ITEMS: tuple[ItemDefinition, ...] = (
-    # PART I
     ItemDefinition(
         "ITEM 1",
         1,
@@ -68,7 +67,6 @@ FORM_10K_ITEMS: tuple[ItemDefinition, ...] = (
         optional=True,
         early=True,
     ),
-    # PART II
     ItemDefinition(
         "ITEM 5",
         2,
@@ -142,7 +140,6 @@ FORM_10K_ITEMS: tuple[ItemDefinition, ...] = (
         ),
         optional=True,
     ),
-    # PART III
     ItemDefinition(
         "ITEM 10",
         3,
@@ -183,7 +180,6 @@ FORM_10K_ITEMS: tuple[ItemDefinition, ...] = (
             "principal accountant fees",
         ),
     ),
-    # PART IV
     ItemDefinition(
         "ITEM 15",
         4,
@@ -202,7 +198,6 @@ FORM_10K_ITEMS: tuple[ItemDefinition, ...] = (
 )
 
 FORM_20F_ITEMS: tuple[ItemDefinition, ...] = (
-    # PART I
     ItemDefinition(
         "ITEM 1",
         1,
@@ -312,7 +307,6 @@ FORM_20F_ITEMS: tuple[ItemDefinition, ...] = (
         ),
         optional=True,
     ),
-    # PART II
     ItemDefinition(
         "ITEM 13",
         2,
@@ -412,7 +406,6 @@ FORM_20F_ITEMS: tuple[ItemDefinition, ...] = (
         ),
         optional=True,
     ),
-    # PART III
     ItemDefinition(
         "ITEM 17",
         3,

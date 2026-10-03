@@ -1,8 +1,5 @@
-"""Unit tests for domain.sec_urls.
-
-These builders are the single place an EDGAR URL is assembled. The two shapes
-that previously diverged -- CIK padding and accession hyphens -- are pinned
-here so a future edit cannot reintroduce a caller-dependent difference.
+"""The single place an EDGAR URL is assembled; CIK padding and accession hyphens
+are pinned so a caller-dependent difference cannot return.
 """
 
 from __future__ import annotations

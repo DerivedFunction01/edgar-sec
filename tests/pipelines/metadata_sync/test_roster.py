@@ -1,13 +1,5 @@
-"""Content-addressed CIK cohort dataset tests.
-
-A cohort is the artifact that made a plan document constant in size, so these
-tests pin the two properties the rest of the pipeline relies on: identity is a
-function of the ordered cohort and its names, and the dataset round-trips
-byte-faithfully enough that a re-derived identity still matches.
-
-A roster is a reference to that dataset rather than a pair of tuples, so the
-tests read ordinal ranges instead of attributes, which is also how the pipeline
-reads a cohort now.
+"""The content-addressed cohort dataset: identity over the ordered cohort and its
+names, and a round trip faithful enough that a re-derived identity still matches.
 """
 
 from __future__ import annotations
@@ -61,8 +53,7 @@ def test_identity_is_content_derived_and_not_timestamped() -> None:
     first, second = _mini(), _mini()
     assert first.roster_id == second.roster_id
     assert len(first.roster_id) == 32
-    # Two writes of one cohort are two files holding the same thing, so equality
-    # is identity and size, not the path each happened to land on.
+    # Equality is identity and size, not the path each write happened to land on.
     assert (first.roster_id, first.row_count) == (second.roster_id, second.row_count)
 
 
@@ -199,7 +190,7 @@ def test_csv_export_quotes_separators() -> None:
 
 
 def test_csv_export_round_trips_through_the_compiler(tmp_path: Path) -> None:
-    """The CSV stays importable, so a v1-era script still works."""
+    """The CSV stays importable, so an existing script still works."""
     from edgar_sec.pipelines.metadata_sync.manifest import compile_cik_cohort
     from edgar_sec.pipelines.metadata_sync.paths import resolve_metadata_paths
 
@@ -251,12 +242,7 @@ def test_roster_schema_is_ordinal_keyed_and_name_carrying() -> None:
 
 
 def test_full_corpus_identity_and_io_stay_cheap(tmp_path: Path) -> None:
-    """The identity has to stay derivable at the scale that motivated it.
-
-    Hashing a whole canonical JSON document per roster would materialize a
-    multi-megabyte string; this pins that the row-wise derivation is fast and
-    that a 250,000-CIK cohort still round-trips and verifies.
-    """
+    """Row-wise derivation, not a materialized multi-megabyte canonical document."""
     size = 250_000
     ciks = tuple(f"{value:010d}" for value in range(1, size + 1))
     started = time.perf_counter()

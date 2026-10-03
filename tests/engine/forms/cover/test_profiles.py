@@ -203,7 +203,6 @@ def test_annual_body_anchors_start_earlier_than_quarterly() -> None:
     assert "ITEM 1" in annual.structural_headings
     assert "ITEM 15" in annual.structural_headings
     assert len(annual.structural_headings) > 3
-    # Quarterly retains a narrow window.
     assert quarterly.structural_headings == ("PART I", "ITEM 1")
     assert annual.cover_terms != ()
     assert quarterly.cover_terms != ()
@@ -245,12 +244,8 @@ def test_generic_profile_declares_baseline_body_evidence() -> None:
 
 @pytest.mark.parametrize("family", LEXICAL_FAMILIES)
 def test_family_profiles_attach_an_explicit_lexical_pack(family: str) -> None:
-    """The explicit pack is what `_lexical_for` compiles, not a derived pack.
-
-    `derive_lexical_pack` emits at most three tiers and drops the forward,
-    header, general, and soft tiers the boundary's backward body search scores
-    against, so a profile falling back to it would silently score a real filing
-    against the wrong vocabulary.
+    """`derive_lexical_pack` drops the forward, header, general, and soft tiers the
+    backward body search scores against, so a fallback scores wrongly.
     """
     lexical = get_profile(family).body_evidence.lexical
     assert lexical is not None
@@ -340,13 +335,11 @@ def test_cover_bearing_profiles_enable_every_signal_but_incorporated_reference(
 ) -> None:
     policy = get_profile(family).boundary
     assert policy is not None
-    # Build expected set: start with all signals minus INCORPORATED_REFERENCE,
-    # add it back for annual families, exclude AMENDMENT_TRANSITION for quarterly
-    # (that signal is annual-only; 10-Q covers always resolve via TOC or PART I).
+    # INCORPORATED_REFERENCE is excluded only for quarterly families and
+    # AMENDMENT_TRANSITION only for annual ones.
     expected = set(BoundarySignal) - {BoundarySignal.INCORPORATED_REFERENCE}
     if family in ("10-K", "20-F"):
         expected.add(BoundarySignal.INCORPORATED_REFERENCE)
     else:
-        # Quarterly: no amendment-transition signal
         expected.discard(BoundarySignal.AMENDMENT_TRANSITION)
     assert set(policy.signals) == expected

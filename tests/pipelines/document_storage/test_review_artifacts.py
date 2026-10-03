@@ -134,11 +134,7 @@ def test_selection_filters_by_extension(tmp_path: Path) -> None:
 
 
 def test_form_falls_back_to_the_manifest_when_not_recorded(tmp_path: Path) -> None:
-    """A fixture with no per-document form still reviews, but says so.
-
-    The form selects the processing plugin, so a guessed one is a caveat the
-    reviewer has to see rather than a detail to bury.
-    """
+    """The form selects the processing plugin, so a guess must be visible."""
     paths = _paths(tmp_path)
     _seed(paths, forms={})
     case = select_review_cases(paths, "fix-review", ids=["alpha.txt"]).cases[0]
@@ -172,12 +168,7 @@ def test_selection_refuses_a_fixture_without_document_metadata(tmp_path: Path) -
 def test_corrupt_payload_skips_one_document_instead_of_the_run(
     tmp_path: Path,
 ) -> None:
-    """A payload that disagrees with its recorded hash must not become output.
-
-    It is reported and skipped rather than raised: one corrupt document in a
-    fixture of thousands should not withhold review of the rest, and the
-    failure is named and non-zero rather than hidden.
-    """
+    """One corrupt document must not withhold review of the rest."""
     paths = _paths(tmp_path)
     _seed(paths)
     with sqlite3.connect(paths.fixture_db_path("fix-review")) as connection:
@@ -215,8 +206,7 @@ def test_render_writes_one_case_per_document(tmp_path: Path) -> None:
         case_dir = output / "cases" / entry["document_id"]
         assert (case_dir / f"{entry['document_id']}.txt").is_file()
         assert (case_dir / f"{entry['document_id']}.analysis.json").is_file()
-        # Source is preserved so a reviewer can tell "the normalizer dropped it"
-        # from "it was never there".
+        # Source separates "the normalizer dropped it" from "never there".
         source = case_dir / f"{entry['document_id']}.source.txt"
         assert source.is_file()
         assert entry["fixture_id"] == "fix-review"

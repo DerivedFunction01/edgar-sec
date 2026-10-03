@@ -1,5 +1,3 @@
-"""Unit tests for infra.sec_http.retry."""
-
 from __future__ import annotations
 
 from edgar_sec.infra.sec_http.retry import RetryPolicy

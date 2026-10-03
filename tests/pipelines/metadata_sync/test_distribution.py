@@ -1,9 +1,5 @@
-"""Copy-based distribution across machines: export, worker, import.
-
-The property under test throughout is that a worker is never *told* what it is
-running. It is handed a bundle it can verify, an assignment whose identity is
-re-derived on load, and a chunk list it cannot widen. On the way back, the
-coordinator refuses anything it cannot prove matches the plan it holds.
+"""Copy-based distribution: a worker is handed a verifiable bundle and a chunk
+list it cannot widen, and the coordinator refuses what it cannot prove.
 """
 
 from __future__ import annotations
@@ -452,12 +448,7 @@ def test_import_rejects_a_chunk_the_assignment_never_claimed(
 def test_import_refuses_to_overwrite_a_different_chunk(
     tmp_path: Path, capsys, monkeypatch
 ) -> None:
-    """A conflicting re-run is an error, not a silent winner.
-
-    The local chunk stays valid — same schema, same CIKs, same row count — and
-    differs only in content. That is the only case the coordinator cannot decide
-    on its own, so it refuses instead of picking one.
-    """
+    """Same schema, CIKs, and row count, differing only in content: undecidable."""
     import pyarrow.parquet as pq
 
     from edgar_sec.engine.submissions.builder import build_submission_table

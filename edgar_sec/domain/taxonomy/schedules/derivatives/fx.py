@@ -9,7 +9,6 @@ from edgar_sec.foundation.text.compounds import (
     expand_alternations,
 )
 
-# Strong FX prefixes
 STRONG_FX_PREFIXES: tuple[str, ...] = (
     "foreign exchange",
     "foreign currency",
@@ -38,7 +37,6 @@ FX_STRONG_COMPOUNDS: tuple[str, ...] = build_derivative_grammar(
     bases=FX_BASES,
 )
 
-# Weak FX prefix: "currency" restricted strictly to explicit derivative bases
 FX_WEAK_COMPOUNDS: tuple[str, ...] = build_derivative_grammar(
     underlyings="currency",
     bases=("swap", "option", "forward", "collar", "futures", "derivative"),

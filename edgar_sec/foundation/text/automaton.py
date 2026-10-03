@@ -359,11 +359,8 @@ def _link_failures(
 def compile_family_automaton(specs: Sequence[Any]) -> MultiPatternAutomaton:
     """Compile lexical evidence packs into one token-level automaton.
 
-    Each pack contributes one ``MatchPayload`` family carrying its tier name, so
-    a caller scoring a pack can read per-tier matches off a single scan instead
-    of re-walking the tiers. Tiers carrying no terms fall back to the already
-    compiled unigram and n-gram indexes, and ``exclusion_terms`` become payloads
-    marked ``is_exclusion``.
+    Each pack contributes one ``MatchPayload`` family carrying its tier name, so per-tier
+    matches come off a single scan; ``exclusion_terms`` become ``is_exclusion`` payloads.
     """
     transitions: list[dict[str, int]] = [{}]
     fail: list[int] = [0]
@@ -500,7 +497,6 @@ def compile_lexical_matcher(
                     curr = transitions[curr][tok]
                 outputs[curr].append(payload)
 
-    # Build BFS failure links
     queue: deque[int] = deque()
     for next_state in transitions[0].values():
         fail[next_state] = 0

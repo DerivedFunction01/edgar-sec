@@ -1,23 +1,6 @@
 """Page-marker detection across representations.
-
-The analysis is one pass with three stages, and the order is what makes the
-conservative parts conservative:
-
-1. **Firm markers** are recognized by pattern alone. They are removed without
-   corroboration, because each is a shape that cannot mean anything else.
-2. **Candidates** are scanned twice — anchored to the firm markers' lines, and
-   again anchorless — and admitted only in groups that validate as a page-number
-   run.
-3. **Furniture** is then recovered around whichever anchors survived, because a
-   repeated banner is evidence about page structure only once the structure
-   itself is known.
-
-Every rejection is recorded by name in `rejection_diagnostics`, so a document
-that produced no markers says which of the gates refused it.
-
-An `html` representation has no markers: markup is projected to a text frame
-first (see :mod:`edgar_sec.engine.document.page_markers.policy`), and this
-module is not the place that projection happens.
+This module never sees markup: `representation='html'` raises, because projection belongs to
+`policy`. Every rejection is recorded by name, so a marker-less document names the gate.
 """
 
 from __future__ import annotations
@@ -44,10 +27,7 @@ from .templates import analyze_repeating_headers
 
 def _valid_firm_namespaces(markers: list[PageMarker]) -> set[str]:
     """Return the namespaces in which the firm markers form their own run.
-
-    A namespaced firm label (`F-3`) is only trusted when the same namespace
-    carries a validated sequence. Otherwise an exhibit reference that happens
-    to look like `F-3` would be removed on the strength of its shape alone.
+    A namespaced firm label (``F-3``) is trusted only when that namespace carries a validated run.
     """
     candidates = [
         PageCandidate(
@@ -150,13 +130,7 @@ def analyze_page_markers(
     allow_letter_number: bool = True,
 ) -> PageMarkerAnalysis:
     """Detect firm labels, validated candidates, and presentation evidence.
-
-    ``context`` carries the caller's own evidence, never the caller's own
-    conclusions: ``toc_lines`` names lines already known to be a table of
-    contents, ``allow_table_furniture`` admits rendered table furniture, and
-    ``source_identity`` is recorded on the result and on every emitted artifact.
-    A missing ``toc_lines`` excludes nothing, because this module does not look
-    for a table of contents itself.
+    ``context`` carries caller evidence, not conclusions; a missing ``toc_lines`` excludes nothing.
     """
 
     if not document:
@@ -169,9 +143,8 @@ def analyze_page_markers(
             terminal_state=PageMarkerTerminalState.NO_VISIBLE_LABELS,
         )
 
-    # This module never sees markup: representation dispatch belongs to
-    # policy.py, which renders a text frame before analysis. Fail loudly
-    # rather than scanning raw markup.
+    # Representation dispatch belongs to policy.py, which renders a text frame first. Fail
+    # loudly rather than scanning raw markup.
     if representation.casefold() == "html":
         raise ValueError(
             "analyze_page_markers does not accept representation='html'; "
@@ -230,9 +203,8 @@ def analyze_page_markers(
     ]
 
     runs = (*anchored_runs, *fallback_runs)
-    # Cross-run context for healing: anchored runs rank above anchorless runs,
-    # so anchorless runs never infer values the anchored runs already observed.
-    # Promotion pools span both scans so anchorless discoveries can fill gaps.
+    # Anchored runs rank above anchorless ones, so an anchorless run never infers a value the
+    # anchored runs observed; the promotion pool spans both scans so it can still fill gaps.
     stronger_values: dict[str, set[int]] = {}
     candidate_pool: dict[tuple[str, Any], list[PageCandidate]] = {}
     for candidate in (*anchored_candidates, *fallback_candidates):
@@ -258,9 +230,8 @@ def analyze_page_markers(
         stronger_values.setdefault(run.namespace, set()).update(
             candidate.value for candidate in run.candidates
         )
-    # Prefer structural page breaks when available. Numeric labels can sit
-    # before a firm break, while repeating furniture can sit after it; using
-    # both would inflate the anchor denominator and understate presence.
+    # Prefer structural page breaks: a numeric label can sit before a firm break and repeating
+    # furniture after it, and using both would inflate the anchor denominator and understate presence.
     label_anchors = [marker for marker in markers if marker.page_number is not None]
     break_anchors = [
         marker
@@ -343,12 +314,7 @@ def find_page_markers(
     text: str, *, allow_letter_number: bool = True
 ) -> tuple[PageMarkerSpan, ...]:
     """Return accepted observed page-marker spans in source order.
-
-    Recovering furniture is a separate concern with a separate pass, so the
-    repeating header/footer spans are excluded here; a caller asking what page
-    markers the document *states* does not get a block of body text back. The
-    `page N of M` shape is reported as `number_of_total`, because that is what
-    the shape is, and callers that care about the word `page` read the text.
+    Furniture is recovered in a separate pass and excluded here, so a caller asking what the document states does not get body text back.
     """
 
     analysis = analyze_page_markers(
@@ -378,9 +344,7 @@ def find_page_markers(
 
 def is_page_marker_line(line: str) -> bool:
     """Return whether a line is a standalone firm marker or boundary token.
-
-    The namespaced `F-3` form is excluded: it shares its shape with an exhibit
-    reference, so it is not a marker line on the strength of the shape alone.
+    The namespaced ``F-3`` form is excluded: it shares its shape with an exhibit reference.
     """
 
     stripped = line.strip()

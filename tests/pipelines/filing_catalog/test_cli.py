@@ -53,12 +53,7 @@ def test_plan_requires_a_catalog() -> None:
 
 
 def test_no_per_keyword_date_flag_exists_on_plan() -> None:
-    """``--dates`` is one selection; per-field date flags are not a vocabulary.
-
-    A caller reaching for ``--start-date`` expects a half-specified interval, and
-    no grammar in this repository accepts one. Silently ignoring the flag would
-    publish a plan over every date instead.
-    """
+    """Silently ignoring `--start-date` would publish a plan over every date."""
     for flag in ("--start-date", "--end-date", "--filing-date", "--era", "--years"):
         with pytest.raises(SystemExit):
             build_parser().parse_args(["plan", "--catalog", "abc", flag, "2020-01-01"])

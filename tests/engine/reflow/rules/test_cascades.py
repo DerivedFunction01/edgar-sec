@@ -1,9 +1,6 @@
 """The ordered decision cascade and the block-to-decision mapping.
-
-Rule order is the contract this module pins. The first rule whose conditions
-hold decides the block and nothing after it is consulted, which is why every
-hard protection has to precede every permissive fallback; a cascade that put the
-general prose rules first would let an ambiguous block through as unwrap.
+The first rule whose conditions hold decides the block, so every hard protection
+must precede every permissive fallback.
 """
 
 from __future__ import annotations
@@ -48,8 +45,7 @@ PRODUCTION_POLICY = ReflowPolicy(
     is_table_bridge_line=lambda line: line.isupper(),
 )
 
-# Every group name is a declared set of registered features, so a group cannot
-# name a measurement the cascade has no predicate for.
+# Every group name is a declared set of registered features.
 EXPECTED_GROUPS = {
     "linguistic_flow",
     "interline_wrapping",
@@ -82,9 +78,8 @@ def test_no_feature_is_claimed_by_two_groups() -> None:
 def test_six_features_are_read_directly_rather_than_through_a_group() -> None:
     members = {name for group in FEATURE_GROUPS.values() for name in group}
     ungrouped = set(FEATURE_REGISTRY) - members
-    # These are read by a rule's direct condition, not by a quota, so no group
-    # claims them. The set is pinned: a feature quietly added to a group stops
-    # being read where the calibration put it.
+    # Read by a direct condition, not a quota; the set is pinned so a feature cannot be
+    # added to a group and stop being read where the calibration put it.
     assert ungrouped == {
         "continuation_col0_ratio",
         "ends_terminal_punct",

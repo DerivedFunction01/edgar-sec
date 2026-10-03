@@ -1,19 +1,7 @@
 """Content-addressed CIK roster datasets.
-
-A roster is the single canonical statement of *which* CIKs a unit of work covers.
-The list lives once, in an immutable Parquet dataset with a stable ordinal, and
-everything else references it by identity.
-
-Identity is content-derived from the ordered normalized CIK list together with
-its display names and the roster schema version, so reformatting an input file
-produces the same roster while reordering its rows does not. That is the point:
-a roster says what the cohort *is*, not which bytes a curator happened to type.
-
-A roster is a *handle* over that dataset rather than a pair of tuples. The CIK
-cohort is the largest thing this pipeline carries, and holding it as Python
-strings cost roughly six times what the file it came from costs to read. Callers
-ask for the slice they need -- one chunk's ordinal range, the whole file rendered
-as CSV -- and the handle reads exactly that from the dataset.
+Identity derives from the ordered normalized CIK list, its display names, and the
+schema version: reformatting leaves the roster unchanged, reordering does not. A
+roster is a handle over that dataset, never the cohort itself.
 """
 
 from __future__ import annotations
@@ -80,17 +68,13 @@ class RosterError(ValueError):
 @dataclass(frozen=True, slots=True)
 class Roster:
     """A reference to one cohort's dataset, with the identity it resolves to.
-
-    ``row_count`` is carried rather than measured so a caller can size a plan
-    without opening the file. ``dataset`` is ``None`` only for the empty cohort,
-    which has an identity of its own and no rows to read.
+    ``row_count`` is carried, not measured; ``dataset`` is ``None`` only when empty.
     """
 
     roster_id: str
     row_count: int
-    #: Where the rows live. Excluded from equality: a roster is named by what it
-    #: contains, so the same cohort copied to another directory is the same roster,
-    #: not a different one.
+    #: Excluded from equality: a roster is named by what it contains, so the
+    #: same cohort copied to another directory is the same roster.
     dataset: Path | None = field(default=None, compare=False)
 
     @property
@@ -100,9 +84,7 @@ class Roster:
 
     def range_rows(self, start: int, length: int) -> tuple[tuple[str, str], ...]:
         """``(cik, name)`` pairs for one ordinal range, in cohort order.
-
-        Only the row groups that can contain the range are read, so the cost is
-        proportional to the slice rather than to the cohort.
+        Only row groups that can contain the range are read.
         """
         if start < 0 or length < 0:
             raise RosterError(f"invalid roster range start={start} length={length}")
@@ -151,21 +133,14 @@ class Roster:
 
     def name_map(self) -> dict[str, str]:
         """Every curated display name keyed by CIK, built once for bulk lookup.
-
-        This materializes the cohort, so it is for the one caller that folds a
-        whole curated file against another dataset to build a published
-        projection, not for per-CIK lookup. Callers needing a handful of names
-        should read an ordinal range instead.
+        Materializes the cohort; read an ordinal range instead for a few names.
         """
         return dict(self.iter_rows())
 
 
 def _row_group_span(handle: pq.ParquetFile, index: int) -> tuple[int, int] | None:
     """The ordinal range one row group covers, or ``None`` when unknowable.
-
-    The cohort is written in ordinal order, so a row group's statistics bound
-    which rows it holds. A writer that omits them yields ``None`` and the caller
-    falls back to reading the file, which is slower but still correct.
+    A writer omitting the statistics yields ``None``; slower, still correct.
     """
     statistics = handle.metadata.row_group(index).column(0).statistics
     if statistics is None or not statistics.has_min_max:
@@ -175,11 +150,7 @@ def _row_group_span(handle: pq.ParquetFile, index: int) -> tuple[int, int] | Non
 
 def derive_roster_id(dataset: str | os.PathLike[str]) -> str:
     """Derive a roster's identity from its ordered dataset.
-
-    Hashed row by row rather than through one canonical JSON document: a
-    250,000-CIK roster would otherwise materialize a multi-megabyte string, and
-    identity has to stay derivable at full-corpus scale. The rows are streamed
-    from the dataset in batches, so the caller never holds the cohort either.
+    Hashed row by row, so it stays derivable at full-corpus scale.
     """
     target = Path(dataset)
     if not target.is_file():
@@ -187,7 +158,7 @@ def derive_roster_id(dataset: str | os.PathLike[str]) -> str:
 
     handle = pq.ParquetFile(target)
     # The prefix carries the row count, so it must be hashed before the rows it
-    # counts. Parquet metadata supplies the count without reading any row.
+    # counts; Parquet metadata supplies the count without reading any row.
     digest = hashlib.sha256()
     digest.update(
         canonical_json(
@@ -215,18 +186,14 @@ def derive_roster_id(dataset: str | os.PathLike[str]) -> str:
 def empty_roster() -> Roster:
     """The empty cohort, with a stable identity of its own.
 
-    Augmentation has to be able to say "nothing new" without inventing an
-    identity for it, and that statement must not collide with any real roster.
+    Must not collide with any real roster, so "nothing new" needs no invented id.
     """
     return Roster(roster_id=derive_empty_roster_id(), row_count=0)
 
 
 def derive_empty_roster_id() -> str:
     """Identity of the cohort that holds no CIKs.
-
-    Derived directly from the same prefix and length the streaming hash uses, so
-    the empty roster is a value of the same function rather than a special case
-    that could drift from it.
+    A value of that same function, not a special case that could drift.
     """
     return hashlib.sha256(
         canonical_json([_ID_PREFIX, ROSTER_SCHEMA_VERSION, 0]).encode("utf-8")
@@ -246,11 +213,8 @@ def write_roster_rows(
     rows: Sequence[tuple[str, str]], path: str | os.PathLike[str]
 ) -> tuple[Roster, str]:
     """Write a cohort dataset from ordered pairs; return its roster and digest.
-
-    This is the seam a producer compiles into: the cohort is written once, and
-    everything downstream reads the dataset rather than the caller's rows. A CIK
-    appearing twice would make the ordinal ambiguous and break both chunk
-    membership and the identity, so it is refused here rather than published.
+    A duplicate CIK is refused: it makes the ordinal ambiguous, breaking membership
+    and identity.
     """
     target = Path(path)
     seen: set[str] = set()
@@ -268,16 +232,7 @@ def write_roster_rows(
 
 def write_roster(roster: Roster, path: str | os.PathLike[str]) -> str:
     """Publish one cohort's dataset to ``path``; return the artifact digest.
-
-    The bytes are copied rather than re-encoded. A cohort compiled by DuckDB and the
-    same cohort re-serialized by pyarrow hold identical rows and therefore the same
-    identity, but they are different files. Rewriting would make the digest recorded
-    beside the plan a function of which writer ran, and would spend a decode and
-    encode of the largest object in the pipeline to learn nothing.
-
-    A plan bundle carries its own copy so it can be copied to a worker machine on its
-    own; this is that copy, staged and renamed so a failed publish leaves nothing
-    half-written beside the manifest that names it.
+    Bytes are copied, not re-encoded, so the digest is not a function of the writer.
     """
     target = Path(path)
     if roster.dataset is None:
@@ -306,9 +261,7 @@ def read_roster(
     path: str | os.PathLike[str], *, expected_roster_id: str | None = None
 ) -> Roster:
     """Open a roster dataset and verify its schema and, when given, its identity.
-
-    The identity is recomputed by streaming the file, so a cohort is proven
-    without ever holding it.
+    The identity is recomputed by streaming, so the cohort is never held.
     """
     target = Path(path)
     if not target.is_file():
@@ -365,9 +318,7 @@ def read_cik_index(path: str | os.PathLike[str]) -> tuple[str, ...]:
 def roster_to_csv_text(roster: Roster) -> str:
     """Render a roster as the ``cik,name`` CSV that people and scripts import.
 
-    The CSV is an export format, not the internal carrier. It exists so the
-    ``cik,name`` input contract keeps working while the roster dataset is what the
-    planner actually reads. Rows are streamed from the dataset.
+    An export format, not the internal carrier; rows stream from the dataset.
     """
     lines = ["cik,name"]
     for cik, name in roster.iter_rows():

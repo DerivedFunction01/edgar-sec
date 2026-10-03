@@ -1,10 +1,6 @@
 """Canonical HTML tag classifications for parsing, traversal, and decomposition.
-
-These sets are the single definition of what a "block" is. `tree.py` consults
-`BLOCK_TAGS` when extracting text and `normalizer.py` consults the three
-narrower sets when choosing a vertical gap. Changing a tag's classification
-changes both text extraction and whitespace output, so it is defined once here
-rather than duplicated at each use site.
+These sets are the single definition of what a "block" is; changing one changes both text
+extraction and whitespace output, so every use site imports rather than duplicates it.
 """
 
 from __future__ import annotations

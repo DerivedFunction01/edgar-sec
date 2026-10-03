@@ -1,13 +1,5 @@
-"""Rendering the distributed lifecycle as copy-pasteable shell commands.
-
-The important case is parser round-tripping. Two flag mistakes in this renderer
-were invisible to substring assertions -- a ``--workers`` the parser read as a
-different argument, and a ``--worker-id`` that does not exist at all -- so every
-emitted line is parsed by the real parser here rather than checked for expected
-text.
-
-``worker_commands`` takes a plan resolver rather than the wizard's session, so
-these drive it directly instead of reaching through the menu.
+"""The distributed lifecycle as copy-pasteable shell commands; every emitted line
+is parsed by the real parser rather than checked for expected text.
 """
 
 from __future__ import annotations
@@ -82,13 +74,7 @@ def _options_of(body: list[str]) -> dict[str, str]:
 def test_every_emitted_command_is_accepted_by_the_parser(
     metadata, tmp_path: Path, monkeypatch: pytest.MonkeyPatch, capsys
 ) -> None:
-    """The emitted text must parse, not merely contain the right substrings.
-
-    Both flag mistakes in this renderer were invisible to substring assertions: a
-    ``--workers`` that the parser read as a different argument, and a ``--worker-id``
-    that does not exist at all. Round-tripping each line through the real parser is
-    what makes that class of defect fail here instead of on a remote machine.
-    """
+    """A misread flag is invisible to substring assertions."""
     _render(metadata, _write_plan(tmp_path, chunk_size=1), monkeypatch)
     out = capsys.readouterr().out
 
@@ -132,8 +118,7 @@ def test_emitted_worker_commands_name_the_real_bundles(
 def test_emitted_commands_omit_workers_with_no_chunk(
     metadata, tmp_path: Path, monkeypatch: pytest.MonkeyPatch, capsys
 ) -> None:
-    """More workers than chunks would otherwise print a command for a bundle
-    ``export`` never creates, because empty assignments are skipped."""
+    """Empty assignments are skipped, so no command names a bundle export never makes."""
     _render(
         metadata, _write_plan(tmp_path, chunk_size=4), monkeypatch, "8", "distrib/s"
     )
@@ -165,8 +150,7 @@ def test_emitted_commands_survive_a_destination_with_spaces(
 def test_commands_refuse_to_render_for_an_unreadable_plan(
     metadata, monkeypatch: pytest.MonkeyPatch, capsys
 ) -> None:
-    """Emitting commands for a plan this build cannot load would point workers at
-    a bundle that does not exist."""
+    """Commands for an unloadable plan would point workers at no bundle."""
     _render(metadata, "does-not-exist", monkeypatch)
     out = capsys.readouterr().out
     assert "unreadable" in out

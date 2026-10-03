@@ -1,18 +1,8 @@
 """Canonical SEC endpoint construction.
 
-EDGAR URL shapes are protocol facts, not transport policy: the same three
-prefixes are needed by the submissions engine, the HTTP client, the metadata
-pipeline, and the filing catalog. They are declared here in Layer 1 because
-every other layer may import downward from ``domain`` -- whereas declaring them
-in ``infra`` would make them unreachable to the catalog schemas, which sit
-below it.
-
-This module is the only place an EDGAR URL is assembled. The shapes differ in
-two ways that are easy to get wrong, so both are normalized here:
-
-* the CIK is zero-padded to ten digits in the submissions URL but rendered as a
-  bare integer in archive URLs, matching what EDGAR actually serves;
-* the accession is unhyphenated in archive URLs.
+Two shapes are easy to get wrong and are normalized here: the CIK is zero-padded to
+ten digits in a submissions URL but bare in an archive URL, and the archive URL's
+accession is unhyphenated.
 """
 
 from __future__ import annotations
@@ -34,8 +24,7 @@ def normalize_cik(cik: str | int) -> str:
 def submissions_url(cik: str | int) -> str:
     """Return the canonical submissions metadata document URL for a CIK.
 
-    Accepts a padded or unpadded CIK; both spellings resolve to the same URL,
-    so a caller need not normalize first.
+    Accepts a padded or unpadded CIK; both resolve to the same URL.
     """
     return f"{SEC_SUBMISSIONS_BASE}/CIK{normalize_cik(cik)}.json"
 
@@ -48,18 +37,15 @@ def historical_submissions_url(source_file: str) -> str:
 def archives_url(cik: str | int, accession_number: str, document_name: str) -> str:
     """Return the canonical EDGAR archive document URL.
 
-    The CIK is unpadded and the accession is unhyphenated, which is how the
-    archive is addressed. Callers that must tolerate a missing or malformed
-    document belong in the engine, not here: this function assumes its inputs
-    are already usable and will happily build a nonsense URL otherwise.
+    Inputs are assumed usable and a nonsense URL is built rather than refused;
+    tolerating a missing or malformed document belongs in the engine.
     """
     accession_clean = str(accession_number).replace("-", "")
     return f"{SEC_ARCHIVE_BASE}/{int(cik)}/{accession_clean}/{document_name}"
 
 
-#: ``.../Archives/edgar/data/<cik>/<accession>/<document path>``. The document
-#: path keeps embedded slashes and case, so no percent-decoding is applied: the
-#: value stays byte-faithful to the observed URL.
+#: The document path keeps embedded slashes and case, so no percent-decoding is
+#: applied and the value stays byte-faithful to the observed URL.
 _ARCHIVE_URL_RE = re.compile(
     rf"^{re.escape(SEC_ARCHIVE_BASE)}/(?P<archive_cik>\d+)/"
     r"(?P<accession>\d{10,18}?)/(?P<document_path>.+)$"
@@ -69,9 +55,7 @@ _ARCHIVE_URL_RE = re.compile(
 def normalize_accession(accession: str) -> str | None:
     """Return the unhyphenated accession, or None when it is not well formed.
 
-    EDGAR serves both ``0000320193-20-000096`` and ``000032019320000096``; the
-    archive path uses the unhyphenated form. Anything that is not 10-18 digits
-    once hyphens are removed is not an accession.
+    Anything that is not 10-18 digits once hyphens are removed is not an accession.
     """
     if not accession:
         return None
@@ -88,8 +72,7 @@ def accession_hyphenated(accession: str) -> str:
         raise ValueError(f"accession must be canonicalizable: {accession!r}")
     if len(canonical) == 18:
         return f"{canonical[:10]}-{canonical[10:12]}-{canonical[12:]}"
-    # Non-standard length: fall back to a single split after the filer segment
-    # rather than guessing at a shape EDGAR does not use.
+    # Non-standard length: split once after the filer segment rather than guessing.
     return f"{canonical[:10]}-{canonical[10:]}"
 
 

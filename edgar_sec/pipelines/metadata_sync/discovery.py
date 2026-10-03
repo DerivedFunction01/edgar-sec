@@ -1,14 +1,7 @@
 """What is already on disk, for the interactive operator to choose from.
 
-Discovers in-progress runs, published snapshots, and available plan cohorts
-to support interactive menu rendering.
-
-The discovery logic is phase-local to keep pipeline models cleanly decoupled.
-Shared primitives (directory scanning and manifest reading) are reused from
-``infra.storage.manifests`` with this pipeline's manifest filename.
-
-Every function here reads manifests only. None opens a Parquet payload, so
-listing stays cheap enough to run on every menu render.
+Only manifests are read, never a Parquet payload, so a listing stays cheap
+enough to run on every menu render.
 """
 
 from __future__ import annotations
@@ -69,10 +62,7 @@ class InputSummary(dict[str, Any]):
 
 def _read_plan_manifest(metadata: MetadataPaths, plan_id: str) -> dict[str, Any]:
     """Read one plan's manifest without validating or loading its cohort.
-
-    Validation is deliberately skipped: discovery must be able to *list* a plan
-    this build cannot use, so the operator can be told why, rather than failing
-    on a directory it is trying to report.
+    Validation is skipped so a plan this build cannot use can still be listed.
     """
     path = metadata.plan_dir(plan_id) / "plan.json"
     try:
@@ -115,16 +105,8 @@ def plan_summary(metadata: MetadataPaths, plan_id: str) -> PlanSummary:
 
 def list_plans(metadata: MetadataPaths) -> list[PlanSummary]:
     """Every plan on disk, most recently touched first.
-
-    Newest first because the plan an operator most likely wants is the one they
-    just made.
-
-    The key is the plan directory's modification time, not ``created_at``:
-    ``created_at`` is recorded to the second, so several plans made in one
-    session tie and "newest" would degrade to an arbitrary directory order.
-    Modification time also tracks a plan that has been added to since, which is
-    the more useful reading. ``plan_id`` breaks remaining ties so the listing is
-    deterministic rather than filesystem-order dependent.
+    ``created_at`` is second-resolution and ties; directory mtime does not, and
+    ``plan_id`` breaks what remains.
     """
     root = metadata.metadata_root / "plans"
     if not root.is_dir():
@@ -149,16 +131,7 @@ def list_snapshots(metadata: MetadataPaths) -> list[dict[str, Any]]:
 
 def list_rosters(metadata: MetadataPaths) -> list[RosterSummary]:
     """Every published effective-CIK roster a plan can be built from.
-
-    A roster is what ``sources compare`` publishes, and it is a content address
-    over one source snapshot plus one curated input. Listing them is what lets a
-    plan be created from a discovered cohort instead of a hand-typed roster id the
-    operator was never shown.
-
-    A registry whose roster dataset or its manifest is missing, or whose digest no
-    longer matches what was published, is reported as unreadable rather than
-    dropped: the operator is told a registry exists and that it cannot currently
-    be planned from, which is different from never having run ``compare``.
+    An unreadable registry is reported, not dropped.
     """
     root = metadata.metadata_root / REGISTRIES_DIR_NAME
     if not root.is_dir():
@@ -192,10 +165,8 @@ def list_rosters(metadata: MetadataPaths) -> list[RosterSummary]:
         try:
             manifest = load_registry_manifest(entry.name, metadata)
         except (OSError, ValueError, KeyError, RegistryError):
-            # The manifest is provenance, not the plan's input: the roster digest
-            # above already decided whether this registry is usable. A missing or
-            # foreign manifest leaves the counts unknown, which is reported as
-            # such rather than as a registry that cannot be planned from.
+            # The manifest is provenance, not the plan's input; the roster
+            # digest already decided usability, so missing counts stay unknown.
             manifest = {}
         summary["source_snapshot_id"] = str(manifest.get("source_snapshot_id", ""))
         summary["curated_cik_count"] = int(manifest.get("curated_cik_count", 0) or 0)
@@ -220,12 +191,7 @@ def resolve_plan_choice(
     plans: list[PlanSummary], *, select: Callable[[list[str]], str]
 ) -> PlanSummary | None:
     """Choose one plan from a discovered list using a supplied picker.
-
-    ``select`` receives the rendered choices and returns a plan id, or an empty
-    string to cancel. Taking the picker as an argument is what keeps this module
-    free of terminal I/O: it decides *what* can be chosen, and the operator
-    decides how to ask. The tests supply a scripted picker, and a future
-    non-interactive caller can supply its own.
+    Injected rather than called, so this module stays free of terminal I/O.
     """
     if not plans:
         return None
@@ -261,17 +227,7 @@ def describe_roster(roster: RosterSummary) -> str:
 
 def list_source_snapshots(metadata: MetadataPaths) -> list[SourceSummary]:
     """Every published external source snapshot, newest retrieval first.
-
-    The curated CSV this pipeline plans over is a *seed*: it is a file someone
-    curated at a point in time, and it goes stale as registrants are added.
-    Augmentation exists to close that gap, which means the operator has to be
-    able to see which SEC listing observations are already on disk and how old
-    they are before choosing a cohort. Ordering by ``retrieved_at`` is what makes
-    "the latest" mean something.
-
-    Only manifests are read, matching every other listing here. A snapshot whose
-    manifest is unreadable is reported as such rather than dropped, so an
-    operator is told a source exists and that it cannot currently be read.
+    Ordering by ``retrieved_at`` is what makes "the latest" mean something.
     """
     root = metadata.sources_root / SOURCE_NAME
     if not root.is_dir():
@@ -332,11 +288,7 @@ def resolve_source_choice(
     sources: list[SourceSummary], *, select: Callable[[list[str]], str]
 ) -> str:
     """Choose one source snapshot id from discovered snapshots.
-
-    Returns the empty string when the operator cancels, which the caller reads
-    as "do not proceed". A lone snapshot is still offered rather than adopted:
-    which observations a cohort is built from is a decision, and the whole point
-    of restoring this listing is that the answer is visible before it is made.
+    A lone snapshot is still offered: which observations a cohort uses is a decision.
     """
     if not sources:
         return ""
@@ -358,19 +310,8 @@ def resolve_source_choice(
 
 def list_input_manifests(directory: str | Path | None = None) -> list[InputSummary]:
     """Candidate CIK manifest CSVs, by path.
-
-    The curated seed and any hand-supplied delta list both live here, and neither
-    is distinguishable by name: a file called ``cik-sec.csv`` may be the original
-    universe or an increment over it. Guessing from the filename is how an
-    operator ends up silently augmenting against the wrong idea of what they
-    asked for, so a candidate is reported as a CIK manifest and nothing more. The
-    authoritative question -- which of its CIKs the base snapshot is missing -- is
-    answered by subtraction against the chosen base, not here.
-
-    Each candidate is parsed once so an unreadable or empty file is reported as
-    unusable rather than offered and then failing mid-run. The row count is shown
-    because it is the only thing that distinguishes a two-year-old seed from a
-    hand-built increment.
+    The seed and a hand-supplied delta are indistinguishable by name, so a
+    candidate is reported as a CIK manifest and nothing more.
     """
     from edgar_sec.foundation.runtime.paths import resolve_paths
 
@@ -389,9 +330,8 @@ def list_input_manifests(directory: str | Path | None = None) -> list[InputSumma
             readable_reason="",
         )
         try:
-            # Counted, not compiled: listing candidates must stay cheap and must
-            # not write an artifact, so a menu render costs one pass per file
-            # rather than a cohort build nobody asked for.
+            # Counted, not compiled: a menu render must not write an
+            # artifact nobody asked for.
             rows = count_cohort_rows(path)
         except (OSError, ValueError) as exc:
             summary["readable_reason"] = str(exc)
@@ -412,10 +352,7 @@ def resolve_input_choice(
     inputs: list[InputSummary], *, select: Callable[[list[str]], str]
 ) -> str:
     """Choose one CIK manifest path from discovered candidates.
-
-    Returns the empty string when the operator cancels or types an answer that
-    names no candidate, which leaves a hand-typed path available: the listing
-    exists to save remembering, not to forbid typing.
+    Empty on cancel, which leaves a hand-typed path available.
     """
     if not inputs:
         return ""
@@ -445,12 +382,7 @@ def resolve_snapshot_choice(
     select: Callable[[list[str]], str],
 ) -> str:
     """Choose one published snapshot id from discovered manifests.
-
-    Returns the empty string when the operator keeps the current pointer or
-    cancels, which the caller reads as "leave the pointer alone". A lone snapshot
-    is still offered rather than adopted: switching which dataset a reader
-    resolves to is a decision, not an inference, even when there is only one
-    candidate to decide about.
+    Empty leaves the ``current`` pointer alone.
     """
     if not manifests:
         return ""
@@ -486,11 +418,7 @@ def _describe_snapshot(manifest: dict[str, Any], current_id: str) -> str:
 
 def _describe(plan: PlanSummary) -> str:
     """One-line human summary of a plan's size, progress, and kind.
-
-    The kind and parent are shown because a delta plan is a plan the ordinary
-    run/merge path cannot publish on its own: merging one would publish the delta
-    alone and drop the base rows it names as its parent. Rendering both kinds
-    identically gave an operator no way to tell which one they were looking at.
+    Kind and parent are shown because the ordinary merge path cannot publish a delta.
     """
     parts = [f"{plan['row_count']:,} CIKs", f"{plan['chunk_count']} chunks"]
     completed = plan["completed_chunks"]

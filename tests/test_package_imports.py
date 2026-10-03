@@ -1,11 +1,5 @@
-"""Package import smoke test.
-
-`engine.tables.ascii_html` was dead for its entire lifetime while the suite
-passed: no test imported it, so its five unresolvable imports were invisible to
-1,248 green tests. A package that cannot be imported is not "untested", it is
-*unusable*, and nothing else in the gate could see the difference. This test is
-that detector: importing every package is the cheapest possible proof that the
-tree is important.
+"""Import every package: a package that cannot be imported is unusable, and nothing
+else in the gate can tell that apart from untested.
 """
 
 from __future__ import annotations
@@ -19,12 +13,7 @@ _ROOT = Path("edgar_sec")
 
 
 def _packages() -> list[str]:
-    """Every directory under ``edgar_sec`` that owns python modules.
-
-    A directory counts when it holds at least one non-``__init__`` module, which
-    excludes the bare layer markers that exist only to make a directory a
-    package.
-    """
+    """A directory counts when it holds a non-``__init__`` module, excluding layer markers."""
     found: set[str] = set()
     for path in _ROOT.rglob("*.py"):
         if "__pycache__" in path.parts:

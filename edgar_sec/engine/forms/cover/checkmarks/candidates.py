@@ -504,10 +504,8 @@ def extract_cover_candidates(
         return ()
     candidates: list[CheckboxCandidate] = []
     masked, table_spans = mask_tagged_tables(text)
-    # ASCII cover boundaries can have an approximate late start line when the
-    # detector identifies a continued-cover region.  The end line is the
-    # reliable cover/body fence; scanning from the document start prevents
-    # valid report-period checkboxes near the cover header from being skipped.
+    # A continued-cover region can give an approximate late start; the end line is
+    # the reliable fence, so scan from the document start rather than skip headers.
     start_line = 0
     # One indexed scan replaces repeated prefix counts for table placement.
     text_line_starts = [0]
@@ -526,11 +524,9 @@ def extract_cover_candidates(
             continue
         candidates.extend(extract_table_candidates(geometry, table_index=table_index))
 
-    # Candidate marks and spans must be reported in the unmasked document
-    # frame: apply_cover_checkmark_decisions slices the original text with
-    # them. Masked-table sentinels would shift every offset after a table.
-    # Line extraction still skips table interiors via the sentinel text, then
-    # each masked offset is translated back through the table spans.
+    # Spans are reported in the unmasked frame, because the rewrite slices the
+    # original text with them; masked sentinels would shift every offset after a
+    # table. Line extraction skips table interiors, then translates back.
     lines = masked.splitlines(keepends=True)
     masked_line_offsets: list[int] = []
     offset = 0
@@ -539,17 +535,14 @@ def extract_cover_candidates(
         offset += len(raw_line)
 
     masked_to_original = build_masked_offset_translator(masked, table_spans)
-    # Offset-to-line mapping via a single indexed scan: repeated
-    # text.count("\n", 0, offset) calls rescan the document prefix per line.
+    # One indexed scan replaces per-line prefix counts.
     masked_line_starts = [0]
     masked_line_starts.extend(
         offset + len(raw_line) for offset, raw_line in zip(masked_line_offsets, lines)
     )
 
-    # Candidate extraction stops at the cover boundary, but the nearby-line
-    # fallback (±2 rows) can still consult signals for lines past it. Signals
-    # are therefore computed lazily and memoized instead of eagerly for the
-    # whole document.
+    # Extraction stops at the boundary but the nearby-line fallback reads past it,
+    # so signals are computed lazily and memoized.
     line_signals: dict[int, CoverLineSignals] = {}
 
     def _signals_for(index: int) -> CoverLineSignals:

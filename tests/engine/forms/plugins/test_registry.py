@@ -42,12 +42,8 @@ def test_annual_family_enables_both_gated_stages() -> None:
 
 
 def test_twenty_f_is_annual_for_normalization_and_generic_for_triage() -> None:
-    """20-F carries the annual stage gates but not the annual evaluator.
-
-    The registry resolves families against `10-K`, `10-Q`, and `8-K` only, so a
-    20-F filing is normalized as annual and triaged as generic: an Exhibit 13
-    delegation in a foreign annual report is not detected as a stub. Preserved
-    here so stored behaviour does not change silently.
+    """The registry resolves families against ``10-K``/``10-Q``/``8-K`` only, so a
+    20-F is normalized as annual but triaged as generic.
     """
     plugin = get_plugin("20-F")
     assert plugin.family == "20-F"
@@ -143,11 +139,8 @@ def test_register_plugin_keys_are_stripped_and_upper_cased(
 def test_register_plugin_cannot_override_a_shadowed_alias_key(
     restored_registry: None,
 ) -> None:
-    """The second lookup is unreachable for any form that resolves to a family.
-
-    ``10-K405`` resolves to ``10-K``, so the seeded entry answers before the
-    raw-string table is consulted and an override registered under the alias is
-    dead. Pinned here so a caller does not adopt it.
+    """``10-K405`` resolves to ``10-K``, so an override registered under the alias
+    is dead. Pinned here so a caller does not adopt it.
     """
     replacement = FormPlugin(family="10-K", enable_toc=False)
     register_plugin("10-K405", replacement)
@@ -158,11 +151,8 @@ def test_register_plugin_cannot_override_a_shadowed_alias_key(
 def test_register_plugin_registers_a_form_the_alias_table_does_not_know(
     restored_registry: None,
 ) -> None:
-    """The raw-string lookup matches the whole input, not a collapsed form.
-
-    ``s-1/A`` collapses to ``S-1`` under the alias table but is not itself a
-    registry key, so a plugin registered for a form the alias table does not
-    know answers only that literal spelling.
+    """``s-1/A`` collapses to ``S-1`` under the alias table but is not itself a
+    registry key, so the override answers only that literal spelling.
     """
     replacement = FormPlugin(family="S-1")
     register_plugin("S-1", replacement)

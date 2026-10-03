@@ -180,12 +180,7 @@ def test_non_empty_output_is_refused(tmp_path: Path) -> None:
 def test_manifest_schema_differences_are_not_reported_as_changes(
     tmp_path: Path,
 ) -> None:
-    """A field present in one manifest and absent in the other is not a change.
-
-    Marker and table counts are no longer computed, so comparing against a run
-    that carried them would otherwise report every document as metadata-only
-    changed and bury the real signal.
-    """
+    """Comparing against an older run would report every document as changed."""
     base = _run(
         tmp_path, "run-a", {"doc-a": "same\n"}, extra={"doc-a": {"marker_count": 4}}
     )

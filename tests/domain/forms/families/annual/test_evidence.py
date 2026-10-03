@@ -1,5 +1,3 @@
-"""Tests for annual report evidence definitions and regex patterns."""
-
 from __future__ import annotations
 
 from edgar_sec.domain.forms.families.annual.evidence import (

@@ -72,6 +72,16 @@ class GitStatusSnapshot:
         """Changed conftest.py files."""
         return tuple(f for f in self.all_active_files if f.endswith("conftest.py"))
 
+    def excluding(self, paths: frozenset[str]) -> GitStatusSnapshot:
+        """Drop the given paths, so they no longer satisfy any classifier below."""
+        if not paths:
+            return self
+        return GitStatusSnapshot(
+            modified_files=tuple(f for f in self.modified_files if f not in paths),
+            deleted_files=self.deleted_files,
+            untracked_files=tuple(f for f in self.untracked_files if f not in paths),
+        )
+
     @property
     def touches_root_config(self) -> bool:
         """True if root configs or test fixtures root changed."""

@@ -65,10 +65,8 @@ def address_field(raw_key: str) -> str:
 
 
 def zip_listings(tickers: Any, exchanges: Any, anomalies: list[dict]) -> list[dict]:
-    """Zip tickers and exchanges by index, preserving order and duplicate exchanges.
-
-    A length mismatch keeps the longer side with nulls for the missing entries
-    and records ``listings_length_mismatch``.
+    """Zip tickers and exchanges by index; a length mismatch keeps the longer side with
+    nulls and records `listings_length_mismatch`.
     """
     ticker_list = tickers if isinstance(tickers, list) else []
     exchange_list = exchanges if isinstance(exchanges, list) else []
@@ -94,10 +92,8 @@ def zip_listings(tickers: Any, exchanges: Any, anomalies: list[dict]) -> list[di
 
 
 def normalize_address(value: Any, anomalies: list[dict], source: str) -> dict | None:
-    """Normalize one address object into the canonical snake_case struct.
-
-    A missing key yields ``None`` while an empty object yields an all-null
-    struct, so "not supplied" stays distinguishable from "supplied but empty".
+    """Normalize one address object into the canonical snake_case struct; a missing key
+    yields `None` and an empty object an all-null struct, keeping absent distinct.
     """
     if value is None:
         return None
@@ -125,9 +121,8 @@ def normalize_address(value: Any, anomalies: list[dict], source: str) -> dict | 
 
 
 def normalize_former_names(value: Any, anomalies: list[dict]) -> list[dict]:
-    """Normalize ``formerNames`` entries of ``[name, from, to]`` or object form.
-
-    Unknown entry shapes are flagged and retained rather than dropped.
+    """Normalize `formerNames` entries of `[name, from, to]` or object form; unknown
+    shapes are flagged and retained rather than dropped.
     """
     if value is None:
         return []

@@ -1,16 +1,6 @@
-"""Annual report (Form 10-K family) stub and refetch evaluator.
-
-The Form 10-K evaluator identifies whether a filing is a stub that delegates its
-financial statements to Exhibit 13 (the Annual Report to Shareholders), requiring
-a sub-document refetch.
-
-Evaluation proceeds through three staged tiers:
-1. Fast exclusion: The XBRL mandate makes post-2011 annual reports self-contained
-   by construction, bypassing text scanning.
-2. Short document filter: Filings below the size threshold are evaluated for
-   delegation clauses.
-3. Windowed anchor scan: Searches for Exhibit 13 delegation verbs within a bounded
-   window around Exhibit 13 references.
+"""Annual report (Form 10-K family) stub and refetch evaluator: it decides whether a
+filing delegates its financial statements to Exhibit 13. Post-2011 XBRL filings are
+self-contained by construction and skip the scan entirely.
 """
 
 from __future__ import annotations
@@ -57,14 +47,8 @@ def evaluate_annual(
     *,
     filing_year: int | str | None = None,
 ) -> EvaluatorDecision:
-    """Decide whether an annual report is complete or delegates to Exhibit 13.
-
-    ``text`` is the normalized frame of the primary document. When ``filing_year``
-    is provided (e.g. from filing metadata or locator), post-2011 XBRL filings
-    are immediately marked self-contained.
-
-    Lifecycle: fetch, parse the primary 10-K, decide, refetch Exhibit 13 if the
-    document is a stub, parse that, store.
+    """Whether an annual report is complete or delegates to Exhibit 13. `text` is the
+    normalized primary document; a `filing_year` at or past 2012 ends the decision.
     """
     if filing_year is not None and int(filing_year) >= 2012:
         return EvaluatorDecision(

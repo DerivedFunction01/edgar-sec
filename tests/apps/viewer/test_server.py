@@ -1,9 +1,4 @@
-"""Unit tests for apps.viewer.server.
-
-The HTTP surface is the trust boundary, so the tests here are about what a
-caller *cannot* do as much as what it can: no path, no arbitrary column, no
-write, no escape from the artifacts root.
-"""
+"""The HTTP surface as a trust boundary: what a caller cannot do as much as can."""
 
 from __future__ import annotations
 

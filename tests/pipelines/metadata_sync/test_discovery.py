@@ -1,9 +1,4 @@
-"""Discovery tests: what the operator can be told is already on disk.
-
-These cover the surface v1's wizard had and v2's lost -- an operator can see
-which plans exist, how far each got, which snapshot is current, and pick from a
-numbered list. Every case is offline and reads only manifests.
-"""
+"""Discovery: which plans exist, how far each got, which snapshot is current."""
 
 from __future__ import annotations
 
@@ -142,7 +137,7 @@ def test_an_unreadable_pointer_is_not_fatal(tmp_path: Path) -> None:
 
 
 def test_list_snapshots_uses_this_pipeline_manifest_name(tmp_path: Path) -> None:
-    """The shared scanner takes the manifest filename; Phase 1 names its own."""
+    """The shared scanner keys on the filename, so this pipeline names its own."""
     metadata = resolve_metadata_paths(tmp_path)
     good = metadata.snapshot_dir("good")
     good.mkdir(parents=True)
@@ -181,8 +176,7 @@ def test_several_plans_render_and_pick_by_number(tmp_path: Path) -> None:
         metadata, chunk_size=2, roster_ciks=("0000001985", "0000001761")
     )
     plans = list_plans(metadata)
-    # Index by position rather than assuming an order this test does not own;
-    # ordering is covered by test_list_plans_is_newest_first.
+    # Ordering is covered by test_list_plans_is_newest_first.
     target = next(
         str(index)
         for index, plan in enumerate(plans, start=1)
@@ -293,16 +287,14 @@ def _write_registry(
                 "schema_version": ROSTER_SCHEMA_VERSION,
                 "registry_id": registry_id,
                 "artifact_sha256": digest,
-                # The loader re-derives the roster id and refuses a mismatch, so a
-                # fixture that omits it would not be the manifest a comparison leaves.
+                # The loader re-derives the roster id and refuses a mismatch.
                 "roster_id": roster.roster_id,
                 "row_count": roster.row_count,
             }
         ),
         encoding="utf-8",
     )
-    # The effective-input manifest is verified against the CSV's own digest, so a
-    # fixture that skips the CSV would not be the artifact a real comparison leaves.
+    # The effective-input manifest is verified against the CSV's own digest.
     csv_path = metadata.effective_input_file(registry_id)
     csv_path.write_text(
         "".join(f"{cik},name-{cik}\n" for cik in ciks), encoding="utf-8"
@@ -521,12 +513,7 @@ def test_a_blank_input_picker_cancels(tmp_path: Path) -> None:
 
 
 def test_a_delta_plan_is_labelled_as_one_in_the_picker(tmp_path: Path) -> None:
-    """A delta plan cannot be merged on its own, so the picker must say which it is.
-
-    A delta plan publishes only the CIKs missing from its base, so merging it
-    generically would drop every base row. Rendering both plan kinds identically
-    left an operator no way to tell a safe plan from an unsafe one.
-    """
+    """Rendering both plan kinds alike hides which ones are safe to merge."""
     metadata = resolve_metadata_paths(tmp_path)
     cohort = fixture_cohort("cik_sec_mini.csv")
     from edgar_sec.pipelines.metadata_sync.paths import resolve_run_paths

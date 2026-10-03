@@ -31,11 +31,7 @@ def test_line_count_ignores_a_trailing_newline() -> None:
 
 
 def test_line_count_excludes_non_newline_separators() -> None:
-    """A form feed survives HTML projection and must not become a line.
-
-    ``str.splitlines`` splits on ``\\x0c`` and ``\\x0b``, so a naive count would
-    report a shape the rest of the stage record never agrees with.
-    """
+    """`str.splitlines` splits on \\x0c and \\x0b, which are not lines here."""
     assert StageRecord.of("decode", "a\x0cb\x0bc").line_count == 1
     assert StageRecord.of("decode", "a\x0cb\x0bc").char_count == 5
 

@@ -1,8 +1,7 @@
 """Secure environment and .env resolution.
 
-Resolves settings in order: direct environment first, then the local .env file.
-Direct os.environ access is strictly encapsulated here so the rest of the
-codebase complies with the environment-access policy scanner.
+Resolves the process environment first, then the local .env file. Direct os.environ
+access is encapsulated here so the environment-access policy scanner has one seam.
 """
 
 from __future__ import annotations
@@ -46,12 +45,10 @@ def get_env(
     dotenv_path: str | os.PathLike[str] | None = None,
 ) -> str:
     """Resolve an environment variable: direct process environment first, then .env file."""
-    # 1. Direct environment check
     val = os.environ.get(name)
     if val is not None and val != "":
         return val
 
-    # 2. .env file fallback
     target_path = dotenv_path or os.environ.get("DOTENV_PATH") or DEFAULT_DOTENV_PATH
     file_values = load_dotenv(target_path)
     if name in file_values and file_values[name] != "":

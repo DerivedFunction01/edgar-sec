@@ -1,25 +1,7 @@
 """Directory layout for the filing-catalog pipeline.
-
-The layout composes from ``ProjectPaths.artifacts_root`` and mirrors
-``pipelines.metadata_sync.paths``:
-
-    artifacts_root/filing_catalog/snapshots/<catalog_id>/   published, immutable
-    artifacts_root/filing_catalog/snapshots/current/pointer.json
-    artifacts_root/filing_catalog/plans/<plan_id>/          published, immutable
-    artifacts_root/filing_catalog/policies/                 selection policies
-    artifacts_root/transient/filing_catalog/<catalog_id>/   staging, never published
-
-Snapshots and plans are siblings under the pipeline root, not one flat
-namespace, so a reader listing published state can tell a snapshot from a plan by
-name. The ``current`` pointer lives *inside* ``snapshots/``: its siblings are
-exactly the snapshot directories it can name.
-
-``snapshots/`` also holds the policy-scope *feature* snapshot directories, which
-``FeatureSnapshotBuilder`` appends as their own ``snapshots/<digest>`` segment to
-the root it is given. They are told apart by manifest, not by name: a catalog
-directory carries ``snapshot.manifest.json``, a feature directory
-``feature_snapshot.json``, and ``discover_catalogs`` requires the former. The
-shared parent is a deliberate gap; see this package's README.
+The ``current`` pointer lives *inside* ``snapshots/``, whose siblings are exactly
+the snapshot directories it can name. That directory also holds policy-scope
+feature snapshots, told apart by manifest. Staging stays transient, never published.
 """
 
 from __future__ import annotations
@@ -38,16 +20,15 @@ from edgar_sec.foundation.runtime.paths import (
 
 PIPELINE_DIR = "filing_catalog"
 
-# Published subdirectories, named so this pipeline's tree reads like Phase 1's.
+# Published subdirectories, named so this tree reads like the metadata one.
 SNAPSHOTS_DIR_NAME = "snapshots"
 PLANS_DIR_NAME = "plans"
 
 # Reference that resolves to whichever catalog the pointer names.
 CURRENT_ALIAS = "current"
 
-# Artifact names. Every module that reads or writes a published file names it
-# through one of these constants; a literal repeated in two modules is how a
-# rename desynchronizes a writer from its reader.
+# Artifact names, named through constants because a literal repeated in two
+# modules is how a rename desynchronizes a writer from its reader.
 SNAPSHOT_FILE_NAME = "company_profiles.parquet"
 SNAPSHOT_MANIFEST_NAME = "snapshot.manifest.json"
 TARGETS_DIR_NAME = "filing_targets"
@@ -58,9 +39,8 @@ EXPANSION_METADATA_NAME = "expansion_metadata.json"
 # Reserve candidates: locator rows held back from the active set, so a
 # downstream acquirer has replacements without a second selection run.
 RESERVE_TARGETS_NAME = "reserve_targets.parquet"
-# The normalized seed set a policy plan was selected against. Published with the
-# plan so an expansion reproduces the parent's selection without re-reading a
-# mutable external CSV.
+# Published with the plan so an expansion reproduces the parent's selection
+# without re-reading a mutable external CSV.
 SEED_FILERS_NAME = "seed_filers.csv"
 # Selection policies live beside the plans they produce.
 POLICIES_DIR_NAME = "policies"
@@ -86,10 +66,9 @@ def safe_identifier(value: str) -> str:
 
 
 def form_partition_name(form: str) -> str:
-    """Escape a form name for use as a Hive-style partition directory name.
+    """Escape a form name for a Hive-style partition directory name.
 
-    Form names legitimately contain ``/`` (``8-K/A``, ``10-K/A``), which would
-    otherwise be read as a directory separator and corrupt the partition layout.
+    Form names contain ``/`` (``8-K/A``), read as a directory separator otherwise.
     """
     return form.replace("/", "_")
 
@@ -97,8 +76,7 @@ def form_partition_name(form: str) -> str:
 def target_part_name(index: int) -> str:
     """Return the shard file name for one filing-targets part.
 
-    Upstream shards may share a basename, so parts are numbered by resolved
-    order rather than reusing the source name.
+    Numbered by resolved order, not by reusing a source basename shards may share.
     """
     return f"part-{index:05d}.parquet"
 

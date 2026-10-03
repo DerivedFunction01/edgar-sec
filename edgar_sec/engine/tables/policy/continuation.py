@@ -1,9 +1,6 @@
 """Recognizing when a block after a table row is that row's continuation.
-
-A statement row whose description wraps onto the following lines carries no
-numeric cells of its own, so the reflow engine sees two prose-shaped blocks where
-a filing has one row. The signal is positional: a continuation line places its
-numbers under the columns the previous rows already established.
+A wrapped description carries no numeric cells, so the engine sees two prose blocks where the
+filing has one row; the signal is positional - numbers sit under established columns.
 """
 
 from __future__ import annotations

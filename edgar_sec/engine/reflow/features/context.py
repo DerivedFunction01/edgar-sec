@@ -1,17 +1,5 @@
 """Memoized scalar feature context for one block of ASCII lines.
-
-Every property here is a measurement of a block, never a judgement about it. The
-rule cascade in `reflow/rules/cascades.py` turns the measurements into actions.
-
-Properties are computed on first access and cached on the instance, because a
-single reflow pass evaluates the cascade repeatedly against the same block and
-most of the measurements are line scans.
-
-Two features cannot be measured from the text alone — whether a line is a cover
-checkbox answer, and whether a line is a financial statement section label —
-because the answer belongs to the caller's form vocabulary. They are read off
-the injected :class:`~edgar_sec.engine.reflow.types.ReflowPolicy`; this module
-imports no form family and no taxonomy.
+Every property is a measurement, never a judgement, computed on first access because one pass evaluates the cascade repeatedly. Cover checkbox answers and statement section labels cannot be measured from text and are read off the injected policy.
 """
 
 from __future__ import annotations
@@ -60,9 +48,7 @@ from .geometry import (
     is_signature_label_line,
 )
 
-# Horizontal windows for the four density slices: columns 0-20, 21-40, 41-60, 61-80.
 _WINDOW_BOUNDS = ((0, 20), (21, 40), (41, 60), (61, 80))
-# The greedy re-wrap width the residual in `rewrap_residual` is measured against.
 _TARGET_WIDTH = 80
 # A blank strip at least this wide, held across every line, is a column corridor.
 _CORRIDOR_MIN_WIDTH = 3
@@ -123,7 +109,6 @@ class BlockContext:
     def non_blank_lines(self) -> tuple[str, ...]:
         return tuple(line for line in self.raw_lines if line.strip())
 
-    # 1. Structural, Boundary & Anchors
     @cached_property
     def line_count(self) -> int:
         return len(self.non_blank_lines)
@@ -217,7 +202,6 @@ class BlockContext:
         """Alias for has_separator_run, so the compact geometry record and this one agree."""
         return self.has_separator_run
 
-    # 2. 2D Layout & Column Spacing Geometry
     @cached_property
     def gap_start_rows(self) -> tuple[tuple[int, ...], ...]:
         rows: list[tuple[int, ...]] = []
@@ -320,7 +304,6 @@ class BlockContext:
                 run = 0
         return False
 
-    # 3. Macro Content Density & Grammar
     @cached_property
     def _char_counts(self) -> tuple[int, int, int]:
         alpha = numeric = total = 0
@@ -472,7 +455,6 @@ class BlockContext:
             return 0
         return len(RE_FULL_DATE.findall(self._raw_text))
 
-    # 4. Micro Interline Wrapping & Syntax
     @cached_property
     def soft_wrap_count(self) -> int:
         lines = self.non_blank_lines
@@ -564,7 +546,6 @@ class BlockContext:
         diff = sum(abs(orig_lengths[i] - rewrapped_lengths[i]) for i in range(min_len))
         return diff / (min_len * w)
 
-    # 5. Row-to-Row Relational Dynamics
     @cached_property
     def cell_edge_aligned_count(self) -> int:
         """Count repeated aligned numeric right edges (H-GEO-18)."""
@@ -664,7 +645,6 @@ class BlockContext:
         )
         return float(lag1_num / denom)
 
-    # 6. Bilateral Inset Geometry
     @cached_property
     def _margins(self) -> tuple[int, int]:
         lines = self.non_blank_lines
@@ -718,10 +698,6 @@ class BlockContext:
             return False
         return self.gutter_4_col_count < max(3, len(lines) // 10)
 
-    # -------------------------------------------------------------------------
-    # 7. Exhibit Index Markers
-    # -------------------------------------------------------------------------
-
     @cached_property
     def exhibit_numbering_count(self) -> int:
         return len(RE_EXHIBIT_NUMBER.findall(self._raw_text))
@@ -730,22 +706,13 @@ class BlockContext:
     def exhibit_phrase_count(self) -> int:
         return len(RE_EXHIBIT_STATUTORY_PHRASE.findall(self._raw_text))
 
-    # -------------------------------------------------------------------------
-    # Vector Serialization
-    # -------------------------------------------------------------------------
-
     def to_feature_dict(self) -> dict[str, Any]:
         """Return every registered feature keyed by name, in registry order."""
         return {name: getattr(self, name) for name in FEATURE_REGISTRY}
 
     def to_feature_floats(self) -> tuple[float, ...]:
         """Return every registered feature in canonical order, as plain floats.
-
-        A tuple rather than an array on purpose: the only consumer of a dense
-        numeric vector was the offline ML labelling harness, which is not ported,
-        and an array here would put numpy in the import graph of every process
-        that merely normalizes a filing. A caller that genuinely needs an array
-        builds one from this.
+        A tuple, not an array: an array would put numpy in the import graph of every normalizing process.
         """
         values: list[float] = []
         for name, spec in FEATURE_REGISTRY.items():

@@ -1,17 +1,5 @@
 """Byte-exact protection of ``<TABLE>`` spans inside plain-text documents.
-
-Legacy ASCII/SGML filings carry ``<TABLE>...</TABLE>`` blocks marked up with
-``<S>``/``<C>`` cell delimiters. Those blocks are alignment-sensitive: reflowing
-one scrambles every column. This module masks each span behind a collision-safe
-sentinel so later passes cannot see inside it, then restores the exact original
-bytes.
-
-An unclosed ``<TABLE>`` is protected through end-of-text — reflowing the content
-of an open tag is worse than leaving it alone.
-
-Every prose-rewriting stage (HTML cleaning, break injection, cover healing,
-whitespace normalization, reflow) must mask before it rewrites. This module is
-the single leaf they share; there is no second masking protocol in the tree.
+Legacy ASCII/SGML filings carry ``<TABLE>...</TABLE>`` blocks marked up with ``<S>``/``<C>`` cell delimiters. Those blocks are alignment-sensitive: reflowing one scrambles every column. This module masks each span behind a collision-safe sentinel so later passes cannot see inside it, then restores the exact original bytes. An unclosed ``<TABLE>`` is protected through end-of-text — reflowing the content of an open tag is worse than leaving it alone. Every prose-rewriting stage (HTML cleaning, break injection, cover healing, whitespace normalization, reflow) must mask before it rewrites. This module is the single leaf they share; there is no second masking protocol in the tree.
 """
 
 from __future__ import annotations
@@ -32,8 +20,8 @@ _RE_TABLE_CLOSE_WITH_SPACE = re.compile(r"</TABLE\s*>[ \t]*", re.IGNORECASE)
 _RE_TABLE_OPEN_TAG = re.compile(r"<TABLE\b[^>]*>", re.IGNORECASE)
 _RE_TABLE_CLOSE_TAG = re.compile(r"</TABLE\s*>", re.IGNORECASE)
 
-# Public sentinel boundary constants: whitespace normalization passes must treat
-# whitespace adjacent to these tokens as a line separator, never as a space.
+# Whitespace normalization passes must treat whitespace adjacent to these tokens as a line
+# separator, never as a space.
 SENTINEL_PREFIX = _SENTINEL_PREFIX
 SENTINEL_SUFFIX = _SENTINEL_SUFFIX
 
@@ -41,10 +29,7 @@ SENTINEL_SUFFIX = _SENTINEL_SUFFIX
 @dataclass(frozen=True, slots=True)
 class TableSpan:
     """One protected tagged-table span in the original text.
-
-    ``start_line`` / ``end_line`` are resolved against the whole document when
-    the span is discovered, because a span holds only its own text and cannot
-    recover the preceding newline count from it.
+    ``start_line``/``end_line`` resolve against the whole document at discovery.
     """
 
     start: int
@@ -71,10 +56,7 @@ def _sentinel_token(position: int) -> str:
 
 def _masked_sentinel_starts(spans: tuple[TableSpan, ...]) -> tuple[int, ...]:
     """Return where each sentinel begins inside :func:`mask_tagged_tables` output.
-
-    The sentinel is a different length than the span it replaces, so masked
-    offsets drift away from the source offsets. Slicing the masked text with a
-    ``span.start`` is silently wrong from the first span onward.
+    Masked offsets drift from source offsets, so slicing masked text by ``span.start`` is wrong.
     """
     starts: list[int] = []
     cursor = 0
@@ -86,11 +68,7 @@ def _masked_sentinel_starts(spans: tuple[TableSpan, ...]) -> tuple[int, ...]:
 
 
 class ProtectedText:
-    """Immutable protected-text boundary around tagged tables.
-
-    Callers use this abstraction instead of pairing :func:`mask_tagged_tables`
-    and :func:`restore_tagged_tables` by hand.
-    """
+    """Immutable protected-text boundary around tagged tables."""
 
     def __init__(self, text: str) -> None:
         self._original = text
@@ -137,9 +115,7 @@ class ProtectedText:
 
     def transform_span(self, span_index: int, func: Callable[[str], str]) -> str:
         """Apply ``func`` to one protected table span, addressed by index.
-
-        Every *other* span stays masked, so the rewritten span cannot collide
-        with its neighbours' sentinels.
+        Every *other* span stays masked, so the rewritten span cannot collide with its neighbours.
         """
         if span_index < 0 or span_index >= len(self._spans):
             raise IndexError(
@@ -173,10 +149,7 @@ class ProtectedText:
 
 def find_table_spans(text: str) -> tuple[TableSpan, ...]:
     """Find every complete or unterminated tagged table span, in source order.
-
-    Returns ``()`` when the text holds no table, and also when it already
-    contains the sentinel prefix: re-masking an already-masked document would
-    nest sentinels and corrupt it.
+    Also returns ``()`` when the text already carries the sentinel prefix: re-masking would nest sentinels and corrupt it.
     """
     if not text or _SENTINEL_PREFIX in text or "<table" not in text.lower():
         return ()
@@ -211,10 +184,7 @@ def find_table_spans(text: str) -> tuple[TableSpan, ...]:
 
 def mask_tagged_tables(text: str) -> tuple[str, tuple[TableSpan, ...]]:
     """Replace every table span with ``__SEC_TBL_{n}__`` and return the spans.
-
-    Returns the input unchanged with no spans when the source already carries a
-    sentinel; a caller must read that as "nothing here may be rewritten" rather
-    than guessing.
+    An input that already carries a sentinel comes back unchanged: nothing there may be rewritten.
     """
     spans = find_table_spans(text)
     if not spans:
@@ -233,10 +203,7 @@ def mask_tagged_tables(text: str) -> tuple[str, tuple[TableSpan, ...]]:
 
 def restore_tagged_tables(text: str, spans: tuple[TableSpan, ...]) -> str:
     """Reinstate the exact original bytes for every masked table span.
-
-    Restoration is verified, not assumed: if the set of sentinels seen does not
-    equal the set of spans supplied, a table was lost and this raises rather
-    than returning a document that quietly dropped it.
+    Verified, not assumed: a sentinel set that does not match the spans raises rather than quietly dropping a table.
     """
     if not spans:
         return text

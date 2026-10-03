@@ -17,9 +17,8 @@ from edgar_sec.infra.storage.duckdb import connect
 
 HELLO_SHA256 = "b94d27b9934d3e08a52e52d7da7dabfac484efe37a5380ee9088f7ace2efcde9"
 
-# Catalog identity strings crossing the SQL/Python boundary. The filing
-# catalog derives occurrence and locator keys inside DuckDB while oracle
-# expectations are computed in Python, so the two must agree byte for byte.
+# Catalog identity strings are derived inside DuckDB while the oracle is computed in
+# Python, so the two must agree byte for byte.
 CROSS_BOUNDARY_DIGESTS = [
     "",
     "hello world",
@@ -87,15 +86,8 @@ def test_sha256_text_is_the_only_public_definition() -> None:
 
 
 def test_occurrence_id_matches_materialization_sql() -> None:
-    """The identity contract, pinned in both languages.
-
-    ``domain/document/models.py`` derives occurrence and locator ids in Python
-    while ``pipelines/filing_catalog/materialization.py`` materialises them
-    inside DuckDB. Both spellings must produce the same digest for the same
-    document, or a locator-to-occurrence join between the catalog and a
-    snapshot matches nothing and fails silently. An earlier revision of
-    ``derive_occurrence_id`` hashed the locator key (a hash of a hash) and
-    diverged from the SQL by exactly this failure.
+    """Both spellings must produce the same digest, or a locator-to-occurrence join
+    between the catalog and a snapshot matches nothing and fails silently.
     """
     from edgar_sec.domain.document.models import (
         derive_document_locator_key,
@@ -112,11 +104,9 @@ def test_occurrence_id_matches_materialization_sql() -> None:
 
     with connect() as con:
         for cik, accession, path in documents:
-            # Mirrors `materialization.build_part_unnest_query`, which
-            # materialises `replace(accession_number, '-', '') AS accession`
-            # and then hashes that column. The query below must normalize the
-            # same way, or it pins parity with a spelling production never
-            # emits.
+            # Mirrors `materialization.build_part_unnest_query`, which hashes
+            # `replace(accession_number, '-', '')`; a different spelling here would pin
+            # parity with a form production never emits.
             row = con.execute(
                 """
                 SELECT sha256(?1 || ':' || replace(?2, '-', '') || ':' || ?3),
@@ -135,15 +125,8 @@ def test_occurrence_id_matches_materialization_sql() -> None:
 
 
 def test_both_accession_spellings_hash_to_one_identity() -> None:
-    """A hyphenated and an unhyphenated accession are one filing, not two.
-
-    The catalog hashes ``replace(accession_number, '-', '')`` inside DuckDB, so
-    the unhyphenated column is what lands on disk, and a committed Phase 2.5
-    fixture keys its ``doc_id`` the same way. A ``DocumentLocator`` built from
-    the hyphenated EDGAR spelling has to reach the identical digest or a
-    replay matches nothing. Deriving both spellings separately hid this: the
-    cross-boundary test above feeds one string to both languages and so never
-    exercised the pairing that actually occurs at runtime.
+    """Deriving both spellings separately hid this: the cross-boundary test feeds
+    one string to both languages and never exercised the runtime pairing.
     """
     from edgar_sec.domain.document.models import (
         DocumentLocator,
@@ -167,12 +150,8 @@ def test_both_accession_spellings_hash_to_one_identity() -> None:
 
 
 def test_occurrence_id_is_hash_of_parts_not_of_locator_key() -> None:
-    """The two constructions must differ, or the divergence cannot be detected.
-
-    A hash of a hash is not the same digest as a hash of the parts, and the
-    whole point of unifying on the raw-parts form is that the catalog hashes
-    the parts. If someone reintroduces the locator-key form, this test catches
-    it even if the SQL column happens to be absent from the fixture.
+    """Reintroducing the hash-of-hash form fails this even when the SQL column is
+    absent from the fixture.
     """
     from edgar_sec.domain.document.models import (
         derive_document_locator_key,

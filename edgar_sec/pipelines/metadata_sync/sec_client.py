@@ -1,13 +1,7 @@
 """Submissions endpoint and historical-file client for the metadata pipeline.
-
-The client owns the fan-out from one CIK to its main submissions document plus
-every historical file listed under ``filings.files``. Historical files are
-required inputs rather than best-effort extras, so terminal per-file failures
-are recorded on the result instead of raised, letting the engine decide
-``partial`` versus ``failed`` status.
-
-The HTTP client is injected, which lets tests substitute a scripted session
-while pacing, retry, cache, and failure-ledger behavior stay under test.
+Historical files are required inputs, so a terminal per-file failure is recorded
+on the result rather than raised, leaving ``partial`` versus ``failed`` to the
+engine. The HTTP client is injected.
 """
 
 from __future__ import annotations
@@ -58,11 +52,7 @@ class SubmissionsClient:
         json_ttl_s: int = DEFAULT_CACHE_JSON_TTL_S,
     ) -> None:
         """Build a submissions client.
-
-        ``cache_dir`` and ``json_ttl_s`` are forwarded to the HTTP client so the
-        response cache and the failure ledger are reachable from the settings
-        registry rather than fixed at construction. Passing ``http`` bypasses
-        construction entirely, which is how tests inject a scripted transport.
+        Passing ``http`` bypasses construction, which is how tests inject a transport.
         """
         if http is not None:
             self.http = http

@@ -1,14 +1,5 @@
-"""CIK input compilation tests.
-
-Compilation is where a curated file becomes the cohort a plan runs over, so these
-tests pin the three properties everything downstream trusts: the cohort identity
-is unchanged from the parser this replaced, an unusable cell is rejected rather
-than turned into a registrant, and recompiling an unchanged input reuses what it
-produced last time.
-
-The pinned identities are the point of the first group. They were recorded from
-the row-by-row parser before it was removed, so they are an oracle that no longer
-depends on the code under test.
+"""CIK input compilation: identity, cell rejection, and dataset reuse. The pinned
+identities are an oracle independent of the code under test.
 """
 
 from __future__ import annotations
@@ -52,11 +43,7 @@ def _write(root: Path, text: str, name: str = "input.csv") -> Path:
 def test_compiled_identity_matches_the_parser_it_replaced(
     tmp_path: Path, fixture: str
 ) -> None:
-    """A curated file must compile to the cohort the row-by-row parser produced.
-
-    Rows, rejection count and duplicate count are pinned too, because an identity
-    that happened to match while the cohort differed would be a coincidence.
-    """
+    """Rows and counts are pinned too: a matching id over a differing cohort is luck."""
     roster_id, rows, rejected, duplicates = LEGACY_IDENTITIES[fixture]
     cohort = compile_cik_cohort(fixture_path(fixture), metadata_paths=_paths(tmp_path))
     assert cohort.roster_id == roster_id
@@ -81,12 +68,7 @@ def test_ordinal_order_is_the_manifest_order(tmp_path: Path) -> None:
 
 
 def test_cells_that_only_look_like_ciks_are_rejected(tmp_path: Path) -> None:
-    """A cast alone would turn each of these into a real, wrong registrant.
-
-    ``try_cast`` reads ``12.5`` as 13, ``1e5`` as 100000 and ``0x10`` as 16 --
-    all valid CIKs, so an unguarded compile would publish a cohort containing
-    registrants the curator never named, and nothing downstream would notice.
-    """
+    """`try_cast` reads 12.5, 1e5, and 0x10 as valid CIKs nobody named."""
     path = _write(
         tmp_path,
         "cik,name\n"
@@ -111,19 +93,14 @@ def test_cells_that_only_look_like_ciks_are_rejected(tmp_path: Path) -> None:
 
 
 def test_empty_cell_is_not_cik_zero(tmp_path: Path) -> None:
-    """``Cik.from_raw("")`` yields CIK zero, which must not become a registrant."""
+    """`Cik.from_raw("")` yields CIK zero, which is not a registrant."""
     path = _write(tmp_path, "cik,name\n1985,Acme\n,Empty Cell\n0,Actual Zero\n")
     cohort = compile_cik_cohort(path, metadata_paths=_paths(tmp_path))
     assert cohort.roster.range_ciks(0, cohort.row_count) == ("0000001985",)
 
 
 def test_one_registrant_written_two_ways_is_one_member(tmp_path: Path) -> None:
-    """Padding is applied last, so duplicates are matched on the CIK value.
-
-    ``1985`` and ``0000001985`` are one registrant. Partitioning deduplication on
-    the text would let both through and then collide them into a duplicate, since
-    the cohort's own key is the padded string.
-    """
+    """The cohort key is the padded string, so dedup must match on the value."""
     path = _write(
         tmp_path,
         "cik,name\n1985,Unpadded\n0000001985,Padded\n1761,Other\n",
@@ -134,7 +111,6 @@ def test_one_registrant_written_two_ways_is_one_member(tmp_path: Path) -> None:
         "0000001761",
     )
     assert cohort.duplicate_row_count == 1
-    # The first spelling wins, so the curated name is the one a curator read first.
     assert cohort.roster.name_map()["0000001985"] == "Unpadded"
 
 
@@ -142,13 +118,7 @@ def test_one_registrant_written_two_ways_is_one_member(tmp_path: Path) -> None:
 
 
 def test_ragged_and_wide_rows_do_not_shift_the_columns(tmp_path: Path) -> None:
-    """A short row and a long row must not move any other row's name.
-
-    A short row has no name and must not borrow the next row's. A long row keeps
-    its second field and drops the surplus, because a two-column reader has always
-    meant "the first two fields", and dropping beats failing the ingest over one
-    extra column.
-    """
+    """A two-column reader means the first two fields; the surplus is dropped."""
     path = _write(
         tmp_path,
         "cik,name\n"
@@ -198,7 +168,6 @@ def test_limit_binds_identity_before_the_cohort_is_named(tmp_path: Path) -> None
     assert limited.row_count == 2
     assert limited.roster.range_ciks(0, 2) == ("0000001985", "0000001761")
     assert limited.selected_limit == 2
-    # Same source file, so the fingerprint is the same; only the cohort differs.
     assert limited.input_fingerprint == full.input_fingerprint
 
 
@@ -268,7 +237,7 @@ def test_input_with_no_usable_ciks_raises(tmp_path: Path) -> None:
 
 
 def test_counting_an_input_does_not_compile_it(tmp_path: Path) -> None:
-    """Listing candidates must stay cheap and must not leave an artifact behind."""
+    """Listing candidates must stay cheap and leave no artifact behind."""
     paths = _paths(tmp_path)
     source = fixture_path("cik_sec_mini.csv")
     assert count_cohort_rows(source) == 4

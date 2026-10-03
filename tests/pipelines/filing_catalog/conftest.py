@@ -28,13 +28,7 @@ def catalog_paths(tmp_path: Path) -> FilingCatalogPaths:
 
 @pytest.fixture
 def catalog_artifacts_root(tmp_path: Path) -> Path:
-    """The artifacts root the catalog fixture publishes into.
-
-    Exposed as its own fixture so tests resolve a catalog path with the same
-    resolver production uses. Deriving it by walking ``parents[N]`` off a
-    snapshot directory silently breaks whenever the layout gains or loses a
-    level, which is how a layout change turns into a wall of unrelated failures.
-    """
+    """Its own fixture, so no test derives the root by walking ``parents[N]``."""
     return tmp_path / "art"
 
 
@@ -54,13 +48,7 @@ def catalog_snapshot(
 
 @pytest.fixture
 def published_target_files(catalog_snapshot: tuple[dict[str, Any], Path]) -> list[Path]:
-    """Every published target shard, in source-part order.
-
-    The catalog writes one shard per Phase 1 source part, so a fixture that read
-    only ``part-00000.parquet`` would silently cover a fraction of the dataset and
-    every assertion built on it — uniqueness, ordering, totals — would hold for
-    that fraction alone.
-    """
+    """One shard per source part; reading only the first would cover a fraction."""
     _, snapshot_dir = catalog_snapshot
     files = sorted((snapshot_dir / TARGETS_DIR_NAME).glob("part-*.parquet"))
     assert files, "catalog published no target shards"

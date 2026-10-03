@@ -1,16 +1,7 @@
 """CIK input compilation: a curated CSV becomes a content-addressed cohort.
-
-The compiled cohort is the reproducibility root of a run. The source file's
-SHA-256 digest is the ``input_fingerprint`` recorded in the plan, in every row,
-and in the published snapshot manifest, and the cohort's own identity is derived
-from the ordered CIKs and names it resolved to. Malformed rows are counted and
-reported in the cohort manifest rather than silently dropped.
-
-Normalization, validation, deduplication, ordinal assignment and zero-padding
-all happen in one DuckDB statement, so a cohort of any size is produced without
-the input passing through the Python heap. Padding is applied last, in the
-projection that writes the column: the CIK is an integer for every operation
-that has to reason about it, and a ten-character string only once it is stored.
+The source digest is the reproducibility root, recorded in the plan, every row,
+and the snapshot manifest. Normalization through zero-padding happens in one
+DuckDB statement, so the input never reaches the Python heap.
 """
 
 from __future__ import annotations
@@ -44,28 +35,19 @@ __all__ = [
 
 #: One pass over the input: normalize, validate, deduplicate, number, pad.
 #:
-#: The reader is fully specified and never auto-detects. Auto-detection reads a
-#: 20,480-row sample, so it both types the CIK column as an integer -- which would
-#: discard the zero-padding a curated file may already carry -- and hard-errors
-#: on a non-numeric cell past the sample. Worse, on a ragged file it collapses the
-#: columns and returns a whole line as a single field. The two shape flags keep the
-#: reader positional and forgiving the way a two-column parser has to be:
-#: ``null_padding`` yields a null name for a short row, and ``strict_mode=false``
-#: drops the surplus fields of a long row instead of failing the whole ingest --
-#: which is what taking the second column has always meant.
+#: The reader is fully specified and never auto-detected. Auto-detection types the
+#: CIK column as an integer -- discarding padding a curated file may already carry --
+#: and collapses the columns of a ragged file into one field per line.
 #:
-#: ``c0`` is validated as text before it becomes an integer, because a cast alone
-#: accepts far more than a CIK: ``12.5`` becomes 13, ``1e5`` becomes 100000, and
-#: ``0x10`` becomes 16. Each of those is a real registrant, so an unguarded cast
-#: would invent members of the cohort that pass every later check.
+#: ``c0`` is validated as text before it becomes an integer, because a bare cast
+#: accepts more than a CIK: ``12.5`` is 13, ``1e5`` is 100000, ``0x10`` is 16. Each
+#: names a real registrant, so an unguarded cast would invent cohort members.
 #:
-#: ``rn`` is first-appearance order, which fixes both which row a duplicate keeps
-#: and the ordinal that defines chunk membership. Duplicates are partitioned by CIK
-#: *value*, not by text: ``1985`` and ``0000001985`` are one registrant written two
-#: ways, and padding is applied only after this point, so text comparison would let
-#: both through and hand the cohort a duplicate. It is stable across thread counts
-#: and memory limits, so the cohort identity does not depend on the machine that
-#: compiled it.
+#: ``rn`` is first-appearance order, fixing both which duplicate row is kept and the
+#: ordinal that defines chunk membership. Duplicates partition by CIK *value*, not
+#: text -- ``1985`` and ``0000001985`` are one registrant written twice -- and the
+#: ordering is stable across thread counts, so cohort identity does not depend on
+#: the machine that compiled it.
 _CIK_COHORT_QUERY = """
 WITH raw AS (
     SELECT
@@ -110,9 +92,8 @@ WHERE ? < 0 OR ordinal < ?
 ORDER BY ordinal
 """
 
-#: The same pass, counted rather than written, so the cohort manifest can report
-#: what the input contained instead of only what survived. One scan classifies
-#: every row; repeating the reader per count would re-read the file each time.
+#: The same pass, counted rather than written, so the cohort manifest reports what
+#: the input contained and not only what survived; one scan classifies every row.
 _CIK_COHORT_QUALITY_QUERY = """
 WITH raw AS (
     SELECT
@@ -151,9 +132,8 @@ SELECT
 FROM classified
 """
 
-#: A bare count for listing a candidate input without compiling it. Counts
-#: distinct CIK *values*, not distinct texts, because ``1985`` and ``0000001985``
-#: are one registrant written two ways and the cohort keeps only the first.
+#: A bare count for listing a candidate input. Counts distinct CIK *values*, not
+#: texts: ``1985`` and ``0000001985`` are one registrant and the cohort keeps one.
 _CIK_COUNT_QUERY = """
 SELECT count(DISTINCT try_cast(cik_text AS BIGINT))
 FROM (
@@ -201,11 +181,7 @@ class CompiledCohort:
 
 def cik_cohort_key(input_fingerprint: str, limit: int | None = None) -> str:
     """Name the compiled cohort for one source digest and optional limit.
-
-    The limit is part of the key because it selects a different cohort from the
-    same file: identity is derived after truncation, so a bounded cohort and the
-    full cohort over one input are two different cohorts and must not share a
-    directory.
+    The limit is part of the key: a bounded cohort must not share a directory.
     """
     if limit is None:
         return input_fingerprint
@@ -219,11 +195,8 @@ def compile_cik_cohort(
     metadata_paths: MetadataPaths | None = None,
 ) -> CompiledCohort:
     """Compile a CIK CSV into a content-addressed cohort dataset.
-
-    The result is keyed by the source digest, so re-running against an unchanged
-    input reuses the dataset instead of recompiling it. A missing input and an
-    input with no usable CIKs both fail loudly: a curator who pointed at the wrong
-    file should not get a plan over an empty cohort.
+    Keyed by the source digest, so an unchanged input reuses its dataset. A missing
+    input fails loudly rather than yielding a plan over an empty cohort.
     """
     source = Path(input_path).resolve()
     if not source.is_file():
@@ -276,9 +249,7 @@ def compile_cik_cohort(
 
 def count_cohort_rows(input_path: str | os.PathLike[str]) -> int:
     """Count the usable CIKs in an input without compiling it.
-
-    Listing an input has to stay cheap: it is a candidate menu, not a cohort the
-    caller intends to run. Nothing is written and no identity is derived.
+    Nothing is written and no identity is derived.
     """
     source = Path(input_path)
     if not source.is_file():

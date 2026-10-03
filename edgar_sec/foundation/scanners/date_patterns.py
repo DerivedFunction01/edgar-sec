@@ -1,10 +1,7 @@
 """Scanner routing date handling through the shared date parser.
 
-`foundation.text.dates` owns month tables, the 2-digit year expansion window, and
-the ordered SEC date formats. A module that keeps its own month list or writes
-``(?:january|february|...)`` by hand ends up with a second, drifting answer to
-"what year is this fiscal period in", which is the kind of disagreement that
-surfaces as a mis-partitioned dataset rather than as a crash.
+``foundation.text.dates`` owns month tables and SEC formats; a module keeping its own month
+list yields a second, drifting answer to "what year is this fiscal period in".
 """
 
 from __future__ import annotations
@@ -28,9 +25,8 @@ _MONTH_REGEX_ALT_RE = re.compile(
     re.IGNORECASE,
 )
 
-# An ad-hoc date separator pattern, e.g. \d{1,2}/\d{1,2}/\d{2,4} or \d{4}-\d{2}-\d{2}.
-# The quantifier accepts both {4} and {1,2} forms, so the canonical day/month case
-# is matched too.
+# An ad-hoc date separator pattern, e.g. \d{1,2}/\d{1,2}/\d{2,4}. The quantifier
+# accepts both {4} and {1,2}, so the canonical day/month case matches too.
 _DATE_SEPARATOR_REGEX_RE = re.compile(
     r"\\d\{[1-4](?:,[1-4])?\}\s*[/\\-]\s*\\d\{[1-4](?:,[1-4])?\}"
     r"\s*[/\\-]\s*\\d\{[1-4](?:,[1-4])?\}"

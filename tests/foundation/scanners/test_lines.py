@@ -1,7 +1,6 @@
-"""Tests for the shared text-scanning helpers.
-
-Every text scanner depends on these helpers, so a regression here would silently
-weaken four scanners at once rather than fail one test.
+"""The shared text-scanning helpers.
+Every text scanner depends on these, so a regression here weakens several at once
+rather than failing one test.
 """
 
 from __future__ import annotations

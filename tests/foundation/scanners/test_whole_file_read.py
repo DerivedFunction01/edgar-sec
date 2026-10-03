@@ -1,10 +1,6 @@
-"""Tests for the whole-file-read scanner.
-
-The scanner is what keeps ``foundation.hashing.file_sha256`` important, so
-these tests pin both directions: a whole-file read consumed by a digest is
-caught, and a whole-file read handed to a JSON parser is left alone. The second
-case is the one that matters most, because "fixing" it would mean reworking a
-parser that never had the memory problem.
+"""The whole-file-read scanner.
+Both directions are pinned: a read consumed by a digest is caught, and a read handed
+to a JSON parser is left alone.
 """
 
 from __future__ import annotations

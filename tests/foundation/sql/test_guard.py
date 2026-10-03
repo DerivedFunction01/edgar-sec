@@ -85,10 +85,7 @@ def test_repeated_trailing_semicolons_are_all_stripped() -> None:
 
 
 def test_unterminated_comment_is_left_for_the_engine_to_report() -> None:
-    """The guard defers malformed input to DuckDB rather than guessing.
-
-    A guard that raised here would have to invent a message; DuckDB names the
-    exact syntax problem. What the guard must not do is *hang*, so the scanner
-    runs the unterminated comment to end-of-string.
+    """DuckDB names the exact syntax problem; what the guard must not do is
+    *hang*, so the scanner runs the unterminated comment to end-of-string.
     """
     assert validate_read_only("SELECT 1 /* never closed")

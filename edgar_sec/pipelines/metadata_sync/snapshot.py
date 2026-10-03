@@ -1,23 +1,7 @@
 """Resolve a published metadata snapshot to a validated, ordered part list.
-
-A snapshot is one dataset with two possible physical layouts:
-
-* **Single part** - a sorted ``metadata.parquet`` beside the manifest, which is
-  what every snapshot published before the multipart contract looked like.
-* **Multipart** - a ``parts/`` directory described by an explicit ordered part
-  list in the manifest.
-
-Both resolve to the same thing for a consumer: an ordered list of Parquet paths
-whose union is the snapshot. That is what lets Phase 2 read a dataset without
-caring which layout produced it, and it is why a new publication format does not
-orphan the snapshots already on disk.
-
-The part list is read from the manifest, never by globbing the directory. A
-manifest is the commit record for a snapshot: a part that is present on disk but
-absent from the list is not part of the snapshot, and a part that is listed but
-absent from disk means the snapshot was not fully published. Both are errors, and
-the difference matters: an unlisted file is untrusted data, a missing listed file
-is an incomplete publication.
+The list is read from the manifest, never by globbing. A file absent from the list
+is untrusted data; a listed file absent from disk is an incomplete publication,
+and the two are different errors.
 """
 
 from __future__ import annotations
@@ -78,9 +62,7 @@ class SnapshotParts:
 
 def load_snapshot_manifest(manifest_path: str | Path) -> SnapshotLayout:
     """Read a snapshot manifest and describe its layout.
-
-    Both manifest versions are accepted. A legacy manifest has no version field
-    and describes a single payload; a versioned manifest carries a part list.
+    A legacy manifest describes a single payload; a versioned one a part list.
     """
     path = Path(manifest_path)
     if not path.is_file():
@@ -107,9 +89,7 @@ def load_snapshot_manifest(manifest_path: str | Path) -> SnapshotLayout:
 
 def resolve_part_path(manifest_path: Path, value: str) -> Path:
     """Resolve a manifest-relative or absolute artifact path.
-
-    ``manifest_path`` is the manifest file itself; a relative part path is
-    interpreted against the directory holding the manifest.
+    A relative part path resolves against the manifest's directory.
     """
     candidate = Path(value)
     if candidate.is_absolute():
@@ -121,11 +101,7 @@ def read_snapshot_parts(
     manifest_path: str | Path, *, verify_digests: bool = True
 ) -> SnapshotParts:
     """Resolve a snapshot manifest to its ordered part list and verify it.
-
-    Verification is the point of this function. A consumer that trusts a part
-    list it has not checked can silently ingest a truncated, tampered, or
-    partially published snapshot, so digests are checked by default and the
-    declared row count is reconciled with the manifest.
+    Digests are checked by default: an unchecked list admits a truncated snapshot.
     """
     layout = load_snapshot_manifest(manifest_path)
     manifest = layout.manifest

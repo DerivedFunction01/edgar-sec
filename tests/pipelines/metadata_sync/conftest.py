@@ -1,8 +1,4 @@
-"""Shared pytest fixtures for the metadata_sync pipeline.
-
-Test doubles live in :mod:`tests.support` so the whole suite shares one
-definition; this module only wires them into pytest.
-"""
+"""Fixtures wiring the shared ``tests.support`` doubles into pytest."""
 
 from __future__ import annotations
 

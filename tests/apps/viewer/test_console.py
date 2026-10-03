@@ -1,5 +1,3 @@
-"""Unit tests for apps.viewer.console."""
-
 from __future__ import annotations
 
 from pathlib import Path
@@ -96,13 +94,7 @@ def test_table_functions_are_refused(ref: DatasetRef, query: str) -> None:
 
 
 def test_the_console_cannot_see_anything_but_the_dataset(ref: DatasetRef) -> None:
-    """The selected part list is the whole reachable world.
-
-    DuckDB's own ``information_schema`` is a built-in and is always queryable;
-    what must not be visible is a *second* relation. A console that could name
-    another relation would make the row cap and the table-function ban
-    pointless, because the data would simply be reachable under another name.
-    """
+    """`information_schema` is a built-in; no *second* relation may be nameable."""
     result = run_dataset_sql(ref, "SELECT table_name FROM information_schema.tables")
     assert [row["table_name"] for row in result["rows"]] == ["dataset"]
 

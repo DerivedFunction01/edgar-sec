@@ -1,10 +1,7 @@
 """Discovery of published catalogs, target plans, and selection policies.
-
-Most of this module reads JSON manifests and directory listings only, so
-``status`` stays cheap enough to call from a menu loop or a preflight check.
-The year-bound helpers are the exception: they run one aggregate over the
-catalog's own target shards, because the report-year range is not recorded
-anywhere a manifest could answer it.
+Reads manifests and directory listings only, so ``status`` stays cheap. The
+year-bound helpers are the exception: the report-year range is recorded nowhere
+a manifest could answer it.
 """
 
 from __future__ import annotations
@@ -45,9 +42,8 @@ _MIN_PLAUSIBLE_YEAR = 1990
 
 def _read_json(path: Path) -> dict[str, Any] | None:
     """Return parsed JSON, or None when absent or unreadable.
-
-    A truncated manifest is reported as absent rather than raising, so a single
-    damaged directory cannot make discovery fail for every other entry.
+    A truncated manifest counts as absent, so one damaged directory cannot fail
+    discovery for every other entry.
     """
     if not path.is_file():
         return None
@@ -70,14 +66,7 @@ def current_catalog_id(paths: FilingCatalogPaths) -> str | None:
 def resolve_catalog_reference(paths: FilingCatalogPaths, catalog: str) -> str:
     """Resolve a catalog reference to a concrete catalog id.
 
-    Accepts a literal id or the ``current`` alias, which the pointer resolves.
-    A literal id is validated as a path segment, so a caller-supplied string can
-    never escape the snapshots tree.
-
-    This lives in ``discovery`` rather than ``planner`` because resolving a
-    reference against the published pointer is the same question
-    :func:`current_catalog_id` and :func:`discover_catalogs` answer, and three
-    callers now need it.
+    A literal id is validated as a path segment, so it cannot escape the tree.
     """
     if catalog == CURRENT_ALIAS:
         resolved = current_catalog_id(paths)
@@ -94,17 +83,15 @@ def discover_catalogs(
 ) -> list[dict[str, Any]]:
     """List every published catalog snapshot, newest id last.
 
-    Results are sorted by catalog id for a stable presentation order; the id is
-    content-derived, so lexical order is meaningful and reproducible.
+    Sorted by catalog id: it is content-derived, so lexical order is reproducible.
     """
     resolved = paths or resolve_filing_catalog_paths()
     found: list[dict[str, Any]] = []
     if not resolved.snapshots_root.is_dir():
         return found
     for entry in sorted(resolved.snapshots_root.iterdir()):
-        # ``current`` is the pointer, and a policy-scope feature snapshot is also a
-        # directory here; both are told apart by what they do not hold. Only a
-        # directory carrying snapshot.manifest.json is a catalog snapshot.
+        # ``current`` is the pointer and a policy feature snapshot is also a directory
+        # here; only one carrying snapshot.manifest.json is a catalog snapshot.
         if not entry.is_dir() or entry.name == CURRENT_ALIAS:
             continue
         manifest = _read_json(entry / SNAPSHOT_MANIFEST_NAME)
@@ -158,13 +145,7 @@ def discover_plans(paths: FilingCatalogPaths | None = None) -> list[dict[str, An
 def policy_search_dirs(paths: FilingCatalogPaths | None = None) -> list[Path]:
     """Directories a selection policy may be published in.
 
-    ``policies/`` is the declared location; the pipeline root is also scanned so a
-    policy dropped there is still found. The root holds only directories
-    (``snapshots/``, ``plans/``, ``policies/``) and the scan skips anything that
-    does not parse as a policy, so the extra entry cannot surface a false match.
-
-    The layout lives in Layer 4, so the engine cannot resolve it; this is the
-    resolver that hands explicit directories to the engine-level scan.
+    The pipeline root is scanned too; anything not parsing as a policy is skipped.
     """
     resolved = paths or resolve_filing_catalog_paths()
     return [resolved.policies_root, resolved.catalog_root]
@@ -180,11 +161,7 @@ def auto_policy(
     paths: FilingCatalogPaths | None = None,
     dest: Path | None = None,
 ) -> SelectionPolicy:
-    """Derive a baseline policy from a published catalog's own forms and years.
-
-    The engine derives the policy from observed data; locating that data is a
-    layout concern, so it is resolved here.
-    """
+    """Derive a baseline policy from a published catalog's own forms and years."""
     resolved = paths or resolve_filing_catalog_paths()
     catalog_id = resolve_catalog_reference(resolved, catalog)
     manifests = discover_catalogs(resolved)
@@ -201,16 +178,8 @@ def _year_bounds_query(
     date_selection: DateSelection = (),
 ) -> str:
     """Return the year-bound query over ``relation``, optionally narrowed.
-
-    The year is read off ``report_date`` with the same plausibility clip the
-    unfiltered bound has always used. The narrowing is optional because the two
-    callers want different things: automatic era bands want the years a
-    *selection* can reach, while the fallback for a selection that reaches
-    nothing wants every year the catalog holds.
-
-    A non-empty selection filters on the parsed date alias, so the relation is
-    wrapped here rather than patched by the caller: the predicate and the
-    relation it reads are built together, and neither can drift from the other.
+    A nonempty selection filters on the parsed alias, so the relation is wrapped here
+    and cannot drift from the predicate.
     """
     clauses = [
         "report_date IS NOT NULL",
@@ -253,10 +222,8 @@ def _target_relation(paths: FilingCatalogPaths, catalog_id: str) -> str | None:
 
 def catalog_year_bounds(paths: FilingCatalogPaths, catalog_id: str) -> tuple[int, int]:
     """Return the observed report-year range of a catalog, clipped to EDGAR.
-
-    Named because automatic era bands need it as a fallback: a selection that
-    matches no dated row still has to publish bands, and the honest ones then
-    come from every year the catalog holds.
+    The fallback for a selection reaching nothing: bands still must be published, and
+    the honest ones come from every year the catalog holds.
     """
     current_year = _current_year()
     relation = _target_relation(paths, catalog_id)
@@ -276,12 +243,9 @@ def eligible_year_bounds(
     forms: Sequence[str] | None = None,
     date_selection: DateSelection = (),
 ) -> tuple[int, int] | None:
-    """Return the report-year range a selection can reach, or ``None`` if empty.
-
-    ``None`` rather than a synthetic range, because "this selection matches no
-    dated row" is a fact the caller must handle differently from "the catalog is
-    narrow": the first means derive bands from something else, the second means
-    these are the bands.
+    """Return the report-year range a selection can reach, or ``None``.
+    ``None`` rather than a synthetic range: "matches no dated row" is handled
+    differently from "the catalog is narrow".
     """
     relation = _target_relation(paths, catalog_id)
     if relation is None:

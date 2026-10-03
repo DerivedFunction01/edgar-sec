@@ -1,20 +1,7 @@
 """Document processing: raw payload in, normalized text and triage out.
 
-Two processors, both satisfying :class:`DocumentProcessor`:
-
-:class:`FilingProcessor`
-    The real one. Runs the composition seam, then asks the form's evaluator
-    whether the result is a self-contained filing or a stub that delegates to an
-    exhibit. The triage rides along in the metadata rather than splitting the
-    work, because deciding a document is a stub requires having normalized it.
-
-:class:`PassThroughProcessor`
-    Stores the payload unprocessed. Used for a corpus where normalization is not
-    the point.
-
-The processor is deliberately synchronous. A chunk is fetched in parallel and
-normalized in this thread, which is where the work actually is; an async
-protocol here would buy no concurrency the thread pool does not already have.
+Triage rides in the metadata rather than splitting the work: deciding a document is
+a stub requires having normalized it.
 """
 
 from __future__ import annotations
@@ -29,19 +16,16 @@ from edgar_sec.engine.forms.normalize import NormalizationResult, normalize_docu
 from edgar_sec.engine.forms.plugins.registry import get_plugin
 from edgar_sec.foundation.hashing import sha256_text
 
-#: Bumped when normalization output changes shape. A chunk written by an older
-#: processor is not interchangeable with one written by this version, so the
-#: fingerprint gates chunk reuse rather than the schema version alone.
+#: Bumped when normalization output changes shape; the fingerprint gates chunk reuse,
+#: so an older processor's checkpoints are not interchangeable with this one's.
 PROCESSOR_SCHEMA_VERSION = 1
 
-#: Identifies *which* normalization produced a text, so a reprocessed document
-#: is distinguishable from one stored under a previous implementation.
+#: Identifies *which* normalization produced a text.
 PROCESSOR_FINGERPRINT = f"document-storage-normalizer:v{PROCESSOR_SCHEMA_VERSION}"
 
 REPRESENTATION_RAW = "raw"
 
-#: Fingerprint for the unprocessed pass-through, kept distinct from the
-#: normalizer's so a chunk written by one is never reused by the other.
+#: Distinct so one processor's checkpoint is never reused by the other.
 PASS_THROUGH_FINGERPRINT = "raw-pass-through"
 
 

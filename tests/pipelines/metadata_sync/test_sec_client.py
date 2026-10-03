@@ -1,9 +1,5 @@
-"""Submissions client fan-out tests, offline via the injected transport.
-
-The client owns the fan-out from one CIK to its main document plus every
-historical file. Historical files are required inputs rather than extras, so a
-per-file failure is recorded on the result instead of raised, and the engine
-decides ``partial`` versus ``failed`` downstream.
+"""Submissions client fan-out: a per-file failure is recorded, not raised, so the
+engine decides ``partial`` versus ``failed`` downstream.
 """
 
 from __future__ import annotations
@@ -131,13 +127,7 @@ def test_client_accepts_an_explicit_user_agent(session: FakeSession) -> None:
 
 
 def test_client_builds_from_resolved_settings() -> None:
-    """The production construction path, exercised from the pipeline side.
-
-    `cmd_run`, `cmd_worker`, and `cmd_augment` all reach the network through
-    `_build_client()` -> `SubmissionsClient(settings=...)` ->
-    `SecHttpClient.from_settings`. That chain was broken once and no pipeline
-    test reached it, because every other test injects a fake transport.
-    """
+    """Every other test injects a fake transport, so only this reaches the chain."""
     from edgar_sec.foundation.runtime.settings import resolve_runtime_settings
     from edgar_sec.pipelines.metadata_sync.cli import _build_client
 
@@ -149,12 +139,7 @@ def test_client_builds_from_resolved_settings() -> None:
 
 
 def test_cache_configuration_is_forwarded_to_the_http_client(tmp_path: Path) -> None:
-    """The store is reachable configuration, not a construction-time accident.
-
-    Without a forwarded cache root the client silently runs with no response
-    cache and no failure ledger, which costs a request per URL on every
-    re-fetch and makes a known-bad URL cost its retries again.
-    """
+    """Without a forwarded cache root there is no cache and no failure ledger."""
     client = SubmissionsClient(
         settings=resolve_runtime_settings().sec,
         cache_dir=tmp_path,

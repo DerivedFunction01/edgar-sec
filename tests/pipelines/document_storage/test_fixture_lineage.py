@@ -1,5 +1,3 @@
-"""Tests for fixture lineage validation."""
-
 from __future__ import annotations
 
 import pytest

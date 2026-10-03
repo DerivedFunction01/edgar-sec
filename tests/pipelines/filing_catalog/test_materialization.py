@@ -26,27 +26,14 @@ def test_unnest_query_embeds_the_path_as_a_literal() -> None:
 
 
 def test_unnest_query_takes_exactly_one_source_part() -> None:
-    """A shard is written per source part, so the builder reads exactly one file.
-
-    Concatenating the whole part list into one ``read_parquet([...])`` is what
-    made the unnest unbounded: the correlated lateral below then planned as a
-    delim join over every part at once. One file per query keeps peak memory
-    proportional to a part rather than to the cohort.
-    """
+    """Peak memory stays proportional to a part rather than to the cohort."""
     query = build_part_unnest_query("data/part-00007.parquet")
     assert "read_parquet('data/part-00007.parquet')" in query
     assert "read_parquet([" not in query
 
 
 def test_unnest_query_does_not_correlate_the_unnest() -> None:
-    """The unnest must stay uncorrelated.
-
-    ``LATERAL (SELECT UNNEST(t.filings))`` makes DuckDB insert a ``DELIM_SCAN``,
-    which pins the entire nested value of every source row before emitting
-    anything. That pin does not spill, so it exhausts the memory limit where the
-    uncorrelated form streams. This asserts the *shape*; the plan-level assertion
-    below asserts the consequence.
-    """
+    """A DELIM_SCAN pins every nested value before emitting, and does not spill."""
     query = build_part_unnest_query("data/part-00000.parquet")
     assert "LATERAL" not in query
     assert "UNNEST(filings)" in query
@@ -73,7 +60,6 @@ def test_unnest_query_refuses_an_empty_part_path() -> None:
 
 def test_unnest_query_applies_the_documented_derivation_rules() -> None:
     query = build_part_unnest_query("p.parquet")
-    # accession normalization, bundle fallback, hashing
     assert "replace(accession_number, '-', '')" in query
     assert "accession_number || '.txt'" in query
     assert "ltrim(source_cik, '0')" in query
@@ -84,20 +70,13 @@ def test_unnest_query_applies_the_documented_derivation_rules() -> None:
 
 
 def test_unnest_query_normalizes_whitespace_primary_documents() -> None:
-    """v1 compared against '' only; the engine strips. v2 aligns with the engine."""
+    """The engine strips before comparing, and the SQL must align."""
     query = build_part_unnest_query("p.parquet")
     assert "nullif(trim(primary_document), '')" in query
 
 
 def test_unnest_query_executes_without_a_delim_join(tmp_path, sample_source) -> None:
-    """The query must run, and its plan must contain no delim join.
-
-    This is the assertion that would have caught the original defect. The shape
-    checks above fail loudly if someone reintroduces the correlated lateral, but
-    only a real plan proves DuckDB stopped inserting the delim scan on its own.
-    ``EXPLAIN`` is used rather than ``EXPLAIN ANALYZE`` so the test stays a fast
-    static check with no data movement.
-    """
+    """Only a real plan proves DuckDB stopped inserting the delim scan itself."""
     con = duckdb.connect()
     try:
         query = build_part_unnest_query(str(sample_source))

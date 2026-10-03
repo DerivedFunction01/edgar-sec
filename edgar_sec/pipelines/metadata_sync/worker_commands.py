@@ -1,20 +1,7 @@
 """Rendering the distributed lifecycle as copy-pasteable shell commands.
-
-Printing the commands matters because the alternative is remembering the flags: a
-worker handed the wrong arguments runs chunks it was never assigned, and the
-failure looks like a data problem rather than a mistyped one.
-
-This is separate from the wizard because it is not a wizard concern. It needs an
-assignment division and a plan summary, and it needs nothing from the session
-except which plan is resolved -- so it takes those as arguments instead of
-importing the operator, and the operator hands them over.
-
-The sequence printed here is the one the pipeline actually implements, and every
-step is important. ``export`` copies the bundle out; each machine runs
-``worker`` against its own bundle; the coordinator must ``import`` each returned
-bundle through the trust boundary before ``merge`` will see those chunks. Emitting
-export/worker/merge and omitting ``import`` produced a workflow whose final
-command silently merged nothing, because the returned chunks were never adopted.
+The printed sequence is the one the pipeline implements, and ``import`` is part of
+it: without it the returned chunks are never adopted and the final merge silently
+merges nothing.
 """
 
 from __future__ import annotations
@@ -33,10 +20,7 @@ __all__ = ["render_worker_commands", "shell_arg"]
 
 def shell_arg(value: str) -> str:
     """Quote one emitted argument so a destination with spaces stays executable.
-
-    The commands below are meant to be copied and pasted, so a destination chosen
-    as ``distrib/q3 run`` must survive the shell rather than becoming two
-    arguments and a parse error on the receiving machine.
+    These commands are pasted, so a spaced destination must survive the shell.
     """
     if value and all(char not in value for char in " \t\n\"'\\$`*?[]{}();&|<>#~!()"):
         return value
@@ -48,15 +32,8 @@ def render_worker_commands(
     resolve_plan_id: Callable[[], str | None],
 ) -> None:
     """Print the distributed lifecycle for the resolved plan, in execution order.
-
-    ``resolve_plan_id`` returns the plan this session is working on, or ``None``
-    when it could not be established. The caller owns that decision -- the wizard
-    prompts and discovers -- so this function never asks a question it cannot
-    justify, and a cancelled pick simply prints nothing.
-
-    Worker ids and bundle names come from the same assignment division ``export``
-    uses, and workers with no chunk are not listed, so the printed set matches the
-    directories the export will actually create.
+    A ``None`` plan prints nothing. Worker ids come from the division ``export`` uses,
+    minus the empty ones, so the printed set matches the directories created.
     """
     plan_id = resolve_plan_id()
     if not plan_id:

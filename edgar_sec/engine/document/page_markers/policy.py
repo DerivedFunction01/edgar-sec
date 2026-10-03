@@ -1,25 +1,6 @@
 """Applying the declared page-marker policy to a text frame.
-
-Three policies, and the difference between them is what happens to the bytes:
-
-- ``strip`` deletes the validated span and records provenance for it.
-- ``annotate`` replaces the span with a canonical token line carrying an id,
-  and additionally emits a token at each *inferred* boundary — an inferred
-  boundary has no removable span, because nothing in the source said where the
-  page ended.
-- ``preserve`` leaves the source intact and emits nothing.
-
-Removal is coordinate-safe in three specific ways. A span that is a whole line
-takes its trailing newline, so removing it does not leave a blank line. A span
-overlapping a compact rendered `<TABLE>` is widened to the whole table, so the
-`</TABLE>` cannot survive its `<TABLE>`. And a removal that lands mid-sentence
-between a non-terminal word and a lowercase continuation is joined with a space
-rather than concatenated, because the marker was inside a sentence.
-
-Markup is projected to a text frame by
-:func:`~edgar_sec.engine.document.html.breaks.render_html_to_break_text` and
-analysed in that frame, so the analysis and the policy always agree about which
-coordinate frame their offsets are in.
+Removal is coordinate-safe: a whole-line span takes its trailing newline, a span over a compact
+`<TABLE>` widens to the whole table, a mid-sentence removal joins with a space.
 """
 
 from __future__ import annotations
@@ -44,18 +25,14 @@ from .models import (
     PageMarkerKind,
 )
 
-#: The punctuation that proves the text before a removal already ended a
-#: sentence, so no joining space is owed.
+#: Punctuation proving the text before a removal already ended a sentence; no joining space owed.
 _TERMINAL_PUNCT = RE_TERMINAL_BOUNDARY
 _TAGGED_TABLE = re.compile(r"<TABLE\b.*?</TABLE\s*>", re.IGNORECASE | re.DOTALL)
 
-#: The longest rendered furniture table that may be widened onto. Repeating
-#: page furniture is a few lines tall; widening onto a data table would delete
-#: document content.
+#: Widening onto a data table would delete document content; repeating furniture is a few lines tall.
 _MAX_COMPACT_TABLE_LINES = 12
 
-#: How far either side of a removal is read when deciding whether the removal
-#: landed inside a sentence.
+#: How far either side of a removal is read to decide whether it landed inside a sentence.
 _BOUNDARY_WINDOW = 2000
 
 
@@ -77,13 +54,7 @@ def _expand_table_range(
     table_ranges: list[tuple[int, int]] | None = None,
 ) -> tuple[int, int]:
     """Make a page-furniture range atomic when it touches a tagged table.
-
-    HTML page conversion emits canonical ``<TABLE>`` wrappers around rendered
-    furniture. A marker can cover only the wrapper or only the body, which
-    would leave the counterpart tag behind. Expand such a range to the entire
-    table before applying removals. Only compact tables qualify: repeating
-    page furniture is a few lines tall, while widening onto a large data
-    table would delete document content.
+    A marker covering only the wrapper or only the body strands the counterpart tag. Only compact tables qualify.
     """
     if table_ranges is None:
         table_ranges = _find_compact_table_ranges(document)
@@ -141,11 +112,7 @@ def _marker_kind_for_source(source: str) -> str:
 
 def _needs_join(preceding: str, following: str) -> bool:
     """Return whether removing a span here would concatenate two sentence halves.
-
-    The span is only owed a joining space when the text before it did not end a
-    sentence, the text after it starts lowercase, and that text does not open
-    with a negative boundary phrase — "none of" and "not only" continue the
-    sentence, so joining them is a concatenation and not a splice.
+    The span is only owed a joining space when the text before it did not end a sentence, the text after it starts lowercase, and that text does not open with a negative boundary phrase — "none of" and "not only" continue the sentence, so joining them is a concatenation and not a splice.
     """
     return bool(
         preceding
@@ -164,17 +131,7 @@ def apply_page_markers(
     first_id: int = 1,
 ) -> tuple[str, tuple[PageBreakArtifact, ...], dict[str, dict], int]:
     """Apply the declared rendering policy to validated ASCII decisions.
-
-    Returns the rendered text, recorded artifacts, deduplicated template
-    entries, and the next free artifact id. ``strip`` removes validated
-    furniture and records provenance; ``annotate`` replaces each validated
-    span with a canonical token line; ``preserve`` leaves the source intact.
-    Metadata-only inferred boundaries emit artifacts only in ``annotate``
-    mode, at their line coordinate, and are never removable.
-
-    An analysis whose `source_text` is not this document is discarded and
-    recomputed: its offsets would refer to a different frame, and applying
-    them anyway would cut the document at arbitrary positions.
+    An analysis whose ``source_text`` is not this document is discarded: its offsets belong to another frame.
     """
 
     if not document:
@@ -205,8 +162,7 @@ def apply_page_markers(
             return artifact
         return replace(artifact, template_id=template_id)
 
-    # Replacement ranges in document order; overlapping decisions merge into
-    # one range carrying every decision so ids stay sequential and stable.
+    # Overlapping decisions merge into one range so artifact ids stay sequential.
     ranges: list[list] = []  # [start, end, [artifact, ...]]
     table_ranges = _find_compact_table_ranges(document)
     for decision in analysis.decisions:
@@ -334,8 +290,7 @@ def apply_text_policy(
     str, PageMarkerAnalysis, tuple[PageBreakArtifact, ...], dict[str, dict], int
 ]:
     """Apply the policy to text-frame decisions via the ASCII detector.
-
-    The returned analysis remains in the ASCII text coordinate frame.
+    The returned analysis stays in the ASCII text coordinate frame.
     """
 
     if analysis is None:
@@ -363,18 +318,7 @@ def apply_fast_html_page_policy(
     tuple,
 ]:
     """Render HTML to a text frame and apply page-marker decisions to it.
-
-    The projection is the one
-    :func:`~edgar_sec.engine.document.html.breaks.render_html_to_break_text`
-    already owns, so page structure survives projection exactly once and there
-    is no second HTML-to-text frame to drift out of step with it. Table
-    furniture is admitted here and only here, because a rendered `<TABLE>` is
-    how a filing prints a repeated banner, and it is not something the ASCII
-    path can see.
-
-    Returns the rendered text, the analysis in the *text* frame, the recorded
-    artifacts, the deduplicated template entries, the next free artifact id,
-    and the table geometry the projection produced.
+    Table furniture is admitted only here: a rendered ``<TABLE>`` is how a filing prints a banner.
     """
 
     normalized = render_html_to_break_text(html)

@@ -1,9 +1,5 @@
-"""Lifecycle convergence: the same cohort must produce the same snapshot.
-
-These tests are the definition of done for the format change. They assert
-properties a single-path unit test cannot: that scaling the cohort does not
-change what the plan *is*, that reassigning work does not change the snapshot,
-and that the published artifact is verifiable from itself.
+"""Lifecycle convergence: scaling the cohort, reassigning work, and verifying a
+published artifact from itself.
 """
 
 from __future__ import annotations
@@ -100,12 +96,7 @@ def _snapshot_rows(metadata, snapshot_id: str) -> list[dict]:
 
 
 def test_the_plan_document_stays_small_at_every_scale() -> None:
-    """The reason the roster became its own artifact.
-
-    The previous document embedded the CIK list three times, so a 250,000-CIK
-    cohort produced a 15 MB plan. Constant in cohort size is the property that
-    makes a plan cheap to copy to a worker and cheap to diff.
-    """
+    """Constant in cohort size is what makes a plan cheap to copy and to diff."""
     small = build_plan(roster_of(MINI_CIKS), chunk_size=1000)
     large = build_plan(
         roster_of(tuple(f"{value:010d}" for value in range(1, 250_001))),
@@ -120,11 +111,7 @@ def test_the_plan_document_stays_small_at_every_scale() -> None:
 
 
 def test_reassigning_every_chunk_leaves_the_plan_untouched(tmp_path: Path) -> None:
-    """Moving work between machines must not move the plan.
-
-    Assignment is a separate artifact with its own identity, so a reassignment
-    cannot discard the completed checkpoints of an otherwise identical cohort.
-    """
+    """Assignment has its own identity, so a reassignment cannot discard checkpoints."""
     plan, run_paths = _prepare(tmp_path, chunk_size=1)
     session = _session()
     client = _client(session)
@@ -185,12 +172,7 @@ def test_derived_and_recorded_plan_ids_agree(tmp_path: Path) -> None:
 def test_two_machines_with_one_bundle_merge_to_the_same_snapshot(
     tmp_path: Path,
 ) -> None:
-    """The property the whole distribution surface exists to provide.
-
-    A single host runs every chunk in one directory. Two "machines" each run a
-    disjoint assignment from copies of the same bundle. Both must produce the same
-    published snapshot, because a worker's location is not a property of the data.
-    """
+    """A worker's location is not a property of the data."""
     single_root = tmp_path / "single"
     plan, single_paths = _prepare(single_root, chunk_size=1)
     single_client = _client(_session())
@@ -205,7 +187,6 @@ def test_two_machines_with_one_bundle_merge_to_the_same_snapshot(
     single_report = merge_chunks(plan, single_paths, plan.plan_id)
     publish_snapshot(single_report, single_paths.metadata)
 
-    # Now the same plan, distributed.
     distributed_root = tmp_path / "distributed"
     coordinator_paths = resolve_run_paths(plan.plan_id, distributed_root)
     write_plan(plan, coordinator_paths)
@@ -238,9 +219,7 @@ def test_two_machines_with_one_bundle_merge_to_the_same_snapshot(
         == {plan.plan_id}
         == set(distributed.column("snapshot_id").to_pylist())
     )
-    # The CIK index is derived from the published rows' key column, so it is
-    # deterministic across runs even though the fetch timestamps are not. The
-    # per-part digests are not, because a part's bytes carry those timestamps.
+    # Part bytes carry fetch timestamps, so only the index digest is deterministic.
     assert single_report.cik_index_sha256 == distributed_report.cik_index_sha256
     assert single_report.cik_count == distributed_report.cik_count == plan.row_count
     assert single_report.part_count == distributed_report.part_count == plan.chunk_count
@@ -328,12 +307,7 @@ def test_a_published_snapshot_is_verifiable_from_its_own_directory(
 
 
 def test_phase_two_reads_exactly_the_declared_parts(tmp_path: Path) -> None:
-    """The handoff is a part list, not a single file.
-
-    Phase 2 must consume exactly the parts the manifest names. The CIK index is a
-    Phase 1 sibling, not a part, so a consumer resolving the part list cannot
-    mistake it for a dataset.
-    """
+    """The CIK index is a sibling artifact, not a part of the dataset."""
     plan, run_paths = _prepare(tmp_path, chunk_size=2)
     client = _client(_session())
     run_chunk_ids(

@@ -11,7 +11,6 @@ from edgar_sec.foundation.text.compounds import (
     expand_variants,
 )
 
-# Benchmark interest rates (singular canonical)
 BENCHMARK_RATES: tuple[str, ...] = (
     "sofr",
     "libor",
@@ -22,7 +21,6 @@ BENCHMARK_RATES: tuple[str, ...] = (
     "eurodollar",
 )
 
-# Interest rate underlying prefixes
 IR_UNDERLYINGS: tuple[str, ...] = (
     "interest rate",
     "treasury rate",
@@ -33,7 +31,6 @@ IR_UNDERLYINGS: tuple[str, ...] = (
     *BENCHMARK_RATES,
 )
 
-# Canonical singular IR instrument bases (including IR-specific cap, floor, lock)
 IR_BASES: tuple[str, ...] = (
     "swap",
     "swaption",
@@ -46,7 +43,6 @@ IR_BASES: tuple[str, ...] = (
     "derivative",
 )
 
-# Dedicated IR structures & forward agreements
 IR_STRUCTURES: tuple[str, ...] = expand_variants(
     (
         "forward rate agreement",

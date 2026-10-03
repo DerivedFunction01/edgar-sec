@@ -24,12 +24,7 @@ from edgar_sec.pipelines.filing_catalog.publication import (
 
 
 def _write_locator_groups(staging: Path, keys: list[str]) -> None:
-    """Write a real work order.
-
-    Reuse recomputes the selection fingerprint by reading the published locator
-    groups, so a byte stub can no longer stand in for the file: the contract is
-    about the work order's actual contents.
-    """
+    """Reuse recomputes the fingerprint from these contents, so a stub cannot."""
     table = pa.table({"document_locator_key": pa.array(keys, pa.string())})
     pq.write_table(table, staging / "locator_groups.parquet")
 
@@ -241,12 +236,7 @@ def test_publish_moves_the_whole_bundle(tmp_path: Path) -> None:
 
 
 def test_target_plan_schema_version_is_declared() -> None:
-    # 1.1 added the pinned seed sidecar and the selection fingerprint, both of
-    # which a reused bundle must carry. 1.2 added the date selection to both plan
-    # scopes, and the resolved era bands and form-by-era allocation to the
-    # selection report. Every bump makes the previous bundles non-reusable
-    # rather than quietly reinterpreted, so the version is pinned rather than
-    # merely carried.
+    # Every bump makes older bundles non-reusable rather than reinterpreted.
     assert TARGET_PLAN_SCHEMA_VERSION == "1.2"
 
 

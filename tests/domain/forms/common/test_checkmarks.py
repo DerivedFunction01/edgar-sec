@@ -1,5 +1,3 @@
-"""Unit tests for edgar_sec.domain.forms.common.checkmarks."""
-
 from __future__ import annotations
 
 from edgar_sec.domain.forms.common.checkmarks import (
@@ -17,18 +15,15 @@ def test_canonical_constants() -> None:
 
 
 def test_font_glyph_state() -> None:
-    # Wingdings checkbox glyphs
     assert font_glyph_state("Wingdings", "þ") == "checked"
     assert font_glyph_state("Wingdings", "ý") == "checked"
     assert font_glyph_state("Wingdings", "o") == "unchecked"
     assert font_glyph_state("Wingdings", "¨") == "unchecked"
 
-    # Wingdings 2 checkbox glyphs
     assert font_glyph_state("Wingdings 2", "R") == "unchecked"
     assert font_glyph_state("Wingdings 2", "S") == "checked"
     assert font_glyph_state("Wingdings 2", "£") == "checked"
 
-    # Unknown or non-matching font
     assert font_glyph_state("Arial", "x") is None
     assert font_glyph_state("Wingdings", "Z") is None
 

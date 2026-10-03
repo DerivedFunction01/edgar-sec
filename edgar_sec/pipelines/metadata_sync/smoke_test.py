@@ -1,16 +1,6 @@
-"""Bounded live SEC smoke test. Not part of the pytest suite.
-
-    .venv/bin/python -m edgar_sec.pipelines.metadata_sync.smoke_test \
-        --input tests/fixtures/cik_sec_mini.csv \
-        --artifacts <preview-root>
-
-This is the credential-gated, rate-limited live path. It always writes to an
-explicit preview artifacts root and never touches a published snapshot or the
-production ``current`` pointer, so running it cannot corrupt real output.
-
-It is deliberately not collected by pytest: the default gate stays offline and
-deterministic, and live verification is an explicit manual step. Exit code is
-nonzero when any sampled CIK fails.
+"""Bounded live SEC smoke test. Not collected by pytest.
+python -m edgar_sec.pipelines.metadata_sync.smoke_test --input <csv> --artifacts <preview-root>
+Writes only to the explicit preview root, never a published snapshot.
 """
 
 from __future__ import annotations

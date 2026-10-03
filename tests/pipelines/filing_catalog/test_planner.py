@@ -1,4 +1,4 @@
-"""Unit tests for deterministic target planning."""
+"""Deterministic target planning: filters, date selection, and bundle identity."""
 
 from __future__ import annotations
 
@@ -51,9 +51,7 @@ def test_all_forms_plans_every_target(catalog_id: str, artifacts_root: Path) -> 
 
 # --- the date selection filter ---------------------------------------------
 #
-# The committed fixture carries six targets with a readable report_date and seven
-# with an empty one, which is exactly the split the contract turns on: an empty
-# selection keeps all thirteen, and any nonempty selection drops the seven.
+# Six fixture targets have a readable report_date and seven an empty one.
 
 
 def test_an_empty_date_selection_plans_every_target(
@@ -77,11 +75,7 @@ def test_a_year_atom_selects_only_that_report_year(
 def test_quarter_and_month_atoms_select_calendar_periods(
     catalog_id: str, artifacts_root: Path
 ) -> None:
-    """Calendar quarters of ``report_date``, not of ``filing_date``.
-
-    The dated rows are 2023-06-30 (Q2), 2023-09-30 (Q3), 2023-12-30 and
-    2023-12-31 twice (Q4), and 2024-03-31 (Q1).
-    """
+    """Calendar quarters of ``report_date``: the dated rows are Q2, Q3, Q4 twice, Q1."""
     assert plan(catalog_id, artifacts_root, dates="@Q1")["selected_rows"] == 1
     assert plan(catalog_id, artifacts_root, dates="@Q2")["selected_rows"] == 1
     assert plan(catalog_id, artifacts_root, dates="@Q3")["selected_rows"] == 1
@@ -98,7 +92,7 @@ def test_quarter_and_month_atoms_select_calendar_periods(
 def test_recurrence_and_absolute_windows_are_unioned(
     catalog_id: str, artifacts_root: Path
 ) -> None:
-    """Q4 2023 (three rows), Q1 2024 (one), and June of any year (one)."""
+    """Q4 2023 (three), Q1 2024 (one), June of any year (one)."""
     meta = plan(
         catalog_id,
         artifacts_root,
@@ -111,11 +105,7 @@ def test_recurrence_and_absolute_windows_are_unioned(
 def test_a_nonempty_selection_excludes_targets_with_no_readable_date(
     catalog_id: str, artifacts_root: Path
 ) -> None:
-    """The empty selection keeps them; a nonempty one cannot place them.
-
-    This asymmetry is the contract rather than an artifact of the SQL, so it is
-    pinned from both sides on the same catalog.
-    """
+    """The empty selection keeps undated rows; a nonempty one cannot place them."""
     unfiltered = plan(catalog_id, artifacts_root)
     filtered = plan(catalog_id, artifacts_root, dates="2000..2030")
     assert unfiltered["selected_rows"] - filtered["selected_rows"] == 7
@@ -125,12 +115,7 @@ def test_a_nonempty_selection_excludes_targets_with_no_readable_date(
 def test_a_form_excluded_only_by_date_publishes_no_partition(
     catalog_id: str, artifacts_root: Path
 ) -> None:
-    """All three 8-K rows in the fixture have an empty report_date.
-
-    Writing an empty partition for them would publish a file that says "this
-    catalog has no 8-K in range" as a fact about the catalog rather than a
-    consequence of the request, so discovery runs the date predicate too.
-    """
+    """All three 8-K rows are undated, and an empty partition would read as a fact."""
     unfiltered = plan(catalog_id, artifacts_root, forms=("8-K",))
     assert unfiltered["counts"] == {"8-K": 3}
 
@@ -143,7 +128,7 @@ def test_a_form_excluded_only_by_date_publishes_no_partition(
 def test_the_date_selection_and_the_form_filter_conjoin(
     catalog_id: str, artifacts_root: Path
 ) -> None:
-    """``10-K`` is present in both years; the other 10-K forms carry no date."""
+    """``10-K`` is present in both years; ``10-K/A`` carries no date."""
     meta = plan(catalog_id, artifacts_root, forms=("10-K",), dates="2023")
     assert meta["counts"] == {"10-K": 4}
     assert (
@@ -154,12 +139,7 @@ def test_the_date_selection_and_the_form_filter_conjoin(
 def test_a_published_partition_keeps_the_declared_target_schema(
     catalog_id: str, artifacts_root: Path
 ) -> None:
-    """The dated relation carries one extra column for the parsed date.
-
-    Selecting it into the shard would publish a column no consumer declared, so
-    partitions project ``TARGET_COLUMNS`` by name rather than taking the
-    relation's shape.
-    """
+    """The parsed-date column must not reach the published shard."""
     from edgar_sec.domain.filing_catalog.schemas import TARGET_COLUMNS
     from edgar_sec.engine.selection.predicates import PARSED_DATE_ALIAS
 
@@ -185,7 +165,7 @@ def test_limit_stays_a_per_form_limit_under_a_date_selection(
 def test_the_normalized_selection_is_recorded_in_the_plan(
     catalog_id: str, artifacts_root: Path
 ) -> None:
-    """A report has to state what was selected without re-deriving it."""
+    """A report states the selection rather than leaving it to be re-derived."""
     meta = plan(catalog_id, artifacts_root, dates="@Q1[2011..2015], 2024 ")
     assert meta["date_selection"] == [
         {"kind": "absolute", "start_date": "2024-01-01", "end_date": "2024-12-31"},
@@ -208,17 +188,12 @@ def test_the_normalized_selection_is_recorded_in_the_plan(
 def test_equivalent_spellings_resolve_to_one_published_plan(
     catalog_id: str, artifacts_root: Path
 ) -> None:
-    """Identity is derived from the normalized clauses, not the caller's text.
-
-    Otherwise re-running with a reworded but equivalent selection forks a second
-    bundle of the same rows.
-    """
+    """A reworded equivalent selection must not fork a second bundle."""
     spellings = ("2023", "2023-01-01..2023-12-31", " 2023 ", "2023..2023")
     ids = {
         plan(catalog_id, artifacts_root, dates=text)["plan_id"] for text in spellings
     }
     assert len(ids) == 1
-    # A union of two years is a different selection and must not collapse in.
     assert plan(catalog_id, artifacts_root, dates="2023,2024")["plan_id"] not in ids
 
 
@@ -251,12 +226,7 @@ def test_form_filter_selects_one_partition(
 def test_form_filter_is_an_exact_allowlist(
     catalog_id: str, artifacts_root: Path
 ) -> None:
-    """A form is selected only when it is named verbatim.
-
-    ``10-K`` must not reach its amendment variant ``10-K/A``; listing
-    both selects both. This replaces the removed amendment policy: an
-    operator who wants amendments names them.
-    """
+    """``10-K`` must not reach ``10-K/A``; an operator wanting both names both."""
     base = plan(catalog_id, artifacts_root, forms=("10-K",))
     assert base["counts"] == {"10-K": 4}
     assert "10-K/A" not in base["counts"]
@@ -307,14 +277,7 @@ def test_planner_refuses_an_unsafe_form_filter(
 def test_planner_refuses_date_parameters(
     catalog_id: str, artifacts_root: Path, kwargs: dict[str, Any]
 ) -> None:
-    """A per-keyword date argument is not the date selection.
-
-    ``start_date``/``end_date``/``filing_date`` look like date filters but name
-    none of them: the selection is one union over ``report_date``, and a caller
-    passing a single bound expects a half-specified interval that no grammar in
-    this repository accepts. It is a TypeError rather than a silently ignored
-    keyword.
-    """
+    """A single bound names no selection, so it is a TypeError, not a no-op."""
     with pytest.raises(TypeError):
         plan(catalog_id, artifacts_root, **kwargs)
 

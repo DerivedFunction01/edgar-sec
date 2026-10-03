@@ -1,12 +1,6 @@
-"""The `FormPlugin` record and the default evaluator.
-
-A plugin is configuration data: a frozen dataclass specifying the execution flags
-and triage evaluator for a given SEC form family. `plugins/registry.py` seeds
-instances per family and resolves a raw form string to its plugin; `normalize.py`
-reads the stage gates during document normalization.
-
-`evaluate_generic` is the fallback triage evaluator returned for an unmodelled
-or generic form family.
+"""The `FormPlugin` record and the default evaluator: a plugin is the execution flags
+and triage evaluator for one form family, and `evaluate_generic` is the fallback
+for an unmodelled family.
 """
 
 from __future__ import annotations
@@ -22,23 +16,12 @@ GENERIC_FAMILY = "GENERIC"
 
 @dataclass(frozen=True, slots=True)
 class FormPlugin:
-    """What the shared normalization chain does differently for one family.
-
-    ``family`` is the canonical key the registry resolved to, not the raw input
-    string: ``10-K405`` and ``10-K/A`` select the same plugin, and a consumer
-    that reads the un-canonicalized form has to redo the alias resolution to get
-    the identity it already had.
-
-    ``enable_toc`` and ``enable_body_start`` gate real normalization stages — an
-    annual report's table of contents is cut
-    out of the text and a body root is resolved, an 8-K gets neither — so a
-    plugin whose flags are wrong silently returns text with a TOC still in it.
-
-    ``evaluator`` is the post-normalization triage hook, typed as the shared
-    ``Evaluator`` alias so it is callable with the normalized text alone.
+    """What the shared normalization chain does differently for one family. `family`
+    is the canonical resolved key, not the raw input form.
     """
 
     family: str
+    # Both gates control real stages, so wrong flags leave a TOC in the text.
     enable_toc: bool = False
     enable_body_start: bool = False
     evaluator: Evaluator | None = None

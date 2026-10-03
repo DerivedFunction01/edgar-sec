@@ -1,8 +1,6 @@
 """Compiled table patterns: block detection, footnote shape, hidden-element style.
 
-Also the three patterns the boundary resolver and the reflow intro policy read:
-the short column dash rule, the statement units label, and the narrative cue
-that introduces a table.
+Plus the three patterns the boundary resolver and the reflow intro policy read.
 """
 
 from __future__ import annotations

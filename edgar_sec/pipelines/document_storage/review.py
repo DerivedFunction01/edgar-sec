@@ -1,19 +1,6 @@
 """Compare two review runs and report what the change did.
 
-The workflow is generate, change the normalizer, generate again, compare. This
-module is the compare step, and it exists because `diff -ru` over two review
-directories answers the wrong question first: it opens with the sanitized
-`.html` files, which are the largest artifacts and the least likely to have
-moved. A reviewer then has to filter a filesystem diff down to the documents
-whose normalized text actually changed.
-
-This reads the two run manifests, joins them on document id, and writes one
-unified diff per document whose output changed. Everything else is a count.
-
-Scope is deliberately narrow. It does not know which change was intended, and
-it does not judge whether the new output is better -- that is what reading the
-diff is for. It also never regenerates anything, so it cannot be the reason a
-review run is stale.
+Reports; it never regenerates, so it cannot be the reason a review run is stale.
 """
 
 from __future__ import annotations
@@ -44,8 +31,7 @@ REMOVED = "removed"
 #: are excluded when deciding whether a document's own metadata drifted.
 _RUN_FIELDS = frozenset({"fixture_id"})
 
-#: Provenance fields worth comparing when both runs record them. Deliberately a
-#: closed vocabulary: see `_document_metadata`.
+#: Closed vocabulary: see ``_document_metadata``.
 _COMPARED_FIELDS = (
     "accession",
     "document_path",
@@ -150,13 +136,8 @@ def load_run_manifest(run_dir: Path) -> dict[str, dict[str, Any]]:
 def _document_metadata(entry: dict[str, Any]) -> dict[str, Any]:
     """The provenance fields recorded for a document.
 
-    Read off a fixed vocabulary rather than from whatever keys a manifest
-    happens to hold, so a field a run does not compute is ignored instead of read
-    as a change. Within that vocabulary an absent field is a real difference
-    rather than a schema difference: a run reporting no processor fingerprint is
-    not the same evidence as one reporting a different one, and a fingerprint
-    present in only one run is exactly the "which code produced this?" answer the
-    comparison exists to give.
+    A fixed vocabulary, so an uncomputed field is ignored rather than read as a change;
+    within it, an absent field is a real difference.
     """
     return {field: entry.get(field) for field in _COMPARED_FIELDS}
 
@@ -249,10 +230,8 @@ def compare_review_runs(
                 DocumentDiff(document_id, document_path, REMOVED, source_changed=False)
             )
             continue
-        # A changed source hash means the fixture itself was re-filled between
-        # the two runs. Every output difference for this document is then
-        # uninterpretable, so it is called out rather than blended into the
-        # change count.
+        # A changed source hash means the fixture was re-filled, so every output
+        # difference here is uninterpretable; report it apart from the change count.
         source_changed = base_entry.get("source_sha256") != new_entry.get(
             "source_sha256"
         )
@@ -278,9 +257,7 @@ def compare_review_runs(
             )
             continue
         if _metadata_changed(base_entry, new_entry):
-            # The text is identical but something about how it was produced
-            # moved. Surfaced because it is a real behavioural change that a
-            # text diff cannot show.
+            # Identical text with moved provenance: real, and invisible to a text diff.
             documents.append(
                 DocumentDiff(document_id, document_path, METADATA_ONLY, source_changed)
             )

@@ -1,9 +1,6 @@
 """Sibling span width balancing and header segment sizing heuristics.
-
-A rendered table's total width is a budget shared by every column, and a
-multi-column header needs a specific amount of it. These heuristics move width
-between columns rather than creating it, so a header that grows is paid for by
-a neighbour that had slack.
+A table's total width is a budget shared by every column, so these heuristics move width between
+columns rather than creating it: a header that grows is paid for by a neighbour with slack.
 """
 
 from __future__ import annotations
@@ -46,7 +43,6 @@ def balanced_wrap_width(text: str, max_cap: int = 52) -> int:
     if text_len <= max_cap:
         return text_len
 
-    # Try 2-line balanced wrapping
     half_len = (text_len + 1) // 2
     best_w = max_cap
     min_diff = 999
@@ -60,7 +56,6 @@ def balanced_wrap_width(text: str, max_cap: int = 52) -> int:
             if diff <= 6:
                 return max(len(lines[0].strip()), len(lines[1].strip()))
 
-    # Try 3-line balanced wrapping if text is long
     if text_len > 70:
         third_len = (text_len + 2) // 3
         for w in range(max(min_w, third_len - 3), min(max_cap, half_len)):
@@ -117,7 +112,6 @@ def balance_span_widths(
         if len(spans) < 2:
             continue
 
-        # Do not balance if spans are asymmetric (e.g. compact key/item label vs prose description)
         word_counts = [len(text.split()) for _, text in spans]
         text_lens = [len(text.strip()) for _, text in spans]
         if (

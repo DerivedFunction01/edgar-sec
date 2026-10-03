@@ -1,10 +1,6 @@
 """Horizontal column band inference, alignment resolution, and spacer policy.
-
-A source table often has more column positions than the reader can see: spacer
-gutters, indentation columns, and cells that no row uses. Dropping those
-positions changes the table's apparent shape, so a spacer is retained when it
-carries content, a distinct cell origin, or its own border/background, and
-dropped only when it is genuinely inert.
+A source table often has more column positions than the reader can see; dropping one changes the
+table's apparent shape, so a spacer is kept unless it is genuinely inert.
 """
 
 from __future__ import annotations
@@ -28,11 +24,7 @@ def is_structural_spacer(
     row_has_content: list[bool] | None = None,
 ) -> bool:
     """Determine whether an empty column has structural significance to retain.
-
-    Retained when:
-    - Starts a distinct cell origin in at least one row
-    - Has non-empty text in at least one cell origin
-    - Distinct border or background styling
+    Retained when a row starts a cell origin in it, an origin carries text, or it has distinct border/background styling.
     """
     has_origin = False
     has_content = False
@@ -45,7 +37,6 @@ def is_structural_spacer(
         if cell is None:
             continue
 
-        # Check if this column is the start of a cell in this row
         is_origin = (col_idx == 0) or (col_idx > 0 and cell is not row[col_idx - 1])
         if is_origin:
             has_origin = True
@@ -53,7 +44,6 @@ def is_structural_spacer(
                 has_content = True
                 break
 
-            # Check styling for empty origin cells (borders, background, or explicit spacer width on content rows)
             s = cell.style
             has_content_in_row = (
                 row_has_content[r_idx]
@@ -69,7 +59,6 @@ def is_structural_spacer(
                 has_styling = True
 
     if not has_origin:
-        # Submerged in spans across all rows: drop column
         return False
 
     return has_content or has_styling
@@ -80,11 +69,7 @@ def resolve_columns(
     box_matrix: list[list[CellBox | None]],
 ) -> tuple[list[int], list[HorizontalAlign], list[int]]:
     """Resolve active columns, column alignments, and pruned spacer columns.
-
-    Returns:
-    - active_col_indices: list of column indices to keep in the resolved grid
-    - col_alignments: alignment per active column
-    - spacer_col_indices: list of inert discarded column indices
+    Returns the indices to keep, the alignment per active column, and the discarded spacer indices.
     """
     if not grid_matrix or not grid_matrix[0]:
         return [], [], []
@@ -95,7 +80,6 @@ def resolve_columns(
     active_cols: list[int] = []
     spacer_cols: list[int] = []
 
-    # Single pass: precompute content presence per row
     row_has_content = [
         any(c is not None and bool(c.text.strip()) for c in row) for row in grid_matrix
     ]
@@ -106,7 +90,6 @@ def resolve_columns(
         else:
             spacer_cols.append(c_idx)
 
-    # If all columns were marked spacer, retain non-submerged origins
     if not active_cols:
         for c_idx in range(num_cols):
             has_origin = any(
@@ -122,7 +105,6 @@ def resolve_columns(
             active_cols = [0]
             spacer_cols = list(range(1, num_cols))
 
-    # Infer alignment per active column
     col_alignments: list[HorizontalAlign] = []
     for c_idx in active_cols:
         numeric_count = 0
@@ -209,10 +191,7 @@ def identify_affix_columns(
     active_cols: list[int],
 ) -> tuple[set[int], set[int]]:
     """Identify which active column indices are pure prefix or suffix columns.
-
-    Returns:
-    - prefix_cols: set of active column positions (0..N-1) that contain only prefix tokens
-    - suffix_cols: set of active column positions (0..N-1) that contain only suffix tokens
+    Returns the prefix and suffix positions holding only such tokens.
     """
     prefix_cols: set[int] = set()
     suffix_cols: set[int] = set()

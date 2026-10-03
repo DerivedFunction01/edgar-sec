@@ -1,9 +1,6 @@
 """Core data models for the geometry-first ASCII table renderer.
-
-`TableGeometry` is the contract this module exists to provide: a caller can
-establish that one rendered line equals one table row, and can read cell
-geometry, spans, alignment, and diagnostics without re-parsing the emitted
-``<TABLE>`` text.
+`TableGeometry` is the contract here: a caller can establish that one rendered line equals one
+logical row and read geometry, spans, alignment, and diagnostics without re-parsing the text.
 """
 
 from __future__ import annotations
@@ -142,7 +139,7 @@ class BorderSegment:
     row: int
     start_column: int
     end_column: int
-    edge: str  # "top" | "bottom" | "left" | "right"
+    edge: str
     width: float = 1.0
     style: BorderStyle = BorderStyle.SOLID
     color: str | None = None
@@ -220,10 +217,7 @@ class TableRenderResult:
 @dataclass(frozen=True, slots=True)
 class TableGeometry:
     """Per-table geometry metadata retained alongside normalized text.
-
-    This contract lets callers establish that one rendered line equals
-    one table row and inspect cell geometry, spans, alignment, and
-    diagnostics without re-parsing the tagged <TABLE> output.
+    Lets a caller establish that one rendered line equals one table row without re-parsing the ``<TABLE>`` output.
     """
 
     table_index: int

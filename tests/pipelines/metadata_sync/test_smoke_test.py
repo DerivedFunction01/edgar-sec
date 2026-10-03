@@ -1,9 +1,5 @@
-"""Smoke-test guard tests, offline.
-
-``smoke_test.py`` is the credential-gated live path and is deliberately excluded
-from the default gate, but its guards are pure and must be proven: the one
-property that makes it safe to run by hand is that it refuses a production
-artifacts root. The live fetch itself is not exercised here.
+"""Smoke-test guards, offline: the live path is credential-gated and excluded from
+the default gate, so only its pure guards are proven here.
 """
 
 from __future__ import annotations
@@ -82,12 +78,7 @@ def test_an_empty_manifest_exits_two(tmp_path: Path, capsys) -> None:
 
 
 def _fake_run_chunk(statuses: list[str], captured: dict[str, object]):
-    """A stand-in worker that writes a real checkpoint for the read-back path.
-
-    The smoke test's contract is what it reports from the checkpoint it just
-    wrote, so the fake writes a genuine Parquet dataset rather than
-    short-circuiting the read.
-    """
+    """A genuine Parquet checkpoint, because the report is read back from it."""
 
     def run(client, plan, run_paths, chunk_id, **kwargs):
         from edgar_sec.engine.submissions.builder import build_submission_table

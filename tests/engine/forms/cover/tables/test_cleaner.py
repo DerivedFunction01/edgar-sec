@@ -21,7 +21,6 @@ def test_clean_cover_tables_unwraps_report_period_table() -> None:
         "PART I\n"
         "ITEM 1. BUSINESS\n"
     )
-    # boundary covers first 7 lines (before PART I)
     boundary = CoverBoundary(
         start_line=0,
         end_line=7,
@@ -65,7 +64,6 @@ def test_clean_cover_tables_preserves_tables_after_boundary() -> None:
         "Exhibit 10.1    Annual Report pursuant to Section 13 of the 1934 Act\n"
         "</TABLE>\n"
     )
-    # Boundary ends at line 5 (after cover, before Part IV)
     boundary = CoverBoundary(
         start_line=0,
         end_line=5,
@@ -89,9 +87,7 @@ def test_clean_cover_tables_preserves_tables_after_boundary() -> None:
         enabled_cleaners=("report_period",),
     )
 
-    # Cover table should be unwrapped
     assert "[X] ANNUAL REPORT PURSUANT TO SECTION 13" in cleaned
-    # Exhibit table MUST remain wrapped
     assert "<TABLE>\nExhibit 10.1" in cleaned
     assert len(retained_geoms) == 1
     assert retained_geoms[0] == geom_exhibit

@@ -58,7 +58,6 @@ def atomic_write_json(
     canonical: bool = True,
     indent: int | None = None,
 ) -> int:
-    """Atomically serialize object to JSON."""
     if canonical:
         text = canonical_json(obj)
     else:

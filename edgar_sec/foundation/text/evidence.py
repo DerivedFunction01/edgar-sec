@@ -1,15 +1,8 @@
 """Token-boundary lexical evidence packs and the scorer that evaluates them.
 
-An :class:`EvidenceTier` carries vocabulary plus a decision policy; a
-:class:`LexicalEvidencePack` is an immutable, ordered list of those tiers. The
-scorer walks the tiers once, folding satisfied tiers into a capped 0-3 decision
-score with a calibrated confidence, and reports every matched term so a caller
-can explain the decision. The engine is form- and domain-neutral: vocabulary
-lives in the owning pack, never here.
-
-The token and case-mode primitives are shared with the Aho-Corasick automaton in
-:mod:`edgar_sec.foundation.text.automaton`; this module owns only the
-tier-and-pack half of the contract.
+A tier carries vocabulary plus decision policy; a pack is an immutable ordered
+list of tiers. Vocabulary lives in the owning pack -- this engine is form- and
+domain-neutral.
 """
 
 from __future__ import annotations
@@ -111,8 +104,7 @@ def match_ngrams(
 def band_max_values(compiled: list[CompiledTier]) -> tuple[int, ...]:
     """Return the maximum value per priority band, in priority-descending order.
 
-    Same-priority tiers share a band; the band max is the max of its members.
-    Useful as a trace signal and for upper-bound reasoning.
+    Same-priority tiers share a band, whose max is the max of its members.
     """
     if not compiled:
         return ()
@@ -165,15 +157,8 @@ def build_reason(
 class EvidenceTier:
     """One ordered evidence tier owned by a form or extraction pack.
 
-    ``priority`` orders evaluation (higher runs first). ``value`` is the
-    decision strength of a satisfied tier (1, 2, or 3).
-    ``min_distinct_hits`` counts distinct matched terms, not occurrences.
-    ``case_mode`` selects how terms match source tokens.
-    ``support`` marks corroborating evidence: a satisfied support tier adds
-    its value to the score additively instead of setting it, so it can push
-    a unit over the decision threshold only alongside other evidence.
-    Support tiers must use ``value=1`` so support evidence alone can never
-    confirm a decision.
+    ``support`` makes a satisfied tier additive rather than decisive, so it clears the
+    threshold only alongside other evidence; constrained to ``value=1``.
     """
 
     name: str
@@ -210,8 +195,7 @@ class EvidenceTier:
 class LexicalEvidencePack:
     """An immutable, ordered lexical evidence pack.
 
-    ``tiers`` carry the vocabulary and per-tier decision policy. ``exclusions``
-    are recorded in the score result when they appear in a unit's tokens.
+    ``exclusions`` are recorded in the score result when they appear in a unit.
     """
 
     name: str
@@ -223,9 +207,8 @@ class LexicalEvidencePack:
 class EvidenceContext:
     """Caller-supplied scoring context.
 
-    ``eligible`` reflects caller-side structural policy (TOC overlap,
-    protected tables, or intentional table search in extraction callers).
-    ``prefix_vocab`` is diagnostic only and never affects the score.
+    ``eligible`` is the caller's structural policy; ``prefix_vocab`` is
+    diagnostic only and never affects the score.
     """
 
     eligible: bool = True
@@ -252,10 +235,8 @@ class EvidenceHit:
 class BowScore:
     """Result of lexical evidence scoring for one unit.
 
-    ``score`` is the capped decision score (0-3). ``support_score`` records
-    the raw additive contribution of satisfied support tiers that was folded
-    into ``score``; it is diagnostic and never exceeds the support tiers'
-    own values.
+    ``support_score`` is the raw additive support contribution folded into the
+    capped ``score``, kept for diagnostics only.
     """
 
     score: int
@@ -272,7 +253,6 @@ class BowScore:
 
 
 def normalize_tokens(text: str) -> list[str]:
-    """Lowercase tokens from ``text``; convenience wrapper around ``tokenize``."""
     return [token.folded for token in tokenize(text)]
 
 
@@ -362,7 +342,7 @@ def _build_compiled_tier(tier: EvidenceTier) -> CompiledTier:
 def compile_evidence_pack(pack: LexicalEvidencePack) -> CompiledEvidencePack:
     """Compile a lexical evidence pack once for fast reuse.
 
-    The cache is keyed by pack value; equal packs share one compiled index.
+    Cached by pack value, so equal packs share one compiled index.
     """
     _check_collision(pack)
     names: set[str] = set()
@@ -435,9 +415,7 @@ def score_tokens(
     partial_strong = False
     short_circuited = False
 
-    # In-band bookkeeping: same-priority tiers form a band; the band's max
-    # value is tracked so the rest of the band can short-circuit as soon
-    # as any tier in it satisfies at that value.
+    # A band short-circuits once any tier in it satisfies at the band's max.
     current_band_priority: int | None = None
     current_band_max = 0
 
@@ -501,9 +479,8 @@ def score_tokens(
         if distinct >= tier.min_distinct_hits:
             satisfied.append(tier.name)
             if tier.support:
-                # Support evidence is additive and can never set or raise
-                # the primary score, trigger a band short-circuit, or confirm
-                # a decision alone (support tiers are constrained to value=1).
+                # Support is additive: it can never set or raise the primary
+                # score, short-circuit a band, or confirm alone (value=1).
                 support_score += tier.value
                 support_confidence = max(
                     support_confidence, tier_confidence(tier.value, distinct)
@@ -571,8 +548,7 @@ def score_unit(
 ) -> BowScore:
     """Score one unit's text against a lexical evidence pack.
 
-    ``pack`` may be a ``LexicalEvidencePack`` (compiled and cached on first
-    use) or an already-compiled pack for hot loops.
+    Pass a ``CompiledEvidencePack`` in hot loops to skip the compile lookup.
     """
     if isinstance(pack, CompiledEvidencePack):
         compiled = pack

@@ -1,23 +1,8 @@
-"""Cross-run snapshot consolidation.
+"""Cross-run snapshot consolidation into one canonical snapshot.
 
-A corpus is built by many partial runs, each publishing its own snapshot. Read as
-N independent datasets, every consumer must union, dedupe, and re-derive fiscal
-quarters itself. Consolidation does that once, and guarantees:
-
-- **Source precedence is the caller's order.** The later-listed source wins when
-  two describe the same document, so the outcome is reproducible.
-- **Fiscal quarters are re-derived here.** ``filing_year`` and ``filing_quarter``
-  are computed at consolidation time, so snapshots written months apart by
-  different code versions land in the same partitioning.
-- **Differing text is refused, not resolved.** Precedence could discard one side,
-  but accepting that a document's text changed is not a decision consolidation
-  may make for the caller.
-- **Sources are immutable, purge is dependency-aware.** A source is deleted only
-  once nothing retained references its parts, which
-  :func:`expand_dependency_closure` establishes before anything is removed.
-
-Quarters run on threads over one shared DuckDB relation, each with its own
-connection, bounding per-quarter memory by batch size rather than corpus size.
+Source precedence is the caller's order; fiscal quarters are re-derived here.
+Differing text for one document is refused, not resolved, and a source is purged only
+once nothing retained references it.
 """
 
 from __future__ import annotations
@@ -72,13 +57,10 @@ from edgar_sec.pipelines.document_storage.queries import (
 
 log = logging.getLogger("document_storage.vacuum")
 
-#: Default part budget. Chosen so a part is comfortably larger than DuckDB's
-#: row-group size and small enough that many parts can be open during a read.
+#: Default part budget. A part should sit comfortably above DuckDB's row-group
+#: size and low enough that many parts can be open during a read.
 DEFAULT_TARGET_BYTES = 96 * 1024 * 1024
-#: Registered as ``documents.payload_target_bytes`` in the settings registry,
-#: so the value is env-overridable like every other batch size. This module is
-#: the authority for the value; tests/pipelines/document_storage/test_settings_contract.py
-#: pins the pair.
+#: Env-overridable as ``documents.payload_target_bytes``.
 
 
 class VacuumError(RuntimeError):
@@ -122,8 +104,7 @@ def _part_relation(
 ) -> str:
     """Build a ranked union relation over one kind of part across all sources.
 
-    Part paths are validated before interpolation: a manifest is a file on disk,
-    and a path is about to be spliced into a SQL string.
+    Paths are validated before interpolation: a manifest is an editable file.
     """
     relations: list[str] = []
     for manifest in manifests:
@@ -135,8 +116,6 @@ def _part_relation(
         ]
         if not parts:
             continue
-        # Part paths are relative to their own snapshot, so the relation is built
-        # per source rather than over one shared root.
         base = snapshot_dir(snapshots_root, snapshot_id)
         validate_part_paths(parts, base)
         relations.append(relation_for_parts(parts, base))
@@ -195,9 +174,8 @@ def index_part_for(
 ) -> PlannedPart:
     """Return the single index part covering one quarter.
 
-    Index rows are metadata: roughly an order of magnitude smaller than the text
-    they point at, so byte-budgeting them would split a quarter's index across
-    parts for no read benefit while making every reader do more work.
+    Index rows are metadata, far smaller than the text they point at, so budgeting
+    them by bytes would split a quarter for no read benefit.
     """
     return PlannedPart(
         path=quarter_path(year, quarter, PART_KIND_INDEX),
@@ -225,9 +203,7 @@ def _vacuum_quarter(
     target_dir = snapshot_dir(snapshots_root, snapshot_id)
     hasher = hashlib.sha256()
     try:
-        # Pass 1: metadata only. Reads the index for the quarter, records each
-        # document's byte size, and releases the batch before planning, so the
-        # planner never holds text.
+        # Pass 1: metadata only, released per batch, so the planner never holds text.
         index_rows: list[dict[str, Any]] = []
         doc_sizes: dict[str, int] = {}
         for batch in effective_quarter_index_rows(
@@ -249,7 +225,6 @@ def _vacuum_quarter(
                 year, quarter, (), 0, 0, hashlib.sha256(b"").hexdigest()
             )
 
-        # Pass 2: plan by document byte size, then read one doc range per part.
         planned = plan_parts(
             sorted(doc_sizes.items()),
             year=year,
@@ -343,9 +318,8 @@ def _stream_payload_texts(
 ) -> dict[str, str]:
     """Read one doc range's payloads, updating the logical digest as it goes.
 
-    The digest is computed over the *content* being written, not over the part
-    files, so it identifies what the snapshot contains rather than how the bytes
-    happened to be laid out.
+    The digest is over content being written, not the part files, so it identifies
+    what the snapshot contains rather than how the bytes were laid out.
     """
     texts: dict[str, str] = {}
     for batch in effective_quarter_batches(
@@ -388,26 +362,7 @@ def vacuum_snapshots(
     profile: RuntimeResourceProfile | None = None,
     progress: Callable[[dict[str, Any]], None] | None = None,
 ) -> dict[str, Any]:
-    """Consolidate snapshots into one canonical snapshot.
-
-    Args:
-        snapshots_root: the dataset's published root (``ProjectPaths
-            .documents_root``), holding every snapshot and the current pointer.
-        snapshot_ids: snapshots to consolidate; ignored when ``include_all``.
-        include_all: consolidate every published snapshot.
-        workers: quarter concurrency; defaults to 1.
-        target_bytes: per-part byte budget.
-        purge_sources: delete the sources once consolidation succeeds. Refuses
-            when a retained snapshot still references a source part.
-        purge_dependency_closure: instead of refusing, consolidate the whole
-            dependency closure so the purge becomes safe.
-        batch_size: rows per fetched batch.
-        profile: pre-resolved cgroup-aware resource profile.
-        progress: optional per-stage callback.
-
-    Returns:
-        The published manifest, including its snapshot id and part list.
-    """
+    """Consolidate snapshots into one canonical snapshot."""
     root = Path(snapshots_root)
     manifests = _source_manifests(root, snapshot_ids, include_all)
     selected = {str(manifest["snapshot_id"]) for manifest in manifests}
@@ -464,9 +419,8 @@ def vacuum_snapshots(
         schema_version=schema_version,
     )
 
-    # Refuse before writing anything. The derived id is deterministic, so a repeat
-    # consolidation of the same sources lands here; writing parts first would
-    # overwrite an immutable snapshot's bytes before the refusal could fire.
+    # Refuse before writing: the derived id is deterministic, so writing parts first
+    # would overwrite an immutable snapshot before the refusal could fire.
     target_dir = snapshot_dir(root, physical_id)
     if (target_dir / MANIFEST_NAME).is_file():
         raise VacuumError(

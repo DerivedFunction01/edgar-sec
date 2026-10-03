@@ -1,10 +1,6 @@
 """Canonical ASCII table renderer for geometry-first HTML table presentation.
-
-`render_source_table` is the whole pipeline in one place, and its order is the
-contract: extract spans, estimate geometry, resolve columns, score the header
-boundary, allocate widths, then format. Each later stage reads the previous
-stage's output rather than re-deriving it, which is what makes one rendered line
-correspond to one logical row.
+`render_source_table` is the pipeline in one place and its order is the contract: each later stage
+reads the previous stage's output, which is what makes one rendered line one logical row.
 """
 
 from __future__ import annotations
@@ -84,7 +80,6 @@ def render_source_table(
     budget: RenderBudget = DEFAULT_RENDER_BUDGET,
 ) -> TableRenderResult:
     """Render a single HTML <table> node or SourceTable into canonical ASCII table format."""
-    # 1. Extract SourceTable and isolate nested tables
     if isinstance(table_input, SourceTable):
         source_table = table_input
     else:
@@ -92,10 +87,8 @@ def render_source_table(
     if not source_table.rows:
         return _empty_render_result("Empty source table")
 
-    # 2. Build 2D span matrix and estimate coordinate geometry
     grid_matrix, span_groups = build_span_matrix(source_table)
     repair_header_band_spans(grid_matrix)
-    # Strip leading and trailing empty spacer rows
     while grid_matrix and all(
         (cell is None or not cell.text.strip()) for cell in grid_matrix[0]
     ):
@@ -110,7 +103,6 @@ def render_source_table(
 
     box_matrix = estimate_table_geometry(source_table, grid_matrix, span_groups)
 
-    # 3. Resolve active column bands and alignments
     active_cols, col_alignments, spacer_cols = resolve_columns(grid_matrix, box_matrix)
     if not active_cols:
         active_cols = list(range(len(grid_matrix[0])))
@@ -120,23 +112,18 @@ def render_source_table(
         grid_matrix, active_cols
     )
 
-    # 4. Extract border segments and score header boundaries
     border_segments = extract_border_segments(grid_matrix, active_cols)
     header_row_count, header_divider_style = score_header_boundary(
         grid_matrix, active_cols, border_segments
     )
 
-    # 5. Extract 2D raw text grid and span constraints for active columns
     raw_grid, single_col_grid, span_constraints = extract_raw_grids_and_spans(
         grid_matrix, active_cols
     )
     raw_grid, single_col_grid = normalize_grid_indents(raw_grid, single_col_grid)
 
-    # Some filings place several caption rows before the actual column
-    # subheaders, so the border-based header score can stop too early. Detect
-    # only text-only rows immediately before the first numeric data row for the
-    # narrow affix-header alignment adjustment.
-    # Single pass: classify each row once as (is_empty, has_numeric)
+    # Some filings place several caption rows before the real column subheaders, so the border-based
+    # header score can stop too early: detect only text-only rows right before the first numeric row.
     row_profiles: list[tuple[bool, bool]] = []
     for row in raw_grid:
         has_text = False
@@ -163,7 +150,6 @@ def render_source_table(
                 terminal_header_rows.add(r)
             next_non_empty_idx = r
 
-    # 6. Compute column widths adhering to RenderBudget
     col_widths, layout_diags = compute_column_widths(
         raw_grid,
         col_alignments,
@@ -173,7 +159,6 @@ def render_source_table(
         single_col_rows=single_col_grid,
     )
 
-    # 7. Construct ResolvedGrid & evaluate confidence / vetoes
     resolved_grid = ResolvedGrid(
         rows=tuple(tuple(r) for r in raw_grid),
         column_alignments=tuple(col_alignments),
@@ -189,7 +174,6 @@ def render_source_table(
         source_table, resolved_grid, span_groups
     )
 
-    # 8. Index border segments by row and column position
     row_top_borders: dict[int, dict[int, BorderStyle]] = {}
     row_bot_borders: dict[int, dict[int, BorderStyle]] = {}
     for seg in border_segments:
@@ -204,7 +188,6 @@ def render_source_table(
             elif c_pos not in target_dict:
                 target_dict[c_pos] = seg.style
 
-    # 9. Format ASCII text output
     num_cols = len(active_cols)
     non_empty_cols: set[int] = set()
     for row in raw_grid:
@@ -231,7 +214,6 @@ def render_source_table(
 
     lines: list[str] = ["<TABLE>"]
 
-    # Top border above table
     row_0_blocks = build_row_blocks(
         grid_matrix,
         0,
@@ -271,8 +253,7 @@ def render_source_table(
             budget,
         )
         for b in h_blocks:
-            # Exclude full-table-width spans — these are caption/units rows that
-            # should not collapse structural column gaps in body divider rows.
+            # Full-table-width spans are caption/units rows and must not collapse structural column gaps.
             if len(b.span_cols) > 1 and set(b.span_cols) != all_active_col_set:
                 header_spans.append(set(b.span_cols))
 
@@ -292,7 +273,6 @@ def render_source_table(
             if candidate not in numeric_band_spans:
                 numeric_band_spans.append(candidate)
 
-    # Build all row blocks
     all_row_blocks = []
     for r_idx in range(len(raw_grid)):
         blocks = build_row_blocks(
@@ -377,7 +357,6 @@ def render_source_table(
     ]
     distribute_multi_row_span_lines(all_row_blocks, all_block_lines)
 
-    # Render rows
     for r_idx, blocks in enumerate(all_row_blocks):
         block_lines = all_block_lines[r_idx]
         max_lines_in_row = max((len(bl) for bl in block_lines), default=1)
@@ -434,8 +413,7 @@ def render_source_table(
     heal_divider_lines_from_templates(lines)
     prune_unanchored_divider_fragments(lines)
 
-    # Trim common leading spaces across all non-empty table lines (with or without borders)
-    body_lines = lines[1:]  # lines[0] is "<TABLE>"
+    body_lines = lines[1:]
     non_empty_body = [line for line in body_lines if line.strip()]
     if non_empty_body:
         min_leading = min(len(line) - len(line.lstrip(" ")) for line in non_empty_body)

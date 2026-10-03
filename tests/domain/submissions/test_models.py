@@ -1,12 +1,5 @@
-"""Deferred domain model tests.
-
-These types are the domain vocabulary for a future rendering/projection layer
-that reads published Arrow rows into typed entities. The fetch pipeline does not
-produce them today: its live row contract is ``SUBMISSION_METADATA_SCHEMA`` and
-the engine builder. These tests therefore pin the models' own invariants —
-immutability, default construction, CIK identity — and deliberately assert that
-nothing in the current pipeline constructs them, so the deferred status stays
-honest rather than drifting into a false producer claim.
+"""Deferred domain models: nothing in the current pipeline constructs them, and
+this pins that so the deferred status stays honest.
 """
 
 from __future__ import annotations
@@ -108,12 +101,7 @@ def test_models_are_immutable() -> None:
 
 
 def test_no_current_pipeline_constructs_these_models() -> None:
-    """The deferred status is a claim that must keep being checkable.
-
-    When a rendering/projection adapter lands and starts producing these types,
-    this test is the thing that should be revisited and replaced, rather than
-    quietly left passing.
-    """
+    """An adapter that starts producing these must replace this test."""
     from pathlib import Path
 
     from edgar_sec.engine.submissions import builder, filings, profile

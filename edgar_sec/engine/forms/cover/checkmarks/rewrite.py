@@ -90,8 +90,7 @@ def _replace_mark_in_text(text: str, source_token: str, replacement: str) -> str
     if match is None:
         return text
     start, end = match.start(), match.end()
-    # Skip if the token is already enclosed in brackets or parentheses
-    # to prevent double-expansion (e.g. "[X]" should not become "[[X]]").
+    # Skip an already-bracketed token: expanding it again yields "[[X]]".
     if (
         start > 0
         and end < len(text)
@@ -215,16 +214,8 @@ def apply_cover_checkmark_decisions(
     text: str,
     result: CoverCheckmarkResult,
 ) -> tuple[str, bool, frozenset[int]]:
-    """Apply resolved source decisions without reclassifying generated tokens.
-
-    Returns ``(new_text, changed, unwrapped_table_indices)`` where
-    ``unwrapped_table_indices`` is the set of *geometry* table indices
-    (matching :attr:`~edgar_sec.engine.tables.ascii_html.model.TableGeometry.table_index`)
-    whose ``<TABLE>`` tags were physically stripped from the output text.
-    Callers must evict those indices from their ``table_geometries`` tuple
-    before any subsequent pass that pairs tables by position — otherwise
-    the first remaining ``<TABLE>`` block in text will be mis-matched with
-    the stale geometry of the table that was just unwrapped.
+    """Apply resolved source decisions without reclassifying generated tokens. Callers
+    must evict the returned unwrapped geometry indices before any positional pass.
     """
     if (
         not result.decisions
@@ -261,10 +252,8 @@ def apply_cover_checkmark_decisions(
     candidates_by_region: dict[str, list[CheckboxCandidate]] = defaultdict(list)
     for candidate in result.candidates:
         candidates_by_region[candidate.source_region].append(candidate)
-    # Multiple semantic extractors can point at the same physical mark (for
-    # example, a statutory ``Yes/No`` row also matching a nearby cover label).
-    # Reconcile those references before rewriting so one interpretation cannot
-    # overwrite another or expand the same source span twice.
+    # Several extractors can point at one physical mark; reconcile them so one
+    # interpretation cannot overwrite another or expand the span twice.
     span_states: dict[tuple[int, int], set[str]] = defaultdict(set)
     for region_candidates in candidates_by_region.values():
         for candidate in region_candidates:
@@ -293,16 +282,12 @@ def apply_cover_checkmark_decisions(
                 nearby = text.find(candidate.source_token, nearby_start, nearby_end)
                 if nearby >= 0:
                     start, end = nearby, nearby + len(candidate.source_token)
-            # Spans must land on the token they were extracted from. A stale
-            # or foreign-frame span would corrupt unrelated text (including
-            # structural table tags) and is dropped instead of applied.
+            # A span must land on the token it was extracted from; a stale or
+            # foreign-frame span would corrupt unrelated text, table tags included.
             if text[start:end] != candidate.source_token:
                 continue
-            # Inference may associate one physical mark with several semantic
-            # labels (e.g. a single Wingdings "x" matched against every filer
-            # status). Each span is rewritten at most once: re-applying the
-            # same span slices the already-expanded canonical token into
-            # "[X]X]X]" fragments.
+            # One physical mark can back several semantic labels, so each span is
+            # rewritten at most once: re-applying slices "[X]X]X]" fragments.
             if (start, end) in claimed_spans:
                 continue
             claimed_spans.add((start, end))
@@ -314,8 +299,7 @@ def apply_cover_checkmark_decisions(
             continue
         text = text[:start] + replacement + text[end:]
 
-    # Track which geometry table indices are physically unwrapped so the caller
-    # can evict them from table_geometries before the next positional pass.
+    # Geometry indices physically unwrapped, so the caller can evict them.
     unwrapped_table_indices: set[int] = set()
     masked, spans = mask_tagged_tables(text)
     if spans:
@@ -343,8 +327,7 @@ def apply_cover_checkmark_decisions(
                 candidates
             ) or has_labeled_checkmark_candidates(candidates):
                 table_text = _unwrap_pure_yes_no_table(table_text)
-                # Record that this table was physically unwrapped (no longer
-                # present as a <TABLE> block in the output text).
+                # No longer a <TABLE> block in the output text.
                 unwrapped_table_indices.add(table_index)
             updated_spans[table_index] = type(updated_spans[table_index])(
                 updated_spans[table_index].start,
@@ -361,15 +344,8 @@ def update_table_geometries(
     result: CoverCheckmarkResult,
     unwrapped_table_indices: frozenset[int] = frozenset(),
 ) -> tuple[object, ...]:
-    """Carry resolved source states into retained table metadata.
-
-    If ``unwrapped_table_indices`` is supplied, any geometry whose
-    :attr:`~edgar_sec.engine.tables.ascii_html.model.TableGeometry.table_index` appears in
-    that set is dropped from the result — its ``<TABLE>`` block was
-    physically removed from the text by
-    :func:`apply_cover_checkmark_decisions` and must not be passed to any
-    subsequent positional-pairing pass such as
-    :func:`~edgar_sec.engine.forms.cover.tables.cleaner.clean_cover_tables`.
+    """Carry resolved source states into retained table metadata; geometries named by
+    `unwrapped_table_indices` are dropped, their block being gone from the text.
     """
     decisions = {
         (decision.source_region, decision.source_token): decision
@@ -382,12 +358,10 @@ def update_table_geometries(
             by_table[int(match.group(1))].append(candidate)
     updated: list[object] = []
     for geometry in table_geometries:
-        # Use the stable table_index attribute to look up candidates and to
-        # determine whether this geometry was physically unwrapped.
+        # Look up by stable table_index, not position.
         geom_id = getattr(geometry, "table_index", None)
         if geom_id is not None and geom_id in unwrapped_table_indices:
-            # Table was unwrapped by apply_cover_checkmark_decisions; it is no
-            # longer present as a <TABLE> block in the output text.
+            # Its <TABLE> block was removed by apply_cover_checkmark_decisions.
             continue
         candidates = by_table.get(geom_id if geom_id is not None else -1, [])
         if not candidates or not hasattr(geometry, "render_result"):

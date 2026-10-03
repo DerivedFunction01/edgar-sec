@@ -10,7 +10,6 @@ from edgar_sec.foundation.text.compounds import (
     expand_variants,
 )
 
-# Major equity benchmark indices
 EQUITY_INDICES: tuple[str, ...] = (
     "s&p 500",
     "sp 500",
@@ -50,7 +49,6 @@ EQUITY_INDEX_DERIVATIVES: tuple[str, ...] = build_derivative_grammar(
     bases=EQ_DERIVATIVE_BASES,
 )
 
-# Embedded conversions, capped calls & structured warrant liabilities (ASC 815-40)
 EMBEDDED_STRUCTURED_DERIVATIVES: tuple[str, ...] = expand_alternations(
     expand_variants(
         (
@@ -74,7 +72,6 @@ EQUITY_DERIVATIVE_TERMS: tuple[str, ...] = expand_alternations(
     EMBEDDED_STRUCTURED_DERIVATIVES,
 )
 
-# Employee Stock Comp (ASC 718) & Capital Structure Exclusions owned by Equity module
 EQUITY_EMPLOYEE_COMP_GUARDS: tuple[str, ...] = expand_variants(
     (
         "stock options granted",

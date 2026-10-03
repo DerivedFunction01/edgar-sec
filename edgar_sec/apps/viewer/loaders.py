@@ -1,25 +1,8 @@
 """One loader per published dataset type.
 
-Each loader **knows** the manifest of a dataset it owns and asks the owning
-pipeline or ``infra.storage`` to interpret it, so the only thing guessed is the
-dataset's own root — one known path per pipeline, not a pattern. Inferring a
-dataset's role from a directory name's shape would have to be taught every naming
-convention and would silently mislabel anything that did not fit one. Adding a
-dataset means adding a loader, not extending a naming table.
-
-The pipeline manifests are not one vocabulary, which is why this module is a
-registry rather than a single function:
-
-| Dataset | Manifest | Read by |
-| :--- | :--- | :--- |
-| ``metadata`` | ``metadata.manifest.json`` | ``metadata_sync.snapshot.read_snapshot_parts`` |
-| ``filing_catalog`` | ``snapshot.manifest.json`` | this module (it owns the keys) |
-| ``document_storage`` | ``manifest.json`` | ``infra.storage.manifests.SnapshotReader`` |
-
-A published dataset becomes browsable only if its manifest is present and its
-declared parts exist: an in-flight run has no manifest, and a manifest naming a
-missing part means the publication did not finish. Neither is silently shown as a
-shorter dataset than it is.
+A dataset becomes browsable only when its manifest is present and its declared parts
+exist: an in-flight run or a half-published snapshot is reported, never shown as a
+shorter dataset.
 """
 
 from __future__ import annotations
@@ -85,9 +68,8 @@ __all__ = [
 _TRANSIENT_DATASETS = (METADATA_DIR, "filing_catalog", "document_storage")
 _DATA_SUFFIXES = {".parquet", ".db", ".sqlite"}
 
-# Synthetic logical name for a multipart dataset that spans a directory. The
-# directory holds no such file; the id names the dataset, and ``source_paths``
-# carries the real parts.
+# Synthetic logical name for a multipart dataset spanning a directory; no such
+# file exists. The id names the dataset and ``source_paths`` carries the real parts.
 _ALL_PARTS_NAME = "all-parts.parquet"
 
 
@@ -144,9 +126,8 @@ def _summary(
 ) -> ArtifactSummary:
     """Assemble one record, measuring the parts it is built from.
 
-    ``size_bytes`` and ``mtime`` describe the parts on disk rather than the
-    logical dataset, so the sidebar reports what is actually occupying space.
-    A declared part that is absent is an error, not a smaller dataset.
+    Size and mtime describe the parts on disk, so the sidebar reports what occupies
+    space. A declared part that is absent is an error, not a smaller dataset.
     """
     parts = tuple(source_paths) if source_paths else (path,)
     missing = [item for item in parts if not item.is_file()]
@@ -167,17 +148,11 @@ def _summary(
     )
 
 
-# --- metadata (Phase 1) ----------------------------------------------------
-
-
 def load_metadata(root: Path) -> list[ArtifactSummary]:
-    """Phase 1 submissions snapshots, plus each snapshot's CIK index.
+    """Metadata submissions snapshots, plus each snapshot's CIK index.
 
-    Resolution goes through ``read_snapshot_parts``, so a legacy single-file
-    snapshot and a multipart one resolve through one code path. That reader
-    verifies every declared digest, so a tampered part raises here and the
-    snapshot is left out rather than shown with contents that do not match what
-    was published.
+    Both resolve through readers that verify every declared digest, so a tampered part
+    is left out rather than shown with contents that do not match what was published.
     """
     paths = MetadataPaths(artifacts_root=Path(root))
     snapshots_root = paths.snapshots_root
@@ -197,20 +172,15 @@ def load_metadata(root: Path) -> list[ArtifactSummary]:
             log.warning("skipping metadata snapshot %s: %s", snapshot_id, exc)
             continue
 
-        # The payload and the CIK index are verified independently. A corrupted
-        # payload must not hide the index, which carries its own digest and is
-        # still a truthful account of what the snapshot claims to cover. The
-        # listing shows one record per dataset, so an operator sees the payload
-        # missing rather than seeing nothing at all.
+        # Verified independently: a corrupted payload must not hide the index, which is
+        # still a truthful account of what the snapshot claims to cover.
         try:
             parts = read_snapshot_parts(manifest_path)
             found.append(
                 _summary(
                     root,
-                    # A synthetic logical name, not the manifest path. The
-                    # manifest is also listed as a browsable *document*, so
-                    # reusing its path would give one opaque id two meanings and
-                    # make the datasets and documents listings alias each other.
+                    # A synthetic name: the manifest is also listed as a browsable
+                    # document, so reusing its path would alias the two listings.
                     path=entry / _ALL_PARTS_NAME,
                     kind="metadata_snapshot",
                     phase=METADATA_DIR,
@@ -238,15 +208,11 @@ def load_metadata(root: Path) -> list[ArtifactSummary]:
     return found
 
 
-# --- filing catalog (Phase 2) ----------------------------------------------
-
-
 def load_filing_catalog(root: Path) -> list[ArtifactSummary]:
-    """Phase 2 catalog snapshots: the profile table and the target shards.
+    """Catalog snapshots: the profile table and the target shards.
 
-    A catalog is one dataset with two related tables, both browsable. Profiles
-    are a single Parquet; targets are sharded, so the shard directory becomes
-    one record with a part list rather than a row per shard in the sidebar.
+    One dataset with two browsable tables; the shard directory becomes one record with
+    a part list rather than a row per shard.
     """
     paths = FilingCatalogPaths(artifacts_root=Path(root))
     catalog_root = paths.snapshots_root
@@ -291,21 +257,11 @@ def load_filing_catalog(root: Path) -> list[ArtifactSummary]:
     return found
 
 
-# --- document storage (Phase 2.5) -----------------------------------------
-
-
 def load_document_storage(root: Path) -> list[ArtifactSummary]:
-    """Phase 2.5 document snapshots, split by the kind of part they hold.
+    """Document snapshots, split by the kind of part they hold.
 
-    A document snapshot stores an ``index`` part (the tabular, browseable view)
-    and a ``payload`` part (raw bytes, including the zstd-compressed
-    ``raw_payload`` column). They are different shapes of data, so they are
-    separate records: browsing raw payload blobs as a table is not useful, and
-    the index without its payload would not describe the snapshot.
-
-    Parts are resolved through ``SnapshotReader``, never by globbing, so a
-    snapshot that was not fully published is reported rather than partially
-    shown.
+    Index and payload are separate records; parts resolve through ``SnapshotReader``,
+    never by globbing, so an unfinished publication is reported, not partially shown.
     """
     snapshots_root = Path(root) / "document_storage" / "snapshots"
     if not snapshots_root.is_dir():
@@ -346,19 +302,11 @@ def load_document_storage(root: Path) -> list[ArtifactSummary]:
     return found
 
 
-# --- transient runs --------------------------------------------------------
-
-
 def load_transient_runs(root: Path) -> list[ArtifactSummary]:
     """Group unpublished chunk files into one browsable record per run.
 
-    A run in progress has no manifest, so the loaders above cannot resolve it. An
-    operator still wants to watch it fill, so chunks sharing a run directory are
-    unioned into one record instead of listed one per file.
-
-    The revision for these is a stat-based composite, not a manifest digest: the
-    whole point of a union is that it changes as files arrive, and there is no
-    manifest yet to hash.
+    A run in progress has no manifest for the loaders above to resolve. The revision is
+    a stat composite, not a digest, because a union changes as files arrive.
     """
     found: list[ArtifactSummary] = []
     transient_root = Path(root) / "transient"
@@ -426,11 +374,7 @@ def load_transient_runs(root: Path) -> list[ArtifactSummary]:
 def _sqlite_tables(path: Path) -> list[str]:
     """List user tables in a SQLite database, best effort.
 
-    The connection comes from the shared ``infra.storage.duckdb`` factory rather
-    than ``duckdb.connect``: AGENTS.md §2 requires every connection to carry the
-    cgroup-aware resource budget, and the shared factory is the only sanctioned
-    seam for it. It opens an in-memory database, which is what table listing
-    needs.
+    Uses the shared ``connect`` factory, so the connection carries its budget.
     """
     from edgar_sec.infra.storage.duckdb import connect
 
@@ -452,10 +396,7 @@ def _sqlite_tables(path: Path) -> list[str]:
 def load_sqlite_databases(root: Path) -> list[ArtifactSummary]:
     """Expose SQLite databases as one record per table.
 
-    The payload store and the transient chunk writer both use SQLite, and an
-    operator debugging a failed fetch will want to look inside. Each table is a
-    separate record because one database can hold several unrelated shapes and a
-    single DuckDB relation can only expose one.
+    One database can hold unrelated shapes and a single DuckDB relation exposes one.
     """
     found: list[ArtifactSummary] = []
     for path in walk_files(Path(root)):
@@ -488,9 +429,8 @@ LOADERS: tuple[DatasetLoader, ...] = (
 def run_all(root: Path, *, include_sqlite: bool = True) -> list[ArtifactSummary]:
     """Run every loader over ``root`` and return the combined listing.
 
-    A loader that raises is logged and skipped rather than failing the whole
-    listing: one damaged dataset should not hide the healthy ones. That is the
-    same stance ``list_snapshots`` takes in ``infra.storage.manifests``.
+    A loader that raises is logged and skipped: one damaged dataset must not hide the
+    healthy ones.
     """
     combined: list[ArtifactSummary] = []
     for loader in LOADERS:
@@ -515,12 +455,7 @@ def run_all(root: Path, *, include_sqlite: bool = True) -> list[ArtifactSummary]
 
 
 def iter_documents(root: Path) -> list[ArtifactSummary]:
-    """List published JSON manifests, browsable as raw text.
-
-    Documents are not tables, so they are a separate listing rather than rows in
-    the dataset sidebar. Only files the pipeline layout actually produces are
-    considered; the walk does not guess at JSON that happens to be lying around.
-    """
+    """List published JSON manifests, browsable as raw text."""
     found: list[ArtifactSummary] = []
     seen: set[Path] = set()
     metadata_paths = MetadataPaths(artifacts_root=Path(root))

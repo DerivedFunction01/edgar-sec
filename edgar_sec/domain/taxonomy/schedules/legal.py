@@ -8,7 +8,6 @@ from edgar_sec.foundation.text.compounds import (
     expand_variants,
 )
 
-# Core litigation & proceeding terms
 LEGAL_LITIGATION_TERMS: tuple[str, ...] = (
     "lawsuit",
     "lawsuits",
@@ -44,7 +43,6 @@ LEGAL_LITIGATION_TERMS: tuple[str, ...] = (
     "subpoenas",
 )
 
-# Specialized actions and shareholder suits
 LEGAL_PROCEEDING_TERMS: tuple[str, ...] = expand_alternations(
     (
         "securities litigation",
@@ -96,7 +94,6 @@ LEGAL_PROCEEDING_TERMS: tuple[str, ...] = expand_alternations(
     ),
 )
 
-# Parties, court actions, verdicts & settlements
 LEGAL_PARTY_COURT_TERMS: tuple[str, ...] = (
     "plaintiff",
     "plaintiffs",
@@ -128,7 +125,6 @@ LEGAL_PARTY_COURT_TERMS: tuple[str, ...] = (
     "plea bargain",
 )
 
-# Competitor & industry peer dispute terms
 LEGAL_COMPETITOR_TERMS: tuple[str, ...] = expand_variants(
     (
         "competitor litigation",
@@ -139,7 +135,6 @@ LEGAL_COMPETITOR_TERMS: tuple[str, ...] = expand_variants(
 )
 
 
-# Loss contingencies (ASC 450)
 LEGAL_CONTINGENCY_TERMS: tuple[str, ...] = (
     "loss contingency",
     "loss contingencies",

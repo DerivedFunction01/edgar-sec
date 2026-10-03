@@ -1,13 +1,6 @@
 """ASCII-PRE discrimination: when `<PRE>` is only a transport wrapper.
-
-A large share of 1990s–2000s EDGAR filings are plain ASCII shipped inside an
-HTML envelope whose entire visible content is one `<PRE>` block. Treating those
-as HTML sends ASCII reflow and table rendering down a path that cannot help,
-and loses the hard line breaks the source actually had. This module is the
-discriminator: it returns the payload only when `<PRE>` is provably a wrapper
-around otherwise-tag-free text, and `None` in every other case.
-
-`None` is the common answer, and it is never an error.
+Returns the payload only when `<PRE>` is provably a wrapper around tag-free text, and `None` in
+every other case - treating ASCII as HTML loses the hard line breaks reflow depends on.
 """
 
 from __future__ import annotations
@@ -45,9 +38,7 @@ _RE_PRE_PAYLOAD_HTML = re.compile(rf"(?is)</?(?:{_PRE_PAYLOAD_HTML_TAGS})\b[^>]*
 
 def extract_ascii_pre(text: str) -> str | None:
     """Return the inner payload when PRE is only a transport wrapper.
-
-    Returns `None` unless there is exactly one `<PRE>` block, nothing but tags
-    outside it, and no layout markup inside it.
+    Returns ``None`` unless there is exactly one ``<PRE>`` block, nothing but tags outside it, and no layout markup inside.
     """
     matches = list(_RE_PRE_BLOCK.finditer(text))
     if len(matches) != 1:

@@ -1,10 +1,5 @@
-"""Static assignment and worker-receipt tests.
-
-Assignment is the artifact that makes multi-machine work a copy operation rather
-than a scheduling conversation, so the properties that matter are that its
-identity is re-derivable from its own contents, that it never reaches a plan
-identity, and that a receipt can be refused when it does not describe what it
-claims to.
+"""Static assignment and worker receipts: identity re-derived from contents, never
+reaching a plan identity, and a receipt refused when it misdescribes itself.
 """
 
 from __future__ import annotations

@@ -1,5 +1,3 @@
-"""Unit tests for apps.viewer.model."""
-
 from __future__ import annotations
 
 from pathlib import Path

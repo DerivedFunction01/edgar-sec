@@ -1,22 +1,5 @@
 """The ordered decision cascade that turns block features into one action.
-
-The cascade is a list, and the list order is the contract. The first rule whose
-conditions hold decides the block; nothing after it is consulted. That is why
-the hard protections sit first and the general prose fallbacks sit last — an
-ambiguous block must reach a preserve rule, and the only way to guarantee that
-is for every preserve rule to precede every permissive one.
-
-Three condition shapes compose into a rule:
-
-- direct conditions — a comparison against one measured feature;
-- group quotas — a required number of active features drawn from a named group,
-  with optional per-rule overrides;
-- synergies — several groups evaluated jointly at lower per-group thresholds,
-  for evidence that only means something in combination.
-
-:func:`_decide` sits on top of the engine and maps a matched rule onto the
-decision the rewrapper acts on, collapsing the rule's name into the coarse
-trace the merge and render passes group by.
+The list order is the contract: the first rule whose conditions hold decides the block. That is why hard protections precede general prose fallbacks - an ambiguous block must reach a preserve rule, and the only way to guarantee it is for every preserve rule to come first.
 """
 
 from __future__ import annotations
@@ -46,7 +29,6 @@ _OP_MAP: dict[str, Callable[[Any, Any], bool]] = {
     "!=": operator.ne,
 }
 
-# Group membership and per-group minimums for the prose quota rules.
 _PROSE_DOMINANT_ALPHA_DENSITY = 0.6
 _PROSE_DOMINANT_ROW_DENSITY = 0.6
 _PROSE_NUMERIC_ROW_DENSITY = 0.8
@@ -64,7 +46,7 @@ class FeatureThreshold:
     """A parameterized comparison against a BlockContext scalar property."""
 
     feature: str
-    op: str  # '>', '>=', '<', '<=', '==', '!='
+    op: str
     value: Any
 
     def evaluate(self, ctx: BlockContext) -> bool:
@@ -96,7 +78,7 @@ class Rule:
     """A single declarative rule in the decision cascade."""
 
     name: str
-    action: str  # ACTION_UNWRAP, ACTION_PRESERVE, ACTION_TAG_AND_PRESERVE
+    action: str
     confidence: float
     direct_conditions: tuple[FeatureThreshold, ...] = ()
     group_quotas: tuple[GroupQuota, ...] = ()
@@ -105,10 +87,6 @@ class Rule:
     evidence_builder: Callable[[BlockContext], tuple[str, ...]] | None = None
     rationale: str = ""
 
-
-# ==============================================================================
-# Canonical Feature Groups
-# ==============================================================================
 
 FEATURE_GROUPS: dict[str, tuple[str, ...]] = {
     "linguistic_flow": (
@@ -203,12 +181,10 @@ class RuleEngine:
         return len(active), active
 
     def evaluate_rule(self, rule: Rule, ctx: BlockContext) -> tuple[bool, list[str]]:
-        # 1. Direct conditions
         for cond in rule.direct_conditions:
             if not cond.evaluate(ctx):
                 return False, []
 
-        # 2. Group quotas
         for quota in rule.group_quotas:
             early = (
                 quota.min_active
@@ -223,7 +199,6 @@ class RuleEngine:
             if quota.max_active is not None and count > quota.max_active:
                 return False, []
 
-        # 3. Synergy rules
         for syn in rule.synergies:
             total_active = 0
             for g_name in syn.group_names:
@@ -239,7 +214,6 @@ class RuleEngine:
         if rule.evidence is not None:
             return True, list(rule.evidence)
 
-        # Fallback evidence only for matched rules without explicit evidence
         evidence: list[str] = [
             f"{cond.feature}{cond.op}{cond.value}" for cond in rule.direct_conditions
         ]
@@ -311,7 +285,6 @@ class RuleEngine:
     def _default_rules(cls) -> list[Rule]:
         """Canonical declarative rule definitions."""
         return [
-            # Hard protections.
             Rule(
                 name="hard_preserve_table_tag",
                 action=ACTION_PRESERVE,
@@ -372,7 +345,6 @@ class RuleEngine:
                 evidence=("column_underlines",),
                 rationale="Column underline dashes (---   ---) indicate financial grid.",
             ),
-            # Continuous narrative prose.
             Rule(
                 name="unwrap_high_confidence_prose",
                 action=ACTION_UNWRAP,
@@ -393,7 +365,6 @@ class RuleEngine:
                 evidence=("ordinary_prose",),
                 rationale="Continuous prose with strong linguistic flow, soft wraps, and full width.",
             ),
-            # Table geometry and aligned numeric data.
             Rule(
                 name="preserve_prose_dominant_numeric_alignment",
                 action=ACTION_PRESERVE,
@@ -535,7 +506,6 @@ class RuleEngine:
                 evidence=("exhibit_index_phrase",),
                 rationale="Exhibit index phrases indicate tabular exhibit descriptions.",
             ),
-            # Single-line blocks.
             Rule(
                 name="unwrap_single_line_prose",
                 action=ACTION_UNWRAP,
@@ -557,7 +527,6 @@ class RuleEngine:
                 evidence=("single_line_block",),
                 rationale="Single-line non-prose block preserved.",
             ),
-            # General prose and fallbacks.
             Rule(
                 name="unwrap_ordinary_prose_no_gaps",
                 action=ACTION_UNWRAP,
@@ -603,7 +572,6 @@ class RuleEngine:
         ]
 
 
-# Default singleton instance for production fast evaluation
 _DEFAULT_ENGINE = RuleEngine()
 
 

@@ -1,9 +1,6 @@
-"""Body-unit context and lexical-pack glue for body-start detection.
-
-Sits between the boundary world (logical units, TOC spans) and the generic
-lexical evidence engine (`edgar_sec.foundation.text.evidence`). Owns unit indexing,
-TOC/protected eligibility, and the resolution of a body evidence object into a
-compiled lexical pack.
+"""Body-unit context and lexical-pack glue for body-start detection. Sits between the
+boundary world and the lexical evidence engine, owning unit indexing,
+TOC/protected eligibility, and pack compilation.
 """
 
 from __future__ import annotations
@@ -27,10 +24,8 @@ _PROTECTED_UNIT_KINDS = frozenset({"table", "list", "signature", "toc"})
 
 
 def compile_body_lexical(evidence: object) -> CompiledEvidencePack:
-    """Compile the lexical pack for a body evidence object.
-
-    Accepts a compiled pack, a ``LexicalEvidencePack``, or an object
-    carrying a ``lexical`` pack or legacy body vocabulary fields.
+    """Compile the lexical pack for an evidence object: a compiled pack, a
+    `LexicalEvidencePack`, or an object carrying `lexical` or legacy body fields.
     """
     if isinstance(evidence, CompiledEvidencePack):
         return evidence
@@ -50,9 +45,8 @@ def compile_body_lexical(evidence: object) -> CompiledEvidencePack:
 
 
 def collect_cover_vocab(lines: list[str], end_line: int) -> frozenset[str]:
-    """Collect word tokens from the cover/reference prefix.
-
-    The result is diagnostic context only; it never affects a lexical score.
+    """Collect word tokens from the cover/reference prefix; diagnostic context only,
+    never a lexical score.
     """
     return frozenset(strip_alphanumeric_words("\n".join(lines[:end_line])))
 
@@ -71,11 +65,8 @@ def unit_at(units_by_line: dict[int, LogicalUnit], line: int) -> LogicalUnit | N
 
 
 def unit_in_toc(unit: LogicalUnit, toc_span: TocSpan | None) -> bool:
-    """Return whether a unit belongs to TOC context.
-
-    A unit overlaps the caller-supplied TOC span (``end_line`` is the first
-    post-TOC line, so the span is exclusive at the end), or the unit itself
-    was classified as TOC content by an upstream semantic classifier.
+    """Whether a unit is TOC context: it overlaps the caller-supplied span (whose
+    `end_line` is the first post-TOC line) or was classified TOC upstream.
     """
     if unit.kind == "toc":
         return True

@@ -1,14 +1,8 @@
 """Deterministic in-memory serialization primitives.
 
-Two distinct concerns live here, and the difference is worth keeping straight.
-
-:func:`canonical_json` is about *reproducibility* -- one input always produces
-one byte string, which is what makes a digest meaningful.
-
-:func:`json_safe` is about *representability* -- converting a value that
-``json.dumps`` would reject (or silently mangle) into one it will accept. It is
-lossy by design and carries no determinism guarantee. Using it where canonical
-JSON belongs would quietly destroy the property the digest depends on.
+:func:`canonical_json` guarantees *reproducibility* -- one input, one byte string --
+so a digest is meaningful. :func:`json_safe` guarantees only *representability* and is
+lossy by design; using it where canonical JSON belongs destroys that property.
 """
 
 from __future__ import annotations
@@ -37,21 +31,8 @@ def canonical_hash(data: Any) -> str:
 def json_safe(value: Any) -> Any:
     """Coerce a value into something ``json.dumps`` can encode without error.
 
-    Query results and checkpoint records carry types the JSON encoder has no
-    representation for: ``Decimal`` from a DuckDB numeric column, ``bytes`` from
-    a Parquet BLOB, ``NaN``/``Inf`` from a float division, and Arrow scalars
-    nested in lists and structs. The two rules that matter:
-
-    - **Never emit a bare ``NaN`` or ``Infinity``.** Those are not JSON, so a
-      strict parser rejects the whole document -- one bad cell would cost a whole
-      response. They become ``None``.
-    - **Never guess at a lossy decode.** A ``Decimal`` becomes its exact decimal
-      string, not a float; rounding is the caller's decision, not the
-      serializer's.
-
-    Anything unrecognized falls back to ``str()``, so this always terminates and
-    always returns something encodable. It is intentionally *not* a validator:
-    it will not raise on a type it was never told about.
+    A bare ``NaN``/``Infinity`` becomes ``None`` (a strict parser would reject the whole
+    document) and a ``Decimal`` becomes its exact string -- never a guessed float.
     """
     if value is None or isinstance(value, (str, bool, int)):
         return value

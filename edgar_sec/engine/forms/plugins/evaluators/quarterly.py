@@ -1,12 +1,6 @@
-"""Quarterly report (Form 10-Q) stub and refetch evaluator.
-
-Evaluates Form 10-Q documents to classify completeness categories.
-Evaluation employs two fast paths when metadata is supplied:
-1. Post-2011 XBRL mandate: Guaranteed self-contained filing.
-2. Size ceiling check: Large raw payloads exceeding HTML/ASCII size thresholds
-   are assumed complete.
-When evaluated on normalized text alone without metadata shortcuts,
-evaluates to the standard ``standard_full`` decision.
+"""Quarterly report (Form 10-Q) stub and refetch evaluator. Two fast paths when
+metadata is supplied: the post-2011 XBRL mandate makes a filing self-contained by
+construction, and a raw payload past its size ceiling is assumed complete.
 """
 
 from __future__ import annotations
@@ -27,16 +21,8 @@ def evaluate_quarterly(
     raw_length: int | None = None,
     is_html: bool = False,
 ) -> EvaluatorDecision:
-    """Decide how a Form 10-Q should be triaged.
-
-    ``filing_year`` and ``raw_length`` enable fast shortcuts when metadata is
-    available. ``raw_length`` evaluates raw payload size against
-    ``HTML_SIZE_CEILING`` or ``ASCII_SIZE_CEILING`` depending on ``is_html``.
-
-    All three default to the "not supplied" state, because the shared evaluator
-    contract is callable with the normalized text alone. The declared defaults
-    are the no-shortcut path, so an unsupplied argument can never accidentally
-    satisfy a threshold.
+    """How a Form 10-Q should be triaged. Every metadata argument defaults to "not
+    supplied", which is the no-shortcut path: the contract must stay text-only.
     """
     _ = text
 

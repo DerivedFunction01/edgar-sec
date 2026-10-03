@@ -1,10 +1,7 @@
 """Immutable external SEC source snapshots.
-
-Source listings are content-addressed: the snapshot identifier is derived from
-the payload digest, so re-fetching unchanged content is a no-op and any change
-in the upstream file produces a new snapshot rather than silently overwriting
-evidence. Snapshots are write-once; a hash mismatch against an existing
-snapshot is a conflict, not a repair.
+Content-addressed from the payload digest: re-fetching unchanged content is a
+no-op, and a hash mismatch against an existing snapshot is a conflict, not a
+repair.
 """
 
 from __future__ import annotations
@@ -96,9 +93,8 @@ def parse_company_tickers(
     raw_bytes: bytes, *, snapshot_id: str, observed_at: str
 ) -> tuple[list[dict[str, Any]], dict[str, int]]:
     """Parse a company ticker listing payload into normalized listing rows.
-
-    A single malformed entry rejects the whole snapshot: a partial listing
-    would silently shrink the CIK universe the pipeline believes is complete.
+    One malformed entry rejects the snapshot; a partial listing silently shrinks
+    the CIK universe.
     """
     try:
         payload = json.loads(raw_bytes.decode("utf-8"))

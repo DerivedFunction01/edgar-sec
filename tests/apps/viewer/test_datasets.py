@@ -1,5 +1,3 @@
-"""Unit tests for apps.viewer.datasets."""
-
 from __future__ import annotations
 
 from pathlib import Path
@@ -29,8 +27,7 @@ _CIKS = pa.schema(
     ]
 )
 
-# Long enough that zstd actually shrinks it: a tiny payload is *larger* after
-# compression because the frame header costs more than the body saves.
+# Long enough that zstd shrinks it; a tiny payload grows under the frame header.
 _BLOB_BODY = ("<html>" + "filing body " * 200 + "</html>").encode()
 
 
@@ -137,8 +134,7 @@ def test_schema_reports_a_missing_part_rather_than_an_empty_schema(
     path = _write(tmp_path / "a.parquet", pa.table({"cik": pa.array([1], pa.int64())}))
     ref = DatasetRef(dataset_id="gone", paths=(path,))
     path.unlink()
-    # The ref validated the part when it was built; a part removed afterwards
-    # must surface as a read error rather than as an empty schema.
+    # A part removed after validation must read as an error, not an empty schema.
     with pytest.raises(DatasetError, match="a.parquet"):
         dataset_schema(ref)
 
@@ -249,12 +245,7 @@ def test_filter_validation_errors(typed: DatasetRef, item: dict) -> None:
 def test_a_filter_with_no_value_matches_nothing_rather_than_erroring(
     typed: DatasetRef,
 ) -> None:
-    """`cik = NULL` is a legitimate (empty) filter, not a malformed request.
-
-    A client that omits the value gets an empty page, which is a truthful answer
-    to "rows where cik equals nothing". Treating it as an error would make the
-    UI fail a filter the user can see and correct.
-    """
+    """An empty page answers "rows where cik equals nothing" truthfully."""
     page = dataset_rows(typed, filters=[{"column": "cik", "op": "eq"}])
     assert page["items"] == []
 

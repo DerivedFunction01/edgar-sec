@@ -85,10 +85,9 @@ CURRENT_COVER_EXCLUSION_TERMS: tuple[str, ...] = (
     "telephone",
 )
 
-# An 8-K/6-K body is item-structured prose, so its phrase tier carries the
-# same value as the strong unigram tier: a single "material definitive
-# agreement" is no more decisive than two event nouns, and neither reaches the
-# three-point strength the annual pack reserves for business prose.
+# An 8-K/6-K body is item-structured prose, so its phrase tier carries the same value as the
+# strong unigram tier: neither a lone "material definitive agreement" nor two event nouns
+# reaches the three-point strength the annual pack reserves for business prose.
 CURRENT_BODY_LEXICAL_PACK = LexicalEvidencePack(
     name="current_body_start",
     tiers=(

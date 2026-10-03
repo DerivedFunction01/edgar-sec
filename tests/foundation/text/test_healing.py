@@ -31,7 +31,6 @@ def test_should_join_two_lines_and_negative_guards() -> None:
         ),
     ]
 
-    # Positive joins
     assert (
         should_join_two_lines(
             "UNITED STATES", "SECURITIES AND EXCHANGE COMMISSION", rules
@@ -43,7 +42,6 @@ def test_should_join_two_lines_and_negative_guards() -> None:
         is True
     )
 
-    # Negative boundary guards
     assert (
         should_join_two_lines("Common Stock", "(1) has filed all reports", rules)
         is False
@@ -62,7 +60,6 @@ def test_should_join_two_lines_and_negative_guards() -> None:
         is False
     )
 
-    # Caption vs value separation
     assert (
         should_join_two_lines(
             "270 Park Avenue", "(Address of Principal Executive Offices)", rules

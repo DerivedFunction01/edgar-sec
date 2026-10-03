@@ -19,9 +19,7 @@ def _is_exit_line(line: str) -> bool:
 def _exits_confined_to_guard(lines: list[str], guard_line: int) -> bool:
     """True when every exit call in the file sits inside the entrypoint guard.
 
-    Exiting from ``if __name__ == "__main__":`` is how a standalone entrypoint
-    signals its result. A ``sys.exit`` anywhere above the guard is still a
-    library-code violation, so the whole file must be checked.
+    A ``sys.exit`` above the guard is still a violation, so the whole file is checked.
     """
     for index, line in enumerate(lines, start=1):
         if _is_exit_line(line) and index < guard_line:

@@ -1,14 +1,4 @@
-"""How this pipeline's progress events are rendered.
-
-The contract under test is that every long command is visibly progressing, and
-that a captured log stays readable and unambiguous. Two properties are important
-and are pinned directly: the phase is named on every emitted line, and a non-TTY
-run never receives bar control characters.
-
-The ``close()`` test exists because of a real defect. Closing the fetch and
-starting the merge were one method, so closing a run that never reached its merge
-opened a merge bar nobody had entered.
-"""
+"""Progress rendering: every line names its phase, and a non-TTY run gets no bar."""
 
 from __future__ import annotations
 
@@ -26,12 +16,7 @@ from edgar_sec.pipelines.metadata_sync.progress import (
 
 
 class _Stream:
-    """A stderr stand-in that reports a chosen ``isatty`` and forwards writes.
-
-    ``sys.stderr`` is already pytest's capture object here, so forwarding keeps
-    ``capsys`` working. Patching ``isatty`` on it directly is not an option: it is
-    a text stream, not a module, so there is nothing to attach the attribute to.
-    """
+    """Forwarding writes keeps ``capsys`` working through pytest's capture object."""
 
     def __init__(self, wrapped: object, tty: bool) -> None:
         self._wrapped = wrapped
@@ -66,11 +51,7 @@ def _a_tty(monkeypatch: pytest.MonkeyPatch) -> None:
 
 
 def test_a_fetch_event_is_not_labelled_as_a_merge_stage(capsys) -> None:
-    """The log renderer hardcoded ``merge:``, which mislabelled fetch events.
-
-    A redirected ``run`` logged ``merge: ok`` per CIK, so a log consumer could not
-    tell the fetch phase from the merge phase it was reading.
-    """
+    """A redirected ``run`` must not log ``merge:`` per CIK."""
     emit_progress_event({"type": "cik_normalized", "cik": "0000001985"})
     assert "fetch: cik_normalized" in capsys.readouterr().err
 
@@ -180,11 +161,7 @@ def test_the_merge_bar_replaces_the_fetch_bar_instead_of_stacking(
 def test_closing_a_run_that_never_reached_its_merge_opens_nothing(
     monkeypatch,
 ) -> None:
-    """A failure during the fetch must not leave a merge bar behind.
-
-    A merge bar is a promise of work, and showing one for a command that failed is
-    the sort of thing that makes a failure look like a hang.
-    """
+    """A merge bar promises work; showing one after a failure reads as a hang."""
     _a_tty(monkeypatch)
     router = AugmentProgress("augment abcd")
     router({"type": "delta_plan", "plan_id": "p", "row_count": 7})

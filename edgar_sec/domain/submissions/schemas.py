@@ -82,7 +82,6 @@ SUBMISSION_FILE_STRUCT = pa.struct(
 
 SUBMISSION_METADATA_SCHEMA = pa.schema(
     [
-        # Operational metadata
         ("cik", pa.string()),
         ("snapshot_id", pa.string()),
         ("fetched_at", pa.string()),
@@ -94,7 +93,6 @@ SUBMISSION_METADATA_SCHEMA = pa.schema(
         ("error", pa.string()),
         ("anomalies", pa.list_(ANOMALY_STRUCT)),
         ("extra_fields", pa.string()),
-        # Profile fields grouped into named semantic structs
         (
             "identity",
             pa.struct(
@@ -138,11 +136,9 @@ SUBMISSION_METADATA_SCHEMA = pa.schema(
             "addresses",
             pa.struct([("mailing", ADDRESS_STRUCT), ("business", ADDRESS_STRUCT)]),
         ),
-        # Repeated values as typed lists
         ("listings", pa.list_(LISTING_STRUCT)),
         ("filings", pa.list_(FILING_STRUCT)),
         ("submission_files", pa.list_(SUBMISSION_FILE_STRUCT)),
-        # Acquisition provenance from the input manifest
         ("input_name", pa.string()),
         ("input_fingerprint", pa.string()),
         ("chunk_id", pa.int32()),

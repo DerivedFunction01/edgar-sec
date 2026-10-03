@@ -1,11 +1,6 @@
-"""TOC line analysis and normalization helpers.
-
-The row predicates themselves — ``is_toc_row``, ``looks_like_toc_row``, and
-``looks_like_toc_tabular`` — live in
-:mod:`edgar_sec.engine.tables.toc.patterns`, because table classification
-refuses the same rows and both sides must agree on what a TOC row is. This
-module adds the block-level analysis the cover stage needs: row gathering under
-a rendered table, keyword-density scoring, and the late-item anachronism test.
+"""TOC line analysis and normalization helpers. The row predicates live in
+`engine.tables.toc.patterns`, because table classification refuses the same rows;
+this module adds the block-level analysis the cover stage needs.
 """
 
 from __future__ import annotations
@@ -75,11 +70,8 @@ def _row_lines(
 
 
 def _table_toc_rows(lines: list[str], start: int, limit: int) -> list[int]:
-    """Return aligned, monotonic TOC rows from a rendered tagged table.
-
-    HTML table rendering replaces dot leaders with column whitespace, and many
-    rows are subsection labels rather than ``ITEM`` rows.  Keep this broader
-    rule table-scoped and require a real TOC signal before accepting it.
+    """Aligned, monotonic TOC rows from a rendered table; HTML rendering replaces dot
+    leaders with whitespace, so this broader rule stays table-scoped.
     """
     candidates: list[tuple[int, int, str]] = []
     for index in range(start, min(limit, start + 250)):

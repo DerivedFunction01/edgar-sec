@@ -48,8 +48,6 @@ def test_find_mirror_test(tmp_path: Path):
 
 
 def test_lineage_graph_reverse_transitive_resolution(tmp_path: Path):
-    # Setup mini project structure
-    # lib_a -> lib_b -> test_b
     root = tmp_path
     sec_dir = root / "edgar_sec" / "pkg"
     sec_dir.mkdir(parents=True)
@@ -69,7 +67,6 @@ def test_lineage_graph_reverse_transitive_resolution(tmp_path: Path):
     graph = LineageGraph(repo_root=root, cache_path=Path("cache.json"))
     graph.sync_files([file_a, file_b, test_b])
 
-    # Modifying mod_a should transitively select test_mod_b
     res = graph.resolve_tests(
         changed_sources=("edgar_sec/pkg/mod_a.py",),
         changed_tests=(),

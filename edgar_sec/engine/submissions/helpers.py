@@ -1,9 +1,6 @@
-"""Coercion, alias resolution, and anomaly recording for submissions payloads.
-
-SEC submissions JSON is loosely typed and varies across eras. Every coercion
-here is total: invalid input yields ``None`` or an empty collection and is
-reported through an anomaly rather than raised, so one malformed field can
-never discard an otherwise valid filing record.
+"""Coercion, alias resolution, and anomaly recording for submissions payloads. Every
+coercion is total: invalid input yields None or an empty collection and is reported
+as an anomaly, so one malformed field cannot discard a valid filing.
 """
 
 from __future__ import annotations
@@ -41,11 +38,8 @@ def add_anomaly(
 def resolve_alias(
     payload: dict, aliases: list[str]
 ) -> tuple[str | None, Any | None, bool, list[dict]]:
-    """Resolve a case-insensitive known alias, flagging disagreeing duplicates.
-
-    SEC has shipped both ``investorWebsite`` and ``investorwebsite`` for the
-    same field. Conflicting values are reported as ``alias_conflict`` instead
-    of being silently resolved to whichever key happened to sort first.
+    """Resolve a case-insensitive known alias, flagging disagreeing duplicates:
+    conflicting values are reported as `alias_conflict`, not resolved by key order.
     """
     anomalies: list[dict] = []
     lowered = {alias.lower() for alias in aliases}
@@ -68,11 +62,8 @@ def resolve_alias(
 
 
 def accession_normalized(raw: str | None) -> str | None:
-    """Return the hyphen-free 18-digit accession, or ``None`` if unusable.
-
-    Deliberately more permissive than :class:`~edgar_sec.domain.identity.AccessionNumber`:
-    malformed accessions are data to be recorded and flagged here, not an
-    exception that would discard the surrounding filing record.
+    """The hyphen-free 18-digit accession, or None if unusable. More permissive than
+    `AccessionNumber`: a malformed accession is data to flag, not an exception.
     """
     if raw is None:
         return None
@@ -85,11 +76,8 @@ def accession_normalized(raw: str | None) -> str | None:
 def build_archive_url(
     cik_padded: str, accession_raw: str | None, primary_document: str | None
 ) -> tuple[str | None, str | None]:
-    """Derive the archive document URL, returning ``(url, fallback_reason)``.
-
-    A filing record must survive a null or stub primary document. The raw API
-    value is kept on the record and the fallback is explained by the returned
-    reason rather than applied silently.
+    """Derive the archive document URL, returning `(url, fallback_reason)`. The raw API
+    value stays on the record, so a fallback is reported rather than silent.
     """
     accession_norm = accession_normalized(accession_raw)
     if accession_norm is None:

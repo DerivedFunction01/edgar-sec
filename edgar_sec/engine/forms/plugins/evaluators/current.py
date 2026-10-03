@@ -1,7 +1,5 @@
-"""Current report (Form 8-K) stub and refetch evaluator.
-
-An 8-K has no annual report to delegate to, so its evaluator proceeds unconditionally
-with the primary document payload and records the standard decision category.
+"""Current report (Form 8-K) stub and refetch evaluator. An 8-K has no annual report
+to delegate to, so its evaluator always proceeds with the primary payload.
 """
 
 from __future__ import annotations

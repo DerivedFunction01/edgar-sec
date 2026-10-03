@@ -1,8 +1,6 @@
-"""Tests for the regex-alternations scanner.
-
-The scanner is the only thing keeping `foundation.regex.builder` important, so
-these tests pin both directions: a hand-crafted 3+ branch alternation is caught,
-and the legitimate two-branch structural groups are left alone.
+"""The regex-alternations scanner.
+Both directions are pinned: a hand-crafted 3+ branch alternation is caught, and
+the legitimate two-branch structural groups are left alone.
 """
 
 from __future__ import annotations

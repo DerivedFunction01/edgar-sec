@@ -1,21 +1,6 @@
 """Logical-unit classification of the ASCII line stream.
-
-Furniture detection has to know what *kind* of thing a line is before it can
-ask whether that thing repeats. A line inside a fixed-width table repeats
-because the table does; a line inside a paragraph repeats because the sentence
-does. Neither repetition is page furniture, and both look identical to a
-line-level template comparison. So the line stream is first split on blank-line
-boundaries into blocks, and each block is classified as paragraph, list, table,
-or blank.
-
-This classification exists only to answer that question. It is page-marker
-local by design: it is deliberately coarser than a general document-structure
-model and is not a foundation primitive.
-
-Paragraph text is healed — single-newline soft wraps joined — because a wrapped
-sentence is one unit, while tables and lists keep their original line structure
-because their alignment is the evidence. `start_line`/`end_line` always map
-back to the source lines the unit was found on.
+Furniture detection must know what kind of thing a line is before asking whether it repeats: a
+table line repeats because the table does, a sentence line because the sentence does.
 """
 
 from __future__ import annotations
@@ -33,10 +18,7 @@ _RE_TRAILING_PUNCT = re.compile(r"[-,;:]$")
 @dataclass(frozen=True, slots=True)
 class LogicalUnit:
     """A single logical unit in the source document.
-
-    ``text`` is the healed analysis view (soft wraps joined for paragraphs,
-    original alignment preserved for tables). ``start_line``/``end_line``
-    map back to the original source lines.
+    ``text`` is the healed analysis view; ``start_line``/``end_line`` map back to source lines.
     """
 
     kind: str
@@ -51,9 +33,7 @@ class LogicalUnit:
 
 def _is_table_row(line: str) -> bool:
     """Return whether a line looks like a fixed-width table row.
-
-    Table rows have multi-space whitespace gutters (column separators) or
-    are full-width separator lines.
+    Table rows have multi-space gutters as column separators, or are full-width separator lines.
     """
     stripped = line.strip()
     if not stripped:
@@ -137,10 +117,7 @@ def _classify_block(lines: list[str]) -> str:
 
 def classify_units(text: str) -> list[LogicalUnit]:
     """Split source text into logical units.
-
-    Double-newline runs separate blocks. Each block is classified as a
-    paragraph, list, table, or blank. Paragraph text is healed (soft wraps
-    joined); tables and lists retain original line structure.
+    Double-newline runs separate blocks; paragraphs are healed, tables and lists keep their lines.
     """
     if not text:
         return []

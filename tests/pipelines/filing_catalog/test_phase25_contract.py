@@ -1,25 +1,5 @@
-"""The Phase 2.5 entry contract, asserted rather than documented.
-
-Phase 2.5 (document acquisition) consumes Phase 2's published plan bundle and
-nothing else, so drift in that bundle is silent: the wrong document fetched, one
-fetched twice, a URL that 404s. The contract:
-
-* A bundle is a complete work order: ``REQUIRED_PLAN_FILES`` are present and
-  ``locator_groups.parquet`` enumerates the documents to fetch.
-* One row per **unique document**: ``document_locator_key`` is
-  ``sha256(accession || ':' || document_path)``, so a co-filed document is
-  fetched once, under either scope.
-* Every row carries a non-null HTTPS ``archive_url`` agreeing with the URL
-  Phase 1's engine would have built.
-* ``targets/form=<FORM>/data.parquet`` carries the *occurrences* -- one row per
-  registrant's claim on a document -- keyed to the work order for attribution.
-* A policy plan's ``reserve_targets.parquet`` is disjoint from the work order,
-  so an acquirer ignoring the reserve never double-fetches.
-
-The occurrence partitions are scope-specific and deliberately **not** part of
-that shared surface -- a deterministic plan publishes the raw target rows, a
-policy plan the feature-enriched rows it selected from -- so both are pinned
-separately rather than under one shared name.
+"""The published plan bundle as an acquirer's work order: one row per unique
+document, with the scope-specific occurrence partitions pinned separately.
 """
 
 from __future__ import annotations
@@ -54,17 +34,12 @@ FETCH_REQUIRED = (
     "archive_url",
 )
 
-# A staged plan bundle built by either scope, for the contract tests to read.
 BUNDLES = ("deterministic", "policy")
 
-# DuckDB disambiguates a duplicate column by appending _1, _2, ... Naming that
-# pattern is what turns "the policy scope emits a stray column" from a silent
-# schema drift into a failed test.
+# DuckDB disambiguates a duplicate as `name_1`, so naming that pattern catches drift.
 DEDUPED_COLUMN = re.compile(r"^(?P<name>.+)_(?P<ordinal>\d+)$")
 
-# Features the policy snapshot adds to a raw target row. Asserted by name so a
-# "fix" that strips the feature columns -- which would satisfy a narrower
-# equality check -- cannot pass.
+# Named explicitly so a "fix" that strips the feature columns cannot pass.
 POLICY_FEATURE_COLUMNS = (
     "form_family",
     "era",
@@ -101,12 +76,7 @@ def _publish(
 
 
 def _feature_occurrence_columns(catalog_id: str, artifacts_root: Path) -> list[str]:
-    """Resolve the occurrence schema the policy scope publishes from.
-
-    ``FeatureSnapshotBuilder`` is content-addressed and reuses an existing
-    snapshot, so this returns the schema the planner already wrote rather than
-    rebuilding it.
-    """
+    """The planner already built the snapshot, so read its schema instead."""
     paths = resolve_filing_catalog_paths(artifacts_root)
     builder = FeatureSnapshotBuilder(
         target_root=paths.snapshot_targets_dir(catalog_id),
@@ -145,7 +115,7 @@ def test_every_locator_row_is_fetchable(
     catalog_snapshot: tuple[dict[str, Any], Path],
     catalog_artifacts_root: Path,
 ) -> None:
-    """The columns Phase 2.5 needs, present, non-null, and HTTPS."""
+    """The columns an acquirer needs, present, non-null, and HTTPS."""
     plan_dir, _ = _plan_dir(scope, catalog_snapshot, catalog_artifacts_root)
     table = pq.read_table(plan_dir / LOCATOR_GROUPS_NAME)
     for column in FETCH_REQUIRED:
@@ -165,12 +135,7 @@ def test_occurrences_collapse_to_one_locator_per_document(
     catalog_snapshot: tuple[dict[str, Any], Path],
     catalog_artifacts_root: Path,
 ) -> None:
-    """The invariant that lets Phase 2.5 fetch a co-filed document once.
-
-    ``document_locator_key`` is ``sha256(accession || ':' || document_path)``.
-    Two registrants filing one document share it, and it must appear exactly
-    once in the work order.
-    """
+    """The key is sha256(accession || ':' || document_path), so co-filers share it."""
     plan_dir, _ = _plan_dir(scope, catalog_snapshot, catalog_artifacts_root)
     rows = pq.read_table(plan_dir / LOCATOR_GROUPS_NAME).to_pylist()
     keys = [row["document_locator_key"] for row in rows]
@@ -196,11 +161,7 @@ def test_occurrences_are_the_registrants_claim_not_the_document(
     catalog_snapshot: tuple[dict[str, Any], Path],
     catalog_artifacts_root: Path,
 ) -> None:
-    """Partitions carry occurrences: one row per registrant, keyed by locator.
-
-    Phase 2.5 attributes a fetched document back through these rows, so the
-    partition must key to the same locator the work order enumerates.
-    """
+    """A fetched document is attributed back through these rows, so the keys must match."""
     plan_dir, meta = _plan_dir(scope, catalog_snapshot, catalog_artifacts_root)
     partitions = sorted(plan_dir.glob("targets/form=*/data.parquet"))
     assert partitions, "Phase 2.5 has no per-form targets"
@@ -228,11 +189,7 @@ def test_deterministic_targets_publish_the_raw_target_schema(
     catalog_snapshot: tuple[dict[str, Any], Path],
     catalog_artifacts_root: Path,
 ) -> None:
-    """The deterministic scope publishes exactly the declared target schema.
-
-    Equality, not containment: this is the one scope whose output is the raw
-    catalog target row, so an extra column here is unambiguously drift.
-    """
+    """Equality, not containment: an extra column here is unambiguously drift."""
     plan_dir, _ = _plan_dir("deterministic", catalog_snapshot, catalog_artifacts_root)
     for partition in sorted(plan_dir.glob("targets/form=*/data.parquet")):
         names = pq.read_schema(partition).names
@@ -245,14 +202,6 @@ def test_policy_targets_publish_the_feature_occurrence_schema(
     catalog_snapshot: tuple[dict[str, Any], Path],
     catalog_artifacts_root: Path,
 ) -> None:
-    """The policy scope publishes its feature snapshot's occurrence schema.
-
-    Policy plans are written from the joined feature snapshot, so the published
-    partition must equal that source schema exactly. The regression this pins is
-    a ``SELECT *`` over the join to the selected keys, which projected
-    ``document_locator_key`` a second time and shipped a spurious
-    ``document_locator_key_1`` column into the published bundle.
-    """
     manifest, _ = catalog_snapshot
     artifacts_root = catalog_artifacts_root
     expected = _feature_occurrence_columns(str(manifest["catalog_id"]), artifacts_root)
@@ -280,12 +229,6 @@ def test_the_two_scopes_publish_deliberately_different_occurrences(
     catalog_snapshot: tuple[dict[str, Any], Path],
     catalog_artifacts_root: Path,
 ) -> None:
-    """The scopes are not interchangeable, and Phase 2.5 is told so.
-
-    A test named "either scope satisfies the same contract" is what let a
-    malformed policy schema pass review: it read one file. This one states the
-    difference outright so the distinction cannot be quietly collapsed again.
-    """
     deterministic_plan, _ = _plan_dir(
         "deterministic", catalog_snapshot, catalog_artifacts_root
     )
@@ -325,7 +268,7 @@ def test_plan_json_states_what_the_bundle_contains(
     catalog_snapshot: tuple[dict[str, Any], Path],
     catalog_artifacts_root: Path,
 ) -> None:
-    """Phase 2.5 reads a bundle without rescanning it; these are its index keys."""
+    """Read without rescanning, so these are the keys an acquirer indexes by."""
     import json
 
     for scope in BUNDLES:
@@ -343,10 +286,7 @@ def test_plan_json_states_what_the_bundle_contains(
         ):
             assert key in document, f"{scope} plan.json is missing {key}"
         assert document["unique_locators_count"] == meta["unique_locators_count"]
-        # plan.json keys `counts` by the raw form name while the partition
-        # directory escapes "/" to "_" ("10-K/A" -> "form=10-K_A"). A consumer
-        # mapping counts onto directories must apply the same escape, so it is
-        # pinned here rather than left as a trap.
+        # `counts` is keyed by raw form name; directories escape "/" to "_".
         published = {entry.name for entry in (plan_dir / "targets").iterdir()}
         expected = {f"form={form_partition_name(form)}" for form in document["counts"]}
         assert published == expected
@@ -356,13 +296,6 @@ def test_both_scopes_publish_the_same_work_order_contract(
     catalog_snapshot: tuple[dict[str, Any], Path],
     catalog_artifacts_root: Path,
 ) -> None:
-    """The fetch work order is scope-independent; the occurrences are not.
-
-    Phase 2.5 must not branch on scope to *fetch*: both scopes publish the same
-    locator columns. Its attribution step does branch, and
-    ``test_the_two_scopes_publish_deliberately_different_occurrences`` is what
-    keeps that asymmetry visible.
-    """
     surfaces = set()
     for scope in BUNDLES:
         plan_dir, _ = _plan_dir(scope, catalog_snapshot, catalog_artifacts_root)

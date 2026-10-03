@@ -51,8 +51,7 @@ def test_a_dense_table_without_enough_numeric_columns_does_not_overflow() -> Non
     widths, _ = compute_column_widths(
         grid, _right(9), budget=RenderBudget(max_table_width=20)
     )
-    # The cap is a target, not a hard limit: shrinking stops at each column's
-    # safe width so a header never becomes unreadable.
+    # The cap is a target: shrinking stops at each column's safe width.
     assert sum(widths) > 20
     assert all(width >= 3 for width in widths)
 

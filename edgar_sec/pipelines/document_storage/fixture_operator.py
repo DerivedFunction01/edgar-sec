@@ -1,4 +1,4 @@
-"""Fixture discovery and raw-payload fill operations for Phase 2.5."""
+"""Fixture discovery and raw-payload fill operations."""
 
 from __future__ import annotations
 
@@ -159,15 +159,8 @@ def _backfill_document_metadata(
 ) -> int:
     """Re-derive metadata rows for payloads recorded before the table existed.
 
-    A payload is a one-way digest, so the accession, path, MIME and source hash
-    of a document fetched by an older fill cannot be recovered from the payload
-    table alone -- the bytes have to be read back. That costs local I/O, so it
-    runs only for documents that have a payload but no metadata row, which makes
-    it self-limiting: a fully-recorded fixture pays nothing on a later fill.
-
-    The alternative, refusing a fill until the operator migrated the fixture
-    separately, would have made the common case (extend a fixture) fail for a
-    reason with no user-visible cause.
+    A payload key is a one-way digest, so identity must be read back from the bytes.
+    Runs only where a payload exists without a row, so a recorded fixture pays nothing.
     """
     if not locators:
         return 0

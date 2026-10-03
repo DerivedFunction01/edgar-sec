@@ -1,14 +1,6 @@
-"""Per-dimension availability statistics for a feature snapshot.
-
-Selection floors are only as good as the evidence behind them. A policy asking
-for 40 filers with ``sic_code = '7372'`` is either satisfiable from this corpus
-or silently impossible, and the difference is knowable before any selection
-runs. This module answers that question, and it is the natural place to look
-when a published plan reports an underfilled floor.
-
-Every count runs in DuckDB against the snapshot Parquet. The snapshot is
-already the narrowed, feature-resolved projection, so no catalog-level scan is
-needed and no dimension value is ever materialized in the Python heap.
+"""Per-dimension availability statistics for a feature snapshot: counts run in
+DuckDB, so a floor's satisfiability is known before selection runs and no
+dimension value is ever materialized in the Python heap.
 """
 
 from __future__ import annotations
@@ -55,10 +47,8 @@ class InventoryStatistics:
             raise UnknownDimensionError(f"unknown selection dimension: {dimension!r}")
 
     def value_counts(self, dimension: str) -> list[dict[str, Any]]:
-        """Return per-value counts of unique locators and distinct CIKs.
-
-        ``locator_count`` is the number of distinct *documents* carrying the
-        value, which is what a floor on that dimension is denominated in.
+        """Per-value counts of unique locators and distinct CIKs; `locator_count` counts
+        distinct *documents*, the unit a floor on that dimension is denominated in.
         """
         self._require_dimension(dimension)
         if dimension in OCCURRENCE_ONLY_DIMENSIONS:
@@ -89,11 +79,8 @@ class InventoryStatistics:
     def check_floor_feasibility(
         self, floors: dict[str, dict[str, int]]
     ) -> dict[str, dict[str, dict[str, Any]]]:
-        """Report whether the corpus can satisfy every declared floor.
-
-        The ``deficit`` field is the actionable part: a floor that is impossible
-        is a policy bug, and a report that only says ``feasible: false`` sends
-        the reader back to the policy to work out by how how much.
+        """Whether the corpus can satisfy every declared floor; `deficit` is the actionable
+        field, since `feasible: false` alone sends the reader back to the policy.
         """
         report: dict[str, dict[str, dict[str, Any]]] = {}
         for dimension, requirements in floors.items():
@@ -115,15 +102,8 @@ class InventoryStatistics:
     def check_composite_feasibility(
         self, composites: list[dict[str, Any]]
     ) -> list[dict[str, Any]]:
-        """Report whether each composite stratum has enough matching locators.
-
-        Counted on the locator table, because that is the grain a composite
-        selects candidates at: the selector draws composites from
-        ``locator_features``, so a count taken at any other grain would answer a
-        different question than the one selection asks. A composite filtered on an
-        occurrence-only dimension is therefore refused rather than answered -- the
-        locator table has no such column, and a count that silently returned zero
-        would look like an undersupplied stratum rather than an invalid one.
+        """Whether each composite stratum has enough matching locators, counted at the
+        locator grain; an occurrence-only dimension is refused rather than zeroed.
         """
         results: list[dict[str, Any]] = []
         if not composites:

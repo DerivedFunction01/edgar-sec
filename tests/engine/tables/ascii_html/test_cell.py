@@ -62,8 +62,8 @@ def test_html_attributes_and_inline_css_normalize_into_one_cell_style() -> None:
 
 def test_typography_is_inherited_from_a_nested_bold_tag() -> None:
     assert _style_of(STYLED_TD).is_bold is True
-    # A cell carrying no attributes at all short-circuits to the shared default
-    # style, so a nested <b> in an attribute-free cell does not set the flag.
+    # An attribute-free cell short-circuits to the default style, so a nested <b> does
+    # not set the flag.
     assert _style_of("<table><tr><td><b>x</b></td></tr></table>").is_bold is False
     assert (
         _style_of('<table><tr><td style="color:red"><b>x</b></td></tr></table>').is_bold
@@ -103,11 +103,8 @@ def test_display_none_and_visibility_hidden_mark_a_cell_hidden() -> None:
 
 
 def test_the_bare_hidden_attribute_is_a_no_op() -> None:
-    # The parser reports a valueless `hidden` attribute with a `None` value, and
-    # the attribute map drops `None` values, so the `attrs.get("hidden")` probe
-    # never fires. Hiding a cell therefore requires `display:none` or
-    # `visibility:hidden` in the style attribute. Pinned because the behaviour is
-    # surprising and must not change silently.
+    # A valueless `hidden` is reported as `None` and the attribute map drops `None`, so
+    # hiding a cell requires `display:none` or `visibility:hidden` in the style.
     assert parse_html("<table><tr><td hidden>x</td></tr></table>").css_first(
         "td"
     ).raw_node.attributes == {"hidden": None}

@@ -1,21 +1,6 @@
-"""Declarative selection policy: the quota profile a plan is built against.
-
-A policy names the corpus, the target forms, the era bands, the date selection,
-and the floors, composites, and caps that define a balanced sample. Nothing about
-stratification is hardcoded in the selector: the policy is the only place a form
-name, an era boundary, or a dimension share cap appears, so changing the quota
-profile never requires editing Python. This module owns all date-bound reasoning:
-:mod:`.features` maps dates onto era bands and :mod:`.selector` consumes the
-result, but neither one decides what a date means.
-
-A field that nothing reads is not configuration, it is a second, unenforced
-claim about what selection does. The policy carries none. A retired key is
-rejected outright rather than ignored, so an older draft fails to load instead of
-selecting something nobody intended.
-
-Policy generation takes the catalog's forms and year range from its caller,
-keeping artifact discovery in the pipeline layer. Construction validates every
-referenced dimension, including composite filters, before selection begins.
+"""The declarative quota profile a plan is built against, and the only place a form
+name, an era boundary, or a dimension cap appears. Owns all date-bound reasoning:
+features maps dates onto era bands and selector consumes the result.
 """
 
 from __future__ import annotations
@@ -38,15 +23,14 @@ from edgar_sec.domain.filing_catalog.filters import (
 from edgar_sec.foundation.serialization import canonical_hash
 from edgar_sec.infra.storage.atomic import atomic_write_json, atomic_write_text
 
-# Keys a policy document used to carry that nothing reads. A draft still
-# declaring one is refused rather than loaded with the key dropped, because a
-# silently ignored key is exactly the unenforced claim these fields were.
+# Retired keys a draft may still declare. Refused rather than dropped: a silently
+# ignored key is a second, unenforced claim about what selection does.
 _RETIRED_POLICY_FIELDS = frozenset(
     {"seed_groups", "weights", "value_weights", "policy_schema_version"}
 )
 
-# Every dimension the selector is allowed to stratify on. A policy referencing
-# anything else is rejected at construction rather than silently ignored.
+# Every dimension the selector may stratify on; anything else is rejected at
+# construction rather than silently ignored.
 KNOWN_DIMENSIONS = (
     "form",
     "form_family",
@@ -71,12 +55,8 @@ KNOWN_DIMENSIONS = (
     "company_family",
 )
 
-# The two grains a dimension can be counted at. Selection draws candidates and
-# composites from `locator_features`, so a composite stratum can only name a
-# locator-grain dimension; counting a per-filing dimension on the locator table
-# would read as an undersupplied stratum rather than a bad policy. `sic_code` is
-# locator-grain: the locator projection carries the representative registrant's
-# value.
+# Candidates and composites are drawn from `locator_features`, so a composite
+# stratum may only name a locator-grain dimension; `sic_code` is one.
 OCCURRENCE_ONLY_DIMENSIONS = frozenset({"accession_class"})
 LOCATOR_ONLY_DIMENSIONS = frozenset(
     name for name in KNOWN_DIMENSIONS if name not in OCCURRENCE_ONLY_DIMENSIONS
@@ -91,12 +71,8 @@ def _fingerprint(data: Any) -> str:
 
 @dataclass(frozen=True, slots=True)
 class EraBand:
-    """An explicit bounded year or date interval for era categorization.
-
-    Bounds are half-open on years (``start_year`` inclusive, ``end_year``
-    exclusive) and half-open on dates, which is what makes adjacent bands tile
-    a range without overlapping: ``(1995, 2005)`` then ``(2005, 2011)`` covers
-    every year exactly once.
+    """A bounded year or date interval for era categorization. Half-open (`start`
+    inclusive, `end` exclusive) so adjacent bands tile a range without overlapping.
     """
 
     name: str
@@ -162,10 +138,8 @@ class EraBand:
 
 @dataclass(frozen=True, slots=True)
 class SeedFiler:
-    """One normalized row of the seed CIK manifest.
-
-    Seed filers are registrants that must appear in the output regardless of
-    quota arithmetic -- an anchor tenant, a known-good counterparty.
+    """One normalized row of the seed CIK manifest: a registrant that must appear
+    in the output regardless of quota arithmetic.
     """
 
     cik: str
@@ -174,15 +148,13 @@ class SeedFiler:
     notes: str = ""
 
 
-# The CSV header a seed sidecar is written and read with. One owner for the
-# format, so the writer and the reader cannot drift.
+# One owner for the seed CSV format, so writer and reader cannot drift.
 SEED_FILER_COLUMNS = ("cik", "seed_group", "coverage_tags", "notes")
 
 
 def load_seed_cik_csv(path: str | Path) -> dict[str, SeedFiler]:
-    """Parse and validate a seed CIK CSV, normalizing every CIK to ten digits.
-
-    A missing ``seed-cik.csv`` falls back to a sibling ``cik-sec.csv``.
+    """Parse and validate a seed CIK CSV, normalizing every CIK to ten digits; a
+    missing ``seed-cik.csv`` falls back to a sibling ``cik-sec.csv``.
     """
     source_path = Path(path).resolve()
     if not source_path.is_file():
@@ -223,14 +195,8 @@ def load_seed_cik_csv(path: str | Path) -> dict[str, SeedFiler]:
 
 
 def resolve_seed_filers(policy: SelectionPolicy) -> dict[str, SeedFiler]:
-    """Return the seed set a policy configures, or an empty set when it has none.
-
-    A policy pointing at a file that does not exist is a normal state, not an
-    error: company-family data then falls back to the profile corpus and
-    selection runs without mandatory filers. The distinction is recorded in the
-    plan rather than raised, because an absent optional manifest is a different
-    situation from a malformed one -- a malformed manifest still raises, from
-    :func:`load_seed_cik_csv`.
+    """The seed set a policy configures, or empty when it configures none. An absent
+    optional manifest is a normal state; a malformed one still raises.
     """
     path = Path(policy.seed_cik_path)
     if not path.is_absolute() and not path.is_file():
@@ -243,10 +209,8 @@ def resolve_seed_filers(policy: SelectionPolicy) -> dict[str, SeedFiler]:
 
 
 def write_seed_filers_csv(path: str | Path, seed_map: dict[str, SeedFiler]) -> None:
-    """Write the normalized seed set as the plan's immutable seed sidecar.
-
-    Sorted by CIK so the file is byte-stable for a given seed set, which is what
-    lets a published plan be reproduced from its own bundle.
+    """Write the seed set as the plan's immutable seed sidecar, sorted by CIK so the
+    file is byte-stable and a published plan is reproducible from its own bundle.
     """
     destination = Path(path)
     destination.parent.mkdir(parents=True, exist_ok=True)
@@ -267,7 +231,6 @@ def write_seed_filers_csv(path: str | Path, seed_map: dict[str, SeedFiler]) -> N
 
 
 def read_seed_filers_csv(path: str | Path) -> dict[str, SeedFiler]:
-    """Read a published seed sidecar back into a normalized seed set."""
     source = Path(path)
     if not source.is_file():
         raise FileNotFoundError(f"plan seed sidecar not found: {source}")
@@ -300,11 +263,8 @@ def _csv_field(value: str) -> str:
 
 
 def compute_seed_fingerprint(seed_map: dict[str, SeedFiler]) -> str:
-    """Hash the seed set by value, not by file order.
-
-    Sorting by CIK makes the fingerprint independent of row order in the CSV, so
-    re-sorting the manifest does not invalidate every plan built from it, while
-    editing any seed's group, tags, or notes does.
+    """Hash the seed set by value, not by file order: re-sorting the manifest must not
+    invalidate every plan built from it, while editing a seed's group or notes must.
     """
     rows = [
         [entry.cik, entry.seed_group, entry.coverage_tags, entry.notes]
@@ -315,11 +275,8 @@ def compute_seed_fingerprint(seed_map: dict[str, SeedFiler]) -> str:
 
 @dataclass
 class SelectionPolicy:
-    """The declarative quota profile for one target plan.
-
-    Mutable, and validated in ``__post_init__``: a policy is built by a human or
-    a generator, so the error has to surface where the bad field is written
-    rather than hours later inside a selector.
+    """The declarative quota profile for one target plan, validated in `__post_init__`
+    so a bad field surfaces where it is written, not hours later in a selector.
     """
 
     corpus_id: str
@@ -361,10 +318,8 @@ class SelectionPolicy:
         self.document_suffixes = list(
             normalize_suffixes([str(suffix) for suffix in self.document_suffixes])
         )
-        # The declared form is re-canonicalized rather than stored as written, so
-        # the fingerprint of an unchanged policy does not depend on how a human
-        # ordered or re-spelled its clauses. A policy document is hand-edited,
-        # so "these two files mean the same thing" has to hold.
+        # Re-canonicalized rather than stored as written, so an unchanged policy's
+        # fingerprint cannot depend on how a human ordered or re-spelled it.
         self.date_selection = date_selection_to_json(
             date_selection_from_json(self.date_selection)
         )
@@ -389,11 +344,8 @@ class SelectionPolicy:
         if unknown:
             raise ValueError(f"unknown policy dimensions: {sorted(unknown)}")
 
-        # A composite is selected from the locator table, so a stratum filtered
-        # on a dimension that only exists per filing can never be matched. The
-        # vocabulary check above cannot tell grains apart, so without this the
-        # failure surfaces as a DuckDB Binder Error naming a column rather than
-        # the policy field that caused it. Refusing it here names both.
+        # A composite selects from the locator table, so a per-filing dimension
+        # there can never match; the vocabulary check above cannot tell grains.
         occurrence_only = sorted(
             {
                 dimension
@@ -442,13 +394,8 @@ class SelectionPolicy:
         return cls.from_dict(json.loads(Path(path).read_text(encoding="utf-8")))
 
     def write(self, path: str | Path) -> Path:
-        """Persist the policy atomically, indented for hand editing.
-
-        ``canonical=False`` keeps the dataclass's own field order rather than
-        sorting keys, matching how ``write_plan_documents`` writes ``plan.json``:
-        a policy document is read and edited by people, and declaration order is
-        the order a person thinks about the fields in. The fingerprint is
-        unaffected either way, because :func:`canonical_hash` sorts on its own.
+        """Persist the policy atomically, in declaration order for hand editing; the
+        fingerprint is unaffected either way because canonical_hash sorts on its own.
         """
         destination = Path(path).resolve()
         atomic_write_json(destination, self.to_dict(), canonical=False, indent=2)
@@ -460,11 +407,8 @@ class SelectionPolicy:
 
     @property
     def date_selection_clauses(self) -> DateSelection:
-        """The declared selection as typed clauses, ready to compile to SQL.
-
-        Decoding from the stored form on each access keeps one representation:
-        the policy document holds JSON, so a fingerprint and a predicate cannot
-        be taken from two different normalizations of the same clauses.
+        """The declared selection as typed clauses, decoded on each access so a
+        fingerprint and a predicate cannot disagree on the normalization.
         """
         return date_selection_from_json(self.date_selection)
 
@@ -475,23 +419,14 @@ class SelectionPolicy:
 
     @property
     def derives_era_bands(self) -> bool:
-        """Whether era bands are derived from the catalog rather than declared.
-
-        An empty list means auto, not "no strata": a policy with no bands would
-        sample across all years at once, which is the one thing era banding
-        exists to prevent. The planner resolves the bands from the years the
-        catalog actually holds -- after the declared forms and date selection --
-        and writes the resolved bands into the published plan.
+        """Whether era bands are derived from the catalog. Empty means auto, not "no
+        strata": banding exists to stop sampling every year at once.
         """
         return not self.era_bands
 
     def with_era_bands(self, bands: Sequence[EraBand]) -> SelectionPolicy:
-        """Return a copy carrying explicit bands, for embedding in a plan.
-
-        The plan must record the bands selection actually used. Auto bands are
-        derived from data that can change, so re-deriving them on a later read
-        of the plan could produce a different stratification than the one the
-        published locators were chosen under.
+        """A copy carrying explicit bands, for embedding in a plan: re-deriving them on a
+        later read could stratify differently from the published locators.
         """
         if not bands:
             raise ValueError("resolved era bands must not be empty")
@@ -502,10 +437,8 @@ class SelectionPolicy:
         return self.base_content_units
 
     def validate_dimensions(self, available: set[str]) -> None:
-        """Raise if the policy stratifies on a dimension the snapshot lacks.
-
-        Called by the selector against the snapshot it was handed, because only
-        the snapshot knows which dimensions actually survived feature building.
+        """Raise if the policy stratifies on a dimension the snapshot lacks: only the
+        snapshot knows which dimensions survived feature building.
         """
         referenced = set(self.floors) | set(self.caps)
         for composite in self.composites:
@@ -518,15 +451,8 @@ class SelectionPolicy:
 
 
 def era_bands_for_range(min_year: int, max_year: int) -> list[EraBand]:
-    """Tile ``[min_year, max_year]`` into contiguous, non-overlapping bands.
-
-    A short range gets one band per year. A longer one is binned so each band
-    spans roughly four years, capped at six bands: more bands than that and no
-    single stratum is wide enough to fill its floor.
-
-    This is the automatic mode. A policy that declares its own bands never
-    reaches it, and the bands a published plan records are the ones its selection
-    actually used.
+    """Tile `[min_year, max_year]` into contiguous bands: one per year for a short
+    range, otherwise ~4-year bands capped at six, below which floors cannot fill.
     """
     if max_year < min_year:
         raise ValueError(f"year range is inverted: {min_year}..{max_year}")
@@ -556,11 +482,8 @@ def auto_generate_policy(
     max_year: int,
     dest: Path | None = None,
 ) -> SelectionPolicy:
-    """Derive a baseline policy from a catalog's own forms and year range.
-
-    The caller supplies observed forms and the report-year range so this engine
-    module does not discover Layer 4 artifact paths. The pipeline resolves the
-    published catalog and passes those values here.
+    """Derive a baseline policy from a catalog's own forms and year range; the caller
+    supplies both, keeping artifact discovery in Layer 4.
     """
     if max_year < min_year:
         raise ValueError(f"catalog year range is inverted: {min_year}..{max_year}")
@@ -580,16 +503,8 @@ def auto_generate_policy(
 
 
 def discover_policies(search_dirs: Sequence[str | Path]) -> list[dict[str, Any]]:
-    """Summarize valid policy documents found in the given directories.
-
-    Files that fail to parse as a policy are skipped rather than raising, so a
-    directory holding unrelated JSON can be scanned; only validated policies are
-    returned, which is what makes the result safe to render in an operator menu.
-
-    ``search_dirs`` is required. The default search location is a property of the
-    artifact layout, which belongs to Layer 4, so resolving it here would be an
-    upward import. ``pipelines.filing_catalog.discovery.discover_policies``
-    supplies it.
+    """Summarize valid policy documents in the given directories; unparseable files are
+    skipped so unrelated JSON stays scannable. `search_dirs` is required.
     """
     summaries: list[dict[str, Any]] = []
     seen: set[Path] = set()
@@ -616,8 +531,8 @@ def discover_policies(search_dirs: Sequence[str | Path]) -> list[dict[str, Any]]
                     "base_content_units": policy.base_content_units,
                     "policy_fingerprint": policy.policy_fingerprint,
                     "seed_cik_path": policy.seed_cik_path,
-                    # Enough to tell two drafts apart in a menu without reading
-                    # either: the fields that change what a plan selects.
+                    # Fields that change what a plan selects: enough to
+                    # tell two drafts apart in a menu.
                     "date_selection_text": policy.date_selection_text,
                     "derives_era_bands": policy.derives_era_bands,
                     "era_band_count": len(policy.era_bands),
@@ -627,11 +542,8 @@ def discover_policies(search_dirs: Sequence[str | Path]) -> list[dict[str, Any]]
 
 
 def normalize_value(value: Any) -> str:
-    """Normalize a dimension value for policy comparison and reporting.
-
-    A missing value and the literal string ``"none"`` must collapse to the same
-    bucket, otherwise a floor on ``"none"`` would count as unmet no matter how
-    many rows genuinely lack that dimension.
+    """Normalize a dimension value; a missing value and the literal "none" must
+    collapse together, or a floor on "none" could never be met.
     """
     if value is None:
         return "none"

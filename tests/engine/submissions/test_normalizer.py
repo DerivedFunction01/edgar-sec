@@ -1,7 +1,6 @@
-"""Submissions normalizer parity tests.
+"""Submissions normalizer parity.
 
-Expectations are captured golden values run against the same committed fixtures.
-A deviation here is a parity regression, not a preference change.
+A deviation from a golden value is a parity regression, not a preference change.
 """
 
 from __future__ import annotations
@@ -53,9 +52,6 @@ def _normalize(payload: dict, **overrides: Any) -> dict[str, Any]:
 
 def _anomaly_codes(row: dict[str, Any]) -> set[str]:
     return {anomaly["code"] for anomaly in row["anomalies"]}
-
-
-# --------------------------------------------------------------------- helpers
 
 
 def test_accession_normalized_is_lenient() -> None:
@@ -142,9 +138,6 @@ def test_normalize_former_names_shapes() -> None:
     ]
 
 
-# ------------------------------------------------------------- ragged handling
-
-
 def test_ragged_columns_pad_to_longest_without_truncation() -> None:
     section = _load("mismatched_arrays.json")["filings"]["recent"]
     anomalies: list[dict] = []
@@ -178,9 +171,6 @@ def test_dedupe_keeps_first_occurrence_and_flags_conflicts() -> None:
     assert kept[0]["form"] == "10-Q"
     assert duplicates == 2
     assert [a["code"] for a in anomalies] == ["accession_conflict"]
-
-
-# ---------------------------------------------------------- full-row goldens
 
 
 def test_recent_with_history_matches_oracle_golden() -> None:
@@ -307,9 +297,6 @@ def test_non_dict_payload_yields_full_shape_failed_row() -> None:
     assert row["error"] == "payload is not a JSON object"
     for field in SUBMISSION_METADATA_SCHEMA.names:
         assert field in row
-
-
-# ------------------------------------------------------------- arrow assembly
 
 
 def test_build_submission_table_conforms_to_canonical_schema() -> None:

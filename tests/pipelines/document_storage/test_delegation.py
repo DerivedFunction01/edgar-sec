@@ -23,8 +23,7 @@ from edgar_sec.pipelines.document_storage.processor import (
 
 ACCESSION = "0001234567-11-000001"
 
-# EDGAR SGML is line-oriented: the unpacker anchors <TYPE>, <SEQUENCE>, and
-# <FILENAME> at line starts, so the fixture must be laid out that way.
+# EDGAR SGML is line-oriented: the unpacker anchors its tags at line starts.
 BUNDLE = (
     b"<SEC-DOCUMENT>\n"
     b"<SEC-HEADER>0001</SEC-HEADER>\n"

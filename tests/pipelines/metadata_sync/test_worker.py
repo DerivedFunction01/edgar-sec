@@ -257,7 +257,6 @@ def test_run_chunk_resumes_from_partial_staging_file(
         {"name": "SMALL CO", "filings": {"recent": {}, "files": []}},
     )
 
-    # 1. Pre-stage first CIK into chunk-1.parquet.tmp
     row, _ = normalize_one_cik(
         client,
         SMALL,
@@ -276,7 +275,6 @@ def test_run_chunk_resumes_from_partial_staging_file(
     assert calls_before == 1
     assert chunk_path.with_name(f"{chunk_path.name}.tmp").is_file()
 
-    # 2. Run chunk - should resume and fetch only FORD
     result = run_chunk(client, plan, run_paths, 1, snapshot_id="snap1", workers=2)
     assert result.row_count == 2
     assert result.statuses == {"ok": 2}
@@ -284,7 +282,6 @@ def test_run_chunk_resumes_from_partial_staging_file(
     assert chunk_path.is_file()
     assert not chunk_path.with_name(f"{chunk_path.name}.tmp").exists()
 
-    # Only 2 additional calls made for FORD (recent + historical)
     assert len(session.calls) == calls_before + 2
     table = pq.read_table(chunk_path)
     assert set(table.column("cik").to_pylist()) == {SMALL, FORD}
@@ -304,7 +301,6 @@ def test_run_chunk_resumes_when_all_ciks_already_staged(
         {"name": "SMALL CO", "filings": {"recent": {}, "files": []}},
     )
 
-    # Pre-stage BOTH CIKs into chunk-1.parquet.tmp
     row_small, _ = normalize_one_cik(
         client,
         SMALL,
@@ -330,7 +326,6 @@ def test_run_chunk_resumes_when_all_ciks_already_staged(
     assert chunk_path.with_name(f"{chunk_path.name}.tmp").is_file()
     calls_before = len(session.calls)
 
-    # Re-run: should resume and make 0 new calls
     result = run_chunk(client, plan, run_paths, 1, snapshot_id="snap1", workers=2)
     assert result.row_count == 2
     assert result.statuses == {"ok": 2}

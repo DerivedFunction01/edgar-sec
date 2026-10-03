@@ -1,10 +1,5 @@
-"""Unit tests for the filing-catalog artifact layout.
-
-The layout is an interface: Phase 2.5 and the operator resolve paths through
-this module rather than concatenating strings. A layout that is wrong in a
-document but right in code still misleads a consumer, and a layout that drifts
-silently makes a published bundle unfindable, so the shape is pinned here rather
-than described in a docstring.
+"""The filing-catalog artifact layout, pinned because consumers resolve paths here
+rather than concatenating strings.
 """
 
 from __future__ import annotations
@@ -43,15 +38,7 @@ def test_catalog_root_is_under_the_pipeline_directory(paths) -> None:
 
 
 def test_snapshots_and_plans_are_sibling_directories(paths) -> None:
-    """Catalog snapshots and plan bundles are siblings, not nested.
-
-    This mirrors ``pipelines.metadata_sync.paths``: one published root per kind,
-    both directly under the pipeline directory. An earlier revision resolved both
-    to ``catalog_root`` and justified the shared namespace by noting that a
-    catalog id and a plan id are both 24-character digests and could only collide
-    through a hash collision. True, and the wrong trade — it left a published tree
-    in which nothing distinguished a snapshot from a plan by name.
-    """
+    """One published root per kind, both directly under the pipeline directory."""
     assert paths.snapshots_root == paths.catalog_root / SNAPSHOTS_DIR_NAME
     assert paths.plans_root == paths.catalog_root / PLANS_DIR_NAME
     assert paths.snapshot_dir("cat-1").parent == paths.snapshots_root
@@ -59,20 +46,12 @@ def test_snapshots_and_plans_are_sibling_directories(paths) -> None:
 
 
 def test_catalog_and_plan_ids_have_separate_namespaces(paths) -> None:
-    """An equal catalog id and plan id must name different directories.
-
-    This is the property the shared namespace gave up. It held only because both
-    ids are content digests of different inputs, which is an argument rather than
-    a guarantee, so the layout now separates the two roots instead.
-    """
+    """The separation cannot rest on both ids merely being content digests."""
     assert paths.snapshot_dir("same-id") != paths.plan_dir("same-id")
 
 
 def test_the_current_pointer_lives_inside_the_snapshots_root(paths) -> None:
-    """One published root, one pointer, alongside the directories it can name.
-
-    Matches Phase 1, where the pointer sits in ``metadata/snapshots/current/``.
-    """
+    """The pointer sits beside the directories it can name."""
     assert paths.current_pointer == (
         paths.snapshots_root / CURRENT_ALIAS / "pointer.json"
     )

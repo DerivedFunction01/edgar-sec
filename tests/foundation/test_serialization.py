@@ -75,12 +75,8 @@ def test_safe_dumps_produces_encodable_json() -> None:
 
 
 def test_safe_dumps_preserves_key_order_where_canonical_json_sorts() -> None:
-    """The two serializers differ on purpose.
-
-    ``safe_dumps`` is for rendering, so it keeps insertion order -- which for a
-    query result means the column order the caller asked for. ``canonical_json``
-    sorts, because a digest must not depend on dict ordering. Collapsing them
-    would mean either unsorted digests or alphabetical display order.
+    """``safe_dumps`` renders and keeps insertion order (the caller's column order);
+    ``canonical_json`` sorts because a digest must not depend on dict ordering.
     """
     payload = {"zebra": 1, "apple": 2}
     assert safe_dumps(payload) == '{"zebra": 1, "apple": 2}'

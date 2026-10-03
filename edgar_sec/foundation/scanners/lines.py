@@ -1,11 +1,4 @@
-"""Shared line-oriented helpers for text policy scanners.
-
-The scanners that police *source text* rather than an import graph all need the
-same three things: a way to enumerate scannable lines, a way to recognise
-comment/docstring noise so a rule is not reported from inside prose, and a way to
-express a path allowlist. Keeping that here means a new text scanner declares its
-rule and nothing else.
-"""
+"""Shared line-oriented helpers for text policy scanners."""
 
 from __future__ import annotations
 
@@ -29,9 +22,7 @@ def is_noise(line: str) -> bool:
 def is_scanner_infrastructure(path: str) -> bool:
     """True for the scanners themselves and for test files.
 
-    Scanners must spell out the very patterns they detect, and tests must be able
-    to assert on a violation without tripping the gate themselves, so both are
-    exempt from every text rule.
+    Both must spell out the patterns they detect, or assert on a violation.
     """
     return "foundation/scanners/" in path or path.startswith("tests/")
 
@@ -48,8 +39,7 @@ def matches_allowed(path: str, prefixes: Sequence[str]) -> bool:
 def iter_source_lines() -> Iterator[tuple[str, int, str]]:
     """Yield ``(path, line_number, line)`` for every readable Python line.
 
-    Unreadable or non-UTF-8 files are skipped rather than failing the gate: a
-    scanner that cannot decode a file has no opinion about its contents.
+    An undecodable file is skipped, not fatal: the scanner has no opinion on it.
     """
     for path_str in discover_python_files():
         try:
@@ -68,14 +58,8 @@ def scan_text_rule(
 ) -> list[ScannerFinding]:
     """Apply a per-line rule across the tree and return the findings.
 
-    ``rule(path, number, line)`` returns a ``ScannerFinding`` or ``None``.
-    ``prefixes`` exempts the modules that legitimately own the pattern
-    vocabulary; ``skip`` exempts individual files such as entrypoints.
-
-    ``skip_noise`` drops comments and docstring delimiters before the rule runs,
-    which is right for a rule about *code* but wrong for a rule about prose: a
-    shim is often announced in a comment, so the legacy-shims rule turns this off
-    in order to read what the author wrote.
+    ``prefixes`` exempts modules owning the pattern vocabulary; ``skip`` exempts files.
+    ``skip_noise`` suits a code rule, not a prose one, so the legacy-shims rule turns it off.
     """
     findings = []
     for path_str, number, line in iter_source_lines():

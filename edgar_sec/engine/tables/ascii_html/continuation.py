@@ -1,9 +1,6 @@
 """Domain-neutral table continuation detection and pre-render fusion for SEC tables.
-
-A statement that runs past a page break is two tables in the DOM. Fusing them is
-only safe when the evidence is unambiguous — same column structure, a repeated
-header, and nothing but page furniture between — so every gate here refuses
-rather than guesses.
+A statement past a page break is two tables in the DOM, and fusing them is safe only on unambiguous
+evidence - same column structure, repeated header, nothing but page furniture between.
 """
 
 from __future__ import annotations
@@ -57,8 +54,7 @@ def _normalize_cell_for_matching(text: str) -> str:
 
 def is_allowed_intervening_content(html_snippet: str) -> bool:
     """Return True if intervening content consists only of page furniture and whitespace.
-
-    Reject immediately if substantial narrative prose exists between the two tables.
+    Substantial narrative prose between the two tables is an immediate reject.
     """
     if not html_snippet:
         return True
@@ -115,13 +111,7 @@ def detect_table_continuation(
     intervening_html: str = "",
 ) -> ContinuationDecision:
     """Evaluate whether table B is a high-confidence continuation of table A.
-
-    Applies conservative structural gates:
-    1. Intervening content: exclusively page break sentinels/furniture and whitespace.
-    2. Minimum size: both tables must be multi-row tables (not single-line signature/date labels).
-    3. Column count compatibility: same maximum row width / active columns.
-    4. Header compatibility: Table B repeats Table A's header row(s) or has an explicit
-       continuation marker, and contains body data rows.
+    The gates are cumulative: furniture-only intervening content, both tables multi-row, compatible column counts, and headers repeated or an explicit continuation marker.
     """
     if len(table_a.rows) < 2 or len(table_b.rows) < 2:
         return ContinuationDecision(
@@ -129,14 +119,12 @@ def detect_table_continuation(
             reason="Tables must have at least 2 rows for continuation",
         )
 
-    # Gate 1: Fast intervening content check
     if intervening_html and not is_allowed_intervening_content(intervening_html):
         return ContinuationDecision(
             is_continuation=False,
             reason="Substantial text between tables",
         )
 
-    # Gate 2: Column structure check
     span_a = max(len(row) for row in table_a.rows)
     span_b = max(len(row) for row in table_b.rows)
     if span_a != span_b and abs(span_a - span_b) > 1:
@@ -145,14 +133,12 @@ def detect_table_continuation(
             reason=f"Column count mismatch: {span_a} vs {span_b}",
         )
 
-    # Gate 3: Header signature comparison
     headers_a = _extract_header_signatures(table_a)
     headers_b = _extract_header_signatures(table_b)
 
     if not headers_a or not headers_b:
         return ContinuationDecision(is_continuation=False, reason="Missing headers")
 
-    # Match leading header rows
     matching_headers = 0
     for h_a, h_b in zip(headers_a, headers_b):
         if h_a == h_b:

@@ -1,10 +1,6 @@
 """Render block data structure, grid extraction, and block fusion.
-
-A *block* is a contiguous run of visible columns owned by one source cell. The
-block is the unit the renderer formats, and it is deliberately wider than a
-column: a currency symbol, an amount, and a footnote marker that belong to one
-value are fused into a single right-aligned block so they cannot drift apart
-between rows.
+A *block* is a contiguous run of visible columns owned by one source cell, and is wider than a
+column on purpose: one value's symbol, amount, and marker fuse so they cannot drift apart.
 """
 
 from __future__ import annotations
@@ -173,7 +169,6 @@ def build_row_blocks(
             if c_pos < len(row) and row[c_pos].strip():
                 block_txt = row[c_pos]
             else:
-                # Find text from any active column belonging to this cell in raw_grid, or fallback to cell.text
                 found_txt = ""
                 for active_col_idx, orig_c in enumerate(active_cols):
                     if (
@@ -270,7 +265,6 @@ def fuse_data_affix_blocks(
             if b_idx + 1 < len(curr_blocks):
                 next_b = curr_blocks[b_idx + 1]
 
-                # 1. Prefix pair ($ + number)
                 curr_is_prefix = (
                     len(curr_b.span_cols) == 1
                     and curr_b.span_cols[0] in prefix_positions
@@ -279,10 +273,8 @@ def fuse_data_affix_blocks(
                 if curr_is_prefix:
                     p_txt = curr_b.text.strip()
                     n_txt = next_b.text.strip()
-                    # A standalone hyphen is ambiguous: it may be a missing
-                    # value or range marker rather than a unary sign. Only
-                    # currency prefixes and an opening parenthesis are safe
-                    # to attach to the following numeric cell.
+                    # A standalone hyphen is ambiguous - a missing value or a range marker, not a unary sign. Only a
+                    # currency prefix or an opening parenthesis is safe to attach to the following numeric cell.
                     is_safe_p = not p_txt or p_txt in PREFIX_SYMBOLS or p_txt == "("
                     is_safe_n = (
                         not n_txt
@@ -306,11 +298,8 @@ def fuse_data_affix_blocks(
                         changed = True
                         continue
 
-                # 2. Suffix pair (number + %). Multi-column blocks whose every
-                # column is a suffix position (e.g. empty trail/footnote
-                # spacers fused together in an earlier pass) stay eligible,
-                # otherwise fusion becomes row-dependent and right-aligned
-                # values drift between rows.
+                # Multi-column blocks whose every column is a suffix position stay eligible; otherwise fusion becomes
+                # row-dependent and right-aligned values drift between rows.
                 next_is_suffix = next_b.span_cols[0] == curr_b.span_cols[-1] + 1 and (
                     (
                         len(next_b.span_cols) == 1
@@ -446,12 +435,7 @@ def fuse_header_suffix_blocks(
     budget: RenderBudget,
 ) -> list[RenderBlock]:
     """Extend multi-column headers across adjacent empty accounting suffix bands.
-
-    EDGAR finance tables commonly put the closing-parenthesis and footnote
-    columns outside a header cell's literal colspan. Treating those empty
-    bands as part of a multi-column header keeps its label and existing
-    divider aligned with the effective value band without inventing a new
-    divider.
+    EDGAR tables put the closing parenthesis and footnote columns outside a header cell's literal colspan.
     """
     if r_idx >= header_row_count or not suffix_positions:
         return blocks
@@ -498,12 +482,7 @@ def align_terminal_numeric_headers(
     affix_positions: set[int],
 ) -> list[RenderBlock]:
     """Align terminal subheaders with the value edge of affixed columns.
-
-    Financial HTML often gives a subheader a span covering both a currency or
-    delimiter micro-column and its numeric value column. Keep that source span
-    intact, but align the label to the numeric edge instead of centering it
-    across the micro-columns. Parent band headers and ordinary tables are left
-    unchanged.
+    A subheader spanning a currency micro-column keeps its source span but aligns to the numeric edge.
     """
     if r_idx not in terminal_header_rows or not affix_positions:
         return blocks

@@ -54,12 +54,24 @@ def run_tests(
 
     from edgar_sec.foundation.checks.git_diff import get_git_status
     from edgar_sec.foundation.checks.lineage import LineageGraph
+    from edgar_sec.foundation.checks.prose import prose_only_python_files
 
-    snapshot = get_git_status()
+    repo_root = Path.cwd()
+    snapshot = get_git_status(repo_root)
+
+    prose = prose_only_python_files(snapshot, repo_root)
+    if prose:
+        print(
+            "==> prose-only python edits (comments/docstrings) excluded from selection:"
+        )
+        for path in sorted(prose):
+            print(f"      - {path}")
+        snapshot = snapshot.excluding(prose)
 
     if snapshot.is_docs_or_assets_only:
         print(
-            "==> git change detection: only documentation/assets modified; tests skipped."
+            "==> git change detection: only documentation, assets, or prose changed;"
+            " tests skipped."
         )
         return
 
@@ -68,7 +80,6 @@ def run_tests(
         run_cmd("pytest suite", [python, "-m", "pytest", "tests"])
         return
 
-    repo_root = Path.cwd()
     graph = LineageGraph(repo_root=repo_root)
     graph.load_cache()
     graph.sync_files()

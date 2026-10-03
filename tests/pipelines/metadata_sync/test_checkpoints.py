@@ -91,11 +91,7 @@ def test_unexpected_cik_is_rejected(tmp_path: Path) -> None:
 
 
 def test_a_chunk_from_another_plan_is_rejected(tmp_path: Path) -> None:
-    """A delta chunk landing in a full plan's namespace must not be trusted.
-
-    The CIK comparison catches it even though the schema and the row count both
-    match.
-    """
+    """The CIK comparison catches it though schema and row count both match."""
     plan, run_paths = _plan(tmp_path)
     foreign = build_plan(
         compiled_cohort("cik_sec_mini.csv", tmp_path).roster,

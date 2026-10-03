@@ -1,20 +1,5 @@
 """Signature-region location, masking, and letter-spaced name healing.
-
-A signature block is a layout, not a token: a conformed ``/s/`` line, a name
-line, a title line, a date, and an underline, often in two columns. A reflow
-that rewrites one of those lines into a different column corrupts the block, so
-the whole region is masked before any line-level rewrite and restored after.
-
-The mask preserves the line count and the exact source bytes, which is the
-contract that makes it safe: a caller may rewrite anything between the two calls
-and still get the original signature block back, character for character.
-
-Mangled names are a known SEC artifact of condensed fonts. Glyph-width
-rendering inserts a space after an isolated uppercase letter, producing
-``/s/ S ATYA N ADELLA`` or ``M ICROSOFT C ORPORATION``. Healing removes the
-whitespace only after isolated single-letter uppercase tokens, and only once
-the signature-marker context confirms the mangled shape, so an ordinary
-capitalized name with real initials keeps its spacing.
+A signature block is a layout, not a token: a conformed ``/s/`` line, a name line, a title line, a date, and an underline, often in two columns. A reflow that rewrites one of those lines into a different column corrupts the block, so the whole region is masked before any line-level rewrite and restored after. The mask preserves the line count and the exact source bytes, which is the contract that makes it safe: a caller may rewrite anything between the two calls and still get the original signature block back, character for character. Mangled names are a known SEC artifact of condensed fonts. Glyph-width rendering inserts a space after an isolated uppercase letter, producing ``/s/ S ATYA N ADELLA`` or ``M ICROSOFT C ORPORATION``. Healing removes the whitespace only after isolated single-letter uppercase tokens, and only once the signature-marker context confirms the mangled shape, so an ordinary capitalized name with real initials keeps its spacing.
 """
 
 from __future__ import annotations
@@ -28,25 +13,18 @@ from edgar_sec.foundation.text.dates import (
     contains_date,
 )
 
-# Conformed signature line: an optional ``*`` or ``By:`` label followed by ``/s/``.
 RE_CONFORMED_SIGNATURE = re.compile(r"^\s*(?:\*\s*)?(?:By\s*:\s*|By\s+)?/\s*s\s*/\s*")
 
-# Power of attorney signer: ``*By: [Name]`` or ``*By: [Name], Attorney-in-Fact``
 RE_POA_SIGNER = re.compile(r"^\s*\*\s*(?:By\s*:\s*|By\s+)", re.IGNORECASE)
 _SIGNATURE_ASTERISK_RE = re.compile(r"^\s*[*]+\s*$")
 
-# A signature marker followed by a letter-spaced name: ``/s/ A LICE L. J OLLA``
-# or ``/ S / S ATYA N ADELLA``. Requires at least one isolated single-letter
-# uppercase token pair after the marker so ordinary ``/s/ Alex Smith`` never
-# triggers healing.
+# A signature marker followed by a letter-spaced name: `/s/ A LICE L. J OLLA`. At least one
+# isolated single-letter uppercase pair must follow, so `/s/ Alex Smith` never triggers healing.
 _MANGLED_SIGNATURE_RE = re.compile(r"/\s*[sS]\s*/\s+[A-Z]\s+[A-Z]")
 
-# Isolated single uppercase letter followed by whitespace and another
-# uppercase letter. Only applied when the mangled-signature context is
-# confirmed; never applied to arbitrary text.
+# Isolated single uppercase letter then whitespace then uppercase; never applied to arbitrary text.
 _ISOLATED_CAPITAL_GAP_RE = re.compile(r"\b([A-Z])\s+(?=[A-Z])")
 
-# Canonical marker with optional leading ``By:`` label.
 _MARKER_RE = re.compile(r"^(/\s*S\s*/|/s/)\s*", re.IGNORECASE)
 _SIGNATURE_HEADER_RE = re.compile(
     rf"^\s*(?:{build_alternation(('signature', 'name'), auto_escape=True)})\b.*\b"
@@ -78,11 +56,7 @@ RE_SIGNATURE_LABEL_LINE = re.compile(
 
 def is_signature_label_line(line: str) -> bool:
     """Return whether a line opens a shared signature-block label.
-
-    A line starting with one of these is layout rather than prose, so a reflow
-    must leave the block containing it alone. It lives here rather than with the
-    reflow feature that reads it, because the label vocabulary is a property of
-    signatures and this is the module that owns them.
+    Such a line is layout, not prose, so a reflow must leave its block alone.
     """
     return bool(RE_SIGNATURE_LABEL_LINE.match(line))
 
@@ -108,11 +82,7 @@ def is_conformed_signature_line(line: str) -> bool:
 
 def _signature_row(line: str, previous: str = "") -> bool:
     """Return whether a line continues a signature layout.
-
-    Three independent signals, any one of which is enough: a conformed marker
-    or an underline, a date, or an indented alphabetic line following another
-    signature row. The last requires a multi-space or tab gap, because an
-    indented continuation is a layout fact and an indented heading is not.
+    The indented-continuation signal needs a multi-space or tab gap: an indented continuation is layout and an indented heading is not.
     """
     stripped = line.strip()
     if not stripped:
@@ -142,11 +112,7 @@ def find_signature_regions(
     lines: tuple[str, ...] | list[str],
 ) -> tuple[SignatureRegion, ...]:
     """Find complete signature layouts, allowing blank lines between signers.
-
-    A region must contain more than its opening line, and must have been opened
-    by either a title-bearing header or at least one conformed marker. A lone
-    conformed line, or a run of indented text with no marker and no header, is
-    not a signature block and is left to the ordinary text stages.
+    A region must exceed its opening line; a lone marker or bare indented run is not one.
     """
     source = tuple(lines)
     regions: list[SignatureRegion] = []
@@ -206,11 +172,7 @@ def mask_signature_regions(
     text: str,
 ) -> tuple[str, tuple[SignatureRegion, ...]]:
     """Mask signature lines while preserving line count and exact source text.
-
-    One token per line, named by region index and line offset within the
-    region, so a later restore is unambiguous even when two regions in the same
-    document have the same shape. The trailing newline of each masked line is
-    preserved, which is what keeps every downstream line index valid.
+    One token per line, named by region index and line offset; each trailing newline survives.
     """
     if "/" not in text and "*" not in text:
         lower = text.lower()
@@ -232,10 +194,7 @@ def mask_signature_regions(
 
 def restore_signature_regions(text: str, regions: tuple[SignatureRegion, ...]) -> str:
     """Restore masked signature lines exactly once.
-
-    The token is a whole-token replacement, so a caller that has rewritten a
-    masked line gets the original back; that is the intended behaviour and the
-    reason the mask is a token and not a character-count pad.
+    Whole-token replacement is intended, which is why the mask is a token and not a pad.
     """
     if not regions:
         return text
@@ -248,11 +207,7 @@ def restore_signature_regions(text: str, regions: tuple[SignatureRegion, ...]) -
 
 
 def normalize_signature_marker(text: str) -> str:
-    """Return ``text`` with its leading signature marker canonicalized.
-
-    ``/S/``, ``/ S /``, ``/ s /`` and ``/s/`` all become ``/s/``. Any other
-    text is returned unchanged.
-    """
+    """Canonicalize a leading signature marker to ``/s/``; other text is unchanged."""
     match = _MARKER_RE.match(text)
     if not match:
         return text
@@ -268,10 +223,7 @@ def signature_block_has_mangled_text(cells: tuple[str, ...] | list[str]) -> bool
 
 def heal_mangled_signature_text(text: str) -> str:
     """Heal letter-spaced signature text inside a confirmed mangled block.
-
-    Collapses whitespace after isolated single-letter uppercase tokens and
-    canonicalizes the marker. Ordinary capitalized names with real initials
-    (``A. Smith``) keep their spacing because the initial keeps its period.
+    Ordinary capitalized names keep their spacing because a real initial keeps its period.
     """
     healed = _ISOLATED_CAPITAL_GAP_RE.sub(r"\1", text)
     return normalize_signature_marker(healed)

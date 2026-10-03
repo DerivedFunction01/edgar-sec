@@ -1,5 +1,3 @@
-"""Unit tests for domain identity value objects."""
-
 from __future__ import annotations
 
 import pytest

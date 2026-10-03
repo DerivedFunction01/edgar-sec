@@ -1,13 +1,6 @@
 """Shared financial numeric-cell vocabulary and predicates.
-
-This module is intentionally narrower than :mod:`edgar_sec.engine.tables.tokens`:
-table formatters and ASCII reflow both need the same financial-cell grammar,
-while the token module also owns attachment and bullet semantics.
-
-The grammar is a whole-cell match, not a search. ``is_numeric_cell("1,234.00")``
-and ``is_numeric_cell("$ 1,234")`` are True, while ``is_numeric_cell("1,234
-widgets")`` is False — the decision drives column alignment, and a partial match
-would right-align prose.
+The grammar is a whole-cell match, not a search: `is_numeric_cell("1,234 widgets")` is False,
+because a partial match would right-align prose.
 """
 
 from __future__ import annotations
@@ -84,9 +77,7 @@ _NUMERIC_STRIP_RE = re.compile(
 
 def is_financial_placeholder(value: str) -> bool:
     """Return whether a cell is an exact configured financial placeholder.
-
-    Placeholders occupy a numeric column without contributing a value, so they
-    are recognised as numeric data rather than as prose.
+    Placeholders fill a numeric column without contributing a value, so they count as numeric data.
     """
     return value.strip().casefold() in _FINANCIAL_PLACEHOLDERS_CASEFOLD
 

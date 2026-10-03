@@ -1,8 +1,4 @@
-"""Financial statement boundary and section label predicates.
-
-Provides domain predicates consumed by engine table policies without coupling the
-engine to specific keyword dictionaries.
-"""
+"""Financial statement boundary and section label predicates."""
 
 from __future__ import annotations
 

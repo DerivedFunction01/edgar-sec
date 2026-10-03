@@ -1,23 +1,5 @@
 """Conservative ASCII prose reflow and untagged-table tagging.
-
-The stage for plain-text (non-HTML) filing content. It classifies every
-blank-line-delimited block and renders the canonical output from exact
-decisions: unwrap (join hard-wrapped prose lines with single spaces), preserve
-(emit the original lines unchanged, untagged), or tag-and-preserve (emit the
-original lines unchanged between ``<TABLE>`` and ``</TABLE>`` markers).
-
-The safety bias is deliberate and asymmetric. A missed unwrap leaves prose
-hard-wrapped, which a reader recovers; a collapsed table corrupts financial data,
-which nobody recovers. Ambiguous blocks therefore always resolve to preserve, as
-does a block that still looks like a table once the resolver has absorbed
-everything it may absorb. Existing ``<TABLE>`` blocks are masked before analysis
-and restored byte-for-byte afterwards, so a reflow can never reclassify or
-rewrite one.
-
-Everything here is deterministic and line-based. Decisions carry half-open line
-ranges in the input's coordinate frame, which
-:func:`~edgar_sec.engine.reflow.engine.mapper.build_line_mapper` translates into
-the output's.
+The bias is asymmetric: a missed unwrap leaves prose hard-wrapped and recoverable, a collapsed table corrupts financial data. Ambiguous blocks resolve to preserve, as does a block that still looks like a table once the resolver has absorbed all it may.
 """
 
 from __future__ import annotations
@@ -64,8 +46,8 @@ from ..types import (
     SpanDecision,
 )
 
-# Alpha density, a lowercase letter present, and no separator or dense numeric
-# grid together mean a bullet's wrapped continuation is prose.
+# Alpha density, a lowercase letter, and no separator or dense numeric grid together mean a
+# bullet's wrapped continuation is prose.
 _BULLET_PROSE_ALPHA_DENSITY = 0.55
 _BULLET_PROSE_MAX_NUMERIC_ROWS = 3
 _RELAXED_PROSE_ALPHA_DENSITY = 0.55
@@ -92,11 +74,7 @@ def _eligible_row_block_indices(
     body_start_line: int,
 ) -> set[int]:
     """Collect the blocks a row run may grow from, cheapest test first.
-
-    Every condition is independent, so the order is free to change. A block is
-    usually rejected by its action or its evidence, and both are decided from
-    data already in hand, whereas the sentinel and policy-predicate scans touch
-    every line of the block.
+    Order is free to change: every condition is independent, and only the sentinel and policy scans touch every line.
     """
     predicates = tuple(
         predicate
@@ -135,16 +113,7 @@ def _overlap_window(
     end_line: int,
 ) -> tuple[int, int]:
     """Return the slice of ascending decisions that overlaps ``[start, end)``.
-
-    Decisions are non-overlapping and ordered by start line, so the candidates
-    begin at the first decision starting before ``end_line`` and the window
-    extends back only as far as a decision still reaching into the run.
-
-    The start-line list is rebuilt per call rather than carried alongside the
-    decisions. Keeping it in step with every splice would trade a list the
-    caller already has to keep sorted for an invariant that can silently
-    desync, and the measured cost is under a percent: a representative sample
-    builds ~0.28M elements for ~13s of reflow work.
+    The start list is rebuilt per call: carrying it alongside would trade a sorted list for an invariant that can silently desync.
     """
     last = bisect.bisect_left([decision.start_line for decision in decisions], end_line)
     first = last
@@ -448,10 +417,7 @@ def _masked_body_start(
     body_start_line: int,
 ) -> int:
     """Project the body boundary from source lines into the masked frame.
-
-    Every newline inside a masked span is gone from the line sequence the
-    classifier sees, so the boundary has to move by however many lines each span
-    removed ahead of it.
+    Newlines inside a masked span are gone from the line sequence, so the boundary moves.
     """
     masked_body_start_line = body_start_line
     for span in spans:
@@ -572,9 +538,8 @@ def reflow_ascii(
                 ),
                 "table_row_run",
             )
-            # Every span this run supersedes overlaps it, so the replacements
-            # are confined to the window: splice the window instead of
-            # rebuilding the whole list once per run.
+            # Every span this run supersedes overlaps it, so replacements stay inside the window: splice the
+            # window rather than rebuilding the whole list per run.
             window = [
                 decision
                 for decision in overlaps

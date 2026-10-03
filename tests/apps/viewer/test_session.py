@@ -1,8 +1,5 @@
-"""Unit tests for apps.viewer.session.
-
-These are thin on purpose: the module exists to be the single connection seam,
-so what matters is that it delegates to ``infra.storage.duckdb.connect`` and
-that its timeout wrapper always cancels.
+"""The single connection seam: delegation to `duckdb.connect` and a timeout wrapper
+that always cancels.
 """
 
 from __future__ import annotations
@@ -24,8 +21,7 @@ from edgar_sec.apps.viewer.session import (
 def test_open_connection_produces_a_usable_budgeted_connection() -> None:
     conn = open_connection()
     try:
-        # The resource budget is applied by the shared factory, so its settings
-        # are observable on the connection the viewer hands out.
+        # The shared factory applies the budget, so the connection shows it.
         assert int(conn.execute("SELECT current_setting('threads')").fetchone()[0]) >= 1
         assert conn.execute("SELECT 1").fetchone()[0] == 1
     finally:

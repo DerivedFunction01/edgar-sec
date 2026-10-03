@@ -1,17 +1,7 @@
 """Fixture lineage validation, as pure functions.
 
-A fixture is a recorded set of raw payloads plus a manifest saying which plan
-produced it. Replaying a plan against a fixture built from a *different* plan
-silently produces a wrong answer, so the four identity axes below are checked
-before any payload is read.
-
-The checks are pure comparisons over two dicts, with no storage dependency and
-no transaction, so they are directly testable.
-
-The comparison is deliberately asymmetric: a manifest field is only checked when
-*both* sides declare it. A fixture that records no lineage is legitimate input,
-and refusing it would strand it, so a missing field means "unknown", not
-"mismatched". What the validator does refuse is a declared mismatch.
+Comparison is asymmetric: a field is checked only when *both* sides declare it, so a
+fixture with no recorded lineage stays usable input. A declared mismatch is refused.
 """
 
 from __future__ import annotations
@@ -39,12 +29,7 @@ def _normalized_forms(value: Any) -> set[str]:
 
 
 def check_fixture_lineage(manifest: dict[str, Any], plan: dict[str, Any]) -> None:
-    """Raise :class:`FixtureLineageError` when a declared identity axis differs.
-
-    Args:
-        manifest: the fixture's recorded lineage.
-        plan: the plan about to be replayed against the fixture.
-    """
+    """Raise :class:`FixtureLineageError` when a declared identity axis differs."""
     for manifest_field, plan_field, label in _LINEAGE_AXES:
         recorded = manifest.get(manifest_field)
         requested = plan.get(plan_field)
@@ -73,10 +58,9 @@ def is_fixture_compatible(manifest: dict[str, Any], plan: dict[str, Any]) -> boo
 
 
 def fixture_lineage_status(manifest: dict[str, Any]) -> str:
-    """Classify how much lineage a manifest actually records.
+    """Classify how much lineage a manifest records.
 
-    ``unknown`` is the honest answer for a fixture captured before lineage was
-    tracked; it is not a claim that the fixture is valid for any plan.
+    ``unknown`` means unrecorded, not "valid for any plan".
     """
     if not any(manifest.get(field) for field, _plan, _label in _LINEAGE_AXES):
         return "unknown"

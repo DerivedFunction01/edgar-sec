@@ -1,20 +1,5 @@
-"""Unit tests for the filing-catalog operator wizard.
-
-The wizard is a presentation layer over the CLI. These tests pin the actions it
-exposes, the delegation that keeps the two surfaces from drifting apart, and the
-discovery that lets an operator pick a catalog or an expansion parent instead of
-typing an identifier they were never shown.
-
-The policy-plan action is the one menu action that reaches a scope the CLI drives
-otherwise. What made it offerable is that a policy is *a file an operator writes
-or edits*, not a quota profile they have to author from a prompt: the action
-lists the drafts under ``policies/`` and, on a blank answer, writes a
-catalog-derived one to edit. It never plans that draft in the same step, and it
-never picks the first draft on the operator's behalf.
-
-The wizard also never asks for an artifacts root, which the pinned no-prompt
-invariant below enforces: the registered ``artifacts.root`` setting is the one
-authority for it, and ``--artifacts`` remains the per-command override.
+"""The operator wizard as a presentation layer over the CLI: exposed actions,
+delegation, and discovery in place of typed identifiers.
 """
 
 from __future__ import annotations
@@ -36,9 +21,7 @@ from edgar_sec.pipelines.filing_catalog.paths import resolve_filing_catalog_path
 # --- the menu --------------------------------------------------------------
 
 
-# One discovered draft, in the shape `discover_policies` returns. Shared by the
-# tests that script the policy-plan action so the menu's rendering and its
-# selection path are driven by the same fixture.
+# One discovered draft in the shape `discover_policies` returns.
 _DRAFT: dict[str, Any] = {
     "path": "/artifacts/filing_catalog/policies/draft.json",
     "name": "draft.json",
@@ -75,7 +58,7 @@ def test_the_menu_exposes_every_command_an_operator_can_drive() -> None:
 
 
 def test_every_cli_subcommand_is_reachable_one_way_or_the_other() -> None:
-    """A command with neither a menu entry nor a documented reason is dead surface."""
+    """A command with no menu entry and no documented reason is dead surface."""
     menu = " ".join(
         (action.label + " " + action.callback.__name__).lower()
         for action in build_operator_menu()
@@ -123,11 +106,7 @@ def test_the_menu_title_names_the_phase() -> None:
 
 
 def test_namespace_carries_every_field_the_commands_read() -> None:
-    """A prompt-driven namespace must satisfy the command it dispatches to.
-
-    The commands read a fixed set of attributes, so a namespace missing one
-    fails with AttributeError at the prompt rather than at the user.
-    """
+    """A missing attribute must not surface as AttributeError at the prompt."""
     namespace = operator._namespace("plan", catalog="current", forms="10-K 8-K")
     assert isinstance(namespace, argparse.Namespace)
     assert namespace.command == "plan"
@@ -170,12 +149,7 @@ def test_the_dates_prompt_returns_what_the_operator_typed() -> None:
 def test_the_dates_prompt_re_asks_until_the_selection_parses(
     rejected: str, capsys: pytest.CaptureFixture[str]
 ) -> None:
-    """The wizard validates with the shared parser instead of its own grammar.
-
-    A second copy of the grammar would drift: the menu would accept a spelling
-    the CLI rejects, or reject one it accepts, and the operator would only find
-    out at the planner.
-    """
+    """A second grammar would drift from the planner the answers reach."""
     answers = iter([rejected, "@Q1"])
     with pytest.MonkeyPatch.context() as patch:
         patch.setattr(operator, "prompt_text", lambda prompt, default: next(answers))
@@ -193,10 +167,7 @@ def test_every_prompted_action_builds_a_usable_namespace(
         seen.append(args)
         return 0
 
-    # In menu order: status asks nothing; materialize asks for the source; the
-    # deterministic plan asks for the catalog, the forms, and the date
-    # selection; the policy plan asks for the catalog and then for which draft
-    # to run; expand asks for the parent plan then the target size.
+    # In menu order; the counts are why each action's answers appear where they do.
     answers = iter(
         ["src", "cat-1", "10-K", "@Q1[1999..2001]", "cat-2", "1", "1", "5000"]
     )
@@ -238,14 +209,7 @@ def test_every_prompted_action_builds_a_usable_namespace(
 def test_no_action_ever_asks_for_the_artifacts_root(
     monkeypatch: pytest.MonkeyPatch, tmp_path: Any
 ) -> None:
-    """The menu must not re-ask a question the project default already answers.
-
-    The registered ``artifacts.root`` setting is the one authority for the root,
-    and every subcommand carries ``--artifacts`` for a deliberate override, so a
-    per-action prompt duplicated that authority and was asked before the catalog
-    listing the root determines. The stub fails on any such label, so re-adding
-    one fails here rather than in a transcript.
-    """
+    """A per-action root prompt duplicates the registered setting's authority."""
     asked: list[str] = []
     seen: list[argparse.Namespace] = []
 
@@ -275,9 +239,7 @@ def test_no_action_ever_asks_for_the_artifacts_root(
     for action in build_operator_menu():
         action.callback()
 
-    # The policy action's prompt stub always answers blank, which is its "write
-    # a new draft" path: it writes a file and publishes no plan. So it is absent
-    # here, and that absence is the invariant being pinned.
+    # The policy action answers blank, which is its write-a-new-draft path.
     assert [namespace.command for namespace in seen] == [
         "status",
         "materialize",
@@ -303,12 +265,7 @@ def _policy_paths(monkeypatch: pytest.MonkeyPatch, tmp_path: Any) -> Any:
 def test_a_blank_draft_choice_writes_a_draft_and_plans_nothing(
     monkeypatch: pytest.MonkeyPatch, tmp_path: Any, capsys: Any
 ) -> None:
-    """New and Run are separate decisions, so New must not run anything.
-
-    Auto-selecting a draft would publish a plan the operator never chose, from a
-    profile they may not have read. Writing the draft and stopping makes the
-    next step an explicit edit followed by an explicit choice.
-    """
+    """Auto-selecting a draft would publish a plan the operator never chose."""
     paths = _policy_paths(monkeypatch, tmp_path)
     monkeypatch.setattr(operator, "discover_policies", lambda _paths: [_DRAFT])
     monkeypatch.setattr(operator, "auto_policy", _stub_auto_policy)
@@ -323,7 +280,6 @@ def test_a_blank_draft_choice_writes_a_draft_and_plans_nothing(
     assert len(written) == 1
     reloaded = SelectionPolicy.from_path(written[0])
     assert reloaded.forms == ["10-K"]
-    # A draft starts unconfigured for both derived fields rather than guessing.
     assert reloaded.date_selection == []
     assert reloaded.derives_era_bands
     assert str(written[0]) in capsys.readouterr().out
@@ -394,11 +350,7 @@ def test_a_draft_name_that_is_not_a_safe_identifier_is_refused(
 def test_expand_resolves_a_picked_parent_to_its_directory(
     monkeypatch: pytest.MonkeyPatch, tmp_path: Any
 ) -> None:
-    """``--parent-plan`` is a directory the operator was never shown.
-
-    The menu offers the published policy plans by number and passes the resolved
-    plan directory, so the hand-typed path is no longer the only route in.
-    """
+    """The plan directory is resolved from the pick, never typed by the operator."""
     seen: list[argparse.Namespace] = []
     monkeypatch.setattr(operator, "prompt_text", lambda prompt, default: default)
     monkeypatch.setattr(

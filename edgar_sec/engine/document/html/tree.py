@@ -1,13 +1,6 @@
 """High-throughput HTML parsing and tree manipulation primitives using selectolax.
-
-`selectolax` binds lexbor, a C parser, so traversal is roughly an order of
-magnitude cheaper than a pure-Python DOM. This module wraps it in a stable
-Python surface (`FastHtmlNode` / `FastHtmlTree`) so the cleaning, table, and
-page-marker passes can be written against one API.
-
-The wrapper is deliberately thin. It adds no caching and no parsed state: a
-fresh wrapper is constructed on every access, so wrappers are cheap to discard
-and must not be compared by identity.
+Wrappers hold no parsed state or cache - one is built per access, so they are cheap to discard;
+equality delegates to the underlying node, so comparing two wrappers is safe.
 """
 
 from __future__ import annotations
@@ -70,12 +63,7 @@ class FastHtmlNode:
 
     def previous_sibling_blocks(self, limit: int = 3) -> list[FastHtmlNode]:
         """Preceding non-text sibling blocks, climbing ancestors.
-
-        Some SEC markup wraps a page label and its following ``<hr>`` in
-        different nested branches. In that shape the useful predecessor is not
-        the immediate sibling of the ``<hr>`` but the previous sibling of the
-        nearest ancestor block, so this climbs until it finds one. It exposes
-        that traversal without assigning page semantics to the result.
+        A label and its following ``<hr>`` often sit in different nested branches, so the useful predecessor is the previous sibling of the nearest ancestor block.
         """
         return self._sibling_blocks("previous", limit)
 
@@ -135,10 +123,7 @@ class FastHtmlNode:
 
     def text(self, *, separator: str = " ", strip: bool = True) -> str:
         """Extract plain text with block-aware separators.
-
-        Block elements get the separator on both sides, ``<br>`` becomes the
-        separator itself, and an opening parenthesis that directly follows an
-        alphanumeric is separated so prose such as ``value(1)`` does not fuse.
+        A ``(`` directly after an alphanumeric is separated so prose such as ``value(1)`` does not fuse.
         """
         chunks: list[str] = []
 
@@ -304,19 +289,14 @@ class FastHtmlNode:
 
     def insert_before_html(self, html: str) -> str:
         """Insert HTML immediately before this node.
-
-        Only lexbor's ``insert_before`` is used, never ``replace_with``: the
-        latter segfaults on large real-world filing trees.
+        Never `replace_with` here: it segfaults on large real-world filing trees.
         """
         self._node.insert_before(html)
         return html
 
     def replace_with_html(self, html: str) -> None:
         """Replace this node with new HTML content.
-
-        Prefer :meth:`insert_before_html` followed by :meth:`decompose` for
-        programmatic tree surgery; that pair is the mutation path verified
-        stable on large SEC filing trees.
+        Prefer :meth:`insert_before_html` then :meth:`decompose`: that pair is verified stable on large filing trees.
         """
         if hasattr(self._node, "replace_with"):
             self._node.replace_with(html)
@@ -387,7 +367,9 @@ class FastHtmlTree:
                 yield FastHtmlNode(node)
 
     def text(self, *, separator: str = " ", strip: bool = True) -> str:
-        """Extract plain text for the whole document."""
+        """Extract plain text with block-aware separators.
+        A ``(`` directly after an alphanumeric is separated so prose such as ``value(1)`` does not fuse.
+        """
         return self.root.text(separator=separator, strip=strip) if self.root else ""
 
     def get_text(self, separator: str = " ", strip: bool = True) -> str:
@@ -398,10 +380,7 @@ class FastHtmlTree:
         self, tags: tuple[str, ...] = ("script", "style", "noscript", "svg")
     ) -> None:
         """Decompose unwanted tags across the tree.
-
-        Names containing ``:`` (``ix:header``) cannot be expressed as a CSS
-        selector, so those are matched by walking :meth:`traverse` instead of
-        through one batched ``css()`` call.
+        Names containing ``:`` are unreachable as a CSS selector, so those are matched by walking :meth:`traverse` instead of one batched ``css()`` call.
         """
         css_tags: list[str] = []
         custom_tags: set[str] = set()

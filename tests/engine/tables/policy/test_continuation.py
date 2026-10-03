@@ -1,9 +1,6 @@
-"""Recognizing a wrapped table row's continuation lines.
-
-A statement row whose description wraps onto the following lines carries no
-numeric cells of its own, so the reflow sees two prose-shaped blocks where a
-filing has one row. The signal is positional: a continuation line places its
-numbers under the columns the previous rows already established.
+"""Recognizing a wrapped table row’s continuation lines.
+A wrapped description carries no numeric cells of its own, so the signal is
+positional: its numbers sit under the columns earlier rows established.
 """
 
 from __future__ import annotations
@@ -40,8 +37,7 @@ def test_an_all_separator_continuation_is_always_a_continuation() -> None:
 
 
 def test_a_single_aligned_cell_needs_a_total_or_numeric_remainder() -> None:
-    # "Total" at column 7 aligns with nothing, so the total-keyword fallback is
-    # the only thing that can carry the decision, and it needs an aligned cell.
+    # "Total" at column 7 aligns with nothing, so the keyword fallback is the only carrier.
     misaligned_total = ("Total  200",)
     aligned_total = ("Total                    200        180",)
     not_aligned = (
@@ -58,9 +54,8 @@ def test_a_long_aligned_block_is_not_a_continuation() -> None:
 
 
 def test_a_prose_line_with_one_aligned_cell_is_not_a_continuation() -> None:
-    # The single-cell path demands every word be numeric or a total keyword, so
-    # any prose word refuses the continuation regardless of the sentence check
-    # in the same loop.
+    # The single-cell path demands every word be numeric or a total keyword, so any
+    # prose word refuses regardless of the sentence check in the same loop.
     assert not is_table_row_continuation(
         PREVIOUS, ("Revenue grew by a margin.                    190",)
     )

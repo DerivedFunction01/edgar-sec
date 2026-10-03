@@ -1,10 +1,6 @@
 """Translating pre-reflow line numbers into post-reflow line numbers.
-
-The mapper answers the question the decision trace asks: where does this source
-line live in the output. Lines at or after an unwrap decision's `end_line` have
-shifted up by the number of lines that unwrap removed; a line inside a collapsed
-block reports its own source index, which is where the single absorbed line
-sits.
+Lines at or after an unwrap decision’s `end_line` shift up by the lines unwrap
+removed; a line inside a collapsed block reports its own source index.
 """
 
 from __future__ import annotations
@@ -105,8 +101,8 @@ def test_every_decision_boundary_maps_to_its_output_line() -> None:
         SpanDecision(ACTION_UNWRAP, 12, 15, 0.7),
     )
     mapper = build_line_mapper(decisions)
-    # The output has 15 source lines minus 3 minus 2 collapsed ones, and each
-    # decision's own range starts where the output shows it.
+    # 15 source lines minus 3 minus 2 collapsed; each decision's range starts where
+    # the output shows it.
     assert mapper(0) == 0
     assert mapper(4) == 1
     assert mapper(6) == 3

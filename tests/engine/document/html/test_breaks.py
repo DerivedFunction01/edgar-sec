@@ -1,10 +1,6 @@
-"""Unit tests for page-break sentinel injection outside table spans.
-
-The table exclusion is the whole point of this module. A break tag inside a
-table is page *furniture* — a decorative rule, a column underline — and
-converting it to a sentinel makes the ASCII table renderer wrap that sentinel
-as cell text, corrupting both the table and the page structure. These tests pin
-that the exclusion holds, not merely that sentinels are produced.
+"""Page-break sentinel injection outside table spans.
+A break tag inside a table is page furniture, and converting it to a sentinel makes
+the ASCII table renderer wrap it as cell text.
 """
 
 from __future__ import annotations

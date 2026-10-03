@@ -1,16 +1,6 @@
 """HTML structural decomposition into plain text.
-
-This is the projection step: block and inline markup become text, lists become
-one item per line, headings become standalone lines, and everything else is
-run together as prose. It is a *string* transform, not a DOM walk — the DOM
-path exists in `tree.py`, and the reason this is string-based is that table
-spans must survive the projection byte-for-byte, which is far simpler to
-guarantee when the tagged table is masked out of the string first.
-
-Order is important. Tables are masked before entity unescaping, so a table
-containing `&amp;` is not silently rewritten; source line wraps are collapsed
-before block tags are replaced, so a `<div>` split across source lines does not
-gain spurious newlines.
+A string transform, not a DOM walk: table spans survive byte-for-byte when the tagged table is
+masked out first, before entity unescaping, and source wraps collapse before block tags.
 """
 
 from __future__ import annotations
@@ -91,9 +81,7 @@ _RE_HEADING_PREFIX = re.compile(rf"\b(?:{_HEADING_TERMS_ALT})\b$", re.IGNORECASE
 
 def _unify_dl_bullet(match: re.Match[str]) -> str:
     """Fuse a bullet-only ``<dt>`` into the ``<dd>`` that follows it.
-
-    SEC cover pages mark list items with a bare glyph in the term slot; leaving
-    that as its own line splits one item across two lines in plain text.
+    SEC cover pages put a bare glyph in the term slot; leaving it splits one item across two lines.
     """
     dt_content = match.group(1)
     dd_tag = match.group(2)
@@ -105,12 +93,7 @@ def _unify_dl_bullet(match: re.Match[str]) -> str:
 
 def _collapse_source_whitespace(match: re.Match[str]) -> str:
     """Collapse one raw source whitespace run outside a table span.
-
-    A run separating two masked tables is a rendered separator, not a source
-    line wrap: collapsing it to a space would fuse adjacent tables onto one
-    line, so it becomes a real newline. A run followed by a bullet marker also
-    becomes a newline, except directly after a heading word such as "Item",
-    where the marker belongs to the heading line.
+    A run between two masked tables is a rendered separator, so it becomes a newline - as does one before a bullet, except directly after a heading word.
     """
     text = match.string
     start, end = match.span()
@@ -131,11 +114,7 @@ def _collapse_source_whitespace(match: re.Match[str]) -> str:
 
 def _clean_p_content(match: re.Match[str]) -> str:
     """Lift masked tables out of a ``<p>`` while keeping the prose above them.
-
-    Filing generators sometimes wrap a table in a paragraph element. Emitting
-    the table inside the paragraph's replacement gap would put table rows into
-    the middle of prose, so the prose is unified into one ``<p>`` and the
-    sentinels are emitted after it.
+    A table inside the paragraph's replacement gap would land mid-prose, so the sentinels follow the unified ``<p>``.
     """
     content = match.group(1)
     cleaned = _RE_DIV_TAG.sub(" ", content)
@@ -162,10 +141,7 @@ def _clean_p_content(match: re.Match[str]) -> str:
 
 def decompose_html_structures(html: str) -> str:
     """Decompose block and inline HTML markup into normalized plain text.
-
-    Paragraphs stay cohesive on one line, headings and block separators become
-    clean vertical whitespace, redundant container ``<div>``s unroll, and
-    masked ``<TABLE>`` blocks are restored byte-for-byte at the end.
+    Paragraphs stay cohesive on one line; masked ``<TABLE>`` blocks are restored byte-for-byte.
     """
     if not html:
         return ""
@@ -210,11 +186,7 @@ def decompose_html_structures(html: str) -> str:
 
 class NormalizedHtmlText(str):
     """Normalized HTML text carrying the per-table geometry it was rendered from.
-
-    A ``str`` subclass, so every comparison and string method behaves exactly as
-    the plain text would, while :attr:`table_geometries` retains the row/cell
-    layout that produced it. A caller cannot recover that mapping from the text
-    alone, which is why it travels with the text rather than being recomputed.
+    A ``str`` subclass, so every comparison behaves as the plain text would.
     """
 
     __slots__ = ("_table_geometries",)
@@ -244,22 +216,7 @@ def normalize_html_document(
     cleanup_tables: Callable[[str], str] | None = None,
 ) -> NormalizedHtmlText:
     """Render an HTML document into normalized text without tree text extraction.
-
-    Tables are rendered while the surrounding markup stays serialized, so
-    :func:`decompose_html_structures` can still preserve paragraph cohesion —
-    projecting the DOM to text first would flatten exactly the structure the
-    decomposition pass exists to keep.
-
-    Rendered tables are then protected by the projection pass through the
-    byte-exact masking contract in `edgar_sec.engine.tables.protection.tags`.
-
-    ``cleanup_tables`` is injectable for focused tests and policy experiments.
-    Omitting it selects the shared false-table cleanup, which also retains the
-    geometry of every table it kept; supplying it means the caller owns the
-    returned geometry and the default is not applied.
-
-    Returns a :class:`NormalizedHtmlText`, which compares equal to the
-    normalized string while exposing :attr:`table_geometries`.
+    Tables render while surrounding markup stays serialized, or paragraph cohesion is lost.
     """
     if not html:
         return NormalizedHtmlText("", ())

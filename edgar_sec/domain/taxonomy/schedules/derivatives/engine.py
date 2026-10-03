@@ -22,17 +22,10 @@ def build_derivative_grammar(
     optional_suffix: bool = True,
     auto_plural: bool = True,
 ) -> tuple[str, ...]:
-    """Generates all Cartesian combinations of <Underlying> <Base> [<Suffix>] with automatic pluralization.
+    """Generate every ``<Underlying> <Base> [<Suffix>]`` combination, deduplicated longest-first.
 
-    Args:
-        underlyings: Asset class or risk prefixes (e.g. 'interest rate', 'sofr', 'crude oil').
-        bases: Canonical singular instrument bases (e.g. 'swap', 'collar', 'forward').
-        suffixes: Canonical singular contract/position suffixes (e.g. 'contract', 'instrument').
-        optional_suffix: If True, generates both bare '<Underlying> <Base>' and '<Underlying> <Base> <Suffix>'.
-        auto_plural: If True, automatically expands singular and plural variants for all components.
-
-    Returns:
-        Deduplicated, longest-first tuple of compound derivative terms.
+    ``optional_suffix`` adds the bare form as well; ``auto_plural`` expands each component
+    to its singular and plural.
     """
     expanded_underlyings = expand_variants(underlyings) if auto_plural else underlyings
     expanded_bases = expand_variants(bases) if auto_plural else bases

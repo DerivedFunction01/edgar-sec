@@ -1,20 +1,6 @@
 """Single-pass table region resolver for generic ASCII reflow.
-
-The cascade decides that a block *is* a table. It cannot decide where that table
-stops, because the evidence for a table's extent lives in the blocks around it:
-its header sits above, its final total sits below, and a statement split across
-two pages is interrupted by a page marker.
-
-The resolver therefore grows each confirmed table seed outward in one forward
-pass, absorbing a header prefix above and, in order, blank-line bridges, page
-markers, statement section labels, wrapped continuation rows, and the final
-total below. Anything it cannot absorb on a defensible signal stops the sweep.
-
-A grown span is then held to a discipline gate before it may be tagged: a span
-overlapping an already-protected table is downgraded, and so is a span that does
-not actually look like a grid once it has been assembled. The bias is to
-preserve, because a wrongly tagged prose block is a smaller error than a
-silently untagged table.
+A grown span must pass a discipline gate before it may be tagged: a protected-table overlap or a
+span that does not look like a grid is downgraded. The bias is to preserve.
 """
 
 from __future__ import annotations
@@ -40,11 +26,8 @@ from .structural import (
     is_structural_table_tail,
 )
 
-# A seed reaches at most this many blocks backwards for a header prefix.
 _MAX_HEADER_LOOKBACK = 4
-# A candidate header prefix must be this close to the block above it.
 _MAX_HEADER_GAP = 3
-# A structural bridge must begin this close to the table it leads into.
 _MAX_STRUCTURAL_BRIDGE_GAP = 8
 # A grown table is downgraded unless it shows at least this many numeric rows...
 _MIN_DISCIPLINE_NUMERIC_ROWS = 2
@@ -58,11 +41,7 @@ Block = tuple[int, int, tuple[str, ...]]
 
 class _BlockIndex:
     """Locate the blocks a decision covers without rescanning the whole list.
-
-    Blocks are produced in ascending, non-overlapping order, so the covered
-    slice is a contiguous run found by binary search. A decision is inspected
-    repeatedly as its span grows, and memoising the result keeps the repeated
-    lookups free.
+    Blocks are ascending and non-overlapping, so the covered slice is contiguous and found by binary search.
     """
 
     __slots__ = ("_blocks", "_cache", "_starts")
@@ -136,7 +115,6 @@ def resolve_table_regions(
     if not decisions:
         return []
 
-    # Map block start_line to index for O(1) lookups
     start_to_idx = {b[0]: i for i, b in enumerate(blocks)}
     n_blocks = len(blocks)
     index = _BlockIndex(blocks)
@@ -152,7 +130,6 @@ def resolve_table_regions(
             i += 1
             continue
 
-        # Found a table seed: decision at index i
         table_start_line = decision.start_line
         table_end_line = decision.end_line
         evidence = list(decision.evidence)
@@ -162,7 +139,6 @@ def resolve_table_regions(
         cur_lines = _block_lines(index, decision)
         features = _compute_features(cur_lines)
 
-        # Step 1: Backward Expand Headers (if this seed has numeric cells)
         if (
             features.numeric_cell_rows
             and cur_b_idx is not None
@@ -172,7 +148,6 @@ def resolve_table_regions(
             for back in range(1, min(_MAX_HEADER_LOOKBACK, cur_b_idx + 1)):
                 cand_b_idx = cur_b_idx - back
                 cand_start, cand_end, cand_lines = blocks[cand_b_idx]
-                # Check distance
                 next_start = blocks[cand_b_idx + 1][0]
                 if next_start - cand_end > _MAX_HEADER_GAP:
                     break
@@ -180,9 +155,7 @@ def resolve_table_regions(
                     break
                 if is_data_row_candidate(cand_lines):
                     break
-                # Must be a header prefix
                 if is_header_prefix(cand_lines):
-                    # Check whether candidate was emitted as PRESERVE or UNWRAP
                     if (
                         resolved
                         and resolved[-1].start_line == cand_start
@@ -199,11 +172,8 @@ def resolve_table_regions(
             if absorbed_count:
                 evidence.append("expanded_table_header")
 
-        # Step 2: Forward Sweep for Continuations, Bridges, Adjacent Tables, and Tails
         curr_end_b_idx = start_to_idx.get(decision.end_line)
-        # Find block index covering or adjacent to table_end_line
         if curr_end_b_idx is None:
-            # find block with end == table_end_line
             for b_i in range(cur_b_idx if cur_b_idx is not None else 0, n_blocks):
                 if blocks[b_i][1] == table_end_line:
                     curr_end_b_idx = b_i + 1
@@ -226,13 +196,10 @@ def resolve_table_regions(
             )
         )
 
-        # Greedy forward extension & bridge loop
         while next_decision_idx < n:
             next_d = decisions[next_decision_idx]
 
-            # Case A: Next is already ACTION_TAG_AND_PRESERVE
             if next_d.action == ACTION_TAG_AND_PRESERVE:
-                # Blank lines gap check
                 if 0 <= next_d.start_line - table_end_line <= max_blank_lines:
                     table_end_line = next_d.end_line
                     confidence = min(confidence, next_d.confidence)
@@ -242,14 +209,11 @@ def resolve_table_regions(
                     continue
                 break
 
-            # Case B: Next is PRESERVE or UNWRAP (potential bridge, page marker, or row continuation)
             cand_lines = _block_lines(index, next_d)
 
-            # 1. Check if next is a continuation row (only for non-UNWRAP blocks)
             if next_d.action != ACTION_UNWRAP and is_table_row_continuation(
                 tuple(active_lines), cand_lines, policy
             ):
-                # Extend row
                 table_end_line = next_d.end_line
                 confidence = min(confidence, _EXTENSION_CONFIDENCE)
                 evidence.append("extended_multiline_rows")
@@ -257,7 +221,6 @@ def resolve_table_regions(
                 next_decision_idx += 1
                 continue
 
-            # 2. Check if next spans are page markers leading to another table
             stripped_cand = tuple(line.strip() for line in cand_lines if line.strip())
             if (
                 stripped_cand
@@ -276,7 +239,6 @@ def resolve_table_regions(
                 next_decision_idx += 2
                 continue
 
-            # 3. Check if next spans form a structural table bridge leading to another table
             bridge_lines: list[str] = []
             look_idx = next_decision_idx
             while look_idx < n and decisions[look_idx].action in (
@@ -311,7 +273,6 @@ def resolve_table_regions(
                     active_lines.extend(_block_lines(index, following_d))
                     next_decision_idx = look_idx + 1
 
-                    # Optional tail after structural bridge
                     if next_decision_idx < n:
                         tail_d = decisions[next_decision_idx]
                         tail_lines = _block_lines(index, tail_d)
@@ -329,14 +290,11 @@ def resolve_table_regions(
                             next_decision_idx += 1
                     continue
 
-            # 4. Check if candidate block has numeric continuation with lookahead (only for non-UNWRAP blocks)
             if next_d.action != ACTION_UNWRAP:
                 cand_features = _compute_features(cand_lines)
                 if cand_features.numeric_cell_rows:
-                    # Numeric cells but not continuation -> stop
                     break
 
-                # Non-numeric block: check if next-next is a continuation
                 if (
                     next_decision_idx + 1 < n
                     and decisions[next_decision_idx + 1].action != ACTION_UNWRAP
@@ -359,10 +317,8 @@ def resolve_table_regions(
                             break
                         continue
 
-            # No further forward matches
             break
 
-        # Step 3: Validate Table Discipline on Final Span
         candidate_final = SpanDecision(
             ACTION_TAG_AND_PRESERVE,
             table_start_line,

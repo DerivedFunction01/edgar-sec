@@ -1,13 +1,6 @@
 """Tabular table-of-contents row patterns.
-
-A rendered filing contains two shapes that read as a single line of prose but
-must not be unwrapped into it: a table-of-contents row carrying a page suffix,
-and a structural ``PART``/``ITEM`` heading. Both are refused by
-:mod:`edgar_sec.engine.tables.false_tables`, and both are also consumed by cover
-boundary detection, so the vocabulary lives in one leaf that either side imports.
-
-A row is recognized by its *page suffix* rather than by a dot leader alone,
-because an HTML table of contents has no leader — the columns replace it.
+A contents row with a page suffix and a structural `PART`/`ITEM` heading both read as one prose line
+but must not be unwrapped into one; the vocabulary lives here so both consumers share it.
 """
 
 from __future__ import annotations
@@ -44,12 +37,7 @@ def is_toc_row(line: str) -> bool:
 
 def looks_like_toc_row(line: str) -> bool:
     """Return whether ``line`` matches any TOC row form.
-
-    Covers dot-leader rows (:func:`is_toc_row`) and leader-less rows that begin
-    with an ITEM reference and carry a trailing page suffix — the shape HTML
-    table TOCs produce when columns replace dot leaders. Old ASCII filings use
-    dot leaders; HTML TOCs live inside ``<TABLE>`` blocks whose rendered rows
-    keep the page suffix as cell text.
+    Covers dot-leader rows and leader-less rows opening with an ITEM reference and carrying a page suffix, the shape an HTML table TOC produces when columns replace leaders.
     """
     stripped = line.strip().strip("|+")
     if not stripped:
@@ -64,9 +52,7 @@ def looks_like_toc_row(line: str) -> bool:
 
 def looks_like_toc_tabular(line: str) -> bool:
     """Return whether a line is dot-leader tabular content with a page token.
-
-    Uses the shared dot-leader and page-suffix patterns, so digits, namespaced
-    financial-statement pages (``F-1``), and roman numerals (``xii``) all count.
+    Uses the shared patterns, so ``F-1`` and roman page tokens count.
     """
     stripped = line.strip().strip("|+")
     if not stripped:

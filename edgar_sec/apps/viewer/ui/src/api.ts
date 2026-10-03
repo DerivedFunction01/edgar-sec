@@ -1,53 +1,32 @@
 /**
- * Typed client for the viewer backend under /api.
- *
- * The server owns file paths; the client only ever sends dataset ids. Listing
- * responses publish a per-artifact `revision` token (size + nanosecond mtime,
- * or a composite for run unions). The client trusts a cached payload only when
- * its `revision` matches the latest listing — so the tiny listings (always
- * fetched fresh) are the single invalidation source, and repeat visits render
- * from IndexedDB without re-fetching.
+ * Typed client for the viewer backend under /api. The client only ever sends
+ * dataset ids, and trusts a cached payload only while its `revision` matches
+ * the latest listing — the listing is the single invalidation source.
  */
 
 import { metaKey, rowsKey, sqlKey } from "./lib/cache/keys";
 import { type CacheStore, cache, estimateBytes, MAX_ENTRY_BYTES } from "./lib/cache/store";
 
-/**
- * JSONL is not an output format here, but the explorer reads it because an
- * operator may find one on disk. SQLite is: the payload store and the transient
- * chunk writer both produce `.db` files, and the server exposes one dataset per
- * table. This list mirrors what the server emits.
- */
+/** Mirrors what the server emits; `sqlite` arrives as one dataset per table. */
 export type ArtifactFormat = "parquet" | "sqlite" | "duckdb" | "csv" | "jsonl" | "text" | "json";
 
 /**
- * The dataset kinds the server reports.
- *
- * Discovery is manifest-driven, so the server states each dataset's kind
- * outright and this union is the complete list, produced by the per-dataset
- * loaders in `apps/viewer/loaders.py`.
- *
- * The `_run_union` and `_chunk` suffixes are per-dataset: the server emits
- * `<dataset>_run_union` (e.g. `metadata_run_union`) for an in-flight run.
+ * The complete list of dataset kinds the server reports, from the per-dataset
+ * loaders in `apps/viewer/loaders.py`. `<dataset>_run_union` is an in-flight run.
  */
 export type ArtifactKind =
-  // Phase 1 — submissions metadata
   | "metadata_snapshot"
   | "metadata_cik_index"
   | "metadata_chunk"
   | "metadata_run_union"
-  // Phase 2 — filing catalog
   | "catalog_profiles"
   | "catalog_targets"
-  // Phase 2.5 — document storage
   | "document_index"
   | "document_payload"
-  // Transient chunk writers for the other datasets
   | "filing_catalog_chunk"
   | "filing_catalog_run_union"
   | "document_storage_chunk"
   | "document_storage_run_union"
-  // Not a table
   | "sqlite_table"
   | "manifest";
 
@@ -169,15 +148,11 @@ export function fetchBlob(
 /** Latest known revision per artifact id (populated from every listing). */
 export const revisions = new Map<string, string>();
 
-/** True when `revision` is still the current listing token for `id`. */
 export function isCurrent(id: string, revision: string): boolean {
   return revisions.get(id) === revision;
 }
 
-/**
- * Merge a fresh listing into the revision map, pruning stale cache entries for
- * any artifact whose revision changed. Returns the same list for chaining.
- */
+/** Merge a listing into the revision map, pruning entries whose revision moved. */
 async function recordRevisions<T extends { id: string; revision: string }>(
   list: T[],
 ): Promise<T[]> {
@@ -238,9 +213,8 @@ export function fetchText(id: string, offset = 0): Promise<TextPage> {
 }
 
 /**
- * Fetch a revision-gated payload (schema/stats/document). Serves from cache
- * instantly when the listing revision is unchanged; otherwise fetches and
- * caches. On network failure, falls back to any cached copy (stale-on-error).
+ * Fetch a revision-gated payload. Serves from cache when the listing revision is
+ * unchanged; on network failure falls back to any cached copy (stale-on-error).
  */
 async function gatedMeta<T>(id: string, kind: string, fetchFn: () => Promise<T>): Promise<T> {
   const revision = revisions.get(id);
@@ -308,11 +282,7 @@ interface RowsWindow {
   windowEnd: number;
 }
 
-/**
- * Accumulated rows windows keyed by view (revision + sort + filters). The key
- * is offset-independent so pages accumulate into one entry; a revisit with the
- * same key restores the whole window instantly, and `loadMore` extends it.
- */
+/** Rows windows keyed by view; the key is offset-independent, so `loadMore` extends one entry. */
 const sessionWindows = new Map<string, RowsWindow>();
 
 function pageFromWindow(window: RowsWindow, offset: number, limit: number): RowsPage {

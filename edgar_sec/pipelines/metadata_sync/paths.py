@@ -1,14 +1,7 @@
 """Directory layout for the metadata sync pipeline.
-
-All paths derive from the shared artifacts root so the pipeline never embeds a
-literal artifact directory. Plan-scoped transient checkpoints are separated
-from published snapshots: chunks are resumability state, snapshots are output.
-
-A plan is a directory, not a file. ``plan.json`` is the small execution manifest,
-``roster/ciks.parquet`` holds the CIK cohort once, ``input/`` holds diagnostics
-about where the cohort came from, and ``assignments/`` holds one chunk-to-worker
-mapping per distribution. Splitting them is what lets a worker be handed a copy
-of the bundle and reassigned without changing what the plan *is*.
+Plan-scoped transient checkpoints are kept apart from published snapshots: chunks
+are resumability state, snapshots are output. A plan is a directory, so a worker
+can be handed a copy and reassigned without changing what the plan *is*.
 """
 
 from __future__ import annotations
@@ -77,12 +70,8 @@ class MetadataPaths:
         return self.snapshots_root / snapshot_id
 
     def snapshot_file(self, snapshot_id: str) -> Path:
-        """Sorted Parquet dataset for one snapshot.
-
-        Retained for single-part snapshots and for Phase 1's own augmentation
-        reads. A snapshot may instead publish a ``parts/`` directory described
-        by ``metadata.manifest.json``; use ``read_snapshot_parts`` to resolve one
-        to an ordered part list regardless of layout.
+        """Sorted Parquet dataset for one single-part snapshot.
+        A multipart snapshot publishes ``parts/``; use ``read_snapshot_parts``.
         """
         return self.snapshot_dir(snapshot_id) / SNAPSHOT_FILE_NAME
 
@@ -99,10 +88,7 @@ class MetadataPaths:
         return self.snapshot_dir(snapshot_id) / SNAPSHOT_MANIFEST_NAME
 
     def snapshot_cik_index(self, snapshot_id: str) -> Path:
-        """Sorted distinct CIK index published beside one snapshot payload.
-
-        Phase 1 reads this for membership and coverage; Phase 2 never opens it.
-        """
+        """Sorted distinct CIK index published beside one snapshot payload."""
         return self.snapshot_dir(snapshot_id) / SNAPSHOT_CIK_INDEX_NAME
 
     @property
@@ -142,8 +128,7 @@ class MetadataPaths:
     def effective_input_file(self, registry_id: str) -> Path:
         """Path of the effective CIK input CSV for one registry.
 
-        An export for people, not the internal carrier: the roster Parquet dataset
-        beside it is what a plan consumes.
+        An export for people; the roster Parquet dataset beside it is the carrier.
         """
         return self.registry_root(registry_id) / REGISTRY_EFFECTIVE_CIK_INPUT_NAME
 
@@ -154,10 +139,7 @@ class MetadataPaths:
     @property
     def cohorts_root(self) -> Path:
         """Compiled cohorts, keyed by the fingerprint of what produced them.
-
-        Distinct from a plan bundle's own ``roster`` directory: this is the shared
-        store a cohort is compiled into once, while ``plans/<id>/roster`` is the copy
-        frozen into a bundle so it can travel to a worker machine on its own.
+        The shared store, distinct from the copy a bundle freezes to travel.
         """
         return self.metadata_root / COHORTS_DIR_NAME
 

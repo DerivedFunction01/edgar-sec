@@ -77,7 +77,6 @@ def test_form_family_normalizes_case_and_padding() -> None:
 
 
 def test_form_family_sql_matches_the_python_rule() -> None:
-    """The generated SQL must agree with the Python suffix normalizer."""
     expression = form_family_sql("f")
     with connect() as con:
         con.execute("CREATE TEMP TABLE forms(f VARCHAR)")
@@ -118,7 +117,6 @@ def test_era_of_reports_unknown_rather_than_dropping_the_row() -> None:
 
 
 def test_era_bands_tile_without_gaps_or_overlap() -> None:
-    """Adjacent half-open bands must cover every year exactly once."""
     bands = [
         EraBand(name="a", start_year=1995, end_year=2005),
         EraBand(name="b", start_year=2005, end_year=2011),
@@ -133,9 +131,8 @@ def test_era_bands_tile_without_gaps_or_overlap() -> None:
 
 
 def test_identity_columns_track_the_target_schema() -> None:
-    """The projection is derived from the domain schema, not restated.
-
-    A new target column must reach the snapshot without a second list to edit.
+    """The projection is derived from the domain schema, not restated. A new
+    target column must reach the snapshot without a second list to edit.
     """
     projected = [column.strip() for column in IDENTITY_COLUMNS.split(",")]
     assert projected == [c for c in TARGET_COLUMNS if c != "document_path_source"]
@@ -151,7 +148,6 @@ def test_builder_rejects_impossible_options() -> None:
 
 
 def test_snapshot_dir_is_content_addressed(tmp_path: Path) -> None:
-    """Same inputs, same directory; any change of input, a different one."""
     builder = _builder(tmp_path, tmp_path / "t", tmp_path / "p.parquet")
     first = builder.snapshot_dir(["10-K"])
     assert first == builder.snapshot_dir(["10-K"])
@@ -169,11 +165,8 @@ def test_snapshot_dir_is_content_addressed(tmp_path: Path) -> None:
 def test_builds_a_feature_snapshot_from_the_published_catalog(
     tmp_path: Path, sample_source: Path
 ) -> None:
-    """End to end over the committed catalog fixture.
-
-    The builder is the only place the policy's forms, the catalog targets, the
-    registrant profiles, and company-family clustering meet. Running it against
-    real materialized output is what proves the five stages compose.
+    """The only place the policy's forms, the catalog targets, the registrant
+    profiles, and company-family clustering meet.
     """
     artifacts_root = tmp_path / "artifacts"
     manifest = materialize(sample_source, artifacts_root)
@@ -193,8 +186,7 @@ def test_builds_a_feature_snapshot_from_the_published_catalog(
     assert snapshot.occurrence_features.is_file()
     assert snapshot.locator_features.is_file()
 
-    # Intermediate stage files must not survive: they are several times the
-    # size of the final snapshot and are pure build scratch.
+    # Stage files are pure build scratch and must not survive.
     for scratch in ("occurrence_base", "lifecycle", "cross_form"):
         assert not (snapshot.snapshot_dir / f"{scratch}.parquet").exists()
 
@@ -210,8 +202,7 @@ def test_builds_a_feature_snapshot_from_the_published_catalog(
             f"read_parquet('{snapshot.locator_features}')"
         ).fetchone()[0]
 
-    # The policy asks for 10-K only. The fixture also carries one 10-K/A, and
-    # the form filter must exclude it rather than fold it in.
+    # The fixture also carries a 10-K/A; the form filter must exclude it.
     assert occurrences == 4
     assert locators == 4
     assert families > 1, "clustering collapsed distinct registrants into one family"
@@ -220,11 +211,7 @@ def test_builds_a_feature_snapshot_from_the_published_catalog(
 def test_rebuilding_the_same_snapshot_reuses_the_published_one(
     tmp_path: Path, sample_source: Path
 ) -> None:
-    """A second build must not rewrite a snapshot it already produced.
-
-    Feature building is the expensive half of selection, and the snapshot is
-    content-addressed precisely so a rerun can skip it.
-    """
+    """Content-addressing exists so a rerun skips the expensive half of selection."""
     artifacts_root = tmp_path / "artifacts"
     manifest = materialize(sample_source, artifacts_root)
     catalog_id = str(manifest["catalog_id"])
@@ -272,12 +259,8 @@ def _families_by_cik(locators: Path) -> dict[str, str]:
 def test_the_seed_set_does_not_influence_company_family(
     tmp_path: Path, sample_source: Path
 ) -> None:
-    """Families come from the profile corpus, whatever the seed manifest says.
-
-    A seed set is a mandatory-filer list. When it also supplied family
-    boundaries, an operator manifest could redefine corporate identity for every
-    published plan, and registrants added to the catalog after the manifest was
-    written would fall outside their own families.
+    """A seed set is a mandatory-filer list, never a family boundary: an operator
+    manifest must not be able to redefine corporate identity for a published plan.
     """
     artifacts_root = tmp_path / "artifacts"
     manifest = materialize(sample_source, artifacts_root)
@@ -307,21 +290,14 @@ def test_the_seed_set_does_not_influence_company_family(
 
     # Same profiles, two different seed manifests: identical families.
     assert families_under(seeded) == families_under(_policy())
-    # A seeded registrant's family is the profile-derived one, not one it acquired
-    # by being listed as mandatory.
+    # A seeded registrant's family is the profile-derived one.
     assert families_under(seeded)["0000320193"] == "apple fixture"
 
-
-# --- size_band: relative to the family's own median -------------------------
-#
-# These tests pin the invariant that the same relative filing size maps to the
-# same label within a family, independent of the family's absolute scale.
 
 _SIZE_SAMPLES = (400, 2_000, 8_000, 32_000, 128_000)
 
 
 def _banded(tmp_path: Path, sizes_by_form: dict[str, list[int]]) -> list[dict]:
-    """Run the two SQL builders over a synthetic one-table catalog."""
     builder = _builder(tmp_path, tmp_path / "t", tmp_path / "p.parquet")
     rows = [
         {"form": form, "reported_size": size}
@@ -353,14 +329,11 @@ def _banded(tmp_path: Path, sizes_by_form: dict[str, list[int]]) -> list[dict]:
 
 
 def test_size_band_is_relative_to_its_own_family(tmp_path: Path) -> None:
-    """Two families 200x apart in scale must still band the same way.
-
-    This is the property absolute thresholds cannot provide, and the reason
-    the feature exists at all.
+    """The property absolute thresholds cannot provide: two families 200x apart in
+    scale band identically.
     """
     small = {"10-K": list(_SIZE_SAMPLES)}
-    # The same shape of distribution, scaled by 200 -- what form 4 looks like
-    # next to a 10-K on the published catalog.
+    # Same distribution shape, scaled by 200.
     large = {"4": [size * 200 for size in _SIZE_SAMPLES]}
 
     small_bands = _banded(tmp_path, small)
@@ -368,21 +341,15 @@ def test_size_band_is_relative_to_its_own_family(tmp_path: Path) -> None:
     small_labels = [row["size_band"] for row in small_bands]
     large_labels = [row["size_band"] for row in large_bands]
 
-    # Each sample is 5x the previous, so with the median as anchor they land
-    # one per band and every band is reachable.
+    # Each sample is 5x the previous, so one per band off the family median.
     assert small_labels == list(SIZE_BAND_NAMES)
 
-    # The 200x scale difference must not change which band a relative position
-    # earns. That is the whole point of anchoring on the family rather than on
-    # the corpus: on the published catalog a 10-K's median filing is ~229x its
-    # own multiple of a form 4 filing, and one absolute threshold set cannot
-    # serve both.
+    # Anchoring on the family rather than the corpus is the whole point.
     assert large_labels == small_labels
     assert small_bands[0]["reported_size"] * 200 == large_bands[0]["reported_size"]
 
 
 def test_size_band_is_monotone_in_size(tmp_path: Path) -> None:
-    """A larger filing can never earn a smaller band, within or across families."""
     bands = _banded(tmp_path, {"10-K": list(_SIZE_SAMPLES), "4": [1_000]})
     order = {name: index for index, name in enumerate(SIZE_BAND_NAMES)}
     by_form: dict[str, list[int]] = {}
@@ -420,26 +387,13 @@ def test_the_size_anchor_is_one_row_per_family(tmp_path: Path) -> None:
             + builder._size_band_anchor_sql("SELECT form, reported_size FROM targets")
             + ") ORDER BY form_family"
         ).fetchall()
-    # 10-K and 10-K/A collapse to one family; 4 is the other. Era is
-    # deliberately not part of the aggregate.
+    # 10-K and 10-K/A collapse to one family; 4 is the other.
     assert [(row[0], row[1]) for row in anchor] == [("10-K", 1500.0), ("4", 3500.0)]
 
 
-# --- absent values: Phase 1 writes '', so the projection must not -----------
 #
-# Phase 1 represents a field the SEC did not supply as an empty string, never as
-# NULL. Every guard in the profile projection therefore read absent as present:
-# a registrant with no state of incorporation was labelled `foreign` because
-# `'' IN ('AK', ...)` is false, `COALESCE` never rescued an empty filer
-# category, and `owner_org IS NOT NULL` was true for an empty string. On the
-# published 40,914 profiles that mislabelled 4,735 registrants as foreign
-# against 2,977 genuinely foreign, left 26,703 `filer_category_primary` values
-# as `''`, and reported 1,040 empty `owner_org` values as `has_org`.
-#
-# The committed catalog fixture carries no empty strings -- every one of its
-# rows has a populated state and SIC code -- so these tests build their own
-# profile dataset. Otherwise they would pass vacuously against a fixture that
-# cannot express the defect.
+# The producer writes '' for an absent field, never NULL. The committed fixture
+# carries no empty strings, so these tests build their own dataset.
 
 _PROFILE_DEFAULTS: dict[str, Any] = {
     "identity": {"name": "Example Co", "former_names": []},
@@ -471,10 +425,8 @@ _PROFILE_DEFAULTS: dict[str, Any] = {
     "profile_schema_version": "1.0.0",
 }
 
-# The fields the profile projection reads. Naming them keeps a struct-field
-# rename in Phase 1 from turning these tests into vacuous passes: an accessor
-# that no longer resolves reads NULL, which is indistinguishable from a
-# deliberately absent value unless the default is checked separately.
+# Named so a struct-field rename cannot make these tests vacuous: an unresolvable
+# accessor reads NULL, indistinguishable from an absent value.
 _PROJECTED_FIELDS = (
     "identity",
     "classification",
@@ -502,11 +454,8 @@ _TARGET_DEFAULTS: dict[str, Any] = {
 
 
 def _profile_row(cik: str, **overrides: Any) -> dict[str, Any]:
-    """Build one profile row in the real catalog schema, absent values included.
-
-    Structs are merged field-by-field rather than replaced wholesale so a test
-    can blank ``classification.owner_org`` without also having to restate the
-    other four classification fields.
+    """Structs merge field-by-field, so a test can blank ``owner_org`` without
+    restating the other classification fields.
     """
     row: dict[str, Any] = {field.name: None for field in PROFILE_SCHEMA}
     for name, value in _PROFILE_DEFAULTS.items():
@@ -537,7 +486,6 @@ def _write_targets(target_root: Path, rows: list[dict[str, Any]]) -> Path:
 
 
 def _projected(builder: FeatureSnapshotBuilder) -> dict[str, dict[str, Any]]:
-    """Run the profile projection over its own input file, as the builder does."""
     with connect() as con:
         cursor = con.execute(f"SELECT * FROM ({builder._profiles_sql()})")
         names = [description[0] for description in cursor.description]
@@ -566,10 +514,8 @@ _ABSENT_PROFILE = _profile_row(
 
 
 def test_profiles_sql_reads_a_populated_profile_as_written(tmp_path: Path) -> None:
-    """The baseline: a fully populated profile passes through unchanged.
-
-    Without this the correction below could pass by flattening every value to
-    the absent marker.
+    """Baseline against the absent-value cases below: without it a correction could
+    pass by flattening every value to the absent marker.
     """
     builder = _builder(
         tmp_path,
@@ -589,13 +535,8 @@ def test_profiles_sql_reads_a_populated_profile_as_written(tmp_path: Path) -> No
 
 
 def test_profiles_sql_normalizes_an_absent_state_to_unknown(tmp_path: Path) -> None:
-    """An empty ``incorporation.state`` is not a foreign country.
-
-    This is the defect the dimension exists to prevent: ``foreign_status`` is
-    what a policy floors on to control international mix, and ``'' IN (postal
-    codes)`` is false, so every registrant whose state the SEC did not supply
-    was counted as international -- 4,735 of them against 2,977 genuine
-    foreign registrants, an over-count of 2x.
+    """``'' IN (postal codes)`` is false, so an absent state read as foreign. This
+    is the defect ``foreign_status`` exists to prevent.
     """
     builder = _builder(
         tmp_path,
@@ -608,11 +549,8 @@ def test_profiles_sql_normalizes_an_absent_state_to_unknown(tmp_path: Path) -> N
 
 
 def test_profiles_sql_normalizes_every_empty_source_field(tmp_path: Path) -> None:
-    """One rule, applied at the projection boundary, for all five defects.
-
-    Each assertion below failed against the pre-correction SQL: the guard
-    matched on NULL and Phase 1 writes an empty string, so the empty string was
-    read as a real value.
+    """One rule at the projection boundary: the guards matched on NULL while the
+    producer writes an empty string.
     """
     builder = _builder(
         tmp_path,
@@ -620,16 +558,12 @@ def test_profiles_sql_normalizes_every_empty_source_field(tmp_path: Path) -> Non
         _write_profiles(tmp_path / "p.parquet", [_ABSENT_PROFILE]),
     )
     row = _projected(builder)["0000000001"]
-    # COALESCE never fired for a single one of 26,703 empty filer categories.
     assert row["filer_category_primary"] == "unspecified"
-    # IS NOT NULL was true for every empty owner_org.
     assert row["owner_org_presence"] == "no_org"
-    # 2,027 empty SIC codes flowed through as a dimension value.
     assert row["sic_code"] is None
     assert row["sic_description"] is None
     assert row["entity_type"] == "operating"
-    # The business address is a struct-null here, which must read the same way
-    # an empty string would.
+    # A struct-null must read the same way an empty string does.
     assert row["state_of_business"] is None
 
 
@@ -664,12 +598,8 @@ def test_profiles_sql_reports_owner_org_presence_truthfully(tmp_path: Path) -> N
 
 
 def test_company_name_stays_a_string_for_a_name_less_registrant(tmp_path: Path) -> None:
-    """The empty-string fallback is important, not an oversight.
-
-    ``company_family`` falls back to ``company_name`` in two places, and
-    ``company_name`` is one of the six capped classification dimensions. A NULL
-    here would collapse every name-less registrant into one over-suppressing
-    bucket; the projection must keep producing a string.
+    """``company_name`` feeds ``company_family`` and is itself a capped dimension,
+    so NULL would collapse every name-less registrant into one bucket.
     """
     builder = _builder(
         tmp_path,
@@ -683,14 +613,8 @@ def test_company_name_stays_a_string_for_a_name_less_registrant(tmp_path: Path) 
 
 
 def test_the_projection_carries_no_dropped_columns(tmp_path: Path) -> None:
-    """Every dimension the selector reads is projected; dead ones are gone.
-
-    ``owner_org_name`` was a literal ``CAST(NULL AS VARCHAR)``: Phase 1 collects
-    ``classification.owner_org``, a CIK, and no org *name* anywhere in the
-    schema, so the column could never be non-NULL while its name promised
-    otherwise. ``state_of_business`` is the opposite case -- populated for
-    39,873 of 40,914 profiles and differing from the state of incorporation for
-    33,109, and simply never wired up.
+    """``owner_org_name`` could never be non-NULL: the schema carries
+    ``classification.owner_org`` (a CIK) and no org name anywhere.
     """
     builder = _builder(
         tmp_path,
@@ -708,13 +632,8 @@ def test_the_projection_carries_no_dropped_columns(tmp_path: Path) -> None:
 def test_absent_source_values_survive_into_the_built_snapshot(
     tmp_path: Path,
 ) -> None:
-    """The correction must be in the stored artifact, not just in the projection.
-
-    Both downstream consumers bypass this SQL -- ``inventory.value_counts`` reads
-    the parquet and maps only NULL to ``'none'``, and ``policy.normalize_value``
-    maps only ``None`` -- so a value that is right in the query and wrong in the
-    file is still wrong. Building the snapshot and reading it back is the only
-    way to pin the stored value.
+    """``inventory.value_counts`` and ``policy.normalize_value`` bypass this SQL and
+    read the stored parquet, so the file is what must be pinned.
     """
     artifacts_root = tmp_path / "artifacts"
     target_root = _write_targets(

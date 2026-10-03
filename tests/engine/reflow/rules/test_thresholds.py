@@ -1,12 +1,6 @@
-"""The 44 calibrated thresholds, pinned so a later edit fails loudly.
-
-The predicates in `thresholds.py` were fitted with scikit-learn optimal
-information-gain splits over 3,411 ground-truth acceptance blocks. They are not
-tunable: a "tidied" split point moves a boundary and silently reclassifies
-blocks, and the failure mode is a collapsed table rather than a visible error.
-So this module asserts the exact registry size, the exact registry order, the
-predicate verdicts either side of every split, and the recorded fitted value
-next to the predicate that actually runs.
+"""The calibrated thresholds, pinned so a later edit fails loudly.
+They are not tunable: a "tidied" split point silently reclassifies blocks, and the
+failure mode is a collapsed table rather than a visible error.
 """
 
 from __future__ import annotations
@@ -16,12 +10,10 @@ import pytest
 from edgar_sec.engine.reflow.features.context import BlockContext
 from edgar_sec.engine.reflow.rules.thresholds import FEATURE_REGISTRY
 
-# The registry must hold exactly this many features. A drop is a lost
-# measurement; an addition is an uncalibrated one.
+# A drop is a lost measurement; an addition is an uncalibrated one.
 EXPECTED_COUNT = 44
 
-# The registry order is the canonical feature-vector order, so it is part of the
-# contract rather than an implementation detail.
+# Registry order is the canonical feature-vector order, so it is contract.
 EXPECTED_ORDER = (
     "ends_terminal_punct",
     "starts_capital_or_indent",
@@ -69,9 +61,7 @@ EXPECTED_ORDER = (
     "exhibit_phrase_count",
 )
 
-# A representative sample of split points: the predicate, the value it is
-# compared against, and a pair of samples straddling it. This is the vector that
-# has to fail when someone "rounds" a threshold.
+# The vector that has to fail when someone "rounds" a threshold.
 SPLIT_SAMPLES: tuple[tuple[str, object, object, object], ...] = (
     ("function_word_ratio", 0.29, 0.30, 0.299),
     ("article_density", 0.99, 1.0, 0.977),

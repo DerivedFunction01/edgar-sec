@@ -1,11 +1,5 @@
-"""Unit tests for domain.forms.common.vocabulary.
-
-The state-vocabulary helper is derived from ``domain.taxonomy.jurisdictions``,
-which is the canonical source. It was previously restated here and silently
-omitted Guam, Puerto Rico and the Virgin Islands, so a cover page that said
-"PUERTO RICO" was not recognised as a state value. These tests pin the
-derivation so a restatement cannot drift again, and pin the grouped
-vocabulary constants the checkmark solver keys off.
+"""The state vocabulary is derived from ``domain.taxonomy.jurisdictions``, never
+restated, so it cannot silently omit a jurisdiction.
 """
 
 from __future__ import annotations

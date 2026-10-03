@@ -1,10 +1,6 @@
 """Rebuilding prose from a layout grid the detector rejected.
-
-Unwrapping is the destructive half of false-table handling, and the contract is
-narrow: a retained table's bytes are never touched, an unwrapped grid becomes
-readable text, and consecutive unwrapped grids join the way the surrounding
-prose would have joined them — a newline between list items so they stay a list,
-a space between prose fragments so they stay a sentence.
+A retained table's bytes are never touched; an unwrapped grid becomes readable text, and
+consecutive grids join as the prose around them would.
 """
 
 from __future__ import annotations
@@ -80,22 +76,7 @@ def cleanup_false_tables_with_metadata(
     geometries: Sequence[TableGeometry] | None = None,
 ) -> tuple[str, tuple[TableGeometry, ...]]:
     """Unwrap layout-only single-line tables without dropping surrounding text.
-
-    The default pass unwraps the dominant layout-only HTML table cases: a
-    rendered ``<TABLE>`` block whose visible text fits on a single line (often a
-    single bulleted risk-factor row, a checkbox row, or a one-line prose
-    fragment) rather than a structured multi-line table. Consecutive unwrapped
-    tables join onto a single separated line, with a single newline between
-    bullet/list items so they remain readable as a list rather than collapsing
-    into a single sentence or producing extra blank lines.
-
-    Tables are intentionally retained when:
-      * they have more than one visible text line (multi-row financial
-         statements, multi-cell data tables, signatory blocks, etc.);
-      * their visible text matches a table-of-contents row with page numbers or
-         dot leaders; or
-      * the rendered text contains only numeric separator characters
-         (financial-statement-like layouts).
+    Retained: multiple visible text lines, a contents row with page numbers, or numeric separators only. Consecutive unwrapped tables join onto one line.
     """
     if "<TABLE>" not in text:
         return text, tuple(geometries or ())
@@ -111,8 +92,8 @@ def cleanup_false_tables_with_metadata(
         )
         for i, block in enumerate(blocks)
     ]
-    # A footnote-like table that immediately precedes a retained table may
-    # unwrap even when its second-column text is label-shaped.
+    # A footnote-like table immediately preceding a retained table may unwrap even when its
+    # second-column text is label-shaped.
     for i, unwrapped in enumerate(verdicts):
         if unwrapped or i + 1 >= len(blocks) or verdicts[i + 1]:
             continue

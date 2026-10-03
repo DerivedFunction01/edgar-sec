@@ -19,7 +19,6 @@ from edgar_sec.foundation.text.evidence import (
     compile_evidence_pack,
 )
 
-# Primary Tier: Asset classes and accumulated depreciation rows
 _PPE_ASSET_CLASSES = (
     "land and improvements",
     "land and land improvements",
@@ -65,7 +64,6 @@ PPE_PRIMARY_TERMS: tuple[str, ...] = expand_alternations(
     ),
 )
 
-# Supporting Tier: Depreciation terminology, useful lives, and asset class stubs
 PPE_SUPPORTING_TERMS: tuple[str, ...] = expand_alternations(
     expand_variants(
         ("machinery", "equipment", "fixture", "building", "depreciation", "useful life")

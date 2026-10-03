@@ -1,5 +1,3 @@
-"""Unit tests for infra.storage.parquet."""
-
 from __future__ import annotations
 
 from pathlib import Path
@@ -44,12 +42,7 @@ def test_read_parquet_table_column_projection(tmp_path: Path) -> None:
 
 
 def test_row_group_default_matches_the_catalog_setting() -> None:
-    """The writer default and the catalog setting default must not drift.
-
-    The two constants are declared separately because the settings module is
-    Layer 0 and cannot import this Layer 2 writer under the enforced layer
-    graph. This test is the substitute for that import.
-    """
+    """Two constants the layer graph forbids importing together; this is the check."""
     from edgar_sec.foundation.runtime.settings.catalog import (
         DEFAULT_ROW_GROUP_SIZE as SETTING_ROW_GROUP_SIZE,
     )
@@ -69,10 +62,7 @@ def test_duckdb_copy_helper_inherits_the_same_row_group_default() -> None:
 
 # ------------------------------------------------------------------ atomicity
 #
-# Chunk checkpoints are the resumability contract: a partially written checkpoint
-# that looked complete would let a truncated fetch be merged as a finished chunk.
-# The write therefore stages to a sibling temp file and renames, and these tests
-# pin that property rather than trusting it.
+# A checkpoint that looked complete would let a truncated fetch merge as finished.
 
 
 def test_write_parquet_table_leaves_no_temp_file(tmp_path: Path) -> None:
@@ -105,7 +95,6 @@ def test_a_failed_write_preserves_the_previous_target(
     with pytest.raises(OSError):
         write_parquet_table(_table(["b"], [2]), path)
 
-    # The prior checkpoint survives intact and no temp file is left behind.
     assert read_parquet_table(path).column("cik").to_pylist() == ["a"]
     assert [item.name for item in tmp_path.iterdir()] == ["chunk.parquet"]
 
@@ -144,10 +133,8 @@ def test_staged_parquet_writer_streaming_and_commit(tmp_path: Path) -> None:
 
 def test_staged_parquet_writer_intra_chunk_resumption(tmp_path: Path) -> None:
     path = tmp_path / "chunk_resume.parquet"
-    # 1. Simulate a partial run that gets interrupted after writing first batch
     writer1 = StagedParquetWriter(path, schema=SCHEMA, id_column="cik")
     writer1.write_batch({"cik": ["0000000001", "0000000002"], "val": [10, 20]})
-    # Intentionally do not commit, close writer leaves .tmp intact
     if writer1._writer is not None:
         writer1._writer.close()
         writer1._writer = None
@@ -155,12 +142,10 @@ def test_staged_parquet_writer_intra_chunk_resumption(tmp_path: Path) -> None:
     assert (tmp_path / "chunk_resume.parquet.tmp").is_file()
     assert not path.is_file()
 
-    # 2. Re-open to resume
     with StagedParquetWriter(path, schema=SCHEMA, id_column="cik") as writer2:
         existing_ids = writer2.get_existing_ids()
         assert existing_ids == {"0000000001", "0000000002"}
 
-        # Write remaining item
         writer2.write_batch({"cik": ["0000000003"], "val": [30]})
         writer2.commit(expected_count=3)
 

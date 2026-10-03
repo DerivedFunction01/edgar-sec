@@ -14,10 +14,8 @@ _BODY = BodyEvidencePack(
     cover_terms=("registrant",),
 )
 
-# ``compile_cover_rules`` keys its cache on ``id()`` of the evidence objects,
-# so every pack handed to it must stay alive for the process or a recycled
-# address would return another pack's compiled rules. Module scope keeps
-# each one alive for the whole module.
+# ``compile_cover_rules`` keys its cache on ``id()`` of the evidence packs, so a
+# recycled address would return another pack's rules; module scope keeps them alive.
 _EMPTY_COVER = type(
     "Cover", (), {"labels": (), "identity_terms": (), "shape_terms": ()}
 )()

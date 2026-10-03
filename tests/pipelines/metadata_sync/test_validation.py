@@ -1,5 +1,3 @@
-"""Unit tests for pipelines.metadata_sync.validation."""
-
 from __future__ import annotations
 
 from pathlib import Path

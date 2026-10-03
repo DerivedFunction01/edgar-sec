@@ -1,15 +1,6 @@
-"""Columnar filing-array unrolling, deduplication, and file descriptors.
-
-SEC ships filing history as parallel columnar lists. Three invariants are load
-bearing and are enforced here rather than at the call sites:
-
-* Ragged columns pad to the longest column and are never truncated, so a
-  short column cannot silently drop trailing filings.
-* Source order is preserved: ``recent`` records in array order, then each
-  historical file in manifest order. No chronological sort is applied.
-* Deduplication is first-occurrence-wins on the normalized accession, and a
-  duplicate whose core metadata disagrees is reported as a conflict rather
-  than resolved by overwriting the first record.
+"""Columnar filing-array unrolling, deduplication, and file descriptors. Ragged
+columns pad to the longest and are never truncated; source order is preserved with
+no sort; dedup is first-wins on the accession, reporting disagreements.
 """
 
 from __future__ import annotations
@@ -144,12 +135,8 @@ def zip_filing_arrays(
 def dedupe_filings(
     records: list[dict], anomalies: list[dict], source: str
 ) -> tuple[list[dict], int]:
-    """Drop duplicate accessions, keeping the first occurrence.
-
-    Duplicates with identical core metadata are dropped quietly. Duplicates
-    whose core metadata disagrees are kept once and reported as
-    ``accession_conflict``. Records whose accession is unusable are all
-    retained, since they are already flagged upstream.
+    """Drop duplicate accessions, keeping the first occurrence; identical duplicates
+    drop quietly, disagreements are kept once and reported as `accession_conflict`.
     """
     seen: dict[str, dict] = {}
     out: list[dict] = []
@@ -182,10 +169,8 @@ def dedupe_filings(
 
 
 def normalize_submission_files(files: Any, anomalies: list[dict]) -> list[dict]:
-    """Normalize historical file descriptors, accepting SEC key case variants.
-
-    The returned records also carry a derived ``url``; callers that assemble
-    the canonical schema must drop it, as it is not a struct field.
+    """Normalize historical file descriptors, accepting SEC key case variants. Records
+    also carry a derived `url`, which callers building the schema must drop.
     """
     if files is None:
         return []

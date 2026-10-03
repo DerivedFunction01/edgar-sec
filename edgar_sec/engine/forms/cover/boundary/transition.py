@@ -1,11 +1,6 @@
-"""Cover transition detection logic.
-
-A cover does not end at the first heading that follows an incorporated-by-
-reference block: that block lists the filing's own parts as children. The
-transition resolver therefore demands a *proven root* — a heading that is not
-nested inside another structural heading, is not followed by continuation prose,
-and is not a proxy reference disclosure — and falls back to ending the cover
-after the last such child rather than before the first ambiguous heading.
+"""Cover transition detection: a cover does not end at the first heading after an
+incorporated-reference block, because that block lists the filing's own parts as
+children. The resolver demands a proven root, else ends after the last child.
 """
 
 from __future__ import annotations
@@ -48,12 +43,8 @@ _QUOTED_SECTION_MARKERS = (
 def _next_cover_transition(
     lines: list[str], start_line: int, search_limit: int
 ) -> tuple[int, str] | None:
-    """Find the next heading that can terminate an incorporated-reference block.
-
-    Standalone PART/ITEM headings inside the reference unit are children
-    (reference descriptions), not boundaries. When no proven transition root
-    exists in the window, last-child safety applies: the cover ends after the
-    final known child rather than before the first ambiguous heading.
+    """The next heading terminating an incorporated-reference block; standalone
+    PART/ITEM headings inside it are children, so the cover ends after the last.
     """
     pending_toc_heading: int | None = None
     last_child_line: int | None = None
@@ -118,12 +109,8 @@ def _first_body_semantic_line(
     end_line: int,
     rules: object,
 ) -> int | None:
-    """First prose line between the reference block and the transition that is body-like.
-
-    Used as a depth guard: forward-looking statements and other body-semantic
-    sections sometimes sit between the incorporated-reference block and the
-    structural transition. Ending the cover at the transition would pull that
-    prose into cover healing, so the boundary ends before it instead.
+    """The first body-like prose line before the transition: a depth guard, since
+    ending the cover there would pull body prose into cover healing.
     """
     in_table = False
     for index in range(max(0, start_line), min(end_line, len(lines))):

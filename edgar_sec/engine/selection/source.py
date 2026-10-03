@@ -1,14 +1,6 @@
-"""Bounded, storage-backed candidate access for stratified selection.
-
-The selector never holds the candidate pool in memory. It asks this module for
-a pool satisfying a dimension value, a composite filter set, a CIK set, or one
-deterministic page, and gets back at most ``limit`` rows. That bound is the
-point: a corpus of millions of locators has to be selectable on a machine whose
-memory budget is derived from cgroup limits, not from the corpus.
-
-Filter values are bound parameters; dimension names are validated against
-``KNOWN_DIMENSIONS``. Selected keys are held in temporary tables for joins, and
-row-to-dict conversion rejects projections that do not match their column tuple.
+"""Bounded, storage-backed candidate access: the selector never holds the pool. Every
+query returns at most `limit` rows, so a corpus larger than memory stays selectable;
+filter values are bound parameters and dimension names are validated.
 """
 
 from __future__ import annotations
@@ -30,9 +22,8 @@ from edgar_sec.engine.selection.predicates import (
 )
 from edgar_sec.infra.storage.duckdb import connect, sql_literal
 
-# The locator columns the selector reasons over. A tuple rather than a
-# comma-joined string so the SELECT list and the row-to-dict zip are generated
-# from one source.
+# A tuple, not a comma-joined string, so the SELECT list and the row-to-dict
+# zip are generated from one source.
 POOL_COLUMNS: tuple[str, ...] = (
     "document_locator_key",
     "form",
@@ -60,8 +51,7 @@ POOL_COLUMNS: tuple[str, ...] = (
     "representative_cik",
 )
 
-# Occurrence columns returned for the active selection, so a consumer can write
-# a work order without re-reading the snapshot.
+# Returned for the active selection, so a consumer need not re-read the snapshot.
 OCCURRENCE_COLUMNS: tuple[str, ...] = (
     "occurrence_id",
     "document_locator_key",
@@ -97,12 +87,9 @@ _QUALIFIED_POOL_SELECT = ", ".join(f"l.{c}" for c in POOL_COLUMNS)
 _QUALIFIED_OCCURRENCE_SELECT = ", ".join(f"o.{c}" for c in OCCURRENCE_COLUMNS)
 _INSERT_BATCH = 5_000
 
-# One definition of the tie-break order, referenced by every pool query.
-#
-# The seed must sit *inside* the concatenation, not beside it. DuckDB
-# constant-folds `constant || column` to a constant, so `sha256(?) || key`
-# silently sorts every row equal and the pool comes back in file order --
-# which looks deterministic and is, but is not seed-dependent at all.
+# The seed must sit *inside* the concatenation: DuckDB constant-folds
+# `constant || column`, so a seed beside the key sorts every row equal and the pool
+# comes back in file order — deterministic, but not seed-dependent at all.
 _ORDER_EXPR = "sha256(CAST(? AS VARCHAR) || l.document_locator_key)"
 _RANKED_ORDER_EXPR = "sha256(CAST(? AS VARCHAR) || ranked.document_locator_key)"
 
@@ -117,10 +104,8 @@ class SelectionSessionError(RuntimeError):
 
 @dataclass(frozen=True, slots=True)
 class CandidateFilters:
-    """The policy-level filters applied to every pool query.
-
-    Built once per source so the predicate is constructed once rather than per
-    call, and so the same filter set cannot drift between pool kinds.
+    """The policy-level filters applied to every pool query; built once so the
+    predicate cannot drift between pools.
     """
 
     document_suffixes: tuple[str, ...] = ()
@@ -135,16 +120,13 @@ class CandidateFilters:
         if self.max_reported_size is not None:
             clauses.append(f"l.reported_size <= {int(self.max_reported_size)}")
         if self.document_suffixes:
-            # Suffixes apply to the effective document path, which is the
-            # primary document for an observed row and the synthetic
-            # submission-bundle path for a fallback locator.
+            # Suffixes apply to the effective document path: the primary
+            # document for an observed row, the synthetic bundle path for a
+            # fallback locator.
             clauses.append(suffix_sql("l.document_path", self.document_suffixes))
         if self.date_selection:
-            # Applied here rather than after selection, so a locator outside the
-            # declared dates cannot be drawn by any phase: not by a floor, not by
-            # the weighted fill, not by the reserve. A date selection that only
-            # filtered the final list would still let out-of-range candidates
-            # consume quota on the way there.
+            # Applied here, not after selection, so an out-of-range locator
+            # cannot be drawn by any phase and consume quota on the way there.
             clauses.append(date_selection_sql(self.date_selection))
         return " AND ".join(clauses) if clauses else "TRUE"
 
@@ -181,10 +163,8 @@ class CandidateSource:
 
     @contextmanager
     def session(self) -> Iterator[CandidateSource]:
-        """Open the candidate session, creating the working tables.
-
-        The connection is in-memory; temporary selection tables do not leave
-        mutable state in the feature snapshot directory.
+        """Open the candidate session and its working tables. The connection is in-memory,
+        so a session leaves no mutable state in the snapshot directory.
         """
         con = connect(threads=self._threads, memory_limit=self._memory_limit)
         try:
@@ -215,13 +195,8 @@ class CandidateSource:
         return f"l.document_locator_key NOT IN (SELECT document_locator_key FROM {_SELECTED_TABLE})"
 
     def _locator_source(self) -> str:
-        """The locator relation, projected so a date predicate sees one column.
-
-        Only the pool queries need this: they are the ones carrying the filter
-        set. Wrapping here rather than per query is what keeps the parse to one
-        occurrence per row instead of one per predicate reference, and the outer
-        alias stays ``l`` so every qualified reference in this module is
-        unaffected.
+        """The locator relation, projected so a date predicate sees one column; wrapping
+        here keeps the outer alias `l` for every qualified reference in this module.
         """
         relation = f"read_parquet({sql_literal(str(self.locator))})"
         if self.filters.filters_dates():
@@ -241,7 +216,6 @@ class CandidateSource:
     # ------------------------------------------------------------ selection
 
     def register_selected(self, keys: Sequence[str]) -> None:
-        """Replace the exclusion set with exactly ``keys``."""
         self._fill(_SELECTED_TABLE, keys)
 
     def add_selected(self, key: str) -> None:
@@ -253,7 +227,6 @@ class CandidateSource:
     def pool_for_value(
         self, dimension: str, value: str, limit: int = 60
     ) -> list[dict[str, Any]]:
-        """Return up to ``limit`` candidates whose ``dimension`` equals ``value``."""
         column = self._dimension(dimension)
         query = f"""
             SELECT {_POOL_SELECT}
@@ -268,11 +241,8 @@ class CandidateSource:
     def pool_for_cell(
         self, form: str, era: str, limit: int = 60
     ) -> list[dict[str, Any]]:
-        """Return candidates in one form-by-era cell, in the shared tie-break order.
-
-        The conjunction is over two columns of the same locator row, so it reads
-        as one stratum rather than a floor on each dimension separately: a floor
-        on ``form`` cannot tell a cell from any other row of that form.
+        """Candidates in one form-by-era cell, in the shared tie-break order. Two columns
+        of one row are one stratum, which a floor on `form` alone cannot express.
         """
         query = f"""
             SELECT {_POOL_SELECT}
@@ -285,12 +255,8 @@ class CandidateSource:
         return self._rows(query, [form, era, self.seed])
 
     def cell_availability(self) -> list[tuple[str, str, int]]:
-        """Return every nonempty ``(form, era)`` cell with its eligible count.
-
-        One grouped pass, so the allocator can tell a cell that is small from a
-        cell that is empty without asking per cell. Excludes the already-selected
-        set, matching what the pool query would draw from: a cell whose remaining
-        candidates are gone must not be counted as capacity.
+        """Every nonempty `(form, era)` cell with its eligible count, excluding the selected
+        set: a cell with nothing left is not capacity.
         """
         rows = (
             self._require()
@@ -326,11 +292,8 @@ class CandidateSource:
     def pool_for_ciks(
         self, ciks: Sequence[str], limit_per_cik: int = 5
     ) -> list[dict[str, Any]]:
-        """Return up to ``limit_per_cik`` candidates for each supplied CIK.
-
-        The cap is per CIK rather than global: seed filers are mandatory, so
-        without a per-CIK bound one seed registrant could consume the entire
-        selection budget.
+        """Up to `limit_per_cik` candidates per supplied CIK. The cap is per CIK, not
+        global, or one mandatory seed registrant could consume the whole budget.
         """
         if not ciks:
             return []
@@ -358,10 +321,8 @@ class CandidateSource:
         return self._rows(query, [self.seed, self.seed])
 
     def candidate_page(self, page_index: int) -> list[dict[str, Any]]:
-        """Return one deterministic page of unselected candidates.
-
-        Paging is ``OFFSET`` over a seed-derived total order, so a given page
-        index yields the same rows for the same seed and snapshot.
+        """One deterministic page of unselected candidates: `OFFSET` over a seed-derived
+        total order, so a page index yields the same rows for the same snapshot.
         """
         query = f"""
             SELECT {_POOL_SELECT}
@@ -377,10 +338,8 @@ class CandidateSource:
     def load_candidates_for_locators(
         self, locator_keys: Sequence[str]
     ) -> list[dict[str, Any]]:
-        """Load the feature rows of an existing selection, in the given order.
-
-        Order is the caller's, not the store's: a parent selection's rows must
-        land in the order of its keys so coverage accounting lines up.
+        """Feature rows of an existing selection, in the caller's order, so a parent
+        selection's coverage accounting lines up with its keys.
         """
         if not locator_keys:
             return []
@@ -405,10 +364,8 @@ class CandidateSource:
     def load_occurrences_for_locators(
         self, locator_keys: Sequence[str]
     ) -> list[dict[str, Any]]:
-        """Return every occurrence belonging to the selected locators.
-
-        A locator with two co-filer occurrences yields two rows: the document is
-        one, but each registrant's claim on it is a separate work item.
+        """Every occurrence belonging to the selected locators; a locator with two
+        co-filers yields two rows, one per registrant's claim on one document.
         """
         if not locator_keys:
             return []

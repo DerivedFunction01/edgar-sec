@@ -1,14 +1,7 @@
 """The one typed options model shared by the CLI and the interactive operator.
 
-Options are split by role, and the split is the point. Creating a plan needs a
-cohort reference and a chunk layout; executing one needs a plan reference, a
-worker label, and machine-local resources. Keeping them apart is what lets a
-worker holding only a copied bundle run without the original CSV and without
-repeating the chunking settings that define the plan it was handed.
-
-Nothing here reaches the process environment. ``resolve_runtime_settings`` is
-called at the boundary that resolves *effective* values, so building a parser
-stays pure and both surfaces resolve settings through the same path.
+The role split is the point: executing a plan needs a plan reference, so a
+worker holding only a copied bundle runs without the CSV that defined it.
 """
 
 from __future__ import annotations
@@ -50,10 +43,7 @@ __all__ = [
 @dataclass(frozen=True, slots=True)
 class BundleRunPaths:
     """Plan-scoped paths rooted at a copied bundle rather than an artifacts tree.
-
-    A worker handed a directory has no plan under ``metadata/plans/``; it has
-    whatever was copied. This resolves the same layout against that directory so
-    the worker and the coordinator run identical code against the same plan.
+    A bundle worker has no plan under ``metadata/plans/``.
     """
 
     bundle_root: Path
@@ -96,9 +86,7 @@ class BundleRunPaths:
     def receipt_file(self) -> Path:
         """The worker's receipt, at the root of what it hands back.
 
-        At the bundle root rather than under ``chunks/`` so the returned
-        directory reads as one thing: the plan it was given, the work it did, and
-        what it claims about that work.
+        At the bundle root so the returned directory reads as one thing.
         """
         return self.bundle_root / RECEIPT_FILE_NAME
 
@@ -113,10 +101,7 @@ def resolve_chunk_size(value: int | None) -> int:
 @dataclass(slots=True)
 class PlanOptions:
     """Everything that defines a plan, and nothing operational.
-
-    ``chunk_size`` is plan-defining and therefore resolved once, here. Worker
-    count is deliberately not a field: it is a property of the machine doing the
-    work, and it must never reach a plan identity.
+    Worker count is deliberately not a field: it must never reach a plan identity.
     """
 
     input_path: Path | None = None
@@ -131,11 +116,7 @@ class PlanOptions:
 
     def roster(self) -> Roster:
         """Resolve the selected cohort this invocation plans over.
-
-        A registry roster is the curated-versus-source projection's own artifact,
-        read through its published manifest. A CSV is compiled into a cohort
-        dataset. Both end at the same place, which is what lets every later command
-        treat the two identically.
+        A registry roster and a compiled CSV converge here.
         """
         if self.registry_id:
             if self.input_path is not None:
@@ -147,11 +128,7 @@ class PlanOptions:
 
     def selected_cohort(self) -> SelectedCohort:
         """The cohort this invocation selected, with its provenance intact.
-
-        The limit is applied *during* compilation, before identity is derived, so a
-        bounded plan and a full plan over the same file are different plans.
-        Hashing the raw file and truncating afterwards is what would let the two
-        collide on one plan directory and one checkpoint namespace.
+        The limit applies during compilation, before identity is derived.
         """
         if self.input_path is None:
             raise ValueError("a plan needs --input or --roster")
@@ -172,11 +149,8 @@ class PlanOptions:
 @dataclass(frozen=True, slots=True)
 class SelectedCohort:
     """A resolved cohort plus where it came from.
-
-    A registry roster has no input file behind it, so its plan records the
-    registry identity instead of an input fingerprint, and a merge copies that
-    lineage into the snapshot manifest. Either way the cohort is a roster, and
-    the plan is derived from the roster.
+    A registry roster has no input file, so its registry identity stands in for an
+    input fingerprint.
     """
 
     roster: Roster
@@ -186,9 +160,7 @@ class SelectedCohort:
     @classmethod
     def from_compiled(cls, cohort: CompiledCohort) -> SelectedCohort:
         """Build from a cohort compiled out of a CIK input file.
-
-        The limit is already part of the compiled cohort's identity, so it is not
-        re-applied here; re-truncating would hide a mistake rather than surface one.
+        The limit is already in that identity; re-truncating would hide a mistake.
         """
         return cls(
             roster=cohort.roster,
@@ -219,10 +191,7 @@ def resolve_cohort(options: PlanOptions) -> SelectedCohort:
 @dataclass(slots=True)
 class RunOptions:
     """Everything needed to execute a plan that already exists.
-
-    A worker holding a copied bundle has no input CSV and must not have to
-    re-declare the chunk layout, so ``plan_id`` is an input rather than something
-    re-derived from files it does not have.
+    ``plan_id`` is an input, so a bundle worker need not re-declare the chunking.
     """
 
     plan_id: str
@@ -236,8 +205,7 @@ class RunOptions:
     def run_paths(self) -> Any:
         """Plan-scoped paths for this execution.
 
-        With ``bundle_root`` the paths point at a copied bundle on another
-        machine; without it they point at the coordinator's own plan directory.
+        With ``bundle_root`` the paths point at another machine's copied bundle.
         """
         if self.bundle_root is not None:
             return BundleRunPaths(bundle_root=self.bundle_root, plan_id=self.plan_id)
@@ -245,11 +213,8 @@ class RunOptions:
 
     def effective_snapshot_id(self, plan: Plan) -> str:
         """Snapshot identity for this run.
-
-        Plan-derived for a full ingest, so a row's ``snapshot_id`` can never
-        disagree with the artifact containing it. An explicit override exists for
-        the distribution path, where a worker stamps rows with the snapshot the
-        coordinator will publish under.
+        Plan-derived for a full ingest, so a row's ``snapshot_id`` cannot disagree with
+        the artifact holding it.
         """
         return self.snapshot_id or plan.plan_id
 
@@ -274,10 +239,7 @@ def plan_options(
 
 def read_bundle_plan_id(bundle_root: Path | str) -> str:
     """Read the plan identity a copied bundle declares for itself.
-
-    A bundle carries its own ``plan.json``, so a worker handed only a directory
-    can tell what it is holding without also being handed a plan id. A separate
-    marker file would be a second source of truth for the same fact.
+    A separate marker file would be a second source of truth.
     """
     manifest = Path(bundle_root) / "plan.json"
     if not manifest.is_file():
@@ -303,10 +265,7 @@ def run_options(
     snapshot_id: str = "",
 ) -> RunOptions:
     """Build execution options from raw values, resolving chunk selections.
-
-    A plan reference may be given directly, re-derived from the cohort that
-    created the plan, or read from a copied bundle that names itself. The
-    explicit form is what a worker holding only a bundle has.
+    A plan reference arrives directly, from the cohort, or from a bundle naming itself.
     """
     if isinstance(chunk_ids, str):
         chunk_ids = parse_id_selection(chunk_ids) if chunk_ids else ()
@@ -339,10 +298,7 @@ def run_options(
 
 def derive_plan_id(options: PlanOptions) -> str:
     """Derive the plan id a cohort reference and chunk layout resolve to.
-
-    Resolving this rather than recording it is what makes planning idempotent:
-    planning the same cohort with the same chunking twice produces the same plan
-    directory and reuses its checkpoints.
+    Deriving rather than recording is what makes planning idempotent.
     """
     from .planner import build_plan
 
@@ -363,11 +319,7 @@ def augment_options(
     workers: int | None = None,
 ) -> tuple[PlanOptions, dict[str, str]]:
     """Build the options and lineage an augmentation run needs.
-
-    The base snapshot is explicit because a delta is meaningless without one. The
-    new snapshot id is optional and defaults to the derived delta plan id, so an
-    augmentation neither requires nor invents a free-form identity; a supplied
-    value stays an explicit override for the distribution path.
+    The base is explicit; the new snapshot id defaults to the derived delta plan id.
     """
     options = plan_options(
         input_path=input_path,

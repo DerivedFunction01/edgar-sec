@@ -1,17 +1,6 @@
-"""Runtime settings spec tests.
-
-The chunking spec is plan-defining, so a defect in one produces a silently wrong
-plan rather than a crash. Two properties are pinned here: every spec that an
-operator can set from the environment validates its own bounds, and none
-declares ``config=True`` while no settings mapping is persisted. The second
-matters because a ``config=True`` flag advertises a backing store that does not
-exist.
-
-``runtime.partition_count`` is deliberately absent. Phase 1 distributes chunks
-through static per-worker assignments, and Phase 2 publishes form-partitioned
-targets that no operator selects, so no production code would read such a
-setting. A setting nobody reads is a capability advertised but not delivered, so
-it is retired rather than parked for a future phase to adopt.
+"""Runtime settings specs: plan-defining bounds validate themselves, and no spec
+declares `config=True` while no settings mapping is persisted. `partition_count`
+is deliberately absent: nothing reads it.
 """
 
 from __future__ import annotations
@@ -53,11 +42,8 @@ def test_the_module_constants_are_the_spec_defaults() -> None:
 
 
 def test_the_retired_partition_count_setting_is_gone() -> None:
-    """Nothing reads it, so the registry must not keep advertising it.
-
-    A spec that resolves and addresses by env var implies an operator can change
-    the behaviour. With no consumer, ``RUNTIME_PARTITION_COUNT`` was accepted and
-    silently discarded.
+    """A spec that resolves and addresses by env var implies an operator can change
+    the behaviour; with no consumer it was accepted and silently discarded.
     """
     assert "partition_count" not in _specs()
     assert not hasattr(RuntimeSettings, "default_partition_count")
@@ -139,12 +125,8 @@ def test_validators_enforce_their_documented_bounds() -> None:
 
 
 def test_cache_settings_are_exposed_on_the_resolved_model() -> None:
-    """The cache root and its TTL must be readable, not merely declared.
-
-    `cache.json_ttl_s` was registered and resolvable but carried on no
-    `RuntimeSettings` field, so nothing in the codebase could honour an
-    override of it. A setting that exists and is read by no one is the same
-    defect shape as a chunk size that exists and is ignored.
+    """A setting that exists and is read by no one is the same defect as a chunk size
+    that exists and is ignored.
     """
     from pathlib import Path
 

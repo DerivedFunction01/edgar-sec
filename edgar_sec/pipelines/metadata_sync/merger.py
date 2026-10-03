@@ -1,21 +1,7 @@
-"""Coordinator merge: validate every chunk, then publish one sorted snapshot.
+"""Coordinator merge: validate every chunk, then publish one snapshot.
 
-The coordinator is the only component that writes published artifacts. Two
-classes of finding are deliberately distinguished:
-
-* Failures - duplicate or null CIKs, schema drift, plan coverage gaps,
-  mismatched row counts, and foreign chunk files.
-* Reportable fan-out - duplicate accessions. The same filing is legitimately
-  listed by more than one registrant, so duplicates are surfaced as a warning
-  and never reject a merge.
-
-Publication is multipart: :func:`publish_parts` writes an ordered list of Parquet
-parts and records them in the manifest, leaving the singular ``output_path`` /
-``artifact_sha256`` pair empty on purpose so a reader that understands only the
-legacy single-file shape fails loudly instead of ingesting one part of the
-dataset. A sorted distinct CIK index is written beside the parts for Phase 1's
-own membership, coverage, and augmentation operations, and recorded in the
-manifest. Phase 2 does not open it.
+The coordinator is the only component that writes published artifacts, and it
+publishes only once every chunk has validated.
 """
 
 from __future__ import annotations
@@ -96,13 +82,8 @@ class MergeReport:
 
     def to_dict(self) -> dict[str, Any]:
         """Serializable report for the snapshot manifest.
-
-        A published snapshot is described by its ordered ``parts`` list. The
-        singular ``output_path``/``artifact_sha256`` pair is left empty for a
-        multipart snapshot on purpose: pointing them at the first part would let
-        a reader that understands only the legacy shape silently ingest a
-        fraction of the dataset. A reader must either honour the part list or fail
-        loudly on the empty payload.
+        ``output_path``/``artifact_sha256`` stay empty for a multipart snapshot on purpose,
+        so a single-file reader fails loudly instead of ingesting a fraction.
         """
         manifest = {
             "snapshot_id": self.snapshot_id,
@@ -138,10 +119,7 @@ class MergeReport:
 
 def _published_ciks(part_paths: tuple[Path, ...]) -> list[str]:
     """Read the CIK column of the published parts.
-
-    The index is built from what is on disk rather than from the roster, so a
-    snapshot whose parts do not carry the planned cohort is visible in the index
-    instead of surfacing as a surprise in a later consumer.
+    Built from disk rather than the roster, so a short snapshot is visible here.
     """
     import pyarrow.parquet as pq
 
@@ -154,10 +132,7 @@ def _published_ciks(part_paths: tuple[Path, ...]) -> list[str]:
 
 def parts_digest(parts: list[dict[str, Any]]) -> str:
     """One digest over the ordered part digests.
-
-    A snapshot is identified by the ordered set of files that carry it, so a
-    single value can bind a pointer or a downstream manifest to the exact dataset
-    without rehashing every part at discovery time.
+    Binds a pointer to the exact dataset without rehashing every part.
     """
     material = canonical_json([str(part["sha256"]) for part in parts]).encode("utf-8")
     return sha256_bytes(material)
@@ -237,9 +212,8 @@ def validate_chunks(plan: Plan, run_paths: RunPaths) -> list[Path]:
             found[chunk_id], columns=["cik", "input_fingerprint", "status"]
         )
         ciks = tuple(str(v) for v in table.column("cik").to_pylist())
-        # One chunk's CIKs are read from the roster at a time. Materializing every
-        # chunk up front would hold the whole cohort for a coverage check that only
-        # ever looks at one ordinal range.
+        # One chunk's CIKs are read from the roster at a time; materializing
+        # every chunk up front would hold the whole cohort for a coverage check.
         planned_ciks = plan.chunk_ciks(chunk_id)
         if set(ciks) != set(planned_ciks) or len(ciks) != len(planned_ciks):
             raise MergeError(
@@ -282,9 +256,7 @@ def publish_cik_index(
     ciks: list[str],
 ) -> MergeReport:
     """Write the sorted distinct CIK index beside a published payload.
-
-    The index is derived from the published rows rather than from the plan, so it
-    is a statement about the artifact on disk and not about what was requested.
+    Derived from the published rows, not from what was requested.
     """
     path = metadata_paths.snapshot_cik_index(report.snapshot_id)
     report.cik_index_path = str(path)
@@ -299,22 +271,8 @@ def publish_parts(
     sources: Sequence[tuple[str, Path]],
 ) -> tuple[Path, ...]:
     """Publish validated source files as a snapshot's ordered Parquet parts.
-
-    Parts are byte copies of already-validated files, not a re-materialization.
-    Copying performs the same validation work at a fraction of the I/O a
-    decompress-sort-recompress pass would, and it makes the published dataset
-    exactly the set of files the merge accepted. A full merge passes its chunk
-    files; an augmentation passes the base snapshot's parts followed by its delta
-    chunks.
-
-    Each source label is recorded on its part, so a consumer can tell which
-    chunk or which base part a row came from without inspecting the file.
-
-    The trade is row order. A snapshot is in part order and each part is in the
-    order its source file held, so the dataset is *not* globally sorted by CIK.
-    That is recorded in the manifest as ``sort_order`` so a consumer cannot
-    mistake one for the other, and ``ciks.parquet`` remains the sorted membership
-    index for lookups by CIK.
+    Byte copies of validated files. The trade is row order: part order, not sorted
+    by CIK, and the manifest records that.
     """
     parts_dir = metadata_paths.snapshot_parts_dir(report.snapshot_id)
     parts_dir.mkdir(parents=True, exist_ok=True)
@@ -367,22 +325,7 @@ def merge_chunks(
     progress: Callable[[dict[str, Any]], None] | None = None,
 ) -> MergeReport:
     """Validate all chunks and publish a sorted snapshot dataset.
-
-    ``progress`` receives one event per merge stage. A merge over millions of
-    rows is long enough that silence is indistinguishable from a hang, so the
-    stages are reported. A failing progress callback never aborts publication:
-    presentation must not be able to reject a validated snapshot.
-
-    ``lineage`` carries the parent, roster, and source identities an augmented
-    artifact must record. It is optional because a full ingest has no parent, and
-    a full ingest must not invent one.
-
-    A delta plan is refused. This function publishes exactly the chunks the plan
-    produced, and a delta plan's chunks hold only the CIKs missing from its base,
-    so merging one would publish a dataset that drops every base row while
-    recording that base as its parent. Recombining base and delta is
-    :mod:`augmentation`'s job, which passes the base parts in as merge inputs;
-    doing it here would mean silently guessing which snapshot to resurrect.
+    A delta plan is refused; a failing progress callback never aborts publication.
     """
     if plan.kind == "delta":
         raise MergeError(
@@ -454,11 +397,8 @@ def publish_snapshot(
     report: MergeReport, metadata_paths: MetadataPaths
 ) -> dict[str, Any]:
     """Write the snapshot manifest and advance the current pointer atomically.
-
-    The manifest is the snapshot's commit record and is written first; the
-    pointer is written last. A crash between the two leaves an unpublished but
-    complete snapshot directory, which the next merge overwrites, rather than a
-    pointer naming a dataset that was never finished.
+    Manifest first, pointer last: a crash between leaves an unpublished but complete
+    directory, never a pointer to an unfinished dataset.
     """
     manifest = report.to_dict()
     atomic_write_json(
@@ -489,19 +429,8 @@ def publish_snapshot(
 
 def publish_current_snapshot(metadata_paths: MetadataPaths, snapshot_id: str) -> Path:
     """Point ``current`` at an already-published snapshot.
-
-    ``publish_snapshot`` advances the pointer as a side effect of a merge, which
-    means the pointer can only ever move forward. This is the explicit operation
-    that moves it back, so a reader can be sent to an earlier snapshot that is
-    still on disk and still valid.
-
-    It is deliberately a pointer move and nothing else: no snapshot is written,
-    removed, or rewritten. Selecting an older snapshot does not unpublish a newer
-    one, and the next successful merge advances the pointer again.
-
-    The target is validated first. Pointing at a snapshot whose manifest is
-    absent or names a different id would send a reader to a dataset that does not
-    exist, which is strictly worse than leaving a stale pointer in place.
+    A pointer move and nothing else, validated first: a pointer to a nonexistent
+    dataset is worse than a stale one.
     """
     manifest_path = metadata_paths.snapshot_manifest(snapshot_id)
     try:

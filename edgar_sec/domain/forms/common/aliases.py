@@ -1,9 +1,7 @@
 """Canonical SEC form-family alias registry and suffix collapse.
 
-Single source of truth for mapping a raw form string to its canonical family.
-The engine and every pipeline resolve families through this table; no consumer
-owns a private alias list. Suffix stripping is applied before alias lookup so
-``10-K405/A`` resolves the same way as ``10-K/A``.
+Single source of truth for mapping a raw form string to its canonical family; suffix
+stripping runs before alias lookup.
 """
 
 from __future__ import annotations
@@ -81,9 +79,7 @@ _ALIAS_LOOKUP: dict[str, str] = _build_alias_lookup()
 def form_family(form: str) -> str:
     """Collapse amendment and submission suffixes into the base form family.
 
-    ``10-K/A`` and ``10-K_A`` both become ``10-K``. A form that is *entirely*
-    suffixes (``/A``) collapses to the empty string, and the original is
-    returned rather than an empty dimension value.
+    A form that is *entirely* suffixes (``/A``) returns the original, not an empty string.
     """
     base = form.upper().strip()
     for suffix in FORM_FAMILY_SUFFIXES:

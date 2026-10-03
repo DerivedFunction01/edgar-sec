@@ -1,9 +1,6 @@
-"""Memoized block feature context, and the two features it cannot measure alone.
-
-The context is the rule cascade's only input, so the tests pin both the
-measurements and the injection seam: `has_checkbox` and `is_financial_bridge`
-are the two features whose answer belongs to the caller's form vocabulary, and
-this module must read them off the policy rather than import a form family.
+"""Memoized block feature context.
+`has_checkbox` and `is_financial_bridge` belong to the caller’s form vocabulary,
+so this module reads them off the injected policy.
 """
 
 from __future__ import annotations
@@ -106,11 +103,8 @@ def test_feature_floats_encodes_booleans_as_one_and_zero() -> None:
 
 
 def test_feature_floats_does_not_drag_numpy_into_the_import_graph() -> None:
-    """A dense vector is not part of the engine's contract.
-
-    Returning an array would put numpy in the import graph of every process that
-    normalizes a filing, so importing this module in a clean interpreter must not
-    import numpy.
+    """A dense vector would put numpy in the import graph of every process that
+    normalizes a filing.
     """
     probe = (
         "import sys\n"
@@ -162,8 +156,8 @@ def test_has_checkbox_fires_on_the_mark_without_a_predicate() -> None:
 
 
 def test_has_checkbox_uses_the_injected_predicate() -> None:
-    # The mark vocabulary alone cannot see this line, so a True here is
-    # attributable only to the policy the caller injected.
+    # The mark vocabulary cannot see this line, so True is attributable only to the
+    # injected policy.
     lines = ("Yes the registrant checked the large accelerated filer box",)
     assert _context(lines).has_checkbox is False
     assert _context(lines, PRODUCTION_POLICY).has_checkbox is False

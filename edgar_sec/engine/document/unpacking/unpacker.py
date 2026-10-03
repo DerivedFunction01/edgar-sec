@@ -190,6 +190,7 @@ def resolve_target_sub_document(
     if not sub_docs:
         return None
 
+    # Tiered resolution: target types, then primary filename, then primary sequence, then first text/HTML.
     # Tier 1: Match by Target Types
     if target_types:
         targets = {t.strip().upper() for t in target_types if t and t.strip()}
@@ -199,7 +200,6 @@ def resolve_target_sub_document(
             ):
                 return doc
 
-    # Tier 2: Match by Primary Filename
     if primary_filename:
         p_base = primary_filename.split("/")[-1].strip().upper()
         if p_base and not p_base.startswith("0001.") and not p_base.startswith("0000."):
@@ -207,7 +207,6 @@ def resolve_target_sub_document(
                 if doc.filename.strip().upper() == p_base:
                     return doc
 
-    # Tier 3: Match by Primary Sequence (Sequence 1)
     if fallback_to_sequence_one:
         for doc in sub_docs:
             if (
@@ -217,7 +216,6 @@ def resolve_target_sub_document(
             ):
                 return doc
 
-    # Tier 4: First non-graphic text/HTML sub-document
     for doc in sub_docs:
         if doc.doc_type not in (
             "GRAPHIC",

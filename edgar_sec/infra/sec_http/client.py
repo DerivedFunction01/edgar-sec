@@ -77,9 +77,8 @@ class SecHttpClient:
         self.ignore_failure_history = ignore_failure_history
         self.max_response_bytes = max_response_bytes
 
-        # Configure session connection pool. A caller-supplied factory lets
-        # tests substitute a scripted session while keeping pacing, retry,
-        # caching, and failure-ledger behavior under test.
+        # A caller-supplied session factory lets a test substitute a scripted session while
+        # pacing, retry, caching, and the failure ledger still run.
         self._session = session_factory() if session_factory else requests.Session()
         if hasattr(self._session, "mount"):
             adapter = HTTPAdapter(
@@ -258,7 +257,6 @@ class SecHttpClient:
                     self._cache.clear_failure(url)
                 return content
 
-            # Status handling
             status_kind = policy.classify(response.status_code)
             if status_kind == "throttle":
                 retry_after_hdr = response.headers.get("Retry-After")
@@ -307,7 +305,6 @@ class SecHttpClient:
                     response.status_code,
                 )
 
-            # Permanent 4xx error (e.g. 404 Not Found)
             if self._cache:
                 self._cache.record_failure(
                     url,
@@ -351,9 +348,8 @@ class SecHttpClient:
     ) -> tuple[dict[str, Any], int, str]:
         """Like :meth:`get_json` but also returns ``(payload, byte_count, response_sha256)``.
 
-        The submissions dataset records per-row acquisition provenance, so the
-        byte count and digest of the exact response body must survive the
-        parse rather than being discarded by it.
+        The byte count and digest of the response body must survive the parse,
+        so acquisition provenance is recorded per row.
         """
         raw = self.get_bytes(url, content_kind="json", force_refresh=force_refresh)
         try:

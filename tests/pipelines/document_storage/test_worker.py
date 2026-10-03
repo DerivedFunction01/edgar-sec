@@ -194,7 +194,6 @@ def test_one_failing_document_does_not_fail_the_chunk(tmp_path: Path) -> None:
     assert result.missing_count == 1
     assert result.failed_count == 0
     assert result.ok is False
-    # Both documents still have a row.
     assert pq.read_table(result.output_path).num_rows == 2
 
 
@@ -534,24 +533,14 @@ def test_filing_processor_records_the_cover_boundary() -> None:
     assert processed.metadata["cover_boundary_method"] != "disabled"
     assert processed.metadata["representation"] == "ascii"
     assert processed.metadata["word_count"] > 20
-    # The detected boundary is exclusive and pre-reflow: it lands on "PART I",
-    # so the cover region is the identity block and the body starts at PART I.
-    # The post-reflow line is also recorded but is not stable across layouts.
+    # The detected boundary is exclusive and pre-reflow, so it lands on "PART I".
     assert processed.metadata["cover_boundary_detected_line"] == 17
     assert processed.metadata["cover_boundary_line"] is not None
     assert processed.metadata["cover_start_detected_line"] == 1
 
 
 def test_filing_processor_survives_a_payload_carrying_page_markers() -> None:
-    """Regression: `_page_counts` compared against a non-existent enum member.
-
-    `PageMarkerAction` has REMOVE / NORMALIZE / PRESERVE. The counting helper
-    asked for `STRIP`, so any acquired payload that actually contained page
-    furniture raised AttributeError inside the worker — and the 1,387-test suite
-    stayed green because neither committed golden nor any prior test fed a
-    payload with a page marker. Real EDGAR HTML always has page furniture, so
-    this aborted essentially every production acquisition.
-    """
+    """`PageMarkerAction` has no STRIP, so any payload with page furniture raised."""
     payload = b"\n".join(
         [
             b"UNITED STATES SECURITIES AND EXCHANGE COMMISSION",
@@ -624,16 +613,11 @@ def test_chunk_resumes_from_partial_staging_file(tmp_path: Path) -> None:
     assert result.ok is True
     assert chunk_path.is_file()
     assert not (tmp_path / "chunk-c_resume.parquet.tmp").exists()
-    # Fetcher was only called for doc2.htm, doc1.htm was skipped because it was already staged
     assert fetcher.calls == ["doc2.htm"]
 
 
 def test_chunk_resumes_when_all_documents_already_staged(tmp_path: Path) -> None:
-    """When a worker is interrupted right before commit(), all documents are in .tmp.
-
-    Resuming must report all normalized documents (not 0), ensuring operator _partial_ok succeeds
-    and payload_sha256 is deterministic and identical to a fresh run.
-    """
+    """Interrupted before commit(), resuming must still report every document."""
     from edgar_sec.infra.storage.parquet import StagedParquetWriter
     from edgar_sec.pipelines.document_storage.checkpoint import DOCUMENT_SNAPSHOT_SCHEMA
     from edgar_sec.pipelines.document_storage.operator import _partial_ok
@@ -653,7 +637,6 @@ def test_chunk_resumes_when_all_documents_already_staged(tmp_path: Path) -> None
         doc_id=loc2.document_locator_key,
     )
 
-    # First, run a fresh chunk in a separate directory to get the reference payload_sha256
     fresh_dir = tmp_path / "fresh"
     fresh_fetcher = DictFetcher({"doc1.htm": b"DOC1 TEXT", "doc2.htm": b"DOC2 TEXT"})
     fresh_result = process_chunk(
@@ -668,7 +651,6 @@ def test_chunk_resumes_when_all_documents_already_staged(tmp_path: Path) -> None
     assert fresh_result.normalized_count == 2
     assert fresh_result.ok is True
 
-    # Now stage ALL documents into .tmp in resume_dir
     resume_dir = tmp_path / "resume"
     chunk_path = chunk_checkpoint_path(resume_dir, "c_test")
     with StagedParquetWriter(
@@ -685,7 +667,6 @@ def test_chunk_resumes_when_all_documents_already_staged(tmp_path: Path) -> None
 
     assert (resume_dir / "chunk-c_test.parquet.tmp").is_file()
 
-    # Re-run: 0 new fetches needed
     resume_fetcher = DictFetcher({})
     resumed_result = process_chunk(
         "c_test",
@@ -697,15 +678,12 @@ def test_chunk_resumes_when_all_documents_already_staged(tmp_path: Path) -> None
         chunks_dir=resume_dir,
     )
 
-    # 1. Total normalized count must be 2, not 0
     assert resumed_result.normalized_count == 2
     assert resumed_result.failed_count == 0
     assert resumed_result.missing_count == 0
     assert resumed_result.ok is True
 
-    # 2. Operator _partial_ok must return True!
     assert _partial_ok([resumed_result]) is True
 
-    # 3. Provenance payload_sha256 must match the reference run over same counts
     assert resumed_result.payload_sha256 == fresh_result.payload_sha256
     assert resume_fetcher.calls == []

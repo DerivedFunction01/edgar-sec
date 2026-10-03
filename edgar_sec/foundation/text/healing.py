@@ -167,9 +167,8 @@ def should_join_two_lines(
 
     return bool(
         RE_TRAILING_CONTINUATION.search(line_a)
-        # A title-cased caption is a new field, not a continuation. Explicit
-        # phrase rules handle known uppercase banners; this fallback stays
-        # conservative and only joins lowercase continuation text.
+        # A title-cased caption is a new field, not a continuation. Explicit phrase
+        # rules handle known uppercase banners; this fallback joins only lowercase text.
         and _RE_LOWER_START.match(line_b)
     ) or bool(_RE_ENDED_FROM.search(line_a) and MONTH_RE.match(line_b))
 
@@ -180,10 +179,8 @@ def heal_split_lines(
 ) -> list[str]:
     """Slide across lines and heal broken phrase fragments across newlines.
 
-    Leading indentation is layout, not damage: every emitted line keeps the
-    original leading whitespace of its first source line so cover orientation
-    (centering, two-column captions) survives healing unchanged. Joined
-    fragments adopt the base indentation of the line that started the phrase.
+    Leading indentation is layout, not damage: every emitted line keeps its first source
+    line's leading whitespace, so cover orientation survives healing unchanged.
     """
     healed: list[str] = []
     i = 0

@@ -1,9 +1,4 @@
-"""Unit tests for engine.selection.inventory: floor feasibility statistics.
-
-The point of this module is to answer "can this corpus satisfy this policy"
-*before* a selection runs, so the tests are about the report a policy author
-acts on rather than about the SQL.
-"""
+"""Floor feasibility statistics: can this corpus satisfy this policy at all."""
 
 from __future__ import annotations
 
@@ -41,11 +36,8 @@ def inventory(tmp_path: Path) -> InventoryStatistics:
 def test_value_counts_agree_on_the_dimension_grain(
     inventory: InventoryStatistics,
 ) -> None:
-    """Locator-grain and occurrence-grain dimensions count different things.
-
-    A locator dimension counts documents; an occurrence dimension counts
-    distinct documents too, but only among the rows that carry the value. Mixing
-    the two up would report zero rather than fail.
+    """An occurrence dimension counts only the rows carrying the value; mixing
+    grains up would report zero rather than fail.
     """
     era = inventory.value_counts("era")
     assert {row["value"] for row in era} == {"legacy", "modern"}
@@ -80,13 +72,10 @@ def test_dimension_grain_sets_cover_the_vocabulary() -> None:
 
     assert not (LOCATOR_ONLY_DIMENSIONS & OCCURRENCE_ONLY_DIMENSIONS)
     assert "era" in LOCATOR_ONLY_DIMENSIONS
-    # sic_code resolves at locator grain: the locator projection carries the
-    # representative registrant's sic_code, so counting it on the wider
-    # occurrence table is both slower and a different question.
+    # sic_code resolves at locator grain; accession_class is per filing and the
+    # locator projection does not carry it.
     assert "sic_code" in LOCATOR_ONLY_DIMENSIONS
     assert "sic_code" not in OCCURRENCE_ONLY_DIMENSIONS
-    # accession_class is genuinely occurrence-only: it is derived per filing and
-    # the locator projection does not carry it.
     assert "accession_class" in OCCURRENCE_ONLY_DIMENSIONS
 
 
@@ -159,11 +148,8 @@ def test_composite_feasibility_rejects_an_unknown_dimension(
 def test_composite_feasibility_rejects_an_occurrence_only_dimension(
     inventory: InventoryStatistics,
 ) -> None:
-    """A count at the wrong grain would read as an undersupplied stratum.
-
-    The locator table has no ``accession_class`` column, so the honest answer to
-    "how many locators are high_4_plus" is that the question is not well posed
-    for a composite, not a zero.
+    """The locator table has no ``accession_class`` column, so the honest answer is
+    that the question is not well posed for a composite, not a zero.
     """
     with pytest.raises(OccurrenceOnlyDimensionError, match="no locator grain"):
         inventory.check_composite_feasibility(

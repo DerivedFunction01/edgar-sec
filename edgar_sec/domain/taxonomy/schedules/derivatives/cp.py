@@ -9,7 +9,6 @@ from edgar_sec.foundation.text.compounds import (
     expand_variants,
 )
 
-# Energy & Hydrocarbon underlyings
 COMMODITY_ENERGY_UNDERLYINGS: tuple[str, ...] = (
     "commodity",
     "energy",
@@ -44,7 +43,6 @@ COMMODITY_ENERGY_UNDERLYINGS: tuple[str, ...] = (
     "recs",
 )
 
-# Agriculture, Grains, Softs & Livestock underlyings
 COMMODITY_AGRI_UNDERLYINGS: tuple[str, ...] = (
     "agricultural",
     "corn",
@@ -73,7 +71,6 @@ COMMODITY_AGRI_UNDERLYINGS: tuple[str, ...] = (
     "milk",
 )
 
-# Metals (Industrial, Base & Precious) underlyings
 COMMODITY_METALS_UNDERLYINGS: tuple[str, ...] = (
     "copper",
     "aluminum",
@@ -92,7 +89,6 @@ COMMODITY_METALS_UNDERLYINGS: tuple[str, ...] = (
     "industrial metals",
 )
 
-# Shipping & Freight underlyings
 COMMODITY_FREIGHT_UNDERLYINGS: tuple[str, ...] = ("freight",)
 
 COMMODITY_UNDERLYINGS: tuple[str, ...] = (
@@ -102,7 +98,6 @@ COMMODITY_UNDERLYINGS: tuple[str, ...] = (
     *COMMODITY_FREIGHT_UNDERLYINGS,
 )
 
-# Explicit financial derivative bases (rejects bare physical "supply", "purchase", "delivery", "order")
 COMMODITY_DERIVATIVE_BASES: tuple[str, ...] = (
     "swap",
     "collar",
@@ -125,7 +120,6 @@ COMMODITY_DERIVATIVE_TERMS: tuple[str, ...] = build_derivative_grammar(
     bases=COMMODITY_DERIVATIVE_BASES,
 )
 
-# Physical Commercial Supply & NPNS Exclusions (ASC 815-10-15) owned by Commodity module
 COMMODITY_PHYSICAL_SUPPLY_GUARDS: tuple[str, ...] = expand_variants(
     (
         "normal purchases and normal sales",

@@ -1,12 +1,5 @@
-"""Shared fixtures for the viewer tests.
-
-Builds a synthetic artifacts tree holding one published snapshot of each
-published dataset type plus a transient run and a SQLite store, so discovery is
-exercised against the shapes the pipelines actually write rather than a
-convenient approximation.
-
-The builders are module-private; tests consume the fixtures below. A test that
-needs a different shape calls the builder directly with its own arguments.
+"""A synthetic artifacts tree in the shapes the pipelines actually write, so
+discovery is not exercised against a convenient approximation.
 """
 
 from __future__ import annotations
@@ -75,7 +68,7 @@ def _sha256(path: Path) -> str:
 def build_metadata_snapshot(
     root: Path, snapshot_id: str = "snap-meta", part_count: int = 2
 ) -> Path:
-    """Publish a multipart Phase 1 snapshot with a CIK index."""
+    """Publish a multipart submissions snapshot with a CIK index."""
     paths = MetadataPaths(artifacts_root=root)
     snapshot_dir = paths.snapshot_dir(snapshot_id)
     parts: list[dict[str, object]] = []
@@ -129,7 +122,7 @@ def build_metadata_snapshot(
 
 
 def build_catalog_snapshot(root: Path, catalog_id: str = "cat-1") -> Path:
-    """Publish a Phase 2 catalog with profiles and two target shards."""
+    """Publish a filing catalog with profiles and two target shards."""
     paths = FilingCatalogPaths(artifacts_root=root)
     snapshot_dir = paths.snapshot_dir(catalog_id)
     _write(
@@ -169,7 +162,7 @@ def build_catalog_snapshot(root: Path, catalog_id: str = "cat-1") -> Path:
 
 
 def build_document_snapshot(root: Path, snapshot_id: str = "doc-1") -> Path:
-    """Publish a Phase 2.5 document snapshot with index and payload parts."""
+    """Publish a document snapshot with index and payload parts."""
     snapshots_root = root / "document_storage" / "snapshots"
     snapshot_dir = snapshots_root / snapshot_id
     index_path = snapshot_dir / "index" / "index-0000.parquet"
@@ -273,21 +266,21 @@ def artifacts_root(tmp_path: Path) -> Path:
 
 @pytest.fixture
 def metadata_tree(artifacts_root: Path) -> Path:
-    """A root with one published multipart Phase 1 snapshot."""
+    """A root with one published multipart submissions snapshot."""
     build_metadata_snapshot(artifacts_root)
     return artifacts_root
 
 
 @pytest.fixture
 def catalog_tree(artifacts_root: Path) -> Path:
-    """A root with one published Phase 2 catalog."""
+    """A root with one published filing catalog."""
     build_catalog_snapshot(artifacts_root)
     return artifacts_root
 
 
 @pytest.fixture
 def document_tree(artifacts_root: Path) -> Path:
-    """A root with one published Phase 2.5 document snapshot."""
+    """A root with one published document snapshot."""
     build_document_snapshot(artifacts_root)
     return artifacts_root
 

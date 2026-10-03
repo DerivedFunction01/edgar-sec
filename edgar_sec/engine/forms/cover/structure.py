@@ -1,8 +1,5 @@
-"""Generic structural matching for cover, TOC, and body boundaries.
-
-Owns only representation-neutral PART/ITEM heading mechanics. TOC-specific
-patterns live in :mod:`edgar_sec.engine.forms.cover.toc.patterns` to keep this
-module generic and free of annual-report-specific phrasing.
+"""Generic structural matching for cover, TOC, and body boundaries: representation-
+neutral PART/ITEM heading mechanics only, since TOC patterns live in `toc.patterns`.
 """
 
 from __future__ import annotations
@@ -125,15 +122,8 @@ def parse_section_heading(
     *,
     allow_inline: bool = False,
 ) -> ParsedSection | None:
-    """Parse a structural Part or Item heading.
-
-    Guarantees:
-    - By default (``allow_inline=False``), requires line-leading structural tokens
-      (e.g., 'Item 1. Business', '| PART II |'). Leading prose or filler words
-      ('as noted in Item 1', 'pursuant to Item 7') return ``None``.
-    - Captures the canonical identifier ('I', 'II', '1', '1A', '7.01') and any trailing title.
-    - When ``allow_inline=True``, recognizes prose mentions but flags
-      ``is_exact_heading=False``.
+    """Parse a structural Part or Item heading. Without `allow_inline`, prose like
+    "as noted in Item 1" returns None; with it, `is_exact_heading=False`.
     """
     if not text:
         return None
@@ -208,12 +198,8 @@ def match_structural_line(
     line: str,
     line_number: int,
 ) -> StructuralMatch | None:
-    """Classify a single line as a generic structural heading candidate.
-
-    Returns ``None`` when the line is not a structural candidate. Returns a
-    ``StructuralMatch`` otherwise, with ``is_exact_heading`` indicating whether
-    the line is an isolated heading rather than prose that happens to contain a
-    section reference.
+    """Classify one line as a structural heading candidate, or None; `is_exact_heading`
+    separates an isolated heading from prose containing a section reference.
     """
     stripped = line.strip()
     if not stripped:
@@ -264,12 +250,8 @@ def is_exact_heading(line: str) -> bool:
 
 
 def is_continuation_prose(line: str) -> bool:
-    """Return whether ``line`` looks like prose continuing a previous sentence.
-
-    Used to reject PART/ITEM references embedded in incorporated-reference
-    prose such as ``Part III. hereof.`` or bulleted/numbered reference lists.
-    Subsection alphanumeric headings such as ``(a) Financial Statements``
-    are structural titles, not continuation prose.
+    """Whether `line` looks like prose continuing a previous sentence: rejects PART/ITEM
+    references inside prose ("Part III. hereof.") or bulleted reference lists.
     """
     stripped = line.strip()
     if not stripped:
@@ -297,7 +279,6 @@ def is_continuation_prose(line: str) -> bool:
 
 
 def is_preceding_continuation(line: str) -> bool:
-    """Return whether ``line`` ends with continuation punctuation or words."""
     stripped = line.strip()
     if not stripped:
         return False
@@ -305,7 +286,6 @@ def is_preceding_continuation(line: str) -> bool:
 
 
 def _extract_continuation(stripped: str) -> str:
-    """Extract the text after a section reference token."""
     match = _SECTION_REFERENCE_RE.search(stripped)
     if match:
         return match.group(1).strip()

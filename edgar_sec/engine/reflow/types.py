@@ -1,19 +1,5 @@
 """Immutable decision vocabulary and injected policy for ASCII reflow.
-
-The reflow engine owns no vocabulary about any particular form. Everything that
-depends on knowing what a checkbox answer line is, what a financial statement
-section label looks like, or where the body begins arrives on
-:class:`ReflowPolicy` from the caller, so this package reads only the injected
-predicate and the text it is given. That is what keeps the engine free of any
-dependency on the form families above it.
-
-A predicate left ``None`` contributes nothing to the block features that consult
-it; the block's fate then rests on the rules that do not, so a caller that cares
-about a shape must supply the predicate for it rather than rely on a default.
-
-A :class:`SpanDecision` records half-open ``[start_line, end_line)`` ranges in
-the coordinate frame of the text that was passed in, so a caller can map a
-decision back onto the source it was made from.
+The engine owns no form vocabulary: everything that needs to know what a checkbox answer or a section label looks like arrives on `ReflowPolicy`. A predicate left `None` contributes nothing, so a caller that cares about a shape must supply it.
 """
 
 from __future__ import annotations
@@ -34,11 +20,7 @@ _MIN_PROSE_ALPHA_DENSITY = 0.55
 @dataclass(frozen=True, slots=True)
 class ReflowPolicy:
     """Controls whether prose before the body boundary may be unwrapped.
-
-    The five ``is_*`` fields carry the caller's domain predicates: cover answer
-    lines, page-boundary lines, cover structural lines, statement bridge labels,
-    and statement tail labels. ``split_table_intro`` overrides how a narrative
-    line is separated from the grid it introduces.
+    The five ``is_*`` fields carry the caller's domain predicates; ``split_table_intro`` overrides how a narrative line is separated from its grid.
     """
 
     unwrap_pre_body_prose: bool = False

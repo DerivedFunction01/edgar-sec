@@ -1,9 +1,4 @@
-"""Unit tests for filing-catalog materialization.
-
-The row-level assertions here compare DuckDB output against the committed
-``expected_filing_targets.csv`` golden fixture, a transcription of the same
-derivation rules in plain Python.
-"""
+"""Catalog materialization: guards, source resolution, and the published layout."""
 
 from __future__ import annotations
 
@@ -110,7 +105,7 @@ def test_guard_refuses_to_overwrite_a_published_snapshot(
 
 
 def _phase1_manifest(sample_source: Path, root: Path) -> Path:
-    """Write the manifest Phase 1 publishes beside a snapshot payload."""
+    """Write the manifest published beside a snapshot payload."""
     from edgar_sec.foundation.hashing import file_sha256
 
     payload = root / "snapshots" / "snap-1"
@@ -148,20 +143,7 @@ def test_source_manifest_resolves_the_parquet_payload(
 
 
 def _multipart_manifest(sample_source: Path, root: Path, parts: int = 2) -> Path:
-    """Publish a Phase 1 multipart manifest splitting the fixture into parts.
-
-    Rows are grouped **by CIK** before being cut into parts, because that is what a
-    real Phase 1 snapshot is: chunks partition the CIK index, and the merger
-    rejects a duplicate CIK across parts. The fixture deliberately carries a
-    re-fetched registrant (``0000320193`` appears twice with an identical filings
-    array one week apart), and a naive row-count split would land its two rows in
-    different parts — which the catalog's CIK-disjointness guard correctly refuses,
-    because per-shard occurrence dedup could not collapse them.
-
-    Materializing this and materializing the single-file snapshot must agree
-    exactly, and they now do for the same reason two layouts of one dataset do:
-    every CIK contributes its rows to exactly one part.
-    """
+    """A row-count split would let the re-fetched registrant straddle two parts."""
     from edgar_sec.foundation.hashing import file_sha256
 
     payload = root / "snapshots" / "snap-multi"
@@ -220,12 +202,7 @@ def _multipart_manifest(sample_source: Path, root: Path, parts: int = 2) -> Path
 def test_a_multipart_source_materializes_the_same_catalog(
     tmp_path: Path, sample_source: Path
 ) -> None:
-    """Splitting the payload into parts must not change the catalog.
-
-    This is the equivalence that makes the multipart publication safe: the same
-    rows in several parts and the same rows in one file are the same dataset, so
-    profiles, targets, and form counts must be identical.
-    """
+    """Several parts and one file are the same dataset, so the catalog must match."""
     legacy = _phase1_manifest(sample_source, tmp_path / "legacy-art")
     multipart = _multipart_manifest(sample_source, tmp_path / "multi-art")
 
@@ -264,18 +241,17 @@ def test_a_multipart_source_with_a_tampered_part_is_refused(
 def test_a_part_with_a_foreign_schema_is_refused(
     tmp_path: Path, sample_source: Path
 ) -> None:
-    """A part that does not carry the Phase 1 schema fails before any query."""
+    """A part without the source schema fails before any query."""
     from edgar_sec.infra.storage.parquet import write_parquet_table
 
     manifest = _multipart_manifest(sample_source, tmp_path / "art")
     victim = next((manifest.parent / "parts").glob("part-0000*.parquet"))
     write_parquet_table(pa.table({"cik": ["0000000001"]}), victim)
 
-    # The digest check fires first, which is the correct order: bytes before shape.
     with pytest.raises(CatalogError, match="digest mismatch"):
         resolve_source(None, manifest)
 
-    # Re-point the manifest at the tampered part and the schema guard catches it.
+    # Re-point the manifest at the tampered part, and the schema guard catches it.
     document = json.loads(manifest.read_text(encoding="utf-8"))
     name = victim.name
     for part in document["parts"]:
@@ -362,9 +338,7 @@ def test_resolve_source_without_arguments_reports_no_snapshot(
 # --- published artifacts --------------------------------------------------
 
 
-# This test intentionally spells the published names out as literals: the layout
-# is the contract, so a rename must fail here rather than being silently absorbed
-# by a constant that both sides happen to share.
+# Names as literals: a rename must fail here, not be absorbed by a shared constant.
 def test_snapshot_layout_matches_the_documented_contract(
     catalog_snapshot: tuple[dict[str, Any], Path],
 ) -> None:
@@ -377,11 +351,7 @@ def test_snapshot_layout_matches_the_documented_contract(
 def test_one_target_shard_is_written_per_source_part(
     tmp_path: Path, sample_source: Path
 ) -> None:
-    """A multipart source yields one shard per part, in source-part order.
-
-    Sharding is what bounds memory: the catalog unnests a single source part per
-    query, so peak usage tracks the densest part rather than the whole cohort.
-    """
+    """Sharding bounds memory: one source part is unnested per query."""
     manifest_path = _multipart_manifest(sample_source, tmp_path / "art", parts=3)
     manifest = materialize(None, tmp_path / "out", source_manifest=manifest_path)
 
@@ -392,8 +362,6 @@ def test_one_target_shard_is_written_per_source_part(
         "filing_targets/part-00001.parquet",
         "filing_targets/part-00002.parquet",
     ]
-    # Each shard records the source part it came from, so lineage is checkable
-    # without re-deriving it from the hash.
     assert all(part["source_part"] for part in manifest["parts"])
     assert manifest["target_row_count"] == sum(
         part["row_count"] for part in manifest["parts"]
@@ -401,12 +369,7 @@ def test_one_target_shard_is_written_per_source_part(
 
 
 def test_form_counts_sum_across_shards(tmp_path: Path, sample_source: Path) -> None:
-    """Per-shard form tallies must accumulate, not overwrite.
-
-    Reading the tally back per shard and adding is how a single-file implementation
-    got it right; the sharded loop has to accumulate explicitly or the last shard
-    silently wins.
-    """
+    """Per-shard tallies must accumulate, or the last shard silently wins."""
     manifest_path = _multipart_manifest(sample_source, tmp_path / "art", parts=3)
     manifest = materialize(None, tmp_path / "out", source_manifest=manifest_path)
 
@@ -428,13 +391,7 @@ def test_form_counts_sum_across_shards(tmp_path: Path, sample_source: Path) -> N
 def test_manifest_records_that_shards_are_not_globally_sorted(
     catalog_snapshot: tuple[dict[str, Any], Path],
 ) -> None:
-    """Ordering is declared, not implied.
-
-    Each shard is sorted by the projection key, but the shards are concatenated in
-    Phase 1 source-part order and Phase 1 publishes parts in chunk order, whose CIK
-    ranges overlap. A consumer must not read one shard's ordering as a dataset-wide
-    guarantee, so the manifest says which it is.
-    """
+    """Each shard is sorted, but shards concatenate in overlapping chunk order."""
     manifest, _ = catalog_snapshot
     assert manifest["sort_order"] == "source_part_order"
 
@@ -453,17 +410,9 @@ def test_each_shard_is_sorted_by_the_projection_key(
 def test_a_cik_split_across_source_parts_is_refused(
     tmp_path: Path, sample_source: Path
 ) -> None:
-    """A repeated CIK landing in two parts would publish duplicate occurrence ids.
-
-    Occurrence dedup is per shard and keyed on ``source_cik``, so it can only
-    collapse duplicates it can see. Phase 1 never produces this layout — chunks
-    partition the CIK index and the merger rejects a duplicate CIK — which is
-    exactly why the catalog treats it as a guard rather than a repair: an input
-    that violates the upstream contract is refused, not silently published.
-    """
+    """Dedup is per shard, so a CIK spanning two parts must be refused, not repaired."""
     table = pq.read_table(sample_source)
-    # The fixture's re-fetched registrant is two rows with an identical filings
-    # array; put one in each part so the CIK genuinely spans the part boundary.
+    # The fixture's re-fetched registrant: one row per part, spanning the boundary.
     repeated = "0000320193"
     rows = table.to_pylist()
     keep = [i for i, row in enumerate(rows) if row["cik"] == repeated]
@@ -562,14 +511,7 @@ def test_manifest_records_counts_and_lineage(
 def test_fanout_is_retained_as_separate_occurrences(
     published_targets: pa.Table,
 ) -> None:
-    """One accession filed by two CIKs yields two occurrences.
-
-    Two distinct fan-out shapes exist and both must survive. Co-filers with
-    *different* primary documents are different documents, so they hold
-    different locator keys. Co-filers that both fall back to the bundle resolve
-    to the same ``<raw accession>.txt`` and therefore collapse to a single
-    locator, which is the case selection dedup depends on.
-    """
+    """Distinct primary documents keep distinct keys; a shared bundle collapses."""
     rows = published_targets.to_pylist()
     by_accessor: dict[str, list[dict[str, Any]]] = {}
     for row in rows:
@@ -582,7 +524,6 @@ def test_fanout_is_retained_as_separate_occurrences(
     assert shared, "expected a multi-registrant accession"
 
     for grouped in shared.values():
-        # Fan-out is never collapsed: each registrant keeps its own occurrence.
         assert len({r["occurrence_id"] for r in grouped}) == len(grouped)
 
     collapsed = [

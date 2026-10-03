@@ -140,9 +140,8 @@ def test_empty_document_returns_unknown() -> None:
 
 
 def test_structural_item_one_with_false_table_prose() -> None:
-    # Double-spaced punctuation across lines causes page_markers.units to classify
-    # this block as kind="table". Modern table detection in body_start recognizes
-    # it as narrative prose and validates the structural anchor.
+    # Double-spaced punctuation makes page_markers.units call this block a table, which
+    # body_start recognises as narrative prose.
     text = ANNUAL_COVER + (
         "\n\nITEM 1. BUSINESS\n\n"
         "Galileo International, Inc. (herein referred to as the Company), incorporated  in\n"

@@ -1,10 +1,6 @@
 """Border segment extraction and multi-signal header boundary scoring.
-
-Where a header ends is the highest-leverage guess in the whole renderer: it
-decides which rows are centred, where the divider is drawn, and how much width
-each column gets. No single signal is reliable — a bold row is not always a
-header, a border is not always under one — so this module scores five
-independent signals and takes the strongest split that clears a floor.
+Where a header ends is the highest-leverage guess in the renderer, and no single signal is
+reliable, so five independent signals are scored and the strongest split over a floor wins.
 """
 
 from __future__ import annotations
@@ -30,7 +26,6 @@ def extract_border_segments(
     num_rows = len(grid_matrix)
     segments: list[BorderSegment] = []
 
-    # Map matrix column index to active column position
     col_map = {orig: pos for pos, orig in enumerate(active_columns)}
 
     for r_idx in range(num_rows):
@@ -46,7 +41,6 @@ def extract_border_segments(
             pos_c = col_map[orig_c]
             s = cell.style
 
-            # Bottom border
             if s.border_bottom_style != BorderStyle.NONE and s.border_bottom_width > 0:
                 segments.append(
                     BorderSegment(
@@ -60,7 +54,6 @@ def extract_border_segments(
                     )
                 )
 
-            # Top border
             if s.border_top_style != BorderStyle.NONE and s.border_top_width > 0:
                 segments.append(
                     BorderSegment(
@@ -74,9 +67,7 @@ def extract_border_segments(
                     )
                 )
 
-    # Merge contiguous horizontal border segments on the same row & edge
     merged: list[BorderSegment] = []
-    # Group by (row, edge, style, width, color)
     grouped: dict[
         tuple[int, str, BorderStyle, float, str | None], list[BorderSegment]
     ] = {}
@@ -85,7 +76,6 @@ def extract_border_segments(
         grouped.setdefault(key, []).append(seg)
 
     for (r, edge, style, width, color), seg_list in grouped.items():
-        # Sort by start_column
         seg_list.sort(key=lambda s: s.start_column)
         cur_start = seg_list[0].start_column
         cur_end = seg_list[0].end_column
@@ -130,17 +120,7 @@ def score_header_boundary(
     max_header_rows: int = 5,
 ) -> tuple[int, BorderStyle]:
     """Score potential header boundaries across the first N rows using multi-signal evidence.
-
-    Signals evaluated per candidate split point (row 1..max_header_rows):
-    - Explicit <th> presence (Weight: 5.0)
-    - Continuous bottom border rule across >= 40% active columns (Weight: 4.0)
-    - Border color transition (Weight: 3.5): Header bottom border color differs from body rows
-    - Bold / font-weight transition (Weight: 2.5)
-    - Background color transition (Weight: 1.5)
-
-    Returns:
-    - header_row_count: int (0 if no header boundary detected)
-    - divider_style: BorderStyle (SOLID or DOUBLE)
+    Weights live beside their signals; a header row may not carry data amounts.
     """
     if not grid_matrix or len(grid_matrix) < 2 or not active_columns:
         return 0, BorderStyle.SOLID
@@ -153,7 +133,7 @@ def score_header_boundary(
     best_score = 0.0
     best_style = BorderStyle.SOLID
 
-    # Index bottom border coverage, style, and color per row (including top borders on row+1)
+    # Index bottom-border coverage, style, and color per row, including top borders on row+1.
     bottom_border_coverage: dict[int, int] = {}
     bottom_border_styles: dict[int, BorderStyle] = {}
     bottom_border_colors: dict[int, str | None] = {}
@@ -182,7 +162,6 @@ def score_header_boundary(
         body_row = grid_matrix[split] if split < num_rows else None
         last_header_row_idx = split - 1
 
-        # Check if the last candidate header row contains numeric data (excluding 4-digit years)
         numeric_count = sum(
             1
             for c in active_columns
@@ -195,7 +174,6 @@ def score_header_boundary(
             # Header rows cannot contain data amounts
             continue
 
-        # 1. Explicit <th> cells in header region
         th_count = sum(
             1
             for r in header_rows
@@ -205,13 +183,11 @@ def score_header_boundary(
         if th_count > 0:
             score += 5.0 * (th_count / max(1, len(header_rows) * num_cols))
 
-        # 2. Continuous bottom border on the last header row (split - 1)
         cov = bottom_border_coverage.get(last_header_row_idx, 0)
         cov_ratio = cov / max(1, num_cols)
         if cov_ratio >= 0.25:
             score += 5.0 * cov_ratio
 
-        # 3. Border color transition: header border color differs from subsequent rows
         h_color = bottom_border_colors.get(last_header_row_idx)
         b_color = bottom_border_colors.get(split) if split < num_rows else None
         if h_color is not None:
@@ -220,7 +196,6 @@ def score_header_boundary(
             else:
                 score += 2.0
 
-        # 4. Bold typography transition (header is bold, body is normal)
         header_bold_count = sum(
             1
             for r in header_rows
@@ -245,7 +220,6 @@ def score_header_boundary(
         if header_bold_ratio > 0.4 and body_bold_ratio < 0.4:
             score += 2.5 * (header_bold_ratio - body_bold_ratio)
 
-        # 5. Background color transition
         header_bg_count = sum(
             1
             for r in header_rows

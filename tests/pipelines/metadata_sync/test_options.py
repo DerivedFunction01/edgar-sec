@@ -1,10 +1,5 @@
-"""The options boundary: one typed model, resolved once, no environment reads.
-
-The regression this file exists for: ``runtime.chunk_size`` is a registered spec
-with an env name, and for a long period nothing read it. Because the plan id is
-derived from the effective chunk size, a plan built from the module constant
-instead of the resolved setting produced a plan the operator never asked for, and
-that plan became the canonical record of the run.
+"""The options boundary: one typed model, resolved once, no environment reads. A
+setting read from a module constant instead becomes the canonical plan record.
 """
 
 from __future__ import annotations
@@ -77,12 +72,7 @@ def test_resolve_chunk_size_is_pure_over_its_argument(
 
 
 def test_plan_options_carry_no_worker_field() -> None:
-    """A worker count is a property of the machine, not of the plan.
-
-    It must not be reachable from the object that defines a plan, because the
-    previous plan identity incorporated the equivalent value and reassignment
-    moved the plan directory.
-    """
+    """A worker count is a property of the machine, so it cannot reach plan identity."""
     assert not hasattr(PlanOptions, "workers")
     assert [field for field in PlanOptions.__slots__] == [
         "input_path",
@@ -130,12 +120,7 @@ def test_a_registry_cohort_names_its_source(tmp_path: Path) -> None:
 
 
 def test_a_csv_cohort_keeps_its_fingerprint(tmp_path: Path) -> None:
-    """A compiled cohort records the source digest, not the bytes it produced.
-
-    The fingerprint is the reproducibility root of a run: it goes into the plan,
-    into every row, and into the published snapshot manifest, so it has to stay
-    the digest of the file the operator actually pointed at.
-    """
+    """The fingerprint is the reproducibility root of a run, so it stays a digest."""
     cohort = resolve_cohort(plan_options(input_path=MINI, artifacts_root=tmp_path))
     expected = compile_cik_cohort(
         MINI, metadata_paths=resolve_metadata_paths(tmp_path / "expected")

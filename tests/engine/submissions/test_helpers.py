@@ -1,10 +1,6 @@
-"""Coercion and alias-resolution helper tests.
-
-These helpers are total by contract: invalid input yields ``None`` or an empty
-collection and is reported through an anomaly rather than raised, so one
-malformed field can never discard an otherwise valid filing record. The tests
-pin that totality, and the export list so a removed or re-added helper cannot
-pass unnoticed.
+"""Coercion and alias-resolution helpers.
+They are total by contract: invalid input yields `None` or an empty collection and
+is reported through an anomaly rather than raised.
 """
 
 from __future__ import annotations
@@ -35,8 +31,8 @@ def test_the_public_surface_is_explicit() -> None:
         "to_bool",
         "to_int",
     }
-    # CIK padding belongs to the validated identity primitive, not a local
-    # zero-fill that would accept out-of-range values.
+    # CIK padding belongs to the validated identity primitive, not a local zero-fill
+    # that would accept out-of-range values.
     assert not hasattr(helpers, "normalize_cik_padded")
     assert Cik(37996).to_10digit() == "0000037996"
 
@@ -139,8 +135,8 @@ def test_normalize_items_handles_both_eras() -> None:
     assert normalize_items(" 10-K , 8-K ") == ["10-K", "8-K"]
     assert normalize_items(None) == []
     assert normalize_items(7) == ["7"]
-    # List items are passed through verbatim: blank entries are preserved so a
-    # positional index in the payload still lines up with its source array.
+    # Blank entries are preserved so a positional index still lines up with its
+    # source array.
     assert normalize_items(["10-K", "", " 8-K "]) == ["10-K", "", " 8-K "]
 
 

@@ -1,5 +1,3 @@
-"""Tests for annual report item taxonomies (10-K, 20-F)."""
-
 from __future__ import annotations
 
 from edgar_sec.domain.forms.families.annual.taxonomy import (

@@ -1,8 +1,7 @@
 """SEC identity, rate limit, timeout, retry, and failure history settings.
 
-Contact identity is a secret-like value: it is resolved from the environment
-or explicit CLI options, but never rendered into generated dotenv output,
-persisted in phase config, or logged.
+Contact identity is secret-like: resolved from the environment or explicit CLI options,
+but never rendered into generated dotenv output, persisted, or logged.
 """
 
 from __future__ import annotations

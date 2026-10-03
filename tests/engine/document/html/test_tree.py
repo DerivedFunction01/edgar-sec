@@ -1,8 +1,6 @@
-"""Unit and contract tests for edgar_sec.engine.document.html.tree.
+"""HTML parsing, traversal, and mutation.
 
-Re-lands the suite deleted in commit `079010e` for `parse_html`, which has a
-live production caller in `pipelines/document_storage/review_artifacts.py`, and
-covers the traversal and mutation surface the cleaning and table passes need.
+Covers the surface the cleaning and table passes need.
 """
 
 from __future__ import annotations

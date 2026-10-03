@@ -1,10 +1,6 @@
 """Public entry points for converting HTML tables to canonical ASCII.
-
-This is the package's command surface for document normalization: parse once,
-convert every table, and return the text plus one `TableGeometry` per table that
-produced output. Geometry is retained rather than discarded because a caller
-needs to know which rendered line is which logical row, and that is not
-recoverable from the text.
+Geometry is retained rather than discarded because a caller needs to know which rendered line is
+which logical row, and that is not recoverable from the text.
 """
 
 from __future__ import annotations
@@ -86,11 +82,7 @@ def convert_html_tables_to_ascii_with_metadata(
     early_unwrap_false_tables: bool = False,
 ) -> tuple[str, tuple[TableGeometry, ...]]:
     """Convert HTML tables to ASCII, returning text and per-table geometry metadata.
-
-    Identical to :func:`convert_html_tables_to_ascii` except that a
-    :class:`TableGeometry` instance is retained for every table that
-    produces rendered output. Wholly-empty tables that are decomposed
-    are omitted from the metadata, matching the string output behavior.
+    Wholly-empty decomposed tables are omitted, matching the string output behavior.
     """
     tree = parse_html(html_content)
     tables = tree.css("table")
@@ -111,7 +103,6 @@ def convert_html_tables_to_ascii_with_metadata(
             (),
         )
 
-    # O5: per-node cache for is_wholly_empty_table (called up to 3x per table)
     _empty_cache: dict[int, bool] = {}
 
     def _is_empty(tbl: FastHtmlNode) -> bool:
@@ -122,9 +113,8 @@ def convert_html_tables_to_ascii_with_metadata(
             _empty_cache[k] = v
         return v
 
-    # O1: Pre-filter obvious false tables using fast DOM scan (no CSS parsing).
-    # Tables with colspan/rowspan or nested <table> elements return None and
-    # fall through to the full extract_source_table path.
+    # Pre-filter obvious false tables with the fast DOM scan; colspan/rowspan or nested `<table>` hits
+    # return None and fall through to full `extract_source_table`.
     is_false_list: list[bool] = [False] * len(top_tables)
     unwrapped_texts: list[str] = [""] * len(top_tables)
 
@@ -138,8 +128,7 @@ def convert_html_tables_to_ascii_with_metadata(
                 is_false_list[i] = True
                 unwrapped_texts[i] = unwrap_grid(quick)
 
-    # Build source_tables, skipping full extraction for pre-classified false tables.
-    # None sentinels are always guarded by is_false_list[i] in downstream loops.
+    # `None` sentinels mark pre-classified false tables and are always guarded by is_false_list[i].
     source_tables: list[SourceTable | None] = []
     for i, tbl in enumerate(top_tables):
         if is_false_list[i]:
@@ -153,7 +142,7 @@ def convert_html_tables_to_ascii_with_metadata(
 
         for i, source in enumerate(source_tables):
             if is_false_list[i]:
-                continue  # already classified by quick pre-filter
+                continue
             if source is None or not source.rows or _is_empty(top_tables[i]):
                 continue
             matrix, _ = build_span_matrix(source)
@@ -164,7 +153,6 @@ def convert_html_tables_to_ascii_with_metadata(
                 is_false_list[i] = True
                 unwrapped_texts[i] = unwrap_grid(grid_rows)
 
-        # Footnote lookahead for tables immediately preceding a retained table
         for i in range(len(top_tables)):
             if is_false_list[i] or not (
                 source_tables[i] is not None and source_tables[i].rows
@@ -197,7 +185,7 @@ def convert_html_tables_to_ascii_with_metadata(
                 tbl.decompose()
             continue
 
-        source = source_tables[i]  # not None: only None when is_false_list[i]
+        source = source_tables[i]
         assert source is not None
         if not source.rows:
             clusters.append([i])

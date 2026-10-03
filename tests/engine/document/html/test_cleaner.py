@@ -1,10 +1,6 @@
-"""Unit and contract tests for edgar_sec.engine.document.html.cleaner.
-
-Re-lands the suite deleted in commit `079010e` and extends it to the
-preservation side: every pass here is a lossy filter, and its value is
-entirely in the set of things it refuses to strip. A test that only asserts
-what is removed cannot catch a cleaner that deletes a checkbox glyph or a
-`colspan`, so the preservation cases are pinned explicitly.
+"""HTML cleaner passes.
+Every pass is a lossy filter whose value is the set of things it refuses to
+strip, so preservation cases are pinned alongside the removals.
 """
 
 from __future__ import annotations

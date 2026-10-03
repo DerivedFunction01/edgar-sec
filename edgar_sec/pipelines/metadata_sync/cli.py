@@ -1,13 +1,7 @@
 """Unified command surface for the metadata sync pipeline.
 
-The command functions are plain callables over one typed options model, so the
-interactive operator and the CLI are the same code path rather than two shapes
-that must be kept in agreement. This module is an entrypoint and is therefore
-allowed to exit; library modules are not.
-
-The command set is the whole lifecycle: refresh an external source, compare it
-against a curated input, plan a full or augmented run, execute it here or on
-another machine, bring the results back, merge, and publish.
+Every command is a plain callable over one typed options model, so the
+interactive operator and the CLI are the same code path.
 """
 
 from __future__ import annotations
@@ -70,20 +64,9 @@ __all__ = [
 
 
 def _build_client() -> SubmissionsClient:
-    """Build the live submissions client, cached against the shared response store.
-
-    The cache root and its TTL come from the settings registry, not from a local
-    constant and not from ``resolve_paths()``. The registry is the declared
-    source for both, and its ``cache.root`` default is the directory the store
-    already lives in. ``resolve_paths()`` computes a *different* directory from a
-    *different* environment variable -- a divergence the parity inventory records
-    as "root-setting env names are inconsistent" -- so reading it here would
-    silently open a second, empty store next to the populated one.
-
-    With the store wired, a repeated fetch, a resumed chunk, or a re-plan that
-    re-covers CIKs already seen serves from disk and consumes no request-budget.
-    The failure ledger rides along in the same file, so a URL already known bad
-    is skipped without a request.
+    """Build the live submissions client against the shared response store.
+    The settings registry owns the cache root; ``resolve_paths()`` differs and
+    would open a second, empty store.
     """
     settings = resolve_runtime_settings()
     return SubmissionsClient(
@@ -106,10 +89,7 @@ def cmd_refresh(artifacts_root: Path | None = None) -> int:
 
 def cmd_compare(options: PlanOptions, *, source_manifest: Path) -> int:
     """Project the curated CIK input against a published source snapshot.
-
-    A pure projection over two immutable inputs, so it needs no network and is
-    reproducible: the same curated file and the same source snapshot always
-    publish the same registry identity and the same roster.
+    Two immutable inputs, so the same pair always yields the same identity.
     """
     if options.input_path is None:
         raise ValueError("sources compare needs --input")
@@ -125,10 +105,7 @@ def cmd_compare(options: PlanOptions, *, source_manifest: Path) -> int:
 
 def cmd_plan(options: PlanOptions) -> int:
     """Generate a deterministic plan without touching the network.
-
-    Emits the immutable bundle: the roster dataset, the execution manifest, and
-    the input diagnostics. A registry roster and a curated CSV converge here, so
-    the rest of the lifecycle cannot tell them apart.
+    A registry roster and a curated CSV converge here.
     """
     cohort = resolve_cohort(options)
     from .planner import build_plan
@@ -181,10 +158,7 @@ def cmd_status(options: RunOptions) -> int:
 
 def cmd_run(options: RunOptions, *, client: SubmissionsClient | None = None) -> int:
     """Execute the chunks this invocation owns.
-
-    A single host names no chunks and runs everything outstanding. A worker names
-    its assignment's chunks and runs only those. Both take the same path, so
-    there is no separate worker mode that has to be kept correct.
+    A single host runs everything outstanding; a worker only its assignment's.
     """
     run_paths = options.run_paths()
     plan = load_plan(run_paths)
@@ -192,9 +166,8 @@ def cmd_run(options: RunOptions, *, client: SubmissionsClient | None = None) -> 
     if not targets:
         raise ValueError("no chunks selected")
     completed = discover_completed_chunks(plan, run_paths)
-    # The final chunk of a roster is usually partial, so the total has to be the
-    # sum of actual chunk lengths rather than chunk_size per chunk. Summing
-    # chunk_size overstated the cohort and skewed the bar's ETA.
+    # The final chunk is usually partial, so the total must be the sum of actual
+    # chunk lengths; summing chunk_size overstates the cohort.
     outstanding = sum(
         plan.chunk_length(chunk_id) for chunk_id in targets if chunk_id not in completed
     )
@@ -261,18 +234,8 @@ def cmd_augment(
     lineage: dict[str, str] | None = None,
 ) -> int:
     """Add only the newly requested CIKs to a published snapshot.
-
-    The delta plan is bound to its base snapshot, so the same requested list
-    against two different bases is two different plans. Only the delta is
-    fetched; the base is merged forward untouched.
-
-    An empty ``new_snapshot_id`` publishes under the derived delta plan id, so
-    the command needs no hand-typed identity and is idempotent across reruns.
-
-    The cohort is reduced against the base before the submissions client is
-    built. A request the base already satisfies is the ordinary case for a
-    stale seed, and answering it costs no client, no SEC request, and no
-    published delta plan; it exits 0 with ``no_op`` set, because nothing failed.
+    The delta plan is bound to its base, so one request against two bases is two
+    plans; an empty ``new_snapshot_id`` makes reruns idempotent.
     """
     if options.input_path is None and not options.registry_id:
         raise ValueError("augment needs --input or --roster")
@@ -389,10 +352,7 @@ def _augment_from_registry(
 
 def cmd_export(options: RunOptions, *, worker_count: int, destination: Path) -> int:
     """Copy the immutable plan bundle out, one directory per worker.
-
-    The bundle is byte-identical for every worker; only the assignment beside it
-    differs. That is what makes the distribution checkable rather than
-    negotiated: each worker can verify it holds the plan the coordinator planned.
+    Only the assignment beside it differs, so each worker can verify its bundle.
     """
     plan = load_plan(coordinator_run_paths(options))
     _emit(
@@ -415,10 +375,8 @@ def cmd_export(options: RunOptions, *, worker_count: int, destination: Path) -> 
 
 def cmd_worker(options: RunOptions, *, client: SubmissionsClient | None = None) -> int:
     """Run this worker's assigned chunks and emit a receipt.
-
-    The worker holds a copied bundle and its own assignment. It learns nothing
-    from the coordinator while running, and it cannot widen its own scope: the
-    chunk list comes from the assignment, whose identity is re-derived on load.
+    The chunk list comes from an assignment re-derived on load, so a worker
+    cannot widen its own scope.
     """
     run_paths = options.run_paths()
     plan = load_plan(run_paths)
@@ -452,11 +410,7 @@ def cmd_worker(options: RunOptions, *, client: SubmissionsClient | None = None) 
 
 def cmd_import(options: RunOptions, *, source: Path) -> int:
     """Verify a worker's returned chunks and adopt them for the merge.
-
-    This is the trust boundary. Files arrive from another machine, so the plan
-    identity, the assignment identity, the per-file digest, the canonical schema,
-    the row count, and the chunk's CIK coverage are all checked before a file is
-    placed.
+    Every identity in the receipt is checked before a file is placed.
     """
     run_paths = coordinator_run_paths(options)
     plan, receipt, assignment = load_returned_plan(run_paths, source)
@@ -494,12 +448,8 @@ def _add_common(sub: argparse.ArgumentParser) -> None:
 
 def _add_plan_reference(sub: argparse.ArgumentParser) -> None:
     """Attach either an explicit plan reference or a cohort reference.
-
-    A worker holding only a copied bundle names its plan outright. A single host
-    may instead name the cohort it planned from, and the plan id is re-derived
-    from that cohort and the effective chunk layout, which is what makes replanning
-    idempotent and a changed chunk layout fail loudly rather than silently reuse
-    another plan's checkpoints.
+    A plan id re-derived from a cohort makes replanning idempotent; a changed
+    chunk layout then fails loudly.
     """
     group = sub.add_mutually_exclusive_group()
     group.add_argument("--plan-id", default="", help="plan identifier to operate on")

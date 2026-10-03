@@ -1,9 +1,6 @@
-"""Tests for the json-io scanner.
-
-Two distinct failures are policed: a second, subtly different serialisation
-producing hashes that disagree, and a non-atomic write that a crash can leave
-truncated. The tests pin both, plus the exemption for the modules that own the
-primitives.
+"""The json-io scanner.
+Two failures are policed: a second serialisation producing disagreeing hashes, and
+a non-atomic write a crash can leave truncated.
 """
 
 from __future__ import annotations

@@ -1,5 +1,3 @@
-"""Unit tests for document_storage.parts."""
-
 from __future__ import annotations
 
 from pathlib import Path

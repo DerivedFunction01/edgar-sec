@@ -1,18 +1,7 @@
 """The exhibit second pass: fetch what a stub decision delegated.
 
-A form evaluator can conclude that a primary document is a stub — the filing
-incorporates its substance from an exhibit, historically Exhibit 13 for a
-pre-2012 10-K. The worker normalizes the primary, records the decision, and
-stops. This pass resolves the exhibit and records it alongside the primary.
-
-It is deliberately *bounded*: one attempt against an already-held bundle, and at
-most one bundle fetch when none is held. A delegation that cannot be resolved
-in that budget stays unresolved and the primary keeps its stub decision. An
-unbounded retry loop here would turn one bad document into a network stall.
-
-The exhibit is addressed by the bundle's own ``<FILENAME>`` when the bundle
-declares one, because that is the name the document is actually stored under;
-a synthetic name is only a fallback for a bundle that omits it.
+Bounded on purpose: one attempt against a held bundle, at most one bundle fetch. An
+unresolvable delegation stays unresolved, so a bad document cannot stall the run.
 """
 
 from __future__ import annotations
@@ -51,10 +40,8 @@ REFETCH_ACTION = "refetch_sub_doc"
 class DelegatedExhibit:
     """An exhibit resolved from a stub primary's delegation decision.
 
-    The primary's accession and CIK are carried here rather than read back out
-    of the processed metadata, because publishing the exhibit needs them to
-    build a provenance row and re-deriving them from free-form metadata would
-    make the snapshot's correctness depend on dict key spelling.
+    Primary accession and CIK are carried here rather than re-read from free-form
+    metadata, which would tie snapshot correctness to dict key spelling.
     """
 
     document_locator_key: str
@@ -75,10 +62,8 @@ class DelegatedExhibit:
     def occurrence_id(self) -> str:
         """Provenance row identity linking this exhibit to its primary.
 
-        The exhibit's own ``document_path`` is the third raw part, not the
-        primary's: the provenance row must identify the *exhibit* document the
-        catalog will carry, which is why ``derive_occurrence_id`` takes the
-        parts rather than a derived key.
+        Keyed on the *exhibit's* path, not the primary's: the row must identify the
+        exhibit the catalog will carry.
         """
         return derive_occurrence_id(
             self.primary_source_cik,
@@ -102,12 +87,7 @@ def _bundle_locator(primary: DocumentLocator) -> DocumentLocator | None:
 
 
 def _exhibit_aliases(target: str) -> tuple[str, ...]:
-    """Return the sub-document types that name one exhibit.
-
-    An evaluator names an exhibit the way a filing does (``EX-13``); an SGML
-    bundle types the same document as ``EX-13``. Normalizing both to the same
-    key means a decision survives the round trip through the bundle.
-    """
+    """Return the sub-document types naming one exhibit, normalized to upper case."""
     return (target.strip().upper(),)
 
 
@@ -140,8 +120,8 @@ def resolve_delegated_exhibit(
 ) -> DelegatedExhibit | None:
     """Resolve and process the exhibit a stub decision delegated to.
 
-    Returns ``None`` when the decision was not a refetch, names no exhibit, or
-    the exhibit cannot be resolved inside the one-fetch budget.
+    Returns ``None`` when the decision was not a refetch, names no exhibit, or the
+    exhibit is unresolvable inside the one-fetch budget.
     """
     metadata = processed.metadata or {}
     if metadata.get("decision_action") != REFETCH_ACTION:
@@ -215,9 +195,7 @@ def _annotate_delegation(
 ) -> ProcessedDocument:
     """Attach the primary-to-exhibit link so the snapshot records provenance.
 
-    A snapshot row for the exhibit would otherwise be indistinguishable from a
-    document the catalog asked for directly, and a reviewer could not tell which
-    filing an exhibit was pulled in for.
+    Otherwise an exhibit row is indistinguishable from a directly requested document.
     """
     from dataclasses import replace
 
@@ -250,11 +228,9 @@ def exhibits_for(
 def write_exhibit_snapshot(
     output_path: Path, exhibits: tuple[DelegatedExhibit, ...]
 ) -> Path:
-    """Publish resolved exhibits as a Parquet file with the snapshot schema.
+    """Publish resolved exhibits as a Parquet file with the checkpoint schema.
 
-    Uses the same schema as a chunk checkpoint so a later merge needs no
-    separate reader: an exhibit is a document like any other, with provenance in
-    its metadata.
+    Same schema as a chunk, so a later merge needs no separate reader.
     """
     from edgar_sec.domain.document.models import FilingOccurrence
     from edgar_sec.pipelines.document_storage.checkpoint import write_chunk_snapshot

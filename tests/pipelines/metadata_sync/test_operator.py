@@ -1,11 +1,5 @@
-"""Operator wizard tests: state, discovery, and command delegation.
-
-Two failure classes are guarded here. The first is a binding that drifts from
-the command surface -- an action pointing at a command that stops reading an
-argument the wizard sets -- which would fail only inside an interactive session
-nobody runs in CI. The second is a wizard that asks for a plan id it was never
-shown, and silently does nothing when the answer is blank. Every action must
-either work, ask, or say why it cannot.
+"""Operator wizard: state, discovery, and command delegation; a binding that
+drifts from the command surface fails only in an interactive session.
 """
 
 from __future__ import annotations
@@ -100,7 +94,6 @@ def test_menu_covers_the_whole_lifecycle() -> None:
 
 
 def test_pointer_selection_and_command_rendering_have_distinct_keys() -> None:
-    """v1 used ``p`` for the pointer; reusing it for commands lost that action."""
     labels = {action.key: action.label for action in build_operator_menu()}
     assert "current" in labels["p"].lower()
     assert "worker commands" in labels["c"].lower()
@@ -184,11 +177,7 @@ def test_ask_plan_options_records_a_limit(
 def test_a_blank_plan_id_falls_back_to_the_working_plan(
     state: WizardState, monkeypatch: pytest.MonkeyPatch
 ) -> None:
-    """A blank plan id resolves to the session's plan.
-
-    It must resolve rather than return ``None`` and drop the operator back at the
-    menu with no explanation.
-    """
+    """It must resolve, not return ``None`` and drop the operator at the menu."""
     state.plan_id = "0123456789abcdef"
     monkeypatch.setattr(operator_module, "prompt_text", lambda label, default: default)
     options = _ask_run_options(state)
@@ -223,7 +212,6 @@ def test_an_explicit_plan_id_replaces_the_working_one(
 def test_an_in_progress_run_is_adopted_without_asking(
     state: WizardState, tmp_path: Path, monkeypatch: pytest.MonkeyPatch
 ) -> None:
-    """v1 auto-resumed the newest in-progress run; a single plan is adopted here."""
     plan_id = _write_plan(tmp_path, chunk_size=2)
 
     def must_not_prompt(_label: str, _default: str = "") -> str:
@@ -272,7 +260,6 @@ def test_no_plan_is_reported_not_silently_ignored(
 def test_a_published_snapshot_offers_augment_when_no_plan_exists(
     state: WizardState, tmp_path: Path, monkeypatch: pytest.MonkeyPatch, capsys
 ) -> None:
-    """v1's [A]ugment / [F]resh / [Q]uit offer, restored."""
     metadata = state.metadata()
     pointer = metadata.current_pointer
     pointer.parent.mkdir(parents=True, exist_ok=True)
@@ -335,7 +322,6 @@ def test_session_header_names_the_plan_and_the_published_snapshot(
 
 
 def test_session_header_admits_an_unresolved_session(state: WizardState) -> None:
-    """An unresolved session says so rather than rendering a blank."""
     header = render_session_header(state)
     assert "No plan selected" in header
     assert "no snapshot published" in header
@@ -398,13 +384,7 @@ def _publish_source(state: WizardState, snapshot_id: str) -> None:
 def _forbid_artifacts_prompts(
     monkeypatch: pytest.MonkeyPatch, asked: list[str]
 ) -> None:
-    """Install a prompt stub that fails if any action re-asks for the root.
-
-    The registered ``artifacts.root`` setting is the one authority for the root and
-    ``--artifacts`` remains the per-command override, so a menu prompt duplicated
-    that authority. Failing on the label rather than on a count means re-adding one
-    fails here instead of showing up in a transcript.
-    """
+    """Failing on the label, not on a count, catches a re-added root prompt."""
 
     def stub(label: str, default: str = "") -> str:
         asked.append(label)
@@ -495,8 +475,7 @@ def test_cancelled_answers_short_circuit_every_action(
     monkeypatch.setattr(operator_module, "_ask_run_options", lambda *a, **k: None)
     monkeypatch.setattr(operator_module, "prompt_text", lambda label, default: "")
     monkeypatch.setattr(operator_module, "_ensure_plan", lambda _s: False)
-    # Augmentation asks its cohort question in its own module now, so a cancelled
-    # cohort is stubbed there. It is still an action that must short-circuit.
+    # Augmentation asks its cohort question in augment_flow now; still an action.
     monkeypatch.setattr(augment_flow, "ask_augment_cohort", lambda *a, **k: None)
     called: list[object] = []
     for command in COMMANDS.values():
@@ -539,11 +518,7 @@ def test_refresh_needs_no_reference_and_still_reaches_the_library(
 def test_refresh_targets_the_session_artifacts_root_without_asking(
     state: WizardState, monkeypatch: pytest.MonkeyPatch
 ) -> None:
-    """A consented refresh lands in the session's tree, and never asks which one.
-
-    ``state.artifacts_root`` is the whole answer; resolving the project default
-    instead would put the snapshot outside the tree the rest of the session reads.
-    """
+    """A project-default root would publish outside the tree the session reads."""
     asked: list[str] = []
     refreshed: list[Path | None] = []
     _forbid_artifacts_prompts(monkeypatch, asked)
@@ -559,12 +534,7 @@ def test_refresh_targets_the_session_artifacts_root_without_asking(
 def test_compare_targets_the_session_artifacts_root(
     state: WizardState, monkeypatch: pytest.MonkeyPatch
 ) -> None:
-    """The comparison reads the session's source snapshots, so it publishes there.
-
-    A root resolved from the project default would find no source snapshot at all
-    and stop at the "no source snapshot published" branch, so the mismatch is a
-    refusal rather than a silent write to the wrong tree.
-    """
+    """A project-default root would find no source snapshot and refuse."""
     _publish_source(state, "src-1")
     asked: list[str] = []
     seen: list[PlanOptions] = []
@@ -593,12 +563,7 @@ def test_compare_says_so_when_no_source_snapshot_exists(
 def test_compare_resolves_the_source_manifest_from_its_snapshot_id(
     state: WizardState, monkeypatch: pytest.MonkeyPatch
 ) -> None:
-    """The manifest has no ``manifest_path`` field; reading one resolved to the CWD.
-
-    A source manifest describes the listing it published and carries no path to
-    itself, so the comparison was handed a directory and failed. The path is
-    derived from the selected id instead.
-    """
+    """The manifest carries no path to itself, so the id derives it."""
     metadata = state.metadata()
     manifest_path = metadata.source_manifest_file(SOURCE_NAME, "src-1")
     manifest_path.parent.mkdir(parents=True, exist_ok=True)
@@ -637,12 +602,7 @@ def test_compare_resolves_the_source_manifest_from_its_snapshot_id(
 def test_compare_lists_source_snapshots_not_published_metadata_snapshots(
     state: WizardState, monkeypatch: pytest.MonkeyPatch
 ) -> None:
-    """The two namespaces are different directories.
-
-    This listed published *metadata* snapshots under a "Source snapshots" heading
-    and then resolved a source manifest from that id, so the command could not have
-    worked: a metadata snapshot id is never a source snapshot id.
-    """
+    """A metadata snapshot id is never a source snapshot id."""
     _write_plan(Path(state.artifacts_root))
     monkeypatch.setattr(operator_module, "list_source_snapshots", lambda _paths: [])
     monkeypatch.setattr(
@@ -764,7 +724,6 @@ def test_main_delegates_a_command_to_the_cli(monkeypatch) -> None:
 def test_main_states_that_completed_work_survives_an_interrupt(
     monkeypatch: pytest.MonkeyPatch, capsys
 ) -> None:
-    """v1 told the operator checkpoints are preserved; that is phase knowledge."""
     entered: list[str] = []
 
     def fake_menu(
@@ -772,11 +731,9 @@ def test_main_states_that_completed_work_survives_an_interrupt(
     ):
         entered.append(interrupted_message or "")
         if before_menu is not None:
-            # The entrypoint must pass the session header through, or the menu
-            # shows no indication of what the session is pointed at.
+            # The session header must reach the menu.
             rendered.append(before_menu() or "")
-        # Drive only the status action; the others prompt for a plan this test
-        # has not set up, and the point here is the interrupt message.
+        # Drive only status; the rest prompt for a plan this test has not set up.
         for action in actions:
             if action.key == "2":
                 try:

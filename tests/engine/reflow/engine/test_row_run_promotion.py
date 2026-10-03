@@ -1,25 +1,11 @@
-"""Row-run promotion through the reflow stage: what a confirmed run may absorb.
-
-`edgar_sec/engine/tables/row_runs.py` finds the run and
-`edgar_sec/engine/reflow/engine/rewrapper.py` decides whether to tag it. These
-tests hold the integration to three properties: an aligned run is tagged, a run
-may absorb an already-tagged block and extend over its trailing rows, and a run
-stays inside its own blocks. Each vector is the shape a filing-sized document
-was reduced to after a corpus review.
-
-Deliberately absent: any test that trims a run's edge back from a caption or a
-heading. A revision did that by rejecting marker-prefixed lines, and it deleted
-genuine exhibit, debt, and equity rows across the cohort — `4.  Shareholders'
-Equity (Deficit)` and `3.1  Certificate of Incorporation` parse identically, so
-no geometry test can tell them apart. The residual boundary noise is accepted
-instead; see the deliberate-gaps note in `edgar_sec/engine/reflow/README.md`.
+"""Row-run promotion: what a confirmed run may absorb, and where it stops.
+No test trims a run’s edge back from a caption or heading: `4.  Shareholders’
+Equity (Deficit)` and `3.1  Certificate of Incorporation` parse identically.
 """
 
 from __future__ import annotations
 
 from edgar_sec.engine.reflow.engine.rewrapper import reflow_ascii
-
-# --- an aligned run is tagged ----------------------------------------------
 
 
 def test_dot_leader_index_rows_with_repeated_page_columns_are_tagged() -> None:
@@ -33,9 +19,6 @@ def test_dot_leader_index_rows_with_repeated_page_columns_are_tagged() -> None:
     assert result.text.count("<TABLE>") == 1
     assert result.text.count("</TABLE>") == 1
     assert "<TABLE>\nItem 1. Business ................. 1" in result.text
-
-
-# --- a run absorbs classified blocks and extends over their tails -----------
 
 
 def test_row_run_merges_a_classified_middle_block_and_trailing_total() -> None:
@@ -52,9 +35,8 @@ def test_row_run_merges_a_classified_middle_block_and_trailing_total() -> None:
 
 
 def test_a_ragged_placeholder_column_does_not_truncate_the_run() -> None:
-    # A wrapped label pushes the first two numeric cells right, but the last two
-    # still align, so the packed block stays in the run and the closing balance
-    # row is not orphaned below the close tag.
+    # A wrapped label shifts the first cells but the last two still align, so the closing
+    # row is not orphaned.
     rows = (
         "Balance, November 30, 1991....  6,659,000     8,260       352,000      6,337",
         "Shares issued in private ",
@@ -68,14 +50,9 @@ def test_a_ragged_placeholder_column_does_not_truncate_the_run() -> None:
     assert result.text == f"<TABLE>\n{text}\n</TABLE>"
 
 
-# --- a run stops at a neighbouring block ------------------------------------
-
-
 def test_row_run_stops_before_a_wrapped_ordered_marker() -> None:
-    # A note caption is its own block, so the run that covers the rows above it
-    # does not reach across. ``(7)`` is kept here deliberately: it parses as a
-    # numeric cell, so it also documents that the run boundary comes from block
-    # extent rather than from reading the marker.
+    # ``(7)`` parses as a numeric cell, so the boundary comes from block extent rather
+    # than from reading the marker.
     rows = (
         "Royce C. McCall        1,234,567         45,231",
         "Bennett S. Alexander      987,654         12,004",
@@ -89,8 +66,7 @@ def test_row_run_stops_before_a_wrapped_ordered_marker() -> None:
 
 
 def test_row_run_stops_before_an_adjacent_non_row_block() -> None:
-    # A section heading above and a footnote legend below are separate blocks
-    # with no numeric cell of their own, so neither joins the confirmed run.
+    # The heading and legend carry no numeric cell of their own, so neither joins the run.
     rows = (
         "Current assets                 100        90",
         "Property and equipment          200       180",
@@ -108,12 +84,9 @@ def test_row_run_stops_before_an_adjacent_non_row_block() -> None:
         assert reflow_ascii(text, body_start_line=0).text == want
 
 
-# --- sentence evidence blocks the promotion ---------------------------------
-
-
 def test_linguistic_numeric_prose_is_not_promoted() -> None:
-    # A numbered list of sentence-shaped lines with a stray percentage reads as
-    # aligned numeric cells, so the shared cascade, not geometry, has to refuse.
+    # Sentence-shaped lines with a stray percentage must be refused by the cascade, not
+    # by geometry.
     text = (
         "      1.   Each person who is known by us to be the beneficial owner of more than\n"
         "           5% of the common stock,\n\n"

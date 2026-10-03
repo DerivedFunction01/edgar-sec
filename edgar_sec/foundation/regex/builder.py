@@ -100,7 +100,6 @@ def to_build_alternation(
     flexible_whitespace: bool = False,
     never_match_empty: bool = False,
 ) -> str:
-    """Convenience wrapper around build_alternation."""
     if not items:
         return r"(?!)" if never_match_empty else ""
     return build_alternation(

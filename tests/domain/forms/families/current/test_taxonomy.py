@@ -1,5 +1,3 @@
-"""Tests for current report item taxonomy (8-K)."""
-
 from __future__ import annotations
 
 from edgar_sec.domain.forms.families.current.taxonomy import (

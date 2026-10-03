@@ -1,21 +1,7 @@
 """Copy-based distribution of a plan across machines.
-
-The model is deliberately simple: the coordinator writes an immutable plan
-bundle, copies it out once per worker with a distinct static assignment, and each
-worker runs its own chunks and hands back chunk files plus a receipt. There is no
-scheduler, no lease, and no coordinator process the worker depends on.
-
-Two properties make that workable rather than hopeful:
-
-* The bundle is byte-identical for every worker, so a worker can verify it holds
-  the plan the coordinator planned rather than trusting that it was told so.
-* A receipt is the only thing that crosses the machine boundary, and it is
-  content-verified on both ends. Import refuses anything it cannot prove matches
-  the plan, the assignment, and the plan's own view of the cohort.
-
-Deciding what to do about a worker that dies mid-run is not solved here. A
-coordinator that has received nothing simply re-exports, because a chunk nobody
-returned is a chunk nobody fetched.
+The bundle is byte-identical for every worker, so a worker verifies what it holds
+instead of trusting it; a receipt is the only thing crossing the machine
+boundary, so import can refuse anything it cannot prove matches the plan.
 """
 
 from __future__ import annotations
@@ -67,10 +53,8 @@ def export_bundle(
     plan: Plan, run_paths: Any, *, worker_count: int, destination: Path
 ) -> list[dict[str, Any]]:
     """Write one bundle per worker and return what each one holds.
-
-    Workers with no chunk in this plan are skipped rather than given an empty
-    assignment: an empty assignment would be an artifact asserting that a machine
-    is responsible for work that does not exist.
+    A worker with no chunk is skipped: an empty assignment would assert
+    responsibility for work that does not exist.
     """
     destination.mkdir(parents=True, exist_ok=True)
     exported: list[dict[str, Any]] = []
@@ -110,10 +94,7 @@ def copy_bundle(source: Any, bundle: Path) -> None:
 
 def select_assignment(options: RunOptions, run_paths: Any) -> Assignment:
     """Find the one assignment this worker was handed.
-
-    A single-assignment bundle needs no choice; a bundle carrying several needs
-    the worker named, because picking one silently would let a machine claim work
-    another machine was given.
+    Several in one bundle requires naming the worker.
     """
     candidates = sorted(run_paths.assignments_dir.glob("*.parquet"))
     if not candidates:
@@ -140,11 +121,8 @@ def worker_chunk_records(
     results: list[Any], bundle_root: Path
 ) -> list[ChunkResultRecord]:
     """Describe each produced chunk file the way the coordinator will read it.
-
-    The path is recorded relative to the bundle root so the coordinator resolves
-    it against whatever directory the bundle arrived in, rather than assuming a
-    layout. Chunks that were already complete are omitted: a worker that
-    contributed nothing should not claim to have contributed it.
+    Already-complete chunks are omitted: a worker that contributed nothing must not
+    claim it did.
     """
     return [
         ChunkResultRecord(
@@ -205,15 +183,8 @@ def adopt_chunks(
     assignment: Assignment,
 ) -> tuple[list[int], list[int]]:
     """Verify a returned bundle and place its chunk files for the merge.
-
-    Everything is checked before a byte is placed: the plan identity, the
-    assignment identity, that the receipt only names chunks its assignment claims,
-    that each file matches its declared digest, and that each file carries exactly
-    the CIKs and schema the plan expects for that chunk.
-
-    A byte-identical re-import is a no-op. A *conflicting* one is an error rather
-    than an overwrite, because that is the only case where the coordinator would
-    otherwise have to choose between two defensible answers.
+    Everything is checked before a byte is placed. A byte-identical re-import is a
+    no-op; a *conflicting* one is an error, never an overwrite.
     """
     assigned = set(assignment.chunk_ids)
     adopted: list[int] = []

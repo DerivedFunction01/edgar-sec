@@ -19,7 +19,6 @@ from edgar_sec.foundation.text.evidence import (
     compile_evidence_pack,
 )
 
-# Primary Tier: Intangible asset classes, amortization rows, and future amortization schedules
 _INTANGIBLE_CLASSES = (
     "customer relationships",
     "customer contracts and relationships",
@@ -79,7 +78,6 @@ INTANGIBLES_PRIMARY_TERMS: tuple[str, ...] = expand_alternations(
     ),
 )
 
-# Supporting Tier: Intangibles vocabulary, amortization metrics, and reporting units
 INTANGIBLES_SUPPORTING_TERMS: tuple[str, ...] = expand_alternations(
     expand_variants(
         ("intangible", "intangibles", "goodwill", "amortization", "impairment")

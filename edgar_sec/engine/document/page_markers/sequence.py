@@ -1,16 +1,5 @@
 """Namespace-aware sequence validation and conservative healing.
-
-A bare page label proves nothing on its own. A run of labels does: the same
-shape, in the same namespace (arabic, roman, or an exhibit letter), spaced a
-consistent distance apart, and increasing by small steps, is one page-number
-sequence rather than a coincidence of numbers in a financial table. This module
-owns that judgement, and it owns the healing that follows it.
-
-Healing is deliberately conservative. A value that already sits in a run, or
-that a stronger run of the same namespace already observed, is never inferred; a
-numeric gap alone is not evidence that the missing pages exist unless a
-validated page break corroborates it. Every inference is recorded as metadata
-with the reason that authorized it, and none of them is removable.
+A bare page label proves nothing on its own. A run of labels does: the same shape, in the same namespace (arabic, roman, or an exhibit letter), spaced a consistent distance apart, and increasing by small steps, is one page-number sequence rather than a coincidence of numbers in a financial table. This module owns that judgement, and it owns the healing that follows it. Healing is deliberately conservative. A value that already sits in a run, or that a stronger run of the same namespace already observed, is never inferred; a numeric gap alone is not evidence that the missing pages exist unless a validated page break corroborates it. Every inference is recorded as metadata with the reason that authorized it, and none of them is removable.
 """
 
 from __future__ import annotations
@@ -64,11 +53,7 @@ def validate_group(
     min_gap_median: float = 0.0,
 ) -> PageNumberRun | None:
     """Validate one same-family/namespace candidate group.
-
-    Returns ``None`` when the group is too small, not monotone enough, or spaced
-    closer than the strategy tolerates; the anchorless strategies require real
-    separation between pages, while the anchored ones do not because the anchor
-    already supplies it.
+    Returns ``None`` when the group is too small, not monotone enough, or spaced tighter than the strategy tolerates.
     """
 
     ordered = sorted(candidates, key=lambda item: (item.start_line, item.start))
@@ -103,12 +88,7 @@ def _repair_sequence(
     members: list[PageCandidate],
 ) -> tuple[list[PageCandidate], list[PageCandidate]]:
     """Pop spikes, dips, duplicates, and inversions from one slot's sequence.
-
-    A middle value must sit strictly between ascending endpoints. Descending
-    endpoints (inversions such as a foreign table total followed by a
-    duplicate restart) are repaired only when the surrounding context is
-    ascending; restart-like descents, where the right side continues
-    consecutively, are left intact for section handling.
+    An inversion is repaired only where the surrounding context ascends; a restart-like descent is left intact.
     """
     members = list(members)
     popped: list[PageCandidate] = []
@@ -133,11 +113,9 @@ def _repair_sequence(
                 popped.append(members.pop(index))
                 changed = True
                 break
-            # Inversion: left.value > right.value.
             previous = members[index - 2] if index >= 2 else None
             following = members[index + 2] if index + 2 < len(members) else None
             if following is not None and following.value == right.value + 1:
-                # Restart-like descent: the right side continues consecutively.
                 continue
             duplicate_counts: dict[int, int] = {}
             for candidate in members:
@@ -170,13 +148,7 @@ def heal_run(
     page_break_lines: frozenset[int] | set[int] | None = None,
 ) -> tuple[PageNumberRun, tuple[InferredBoundary, ...], tuple[PageCandidate, ...]]:
     """Remove isolated detours, promote compatible observations, and infer gaps.
-
-    ``stronger_values`` are page numbers already observed by higher-evidence
-    runs of the same namespace; this run never infers them. ``page_break_lines``
-    carries validated page-break anchor lines; when provided, a numeric gap is
-    interpolated only if at least that many page breaks exist between the
-    bracketing members (independent evidence that the pages exist). Without
-    boundary information the historical bounded interpolation applies.
+    A numeric gap interpolates only when at least as many validated page-break anchors lie between the bracketing members.
     """
 
     members, _popped = _repair_sequence(list(run.candidates))
@@ -219,9 +191,8 @@ def heal_run(
     for left, right in pairwise(members):
         missing = right.value - left.value - 1
         if missing <= 0 or missing > MAX_INTERPOLATED_GAP:
-            # Very large gaps are usually foreign values (years, totals)
-            # inside the run rather than missing pages; interpolating them
-            # floods metadata with phantom boundaries.
+            # Large gaps are usually foreign values (years, totals) inside the run rather than missing
+            # pages; interpolating them floods metadata with phantom boundaries.
             continue
         breaks_between = None
         if page_break_lines is not None:
@@ -231,7 +202,6 @@ def heal_run(
                 if left.start_line < line < right.start_line
             )
             if breaks_between < missing:
-                # The numeric gap alone is not evidence that the pages exist.
                 continue
         reason = "interpolated_gap"
         if breaks_between is not None:
@@ -243,7 +213,6 @@ def heal_run(
         for rank in range(1, missing + 1):
             value = left.value + rank
             if value in member_values or value in stronger_values:
-                # Already observed here or by a higher-evidence run.
                 continue
             inferred.append(
                 InferredBoundary(
@@ -265,11 +234,7 @@ def unify_alternating_runs(
     runs: list[PageNumberRun],
 ) -> list[PageNumberRun]:
     """Unify complementary alternating (verso/recto step=2) runs into unified runs.
-
-    A two-sided filing prints the odd page numbers in the outer footer and the
-    even ones in the outer header, so each page carries exactly one label and
-    neither side looks like a run on its own. Two runs of the same namespace
-    unify when the merged values advance by two and the source sides alternate.
+    A two-sided filing prints odd pages in the outer footer and even in the outer header, so neither side looks like a run alone.
     """
 
     if len(runs) < 2:

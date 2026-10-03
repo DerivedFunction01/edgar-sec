@@ -1,8 +1,6 @@
 """Common measurement units for numeric cell recognition in financial tables.
-
-The symbol set is the tail of a numeric cell's grammar: ``1,234`` alone is a
-count, ``$1,234M`` is a magnitude, and only the second can be right-aligned
-against a currency column without misreading the column's width budget.
+The symbol set is a numeric cell's tail: `1,234` alone is a count, `$1,234M` a magnitude, and only
+the second can be right-aligned against a currency column.
 """
 
 from __future__ import annotations

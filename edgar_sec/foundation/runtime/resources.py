@@ -1,11 +1,8 @@
 """Machine-derived resource defaults for disk-backed and concurrent processing.
 
-Computes safe memory limits and worker process counts with deep awareness of:
-- Linux cgroups v2 (/sys/fs/cgroup/memory.max, memory.current)
-- Linux cgroups v1 (/sys/fs/cgroup/memory/memory.limit_in_bytes, memory.usage_in_bytes)
-- Linux /proc/meminfo MemAvailable
-- psutil total and available virtual memory
-- Container and host memory safety fractions to prevent Linux OOM kills
+Available memory is probed cgroups v2, then cgroups v1, then psutil, then
+``/proc/meminfo`` MemAvailable, so a container limit is never mistaken for host memory.
+Limits and worker counts are always derived here, never from a raw CPU count.
 """
 
 from __future__ import annotations
@@ -117,7 +114,6 @@ def available_memory_bytes() -> int:
 
 
 def default_cpu_cores() -> int:
-    """Observed machine CPU core count."""
     if psutil is not None:
         threads = psutil.cpu_count(logical=False) or psutil.cpu_count(logical=True)
     else:
@@ -191,12 +187,10 @@ class RuntimeResourceProfile:
 
     @property
     def worker_threads(self) -> int:
-        """Alias for threads."""
         return self.threads
 
     @property
     def memory_limit_str(self) -> str:
-        """Alias for memory_limit string."""
         return self.memory_limit
 
     @property

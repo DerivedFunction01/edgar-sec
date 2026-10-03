@@ -1,9 +1,6 @@
-"""Deterministic name normalization for company-family resolution.
-
-The pipeline is fixed: strip jurisdiction and trademark markers, tokenize,
-expand abbreviations (unambiguously, then contextually), fold plurals, then
-collapse digits, single letters, and roman numerals to placeholders. Every step
-is a pure function of its input, so the same name always normalizes identically.
+"""Deterministic name normalization for company-family resolution: strip markers,
+tokenize, expand abbreviations, fold plurals, then collapse digits, single letters,
+and roman numerals to placeholders. Every step is pure.
 """
 
 from __future__ import annotations
@@ -82,10 +79,8 @@ def normalize_name(name: str) -> list[str]:
 
 
 def post_normalize(tokens: Sequence[str]) -> list[str]:
-    """Collapse digits, single letters, and roman numerals to placeholders.
-
-    A series number is not part of a company's identity, so "2011-C5" and
-    "2007-2" must not split one trust into many families.
+    """Collapse digits, single letters, and roman numerals to placeholders; a series
+    number is not identity, so "2011-C5" and "2007-2" are one trust.
     """
     output: list[str] = []
     for token in tokens:
@@ -113,10 +108,8 @@ def normalized_body(name: str) -> list[str]:
 def first_structural_index(
     body: Sequence[str], structural_vocab: frozenset[str]
 ) -> int:
-    """Return the index of the first structural token, or ``len(body)``.
-
-    Everything before that index is the family's distinguishing key; everything
-    from it onward is series, deal, or class vocabulary shared across families.
+    """Index of the first structural token, or `len(body)`: everything before it is
+    the distinguishing key, from it onward shared series vocabulary.
     """
     for position, token in enumerate(body):
         if token in structural_vocab or token == DIGIT_PLACEHOLDER:
@@ -162,16 +155,8 @@ def mine_structural_vocabulary(
     min_tail_freq: int | None = None,
     max_prefix_share: float = 0.35,
 ) -> frozenset[str]:
-    """Mine the shared structural tail vocabulary from a corpus of names.
-
-    A token is structural when it appears often enough in the *tail* of names
-    and rarely enough in the *head*. The prefix-share guard is what protects
-    real words: a token that heads most of the names carrying it is part of the
-    company's identity, not structural boilerplate, so it is left alone.
-
-    Thresholds relax for small corpora. Below ~100 names a fixed minimum
-    frequency would either admit everything or nothing, so the frequency
-    requirement drops to one and the length requirement drops to three.
+    """Mine the shared structural tail vocabulary: structural means frequent in a
+    name's tail and rare in its head. Thresholds relax for small corpora.
     """
     large_corpus = len(names) >= 100
     effective_min_tail = (

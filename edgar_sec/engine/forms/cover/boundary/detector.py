@@ -1,20 +1,6 @@
-"""Main cover boundary detection logic.
-
-The detector walks a ladder of evidence sources, strongest first, and returns
-the first one that both fires and is corroborated by cover identity or a page
-marker:
-
-1. an incorporated-by-reference block (annual and foreign annual covers only),
-2. a detected TOC span,
-3. a bare TOC heading,
-4. an exact ``PART`` heading, then an exact ``ITEM`` heading,
-5. an amendment structural transition (EXPLANATORY NOTE, REPORT OF INDEPENDENT
-   AUDITORS, SIGNATURES) — only when ``AMENDMENT_TRANSITION`` is enabled,
-6. decisive body prose with no structural anchor at all.
-
-No signal is authoritative on its own: a phrase match with no corroborating
-cover evidence is ignored, which is why a current report (8-K) — whose profile
-disables cover parsing entirely — never gets a cover boundary.
+"""Cover boundary detection: an evidence ladder, strongest signal first. No signal
+is authoritative alone — each needs cover identity or a page marker to corroborate,
+which is why a profile that disables cover parsing never yields a boundary.
 """
 
 from __future__ import annotations
@@ -43,9 +29,8 @@ from edgar_sec.engine.forms.cover.toc.finder import find_toc_span
 from edgar_sec.engine.forms.cover.toc.patterns import RE_TOC_HEADING
 from edgar_sec.foundation.regex.builder import build_alternation
 
-# Amendment-specific structural transitions that end a 10-K/A cover page when
-# no PART I / ITEM 1 / TOC sequence is present. Matched case-insensitively
-# against trimmed lines. Order matters: more-specific patterns first.
+# Amendment structural transitions ending a 10-K/A cover with no PART I /
+# ITEM 1 sequence. Order matters: more specific patterns first.
 _AMENDMENT_TRANSITION_PATTERNS = [
     r"explanatory\s+(?:note|statement)",
     r"report\s+of\s+independent\s+(?:registered\s+public\s+accounting\s+firm|auditors?)",
@@ -81,11 +66,8 @@ def find_cover_boundary(
     cover_evidence: object | None = None,
     body_evidence: object | None = None,
 ) -> CoverBoundary:
-    """Find a conservative, exclusive end for cover-specific processing.
-
-    The detector uses bounded structural evidence and never treats a literal
-    phrase as authoritative by itself. Profiles opt into evidence capabilities;
-    an absent policy explicitly disables cover parsing.
+    """A conservative, exclusive end for cover-specific processing; an absent policy
+    disables cover parsing.
     """
     if policy is None:
         return _unknown(BoundaryMethod.DISABLED)

@@ -1,23 +1,7 @@
 """Filter vocabulary shared by deterministic planning and selection policy.
 
-This module holds only vocabulary and pure normalization: the default suffix
-set, the suffix normalizer, and the tagged date clauses that planning, the
-selection policy, and the SQL compilers must all agree about. It is Layer 1
-because two layers consume it -- ``pipelines.filing_catalog.planner`` for
-deterministic planning and ``engine.selection.policy.SelectionPolicy`` for
-policy-scope selection -- while the compilers that turn the vocabulary into DuckDB
-predicates live in ``engine.selection.predicates``, above it.
-
-Suffixes arrive as user input from a CLI flag or a policy document, so each one
-is validated against a conservative allowlist and rejected up front rather than
-reaching a predicate compiler unvalidated. A caller must not bypass
-``normalize_suffixes()``: it is also what de-duplicates without reordering, so a
-recorded suffix list hashes to a stable plan identity.
-
-The date grammar is small and total. Every term either parses to a clause or
-raises naming the offending token: ``2023Q1`` is an absolute quarter,
-``@Q1[2023..2023]`` the recurring quarter of 2023, and a bare ``Q1`` an error
-rather than a guess at either one.
+Suffixes are user input, so they are allowlist-validated up front. Every date term
+either parses to a clause or raises naming the offending token -- never a guess.
 """
 
 from __future__ import annotations
@@ -31,16 +15,13 @@ from typing import Any
 
 from edgar_sec.foundation.text.dates import is_valid_year, parse_year_token
 
-# Suffixes are user input arriving from a CLI flag or a policy document. Real SEC
-# document names use letters, digits, and dots (``0001.htm`` is a real stub
-# suffix), so the allowlist covers exactly that and rejects everything quote- or
-# comment-shaped.
+# Real SEC stub suffixes use letters, digits, and dots (``0001.htm``); anything
+# quote- or comment-shaped is rejected here rather than at a predicate compiler.
 _SUFFIX_RE = re.compile(r"^[a-z0-9][a-z0-9.]*$")
 
 DEFAULT_DOCUMENT_SUFFIXES: tuple[str, ...] = ()
 
-# Recurring periods are calendar months and quarters of ``report_date``. The
-# granularity names are part of the persisted policy document.
+# Names are persisted in the policy document.
 GRANULARITY_MONTH = "month"
 GRANULARITY_QUARTER = "quarter"
 RECURRING_GRANULARITIES = (GRANULARITY_MONTH, GRANULARITY_QUARTER)
@@ -50,7 +31,6 @@ QUARTER_MONTHS = {1: (1, 3), 2: (4, 6), 3: (7, 9), 4: (10, 12)}
 _CLAUSE_ABSOLUTE = "absolute"
 _CLAUSE_RECURRING = "recurring"
 
-# Separators, kept as module constants so the grammar has exactly one spelling.
 _RANGE_SEPARATOR = ".."
 _RECUR_PREFIX = "@"
 _RECUR_BRACKET_OPEN = "["
@@ -59,7 +39,7 @@ _QUARTER_MARKER = "Q"
 _MONTH_MARKER = "M"
 _QUARTER_ATOM_MARKER = "Q"
 
-# One calendar day, the adjacency step for absolute intervals. Year spans use 1.
+# Adjacency step: a day for absolute intervals, 1 for year spans.
 _DAY = timedelta(days=1)
 
 
@@ -67,10 +47,8 @@ _DAY = timedelta(days=1)
 class AbsoluteDateClause:
     """One continuous inclusive interval on ``report_date``.
 
-    ``None`` on either bound means the interval is open at that end. An open
-    bound is never resolved against a catalog's latest date: an open bound means
-    "every year the catalog holds", which is a statement about the reader's
-    intent rather than about today's data.
+    ``None`` on a bound means open there, and is never resolved against a
+    catalog's latest date -- open means "every year the catalog holds".
     """
 
     start_date: date | None
@@ -106,9 +84,7 @@ class AbsoluteDateClause:
 class RecurringDateClause:
     """Selected calendar months or quarters, repeated over an inclusive year range.
 
-    ``@Q1[2011..2015]`` keeps Q1 of 2011 through 2015 and drops the rest of each
-    year; ``@Q1`` keeps Q1 of every year present. The two are different
-    selections and the grammar keeps them apart.
+    ``@Q1[2011..2015]`` and bare ``@Q1`` are different selections, not aliases.
     """
 
     granularity: str
@@ -153,8 +129,7 @@ class RecurringDateClause:
         }
 
 
-# One clause of either kind. Callers that persist or compare a selection need the
-# distinction; callers that only filter do not.
+# Callers that persist or compare a selection need the distinction; pure filters do not.
 DateClause = AbsoluteDateClause | RecurringDateClause
 DateSelection = tuple[DateClause, ...]
 
@@ -173,8 +148,7 @@ def _parse_year_atom(token: str, source: str) -> int:
 def _absolute_atom(token: str) -> tuple[date, date]:
     """Expand one absolute atom into the inclusive interval it names.
 
-    ``2005Q3`` yields ``2005-07-01`` and ``2008-03-31``, so one atom supplies a
-    start edge or an end edge depending on which side of ``..`` it sits.
+    ``2005Q3`` -> ``2005-07-01..2005-09-30``; the caller takes one edge per ``..`` side.
     """
     source = token.strip()
     if not source:
@@ -308,8 +282,8 @@ def _parse_periods(period_text: str, source: str) -> tuple[str, tuple[int, ...]]
 def _shift(value: Any, step: Any) -> Any:
     """Return ``value + step``, saturating at the domain's upper bound.
 
-    ``date.max + timedelta(days=1)`` raises, and a caller may legitimately build
-    a clause ending at the last representable day.
+    A clause may legitimately end at the last representable day, where ``+``
+    would raise ``OverflowError``.
     """
     try:
         return value + step
@@ -320,11 +294,7 @@ def _shift(value: Any, step: Any) -> Any:
 def _overlaps_or_touches(end: Any, next_start: Any, step: Any) -> bool:
     """Return whether two sorted intervals share a point or abut.
 
-    An open end swallows whatever follows it, so it always merges. Adjacency
-    counts: ``2024-12-31`` and ``2025-01-01`` describe one contiguous interval,
-    and merging them keeps ``2024-12-31..2025-01-01`` out of a persisted
-    selection, where it would read as two overlapping windows.
-    ``step`` is the domain's granularity -- a day for dates, ``1`` for years.
+    An open end always merges; adjacency keeps a contiguous pair one interval.
     """
     if end is None or next_start is None:
         return True
@@ -336,8 +306,7 @@ def _interval_sort_key(
 ) -> tuple[tuple[bool, Any], tuple[bool, Any]]:
     """Sort key placing an open bound ahead of every closed one.
 
-    The flag is compared before the value, so an open bound sorts first without
-    needing a sentinel that would have to be typed per domain.
+    The flag precedes the value, so no per-domain sentinel is needed.
     """
     start, end = item
     return (start is not None, start), (end is not None, end)
@@ -355,9 +324,8 @@ def _merge_intervals(
     current_start, current_end = ordered[0]
     for next_start, next_end in ordered[1:]:
         if _overlaps_or_touches(current_end, next_start, step):
-            # An open end wins the union: dropping it would silently turn
-            # ``..2007`` plus ``2008..`` into a bounded interval that no longer
-            # describes what the caller asked for.
+            # An open end wins the union: dropping it would silently bound
+            # ``..2007`` plus ``2008..``, which the caller did not ask for.
             if next_end is None:
                 current_end = None
             elif current_end is not None and next_end > current_end:
@@ -374,11 +342,7 @@ def _merge_absolute(
 ) -> tuple[AbsoluteDateClause, ...]:
     """Merge absolute intervals, dropping any that cover every date.
 
-    ``..2007`` plus ``2008..`` is every date, and the one canonical way to write
-    that is the empty selection: both bounds open would have to be spelled
-    ``..``, which the grammar rejects as ambiguous with "no selection".
-    Collapsing it also keeps the missing-date rule honest -- an input asking for
-    every date must not start excluding rows whose ``report_date`` is unreadable.
+    All-date coverage canonicalizes to the empty selection.
     """
     merged = _merge_intervals([(c.start_date, c.end_date) for c in clauses], _DAY)
     return tuple(
@@ -405,9 +369,8 @@ def _year_segments(
 ) -> tuple[tuple[int | None, int | None], ...]:
     """Split the timeline into segments no interval boundary falls inside.
 
-    Cutting at every boundary makes the segments a function of the intervals
-    alone, which is what makes the decomposition canonical: two spellings of one
-    recurring selection reduce to the same intervals, and so to the same segments.
+    Boundaries come only from the intervals, so two spellings of one recurring
+    selection reduce to the same segments.
     """
     boundaries: set[int] = set()
     for start, end in intervals:
@@ -431,11 +394,8 @@ def _merge_recurring(
 ) -> tuple[RecurringDateClause, ...]:
     """Collapse recurring clauses to one clause per year segment.
 
-    Each granularity is reduced twice: per period value first, so overlapping and
-    abutting spans for the same period become one span, then across the timeline,
-    so periods whose spans abut can share a clause. Order matters --
-    ``@Q1,@Q2[2011..2015]`` keeps Q1 in every year and Q2 only in 2011-2015,
-    while merging the two values' spans first would widen Q2 to every year.
+    Order is load-bearing: per-value reduction must precede the across-timeline one,
+    or ``@Q1,@Q2[2011..2015]`` widens to Q2 in every year.
     """
     grouped: dict[str, list[tuple[int, tuple[int | None, int | None]]]] = {}
     for clause in clauses:
@@ -491,11 +451,8 @@ def _merge_recurring(
 def normalize_date_selection(clauses: Iterable[DateClause]) -> DateSelection:
     """Return the canonical form of a selection.
 
-    Canonical means two selections that select the same dates have the same
-    value, because that value is what a plan identity and a policy fingerprint
-    hash. Absolute intervals are merged and sorted; recurring clauses are
-    collapsed to one clause per granularity and year span with their periods
-    collected. Absolute clauses come first, then recurring clauses.
+    Equal selections must have equal values: that value is what a plan identity
+    and a policy fingerprint hash.
     """
     absolute: list[AbsoluteDateClause] = []
     recurring: list[RecurringDateClause] = []
@@ -512,11 +469,8 @@ def normalize_date_selection(clauses: Iterable[DateClause]) -> DateSelection:
 def parse_date_selection(value: str) -> DateSelection:
     """Parse the ``--dates`` grammar into a canonical selection.
 
-    The grammar is a comma-separated union; each element is an absolute
-    interval, an absolute atom, or a recurring period. An empty value selects
-    every date, which is a distinct answer from a nonempty selection: a
-    nonempty selection excludes rows whose ``report_date`` is missing or
-    unparseable, because the predicate cannot place them.
+    The grammar is a comma-separated union of absolute and recurring terms. Only a
+    nonempty selection filters, so only it can exclude an unreadable ``report_date``.
     """
     if not isinstance(value, str):
         raise ValueError(f"date selection must be a string, got {type(value).__name__}")
@@ -546,9 +500,8 @@ def date_selection_to_json(selection: DateSelection) -> list[dict[str, Any]]:
 def date_selection_from_json(payload: Sequence[Any]) -> DateSelection:
     """Rebuild a selection from its persisted form, then re-canonicalize.
 
-    Re-normalizing matters because a policy document is hand-editable: a draft
-    listing overlapping spans must fingerprint as the same selection the parser
-    would have produced, or an unchanged policy would get a new identity.
+    A policy document is hand-editable, so a draft listing overlapping spans must
+    fingerprint as the selection the parser would have produced.
     """
     clauses: list[DateClause] = []
     for entry in payload:
@@ -634,9 +587,7 @@ def format_date_selection(selection: DateSelection) -> str:
 def normalize_suffixes(values: tuple[str, ...] | list[str]) -> tuple[str, ...]:
     """Lower-case, de-dot, de-duplicate, and validate document suffixes.
 
-    Order is preserved because a plan's recorded suffix list participates in
-    the plan identity hash; de-duplication keeps that hash stable when a caller
-    repeats a suffix.
+    Order is preserved: the recorded list participates in the plan identity hash.
     """
     normalized: list[str] = []
     for suffix in values:

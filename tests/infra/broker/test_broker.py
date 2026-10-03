@@ -1,5 +1,3 @@
-"""Unit tests for SecBroker and SecBrokerClient."""
-
 from __future__ import annotations
 
 import pickle
@@ -41,19 +39,16 @@ def test_managed_broker_lifecycle_and_fetch(tmp_path: Path) -> None:
     fake_http = _FakeHttpClient(payloads)
 
     with managed_broker(socket_path, http_client=fake_http) as client:
-        # Standard fetch
         res1 = client.fetch("https://www.sec.gov/Archives/x/doc1.htm")
         assert res1["status"] == "ok"
         assert res1["payload"] == b"<html>doc1</html>"
         assert fake_http.calls == ["https://www.sec.gov/Archives/x/doc1.htm"]
 
-        # Peek cache hit (bypasses get_bytes call)
         res2 = client.fetch("https://www.sec.gov/Archives/x/doc2.cached")
         assert res2["status"] == "ok"
         assert res2["payload"] == b"<html>doc2 cached</html>"
         assert len(fake_http.calls) == 1
 
-        # Missing URL failure
         res3 = client.fetch("https://www.sec.gov/Archives/missing.htm")
         assert res3["status"] == "failed"
         assert "404" in res3["error"]

@@ -1,20 +1,7 @@
 """DuckDB SQL for filing-catalog materialization.
-
-The queries here derive the two published catalog datasets -- filing-target
-occurrences and deduplicated registrant profiles -- from Phase 1 submission
-parts. The expected rows are transcribed independently in plain Python in the
-test suite; the two must agree, and when they diverge one of them is wrong and
-the test says which.
-
-Two rules are deliberate, and both narrow behaviour:
-
-* ``trim`` runs before the primary-document branch, so a whitespace-only value
-  counts as a missing document. The Phase 1 engine (``build_archive_url``)
-  already strips and treats such a value as missing, and anything else would let
-  a row publish a ``document_path_source`` contradicting the ``archive_url``
-  beside it.
-* File paths are emitted as escaped SQL literals rather than interpolated raw,
-  so a path containing a quote cannot terminate the string.
+``trim`` runs before the primary-document branch, so a whitespace-only value counts
+as missing and cannot publish a ``document_path_source`` contradicting the
+``archive_url`` beside it. Paths are escaped SQL literals, never interpolated raw.
 """
 
 from __future__ import annotations
@@ -30,27 +17,9 @@ from edgar_sec.infra.storage.duckdb import sql_identifier, sql_literal
 
 
 def build_part_unnest_query(part_path: str) -> str:
-    """Unnest one Phase 1 part into flat filing-occurrence rows.
-
-    Exactly one source part per query. The materializer walks the snapshot's
-    ordered parts and writes one shard per part, which is what keeps peak memory
-    proportional to a part rather than to the whole cohort.
-
-    Two properties of the SQL are important and must not be "simplified":
-
-    * The unnest is **uncorrelated** — ``UNNEST(filings)`` in the select list of a
-      subquery over the file. The correlated spelling
-      (``FROM read_parquet(...) AS t, LATERAL (SELECT UNNEST(t.filings))``) is
-      rewritten by DuckDB into a delim join, whose ``DELIM_SCAN`` must materialize
-      the whole nested ``filings`` value for every source row before it can emit
-      anything. That is an unspillable pin proportional to the entire part set, and
-      it exhausts the memory limit on a part list that streams fine when unnested
-      this way. ``tests/pipelines/filing_catalog/test_materialization.py`` pins the
-      absence of a delim join in the plan.
-    * Deduplication is **per source part**. ``occurrence_id`` is keyed on
-      ``source_cik``, and the catalog guard requires each CIK to appear in exactly
-      one source part, so the window below cannot miss a duplicate that lives in a
-      different part.
+    """Unnest one source part into flat filing-occurrence rows.
+    Two properties must not be "simplified": the unnest is **uncorrelated**, since
+    the correlated spelling pins the whole nested value; dedup is **per part**.
     """
     if not str(part_path):
         raise ValueError("build_part_unnest_query requires a source part")
@@ -163,11 +132,9 @@ def build_part_unnest_query(part_path: str) -> str:
 
 
 def build_profile_query(relation: str) -> str:
-    """Project deduplicated registrant profiles from a Phase 1 relation.
-
-    The dedup window keeps the most recent ``fetched_at`` per CIK, which is what
-    lets a later re-fetch of an already-seeded registrant supersede the earlier
-    row without a second profile.
+    """Project deduplicated registrant profiles from a source relation.
+    The window keeps the most recent ``fetched_at`` per CIK, so a re-fetch supersedes
+    the earlier row without a second profile.
     """
     source = sql_identifier(relation)
     profile_cols = ", ".join(f'"{name}"' for name in PROFILE_COLUMNS[:-1])

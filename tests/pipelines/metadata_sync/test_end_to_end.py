@@ -1,9 +1,4 @@
-"""End-to-end pipeline replay, offline via a scripted transport.
-
-Exercises the full plan -> run -> checkpoint -> merge -> publish chain over the
-committed mini manifest. The only substitution is the HTTP transport; the
-planner, worker, checkpoint validation, and DuckDB merge are the real ones.
-"""
+"""Plan -> run -> checkpoint -> merge -> publish, offline; only HTTP is faked."""
 
 from __future__ import annotations
 

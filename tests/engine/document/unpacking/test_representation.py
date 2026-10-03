@@ -1,9 +1,6 @@
-"""Contract tests for input preparation and representation classification.
-
-This is the stage every downstream decision branches on, so the tests pin the
-*order* as much as the outcomes: purge-before-classify, and ASCII-PRE-before-
-HTML-cleaning. Getting either wrong sends a whole filing down the wrong chain
-with no error raised.
+"""Input preparation and representation classification.
+The order is pinned as much as the outcomes: purge-before-classify and
+ASCII-PRE-before-HTML-cleaning, since either order sends a filing down the wrong chain.
 """
 
 from __future__ import annotations
@@ -44,8 +41,8 @@ def test_decode_bytes_falls_back_to_cp1252() -> None:
 
 
 def test_decode_bytes_falls_back_to_latin1() -> None:
-    # CP1252 leaves these five byte values undefined, so decoding fails and the
-    # ladder reaches Latin-1, which cannot fail.
+    # CP1252 leaves these byte values undefined, so decoding fails and the ladder
+    # reaches Latin-1, which cannot fail.
     raw = bytes([0x81, 0x8D, 0x41])
     with pytest.raises(UnicodeDecodeError):
         raw.decode("cp1252")
@@ -128,10 +125,8 @@ def test_non_displaying_blocks_are_purged_before_classification() -> None:
 
 
 def test_noscript_is_not_purged() -> None:
-    """Deliberate: the purge is exactly head/script/style.
-
-    `<noscript>` fallback text is document content — it is what a reader sees
-    when scripting is off — so purging it would delete visible prose.
+    """Deliberate: the purge is exactly head/script/style, and ``<noscript>``
+    fallback text is what a reader sees with scripting off.
     """
     raw = b"<html><body><noscript>fallback text</noscript><p>Visible</p></body></html>"
     text, _, _ = prepare_input_text(raw)

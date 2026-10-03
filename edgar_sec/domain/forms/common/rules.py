@@ -1,21 +1,14 @@
 """Universal SEC form phrase sequence rules for cover-page text healing.
 
-Contains common phrase-sequence rules shared across all cover-bearing SEC form
-families (10-K, 10-Q, 20-F). Form-specific rules are defined in their respective
-family packages (such as annual/sequences.py).
-
-A token slot is matched against an alphanumeric-stripped, anchored whole-word
-pattern, so a token carrying trailing punctuation (`"no."`, `"number,"`,
-`"12(b)"`) can never match: the strip removes the punctuation and the anchored
-pattern keeps it escaped. Every slot below therefore offers at least one
-punctuation-free branch.
+Shared across every cover-bearing form family; family-specific rules live in their own
+packages. A token slot matches an alphanumeric-stripped, anchored whole-word pattern, so
+punctuation-bearing tokens can never match.
 """
 
 from __future__ import annotations
 
 from edgar_sec.foundation.text.healing import PhraseSequenceRule
 
-# 1. Government & SEC Banners
 BANNER_RULES: list[PhraseSequenceRule] = [
     PhraseSequenceRule(
         name="united_states_sec",
@@ -29,7 +22,6 @@ BANNER_RULES: list[PhraseSequenceRule] = [
     ),
 ]
 
-# 2. Form & Report Titles
 FORM_TITLE_RULES: list[PhraseSequenceRule] = [
     PhraseSequenceRule(
         name="report_pursuant_act",
@@ -57,7 +49,6 @@ FORM_TITLE_RULES: list[PhraseSequenceRule] = [
     ),
 ]
 
-# 3. Period, File Number & Registrant Name
 PERIOD_FILE_REGISTRANT_RULES: list[PhraseSequenceRule] = [
     PhraseSequenceRule(
         name="fiscal_year_ended",
@@ -92,7 +83,6 @@ PERIOD_FILE_REGISTRANT_RULES: list[PhraseSequenceRule] = [
     ),
 ]
 
-# 4. Jurisdiction & IRS EIN
 JURISDICTION_RULES: list[PhraseSequenceRule] = [
     PhraseSequenceRule(
         name="state_of_incorporation",
@@ -118,7 +108,6 @@ JURISDICTION_RULES: list[PhraseSequenceRule] = [
     ),
 ]
 
-# 5. Address & Telephone
 ADDRESS_RULES: list[PhraseSequenceRule] = [
     PhraseSequenceRule(
         name="principal_executive_offices",
@@ -139,7 +128,6 @@ ADDRESS_RULES: list[PhraseSequenceRule] = [
     ),
 ]
 
-# 6. Statutory Securities & Exchange
 SECURITIES_EXCHANGE_RULES: list[PhraseSequenceRule] = [
     PhraseSequenceRule(
         name="securities_registered_12b",
@@ -188,7 +176,6 @@ SECURITIES_EXCHANGE_RULES: list[PhraseSequenceRule] = [
     ),
 ]
 
-# 7. Shares Outstanding Rules (Shared across 10-K and 10-Q)
 COMMON_SHARES_RULES: list[PhraseSequenceRule] = [
     PhraseSequenceRule(
         name="shares_outstanding_caption",

@@ -47,8 +47,7 @@ def test_a_prose_grid_joins_its_fragments_into_sentences() -> None:
         "We operate in a competitive market. and are subject to regulation."
         in unwrapped
     )
-    # The lead-in row ends in a colon, which is continuation punctuation, so the
-    # fragment after it starts on a new line rather than running on.
+    # The lead-in row ends in a colon, so the fragment after it starts on a new line.
     assert unwrapped.startswith("The following risk factors apply:\n")
 
 
@@ -71,9 +70,6 @@ def test_a_list_item_is_a_line_starting_with_a_bullet_marker() -> None:
 def test_prose_rows_join_with_a_space_unless_the_previous_row_ends_a_sentence() -> None:
     assert _join_prose_rows([["one."], ["Two"]]) == "one.\nTwo"
     assert _join_prose_rows([["one,"], ["two"]]) == "one, two"
-
-
-# --- cleanup_false_tables_with_metadata -------------------------------------
 
 
 def test_text_without_a_table_is_returned_unchanged() -> None:

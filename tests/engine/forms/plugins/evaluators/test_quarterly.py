@@ -92,10 +92,8 @@ def test_the_ceilings_are_exclusive_bounds() -> None:
 
 
 def test_an_unsupplied_length_never_satisfies_a_ceiling() -> None:
-    """The ceiling is a statement about what was fetched, not about ``text``.
-
-    A 40-megabyte normalized frame with no raw length reported is not evidence
-    that the payload was large, so the shortcut must not fire.
+    """The ceiling is a statement about what was fetched, not about ``text``:
+    no raw length reported is not evidence the payload was large.
     """
     assert evaluate_quarterly("x" * 40_000_000).category == "standard_full"
 

@@ -1,4 +1,4 @@
-"""Append-only raw-payload SQLite store for Phase 2.5 fixtures."""
+"""Append-only raw-payload SQLite store for fixtures."""
 
 from __future__ import annotations
 
@@ -60,11 +60,10 @@ class FixtureStoreError(RuntimeError):
 
 
 class FixtureStore:
-    """Read or append compressed raw payloads keyed by document locator ID.
+    """Read or append compressed raw payloads keyed by document locator id.
 
-    Readers always use SQLite's read-only URI mode. A writable store creates
-    only ``fixture_payloads`` and uses insert-ignore semantics so stored
-    evidence cannot be replaced by a later response.
+    Readers use SQLite's read-only URI; a writable store creates only
+    ``fixture_payloads`` and insert-ignores, so evidence is never replaced.
     """
 
     __slots__ = ("_connection", "_read_only", "db_path")
@@ -114,11 +113,8 @@ class FixtureStore:
             raise FixtureStoreError(
                 f"invalid {_TABLE} schema in {self.db_path}; expected doc_id, raw_payload"
             )
-        # A fixture written before document metadata was recorded has no
-        # ``document_blobs``. That is a repairable gap, not a corrupt store, so
-        # the read path reports it as "no metadata" and the caller decides
-        # whether to re-fill. Rejecting here would make the database unreadable
-        # rather than merely incomplete.
+        # A fixture recorded before document metadata existed has no ``document_blobs``.
+        # That is an incomplete store, not a corrupt one, so reads report "no metadata".
         if self._table_exists(_DOCUMENTS_TABLE):
             document_columns = self._connection.execute(
                 f"PRAGMA table_info({_DOCUMENTS_TABLE})"
@@ -219,20 +215,12 @@ class FixtureStore:
     ) -> int:
         """Record per-document identity and source hashes, idempotently.
 
-        Called for every locator on a fill, not only for newly fetched payloads.
-        A payload already present from an earlier fill still needs its metadata
-        row, and that is the whole repair path for a fixture recorded before
-        this table existed: re-running the same fill backfills it without
-        touching the network, because the payloads are already there.
-
-        Insert-ignore, like the payload table: a recorded document is evidence
-        and a later response must not rewrite it.
+        Called for every locator, not only newly fetched payloads: that is the repair
+        path for a fixture recorded before this table existed, and it costs no network.
         """
         if self._read_only:
             raise FixtureStoreError("fixture store is read-only")
-        # Forms are written independently of the document rows, so a caller
-        # supplying only forms must still get them. Returning early on empty
-        # documents alone would drop them silently.
+        # Forms are written independently, so a forms-only caller must still get them.
         if not documents and not forms:
             return 0
         try:
@@ -278,9 +266,7 @@ class FixtureStore:
     ) -> tuple[RawDocumentBlob, ...]:
         """Return stored document metadata, always ordered by document id.
 
-        Ordering is the selection contract: a ``limit`` takes the first N
-        document ids in a stable order, so two runs of the same fill with the
-        same limit review the same documents.
+        Ordering is the selection contract: ``limit`` takes the first N ids deterministically.
         """
         if not self._table_exists(_DOCUMENTS_TABLE):
             return ()

@@ -1,10 +1,4 @@
-"""Delta augmentation against a published snapshot.
-
-The augmentation contract under test: a snapshot holding N CIKs that receives K
-new ones publishes N+K rows, the N base CIKs are never refetched, and the delta
-plan is identified by its base as well as its cohort. That last property is
-pinned directly rather than inferred.
-"""
+"""Delta augmentation: a delta plan is identified by its base as well as its cohort."""
 
 from __future__ import annotations
 
@@ -74,11 +68,7 @@ def _seed(session: FakeSession, extra: bool = False) -> None:
 
 
 def _snapshot_rows(metadata, snapshot_id: str) -> list[dict]:
-    """Every row of a published snapshot, across all of its parts.
-
-    A snapshot is a dataset, not a file, so tests read it the way a consumer
-    does: through the part list its manifest declares.
-    """
+    """Read a snapshot the way a consumer does: every part its manifest declares."""
     parts = read_snapshot_parts(metadata.snapshot_manifest(snapshot_id))
     rows: list[dict] = []
     for path in parts.paths:
@@ -101,8 +91,7 @@ def _publish_baseline(client, session: FakeSession, tmp_path: Path):
     for chunk_id in plan.chunk_ids():
         run_chunk(client, plan, run_paths, chunk_id, snapshot_id="base", workers=2)
     report = merge_chunks(plan, run_paths, "base")
-    # A merge is not a publication. The base of an augmentation must be a
-    # published snapshot, so the manifest is the commit record that makes it one.
+    # A merge is not a publication; the manifest is the commit record.
     publish_snapshot(report, metadata)
     return metadata, cohort, plan, report
 
@@ -113,11 +102,7 @@ def _publish_baseline(client, session: FakeSession, tmp_path: Path):
 def test_plan_delta_excludes_base_ciks(
     client, session: FakeSession, tmp_path: Path
 ) -> None:
-    """The delta covers exactly what the base does not already hold.
-
-    The base is read from published artifacts, so a delta can only be derived
-    against a snapshot that was actually published.
-    """
+    """The base is read from published artifacts, so it must have been published."""
     metadata = _publish_partial_base(
         client, session, tmp_path, ("0000001985", "0000001761"), "base"
     )
@@ -149,11 +134,7 @@ def test_an_empty_delta_is_refused_rather_than_planned(
 def _publish_partial_base(
     client, session: FakeSession, tmp_path: Path, ciks, base_id: str
 ):
-    """Publish a base covering only some of the mini cohort.
-
-    A delta needs a base that holds *some* of what is requested; a base covering all
-    of it would leave nothing to derive, which is the no-op case instead.
-    """
+    """A base covering everything would leave an empty delta, the no-op case instead."""
     _seed(session)
     metadata = resolve_metadata_paths(tmp_path)
     plan = build_plan(roster_of(tuple(ciks)), chunk_size=1000)
@@ -169,12 +150,7 @@ def _publish_partial_base(
 def test_one_requested_list_against_two_bases_is_two_plans(
     client, session: FakeSession, tmp_path: Path
 ) -> None:
-    """A delta plan is identified by its base as well as its cohort.
-
-    Without that, the same requested CIKs against two different bases would resolve
-    to one plan directory and one chunk namespace, and the second run would
-    overwrite the first plan's record.
-    """
+    """One plan directory per base, or the second run overwrites the first plan."""
     requested = fixture_cohort("cik_sec_mini.csv").roster
     metadata_a = _publish_partial_base(
         client, session, tmp_path, ("0000001985",), "base-a"
@@ -205,7 +181,6 @@ def test_one_requested_list_against_two_bases_is_two_plans(
 def test_a_delta_plan_never_shares_a_directory_with_a_full_plan(
     client, session: FakeSession, tmp_path: Path
 ) -> None:
-    """The two plan kinds over one cohort must not collide on disk."""
     requested = fixture_cohort("cik_sec_mini.csv").roster
     metadata = _publish_partial_base(client, session, tmp_path, ("0000001985",), "base")
     full = build_plan(requested, chunk_size=2)
@@ -235,13 +210,7 @@ def test_delta_refuses_an_empty_cohort(
 def test_the_delta_is_numbered_from_zero_and_is_reproducible(
     client, session: FakeSession, tmp_path: Path
 ) -> None:
-    """A delta is a cohort in its own right, so it numbers from zero.
-
-    An ordinal is a position within a cohort, and chunk ranges start at zero, so a
-    delta that inherited the requested cohort's ordinals would have its first chunk
-    read back empty. Its identity is recorded on the merge report, so the numbering
-    also has to be a function of the inputs rather than of read order.
-    """
+    """An ordinal is a position within a cohort, so a delta numbers from zero."""
     metadata = _publish_partial_base(client, session, tmp_path, ("0000001985",), "base")
     requested = fixture_cohort("cik_sec_mini.csv").roster
 
@@ -275,12 +244,7 @@ def test_base_membership_is_read_from_the_published_index(
 def test_base_membership_falls_back_to_the_payload(
     client, session: FakeSession, tmp_path: Path
 ) -> None:
-    """A snapshot published before the index existed is still readable.
-
-    Falling back is what makes the index an addition rather than a migration; a
-    missing base is still an error, because an unreadable base must never be
-    mistaken for an empty one.
-    """
+    """An index-less base still resolves; a missing base is never read as empty."""
     metadata, _cohort, _plan, _report = _publish_baseline(client, session, tmp_path)
     metadata.snapshot_cik_index("base").unlink()
     sources, from_parts = base_cik_sources(metadata, "base")
@@ -339,9 +303,7 @@ def test_augment_merges_base_and_delta_without_refetching_base(
     assert sorted(ciks) == sorted(
         [*cohort.roster.range_ciks(0, cohort.row_count), EXTRA]
     )
-    # An augmented snapshot is in part order (base parts, then delta chunks), not
-    # globally CIK-sorted. Membership is the contract; the manifest records the
-    # ordering as `sort_order`.
+    # Part order (base parts, then delta chunks), not global CIK sort.
     parts = read_snapshot_parts(metadata.snapshot_manifest("next"))
     assert [
         part["source"].split(":")[0] for part in parts.layout.manifest["parts"]
@@ -363,14 +325,7 @@ def test_augment_merges_base_and_delta_without_refetching_base(
 def test_an_augmentation_reports_both_of_its_phases(
     client, session: FakeSession, tmp_path: Path
 ) -> None:
-    """An augmentation is the pipeline's longest silent wait without this.
-
-    It does a rate-limited network fetch and then scans every input for null and
-    duplicate CIKs, so it emits the same two event shapes ``run`` and ``merge``
-    already emit. Asserting the whole sequence matters: a caller that renders a
-    bar needs the delta size before the first fetch event, which is why
-    ``delta_plan`` comes first.
-    """
+    """A bar needs the delta size before the first fetch event, hence `delta_plan`."""
     metadata, _, _, _ = _publish_baseline(client, session, tmp_path)
     widened = _widen(tmp_path, session, EXTRA)
 
@@ -396,7 +351,6 @@ def test_an_augmentation_reports_both_of_its_phases(
     assert "cik_normalized" in types
     fetch_events = [event for event in events if event["type"] == "cik_normalized"]
     assert [event["cik"] for event in fetch_events] == [EXTRA]
-    # Both merge stages, then the readback, so the merge bar can complete.
     stages = [event["stage"] for event in events if event["type"] == "merge_stage"]
     assert stages == ["validating", "publishing_parts"]
     assert events[-1]["type"] == "readback_done"
@@ -406,7 +360,6 @@ def test_an_augmentation_reports_both_of_its_phases(
 def test_progress_comes_before_the_publish_so_a_bar_never_overruns(
     client, session: FakeSession, tmp_path: Path
 ) -> None:
-    """The readback event is the last thing, so it reports the verified total."""
     metadata, _, _, _ = _publish_baseline(client, session, tmp_path)
     widened = _widen(tmp_path, session, EXTRA)
 
@@ -429,7 +382,7 @@ def test_progress_comes_before_the_publish_so_a_bar_never_overruns(
 def test_a_broken_progress_callback_cannot_fail_an_augmentation(
     client, session: FakeSession, tmp_path: Path
 ) -> None:
-    """Presentation must not be able to fail a fetch, same as a merge."""
+    """Consistency: a merge also survives a raising progress callback."""
     metadata, _, _, _ = _publish_baseline(client, session, tmp_path)
     widened = _widen(tmp_path, session, EXTRA)
 
@@ -468,7 +421,6 @@ def test_omitting_progress_is_still_supported(
 
 
 def _widen(tmp_path: Path, session: FakeSession, *extra: str) -> Path:
-    """Write a manifest adding CIKs to the baseline cohort, and register them."""
     rows = "cik,name\n1985,A\n1761,B\n20,C\n37996,FORD\n"
     rows += "".join(f"{cik},EXTRA {cik}\n" for cik in extra)
     path = tmp_path / "widened.csv"
@@ -480,13 +432,7 @@ def _widen(tmp_path: Path, session: FakeSession, *extra: str) -> Path:
 def test_an_omitted_snapshot_id_publishes_under_the_delta_plan_id(
     client, session: FakeSession, tmp_path: Path
 ) -> None:
-    """Every other Phase 1 identity is content-derived; this one now is too.
-
-    The snapshot was the single hand-typed identifier on this surface while
-    ``merge`` in the same pipeline already defaulted to the plan id. The delta plan
-    id is a content address over the base snapshot, the delta cohort, and the chunk
-    layout, so deriving it makes the operation idempotent.
-    """
+    """Deriving it from the plan id is what makes a rerun idempotent."""
     metadata, _, _, _ = _publish_baseline(client, session, tmp_path)
     widened = _widen(tmp_path, session, EXTRA)
 
@@ -515,7 +461,6 @@ def test_an_omitted_snapshot_id_publishes_under_the_delta_plan_id(
 def test_the_derived_id_is_stable_for_the_same_base_and_cohort(
     client, session: FakeSession, tmp_path: Path
 ) -> None:
-    """Idempotency is the point: rerunning the same delta must resolve the same id."""
     metadata, _, _, _ = _publish_baseline(client, session, tmp_path)
     widened = _widen(tmp_path, session, EXTRA)
     first = augment(
@@ -540,7 +485,6 @@ def test_the_derived_id_is_stable_for_the_same_base_and_cohort(
 def test_a_different_base_or_chunk_layout_yields_a_different_id(
     client, session: FakeSession, tmp_path: Path
 ) -> None:
-    """The derivation is only meaningful if the bound inputs actually move it."""
     metadata, _, _, _ = _publish_baseline(client, session, tmp_path)
     widened = _widen(tmp_path, session, EXTRA)
     cohort = compile_cik_cohort(widened, metadata_paths=metadata)
@@ -614,7 +558,6 @@ def test_augmented_index_is_the_union_of_base_and_delta(
 def test_augmented_manifest_records_its_lineage(
     client, session: FakeSession, tmp_path: Path
 ) -> None:
-    """The published artifact says which base and which delta produced it."""
     metadata, _, _, _ = _publish_baseline(client, session, tmp_path)
     widened = tmp_path / "widened.csv"
     widened.write_text("cik,name\n5555,EXTRA CO\n", encoding="utf-8")
@@ -641,12 +584,7 @@ def test_augmented_manifest_records_its_lineage(
 def test_augment_preserves_base_row_provenance(
     client, session: FakeSession, tmp_path: Path
 ) -> None:
-    """Row-level ``snapshot_id`` is provenance, not the containing artifact's id.
-
-    Augmentation copies base rows verbatim, so an augmented snapshot legitimately
-    contains rows stamped with the base's identity. Rewriting them to the new
-    artifact's id would misstate where the data came from.
-    """
+    """Base rows are copied verbatim; rewriting their stamp would misstate origin."""
     metadata, _, _, _ = _publish_baseline(client, session, tmp_path)
     base_stamps = {
         row["cik"]: row["snapshot_id"] for row in _snapshot_rows(metadata, "base")
@@ -673,7 +611,7 @@ def test_augment_preserves_base_row_provenance(
 def test_augment_from_input_compiles_the_csv_and_matches_augment(
     client, session: FakeSession, tmp_path: Path
 ) -> None:
-    """The documented wrapper is the path the CLI takes, so it must agree."""
+    """This wrapper is the path the CLI takes, so it must agree with `augment`."""
     metadata, _, _, _ = _publish_baseline(client, session, tmp_path)
     widened = tmp_path / "widened.csv"
     widened.write_text("cik,name\n5555,EXTRA CO\n", encoding="utf-8")
@@ -696,7 +634,6 @@ def test_augment_from_input_compiles_the_csv_and_matches_augment(
 def test_augment_from_roster_agrees_with_the_csv_wrapper(
     client, session: FakeSession, tmp_path: Path
 ) -> None:
-    """A published registry roster and a CSV describe the same delta."""
     metadata, _, _, _ = _publish_baseline(client, session, tmp_path)
     roster = roster_of((EXTRA,), ("EXTRA CO",))
     _seed(session, extra=True)
@@ -719,14 +656,7 @@ def test_augment_from_roster_agrees_with_the_csv_wrapper(
 def test_augment_is_a_no_op_when_the_base_already_covers_the_request(
     client, session: FakeSession, tmp_path: Path
 ) -> None:
-    """Re-requesting a fully-covered cohort is the ordinary case, not a failure.
-
-    The seed this pipeline plans over is a file someone curated at a point in
-    time. Re-augmenting it after it has been fully ingested is the *expected*
-    outcome, so it settles as a `no_op` rather than raising "augmentation
-    requested no work" from inside the run, after the operator had already
-    answered the fetch-consent and worker-count questions.
-    """
+    """Re-augmenting a fully ingested seed settles as a no-op rather than raising."""
     metadata, cohort, _, _ = _publish_baseline(client, session, tmp_path)
     pointer_before = metadata.current_pointer.read_bytes()
     sessions_before = session.calls
@@ -752,7 +682,6 @@ def test_augment_is_a_no_op_when_the_base_already_covers_the_request(
         cohort.roster.range_ciks(0, cohort.row_count)
     )
     assert result.total_row_count == result.base_row_count
-    # No request, no plan, no snapshot, no pointer movement.
     assert session.calls == sessions_before
     assert metadata.snapshot_manifest("next").exists() is False
     assert metadata.current_pointer.read_bytes() == pointer_before
@@ -761,7 +690,6 @@ def test_augment_is_a_no_op_when_the_base_already_covers_the_request(
 def test_preflight_reports_the_work_before_anything_is_fetched(
     client, session: FakeSession, tmp_path: Path
 ) -> None:
-    """The arithmetic is answerable from published artifacts alone."""
     metadata, cohort, _, _ = _publish_baseline(client, session, tmp_path)
     requested = roster_of((*cohort.roster.range_ciks(0, cohort.row_count), EXTRA))
 
@@ -791,13 +719,7 @@ def test_preflight_reports_an_empty_delta_without_raising(
 def test_a_delta_calling_itself_a_delta_is_still_reduced_against_the_base(
     client, session: FakeSession, tmp_path: Path
 ) -> None:
-    """A hand-supplied increment is a *request*, not a claim about what is missing.
-
-    The operator may point augmentation at a file that already looks like the
-    delta. Treating that file's contents as the work list would refetch CIKs the
-    base already holds and then reject the merge for containing them, so every
-    cohort is reduced against the base no matter what it is named.
-    """
+    """A hand-supplied increment is a request, not a claim about what is missing."""
     metadata, cohort, _, _ = _publish_baseline(client, session, tmp_path)
     already_covered = roster_of(cohort.roster.range_ciks(0, cohort.row_count))
     check = preflight_augment(already_covered, metadata, base_snapshot_id="base")

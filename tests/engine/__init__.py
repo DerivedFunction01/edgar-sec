@@ -1,1 +1,1 @@
-"""Unit tests for engine submissions package."""
+"""Unit tests for the engine layer."""

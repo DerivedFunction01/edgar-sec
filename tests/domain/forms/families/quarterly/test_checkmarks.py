@@ -1,5 +1,3 @@
-"""Tests for quarterly report checkbox schemas."""
-
 from __future__ import annotations
 
 from edgar_sec.domain.forms.families.quarterly.checkmarks import (

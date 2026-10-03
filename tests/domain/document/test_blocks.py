@@ -1,5 +1,3 @@
-"""Unit tests for DocumentBlock and BlockStream."""
-
 from edgar_sec.domain.document.blocks import (
     BlockKind,
     BlockStream,

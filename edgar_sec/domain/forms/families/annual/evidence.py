@@ -80,11 +80,9 @@ from edgar_sec.domain.forms.common.vocabulary import COMMON_SHARES_PHRASES
 
 SHARES_PHRASES: tuple[str, ...] = COMMON_SHARES_PHRASES
 
-# Decisive annual body phrases: one distinct phrase hit confirms body prose.
-# Includes phrases that are specific to audit-opinion paragraphs (10-K/A filings
-# whose cover is followed by auditor reports rather than Item 1 body prose) and
-# to amendment explanatory notes. These never appear in SEC cover-page boilerplate
-# (confirmed across the filing review cohort), so they are safe as decisive signals.
+# Decisive annual body phrases: one distinct hit confirms body prose. Includes the
+# audit-opinion and amendment-note phrasing of a 10-K/A, which never appears in
+# cover-page boilerplate.
 ANNUAL_BODY_PHRASES: tuple[str, ...] = (
     "collective bargaining",
     "labor union",
@@ -92,13 +90,11 @@ ANNUAL_BODY_PHRASES: tuple[str, ...] = (
     "management believes",
     "future cash flows",
     "assumptions and estimates",
-    # Audit-opinion phrases (10-K/A auditor-report amendments)
     "we have audited",
     "in our opinion",
     "balance sheets",
     "statements of operations",
     "accounting principles",
-    # Amendment explanatory note phrases
     "this amendment is being filed",
     "amendment is being filed",
 )
@@ -228,10 +224,9 @@ ANNUAL_COVER_EXCLUSION_TERMS: tuple[str, ...] = (
     "form",
 )
 
-# Annual body prose tiers, from decisive n-gram phrases down to corroborating
-# soft phrases that only add to a score another tier already set. The forward
-# tier matches all-lowercase tokens only, which keeps a forward-looking
-# boilerplate paragraph from scoring as body prose on its own.
+# Annual body prose tiers, from decisive phrases down to corroborating soft ones. The
+# forward tier matches all-lowercase tokens only, so safe-harbor boilerplate cannot
+# score as body prose on its own.
 ANNUAL_BODY_LEXICAL_PACK = LexicalEvidencePack(
     name="annual_body_start",
     tiers=(
@@ -334,7 +329,6 @@ SHARES_VALUE_RE = re.compile(
     r"\b(?:\d{1,3}(?:,\d{3})+|\d{5,12})\b\s*(?:shares\b)?", re.IGNORECASE
 )
 
-# Phrase sequence healing rules
 _SHARES_RULES: list[PhraseSequenceRule] = list(COMMON_SHARES_RULES)
 
 _PUBLIC_FLOAT_RULES: list[PhraseSequenceRule] = [

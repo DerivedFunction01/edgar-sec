@@ -1,5 +1,3 @@
-"""Unit tests for infra.storage.duckdb."""
-
 from __future__ import annotations
 
 from pathlib import Path
@@ -84,14 +82,7 @@ def test_duplicate_and_null_keys_are_reported(tmp_path: Path) -> None:
 
 
 def test_every_connection_carries_the_resource_budget() -> None:
-    """The four settings are applied through the single connect() seam.
-
-    AGENTS.md section 2 requires every DuckDB connection to set threads,
-    memory_limit, temp_directory and preserve_insertion_order from the
-    cgroup-aware resource profile. The structural guarantee is that
-    ``duckdb.connect`` is reachable from exactly one place, so nothing can open
-    an unconfigured connection; this test pins both halves of that.
-    """
+    """`duckdb.connect` is reachable from one place, so no connection is unconfigured."""
     from pathlib import Path as _Path
 
     import edgar_sec
@@ -122,13 +113,7 @@ def test_every_connection_carries_the_resource_budget() -> None:
 
 
 def test_copy_query_to_parquet_binds_its_parameters(tmp_path: Path) -> None:
-    """A source path is bound, never spliced into the query text.
-
-    The query stays a plain constant and the path travels as a bound
-    parameter, which is what lets a caller compose SQL without being an audited
-    SQL-compiling module. Reading a path whose name contains a quote also proves
-    the binding is real: interpolating it would either fail or misparse.
-    """
+    """A quoted path proves the binding is real: interpolation would misparse."""
     source = tmp_path / "it's a source.parquet"
     _write(source, ["0000001985"], [7])
     destination = tmp_path / "out.parquet"
@@ -148,11 +133,7 @@ def test_copy_query_to_parquet_binds_its_parameters(tmp_path: Path) -> None:
 def test_copy_query_to_parquet_keeps_a_parametrised_query_constant(
     tmp_path: Path,
 ) -> None:
-    """One query constant serves several bound sources.
-
-    A caller reusing a single query across inputs must not rebuild the statement
-    per source, which only holds if the path never entered the SQL.
-    """
+    """One query constant serves several sources only if the path never enters SQL."""
     first = _write(tmp_path / "a.parquet", ["0000000001"], [1])
     second = _write(tmp_path / "b.parquet", ["0000000002"], [2])
     query = "SELECT cik FROM read_parquet(?) ORDER BY cik"

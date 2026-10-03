@@ -1,4 +1,4 @@
-"""Unit tests for the shared catalog predicate compilers."""
+"""The shared catalog predicate compilers."""
 
 from __future__ import annotations
 
@@ -44,11 +44,8 @@ def test_suffix_sql_rejects_an_unsafe_column() -> None:
 
 
 def test_date_selection_sql_is_true_when_unconstrained() -> None:
-    """The empty selection applies no predicate, matching the other builders.
-
-    It is not the same answer as a nonempty selection: an empty one keeps rows
-    whose ``report_date`` is missing, because there is nothing to place them
-    against.
+    """Not the same answer as a nonempty selection: an empty one keeps rows whose
+    ``report_date`` is missing, having nothing to place them against.
     """
     assert date_selection_sql(()) == "TRUE"
 
@@ -80,10 +77,8 @@ def test_date_selection_sql_keeps_one_side_of_an_open_bound() -> None:
 
 
 def test_date_selection_sql_ands_the_period_with_its_year_bounds() -> None:
-    """The quarter filter and the year bounds are separate conditions.
-
-    Keeping them visible in the emitted SQL is what makes the distinction between
-    ``@Q1[2011..2015]`` and ``@Q1`` checkable by reading the predicate.
+    """Emitting the year bounds as separate clauses is what makes ``@Q1[2011..2015]``
+    distinguishable from ``@Q1`` by reading the predicate.
     """
     predicate = date_selection_sql(parse_date_selection("@Q1[2011..2015]"))
     assert predicate == (
@@ -101,8 +96,8 @@ def test_date_selection_sql_selects_calendar_months() -> None:
 
 
 def test_date_selection_sql_ors_the_clauses_and_parenthesizes_them() -> None:
-    """A caller conjoins this with AND, so the disjunction must carry its own
-    parentheses or ``a AND b OR c`` silently changes its meaning."""
+    """A caller conjoins this with AND, so an unparenthesized disjunction silently
+    changes meaning."""
     predicate = date_selection_sql(parse_date_selection("2024,@Q1"))
     assert predicate == (
         "("
@@ -120,9 +115,7 @@ def test_date_selection_sql_binds_dates_as_literals_not_interpolation() -> None:
 
 
 def _select_report_dates(selection_text: str, rows: list[str]) -> list[str]:
-    """Run the predicate over ``rows`` the way a caller must wire it.
-
-    Both wirings are executed so the tests pin that they select the same rows;
+    """Both wirings are executed so the tests pin that they select the same rows;
     the projection exists for speed, not for a different answer.
     """
     con = duckdb.connect()
@@ -161,8 +154,7 @@ def test_date_selection_sql_matches_calendar_bounds_on_real_shaped_values() -> N
         "2005-07-01",
         "2008-03-31",
     ]
-    # 2008-03-31 is Q1, so an unbounded ``@Q1`` keeps it while a bounded one
-    # drops it -- the distinction the two spellings exist to express.
+    # 2008-03-31 is Q1, so an unbounded ``@Q1`` keeps it and a bounded one drops it.
     assert _select_report_dates("@Q1", rows) == ["1999-03-31", "2008-03-31"]
     assert _select_report_dates("@Q1[1999..2005]", rows) == ["1999-03-31"]
     assert _select_report_dates("@Q1[1999..2001]", rows) == ["1999-03-31"]

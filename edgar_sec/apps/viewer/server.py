@@ -1,23 +1,7 @@
-"""HTTP surface for the dataset viewer.
+"""HTTP surface for the dataset viewer — read-only over one artifacts root.
 
-Read-only API endpoints over one artifacts root. Three properties hold across
-all of them:
-
-**The client never names a path.** A request carries an opaque dataset id; the
-server resolves it through :func:`apps.viewer.model.artifact_path`, which refuses
-anything outside the artifacts root. The browser cannot ask for a file by name.
-
-**The client never names a column or a SQL path** either. Column names are checked
-against the schema DuckDB reported, and the console's own relation is bound
-server-side.
-
-**A listing is a listing, not a promise.** Each entry carries a ``revision`` token
-the browser checks before reusing a cached payload. A published snapshot's revision
-is a digest of its manifest, so it cannot miss a change the way a filesystem
-timestamp can.
-
-Discovery re-runs per request rather than being cached, because the revision token
-is the invalidation source and a cached listing would defeat it.
+A request carries an opaque dataset id, never a path or a column. Discovery re-runs per
+request rather than being cached, because the revision token is the invalidation source.
 """
 
 from __future__ import annotations
@@ -65,10 +49,8 @@ UI_DIST = Path(__file__).parent / "ui" / "dist"
 def _ref(summary: ArtifactSummary, root: Path) -> DatasetRef:
     """Turn a listing entry into a readable dataset.
 
-    Parts are re-resolved from the entry's own ``source_paths`` rather than
-    globbed, so a file that appeared next to a snapshot *after* it was published
-    cannot join a read that a different set of bytes described. A single-file
-    dataset has no ``source_paths`` beyond itself, so it resolves from the id.
+    Parts re-resolve from the entry's own ``source_paths``, never by globbing, so a file
+    appearing after publication cannot join a read a different byte set described.
     """
     if summary.source_paths:
         paths = tuple(
@@ -140,9 +122,8 @@ def _find_dataset(dataset_id: str, root: Path) -> ArtifactSummary:
 def create_app(artifacts_root: Path | None = None) -> FastAPI:
     """Build the viewer application.
 
-    ``artifacts_root`` defaults to the resolved project root, so the app finds
-    the same artifacts the pipelines write to without being told twice. Passing
-    it explicitly is how the tests and ``--artifacts-root`` override that.
+    ``artifacts_root`` defaults to the resolved project root; passing it is how the
+    tests and ``--artifacts-root`` override that.
     """
     if artifacts_root is None:
         from edgar_sec.foundation.runtime.paths import resolve_paths

@@ -35,7 +35,6 @@ from edgar_sec.foundation.text.evidence import (
     compile_evidence_pack,
 )
 
-# Combined Primary Tier for all derivative asset classes, cross-asset structures, and ASC 815 master schedules
 DERIVATIVES_PRIMARY_TERMS: tuple[str, ...] = expand_alternations(
     IR_DERIVATIVE_TERMS,
     FX_DERIVATIVE_TERMS,
@@ -45,7 +44,6 @@ DERIVATIVES_PRIMARY_TERMS: tuple[str, ...] = expand_alternations(
     GENERIC_DERIVATIVE_TERMS,
 )
 
-# Orthogonal Context Tier: ONLY external accounting standard & risk context (zero repeated instrument terms)
 DERIVATIVES_CONTEXT_TERMS: tuple[str, ...] = (
     "asc 815",
     "asc 820",

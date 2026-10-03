@@ -47,10 +47,8 @@ def test_heading_without_rows_is_not_toc() -> None:
 
 
 def test_heading_toc_inside_table_ends_at_table_close() -> None:
-    """A heading TOC whose rows sit in a TABLE claims the table's close.
-
-    Rows that do not parse as TOC rows and the ``</TABLE>`` tag itself stay
-    inside the span instead of ending at the first non-row line.
+    """Non-row lines and the ``</TABLE>`` tag stay inside the span instead of ending
+    it at the first non-row line.
     """
     text = """\
 TABLE OF CONTENTS
@@ -76,11 +74,8 @@ ITEM 1. BUSINESS
 
 
 def test_heading_toc_claims_split_continuation_table() -> None:
-    """A page-break-split continuation table is claimed through its close.
-
-    Non-row trailing lines inside the first table stop the row scan before
-    its close; the span still claims that close and merges the continuation
-    table across the page break.
+    """Non-row trailing lines stop the row scan before the close; the span still
+    claims that close and merges the continuation table across the page break.
     """
     text = """\
 TABLE OF CONTENTS

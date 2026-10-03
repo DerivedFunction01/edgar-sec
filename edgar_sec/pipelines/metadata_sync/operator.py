@@ -1,20 +1,7 @@
 """Interactive terminal operator for the metadata sync pipeline.
-
-The wizard is a thin presentation layer over the same typed options and the same
-command functions the CLI uses, so the two surfaces cannot drift. What it adds is
-*discovery*: it looks at what is already on disk, shows the active plan and the
-current snapshot before each menu, carries that state across visits, and offers a
-numbered pick instead of asking the operator to remember an identifier.
-
-Discovery also keeps every identifier derived rather than typed. A plan comes
-from a listing, the augmentation's published snapshot id defaults to its derived
-delta plan id, and the current-snapshot pointer is moved by an explicit operation
-over an already-published manifest. The one identifier a menu asks for is the
-target-plan path, which is deliberately a cross-pipeline handoff rather than a
-discovery surface.
-
-State is passed in rather than held in a module global so the actions close over
-it and a test can drive the whole wizard without a terminal or a leaked session.
+A thin presentation layer over the same command functions the CLI uses, so the two
+surfaces cannot drift; state is passed in, so a test can drive the wizard without
+a terminal.
 """
 
 from __future__ import annotations
@@ -83,25 +70,15 @@ INTERRUPTED_MESSAGE = (
     " nothing already fetched is discarded."
 )
 
-# Fetching from SEC is the long, rate-limited, network-touching part of this
-# pipeline. Confirmation defaults to no: an accidental yes costs wall-clock and
-# request budget, an accidental no costs one keypress.
+# Confirmation defaults to no: an accidental yes costs wall-clock and request
+# budget, an accidental no costs one keypress.
 NETWORK_PROMPT = "This contacts SEC over the network. Continue? (y/N) "
 
 
 @dataclass
 class WizardState:
     """What the operator has already established, carried across menu visits.
-
-    The state attributes make it inspectable, allowing tests to drive the wizard
-    without a terminal.
-
-    ``artifacts_root`` is the session's root, or empty for the configured project
-    default. No menu action asks for it: the question already has one authority --
-    the registered ``artifacts.root`` setting that ``resolve_paths()`` reads -- and
-    every action routes through this one field, so a caller can scope a whole
-    session to another tree without any action prompting for it. A non-default root
-    for a single command is ``--artifacts`` on the subcommands instead.
+    ``artifacts_root`` is the session's single authority for the tree.
     """
 
     plan_id: str = ""
@@ -150,13 +127,7 @@ def confirm_network(prompt: str = NETWORK_PROMPT) -> bool:
 
 
 def render_session_header(state: WizardState) -> str:
-    """One line describing what this session is currently pointed at.
-
-    Shown above every menu, so an operator can see the working plan and the
-    published snapshot without having to run status first. A session with
-    nothing resolved says so and points at the action that creates it, rather
-    than leaving a blank where a plan id belongs.
-    """
+    """One line describing what this session is currently pointed at."""
     metadata = state.metadata()
     current = current_snapshot_id(metadata)
     parts: list[str] = []
@@ -172,8 +143,7 @@ def render_session_header(state: WizardState) -> str:
 def render_plan_header(state: WizardState) -> str | None:
     """Describe the working plan, or ``None`` when none is resolved yet.
 
-    ``None`` is the signal to resolve one rather than to act on a guess, so an
-    action is never performed against an unidentified plan.
+    ``None`` is the signal to resolve one rather than act on a guess.
     """
     if not state.plan_id:
         return None
@@ -198,11 +168,7 @@ def render_plan_header(state: WizardState) -> str | None:
 
 def resolve_plan(state: WizardState) -> bool:
     """Resolve the plan this session acts on, discovering rather than assuming.
-
-    A single plan is adopted without asking. Several are offered as a numbered
-    list, newest first. None is reported as a reason -- including that a
-    published snapshot exists -- so the operator is told what to do next instead
-    of watching a prompt do nothing.
+    An unreadable plan is refused rather than adopted.
     """
     metadata = state.metadata()
     plans = list_plans(metadata)
@@ -236,9 +202,6 @@ def resolve_plan(state: WizardState) -> bool:
         state.clear()
         return False
     if not chosen["readable"]:
-        # Adopting it would point every later action at a plan this build cannot
-        # load. Report why and leave the session unresolved so the operator is
-        # told to plan again rather than silently acting on nothing.
         print(
             f"plan {chosen['plan_id']} is unreadable or not compatible with this "
             "build; use 'Plan generation' to create one this build can run"
@@ -251,11 +214,7 @@ def resolve_plan(state: WizardState) -> bool:
 
 
 def _ensure_plan(state: WizardState) -> bool:
-    """Resolve a plan before an action, so no action is ever a silent no-op.
-
-    Reuses what the session already established, otherwise discovers what is on
-    disk, and only then asks the operator.
-    """
+    """Resolve a plan before an action, so no action is ever a silent no-op."""
     if state.plan_id:
         return True
     return resolve_plan(state)
@@ -263,11 +222,7 @@ def _ensure_plan(state: WizardState) -> bool:
 
 def select_snapshot(state: WizardState) -> None:
     """Point ``current`` at a published snapshot, including an earlier one.
-
-    A merge advances the pointer as a side effect, so without this the pointer can
-    only ever move forward and a reader cannot be sent back to a snapshot that is
-    still on disk. Selecting one is a pointer move only: no snapshot is written,
-    removed, or republished, and the next successful merge advances it again.
+    A merge only advances the pointer; this moves it back, writing nothing.
     """
     metadata = state.metadata()
     manifests = list_snapshots(metadata)
@@ -297,16 +252,7 @@ def select_snapshot(state: WizardState) -> None:
 
 def _ask_cohort_source(state: WizardState) -> tuple[str, str] | None:
     """Choose the cohort a plan is built over: a curated CSV or a published roster.
-
-    A roster is what ``sources compare`` publishes, and it is a content address over
-    one source snapshot plus one curated input, so it is the durable form of a
-    cohort. Prompting only for a CSV made that workflow unreachable from the menu:
-    the operator ran a comparison, produced a roster, and was then asked for a file
-    instead.
-
-    Returns ``(input_path, registry_id)`` with exactly one of the two set, or
-    ``None`` to cancel. The CSV is offered first and stays the default, so the
-    common case is unchanged; the roster list is appended only when one exists.
+    Returns ``(input_path, registry_id)`` with exactly one set, or ``None`` to cancel.
     """
     source = prompt_text("CIK manifest CSV (blank = cancel)", DEFAULT_INPUT)
     if not source:
@@ -363,12 +309,7 @@ def _ask_run_options(
     state: WizardState, *, with_bundle: bool = False
 ) -> RunOptions | None:
     """Collect the plan reference a status/run/merge invocation needs.
-
-    A blank plan id falls back to the session's plan and then to discovery,
-    rather than returning nothing — a blank answer that returned to the menu
-    having done nothing reads as a broken pipeline rather than a missing plan. A
-    copied bundle names its own plan, so a worker is never asked what it is
-    already holding.
+    Blank falls back to the session's plan and then to discovery.
     """
     if with_bundle:
         bundle = prompt_text("Plan bundle directory (blank = local plan)", "").strip()
@@ -394,8 +335,7 @@ def plan(state: WizardState) -> None:
     if options is None:
         return
     cmd_plan(options)
-    # The session should act on the plan it just created rather than asking the
-    # operator to name it back.
+    # Act on the plan just created rather than making the operator name it back.
     state.plan_id = derive_plan_id(options)
     state.bundle_root = ""
     state.input_path = str(options.input_path or "")
@@ -430,14 +370,6 @@ def merge(state: WizardState) -> None:
 
 
 def augment(state: WizardState) -> None:
-    """Add the CIKs a chosen cohort has and the base snapshot lacks.
-
-    The journey itself -- which source observations exist, which cohort to
-    request, which snapshot to build on, and what the delta would be -- lives in
-    ``augment_flow``. It is split out because it is the only action needing a
-    source snapshot, a base snapshot, and a preflight, and folding it back in here
-    put two unrelated surfaces in one file.
-    """
     from .augment_flow import run_augment
 
     run_augment(state)
@@ -482,14 +414,7 @@ def refresh(state: WizardState) -> None:
 
 
 def compare(state: WizardState) -> None:
-    """Compare a curated seed against a published SEC listing snapshot.
-
-    This is the explicit form of what augmentation now does for you. It used to
-    list published *metadata* snapshots under a "Source snapshots" heading and
-    then resolve a source manifest from that id, so the command could not have
-    worked: the two namespaces are different directories and a metadata snapshot
-    id is never a source snapshot id.
-    """
+    """Compare a curated seed against a published SEC listing snapshot."""
     source = prompt_text("CIK manifest CSV", state.input_path or DEFAULT_INPUT)
     if not source:
         return
@@ -519,11 +444,7 @@ def compare(state: WizardState) -> None:
 
 
 def commands(state: WizardState) -> None:
-    """Print the full distributed lifecycle for this plan, in execution order.
-
-    Renders a shell command per machine based on chunk assignment division,
-    preventing manual flag transcription errors.
-    """
+    """Print the full distributed lifecycle for this plan, in execution order."""
     from .worker_commands import render_worker_commands
 
     render_worker_commands(

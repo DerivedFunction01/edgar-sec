@@ -1,19 +1,6 @@
-"""Two-pass company-family clustering and canonical resolution.
-
-The problem: one economic entity files under many CIKs. A mortgage trust files
-once per deal, each with a different CIK and a name differing only in the series
-number. Left alone, a single corporate family swamps any quota-based sample, so
-research drawn from it inherits one company's filing history.
-
-The approach is two passes over a registrant corpus. The first classifies each
-name as a pure root, a protected root, a series variant, or an orphan, and mines
-the structural tail vocabulary that separates "Santander Drive Auto Receivables
-Trust 2007-2" from "Santander Drive Auto Receivables Trust 2013-2". The second
-assembles variants into families keyed on their shared head, resolves head
-aliases, and attaches plausible parent registrants.
-
-Everything is in-memory and deterministic: no I/O beyond the one explicit
-factory method, and no dependence on dict ordering or wall-clock state.
+"""Two-pass company-family clustering and canonical resolution. One economic entity
+files under many CIKs, so an unresolved family swamps a quota sample; both passes
+are in-memory and order-independent.
 """
 
 from __future__ import annotations
@@ -62,12 +49,8 @@ class CompanyFamilyInfo:
 
 
 def family_id_for(family_key: str) -> str:
-    """Return the short, stable id for a family key.
-
-    SHA-256 rather than MD5: this is a content digest used as a display id, not
-    a security primitive, and there is no reason to reach for a broken hash.
-    Changing the algorithm changes every derived id, which is why it is pinned
-    here rather than inlined at the call sites.
+    """The short, stable id for a family key; SHA-256, pinned here because changing
+    the algorithm changes every derived id.
     """
     compact = family_key.replace(" ", "")
     return hashlib.sha256(compact.encode()).hexdigest()[:FAMILY_ID_LENGTH]
@@ -76,11 +59,8 @@ def family_id_for(family_key: str) -> str:
 def _representative_rank(
     record: dict[str, Any], seed_string: str
 ) -> tuple[int, int, str, str]:
-    """Order candidates so the most parent-like name wins, deterministically.
-
-    The trailing hash of the seed and the name breaks remaining ties by value
-    rather than by arrival order, so the representative is stable no matter how
-    the corpus was ordered.
+    """Most parent-like name wins; the trailing seed hash breaks remaining ties by
+    value, so the representative is stable however the corpus was ordered.
     """
     if record["count"] == 0:
         priority = 0
@@ -117,10 +97,8 @@ class CompanyFamilyIndex:
 
     @property
     def cik_to_info(self) -> Mapping[str, CompanyFamilyInfo]:
-        """The resolved registrant-to-family mapping, read-only.
-
-        A consumer that needs every resolved registrant -- to load the families
-        into a query engine, for instance -- needs no second pass over the corpus.
+        """The resolved registrant-to-family mapping, read-only: one pass gives a
+        consumer every resolved registrant.
         """
         return self._cik_to_info
 
@@ -263,12 +241,8 @@ class CompanyFamilyIndex:
     # ---------------------------------------------------------------- lookups
 
     def resolve(self, cik: str, company_name: str = "") -> CompanyFamilyInfo:
-        """Resolve a CIK or company name, falling back to stateless derivation.
-
-        The fallback matters: the selection features builder walks every filing
-        in the catalog, and the catalog can name registrants that were absent
-        from the seed manifest. Returning a derived key keeps those rows usable
-        instead of dropping them.
+        """Resolve a CIK or name, falling back to stateless derivation: the catalog can
+        name registrants absent from the seed manifest.
         """
         normalized = normalize_cik(cik) if any(c.isdigit() for c in cik) else cik
         found = self._cik_to_info.get(normalized)
@@ -322,11 +296,8 @@ def _structural_threshold() -> int:
 def _resolve_head_aliases(
     head_clusters: dict[tuple[str, ...], list[dict[str, Any]]],
 ) -> dict[tuple[str, ...], tuple[str, ...]]:
-    """Alias a short head to a single longer head that extends it.
-
-    A head aliases only when exactly one candidate extends it. When several
-    do, the resemblance is ambiguous and merging them would join unrelated
-    companies, so neither is aliased.
+    """Alias a short head to a single longer head extending it; with several
+    candidates the resemblance is ambiguous, so neither is aliased.
     """
     alias_map: dict[tuple[str, ...], tuple[str, ...]] = {}
     for head in sorted(head_clusters, key=lambda h: (len(h), h)):
@@ -356,12 +327,8 @@ def _attach_roots(
     resolved_clusters: dict[tuple[str, ...], list[dict[str, Any]]],
     root_members: dict[tuple[str, ...], list[dict[str, Any]]],
 ) -> dict[str, list[dict[str, Any]]]:
-    """Attach parent registrants to a family when the evidence is strong.
-
-    Three conditions qualify: a two-token shared prefix, a root strictly
-    inside a head, or a head that is a prefix of the root. A single shared
-    token is explicitly *not* enough -- that is what keeps "Honda Motor" and
-    "Honda Auto" apart.
+    """Attach parent registrants to a family when the evidence is strong; a single
+    shared token is never enough, which keeps similar-sounding names apart.
     """
     first_token_heads: dict[str, set[tuple[str, ...]]] = defaultdict(set)
     for head in resolved_clusters:

@@ -213,11 +213,7 @@ def test_run_report_serializes(paths: ProjectPaths) -> None:
 
 
 def test_interrupted_run_resumes_and_reuses_its_chunks(paths: ProjectPaths) -> None:
-    """Resuming a run reuses completed chunks instead of refetching them.
-
-    Simulates the interruption directly: the chunks are processed but the run
-    never publishes, which is exactly the state a killed process leaves behind.
-    """
+    """The state a killed process leaves: chunks processed, nothing published."""
     from edgar_sec.pipelines.document_storage.worker import process_chunks
 
     locator = _locator()

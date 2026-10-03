@@ -46,16 +46,15 @@ def test_a_separator_line_counts_as_a_table_row() -> None:
 
 
 def test_gutter_columns_further_apart_than_the_tolerance_are_not_a_table() -> None:
-    # A gutter's position is the column just after the first word, so "Al" and
-    # "Delta" place theirs three columns apart, beyond the two-column tolerance.
+    # A gutter sits just after the first word, so "Al" and "Delta" place theirs three
+    # columns apart, beyond tolerance.
     units = classify_units("Al              Beta\nGamma\nDelta               Epsilon\n")
     assert {unit.kind for unit in units} == {"paragraph"}
 
 
 def test_a_minority_of_table_rows_with_aligned_columns_is_still_a_table() -> None:
-    # Only the middle line lacks a gutter, and the two that have one share a
-    # column within tolerance, so the block classifies as a table. The
-    # classification is on the gutters that are present, not on unanimity.
+    # Only the middle line lacks a gutter, so the block classifies on the gutters
+    # present, not on unanimity.
     (unit,) = classify_units("Alpha   Beta\nGamma\nDelta   Epsilon\n")
     assert unit.kind == "table"
 

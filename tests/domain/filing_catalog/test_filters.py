@@ -1,9 +1,4 @@
-"""Unit tests for domain.filing_catalog.filters: shared filter vocabulary.
-
-The vocabulary lives in Layer 1 because deterministic planning and the policy-scope
-selection policy both need it, and the layer graph forbids the lower layer from
-reaching up. These tests pin the normalization that both consumers rely on.
-"""
+"""The shared filter vocabulary: suffix normalization and the date-selection grammar."""
 
 from __future__ import annotations
 
@@ -42,7 +37,7 @@ def test_normalize_suffixes_drops_empty_tokens() -> None:
 
 
 def test_normalize_suffixes_rejects_quote_shaped_input() -> None:
-    """v1 interpolated the suffix into a SQL literal; the allowlist is the fix."""
+    """An allowlist, not interpolation, is what makes a suffix safe."""
     for hostile in ("a'; DROP TABLE t; --", "--", "a b", "a/b", "a;b"):
         with pytest.raises(ValueError, match="invalid document suffix"):
             normalize_suffixes((hostile,))
@@ -57,11 +52,7 @@ def test_normalize_suffixes_rejects_non_string_entries() -> None:
 
 
 def test_empty_date_selection_is_no_predicate() -> None:
-    """Empty is a distinct answer, not a spelling of any nonempty selection.
-
-    It applies no date predicate at all, so it also keeps rows whose
-    ``report_date`` is missing; a nonempty selection cannot place those rows.
-    """
+    """Empty keeps rows whose ``report_date`` is missing; nonempty cannot place them."""
     assert parse_date_selection("") == ()
     assert parse_date_selection("   ") == ()
 
@@ -84,11 +75,7 @@ def test_empty_date_selection_is_no_predicate() -> None:
 def test_absolute_atoms_expand_to_calendar_edges(
     text: str, expected: tuple[str | None, str | None]
 ) -> None:
-    """Precision is the token's own shape; position decides which edge is used.
-
-    ``2005Q3`` is July 1 when it starts a range and September 30 when it ends
-    one, which is what makes a mixed-precision range mean a contiguous interval.
-    """
+    """`2005Q3` is July 1 at the start of a range and September 30 at its end."""
     selection = parse_date_selection(text)
     assert selection == (
         AbsoluteDateClause(
@@ -134,7 +121,7 @@ def test_recurring_months_accept_one_or_two_digits() -> None:
 
 
 def test_a_selection_is_a_union_of_its_clauses() -> None:
-    """Clauses OR together; the absolute ones come first in canonical order."""
+    """Clauses OR together; absolute ones come first in canonical order."""
     selection = parse_date_selection(
         "@Q1[1999..2001],2005Q3..2008Q1,2011-12-31..2019-11-03,@Q2[2024..]"
     )
@@ -192,7 +179,7 @@ def test_rejection_names_the_offending_term() -> None:
 
 
 def test_an_ambiguous_fully_open_range_is_refused() -> None:
-    """``..`` cannot mean "every date" without colliding with the empty value."""
+    """`..` cannot mean "every date" without colliding with the empty value."""
     with pytest.raises(ValueError, match="at least one endpoint"):
         parse_date_selection("..")
 
@@ -228,7 +215,7 @@ def test_equivalent_recurring_periods_collapse() -> None:
 
 
 def test_recurring_periods_with_different_years_stay_separate() -> None:
-    """``@Q1`` is every year; restricting Q2 to 2011-2015 must not widen it."""
+    """`@Q1` is every year; bounding Q2 must not widen it."""
     assert format_date_selection(parse_date_selection("@Q1,@Q2[2011..2015]")) == (
         "@Q1[..2010],@Q1,@Q2[2011..2015],@Q1[2016..]"
     )
@@ -239,9 +226,7 @@ def test_recurring_periods_with_different_years_stay_separate() -> None:
 
 
 def test_a_selection_spanning_every_date_collapses_to_the_empty_selection() -> None:
-    """``..2007`` plus ``2008..`` is every date, and the empty value is how the
-    grammar spells that. Keeping a fully-open clause would also contradict the
-    rule that a nonempty selection excludes rows with no readable date."""
+    """A fully-open clause would contradict "nonempty excludes undated rows"."""
     assert parse_date_selection("..2007,2008..") == ()
     assert format_date_selection(parse_date_selection("..2007,2008..")) == ""
 
@@ -287,8 +272,7 @@ def test_selection_serializes_to_tagged_objects_with_null_open_bounds() -> None:
 
 
 def test_an_open_bound_is_never_resolved_against_a_current_year() -> None:
-    """An open bound is a statement about intent, so persisting today's year in
-    it would make an unchanged policy fingerprint differently tomorrow."""
+    """Persisting today's year would fingerprint an unchanged policy differently."""
     payload = date_selection_to_json(parse_date_selection("@Q1"))
     assert payload[0]["start_year"] is None
     assert payload[0]["end_year"] is None

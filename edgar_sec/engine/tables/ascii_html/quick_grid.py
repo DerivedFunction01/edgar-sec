@@ -1,9 +1,6 @@
 """Lightweight DOM grid extraction for pre-filtering false tables without CSS parsing.
-
-This is a cheap pre-pass, not a cheaper full render. It answers one question —
-"is this obviously a layout grid of prose?" — and returns ``None`` the moment the
-table is complex enough that the real extraction is required, so a wrong answer
-is never produced for a table this scan did not fully understand.
+A cheap pre-pass, not a cheaper full render: it returns `None` the moment the table is too complex
+to fully understand, so a wrong answer is never produced for it.
 """
 
 from __future__ import annotations
@@ -31,19 +28,7 @@ def quick_extract_table_grid(
     table_node: FastHtmlNode,
 ) -> tuple[tuple[str, ...], ...] | None:
     """Fast text-only DOM scan to detect obvious false tables without CSS parsing.
-
-    Returns
-    -------
-    None
-        The table uses ``colspan``/``rowspan`` or has nested ``<table>`` elements;
-        full ``extract_source_table`` extraction is required.
-    ``()`` (empty tuple)
-        No cells with visible text found.
-    Grid of raw cell texts
-        Caller should pass this to
-        :func:`edgar_sec.engine.tables.false_tables.detector.is_false_grid`
-        and, on a True verdict, to
-        :func:`edgar_sec.engine.tables.false_tables.unwrapper.unwrap_grid`.
+    Returns ``None`` when the table uses spans or nests a ``<table>``, ``()`` when no cell has text.
     """
     rows: list[tuple[str, ...]] = []
     max_cols = 0
@@ -65,7 +50,6 @@ def quick_extract_table_grid(
                 if td.tag not in ("td", "th"):
                     continue
                 attrs = td.raw_node.attributes or {}
-                # Bail on complex spans — full extraction required
                 try:
                     if int(attrs.get("colspan", "1")) > 1:
                         return None
@@ -73,7 +57,6 @@ def quick_extract_table_grid(
                         return None
                 except ValueError:
                     return None
-                # Bail when a nested table is present
                 if _has_nested_table(td.raw_node):
                     return None
                 raw_cell_text = td.text(strip=True) or ""

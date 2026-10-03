@@ -31,10 +31,8 @@ class CompiledCoverRules:
 
 
 def _lexical_for(body_evidence: object | None) -> CompiledEvidencePack:
-    """Compile the lexical pack for a body evidence object.
-
-    An explicit ``lexical`` pack wins; otherwise one is derived from legacy
-    body vocabulary fields so duck-typed evidence keeps working.
+    """Compile the lexical pack for a body evidence object. An explicit `lexical` pack
+    wins; otherwise one is derived from legacy body vocabulary fields.
     """
     lexical = getattr(body_evidence, "lexical", None)
     if isinstance(lexical, LexicalEvidencePack):
@@ -56,10 +54,8 @@ def compile_cover_rules(
     cover_evidence: object | None = None,
     body_evidence: object | None = None,
 ) -> CompiledCoverRules:
-    """Compile profile evidence without hardcoded form-family assumptions.
-
-    Results are cached by object identity since evidence packs are
-    profile-level objects reused across all documents in a batch.
+    """Compile profile evidence with no hardcoded form-family assumptions. Cached by
+    object identity: evidence packs are profile-level, reused across a batch.
     """
     key = (id(cover_evidence), id(body_evidence))
     cached = _COMPILE_CACHE.get(key)

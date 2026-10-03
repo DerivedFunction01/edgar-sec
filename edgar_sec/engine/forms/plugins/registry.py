@@ -1,13 +1,6 @@
-"""Form-family plugin registry and its resolution function.
-
-Four primary families are modelled (10-K, 10-Q, 8-K, 20-F) and everything else
-resolves to one generic plugin. Per-family pipeline flags gate stages: an annual
-report cuts out its table of contents and resolves a body root, a quarterly
-report resolves a body root without TOC cut, and an 8-K gets neither.
-
-Resolution goes through `resolve_alias` and nothing else. The alias table is the
-single canonical authority that maps form variants (e.g. 10KSB, 10-K/A) to their
-underlying family key.
+"""Form-family plugin registry and its resolution function. 10-K, 10-Q, 8-K, and 20-F
+are modelled; everything else resolves to one generic plugin that stages nothing.
+Resolution goes through `resolve_alias` and nothing else.
 """
 
 from __future__ import annotations
@@ -50,17 +43,8 @@ _FALLBACK_PLUGIN = FormPlugin(family=GENERIC_FAMILY, evaluator=evaluate_generic)
 
 
 def register_plugin(family: str, plugin: FormPlugin) -> None:
-    """Register or override the plugin for a family, process-globally.
-
-    The table is module state, so the effect outlives the call and is visible to
-    every thread and every later resolution; there is no unregister, and a test
-    that overrides a family has to restore the previous entry itself. The key is
-    stripped and upper-cased so registration is spelled the way callers pass
-    form strings.
-
-    An override registered for a raw form string that resolves to a seeded family
-    is shadowed and has no effect: resolution consults the family first and
-    returns before the raw-string table is read.
+    """Register or override a family's plugin, process-globally. There is no
+    unregister, so an overriding caller must restore the previous entry itself.
     """
     _PLUGINS[family.strip().upper()] = plugin
 
@@ -71,11 +55,8 @@ def registered_families() -> tuple[str, ...]:
 
 
 def get_plugin(form: str | None) -> FormPlugin:
-    """Resolve the plugin for a raw form string.
-
-    A form string that resolves to no modelled family — an unknown form, or a
-    modelled family with no pipeline of its own such as ``6-K`` — gets the
-    generic plugin, which stages nothing and always proceeds.
+    """Resolve the plugin for a raw form string. An unmodelled family (`6-K`, an unknown
+    form) gets the generic plugin, which stages nothing and always proceeds.
     """
     if not form:
         return _FALLBACK_PLUGIN

@@ -1,20 +1,7 @@
 """The vocabulary of a browsable artifact.
 
-A single record type and the functions that turn one into a wire-safe identity.
-Kept separate from the loaders that produce these records and from the walk that
-collects them, so that neither imports the other.
-
-Two rules shape the identity design:
-
-**A dataset is addressed by an opaque id, never by a path.** The browser sends
-``id``; the server turns it back into a path. That is what confines a request to
-the artifacts root — a caller that could name a path could ask for anything on
-disk.
-
-**A multipart dataset has one id, not one per part.** The parts are a property
-of the record (``source_paths``), not separate browsable things. An operator
-thinks "the Phase 1 snapshot", not "part 0 of 37"; splitting them would make the
-sidebar a file listing and lose the fact that they are one dataset.
+A dataset is addressed by an opaque id, never a path — a caller that could name a
+path could ask for anything on disk. A multipart dataset has one id, not one per part.
 """
 
 from __future__ import annotations
@@ -54,9 +41,7 @@ class DatasetError(ValueError):
 class ArtifactSummary:
     """One browsable dataset.
 
-    The field names are part of the HTTP contract: the browser's compiled bundle
-    reads these keys directly. Renaming one is a breaking API change, not a
-    refactor.
+    Field names are part of the HTTP contract: the browser's compiled bundle reads them.
     """
 
     id: str
@@ -85,11 +70,7 @@ def artifact_id(relative_path: str | Path, table: str | None = None) -> str:
 
 
 def decode_artifact_id(value: str) -> tuple[str, str | None]:
-    """Decode an id back to ``(relative_path, table)``.
-
-    Raises ``DatasetError`` on anything that is not a valid encoding, so a caller
-    passing garbage gets one error type rather than two.
-    """
+    """Decode an id to ``(relative_path, table)``; raises ``DatasetError``."""
     try:
         decoded = base64.urlsafe_b64decode(value.encode("ascii")).decode("utf-8")
     except Exception as exc:
@@ -103,9 +84,8 @@ def decode_artifact_id(value: str) -> tuple[str, str | None]:
 def artifact_path(artifact_id_value: str, root: Path) -> Path:
     """Resolve an id to a path, refusing anything outside ``root``.
 
-    The confinement check is the reason ids are opaque. It compares against the
-    *resolved* root and the candidate's parents, which also collapses ``..``
-    segments and symlinks before the comparison rather than after.
+    Compares against the *resolved* root and the candidate's parents, so ``..``
+    segments and symlinks collapse before the comparison, not after.
     """
     relative, _ = decode_artifact_id(artifact_id_value)
     base_relative = relative.split(_TABLE_SEPARATOR)[0]
@@ -127,9 +107,8 @@ def artifact_table(artifact_id_value: str) -> str | None:
 def compute_revision(size_bytes: int, mtime_ns: int) -> str:
     """Change token for a single file: size plus nanosecond mtime.
 
-    Only sound for files that are not yet published. A published snapshot is
-    immutable, so its manifest digest is the stronger token; see
-    :func:`manifest_revision`.
+    Only sound for unpublished files; a published snapshot's manifest digest is
+    stronger (see ``manifest_revision``).
     """
     return f"{size_bytes}:{mtime_ns}"
 
@@ -137,10 +116,8 @@ def compute_revision(size_bytes: int, mtime_ns: int) -> str:
 def manifest_revision(manifest_path: Path) -> str:
     """Content-addressed change token for a published dataset.
 
-    A published manifest is immutable — the pipelines refuse to overwrite one —
-    so its own bytes are the dataset's identity. This is strictly better than a
-    stat-based token: it cannot miss a change, and it does not need a filesystem
-    timestamp whose resolution depends on the mount.
+    Its own bytes are the identity because published manifests are immutable, and a
+    digest cannot miss a change the way a filesystem timestamp can.
     """
     return file_sha256(manifest_path)[:16]
 
@@ -148,11 +125,8 @@ def manifest_revision(manifest_path: Path) -> str:
 def compute_union_revision(items: Iterable[ArtifactSummary]) -> str:
     """Composite change token for a transient run union.
 
-    A run with no manifest yet is still accumulating, so there is nothing
-    content-addressed to hash. The token is a digest over the sorted per-file
-    ``relative_path:size:mtime_ns`` triples plus the file count, so adding,
-    removing, or rewriting any chunk invalidates the cached listing for the
-    union.
+    A run with no manifest is still accumulating, so the token digests sorted
+    ``relative_path:revision`` triples plus the file count.
     """
     materialized = list(items)
     tokens = sorted(
@@ -193,9 +167,8 @@ def newest_mtime(paths: Iterable[Path]) -> str | None:
 def walk_files(root: Path) -> Iterable[Path]:
     """Yield every file under ``root``, skipping dot-directories.
 
-    Dot-directories are skipped rather than descended so a stray ``.git`` or
-    editor directory under the artifacts root cannot turn a listing into an
-    unbounded walk. Symlinked directories are not followed.
+    A stray ``.git`` under the artifacts root would make a listing an unbounded walk.
+    Symlinked directories are not followed.
     """
     for current, dirs, files in os.walk(root):
         dirs[:] = [name for name in dirs if not name.startswith(".")]

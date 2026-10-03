@@ -50,10 +50,8 @@ def test_sgml_page_tags_are_detected_and_removed() -> None:
 
 
 def test_the_sgml_line_form_carries_no_namespace_or_page_number() -> None:
-    # `<page>F-15</page>` matches the SGML line form, whose `page` group accepts
-    # the whole `F-15` token; a non-numeric group is therefore read as "no page
-    # number" and the namespace defaults to arabic. The token is still removed,
-    # because the SGML tag is what authorized the removal.
+    # The SGML `page` group accepts the whole `F-15` token, so a non-numeric group
+    # reads as "no page number"; the token is still removed because the tag authorized it.
     analysis = analyze_page_markers("before\n<page>F-15\nafter\n")
     assert len(analysis.markers) == 1
     assert analysis.markers[0].kind == PageMarkerKind.SGML
@@ -93,9 +91,8 @@ def test_an_unproven_namespaced_label_is_preserved() -> None:
 
 
 def test_a_namespaced_label_with_its_own_validated_run_is_removed() -> None:
-    # `F-1`..`F-5` are firm labels in namespace F, and they validate as a run of
-    # their own, so the namespace is trusted and the labels are removed rather
-    # than preserved as ambiguous.
+    # `F-1`..`F-5` validate as a run of their own in namespace F, so the labels are
+    # removed rather than preserved as ambiguous.
     text = "\n".join(f"F-{index}" for index in range(1, 6))
     analysis = analyze_page_markers(text, NO_TOC)
     assert {marker.namespace for marker in analysis.markers} == {"F"}
@@ -227,8 +224,7 @@ def test_a_candidate_no_run_claimed_is_reported_not_removed() -> None:
     lonely = analyze_page_markers("1\n\nOne lone number\n", NO_TOC)
     assert lonely.markers == ()
     assert lonely.unresolved == ("0:1", "0:1")
-    # No marker carries a page number, so the document is reported as carrying
-    # no visible labels rather than as unresolved.
+    # No marker carries a page number, so no visible labels rather than unresolved.
     assert lonely.terminal_state is PageMarkerTerminalState.NO_VISIBLE_LABELS
 
 
@@ -247,9 +243,8 @@ def test_an_unresolved_candidate_beside_a_validated_run_is_reported_unresolved()
 
 
 def test_a_candidate_seen_by_both_scans_is_reported_once_per_scan() -> None:
-    # The anchored and anchorless scans each produce their own candidate list,
-    # and both are reported. A caller reading `unresolved` as a set of lines
-    # rather than a sequence of observations must therefore de-duplicate.
+    # Both the anchored and anchorless scans report candidates, so `unresolved` is a
+    # sequence of observations; a caller reading it as a set must de-duplicate.
     text = "1\nBody\n2\nBody\n3\nBody\n"
     analysis = analyze_page_markers(text, NO_TOC)
     assert analysis.unresolved == (
@@ -291,9 +286,6 @@ def test_html_representation_is_refused_rather_than_scanned_as_markup() -> None:
         analyze_page_markers("<PAGE>Body</PAGE>", representation="html")
 
 
-# --- find_page_markers -------------------------------------------------------
-
-
 def test_find_page_markers_reports_spans_in_source_order() -> None:
     spans = find_page_markers("<PAGE>\nBody\n</PAGE>\n")
     assert [(span.kind, span.text) for span in spans] == [
@@ -316,9 +308,6 @@ def test_find_page_markers_excludes_recovered_furniture() -> None:
         not in {PageMarkerKind.REPEATING_HEADER, PageMarkerKind.REPEATING_FOOTER}
         for span in spans
     )
-
-
-# --- is_page_marker_line -----------------------------------------------------
 
 
 @pytest.mark.parametrize(

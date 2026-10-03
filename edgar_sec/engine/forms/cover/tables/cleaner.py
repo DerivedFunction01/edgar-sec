@@ -1,11 +1,6 @@
-"""Form-aware cover page table cleaning and pseudo-table unwrapping.
-
-Generic layout tables are unwrapped upstream by
-:mod:`edgar_sec.engine.tables.false_tables`. This module provides
-form-governed cover table cleaners that execute strictly within the verified
-:class:`~edgar_sec.engine.forms.cover.models.CoverBoundary` to unwrap cover-only
-pseudo-tables (such as annual/quarterly/transition report period checkbox
-blocks) without leaking into non-cover filings or body tables.
+"""Form-aware cover page table cleaning and pseudo-table unwrapping. Cleaners run
+strictly inside the verified CoverBoundary, so cover-only pseudo-tables never leak
+into non-cover filings or body tables.
 """
 
 from __future__ import annotations
@@ -29,14 +24,8 @@ _RE_REPORT_PERIOD_TABLE = re.compile(
 
 
 def _is_report_period_table(table_block: str) -> bool:
-    """Return True if the table_block text represents a statutory report period checkbox block.
-
-    Classification is always performed against the raw ``table_block`` string from
-    the document text — never against geometry rows from a prior render pass.
-    Geometry may have been left behind by an upstream unwrapping step (such as
-    :func:`~edgar_sec.engine.forms.cover.checkmarks.rewrite.apply_cover_checkmark_decisions`)
-    and can belong to a completely different table, causing misclassification of
-    address or entity tables that happen to follow a report-period checkbox table.
+    """Whether the block is a statutory report period checkbox block. Classification
+    always runs on the raw table text, never geometry rows from another table.
     """
     return bool(_RE_REPORT_PERIOD_TABLE.search(table_block))
 
@@ -63,19 +52,8 @@ def clean_cover_tables(
     *,
     enabled_cleaners: Sequence[str] = ("report_period",),
 ) -> tuple[str, tuple[TableGeometry, ...]]:
-    """Unwrap recognized pseudo-tables strictly within the cover boundary.
-
-    Only tables whose start tag occurs before ``boundary.end_line`` are
-    evaluated. Tables outside the cover (e.g. exhibit indices, financial
-    statements) are never inspected or unwrapped.
-
-    Geometry is looked up by the stable
-    :attr:`~edgar_sec.engine.tables.ascii_html.model.TableGeometry.table_index`
-    attribute, not by positional index in ``table_geometries``.  This is safe
-    even when upstream passes (e.g.
-    :func:`~edgar_sec.engine.forms.cover.checkmarks.rewrite.apply_cover_checkmark_decisions`)
-    have already removed some ``<TABLE>`` blocks and evicted their geometries,
-    because the remaining geometries still carry their original stable IDs.
+    """Unwrap pseudo-tables strictly within the cover boundary. Geometry is matched by
+    stable `table_index`: position breaks once an upstream pass evicts tables.
     """
     if boundary.end_line is None or not enabled_cleaners or "<TABLE>" not in text:
         return text, table_geometries
@@ -90,22 +68,16 @@ def clean_cover_tables(
     if not matches:
         return text, table_geometries
 
-    # Build a stable-ID → geometry dict so we can look up by table_index
-    # rather than by sequential position in the geometries tuple.  The
-    # sequential position is unreliable after any upstream pass has evicted
-    # unwrapped tables from the tuple.
+    # Look up by stable table_index, not position: position is unreliable once
+    # an upstream pass has evicted unwrapped tables from the tuple.
     geom_by_id: dict[int, TableGeometry] = {}
     for geom in table_geometries:
         tid = getattr(geom, "table_index", None)
         if tid is not None:
             geom_by_id[tid] = geom
 
-    # Build a parallel list of (match, geometry) pairs where geometry is
-    # matched by iterating through geometries whose table_index has not yet
-    # been claimed.  Tables in text still appear in document order and
-    # geometries in table_geometries are also in document order (by
-    # table_index), so a sequential scan through surviving geometries
-    # correctly pairs each remaining <TABLE> block with its geometry.
+    # Pair blocks with surviving geometries by sequential scan: both are in
+    # document order, and unwrapped blocks lose their geometry in the same step.
     surviving_geoms = sorted(
         table_geometries, key=lambda g: getattr(g, "table_index", 0)
     )
@@ -123,9 +95,8 @@ def clean_cover_tables(
         if match.start() < cover_char_end:
             table_block = match.group(0)
             should_unwrap = False
-            # Classification is ALWAYS against the actual table_block text.
-            # Geometry is only used as a rendering hint for _unwrap_table,
-            # never for the classification decision itself.
+            # Classification always against the block text; geometry is a
+            # rendering hint for _unwrap_table only.
             if "report_period" in enabled_cleaners and _is_report_period_table(
                 table_block
             ):

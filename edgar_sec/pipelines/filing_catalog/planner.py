@@ -1,21 +1,7 @@
 """Deterministic target planning for the filing catalog.
-
-Deterministic planning is a fast, zero-heuristic slice of a materialized
-catalog. It supports exactly four filters -- ``forms``,
-``document_suffixes``, ``dates``, and ``limit`` -- and refuses to reason about
-eras or cohort balance, which belong to the policy-scope selection policy.
-
-``dates`` is a *selection*, not a year list: it is the union of absolute calendar
-intervals and recurring calendar periods spelled in the grammar
-``domain.filing_catalog.filters`` owns, and it applies to ``report_date``. An
-empty selection is no date predicate at all; a nonempty one cannot represent a
-row whose ``report_date`` is missing, so it excludes those rows. That asymmetry
-is the contract, not an accident of the SQL.
-
-Form filters are exact allowlists: a form is selected only when it is named,
-so an amendment variant such as ``10-K/A`` is selected by listing it
-explicitly. Policy-specific parameters (selection policies, seed CIKs) are
-isolated in the policy-scope planner.
+``dates`` is a *selection*, not a year list: absolute intervals and recurring periods
+in the grammar ``domain.filing_catalog.filters`` owns, applied to ``report_date``.
+A nonempty selection excludes rows with a missing ``report_date``. Forms are exact.
 """
 
 from __future__ import annotations
@@ -108,22 +94,9 @@ def _validate_forms(forms: tuple[str, ...]) -> tuple[str, ...]:
 
 
 def _locator_groups_query(source_sql: str) -> str:
-    """Deterministic-scope locator projection: one row per document locator.
-
-    This is the narrow shape; the feature dimensions (form_family, era,
-    size_band, ...) are added only by the policy-scope projection. A consumer must
-    not assume the wider set in the deterministic scope.
-
-    Grouping is on ``document_locator_key`` alone, so two co-filers sharing one
-    locator collapse to a single row and ``unique_locators_count`` counts
-    documents rather than claims -- the multiplicity quota selection must not
-    inherit. The representative columns are chosen by ``arg_min`` over a total
-    ordering key, which makes the representative deterministic.
-
-    ``source_sql`` is any relation expression. A plan that matched nothing still
-    needs a schema-correct zero-row locator file, otherwise its own bundle fails
-    :func:`plan_bundle_complete` and cannot be reused; callers pass a
-    ``WHERE false`` predicate over the catalog view in that case.
+    """Deterministic-scope locator projection: one row per locator.
+    Grouping on ``document_locator_key`` alone collapses co-filers, so
+    ``unique_locators_count`` counts documents not claims.
     """
     order = (
         "source_cik || '|' || accession || '|' || document_path || '|' || "
@@ -167,14 +140,8 @@ def plan(
     row_group_size: int = DEFAULT_ROW_GROUP_SIZE,
 ) -> dict[str, Any]:
     """Publish one immutable deterministic target-plan bundle.
-
-    The bundle partitions the catalog's targets by form, records the request
-    that produced it, and publishes atomically. Returns the plan document.
-
-    ``dates`` is the date-selection grammar, not a year list. The normalized
-    clauses -- not the caller's spelling -- go into the request, so two spellings
-    of one selection resolve to the same published plan instead of forking a
-    near-duplicate bundle.
+    Normalized date clauses, not the caller's spelling, enter the request, so two
+    spellings of one selection resolve to the same plan.
     """
     if not catalog:
         raise ValueError("catalog is required")
@@ -235,10 +202,8 @@ def plan(
             f"SELECT * FROM read_parquet([{file_list}]) WHERE form IS NOT NULL"
         )
 
-        # A date selection filters on a parsed DATE, so the parse is projected
-        # once here rather than repeated per reference in the predicate. Keeping
-        # it in a view is what lets the same relation serve both form discovery
-        # and every partition write without re-wrapping each query.
+        # A date selection filters on a parsed DATE, projected once here rather
+        # than per reference in the predicate.
         source = view
         if date_selection:
             source = "catalog_dated"
@@ -247,10 +212,9 @@ def plan(
                 f"{date_projection_sql('report_date')} FROM {view}"
             )
 
-        # The form, suffix, and date filters decide which partitions exist at
-        # all, so form discovery runs the same predicates the partition writes
-        # do. A form the filters remove is never discovered, so no empty
-        # partition is published for it.
+        # Form discovery runs the same predicates the partition writes do, so a
+        # form the filters remove is never discovered and no empty partition is
+        # published for it.
         shared_where: list[str] = []
         if requested_forms:
             form_list = ", ".join(sql_literal(form) for form in requested_forms)
@@ -270,9 +234,8 @@ def plan(
             ).fetchall()
         ]
 
-        # The dated view carries one extra column, and a published shard is
-        # schema-checked against TARGET_COLUMNS, so partitions project the
-        # published columns by name rather than taking the relation's shape.
+        # A shard is schema-checked against TARGET_COLUMNS, so partitions project the
+        # published columns by name rather than the dated view's shape.
         target_columns = ", ".join(TARGET_COLUMNS)
 
         counts: dict[str, int] = {}
@@ -308,8 +271,8 @@ def plan(
                     },
                 )
 
-            # Always written, even at zero rows, so every published bundle holds
-            # the full REQUIRED_PLAN_FILES set and stays reusable.
+            # Written even at zero rows, so every published bundle holds the full
+            # REQUIRED_PLAN_FILES set and stays reusable.
             if written:
                 file_list = ", ".join(sql_literal(str(path)) for path in written)
                 locator_source = f"read_parquet([{file_list}])"
@@ -357,11 +320,8 @@ def plan(
 
 def _policy_locator_groups_query(locator_source: str) -> str:
     """Policy-scope locator projection: the policy locator schema.
-
-    Same one-row-per-document guarantee as the deterministic variant, widened with the
-    stratification dimensions. A consumer that audits a published sample --
-    "is this actually era-balanced, or is it all one SIC band?" -- needs those
-    values in the plan itself, not only in the transient feature snapshot.
+    Widened with the stratification dimensions: auditing a sample needs them in the
+    plan, not only in the feature snapshot.
     """
     projection = ", ".join(f"l.{column}" for column in LOCATOR_POLICY_COLUMNS)
     return f"""
@@ -374,21 +334,9 @@ def _policy_locator_groups_query(locator_source: str) -> str:
 def _inventory_feasibility(
     snapshot: SnapshotPaths, policy: SelectionPolicy
 ) -> dict[str, Any]:
-    """Predict, before selection ran, whether the corpus could have met the quotas.
-
-    Advisory only. A fresh policy plan publishes whatever the corpus could
-    supply and records the shortfall in ``underfilled_floors``; this report never
-    changes that, because a feasibility prediction is weaker evidence than a
-    completed selection. Two things make it a prediction rather than a promise:
-
-    * The per-dimension counts are independent. They do not subtract competition
-      between floors, the family cap, or the seeds, so a set of individually
-      feasible floors can still underfill together.
-    * A floor can be satisfiable and still be skipped once a cap or an earlier
-      phase has claimed the candidates.
-
-    It is still the cheapest way to turn "this policy produced an empty plan" into
-    "this policy asked for 40 filings in an era the corpus does not have".
+    """Predict, before selection ran, whether quotas were meetable.
+    Advisory only; a completed selection is stronger evidence. Per-dimension counts are
+    independent of competition between floors, caps, and seeds.
     """
     if not policy.floors and not policy.composites:
         return {"checked": False, "reason": "policy declares no floors or composites"}
@@ -404,7 +352,7 @@ def _inventory_feasibility(
         )
     except (UnknownDimensionError, OccurrenceOnlyDimensionError, OSError) as error:
         # A policy the inventory cannot evaluate is a policy problem, not a
-        # reason to fail a plan that selection has already completed.
+        # reason to fail a plan selection has already completed.
         return {"checked": False, "reason": f"inventory unavailable: {error}"}
     return {
         "checked": True,
@@ -423,10 +371,9 @@ def _inventory_feasibility(
 
 
 def _register_selected_keys(con: object, keys: list[str]) -> None:
-    """Load the selected locator keys into a temp table for the bundle writes.
-
-    One temp table rather than an interpolated list: an expanded plan carries
-    thousands of keys, and a list that long would be re-parsed per query.
+    """Load the selected locator keys into a temp table.
+    A temp table, not an interpolated list: a plan carries thousands of keys and a list
+    that long is re-parsed per query.
     """
     con.execute(
         "CREATE OR REPLACE TEMP TABLE selected_locator_keys "
@@ -450,23 +397,9 @@ def _register_reserve_keys(con: object, keys: list[str]) -> None:
 def _resolve_era_bands(
     paths: FilingCatalogPaths, catalog: str, policy: SelectionPolicy
 ) -> SelectionPolicy:
-    """Return the policy carrying the era bands selection will actually use.
-
-    A policy that declares no bands derives them from the years the catalog
-    holds *after* the policy's own forms and date selection. Deriving from the
-    unfiltered year range instead would band years the selection can never reach,
-    and every one of them would be an empty stratum in the report.
-
-    The bands are resolved here, before the feature build, because era is baked
-    into the snapshot: deriving them afterwards would describe a stratification
-    the published locators were not chosen under. The snapshot is content
-    addressed on the policy fingerprint, so resolving first also means the
-    snapshot a plan reuses is the one its bands describe.
-
-    Falling back to the unfiltered range when the selection matches nothing is
-    deliberate. A policy that matches no rows still needs bands to build and
-    publish an empty plan, and a synthetic single band would make the report
-    claim a coverage that was never derived from data.
+    """Return the policy carrying the era bands selection will use.
+    Resolved before the feature build, since era is baked into the snapshot: deriving
+    later would describe a stratification the locators were not chosen under.
     """
     if not policy.derives_era_bands:
         return policy
@@ -489,16 +422,8 @@ def plan_policy(
     row_group_size: int = DEFAULT_ROW_GROUP_SIZE,
 ) -> dict[str, Any]:
     """Publish one immutable policy-driven target-plan bundle.
-
-    The scope counterpart to :func:`plan`. Where deterministic planning slices a
-    catalog, this runs the policy-scope selection engine against a
-    declared quota profile and publishes the result: quota-balanced locators, the
-    18-column locator projection, a reserve pool, and the policy that produced
-    it, all recorded in ``plan.json``.
-
-    The bundle is written from SQL against the feature snapshot rather than from
-    the selector's in-memory candidate list, so publishing a large expanded plan
-    does not scale with the plan size in the Python heap.
+    Written from SQL against the feature snapshot, so publishing does not scale with
+    plan size in the Python heap.
     """
     if not policy.forms:
         raise ValueError("policy must configure at least one form")
@@ -509,32 +434,23 @@ def plan_policy(
         else resolve_filing_catalog_paths()
     )
     catalog = resolve_catalog_reference(paths, catalog)
-    # Guard, not an input: the builder re-globs the same directory, but this
-    # raises "catalog has no published targets" instead of letting the failure
-    # surface as a missing-parts error from inside feature building.
+    # A guard, not an input: it reports "no published targets" rather than
+    # letting the builder surface it as a missing-parts error.
     _catalog_target_files(paths, catalog)
 
     # Resolved before the request is hashed, so the plan id names the bands its
-    # locators will actually be chosen under. Resolution is a pure function of
-    # the catalog and the declaration, so an unchanged draft against an unchanged
-    # catalog keeps its id; what the id deliberately does *not* depend on is the
-    # draft declaring the bands explicitly when they happen to match.
+    # locators will actually be chosen under.
     policy = _resolve_era_bands(paths, catalog, policy)
 
-    # Normalized once, then carried everywhere: the feature snapshot, the
-    # selector, the published sidecar, and the plan identity. Reading the seed
-    # manifest per consumer is what let a plan and the features behind it
-    # disagree about which registrants were mandatory.
+    # Pinned once, then carried everywhere: reading the seed manifest per
+    # consumer is what let a plan and its features disagree about which
+    # registrants were mandatory.
     pinned_seed = (
         dict(seed_filers) if seed_filers is not None else resolve_seed_filers(policy)
     )
     seed_fingerprint = compute_seed_fingerprint(pinned_seed)
-    # ``target_units`` and ``level`` are not repeated here. Both are policy
-    # fields, so ``policy_fingerprint`` already covers them: the target is
-    # ``base_content_units`` verbatim, and a level only ever advances alongside
-    # a ``parent_plan_id`` that the fingerprint covers too. Restating them gave
-    # the identity two encodings of one fact, which can disagree the moment
-    # either is derived rather than copied.
+    # ``target_units`` and ``level`` stay out: ``policy_fingerprint`` already
+    # covers both, and restating them gave the identity two encodings of one fact.
     request = {
         "catalog_id": catalog,
         "scope": SCOPE_POLICY,
@@ -617,10 +533,8 @@ def plan_policy(
                     / "data.parquet"
                 )
                 # `o.*`, not `*`: the relation is a join whose second input only
-                # filters rows, and `SELECT *` would project the join key a
-                # second time, publishing a `document_locator_key_1` column
-                # alongside the real one. The published partition must keep
-                # exactly the feature snapshot's occurrence schema.
+                # filters rows, so `SELECT *` would publish a
+                # `document_locator_key_1` column beside the real one.
                 query = (
                     f"SELECT o.* FROM ({occurrence_source}) "
                     f"WHERE form = {sql_literal(form_name)} "

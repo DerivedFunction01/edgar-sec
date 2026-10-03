@@ -1,15 +1,7 @@
 """Policy scanner banning whole-file reads that feed a hash.
 
-``hashlib.sha256(path.read_bytes())`` materializes the entire artifact to
-compute its digest. On a catalog shard or a Parquet artifact that is the whole
-file in the Python heap, so the digest that was supposed to *prove* the file is
-intact is the step that exhausts memory on a large one. ``file_sha256`` streams
-in blocks and exists for exactly this.
-
-The rule is deliberately narrow: a ``read_bytes()`` is only a finding when a
-digest constructor consumes it. Reading a small payload whole to hand to a JSON
-or CSV parser is a different trade, and flagging it would send a fix through a
-parser that never had the memory problem.
+Materializing an artifact to digest it exhausts memory on a large one, so ``file_sha256``
+streams instead. Narrow on purpose: only a ``read_bytes()`` a digest constructor consumes.
 """
 
 from __future__ import annotations
@@ -20,16 +12,15 @@ from pathlib import Path
 from .base import Scanner, ScannerFinding
 from .files import discover_python_files
 
-# Digest constructors whose argument is materialized in memory. `sha256_text`
-# and friends are excluded on purpose: the pattern requires an opening paren
-# immediately after the token, so a longer identifier never matches.
+# Digest constructors. The pattern needs ``(`` immediately after, so ``sha256_text``
+# and friends never match.
 _HASH_TOKENS = (
     r"(?:hashlib\.)?"
     r"(?:sha1|sha224|sha256|sha384|sha512|sha3_\d+|shake_\d+|md5|blake2[bs])"
 )
 
-# A digest constructor whose argument reaches `.read_bytes()` on the same line.
-# Bounded to one line so a hash three statements away cannot borrow the read.
+# A digest whose argument reaches ``.read_bytes()`` on the same line, so a hash three
+# statements away cannot borrow the read.
 _HASHING_READ = re.compile(rf"{_HASH_TOKENS}\s*\([^\n]{{0,200}}?\.read_bytes\(\)")
 
 _ALLOWED_PATHS = (

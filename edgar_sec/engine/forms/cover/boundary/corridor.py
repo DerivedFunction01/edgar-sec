@@ -1,11 +1,6 @@
-"""Search corridor around the cover boundary.
-
-The corridor is the pair of searches that bracket the boundary: a forward scan
-for the opening cover cluster (:func:`find_cover_start`) and a backward scan
-for the first reliable body anchor (:func:`confirm_backward_body`). Between them
-sit the line helpers both directions share, the body-prose forward scan, and the
-finalizer that turns a provisional end line plus its evidence rows into a
-:class:`~edgar_sec.engine.forms.cover.models.CoverBoundary`.
+"""The search corridor bracketing a cover boundary: a forward scan for the opening
+cover cluster, a backward scan for the first reliable body root, and the line
+helpers and finalizer both directions share.
 """
 
 from __future__ import annotations
@@ -61,7 +56,6 @@ _COVER_START_CLUSTER_GAP = 5
 
 
 def prev_nonblank_line(lines: list[str], start_line: int) -> tuple[int, str] | None:
-    """Return the last non-blank line at or before ``start_line``."""
     for index in range(start_line, -1, -1):
         stripped = lines[index].strip()
         if stripped:
@@ -70,7 +64,6 @@ def prev_nonblank_line(lines: list[str], start_line: int) -> tuple[int, str] | N
 
 
 def next_nonblank_line(lines: list[str], start_line: int) -> tuple[int, str] | None:
-    """Return the first non-blank line at or after ``start_line``."""
     for index in range(start_line, len(lines)):
         stripped = lines[index].strip()
         if stripped:
@@ -79,11 +72,8 @@ def next_nonblank_line(lines: list[str], start_line: int) -> tuple[int, str] | N
 
 
 def is_toc_like_line(stripped: str) -> bool:
-    """Return whether a line is tabular TOC content rather than body prose.
-
-    Mirrors the depth-guard skips: semantic headings recur inside TOC rows
-    ("Item 7. Management's Discussion and Analysis") and must not become
-    backward body roots.
+    """Whether a line is tabular TOC content; semantic headings recur inside TOC rows
+    ("Item 7. Management's Discussion") and must not become body roots.
     """
     if looks_like_toc_row(stripped) or looks_like_toc_tabular(stripped):
         return True
@@ -112,7 +102,6 @@ def is_proxy_reference_disclosure(line: str) -> bool:
 
 
 def enabled(policy: object, signal: object) -> bool:
-    """Return whether a profile policy enables one boundary signal."""
     return signal in policy.signals
 
 
@@ -127,11 +116,8 @@ def line_at_offset(text: str, offset: int) -> int:
 
 
 def _containing_paragraph(lines: list[str], index: int) -> str:
-    """Return the bounded paragraph containing ``index``.
-
-    Backward line scoring under-scores multi-line body prose whose lexical
-    evidence spans line wraps; scoring the containing logical paragraph gives
-    the evaluator the full unit. Bounded so a runaway block cannot dominate.
+    """The bounded paragraph containing `index`: line scoring under-scores prose whose
+    evidence spans a line wrap. Bounded so a runaway block cannot dominate.
     """
     first = index
     while (
@@ -161,7 +147,6 @@ def _gap_is_padding(lines: list[str], root_line: int, provisional_end: int) -> b
 
 
 def _score_body_paragraph(paragraph: str, lexical: CompiledEvidencePack) -> BowScore:
-    """Score one backward-search line with the shared lexical evaluator."""
     return score_tokens(
         tokenize(paragraph),
         lexical,
@@ -175,11 +160,8 @@ def _scan_cover_start_cluster(
     enabled: bool,
     rules: CompiledCoverRules,
 ) -> CoverStart | None:
-    """Find a connected cover-shaped cluster in the opening window.
-
-    The cluster requires at least one generic identity signal plus one
-    cover-shape signal within a bounded window. The start is the first line
-    of the connected cluster, not the first matched label.
+    """A connected cover-shaped cluster; it needs one identity plus one shape signal,
+    and its start is the cluster's first line, not the first matched label.
     """
     if not enabled:
         return None
@@ -252,11 +234,8 @@ def find_cover_start(
     cover_evidence: object | None = None,
     body_evidence: object | None = None,
 ) -> CoverStart:
-    """Find the inclusive start of a cover-shaped cluster.
-
-    Returns a ``CoverStart`` with ``start_line`` set to the first line of the
-    connected cover-shaped cluster. Requires the ``COVER_IDENTITY_AND_LAYOUT``
-    signal to be enabled; otherwise returns an unknown start.
+    """The inclusive start of a cover-shaped cluster; an unknown start unless
+    COVER_IDENTITY_AND_LAYOUT is enabled.
     """
     if policy is None:
         return CoverStart(start_line=None, start_offset=None)
@@ -408,10 +387,8 @@ def _find_body_prose_line(
     search_limit: int,
     rules: object,
 ) -> int | None:
-    """First logical unit with decisive body-lexical evidence (score >= 2).
-
-    Accumulates consecutive prose lines into bounded paragraphs so wrapped
-    text reaches the lexical gate, skipping tagged tables and TOC-like lines.
+    """The first unit with decisive body-lexical evidence (score >= 2); consecutive
+    prose lines accumulate into bounded paragraphs so wrapped text reaches the gate.
     """
     buffer: list[str] = []
     buffer_start: int | None = None
@@ -492,7 +469,6 @@ def _return_with_heading(
 
 
 def _unknown(method: BoundaryMethod = BoundaryMethod.UNKNOWN) -> CoverBoundary:
-    """Return an undetermined boundary carrying the supplied method."""
     return CoverBoundary(
         end_line=None,
         end_offset=None,

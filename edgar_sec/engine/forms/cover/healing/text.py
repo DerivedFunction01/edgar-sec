@@ -35,12 +35,8 @@ def heal_cover_text(
     merge_binary_blocks: bool = False,
     reflow_prose: bool = True,
 ) -> tuple[str, bool]:
-    """Apply configured healing only to the bounded cover line slice.
-
-    Tagged tables are opaque during healing. The returned boolean indicates
-    whether the text changed and lets callers refresh line-coordinate analyses.
-    Global-safe checkbox normalization (Pass A) always runs on the slice and on
-    restored table content, independent of the configured healing rules.
+    """Apply configured healing to the bounded cover slice only; tagged tables are
+    opaque, and the boolean reports whether the text changed.
     """
     if boundary.end_line is None:
         return text, False
@@ -63,9 +59,8 @@ def heal_cover_text(
         if merge_binary_blocks
         else masked_cover_lines
     )
-    # Note: reflow_prose is an intentional dormant upgrade path over phrase healing.
-    # Production callers currently pass reflow_prose=False until dependent cover
-    # boundary/table interactions are resolved.
+    # reflow_prose is a dormant upgrade path over phrase healing; production callers
+    # pass False until the cover boundary/table interactions are resolved.
     if reflow_prose:
         reflowed = reflow_ascii(
             "\n".join(healed_cover_lines),
@@ -96,10 +91,9 @@ def heal_cover_text(
             return text, False
         healed_cover = restore_tagged_tables(healed_cover, table_spans)
 
-    # Pass A (global-safe tokens) runs over the whole healed cover slice,
-    # including restored tagged tables: masked table content never reached the
-    # line-level normalization above, so retained cover tables such as the
-    # filer-status grid would keep raw Wingdings artifacts otherwise.
+    # Pass A (global-safe tokens) runs over the healed slice including restored
+    # tables: masked content never reached line normalization, so cover tables
+    # would keep raw Wingdings artifacts otherwise.
     healed_cover = normalize_checkbox_tokens(healed_cover)
     healed = "\n".join([healed_cover] + body_lines) if body_lines else healed_cover
     return healed, healed != text

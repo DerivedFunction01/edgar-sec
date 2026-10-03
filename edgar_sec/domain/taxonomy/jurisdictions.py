@@ -1,10 +1,7 @@
 """US state and territory postal codes, and jurisdiction-suffix removal.
 
-EDGAR entity names carry an incorporation jurisdiction as a slash-delimited
-suffix -- ``APPLE FIXTURE INC/CA`` -- which is not part of the company's identity
-and must be removed before names are compared. The code list is the statutory
-one; a jurisdiction that is not in it is not stripped, so an unrelated slash
-inside a name survives untouched.
+An EDGAR name carries its jurisdiction as a slash-delimited suffix (``APPLE FIXTURE
+INC/CA``). Only a code in the statutory list is stripped.
 """
 
 from __future__ import annotations
@@ -13,8 +10,7 @@ import re
 
 from edgar_sec.foundation.regex.builder import build_alternation
 
-# Statutory US state and territory codes that appear in EDGAR incorporation
-# fields.
+# Statutory US state and territory codes appearing in EDGAR incorporation fields.
 STATE_POSTAL_CODES = frozenset(
     {
         "AL",
@@ -133,12 +129,11 @@ STATE_NAMES = frozenset(
     }
 )
 
-# Alternation is built in sorted order so the compiled pattern is byte-identical
-# on every run and across processes.
+# Alternation built in sorted order so the compiled pattern is byte-identical everywhere.
 _STATE_ALTERNATION = build_alternation(sorted(STATE_POSTAL_CODES), auto_escape=True)
 
-# Matches a slash-delimited jurisdiction: either a second slash closes it
-# ("INC/CA/") or the suffix runs to end of string ("INC/CA").
+# A slash-delimited jurisdiction closed by a second slash ("INC/CA/") or by end of
+# string ("INC/CA").
 JURISDICTION_RE = re.compile(
     rf"\s*/\s*{_STATE_ALTERNATION}(?:\s*/|\s*$)",
     re.IGNORECASE,

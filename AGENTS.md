@@ -139,6 +139,7 @@ Before submitting any turn or completing work, run the unified quality gate:
 > [!NOTE]
 > `check.py` automatically uses Git change detection and static AST reverse-dependency lineage tracking:
 > - **Documentation / Assets**: If only markdown, documentation, or static non-code assets changed, pytest execution is bypassed completely.
+> - **Prose-Only Edits**: A `.py` file is compared to its `HEAD` baseline through docstring-stripped AST dumps. A change that leaves those dumps identical — a comment, docstring, or blank-line edit — selects no tests. `ruff format` and `ruff lint` still cover the file, so only pytest selection is skipped. An untracked file, a missing baseline, or unparsable text counts as a logic change.
 > - **Targeted Execution**: Modifying a module resolves and runs its direct mirrored test and downstream dependents, respecting pipeline boundaries.
 > - **Full Gate Verification**: Use `check.py --all` when completing major milestones or pull requests to run the entire test suite.
 
@@ -179,7 +180,10 @@ Scanners are defined modularly in `edgar_sec/foundation/scanners/` and collected
 
 Adding a scanner means: a module in `edgar_sec/foundation/scanners/`, an entry in
 `ALL_SCANNERS`, a mirrored `tests/foundation/scanners/test_<name>.py` (§6), and a
-line in the list above.
+line in the list above. Because that list already specifies the rule, the scanner's
+module docstring states only what it flags, what it deliberately allows, and its
+exemption mechanism — never a restatement of the rule (see **Code Comments and
+Docstrings**).
 
 ### Documentation Contract
 
@@ -247,6 +251,47 @@ Adding a package means: a `README.md` in it, an entry in the parent layer's
 README layout table, and an entry in `edgar_sec/README.md` and the root
 `README.md`.
 
+### Code Comments and Docstrings
+
+These rules are normative for code, not just Markdown. They exist because a
+long-prose comment habit, once established, is reintroduced by every later change
+that "documents while implementing". Apply them when you write code, not only
+when reviewing it.
+
+**Default to none.** A `#` or `"""` earns its place only by stating something the
+code cannot state. The code already explains execution; a comment that describes
+what the next lines do is deleted on sight.
+
+**Hard caps.** A module docstring is at most four lines. A function or class
+docstring is at most three. A comment is at most two. A test module docstring is
+at most three lines, a test function at most two, a test comment at most one.
+Exceeding a cap requires a precondition the type system cannot express, and is
+justified in review; it is not a default to fall back on.
+
+**Document intent, not execution.** Keep the conclusion and drop the derivation.
+"Rows must be sorted before merging, or the fingerprint is unstable" is worth
+writing. "First we sort, then we hash each row, then we compare with the previous
+fingerprint, and if any differ we reject the run" is not.
+
+**Six things justify prose.** A non-obvious invariant the code does not enforce;
+a refusal or rejection semantic and why it refuses; an ordering, determinism, or
+atomicity constraint; a caller obligation ("do not bypass X", "Y must be sorted
+first"); a safety or integrity rule (injection, path traversal, data loss, memory
+bound); a precondition the type system cannot express.
+
+**Do not duplicate.** If a type, function, or module already documents a rule,
+reference it by name in a few words or say nothing. Do not restate a rule that
+`AGENTS.md` already owns.
+
+**Never add:** step-by-step narration; benchmarks, measured figures, or corpus
+statistics; project vocabulary (phase numbers, stage names, milestones, roadmap
+references); design essays on why a file was split or a symbol placed where it is;
+what an earlier implementation did; comments that restate the following line.
+
+**When you change code, do not grow the prose.** Editing a function does not
+license expanding its docstring. New behaviour needs a sentence only when it
+introduces an invariant, a refusal, or an obligation that did not exist before.
+Net comment and docstring volume should not grow with a feature.
 
 ---
 

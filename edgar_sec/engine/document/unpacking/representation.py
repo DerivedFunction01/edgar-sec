@@ -1,19 +1,6 @@
 """Input preparation: decode, unwrap the envelope, classify the representation.
-
-Everything downstream branches on one question — is this payload real HTML,
-plain ASCII, or ASCII carried inside a `<PRE>` transport wrapper? — and the
-answer decides the entire stage chain. ASCII-PRE in particular must be
-identified *before* HTML cleaning, because cleaning a `<PRE>` payload is what
-loses the hard line breaks ASCII reflow depends on.
-
-The pipeline sequence below is important:
-
-1. decode, 2. strip transport envelopes, 3. purge non-displaying blocks,
-4. test for ASCII-PRE, 5. classify, 6. clean.
-
-Step 3 runs before step 4 so that a `<script>` block sitting outside a `<PRE>`
-cannot be mistaken for content, and step 6's HTML cleaning runs last because
-its inline-XBRL pass must see the tags it is meant to remove.
+ASCII-PRE must be identified before HTML cleaning, which would lose the hard line breaks reflow
+depends on. Order is otherwise decode, unwrap, purge, classify, clean.
 """
 
 from __future__ import annotations
@@ -39,9 +26,8 @@ _RE_HEAD_SCRIPT_STYLE = re.compile(
     rf"(?is)<(?:{_NON_DISPLAYING_TAGS})\b[^>]*>.*?</(?:{_NON_DISPLAYING_TAGS})>"
 )
 
-# Structural and styling tag discriminators, deliberately excluding the SGML
-# ASCII `<TABLE>` / `<S>` / `<C>` shapes: an untagged ASCII statement full of
-# those is not HTML.
+# Structural and styling discriminators, deliberately excluding the SGML ASCII `<TABLE>`/`<S>`/`<C>`
+# shapes: an untagged ASCII statement full of those is not HTML.
 _HTML_TAG_NAMES = build_alternation(
     [
         r"!doctype",
@@ -78,10 +64,7 @@ class Representation(StrEnum):
 
 def decode_bytes(raw_bytes: bytes) -> tuple[str, str]:
     """Decode raw payload bytes, reporting the encoding that succeeded.
-
-    CP1252 sits between UTF-8 and Latin-1 because historical EDGAR desktop
-    submissions are CP1252 far more often than they are Latin-1, and Latin-1
-    cannot fail, so it is the terminal fallback rather than the second choice.
+    CP1252 precedes Latin-1 because historical EDGAR desktop submissions are CP1252 far more often, and Latin-1 cannot fail, so it is the terminal fallback.
     """
     if not raw_bytes:
         return "", "utf-8"
@@ -113,11 +96,7 @@ def strip_sgml_document_wrapper(raw_text: str) -> str:
 
 def strip_envelope_text(text: str) -> str:
     """Strip PEM and SGML transport envelopes from a payload that reached here whole.
-
-    Defense in depth: the storage pipeline normally unpacks the bundle before
-    normalizing, so this is normally a no-op. A caller that hands a raw bundle
-    straight to the normalizer would otherwise see `<DOCUMENT>` framing in the
-    body text.
+    Defense in depth: without it a raw bundle handed straight to the normalizer shows ``<DOCUMENT>`` framing.
     """
     raw = text.encode("latin-1", errors="replace")
     stripped = strip_pem_envelope(raw)
@@ -136,9 +115,7 @@ def strip_envelope_text(text: str) -> str:
 
 def prepare_input_text(raw_bytes: bytes) -> tuple[str, Representation, str]:
     """Decode, unwrap, purge, classify, and clean one payload.
-
-    Returns `(cleaned_text, representation, encoding)`. Every branch returns a
-    usable string: this never raises on malformed input.
+    Returns ``(cleaned_text, representation, encoding)``. Never raises on malformed input.
     """
     raw_text, encoding = decode_bytes(raw_bytes)
     content = strip_envelope_text(raw_text)

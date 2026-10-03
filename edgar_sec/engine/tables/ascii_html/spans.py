@@ -1,9 +1,6 @@
 """Table DOM extraction, span tracking, and nested table isolation.
-
-A source table is a grid of *cells*, not a grid of *positions*: one cell may own
-many positions through `colspan`/`rowspan`. `build_span_matrix` resolves that
-ownership once, and every later stage reads positions rather than re-deriving
-spans, so a cell's text can never appear in two columns.
+A source table is a grid of *cells*, not *positions*: one cell may own many through
+`colspan`/`rowspan`. Ownership resolves once, so a cell's text can never appear in two columns.
 """
 
 from __future__ import annotations
@@ -26,16 +23,13 @@ from .model import (
 if TYPE_CHECKING:
     from .blocks import RenderBlock
 
-# O4: tag sets for bounded-DFS inner-indent scan
 _INDENT_SOURCE_TAGS: frozenset[str] = frozenset({"div", "p", "span"})
 _INDENT_STOP_TAGS: frozenset[str] = frozenset({"table", "tr", "td", "th"})
 
 
 def _iter_indent_descendants(cell: FastHtmlNode):
     """Yield div/p/span raw selectolax Nodes within a cell without crossing table boundaries.
-
-    Replaces ``cell.css('div, p, span')`` with a bounded DFS that avoids the
-    overhead of CSS selector parsing and selectolax re-parenting of malformed cells.
+    A bounded DFS rather than ``cell.css(...)``, which also walks selectolax's re-parenting of malformed cells.
     """
     stack = [c for c in cell.raw_node.iter(include_text=False) if c.tag]
     while stack:
@@ -52,15 +46,10 @@ def extract_source_table(
     table_index: int = 0,
     parent_table_index: int | None = None,
 ) -> tuple[SourceTable, list[SourceTable]]:
-    """Extract a SourceTable and any nested child tables cleanly isolated from the parent.
-
-    Nested tables found inside cells are registered as separate SourceTable instances
-    and referenced by index from the containing SourceCell.
-    """
+    """Extract a SourceTable and any nested child tables, isolated from the parent."""
     nested_tables: list[SourceTable] = []
     table_style = parse_style_and_attributes(table_node)
 
-    # Find rows that belong DIRECTLY to this table (not to a nested child table)
     direct_rows: list[FastHtmlNode] = []
     for child in table_node.iter_children():
         tag = child.tag
@@ -81,7 +70,6 @@ def extract_source_table(
         row_cells: list[SourceCell] = []
         c_idx = 0
 
-        # Find cells that belong DIRECTLY to this row
         for child in row_node.iter_children():
             tag = child.tag
             if tag not in ("td", "th"):
@@ -91,7 +79,6 @@ def extract_source_table(
             if cell_style.is_hidden:
                 continue
 
-            # Check for nested tables inside this cell
             is_nested = False
             nested_idx: int | None = None
             has_child_elements = child.raw_node.child is not None and (
@@ -124,10 +111,8 @@ def extract_source_table(
             except ValueError:
                 rowspan = 1
 
-            # Calculate visual indentation from CSS padding/margin/indent and non-breaking space prefixes
             inner_indent_px = 0.0
             if has_child_elements:
-                # O4: bounded DFS instead of child.css() to avoid CSS selector overhead
                 for inner in _iter_indent_descendants(child):
                     attrs = inner.attributes or {}
                     if "style" in attrs or "class" in attrs or "align" in attrs:
@@ -157,7 +142,6 @@ def extract_source_table(
             cell_text = child.text(separator="\n", strip=True)
             preserve_nl = cell_style.white_space in ("pre", "pre-wrap")
             cell_text = _normalize_whitespace(cell_text, preserve_newlines=preserve_nl)
-            # Suppress indentation prefixes on numeric or right/center-aligned cells
             if is_numeric_cell(cell_text) or cell_style.text_align in (
                 HorizontalAlign.RIGHT,
                 HorizontalAlign.CENTER,
@@ -201,16 +185,12 @@ def extract_source_table(
 def build_span_matrix(
     source_table: SourceTable,
 ) -> tuple[list[list[SourceCell | None]], list[SpanGroup]]:
-    """Build a 2D matrix mapping (row, col) grid slots accounting for rowspan and colspan.
-
-    Returns:
-    - grid_matrix: 2D list where each cell contains the owning SourceCell.
-    - span_groups: list of SpanGroup instances describing multi-cell regions.
+    """Build a 2D matrix mapping (row, col) grid slots, accounting for rowspan and colspan.
+    Returns the matrix (owning ``SourceCell`` per slot) and the ``SpanGroup`` regions.
     """
     if not source_table.rows:
         return [], []
 
-    # Estimate dimensions
     num_rows = len(source_table.rows)
     matrix: list[list[SourceCell | None]] = []
     span_groups: list[SpanGroup] = []
@@ -221,16 +201,13 @@ def build_span_matrix(
     for r_idx, row in enumerate(source_table.rows):
         curr_col = 0
         for cell in row:
-            # Advance past already occupied cells from previous rowspans
             while curr_col < len(matrix[r_idx]) and matrix[r_idx][curr_col] is not None:
                 curr_col += 1
 
-            # Expand rows in matrix if needed for rowspan
             target_r_end = r_idx + cell.rowspan
             while len(matrix) < target_r_end:
                 matrix.append([])
 
-            # Place cell across its colspan and rowspan
             c_start = curr_col
             c_end = curr_col + cell.colspan
 
@@ -253,7 +230,6 @@ def build_span_matrix(
 
             curr_col = c_end
 
-    # Normalize matrix rows to equal length
     max_cols = max((len(r) for r in matrix), default=0)
     for row in matrix:
         while len(row) < max_cols:
@@ -266,13 +242,7 @@ def repair_header_band_spans(
     grid_matrix: list[list[SourceCell | None]],
 ) -> None:
     """Align visible band labels to the logical header groups beneath them.
-
-    Some SEC tables include hidden spacer cells whose declared ``colspan``
-    does not line up with the visible repeated headers. In that case, a band
-    label can cover only part of its logical repeated header group. The
-    repair is intentionally text-agnostic: it applies to years, quarters,
-    scenario labels, or other visible header text when the row below provides
-    repeated multi-column groups.
+    A spacer whose ``colspan`` misaligns the repeated headers leaves a band label covering part of its group; the repair is text-agnostic.
     """
     from .columns import is_affix_footnote_token
 
@@ -283,11 +253,9 @@ def repair_header_band_spans(
         if t in PREFIX_SYMBOLS or t == "%":
             return True
         if is_numeric_cell(t):
-            # 4-digit years like 2024 or 2025 can be header labels
             return not is_year_token(t)
         return False
 
-    # Header band repairs only apply to top header rows (e.g. within top 5 rows)
     max_header_row = min(len(grid_matrix) - 1, 5)
     row_has_financial = [
         any(cell and _is_financial_data_token(cell.text) for cell in grid_matrix[r])
@@ -297,7 +265,6 @@ def repair_header_band_spans(
         row = grid_matrix[row_idx]
         next_row = grid_matrix[row_idx + 1]
 
-        # A header band row and its subheaders must not contain financial data
         if row_has_financial[row_idx] or row_has_financial[row_idx + 1]:
             continue
 
@@ -351,7 +318,6 @@ def repair_header_band_spans(
             last_group = header_cells[(band_idx + 1) * groups_per_band - 1]
             for col_idx in range(first_group[0], last_group[1] + 1):
                 if col_idx < len(row):
-                    # Never overwrite an existing cell with non-empty text from another source
                     target = row[col_idx]
                     if target is None or not target.text.strip() or target is band_cell:
                         row[col_idx] = band_cell

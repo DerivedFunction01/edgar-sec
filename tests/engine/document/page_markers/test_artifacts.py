@@ -62,17 +62,14 @@ def test_normalization_masks_digit_runs_and_names_the_slot(
 
 @pytest.mark.parametrize("text", ["F-3", "Notes -3", "Item 99A"])
 def test_a_digit_run_adjacent_to_a_hyphen_or_a_word_is_not_masked(text: str) -> None:
-    # The mask refuses a run that touches a word character or a hyphen, so an
-    # exhibit page (`F-3`) and a version-stamped figure keep their digit.
+    # The mask refuses a run touching a word character or hyphen, so an exhibit page
+    # (`F-3`) and a version-stamped figure keep their digit.
     assert normalize_template_text(text) == (text, None)
 
 
 def test_a_recorded_page_number_slot_is_always_the_first_replacement() -> None:
-    # The slot records the index of the digit run *within the list of
-    # replacements*, not the position of the replaced token in the text, so a
-    # single masked number always records slot 0 no matter where it sat. The
-    # slot is therefore a "was there exactly one number" flag rather than a
-    # position, and the rendered text is what actually locates it.
+    # The slot indexes the run within the replacements list, not its position in the
+    # text, so it is a "was there exactly one number" flag; the rendered text locates it.
     assert normalize_template_text("Notes to statements 12") == (
         "Notes to statements #",
         0,
@@ -111,10 +108,8 @@ def test_different_furniture_lands_in_different_templates() -> None:
 
 
 def test_a_template_id_keys_on_text_alone_so_identical_furniture_merges() -> None:
-    # The id is the digest of the normalized text, so a header and a footer
-    # printed identically share one template entry and the first kind observed
-    # is the one recorded. The page number and coordinates disambiguate the
-    # individual artifacts; the template is a text identity, not a role.
+    # The id is a digest of normalized text, so an identical header and footer share one
+    # entry and the first kind observed is the one recorded.
     templates: dict = {}
     template_id = note_template(templates, PageMarkerKind.REPEATING_HEADER, "Page 1")
     assert note_template(templates, PageMarkerKind.REPEATING_FOOTER, "Page 1") == (

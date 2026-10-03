@@ -1,13 +1,7 @@
 """Arrow schemas and version constants for the filing catalog.
 
-The catalog is a pure projection of the Phase 1 ``submission_metadata`` dataset:
-``PROFILE_SCHEMA`` borrows its fields by reference rather than restating their
-types, so a Phase 1 schema change is detected here at import time instead of
-surfacing as a silent column drift at materialization time.
-
-``company_family`` is deliberately not a catalog profile column. Clustering is
-a selection-stage feature: it applies when documents are chosen, and is not a
-field the published profile carries.
+``PROFILE_SCHEMA`` borrows the Phase 1 ``submission_metadata`` fields by reference, so a
+Phase 1 change surfaces here at import time rather than as column drift later.
 """
 
 from __future__ import annotations
@@ -27,11 +21,9 @@ PROFILE_SCHEMA_VERSION = "1.0.0"
 PATH_SOURCE_PRIMARY = "primary_document"
 PATH_SOURCE_BUNDLE = "submission_bundle"
 
-# The two planning scopes. A deterministic plan slices a catalog on filters; a
-# policy plan fills a quota profile. They publish deliberately different
-# occurrence schemas, so a scope is part of every contract that reads a bundle.
-# They live here rather than in the planner because both the planner and the
-# publication layer must name them.
+# The two planning scopes, published under different occurrence schemas, so a scope is
+# part of every contract reading a bundle. Declared here because planner and publication
+# must name them alike.
 SCOPE_DETERMINISTIC = "deterministic"
 SCOPE_POLICY = "policy"
 
@@ -106,8 +98,8 @@ TARGET_SCHEMA = pa.schema(
     ]
 )
 
-# Deterministic scope emits the narrow locator projection. Policy scope widens it with the
-# feature dimensions declared in LOCATOR_POLICY_FEATURES.
+# Deterministic scope emits the narrow locator projection; policy scope widens it with
+# LOCATOR_POLICY_FEATURES.
 LOCATOR_BASE_COLUMNS = (
     "document_locator_key",
     "form",
@@ -119,10 +111,8 @@ LOCATOR_BASE_COLUMNS = (
     "document_path_source",
 )
 
-# The policy-scope widening: the locator identity columns plus the stratification
-# dimensions a selection can be audited against. Declared here, in the order the
-# published file uses, so the writer and any consumer share
-# one ordering rather than each keeping a copy of the list.
+# The policy-scope widening: locator identity columns plus the stratification dimensions a
+# selection is audited against, in published order so writer and consumers share one list.
 LOCATOR_POLICY_FEATURES = (
     "form_family",
     "era",

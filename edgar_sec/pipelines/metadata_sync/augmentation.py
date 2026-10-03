@@ -1,18 +1,7 @@
 """Delta augmentation against a published snapshot.
-
-Augmentation plans work only for CIKs the base snapshot does not already
-contain. The published base is never refetched: delta chunks are merged with the
-existing snapshot Parquet, so a snapshot that already holds N CIKs and receives K
-new ones ends with N+K rows and only K network fetches.
-
-Identity is the important decision here. A delta plan is identified by its base
-snapshot *and* its delta roster, never by the request file that named the CIKs:
-the same requested list against two different bases is two different deltas.
-``new_snapshot_id`` defaults to the delta plan id, already a content address over
-the base snapshot, the effective delta roster, and the chunk layout, so an
-augmentation is idempotent and needs no identifier typed by an operator. An
-explicit id remains an override for the distribution path, where a worker stamps
-rows with the snapshot the coordinator will publish under.
+The base is never refetched. A delta plan is identified by its base snapshot and
+its delta roster -- never the request file -- and the published identity derives
+from that.
 """
 
 from __future__ import annotations
@@ -66,17 +55,7 @@ __all__ = [
 @dataclass(frozen=True, slots=True)
 class AugmentPreflight:
     """What an augmentation would do, decided before anything is fetched.
-
-    Separating this from the run is the point. "How many CIKs does the chosen
-    cohort add to the chosen base?" is answerable from two published artifacts,
-    so answering it before the client exists means the common boring outcome --
-    the base already covers the request -- costs no network request, no
-    rate-limit budget, and no published delta plan, and it reads as a result
-    rather than as a failure.
-
-    It carries counts rather than cohorts: the question is how much overlap there
-    is, and answering it by building the difference would do the very work this
-    check exists to avoid.
+    Counts, not cohorts: building the difference is the work this avoids.
     """
 
     base_snapshot_id: str
@@ -101,11 +80,7 @@ class AugmentPreflight:
 @dataclass(frozen=True, slots=True)
 class AugmentResult:
     """Outcome of one augmentation run.
-
-    ``report`` is ``None`` for a no-op: nothing was published, so there is no
-    merge report, and returning an empty one would describe a publication that did
-    not happen. ``no_op`` is therefore the field to branch on, and
-    ``total_row_count`` reports the unchanged base rather than a fabricated total.
+    ``report`` is ``None`` for a no-op; branch on ``no_op``.
     """
 
     base_snapshot_id: str
@@ -128,11 +103,7 @@ def base_cik_sources(
     metadata_paths: MetadataPaths, snapshot_id: str
 ) -> tuple[list[str], bool]:
     """The published artifacts that hold a snapshot's CIK set.
-
-    The published index is preferred, because it is the artifact the snapshot
-    claims to hold. A snapshot published before the index existed falls back to
-    projecting the CIK column of every part its manifest lists. A missing base is
-    still an error: an unreadable base must never be mistaken for an empty one.
+    An unreadable base is an error, never mistaken for an empty one.
     """
     index_path = metadata_paths.snapshot_cik_index(snapshot_id)
     if index_path.is_file():
@@ -141,9 +112,8 @@ def base_cik_sources(
     return [str(path) for path in parts.paths], True
 
 
-#: Overlap between a requested cohort and a base snapshot, counted rather than
-#: materialized. Both paths and both column names are bound, so nothing here
-#: composes SQL text from a value.
+#: Overlap counted, not materialized. Both paths and both column names are
+#: bound, so nothing here composes SQL text from a value.
 _CIK_OVERLAP_QUERY = """
 SELECT
     count(*) FILTER (WHERE base.cik IS NULL) AS absent_rows,
@@ -152,12 +122,9 @@ FROM read_parquet(?) AS requested
 LEFT JOIN read_parquet(?) AS base ON base.cik = requested.cik_padded
 """
 
-#: The requested cohort reduced against the base, written out as its own cohort.
-#: Ordinals are renumbered from zero: the surviving rows carry the requested
-#: cohort's ordinals, and an ordinal is a position *within* a cohort, so keeping
-#: them would leave the delta addressed from wherever the removed rows happened to
-#: fall. Chunk ranges start at zero, so a delta numbered from four would have its
-#: first chunk read back empty.
+#: Ordinals are renumbered from zero: an ordinal is a position *within* a cohort,
+#: and chunk ranges start at zero, so keeping the requested cohort's numbering
+#: would leave the delta addressed from wherever the removed rows happened to fall.
 _CIK_ANTI_JOIN_QUERY = """
 WITH kept AS (
     SELECT ordinal, cik_padded, name
@@ -182,12 +149,7 @@ def preflight_augment(
     base_snapshot_id: str,
 ) -> AugmentPreflight:
     """Decide what an augmentation would fetch, reading only published artifacts.
-
-    Every cohort is treated as a *requested* set and reduced against the base,
-    including one that is already called a delta. An operator who points this at a
-    hand-built increment, or re-runs an augmentation that already succeeded, gets
-    the correct answer either way, and a request that the base already satisfies
-    is reported as no work rather than refused.
+    An already-satisfied request is reported as no work, not refused.
     """
     sources, _from_parts = base_cik_sources(metadata_paths, base_snapshot_id)
     if requested.dataset is None or not sources:
@@ -222,11 +184,7 @@ def derive_delta_cohort(
     destination: str | Path,
 ) -> Roster:
     """Materialize the CIKs the base does not hold as their own cohort.
-
-    The difference is written as a cohort rather than returned as a set, because
-    it is a cohort: it carries an identity that the merge report records, and the
-    plan over it derives its chunk layout from the same ordinals the requested
-    cohort used, so a CIK keeps its position across the reduction.
+    Written as a cohort because it carries an identity the merge report records.
     """
     if requested.dataset is None:
         raise RosterError("cannot reduce an empty cohort")
@@ -249,8 +207,7 @@ def delta_cohort_path(
 ) -> Path:
     """Where the difference between a requested cohort and a base is compiled.
 
-    Keyed by both inputs, so the same reduction is compiled once and two
-    different reductions never share a cohort.
+    Keyed by both inputs, so two different reductions never share a cohort.
     """
     key = f"{requested.roster_id}-minus-{base_snapshot_id}"
     return metadata_paths.compiled_cohort_file(key)
@@ -289,11 +246,8 @@ def derive_delta_plan(
     )
 
 
-#: Symmetric difference between what was published and what should have been.
-#: Zero is the only acceptable answer; counts alone would not prove the sets
-#: match, since one CIK could be missing and another duplicated. Published parts
-#: and a snapshot index key their CIK as ``cik``, while a cohort dataset keys it as
-#: ``cik_padded``, so the cohort side is aliased onto the same name.
+#: Symmetric difference between published and expected CIKs; zero is the only
+#: acceptable answer, since counts alone would not prove the sets match.
 _CIK_SET_DIFFERENCE_QUERY = """
 WITH merged AS (SELECT DISTINCT cik FROM read_parquet(?)),
      carried AS (SELECT DISTINCT cik FROM read_parquet(?)),
@@ -347,24 +301,8 @@ def augment(
     input_fingerprint: str = "",
 ) -> AugmentResult:
     """Augment a published snapshot with any newly requested CIKs.
-
-    The base is read as the ordered part list its manifest declares, so a
-    multipart base contributes all its parts and a legacy single-file base one.
-    Delta chunks become the remaining parts of the new snapshot, so base CIKs are
-    carried forward untouched and never refetched. Copied base rows keep their
-    original row-level ``snapshot_id`` -- row provenance, not the identity of
-    whichever artifact later contains the row -- and an empty
-    ``new_snapshot_id`` resolves to the delta plan id, so the published identity
-    is derived rather than supplied.
-
-    A pre-computed ``preflight`` is accepted so a caller that already reduced the
-    cohort against the base does not pay for the same read twice, and so the
-    decision to fetch is made in exactly one place.
-
-    ``progress`` carries the ``run`` and ``merge`` event shapes -- per-CIK fetch
-    events then merge stage events -- because an augmentation does the longest
-    silent work in the pipeline otherwise; the delta plan is announced as a
-    ``delta_plan`` event because its size is not knowable before this call.
+    The base is carried forward and never refetched; its rows keep their original
+    ``snapshot_id``, which is row provenance.
     """
     emit = _safe_progress(progress)
     check = preflight or preflight_augment(
@@ -379,9 +317,8 @@ def augment(
         else base_parts.row_count
     )
     if check.is_empty:
-        # Nothing to fetch is a result, not a failure: the base already holds the
-        # request, so no client call is made, no delta plan is written, and no
-        # snapshot or pointer is published.
+        # Nothing to fetch is a result, not a failure: no client call, no delta
+        # plan, no snapshot or pointer published.
         return AugmentResult(
             base_snapshot_id=base_snapshot_id,
             new_snapshot_id="",
@@ -406,9 +343,8 @@ def augment(
     run_paths = resolve_run_paths(plan.plan_id, metadata_paths.artifacts_root)
     write_plan(plan, run_paths)
 
-    # Announced rather than pre-known: the delta size depends on which CIKs the
-    # base already holds, so a caller cannot size a bar for the fetch the way
-    # ``cmd_run`` does. It gets the plan here and sizes from this event.
+    # Announced rather than pre-known: delta size depends on which CIKs the base
+    # already holds, so a caller can only size its bar from this event.
     emit({"type": "delta_plan", "plan_id": plan.plan_id, "row_count": plan.row_count})
     results = run_chunk_ids(
         client,

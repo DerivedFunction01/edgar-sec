@@ -1,5 +1,3 @@
-"""Tests for ASC 718 stock compensation schedules taxonomy."""
-
 from __future__ import annotations
 
 from edgar_sec.domain.taxonomy.schedules.compensation.stock_comp import (

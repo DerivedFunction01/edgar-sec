@@ -1,10 +1,5 @@
-"""Unit tests for engine.selection.policy: the declarative quota profile.
-
-The policy is the only place a form name, an era boundary, or a dimension
-weight appears. These tests therefore pin two things: that it round-trips
-exactly (a plan's recorded policy must be reloadable to the same fingerprint),
-and that it rejects nonsense at construction rather than hours later inside a
-selector.
+"""The declarative quota profile: exact fingerprint round-trip, and rejection at
+construction rather than a failure inside a selector later.
 """
 
 from __future__ import annotations
@@ -80,7 +75,6 @@ def test_policy_rejects_unknown_dimensions_in_floors() -> None:
 
 
 def test_policy_rejects_unknown_dimensions_inside_a_composite() -> None:
-    """Nested composite filters must name declared dimensions."""
     with pytest.raises(ValueError, match="unknown policy dimensions"):
         SelectionPolicy(
             corpus_id="bad",
@@ -146,11 +140,8 @@ def test_policy_fingerprint_changes_with_a_material_edit() -> None:
     ["seed_groups", "weights", "value_weights", "policy_schema_version"],
 )
 def test_a_retired_key_is_refused_rather_than_ignored(retired: str) -> None:
-    """A draft carrying a key selection never reads must fail to load.
-
-    Dropping the key and loading the rest would publish a plan from a policy
-    whose own text describes a weighting, a seed grouping, or a schema that
-    nothing applies. Failing closed is the only reading that is honest.
+    """Dropping a retired key and loading the rest would publish a plan from a policy
+    whose own text describes a weighting nothing applies.
     """
     document = {"corpus_id": "c", "forms": ["10-K"], retired: []}
     with pytest.raises(ValueError, match=retired):
@@ -176,9 +167,6 @@ def test_validate_dimensions_reports_a_snapshot_mismatch() -> None:
     with pytest.raises(ValueError, match="absent from snapshot"):
         policy.validate_dimensions({"form", "era_bands"})
     policy.validate_dimensions({"form", "era"})
-
-
-# ------------------------------------------------------------------ seed CSV
 
 
 def test_load_seed_cik_csv_normalizes_and_validates(tmp_path: Path) -> None:
@@ -218,10 +206,7 @@ def test_load_seed_cik_csv_reports_a_missing_file(tmp_path: Path) -> None:
 
 
 def test_seed_fingerprint_is_stable_across_row_order() -> None:
-    """The hash is over values, not file order.
-
-    Re-sorting the manifest must not invalidate every plan built from it.
-    """
+    """Re-sorting the manifest must not invalidate every plan built from it."""
     forward = {
         "0000000001": SeedFiler(cik="0000000001", seed_group="a"),
         "0000000002": SeedFiler(cik="0000000002", seed_group="b"),
@@ -238,11 +223,8 @@ def test_seed_fingerprint_changes_with_any_field() -> None:
 
 
 def test_seed_fingerprint_ignores_a_ciks_display_name(tmp_path: Path) -> None:
-    """A seed's name carries no behaviour, so renaming one moves no plan.
-
-    The name used to decide company-family boundaries. It no longer does, and
-    fingerprinting it would churn plan identity on a cosmetic edit to an operator
-    manifest.
+    """A seed's display name carries no behaviour, so fingerprinting it would churn
+    plan identity on a cosmetic edit to an operator manifest.
     """
 
     def fingerprint_for(name: str) -> str:
@@ -251,9 +233,6 @@ def test_seed_fingerprint_ignores_a_ciks_display_name(tmp_path: Path) -> None:
         return compute_seed_fingerprint(load_seed_cik_csv(path))
 
     assert fingerprint_for("Acme") == fingerprint_for("Renamed")
-
-
-# ------------------------------------------------------------- normalization
 
 
 @pytest.mark.parametrize(
@@ -273,9 +252,6 @@ def test_normalize_value(raw: object, expected: str) -> None:
 def test_normalize_value_collapses_missing_and_the_none_literal() -> None:
     """Otherwise a floor on 'none' counts as unmet no matter how many rows lack it."""
     assert normalize_value(None) == normalize_value("None")
-
-
-# --------------------------------------------------------------- generation
 
 
 def test_auto_generate_policy_tiles_the_observed_year_range() -> None:
@@ -311,9 +287,6 @@ def test_auto_generate_policy_writes_when_asked(tmp_path: Path) -> None:
     assert json.loads(destination.read_text(encoding="utf-8"))["corpus_id"]
 
 
-# ----------------------------------------------------------------- discovery
-
-
 def test_discover_policies_summarizes_valid_documents(tmp_path: Path) -> None:
     SelectionPolicy(corpus_id="found", forms=["10-K"]).write(tmp_path / "a.json")
     summaries = discover_policies([tmp_path])
@@ -323,9 +296,7 @@ def test_discover_policies_summarizes_valid_documents(tmp_path: Path) -> None:
 
 
 def test_discover_policies_skips_unrelated_json(tmp_path: Path) -> None:
-    """A policy directory may legitimately hold other JSON.
-
-    Raising here would make the operator menu unusable, so a non-policy file is
+    """Raising here would make the operator menu unusable, so non-policy files are
     skipped rather than reported.
     """
     (tmp_path / "notes.json").write_text('{"hello": "world"}', encoding="utf-8")
@@ -345,9 +316,6 @@ def test_discover_policies_does_not_double_count_overlapping_dirs(
     assert len(discover_policies([tmp_path, tmp_path])) == 1
 
 
-# --- the date selection and the derived-band mode ---------------------------
-
-
 def test_a_policy_declares_no_date_selection_by_default() -> None:
     """Absent means no date predicate, not a selection of the whole corpus."""
     policy = SelectionPolicy(corpus_id="c", forms=["10-K"])
@@ -364,11 +332,8 @@ def test_a_policy_reads_an_absent_date_selection_as_no_predicate() -> None:
 
 
 def test_a_policy_canonicalizes_its_declared_date_selection() -> None:
-    """A hand-edited draft fingerprints as the parsed selection.
-
-    A draft is edited by people, who reorder and re-spell. Two files that mean
-    the same thing must produce one plan id, or every cosmetic edit forks a
-    duplicate bundle of the same rows.
+    """Two files that mean the same thing must produce one plan id, or every
+    cosmetic edit forks a duplicate bundle of the same rows.
     """
     declared = [
         {
@@ -403,8 +368,7 @@ def test_a_policy_canonicalizes_its_declared_date_selection() -> None:
         }
     )
     assert from_dict.policy_fingerprint == same.policy_fingerprint
-    # Absolute clauses sort ahead of recurring ones, so the text is stable
-    # regardless of the order a hand-edited document listed them in.
+    # Absolute clauses sort ahead of recurring ones.
     assert from_dict.date_selection_text == "2024-01-01..2024-12-31,@Q1"
 
 
@@ -426,10 +390,8 @@ def test_an_empty_era_band_list_means_derived_not_unstratified() -> None:
 
 
 def test_resolving_bands_leaves_the_original_policy_untouched() -> None:
-    """The draft on disk must keep asking for derived bands.
-
-    If resolution mutated the policy, re-reading the draft would find explicit
-    bands and the automatic mode would silently become permanent.
+    """If resolution mutated the policy, re-reading the draft would silently make
+    the derived mode permanent.
     """
     policy = SelectionPolicy(corpus_id="c", forms=["10-K"])
     resolved = policy.with_era_bands(era_bands_for_range(1999, 2024))

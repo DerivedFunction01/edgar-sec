@@ -49,10 +49,8 @@ def _failed_row(
     error: str,
     byte_count: int,
 ) -> dict:
-    """Terminal failed row carrying every schema field.
-
-    One row is emitted per requested CIK including failures, so completion is
-    determinable from the data rather than from queue state.
+    """Terminal failed row carrying every schema field; one row per requested CIK
+    including failures, so completion is determinable from the data.
     """
     return {
         "cik": cik_padded,
@@ -112,11 +110,8 @@ def normalize_submissions(
     input_fingerprint: str = "",
     chunk_id: int | None = None,
 ) -> dict[str, Any]:
-    """Build one canonical ``submission_metadata`` row from a submissions payload.
-
-    ``historical_payloads`` holds ``(source_file, source_section, payload)``
-    tuples. ``historical_errors`` carries terminal failures for historical
-    files, which are required inputs rather than best-effort extras.
+    """Build one canonical `submission_metadata` row; `historical_errors` carries
+    terminal historical-file failures, which are required inputs, not extras.
     """
     anomalies: list[dict] = []
     if not isinstance(payload, dict):

@@ -1,8 +1,6 @@
-"""Tests for final-text whitespace normalization.
+"""Final-text whitespace normalization.
 
-Re-lands the suite deleted in commit `079010e` and extends it to the
-punctuation gating that keeps column separators from being read as list
-boundaries — the failure mode this pass exists to avoid.
+Punctuation gating keeps column separators from being read as list boundaries.
 """
 
 from __future__ import annotations
@@ -21,8 +19,8 @@ def test_empty_text() -> None:
 
 
 def test_strips_line_end_padding() -> None:
-    # Trailing newlines are preserved: this stage normalizes, it does not
-    # truncate. The pipeline's final strip owns the outer edges.
+    # Trailing newlines are preserved: this stage normalizes, the pipeline's final
+    # strip owns the outer edges.
     assert normalize_final_text_whitespace("a   \nb\t\n") == "a\nb\n"
 
 

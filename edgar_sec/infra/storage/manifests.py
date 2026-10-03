@@ -1,23 +1,7 @@
 """Snapshot manifests: the durable identity of a published document snapshot.
 
-A manifest is the *only* thing that makes a snapshot meaningful. The Parquet
-bytes on disk are interchangeable — a manifest names which parts constitute the
-snapshot, which snapshots it descends from, and a content fingerprint. Without
-one, a consolidation cannot tell a source snapshot from an intermediate.
-
-Two invariants shape this module:
-
-**A snapshot is immutable.** Writing a manifest under an existing id is refused.
-A published identity is referenced from other records, so overwriting it would
-retroactively change what those references mean.
-
-**The pointer is written last.** ``current_pointer_path`` names the snapshot a
-reader should use. A pointer written before the manifest would send a reader to
-a snapshot that does not exist yet, which is strictly worse than a stale pointer
-to one that does.
-
-Environment access goes through ``foundation.runtime.env``; manifests and plans
-are persisted artifacts and must never carry machine-specific overrides.
+A snapshot id is never overwritten (other records reference it), and the ``current``
+pointer is written last, after the manifest.
 """
 
 from __future__ import annotations
@@ -49,9 +33,8 @@ class ManifestError(RuntimeError):
 class SnapshotPart:
     """One physical part of a snapshot.
 
-    Parts are byte-budgeted, so a snapshot is a *set* of files rather than one.
-    ``doc_ids`` is the ordered document range the part covers, which is what
-    lets a reader stream a quarter a part at a time instead of loading it all.
+    Parts are byte-budgeted, so a snapshot is a set of files; ``doc_ids`` is the
+            ordered document range a part covers.
     """
 
     path: str
@@ -94,9 +77,8 @@ def snapshot_identity(
 ) -> str:
     """Derive a deterministic snapshot id from what produced it.
 
-    Deterministic on purpose: consolidating the same sources with the same
-    content twice yields the same id, so a repeated consolidation is recognizably
-    a no-op rather than a second, near-identical snapshot.
+    Repeating a consolidation over the same sources yields the same id, so a repeat
+            is recognizably a no-op rather than a second near-identical snapshot.
     """
     payload = {
         "operation": operation,
@@ -110,11 +92,8 @@ def snapshot_identity(
 def snapshot_dir(snapshots_root: Path, snapshot_id: str) -> Path:
     """Return the directory for one snapshot.
 
-    ``snapshots_root`` is the dataset's published root — ``ProjectPaths
-    .documents_root`` — and each snapshot is a directory beside the ``current``
-    pointer. The phase and dataset keys are absent from the path because they are
-    already fixed by which root was passed; repeating them would only add a
-    second place to look.
+    Each snapshot is a directory beside the ``current`` pointer; the dataset key is
+            fixed by which root was passed.
     """
     return Path(snapshots_root) / snapshot_id
 
@@ -134,10 +113,8 @@ def write_manifest(
 ) -> Path:
     """Publish a snapshot manifest, refusing to overwrite an existing snapshot.
 
-    ``dataset`` and ``phase`` name the publisher, and are the caller's to supply:
-    which phase produced a snapshot is a fact about the pipeline, not about the
-    machinery that makes the snapshot durable. Several phases publish through
-    this one function, so a constant here would mislabel all but one of them.
+    ``dataset`` and ``phase`` are the caller's to supply: which phase produced a snapshot
+            is a pipeline fact, and several publish through this one function.
     """
     snapshot_id = str(manifest.get("snapshot_id") or "")
     if not snapshot_id:
@@ -171,16 +148,8 @@ def list_snapshots(
 ) -> list[dict[str, Any]]:
     """List every readable snapshot manifest, sorted by id.
 
-    A snapshot whose manifest is unreadable is skipped with a warning rather than
-    failing the listing: consolidation must still be able to see the healthy
-    snapshots when one directory is damaged.
-
-    ``manifest_name`` is a parameter because the directory scan, the
-    warn-and-skip handling, and the parse are one concern, but the manifest
-    filename is a per-pipeline convention: Phase 1 metadata publishes
-    ``metadata.manifest.json`` where this module's own dataset publishes
-    ``manifest.json``. Defaulting the parameter keeps existing callers unchanged
-    and lets a second pipeline reuse the logic instead of copying it.
+    An unreadable manifest is skipped with a warning, so consolidation still sees the
+    healthy snapshots. ``manifest_name`` is a per-pipeline convention, so a parameter.
     """
     root = snapshots_dir(snapshots_root)
     if not root.is_dir():
@@ -246,9 +215,8 @@ def dependents_of(
 ) -> dict[str, set[str]]:
     """Map each source snapshot to the snapshots that reference its parts.
 
-    This is the guard that makes a purge safe. Two snapshots that share a part
-    are physically entangled: deleting the source deletes bytes the dependent
-    still needs, so the dependent must be consolidated first.
+    Snapshots sharing a part are physically entangled, so a dependent must be
+            consolidated before the source is purged.
     """
     paths_by_snapshot: dict[str, set[str]] = {}
     for manifest in manifests:
@@ -272,8 +240,7 @@ def expand_dependency_closure(snapshots_root: Path, selected: set[str]) -> set[s
     """Grow a selection until it includes everything that shares a part with it.
 
     A purge may only remove a snapshot once nothing retained still references its
-    parts. Expanding the closure is how the caller finds the set that is safe to
-    drop together, rather than discovering a violation halfway through a delete.
+            parts; expanding the closure finds the set safe to drop together.
     """
     manifests = list_snapshots(snapshots_root)
     closure = set(selected)
@@ -310,7 +277,6 @@ class SnapshotReader:
         return tuple(str(item) for item in self.manifest.get("source_snapshot_ids", ()))
 
     def parts(self, kind: str) -> tuple[SnapshotPart, ...]:
-        """Return this snapshot's parts of one kind."""
         return resolved_parts(self.manifest, kind)
 
     def logical_fingerprint(self) -> str:
@@ -322,11 +288,8 @@ class SnapshotReader:
     def part_path(self, part: SnapshotPart) -> Path:
         """Resolve a part's recorded path against *this snapshot's* directory.
 
-        A recorded ``part.path`` is relative to the snapshot directory, not to
-        the snapshots root: ``write_index_part(snapshot_dir, ...)`` stores
-        ``snapshot_dir / part.path`` and ``read_part`` resolves it the same way.
-        Anchoring at the root instead would drop the snapshot id and resolve
-        every part of every snapshot into the same wrong location.
+        ``part.path`` is relative to the snapshot directory, not the snapshots
+        root; anchoring at the root resolves every snapshot's parts to one wrong place.
         """
         return snapshot_dir(self.snapshots_root, self.snapshot_id) / part.path
 

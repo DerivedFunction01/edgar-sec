@@ -1,11 +1,6 @@
 """Is this table really a table? False/layout grid classification.
-
-A filing uses HTML tables for things that are not tables: a single bulleted
-risk-factor row, an exhibit index, a two-column heading. Converting those to
-aligned ASCII destroys them, and leaving them as grids produces noise. This
-module answers the question from the resolved grid rather than from the rendered
-text, because a layout grid's shape — one marker column beside one prose column
-— is the evidence, and rendered wrapping has already destroyed it.
+A filing uses HTML tables for non-tables, and converting those to aligned ASCII destroys them. The
+verdict reads the resolved grid, because a layout grid's shape is the evidence.
 """
 
 from __future__ import annotations
@@ -77,12 +72,7 @@ def _is_prose_text(value: str) -> bool:
 
 def _marker_candidates(value: str) -> list[tuple[str, int, str]]:
     """Return every plausible (family, value, remaining prose) reading of a cell.
-
-    Single characters in ``ivxlcdm`` are ambiguous between roman numerals and
-    letter sequences (for example ``i)`` inside ``g) h) i) j) k)``); callers
-    resolve the ambiguity consistently across the whole row sequence.
-    Parenthesized forms such as ``(1)``, ``(iv)``, and ``(a)`` read the same
-    way as their bare ``1.``, ``iv.``, and ``a.`` counterparts.
+    Single characters in ``ivxlcdm`` are ambiguous between roman numerals and letter sequences, so the caller resolves that across the row sequence.
     """
     value = value.strip()
     match = ORDERED_MARKER_PREFIX_RE.match(value)
@@ -227,11 +217,7 @@ def is_false_grid(
     allow_footnote_context: bool = False,
 ) -> bool:
     """Return True for prose-wrapper table grids that should be unwrapped.
-
-    Geometry-aware classification ignores fully-empty spacer rows and columns
-    before judging the effective grid shape. ``allow_footnote_context`` relaxes
-    the prose-length gate for footnote-marker tables that immediately precede a
-    retained table; marker-shape and numeric-content checks still apply.
+    ``allow_footnote_context`` relaxes the prose-length gate for footnote-marker tables immediately preceding a retained table; marker and numeric checks still apply.
     """
     grid = [row for row in grid_rows if any(cell.strip() for cell in row)]
     if not grid:
@@ -276,7 +262,6 @@ def is_false_grid(
                 or looks_like_toc_tabular(" ".join(row))
                 for row in grid
             )
-        # Check for standard bullet rows or lead-in prose row + bullet rows
         non_empty_first = [cell for cell in first_column if cell]
         if non_empty_first and all(_is_prose_marker(cell) for cell in non_empty_first):
             if any(is_numeric_cell(cell) for cell in second_column if cell):

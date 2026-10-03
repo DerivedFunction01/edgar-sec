@@ -1,13 +1,6 @@
 """Deciding where a table's narrative ends and its grid begins.
-
-Three judgements, all made from the block's own geometry:
-
-- :func:`split_structural_table_intro` — a sentence that introduces a table is
-  prose and is unwrapped; the aligned lines after it are the table.
-- :func:`is_tableish_block` — a block is table-shaped before the prose
-  relaxation rule is allowed to consider unwrapping it.
-- :func:`unify_table_prose` — a sentence interrupted by a table rejoins the
-  sentence after it, but only at a boundary that cannot change a column.
+`split_structural_table_intro` unwraps an introducing sentence and keeps the aligned lines after it;
+`is_tableish_block` gates that; `unify_table_prose` rejoins a split sentence only at a safe boundary.
 """
 
 from __future__ import annotations

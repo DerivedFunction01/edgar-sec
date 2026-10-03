@@ -1,25 +1,7 @@
 """Curated-versus-source CIK registry and effective-input projections.
-
-``compare_sources`` answers the question the fetch pipeline cannot: which
-registrants exist upstream that a curated CIK input does not cover. It is a pure
-projection — it reads an already published source snapshot and a curated CSV,
-with no network access, so a comparison is reproducible from immutable inputs.
-
-The output contract is fixed by what consumes the projections — the CSV-driven
-augmentation path and anything an operator reads by hand:
-
-* ``listing_observations`` — every normalized upstream listing.
-* ``registrant_registry`` — one row per CIK in the union of curated and active.
-* ``new_ciks`` — the subset the curated input does not cover.
-* ``augmentation_worklist`` — the new CIKs shaped for an augmentation run.
-* ``effective_ciks`` — the full union as a CIK roster dataset, the carrier a plan
-  consumes.
-* ``effective_cik_input.csv`` — the same union as a CIK manifest, exported.
-
-Every Parquet dataset is published beside a manifest carrying its content digest
-and upstream chain, so a consumer can prove which source snapshot and curated
-input produced it. The registry identity is content-derived from those two
-inputs, so an unchanged comparison is a no-op rather than a new artifact.
+Answers which registrants exist upstream that a curated input misses, from one
+published source snapshot and one CSV with no network. Identity is content-derived
+from that pair, so an unchanged comparison is a no-op.
 """
 
 from __future__ import annotations
@@ -220,10 +202,7 @@ def compare_sources(
     metadata_paths: MetadataPaths,
 ) -> dict[str, Any]:
     """Project the curated CIK input against a published source snapshot.
-
-    Reads only immutable inputs: the verified source snapshot named by
-    ``source_manifest_path`` and the curated CSV. No network access is performed,
-    so the result is a pure function of those two files.
+    Two immutable inputs and no network, so the result is a pure function of them.
     """
     source = load_source_snapshot(source_manifest_path)
     source_snapshot_id = str(source.manifest["snapshot_id"])
@@ -341,10 +320,7 @@ def _publish_effective_roster(
     artifacts_root: Path,
 ) -> Roster:
     """Publish the effective CIK roster a plan consumes, with its manifest.
-
-    This is the artifact that replaces the CSV as the internal carrier: the CSV
-    is still written beside it, but nothing in the fetch path has to parse a
-    text manifest to learn which CIKs a run covers.
+    Nothing in the fetch path parses a text manifest to learn the cohort.
     """
     path = metadata_paths.effective_cik_roster(registry_id)
     try:
@@ -380,10 +356,7 @@ def _publish_effective_roster(
 
 def load_registry_roster(registry_id: str, metadata_paths: MetadataPaths) -> Roster:
     """Load one registry's effective CIK roster, verifying its published digest.
-
-    The manifest is the trust boundary: a roster swapped after publication is
-    refused, so a plan built from it provably covers the cohort the comparison
-    actually published.
+    The manifest is the trust boundary: a swapped roster is refused.
     """
     path = metadata_paths.effective_cik_roster(registry_id)
     manifest_path = path.with_name(path.name + ".manifest.json")
@@ -400,9 +373,7 @@ def load_registry_manifest(
     registry_id: str, metadata_paths: MetadataPaths
 ) -> dict[str, Any]:
     """Load one registry's effective-input manifest and verify its CSV digest.
-
-    Retained for the CSV export contract. A plan consumes the roster dataset via
-    :func:`load_registry_roster`; this reads the human-facing manifest beside it.
+    The human-facing manifest; a plan consumes ``load_registry_roster``.
     """
     path = metadata_paths.effective_input_file(registry_id).with_name(
         "effective_cik_input.csv.manifest.json"
@@ -425,22 +396,8 @@ def ensure_registry(
     metadata_paths: MetadataPaths,
 ) -> dict[str, Any]:
     """Return the effective roster for one curated input and source snapshot.
-
-    A curated CSV is a seed curated at a point in time, so it does not describe
-    who files with the SEC *now*; the union of the seed's CIKs with the active
-    listings in a source snapshot is the cohort that does. The comparison is a
-    pure projection of two immutable files, so it needs no network and is safe to
-    run on demand.
-
-    Registry identity is content-derived from the pair, so an already-computed
-    projection is reused rather than rewritten -- which matters here, because the
-    operator reaches this on the augmentation path, where a redundant comparison
-    would be invisible work published on every invocation.
-
-    Both branches return the same keys. A reused registry has to be described the
-    same way a freshly computed one is, and the reuse path deliberately does not
-    re-read the comparison's own manifest to recover counts it could recompute --
-    so it fills them in rather than leaving the caller to discover which keys exist.
+    Identity is content-derived, so a computed projection is reused. Both branches
+    return the same keys.
     """
     curated = Path(curated_input_path)
     if not curated.is_file():

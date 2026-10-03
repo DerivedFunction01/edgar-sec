@@ -57,12 +57,7 @@ def classify_table(
     candidate_families: tuple[str, ...] | None = None,
 ) -> FamilyClassification:
     """Classify a 2D table grid against registered table families.
-
-    Zones evaluated:
-    - ``header``: Table rows 0..min(2, len(grid))
-    - ``body``: Remaining table rows
-    - ``neighbor``: Immediate preceding blocks from section context
-    - ``section``: Section heading from section context
+    Zones evaluated: ``header`` rows, remaining ``body`` rows, preceding ``neighbor`` blocks, and the ``section`` heading.
     """
     if not grid:
         return FamilyClassification(
@@ -71,7 +66,6 @@ def classify_table(
             repair_policy=RepairPolicy.NO_REPAIR,
         )
 
-    # 1. Zone text extraction
     header_rows = grid[: min(2, len(grid))]
     body_rows = grid[min(2, len(grid)) :]
     header_text = " ".join(c for r in header_rows for c in r if c.strip())
@@ -88,7 +82,6 @@ def classify_table(
         if section_context.cover_scope is not None:
             in_cover_scope = section_context.cover_scope.active
 
-    # 2. Candidate family filtering
     families_to_evaluate: tuple[str, ...]
     if candidate_families is not None:
         families_to_evaluate = candidate_families
@@ -105,7 +98,6 @@ def classify_table(
 
     candidates: list[tuple[FamilyMatch, RepairPolicy]] = []
 
-    # 3. Evaluate each family
     for name in families_to_evaluate:
         spec: TableFamilySpec | None = FAMILY_SPECS.get(name)
         if spec is None:
@@ -124,17 +116,14 @@ def classify_table(
             else None
         )
 
-        # Exclusions in any zone veto the family immediately
         if h_score.exclusions or b_score.exclusions:
             continue
         if n_score is not None and n_score.exclusions:
             continue
 
-        # Intrinsic table score
         table_score = max(h_score.score, b_score.score)
         confidence = max(h_score.confidence, b_score.confidence)
 
-        # Context boosting for ambiguous intrinsic score
         if table_score == 1 and (
             (n_score and n_score.score >= 1)
             or (s_score and s_score.score >= 1)
@@ -146,12 +135,10 @@ def classify_table(
         if table_score < 2:
             continue
 
-        # Validate geometric shape
         shape_ok, _ = validate_shape(grid, spec.shape, in_scope=in_cover_scope)
         if not shape_ok:
             continue
 
-        # Found confirmed match
         evidence_list = [
             _bow_to_evidence(h_score, "header"),
             _bow_to_evidence(b_score, "body"),
@@ -178,7 +165,6 @@ def classify_table(
             repair_policy=RepairPolicy.NO_REPAIR,
         )
 
-    # Sort candidates by priority descending, confidence descending, then score descending
     candidates.sort(
         key=lambda item: (item[0].priority, item[0].confidence, item[0].score),
         reverse=True,

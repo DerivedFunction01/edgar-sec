@@ -1,25 +1,7 @@
 """The archive fetcher seam: acquire document bytes, decide nothing about storage.
 
-Three backends implement one protocol:
-
-``FixtureArchiveFetcher``
-    Offline. Reads content-addressed raw payloads from a fixture store. Its own
-    connections are per-process, which is what makes it safe to hand to a
-    process pool: a ``sqlite3`` connection cannot cross a process boundary, so
-    the fetcher serializes only its *paths* and opens connections after the
-    child starts.
-``BrokerArchiveFetcher``
-    Routes through the broker socket, with an optional read-only warm-cache
-    probe in front. Only cache misses traverse the socket.
-``LiveArchiveFetcher``
-    Direct HTTP, used in-process. Under a process pool the broker is the
-    supported path, because a live client owns a rate limiter that must stay
-    single-owner.
-
-A fetcher reports what happened; it never writes a checkpoint, never opens a
-transaction, and never decides that a payload is good enough. Keeping that
-boundary sharp is what lets the same fetcher serve a worker, a fixture builder,
-and the review tool.
+A fetcher reports what happened; it never writes a checkpoint or judges a payload, so
+the same one serves a worker, the fixture builder, and review.
 """
 
 from __future__ import annotations
@@ -66,15 +48,8 @@ def extract_from_sgml_envelope(
 ) -> tuple[bytes | None, bytes | None]:
     """Select the target sub-document when the payload is an SGML envelope.
 
-    Returns ``(payload, source_bundle)``. ``payload`` is the selected
-    sub-document's text bytes, or the unchanged payload when the input is not an
-    envelope. ``source_bundle`` carries the PEM-stripped bundle when a selection
-    happened, so an exhibit second pass can resolve in-bundle exhibits without a
-    refetch; it is None otherwise.
-
-    PEM-wrapped payloads are unwrapped first, then the *whole* payload is scanned
-    for ``<DOCUMENT>`` blocks — never a fixed-size prefix, because PEM transport
-    headers push the first block past the start of the file.
+    Returns ``(payload, source_bundle)``; the bundle saves a second-pass refetch.
+    Scans the whole payload, never a prefix: PEM headers push the first block past one.
     """
     if not raw_payload:
         return None, None
@@ -114,19 +89,11 @@ def _submission_targets(locator: DocumentLocator) -> tuple[str | None, str | Non
     return locator.archive_url, full_sub_url
 
 
-# --------------------------------------------------------------------------
-# Offline
-# --------------------------------------------------------------------------
-
-
 class FixtureArchiveFetcher:
     """Read raw payloads from one or more fixture stores.
 
-    Connections are opened lazily per process rather than in the constructor.
-    That is not an optimization: the fetcher is shipped to a process pool, and a
-    ``sqlite3`` connection bound to the parent process's file descriptors is
-    unusable in the child. Serializing paths and opening on first use is what
-    makes the same object valid on both sides of a pickle.
+    Connections open per process, not in the constructor: a ``sqlite3`` connection
+    cannot cross a pickle, so only paths travel to a pool child.
     """
 
     __slots__ = ("_db_paths", "_local")
@@ -204,20 +171,11 @@ class FixtureArchiveFetcher:
             self._local.stores = []
 
 
-# --------------------------------------------------------------------------
-# Broker
-# --------------------------------------------------------------------------
-
-
 class BrokerArchiveFetcher:
-    """Route archive fetches through the broker socket.
+    """Route archive fetches through the broker socket, behind an optional cache probe.
 
-    When ``cache_reader`` is supplied, each URL is probed against the local warm
-    HTTP cache before the RPC. A cache hit is byte-identical to the broker's
-    response — cache entries never expire and successful fetches clear their
-    failure-ledger entry — so only misses traverse the socket. The reader is
-    strictly read-only: cache writes, ledger updates, pacing, and retries stay
-    broker-owned.
+    The probe is strictly read-only — pacing and ledger stay broker-owned — so only
+    cache misses traverse the socket.
     """
 
     __slots__ = ("_broker", "_cache", "_cache_dir")
@@ -305,18 +263,11 @@ class BrokerArchiveFetcher:
         )
 
 
-# --------------------------------------------------------------------------
-# Direct HTTP
-# --------------------------------------------------------------------------
-
-
 class LiveArchiveFetcher:
     """Acquire archive bytes through a caller-supplied HTTP client.
 
-    The client is injected rather than constructed so tests can supply a fake at
-    the transport seam, and so a run can share one client's rate limiter across
-    threads. Under a process pool this is not the supported path: prefer
-    :class:`BrokerArchiveFetcher`, whose pacing stays single-owner.
+    Not the supported path under a process pool: the client's rate limiter must stay
+    single-owner, which is what ``BrokerArchiveFetcher`` provides.
     """
 
     __slots__ = ("_http_client",)
@@ -390,11 +341,8 @@ def build_broker_fetcher(
 ) -> BrokerArchiveFetcher:
     """Build a broker-backed fetcher with an optional read-only cache probe.
 
-    ``cache_reader`` is duck-typed: anything with ``get(url)`` and
-    ``cache_dir`` works, which is what keeps the warm-cache probe testable at
-    the transport seam. Nothing fabricates one from a directory — a probe that
-    silently opened a *writable* cache would move pacing and ledger ownership out
-    of the broker.
+    Nothing fabricates a cache reader from a directory: a probe that silently opened a
+    writable cache would move pacing and ledger ownership out of the broker.
     """
     from edgar_sec.infra.broker.sec_broker import SecBrokerClient
 
@@ -411,12 +359,7 @@ def make_archive_fetcher(
     broker_socket: str | Path | None = None,
     cache_reader: Any | None = None,
 ) -> ArchiveFetcher:
-    """Construct the configured offline, broker, or live fetcher.
-
-    On the broker path ``cache_reader`` adds a read-only warm-cache probe in
-    front of the broker RPC; only cache misses traverse the socket. It has no
-    effect on the live path, whose client already owns its cache.
-    """
+    """Construct the configured offline, broker, or live fetcher."""
     normalized = mode.strip().lower()
     if normalized == "fixture":
         if not db_paths:

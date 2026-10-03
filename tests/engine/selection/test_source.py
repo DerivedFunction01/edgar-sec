@@ -1,9 +1,5 @@
-"""Unit tests for engine.selection.source: bounded candidate access.
-
-Every test here concerns a bound, because that is the module's contract: a
-selector must be able to ask a corpus of any size for a pool of any filter
-without materializing it, and must never be able to inject SQL through a
-policy document.
+"""Bounded candidate access: every pool kind is bounded, and a value read from a
+policy document never reaches SQL text.
 """
 
 from __future__ import annotations
@@ -84,8 +80,7 @@ def test_a_quote_shaped_dimension_value_is_bound_not_interpolated(
     hostile = "x'; DROP TABLE selected_keys; --"
     with _source(snapshot_dir).session() as source:
         rows = source.pool_for_value("era", hostile)
-        # The exclusion table survives, which it would not if the value had been
-        # spliced into the query.
+        # The exclusion table survives only if the value was bound, not spliced.
         assert rows == []
         assert source.candidate_page(0)
 
@@ -232,9 +227,6 @@ def test_empty_requests_return_empty_without_touching_storage(
         assert source.load_occurrences_for_locators([]) == []
 
 
-# ------------------------------------------------------------------ filters
-
-
 def test_max_reported_size_filter_narrows_the_pool(tmp_path: Path) -> None:
     locators = [make_locator(index, company_family=f"f{index}") for index in range(4)]
     for row in locators:
@@ -262,9 +254,6 @@ def test_document_suffix_filter_narrows_the_pool(tmp_path: Path) -> None:
 
 def test_an_unconstrained_filter_predicate_is_true() -> None:
     assert CandidateFilters().predicate() == "TRUE"
-
-
-# --- the date selection -----------------------------------------------------
 
 
 def _dated_locators() -> list[dict[str, Any]]:

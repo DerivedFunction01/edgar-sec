@@ -1,5 +1,3 @@
-"""Unit tests for document domain models, locators, and occurrences."""
-
 from edgar_sec.domain.document.models import (
     DocumentKind,
     DocumentLocator,

@@ -1,9 +1,6 @@
 """Structural table-boundary predicates: header prefix, bridge, tail.
-
-These three questions are all answered from a block's own lines, because a reflow
-has to decide about a span without asking which statement it belongs to; the
-bridge and tail predicates therefore accept a caller-supplied predicate for
-labels that cannot be recognised on shape alone.
+All three answer from a block’s own lines, so the bridge and tail predicates accept
+a caller-supplied label predicate.
 """
 
 from __future__ import annotations
@@ -21,9 +18,6 @@ def _bridge_line(line: str) -> bool:
 
 def _tail_line(line: str) -> bool:
     return line.lower().startswith("total liabilities")
-
-
-# --- header prefix ---------------------------------------------------------
 
 
 def test_an_uppercase_statement_title_is_a_header_prefix() -> None:
@@ -85,8 +79,8 @@ def test_a_list_marker_is_not_a_header_prefix() -> None:
 
 
 def test_a_tab_indented_block_is_header_evidence_on_its_own() -> None:
-    # A tab is formatting evidence even when the text is not a statement title,
-    # which is why a list-shaped line is only rejected without indentation.
+    # A tab is formatting evidence off a statement title, so a list-shaped line is
+    # only rejected without indentation.
     assert is_header_prefix(("\tIndented header",))
 
 
@@ -106,9 +100,6 @@ def test_table_intro_cue_is_not_a_header_prefix() -> None:
         ("See Item 8. Financial Statements", "and Supplementary Data.")
     )
     assert not is_header_prefix(("Item 2.   Properties",))
-
-
-# --- structural bridge -----------------------------------------------------
 
 
 def test_an_uppercase_label_is_a_bridge() -> None:
@@ -163,9 +154,6 @@ def test_an_empty_bridge_is_not_a_bridge() -> None:
 
 def test_more_than_six_bridge_lines_is_not_a_bridge() -> None:
     assert not is_structural_table_bridge(tuple(f"Row {i}" for i in range(7)))
-
-
-# --- structural tail -------------------------------------------------------
 
 
 def test_a_total_row_with_a_separator_above_is_a_tail() -> None:

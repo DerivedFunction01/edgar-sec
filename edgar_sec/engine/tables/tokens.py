@@ -1,10 +1,6 @@
 """Attachment vocabulary for table cells: what binds left, what binds right.
-
-A financial cell is frequently three physical cells — a currency symbol, an
-amount, and a trailing footnote marker — that must render as one right-aligned
-value. These predicates decide which column positions are pure affixes, and
-:func:`numeric_cell_starts` finds amount starts in already-rendered ASCII where
-no DOM survives.
+A currency symbol, an amount, and a trailing marker must render as one right-aligned value; these
+predicates find the pure affix columns, and `numeric_cell_starts` works on rendered ASCII.
 """
 
 from __future__ import annotations

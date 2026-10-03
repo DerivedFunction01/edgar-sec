@@ -1,9 +1,6 @@
 """Root interactive launcher and CLI dispatcher for edgar_sec.
 
-Dispatches into two kinds of entry: the Layer 4 pipelines that do the work, and
-the Layer 5 apps that only read what a pipeline published. The entry is named
-``LauncherEntry`` rather than ``PipelineEntry`` because it holds both; v1 used
-the same name.
+Holds both Layer 4 pipelines and Layer 5 apps, hence ``LauncherEntry``.
 """
 
 from __future__ import annotations

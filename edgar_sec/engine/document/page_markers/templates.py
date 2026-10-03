@@ -1,21 +1,6 @@
-"""Repeated header/footer classification and the evidence behind it.
-
-A line is page furniture when it recurs at the same distance from a page anchor on
-every page. That is the whole test, and it is deliberately narrow: the window
-around each anchor is bounded, observations are grouped by side and slot so a
-header and a footer in the same place never compete, and a group is accepted only
-when its local anchor cluster is dense enough or its recurrence across the
-document persistent enough. Two acceptance tiers exist because a filing has two
-furniture habits: a dense local run is caught by the density test, and a banner
-recurring every few pages with no dense run anywhere by the persistence test.
-
-Removal is conservative in three further ways. A *section header* is kept once per
-cohort rather than removed, because a recurring line that changes with the section
-is a heading. A line observed from both sides is claimed by the side whose anchor
-is strictly closer, so a line right after a break is a header and a line right
-before the next label is a footer. And a block is only removed when every line in
-it is individually evidence-backed, so a body line caught between two furniture
-lines keeps the block intact.
+"""Repeated header/footer classification from recurrence at a fixed anchor offset.
+Two acceptance tiers for the two furniture habits: a dense local anchor run, or steady recurrence
+document-wide. A section header is kept once per cohort; a block goes only if every line is backed.
 """
 
 from __future__ import annotations
@@ -55,24 +40,16 @@ PERSISTENT_MIN_ANCHORS = 8
 PERSISTENT_MIN_PRESENCE = 0.05
 PERSISTENT_MIN_CLUSTERS = 3
 
-#: A page-furniture block recovered from inside a rendered table. Repeating
-#: furniture is a compact table; a content table is not, and this is the size
-#: bound that keeps the two apart.
+#: Recovered-furniture table size bound: repeating furniture is a compact table, a content table is not.
 MAX_FURNITURE_TABLE_LINES = 12
 
-#: A banner must carry at least this many alphabetic words to be the line that
-#: identifies a recovered table as furniture rather than a page number.
+#: Alphabetic words a banner needs to mark a recovered table as furniture, not a page number.
 MIN_BANNER_WORDS = 3
 
 
 def clean_template(line: str) -> str:
     """Normalize a candidate line into a repeat-comparable template.
-
-    Page-label variation (arabic, roman, and letter-prefixed labels such as
-    ``F-1``) is masked so a per-page number cannot fragment one repeated
-    banner into one-occurrence templates. Trailing labels are masked only
-    when the banner still carries at least three alphabetic words, keeping
-    short content lines (``Exhibit 99``) distinct from furniture.
+    Page labels are masked, or a per-page number fragments one banner into one-occurrence templates; a trailing label only when enough words remain.
     """
     normalized = _WHITESPACE_RE.sub(" ", line.strip().casefold())
     normalized = _PAGE_TOKEN_RE.sub(" page #", normalized)
@@ -109,11 +86,7 @@ def eligible_line(
     allow_table: bool,
 ) -> bool:
     """Return whether a candidate line may become a furniture observation.
-
-    A line inside a table repeats because the table does, so it is refused
-    unless the caller has already said that rendered table furniture is
-    admissible. A table of contents line repeats because the contents do. A
-    sentence repeats because the filing does.
+    In-table and contents lines repeat because their container does, so they are refused unless the caller admits table furniture.
     """
     stripped = line.strip()
     if not stripped or line_index in toc_lines:
@@ -138,16 +111,11 @@ def collect_window(
     allow_table: bool = False,
 ) -> list[tuple[int, str]]:
     """Collect a bounded non-empty furniture window around one anchor.
-
-    The window is bounded in lines, in characters, and by the next page
-    boundary, so a document whose cover has no break cannot donate its whole
-    first page as a header block. A rendered table is taken whole when the
-    caller admits table furniture, and is the end of the window when it does
-    not.
+    Bounded in lines, characters, and the next page boundary, so a breakless cover cannot donate its whole first page.
     """
     result: list[tuple[int, str]] = []
     index = anchor + direction
-    # Skip any contiguous boundary lines / consecutive <PAGE> tags at this anchor cluster
+    # Skip contiguous boundary lines and <PAGE> tags at this anchor cluster
     while 0 <= index < len(lines) and (
         index in boundary_lines
         or lines[index].strip().casefold() in {"<page>", "</page>"}
@@ -215,12 +183,7 @@ def clusters(
     members: list[Observation],
 ) -> list[tuple[list[Observation], int, int, float]]:
     """Split observations into local anchor clusters with local density.
-
-    A cluster is a run of adjacent anchors: positions no more than
-    ``MAX_ANCHOR_GAP`` apart. Its density is the fraction of anchor positions in
-    that span at which the template was observed, so a run of three anchors
-    with the template on all three has density 1.0 and a run of four with it on
-    three does not.
+    Density is the fraction of anchor positions in the span carrying the template.
     """
     by_position: dict[int, list[Observation]] = defaultdict(list)
     for member in members:
@@ -252,11 +215,7 @@ def merge_observations(
     offsets: list[int],
 ) -> list[tuple[int, int, int, int, str]]:
     """Merge only fully validated adjacent lines into block spans.
-
-    Two lines merge into one span only when every line between them is empty or
-    a structural table tag, or is another selected line. A body line caught
-    between two furniture lines splits the span, so the block removal never
-    covers a line that was not itself evidence-backed.
+    A body line between two furniture lines splits the span, so removal never covers an unbacked line.
     """
     by_anchor: dict[tuple[str, int], list[Observation]] = defaultdict(list)
     for observation in observations:
@@ -308,10 +267,7 @@ def merge_observations(
 
 def _deduplicate_anchors(anchor_lines: list[int]) -> list[int]:
     """Collapse physical anchor lines within <= 2 lines of each other.
-
-    Consecutive or tightly clustered anchors (e.g. from multiple break
-    mechanisms for a single page transition) are merged into one,
-    preventing anchor denominator inflation.
+    Clustered anchors from several break mechanisms for one transition would inflate the denominator.
     """
     if not anchor_lines:
         return []
@@ -333,13 +289,7 @@ def analyze_repeating_headers(
     footer_anchors: list[int] | None = None,
 ) -> tuple[tuple[TemplateEvidence, ...], list[PageMarker], list[PageMarkerDecision]]:
     """Classify bounded repeated text adjacent to accepted page anchors.
-
-    The two anchor sets are supplied separately because a document can be
-    asymmetric: a filing that states a structural break but no page number
-    anchors its furniture from the break side only. The entry guard is
-    ``max(header_count, footer_count) < 3`` over the *deduplicated* sets, which
-    with asymmetric anchors means both sides must fall short of three before
-    nothing is analysed.
+    The two anchor sets stay separate because a filing may state a structural break with no page number.
     """
     lines = text.splitlines()
     offsets = line_offsets(lines)
@@ -351,9 +301,8 @@ def analyze_repeating_headers(
     footer_anchor_lines = _deduplicate_anchors(footer_anchors or anchors)
     if max(len(header_anchor_lines), len(footer_anchor_lines)) < 3:
         return (), [], []
-    # The cover has no anchor before it and the last page has none after it.
-    # When a side already has enough real anchors, treat the document start
-    # (header side) and end (footer side) as implicit structural boundaries.
+    # The cover has no anchor before it and the last page none after; when a side already has
+    # enough real anchors, treat the start or end as an implicit boundary.
     side_scan: dict[str, list[tuple[int, int | None]]] = {
         "header": [(line, line) for line in header_anchor_lines],
         "footer": [(line, line) for line in footer_anchor_lines],
@@ -440,12 +389,7 @@ def analyze_repeating_headers(
                 continue
             observed_groups.append((key, cluster_members, start, end, presence))
 
-    # Document-persistent tier: some filings repeat furniture steadily across the
-    # whole document without any dense local run. When the same normalized template
-    # recurs on at least PERSISTENT_MIN_ANCHORS anchors, covers at least
-    # PERSISTENT_MIN_PRESENCE of the side's anchors, and is split into at least
-    # PERSISTENT_MIN_CLUSTERS separate clusters, the recurrence itself is the
-    # evidence.
+    # Document-persistent tier: steady recurrence with no dense local run.
     accepted_keys = {key for key, *_ in observed_groups}
     side_anchor_counts = {side: len(scan) for side, scan in side_scan.items()}
     for key, members in groups.items():
@@ -475,10 +419,8 @@ def analyze_repeating_headers(
                 ),
             )
 
-    # Attach same-side/same-template observations whose own slot group was
-    # too sparse or isolated to an accepted cluster of the identical template.
-    # They inherit that cluster's role. Clusters are addressed by index:
-    # one key can yield several accepted clusters.
+    # Same-side, same-template observations too sparse to form their own cluster
+    # inherit the nearest accepted cluster of the identical template.
     augmented_members: list[list[Observation]] = [
         sorted(members, key=lambda item: (item.anchor_position, item.line_index))
         for _, members, _, _, _ in observed_groups
@@ -513,14 +455,8 @@ def analyze_repeating_headers(
                 augmented_members[best_index].append(observation)
                 accepted_obs_ids.add(id(observation))
 
-    # Recover isolated tagged-table furniture that falls between accepted
-    # anchors. A page can be absent from the numeric anchor run while its
-    # repeated footer remains unambiguous, so once footer templates have passed
-    # the repetition checks above, a compact table whose content consists entirely
-    # of those templates — including at least one banner-like template — is
-    # furniture and safe to remove. Structural table tags and dash-only separator
-    # lines never trigger recovery on their own, so content tables that merely
-    # contain a dashed rule are preserved.
+    # Recover isolated tagged-table furniture: content must be entirely footer templates including
+    # one banner; a dash-only separator never triggers recovery, so content tables survive.
     footer_groups = {
         (key[1], key[2]): index
         for index, (key, *_rest) in enumerate(observed_groups)
@@ -545,8 +481,6 @@ def analyze_repeating_headers(
             if stripped != "</table>" or not table_starts:
                 continue
             table_start = table_starts.pop()
-            # Repeated page furniture is a compact table. Never promote
-            # content inside or beyond this size bound.
             if line_index - table_start > MAX_FURNITURE_TABLE_LINES:
                 continue
             content_templates = [
@@ -646,12 +580,8 @@ def analyze_repeating_headers(
                 continue
             removable.append(member)
 
-    # An occurrence of the same line can be observed from both sides; claim it for
-    # the side whose anchor is strictly closer (a line right after a break is a
-    # header, one right before the next label is a footer). Header groups are
-    # encountered first, so ties stay headers. Virtual boundary anchors measure
-    # distance from the document start (header side) or end (footer side), and
-    # lines retained by a keep-first group are never removed by the other side.
+    # An occurrence seen from both sides goes to the strictly closer anchor; header groups are
+    # visited first, so ties stay headers. Retained lines are never removed.
     def _anchor_distance(observation: Observation) -> int:
         if observation.anchor_line is not None:
             return abs(observation.line_index - observation.anchor_line)
@@ -670,9 +600,7 @@ def analyze_repeating_headers(
             unique_removable[observation.line_index] = observation
     removable = list(unique_removable.values())
 
-    # Coalesce adjacent per-anchor spans (including opposite sides) into one
-    # block span; every coalesced line is individually evidence-backed. The
-    # block kind follows the side majority, ties stay headers.
+    # Coalesce adjacent per-anchor spans across sides; block kind follows the side majority.
     coalesced: list[list] = []  # [start_line, end_line, start, end, header, footer]
     for (
         start_line,

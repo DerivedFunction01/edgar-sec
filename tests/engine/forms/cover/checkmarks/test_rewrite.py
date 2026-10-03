@@ -139,11 +139,8 @@ def test_filer_grid_underscores_are_scoped_to_their_labels() -> None:
 
 
 def test_several_labels_sharing_one_mark_rewrite_it_once() -> None:
-    """Several semantic labels sharing one physical mark rewrite it once.
-
-    Re-applying the same mark span would slice the already-expanded canonical
-    token into ``[X]X]X]...`` fragments on real 10-K covers whose single
-    Wingdings ``x`` was associated with every filer-status label.
+    """Re-applying the same mark span would slice the expanded canonical token
+    into ``[X]X]X]...`` fragments where one Wingdings ``x`` served every label.
     """
     head = "Indicate by check mark if disclosure of delinquent filers is not contained herein. "
     tail = "\n\nIndicate by check mark whether the registrant is a shell company. "

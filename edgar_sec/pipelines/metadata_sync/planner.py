@@ -1,13 +1,7 @@
 """Deterministic chunk planning over an immutable CIK roster.
-
-A plan says *what* will be fetched and nothing about *who* fetches it. The
-selected roster is stored once, as a content-addressed Parquet dataset beside a
-small JSON manifest, so a plan document does not grow with the cohort. Chunk
-membership is a range over roster ordinals, which is what makes that possible.
-
-Identity is derived from the roster and the chunk layout, never from assignment,
-worker count, or time. An assignment is a separate artifact, so moving work to a
-different machine is not a different plan, and completed chunks survive it.
+Chunk membership is a range over roster ordinals, so the plan document stays
+constant in cohort size. Identity covers the cohort and chunk layout only, never
+assignment, worker count, or time.
 """
 
 from __future__ import annotations
@@ -57,12 +51,7 @@ def derive_plan_id(
     schema_version: str = SCHEMA_VERSION,
 ) -> str:
     """Derive a stable plan identifier from the plan-defining inputs.
-
-    Assignment, worker count, and timestamps are excluded by construction: they
-    are operational choices, and covering them is what would make reassigning a
-    cohort discard its checkpoints. ``parent_id`` is the base snapshot for a delta
-    plan, so the same requested CIK list against two different bases resolves to
-    two different plans.
+    Assignment, worker count, and timestamps are excluded by construction.
     """
     if chunk_size < 1:
         raise ValueError(f"chunk_size must be >= 1, got {chunk_size}")
@@ -83,10 +72,7 @@ def derive_plan_id(
 @dataclass(frozen=True, slots=True)
 class Plan:
     """An immutable fetch plan: a cohort, a chunk layout, and a lineage.
-
-    The roster is carried in memory because every consumer needs its own slice of
-    it; it is loaded from the bundle rather than inlined, which is the whole
-    point of the format. Chunks are ranges, so membership is arithmetic.
+    Chunks are ranges, so membership is arithmetic rather than a carried list.
     """
 
     plan_id: str
@@ -110,10 +96,7 @@ class Plan:
 
     def lineage(self) -> dict[str, str]:
         """Source identities carried from the cohort reference to publication.
-
-        A plan built over a published registry roster records that registry, so
-        the merged snapshot says which curated-versus-source projection the
-        published rows came from instead of only naming a file.
+        A plan over a registry roster records that registry.
         """
         recorded = {"registry_id": self.registry_id}
         if self.parent_id:
@@ -161,8 +144,7 @@ class Plan:
     def to_manifest(self) -> dict[str, Any]:
         """Serialize the small execution manifest for this plan.
 
-        Constant in the cohort size: chunk boundaries are ordinal ranges, and the
-        cohort itself lives in the roster dataset this manifest references.
+        Constant in the cohort size; the cohort lives in the referenced dataset.
         """
         return {
             "manifest_kind": PLAN_MANIFEST_KIND,
@@ -220,9 +202,8 @@ def build_plan(
 
 def write_plan(plan: Plan, run_paths: RunPaths) -> str:
     """Write the plan bundle: roster dataset, execution manifest, input manifest.
-
-    The roster is written first and its digest recorded, so a manifest on disk
-    can never reference a cohort that is not there beside it.
+    The roster is written and digested first, so a manifest never references a
+    cohort that is not beside it.
     """
     digest = write_roster(plan.roster, run_paths.roster_file)
     manifest = plan.to_manifest()
@@ -245,11 +226,7 @@ def write_plan(plan: Plan, run_paths: RunPaths) -> str:
 
 def load_plan(run_paths: RunPaths) -> Plan:
     """Load and validate a written plan bundle.
-
-    A plan whose recorded inputs do not reproduce its id, whose versions differ
-    from the running build, or whose roster does not match the recorded identity
-    is rejected rather than reused. A stale plan must never produce a mislabeled
-    snapshot, and a plan whose cohort was swapped must never drive a fetch.
+    A plan whose recorded inputs do not reproduce its id is rejected, not reused.
     """
     path = run_paths.plan_file
     if not path.is_file():

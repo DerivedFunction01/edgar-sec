@@ -41,8 +41,7 @@ def test_prose_is_not_numeric(value: str) -> None:
 
 
 def test_the_digit_group_accepts_any_mix_of_digits_commas_and_periods() -> None:
-    # The grammar's digit group is the character class `[\d,.]`, so a value made
-    # only of those characters is a numeric cell whatever its punctuation means.
+    # The digit class is `[\d,.]`, so such a value is numeric whatever its punctuation means.
     assert is_numeric_cell("1.2.3") is True
     assert is_numeric_cell("1,,2") is True
 

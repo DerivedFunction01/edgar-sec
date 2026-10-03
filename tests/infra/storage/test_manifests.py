@@ -1,5 +1,3 @@
-"""Unit tests for infra.storage.manifests."""
-
 from __future__ import annotations
 
 from pathlib import Path
@@ -57,11 +55,7 @@ def _publish(
 
 
 def test_part_path_resolves_against_the_snapshot_directory(tmp_path: Path) -> None:
-    """A recorded part path is snapshot-relative, so the snapshot id must be kept.
-
-    Anchoring at the snapshots root instead would resolve every snapshot's parts
-    into the same wrong location.
-    """
+    """Anchoring at the snapshots root would resolve every part to one location."""
     root = tmp_path / "snapshots"
     target = _publish(root, "snap-1")
     reader = SnapshotReader(snapshots_root=root, snapshot_id="snap-1")

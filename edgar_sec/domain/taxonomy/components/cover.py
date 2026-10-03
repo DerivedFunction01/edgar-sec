@@ -18,8 +18,6 @@ from edgar_sec.foundation.text.evidence import (
     compile_evidence_pack,
 )
 
-# --- Entity Coordinate Terms (Anchors vs. Qualifiers) --------------------------
-
 STATE_OF_INCORPORATION_TERMS = COVER_LABELS["state_of_incorporation"]
 IRS_EIN_TERMS = COVER_LABELS["irs_ein"]
 COMMISSION_FILE_TERMS = COVER_LABELS["commission_file_number"]
@@ -46,7 +44,6 @@ ALL_ENTITY_COORDINATE_FIELDS: dict[str, tuple[str, ...]] = {
     **COVER_ENTITY_QUALIFIERS,
 }
 
-# --- Securities Registered Pursuant to Section 12(b) / 12(g) ------------------
 
 SECURITIES_12B_ANCHORS: tuple[str, ...] = (
     "securities registered pursuant to section 12(b) of the act",
@@ -65,7 +62,6 @@ SECURITIES_12B_SUPPORT: tuple[str, ...] = (
     "par value",
 )
 
-# --- Universal Cover Disqualifiers (Vetoes) -----------------------------------
 
 COVER_VETO_TERMS: tuple[str, ...] = (
     "amortization",
@@ -76,7 +72,6 @@ COVER_VETO_TERMS: tuple[str, ...] = (
     "shareholders",
 )
 
-# --- Compiled Family Specs ----------------------------------------------------
 
 _cover_anchors: tuple[str, ...] = tuple(
     phrase for phrases in COVER_ENTITY_ANCHORS.values() for phrase in phrases

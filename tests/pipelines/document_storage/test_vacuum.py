@@ -1,9 +1,4 @@
-"""Cross-run snapshot consolidation: the correctness oracle for vacuuming.
-
-Covers union materialization, dependency-aware purge, source precedence, quarter
-repartitioning, conflict refusal, byte-budgeted parts, and source immutability —
-the cases a consolidation can only be trusted on if they are stated.
-"""
+"""Cross-run snapshot consolidation: union, purge, precedence, and quarter repartitioning."""
 
 from __future__ import annotations
 
@@ -96,12 +91,7 @@ def _manifest(root: Path, snapshot_id: str) -> dict:
 
 
 def _consolidated_rows(root: Path, snapshot_id: str) -> list[dict]:
-    """Read a consolidated snapshot's index rows back, ordered by document.
-
-    Reads the stored part directly, so it reports what was actually written.
-    ``filing_year``/``filing_quarter`` are absent by design: they are derived at
-    read time, not stored, so :func:`_derived_quarters` covers them instead.
-    """
+    """Reads the stored part, so it reports what was actually written."""
     from edgar_sec.infra.storage.manifests import SnapshotReader, snapshot_dir
 
     reader = SnapshotReader(root, snapshot_id)
@@ -220,8 +210,7 @@ def test_a_quoted_path_in_a_manifest_cannot_reach_sql(tmp_path: Path) -> None:
     hostile = SnapshotPart(path="x'; DROP TABLE y; --.parquet", kind="index")
     with pytest.raises(PartError):
         validate_part_paths([hostile], tmp_path)
-    # Escaping still applies to a path that passes validation, so a legal path
-    # carrying a quote cannot terminate the string literal.
+    # A path that passes validation is still escaped, so a quote cannot terminate it.
     assert "''" in relation_for_parts(
         [SnapshotPart(path="a'b.parquet", kind="index")], tmp_path
     )
@@ -287,12 +276,7 @@ def test_consolidation_preserves_the_form(tmp_path: Path) -> None:
 def test_one_document_survives_consolidating_the_same_document_twice(
     tmp_path: Path,
 ) -> None:
-    """The same document in two sources collapses to one row, not two.
-
-    Text must agree for this to consolidate at all: differing text is refused
-    outright, so precedence is only reachable for a document whose payload the
-    two sources agree on and whose index rows may differ.
-    """
+    """Precedence is only reachable for a document whose text both sources agree on."""
     first = _publish(tmp_path, "run-1", [("a.htm", "10-K", "2011-02-15", "one")])
     second = _publish(tmp_path, "run-2", [("a.htm", "10-K", "2011-02-15", "one")])
     manifest = vacuum_snapshots(
@@ -306,13 +290,7 @@ def test_one_document_survives_consolidating_the_same_document_twice(
 def test_the_derived_snapshot_id_does_not_depend_on_list_order(
     tmp_path: Path,
 ) -> None:
-    """A snapshot id identifies content, so the same sources give the same id.
-
-    Order still decides *precedence* inside the union (see
-    ``test_ranked_union_encodes_precedence``); it deliberately does not decide the
-    snapshot's identity, because a consumer that consolidated the same two runs in
-    a different order got the same result and should be recognised as a no-op.
-    """
+    """Order decides precedence inside the union, never the snapshot's identity."""
     first = _publish(tmp_path, "run-1", [("a.htm", "10-K", "2011-02-15", "one")])
     second = _publish(tmp_path, "run-2", [("a.htm", "10-K", "2011-02-15", "one")])
     forward = vacuum_snapshots(
@@ -333,8 +311,7 @@ def test_the_derived_snapshot_id_does_not_depend_on_list_order(
 
 def test_conflicting_text_is_refused(tmp_path: Path) -> None:
     """Two sources with different text for one document is a refusal, not a choice."""
-    # Same doc_id in both sources, different text: the conflict a precedence rule
-    # would otherwise silently resolve.
+    # Same doc_id in both sources, different text.
     _write_raw_snapshot(tmp_path, "snap-a", {"a.htm": "one"}, doc_prefix="shared")
     _write_raw_snapshot(tmp_path, "snap-b", {"a.htm": "DIFFERENT"}, doc_prefix="shared")
     with pytest.raises(VacuumError, match="conflicting normalized content"):
@@ -610,8 +587,7 @@ def _write_shared_snapshot(
 
     source = [m for m in list_snapshots(root) if m["snapshot_id"] == "snap-a"]
     assert source, "snap-a must exist first"
-    # A dependent snapshot whose parts live in its own directory but carry the
-    # same doc ids and content: the case purge must refuse.
+    # Its own directory, but the same doc ids and content: the case purge refuses.
     parts = [dict(row) for row in source[0]["resolved_parts"]]
     for part in parts:
         original = root / "snap-a" / part["path"]
@@ -679,12 +655,7 @@ def test_a_non_positive_batch_size_is_rejected() -> None:
 
 
 def test_an_undated_document_is_bucketed_not_dropped(tmp_path: Path) -> None:
-    """A missing filing_date must not abort a consolidation, nor lose a document.
-
-    ``CAST(substr('', 1, 4) AS INTEGER)`` raises, which would fail the whole
-    consolidation over one malformed row. Undated documents belong in an explicit
-    ``QTR0`` bucket: reportable, and visible to a reviewer.
-    """
+    """Casting an empty year raises, so undated rows belong in an explicit QTR0."""
     _write_raw_snapshot(
         tmp_path,
         "snap-a",

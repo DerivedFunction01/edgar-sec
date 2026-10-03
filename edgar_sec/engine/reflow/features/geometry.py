@@ -1,14 +1,5 @@
 """Single-pass layout geometry for a block of ASCII lines.
-
-A reflow has to answer two questions about a block before it may touch it: does
-it carry column geometry at all, and do its numeric cells line up under
-columns that other rows share. Both are answered here, in one pass, without
-building the full feature context — the resolver runs this on every candidate
-span including the ones it is about to reject.
-
-A *gap* is an internal run of three or more spaces. Leading indentation is never
-a gap: indented prose and list items are exactly the blocks a reflow is allowed
-to unwrap, so gap detection starts after the first content character.
+Answers both questions a reflow must ask before touching a block - does it carry column geometry, do its numeric cells line up under shared columns - without building the full feature context, so the resolver can run it on spans it is about to reject.
 """
 
 from __future__ import annotations
@@ -44,10 +35,7 @@ class _Features:
 
 def _line_gap_starts(line: str) -> tuple[int, ...]:
     """Positions of internal whitespace runs that separate layout columns.
-
-    Leading indentation is not a gap: indented prose and list items are
-    eligible for unwrapping, so gap detection starts after the first
-    content character.
+    Leading indentation is not a gap: indented prose and list items are eligible for unwrapping.
     """
     stripped_end = len(line.rstrip())
     content_start = len(line) - len(line.lstrip())

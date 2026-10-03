@@ -1,8 +1,6 @@
-"""Tests for the legacy-shims scanner.
-
-This scanner enforces AGENTS.md section 1.1, which is easy to state and easy to
-erode because an alias always looks like prudence when it is added. The tests
-cover the identifier forms, the comment forms, and the exemptions.
+"""The legacy-shims scanner.
+An alias always looks like prudence when it is added, so the tests cover the
+identifier forms, the comment forms, and the exemptions.
 """
 
 from __future__ import annotations
@@ -53,10 +51,8 @@ def test_flags_compat_class(synthetic_repo: Path) -> None:
 
 
 def test_flags_bare_class_alias(synthetic_repo: Path) -> None:
-    """``Alias = Real`` is the §1.1 form that reads like taste, not like a shim.
-
-    A previous revision of this scanner missed it entirely, which is how
-    ``SystemResources = RuntimeResourceProfile`` shipped and stayed.
+    """``Alias = Real`` is the §1.1 form that reads like taste, and a previous
+    revision of this scanner missed it entirely.
     """
     _build_repo(
         synthetic_repo,

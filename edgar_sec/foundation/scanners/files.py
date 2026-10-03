@@ -8,9 +8,8 @@ from pathlib import Path
 def discover_python_files() -> list[str]:
     """Return all python files in edgar_sec and tests, skipping dot-prefixed paths.
 
-    The result is sorted so that scanner findings are reported in a stable order.
-    ``Path.rglob`` yields filesystem order, which varies between machines, and a
-    gate whose output reshuffles between runs cannot be diffed against itself.
+    Sorted, because ``Path.rglob`` yields filesystem order and a gate whose output
+    reshuffles between runs cannot be diffed against itself.
     """
     repo_root = Path.cwd()
     py_files: list[str] = []

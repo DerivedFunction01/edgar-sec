@@ -1,13 +1,6 @@
 """Static chunk-to-worker assignment.
-
-An assignment answers "which machine runs which chunks" and nothing else. It is a
-separate, content-addressed artifact rather than a field of the plan, which is
-the whole reason reassigning workers is free: the plan id, the plan directory,
-and every completed checkpoint stay exactly where they were.
-
-There is no scheduler here and no lease. A worker is told its chunk list, runs
-it, and produces a receipt. Deciding that is insufficient is a deliberate
-boundary, not an oversight.
+A separate content-addressed artifact, never a plan field: that is why reassigning
+workers is free and completed checkpoints stay put.
 """
 
 from __future__ import annotations
@@ -64,12 +57,7 @@ class AssignmentError(ValueError):
 
 def derive_assignment_id(plan_id: str, worker_id: str, chunk_ids: list[int]) -> str:
     """Content-derived identity for one chunk-to-worker mapping.
-
-    Derived from the plan it belongs to, so two assignments of the same chunk
-    list to different workers are different artifacts while a re-derived mapping
-    of the same list is byte-identical across machines. The chunk list is sorted
-    before hashing: an assignment is a *set* of chunks, and the order a worker
-    happens to enumerate them in is not a property of the work.
+    Chunk ids are sorted first: an assignment is a *set* of chunks.
     """
     ordered = sorted(set(chunk_ids))
     if not ordered:
@@ -88,10 +76,7 @@ def derive_assignment_id(plan_id: str, worker_id: str, chunk_ids: list[int]) -> 
 
 def divide_chunks(chunk_count: int, worker_count: int) -> dict[str, list[int]]:
     """Split chunk ids round-robin across named workers.
-
-    Round-robin over chunks rather than contiguous blocks so every worker gets a
-    comparable share regardless of where a run was interrupted. The mapping is
-    deterministic, so the same request on two machines produces the same bundles.
+    Deterministic, so two machines agree on the bundles.
     """
     if worker_count < 1:
         raise ValueError(f"worker_count must be >= 1, got {worker_count}")
@@ -191,10 +176,7 @@ def read_assignment(path: str | os.PathLike[str]) -> Assignment:
 @dataclass(frozen=True, slots=True)
 class ChunkResultRecord:
     """One completed chunk file as the worker measured it.
-
-    ``relative_path`` is the worker's path relative to the root of the returned
-    bundle, so a coordinator resolves it against whatever directory the bundle
-    arrived in rather than assuming a layout.
+    ``relative_path`` is relative to the returned bundle's root.
     """
 
     chunk_id: int
@@ -215,10 +197,7 @@ class ChunkResultRecord:
 @dataclass(frozen=True, slots=True)
 class ChunkReceipt:
     """What one worker produced, and what it believes about each file.
-
-    The receipt is the only thing that crosses the machine boundary, so it
-    carries enough to refuse a forged or mismatched chunk: the plan and
-    assignment it was produced under, the worker, and a digest per file.
+    The only thing crossing the machine boundary, so it carries a digest per file.
     """
 
     plan_id: str
@@ -273,9 +252,8 @@ def write_receipt(receipt: ChunkReceipt, path: Path) -> Path:
 
 def read_receipt(path: str | os.PathLike[str]) -> ChunkReceipt:
     """Load a receipt and verify its declared digest against its own content.
-
-    The digest covers the chunk list, so a receipt edited to add or drop a chunk
-    is detectable before any file is copied or trusted.
+    The digest covers the chunk list, so an edited receipt is caught before any
+    file is copied.
     """
     target = Path(path)
     if not target.is_file():

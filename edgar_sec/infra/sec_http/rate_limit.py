@@ -18,8 +18,8 @@ RETRY_AFTER_CAP_S = 120.0
 class RateLimiter:
     """Thread-safe limiter that reserves the next request slot.
 
-    ``acquire()`` reserves the next slot under a lock and returns how long
-    the caller must sleep before sending. Sleeping happens outside the lock.
+    ``acquire()`` reserves the next slot under a lock and returns the sleep the
+    caller owes; the sleep itself happens outside the lock.
     """
 
     def __init__(

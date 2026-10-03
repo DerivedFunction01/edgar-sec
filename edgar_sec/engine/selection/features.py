@@ -1,10 +1,6 @@
-"""Build the content-addressed feature snapshot used by quota selection.
-
-Pure helpers map filing forms and dates to selection dimensions.
-``FeatureSnapshotBuilder`` resolves profile and occurrence fields, writes the
-snapshot, and reuses it when its input fingerprint matches. Form-family SQL is
-generated from the same suffix vocabulary as the Python helper; required source
-columns are validated rather than silently replaced with nulls.
+"""Build the content-addressed feature snapshot quota selection reads. Form-family
+SQL comes from the same suffix vocabulary as the Python helper, and a snapshot is
+reused only while its input fingerprint matches.
 """
 
 from __future__ import annotations
@@ -31,15 +27,11 @@ from edgar_sec.infra.storage.parquet import DEFAULT_ROW_GROUP_SIZE
 
 FEATURE_SCHEMA_VERSION = "1.0"
 
-# Amendment and submission suffixes stripped when collapsing a raw form string
-# to its base family are owned by domain.forms.families and imported here, so
-# the engine's collapse order cannot drift from the domain registry's.
-
 UNMATCHED_ERA = "unknown"
 
 # Every target column except the one projected separately as `source_projection`.
-# Derived from the domain schema rather than restated, so a new target column
-# flows into the snapshot without a second list to update.
+# Derived from the domain schema, so a new target column flows through without a
+# second list to update.
 IDENTITY_COLUMNS = ", ".join(
     column for column in TARGET_COLUMNS if column != "document_path_source"
 )
@@ -67,11 +59,8 @@ _LOCATOR_FEATURES_NAME = "locator_features.parquet"
 
 
 def form_family(form: str) -> str:
-    """Collapse amendment and submission suffixes to a base form family.
-
-    ``10-K/A`` and ``10-K_A`` both become ``10-K``. A form that is *entirely*
-    suffixes (``/A``) collapses to the empty string, and the original is
-    returned rather than an empty dimension value.
+    """Collapse amendment and submission suffixes to a base family; `10-K/A` and
+    `10-K_A` both become `10-K`, and an all-suffix form returns the original.
     """
     base = form.upper().strip()
     for suffix in FORM_FAMILY_SUFFIXES:
@@ -80,12 +69,8 @@ def form_family(form: str) -> str:
 
 
 def form_family_sql(column: str) -> str:
-    """Return a SQL expression equivalent to :func:`form_family`.
-
-    Generated from :data:`FORM_FAMILY_SUFFIXES` rather than written by hand, so
-    the SQL and Python forms cannot disagree. Each ``removesuffix`` becomes one
-    ``$``-anchored ``regexp_replace``, applied in the same order, and the empty
-    fallback is reproduced with a ``CASE``.
+    """A SQL expression equivalent to `form_family`, from the same suffix vocabulary:
+    each `removesuffix` becomes one `$`-anchored `regexp_replace`, in order.
     """
     if not _SQL_COLUMN_IDENTIFIER_RE.fullmatch(column):
         raise ValueError(f"unsafe SQL column identifier: {column!r}")
@@ -99,11 +84,8 @@ def form_family_sql(column: str) -> str:
 
 
 def era_of(report_date: str | None, era_bands: Sequence[EraBand]) -> str:
-    """Map a report date onto the first matching policy era band.
-
-    An empty, absent, or non-numeric-prefix date is ``unknown`` rather than an
-    error: a filing with no usable report date is a real outcome, and bucketing
-    it as unknown keeps it visible instead of dropping the row.
+    """Map a report date onto the first matching policy era band; an absent or unusable
+    date is `unknown`, not an error, which keeps the filing visible.
     """
     if not report_date:
         return UNMATCHED_ERA
@@ -120,8 +102,6 @@ def era_of(report_date: str | None, era_bands: Sequence[EraBand]) -> str:
 
 @dataclass(frozen=True, slots=True)
 class SnapshotPaths:
-    """The four files that make up one feature snapshot."""
-
     snapshot_dir: Path
     manifest: Path
     occurrence_features: Path
@@ -215,15 +195,8 @@ class FeatureSnapshotBuilder:
         )
 
     def _size_band_anchor_sql(self, union_sql: str) -> str:
-        """Return a relation of (form_family, median_size) for every family.
-
-        One row per family, so the anchor is a rounding error against the
-        occurrence rows it will be joined to -- measured at 243 rows against
-        961,072 on a single shard. Keyed on ``form_family`` rather than ``form``
-        so amendment variants pool into one family and the median rests on more
-        rows; era is deliberately absent, because era is already an independent
-        stratum and adding it would fragment the anchor roughly fifteen-fold
-        for no gain in balance.
+        """A relation of (form_family, median_size); keyed on family so amendment variants
+        pool, and deliberately without era, which is already a stratum.
         """
         family_expr = form_family_sql("form")
         return f"""
@@ -235,11 +208,8 @@ class FeatureSnapshotBuilder:
         """
 
     def _size_band_sql(self, size_column: str, anchor_column: str) -> str:
-        """Band a size relative to its own family's median.
-
-        Row-local: once the anchor exists this is pure arithmetic, so it folds
-        into the occurrence base projection instead of needing its own pass, a
-        side table, and a join back.
+        """Band a size against its own family's median; row-local once the anchor exists,
+        so it folds into the occurrence base projection rather than a join back.
         """
         cases = [
             f"WHEN {size_column} < {anchor_column} * {multiplier} "
@@ -283,15 +253,8 @@ class FeatureSnapshotBuilder:
         )
 
     def _profiles_sql(self) -> str:
-        """Project the nested Phase 1 profile schema onto the flat feature shape.
-
-        Profile text fields use an empty string for absent values. The ``raw``
-        CTE normalizes blanks to NULL once so downstream ``COALESCE``, null
-        checks, and postal-code membership tests treat them as missing.
-
-        ``foreign_status`` uses the jurisdiction vocabulary and reports a
-        missing state as ``unknown``. An absent value must not be counted as
-        evidence that a registrant is foreign.
+        """Project the nested profile schema onto the flat feature shape; blanks normalize
+        to NULL in `raw`, and a missing state is `unknown`, never `domestic`.
         """
         domestic = ", ".join(sql_literal(code) for code in sorted(STATE_POSTAL_CODES))
         return f"""
@@ -351,10 +314,8 @@ class FeatureSnapshotBuilder:
         union_sql: str,
         staging_dir: Path,
     ) -> int:
-        """Write the wide per-occurrence feature table.
-
-        This is the expensive stage: it is the only one that touches the
-        occurrence rows, and every later stage joins against its output.
+        """Write the wide per-occurrence feature table; the only stage touching
+        occurrence rows, and every later stage joins it.
         """
         family_index = CompanyFamilyIndex.from_existing_profiles(self.profile_path)
         con.execute(_FAMILY_MAP_DDL)
@@ -463,11 +424,8 @@ class FeatureSnapshotBuilder:
     def _write_cross_form(
         self, con: object, union_sql: str, forms: Sequence[str], staging_dir: Path
     ) -> int:
-        """Classify each CIK by whether its anchor and comparison forms are live.
-
-        With no anchor/comparison forms configured the stage writes a
-        schema-correct zero-row file rather than skipping, so the downstream
-        join is unconditional.
+        """Classify each CIK by whether its anchor and comparison forms are live; with
+        none configured it writes a schema-correct zero-row file.
         """
         anchor_set = set(self.policy.anchor_forms)
         comparison_set = set(self.policy.comparison_forms)
@@ -570,12 +528,8 @@ class FeatureSnapshotBuilder:
         )
 
     def _write_locator_features(self, con: object, staging_dir: Path) -> int:
-        """Collapse occurrences to one row per document locator.
-
-        A locator can carry several occurrences when two registrants co-file
-        one document. Selection counts *documents*, not rows, so the collapse
-        picks a single representative by the lowest ``occurrence_id`` -- an
-        arbitrary but total order, which is all determinism requires.
+        """Collapse occurrences to one row per locator; selection counts documents, so
+        co-filed occurrences pick a representative by lowest `occurrence_id`.
         """
         occurrences = sql_literal(str(staging_dir / _OCCURRENCE_FEATURES_NAME))
         query = f"""
@@ -615,9 +569,8 @@ class FeatureSnapshotBuilder:
         if paths.manifest.is_file():
             return paths
 
-        # Validate the cheap input before opening a connection or reading the
-        # profile dataset, so a missing target directory is reported as itself
-        # rather than as a downstream IO error.
+        # Validate the cheap input before opening a connection, so a missing
+        # target directory is reported as itself, not as a downstream IO error.
         target_parts = self._target_part_files()
         snapshot_dir.mkdir(parents=True, exist_ok=True)
         counts: dict[str, int] = {}

@@ -1,9 +1,6 @@
-"""Contract tests for ASCII-PRE discrimination.
-
-The discriminating question is never "does this contain `<PRE>`" but "is
-`<PRE>` the *only* thing between the payload and the text". Most documents
-that contain a `<PRE>` block are real HTML, and treating those as ASCII would
-skip table rendering and page-marker detection entirely.
+"""ASCII-PRE discrimination.
+The question is never "does this contain `<PRE>`" but "is `<PRE>` the *only*
+thing between the payload and the text".
 """
 
 from __future__ import annotations

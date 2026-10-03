@@ -1,10 +1,6 @@
 """Divider formatting, affix gap healing, and template matching for ASCII tables.
-
-A divider is the only part of a rendered table a downstream consumer can parse,
-so it has to describe the real column structure. These passes repair the three
-ways that fails in practice: an affix column loses its mark, a header divider
-comes out narrower than the values it labels, and a zero-width column leaves a
-phantom fragment behind.
+A divider is the only part of a rendered table a downstream consumer can parse, so it must describe
+the real column structure; these passes repair the three ways that fails.
 """
 
 from __future__ import annotations
@@ -124,7 +120,6 @@ def heal_divider_lines_from_templates(lines: list[str]) -> None:
 
             target_stroke_matches = list(_RE_DIVIDER_RUNS.finditer(target))
             target_run_lengths = [len(m.group(0)) for m in target_stroke_matches]
-            # Check if any gap bridges to an isolated short run (<= 3 chars, e.g. affix/footnote columns)
             has_short_fragment = any(rl <= 3 for rl in target_run_lengths)
 
             leading_run_extension: list[int] = []

@@ -130,13 +130,8 @@ class BodyStartEvidence:
 
 @dataclass(frozen=True, slots=True)
 class BodyStart:
-    """The first sufficiently validated body region after cover/TOC material.
-
-    ``anchor_type`` is one of ``BodyAnchorType``. ``line`` is the source line
-    of the body-start boundary; ``heading_line`` is the structural heading
-    line when present. ``delayed`` is set when an earlier candidate was
-    rejected in favor of a later one. ``rejection_reasons`` records why
-    earlier candidates were rejected.
+    """The first sufficiently validated body region after cover/TOC material;
+    `delayed` is set when an earlier candidate was rejected in its favour.
     """
 
     line: int | None

@@ -1,15 +1,6 @@
 """Compiled regular expressions for SEC table detection and parsing.
-
-Three groups live here. The span and style patterns guard `<TABLE>` bytes. The
-column-rule and units-label patterns recognise the ASCII furniture a financial
-statement carries above and below its rows. The intro-cue patterns recognise
-the narrative sentence that introduces a table, which is what lets a reflow
-separate the sentence from the grid it introduces instead of unwrapping the
-grid into the sentence.
-
-The alternations are built through `foundation.regex.builder` so branch order is
-deterministic and longest-first; a hand-written alternation here would make
-which cue wins depend on literal order.
+Span and style patterns guard `<TABLE>` bytes; column-rule and units-label patterns recognise
+statement furniture; intro cues find the sentence that introduces a grid.
 """
 
 from __future__ import annotations
@@ -39,8 +30,7 @@ _UNIT_TERMS = build_alternation(
     ]
 )
 
-# Scale qualifier for a whole statement: ``(dollars in millions)``,
-# ``(in thousands)``, ``(amounts in millions)``.
+# Scale qualifier for a whole statement: ``(dollars in millions)``, ``(in thousands)``.
 UNITS_LABEL_RE = re.compile(
     rf"\(\s*(?:(?:dollars|amounts?)\s+)?in\s+(?:{_UNIT_TERMS})[^)]*\)",
     re.IGNORECASE,

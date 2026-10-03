@@ -1,24 +1,8 @@
 """Bounded, read-only DuckDB access to one browsed dataset.
 
-Every query here is shaped by a constraint the caller does not control. The
-column name in a sort, the filter operator, and the search term all arrive from
-a browser, so each is either checked against the dataset's own schema or passed
-as a bound parameter. Nothing from the request is interpolated into SQL except a
-column name, and a column name is only ever interpolated **after** being matched
-against the columns DuckDB actually reported.
-
-Two invariants are worth stating because they are what make "read-only" and
-"bounded" true rather than aspirational:
-
-**The connection is always in-memory.** Columnar and text-backed data is read
-through DuckDB table functions. Native DuckDB files are attached explicitly with
-``READ_ONLY``; SQLite files use ``sqlite_scan``. The viewer never opens a source
-database with a writable connection.
-
-**"Is there more?" is answered by fetching one extra row**, not by a COUNT. A
-COUNT over a large snapshot is a full scan; the caller is asking a cursor
-question, and ``LIMIT limit + 1`` answers it for the price of the page. Each
-response is bounded by both row count and encoded bytes.
+A sort column, filter operator, and search term all arrive from a browser: each is
+either matched against the reported schema or bound as a parameter. Sources are never
+opened writable — DuckDB attaches ``READ_ONLY``, SQLite goes through ``sqlite_scan``.
 """
 
 from __future__ import annotations
@@ -72,10 +56,8 @@ _COMPARISON_OPS = frozenset({"eq", "ne", "gt", "ge", "lt", "le"})
 _NULL_OPS = frozenset({"empty", "not_empty"})
 _ALL_OPS = _ORDER_OPS | _TEXT_OPS | _COMPARISON_OPS | _NULL_OPS
 
-# DuckDB types where a range comparison is meaningful. A range operator on a
-# VARCHAR compares lexicographically, which is almost never what an operator
-# clicking "greater than" on a name column meant, so it is refused rather than
-# silently answering a different question.
+# DuckDB types where a range comparison is meaningful; on VARCHAR it is lexicographic,
+# so a range operator there is refused rather than silently answering another question.
 _ORDERABLE_TYPE_PREFIXES = (
     "DECIMAL",
     "DOUBLE",
@@ -101,10 +83,8 @@ def _quote_path(path: Path) -> str:
 class DatasetRef:
     """One browsed dataset: its resolved part list and how to read it.
 
-    ``paths`` is the whole definition of the relation. A dataset is never
-    reassembled into a single file first — DuckDB reads the list directly, so a
-    snapshot with 37 parts costs no more than a copy step would and no extra
-    disk.
+    ``paths`` is the whole definition of the relation — DuckDB reads the list directly,
+    so a 37-part snapshot costs no copy step.
     """
 
     dataset_id: str
@@ -217,10 +197,8 @@ def dataset_rows(
 ) -> dict:
     """One bounded page of rows, with cursor information.
 
-    ``has_more`` comes from fetching ``limit + 1`` rows, never from a COUNT, so
-    paging forward never costs more than the page itself. ``total_rows`` is
-    optional and defaults to off for a filtered page, where it would mean
-    counting the whole dataset to answer a question the cursor already answered.
+    ``has_more`` comes from fetching ``limit + 1``, never a COUNT, so paging costs no
+    more than the page. ``total_rows`` is off by default for a filtered page.
     """
     if not MIN_LIMIT <= limit <= MAX_LIMIT:
         raise DatasetError(f"limit must be between {MIN_LIMIT} and {MAX_LIMIT}")
@@ -236,9 +214,6 @@ def dataset_rows(
         raise DatasetError(f"unknown sort column: {sort!r}")
 
     params: list = []
-    # Search clauses are OR-composed with each other, then the whole search is
-    # AND-composed with the filters. Keeping them in one list would make a
-    # two-column search require every column to match, which returns nothing.
     search_clauses: list[str] = []
     filter_clauses: list[str] = []
 
@@ -249,9 +224,7 @@ def dataset_rows(
         unknown = [name for name in targets if name not in by_name]
         if unknown:
             raise DatasetError(f"unknown search columns: {unknown}")
-        # CAST because ILIKE on a non-VARCHAR column is a type error in DuckDB,
-        # and a heterogeneous struct column would otherwise fail the whole page
-        # rather than the one cell that does not match.
+        # CAST: ILIKE on a non-VARCHAR column is a type error in DuckDB.
         pattern = f"%{search}%"
         for name in targets:
             search_clauses.append(f"CAST({_quote_ident(name)} AS VARCHAR) ILIKE ?")
@@ -260,9 +233,7 @@ def dataset_rows(
     for item in filters or []:
         filter_clauses.append(_filter_clause(item, by_name, params))
 
-    # A search is one OR-group; the filters are one AND-group; the two groups
-    # are AND-ed together. Composing all clauses in a single list is what made a
-    # two-column search require every column to match.
+    # Search is one OR-group, filters one AND-group; the two are AND-ed together.
     groups: list[str] = []
     if search_clauses:
         groups.append(" OR ".join(search_clauses))
@@ -334,10 +305,8 @@ def dataset_rows(
 def _filter_clause(item: dict, by_name: dict, params: list) -> str:
     """Build one ``AND``-composed filter clause.
 
-    Every failure mode here is a request the dataset cannot answer rather than a
-    server error: an unknown column, an unknown operator, or a range operator
-    on a column where a range is meaningless. Each is refused by name so the
-    operator can see which part of the request was wrong.
+    Every failure here is a request the dataset cannot answer, refused by name: unknown
+    column, unknown operator, or a range operator where a range is meaningless.
     """
     if not isinstance(item, dict):
         raise DatasetError("each filter must be an object")
@@ -378,12 +347,8 @@ def _filter_clause(item: dict, by_name: dict, params: list) -> str:
 def _render_row(record: dict) -> dict:
     """Convert one Arrow row to a JSON-safe mapping.
 
-    A bytes value becomes a *marker* rather than the bytes themselves. The
-    document payload parts hold whole filings; inlining them into a table page
-    would mean base64-encoding megabytes per cell. The marker tells the client
-    the cell exists and how big it is, and the client asks for the content
-    separately. Short byte values are inlined, since a marker for a two-byte
-    value is more bytes than the value.
+    A large ``bytes`` value becomes a marker rather than megabytes of base64 per cell;
+    short values are inlined, since a marker would be longer than the value.
     """
     rendered: dict = {}
     for key, value in record.items():
@@ -405,9 +370,8 @@ def dataset_column_stats(
 ) -> list[dict]:
     """Per-column stats, with top values for low-cardinality string columns.
 
-    The distinct-count threshold is what keeps this cheap: a high-cardinality
-    column would otherwise be grouped in full just to show the top five, and on
-    a document id that is a sort of the entire column.
+    The distinct-count threshold is what keeps this cheap: grouping a high-cardinality
+    column in full would sort the whole column to show five values.
     """
     columns = dataset_schema(ref, timeout_s)
     if not columns:
@@ -469,10 +433,7 @@ def dataset_blob(
 ) -> dict:
     """Fetch and decompress one BLOB cell, addressed by key or by row index.
 
-    The document payload parts store a filing's bytes in a zstd frame, so
-    decompressing is the normal path rather than a special case. Decompression
-    happens here and the result is capped: a 20 MB filing returned in full is a
-    response nobody can use, and the client already renders a truncated preview.
+    The result is capped: a 20 MB filing returned whole is a response nobody can use.
     """
     if not (pk_col and pk_val is not None) and row_index is None:
         raise DatasetError("either (pk_col, pk_val) or row_index must be provided")

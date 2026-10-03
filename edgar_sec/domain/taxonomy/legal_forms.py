@@ -1,9 +1,7 @@
 """Legal-form suffixes, name stopwords, and entity-name tokenization.
 
-These words are grammatical furniture in a registered company name. They carry
-no identity: ``ACME HOLDINGS INC`` and ``ACME HOLDINGS LLC`` are the same
-registrant family, so the form is stripped before names are compared and
-clustered.
+Grammatical furniture carrying no identity: ``ACME HOLDINGS INC`` and ``ACME HOLDINGS
+LLC`` are one registrant family.
 """
 
 from __future__ import annotations
@@ -12,9 +10,8 @@ import re
 
 from edgar_sec.domain.taxonomy.jurisdictions import strip_jurisdiction
 
-# Suffixes and entity-type words that do not distinguish one registrant family
-# from another. Includes non-US forms because EDGAR carries foreign private
-# issuers.
+# Entity-type words that do not distinguish one registrant family from another; non-US
+# forms included because EDGAR carries foreign private issuers.
 LEGAL_FORMS = frozenset(
     {
         "inc",
@@ -89,8 +86,7 @@ _TOKEN_RE = re.compile(r"[a-z0-9]+")
 def entity_name_tokens(name: str) -> list[str]:
     """Return normalized lexical tokens without legal forms or stopwords.
 
-    Single characters are dropped: they are almost always formatting artifacts
-    rather than part of a company's identity.
+    Single characters are dropped: they are formatting artifacts, not identity.
     """
     cleaned = strip_jurisdiction(name).lower()
     tokens = _TOKEN_RE.findall(cleaned)

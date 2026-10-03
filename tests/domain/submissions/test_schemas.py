@@ -1,5 +1,3 @@
-"""Unit tests for submission_metadata schema definitions and validation."""
-
 from __future__ import annotations
 
 import pyarrow as pa
@@ -20,7 +18,6 @@ def test_submission_metadata_schema_invariants() -> None:
     assert SCHEMA_VERSION == "1.0.0"
     assert isinstance(SUBMISSION_METADATA_SCHEMA, pa.Schema)
 
-    # Check primary key and top-level fields
     field_names = SUBMISSION_METADATA_SCHEMA.names
     assert "cik" in field_names
     assert "status" in field_names
@@ -29,7 +26,6 @@ def test_submission_metadata_schema_invariants() -> None:
     assert "filings" in field_names
     assert "anomalies" in field_names
 
-    # Check types of nested structs
     cik_type = SUBMISSION_METADATA_SCHEMA.field("cik").type
     assert pa.types.is_string(cik_type)
 
@@ -37,19 +33,16 @@ def test_submission_metadata_schema_invariants() -> None:
     assert pa.types.is_list(filings_type)
     assert filings_type.value_type == FILING_STRUCT
 
-    # Check address struct fields
     address_fields = {f.name for f in ADDRESS_STRUCT}
     assert "city" in address_fields
     assert "state_or_country" in address_fields
     assert "zip_code" in address_fields
 
-    # Check former names struct fields
     former_fields = {f.name for f in FORMER_NAME_STRUCT}
     assert "name" in former_fields
     assert "from_date" in former_fields
     assert "to_date" in former_fields
 
-    # Check terminal statuses
     assert "ok" in TERMINAL_STATUSES
     assert "partial" in TERMINAL_STATUSES
     assert "failed" in TERMINAL_STATUSES

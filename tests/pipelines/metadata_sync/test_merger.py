@@ -123,12 +123,7 @@ def _publish_base(tmp_path: Path, ciks, base_id: str = "base-snap"):
 
 
 def test_merge_publishes_a_multipart_snapshot(tmp_path: Path) -> None:
-    """A snapshot is an ordered set of parts, not one rewritten monolith.
-
-    Parts are byte copies of the validated chunks, so the published dataset is in
-    chunk order rather than globally CIK-sorted. The manifest says so explicitly
-    so a consumer cannot mistake one for the other.
-    """
+    """Chunk order, not a global CIK sort, so the manifest must say which."""
     plan, run_paths = _plan(tmp_path)
     _complete(plan, run_paths)
 
@@ -173,12 +168,7 @@ def test_published_parts_are_byte_copies_of_the_validated_chunks(
 
 
 def test_multipart_manifest_names_no_single_payload(tmp_path: Path) -> None:
-    """A legacy reader must fail loudly rather than ingest only the first part.
-
-    Pointing ``output_path`` at part zero would let a reader that understands
-    only the singular shape silently read a fraction of the dataset, so the
-    singular fields stay empty and the part list is authoritative.
-    """
+    """A singular-shape reader must fail loudly, not ingest only part zero."""
     plan, run_paths = _plan(tmp_path)
     _complete(plan, run_paths)
     manifest = publish_snapshot(
@@ -238,12 +228,7 @@ def test_merge_emits_progress_events(tmp_path: Path) -> None:
 
 
 def test_published_cik_index_matches_the_payload(tmp_path: Path) -> None:
-    """The index is a statement about the artifact on disk.
-
-    It is derived from the published rows rather than from the request, so a
-    plan that asked for something the merge did not deliver shows up here rather
-    than in a later consumer's row count.
-    """
+    """Derived from the published rows, not from the request."""
     plan, run_paths = _plan(tmp_path)
     _complete(plan, run_paths)
     report = merge_chunks(plan, run_paths, "snap1")
@@ -330,16 +315,7 @@ def test_merge_progress_is_optional(tmp_path: Path) -> None:
 
 
 def test_a_delta_plan_cannot_be_merged_on_its_own(tmp_path: Path) -> None:
-    """A plain merge over a delta plan would silently drop the base.
-
-    ``merge_chunks`` publishes exactly the chunks a plan produced, and a delta
-    plan's chunks hold only the CIKs its base is missing. Because the delta plan
-    id is also the snapshot id an augmentation publishes under, a generic merge
-    over it would rewrite that same snapshot manifest with a delta-only payload
-    and advance the current pointer onto it -- destroying the base rows the
-    manifest names as its parent. Recombining base and delta is augmentation's
-    job, so the refusal belongs here.
-    """
+    """The delta plan id is also its snapshot id, so merging it alone drops the base."""
     cohort = fixture_cohort("cik_sec_mini.csv")
     metadata = _publish_base(tmp_path, ("0000001985",))
     delta = derive_delta_plan(
@@ -389,13 +365,7 @@ def test_foreign_chunk_file_rejected(tmp_path: Path) -> None:
 
 
 def test_wrong_cik_is_rejected_by_coverage_guard(tmp_path: Path) -> None:
-    """Coverage is validated before the DuckDB duplicate-key probe.
-
-    A chunk that does not carry exactly its planned CIKs is rejected on
-    coverage, which is what actually prevents duplicate CIKs from ever
-    reaching the merged dataset. The DuckDB probe is defense in depth for
-    the cross-chunk case, exercised directly below.
-    """
+    """Coverage is what prevents duplicate CIKs; the probe is defense in depth."""
     plan, run_paths = _plan(tmp_path)
     fp = plan.input_fingerprint
     for chunk_id in plan.chunk_ids():

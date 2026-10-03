@@ -21,9 +21,7 @@ from edgar_sec.foundation.text.evidence import (
     compile_evidence_pack,
 )
 
-# =============================================================================
 # INDUSTRY & OCCUPATION VOCABULARY TIERS
-# =============================================================================
 
 
 class IndustryGroup(Enum):
@@ -180,9 +178,7 @@ OCCUPATION_GROUP_TERMS: dict[OccupationGroup, tuple[str, ...]] = {
     ),
 }
 
-# =============================================================================
 # DYNAMIC LABOR COMPOUND BUILDER
-# =============================================================================
 
 _COLLECTIVE = ("collective", "labor", "labour", "union", "trade union")
 _BARGAIN = expand_variants(("bargaining", "negotiation", "negotiating"))
@@ -273,18 +269,15 @@ _SCHEDULE_HEADERS = (
     "codetermination",
 )
 
-# Flattened industry worker compounds (e.g., "steel workers", "mining workforce")
 _INDUSTRY_WORKER_TERMS = expand_compounds(
     [t for terms in INDUSTRY_PREFIX_TERMS.values() for t in terms],
     _WORKER_GENERIC,
 )
 
-# Flattened occupation list
 _ALL_OCCUPATION_TERMS = expand_alternations(
     [terms for terms in OCCUPATION_GROUP_TERMS.values()]
 )
 
-# Dynamic union organization compounds (e.g. "association of flight attendants", "united steelworkers")
 _UNION_NOUN_ORGS = (
     "association",
     "brotherhood",
@@ -305,7 +298,6 @@ DYNAMIC_UNION_NAMES: tuple[str, ...] = expand_alternations(
     expand_compounds([u for u in _ALL_UNION_ORGS if u != "union"], "union"),
 )
 
-# Primary Tier: Distinctive collective bargaining, representation, and union schedule indicators
 LABOR_PRIMARY_TERMS: tuple[str, ...] = expand_alternations(
     expand_compounds(_COLLECTIVE, _BARGAIN, (None, _CONTRACT_NOUNS)),
     expand_compounds(("labor", "labour", "trade union", "union"), _CONTRACT_NOUNS),
@@ -314,7 +306,6 @@ LABOR_PRIMARY_TERMS: tuple[str, ...] = expand_alternations(
     _SCHEDULE_HEADERS,
 )
 
-# Supporting Tier: Acronyms, occupation stubs, industry worker groups, employee groupings, and dynamic union names
 LABOR_SUPPORTING_TERMS: tuple[str, ...] = expand_alternations(
     expand_variants(("employee group", "bargaining group")),
     _UNION_ACRONYMS,

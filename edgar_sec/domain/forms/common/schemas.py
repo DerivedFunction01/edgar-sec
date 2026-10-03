@@ -4,8 +4,6 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 
-# --- Canonical Checkbox Vocabulary Constants ---
-
 REPORT_PERIOD_GROUP = "report_period"
 FILER_STATUS_GROUP = "filer_status"
 STATUTORY_BINARY_GROUP = "statutory_binary"

@@ -1,14 +1,6 @@
-"""Forward body-start detection after cover/TOC boundaries.
-
-Consumes the results of cover/TOC detection and resolves the first
-sufficiently validated body region. The detector prefers a later validated
-``BODY_START`` over an early false start: a late start may leave some
-ordinary body prose hard-wrapped, while an early start can corrupt a table,
-list, signature, TOC, or cover layout.
-
-This module is form-neutral: it consumes a lexical evidence pack via
-:mod:`edgar_sec.engine.forms.cover.body_context` for scoring. Cover and TOC detection
-stay upstream; their boundary results are consumed, never reimplemented.
+"""Forward body-start detection after cover/TOC boundaries. Prefers a later validated
+start: an early false one corrupts a table, list, signature, TOC, or cover layout,
+while a late one only leaves some prose hard-wrapped.
 """
 
 from __future__ import annotations
@@ -68,13 +60,8 @@ def _prev_nonblank_line(lines: list[str], start: int) -> tuple[int, str] | None:
 
 
 def _is_prose_unit(unit: LogicalUnit, lines: list[str]) -> bool:
-    """Return whether a logical unit is narrative prose rather than a table or list.
-
-    Fast path accepts paragraph units. When `page_markers.units` classified
-    a unit as `'table'`, this checks whether the block actually possesses
-    tabular geometry via `is_tableish_block`. Units with normal prose letter
-    density (alpha_density >= 0.60) and lacking table geometry are treated
-    as substantive prose.
+    """Whether a unit is narrative prose; one classified `'table'` still counts when it
+    has no tabular geometry and normal letter density.
     """
     if unit.kind == "paragraph":
         return True
@@ -92,11 +79,8 @@ def _validate_structural_heading(
     units_by_line: dict[int, LogicalUnit],
     toc_span: TocSpan | None,
 ) -> tuple[bool, str]:
-    """Validate a structural PART/ITEM heading as a body anchor.
-
-    Returns (valid, reason). A heading is invalid when it is in TOC/table
-    context, has multiple references, is followed by lowercase continuation
-    prose, or is preceded by continuation tokens.
+    """Validate a structural PART/ITEM heading, returning (valid, reason). Invalid in
+    TOC/table context, with multiple references, or beside continuation prose.
     """
     line = lines[heading_line]
     stripped = line.strip()
@@ -137,13 +121,8 @@ def _find_first_substantive_prose(
     start_line: int,
     limit_line: int,
 ) -> tuple[LogicalUnit | None, BowScore | None, LogicalUnit | None]:
-    """Find the first substantive prose unit with a lexical score >= 2.
-
-    Skips form placeholders, short headings, tables, and lists. Consecutive
-    short paragraph units (each below the word gate) are merged before scoring
-    so fragmented HTML prose — split spans, short lead sentences — can still
-    reach the lexical gate. Also returns the first intermediate (score-1) unit
-    encountered for the audit trail.
+    """The first prose unit scoring >= 2, plus any score-1 unit seen first.
+    Consecutive short paragraphs are merged so fragmented prose reaches the gate.
     """
     intermediate: LogicalUnit | None = None
     merged: list[LogicalUnit] = []
@@ -211,16 +190,8 @@ def find_body_start(
     search_window: int = _BODY_START_SEARCH_WINDOW,
     toc_span: TocSpan | None = None,
 ) -> BodyStart:
-    """Find the first validated body region after cover/TOC material.
-
-    Args:
-        text: full source text.
-        cover_end: exclusive cover boundary line (``COVER_END``).
-        toc_end: exclusive TOC boundary line (``TOC_END``), when present.
-        evidence: a compiled lexical pack, a ``LexicalEvidencePack``, or an
-            object carrying a ``lexical`` pack or legacy body fields.
-        search_window: bounded forward search window.
-        toc_span: caller-supplied TOC span; units inside it stay ineligible.
+    """The first validated body region after cover/TOC material. `evidence` may be a
+    compiled pack or an object carrying `lexical`; `toc_span` units are ineligible.
     """
     lines = text.splitlines()
     if not lines:

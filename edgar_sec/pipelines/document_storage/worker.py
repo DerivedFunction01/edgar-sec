@@ -1,20 +1,8 @@
-"""Chunk acquisition and publication, and the process pool that runs chunks.
+"""Chunk acquisition and the process pool that runs chunks.
 
-A *chunk* is a bounded set of document locators. Processing one chunk is
-restartable: the chunk is written to a Parquet file, and a completed chunk is
-verified and skipped on a later run. That is the whole resumability contract —
-there is no separate "committed" ledger to keep in sync, because the Parquet
-file *is* the record.
-
-Concurrency is a process pool, not a thread pool, for one reason: a worker
-normalizes a full filing document, and the allocation churn of doing that in
-threads fragments the heap past what the container's cgroup allows.
-``max_tasks_per_child`` recycles each child periodically so that a long run does
-not accumulate unbounded glibc arena growth in one process.
-
-The fetcher is shipped *by value*: it holds a database path or a socket path, not
-a live connection, so the pool boundary is the only place picklability is
-enforced and it is tested at that boundary.
+The chunk Parquet file *is* the resumability record — there is no committed ledger.
+The fetcher ships by value (paths, never a connection) because a ``sqlite3``
+connection cannot cross a process boundary.
 """
 
 from __future__ import annotations
@@ -74,11 +62,7 @@ class ChunkError(RuntimeError):
 class DelegationTarget:
     """A stub decision a worker observed, for the delegation pass to resolve.
 
-    Reported by the worker rather than rediscovered by the operator: the worker
-    already holds the evaluator's verdict, and re-deriving it would mean
-    refetching and renormalizing every primary document a second time. Only the
-    *identity* of the target travels; the exhibit bytes are fetched in the
-    delegation pass, under its own budget.
+    Only the target's identity travels; exhibits are fetched in that pass.
     """
 
     document_locator_key: str
@@ -113,12 +97,10 @@ def is_chunk_complete(
     *,
     processor_fingerprint: str,
 ) -> bool:
-    """Return whether a chunk is already published and reusable.
+    """Return whether a chunk validates and was written by the current processor.
 
-    A chunk is reusable only when its file validates *and* was written by the
-    processor being asked to run now. Reusing a chunk normalized by a different
-    processor would silently mix two text conventions in one snapshot, which is
-    worse than recomputing.
+    Another processor's chunk is not reusable: mixing two text conventions into one
+    snapshot is worse than recomputing.
     """
     path = chunk_checkpoint_path(chunks_dir, chunk_id)
     if not path.is_file():
@@ -134,12 +116,7 @@ def is_chunk_complete(
 def _unique_locators(
     locators: Sequence[DocumentLocator],
 ) -> list[DocumentLocator]:
-    """Deduplicate locators by content-addressed key, preserving order.
-
-    Two locators with the same key are the same document, so fetching it twice
-    would double the cost and produce two rows for one document. Order is
-    preserved so a chunk's row order is stable across runs.
-    """
+    """Deduplicate locators by key, preserving order for stable rows."""
     seen: set[str] = set()
     unique: list[DocumentLocator] = []
     for locator in locators:
@@ -221,20 +198,8 @@ def process_chunk(
 ) -> ChunkResult:
     """Fetch and normalize one chunk, publishing it as a Parquet checkpoint.
 
-    Streams normalized documents directly to a staging .tmp Parquet file,
-    discarding raw byte arrays and intermediate text from memory immediately.
-
-    Args:
-        chunk_id: identity of this chunk, used for the checkpoint filename.
-        worker_id: identity of the executing worker, recorded in the result.
-        locators: documents to acquire; deduplicated by content-addressed key.
-        occurrences: provenance rows to emit alongside the documents.
-        fetcher: acquisition backend.
-        processor: normalization backend; defaults to the filing processor.
-        chunks_dir: directory the checkpoint Parquet is written to.
-        profile: optional resource budget.
-        payload_sink: optional callback invoked with each acquired raw payload,
-            used by the fixture builder to record what was fetched.
+    Streams each document straight into a staging file, so raw bytes and intermediate
+    text leave memory immediately.
     """
     if not chunk_id or not worker_id:
         raise ChunkError("chunk_id and worker_id are required")
@@ -363,9 +328,8 @@ def process_chunk(
         except OSError:
             pass
 
-    # Derive counts directly from the committed Parquet table so they are
-    # deterministic, invariant to restarts, and accurately reflect total
-    # normalized/failed/missing documents in the chunk.
+    # Counts come from the committed table, so they are deterministic across restarts
+    # and reflect the chunk's total rather than this pass.
     status_by_doc: dict[str, str] = {}
     if total_occurrences > 0:
         table = read_parquet_table(
@@ -414,9 +378,7 @@ def _expand_occurrences(
 ) -> list[FilingOccurrence]:
     """Pair each locator with the provenance rows that reference it.
 
-    A locator with no recorded occurrence is still emitted, so a chunk never
-    silently drops an acquired document. A document that failed to process still
-    gets a row: the snapshot records *what happened*, not only what succeeded.
+    An undescribed locator and a document that failed to process both still get a row.
     """
     expanded: list[FilingOccurrence] = []
     for locator in locators:
@@ -429,11 +391,7 @@ def _expand_occurrences(
 
 
 def _synthetic_occurrence(locator: DocumentLocator) -> FilingOccurrence:
-    """Build the provenance row for a document that has no recorded occurrence.
-
-    Used only for a locator the catalog did not describe; the row carries the
-    locator's own identity so the acquired document is still accounted for.
-    """
+    """Build the provenance row for a locator the catalog did not describe."""
     from edgar_sec.domain.identity import Cik
 
     document_key = locator.document_locator_key
@@ -459,11 +417,9 @@ def key_of(locator: DocumentLocator) -> str:
 
 
 def _stamp_fingerprint(path: Path, fingerprint: str) -> None:
-    """Record the producing processor on the checkpoint.
+    """Record the producing processor beside the checkpoint, not in its schema.
 
-    Stored as a Parquet key/value file so the snapshot's own schema stays
-    exactly the contract the merger validates. Without it a completed chunk
-    could not be matched against the processor that wants to reuse it.
+    Without it a completed chunk cannot be matched against the processor reusing it.
     """
     sidecar = path.with_suffix(".fingerprint")
     sidecar.write_text(fingerprint, encoding="utf-8")
@@ -486,12 +442,7 @@ def resolved_worker_count(
 ) -> int:
     """Resolve the worker count from cgroup-aware resources, never raw CPU count.
 
-    A worker holds a full filing document in memory, so the count is derived from
-    available bytes rather than from how many cores the host happens to expose.
-    The per-worker budget and safety fraction come from the settings registry, not
-    from literals here: an operator who sets ``RUNTIME_WORKER_MEMORY_MIB`` must
-    not be silently ignored, and the ``resource-allocation`` scanner cannot catch
-    that because its rule only matches ``threads``/``max_workers``/``memory_limit``.
+    Budgets come from the settings registry, so an operator's MiB override is honoured.
     """
     if requested is not None and requested > 0:
         return requested
@@ -532,9 +483,8 @@ def process_chunks(
 ) -> tuple[ChunkResult, ...]:
     """Process every chunk not already published, returning all chunk results.
 
-    Completed chunks are verified and skipped, which is what makes a re-run
-    cheap. A skipped chunk's result is reconstructed from its checkpoint so the
-    caller sees one uniform list either way.
+    A skipped chunk's result is reconstructed from its checkpoint, so callers see one
+    uniform list either way.
     """
     effective_processor = processor if processor is not None else FilingProcessor()
     fingerprint = getattr(

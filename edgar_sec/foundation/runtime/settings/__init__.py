@@ -1,10 +1,8 @@
 """Typed settings registry: spec model, collection, resolution, and rendering.
 
-Setting identity is a logical dotted path (e.g. ``runtime.threads``, ``sec.rate_limit_rps``);
-environment variable names are derived deterministically from the path via
-``environment_name(path)``, never hand-written. Spec modules export specs without
-polluting a single monolithic file. Resolution always flows through
-:mod:`edgar_sec.foundation.runtime.env` (process environment, then canonical dotenv).
+A setting's identity is its logical dotted path (e.g. ``runtime.threads``); the environment
+name is derived from that path, never hand-written. Resolution flows through
+:mod:`edgar_sec.foundation.runtime.env`.
 """
 
 from __future__ import annotations

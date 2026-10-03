@@ -1,8 +1,6 @@
 """Single-pass layout geometry for a block of ASCII lines.
-
-These vectors cover the three primitives the resolver and the cascade both depend
-on: where a column gap starts, where a numeric cell starts, and which columns
-several rows share.
+Covers the three primitives the resolver and the cascade both depend on: where a
+column gap starts, where a numeric cell starts, which columns rows share.
 """
 
 from __future__ import annotations

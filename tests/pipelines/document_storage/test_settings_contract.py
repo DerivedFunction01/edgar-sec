@@ -1,10 +1,4 @@
-"""Settings-registry contract for the document-storage pipeline.
-
-Phase 2.5's two batch/byte knobs were module constants, so they were silently
-not env-overridable while ``metadata_sync`` and ``filing_catalog`` read the
-central registry. These tests pin that the pipeline's authority values and the
-registered defaults cannot drift apart.
-"""
+"""The pipeline's authority values and the registered defaults cannot drift apart."""
 
 from __future__ import annotations
 

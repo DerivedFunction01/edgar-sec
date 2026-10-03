@@ -46,9 +46,6 @@ def _html(pages: int) -> str:
     return "<html><body>" + "".join(chunks) + "</body></html>"
 
 
-# --- the ASCII text frame ----------------------------------------------------
-
-
 def test_an_empty_document_is_returned_unchanged() -> None:
     text, artifacts, templates, next_id = apply_page_markers("")
     assert (text, artifacts, templates, next_id) == ("", (), {}, 1)
@@ -158,8 +155,7 @@ def test_a_removal_after_a_terminal_character_is_not_joined() -> None:
 
 
 def test_a_removal_is_not_joined_before_a_negative_boundary_phrase() -> None:
-    # "none of" continues the sentence, so joining it would concatenate two
-    # sentence halves rather than splice a removed marker out of one.
+    # "none of" continues the sentence, so joining it would concatenate two halves.
     text = "The company reports on page\n<PAGE> 2\nnone of which changed.\n"
     analysis = analyze_page_markers(text, NO_TOC)
     result, _artifacts, _templates, _next_id = apply_page_markers(text, analysis)
@@ -255,8 +251,8 @@ def test_the_text_frame_entry_point_returns_the_analysis_it_used() -> None:
     result, analysis, artifacts, templates, next_id = apply_text_policy(text)
     assert analysis.representation == "ascii"
     assert analysis.source_text == text
-    # `<PAGE>` alone states no page value, so the frame reports no visible
-    # labels even though the tag itself is a firm marker and was removed.
+    # `<PAGE>` alone states no page value, so no visible labels even though the tag was
+    # a firm marker and was removed.
     assert analysis.terminal_state is PageMarkerTerminalState.NO_VISIBLE_LABELS
     assert artifacts
     assert templates == {}
@@ -271,9 +267,6 @@ def test_the_text_frame_entry_point_keeps_the_given_analysis() -> None:
         text, analysis
     )
     assert returned is analysis
-
-
-# --- the projected HTML frame ------------------------------------------------
 
 
 def test_html_policy_uses_the_shared_projection_and_admits_table_furniture() -> None:
@@ -292,9 +285,8 @@ def test_html_policy_uses_the_shared_projection_and_admits_table_furniture() -> 
 
 
 def test_overlapping_decisions_share_one_rendered_token() -> None:
-    # An artifact id identifies a rendered token, and overlapping decisions are
-    # merged into a single range, so several artifacts can correspond to one
-    # token. `next_id` therefore counts rendered tokens, not artifacts.
+    # Overlapping decisions merge into one range, so `next_id` counts rendered tokens,
+    # not artifacts.
     text = _paged(4, header="ABC CORP")
     _result, artifacts, _templates, next_id = apply_page_markers(text)
     assert len(artifacts) > next_id - 1
@@ -360,9 +352,6 @@ def test_the_html_facade_routes_to_the_same_projection() -> None:
     assert facade[0] == direct[0]
     assert facade[1] == direct[1]
     assert facade[2] == direct[2]
-
-
-# --- the sidecar -------------------------------------------------------------
 
 
 def test_sidecar_metadata_is_ordered_for_byte_stable_output() -> None:

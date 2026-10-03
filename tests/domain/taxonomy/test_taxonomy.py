@@ -1,8 +1,5 @@
-"""Unit tests for the shared statutory taxonomy.
-
-These tables are reference data that the company-family engine depends on for
-its identity decisions, so the tests pin membership, immutability, and the
-edge cases where stripping must *not* happen.
+"""Reference data the company-family engine depends on: membership, immutability,
+and the cases where stripping must not happen.
 """
 
 from __future__ import annotations
@@ -109,11 +106,7 @@ def test_legal_forms_excludes_words_that_carry_identity() -> None:
 
 
 def test_entity_type_words_are_treated_as_legal_forms() -> None:
-    """Entity-type wrappers carry no identity, so they are stripped.
-
-    This is the deliberate half of the trade: "ACME HOLDINGS" and
-    "ACME" are one registrant family, which is the whole point of clustering.
-    """
+    """One registrant family: "ACME HOLDINGS" and "ACME" are the same."""
     for word in ("holding", "holdings", "group", "grp", "trust", "fund"):
         assert word in LEGAL_FORMS, word
 

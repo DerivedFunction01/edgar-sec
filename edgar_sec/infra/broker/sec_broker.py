@@ -1,9 +1,7 @@
 """Managed same-host SEC acquisition broker.
 
-One broker process owns the single production SecHttpClient (rate limiter,
-cache, failure ledger, metrics). Workers submit archive URLs over a Unix domain
-socket and never construct their own SEC client, so all live requests share one
-aggregate pace governed by settings.
+One broker process owns the single production SecHttpClient (rate limiter, cache, failure
+ledger), so every live request shares one aggregate pace governed by settings.
 """
 
 from __future__ import annotations
@@ -109,7 +107,6 @@ class SecBroker:
         return base
 
     def fetch(self, archive_url: str, *, force_refresh: bool = False) -> dict[str, Any]:
-        """Serve one archive fetch, returning a response dict."""
         if archive_url == HEALTHCHECK_URL:
             return {
                 "status": "ok",
@@ -313,7 +310,6 @@ class SecBrokerClient:
         return header, payload
 
     def fetch(self, archive_url: str, *, force_refresh: bool = False) -> dict[str, Any]:
-        """Fetch one archive URL through the broker."""
         request_id = os.urandom(8).hex()
         request = _json_dumps(
             {

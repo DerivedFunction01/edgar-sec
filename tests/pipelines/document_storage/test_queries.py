@@ -72,11 +72,7 @@ def test_assembly_concatenates_chunks_and_preserves_the_published_sort(
 
 
 def test_assembly_escapes_a_chunk_path_containing_a_quote(tmp_path: Path) -> None:
-    """A chunk directory is chosen by the caller, so a quoted path is legal input.
-
-    The assembly statement used to interpolate paths without escaping, so a
-    quote in the path produced malformed SQL rather than a snapshot.
-    """
+    """An unescaped quote in a caller-chosen path produced malformed SQL."""
     quoted_dir = tmp_path / "worker's chunks"
     quoted_dir.mkdir()
     chunk = _write_chunk(quoted_dir / "chunk_0000.parquet", start=0, count=2)

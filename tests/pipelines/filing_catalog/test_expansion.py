@@ -1,11 +1,4 @@
-"""Tests for target-plan expansion: lineage and parent-locator preservation.
-
-The invariant under test throughout is that a child plan contains 100% of its
-parent's locators. A scale-up that quietly resamples is worse than no scale-up,
-because a downstream acquisition would then skip documents the parent had
-already committed to and the gap would surface only as missing documents in the
-store.
-"""
+"""Target-plan expansion: lineage, and a child that never drops a parent locator."""
 
 from __future__ import annotations
 
@@ -161,13 +154,7 @@ def test_a_downgraded_parent_is_refused_even_when_the_sidecar_survives(
     catalog_snapshot: tuple[dict[str, Any], Path],
     catalog_artifacts_root: Path,
 ) -> None:
-    """A parent missing its seed fingerprint must not slip through as a match.
-
-    The guard compared against ``(None, fingerprint)``, so an absent field
-    satisfied it. A 1.0 bundle has no sidecar to reproduce its seed set from,
-    so accepting it published a child whose lineage points at a plan that never
-    declared one.
-    """
+    """A 1.0 bundle has no seed sidecar, so an absent fingerprint must not match."""
     artifacts_root = _root(catalog_artifacts_root)
     parent_dir, _ = _publish_parent(
         catalog_snapshot, catalog_artifacts_root, base_content_units=2
@@ -190,12 +177,7 @@ def test_a_downgraded_parent_reports_the_schema_mismatch_not_a_missing_file(
     catalog_snapshot: tuple[dict[str, Any], Path],
     catalog_artifacts_root: Path,
 ) -> None:
-    """The authentic probe: sidecar removed too, error must still name the schema.
-
-    The sidecar read ran before any version check, so a bare ``FileNotFoundError``
-    escaped and the operator was sent looking for a file rather than told the
-    bundle is from an older schema.
-    """
+    """The sidecar read must not precede the version check and mask the schema."""
     artifacts_root = _root(catalog_artifacts_root)
     parent_dir, _ = _publish_parent(
         catalog_snapshot, catalog_artifacts_root, base_content_units=2
@@ -260,12 +242,7 @@ def test_a_tampered_parent_fingerprint_is_refused(
     catalog_snapshot: tuple[dict[str, Any], Path],
     catalog_artifacts_root: Path,
 ) -> None:
-    """The recorded fingerprint must still describe the locators beside it.
-
-    ``prepare_parent`` recomputed the fingerprint when the stored one was
-    missing, so a parent whose selection had been altered was re-stamped with
-    its *new* contents and handed to the child as an unverified parent.
-    """
+    """A missing fingerprint must not be recomputed over altered locators."""
     artifacts_root = _root(catalog_artifacts_root)
     parent_dir, parent_meta = _publish_parent(
         catalog_snapshot, catalog_artifacts_root, base_content_units=2
@@ -480,11 +457,7 @@ def test_a_child_that_cannot_reach_its_target_publishes_nothing(
     catalog_snapshot: tuple[dict[str, Any], Path],
     catalog_artifacts_root: Path,
 ) -> None:
-    """A short child must be refused, not published as a smaller plan.
-
-    Otherwise a caller asking for 5,000 locators would receive a bundle that
-    silently contains 40 and no error.
-    """
+    """A caller asking for 5,000 locators must not silently receive a smaller plan."""
     parent_dir, _ = _publish_parent(
         catalog_snapshot, catalog_artifacts_root, base_content_units=2
     )
@@ -570,13 +543,7 @@ def test_prepare_parent_derives_the_child_level_and_lineage(
 
 
 def _seed_csv(path: Path, rows: list[tuple[str, str]] = ()) -> Path:
-    """Write a seed manifest naming registrants that exist in the fixture.
-
-    A seed also defines the company-family index, so a manifest full of CIKs
-    absent from the corpus collapses the strata and starves selection of
-    candidates. Naming real registrants keeps these tests about seed
-    inheritance rather than about corpus arithmetic.
-    """
+    """A seed also defines the family index, so the names must exist in the corpus."""
     rows = rows or [("0000320193", "APPLE FIXTURE INC")]
     path.write_text(
         "cik,name,seed_group,coverage_tags,notes\n"
@@ -603,8 +570,7 @@ def test_a_seeded_parent_expands_from_its_own_published_seed_set(
         parent["plan_id"]
     )
     assert parent["seed_filer_count"] == 1
-    # The configured manifest is gone. The parent can still be expanded, because
-    # the bundle it published carries the seed set with it.
+    # The bundle carries the seed set, so the configured manifest is expendable.
     seed_path.unlink()
 
     child = expand(parent_dir, 4, artifacts_root=artifacts_root)
@@ -653,14 +619,7 @@ def test_expanding_a_plan_whose_seed_set_was_edited_is_refused(
 def test_a_child_inherits_the_bands_its_parent_resolved(
     catalog_snapshot: tuple[dict[str, Any], Path], catalog_artifacts_root: Path
 ) -> None:
-    """The draft still asks for derived bands; the parent recorded real ones.
-
-    A published plan embeds its *resolved* policy because era is baked into the
-    feature snapshot. Comparing a derived-band draft against those bands verbatim
-    would refuse every expansion of every automatic-mode policy, and the child
-    would re-derive its own -- producing a snapshot the parent's locators were
-    never stratified under.
-    """
+    """A plan embeds its resolved bands, since era is baked into the snapshot."""
     parent_dir, parent_meta = _publish_parent(
         catalog_snapshot, catalog_artifacts_root, era_bands=[], base_content_units=2
     )

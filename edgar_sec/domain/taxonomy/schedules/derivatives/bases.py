@@ -2,7 +2,6 @@
 
 from __future__ import annotations
 
-# Core 1-word unambiguous bases
 CORE_UNAMBIGUOUS_BASES: tuple[str, ...] = (
     "swap",
     "swaption",
@@ -11,7 +10,6 @@ CORE_UNAMBIGUOUS_BASES: tuple[str, ...] = (
     "straddle",
 )
 
-# Unambiguous 2-word multi-asset compound bases
 COMPOUND_UNAMBIGUOUS_BASES: tuple[str, ...] = (
     "basis swap",
     "total return swap",
@@ -30,7 +28,6 @@ UNIVERSAL_UNAMBIGUOUS_BASES: tuple[str, ...] = (
     *COMPOUND_UNAMBIGUOUS_BASES,
 )
 
-# True Universal Context-Bound Bases (polysemous bare unigrams requiring underlying or suffix)
 UNIVERSAL_CONTEXT_BOUND_BASES: tuple[str, ...] = (
     "forward",
     "option",
@@ -44,7 +41,6 @@ UNIVERSAL_BASES: tuple[str, ...] = (
 )
 
 
-# Unambiguous derivative & hedging suffixes (inherently financial derivative terms)
 UNAMBIGUOUS_DERIVATIVE_SUFFIXES: tuple[str, ...] = (
     "derivative instrument",
     "derivative contract",
@@ -57,7 +53,6 @@ UNAMBIGUOUS_DERIVATIVE_SUFFIXES: tuple[str, ...] = (
     "hedging position",
 )
 
-# Ambiguous contract suffixes (generic legal terms; safe only when modifying a derivative base)
 AMBIGUOUS_CONTRACT_SUFFIXES: tuple[str, ...] = (
     "contract",
     "agreement",
@@ -66,13 +61,11 @@ AMBIGUOUS_CONTRACT_SUFFIXES: tuple[str, ...] = (
     "position",
 )
 
-# Balance sheet / financial statement qualifiers
 BALANCE_SHEET_QUALIFIERS: tuple[str, ...] = (
     "asset",
     "liability",
 )
 
-# Canonical combined contract suffixes
 CONTRACT_SUFFIXES: tuple[str, ...] = (
     *AMBIGUOUS_CONTRACT_SUFFIXES,
     *UNAMBIGUOUS_DERIVATIVE_SUFFIXES,

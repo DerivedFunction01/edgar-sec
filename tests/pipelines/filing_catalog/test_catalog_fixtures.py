@@ -1,10 +1,5 @@
-"""Fixture-contract tests for the committed filing-catalog oracle suite.
-
-These tests assert that each required edge case is present in the inputs, so
-fixture regeneration cannot silently weaken the oracle.
-
-Expected CSVs come from an independent Python transcription of the catalog
-rules; the implementation under test uses DuckDB SQL.
+"""Fixture-contract tests: every required edge case must be present in the inputs,
+so regeneration cannot weaken the oracle the DuckDB SQL is checked against.
 """
 
 from __future__ import annotations
@@ -50,7 +45,7 @@ def test_sample_input_matches_phase1_schema(sample_table: Any) -> None:
 
 
 def test_sample_input_carries_a_duplicate_cik_for_dedup(sample_table: Any) -> None:
-    """Edge 7: a CIK must appear twice so the dedup window has work to do."""
+    """A CIK must appear twice so the dedup window has work to do."""
     counts: dict[str, int] = defaultdict(int)
     for cik in sample_table.column("cik").to_pylist():
         counts[cik] += 1
@@ -58,7 +53,7 @@ def test_sample_input_carries_a_duplicate_cik_for_dedup(sample_table: Any) -> No
 
 
 def test_sample_input_covers_every_status(sample_table: Any) -> None:
-    """Edge 5: failed and partial must both survive normalization."""
+    """Failed and partial must both survive normalization."""
     statuses = set(sample_table.column("status").to_pylist())
     assert {"ok", "partial", "failed"} <= statuses
 
@@ -83,16 +78,10 @@ def test_edge_case_1_locator_fan_out(targets: list[dict[str, str]]) -> None:
 
 
 def test_edge_case_2_amendment_forms(targets: list[dict[str, str]]) -> None:
-    """Amendment variants stay distinct forms in the oracle fixture.
-
-    The fixture must keep carrying ``10-K/A`` and ``8-K/A`` so the
-    derived expectations cover amendment variants; a form filter that
-    names ``10-K`` must not be assumed to reach them.
-    """
+    """A form filter naming ``10-K`` must not be assumed to reach its variants."""
     forms = {row["form"] for row in targets}
     assert {"10-K/A", "8-K/A"} <= forms
     assert "10-K" in forms
-    # Neither ends in "/A" or "_A", so neither is an amendment variant.
     assert "10-KT" in forms
     assert "10-KSB" in forms
 
@@ -151,7 +140,7 @@ def test_edge_case_7_profile_dedup(profiles: list[dict[str, str]]) -> None:
 def test_expected_ids_are_independently_reproducible(
     targets: list[dict[str, str]],
 ) -> None:
-    """Recompute every identity from the section 3.3 rules in plain Python."""
+    """Every identity, recomputed in plain Python from the derivation rules."""
     for row in targets:
         expected_occurrence = hashlib.sha256(
             f"{row['source_cik']}:{row['accession']}:{row['document_path']}".encode()
@@ -189,20 +178,14 @@ def test_fixture_directory_is_populated() -> None:
 
 
 def test_archive_urls_use_unpadded_cik(targets: list[dict[str, str]]) -> None:
-    """The archive path drops CIK zero padding, per the section 3.3 rule."""
+    """The archive path drops CIK zero padding."""
     for row in targets:
         assert f"/{row['source_cik'].lstrip('0')}/" in row["archive_url"]
         assert f"/{row['source_cik']}/" not in row["archive_url"]
 
 
 def test_degenerate_cik_unpadding_is_documented_as_divergent() -> None:
-    """Guard the caveat in section 3.3: ltrim and int() disagree on all zeros.
-
-    ``ltrim('0000', '0')`` yields an empty segment while ``int('0000')`` yields
-    ``'0'``. The SQL fallback uses the former and the Phase 1 engine uses the
-    latter. This test pins the divergence so that narrowing the fixture CIK
-    space can never hide it.
-    """
+    """ltrim and int() disagree on all zeros, so the divergence stays pinned."""
     assert "0000".lstrip("0") == ""
     assert str(int("0000")) == "0"
     assert "0000".lstrip("0") != str(int("0000"))

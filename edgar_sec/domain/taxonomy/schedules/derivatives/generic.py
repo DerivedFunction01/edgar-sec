@@ -11,15 +11,12 @@ from edgar_sec.foundation.text.compounds import (
     expand_variants,
 )
 
-# Cross-Asset / Multi-Category Structures derived from universal unambiguous bases
 CROSS_ASSET_STRUCTURES: tuple[str, ...] = expand_variants(UNIVERSAL_UNAMBIGUOUS_BASES)
 
-# Standalone unambiguous derivative suffixes (e.g. 'derivative asset', 'hedging instrument')
 STANDALONE_DERIVATIVE_SUFFIXES: tuple[str, ...] = expand_variants(
     UNAMBIGUOUS_DERIVATIVE_SUFFIXES
 )
 
-# Standard heading phrases for dedicated derivative disclosures
 DERIVATIVE_HEADING_TERMS: tuple[str, ...] = (
     "derivatives and hedging activities",
     "derivative instruments and hedging activities",
@@ -35,7 +32,6 @@ DERIVATIVE_HEADING_TERMS: tuple[str, ...] = (
     "derivative contracts",
 )
 
-# ASC 815 Hedge Designation Tiers
 HEDGE_DESIGNATION_TERMS: tuple[str, ...] = (
     "derivatives designated as hedging instruments",
     "derivatives not designated as hedging instruments",
@@ -54,7 +50,6 @@ HEDGE_DESIGNATION_TERMS: tuple[str, ...] = (
     "fair value hedging relationships",
 )
 
-# Balance sheet location & notional amount disclosure rows/headers
 DERIVATIVE_BALANCE_SHEET_NOTIONAL_TERMS: tuple[str, ...] = expand_alternations(
     expand_variants(
         (
@@ -85,7 +80,6 @@ DERIVATIVE_BALANCE_SHEET_NOTIONAL_TERMS: tuple[str, ...] = expand_alternations(
     ),
 )
 
-# Income and OCI gain/loss presentation rows/headers (ASC 815-10-50)
 DERIVATIVE_GAIN_LOSS_TERMS: tuple[str, ...] = (
     "gain (loss) recognized in oci on derivatives",
     "gain or loss recognized in oci on derivatives",
@@ -113,15 +107,12 @@ GENERIC_DERIVATIVE_TERMS: tuple[str, ...] = expand_alternations(
     ASC_815_MASTER_DISCLOSURES,
 )
 
-# Cross-Asset & Non-Financial Noise Guards owned by Generic module
 GENERIC_NON_FINANCIAL_PHRASES: tuple[str, ...] = expand_variants(
     (
-        # IP & Software
         "derivative work",
         "open source",
         "general public license",
         "creative commons",
-        # Bio / Chemical
         "cellulose derivative",
         "chemical derivative",
         "polymer derivative",
@@ -129,14 +120,12 @@ GENERIC_NON_FINANCIAL_PHRASES: tuple[str, ...] = expand_variants(
         "derivative compound",
         "plasma derivative",
         "blood derivative",
-        # Corporate restructuring swaps
         "debt-for-equity swap",
         "land swap",
         "property swap",
         "asset swap",
         "real estate swap",
         "spectrum swap",
-        # Physical non-financial instruments
         "surgical instrument",
         "medical instrument",
         "dental instrument",

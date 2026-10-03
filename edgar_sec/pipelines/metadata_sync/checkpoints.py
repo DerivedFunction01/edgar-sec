@@ -1,13 +1,7 @@
 """Chunk checkpoint discovery and validation.
-
-A chunk checkpoint is considered complete only when it exists, matches the
-canonical schema, holds exactly the CIKs its plan range covers, and carries the
-plan's input fingerprint. Anything else is treated as absent so the chunk is
-refetched rather than merged into a snapshot.
-
-Expected CIKs are derived from the plan's roster range rather than read out of a
-plan document, so the same check applies to a chunk that arrived from another
-machine under a copied bundle.
+Complete means: exists, canonical schema, exactly the CIKs its plan range covers,
+carrying the input fingerprint. Anything else counts as absent, so the chunk is
+refetched rather than merged.
 """
 
 from __future__ import annotations

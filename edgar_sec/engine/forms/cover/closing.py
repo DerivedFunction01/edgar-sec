@@ -1,15 +1,6 @@
-"""Conservative closing-region detection: signature blocks and exhibit indexes.
-
-The closing region is the tail of a filing after substantive body content:
-signature pages, consent/parent-guardian certifications, and exhibit indexes.
-Detection is deliberately conservative — a missed closing region leaves
-ordinary body prose untouched, while a false closing start can suppress body
-normalization. All signals therefore require exact, standalone structural
-lines and the detector never reports a span inside a TOC or before the body.
-
-This module is form-neutral. Form-specific item taxonomies (for example the
-8-K ``ITEM 9.01`` exhibit list) stay with the owning form; this detector only
-recognizes representation-level closing signals shared by all filings.
+"""Conservative closing-region detection: signature blocks and exhibit indexes. A
+missed region leaves body prose untouched; a false one can suppress body
+normalization. Every signal needs an exact standalone structural line.
 """
 
 from __future__ import annotations
@@ -64,15 +55,8 @@ def find_closing_span(
     *,
     search_from: int = 0,
 ) -> ClosingSpan | None:
-    """Locate the first reliable closing-region line at or after ``search_from``.
-
-    Returns ``None`` when no exact signature or exhibit-index signal exists;
-    callers must treat an absent result as "no closing region detected" and
-    leave the trailing content as ordinary body text.
-
-    ``search_from`` should be the first line after validated body content
-    (for example ``body_start.first_unit_line``); the detector never scans
-    before it, so TOC rows and cover signature labels are out of scope.
+    """The first closing-region line at or after `search_from`, which must be past the
+    validated body start. None means no closing region; leave the tail as body text.
     """
     if not text:
         return None
@@ -86,9 +70,8 @@ def find_closing_span(
             continue
         if is_toc_row(line):
             continue
-        # Any dot-leader row with a trailing page suffix is TOC layout,
-        # including dotted ``SIGNATURES ... 60`` rows that lack a Part/Item
-        # reference and therefore escape ``is_toc_row``.
+        # Any dot-leader row with a page suffix is TOC layout, including dotted
+        # "SIGNATURES ... 60" rows that carry no Part/Item reference.
         if RE_TOC_LEADER.search(stripped) and RE_PAGE_SUFFIX.search(stripped):
             continue
 

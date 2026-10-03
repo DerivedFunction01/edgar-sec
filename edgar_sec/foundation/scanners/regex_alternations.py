@@ -1,10 +1,8 @@
 """Scanner banning hand-crafted multi-branch regex alternations.
 
-`foundation.regex.builder` exists to guarantee that alternation branches are
-ordered longest-first and that lookarounds are anchored safely. Both guarantees
-are lost the moment someone writes ``(?:alpha|beta|gamma)`` by hand, and nothing
-in the language stops it. This scanner is what keeps the DSL important rather
-than decorative.
+``foundation.regex.builder`` guarantees longest-first branch ordering and safe lookaround
+anchoring; both are lost once ``(?:alpha|beta|gamma)`` is written by hand. Two-branch groups
+carry no ordering hazard and are deliberately not this scanner's business.
 """
 
 from __future__ import annotations
@@ -16,8 +14,7 @@ from edgar_sec.foundation.regex.builder import build_alternation, build_compound
 from .base import Scanner, ScannerFinding
 from .lines import finding, scan_text_rule
 
-# A non-capturing group with three or more branches. Two-branch groups such as
-# (?:yes|no) carry no ordering hazard, so they are not this scanner's business.
+# A non-capturing group with three or more branches; two-branch groups are excluded.
 _GROUP_CORE = r"""[^()|'"]+(?:\|[^()|'"]+){2,}"""
 _GROUP_ALTERNATION = build_compound(
     prefix=r"\(\?:\s*",

@@ -1,8 +1,7 @@
 """Typed evidence packs, profile models, and stage records for form families.
 
-Defines pure data contracts consumed by form plugins and engine boundary detection.
-``StageRecord`` joins them: it is the value the normalization chain writes at every
-stage, so the engine produces it and pipelines serialize it.
+Pure data contracts for form plugins and engine boundary detection. ``StageRecord`` joins
+them: the value the normalization chain writes at every stage.
 """
 
 from __future__ import annotations
@@ -51,12 +50,8 @@ class BodyEvidencePack:
 def _line_count(text: str) -> int:
     """Count ``\\n``-delimited lines without materializing a line list.
 
-    Equivalent to ``len(text.splitlines())`` for text whose only separator is
-    ``\\n`` and which carries no trailing newline, which is the shape the
-    whitespace passes produce. Other Unicode separators are deliberately not
-    counted: a form feed survives HTML projection, and this count is the one
-    written into a stage record, so counting it here and not there would make
-    two stages of the same document disagree about their own shape.
+    Only ``\\n`` is counted, so a form feed surviving HTML projection cannot make two stages
+    of one document disagree about its own shape.
     """
     if not text:
         return 0
@@ -67,12 +62,8 @@ def _line_count(text: str) -> int:
 class StageRecord:
     """One normalization stage's identity, proved by the text it emitted.
 
-    A stage *name* cannot localize a divergence: two implementations can both
-    report ``reflow`` and differ in the line the stage produced. The digest is
-    therefore computed over the stage's own output, so the first record whose
-    ``text_identity`` differs is the first stage that behaved differently. The
-    counts are the cheap visual check that a divergence is a truncation or a
-    reflow rather than a reordering.
+    A stage *name* cannot localize a divergence -- two implementations can both report
+    ``reflow`` and differ in the line produced -- so the digest is over the output.
     """
 
     stage: str
@@ -116,10 +107,8 @@ def derive_lexical_pack(
 ) -> LexicalEvidencePack:
     """Derive a generic lexical pack from body vocabulary fields.
 
-    Multi-word n-grams become the phrase tier (value 3, one distinct hit);
-    single-word n-grams and body terms become the strong unigram tier
-    (value 2, two distinct hits); verbs become the weak unigram tier
-    (value 1, two distinct hits). Cover terms become exclusions.
+    Multi-word n-grams become the phrase tier; single-word n-grams and body terms the
+    strong unigram tier; verbs the weak tier. Cover terms become exclusions.
     """
     phrases = tuple(
         dict.fromkeys(term for term in body_ngrams if len(term.split()) > 1)

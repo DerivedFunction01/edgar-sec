@@ -1,12 +1,8 @@
 """Scanner routing JSON I/O through the shared serialization primitives.
 
-Two things go wrong with hand-rolled JSON. A module that defines its own
-``canonical_json`` produces a second, subtly different serialisation, so hashes
-computed for identity stop agreeing. A module that writes with
-``json.dump(fh)`` or ``path.write_text(json.dumps(...))`` publishes a file that
-a crash can leave truncated, because nothing went through the atomic writer.
-`foundation.serialization` and `infra.storage.atomic` already provide both
-primitives; this scanner is what stops them being bypassed.
+A private ``canonical_json`` yields a second serialisation, so identity hashes stop agreeing;
+a ``json.dump(fh)`` or ``write_text(json.dumps(...))`` can leave a truncated file. Exempt:
+the modules owning those primitives.
 """
 
 from __future__ import annotations

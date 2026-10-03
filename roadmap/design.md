@@ -55,30 +55,36 @@ from collections.abc import Iterator
 from dataclasses import dataclass
 from enum import StrEnum
 
+
 class BlockKind(StrEnum):
     """Semantic block classification for normalized documents."""
-    PARAGRAPH = "paragraph"      # Reflowed continuous prose line
-    TABLE = "table"              # HTML table tags or untagged ASCII table block
-    PRESERVED = "preserved"      # Verbatim text, signatures, preformatted lists
-    PAGE_BREAK = "page_break"    # Source or synthetic page boundary marker
+
+    PARAGRAPH = "paragraph"  # Reflowed continuous prose line
+    TABLE = "table"  # HTML table tags or untagged ASCII table block
+    PRESERVED = "preserved"  # Verbatim text, signatures, preformatted lists
+    PAGE_BREAK = "page_break"  # Source or synthetic page boundary marker
+
 
 @dataclass(frozen=True, slots=True)
 class DocumentBlock:
     """One immutable contiguous block of text within a normalized document."""
-    block_index: int             # 0-indexed position in document stream
+
+    block_index: int  # 0-indexed position in document stream
     kind: BlockKind
-    text: str                    # Unwrapped prose or preserved table text
-    raw_lines: tuple[str, ...]   # Original lines prior to unwrapping
-    char_start: int              # Byte/character offset start in normalized text
-    char_end: int                # Byte/character offset end in normalized text
+    text: str  # Unwrapped prose or preserved table text
+    raw_lines: tuple[str, ...]  # Original lines prior to unwrapping
+    char_start: int  # Byte/character offset start in normalized text
+    char_end: int  # Byte/character offset end in normalized text
 
     @property
     def is_table(self) -> bool:
         return self.kind == BlockKind.TABLE
 
+
 @dataclass(frozen=True, slots=True)
 class BlockStream:
     """An ordered, immutable sequence of DocumentBlocks representing an entire document."""
+
     blocks: tuple[DocumentBlock, ...]
 
     def __len__(self) -> int:
@@ -110,25 +116,28 @@ from edgar_sec.domain.document.models import DocumentLocator
 from edgar_sec.domain.document.blocks import BlockStream
 from edgar_sec.domain.forms.common.decisions import EvaluatorDecision
 
+
 @dataclass(frozen=True, slots=True)
 class FilingAttachment:
     """Secondary exhibit or attachment belonging to an SEC filing submission.
-    
+
     Inspired by edgartools's Attachment model: provides metadata upfront
     with lazy acquisition of content on demand.
     """
-    sequence_number: str                # Filing sequence order ("1", "2", ...)
-    filename: str                       # e.g. "ex-21.htm", "d123456dex101.htm"
-    description: str                    # Filer description or standard lookup
-    document_type: str                  # e.g. "EX-13", "EX-21", "EX-10.1", "10-K"
-    url: str                            # HTTPS SEC archive URL
+
+    sequence_number: str  # Filing sequence order ("1", "2", ...)
+    filename: str  # e.g. "ex-21.htm", "d123456dex101.htm"
+    description: str  # Filer description or standard lookup
+    document_type: str  # e.g. "EX-13", "EX-21", "EX-10.1", "10-K"
+    url: str  # HTTPS SEC archive URL
     size: Optional[int] = None
-    content: Optional[str] = None       # Populated lazily if refetched
+    content: Optional[str] = None  # Populated lazily if refetched
+
 
 @dataclass(slots=True)
 class FilingAggregate:
     """Universal aggregate root representing one SEC filing submission.
-    
+
     Adheres to the sparse acquisition contract:
     - Primary accession document is acquired by default (~2MB).
     - Secondary exhibits remain empty unless an evaluator triggers delegation.
@@ -136,32 +145,37 @@ class FilingAggregate:
     - xbrl slot remains None unless hydrated via downstream fact marts.
     - SOLE OWNER of filing-level attachments, bundles, and optional XBRL data.
     """
+
     accession: AccessionNumber
     source_cik: Cik
     form: str
     filing_date: str
-    
+
     primary_locator: DocumentLocator
     primary_document_locator_key: str
-    
+
     # Primary payload & normalization
     primary_payload: Optional[bytes] = None
     primary_representation: str = "raw"
     primary_document: Optional[BlockStream] = None
     primary_word_count: int = 0
-    
+
     # Secondary exhibits & attachments (sparse)
     attachments: dict[str, FilingAttachment] = field(default_factory=dict)
     decision: Optional[EvaluatorDecision] = None
-    
+
     # Archival bundle & extension slots (owned at filing level)
     raw_bundle: Optional[bytes] = None  # Populated only on bundle refetch
-    xbrl: Optional[Any] = None          # Unpopulated XBRLData extension slot (0 bytes overhead)
+    xbrl: Optional[Any] = None  # Unpopulated XBRLData extension slot (0 bytes overhead)
 
     @property
     def exhibits(self) -> dict[str, FilingAttachment]:
         """Exhibits subset of attachments (document_type starts with 'EX-')."""
-        return {k: v for k, v in self.attachments.items() if v.document_type.upper().startswith("EX-")}
+        return {
+            k: v
+            for k, v in self.attachments.items()
+            if v.document_type.upper().startswith("EX-")
+        }
 
     @property
     def is_normalized(self) -> bool:
@@ -179,6 +193,7 @@ class FilingAggregate:
     def as_report(self) -> "FormReport":
         """Polymorphic projection into specialized form report model (inspired by edgartools filing.obj())."""
         from edgar_sec.domain.forms.reports import get_report_projection
+
         return get_report_projection(self)
 ```
 
@@ -202,9 +217,11 @@ from datetime import date
 from edgar_sec.domain.document.aggregate import FilingAggregate, FilingAttachment
 from edgar_sec.domain.document.blocks import BlockStream, DocumentBlock, BlockKind
 
+
 @dataclass
 class FormReport(ABC):
     """Abstract base class for all form-family projections."""
+
     filing: FilingAggregate
 
     @property
@@ -217,35 +234,50 @@ class FormReport(ABC):
         """Delegates exhibits access to the filing aggregate root."""
         return self.filing.exhibits
 
+
 @dataclass
 class CompanyReport(FormReport):
     """Base projection for corporate periodic and current reports (10-K, 10-Q, 8-K)."""
-    sections: Optional[dict[str, tuple[int, int]]] = None       # Item code -> (start_block, end_block)
+
+    sections: Optional[dict[str, tuple[int, int]]] = (
+        None  # Item code -> (start_block, end_block)
+    )
 
     def item(self, item_code: str) -> str:
         """Materialize plain-text for a specific Item via block slice."""
         if not self.sections or item_code not in self.sections:
-            raise KeyError(f"Item '{item_code}' not present in filing {self.filing.accession}")
+            raise KeyError(
+                f"Item '{item_code}' not present in filing {self.filing.accession}"
+            )
         start, end = self.sections[item_code]
         if not self.filing.primary_document:
             return ""
         blocks = self.filing.primary_document.blocks[start : end + 1]
         return "\n\n".join(b.text for b in blocks if b.text)
 
+
 @dataclass
 class AnnualReport(CompanyReport):
     """Specialized projection for 10-K, 10-KSB, 20-F annual filings (Items 1–16)."""
-    disclosures: Optional[dict[str, Any]] = None                # Thematic section cartography (e.g. Risk spans)
+
+    disclosures: Optional[dict[str, Any]] = (
+        None  # Thematic section cartography (e.g. Risk spans)
+    )
+
 
 @dataclass
 class QuarterlyReport(CompanyReport):
     """Specialized projection for 10-Q quarterly filings (Part I Financial Info & Part II Other Info)."""
+
     pass  # Follows CompanyReport item mechanics; detailed modeling deferred
+
 
 @dataclass
 class CurrentReport(CompanyReport):
     """Specialized projection for 8-K event filings (Numbered event items 1.01, 2.01, etc.)."""
+
     pass  # Follows CompanyReport item mechanics; detailed modeling deferred
+
 
 @dataclass
 class ReportingOwner:
@@ -255,12 +287,15 @@ class ReportingOwner:
     is_officer: bool
     officer_title: Optional[str]
 
+
 @dataclass
 class InsiderOwnershipReport(FormReport):
     """Specialized projection for Form 3, 4, 5 insider equity ownership (XML/DOM)."""
+
     reporting_owners: list[ReportingOwner]
     non_derivative_transactions: list[dict[str, Any]]
     derivative_transactions: list[dict[str, Any]]
+
 
 @dataclass
 class HoldingPosition:
@@ -270,9 +305,11 @@ class HoldingPosition:
     value: Decimal
     shares_or_principal: int
 
+
 @dataclass
 class InstitutionalHoldingsReport(FormReport):
     """Specialized projection for Form 13F institutional manager holdings (XML table)."""
+
     holdings: list[HoldingPosition]
 ```
 
@@ -299,7 +336,8 @@ In modern filings (post-2011), the SEC provides 6 XML linkbases per submission (
 @dataclass(frozen=True, slots=True)
 class XBRLFact:
     """Atomic numeric or narrative XBRL measurement."""
-    concept: str                          # e.g. "us-gaap:Revenues"
+
+    concept: str  # e.g. "us-gaap:Revenues"
     value: Decimal | str
     period_start: Optional[date]
     period_end: date
@@ -307,16 +345,20 @@ class XBRLFact:
     decimals: Optional[int]
     dimensions: dict[str, str] = field(default_factory=dict)
 
+
 @dataclass(slots=True)
 class XBRLStatement:
     """Logical financial statement classified by standard accounting role."""
-    statement_type: str                   # BalanceSheet, IncomeStatement, CashFlow
+
+    statement_type: str  # BalanceSheet, IncomeStatement, CashFlow
     role_name: str
     facts: list[XBRLFact]
+
 
 @dataclass(slots=True)
 class XBRLData:
     """Encapsulates parsed XBRL facts and statement hierarchies."""
+
     statements: dict[str, XBRLStatement]
     all_facts: list[XBRLFact]
 ```
@@ -372,19 +414,24 @@ from enum import StrEnum
 from dataclasses import dataclass
 from typing import Optional, Callable
 
+
 class DecisionAction(StrEnum):
-    PROCEED = "proceed"                    # Primary document satisfies form requirements
-    REFETCH_SUB_DOC = "refetch_sub_doc"    # Need targeted exhibit (e.g. EX-13 incorporation stub)
-    SKIP_HARD_STUB = "skip_hard_stub"      # Corrupted, truncated, or unparseable stub
+    PROCEED = "proceed"  # Primary document satisfies form requirements
+    REFETCH_SUB_DOC = (
+        "refetch_sub_doc"  # Need targeted exhibit (e.g. EX-13 incorporation stub)
+    )
+    SKIP_HARD_STUB = "skip_hard_stub"  # Corrupted, truncated, or unparseable stub
+
 
 @dataclass(frozen=True, slots=True)
 class EvaluatorDecision:
     action: DecisionAction
-    target_exhibit: Optional[str] = None   # e.g. "ex13.htm" or "EX-13"
+    target_exhibit: Optional[str] = None  # e.g. "ex13.htm" or "EX-13"
     reason: Optional[str] = None
     is_stub: bool = False
     category: str = "standard"
     confidence: float = 1.0
+
 
 # Evaluator SPI is a pure text-to-decision callable:
 Evaluator = Callable[[str], EvaluatorDecision]
@@ -395,6 +442,7 @@ Because documents in `edgar_sec` are content-addressed by `document_locator_key 
 
 ```python
 from edgar_sec.domain.forms.common.decisions import DecisionAction, EvaluatorDecision
+
 
 def custom_exhibit_evaluator(text: str) -> EvaluatorDecision:
     """Example evaluator checking for specific statutory delegation triggers."""

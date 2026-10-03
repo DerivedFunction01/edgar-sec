@@ -50,12 +50,7 @@ def test_chunk_ids_are_contiguous_and_ascending() -> None:
 
 
 def test_plan_manifest_does_not_grow_with_the_cohort() -> None:
-    """The whole point: the document is constant in cohort size.
-
-    The previous format stored the CIK list three times, so a 250,000-CIK cohort
-    produced a 15 MB plan. The manifest now records the roster identity and the
-    chunk layout, and the cohort itself lives beside it.
-    """
+    """The document records roster identity and chunk layout, not the cohort."""
     small = json.dumps(_plan(chunk_size=2).to_manifest(), indent=2)
     large = build_plan(
         roster_of(tuple(f"{value:010d}" for value in range(1, 250_001))),
@@ -76,12 +71,7 @@ def test_plan_id_changes_with_chunking() -> None:
 
 
 def test_plan_id_ignores_assignment() -> None:
-    """Reassigning workers must not move the plan directory.
-
-    Assignment is a separate artifact with its own identity, so changing the worker
-    configuration cannot discard every completed checkpoint for an identical
-    cohort.
-    """
+    """Assignment has its own identity, so reassignment cannot discard checkpoints."""
     assert derive_plan_id_direct(roster_of(("0000001985",)).roster_id, 1000) == (
         derive_plan_id_direct(roster_of(("0000001985",)).roster_id, 1000)
     )
@@ -110,12 +100,7 @@ def test_delta_and_full_plans_over_one_cohort_are_distinct() -> None:
 
 
 def test_limit_binds_identity_before_the_plan_is_built(tmp_path: Path) -> None:
-    """A bounded plan and a full plan over one file must not collide.
-
-    The limit is applied while the cohort is compiled, before identity is derived,
-    which is what keeps `--limit 500` and a full run off one plan directory and one
-    checkpoint namespace.
-    """
+    """The limit binds while the cohort compiles, before identity is derived."""
     full = build_plan(
         compiled_cohort("cik_sec_mini.csv", tmp_path).roster, chunk_size=2
     )

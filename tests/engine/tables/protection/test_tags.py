@@ -1,8 +1,6 @@
-"""Contract tests for exact tagged-table protection.
-
-These cover the round-trip guarantees the module actually publishes:
-byte-identical restoration, loud failure on a lost sentinel, and offset
-stability for `ProtectedText`.
+"""Exact tagged-table protection.
+Covers the published round-trip guarantees: byte-identical restoration, loud
+failure on a lost sentinel, offset stability for `ProtectedText`.
 """
 
 from __future__ import annotations

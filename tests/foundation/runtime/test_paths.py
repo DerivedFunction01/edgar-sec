@@ -42,11 +42,8 @@ def test_explicit_artifacts_root_overrides_repo_root(
 def test_running_from_inside_the_package_is_rejected(
     monkeypatch: pytest.MonkeyPatch,
 ) -> None:
-    """The CWD is the project root, so running from the package forks the tree.
-
-    Without this, `cd edgar_sec && python ../run.py filing-catalog status`
-    reports an empty catalog from a parallel `edgar_sec/.artifacts/` instead of
-    failing, and a full-corpus run would publish real work nobody reads.
+    """The CWD is the project root, so running from the package forks the tree into
+    a parallel ``edgar_sec/.artifacts/`` that reports an empty catalog.
     """
 
     monkeypatch.chdir(PACKAGE_ROOT)
@@ -150,13 +147,8 @@ def test_broker_socket_under_runtime_root(paths: ProjectPaths) -> None:
 def test_project_paths_offers_no_second_cache_root(
     monkeypatch: pytest.MonkeyPatch,
 ) -> None:
-    """Exactly one authority may answer "where is the cache?".
-
-    `ProjectPaths` once carried its own cache root, under a different
-    environment variable and defaulting to a different directory than the
-    registered `cache.root` spec. Nothing read it, so a caller that reached for
-    the wrong one would open an empty store beside the populated one and
-    silently forfeit every cached response. The spec is the only answer.
+    """Exactly one authority may answer "where is the cache?": a second root opens an
+    empty store beside the populated one.
     """
     monkeypatch.setenv("EDGAR_CACHE_DIR", str(Path("/tmp/should-be-ignored")))
     paths = resolve_paths(repo_root=Path.cwd())
@@ -178,16 +170,8 @@ def test_the_cache_root_has_exactly_one_source(monkeypatch: pytest.MonkeyPatch) 
 def test_the_registry_and_the_resolver_agree_on_the_artifacts_root(
     tmp_path: Path, monkeypatch: pytest.MonkeyPatch
 ) -> None:
-    """One question, one answer.
-
-    The registry advertises ``ARTIFACTS_ROOT`` and the resolver reads it through
-    the registry, so setting the documented variable moves both. The failure this
-    guards against is a documented variable that the path builder ignores, which
-    would leave the operator with a silent no-op.
-
-    "Agree" means the resolver produces exactly the registered value, anchored to
-    the project root when the registered value is relative and taken as given
-    when it is absolute.
+    """A documented variable the path builder ignores would be a silent no-op;
+    a registered relative value anchors to the project root, absolute is as given.
     """
     from edgar_sec.foundation.runtime.settings import resolve_settings
 

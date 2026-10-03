@@ -1,15 +1,7 @@
 """AST Scanner enforcing acyclic downward-only layer dependencies.
 
-The layer table is the whole rule. ``_check_import`` compares ranks and nothing
-else, so a new layer costs one entry here plus a documented clause in
-AGENTS.md -- no new scanner and no new clause in this module.
-
-Adding a layer is not free of consequences, and the one that matters is
-asymmetry: the new layer may import everything below it, but nothing below may
-import it. ``apps`` (rank 5) buys exactly that clause -- a batch pipeline cannot
-depend on an operator-facing application. It does **not** buy apps any
-restriction the rank below did not already have, so it is an organizational
-boundary first and a safety boundary second.
+The layer table is the whole rule, so adding a layer costs one entry here. A rank buys
+asymmetry: the layer may import anything below it, nothing below may import it.
 """
 
 from __future__ import annotations
@@ -84,21 +76,15 @@ def _resolve_relative(
 ) -> str | None:
     """Resolve an ``ImportFrom`` to a dotted path, relative or absolute.
 
-    ``from ..infra.storage import duckdb`` inside a Layer 0 module is exactly as
-    much an upward import as the absolute spelling, and the absolute form was
-    the only one this scanner caught. Relative imports carry no package prefix,
-    so the target has to be reconstructed from the importing file's own depth:
-    one leading dot means the current package, and each additional dot climbs
-    one parent directory.
+    A relative import carries no package prefix, so the target is rebuilt from the
+    importing file's own depth; the walk is bounded so it cannot climb past the root.
     """
     if node.level == 0:
         return node.module
 
     parts = path_str.split("/")
-    # The last element is the file itself; everything before it is the package
-    # path, and the first element is the ``edgar_sec`` prefix that
-    # ``_check_import`` matches on. Climbing past the package root must never
-    # happen, so the walk is bounded by the file's depth inside the package.
+    # The last element is the file itself; the first is the ``edgar_sec`` prefix
+    # ``_check_import`` matches on.
     package_parts = parts[:-1]
     climb = node.level - 1
     if climb > len(package_parts) - 1:

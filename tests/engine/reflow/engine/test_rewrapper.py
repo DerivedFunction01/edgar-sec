@@ -1,8 +1,6 @@
 """The reflow stage: segmentation, decisions, boundary resolution, rendering.
-
-This module is the executable record of what the stage is allowed to do to a
-filing. The filing-sized documents live in `conftest.py` per `AGENTS.md` §6.3;
-each test below states the one property it holds one of them to.
+Filing-sized documents live in `conftest.py`; each test states the one property
+it holds one of them to.
 """
 
 from __future__ import annotations

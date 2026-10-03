@@ -21,50 +21,26 @@ class DocumentKind(StrEnum):
 def canonical_accession_part(accession: str) -> str:
     """Return the hyphen-free accession used inside every content-addressed digest.
 
-    The catalog materialises ``accession`` as ``replace(accession_number, '-', '')``
-    and hashes that unhyphenated column. A caller holding the hyphenated EDGAR
-    spelling (``0000320193-23-000106``) must therefore be reduced to the same string
-    before hashing, or its key silently matches nothing on disk.
-
-    Unparseable input is returned with hyphens merely stripped rather than
-    rejected: this is a digest input, not a validation boundary, and a malformed
-    accession should still hash deterministically and fail at the point of use
-    rather than here.
+    The catalog hashes the unhyphenated column, so a hyphenated EDGAR spelling must be
+    reduced first or its key matches nothing. Unparseable input is stripped, not rejected.
     """
     return str(accession).strip().replace("-", "")
 
 
 def derive_document_locator_key(accession: str, document_path: str) -> str:
-    """Generate deterministic content-addressed key for an accession + document path pair.
+    """Derive the content-addressed key for an accession + document path pair.
 
-    Must stay byte-identical to the SQL spelling in
-    ``pipelines/filing_catalog/materialization.py``:
-    ``sha256(accession || ':' || document_path)`` over the *unhyphenated*
-    ``accession`` column. The catalog materialises locator keys inside DuckDB
-    while this module derives them in Python, and a locator join between the two
-    worlds is how a published snapshot is read back. Both spellings of an accession
-    are reduced by :func:`canonical_accession_part` first, because
-    EDGAR serves the hyphenated and unhyphenated forms interchangeably and the
-    two must not produce two identities for one document.
-    ``tests/foundation/test_hashing.py`` pins the byte equality.
+    Must stay byte-identical to the DuckDB spelling in
+    ``pipelines.filing_catalog.materialization``, which computes keys in SQL.
     """
     return sha256_text(f"{canonical_accession_part(accession)}:{document_path.strip()}")
 
 
 def derive_occurrence_id(source_cik: str, accession: str, document_path: str) -> str:
-    """Generate deterministic occurrence identifier linking a CIK to a document.
+    """Derive the occurrence id linking a CIK to a document.
 
-    Must stay byte-identical to the SQL spelling in
-    ``pipelines/filing_catalog/materialization.py``:
-    ``sha256(source_cik || ':' || accession || ':' || document_path)`` over the
-    *unhyphenated* ``accession`` column, so the accession part is reduced by
-    :func:`canonical_accession_part` exactly as the locator key is.
-
-    The three **raw parts**, not a derived key: hashing the locator key
-    would be a hash of a hash, and the SQL side hashes the raw parts. A locator
-    key therefore has to stay byte-identical between the two worlds, or a
-    locator-to-occurrence join between the catalog and a snapshot matches nothing,
-    silently.
+    Hashes the three **raw parts**, never a derived key, to stay byte-identical with the
+    catalog's SQL spelling -- a divergence makes a locator-to-occurrence join match nothing.
     """
     return sha256_text(
         f"{source_cik.strip()}:{canonical_accession_part(accession)}:"
@@ -76,20 +52,8 @@ def derive_occurrence_id(source_cik: str, accession: str, document_path: str) ->
 class DocumentLocator:
     """Content-addressed reference to a filing document, plus how to acquire it.
 
-    ``document_locator_key`` is the canonical identity of the document and is
-    derived from accession plus path, never supplied independently: the payload
-    store, the fetchers, and the Parquet snapshot all key on it, so a locator
-    that disagreed with its own key would silently split one document across
-    two identities.
-
-    The acquisition fields are optional because not every caller can reach the
-    network: a replay from a fixture needs only the key.
-
-    ``accession`` accepts either EDGAR spelling and is held in the hyphenated
-    form. Catalog plans and fixture rows carry the unhyphenated
-    ``000032019323000106``, and rejecting that would make a real plan
-    unloadable, so it is normalized here rather than refused. The locator key
-    is unaffected either way because both spellings hash to one identity.
+    ``document_locator_key`` is derived, never supplied independently: everything keys
+    on it, so a disagreeing locator splits one document into two identities.
     """
 
     accession: AccessionNumber

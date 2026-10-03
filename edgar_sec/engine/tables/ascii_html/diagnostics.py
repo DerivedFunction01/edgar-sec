@@ -1,10 +1,6 @@
 """Confidence evaluation, layout diagnostics, and safety vetoes.
-
-Confidence is not a quality score for the operator; it is a statement about
-whether the resolved grid still describes the source table. A grid that is empty,
-collapses a multi-cell source into one column, or is dominated by spans is
-reported as low confidence with the specific reason, so a caller can decide
-whether to use the text at all.
+Confidence is not an operator quality score; it states whether the resolved grid still describes
+the source, and a low one carries the specific reason.
 """
 
 from __future__ import annotations
@@ -25,15 +21,11 @@ def evaluate_table_confidence(
     span_groups: list[SpanGroup],
 ) -> tuple[float, list[str]]:
     """Evaluate confidence and identify veto conditions for the resolved grid.
-
-    Returns:
-    - confidence: float between 0.0 and 1.0
-    - veto_reasons: list of specific veto explanations if confidence is low
+    Returns a confidence in ``[0, 1]`` plus the specific veto reasons when it is low.
     """
     veto_reasons: list[str] = []
     base_confidence = 1.0
 
-    # 1. Zero rows or columns
     if not resolved_grid.rows or not resolved_grid.column_widths:
         veto_reasons.append("Empty table or zero resolved columns")
         return 0.0, veto_reasons
@@ -41,21 +33,17 @@ def evaluate_table_confidence(
     num_rows = len(resolved_grid.rows)
     num_cols = len(resolved_grid.column_widths)
 
-    # 2. Check for extreme column jitter / imbalance
     if num_cols < 2 and len(source_table.rows) >= 3:
-        # Complex source table squashed into 1 column
         raw_cell_counts = [len(r) for r in source_table.rows]
         if max(raw_cell_counts, default=0) >= 3:
             veto_reasons.append("Multi-cell source table collapsed into single column")
             base_confidence -= 0.40
 
-    # 3. Check for heavy text clipping or forced wraps
     clipped_diagnostics = [d for d in resolved_grid.diagnostics if d.clipped]
     if clipped_diagnostics:
         base_confidence -= min(0.30, len(clipped_diagnostics) * 0.05)
         veto_reasons.append(f"{len(clipped_diagnostics)} cells clipped by width budget")
 
-    # 4. Check for contradictory / overlapping spans
     if len(span_groups) > (num_rows * num_cols * 0.7):
         base_confidence -= 0.20
         veto_reasons.append("Excessive span complexity across table grid")

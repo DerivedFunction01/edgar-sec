@@ -1,10 +1,4 @@
-"""Unit tests for apps.viewer.cli.
-
-The parser is the only part worth pinning, and one of its defaults is a
-security decision rather than a convenience: loopback. A default that drifted to
-0.0.0.0 would serve published filings to the network silently, so the test
-below asserts the refusal rather than the convenience.
-"""
+"""The viewer parser, whose loopback default is a security decision, not a convenience."""
 
 from __future__ import annotations
 

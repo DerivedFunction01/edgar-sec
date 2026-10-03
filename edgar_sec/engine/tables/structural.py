@@ -1,19 +1,5 @@
 """Regex-based structural detection for SEC table boundaries.
-
-Three questions about a candidate span, all answered from the block's own lines
-because a reflow has to decide about a span without asking which statement it
-belongs to:
-
-- :func:`is_header_prefix` — may the lines *above* this block be absorbed into
-  the table as its header?
-- :func:`is_structural_table_bridge` — are the lines *between* two aligned runs
-  the label of one continuing statement?
-- :func:`is_structural_table_tail` — is the line *below* the final total row
-  part of that statement?
-
-The bridge and tail predicates accept a caller-supplied predicate for labels
-this module cannot recognise on shape alone, so that statement vocabulary stays
-in the taxonomy that owns it rather than being guessed from capitalisation.
+Three span questions, answered from the block's own lines: may the lines above be absorbed as header, are the lines between two aligned runs one statement's label, is the line below the final total part of it? Bridge and tail accept a caller predicate for labels shape alone cannot settle.
 """
 
 from __future__ import annotations
@@ -183,9 +169,7 @@ def is_structural_table_bridge(
     is_bridge_line: Callable[[str], bool] | None = None,
 ) -> bool:
     """Recognize heading-shaped labels between parts of one statement.
-
-    Longer or nonstandard labels must be approved by the owning phase's explicit
-    ``is_bridge_line`` callback; short narrative sentences are not bridges.
+    Longer or nonstandard labels need the caller's explicit ``is_bridge_line`` approval.
     """
     nonblank_count = 0
     for line in lines:
@@ -216,10 +200,7 @@ def is_structural_table_tail(
     is_tail_line: Callable[[str], bool] | None = None,
 ) -> bool:
     """Recognize a final aligned total / double-underline that follows a statement body.
-
-    Accepts:
-    - Rows that contain a known total keyword AND numeric cells, or
-    - Double-underline separator rows (===  ===) adjacent to numeric rows.
+    Accepts a row with a known total keyword and numeric cells, or a double-underline separator adjacent to numeric rows.
     """
     has_separator = False
     has_multi_numeric = False

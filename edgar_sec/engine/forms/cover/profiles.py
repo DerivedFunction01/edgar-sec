@@ -1,21 +1,6 @@
-"""Compositional SEC cover capability groups and form-family profiles.
-
-Capability groups are the smallest reusable units of cover vocabulary. Profiles
-select groups rather than re-declaring field lists, so annual-only anchors
-(``documents_incorporated_reference``, public float, annual share-count
-wording, auditor disclosures) can never leak into quarterly, current-report,
-or no-cover processing.
-
-A profile is the only object the normalization stages consult. It carries the
-boundary capabilities the detector may use, the typed evidence packs the
-detector matches against, and the vocabulary each later stage is allowed to
-rewrite. A family whose profile has no boundary policy performs no cover
-processing at all.
-
-The label groups below are the vocabulary enabled for cover-candidate table
-detection. Annual and quarterly covers share the core identity and contact
-labels; annual adds no label of its own because every annual-only anchor is a
-phrase-healing rule rather than a caption.
+"""Compositional SEC cover capability groups and form-family profiles: a profile
+selects groups rather than re-declaring field lists, so annual-only anchors cannot
+leak into quarterly or current-report processing.
 """
 
 from __future__ import annotations
@@ -80,21 +65,8 @@ NO_COVER_PHRASE_RULES: tuple[PhraseSequenceRule, ...] = tuple(COMMON_PHRASE_RULE
 
 @dataclass(frozen=True, slots=True)
 class CoverProfile:
-    """Immutable, typed description of cover processing for one form family.
-
-    Attributes:
-        family: Canonical form family name used for registry lookup.
-        boundary: Boundary evidence capabilities, or ``None`` for no cover.
-        labels: Label terms used to mark cover-candidate tables.
-        evidence_terms: Additional caption terms used for candidate detection.
-        healing_rules: Phrase-healing rules enabled by this profile.
-        cover_evidence: Typed evidence pack for cover-start/end detection.
-        body_evidence: Typed evidence pack for body-anchor detection.
-        derived_taxonomy: Item/part taxonomy derived vocabulary for TOC and
-            body matching, or ``None`` when the family declares none.
-        checkbox_schema: Form-scoped checkbox constraints, or ``None`` for
-            forms without a cover checkbox schema.
-        cover_table_cleaners: Named cover-table cleaners this family enables.
+    """Immutable cover processing for one form family, and the only object the
+    normalization stages consult: boundary capabilities, packs, rewrite vocabulary.
     """
 
     family: str
@@ -137,16 +109,8 @@ def _make_profile(
 
 
 def build_annual_profile(family: str) -> CoverProfile:
-    """Build a cover profile for annual and foreign annual reports.
-
-    Annual covers are the only family allowed to end on an
-    incorporated-by-reference block, so only this profile enables that
-    boundary signal and carries the annual healing rules.
-
-    The ``AMENDMENT_TRANSITION`` signal is also enabled so that 10-K/A
-    amendments whose cover pages are not followed by a full PART I → ITEM 1
-    sequence (instead terminating into EXPLANATORY NOTE, REPORT OF INDEPENDENT
-    AUDITORS, or SIGNATURES) can still receive a valid cover boundary.
+    """Cover profile for annual reports: the only family allowed to end on an
+    incorporated-by-reference block, and the only one enabling AMENDMENT_TRANSITION.
     """
     annual = AnnualReportEvidence()
     return _make_profile(
@@ -178,9 +142,8 @@ def build_annual_profile(family: str) -> CoverProfile:
             healing_rules=annual.healing_rules,
         ),
         body_evidence=BodyEvidencePack(
-            # Expand to all canonical SEC Items so that 10-K/A amendments that
-            # start at Item 8, 10-15 (auditor reports, Part III, exhibits) are
-            # covered by the structural scanner, not just base-10K Item 1.
+            # Every canonical SEC Item, so 10-K/A amendments starting at Item 8
+            # are covered too, not just base-10K Item 1.
             structural_headings=(
                 "PART I",
                 "ITEM 1",
@@ -231,11 +194,8 @@ def build_annual_profile(family: str) -> CoverProfile:
 
 
 def build_quarterly_profile(family: str) -> CoverProfile:
-    """Build a cover profile for quarterly reports.
-
-    A quarterly cover carries no incorporated-by-reference or public-float block,
-    so it enables the shared identity and share-count vocabulary alongside
-    quarterly-specific boundary signals and interim body evidence.
+    """Cover profile for quarterly reports: no incorporated-by-reference or
+    public-float block, so only shared identity and share-count vocabulary.
     """
     quarterly = QuarterlyReportEvidence()
     return _make_profile(
@@ -278,11 +238,8 @@ def build_quarterly_profile(family: str) -> CoverProfile:
 
 
 def build_current_profile(family: str) -> CoverProfile:
-    """Build a cover profile for current reports (8-K, 6-K).
-
-    Current reports possess statutory SEC cover pages (SEC mastheads, IRS EINs,
-    commission file numbers, registrant addresses, and checkmarks) transitioning
-    directly into item events or signatures.
+    """Cover profile for current reports (8-K, 6-K): a statutory cover page
+    transitioning directly into item events or signatures.
     """
     current = CurrentReportEvidence()
     structural_headings = tuple(d.item for d in FORM_8K_ITEMS)
@@ -395,13 +352,8 @@ COVER_PROFILES: dict[str, CoverProfile] = _build_profiles()
 
 
 def get_profile(family: str | None) -> CoverProfile:
-    """Return the cover profile for a form family, falling back to generic.
-
-    The family is resolved through the canonical alias table, so an amendment
-    or submission suffix (``10-K405/A``) selects the same profile as its base
-    form. An unknown or missing family yields the no-cover generic profile
-    rather than an error, because an unrecognized form must never be given
-    cover-processing capabilities by accident.
+    """The cover profile for a form family, falling back to generic. Resolved through
+    the alias table, and an unknown family never gains cover capabilities.
     """
     if not family:
         return COVER_PROFILES["GENERIC"]

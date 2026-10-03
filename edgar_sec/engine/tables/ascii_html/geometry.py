@@ -1,9 +1,6 @@
 """Cell coordinate estimation and geometric interval math.
-
-SEC HTML declares widths far more often than it declares them consistently, so
-these boxes are estimates: a declared width wins where one exists, otherwise
-content length at an approximate 8px per character sets the column, and every
-box records a confidence reflecting which of the two produced it.
+SEC HTML declares widths far more often than consistently, so these boxes are estimates: a declared
+width wins where one exists, else content length at about 8px per character, and each box records which.
 """
 
 from __future__ import annotations
@@ -32,7 +29,6 @@ def estimate_table_geometry(
     num_rows = len(grid_matrix)
     num_cols = len(grid_matrix[0])
 
-    # 1. Estimate base column widths
     col_explicit_widths: list[float | None] = [None] * num_cols
     col_content_widths: list[float] = [0.0] * num_cols
 
@@ -42,7 +38,6 @@ def estimate_table_geometry(
             if cell is None:
                 continue
 
-            # Only 1-column cells establish direct column width constraints
             if cell.colspan == 1:
                 w = cell.style.width
                 if w is not None and not cell.style.is_percent_width:
@@ -55,7 +50,6 @@ def estimate_table_geometry(
                 total_w = text_len * 8.0 + pad + indent  # Approx 8px per char
                 col_content_widths[c_idx] = max(col_content_widths[c_idx], total_w)
 
-    # Resolve final pixel column widths
     resolved_col_widths: list[float] = []
     for c_idx in range(num_cols):
         exp = col_explicit_widths[c_idx]
@@ -65,9 +59,8 @@ def estimate_table_geometry(
         elif cont > 0:
             resolved_col_widths.append(cont)
         else:
-            resolved_col_widths.append(20.0)  # Minimum fallback column width
+            resolved_col_widths.append(20.0)
 
-    # Compute column left and right offsets
     col_lefts: list[float] = [0.0] * num_cols
     col_rights: list[float] = [0.0] * num_cols
     curr_x = 0.0
@@ -77,8 +70,7 @@ def estimate_table_geometry(
         col_rights[c_idx] = curr_x + w
         curr_x += w
 
-    # 2. Estimate row heights and tops/bottoms
-    row_heights: list[float] = [20.0] * num_rows  # Base line height
+    row_heights: list[float] = [20.0] * num_rows
     for r_idx in range(num_rows):
         max_h = 20.0
         for c_idx in range(num_cols):
@@ -100,7 +92,6 @@ def estimate_table_geometry(
         row_bottoms[r_idx] = curr_y + h
         curr_y += h
 
-    # 3. Construct CellBoxes
     box_matrix: list[list[CellBox | None]] = [
         [None] * num_cols for _ in range(num_rows)
     ]
@@ -114,7 +105,6 @@ def estimate_table_geometry(
 
             cell_id = id(cell)
             if cell_id in seen_cells:
-                # Find the existing box for this spanning cell
                 continue
             seen_cells.add(cell_id)
 
@@ -143,7 +133,6 @@ def estimate_table_geometry(
                 source_cell=cell,
             )
 
-            # Assign box across all cells it spans
             for r in range(r_idx, r_end + 1):
                 for c in range(c_idx, c_end + 1):
                     box_matrix[r][c] = box

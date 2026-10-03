@@ -1,7 +1,4 @@
-"""Golden fixture regression tests for document normalization.
-
-Pins normalization behavior against committed goldens in tests/fixtures/document_storage/.
-"""
+"""Golden-fixture regression for `normalize_document`."""
 
 from __future__ import annotations
 
@@ -18,41 +15,34 @@ def test_annual_10k_ascii_golden() -> None:
 
     res: NormalizationResult = normalize_document(raw_bytes, form=form)
 
-    # Core representation and boundary assertions
     assert res.representation == exp["representation"]
     assert res.cover_start_detected_line == exp["cover_start_detected_line"]
     assert res.cover_boundary_detected_line == exp["cover_boundary_detected_line"]
     assert res.cover_boundary.confidence == exp["cover_boundary_confidence"]
 
-    # Body start validation
     assert res.body_start is not None
     assert res.body_start.anchor_type == exp["body_anchor_type"]
     assert res.body_start.first_unit_line == exp["body_first_unit_line"]
 
-    # Closing signatures
     assert res.closing_span is not None
     assert res.closing_span.kind == exp["closing_kind"]
     assert res.closing_span.start_line == exp["closing_start_line"]
 
-    # Table protection (none in ASCII)
     assert len(res.table_geometries) == 0
     assert not exp["table_survives"]
 
-    # Word count and character invariants
     words = len(res.text.split())
     assert words == exp["word_count"]
 
-    # No sentinels leaked
     assert SENTINEL_PREFIX not in res.text
     assert SENTINEL_SUFFIX not in res.text
     assert "\x1b" not in res.text
     assert "\x00" not in res.text
 
-    # Structured stage trace verification matches fixture expectation
     stage_names = [s.stage for s in res.stage_trace]
     assert stage_names == exp["stage_order"]
     for stage_rec in res.stage_trace:
-        assert len(stage_rec.text_identity) == 64  # Valid SHA-256 hex digest
+        assert len(stage_rec.text_identity) == 64  # SHA-256 hex digest
         assert stage_rec.line_count > 0
         assert stage_rec.char_count > 0
 
@@ -65,23 +55,19 @@ def test_annual_10k_html_golden() -> None:
 
     res: NormalizationResult = normalize_document(raw_bytes, form=form)
 
-    # Core representation and boundary assertions
     assert res.representation == exp["representation"]
     assert res.cover_start_detected_line == exp["cover_start_detected_line"]
     assert res.cover_boundary_detected_line == exp["cover_boundary_detected_line"]
     assert res.cover_boundary.confidence == exp["cover_boundary_confidence"]
 
-    # Body start validation
     assert res.body_start is not None
     assert res.body_start.anchor_type == exp["body_anchor_type"]
     assert res.body_start.first_unit_line == exp["body_first_unit_line"]
 
-    # Closing signatures
     assert res.closing_span is not None
     assert res.closing_span.kind == exp["closing_kind"]
     assert res.closing_span.start_line == exp["closing_start_line"]
 
-    # Table preservation in HTML
     assert len(res.table_geometries) == 1
     assert exp["table_survives"]
     assert "<TABLE>" in res.text
@@ -89,15 +75,12 @@ def test_annual_10k_html_golden() -> None:
     assert "Segment" in res.text
     assert "Widgets" in res.text
 
-    # Word count
     words = len(res.text.split())
     assert words == exp["word_count"]
 
-    # No sentinels leaked
     assert SENTINEL_PREFIX not in res.text
     assert SENTINEL_SUFFIX not in res.text
 
-    # Structured stage trace verification matches fixture expectation
     stage_names = [s.stage for s in res.stage_trace]
     assert stage_names == exp["stage_order"]
     for stage_rec in res.stage_trace:

@@ -1,8 +1,5 @@
-"""Shared helpers for the test suite.
-
-Fixture locations and the offline HTTP test doubles live here so that test
-modules never repeat fragile ``parents[N]`` depth arithmetic, which breaks
-whenever the test tree is reorganized to mirror the source tree.
+"""Fixture paths and offline HTTP doubles, so no test repeats ``parents[N]`` depth
+arithmetic that breaks when the tree is reorganized.
 """
 
 from __future__ import annotations
@@ -33,41 +30,31 @@ CATALOG_FIXTURES = FIXTURES / "catalog"
 
 
 def load_fixture(name: str) -> Any:
-    """Load a committed golden fixture by filename."""
     return json.loads((FIXTURES / name).read_text(encoding="utf-8"))
 
 
 def fixture_path(name: str) -> Path:
-    """Return the path of a committed golden fixture."""
     return FIXTURES / name
 
 
 def catalog_fixture_path(name: str) -> Path:
-    """Return the path of a committed filing-catalog oracle fixture."""
     return CATALOG_FIXTURES / name
 
 
 def load_catalog_fixture(name: str) -> Any:
-    """Load a committed filing-catalog oracle fixture by filename."""
     return json.loads((CATALOG_FIXTURES / name).read_text(encoding="utf-8"))
 
 
 def submissions_document(cik_padded: str) -> str:
-    """Submissions endpoint URL for a zero-padded CIK."""
     return submissions_url(cik_padded)
 
 
 def historical_url(name: str) -> str:
-    """Historical submissions file URL."""
     return historical_submissions_url(name)
 
 
 def cik_payload(cik: str, name: str, accession: str | None = None) -> dict[str, Any]:
-    """Build a minimal but valid submissions payload for one CIK.
-
-    Used where a test only needs a well-formed row and the exact SEC payload
-    shape is irrelevant; golden replay tests should use the real fixtures.
-    """
+    """A well-formed row is enough here; golden replay tests use the real fixtures."""
     accession = accession or f"{cik}-26-000001"
     return {
         "name": name,
@@ -83,22 +70,14 @@ def cik_payload(cik: str, name: str, accession: str | None = None) -> dict[str, 
     }
 
 
-#: Cohort datasets built for a test live here and go when the run ends. A roster
-#: is a reference to a real Parquet artifact, so a test that wants one has to have
-#: a file behind it; keeping the scratch directory out of the test body is what
-#: lets a test say ``roster_of(...)`` and stay about what it is testing.
+#: A roster references a real Parquet artifact, so these scratch dirs go at exit.
 _SCRATCH: list[tempfile.TemporaryDirectory[str]] = []
 
 
 def roster_of(
     ciks: Iterable[str], names: Iterable[str] = (), *, name: str = "cohort.parquet"
 ) -> Roster:
-    """Build a small cohort dataset for a test and return the roster over it.
-
-    Prefer a test's own ``tmp_path`` when the path matters to the assertion; this
-    is for the common case where the test only needs a cohort to hand to the code
-    under test.
-    """
+    """Prefer a test's own ``tmp_path`` when the path matters to the assertion."""
     cik_list = tuple(ciks)
     name_list = tuple(names) or ("",) * len(cik_list)
     if len(name_list) != len(cik_list):
@@ -116,12 +95,7 @@ atexit.register(lambda: [scratch.cleanup() for scratch in _SCRATCH])
 
 
 def scratch_root() -> Path:
-    """A temporary artifacts root shared by the run, for tests that only read.
-
-    Compiling writes a dataset, so even a test that merely wants to know a
-    fixture's cohort needs somewhere to put it. Use the test's own ``tmp_path``
-    whenever the artifact's location is part of the assertion.
-    """
+    """Compiling writes a dataset, so read-only tests still need somewhere to put it."""
     global _ROOT_SCRATCH
     if _ROOT_SCRATCH is None:
         _ROOT_SCRATCH = tempfile.TemporaryDirectory(prefix="edgar-test-root-")
@@ -133,11 +107,7 @@ _ROOT_SCRATCH: tempfile.TemporaryDirectory[str] | None = None
 
 
 def fixture_cohort(fixture_name: str, *, limit: int | None = None) -> CompiledCohort:
-    """Compile a committed CIK fixture into a throwaway cohort.
-
-    For tests that need to know what a fixture resolves to rather than to control
-    where its artifacts land.
-    """
+    """For tests that need what a fixture resolves to, not where it lands."""
     return compile_cik_cohort(
         fixture_path(fixture_name),
         limit=limit,
@@ -154,11 +124,7 @@ def fixture_ciks(fixture_name: str) -> tuple[str, ...]:
 def compiled_cohort(
     fixture_name: str, root: str | Path, *, limit: int | None = None
 ) -> CompiledCohort:
-    """Compile a committed CIK fixture into a cohort under a test artifacts root.
-
-    Compiling writes a dataset, so the caller must name a root it is willing to
-    have written into -- normally the test's own ``tmp_path``.
-    """
+    """The caller must name a root it accepts writes into."""
     return compile_cik_cohort(
         fixture_path(fixture_name),
         limit=limit,
@@ -167,8 +133,6 @@ def compiled_cohort(
 
 
 class FakeResponse:
-    """Minimal stand-in for ``requests.Response``."""
-
     def __init__(
         self, status_code: int = 200, content: bytes = b"{}", headers: Any = None
     ) -> None:
@@ -178,11 +142,7 @@ class FakeResponse:
 
 
 class FakeSession:
-    """Scripted URL-to-payload session recording every requested URL.
-
-    Thread-safe because the pipeline worker fetches CIKs concurrently. An
-    unregistered URL returns 404 so the permanent-failure path is exercised.
-    """
+    """Thread-safe because workers fetch concurrently; an unknown URL 404s."""
 
     def __init__(self) -> None:
         self.payloads: dict[str, Any] = {}
@@ -209,11 +169,7 @@ class FakeSession:
 
 
 def build_test_http(session: FakeSession) -> SecHttpClient:
-    """Build a real SEC HTTP client whose transport is a scripted session.
-
-    Pacing and backoff are collapsed to near-zero so tests stay fast, while
-    retry classification, caching, and the failure ledger still run for real.
-    """
+    """Pacing collapses to near-zero; retry, cache, and ledger still run for real."""
     return SecHttpClient(
         user_agent="TestClient/1.0 test@example.com",
         rate_limiter=RateLimiter(min_interval_s=0.001),
@@ -224,7 +180,6 @@ def build_test_http(session: FakeSession) -> SecHttpClient:
 
 
 def build_test_client(session: FakeSession) -> SubmissionsClient:
-    """Build a submissions client bound to the scripted session."""
     return SubmissionsClient(http=build_test_http(session))
 
 

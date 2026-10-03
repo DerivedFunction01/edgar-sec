@@ -1,7 +1,5 @@
-"""Unit and contract tests for edgar_sec.engine.document.html.normalizer.
-
-Projection is where byte-exactness is won or lost: tables must survive it
-unchanged, and every rule here either protects a table or reshapes prose.
+"""Byte-exactness lives or dies here: tables must survive projection unchanged,
+and every rule either protects a table or reshapes prose.
 """
 
 from __future__ import annotations
@@ -41,11 +39,8 @@ def test_inline_tags_do_not_introduce_breaks() -> None:
 
 
 def test_double_br_inside_a_paragraph_collapses_to_a_space() -> None:
-    """Deliberate, not an accident of the passes.
-
-    A `<br><br>` run becomes a blank line at the break stage, and the later
-    source-line-wrap pass collapses that blank line back to a space. Only a
-    break pair sitting *between* block tags survives as a paragraph break.
+    """The break stage makes a blank line and the later wrap pass collapses it; only
+    a pair sitting *between* block tags survives.
     """
     assert decompose_html_structures("<p>para one<br><br>para two</p>") == (
         "para one para two"
@@ -186,11 +181,8 @@ def test_geometry_indexes_match_the_tables_in_the_document() -> None:
 
 
 def test_adjacent_tables_fuse_into_one_geometry() -> None:
-    """A layout that splits one table across several `<table>` tags is one table.
-
-    Filing generators emit exactly this. Refusing to fuse would render three
-    separate fragments and split every row, so the geometry reports one table —
-    which is why a geometry count is not a `<table>` tag count.
+    """Refusing to fuse would split every row, so a geometry count is not a
+    ``<table>`` tag count.
     """
     result = normalize_html_document(_table_html() + _table_html() + _table_html())
     assert len(result.table_geometries) == 1

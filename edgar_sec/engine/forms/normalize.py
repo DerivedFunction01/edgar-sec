@@ -1,11 +1,6 @@
-"""Central document normalization seam connecting raw bytes to normalized text.
-
-This module owns the *stage order* and the result record. Every algorithm lives
-in a leaf package: `engine.document` for input preparation, HTML, page
-markers, and whitespace, `engine.tables` for table handling, and
-`engine.forms.cover` for the cover decision chain. The types those stages
-produce are declared where they are produced and imported here — this module
-re-declares nothing.
+"""Central document normalization seam: raw bytes to normalized text. Owns the stage
+order and the result record; every algorithm lives in a leaf package
+(`engine.document`, `engine.tables`, `engine.forms.cover`).
 """
 
 from __future__ import annotations
@@ -88,10 +83,8 @@ def normalize_document(
     *,
     form: str | None = None,
 ) -> NormalizationResult:
-    """Normalize one raw filing payload.
-
-    Stages run in canonical order and every stage records a `StageRecord`
-    carrying its own output digest, line count, and character count.
+    """Normalize one raw filing payload. Stage order is canonical and load-bearing; each
+    stage records a `StageRecord` of its own output.
     """
     text, representation, _encoding = prepare_input_text(raw_bytes)
 

@@ -1,4 +1,4 @@
-"""Tests for quota-policy planning and its published plan bundle."""
+"""Quota-policy planning and the plan bundle it publishes."""
 
 from __future__ import annotations
 
@@ -71,11 +71,7 @@ def test_policy_plan_publishes_a_complete_bundle(
 
 
 def _artifacts_root(catalog_artifacts_root: Path) -> Path:
-    """The artifacts root the catalog fixture was materialized into.
-
-    Takes the shared fixture rather than walking ``parents[N]`` off the snapshot
-    directory, which would encode the published depth into the test.
-    """
+    """The shared fixture, not ``parents[N]``, which would pin the published depth."""
     return catalog_artifacts_root
 
 
@@ -272,8 +268,7 @@ def test_selection_report_carries_the_quota_evidence(
     assert report["active_locators_count"] == meta["unique_locators_count"]
     assert report["unique_company_families"] >= 1
     assert "underfilled_floors" in report
-    # The full coverage distribution is deliberately excluded: it is per
-    # dimension and would dwarf the plan document it is embedded in.
+    # Per-dimension coverage would dwarf the plan document it is embedded in.
     assert "coverage_distributions" not in report
 
 
@@ -363,13 +358,7 @@ def test_a_different_target_or_level_still_separates_plan_identities(
     catalog_snapshot: tuple[dict[str, object], Path],
     catalog_artifacts_root: Path,
 ) -> None:
-    """The request names neither, and must still distinguish both.
-
-    ``target_units`` and ``level`` were removed from the request because they
-    restate policy fields the fingerprint already covers. Removing a key is
-    only safe if the fact it carried still moves the identity, so this pins
-    that the fingerprint really is what separates the two plans.
-    """
+    """Dropping a request key is safe only if the fingerprint still separates them."""
     manifest, _ = catalog_snapshot
     artifacts_root = _artifacts_root(catalog_artifacts_root)
     catalog = str(manifest["catalog_id"])
@@ -423,8 +412,7 @@ def test_a_seed_plan_reused_after_the_csv_changes_is_refused(
     second = plan_policy(str(manifest["catalog_id"]), policy, artifacts_root)
 
     assert second["plan_id"] != first["plan_id"]
-    # The old bundle is untouched and still verifies against its own recorded
-    # selection; it simply is not the bundle this request resolves to.
+    # The old bundle still verifies; it is not what this request resolves to.
     assert plan_bundle_complete(plan_dir)
 
 
@@ -438,9 +426,6 @@ def test_a_plan_with_no_seed_file_publishes_an_empty_seed_set(
     plan_dir = resolve_filing_catalog_paths(artifacts_root).plan_dir(meta["plan_id"])
     assert read_seed_filers_csv(plan_dir / SEED_FILERS_NAME) == {}
     assert meta["seed_filer_count"] == 0
-
-
-# --- determinism -----------------------------------------------------------
 
 
 # --- advisory inventory feasibility ---------------------------------------
@@ -483,12 +468,7 @@ def test_feasibility_is_advisory_and_does_not_fail_a_plan(
     catalog_snapshot: tuple[dict[str, object], Path],
     catalog_artifacts_root: Path,
 ) -> None:
-    """An impossible floor must not turn a fresh plan into a refusal.
-
-    A fresh policy plan publishes what the corpus could supply and records the
-    shortfall; the feasibility report explains it. Only an expansion is refused
-    for failing to reach its target.
-    """
+    """A fresh plan publishes what the corpus could supply and records the shortfall."""
     manifest, _ = catalog_snapshot
     artifacts_root = _artifacts_root(catalog_artifacts_root)
     meta = plan_policy(
@@ -538,12 +518,7 @@ def test_an_occurrence_only_composite_is_refused_at_the_policy(
     catalog_snapshot: tuple[dict[str, object], Path],
     catalog_artifacts_root: Path,
 ) -> None:
-    """A stratum the selector could never match is refused where it is written.
-
-    Composites are drawn from locator_features, which has no accession_class
-    column. Without this check the failure surfaces as a DuckDB Binder Error from
-    inside selection, naming a column rather than the policy field that caused it.
-    """
+    """locator_features has no accession_class, so the error must name the field."""
     manifest, _ = catalog_snapshot
     artifacts_root = _artifacts_root(catalog_artifacts_root)
     with pytest.raises(ValueError, match="locator_features"):
@@ -574,17 +549,11 @@ def test_a_policy_rebuild_into_an_independent_root_is_identical(
     tmp_path: Path,
     sample_source: Path,
 ) -> None:
-    """Two builds from separate inputs must agree on the whole bundle.
-
-    The existing same-root test cannot see drift: the second call reuses the
-    published bundle instead of rebuilding it, so it proves reuse works, not
-    that selection is reproducible. This rebuilds.
-    """
+    """A same-root call reuses the bundle, so it proves reuse, not reproducibility."""
     manifest, _ = catalog_snapshot
     policy = _policy()
 
-    # Two independent artifacts roots, each with its own catalog snapshot, so
-    # nothing about the publication is shared between the two builds.
+    # Two independent roots, each with its own catalog snapshot.
     first_root = tmp_path / "a"
     second_root = tmp_path / "b"
     materialize(sample_source, first_root)
@@ -624,12 +593,7 @@ def _derived_bands_policy(**overrides: object) -> SelectionPolicy:
 def test_a_policy_declaring_no_bands_gets_bands_from_the_catalog(
     catalog_snapshot: tuple[dict[str, object], Path], catalog_artifacts_root: Path
 ) -> None:
-    """Automatic mode bands the years this selection can reach.
-
-    The fixture's dated 10-K and 10-Q targets report in 2023 and 2024, so the
-    derived bands tile exactly those two years rather than the decades around
-    them.
-    """
+    """The fixture's 10-K and 10-Q report in 2023 and 2024, so those years tile."""
     manifest, _ = catalog_snapshot
     meta = plan_policy(
         str(manifest["catalog_id"]),
@@ -640,8 +604,7 @@ def test_a_policy_declaring_no_bands_gets_bands_from_the_catalog(
     assert bands, "automatic mode must resolve bands"
     assert bands[0].start_year == 2023
     assert bands[-1].end_year == 2025
-    # The plan records the bands selection actually used, so a reader never
-    # re-derives them and a later rebuild cannot disagree.
+    # The plan records the bands used, so a later rebuild cannot disagree.
     assert (
         SelectionPolicy.from_dict(meta["selection_policy"]).derives_era_bands is False
     )
@@ -654,11 +617,7 @@ def test_a_policy_declaring_no_bands_gets_bands_from_the_catalog(
 def test_derived_bands_follow_the_reachable_years(
     catalog_snapshot: tuple[dict[str, object], Path], catalog_artifacts_root: Path
 ) -> None:
-    """A 2024-only selection must not band a year it can never select.
-
-    The fixture's only 2024 report date belongs to a 10-Q, so the policy has to
-    declare that form for the selection to reach 2024 at all.
-    """
+    """Only a 10-Q carries the fixture's 2024 date, so that form is declared."""
     manifest, _ = catalog_snapshot
     meta = plan_policy(
         str(manifest["catalog_id"]),
@@ -694,11 +653,7 @@ def test_a_declared_band_list_is_left_alone(
 def test_a_date_selection_narrows_what_the_plan_selects(
     catalog_snapshot: tuple[dict[str, object], Path], catalog_artifacts_root: Path
 ) -> None:
-    """The selection is enforced by the engine, not merely recorded.
-
-    The fixture's declared forms report 2023 dates, so restricting to 2024 leaves
-    nothing and the plan publishes empty rather than out-of-range filings.
-    """
+    """The fixture reports 2023, so a 2024 window publishes empty, not stale rows."""
     manifest, _ = catalog_snapshot
     meta = plan_policy(
         str(manifest["catalog_id"]),
@@ -751,12 +706,7 @@ def test_a_policy_document_without_the_new_field_is_still_readable(
 def test_a_selection_that_reaches_nothing_falls_back_to_the_catalogs_years(
     catalog_snapshot: tuple[dict[str, object], Path], catalog_artifacts_root: Path
 ) -> None:
-    """A plan still needs bands when the selection matches no dated row.
-
-    The fallback is the catalog's own year range rather than a synthetic one: a
-    fabricated band would put a coverage figure in the report that was never
-    derived from data.
-    """
+    """The fallback is the catalog's own years, never a synthetic band."""
     manifest, _ = catalog_snapshot
     meta = plan_policy(
         str(manifest["catalog_id"]),

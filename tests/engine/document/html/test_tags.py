@@ -1,8 +1,6 @@
-"""Tests for the HTML tag classification vocabulary.
-
+"""HTML tag classification vocabulary.
 These sets decide vertical whitespace in output, so the tests pin membership
-rather than size: a tag silently reclassified changes the text of every filing
-that uses it.
+rather than size.
 """
 
 from __future__ import annotations

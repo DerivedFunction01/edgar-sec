@@ -1,5 +1,3 @@
-"""Tests for quarterly report evidence definitions."""
-
 from __future__ import annotations
 
 from edgar_sec.domain.forms.common.forward_looking import FORWARD_LOOKING_TERMS

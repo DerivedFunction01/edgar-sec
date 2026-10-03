@@ -1,9 +1,6 @@
 """zstd frame compression for the BLOB payloads stored elsewhere in the tree.
 
-The codec objects are thread-local because a ``ZstdCompressor`` carries window
-and history state and is not safe to share across threads. A process that
-compresses on many threads pays one small allocator per thread, which is the
-right trade against sharing mutable compression state.
+Codec objects are thread-local: a ``ZstdCompressor`` carries window and history state.
 """
 
 from __future__ import annotations
@@ -39,8 +36,8 @@ def compress_payload(payload: bytes) -> bytes:
 def decompress_payload(blob: bytes) -> bytes:
     """Decompress one zstd frame back into its raw bytes.
 
-    Raises ``zstandard.ZstdError`` when ``blob`` is not a frame, which is the
-    signal a caller sniffing a possibly-uncompressed column branches on.
+    Raises ``zstandard.ZstdError`` on a non-frame, which is the signal a caller
+    sniffing a possibly-uncompressed column branches on.
     """
     return _get_decompressor().decompress(blob)
 

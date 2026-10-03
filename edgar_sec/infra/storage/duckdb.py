@@ -37,11 +37,8 @@ def sql_literal(value: str) -> str:
 def sql_identifier(name: str) -> str:
     """Return ``name`` if it is a dotted path of bare SQL identifiers, else raise.
 
-    Relation names are passed through here so a catalog or table name can never
-    smuggle SQL into a query. An optional ``alias.`` prefix is accepted because
-    a predicate built once and reused inside a joined query still has to name
-    the column it filters on; each segment is validated independently, so the
-    allowance cannot become a hole.
+    An ``alias.`` prefix is accepted so a predicate reused in a joined query can still
+    name its column; each segment is validated independently.
     """
     if not name or not all(
         _IDENTIFIER_RE.match(segment) for segment in name.split(".")
@@ -53,9 +50,8 @@ def sql_identifier(name: str) -> str:
 def sql_path_list(paths: Sequence[str]) -> str:
     """Return ``paths`` as a SQL list literal for ``read_parquet([...])``.
 
-    A snapshot is a dataset, so a consumer may need to read several parts. The
-    list is built element by element with :func:`sql_literal` rather than by
-    joining a string, so a path cannot break out of its own element.
+    Built element by element with :func:`sql_literal` so a path cannot break out of
+    its own element.
     """
     return "[" + ", ".join(sql_literal(str(path)) for path in paths) + "]"
 
@@ -106,17 +102,10 @@ def copy_query_to_parquet(
     compression: str = DEFAULT_COMPRESSION,
     params: Sequence[str] | None = None,
 ) -> int:
-    """Write one query result to Parquet out-of-core and atomically.
+    """Write one query result to Parquet out-of-core and atomically; return the row count.
 
-    The COPY runs inside DuckDB, so a large result never materializes in the
-    Python heap. The file is staged beside its destination and renamed, so a
-    failed write never leaves a half-written shard in a published directory.
-    Returns the row count.
-
-    ``params`` binds values the query would otherwise have to interpolate, such
-    as a source path. Passing them separately keeps the caller's ``query`` a
-    plain constant, so composing SQL here does not require the caller to be an
-    audited SQL-compiling module.
+    Staged beside the destination and renamed, so a failed write leaves no half-written
+    shard. ``params`` binds source paths, keeping the caller's ``query`` a constant.
     """
     path = Path(destination)
     path.parent.mkdir(parents=True, exist_ok=True)
@@ -143,9 +132,8 @@ def find_duplicate_keys(
 ) -> list[str]:
     """Find any duplicate values of ``key_column`` across chunks, up to 100.
 
-    ``key_column`` is required rather than defaulted: the primary key of a
-    published dataset is a property of that dataset, so naming it at the call
-    site keeps the storage layer from asserting one on every caller's behalf.
+    ``key_column`` is required: a dataset's primary key is its own property, not
+    something the storage layer asserts on a caller's behalf.
     """
     if not paths:
         return []

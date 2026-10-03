@@ -1,8 +1,6 @@
 """Layout-grid classification: the vectors that decide retain versus unwrap.
 
-The expectations here were reviewed one by one against real filing output, so a
-change in verdict is a change in product behaviour rather than a test needing a
-rewrite.
+A change in verdict here is a change in product behaviour.
 """
 
 from __future__ import annotations
@@ -137,9 +135,7 @@ def test_an_item_reference_grid_with_amounts_is_still_retained() -> None:
 def test_a_bare_numbered_heading_pair_is_ordered_prose_and_is_unwrapped(
     page: str,
 ) -> None:
-    # A bare `1.` prefix reads as an ordered list marker, so the row pair is
-    # prose even with a page column. Retention needs the `ITEM n` prefix, which
-    # the table-of-contents predicates recognize and an ordered marker does not.
+    # A bare `1.` is an ordered-list marker, so retention needs the `ITEM n` prefix.
     grid = (("1. Risk Factors", page), ("2. Properties", page))
     assert is_false_grid(grid) is True
     assert (
@@ -151,9 +147,6 @@ def test_a_bare_numbered_heading_pair_is_ordered_prose_and_is_unwrapped(
 def test_a_table_with_no_content_is_never_a_layout_grid() -> None:
     assert is_false_grid(()) is True
     assert is_false_grid((("", "", ""),)) is True
-
-
-# --- is_false_table: rendered text, no geometry ----------------------------
 
 
 def test_a_rendered_toc_item_row_with_a_page_number_is_retained() -> None:
@@ -207,9 +200,8 @@ def test_a_rendered_multi_line_block_is_never_unwrapped() -> None:
 
 
 def test_raw_html_inside_a_table_wrapper_does_not_read_as_a_toc_row() -> None:
-    # The rendered-text path strips only the `<TABLE>` wrapper, so a body that
-    # still carries `<TR>`/`<TD>` never matches the leading-heading patterns.
-    # Callers pass rendered text, and geometry is preferred when available.
+    # The rendered-text path strips only `<TABLE>`, so a body still carrying
+    # `<TR>`/`<TD>` never matches the leading-heading patterns.
     body = (
         "<TABLE><TR><TD>Item 1. Business "
         "................................ 10</TD></TR></TABLE>"
@@ -231,9 +223,6 @@ def test_geometry_overrides_the_rendered_text_when_it_is_supplied() -> None:
     )
     geometry = TableGeometry(table_index=0, render_result=result)
     assert is_false_table(_rendered("a single line"), geometry) is False
-
-
-# --- private predicate vocabulary -------------------------------------------
 
 
 def test_prose_marker_helpers_agree_on_bullets_and_footnotes() -> None:

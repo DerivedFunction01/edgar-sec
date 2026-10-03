@@ -1,12 +1,6 @@
 """Hybrid ``<pre>`` content masking for filings with mixed HTML and ASCII tables.
-
-Transition-era filings embed financial tables inside ``<pre>`` blocks in three
-shapes: SGML ``<TABLE><S><C>`` legacy tables, fixed-width monospace columns, and
-real ``<table><tr><td>`` markup. A DOM cannot represent the first two faithfully —
-literal SGML tags are either parsed as elements or escaped on serialization — so
-this module is a text boundary, not a DOM pass. `normalize_hybrid_pre_text`
-replaces each ``<pre>`` payload with a private token, ordinary HTML normalization
-runs, and `restore_hybrid_pre_text` puts the payload back byte for byte.
+A DOM cannot represent literal SGML tags faithfully, so this is a text boundary, not a DOM pass:
+each `<pre>` payload becomes a private token and is restored byte for byte afterwards.
 """
 
 from __future__ import annotations
@@ -71,12 +65,7 @@ def _looks_like_monospace_text(inner: str) -> bool:
 
 def normalize_hybrid_pre_text(text: str) -> HybridPreText:
     """Protect hybrid ``<pre>`` payloads before HTML DOM normalization.
-
-    Literal SGML tags are not representable as text in a selectolax DOM: they
-    are either parsed as elements or escaped on serialization. This boundary
-    function therefore replaces each classified payload with a private token.
-    The caller must pass the result to :func:`restore_hybrid_pre_text` after
-    normal HTML table conversion has completed.
+    The caller must pass the result to :func:`restore_hybrid_pre_text` after table conversion.
     """
     protected: dict[str, str] = {}
     pieces: list[str] = []
@@ -113,11 +102,7 @@ def normalize_hybrid_pre_text(text: str) -> HybridPreText:
 
 def restore_hybrid_pre_text(text: str, protected: dict[str, str]) -> str:
     """Restore payloads protected by :func:`normalize_hybrid_pre_text`.
-
-    Raises:
-        ValueError: a token is absent from ``text``. Restoration is verified,
-            not assumed, because a silently dropped payload loses an entire
-            financial table.
+    Verified, not assumed: a missing token raises, because a dropped payload loses a whole table.
     """
     if not protected:
         return text

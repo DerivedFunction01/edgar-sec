@@ -1,11 +1,6 @@
-"""Constraint-based cover checkbox inference and its public solver entry points.
-
-An ambiguous cover glyph (a Wingdings ``x``, a bare underscore run, an empty
-box) is not decidable from the mark alone. The solver instead enumerates the
-glyph assignments still consistent with the filing's own statutory constraints,
-scores each with soft penalties, and reports a decision only when exactly one
-assignment is cheapest. A tie is reported as ``UNRESOLVED`` with the full
-hypothesis table rather than resolved arbitrarily.
+"""Constraint-based cover checkbox inference: an ambiguous glyph is not decidable
+from the mark alone. A decision is reported only when exactly one assignment
+consistent with the statutory constraints is cheapest; a tie is UNRESOLVED.
 """
 
 from __future__ import annotations

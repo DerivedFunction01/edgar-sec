@@ -104,12 +104,7 @@ def test_manifest_records_the_run(tmp_path: Path) -> None:
 def test_the_content_fingerprint_identifies_content_not_file_bytes(
     tmp_path: Path,
 ) -> None:
-    """Two merges of identical chunks must report the same content identity.
-
-    The merged Parquet files are *not* byte-identical — the writer embeds metadata
-    that varies — so a file digest cannot be the snapshot's identity. The
-    fingerprint is derived from the content-addressed chunk inputs instead.
-    """
+    """Merged Parquet bytes vary, so identity comes from the chunk inputs."""
     chunks_dir = tmp_path / "chunks"
     snapshots = tmp_path / "snapshots"
     _seed_chunks(chunks_dir)

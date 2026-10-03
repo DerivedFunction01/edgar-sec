@@ -1,24 +1,6 @@
-"""ASCII page-label candidate extraction, layout evidence, and group promotion.
-
-A *firm* marker is a shape that stands alone on its line: an SGML `<PAGE>` tag,
-a `page N of M` line, a bracketed boundary token. Those are recognized by
-pattern alone and removed without corroboration. Everything else is only a
-*candidate*, admitted to a removal decision once enough other candidates of the
-same shape, in the same namespace, at a consistent distance and alignment, form a
-validated run. This module owns that admission.
-
-Three kinds of evidence keep the candidate set honest, and all three come from
-the line's geometry rather than its content:
-
-- **Numeric data shape.** A financial row that happens to end in a number is
-  refused outright: a run of such rows is a table, not a page sequence.
-- **Prose shape.** A long line carrying several function words is a sentence, not
-  a label, and a sentence that repeats is content.
-- **Cluster density.** Even individually plausible candidates are refused when
-  spaced as a dense burst, which is what a table column looks like.
-
-The probe is bounded: a repeated page pattern is visible near the front and the
-tail, and a stride derived from the front run confirms it continues.
+"""ASCII page-label extraction and admission.
+A *firm* marker's line shape stands alone; every other shape is admitted only as a validated run of
+same-shape, same-namespace candidates. Numeric, prose, and dense-cluster shapes are refused.
 """
 
 from __future__ import annotations
@@ -88,8 +70,6 @@ class _TocSpan(Protocol):
     end_line: int
 
 
-# --- prose evidence ----------------------------------------------------------
-
 _PROSE_WORDS = frozenset(
     {
         *PROSE_GUARD_STOP_WORDS,
@@ -119,27 +99,16 @@ def prose_stop_words(text: str) -> frozenset[str]:
 
 
 def looks_like_prose(text: str, *, minimum_hits: int = 3) -> bool:
-    """Classify a longer candidate as prose using shared lexical evidence.
-
-    Both tests must hold: the line is long enough to be a sentence, and it
-    carries enough distinct grammar words to be one. Either alone is weak — a
-    short title contains function words, and a long all-caps banner is one
-    stretched token.
+    """Refuse a long candidate carrying several grammar words.
+    Both must hold: a short title has function words, a long banner is one token.
     """
     words = text.split()
     return len(words) >= 6 and len(prose_stop_words(text)) >= minimum_hits
 
 
-# --- layout evidence ---------------------------------------------------------
-
-
 def candidate_template(text: str) -> str:
-    """Normalize page values in a short label template.
-
-    Two labels differing only in their page number are the same label, so the
-    value is masked before the two are compared for grouping. Both the arabic
-    and the roman reading are masked, otherwise a document that changes
-    notation at its appendix produces two half-length runs instead of one.
+    """Mask page values so two labels differing only in number are one template.
+    Roman is masked too, or an appendix notation change splits the run in two.
     """
 
     normalized = _COLLAPSE_WS_RE.sub(" ", text.strip().casefold())
@@ -148,13 +117,8 @@ def candidate_template(text: str) -> str:
 
 
 def has_numeric_data_shape(line: str) -> bool:
-    """Reject financial-looking lines from page-label promotion.
-
-    Four signals, cheapest first: a currency symbol or a percent sign, a
-    decimal or comma-grouped figure, two or more bare numbers separated by a
-    gutter, and a whole-cell numeric match. The last two are what a financial
-    table's trailing column actually looks like once the currency column has
-    been accounted for.
+    """Refuse a financial-looking line from page-label promotion.
+    Currency or percent, a decimal or grouped figure, two bare numbers split by a gutter, or a whole-cell numeric match.
     """
 
     stripped = line.strip()
@@ -171,13 +135,8 @@ def has_numeric_data_shape(line: str) -> bool:
 
 
 def cluster_is_table_like(candidates: list[PageCandidate]) -> bool:
-    """Return whether candidate spacing resembles a dense table burst.
-
-    Three ways a cluster reads as tabular rather than as a page sequence: a
-    tight mean gap, a high proportion of near-adjacent members, or a mean gap
-    far larger than the median, which means the members are really one dense
-    group plus a straggler. The inline-`page N` shape is exempt because a
-    running "continued on page N" header legitimately clusters tightly.
+    """Return whether candidate spacing reads as a dense table burst.
+    Inline-``page N`` is exempt: a running "continued on page N" header clusters tightly by nature.
     """
 
     if len(candidates) < 3:
@@ -198,9 +157,6 @@ def cluster_is_table_like(candidates: list[PageCandidate]) -> bool:
     return gap_mean < 8 or dense >= 0.15 or gap_mean / gap_median < 0.5
 
 
-# --- offsets -----------------------------------------------------------------
-
-
 def line_offsets(lines: list[str]) -> list[int]:
     """Return the character offset at which each line starts."""
     offsets: list[int] = []
@@ -216,9 +172,6 @@ def line_for_offset(offsets: list[int], offset: int) -> int:
     return max(0, min(bisect.bisect_right(offsets, offset) - 1, len(offsets) - 1))
 
 
-# --- firm markers ------------------------------------------------------------
-
-
 def _marker_lines(
     start: int, end: int, text: str, offsets: list[int]
 ) -> tuple[int, int]:
@@ -232,12 +185,8 @@ def _marker_lines(
 def firm_markers(
     text: str, representation: str, allow_letter_number: bool = True
 ) -> tuple[list[PageMarker], set[tuple[int, int]], set[int]]:
-    """Find exact marker spans and their line occupancy.
-
-    Spans are claimed in pattern order, so a `<PAGE>` tag that also matches the
-    boundary token is claimed once. The returned occupied-span set and occupied
-    line set are what the contextual scan must not re-examine: a line already
-    carrying a firm marker cannot also carry a candidate.
+    """Find exact marker spans and the lines they occupy.
+    Spans are claimed in pattern order; an occupied line cannot also yield a candidate.
     """
 
     offsets = line_offsets(text.splitlines())
@@ -312,9 +261,6 @@ def firm_markers(
     return markers, set(zip(occupied_starts, occupied_ends)), lines
 
 
-# --- candidate classification ------------------------------------------------
-
-
 def _candidate(
     match: re.Match[str],
     line: str,
@@ -365,13 +311,8 @@ def classify_candidate(
     relative: int | None = None,
     allow_letter_number: bool = True,
 ) -> PageCandidate | None:
-    """Classify one short, structurally eligible ASCII line.
-
-    The shapes are tried in decreasing specificity. A line is refused before
-    any shape is tried when it is blank, when it is the bare `<PAGE>` token
-    itself, when it opens a `PART`/`ITEM`/`EXHIBIT`/`NOTE` heading (a heading
-    that happens to end in a number is still a heading), or when its whole shape
-    is numeric data.
+    """Classify one short, eligible ASCII line; the most specific shape wins.
+    Refused before any shape is tried: blank, bare ``<PAGE>``, a ``PART``/``ITEM``/``NOTE`` heading, or a numeric data shape.
     """
 
     stripped = line.strip()
@@ -453,16 +394,8 @@ def classify_candidate(
 def toc_lines(
     text: str, span_finder: Callable[[str], _TocSpan | None] | None = None
 ) -> set[int]:
-    """Return the source line indices a table-of-contents span excludes.
-
-    A table of contents is the one place where page labels are content, so its
-    lines are excluded from furniture detection outright. Page analysis never
-    locates the contents span itself: the dependency runs one way, and a caller
-    that has already located a span passes it in here or through
-    ``context["toc_lines"]``. Without a resolver, nothing is excluded.
-
-    The range is ``start_line`` inclusive and ``end_line`` exclusive, which is
-    how the span states its own extent.
+    """Return the source line indices a contents span excludes (``start`` inclusive, ``end`` exclusive).
+    The span comes from the caller's resolver, never from here: that dependency runs one way.
     """
     if span_finder is None:
         from edgar_sec.engine.forms.cover.toc.finder import find_toc_span
@@ -470,9 +403,6 @@ def toc_lines(
         span_finder = find_toc_span
     span = span_finder(text)
     return set(range(span.start_line, span.end_line)) if span is not None else set()
-
-
-# --- contextual scan ---------------------------------------------------------
 
 
 def all_candidates(
@@ -483,13 +413,8 @@ def all_candidates(
     allow_letter_number: bool = True,
     excluded_lines: set[int] | None = None,
 ) -> list[PageCandidate]:
-    """Collect candidate labels, either around anchors or across the document.
-
-    With anchors, only the three nearest eligible lines on each side of each
-    anchor are examined, because a label adjacent to a known page boundary is
-    the only one that is evidence about that boundary. Without anchors, a short
-    document is scanned whole; a long one is scanned at the front and the tail
-    and then, if the front run's stride is large, hopped along that stride.
+    """Collect candidate labels around anchors, or across the document.
+    With anchors, only the three nearest eligible lines each side are evidence about that boundary.
     """
 
     lines = text.splitlines()
@@ -552,9 +477,6 @@ def all_candidates(
                 if candidate is not None:
                     candidates.append(candidate)
         else:
-            # Progressive bidirectional scan: bounded front/tail windows.
-            # Large documents do not need half the document probed to find a
-            # repeated pattern; windows cap at _ASCII_PROBE_WINDOW lines.
             probe_lines = min(n_lines // 4, _ASCII_PROBE_WINDOW)
             front_limit = probe_lines
             tail_start = n_lines - probe_lines
@@ -566,7 +488,6 @@ def all_candidates(
             for idx in range(tail_start, n_lines):
                 _get_candidate(idx)
 
-            # Adaptive stride hopping if front probe found a sequence
             if len(front_cands) >= 3:
                 vals = [c.value for c in front_cands if c.namespace == "arabic"]
                 if len(vals) >= 3 and vals[-1] > vals[0]:
@@ -582,7 +503,6 @@ def all_candidates(
                                 _get_candidate(offset_line)
                             curr += stride
 
-            # Sweep remaining unvisited lines via memo cache
             for idx in range(n_lines):
                 candidate = _get_candidate(idx)
                 if candidate is not None:
@@ -617,16 +537,7 @@ def promote_groups(
     anchored: bool,
 ) -> tuple[list[PageMarker], list[PageNumberRun], list[PageCandidate], tuple[str, ...]]:
     """Group candidates by slot and admit the groups that form a validated run.
-
-    An anchored group is keyed by the candidate's position relative to its
-    anchor, so only labels printed in the same slot compete. An anchorless group
-    is keyed by shape, namespace, column, and normalized template, and is held
-    to a stricter spacing requirement, because with no anchor a dense cluster of
-    same-shaped numbers is far more likely to be a table.
-
-    A group that fails validation is retried after healing, and every failure is
-    reported as a named diagnostic, so a document that produced no markers is
-    still diagnosable.
+    Anchorless groups face stricter spacing: with no anchor a dense cluster of same-shaped numbers is far likelier a table. Rejections stay named diagnostics.
     """
 
     groups: dict[tuple[Any, ...], list[PageCandidate]] = defaultdict(list)

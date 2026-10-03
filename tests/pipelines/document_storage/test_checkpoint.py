@@ -1,5 +1,3 @@
-"""Unit tests for document_storage.checkpoint."""
-
 from __future__ import annotations
 
 from pathlib import Path
@@ -60,6 +58,5 @@ def test_write_and_validate_chunk_snapshot(tmp_path: Path) -> None:
     stats = validate_chunk_snapshot(written_path)
     assert stats["num_rows"] == 5
 
-    # Check compression
     meta = pq.read_metadata(chunk_file)
     assert meta.row_group(0).column(0).compression == "ZSTD"

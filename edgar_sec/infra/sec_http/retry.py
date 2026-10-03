@@ -35,7 +35,6 @@ class RetryPolicy:
             return "retry"
         if 500 <= status_code < 600:
             return "retry"
-        # 404 and all other 4xx are permanent
         return "permanent"
 
     def delay(self, attempt: int, retry_after_s: float | None = None) -> float:

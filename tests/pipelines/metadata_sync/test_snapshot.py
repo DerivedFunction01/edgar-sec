@@ -1,10 +1,5 @@
-"""Snapshot part-list resolution and verification tests.
-
-A published snapshot is a dataset described by an ordered part list. These tests
-cover the two properties that make that safe to consume: a snapshot published
-before the multipart contract still resolves, and a snapshot whose parts have
-been tampered with, truncated, or only partially published is refused rather
-than read.
+"""Snapshot part-list resolution: a pre-multipart snapshot still resolves, and a
+tampered, truncated, or partial one is refused rather than read.
 """
 
 from __future__ import annotations

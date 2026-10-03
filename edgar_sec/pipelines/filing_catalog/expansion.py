@@ -1,23 +1,7 @@
 """Parent-plan validation and immutable target-plan expansion.
-
-Expansion scales a published policy plan from ``N`` to ``M > N`` locators
-without discarding anything the parent selected. The invariant is strict:
-**the child contains 100% of the parent's locators** -- a quiet resample is
-worse than no scale-up, because a downstream acquisition would skip documents
-the parent committed to and the gap would surface only as missing documents.
-
-Two things make that hold: the child's selection runs with the parent's keys as
-``parent_active_keys``, so they are in the exclusion set before any candidate
-pool is drawn; and compatibility is checked before selection runs, so a
-mismatched catalog, corpus, form set, or seed set fails immediately.
-
-Because expansion is handed a directory rather than resolving one, the parent
-must be a plan of the schema this build publishes, carrying every field a child
-compares against, with a fingerprint that still matches its own locators. An
-older-schema bundle is refused and must be republished, not adapted.
-
-Lineage lands in ``expansion_metadata.json`` beside the plan; the child records
-``parent_plan_id`` and ``parent_plan_fingerprint`` in ``plan.json``.
+The invariant is strict: **the child contains 100% of the parent's locators**, since
+a quiet resample makes a downstream acquisition skip committed documents. It holds
+because the child's selection excludes the parent's keys before any pool is drawn.
 """
 
 from __future__ import annotations
@@ -57,9 +41,8 @@ _CHILD_ONLY_FIELDS = (
     "parent_plan_fingerprint",
 )
 
-# Fields every published policy plan of the current schema carries. They are
-# what makes a parent comparable to a child, so a parent missing one cannot be
-# validated and is refused rather than reinterpreted.
+# Fields every current-schema policy plan carries; a parent missing one cannot be
+# validated, so it is refused rather than reinterpreted.
 _REQUIRED_PARENT_FIELDS = (
     "plan_id",
     "catalog_id",
@@ -120,11 +103,9 @@ def _read_plan_json(plan_dir: Path) -> dict[str, Any]:
 def _read_parent_seed_filers(
     paths: FilingCatalogPaths, plan_id: str, parent_root: Path
 ) -> dict[str, Any]:
-    """Load a parent plan's published seed sidecar, or explain why it cannot be.
+    """Load a parent plan's published seed sidecar, or why it cannot be.
 
-    The reader raises bare ``FileNotFoundError`` and ``ValueError``, which are
-    accurate but useless here: the operator did not mis-type a path, the bundle
-    is incomplete. Both are restated as a parent-plan failure naming the file.
+    A bare ``FileNotFoundError`` misleads: the operator did not mis-type a path.
     """
     sidecar = paths.plan_seed_filers(plan_id)
     try:
@@ -146,14 +127,8 @@ def _inherited_policy_fields(policy: SelectionPolicy) -> dict[str, Any]:
 
 def validate_parent_schema(parent_meta: dict[str, Any]) -> None:
     """Reject a parent plan this build cannot expand from.
-
-    Expansion takes an explicit directory, so unlike an ordinary plan lookup it
-    gets no protection from plan identity: a bundle published under an older
-    schema has a different ``plan_id`` and lives in a different directory, but
-    nothing stops an operator from pointing ``--parent`` straight at it. Every
-    required field below is written unconditionally by the current planner, so a
-    field that is absent is a plan from another schema or a malformed bundle,
-    never a legitimate parent. There is no compatibility path: republish it.
+    An explicit directory gets no protection from plan identity, and nothing stops
+    ``--parent`` pointing at an older-schema bundle. Republish it.
     """
     version = parent_meta.get("plan_schema_version")
     if version != TARGET_PLAN_SCHEMA_VERSION:
@@ -181,15 +156,8 @@ def validate_parent(
     seed_fingerprint: str,
 ) -> SelectionPolicy | None:
     """Reject a child policy that does not extend its parent.
-
-    Checked before selection so a mismatched expansion costs a validation error
-    rather than a full feature build. A deterministic plan has no selection to
-    extend, so it is refused outright.
-
-    Returns the parent's *resolved* policy when the plan embedded one, so the
-    caller derives the child from the constraints the parent was actually built
-    under rather than from the draft that produced it. That is what keeps era
-    bands -- and therefore the feature snapshot -- identical between the two.
+    Returns the parent's *resolved* policy when embedded, so the child derives from the
+    constraints the parent was built under.
     """
     if parent_meta.get("scope") != SCOPE_POLICY:
         raise ParentPlanError("plan expansion requires a policy-driven parent plan")
@@ -220,16 +188,8 @@ def _inherits_resolution(
     parent_policy: SelectionPolicy, child: SelectionPolicy
 ) -> bool:
     """Whether the child declares the same policy as its resolved parent.
-
-    A published plan embeds the policy *with its bands resolved*, because the
-    locators it holds were stratified under those bands and era is baked into the
-    feature snapshot. A draft that still asks for derived bands would compare
-    unequal against that, even though it declares nothing different.
-
-    So a draft that derives bands inherits whatever its parent resolved; a draft
-    that declares bands must declare the same ones. That is the whole
-    compatibility rule, and it is why editing a draft's strata produces a new
-    root plan rather than an expansion.
+    A plan embeds its policy *with bands resolved*, so a draft that derives bands
+    inherits the parent's while one declaring them must declare the same ones.
     """
     parent_fields = _inherited_policy_fields(parent_policy)
     child_fields = _inherited_policy_fields(child)
@@ -267,8 +227,8 @@ def prepare_parent(
     parent_meta = _read_plan_json(parent_root)
     parent_keys = plan_locator_keys(parent_root)
 
-    # Re-run the gate for direct callers: ``expand`` performs it before reading
-    # the seed sidecar, and this is a public entry point of its own.
+    # Re-run for direct callers: ``expand`` gates before reading the sidecar,
+    # and this is a public entry point of its own.
     validate_parent_schema(parent_meta)
 
     if target_units < len(parent_keys):
@@ -276,10 +236,9 @@ def prepare_parent(
             "expanded target_units cannot be smaller than the parent selection"
         )
 
-    # The fingerprint is checked against the selection the parent actually
-    # published, not merely read. A parent whose recorded fingerprint disagrees
-    # with its own locators is not the plan it claims to be, and inheriting it
-    # would give the child a lineage that describes something else.
+    # Checked against the selection the parent actually published, not merely
+    # read: a parent whose fingerprint disagrees with its own locators is not the
+    # plan it claims to be.
     recorded_fingerprint = str(parent_meta["plan_fingerprint"])
     if plan_fingerprint(parent_meta, parent_keys) != recorded_fingerprint:
         raise ParentPlanError(
@@ -287,10 +246,9 @@ def prepare_parent(
             "the bundle was modified after publication"
         )
 
-    # Validated once against the caller's declaration, then again against the
-    # parent's resolved policy when one is embedded. The second pass is what
-    # makes the child inherit the bands its parent was stratified under; it is
-    # cheap because both checks are dictionary comparisons.
+    # Validated against the caller's declaration, then again against the
+    # parent's resolved policy, which is what makes the child inherit the bands
+    # its parent was stratified under.
     child_policy = _child_policy(
         policy, policy, target_units, parent_meta, recorded_fingerprint
     )
@@ -312,8 +270,7 @@ def validate_target(
 ) -> None:
     """Refuse to publish a child that could not reach its requested size.
 
-    Only meaningful for an expansion: a fresh policy plan publishes whatever the
-    corpus could supply, with the shortfall reported rather than fatal.
+    Only meaningful for an expansion; a fresh plan reports the shortfall instead.
     """
     if parent_plan_dir is not None and selected_count < target_units:
         raise ParentPlanError(
@@ -340,9 +297,7 @@ def expand(
 ) -> dict[str, Any]:
     """Publish an immutable child plan that retains every parent locator.
 
-    ``target_units`` is the child's requested size. It must be at least the
-    parent's selected locator count; a smaller request is a contraction, not an
-    expansion, and is rejected rather than silently truncated.
+    A ``target_units`` below the parent's is a contraction, and is rejected.
     """
     if target_units < 1:
         raise ValueError("target_units must be positive")
@@ -355,15 +310,11 @@ def expand(
     parent_root = Path(parent_plan_dir).resolve()
     parent_meta = _read_plan_json(parent_root)
 
-    # Check the scope before anything else, so a deterministic plan gets the
-    # error that explains *why* it cannot be expanded rather than a complaint
-    # about the policy field it was never going to have.
+    # Scope first, so a deterministic plan gets the error explaining *why* it
+    # cannot be expanded; then schema, before the seed sidecar is touched.
     if parent_meta.get("scope") != SCOPE_POLICY:
         raise ParentPlanError("plan expansion requires a policy-driven parent plan")
 
-    # Then the schema, before the seed sidecar is touched. A bundle from an older
-    # schema has no sidecar to read, and reporting a missing file for it would
-    # send the operator looking for the wrong problem.
     validate_parent_schema(parent_meta)
 
     catalog_id = str(parent_meta["catalog_id"])
@@ -376,10 +327,9 @@ def expand(
     parent_policy = SelectionPolicy.from_dict(embedded)
 
     if seed_filers is None:
-        # An expansion must reproduce its parent's selection, so the seed set
-        # comes from the parent's published sidecar. Re-reading the configured
-        # CSV here would let a moved, edited, or deleted file change the
-        # mandatory filers of a child whose parent cannot be reproduced.
+        # An expansion must reproduce its parent's selection, so the seed set comes
+        # from the parent's sidecar: re-reading the configured CSV would let a
+        # moved or edited file change a child whose parent is not reproducible.
         seed_filers = _read_parent_seed_filers(
             paths, str(parent_meta["plan_id"]), parent_root
         )
@@ -388,8 +338,8 @@ def expand(
         parent_root, parent_policy, target_units, catalog_id, seed_fingerprint
     )
 
-    # The catalog id and the form/suffix vocabulary come from the parent, so a
-    # child cannot silently narrow the surface its parent committed to.
+    # From the parent, so a child cannot silently narrow the surface its parent
+    # committed to.
     child_policy.document_suffixes = list(
         normalize_suffixes(parent_policy.document_suffixes)
     )
@@ -432,12 +382,8 @@ def _write_lineage(
 
 def _rewrite_plan_json(plan_dir: Path, child_meta: dict[str, Any]) -> None:
     """Add the lineage keys to the published ``plan.json`` in place.
-
-    The bundle is already published by the time the lineage is known, because
-    the lineage is a function of the selection the plan just recorded. The file
-    is rewritten atomically and only ever gains keys, so a concurrent reader
-    sees either the pre-lineage or the post-lineage document, never a partial
-    one.
+    It only ever gains keys, so a concurrent reader sees the pre- or post-lineage
+    document, never a partial one.
     """
     atomic_write_json(plan_dir / PLAN_FILE_NAME, child_meta, canonical=False, indent=2)
 

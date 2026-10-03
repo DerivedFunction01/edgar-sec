@@ -1,16 +1,6 @@
-"""Shared fixtures for the selection-engine tests.
-
-Most selector tests need a *large, controlled* candidate pool: enough locators
-to make a family cap bind, and families that are deliberately imbalanced. The
-committed catalog fixture has five locators across four registrants, which is
-the right size for exercising the feature builder and far too small to say
-anything about dominance. So these tests build synthetic feature snapshots
-directly, in the exact on-disk shape :mod:`edgar_sec.engine.selection.source`
-reads.
-
-The one test that must run against real materialized output -- the feature
-builder -- uses the committed catalog fixture instead, via the root
-``sample_source`` fixture.
+"""Synthetic selection snapshots: the committed catalog fixture is far too
+small to make a family cap bind, so selector tests build their own in the
+on-disk shape `source` reads.
 """
 
 from __future__ import annotations
@@ -26,8 +16,7 @@ import pytest
 from edgar_sec.engine.selection.policy import EraBand, SelectionPolicy
 from edgar_sec.engine.selection.source import OCCURRENCE_COLUMNS, POOL_COLUMNS
 
-# Types mirror what FeatureSnapshotBuilder actually writes, so a synthetic
-# snapshot is type-faithful to a real one and cannot hide a casting bug.
+# Type-faithful to what the builder writes, so a synthetic snapshot cannot hide a bug.
 _BOOL_COLUMNS = frozenset({"has_revival_gap"})
 _INT_COLUMNS: dict[str, pa.DataType] = {
     "reported_size": pa.int64(),
@@ -63,10 +52,7 @@ _LOCATOR_DEFAULTS: dict[str, Any] = {
 
 _OCCURRENCE_BOOL_COLUMNS = frozenset({"is_xbrl", "is_inline_xbrl", "is_xbrl_numeric"})
 
-# Columns the real builder writes to locator_features that the pool projection
-# does not read. They are written here so a synthetic snapshot is shaped like a
-# real one: a filter over document_path has to bind against a snapshot that
-# actually has the column.
+# Written but unread by the pool projection, so a document_path filter binds.
 _EXTRA_LOCATOR_COLUMNS: dict[str, Any] = {
     "filing_date": "2021-03-01",
     "report_date": "2020-12-31",
@@ -195,12 +181,8 @@ def make_locator(
 
 @pytest.fixture
 def snapshot_dir(tmp_path: Path) -> Path:
-    """A balanced 20-locator snapshot where the family cap never binds.
-
-    Four families, five locators each, but every locator carries a distinct
-    ``sic_code`` and so a distinct six-part classification signature. That is
-    the shape a healthy corpus has, and it is the right baseline for the tests
-    that are about floors, seeds, and reserves rather than about dominance.
+    """Four families of five locators, every locator a distinct signature: the cap
+    never binds here, so a shortfall means something else.
     """
     locators = [
         make_locator(
@@ -231,16 +213,8 @@ def selection_policy() -> SelectionPolicy:
 
 
 def make_dominant_snapshot(root: Path, *, others: int) -> Path:
-    """A snapshot where one group holds twelve locators in one signature.
-
-    The twelve share every classification dimension, so the family cap admits
-    exactly one of them. The other ``others`` locators are each their own family
-    with a distinct signature, so the reachable set is ``1 + others`` and any
-    shortfall is attributable to the cap alone.
-
-    The independents are numbered from 100 so their locator keys cannot collide
-    with the group's: ``write_snapshot`` keys rows by ``document_locator_key``,
-    and an overlap would silently drop three of the twelve.
+    """The independents are numbered from 100 because ``write_snapshot`` keys rows by
+    locator key; an overlap would silently drop three of the twelve.
     """
     locators = [make_locator(index, company_family="megacorp") for index in range(12)]
     locators += [

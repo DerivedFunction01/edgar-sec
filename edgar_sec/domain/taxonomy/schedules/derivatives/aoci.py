@@ -12,7 +12,6 @@ from edgar_sec.foundation.text.evidence import (
     compile_evidence_pack,
 )
 
-# Primary AOCI rollforward headings and headers
 _AOCI_HEADINGS = (
     "accumulated other comprehensive income (loss)",
     "accumulated other comprehensive loss",
@@ -29,7 +28,6 @@ _AOCI_HEADINGS = (
     "reclassification adjustments out of accumulated other comprehensive income",
 )
 
-# AOCI component line items / row labels
 _AOCI_COMPONENTS = expand_alternations(
     expand_variants(
         (

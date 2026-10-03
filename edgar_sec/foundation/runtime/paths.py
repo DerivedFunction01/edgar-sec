@@ -7,12 +7,8 @@ from pathlib import Path
 
 from .settings import resolve_settings
 
-# Shared artifact-layout convention. Every pipeline publishes an immutable
-# dataset under a dataset root and records the "currently published" identity in
-# a pointer file; resumable work lives under a transient root. These names are
-# the cross-pipeline contract, so they are declared once here rather than being
-# restated in each pipeline's paths module, where a rename in one place would
-# silently desynchronize the others.
+# Cross-pipeline artifact layout: an immutable dataset under a dataset root, a
+# pointer naming what is published, and resumable work under a transient root.
 TRANSIENT_DIR = "transient"
 CURRENT_DIR = "current"
 POINTER_FILE_NAME = "pointer.json"
@@ -20,10 +16,7 @@ PLAN_FILE_NAME = "plan.json"
 SNAPSHOTS_DIR = "snapshots"
 PLANS_DIR = "plans"
 
-# Document-storage layout. Kept beside the shared names above because the
-# snapshot root, the pointer that names the published snapshot, and the
-# transient run root are the *same* cross-pipeline contract the generic
-# constants encode; only the dataset name differs.
+# Document storage reuses the same contract; only the dataset name differs.
 DOCUMENTS_DATASET = "document_storage"
 RUNS_DIR = "runs"
 CHECKPOINTS_DIR = "checkpoints"
@@ -36,8 +29,7 @@ REVIEW_RUNS_DIR = "review-runs"
 def current_pointer_path(snapshots_root: Path) -> Path:
     """Return the pointer file naming the currently published snapshot.
 
-    Shared so every dataset resolves "current" identically; a pipeline that
-    invented its own shape would make ``status`` ambiguous across datasets.
+    Shared so every dataset resolves "current" identically.
     """
     return snapshots_root / CURRENT_DIR / POINTER_FILE_NAME
 
@@ -61,7 +53,6 @@ class ProjectPaths:
     uploads_root: Path
 
     def ensure_directories(self) -> None:
-        """Create standard runtime directories if they do not exist."""
         self.artifacts_root.mkdir(parents=True, exist_ok=True)
         self.uploads_root.mkdir(parents=True, exist_ok=True)
         self.runtime_root.mkdir(parents=True, exist_ok=True)
@@ -75,11 +66,6 @@ class ProjectPaths:
         return self.runtime_root / "sec_broker.sock"
 
     # --- Document storage -------------------------------------------------
-    #
-    # The document-storage pipeline is the one consumer of a *fixture root*:
-    # the raw-payload store that makes the offline fetch path work, and the
-    # review bundles the review tool renders. Both outlive a single run, so
-    # neither belongs under the run-scoped transient tree.
 
     @property
     def documents_root(self) -> Path:
@@ -128,13 +114,8 @@ class ProjectPaths:
     def review_runs_root(self) -> Path:
         """Durable root of generated review runs, one directory per run id.
 
-        A review run is a deliverable, not staging. The workflow is "generate,
-        change code, generate again, compare the two", which means the output has
-        to outlive the command that wrote it and sit beside the snapshots and
-        fixtures it was derived from. Filing it under the run-scoped transient
-        tree would be wrong twice over: it is not a resumable pipeline run, and
-        a directory you intend to diff against a sibling must not be somewhere a
-        reader assumes the pipeline is free to reclaim.
+        A review run is a deliverable meant to be diffed against a later one, so it
+                must outlive its command and must not sit where staging may be reclaimed.
         """
         return self.artifacts_root / DOCUMENTS_DATASET / REVIEW_RUNS_DIR
 
@@ -154,17 +135,8 @@ class ProjectRootError(RuntimeError):
 def _reject_package_working_directory(root: Path) -> None:
     """Fail loudly when the CWD is inside the ``edgar_sec`` package.
 
-    ``resolve_paths`` treats the working directory as the project root, so
-    running from ``edgar_sec/`` does not fail -- it quietly derives a *second*
-    artifacts tree at ``edgar_sec/.artifacts``, with ``uploads/`` and ``cache/``
-    alongside it. Every later command then reports an empty catalog, and a
-    full-corpus run publishes real work into a tree nothing reads.
-
-    This is worth a hard error rather than a heuristic search for the "real"
-    root: the package source directory is never a legitimate project root, so
-    the check is unambiguous even though recovering the intended root is not.
-    An explicit ``repo_root`` argument is accepted, because a caller that names
-    the root has already answered the question.
+    ``resolve_paths`` treats the CWD as the project root, so running from ``edgar_sec/``
+    quietly derives a second artifacts tree no reader consults; ``repo_root`` skips this.
     """
     resolved = root.resolve()
     if resolved == PACKAGE_ROOT or PACKAGE_ROOT in resolved.parents:
@@ -178,9 +150,8 @@ def _reject_package_working_directory(root: Path) -> None:
 def _resolve_artifacts_root(root: Path) -> Path:
     """Resolve the registered artifacts root against the project root.
 
-    The setting defaults to a relative ``.artifacts``, which is anchored here so
-    it lands beside the package. An absolute value is taken as given, which is
-    how a test or a side-by-side tree redirects the whole workspace.
+    A relative value (the default) is anchored beside the package; an absolute
+            one is taken as given, which is how a test redirects the workspace.
     """
     configured = Path(str(resolve_settings()["artifacts.root"]))
     if configured.is_absolute():
@@ -189,18 +160,10 @@ def _resolve_artifacts_root(root: Path) -> Path:
 
 
 def resolve_paths(repo_root: Path | str | None = None) -> ProjectPaths:
-    """Resolve standard project layout from environment or current working directory.
+    """Resolve standard project layout from the current working directory.
 
-    With no ``repo_root``, the current working directory *is* the project root.
-    Run the CLI from the repository root: the artifacts, uploads, and cache
-    roots are all derived from it, and running from anywhere else silently
-    publishes into a parallel tree.
-
-    The artifacts root is read from the registered ``artifacts.root`` setting, so
-    there is exactly one authority for it: an operator who sets ``ARTIFACTS_ROOT``
-    changes both what the registry reports and what this resolver builds. A
-    relative value is anchored to the project root so the default stays beside
-    the package rather than wherever the process happens to be.
+    The CWD *is* the project root, so the CLI must run from the repository root.
+    ``artifacts.root`` is the single authority for the artifacts root.
     """
     if repo_root is not None:
         root = Path(repo_root)

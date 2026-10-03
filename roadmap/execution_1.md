@@ -76,13 +76,39 @@ RE_STATUTORY_EXHIBIT_FILENAME = re.compile(
 #       10k405: 1,050           |  10-k405: 3,325
 #       12b25: 16,576           |  12b-25: 4,514  |  12b_25: 5,141
 
-_UNITS  = {"1": "one",   "2": "two",    "3": "three",   "4": "four",
-           "5": "five",  "6": "six",    "7": "seven",   "8": "eight",  "9": "nine"}
-_TEENS  = {"10": "ten",  "11": "eleven", "12": "twelve",  "13": "thirteen",
-           "14": "fourteen", "15": "fifteen", "16": "sixteen", "17": "seventeen",
-           "18": "eighteen", "19": "nineteen"}
-_DECADES = {"20": "twenty", "30": "thirty", "40": "forty",   "50": "fifty",
-            "60": "sixty",  "70": "seventy", "80": "eighty", "90": "ninety"}
+_UNITS = {
+    "1": "one",
+    "2": "two",
+    "3": "three",
+    "4": "four",
+    "5": "five",
+    "6": "six",
+    "7": "seven",
+    "8": "eight",
+    "9": "nine",
+}
+_TEENS = {
+    "10": "ten",
+    "11": "eleven",
+    "12": "twelve",
+    "13": "thirteen",
+    "14": "fourteen",
+    "15": "fifteen",
+    "16": "sixteen",
+    "17": "seventeen",
+    "18": "eighteen",
+    "19": "nineteen",
+}
+_DECADES = {
+    "20": "twenty",
+    "30": "thirty",
+    "40": "forty",
+    "50": "fifty",
+    "60": "sixty",
+    "70": "seventy",
+    "80": "eighty",
+    "90": "ninety",
+}
 
 
 def _num_word_variants(n: int) -> list[str]:
@@ -117,11 +143,11 @@ def _num_word_variants(n: int) -> list[str]:
 
     else:
         # 100..999
-        h     = n // 100
-        rest  = n % 100
-        hw    = _UNITS[str(h)]         # e.g. 'four' for 400s
-        dec   = str((rest // 10) * 10)
-        unit  = str(rest % 10)
+        h = n // 100
+        rest = n % 100
+        hw = _UNITS[str(h)]  # e.g. 'four' for 400s
+        dec = str((rest // 10) * 10)
+        unit = str(rest % 10)
 
         if rest == 0:
             rest_w = None
@@ -181,10 +207,11 @@ def _alias_word_patterns(alias: str) -> list[str]:
       '424B3'   → r'(?:424|four[-_]?twenty[-_]?four|four[-_]?hundred[-_]?(?:and[-_]?)?twenty[-_]?four|four24)[-_]?b[-_]?(?:3|three)'
     """
     import re as _re
+
     sep = r"[-_]?"
     # Tokenise: split into alternating digit-runs and alpha-runs,
     # ignoring canonical separators.
-    clean = _re.sub(r"[-/ ]+", "", alias)   # strip '-', '/', spaces
+    clean = _re.sub(r"[-/ ]+", "", alias)  # strip '-', '/', spaces
     tokens = _re.findall(r"(\d+|[a-zA-Z]+)", clean)
 
     # Build list-of-lists: each position holds the possible regex atoms
@@ -203,14 +230,13 @@ def _alias_word_patterns(alias: str) -> list[str]:
 
     # Cross-product: join each combination with sep
     from itertools import product
-    patterns = [
-        sep.join(combo)
-        for combo in product(*segment_options)
-    ]
+
+    patterns = [sep.join(combo) for combo in product(*segment_options)]
     return patterns
 
 
 from functools import lru_cache
+
 
 @lru_cache(maxsize=64)
 def get_primary_form_token_pattern(form: str | None) -> re.Pattern[str]:
@@ -237,7 +263,7 @@ def get_primary_form_token_pattern(form: str | None) -> re.Pattern[str]:
       - [-_]? is placed at every major digit↔letter or form↔sub-rule boundary.
       - Sub-acronym clusters (ksb, 405, b3) are never internally split.
     """
-    family  = resolve_alias(form) or (form.upper().strip() if form else None)
+    family = resolve_alias(form) or (form.upper().strip() if form else None)
     aliases = aliases_for_family(family) if family else ()
 
     # Seed with universal context tokens

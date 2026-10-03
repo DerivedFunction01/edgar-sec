@@ -1,27 +1,7 @@
-"""Materialize an immutable filing-catalog snapshot from a Phase 1 snapshot.
-
-Zero network: this module reads one published Parquet dataset and writes one
-immutable catalog snapshot. It never constructs an HTTP client.
-
-Four guards are important invariants:
-
-1. a source path under ``chunks``, ``checkpoints``, or ``workers`` is refused,
-   so a transient Phase 1 work unit can never be mistaken for a finalized
-   snapshot;
-2. the source column list must equal ``SUBMISSION_METADATA_SCHEMA.names``
-   exactly, so a Phase 1 schema change fails loudly instead of producing a
-   silently truncated catalog;
-3. an existing snapshot directory is refused rather than overwritten, so a
-   published snapshot stays immutable;
-4. the source parts must be CIK-disjoint. The target pass deduplicates
-   occurrences per shard and keys them on ``source_cik``, so a CIK spanning two
-   parts would publish the same ``occurrence_id`` twice.
-
-The target pass reads **one source part per query**. A Phase 1 registrant row
-carries its entire filing history as a nested array, so the whole cohort arrives
-as a few tens of thousands of very large nested values; unnesting them together
-both pins all of that at once and makes peak memory a function of the cohort
-rather than of a part.
+"""Materialize an immutable filing-catalog snapshot from a metadata snapshot.
+Four guards are invariants: a transient source is refused, the column list must
+exactly match the source schema, an existing snapshot is never overwritten, and
+parts must be CIK-disjoint.
 """
 
 from __future__ import annotations
@@ -97,11 +77,9 @@ def _catalog_id(source_hash: str) -> str:
 
 
 def _verify_source_digest(candidate: Path, expected: str, origin: Path) -> None:
-    """Refuse a source whose bytes do not match the digest Phase 1 published.
+    """Refuse a source whose bytes do not match the digest the manifest published.
 
-    Phase 1 hashes the artifact it wrote, so a mismatch means the file was
-    replaced or truncated after publication. Both call sites hash whole Parquet
-    files, so this streams rather than reading them into memory.
+    A mismatch means the file was replaced or truncated after publication.
     """
     if not expected:
         raise CatalogError(f"Phase 1 manifest records no artifact digest: {origin}")
@@ -133,21 +111,9 @@ def resolve_source(
     source_artifact: str | os.PathLike[str] | None,
     source_manifest: str | os.PathLike[str] | None = None,
 ) -> SourceDataset:
-    """Resolve the Phase 1 dataset this catalog consumes.
-
-    A Phase 1 snapshot is a dataset, so resolution yields an ordered part list
-    rather than one path. Three entry points converge on that list:
-
-    * an explicit manifest is read, and the parts it declares are verified
-      against the digests it recorded;
-    * an explicit Parquet path is taken as a one-part dataset;
-    * with neither, the current Phase 1 pointer names a snapshot whose manifest
-      supplies the parts.
-
-    A manifest is metadata, not data. Returning the manifest path itself as the
-    source would hand the JSON to the Parquet reader, so the payload is resolved
-    from what the manifest declares. Snapshots published before the multipart
-    contract are single-file and resolve through the same reader.
+    """Resolve the source dataset this catalog consumes.
+    Three entries converge on an ordered part list: a manifest, whose parts are
+    digest-verified; a Parquet path; or the current pointer.
     """
     if source_manifest is not None:
         return _source_from_manifest(Path(source_manifest))
@@ -189,7 +155,7 @@ def _source_from_pointer() -> SourceDataset:
 
 
 def _guard_not_transient(source: SourceDataset) -> None:
-    """Guard 1: refuse a transient Phase 1 work unit as a catalog source."""
+    """Refuse a transient source work unit as a catalog source."""
     for path in source.paths:
         if any(part in TRANSIENT_SOURCE_PARTS for part in path.parts):
             raise CatalogError(
@@ -198,7 +164,7 @@ def _guard_not_transient(source: SourceDataset) -> None:
 
 
 def _guard_schema_matches(source: SourceDataset) -> None:
-    """Guard 2: every part must be exactly the declared Phase 1 dataset."""
+    """Every part must be exactly the declared source dataset."""
     expected = SUBMISSION_METADATA_SCHEMA.names
     for path in source.paths:
         actual = read_parquet_schema(path).names
@@ -212,17 +178,9 @@ def _guard_schema_matches(source: SourceDataset) -> None:
 
 
 def _guard_ciks_are_disjoint(source: SourceDataset) -> None:
-    """Guard 4: each CIK must appear in exactly one source part.
-
-    The target pass unnests one source part at a time and deduplicates occurrences
-    within that part, so a CIK spanning two parts would publish the same
-    ``occurrence_id`` into two shards — a dataset-wide duplicate that no per-shard
-    check could catch. A published Phase 1 snapshot already carries one row per
-    CIK, but this guard is what makes that an enforced precondition of the sharded
-    write rather than an assumption about a particular artifact.
-
-    The check is a cheap column-pruned aggregate over ``cik`` alone; it never
-    expands the nested ``filings`` arrays.
+    """Each CIK must appear in exactly one source part.
+    The target pass dedupes within a part only, so a CIK spanning two would publish
+    the same ``occurrence_id`` twice. The check prunes to the ``cik`` column.
     """
     if source.part_count < 2:
         return
@@ -256,24 +214,8 @@ def materialize(
     row_group_size: int | None = None,
 ) -> dict[str, Any]:
     """Materialize one immutable filing-catalog snapshot.
-
-    Without ``output_root`` the snapshot is staged under the transient tree and
-    published atomically into the durable snapshots tree, advancing the current
-    pointer. An explicit ``output_root`` (tests, external tooling) writes the
-    snapshot directory in place and never touches the pointer.
-
-    Resource limits are intentionally *not* parameters here. ``connect()``
-    derives threads, memory limit, and spill directory from the cgroup-aware
-    ``derive_resources()``; re-exposing them as arguments invites the hardcoded
-    allocations the ``resource-allocation`` scanner exists to block.
-
-    The target pass is bounded by the *source part*, not by a tunable batch size.
-    Each Phase 1 part is unnested on its own and written to its own shard, so peak
-    memory tracks the densest part rather than the whole cohort, and an earlier
-    ``source_batch_size`` setting that was validated and recorded without ever
-    batching anything is gone. There is deliberately no size knob: the unit of
-    work is a published dataset boundary, and inventing a second one is what left
-    the original unbounded.
+    An explicit ``output_root`` publishes in place and never touches the pointer.
+    Resource limits are not parameters: ``connect()`` derives them.
     """
     settings = resolve_settings()
     groups = int(
@@ -296,9 +238,9 @@ def materialize(
     )
 
     paths = resolve_filing_catalog_paths(output_root)
-    # A catalog id must identify the dataset, not one file of it. An upstream
-    # handoff id wins; otherwise the id is derived from the ordered part digests,
-    # so two layouts holding the same rows resolve to the same catalog.
+    # A catalog id must identify the dataset, not one file of it: an
+    # upstream id wins, else the ordered part digests do, so two layouts holding
+    # the same rows resolve to the same catalog.
     source_hash = str((source.handoff or {}).get("parts_digest") or "") or parts_digest(
         [{"sha256": file_sha256(path)} for path in source.paths]
     )
@@ -307,17 +249,14 @@ def materialize(
     )
     catalog_id = snapshot_id
 
-    # An explicit output_root is interpreted as an artifacts root, so the layout
-    # agrees with resolve_filing_catalog_paths() and a catalog materialized into
-    # a scratch directory can be planned from that same directory. It still
-    # stages transiently and publishes atomically; only the pointer advance is
-    # skipped.
+    # An explicit output_root is read as an artifacts root, so a catalog written
+    # to a scratch directory can be planned from that same directory.
     durable = output_root is None
     final_dir = paths.snapshot_dir(catalog_id)
     staging_dir = paths.transient_catalog_dir(catalog_id)
 
-    # The immutability guard applies to both publication modes: an existing
-    # destination snapshot is never overwritten, preserving catalog immutability.
+    # Immutability applies to both publication modes: an existing
+    # destination snapshot is never overwritten.
     if final_dir.exists():
         raise CatalogError(
             f"immutable catalog snapshot already exists: {final_dir}; prune it or "
@@ -356,10 +295,9 @@ def materialize(
     part_metadata: list[dict[str, Any]] = []
     form_counts: dict[str, int] = {}
     total_target_rows = 0
-    # One source part per query and per shard. Reusing a single connection keeps
-    # the per-part queries cheap; reclaim() between parts returns the previous
-    # part's arena pages to the OS so a dense part does not push the next one into
-    # a fragmented heap. Peak memory is therefore set by the densest single part.
+    # One source part per query and per shard. reclaim() between parts returns the
+    # previous part's arena pages to the OS, so peak memory is set by the densest
+    # single part rather than by a fragmented heap.
     with connect() as con:
         for index, source_path in enumerate(source.paths):
             shard_name = target_part_name(index)

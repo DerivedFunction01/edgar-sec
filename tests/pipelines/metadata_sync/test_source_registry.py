@@ -1,9 +1,5 @@
-"""Immutable external source snapshot tests.
-
-Split from ``test_augmentation.py`` so each source module owns one mirrored test
-file (AGENTS.md §6.3). The lifecycle under test is capture → content-address →
-publish → verify, and the property that matters is that an unchanged fetch is a
-no-op while a changed payload produces a new snapshot rather than an overwrite.
+"""Immutable external source snapshots: capture, content-address, publish, verify.
+An unchanged fetch is a no-op; a changed payload is a new snapshot, not a rewrite.
 """
 
 from __future__ import annotations

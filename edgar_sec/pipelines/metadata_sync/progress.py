@@ -1,20 +1,7 @@
 """How this pipeline's progress events become something a person can watch.
-
-It is deliberately phase-local rather than shared. ``foundation.runtime.progress``
-already owns the adapters that turn a pipeline's events into a tqdm bar, and it
-knows nothing about which phase a pipeline is in. What lives here is the phase
-knowledge: this pipeline has a per-CIK fetch shape, a per-stage merge shape, and
-an augmentation runs both in one command. Promoting that to ``foundation`` on the
-strength of one caller would be speculative; a shared interactive entry point
-hardcoded to one phase's exact model is a known way to end up with dead code
-everywhere else. If a second pipeline needs the same sequencing, promote it then,
-with two callers to shape it.
-
-A terminal gets a live bar; a pipe or a captured log gets one plain line per event
-prefixed with the phase that emitted it. Choosing on ``isatty`` is what keeps a
-redirected run readable, and naming the phase is what keeps a log parseable: the
-two shapes are otherwise indistinguishable, and a log consumer cannot tell a
-fetch event from a merge stage.
+A terminal gets a live bar; a pipe or captured log gets one plain line per event
+prefixed by the emitting phase, so a log consumer can tell a fetch event from a
+merge stage.
 """
 
 from __future__ import annotations
@@ -35,9 +22,8 @@ __all__ = [
 # of the contract the merge-reporting callback already understands.
 MERGE_PROGRESS_STAGES = 4
 
-# An augmentation emits its own two merge stages (validating, publishing_parts).
-# They are counted here rather than inferred, so a bar that finishes short is
-# visible instead of looking like a hang.
+# An augmentation emits its own two merge stages. Counted rather than inferred,
+# so a bar that finishes short is visible instead of looking like a hang.
 AUGMENT_MERGE_STAGES = 2
 
 # Event types that belong to the merge half rather than the fetch half.
@@ -52,14 +38,7 @@ def _event_phase(event_type: str) -> str:
 
 def emit_progress_event(event: dict[str, Any], label: str = "") -> None:
     """Render one progress event to stderr.
-
-    Progress goes to stderr because merge output owns stdout, and a non-TTY run
-    stays quiet rather than emitting bar control characters into a captured log.
-
-    The phase is derived from the event unless the caller supplies one. It used to
-    print a hardcoded ``merge:`` prefix, which mislabelled the per-CIK fetch events
-    ``run`` emits as if they were merge stages, so a redirected ``run`` logged
-    ``merge: ok`` once per CIK and a log consumer could not tell the phases apart.
+    The phase is derived from the event, or a redirected run mislabels fetches.
     """
     event_type = event.get("type", "progress")
     rows = event.get("rows")
@@ -72,10 +51,7 @@ def progress_renderer(
 ) -> tuple[Callable[[dict[str, Any]], None] | None, Any]:
     """Build a progress callback for a single-phase command, and its bar to close.
 
-    The tqdm adapters in ``foundation.runtime.progress`` already implement both
-    event shapes this pipeline emits: per-CIK fetch events and per-stage merge
-    events. Routing through them gives those adapters a real caller and keeps the
-    rendering in one place instead of per command.
+    Routes through the shared tqdm adapters so rendering stays in one place.
     """
     if not sys.stderr.isatty():
         return (lambda event: emit_progress_event(event, label=kind)), None
@@ -94,19 +70,8 @@ def progress_renderer(
 
 class AugmentProgress:
     """Route one augmentation's two phases to their own progress presentation.
-
-    An augmentation is the only long command that runs two phases end to end: a
-    rate-limited fetch of the delta, then a merge that scans every input for null
-    and duplicate CIKs before publishing parts. ``run`` and ``merge`` each get a
-    single bar because each is a single phase.
-
-    The fetch bar cannot be sized before the call, because the delta depends on
-    which CIKs the base snapshot already holds and only the augmentation knows
-    that. So the augmentation announces its plan with a ``delta_plan`` event and
-    the bar is sized from it, which is why this is a router rather than one of the
-    single-phase renderers. A pipe or a captured log gets the plain event lines for
-    both phases, so a non-interactive caller sees the same stream ``run`` and
-    ``merge`` produce.
+    The fetch bar is sized from the ``delta_plan`` event, hence a router rather than
+    a single-phase renderer.
     """
 
     def __init__(self, desc: str) -> None:
@@ -176,9 +141,7 @@ class AugmentProgress:
     def close(self) -> None:
         """Release whichever bar is open. Must not start one.
 
-        Separated from ``_close_fetch`` because a failure during the fetch has to
-        leave nothing behind: closing the run must not open a merge bar nobody
-        entered, and an operator who abandons the command should not get one.
+        Closing after a failed fetch must not open a merge bar nobody entered.
         """
         self._close_fetch()
         if self._merge_bar is not None:

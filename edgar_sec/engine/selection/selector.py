@@ -1,22 +1,6 @@
-"""Quota selection over a feature snapshot.
-
-Quota profile fill order, in decreasing authority — the order is the design:
-
-* **Seed filers** are mandatory, whatever any quota says.
-* **Composite strata** are conjunctions, so they precede single-dimension floors.
-* **Single-dimension floors** are chased by relative deficit, feeding the
-  dimension proportionally furthest from its floor first.
-* **Form-by-era allocation** distributes the remaining quota across those cells.
-* **Weighted pool filling** takes the remaining candidates, subject to caps.
-* **The reserve** is filled last, from candidates not in the active set.
-
-The property that matters most is the *family cap*. A naive sample is dominated
-by large corporate groups, because a group with 400 subsidiaries files 400
-documents. Every candidate is keyed by a six-part classification signature and at
-most ``max_per_company_classification`` may share one; because every subsidiary
-resolves to one ``company_family``, the cap suppresses a group's subsidiaries
-without special-casing them. Seed filers bypass it because they are mandatory:
-dropping an anchor would violate the policy more than over-representation.
+"""Quota selection over a feature snapshot. Fill order, decreasing authority: seeds,
+composite strata, floors by deficit, form-by-era allocation, weighted pool,
+reserve. At most `max_per_company_classification` candidates share a signature.
 """
 
 from __future__ import annotations
@@ -34,9 +18,8 @@ from edgar_sec.engine.selection.policy import (
 )
 from edgar_sec.engine.selection.source import CandidateFilters, CandidateSource
 
-# The six dimensions that define a company's filing posture. A cap on this
-# tuple is what stops one corporate group filling the sample with its own
-# subsidiaries.
+# The six dimensions defining a company's filing posture. Capping this tuple is
+# what stops one corporate group filling the sample with its own subsidiaries.
 CLASSIFICATION_DIMENSIONS = (
     "company_family",
     "form",
@@ -53,8 +36,6 @@ DEFAULT_RESERVE_MAX_PAGES = 100
 
 @dataclass(frozen=True, slots=True)
 class SelectionResult:
-    """The outcome of one selection run."""
-
     active_locators: list[str]
     active_candidates: list[dict[str, Any]]
     active_occurrences: list[dict[str, Any]]
@@ -65,13 +46,8 @@ class SelectionResult:
 
 @dataclass(slots=True)
 class _CellBudget:
-    """One ``(form, era)`` cell's share of the remaining selection budget.
-
-    ``taken`` counts what this phase drew, while ``selected`` counts everything
-    the plan holds in the cell including earlier phases. The difference matters:
-    a floor that already filled a cell reduces how much is left to allocate there,
-    and the report has to say the cell is covered rather than that allocation
-    covered it.
+    """One `(form, era)` cell's share of the budget: `taken` is what this phase drew,
+    `selected` all the plan holds, so a filled cell gets a smaller share.
     """
 
     form: str
@@ -82,10 +58,8 @@ class _CellBudget:
 
 
 def classification_signature(candidate: dict[str, Any]) -> tuple[str, ...]:
-    """Return the capped classification tuple for one candidate.
-
-    Falls back to ``company_name`` when no family was resolved, so a candidate
-    without clustering still participates in the cap rather than escaping it.
+    """The capped classification tuple; falls back to `company_name` when no family
+    resolved, so an unclustered candidate cannot escape the cap.
     """
     family = candidate.get("company_family") or candidate.get("company_name")
     return tuple(
@@ -97,8 +71,6 @@ def classification_signature(candidate: dict[str, Any]) -> tuple[str, ...]:
 
 
 class DeficitSelector:
-    """Execute policy-driven deficit selection over a feature snapshot."""
-
     def __init__(
         self,
         snapshot_dir: str | Path,
@@ -117,7 +89,6 @@ class DeficitSelector:
         self._memory_limit = memory_limit
 
     def select(self, parent_active_keys: list[str] | None = None) -> SelectionResult:
-        """Run the selection stages and return the typed result."""
         target_units = self.policy.requested_units()
         source = CandidateSource(
             self.snapshot_dir,
@@ -173,9 +144,9 @@ class DeficitSelector:
         with source.session():
             source.register_selected(selected_keys)
 
-            # A parent selection is part of the effective selection, not a
-            # side input: its rows must consume quota, or an expansion would
-            # report coverage the published plan does not actually have.
+            # A parent selection is part of the effective selection, not a side
+            # input: its rows must consume quota or an expansion reports
+            # coverage the published plan does not have.
             for candidate in source.load_candidates_for_locators(selected_keys):
                 _account(candidate)
 
@@ -228,6 +199,8 @@ class DeficitSelector:
         for candidate in source.pool_for_ciks(list(self.seed_filers), limit_per_cik=5):
             if len(selected_keys) >= target_units:
                 break
+            # Seeds bypass the family cap: dropping an anchor violates the
+            # policy more than over-representation does.
             record(candidate, check_cap=False)
 
     def _select_composites(
@@ -312,36 +285,17 @@ class DeficitSelector:
         selected_candidates: list[dict[str, Any]],
         target_units: int,
     ) -> dict[str, Any]:
-        """Fill the remaining budget evenly across nonempty form-by-era cells.
-
-        The weighted fill after this phase is proportional, so the largest form would
-        take the leftover budget and a rare one would be represented only as far
-        as a declared floor pushed it. Allocating across cells first makes the
-        default sample balanced, and a floor stays a *raise* above that balance
-        rather than the only thing producing it.
-
-        Availability is read once per run; re-deriving it per cell would cost one
-        aggregate scan per cell. The phase's result is reported, so a cell that
-        could not fill its share is named rather than quietly replaced.
-
-        The global cap is shared with the earlier phases, so this one draws only
-        from what they left, and allocation can underfill when seeds or floors
-        already claimed the budget. It stops when a round is refused in full: a
-        cell whose every candidate is blocked by the family cap is refused
-        identically on every later round, so the honest outcome is a named
-        shortfall rather than a spin.
+        """Fill the remaining budget evenly across nonempty form-by-era cells. Preceding
+        the proportional weighted fill makes a floor a raise above balance.
         """
         availability = source.cell_availability()
         budget = max(0, target_units - len(selected_keys))
         if not availability:
             return {"budget": budget, "unallocated": budget, "rounds": 0, "cells": []}
 
-        # What the earlier phases already hold counts toward its cell, so a cell
-        # credited by a floor is not then handed a second full share. Keyed on the
-        # raw column values rather than the normalized dimension values:
-        # ``cell_availability`` reports raw strings and ``pool_for_cell`` binds one
-        # straight back into the query, so normalizing on only one side would
-        # silently credit nothing.
+        # What earlier phases hold counts toward its cell, so a floor-credited cell
+        # is not handed a second full share. Keyed on raw column values:
+        # cell_availability reports raw and pool_for_cell binds them back as-is.
         already: dict[tuple[str, str], int] = {}
         for candidate in selected_candidates:
             cell_key = (str(candidate.get("form")), str(candidate.get("era")))
@@ -356,10 +310,9 @@ class DeficitSelector:
             )
             for form, era, count in availability
         ]
-        # Era-first ordering: when the cap is smaller than the cell count, a
-        # chronological pass gives every era at least one row before any era
-        # takes a second. Form-then-era would instead spend the whole budget on
-        # whichever form sorts first.
+        # Era-first: when the cap is smaller than the cell count, a chronological
+        # pass gives every era a row before any takes a second; form-then-era
+        # would spend the whole budget on whichever form sorts first.
         cells.sort(key=lambda cell: (self._era_rank(cell.era), cell.form, cell.era))
 
         remaining = budget
@@ -414,13 +367,8 @@ class DeficitSelector:
         cell: _CellBudget,
         room: int,
     ) -> int:
-        """Draw up to ``room`` candidates from one cell, respecting the cap.
-
-        ``record`` enforces the family cap, so a cell that is entirely one
-        corporate group's filings yields fewer rows than it asked for. That is
-        counted as a shortfall rather than backfilled from elsewhere: the
-        balance is over distinct filings, and padding a cell with a neighbour's
-        rows would defeat it.
+        """Draw up to `room` candidates from one cell. A cell of one group's filings yields
+        fewer rows than asked, counted as a shortfall rather than padded.
         """
         pool = source.pool_for_cell(cell.form, cell.era, limit=room)
         added = 0
@@ -432,12 +380,8 @@ class DeficitSelector:
         return added
 
     def _era_rank(self, era: str) -> tuple[int, int]:
-        """Order eras by their declared band, so allocation walks the calendar.
-
-        Ranked by the band's own start rather than by name: names are ``1999`` or
-        ``2003_2006`` and sort correctly only for one width. An era the policy
-        did not declare -- ``unknown``, or a band no longer in effect -- sorts
-        last, because it is not part of the declared coverage.
+        """Order eras by declared band, so allocation walks the calendar. Ranked by band
+        start, not name; an undeclared era sorts last, outside the coverage.
         """
         for rank, band in enumerate(self.policy.era_bands):
             if band.name == era:
@@ -470,10 +414,8 @@ class DeficitSelector:
         coverage: dict[str, dict[str, int]],
         target_units: int,
     ) -> bool:
-        """True when admitting ``candidate`` would exceed a declared share cap.
-
-        The cap is a fraction of the *target*, not of the current count, so a
-        cap stays meaningful while the selection is still filling up.
+        """Whether admitting `candidate` would exceed a declared share cap. The cap is a
+        fraction of the *target*, so it stays meaningful while selection fills.
         """
         for dimension, cap in self.policy.caps.items():
             value = normalize_value(candidate.get(dimension))

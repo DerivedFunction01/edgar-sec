@@ -1,5 +1,3 @@
-"""Tests for the archive fetcher seam."""
-
 from __future__ import annotations
 
 import pickle
@@ -126,12 +124,7 @@ def test_pem_envelope_is_unwrapped_before_scanning() -> None:
 
 
 def test_single_document_bundle_resolves_to_that_document() -> None:
-    """A bundle holding one exhibit resolves to it rather than yielding nothing.
-
-    The unpacker falls back to the first available sub-document, so a
-    single-document bundle is always resolvable; that is what makes a
-    stub-path locator work against an exhibit-only bundle.
-    """
+    """The unpacker falls back to the first available sub-document."""
     bundle = (
         b"<SEC-DOCUMENT><DOCUMENT><TYPE>EX-99.1</TYPE><SEQUENCE>2</SEQUENCE>"
         b"<FILENAME>other.htm</FILENAME><TEXT><html>exhibit</html></TEXT>"

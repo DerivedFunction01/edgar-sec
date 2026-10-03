@@ -1,9 +1,5 @@
 """Final whitespace normalization for normalized document text.
-
-Cleans trailing line-end padding, splits list items that the source concatenated
-onto one line, and collapses excessive blank runs — problems that become visible
-after cover stages have run. Runs prior to body reflow on ASCII documents.
-
+Cleans trailing line-end padding, splits source-concatenated list items, and collapses blank runs.
 Tagged tables are masked first, so their internal spacing survives byte-for-byte.
 """
 

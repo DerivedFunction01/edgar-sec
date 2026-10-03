@@ -1,22 +1,6 @@
 """Immutable page-marker models and the shape vocabulary detection is stated in.
-
-A filing states its page structure in a small closed set of printed shapes: an
-SGML `<PAGE>` tag, a bare or wrapped label, a `page N of M` line, a numeric
-label that repeats at a fixed distance from its neighbours, and a block of text
-that repeats at a fixed distance from every page anchor. Each shape gets a
-stable `kind` name, and every detection records which shape it matched rather
-than a free-form reason, so a downstream policy decision can be stated in terms
-of the vocabulary instead of of one particular regex.
-
-The models and the patterns are together because they are one vocabulary. A
-`PageMarkerKind` name is not a label: `BARE_NUMBER` is only meaningful against
-`BARE_ARABIC`, and `LETTER_NUMBER` against the namespaced form that can produce
-an exhibit page. Everything below is stated in terms of the shared numeral and
-alternation vocabulary rather than hand-rolled, so the same label shape is
-recognized wherever it appears.
-
-Every coordinate on every model is in the analysis's declared
-`coordinate_frame`; nothing here interprets one.
+A detection records the `kind` it matched, not a free-form reason, so policy is stated in the
+vocabulary. Every coordinate stays in the declared `coordinate_frame`.
 """
 
 from __future__ import annotations
@@ -28,32 +12,23 @@ from enum import StrEnum
 from edgar_sec.foundation.regex.builder import build_alternation
 from edgar_sec.foundation.text.tokens import ROMAN_NUMERAL_PATTERN
 
-# --- The label shapes --------------------------------------------------------
-
-#: An arabic page value: a short run of digits. A roman value is the shared
-#: numeral pattern, so `iv` and `IV` are the same value under one casefold.
+#: A roman value is the shared numeral pattern, so `iv` and `IV` are one value under casefold.
 PAGE_VALUE_ARABIC = r"\d{1,4}"
 PAGE_VALUE = rf"(?:{PAGE_VALUE_ARABIC}|{ROMAN_NUMERAL_PATTERN})"
 RE_PAGE_VALUE = re.compile(rf"{PAGE_VALUE}", re.IGNORECASE)
 
-#: The glyphs a printer wraps a page value in. A wrapper is a glyph, not a
-#: character class, because the dash family has three members in real filings
-#: and the interpunct and bullet forms appear in a fourth.
+#: A wrapper is a glyph, not a character class: the dash family has three real members.
 LABEL_WRAPPERS = build_alternation(
     ["-", "–", "—", ".", "·", "•", "▪"], auto_escape=True
 )
 
-#: Headings that open a document section. A heading that happens to end in a
-#: number is still a heading, so these are refused before any label shape is
-#: tried.
+#: Refused before any label shape: a heading that ends in a number is still a heading.
 STRUCTURAL_HEADING = re.compile(
     rf"(?i)^(?:{build_alternation(['part', 'item', 'exhibit', 'note'], auto_escape=True)})\b"
 )
 
-#: `page N of M`, `N of M`, `page N`, `- N -`, `F-3`, and the SGML page tag in
-#: both its line and inline forms. The tuple is ordered: the first pattern that
-#: matches an overlapping span claims it, so the shapes carrying a total count
-#: are listed before the ones that would match the same text partially.
+#: `page N of M`, `N of M`, `page N`, `- N -`, `F-3`, and the SGML tag in line and inline forms.
+#: Ordered: the first pattern matching an overlapping span claims it, so total-count shapes precede partial ones.
 _PAGE_NUMBER_OF_TOTAL = re.compile(
     r"(?im)^[ \t]*page[ \t]+(?P<page>\d+)[ \t]+of[ \t]+(?P<count>\d+)[ \t]*$"
 )
@@ -72,15 +47,11 @@ _SGML_LINE = re.compile(
 )
 _SGML_INLINE = re.compile(r"(?i)</?PAGE\b[^>]*>")
 
-#: A boundary token carries a page boundary and no page value, in either
-#: bracketing convention. It is matched separately from the tuple below because
-#: it is the one firm shape with nothing to extract.
+#: A boundary carries a page boundary and no value: the one firm shape with nothing to extract.
 RE_BOUNDARY_TOKEN = re.compile(r"(?im)^[ \t]*(?:\(PAGE\)|\[PAGE\])[ \t]*$")
 
-#: The contextual label shapes. Each names a family in `PageMarkerKind`; the
-#: arabic/roman namespace a shape lands in is decided from the matched value,
-#: not from the pattern, so a dash-wrapped roman and a dash-wrapped arabic are
-#: recognized by one pattern and kept apart by their values.
+#: The arabic/roman namespace comes from the matched value, not the pattern, so one dash-wrapped
+#: pattern keeps roman and arabic labels apart.
 DASH_LABEL = re.compile(
     rf"^(?=.*(?:{LABEL_WRAPPERS}))(?:{LABEL_WRAPPERS}|\s)+"
     rf"(?P<value>{PAGE_VALUE})"
@@ -102,10 +73,8 @@ APPENDIX_ROMAN_LABEL = re.compile(
     re.IGNORECASE,
 )
 
-#: The three shapes that accept a line carrying other text. They are the
-#: dangerous ones — a numbered paragraph and a line that merely ends in a
-#: number look the same to a line-level reader — so each is length-bounded
-#: before it is accepted.
+#: A numbered paragraph and a line merely ending in a number look alike to a line reader, so each of
+#: these three is length-bounded before acceptance.
 LEADING_NUMBER_LABEL = re.compile(r"^(?P<value>\d{1,4})\s{1,}\S.*$")
 TRAILING_NUMBER_LABEL = re.compile(r"^\S.*?\s{2,}(?P<value>\d{1,4})$")
 PIPE_HEADER_NUMBER_LABEL = re.compile(
@@ -116,9 +85,6 @@ INLINE_PAGE_LABEL = re.compile(
     r"^(?P<prefix>.{0,80}?\bpage\s+)(?P<value>\d{1,4})\b(?P<suffix>.{0,80})$",
     re.IGNORECASE,
 )
-
-
-# --- The models --------------------------------------------------------------
 
 
 class PageMarkerKind:
@@ -170,9 +136,8 @@ class PageArtifactPolicy(StrEnum):
     PRESERVE = "preserve"
 
 
-#: The firm shapes, in the order they claim an overlapping span. A firm shape
-#: stands alone on its line and is recognized by pattern alone; the contextual
-#: shapes above need a validated run before anything is removed.
+#: Firm shapes, in the order they claim an overlapping span. Each stands alone on its line and is
+#: recognized by pattern alone; the contextual shapes above need a validated run before anything goes.
 PAGE_MARKER_PATTERNS = (
     (PageMarkerKind.PAGE_NUMBER_OF_TOTAL, _PAGE_NUMBER_OF_TOTAL),
     (PageMarkerKind.NUMBER_OF_TOTAL, _NUMBER_OF_TOTAL),
@@ -263,11 +228,7 @@ class TemplateEvidence:
 @dataclass(frozen=True, slots=True)
 class PageBreakArtifact:
     """Provenance record for one rendered page artifact event.
-
-    ``source`` names the validated origin (for example ``page_number``,
-    ``hr``, ``page-break-container``, ``inferred-line``); coordinates stay in
-    their declared ``coordinate_frame``. The rendered token carries only the
-    assigned id; every payload attribute lives here.
+    The rendered token carries only the assigned id; every payload attribute lives here.
     """
 
     page_number: int | str | None
@@ -337,11 +298,8 @@ class PageMarkerAnalysis:
     rejection_diagnostics: tuple[str, ...] = ()
 
 
-# Function words that never appear in captured page header/footer text. Derived
-# by probing the ASCII fixtures: footer document-frequency == 0, body
-# document-frequency high. Words that legitimately occur in footer titles ("the",
-# "of", "for", "to", "no", "which", "during", "must") are deliberately excluded.
-# Used to reject prose-bearing lookalike tables (footnote, comparison).
+#: Words that legitimately occur in footer titles ("the", "of", "for", "to", "no", "which", "during") are
+#: deliberately excluded; the rest reject prose-bearing lookalike tables such as footnotes and comparisons.
 PROSE_GUARD_STOP_WORDS = frozenset(
     [
         "about",
@@ -390,13 +348,8 @@ PROSE_GUARD_STOP_WORDS = frozenset(
     ]
 )
 
-# HTML page-hint vocabulary: a filing generator names its own page furniture in
-# `class`/`id`/CSS vocabulary and reuses that name on every page. Entries are
-# compared after lowercasing, dropping every non-alphanumeric character, and
-# replacing digit runs with `#`, so `page_1`, `page_2`, and `page-break` collapse
-# to one alias each (`page#`, `pagebreak`) without per-character fuzzy matching.
-# Roles: `break`, `number`, `header`, `footer`, `container`. The `break` subset is
-# the one that substitutes a page-split sentinel during projection.
+#: Compared after lowercasing, dropping every non-alphanumeric, and replacing digit runs with `#`, so
+#: `page_1` and `page-break` collapse to one alias each without fuzzy matching. Only `break` splits a page.
 PAGE_HINT_ROLES: dict[str, tuple[str, ...]] = {
     "pagebreak": ("break",),
     "ctpagebreak": ("break",),

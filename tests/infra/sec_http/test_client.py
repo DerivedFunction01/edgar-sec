@@ -19,11 +19,7 @@ def test_default_headers_carry_user_agent() -> None:
 
 
 def test_submissions_url_pads_short_ciks() -> None:
-    """Padded and unpadded CIKs must resolve to the same document.
-
-    A builder that disagreed with itself on padding would make the same CIK
-    produce two different URLs depending on the caller.
-    """
+    """Padding must not decide which URL the same CIK gets."""
     assert submissions_url("320193") == (
         "https://data.sec.gov/submissions/CIK0000320193.json"
     )
@@ -133,12 +129,7 @@ def _size_limited_client(
 
 
 def test_response_too_large_is_permanent(tmp_path: Path) -> None:
-    """An oversized body is never retried; retrying cannot make it smaller.
-
-    The guard is off by default, so the classification is what needs pinning:
-    once a caller opts in, an over-limit response must surface as a permanent
-    error rather than burning the retry budget against a deterministic outcome.
-    """
+    """Retrying cannot make an oversized body smaller, so it is permanent."""
     from edgar_sec.infra.sec_http.errors import ResponseTooLargeError
 
     body = b"x" * 4096
@@ -164,8 +155,7 @@ def test_response_too_large_is_recorded_as_a_permanent_failure(
     with pytest.raises(ResponseTooLargeError):
         client.get_bytes(url)
 
-    # The ledger recorded it permanently, so the next attempt is skipped
-    # outright rather than re-fetching a response that cannot change.
+    # The ledger recorded it permanently, so the next attempt is skipped.
     with pytest.raises(PermanentHttpError, match="size_exceeded"):
         client.get_bytes(url)
     assert len(session.calls) == 1
@@ -188,20 +178,12 @@ def test_the_size_guard_is_off_by_default(tmp_path: Path) -> None:
 
 # ------------------------------------------------- settings construction path
 #
-# `from_settings` is the only construction path that turns resolved settings
-# into a live client, and it is reached by every fetching action: the metadata
-# pipeline's run/worker/augment via `SubmissionsClient(settings=...)`, and
-# `sources refresh` directly. A single mistyped attribute name disables all of
-# them, so these tests build from settings for real rather than asserting against
-# a literal.
+# Every fetching action builds its client from resolved settings, so a mistyped
+# attribute name would disable all of them at once.
 
 
 def test_from_settings_maps_every_declared_setting() -> None:
-    """Sentinel values prove each declared field reaches the client.
-
-    Asserting on sentinels rather than defaults is what makes this a drift guard:
-    a renamed or mistyped attribute raises before any value can be compared.
-    """
+    """Sentinels, not defaults: a renamed attribute raises before any comparison."""
     from edgar_sec.foundation.runtime.settings.sec import SecSettings
 
     client = SecHttpClient.from_settings(

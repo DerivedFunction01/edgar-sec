@@ -42,9 +42,6 @@ def _round_trip(text: str) -> str:
     return restore_hybrid_pre_text(protected.text, protected.protected)
 
 
-# --- classification ---------------------------------------------------------
-
-
 def test_literal_sgml_table_markup_inside_pre_is_an_sgml_table() -> None:
     assert _classify_pre_source("<TABLE>\n<S> <C>Cash</S> <C>$100</C>\n</TABLE>") is (
         PreBlockKind.SGML_TABLE
@@ -78,9 +75,6 @@ def test_wrapped_prose_is_narrative() -> None:
 
 def test_empty_pre_content_is_narrative() -> None:
     assert _classify_pre_source("   ") is PreBlockKind.NARRATIVE_PROSE
-
-
-# --- masking and restoration ------------------------------------------------
 
 
 def test_a_document_with_no_pre_blocks_is_returned_unchanged() -> None:
@@ -196,10 +190,8 @@ def test_restoring_with_no_protected_payloads_is_a_passthrough() -> None:
 def test_a_document_already_containing_the_sentinel_text_never_corrupts_silently() -> (
     None
 ):
-    # Masking disambiguates a token that already occurs in the document by
-    # appending an underscore, but an adversarial document can still leave a
-    # token that the alternation cannot reach. Restoration then refuses rather
-    # than emitting a document with a whole table missing.
+    # An adversarial document can leave a token the alternation cannot reach, so
+    # restoration refuses rather than emitting a document with a table missing.
     doc = "<pre>a</pre>__SEC_HYBRID_PRE_0__<pre>b</pre>"
     protected = normalize_hybrid_pre_text(doc)
     assert all(token in protected.text for token in protected.protected)

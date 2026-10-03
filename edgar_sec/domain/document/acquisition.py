@@ -1,13 +1,7 @@
 """Domain records for a document acquisition attempt.
 
-A *locator* naming a document lives in :mod:`edgar_sec.domain.document.models`,
-because its content-addressed key is the identity the payload store and the
-Parquet snapshot both use. This module owns only the records that exist purely
-to report an acquisition: what came back, and what failed.
-
-Keeping them separate is what stops the fetch boundary from growing storage
-concerns. A fetcher may name a document and report on it; only a pipeline may
-decide the document is good enough to keep.
+A *locator* naming a document lives in :mod:`edgar_sec.domain.document.models`; a fetcher
+may name a document and report on it, but only a pipeline may decide it is worth keeping.
 """
 
 from __future__ import annotations
@@ -21,8 +15,8 @@ from edgar_sec.domain.document.models import DocumentLocator
 FetchStatus = Literal["ok", "missing", "failed"]
 
 #: Complete submission bundle filenames look like ``0000320193-20-000096.txt``.
-#: Matched as a pattern rather than a suffix: every bundle name also ends in a
-#: stub sequence suffix, so a literal comparison would call every bundle a stub.
+#: Matched as a pattern, not a suffix: every bundle name also ends in a stub sequence
+#: suffix, so a literal comparison would call every bundle a stub.
 _BUNDLE_NAME_RE = re.compile(r"\d{10}-\d{2}-\d{6}\.txt$")
 
 #: Accession sequence suffixes that mark a placeholder primary document.
@@ -32,9 +26,8 @@ _STUB_SEQUENCE_SUFFIXES = ("0001.txt", "0001.htm", "0000.txt", "0000.htm")
 def is_stub_document_path(document_path: str | None) -> bool:
     """Return whether a document path is a stub rather than substantive content.
 
-    Complete submission bundle paths are real acquisition targets — catalog
-    fallback locators point at them directly — and are never stubs, even when
-    the accession's sequence ends in ``0000``/``0001``.
+    Complete submission bundle paths are real targets and are never stubs,
+            even when the accession's sequence ends in ``0000``/``0001``.
     """
     if not document_path:
         return True
@@ -49,9 +42,7 @@ class FetchResult:
     """What one acquisition attempt produced.
 
     ``source_payload`` carries the PEM-stripped SGML bundle when the payload was
-    selected *from* an envelope, so a downstream exhibit pass can resolve
-    in-bundle exhibits without refetching. It is None when the payload was
-    already a plain document.
+            selected *from* an envelope, so in-bundle exhibits resolve without a refetch.
     """
 
     locator: DocumentLocator

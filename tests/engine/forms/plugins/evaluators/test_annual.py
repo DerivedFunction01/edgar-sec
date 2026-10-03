@@ -9,10 +9,8 @@ from edgar_sec.engine.forms.plugins.evaluators.annual import evaluate_annual
 
 
 def test_post_2011_xbrl_filing_skips_the_document_entirely() -> None:
-    """The mandate makes the tier short-circuit before any text is read.
-
-    A delegation the anchor scan would certainly find is still reported complete,
-    which is the observable proof that the text was never consulted.
+    """A delegation the anchor scan would find is still reported complete, which is
+    the observable proof that the text was never consulted.
     """
     decision = evaluate_annual(
         "The financial statements are set forth in Exhibit 13.",
@@ -77,13 +75,8 @@ def test_a_numbered_exhibit_above_13_is_not_an_anchor(near_miss: str) -> None:
 
 
 def test_the_parenthesised_spelling_is_unreachable_in_v1() -> None:
-    """``Exhibit (13)`` is a listed anchor variant that can never match.
-
-    The alternation is wrapped in trailing ``\\b``, and the variant ends on
-    ``)``. A word boundary cannot sit between ``)`` and ordinary prose, so the
-    branch fires only when the next character is a word character. The variant
-    is preserved and pinned here rather than dropped, because the same ``\\b``
-    wrapper is what stops ``Exhibit 130`` from matching.
+    """The trailing ``\b`` cannot sit between ``)`` and prose, so the variant is
+    unreachable; it is kept because that wrapper rejects ``Exhibit 130``.
     """
     assert evaluate_annual("See Exhibit (13). Incorporated by reference.").category == (
         "standard_full"

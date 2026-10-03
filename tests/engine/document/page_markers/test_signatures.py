@@ -1,7 +1,6 @@
-"""Signature-region location, mask/restore, and mangled-name healing.
-
-`SignatureRegion.end_line` is exclusive: the region covers source lines
-``start_line`` through ``end_line - 1``, and ``lines`` holds exactly those.
+"""Signature regions, mask/restore, and mangled-name healing.
+`SignatureRegion.end_line` is exclusive: the region covers `start_line` through
+`end_line - 1`.
 """
 
 from __future__ import annotations
@@ -21,8 +20,6 @@ from edgar_sec.engine.document.page_markers.signatures import (
     signature_block_has_mangled_text,
 )
 
-# --- region location ---------------------------------------------------------
-
 
 def test_a_document_with_no_signature_has_no_region() -> None:
     assert find_signature_regions(("Just prose.", "And more prose.")) == ()
@@ -38,19 +35,15 @@ def test_a_title_header_opens_a_region() -> None:
 
 
 def test_a_continuation_line_needs_a_layout_gap_not_merely_a_title_word() -> None:
-    # "Title: President" carries a title keyword but no multi-space or tab gap,
-    # so it is not a signature row and stays outside the block. A filing that
-    # indents its title lines has them included; one that does not, does not.
+    # "Title: President" has a title keyword but no layout gap, so it stays outside.
     lines = ("Name and Title:", "/s/ Jane Doe", "Title: President")
     (region,) = find_signature_regions(lines)
     assert region.lines == lines[:2]
 
 
 def test_a_marker_opening_a_region_is_not_counted_as_a_signer() -> None:
-    # `signer_count` counts the markers *inside* the region, not the line that
-    # opened it. A block whose only conformed marker is its opening line is
-    # therefore never returned, because neither a header nor a signer supports
-    # it; a second marker inside the block is enough.
+    # ``signer_count`` counts markers *inside* the region, so a block whose only marker
+    # is its opening line is never returned.
     assert find_signature_regions(("/s/ Jane Doe", "  Title: President")) == ()
     (region,) = find_signature_regions(("/s/ One", "/s/ Two"))
     assert region.signer_count == 1
@@ -77,10 +70,8 @@ def test_body_text_after_a_signature_ends_the_region() -> None:
 
 
 def test_two_signers_separated_by_prose_merge_into_one_region() -> None:
-    # The scan does not stop at a line it rejects once the region has begun, so
-    # every signature-like row that follows is taken as part of the same block.
-    # Two signatures with prose between them are therefore one region, and
-    # masking it masks the prose too.
+    # The scan does not stop at a rejected line once the region has begun, so masking
+    # the region masks the intervening prose too.
     lines = (
         "/s/ One",
         "  Title: President",
@@ -110,9 +101,7 @@ def test_an_unindented_body_paragraph_splits_two_signature_blocks() -> None:
 
 
 def test_an_indented_body_paragraph_is_absorbed_into_the_block() -> None:
-    # An indented alphabetic line following another signature row is a
-    # signature row by the same layout-gap rule, so indented prose between two
-    # signatures is masked along with them.
+    # An indented alphabetic line is a signature row by the same layout-gap rule.
     lines = (
         "/s/ One",
         "  Title: President",
@@ -139,8 +128,7 @@ def test_a_month_and_a_year_signal_a_signature_row_only_with_a_gap() -> None:
 
 
 def test_month_with_non_year_numbers_does_not_signal_signature_row() -> None:
-    # A prose line containing a month and non-year numbers (e.g. day of month or dollar amount)
-    # must not be treated as a signature row.
+    # A month with non-year numbers is prose, not a signature row.
     lines = (
         "  the registrant as of February 28 was $ 51,611,795.",
         "  As of February 28, the Registrant had outstanding 4,635,884",
@@ -170,9 +158,6 @@ def test_a_conformed_marker_needs_only_the_slashes() -> None:
     assert is_conformed_signature_line("/S/ Jane") is False
     assert is_conformed_signature_line("Jane Doe") is False
     assert RE_CONFORMED_SIGNATURE.match("  /s/") is not None
-
-
-# --- mask and restore --------------------------------------------------------
 
 
 def test_masking_without_a_region_is_the_identity() -> None:
@@ -216,10 +201,8 @@ def test_restore_without_regions_is_the_identity() -> None:
 
 
 def test_a_rewritten_masked_line_is_not_undone_by_restore() -> None:
-    # The mask is a whole-token replacement, so restore only rewrites the lines
-    # that still carry their token. A line whose token was overwritten keeps the
-    # overwrite, which is why the mask exists to make an accidental rewrite
-    # impossible rather than to make an accidental one reversible.
+    # Restore only rewrites lines still carrying their token, so an overwrite survives,
+    # which is the point of masking.
     text = "Name and Title:\n/s/ Jane Doe\n/s/ John Smith\n"
     masked, regions = mask_signature_regions(text)
     assert restore_signature_regions(masked, regions) == text
@@ -243,9 +226,6 @@ def test_two_identical_regions_are_restored_independently() -> None:
     assert restore_signature_regions(masked, regions) == text
 
 
-# --- marker normalization ----------------------------------------------------
-
-
 @pytest.mark.parametrize(
     ("text", "expected"),
     [
@@ -259,9 +239,6 @@ def test_two_identical_regions_are_restored_independently() -> None:
 )
 def test_a_signature_marker_is_canonicalized(text: str, expected: str) -> None:
     assert normalize_signature_marker(text) == expected
-
-
-# --- mangled names -----------------------------------------------------------
 
 
 def test_a_mangled_marker_and_name_is_confirmed() -> None:
@@ -293,9 +270,6 @@ def test_text_outside_a_confirmed_mangled_block_is_left_alone() -> None:
 
 def test_healing_leaves_a_lowercase_continuation_alone() -> None:
     assert heal_mangled_signature_text("/s/ Jane Doe") == "/s/ Jane Doe"
-
-
-# --- attorney-in-fact & asterisk signatures ---------------------------------
 
 
 def test_poa_with_asterisk_and_attorney_in_fact_is_recognized() -> None:

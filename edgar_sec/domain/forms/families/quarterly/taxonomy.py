@@ -8,7 +8,6 @@ from edgar_sec.domain.forms.families.annual.taxonomy import build_taxonomy_deriv
 PARTS: tuple[str, ...] = ("PART I", "PART II")
 
 FORM_10Q_ITEMS: tuple[ItemDefinition, ...] = (
-    # PART I - Financial Information
     ItemDefinition(
         "ITEM 1",
         1,
@@ -41,7 +40,6 @@ FORM_10Q_ITEMS: tuple[ItemDefinition, ...] = (
         ("controls and procedures",),
         early=True,
     ),
-    # PART II - Other Information
     ItemDefinition(
         "ITEM 1",
         2,

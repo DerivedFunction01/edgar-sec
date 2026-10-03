@@ -1,5 +1,3 @@
-"""Tests for quarterly report item taxonomy (10-Q)."""
-
 from __future__ import annotations
 
 from edgar_sec.domain.forms.families.quarterly.taxonomy import (

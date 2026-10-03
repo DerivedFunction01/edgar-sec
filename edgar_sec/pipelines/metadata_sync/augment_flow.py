@@ -1,24 +1,7 @@
 """The interactive augmentation journey.
-
-Augmentation is the one action whose *cohort* is a question rather than a file.
-The curated CSV this pipeline plans over is a seed: it is a list someone curated
-at a point in time, and it goes stale as registrants appear. Re-augmenting that
-same seed after it has been fully ingested asks for nothing new, and asking for
-everything the seed names would refetch what the base already holds. So the
-question the operator actually needs answered is "which registrants exist now
-that this base snapshot does not have", and the honest way to answer it is the
-union of the seed with the active listings in a published SEC source snapshot.
-
-This module owns that journey: discover or refresh the source observation, build
-the cohort, choose the base, and show the resulting arithmetic. It is separate
-from ``operator`` because no other menu action needs a source snapshot, a base
-snapshot, or a preflight; keeping them together made one file carry two unrelated
-surfaces.
-
-It imports ``WizardState`` and ``confirm_network`` from ``operator``, which
-imports :func:`run_augment` inside the action body rather than at module scope.
-The indirection is what lets a phase-local flow reuse the session's own state and
-consent policy without either module owning the other.
+Augmentation is the one action whose cohort is a question rather than a file: the
+honest answer is the union of the curated seed with a published source snapshot.
+Imports ``WizardState`` from ``operator``, which imports ``run_augment`` in the body.
 """
 
 from __future__ import annotations
@@ -57,12 +40,8 @@ __all__ = [
 
 def run_augment(state: WizardState) -> None:
     """Add the CIKs a chosen cohort has and the base snapshot lacks.
-
-    The order of the questions is the design. Cohort, then base, then the
-    arithmetic, and only then consent to spend SEC request budget. The boring
-    outcome -- the base already covers the request -- is decided from published
-    artifacts alone, so it costs no network request, no published delta plan, and
-    no pointer change, and it reports as a result rather than a traceback.
+    The already-covered outcome is decided from published artifacts, so it costs
+    no request, no delta plan, and no pointer change.
     """
     metadata = state.metadata()
     options = ask_augment_cohort(state)
@@ -136,12 +115,7 @@ def _ask_workers() -> int | None:
 
 def ask_base_snapshot(metadata) -> str:
     """Choose the published snapshot this augmentation builds on.
-
-    Only published snapshots are offered. An unpublished finalized artifact is
-    not a snapshot, and treating one as a base would publish a delta over data no
-    reader can resolve to. The current pointer is the default because
-    augment-forward is the common case, but earlier snapshots stay reachable:
-    backfilling onto an older base is a legitimate correction.
+    Only published snapshots are offered: an unpublished artifact is not a snapshot.
     """
     manifests = list_snapshots(metadata)
     if not manifests:
@@ -165,13 +139,8 @@ def ask_base_snapshot(metadata) -> str:
 
 def ask_augment_cohort(state: WizardState) -> PlanOptions | None:
     """Choose which CIKs this augmentation should consider requested.
-
-    Source-aware comparison leads, because a two-year-old seed plus today's
-    listings is the cohort that actually reflects the registrants who exist. A
-    published comparison, a discovered CIK manifest, and a hand-typed path remain
-    available, and every one of them is treated as a *request* whose real work is
-    decided by subtraction against the base -- including a file that already
-    looks like a delta.
+    Every source is a *request* whose real work is decided by subtraction against
+    the base.
     """
     metadata = state.metadata()
     seed = prompt_text("Curated seed CSV", DEFAULT_INPUT).strip()
@@ -237,22 +206,14 @@ def readable_sources(sources: list[SourceSummary]) -> list[SourceSummary]:
 
 def _refresh_source(state: WizardState) -> None:
     """Publish a source snapshot into the artifacts root this session is using.
-
-    Passing ``None`` here would resolve the *project* default, which is a
-    different tree from the one the session is reading snapshots and plans from.
-    An operator who scoped the session to another artifacts root would get their
-    source snapshot written outside it, and the comparison would then fail to
-    find it.
+    ``None`` would resolve the project default instead.
     """
     cmd_refresh(Path(state.artifacts_root) if state.artifacts_root else None)
 
 
 def _offer_source_refresh(state: WizardState) -> bool:
     """Offer to publish a source snapshot when none is on disk yet.
-
-    Defaults to no, for the reason every other fetch in this operator does: it is a
-    live SEC request, and publishing an immutable snapshot nobody asked for is a side
-    effect that outlives the session.
+    Defaults to no: publishing an unrequested immutable snapshot outlives the session.
     """
     print("\nNo SEC listing source snapshot on disk; cohorts cannot be compared.")
     if not confirm_network("Fetch the live SEC company ticker listing now? (y/N) "):
@@ -266,10 +227,7 @@ def _resolve_source_roster(
     state: WizardState, seed: str, sources: list[SourceSummary]
 ) -> str:
     """Resolve the effective roster for a seed and a source snapshot.
-
-    The comparison is a pure projection of two immutable files, so it runs on
-    demand without network access and is reused whenever the same pair has already
-    been compared.
+    A pure projection of two immutable files, reused when already compared.
     """
     source_id = ""
     if len(sources) > 1:

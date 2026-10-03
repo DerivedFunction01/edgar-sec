@@ -11,6 +11,7 @@ test execution.
 | :--- | :--- |
 | [`runner.py`](runner.py) | Scanner gate runner: runs every registered scanner, prints findings, returns `0` or `1`. |
 | [`git_diff.py`](git_diff.py) | Working-tree change detection via `git status --porcelain=v1`, categorised into sources, tests, conftests, root configs, and docs/assets. |
+| [`prose.py`](prose.py) | Comment/docstring-only detection: compares a changed file to its `HEAD` baseline through docstring-stripped AST dumps. |
 | [`lineage.py`](lineage.py) | Static AST import analysis with `mtime_ns` caching, relative-import canonicalisation, reverse-BFS transitive closure, and conftest invalidation scoping. |
 
 ---
@@ -30,6 +31,18 @@ test execution.
 5. **Cache staleness is bounded**: entries are keyed on `mtime_ns`, evicted when
    their file disappears from a full-tree scan, and discarded wholesale on a
    version mismatch or unreadable payload.
+6. **Prose edits never select tests.** A `.py` file whose change survives
+   docstring-stripped AST comparison against `HEAD` unchanged — which is what a
+   comment, docstring, or blank-line edit leaves — is dropped from the snapshot
+   before any classifier runs, so it selects no mirror, no dependent, and no
+   conftest subtree. Because `ruff format --check` and `ruff lint` always run over
+   the whole target set, a prose edit is still verified for formatting and lint;
+   only pytest selection is skipped.
+
+   The comparison is deliberately fail-safe: an untracked file, a path with no
+   `HEAD` blob, undecodable text, or text that does not parse is reported as a
+   logic change. `HEAD` rather than the index is the baseline, so a staged edit
+   whose working tree was reverted is also recognised as a no-op.
 
 ---
 
@@ -64,6 +77,7 @@ None. `check.py` at the repository root imports
 
 - [`tests/foundation/checks/test_runner.py`](../../../tests/foundation/checks/test_runner.py)
 - [`tests/foundation/checks/test_git_diff.py`](../../../tests/foundation/checks/test_git_diff.py)
+- [`tests/foundation/checks/test_prose.py`](../../../tests/foundation/checks/test_prose.py)
 - [`tests/foundation/checks/test_lineage.py`](../../../tests/foundation/checks/test_lineage.py)
 
 ---
@@ -73,13 +87,21 @@ None. `check.py` at the repository root imports
 - **Module-level lineage only.** Dependency tracking is per `.py` file, not per
   function or symbol. Module granularity is conservative and avoids brittle
   dynamic attribute resolution.
+- **A docstring is prose even when code reads it.** Stripping docstrings assumes
+  no runtime consumer of `__doc__` — a doctest runner, a doc build, or a
+  fixture that asserts on a docstring would not be re-run. The gate never
+  collects doctests; if one is introduced, this filter must be revisited.
 - **Non-code changes bypass pytest.** `GitStatusSnapshot.is_docs_or_assets_only`
   lets `check.py` skip the test stage entirely when no executable Python or
-  shell file changed.
+  shell file changed. It is evaluated *after* the prose filter, so prose-only
+  edits are covered by the same skip.
 - **`NON_CODE_EXTENSIONS` is not consulted by any classifier.** The constant is
   exported and documented here, but `is_docs_or_assets_only` decides from `.py`
   and `.sh` suffixes instead. Treat the extension set as dead weight rather than
   as the rule.
-- **No partial-file or diff-hunk granularity.** Selection is per file; editing
-  one function in a large module still selects that module's mirror test and
-  every dependent.
+- **No per-function granularity.** Selection is still per file: rewriting one
+  function in a large module selects that module's mirror test and every
+  dependent. The prose filter removes a whole file's worth of false positives,
+  not a subset.
+- **Reordering top-level definitions counts as a logic change.** AST comparison
+  is order-sensitive, so a pure code move still selects dependents.

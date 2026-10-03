@@ -115,8 +115,8 @@ def test_a_gap_beyond_the_interpolation_bound_is_refused() -> None:
 
 def test_breaks_corroborating_a_gap_are_required_when_supplied() -> None:
     run = _run((1, 2, 3, 6, 7), stride=4)
-    # Members 3 and 6 sit on lines 8 and 12; two breaks strictly between them
-    # match the two missing values exactly.
+    # Members 3 and 6 sit on lines 8 and 12; the two breaks strictly between match
+    # the two missing values.
     _healed, inferred, _promoted = heal_run(run, page_break_lines={9, 10})
     assert [item.reason for item in inferred] == [
         "validated_page_break_count",

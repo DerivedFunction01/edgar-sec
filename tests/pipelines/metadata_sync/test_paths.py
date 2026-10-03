@@ -1,9 +1,4 @@
-"""Directory layout tests for the metadata pipeline.
-
-The published/transient split is the important property here: a chunk
-checkpoint is resumability state and a snapshot is output, and mixing them would
-let a partially written artifact be mistaken for a published one.
-"""
+"""Directory layout; a chunk checkpoint is resumability state, a snapshot output."""
 
 from __future__ import annotations
 
@@ -67,12 +62,7 @@ def test_plan_paths_are_scoped_by_plan_id(tmp_path: Path) -> None:
 
 
 def test_a_plan_is_a_directory_of_artifacts_not_one_file(tmp_path: Path) -> None:
-    """The bundle is what a worker is handed, so its shape is a contract.
-
-    The manifest, the roster, and the assignments are separate files because they
-    are separately copied, separately versioned, and separately trusted: a worker
-    can verify the cohort it was given without re-deriving it from a CSV.
-    """
+    """Manifest, roster, and assignments are separately copied and separately trusted."""
     run_paths = resolve_run_paths("plan42", tmp_path)
     bundle = tmp_path / "metadata" / "plans" / "plan42"
     assert run_paths.plan_bundle == bundle
@@ -87,11 +77,7 @@ def test_a_plan_is_a_directory_of_artifacts_not_one_file(tmp_path: Path) -> None
 
 
 def test_a_copied_bundle_resolves_the_same_shape(tmp_path: Path) -> None:
-    """A worker holding only a directory must resolve the same plan layout.
-
-    This is what lets the worker and the coordinator run identical code against
-    one plan without either of them owning the other's filesystem.
-    """
+    """Worker and coordinator run identical code against one plan."""
     bundle = BundleRunPaths(bundle_root=tmp_path / "out" / "worker-00", plan_id="p")
     assert bundle.plan_file == tmp_path / "out" / "worker-00" / "plan.json"
     assert (

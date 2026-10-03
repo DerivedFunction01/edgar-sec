@@ -1,9 +1,4 @@
-"""Single canonical source of truth for SEC forms vocabulary and patterns.
-
-Contains core cover label tuples, SEC header terms, filer category definitions,
-checkbox patterns, and universal contact and layout regexes shared across all
-SEC forms.
-"""
+"""Single canonical source of truth for SEC forms vocabulary and patterns."""
 
 from __future__ import annotations
 
@@ -11,8 +6,6 @@ import re
 
 from edgar_sec.domain.taxonomy.jurisdictions import STATE_NAMES, STATE_POSTAL_CODES
 from edgar_sec.foundation.regex.builder import build_alternation
-
-# --- Canonical Cover Label Aliases ---------------------------------------------
 
 COVER_LABELS: dict[str, tuple[str, ...]] = {
     "state_of_incorporation": (
@@ -77,7 +70,6 @@ COVER_LABELS: dict[str, tuple[str, ...]] = {
     ),
 }
 
-# Flattened list of all canonical cover labels (longest first).
 COVER_LABELS_FLAT: tuple[str, ...] = tuple(
     phrase for phrases in COVER_LABELS.values() for phrase in phrases
 )
@@ -99,7 +91,6 @@ SECURITIES_12B_SUPPORT_TERMS: tuple[str, ...] = (
     "par value",
 )
 
-# --- Common Share Count Phrases (Shared across 10-K and 10-Q covers) ----------
 COMMON_SHARES_PHRASES: tuple[str, ...] = (
     "indicate the number of shares outstanding of each of the registrant's classes of common stock",
     "indicate the number of shares outstanding of each of the issuer's classes of common stock",
@@ -116,7 +107,6 @@ COMMON_SHARES_PHRASES: tuple[str, ...] = (
     "shares outstanding",
 )
 
-# --- Standard SEC Header Terms -------------------------------------------------
 
 SEC_HEADER_TERMS: tuple[str, ...] = (
     "securities and exchange commission",
@@ -132,7 +122,6 @@ COVER_START_IDENTITY_TERMS: tuple[str, ...] = (
     r"securities\s+and\s+exchange\s+commission",
 )
 
-# --- Filer Status Category Constants -------------------------------------------
 
 LARGE_ACCELERATED_FILER: str = "large accelerated filer"
 ACCELERATED_FILER: str = "accelerated filer"
@@ -159,7 +148,6 @@ FILER_CATEGORY_PATTERNS: tuple[tuple[str, str], ...] = (
     (EMERGING_GROWTH_COMPANY.capitalize(), _phrase_pattern(EMERGING_GROWTH_COMPANY)),
 )
 
-# --- Checkbox constraint vocabulary --------------------------------------------
 
 REPORT_PERIOD_GROUP = "report_period"
 FILER_STATUS_GROUP = "filer_status"
@@ -197,7 +185,6 @@ FILER_STATUS_TERMS: tuple[str, ...] = (
     "auditor attestation",
 )
 
-# --- Checkbox Keywords & Grids -------------------------------------------------
 
 CHECKBOX_KEYWORDS: tuple[str, ...] = (
     LARGE_ACCELERATED_FILER,
@@ -230,7 +217,6 @@ CHECKBOX_GRID_RE = re.compile(
     rf"(?:{_BOX}\s*{_KW_ALT}|{_KW_ALT}\s*{_BOX})", re.IGNORECASE
 )
 
-# --- Evidence Terms for Cover Candidate Detection ------------------------------
 
 COVER_EVIDENCE_TERMS: tuple[str, ...] = (
     LARGE_ACCELERATED_FILER,
@@ -273,13 +259,11 @@ CURRENCY_SPACING_RE = re.compile(r"\$\s+(\d)")
 PUNCT_SPACING_RE = re.compile(r"\s+([,.;:!?)])")
 IXBRL_FACT_RE = re.compile(r"ix:nonFraction", re.IGNORECASE)
 
-# --- Value Matching Patterns ---------------------------------------------------
 
 ZIP_VALUE_RE = re.compile(r"(?<![\d\-])\d{5}(?:-\d{4})?(?!\d)")
 EIN_VALUE_RE = re.compile(r"\b\d{2}[\-\s]?\d{7}\b")
 COMMISSION_FILE_VALUE_RE = re.compile(r"\b\d{1,3}[\-\s]\d{3,8}(?:[\-\s]\d{2,4})?\b")
 
-# --- Field Label Matching Patterns (Linear Alternation, Not Compacted) ---------
 
 STATE_INCORPORATION_RE = re.compile(
     rf"\(?\s*{build_alternation(COVER_LABELS['state_of_incorporation'], auto_escape=True, compact=False, flexible_whitespace=True)}\s*\)?",
@@ -313,10 +297,8 @@ SECURITIES_12B_RE = re.compile(
     rf"\(?\s*{build_alternation(COVER_LABELS['securities_12b'], auto_escape=True, compact=False, flexible_whitespace=True)}\s*\)?",
     re.IGNORECASE,
 )
-# --- State Jurisdiction Helper -------------------------------------------------
-# Derived from domain.taxonomy.jurisdictions, the canonical source. Restating the
-# list here would drift again and silently drop the territories, so a cover page
-# that said "PUERTO RICO" would stop being recognized as a state value.
+# Derived from domain.taxonomy.jurisdictions; restating the list would drift again and
+# silently drop the territories.
 _US_STATES: frozenset[str] = frozenset(
     [*STATE_POSTAL_CODES, *(name.upper() for name in STATE_NAMES)]
 )

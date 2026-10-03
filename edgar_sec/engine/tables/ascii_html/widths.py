@@ -1,10 +1,6 @@
 """Width budgeting and optimal column width allocation for ASCII table presentation.
-
-Column width is the one decision a table renderer cannot defer: every cell's
-text, every divider, and every right edge follows from it. This module measures
-each column's natural and unwrapped extents, then allocates width under
-`RenderBudget` — shrinking from prose down to headers only when the total
-exceeds the cap, and expanding back into headroom when it does not.
+Every cell's text, divider, and right edge follows from column width, so this measures each
+column's natural and unwrapped extents and allocates under `RenderBudget`.
 """
 
 from __future__ import annotations
@@ -58,7 +54,6 @@ def compute_column_widths(
     prefix_positions = prefix_positions or set()
     diagnostics: list[TextLayoutDiagnostic] = []
 
-    # 1. Measure max natural and unwrapped length per column
     col_natural_lengths = [0] * num_cols
     col_unwrapped_lengths = [0] * num_cols
     col_longest_text = [""] * num_cols
@@ -164,10 +159,8 @@ def compute_column_widths(
             col_natural_lengths[c_idx] = max_text_len
             col_min_safe_widths[c_idx] = max(max_word_len, 14)
 
-    # Dense numeric tables often have a dozen narrow bands plus multi-line
-    # headers. If their safe floors cannot fit in the normal cap, allow a
-    # bounded overflow rather than shrinking cells until headers become
-    # unreadable. Ordinary prose and small tables remain strictly capped.
+    # When a dense numeric table's safe floors cannot fit the normal cap, allow a bounded overflow
+    # rather than shrinking cells until headers become unreadable. Prose and small tables stay capped.
     numeric_columns = sum(
         1 for c_idx in range(1, num_cols) if c_idx not in prefix_positions
     )
@@ -185,7 +178,6 @@ def compute_column_widths(
         )
         budget = replace(budget, max_table_width=overflow_limit)
 
-    # 1b. Mirror column equalization for numeric columns with matching normalized headers
     header_to_num_cols: dict[str, list[int]] = defaultdict(list)
     for c_idx in range(num_cols):
         if col_is_numeric[c_idx] and c_idx not in prefix_positions:
@@ -211,7 +203,6 @@ def compute_column_widths(
                 col_natural_lengths[c] = max_nat
                 col_min_safe_widths[c] = max_min_safe
 
-    # 2. Assign initial column widths based on budget limits
     widths: list[int] = []
     for c_idx in range(num_cols):
         nat = col_natural_lengths[c_idx]
@@ -232,7 +223,6 @@ def compute_column_widths(
         else:
             widths.append(min(35, max(1, nat)))
 
-    # 3. Expand columns if multi-column spans require additional space
     if span_constraints:
         tier_spans = defaultdict(list)
         for r_idx, span_cols, span_txt in span_constraints:
@@ -268,7 +258,6 @@ def compute_column_widths(
                 )
 
                 if is_bottom_footnote:
-                    # Bottom footnotes/disclaimers wrap across existing table width
                     ideal_span_target = current_span_w
                 elif is_stub_span:
                     ideal_span_target = min(
@@ -299,7 +288,6 @@ def compute_column_widths(
                         for c in target_expand_cols:
                             widths[c] += add_per_col
 
-    # 4. Enforce max table width budget
     active_count = sum(1 for w in widths if w > 0)
     total_col_sep = budget.column_spacing * max(0, active_count - 1)
     total_w = sum(widths) + total_col_sep
@@ -330,13 +318,11 @@ def compute_column_widths(
                 widths[c_idx] -= shrink_amount
                 excess -= shrink_amount
 
-    # 5. Expand prose and text columns if headroom is available
     active_count = sum(1 for w in widths if w > 0)
     total_col_sep = budget.column_spacing * max(0, active_count - 1)
     current_total = sum(widths) + total_col_sep
     headroom = max(0, budget.max_table_width - current_total)
 
-    # First pass: expand prose/description columns towards natural length without forced wrapping
     if headroom > 0:
         for c_idx in range(num_cols):
             if headroom <= 0:
@@ -355,13 +341,11 @@ def compute_column_widths(
                         widths[c_idx] += can_expand
                         headroom -= can_expand
 
-    # Second pass: expand row stubs (column 0) if headroom remains
     if headroom > 0 and widths and widths[0] > 0 and widths[0] < col_natural_lengths[0]:
         can_expand = min(col_natural_lengths[0] - widths[0], headroom)
         widths[0] += can_expand
         headroom -= can_expand
 
-    # Third pass: expand other text columns towards natural length
     if headroom > 0:
         for c_idx in range(num_cols):
             if headroom <= 0:
@@ -377,7 +361,6 @@ def compute_column_widths(
                     widths[c_idx] += can_expand
                     headroom -= can_expand
 
-    # Fourth pass: expand numeric columns with multi-line headers if headroom remains
     if headroom > 0:
         for c_idx in range(num_cols):
             if headroom <= 0:
@@ -417,7 +400,6 @@ def compute_column_widths(
         if widths and pre_balance_widths[0] > 0:
             widths[0] = max(widths[0], pre_balance_widths[0])
 
-    # 6. Generate diagnostics for cells exceeding column width
     for r_idx in range(num_rows):
         for c_idx in range(num_cols):
             txt = grid_rows[r_idx][c_idx]

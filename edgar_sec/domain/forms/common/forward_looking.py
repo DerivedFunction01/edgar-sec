@@ -1,12 +1,11 @@
 """Canonical forward-looking, safe harbor, and cautionary disclosure vocabulary.
 
-Statutory safe harbor language under the Private Securities Litigation Reform Act
-of 1995 (PSLRA) shared across periodic (10-K, 10-Q, 20-F) and event reports (8-K, 6-K).
+Statutory safe harbor language (PSLRA) shared across periodic (10-K, 10-Q, 20-F) and
+event (8-K, 6-K) reports.
 """
 
 from __future__ import annotations
 
-# Multi-word semantic headings and safe harbor title anchors
 FORWARD_LOOKING_PHRASES: tuple[str, ...] = (
     "forward-looking statements",
     "forward looking statements",
@@ -23,7 +22,6 @@ FORWARD_LOOKING_PHRASES: tuple[str, ...] = (
     "safe harbor",
 )
 
-# Individual unigram tokens and disclosure nouns used in lowercase scoring tiers
 # (Comprises the full 16-token universal safe harbor disclosure formula)
 FORWARD_LOOKING_TERMS: tuple[str, ...] = (
     "forward",

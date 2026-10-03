@@ -1,11 +1,6 @@
-"""Main TOC span detection logic.
-
-The finder runs a strict ladder of methods, highest confidence first: a TOC or
-weak heading followed by rows, a rendered ``<TABLE>`` block of aligned rows, a
-keyword-density block corroborated by a late item, a lone late item, and
-finally bare aligned rows with no heading at all. It returns the first method
-that reaches its row minimum, so a heading-led TOC is never reported as the
-weaker density or aligned-row forms.
+"""TOC span detection: a strict method ladder, highest confidence first. Heading plus
+rows, a rendered `<TABLE>` of aligned rows, keyword density corroborated by a late
+item, a lone late item, then bare aligned rows.
 """
 
 from __future__ import annotations
@@ -44,9 +39,8 @@ from .residue import consume_toc_residue
 _RE_TAGGED_TABLE = TAGGED_TABLE_OPEN_RE
 _RE_TAGGED_TABLE_END = TAGGED_TABLE_CLOSE_RE
 
-# Maximum lines between a TOC heading and its first row. A heading whose rows
-# begin beyond this window is mid-document navigation text (for example a
-# "Table of Contents" link inside the cover checkbox region), not a TOC start.
+# A heading whose rows begin beyond this window is mid-document navigation
+# text, not a TOC start.
 _MAX_HEADING_ROW_GAP = 10
 
 
@@ -67,11 +61,8 @@ def _build_table_depths(lines: list[str]) -> list[int]:
 def _enclosing_table_end(
     lines: list[str], last_row: int, limit: int, depths: list[int]
 ) -> int | None:
-    """Return the close line of the table enclosing the TOC row span.
-
-    The span claims a table boundary only when the last row still sits inside
-    an open ``<TABLE>`` region and the matching close falls within the search
-    limit; otherwise the caller keeps its heuristic end.
+    """The close line of the table enclosing the TOC row span, claimed only when the
+    last row sits inside an open `<TABLE>` and the close is within the limit.
     """
     if last_row >= len(depths) or depths[last_row] <= 0:
         return None
@@ -90,11 +81,8 @@ def _merge_continuation_tables(
     page_marker_lines: set[int],
     rows: list[int],
 ) -> tuple[int, list[int]]:
-    """Claim page-break-split continuation tables that follow a table close.
-
-    Blank and page-marker gap lines are skipped; a following table carrying
-    TOC-like rows is claimed as a continuation and scanning resumes from its
-    close. Any other line ends the merge.
+    """Claim page-break-split continuation tables after a close: gap lines are skipped,
+    a following table of TOC-like rows is claimed, anything else ends the merge.
     """
     merged_end = table_end
     scan = table_end + 1
@@ -126,11 +114,8 @@ def _merge_continuation_tables(
 
 
 def _sequence_key(line: str, current_part: int) -> tuple[int, int] | int | None:
-    """Return the monotonic ordering key for a PART/ITEM row, if any.
-
-    PART rows return their part value and reset the item counter; ITEM rows
-    return ``(current_part, item * 100 + letter)`` so ``Item 1 < Item 1A <
-    Item 2`` orders correctly within each part.
+    """The monotonic ordering key for a PART/ITEM row: PART resets the item counter,
+    ITEM returns `(part, item * 100 + letter)` so Item 1 < 1A < 2 within a part.
     """
     part = RE_TOC_PART_ROW.match(line)
     if part:

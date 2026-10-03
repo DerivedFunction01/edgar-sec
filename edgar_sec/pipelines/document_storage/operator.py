@@ -1,18 +1,7 @@
-"""Run orchestration: acquire, delegate, merge, publish.
-
-One operator owns the order of a document-storage run, and it owns nothing else.
-Each step is a call into a module that can be exercised on its own, so the
-operator is a short readable sequence rather than the place where the work
-happens.
-
-    1. process chunks        (worker; resumable, parallel)
-    2. resolve delegations    (exhibit second pass, bounded)
-    3. merge and publish      (immutable snapshot + current pointer)
+"""Run orchestration: process chunks, resolve delegations, merge, publish.
 
 Delegation runs between the two because its output is itself a chunk: an exhibit
-resolved from a stub must be merged into the same snapshot as its primary, or
-the snapshot would claim a filing is complete when its substance sits in an
-unpublished file.
+resolved from a stub must land in the same snapshot as its primary.
 """
 
 from __future__ import annotations
@@ -113,10 +102,8 @@ class RunReport:
 def new_run_id(prefix: str = "run") -> str:
     """Return a sortable, unique run identity.
 
-    Microsecond resolution plus a short random suffix: two runs started in the
-    same second must not share an identity, because a snapshot id is derived from
-    the run id and a collision would make the second run look like a republication
-    of the first.
+    Microseconds plus a random suffix: a snapshot id derives from the run id, so a
+    collision would make a new run look like a republication of the first.
     """
     stamp = datetime.now(UTC).strftime("%Y%m%dT%H%M%S%f")
     return f"{prefix}-{stamp}-{secrets.token_hex(3)}"
@@ -133,9 +120,8 @@ def make_fetcher(
 ) -> Any:
     """Build the fetcher a run's mode calls for, with repository paths resolved.
 
-    In fixture mode a missing fixture id is an error rather than an empty run:
-    replaying a plan with no payloads would publish an empty snapshot that looks
-    like a successful acquisition.
+    In fixture mode a missing fixture id is an error, not an empty run that would
+    publish an empty snapshot looking like a successful acquisition.
     """
     if mode == "fixture":
         fixture_ids = (
@@ -187,24 +173,7 @@ def run_document_storage(
     broker_socket: str | Path | None = None,
     progress: Callable[[dict[str, Any]], None] | None = None,
 ) -> RunReport:
-    """Run the full document-storage pipeline for one set of chunks.
-
-    Args:
-        paths: resolved workspace layout.
-        run_id: identity for this run's staging directory and snapshot.
-        chunk_ids: chunks to process, in order.
-        locators_by_chunk: documents to acquire per chunk.
-        occurrences_by_chunk: provenance rows per chunk.
-        mode: acquisition mode (``fixture``, ``broker``, or ``live``).
-        fixture_id: fixture to replay from, required in fixture mode.
-        processor: normalization backend; defaults to the filing processor.
-        workers: explicit worker count; resolved from resources when absent.
-        profile: pre-resolved cgroup-aware resource profile.
-        fetcher: an explicit fetcher, bypassing mode resolution.
-        http_client: injected HTTP client for live mode.
-        broker_socket: broker socket path for broker mode.
-        progress: optional per-stage callback.
-    """
+    """Run the full document-storage pipeline for one set of chunks."""
     started_at = datetime.now(UTC).isoformat(timespec="seconds")
     if not chunk_ids:
         raise OperatorError("at least one chunk id is required")
@@ -274,10 +243,8 @@ def run_document_storage(
 def _partial_ok(results: Sequence[ChunkResult]) -> bool:
     """Return whether at least one document was actually acquired and stored.
 
-    Measured on ``normalized_count`` rather than row count: a chunk that
-    recorded one failed acquisition still wrote a row, so counting rows would
-    report a wholly failed run as a successful one and let it overwrite a good
-    snapshot with a snapshot of nothing but failures.
+    Measured on ``normalized_count``: a failed acquisition still wrote a row, so
+    counting rows would let a wholly failed run overwrite a good snapshot.
     """
     return any(result.normalized_count for result in results)
 
@@ -290,11 +257,7 @@ def _run_delegation(
     processor: DocumentProcessor,
     chunks_dir: Path,
 ) -> tuple[DelegatedExhibit, ...]:
-    """Resolve every stub decision a worker reported, publishing them as a chunk.
-
-    Driven by the workers' own reports rather than by re-triage, so a primary is
-    fetched and normalized exactly once per run.
-    """
+    """Resolve every stub decision a worker reported, publishing them as a chunk."""
     by_key: dict[str, DocumentLocator] = {
         locator.document_locator_key: locator
         for locators in locators_by_chunk.values()
@@ -325,12 +288,7 @@ def _run_delegation(
 
 
 class _StubDecision:
-    """The minimum a delegation pass needs from a worker's evaluator verdict.
-
-    A stub decision is a fact the worker already established; carrying just the
-    targeted exhibit keeps the delegation pass from re-running the evaluator, and
-    keeps a full processed document out of the inter-stage contract.
-    """
+    """The minimum a delegation pass needs from a worker's evaluator verdict."""
 
     __slots__ = ("metadata",)
 

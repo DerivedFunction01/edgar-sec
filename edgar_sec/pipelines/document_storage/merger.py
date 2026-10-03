@@ -1,18 +1,7 @@
 """Publish a run's chunks as an immutable snapshot and move ``current``.
 
-Publication is two steps and they are deliberately separate:
-
-1. Merge the validated chunk Parquet files into one sorted artifact. This is
-   out-of-core (``ORDER BY`` in DuckDB) so a run larger than memory still merges.
-2. Write the pointer naming that snapshot as current.
-
-The pointer is written *after* the artifact, never before. A pointer naming a
-snapshot that does not exist is worse than a stale pointer, because a reader
-following it finds a missing dataset instead of an older one.
-
-A snapshot is immutable once published. Correcting a bad run means publishing a
-new snapshot, which is what makes a published identity safe to record in
-provenance elsewhere.
+The pointer is written after the artifact, never before: a pointer to a missing
+snapshot is worse than a stale one. A published snapshot is never rewritten.
 """
 
 from __future__ import annotations
@@ -80,9 +69,8 @@ def _now() -> str:
 def validate_chunks(chunk_paths: list[Path]) -> tuple[list[Path], list[str]]:
     """Split chunk paths into usable ones and warnings.
 
-    A chunk that fails validation is *dropped with a warning* rather than
-    failing the merge. Losing one chunk is recoverable and visible; refusing to
-    publish because of it would also block the chunks that are fine.
+    A failing chunk is dropped, not fatal: refusing to publish would also block the
+    chunks that are fine.
     """
     usable: list[Path] = []
     warnings: list[str] = []
@@ -102,10 +90,7 @@ def validate_chunks(chunk_paths: list[Path]) -> tuple[list[Path], list[str]]:
 def _write_parts(staging: Path, artifact_path: Path) -> list[dict[str, Any]]:
     """Project an assembled snapshot into an index part and a payload part.
 
-    A run publishes one combined table, but consolidation reads a part tree split
-    by kind: index (metadata) and payload (text). Splitting here means every
-    published snapshot is immediately consolidatable, rather than only the ones a
-    previous consolidation happened to produce.
+    Splitting here makes every published snapshot immediately consolidatable.
     """
     from edgar_sec.infra.storage.parquet import read_parquet_table
     from edgar_sec.pipelines.document_storage.parts import (
@@ -189,13 +174,8 @@ def _failure_counts(artifact_path: Path) -> tuple[int, int]:
 def content_fingerprint(chunk_paths: Sequence[Path]) -> str:
     """Return a stable content identity for a snapshot built from these chunks.
 
-    Derived from the chunks' own digests rather than from the merged Parquet file.
-    A Parquet file is not byte-stable across writes — the writer embeds metadata
-    that varies — so a file digest would report two merges of identical content as
-    different snapshots, and would make a consolidation's derived id unstable.
-
-    Chunk checkpoints are themselves immutable and content-addressed, so hashing
-    them identifies what the snapshot contains.
+    Derived from the chunks' digests, not the merged Parquet file: Parquet embeds
+    metadata that varies between writes of identical content.
     """
     return sha256_text(
         canonical_json(
@@ -235,9 +215,8 @@ def _write_manifest(
         "failed_documents": failed,
         "missing_documents": missing,
         "warnings": warnings,
-        # The part tree is what consolidation reads. The assembled artifact above
-        # stays as the convenient single-file view; the parts are the canonical
-        # decomposition a consumer can stream a quarter from.
+        # The part tree is what consolidation reads; the assembled artifact above
+        # stays as the single-file view.
         "resolved_parts": parts,
         "schema_version": SNAPSHOT_SCHEMA_VERSION,
         "source_snapshot_ids": [run_id],
@@ -284,14 +263,7 @@ def publish_snapshot(
     snapshots_root: Path,
     snapshot_id: str | None = None,
 ) -> MergeResult:
-    """Merge a run's chunks into an immutable snapshot and publish it.
-
-    Args:
-        run_id: identity of the run being published.
-        chunks_dir: directory holding the run's chunk Parquet files.
-        snapshots_root: root under which snapshots are stored.
-        snapshot_id: explicit snapshot identity; derived from the run when absent.
-    """
+    """Merge a run's chunks into an immutable snapshot and publish it."""
     chunk_paths = sorted(chunks_dir.glob("chunk-*.parquet"))
     if not chunk_paths:
         raise MergeError(f"no chunk checkpoints found in {chunks_dir}")
@@ -305,8 +277,7 @@ def publish_snapshot(
     resolved_snapshot_id = snapshot_id or f"snap-{sha256_text(run_id)[:12]}"
     snapshot_dir = snapshots_root / resolved_snapshot_id
     if snapshot_dir.exists():
-        # Snapshots are immutable; republishing under the same id would rewrite
-        # an identity other records already reference.
+        # Snapshots are immutable; republishing would rewrite a recorded identity.
         raise MergeError(
             f"snapshot {resolved_snapshot_id} already exists at {snapshot_dir}"
         )
@@ -382,10 +353,8 @@ def current_snapshot_dir(snapshots_root: Path) -> Path | None:
 def current_snapshot_artifact(snapshots_root: Path) -> Path | None:
     """Return the current snapshot's assembled artifact, or None.
 
-    Only a *run* snapshot has an assembled ``documents.parquet``. A consolidated
-    snapshot is a repartitioned part tree instead, so this returns None for it —
-    which is why readers must not treat "no artifact" as "nothing published".
-    Use :func:`current_snapshot_dir` to distinguish the two.
+    None means the current snapshot may be a consolidated part tree, so it does not
+    mean nothing is published; use :func:`current_snapshot_dir` to tell them apart.
     """
     target = current_snapshot_dir(snapshots_root)
     if target is None:

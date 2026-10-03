@@ -1,5 +1,3 @@
-"""Tests for statutory exhibit index taxonomy and regex patterns."""
-
 from __future__ import annotations
 
 from edgar_sec.domain.taxonomy.schedules.statutory.exhibits import (

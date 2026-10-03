@@ -1,9 +1,5 @@
-"""Terminal prompt and menu-loop contracts.
-
-The loop is shared by every pipeline operator, so a defect here is not one
-pipeline's bug. Three properties are important and are pinned directly: a
-blank answer must not run an action, one failing action must not end the session,
-and the per-render header hook must not be able to hide the menu.
+"""Prompt and menu-loop contracts: a blank answer runs nothing, a failing action
+keeps the session alive, and the header hook cannot hide the menu.
 """
 
 from __future__ import annotations
@@ -18,11 +14,7 @@ from edgar_sec.foundation.runtime.interactive import (
 
 
 def _answers(monkeypatch, replies: list[str]) -> None:
-    """Feed a scripted sequence of answers to every prompt, in order.
-
-    ``raising=False`` because ``input`` is a builtin: the module resolves it at
-    call time and has no attribute of its own to shadow.
-    """
+    """``raising=False`` because ``input`` is a builtin resolved at call time."""
     pending = iter(replies)
     monkeypatch.setattr(
         "edgar_sec.foundation.runtime.interactive.input",
@@ -56,11 +48,8 @@ def test_an_invalid_choice_does_not_run_anything(monkeypatch) -> None:
 def test_a_failing_action_is_reported_and_the_menu_continues(
     monkeypatch, capsys
 ) -> None:
-    """An unexpected exception must not end the operator's session.
-
-    A handler that catches only a few exception types lets anything else
-    propagate out of the loop, and the session state the operator had built is
-    gone.
+    """A handler catching only a few exception types lets anything else propagate out
+    and lose the operator's session state.
     """
     ran: list[str] = []
     _answers(monkeypatch, ["1", "2", "0"])

@@ -1,9 +1,5 @@
-"""Curated-versus-source comparison and effective-input projection tests.
-
-``compare_sources`` is the answer to a question the fetch pipeline cannot ask:
-which registrants exist upstream that the curated CIK input does not cover. It
-reads only immutable inputs, so every assertion here is about a pure function of
-the published source snapshot plus the curated CSV.
+"""Curated-versus-source comparison and effective-input projection, over immutable
+inputs only, so every assertion is a pure function of snapshot plus curated CSV.
 """
 
 from __future__ import annotations
@@ -54,7 +50,7 @@ TICKERS = {
 
 @pytest.fixture()
 def published_source(session: FakeSession, tmp_path: Path) -> tuple[Path, object]:
-    """Refresh a source snapshot over the scripted session and return its manifest path."""
+    """Refresh a source snapshot and return its manifest path."""
     session.register_bytes(SOURCE_URL, json.dumps(TICKERS).encode("utf-8"))
     metadata = resolve_metadata_paths(tmp_path)
     manifest = refresh_company_tickers(
@@ -171,11 +167,7 @@ def test_compare_preserves_curated_only_ciks(published_source) -> None:
 def test_the_effective_roster_is_published_as_a_loadable_dataset(
     published_source,
 ) -> None:
-    """The roster dataset is the carrier a plan consumes.
-
-    Without it the CSV stays the only real input format and the datasets a
-    comparison publishes are read by nothing.
-    """
+    """Without the roster dataset, the datasets a comparison publishes are read by nothing."""
     manifest_path, metadata = published_source
     result = compare_sources(
         curated_input_path=fixture_path("cik_sec_mini.csv"),
@@ -258,7 +250,6 @@ def test_effective_csv_covers_the_union_and_is_usable_as_input(
     assert published["row_count"] == result["registry_row_count"]
     assert published["columns"] == ["cik", "name"]
 
-    # The contract that matters: the projection feeds the existing CSV pipeline.
     parsed = compile_cik_cohort(effective, metadata_paths=metadata)
     assert parsed.row_count == result["registry_row_count"]
     assert parsed.roster.range_ciks(0, parsed.row_count)[0] == "0000000020"
@@ -402,12 +393,7 @@ def test_a_stale_manifest_is_detected_on_load(tmp_path) -> None:
 def test_ensure_registry_projects_the_seed_against_the_source(
     published_source,
 ) -> None:
-    """The union of curated CIKs and active listings is the augmentation cohort.
-
-    The curated CSV is a seed, so it cannot describe who files with the SEC now.
-    This is the projection augmentation builds on, and it must be reachable in one
-    call from the operator rather than only as an explicit two-step command.
-    """
+    """The curated CSV is a seed, so it cannot describe who files now."""
     manifest_path, metadata = published_source
     result = ensure_registry(
         curated_input_path=fixture_path("cik_sec_mini.csv"),
@@ -415,8 +401,7 @@ def test_ensure_registry_projects_the_seed_against_the_source(
         metadata_paths=metadata,
     )
     roster = load_registry_roster(result["registry_id"], metadata)
-    # The seed's four CIKs, plus NEWCO, which the seed does not cover but the
-    # live listing does.
+    # The seed's four CIKs, plus NEWCO from the live listing.
     assert roster.range_ciks(0, roster.row_count) == (
         "0000000020",
         "0000001761",
@@ -430,11 +415,7 @@ def test_ensure_registry_projects_the_seed_against_the_source(
 def test_ensure_registry_reuses_an_already_computed_projection(
     published_source,
 ) -> None:
-    """Registry identity is content-derived, so the second request is free.
-
-    The operator reaches this on the augmentation path, where an unnoticed
-    re-comparison would republish a registry on every invocation.
-    """
+    """An unnoticed re-comparison would republish a registry on every invocation."""
     manifest_path, metadata = published_source
     source_id = load_source_snapshot(manifest_path).manifest["snapshot_id"]
     first = ensure_registry(
@@ -456,16 +437,7 @@ def test_ensure_registry_reuses_an_already_computed_projection(
 def test_ensure_registry_answers_the_same_questions_either_way(
     published_source,
 ) -> None:
-    """A freshly computed and a reused projection must be described identically.
-
-    The two paths build their answer from different sources -- one from the
-    comparison's own return value, the other from the roster it loads -- and the
-    comparison calls that count ``registry_row_count``. Reading ``row_count`` from
-    a fresh comparison therefore raised ``KeyError`` on the *first* run for a
-    pair, and only worked on later runs once the reuse branch existed to answer
-    it. The caller renders a count to the operator, so the key set is part of the
-    contract, not an implementation detail.
-    """
+    """The two paths answer from different sources, so their key sets must match."""
     manifest_path, metadata = published_source
     source_id = load_source_snapshot(manifest_path).manifest["snapshot_id"]
     fresh = ensure_registry(

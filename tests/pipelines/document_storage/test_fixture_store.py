@@ -96,8 +96,7 @@ def test_documents_selection_is_ordered_and_filtered(tmp_path: Path) -> None:
     ]
     with FixtureStore(tmp_path / "fixture.sqlite") as store:
         store.put_documents(documents)
-        # A limit must take the first N of a stable order, or two runs with the
-        # same limit could review different documents and diff against each other.
+        # A limit must take the first N of a stable order, or two runs differ.
         assert [item.doc_id for item in store.documents(limit=2)] == ["doc-a", "doc-b"]
         assert [item.doc_id for item in store.documents(ids=["doc-c"])] == ["doc-c"]
         assert [item.doc_id for item in store.documents(extensions=["txt"])] == [
@@ -108,12 +107,7 @@ def test_documents_selection_is_ordered_and_filtered(tmp_path: Path) -> None:
 def test_store_without_document_metadata_reads_as_empty_not_corrupt(
     tmp_path: Path,
 ) -> None:
-    """A payload-only fixture is incomplete, not unusable.
-
-    A store written before document metadata existed must still open and still
-    serve payloads; refusing to open would turn a repairable gap into a dead
-    fixture.
-    """
+    """Refusing to open would turn a repairable gap into a dead fixture."""
     path = tmp_path / "fixture.sqlite"
     with FixtureStore(path) as store:
         store.put_many([("doc-1", b"payload")])

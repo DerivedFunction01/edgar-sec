@@ -19,12 +19,10 @@ from edgar_sec.domain.taxonomy.schedules.legal import (
 )
 from edgar_sec.foundation.text.compounds import expand_alternations
 
-# Central fast-veto unigrams for LexicalEvidencePack table classification
 DERIVATIVE_UNIGRAM_VETOES: tuple[str, ...] = (
     *GENERIC_UNIGRAM_VETOES,
     *EQUITY_UNIGRAM_VETOES,
     *LEGAL_UNIGRAM_VETOES,
-    # Financial Statement unigram veto
     "activities",  # Cash Flow Statement unigram veto
 )
 

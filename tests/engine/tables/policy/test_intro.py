@@ -1,10 +1,6 @@
-"""Separating a table's narrative from its grid, and rejoining an interrupted one.
-
-`split_structural_table_intro` and `unify_table_prose` are the two places where
-the reflow decides that a sentence and a grid are adjacent rather than fused.
-Both are conservative in the same direction: an unrecognised cue leaves the
-narrative inside the table, which is legible, while a false cue strips a
-financial line out of its table, which is not.
+"""Separating a table’s narrative from its grid, and rejoining an interrupted one.
+Both are conservative in one direction: an unrecognised cue leaves the narrative
+inside the table, while a false cue strips a financial line out of its table.
 """
 
 from __future__ import annotations
@@ -26,9 +22,6 @@ TABLE_LINES = (
     "Name                  2024       2023",
     "Alpha                 10         9",
 )
-
-
-# --- split_structural_table_intro -----------------------------------------
 
 
 def test_a_cue_line_before_grid_geometry_is_split_out() -> None:
@@ -97,9 +90,6 @@ def test_cue_stops_at_colon_leaving_indented_headers() -> None:
     assert table_lines == lines[1:]
 
 
-# --- is_tableish_block -----------------------------------------------------
-
-
 class _Features:
     """A stand-in for the geometry record, holding only what the policy reads."""
 
@@ -155,9 +145,6 @@ def test_two_numeric_rows_without_enough_gaps_is_not_tableish() -> None:
 def test_a_single_gap_row_with_no_numeric_cells_is_not_tableish() -> None:
     features = _Features(gap_start_rows=((4,),))
     assert is_tableish_block(features) is False
-
-
-# --- unify_table_prose -----------------------------------------------------
 
 
 PROSE_BEFORE = (

@@ -1,9 +1,6 @@
 """Generic geometric evidence for repeated ASCII table rows.
-
-This module recognizes repeated cell layout, not particular issuers, filing
-families, or schedule vocabulary. Candidate rows may be packed in one block or
-separated by one blank line; promotion requires aligned columns and repeated
-numeric evidence across a bounded run.
+Repeated cell layout is recognized, not particular issuers or statement vocabulary; promotion
+requires aligned columns and repeated numeric evidence across a bounded run.
 """
 
 from __future__ import annotations
@@ -60,9 +57,7 @@ def _field_kind(value: str) -> str:
 
 def measure_row(line: str) -> RowGeometry | None:
     """Measure cell starts and coarse field kinds for one line.
-
-    Only internal whitespace runs of at least three characters split fields.
-    Leading indentation remains part of the first field, not a column boundary.
+    Only internal whitespace runs of at least three characters split fields; leading indentation stays with the first field.
     """
     content_start = len(line) - len(line.lstrip())
     end = len(line.rstrip())
@@ -190,9 +185,7 @@ def _measure_block_rows(lines: tuple[str, ...]) -> tuple[RowGeometry, ...]:
 
 def is_data_row_candidate(lines: tuple[str, ...]) -> bool:
     """Return whether a block has a numeric multi-cell row shape.
-
-    Used to prevent fixed-width data rows from being absorbed as headers merely
-    because their cells are separated by wide spaces.
+    Stops fixed-width data rows being absorbed as headers merely because their cells are widely spaced.
     """
     return any(
         row.numeric_value_fields
@@ -206,11 +199,7 @@ def find_table_row_runs(
     eligible_indices: set[int],
 ) -> tuple[TableRowRun, ...]:
     """Find bounded runs of at least three compatible numeric multi-cell rows.
-
-    ``eligible_indices`` excludes blocks already known to be prose, protected,
-    or structural. A block may contain several adjacent rows; blank lines are
-    represented by the source-coordinate gap between blocks and may bridge at
-    most one empty line.
+    ``eligible_indices`` excludes blocks already known to be prose, protected, or structural.
     """
     measured: dict[int, tuple[RowGeometry, ...]] = {}
     for index in eligible_indices:

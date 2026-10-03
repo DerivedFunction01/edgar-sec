@@ -1,9 +1,6 @@
-"""Tests for company-name normalization.
-
-`TRADEMARK_RE` is built through the regex DSL rather than written by hand, and
-that is exactly the sort of change whose failure is silent: a branch-ordering
-mistake still compiles and still matches, just the wrong things. These tests pin
-the observable behaviour of the pattern and of the pipeline that consumes it.
+"""Company-name normalization.
+A branch-ordering mistake in a DSL-built pattern still compiles and matches
+the wrong things, so the tests pin observable behaviour only.
 """
 
 from __future__ import annotations
@@ -25,9 +22,9 @@ def test_trademark_pattern_matches_bare_markers(marker: str) -> None:
 @pytest.mark.parametrize(
     "text",
     [
-        "(Inc)",  # not a trademark marker
-        "(Registrant)",  # a real parenthetical
-        "()",  # empty
+        "(Inc)",
+        "(Registrant)",
+        "()",
     ],
 )
 def test_trademark_pattern_ignores_non_markers(text: str) -> None:
@@ -35,8 +32,8 @@ def test_trademark_pattern_ignores_non_markers(text: str) -> None:
 
 
 def test_trademark_marker_is_stripped_from_the_name() -> None:
-    # "holdings" singularises via PLURAL_MAP, so the plural is not the assertion
-    # under test; the marker being gone is.
+    # "holdings" singularises via PLURAL_MAP, so the plural is not under test; the
+    # marker's absence is.
     assert normalize_name("ACME (R) Holdings") == ["acme", "holding"]
 
 

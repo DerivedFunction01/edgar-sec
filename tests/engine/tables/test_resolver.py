@@ -1,10 +1,6 @@
 """Table boundary resolution: growing a seed outward, then holding it to discipline.
-
-The resolver is the only place where the evidence for a table's *extent* lives.
-Each case below pins one absorbable signal (a header prefix above, a blank-line
-bridge, a page marker, a statement section label, a wrapped continuation row, a
-final total) and one refusal, so a rule that starts absorbing too eagerly shows
-up as a table that swallowed the page footer.
+Each case pins one absorbable signal or one refusal, so a rule that absorbs too
+eagerly shows up as a table that swallowed the page footer.
 """
 
 from __future__ import annotations

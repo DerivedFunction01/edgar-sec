@@ -1,10 +1,5 @@
-"""Unit tests for company-family normalization and clustering.
-
-The clustering tests pin the *invariants* that matter for sampling rather than
-exact hash values: one economic entity collapses to a single family, and
-unrelated companies that share one word stay apart. The last is the subtle one
--- a naive prefix rule merges "Honda Motor" with "Honda Auto" and silently
-skews any quota-balanced sample.
+"""Clustering invariants, not hash values: one economic entity collapses to a
+single family, and unrelated companies sharing one word stay apart.
 """
 
 from __future__ import annotations
@@ -56,9 +51,6 @@ def index(corpus: list[tuple[str, str]]) -> CompanyFamilyIndex:
     return CompanyFamilyIndex.build_from_records(corpus)
 
 
-# --- normalization --------------------------------------------------------
-
-
 def test_normalize_expands_unambiguous_abbreviations() -> None:
     tokens = normalize_name("J.P. Morgan Chase Commercial Mtg Sec Tr 2011-C5")
     assert "mortgage" in tokens
@@ -89,8 +81,6 @@ def test_normalize_handles_degenerate_input(raw: str) -> None:
 
 
 def test_post_normalize_collapses_series_markers() -> None:
-    # 2011 is numeric -> D; c5 is alphanumeric so it survives intact;
-    # iv is a roman numeral -> R; x is a single letter -> S
     assert post_normalize(["2011", "c5", "iv", "x"]) == ["D", "c5", "R", "S"]
     assert post_normalize(["keep"]) == ["keep"]
 
@@ -122,7 +112,6 @@ def test_mine_structural_vocabulary_returns_a_frozenset(
 def test_mine_structural_vocabulary_protects_head_words(
     corpus: list[tuple[str, str]],
 ) -> None:
-    """A word that heads its own family must not be mined as structural."""
     vocab = mine_structural_vocabulary(
         [n for _, n in corpus], min_name_len=3, min_tail_freq=1
     )
@@ -142,11 +131,7 @@ def test_structural_helpers_agree_with_the_pipeline(
     assert clean_key(body, vocab) == ("santander", "drive", "auto")
 
 
-# --- clustering invariants ------------------------------------------------
-
-
 def test_series_variants_collapse_into_one_family(index: CompanyFamilyIndex) -> None:
-    """The core requirement: one trust filing per deal is still one family."""
     keys = {
         index.resolve(cik, name).family_key
         for cik, name in [
@@ -189,11 +174,7 @@ def test_morgan_stanley_resolves_to_its_parent(index: CompanyFamilyIndex) -> Non
 
 
 def test_one_shared_token_is_not_enough_to_merge(index: CompanyFamilyIndex) -> None:
-    """Honda Motor and Honda Auto are different companies.
-
-    Merging them on a single shared token would fold an automaker into its own
-    finance arm and skew any quota-balanced sample.
-    """
+    """Merging them on one shared token would fold an automaker into its finance arm."""
     honda_motor = index.derive_company_family("Honda Motor Co Ltd")
     honda_auto = index.resolve(
         "0001566138", "Honda Auto Receivables 2013-1 Owner Trust"
@@ -234,9 +215,6 @@ def test_every_resolved_member_shares_its_family_id(
     assert len({i.family_key for i in santander}) == 1
 
 
-# --- resolution behaviour -------------------------------------------------
-
-
 def test_resolve_accepts_padded_and_unpadded_ciks(index: CompanyFamilyIndex) -> None:
     padded = index.resolve("0000019617")
     bare = index.resolve("19617")
@@ -244,7 +222,6 @@ def test_resolve_accepts_padded_and_unpadded_ciks(index: CompanyFamilyIndex) -> 
 
 
 def test_resolve_falls_back_to_stateless_derivation(index: CompanyFamilyIndex) -> None:
-    """A registrant absent from the seed must still resolve to something."""
     info = index.resolve("9999999999", "Totally Unknown Widgets Inc")
     assert info.family_key
     assert info.family_id
@@ -276,9 +253,6 @@ def test_index_is_immutable_after_construction(corpus: list[tuple[str, str]]) ->
     built = CompanyFamilyIndex.build_from_records(corpus)
     with pytest.raises(TypeError):
         built._cik_to_info["x"] = CompanyFamilyInfo("", "", "", "", "", False)  # type: ignore[index]
-
-
-# --- factories ------------------------------------------------------------
 
 
 def _write_profiles(path: Path, rows: list[tuple[str, str]]) -> Path:
@@ -350,9 +324,6 @@ def test_from_existing_profiles_reads_a_materialized_catalog(
 def test_from_existing_profiles_reports_a_missing_file(tmp_path: Path) -> None:
     with pytest.raises(FileNotFoundError, match="company profiles file not found"):
         CompanyFamilyIndex.from_existing_profiles(tmp_path / "absent.parquet")
-
-
-# --- determinism ----------------------------------------------------------
 
 
 def test_building_twice_gives_identical_results(corpus: list[tuple[str, str]]) -> None:

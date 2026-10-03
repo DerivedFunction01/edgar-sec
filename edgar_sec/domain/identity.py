@@ -28,7 +28,6 @@ class Cik:
         return cls(int(cleaned) if cleaned else 0)
 
     def to_10digit(self) -> str:
-        """Format as standard SEC 10-digit zero-padded string."""
         return f"{self.value:010d}"
 
     def __str__(self) -> str:
@@ -54,13 +53,8 @@ class AccessionNumber:
     def from_any(cls, raw: AccessionNumber | str) -> AccessionNumber:
         """Accept either EDGAR spelling and return the hyphenated form.
 
-        EDGAR serves ``0000320193-23-000106`` and ``000032019320000106`` for the
-        same filing, and both spellings are important: the
-        hyphenated form is the human and bundle-filename convention, while the
-        filing catalog and committed fixture rows carry the unhyphenated one.
-        Accepting only the hyphenated form made a real catalog plan unloadable
-        and split one document across two identities. Normalizing at the
-        boundary is what keeps a single identity per filing.
+        Both spellings are real -- catalog and fixture rows carry the unhyphenated one --
+        so rejecting it split one document across two identities.
         """
         if isinstance(raw, AccessionNumber):
             return raw

@@ -1,10 +1,6 @@
-"""Binary Yes/No block merging for cover checkbox grids.
-
-An HTML cover renders a binary question as several stacked lines — the
-question tail, a mark, an opposite-answer tail, and a box+dot spacer between
-them. The merger recognises that shape, collapses it to one canonicalized
-line, and leaves every other line untouched: a bare bullet is never treated as
-evidence of a binary block.
+"""Binary Yes/No block merging for cover checkbox grids: a binary question arrives
+as stacked lines — question tail, mark, opposite tail, box+dot spacer — and
+collapses to one canonicalized line. A bare bullet is never evidence of one.
 """
 
 from __future__ import annotations
@@ -59,11 +55,8 @@ def normalize_checkbox_tokens(
     if scope in (CheckmarkScope.COVER_CONTEXT, CheckmarkScope.ALL):
         text = _RE_CONTEXT_CHECKED.sub(CANONICAL_CHECKED, text)
         text = _RE_CONTEXT_UNCHECKED.sub(CANONICAL_UNCHECKED, text)
-    # Ensure a single space separates a canonical checkbox token from
-    # adjacent words when the source had no spacing
-    # (e.g. "[X]Annual report..." -> "[X] Annual report..." and
-    #  "company[X]" -> "company [X]").
-    # Handle bracketed tokens: [X], [ ], (X), ( )
+    # A canonical token must be space-separated from adjacent words where the
+    # source had none ("[X]Annual" -> "[X] Annual", "company[X]" -> "company [X]").
     text = _RE_BRACKET_CHECKED.sub(f"{CANONICAL_CHECKED} ", text)
     text = _RE_BRACKET_CHECKED_AFTER.sub(rf"\1 {CANONICAL_CHECKED}", text)
     text = _RE_BRACKET_UNCHECKED.sub(f"{CANONICAL_UNCHECKED} ", text)
@@ -88,17 +81,8 @@ def classify_mark_line(
     context: str = "gap",
     scope: CheckmarkScope = CheckmarkScope.GLOBAL_SAFE,
 ) -> str:
-    """Classify a line as a checkbox mark.
-
-    Args:
-        line: The line to classify.
-        context: Position of the mark relative to Yes/No words:
-            - "gap": mark alone on its own line between Yes/No tails.
-            - "leading": mark at start of line before a capitalized phrase
-              (e.g. "x ANNUAL REPORT..." from the Mark One grid).
-            - "trailing": mark at end of line after a Yes/No word.
-
-    Returns: "checked", "unchecked", or "unknown".
+    """Classify a line as a checkbox mark; `context` is its position relative to the
+    Yes/No words — "gap", "leading" before a capitalized phrase, or "trailing".
     """
     stripped = line.strip()
     if not stripped:
@@ -147,9 +131,8 @@ def _extend_binary_block(
     *,
     scope: CheckmarkScope = CheckmarkScope.GLOBAL_SAFE,
 ) -> int | None:
-    """Return the end index (exclusive) if a binary block starts at `start`.
-
-    Structure: head(question word) + gap_marks + tail(opposite word) + trailing_mark.
+    """The end index (exclusive) if a binary block starts at `start`: head (question
+    word) + gap marks + tail (opposite word) + trailing mark.
     """
     head_word = _tail_word(lines[start])
     target = "no" if head_word == "yes" else "yes"
@@ -244,15 +227,8 @@ def merge_yes_no_binary_blocks(
     *,
     scope: CheckmarkScope = CheckmarkScope.GLOBAL_SAFE,
 ) -> list[str]:
-    """Collapse Yes/No binary question blocks onto single lines.
-
-    Handles every variant found in the fixture:
-      - recognized marks (brackets, symbols, entities)
-      - bare x/o
-      - Wingdings single-char marks (R, T, S, ...)
-      - box+dot spacers (stripped)
-      - prefix/suffix positioning
-      - inverse order (No before Yes)
+    """Collapse Yes/No binary question blocks onto single lines, in either order and
+    across recognized, bare x/o, and single-character Wingdings marks.
     """
     blocks = _find_binary_blocks(list(lines), scope=scope)
     if not blocks:

@@ -19,7 +19,6 @@ from edgar_sec.foundation.text.evidence import (
     compile_evidence_pack,
 )
 
-# Primary Tier: Distinctive inventory disaggregation row stubs
 _INVENTORY_CLASSES = (
     "raw material",
     "raw materials",
@@ -71,7 +70,6 @@ INVENTORY_PRIMARY_TERMS: tuple[str, ...] = expand_alternations(
     ),
 )
 
-# Supporting Tier: Inventory headers, units, and inventory types
 INVENTORY_SUPPORTING_TERMS: tuple[str, ...] = expand_alternations(
     expand_variants(("inventory", "inventories", "raw material", "finished good")),
     "fifo",

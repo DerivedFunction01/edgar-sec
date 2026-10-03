@@ -1,11 +1,6 @@
 """Shared filing vectors for the reflow stage tests.
-
-The reference tree's `defs/tests/test_reflow.py` holds these documents inline in
-one 1,013-line module. `AGENTS.md` §6.3 puts shared setup in `conftest.py` at
-the narrowest directory that needs it, and the `file-length` scanner caps a test
-file at 800 lines, so the documents live here and the tests request them by
-name. Nothing here asserts anything: these are inputs, and each test states the
-one property it holds them to.
+Nothing here asserts anything: these are inputs, and each test states the one
+property it holds them to.
 """
 
 from __future__ import annotations

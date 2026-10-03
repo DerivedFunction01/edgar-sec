@@ -1,22 +1,6 @@
-"""Stage-1 HTML pre-cleaning: remove transport and presentation noise.
-
-This pass runs before the DOM is parsed for anything expensive, because modern
-filings are mostly markup. It strips inline XBRL wrappers, redundant standard
-font declarations, Office metadata attributes, and web-only navigation links —
-none of which carry parsing signal — so the DOM handed to page-marker
-analysis, cover routing, table conversion, and deep normalization is smaller.
-
-Every pass is a pre-compiled, structurally scoped regex, and each one short-
-circuits when its trigger substring is absent. Together they add a few percent
-to preprocessing.
-
-**Preserved on purpose:** `Wingdings` / `Webdings` / `Symbol` font declarations,
-because checkbox normalization keys on them; `colspan` / `rowspan`, borders,
-`align` / `text-align` / `width`, because page-marker layout routing and table
-structure depend on them; and all text content.
-
-The pass order in `clean_html_for_parsing` is important and is asserted by
-`tests/engine/document/html/test_cleaner.py`.
+"""HTML pre-cleaning: strip transport and presentation noise before DOM work.
+Preserved on purpose: symbolic fonts, keyed on by checkbox normalization, plus `colspan`/`rowspan`,
+borders, alignment, `width`, and all text. Pass order is a contract - glyphs need unwrapped tags.
 """
 
 from __future__ import annotations
@@ -32,20 +16,12 @@ from edgar_sec.domain.forms.common.checkmarks import (
 from edgar_sec.foundation.regex.builder import build_alternation
 from edgar_sec.foundation.text.normalize import sanitize_unicode_whitespace
 
-# ---------------------------------------------------------------------------
-# Inline XBRL wrappers
-# ---------------------------------------------------------------------------
-
-# ix:header holds contexts, units, and hidden facts: pure XBRL metadata, so it
-# is dropped whole rather than unwrapped tag by tag.
+# ix:header/ix:hidden hold only XBRL metadata, so they drop whole rather than unwrap.
 _RE_IX_HEADER_BLOCK = re.compile(r"(?is)<ix:header\b.*?</ix:header>")
 _RE_IX_HIDDEN_BLOCK = re.compile(r"(?is)<ix:hidden\b.*?</ix:hidden>")
 _IXBRL_PREFIXES = build_alternation(["ix", "xbrl", "xbrli", "dei", "us-gaap"])
 _RE_IXBRL_TAG = re.compile(rf"(?i)</?(?:{_IXBRL_PREFIXES}):[a-z][a-z0-9_.-]*[^>]*>")
 
-# ---------------------------------------------------------------------------
-# Benign font styles inside style="..." attribute values
-# ---------------------------------------------------------------------------
 
 # Standard families carry no downstream signal; symbolic fonts do.
 _PRESERVED_FAMILIES = ("wingdings", "webdings", "symbol")
@@ -80,9 +56,8 @@ _SIDE_SUFFIX_ALT = build_alternation(
     ["top", "bottom", "left", "right"], auto_escape=True
 )
 
-# One combined declaration regex: strips non-semantic typography, font, margin,
-# padding, colour, and flow properties in a single pass while preserving
-# structural borders, alignment, widths, page breaks, and symbolic fonts.
+# One combined pass strips non-semantic typography, font, margin, padding, colour and flow
+# properties while preserving structural borders, alignment, widths, page breaks, symbolic fonts.
 _RE_BENIGN_STYLE_DECL = re.compile(
     r"(?i)(?<![a-z-])(?:"
     rf"font-family\s*:\s*(?![^;\"'\n>]*(?:{_PRESERVED_FAMILIES_ALT}))[^;\"'\n>]*"
@@ -94,7 +69,6 @@ _RE_BENIGN_STYLE_DECL = re.compile(
     r");?"
 )
 
-# Residue left behind by the passes above.
 _RE_REDUNDANT_SEPARATORS = re.compile(r";\s*;")
 _RE_EMPTY_STYLE_ATTR = re.compile(r'(?i)(?<=[\s"])style\s*=\s*"\s*"')
 
@@ -123,9 +97,6 @@ _VOID_TAGS = frozenset(
     }
 )
 
-# ---------------------------------------------------------------------------
-# Font tags and noise attributes
-# ---------------------------------------------------------------------------
 
 _RE_FONT_TAG = re.compile(r"(?i)<font\b([^>]*)>")
 _RE_FONT_ATTRS = re.compile(
@@ -139,9 +110,6 @@ _RE_NOISE_ATTRS = re.compile(
     rf"(?i)\s+(?:{_NOISE_ATTRS_ALT})=(?:[\"'][^>\"']*[\"']|[^>\s\"']+)"
 )
 
-# ---------------------------------------------------------------------------
-# Office / transport metadata attributes
-# ---------------------------------------------------------------------------
 
 _METADATA_PREFIX_ALT = build_alternation(["mso", "data"], auto_escape=True)
 _METADATA_LANG_ALT = build_alternation(["xml:lang", "lang"], auto_escape=True)
@@ -163,9 +131,7 @@ def _replace_font_glyphs(text: str, font_family: str) -> str:
             and not is_standalone
         ):
             return glyph
-        # Skip glyphs already wrapped in a canonical bracket pair, so a
-        # pre-rendered [X] inside a symbolic-font scope is not expanded into
-        # a double-bracket [[X]].
+        # A pre-rendered [X] inside a symbolic-font scope must not become [[X]].
         start, end = match.start(), match.end()
         if (
             start > 0
@@ -174,7 +140,6 @@ def _replace_font_glyphs(text: str, font_family: str) -> str:
             and text[end] in "])/"
         ):
             return glyph
-        # Broader guard: the glyph is enclosed in brackets or parentheses.
         if start >= 2 and end <= len(text) - 2:
             surrounding = text[start - 2 : end + 2]
             if (
@@ -198,9 +163,7 @@ def _replace_font_glyphs(text: str, font_family: str) -> str:
 
 def strip_ixbrl_inline_tags(html: str) -> str:
     """Unwrap inline XBRL tags while keeping their inner text content.
-
-    The wrapper carries no display meaning, so the tag goes and the text it
-    enclosed stays. `ix:header` and `ix:hidden` are dropped whole.
+    `ix:header` and `ix:hidden` are dropped whole: they are pure metadata.
     """
     if ":" not in html:
         return html
@@ -213,10 +176,7 @@ def strip_ixbrl_inline_tags(html: str) -> str:
 
 def normalize_font_qualified_glyphs(html: str) -> str:
     """Map glyphs only inside text nodes carrying an explicit symbolic font.
-
-    Tags, attributes, comments, scripts, and styles are left untouched, and a
-    nested font declaration replaces the inherited one — so ordinary text in a
-    `<font face="Arial">` override is never reinterpreted as a checkbox.
+    A nested declaration replaces the inherited one, so text under a ``<font face="Arial">`` override is never read as a checkbox.
     """
     if not html:
         return html
@@ -281,10 +241,7 @@ def normalize_font_qualified_glyphs(html: str) -> str:
 
 def strip_benign_font_styles(html: str) -> str:
     """Strip redundant standard font and layout declarations from style attributes.
-
-    Symbolic fonts are preserved because checkbox normalization keys on them,
-    and structural declarations — borders, alignment, width, page breaks,
-    `display:none` — are never touched.
+    Symbolic fonts and structural declarations (borders, alignment, width, page breaks, ``display:none``) are never touched.
     """
     if "style=" not in html and "style =" not in html:
         return html
@@ -345,9 +302,6 @@ _RE_TOC_NAV_LINK = re.compile(
     rf"""(?is)<a\b[^>]*\bhref\s*=\s*["']#[^"']*["'][^>]*>\s*(?:<[^>]+>\s*)*(?:{_TOC_NAV_PHRASES})\s*(?:</[^>]+>\s*)*</a>"""
 )
 
-# ---------------------------------------------------------------------------
-# Non-displaying blocks
-# ---------------------------------------------------------------------------
 
 _NON_DISPLAYING_TAGS = build_alternation(["script", "style", "head"])
 _RE_HAS_NON_DISPLAYING_BLOCK = re.compile(rf"(?i)<(?:{_NON_DISPLAYING_TAGS})\b")
@@ -358,9 +312,7 @@ _RE_HEAD_SCRIPT_STYLE = re.compile(
 
 def strip_toc_navigation_links(html: str) -> str:
     """Strip web-only intra-document TOC jump-links.
-
-    `<a href="#...">Table of Contents</a>` is chrome from a web viewer, not
-    filing content, and would otherwise appear as prose in normalized output.
+    ``<a href="#...">Table of Contents</a>`` is viewer chrome and would otherwise surface as prose.
     """
     if "href=" not in html and "href =" not in html and "HREF=" not in html:
         return html
@@ -369,11 +321,7 @@ def strip_toc_navigation_links(html: str) -> str:
 
 def strip_non_displaying_blocks(html: str) -> str:
     """Drop ``<head>``, ``<script>``, and ``<style>`` blocks wholesale.
-
-    Their content is never rendered, but a ``<title>`` or a stylesheet rule is
-    indistinguishable from filing prose once the text frame is built. This runs
-    before representation classification, so a script sitting outside a
-    ``<PRE>`` cannot be read as content.
+    Never rendered, yet a title or stylesheet rule is indistinguishable from filing prose.
     """
     if not html:
         return html
@@ -383,13 +331,8 @@ def strip_non_displaying_blocks(html: str) -> str:
 
 
 def clean_html_for_parsing(html: str) -> str:
-    """Unified Stage-1 cleaning entry point.
-
-    The order is important: inline XBRL first (its tags carry their own
-    style attributes, so glyph normalization must see them after the wrapper is
-    gone), then benign font and layout styles, then font-tag attributes, then
-    metadata attributes, then navigation links, and finally Unicode
-    whitespace sanitization.
+    """Unified HTML cleaning entry point.
+    Order is a contract: XBRL first, so glyph normalization sees unwrapped tags; whitespace last.
     """
     html = strip_ixbrl_inline_tags(html)
     html = normalize_font_qualified_glyphs(html)

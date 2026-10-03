@@ -1,8 +1,6 @@
-"""Policy scanner behavior tests.
-
-The scanners are the enforcement mechanism for the repository contract, so a
-scanner that silently stops matching is as damaging as a broken contract. These
-tests build a synthetic repository tree and assert each scanner's verdict.
+"""Policy scanner behaviour.
+A scanner that silently stops matching is as damaging as a broken contract, so
+these build a synthetic tree and assert each scanner’s verdict.
 """
 
 from __future__ import annotations
@@ -33,9 +31,6 @@ def synthetic_repo(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> Path:
     """Create a throwaway repository tree and make it the scanner's cwd."""
     monkeypatch.chdir(tmp_path)
     return tmp_path
-
-
-# ------------------------------------------------------------------ clean-exit
 
 
 def test_clean_exit_flags_sys_exit_in_library_function(synthetic_repo: Path) -> None:
@@ -97,9 +92,6 @@ def test_clean_exit_ignores_tests(synthetic_repo: Path) -> None:
     assert clean_exit.scan_clean_exit() == []
 
 
-# ----------------------------------------------------------------- environment
-
-
 def test_environment_flags_direct_os_environ(synthetic_repo: Path) -> None:
     _build_repo(
         synthetic_repo,
@@ -126,9 +118,6 @@ def test_environment_allows_runtime_env_module(synthetic_repo: Path) -> None:
     assert environment.scan_environment_access() == []
 
 
-# -------------------------------------------------------------- artifact-paths
-
-
 def test_artifact_paths_flags_hardcoded_literal(synthetic_repo: Path) -> None:
     _build_repo(
         synthetic_repo,
@@ -145,9 +134,6 @@ def test_artifact_paths_allows_path_resolver(synthetic_repo: Path) -> None:
     assert paths.scan_artifact_paths() == []
 
 
-# ------------------------------------------------------------- layer-boundary
-
-
 def test_layers_flag_upward_import(synthetic_repo: Path) -> None:
     _build_repo(
         synthetic_repo,
@@ -161,11 +147,8 @@ def test_layers_flag_upward_import(synthetic_repo: Path) -> None:
 
 
 def test_layers_flag_relative_upward_import(synthetic_repo: Path) -> None:
-    """A relative spelling must not smuggle an upward import past the scanner.
-
-    ``..`` from a module directly inside ``foundation/`` is the package root, so
-    ``..infra.storage`` is ``edgar_sec.infra.storage`` — Layer 0 reaching Layer 2.
-    Only the absolute form was caught before 2026-09-29.
+    """``..`` from a module directly inside ``foundation/`` resolves to
+    ``edgar_sec.infra.storage`` — Layer 0 reaching Layer 2.
     """
     _build_repo(
         synthetic_repo,
@@ -184,9 +167,8 @@ def test_layers_flag_relative_upward_import_from_nested_module(
         synthetic_repo,
         {"edgar_sec/foundation/x/y.py": ("from ..infra.storage import duckdb\n")},
     )
-    # `..` from package edgar_sec.foundation.x is edgar_sec.foundation, so this
-    # names a *nonexistent* module rather than an upward import. It must not be
-    # reported as a layer violation.
+    # `..` from a subpackage names a nonexistent module, not an upward import, so it
+    # must not be reported as a layer violation.
     assert layers.scan_layer_boundary() == []
 
 
@@ -208,9 +190,6 @@ def test_layers_allow_downward_import(synthetic_repo: Path) -> None:
         },
     )
     assert layers.scan_layer_boundary() == []
-
-
-# ------------------------------------------------------------- secrets-leakage
 
 
 def test_secrets_flag_committed_api_key(synthetic_repo: Path) -> None:
@@ -243,9 +222,6 @@ def test_secrets_ignore_short_and_dynamic_values(synthetic_repo: Path) -> None:
         },
     )
     assert secrets_scanner.scan_secrets_leakage() == []
-
-
-# ----------------------------------------------------------------- file-length
 
 
 def test_file_length_flags_long_module(synthetic_repo: Path) -> None:

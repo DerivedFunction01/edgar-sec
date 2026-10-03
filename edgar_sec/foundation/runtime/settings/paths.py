@@ -1,8 +1,7 @@
 """Artifact and cache path settings.
 
-Logical paths are chosen so generated environment names match standard conventions:
-artifacts.root -> ARTIFACTS_ROOT
-cache.root -> CACHE_ROOT
+Logical paths are chosen so the derived environment names read conventionally:
+``artifacts.root`` -> ``ARTIFACTS_ROOT``, ``cache.root`` -> ``CACHE_ROOT``.
 """
 
 from __future__ import annotations

@@ -132,11 +132,7 @@ def test_fill_persists_the_complete_submission_bundle(tmp_path: Path) -> None:
 
 
 def test_fill_records_document_metadata_for_every_locator(tmp_path: Path) -> None:
-    """A filled fixture must be self-describing, or nothing can review it.
-
-    A payload key is a one-way digest, so accession, path, MIME and source hash
-    are only recoverable if the fill wrote them down.
-    """
+    """A payload key is one-way, so accession, path, and MIME are written down."""
     paths = _paths(tmp_path)
     html = _locator("page.htm")
     text = DocumentLocator.from_parts(
@@ -164,8 +160,7 @@ def test_fill_records_document_metadata_for_every_locator(tmp_path: Path) -> Non
         assert page.mime_type == "text/html"
         assert page.byte_size == len(b"<html>body</html>")
         assert recorded[text.document_locator_key].mime_type == "text/plain"
-        # The form selects the processing plugin, so losing it would make a
-        # review normalize under a different plugin than the pipeline.
+        # The form selects the processing plugin, so losing it changes review.
         assert store.document_forms() == {
             html.document_locator_key: "10-K",
             text.document_locator_key: "10-Q",
@@ -173,11 +168,7 @@ def test_fill_records_document_metadata_for_every_locator(tmp_path: Path) -> Non
 
 
 def test_refill_backfills_metadata_without_refetching(tmp_path: Path) -> None:
-    """A payload-only fixture is repaired by re-running the same fill.
-
-    This is the migration path for a fixture recorded before the metadata table
-    existed, and it must not touch the network: the payloads are already there.
-    """
+    """Re-running the same fill must not touch the network."""
     paths = _paths(tmp_path)
     locator = _locator("legacy.htm")
     with FixtureStore(paths.fixture_db_path("fix-legacy")) as store:

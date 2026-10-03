@@ -12,12 +12,8 @@ _SENTINEL_TEMPLATE = "__SEC_TBL_{position}__"
 def build_masked_offset_translator(
     masked: str, spans: tuple[TableSpan, ...]
 ) -> Callable[[int], int]:
-    """Return a callable mapping masked-text offsets to original-text offsets.
-
-    Masked table sentinels shorten the document, so offsets measured on the
-    masked frame drift after each table. The translator restores the original
-    coordinates using each sentinel's masked range and the corresponding
-    original table span. Offsets inside a sentinel map to the span start.
+    """A callable mapping masked-text offsets to original-text offsets; sentinels
+    shorten the document, so masked offsets drift after each table.
     """
 
     sentinels: list[tuple[int, int, int, int]] = []

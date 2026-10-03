@@ -1,17 +1,7 @@
 """Command line and interactive operator for document storage.
 
-The subcommands, matching what a run does:
-
-``run``               acquire, normalize, and publish a snapshot from a fixture
-``status``            report what is currently published
-``fill``              fetch missing raw payloads into a fixture
-``fixtures``          list available fixture stores
-``review-artifacts``  render review bundles from a fixture
-``review``            compare two review runs
-
-``run`` is offline by design: a corpus must be reproducible from a fixture before
-a live acquisition is worth trusting. Live acquisition goes through the broker,
-which owns pacing, so this CLI does not construct its own HTTP client.
+``run`` is offline by design: a corpus must be reproducible from a fixture before a
+live acquisition is worth trusting. Live acquisition goes through the broker.
 """
 
 from __future__ import annotations
@@ -131,11 +121,10 @@ def _load_plan(path: Path) -> dict[str, Any]:
 def _plan_to_inputs(
     plan: dict[str, Any], limit: int | None
 ) -> tuple[list[str], dict[str, list], dict[str, list]]:
-    """Turn a plan file into the chunk tables the worker consumes.
+    """Turn a plan file into ``(chunk_ids, locators_by_chunk, occurrences_by_chunk)``.
 
-    Returns ``(chunk_ids, locators_by_chunk, occurrences_by_chunk)``. Missing
-    per-chunk locators are an empty chunk rather than an error, so a plan may
-    declare more chunks than a smoke run wants.
+    Missing per-chunk locators are an empty chunk, not an error, so a plan may declare
+    more chunks than a smoke run wants.
     """
     from edgar_sec.domain.document.models import DocumentLocator, FilingOccurrence
 
@@ -368,8 +357,7 @@ def _cmd_review(args: argparse.Namespace, paths: ProjectPaths) -> int:
         print(json.dumps(result.to_dict(), indent=2, sort_keys=True))
     else:
         print((output / "summary.txt").read_text(encoding="utf-8"), end="")
-    # Differences are a result, not a failure: a reviewer reads them. A non-zero
-    # status is what makes the comparison usable from a script.
+    # Differences are a result, not a failure; a reviewer reads them.
     return 1 if result.has_changes else 0
 
 

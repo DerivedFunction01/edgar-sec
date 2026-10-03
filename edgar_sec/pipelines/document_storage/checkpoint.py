@@ -1,9 +1,6 @@
-"""Parquet serialization for document chunk checkpoints.
+"""Parquet schema and IO for chunk checkpoints — the worker's resumability record.
 
-A chunk checkpoint is this phase's whole resumability record, so the schema here
-is the contract the merger validates and the worker reuses. It is a phase
-contract rather than a storage format: the generic staged writer it sits on is
-``infra.storage.parquet.StagedParquetWriter``.
+The merger validates this schema; the worker reuses checkpoints written against it.
 """
 
 from __future__ import annotations
@@ -30,10 +27,8 @@ DOCUMENT_SNAPSHOT_SCHEMA = pa.schema(
         ("document_path", pa.string()),
         ("document_locator_key", pa.string()),
         ("blob_hash", pa.string()),
-        # Carried from the occurrence, not derived here. A stored document without
-        # its form and filing date cannot be repartitioned into fiscal quarters,
-        # which is what cross-run consolidation does; losing them at write time
-        # makes that impossible to recover later.
+        # Carried from the occurrence, not derived: a stored document without its form
+        # and filing date cannot be repartitioned into fiscal quarters at consolidation.
         ("form", pa.string()),
         ("filing_date", pa.string()),
         ("raw_payload", pa.binary()),

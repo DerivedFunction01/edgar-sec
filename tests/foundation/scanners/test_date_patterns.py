@@ -1,8 +1,6 @@
-"""Tests for the date-patterns scanner.
-
-A private month table is how two modules end up disagreeing about which year a
-fiscal period falls in, which surfaces as a mis-partitioned dataset rather than
-as a crash. These tests pin each detection form and the owner-module exemption.
+"""The date-patterns scanner.
+A private month table makes two modules disagree about which year a fiscal period
+falls in, surfacing as a mis-partitioned dataset rather than a crash.
 """
 
 from __future__ import annotations

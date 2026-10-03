@@ -1,13 +1,7 @@
 """Lexical tables and tuning constants for company-family normalization.
 
-Every table here is immutable. These are shared reference data read by the
-engine on every call; a mutable dict or set would let one caller corrupt the
-vocabulary for the whole process, and the clustering result would then depend on
-call order rather than on the input.
-
-The tuning constants below are the only knobs in family resolution. They are
-declared here rather than in the engine so the algorithm module holds logic and
-this module holds data.
+Every table here is immutable; a caller mutating one would make the clustering result
+depend on call order rather than the input.
 """
 
 from __future__ import annotations
@@ -16,24 +10,18 @@ from types import MappingProxyType
 
 from edgar_sec.domain.taxonomy.jurisdictions import STATE_POSTAL_CODES
 
-# Fixed so family ids are reproducible across runs and machines. Changing this
-# string deliberately invalidates every derived family id.
+# Fixed so family ids are reproducible; changing it deliberately invalidates every
+# derived family id.
 SEED = "phase-02-company-family"
 
-# Tokens kept from the head of a name when forming a family key.
 HEAD_TOKENS = 3
-# Minimum characters in a head before it may alias another head.
 MIN_ALIAS_CHARS = 6
-# Minimum variant members before root registrants may attach to a family.
 MIN_CLUSTER_ATTACH = 2
-# Body length at or below which a variant is treated as a plausible parent.
 MAX_PARENT_TOKENS = 4
-# Structural tokens tolerated before a name is treated as a variant.
 STRUCTURAL_THRESHOLD = 1
 
-# Unambiguous abbreviations of security-depository vocabulary. Ambiguous
-# abbreviations live in CONTEXT_RULES instead, because expanding them blindly
-# would corrupt unrelated names.
+# Unambiguous abbreviations of security-depository vocabulary; the ambiguous ones live
+# in CONTEXT_RULES, because expanding them blindly would corrupt unrelated names.
 ABBR_MAP: MappingProxyType[str, str] = MappingProxyType(
     {
         "mort": "mortgage",
@@ -66,10 +54,9 @@ ABBR_MAP: MappingProxyType[str, str] = MappingProxyType(
     }
 )
 
-# Ambiguous abbreviations: token -> (expansion, allowed previous, allowed next).
-# An empty set means "no constraint on that side". Both neighbours are checked
-# because these tokens are only meaningful in a specific context -- "tr" is
-# "trust" after a security type and "series" elsewhere.
+# token -> (expansion, allowed previous, allowed next). An empty set means no constraint
+# on that side; both neighbours are checked because "tr" is "trust" after a security
+# type and "series" elsewhere.
 CONTEXT_RULES: MappingProxyType[str, tuple[str, frozenset[str], frozenset[str]]] = (
     MappingProxyType(
         {
@@ -181,11 +168,10 @@ ROMAN = frozenset(
     }
 )
 
-# Single letters standing in for a varying part of a name. They are excluded
-# from family keys so a series letter never splits one family into many.
+# Single letters standing in for a varying part of a name, excluded from family keys
+# so a series letter never splits one family into many.
 PLACEHOLDER = frozenset({"D", "S", "R"})
 
-# Lower-cased codes for case-insensitive matching against normalized names.
 STATE_CODES: tuple[str, ...] = tuple(sorted(c.lower() for c in STATE_POSTAL_CODES))
 
 __all__ = [

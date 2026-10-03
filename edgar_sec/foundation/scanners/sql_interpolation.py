@@ -1,25 +1,8 @@
 """Policy scanner banning SQL built from unescaped values at a SQL sink.
 
-A statement assembled with an f-string treats every interpolated value as trusted.
-That is safe only for a value that went through an escaping helper on its way in.
-A path, a manifest field, or anything a caller supplied is not trusted, and one
-quote in one of those either breaks the statement or ends it early.
-
-The rule is deliberately narrow:
-
-* it inspects the **argument of a SQL sink**, so composing a statement into a
-  local and passing that local is unaffected — the spelling this codebase already
-  uses for every large query;
-* a value is accepted when it reached the f-string through an **escaping helper**,
-  a constant, or a local bound to one of those, so a correctly escaped statement
-  is not reported;
-* anything else interpolated at the sink is a finding, which makes a new query
-  site a decision rather than an accident;
-* tests are exempt, since a test that exercises a query builder must hand that
-  builder's output to a connection.
-
-A bound parameter (``con.execute(sql, [value])``) is never a finding: that is the
-safe path this rule steers code toward.
+Only the argument at a sink is inspected, so a statement composed into a local first is
+deliberately unaffected. Exempt: tests, and modules in ``_SQL_COMPILER_PATHS`` -- an audited
+claim, since a composing module off that list is reported.
 """
 
 from __future__ import annotations
@@ -30,13 +13,11 @@ from pathlib import Path
 from .base import Scanner, ScannerFinding
 from .files import discover_python_files
 
-#: Methods that hand a string to the database as a statement. ``cursor.execute``
-#: and duckdb's ``con.execute`` share the name, which is the point: the rule is
-#: about the argument, not about which driver received it.
+#: ``cursor.execute`` and duckdb's ``con.execute`` share a name; the rule is
+#: about the argument, not the driver.
 _SQL_SINKS = frozenset({"execute", "executemany", "executescript"})
 
-#: Helpers whose return value is already a safe SQL fragment. Matching on the
-#: final name component lets a caller reach them through any import path.
+#: Matching the final name component lets a caller reach these via any import path.
 _ESCAPING_HELPERS = frozenset(
     {
         "sql_identifier",
@@ -49,21 +30,13 @@ _ESCAPING_HELPERS = frozenset(
     }
 )
 
-#: Calls whose result is a plain number or a join of already-safe text. A
-#: ``", ".join(...)`` over escaped literals is as safe as the literals it joins,
+#: A ``", ".join(...)`` over escaped literals is as safe as the literals it joins,
 #: so a pipeline may assemble a list without losing its escaping.
 _NEUTRAL_CALLS = frozenset({"join", "int", "float", "bool", "len", "str", "sorted"})
 
-#: Modules declared to compose SQL at a query sink, each audited individually.
-#: An entry is a claim that every value reaching the statement there is either a
-#: literal the module owns or one routed through an escaping helper: ``duckdb.py``
-#: *defines* those helpers and so assembles the COPY envelope itself, and the
-#: others interpolate only a closed constant set.
-#:
-#: The rule's strength is at the boundary: a module that composes SQL and is not
-#: on this list is reported. It does not police the interior of a declared
-#: module, which is why each entry is an audited claim rather than a blanket
-#: exemption.
+#: Modules declared to compose SQL at a sink, each an audited claim that every value
+#: reaching the statement there is an owned literal or an escaped one. A composing
+#: module off this list is reported; a listed module's interior is not policed.
 _SQL_COMPILER_PATHS = frozenset(
     {
         "edgar_sec/infra/storage/duckdb.py",
@@ -74,9 +47,8 @@ _SQL_COMPILER_PATHS = frozenset(
     }
 )
 
-#: The reader surface composes statements from a schema DuckDB itself reported
-#: rather than from caller input, and the operator guard is a scanner, not a
-#: statement. Neither is a place where this rule applies.
+#: The reader surface composes statements from a schema DuckDB itself reported, and
+#: the operator guard is a scanner, not a statement. Neither is a place this applies.
 _EXEMPT_PREFIXES = (
     "edgar_sec/apps/viewer/",
     "edgar_sec/foundation/sql/",
@@ -87,10 +59,8 @@ _EXEMPT_PREFIXES = (
 def _is_test_path(normalized: str) -> bool:
     """Return whether ``normalized`` names a test module.
 
-    Matched on path *components* rather than a substring, because a substring
-    test also matches a directory that merely starts with ``test_`` — which is
-    every pytest ``tmp_path``, and would exempt a synthetic module the scanner is
-    meant to judge.
+    Matched on path *components*: a substring test would also match every pytest
+    ``tmp_path`` and exempt a synthetic module the scanner must judge.
     """
     parts = normalized.split("/")
     if not parts:
@@ -124,10 +94,8 @@ def _called_name(node: ast.Call) -> str:
 def _escaped_locals(tree: ast.AST) -> set[str]:
     """Return local names whose value is already safe SQL text.
 
-    Only a direct binding counts: ``query = f"...{sql_literal(p)}..."`` makes
-    ``query`` safe, so passing ``query`` to a sink is fine. Rebinding it to
-    something unescaped does not launder the name, because the walk keeps the
-    last binding it sees rather than the first.
+    Only a direct binding counts, so ``query = f"...{sql_literal(p)}..."`` makes
+    ``query`` safe; rebinding keeps the last binding seen, not the first.
     """
     safe: set[str] = set()
     for node in ast.walk(tree):

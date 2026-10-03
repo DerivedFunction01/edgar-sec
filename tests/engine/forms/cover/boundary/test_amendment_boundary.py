@@ -1,10 +1,5 @@
-"""Amendment cover boundary tests for Phase 2 and Phase 3.
-
-Tests the four 10-K/A amendment archetypes:
-  - Archetype 1: EXPLANATORY NOTE -> ITEM 15 (explanatory-note + structural)
-  - Archetype 2: REPORT OF INDEPENDENT AUDITORS (auditor-report transition)
-  - Archetype 3: SIGNATURES (signature-block transition)
-  - Non-regression: standard 10-K with PART I / ITEM 1 still works
+"""The three 10-K/A amendment transitions, the identity gate that suppresses
+them, and the standard 10-K non-regression.
 """
 
 from __future__ import annotations
@@ -18,10 +13,6 @@ from edgar_sec.engine.forms.cover.models import (
     CoverBoundaryPolicy,
 )
 from edgar_sec.engine.forms.cover.profiles import build_annual_profile
-
-# ---------------------------------------------------------------------------
-# Shared test infrastructure
-# ---------------------------------------------------------------------------
 
 _COVER_HEAD = (
     "UNITED STATES SECURITIES AND EXCHANGE COMMISSION\n"
@@ -80,10 +71,6 @@ _ANNUAL_BODY_EVIDENCE = BodyEvidencePack(
     ),
 )
 
-# ---------------------------------------------------------------------------
-# Helper
-# ---------------------------------------------------------------------------
-
 _PAGE = "\n<PAGE>\n"
 
 
@@ -91,13 +78,7 @@ def _doc(*parts: str) -> str:
     return "".join(parts)
 
 
-# ---------------------------------------------------------------------------
-# Archetype 1: EXPLANATORY NOTE transition
-# ---------------------------------------------------------------------------
-
-
 def test_amendment_transition_fires_on_explanatory_note() -> None:
-    """EXPLANATORY NOTE terminates the cover when identity >= 2."""
     text = _doc(
         _COVER_BODY,
         _PAGE,
@@ -112,7 +93,6 @@ def test_amendment_transition_fires_on_explanatory_note() -> None:
         body_evidence=_ANNUAL_BODY_EVIDENCE,
     )
     assert boundary.end_line is not None
-    # The cover must end at or before the EXPLANATORY NOTE line
     lines = text.splitlines()
     explanatory_line = next(i for i, ln in enumerate(lines) if "EXPLANATORY NOTE" in ln)
     assert boundary.end_line <= explanatory_line + 2
@@ -121,7 +101,6 @@ def test_amendment_transition_fires_on_explanatory_note() -> None:
 
 
 def test_explanatory_note_transition_is_detected_case_insensitively() -> None:
-    """Lowercase 'explanatory note' is also an amendment transition."""
     text = _doc(
         _COVER_BODY,
         _PAGE,
@@ -139,13 +118,7 @@ def test_explanatory_note_transition_is_detected_case_insensitively() -> None:
     assert "amendment_transition" in ev_names
 
 
-# ---------------------------------------------------------------------------
-# Archetype 2: REPORT OF INDEPENDENT AUDITORS transition
-# ---------------------------------------------------------------------------
-
-
 def test_amendment_transition_fires_on_report_of_independent_auditors() -> None:
-    """REPORT OF INDEPENDENT AUDITORS terminates the cover."""
     text = _doc(
         _COVER_BODY,
         _PAGE,
@@ -166,7 +139,6 @@ def test_amendment_transition_fires_on_report_of_independent_auditors() -> None:
 
 
 def test_amendment_transition_fires_on_report_of_independent_registered_firm() -> None:
-    """REPORT OF INDEPENDENT REGISTERED PUBLIC ACCOUNTING FIRM terminates the cover."""
     text = _doc(
         _COVER_BODY,
         _PAGE,
@@ -185,13 +157,8 @@ def test_amendment_transition_fires_on_report_of_independent_registered_firm() -
     assert "amendment_transition" in ev_names
 
 
-# ---------------------------------------------------------------------------
-# Archetype 3: SIGNATURES transition
-# ---------------------------------------------------------------------------
-
-
 def test_amendment_transition_fires_on_signatures() -> None:
-    """SIGNATURES terminates the cover for short amendment filings."""
+    """A short amendment filing has no full body, so SIGNATURES ends the cover."""
     text = _doc(
         _COVER_BODY,
         "\nPortions of the Prospectus are incorporated by reference into Parts II, "
@@ -213,14 +180,7 @@ def test_amendment_transition_fires_on_signatures() -> None:
     assert "amendment_transition" in ev_names
 
 
-# ---------------------------------------------------------------------------
-# AMENDMENT_TRANSITION gate: requires identity corroboration
-# ---------------------------------------------------------------------------
-
-
 def test_amendment_transition_is_suppressed_without_cover_identity() -> None:
-    """EXPLANATORY NOTE without preceding cover identity does not trigger."""
-    # A bare document with no cover identity (no SEC identity terms, no float/share)
     text = "Some filler text.\n\nEXPLANATORY NOTE\n\nThis is a note.\n"
     boundary = find_cover_boundary(
         text,
@@ -232,13 +192,7 @@ def test_amendment_transition_is_suppressed_without_cover_identity() -> None:
     assert "amendment_transition" not in ev_names
 
 
-# ---------------------------------------------------------------------------
-# Non-regression: standard 10-K still resolves via PART I / ITEM 1
-# ---------------------------------------------------------------------------
-
-
 def test_standard_10k_resolves_via_part_i_not_amendment_transition() -> None:
-    """A standard 10-K terminates on the incorporated-reference path, not amendment_transition."""
     text = _doc(
         _COVER_HEAD
         + "The following documents are incorporated by reference into this report.\n"
@@ -259,13 +213,7 @@ def test_standard_10k_resolves_via_part_i_not_amendment_transition() -> None:
     assert "amendment_transition" not in ev_names
 
 
-# ---------------------------------------------------------------------------
-# Phase 2 body_start integration tests
-# ---------------------------------------------------------------------------
-
-
 def test_body_start_resolves_after_amendment_cover_explanatory_note() -> None:
-    """find_body_start locates the EXPLANATORY NOTE as the first body anchor."""
     profile = build_annual_profile("10-K")
     text = _doc(
         _COVER_BODY,
@@ -290,7 +238,6 @@ def test_body_start_resolves_after_amendment_cover_explanatory_note() -> None:
 
 
 def test_body_start_resolves_after_amendment_cover_auditor_report() -> None:
-    """find_body_start locates the auditor's report as the first body anchor."""
     profile = build_annual_profile("10-K")
     text = _doc(
         _COVER_BODY,

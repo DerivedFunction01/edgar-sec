@@ -1,13 +1,7 @@
 """Immutable publication contract for target-plan bundles.
-
-A published plan is a selectable work order. Each bundle is assembled in a
-staging directory that is a *sibling* of its destination, so the final
-``os.replace`` stays on one filesystem and is therefore atomic. A published
-bundle is never partially visible.
-
-Reuse policy: an exact rerun reuses the published bundle; an incomplete or
-diverging directory is a conflict that must be removed deliberately rather than
-being rewritten in place.
+Each bundle is staged as a *sibling* of its destination, so the final
+``os.replace`` stays on one filesystem and is atomic. An exact rerun reuses the
+bundle; an incomplete or diverging directory is a conflict, not a rewrite.
 """
 
 from __future__ import annotations
@@ -36,11 +30,8 @@ from edgar_sec.pipelines.filing_catalog.paths import (
 )
 
 # Bump when the plan document or selection report changes shape. 1.1 added the
-# pinned seed sidecar and the selection fingerprint, both of which a reused
-# bundle must now carry, so bundles published under 1.0 are not reusable as 1.1.
-# 1.2 adds the date selection to the deterministic plan document, and to the
-# selection report along with the resolved era bands and the form-by-era
-# allocation, so a reader no longer has to re-derive what a plan selected.
+# pinned seed sidecar and the selection fingerprint; 1.2 added the date selection,
+# the resolved era bands, and the form-by-era allocation.
 TARGET_PLAN_SCHEMA_VERSION = "1.2"
 
 
@@ -49,10 +40,9 @@ class PlanConflictError(RuntimeError):
 
 
 def plan_identity(payload: dict[str, Any]) -> str:
-    """Derive a content-addressed plan id from the request that defines it.
+    """Derive a content-addressed plan id from the request defining it.
 
-    The same catalog and the same filters always yield the same id, so an exact
-    rerun resolves to the same published bundle instead of forking a new one.
+    The same catalog and filters always yield the same id.
     """
     canonical = json.dumps(payload, sort_keys=True, separators=(",", ":"))
     return hashlib.sha256(canonical.encode("utf-8")).hexdigest()[:24]
@@ -60,10 +50,8 @@ def plan_identity(payload: dict[str, Any]) -> str:
 
 def plan_locator_keys(plan_dir: str | Path) -> list[str]:
     """Read a published plan's selected locator keys, in file order.
-
-    The read runs on an in-memory DuckDB connection and writes nothing beside
-    the plan, so an interrupted read cannot leave stray state inside an
-    immutable published bundle.
+    An in-memory connection writing nothing beside the plan, so an interrupted read
+    leaves no stray state in an immutable bundle.
     """
     root = Path(plan_dir).resolve()
     locator_path = root / LOCATOR_GROUPS_NAME
@@ -80,13 +68,7 @@ def plan_locator_keys(plan_dir: str | Path) -> list[str]:
 def plan_fingerprint(plan_meta: dict[str, Any], locator_keys: list[str]) -> str:
     """Content digest of a plan's identity and its selected locators.
 
-    Binds the fingerprint to the *selection*, not just the request, so two runs
-    that requested the same thing but selected differently do not share one.
-
-    The guarantee is deliberately narrow: this covers the work order -- the set
-    of documents the plan says to fetch -- and not the bytes of every Parquet in
-    the bundle. A digest over every file would make publication proportional to
-    the size of the plan it is publishing.
+    Narrow on purpose: the work order, not every Parquet in the bundle.
     """
     return canonical_hash(
         {
@@ -99,15 +81,9 @@ def plan_fingerprint(plan_meta: dict[str, Any], locator_keys: list[str]) -> str:
 
 
 def plan_bundle_complete(plan_dir: Path, scope: str = "") -> bool:
-    """Report whether a plan bundle holds every required published artifact.
-
-    Completeness is checked by matching the on-disk partition set against the
-    plan's own recorded ``counts`` rather than by asking whether any partition
-    exists, so a legitimately empty plan (every filter excluded everything) is
-    still reusable and a bundle that lost a shard is caught.
-
-    A policy plan additionally owns the seed sidecar it was selected against, so
-    a bundle missing it cannot reproduce its own selection and is not complete.
+    """Report whether a plan bundle holds every required artifact.
+    The partition set is matched against the plan's recorded ``counts``, so an empty
+    plan is still reusable while a lost shard is caught.
     """
     if not all((plan_dir / name).is_file() for name in REQUIRED_PLAN_FILES):
         return False
@@ -142,17 +118,9 @@ def _load_plan_json(plan_dir: Path) -> dict[str, Any] | None:
 
 
 def _verify_selection_fingerprint(plan_dir: Path, published: dict[str, Any]) -> None:
-    """Refuse a bundle whose work order no longer matches its recorded selection.
-
-    A plan is reused rather than rebuilt whenever the request is unchanged, so
-    the published locator list is trusted on the strength of the fingerprint
-    written with it. Without this check a bundle whose ``locator_groups.parquet``
-    was edited or truncated still passes every structural test, and the next
-    acquirer fetches a work order the plan never committed to.
-
-    A bundle that records no fingerprint is refused rather than accepted: it was
-    published under a contract that did not carry one, and silently recomputing
-    it here would bless an unverifiable artifact.
+    """Refuse a bundle whose work order no longer matches its selection.
+    A bundle recording no fingerprint predates the contract carrying one and is
+    refused rather than silently recomputed.
     """
     recorded = str(published.get("plan_fingerprint") or "")
     if not recorded:
@@ -176,11 +144,8 @@ def reuse_existing_plan(
     expected_meta: dict[str, Any] | None = None,
 ) -> dict[str, Any] | None:
     """Return a published bundle when it already satisfies the request.
-
-    Returns ``None`` when nothing is published yet. Raises
-    :class:`PlanConflictError` when a directory exists but is incomplete or
-    describes a different request, because silently rewriting it would destroy
-    an immutable published artifact.
+    ``None`` when nothing is published; a conflict rather than a rewrite when a directory
+    exists but is incomplete or describes a different request.
     """
     if not final_dir.exists():
         return None
@@ -189,10 +154,10 @@ def reuse_existing_plan(
     if published is None:
         raise PlanConflictError(f"plan bundle at {final_dir} has no readable plan.json")
 
-    # Identity before completeness: a directory holding a different request is
-    # a request conflict whether or not it is also incomplete, and reporting it
-    # as merely incomplete would send an operator to rebuild a bundle that can
-    # never satisfy this request.
+    # Identity before completeness: a directory holding a different request is a
+    # conflict whether or not it is also incomplete, and reporting it as merely
+    # incomplete would send an operator to rebuild a bundle that can never
+    # satisfy this request.
     if published.get("plan_id") != plan_id or published.get("scope") != scope:
         raise PlanConflictError(
             f"plan bundle at {final_dir} describes a different request; remove "
@@ -223,9 +188,7 @@ def reuse_existing_plan(
 
 def publish_plan_bundle(staging_dir: Path, final_dir: Path) -> None:
     """Move a fully built staging bundle into its published location.
-
-    ``os.replace`` is atomic only within a filesystem, which is why the staging
-    directory is created as a sibling of ``final_dir``.
+    ``os.replace`` is atomic only within a filesystem, hence the sibling staging dir.
     """
     final_dir.parent.mkdir(parents=True, exist_ok=True)
     os.replace(staging_dir, final_dir)
@@ -233,10 +196,9 @@ def publish_plan_bundle(staging_dir: Path, final_dir: Path) -> None:
 
 @contextmanager
 def staged_plan_bundle(final_dir: Path, plan_id: str) -> Iterator[Path]:
-    """Yield a sibling staging directory and publish it atomically on success.
-
-    On any failure the staging directory is removed, so a partial bundle is
-    never left where a later run could mistake it for published state.
+    """Yield a sibling staging directory, publishing it atomically.
+    Any failure removes it, so a partial bundle is never left where a later run could
+    mistake it for published state.
     """
     staging_dir = final_dir.parent / f".{final_dir.name}.staging.{plan_id}"
     if staging_dir.exists():
@@ -262,15 +224,8 @@ def write_plan_documents(
     selection_report: dict[str, Any],
 ) -> dict[str, Any]:
     """Write the two required JSON documents of a plan bundle.
-
-    The selection fingerprint is stamped here, from the locator groups the
-    bundle already holds, so it describes what was actually published rather
-    than what the caller intended to publish. Stamping at one point also means
-    no scope can forget it.
-
-    Returns the stamped document, because a caller that later rewrites
-    ``plan.json`` -- expansion does, to add lineage -- must carry the stamp with
-    it or the bundle stops verifying.
+    The fingerprint is stamped from the locator groups the bundle already holds, and
+    returned so a caller rewriting ``plan.json`` carries the stamp with it.
     """
     stamped = dict(plan_meta)
     stamped["plan_fingerprint"] = plan_fingerprint(

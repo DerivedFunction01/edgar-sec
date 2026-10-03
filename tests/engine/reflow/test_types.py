@@ -1,8 +1,6 @@
 """Decision vocabulary, action constants, and the injected policy contract.
 
-The policy is the seam that keeps this package free of any form-family or
-taxonomy import, so the tests here pin what a caller gets for free and what it
-has to supply.
+The policy seam keeps this package free of any form-family or taxonomy import.
 """
 
 from __future__ import annotations

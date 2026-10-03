@@ -61,6 +61,5 @@ def test_lexical_matcher_exclusions() -> None:
     }
     matcher = compile_lexical_matcher(categories, exclusions=exclusions)
 
-    # Document containing exclusion should not classify as annual_report
     res = matcher.classify("Form 10-K with quarterly report mention")
     assert res.category is None

@@ -1,4 +1,4 @@
-"""Contract tests for table taxonomy components, shapes, and multi-zone BoW classification."""
+"""Table taxonomy classification: family matching, shapes, vetoes, context boost."""
 
 from __future__ import annotations
 
@@ -8,7 +8,6 @@ from edgar_sec.engine.tables.taxonomy.context import SectionContext
 
 
 def test_standalone_cover_layout_classification() -> None:
-    """A standalone table with high-entropy cover anchors is classified as cover_layout."""
     grid = [
         ["Delaware", "12-3456789"],
         [
@@ -24,7 +23,6 @@ def test_standalone_cover_layout_classification() -> None:
 
 
 def test_body_properties_zip_rejected_from_cover() -> None:
-    """A body properties table with only zip/address qualifiers is rejected standalone."""
     grid = [
         ["Facility Name", "Address", "Zip Code", "Square Feet"],
         ["Building A", "100 Main St", "90210", "45,000"],
@@ -35,7 +33,6 @@ def test_body_properties_zip_rejected_from_cover() -> None:
 
 
 def test_income_statement_shape_and_vocabulary() -> None:
-    """An income statement with >=8 rows matches; a 2-row table is rejected by shape."""
     full_grid = [
         ["Three Months Ended Sept 30", "2024", "2023"],
         ["Total revenues", "1000", "900"],
@@ -64,7 +61,7 @@ def test_income_statement_shape_and_vocabulary() -> None:
 
 
 def test_shares_purchased_classification() -> None:
-    """Microsoft Table 0009 raw grid with spacer columns is classified structurally."""
+    """Spacer columns must not defeat structural confirmation."""
     raw_msft_grid = [
         [
             "Period",
@@ -113,7 +110,6 @@ def test_shares_purchased_classification() -> None:
 
 
 def test_equity_statement_classification() -> None:
-    """Statement of stockholders equity matches with APIC, retained earnings, balance at."""
     grid = [
         [
             "Common Stock",
@@ -132,7 +128,6 @@ def test_equity_statement_classification() -> None:
 
 
 def test_lease_maturity_classification_and_template() -> None:
-    """Lease maturity table with minimum lease payments and imputed interest matches."""
     grid = [
         ["Fiscal Year", "Operating Leases", "Finance Leases"],
         ["2025", "100", "20"],
@@ -149,7 +144,6 @@ def test_lease_maturity_classification_and_template() -> None:
 
 
 def test_fair_value_classification_and_template() -> None:
-    """Fair value 3-level measurement hierarchy matrix matches and repairs cleanly."""
     grid = [
         ["Assets", "Level 1", "Level 2", "Level 3", "Total"],
         ["U.S. Treasury securities", "500", "", "", "500"],
@@ -163,7 +157,7 @@ def test_fair_value_classification_and_template() -> None:
 
 
 def test_tax_reconciliation_classification() -> None:
-    """Income tax rate reconciliation matches statutory rate baseline."""
+    """The classifier keys on the statutory-rate baseline row."""
     grid = [
         ["", "2024", "2023"],
         ["Federal statutory rate", "21.0%", "21.0%"],
@@ -177,7 +171,6 @@ def test_tax_reconciliation_classification() -> None:
 
 
 def test_stock_comp_rollforward_classification() -> None:
-    """ASC 718 stock option activity rollforward matches."""
     grid = [
         ["Options Activity", "Shares", "Weighted-Average Exercise Price"],
         ["Options outstanding at beginning", "1,000,000", "$25.00"],
@@ -192,7 +185,6 @@ def test_stock_comp_rollforward_classification() -> None:
 
 
 def test_pension_classification() -> None:
-    """ASC 715 pension benefit obligation and plan asset breakdown matches."""
     grid = [
         ["Change in Benefit Obligation", "2024", "2023"],
         ["Benefit obligation at beginning of year", "5000", "4800"],
@@ -208,7 +200,6 @@ def test_pension_classification() -> None:
 
 
 def test_eps_reconciliation_classification() -> None:
-    """ASC 260 basic vs diluted share count reconciliation matches."""
     grid = [
         ["Numerator / Denominator", "2024", "2023"],
         ["Basic earnings per share", "$2.50", "$2.10"],
@@ -223,17 +214,14 @@ def test_eps_reconciliation_classification() -> None:
 
 
 def test_multi_zone_context_boosting() -> None:
-    """A qualifier-only address table is boosted when preceding neighbor has principal address."""
     grid = [
         ["One Apple Park Way, Cupertino, CA", "95014"],
         ["Address", "(Zip Code)"],
     ]
 
-    # Without context: not matched standalone
     res_standalone = classify_table(grid)
     assert res_standalone.family != "cover_layout"
 
-    # With neighbor context: boosted to matched
     ctx = SectionContext(
         heading="Cover Page",
         preceding_blocks=("Address of Principal Executive Offices:",),
@@ -244,7 +232,6 @@ def test_multi_zone_context_boosting() -> None:
 
 
 def test_activities_veto_on_income_statement() -> None:
-    """Cash flow activities veto income statement classification."""
     grid = [
         ["Three Months Ended Sept 30", "2024", "2023"],
         ["Total revenues", "1000", "900"],
@@ -260,8 +247,7 @@ def test_activities_veto_on_income_statement() -> None:
 
 
 def test_multi_classification_tags_and_all_matches() -> None:
-    """Multi-family matching populates primary family, secondary tags, and all_matches."""
-    # A grid with terms matching both fair value hierarchy and pension/benefit obligation
+    # The grid carries terms matching both fair value hierarchy and pension.
     grid = [
         ["Fair Value Measurement & Obligation", "Level 1", "Level 2", "Total"],
         ["Quoted prices in active markets", "$100", "$200", "$300"],
@@ -277,9 +263,8 @@ def test_multi_classification_tags_and_all_matches() -> None:
     matched_families = {m.family for m in res.all_matches}
     assert "fair_value" in matched_families
     assert "pension" in matched_families
-    # Primary family is first in all_matches (fair_value has priority 80 > pension priority 0)
+    # fair_value outranks pension on priority, so it is primary.
     assert res.family == res.all_matches[0].family
-    # Secondary matches become tags
     assert "pension" in res.tags
     assert len(res.tags) == len(res.all_matches) - 1
     assert set(res.tags) == matched_families - {res.family}
@@ -290,7 +275,6 @@ def test_multi_classification_tags_and_all_matches() -> None:
 
 
 def test_labor_contracts_classification() -> None:
-    """Airline/transport collective bargaining table matches labor_contracts."""
     grid = [
         [
             "Employee Group",
@@ -320,7 +304,6 @@ def test_labor_contracts_classification() -> None:
 
 
 def test_labor_contracts_credit_union_veto() -> None:
-    """Financial services credit union references are vetoed from labor_contracts."""
     grid = [
         ["Institution Name", "State", "Total Deposits", "Members"],
         ["First State Credit Union", "CA", "$1,200,000", "45,000"],
@@ -332,7 +315,6 @@ def test_labor_contracts_credit_union_veto() -> None:
 
 
 def test_inventory_classification() -> None:
-    """ASC 330 inventory disaggregation by stage and valuation reserve matches inventory."""
     grid = [
         ["(in thousands)", "December 31, 2024", "December 31, 2023"],
         ["Raw materials", "$ 124,500", "$ 115,200"],
@@ -348,7 +330,6 @@ def test_inventory_classification() -> None:
 
 
 def test_ppe_classification() -> None:
-    """ASC 360 property, plant, and equipment disaggregation matches ppe."""
     grid = [
         ["(in millions)", "2024", "2023"],
         ["Land and improvements", "$ 450", "$ 420"],
@@ -365,7 +346,6 @@ def test_ppe_classification() -> None:
 
 
 def test_intangibles_classification() -> None:
-    """ASC 350 goodwill and intangible assets breakdown matches intangibles."""
     grid = [
         [
             "Intangible Asset Class",
@@ -384,7 +364,6 @@ def test_intangibles_classification() -> None:
 
 
 def test_derivatives_hedging_classification() -> None:
-    """Dedicated ASC 815 derivative table matches derivatives_hedging."""
     grid = [
         [
             "Derivative Category",
@@ -427,8 +406,6 @@ def test_derivatives_hedging_classification() -> None:
 
 
 def test_derivatives_hedging_false_positive_guards() -> None:
-    """Physical supply, medical derivatives, shareholder litigation, and stock options are vetoed."""
-    # 1. Physical commercial energy supply / NPNS
     physical_grid = [
         ["Contract Type", "Delivery Year", "Volume MMBtu", "Fixed Price"],
         ["Natural gas delivery", "2025", "10,000,000", "$ 3.50"],
@@ -438,7 +415,6 @@ def test_derivatives_hedging_false_positive_guards() -> None:
     res_physical = classify_table(physical_grid)
     assert res_physical.family != "derivatives_hedging"
 
-    # 2. Chemical / Medical derivatives
     chemical_grid = [
         ["Product Line", "Volume Tons", "Revenue"],
         ["Cellulose derivatives", "150,000", "$ 450,000"],
@@ -448,7 +424,6 @@ def test_derivatives_hedging_false_positive_guards() -> None:
     res_chem = classify_table(chemical_grid)
     assert res_chem.family != "derivatives_hedging"
 
-    # 3. Shareholder derivative litigation
     legal_grid = [
         ["Matter", "Court", "Filing Date", "Status"],
         ["Shareholder derivative lawsuit", "Delaware Chancery", "Jan 2024", "Pending"],
@@ -465,7 +440,6 @@ def test_derivatives_hedging_false_positive_guards() -> None:
 
 
 def test_aoci_rollforward_classification() -> None:
-    """ASC 220 Accumulated Other Comprehensive Income rollforward matches aoci."""
     grid = [
         [
             "(in thousands)",
@@ -504,7 +478,6 @@ def test_aoci_rollforward_classification() -> None:
 
 
 def test_fair_value_with_secondary_derivatives_tag() -> None:
-    """ASC 820 Fair Value table with derivatives maintains fair_value primary and tags derivatives."""
     grid = [
         ["Assets / Liabilities", "Level 1", "Level 2", "Level 3", "Total"],
         ["Quoted prices in active markets", "$ 500", "$ —", "$ —", "$ 500"],
@@ -529,7 +502,6 @@ def test_fair_value_with_secondary_derivatives_tag() -> None:
 
 
 def test_commodity_derivatives_classification() -> None:
-    """Agricultural, metal, and freight derivative schedules classify as derivatives_hedging."""
     grid = [
         [
             "Commodity Derivative Type",

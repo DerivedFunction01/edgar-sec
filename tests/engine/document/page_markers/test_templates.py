@@ -53,18 +53,13 @@ def _paged(
     return "\n".join(lines)
 
 
-# --- template normalization ---------------------------------------------------
-
-
 def test_clean_template_collapses_whitespace_and_cases() -> None:
     assert clean_template("  ABC   CORP  ") == "abc corp"
 
 
 def test_clean_template_masks_an_inline_page_label() -> None:
-    # The label is replaced by " page #", so the space the label's own word was
-    # preceded by is left behind. Two spaces in a template is harmless — the
-    # same substitution runs on every occurrence — and collapsing it here would
-    # change every id already derived from these templates.
+    # The label is replaced by " page #", leaving the preceding space; collapsing it
+    # would change every id already derived from these templates.
     assert clean_template("ABC CORP page 12") == "abc corp  page #"
 
 
@@ -77,9 +72,6 @@ def test_clean_template_masks_a_trailing_label_only_when_words_remain() -> None:
 
 def test_clean_template_masks_a_namespaced_label() -> None:
     assert clean_template("Notes to statements F-3") == "notes to statements #"
-
-
-# --- eligibility -------------------------------------------------------------
 
 
 def test_table_tags_are_recognized_in_either_case() -> None:
@@ -110,9 +102,8 @@ def test_a_standalone_tag_and_a_sentence_are_never_furniture() -> None:
 
 
 def test_a_tag_carrying_a_spaced_attribute_is_a_furniture_candidate() -> None:
-    # The standalone-tag test admits only an attribute-free tag name, so
-    # `<font size=2>` is neither refused as a tag nor treated as prose, and a
-    # filing that repeats it has it recovered as a banner.
+    # The standalone-tag test admits only an attribute-free tag name, so `<font size=2>`
+    # is neither refused as a tag nor treated as prose.
     assert eligible_line("<font size=2>", set(), 0, None, allow_table=False) is True
     lines = ["<PAGE>", "<font size=2>", "Body"]
     assert collect_window(lines, 0, 1, {0}) == [
@@ -124,9 +115,6 @@ def test_a_tag_carrying_a_spaced_attribute_is_a_furniture_candidate() -> None:
 def test_a_very_long_line_is_never_furniture() -> None:
     line = "ACME " * 40
     assert eligible_line(line, set(), 0, None, allow_table=False) is False
-
-
-# --- windows -----------------------------------------------------------------
 
 
 def test_a_window_stops_at_the_next_boundary() -> None:
@@ -176,9 +164,6 @@ def test_a_window_reads_a_table_backwards_for_the_footer_side() -> None:
     assert [index for index, _line in window] == [3, 2, 1, 0]
 
 
-# --- clusters ----------------------------------------------------------------
-
-
 def _obs(anchor_position: int) -> Observation:
     return Observation(
         "header", 0, "acme corp", anchor_position, "ACME CORP", anchor_position, 0
@@ -196,9 +181,6 @@ def test_cluster_density_is_the_fraction_of_anchors_present() -> None:
     assert grouped[0][3] == 1.0
     sparse = clusters([_obs(0), _obs(1), _obs(3)])
     assert sparse[0][3] == pytest.approx(0.75)
-
-
-# --- span merging ------------------------------------------------------------
 
 
 def test_merging_splits_a_span_around_an_unbacked_body_line() -> None:
@@ -223,9 +205,6 @@ def test_merging_keeps_adjacent_backed_lines_in_one_span() -> None:
     assert ranges == [(0, 1, 0, 9, "header")]
 
 
-# --- acceptance --------------------------------------------------------------
-
-
 def test_nothing_is_analysed_below_three_deduplicated_anchors() -> None:
     text = _paged(2, header="ABC CORP")
     templates, markers, decisions = analyze_repeating_headers(
@@ -235,8 +214,8 @@ def test_nothing_is_analysed_below_three_deduplicated_anchors() -> None:
 
 
 def test_asymmetric_anchors_require_both_sides_below_three() -> None:
-    # Four header anchors and two footer anchors: the guard is
-    # max(header, footer) < 3, so the larger side keeps the analysis alive.
+    # Four header and two footer anchors: the guard is max(header, footer) < 3, so the
+    # larger side keeps the analysis alive.
     text = _paged(4, header="ABC CORP", footer="Confidential")
     templates, _markers, _decisions = analyze_repeating_headers(
         text,
@@ -261,9 +240,8 @@ def test_a_dense_repeated_banner_is_recovered_and_marked_removable() -> None:
 
 
 def test_a_line_observed_from_both_sides_is_claimed_once() -> None:
-    # A banner one line below a break is also one line above the next anchor, so
-    # both sides observe it. It is claimed for the closer anchor and removed
-    # once, which is why the observation count exceeds the marker count.
+    # A banner between two breaks is observed by both sides but claimed once, which is
+    # why observations exceed markers.
     text = _paged(4, header="ABC CORP")
     templates, markers, _decisions = analyze_repeating_headers(
         text, [_marker(index * 3) for index in range(4)]
@@ -292,8 +270,8 @@ def test_a_repeated_banner_on_the_header_side_is_boilerplate() -> None:
     header = next(item for item in templates if item.side == "header")
     assert header.role == "boilerplate"
     assert header.retention == "remove_all"
-    # One observation per page anchor, plus one from the virtual document-start
-    # boundary the header side gains once it holds at least three anchors.
+    # One per page anchor, plus one from the virtual document-start boundary the header
+    # side gains at three anchors.
     assert header.occurrences == 6
     assert header.presence == 1.0
     assert header.kind == PageMarkerKind.REPEATING_HEADER

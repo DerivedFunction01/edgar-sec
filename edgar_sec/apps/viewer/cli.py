@@ -1,14 +1,7 @@
 """Command entry for the dataset viewer.
 
-Named ``cli`` to match the other launch targets (``metadata_sync.operator``,
-``filing_catalog.operator``, ``document_storage.cli``), so the root launcher's
-module field means the same thing for every entry.
-
-The bind address defaults to loopback, and that default is a *refusal* of remote
-access rather than a default that happens to be local. A viewer over the artifacts
-tree serves whole filings and whatever else a pipeline has published; binding it
-to 0.0.0.0 by accident is much cheaper to design out than to notice later, so
-``--host`` exists for deliberate override and nothing else changes it.
+The bind address defaults to loopback as a refusal of remote access: the viewer serves
+whole filings, so a remote bind is a deliberate ``--host``.
 """
 
 from __future__ import annotations

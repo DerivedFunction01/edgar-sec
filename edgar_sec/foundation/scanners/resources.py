@@ -1,8 +1,7 @@
-"""Policy scanner ensuring pipeline and phase code do not hardcode resource allocations.
+"""Policy scanner banning hardcoded resource allocations in pipeline code.
 
-Hardcoding threads or memory limits causes out-of-memory errors in containerized
-environments or throttled nodes. All components must derive resources via
-``edgar_sec.foundation.runtime.resources.derive_resources()`` or accept None.
+A hardcoded thread count or memory limit causes OOM in a container or a throttled node.
+Resources must come from ``resources.derive_resources()`` or a ``None`` default.
 """
 
 from __future__ import annotations

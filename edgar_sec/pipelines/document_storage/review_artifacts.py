@@ -1,24 +1,7 @@
 """Source-first review artifacts for fixture documents.
 
-The workflow this exists for: point it at a fixture, read what the normalizer
-produced for a bounded set of documents, change the normalizer, run it again,
-compare the two. That last step is `documents review`; this module only produces
-the thing being compared.
-
-It deliberately shares nothing with the storage pipeline. There is no plan, no
-chunk, no checkpoint, no Parquet, and no published snapshot, because a review
-run is evidence about *this* code on *these* documents. A pipeline run answers a
-different question -- what does the corpus look like -- and every one of those
-stages would make the answer depend on corpus state rather than on the code
-under review. A review run that could not be reproduced from a fixture alone
-would be worse than useless: the diff would show what the snapshot did, not what
-the edit did.
-
-The one dependency that is not negotiable is the fixture's own document
-metadata. A payload key is a one-way digest, so accession, path, MIME and source
-hash cannot be recovered from it, and the normalizer needs a `DocumentLocator`
-(including its filing form, which selects the processing plugin) to run at all.
-That is what `FixtureStore.document_blobs` records.
+Shares nothing with the storage pipeline — no plan, chunk, checkpoint, or snapshot —
+so a run reproduces from a fixture alone and a diff shows the edit, not the corpus.
 """
 
 from __future__ import annotations
@@ -90,11 +73,8 @@ class ReviewCaseResult:
 class ReviewSelection:
     """Documents that can be reviewed, and those that cannot.
 
-    Kept separate rather than raising on the first bad document: a fixture holds
-    thousands of documents, and one missing or corrupt payload is a fact about
-    that document, not a reason to withhold review of the rest. Skipped
-    documents are named in ``failures`` and set a non-zero exit status, so this
-    is reported rather than silent.
+    One bad payload is a fact about that document, not a reason to withhold the rest;
+    failures are named and set a non-zero exit status.
     """
 
     cases: tuple[ReviewCase, ...]
@@ -110,9 +90,8 @@ class ReviewRunResult:
     selected: int
     manifest_path: Path
     failures: tuple[str, ...] = ()
-    #: Documents processed under a form taken from the fixture manifest rather
-    #: than recorded per document. Reported once for the run instead of per case,
-    #: because it is a property of the fixture, not of any one document.
+    #: Documents processed under a manifest-declared form rather than a per-document
+    #: one; a property of the fixture, so reported once for the run.
     forms_inferred: int = 0
 
     def to_dict(self) -> dict[str, Any]:
@@ -129,18 +108,10 @@ class ReviewRunResult:
 def _resolve_form(
     document_id: str, forms: dict[str, str], manifest_forms: Sequence[Any]
 ) -> tuple[str, str]:
-    """Return the filing form for a document and where that answer came from.
+    """Return a document's filing form and where that answer came from.
 
-    ``form`` is not cosmetic: it selects the processing plugin, so a document
-    reviewed under the wrong form normalizes differently from the same document
-    in a pipeline run, and the resulting diff would be a lie. The source of the
-    form is therefore reported alongside it rather than assumed.
-
-    A fixture payload stored without a per-document form falls back to the first
-    entry in the fixture manifest's form list, so a multi-form fixture reviews
-    every such document as its first form. That fallback is reproduced, and
-    labelled ``manifest-first-of-many``, because silently correcting it would
-    make review output incomparable with the artifacts it is meant to replace.
+    ``form`` selects the processing plugin, so a wrong form makes the diff a lie — the
+    source is reported rather than assumed, manifest fallback included.
     """
     recorded = (forms.get(document_id) or "").strip()
     if recorded:
@@ -156,9 +127,7 @@ def _resolve_form(
 def _token_matches(document: RawDocumentBlob, token: str) -> bool:
     """Match a selection token by exact document id or path suffix.
 
-    The suffix match is what makes ``--id t10k-2094e.txt`` usable at all: a
-    document's id is a digest of its accession and path, so before you know the
-    digest the only handle a reviewer has is the filename they saw in EDGAR.
+    The suffix is what makes ``--id t10k-2094e.txt`` usable before the digest is known.
     """
     if document.doc_id == token:
         return True
@@ -189,9 +158,7 @@ def select_review_cases(
 ) -> ReviewSelection:
     """Load the documents one review run will process, in document-id order.
 
-    Order is the selection contract: ``limit`` takes the first N ids from a
-    stable ordering, so two runs of the same fixture with the same limit review
-    the same documents and their diffs are comparable.
+    Order is the selection contract: ``limit`` takes the first N ids deterministically.
     """
     database = paths.fixture_db_path(fixture_id)
     manifest_forms = _manifest_forms(paths, fixture_id)
@@ -207,9 +174,8 @@ def select_review_cases(
                 )
             forms = store.document_forms()
             if ids:
-                # Token matching includes a path-suffix test, which cannot be
-                # pushed into SQL, so the whole (small) metadata table is read
-                # and filtered here. Only the selected payloads are decompressed.
+                # The suffix test cannot be pushed into SQL, so the small metadata table
+                # is read whole and filtered here. Only selected payloads decompress.
                 documents = [
                     document
                     for document in store.documents()
@@ -272,9 +238,7 @@ def _filter_by_extension(
 def run_review_case(case: ReviewCase) -> ReviewCaseResult:
     """Normalize one document exactly as a pipeline worker would.
 
-    The hash is re-checked in here rather than trusted from selection: this
-    function is what a worker process runs, and attributing a corrupt payload to
-    its own document is more useful than failing the whole run.
+    The hash is re-checked here, not trusted from selection: this runs in a worker.
     """
     digest = sha256_bytes(case.payload)
     if digest != case.document.raw_payload_sha256:
@@ -298,11 +262,8 @@ def run_review_case(case: ReviewCase) -> ReviewCaseResult:
 def sanitized_source_html(source_text: str) -> str:
     """Render a document's source as HTML safe to open in a browser.
 
-    The reviewer's real question about an HTML filing is "what did the browser
-    see", which needs the markup, not the extracted text. Script and style
-    bodies go, and so do event handlers and the three attributes that fetch or
-    navigate, because a reviewer opening a filing from an unknown registrant
-    should not be running that registrant's markup.
+    A reviewer's question is what the browser saw, so the markup is kept; script and
+    style bodies, event handlers, and the fetching attributes go.
     """
     tree = parse_html(source_text)
     tree.strip_tags(_SANITIZED_STRIP_TAGS)
@@ -320,13 +281,8 @@ def sanitized_source_html(source_text: str) -> str:
 def bounded_analysis(normalization: NormalizationResult) -> dict[str, Any]:
     """Serialize one document's structural diagnostics, capped.
 
-    ``source_text`` is dropped: the analysis carries the full document it was
-    derived from, which is already written as the case's own ``.txt``, and
-    serializing it would double the artifact for no diagnostic value.
-
-    Geometry is converted through ``asdict`` because these payloads go straight
-    to ``json.dumps``; a live ``TableGeometry`` would raise there rather than
-    write something a reviewer could read.
+    ``source_text`` is dropped (already written as the case's own ``.txt``) and
+    geometry goes through ``asdict``, or ``json.dumps`` would reject it.
     """
     analysis = normalization.page_analysis
     payload: dict[str, Any] = {}
@@ -350,15 +306,7 @@ def bounded_analysis(normalization: NormalizationResult) -> dict[str, Any]:
 def _manifest_entry(
     result: ReviewCaseResult, output_sha256: str, fixture_id: str
 ) -> dict[str, Any]:
-    """Identity and provenance for one document, and nothing derived.
-
-    Deliberately not a second copy of the analysis. Counting markers, tables and
-    stages here alongside numbers the analysis file already carries was
-    affordable only while the normalizer was incomplete and those counts stood in
-    for quality. Now that the analysis reports what it actually detected, a table
-    count obtained by substring-matching ``<table`` in the source would be a worse
-    number that still had to be explained.
-    """
+    """Identity and provenance for one document, and nothing derived."""
     case = result.case
     document = case.document
     return {
@@ -379,13 +327,7 @@ def _is_html(document_path: str) -> bool:
 
 
 def new_review_run_id() -> str:
-    """Return a sortable, unique identity for a review run.
-
-    Delegates to the pipeline's run-id generator rather than minting a second
-    format: a review run and a storage run are the same kind of thing to a
-    reader browsing ``.artifacts``, and two id schemes would make them look
-    unrelated.
-    """
+    """Return a review run id from the pipeline's generator: one format for both."""
     from edgar_sec.pipelines.document_storage.operator import new_run_id
 
     return new_run_id("review")
@@ -394,11 +336,8 @@ def new_review_run_id() -> str:
 def _write_pretty_json(path: Path, payload: dict[str, Any]) -> None:
     """Write one review JSON file, pretty-printed and newline-terminated.
 
-    Pretty rather than canonical because a reviewer opens these in an editor and
-    diffs them by eye, and compact JSON turns a two-field change into a single
-    replaced line. The trailing newline is not cosmetic either: without it
-    ``diff`` and git both mark the file ``\\ No newline at end of file``, adding a
-    line of noise to precisely the comparison this tool exists to make.
+    Both for ``diff``: compact JSON makes a two-field change one replaced line, and a
+    missing final newline adds a marker to the comparison this exists to make.
     """
     atomic_write_text(path, json.dumps(payload, indent=2, sort_keys=True) + "\n")
 
@@ -408,25 +347,13 @@ def write_review_artifacts(
 ) -> dict[str, Any]:
     """Write one document's review case and return its manifest entry.
 
-    Four files, each answering one question: ``.txt`` what the normalizer
-    produced, ``.source.txt`` what it was given, ``.analysis.json`` why the
-    output looks like it does, and ``.html`` what a browser was handed.
-
-    The source is written as the original bytes rather than a re-encoded
-    string, because a 1990s latin-1 filing decoded to UTF-8 and back is not the
-    file that was fetched, and without it "did the normalizer lose this, or was
-    it never there" would have to be re-derived from the fixture.
-
-    There is deliberately no per-case ``.metadata.json``: every field such a file
-    would hold is already in the run manifest, so it would be a second copy of
-    the same facts in a per-document file that then had to be diffed alongside
-    the manifest.
+    Source is written as the original bytes, so a lost byte is distinguishable from a
+    byte that was never there. No per-case ``.metadata.json``: the manifest has it.
     """
     case = result.case
     case_id = case.document.doc_id
     output_dir.mkdir(parents=True, exist_ok=True)
-    # Trailing newline so the file is a well-formed text file and so two runs
-    # that differ only in a missing final newline still diff.
+    # Trailing newline keeps the file well-formed and two runs diffable.
     serialized = result.text + "\n"
     output_sha256 = sha256_text(serialized)
     atomic_write_text(output_dir / f"{case_id}.txt", serialized)
@@ -461,10 +388,8 @@ def render_review_run(
 ) -> ReviewRunResult:
     """Process the selected documents and write one review run.
 
-    Refuses to write into a non-empty directory. Two runs that share an output
-    root cannot be compared -- the second would overwrite the first, and the
-    diff would report nothing -- so a code change means a new run id, which is
-    the whole point of the workflow.
+    Refuses to write into a non-empty directory: two runs sharing an output root cannot
+    be compared, so a code change means a new run id.
     """
     if output_dir.exists() and any(output_dir.iterdir()):
         raise ReviewArtifactError(

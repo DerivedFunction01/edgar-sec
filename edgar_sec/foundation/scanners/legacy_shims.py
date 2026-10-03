@@ -1,9 +1,7 @@
 """Scanner banning dead legacy behaviour and backward-compatibility shims.
 
-AGENTS.md §1.1 requires zero backward-compatibility shims: when a component is
-relocated or renamed, call sites move with it rather than growing an alias. That
-rule is easy to state and easy to erode, because an alias always looks like
-prudence at the moment it is added. This scanner makes the erosion visible.
+An alias always looks like prudence when added, so the erosion must stay visible. Comment
+noise is deliberately *not* skipped: a shim is usually announced in a comment.
 """
 
 from __future__ import annotations
@@ -37,10 +35,8 @@ _COMPAT_IDENTIFIER_RE = re.compile(
 )
 
 # A module-level alias binding one CamelCase name to another: ``Alias = Real``.
-# This is the form §1.1 takes most often, because the rename reads like taste
-# rather than like a compatibility layer. Both sides must be single identifiers,
-# so ``Foo = bar.Foo`` (a re-export through a module) and ``Vector = list[float]``
-# (a structural type alias) are out of scope.
+# Both sides must be single identifiers, so ``Foo = bar.Foo`` (a re-export) and
+# ``Vector = list[float]`` (a structural type alias) are out of scope.
 _BARE_ALIAS_RE = re.compile(
     r"^\s*([A-Z][A-Za-z0-9_]*)\s*=\s*([A-Z][A-Za-z0-9_]*)\s*(?:#.*)?$"
 )
@@ -76,9 +72,7 @@ def _rule(path: str, number: int, line: str) -> ScannerFinding | None:
 def scan_legacy_shims() -> list[ScannerFinding]:
     """Flag backward-compatibility aliases, shims, and dead legacy paths.
 
-    Comment noise is *not* skipped here: a shim is usually announced in a
-    comment ("kept for compatibility"), so reading only code would miss the
-    most common form of the thing being banned.
+    Comment noise is not skipped: a shim is usually announced in a comment.
     """
     return scan_text_rule(rule=_rule, skip=("check.py", "run.py"), skip_noise=False)
 

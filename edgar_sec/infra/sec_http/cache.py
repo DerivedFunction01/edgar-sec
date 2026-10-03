@@ -1,9 +1,7 @@
 """SQLite-backed HTTP response cache with zstandard compression and failure ledger.
 
-Responses are keyed by URL digest in an indexed WAL store, which is what makes
-concurrent multi-worker access safe and bounds the on-disk footprint. Expiry is
-selective: only `.json` paths carry a TTL, and static archive paths never
-expire.
+Responses are keyed by URL digest in an indexed WAL store, which makes concurrent
+multi-worker access safe. Expiry is selective: only ``.json`` paths carry a TTL.
 """
 
 from __future__ import annotations
@@ -219,7 +217,6 @@ class SqlCache:
             )
 
     def close(self) -> None:
-        """Close database connection."""
         with self._lock:
             self._con.close()
 

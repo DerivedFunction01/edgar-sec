@@ -1,5 +1,3 @@
-"""Unit tests for table taxonomy specifications and models."""
-
 from __future__ import annotations
 
 from edgar_sec.domain.taxonomy.tables.families import FAMILY_SPECS

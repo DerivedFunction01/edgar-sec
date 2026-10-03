@@ -56,22 +56,10 @@ def run_interactive_menu(
     interrupted_message: str | None = None,
     before_menu: Callable[[], str | None] | None = None,
 ) -> int:
-    """Run an interactive action loop until user selects exit.
+    """Run an interactive action loop until the user selects exit.
 
-    A blank answer re-renders the menu rather than running the first action:
-    defaulting it would let a stray Return silently start whichever action is
-    listed first, which is not harmless for a mutating command.
-
-    Any exception from an action is reported with its type and the loop
-    continues, because a wizard that dies on an unexpected error loses the
-    session the operator was holding, and a hidden failure class is harder to
-    diagnose than the failure.
-
-    ``interrupted_message`` states what survives an interrupt, which is phase
-    knowledge this module cannot have. ``before_menu`` runs once per render and
-    may return a header line showing the state a pipeline resolved for this
-    session; a failure inside it is reported and the menu is still drawn, so a
-    broken header cannot strand the operator with no way back.
+    A blank answer re-renders rather than defaulting to the first action, which may mutate;
+    ``before_menu`` runs per render and a failure inside it still draws the menu.
     """
     action_map = {a.key.lower(): a for a in actions}
 
@@ -119,12 +107,8 @@ def operator_entrypoint(
 ) -> int:
     """Dispatch a pipeline operator: menu with no arguments, CLI otherwise.
 
-    The pipeline supplies its title, its menu, and its CLI entrypoint; nothing
-    else about its behavior is assumed.
-
-    ``before_menu`` is only consulted on the interactive path. A command
-    dispatched with arguments must not resolve or print session state, because
-    there is no session: the arguments already name what the command acts on.
+    ``before_menu`` is consulted only on the interactive path; an argument-dispatched
+    command must not resolve or print session state, since there is no session.
     """
     args = sys.argv[1:] if argv is None else argv
     if not args:

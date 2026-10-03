@@ -1,10 +1,6 @@
-"""TOC regex patterns and compiled constants.
-
-The generic row vocabulary shared with table classification lives in
-:mod:`edgar_sec.engine.tables.toc.patterns`; this module owns only the
-TOC-block-specific shapes — the heading, the PART/ITEM row with a captured
-ordinal, the multi-item row, and the weak ``INDEX``/``REFERENCE`` headings that
-row evidence alone can promote.
+"""TOC regex patterns and compiled constants. Owns only the TOC-block shapes —
+heading, PART/ITEM row with a captured ordinal, multi-item row, and weak
+`INDEX`/`REFERENCE` headings that row evidence can promote.
 """
 
 from __future__ import annotations

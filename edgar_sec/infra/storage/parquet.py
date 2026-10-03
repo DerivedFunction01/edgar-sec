@@ -23,7 +23,6 @@ def write_parquet_table(
     compression: str = DEFAULT_COMPRESSION,
     row_group_size: int = DEFAULT_ROW_GROUP_SIZE,
 ) -> int:
-    """Atomically serialize PyArrow Table to a Parquet file."""
     path_str = os.fspath(path)
     directory = os.path.dirname(os.path.abspath(path_str))
     os.makedirs(directory, exist_ok=True)
@@ -68,9 +67,8 @@ def read_parquet_table(
 class StagedParquetWriter:
     """Atomic, incremental Parquet writer for streaming chunk checkpoints.
 
-    Stages all writes to a sibling `.tmp` file and supports reading already
-    committed primary key IDs for intra-chunk resumption upon restart.
-    Promoting the `.tmp` to final is an atomic rename (`os.replace`) with directory fsync.
+    Writes stage to a sibling ``.tmp``; promoting it is an atomic ``os.replace`` plus a
+    directory fsync. Committed key IDs are readable for intra-chunk resumption.
     """
 
     def __init__(
@@ -100,8 +98,7 @@ class StagedParquetWriter:
     def get_existing_ids(self) -> set[str]:
         """Read committed primary key IDs from an existing .tmp file for partial resumption.
 
-        If the .tmp file is valid and readable, its rows are preloaded to be preserved
-        when the stream opens. If corrupted or schema-mismatched, the .tmp is cleanly reset.
+        A readable, schema-matching ``.tmp`` has its rows preloaded; a corrupted one is reset.
         """
         if not self.tmp_path.is_file() or not self.id_column:
             return set()
@@ -192,7 +189,6 @@ class StagedParquetWriter:
             self._writer.close()
             self._writer = None
         elif self._preloaded_table is not None:
-            # If nothing new was written, flush preloaded table
             self._ensure_writer()
             assert self._writer is not None
             self._writer.close()

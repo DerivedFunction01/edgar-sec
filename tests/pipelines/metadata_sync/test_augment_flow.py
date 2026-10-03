@@ -1,18 +1,4 @@
-"""The interactive augmentation journey.
-
-These pin the two things that made augmentation feel broken against a two-year-old
-seed. First, the *arithmetic* is settled before the operator is asked to spend SEC
-request budget: the base snapshot already covers most or all of a curated seed,
-so a flow that asks for chunk size, fetch consent, and worker count before
-discovering there is nothing to do spends the operator's attention for a no-op.
-Second, the *cohort* is a question, not a file: the seed describes who filed two
-years ago, and the union of that seed with a published SEC listing observation is
-the set that reflects who files now.
-
-Nothing here opens a network socket. The submissions client and the source
-refresh are stubbed; the arithmetic under test lives against real published
-snapshots in ``test_augmentation`` and ``test_cli``.
-"""
+"""The interactive augmentation journey, settled before request budget is spent."""
 
 from __future__ import annotations
 
@@ -66,12 +52,7 @@ def state(tmp_path: Path) -> WizardState:
 
 
 def _publish_snapshot_stub(state: WizardState, snapshot_id: str) -> None:
-    """Write a minimal published snapshot manifest the operator can discover.
-
-    Enough for base *selection*, which reads manifests only. The subtraction that
-    follows is covered against real published snapshots elsewhere; pinning it here
-    too would test the same arithmetic twice.
-    """
+    """Enough for base selection, which reads manifests only."""
     metadata = state.metadata()
     path = metadata.snapshot_manifest(snapshot_id)
     path.parent.mkdir(parents=True, exist_ok=True)
@@ -217,12 +198,7 @@ def test_a_declined_fetch_runs_nothing(
 def test_an_already_covered_cohort_never_asks_to_fetch(
     state: WizardState, monkeypatch: pytest.MonkeyPatch, capsys
 ) -> None:
-    """The boring outcome is decided before the operator spends request budget.
-
-    This is the regression: the wizard asked for the chunk size, the SEC fetch
-    consent, and the worker count, and only then discovered there was nothing to
-    fetch and reported it as a failure.
-    """
+    """Nothing to fetch must not be discovered only after every question is asked."""
     _publish_snapshot_stub(state, "base")
     asked: list[str] = []
     monkeypatch.setattr(
@@ -341,8 +317,7 @@ def test_the_seed_and_the_source_listings_are_offered_together(
     assert options is not None
     assert options.registry_id
     assert "seed and active listings" in out
-    # The seed is named, and the source observation's age is shown, because a
-    # source snapshot can itself be stale.
+    # The seed is named and the observation aged, because a source can be stale.
     assert str(seed) in out
     assert "2026-09-30T00:00:00Z" in out
     assert "Cohort number" in prompts
@@ -351,7 +326,7 @@ def test_the_seed_and_the_source_listings_are_offered_together(
 def test_a_missing_source_is_offered_a_consented_refresh(
     state: WizardState, tmp_path: Path, monkeypatch: pytest.MonkeyPatch, capsys
 ) -> None:
-    """v1 defaulted this to yes; a live SEC request defaults to no here."""
+    """A live SEC request defaults to no."""
     seed = _write_seed(tmp_path)
     refreshed: list[Path] = []
     monkeypatch.setattr(flow, "DEFAULT_INPUT", str(seed), raising=False)
@@ -370,12 +345,7 @@ def test_a_missing_source_is_offered_a_consented_refresh(
 def test_a_consented_source_refresh_targets_the_session_artifacts_root(
     state: WizardState, tmp_path: Path, monkeypatch: pytest.MonkeyPatch
 ) -> None:
-    """The refresh must land in the tree the session reads from.
-
-    Resolving the project default instead would write the source snapshot
-    outside a session scoped to another artifacts root, and the comparison would
-    then not find it.
-    """
+    """A project-default root would write outside the tree the session reads."""
     seed = _write_seed(tmp_path)
     refreshed: list[Path] = []
     monkeypatch.setattr(flow, "DEFAULT_INPUT", str(seed), raising=False)
@@ -561,8 +531,7 @@ def test_augment_fetches_only_what_the_base_is_missing(
 
     base = _publish_base_via_cli(session, tmp_path, capsys, monkeypatch)
 
-    # NEWCO is in the live listing but not in the seed, so the union cohort
-    # contains a CIK the base does not have.
+    # NEWCO is in the live listing but not the seed, so the union is not covered.
     session.register(submissions_url("0000005555"), cik_payload("0000005555", "NEWCO"))
     assert (
         main(
@@ -584,26 +553,19 @@ def test_augment_fetches_only_what_the_base_is_missing(
     assert result["delta_row_count"] == 1
     assert result["refetched_ciks"] == ["0000005555"]
     assert result["total_row_count"] == result["base_row_count"] + 1
-    # The four seed CIKs were already in the base and were not refetched.
     assert result["already_present_count"] == 4
 
 
 def test_augment_reports_a_covered_cohort_as_a_successful_no_op(
     session: FakeSession, tmp_path: Path, capsys, monkeypatch
 ) -> None:
-    """Re-requesting a fully-ingested cohort costs nothing and fails nothing.
-
-    This is the ordinary case for a stale seed: every CIK it names is already in
-    the base, so nothing is fetched, no delta plan is written, and the pointer
-    does not move.
-    """
+    """The ordinary case for a stale seed: nothing fetched, written, or moved."""
     metadata = resolve_metadata_paths(tmp_path)
     base = _publish_base_via_cli(session, tmp_path, capsys, monkeypatch)
     pointer_before = metadata.current_pointer.read_bytes()
     plans_root = metadata.metadata_root / "plans"
     plans_before = sorted(p.name for p in plans_root.iterdir())
-    # The submissions client is the thing that costs SEC request budget, so its
-    # construction is what must not happen -- not merely its first request.
+    # Client construction costs request budget, not merely its first request.
     clients: list[object] = []
     monkeypatch.setattr(cli_module, "_build_client", lambda: clients.append(1) or None)
 
@@ -642,7 +604,7 @@ def test_merge_refuses_a_delta_plan_and_leaves_the_snapshot_intact(
     base = _publish_base_via_cli(session, tmp_path, capsys, monkeypatch)
     manifest_before = metadata.snapshot_manifest(base).read_bytes()
 
-    # An augment over a cohort the base does not fully cover writes a delta plan.
+    # An augment the base does not fully cover writes a delta plan.
     session.register(submissions_url("0000005555"), cik_payload("0000005555", "NEWCO"))
     delta_csv = tmp_path / "delta.csv"
     delta_csv.write_text("cik,name\n0000005555,NEWCO\n", encoding="utf-8")
@@ -663,7 +625,7 @@ def test_merge_refuses_a_delta_plan_and_leaves_the_snapshot_intact(
     assert augmented["no_op"] is False
     assert augmented["delta_row_count"] == 1
     delta_plan = augmented["delta_plan_id"]
-    # The augment legitimately advanced the pointer onto its own publication.
+    # The augment advanced the pointer onto its own publication.
     pointer_before = metadata.current_pointer.read_bytes()
     assert json.loads(pointer_before)["snapshot_id"] == "aug"
 

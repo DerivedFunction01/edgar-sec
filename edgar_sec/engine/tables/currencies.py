@@ -1,9 +1,6 @@
 """Major currency symbols and metadata for financial table extraction.
-
-The symbol inventory here is the only input to the prefix/suffix partition in
-:mod:`edgar_sec.engine.tables.numeric_cells`. Whether a symbol is a prefix or a
-suffix is a property of the currency, not of the document, so the table renderer
-consults this table rather than inferring the partition from observed text.
+The only input to the prefix/suffix partition in `numeric_cells`: whether a symbol binds left or
+right is a property of the currency, not of the document.
 """
 
 from __future__ import annotations

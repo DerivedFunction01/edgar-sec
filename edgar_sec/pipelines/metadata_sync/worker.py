@@ -1,14 +1,7 @@
 """Resumable chunk execution.
-
-One chunk is the unit of work and of checkpointing. Within a chunk, CIKs are
-fetched concurrently on threads: the shared HTTP client and its SQLite cache
-are both thread-safe, the work is network-bound rather than CPU-bound, and
-DuckDB is confined to the coordinator, so nothing here needs process isolation.
-
-Every requested CIK produces exactly one row, including failures, so completion
-is determinable from the data rather than from queue state. A chunk's CIKs come
-from the plan's roster range, so the same call works against a plan this process
-planned and a plan it was handed as a copied bundle.
+Every requested CIK produces exactly one row, including failures, so completion is
+determinable from the data rather than queue state. Fetches run on threads: the
+HTTP client and its SQLite cache are thread-safe and the work is network-bound.
 """
 
 from __future__ import annotations
@@ -167,11 +160,7 @@ def run_chunk(
     progress: Callable[[dict[str, Any]], None] | None = None,
 ) -> ChunkResult:
     """Execute one chunk and atomically write its checkpoint Parquet.
-
-    A valid existing checkpoint short-circuits the run, so completed chunks
-    are never refetched. The guarantee lives here rather than in each caller,
-    because a refetch is exactly what makes a resume slow and a rerun
-    non-idempotent.
+    A valid existing checkpoint short-circuits the run.
     """
     ciks = plan.chunk_ciks(chunk_id)
     path = run_paths.chunk_file(chunk_id)
@@ -246,11 +235,7 @@ def run_chunk_ids(
     progress: Callable[[dict[str, Any]], None] | None = None,
 ) -> list[ChunkResult]:
     """Run an explicit chunk list, skipping chunks already complete on disk.
-
-    This is the single execution path for one host and for many. A local run
-    passes every planned chunk; a worker running a copied bundle passes the
-    chunk ids its assignment names, which is why assignment carries no
-    scheduling logic of its own.
+    The single execution path for one host and for many.
     """
     done = completed or {}
     results: list[ChunkResult] = []
