@@ -1,24 +1,17 @@
 """Declarative selection policy: the quota profile a plan is built against.
 
 A policy names the corpus, the target forms, the era bands, the date selection,
-and the floors, composites, and caps that define a balanced sample. Nothing
-about stratification is hardcoded in the selector: the policy is the only place
-a form name, an era boundary, or a dimension share cap appears, so changing the
-quota profile never requires editing Python.
-
-This module owns all date-bound reasoning. :mod:`.features` maps dates onto era
-bands and :mod:`.selector` consumes the result, but neither one decides what a
-date means.
+and the floors, composites, and caps that define a balanced sample. Nothing about
+stratification is hardcoded in the selector: the policy is the only place a form
+name, an era boundary, or a dimension share cap appears, so changing the quota
+profile never requires editing Python. This module owns all date-bound reasoning:
+:mod:`.features` maps dates onto era bands and :mod:`.selector` consumes the
+result, but neither one decides what a date means.
 
 A field that nothing reads is not configuration, it is a second, unenforced
-claim about what selection does. The policy carries none: ``weights`` and
-``value_weights`` were validated for dimension names and then never consulted,
-because the final fill is sequential under the cap check rather than weighted;
-``seed_groups`` named groups the seed CSV already labels per filer; and
-``policy_schema_version`` was never branched on, so the enforced version lives
-in the plan document (:data:`.publication.TARGET_PLAN_SCHEMA_VERSION`) where
-expansion checks it. A retired key is rejected outright rather than ignored, so
-an older draft fails to load instead of selecting something nobody intended.
+claim about what selection does. The policy carries none. A retired key is
+rejected outright rather than ignored, so an older draft fails to load instead of
+selecting something nobody intended.
 
 Policy generation takes the catalog's forms and year range from its caller,
 keeping artifact discovery in the pipeline layer. Construction validates every
@@ -78,13 +71,12 @@ KNOWN_DIMENSIONS = (
     "company_family",
 )
 
-# The two grains a dimension can be counted at, kept beside the vocabulary they
-# partition rather than inside the module that happens to count. Selection draws
-# candidates and composites from `locator_features`, so a composite stratum can
-# only name a locator-grain dimension; counting a per-filing dimension on the
-# locator table would read as an undersupplied stratum rather than a bad policy.
-# `sic_code` is locator-grain: the locator projection carries the representative
-# registrant's value.
+# The two grains a dimension can be counted at. Selection draws candidates and
+# composites from `locator_features`, so a composite stratum can only name a
+# locator-grain dimension; counting a per-filing dimension on the locator table
+# would read as an undersupplied stratum rather than a bad policy. `sic_code` is
+# locator-grain: the locator projection carries the representative registrant's
+# value.
 OCCURRENCE_ONLY_DIMENSIONS = frozenset({"accession_class"})
 LOCATOR_ONLY_DIMENSIONS = frozenset(
     name for name in KNOWN_DIMENSIONS if name not in OCCURRENCE_ONLY_DIMENSIONS
@@ -400,9 +392,8 @@ class SelectionPolicy:
         # A composite is selected from the locator table, so a stratum filtered
         # on a dimension that only exists per filing can never be matched. The
         # vocabulary check above cannot tell grains apart, so without this the
-        # failure surfaces as a DuckDB Binder Error from deep inside selection,
-        # naming a column rather than the policy field that caused it. Refusing
-        # it here names both.
+        # failure surfaces as a DuckDB Binder Error naming a column rather than
+        # the policy field that caused it. Refusing it here names both.
         occurrence_only = sorted(
             {
                 dimension

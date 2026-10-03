@@ -102,7 +102,7 @@ def discover_catalogs(
     if not resolved.snapshots_root.is_dir():
         return found
     for entry in sorted(resolved.snapshots_root.iterdir()):
-        # ``current`` is the pointer, and a Stage B feature snapshot is also a
+        # ``current`` is the pointer, and a policy-scope feature snapshot is also a
         # directory here; both are told apart by what they do not hold. Only a
         # directory carrying snapshot.manifest.json is a catalog snapshot.
         if not entry.is_dir() or entry.name == CURRENT_ALIAS:

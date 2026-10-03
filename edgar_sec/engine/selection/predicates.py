@@ -1,13 +1,13 @@
 """SQL predicate compilers for the shared catalog filter vocabulary.
 
 The suffix and date vocabularies live in ``domain.filing_catalog.filters``
-because two layers must agree on them: Stage A deterministic planning
-(``pipelines.filing_catalog``) and Stage B quota selection (this package).
+because two layers must agree on them: deterministic-scope planning
+(``pipelines.filing_catalog``) and policy-scope quota selection (this package).
 Layer 4 may import Layer 3, so the compilers that turn that vocabulary into
 DuckDB predicates live here rather than in the pipeline or in infra — infra
 owns the dialect primitives, not the filter semantics.
 
-Stage A planning reuses these compilers for its ``dates`` filter, which is
+Deterministic-scope planning reuses these compilers for its ``dates`` filter, which is
 why the module is owned by the selection engine and not by the planner.
 """
 

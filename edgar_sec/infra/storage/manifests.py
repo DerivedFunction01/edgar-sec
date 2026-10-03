@@ -112,10 +112,9 @@ def snapshot_dir(snapshots_root: Path, snapshot_id: str) -> Path:
 
     ``snapshots_root`` is the dataset's published root — ``ProjectPaths
     .documents_root`` — and each snapshot is a directory beside the ``current``
-    pointer. This is the v2 layout, which replaced v1's
-    ``manifests/<phase>/<dataset>/snapshots`` indirection; the phase and dataset
-    are already fixed by which root was passed, so repeating them in the path
-    bought nothing but a second place to look.
+    pointer. The phase and dataset keys are absent from the path because they are
+    already fixed by which root was passed; repeating them would only add a
+    second place to look.
     """
     return Path(snapshots_root) / snapshot_id
 

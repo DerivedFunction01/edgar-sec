@@ -1,38 +1,25 @@
 """The Phase 2.5 entry contract, asserted rather than documented.
 
-Phase 2.5 (document acquisition) is the largest remaining phase, and it
-consumes Phase 2's published plan bundle and nothing else. That makes the
-bundle an *interface* between two independently-developed phases, which means
-its shape needs the same protection the rest of the codebase gets: if the
-contract drifts, Phase 2.5 silently fetches the wrong documents, or fetches one
-twice, or builds a URL that 404s — and none of those fail loudly here.
+Phase 2.5 (document acquisition) consumes Phase 2's published plan bundle and
+nothing else, so drift in that bundle is silent: the wrong document fetched, one
+fetched twice, a URL that 404s. The contract:
 
-The contract, in full:
+* A bundle is a complete work order: ``REQUIRED_PLAN_FILES`` are present and
+  ``locator_groups.parquet`` enumerates the documents to fetch.
+* One row per **unique document**: ``document_locator_key`` is
+  ``sha256(accession || ':' || document_path)``, so a co-filed document is
+  fetched once, under either scope.
+* Every row carries a non-null HTTPS ``archive_url`` agreeing with the URL
+  Phase 1's engine would have built.
+* ``targets/form=<FORM>/data.parquet`` carries the *occurrences* -- one row per
+  registrant's claim on a document -- keyed to the work order for attribution.
+* A policy plan's ``reserve_targets.parquet`` is disjoint from the work order,
+  so an acquirer ignoring the reserve never double-fetches.
 
-* A plan bundle is a complete work order. ``REQUIRED_PLAN_FILES`` are all
-  present, and ``locator_groups.parquet`` is the enumeration of documents to
-  fetch.
-* One row per **unique document**. ``document_locator_key`` is
-  ``sha256(accession || ':' || document_path)``, so a document co-filed by two
-  registrants is one row, and Phase 2.5 fetches it once. This is the invariant
-  §8.1.2 of the plan calls "one locator per document".
-* Every row carries a fetchable ``archive_url`` over HTTPS, agreeing with the
-  URL Phase 1's engine would have built.
-* ``targets/form=<FORM>/data.parquet`` carries the *occurrences* — the
-  registrant's claim on a document — which is one row per registrant, not per
-  document. Phase 2.5 needs both: the locator list to fetch, the occurrence rows
-  to attribute what came back.
-* A policy plan's ``reserve_targets.parquet`` is disjoint from the active work
-  order, so an acquirer that ignores the reserve never double-fetches.
-* The *work order* (``locator_groups.parquet``) satisfies the same contract for
-  either scope, so Phase 2.5 does not branch on scope to fetch.
-
-The occurrence partitions are deliberately scope-specific and are **not** part of
-that shared surface: a deterministic plan publishes the raw target rows while a
-policy plan publishes the feature-enriched occurrence rows it selected from. The
-two schemas are pinned separately, because a shared name like
-"the targets contract" is exactly what let a malformed policy schema ship
-unnoticed.
+The occurrence partitions are scope-specific and deliberately **not** part of
+that shared surface -- a deterministic plan publishes the raw target rows, a
+policy plan the feature-enriched rows it selected from -- so both are pinned
+separately rather than under one shared name.
 """
 
 from __future__ import annotations

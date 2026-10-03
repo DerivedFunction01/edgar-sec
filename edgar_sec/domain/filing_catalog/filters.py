@@ -1,36 +1,23 @@
 """Filter vocabulary shared by deterministic planning and selection policy.
 
-This module holds only vocabulary and pure normalization: the default
-suffix set and the suffix normalizer. It is Layer 1 because two
-different layers need to agree on it --
+This module holds only vocabulary and pure normalization: the default suffix
+set, the suffix normalizer, and the tagged date clauses that planning, the
+selection policy, and the SQL compilers must all agree about. It is Layer 1
+because two layers consume it -- ``pipelines.filing_catalog.planner`` for
+deterministic planning and ``engine.selection.policy.SelectionPolicy`` for
+policy-scope selection -- while the compilers that turn the vocabulary into DuckDB
+predicates live in ``engine.selection.predicates``, above it.
 
-* ``pipelines.filing_catalog.planner`` for deterministic planning, and
-* ``engine.selection.policy.SelectionPolicy`` for Stage B selection.
+Suffixes arrive as user input from a CLI flag or a policy document, so each one
+is validated against a conservative allowlist and rejected up front rather than
+reaching a predicate compiler unvalidated. A caller must not bypass
+``normalize_suffixes()``: it is also what de-duplicates without reordering, so a
+recorded suffix list hashes to a stable plan identity.
 
-Stage A originally kept this vocabulary in ``pipelines/filing_catalog/filters.py``
-alongside the two SQL builders. Stage B could not reuse it: the layer graph is
-acyclic downward-only, so Layer 3 (``engine``) may not import Layer 4
-(``pipelines``). Rather than restate the suffix vocabulary in the selection
-policy -- two closed sets that must never disagree -- the vocabulary moved down
-here, and the compilers that turn it into DuckDB predicates moved to
-``engine.selection.predicates``, which Layer 4 may import.
-
-v1 built its suffix predicate by interpolating both the column name and each
-suffix straight into a SQL string literal, and ``normalize_suffixes`` only
-lower-cased and de-dotted, so a suffix containing a quote could terminate the
-literal. v2 rejects any suffix outside a conservative allowlist up front, which
-fails loudly at the call site instead of producing malformed or injected SQL.
-
-``DateSelection`` is the same kind of shared vocabulary: a union of tagged date
-clauses that deterministic planning, the selection policy, and both SQL
-compilers must agree about. It lives here for the same reason the suffix
-vocabulary does -- two layers need one answer, and the lower layer cannot
-import the higher one.
-
-The grammar is deliberately small and total: every term either parses to a
-clause or raises naming the offending token. Nothing is guessed. ``2023Q1`` is an
-absolute quarter, ``@Q1[2023..2023]`` is the recurring quarter of 2023, and a bare
-``Q1`` is an error rather than a guess at either one.
+The date grammar is small and total. Every term either parses to a clause or
+raises naming the offending token: ``2023Q1`` is an absolute quarter,
+``@Q1[2023..2023]`` the recurring quarter of 2023, and a bare ``Q1`` an error
+rather than a guess at either one.
 """
 
 from __future__ import annotations
@@ -186,10 +173,8 @@ def _parse_year_atom(token: str, source: str) -> int:
 def _absolute_atom(token: str) -> tuple[date, date]:
     """Expand one absolute atom into the inclusive interval it names.
 
-    Precision is carried by the token's own shape. The caller picks which edge
-    of that interval a position needs: ``2005Q3`` yields ``2005-07-01`` and
-    ``2008-03-31``, so the same atom supplies a start edge or an end edge
-    depending on which side of ``..`` it sits.
+    ``2005Q3`` yields ``2005-07-01`` and ``2008-03-31``, so one atom supplies a
+    start edge or an end edge depending on which side of ``..`` it sits.
     """
     source = token.strip()
     if not source:
@@ -338,8 +323,8 @@ def _overlaps_or_touches(end: Any, next_start: Any, step: Any) -> bool:
     An open end swallows whatever follows it, so it always merges. Adjacency
     counts: ``2024-12-31`` and ``2025-01-01`` describe one contiguous interval,
     and merging them keeps ``2024-12-31..2025-01-01`` out of a persisted
-    selection where it would read as two overlapping windows.
-    ``step`` is the domain's granularity -- a day for dates, ``1`` for year spans.
+    selection, where it would read as two overlapping windows.
+    ``step`` is the domain's granularity -- a day for dates, ``1`` for years.
     """
     if end is None or next_start is None:
         return True
@@ -390,11 +375,10 @@ def _merge_absolute(
     """Merge absolute intervals, dropping any that cover every date.
 
     ``..2007`` plus ``2008..`` is every date, and the one canonical way to write
-    that is the empty selection: a clause with both bounds open would have to be
-    spelled ``..``, which the grammar rejects as ambiguous with "no selection".
-    Collapsing it also keeps the missing-date rule honest -- an input that asks
-    for every date must not start excluding rows whose ``report_date`` is
-    unreadable.
+    that is the empty selection: both bounds open would have to be spelled
+    ``..``, which the grammar rejects as ambiguous with "no selection".
+    Collapsing it also keeps the missing-date rule honest -- an input asking for
+    every date must not start excluding rows whose ``report_date`` is unreadable.
     """
     merged = _merge_intervals([(c.start_date, c.end_date) for c in clauses], _DAY)
     return tuple(
@@ -422,9 +406,8 @@ def _year_segments(
     """Split the timeline into segments no interval boundary falls inside.
 
     Cutting at every boundary makes the segments a function of the intervals
-    alone, which is what makes the decomposition canonical: two spellings of the
-    same recurring selection reduce to the same intervals first, and therefore to
-    the same segments.
+    alone, which is what makes the decomposition canonical: two spellings of one
+    recurring selection reduce to the same intervals, and so to the same segments.
     """
     boundaries: set[int] = set()
     for start, end in intervals:
@@ -448,12 +431,11 @@ def _merge_recurring(
 ) -> tuple[RecurringDateClause, ...]:
     """Collapse recurring clauses to one clause per year segment.
 
-    Each granularity is reduced twice. First per period value, so overlapping and
-    abutting spans for the same period become one span; then across the
-    timeline, so periods whose spans abut can share a clause. Reducing per value
-    before slicing matters: ``@Q1,@Q2[2011..2015]`` keeps Q1 in every year and
-    Q2 only in 2011-2015, and a rule that merged the two values' spans first
-    would widen it to Q2 in every year.
+    Each granularity is reduced twice: per period value first, so overlapping and
+    abutting spans for the same period become one span, then across the timeline,
+    so periods whose spans abut can share a clause. Order matters --
+    ``@Q1,@Q2[2011..2015]`` keeps Q1 in every year and Q2 only in 2011-2015,
+    while merging the two values' spans first would widen Q2 to every year.
     """
     grouped: dict[str, list[tuple[int, tuple[int | None, int | None]]]] = {}
     for clause in clauses:

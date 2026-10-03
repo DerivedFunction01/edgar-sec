@@ -1,34 +1,23 @@
 """Cross-run snapshot consolidation.
 
-A corpus is built by many partial runs, each publishing its own snapshot. Reading
-them as N independent datasets means every consumer has to union, dedupe, and
-re-derive fiscal quarters itself — and get the same answers. Consolidation does
-that once, into one canonical snapshot.
+A corpus is built by many partial runs, each publishing its own snapshot. Read as
+N independent datasets, every consumer must union, dedupe, and re-derive fiscal
+quarters itself. Consolidation does that once, and guarantees:
 
-What consolidation guarantees:
+- **Source precedence is the caller's order.** The later-listed source wins when
+  two describe the same document, so the outcome is reproducible.
+- **Fiscal quarters are re-derived here.** ``filing_year`` and ``filing_quarter``
+  are computed at consolidation time, so snapshots written months apart by
+  different code versions land in the same partitioning.
+- **Differing text is refused, not resolved.** Precedence could discard one side,
+  but accepting that a document's text changed is not a decision consolidation
+  may make for the caller.
+- **Sources are immutable, purge is dependency-aware.** A source is deleted only
+  once nothing retained references its parts, which
+  :func:`expand_dependency_closure` establishes before anything is removed.
 
-**Source precedence is explicit.** When two sources describe the same document,
-the later-listed source wins. Precedence is the order the caller passed, not
-filesystem order, so the outcome is reproducible.
-
-**Fiscal quarters are re-derived.** ``filing_year`` and ``filing_quarter`` are
-computed at consolidation time, so a snapshot written months apart by different
-code versions lands in the same partitioning.
-
-**Text conflicts are refused, not resolved.** If two sources carry *different*
-normalized text for the same document, consolidation raises. Precedence would
-happily discard one; silently accepting that a document's text changed is not a
-decision a consolidation may make on the caller's behalf.
-
-**Sources are immutable and purge is dependency-aware.** Consolidation never
-writes to a source. A source may only be deleted when nothing retained still
-references its parts, which :func:`expand_dependency_closure` determines before
-anything is removed.
-
-Quarters are processed by threads over one shared DuckDB relation, with a
-per-quarter connection: DuckDB releases the GIL during execution, so this
-overlaps real work, and each quarter's memory is bounded by the batch size rather
-than by the corpus size.
+Quarters run on threads over one shared DuckDB relation, each with its own
+connection, bounding per-quarter memory by batch size rather than corpus size.
 """
 
 from __future__ import annotations

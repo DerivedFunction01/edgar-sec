@@ -1,24 +1,18 @@
 """Delta augmentation against a published snapshot.
 
 Augmentation plans work only for CIKs the base snapshot does not already
-contain. The published base is never refetched: delta chunks are merged with
-the existing snapshot Parquet, so a snapshot that already holds N CIKs and
-receives K new ones ends with N+K rows and only K network fetches.
+contain. The published base is never refetched: delta chunks are merged with the
+existing snapshot Parquet, so a snapshot that already holds N CIKs and receives K
+new ones ends with N+K rows and only K network fetches.
 
-Identity is the load-bearing decision here. A delta plan is identified by its
-base snapshot *and* its delta roster, never by the request file that named the
-CIKs. The same requested list against two different bases is two different
-deltas, and the earlier request-fingerprinted identity gave both the same plan
-directory and let one overwrite the other's record.
-
-The published snapshot follows the same rule. ``new_snapshot_id`` defaults to
-the delta plan id, which is already a content address over the base snapshot, the
-effective delta roster, and the chunk layout, so an augmentation is idempotent
-and needs no identifier typed by an operator. An explicit id remains an override
-for the distribution path, where a worker stamps rows with the snapshot the
-coordinator will publish under. This mirrors ``RunOptions.effective_snapshot_id``
-for a full ingest, and it is the reason every other Phase 1 artifact is
-content-addressed and this one is not required to be.
+Identity is the load-bearing decision here. A delta plan is identified by its base
+snapshot *and* its delta roster, never by the request file that named the CIKs:
+the same requested list against two different bases is two different deltas.
+``new_snapshot_id`` defaults to the delta plan id, already a content address over
+the base snapshot, the effective delta roster, and the chunk layout, so an
+augmentation is idempotent and needs no identifier typed by an operator. An
+explicit id remains an override for the distribution path, where a worker stamps
+rows with the snapshot the coordinator will publish under.
 """
 
 from __future__ import annotations
@@ -249,28 +243,23 @@ def augment(
 ) -> AugmentResult:
     """Augment a published snapshot with any newly requested CIKs.
 
-    The base snapshot is read as the ordered part list its manifest declares, so a
-    multipart base contributes all of its parts and a legacy single-file base
-    contributes one. Delta chunks are published as the remaining parts of the new
-    snapshot, so base CIKs are carried forward untouched and never refetched.
-
-    Copied base rows keep their original row-level ``snapshot_id``: that field is
-    row provenance, not the identity of whichever artifact later contains the row,
-    and rewriting it would misstate where the data came from.
-
-    An empty ``new_snapshot_id`` resolves to the delta plan id once the plan is
-    derived, so the published identity is derived rather than supplied.
+    The base is read as the ordered part list its manifest declares, so a
+    multipart base contributes all its parts and a legacy single-file base one.
+    Delta chunks become the remaining parts of the new snapshot, so base CIKs are
+    carried forward untouched and never refetched. Copied base rows keep their
+    original row-level ``snapshot_id`` -- row provenance, not the identity of
+    whichever artifact later contains the row -- and an empty
+    ``new_snapshot_id`` resolves to the delta plan id, so the published identity
+    is derived rather than supplied.
 
     A pre-computed ``preflight`` is accepted so a caller that already reduced the
     cohort against the base does not pay for the same read twice, and so the
     decision to fetch is made in exactly one place.
 
-    ``progress`` carries the two event shapes ``run`` and ``merge`` already emit --
-    per-CIK fetch events, then merge stage events -- because an augmentation does
-    the longest silent work in the pipeline otherwise: a rate-limited network fetch
-    followed by a full null and duplicate scan over every input. The delta plan is
-    announced as a ``delta_plan`` event because its size is not knowable before
-    this call, so a caller cannot size a fetch bar for it in advance.
+    ``progress`` carries the ``run`` and ``merge`` event shapes -- per-CIK fetch
+    events then merge stage events -- because an augmentation does the longest
+    silent work in the pipeline otherwise; the delta plan is announced as a
+    ``delta_plan`` event because its size is not knowable before this call.
     """
     emit = _safe_progress(progress)
     check = preflight or preflight_augment(

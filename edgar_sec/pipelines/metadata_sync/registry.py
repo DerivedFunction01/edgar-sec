@@ -2,8 +2,8 @@
 
 ``compare_sources`` answers the question the fetch pipeline cannot: which
 registrants exist upstream that a curated CIK input does not cover. It is a pure
-projection — it reads an already published source snapshot and a curated CSV and
-performs no network access, so a comparison is reproducible from immutable inputs.
+projection — it reads an already published source snapshot and a curated CSV,
+with no network access, so a comparison is reproducible from immutable inputs.
 
 The output contract is fixed by what consumes the projections — the CSV-driven
 augmentation path and anything an operator reads by hand:
@@ -14,8 +14,7 @@ augmentation path and anything an operator reads by hand:
 * ``augmentation_worklist`` — the new CIKs shaped for an augmentation run.
 * ``effective_ciks`` — the full union as a CIK roster dataset, the carrier a plan
   consumes.
-* ``effective_cik_input.csv`` — the same union as a CIK manifest, retained as an
-  export for people.
+* ``effective_cik_input.csv`` — the same union as a CIK manifest, exported.
 
 Every Parquet dataset is published beside a manifest carrying its content digest
 and upstream chain, so a consumer can prove which source snapshot and curated
@@ -428,14 +427,14 @@ def ensure_registry(
 ) -> dict[str, Any]:
     """Return the effective roster for one curated input and source snapshot.
 
-    This is the projection the augmentation journey is built on. A curated CSV is
-    a seed curated at a point in time, so it does not describe who files with the
-    SEC *now*; the union of the seed's CIKs with the active listings in a source
-    snapshot is the cohort that does. The comparison is a pure projection of two
-    immutable files, so running it needs no network and is safe to run on demand.
+    A curated CSV is a seed curated at a point in time, so it does not describe
+    who files with the SEC *now*; the union of the seed's CIKs with the active
+    listings in a source snapshot is the cohort that does. The comparison is a
+    pure projection of two immutable files, so it needs no network and is safe to
+    run on demand.
 
     Registry identity is content-derived from the pair, so an already-computed
-    projection is reused rather than rewritten. That matters here because the
+    projection is reused rather than rewritten -- which matters here, because the
     operator reaches this on the augmentation path, where a redundant comparison
     would be invisible work published on every invocation.
 

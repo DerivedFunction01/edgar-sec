@@ -2,27 +2,22 @@
 
 The stage for plain-text (non-HTML) filing content. It classifies every
 blank-line-delimited block and renders the canonical output from exact
-decisions:
-
-- unwrap — join ordinary hard-wrapped prose lines with single spaces;
-- preserve — emit the original lines unchanged, with no tags;
-- tag and preserve — emit the original lines unchanged between ``<TABLE>`` and
-  ``</TABLE>`` markers.
+decisions: unwrap (join hard-wrapped prose lines with single spaces), preserve
+(emit the original lines unchanged, untagged), or tag-and-preserve (emit the
+original lines unchanged between ``<TABLE>`` and ``</TABLE>`` markers).
 
 The safety bias is deliberate and asymmetric. A missed unwrap leaves prose
-hard-wrapped, which a reader recovers; a collapsed table corrupts financial
-data, which nobody recovers. Ambiguous blocks therefore always resolve to
-preserve, and a block that still looks like a table after the resolver has
-absorbed everything it is allowed to absorb is downgraded to preserve rather
-than tagged.
-
-Existing ``<TABLE>`` blocks are masked before any analysis and restored
-byte-for-byte afterwards, so a reflow can never reclassify or rewrite one.
+hard-wrapped, which a reader recovers; a collapsed table corrupts financial data,
+which nobody recovers. Ambiguous blocks therefore always resolve to preserve, as
+does a block that still looks like a table once the resolver has absorbed
+everything it may absorb. Existing ``<TABLE>`` blocks are masked before analysis
+and restored byte-for-byte afterwards, so a reflow can never reclassify or
+rewrite one.
 
 Everything here is deterministic and line-based. Decisions carry half-open line
-ranges in the coordinate frame of the text passed in, which
+ranges in the input's coordinate frame, which
 :func:`~edgar_sec.engine.reflow.engine.mapper.build_line_mapper` translates into
-the frame of the output.
+the output's.
 """
 
 from __future__ import annotations

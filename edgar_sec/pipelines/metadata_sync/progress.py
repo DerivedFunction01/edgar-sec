@@ -1,20 +1,14 @@
 """How this pipeline's progress events become something a person can watch.
 
-Extracted from ``cli.py`` for ownership rather than only for length. ``cli.py``
-owns the argparse surface and the ``cmd_*`` callables that the CLI and the wizard
-both invoke; a renderer calls none of those and is called by none of them, so it
-is not part of that contract. It is presentation, and presentation had no home in
-this package until now.
-
 It is deliberately phase-local rather than shared. ``foundation.runtime.progress``
 already owns the adapters that turn a pipeline's events into a tqdm bar, and it
 knows nothing about which phase a pipeline is in. What lives here is the phase
-knowledge: that this pipeline has a per-CIK fetch shape, a per-stage merge shape,
-and that an augmentation runs both in one command. Promoting that to
-``foundation`` on the strength of one caller would be speculative, and a shared
-interactive entry point hardcoded to one phase's exact model is a known way to end
-up with dead code everywhere else. If a second pipeline needs the same
-sequencing, promote it then, with two callers to shape it.
+knowledge: this pipeline has a per-CIK fetch shape, a per-stage merge shape, and
+an augmentation runs both in one command. Promoting that to ``foundation`` on the
+strength of one caller would be speculative; a shared interactive entry point
+hardcoded to one phase's exact model is a known way to end up with dead code
+everywhere else. If a second pipeline needs the same sequencing, promote it then,
+with two callers to shape it.
 
 A terminal gets a live bar; a pipe or a captured log gets one plain line per event
 prefixed with the phase that emitted it. Choosing on ``isatty`` is what keeps a
@@ -110,10 +104,9 @@ class AugmentProgress:
     which CIKs the base snapshot already holds and only the augmentation knows
     that. So the augmentation announces its plan with a ``delta_plan`` event and
     the bar is sized from it, which is why this is a router rather than one of the
-    single-phase renderers.
-
-    A pipe or a captured log gets the plain event lines for both phases, so a
-    non-interactive caller sees the same stream ``run`` and ``merge`` produce.
+    single-phase renderers. A pipe or a captured log gets the plain event lines for
+    both phases, so a non-interactive caller sees the same stream ``run`` and
+    ``merge`` produce.
     """
 
     def __init__(self, desc: str) -> None:

@@ -38,7 +38,7 @@ Real-filing parity is unverified — see "Deliberate gaps".
 
 | Module | Responsibility |
 | :--- | :--- |
-| `__init__.py` | Package docstring and the layer-placement rationale. No re-exports, per AGENTS.md §1.2. |
+| `__init__.py` | Package docstring. No re-exports, per AGENTS.md §1.2. |
 | `cli.py` | Subcommand parsing, plan-file ingestion, and the phase-local menu. |
 | `operator.py` | `run_document_storage()`: process chunks, resolve delegations, publish. |
 | `fixture_operator.py` | Fixture discovery, live raw fill, append/resume, manifest publication. |
@@ -384,9 +384,9 @@ invariant) and `annual_10k_normalization.json`. Both are **synthetic** — see
   non-zero status on a difference is a result a reviewer reads, and what makes the
   comparison usable from a script.
 - **There is no SQLite partition architecture.** Storage is Parquet chunk
-  checkpoints plus a part tree plus manifests and a dependency graph (all owned by
-  `infra/storage/`). Consequently there is **no bounded partition reader** here and
-  no run-status module: `status` is a CLI over a pointer.
+  checkpoints plus a part tree plus manifests (owned by `infra/storage/`) and a
+  dependency graph (owned by this package). Consequently there is **no bounded
+  partition reader** here and no run-status module: `status` is a CLI over a pointer.
 - **Legacy fixture processing semantics are mostly not read.** This pipeline does
   not depend on `_committed_chunks`, acquisition or normalization failure tables,
   normalized rows, or legacy `plan_history`; those tables may remain untouched in

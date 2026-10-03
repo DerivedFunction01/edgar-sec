@@ -5,16 +5,13 @@ produced it. Replaying a plan against a fixture built from a *different* plan
 silently produces a wrong answer, so the four identity axes below are checked
 before any payload is read.
 
-Ported from v1's ``fixture_builder._validate_fixture_compatibility``, which
-needed a database only because it was called from inside a builder transaction.
-The checks are pure comparisons over two dicts, so they live here with no
-storage dependency and are directly testable.
+The checks are pure comparisons over two dicts, with no storage dependency and
+no transaction, so they are directly testable.
 
 The comparison is deliberately asymmetric: a manifest field is only checked when
-*both* sides declare it. v1 recorded older fixtures with no lineage, and
-refusing those would strand every existing fixture; a missing field means
-"unknown", not "mismatched". What the validator does refuse is a declared
-mismatch.
+*both* sides declare it. A fixture that records no lineage is legitimate input,
+and refusing it would strand it, so a missing field means "unknown", not
+"mismatched". What the validator does refuse is a declared mismatch.
 """
 
 from __future__ import annotations

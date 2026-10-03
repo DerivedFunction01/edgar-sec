@@ -150,10 +150,9 @@ is named under *Deliberate gaps*.
   nothing enforces broker-mediated routing.
 - **No read-only cache view.** `cache.py` offers no fail-open reader, so
   inspecting cached responses means opening the same writable object as the
-  client. The fail-open pattern the layer does have is
-  `storage/fixture_store.FixtureStore.documents()`, which returns an empty tuple
-  when the optional metadata table is absent; a `SqlCacheReader` here would be
-  the same idea applied to the response cache.
+  client. A `SqlCacheReader` here would treat an absent optional table as empty
+  instead of raising, letting a caller inspect a cache without creating or
+  repairing it first.
 - **No public handle on the cache file from a `SecHttpClient`.** The `SqlCache`
   the client builds is reachable only through a private attribute, so a caller
   that must close it has no supported route to the handle.

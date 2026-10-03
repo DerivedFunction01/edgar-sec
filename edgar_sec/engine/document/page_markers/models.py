@@ -337,13 +337,11 @@ class PageMarkerAnalysis:
     rejection_diagnostics: tuple[str, ...] = ()
 
 
-# Function words that empirically never appear in captured page header/footer
-# text. Derived by probing all 2,202 ASCII fixtures: corpus of captured
-# REPEATING_HEADER/REPEATING_FOOTER marker text versus sampled body lines
-# (footer document-frequency == 0, body document-frequency >= 25%). Words that
-# legitimately occur in footer titles ("the", "of", "for", "to", "no",
-# "which", "during", "must") are deliberately excluded. Used to reject
-# prose-bearing lookalike tables (footnote tables, comparison tables).
+# Function words that never appear in captured page header/footer text. Derived
+# by probing the ASCII fixtures: footer document-frequency == 0, body
+# document-frequency high. Words that legitimately occur in footer titles ("the",
+# "of", "for", "to", "no", "which", "during", "must") are deliberately excluded.
+# Used to reject prose-bearing lookalike tables (footnote, comparison).
 PROSE_GUARD_STOP_WORDS = frozenset(
     [
         "about",
@@ -393,14 +391,12 @@ PROSE_GUARD_STOP_WORDS = frozenset(
 )
 
 # HTML page-hint vocabulary: a filing generator names its own page furniture in
-# `class`/`id`/CSS vocabulary, and the same generator reuses that name on every
-# page. Entries are compared after lowercasing, dropping every non-alphanumeric
-# character, and replacing digit runs with `#`, so `page_1`, `page_2`, and
-# `page-break` collapse to one alias each (`page#`, `pagebreak`) without
-# per-character fuzzy matching. Roles: `break`, `number`, `header`, `footer`,
-# `container`. The `break` subset is the one that substitutes a page-split
-# sentinel during projection, and lives in
-# :data:`edgar_sec.engine.document.html.breaks.PAGE_BREAK_HINT_TOKENS`.
+# `class`/`id`/CSS vocabulary and reuses that name on every page. Entries are
+# compared after lowercasing, dropping every non-alphanumeric character, and
+# replacing digit runs with `#`, so `page_1`, `page_2`, and `page-break` collapse
+# to one alias each (`page#`, `pagebreak`) without per-character fuzzy matching.
+# Roles: `break`, `number`, `header`, `footer`, `container`. The `break` subset is
+# the one that substitutes a page-split sentinel during projection.
 PAGE_HINT_ROLES: dict[str, tuple[str, ...]] = {
     "pagebreak": ("break",),
     "ctpagebreak": ("break",),

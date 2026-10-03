@@ -1,26 +1,23 @@
 """HTTP surface for the dataset viewer.
 
-Read-only API endpoints over one artifacts root. Three properties hold
-across all of them:
+Read-only API endpoints over one artifacts root. Three properties hold across
+all of them:
 
 **The client never names a path.** A request carries an opaque dataset id; the
 server resolves it through :func:`apps.viewer.model.artifact_path`, which refuses
-anything outside the artifacts root. The browser cannot ask for a file by name
-even if it wanted to.
+anything outside the artifacts root. The browser cannot ask for a file by name.
 
-**The client never names a column or a SQL path** for its own queries either.
-Column names are checked against the schema DuckDB reported, and the console's
-own relation is bound server-side.
+**The client never names a column or a SQL path** either. Column names are checked
+against the schema DuckDB reported, and the console's own relation is bound
+server-side.
 
-**A listing is a listing, not a promise.** Each entry carries a ``revision``
-token, and the browser treats a cached payload as valid only while its revision
-matches. A published snapshot's revision is a digest of its manifest, so it
-cannot miss a change the way a filesystem timestamp can.
+**A listing is a listing, not a promise.** Each entry carries a ``revision`` token
+the browser checks before reusing a cached payload. A published snapshot's revision
+is a digest of its manifest, so it cannot miss a change the way a filesystem
+timestamp can.
 
-Discovery re-runs per request rather than being cached. That is deliberate: the
-whole point of the revision token is that the listing is the invalidation
-source, and a cached listing would defeat it. Stat-only discovery over a
-published tree is cheap, and correctness beats a micro-optimization here.
+Discovery re-runs per request rather than being cached, because the revision token
+is the invalidation source and a cached listing would defeat it.
 """
 
 from __future__ import annotations

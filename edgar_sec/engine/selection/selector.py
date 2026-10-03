@@ -1,29 +1,22 @@
 """Quota selection over a feature snapshot.
 
-The selector fills a declared quota profile in a fixed order of decreasing
-authority, and that order is the whole design:
+Quota profile fill order, in decreasing authority — the order is the design:
 
-* **Seed filers** are mandatory. A named anchor tenant appears in the output
-  regardless of what any quota says.
-* **Composite strata** are conjunctions, so they are the hardest to satisfy and
-  are attempted before single-dimension floors.
-* **Single-dimension floors** are chased by relative deficit, so the dimension
-  that is proportionally furthest from its floor is fed first.
+* **Seed filers** are mandatory, whatever any quota says.
+* **Composite strata** are conjunctions, so they precede single-dimension floors.
+* **Single-dimension floors** are chased by relative deficit, feeding the
+  dimension proportionally furthest from its floor first.
 * **Form-by-era allocation** distributes the remaining quota across those cells.
 * **Weighted pool filling** takes the remaining candidates, subject to caps.
 * **The reserve** is filled last, from candidates not in the active set.
 
-The property that matters most is the *family cap*. A naive sample of filings
-is dominated by large corporate groups, because a group with 400 subsidiaries
-files 400 documents. Every candidate is therefore keyed by a six-part
-classification signature -- ``(company_family, form, era, sic_code, entity_type,
-lifecycle_class)`` -- and at most ``max_per_company_classification`` candidates
-may share one signature. Because every subsidiary of a group resolves to one
-``company_family`` (see :mod:`edgar_sec.engine.company_family`), the cap
-suppresses the group's subsidiaries without special-casing them.
-
-Seed filers bypass the family cap because they are mandatory; dropping an anchor
-would violate the policy more than allowing slight over-representation.
+The property that matters most is the *family cap*. A naive sample is dominated
+by large corporate groups, because a group with 400 subsidiaries files 400
+documents. Every candidate is keyed by a six-part classification signature and at
+most ``max_per_company_classification`` may share one; because every subsidiary
+resolves to one ``company_family``, the cap suppresses a group's subsidiaries
+without special-casing them. Seed filers bypass it because they are mandatory:
+dropping an anchor would violate the policy more than over-representation.
 """
 
 from __future__ import annotations
@@ -321,24 +314,22 @@ class DeficitSelector:
     ) -> dict[str, Any]:
         """Fill the remaining budget evenly across nonempty form-by-era cells.
 
-        The weighted fill after this phase is proportional: whichever form is
-        largest takes the leftover budget, which on a real corpus means the
-        abundant form wins every time and the rare ones are represented only as
-        far as a declared floor pushed them. Allocating across cells first makes
-        the default sample balanced, and a floor stays a *raise* above that
-        balance rather than the only thing producing it.
+        The weighted fill after this phase is proportional, so the largest form would
+        take the leftover budget and a rare one would be represented only as far
+        as a declared floor pushed it. Allocating across cells first makes the
+        default sample balanced, and a floor stays a *raise* above that balance
+        rather than the only thing producing it.
 
-        Availability is read once per run. Re-deriving it per cell would cost one
-        aggregate scan per cell, and the whole point of the phase is that its
-        result is reported: a cell that could not fill its share is named, not
-        quietly replaced.
+        Availability is read once per run; re-deriving it per cell would cost one
+        aggregate scan per cell. The phase's result is reported, so a cell that
+        could not fill its share is named rather than quietly replaced.
 
-        The global cap is shared with the earlier phases, so this one only ever
-        draws from what they left. Allocation can therefore underfill when seeds
-        or floors have already claimed the budget, and says so. It also stops
-        when a round is refused in full: a cell whose every candidate is blocked
-        by the family cap will be refused identically on every later round, and
-        the honest outcome is a named shortfall rather than a spin.
+        The global cap is shared with the earlier phases, so this one draws only
+        from what they left, and allocation can underfill when seeds or floors
+        already claimed the budget. It stops when a round is refused in full: a
+        cell whose every candidate is blocked by the family cap is refused
+        identically on every later round, so the honest outcome is a named
+        shortfall rather than a spin.
         """
         availability = source.cell_availability()
         budget = max(0, target_units - len(selected_keys))
@@ -346,11 +337,11 @@ class DeficitSelector:
             return {"budget": budget, "unallocated": budget, "rounds": 0, "cells": []}
 
         # What the earlier phases already hold counts toward its cell, so a cell
-        # credited by a floor is not then handed a second full share. Keyed on
-        # the raw column values rather than the normalized dimension values:
-        # ``cell_availability`` reports raw strings and ``pool_for_cell`` binds
-        # one straight back into the query, so normalizing on only one side
-        # would silently credit nothing.
+        # credited by a floor is not then handed a second full share. Keyed on the
+        # raw column values rather than the normalized dimension values:
+        # ``cell_availability`` reports raw strings and ``pool_for_cell`` binds one
+        # straight back into the query, so normalizing on only one side would
+        # silently credit nothing.
         already: dict[tuple[str, str], int] = {}
         for candidate in selected_candidates:
             cell_key = (str(candidate.get("form")), str(candidate.get("era")))

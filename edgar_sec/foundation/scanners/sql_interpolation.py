@@ -1,28 +1,21 @@
 """Policy scanner banning SQL built from unescaped values at a SQL sink.
 
-A statement assembled with an f-string treats every interpolated value as
-trusted. That is safe only for a value that went through an escaping helper on
-its way in. A filesystem path, a manifest field, or anything a caller supplied
-is not trusted, and a single quote in one of those either breaks the statement or
-ends it early.
+A statement assembled with an f-string treats every interpolated value as trusted.
+That is safe only for a value that went through an escaping helper on its way in.
+A path, a manifest field, or anything a caller supplied is not trusted, and one
+quote in one of those either breaks the statement or ends it early.
 
-This repository had five independent escaping helpers and nothing that checked
-any of them, so a module could concatenate a raw path into a statement and pass
-the gate. The defect this scanner exists to prevent is concrete: document
-snapshot assembly interpolated its chunk paths with no escaping at all, and no
-test covered a quoted path because no rule required one.
-
-The rule is deliberately narrow, in the ``artifact-paths`` idiom:
+The rule is deliberately narrow:
 
 * it inspects the **argument of a SQL sink**, so composing a statement into a
-  local and passing that local is unaffected — which is the spelling this
-  codebase already uses for every large query;
-* a value is accepted when it reached the f-string through an **escaping
-  helper**, through a constant, or through a local bound to one of those, so a
-  correctly escaped statement is not reported;
-* anything else interpolated at the sink is a finding, which is what makes a new
-  query site a decision rather than an accident;
-* tests are exempt, because a test that exercises a query builder must hand that
+  local and passing that local is unaffected — the spelling this codebase already
+  uses for every large query;
+* a value is accepted when it reached the f-string through an **escaping helper**,
+  a constant, or a local bound to one of those, so a correctly escaped statement
+  is not reported;
+* anything else interpolated at the sink is a finding, which makes a new query
+  site a decision rather than an accident;
+* tests are exempt, since a test that exercises a query builder must hand that
   builder's output to a connection.
 
 A bound parameter (``con.execute(sql, [value])``) is never a finding: that is the
@@ -63,19 +56,9 @@ _NEUTRAL_CALLS = frozenset({"join", "int", "float", "bool", "len", "str", "sorte
 
 #: Modules declared to compose SQL at a query sink, each audited individually.
 #: An entry is a claim that every value reaching the statement there is either a
-#: literal the module owns or one routed through an escaping helper:
-#:
-#: * ``duckdb.py`` — the dialect owner. It *defines* the escaping helpers, so it
-#:   has to assemble the COPY envelope itself; its ``query`` argument is a
-#:   composed statement by contract and ``compression`` is a format keyword.
-#: * ``source.py`` — temp-table names come from a closed constant set, and every
-#:   interpolated column is checked against ``KNOWN_DIMENSIONS`` first.
-#: * ``inventory.py`` — dimension names are checked against the policy
-#:   vocabulary, and its relation is built through ``sql_literal``.
-#: * ``planner.py`` — composes predicate fragments from the escaping helpers and
-#:   names the temp views it creates two lines earlier.
-#: * ``fixture_store.py`` — a SQLite adapter that interpolates only its own
-#:   table-name and column-name constants.
+#: literal the module owns or one routed through an escaping helper: ``duckdb.py``
+#: *defines* those helpers and so assembles the COPY envelope itself, and the
+#: others interpolate only a closed constant set.
 #:
 #: The rule's strength is at the boundary: a module that composes SQL and is not
 #: on this list is reported. It does not police the interior of a declared

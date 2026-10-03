@@ -2,26 +2,23 @@
 
 A *firm* marker is a shape that stands alone on its line: an SGML `<PAGE>` tag,
 a `page N of M` line, a bracketed boundary token. Those are recognized by
-pattern alone and are removed without further corroboration. Everything else is
-only a *candidate* — a short line whose shape could be a page label. A
-candidate is admitted to a removal decision only once enough other candidates
-of the same shape, in the same namespace, at a consistent distance and
-alignment, form a validated run. This module owns that admission.
+pattern alone and removed without corroboration. Everything else is only a
+*candidate*, admitted to a removal decision once enough other candidates of the
+same shape, in the same namespace, at a consistent distance and alignment, form a
+validated run. This module owns that admission.
 
 Three kinds of evidence keep the candidate set honest, and all three come from
-the line's geometry rather than from its content:
+the line's geometry rather than its content:
 
 - **Numeric data shape.** A financial row that happens to end in a number is
-  refused outright, because a run of such rows is a table, not a page
-  sequence.
-- **Prose shape.** A long line carrying several function words is a sentence,
-  not a label, and a sentence that repeats is content.
+  refused outright: a run of such rows is a table, not a page sequence.
+- **Prose shape.** A long line carrying several function words is a sentence, not
+  a label, and a sentence that repeats is content.
 - **Cluster density.** Even individually plausible candidates are refused when
-  they are spaced as a dense burst, which is what a table column looks like.
+  spaced as a dense burst, which is what a table column looks like.
 
-The probe is bounded. A large document is not scanned end to end looking for
-labels: a repeated page pattern is visible near the front and the tail, and a
-stride derived from the front run is enough to confirm it continues.
+The probe is bounded: a repeated page pattern is visible near the front and the
+tail, and a stride derived from the front run confirms it continues.
 """
 
 from __future__ import annotations

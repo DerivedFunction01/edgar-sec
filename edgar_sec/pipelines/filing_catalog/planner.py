@@ -3,7 +3,7 @@
 Deterministic planning is a fast, zero-heuristic slice of a materialized
 catalog. It supports exactly four filters -- ``forms``,
 ``document_suffixes``, ``dates``, and ``limit`` -- and refuses to reason about
-eras or cohort balance, which belong to the Stage B selection policy.
+eras or cohort balance, which belong to the policy-scope selection policy.
 
 ``dates`` is a *selection*, not a year list: it is the union of absolute calendar
 intervals and recurring calendar periods spelled in the grammar
@@ -15,7 +15,7 @@ is the contract, not an accident of the SQL.
 Form filters are exact allowlists: a form is selected only when it is named,
 so an amendment variant such as ``10-K/A`` is selected by listing it
 explicitly. Policy-specific parameters (selection policies, seed CIKs) are
-isolated in the Stage B policy planner.
+isolated in the policy-scope planner.
 """
 
 from __future__ import annotations
@@ -108,18 +108,17 @@ def _validate_forms(forms: tuple[str, ...]) -> tuple[str, ...]:
 
 
 def _locator_groups_query(source_sql: str) -> str:
-    """Stage A locator projection: exactly one row per document locator.
+    """Deterministic-scope locator projection: one row per document locator.
 
-    This is the narrow eight-column shape. Stage B widens it with the feature
-    dimensions (form_family, era, size_band, ...); see phase_2.md 3.4. A
-    consumer must not assume the wider set in Stage A.
+    This is the narrow shape; the feature dimensions (form_family, era,
+    size_band, ...) are added only by the policy-scope projection. A consumer must
+    not assume the wider set in the deterministic scope.
 
-    Grouping is on ``document_locator_key`` alone, with the representative
-    columns chosen by ``arg_min`` over a total order. v1 selected ``DISTINCT``
-    over *all* columns including ``source_cik``, so two co-filers sharing one
-    locator produced two rows and ``unique_locators_count`` over-counted -- which
-    is precisely the multiplicity Stage B selection must not inherit. The
-    ordering key is total, so the representative is deterministic.
+    Grouping is on ``document_locator_key`` alone, so two co-filers sharing one
+    locator collapse to a single row and ``unique_locators_count`` counts
+    documents rather than claims -- the multiplicity quota selection must not
+    inherit. The representative columns are chosen by ``arg_min`` over a total
+    ordering key, which makes the representative deterministic.
 
     ``source_sql`` is any relation expression. A plan that matched nothing still
     needs a schema-correct zero-row locator file, otherwise its own bundle fails
@@ -248,10 +247,10 @@ def plan(
                 f"{date_projection_sql('report_date')} FROM {view}"
             )
 
-        # The form, suffix, and date filters are part of which partitions
-        # exist at all, so they are applied when discovering forms. v1 listed
-        # every form present in the catalog and then wrote empty partitions for
-        # the ones the filters removed.
+        # The form, suffix, and date filters decide which partitions exist at
+        # all, so form discovery runs the same predicates the partition writes
+        # do. A form the filters remove is never discovered, so no empty
+        # partition is published for it.
         shared_where: list[str] = []
         if requested_forms:
             form_list = ", ".join(sql_literal(form) for form in requested_forms)
@@ -357,9 +356,9 @@ def plan(
 
 
 def _policy_locator_groups_query(locator_source: str) -> str:
-    """Stage B locator projection: the 18-column policy schema.
+    """Policy-scope locator projection: the policy locator schema.
 
-    Same one-row-per-document guarantee as the Stage A variant, widened with the
+    Same one-row-per-document guarantee as the deterministic variant, widened with the
     stratification dimensions. A consumer that audits a published sample --
     "is this actually era-balanced, or is it all one SIC band?" -- needs those
     values in the plan itself, not only in the transient feature snapshot.
@@ -492,7 +491,7 @@ def plan_policy(
     """Publish one immutable policy-driven target-plan bundle.
 
     The scope counterpart to :func:`plan`. Where deterministic planning slices a
-    catalog on four filters, this runs the Stage B selection engine against a
+    catalog, this runs the policy-scope selection engine against a
     declared quota profile and publishes the result: quota-balanced locators, the
     18-column locator projection, a reserve pool, and the policy that produced
     it, all recorded in ``plan.json``.

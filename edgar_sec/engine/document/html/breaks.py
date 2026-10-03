@@ -127,7 +127,9 @@ def render_html_to_break_text(html: str) -> NormalizedHtmlText:
     through unchanged.
 
     The result is the frame page analysis reads. It is not yet the published
-    text: page-marker policy in slice 4 decides what happens to each marker.
+    text: what happens to each marker is decided afterwards, by the declared
+    page-marker policy applied in
+    ``edgar_sec.engine.document.page_markers.policy.apply_fast_html_page_policy``.
     """
     if not html:
         return NormalizedHtmlText("", ())

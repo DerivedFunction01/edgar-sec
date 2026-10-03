@@ -20,7 +20,7 @@ and `max_per_company_classification` controls its cap.
 | `source.py` | Candidate reads from published snapshots. |
 | `selector.py` | Quota selection and coverage report. |
 | `inventory.py` | Advisory quota-feasibility statistics. |
-| `predicates.py` | The shared suffix and date predicate compilers, consumed by this package and by Stage A planning. |
+| `predicates.py` | The shared suffix and date predicate compilers, consumed by this package and by deterministic-scope planning. |
 
 ## Contracts
 

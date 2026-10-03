@@ -1,32 +1,23 @@
 """Parent-plan validation and immutable target-plan expansion.
 
 Expansion scales a published policy plan from ``N`` to ``M > N`` locators
-without discarding anything the parent already selected. The invariant is
-strict: **the child contains 100% of the parent's locators.** A scale-up that
-quietly resamples is worse than no scale-up at all, because a downstream
-acquisition would skip documents the parent plan had already committed to and
-the gap would only surface as missing documents in the store.
+without discarding anything the parent selected. The invariant is strict:
+**the child contains 100% of the parent's locators** -- a quiet resample is
+worse than no scale-up, because a downstream acquisition would skip documents
+the parent committed to and the gap would surface only as missing documents.
 
-Two things make that guarantee hold rather than merely be intended:
+Two things make that hold: the child's selection runs with the parent's keys as
+``parent_active_keys``, so they are in the exclusion set before any candidate
+pool is drawn; and compatibility is checked before selection runs, so a
+mismatched catalog, corpus, form set, or seed set fails immediately.
 
-* The child's selection runs with the parent's keys as ``parent_active_keys``,
-  so the parent's locators are in the exclusion set before any candidate pool
-  is drawn. No pool query can offer one of them again.
-* The child's own compatibility with the parent is checked *before* any
-  selection runs, so a mismatched catalog, corpus, form set, or seed set fails
-  immediately instead of after an expensive build.
+Because expansion is handed a directory rather than resolving one, the parent
+must be a plan of the schema this build publishes, carrying every field a child
+compares against, with a fingerprint that still matches its own locators. An
+older-schema bundle is refused and must be republished, not adapted.
 
-Expansion is strict about *which* parent it will accept, because it is handed a
-directory rather than resolving one: the parent must be a plan of the schema
-this build publishes, carrying every field a child compares against, with a
-selection fingerprint that still matches the locators beside it. A bundle from
-an older schema is refused and must be republished, not adapted. Without that,
-"the child contains 100% of the parent's locators" would be a claim about a
-parent whose locators were never verified.
-
-The lineage record lands in ``expansion_metadata.json`` beside the plan, and
-the child records ``parent_plan_id`` and ``parent_plan_fingerprint`` in
-``plan.json``, so a plan's provenance is readable from the plan itself.
+Lineage lands in ``expansion_metadata.json`` beside the plan; the child records
+``parent_plan_id`` and ``parent_plan_fingerprint`` in ``plan.json``.
 """
 
 from __future__ import annotations

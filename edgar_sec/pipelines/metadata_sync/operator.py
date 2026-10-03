@@ -10,14 +10,8 @@ Discovery also keeps every identifier derived rather than typed. A plan comes
 from a listing, the augmentation's published snapshot id defaults to its derived
 delta plan id, and the current-snapshot pointer is moved by an explicit operation
 over an already-published manifest. The one identifier a menu asks for is the
-target-plan path, which is a cross-pipeline handoff.
-
-Discovery also keeps every identifier derived rather than typed. A plan comes
-from a listing, the augmentation's published snapshot id defaults to its derived
-delta plan id, and the current-snapshot pointer is moved by an explicit operation
-over an already-published manifest. The one identifier a menu still asks for is
-the Phase 2.5 target-plan path, which is deliberately a cross-pipeline handoff
-rather than a Phase 1 discovery surface.
+target-plan path, which is deliberately a cross-pipeline handoff rather than a
+discovery surface.
 
 State is passed in rather than held in a module global so the actions close over
 it and a test can drive the whole wizard without a terminal or a leaked session.

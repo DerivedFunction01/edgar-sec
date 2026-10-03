@@ -57,7 +57,7 @@ def test_target_schema_types() -> None:
 
 
 def test_company_family_is_not_a_profile_column() -> None:
-    """Decision D2: clustering is Stage B, so no v1 README claim is ported."""
+    """Clustering is a selection-stage feature, so the profile omits company_family."""
     assert "company_family" not in PROFILE_SCHEMA.names
     assert "company_family" not in PROFILE_COLUMNS
 
@@ -74,7 +74,7 @@ def test_path_source_constants() -> None:
 
 
 def test_locator_base_projection_is_the_eight_column_stage_a_shape() -> None:
-    """Stage A locator_groups is narrow; Stage B widens it (phase_2.md 3.4)."""
+    """Deterministic locator_groups is narrow; policy scope widens it."""
     assert len(LOCATOR_BASE_COLUMNS) == 8
     assert LOCATOR_BASE_COLUMNS[0] == "document_locator_key"
     assert "form_family" not in LOCATOR_BASE_COLUMNS

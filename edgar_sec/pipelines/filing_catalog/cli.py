@@ -10,7 +10,7 @@ work, so the resumable-chunk lifecycle of Phase 1 has no analogue here.
 
 ``plan --scope deterministic`` accepts exactly four filters, one of which is a
 date selection over ``report_date``; eras and cohort balance still belong to the
-Stage B selection engine. ``--scope policy`` takes the quota profile instead, and
+policy-scope selection engine. ``--scope policy`` takes the quota profile instead, and
 it is the only scope that reasons about balance.
 """
 

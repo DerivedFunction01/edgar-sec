@@ -58,27 +58,20 @@ def run_interactive_menu(
 ) -> int:
     """Run an interactive action loop until user selects exit.
 
-    A blank answer re-renders the menu rather than running the first action.
-    Defaulting it to an action means a stray Return silently starts whichever
-    action happens to be listed first, which for a mutating command is not a
-    harmless default.
+    A blank answer re-renders the menu rather than running the first action:
+    defaulting it would let a stray Return silently start whichever action is
+    listed first, which is not harmless for a mutating command.
 
-    Any exception from an action is reported and the loop continues. A terminal
-    wizard that dies on an unexpected error -- an ``AttributeError`` from a
-    settings field, say -- loses the session the operator was holding. The
-    message is printed with its type because a broad handler that hides the
-    class of failure is harder to diagnose than the failure.
+    Any exception from an action is reported with its type and the loop
+    continues, because a wizard that dies on an unexpected error loses the
+    session the operator was holding, and a hidden failure class is harder to
+    diagnose than the failure.
 
-    ``interrupted_message`` lets a pipeline state what survives an interrupt,
-    which is phase knowledge: this module cannot know that some workflows
-    preserve completed work and others do not.
-
-    ``before_menu`` runs once per render, before the menu is printed, and may
-    return a line to display above it. It is how a pipeline shows the state it
-    resolved for this session -- the working plan, the active snapshot -- so the
-    operator can see what an action is about to act on. A failure inside it is
-    reported and the menu is still drawn, because refusing to show the menu would
-    strand the operator with no way back to the surface they started from.
+    ``interrupted_message`` states what survives an interrupt, which is phase
+    knowledge this module cannot have. ``before_menu`` runs once per render and
+    may return a header line showing the state a pipeline resolved for this
+    session; a failure inside it is reported and the menu is still drawn, so a
+    broken header cannot strand the operator with no way back.
     """
     action_map = {a.key.lower(): a for a in actions}
 
@@ -126,11 +119,8 @@ def operator_entrypoint(
 ) -> int:
     """Dispatch a pipeline operator: menu with no arguments, CLI otherwise.
 
-    Every pipeline operator needs this same entrypoint policy, so it is stated
-    once here instead of restated per pipeline. The pipeline supplies its title,
-    its menu, and its CLI entrypoint; nothing else about its behavior is
-    assumed. Kept in this module because it is pure presentation wiring -- it
-    decides which surface to show, never what a command does.
+    The pipeline supplies its title, its menu, and its CLI entrypoint; nothing
+    else about its behavior is assumed.
 
     ``before_menu`` is only consulted on the interactive path. A command
     dispatched with arguments must not resolve or print session state, because

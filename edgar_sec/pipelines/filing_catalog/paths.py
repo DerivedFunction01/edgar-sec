@@ -1,9 +1,7 @@
 """Directory layout for the filing-catalog pipeline.
 
-The layout composes from ``ProjectPaths.artifacts_root`` rather than from the
-v1 ``manifests_root``/``transient_root`` accessors, which do not exist in v2.
-It mirrors ``pipelines.metadata_sync.paths``, which is the fully developed
-reference for this shape:
+The layout composes from ``ProjectPaths.artifacts_root`` and mirrors
+``pipelines.metadata_sync.paths``:
 
     artifacts_root/filing_catalog/snapshots/<catalog_id>/   published, immutable
     artifacts_root/filing_catalog/snapshots/current/pointer.json
@@ -12,30 +10,16 @@ reference for this shape:
     artifacts_root/transient/filing_catalog/<catalog_id>/   staging, never published
 
 Snapshots and plans are siblings under the pipeline root, not one flat
-namespace. An earlier revision put both directly under ``filing_catalog/`` and
-justified it by arguing that a catalog id and a plan id are both 24-character
-digests and could only collide through a hash collision. That reasoning was
-sound but it optimised for an argument rather than for legibility: a reader
-listing published state had no way to tell a snapshot from a plan by name, and
-the published tree did not look like the tree every other pipeline publishes.
-Matching ``metadata_sync`` costs nothing — the ids were always distinct — and
-makes the artifact root readable at a glance.
+namespace, so a reader listing published state can tell a snapshot from a plan by
+name. The ``current`` pointer lives *inside* ``snapshots/``: its siblings are
+exactly the snapshot directories it can name.
 
-The ``current`` pointer lives *inside* ``snapshots/``, as it does for Phase 1 and
-Phase 2.5. One published root, one pointer, and the pointer's siblings are exactly
-the snapshot directories it can name.
-
-``snapshots/`` also holds the Stage B *feature* snapshot directories, written by
-``FeatureSnapshotBuilder``, which appends its own ``snapshots/<digest>`` segment
-to the root it is given. They are told apart by manifest, not by name: a catalog
-directory carries ``snapshot.manifest.json`` and a feature directory carries
-``feature_snapshot.json``, and ``discover_catalogs`` requires the former. Their
-ids cannot collide either — a catalog id is 24 hex characters and a feature
-digest is 32. This is a deliberate gap rather than an oversight; see the
-deliberate-gaps section of this package's README.
-
-No ``.artifacts`` literal appears here; the root always arrives from
-``resolve_paths()``.
+``snapshots/`` also holds the policy-scope *feature* snapshot directories, which
+``FeatureSnapshotBuilder`` appends as their own ``snapshots/<digest>`` segment to
+the root it is given. They are told apart by manifest, not by name: a catalog
+directory carries ``snapshot.manifest.json``, a feature directory
+``feature_snapshot.json``, and ``discover_catalogs`` requires the former. The
+shared parent is a deliberate gap; see this package's README.
 """
 
 from __future__ import annotations
@@ -88,7 +72,7 @@ REQUIRED_PLAN_FILES = (
 )
 
 # Identifiers are interpolated into published directory names, so they are
-# restricted to characters that need no escaping. Mirrors v1's ``_safe``.
+# restricted to characters that need no escaping.
 _SAFE_ID_CHARS = set(
     "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_.-"
 )
@@ -180,7 +164,7 @@ class FilingCatalogPaths:
         return self.plan_dir(plan_id) / PLAN_TARGETS_DIR_NAME
 
     def expansion_metadata(self, plan_id: str) -> Path:
-        """Parent/child lineage record written by Stage B expansion."""
+        """Parent/child lineage record written by policy-scope expansion."""
         return self.plan_dir(plan_id) / EXPANSION_METADATA_NAME
 
     def plan_seed_filers(self, plan_id: str) -> Path:

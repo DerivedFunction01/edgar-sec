@@ -5,9 +5,9 @@ The catalog is a pure projection of the Phase 1 ``submission_metadata`` dataset:
 types, so a Phase 1 schema change is detected here at import time instead of
 surfacing as a silent column drift at materialization time.
 
-``company_family`` is deliberately absent. Clustering is a Stage B selection
-feature (see ``roadmap/refactor_v2/phase_2.md`` decision D2); the v1 README
-claimed this column existed, but no v1 code path ever wrote it.
+``company_family`` is deliberately not a catalog profile column. Clustering is
+a selection-stage feature: it applies when documents are chosen, and is not a
+field the published profile carries.
 """
 
 from __future__ import annotations
@@ -35,8 +35,8 @@ PATH_SOURCE_BUNDLE = "submission_bundle"
 SCOPE_DETERMINISTIC = "deterministic"
 SCOPE_POLICY = "policy"
 
-# The 22 registrant-level columns borrowed from Phase 1, in projection order,
-# followed by the catalog-owned profile version column.
+# The registrant-level columns borrowed from the submissions schema, in
+# projection order, followed by the catalog-owned profile version column.
 PROFILE_COLUMNS = (
     "cik",
     "identity",
@@ -106,8 +106,8 @@ TARGET_SCHEMA = pa.schema(
     ]
 )
 
-# Stage A emits the narrow locator projection. Stage B widens this with the
-# feature dimensions (form_family, era, size_band, ...); see phase_2.md 3.4.
+# Deterministic scope emits the narrow locator projection. Policy scope widens it with the
+# feature dimensions declared in LOCATOR_POLICY_FEATURES.
 LOCATOR_BASE_COLUMNS = (
     "document_locator_key",
     "form",
@@ -119,9 +119,9 @@ LOCATOR_BASE_COLUMNS = (
     "document_path_source",
 )
 
-# The Stage B (policy) widening: the same eight identity columns plus the ten
-# stratification dimensions a selection can be audited against. Declared here,
-# in the order the published file uses, so the writer and any consumer share
+# The policy-scope widening: the locator identity columns plus the stratification
+# dimensions a selection can be audited against. Declared here, in the order the
+# published file uses, so the writer and any consumer share
 # one ordering rather than each keeping a copy of the list.
 LOCATOR_POLICY_FEATURES = (
     "form_family",

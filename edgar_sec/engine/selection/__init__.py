@@ -1,6 +1,6 @@
 """Stratified selection engine: policy, features, candidate access, deficit fill.
 
-Selection is the Stage B half of the filing-catalog pipeline. It answers a
+Selection is the policy-scope half of the filing-catalog pipeline. It answers a
 question deterministic planning cannot: not "which rows match these four
 filters" but "which rows best fill a declared quota profile, without letting
 one corporate family or one form crowd out the rest".

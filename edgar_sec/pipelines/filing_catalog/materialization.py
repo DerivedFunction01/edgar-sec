@@ -1,20 +1,20 @@
 """DuckDB SQL for filing-catalog materialization.
 
-The derivation rules encoded here are the executable form of the section 3.3
-table in ``roadmap/refactor_v2/phase_2.md`` and are the counterpart to the
-Milestone 0 oracle, which transcribes the same rules in plain Python. The two
-must agree; when they diverge, one of them is wrong and the test says which.
+The queries here derive the two published catalog datasets -- filing-target
+occurrences and deduplicated registrant profiles -- from Phase 1 submission
+parts. The expected rows are transcribed independently in plain Python in the
+test suite; the two must agree, and when they diverge one of them is wrong and
+the test says which.
 
-Two deliberate departures from the v1 SQL, both narrowing behaviour:
+Two rules are deliberate, and both narrow behaviour:
 
-* ``trim`` is applied before the primary-document branch. v1 tested
-  ``primary_document != ''``, so a whitespace-only value counted as a real
-  document and produced a literal path of spaces. The Phase 1 engine
-  (``build_archive_url``) already strips and treats such a value as missing,
-  so v1 could emit a ``document_path_source`` that contradicted the ``archive_url``
-  on the same row. v2 aligns the SQL with the engine.
-* File paths are emitted as escaped SQL literals rather than interpolated
-  raw, so a path containing a quote cannot terminate the string.
+* ``trim`` runs before the primary-document branch, so a whitespace-only value
+  counts as a missing document. The Phase 1 engine (``build_archive_url``)
+  already strips and treats such a value as missing, and anything else would let
+  a row publish a ``document_path_source`` contradicting the ``archive_url``
+  beside it.
+* File paths are emitted as escaped SQL literals rather than interpolated raw,
+  so a path containing a quote cannot terminate the string.
 """
 
 from __future__ import annotations

@@ -1,7 +1,8 @@
 """Unit tests for filing-catalog materialization.
 
-The oracle assertions here compare DuckDB output against the Milestone 0 CSV,
-which was derived by an independent Python transcription of the same rules.
+The row-level assertions here compare DuckDB output against the committed
+``expected_filing_targets.csv`` golden fixture, a transcription of the same
+derivation rules in plain Python.
 """
 
 from __future__ import annotations
@@ -361,9 +362,9 @@ def test_resolve_source_without_arguments_reports_no_snapshot(
 # --- published artifacts --------------------------------------------------
 
 
-# This test intentionally spells the published names out as literals. It is the
-# layout contract from phase_2.md 4.4, so a rename must fail here rather than
-# being silently absorbed by a constant that both sides happen to share.
+# This test intentionally spells the published names out as literals: the layout
+# is the contract, so a rename must fail here rather than being silently absorbed
+# by a constant that both sides happen to share.
 def test_snapshot_layout_matches_the_documented_contract(
     catalog_snapshot: tuple[dict[str, Any], Path],
 ) -> None:

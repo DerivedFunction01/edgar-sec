@@ -61,9 +61,8 @@ def plan_identity(payload: dict[str, Any]) -> str:
 def plan_locator_keys(plan_dir: str | Path) -> list[str]:
     """Read a published plan's selected locator keys, in file order.
 
-    An in-memory DuckDB connection is used rather than a database file beside
-    the plan: v1 wrote ``parent_plan_read.duckdb`` into the plan directory and
-    deleted it afterwards, so an interrupted read left stray state inside an
+    The read runs on an in-memory DuckDB connection and writes nothing beside
+    the plan, so an interrupted read cannot leave stray state inside an
     immutable published bundle.
     """
     root = Path(plan_dir).resolve()
@@ -102,11 +101,10 @@ def plan_fingerprint(plan_meta: dict[str, Any], locator_keys: list[str]) -> str:
 def plan_bundle_complete(plan_dir: Path, scope: str = "") -> bool:
     """Report whether a plan bundle holds every required published artifact.
 
-    Completeness is checked against the plan's own recorded counts rather than
-    by asking whether any partition exists. v1 used ``any(glob('form=*/data.parquet'))``,
-    which reports a legitimately empty plan (every filter excluded everything) as
-    incomplete and therefore unreusable. Matching the on-disk partition set
-    against ``plan.json`` also catches a bundle that lost a shard.
+    Completeness is checked by matching the on-disk partition set against the
+    plan's own recorded ``counts`` rather than by asking whether any partition
+    exists, so a legitimately empty plan (every filter excluded everything) is
+    still reusable and a bundle that lost a shard is caught.
 
     A policy plan additionally owns the seed sidecar it was selected against, so
     a bundle missing it cannot reproduce its own selection and is not complete.

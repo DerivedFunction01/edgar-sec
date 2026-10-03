@@ -1,25 +1,21 @@
 """Repeated header/footer classification and the evidence behind it.
 
-A line is page furniture when it recurs at the same distance from a page anchor
-on every page. That is the whole test, and it is deliberately narrow: the
-window around each anchor is bounded, the observations are grouped by side and
-slot so a header and a footer in the same place never compete, and a group is
-only accepted when its local anchor cluster is dense enough or its recurrence
-across the document is persistent enough.
+A line is page furniture when it recurs at the same distance from a page anchor on
+every page. That is the whole test, and it is deliberately narrow: the window
+around each anchor is bounded, observations are grouped by side and slot so a
+header and a footer in the same place never compete, and a group is accepted only
+when its local anchor cluster is dense enough or its recurrence across the
+document persistent enough. Two acceptance tiers exist because a filing has two
+furniture habits: a dense local run is caught by the density test, and a banner
+recurring every few pages with no dense run anywhere by the persistence test.
 
-Two acceptance tiers exist because a filing has two furniture habits. A dense
-local run — a three-line block above every `<PAGE>` — is caught by the density
-test. A banner that recurs on every few pages, with no dense run anywhere, is
-caught by the persistence test instead, and the recurrence across the document
-is then the evidence.
-
-Removal is conservative in three further ways. A *section header* is kept once
-per cohort rather than removed, because a recurring line that changes with the
-section is a heading. A line observed from both sides is claimed by the side
-whose anchor is strictly closer, so a line right after a break is a header and
-a line right before the next label is a footer. And a block is only removed when
-every line in it is individually evidence-backed, so a body line caught between
-two furniture lines keeps the block intact.
+Removal is conservative in three further ways. A *section header* is kept once per
+cohort rather than removed, because a recurring line that changes with the section
+is a heading. A line observed from both sides is claimed by the side whose anchor
+is strictly closer, so a line right after a break is a header and a line right
+before the next label is a footer. And a block is only removed when every line in
+it is individually evidence-backed, so a body line caught between two furniture
+lines keeps the block intact.
 """
 
 from __future__ import annotations
@@ -444,13 +440,12 @@ def analyze_repeating_headers(
                 continue
             observed_groups.append((key, cluster_members, start, end, presence))
 
-    # Document-persistent tier: some filings repeat furniture steadily across
-    # the whole document (a "Table of Contents" header or a company banner
-    # footer on every few pages) without any dense local run. When the same
-    # normalized template recurs on at least PERSISTENT_MIN_ANCHORS anchors,
-    # covers at least PERSISTENT_MIN_PRESENCE of the side's anchors, and is
-    # split into at least PERSISTENT_MIN_CLUSTERS separate clusters, the
-    # recurrence itself is the evidence.
+    # Document-persistent tier: some filings repeat furniture steadily across the
+    # whole document without any dense local run. When the same normalized template
+    # recurs on at least PERSISTENT_MIN_ANCHORS anchors, covers at least
+    # PERSISTENT_MIN_PRESENCE of the side's anchors, and is split into at least
+    # PERSISTENT_MIN_CLUSTERS separate clusters, the recurrence itself is the
+    # evidence.
     accepted_keys = {key for key, *_ in observed_groups}
     side_anchor_counts = {side: len(scan) for side, scan in side_scan.items()}
     for key, members in groups.items():
@@ -520,13 +515,12 @@ def analyze_repeating_headers(
 
     # Recover isolated tagged-table furniture that falls between accepted
     # anchors. A page can be absent from the numeric anchor run while its
-    # repeated footer remains unambiguous (for example pages 59 and 78 in
-    # filings with missing page markers). Once footer templates have passed
-    # the repetition checks above, a compact table whose content consists
-    # entirely of those templates — including at least one banner-like
-    # template — is furniture and safe to remove. Structural table tags and
-    # dash-only separator lines never trigger recovery on their own, so
-    # content tables that merely contain a dashed rule are preserved.
+    # repeated footer remains unambiguous, so once footer templates have passed
+    # the repetition checks above, a compact table whose content consists entirely
+    # of those templates — including at least one banner-like template — is
+    # furniture and safe to remove. Structural table tags and dash-only separator
+    # lines never trigger recovery on their own, so content tables that merely
+    # contain a dashed rule are preserved.
     footer_groups = {
         (key[1], key[2]): index
         for index, (key, *_rest) in enumerate(observed_groups)
@@ -652,13 +646,12 @@ def analyze_repeating_headers(
                 continue
             removable.append(member)
 
-    # An occurrence of the same line can be observed from both sides; claim
-    # it for the side whose anchor is strictly closer to the line (a line
-    # right after a break is a header, a line right before the next label is
-    # a footer). Header groups are encountered first, so ties stay headers.
-    # Virtual boundary anchors measure distance from the document start
-    # (header side) or end (footer side). Lines explicitly retained by a
-    # keep-first group are never removed by the other side's claim.
+    # An occurrence of the same line can be observed from both sides; claim it for
+    # the side whose anchor is strictly closer (a line right after a break is a
+    # header, one right before the next label is a footer). Header groups are
+    # encountered first, so ties stay headers. Virtual boundary anchors measure
+    # distance from the document start (header side) or end (footer side), and
+    # lines retained by a keep-first group are never removed by the other side.
     def _anchor_distance(observation: Observation) -> int:
         if observation.anchor_line is not None:
             return abs(observation.line_index - observation.anchor_line)

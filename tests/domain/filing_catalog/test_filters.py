@@ -1,6 +1,6 @@
 """Unit tests for domain.filing_catalog.filters: shared filter vocabulary.
 
-The vocabulary lives in Layer 1 because deterministic planning and the Stage B
+The vocabulary lives in Layer 1 because deterministic planning and the policy-scope
 selection policy both need it, and the layer graph forbids the lower layer from
 reaching up. These tests pin the normalization that both consumers rely on.
 """
