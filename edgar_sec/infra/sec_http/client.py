@@ -14,7 +14,7 @@ from requests.adapters import HTTPAdapter
 from urllib3.util.retry import Retry
 
 from edgar_sec.foundation.hashing import sha256_bytes
-from edgar_sec.foundation.runtime.settings.paths import DEFAULT_CACHE_JSON_TTL_S
+from edgar_sec.foundation.runtime.settings.paths import DEFAULT_CACHE_TTL_S
 from edgar_sec.foundation.runtime.settings.sec import (
     DEFAULT_MAX_FAILURE_ATTEMPTS,
     DEFAULT_MAX_RETRIES,
@@ -54,7 +54,7 @@ class SecHttpClient:
         retry_policy: RetryPolicy | None = None,
         timeout_s: float = DEFAULT_TIMEOUT_S,
         cache_dir: str | Path | None = None,
-        json_ttl_s: int = DEFAULT_CACHE_JSON_TTL_S,
+        ttl_s: int = DEFAULT_CACHE_TTL_S,
         metrics: HttpMetrics | None = None,
         max_failure_attempts: int = DEFAULT_MAX_FAILURE_ATTEMPTS,
         ignore_failure_history: bool = False,
@@ -72,7 +72,7 @@ class SecHttpClient:
         self.retry_policy = retry_policy or RetryPolicy(max_retries=DEFAULT_MAX_RETRIES)
         self.metrics = metrics or HttpMetrics()
         self.cache_dir = Path(cache_dir).resolve() if cache_dir else None
-        self._cache = make_cache_store(self.cache_dir, json_ttl_s=json_ttl_s)
+        self._cache = make_cache_store(self.cache_dir, ttl_s=ttl_s)
         self.max_failure_attempts = max_failure_attempts
         self.ignore_failure_history = ignore_failure_history
         self.max_response_bytes = max_response_bytes
@@ -96,7 +96,7 @@ class SecHttpClient:
         settings: SecSettings,
         *,
         cache_dir: str | Path | None = None,
-        json_ttl_s: int = DEFAULT_CACHE_JSON_TTL_S,
+        ttl_s: int = DEFAULT_CACHE_TTL_S,
         metrics: HttpMetrics | None = None,
     ) -> SecHttpClient:
         """Construct SecHttpClient from resolved SecSettings."""
@@ -108,7 +108,7 @@ class SecHttpClient:
             retry_policy=retry_policy,
             timeout_s=settings.timeout_s,
             cache_dir=cache_dir,
-            json_ttl_s=json_ttl_s,
+            ttl_s=ttl_s,
             metrics=metrics,
             max_failure_attempts=settings.max_failure_attempts,
         )

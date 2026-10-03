@@ -136,7 +136,7 @@ def _make_http_client() -> Any:
     return SecHttpClient.from_settings(
         settings.sec,
         cache_dir=settings.cache_root,
-        json_ttl_s=settings.json_ttl_s,
+        ttl_s=settings.ttl_s,
     )
 
 

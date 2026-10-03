@@ -11,7 +11,7 @@ FAIL_URL = "https://data.sec.gov/submissions/CIK9999999999.json"
 
 
 def test_cache_miss_then_put_get(tmp_path: Path) -> None:
-    cache = SqlCache(tmp_path, json_ttl_s=3600)
+    cache = SqlCache(tmp_path, ttl_s=3600)
     try:
         assert cache.get(TEST_URL) is None
 
@@ -29,7 +29,7 @@ def test_cache_miss_then_put_get(tmp_path: Path) -> None:
 
 
 def test_failure_ledger_records_and_clears(tmp_path: Path) -> None:
-    cache = SqlCache(tmp_path, json_ttl_s=3600)
+    cache = SqlCache(tmp_path, ttl_s=3600)
     try:
         assert cache.load_failure_entry(FAIL_URL) is None
 

@@ -77,9 +77,9 @@ the accessor.
   `permanent`, and `bad_json`; `http_retry` and `ledger_skip` are counted in
   metrics only.
 - **The cache is zstd-compressed, keyed by URL, with a selective TTL.** Expiry is
-  set only for URLs whose path ends in `.json` and only when `json_ttl_s > 0`;
+  set only for URLs whose path ends in `.json` and only when `ttl_s > 0`;
   every other path never expires. The default TTL is 90 days
-  (`DEFAULT_CACHE_JSON_TTL_S`). The SQLite connection runs in WAL mode with a
+  (`DEFAULT_CACHE_TTL_S`). The SQLite connection runs in WAL mode with a
   busy timeout, which is what makes it safe for concurrent workers. Payload
   compression is the shared codec in `foundation/compression.py`, not a local
   one.

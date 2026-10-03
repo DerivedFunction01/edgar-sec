@@ -143,11 +143,11 @@ def test_cache_configuration_is_forwarded_to_the_http_client(tmp_path: Path) -> 
     client = SubmissionsClient(
         settings=resolve_runtime_settings().sec,
         cache_dir=tmp_path,
-        json_ttl_s=1234,
+        ttl_s=1234,
     )
     assert client.http.cache_dir == tmp_path.resolve()
     assert client.http._cache is not None
-    assert client.http._cache.json_ttl_s == 1234
+    assert client.http._cache.ttl_s == 1234
     assert client.http._cache.db_path == tmp_path.resolve() / "responses.sqlite"
 
 
@@ -161,7 +161,7 @@ def test_a_cached_url_is_served_without_touching_the_transport(tmp_path: Path) -
     http = SecHttpClient(
         user_agent="Cache Probe probe@example.com",
         cache_dir=tmp_path,
-        json_ttl_s=600,
+        ttl_s=600,
         session_factory=Tripwire,
     )
     http._cache.put(

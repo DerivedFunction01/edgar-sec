@@ -217,8 +217,6 @@ def test_from_settings_accepts_the_resolved_registry() -> None:
 def test_from_settings_honors_its_optional_arguments(tmp_path: Path) -> None:
     from edgar_sec.foundation.runtime.settings.sec import SecSettings
 
-    client = SecHttpClient.from_settings(
-        SecSettings(), cache_dir=tmp_path, json_ttl_s=99
-    )
+    client = SecHttpClient.from_settings(SecSettings(), cache_dir=tmp_path, ttl_s=99)
     assert client.cache_dir == tmp_path.resolve()
     assert client.max_response_bytes is None

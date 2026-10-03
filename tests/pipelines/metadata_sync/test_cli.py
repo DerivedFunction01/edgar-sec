@@ -605,6 +605,6 @@ def test_built_client_is_cached_against_the_registered_store() -> None:
 
     assert client.http.cache_dir == Path(settings.cache_root).resolve()
     assert client.http._cache is not None
-    assert client.http._cache.json_ttl_s == settings.json_ttl_s
+    assert client.http._cache.ttl_s == settings.ttl_s
     assert settings.cache_root.name == "caches"
     assert client.http._cache.db_path.name == "responses.sqlite"

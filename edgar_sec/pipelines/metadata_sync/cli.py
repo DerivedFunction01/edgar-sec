@@ -72,7 +72,7 @@ def _build_client() -> SubmissionsClient:
     return SubmissionsClient(
         settings=settings.sec,
         cache_dir=settings.cache_root,
-        json_ttl_s=settings.json_ttl_s,
+        ttl_s=settings.ttl_s,
     )
 
 

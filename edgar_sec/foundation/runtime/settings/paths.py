@@ -15,7 +15,7 @@ if TYPE_CHECKING:
     from . import SettingSpec
 
 DEFAULT_ARTIFACTS_ROOT = Path(".artifacts")
-DEFAULT_CACHE_JSON_TTL_S = 90 * 24 * 60 * 60  # 90 days
+DEFAULT_CACHE_TTL_S = 90 * 24 * 60 * 60  # 90 days
 
 
 def _cache_root(resolved: dict) -> Path:
@@ -44,9 +44,9 @@ def get_paths_specs() -> dict[str, dict[str, SettingSpec]]:
                 machine_local=True,
                 description="HTTP response cache root",
             ),
-            "json_ttl_s": SettingSpec(
+            "ttl_s": SettingSpec(
                 value_type=int,
-                default=DEFAULT_CACHE_JSON_TTL_S,
+                default=DEFAULT_CACHE_TTL_S,
                 env=True,
                 machine_local=True,
                 validate=validate_non_negative_int,
@@ -58,6 +58,6 @@ def get_paths_specs() -> dict[str, dict[str, SettingSpec]]:
 
 __all__ = [
     "DEFAULT_ARTIFACTS_ROOT",
-    "DEFAULT_CACHE_JSON_TTL_S",
+    "DEFAULT_CACHE_TTL_S",
     "get_paths_specs",
 ]

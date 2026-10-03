@@ -14,7 +14,7 @@ from pathlib import Path
 from urllib.parse import urlsplit
 
 from edgar_sec.foundation.compression import compress_payload, decompress_payload
-from edgar_sec.foundation.runtime.settings.paths import DEFAULT_CACHE_JSON_TTL_S
+from edgar_sec.foundation.runtime.settings.paths import DEFAULT_CACHE_TTL_S
 
 
 def _url_sha256(url: str) -> str:
@@ -29,16 +29,16 @@ def _expires_at(
     url: str,
     *,
     now: float | None = None,
-    json_ttl_s: int = DEFAULT_CACHE_JSON_TTL_S,
+    ttl_s: int = DEFAULT_CACHE_TTL_S,
 ) -> str | None:
     """Return default expiry timestamp; static archives never expire."""
     path = urlsplit(url).path.lower()
     if not path.endswith(".json"):
         return None
-    if json_ttl_s <= 0:
+    if ttl_s <= 0:
         return None
     fetched = time.time() if now is None else now
-    return time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime(fetched + json_ttl_s))
+    return time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime(fetched + ttl_s))
 
 
 def _is_expired(expires_at: str | None, *, now: str | None = None) -> bool:
@@ -49,13 +49,13 @@ class SqlCache:
     """SQLite response cache storing zstd-compressed payloads with failure ledger."""
 
     def __init__(
-        self, cache_dir: str | Path, *, json_ttl_s: int = DEFAULT_CACHE_JSON_TTL_S
+        self, cache_dir: str | Path, *, ttl_s: int = DEFAULT_CACHE_TTL_S
     ) -> None:
         self.cache_dir = Path(cache_dir).resolve()
         self.db_path = self.cache_dir / "responses.sqlite"
         self.cache_dir.mkdir(parents=True, exist_ok=True)
         self._lock = threading.Lock()
-        self.json_ttl_s = json_ttl_s
+        self.ttl_s = ttl_s
 
         self.db_path.touch(exist_ok=True)
         self._con = sqlite3.connect(str(self.db_path), check_same_thread=False)
@@ -123,7 +123,7 @@ class SqlCache:
         digest = _url_sha256(url)
         compressed = compress_payload(payload)
         now = _now()
-        expires_at = _expires_at(url, json_ttl_s=self.json_ttl_s)
+        expires_at = _expires_at(url, ttl_s=self.ttl_s)
         with self._lock, self._con:
             self._con.execute(
                 """
@@ -222,11 +222,11 @@ class SqlCache:
 
 
 def make_cache_store(
-    cache_dir: str | Path | None, *, json_ttl_s: int = DEFAULT_CACHE_JSON_TTL_S
+    cache_dir: str | Path | None, *, ttl_s: int = DEFAULT_CACHE_TTL_S
 ) -> SqlCache | None:
     if cache_dir is None:
         return None
-    return SqlCache(cache_dir, json_ttl_s=json_ttl_s)
+    return SqlCache(cache_dir, ttl_s=ttl_s)
 
 
 __all__ = ["SqlCache", "make_cache_store"]

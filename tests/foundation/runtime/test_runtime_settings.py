@@ -134,13 +134,13 @@ def test_cache_settings_are_exposed_on_the_resolved_model() -> None:
     resolved = resolve_settings()
 
     assert settings.cache_root == Path(str(resolved["cache.root"]))
-    assert settings.json_ttl_s == int(resolved["cache.json_ttl_s"])
-    assert settings.json_ttl_s == 90 * 24 * 60 * 60
+    assert settings.ttl_s == int(resolved["cache.ttl_s"])
+    assert settings.ttl_s == 90 * 24 * 60 * 60
 
 
 def test_cache_settings_honor_the_environment(monkeypatch: pytest.MonkeyPatch) -> None:
     monkeypatch.setenv("CACHE_ROOT", "/tmp/alternate-cache")
-    monkeypatch.setenv("CACHE_JSON_TTL_S", "60")
+    monkeypatch.setenv("CACHE_TTL_S", "60")
     resolved = resolve_settings()
     assert str(resolved["cache.root"]) == "/tmp/alternate-cache"
-    assert resolved["cache.json_ttl_s"] == 60
+    assert resolved["cache.ttl_s"] == 60

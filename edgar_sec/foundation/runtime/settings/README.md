@@ -33,7 +33,7 @@ flags. A default marked `secret` is contact identity that must never be publishe
 | `runtime.temp_directory` | `RUNTIME_TEMP_DIRECTORY` | str | `<tempdir>/edgar-sec-spill` | yes | no | no | no | yes |
 | `artifacts.root` | `ARTIFACTS_ROOT` | Path | `.artifacts` | yes | no | no | no | yes |
 | `cache.root` | `CACHE_ROOT` | Path | `<artifacts.root>/caches` | yes | no | no | no | yes |
-| `cache.json_ttl_s` | `CACHE_JSON_TTL_S` | int | `7776000` (90 days) | yes | no | no | no | yes |
+| `cache.ttl_s` | `CACHE_TTL_S` | int | `7776000` (90 days) | yes | no | no | no | yes |
 | `sec.user_agent` | `SEC_USER_AGENT` | str | `"Sample Company Name AdminContact@sample.com"` | yes | no | yes | **yes** | no |
 | `sec.rate_limit_rps` | `SEC_RATE_LIMIT_RPS` | float | `8.0` | yes | no | yes | no | yes |
 | `sec.timeout_s` | `SEC_TIMEOUT_S` | float | `15.0` | yes | no | yes | no | yes |
