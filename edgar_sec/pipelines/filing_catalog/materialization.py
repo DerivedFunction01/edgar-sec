@@ -36,7 +36,7 @@ def build_part_unnest_query(part_path: str) -> str:
     ordered parts and writes one shard per part, which is what keeps peak memory
     proportional to a part rather than to the whole cohort.
 
-    Two properties of the SQL are load-bearing and must not be "simplified":
+    Two properties of the SQL are important and must not be "simplified":
 
     * The unnest is **uncorrelated** — ``UNNEST(filings)`` in the select list of a
       subquery over the file. The correlated spelling

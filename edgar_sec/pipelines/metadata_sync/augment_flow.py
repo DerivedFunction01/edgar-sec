@@ -93,7 +93,7 @@ def run_augment(state: WizardState) -> None:
 
     options.chunk_size = _ask_chunk_size(resolve_runtime_settings().default_chunk_size)
     if not confirm_network(
-        f"Fetching {check.delta.row_count:,} CIKs from SEC. Continue? (y/N) "
+        f"Fetching {check.delta_count:,} CIKs from SEC. Continue? (y/N) "
     ):
         print("cancelled; nothing was fetched")
         return

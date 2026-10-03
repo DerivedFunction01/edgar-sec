@@ -14,7 +14,7 @@ stays pure and both surfaces resolve settings through the same path.
 from __future__ import annotations
 
 import json
-from dataclasses import dataclass, replace
+from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
 
@@ -22,7 +22,7 @@ from edgar_sec.foundation.runtime.partitions import parse_id_selection
 from edgar_sec.foundation.runtime.settings import resolve_runtime_settings
 from edgar_sec.foundation.runtime.settings.runtime import DEFAULT_CHUNK_SIZE
 
-from .manifest import InputManifest, read_cik_manifest
+from .manifest import CompiledCohort, compile_cik_cohort
 from .paths import (
     RECEIPT_FILE_NAME,
     MetadataPaths,
@@ -31,7 +31,7 @@ from .paths import (
 )
 from .planner import Plan
 from .registry import load_registry_roster
-from .roster import Roster, roster_from_manifest
+from .roster import Roster
 
 __all__ = [
     "BundleRunPaths",
@@ -133,9 +133,9 @@ class PlanOptions:
         """Resolve the selected cohort this invocation plans over.
 
         A registry roster is the curated-versus-source projection's own artifact,
-        read through its published manifest. A CSV is parsed and normalized.
-        Both end at the same place, which is what lets every later command treat
-        the two identically.
+        read through its published manifest. A CSV is compiled into a cohort
+        dataset. Both end at the same place, which is what lets every later command
+        treat the two identically.
         """
         if self.registry_id:
             if self.input_path is not None:
@@ -143,28 +143,24 @@ class PlanOptions:
             return load_registry_roster(self.registry_id, self.metadata())
         if self.input_path is None:
             raise ValueError("a plan needs --input or --roster")
-        return self.selected_manifest().roster
+        return self.selected_cohort().roster
 
-    def selected_manifest(self) -> SelectedCohort:
+    def selected_cohort(self) -> SelectedCohort:
         """The cohort this invocation selected, with its provenance intact.
 
-        The limit is applied *before* identity is derived, so a bounded plan and
-        a full plan over the same file are different plans. Hashing the raw file
-        and truncating afterwards is what would let the two collide on one plan
-        directory and one checkpoint namespace.
+        The limit is applied *during* compilation, before identity is derived, so a
+        bounded plan and a full plan over the same file are different plans.
+        Hashing the raw file and truncating afterwards is what would let the two
+        collide on one plan directory and one checkpoint namespace.
         """
         if self.input_path is None:
             raise ValueError("a plan needs --input or --roster")
-        manifest = read_cik_manifest(self.input_path)
-        if self.limit is not None:
-            if self.limit < 1:
-                raise ValueError(f"--limit must be >= 1, got {self.limit}")
-            manifest = replace(
-                manifest,
-                ciks=manifest.ciks[: self.limit],
-                names=manifest.names[: self.limit],
-            )
-        return SelectedCohort.from_manifest(manifest, limit=self.limit)
+        if self.limit is not None and self.limit < 1:
+            raise ValueError(f"--limit must be >= 1, got {self.limit}")
+        cohort = compile_cik_cohort(
+            self.input_path, limit=self.limit, metadata_paths=self.metadata()
+        )
+        return SelectedCohort.from_compiled(cohort)
 
     def lineage(self) -> dict[str, str]:
         """Source identities to record on anything this plan publishes."""
@@ -188,19 +184,16 @@ class SelectedCohort:
     input_fingerprint: str = ""
 
     @classmethod
-    def from_manifest(
-        cls, manifest: InputManifest, *, limit: int | None = None
-    ) -> SelectedCohort:
-        """Build from a parsed input manifest.
+    def from_compiled(cls, cohort: CompiledCohort) -> SelectedCohort:
+        """Build from a cohort compiled out of a CIK input file.
 
-        ``limit`` is recorded for provenance only: the caller has already applied
-        it to the manifest, and re-applying it here would hide a mistake rather
-        than surface one.
+        The limit is already part of the compiled cohort's identity, so it is not
+        re-applied here; re-truncating would hide a mistake rather than surface one.
         """
         return cls(
-            roster=roster_from_manifest(manifest),
-            input_name=manifest.input_name,
-            input_fingerprint=manifest.input_fingerprint,
+            roster=cohort.roster,
+            input_name=cohort.input_name,
+            input_fingerprint=cohort.input_fingerprint,
         )
 
     @classmethod
@@ -220,7 +213,7 @@ def resolve_cohort(options: PlanOptions) -> SelectedCohort:
             options.registry_id,
             load_registry_roster(options.registry_id, options.metadata()),
         )
-    return options.selected_manifest()
+    return options.selected_cohort()
 
 
 @dataclass(slots=True)

@@ -31,8 +31,10 @@ from edgar_sec.pipelines.metadata_sync.assignment import (
 )
 from edgar_sec.pipelines.metadata_sync.paths import resolve_run_paths
 from edgar_sec.pipelines.metadata_sync.planner import build_plan, write_plan
-from edgar_sec.pipelines.metadata_sync.roster import roster_from_manifest
-from tests.support import fixture_path
+from tests.support import roster_of
+
+#: The usable CIKs of ``cik_sec_mini.csv``, in cohort order.
+_MINI_CIKS = ("0000001985", "0000001761", "0000000020", "0000037996")
 
 PLAN_ID = "0123456789abcdef"
 
@@ -72,11 +74,10 @@ def test_assignment_identity_follows_plan_worker_and_chunks() -> None:
 
 def test_assignment_identity_is_not_a_plan_identity() -> None:
     """Two assignments of one plan differ while the plan does not."""
-    from edgar_sec.pipelines.metadata_sync.manifest import read_cik_manifest
     from edgar_sec.pipelines.metadata_sync.planner import derive_plan_id
 
     plan = build_plan(
-        roster_from_manifest(read_cik_manifest(fixture_path("cik_sec_mini.csv"))),
+        roster_of(_MINI_CIKS),
         chunk_size=2,
     )
     left = build_assignment(plan.plan_id, "worker-00", [0])
@@ -273,10 +274,9 @@ def test_versions_are_declared_once() -> None:
 
 def test_reassignment_does_not_disturb_a_written_plan(tmp_path: Path) -> None:
     """Work survives reassignment."""
-    from edgar_sec.pipelines.metadata_sync.manifest import read_cik_manifest
 
     plan = build_plan(
-        roster_from_manifest(read_cik_manifest(fixture_path("cik_sec_mini.csv"))),
+        roster_of(_MINI_CIKS),
         chunk_size=2,
     )
     run_paths = _run_paths(tmp_path, plan.plan_id)

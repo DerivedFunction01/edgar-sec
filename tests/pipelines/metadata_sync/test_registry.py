@@ -15,7 +15,7 @@ import pyarrow.parquet as pq
 import pytest
 
 from edgar_sec.infra.storage.atomic import atomic_write_json
-from edgar_sec.pipelines.metadata_sync.manifest import read_cik_manifest
+from edgar_sec.pipelines.metadata_sync.manifest import compile_cik_cohort
 from edgar_sec.pipelines.metadata_sync.paths import resolve_metadata_paths
 from edgar_sec.pipelines.metadata_sync.registry import (
     EFFECTIVE_INPUT_MANIFEST_KIND,
@@ -29,7 +29,7 @@ from edgar_sec.pipelines.metadata_sync.registry import (
     load_registry_roster,
     registry_id_for,
 )
-from edgar_sec.pipelines.metadata_sync.roster import build_roster, write_roster
+from edgar_sec.pipelines.metadata_sync.roster import write_roster
 from edgar_sec.pipelines.metadata_sync.source_registry import (
     SOURCE_NAME,
     SOURCE_URL,
@@ -37,7 +37,13 @@ from edgar_sec.pipelines.metadata_sync.source_registry import (
     load_source_snapshot,
     refresh_company_tickers,
 )
-from tests.support import FakeSession, build_test_http, fixture_path
+from tests.support import (
+    FakeSession,
+    build_test_http,
+    fixture_ciks,
+    fixture_path,
+    roster_of,
+)
 
 TICKERS = {
     "0": {"cik_str": "37996", "ticker": "F", "title": "FORD MOTOR CO"},
@@ -117,7 +123,7 @@ def test_compare_derives_new_ciks_and_worklist(published_source) -> None:
         metadata_paths=metadata,
     )
     registry_id = result["registry_id"]
-    curated = set(read_cik_manifest(fixture_path("cik_sec_mini.csv")).ciks)
+    curated = set(fixture_ciks("cik_sec_mini.csv"))
 
     registry_rows = _read(metadata.registry_dataset(registry_id, "registrant_registry"))
     assert [row["cik_padded"] for row in registry_rows] == sorted(
@@ -201,8 +207,13 @@ def test_the_roster_and_the_csv_describe_the_same_union(
         metadata_paths=metadata,
     )
     roster = load_registry_roster(result["registry_id"], metadata)
-    parsed = read_cik_manifest(metadata.effective_input_file(result["registry_id"]))
-    assert sorted(parsed.ciks) == sorted(roster.ciks)
+    round_tripped = compile_cik_cohort(
+        metadata.effective_input_file(result["registry_id"]),
+        metadata_paths=metadata,
+    )
+    assert sorted(
+        round_tripped.roster.range_ciks(0, round_tripped.row_count)
+    ) == sorted(roster.range_ciks(0, roster.row_count))
 
 
 def test_load_registry_roster_refuses_a_swapped_dataset(published_source) -> None:
@@ -214,9 +225,7 @@ def test_load_registry_roster_refuses_a_swapped_dataset(published_source) -> Non
         metadata_paths=metadata,
     )
     registry_id = result["registry_id"]
-    write_roster(
-        build_roster(("0000099999",)), metadata.effective_cik_roster(registry_id)
-    )
+    write_roster(roster_of(("0000099999",)), metadata.effective_cik_roster(registry_id))
     with pytest.raises(RegistryError, match="digest does not match"):
         load_registry_roster(registry_id, metadata)
 
@@ -250,11 +259,12 @@ def test_effective_csv_covers_the_union_and_is_usable_as_input(
     assert published["columns"] == ["cik", "name"]
 
     # The contract that matters: the projection feeds the existing CSV pipeline.
-    parsed = read_cik_manifest(effective)
+    parsed = compile_cik_cohort(effective, metadata_paths=metadata)
     assert parsed.row_count == result["registry_row_count"]
-    assert parsed.ciks[0] == "0000000020"
-    assert parsed.name_for("0000000020") == "K Tron International Inc"
-    assert parsed.name_for("0000005555") == "NEWCO INC"
+    assert parsed.roster.range_ciks(0, parsed.row_count)[0] == "0000000020"
+    names = parsed.roster.name_map()
+    assert names["0000000020"] == "K Tron International Inc"
+    assert names["0000005555"] == "NEWCO INC"
 
 
 def test_compare_is_deterministic_for_unchanged_inputs(published_source) -> None:
@@ -407,7 +417,7 @@ def test_ensure_registry_projects_the_seed_against_the_source(
     roster = load_registry_roster(result["registry_id"], metadata)
     # The seed's four CIKs, plus NEWCO, which the seed does not cover but the
     # live listing does.
-    assert roster.ciks == (
+    assert roster.range_ciks(0, roster.row_count) == (
         "0000000020",
         "0000001761",
         "0000001985",

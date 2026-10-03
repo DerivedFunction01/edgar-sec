@@ -278,9 +278,11 @@ All generated paths derive from the artifacts root; no module hardcodes them.
 
 ```text
 {artifacts_root}/metadata/plans/{plan_id}/plan.json            # Small plan manifest
-{artifacts_root}/metadata/plans/{plan_id}/roster/ciks.parquet    # The CIK cohort, once
+{artifacts_root}/metadata/plans/{plan_id}/roster/ciks.parquet    # The CIK cohort, frozen into the bundle
 {artifacts_root}/metadata/plans/{plan_id}/input/                 # Where the cohort came from
 {artifacts_root}/metadata/plans/{plan_id}/assignments/*.parquet   # One chunk set per worker
+{artifacts_root}/metadata/cohorts/{key}/ciks.parquet         # Compiled cohort, keyed by input digest
+{artifacts_root}/metadata/cohorts/{key}/cohort.json           # What the input resolved to
 {artifacts_root}/transient/metadata/{plan_id}/chunk_NNNN.parquet # Resumable checkpoints
 {artifacts_root}/metadata/registries/{registry_id}/             # Source comparison outputs
 {artifacts_root}/metadata/snapshots/{snapshot_id}/parts/*.parquet   # Published dataset

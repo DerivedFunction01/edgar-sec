@@ -22,9 +22,8 @@ from edgar_sec.foundation.hashing import sha256_bytes
 from edgar_sec.foundation.runtime.settings.runtime import DEFAULT_CHUNK_SIZE
 from edgar_sec.infra.storage.atomic import atomic_write_json
 
-from .manifest import InputManifest
 from .paths import RunPaths
-from .roster import Roster, RosterError, read_roster, roster_from_manifest, write_roster
+from .roster import Roster, RosterError, read_roster, write_roster
 
 PLAN_FORMAT_VERSION = "2.0.0"
 PLAN_MANIFEST_KIND = "metadata_plan"
@@ -217,44 +216,6 @@ def build_plan(
         selected_limit=selected_limit,
         registry_id=registry_id,
     )
-
-
-def plan_for_manifest(
-    manifest: InputManifest,
-    *,
-    chunk_size: int = DEFAULT_CHUNK_SIZE,
-    limit: int | None = None,
-    kind: str = "full",
-    parent_id: str = "",
-    created_at: str | None = None,
-) -> Plan:
-    """Build a plan from a parsed manifest, applying a selection limit.
-
-    The limit is applied to the roster *before* identity is derived, so a bounded
-    plan and a full plan over the same file are different plans. Deriving identity
-    from the raw file digest instead let the two collide on one plan directory.
-    """
-    from dataclasses import replace as _replace
-
-    if limit is not None:
-        if limit < 1:
-            raise ValueError(f"--limit must be >= 1, got {limit}")
-        selected = _replace(
-            manifest, ciks=manifest.ciks[:limit], names=manifest.names[:limit]
-        )
-    else:
-        selected = manifest
-    plan = build_plan(
-        roster_from_manifest(selected),
-        chunk_size=chunk_size,
-        kind=kind,
-        parent_id=parent_id,
-        input_name=selected.input_name,
-        input_fingerprint=selected.input_fingerprint,
-        created_at=created_at,
-        selected_limit=limit,
-    )
-    return plan
 
 
 def write_plan(plan: Plan, run_paths: RunPaths) -> str:

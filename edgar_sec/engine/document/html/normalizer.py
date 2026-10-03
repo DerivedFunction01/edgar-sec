@@ -7,7 +7,7 @@ path exists in `tree.py`, and the reason this is string-based is that table
 spans must survive the projection byte-for-byte, which is far simpler to
 guarantee when the tagged table is masked out of the string first.
 
-Order is load-bearing. Tables are masked before entity unescaping, so a table
+Order is important. Tables are masked before entity unescaping, so a table
 containing `&amp;` is not silently rewritten; source line wraps are collapsed
 before block tags are replaced, so a `<div>` split across source lines does not
 gain spurious newlines.

@@ -8,34 +8,24 @@ from pathlib import Path
 import pytest
 
 from edgar_sec.domain.submissions.schemas import SCHEMA_VERSION
-from edgar_sec.pipelines.metadata_sync.manifest import read_cik_manifest
 from edgar_sec.pipelines.metadata_sync.options import derive_plan_id, plan_options
 from edgar_sec.pipelines.metadata_sync.paths import resolve_run_paths
 from edgar_sec.pipelines.metadata_sync.planner import (
     PLAN_FORMAT_VERSION,
     build_plan,
     load_plan,
-    plan_for_manifest,
     utc_now_iso,
     write_plan,
 )
 from edgar_sec.pipelines.metadata_sync.planner import (
     derive_plan_id as derive_plan_id_direct,
 )
-from edgar_sec.pipelines.metadata_sync.roster import (
-    RosterError,
-    build_roster,
-    roster_from_manifest,
-)
-from tests.support import fixture_path
-
-
-def _manifest():
-    return read_cik_manifest(fixture_path("cik_sec_mini.csv"))
+from edgar_sec.pipelines.metadata_sync.roster import RosterError
+from tests.support import compiled_cohort, fixture_cohort, fixture_path, roster_of
 
 
 def _plan(**kwargs):
-    return build_plan(roster_from_manifest(_manifest()), **kwargs)
+    return build_plan(fixture_cohort("cik_sec_mini.csv").roster, **kwargs)
 
 
 def test_chunks_are_ordinal_ranges_not_embedded_lists() -> None:
@@ -68,7 +58,7 @@ def test_plan_manifest_does_not_grow_with_the_cohort() -> None:
     """
     small = json.dumps(_plan(chunk_size=2).to_manifest(), indent=2)
     large = build_plan(
-        build_roster(tuple(f"{value:010d}" for value in range(1, 250_001))),
+        roster_of(tuple(f"{value:010d}" for value in range(1, 250_001))),
         chunk_size=1000,
     )
     assert len(json.dumps(large.to_manifest(), indent=2)) < 2 * len(small)
@@ -92,8 +82,8 @@ def test_plan_id_ignores_assignment() -> None:
     configuration cannot discard every completed checkpoint for an identical
     cohort.
     """
-    assert derive_plan_id_direct(build_roster(("0000001985",)).roster_id, 1000) == (
-        derive_plan_id_direct(build_roster(("0000001985",)).roster_id, 1000)
+    assert derive_plan_id_direct(roster_of(("0000001985",)).roster_id, 1000) == (
+        derive_plan_id_direct(roster_of(("0000001985",)).roster_id, 1000)
     )
     manifest = _plan(chunk_size=2).to_manifest()
     assert "partition_count" not in manifest
@@ -101,7 +91,7 @@ def test_plan_id_ignores_assignment() -> None:
 
 
 def test_delta_plans_bind_to_their_base_snapshot() -> None:
-    roster = build_roster(("0000001985", "0000001761"))
+    roster = roster_of(("0000001985", "0000001761"))
     against_a = derive_plan_id_direct(
         roster.roster_id, 2, kind="delta", parent_id="base-a"
     )
@@ -113,35 +103,47 @@ def test_delta_plans_bind_to_their_base_snapshot() -> None:
 
 def test_delta_and_full_plans_over_one_cohort_are_distinct() -> None:
     """A delta plan and a full plan over one cohort must not collide."""
-    roster = build_roster(("0000001985",))
+    roster = roster_of(("0000001985",))
     full = derive_plan_id_direct(roster.roster_id, 1)
     delta = derive_plan_id_direct(roster.roster_id, 1, kind="delta", parent_id="base")
     assert full != delta
 
 
-def test_limit_binds_identity_before_the_plan_is_built() -> None:
+def test_limit_binds_identity_before_the_plan_is_built(tmp_path: Path) -> None:
     """A bounded plan and a full plan over one file must not collide.
 
-    Applying the limit before identity is derived is what keeps `--limit 500` and a
-    full run off one plan directory and one checkpoint namespace.
+    The limit is applied while the cohort is compiled, before identity is derived,
+    which is what keeps `--limit 500` and a full run off one plan directory and one
+    checkpoint namespace.
     """
-    full = plan_for_manifest(_manifest(), chunk_size=2)
-    limited = plan_for_manifest(_manifest(), chunk_size=2, limit=2)
+    full = build_plan(
+        compiled_cohort("cik_sec_mini.csv", tmp_path).roster, chunk_size=2
+    )
+    bounded = compiled_cohort("cik_sec_mini.csv", tmp_path, limit=2)
+    limited = build_plan(
+        bounded.roster, chunk_size=2, selected_limit=bounded.selected_limit
+    )
     assert limited.plan_id != full.plan_id
     assert limited.row_count == 2
     assert limited.selected_limit == 2
     assert full.selected_limit is None
 
 
-def test_limit_records_provenance() -> None:
-    limited = plan_for_manifest(_manifest(), chunk_size=2, limit=2)
-    assert limited.input_fingerprint == _manifest().input_fingerprint
-    assert limited.to_manifest()["selected_limit"] == 2
+def test_limit_records_provenance(tmp_path: Path) -> None:
+    cohort = compiled_cohort("cik_sec_mini.csv", tmp_path, limit=2)
+    plan = build_plan(
+        cohort.roster,
+        chunk_size=2,
+        input_fingerprint=cohort.input_fingerprint,
+        selected_limit=cohort.selected_limit,
+    )
+    assert plan.input_fingerprint == cohort.input_fingerprint
+    assert plan.to_manifest()["selected_limit"] == 2
 
 
-def test_limit_must_be_positive() -> None:
+def test_limit_must_be_positive(tmp_path: Path) -> None:
     with pytest.raises(ValueError, match="limit"):
-        plan_for_manifest(_manifest(), chunk_size=2, limit=0)
+        compiled_cohort("cik_sec_mini.csv", tmp_path, limit=0)
 
 
 def test_invalid_chunk_size_rejected() -> None:
@@ -215,7 +217,7 @@ def test_load_rejects_a_swapped_roster(tmp_path: Path) -> None:
     write_plan(plan, run_paths)
     from edgar_sec.pipelines.metadata_sync.roster import write_roster
 
-    write_roster(build_roster(("0000099999",)), run_paths.roster_file)
+    write_roster(roster_of(("0000099999",)), run_paths.roster_file)
     with pytest.raises(ValueError, match="identity"):
         load_plan(run_paths)
 

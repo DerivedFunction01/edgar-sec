@@ -66,7 +66,7 @@ def test_child_plan_retains_every_parent_locator(
     catalog_snapshot: tuple[dict[str, Any], Path],
     catalog_artifacts_root: Path,
 ) -> None:
-    """The load-bearing guarantee: expansion adds, it never replaces."""
+    """The important guarantee: expansion adds, it never replaces."""
     parent_dir, _ = _publish_parent(
         catalog_snapshot, catalog_artifacts_root, base_content_units=2
     )

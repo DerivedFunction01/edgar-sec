@@ -104,6 +104,7 @@ def copy_query_to_parquet(
     row_group_size: int = DEFAULT_ROW_GROUP_SIZE,
     *,
     compression: str = DEFAULT_COMPRESSION,
+    params: Sequence[str] | None = None,
 ) -> int:
     """Write one query result to Parquet out-of-core and atomically.
 
@@ -111,6 +112,11 @@ def copy_query_to_parquet(
     Python heap. The file is staged beside its destination and renamed, so a
     failed write never leaves a half-written shard in a published directory.
     Returns the row count.
+
+    ``params`` binds values the query would otherwise have to interpolate, such
+    as a source path. Passing them separately keeps the caller's ``query`` a
+    plain constant, so composing SQL here does not require the caller to be an
+    audited SQL-compiling module.
     """
     path = Path(destination)
     path.parent.mkdir(parents=True, exist_ok=True)
@@ -119,7 +125,8 @@ def copy_query_to_parquet(
         con.execute(
             f"COPY ({query}) TO {sql_literal(str(tmp))} "
             f"(FORMAT PARQUET, COMPRESSION {compression}, "
-            f"ROW_GROUP_SIZE {int(row_group_size)})"
+            f"ROW_GROUP_SIZE {int(row_group_size)})",
+            list(params) if params is not None else None,
         )
         os.replace(tmp, path)
         _fsync_dir(str(path.parent))

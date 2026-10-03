@@ -14,11 +14,9 @@ from edgar_sec.pipelines.metadata_sync.checkpoints import (
     inspect_chunk,
     schema_matches,
 )
-from edgar_sec.pipelines.metadata_sync.manifest import read_cik_manifest
 from edgar_sec.pipelines.metadata_sync.paths import resolve_run_paths
 from edgar_sec.pipelines.metadata_sync.planner import build_plan
-from edgar_sec.pipelines.metadata_sync.roster import roster_from_manifest
-from tests.support import fixture_path
+from tests.support import compiled_cohort
 
 
 def _row(cik: str, fingerprint: str = "fp") -> dict:
@@ -38,12 +36,12 @@ def _write(path: Path, rows: list[dict], schema=SUBMISSION_METADATA_SCHEMA) -> P
 
 
 def _plan(tmp_path: Path, chunk_size: int = 2):
-    manifest = read_cik_manifest(fixture_path("cik_sec_mini.csv"))
+    cohort = compiled_cohort("cik_sec_mini.csv", tmp_path)
     plan = build_plan(
-        roster_from_manifest(manifest),
+        cohort.roster,
         chunk_size=chunk_size,
-        input_name=manifest.input_name,
-        input_fingerprint=manifest.input_fingerprint,
+        input_name=cohort.input_name,
+        input_fingerprint=cohort.input_fingerprint,
     )
     return plan, resolve_run_paths(plan.plan_id, tmp_path)
 
@@ -100,7 +98,7 @@ def test_a_chunk_from_another_plan_is_rejected(tmp_path: Path) -> None:
     """
     plan, run_paths = _plan(tmp_path)
     foreign = build_plan(
-        roster_from_manifest(read_cik_manifest(fixture_path("cik_sec_mini.csv"))),
+        compiled_cohort("cik_sec_mini.csv", tmp_path).roster,
         chunk_size=2,
         parent_id="",
     )

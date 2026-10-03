@@ -55,7 +55,7 @@ def _coerce(column: str, raw: Any) -> Any:
     return raw
 
 
-# --- the three load-bearing guards ----------------------------------------
+# --- the three important guards ----------------------------------------
 
 
 def test_guard_rejects_a_transient_chunk_path(tmp_path: Path) -> None:

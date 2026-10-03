@@ -3,7 +3,7 @@
 `foundation.regex.builder` exists to guarantee that alternation branches are
 ordered longest-first and that lookarounds are anchored safely. Both guarantees
 are lost the moment someone writes ``(?:alpha|beta|gamma)`` by hand, and nothing
-in the language stops it. This scanner is what keeps the DSL load-bearing rather
+in the language stops it. This scanner is what keeps the DSL important rather
 than decorative.
 """
 

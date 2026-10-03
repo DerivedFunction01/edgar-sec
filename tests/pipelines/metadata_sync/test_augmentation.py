@@ -19,15 +19,14 @@ from edgar_sec.domain.sec_urls import submissions_url
 from edgar_sec.domain.submissions.schemas import SUBMISSION_METADATA_SCHEMA
 from edgar_sec.pipelines.metadata_sync.augmentation import (
     augment,
-    augment_from_manifest,
+    augment_from_input,
     augment_from_roster,
-    base_snapshot_ciks,
+    base_cik_sources,
     derive_delta_plan,
     preflight_augment,
-    snapshot_cik_roster,
 )
 from edgar_sec.pipelines.metadata_sync.checkpoints import discover_completed_chunks
-from edgar_sec.pipelines.metadata_sync.manifest import read_cik_manifest
+from edgar_sec.pipelines.metadata_sync.manifest import compile_cik_cohort
 from edgar_sec.pipelines.metadata_sync.merger import (
     MergeError,
     merge_chunks,
@@ -38,18 +37,15 @@ from edgar_sec.pipelines.metadata_sync.paths import (
     resolve_run_paths,
 )
 from edgar_sec.pipelines.metadata_sync.planner import build_plan, write_plan
-from edgar_sec.pipelines.metadata_sync.roster import (
-    build_roster,
-    read_cik_index,
-    roster_from_manifest,
-)
+from edgar_sec.pipelines.metadata_sync.roster import read_cik_index
 from edgar_sec.pipelines.metadata_sync.snapshot import read_snapshot_parts
 from edgar_sec.pipelines.metadata_sync.worker import run_chunk
 from tests.support import (
     FakeSession,
     cik_payload,
-    fixture_path,
+    fixture_cohort,
     load_fixture,
+    roster_of,
 )
 
 # A live listing that names a registrant the curated seed does not cover.
@@ -93,12 +89,12 @@ def _snapshot_rows(metadata, snapshot_id: str) -> list[dict]:
 def _publish_baseline(client, session: FakeSession, tmp_path: Path):
     _seed(session)
     metadata = resolve_metadata_paths(tmp_path)
-    manifest = read_cik_manifest(fixture_path("cik_sec_mini.csv"))
+    cohort = fixture_cohort("cik_sec_mini.csv")
     plan = build_plan(
-        roster_from_manifest(manifest),
+        cohort.roster,
         chunk_size=2,
-        input_name=manifest.input_name,
-        input_fingerprint=manifest.input_fingerprint,
+        input_name=cohort.input_name,
+        input_fingerprint=cohort.input_fingerprint,
     )
     run_paths = resolve_run_paths(plan.plan_id, metadata.artifacts_root)
     write_plan(plan, run_paths)
@@ -108,73 +104,113 @@ def _publish_baseline(client, session: FakeSession, tmp_path: Path):
     # A merge is not a publication. The base of an augmentation must be a
     # published snapshot, so the manifest is the commit record that makes it one.
     publish_snapshot(report, metadata)
-    return metadata, manifest, plan, report
+    return metadata, cohort, plan, report
 
 
 # ------------------------------------------------------------------ delta plan
 
 
-def test_plan_delta_excludes_base_ciks() -> None:
-    manifest = read_cik_manifest(fixture_path("cik_sec_mini.csv"))
+def test_plan_delta_excludes_base_ciks(
+    client, session: FakeSession, tmp_path: Path
+) -> None:
+    """The delta covers exactly what the base does not already hold.
+
+    The base is read from published artifacts, so a delta can only be derived
+    against a snapshot that was actually published.
+    """
+    metadata = _publish_partial_base(
+        client, session, tmp_path, ("0000001985", "0000001761"), "base"
+    )
     plan = derive_delta_plan(
-        roster_from_manifest(manifest),
-        build_roster(("0000001985", "0000001761")),
+        fixture_cohort("cik_sec_mini.csv").roster,
+        metadata,
         chunk_size=2,
         base_snapshot_id="base",
     )
-    assert plan.roster.ciks == ("0000000020", FORD)
+    assert plan.roster.range_ciks(0, plan.row_count) == ("0000000020", FORD)
     assert plan.kind == "delta"
     assert plan.parent_id == "base"
 
 
-def test_an_empty_delta_is_refused_rather_than_planned() -> None:
-    manifest = read_cik_manifest(fixture_path("cik_sec_mini.csv"))
+def test_an_empty_delta_is_refused_rather_than_planned(
+    client, session: FakeSession, tmp_path: Path
+) -> None:
+    metadata, _cohort, _plan, _report = _publish_baseline(client, session, tmp_path)
+    requested = fixture_cohort("cik_sec_mini.csv").roster
     with pytest.raises(MergeError, match="no work"):
         derive_delta_plan(
-            roster_from_manifest(manifest),
-            build_roster(manifest.ciks),
+            requested,
+            metadata,
             chunk_size=2,
             base_snapshot_id="base",
         )
 
 
-def test_one_requested_list_against_two_bases_is_two_plans() -> None:
+def _publish_partial_base(
+    client, session: FakeSession, tmp_path: Path, ciks, base_id: str
+):
+    """Publish a base covering only some of the mini cohort.
+
+    A delta needs a base that holds *some* of what is requested; a base covering all
+    of it would leave nothing to derive, which is the no-op case instead.
+    """
+    _seed(session)
+    metadata = resolve_metadata_paths(tmp_path)
+    plan = build_plan(roster_of(tuple(ciks)), chunk_size=1000)
+    run_paths = resolve_run_paths(plan.plan_id, metadata.artifacts_root)
+    write_plan(plan, run_paths)
+    for chunk_id in plan.chunk_ids():
+        run_chunk(client, plan, run_paths, chunk_id, snapshot_id=base_id, workers=2)
+    report = merge_chunks(plan, run_paths, base_id)
+    publish_snapshot(report, metadata)
+    return metadata
+
+
+def test_one_requested_list_against_two_bases_is_two_plans(
+    client, session: FakeSession, tmp_path: Path
+) -> None:
     """A delta plan is identified by its base as well as its cohort.
 
     Without that, the same requested CIKs against two different bases would resolve
     to one plan directory and one chunk namespace, and the second run would
     overwrite the first plan's record.
     """
-    requested = roster_from_manifest(
-        read_cik_manifest(fixture_path("cik_sec_mini.csv"))
+    requested = fixture_cohort("cik_sec_mini.csv").roster
+    metadata_a = _publish_partial_base(
+        client, session, tmp_path, ("0000001985",), "base-a"
     )
+    metadata_b = _publish_partial_base(
+        client, session, tmp_path, ("0000001985", "0000001761"), "base-b"
+    )
+
     against_a = derive_delta_plan(
-        requested,
-        build_roster(("0000001985", "0000001761", "0000000020")),
-        chunk_size=2,
-        base_snapshot_id="base-a",
+        requested, metadata_a, chunk_size=2, base_snapshot_id="base-a"
     )
     against_b = derive_delta_plan(
-        requested,
-        build_roster((FORD,)),
-        chunk_size=2,
-        base_snapshot_id="base-b",
+        requested, metadata_b, chunk_size=2, base_snapshot_id="base-b"
     )
+
     assert against_a.plan_id != against_b.plan_id
-    assert against_a.roster.ciks == (FORD,)
-    assert against_b.roster.ciks == ("0000001985", "0000001761", "0000000020")
+    assert against_a.roster.range_ciks(0, against_a.row_count) == (
+        "0000001761",
+        "0000000020",
+        "0000037996",
+    )
+    assert against_b.roster.range_ciks(0, against_b.row_count) == (
+        "0000000020",
+        "0000037996",
+    )
 
 
-def test_a_delta_plan_never_shares_a_directory_with_a_full_plan(tmp_path: Path) -> None:
+def test_a_delta_plan_never_shares_a_directory_with_a_full_plan(
+    client, session: FakeSession, tmp_path: Path
+) -> None:
     """The two plan kinds over one cohort must not collide on disk."""
-    manifest = read_cik_manifest(fixture_path("cik_sec_mini.csv"))
-    roster = roster_from_manifest(manifest)
-    full = build_plan(roster, chunk_size=2)
+    requested = fixture_cohort("cik_sec_mini.csv").roster
+    metadata = _publish_partial_base(client, session, tmp_path, ("0000001985",), "base")
+    full = build_plan(requested, chunk_size=2)
     delta = derive_delta_plan(
-        roster,
-        build_roster(roster.ciks[:2]),
-        chunk_size=2,
-        base_snapshot_id="base",
+        requested, metadata, chunk_size=2, base_snapshot_id="base"
     )
     assert full.plan_id != delta.plan_id
     full_paths = resolve_run_paths(full.plan_id, tmp_path)
@@ -183,15 +219,45 @@ def test_a_delta_plan_never_shares_a_directory_with_a_full_plan(tmp_path: Path) 
     assert full_paths.chunk_dir != delta_paths.chunk_dir
 
 
-def test_delta_refuses_an_empty_cohort() -> None:
-    manifest = read_cik_manifest(fixture_path("cik_sec_mini.csv"))
+def test_delta_refuses_an_empty_cohort(
+    client, session: FakeSession, tmp_path: Path
+) -> None:
+    metadata, _cohort, _plan, _report = _publish_baseline(client, session, tmp_path)
     with pytest.raises(MergeError, match="no work"):
         derive_delta_plan(
-            roster_from_manifest(manifest),
-            build_roster(manifest.ciks),
+            fixture_cohort("cik_sec_mini.csv").roster,
+            metadata,
             chunk_size=2,
             base_snapshot_id="base",
         )
+
+
+def test_the_delta_is_numbered_from_zero_and_is_reproducible(
+    client, session: FakeSession, tmp_path: Path
+) -> None:
+    """A delta is a cohort in its own right, so it numbers from zero.
+
+    An ordinal is a position within a cohort, and chunk ranges start at zero, so a
+    delta that inherited the requested cohort's ordinals would have its first chunk
+    read back empty. Its identity is recorded on the merge report, so the numbering
+    also has to be a function of the inputs rather than of read order.
+    """
+    metadata = _publish_partial_base(client, session, tmp_path, ("0000001985",), "base")
+    requested = fixture_cohort("cik_sec_mini.csv").roster
+
+    first = derive_delta_plan(
+        requested, metadata, chunk_size=2, base_snapshot_id="base"
+    )
+    second = derive_delta_plan(
+        requested, metadata, chunk_size=2, base_snapshot_id="base"
+    )
+
+    assert first.roster.roster_id == second.roster.roster_id
+    assert first.plan_id == second.plan_id
+    assert first.row_count == 3
+    assert first.chunk_start(0) == 0
+    assert first.chunk_ciks(0) == ("0000001761", "0000000020")
+    assert first.chunk_ciks(1) == (FORD,)
 
 
 # ----------------------------------------------------------------- base lookup
@@ -200,9 +266,10 @@ def test_delta_refuses_an_empty_cohort() -> None:
 def test_base_membership_is_read_from_the_published_index(
     client, session: FakeSession, tmp_path: Path
 ) -> None:
-    metadata, manifest, _, _ = _publish_baseline(client, session, tmp_path)
-    assert base_snapshot_ciks(metadata, "base") == set(manifest.ciks)
-    assert snapshot_cik_roster(metadata, "base").ciks == tuple(sorted(manifest.ciks))
+    metadata, _cohort, _plan, _report = _publish_baseline(client, session, tmp_path)
+    sources, from_parts = base_cik_sources(metadata, "base")
+    assert not from_parts, "a published base carries an index"
+    assert sources == [str(metadata.snapshot_cik_index("base"))]
 
 
 def test_base_membership_falls_back_to_the_payload(
@@ -214,15 +281,17 @@ def test_base_membership_falls_back_to_the_payload(
     missing base is still an error, because an unreadable base must never be
     mistaken for an empty one.
     """
-    metadata, manifest, _, _ = _publish_baseline(client, session, tmp_path)
+    metadata, _cohort, _plan, _report = _publish_baseline(client, session, tmp_path)
     metadata.snapshot_cik_index("base").unlink()
-    assert base_snapshot_ciks(metadata, "base") == set(manifest.ciks)
+    sources, from_parts = base_cik_sources(metadata, "base")
+    assert from_parts
+    assert sources, "the parts of a published base stand in for its index"
 
 
 def test_a_missing_base_is_never_read_as_empty(tmp_path: Path) -> None:
     metadata = resolve_metadata_paths(tmp_path)
     with pytest.raises(FileNotFoundError):
-        base_snapshot_ciks(metadata, "absent")
+        base_cik_sources(metadata, "absent")
 
 
 # ---------------------------------------------------------------- augmentation
@@ -231,7 +300,7 @@ def test_a_missing_base_is_never_read_as_empty(tmp_path: Path) -> None:
 def test_augment_merges_base_and_delta_without_refetching_base(
     client, session: FakeSession, tmp_path: Path
 ) -> None:
-    metadata, manifest, _, base_report = _publish_baseline(client, session, tmp_path)
+    metadata, cohort, _, base_report = _publish_baseline(client, session, tmp_path)
     assert base_report.row_count == 4
     calls_after_base = len(session.calls)
 
@@ -243,7 +312,7 @@ def test_augment_merges_base_and_delta_without_refetching_base(
 
     result = augment(
         client,
-        read_cik_manifest(widened),
+        compile_cik_cohort(widened, metadata_paths=metadata).roster,
         metadata,
         base_snapshot_id="base",
         new_snapshot_id="next",
@@ -267,7 +336,9 @@ def test_augment_merges_base_and_delta_without_refetching_base(
         _snapshot_rows(metadata, "next"), schema=SUBMISSION_METADATA_SCHEMA
     )
     ciks = table.column("cik").to_pylist()
-    assert sorted(ciks) == sorted([*manifest.ciks, EXTRA])
+    assert sorted(ciks) == sorted(
+        [*cohort.roster.range_ciks(0, cohort.row_count), EXTRA]
+    )
     # An augmented snapshot is in part order (base parts, then delta chunks), not
     # globally CIK-sorted. Membership is the contract; the manifest records the
     # ordering as `sort_order`.
@@ -306,7 +377,7 @@ def test_an_augmentation_reports_both_of_its_phases(
     events: list[dict] = []
     augment(
         client,
-        read_cik_manifest(widened),
+        compile_cik_cohort(widened, metadata_paths=metadata).roster,
         metadata,
         base_snapshot_id="base",
         chunk_size=2,
@@ -342,7 +413,7 @@ def test_progress_comes_before_the_publish_so_a_bar_never_overruns(
     events: list[dict] = []
     result = augment(
         client,
-        read_cik_manifest(widened),
+        compile_cik_cohort(widened, metadata_paths=metadata).roster,
         metadata,
         base_snapshot_id="base",
         chunk_size=2,
@@ -367,7 +438,7 @@ def test_a_broken_progress_callback_cannot_fail_an_augmentation(
 
     result = augment(
         client,
-        read_cik_manifest(widened),
+        compile_cik_cohort(widened, metadata_paths=metadata).roster,
         metadata,
         base_snapshot_id="base",
         chunk_size=2,
@@ -384,7 +455,7 @@ def test_omitting_progress_is_still_supported(
     widened = _widen(tmp_path, session, EXTRA)
     result = augment(
         client,
-        read_cik_manifest(widened),
+        compile_cik_cohort(widened, metadata_paths=metadata).roster,
         metadata,
         base_snapshot_id="base",
         chunk_size=2,
@@ -421,7 +492,7 @@ def test_an_omitted_snapshot_id_publishes_under_the_delta_plan_id(
 
     result = augment(
         client,
-        read_cik_manifest(widened),
+        compile_cik_cohort(widened, metadata_paths=metadata).roster,
         metadata,
         base_snapshot_id="base",
         chunk_size=2,
@@ -449,7 +520,7 @@ def test_the_derived_id_is_stable_for_the_same_base_and_cohort(
     widened = _widen(tmp_path, session, EXTRA)
     first = augment(
         client,
-        read_cik_manifest(widened),
+        compile_cik_cohort(widened, metadata_paths=metadata).roster,
         metadata,
         base_snapshot_id="base",
         chunk_size=2,
@@ -457,7 +528,7 @@ def test_the_derived_id_is_stable_for_the_same_base_and_cohort(
     )
     second = augment(
         client,
-        read_cik_manifest(widened),
+        compile_cik_cohort(widened, metadata_paths=metadata).roster,
         metadata,
         base_snapshot_id="base",
         chunk_size=2,
@@ -472,11 +543,11 @@ def test_a_different_base_or_chunk_layout_yields_a_different_id(
     """The derivation is only meaningful if the bound inputs actually move it."""
     metadata, _, _, _ = _publish_baseline(client, session, tmp_path)
     widened = _widen(tmp_path, session, EXTRA)
-    manifest = read_cik_manifest(widened)
+    cohort = compile_cik_cohort(widened, metadata_paths=metadata)
 
     chunk_size_two = augment(
         client,
-        manifest,
+        cohort.roster,
         metadata,
         base_snapshot_id="base",
         chunk_size=2,
@@ -484,7 +555,7 @@ def test_a_different_base_or_chunk_layout_yields_a_different_id(
     )
     chunk_size_one = augment(
         client,
-        manifest,
+        cohort.roster,
         metadata,
         base_snapshot_id="base",
         chunk_size=1,
@@ -502,7 +573,7 @@ def test_an_explicit_snapshot_id_still_overrides_the_derivation(
 
     result = augment(
         client,
-        read_cik_manifest(widened),
+        compile_cik_cohort(widened, metadata_paths=metadata).roster,
         metadata,
         base_snapshot_id="base",
         new_snapshot_id="chosen",
@@ -518,14 +589,14 @@ def test_an_explicit_snapshot_id_still_overrides_the_derivation(
 def test_augmented_index_is_the_union_of_base_and_delta(
     client, session: FakeSession, tmp_path: Path
 ) -> None:
-    metadata, manifest, _, _ = _publish_baseline(client, session, tmp_path)
+    metadata, cohort, _, _ = _publish_baseline(client, session, tmp_path)
     widened = tmp_path / "widened.csv"
     widened.write_text("cik,name\n5555,EXTRA CO\n", encoding="utf-8")
     _seed(session, extra=True)
 
     result = augment(
         client,
-        read_cik_manifest(widened),
+        compile_cik_cohort(widened, metadata_paths=metadata).roster,
         metadata,
         base_snapshot_id="base",
         new_snapshot_id="next",
@@ -533,7 +604,9 @@ def test_augmented_index_is_the_union_of_base_and_delta(
         workers=2,
     )
     index = read_cik_index(metadata.snapshot_cik_index("next"))
-    assert list(index) == sorted([*manifest.ciks, EXTRA])
+    assert list(index) == sorted(
+        [*cohort.roster.range_ciks(0, cohort.row_count), EXTRA]
+    )
     assert result.report.cik_count == len(index)
     assert result.report.cik_index_sha256
 
@@ -549,7 +622,7 @@ def test_augmented_manifest_records_its_lineage(
 
     result = augment(
         client,
-        read_cik_manifest(widened),
+        compile_cik_cohort(widened, metadata_paths=metadata).roster,
         metadata,
         base_snapshot_id="base",
         new_snapshot_id="next",
@@ -583,7 +656,7 @@ def test_augment_preserves_base_row_provenance(
     _seed(session, extra=True)
     augment(
         client,
-        read_cik_manifest(widened),
+        compile_cik_cohort(widened, metadata_paths=metadata).roster,
         metadata,
         base_snapshot_id="base",
         new_snapshot_id="next",
@@ -597,7 +670,7 @@ def test_augment_preserves_base_row_provenance(
             assert row["snapshot_id"] == "next"
 
 
-def test_augment_from_manifest_reads_the_csv_and_matches_augment(
+def test_augment_from_input_compiles_the_csv_and_matches_augment(
     client, session: FakeSession, tmp_path: Path
 ) -> None:
     """The documented wrapper is the path the CLI takes, so it must agree."""
@@ -606,7 +679,7 @@ def test_augment_from_manifest_reads_the_csv_and_matches_augment(
     widened.write_text("cik,name\n5555,EXTRA CO\n", encoding="utf-8")
     _seed(session, extra=True)
 
-    result = augment_from_manifest(
+    result = augment_from_input(
         client,
         str(widened),
         metadata,
@@ -625,7 +698,7 @@ def test_augment_from_roster_agrees_with_the_csv_wrapper(
 ) -> None:
     """A published registry roster and a CSV describe the same delta."""
     metadata, _, _, _ = _publish_baseline(client, session, tmp_path)
-    roster = build_roster((EXTRA,), ("EXTRA CO",))
+    roster = roster_of((EXTRA,), ("EXTRA CO",))
     _seed(session, extra=True)
     result = augment_from_roster(
         client,
@@ -654,13 +727,13 @@ def test_augment_is_a_no_op_when_the_base_already_covers_the_request(
     requested no work" from inside the run, after the operator had already
     answered the fetch-consent and worker-count questions.
     """
-    metadata, manifest, _, _ = _publish_baseline(client, session, tmp_path)
+    metadata, cohort, _, _ = _publish_baseline(client, session, tmp_path)
     pointer_before = metadata.current_pointer.read_bytes()
     sessions_before = session.calls
 
     result = augment(
         client,
-        manifest,
+        cohort.roster,
         metadata,
         base_snapshot_id="base",
         new_snapshot_id="next",
@@ -672,8 +745,12 @@ def test_augment_is_a_no_op_when_the_base_already_covers_the_request(
     assert result.new_snapshot_id == ""
     assert result.delta_row_count == 0
     assert result.refetched_ciks == ()
-    assert result.requested_cik_count == len(manifest.ciks)
-    assert result.already_present_count == len(manifest.ciks)
+    assert result.requested_cik_count == len(
+        cohort.roster.range_ciks(0, cohort.row_count)
+    )
+    assert result.already_present_count == len(
+        cohort.roster.range_ciks(0, cohort.row_count)
+    )
     assert result.total_row_count == result.base_row_count
     # No request, no plan, no snapshot, no pointer movement.
     assert session.calls == sessions_before
@@ -685,27 +762,29 @@ def test_preflight_reports_the_work_before_anything_is_fetched(
     client, session: FakeSession, tmp_path: Path
 ) -> None:
     """The arithmetic is answerable from published artifacts alone."""
-    metadata, manifest, _, _ = _publish_baseline(client, session, tmp_path)
-    requested = build_roster((*manifest.ciks, EXTRA))
+    metadata, cohort, _, _ = _publish_baseline(client, session, tmp_path)
+    requested = roster_of((*cohort.roster.range_ciks(0, cohort.row_count), EXTRA))
 
     check = preflight_augment(requested, metadata, base_snapshot_id="base")
 
     assert check.is_empty is False
-    assert check.requested_count == len(manifest.ciks) + 1
-    assert check.already_present_count == len(manifest.ciks)
-    assert check.delta.ciks == (EXTRA,)
+    assert (
+        check.requested_count == len(cohort.roster.range_ciks(0, cohort.row_count)) + 1
+    )
+    assert check.already_present_count == len(
+        cohort.roster.range_ciks(0, cohort.row_count)
+    )
+    assert check.delta_count == 1
     assert "to fetch" in check.describe()
 
 
 def test_preflight_reports_an_empty_delta_without_raising(
     client, session: FakeSession, tmp_path: Path
 ) -> None:
-    metadata, manifest, _, _ = _publish_baseline(client, session, tmp_path)
-    check = preflight_augment(
-        roster_from_manifest(manifest), metadata, base_snapshot_id="base"
-    )
+    metadata, cohort, _, _ = _publish_baseline(client, session, tmp_path)
+    check = preflight_augment(cohort.roster, metadata, base_snapshot_id="base")
     assert check.is_empty is True
-    assert check.delta.is_empty is True
+    assert check.delta_count == 0
     assert check.already_present_count == check.requested_count
 
 
@@ -719,8 +798,8 @@ def test_a_delta_calling_itself_a_delta_is_still_reduced_against_the_base(
     base already holds and then reject the merge for containing them, so every
     cohort is reduced against the base no matter what it is named.
     """
-    metadata, manifest, _, _ = _publish_baseline(client, session, tmp_path)
-    already_covered = build_roster(manifest.ciks)
+    metadata, cohort, _, _ = _publish_baseline(client, session, tmp_path)
+    already_covered = roster_of(cohort.roster.range_ciks(0, cohort.row_count))
     check = preflight_augment(already_covered, metadata, base_snapshot_id="base")
     assert check.is_empty is True
 
@@ -729,11 +808,11 @@ def test_augment_requires_an_existing_base(
     client, session: FakeSession, tmp_path: Path
 ) -> None:
     metadata = resolve_metadata_paths(tmp_path)
-    manifest = read_cik_manifest(fixture_path("cik_sec_mini.csv"))
+    cohort = fixture_cohort("cik_sec_mini.csv")
     with pytest.raises(FileNotFoundError):
         augment(
             client,
-            manifest,
+            cohort.roster,
             metadata,
             base_snapshot_id="missing",
             new_snapshot_id="next",

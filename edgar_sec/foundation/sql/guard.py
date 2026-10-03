@@ -5,7 +5,7 @@ is the first line of defense for that case, and it is deliberately narrow: it
 accepts a statement only if the first meaningful token is one of a fixed set of
 read verbs, and refuses anything containing a statement separator.
 
-Three properties are load-bearing, and the third is the one usually got wrong:
+Three properties are important, and the third is the one usually got wrong:
 
 1. **Only read verbs start a statement.** ``SELECT``, ``WITH``, ``DESCRIBE``,
    ``SHOW``, ``EXPLAIN``, and ``PRAGMA table_info`` are allowed. ``PRAGMA`` is

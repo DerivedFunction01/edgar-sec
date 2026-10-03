@@ -3,7 +3,7 @@
 Zero network: this module reads one published Parquet dataset and writes one
 immutable catalog snapshot. It never constructs an HTTP client.
 
-Four guards are load-bearing invariants:
+Four guards are important invariants:
 
 1. a source path under ``chunks``, ``checkpoints``, or ``workers`` is refused,
    so a transient Phase 1 work unit can never be mistaken for a finalized
@@ -77,22 +77,9 @@ from edgar_sec.pipelines.metadata_sync.snapshot import (
     read_snapshot_parts,
 )
 
-# Version of the archive-URL fallback policy baked into catalog_id derivation.
-# Bump when the fallback rule changes, so the derived id changes with it.
 FALLBACK_POLICY_VERSION = "1.1.0"
 
-# Path components that identify transient Phase 1 state rather than a finalized
-# snapshot. Present in these means the source is a work unit, not an artifact.
 TRANSIENT_SOURCE_PARTS = frozenset({"chunks", "checkpoints", "workers"})
-
-# How the published target shards are ordered, recorded so a consumer cannot
-# mistake one shard's local ordering for a dataset-wide guarantee. Each shard is
-# sorted by (source_cik, accession, document_path), and shard N is the unnest of
-# source part N — but the shards are NOT globally sorted by CIK, because Phase 1
-# publishes parts in chunk order (`sort_order: "chunk_order"`) whose CIK ranges
-# overlap. Phase 1 made exactly this tradeoff and recorded it the same way; a
-# consumer that needs a total order must impose one, as `plan` does with its own
-# ORDER BY. See merger.publish_parts for the upstream precedent.
 TARGET_SORT_ORDER = "source_part_order"
 
 

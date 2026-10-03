@@ -5,10 +5,12 @@ from __future__ import annotations
 from pathlib import Path
 
 import pyarrow as pa
+import pyarrow.parquet as pq
 import pytest
 
 from edgar_sec.infra.storage.duckdb import (
     connect,
+    copy_query_to_parquet,
     find_duplicate_keys,
     find_null_keys,
     sql_identifier,
@@ -117,3 +119,50 @@ def test_every_connection_carries_the_resource_budget() -> None:
     assert memory_limit, "memory_limit is unset"
     assert bool(preserve) is False, "preserve_insertion_order must be false"
     assert temp_dir, "temp_directory is unset"
+
+
+def test_copy_query_to_parquet_binds_its_parameters(tmp_path: Path) -> None:
+    """A source path is bound, never spliced into the query text.
+
+    The query stays a plain constant and the path travels as a bound
+    parameter, which is what lets a caller compose SQL without being an audited
+    SQL-compiling module. Reading a path whose name contains a quote also proves
+    the binding is real: interpolating it would either fail or misparse.
+    """
+    source = tmp_path / "it's a source.parquet"
+    _write(source, ["0000001985"], [7])
+    destination = tmp_path / "out.parquet"
+
+    with connect() as con:
+        rows = copy_query_to_parquet(
+            con,
+            "SELECT cik, val FROM read_parquet(?)",
+            destination,
+            params=[str(source)],
+        )
+
+    assert rows == 1
+    assert pq.read_table(destination).column("cik")[0].as_py() == "0000001985"
+
+
+def test_copy_query_to_parquet_keeps_a_parametrised_query_constant(
+    tmp_path: Path,
+) -> None:
+    """One query constant serves several bound sources.
+
+    A caller reusing a single query across inputs must not rebuild the statement
+    per source, which only holds if the path never entered the SQL.
+    """
+    first = _write(tmp_path / "a.parquet", ["0000000001"], [1])
+    second = _write(tmp_path / "b.parquet", ["0000000002"], [2])
+    query = "SELECT cik FROM read_parquet(?) ORDER BY cik"
+
+    written = []
+    with connect() as con:
+        for index, path in enumerate((first, second)):
+            destination = tmp_path / f"out{index}.parquet"
+            assert copy_query_to_parquet(con, query, destination, params=[path]) == 1
+            written.append(destination)
+
+    assert pq.read_table(written[0]).column("cik")[0].as_py() == "0000000001"
+    assert pq.read_table(written[1]).column("cik")[0].as_py() == "0000000002"

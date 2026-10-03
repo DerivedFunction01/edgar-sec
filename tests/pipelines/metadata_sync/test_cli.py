@@ -1,6 +1,6 @@
 """Command surface, settings resolution, and launcher registration tests.
 
-The settings test is the load-bearing one. ``runtime.chunk_size`` is a
+The settings test is the important one. ``runtime.chunk_size`` is a
 registered spec with an env name, and for a long period nothing read it: the
 parser hardcoded the module constant, so ``RUNTIME_CHUNK_SIZE=2`` still produced
 a plan claiming 1000. Because the plan id is derived from the effective chunking,

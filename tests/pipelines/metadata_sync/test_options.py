@@ -15,7 +15,7 @@ from pathlib import Path
 import pytest
 
 from edgar_sec.foundation.runtime.settings.runtime import DEFAULT_CHUNK_SIZE
-from edgar_sec.pipelines.metadata_sync.manifest import read_cik_manifest
+from edgar_sec.pipelines.metadata_sync.manifest import compile_cik_cohort
 from edgar_sec.pipelines.metadata_sync.options import (
     BundleRunPaths,
     PlanOptions,
@@ -28,10 +28,12 @@ from edgar_sec.pipelines.metadata_sync.options import (
     resolve_cohort,
     run_options,
 )
-from edgar_sec.pipelines.metadata_sync.paths import resolve_run_paths
+from edgar_sec.pipelines.metadata_sync.paths import (
+    resolve_metadata_paths,
+    resolve_run_paths,
+)
 from edgar_sec.pipelines.metadata_sync.planner import build_plan, write_plan
-from edgar_sec.pipelines.metadata_sync.roster import build_roster, roster_from_manifest
-from tests.support import fixture_path
+from tests.support import fixture_path, roster_of
 
 MINI = str(fixture_path("cik_sec_mini.csv"))
 
@@ -39,21 +41,31 @@ MINI = str(fixture_path("cik_sec_mini.csv"))
 # ---------------------------------------------------------------- plan options
 
 
-def test_an_explicit_chunk_size_wins(monkeypatch: pytest.MonkeyPatch) -> None:
+def test_an_explicit_chunk_size_wins(
+    monkeypatch: pytest.MonkeyPatch, tmp_path: Path
+) -> None:
     monkeypatch.setenv("RUNTIME_CHUNK_SIZE", "7")
-    assert plan_options(input_path=MINI, chunk_size=5).chunk_size == 5
+    assert (
+        plan_options(input_path=MINI, artifacts_root=tmp_path, chunk_size=5).chunk_size
+        == 5
+    )
 
 
-def test_the_registry_supplies_the_default(monkeypatch: pytest.MonkeyPatch) -> None:
+def test_the_registry_supplies_the_default(
+    monkeypatch: pytest.MonkeyPatch, tmp_path: Path
+) -> None:
     monkeypatch.setenv("RUNTIME_CHUNK_SIZE", "7")
-    assert plan_options(input_path=MINI).chunk_size == 7
+    assert plan_options(input_path=MINI, artifacts_root=tmp_path).chunk_size == 7
 
 
 def test_the_code_default_applies_with_no_environment(
-    monkeypatch: pytest.MonkeyPatch,
+    monkeypatch: pytest.MonkeyPatch, tmp_path: Path
 ) -> None:
     monkeypatch.delenv("RUNTIME_CHUNK_SIZE", raising=False)
-    assert plan_options(input_path=MINI).chunk_size == DEFAULT_CHUNK_SIZE
+    assert (
+        plan_options(input_path=MINI, artifacts_root=tmp_path).chunk_size
+        == DEFAULT_CHUNK_SIZE
+    )
 
 
 def test_resolve_chunk_size_is_pure_over_its_argument(
@@ -81,16 +93,22 @@ def test_plan_options_carry_no_worker_field() -> None:
     ]
 
 
-def test_a_cohort_reference_is_required(monkeypatch: pytest.MonkeyPatch) -> None:
+def test_a_cohort_reference_is_required(
+    monkeypatch: pytest.MonkeyPatch, tmp_path: Path
+) -> None:
     monkeypatch.setenv("RUNTIME_CHUNK_SIZE", "1")
     with pytest.raises(ValueError, match="--input or --roster"):
         plan_options().roster()
 
 
-def test_a_limit_is_applied_before_identity_is_derived() -> None:
+def test_a_limit_is_applied_before_identity_is_derived(tmp_path: Path) -> None:
     """A bounded cohort is a different cohort, and must hash as one."""
-    full = resolve_cohort(plan_options(input_path=MINI, chunk_size=2))
-    limited = resolve_cohort(plan_options(input_path=MINI, chunk_size=2, limit=2))
+    full = resolve_cohort(
+        plan_options(input_path=MINI, artifacts_root=tmp_path, chunk_size=2)
+    )
+    limited = resolve_cohort(
+        plan_options(input_path=MINI, artifacts_root=tmp_path, chunk_size=2, limit=2)
+    )
     assert full.roster.row_count == 4
     assert limited.roster.row_count == 2
     assert limited.roster.roster_id != full.roster.roster_id
@@ -98,63 +116,84 @@ def test_a_limit_is_applied_before_identity_is_derived() -> None:
     assert full.input_name == limited.input_name == "cik_sec_mini.csv"
 
 
-def test_a_limit_must_be_positive() -> None:
+def test_a_limit_must_be_positive(tmp_path: Path) -> None:
     with pytest.raises(ValueError, match="limit"):
-        resolve_cohort(plan_options(input_path=MINI, limit=0))
+        resolve_cohort(plan_options(input_path=MINI, artifacts_root=tmp_path, limit=0))
 
 
-def test_a_registry_cohort_names_its_source() -> None:
-    roster = build_roster(("0000005555",), ("NEWCO",))
+def test_a_registry_cohort_names_its_source(tmp_path: Path) -> None:
+    roster = roster_of(("0000005555",), ("NEWCO",))
     cohort = SelectedCohort.from_registry("reg1", roster)
     assert cohort.input_name == "registry:reg1"
     assert cohort.input_fingerprint == roster.roster_id
-    assert cohort.roster.ciks == ("0000005555",)
+    assert cohort.roster.range_ciks(0, cohort.roster.row_count) == ("0000005555",)
 
 
-def test_a_csv_cohort_keeps_its_fingerprint() -> None:
-    cohort = resolve_cohort(plan_options(input_path=MINI))
-    assert cohort.input_fingerprint == read_cik_manifest(MINI).input_fingerprint
-    assert roster_from_manifest(read_cik_manifest(MINI)).ciks == cohort.roster.ciks
+def test_a_csv_cohort_keeps_its_fingerprint(tmp_path: Path) -> None:
+    """A compiled cohort records the source digest, not the bytes it produced.
+
+    The fingerprint is the reproducibility root of a run: it goes into the plan,
+    into every row, and into the published snapshot manifest, so it has to stay
+    the digest of the file the operator actually pointed at.
+    """
+    cohort = resolve_cohort(plan_options(input_path=MINI, artifacts_root=tmp_path))
+    expected = compile_cik_cohort(
+        MINI, metadata_paths=resolve_metadata_paths(tmp_path / "expected")
+    )
+    assert cohort.input_fingerprint == expected.input_fingerprint
+    assert cohort.roster.roster_id == expected.roster_id
 
 
-def test_lineage_is_empty_for_a_csv_cohort() -> None:
-    assert plan_options(input_path=MINI).lineage() == {"registry_id": ""}
-    assert plan_options(registry_id="reg1").lineage() == {"registry_id": "reg1"}
+def test_lineage_is_empty_for_a_csv_cohort(tmp_path: Path) -> None:
+    assert plan_options(input_path=MINI, artifacts_root=tmp_path).lineage() == {
+        "registry_id": ""
+    }
+    assert plan_options(registry_id="reg1", artifacts_root=tmp_path).lineage() == {
+        "registry_id": "reg1"
+    }
 
 
 # ----------------------------------------------------------------- run options
 
 
-def test_a_plan_id_can_be_re_derived_from_a_cohort() -> None:
-    derived = derive_plan_id(plan_options(input_path=MINI, chunk_size=2))
+def test_a_plan_id_can_be_re_derived_from_a_cohort(tmp_path: Path) -> None:
+    derived = derive_plan_id(
+        plan_options(input_path=MINI, artifacts_root=tmp_path, chunk_size=2)
+    )
     options = run_options(input_path=MINI, chunk_size=2)
     assert options.plan_id == derived
 
 
-def test_deriving_with_different_chunking_yields_a_different_plan() -> None:
+def test_deriving_with_different_chunking_yields_a_different_plan(
+    tmp_path: Path,
+) -> None:
     assert derive_plan_id(
-        plan_options(input_path=MINI, chunk_size=2)
-    ) != derive_plan_id(plan_options(input_path=MINI, chunk_size=3))
+        plan_options(input_path=MINI, artifacts_root=tmp_path, chunk_size=2)
+    ) != derive_plan_id(
+        plan_options(input_path=MINI, artifacts_root=tmp_path, chunk_size=3)
+    )
 
 
-def test_a_limit_participates_in_the_derived_plan_id() -> None:
+def test_a_limit_participates_in_the_derived_plan_id(tmp_path: Path) -> None:
     assert derive_plan_id(
-        plan_options(input_path=MINI, chunk_size=2, limit=2)
-    ) != derive_plan_id(plan_options(input_path=MINI, chunk_size=2))
+        plan_options(input_path=MINI, artifacts_root=tmp_path, chunk_size=2, limit=2)
+    ) != derive_plan_id(
+        plan_options(input_path=MINI, artifacts_root=tmp_path, chunk_size=2)
+    )
 
 
-def test_no_plan_reference_is_refused() -> None:
+def test_no_plan_reference_is_refused(tmp_path: Path) -> None:
     with pytest.raises(ValueError, match="plan reference is required"):
         run_options(artifacts_root=Path("/tmp"))
 
 
 def test_a_copied_bundle_supplies_its_own_plan_id(tmp_path: Path) -> None:
-    manifest = read_cik_manifest(MINI)
+    cohort = resolve_cohort(plan_options(input_path=MINI, artifacts_root=tmp_path))
     plan = build_plan(
-        roster_from_manifest(manifest),
+        cohort.roster,
         chunk_size=2,
-        input_name=manifest.input_name,
-        input_fingerprint=manifest.input_fingerprint,
+        input_name=cohort.input_name,
+        input_fingerprint=cohort.input_fingerprint,
     )
     source = resolve_run_paths(plan.plan_id, tmp_path / "artifacts")
     write_plan(plan, source)
@@ -179,13 +218,13 @@ def test_a_malformed_bundle_manifest_names_nothing(tmp_path: Path) -> None:
     assert read_bundle_plan_id(tmp_path / "broken") == ""
 
 
-def test_chunk_selections_accept_ids_or_ranges() -> None:
+def test_chunk_selections_accept_ids_or_ranges(tmp_path: Path) -> None:
     assert run_options(plan_id="p", chunk_ids="0-2,5").chunk_ids == (0, 1, 2, 5)
     assert run_options(plan_id="p", chunk_ids=[3, 1]).chunk_ids == (3, 1)
     assert run_options(plan_id="p").chunk_ids == ()
 
 
-def test_a_worker_count_is_optional_and_defaults_to_unset() -> None:
+def test_a_worker_count_is_optional_and_defaults_to_unset(tmp_path: Path) -> None:
     assert run_options(plan_id="p").workers is None
     assert run_options(plan_id="p", workers=4).workers == 4
 

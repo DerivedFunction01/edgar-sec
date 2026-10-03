@@ -16,24 +16,20 @@ import pyarrow.parquet as pq
 from edgar_sec.domain.sec_urls import submissions_url
 from edgar_sec.domain.submissions.schemas import SUBMISSION_METADATA_SCHEMA
 from edgar_sec.pipelines.metadata_sync.checkpoints import discover_completed_chunks
-from edgar_sec.pipelines.metadata_sync.manifest import read_cik_manifest
 from edgar_sec.pipelines.metadata_sync.merger import merge_chunks, publish_snapshot
 from edgar_sec.pipelines.metadata_sync.paths import resolve_run_paths
 from edgar_sec.pipelines.metadata_sync.planner import build_plan, write_plan
-from edgar_sec.pipelines.metadata_sync.roster import (
-    roster_from_manifest,
-)
 from edgar_sec.pipelines.metadata_sync.snapshot import read_snapshot_parts
 from edgar_sec.pipelines.metadata_sync.worker import run_chunk, run_chunk_ids
-from tests.support import FakeSession, fixture_path, load_fixture
+from tests.support import FakeSession, fixture_cohort, load_fixture
 
 
-def _plan_for(tmp_path: Path, manifest, chunk_size: int):
+def _plan_for(tmp_path: Path, cohort, chunk_size: int):
     plan = build_plan(
-        roster_from_manifest(manifest),
+        cohort.roster,
         chunk_size=chunk_size,
-        input_name=manifest.input_name,
-        input_fingerprint=manifest.input_fingerprint,
+        input_name=cohort.input_name,
+        input_fingerprint=cohort.input_fingerprint,
     )
     return plan, resolve_run_paths(plan.plan_id, tmp_path)
 
@@ -77,8 +73,8 @@ def test_full_replay_produces_publishable_snapshot(
     client, session: FakeSession, tmp_path: Path
 ) -> None:
     _seed_session(session)
-    manifest = read_cik_manifest(fixture_path("cik_sec_mini.csv"))
-    plan, run_paths = _plan_for(tmp_path, manifest, 2)
+    cohort = fixture_cohort("cik_sec_mini.csv")
+    plan, run_paths = _plan_for(tmp_path, cohort, 2)
     write_plan(plan, run_paths)
 
     assert discover_completed_chunks(plan, run_paths) == {}
@@ -96,7 +92,7 @@ def test_full_replay_produces_publishable_snapshot(
     assert set(completed) == {0, 1}
 
     report = merge_chunks(plan, run_paths, plan.plan_id)
-    assert report.row_count == manifest.row_count == 4
+    assert report.row_count == cohort.row_count == 4
     assert report.chunk_count == 2
     assert report.duplicate_accessions == []
 
@@ -109,7 +105,7 @@ def test_full_replay_produces_publishable_snapshot(
     )
     assert table.schema.equals(SUBMISSION_METADATA_SCHEMA, check_metadata=False)
     ciks = table.column("cik").to_pylist()
-    assert sorted(ciks) == sorted(manifest.ciks)
+    assert sorted(ciks) == sorted(cohort.roster.range_ciks(0, cohort.row_count))
 
     pointer = json.loads(run_paths.metadata.current_pointer.read_text())
     assert pointer["snapshot_id"] == plan.plan_id
@@ -121,8 +117,8 @@ def test_replay_is_resumable_and_does_not_refetch(
     client, session: FakeSession, tmp_path: Path
 ) -> None:
     _seed_session(session)
-    manifest = read_cik_manifest(fixture_path("cik_sec_mini.csv"))
-    plan, run_paths = _plan_for(tmp_path, manifest, 2)
+    cohort = fixture_cohort("cik_sec_mini.csv")
+    plan, run_paths = _plan_for(tmp_path, cohort, 2)
     write_plan(plan, run_paths)
 
     run_chunk(client, plan, run_paths, 0, snapshot_id=plan.plan_id, workers=2)
@@ -149,8 +145,8 @@ def test_ford_row_preserves_oracle_shape(
     client, session: FakeSession, tmp_path: Path
 ) -> None:
     _seed_session(session)
-    manifest = read_cik_manifest(fixture_path("cik_sec_mini.csv"))
-    plan, run_paths = _plan_for(tmp_path, manifest, 4)
+    cohort = fixture_cohort("cik_sec_mini.csv")
+    plan, run_paths = _plan_for(tmp_path, cohort, 4)
     write_plan(plan, run_paths)
     run_chunk(client, plan, run_paths, 0, snapshot_id=plan.plan_id, workers=2)
 

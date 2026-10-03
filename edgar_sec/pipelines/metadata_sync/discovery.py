@@ -377,7 +377,7 @@ def list_input_manifests(directory: str | Path | None = None) -> list[InputSumma
     root = Path(directory) if directory is not None else resolve_paths().uploads_root
     if not root.is_dir():
         return []
-    from .manifest import read_cik_manifest
+    from .manifest import count_cohort_rows
 
     found: list[InputSummary] = []
     for path in sorted(root.glob("*.csv")):
@@ -389,12 +389,20 @@ def list_input_manifests(directory: str | Path | None = None) -> list[InputSumma
             readable_reason="",
         )
         try:
-            manifest = read_cik_manifest(path)
+            # Counted, not compiled: listing candidates must stay cheap and must
+            # not write an artifact, so a menu render costs one pass per file
+            # rather than a cohort build nobody asked for.
+            rows = count_cohort_rows(path)
         except (OSError, ValueError) as exc:
             summary["readable_reason"] = str(exc)
         else:
-            summary["row_count"] = len(manifest.ciks)
-            summary["readable"] = True
+            if rows == 0:
+                summary["readable_reason"] = (
+                    f"input manifest contains no usable CIKs: {path}"
+                )
+            else:
+                summary["row_count"] = rows
+                summary["readable"] = True
         found.append(summary)
     found.sort(key=lambda item: item["name"])
     return found

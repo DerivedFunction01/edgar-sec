@@ -155,7 +155,7 @@ Scanners are defined modularly in `edgar_sec/foundation/scanners/` and collected
 - `whole-file-read`: Bans `read_bytes()` consumed by a digest constructor. Hashing a whole
   artifact to prove it intact materializes the file; use `file_sha256`. Narrow on purpose —
   a `read_bytes()` feeding `json.loads` on a small payload is a different trade and is not flagged.
-- `regex-alternations`: Bans hand-crafted 3+ branch alternation literals, so `foundation.regex.builder` stays load-bearing.
+- `regex-alternations`: Bans hand-crafted 3+ branch alternation literals, so `foundation.regex.builder` is used.
 - `legacy-shims`: Bans backward-compatibility aliases and transitional shims (enforces §1.1).
 - `json-io`: Bans redundant JSON helper definitions and non-atomic JSON writes.
 - `date-patterns`: Bans private month tables and hand-crafted date patterns.
@@ -217,7 +217,7 @@ Every package in the repository must be rigorously documented to preserve archit
   numbers, LOC, module or test-file totals, parameters, fields, or pipeline-stage
   counts in prose when names or behavior express the contract. Retain numbers
   that are actual runtime policy or persisted schema/version identifiers.
-- **The deliberate-gaps section is load-bearing.** A reader must never mistake an
+- **The deliberate-gaps section is important.** A reader must never mistake an
   absent capability for an oversight. Where a capability is deliberately omitted,
   deferred to a future phase, or substituted with an alternative pattern, say so
   and name the alternative or the roadmap item. Record only gaps a caller would

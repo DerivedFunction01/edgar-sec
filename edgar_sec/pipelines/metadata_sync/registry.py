@@ -41,17 +41,15 @@ from edgar_sec.infra.storage.parquet import (
     write_parquet_table,
 )
 
-from .manifest import read_cik_manifest
+from .manifest import compile_cik_cohort
 from .paths import REGISTRY_EFFECTIVE_CIK_DATASET, MetadataPaths
 from .roster import (
     ROSTER_SCHEMA_VERSION,
     Roster,
     RosterError,
-    build_roster,
     read_roster,
-    roster_from_manifest,
     roster_to_csv_text,
-    write_roster,
+    write_roster_rows,
 )
 from .source_registry import SOURCE_NAME, load_source_snapshot, parse_company_tickers
 
@@ -235,9 +233,8 @@ def compare_sources(
         observed_at=str(source.manifest["retrieved_at"]),
     )
 
-    manifest = read_cik_manifest(curated_input_path)
-    curated_roster = roster_from_manifest(manifest)
-    curated_by_cik = curated_roster.name_map()
+    cohort = compile_cik_cohort(curated_input_path, metadata_paths=metadata_paths)
+    curated_by_cik = cohort.roster.name_map()
     active_by_cik: dict[str, list[dict[str, Any]]] = defaultdict(list)
     for listing in listings:
         active_by_cik[listing["cik_padded"]].append(listing)
@@ -258,7 +255,7 @@ def compare_sources(
         for row in delta_rows
     ]
 
-    registry_id = registry_id_for(source_snapshot_id, manifest.input_fingerprint)
+    registry_id = registry_id_for(source_snapshot_id, cohort.input_fingerprint)
     root = metadata_paths.registry_root(registry_id)
     datasets_root = metadata_paths.registry_manifest_root(registry_id)
     root.mkdir(parents=True, exist_ok=True)
@@ -296,8 +293,8 @@ def compare_sources(
         "registry_id": registry_id,
         "source": SOURCE_NAME,
         "source_snapshot_id": source_snapshot_id,
-        "curated_input_path": str(manifest.input_path),
-        "curated_input_fingerprint": manifest.input_fingerprint,
+        "curated_input_path": str(cohort.input_path),
+        "curated_input_fingerprint": cohort.input_fingerprint,
         "artifact_path": effective_csv.relative_to(artifacts_root).as_posix(),
         "artifact_sha256": file_sha256(effective_csv),
         "row_count": len(registry_rows),
@@ -317,8 +314,8 @@ def compare_sources(
         "registry_id": registry_id,
         "source": SOURCE_NAME,
         "source_snapshot_id": source_snapshot_id,
-        "curated_input_path": str(manifest.input_path),
-        "curated_input_fingerprint": manifest.input_fingerprint,
+        "curated_input_path": str(cohort.input_path),
+        "curated_input_fingerprint": cohort.input_fingerprint,
         "registry_root": str(root),
         "datasets_root": str(datasets_root),
         "effective_input_path": str(effective_csv),
@@ -349,15 +346,17 @@ def _publish_effective_roster(
     is still written beside it, but nothing in the fetch path has to parse a
     text manifest to learn which CIKs a run covers.
     """
+    path = metadata_paths.effective_cik_roster(registry_id)
     try:
-        roster = build_roster(
-            [str(row["cik_padded"]) for row in registry_rows],
-            [str(row["canonical_name"] or "") for row in registry_rows],
-        )
+        rows = [
+            (str(row["cik_padded"]), str(row["canonical_name"] or ""))
+            for row in registry_rows
+        ]
+        if len({cik for cik, _ in rows}) != len(rows):
+            raise RosterError("effective CIK roster contains a duplicate CIK")
+        roster, digest = write_roster_rows(rows, path)
     except RosterError as exc:
         raise RegistryError(f"effective CIK roster is not publishable: {exc}") from exc
-    path = metadata_paths.effective_cik_roster(registry_id)
-    digest = write_roster(roster, path)
     atomic_write_json(
         path.with_name(path.name + ".manifest.json"),
         {
@@ -446,7 +445,7 @@ def ensure_registry(
     curated = Path(curated_input_path)
     if not curated.is_file():
         raise FileNotFoundError(f"curated CIK manifest not found: {curated}")
-    fingerprint = read_cik_manifest(curated).input_fingerprint
+    fingerprint = file_sha256(curated)
     registry_id = registry_id_for(source_snapshot_id, fingerprint)
     try:
         roster = load_registry_roster(registry_id, metadata_paths)

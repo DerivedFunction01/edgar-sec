@@ -51,7 +51,7 @@ in `runtime/settings/__init__.py`.
 
 - Zero internal dependencies on upper layers (`AGENTS.md` §1), re-validated on
   every gate run by the `layer-boundary` scanner.
-- Two function-local imports are load-bearing rather than stylistic, because a
+- Two function-local imports are important rather than stylistic, because a
   module-scope import in either direction would be a cycle:
   `runtime/resources.derive_resources()` reaching into `.settings`, and the
   default factories in `runtime/settings/runtime.py` reaching into `..resources`.

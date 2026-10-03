@@ -7,8 +7,11 @@ whenever the test tree is reorganized to mirror the source tree.
 
 from __future__ import annotations
 
+import atexit
 import json
+import tempfile
 import threading
+from collections.abc import Iterable
 from pathlib import Path
 from typing import Any
 
@@ -16,6 +19,12 @@ from edgar_sec.domain.sec_urls import historical_submissions_url, submissions_ur
 from edgar_sec.infra.sec_http.client import SecHttpClient
 from edgar_sec.infra.sec_http.rate_limit import RateLimiter
 from edgar_sec.infra.sec_http.retry import RetryPolicy
+from edgar_sec.pipelines.metadata_sync.manifest import (
+    CompiledCohort,
+    compile_cik_cohort,
+)
+from edgar_sec.pipelines.metadata_sync.paths import resolve_metadata_paths
+from edgar_sec.pipelines.metadata_sync.roster import Roster, write_roster_rows
 from edgar_sec.pipelines.metadata_sync.sec_client import SubmissionsClient
 
 TESTS_ROOT = Path(__file__).resolve().parent
@@ -72,6 +81,89 @@ def cik_payload(cik: str, name: str, accession: str | None = None) -> dict[str, 
             "files": [],
         },
     }
+
+
+#: Cohort datasets built for a test live here and go when the run ends. A roster
+#: is a reference to a real Parquet artifact, so a test that wants one has to have
+#: a file behind it; keeping the scratch directory out of the test body is what
+#: lets a test say ``roster_of(...)`` and stay about what it is testing.
+_SCRATCH: list[tempfile.TemporaryDirectory[str]] = []
+
+
+def roster_of(
+    ciks: Iterable[str], names: Iterable[str] = (), *, name: str = "cohort.parquet"
+) -> Roster:
+    """Build a small cohort dataset for a test and return the roster over it.
+
+    Prefer a test's own ``tmp_path`` when the path matters to the assertion; this
+    is for the common case where the test only needs a cohort to hand to the code
+    under test.
+    """
+    cik_list = tuple(ciks)
+    name_list = tuple(names) or ("",) * len(cik_list)
+    if len(name_list) != len(cik_list):
+        raise ValueError("roster_of needs one name per CIK")
+    scratch = tempfile.TemporaryDirectory(prefix="edgar-test-cohort-")
+    _SCRATCH.append(scratch)
+    roster, _digest = write_roster_rows(
+        list(zip(cik_list, name_list, strict=True)),
+        Path(scratch.name) / name,
+    )
+    return roster
+
+
+atexit.register(lambda: [scratch.cleanup() for scratch in _SCRATCH])
+
+
+def scratch_root() -> Path:
+    """A temporary artifacts root shared by the run, for tests that only read.
+
+    Compiling writes a dataset, so even a test that merely wants to know a
+    fixture's cohort needs somewhere to put it. Use the test's own ``tmp_path``
+    whenever the artifact's location is part of the assertion.
+    """
+    global _ROOT_SCRATCH
+    if _ROOT_SCRATCH is None:
+        _ROOT_SCRATCH = tempfile.TemporaryDirectory(prefix="edgar-test-root-")
+        _SCRATCH.append(_ROOT_SCRATCH)
+    return Path(_ROOT_SCRATCH.name)
+
+
+_ROOT_SCRATCH: tempfile.TemporaryDirectory[str] | None = None
+
+
+def fixture_cohort(fixture_name: str, *, limit: int | None = None) -> CompiledCohort:
+    """Compile a committed CIK fixture into a throwaway cohort.
+
+    For tests that need to know what a fixture resolves to rather than to control
+    where its artifacts land.
+    """
+    return compile_cik_cohort(
+        fixture_path(fixture_name),
+        limit=limit,
+        metadata_paths=resolve_metadata_paths(scratch_root()),
+    )
+
+
+def fixture_ciks(fixture_name: str) -> tuple[str, ...]:
+    """The usable CIKs of a committed fixture, in cohort order."""
+    cohort = fixture_cohort(fixture_name)
+    return cohort.roster.range_ciks(0, cohort.row_count)
+
+
+def compiled_cohort(
+    fixture_name: str, root: str | Path, *, limit: int | None = None
+) -> CompiledCohort:
+    """Compile a committed CIK fixture into a cohort under a test artifacts root.
+
+    Compiling writes a dataset, so the caller must name a root it is willing to
+    have written into -- normally the test's own ``tmp_path``.
+    """
+    return compile_cik_cohort(
+        fixture_path(fixture_name),
+        limit=limit,
+        metadata_paths=resolve_metadata_paths(root),
+    )
 
 
 class FakeResponse:
@@ -146,9 +238,14 @@ __all__ = [
     "build_test_http",
     "catalog_fixture_path",
     "cik_payload",
+    "compiled_cohort",
+    "fixture_ciks",
+    "fixture_cohort",
     "fixture_path",
     "historical_url",
     "load_catalog_fixture",
     "load_fixture",
+    "roster_of",
+    "scratch_root",
     "submissions_document",
 ]

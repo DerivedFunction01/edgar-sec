@@ -664,7 +664,7 @@ def test_profiles_sql_reports_owner_org_presence_truthfully(tmp_path: Path) -> N
 
 
 def test_company_name_stays_a_string_for_a_name_less_registrant(tmp_path: Path) -> None:
-    """The empty-string fallback is load-bearing, not an oversight.
+    """The empty-string fallback is important, not an oversight.
 
     ``company_family`` falls back to ``company_name`` in two places, and
     ``company_name`` is one of the six capped classification dimensions. A NULL

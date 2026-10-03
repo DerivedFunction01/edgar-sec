@@ -10,7 +10,7 @@ except which plan is resolved -- so it takes those as arguments instead of
 importing the operator, and the operator hands them over.
 
 The sequence printed here is the one the pipeline actually implements, and every
-step is load-bearing. ``export`` copies the bundle out; each machine runs
+step is important. ``export`` copies the bundle out; each machine runs
 ``worker`` against its own bundle; the coordinator must ``import`` each returned
 bundle through the trust boundary before ``merge`` will see those chunks. Emitting
 export/worker/merge and omitting ``import`` produced a workflow whose final

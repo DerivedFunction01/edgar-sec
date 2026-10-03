@@ -1,6 +1,6 @@
 """Unit tests for engine.selection.selector: the five-phase deficit fill.
 
-The load-bearing test is
+The important test is
 :func:`test_a_dominant_family_cannot_fill_the_selection`. A corpus where one
 corporate group holds two thirds of the documents is the realistic shape of the
 problem the six-part classification cap exists to solve: without it, a plain

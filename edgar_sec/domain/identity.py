@@ -55,7 +55,7 @@ class AccessionNumber:
         """Accept either EDGAR spelling and return the hyphenated form.
 
         EDGAR serves ``0000320193-23-000106`` and ``000032019320000106`` for the
-        same filing, and both spellings are load-bearing on their own: the
+        same filing, and both spellings are important: the
         hyphenated form is the human and bundle-filename convention, while the
         filing catalog and committed fixture rows carry the unhyphenated one.
         Accepting only the hyphenated form made a real catalog plan unloadable

@@ -5,7 +5,7 @@ contain. The published base is never refetched: delta chunks are merged with the
 existing snapshot Parquet, so a snapshot that already holds N CIKs and receives K
 new ones ends with N+K rows and only K network fetches.
 
-Identity is the load-bearing decision here. A delta plan is identified by its base
+Identity is the important decision here. A delta plan is identified by its base
 snapshot *and* its delta roster, never by the request file that named the CIKs:
 the same requested list against two different bases is two different deltas.
 ``new_snapshot_id`` defaults to the delta plan id, already a content address over
@@ -25,12 +25,12 @@ from typing import Any
 from edgar_sec.foundation.runtime.settings.runtime import DEFAULT_CHUNK_SIZE
 from edgar_sec.infra.storage.duckdb import (
     connect,
+    copy_query_to_parquet,
     find_duplicate_keys,
     find_null_keys,
 )
-from edgar_sec.infra.storage.parquet import read_parquet_table
 
-from .manifest import InputManifest, read_cik_manifest
+from .manifest import compile_cik_cohort
 from .merger import (
     MergeError,
     MergeReport,
@@ -44,14 +44,7 @@ from .merger import (
 )
 from .paths import MetadataPaths, resolve_run_paths
 from .planner import Plan, build_plan, utc_now_iso, write_plan
-from .roster import (
-    Roster,
-    build_roster,
-    read_cik_index,
-    roster_from_manifest,
-    union_rosters,
-    without_ciks,
-)
+from .roster import Roster, RosterError, read_roster
 from .sec_client import SubmissionsClient
 from .snapshot import read_snapshot_parts
 from .validation import find_duplicate_accessions
@@ -61,12 +54,12 @@ __all__ = [
     "AugmentPreflight",
     "AugmentResult",
     "augment",
-    "augment_from_manifest",
+    "augment_from_input",
     "augment_from_roster",
-    "base_snapshot_ciks",
+    "base_cik_sources",
+    "derive_delta_cohort",
     "derive_delta_plan",
     "preflight_augment",
-    "snapshot_cik_roster",
 ]
 
 
@@ -80,32 +73,28 @@ class AugmentPreflight:
     the base already covers the request -- costs no network request, no
     rate-limit budget, and no published delta plan, and it reads as a result
     rather than as a failure.
+
+    It carries counts rather than cohorts: the question is how much overlap there
+    is, and answering it by building the difference would do the very work this
+    check exists to avoid.
     """
 
     base_snapshot_id: str
-    requested: Roster
-    base: Roster
-    delta: Roster
+    requested_count: int
+    already_present_count: int
+    delta_count: int
 
     @property
     def is_empty(self) -> bool:
         """True when the base already holds every requested CIK."""
-        return self.delta.is_empty
-
-    @property
-    def requested_count(self) -> int:
-        return self.requested.row_count
-
-    @property
-    def already_present_count(self) -> int:
-        return self.requested_count - self.delta.row_count
+        return self.delta_count == 0
 
     def describe(self) -> str:
         """One operator-facing line describing the pending work."""
         return (
             f"{self.requested_count:,} requested, "
             f"{self.already_present_count:,} already in base {self.base_snapshot_id}, "
-            f"{self.delta.row_count:,} to fetch"
+            f"{self.delta_count:,} to fetch"
         )
 
 
@@ -135,6 +124,57 @@ class AugmentResult:
         return self.report.row_count if self.report is not None else self.base_row_count
 
 
+def base_cik_sources(
+    metadata_paths: MetadataPaths, snapshot_id: str
+) -> tuple[list[str], bool]:
+    """The published artifacts that hold a snapshot's CIK set.
+
+    The published index is preferred, because it is the artifact the snapshot
+    claims to hold. A snapshot published before the index existed falls back to
+    projecting the CIK column of every part its manifest lists. A missing base is
+    still an error: an unreadable base must never be mistaken for an empty one.
+    """
+    index_path = metadata_paths.snapshot_cik_index(snapshot_id)
+    if index_path.is_file():
+        return [str(index_path)], False
+    parts = read_snapshot_parts(metadata_paths.snapshot_manifest(snapshot_id))
+    return [str(path) for path in parts.paths], True
+
+
+#: Overlap between a requested cohort and a base snapshot, counted rather than
+#: materialized. Both paths and both column names are bound, so nothing here
+#: composes SQL text from a value.
+_CIK_OVERLAP_QUERY = """
+SELECT
+    count(*) FILTER (WHERE base.cik IS NULL) AS absent_rows,
+    count(*) FILTER (WHERE base.cik IS NOT NULL) AS present_rows
+FROM read_parquet(?) AS requested
+LEFT JOIN read_parquet(?) AS base ON base.cik = requested.cik_padded
+"""
+
+#: The requested cohort reduced against the base, written out as its own cohort.
+#: Ordinals are renumbered from zero: the surviving rows carry the requested
+#: cohort's ordinals, and an ordinal is a position *within* a cohort, so keeping
+#: them would leave the delta addressed from wherever the removed rows happened to
+#: fall. Chunk ranges start at zero, so a delta numbered from four would have its
+#: first chunk read back empty.
+_CIK_ANTI_JOIN_QUERY = """
+WITH kept AS (
+    SELECT ordinal, cik_padded, name
+    FROM read_parquet(?) AS requested
+    WHERE NOT EXISTS (
+        SELECT 1 FROM read_parquet(?) AS base WHERE base.cik = requested.cik_padded
+    )
+)
+SELECT
+    row_number() OVER (ORDER BY ordinal) - 1 AS ordinal,
+    cik_padded,
+    name
+FROM kept
+ORDER BY ordinal
+"""
+
+
 def preflight_augment(
     requested: Roster,
     metadata_paths: MetadataPaths,
@@ -149,69 +189,90 @@ def preflight_augment(
     the correct answer either way, and a request that the base already satisfies
     is reported as no work rather than refused.
     """
-    base = snapshot_cik_roster(metadata_paths, base_snapshot_id)
+    sources, _from_parts = base_cik_sources(metadata_paths, base_snapshot_id)
+    if requested.dataset is None or not sources:
+        return AugmentPreflight(base_snapshot_id, 0, 0, 0)
+
+    con = connect()
+    try:
+        absent, present = con.execute(
+            _CIK_OVERLAP_QUERY, [[str(requested.dataset)], _base_path_list(sources)]
+        ).fetchone()
+    finally:
+        con.close()
+
     return AugmentPreflight(
         base_snapshot_id=base_snapshot_id,
-        requested=requested,
-        base=base,
-        delta=without_ciks(requested, base.ciks),
+        requested_count=requested.row_count,
+        already_present_count=int(present or 0),
+        delta_count=int(absent or 0),
     )
 
 
-def snapshot_cik_roster(
+def _base_path_list(sources: list[str]) -> list[str] | str:
+    """Bind a single source directly and several as a list."""
+    return sources[0] if len(sources) == 1 else [str(path) for path in sources]
+
+
+def derive_delta_cohort(
+    requested: Roster,
     metadata_paths: MetadataPaths,
-    snapshot_id: str,
     *,
-    names: dict[str, str] | None = None,
+    base_snapshot_id: str,
+    destination: str | Path,
 ) -> Roster:
-    """Read the CIK set already present in a published snapshot.
+    """Materialize the CIKs the base does not hold as their own cohort.
 
-    The published index is read when one exists, because it is the artifact the
-    snapshot claims to hold. A snapshot published before the index existed falls
-    back to projecting the CIK column of every part its manifest lists, and a
-    missing base is still an error: an unreadable base must never be mistaken for
-    an empty one.
+    The difference is written as a cohort rather than returned as a set, because
+    it is a cohort: it carries an identity that the merge report records, and the
+    plan over it derives its chunk layout from the same ordinals the requested
+    cohort used, so a CIK keeps its position across the reduction.
     """
-    index_path = metadata_paths.snapshot_cik_index(snapshot_id)
-    if index_path.is_file():
-        ciks = read_cik_index(index_path)
-    else:
-        parts = read_snapshot_parts(metadata_paths.snapshot_manifest(snapshot_id))
-        ciks = tuple(
-            str(value)
-            for value in (
-                value
-                for path in parts.paths
-                for value in read_parquet_table(path, columns=["cik"])
-                .column("cik")
-                .to_pylist()
-                if value
-            )
+    if requested.dataset is None:
+        raise RosterError("cannot reduce an empty cohort")
+    sources, _from_parts = base_cik_sources(metadata_paths, base_snapshot_id)
+    con = connect()
+    try:
+        copy_query_to_parquet(
+            con,
+            _CIK_ANTI_JOIN_QUERY,
+            destination,
+            params=[[str(requested.dataset)], _base_path_list(sources)],
         )
-    if names:
-        return build_roster(
-            sorted(set(ciks)), [names.get(cik, "") for cik in sorted(set(ciks))]
-        )
-    return build_roster(sorted(set(ciks)))
+    finally:
+        con.close()
+    return read_roster(destination)
 
 
-def base_snapshot_ciks(metadata_paths: MetadataPaths, snapshot_id: str) -> set[str]:
-    """Read the CIK set already present in a published snapshot."""
-    return set(snapshot_cik_roster(metadata_paths, snapshot_id).ciks)
+def delta_cohort_path(
+    requested: Roster, metadata_paths: MetadataPaths, base_snapshot_id: str
+) -> Path:
+    """Where the difference between a requested cohort and a base is compiled.
+
+    Keyed by both inputs, so the same reduction is compiled once and two
+    different reductions never share a cohort.
+    """
+    key = f"{requested.roster_id}-minus-{base_snapshot_id}"
+    return metadata_paths.compiled_cohort_file(key)
 
 
 def derive_delta_plan(
     requested: Roster,
-    base: Roster,
+    metadata_paths: MetadataPaths,
     *,
     chunk_size: int = DEFAULT_CHUNK_SIZE,
-    base_snapshot_id: str = "",
+    base_snapshot_id: str,
     input_name: str = "",
     input_fingerprint: str = "",
     created_at: str | None = None,
 ) -> Plan:
     """Build the plan covering exactly the CIKs absent from the base snapshot."""
-    delta = without_ciks(requested, base.ciks)
+    delta = derive_delta_cohort(
+        requested,
+        metadata_paths,
+        base_snapshot_id=base_snapshot_id,
+        destination=delta_cohort_path(requested, metadata_paths, base_snapshot_id),
+    )
     if delta.is_empty:
         raise MergeError(
             "augmentation requested no work: every requested CIK is already "
@@ -228,9 +289,51 @@ def derive_delta_plan(
     )
 
 
+#: Symmetric difference between what was published and what should have been.
+#: Zero is the only acceptable answer; counts alone would not prove the sets
+#: match, since one CIK could be missing and another duplicated. Published parts
+#: and a snapshot index key their CIK as ``cik``, while a cohort dataset keys it as
+#: ``cik_padded``, so the cohort side is aliased onto the same name.
+_CIK_SET_DIFFERENCE_QUERY = """
+WITH merged AS (SELECT DISTINCT cik FROM read_parquet(?)),
+     carried AS (SELECT DISTINCT cik FROM read_parquet(?)),
+     fetched AS (SELECT DISTINCT cik_padded AS cik FROM read_parquet(?)),
+     expected AS (SELECT cik FROM carried UNION SELECT cik FROM fetched)
+SELECT
+    (SELECT count(*) FROM (SELECT cik FROM merged EXCEPT SELECT cik FROM expected))
+    + (SELECT count(*) FROM (SELECT cik FROM expected EXCEPT SELECT cik FROM merged))
+"""
+
+
+def _ciks_outside_expected(
+    metadata_paths: MetadataPaths,
+    base_snapshot_id: str,
+    delta: Roster,
+    published_parts: list[str],
+) -> int:
+    """Count the CIKs by which a merged snapshot differs from base plus delta."""
+    if delta.dataset is None:
+        raise RosterError("cannot verify a merge against an empty delta")
+    sources, _from_parts = base_cik_sources(metadata_paths, base_snapshot_id)
+    con = connect()
+    try:
+        return int(
+            con.execute(
+                _CIK_SET_DIFFERENCE_QUERY,
+                [
+                    [str(path) for path in published_parts],
+                    _base_path_list(sources),
+                    str(delta.dataset),
+                ],
+            ).fetchone()[0]
+        )
+    finally:
+        con.close()
+
+
 def augment(
     client: SubmissionsClient,
-    manifest: InputManifest,
+    requested: Roster,
     metadata_paths: MetadataPaths,
     *,
     base_snapshot_id: str,
@@ -240,6 +343,8 @@ def augment(
     lineage: dict[str, str] | None = None,
     preflight: AugmentPreflight | None = None,
     progress: Callable[[dict[str, Any]], None] | None = None,
+    input_name: str = "",
+    input_fingerprint: str = "",
 ) -> AugmentResult:
     """Augment a published snapshot with any newly requested CIKs.
 
@@ -263,12 +368,11 @@ def augment(
     """
     emit = _safe_progress(progress)
     check = preflight or preflight_augment(
-        roster_from_manifest(manifest),
+        requested,
         metadata_paths,
         base_snapshot_id=base_snapshot_id,
     )
     base_parts = read_snapshot_parts(metadata_paths.snapshot_manifest(base_snapshot_id))
-    base = check.base
     base_rows = (
         sum(int(part["row_count"]) for part in base_parts.layout.manifest["parts"])
         if base_parts.layout.multipart
@@ -291,12 +395,12 @@ def augment(
         )
 
     plan = derive_delta_plan(
-        check.requested,
-        check.base,
+        requested,
+        metadata_paths,
         chunk_size=chunk_size,
         base_snapshot_id=base_snapshot_id,
-        input_name=manifest.input_name,
-        input_fingerprint=manifest.input_fingerprint,
+        input_name=input_name,
+        input_fingerprint=input_fingerprint,
     )
     resolved_snapshot_id = new_snapshot_id or plan.plan_id
     run_paths = resolve_run_paths(plan.plan_id, metadata_paths.artifacts_root)
@@ -379,10 +483,15 @@ def augment(
     report.row_count = row_count
     report.parts_digest = parts_digest(report.parts)
     report.filing_record_count = _filing_record_count([str(p) for p in part_paths])
+    stray = _ciks_outside_expected(
+        metadata_paths, base_snapshot_id, plan.roster, [str(p) for p in part_paths]
+    )
+    if stray:
+        raise MergeError(
+            "augmentation rejected: merged CIK set differs from base plus delta "
+            f"by {stray} CIKs"
+        )
     merged = _published_ciks(part_paths)
-    expected_ciks = union_rosters(base, plan.roster)
-    if set(merged) != set(expected_ciks.ciks):
-        raise MergeError("augmentation rejected: merged CIK set differs from union")
 
     publish_cik_index(report, metadata_paths, merged)
     report.merged_at = utc_now_iso()
@@ -411,16 +520,10 @@ def augment_from_roster(
     new_snapshot_id: str = "",
     **kwargs: Any,
 ) -> AugmentResult:
-    """Augment from an already-resolved roster rather than a manifest file."""
+    """Augment from an already-resolved cohort rather than a CIK input file."""
     return augment(
         client,
-        InputManifest(
-            input_name=kwargs.pop("input_name", ""),
-            input_path=Path("."),
-            input_fingerprint=kwargs.pop("input_fingerprint", ""),
-            ciks=requested.ciks,
-            names=requested.names,
-        ),
+        requested,
         metadata_paths,
         base_snapshot_id=base_snapshot_id,
         new_snapshot_id=new_snapshot_id,
@@ -428,12 +531,19 @@ def augment_from_roster(
     )
 
 
-def augment_from_manifest(
+def augment_from_input(
     client: SubmissionsClient,
     input_path: str,
     metadata_paths: MetadataPaths,
     **kwargs: Any,
 ) -> AugmentResult:
-    """Convenience wrapper reading the manifest from disk before augmenting."""
-    manifest = read_cik_manifest(input_path)
-    return augment(client, manifest, metadata_paths, **kwargs)
+    """Compile a CIK input file into a cohort and augment from it."""
+    cohort = compile_cik_cohort(input_path, metadata_paths=metadata_paths)
+    return augment(
+        client,
+        cohort.roster,
+        metadata_paths,
+        input_name=cohort.input_name,
+        input_fingerprint=cohort.input_fingerprint,
+        **kwargs,
+    )

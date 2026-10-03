@@ -19,20 +19,25 @@ bundle-relative locations this package adds are:
 
 | Command | Writes |
 | :--- | :--- |
+| `plan`, `augment` | `metadata/cohorts/<key>/ciks.parquet` plus its `cohort.json` — the compiled cohort, keyed by the digest of what produced it |
 | `sources compare` | `metadata/registries/<registry_id>/datasets/effective_ciks.parquet` (the roster a plan consumes) and `metadata/registries/<registry_id>/effective_cik_input.csv` (an export) |
 | `export` | `<destination>/<worker_id>/` holding the plan manifest, roster, input diagnostics, and one assignment: byte-identical bundles, disjoint assignments |
 | `worker` | `<bundle>/chunks/chunk_NNNN.parquet` and `<bundle>/receipt.json` |
 
-Progress goes to stderr, so merge output owns stdout: a terminal gets a `tqdm`
-bar, a pipe or a captured log gets one plain line per event prefixed by the phase
-that emitted it.
+A cohort appears twice on disk, and the two copies are not interchangeable.
+`metadata/cohorts/<key>/` is the shared store a cohort is compiled into once, keyed
+by the digest of its input, so re-planning an unchanged seed reuses it. A plan
+bundle carries its own byte-identical copy at `plans/<plan_id>/roster/ciks.parquet`,
+because `export` copies the bundle directory to another machine and a worker reading
+it has no access to the coordinator's store. The bundle copy is what
+`plan.json`'s `roster_artifact_sha256` names.
 
 ## Module layout
 
 | Module | Responsibility |
 | :--- | :--- |
-| `roster.py` | The CIK roster: content-addressed identity, atomic Parquet IO, set operations, the published CIK index. |
-| `manifest.py` | CIK CSV ingestion: normalization, deduplication, curated names, the input fingerprint. |
+| `roster.py` | The CIK cohort: content-addressed identity derived by streaming the dataset, ordinal-range reads, atomic Parquet IO, the published CIK index. |
+| `manifest.py` | Compiling a CIK CSV into a cohort: one DuckDB pass that normalizes, validates, deduplicates, numbers, and zero-pads, plus the cheap count used to list a candidate input. |
 | `planner.py` | `Plan`: chunk layout as ordinal ranges, plan identity, bundle write and validated load. |
 | `assignment.py` | Static chunk-to-worker assignment, and the worker receipt that crosses the machine boundary. |
 | `distribution.py` | Copy-based multi-machine distribution: export, select, adopt. The import trust boundary. |
@@ -60,20 +65,36 @@ that emitted it.
 AGENTS.md §4 is normative for the plan/worker/merge lifecycle. What this package
 adds on top:
 
-- **A roster is stored once and referenced by identity.** `plan.json` records the
+- **A cohort is stored once and referenced by identity.** `plan.json` records the
   roster identity and the chunk layout; the cohort lives once in
   `roster/ciks.parquet`, and chunk membership is a range over roster ordinals, so
   the manifest is constant in cohort size.
+- **A roster is a handle, not a pair of tuples.** It carries its identity, its row
+  count, and the path of its dataset, and callers read the slice they need — one
+  chunk's ordinal range, the whole cohort streamed for an identity or a CSV export.
+  Nothing holds the whole cohort in the Python heap, which is what keeps a
+  full-universe run inside the configured memory budget.
+- **A CIK input is compiled, not parsed.** `plan` and `augment` reduce a curated CSV
+  to a cohort in one DuckDB statement: normalize, validate, deduplicate, number, and
+  zero-pad. The reader is fully specified and never auto-detects, because inference
+  reads a 20,480-row sample — it would type the CIK column as an integer and discard
+  padding a curated file already carries, and hard-error on a non-numeric cell past
+  the sample. Every cell is validated as text before it becomes an integer, because a
+  cast alone reads `12.5` as 13, `1e5` as 100000, and `0x10` as 16 — all real
+  registrants, so an unguarded compile would publish members the curator never named.
 - **Plan identity is the cohort, not the schedule.** `derive_plan_id` covers the
   roster identity, the chunk size, the plan kind, and — for a delta — the base
   snapshot. It never covers an assignment, a worker count, or a timestamp, so
   reassigning a cohort keeps the same plan directory and the same checkpoints.
-  `--limit` is applied to the roster *before* identity is derived, so a bounded
-  run cannot collide with a full run over one file.
+  `--limit` is applied while the cohort is compiled, *before* identity is derived, so
+  a bounded run cannot collide with a full run over one file. Reordering a curated
+  file also changes the cohort, because `--limit` selects a prefix: the order is part
+  of what the run covers.
 - **A delta plan is bound to its base.** The same requested CIK list against two
-  bases is two plans with two delta rosters. Augmentation publishes
-  `base_ciks ∪ delta_ciks` and records the parent, the delta roster, and both
-  digests in the new manifest.
+  bases is two plans with two delta rosters. The difference is compiled into a cohort
+  of its own, numbered from zero, because an ordinal is a position within a cohort
+  and chunk ranges start at zero. Augmentation publishes `base_ciks ∪ delta_ciks` and
+  records the parent, the delta roster, and both digests in the new manifest.
 - **Row-level `snapshot_id` is provenance, not container identity.** Augmentation
   copies base rows verbatim, so an augmented snapshot legitimately carries rows
   stamped with the base's id; rewriting them would misstate where data came from.
@@ -198,6 +219,24 @@ same assignment division `export` performs and empty assignments omitted.
 
 These are decisions, not oversights. Each names the alternative.
 
+- **Input diagnostics are counts, not per-row detail.** The compiled cohort's
+  `cohort.json` records how many rows were rejected and how many were duplicate
+  CIKs, which is what a curator needs to trust a seed. It does not name the offending
+  rows or their line numbers: the compile is a single DuckDB statement and the reader
+  exposes no line ordinal, so recovering them would mean a second pass in Python over
+  the whole input — the cost this change exists to remove. Recompile a narrowed file
+  to see which rows survived.
+- **The registry comparison is still built in Python.** `sources compare` folds a
+  whole curated file against the active listings to build the four published registry
+  datasets, and it does that with a name map and a dict of listings. That is a
+  one-time projection over two immutable files rather than a per-run or per-chunk
+  path, and it publishes a schema other packages read; rewriting it as a SQL join is
+  a separate change to that contract, not a consequence of the cohort becoming a
+  dataset.
+- **The compiled cohort store is never garbage collected.** `metadata/cohorts/<key>/`
+  accumulates one entry per distinct input digest, including every delta derived
+  against a base. Phase 1 has no vacuum for it, the same trade the transient and
+  published trees make.
 - **A published snapshot is not globally sorted by CIK.** Parts are byte copies
   of the validated chunk files, so the snapshot is in chunk order and each part is
   in roster order. The manifest records this as `sort_order: chunk_order` so a

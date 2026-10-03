@@ -28,11 +28,9 @@ from edgar_sec.pipelines.metadata_sync.discovery import (
     resolve_snapshot_choice,
     resolve_source_choice,
 )
-from edgar_sec.pipelines.metadata_sync.manifest import read_cik_manifest
 from edgar_sec.pipelines.metadata_sync.paths import resolve_metadata_paths
 from edgar_sec.pipelines.metadata_sync.planner import build_plan, write_plan
-from edgar_sec.pipelines.metadata_sync.roster import roster_from_manifest
-from tests.support import fixture_path
+from tests.support import fixture_cohort, roster_of
 
 
 def _write_plan(
@@ -42,14 +40,15 @@ def _write_plan(
     roster_ciks: tuple[str, ...] = (),
 ) -> str:
     """Write a real plan bundle so discovery reads genuine manifests."""
-    from dataclasses import replace
 
     from edgar_sec.pipelines.metadata_sync.paths import resolve_run_paths
 
-    manifest = read_cik_manifest(fixture_path("cik_sec_mini.csv"))
     if roster_ciks:
-        manifest = replace(manifest, ciks=roster_ciks, names=("",) * len(roster_ciks))
-    plan = build_plan(roster_from_manifest(manifest), chunk_size=chunk_size)
+        plan = build_plan(roster_of(tuple(roster_ciks)), chunk_size=chunk_size)
+    else:
+        plan = build_plan(
+            fixture_cohort("cik_sec_mini.csv").roster, chunk_size=chunk_size
+        )
     write_plan(plan, resolve_run_paths(plan.plan_id, metadata.artifacts_root))
     return plan.plan_id
 
@@ -280,13 +279,12 @@ def _write_registry(
     from edgar_sec.pipelines.metadata_sync.roster import (
         ROSTER_MANIFEST_KIND,
         ROSTER_SCHEMA_VERSION,
-        build_roster,
         write_roster,
     )
 
     roster_path = metadata.effective_cik_roster(registry_id)
     roster_path.parent.mkdir(parents=True, exist_ok=True)
-    roster = build_roster(ciks)
+    roster = roster_of(ciks)
     digest = write_roster(roster, roster_path)
     roster_path.with_name(roster_path.name + ".manifest.json").write_text(
         json.dumps(
@@ -530,17 +528,17 @@ def test_a_delta_plan_is_labelled_as_one_in_the_picker(tmp_path: Path) -> None:
     left an operator no way to tell a safe plan from an unsafe one.
     """
     metadata = resolve_metadata_paths(tmp_path)
-    manifest = read_cik_manifest(fixture_path("cik_sec_mini.csv"))
+    cohort = fixture_cohort("cik_sec_mini.csv")
     from edgar_sec.pipelines.metadata_sync.paths import resolve_run_paths
 
     delta = build_plan(
-        roster_from_manifest(manifest),
+        cohort.roster,
         chunk_size=2,
         kind="delta",
         parent_id="base-snap",
     )
     write_plan(delta, resolve_run_paths(delta.plan_id, metadata.artifacts_root))
-    full = build_plan(roster_from_manifest(manifest), chunk_size=2)
+    full = build_plan(cohort.roster, chunk_size=2)
     write_plan(full, resolve_run_paths(full.plan_id, metadata.artifacts_root))
 
     summaries = [plan_summary(metadata, plan.plan_id) for plan in (full, delta)]

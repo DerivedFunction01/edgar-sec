@@ -39,7 +39,7 @@ Subpackage READMEs: [`html/`](html/README.md), [`page_markers/`](page_markers/RE
 
 ## Contracts
 
-- **`prepare_input_text` stage order is load-bearing**: decode → strip envelopes
+- **`prepare_input_text` stage order is important**: decode → strip envelopes
   → purge non-displaying blocks → test for ASCII-PRE → classify → clean.
   Purging first stops a `<script>` outside a `<PRE>` reading as content; testing
   ASCII-PRE before HTML cleaning is what preserves the hard line breaks ASCII

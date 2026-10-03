@@ -1,6 +1,6 @@
 """Directory layout tests for the metadata pipeline.
 
-The published/transient split is the load-bearing property here: a chunk
+The published/transient split is the important property here: a chunk
 checkpoint is resumability state and a snapshot is output, and mixing them would
 let a partially written artifact be mistaken for a published one.
 """

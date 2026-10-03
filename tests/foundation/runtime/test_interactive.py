@@ -1,7 +1,7 @@
 """Terminal prompt and menu-loop contracts.
 
 The loop is shared by every pipeline operator, so a defect here is not one
-pipeline's bug. Three properties are load-bearing and are pinned directly: a
+pipeline's bug. Three properties are important and are pinned directly: a
 blank answer must not run an action, one failing action must not end the session,
 and the per-render header hook must not be able to hide the menu.
 """

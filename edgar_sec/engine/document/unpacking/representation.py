@@ -6,7 +6,7 @@ answer decides the entire stage chain. ASCII-PRE in particular must be
 identified *before* HTML cleaning, because cleaning a `<PRE>` payload is what
 loses the hard line breaks ASCII reflow depends on.
 
-The pipeline sequence below is load-bearing:
+The pipeline sequence below is important:
 
 1. decode, 2. strip transport envelopes, 3. purge non-displaying blocks,
 4. test for ASCII-PRE, 5. classify, 6. clean.

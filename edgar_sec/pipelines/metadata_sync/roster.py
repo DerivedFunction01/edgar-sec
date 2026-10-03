@@ -9,26 +9,28 @@ its display names and the roster schema version, so reformatting an input file
 produces the same roster while reordering its rows does not. That is the point:
 a roster says what the cohort *is*, not which bytes a curator happened to type.
 
-The dataset also removes the O(n) linear scan that a name lookup against a
-parallel tuple performed, because names travel with their CIK and are resolved
-from one map rather than by searching.
+A roster is a *handle* over that dataset rather than a pair of tuples. The CIK
+cohort is the largest thing this pipeline carries, and holding it as Python
+strings cost roughly six times what the file it came from costs to read. Callers
+ask for the slice they need -- one chunk's ordinal range, the whole file rendered
+as CSV -- and the handle reads exactly that from the dataset.
 """
 
 from __future__ import annotations
 
 import hashlib
 import os
-from collections.abc import Iterable, Sequence
-from dataclasses import dataclass
+import shutil
+from collections.abc import Iterable, Iterator, Sequence
+from dataclasses import dataclass, field
 from pathlib import Path
 
 import pyarrow as pa
+import pyarrow.parquet as pq
 
 from edgar_sec.foundation.hashing import file_sha256
 from edgar_sec.foundation.serialization import canonical_json
 from edgar_sec.infra.storage.parquet import read_parquet_schema, write_parquet_table
-
-from .manifest import InputManifest
 
 ROSTER_SCHEMA_VERSION = "1.0.0"
 ROSTER_FILE_NAME = "ciks.parquet"
@@ -36,6 +38,10 @@ SNAPSHOT_CIK_INDEX_NAME = "ciks.parquet"
 ROSTER_MANIFEST_KIND = "cik_roster"
 
 _ID_PREFIX = "cik-roster-v1"
+
+#: Rows pulled from the dataset per read. Bounds the transient list built while
+#: streaming the identity hash or a CSV export, so neither grows with the cohort.
+STREAM_BATCH = 65_536
 
 __all__ = [
     "ROSTER_FILE_NAME",
@@ -46,17 +52,14 @@ __all__ = [
     "SNAPSHOT_CIK_INDEX_SCHEMA",
     "Roster",
     "RosterError",
-    "build_roster",
     "derive_roster_id",
     "empty_roster",
     "read_cik_index",
     "read_roster",
-    "roster_from_manifest",
     "roster_to_csv_text",
-    "union_rosters",
-    "without_ciks",
     "write_cik_index",
     "write_roster",
+    "write_roster_rows",
 ]
 
 ROSTER_SCHEMA = pa.schema(
@@ -76,81 +79,137 @@ class RosterError(ValueError):
 
 @dataclass(frozen=True, slots=True)
 class Roster:
-    """An ordered, deduplicated CIK cohort with a content-derived identity.
+    """A reference to one cohort's dataset, with the identity it resolves to.
 
-    ``names`` runs parallel to ``ciks``. Both tuples are already normalized, so
-    a roster never re-parses or re-pads a CIK.
+    ``row_count`` is carried rather than measured so a caller can size a plan
+    without opening the file. ``dataset`` is ``None`` only for the empty cohort,
+    which has an identity of its own and no rows to read.
     """
 
     roster_id: str
-    ciks: tuple[str, ...] = ()
-    names: tuple[str, ...] = ()
-
-    @property
-    def row_count(self) -> int:
-        """Number of CIKs in this roster."""
-        return len(self.ciks)
+    row_count: int
+    #: Where the rows live. Excluded from equality: a roster is named by what it
+    #: contains, so the same cohort copied to another directory is the same roster,
+    #: not a different one.
+    dataset: Path | None = field(default=None, compare=False)
 
     @property
     def is_empty(self) -> bool:
         """True when the cohort holds no CIKs at all."""
-        return not self.ciks
+        return self.row_count == 0
 
-    def name_map(self) -> dict[str, str]:
-        """Curated display names keyed by CIK, built once for bulk lookup.
+    def range_rows(self, start: int, length: int) -> tuple[tuple[str, str], ...]:
+        """``(cik, name)`` pairs for one ordinal range, in cohort order.
 
-        Callers needing many names build this once. ``InputManifest.name_for``
-        serves the single-lookup case, and a per-CIK rebuild here would restore
-        the quadratic behaviour the roster exists to remove.
+        Only the row groups that can contain the range are read, so the cost is
+        proportional to the slice rather than to the cohort.
         """
-        return dict(zip(self.ciks, self.names, strict=True))
+        if start < 0 or length < 0:
+            raise RosterError(f"invalid roster range start={start} length={length}")
+        if self.dataset is None or length == 0 or start >= self.row_count:
+            return ()
+        stop = min(start + length, self.row_count)
 
-    def cik_set(self) -> frozenset[str]:
-        """Membership set for anti-joins against this roster."""
-        return frozenset(self.ciks)
+        handle = pq.ParquetFile(self.dataset)
+        columns = ["ordinal", "cik_padded", "name"]
+        collected: list[tuple[int, str, str]] = []
+        for index in range(handle.metadata.num_row_groups):
+            span = _row_group_span(handle, index)
+            if span is not None and span[1] < start:
+                continue
+            if span is not None and span[0] >= stop:
+                break
+            table = handle.read_row_group(index, columns=columns)
+            for ordinal, cik, name in zip(
+                table.column("ordinal").to_pylist(),
+                table.column("cik_padded").to_pylist(),
+                table.column("name").to_pylist(),
+                strict=True,
+            ):
+                if start <= ordinal < stop:
+                    collected.append((int(ordinal), str(cik), str(name or "")))
+        collected.sort(key=lambda row: row[0])
+        return tuple((cik, name) for _, cik, name in collected)
 
     def range_ciks(self, start: int, length: int) -> tuple[str, ...]:
         """CIKs for one ordinal range; chunk membership is a range, not a list."""
-        if start < 0 or length < 0:
-            raise RosterError(f"invalid roster range start={start} length={length}")
-        return self.ciks[start : start + length]
+        return tuple(cik for cik, _ in self.range_rows(start, length))
+
+    def iter_rows(self) -> Iterator[tuple[str, str]]:
+        """Stream every ``(cik, name)`` pair in cohort order, one batch at a time."""
+        if self.dataset is None:
+            return
+        handle = pq.ParquetFile(self.dataset)
+        columns = ["cik_padded", "name"]
+        for batch in handle.iter_batches(batch_size=STREAM_BATCH, columns=columns):
+            for cik, name in zip(
+                batch.column("cik_padded").to_pylist(),
+                batch.column("name").to_pylist(),
+                strict=True,
+            ):
+                yield str(cik), str(name or "")
+
+    def name_map(self) -> dict[str, str]:
+        """Every curated display name keyed by CIK, built once for bulk lookup.
+
+        This materializes the cohort, so it is for the one caller that folds a
+        whole curated file against another dataset to build a published
+        projection, not for per-CIK lookup. Callers needing a handful of names
+        should read an ordinal range instead.
+        """
+        return dict(self.iter_rows())
 
 
-def derive_roster_id(ciks: Sequence[str], names: Sequence[str] = ()) -> str:
-    """Derive a roster identity from ordered normalized CIKs and their names.
+def _row_group_span(handle: pq.ParquetFile, index: int) -> tuple[int, int] | None:
+    """The ordinal range one row group covers, or ``None`` when unknowable.
+
+    The cohort is written in ordinal order, so a row group's statistics bound
+    which rows it holds. A writer that omits them yields ``None`` and the caller
+    falls back to reading the file, which is slower but still correct.
+    """
+    statistics = handle.metadata.row_group(index).column(0).statistics
+    if statistics is None or not statistics.has_min_max:
+        return None
+    return int(statistics.min), int(statistics.max)
+
+
+def derive_roster_id(dataset: str | os.PathLike[str]) -> str:
+    """Derive a roster's identity from its ordered dataset.
 
     Hashed row by row rather than through one canonical JSON document: a
     250,000-CIK roster would otherwise materialize a multi-megabyte string, and
-    identity has to stay derivable at full-corpus scale.
+    identity has to stay derivable at full-corpus scale. The rows are streamed
+    from the dataset in batches, so the caller never holds the cohort either.
     """
-    if len(ciks) != len(names):
-        raise RosterError(
-            f"roster ciks/names length mismatch: {len(ciks)} vs {len(names)}"
-        )
+    target = Path(dataset)
+    if not target.is_file():
+        raise FileNotFoundError(f"roster dataset not found: {target}")
+
+    handle = pq.ParquetFile(target)
+    # The prefix carries the row count, so it must be hashed before the rows it
+    # counts. Parquet metadata supplies the count without reading any row.
     digest = hashlib.sha256()
     digest.update(
-        canonical_json([_ID_PREFIX, ROSTER_SCHEMA_VERSION, len(ciks)]).encode("utf-8")
+        canonical_json(
+            [_ID_PREFIX, ROSTER_SCHEMA_VERSION, handle.metadata.num_rows]
+        ).encode("utf-8")
     )
-    for ordinal, (cik, name) in enumerate(zip(ciks, names, strict=True)):
-        digest.update(
-            f"{ordinal}\x1f{len(cik)}\x1f{cik}\x1f{len(name)}\x1f{name}\n".encode()
-        )
+    columns = ["ordinal", "cik_padded", "name"]
+    for batch in handle.iter_batches(batch_size=STREAM_BATCH, columns=columns):
+        for ordinal, cik, name in zip(
+            batch.column("ordinal").to_pylist(),
+            batch.column("cik_padded").to_pylist(),
+            batch.column("name").to_pylist(),
+            strict=True,
+        ):
+            cik_text = str(cik)
+            name_text = str(name or "")
+            digest.update(
+                f"{int(ordinal)}\x1f{len(cik_text)}\x1f{cik_text}"
+                f"\x1f{len(name_text)}\x1f{name_text}\n".encode()
+            )
+
     return digest.hexdigest()[:32]
-
-
-def build_roster(ciks: Iterable[str], names: Sequence[str] = ()) -> Roster:
-    """Build a roster from already-normalized CIKs, preserving the given order."""
-    ordered = tuple(ciks)
-    if not ordered:
-        return empty_roster()
-    if len(set(ordered)) != len(ordered):
-        raise RosterError("a roster must not contain duplicate CIKs")
-    paired = tuple(names) if names else ("",) * len(ordered)
-    return Roster(
-        roster_id=derive_roster_id(ordered, paired),
-        ciks=ordered,
-        names=paired,
-    )
 
 
 def empty_roster() -> Roster:
@@ -159,83 +218,108 @@ def empty_roster() -> Roster:
     Augmentation has to be able to say "nothing new" without inventing an
     identity for it, and that statement must not collide with any real roster.
     """
-    return Roster(roster_id=derive_roster_id((), ()), ciks=(), names=())
+    return Roster(roster_id=derive_empty_roster_id(), row_count=0)
 
 
-def roster_from_manifest(manifest: InputManifest) -> Roster:
-    """Build the roster for a parsed input manifest."""
-    return build_roster(manifest.ciks, manifest.names)
+def derive_empty_roster_id() -> str:
+    """Identity of the cohort that holds no CIKs.
+
+    Derived directly from the same prefix and length the streaming hash uses, so
+    the empty roster is a value of the same function rather than a special case
+    that could drift from it.
+    """
+    return hashlib.sha256(
+        canonical_json([_ID_PREFIX, ROSTER_SCHEMA_VERSION, 0]).encode("utf-8")
+    ).hexdigest()[:32]
 
 
-def without_ciks(roster: Roster, excluded: Iterable[str]) -> Roster:
-    """Return the roster minus every CIK in ``excluded``, preserving order."""
-    drop = set(excluded)
-    kept = [
-        (cik, name)
-        for cik, name in zip(roster.ciks, roster.names, strict=True)
-        if cik not in drop
+def roster_to_table(rows: Iterable[tuple[str, str]]) -> pa.Table:
+    """Build a roster dataset table from ``(cik, name)`` pairs in cohort order."""
+    materialized = [
+        {"ordinal": ordinal, "cik_padded": cik, "name": name}
+        for ordinal, (cik, name) in enumerate(rows)
     ]
-    if not kept:
-        return empty_roster()
-    return build_roster([cik for cik, _ in kept], [name for _, name in kept])
+    return pa.Table.from_pylist(materialized, schema=ROSTER_SCHEMA)
 
 
-def union_rosters(*rosters: Roster) -> Roster:
-    """Merge rosters in first-seen order, de-duplicating by CIK."""
-    order: list[str] = []
-    names: dict[str, str] = {}
-    for roster in rosters:
-        for cik, name in zip(roster.ciks, roster.names, strict=True):
-            if cik in names:
-                if not names[cik] and name:
-                    names[cik] = name
-                continue
-            order.append(cik)
-            names[cik] = name
-    return build_roster(order, [names[cik] for cik in order])
+def write_roster_rows(
+    rows: Sequence[tuple[str, str]], path: str | os.PathLike[str]
+) -> tuple[Roster, str]:
+    """Write a cohort dataset from ordered pairs; return its roster and digest.
 
-
-def _roster_table(roster: Roster) -> pa.Table:
-    return pa.Table.from_pylist(
-        [
-            {"ordinal": ordinal, "cik_padded": cik, "name": name}
-            for ordinal, (cik, name) in enumerate(
-                zip(roster.ciks, roster.names, strict=True)
-            )
-        ],
-        schema=ROSTER_SCHEMA,
-    )
+    This is the seam a producer compiles into: the cohort is written once, and
+    everything downstream reads the dataset rather than the caller's rows. A CIK
+    appearing twice would make the ordinal ambiguous and break both chunk
+    membership and the identity, so it is refused here rather than published.
+    """
+    target = Path(path)
+    seen: set[str] = set()
+    for cik, _name in rows:
+        if cik in seen:
+            raise RosterError(f"cohort contains a duplicate CIK: {cik}")
+        seen.add(cik)
+    write_parquet_table(roster_to_table(rows), target)
+    if not read_parquet_schema(target).equals(ROSTER_SCHEMA, check_metadata=False):
+        raise RosterError(f"roster dataset schema drifted: {target}")
+    return Roster(
+        roster_id=derive_roster_id(target), row_count=len(rows), dataset=target
+    ), file_sha256(target)
 
 
 def write_roster(roster: Roster, path: str | os.PathLike[str]) -> str:
-    """Write one roster atomically; return the artifact's SHA-256 digest.
+    """Publish one cohort's dataset to ``path``; return the artifact digest.
 
-    The file is read back and its schema compared, so a write that silently
-    produced a different layout fails here rather than at a consumer that has
-    already trusted the roster identity.
+    The bytes are copied rather than re-encoded. A cohort compiled by DuckDB and the
+    same cohort re-serialized by pyarrow hold identical rows and therefore the same
+    identity, but they are different files. Rewriting would make the digest recorded
+    beside the plan a function of which writer ran, and would spend a decode and
+    encode of the largest object in the pipeline to learn nothing.
+
+    A plan bundle carries its own copy so it can be copied to a worker machine on its
+    own; this is that copy, staged and renamed so a failed publish leaves nothing
+    half-written beside the manifest that names it.
     """
     target = Path(path)
-    write_parquet_table(_roster_table(roster), target)
+    if roster.dataset is None:
+        raise RosterError("the empty roster has no dataset to publish")
+    if not roster.dataset.is_file():
+        raise FileNotFoundError(f"roster dataset not found: {roster.dataset}")
+    if roster.dataset.resolve() != target.resolve():
+        target.parent.mkdir(parents=True, exist_ok=True)
+        staged = target.with_name(f".{target.name}.tmp.{os.getpid()}")
+        try:
+            shutil.copyfile(roster.dataset, staged)
+            os.replace(staged, target)
+        finally:
+            if staged.exists():
+                staged.unlink()
     if not read_parquet_schema(target).equals(ROSTER_SCHEMA, check_metadata=False):
         raise RosterError(f"roster dataset schema drifted: {target}")
+    if derive_roster_id(target) != roster.roster_id:
+        raise RosterError(
+            f"published roster at {target} does not carry identity {roster.roster_id}"
+        )
     return file_sha256(target)
 
 
 def read_roster(
     path: str | os.PathLike[str], *, expected_roster_id: str | None = None
 ) -> Roster:
-    """Load a roster and verify its schema and, when given, its identity."""
-    import pyarrow.parquet as pq
+    """Open a roster dataset and verify its schema and, when given, its identity.
 
+    The identity is recomputed by streaming the file, so a cohort is proven
+    without ever holding it.
+    """
     target = Path(path)
     if not target.is_file():
         raise FileNotFoundError(f"roster dataset not found: {target}")
     if not read_parquet_schema(target).equals(ROSTER_SCHEMA, check_metadata=False):
         raise RosterError(f"roster dataset schema drifted: {target}")
-    table = pq.read_table(target, columns=["cik_padded", "name"])
-    ciks = tuple(str(value) for value in table.column("cik_padded").to_pylist())
-    names = tuple(str(value or "") for value in table.column("name").to_pylist())
-    roster = build_roster(ciks, names)
+
+    row_count = pq.ParquetFile(target).metadata.num_rows
+    roster = Roster(
+        roster_id=derive_roster_id(target), row_count=row_count, dataset=target
+    )
     if expected_roster_id is not None and roster.roster_id != expected_roster_id:
         raise RosterError(
             f"roster at {target} has identity {roster.roster_id!r}, "
@@ -263,8 +347,6 @@ def write_cik_index(ciks: Iterable[str], path: str | os.PathLike[str]) -> str:
 
 def read_cik_index(path: str | os.PathLike[str]) -> tuple[str, ...]:
     """Read a published CIK index and verify it is sorted and duplicate-free."""
-    import pyarrow.parquet as pq
-
     target = Path(path)
     if not target.is_file():
         raise FileNotFoundError(f"CIK index not found: {target}")
@@ -285,10 +367,10 @@ def roster_to_csv_text(roster: Roster) -> str:
 
     The CSV is an export format, not the internal carrier. It exists so the
     ``cik,name`` input contract keeps working while the roster dataset is what the
-    planner actually reads.
+    planner actually reads. Rows are streamed from the dataset.
     """
     lines = ["cik,name"]
-    for cik, name in zip(roster.ciks, roster.names, strict=True):
+    for cik, name in roster.iter_rows():
         text = str(name or "")
         if any(character in text for character in (",", '"', "\n", "\r")):
             text = '"' + text.replace('"', '""') + '"'

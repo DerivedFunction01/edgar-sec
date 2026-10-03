@@ -3,7 +3,7 @@
 Decides where an SEC filing's cover page ends and what may be rewritten inside
 it. Every downstream cover-specific stage — checkbox rewriting, cover table
 cleaning, cover healing — runs strictly inside the boundary this package
-establishes, so the boundary decision is the load-bearing one.
+establishes, so the boundary decision is the important one.
 
 ## Purpose
 

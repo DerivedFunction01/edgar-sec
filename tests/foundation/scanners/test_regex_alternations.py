@@ -1,6 +1,6 @@
 """Tests for the regex-alternations scanner.
 
-The scanner is the only thing keeping `foundation.regex.builder` load-bearing, so
+The scanner is the only thing keeping `foundation.regex.builder` important, so
 these tests pin both directions: a hand-crafted 3+ branch alternation is caught,
 and the legitimate two-branch structural groups are left alone.
 """

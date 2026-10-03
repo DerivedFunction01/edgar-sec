@@ -8,16 +8,15 @@ import pyarrow.parquet as pq
 import pytest
 
 from edgar_sec.domain.sec_urls import submissions_url
-from edgar_sec.pipelines.metadata_sync.manifest import read_cik_manifest
 from edgar_sec.pipelines.metadata_sync.paths import resolve_run_paths
 from edgar_sec.pipelines.metadata_sync.planner import build_plan
-from edgar_sec.pipelines.metadata_sync.roster import RosterError, roster_from_manifest
+from edgar_sec.pipelines.metadata_sync.roster import RosterError
 from edgar_sec.pipelines.metadata_sync.worker import (
     normalize_one_cik,
     run_chunk,
     run_chunk_ids,
 )
-from tests.support import FakeSession, fixture_path, load_fixture
+from tests.support import FakeSession, compiled_cohort, load_fixture
 
 FORD = "0000037996"
 SMALL = "0000000020"
@@ -31,12 +30,12 @@ def _ford_pair(session: FakeSession) -> None:
 
 
 def _plan(tmp_path: Path, chunk_size: int = 2):
-    manifest = read_cik_manifest(fixture_path("cik_sec_mini.csv"))
+    cohort = compiled_cohort("cik_sec_mini.csv", tmp_path)
     plan = build_plan(
-        roster_from_manifest(manifest),
+        cohort.roster,
         chunk_size=chunk_size,
-        input_name=manifest.input_name,
-        input_fingerprint=manifest.input_fingerprint,
+        input_name=cohort.input_name,
+        input_fingerprint=cohort.input_fingerprint,
     )
     return plan, resolve_run_paths(plan.plan_id, tmp_path)
 

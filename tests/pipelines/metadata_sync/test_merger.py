@@ -17,24 +17,22 @@ from edgar_sec.engine.submissions.builder import build_submission_table
 from edgar_sec.foundation.hashing import file_sha256
 from edgar_sec.infra.storage.parquet import count_parquet_rows
 from edgar_sec.pipelines.metadata_sync.augmentation import derive_delta_plan
-from edgar_sec.pipelines.metadata_sync.manifest import read_cik_manifest
 from edgar_sec.pipelines.metadata_sync.merger import (
     MergeError,
     merge_chunks,
     publish_snapshot,
 )
-from edgar_sec.pipelines.metadata_sync.paths import resolve_run_paths
-from edgar_sec.pipelines.metadata_sync.planner import build_plan
-from edgar_sec.pipelines.metadata_sync.roster import (
-    build_roster,
-    read_cik_index,
-    roster_from_manifest,
+from edgar_sec.pipelines.metadata_sync.paths import (
+    resolve_metadata_paths,
+    resolve_run_paths,
 )
+from edgar_sec.pipelines.metadata_sync.planner import build_plan, write_plan
+from edgar_sec.pipelines.metadata_sync.roster import read_cik_index
 from edgar_sec.pipelines.metadata_sync.snapshot import (
     SNAPSHOT_MANIFEST_VERSION,
     read_snapshot_parts,
 )
-from tests.support import fixture_path
+from tests.support import fixture_cohort, roster_of
 
 ACCESSION = "0000037996-26-000039"
 ACCESSION_NORM = "000003799626000039"
@@ -86,12 +84,12 @@ def _row(
 
 
 def _plan(tmp_path: Path, chunk_size: int = 2):
-    manifest = read_cik_manifest(fixture_path("cik_sec_mini.csv"))
+    cohort = fixture_cohort("cik_sec_mini.csv")
     plan = build_plan(
-        roster_from_manifest(manifest),
+        cohort.roster,
         chunk_size=chunk_size,
-        input_name=manifest.input_name,
-        input_fingerprint=manifest.input_fingerprint,
+        input_name=cohort.input_name,
+        input_fingerprint=cohort.input_fingerprint,
     )
     return plan, resolve_run_paths(plan.plan_id, tmp_path)
 
@@ -108,6 +106,17 @@ def _complete(plan, run_paths, *, fingerprint: str | None = None) -> None:
         _write_chunk(
             run_paths, chunk_id, [_row(cik, fp) for cik in plan.chunk_ciks(chunk_id)]
         )
+
+
+def _publish_base(tmp_path: Path, ciks, base_id: str = "base-snap"):
+    """Publish a real base snapshot, so a delta can be derived against it."""
+    base = build_plan(roster_of(tuple(ciks)), chunk_size=1000)
+    run_paths = resolve_run_paths(base.plan_id, tmp_path)
+    write_plan(base, run_paths)
+    _complete(base, run_paths)
+    report = merge_chunks(base, run_paths, base_id)
+    publish_snapshot(report, resolve_metadata_paths(tmp_path))
+    return resolve_metadata_paths(tmp_path)
 
 
 # ------------------------------------------------------------------ happy path
@@ -144,7 +153,7 @@ def test_merge_publishes_a_multipart_snapshot(tmp_path: Path) -> None:
         table = pq.read_table(path)
         assert table.schema.equals(SUBMISSION_METADATA_SCHEMA, check_metadata=False)
         ciks.extend(table.column("cik").to_pylist())
-    assert set(ciks) == set(plan.roster.ciks)
+    assert set(ciks) == set(plan.roster.range_ciks(0, plan.roster.row_count))
     assert len(ciks) == plan.row_count
 
 
@@ -331,10 +340,11 @@ def test_a_delta_plan_cannot_be_merged_on_its_own(tmp_path: Path) -> None:
     manifest names as its parent. Recombining base and delta is augmentation's
     job, so the refusal belongs here.
     """
-    manifest = read_cik_manifest(fixture_path("cik_sec_mini.csv"))
+    cohort = fixture_cohort("cik_sec_mini.csv")
+    metadata = _publish_base(tmp_path, ("0000001985",))
     delta = derive_delta_plan(
-        roster_from_manifest(manifest),
-        build_roster(manifest.ciks[:1]),
+        cohort.roster,
+        metadata,
         chunk_size=2,
         base_snapshot_id="base-snap",
     )

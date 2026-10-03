@@ -1,6 +1,6 @@
 """Tests for the whole-file-read scanner.
 
-The scanner is what keeps ``foundation.hashing.file_sha256`` load-bearing, so
+The scanner is what keeps ``foundation.hashing.file_sha256`` important, so
 these tests pin both directions: a whole-file read consumed by a digest is
 caught, and a whole-file read handed to a JSON parser is left alone. The second
 case is the one that matters most, because "fixing" it would mean reworking a

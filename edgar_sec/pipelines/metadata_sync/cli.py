@@ -22,7 +22,7 @@ from typing import Any
 from edgar_sec.foundation.runtime.settings import resolve_runtime_settings
 
 from .assignment import AssignmentError
-from .augmentation import augment_from_manifest, preflight_augment
+from .augmentation import augment, augment_from_roster, preflight_augment
 from .checkpoints import discover_completed_chunks
 from .distribution import (
     adopt_chunks,
@@ -316,9 +316,9 @@ def cmd_augment(
                 progress=progress,
             )
         else:
-            result = augment_from_manifest(
+            result = augment(
                 _build_client(),
-                str(options.input_path),
+                cohort.roster,
                 metadata,
                 base_snapshot_id=base_snapshot_id,
                 new_snapshot_id=new_snapshot_id,
@@ -327,6 +327,8 @@ def cmd_augment(
                 lineage=lineage,
                 preflight=check,
                 progress=progress,
+                input_name=cohort.input_name,
+                input_fingerprint=cohort.input_fingerprint,
             )
     finally:
         progress.close()
@@ -367,8 +369,6 @@ def _augment_from_registry(
     preflight: object = None,
     progress: Callable[[dict[str, Any]], None] | None = None,
 ):
-    from .augmentation import augment_from_roster
-
     metadata = resolve_metadata_paths(options.artifacts_root)
     selected = cohort or resolve_cohort(options)
     return augment_from_roster(

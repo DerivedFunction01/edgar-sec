@@ -193,9 +193,10 @@ def _filing_record_count(paths: list[str]) -> int:
 
 def validate_chunks(plan: Plan, run_paths: RunPaths) -> list[Path]:
     """Validate every planned chunk and return the ordered checkpoint paths."""
-    planned = {chunk_id: plan.chunk_ciks(chunk_id) for chunk_id in plan.chunk_ids()}
-    expected_rows = int(plan.row_count)
-    if sum(len(ciks) for ciks in planned.values()) != expected_rows:
+    chunk_ids = plan.chunk_ids()
+    if sum(plan.chunk_length(chunk_id) for chunk_id in chunk_ids) != int(
+        plan.row_count
+    ):
         raise MergeError("plan chunks do not cover the planned CIK count")
 
     found: dict[int, Path] = {}
@@ -206,37 +207,41 @@ def validate_chunks(plan: Plan, run_paths: RunPaths) -> list[Path]:
             continue
         found[chunk_id] = path
 
-    foreign = set(found) - set(planned)
+    foreign = set(found) - set(chunk_ids)
     if foreign:
         raise MergeError(
             f"merge rejected: chunk files outside the plan: {sorted(foreign)}"
         )
-    missing = sorted(set(planned) - set(found))
+    missing = sorted(set(chunk_ids) - set(found))
     if missing:
         raise MergeError(f"merge rejected: missing chunk checkpoints: {missing}")
 
     fingerprint = plan.input_fingerprint
-    for chunk_id in sorted(planned):
+    for chunk_id in sorted(chunk_ids):
         path = found[chunk_id]
         if not read_parquet_schema(path).equals(plan_schema(), check_metadata=False):
             raise MergeError(
                 f"merge rejected: chunk {chunk_id} schema drifted from the dataset contract"
             )
         rows = count_parquet_rows(path)
-        if rows != len(planned[chunk_id]):
+        if rows != plan.chunk_length(chunk_id):
             raise MergeError(
                 f"merge rejected: chunk {chunk_id} row count {rows} "
-                f"!= planned {len(planned[chunk_id])}"
+                f"!= planned {plan.chunk_length(chunk_id)}"
             )
 
     import pyarrow.parquet as pq
 
-    for chunk_id in sorted(planned):
+    for chunk_id in sorted(chunk_ids):
         table = pq.read_table(
             found[chunk_id], columns=["cik", "input_fingerprint", "status"]
         )
         ciks = tuple(str(v) for v in table.column("cik").to_pylist())
-        if set(ciks) != set(planned[chunk_id]) or len(ciks) != len(planned[chunk_id]):
+        # One chunk's CIKs are read from the roster at a time. Materializing every
+        # chunk up front would hold the whole cohort for a coverage check that only
+        # ever looks at one ordinal range.
+        planned_ciks = plan.chunk_ciks(chunk_id)
+        if set(ciks) != set(planned_ciks) or len(ciks) != len(planned_ciks):
             raise MergeError(
                 f"merge rejected: chunk {chunk_id} CIK coverage differs from the plan"
             )

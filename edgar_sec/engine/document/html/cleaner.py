@@ -15,7 +15,7 @@ because checkbox normalization keys on them; `colspan` / `rowspan`, borders,
 `align` / `text-align` / `width`, because page-marker layout routing and table
 structure depend on them; and all text content.
 
-The pass order in `clean_html_for_parsing` is load-bearing and is asserted by
+The pass order in `clean_html_for_parsing` is important and is asserted by
 `tests/engine/document/html/test_cleaner.py`.
 """
 
@@ -385,7 +385,7 @@ def strip_non_displaying_blocks(html: str) -> str:
 def clean_html_for_parsing(html: str) -> str:
     """Unified Stage-1 cleaning entry point.
 
-    The order is load-bearing: inline XBRL first (its tags carry their own
+    The order is important: inline XBRL first (its tags carry their own
     style attributes, so glyph normalization must see them after the wrapper is
     gone), then benign font and layout styles, then font-tag attributes, then
     metadata attributes, then navigation links, and finally Unicode

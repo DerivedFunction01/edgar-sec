@@ -31,7 +31,6 @@ from edgar_sec.pipelines.metadata_sync.operator import WizardState
 from edgar_sec.pipelines.metadata_sync.options import plan_options
 from edgar_sec.pipelines.metadata_sync.paths import resolve_metadata_paths
 from edgar_sec.pipelines.metadata_sync.registry import registry_id_for
-from edgar_sec.pipelines.metadata_sync.roster import build_roster
 from edgar_sec.pipelines.metadata_sync.source_registry import (
     SOURCE_NAME,
     SOURCE_URL,
@@ -43,6 +42,7 @@ from tests.support import (
     build_test_http,
     cik_payload,
     fixture_path,
+    roster_of,
 )
 
 # A live listing naming a registrant the curated seed does not cover.
@@ -102,22 +102,20 @@ def _publish_source(state: WizardState, snapshot_id: str, *, retrieved_at: str) 
 
 def _fake_preflight(*, delta_rows: int = 1, requested: int = 4, base: str = "base"):
     """A stand-in preflight, so these tests assert interaction order only."""
-    ciks = tuple(f"{index:010d}" for index in range(1, max(delta_rows, 1) + 1))
     return AugmentPreflight(
         base_snapshot_id=base,
-        requested=build_roster(tuple(f"{i:010d}" for i in range(requested))),
-        base=build_roster(()),
-        delta=build_roster(ciks[:delta_rows]),
+        requested_count=requested,
+        already_present_count=requested - delta_rows,
+        delta_count=delta_rows,
     )
 
 
 def _empty_preflight(requested: int = 4, base: str = "base"):
-    ciks = tuple(f"{index:010d}" for index in range(1, requested + 1))
     return AugmentPreflight(
         base_snapshot_id=base,
-        requested=build_roster(ciks),
-        base=build_roster(ciks),
-        delta=build_roster(()),
+        requested_count=requested,
+        already_present_count=requested,
+        delta_count=0,
     )
 
 
@@ -446,7 +444,7 @@ def _publish_roster(state: WizardState, registry_id: str, *, source_snapshot_id:
     metadata = state.metadata()
     roster_path = metadata.effective_cik_roster(registry_id)
     roster_path.parent.mkdir(parents=True, exist_ok=True)
-    roster = build_roster(("0000001985", "0000001761"))
+    roster = roster_of(("0000001985", "0000001761"))
     digest = write_roster(roster, roster_path)
     roster_path.with_name(roster_path.name + ".manifest.json").write_text(
         json.dumps(

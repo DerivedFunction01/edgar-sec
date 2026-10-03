@@ -23,7 +23,7 @@ without losing a table byte or inventing a page boundary that was not there.
   (`Wingdings`/`Webdings`/`Symbol`), `colspan`/`rowspan`, borders,
   `align`/`text-align`/`width`, `display:none`, and page-break declarations are
   never stripped.
-- **Cleaner pass order is load-bearing**: inline XBRL first (its tags carry their
+- **Cleaner pass order is important**: inline XBRL first (its tags carry their
   own style attributes, so glyph normalization must see them after the wrapper is
   gone), Unicode whitespace sanitization last.
 - **Glyph expansion is scoped to symbolic-font text nodes.** Tags, attributes,

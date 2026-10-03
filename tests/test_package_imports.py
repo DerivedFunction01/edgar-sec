@@ -5,7 +5,7 @@ passed: no test imported it, so its five unresolvable imports were invisible to
 1,248 green tests. A package that cannot be imported is not "untested", it is
 *unusable*, and nothing else in the gate could see the difference. This test is
 that detector: importing every package is the cheapest possible proof that the
-tree is load-bearing.
+tree is important.
 """
 
 from __future__ import annotations

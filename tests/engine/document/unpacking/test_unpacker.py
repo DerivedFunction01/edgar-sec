@@ -137,7 +137,7 @@ def test_resolve_target_sub_document_falls_back_to_the_first_text_document() -> 
     """Tier 4: an unmatched target type still resolves to the first text document.
 
     Returning `None` here would abort acquisition of any filing whose `<TYPE>`
-    the caller did not enumerate, so this fallback is the load-bearing case.
+    the caller did not enumerate, so this fallback is the important case.
     """
     docs = unpack_sgml_submission(SAMPLE_SGML)
     fallback = resolve_target_sub_document(docs, target_types=["40-F"])

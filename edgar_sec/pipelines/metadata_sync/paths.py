@@ -42,6 +42,11 @@ REGISTRIES_DIR_NAME = "registries"
 REGISTRY_EFFECTIVE_CIK_DATASET = "effective_ciks"
 REGISTRY_EFFECTIVE_CIK_INPUT_NAME = "effective_cik_input.csv"
 
+COHORTS_DIR_NAME = "cohorts"
+
+COMPILED_ROSTER_MANIFEST_NAME = "cohort.json"
+COMPILED_ROSTER_MANIFEST_KIND = "cik_cohort"
+
 
 @dataclass(frozen=True, slots=True)
 class MetadataPaths:
@@ -123,7 +128,7 @@ class MetadataPaths:
         return self.source_dir(source_name, snapshot_id) / "manifest.json"
 
     def registry_root(self, registry_id: str) -> Path:
-        """Directory holding one content-addressed curated-input projection."""
+        """Directory holding a content-addressed curated-input projection."""
         return self.metadata_root / "registries" / registry_id
 
     def registry_manifest_root(self, registry_id: str) -> Path:
@@ -145,6 +150,28 @@ class MetadataPaths:
     def effective_cik_roster(self, registry_id: str) -> Path:
         """Path of the effective CIK roster dataset for one registry."""
         return self.registry_dataset(registry_id, REGISTRY_EFFECTIVE_CIK_DATASET)
+
+    @property
+    def cohorts_root(self) -> Path:
+        """Compiled cohorts, keyed by the fingerprint of what produced them.
+
+        Distinct from a plan bundle's own ``roster`` directory: this is the shared
+        store a cohort is compiled into once, while ``plans/<id>/roster`` is the copy
+        frozen into a bundle so it can travel to a worker machine on its own.
+        """
+        return self.metadata_root / COHORTS_DIR_NAME
+
+    def compiled_cohort_dir(self, key: str) -> Path:
+        """Directory holding one cohort compiled from a CIK input file."""
+        return self.cohorts_root / key
+
+    def compiled_cohort_file(self, key: str) -> Path:
+        """Path of the compiled cohort's CIK dataset."""
+        return self.compiled_cohort_dir(key) / ROSTER_FILE_NAME
+
+    def compiled_cohort_manifest(self, key: str) -> Path:
+        """Manifest recording how one cohort was compiled and what it resolved to."""
+        return self.compiled_cohort_dir(key) / COMPILED_ROSTER_MANIFEST_NAME
 
 
 @dataclass(frozen=True, slots=True)
@@ -220,6 +247,9 @@ def resolve_run_paths(
 __all__ = [
     "ASSIGNMENTS_DIR_NAME",
     "ASSIGNMENT_FILE_SUFFIX",
+    "COHORTS_DIR_NAME",
+    "COMPILED_ROSTER_MANIFEST_KIND",
+    "COMPILED_ROSTER_MANIFEST_NAME",
     "INPUT_DIR_NAME",
     "INPUT_MANIFEST_NAME",
     "METADATA_DIR",

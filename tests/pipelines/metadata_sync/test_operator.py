@@ -28,7 +28,6 @@ from edgar_sec.pipelines.metadata_sync.cli import (
     cmd_worker,
 )
 from edgar_sec.pipelines.metadata_sync.discovery import current_snapshot_id
-from edgar_sec.pipelines.metadata_sync.manifest import read_cik_manifest
 from edgar_sec.pipelines.metadata_sync.merger import publish_current_snapshot
 from edgar_sec.pipelines.metadata_sync.operator import (
     DEFAULT_INPUT,
@@ -54,9 +53,8 @@ from edgar_sec.pipelines.metadata_sync.options import (
 )
 from edgar_sec.pipelines.metadata_sync.paths import resolve_run_paths
 from edgar_sec.pipelines.metadata_sync.planner import build_plan, write_plan
-from edgar_sec.pipelines.metadata_sync.roster import roster_from_manifest
 from edgar_sec.pipelines.metadata_sync.source_registry import SOURCE_NAME
-from tests.support import fixture_path
+from tests.support import fixture_cohort, fixture_path
 
 COMMANDS = {
     "plan": cmd_plan,
@@ -76,8 +74,7 @@ def state(tmp_path: Path) -> WizardState:
 
 
 def _write_plan(tmp_path: Path, *, chunk_size: int = 2) -> str:
-    manifest = read_cik_manifest(fixture_path("cik_sec_mini.csv"))
-    plan = build_plan(roster_from_manifest(manifest), chunk_size=chunk_size)
+    plan = build_plan(fixture_cohort("cik_sec_mini.csv").roster, chunk_size=chunk_size)
     write_plan(plan, resolve_run_paths(plan.plan_id, tmp_path))
     return plan.plan_id
 

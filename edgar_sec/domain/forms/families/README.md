@@ -30,7 +30,7 @@ taxonomies, and — for annual and quarterly — its checkbox schema.
   cross-family dependency — while the evidence packs and item tables stay per-family,
   so changing one family's terms or headings cannot alter another's.
 - **Each family publishes a body-lexical pack** built from its own term constants and
-  attached as the family's body evidence. This is load-bearing: the cover engine
+  attached as the family's body evidence. This is important: the cover engine
   compiles whatever pack the evidence carries, and the cover boundary's
   `BODY_PROSE_FALLBACK` signal scores body-root candidates against it. Without an
   explicit pack the fallback derives its tiers from flat vocabulary instead, which

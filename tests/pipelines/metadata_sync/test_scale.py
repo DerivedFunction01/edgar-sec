@@ -39,15 +39,17 @@ from edgar_sec.pipelines.metadata_sync.planner import (
     load_plan,
     write_plan,
 )
-from edgar_sec.pipelines.metadata_sync.roster import (
-    build_roster,
-    read_cik_index,
-    roster_from_manifest,
-)
+from edgar_sec.pipelines.metadata_sync.roster import read_cik_index
 from edgar_sec.pipelines.metadata_sync.sec_client import SubmissionsClient
 from edgar_sec.pipelines.metadata_sync.snapshot import read_snapshot_parts
 from edgar_sec.pipelines.metadata_sync.worker import run_chunk_ids
-from tests.support import FakeSession, build_test_http, fixture_path
+from tests.support import (
+    FakeSession,
+    build_test_http,
+    fixture_cohort,
+    fixture_path,
+    roster_of,
+)
 
 MINI_CIKS = ("0000001985", "0000001761", "0000000020", "0000037996")
 
@@ -72,14 +74,13 @@ def _client(session: FakeSession) -> SubmissionsClient:
 
 def _prepare(tmp_path: Path, chunk_size: int = 1):
     """Plan the committed mini manifest, returning plan, paths, and run options."""
-    from edgar_sec.pipelines.metadata_sync.manifest import read_cik_manifest
 
-    manifest = read_cik_manifest(fixture_path("cik_sec_mini.csv"))
+    cohort = fixture_cohort("cik_sec_mini.csv")
     plan = build_plan(
-        roster_from_manifest(manifest),
+        cohort.roster,
         chunk_size=chunk_size,
-        input_name=manifest.input_name,
-        input_fingerprint=manifest.input_fingerprint,
+        input_name=cohort.input_name,
+        input_fingerprint=cohort.input_fingerprint,
     )
     run_paths = resolve_run_paths(plan.plan_id, tmp_path)
     write_plan(plan, run_paths)
@@ -105,9 +106,9 @@ def test_the_plan_document_stays_small_at_every_scale() -> None:
     cohort produced a 15 MB plan. Constant in cohort size is the property that
     makes a plan cheap to copy to a worker and cheap to diff.
     """
-    small = build_plan(build_roster(MINI_CIKS), chunk_size=1000)
+    small = build_plan(roster_of(MINI_CIKS), chunk_size=1000)
     large = build_plan(
-        build_roster(tuple(f"{value:010d}" for value in range(1, 250_001))),
+        roster_of(tuple(f"{value:010d}" for value in range(1, 250_001))),
         chunk_size=1000,
     )
     manifest = json.dumps(large.to_manifest(), indent=2)

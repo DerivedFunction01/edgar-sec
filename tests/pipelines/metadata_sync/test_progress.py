@@ -1,7 +1,7 @@
 """How this pipeline's progress events are rendered.
 
 The contract under test is that every long command is visibly progressing, and
-that a captured log stays readable and unambiguous. Two properties are load-bearing
+that a captured log stays readable and unambiguous. Two properties are important
 and are pinned directly: the phase is named on every emitted line, and a non-TTY
 run never receives bar control characters.
 

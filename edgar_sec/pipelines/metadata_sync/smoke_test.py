@@ -17,17 +17,15 @@ from __future__ import annotations
 
 import argparse
 import sys
-from dataclasses import replace
 from pathlib import Path
 
 from edgar_sec.foundation.runtime.memory import reclaim
 from edgar_sec.foundation.runtime.settings import resolve_runtime_settings
 from edgar_sec.foundation.runtime.settings.runtime import DEFAULT_CHUNK_SIZE
 
-from .manifest import read_cik_manifest
+from .manifest import compile_cik_cohort
 from .paths import resolve_run_paths
 from .planner import build_plan, write_plan
-from .roster import roster_from_manifest
 from .sec_client import SubmissionsClient
 from .worker import resolve_workers, run_chunk
 
@@ -71,27 +69,21 @@ def main(argv: list[str] | None = None) -> int:
     args = build_parser().parse_args(argv)
     settings = resolve_runtime_settings()
 
+    sample_size = max(1, args.sample_size)
     try:
-        manifest = read_cik_manifest(args.input)
+        cohort = compile_cik_cohort(args.input, limit=sample_size)
     except (FileNotFoundError, ValueError) as exc:
         print(f"error: {exc}", file=sys.stderr)
         return 2
 
-    sample = manifest.ciks[: max(1, args.sample_size)]
     plan = build_plan(
-        roster_from_manifest(
-            replace(
-                manifest,
-                ciks=sample,
-                names=manifest.names[: len(sample)],
-            )
-        ),
+        cohort.roster,
         chunk_size=(
             settings.default_chunk_size if args.chunk_size is None else args.chunk_size
         ),
-        input_name=manifest.input_name,
-        input_fingerprint=manifest.input_fingerprint,
-        selected_limit=max(1, args.sample_size),
+        input_name=cohort.input_name,
+        input_fingerprint=cohort.input_fingerprint,
+        selected_limit=sample_size,
     )
 
     artifacts = Path(args.artifacts).resolve()
@@ -131,7 +123,7 @@ def main(argv: list[str] | None = None) -> int:
         print(f"  {row['cik']}  {row['status']}  {row['error'] or ''}")
 
     print(
-        f"\nsampled {len(rows)} CIK(s) from {manifest.input_name}; "
+        f"\nsampled {len(rows)} CIK(s) from {cohort.input_name}; "
         f"checkpoint: {result.path}"
     )
     if failed:

@@ -1,6 +1,6 @@
 """Rendering the distributed lifecycle as copy-pasteable shell commands.
 
-The load-bearing case is parser round-tripping. Two flag mistakes in this renderer
+The important case is parser round-tripping. Two flag mistakes in this renderer
 were invisible to substring assertions -- a ``--workers`` the parser read as a
 different argument, and a ``--worker-id`` that does not exist at all -- so every
 emitted line is parsed by the real parser here rather than checked for expected
@@ -19,14 +19,12 @@ import pytest
 
 from edgar_sec.pipelines.metadata_sync import worker_commands as renderer
 from edgar_sec.pipelines.metadata_sync.cli import build_parser
-from edgar_sec.pipelines.metadata_sync.manifest import read_cik_manifest
 from edgar_sec.pipelines.metadata_sync.paths import (
     resolve_metadata_paths,
     resolve_run_paths,
 )
 from edgar_sec.pipelines.metadata_sync.planner import build_plan, write_plan
-from edgar_sec.pipelines.metadata_sync.roster import roster_from_manifest
-from tests.support import fixture_path
+from tests.support import compiled_cohort
 
 
 @pytest.fixture()
@@ -35,8 +33,8 @@ def metadata(tmp_path: Path):
 
 
 def _write_plan(tmp_path: Path, *, chunk_size: int = 2) -> str:
-    manifest = read_cik_manifest(fixture_path("cik_sec_mini.csv"))
-    plan = build_plan(roster_from_manifest(manifest), chunk_size=chunk_size)
+    cohort = compiled_cohort("cik_sec_mini.csv", tmp_path)
+    plan = build_plan(cohort.roster, chunk_size=chunk_size)
     write_plan(plan, resolve_run_paths(plan.plan_id, tmp_path))
     return plan.plan_id
 
