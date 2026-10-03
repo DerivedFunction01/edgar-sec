@@ -292,12 +292,11 @@ the era-band, seed-manifest, and determinism contracts it owns are in
   `checked: false`; an unexpected error still propagates, because a snapshot that
   cannot be read is a broken run rather than a shortfall.
 - **`seed_filers.csv`** is the normalized seed set, loaded once before anything
-  consumes it, so a plan and the features behind it cannot disagree about which
-  registrants are mandatory. Its fingerprint participates in both the plan identity
-  and the feature-snapshot cache identity. Expansion reads the set from the
-  **parent's published sidecar**, not the configured CSV, so a child reproduces its
-  parent's selection even if the original file has moved, been edited, or been
-  deleted.
+  consumes it, so a plan cannot disagree with itself about which registrants are
+  mandatory. Its fingerprint participates in the plan identity. Expansion reads the
+  set from the **parent's published sidecar**, not the configured CSV, so a child
+  reproduces its parent's selection even if the original file has moved, been
+  edited, or been deleted.
 
 ### `expand`
 

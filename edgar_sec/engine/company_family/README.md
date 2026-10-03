@@ -6,8 +6,8 @@ normalization and deterministic family clustering.
 ## Purpose
 
 The resulting `company_family` key lets downstream selection avoid over-representing one
-registrant group. Construction is deterministic and in-memory; the seed/profile factories perform
-the package's input I/O.
+registrant group. Construction is deterministic and in-memory, reading the catalog's
+registrant profiles through the one input factory the package owns.
 
 ## Layout
 
@@ -33,7 +33,9 @@ None. Library package, no CLI.
 
 ## Public surface
 
-- `CompanyFamilyIndex`, `CompanyFamilyInfo`, and `family_id_for` — `clustering.py`.
+- `CompanyFamilyIndex` with `from_existing_profiles`, `build_from_records`, `resolve`,
+  `derive_company_family`, and the read-only `cik_to_info` view; `CompanyFamilyInfo`;
+  `family_id_for` — `clustering.py`.
 - Name normalization, structural-vocabulary, and family-key helpers — `normalizer.py`.
 
 ## Mirrored tests
@@ -44,7 +46,7 @@ Mirrored coverage lives under `tests/engine/company_family/`.
 
 - **No fuzzy matching or external entity graph.** A registrant with no recognizable name
   relationship to a parent remains a separate family.
-- **No persisted family index.** The index is built from the current seed or profile input and
+- **No persisted family index.** The index is built from the catalog's registrant profiles and
   discarded after use.
 - **Family identifiers are part of published selection data.** Changing their derivation changes
   those identifiers and can invalidate comparisons across plans.

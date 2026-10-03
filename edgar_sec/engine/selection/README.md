@@ -27,6 +27,8 @@ and `max_per_company_classification` controls its cap.
   produce the same result.
 - **Parent selections and mandatory seeds participate in quota coverage.** Duplicate
   parent keys are rejected, and mandatory seeds are retained.
+- **`company_family` derives from the catalog's registrant profiles.** A seed set is a
+  mandatory-filer list and does not define corporate identity.
 - **Candidate SQL binds values and validates dimensions.** Policy construction rejects
   unknown dimensions and retired fields, and result mapping raises on schema drift rather
   than truncating rows.

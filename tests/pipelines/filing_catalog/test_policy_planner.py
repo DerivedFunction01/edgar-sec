@@ -329,10 +329,9 @@ def test_plan_rejects_an_unsafe_catalog_reference(
 # --- the pinned seed input -------------------------------------------------
 
 
-def _seed_csv(path: Path, rows: list[tuple[str, str]]) -> Path:
+def _seed_csv(path: Path, group: str) -> Path:
     path.write_text(
-        "cik,name,seed_group,coverage_tags,notes\n"
-        + "".join(f"{cik},{name},default,,\n" for cik, name in rows),
+        f"cik,seed_group,coverage_tags,notes\n0000000001,{group},,\n",
         encoding="utf-8",
     )
     return path
@@ -346,7 +345,7 @@ def test_a_policy_plan_publishes_its_normalized_seed_set(
     """The plan carries the seed set it selected against, not a path to one."""
     manifest, _ = catalog_snapshot
     artifacts_root = _artifacts_root(catalog_artifacts_root)
-    seed_path = _seed_csv(tmp_path / "seed-cik.csv", [("0000000001", "Acme")])
+    seed_path = _seed_csv(tmp_path / "seed-cik.csv", "default")
     policy = _policy(seed_cik_path=str(seed_path))
 
     meta = plan_policy(str(manifest["catalog_id"]), policy, artifacts_root)
@@ -356,7 +355,6 @@ def test_a_policy_plan_publishes_its_normalized_seed_set(
     assert sidecar.is_file()
     published = read_seed_filers_csv(sidecar)
     assert set(published) == {"0000000001"}
-    assert published["0000000001"].name == "Acme"
     assert meta["seed_filer_count"] == 1
     assert meta["seed_fingerprint"] == compute_seed_fingerprint(published)
 
@@ -390,14 +388,14 @@ def test_editing_the_seed_csv_changes_the_plan_identity(
 ) -> None:
     manifest, _ = catalog_snapshot
     artifacts_root = _artifacts_root(catalog_artifacts_root)
-    seed_path = _seed_csv(tmp_path / "seed-cik.csv", [("0000000001", "Acme")])
+    seed_path = _seed_csv(tmp_path / "seed-cik.csv", "default")
 
     first = plan_policy(
         str(manifest["catalog_id"]),
         _policy(seed_cik_path=str(seed_path)),
         artifacts_root,
     )
-    _seed_csv(seed_path, [("0000000001", "Renamed")])
+    _seed_csv(seed_path, "renamed")
     second = plan_policy(
         str(manifest["catalog_id"]),
         _policy(seed_cik_path=str(seed_path)),
@@ -415,13 +413,13 @@ def test_a_seed_plan_reused_after_the_csv_changes_is_refused(
     """The identity guard that stops a moved file silently changing a plan."""
     manifest, _ = catalog_snapshot
     artifacts_root = _artifacts_root(catalog_artifacts_root)
-    seed_path = _seed_csv(tmp_path / "seed-cik.csv", [("0000000001", "Acme")])
+    seed_path = _seed_csv(tmp_path / "seed-cik.csv", "default")
     policy = _policy(seed_cik_path=str(seed_path))
 
     first = plan_policy(str(manifest["catalog_id"]), policy, artifacts_root)
     plan_dir = resolve_filing_catalog_paths(artifacts_root).plan_dir(first["plan_id"])
 
-    _seed_csv(seed_path, [("0000000001", "Acme"), ("0000000002", "Beta")])
+    _seed_csv(seed_path, "edited")
     second = plan_policy(str(manifest["catalog_id"]), policy, artifacts_root)
 
     assert second["plan_id"] != first["plan_id"]

@@ -567,7 +567,6 @@ def plan_policy(
         profile_path=paths.snapshot_profiles_file(catalog),
         output_root=paths.catalog_root,
         policy=policy,
-        seed_filers=pinned_seed,
         row_group_size=row_group_size,
     )
     snapshot = builder.build()

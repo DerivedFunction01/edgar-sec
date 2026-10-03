@@ -30,9 +30,6 @@ from edgar_sec.engine.company_family.normalizer import (
     post_normalize,
     strip_legal_forms,
 )
-from tests.support import fixture_path
-
-SEED_CSV = "company_family/seed_ciks.csv"
 
 
 @pytest.fixture(scope="module")
@@ -284,29 +281,54 @@ def test_index_is_immutable_after_construction(corpus: list[tuple[str, str]]) ->
 # --- factories ------------------------------------------------------------
 
 
-def test_build_from_seed_reads_the_committed_manifest() -> None:
-    built = CompanyFamilyIndex.build_from_seed(fixture_path(SEED_CSV))
-    assert len(built) == 10
+def _write_profiles(path: Path, rows: list[tuple[str, str]]) -> Path:
+    """Write a minimal ``company_profiles.parquet``-shaped corpus."""
+    import pyarrow as pa
+    import pyarrow.parquet as pq
+
+    schema = pa.schema(
+        [
+            ("cik", pa.string()),
+            ("identity", pa.struct([("name", pa.string())])),
+        ]
+    )
+    table = pa.Table.from_pylist(
+        [{"cik": cik, "identity": {"name": name}} for cik, name in rows],
+        schema=schema,
+    )
+    pq.write_table(table, path)
+    return path
+
+
+def test_from_existing_profiles_derives_families_from_the_profile_corpus(
+    tmp_path: Path, corpus: list[tuple[str, str]]
+) -> None:
+    built = CompanyFamilyIndex.from_existing_profiles(
+        _write_profiles(tmp_path / "p.parquet", corpus)
+    )
+    assert len(built) == len(corpus)
     assert built.resolve("0001398244").family_key == "santander drive"
 
 
-def test_build_from_seed_normalizes_unpadded_ciks() -> None:
-    built = CompanyFamilyIndex.build_from_seed(fixture_path(SEED_CSV))
+def test_from_existing_profiles_normalizes_unpadded_ciks(
+    tmp_path: Path, corpus: list[tuple[str, str]]
+) -> None:
+    built = CompanyFamilyIndex.from_existing_profiles(
+        _write_profiles(tmp_path / "p.parquet", corpus)
+    )
     assert built.resolve("0000019617").family_id == built.resolve("19617").family_id
 
 
-def test_build_from_seed_reports_a_missing_file(tmp_path: Path) -> None:
-    with pytest.raises(FileNotFoundError, match="seed CIK file not found"):
-        CompanyFamilyIndex.build_from_seed(tmp_path / "absent.csv")
-
-
-def test_build_from_seed_skips_incomplete_rows(tmp_path: Path) -> None:
-    seed = tmp_path / "seed.csv"
-    seed.write_text(
-        "cik,name\n0000000001,GOOD COMPANY INC\n,BAD NAME\n0000000002,\n",
-        encoding="utf-8",
+def test_from_existing_profiles_skips_profiles_without_a_name(tmp_path: Path) -> None:
+    profiles = _write_profiles(
+        tmp_path / "p.parquet",
+        [
+            ("0000000001", "GOOD COMPANY INC"),
+            ("0000000002", ""),
+            ("", "NO CIK INC"),
+        ],
     )
-    assert len(CompanyFamilyIndex.build_from_seed(seed)) == 1
+    assert len(CompanyFamilyIndex.from_existing_profiles(profiles)) == 1
 
 
 def test_from_existing_profiles_reads_a_materialized_catalog(
@@ -340,8 +362,17 @@ def test_building_twice_gives_identical_results(corpus: list[tuple[str, str]]) -
         assert first.resolve(cik) == second.resolve(cik), cik
 
 
-def test_seed_and_records_paths_agree() -> None:
-    from_seed = CompanyFamilyIndex.build_from_seed(fixture_path(SEED_CSV))
+def test_a_fixed_profile_corpus_gives_byte_stable_family_ids(
+    tmp_path: Path, corpus: list[tuple[str, str]]
+) -> None:
+    profiles = _write_profiles(tmp_path / "p.parquet", corpus)
+    first = CompanyFamilyIndex.from_existing_profiles(profiles)
+    second = CompanyFamilyIndex.from_existing_profiles(profiles)
+    for cik, info in first.cik_to_info.items():
+        assert second.cik_to_info[cik].family_id == info.family_id, cik
+
+
+def test_derived_family_keys_match_the_inline_corpus() -> None:
     inline: list[tuple[str, Any]] = [
         ("0001383094", "Santander Drive Auto Receivables LLC"),
         ("0001398244", "Santander Drive Auto Receivables Trust 2007-2"),
@@ -357,5 +388,11 @@ def test_seed_and_records_paths_agree() -> None:
         ("0001566138", "Honda Auto Receivables 2013-1 Owner Trust"),
         ("0000866787", "AutoZone Inc"),
     ]
-    from_records = CompanyFamilyIndex.build_from_records(inline)
-    assert from_seed.resolve("0000019617") == from_records.resolve("0000019617")
+    built = CompanyFamilyIndex.build_from_records(inline)
+    assert built.resolve("0001398244").family_key == "santander drive"
+
+
+def test_cik_to_info_is_read_only(corpus: list[tuple[str, str]]) -> None:
+    built = CompanyFamilyIndex.build_from_records(corpus)
+    with pytest.raises(TypeError):
+        built.cik_to_info["x"] = CompanyFamilyInfo("", "", "", "", "", False)

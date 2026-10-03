@@ -17,15 +17,9 @@ from pathlib import Path
 
 from edgar_sec.domain.filing_catalog.schemas import TARGET_COLUMNS
 from edgar_sec.domain.forms.common.aliases import FORM_FAMILY_SUFFIXES
-from edgar_sec.domain.sec_urls import normalize_cik
 from edgar_sec.domain.taxonomy.jurisdictions import STATE_POSTAL_CODES
 from edgar_sec.engine.company_family.clustering import CompanyFamilyIndex
-from edgar_sec.engine.selection.policy import (
-    EraBand,
-    SeedFiler,
-    SelectionPolicy,
-    compute_seed_fingerprint,
-)
+from edgar_sec.engine.selection.policy import EraBand, SelectionPolicy
 from edgar_sec.foundation.serialization import canonical_hash
 from edgar_sec.infra.storage.atomic import atomic_write_text
 from edgar_sec.infra.storage.duckdb import connect
@@ -151,7 +145,6 @@ class FeatureSnapshotBuilder:
         output_root: str | Path,
         policy: SelectionPolicy,
         *,
-        seed_filers: dict[str, SeedFiler] | None = None,
         row_group_size: int = DEFAULT_ROW_GROUP_SIZE,
         gap_years: int = DEFAULT_GAP_YEARS,
         cessation_grace_years: int = DEFAULT_CESSATION_GRACE_YEARS,
@@ -168,10 +161,6 @@ class FeatureSnapshotBuilder:
         self.profile_path = Path(profile_path).resolve()
         self.output_root = Path(output_root).resolve()
         self.policy = policy
-        # The seed set is passed in already normalized rather than re-read from
-        # the policy's path, so the snapshot is a function of the pinned input
-        # the caller published, not of whatever the file holds at build time.
-        self.seed_filers = dict(seed_filers or {})
         self.row_group_size = row_group_size
         self.options = _build_options(
             gap_years, cessation_grace_years, stub_size_threshold
@@ -181,13 +170,14 @@ class FeatureSnapshotBuilder:
 
     def snapshot_dir(self, forms: Sequence[str]) -> Path:
         """Return the content-addressed directory for this exact input set."""
+        # No derivation-revision term: a change to how a column is derived needs
+        # the snapshot directory pruned, since identical inputs resolve here.
         payload = {
             "target_root": str(self.target_root),
             "profile_path": str(self.profile_path),
             "forms": sorted(forms),
             "options": self.options,
             "policy_fingerprint": self.policy.policy_fingerprint,
-            "seed_fingerprint": compute_seed_fingerprint(self.seed_filers),
         }
         return self.output_root / "snapshots" / canonical_hash(payload)[:32]
 
@@ -357,18 +347,17 @@ class FeatureSnapshotBuilder:
         con: object,
         union_sql: str,
         staging_dir: Path,
-        profile_records: list[tuple[str, str]],
     ) -> int:
         """Write the wide per-occurrence feature table.
 
         This is the expensive stage: it is the only one that touches the
         occurrence rows, and every later stage joins against its output.
         """
-        family_index = self._family_index(profile_records)
+        family_index = CompanyFamilyIndex.from_existing_profiles(self.profile_path)
         con.execute(_FAMILY_MAP_DDL)
         con.executemany(
             "INSERT INTO company_family_map VALUES (?, ?)",
-            [[cik, family_index.resolve(cik).family_key] for cik, _ in profile_records],
+            [[cik, info.family_key] for cik, info in family_index.cik_to_info.items()],
         )
 
         era_expr = self._era_sql("f.report_date")
@@ -418,24 +407,6 @@ class FeatureSnapshotBuilder:
         return copy_query_to_parquet(
             con, query, staging_dir / "occurrence_base.parquet", self.row_group_size
         )
-
-    def _family_index(
-        self, profile_records: list[tuple[str, str]]
-    ) -> CompanyFamilyIndex:
-        """Prefer the pinned seed manifest; fall back to the profile corpus.
-
-        The seed set is an explicit statement of which registrants define family
-        boundaries, so it wins over deriving them from whatever happens to be in
-        the catalog. It is read from the caller's normalized seed map rather than
-        from disk, so a snapshot can never be built from a different seed set
-        than the one its plan published.
-        """
-        records = [
-            (entry.cik, entry.name) for entry in self.seed_filers.values() if entry.name
-        ]
-        if records:
-            return CompanyFamilyIndex.build_from_records(records)
-        return CompanyFamilyIndex.build_from_records(profile_records)
 
     def _write_lifecycle(self, con: object, union_sql: str, staging_dir: Path) -> int:
         gap_years = int(self.options["gap_years"])
@@ -630,21 +601,6 @@ class FeatureSnapshotBuilder:
 
     # ---------------------------------------------------------------- build
 
-    def _read_profile_records(self, con: object) -> list[tuple[str, str]]:
-        rows = con.execute(
-            f"SELECT cik, identity.name FROM "
-            f"read_parquet({sql_literal(str(self.profile_path))}) "
-            f"WHERE cik IS NOT NULL"
-        ).fetchall()
-        records: list[tuple[str, str]] = []
-        for raw_cik, name in rows:
-            if not raw_cik or not name:
-                continue
-            digits = "".join(ch for ch in str(raw_cik) if ch.isdigit())
-            if digits:
-                records.append((normalize_cik(digits), str(name)))
-        return records
-
     def build(self) -> SnapshotPaths:
         """Build the snapshot, or return the existing one for these inputs."""
         forms = sorted(set(self.policy.forms))
@@ -663,10 +619,9 @@ class FeatureSnapshotBuilder:
         snapshot_dir.mkdir(parents=True, exist_ok=True)
         counts: dict[str, int] = {}
         with connect() as con:
-            profile_records = self._read_profile_records(con)
             union = self._target_union(forms, target_parts)
             counts["occurrence_rows"] = self._write_occurrence_base(
-                con, union, snapshot_dir, profile_records
+                con, union, snapshot_dir
             )
             counts["lifecycle_rows"] = self._write_lifecycle(con, union, snapshot_dir)
             counts["cross_form_rows"] = self._write_cross_form(

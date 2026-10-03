@@ -261,6 +261,57 @@ def _policy() -> SelectionPolicy:
     )
 
 
+def _families_by_cik(locators: Path) -> dict[str, str]:
+    with connect() as con:
+        rows = con.execute(
+            f"SELECT representative_cik, company_family FROM read_parquet('{locators}')"
+        ).fetchall()
+    return {cik: family for cik, family in rows}
+
+
+def test_the_seed_set_does_not_influence_company_family(
+    tmp_path: Path, sample_source: Path
+) -> None:
+    """Families come from the profile corpus, whatever the seed manifest says.
+
+    A seed set is a mandatory-filer list. When it also supplied family
+    boundaries, an operator manifest could redefine corporate identity for every
+    published plan, and registrants added to the catalog after the manifest was
+    written would fall outside their own families.
+    """
+    artifacts_root = tmp_path / "artifacts"
+    manifest = materialize(sample_source, artifacts_root)
+    catalog_id = str(manifest["catalog_id"])
+    paths = resolve_filing_catalog_paths(artifacts_root)
+
+    seed_csv = tmp_path / "seed-cik.csv"
+    seed_csv.write_text(
+        "cik,seed_group,coverage_tags,notes\n0000320193,anchor,,\n", encoding="utf-8"
+    )
+    seeded = SelectionPolicy(
+        corpus_id="test_corpus",
+        forms=["10-K"],
+        era_bands=[EraBand(name="modern", start_year=2010)],
+        base_content_units=2,
+        seed_cik_path=str(seed_csv),
+    )
+
+    def families_under(policy: SelectionPolicy) -> dict[str, str]:
+        builder = FeatureSnapshotBuilder(
+            target_root=paths.snapshot_targets_dir(catalog_id),
+            profile_path=paths.snapshot_profiles_file(catalog_id),
+            output_root=artifacts_root,
+            policy=policy,
+        )
+        return _families_by_cik(builder.build().locator_features)
+
+    # Same profiles, two different seed manifests: identical families.
+    assert families_under(seeded) == families_under(_policy())
+    # A seeded registrant's family is the profile-derived one, not one it acquired
+    # by being listed as mandatory.
+    assert families_under(seeded)["0000320193"] == "apple fixture"
+
+
 # --- size_band: relative to the family's own median -------------------------
 #
 # These tests pin the invariant that the same relative filing size maps to the

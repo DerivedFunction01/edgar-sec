@@ -237,6 +237,22 @@ def test_seed_fingerprint_changes_with_any_field() -> None:
     assert compute_seed_fingerprint(base) != compute_seed_fingerprint(edited)
 
 
+def test_seed_fingerprint_ignores_a_ciks_display_name(tmp_path: Path) -> None:
+    """A seed's name carries no behaviour, so renaming one moves no plan.
+
+    The name used to decide company-family boundaries. It no longer does, and
+    fingerprinting it would churn plan identity on a cosmetic edit to an operator
+    manifest.
+    """
+
+    def fingerprint_for(name: str) -> str:
+        path = tmp_path / f"{name}.csv"
+        path.write_text(f"cik,name,seed_group\n0000000001,{name},a\n", encoding="utf-8")
+        return compute_seed_fingerprint(load_seed_cik_csv(path))
+
+    assert fingerprint_for("Acme") == fingerprint_for("Renamed")
+
+
 # ------------------------------------------------------------- normalization
 
 

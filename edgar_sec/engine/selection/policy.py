@@ -174,15 +174,9 @@ class SeedFiler:
 
     Seed filers are registrants that must appear in the output regardless of
     quota arithmetic -- an anchor tenant, a known-good counterparty.
-
-    ``name`` is carried because the same manifest also defines company-family
-    boundaries, and family clustering is keyed on the registrant name as well as
-    the CIK. A seed set that cannot rebuild the family index would let a plan
-    depend on a second, unpinned file.
     """
 
     cik: str
-    name: str = ""
     seed_group: str = "default"
     coverage_tags: str = ""
     notes: str = ""
@@ -190,7 +184,7 @@ class SeedFiler:
 
 # The CSV header a seed sidecar is written and read with. One owner for the
 # format, so the writer and the reader cannot drift.
-SEED_FILER_COLUMNS = ("cik", "name", "seed_group", "coverage_tags", "notes")
+SEED_FILER_COLUMNS = ("cik", "seed_group", "coverage_tags", "notes")
 
 
 def load_seed_cik_csv(path: str | Path) -> dict[str, SeedFiler]:
@@ -229,7 +223,6 @@ def load_seed_cik_csv(path: str | Path) -> dict[str, SeedFiler]:
 
             seed_map[normalized_cik] = SeedFiler(
                 cik=normalized_cik,
-                name=(row.get("name") or "").strip(),
                 seed_group=(row.get("seed_group") or "default").strip(),
                 coverage_tags=(row.get("coverage_tags") or "").strip(),
                 notes=(row.get("notes") or "").strip(),
@@ -272,7 +265,6 @@ def write_seed_filers_csv(path: str | Path, seed_map: dict[str, SeedFiler]) -> N
                 _csv_field(value)
                 for value in (
                     entry.cik,
-                    entry.name,
                     entry.seed_group,
                     entry.coverage_tags,
                     entry.notes,
@@ -301,7 +293,6 @@ def read_seed_filers_csv(path: str | Path) -> dict[str, SeedFiler]:
                 continue
             seed_map[cik] = SeedFiler(
                 cik=cik,
-                name=(row.get("name") or "").strip(),
                 seed_group=(row.get("seed_group") or "default").strip(),
                 coverage_tags=(row.get("coverage_tags") or "").strip(),
                 notes=(row.get("notes") or "").strip(),
@@ -321,12 +312,10 @@ def compute_seed_fingerprint(seed_map: dict[str, SeedFiler]) -> str:
 
     Sorting by CIK makes the fingerprint independent of row order in the CSV, so
     re-sorting the manifest does not invalidate every plan built from it, while
-    editing any seed's name, group, or notes does. The name participates because
-    it decides company-family boundaries, which are part of what the seed set
-    produces.
+    editing any seed's group, tags, or notes does.
     """
     rows = [
-        [entry.cik, entry.name, entry.seed_group, entry.coverage_tags, entry.notes]
+        [entry.cik, entry.seed_group, entry.coverage_tags, entry.notes]
         for entry in sorted(seed_map.values(), key=lambda item: item.cik)
     ]
     return _fingerprint(rows)

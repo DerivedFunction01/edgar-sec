@@ -611,7 +611,7 @@ def test_a_seeded_parent_expands_from_its_own_published_seed_set(
     child_dir = resolve_filing_catalog_paths(artifacts_root).plan_dir(child["plan_id"])
     assert child["seed_fingerprint"] == parent["seed_fingerprint"]
     assert read_seed_filers_csv(child_dir / SEED_FILERS_NAME) == {
-        "0000320193": SeedFiler(cik="0000320193", name="APPLE FIXTURE INC")
+        "0000320193": SeedFiler(cik="0000320193")
     }
     assert set(plan_locator_keys(parent_dir)) <= set(plan_locator_keys(child_dir))
 

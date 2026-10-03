@@ -12,16 +12,15 @@ Trust 2007-2" from "Santander Drive Auto Receivables Trust 2013-2". The second
 assembles variants into families keyed on their shared head, resolves head
 aliases, and attaches plausible parent registrants.
 
-Everything is in-memory and deterministic: no I/O beyond the two explicit
-factory methods, and no dependence on dict ordering or wall-clock state.
+Everything is in-memory and deterministic: no I/O beyond the one explicit
+factory method, and no dependence on dict ordering or wall-clock state.
 """
 
 from __future__ import annotations
 
-import csv
 import hashlib
 from collections import defaultdict
-from collections.abc import Sequence
+from collections.abc import Mapping, Sequence
 from dataclasses import dataclass
 from pathlib import Path
 from types import MappingProxyType
@@ -116,36 +115,14 @@ class CompanyFamilyIndex:
 
     # -------------------------------------------------------------- factories
 
-    @classmethod
-    def build_from_seed(
-        cls,
-        seed_path: str | Path,
-        *,
-        seed_string: str = SEED,
-    ) -> CompanyFamilyIndex:
-        """Build the index from a CIK/name CSV manifest.
+    @property
+    def cik_to_info(self) -> Mapping[str, CompanyFamilyInfo]:
+        """The resolved registrant-to-family mapping, read-only.
 
-        Rows missing either field are skipped: a manifest is a sampling input,
-        so one incomplete line should not fail the whole build. There is
-        deliberately no process-wide memo of previous builds -- a cache keyed on
-        a filesystem mtime is hidden global state that leaks memory and makes
-        results depend on call order.
+        A consumer that needs every resolved registrant -- to load the families
+        into a query engine, for instance -- needs no second pass over the corpus.
         """
-        path = Path(seed_path).resolve()
-        if not path.is_file():
-            raise FileNotFoundError(f"seed CIK file not found: {path}")
-
-        records: list[tuple[str, str]] = []
-        with path.open("r", encoding="utf-8-sig", newline="") as handle:
-            for row in csv.DictReader(handle):
-                raw_cik = (row.get("cik") or "").strip()
-                name = (row.get("name") or "").strip()
-                if not raw_cik or not name:
-                    continue
-                digits = "".join(ch for ch in raw_cik if ch.isdigit())
-                if digits:
-                    records.append((normalize_cik(digits), name))
-        return cls.build_from_records(records, seed_string=seed_string)
+        return self._cik_to_info
 
     @classmethod
     def from_existing_profiles(

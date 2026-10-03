@@ -42,8 +42,8 @@ Each package's README carries its module→responsibility layout and its own del
   not read ambient configuration. Two sub-packages are deliberate exceptions, and both
   go through `infra/storage` rather than owning a write path of their own —
   `selection/features.py` materialises a feature snapshot and `selection/policy.py`
-  serializes a policy document, while `company_family/clustering.py` reads a seed CSV or
-  a company-profiles Parquet in `build_from_seed` and `from_existing_profiles`.
+  serializes a policy document, while `company_family/clustering.py` reads a
+  company-profiles Parquet in `from_existing_profiles`.
 - **Explicit configuration travels as arguments, never as reads.** Effective settings come
   in as parameters or typed policy objects; the engine does not resolve the environment.
   This is what lets `AGENTS.md` §3 confine `os.environ` access to
