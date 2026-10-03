@@ -239,21 +239,6 @@ def test_empty_requests_return_empty_without_touching_storage(
 # ------------------------------------------------------------------ filters
 
 
-def test_amendment_filter_narrows_the_pool(tmp_path: Path) -> None:
-    locators = [make_locator(index, company_family=f"f{index}") for index in range(4)]
-    locators[0]["is_amendment"] = True
-    snapshot = write_snapshot(tmp_path / "amend", locators)
-    with _source(
-        snapshot, filters=CandidateFilters(amendment="original")
-    ).session() as source:
-        assert all(row["is_amendment"] is False for row in source.candidate_page(0))
-    with _source(
-        snapshot, filters=CandidateFilters(amendment="amendments")
-    ).session() as source:
-        rows = source.candidate_page(0)
-    assert [row["document_locator_key"] for row in rows] == ["loc-0000"]
-
-
 def test_max_reported_size_filter_narrows_the_pool(tmp_path: Path) -> None:
     locators = [make_locator(index, company_family=f"f{index}") for index in range(4)]
     for row in locators:
@@ -277,11 +262,6 @@ def test_document_suffix_filter_narrows_the_pool(tmp_path: Path) -> None:
     ).session() as source:
         rows = source.candidate_page(0)
     assert [row["document_locator_key"] for row in rows] == ["loc-0001"]
-
-
-def test_an_invalid_amendment_policy_is_rejected(snapshot_dir: Path) -> None:
-    with pytest.raises(ValueError, match="invalid amendment policy"):
-        CandidateFilters(amendment="amendmented")
 
 
 def test_an_unconstrained_filter_predicate_is_true() -> None:

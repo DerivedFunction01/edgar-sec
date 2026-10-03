@@ -132,7 +132,7 @@ def test_namespace_carries_every_field_the_commands_read() -> None:
     assert isinstance(namespace, argparse.Namespace)
     assert namespace.command == "plan"
     assert namespace.forms == ["10-K", "8-K"]
-    for field in ("scope", "amendment", "suffixes", "limit", "artifacts"):
+    for field in ("scope", "suffixes", "limit", "artifacts"):
         assert hasattr(namespace, field), f"cmd_plan reads {field}"
     for field in ("source", "source_manifest"):
         assert hasattr(namespace, field), f"cmd_materialize reads {field}"

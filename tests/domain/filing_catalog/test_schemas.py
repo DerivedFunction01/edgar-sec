@@ -44,14 +44,13 @@ def test_profile_schema_appends_only_the_owned_version_column() -> None:
     assert PROFILE_SCHEMA.names[:-1] == list(BORROWED_COLUMNS)
 
 
-def test_target_schema_has_16_columns() -> None:
-    assert len(TARGET_SCHEMA.names) == 16
+def test_target_schema_has_15_columns() -> None:
+    assert len(TARGET_SCHEMA.names) == 15
     assert TARGET_SCHEMA.names == list(TARGET_COLUMNS)
 
 
 def test_target_schema_types() -> None:
     types = {field.name: field.type for field in TARGET_SCHEMA}
-    assert str(types["is_amendment"]) == "bool"
     assert str(types["reported_size"]) == "int64"
     assert str(types["occurrence_id"]) == "string"
     assert str(types["document_locator_key"]) == "string"

@@ -90,7 +90,6 @@ def _namespace(
         scope=scope,
         policy=policy,
         auto_policy=False,
-        amendment="both",
         suffixes=[],
         dates=dates,
         limit=None,

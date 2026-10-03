@@ -406,7 +406,7 @@ function catches its own errors, prints `error: <msg>` to stderr, and returns 1
 | Subcommand | Flags | Returns |
 | :--- | :--- | :--- |
 | `materialize` | `--source`, `--source-manifest`, `--artifacts`, `--batch-size` | 0, or 1 on `CatalogError`. |
-| `plan` | `--catalog` (required), `--scope` (`deterministic` default, or `policy`), `--policy`, `--auto-policy`, `--artifacts`, `--forms` (nargs `*`), `--amendment` (`both` default; choices `both`/`original`/`amendments`), `--suffixes` (nargs `*`), `--limit` | 0, or 1 on `PlanConflictError`, `ValueError`, or `OSError`. |
+| `plan` | `--catalog` (required), `--scope` (`deterministic` default, or `policy`), `--policy`, `--auto-policy`, `--artifacts`, `--forms` (nargs `*`), `--suffixes` (nargs `*`), `--limit` | 0, or 1 on `PlanConflictError`, `ValueError`, or `OSError`. |
 | `expand` | `--parent-plan` (required), `--target-units` (required, int), `--artifacts` | 0, or 1 on `PlanConflictError`, `ParentPlanError`, `ValueError`, or `OSError`. |
 | `status` | `--artifacts` | 0. |
 

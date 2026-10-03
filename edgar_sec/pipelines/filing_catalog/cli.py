@@ -8,7 +8,7 @@ locators, and ``status`` reports published state from manifests only.
 There is deliberately no ``run`` command. Nothing in this phase performs network
 work, so the resumable-chunk lifecycle of Phase 1 has no analogue here.
 
-``plan --scope deterministic`` accepts exactly five filters, one of which is a
+``plan --scope deterministic`` accepts exactly four filters, one of which is a
 date selection over ``report_date``; eras and cohort balance still belong to the
 Stage B selection engine. ``--scope policy`` takes the quota profile instead, and
 it is the only scope that reasons about balance.
@@ -83,7 +83,6 @@ def cmd_plan(args: argparse.Namespace) -> int:
                 args.catalog,
                 artifacts,
                 forms=tuple(args.forms) if args.forms else None,
-                amendment=args.amendment,
                 document_suffixes=tuple(args.suffixes) if args.suffixes else None,
                 dates=args.dates,
                 limit=args.limit,
@@ -177,12 +176,6 @@ def build_parser() -> argparse.ArgumentParser:
     plan_parser.add_argument("--artifacts", default="", help="artifacts root override")
     plan_parser.add_argument(
         "--forms", nargs="*", default=[], help="restrict to these form types"
-    )
-    plan_parser.add_argument(
-        "--amendment",
-        default="both",
-        choices=["both", "original", "amendments"],
-        help="amendment policy",
     )
     plan_parser.add_argument(
         "--suffixes",

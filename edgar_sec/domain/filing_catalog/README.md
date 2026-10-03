@@ -7,7 +7,7 @@ Two modules, both pure: an Arrow schema set and a validating normalizer.
 
 Declares the catalog's on-disk shape (`TARGET_SCHEMA`, `PROFILE_SCHEMA`, the locator
 column tuples, the three version constants) and the filter vocabulary two different
-layers must agree on (amendment policies, document suffixes, and the suffix normalizer).
+layers must agree on (document suffixes and the suffix normalizer).
 Not the SQL that reads or writes the catalog (`infra/storage/duckdb_catalog.py`), and
 not the planning that consumes the vocabulary (`pipelines/filing_catalog/`,
 `engine/selection/`).
@@ -17,7 +17,7 @@ not the planning that consumes the vocabulary (`pipelines/filing_catalog/`,
 | Module | Responsibility |
 | :--- | :--- |
 | `schemas.py` | `TARGET_SCHEMA`, `PROFILE_SCHEMA`, the three version constants, `PROFILE_COLUMNS`, `TARGET_COLUMNS`, the three locator column tuples, and the two planning scopes |
-| `filters.py` | `AMENDMENT_POLICIES`, `DEFAULT_AMENDMENT`, `DEFAULT_DOCUMENT_SUFFIXES`, `normalize_suffixes()` |
+| `filters.py` | `DEFAULT_DOCUMENT_SUFFIXES`, `normalize_suffixes()` |
 
 ## Contracts
 
@@ -27,7 +27,9 @@ not the planning that consumes the vocabulary (`pipelines/filing_catalog/`,
   raises here at import time instead of surfacing later as silent column drift.
   23 columns in, 23 fields out.
 - The target shape is fixed and declared: `TARGET_COLUMNS` and `TARGET_SCHEMA` both have
-  16 fields in the same order.
+  15 fields in the same order. A form is selected by naming it exactly; an
+  amendment variant such as `10-K/A` is a distinct form value, not a derived
+  flag.
 - Column ordering is shared, not copied. `LOCATOR_BASE_COLUMNS` (8 identity columns),
   `LOCATOR_POLICY_FEATURES` (10 stratification dimensions), and
   `LOCATOR_POLICY_COLUMNS` (18 = 8 + 10) are declared once here so the writer and any
@@ -36,10 +38,6 @@ not the planning that consumes the vocabulary (`pipelines/filing_catalog/`,
   target-schema bump: `SCHEMA_VERSION`, `TARGET_SCHEMA_VERSION`, `PROFILE_SCHEMA_VERSION`.
 - Path provenance is a closed vocabulary of two values, `PATH_SOURCE_PRIMARY` and
   `PATH_SOURCE_BUNDLE`.
-- Amendment policy is a closed set of three: `AMENDMENT_POLICIES` is
-  `("both", "original", "amendments")`, `DEFAULT_AMENDMENT = "both"`. The module
-  docstring is explicit that this is a *shared* set: two layers need it, and restating
-  it in each would create two definitions of what `original` means.
 - Suffixes are validated, not sanitised. `normalize_suffixes()` lower-cases, strips
   leading dots, drops empties, de-duplicates, rejects a non-`str` element, and rejects
   anything outside `^[a-z0-9][a-z0-9.]*$` with `ValueError`. The module docstring records
@@ -63,11 +61,11 @@ not the planning that consumes the vocabulary (`pipelines/filing_catalog/`,
 | :--- | :--- |
 | `DATASET_NAME` (`"filing_catalog"`), `SCHEMA_VERSION`, `TARGET_SCHEMA_VERSION`, `PROFILE_SCHEMA_VERSION` | `schemas.py` |
 | `PATH_SOURCE_PRIMARY`, `PATH_SOURCE_BUNDLE` | `schemas.py` |
-| `PROFILE_COLUMNS` (23), `PROFILE_SCHEMA`, `TARGET_COLUMNS` (16), `TARGET_SCHEMA` | `schemas.py` |
+| `PROFILE_COLUMNS` (23), `PROFILE_SCHEMA`, `TARGET_COLUMNS` (15), `TARGET_SCHEMA` | `schemas.py` |
 | `LOCATOR_BASE_COLUMNS` (8), `LOCATOR_POLICY_FEATURES` (10), `LOCATOR_POLICY_COLUMNS` (18) | `schemas.py` |
 | `SCOPE_DETERMINISTIC`, `SCOPE_POLICY` | `schemas.py` |
 | `SUBMISSION_METADATA_SCHEMA` (re-export of the Phase 1 schema, borrowed by `PROFILE_SCHEMA`) | `schemas.py` |
-| `AMENDMENT_POLICIES`, `DEFAULT_AMENDMENT`, `DEFAULT_DOCUMENT_SUFFIXES` (empty tuple), `normalize_suffixes(values)` | `filters.py` |
+| `DEFAULT_DOCUMENT_SUFFIXES` (empty tuple), `normalize_suffixes(values)` | `filters.py` |
 
 No command surface.
 
@@ -86,9 +84,9 @@ projection is asserted against the real Phase 1 schema rather than a copy of it.
 - **No SQL builders here, by decision.** `filters.py`'s docstring records that Stage A
   kept this vocabulary in `pipelines/filing_catalog/filters.py` alongside two SQL builders;
   Stage B could not reuse it, because Layer 3 may not import Layer 4. Rather than restate
-  `AMENDMENT_POLICIES` in the selection policy, the vocabulary moved down here and the SQL
+  the suffix vocabulary in the selection policy, the vocabulary moved down here and the SQL
   builders moved down to `infra.storage.duckdb_catalog`. The alternative — a second
-  definition of the amendment vocabulary — is the outcome this layout prevents.
+  definition of the suffix vocabulary — is the outcome this layout prevents.
 - **`company_family` is deliberately absent from `PROFILE_COLUMNS`.** The module docstring
   is explicit: the v1 README claimed the column existed, but no v1 code path ever wrote it,
   and clustering is a Stage B selection feature (`roadmap/refactor_v2/phase_2.md` decision D2).

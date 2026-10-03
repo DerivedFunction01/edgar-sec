@@ -1,8 +1,8 @@
 """Filter vocabulary shared by deterministic planning and selection policy.
 
-This module holds only vocabulary and pure normalization: the closed set of
-amendment policies, the default suffix set, and the suffix normalizer. It is
-Layer 1 because two different layers need to agree on it --
+This module holds only vocabulary and pure normalization: the default
+suffix set and the suffix normalizer. It is Layer 1 because two
+different layers need to agree on it --
 
 * ``pipelines.filing_catalog.planner`` for deterministic planning, and
 * ``engine.selection.policy.SelectionPolicy`` for Stage B selection.
@@ -10,10 +10,10 @@ Layer 1 because two different layers need to agree on it --
 Stage A originally kept this vocabulary in ``pipelines/filing_catalog/filters.py``
 alongside the two SQL builders. Stage B could not reuse it: the layer graph is
 acyclic downward-only, so Layer 3 (``engine``) may not import Layer 4
-(``pipelines``). Rather than restate ``AMENDMENT_POLICIES`` in the selection
-policy -- two closed sets that must never disagree about what ``original``
-means -- the vocabulary moved down here, and the SQL builders moved down with
-it to ``infra.storage.duckdb_catalog``.
+(``pipelines``). Rather than restate the suffix vocabulary in the selection
+policy -- two closed sets that must never disagree -- the vocabulary moved down
+here, and the SQL builders moved down with it to
+``infra.storage.duckdb_catalog``.
 
 v1 built its suffix predicate by interpolating both the column name and each
 suffix straight into a SQL string literal, and ``normalize_suffixes`` only
@@ -23,9 +23,9 @@ fails loudly at the call site instead of producing malformed or injected SQL.
 
 ``DateSelection`` is the same kind of shared vocabulary: a union of tagged date
 clauses that deterministic planning, the selection policy, and both SQL
-compilers must agree about. It lives here for the same reason the amendment
-policies do -- two layers need one answer, and the lower layer cannot import the
-higher one.
+compilers must agree about. It lives here for the same reason the suffix
+vocabulary does -- two layers need one answer, and the lower layer cannot
+import the higher one.
 
 The grammar is deliberately small and total: every term either parses to a
 clause or raises naming the offending token. Nothing is guessed. ``2023Q1`` is an
@@ -50,8 +50,6 @@ from edgar_sec.foundation.text.dates import is_valid_year, parse_year_token
 # comment-shaped.
 _SUFFIX_RE = re.compile(r"^[a-z0-9][a-z0-9.]*$")
 
-DEFAULT_AMENDMENT = "both"
-AMENDMENT_POLICIES = ("both", "original", "amendments")
 DEFAULT_DOCUMENT_SUFFIXES: tuple[str, ...] = ()
 
 # Recurring periods are calendar months and quarters of ``report_date``. The
@@ -676,8 +674,6 @@ def normalize_suffixes(values: tuple[str, ...] | list[str]) -> tuple[str, ...]:
 
 
 __all__ = [
-    "AMENDMENT_POLICIES",
-    "DEFAULT_AMENDMENT",
     "DEFAULT_DOCUMENT_SUFFIXES",
     "GRANULARITY_MONTH",
     "GRANULARITY_QUARTER",

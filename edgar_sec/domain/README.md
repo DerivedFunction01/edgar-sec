@@ -56,7 +56,7 @@ today.
 | `document/acquisition.py` | `FetchResult`, `AcquisitionFailure`, `FetchStatus`, and `is_stub_document_path()` |
 | `document/blocks.py` | `BlockKind`, `DocumentBlock`, `BlockStream` — the flat 1D typed block representation |
 | `filing_catalog/schemas.py` | `TARGET_SCHEMA`, `PROFILE_SCHEMA`, the three version constants, and the three column tuples |
-| `filing_catalog/filters.py` | `AMENDMENT_POLICIES`, `DEFAULT_AMENDMENT`, `DEFAULT_DOCUMENT_SUFFIXES`, `normalize_suffixes()` |
+| `filing_catalog/filters.py` | `DEFAULT_DOCUMENT_SUFFIXES`, `normalize_suffixes()` |
 | `forms/vocabulary.py` | Cover label aliases, filer-status constants, checkbox keyword grids, value patterns, and the eight compiled field-label regexes |
 | `forms/checkmarks.py` | Checkmark tokens, bracket/symbol boundaries, font-glyph mappings, and the `CHECKMARK_MARK_RE` scan pattern |
 | `forms/schemas.py` | `CheckboxConstraint`, `CoverCheckboxSchema`, and the seven `STATUTORY_CHECKBOX_CONSTRAINTS` |

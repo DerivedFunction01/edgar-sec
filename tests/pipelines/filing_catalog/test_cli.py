@@ -39,17 +39,6 @@ def test_parser_exposes_exactly_the_four_commands() -> None:
     assert set(actions[0].choices) == {"materialize", "plan", "expand", "status"}
 
 
-def test_plan_defaults_to_the_both_amendment_policy() -> None:
-    args = build_parser().parse_args(["plan", "--catalog", "abc"])
-    assert args.amendment == "both"
-    assert args.limit is None
-
-
-def test_plan_rejects_an_unknown_amendment_policy() -> None:
-    with pytest.raises(SystemExit):
-        build_parser().parse_args(["plan", "--catalog", "abc", "--amendment", "maybe"])
-
-
 def test_plan_accepts_repeated_form_and_suffix_flags() -> None:
     args = build_parser().parse_args(
         ["plan", "--catalog", "abc", "--forms", "10-K", "10-Q", "--suffixes", ".htm"]

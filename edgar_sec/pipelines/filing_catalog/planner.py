@@ -1,7 +1,7 @@
 """Deterministic target planning for the filing catalog.
 
 Deterministic planning is a fast, zero-heuristic slice of a materialized
-catalog. It supports exactly five filters -- ``forms``, ``amendment``,
+catalog. It supports exactly four filters -- ``forms``,
 ``document_suffixes``, ``dates``, and ``limit`` -- and refuses to reason about
 eras or cohort balance, which belong to the Stage B selection policy.
 
@@ -12,9 +12,10 @@ empty selection is no date predicate at all; a nonempty one cannot represent a
 row whose ``report_date`` is missing, so it excludes those rows. That asymmetry
 is the contract, not an accident of the SQL.
 
-The ``amendment`` policy strictly filters on the filing's amendment status,
-and policy-specific parameters (selection policies, seed CIKs) are isolated
-in the Stage B policy planner.
+Form filters are exact allowlists: a form is selected only when it is named,
+so an amendment variant such as ``10-K/A`` is selected by listing it
+explicitly. Policy-specific parameters (selection policies, seed CIKs) are
+isolated in the Stage B policy planner.
 """
 
 from __future__ import annotations
@@ -25,8 +26,6 @@ from pathlib import Path
 from typing import Any
 
 from edgar_sec.domain.filing_catalog.filters import (
-    AMENDMENT_POLICIES,
-    DEFAULT_AMENDMENT,
     DEFAULT_DOCUMENT_SUFFIXES,
     date_selection_to_json,
     format_date_selection,
@@ -60,7 +59,6 @@ from edgar_sec.engine.selection.selector import DeficitSelector
 from edgar_sec.foundation.runtime.progress import ProgressCallback, emit_progress
 from edgar_sec.infra.storage.duckdb import connect
 from edgar_sec.infra.storage.duckdb_catalog import (
-    amendment_sql,
     copy_query_to_parquet,
     date_projection_sql,
     date_selection_sql,
@@ -161,7 +159,6 @@ def plan(
     output_root: str | Path | None = None,
     *,
     forms: tuple[str, ...] | None = None,
-    amendment: str | None = None,
     document_suffixes: tuple[str, ...] | None = None,
     dates: str | None = None,
     limit: int | None = None,
@@ -180,13 +177,6 @@ def plan(
     """
     if not catalog:
         raise ValueError("catalog is required")
-    if amendment is None:
-        amendment = DEFAULT_AMENDMENT
-    if amendment not in AMENDMENT_POLICIES:
-        raise ValueError(
-            f"amendment must be one of {', '.join(AMENDMENT_POLICIES)}; "
-            f"got {amendment!r}"
-        )
     if limit is not None and limit < 0:
         raise ValueError("limit must be non-negative")
 
@@ -210,7 +200,6 @@ def plan(
         "catalog_id": catalog,
         "scope": SCOPE_DETERMINISTIC,
         "forms": list(requested_forms),
-        "amendment": amendment,
         "document_suffixes": list(suffixes),
         "date_selection": date_selection_to_json(date_selection),
         "limit": limit,
@@ -257,7 +246,7 @@ def plan(
                 f"{date_projection_sql('report_date')} FROM {view}"
             )
 
-        # The amendment, suffix, and date filters are part of which partitions
+        # The form, suffix, and date filters are part of which partitions
         # exist at all, so they are applied when discovering forms. v1 listed
         # every form present in the catalog and then wrote empty partitions for
         # the ones the filters removed.
@@ -265,9 +254,6 @@ def plan(
         if requested_forms:
             form_list = ", ".join(sql_literal(form) for form in requested_forms)
             shared_where.append(f"form IN ({form_list})")
-        amendment_clause = amendment_sql(amendment)
-        if amendment_clause != "TRUE":
-            shared_where.append(amendment_clause)
         suffix_clause = suffix_sql("document_path", suffixes)
         if suffix_clause != "TRUE":
             shared_where.append(f"({suffix_clause})")
@@ -351,7 +337,6 @@ def plan(
                 "catalog_id": catalog,
                 "scope": SCOPE_DETERMINISTIC,
                 "forms": list(requested_forms),
-                "amendment": amendment,
                 "document_suffixes": list(suffixes),
                 "date_selection": date_selection_to_json(date_selection),
                 "date_selection_text": format_date_selection(date_selection),
@@ -505,7 +490,7 @@ def plan_policy(
     """Publish one immutable policy-driven target-plan bundle.
 
     The scope counterpart to :func:`plan`. Where deterministic planning slices a
-    catalog on five filters, this runs the Stage B selection engine against a
+    catalog on four filters, this runs the Stage B selection engine against a
     declared quota profile and publishes the result: quota-balanced locators, the
     18-column locator projection, a reserve pool, and the policy that produced
     it, all recorded in ``plan.json``.
@@ -702,7 +687,6 @@ def plan_policy(
             "target_units": policy.requested_units(),
             "parent_plan_id": policy.parent_plan_id,
             "forms": list(policy.forms),
-            "amendment": policy.amendment,
             "document_suffixes": list(policy.document_suffixes),
             "counts": counts,
             "selected_rows": total_rows,

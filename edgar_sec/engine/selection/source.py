@@ -32,7 +32,6 @@ from pathlib import Path
 from typing import Any
 
 from edgar_sec.domain.filing_catalog.filters import (
-    AMENDMENT_POLICIES,
     DateSelection,
 )
 from edgar_sec.engine.selection.policy import KNOWN_DIMENSIONS
@@ -71,7 +70,6 @@ POOL_COLUMNS: tuple[str, ...] = (
     "company_family",
     "reported_size",
     "report_year",
-    "is_amendment",
     "representative_cik",
 )
 
@@ -83,7 +81,6 @@ OCCURRENCE_COLUMNS: tuple[str, ...] = (
     "source_cik",
     "accession",
     "form",
-    "is_amendment",
     "filing_date",
     "report_date",
     "primary_document",
@@ -97,10 +94,11 @@ OCCURRENCE_COLUMNS: tuple[str, ...] = (
     "sic_code",
     "sic_description",
     "owner_org_cik",
-    "owner_org_name",
     "owner_org_presence",
     "foreign_status",
     "foreign_country_code",
+    "state_of_incorporation",
+    "state_of_business",
     "entity_type",
     "filer_category_primary",
     "company_name",
@@ -138,24 +136,15 @@ class CandidateFilters:
     call, and so the same filter set cannot drift between pool kinds.
     """
 
-    amendment: str = "both"
     document_suffixes: tuple[str, ...] = ()
     max_reported_size: int | None = None
     date_selection: DateSelection = ()
-
-    def __post_init__(self) -> None:
-        if self.amendment not in AMENDMENT_POLICIES:
-            raise ValueError(f"invalid amendment policy: {self.amendment!r}")
 
     def filters_dates(self) -> bool:
         return bool(self.date_selection)
 
     def predicate(self) -> str:
         clauses: list[str] = []
-        if self.amendment == "original":
-            clauses.append("l.is_amendment = false")
-        elif self.amendment == "amendments":
-            clauses.append("l.is_amendment = true")
         if self.max_reported_size is not None:
             clauses.append(f"l.reported_size <= {int(self.max_reported_size)}")
         if self.document_suffixes:

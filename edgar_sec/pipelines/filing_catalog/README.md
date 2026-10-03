@@ -15,7 +15,7 @@ for a future acquisition phase.
 Two planning scopes with genuinely different jobs:
 
 - **Deterministic** (`plan --scope deterministic`, the default) — a fast,
-  zero-heuristic slice on exactly five filters (`forms`, `amendment`,
+  zero-heuristic slice on exactly four filters (`forms`,
   `document_suffixes`, `dates`, `limit`), producing an **8-column** locator
   projection. `dates` narrows which rows are *eligible*; it deliberately refuses
   to reason about eras or cohort balance.
@@ -41,7 +41,7 @@ ways a network dependency creeps in.
 | `cli.py` | The four commands, policy resolution, and the stdout/stderr split. |
 | `operator.py` | Interactive wizard over `cmd_materialize` / `cmd_plan` / `cmd_expand` / `cmd_status`, with discovery-driven catalog and parent-plan selection. |
 | `catalog_job.py` | `materialize()`: one Phase 1 snapshot in, one immutable catalog out, behind three guards. |
-| `planner.py` | `plan()` (five filters, 8 columns) and `plan_policy()` (quota profile, resolved era bands, form-by-era allocation, 18 columns). |
+| `planner.py` | `plan()` (four filters, 8 columns) and `plan_policy()` (quota profile, resolved era bands, form-by-era allocation, 18 columns). |
 | `expansion.py` | Parent validation, child derivation, and the 100%-retention invariant. |
 | `publication.py` | Content-addressed plan ids, staged bundles, the selection fingerprint, and the reuse-or-conflict policy. |
 | `discovery.py` | Manifest-only catalog/plan/policy enumeration and `current` resolution. |
@@ -104,11 +104,10 @@ ways a network dependency creeps in.
   representative is deterministic. v1 selected `DISTINCT` over *all* columns
   including `source_cik`, so two co-filers sharing one locator produced two rows
   and `unique_locators_count` over-counted.
-- **The `amendment` filter is actually applied**, and it participates in *form
-  discovery*, so a filter that removes a form removes its partition instead of
-  writing an empty one. v1 validated the value, recorded it, and never filtered on
-  it, so `--amendment original` silently behaved like `both`.
-- **`plan()` accepts exactly five filters**, one of which is a date selection.
+- **Form filters are exact allowlists.** A form is selected only when it is
+  named verbatim, so an amendment variant such as `10-K/A` is selected by
+  listing it explicitly; `--forms 10-K` never reaches `10-K/A`.
+- **`plan()` accepts exactly four filters**, one of which is a date selection.
   Per-field date flags (`start_date`, `end_date`, `filing_date`) are still a
   `TypeError` at the signature: the selection is one union over `report_date`, and
   a caller passing a single bound expects a half-specified interval that no
@@ -195,7 +194,7 @@ are in the [root README](../../../README.md#5-filing-catalog-pipeline-zero-netwo
 | Subcommand | Flags | Returns |
 | :--- | :--- | :--- |
 | `materialize` | `--source` (one Parquet part, treated as a one-part dataset), `--source-manifest` (Phase 1 snapshot manifest; its declared parts are resolved and verified), `--artifacts` | 0 with the manifest JSON on stdout, or 1 on `CatalogError` with `error: <msg>` on stderr. |
-| `plan` | `--catalog` (**required**), `--scope` (`deterministic` default; choices `deterministic`, `policy`), `--policy`, `--auto-policy`, `--artifacts`, `--forms` (nargs `*`), `--amendment` (`both` default; choices `both`, `original`, `amendments`), `--suffixes` (nargs `*`), `--dates` (one comma-separated union; blank selects every date), `--limit` | 0 with the plan document on stdout, or 1 on `PlanConflictError`, `ValueError`, or `OSError`. |
+| `plan` | `--catalog` (**required**), `--scope` (`deterministic` default; choices `deterministic`, `policy`), `--policy`, `--auto-policy`, `--artifacts`, `--forms` (nargs `*`), `--suffixes` (nargs `*`), `--dates` (one comma-separated union; blank selects every date), `--limit` | 0 with the plan document on stdout, or 1 on `PlanConflictError`, `ValueError`, or `OSError`. |
 | `expand` | `--parent-plan` (**required**, a published policy plan directory), `--target-units` (**required**, int), `--artifacts` | 0 with the child plan document, or 1 on `PlanConflictError`, `ParentPlanError`, `ValueError`, or `OSError`. |
 | `status` | `--artifacts` | 0, with the published-state JSON on stdout. |
 
@@ -377,7 +376,7 @@ whether the bundle is already published (raising on a conflict), and only then
 enter `staged_plan_bundle`.
 
 The deterministic scope discovers the available forms *after* applying the
-amendment, suffix, and date filters, writes one `targets/form=<FORM>/data.parquet` per
+form, suffix, and date filters, writes one `targets/form=<FORM>/data.parquet` per
 form with `ORDER BY document_locator_key, occurrence_id`, applies `limit` as a
 wrapping `LIMIT` inside the ordered subquery, and always writes
 `locator_groups.parquet`. The policy scope builds a `FeatureSnapshotBuilder` over
@@ -391,7 +390,7 @@ cannot drop it. The plan document records `request_fingerprint` — a SHA-256 ov
 the canonicalized request — alongside the derived `plan_id`, so a plan's identity
 and the request that produced it are both readable from the file.
 
-The deterministic scope's fifth filter is a *date selection* over `report_date`:
+The deterministic scope's fourth filter is a *date selection* over `report_date`:
 `--dates` takes one comma-separated union of absolute intervals (`2005Q3..2008Q1`)
 and recurring calendar periods (`@Q1[1999..2001]`). The grammar, its canonical
 form, and its persisted representation live in
@@ -567,14 +566,36 @@ each to say something weaker."
   with `OutOfMemoryException` at the locator copy (measured: identical failure
   with and without a date selection, so it is independent of any filter), while a
   selection of 347k occurrences across 85 forms completes in about two minutes.
-  The determinism the grouping buys — a representative row chosen by a total
-  order rather than by scan order — is worth keeping, but the current spelling
-  holds all states for all groups at once. The fix is to make the aggregate
-  spillable (ordering and deduplicating by `document_locator_key` before the
-  representative is picked, or sorting the input so the aggregate streams), which
-  is a change to a Stage A query that every consumer's expected output depends on.
+  Measured on the real catalog, the aggregate costs ~2,000 bytes of peak RSS per
+  group against ~200 for the group key alone — the eight pinned `arg_min` states,
+  each holding its own copy of the 70-byte total-order key, are ~8× the cost of
+  the grouping itself. That extrapolates to ~25 GiB for 13.37M groups against a
+  6.7 GiB budget, which is why it fails at a third of the corpus.
+  The determinism the grouping buys — a representative chosen by a total order
+  rather than by scan order — is worth keeping, and the *shape* is not the
+  problem: on a 1.65M-group slice the current spelling is the fastest and leanest
+  of every rewrite tried. `DISTINCT ON` exhausted 5,699 MiB and never finished,
+  `row_number()` was ~4× slower at similar memory, packing all seven columns into
+  one ordered state was both slower *and* lossy for NULLs, and ordering each
+  `arg_min` on a bare `source_cik` was slower and heavier than sharing the
+  concatenated key. Note that an earlier revision of this entry recommended
+  sorting-and-deduplicating first; that was measured and is wrong.
+  What remains untried is narrowing the *pinned state* — the duplicate rows are
+  only 3.6% of the corpus (12.95M of 13.37M keys are singletons), so scoping the
+  eight-state aggregate to the ~416k keys that actually collide and passing the
+  rest through unaggregated would cut the pinned state by ~97%. That changes the
+  collapse rule's implementation, not its output, but it needs its own equality
+  tests against the current query before it can replace it.
   Until then, a large deterministic plan must be narrowed with `--forms`,
   `--dates`, or `--limit`.
+- **`company_name` is declared a stratification dimension but is effectively
+  unique.** Known defect. `LOCATOR_POLICY_FEATURES` lists `company_name`, which
+  measures ~40,914 distinct values over 40,914 profiles, so every quota floor on
+  it has supply 1 and consumes budget without ever stratifying anything.
+  Meanwhile `sic_code` — the strongest stratifier in the corpus, 444 values with
+  a 13.8% top share — is *not* declared, so a policy cannot floor on it through
+  the published feature list even though the snapshot carries it. The two lists
+  need reconciling: drop `company_name` and declare `sic_code`.
 - **`snapshots/` holds two kinds of snapshot, told apart by manifest.** Catalog
   snapshots are `<catalog_id>/` holding `snapshot.manifest.json`; the Stage B
   feature snapshot is a 32-hex directory holding `feature_snapshot.json`. Both

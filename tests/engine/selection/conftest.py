@@ -28,7 +28,7 @@ from edgar_sec.engine.selection.source import OCCURRENCE_COLUMNS, POOL_COLUMNS
 
 # Types mirror what FeatureSnapshotBuilder actually writes, so a synthetic
 # snapshot is type-faithful to a real one and cannot hide a casting bug.
-_BOOL_COLUMNS = frozenset({"has_revival_gap", "is_amendment"})
+_BOOL_COLUMNS = frozenset({"has_revival_gap"})
 _INT_COLUMNS: dict[str, pa.DataType] = {
     "reported_size": pa.int64(),
     "report_year": pa.int32(),
@@ -58,13 +58,10 @@ _LOCATOR_DEFAULTS: dict[str, Any] = {
     "company_family": "example",
     "reported_size": 500_000,
     "report_year": 2020,
-    "is_amendment": False,
     "representative_cik": "0000000001",
 }
 
-_OCCURRENCE_BOOL_COLUMNS = frozenset(
-    {"is_amendment", "is_xbrl", "is_inline_xbrl", "is_xbrl_numeric"}
-)
+_OCCURRENCE_BOOL_COLUMNS = frozenset({"is_xbrl", "is_inline_xbrl", "is_xbrl_numeric"})
 
 # Columns the real builder writes to locator_features that the pool projection
 # does not read. They are written here so a synthetic snapshot is shaped like a
@@ -86,7 +83,6 @@ _OCCURRENCE_DEFAULTS: dict[str, Any] = {
     "source_cik": "0000000001",
     "accession": "0000000001-20-000001",
     "form": "10-K",
-    "is_amendment": False,
     "filing_date": "2021-03-01",
     "report_date": "2020-12-31",
     "primary_document": "doc.htm",
@@ -100,10 +96,11 @@ _OCCURRENCE_DEFAULTS: dict[str, Any] = {
     "sic_code": "3571",
     "sic_description": "Electronic Computers",
     "owner_org_cik": None,
-    "owner_org_name": None,
     "owner_org_presence": "no_org",
     "foreign_status": "domestic",
     "foreign_country_code": None,
+    "state_of_incorporation": "DE",
+    "state_of_business": "NY",
     "entity_type": "operating",
     "filer_category_primary": "Accelerated Filer",
     "company_name": "Example Co",

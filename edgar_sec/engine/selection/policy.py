@@ -42,8 +42,6 @@ from pathlib import Path
 from typing import Any
 
 from edgar_sec.domain.filing_catalog.filters import (
-    AMENDMENT_POLICIES,
-    DEFAULT_AMENDMENT,
     DEFAULT_DOCUMENT_SUFFIXES,
     DateSelection,
     date_selection_from_json,
@@ -353,7 +351,6 @@ class SelectionPolicy:
 
     corpus_id: str
     forms: list[str]
-    amendment: str = DEFAULT_AMENDMENT
     document_suffixes: list[str] = field(default_factory=list)
     date_selection: list[dict[str, Any]] = field(default_factory=list)
     era_bands: list[EraBand] = field(default_factory=list)
@@ -388,10 +385,6 @@ class SelectionPolicy:
         )
         if not self.forms:
             raise ValueError("forms must contain at least one form string")
-        if self.amendment not in AMENDMENT_POLICIES:
-            raise ValueError(
-                f"amendment must be one of {', '.join(AMENDMENT_POLICIES)}"
-            )
         self.document_suffixes = list(
             normalize_suffixes([str(suffix) for suffix in self.document_suffixes])
         )
@@ -682,8 +675,6 @@ def normalize_value(value: Any) -> str:
 
 
 __all__ = [
-    "AMENDMENT_POLICIES",
-    "DEFAULT_AMENDMENT",
     "DEFAULT_DOCUMENT_SUFFIXES",
     "KNOWN_DIMENSIONS",
     "SEED_FILER_COLUMNS",

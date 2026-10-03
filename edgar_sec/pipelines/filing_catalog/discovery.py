@@ -143,7 +143,6 @@ def discover_plans(paths: FilingCatalogPaths | None = None) -> list[dict[str, An
                 "catalog_id": plan.get("catalog_id"),
                 "scope": plan.get("scope"),
                 "forms": plan.get("forms") or [],
-                "amendment": plan.get("amendment"),
                 "document_suffixes": plan.get("document_suffixes") or [],
                 "limit": plan.get("limit"),
                 "selected_rows": plan.get("selected_rows"),

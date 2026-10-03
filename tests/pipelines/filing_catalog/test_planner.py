@@ -248,22 +248,22 @@ def test_form_filter_selects_one_partition(
     assert meta["selected_rows"] == 4
 
 
-def test_amendment_policy_is_actually_enforced(
+def test_form_filter_is_an_exact_allowlist(
     catalog_id: str, artifacts_root: Path
 ) -> None:
-    """v1 validated this value but never filtered on it."""
-    both = plan(catalog_id, artifacts_root, amendment="both")
-    original = plan(catalog_id, artifacts_root, amendment="original")
-    amendments = plan(catalog_id, artifacts_root, amendment="amendments")
-    assert (
-        both["selected_rows"] == original["selected_rows"] + amendments["selected_rows"]
-    )
-    # Only 10-K/A and 8-K/A end in "/A". 10-KT and 10-KSB do not, which is the
-    # whole point of the suffix rule over a membership list.
-    assert amendments["counts"] == {"10-K/A": 1, "8-K/A": 1}
-    assert amendments["selected_rows"] == 2
-    assert original["selected_rows"] == 11
-    assert amendments["plan_id"] != original["plan_id"]
+    """A form is selected only when it is named verbatim.
+
+    ``10-K`` must not reach its amendment variant ``10-K/A``; listing
+    both selects both. This replaces the removed amendment policy: an
+    operator who wants amendments names them.
+    """
+    base = plan(catalog_id, artifacts_root, forms=("10-K",))
+    assert base["counts"] == {"10-K": 4}
+    assert "10-K/A" not in base["counts"]
+
+    both = plan(catalog_id, artifacts_root, forms=("10-K", "10-K/A"))
+    assert both["counts"] == {"10-K": 4, "10-K/A": 1}
+    assert both["selected_rows"] == 5
 
 
 def test_document_suffix_filter_narrows_the_plan(
@@ -287,13 +287,6 @@ def test_planner_refuses_a_negative_limit(
 ) -> None:
     with pytest.raises(ValueError, match="limit must be non-negative"):
         plan(catalog_id, artifacts_root, limit=-1)
-
-
-def test_planner_refuses_an_unknown_amendment_policy(
-    catalog_id: str, artifacts_root: Path
-) -> None:
-    with pytest.raises(ValueError, match="amendment must be one of"):
-        plan(catalog_id, artifacts_root, amendment="sometimes")
 
 
 def test_planner_refuses_an_unsafe_form_filter(
@@ -350,7 +343,7 @@ def test_plan_identity_is_content_derived(
     [
         {"forms": ("10-K",)},
         {"forms": ("10-Q",)},
-        {"forms": ("10-K",), "amendment": "amendments"},
+        {"forms": ("10-K", "10-K/A")},
         {"forms": ("10-K",), "limit": 1},
         {"document_suffixes": (".htm",)},
     ],
@@ -363,7 +356,7 @@ def test_distinct_requests_yield_distinct_plans(
         for other in (
             {"forms": ("10-K",)},
             {"forms": ("10-Q",)},
-            {"forms": ("10-K",), "amendment": "amendments"},
+            {"forms": ("10-K", "10-K/A")},
             {"forms": ("10-K",), "limit": 1},
             {"document_suffixes": (".htm",)},
         )
@@ -429,16 +422,14 @@ def test_zero_row_plan_is_still_a_complete_bundle(
     catalog_id: str, artifacts_root: Path
 ) -> None:
     """A plan matching nothing must remain publishable and reusable."""
-    meta = plan(catalog_id, artifacts_root, forms=("10-K",), amendment="amendments")
+    meta = plan(catalog_id, artifacts_root, forms=("NO-SUCH-FORM",))
     assert meta["selected_rows"] == 0
     plan_dir = _plan_dir(artifacts_root, meta)
     assert plan_bundle_complete(plan_dir)
     assert (plan_dir / LOCATOR_GROUPS_NAME).is_file()
     assert pq.read_table(plan_dir / LOCATOR_GROUPS_NAME).num_rows == 0
     assert (
-        plan(catalog_id, artifacts_root, forms=("10-K",), amendment="amendments")[
-            "plan_id"
-        ]
+        plan(catalog_id, artifacts_root, forms=("NO-SUCH-FORM",))["plan_id"]
         == meta["plan_id"]
     )
 

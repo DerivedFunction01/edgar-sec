@@ -36,7 +36,7 @@ from edgar_sec.pipelines.filing_catalog.paths import (
 )
 from tests.support import catalog_fixture_path
 
-_BOOL_COLUMNS = {"is_amendment", "is_xbrl", "is_inline_xbrl", "is_xbrl_numeric"}
+_BOOL_COLUMNS = {"is_xbrl", "is_inline_xbrl", "is_xbrl_numeric"}
 
 
 def _expected_targets() -> list[dict[str, str]]:
@@ -612,12 +612,6 @@ def test_targets_are_ordered_by_the_projection_key(published_targets: pa.Table) 
         for r in published_targets.to_pylist()
     ]
     assert keys == sorted(keys)
-
-
-def test_amendment_predicate_is_a_suffix_rule(published_targets: pa.Table) -> None:
-    for row in published_targets.to_pylist():
-        form = row["form"].upper()
-        assert row["is_amendment"] is (form.endswith(("/A", "_A")))
 
 
 def test_bundle_fallback_uses_the_raw_accession(

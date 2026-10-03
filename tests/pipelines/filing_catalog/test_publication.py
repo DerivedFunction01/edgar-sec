@@ -165,7 +165,7 @@ def test_reuse_raises_when_expected_meta_diverges(tmp_path: Path) -> None:
     _stage_bundle(bundle)
     with pytest.raises(PlanConflictError, match="diverges"):
         reuse_existing_plan(
-            bundle, "p1", "deterministic", expected_meta={"amendment": "amendments"}
+            bundle, "p1", "deterministic", expected_meta={"forms": ["10-Q"]}
         )
 
 

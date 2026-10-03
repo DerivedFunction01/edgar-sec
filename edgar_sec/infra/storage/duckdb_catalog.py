@@ -25,7 +25,6 @@ from collections.abc import Sequence
 from pathlib import Path
 
 from edgar_sec.domain.filing_catalog.filters import (
-    AMENDMENT_POLICIES,
     GRANULARITY_QUARTER,
     AbsoluteDateClause,
     DateSelection,
@@ -158,8 +157,6 @@ def build_part_unnest_query(part_path: str) -> str:
             source_cik,
             accession,
             form_clean AS form,
-            (upper(form_clean) LIKE '%/A' OR upper(form_clean) LIKE '%_A')
-                AS is_amendment,
             filing_date,
             report_date,
             coalesce(primary_document, '') AS primary_document,
@@ -199,7 +196,6 @@ def build_part_unnest_query(part_path: str) -> str:
         source_cik,
         accession,
         form,
-        is_amendment,
         filing_date,
         report_date,
         primary_document,
@@ -305,25 +301,6 @@ def suffix_sql(column: str, suffixes: tuple[str, ...]) -> str:
     )
 
 
-def amendment_sql(policy: str) -> str:
-    """Return the SQL predicate implementing an amendment policy.
-
-    ``original`` keeps filings whose form is not an amendment and
-    ``amendments`` keeps only amendments. The predicate is derived from the
-    catalog's own ``is_amendment`` column rather than recomputing the suffix
-    rule, so the two can never drift.
-    """
-    if policy not in AMENDMENT_POLICIES:
-        raise ValueError(
-            f"amendment must be one of {', '.join(AMENDMENT_POLICIES)}; got {policy!r}"
-        )
-    if policy == "original":
-        return "is_amendment = false"
-    if policy == "amendments":
-        return "is_amendment = true"
-    return "TRUE"
-
-
 def date_projection_sql(column: str) -> str:
     """Return the projection fragment that parses a text date column once.
 
@@ -412,7 +389,6 @@ def _recurring_clause_sql(column: str, clause: RecurringDateClause) -> str:
 
 __all__ = [
     "PARSED_DATE_ALIAS",
-    "amendment_sql",
     "build_part_unnest_query",
     "build_profile_query",
     "copy_query_to_parquet",

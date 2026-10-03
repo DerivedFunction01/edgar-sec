@@ -204,8 +204,8 @@ docstring. The surface is the union of its three subpackages:
   `DEFAULT_ROW_GROUP_SIZE` (`parquet.py`); `connect`, `concat_to_parquet`,
   `find_duplicate_keys`, `find_null_keys`, `find_duplicate_nested_values`
   (`duckdb.py`); `sql_literal`, `build_part_unnest_query`, `build_profile_query`,
-  `build_merged_targets_query`, `copy_query_to_parquet`, `suffix_sql`,
-  `amendment_sql` (`duckdb_catalog.py`); `DOCUMENT_SNAPSHOT_SCHEMA`,
+  `build_merged_targets_query`, `copy_query_to_parquet`, `suffix_sql`
+  (`duckdb_catalog.py`); `DOCUMENT_SNAPSHOT_SCHEMA`,
   `write_chunk_snapshot`, `validate_chunk_snapshot`, `assemble_document_snapshots`
   (`document_parquet.py`); `INDEX_COLUMNS`, `PAYLOAD_COLUMNS`, `INDEX_SCHEMA`,
   `PAYLOAD_SCHEMA`, `PlannedPart`, `PartError`, `plan_parts`, `quarter_path`,

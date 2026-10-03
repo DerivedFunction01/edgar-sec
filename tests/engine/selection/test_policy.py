@@ -61,16 +61,10 @@ def test_policy_normalizes_forms_and_suffixes() -> None:
     policy = SelectionPolicy(
         corpus_id="filters",
         forms=["10-k", "10-K", " 20-f "],
-        amendment="original",
         document_suffixes=[".TXT", "xml", "txt"],
     )
     assert policy.forms == ["10-K", "20-F"]
     assert policy.document_suffixes == ["txt", "xml"]
-
-
-def test_policy_rejects_an_unknown_amendment() -> None:
-    with pytest.raises(ValueError, match="amendment must be one of"):
-        SelectionPolicy(corpus_id="invalid", forms=["10-K"], amendment="invalid")
 
 
 def test_policy_rejects_an_empty_form_list() -> None:

@@ -7,9 +7,10 @@ materializes a *feature snapshot*: one row per filing occurrence with every
 stratifying dimension resolved, plus a companion row per document locator.
 
 The snapshot is content-addressed by its inputs (target root, profile path,
-forms, build options, policy fingerprint) and reused when the manifest already
-exists. That makes feature building a pure function of its inputs, so two runs
-of the same policy against the same catalog cannot disagree.
+forms, build options, policy fingerprint, seed fingerprint) and reused when
+the manifest already exists. That makes feature building a pure function of
+its inputs, so two runs of the same policy against the same catalog cannot
+disagree.
 
 Pure/impure split: :func:`form_family`, :func:`form_family_sql`, and
 :func:`era_of` are total functions of their arguments and carry the interesting
@@ -75,6 +76,11 @@ IDENTITY_COLUMNS = ", ".join(
 DEFAULT_GAP_YEARS = 3
 DEFAULT_CESSATION_GRACE_YEARS = 5
 DEFAULT_STUB_SIZE_THRESHOLD = 100_000
+
+SIZE_BAND_MULTIPLIERS = (0.25, 1.0, 4.0, 16.0)
+SIZE_BAND_NAMES = ("very_small", "small", "median", "large", "very_large")
+UNKNOWN_SIZE_BAND = "unknown"
+UNKNOWN_FOREIGN_STATUS = "unknown"
 
 _FAMILY_MAP_DDL = (
     "CREATE OR REPLACE TEMP TABLE company_family_map "
@@ -241,6 +247,46 @@ class FeatureSnapshotBuilder:
             f"WHERE form IN ({quoted_forms})"
         )
 
+    def _size_band_anchor_sql(self, union_sql: str) -> str:
+        """Return a relation of (form_family, median_size) for every family.
+
+        One row per family, so the anchor is a rounding error against the
+        occurrence rows it will be joined to -- measured at 243 rows against
+        961,072 on a single shard. Keyed on ``form_family`` rather than ``form``
+        so amendment variants pool into one family and the median rests on more
+        rows; era is deliberately absent, because era is already an independent
+        stratum and adding it would fragment the anchor roughly fifteen-fold
+        for no gain in balance.
+        """
+        family_expr = form_family_sql("form")
+        return f"""
+            SELECT {family_expr} AS form_family,
+                   median(reported_size) AS median_size
+            FROM ({union_sql})
+            WHERE reported_size IS NOT NULL
+            GROUP BY form_family
+        """
+
+    def _size_band_sql(self, size_column: str, anchor_column: str) -> str:
+        """Band a size relative to its own family's median.
+
+        Row-local: once the anchor exists this is pure arithmetic, so it folds
+        into the occurrence base projection instead of needing its own pass, a
+        side table, and a join back.
+        """
+        cases = [
+            f"WHEN {size_column} < {anchor_column} * {multiplier} "
+            f"THEN {sql_literal(name)}"
+            for name, multiplier in zip(
+                SIZE_BAND_NAMES[:-1], SIZE_BAND_MULTIPLIERS, strict=True
+            )
+        ]
+        return (
+            f"CASE WHEN {size_column} IS NULL OR {anchor_column} IS NULL "
+            f"THEN {sql_literal(UNKNOWN_SIZE_BAND)} "
+            f"{' '.join(cases)} ELSE {sql_literal(SIZE_BAND_NAMES[-1])} END"
+        )
+
     def _era_sql(self, column: str) -> str:
         cases: list[str] = []
         for band in self.policy.era_bands:
@@ -276,34 +322,76 @@ class FeatureSnapshotBuilder:
         produces: ``PROFILE_SCHEMA`` is a projection of the Phase 1 struct
         schema, so the struct accessors are always the correct ones.
 
+        **Absent means empty string upstream, so it is normalized here.** Phase 1
+        writes ``''`` for a field the SEC did not supply, never NULL, so every
+        guard in the outer ``SELECT`` -- ``COALESCE``, ``IS NOT NULL``, and
+        ``IN (postal_codes)`` -- read an absent value as a real one. Measured on
+        the published catalog that mislabelled 4,735 registrants as foreign
+        (against 2,977 genuinely foreign), carried ``''`` through 26,703
+        ``filer_category_primary`` values that ``COALESCE`` never rescued, and
+        reported 1,040 empty ``owner_org`` values as ``has_org``. The ``raw``
+        CTE is the one boundary every Phase 1 text field crosses, so each is
+        wrapped in ``NULLIF(trim(x), '')`` there and the existing expressions
+        then behave as written. Normalizing per-expression instead would leave
+        the next dimension to repeat the mistake.
+
         ``foreign_status`` is derived from ``incorporation.state`` against the
         M5 jurisdiction vocabulary. v1's nested branch hardcoded the literal
         ``'domestic'`` for every registrant, so a filer incorporated in Canada
         or the United Kingdom was indistinguishable from a Delaware corporation
         on the one dimension a policy floors on to control international mix.
+        An absent state now reports ``unknown`` rather than falling to the
+        ``foreign`` branch: control over international mix must not be
+        obtainable by flooring on a value the SEC never supplied.
         """
         domestic = ", ".join(sql_literal(code) for code in sorted(STATE_POSTAL_CODES))
         return f"""
+            WITH raw AS (
+                SELECT
+                    cik,
+                    NULLIF(trim(classification.sic_code), '') AS sic_code,
+                    NULLIF(trim(classification.sic_description), '') AS sic_description,
+                    NULLIF(trim(classification.owner_org), '') AS owner_org_cik,
+                    NULLIF(trim(classification.entity_type), '') AS entity_type,
+                    NULLIF(trim(classification.filer_category), '')
+                        AS filer_category,
+                    NULLIF(trim(incorporation.state), '') AS state_of_incorporation,
+                    NULLIF(trim(addresses.business.state_or_country), '')
+                        AS state_of_business,
+                    NULLIF(trim(identity.name), '') AS name
+                FROM read_parquet({sql_literal(str(self.profile_path))})
+            )
             SELECT
                 cik AS profile_cik,
-                classification.sic_code AS sic_code,
-                classification.sic_description AS sic_description,
-                classification.owner_org AS owner_org_cik,
-                CAST(NULL AS VARCHAR) AS owner_org_name,
-                COALESCE(classification.entity_type, 'operating') AS entity_type,
-                COALESCE(classification.filer_category, 'unspecified')
+                raw.sic_code,
+                raw.sic_description,
+                raw.owner_org_cik,
+                COALESCE(raw.entity_type, 'operating') AS entity_type,
+                COALESCE(raw.filer_category, 'unspecified')
                     AS filer_category_primary,
-                incorporation.state AS state_of_incorporation,
-                CAST(NULL AS VARCHAR) AS state_of_business,
-                CASE WHEN upper(trim(incorporation.state)) IN ({domestic})
-                     THEN 'domestic' ELSE 'foreign' END AS foreign_status,
-                CASE WHEN upper(trim(incorporation.state)) IN ({domestic})
-                     THEN CAST(NULL AS VARCHAR)
-                     ELSE incorporation.state END AS foreign_country_code,
-                CASE WHEN classification.owner_org IS NOT NULL
-                     THEN 'has_org' ELSE 'no_org' END AS owner_org_presence,
-                COALESCE(identity.name, '') AS company_name
-            FROM read_parquet({sql_literal(str(self.profile_path))})
+                raw.state_of_incorporation,
+                raw.state_of_business,
+                CASE
+                    WHEN raw.state_of_incorporation IS NULL
+                        THEN {sql_literal(UNKNOWN_FOREIGN_STATUS)}
+                    WHEN upper(raw.state_of_incorporation) IN ({domestic})
+                        THEN 'domestic'
+                    ELSE 'foreign'
+                END AS foreign_status,
+                CASE
+                    WHEN raw.state_of_incorporation IS NULL
+                         OR upper(raw.state_of_incorporation) IN ({domestic})
+                        THEN CAST(NULL AS VARCHAR)
+                    ELSE raw.state_of_incorporation
+                END AS foreign_country_code,
+                CASE WHEN raw.owner_org_cik IS NULL
+                     THEN 'no_org' ELSE 'has_org' END AS owner_org_presence,
+                -- The empty-string fallback is deliberate and must survive the
+                -- NULLIF above: `company_family` falls back to `company_name`,
+                -- and a NULL there would collapse every name-less registrant
+                -- into one over-suppressing bucket instead of a readable ''.
+                COALESCE(raw.name, '') AS company_name
+            FROM raw
         """
 
     # -------------------------------------------------------------- stages
@@ -329,12 +417,14 @@ class FeatureSnapshotBuilder:
 
         era_expr = self._era_sql("f.report_date")
         family_expr = form_family_sql("f.form")
+        size_band_expr = self._size_band_sql("f.reported_size", "a.median_size")
         query = f"""
             WITH source_filings AS ({union_sql}),
-            profiles AS ({self._profiles_sql()})
+            profiles AS ({self._profiles_sql()}),
+            size_anchor AS ({self._size_band_anchor_sql(union_sql)})
             SELECT
                 f.occurrence_id, f.document_locator_key, f.source_cik, f.accession,
-                f.form, {family_expr} AS form_family, f.is_amendment,
+                f.form, {family_expr} AS form_family,
                 f.filing_date, f.report_date,
                 CASE WHEN f.report_date IS NOT NULL AND length(f.report_date) >= 4
                      THEN CAST(substring(f.report_date, 1, 4) AS INTEGER)
@@ -351,6 +441,7 @@ class FeatureSnapshotBuilder:
                 END AS suffix,
                 f.primary_document, f.document_path, f.archive_url,
                 f.document_path_source, f.reported_size,
+                {size_band_expr} AS size_band,
                 f.is_xbrl, f.is_inline_xbrl, f.is_xbrl_numeric,
                 CASE WHEN f.reported_size IS NOT NULL
                       AND f.reported_size < {int(self.options["stub_size_threshold"])}
@@ -358,13 +449,15 @@ class FeatureSnapshotBuilder:
                 CASE WHEN f.is_inline_xbrl THEN 'inline_xbrl'
                      WHEN f.is_xbrl THEN 'xbrl_only'
                      ELSE 'no_xbrl' END AS xbrl_state,
-                p.sic_code, p.sic_description, p.owner_org_cik, p.owner_org_name,
+                p.sic_code, p.sic_description, p.owner_org_cik,
                 p.owner_org_presence, p.foreign_status, p.foreign_country_code,
+                p.state_of_incorporation, p.state_of_business,
                 p.entity_type, p.filer_category_primary, p.company_name,
                 COALESCE(cf.company_family, p.company_name, '') AS company_family
             FROM source_filings f
             LEFT JOIN profiles p ON f.source_cik = p.profile_cik
             LEFT JOIN company_family_map cf ON f.source_cik = cf.cik
+            LEFT JOIN size_anchor a ON a.form_family = {family_expr}
         """
         return copy_query_to_parquet(
             con, query, staging_dir / "occurrence_base.parquet", self.row_group_size
@@ -437,39 +530,6 @@ class FeatureSnapshotBuilder:
             con, query, staging_dir / "lifecycle.parquet", self.row_group_size
         )
 
-    def _write_size_bands(self, con: object, union_sql: str, staging_dir: Path) -> int:
-        family_expr = form_family_sql("form")
-        era_expr = self._era_sql("report_date")
-        query = f"""
-            WITH source_filings AS ({union_sql}),
-            with_era AS (
-                SELECT occurrence_id, reported_size,
-                       {family_expr} AS family, {era_expr} AS era
-                FROM source_filings WHERE reported_size IS NOT NULL
-            ),
-            quantiles AS (
-                SELECT occurrence_id,
-                       NTILE(5) OVER (
-                           PARTITION BY family, era ORDER BY reported_size
-                       ) AS q_val
-                FROM with_era
-            )
-            SELECT
-                occurrence_id,
-                CASE q_val
-                    WHEN 1 THEN 'very_small'
-                    WHEN 2 THEN 'small'
-                    WHEN 3 THEN 'median'
-                    WHEN 4 THEN 'large'
-                    WHEN 5 THEN 'very_large'
-                    ELSE 'unknown'
-                END AS size_band
-            FROM quantiles
-        """
-        return copy_query_to_parquet(
-            con, query, staging_dir / "size_bands.parquet", self.row_group_size
-        )
-
     def _write_cross_form(
         self, con: object, union_sql: str, forms: Sequence[str], staging_dir: Path
     ) -> int:
@@ -539,7 +599,6 @@ class FeatureSnapshotBuilder:
     def _write_occurrence_features(self, con: object, staging_dir: Path) -> int:
         base = sql_literal(str(staging_dir / "occurrence_base.parquet"))
         lifecycle = sql_literal(str(staging_dir / "lifecycle.parquet"))
-        size_bands = sql_literal(str(staging_dir / "size_bands.parquet"))
         cross_form = sql_literal(str(staging_dir / "cross_form.parquet"))
         query = f"""
             WITH occurrences AS (SELECT * FROM read_parquet({base})),
@@ -553,7 +612,6 @@ class FeatureSnapshotBuilder:
             )
             SELECT
                 o.*,
-                COALESCE(s.size_band, 'unknown') AS size_band,
                 COALESCE(l.first_report_year, o.report_year) AS first_report_year,
                 COALESCE(l.last_report_year, o.report_year) AS last_report_year,
                 COALESCE(l.active_years, 1) AS active_years,
@@ -568,7 +626,6 @@ class FeatureSnapshotBuilder:
                      WHEN ll.loc_occ_count BETWEEN 2 AND 3 THEN 'low_2_to_3'
                      ELSE 'high_4_plus' END AS locator_class
             FROM occurrences o
-            LEFT JOIN read_parquet({size_bands}) s ON o.occurrence_id = s.occurrence_id
             LEFT JOIN read_parquet({lifecycle}) l ON o.source_cik = l.source_cik
             LEFT JOIN read_parquet({cross_form}) c ON o.source_cik = c.source_cik
             LEFT JOIN occ_per_locator ll
@@ -603,7 +660,7 @@ class FeatureSnapshotBuilder:
                 size_band, owner_org_presence, foreign_status, foreign_country_code,
                 entity_type, filer_category_primary, lifecycle_class, has_revival_gap,
                 locator_class, stub_suspect, anchor_status, comparison_status,
-                is_amendment, reported_size, report_year, filing_year, filing_date,
+                reported_size, report_year, filing_year, filing_date,
                 report_date, primary_document, document_path, archive_url,
                 document_path_source,
                 source_cik AS representative_cik,
@@ -656,7 +713,6 @@ class FeatureSnapshotBuilder:
                 con, union, snapshot_dir, profile_records
             )
             counts["lifecycle_rows"] = self._write_lifecycle(con, union, snapshot_dir)
-            counts["size_band_rows"] = self._write_size_bands(con, union, snapshot_dir)
             counts["cross_form_rows"] = self._write_cross_form(
                 con, union, forms, snapshot_dir
             )
@@ -668,7 +724,6 @@ class FeatureSnapshotBuilder:
         for intermediate in (
             "occurrence_base.parquet",
             "lifecycle.parquet",
-            "size_bands.parquet",
             "cross_form.parquet",
         ):
             (snapshot_dir / intermediate).unlink(missing_ok=True)
@@ -696,6 +751,10 @@ __all__ = [
     "FEATURE_SCHEMA_VERSION",
     "FORM_FAMILY_SUFFIXES",
     "IDENTITY_COLUMNS",
+    "SIZE_BAND_MULTIPLIERS",
+    "SIZE_BAND_NAMES",
+    "UNKNOWN_FOREIGN_STATUS",
+    "UNKNOWN_SIZE_BAND",
     "FeatureSnapshotBuilder",
     "SnapshotPaths",
     "era_of",

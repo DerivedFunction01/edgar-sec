@@ -29,8 +29,8 @@ Split on the pure/impure seam, the same split `../company_family/` uses.
 | Module | Responsibility |
 | :--- | :--- |
 | `policy.py` | Pure. `SelectionPolicy` (24 fields, validated in `__post_init__`) with its `to_dict`/`from_path`/`write` serialization; `EraBand` with half-open year and date bounds; `SeedFiler` and the `SEED_FILER_COLUMNS` manifest vocabulary (`load_seed_cik_csv`, `read_seed_filers_csv`, `write_seed_filers_csv`, `resolve_seed_filers`, `compute_seed_fingerprint`); `KNOWN_DIMENSIONS` — the 21 stratifiable names — partitioned by grain into `LOCATOR_ONLY_DIMENSIONS` / `OCCURRENCE_ONLY_DIMENSIONS`; `auto_generate_policy`, `discover_policies`, `normalize_value`. |
-| `features.py` | I/O. `FeatureSnapshotBuilder` builds or reuses the snapshot; `SnapshotPaths` names its four files. The pure functions it wraps are `form_family`, `form_family_sql`, `era_of`. Tunables: `DEFAULT_GAP_YEARS`, `DEFAULT_CESSATION_GRACE_YEARS`, `DEFAULT_STUB_SIZE_THRESHOLD`. |
-| `source.py` | I/O. `CandidateSource` returns bounded pages over one in-memory DuckDB session; `CandidateFilters` builds the policy predicate once. `POOL_COLUMNS` (25) and `OCCURRENCE_COLUMNS` (26) are the two projections. |
+| `features.py` | I/O. `FeatureSnapshotBuilder` builds or reuses the snapshot; `SnapshotPaths` names its four files. The pure functions it wraps are `form_family`, `form_family_sql`, `era_of`. Tunables: `DEFAULT_GAP_YEARS`, `DEFAULT_CESSATION_GRACE_YEARS`, `DEFAULT_STUB_SIZE_THRESHOLD`, and the `size_band` vocabulary `SIZE_BAND_MULTIPLIERS` / `SIZE_BAND_NAMES`, and the absent-value vocabulary `UNKNOWN_FOREIGN_STATUS`. |
+| `source.py` | I/O. `CandidateSource` returns bounded pages over one in-memory DuckDB session; `CandidateFilters` builds the policy predicate once. `POOL_COLUMNS` (25) and `OCCURRENCE_COLUMNS` (27) are the two projections. |
 | `selector.py` | The six-phase deficit fill: `DeficitSelector`, `SelectionResult`, `classification_signature`, `CLASSIFICATION_DIMENSIONS`, `DEFAULT_RESERVE_MAX_PAGES`. |
 | `inventory.py` | Feasibility statistics for the advisory `inventory_feasibility` block a Layer 4 plan publishes: `InventoryStatistics`, `UnknownDimensionError`, `OccurrenceOnlyDimensionError`. |
 
@@ -57,6 +57,55 @@ Split on the pure/impure seam, the same split `../company_family/` uses.
   when a round is refused in full — which means the family cap, and re-querying would be refused
   identically. The remaining budget after the earlier phases is what it draws from, so the global
   cap is shared and a floor that already filled a cell is credited rather than given a second share.
+- **`size_band` is relative to the filing's own form family, not to the corpus.** The anchor is
+  one `median(reported_size)` per `form_family` — 243 rows against 961,072 measured — and the
+  bands are multiples of it (`SIZE_BAND_MULTIPLIERS` = ×0.25, ×1, ×4, ×16). Both halves of that
+  decision are forced by the data. *Absolute* thresholds cannot work: the corpus median filing is
+  ~1.5 MB for `10-K` and ~7 KB for form `4`, a 229× spread, so one cutoff set sorts whole families
+  into a single end — 74.4% of per-family quintile edges differ from the global edges by more than
+  2×. *Data-derived* quantiles are worse than useless here: `reported_size` runs 0–612 MB, so the
+  v1 `NTILE(5)` rule produced a top band spanning 47 KB to 612 MB — one label with a 12,945×
+  range holding a quarter of the corpus — while 75% of filings collapsed into three bands below
+  47 KB. Anchoring on a median also degrades gracefully, because the bands are multiples of the
+  anchor: a family with too few rows for a stable tail quantile still splits roughly evenly across
+  its own scale, where absolute quintiles would not.
+  The consequence is that a *tightly clustered* family reports a skewed split, and that is
+  information rather than a defect. Measured on the published catalog: `10-K` lands
+  26/24/21/26/3% and `8-K` 25/25/29/13/8% across the five bands, while form `4` is
+  0/50/46/3/0% — because only 0.3% of form-4 filings exceed 16× their own family's median. The old
+  rule would have reported exactly 20% in `very_large` for form `4` by construction, inventing a
+  large-filing stratum that the corpus does not contain. A floor that asks for one now reports
+  itself underfilled, which is the truthful answer. The knob if tighter granularity is wanted is
+  `SIZE_BAND_MULTIPLIERS`, not the rule's shape.
+  Because the banding is row-local once the anchor exists, it is folded into the occurrence-base
+  projection. The v1 implementation instead sorted every `(family, era)` partition through a
+  window, wrote a 13.85M-row `size_bands.parquet` side table (490 MB measured), and hash-joined it
+  back on `occurrence_id` — all to produce a label derivable from two columns and a 243-row table.
+- **Absent is normalized to NULL at the profile projection, once.** Phase 1 writes `''` — never
+  NULL — for a field the SEC did not supply, so every guard in the profile derivation read absent as
+  present: `COALESCE` caught nothing, `IS NOT NULL` was true for an empty string, and `'' IN
+  (postal_codes)` is false. Measured on the published 40,914 profiles that mislabelled **4,735
+  registrants as `foreign`** against 2,977 genuinely foreign — the dimension a policy floors on to
+  control international mix was over-counting 2×, and inverted for the largest affected group —
+  carried `''` through **26,703** `filer_category_primary` values, reported **1,040** empty
+  `owner_org` values as `has_org`, and let **2,027** empty SIC codes through as a dimension value.
+  `_profiles_sql` wraps every Phase 1 text field in `NULLIF(trim(x), '')` in one `raw` CTE, so the
+  existing `CASE`/`COALESCE` expressions then behave as written and a dimension added later inherits
+  the rule. Normalizing per-expression instead would leave the next dimension to repeat the mistake.
+  Two deliberate exceptions, both load-bearing rather than oversights: `company_name` keeps its
+  `COALESCE(…, '')` because `company_family` falls back to it and `company_name` is one of the six
+  capped dimensions, so a NULL there would collapse every name-less registrant into one
+  over-suppressing bucket; and `raw` exists as a *separate* CTE rather than as a wider outer
+  `SELECT` so the unwrapped source values are nameable in a test.
+  `normalize_value` is deliberately **not** changed to fold `''` into `'none'`. Both downstream
+  consumers bypass this SQL — `inventory.value_counts` maps only NULL, `policy.normalize_value` maps
+  only `None` — so a correct query with a wrong stored artifact is still wrong to anything reading
+  the parquet.
+  A registrant with no usable state of incorporation is `foreign_status = "unknown"`
+  (`UNKNOWN_FOREIGN_STATUS`), not `foreign`, matching the `UNMATCHED_ERA` precedent: control over
+  international mix must not be obtainable by flooring on a value the SEC never supplied. The
+  correction changes stored values, not the column set, so it is a value revision rather than
+  a `FEATURE_SCHEMA_VERSION` bump — no new version needs to be published.
 - **A declared date selection is enforced by every pool, not applied afterwards.** `CandidateFilters`
   compiles it into the value, composite, seed-CIK, page, and cell-availability queries alike, so no
   phase can draw an out-of-range candidate even transiently to consume quota on the way to being
@@ -137,12 +186,14 @@ and the seed sidecar), `discovery.py` (`SelectionPolicy`, `auto_generate_policy`
   `build()`); `SnapshotPaths`; `form_family` (a form that is *entirely* suffixes collapses to the
   original, not to an empty dimension); `form_family_sql` (the SQL twin, **generated** from
   `FORM_FAMILY_SUFFIXES` so the two cannot diverge, rejecting any column identifier outside
-  `[A-Za-z_][A-Za-z0-9_.]*`); `era_of`; the three `DEFAULT_*` tunables. `FORM_FAMILY_SUFFIXES` is
+  `[A-Za-z_][A-Za-z0-9_.]*`); `era_of`; the three `DEFAULT_*` tunables;
+  `UNKNOWN_SIZE_BAND` / `UNKNOWN_FOREIGN_STATUS`; `SIZE_BAND_MULTIPLIERS` /
+  `SIZE_BAND_NAMES`. `FORM_FAMILY_SUFFIXES` is
   re-exported here but owned by `domain/forms/common/aliases.py`.
 - **From `source.py`** — `CandidateSource` (`session`, `pool_for_value`, `pool_for_cell`,
   `pool_for_composite`, `pool_for_ciks`, `cell_availability`, `candidate_page`,
   `register_selected`, `add_selected`, `load_candidates_for_locators`,
-  `load_occurrences_for_locators`); `CandidateFilters` (`amendment`, `document_suffixes`,
+  `load_occurrences_for_locators`); `CandidateFilters` (`document_suffixes`,
   `max_reported_size`, `date_selection`, `.filters_dates()`, `.predicate()`); `POOL_COLUMNS` /
   `OCCURRENCE_COLUMNS`; `SelectionSessionError` (a query attempted outside an open session).
   `cell_availability` returns every nonempty `(form, era)` cell with its eligible count in one
@@ -173,6 +224,54 @@ and the seed sidecar), `discovery.py` (`SelectionPolicy`, `auto_generate_policy`
 
 ## Deliberate gaps
 
+- **The content-address payload does not carry the derivation or banding
+  algorithm.** `snapshot_dir()` hashes the target root, profile path, sorted
+  forms, build options, policy fingerprint, and seed fingerprint — nothing
+  about *how* a dimension is derived. So a change to the `size_band`
+  multipliers or to the profile-derivation rules resolves to the same
+  directory, and `build()` returns the existing snapshot unchanged: a rule
+  change is invisible to a snapshot already on disk. This is a deliberate
+  trim, not an oversight: no filing-catalog plan or feature snapshot was
+  published on disk, so revision fields guarded nothing and only widened the
+  payload. The consequence is operational rather than silent — a rule change
+  must delete the snapshot directory (or change a payload input such as the
+  profile path) before rebuilding, and the rebuild is cheap (~2m measured over
+  the full catalog). `FEATURE_SCHEMA_VERSION` is likewise unchanged by a
+  value-only correction, because the column set is what it versions.
+- **The size anchor is not era-relative.** `.kilo/plans/archive/phase2/phase25-robust-fixture-selection-plan.md`
+  specified "era-relative percentiles computed independently by form family, suffix, and XBRL
+  state", and the anchor here keys on `form_family` alone. Era is deliberately left out: it is
+  already an independent stratum, so a within-family-relative band splits each era evenly without
+  it, while adding era would fragment the anchor roughly fifteen-fold (~3,600 groups instead of
+  ~243) and make the medians markedly less stable, for no gain in balance. Suffix and XBRL state
+  are likewise not in the key, for the same reason: `xbrl_state` is largely an adoption curve
+  that era already carries, and splitting on both would leave most cells far too small to anchor.
+  A catalog whose form families change scale sharply *within* one era would be the case that
+  justifies revisiting this.
+- **`foreign_status` classifies on a two-letter vocabulary, so it cannot be trusted for
+  country-level work.** The test is `incorporation.state IN STATE_POSTAL_CODES` — 54 two-letter US
+  codes — so a registrant whose state of incorporation is a foreign *country* code that happens to
+  collide (`CA` for Canada reads as California; `IN`, `AR`, `DE`, `MT` likewise) is labelled
+  domestic. Nothing here resolves the collision, and on the current corpus it is not even
+  measurable: this snapshot's non-US country codes are pseudonymised (`E9`, `A1`, `F4`), so the
+  2,977 "foreign" profiles cannot be cross-checked against a real country. The dimension answers
+  "incorporated in a US state?" and nothing finer; a country-grade control needs a country
+  vocabulary and a field that carries one, which is Phase 1's job to supply. What the correction
+  *did* fix is the larger error in the other direction: an **absent** state used to be counted as
+  foreign, so the floor was drawing from a group of 4,735 registrants the SEC never said anything
+  about.
+- **The two state fields are occurrence-grain only.** `state_of_incorporation` and
+  `state_of_business` are projected into `occurrence_base` and carried by `OCCURRENCE_COLUMNS`, but
+  neither is in `POOL_COLUMNS`, `LOCATOR_FEATURES`, or `KNOWN_DIMENSIONS`, so a policy cannot floor
+  on them — the same position `sic_description` and `owner_org_cik` already occupy. `state_of_business`
+  (`addresses.business.state_or_country`, populated for 39,873 of 40,914 profiles and differing from
+  the state of incorporation for 33,109) was unwired entirely before this correction: it was a
+  literal `CAST(NULL AS VARCHAR)`. Making it poolable is a one-line change to each of the three
+  tuples plus the locator projection, and was left out because widening the poolable dimension set
+  is a published contract change, not part of correcting a value. `owner_org_name` went the other
+  way and was **dropped** rather than wired: Phase 1 collects `classification.owner_org`, a CIK,
+  and no org *name* exists anywhere in the schema, so the column could never be non-NULL while its
+  name promised otherwise.
 - **This package does not own the corpus.** It reads two Parquet files
   (`locator_features.parquet`, `occurrence_features.parquet`) that a Layer 4 pipeline published
   into a snapshot directory. It cannot fetch, enumerate, or derive a filing catalog, and it

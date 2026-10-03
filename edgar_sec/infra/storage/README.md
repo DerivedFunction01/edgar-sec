@@ -237,11 +237,8 @@ in `duckdb_catalog.py` that exist because a specific pipeline needs them.
   merge-validation queries. `duckdb.py`.
 - `sql_literal`, `sql_path_list`, `_qualified_identifier`,
   `build_part_unnest_query`, `build_profile_query`, `build_merged_targets_query`,
-  `copy_query_to_parquet`, `suffix_sql`, `amendment_sql` — the catalog SQL
-  vocabulary. `duckdb_catalog.py`. `amendment_sql` validates against
-  `domain.filing_catalog.filters.AMENDMENT_POLICIES` and reads the catalog's own
-  `is_amendment` column rather than recomputing the suffix rule, so the two can
-  never drift.
+  `copy_query_to_parquet`, `suffix_sql` — the catalog SQL
+  vocabulary. `duckdb_catalog.py`.
 - `DOCUMENT_SNAPSHOT_SCHEMA`, `write_chunk_snapshot`,
   `validate_chunk_snapshot`, `assemble_document_snapshots`.
   `document_parquet.py`.

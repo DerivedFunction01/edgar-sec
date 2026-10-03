@@ -13,7 +13,6 @@ from edgar_sec.domain.filing_catalog.filters import (
 from edgar_sec.domain.filing_catalog.schemas import TARGET_COLUMNS
 from edgar_sec.infra.storage.duckdb_catalog import (
     PARSED_DATE_ALIAS,
-    amendment_sql,
     build_part_unnest_query,
     build_profile_query,
     copy_query_to_parquet,
@@ -98,10 +97,8 @@ def test_unnest_query_refuses_an_empty_part_path() -> None:
 
 def test_unnest_query_applies_the_documented_derivation_rules() -> None:
     query = build_part_unnest_query("p.parquet")
-    # accession normalization, amendment predicate, bundle fallback, hashing
+    # accession normalization, bundle fallback, hashing
     assert "replace(accession_number, '-', '')" in query
-    assert "upper(form_clean) LIKE '%/A'" in query
-    assert "upper(form_clean) LIKE '%_A'" in query
     assert "accession_number || '.txt'" in query
     assert "ltrim(source_cik, '0')" in query
     assert query.count("sha256(") >= 3
@@ -172,17 +169,6 @@ def test_suffix_sql_binds_suffixes_as_literals() -> None:
 def test_suffix_sql_rejects_an_unsafe_column() -> None:
     with pytest.raises(ValueError, match="unsafe SQL identifier"):
         suffix_sql("document_path) OR 1=1 --", ("htm",))
-
-
-def test_amendment_sql_covers_every_policy() -> None:
-    assert amendment_sql("both") == "TRUE"
-    assert amendment_sql("original") == "is_amendment = false"
-    assert amendment_sql("amendments") == "is_amendment = true"
-
-
-def test_amendment_sql_rejects_an_unknown_policy() -> None:
-    with pytest.raises(ValueError, match="amendment must be one of"):
-        amendment_sql("amendmented")
 
 
 def test_date_selection_sql_is_true_when_unconstrained() -> None:

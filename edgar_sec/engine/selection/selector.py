@@ -131,7 +131,6 @@ class DeficitSelector:
             self.policy.seed,
             page_size=self.page_size,
             filters=CandidateFilters(
-                amendment=self.policy.amendment,
                 document_suffixes=tuple(self.policy.document_suffixes),
                 max_reported_size=self.policy.max_reported_size,
                 date_selection=self.policy.date_selection_clauses,

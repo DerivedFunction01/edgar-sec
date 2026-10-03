@@ -114,7 +114,6 @@ def test_discover_plans_reports_published_state(published: tuple[Path, str]) -> 
     entry = found[0]
     assert entry["catalog_id"] == catalog_id
     assert entry["forms"] == ["10-K"]
-    assert entry["amendment"] == "both"
     assert entry["selected_rows"] == 4
 
 

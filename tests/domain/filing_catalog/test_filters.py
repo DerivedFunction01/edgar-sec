@@ -12,8 +12,6 @@ from datetime import date
 import pytest
 
 from edgar_sec.domain.filing_catalog.filters import (
-    AMENDMENT_POLICIES,
-    DEFAULT_AMENDMENT,
     DEFAULT_DOCUMENT_SUFFIXES,
     AbsoluteDateClause,
     RecurringDateClause,
@@ -26,9 +24,7 @@ from edgar_sec.domain.filing_catalog.filters import (
 )
 
 
-def test_amendment_vocabulary_is_closed() -> None:
-    assert AMENDMENT_POLICIES == ("both", "original", "amendments")
-    assert DEFAULT_AMENDMENT in AMENDMENT_POLICIES
+def test_default_suffixes_are_empty() -> None:
     assert DEFAULT_DOCUMENT_SUFFIXES == ()
 
 

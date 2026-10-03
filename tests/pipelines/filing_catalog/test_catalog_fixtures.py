@@ -86,14 +86,18 @@ def test_edge_case_1_locator_fan_out(targets: list[dict[str, str]]) -> None:
 
 
 def test_edge_case_2_amendment_forms(targets: list[dict[str, str]]) -> None:
-    """The amendment predicate is a suffix rule, not a membership list."""
-    by_form = {r["form"]: r["is_amendment"] for r in targets}
-    assert by_form["10-K/A"] == "True"
-    assert by_form["8-K/A"] == "True"
-    # Neither ends in "/A" or "_A", so neither is an amendment.
-    assert by_form["10-KT"] == "False"
-    assert by_form["10-KSB"] == "False"
-    assert by_form["10-K"] == "False"
+    """Amendment variants stay distinct forms in the oracle fixture.
+
+    The fixture must keep carrying ``10-K/A`` and ``8-K/A`` so the
+    derived expectations cover amendment variants; a form filter that
+    names ``10-K`` must not be assumed to reach them.
+    """
+    forms = {row["form"] for row in targets}
+    assert {"10-K/A", "8-K/A"} <= forms
+    assert "10-K" in forms
+    # Neither ends in "/A" or "_A", so neither is an amendment variant.
+    assert "10-KT" in forms
+    assert "10-KSB" in forms
 
 
 def test_edge_case_3_bundle_fallback(targets: list[dict[str, str]]) -> None:
