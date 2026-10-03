@@ -1,13 +1,10 @@
 """Fixture-contract tests for the committed filing-catalog oracle suite.
 
-``roadmap/refactor_v2/phase_2.md`` Milestone 0 requires that each of the seven
-edge cases be *asserted* present in the input, not eyeballed. These tests are
-the guard that keeps the oracle meaningful: if a future regeneration silently
-drops a case, the derived expectations become weaker and these tests fail.
+These tests assert that each required edge case is present in the inputs, so
+fixture regeneration cannot silently weaken the oracle.
 
-The expected CSVs are derived by an independent Python transcription of the
-section 3.3 rules; the implementation under test is DuckDB SQL. Two independent
-implementations of one specification is the point of the suite.
+Expected CSVs come from an independent Python transcription of the catalog
+rules; the implementation under test uses DuckDB SQL.
 """
 
 from __future__ import annotations

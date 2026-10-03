@@ -249,8 +249,8 @@ def test_family_profiles_attach_an_explicit_lexical_pack(family: str) -> None:
 
     `derive_lexical_pack` emits at most three tiers and drops the forward,
     header, general, and soft tiers the boundary's backward body search scores
-    against, so a profile falling back to it silently disagrees with v1 on real
-    filing text.
+    against, so a profile falling back to it would silently score a real filing
+    against the wrong vocabulary.
     """
     lexical = get_profile(family).body_evidence.lexical
     assert lexical is not None

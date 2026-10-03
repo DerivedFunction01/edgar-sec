@@ -1,16 +1,17 @@
-"""Five-phase deficit selection over a feature snapshot.
+"""Quota selection over a feature snapshot.
 
 The selector fills a declared quota profile in a fixed order of decreasing
 authority, and that order is the whole design:
 
-1. **Seed filers** are mandatory. A named anchor tenant appears in the output
-   regardless of what any quota says.
-2. **Composite strata** are conjunctions, so they are the hardest to satisfy
-   and are attempted before single-dimension floors.
-3. **Single-dimension floors** are chased by relative deficit, so the dimension
-   that is proportionally furthest from its floor is fed first.
-4. **Weighted pool filling** takes whatever remains, subject to caps.
-5. **The reserve** is filled last, from candidates not in the active set.
+* **Seed filers** are mandatory. A named anchor tenant appears in the output
+  regardless of what any quota says.
+* **Composite strata** are conjunctions, so they are the hardest to satisfy and
+  are attempted before single-dimension floors.
+* **Single-dimension floors** are chased by relative deficit, so the dimension
+  that is proportionally furthest from its floor is fed first.
+* **Form-by-era allocation** distributes the remaining quota across those cells.
+* **Weighted pool filling** takes the remaining candidates, subject to caps.
+* **The reserve** is filled last, from candidates not in the active set.
 
 The property that matters most is the *family cap*. A naive sample of filings
 is dominated by large corporate groups, because a group with 400 subsidiaries
@@ -21,9 +22,8 @@ may share one signature. Because every subsidiary of a group resolves to one
 ``company_family`` (see :mod:`edgar_sec.engine.company_family`), the cap
 suppresses the group's subsidiaries without special-casing them.
 
-One behavioural note, inherited from v1 and deliberate: seed filers bypass the
-family cap. They are declared mandatory, and a cap that silently dropped a
-mandatory anchor would be worse than a slight over-representation.
+Seed filers bypass the family cap because they are mandatory; dropping an anchor
+would violate the policy more than allowing slight over-representation.
 """
 
 from __future__ import annotations
@@ -53,8 +53,8 @@ CLASSIFICATION_DIMENSIONS = (
     "lifecycle_class",
 )
 
-# v1 capped the reserve loop at a literal 100 pages. Named so the bound is
-# visible and adjustable rather than buried in a loop condition.
+# Keep the reserve scan bound named and adjustable rather than burying it in the
+# loop condition.
 DEFAULT_RESERVE_MAX_PAGES = 100
 
 
@@ -124,7 +124,7 @@ class DeficitSelector:
         self._memory_limit = memory_limit
 
     def select(self, parent_active_keys: list[str] | None = None) -> SelectionResult:
-        """Run the five phases and return the typed selection result."""
+        """Run the selection stages and return the typed result."""
         target_units = self.policy.requested_units()
         source = CandidateSource(
             self.snapshot_dir,

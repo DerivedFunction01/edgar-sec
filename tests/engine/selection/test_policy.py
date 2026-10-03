@@ -80,11 +80,7 @@ def test_policy_rejects_unknown_dimensions_in_floors() -> None:
 
 
 def test_policy_rejects_unknown_dimensions_inside_a_composite() -> None:
-    """v1 validated only top-level keys.
-
-    A typo inside a composite's filters passed construction and then produced a
-    stratum nothing could ever match, so the floor silently underfilled.
-    """
+    """Nested composite filters must name declared dimensions."""
     with pytest.raises(ValueError, match="unknown policy dimensions"):
         SelectionPolicy(
             corpus_id="bad",

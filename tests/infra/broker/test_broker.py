@@ -51,7 +51,6 @@ def test_managed_broker_lifecycle_and_fetch(tmp_path: Path) -> None:
         res2 = client.fetch("https://www.sec.gov/Archives/x/doc2.cached")
         assert res2["status"] == "ok"
         assert res2["payload"] == b"<html>doc2 cached</html>"
-        # get_bytes was not called for cached item
         assert len(fake_http.calls) == 1
 
         # Missing URL failure

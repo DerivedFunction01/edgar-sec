@@ -1,10 +1,9 @@
 """Structural table-boundary predicates: header prefix, bridge, tail.
 
-Vectors are ported from the v1 `defs/tables/structural.py` contract. These
-three questions are all answered from a block's own lines, because a reflow has
-to decide about a span without asking which statement it belongs to; the bridge
-and tail predicates therefore accept a caller-supplied predicate for labels that
-cannot be recognised on shape alone.
+These three questions are all answered from a block's own lines, because a reflow
+has to decide about a span without asking which statement it belongs to; the
+bridge and tail predicates therefore accept a caller-supplied predicate for
+labels that cannot be recognised on shape alone.
 """
 
 from __future__ import annotations

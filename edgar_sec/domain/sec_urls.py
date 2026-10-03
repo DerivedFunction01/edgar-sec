@@ -8,7 +8,7 @@ in ``infra`` would make them unreachable to the catalog schemas, which sit
 below it.
 
 This module is the only place an EDGAR URL is assembled. The shapes differ in
-two ways that previously caused silent divergence, so both are normalized here:
+two ways that are easy to get wrong, so both are normalized here:
 
 * the CIK is zero-padded to ten digits in the submissions URL but rendered as a
   bare integer in archive URLs, matching what EDGAR actually serves;
@@ -34,9 +34,8 @@ def normalize_cik(cik: str | int) -> str:
 def submissions_url(cik: str | int) -> str:
     """Return the canonical submissions metadata document URL for a CIK.
 
-    Accepts a padded or unpadded CIK. Two definitions of this function used to
-    exist, one of which padded and one of which did not, so the same CIK could
-    resolve to two different URLs depending on the caller.
+    Accepts a padded or unpadded CIK; both spellings resolve to the same URL,
+    so a caller need not normalize first.
     """
     return f"{SEC_SUBMISSIONS_BASE}/CIK{normalize_cik(cik)}.json"
 

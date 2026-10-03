@@ -1,7 +1,9 @@
 """SQLite-backed HTTP response cache with zstandard compression and failure ledger.
 
-Replaces loose per-URL files with an indexed SQLite WAL store for safe concurrent
-multi-worker access, bounded disk footprint, and automatic TTL expiration.
+Responses are keyed by URL digest in an indexed WAL store, which is what makes
+concurrent multi-worker access safe and bounds the on-disk footprint. Expiry is
+selective: only `.json` paths carry a TTL, and static archive paths never
+expire.
 """
 
 from __future__ import annotations

@@ -1,11 +1,11 @@
 """Operator wizard tests: state, discovery, and command delegation.
 
 Two failure classes are guarded here. The first is a binding that drifts from
-the command surface -- an action pointing at a command that no longer reads an
+the command surface -- an action pointing at a command that stops reading an
 argument the wizard sets -- which would fail only inside an interactive session
-nobody runs in CI. The second is the regression this pass restored: a wizard that
-asks for a plan id it was never shown, and silently does nothing when the answer
-is blank. Every action must either work, ask, or say why it cannot.
+nobody runs in CI. The second is a wizard that asks for a plan id it was never
+shown, and silently does nothing when the answer is blank. Every action must
+either work, ask, or say why it cannot.
 """
 
 from __future__ import annotations
@@ -187,10 +187,10 @@ def test_ask_plan_options_records_a_limit(
 def test_a_blank_plan_id_falls_back_to_the_working_plan(
     state: WizardState, monkeypatch: pytest.MonkeyPatch
 ) -> None:
-    """The regression: a blank answer used to do nothing at all.
+    """A blank plan id resolves to the session's plan.
 
-    It must now resolve to the session's plan rather than returning ``None`` and
-    dropping the operator back at the menu with no explanation.
+    It must resolve rather than return ``None`` and drop the operator back at the
+    menu with no explanation.
     """
     state.plan_id = "0123456789abcdef"
     monkeypatch.setattr(operator_module, "prompt_text", lambda label, default: default)
@@ -338,7 +338,7 @@ def test_session_header_names_the_plan_and_the_published_snapshot(
 
 
 def test_session_header_admits_an_unresolved_session(state: WizardState) -> None:
-    """A blank line where a plan id used to be reads as a broken menu."""
+    """An unresolved session says so rather than rendering a blank."""
     header = render_session_header(state)
     assert "No plan selected" in header
     assert "no snapshot published" in header
@@ -544,11 +544,8 @@ def test_refresh_targets_the_session_artifacts_root_without_asking(
 ) -> None:
     """A consented refresh lands in the session's tree, and never asks which one.
 
-    This action used to prompt for the root and never consult
-    ``state.artifacts_root``, so it was the one action that resolved the project
-    default instead of the session's tree -- a divergence the augmentation flow's
-    own refresh never had, and which the removed prompt was hiding. With the prompt
-    gone the session field is the whole answer.
+    ``state.artifacts_root`` is the whole answer; resolving the project default
+    instead would put the snapshot outside the tree the rest of the session reads.
     """
     asked: list[str] = []
     refreshed: list[Path | None] = []

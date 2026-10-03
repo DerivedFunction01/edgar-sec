@@ -182,10 +182,8 @@ def test_closing_a_run_that_never_reached_its_merge_opens_nothing(
 ) -> None:
     """A failure during the fetch must not leave a merge bar behind.
 
-    Closing the fetch and starting the merge were one method, so this used to open
-    a bar for a phase nobody entered. A merge bar is a promise of work, and
-    showing one for a command that failed is the sort of thing that makes a
-    failure look like a hang.
+    A merge bar is a promise of work, and showing one for a command that failed is
+    the sort of thing that makes a failure look like a hang.
     """
     _a_tty(monkeypatch)
     router = AugmentProgress("augment abcd")

@@ -6,21 +6,9 @@ deterministic page, and gets back at most ``limit`` rows. That bound is the
 point: a corpus of millions of locators has to be selectable on a machine whose
 memory budget is derived from cgroup limits, not from the corpus.
 
-Four corrections against v1:
-
-* **The tie-break seed is bound, not interpolated.** v1 wrote
-  ``ORDER BY md5('{seed}' || key)`` with ``seed`` read from a policy document,
-  so a policy file was a SQL injection surface. Every value reaching SQL is now
-  a bound parameter, and the digest is SHA-256 rather than MD5 to match M6.
-* **Selected keys are joined through temp tables, not ``IN`` lists.** v1 chunked
-  a 5,000-element ``IN`` list and re-parsed it per chunk, so loading the parent
-  selection for a 100k-locator plan built twenty multi-megabyte statements. One
-  temp table plus a join is a single pass.
-* **Every column name is validated** against ``KNOWN_DIMENSIONS``. v1
-  interpolated the dimension name straight into the predicate, so a policy could
-  query any column the snapshot happened to carry.
-* **Row-to-dict mapping is strict.** A projection that drifts from the column
-  tuple used to build it would silently truncate every row rather than raise.
+Filter values are bound parameters; dimension names are validated against
+``KNOWN_DIMENSIONS``. Selected keys are held in temporary tables for joins, and
+row-to-dict conversion rejects projections that do not match their column tuple.
 """
 
 from __future__ import annotations
@@ -196,9 +184,8 @@ class CandidateSource:
     def session(self) -> Iterator[CandidateSource]:
         """Open the candidate session, creating the working tables.
 
-        The connection is in-memory: v1 opened a ``selection_session.duckdb``
-        inside the snapshot directory and deleted it afterwards, which left a
-        partially written database behind whenever the process died mid-run.
+        The connection is in-memory; temporary selection tables do not leave
+        mutable state in the feature snapshot directory.
         """
         con = connect(threads=self._threads, memory_limit=self._memory_limit)
         try:

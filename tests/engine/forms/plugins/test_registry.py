@@ -42,13 +42,12 @@ def test_annual_family_enables_both_gated_stages() -> None:
 
 
 def test_twenty_f_is_annual_for_normalization_and_generic_for_triage() -> None:
-    """v1's ``get_evaluator`` had no 20-F branch.
+    """20-F carries the annual stage gates but not the annual evaluator.
 
-    ``AnnualEvaluator``'s own docstring claims 20-F, but ``get_evaluator``
-    compared the resolved family against ``10-K``, ``10-Q``, and ``8-K`` only,
-    so a 20-F filing was normalized as annual and triaged as generic: an
-    Exhibit 13 delegation in a foreign annual report was never detected as a
-    stub. Preserved here so stored behaviour does not change under the port.
+    The registry resolves families against `10-K`, `10-Q`, and `8-K` only, so a
+    20-F filing is normalized as annual and triaged as generic: an Exhibit 13
+    delegation in a foreign annual report is not detected as a stub. Preserved
+    here so stored behaviour does not change silently.
     """
     plugin = get_plugin("20-F")
     assert plugin.family == "20-F"
@@ -144,11 +143,11 @@ def test_register_plugin_keys_are_stripped_and_upper_cased(
 def test_register_plugin_cannot_override_a_shadowed_alias_key(
     restored_registry: None,
 ) -> None:
-    """v1's second lookup is unreachable for any form that resolves to a family.
+    """The second lookup is unreachable for any form that resolves to a family.
 
     ``10-K405`` resolves to ``10-K``, so the seeded entry answers before the
     raw-string table is consulted and an override registered under the alias is
-    dead. Preserved from v1 and pinned here so a caller does not adopt it.
+    dead. Pinned here so a caller does not adopt it.
     """
     replacement = FormPlugin(family="10-K", enable_toc=False)
     register_plugin("10-K405", replacement)

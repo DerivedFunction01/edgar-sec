@@ -2,20 +2,14 @@
 
 ## Purpose
 
-A filing uses HTML tables for things that are not tables: a single bulleted risk-factor row, an
-exhibit index, a two-column heading, a footnote block. Rendering those as aligned ASCII destroys
-them; leaving them as grids produces noise.
-
-This package answers "is this really a table?" from the *resolved grid* rather than from the rendered
-text, because a layout grid's shape — one marker column beside one prose column — is the evidence,
-and rendered wrapping has already destroyed it. When the answer is no, it rebuilds readable text.
+Rejects layout tables and unwraps their content as readable prose or list text.
 
 ## Module → responsibility
 
 | Module | Responsibility |
 |---|---|
-| `detector.py` | `is_false_grid` (judges a resolved grid) and `is_false_table` (judges a rendered `<TABLE>` block, or a rendered block plus its geometry), plus the private marker, prose, and ordered-outline predicates. |
-| `unwrapper.py` | `unwrap_grid` (rebuild prose or a list from a rejected grid) and `cleanup_false_tables_with_metadata` (rewrite the surrounding text while keeping the surviving geometry aligned with the surviving text). |
+| `detector.py` | False-table classification for grids and rendered blocks. |
+| `unwrapper.py` | Rebuild text from rejected grids and preserve surviving geometry. |
 
 ## Contracts
 
@@ -45,41 +39,17 @@ from edgar_sec.engine.tables.false_tables.unwrapper import (
 )
 ```
 
-`cleanup_false_tables_with_metadata(text, geometries)` returns `(text, tuple[TableGeometry, ...])`.
-A footnote-shaped table immediately preceding a retained table unwraps too, but only when it passes
-`is_false_table(..., allow_footnote_context=True)` on its geometry.
-
 ## Command surface
 
-None. Library; the stage that drives it lives in `engine/document/html/normalizer.py`.
+None. Library package, no CLI.
 
 ## Mirrored tests
 
-`tests/engine/tables/false_tables/` — `test_detector.py`, `test_unwrapper.py` (57 tests).
-
-The TOC and footnote vectors are the highest-value cases in the suite: a wrong verdict there
-silently deletes a table of contents or drops a footnote block. They were ported from V1's
-`.v1/defs/tests/test_false_tables.py`.
+Mirrored coverage lives under `tests/engine/tables/false_tables/`.
 
 ## Deliberate gaps
 
-- **Unwrapping without metadata tracking is not exposed.** `cleanup_false_tables_with_metadata` is
-  the canonical entry point; there is no metadata-free sibling, so full diagnostic lineage is
-  preserved.
-- **The private predicates stay private.** `_is_single_column_prose`, `_is_prose_marker`,
-  `_is_unambiguous_list_marker`, `_is_prose_text`, `_marker_candidates`,
-  `_wrapped_marker_candidates`, `_step_stack`, `_passes_monotonic`, `_is_ordered_prose_grid`, and
-  `_visible_text` are ported unchanged. `_step_stack` exists because a single character in
-  `ivxlcdm` is ambiguous between a roman numeral and a letter sequence (`i)` inside `g) h) i) j) k)`),
-  and the ambiguity is resolved across the whole row sequence rather than per cell — a wrong
-  resolution would silently drop a whole risk-factor list.
-- **V1's lazy cover imports are gone, not moved.** V1 imported `defs.sec_forms.cover.structure` and
-  the cover TOC vocabulary inside the function body to dodge a cycle, which hid a layer violation. In
-  V2 that vocabulary lives in `edgar_sec.engine.tables.toc.patterns` — `RE_ITEM_REFERENCE`,
-  `RE_PART_REFERENCE`, `RE_TOC_ITEM_ROW`, `RE_TOC_LEADER`, `RE_PAGE_SUFFIX`, `is_toc_row`,
-  `looks_like_toc_row`, `looks_like_toc_tabular` — which is a leaf both this package and the cover
-  boundary code import. `RE_PAGE_SUFFIX` is built from `PAGE_NUMBER_CORE`, which
-  `foundation.text.patterns` already owns, so no page-marker module is imported.
-- **Known defect carried over from V1:** `is_false_table` without geometry strips only the `<TABLE>`
-  wrapper, so a body still carrying `<TR>`/`<TD>` never matches the leading-heading patterns and is
-  classified as a false table. Callers pass rendered text, and geometry is preferred when available.
+- **Unwrapping without metadata is not exposed.** The public path returns the
+  rewritten text with aligned geometry.
+- **Known defect:** Without geometry, a rendered table body that still contains
+  HTML row/cell tags can be classified as false.

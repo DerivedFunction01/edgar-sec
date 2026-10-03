@@ -188,7 +188,7 @@ SECURITIES_EXCHANGE_RULES: list[PhraseSequenceRule] = [
     ),
 ]
 
-# 6. Shares Outstanding Rules (Shared across 10-K and 10-Q)
+# 7. Shares Outstanding Rules (Shared across 10-K and 10-Q)
 COMMON_SHARES_RULES: list[PhraseSequenceRule] = [
     PhraseSequenceRule(
         name="shares_outstanding_caption",
@@ -228,6 +228,7 @@ COMMON_SHARES_RULES: list[PhraseSequenceRule] = [
     ),
 ]
 
+# Roll-up of the cover-page tables above; not an independent rule set.
 COMMON_PHRASE_RULES: list[PhraseSequenceRule] = [
     *BANNER_RULES,
     *FORM_TITLE_RULES,

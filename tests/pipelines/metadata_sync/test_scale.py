@@ -121,8 +121,8 @@ def test_the_plan_document_stays_small_at_every_scale() -> None:
 def test_reassigning_every_chunk_leaves_the_plan_untouched(tmp_path: Path) -> None:
     """Moving work between machines must not move the plan.
 
-    The old identity included the partition count, so every reassignment silently
-    discarded the completed checkpoints of an otherwise identical cohort.
+    Assignment is a separate artifact with its own identity, so a reassignment
+    cannot discard the completed checkpoints of an otherwise identical cohort.
     """
     plan, run_paths = _prepare(tmp_path, chunk_size=1)
     session = _session()
@@ -239,8 +239,7 @@ def test_two_machines_with_one_bundle_merge_to_the_same_snapshot(
     )
     # The CIK index is derived from the published rows' key column, so it is
     # deterministic across runs even though the fetch timestamps are not. The
-    # per-part digests are not, for exactly the same reason the old monolithic
-    # artifact digest was not.
+    # per-part digests are not, because a part's bytes carry those timestamps.
     assert single_report.cik_index_sha256 == distributed_report.cik_index_sha256
     assert single_report.cik_count == distributed_report.cik_count == plan.row_count
     assert single_report.part_count == distributed_report.part_count == plan.chunk_count

@@ -108,10 +108,9 @@ def test_feature_floats_encodes_booleans_as_one_and_zero() -> None:
 def test_feature_floats_does_not_drag_numpy_into_the_import_graph() -> None:
     """A dense vector is not part of the engine's contract.
 
-    The only V1 consumer of the array form was the offline ML labelling
-    harness, which is not ported. An array here would put numpy in the import
-    graph of every process that normalizes a filing, so importing this module
-    in a clean interpreter must not import numpy.
+    Returning an array would put numpy in the import graph of every process that
+    normalizes a filing, so importing this module in a clean interpreter must not
+    import numpy.
     """
     probe = (
         "import sys\n"

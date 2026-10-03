@@ -21,11 +21,8 @@ CREATE TABLE IF NOT EXISTS {_TABLE} (
 )
 """
 
-#: Document metadata, named and shaped exactly as v1's ``document_blobs`` so a
-#: fixture recorded by v1 loads here with no conversion. v2 stores raw payloads
-#: alone was not enough: a payload key is a one-way digest, so accession, path,
-#: MIME and source hash cannot be recovered from it, and a review run cannot
-#: rebuild the ``DocumentLocator`` the normalizer needs.
+#: A payload key is a one-way digest, so document metadata must be stored beside
+#: it to reconstruct the ``DocumentLocator`` needed by review and normalization.
 _DOCUMENTS_TABLE = "document_blobs"
 _CREATE_DOCUMENTS_TABLE = f"""
 CREATE TABLE IF NOT EXISTS {_DOCUMENTS_TABLE} (
@@ -38,11 +35,8 @@ CREATE TABLE IF NOT EXISTS {_DOCUMENTS_TABLE} (
 )
 """
 
-#: Per-document filing form, kept in its own table because v1's
-#: ``document_blobs`` has no form column and that table's shape is fixed by the
-#: v1 fixtures already on disk. This table is v2-only enrichment: its absence
-#: means "form was not recorded per document", and a reader falls back to the
-#: fixture manifest rather than treating it as an error.
+#: Filing form is stored separately to keep the document metadata schema stable.
+#: Callers can use fixture-manifest metadata when this table is absent.
 _FORMS_TABLE = "fixture_document_forms"
 _CREATE_FORMS_TABLE = f"""
 CREATE TABLE IF NOT EXISTS {_FORMS_TABLE} (

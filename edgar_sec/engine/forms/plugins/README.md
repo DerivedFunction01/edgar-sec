@@ -22,7 +22,6 @@ variance as data, so the normalization chain stays one chain.
 | `evaluators/annual.py` | `evaluate_annual` — Exhibit 13 incorporation-by-reference detection. |
 | `evaluators/quarterly.py` | `evaluate_quarterly` — XBRL-year and size-ceiling shortcuts. |
 | `evaluators/current.py` | `evaluate_current` — unconditional proceed. |
-| `__init__.py` | One-line docstring only. No re-exports, per AGENTS.md §1.2. |
 
 ## Contracts
 
@@ -52,12 +51,9 @@ variance as data, so the normalization chain stays one chain.
 
 ## Public surface
 
-- `FormPlugin`, `GENERIC_FAMILY`, `evaluate_generic` — `base.py`.
-- `register_plugin`, `registered_families`, `get_plugin` — `registry.py`.
-- `evaluate_annual` — `evaluators/annual.py`.
-- `evaluate_quarterly`, `HTML_SIZE_CEILING`, `ASCII_SIZE_CEILING` —
-  `evaluators/quarterly.py`.
-- `evaluate_current` — `evaluators/current.py`.
+`FormPlugin`, `GENERIC_FAMILY`, `evaluate_generic` (`base.py`);
+`get_plugin`, `register_plugin`, `registered_families` (`registry.py`); the
+three `evaluate_*` entry points (`evaluators/`).
 
 ## Command surface
 
@@ -66,43 +62,29 @@ None. Library package, no CLI.
 ## Production consumers
 
 - `edgar_sec/pipelines/document_storage/processor.py` — `get_plugin`, then
-  `plugin.evaluator(result.text)`.
+  `plugin.evaluator(result.text)`. The resulting decision adds `is_stub`,
+  `category`, `decision_action`, `decision_reason`, and `target_exhibit` to the
+  stored metadata and populates `ProcessedDocument.decision`.
 
-Because the evaluator is real, `FilingProcessor.process` writes five metadata
-keys it would otherwise not — `is_stub`, `category`, `decision_action`,
-`decision_reason`, `target_exhibit` — and populates `ProcessedDocument.decision`.
-`metadata` is a free-form mapping with no column schema, so nothing breaks, but
-the stored snapshot gains those fields.
+## Mirrored tests
 
-## Tests
-
-`tests/engine/forms/plugins/test_base.py`,
-`tests/engine/forms/plugins/test_registry.py`, and
-`tests/engine/forms/plugins/evaluators/test_annual.py`, `test_quarterly.py`,
-`test_current.py`.
+`tests/engine/forms/plugins/`.
 
 ## Deliberate gaps
 
 - **The evaluators' context arguments are unreachable.** The SPI is
   `plugin.evaluator(result.text)` — one positional argument — and no production
   caller supplies more. So `evaluate_annual`'s XBRL year shortcut and
-  `evaluate_quarterly`'s `filing_year` / `raw_length` / `is_html` shortcuts
-  cannot fire in production, even though all three are live in the port.
+  `evaluate_quarterly`'s metadata shortcuts cannot fire in production.
   **Closing this requires a caller change** (`FilingProcessor` passing context),
-  not a port change.
-- **The delegation verb list is windowed, not anchored.** Eleven delegation
-  verbs are searched in a ±300-character window around *any* Exhibit 13 mention,
-  so an exhibit-index row sitting beside "as referred to in the notes" can
-  produce `refetch_sub_doc`. Tightening it would reclassify already-stored
+  not a change to the evaluators.
+- **The delegation verb list is windowed, not anchored.** Delegation verbs are
+  searched in a fixed context window around *any* Exhibit 13 mention, so an
+  exhibit-index row sitting beside "as referred to in the notes" can produce
+  `refetch_sub_doc`. Tightening it would reclassify already-stored
   documents, so the false-positive surface is preserved deliberately.
 - **`line_num` is the anchor's line, not the delegation's**, so the reported line
-  can be up to 300 characters from the quoted reason. Pinned by
-  `test_the_reported_line_is_the_anchors_line_not_the_verbs`.
-- **`DecisionAction.SKIP_HARD_STUB` is never emitted** by any evaluator. Present
-  in the vocabulary, unused in behaviour.
-- **`ContentTransform` has no reader.** The alias is declared in
-  `edgar_sec/domain/forms/common/models.py` with zero references; no
-  `transform_content` hook exists in this package.
+  can sit outside the quoted reason.
 - **No per-family taxonomy lookup here.** Per-family vocabulary reaches consumers
   as `CoverProfile.derived_taxonomy` from `engine/forms/cover/profiles.py`. The
   plugin lookup and the cross-family aggregate do not exist.

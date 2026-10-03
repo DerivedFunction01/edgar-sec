@@ -6,9 +6,8 @@ to the operating system on malloc_trim. Batch workers and brokers therefore
 call reclaim() at bounded intervals to keep resident memory near the live
 working set instead of the high-water mark.
 
-Streaming text hashing lives in :mod:`edgar_sec.foundation.hashing`: this module
-used to carry a second ``sha256_text`` with different behaviour from the
-``hashing`` one, which is exactly the shape of defect AGENTS.md §1.1 bans.
+Streaming text hashing lives in :mod:`edgar_sec.foundation.hashing`; this module
+owns heap reclamation only.
 """
 
 from __future__ import annotations

@@ -4,19 +4,17 @@
 
 Scores an extracted 2D grid (`list[list[str]]`) against the declarative family specifications in
 Layer 1 (`edgar_sec.domain.taxonomy.tables`) and returns the family it matches, a confidence, and the
-evidence behind it. Twenty-two families are registered, covering financial statements (income,
-balance sheet, cash flow, equity), regulatory disclosure schedules (fair value, lease and debt
-maturities, pension, EPS reconciliation, share repurchases), and cover structures.
+evidence behind it. The registered families cover financial statements (income, balance sheet, cash
+flow, equity), regulatory disclosure schedules (fair value, lease and debt maturities, pension, EPS
+reconciliation, share repurchases), and cover structures.
 
 ## Layout
 
 | Module | Responsibility |
 | :--- | :--- |
-| `shapes.py` | `validate_shape(grid, constraint, *, in_scope=False)` — row-count, column-count, and numeric-density checks against a `ShapeConstraint`, using `is_numeric_cell`. |
-| `context.py` | `SectionContext`, `CoverScope`, `TocReference`, `TableNode`, `TableContext`, `ContextEvidence`, `ContextSource`. |
+| `shapes.py` | `validate_shape(grid, constraint, *, in_scope=False)` — row-count, column-count, and numeric-density checks against a `ShapeConstraint`. |
+| `context.py` | The optional section, cover, and TOC-reference records a caller can supply to disambiguate a grid. |
 | `classifier.py` | `classify_table(grid, *, section_context=None, candidate_families=None)` — the zone evaluator and exclusion vetoes. |
-
-There is no `__init__.py`; the sub-modules import each other by absolute path.
 
 ## Contracts
 
@@ -49,16 +47,11 @@ None. Library package, no CLI.
 
 ## Mirrored tests
 
-`tests/engine/tables/taxonomy/test_classifier.py` (24 tests). Only `classifier.py` has a mirrored
-test file; `shapes.py` and `context.py` are exercised transitively.
+`tests/engine/tables/taxonomy/` — `classifier.py` has a mirrored test module;
+`shapes.py` and `context.py` are exercised transitively.
 
 ## Deliberate gaps
 
-- **No production consumer.** `classify_table` has no caller outside this package, so it is a
-  prepared classification core rather than a wired capability. Nothing in `engine/forms/normalize.py`
-  or the `documents run` pipeline invokes it.
-- **No offline probe CLI.** The vocabulary census and spec optimizer under
-  `.v1/defs/taxonomy/probe/` are V1 developer tools and are deliberately not ported.
-- **`TableNode` and `TableContext` are unused.** They describe a structure index no V2 component
-  builds yet. `classify_table` takes a bare grid and an optional `SectionContext`; nothing
-  constructs the per-table context for it.
+- **No offline probe CLI.** The vocabulary census and spec optimizer a developer would use to
+  re-fit the registered families are not part of this repository; re-fitting means editing
+  `edgar_sec/domain/taxonomy/tables/`.

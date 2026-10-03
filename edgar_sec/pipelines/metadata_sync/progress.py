@@ -11,11 +11,10 @@ already owns the adapters that turn a pipeline's events into a tqdm bar, and it
 knows nothing about which phase a pipeline is in. What lives here is the phase
 knowledge: that this pipeline has a per-CIK fetch shape, a per-stage merge shape,
 and that an augmentation runs both in one command. Promoting that to
-``foundation`` on the strength of one caller would be speculative, and the
-roadmap already records the failure mode -- v1's shared ``run_interactive``
-"hardcoded Phase 01's exact model ... [and] became dead code outside Phase 01".
-If a second pipeline needs the same sequencing, promote it then, with two callers
-to shape it.
+``foundation`` on the strength of one caller would be speculative, and a shared
+interactive entry point hardcoded to one phase's exact model is a known way to end
+up with dead code everywhere else. If a second pipeline needs the same
+sequencing, promote it then, with two callers to shape it.
 
 A terminal gets a live bar; a pipe or a captured log gets one plain line per event
 prefixed with the phase that emitted it. Choosing on ``isatty`` is what keeps a

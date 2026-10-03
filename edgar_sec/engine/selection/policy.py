@@ -20,16 +20,9 @@ in the plan document (:data:`.publication.TARGET_PLAN_SCHEMA_VERSION`) where
 expansion checks it. A retired key is rejected outright rather than ignored, so
 an older draft fails to load instead of selecting something nobody intended.
 
-Departures from v1:
-
-* ``auto_generate_policy`` derives its corpus from the catalog id it is handed
-  plus an explicit form list and year range, instead of v1's
-  ``manifests_root / "filing_extraction" / "filing_catalog"`` string
-  concatenation, which had to be kept in sync with the layout by hand.
-* Policy validation rejects a floor or cap naming an unknown dimension at
-  construction time. v1 validated only ``floors``/``weights``/``caps`` keys
-  against a partial set, so a typo inside a composite's ``filters`` was only
-  discovered after the snapshot had already been built.
+Policy generation takes the catalog's forms and year range from its caller,
+keeping artifact discovery in the pipeline layer. Construction validates every
+referenced dimension, including composite filters, before selection begins.
 """
 
 from __future__ import annotations
@@ -91,7 +84,7 @@ KNOWN_DIMENSIONS = (
 # only name a locator-grain dimension; counting a per-filing dimension on the
 # locator table would read as an undersupplied stratum rather than a bad policy.
 # `sic_code` is locator-grain: the locator projection carries the representative
-# registrant's value. v1 classified it as occurrence-only.
+# registrant's value.
 OCCURRENCE_ONLY_DIMENSIONS = frozenset({"accession_class"})
 LOCATOR_ONLY_DIMENSIONS = frozenset(
     name for name in KNOWN_DIMENSIONS if name not in OCCURRENCE_ONLY_DIMENSIONS
@@ -203,8 +196,7 @@ SEED_FILER_COLUMNS = ("cik", "name", "seed_group", "coverage_tags", "notes")
 def load_seed_cik_csv(path: str | Path) -> dict[str, SeedFiler]:
     """Parse and validate a seed CIK CSV, normalizing every CIK to ten digits.
 
-    A missing ``seed-cik.csv`` falls back to a sibling ``cik-sec.csv``: v1 shipped
-    both names for the same file and let the policy point at either.
+    A missing ``seed-cik.csv`` falls back to a sibling ``cik-sec.csv``.
     """
     source_path = Path(path).resolve()
     if not source_path.is_file():
@@ -408,9 +400,7 @@ class SelectionPolicy:
             if not 0 < cap <= 1:
                 raise ValueError(f"cap for {dim} must be in (0, 1]")
 
-        # v1 checked only the top-level dimension names, so a typo inside a
-        # composite's filters passed construction and then produced an
-        # unmatchable stratum. Every referenced dimension is checked here.
+        # Validate nested composite filters before selection queries run.
         unknown = set(self.floors) | set(self.caps)
         for composite in self.composites:
             unknown |= set(composite.get("filters", {}))
@@ -588,13 +578,9 @@ def auto_generate_policy(
 ) -> SelectionPolicy:
     """Derive a baseline policy from a catalog's own forms and year range.
 
-    The observed form list and the observed report-year range are *parameters*,
-    not paths, because Layer 3 may not reach the Layer 4 catalog layout. The
-    caller resolves the published snapshot and reads those two facts;
-    ``pipelines.filing_catalog.discovery.generate_policy`` is that caller. v1
-    concatenated ``manifests_root / "filing_extraction" / "filing_catalog"`` by
-    hand inside this function, which meant a layout change had to be mirrored
-    here or policy generation would silently read nothing.
+    The caller supplies observed forms and the report-year range so this engine
+    module does not discover Layer 4 artifact paths. The pipeline resolves the
+    published catalog and passes those values here.
     """
     if max_year < min_year:
         raise ValueError(f"catalog year range is inverted: {min_year}..{max_year}")

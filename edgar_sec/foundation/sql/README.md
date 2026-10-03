@@ -60,7 +60,7 @@ one dataset cannot reach another file on disk.
 ## Mirrored tests
 
 [`tests/foundation/sql/test_guard.py`](../../../tests/foundation/sql/test_guard.py)
-— 35 cases: accepted reads, rejected writes and stacked statements, the
+— accepted reads, rejected writes and stacked statements, the
 `PRAGMA table_info` restriction, separator scanning through quotes and comments,
 repeated leading comments, and the defer-malformed-input contract.
 
@@ -75,7 +75,6 @@ repeated leading comments, and the defer-malformed-input contract.
   terminates.
 - **No allowlist of tables or columns.** The caller scopes the query by what it
   binds as the only visible relation.
-- **Not the repository's SQL boundary.** v1's `sql-boundary` and
-  `storage-boundary` scanners (`.v1/defs/sql/checks.py`,
-  `.v1/defs/storage/checks.py`) did not reach v2, and this module does not
-  replace them. A future scanner may.
+- **Not the repository's SQL boundary.** `guard.py` validates one operator-supplied
+  query string; it is not a policy scanner, and nothing in `scanners/` enforces a
+  SQL or storage rule. A future scanner may.

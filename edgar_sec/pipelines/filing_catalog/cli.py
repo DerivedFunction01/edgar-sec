@@ -163,7 +163,7 @@ def build_parser() -> argparse.ArgumentParser:
         "--scope",
         default=SCOPE_DETERMINISTIC,
         choices=[SCOPE_DETERMINISTIC, SCOPE_POLICY],
-        help="deterministic slices on five filters; policy fills a quota profile",
+        help="deterministic target filtering; policy fills a quota profile",
     )
     plan_parser.add_argument(
         "--policy", default="", help="selection policy document (policy scope)"

@@ -1,7 +1,8 @@
 """Layout-grid classification: the vectors that decide retain versus unwrap.
 
-Every expectation here was taken from the V1 reference tree, so a change in
-verdict is a change in product behaviour rather than a test needing a rewrite.
+The expectations here were reviewed one by one against real filing output, so a
+change in verdict is a change in product behaviour rather than a test needing a
+rewrite.
 """
 
 from __future__ import annotations

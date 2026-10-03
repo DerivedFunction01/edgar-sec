@@ -296,20 +296,20 @@ def publish_parts(
     """Publish validated source files as a snapshot's ordered Parquet parts.
 
     Parts are byte copies of already-validated files, not a re-materialization.
-    The previous single-file publication decompressed, sorted, and recompressed
-    every row; copying performs the same validation work at a fraction of the
-    I/O, and it makes the published dataset exactly the set of files the merge
-    accepted. A full merge passes its chunk files; an augmentation passes the
-    base snapshot's parts followed by its delta chunks.
+    Copying performs the same validation work at a fraction of the I/O a
+    decompress-sort-recompress pass would, and it makes the published dataset
+    exactly the set of files the merge accepted. A full merge passes its chunk
+    files; an augmentation passes the base snapshot's parts followed by its delta
+    chunks.
 
     Each source label is recorded on its part, so a consumer can tell which
     chunk or which base part a row came from without inspecting the file.
 
     The trade is row order. A snapshot is in part order and each part is in the
-    order its source file held, so the dataset is *not* globally sorted by CIK the
-    way the old single sorted file was. That is recorded in the manifest as
-    ``sort_order`` so a consumer cannot mistake one for the other, and
-    ``ciks.parquet`` remains the sorted membership index for lookups by CIK.
+    order its source file held, so the dataset is *not* globally sorted by CIK.
+    That is recorded in the manifest as ``sort_order`` so a consumer cannot
+    mistake one for the other, and ``ciks.parquet`` remains the sorted membership
+    index for lookups by CIK.
     """
     parts_dir = metadata_paths.snapshot_parts_dir(report.snapshot_id)
     parts_dir.mkdir(parents=True, exist_ok=True)

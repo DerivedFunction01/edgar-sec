@@ -12,11 +12,9 @@ Two processors, both satisfying :class:`DocumentProcessor`:
     Stores the payload unprocessed. Used for a corpus where normalization is not
     the point.
 
-The processor is deliberately synchronous. v1 wrapped it in an async protocol and
-then drove it from synchronous worker threads with one event loop per thread,
-which bought concurrency the thread pool already had and cost a loop per thread.
-A chunk is fetched in parallel and normalized in this thread, which is where the
-work actually is.
+The processor is deliberately synchronous. A chunk is fetched in parallel and
+normalized in this thread, which is where the work actually is; an async
+protocol here would buy no concurrency the thread pool does not already have.
 """
 
 from __future__ import annotations

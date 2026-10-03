@@ -1,9 +1,8 @@
 """Rendering the distributed lifecycle as copy-pasteable shell commands.
 
-v1 printed a command per machine from its operator menu, and it matters because
-the alternative is remembering the flags: a worker handed the wrong arguments runs
-chunks it was never assigned, and the failure looks like a data problem rather
-than a mistyped one.
+Printing the commands matters because the alternative is remembering the flags: a
+worker handed the wrong arguments runs chunks it was never assigned, and the
+failure looks like a data problem rather than a mistyped one.
 
 This is separate from the wizard because it is not a wizard concern. It needs an
 assignment division and a plan summary, and it needs nothing from the session

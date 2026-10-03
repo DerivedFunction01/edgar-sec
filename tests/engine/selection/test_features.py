@@ -1,12 +1,4 @@
-"""Unit tests for engine.selection.features: form families, eras, snapshots.
-
-The load-bearing test here is
-:func:`test_form_family_sql_matches_the_python_rule`. v1 carried two
-implementations of one rule -- a Python loop and a hand-written ``$``-anchored
-``REGEXP_REPLACE`` alternation -- and they disagreed on any form carrying two
-suffixes. The SQL is now generated from the same tuple the Python consumes, so
-the test runs both and demands they agree.
-"""
+"""Tests for feature dimensions and the generated catalog snapshot."""
 
 from __future__ import annotations
 
@@ -51,8 +43,7 @@ FORM_BATTERY = (
     "S-1_A",
     "N-CSR",
     "6-K/A",
-    # Two suffixes at once. v1's SQL alternation is $-anchored and stripped
-    # only "-POS", leaving "10-K/A"; the Python loop stripped both.
+    # Multiple suffixes must be collapsed in sequence.
     "10-K/A-POS",
     # Degenerate: nothing but suffixes, so the collapse is empty.
     "/A",
@@ -86,12 +77,7 @@ def test_form_family_normalizes_case_and_padding() -> None:
 
 
 def test_form_family_sql_matches_the_python_rule() -> None:
-    """The generated SQL and the Python function must not disagree.
-
-    v1 kept both by hand and they diverged on double-suffix forms. Running the
-    SQL over the same battery the Python tests use is the only way to keep them
-    honest as the suffix tuple changes.
-    """
+    """The generated SQL must agree with the Python suffix normalizer."""
     expression = form_family_sql("f")
     with connect() as con:
         con.execute("CREATE TEMP TABLE forms(f VARCHAR)")
@@ -277,12 +263,8 @@ def _policy() -> SelectionPolicy:
 
 # --- size_band: relative to the family's own median -------------------------
 #
-# The published catalog's median filing is ~1.5 MB for 10-K and ~7 KB for form
-# 4, a 229x spread, and `reported_size` runs from 0 to 612 MB. An absolute
-# threshold set therefore sorts whole families into one end, and NTILE(5) --
-# the v1 rule -- produced a top band spanning 47 KB to 612 MB. These tests pin
-# the property that makes the feature useful: the same *relative* position in a
-# family's size distribution earns the same label, whatever the family's scale.
+# These tests pin the invariant that the same relative filing size maps to the
+# same label within a family, independent of the family's absolute scale.
 
 _SIZE_SAMPLES = (400, 2_000, 8_000, 32_000, 128_000)
 

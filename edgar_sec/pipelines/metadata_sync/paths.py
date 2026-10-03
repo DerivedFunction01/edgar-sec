@@ -137,8 +137,8 @@ class MetadataPaths:
     def effective_input_file(self, registry_id: str) -> Path:
         """Path of the effective CIK input CSV for one registry.
 
-        An export for people and v1-era scripts, not the internal carrier: the
-        roster Parquet dataset beside it is what a plan consumes.
+        An export for people, not the internal carrier: the roster Parquet dataset
+        beside it is what a plan consumes.
         """
         return self.registry_root(registry_id) / REGISTRY_EFFECTIVE_CIK_INPUT_NAME
 

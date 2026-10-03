@@ -1,7 +1,6 @@
 """Contract tests for exact tagged-table protection.
 
-Vectors are ported from the v1 `defs/tests/test_table_protection.py` suite and
-extended with the round-trip guarantees the module actually publishes:
+These cover the round-trip guarantees the module actually publishes:
 byte-identical restoration, loud failure on a lost sentinel, and offset
 stability for `ProtectedText`.
 """

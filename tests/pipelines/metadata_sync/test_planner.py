@@ -88,9 +88,9 @@ def test_plan_id_changes_with_chunking() -> None:
 def test_plan_id_ignores_assignment() -> None:
     """Reassigning workers must not move the plan directory.
 
-    The old identity included the partition count, so changing the worker
-    configuration silently discarded every completed checkpoint for an identical
-    cohort. Assignment is now a separate artifact with its own identity.
+    Assignment is a separate artifact with its own identity, so changing the worker
+    configuration cannot discard every completed checkpoint for an identical
+    cohort.
     """
     assert derive_plan_id_direct(build_roster(("0000001985",)).roster_id, 1000) == (
         derive_plan_id_direct(build_roster(("0000001985",)).roster_id, 1000)
@@ -112,7 +112,7 @@ def test_delta_plans_bind_to_their_base_snapshot() -> None:
 
 
 def test_delta_and_full_plans_over_one_cohort_are_distinct() -> None:
-    """The two used to collide and overwrite each other's plan record."""
+    """A delta plan and a full plan over one cohort must not collide."""
     roster = build_roster(("0000001985",))
     full = derive_plan_id_direct(roster.roster_id, 1)
     delta = derive_plan_id_direct(roster.roster_id, 1, kind="delta", parent_id="base")
@@ -122,9 +122,8 @@ def test_delta_and_full_plans_over_one_cohort_are_distinct() -> None:
 def test_limit_binds_identity_before_the_plan_is_built() -> None:
     """A bounded plan and a full plan over one file must not collide.
 
-    The old identity hashed the raw file digest and truncated afterwards, so
-    `--limit 500` and a full run resolved to the same plan directory and the same
-    checkpoint namespace.
+    Applying the limit before identity is derived is what keeps `--limit 500` and a
+    full run off one plan directory and one checkpoint namespace.
     """
     full = plan_for_manifest(_manifest(), chunk_size=2)
     limited = plan_for_manifest(_manifest(), chunk_size=2, limit=2)

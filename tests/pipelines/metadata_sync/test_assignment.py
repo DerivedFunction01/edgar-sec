@@ -272,7 +272,7 @@ def test_versions_are_declared_once() -> None:
 
 
 def test_reassignment_does_not_disturb_a_written_plan(tmp_path: Path) -> None:
-    """The property the old identity broke: work survives reassignment."""
+    """Work survives reassignment."""
     from edgar_sec.pipelines.metadata_sync.manifest import read_cik_manifest
 
     plan = build_plan(

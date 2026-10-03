@@ -117,8 +117,7 @@ def list_plans(metadata: MetadataPaths) -> list[PlanSummary]:
     """Every plan on disk, most recently touched first.
 
     Newest first because the plan an operator most likely wants is the one they
-    just made; v1 auto-resumed the most recent in-progress run on the same
-    assumption.
+    just made.
 
     The key is the plan directory's modification time, not ``created_at``:
     ``created_at`` is recorded to the second, so several plans made in one

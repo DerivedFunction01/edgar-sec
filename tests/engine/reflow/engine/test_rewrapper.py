@@ -1,14 +1,8 @@
 """The reflow stage: segmentation, decisions, boundary resolution, rendering.
 
-Vectors are ported from the reference tree's `defs/tests/test_reflow.py` and
-`defs/tests/test_table_boundary_fragmentation.py`, which are the executable record
-of what the stage is allowed to do to a filing. The filing-sized documents live
-in `conftest.py` per `AGENTS.md` §6.3; each test below states the one property it
-holds one of them to.
-
-These run against the V2 modules directly. Byte parity with the reference tree is
-proved separately and continuously by `tools/phase25_diff.py`, and both have to
-stay green for the port to be trusted.
+This module is the executable record of what the stage is allowed to do to a
+filing. The filing-sized documents live in `conftest.py` per `AGENTS.md` §6.3;
+each test below states the one property it holds one of them to.
 """
 
 from __future__ import annotations

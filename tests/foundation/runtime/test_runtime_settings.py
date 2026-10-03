@@ -5,15 +5,13 @@ plan rather than a crash. Two properties are pinned here: every spec that an
 operator can set from the environment validates its own bounds, and none
 declares ``config=True`` while no settings mapping is persisted. The second
 matters because a ``config=True`` flag advertises a backing store that does not
-exist, which is how ``runtime.chunk_size`` came to be declared with persistence
-that nothing implemented.
+exist.
 
-``runtime.partition_count`` is deliberately absent. It survived v1, was consumed
-there only by Phase 2.5, and in v2 it had no production reader at all: Phase 1
-distributes chunks through static per-worker assignments instead, and Phase 2
-publishes form-partitioned targets that no operator selects. A setting nobody
-reads is a capability advertised but not delivered, so it is retired rather than
-parked for a future phase to adopt.
+``runtime.partition_count`` is deliberately absent. Phase 1 distributes chunks
+through static per-worker assignments, and Phase 2 publishes form-partitioned
+targets that no operator selects, so no production code would read such a
+setting. A setting nobody reads is a capability advertised but not delivered, so
+it is retired rather than parked for a future phase to adopt.
 """
 
 from __future__ import annotations

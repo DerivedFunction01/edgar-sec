@@ -20,7 +20,7 @@ applies it but never owns it.
 | Module | Responsibility |
 | :--- | :--- |
 | `models.py` | Immutable boundary, TOC, and body-anchor models plus their capability enums. |
-| `profiles.py` | `CoverProfile`, the four `build_*_profile` functions, `COVER_PROFILES`, `get_profile`. |
+| `profiles.py` | `CoverProfile`, the `build_*_profile` functions, `COVER_PROFILES`, `get_profile`, and the per-profile label and phrase-rule vocabularies. |
 | `rules.py` | Compiles evidence packs into cover regexes and a lexical body pack, cached by evidence identity. |
 | `structure.py` | Generic PART/ITEM heading mechanics shared by the boundary, TOC, and body stages. |
 | `reflow.py` | The cover's two policies handed to the generic ASCII reflow engine. |
@@ -86,7 +86,7 @@ Subpackages, each with its own README:
   — `structure.py`.
 - `CoverProfile`, `COVER_PROFILES`, `get_profile`, `build_annual_profile`,
   `build_quarterly_profile`, `build_current_profile`,
-  `build_no_cover_profile` — `profiles.py`.
+  `build_generic_cover_profile`, `build_no_cover_profile` — `profiles.py`.
 - `find_body_start` — `body_start.py`.
 - `find_closing_span`, `ClosingSpan` — `closing.py`.
 - `is_checkbox_answer_line`, `is_cover_layout_line` — `reflow.py`.
@@ -103,31 +103,13 @@ None. Library package, no CLI.
 
 ## Tests
 
-`tests/engine/forms/cover/` mirrors this tree one file per module:
-`test_models.py`, `test_profiles.py`, `test_rules.py`, `test_structure.py`,
-`test_reflow.py`, `test_closing.py`, `test_body_context.py`, `test_body_start.py`;
-`boundary/test_{detector,corridor,transition}.py`;
-`toc/test_{models,patterns,analysis,residue,finder}.py`;
-`tables/test_cleaner.py`;
-`checkmarks/test_{models,yes_no_pairs,frames,candidates,solver,rewrite}.py`;
-`healing/test_{binary_blocks,text}.py`.
+Mirrored coverage lives under `tests/engine/forms/cover/`.
 
 ## Deliberate gaps
 
-- **`CoverProfile` has exactly one home, `cover/profiles.py`.** Its `boundary`
-  field is typed on `CoverBoundaryPolicy`, which is Layer 3, so the type cannot
-  live in Layer 1 without a layer violation.
-- **`DocumentTopology` is declared but nothing populates it.** It stays available
-  for multi-zone consumers without an eager resolver.
-- **`RE_PART` accepts only five roman numerals** (`I`–`V`). `PART VI` classifies
-  as prose, not as a heading.
-- **`is_cover_layout_line` is memoized per line string**, bounded at 16384
-  entries; each miss is still up to seven regex searches.
-- **No closing-region merging.** `find_closing_span` returns the *first* reliable
-  signature or exhibit-index line. It does not grow the span to cover a consent
-  page that follows, and does not detect an exhibit index lacking a heading line.
-- **No parity harness against the v1 reference tree.** An earlier revision of
-  this README claimed `tools/phase25_diff.py` proved 104 functions agreed across
-  4351 cases; that file does not exist in this repository and never has. Parity
-  is therefore *not* mechanically proven here — the per-module mirrored tests are
-  the only evidence.
+- **`DocumentTopology` is declared, but no resolver produces it.**
+- **Part-heading recognition does not cover all Roman-numeral forms.** Some
+  part-like headings are treated as prose.
+- **No closing-region merging.** Detection does not extend over following
+  consent pages or identify exhibit indexes without a heading.
+- **No parity harness against a reference implementation.**

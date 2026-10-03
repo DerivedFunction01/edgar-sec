@@ -45,19 +45,6 @@ Layer 0: foundation/      edgar_sec.foundation
 - **Foundation (Layer 0)** has **zero** internal dependencies on upper layers.
 - The `layer-boundary` scanner automatically validates this graph in `check.py`.
 
-> [!NOTE]
-> **What `apps/` is, and what the layer does not buy.** An app is a
-> read-only, operator-facing consumer of published artifacts — it browses and
-> queries what a pipeline already published, and it never fetches, transforms,
-> or publishes anything. The one invariant this layer adds over Layer 4 is the
-> clause above: **nothing below `apps/` may import it**, so a batch pipeline can
-> never take a dependency on an application. Beyond that clause an app has the
-> same read access a pipeline has. Treat it as an organizational boundary first;
-> do not cite it as a safety boundary it does not provide.
-> It is deliberately *not* a batch layer. An app has no chunks, no plan, no
-> worker, and no resumability, and it is exempt from none of §4's pipeline
-> contracts because it is not subject to them.
-
 ### Package Import & Export Contract (No Shims, No Barrel Re-exports)
 1. **Zero Backward-Compatibility Shims**:
    - Never create alias modules, forwarding functions, or legacy shims when refactoring or moving code.
@@ -91,7 +78,7 @@ To prevent OOM kills, glibc fragmentation, and thread thrashing in containerized
    - Hardcoding `threads=`, `max_workers=`, or `memory_limit=` in library/pipeline code is blocked by the `resource-allocation` policy scanner.
 5. **Streaming & Bounded IO**:
    - `file_sha256()` streams a file in 64KB blocks. `sha256_text()` also streams:
-     `foundation/hashing.py:28-44` encodes the text in 1 MiB code-point slices and
+     `foundation/hashing.py` encodes the text in 1 MiB code-point slices and
      updates one hasher, so hashing a multi-megabyte filing never allocates a
      second full-size bytes copy. Its digest is byte-identical to
      `hashlib.sha256(text.encode("utf-8"))` — Python `str` indices are code points
@@ -139,9 +126,9 @@ To prevent OOM kills, glibc fragmentation, and thread thrashing in containerized
 Before submitting any turn or completing work, run the unified quality gate:
 
 ```bash
-.venv/bin/python check.py            # smart gate: ruff format, lint, scanners, targeted pytest (<3s)
+.venv/bin/python check.py            # smart gate: ruff format, lint, scanners, targeted pytest
 .venv/bin/python check.py --all      # full gate: runs full unconditional test suite across repository
-.venv/bin/python check.py --fix      # format & safe lint fixes only (< 0.5s; does NOT run tests)
+.venv/bin/python check.py --fix      # format & safe lint fixes only; does NOT run tests
 .venv/bin/python check.py --fast     # fast static check: format check, lint check, scanners (skips tests)
 .venv/bin/python check.py --scan     # runs only the registered policy scanners
 .venv/bin/python check.py --test     # runs targeted pytest (or full suite with --all)
@@ -151,8 +138,8 @@ Before submitting any turn or completing work, run the unified quality gate:
 
 > [!NOTE]
 > `check.py` automatically uses Git change detection and static AST reverse-dependency lineage tracking:
-> - **Documentation / Assets**: If only markdown, documentation, or static non-code assets changed, pytest execution is bypassed completely (0.0s).
-> - **Targeted Execution**: Modifying a module automatically resolves and runs its direct mirrored test and all downstream dependents in ~1–3s, respecting pipeline boundaries.
+> - **Documentation / Assets**: If only markdown, documentation, or static non-code assets changed, pytest execution is bypassed completely.
+> - **Targeted Execution**: Modifying a module resolves and runs its direct mirrored test and downstream dependents, respecting pipeline boundaries.
 > - **Full Gate Verification**: Use `check.py --all` when completing major milestones or pull requests to run the entire test suite.
 
 
@@ -174,7 +161,8 @@ Scanners are defined modularly in `edgar_sec/foundation/scanners/` and collected
 - `date-patterns`: Bans private month tables and hand-crafted date patterns.
 
 > [!NOTE]
-> The last four exist to keep a rule *enforced* rather than merely *stated*.
+> `regex-alternations`, `legacy-shims`, `json-io`, and `date-patterns` exist to
+> keep a rule *enforced* rather than merely *stated*.
 > Each points at infrastructure the repository already ships — the regex builder
 > DSL, the "zero shims" rule in §1.1, `foundation.serialization.canonical_json`,
 > `infra.storage.atomic.atomic_write_json`, and `foundation.text.dates`. A rule
@@ -194,24 +182,59 @@ Every package in the repository must be rigorously documented to preserve archit
   plus one per layer root and one for `edgar_sec/` itself. Each states: purpose,
   a module→responsibility layout table, the contracts it guarantees, its public
   surface, its command surface if it has one, its mirrored tests, and its
-  **deliberate gaps**.
+  **deliberate gaps**. Omit a section that has nothing to say — a library package
+  with no command surface states that in one line rather than omitting it silently.
+- **Package READMEs are concise contracts, not duplicate API manuals.** Explain
+  package-level guarantees and boundaries once; link to the owning module for
+  function-specific behavior instead of copying its docstring. Remove repeated
+  explanations already owned by another package. Describe module
+  responsibilities in the layout table; do not narrate why implementation was
+  split across files or why a symbol was placed in one module rather than another.
+- **Public surface means the supported boundary, not an inventory.** Name the
+  entry points a caller is expected to use and link to the owning module. Do not
+  enumerate every helper, constant, error class, or field a module exports; that
+  list is the module's own docstring's job, and a copied version goes stale
+  silently. A CLI package may treat its command table as its command surface and
+  keep that table out of the Python surface list. Mirrored-tests sections may name
+  the test directory instead of listing every test file.
+- **Do not document what the code already says.** Omit a statement when it restates
+  the code without adding a caller obligation, a boundary, or an impact. In
+  particular, do not narrate where a setting is declared, how a name is derived, or
+  which module a piece of SQL lives in unless a caller must know it to use the
+  package correctly. Link to the owning module instead.
+- **Do not mirror volatile implementation tuning in Markdown.** Leave algorithm
+  thresholds, search windows, and heuristic detail with their owning code or
+  docstring; link there when needed. State these values in a README only when
+  they are part of a persisted, operator-facing, or normative runtime contract.
+- **Avoid volatile implementation counts.** Do not enumerate source/test line
+  numbers, LOC, module or test-file totals, parameters, fields, or pipeline-stage
+  counts in prose when names or behavior express the contract. Retain numbers
+  that are actual runtime policy or persisted schema/version identifiers.
 - **The deliberate-gaps section is load-bearing.** A reader must never mistake an
   absent capability for an oversight. Where a capability is deliberately omitted,
   deferred to a future phase, or substituted with an alternative pattern, say so
-  and name the alternative or the roadmap item.
+  and name the alternative or the roadmap item. Record only gaps a caller would
+  notice: an absent capability and its impact. Do not use it to log internal
+  observations, dead parameters, or code facts a reader can see.
 - **`AGENTS.md` is normative.** Where a README and this file disagree, this file
   wins — and the README is the thing that is wrong, so fix it.
 - On any **major change** — new public entry point, schema or contract change,
   resumability/merge behaviour change, added dependency or tooling, a new
   pipeline — update that package's README, the root `README.md` layout section,
-  and `roadmap/refactor_v2/v2_refactor_roadmap.md` where product direction moves.
+  and the tracked roadmap under `roadmap/` where product direction moves.
+- **Tracked docs cite tracked evidence.** Name or link only paths that exist in
+  the repository. A citation into an absent local-only tree — a machine-local
+  `.v1/` or `.v2/` archive, an untracked plan or scratch directory — is a broken
+  reference, and it fails the same way a wrong claim does: it cannot be
+  checked. Cite tracked, portable evidence instead. Version words that are
+  ordinary technical terminology — cgroups v1/v2, a schema or phase
+  identifier, a `v1`-suffixed name carried by the code itself — are not
+  citations and stay.
 - **Documentation describes verified behaviour, not intent.** Every claim must be
   checkable against the code, and a documented capability that does not work is
   itself a defect: if you find one, write it in the package README's
   deliberate-gaps or known-defects section rather than describing the capability
   as working.
-- Documentation is not a substitute for tests. Default tests remain
-  deterministic, offline, and credential-free.
 
 Adding a package means: a `README.md` in it, an entry in the parent layer's
 README layout table, and an entry in `edgar_sec/README.md` and the root

@@ -596,9 +596,8 @@ def test_augment_reports_a_covered_cohort_as_a_successful_no_op(
     """Re-requesting a fully-ingested cohort costs nothing and fails nothing.
 
     This is the ordinary case for a stale seed: every CIK it names is already in
-    the base. It used to exit 1 with "augmentation requested no work" after the
-    operator had already consented to the fetch, and it built a submissions
-    client to discover there was nothing to ask it.
+    the base, so nothing is fetched, no delta plan is written, and the pointer
+    does not move.
     """
     metadata = resolve_metadata_paths(tmp_path)
     base = _publish_base_via_cli(session, tmp_path, capsys, monkeypatch)

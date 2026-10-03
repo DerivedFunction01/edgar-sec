@@ -23,9 +23,9 @@ def validate_non_negative_int(value: object) -> None:
 def validate_fraction(value: object) -> None:
     """Require a fraction above zero and at most one.
 
-    The upper bound is inclusive, matching the pre-existing ``runtime`` spec
-    check. Narrowing it here would silently reject a value that used to resolve,
-    which is a settings-breaking change and not a consolidation.
+    The upper bound is inclusive. Narrowing it here would silently reject a value
+    that currently resolves, which is a settings-breaking change and not a
+    consolidation.
     """
     if not 0 < float(value) <= 1:
         raise ValueError("must be between 0 and 1")

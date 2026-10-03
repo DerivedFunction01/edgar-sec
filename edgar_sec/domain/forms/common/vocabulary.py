@@ -314,10 +314,9 @@ SECURITIES_12B_RE = re.compile(
     re.IGNORECASE,
 )
 # --- State Jurisdiction Helper -------------------------------------------------
-# Derived from domain.taxonomy.jurisdictions, which is the canonical source: an
-# earlier revision restated its own list here and silently omitted Guam, Puerto
-# Rico and the Virgin Islands, so a cover page that said "PUERTO RICO" was not
-# recognized as a state value. Restating it would drift again.
+# Derived from domain.taxonomy.jurisdictions, the canonical source. Restating the
+# list here would drift again and silently drop the territories, so a cover page
+# that said "PUERTO RICO" would stop being recognized as a state value.
 _US_STATES: frozenset[str] = frozenset(
     [*STATE_POSTAL_CODES, *(name.upper() for name in STATE_NAMES)]
 )

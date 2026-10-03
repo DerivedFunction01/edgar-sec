@@ -6,7 +6,7 @@ from pathlib import Path
 
 
 def discover_python_files() -> list[str]:
-    """Return all python files in edgar_sec and tests, ignoring .v1, .venv, etc.
+    """Return all python files in edgar_sec and tests, skipping dot-prefixed paths.
 
     The result is sorted so that scanner findings are reported in a stable order.
     ``Path.rglob`` yields filesystem order, which varies between machines, and a

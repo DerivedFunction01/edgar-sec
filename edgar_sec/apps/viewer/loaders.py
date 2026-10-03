@@ -1,19 +1,16 @@
 """One loader per published dataset type.
 
-v1 discovered artifacts by pattern-matching directory names — a role inferred
-from a path's shape by ``classify_artifact_path``. That inference was the fragile
-part: it had to be taught every naming convention, and it silently mislabelled
-anything that did not fit one.
-
-These loaders invert it. Each one **knows** the manifest of a dataset it owns and
-asks the owning pipeline or ``infra.storage`` to interpret it, so the only thing
-guessed is the dataset's own root — a single known path per pipeline, not a
-pattern.
+Each loader **knows** the manifest of a dataset it owns and asks the owning
+pipeline or ``infra.storage`` to interpret it, so the only thing guessed is the
+dataset's own root — a single known path per pipeline, not a pattern. Inferring
+a dataset's role from the shape of a directory name instead would have to be
+taught every naming convention and would silently mislabel anything that did not
+fit one.
 
 Adding a dataset means adding a loader. It does not mean extending a naming table.
 
-Three manifest vocabularies exist, which is why this module is a registry rather
-than a single function:
+The pipeline manifests are not one vocabulary, which is why this module is a
+registry rather than a single function:
 
 | Dataset | Manifest | Read by |
 | :--- | :--- | :--- |

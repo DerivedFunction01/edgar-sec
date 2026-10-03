@@ -171,11 +171,11 @@ def test_merge_rejects_a_snapshot_id_override() -> None:
 
 
 def test_no_command_exposes_a_partition_count() -> None:
-    """Partitioning is a scheduling choice and is no longer a plan input.
+    """Partitioning is a scheduling choice, not a plan input.
 
-    It used to be part of the plan identity, so changing it moved the plan
-    directory and orphaned every completed checkpoint for an identical cohort.
-    Assignment carries the split now.
+    Assignment carries the split, so changing the worker configuration cannot move
+    the plan directory or orphan every completed checkpoint for an identical
+    cohort.
     """
     for command in ("plan", "status", "run", "merge", "augment"):
         assert "--partition-count" not in _flags(command), command
@@ -250,11 +250,10 @@ def test_plan_command_limit_truncates_the_cohort(tmp_path: Path, capsys) -> None
 
 
 def test_a_limited_plan_and_a_full_plan_do_not_collide(tmp_path: Path, capsys) -> None:
-    """The identity defect this format change closes.
+    """A bounded run and a full run over one file must not collide.
 
-    Truncation used to happen after the raw file digest was taken, so a bounded
-    run and a full run over one file resolved to a single plan directory and a
-    single chunk namespace.
+    Applying the limit before identity is derived keeps them off a single plan
+    directory and a single chunk namespace.
     """
     assert main(_plan_argv(tmp_path, "--chunk-size", "2")) == 0
     full = json.loads(capsys.readouterr().out)["plan_id"]

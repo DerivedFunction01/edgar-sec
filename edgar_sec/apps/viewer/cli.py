@@ -1,6 +1,6 @@
 """Command entry for the dataset viewer.
 
-Named ``cli`` to match the other three launch targets (``metadata_sync.operator``,
+Named ``cli`` to match the other launch targets (``metadata_sync.operator``,
 ``filing_catalog.operator``, ``document_storage.cli``), so the root launcher's
 module field means the same thing for every entry.
 

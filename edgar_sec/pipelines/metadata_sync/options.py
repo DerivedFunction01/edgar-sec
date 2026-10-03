@@ -150,8 +150,8 @@ class PlanOptions:
 
         The limit is applied *before* identity is derived, so a bounded plan and
         a full plan over the same file are different plans. Hashing the raw file
-        and truncating afterwards is what previously let the two collide on one
-        plan directory and one checkpoint namespace.
+        and truncating afterwards is what would let the two collide on one plan
+        directory and one checkpoint namespace.
         """
         if self.input_path is None:
             raise ValueError("a plan needs --input or --roster")

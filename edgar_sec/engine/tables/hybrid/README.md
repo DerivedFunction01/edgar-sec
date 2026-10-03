@@ -1,4 +1,4 @@
-# `engine.tables.hybrid` — `<pre>` payload masking for mixed filings
+# `edgar_sec/engine/tables/hybrid` — `<pre>` payload masking for mixed filings
 
 ## Purpose
 
@@ -12,11 +12,11 @@ A DOM cannot represent the first two faithfully: literal SGML tags are either pa
 escaped on serialization, and a monospace block's column alignment depends on whitespace a DOM will
 collapse. So this package is a text boundary, not a DOM pass.
 
-## Module → responsibility
+## Layout
 
 | Module | Responsibility |
 |---|---|
-| `masker.py` | `PreBlockKind` (the four payload shapes), `HybridPreText` (masked text plus the payload map), `normalize_hybrid_pre_text`, `restore_hybrid_pre_text`. |
+| `masker.py` | `PreBlockKind` (the payload shapes), `HybridPreText` (masked text plus the payload map), `normalize_hybrid_pre_text`, `restore_hybrid_pre_text`. |
 
 ## Contracts
 
@@ -29,8 +29,7 @@ collapse. So this package is a text boundary, not a DOM pass.
   converted to canonical ASCII before masking, so the caller's ordinary table pass does not have to
   reach inside a `<pre>`.
 - **Classification never parses the payload as HTML.** A `<pre>` body containing SGML tags must not
-  be interpreted; the shape is decided from the raw source text by `_classify_pre_source`.
-  `_looks_like_monospace_text` stays private, as does the classifier.
+  be interpreted; the shape is decided from the raw source text.
 
 ## Public surface
 
@@ -43,27 +42,15 @@ from edgar_sec.engine.tables.hybrid.masker import (
 )
 ```
 
-`normalize_hybrid_pre_text(text) -> HybridPreText`;
-`restore_hybrid_pre_text(text, protected: dict[str, str]) -> str`.
-
 ## Command surface
 
-None. Library; the stage that drives it lives in `engine/document/html/normalizer.py`.
+None. Library package, no CLI.
 
 ## Mirrored tests
 
-`tests/engine/tables/hybrid/test_masker.py` (20 tests). The round-trip cases are the point of the
-package: an SGML table, a monospace block, an HTML table inside `<pre>`, and a mixed document all
-have to come back with their content intact and their `<pre>` tags gone.
+`tests/engine/tables/hybrid/`.
 
 ## Deliberate gaps
 
-- **Token collision is defended, not impossible.** Masking disambiguates a token that already occurs
-  in the document by appending underscores, and restoration raises `ValueError` if a token cannot be
-  found. That is why the contract above reads "verified" rather than "guaranteed lossless": a document
-  crafted to defeat the nonce can still lose a payload, loudly. The same hazard and the same
-  mitigation exist for the `__SEC_RENDERED_TABLE_{n}__` tokens in `ascii_html/converter.py`.
-- **No `<pre>` nesting or unbalanced-tag recovery.** `_PRE_BLOCK_RE` matches a non-greedy
-  `<pre …>…</pre>` pair; an unclosed `<pre>` is not masked.
-- **No geometry is retained for a monospace payload.** Only the HTML_TABLE shape is converted; the
-  SGML and monospace shapes are round-tripped verbatim with no `TableGeometry`.
+- Nested or unbalanced `<pre>` markup is not recovered.
+- No filesystem, no network, no CLI.

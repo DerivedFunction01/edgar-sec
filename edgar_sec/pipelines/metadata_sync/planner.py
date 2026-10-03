@@ -2,9 +2,8 @@
 
 A plan says *what* will be fetched and nothing about *who* fetches it. The
 selected roster is stored once, as a content-addressed Parquet dataset beside a
-small JSON manifest, so a plan document no longer grows with the cohort. Chunk
-membership is a range over roster ordinals, which is what makes that possible:
-the old document carried the same CIK list three times over.
+small JSON manifest, so a plan document does not grow with the cohort. Chunk
+membership is a range over roster ordinals, which is what makes that possible.
 
 Identity is derived from the roster and the chunk layout, never from assignment,
 worker count, or time. An assignment is a separate artifact, so moving work to a
@@ -61,10 +60,10 @@ def derive_plan_id(
     """Derive a stable plan identifier from the plan-defining inputs.
 
     Assignment, worker count, and timestamps are excluded by construction: they
-    are operational choices, and including them is what previously made
-    reassigning a cohort discard its checkpoints. ``parent_id`` is the base
-    snapshot for a delta plan, so the same requested CIK list against two
-    different bases resolves to two different plans.
+    are operational choices, and covering them is what would make reassigning a
+    cohort discard its checkpoints. ``parent_id`` is the base snapshot for a delta
+    plan, so the same requested CIK list against two different bases resolves to
+    two different plans.
     """
     if chunk_size < 1:
         raise ValueError(f"chunk_size must be >= 1, got {chunk_size}")

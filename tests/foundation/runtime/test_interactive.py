@@ -58,9 +58,9 @@ def test_a_failing_action_is_reported_and_the_menu_continues(
 ) -> None:
     """An unexpected exception must not end the operator's session.
 
-    This is how a settings-field ``AttributeError`` ended a v2 wizard: the handler
-    caught only a few exception types, so anything else propagated out of the loop
-    and the session state the operator had built was gone.
+    A handler that catches only a few exception types lets anything else
+    propagate out of the loop, and the session state the operator had built is
+    gone.
     """
     ran: list[str] = []
     _answers(monkeypatch, ["1", "2", "0"])

@@ -85,8 +85,8 @@ inside this package; their composed entry point is `render_html_to_break_text`.
 - **Break sentinels reach a text frame only through `render_html_to_break_text`.**
   Whether a `<PAGE>` marker becomes a token or a removal is decided by
   `page_markers.policy`, not here.
-- **`<noscript>` is not purged.** V1 removes exactly `<head>`, `<script>`, and
-  `<style>`; an earlier V2 cleaner also removed `<noscript>`, which was
-  divergence from the V1 production path, not a fix.
+- **`<noscript>` is not purged.** `strip_non_displaying_blocks` removes exactly
+  `<head>`, `<script>`, and `<style>`; `<noscript>` fallback text is document content a
+  reader sees when scripting is off, so it stays in the frame.
 - **This package has no opinion on page markers.** It preserves *where* a break
   was; deciding whether that break is page furniture is `page_markers`.

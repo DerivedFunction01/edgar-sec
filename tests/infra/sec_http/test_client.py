@@ -21,9 +21,8 @@ def test_default_headers_carry_user_agent() -> None:
 def test_submissions_url_pads_short_ciks() -> None:
     """Padded and unpadded CIKs must resolve to the same document.
 
-    Two definitions of this builder used to exist, one of which padded and one
-    of which did not, so the same CIK produced two different URLs depending on
-    the caller.
+    A builder that disagreed with itself on padding would make the same CIK
+    produce two different URLs depending on the caller.
     """
     assert submissions_url("320193") == (
         "https://data.sec.gov/submissions/CIK0000320193.json"
@@ -193,10 +192,8 @@ def test_the_size_guard_is_off_by_default(tmp_path: Path) -> None:
 # into a live client, and it is reached by every fetching action: the metadata
 # pipeline's run/worker/augment via `SubmissionsClient(settings=...)`, and
 # `sources refresh` directly. A single mistyped attribute name disables all of
-# them. That is not hypothetical: `from_settings` read `settings.timeout_seconds`
-# while the field is `timeout_s`, which broke every settings-built client while
-# the whole suite stayed green -- tests inject a fake transport rather than
-# constructing from settings, so the path was never executed.
+# them, so these tests build from settings for real rather than asserting against
+# a literal.
 
 
 def test_from_settings_maps_every_declared_setting() -> None:

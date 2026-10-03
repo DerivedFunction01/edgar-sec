@@ -128,11 +128,10 @@ def test_non_displaying_blocks_are_purged_before_classification() -> None:
 
 
 def test_noscript_is_not_purged() -> None:
-    """V1 purges exactly head/script/style.
+    """Deliberate: the purge is exactly head/script/style.
 
-    `<noscript>` fallback text is document content, and an earlier V2 cleaner
-    removed it. That was divergence from the V1 production path, not a fix, so
-    it is reverted — see behavior_ledger.md §4.
+    `<noscript>` fallback text is document content — it is what a reader sees
+    when scripting is off — so purging it would delete visible prose.
     """
     raw = b"<html><body><noscript>fallback text</noscript><p>Visible</p></body></html>"
     text, _, _ = prepare_input_text(raw)

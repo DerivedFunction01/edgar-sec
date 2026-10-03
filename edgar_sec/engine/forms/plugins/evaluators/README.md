@@ -64,7 +64,7 @@ None. Library package, no CLI.
 - **`filing_year`, `raw_length`, and `is_html` are unreachable in production.**
   The SPI is `plugin.evaluator(result.text)`, so the XBRL year shortcut and both
   size ceilings cannot fire. Closing this needs `FilingProcessor` to pass
-  context, which is a caller change rather than a port change.
+  context, which is a caller change rather than a change to the evaluators.
 - **`int(filing_year)` is unguarded.** A non-numeric year raises `ValueError` out
   of the evaluator and `2013.5` silently coerces to `2013`. Both preserved.
 - **20-F has no evaluator branch here.** It resolves to `evaluate_generic`, while

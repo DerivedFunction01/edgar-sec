@@ -41,7 +41,7 @@ def test_inline_tags_do_not_introduce_breaks() -> None:
 
 
 def test_double_br_inside_a_paragraph_collapses_to_a_space() -> None:
-    """V1 quirk, preserved deliberately.
+    """Deliberate, not an accident of the passes.
 
     A `<br><br>` run becomes a blank line at the break stage, and the later
     source-line-wrap pass collapses that blank line back to a space. Only a

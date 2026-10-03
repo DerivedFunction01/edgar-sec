@@ -6,8 +6,8 @@ the whole reason reassigning workers is free: the plan id, the plan directory,
 and every completed checkpoint stay exactly where they were.
 
 There is no scheduler here and no lease. A worker is told its chunk list, runs
-it, and produces a receipt. Deciding that is insufficient is a deferred
-roadmap item, not an oversight.
+it, and produces a receipt. Deciding that is insufficient is a deliberate
+boundary, not an oversight.
 """
 
 from __future__ import annotations

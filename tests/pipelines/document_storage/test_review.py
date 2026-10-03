@@ -182,9 +182,9 @@ def test_manifest_schema_differences_are_not_reported_as_changes(
 ) -> None:
     """A field present in one manifest and absent in the other is not a change.
 
-    v1's manifest carried marker and table counts that v2 no longer computes.
-    Comparing against a v1 reference run would otherwise report every document as
-    metadata-only changed and bury the real signal.
+    Marker and table counts are no longer computed, so comparing against a run
+    that carried them would otherwise report every document as metadata-only
+    changed and bury the real signal.
     """
     base = _run(
         tmp_path, "run-a", {"doc-a": "same\n"}, extra={"doc-a": {"marker_count": 4}}

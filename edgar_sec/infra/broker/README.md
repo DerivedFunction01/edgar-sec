@@ -99,16 +99,13 @@ point, and no console script.
 
 ## Deliberate gaps
 
-- **No broker CLI or supervisor.** v1 shipped `.v1/defs/sec_http/broker_cli.py`.
-  v2 starts a broker only by writing `SecBroker(...).serve()` or using
-  `managed_broker()`. A long-lived broker that outlives its creating process has
-  no supported way to be started, and one that crashes cannot be restarted
-  without a supervising process that does not exist yet.
-- **It is not a token bucket and holds no tokens.**
-  `v2_refactor_roadmap.md` calls this the "central adaptive slot-spaced limiter
-  (8 RPS default)"; its §9.4 doc inventory separately flags an older "4 RPS
-  central token bucket" phrasing as stale inherited v1 prose. No token
-  accounting exists here. Pacing lives entirely in `sec_http/rate_limit.py`,
+- **No broker CLI or supervisor.** A broker is started only by writing
+  `SecBroker(...).serve()` or using `managed_broker()`. A long-lived broker that
+  outlives its creating process has no supported way to be started, and one that
+  crashes cannot be restarted without a supervising process that does not exist
+  yet.
+- **It is not a token bucket and holds no tokens.** No token accounting exists
+  here. Pacing lives entirely in `sec_http/rate_limit.py`,
   where `RateLimiter.acquire()` reserves the next request slot under a lock and
   returns the delay for the caller to sleep outside it. What this package adds
   is *placement* — the limiter is in one process, so a pool cannot multiply it.

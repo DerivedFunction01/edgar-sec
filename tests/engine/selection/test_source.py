@@ -64,11 +64,7 @@ def test_pool_for_value_matches_and_respects_the_limit(
 
 
 def test_pool_for_value_rejects_an_unknown_dimension(snapshot_dir: Path) -> None:
-    """v1 interpolated the dimension name straight into the predicate.
-
-    A policy could therefore query any column the snapshot carried. Only the
-    declared vocabulary is addressable.
-    """
+    """Only dimensions in the declared vocabulary are addressable."""
     with (
         _source(snapshot_dir).session() as source,
         pytest.raises(ValueError, match="unknown selection dimension"),

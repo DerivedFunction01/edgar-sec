@@ -68,10 +68,9 @@ The `regex-alternations` scanner's own verdict is pinned at
 
 ## Deliberate gaps
 
-- **No `to_verbose_pattern`.** v1's `defs/regex/formatting.py`, which re-flowed
-  deep alternations across indented lines for `re.VERBOSE`, was not ported. The
-  alternative is single-line pattern strings; nothing here compiles with
-  `re.VERBOSE`.
+- **No `re.VERBOSE` formatting helper.** Patterns are emitted as single-line
+  strings; nothing here compiles with `re.VERBOSE`, so a deep alternation is not
+  re-flowed across indented lines.
 - **No pattern caching, timeout, or backtracking guard.** Output is a plain `str`
   or `re.Pattern`. A pathological pattern can still backtrack.
 - **No engine abstraction.** Output targets Python `re` only; there is no RE2 or

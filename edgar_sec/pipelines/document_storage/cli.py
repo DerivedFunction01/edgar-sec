@@ -1,12 +1,13 @@
 """Command line and interactive operator for document storage.
 
-Three subcommands, matching the three things a run does:
+The subcommands, matching what a run does:
 
-``run``      acquire, normalize, and publish a snapshot from a fixture
-``status``   report what is currently published
-``review``   render review bundles from a published snapshot (M6.1)
-``fill``     fetch missing raw payloads into a fixture
-``fixtures`` list available fixture stores
+``run``               acquire, normalize, and publish a snapshot from a fixture
+``status``            report what is currently published
+``fill``              fetch missing raw payloads into a fixture
+``fixtures``          list available fixture stores
+``review-artifacts``  render review bundles from a fixture
+``review``            compare two review runs
 
 ``run`` is offline by design: a corpus must be reproducible from a fixture before
 a live acquisition is worth trusting. Live acquisition goes through the broker,
@@ -110,9 +111,7 @@ def _build_parser() -> argparse.ArgumentParser:
     )
 
     fill = sub.add_parser("fill", help="fetch missing raw payloads into a fixture")
-    fill.add_argument(
-        "--plan", required=True, help="path to a v2 target plan JSON file"
-    )
+    fill.add_argument("--plan", required=True, help="path to a target plan JSON file")
     fill.add_argument("--fixture", required=True, help="fixture id to create or extend")
     fill.add_argument("--workers", type=int, default=None, help="fetch worker count")
     fill.add_argument("--limit", type=int, default=None, help="cap target locators")

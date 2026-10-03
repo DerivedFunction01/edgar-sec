@@ -1,9 +1,8 @@
 """Single-pass layout geometry for a block of ASCII lines.
 
-Vectors are ported from the v1 `defs/text/reflow/features.py` module and cover
-the three primitives the resolver and the cascade both depend on: where a
-column gap starts, where a numeric cell starts, and which columns several rows
-share.
+These vectors cover the three primitives the resolver and the cascade both depend
+on: where a column gap starts, where a numeric cell starts, and which columns
+several rows share.
 """
 
 from __future__ import annotations

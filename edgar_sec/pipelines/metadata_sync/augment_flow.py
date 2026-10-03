@@ -7,14 +7,13 @@ same seed after it has been fully ingested asks for nothing new, and asking for
 everything the seed names would refetch what the base already holds. So the
 question the operator actually needs answered is "which registrants exist now
 that this base snapshot does not have", and the honest way to answer it is the
-union of the seed with the active listings in a published SEC source snapshot --
-the projection v1's augmentation existed to produce.
+union of the seed with the active listings in a published SEC source snapshot.
 
 This module owns that journey: discover or refresh the source observation, build
 the cohort, choose the base, and show the resulting arithmetic. It is separate
-from ``operator`` because the menu has eleven other actions and none of them
-needs a source snapshot, a base snapshot, or a preflight; keeping them together
-made one file carry two unrelated surfaces.
+from ``operator`` because no other menu action needs a source snapshot, a base
+snapshot, or a preflight; keeping them together made one file carry two unrelated
+surfaces.
 
 It imports ``WizardState`` and ``confirm_network`` from ``operator``, which
 imports :func:`run_augment` inside the action body rather than at module scope.
@@ -251,11 +250,9 @@ def _refresh_source(state: WizardState) -> None:
 def _offer_source_refresh(state: WizardState) -> bool:
     """Offer to publish a source snapshot when none is on disk yet.
 
-    v1 asked this with a default of yes, on the grounds that a missing source
-    blocks the whole source-aware journey. It defaults to no here for the reason
-    every other fetch in this operator does: it is a live SEC request, and
-    publishing an immutable snapshot nobody asked for is a side effect that
-    outlives the session.
+    Defaults to no, for the reason every other fetch in this operator does: it is a
+    live SEC request, and publishing an immutable snapshot nobody asked for is a side
+    effect that outlives the session.
     """
     print("\nNo SEC listing source snapshot on disk; cohorts cannot be compared.")
     if not confirm_network("Fetch the live SEC company ticker listing now? (y/N) "):

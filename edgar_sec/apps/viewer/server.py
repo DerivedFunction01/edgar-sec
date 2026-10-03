@@ -1,6 +1,6 @@
 """HTTP surface for the dataset viewer.
 
-Eleven read-only API endpoints over one artifacts root. Three properties hold
+Read-only API endpoints over one artifacts root. Three properties hold
 across all of them:
 
 **The client never names a path.** A request carries an opaque dataset id; the

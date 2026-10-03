@@ -1,8 +1,7 @@
 """Submissions normalizer parity tests.
 
-Expectations are captured golden values from the legacy ``.v1`` normalizer run
-against the same committed fixtures. A deviation here is a parity regression,
-not a preference change.
+Expectations are captured golden values run against the same committed fixtures.
+A deviation here is a parity regression, not a preference change.
 """
 
 from __future__ import annotations

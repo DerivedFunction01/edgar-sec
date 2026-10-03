@@ -14,55 +14,39 @@ scored against those declarations. That scoring is `engine/tables/taxonomy/class
 | Module | Responsibility |
 | :--- | :--- |
 | `shapes.py` | `ShapeConstraint` — min/max rows and columns, numeric-density bounds, average cell width |
-| `specs.py` | `TableScope`, `RepairPolicy`, `VocabularyEvidence`, `FamilyMatch`, `FamilyClassification`, `TableFamilySpec`, `build_ngram_tier()` |
-| `families.py` | `FAMILY_SPECS` — the 22-family master registry, assembled from the statement specs, the schedule specs, and the cover component specs |
+| `specs.py` | The spec, match, classification, and evidence types, the scope and repair-policy enums, and the n-gram tier builder |
+| `families.py` | `FAMILY_SPECS` — the master registry, assembled from the statement specs, the schedule specs, and the cover component specs |
 
 ## Contracts
 
-- **Layer-1 purity:** pure data definitions and compiled evidence packs, with no internal
-  dependency on Layer 2, 3, 4, or 5. `families.py` imports downward only into
-  `domain/taxonomy/statements/`, `domain/taxonomy/schedules/`, and
-  `domain/taxonomy/components/`.
-- **Immutability:** `ShapeConstraint`, `VocabularyEvidence`, `FamilyMatch`,
-  `FamilyClassification`, and `TableFamilySpec` are all frozen slotted dataclasses.
-  `TableScope` and `RepairPolicy` are string enums, which are equally immutable.
-- **Orthogonality:** every family declares unigram veto terms, so a family cannot claim a
-  line that belongs to another.
-- **One ordering source.** `families.py` is the only place a family is named; both the
-  classifier and the mirrored test iterate its keys rather than keeping their own list.
+- **Immutability:** the spec, match, classification, and evidence types are frozen
+  slotted dataclasses, and the scope and repair-policy types are string enums.
+- **Exclusion terms are advisory, so orthogonality is best-effort.** A family whose
+  evidence pack carries an empty `exclusions` set can claim a line that belongs to
+  another family. Read the owning module's pack rather than assuming two families
+  are mutually exclusive.
+- **One ordering source.** A family becomes real when it is listed in
+  `FAMILY_SPECS`; the classifier and its mirrored test iterate the registry rather
+  than a second list, so a spec absent from the registry is invisible to both.
 
 ## Public surface
 
-| Symbol | Module |
-| :--- | :--- |
-| `ShapeConstraint` | `shapes.py` |
-| `TableScope` (`BODY`, `TOC`, `COVER`), `RepairPolicy`, `VocabularyEvidence`, `FamilyMatch`, `FamilyClassification`, `TableFamilySpec`, `build_ngram_tier()` | `specs.py` |
-| `FAMILY_SPECS` (22 families), `TableFamilySpec` (re-exported) | `families.py` |
+- `FAMILY_SPECS`, the registry every family is reached through — `families.py`.
+- `TableFamilySpec`, `VocabularyEvidence`, `FamilyMatch`, `FamilyClassification`,
+  `TableScope`, `RepairPolicy`, and the n-gram tier builder — `specs.py`.
+- `ShapeConstraint` — `shapes.py`.
 
 No command surface.
 
 ## Tests
 
-```text
-tests/domain/taxonomy/tables/test_specs.py
-```
+Tests mirror this package under `tests/domain/taxonomy/tables/`.
 
 ## Deliberate gaps
 
-- **Two of three modules have no mirrored test.** `test_specs.py` imports `FAMILY_SPECS`
-  and `ShapeConstraint`, so it exercises all three, but `AGENTS.md` §6.3 asks for a test
-  file per source module at the mirrored path: `test_shapes.py` and `test_families.py` are
-  absent. The registry itself is pinned (22 families, and a per-family invariant loop).
-- **No execution and no zone scoring.** Algorithmic zone scoring and family classification
-  live in `engine/tables/taxonomy/classifier.py`, which reads `FAMILY_SPECS` and is the only
-  production consumer.
-- **The v1 probe CLI has no v2 counterpart.** v1's `defs/taxonomy/` shipped a table probe;
-  nothing under `domain/` or `engine/tables/` exposes one.
-- **`families.py` re-exports `TableFamilySpec`.** It is in that module's `__all__` even
-  though `specs.py` owns the class. This is a module-level re-export rather than an
-  `__init__.py` barrel, so it does not breach `AGENTS.md` §1.2, but the owning module is
-  `edgar_sec/domain/taxonomy/tables/specs.py`.
-- **`families.py` is a plain dict, not a frozen mapping.** `FAMILY_SPECS` is mutable, unlike
-  the vocabulary tables in `domain/taxonomy/{jurisdictions,legal_forms,family_vocab}.py`.
-  Its *values* are frozen, so a caller cannot corrupt a spec, but it can add or remove a
-  family.
+- **No way to probe a classification.** Nothing in the repository exposes a command
+  that reports how a candidate table scores against `FAMILY_SPECS`; to see a
+  classification you must call the engine classifier in-process.
+- **`FAMILY_SPECS` is a mutable dict.** Its specs are frozen, so a caller cannot
+  corrupt one, but a caller can add or remove a family. Treat the registry as
+  read-only.

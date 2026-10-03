@@ -23,7 +23,7 @@ def test_an_unsupplied_year_and_length_reach_the_standard_conclusion() -> None:
 
 
 def test_the_evaluator_never_concludes_a_stub() -> None:
-    """v1's quarterly evaluator has no refetch and no skip path at all."""
+    """There is no refetch and no skip path at all."""
     decisions = [
         evaluate_quarterly("", filing_year=2012),
         evaluate_quarterly("", raw_length=10**9, is_html=True),

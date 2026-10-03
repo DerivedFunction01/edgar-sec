@@ -22,10 +22,9 @@ def canonical_accession_part(accession: str) -> str:
     """Return the hyphen-free accession used inside every content-addressed digest.
 
     The catalog materialises ``accession`` as ``replace(accession_number, '-', '')``
-    and hashes that unhyphenated column, and the committed Phase 2.5 fixture keys
-    its rows the same way. A caller holding the hyphenated EDGAR spelling
-    (``0000320193-23-000106``) must therefore be reduced to the same string before
-    hashing, or its key silently matches nothing on disk.
+    and hashes that unhyphenated column. A caller holding the hyphenated EDGAR
+    spelling (``0000320193-23-000106``) must therefore be reduced to the same string
+    before hashing, or its key silently matches nothing on disk.
 
     Unparseable input is returned with hyphens merely stripped rather than
     rejected: this is a digest input, not a validation boundary, and a malformed
@@ -43,9 +42,8 @@ def derive_document_locator_key(accession: str, document_path: str) -> str:
     ``sha256(accession || ':' || document_path)`` over the *unhyphenated*
     ``accession`` column. The catalog materialises locator keys inside DuckDB
     while this module derives them in Python, and a locator join between the two
-    worlds is how a published snapshot is read back — as is the read of a
-    committed fixture, whose ``doc_id`` is this same digest. Both spellings of
-    an accession are reduced by :func:`canonical_accession_part` first, because
+    worlds is how a published snapshot is read back. Both spellings of an accession
+    are reduced by :func:`canonical_accession_part` first, because
     EDGAR serves the hyphenated and unhyphenated forms interchangeably and the
     two must not produce two identities for one document.
     ``tests/foundation/test_hashing.py`` pins the byte equality.
@@ -62,13 +60,11 @@ def derive_occurrence_id(source_cik: str, accession: str, document_path: str) ->
     *unhyphenated* ``accession`` column, so the accession part is reduced by
     :func:`canonical_accession_part` exactly as the locator key is.
 
-    The three **raw parts**, not a derived key: an earlier revision took
-    ``(source_cik, document_locator_key)`` and hashed the locator key, which is
-    a hash of a hash. The SQL side hashes the raw parts, so the same document
-    produced two different occurrence ids and any locator-to-occurrence join
-    between the catalog and a snapshot matched nothing, silently. v1 had the
-    same two live schemes and contained the damage only because its phases
-    never joined on the id.
+    The three **raw parts**, not a derived key: hashing the locator key
+    would be a hash of a hash, and the SQL side hashes the raw parts. A locator
+    key therefore has to stay byte-identical between the two worlds, or a
+    locator-to-occurrence join between the catalog and a snapshot matches nothing,
+    silently.
     """
     return sha256_text(
         f"{source_cik.strip()}:{canonical_accession_part(accession)}:"

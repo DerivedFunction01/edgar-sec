@@ -2,7 +2,6 @@
 
     .venv/bin/python -m edgar_sec.pipelines.metadata_sync.smoke_test \
         --input tests/fixtures/cik_sec_mini.csv \
-        --sample-size 3 \
         --artifacts <preview-root>
 
 This is the credential-gated, rate-limited live path. It always writes to an

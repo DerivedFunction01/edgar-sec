@@ -14,7 +14,7 @@ The package is split on the pure/impure seam, the same split
   Reads catalog artifacts, writes the snapshot.
 * :mod:`~edgar_sec.engine.selection.source` -- bounded, storage-backed candidate
   access. One DuckDB connection, one session.
-* :mod:`~edgar_sec.engine.selection.selector` -- the five-phase deficit fill.
+* :mod:`~edgar_sec.engine.selection.selector` -- quota-based deficit selection.
 * :mod:`~edgar_sec.engine.selection.inventory` -- feasibility statistics.
 
 Date-bound filtering and era stratification live *exclusively* in ``policy``.

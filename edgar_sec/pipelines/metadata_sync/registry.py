@@ -5,8 +5,8 @@ registrants exist upstream that a curated CIK input does not cover. It is a pure
 projection — it reads an already published source snapshot and a curated CSV and
 performs no network access, so a comparison is reproducible from immutable inputs.
 
-The output contract is the one v1 established, because the projections are
-consumed by the existing CSV-driven augmentation path:
+The output contract is fixed by what consumes the projections — the CSV-driven
+augmentation path and anything an operator reads by hand:
 
 * ``listing_observations`` — every normalized upstream listing.
 * ``registrant_registry`` — one row per CIK in the union of curated and active.
@@ -15,7 +15,7 @@ consumed by the existing CSV-driven augmentation path:
 * ``effective_ciks`` — the full union as a CIK roster dataset, the carrier a plan
   consumes.
 * ``effective_cik_input.csv`` — the same union as a CIK manifest, retained as an
-  export for people and v1-era scripts.
+  export for people.
 
 Every Parquet dataset is published beside a manifest carrying its content digest
 and upstream chain, so a consumer can prove which source snapshot and curated

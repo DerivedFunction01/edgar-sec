@@ -1,10 +1,8 @@
-"""Cross-run snapshot consolidation: the correctness oracle for the vacuum port.
+"""Cross-run snapshot consolidation: the correctness oracle for vacuuming.
 
-The behavioural contracts here are ported from v1's
-``phases/025_webpage_storage/tests/test_temporal_snapshot.py`` (union
-materialization, dependency-aware purge) plus the cases a consolidation can only
-be trusted on if they are stated: source precedence, quarter repartitioning,
-conflict refusal, byte-budgeted parts, and source immutability.
+Covers union materialization, dependency-aware purge, source precedence, quarter
+repartitioning, conflict refusal, byte-budgeted parts, and source immutability —
+the cases a consolidation can only be trusted on if they are stated.
 """
 
 from __future__ import annotations
@@ -233,7 +231,7 @@ def test_a_quoted_path_in_a_manifest_cannot_reach_sql(tmp_path: Path) -> None:
 
 
 def test_consolidation_materializes_the_union(tmp_path: Path) -> None:
-    """Ported from v1's parallel-vacuum oracle: two runs become one snapshot."""
+    """Two runs become one snapshot."""
     first = _publish(tmp_path, "run-1", [("a.htm", "10-K", "2011-02-15", "one")])
     second = _publish(tmp_path, "run-2", [("b.htm", "10-K", "2011-08-15", "two")])
 
@@ -546,7 +544,7 @@ def test_consolidation_does_not_modify_its_sources(tmp_path: Path) -> None:
 
 
 def test_purge_requires_a_dependency_closure(tmp_path: Path) -> None:
-    """Ported from v1: a source whose parts a retained snapshot uses cannot go."""
+    """A source whose parts a retained snapshot uses cannot go."""
     _write_raw_snapshot(tmp_path, "snap-a", {"a.htm": "one"})
     shared = "snap-shared"
     _write_shared_snapshot(tmp_path, shared, {"a.htm": "one"})

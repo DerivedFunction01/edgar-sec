@@ -392,9 +392,9 @@ def build_broker_fetcher(
 
     ``cache_reader`` is duck-typed: anything with ``get(url)`` and
     ``cache_dir`` works, which is what keeps the warm-cache probe testable at
-    the transport seam. v2 has no read-only cache reader yet, so this does not
-    fabricate one from a directory — a probe that silently opened a *writable*
-    cache would move pacing and ledger ownership out of the broker.
+    the transport seam. Nothing fabricates one from a directory — a probe that
+    silently opened a *writable* cache would move pacing and ledger ownership out
+    of the broker.
     """
     from edgar_sec.infra.broker.sec_broker import SecBrokerClient
 

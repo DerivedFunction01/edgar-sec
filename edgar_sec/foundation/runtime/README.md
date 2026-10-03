@@ -152,9 +152,8 @@ package's resources are exercised through `test_settings.py` and
 
 - **No config file reader or writer.** `resolve_settings(config=...)` accepts a
   `Mapping` the caller must already have loaded; nothing in `edgar_sec/` reads
-  or writes a persisted settings file. v1's `.v1/defs/runtime/config_io.py` and
-  `settings_cli.py` were not ported. A phase that wants persistence must supply
-  the mapping itself.
+  or writes a persisted settings file, and no call site passes a `config`
+  argument. A phase that wants persistence must supply the mapping itself.
 - **No worker supervision.** `auto_worker_count` and `derive_resources` compute
   budgets; nothing here spawns, monitors, restarts, or reaps processes. No
   `multiprocessing` or `subprocess` import exists in this package.
@@ -164,11 +163,9 @@ package's resources are exercised through `test_settings.py` and
   `psutil` optional and degrades to `/proc` when it is absent.
 - **No logging setup.** There is no `logging` import in this package. Log
   configuration is not a Layer 0 concern as the code currently stands.
-- **Dropped from v1, by design.** `.v1/defs/runtime/` carried `artifacts.py`,
-  `bundle.py`, `cli.py`, `config_io.py`, `registry.py`, `settings_cli.py`, and
-  `checks.py`. Shared CLI argument registration, config persistence, and the
-  launcher registry are per-layer or per-pipeline concerns in v2; the gate moved
-  to `edgar_sec/foundation/checks/`.
+- **No argument registry or launcher.** CLI argument registration, config
+  persistence, and the launcher registry are per-layer or per-pipeline concerns;
+  the gate lives in `edgar_sec/foundation/checks/`.
 - **`partitions.py` is integer-only.** `parse_id_selection` parses integers and
   integer ranges. There is no string- or list-valued selection, no negative or
   wildcard syntax, and no interactive picker; the menu in `interactive.py` is

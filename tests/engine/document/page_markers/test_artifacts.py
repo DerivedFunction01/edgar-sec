@@ -68,11 +68,11 @@ def test_a_digit_run_adjacent_to_a_hyphen_or_a_word_is_not_masked(text: str) -> 
 
 
 def test_a_recorded_page_number_slot_is_always_the_first_replacement() -> None:
-    # V1 records the index of the digit run *within the list of replacements*,
-    # not the position of the replaced token in the text, so a single masked
-    # number always records slot 0 no matter where it sat. The slot is therefore
-    # a "was there exactly one number" flag rather than a position, and the
-    # rendered text is what actually locates it.
+    # The slot records the index of the digit run *within the list of
+    # replacements*, not the position of the replaced token in the text, so a
+    # single masked number always records slot 0 no matter where it sat. The
+    # slot is therefore a "was there exactly one number" flag rather than a
+    # position, and the rendered text is what actually locates it.
     assert normalize_template_text("Notes to statements 12") == (
         "Notes to statements #",
         0,

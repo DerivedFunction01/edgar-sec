@@ -197,13 +197,10 @@ def resolve_paths(repo_root: Path | str | None = None) -> ProjectPaths:
     publishes into a parallel tree.
 
     The artifacts root is read from the registered ``artifacts.root`` setting, so
-    there is one authority for it. It used to be read here from a private
-    ``EDGAR_ARTIFACTS_DIR``, which meant two settings answered the same question
-    and ignored each other: setting ``ARTIFACTS_ROOT`` changed what the registry
-    reported while the resolver kept using ``.artifacts``, and setting
-    ``EDGAR_ARTIFACTS_DIR`` did the reverse. A relative value is anchored to the
-    project root so the default stays beside the package rather than wherever
-    the process happens to be.
+    there is exactly one authority for it: an operator who sets ``ARTIFACTS_ROOT``
+    changes both what the registry reports and what this resolver builds. A
+    relative value is anchored to the project root so the default stays beside
+    the package rather than wherever the process happens to be.
     """
     if repo_root is not None:
         root = Path(repo_root)

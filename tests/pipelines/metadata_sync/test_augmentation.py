@@ -2,8 +2,8 @@
 
 The augmentation contract under test: a snapshot holding N CIKs that receives K
 new ones publishes N+K rows, the N base CIKs are never refetched, and the delta
-plan is identified by its base as well as its cohort. That last property is the
-one the old identity got wrong, so it is pinned directly rather than inferred.
+plan is identified by its base as well as its cohort. That last property is
+pinned directly rather than inferred.
 """
 
 from __future__ import annotations
@@ -139,12 +139,11 @@ def test_an_empty_delta_is_refused_rather_than_planned() -> None:
 
 
 def test_one_requested_list_against_two_bases_is_two_plans() -> None:
-    """The identity defect this work exists to close.
+    """A delta plan is identified by its base as well as its cohort.
 
-    The delta plan used to be identified by the request file's digest, so the
-    same requested CIKs against two different bases resolved to one plan
-    directory and one chunk namespace, and the second run overwrote the first
-    plan's record.
+    Without that, the same requested CIKs against two different bases would resolve
+    to one plan directory and one chunk namespace, and the second run would
+    overwrite the first plan's record.
     """
     requested = roster_from_manifest(
         read_cik_manifest(fixture_path("cik_sec_mini.csv"))
@@ -651,9 +650,9 @@ def test_augment_is_a_no_op_when_the_base_already_covers_the_request(
 
     The seed this pipeline plans over is a file someone curated at a point in
     time. Re-augmenting it after it has been fully ingested is the *expected*
-    outcome, and it used to raise "augmentation requested no work" from inside
-    the run, after the operator had already answered the fetch-consent and
-    worker-count questions.
+    outcome, so it settles as a `no_op` rather than raising "augmentation
+    requested no work" from inside the run, after the operator had already
+    answered the fetch-consent and worker-count questions.
     """
     metadata, manifest, _, _ = _publish_baseline(client, session, tmp_path)
     pointer_before = metadata.current_pointer.read_bytes()

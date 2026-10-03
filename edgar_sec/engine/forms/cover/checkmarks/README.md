@@ -25,7 +25,9 @@ full hypothesis table rather than resolved arbitrarily.
 | `__init__.py` | One-line docstring only. No re-exports, per AGENTS.md §1.2. |
 
 `solver.py` imports `candidates.py`; `rewrite.py` imports `yes_no_pairs.py` and
-`models.py`. `candidates.py` imports `frames.py`. Nothing imports `rewrite.py`.
+`models.py`. `candidates.py` imports `frames.py`. The only consumer of `rewrite.py`
+outside this package is `edgar_sec/engine/forms/normalize.py`, which drives the
+rewrite stage.
 
 ## Contracts
 

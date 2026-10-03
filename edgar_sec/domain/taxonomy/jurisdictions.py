@@ -11,8 +11,10 @@ from __future__ import annotations
 
 import re
 
-# Fifty states plus DC and the three territories that appear in EDGAR
-# incorporation fields.
+from edgar_sec.foundation.regex.builder import build_alternation
+
+# Statutory US state and territory codes that appear in EDGAR incorporation
+# fields.
 STATE_POSTAL_CODES = frozenset(
     {
         "AL",
@@ -133,12 +135,12 @@ STATE_NAMES = frozenset(
 
 # Alternation is built in sorted order so the compiled pattern is byte-identical
 # on every run and across processes.
-_STATE_ALTERNATION = "|".join(re.escape(code) for code in sorted(STATE_POSTAL_CODES))
+_STATE_ALTERNATION = build_alternation(sorted(STATE_POSTAL_CODES), auto_escape=True)
 
 # Matches a slash-delimited jurisdiction: either a second slash closes it
 # ("INC/CA/") or the suffix runs to end of string ("INC/CA").
 JURISDICTION_RE = re.compile(
-    rf"\s*/\s*(?:{_STATE_ALTERNATION})(?:\s*/|\s*$)",
+    rf"\s*/\s*{_STATE_ALTERNATION}(?:\s*/|\s*$)",
     re.IGNORECASE,
 )
 

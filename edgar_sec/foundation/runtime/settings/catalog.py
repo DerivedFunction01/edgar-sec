@@ -2,20 +2,18 @@
 
 ``catalog.row_group_size`` -> ``CATALOG_ROW_GROUP_SIZE``.
 
-There is deliberately no Phase 2 batch-size setting. An earlier revision
-registered ``catalog.source_batch_size`` here and described it as "registrant rows
-staged into DuckDB per batch", but ``materialize`` only ever validated it and
-copied it into the snapshot manifest — nothing batched on it. The unit of work is
-now the Phase 1 part itself: each part is unnested alone and written to its own
-target shard. A knob that appears to bound work and does not is worse than no
-knob, because an operator watching memory climb would tune it and see nothing
-change.
+There is deliberately no Phase 2 batch-size setting. A ``catalog.source_batch_size``
+would read as "registrant rows staged into DuckDB per batch", but ``materialize``
+would only validate it and copy it into the snapshot manifest, because the unit
+of work is the Phase 1 part itself: each part is unnested alone and written to
+its own target shard. A knob that appears to bound work and does not is worse
+than no knob, because an operator watching memory climb would tune it and see
+nothing change.
 
 ``documents.*`` is Phase 2.5's group, registered here rather than in the
-pipeline so the environment contract stays in the registry. An earlier
-revision left those two values as module constants in
-``pipelines/document_storage``, which made them silently not env-overridable
-while ``metadata_sync`` and ``filing_catalog`` were.
+pipeline so the environment contract stays in the registry. Keeping the values
+as module constants in ``pipelines/document_storage`` would make them silently
+not env-overridable while ``metadata_sync`` and ``filing_catalog`` were.
 """
 
 from __future__ import annotations

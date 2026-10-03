@@ -10,7 +10,7 @@ blank runs accumulated by block-tag substitution.
 
 | Module | Responsibility |
 | :--- | :--- |
-| `normalizer.py` | `normalize_final_text_whitespace`, `split_concatenated_bullets`. |
+| `normalizer.py` | The whole pass: line-end padding, concatenated-item splitting, and blank-run collapse. |
 
 ## Contracts
 
@@ -38,15 +38,13 @@ None. Library package, no CLI.
 
 ## Mirrored tests
 
-`tests/engine/document/whitespace/test_normalizer.py`.
+`tests/engine/document/whitespace/`.
 
 ## Deliberate gaps
 
 - **Representation-neutral by construction, not by assumption.** The pass keys on
   ASCII bullet markers and tagged-table sentinels, so a glyph-only non-ASCII
-  bullet is not a split point. The production call site is the post-cover-healing
-  text frame; cover-specific healing (line and date fragment repair, Yes/No
-  merging) is `edgar_sec/engine/forms/cover/healing/`, not here.
-- **No signature-region awareness.** A masked signature block would still be
-  split on punctuation here. In `normalize_document` the reflow stage that owns
-  signature masking runs after this pass, so no caller currently supplies a mask.
+  bullet is never read as a list boundary.
+- **No signature-region awareness.** This pass runs before the reflow stage that
+  masks signature regions, so a signature block is still split on punctuation
+  here.

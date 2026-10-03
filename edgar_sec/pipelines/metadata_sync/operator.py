@@ -161,7 +161,7 @@ def render_session_header(state: WizardState) -> str:
     Shown above every menu, so an operator can see the working plan and the
     published snapshot without having to run status first. A session with
     nothing resolved says so and points at the action that creates it, rather
-    than showing a blank where a plan id used to be.
+    than leaving a blank where a plan id belongs.
     """
     metadata = state.metadata()
     current = current_snapshot_id(metadata)
@@ -371,10 +371,9 @@ def _ask_run_options(
     """Collect the plan reference a status/run/merge invocation needs.
 
     A blank plan id falls back to the session's plan and then to discovery,
-    rather than returning nothing. That fallback is the regression this module
-    exists to remove: a blank answer used to return to the menu having done
-    nothing at all, which reads as a broken pipeline rather than a missing plan.
-    A copied bundle names its own plan, so a worker is never asked what it is
+    rather than returning nothing — a blank answer that returned to the menu
+    having done nothing reads as a broken pipeline rather than a missing plan. A
+    copied bundle names its own plan, so a worker is never asked what it is
     already holding.
     """
     if with_bundle:

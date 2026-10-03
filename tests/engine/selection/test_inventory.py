@@ -82,9 +82,7 @@ def test_dimension_grain_sets_cover_the_vocabulary() -> None:
     assert "era" in LOCATOR_ONLY_DIMENSIONS
     # sic_code resolves at locator grain: the locator projection carries the
     # representative registrant's sic_code, so counting it on the wider
-    # occurrence table is both slower and a different question. v1 classified
-    # it as occurrence-only, which made a composite filter on it look
-    # unmatchable.
+    # occurrence table is both slower and a different question.
     assert "sic_code" in LOCATOR_ONLY_DIMENSIONS
     assert "sic_code" not in OCCURRENCE_ONLY_DIMENSIONS
     # accession_class is genuinely occurrence-only: it is derived per filing and

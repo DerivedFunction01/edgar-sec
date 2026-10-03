@@ -5,7 +5,7 @@ test execution.
 
 ---
 
-## 1. Module Layout & Responsibilities
+## Module Layout & Responsibilities
 
 | Module | Responsibility |
 | :--- | :--- |
@@ -15,7 +15,7 @@ test execution.
 
 ---
 
-## 2. Guaranteed Contracts
+## Guaranteed Contracts
 
 1. **Deterministic & dependency-free**: standard library only (`ast`, `pathlib`,
    `json`, `subprocess`).
@@ -33,7 +33,7 @@ test execution.
 
 ---
 
-## 3. Public Surface
+## Public Surface
 
 ```python
 from edgar_sec.foundation.checks.runner import registered, run_all
@@ -53,14 +53,14 @@ from edgar_sec.foundation.checks.lineage import (
 
 ---
 
-## 4. Command Surface
+## Command Surface
 
 None. `check.py` at the repository root imports
 `edgar_sec.foundation.checks.runner.run_all` and exits on its return code.
 
 ---
 
-## 5. Mirrored Tests
+## Mirrored Tests
 
 - [`tests/foundation/checks/test_runner.py`](../../../tests/foundation/checks/test_runner.py)
 - [`tests/foundation/checks/test_git_diff.py`](../../../tests/foundation/checks/test_git_diff.py)
@@ -68,7 +68,7 @@ None. `check.py` at the repository root imports
 
 ---
 
-## 6. Deliberate Gaps
+## Deliberate Gaps
 
 - **Module-level lineage only.** Dependency tracking is per `.py` file, not per
   function or symbol. Module granularity is conservative and avoids brittle

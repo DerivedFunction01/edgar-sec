@@ -35,7 +35,7 @@ def test_a_current_report_always_proceeds() -> None:
     ],
 )
 def test_the_document_is_never_read(text: str) -> None:
-    """v1 discards both arguments; every 8-K gets the same decision."""
+    """Both arguments are discarded; every 8-K gets the same decision."""
     assert evaluate_current(text) == evaluate_current("")
 
 

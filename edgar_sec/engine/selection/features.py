@@ -1,36 +1,10 @@
-"""Immutable feature snapshot over catalog artifacts, for stratified selection.
+"""Build the content-addressed feature snapshot used by quota selection.
 
-Deterministic planning slices a catalog on four filters. Selection cannot: a
-quota profile stratifies on twenty-one dimensions, and no SQL predicate expresses
-"the corpus has too few 1990s filers in this SIC band". So selection first
-materializes a *feature snapshot*: one row per filing occurrence with every
-stratifying dimension resolved, plus a companion row per document locator.
-
-The snapshot is content-addressed by its inputs (target root, profile path,
-forms, build options, policy fingerprint, seed fingerprint) and reused when
-the manifest already exists. That makes feature building a pure function of
-its inputs, so two runs of the same policy against the same catalog cannot
-disagree.
-
-Pure/impure split: :func:`form_family`, :func:`form_family_sql`, and
-:func:`era_of` are total functions of their arguments and carry the interesting
-logic; :class:`FeatureSnapshotBuilder` is the I/O around them.
-
-Corrections against v1:
-
-* **The Python and SQL form-family rules can no longer diverge.** v1 kept a
-  Python ``form_family`` and a hand-written SQL ``REGEXP_REPLACE`` with the
-  same intent but different mechanics: the SQL alternation is ``$``-anchored so
-  it strips exactly one trailing suffix, while the Python loop strips one of
-  *each* kind. ``10-K/A-POS`` collapsed to ``10-K`` in Python and to ``10-K/A``
-  in SQL. :func:`form_family_sql` is now *generated* from the same suffix tuple
-  :func:`form_family` consumes, and a test runs both over a form battery.
-* **The seed-CIK fallback reuses the M6 index factories** instead of
-  re-reading the profile Parquet inline to rebuild the same two-column list.
-* **``document_path_source`` is projected unconditionally.** v1 fell back to a
-  typed NULL when a target shard lacked the column, which would have silently
-  erased document-path provenance for every row in the shard. v2's catalog
-  always writes the column, so a missing one is a genuine schema error.
+Pure helpers map filing forms and dates to selection dimensions.
+``FeatureSnapshotBuilder`` resolves profile and occurrence fields, writes the
+snapshot, and reuses it when its input fingerprint matches. Form-family SQL is
+generated from the same suffix vocabulary as the Python helper; required source
+columns are validated rather than silently replaced with nulls.
 """
 
 from __future__ import annotations
@@ -318,31 +292,13 @@ class FeatureSnapshotBuilder:
     def _profiles_sql(self) -> str:
         """Project the nested Phase 1 profile schema onto the flat feature shape.
 
-        v1 carried a second branch for a flat profile schema that v2 no longer
-        produces: ``PROFILE_SCHEMA`` is a projection of the Phase 1 struct
-        schema, so the struct accessors are always the correct ones.
+        Profile text fields use an empty string for absent values. The ``raw``
+        CTE normalizes blanks to NULL once so downstream ``COALESCE``, null
+        checks, and postal-code membership tests treat them as missing.
 
-        **Absent means empty string upstream, so it is normalized here.** Phase 1
-        writes ``''`` for a field the SEC did not supply, never NULL, so every
-        guard in the outer ``SELECT`` -- ``COALESCE``, ``IS NOT NULL``, and
-        ``IN (postal_codes)`` -- read an absent value as a real one. Measured on
-        the published catalog that mislabelled 4,735 registrants as foreign
-        (against 2,977 genuinely foreign), carried ``''`` through 26,703
-        ``filer_category_primary`` values that ``COALESCE`` never rescued, and
-        reported 1,040 empty ``owner_org`` values as ``has_org``. The ``raw``
-        CTE is the one boundary every Phase 1 text field crosses, so each is
-        wrapped in ``NULLIF(trim(x), '')`` there and the existing expressions
-        then behave as written. Normalizing per-expression instead would leave
-        the next dimension to repeat the mistake.
-
-        ``foreign_status`` is derived from ``incorporation.state`` against the
-        M5 jurisdiction vocabulary. v1's nested branch hardcoded the literal
-        ``'domestic'`` for every registrant, so a filer incorporated in Canada
-        or the United Kingdom was indistinguishable from a Delaware corporation
-        on the one dimension a policy floors on to control international mix.
-        An absent state now reports ``unknown`` rather than falling to the
-        ``foreign`` branch: control over international mix must not be
-        obtainable by flooring on a value the SEC never supplied.
+        ``foreign_status`` uses the jurisdiction vocabulary and reports a
+        missing state as ``unknown``. An absent value must not be counted as
+        evidence that a registrant is foreign.
         """
         domestic = ", ".join(sql_literal(code) for code in sorted(STATE_POSTAL_CODES))
         return f"""

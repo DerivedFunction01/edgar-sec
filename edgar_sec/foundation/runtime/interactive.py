@@ -59,8 +59,8 @@ def run_interactive_menu(
     """Run an interactive action loop until user selects exit.
 
     A blank answer re-renders the menu rather than running the first action.
-    Defaulting it to an action meant a stray Return silently started whichever
-    action happened to be listed first, which for a mutating command is not a
+    Defaulting it to an action means a stray Return silently starts whichever
+    action happens to be listed first, which for a mutating command is not a
     harmless default.
 
     Any exception from an action is reported and the loop continues. A terminal

@@ -84,7 +84,7 @@ SHARES_PHRASES: tuple[str, ...] = COMMON_SHARES_PHRASES
 # Includes phrases that are specific to audit-opinion paragraphs (10-K/A filings
 # whose cover is followed by auditor reports rather than Item 1 body prose) and
 # to amendment explanatory notes. These never appear in SEC cover-page boilerplate
-# (confirmed across the 800-doc review cohort), so they are safe as decisive signals.
+# (confirmed across the filing review cohort), so they are safe as decisive signals.
 ANNUAL_BODY_PHRASES: tuple[str, ...] = (
     "collective bargaining",
     "labor union",

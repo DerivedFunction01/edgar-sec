@@ -16,10 +16,25 @@ adjacent to its answer, and a Yes and its No can end up on different lines.
 | Module | Responsibility |
 | :--- | :--- |
 | `binary_blocks.py` | Binary block detection, collapsing, and checkbox token normalization. |
-| `text.py` | Bounded cover text healing with table masking and binary-block merging. |
+| `text.py` | Bounded cover text healing: table masking, binary-block merging, phrase-sequence and date-fragment healing, then restoration. |
 | `__init__.py` | One-line docstring only. No re-exports, per AGENTS.md §1.2. |
 
 ## Contracts
+
+`heal_cover_text` works on the line slice before `boundary.end_line` and never
+reaches the body:
+
+- Tagged tables are masked for the whole line-level pass and restored
+  afterwards. A pass that could account for every sentinel restores; one that
+  cannot returns the original text and `False` rather than a cover that lost a
+  table.
+- Global-safe checkbox normalization runs last, over the healed slice *including*
+  restored table content, because masked cells never reached the line-level
+  pass.
+- The returned boolean reports whether the text changed, so a caller can
+  refresh line-coordinate analyses.
+
+`binary_blocks.py` contracts:
 
 - Only the specific Yes/No block shape is merged: a question tail, zero or more
   recognised mark lines or box+dot spacers, the opposite question tail, and a
@@ -51,8 +66,13 @@ None. Library package, no CLI.
 
 ## Deliberate gaps
 
-- **No split-line joining.** `heal_split_lines` lives in
-  `edgar_sec/foundation/text/healing.py`; this package does not re-export it.
+- **The reflow branch is dormant.** `heal_cover_text` only reflows when
+  `reflow_prose=True`, and its sole caller `normalize_document` passes
+  `reflow_prose=False` until cover boundary/table interactions are resolved.
+  The code path is live and tested; nothing exercises it in production.
+- **Phrase healing and reflow are mutually exclusive here.** When
+  `reflow_prose=True` the configured `healing_rules` are not applied, because
+  the reflow has already merged the lines they would have joined.
 - **The block window is ten lines.** A binary question rendered across more than
   ten intervening lines is not recognised, and the lines are left in place.
 - **No mark-position inference beyond the three declared contexts.** A mark in any

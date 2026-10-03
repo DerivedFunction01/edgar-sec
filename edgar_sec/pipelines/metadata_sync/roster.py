@@ -1,9 +1,8 @@
 """Content-addressed CIK roster datasets.
 
 A roster is the single canonical statement of *which* CIKs a unit of work covers.
-It replaces the CIK list that the plan document used to embed three times over:
-the list now lives once, in an immutable Parquet dataset with a stable ordinal,
-and everything else references it by identity.
+The list lives once, in an immutable Parquet dataset with a stable ordinal, and
+everything else references it by identity.
 
 Identity is content-derived from the ordered normalized CIK list together with
 its display names and the roster schema version, so reformatting an input file
@@ -285,7 +284,7 @@ def roster_to_csv_text(roster: Roster) -> str:
     """Render a roster as the ``cik,name`` CSV that people and scripts import.
 
     The CSV is an export format, not the internal carrier. It exists so the
-    v1-era input contract keeps working while the roster dataset is what the
+    ``cik,name`` input contract keeps working while the roster dataset is what the
     planner actually reads.
     """
     lines = ["cik,name"]

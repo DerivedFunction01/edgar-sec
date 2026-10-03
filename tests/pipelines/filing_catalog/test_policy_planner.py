@@ -1,10 +1,4 @@
-"""Tests for the policy-scope plan: quota selection published as a plan bundle.
-
-Stage A's deterministic plan slices on four filters and publishes eight locator
-columns. These tests cover the Stage B bundle: the 18-column locator
-projection, the reserve pool, the recorded policy, and the immutability and
-conflict semantics that make the bundle a work order rather than a cache.
-"""
+"""Tests for quota-policy planning and its published plan bundle."""
 
 from __future__ import annotations
 
@@ -89,8 +83,7 @@ def test_policy_plan_locator_groups_are_the_eighteen_column_schema(
     catalog_snapshot: tuple[dict[str, object], Path],
     catalog_artifacts_root: Path,
 ) -> None:
-    """A Stage B bundle must carry the stratification dimensions a consumer
-    audits a sample with, not just the identity triple Stage A emits."""
+    """Plan locator groups include the selection dimensions for audit."""
     manifest, _ = catalog_snapshot
     artifacts_root = _artifacts_root(catalog_artifacts_root)
     meta = plan_policy(str(manifest["catalog_id"]), _policy(), artifacts_root)

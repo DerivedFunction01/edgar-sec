@@ -180,10 +180,10 @@ def test_the_registry_and_the_resolver_agree_on_the_artifacts_root(
 ) -> None:
     """One question, one answer.
 
-    The resolver used to read a private `EDGAR_ARTIFACTS_DIR` while the registry
-    advertised `ARTIFACTS_ROOT`, so each ignored the other: setting one left the
-    other reporting the default. Anyone who set the documented variable got a
-    silent no-op from the code that actually built the paths.
+    The registry advertises ``ARTIFACTS_ROOT`` and the resolver reads it through
+    the registry, so setting the documented variable moves both. The failure this
+    guards against is a documented variable that the path builder ignores, which
+    would leave the operator with a silent no-op.
 
     "Agree" means the resolver produces exactly the registered value, anchored to
     the project root when the registered value is relative and taken as given

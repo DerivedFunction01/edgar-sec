@@ -16,18 +16,19 @@ The rule the `layer-boundary` scanner enforces is the reverse:
 
 > **Nothing below `apps/` may import it.**
 
-That is the entire new invariant, and it buys organizational separation rather
-than safety: an app already had the same read access a pipeline has.
+That is the entire invariant, and it buys organizational separation rather
+than safety: an app has the same read access a pipeline has.
 
 `tests/test_network_isolation.py` proves the second half of the contract — the
 viewer cannot reach `infra.sec_http` — because the temptation is structurally
 higher for a viewer than for an offline phase: it browses what a *network*
 pipeline produced, so reaching for the client would be the easy wrong move.
 
-The roadmap originally rejected `apps/` ([§0](../../roadmap/refactor_v2/v2_refactor_roadmap.md))
-on the premise that it "imports no pipeline internals". The viewer falsifies that
-premise — it resolves published snapshots by reading pipeline manifests — which
-is what re-opened the decision.
+The viewer is also what makes this layer worth having. It resolves published
+snapshots by asking the owning pipeline to interpret their manifests, so an app
+does in fact read pipeline internals — read-only, through the public leaf
+modules. That is exactly the dependency direction the clause above permits, and
+a layer placed below `pipelines/` could not have it.
 
 ## Module layout
 
@@ -71,12 +72,10 @@ contract is enforced by the `layer-boundary` scanner and
 
 - **One app, so far.** The viewer is the only member. A shared app framework — a
   common HTTP shell, session handling, a UI kit — is deliberately not built. The
-  one duplication candidate has exactly one consumer; extract it when a second
-  app makes the duplication real.
-- **`tools/ops/` is not a second home for operator tooling.** Roadmap
-  [§1.5](../../roadmap/refactor_v2/v2_refactor_roadmap.md) proposed a Tier 3
-  `tools/ops/` for monitors and diagnostics. Those are operator-facing, so this
-  layer is their destination; shipping both would leave two homes for one
-  category.
+  duplication candidates have exactly one consumer each; extract them when a
+  second app makes the duplication real.
+- **`tools/ops/` is not a second home for operator tooling.** Monitors and
+  diagnostics are operator-facing, so this layer is their destination; shipping a
+  separate `tools/ops/` tree as well would leave two homes for one category.
 - **No auth, and no remote binding.** Every app binds loopback by default. This
   is local operator tooling, not a service, and it has no multi-user story.

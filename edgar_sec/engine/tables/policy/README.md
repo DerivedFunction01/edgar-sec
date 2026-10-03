@@ -2,7 +2,7 @@
 
 ## Purpose
 
-The generic ASCII reflow coordinator knows what a block of lines looks like. These two modules know
+The generic ASCII reflow coordinator knows what a block of lines looks like. The modules here know
 what a *table* looks like: where the sentence introducing a grid stops and the grid starts, and
 whether the block after a grid is that row's wrapped continuation or the next paragraph.
 
@@ -30,9 +30,9 @@ from edgar_sec.engine.tables.policy.intro import split_structural_table_intro
   first non-blank line: it must end in sentence punctuation or match `TABLE_INTRO_CUE_RE`, or the
   whole block is returned unsplit. Even then it only splits before a line carrying two or more wide
   column gaps, or a tab plus alphabetic content.
-- **A cue the vocabulary does not hold is never guessed at.** The cue set is six families
-  (`../patterns.py`); filing-specific prose such as *"The fair value was estimated using
-  assumptions"* is not one of them, so it stays inside the table.
+- **A cue the vocabulary does not hold is never guessed at.** The cue set lives in
+  `../patterns.py`; filing-specific prose such as *"The fair value was estimated using
+  assumptions"* is not in it, so it stays inside the table.
 - **A table-shaped block is recognised before prose relaxation may unwrap it.**
   `is_tableish_block` answers on geometry alone: at least one column gap, a tab, or a shared numeric
   column, *and* a separator with enough rows — or three numeric rows under two shared columns.
@@ -67,11 +67,8 @@ None. Library package, no CLI.
 
 ## Tests
 
-- `tests/engine/tables/policy/test_intro.py` (26 tests)
-- `tests/engine/tables/policy/test_continuation.py` (11 tests)
-
-Vectors are ported from V1's `.v1/defs/tests/test_reflow.py`, where the intro-split and
-row-continuation cases live.
+- `tests/engine/tables/policy/test_intro.py`
+- `tests/engine/tables/policy/test_continuation.py`
 
 ## Deliberate gaps
 
@@ -80,7 +77,7 @@ row-continuation cases live.
   its own intro vocabulary at this level. The reflow stage reaches them through
   `ReflowPolicy.split_table_intro`, which is the substitutable seam.
 - **`is_tableish_block` reads its argument with `getattr` and a default.** It accepts any object
-  exposing the six fields it needs, which is how both the compact `_Features` record and the full
+  exposing the fields it needs, which is how both the compact `_Features` record and the full
   `BlockContext` satisfy it. It is not typed to either, and a record missing a field reads as `0` or
   `False` rather than raising.
 - **No row-level or cell-level policies.** These modules judge whole blocks and whole row groups.

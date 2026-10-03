@@ -13,19 +13,19 @@ import { metaKey, rowsKey, sqlKey } from "./lib/cache/keys";
 import { type CacheStore, cache, estimateBytes, MAX_ENTRY_BYTES } from "./lib/cache/store";
 
 /**
- * v2 dropped JSONL (it is formally purged) and added SQLite: the payload store
- * and the transient chunk writer both produce `.db` files, and the server
- * exposes one dataset per table. This list mirrors what the server emits.
+ * JSONL is not an output format here, but the explorer reads it because an
+ * operator may find one on disk. SQLite is: the payload store and the transient
+ * chunk writer both produce `.db` files, and the server exposes one dataset per
+ * table. This list mirrors what the server emits.
  */
 export type ArtifactFormat = "parquet" | "sqlite" | "duckdb" | "csv" | "jsonl" | "text" | "json";
 
 /**
  * The dataset kinds the server reports.
  *
- * These are v2's kinds, produced by the per-dataset loaders in
- * `apps/viewer/loaders.py`. v1 had a single artifact type whose role was
- * inferred from its directory name; v2 discovery is manifest-driven, so the
- * server states the kind outright and this union is the complete list.
+ * Discovery is manifest-driven, so the server states each dataset's kind
+ * outright and this union is the complete list, produced by the per-dataset
+ * loaders in `apps/viewer/loaders.py`.
  *
  * The `_run_union` and `_chunk` suffixes are per-dataset: the server emits
  * `<dataset>_run_union` (e.g. `metadata_run_union`) for an in-flight run.

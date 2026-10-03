@@ -29,8 +29,8 @@ _MONTH_REGEX_ALT_RE = re.compile(
 )
 
 # An ad-hoc date separator pattern, e.g. \d{1,2}/\d{1,2}/\d{2,4} or \d{4}-\d{2}-\d{2}.
-# The quantifier accepts both {4} and {1,2} forms: v1's original pattern only
-# matched the single-digit form, so the canonical day/month case slipped through.
+# The quantifier accepts both {4} and {1,2} forms, so the canonical day/month case
+# is matched too.
 _DATE_SEPARATOR_REGEX_RE = re.compile(
     r"\\d\{[1-4](?:,[1-4])?\}\s*[/\\-]\s*\\d\{[1-4](?:,[1-4])?\}"
     r"\s*[/\\-]\s*\\d\{[1-4](?:,[1-4])?\}"

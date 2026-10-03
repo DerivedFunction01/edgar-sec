@@ -24,7 +24,7 @@ cleaned, projected, and had its page furniture resolved.
 | `html/breaks.py` | Page-break sentinel injection outside `<TABLE>` spans; the composed projection entry point. |
 | `html/normalizer.py` | HTML-to-text projection: `normalize_html_document`, `decompose_html_structures`. |
 | `whitespace/normalizer.py` | Final whitespace pass: line-end padding, concatenated list items, blank-run collapse. |
-| `page_markers/models.py` | The 20 `PageMarkerKind` shapes, the label patterns, and the immutable analysis / marker / decision / artifact records. |
+| `page_markers/models.py` | The `PageMarkerKind` shapes, the label patterns, and the immutable analysis / marker / decision / artifact records. |
 | `page_markers/candidates.py` | Contextual candidate scan plus the geometry and prose guards that keep a table from reading as a page sequence. |
 | `page_markers/detector.py` | `analyze_page_markers` — the ordered scan that composes the modules below. |
 | `page_markers/sequence.py` | Run validation and conservative healing. |
@@ -82,61 +82,27 @@ None. Library package, no CLI.
 
 ## Production consumers
 
-- `edgar_sec/engine/forms/normalize.py` — `prepare_input_text` (`unpacked`
-  stage), then `html_project` → `page_policy` reaching `html/{breaks,normalizer}`
-  and all of `page_markers/`, then `after_final_whitespace`. Also imports
-  `is_page_marker_line` and `normalize_final_text_whitespace` directly.
-- `edgar_sec/engine/forms/cover/` — `page_markers.units`
-  (`body_start`, `body_context`), `page_markers.detector` (`boundary/detector`,
-  `toc/finder`, `toc/analysis`, `toc/residue`, `reflow`, `healing/text`),
-  `page_markers.models` (`models`), `page_markers.signatures` (`closing`).
-- `edgar_sec/engine/reflow/` — `page_markers.signatures`
-  (`engine/rewrapper`, `features/geometry`, `types`).
-- `edgar_sec/engine/tables/ascii_html/` — `html.tree` (`converter`, `spans`,
-  `renderer`, `model`, `quick_grid`).
-- `edgar_sec/pipelines/document_storage/fetching.py` — `unpack_sgml_submission`,
-  `has_sgml_documents`, `strip_pem_envelope`, `extract_target_sub_document`.
-- `edgar_sec/pipelines/document_storage/delegation.py` — `SgmlSubDocument`,
-  `unpack_sgml_submission`, `find_sub_document`, `has_sgml_documents`.
-- `edgar_sec/pipelines/document_storage/review_artifacts.py` — `parse_html`.
-- `edgar_sec/pipelines/document_storage/processor.py` — `PageMarkerAction`.
+- `edgar_sec/engine/forms/normalize.py` — the `unpacked`, `page_policy`, and
+  `after_final_whitespace` stages of `normalize_document`.
+- `edgar_sec/engine/forms/cover/` — cover boundary, TOC, reflow, healing, body
+  start, and closing, all over `page_markers/`.
+- `edgar_sec/engine/reflow/` and `edgar_sec/engine/tables/ascii_html/` —
+  signature masking and the `html.tree` wrappers respectively.
+- `edgar_sec/pipelines/document_storage/` — envelope unpacking and delegation
+  (`fetching`, `delegation`), `parse_html` for review artifacts, and
+  `PageMarkerAction` for the processor.
 
 ## Mirrored tests
 
-| Test module | Covers |
-| :--- | :--- |
-| `tests/engine/document/unpacking/test_unpacker.py` | envelope unpacking, four-tier resolution, extraction, PEM, malformed input |
-| `tests/engine/document/unpacking/test_representation.py` | decode ladder, envelope stripping, classification, stage order |
-| `tests/engine/document/unpacking/test_ascii_pre.py` | PRE wrapper discrimination |
-| `tests/engine/document/html/test_tags.py` | tag classification sets |
-| `tests/engine/document/html/test_tree.py` | `parse_html`, traversal, mutation, text extraction |
-| `tests/engine/document/html/test_cleaner.py` | the ordered passes plus the preservation side |
-| `tests/engine/document/html/test_breaks.py` | sentinel injection and table exclusion |
-| `tests/engine/document/html/test_normalizer.py` | projection, paragraph cohesion, table byte-preservation |
-| `tests/engine/document/whitespace/test_normalizer.py` | padding, concatenated items, blank runs |
-| `tests/engine/document/page_markers/test_models.py` | the shape vocabulary and analysis record |
-| `tests/engine/document/page_markers/test_candidates.py` | contextual candidate scan and its guards |
-| `tests/engine/document/page_markers/test_detector.py` | `analyze_page_markers`, `find_page_markers`, `is_page_marker_line` |
-| `tests/engine/document/page_markers/test_sequence.py` | run validation and healing |
-| `tests/engine/document/page_markers/test_units.py` | logical-unit classification |
-| `tests/engine/document/page_markers/test_templates.py` | `analyze_repeating_headers` and window mechanics |
-| `tests/engine/document/page_markers/test_artifacts.py` | token rendering and the sidecar |
-| `tests/engine/document/page_markers/test_policy.py` | strip / annotate / preserve policy |
-| `tests/engine/document/page_markers/test_signatures.py` | signature masking and healing |
-
-Every module in this package has a mirrored test; the tree exists and is
-collected by the committed suite. V1 parity is a development-time concern — the
-V1 reference lives in the gitignored `.v1/` tree and has no committed harness.
+`tests/engine/document/` mirrors this tree package-for-package (`unpacking/`,
+`html/`, `whitespace/`, `page_markers/`), with a test module per source module.
+The committed suite is the only executable record of the package's behaviour.
 
 ## Deliberate gaps
 
-- **Page-artifact metadata is built but discarded.** `build_page_artifact_metadata`
-  is landed and tested with no caller: `NormalizationResult` has no field for the
-  sidecar, and `normalize_document` binds `_artifacts`, `_templates`, `_next_id`
-  to throwaways. Recording them is a change to the result record, which belongs
-  to `engine/forms/normalize.py`.
-- **`<noscript>` is not purged.** V1 removes exactly `<head>`, `<script>`, and
-  `<style>`. An earlier V2 cleaner also removed `<noscript>`; that was
-  divergence from the V1 production path rather than a fix, and was reverted.
-- **Nothing here fetches.** No HTTP, no cache, no rate limiting — that is
-  `edgar_sec/infra/sec_http`. This package starts from bytes already in hand.
+- **`<noscript>` is not purged.** `strip_non_displaying_blocks` removes `<head>`,
+  `<script>`, and `<style>` only, so no-script fallback text — content a reader
+  sees with scripting off — stays in the frame.
+- **Nothing here fetches or writes.** No network, no artifact writes: this
+  package starts from bytes already in hand, and retrieval is
+  `edgar_sec/infra/sec_http`.

@@ -133,12 +133,11 @@ def _resolve_form(
     in a pipeline run, and the resulting diff would be a lie. The source of the
     form is therefore reported alongside it rather than assumed.
 
-    v1 recorded no per-document form for fixture payloads and fell back to the
-    first entry in the fixture manifest's form list, so a 14-form fixture
-    reviewed every document as its first form. That fallback is reproduced, and
+    A fixture payload stored without a per-document form falls back to the first
+    entry in the fixture manifest's form list, so a multi-form fixture reviews
+    every such document as its first form. That fallback is reproduced, and
     labelled ``manifest-first-of-many``, because silently correcting it would
-    make review output incomparable with the v1 artifacts it is meant to
-    replace.
+    make review output incomparable with the artifacts it is meant to replace.
     """
     recorded = (forms.get(document_id) or "").strip()
     if recorded:
@@ -350,12 +349,12 @@ def _manifest_entry(
 ) -> dict[str, Any]:
     """Identity and provenance for one document, and nothing derived.
 
-    Deliberately not a second copy of the analysis. v1's manifest counted
-    markers, tables and stages alongside numbers its analysis file already
-    carried, which was affordable only while the normalizer was incomplete and
-    those counts stood in for quality. Now that the analysis reports what it
-    actually detected, a table count obtained by substring-matching ``<table``
-    in the source would be a worse number that still had to be explained.
+    Deliberately not a second copy of the analysis. Counting markers, tables and
+    stages here alongside numbers the analysis file already carries was
+    affordable only while the normalizer was incomplete and those counts stood in
+    for quality. Now that the analysis reports what it actually detected, a table
+    count obtained by substring-matching ``<table`` in the source would be a worse
+    number that still had to be explained.
     """
     case = result.case
     document = case.document
@@ -410,15 +409,15 @@ def write_review_artifacts(
     produced, ``.source.txt`` what it was given, ``.analysis.json`` why the
     output looks like it does, and ``.html`` what a browser was handed.
 
-    v1 wrote three of these and no source text, which meant the input had to be
-    re-derived from the fixture to answer "did the normalizer lose this, or was
-    it never there". The source is written as the original bytes rather than a
-    re-encoded string, because a 1990s latin-1 filing decoded to UTF-8 and back
-    is not the file that was fetched.
+    The source is written as the original bytes rather than a re-encoded
+    string, because a 1990s latin-1 filing decoded to UTF-8 and back is not the
+    file that was fetched, and without it "did the normalizer lose this, or was
+    it never there" would have to be re-derived from the fixture.
 
-    v1 also wrote a per-case ``.metadata.json``, but every field in it was
-    already in the run manifest, so it was a second copy of the same facts in a
-    per-document file that then had to be diffed alongside the manifest.
+    There is deliberately no per-case ``.metadata.json``: every field such a file
+    would hold is already in the run manifest, so it would be a second copy of
+    the same facts in a per-document file that then had to be diffed alongside
+    the manifest.
     """
     case = result.case
     case_id = case.document.doc_id

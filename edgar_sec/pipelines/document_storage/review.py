@@ -151,12 +151,12 @@ def _document_metadata(entry: dict[str, Any]) -> dict[str, Any]:
     """The provenance fields recorded for a document.
 
     Read off a fixed vocabulary rather than from whatever keys a manifest
-    happens to hold, so a field a run does not compute (v1's marker and table
-    counts) is ignored instead of read as a change. Within that vocabulary an
-    absent field is a real difference rather than a schema difference: a run
-    reporting no processor fingerprint is not the same evidence as one reporting
-    a different one, and a fingerprint present in only one run is exactly the
-    "which code produced this?" answer the comparison exists to give.
+    happens to hold, so a field a run does not compute is ignored instead of read
+    as a change. Within that vocabulary an absent field is a real difference
+    rather than a schema difference: a run reporting no processor fingerprint is
+    not the same evidence as one reporting a different one, and a fingerprint
+    present in only one run is exactly the "which code produced this?" answer the
+    comparison exists to give.
     """
     return {field: entry.get(field) for field in _COMPARED_FIELDS}
 

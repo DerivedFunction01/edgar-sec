@@ -22,7 +22,7 @@ from edgar_sec.engine.reflow.engine.rewrapper import reflow_ascii
 
 ## Contracts
 
-- **Output is a pure function of four inputs.** `text`, `body_start_line`,
+- **Output is a pure function of the stage's inputs.** `text`, `body_start_line`,
   `page_analysis`, `policy`. No clock, no filesystem, no randomness; the same input yields
   the same text and the same decision tuple, and that is a tested property.
 - **An existing `<TABLE>` block is never reclassified or rewritten.** It is masked before any
@@ -72,20 +72,16 @@ None. This is a library package with no CLI.
 
 ## Production consumers
 
-- `edgar_sec/engine/forms/normalize.py:239` — `normalize_document`, on the ASCII branch
+- `edgar_sec/engine/forms/normalize.py` — `normalize_document`, on the ASCII branch
   (representation is not HTML, and `body_start_line > 0`).
-- `edgar_sec/engine/forms/cover/healing/text.py:67` — `heal_cover_text`, on the cover slice.
+- `edgar_sec/engine/forms/cover/healing/text.py` — `heal_cover_text`, on the cover slice.
 
 ## Tests
 
-- `tests/engine/reflow/engine/test_rewrapper.py` (54)
-- `tests/engine/reflow/engine/test_mapper.py` (7)
+Mirrored coverage lives under `tests/engine/reflow/engine/`.
 
 ## Deliberate gaps
 
-- **`_classify_block(features=...)` has no production caller.** Every production call site
-  lets the parameter default to `None` and gets a `BlockContext`. The parameter is retained
-  as the compact-record fast path.
 - **The cover-healing reflow branch is not reached in production.** `heal_cover_text` only
   reflows when `reflow_prose=True`, and its sole caller `normalize_document` passes
   `reflow_prose=False`. The code path is live and tested; nothing exercises it today.
@@ -100,6 +96,5 @@ None. This is a library package with no CLI.
 - **No coverage accounting in the result.** `ReflowResult` carries text, decisions, and the
   two protected-region lists — not the lines before and after the body boundary, and not a
   count of what the resolver absorbed. A caller wanting that must read the decision evidence.
-- **No reference-tree parity harness.** Byte parity with V1 was tracked by a differential
-  script that is not part of this repository; the mirrored suite above is the only executable
+- **No reference-implementation parity harness.** The mirrored suite above is the only executable
   record.

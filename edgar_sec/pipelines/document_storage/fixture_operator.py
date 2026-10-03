@@ -24,8 +24,8 @@ MANIFEST_SCHEMA_VERSION = 2
 _FIXTURE_ID = re.compile(r"[A-Za-z0-9][A-Za-z0-9._-]*\Z")
 _WRITE_BATCH_SIZE = 128
 
-#: Extension to MIME, matching v1's fixture vocabulary so a fixture filled here
-#: and one filled by v1 describe the same document identically.
+#: Extension to MIME, kept stable so a fixture filled by this pipeline and one
+#: filled earlier describe the same document identically.
 _MIME_BY_SUFFIX = {
     ".htm": "text/html",
     ".html": "text/html",
