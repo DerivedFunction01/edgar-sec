@@ -6,8 +6,10 @@ HTTP client and its SQLite cache are thread-safe and the work is network-bound.
 
 from __future__ import annotations
 
-from collections.abc import Callable
-from concurrent.futures import ThreadPoolExecutor
+import signal
+from collections.abc import Callable, Iterator
+from concurrent.futures import FIRST_COMPLETED, ThreadPoolExecutor, wait
+from contextlib import contextmanager
 from dataclasses import dataclass, field
 from typing import Any
 
@@ -98,6 +100,7 @@ def normalize_one_cik(
 
 def _run_chunk_rows(
     client: SubmissionsClient,
+    writer: StagedParquetWriter,
     ciks: tuple[str, ...],
     *,
     chunk_id: int,
@@ -106,27 +109,13 @@ def _run_chunk_rows(
     input_fingerprint: str,
     workers: int,
     progress: Callable[[dict[str, Any]], None] | None,
-) -> tuple[list[dict[str, Any]], int]:
-    """Fetch every CIK in a chunk, returning rows in plan order."""
-    rows: dict[str, dict[str, Any]] = {}
+) -> int:
+    """Fetch every CIK, writing each normalized row to the stage at once."""
     historical_files = 0
-
-    def emit(cik_padded: str, row: dict, result: CikFetchResult) -> None:
-        nonlocal historical_files
-        rows[cik_padded] = row
-        historical_files += result.historical_files_fetched
-        if progress is not None:
-            progress(
-                {
-                    "type": "cik_normalized",
-                    "cik": cik_padded,
-                    "status": row["status"],
-                    "historical_files": result.historical_files_fetched,
-                }
-            )
+    processed = 0
 
     with ThreadPoolExecutor(max_workers=resolve_workers(workers)) as pool:
-        futures = [
+        pending = {
             pool.submit(
                 normalize_one_cik,
                 client,
@@ -135,17 +124,43 @@ def _run_chunk_rows(
                 snapshot_id=snapshot_id,
                 input_fingerprint=input_fingerprint,
                 chunk_id=chunk_id,
-            )
+            ): cik_padded
             for cik_padded in ciks
-        ]
-        for processed, future in enumerate(futures, start=1):
-            row, result = future.result()
-            emit(cik_padded=ciks[processed - 1], row=row, result=result)
-            if processed % RECLAIM_INTERVAL == 0:
-                reclaim()
+        }
+        while pending:
+            done, _ = wait(pending, return_when=FIRST_COMPLETED)
+            # A batch can complete several futures at once and ``done`` is a
+            # set, so write every successful row before re-raising: a raising
+            # future must not discard work that already finished.
+            failure: Exception | None = None
+            for future in done:
+                cik_padded = pending.pop(future)
+                try:
+                    row, result = future.result()
+                except Exception as exc:  # noqa: BLE001 - re-raised after writes
+                    if failure is None:
+                        failure = exc
+                    continue
+                historical_files += result.historical_files_fetched
+                writer.write_batch(build_submission_table([row]))
+                processed += 1
+                if progress is not None:
+                    progress(
+                        {
+                            "type": "cik_normalized",
+                            "cik": cik_padded,
+                            "status": row["status"],
+                            "historical_files": result.historical_files_fetched,
+                        }
+                    )
+                del row, result
+                if processed % RECLAIM_INTERVAL == 0:
+                    reclaim()
+            if failure is not None:
+                raise failure
 
     reclaim()
-    return [rows[cik] for cik in ciks], historical_files
+    return historical_files
 
 
 def run_chunk(
@@ -183,15 +198,16 @@ def run_chunk(
         path,
         schema=SUBMISSION_METADATA_SCHEMA,
         id_column="cik",
+        preserve_on_error=True,
     ) as writer:
         existing_ciks = set() if force else writer.get_existing_ids()
-        remaining_ciks = [c for c in ciks if c not in existing_ciks]
+        remaining_ciks = tuple(c for c in ciks if c not in existing_ciks)
 
-        rows: list[dict[str, Any]] = []
         if remaining_ciks:
-            rows, _ = _run_chunk_rows(
+            _run_chunk_rows(
                 client,
-                tuple(remaining_ciks),
+                writer,
+                remaining_ciks,
                 chunk_id=chunk_id,
                 input_name=plan.input_name,
                 snapshot_id=snapshot_id,
@@ -199,8 +215,6 @@ def run_chunk(
                 workers=workers,
                 progress=progress,
             )
-            table = build_submission_table(rows)
-            writer.write_batch(table)
 
         total_rows = writer.commit(expected_count=len(ciks))
 
@@ -223,6 +237,30 @@ def run_chunk(
     )
 
 
+def _raise_interrupt(signum: int, frame: Any) -> None:
+    """Turn a termination signal into the same path as Ctrl-C."""
+    raise KeyboardInterrupt
+
+
+@contextmanager
+def _graceful_sigterm() -> Iterator[None]:
+    """Translate SIGTERM into KeyboardInterrupt for the duration of a run.
+
+    Only the main thread may install a handler; elsewhere the run proceeds
+    with the process's default disposition. The previous handler is always
+    restored, so a nested or short-lived run cannot leak the translation.
+    """
+    try:
+        previous = signal.signal(signal.SIGTERM, _raise_interrupt)
+    except ValueError:
+        yield
+        return
+    try:
+        yield
+    finally:
+        signal.signal(signal.SIGTERM, previous)
+
+
 def run_chunk_ids(
     client: SubmissionsClient,
     plan: Plan,
@@ -239,26 +277,27 @@ def run_chunk_ids(
     """
     done = completed or {}
     results: list[ChunkResult] = []
-    for chunk_id in chunk_ids:
-        if chunk_id in done:
+    with _graceful_sigterm():
+        for chunk_id in chunk_ids:
+            if chunk_id in done:
+                results.append(
+                    ChunkResult(
+                        chunk_id=chunk_id,
+                        path=str(run_paths.chunk_file(chunk_id)),
+                        row_count=0,
+                        skipped_existing=True,
+                    )
+                )
+                continue
             results.append(
-                ChunkResult(
-                    chunk_id=chunk_id,
-                    path=str(run_paths.chunk_file(chunk_id)),
-                    row_count=0,
-                    skipped_existing=True,
+                run_chunk(
+                    client,
+                    plan,
+                    run_paths,
+                    chunk_id,
+                    snapshot_id=snapshot_id,
+                    workers=workers,
+                    progress=progress,
                 )
             )
-            continue
-        results.append(
-            run_chunk(
-                client,
-                plan,
-                run_paths,
-                chunk_id,
-                snapshot_id=snapshot_id,
-                workers=workers,
-                progress=progress,
-            )
-        )
     return results

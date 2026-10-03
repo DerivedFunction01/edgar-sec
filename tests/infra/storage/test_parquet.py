@@ -172,3 +172,46 @@ def test_staged_parquet_writer_resets_on_exception(tmp_path: Path) -> None:
 
     assert not (tmp_path / "chunk_error.parquet.tmp").exists()
     assert not path.is_file()
+
+
+def test_staged_parquet_writer_preserves_stage_on_error(tmp_path: Path) -> None:
+    """Opt-in preservation keeps a readable stage for intra-chunk resume."""
+    path = tmp_path / "chunk_preserve.parquet"
+    with (
+        pytest.raises(ValueError, match="simulated failure"),
+        StagedParquetWriter(
+            path, schema=SCHEMA, id_column="cik", preserve_on_error=True
+        ) as writer,
+    ):
+        writer.write_batch({"cik": ["0000000001"], "val": [1]})
+        raise ValueError("simulated failure")
+
+    staged = tmp_path / "chunk_preserve.parquet.tmp"
+    assert staged.is_file()
+    assert not path.is_file()
+    assert read_parquet_table(staged).column("cik").to_pylist() == ["0000000001"]
+
+
+def test_staged_parquet_writer_preserved_stage_is_resumable(tmp_path: Path) -> None:
+    """A preserved stage reopens, reports its ids, and appends to commit."""
+    path = tmp_path / "chunk_resume_preserve.parquet"
+    with (
+        pytest.raises(ValueError, match="simulated failure"),
+        StagedParquetWriter(
+            path, schema=SCHEMA, id_column="cik", preserve_on_error=True
+        ) as writer,
+    ):
+        writer.write_batch({"cik": ["0000000001"], "val": [1]})
+        raise ValueError("simulated failure")
+
+    with StagedParquetWriter(
+        path, schema=SCHEMA, id_column="cik", preserve_on_error=True
+    ) as writer:
+        assert writer.get_existing_ids() == {"0000000001"}
+        writer.write_batch({"cik": ["0000000002"], "val": [2]})
+        writer.commit(expected_count=2)
+
+    assert path.is_file()
+    assert not (tmp_path / "chunk_resume_preserve.parquet.tmp").exists()
+    table = read_parquet_table(path)
+    assert table.column("cik").to_pylist() == ["0000000001", "0000000002"]

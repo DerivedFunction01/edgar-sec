@@ -11,6 +11,10 @@ from edgar_sec.domain.sec_urls import submissions_url
 from edgar_sec.pipelines.metadata_sync.paths import resolve_run_paths
 from edgar_sec.pipelines.metadata_sync.planner import build_plan
 from edgar_sec.pipelines.metadata_sync.roster import RosterError
+from edgar_sec.pipelines.metadata_sync.sec_client import (
+    CikFetchResult,
+    SubmissionsClient,
+)
 from edgar_sec.pipelines.metadata_sync.worker import (
     normalize_one_cik,
     run_chunk,
@@ -132,9 +136,10 @@ def test_normalize_one_cik_partial_when_history_fails(
     assert row["filings"]
 
 
-def test_run_chunk_writes_checkpoint_in_plan_order(
+def test_run_chunk_writes_checkpoint_with_all_ciks(
     client, session: FakeSession, tmp_path: Path
 ) -> None:
+    """Rows land in fetch-completion order, so only membership is stable."""
     plan, run_paths = _plan(tmp_path, chunk_size=2)
     _ford_pair(session)
     session.register(
@@ -148,7 +153,7 @@ def test_run_chunk_writes_checkpoint_in_plan_order(
     path = run_paths.chunk_file(1)
     assert path.is_file()
     table = pq.read_table(path)
-    assert table.column("cik").to_pylist() == ["0000000020", FORD]
+    assert set(table.column("cik").to_pylist()) == {"0000000020", FORD}
     assert set(table.column("status").to_pylist()) == {"ok"}
     assert result.statuses == {"ok": 2}
 
@@ -333,3 +338,57 @@ def test_run_chunk_resumes_when_all_ciks_already_staged(
     assert chunk_path.is_file()
     assert not chunk_path.with_name(f"{chunk_path.name}.tmp").exists()
     assert len(session.calls) == calls_before
+
+
+class _CrashingClient:
+    """A submissions client that crashes once for one CIK, then recovers."""
+
+    def __init__(self, inner: SubmissionsClient, crash_cik: str) -> None:
+        self._inner = inner
+        self._crash_cik = crash_cik
+        self._armed = True
+
+    def fetch_cik(self, cik_padded: str) -> CikFetchResult:
+        if self._armed and cik_padded == self._crash_cik:
+            self._armed = False
+            raise RuntimeError("simulated worker crash")
+        return self._inner.fetch_cik(cik_padded)
+
+
+def test_run_chunk_resumes_a_stage_it_wrote_itself(
+    client, session: FakeSession, tmp_path: Path
+) -> None:
+    """A mid-chunk crash keeps the rows already normalized, so a resume
+    refetches only the missing CIK instead of the whole chunk."""
+    plan, run_paths = _plan(tmp_path, chunk_size=2)
+    _ford_pair(session)
+    session.register(
+        submissions_url(SMALL),
+        {"name": "SMALL CO", "filings": {"recent": {}, "files": []}},
+    )
+
+    crashing = _CrashingClient(client, FORD)
+    with pytest.raises(RuntimeError, match="simulated worker crash"):
+        # One worker serializes the chunk, so SMALL is staged before FORD
+        # crashes; the stage is preserved rather than discarded.
+        run_chunk(crashing, plan, run_paths, 1, snapshot_id="snap1", workers=1)
+
+    chunk_path = run_paths.chunk_file(1)
+    staged = chunk_path.with_name(f"{chunk_path.name}.tmp")
+    assert staged.is_file()
+    assert set(pq.read_table(staged).column("cik").to_pylist()) == {SMALL}
+
+    small_calls = session.calls.count(submissions_url(SMALL))
+    ford_calls = session.calls.count(submissions_url(FORD))
+    assert small_calls == 1
+    assert ford_calls == 0
+
+    result = run_chunk(client, plan, run_paths, 1, snapshot_id="snap1", workers=2)
+    assert result.row_count == 2
+    assert result.statuses == {"ok": 2}
+    assert chunk_path.is_file()
+    assert not staged.exists()
+    assert set(pq.read_table(chunk_path).column("cik").to_pylist()) == {SMALL, FORD}
+    # SMALL was already staged, so only FORD was fetched on resume.
+    assert session.calls.count(submissions_url(SMALL)) == small_calls
+    assert session.calls.count(submissions_url(FORD)) == ford_calls + 1

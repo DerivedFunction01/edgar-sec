@@ -665,6 +665,8 @@ def main(argv: list[str] | None = None) -> int:
     args = parser.parse_args(argv)
     try:
         return int(args.func(args))
+    except KeyboardInterrupt:
+        return 130
     except (
         AssignmentError,
         FileNotFoundError,

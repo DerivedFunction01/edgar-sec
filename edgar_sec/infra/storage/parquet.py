@@ -79,6 +79,7 @@ class StagedParquetWriter:
         compression: str = DEFAULT_COMPRESSION,
         row_group_size: int = DEFAULT_ROW_GROUP_SIZE,
         id_column: str | None = None,
+        preserve_on_error: bool = False,
     ) -> None:
         self.final_path = Path(final_path).resolve()
         self.tmp_path = self.final_path.with_name(f"{self.final_path.name}.tmp")
@@ -86,6 +87,7 @@ class StagedParquetWriter:
         self.compression = compression
         self.row_group_size = row_group_size
         self.id_column = id_column
+        self.preserve_on_error = preserve_on_error
         self._writer: pq.ParquetWriter | None = None
         self._row_count: int = 0
         self._closed: bool = False
@@ -220,7 +222,17 @@ class StagedParquetWriter:
         exc_tb: types.TracebackType | None,
     ) -> None:
         if exc_type is not None:
-            self.reset()
+            if self.preserve_on_error:
+                # A readable stage is resumable; an unreadable one is
+                # rejected and reset by the next get_existing_ids().
+                if self._writer is not None:
+                    try:
+                        self._writer.close()
+                    except (OSError, pa.ArrowInvalid, pq.ParquetException):
+                        pass
+                    self._writer = None
+            else:
+                self.reset()
         elif not self._closed and self._writer is not None:
             self._writer.close()
             self._writer = None

@@ -238,11 +238,12 @@ These are decisions, not oversights. Each names the alternative.
   against a base. Phase 1 has no vacuum for it, the same trade the transient and
   published trees make.
 - **A published snapshot is not globally sorted by CIK.** Parts are byte copies
-  of the validated chunk files, so the snapshot is in chunk order and each part is
-  in roster order. The manifest records this as `sort_order: chunk_order` so a
-  consumer cannot mistake one for the other, and `ciks.parquet` remains the sorted
-  membership index for lookups by CIK. Anything needing globally sorted rows must
-  sort in its own query; Phase 2 aggregates, so it does not.
+  of the validated chunk files, so the snapshot is in chunk order and each part
+  is in fetch-completion order, not roster order. The manifest records this as
+  `sort_order: chunk_order` so a consumer cannot mistake one for the other, and
+  `ciks.parquet` remains the sorted membership index for lookups by CIK.
+  Anything needing globally sorted rows must sort in its own query; Phase 2
+  aggregates, so it does not.
 - **Parts are copied, not moved.** Publication copies each validated chunk, so a
   resumed plan still finds its checkpoints and an aborted publication leaves the
   transient tree intact — at the cost of the transient and published trees each
