@@ -1,0 +1,281 @@
+# `edgar_sec/pipelines` — Layer 4: orchestration, command surfaces, and publication
+
+This layer owns the parts of the system that *sequence* work: the CLI and
+interactive operator, the deterministic plan, the resumable worker, and the
+coordinator that decides when a dataset may be published. It is not a place for
+normalization, transport, or storage primitives — every one of those is decided
+in a lower layer and consumed here.
+
+## Purpose
+
+Three pipelines, each a complete vertical from a published input to a published
+output. Each owns its own package README; the details below are the layer-level
+contracts only.
+
+- [`metadata_sync/`](metadata_sync/README.md) — Phase 1. Turns a
+  content-addressed CIK roster into a manifest-described Parquet dataset
+  snapshot. The cohort lives once, in an immutable roster dataset; the plan
+  references it by identity and records only the chunk layout, so a plan is
+  constant in size and moving a cohort to another machine keeps its plan and its
+  completed chunks. It also captures immutable external source snapshots,
+  projects the curated input against them, and supports copy-based multi-machine
+  distribution.
+- [`filing_catalog/`](filing_catalog/README.md) — Phase 2. Zero network.
+  Materializes a catalog snapshot from a Phase 1 snapshot and publishes
+  immutable, content-addressed target plans for the next phase to consume.
+- [`document_storage/`](document_storage/README.md) — Phase 2.5. Fetches primary
+  filings, unrolls SGML, normalizes, resolves delegated exhibits, and
+  consolidates per-run snapshots into one canonical snapshot across runs.
+
+Layer 4 is the only layer permitted to orchestrate. Orchestration means ordering,
+chunking, checkpointing, validating, and publishing — deciding *what happens
+next*. Lower layers expose capabilities; a layer-4 module sequences them into a
+run.
+
+Layer 4 is not the top of the graph. `apps/` (Layer 5) sits above it and may read
+everything here; the clause the scanner enforces is the reverse one — **nothing in
+this package may import `apps/`**, so a batch pipeline can never take a dependency
+on an operator-facing application. A non-batch consumer belongs in `apps/`, not
+here.
+
+The unifying rule of publication is that **nothing is published by a worker.**
+Workers emit immutable, schema-versioned fragments into a transient tree; a
+coordinator validates identity, provenance, schema, and duplicates, and only then
+writes into the published tree and advances the `current` pointer. Two of the
+three pipelines have workers at all.
+
+## Layer position
+
+`pipelines` is rank 4. It may import from `engine`, `infra`, `domain`, and
+`foundation` — downward only, as AGENTS.md §1 specifies. That is not a
+convention: the `layer-boundary` scanner parses each module's AST on every
+`check.py` run and fails any import whose callee layer ranks above the caller's,
+so no upward import out of this layer is expressible. The layer graph itself is
+documented once, in AGENTS.md §1; each pipeline's own `__init__.py` states which
+lower layers it depends on.
+
+## Layout
+
+| Module | Responsibility |
+| :--- | :--- |
+| `__init__.py` | Docstring only. No re-exports, per AGENTS.md §1.2. |
+| `metadata_sync/__init__.py` | Docstring only. |
+| `metadata_sync/cli.py` | The commands, the nested `sources` group, and the argparse surface; each `cmd_*` is a plain callable the operator also calls. |
+| `metadata_sync/operator.py` | Interactive wizard; a presentation layer over the same `cmd_*` functions. |
+| `metadata_sync/augment_flow.py` | The interactive augmentation journey: source observation, cohort build, base choice. |
+| `metadata_sync/progress.py` | Renders this pipeline's progress events for a person; presentation only. |
+| `metadata_sync/discovery.py` | What is already on disk, for the wizard to choose from. Manifest reads only. |
+| `metadata_sync/worker_commands.py` | Renders the distributed lifecycle as copy-pasteable shell commands. |
+| `metadata_sync/roster.py` | The content-addressed CIK roster: identity, atomic Parquet IO, set operations, and the published CIK index. |
+| `metadata_sync/manifest.py` | CIK CSV ingestion, normalization, deduplication, curated names, and the input fingerprint. |
+| `metadata_sync/planner.py` | `Plan`: chunk layout as roster ordinal ranges, plan identity, bundle write, and validated load. |
+| `metadata_sync/assignment.py` | Static chunk-to-worker assignment and the worker receipt that crosses the machine boundary. |
+| `metadata_sync/distribution.py` | Copy-based multi-machine distribution: export, select, and the import trust boundary. |
+| `metadata_sync/options.py` | The one typed options model the CLI and the operator both build; bundle path resolution. |
+| `metadata_sync/worker.py` | Resumable chunk execution over a thread pool; the never-refetch guarantee. |
+| `metadata_sync/checkpoints.py` | What counts as a *complete* chunk on disk. |
+| `metadata_sync/snapshot.py` | Resolve a published snapshot to a verified, ordered Parquet part list. |
+| `metadata_sync/merger.py` | Coordinator validation, multipart publication, progress events, CIK index, snapshot manifest, pointer. |
+| `metadata_sync/augmentation.py` | Delta planning and merge onto a published snapshot without refetching the base. |
+| `metadata_sync/sec_client.py` | One CIK to its submissions document plus every historical file it lists. |
+| `metadata_sync/paths.py` | `MetadataPaths` / `RunPaths`; the published-vs-transient split, plan bundle, source, registry, and snapshot-part locations. |
+| `metadata_sync/source_registry.py` | Write-once, content-addressed snapshots of an external SEC source: `company_tickers.json` and the full `cik-lookup-data.txt` registrant index, reached by `sources refresh --source`. |
+| `metadata_sync/universe.py` | Compiling a published full-universe snapshot into a cohort for `plan --universe`. |
+| `metadata_sync/registry.py` | Curated-versus-source comparison, the effective CIK roster, and the CSV export, reached by `sources compare`. |
+| `metadata_sync/smoke_test.py` | Credential-gated live check that never publishes. |
+| `filing_catalog/__init__.py` | Docstring only. |
+| `filing_catalog/cli.py` | Command dispatch, policy resolution, and the stdout/stderr split. |
+| `filing_catalog/operator.py` | Interactive wizard over the same `cmd_*` functions, with discovery-driven catalog and parent-plan selection. |
+| `filing_catalog/catalog_job.py` | `materialize()`: one Phase 1 snapshot in, one immutable catalog out, behind three guards. |
+| `filing_catalog/planner.py` | `plan()` for deterministic filtering and `plan_policy()` for quota selection, resolved era bands, and form-by-era allocation. |
+| `filing_catalog/expansion.py` | Parent validation, child derivation, and the retention invariant. |
+| `filing_catalog/publication.py` | Content-addressed plan ids, staged bundles, the selection fingerprint, and the reuse-or-conflict policy. |
+| `filing_catalog/discovery.py` | Manifest-only catalog/plan/policy enumeration and `current` resolution. |
+| `filing_catalog/paths.py` | `FilingCatalogPaths` and the artifact-name constants. |
+| `document_storage/__init__.py` | Docstring only. |
+| `document_storage/cli.py` | Command dispatch, plan-file ingestion, and the stdout/stderr split. |
+| `document_storage/operator.py` | `run_document_storage()`: process chunks, resolve delegations, publish. |
+| `document_storage/fixture_operator.py` | Fixture discovery and raw-payload fill operations. |
+| `document_storage/worker.py` | Chunk processing, the process pool, and the checkpoint-reuse rule. |
+| `document_storage/fetching.py` | `ArchiveFetcher` protocol and the fixture / broker / live backends. |
+| `document_storage/processor.py` | `FilingProcessor`, `PassThroughProcessor`, and the processor fingerprint. |
+| `document_storage/delegation.py` | The exhibit second pass for stub primaries. |
+| `document_storage/merger.py` | Per-run snapshot publication: assemble, split into parts, write manifest, move pointer. |
+| `document_storage/vacuum.py` | `vacuum_snapshots()`: cross-run consolidation into one canonical snapshot. Unwired — no CLI route, no production caller. |
+| `document_storage/queries.py` | The direct SQL for consolidation. |
+| `document_storage/paths.py` | `DocumentStoragePaths` and the published-vs-transient split. |
+| `document_storage/review.py` | `compare_review_runs()`: base-vs-new review-run comparison. |
+| `document_storage/review_artifacts.py` | Fixture-backed review artifact generation: selection, per-case files, manifest. |
+
+## Contracts
+
+**Guarantees this layer makes to its callers**
+
+- `plan` is deterministic and performs **no network and no model calls.** Plan
+  identity is derived from the plan-defining inputs rather than from a timestamp,
+  so replanning an unchanged input is idempotent while changing the chunking
+  produces a distinct plan. Phase 1's plan identity is the CIK *roster* plus the
+  chunk layout — never an assignment, a worker count, or a timestamp — so moving a
+  cohort to another machine keeps its plan directory and its completed chunks.
+- A worker never writes the canonical dataset. Every worker writes an immutable,
+  schema-versioned fragment under a transient root; only a coordinator publishes.
+  A chunk arriving from another machine under a copied bundle is held to the same
+  completeness check as a local one.
+- A partial file is never treated as complete. A chunk counts only once it exists,
+  carries the canonical schema, holds exactly the rows its plan's roster range
+  covers, and matches the expected input fingerprint; where text conventions are a
+  pipeline's own concern, a matching processor fingerprint is required too.
+- Every DuckDB connection is bounded. All three pipelines call
+  `infra.storage.duckdb.connect()` and never a raw `duckdb.connect()`; `connect()`
+  derives `threads`, `memory_limit`, `temp_directory`, and
+  `preserve_insertion_order=false` from `derive_resources()`. Hardcoding them is
+  blocked by the `resource-allocation` scanner.
+- Workers are sized from cgroup-aware memory, never from raw CPU count. Every
+  worker count is an explicit `int | None` argument whose unset value means "derive
+  it from this machine" rather than zero. `filing_catalog` has no worker: it
+  batches each pass one source part at a time over a single reused connection.
+- Heap is reclaimed at bounded intervals, and each pooled child is recycled after a
+  bounded number of tasks, so glibc arenas cannot grow unbounded. AGENTS.md §2.2
+  owns the rule; the owning worker module owns the interval.
+- The `current` pointer is written only after the artifact it names exists, and
+  only for the durable tree — an explicit artifacts root writes atomically but
+  leaves the pointer alone, so a scratch directory can be planned from without
+  disturbing published state.
+- A published artifact is immutable. Each pipeline refuses to overwrite a published
+  snapshot directory, rewrite a diverging plan bundle, or republish an existing
+  snapshot id. Correcting a bad run means publishing a new one, which is what
+  makes a published identity safe to record in provenance elsewhere.
+- **Run configuration is per invocation.** Effective values follow the environment
+  and the settings registry, resolved once at the options boundary. Because the plan
+  id follows the effective chunk size, planning with one `--chunk-size` and running
+  with another resolves a *different* plan, and the command says so rather than
+  reusing another plan's checkpoints.
+
+**Obligations callers place on this layer**
+
+- Run every command from the repository root. `resolve_paths()` treats the working
+  directory as the project root and hard-errors if it is inside the `edgar_sec`
+  package, but running from any other subdirectory silently derives a second
+  `.artifacts/` tree.
+- Do not treat a chunk checkpoint as a dataset. Nothing in this layer exposes a
+  transient path as a published one; `status` commands report published state
+  only.
+- Do not have a worker construct a published path. The coordinator is the only
+  writer of published artifacts, and `artifact-paths` blocks `.artifacts` literals
+  outside the path resolvers in `foundation/runtime/paths.py` and the per-pipeline
+  `paths.py` modules.
+- Do not add a fourth pipeline without updating `run.py`'s `ENTRIES` tuple, the
+  `layer-boundary` layer map in AGENTS.md §1, and the repository README's layout
+  section. `run.py` is the single dispatcher and it holds the list explicitly.
+
+## Public surface
+
+This layer publishes no re-exports: every `__init__.py` is a docstring, and
+consumers import from the leaf module (AGENTS.md §1.2). The layer-level surface is
+the launcher plus the shared operator policy; each pipeline's own surface is that
+package README's business.
+
+- `LauncherEntry`, `ENTRIES`, `main` — the root dispatcher registry. It holds this
+  package's three pipeline ids plus the Layer 5 `viewer` app, which is why the
+  entry class is not named `PipelineEntry`. `run.py` (repository root, not in this
+  package).
+- `operator_entrypoint`, `MenuAction`, `prompt_text` — the shared operator policy:
+  a menu with no arguments, the CLI otherwise.
+  `foundation/runtime/interactive.py`.
+
+## Command surface
+
+Every command is reachable from the repository root through `run.py`, which
+dispatches on the first argument to the entry's module via `runpy`. `python run.py`
+with no arguments shows the menu; `--list` prints the ids; `-h`/`--help` prints the
+docstring and the list; an unrecognized id prints an `Unknown pipeline` line naming
+the id and returns 1.
+
+| Entry id | Entrypoint module | Package |
+| :--- | :--- | :--- |
+| `metadata` | `metadata_sync/operator.py` | [Phase 1](metadata_sync/README.md#command-surface) |
+| `filing-catalog` | `filing_catalog/operator.py` | [Phase 2](filing_catalog/README.md#command-surface) |
+| `documents` | `document_storage/cli.py` | [Phase 2.5](document_storage/README.md#command-surface) |
+| `viewer` | `apps/viewer/cli.py` | Layer 5, read-only |
+
+Each linked command surface is the authoritative subcommand, flag, and exit-status
+table for its package.
+
+Each pipeline's `operator.py` carries an
+`if __name__ == "__main__": sys.exit(main())` guard, as do `metadata_sync/cli.py`
+and `document_storage/cli.py`, which the `clean-exit` scanner permits for CLI
+entrypoints.
+
+Two obligations hold across the layer:
+
+- Progress traces go to **stderr** and the JSON result to **stdout**, so
+  `… | jq` works.
+- `--workers` unset means machine-derived, not zero.
+
+## Resumability and publication
+
+All three pipelines hold the AGENTS.md §4 lifecycle. The pipeline-specific
+mechanics — chunk layout, checkpoint predicates, merge validation, staging and
+publication, plan-bundle completeness, and consolidation — are documented in the
+package READMEs. What belongs at the layer:
+
+- **Chunk workers exist only in `metadata_sync` and `document_storage`,** and the
+  two use different pool types for a stated reason: Phase 1's work is
+  network-bound, so it runs on a thread pool with DuckDB confined to the
+  coordinator, while Phase 2.5 normalizes a full filing document in memory, so it
+  runs on a process pool.
+- **Completion is recorded in the data, not in a side ledger.**
+  `metadata_sync` guarantees one row per requested CIK, including failures, so
+  completion is determinable from the published rows. `document_storage` publishes
+  per-run snapshots and then consolidates, deriving snapshot identity from the
+  chunks' own digests rather than from the merged Parquet file, which is not
+  byte-stable across writes.
+
+## Mirrored tests
+
+The test tree mirrors the source tree, one test file per source module, every
+directory a package. Mirrored pipelines tests live under `tests/pipelines/`.
+
+Some test modules here cover cross-module contracts rather than one source module:
+the Phase 1 plan → run → merge replay, scale and reassignment convergence, the
+Phase 1 / Phase 2.5 settings-default contract, and the Phase 2 → Phase 2.5 plan
+bundle interface. `metadata_sync/smoke_test.py` is the credential-gated live path;
+its argument guards are covered offline and its live fetch is never exercised.
+
+`tests/test_network_isolation.py` is the cross-layer zero-network proof. It walks
+the import graph by AST over `pipelines.filing_catalog`, `engine.selection`,
+`domain.taxonomy`, and `domain.filing_catalog` and asserts none reaches
+`edgar_sec.infra.sec_http`. It lives at the test-tree root rather than mirrored
+because the invariant spans four packages, and its last test deliberately walks
+`pipelines.metadata_sync` to prove the walk is sensitive enough to find a
+dependency that does exist.
+
+Coverage meets AGENTS.md §6.3's one-file-per-source-module rule for
+`metadata_sync` and `filing_catalog`. In `document_storage`, `operator.py` and
+`cli.py` share one test module, and `processor.py` and `queries.py` have none —
+their symbols are exercised from the worker, delegation, and vacuum tests, so
+nothing is untested, but a regression isolated to one of them is not reported as
+its own failure.
+
+## Deliberate gaps
+
+- **Phase 1 is a metadata pipeline, not a filing pipeline.** It ingests
+  `data.sec.gov` submissions JSON and unnests nothing. The document locator
+  vocabulary Phase 2.5 needs is produced by Phase 2.
+- **No intra-package import cycle detection.** The `layer-boundary` scanner
+  compares layer ranks only, so it cannot catch a cycle between two modules of this
+  layer or between two packages in it. A same-layer cross-package edge exists
+  today — `filing_catalog` reads `metadata_sync`'s path and snapshot helpers — and
+  it is acyclic by inspection, not by enforcement.
+- **No pipeline's menu asks for an artifacts root.** Launcher entries resolve the
+  configured project root, and a non-default root is a per-command `--artifacts`
+  flag. Only `filing_catalog` and `metadata_sync` expose that flag;
+  `document_storage` has none and is bound to the configured root. `viewer` is the
+  same at the CLI (`--artifacts-root`, optional) and is not interactive at all.
+- **Real-filing parity is unverified for Phase 2.5** — its committed goldens are
+  synthetic. See [`document_storage/README.md`](document_storage/README.md#deliberate-gaps).
+- **No scheduling, no cross-pipeline coordination, and no provenance graph.**
+  Each pipeline consumes the previous one's published artifact and nothing more.
+  The lineage that exists is local: `parent_plan_id` in a child `plan.json`,
+  `source_snapshot_ids` in a document manifest, `input_fingerprint` in a Phase 1
+  plan. There is no run registry tying the three together.

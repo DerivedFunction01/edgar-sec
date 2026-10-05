@@ -1,0 +1,306 @@
+"""Interactive terminal operator for the filing-catalog pipeline.
+A thin presentation layer over the same command functions the CLI uses, adding only
+discovery, so the catalog and plan are picked from what is published rather than
+typed. The menu never asks for an artifacts root: that has one authority already.
+"""
+
+from __future__ import annotations
+
+import argparse
+import sys
+from pathlib import Path
+from typing import Any
+
+from edgar_sec.domain.filing_catalog.filters import parse_date_selection
+from edgar_sec.domain.filing_catalog.schemas import (
+    SCOPE_DETERMINISTIC,
+    SCOPE_POLICY,
+)
+from edgar_sec.foundation.runtime.interactive import (
+    MenuAction,
+    operator_entrypoint,
+    prompt_text,
+)
+from edgar_sec.pipelines.filing_catalog.discovery import (
+    auto_policy,
+    current_catalog_id,
+    discover_catalogs,
+    discover_plans,
+    discover_policies,
+)
+from edgar_sec.pipelines.filing_catalog.paths import (
+    FilingCatalogPaths,
+    resolve_filing_catalog_paths,
+    safe_identifier,
+)
+
+from .cli import cmd_expand, cmd_materialize, cmd_plan, cmd_status
+from .cli import main as cli_main
+
+__all__ = ["build_operator_menu", "main"]
+
+MENU_TITLE = "Filing Catalog (Phase 02)"
+
+
+def _namespace(
+    command: str,
+    catalog: str = "",
+    forms: str = "",
+    dates: str = "",
+    policy: str = "",
+    scope: str = SCOPE_DETERMINISTIC,
+    parent_plan: str = "",
+    target_units: int = 0,
+) -> argparse.Namespace:
+    """Build a namespace with every field the dispatched command reads.
+    Every ``cmd_*`` dereferences each field; omitting one raises inside the wizard.
+    ``artifacts`` defaults to empty -- the configured project root, not an override.
+    """
+    return argparse.Namespace(
+        command=command,
+        catalog=catalog,
+        forms=[f for f in forms.replace(",", " ").split() if f],
+        scope=scope,
+        policy=policy,
+        auto_policy=False,
+        suffixes=[],
+        dates=dates,
+        limit=None,
+        source="",
+        source_manifest="",
+        artifacts="",
+        parent_plan=parent_plan,
+        target_units=target_units,
+    )
+
+
+def _ask_catalog() -> str:
+    """Pick the catalog to plan from, preferring the published pointer."""
+    paths = resolve_filing_catalog_paths()
+    catalogs = discover_catalogs(paths)
+    if not catalogs:
+        return prompt_text("Catalog id or 'current'", "current")
+    current = _current_catalog_index(catalogs, paths)
+    print("\nPublished catalogs:")
+    for index, catalog in enumerate(catalogs, start=1):
+        marker = " [current]" if index == current else ""
+        print(
+            f"  {index}. {catalog['catalog_id']}{marker}  "
+            f"{int(catalog.get('target_row_count') or 0):,} target rows, "
+            f"{int(catalog.get('part_count') or 0)} parts"
+        )
+    default = "1" if current is None else str(current)
+    answer = prompt_text("Catalog number", default).strip() or default
+    try:
+        return str(catalogs[int(answer) - 1]["catalog_id"])
+    except (ValueError, IndexError):
+        print("invalid selection; using 'current'")
+        return "current"
+
+
+def _current_catalog_index(
+    catalogs: list[dict[str, Any]], paths: FilingCatalogPaths
+) -> int | None:
+    """1-based position of the published catalog, or ``None``.
+    ``paths`` is passed rather than re-resolved: a second resolution could read a
+    different root and mark the wrong entry current.
+    """
+    current_id = current_catalog_id(paths)
+    if current_id is None:
+        return None
+    for index, catalog in enumerate(catalogs, start=1):
+        if catalog["catalog_id"] == current_id:
+            return index
+    return None
+
+
+def _ask_parent_plan() -> tuple[str, int] | None:
+    """Pick the policy plan to expand, as a resolved directory and its size.
+
+    Only policy-scope plans are offered; expansion refuses a deterministic parent.
+    """
+    paths = resolve_filing_catalog_paths()
+    parents = [
+        plan for plan in discover_plans(paths) if plan.get("scope") == SCOPE_POLICY
+    ]
+    if not parents:
+        print(
+            "no policy-driven plan is published to expand; publish one with "
+            "'plan --scope policy' on the CLI first"
+        )
+        return None
+    print("\nPolicy plans available to expand:")
+    for index, plan in enumerate(parents, start=1):
+        parent = str(plan.get("parent_plan_id") or "")
+        suffix = f"  (expanded from {parent})" if parent else ""
+        print(
+            f"  {index}. {plan['plan_id']}  "
+            f"{int(plan.get('unique_locators_count') or 0):,} locators, "
+            f"{int(plan.get('target_units') or 0):,} target units{suffix}"
+        )
+    answer = prompt_text("Parent plan number", "1").strip() or "1"
+    try:
+        chosen = parents[int(answer) - 1]
+    except (ValueError, IndexError):
+        print("invalid selection")
+        return None
+    plan_id = str(chosen["plan_id"])
+    return str(paths.plan_dir(plan_id)), int(chosen.get("unique_locators_count") or 0)
+
+
+def _action_materialize() -> None:
+    source = prompt_text("Phase 1 metadata.parquet path (blank for current)", "")
+    args = _namespace("materialize")
+    args.source = source
+    cmd_materialize(args)
+
+
+def _ask_dates() -> str:
+    """Prompt for a report_date selection, re-asking until it parses.
+    Calls the CLI's own parser, or the menu would accept what the CLI rejects. Blank
+    stays valid: "no date predicate", not "no answer".
+    """
+    while True:
+        answer = prompt_text(
+            "Report dates, e.g. '@Q1[1999..2001],2005Q3..2008Q1' (blank for all)",
+            "",
+        ).strip()
+        try:
+            parse_date_selection(answer)
+        except ValueError as error:
+            print(f"invalid date selection: {error}")
+            continue
+        return answer
+
+
+def _action_plan() -> None:
+    catalog = _ask_catalog()
+    forms = prompt_text("Forms (space separated, blank for all)", "")
+    dates = _ask_dates()
+    cmd_plan(_namespace("plan", catalog=catalog, forms=forms, dates=dates))
+
+
+def _draft_path(paths: FilingCatalogPaths, name: str) -> Path:
+    """Return the path of a named policy draft, or why the name is unusable.
+    The name becomes a filename, reduced through ``safe_identifier``; two names reducing
+    alike are refused rather than overwriting each other.
+    """
+    candidate = f"{name.strip().lower().replace(' ', '-')}.json"
+    try:
+        return paths.policies_root / safe_identifier(candidate)
+    except ValueError:
+        raise ValueError(
+            f"draft name {name!r} must reduce to letters, digits, dashes, or "
+            "underscores"
+        ) from None
+
+
+def _write_policy_draft(paths: FilingCatalogPaths, catalog: str) -> Path:
+    """Write an all-forms draft for ``catalog`` and return its path.
+    Derived from the catalog's own forms so an operator edits rather than authors.
+    Dates and era bands stay unset: both resolve at plan time.
+    """
+    policy = auto_policy(catalog, paths)
+    destination = _draft_path(paths, policy.corpus_id)
+    policy.write(destination)
+    print(f"wrote policy draft {destination}")
+    print(f"  forms        {len(policy.forms)}")
+    print(f"  units        {policy.base_content_units}")
+    print(f"  dates        {policy.date_selection_text or '(all)'}")
+    print("  era bands    derived at plan time")
+    print("edit the draft, then choose it to plan")
+    return destination
+
+
+def _action_plan_policy() -> None:
+    """Create or run a selection policy for one catalog.
+
+    Blank always means "write a new one", never "run the first found".
+    """
+    catalog = _ask_catalog()
+    paths = resolve_filing_catalog_paths()
+    drafts = discover_policies(paths)
+    if drafts:
+        print("existing policy drafts:")
+        for index, draft in enumerate(drafts, start=1):
+            dates = draft.get("date_selection_text") or "(all)"
+            bands = (
+                f"{draft.get('era_band_count')} declared"
+                if not draft.get("derives_era_bands")
+                else "derived"
+            )
+            print(
+                f"  {index}) {draft['name']} -- {len(draft['forms'])} forms, "
+                f"{draft['base_content_units']} units, dates {dates}, bands {bands}"
+            )
+    else:
+        print("no policy drafts found")
+
+    while True:
+        choice = prompt_text(
+            "Number of a draft to plan, blank to write a new one", ""
+        ).strip()
+        if not choice:
+            _write_policy_draft(paths, catalog)
+            return
+        if not choice.isdigit() or not 1 <= int(choice) <= len(drafts):
+            print(f"enter a number between 1 and {len(drafts)}, or blank")
+            continue
+        selected = drafts[int(choice) - 1]["path"]
+        cmd_plan(
+            _namespace(
+                "plan",
+                catalog=catalog,
+                policy=selected,
+                scope=SCOPE_POLICY,
+            )
+        )
+        return
+
+
+def _action_expand() -> None:
+    selection = _ask_parent_plan()
+    if selection is None:
+        return
+    parent_plan, parent_units = selection
+    target = prompt_text(
+        f"Target units for the child plan (at least {parent_units:,})",
+        str(max(parent_units, 1)),
+    ).strip()
+    try:
+        target_units = int(target)
+    except ValueError:
+        print("target units must be a whole number")
+        return
+    if target_units < parent_units:
+        # A contraction is not an expansion; refusing it here costs no feature build.
+        print(
+            f"target units {target_units:,} is smaller than the parent's "
+            f"{parent_units:,}; that is a contraction, not an expansion"
+        )
+        return
+    cmd_expand(_namespace("expand", parent_plan=parent_plan, target_units=target_units))
+
+
+def _action_status() -> None:
+    cmd_status(_namespace("status"))
+
+
+def build_operator_menu() -> tuple[MenuAction, ...]:
+    """Build the operator actions bound to the shared command functions."""
+    return (
+        MenuAction("1", "Report published catalogs and plans", _action_status),
+        MenuAction("2", "Materialize a catalog snapshot", _action_materialize),
+        MenuAction("3", "Publish a deterministic target plan", _action_plan),
+        MenuAction("4", "Publish a selection policy plan", _action_plan_policy),
+        MenuAction("5", "Expand a policy plan to more locators", _action_expand),
+    )
+
+
+def main(argv: list[str] | None = None) -> int:
+    """Operator entrypoint: interactive by default, CLI when given a command."""
+    return operator_entrypoint(MENU_TITLE, build_operator_menu(), cli_main, argv)
+
+
+if __name__ == "__main__":
+    sys.exit(main())

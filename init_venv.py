@@ -1,11 +1,7 @@
-"""
-Interactive Python Environment Setup Script
-Optimized for modern ML workflows
-Includes automatic GPU detection and TORCH LOCKING to prevent downgrades
-Supports uv (fast) with automatic fallback to pip
-"""
+"""Interactive venv setup: GPU detection, torch wheel locking, uv with pip fallback."""
 
 import argparse
+import re
 import subprocess
 import sys
 from pathlib import Path
@@ -16,6 +12,7 @@ USE_VENV = True
 USE_UV = False  # Set automatically by detect_uv()
 GPU_AVAILABLE = False
 CUDA_VERSION = "cu121"
+_CUDA_VERSION_RE = re.compile(r"CUDA Version: (\d+)\.(\d+)")
 UPGRADE = False
 REINSTALL_TORCH = False
 
@@ -65,8 +62,7 @@ ML_PACKAGES = [
     "accelerate",
 ]
 
-# For the old "install all" option, kept for compatibility if needed
-# but the new menu provides more granular control.
+# Legacy "install all" list; the menu installs from the three above.
 PACKAGES = ML_PACKAGES + BASE_PACKAGES + CUSTOM_PACKAGES
 
 
@@ -137,9 +133,8 @@ def detect_nvidia_gpu():
                     text=True,
                     timeout=5,
                 )
-                import re
 
-                match = re.search(r"CUDA Version: (\d+)\.(\d+)", cuda_info.stdout)
+                match = _CUDA_VERSION_RE.search(cuda_info.stdout)
                 if match:
                     major, minor = match.groups()
                     CUDA_VERSION = f"cu{major}{minor}"
@@ -180,13 +175,9 @@ def detect_amd_gpu():
 
 
 def get_supported_cuda_version(detected: str) -> str:
-    """
-    Clamp the detected CUDA version to the latest wheel PyTorch actually
-    publishes. Newer drivers are backward-compatible, so the highest
-    supported wheel always works.
+    """Clamp a detected CUDA version to the newest wheel PyTorch publishes.
 
-    Update SUPPORTED_CUDA_VERSIONS when PyTorch adds new wheels.
-    See: https://download.pytorch.org/whl/torch/
+    Update the list when new wheels ship: https://download.pytorch.org/whl/torch/
     """
     SUPPORTED_CUDA_VERSIONS = ["cu118", "cu121", "cu124", "cu126", "cu128"]
 
@@ -255,12 +246,7 @@ def get_pytorch_install_args() -> list[str]:
 def _build_install_cmd(
     packages: list[str], extra_args: list[str] | None = None
 ) -> list[str]:
-    """
-    Build the full install command as a list (no shell=True needed).
-
-    uv pip install  → uv pip install [--upgrade] <pkgs> [extra_args]
-    pip install     → <venv>/bin/pip install [--upgrade] <pkgs> [extra_args]
-    """
+    """Build the install argv for uv or pip (never a shell string)."""
     extra_args = extra_args or []
 
     if USE_UV:
@@ -320,10 +306,8 @@ def install_packages(package_list: list[str], description: str):
 def install_pytorch():
     """Install PyTorch with appropriate GPU support."""
     print("📦 Installing PyTorch...")
+    # Split packages from index-url args so _build_install_cmd can place them.
     torch_args = get_pytorch_install_args()
-
-    # Split packages from index-url args so _build_install_cmd can position them correctly
-    # torch_args looks like: ["torch", "torchvision", "torchaudio", "--index-url", "<url>"]
     try:
         idx = torch_args.index("--index-url")
         packages = torch_args[:idx]

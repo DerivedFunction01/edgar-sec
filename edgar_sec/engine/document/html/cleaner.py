@@ -1,0 +1,355 @@
+"""HTML pre-cleaning: strip transport and presentation noise before DOM work.
+Preserved on purpose: symbolic fonts, keyed on by checkbox normalization, plus `colspan`/`rowspan`,
+borders, alignment, `width`, and all text. Pass order is a contract - glyphs need unwrapped tags.
+"""
+
+from __future__ import annotations
+
+import re
+
+from edgar_sec.domain.forms.common.checkmarks import (
+    CANONICAL_CHECKED,
+    CANONICAL_UNCHECKED,
+    font_bullet_glyph_state,
+    font_glyph_state,
+)
+from edgar_sec.foundation.regex.builder import build_alternation
+from edgar_sec.foundation.text.normalize import sanitize_unicode_whitespace
+
+# ix:header/ix:hidden hold only XBRL metadata, so they drop whole rather than unwrap.
+_RE_IX_HEADER_BLOCK = re.compile(r"(?is)<ix:header\b.*?</ix:header>")
+_RE_IX_HIDDEN_BLOCK = re.compile(r"(?is)<ix:hidden\b.*?</ix:hidden>")
+_IXBRL_PREFIXES = build_alternation(["ix", "xbrl", "xbrli", "dei", "us-gaap"])
+_RE_IXBRL_TAG = re.compile(rf"(?i)</?(?:{_IXBRL_PREFIXES}):[a-z][a-z0-9_.-]*[^>]*>")
+
+
+# Standard families carry no downstream signal; symbolic fonts do.
+_PRESERVED_FAMILIES = ("wingdings", "webdings", "symbol")
+_PRESERVED_FAMILIES_ALT = build_alternation(_PRESERVED_FAMILIES, auto_escape=True)
+_RE_HAS_PRESERVED_FAMILY = re.compile(rf"(?i)\b(?:{_PRESERVED_FAMILIES_ALT})\b")
+
+_BOX_SPACING_ALT = build_alternation(["margin", "padding"], auto_escape=True)
+_TYPOGRAPHY_ALT = build_alternation(
+    [
+        "line-height",
+        "letter-spacing",
+        "word-spacing",
+        "text-indent",
+        "text-decoration",
+    ],
+    auto_escape=True,
+)
+_MISC_STYLE_ALT = build_alternation(
+    [
+        "cursor",
+        "z-index",
+        "overflow",
+        "clear",
+        "float",
+        "box-sizing",
+        "outline",
+        "opacity",
+    ],
+    auto_escape=True,
+)
+_SIDE_SUFFIX_ALT = build_alternation(
+    ["top", "bottom", "left", "right"], auto_escape=True
+)
+
+# One combined pass strips non-semantic typography, font, margin, padding, colour and flow
+# properties while preserving structural borders, alignment, widths, page breaks, symbolic fonts.
+_RE_BENIGN_STYLE_DECL = re.compile(
+    r"(?i)(?<![a-z-])(?:"
+    rf"font-family\s*:\s*(?![^;\"'\n>]*(?:{_PRESERVED_FAMILIES_ALT}))[^;\"'\n>]*"
+    r"|font-size\s*:[^;\"'\n>]*"
+    r"|(?:background-)?color\s*:[^;\"'\n>]*"
+    rf"|(?:{_BOX_SPACING_ALT})(?:-(?:{_SIDE_SUFFIX_ALT}))?\s*:[^;\"'\n>]*"
+    rf"|(?:{_TYPOGRAPHY_ALT})\s*:[^;\"'\n>]*"
+    rf"|(?:{_MISC_STYLE_ALT})\s*:[^;\"'\n>]*"
+    r");?"
+)
+
+_RE_REDUNDANT_SEPARATORS = re.compile(r";\s*;")
+_RE_EMPTY_STYLE_ATTR = re.compile(r'(?i)(?<=[\s"])style\s*=\s*"\s*"')
+
+_RE_TAG_OR_TEXT = re.compile(r"(?is)<!--.*?-->|<[^>]*>|[^<]+")
+_RE_STYLE_FONT_FAMILY = re.compile(
+    r"(?i)\bfont-family\s*:\s*([^;\"]+)|(?<=style=[\"'])\s*([a-z0-9\s,'\"_-]+?)(?:;|\"|'|$)"
+)
+_RE_FACE_ATTR = re.compile(r"(?i)\bface\s*=\s*(?:\"([^\"]*)\"|'([^']*)'|([^\s>]+))")
+_RE_GLYPH = re.compile(r"[\u00a8\u00a3\u00fe\u00fdrRnNuUoOxX]")
+_VOID_TAGS = frozenset(
+    {
+        "area",
+        "base",
+        "br",
+        "col",
+        "embed",
+        "hr",
+        "img",
+        "input",
+        "link",
+        "meta",
+        "param",
+        "source",
+        "track",
+        "wbr",
+    }
+)
+
+
+_RE_FONT_TAG = re.compile(r"(?i)<font\b([^>]*)>")
+_RE_FONT_ATTRS = re.compile(
+    r"""(?i)\s+(?:face=(?:"([^"]*)"|'([^']*)'|([^\s>]+))|(?:size|color)=(?:"[^"]*"|'[^']*'|[^\s>]+))"""
+)
+
+_NOISE_ATTRS_ALT = build_alternation(
+    ["tabindex", "target", "shape", "coords"], auto_escape=True
+)
+_RE_NOISE_ATTRS = re.compile(
+    rf"(?i)\s+(?:{_NOISE_ATTRS_ALT})=(?:[\"'][^>\"']*[\"']|[^>\s\"']+)"
+)
+
+
+_METADATA_PREFIX_ALT = build_alternation(["mso", "data"], auto_escape=True)
+_METADATA_LANG_ALT = build_alternation(["xml:lang", "lang"], auto_escape=True)
+
+_RE_METADATA_ATTR = re.compile(
+    rf"""(?i)\s+(?:(?:{_METADATA_PREFIX_ALT})-[a-z0-9_.-]+|(?:{_METADATA_LANG_ALT}))\s*=\s*(?:"[^"]*"|'[^']*')"""
+)
+
+
+def _replace_font_glyphs(text: str, font_family: str) -> str:
+    """Expand symbolic-font glyphs inside one text node."""
+    stripped = text.strip()
+    is_standalone = len(stripped) <= 3
+
+    def replace(match: re.Match[str]) -> str:
+        glyph = match.group(0)
+        if (
+            glyph in {"r", "R", "o", "O", "x", "X", "s", "S", "n", "N", "u", "U"}
+            and not is_standalone
+        ):
+            return glyph
+        # A pre-rendered [X] inside a symbolic-font scope must not become [[X]].
+        start, end = match.start(), match.end()
+        if (
+            start > 0
+            and end < len(text)
+            and text[start - 1] in "[(/"
+            and text[end] in "])/"
+        ):
+            return glyph
+        if start >= 2 and end <= len(text) - 2:
+            surrounding = text[start - 2 : end + 2]
+            if (
+                surrounding[0] in "[("
+                and surrounding[-1] in "])"
+                and surrounding[1] in "xXoOsSrRnNuU"
+            ):
+                return glyph
+        bullet = font_bullet_glyph_state(font_family, glyph)
+        if bullet is not None:
+            return bullet
+        state = font_glyph_state(font_family, glyph)
+        if state == "checked":
+            return CANONICAL_CHECKED
+        if state == "unchecked":
+            return CANONICAL_UNCHECKED
+        return glyph
+
+    return _RE_GLYPH.sub(replace, text)
+
+
+def strip_ixbrl_inline_tags(html: str) -> str:
+    """Unwrap inline XBRL tags while keeping their inner text content.
+    `ix:header` and `ix:hidden` are dropped whole: they are pure metadata.
+    """
+    if ":" not in html:
+        return html
+    if "ix:header" in html or "IX:HEADER" in html:
+        html = _RE_IX_HEADER_BLOCK.sub(" ", html)
+    if "ix:hidden" in html or "IX:HIDDEN" in html:
+        html = _RE_IX_HIDDEN_BLOCK.sub(" ", html)
+    return _RE_IXBRL_TAG.sub("", html)
+
+
+def normalize_font_qualified_glyphs(html: str) -> str:
+    """Map glyphs only inside text nodes carrying an explicit symbolic font.
+    A nested declaration replaces the inherited one, so text under a ``<font face="Arial">`` override is never read as a checkbox.
+    """
+    if not html:
+        return html
+    if not _RE_HAS_PRESERVED_FAMILY.search(html):
+        return html
+
+    output: list[str] = []
+    font_stack: list[str | None] = []
+    current_font: str | None = None
+    opaque_depth = 0
+    for match in _RE_TAG_OR_TEXT.finditer(html):
+        token = match.group(0)
+        if token[0] != "<":
+            if opaque_depth or current_font is None:
+                output.append(token)
+            else:
+                output.append(_replace_font_glyphs(token, current_font))
+            continue
+
+        if token.startswith("<!--"):
+            output.append(token)
+            continue
+
+        is_closing = len(token) > 1 and token[1] == "/"
+        output.append(token)
+
+        if is_closing:
+            tag_name = (
+                token[2:].split()[0].rstrip(">").lower() if len(token) > 2 else ""
+            )
+            if tag_name in ("script", "style") and opaque_depth:
+                opaque_depth -= 1
+            if font_stack:
+                current_font = font_stack.pop()
+            continue
+
+        tag_part = token[1:].split(None, 1)[0].rstrip("/>")
+        tag_name = tag_part.lower()
+        if tag_name in ("script", "style"):
+            opaque_depth += 1
+        if tag_name in _VOID_TAGS or token.endswith("/>"):
+            continue
+
+        font_stack.append(current_font)
+        tok_lower = token.lower()
+        if "font-family" in tok_lower:
+            style_match = _RE_STYLE_FONT_FAMILY.search(token)
+            if style_match:
+                current_font = (
+                    style_match.group(1) or style_match.group(2) or ""
+                ).strip()
+                continue
+        if "face=" in tok_lower or "face =" in tok_lower:
+            face_match = _RE_FACE_ATTR.search(token)
+            if face_match:
+                current_font = next(
+                    (value for value in face_match.groups() if value is not None), ""
+                ).strip()
+
+    return "".join(output)
+
+
+def strip_benign_font_styles(html: str) -> str:
+    """Strip redundant standard font and layout declarations from style attributes.
+    Symbolic fonts and structural declarations (borders, alignment, width, page breaks, ``display:none``) are never touched.
+    """
+    if "style=" not in html and "style =" not in html:
+        return html
+    html = _RE_BENIGN_STYLE_DECL.sub("", html)
+    html = _RE_REDUNDANT_SEPARATORS.sub(";", html)
+    return _RE_EMPTY_STYLE_ATTR.sub("", html)
+
+
+def strip_office_metadata_attributes(html: str) -> str:
+    """Strip ``mso-*``, ``data-*``, ``xml:lang``, and ``lang`` attributes."""
+    if (
+        "mso-" not in html
+        and "data-" not in html
+        and "lang=" not in html
+        and "LANG=" not in html
+    ):
+        return html
+    return _RE_METADATA_ATTR.sub("", html)
+
+
+def strip_font_tag_and_noise_attributes(html: str) -> str:
+    """Strip legacy non-symbolic font face/size/color and noise attributes."""
+    if "<font" in html or "<FONT" in html:
+
+        def _clean_tag(match: re.Match[str]) -> str:
+            attrs = match.group(1)
+
+            def _clean_attr(m: re.Match[str]) -> str:
+                face_val = m.group(1) or m.group(2) or m.group(3)
+                if face_val and _RE_HAS_PRESERVED_FAMILY.search(face_val):
+                    return m.group(0)
+                return ""
+
+            new_attrs = _RE_FONT_ATTRS.sub(_clean_attr, attrs)
+            return f"<font{new_attrs}>"
+
+        html = _RE_FONT_TAG.sub(_clean_tag, html)
+    if (
+        "tabindex=" in html
+        or "target=" in html
+        or "shape=" in html
+        or "coords=" in html
+    ):
+        html = _RE_NOISE_ATTRS.sub("", html)
+    return html
+
+
+_TOC_NAV_PHRASES = build_alternation(
+    [
+        r"table\s+of\s+contents",
+        r"return\s+to\s+table\s+of\s+contents",
+        r"index\s+to\s+(?:financial\s+statements|exhibits)",
+        r"back\s+to\s+top",
+    ],
+    auto_escape=False,
+)
+_RE_TOC_NAV_LINK = re.compile(
+    rf"""(?is)<a\b[^>]*\bhref\s*=\s*["']#[^"']*["'][^>]*>\s*(?:<[^>]+>\s*)*(?:{_TOC_NAV_PHRASES})\s*(?:</[^>]+>\s*)*</a>"""
+)
+
+
+_NON_DISPLAYING_TAGS = build_alternation(["script", "style", "head"])
+_RE_HAS_NON_DISPLAYING_BLOCK = re.compile(rf"(?i)<(?:{_NON_DISPLAYING_TAGS})\b")
+_RE_HEAD_SCRIPT_STYLE = re.compile(
+    rf"(?is)<(?:{_NON_DISPLAYING_TAGS})\b[^>]*>.*?</(?:{_NON_DISPLAYING_TAGS})>"
+)
+
+
+def strip_toc_navigation_links(html: str) -> str:
+    """Strip web-only intra-document TOC jump-links.
+    ``<a href="#...">Table of Contents</a>`` is viewer chrome and would otherwise surface as prose.
+    """
+    if "href=" not in html and "href =" not in html and "HREF=" not in html:
+        return html
+    return _RE_TOC_NAV_LINK.sub("", html)
+
+
+def strip_non_displaying_blocks(html: str) -> str:
+    """Drop ``<head>``, ``<script>``, and ``<style>`` blocks wholesale.
+    Never rendered, yet a title or stylesheet rule is indistinguishable from filing prose.
+    """
+    if not html:
+        return html
+    if not _RE_HAS_NON_DISPLAYING_BLOCK.search(html):
+        return html
+    return _RE_HEAD_SCRIPT_STYLE.sub(" ", html)
+
+
+def clean_html_for_parsing(html: str) -> str:
+    """Unified HTML cleaning entry point.
+    Order is a contract: XBRL first, so glyph normalization sees unwrapped tags; whitespace last.
+    """
+    html = strip_ixbrl_inline_tags(html)
+    html = normalize_font_qualified_glyphs(html)
+    html = strip_benign_font_styles(html)
+    html = strip_font_tag_and_noise_attributes(html)
+    html = strip_office_metadata_attributes(html)
+    html = strip_toc_navigation_links(html)
+    return sanitize_unicode_whitespace(html)
+
+
+__all__ = [
+    "clean_html_for_parsing",
+    "normalize_font_qualified_glyphs",
+    "strip_benign_font_styles",
+    "strip_font_tag_and_noise_attributes",
+    "strip_ixbrl_inline_tags",
+    "strip_non_displaying_blocks",
+    "strip_office_metadata_attributes",
+    "strip_toc_navigation_links",
+]

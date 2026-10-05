@@ -1,46 +1,48 @@
 # Ruff configuration for the edgar-sec repository.
 #
-# Ruff 0.16 enables a broad default rule set (pyflakes/pycodestyle plus the
+# Ruff's default rule set is already broad (pyflakes/pycodestyle plus the
 # bugbear, bandit, tryceratops, simplify, pylint, and ruff families). The
 # ignores below are deliberate: they silence patterns that are intentional in
 # this codebase while keeping the checks that catch real defects.
+#
+# Lint suppression belongs here, not scattered across modules as `# noqa`.
+# When a rule is noisy for a deliberate pattern, suppress it here with a
+# rationale, and prefer a per-file ignore over a global one.
 
 target-version = "py312"
 
 [lint]
 # TRY004 (type-check-without-type-error) is disabled: config and payload
-# validation in this repo intentionally raises ValueError. A malformed config
-# value is a data problem, not an API type error.
+# validation in this repo intentionally raises ValueError. A malformed plan
+# or manifest is a data problem, not an API type error, and the CLI maps both
+# ValueError and TypeError to the same nonzero exit.
 ignore = ["TRY004"]
+# ERA001 is enabled explicitly because ruff's default set omits eradicate: dead
+# code left in comments is the same category as the prose caps in AGENTS.md §5 —
+# commentary the code no longer needs. It fires on commented-out statements, not
+# on prose, so it needs no per-file suppression.
+select = ["ERA001"]
 
 [lint.per-file-ignores]
-# defs/sql/__init__.py is the public SQL contract surface; its imports are
-# intentional re-exports consumed as defs.sql.<name>.
-"defs/sql/__init__.py" = ["F401"]
-
-# Viewer tests register fixtures by importing them from viewer_fixtures, then
-# re-list the same names as pytest test parameters. Ruff cannot see the
-# fixture injection and reports F811 redefinitions.
-"defs/tests/test_viewer_datasets.py" = ["F811"]
-"defs/tests/test_viewer_discover.py" = ["F811"]
-"defs/tests/test_viewer_server.py" = ["F811"]
-
 # init_venv.py is an environment bootstrap script, not production code:
-# subprocess probes inspect return codes manually (PLW1510) and GPU/tool
+# subprocess probes inspect return codes manually (PLW1510) and dependency
 # detection is deliberately best-effort (BLE001, S110).
 "init_venv.py" = ["BLE001", "PLW1510", "S110"]
 
-# defs/runtime/checks.py runs registered policy scanners whose failures must
-# fail the validation gate, so the runner deliberately catches every
-# exception the scanner callable can raise.
-"defs/runtime/checks.py" = ["BLE001"]
+# check.py is the gate runner: it inspects subprocess return codes to decide
+# which step failed and must not swallow them.
+"check.py" = ["PLW1510"]
 
-# defs/sec_http/broker_cli.py runs liveness probes against a possibly absent
-# or stale broker socket; any transport/protocol failure means the broker is
-# not reachable, so the probes deliberately catch broad exceptions.
-"defs/sec_http/broker_cli.py" = ["BLE001"]
+# merger.py isolates progress-callback failures. A progress callback is
+# presentation supplied by a caller (a stderr line, a tqdm bar, a test recorder);
+# a broken bar must never reject an already-validated snapshot, so the callback
+# is wrapped in a deliberately blind except with no logging.
+"edgar_sec/pipelines/metadata_sync/merger.py" = ["BLE001", "S110"]
 
-# scripts/monitor_progress.py polls active chunk databases in read-only mode
-# while workers concurrently initialize, write, and lock tables; broad exception
-# catching is intentional to prevent polling crashes during in-flight writes.
-"scripts/monitor_progress.py" = ["BLE001", "S110"]
+# One-off audit tooling under .kilo/plans/ is not part of the shipped package
+# and is not covered by check.py, but it is still linted. ISC004 is suppressed
+# because the implementation ledger stores audit evidence as long prose in
+# tuple elements, and wrapping every one in parentheses would bury the data under
+# punctuation. SIM115 is suppressed because these scripts write their reports
+# once at the end of a run and a context manager per write adds nothing.
+".kilo/plans/parity-inventory/*.py" = ["ISC004", "SIM115"]

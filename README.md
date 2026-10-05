@@ -1,174 +1,321 @@
 # edgar-sec
 
-Transforms SEC filing inputs into versioned, queryable research data
-(Parquet / JSONL / SQL) with provenance and resumable runs.
+High-performance, memory-safe SEC EDGAR extraction engine and pipeline. Transforms SEC submissions and filing disclosures into clean, versioned, queryable columnar datasets (Parquet / Arrow / DuckDB).
 
-Runtime workers are machine-local and automatically sized from cgroup-aware
-available memory using a 512 MiB per-worker estimate and safety budget. Explicit
-CLI, environment, or persisted worker values override automatic sizing. Generic
-HTTP transport concurrency defaults to 16; SEC uses an 8-request cap separately
-from its request-start rate limiter.
+---
 
-Engineering contract and long-term direction live in [`AGENTS.md`](AGENTS.md)
-and [`roadmap/master_roadmap.md`](roadmap/master_roadmap.md).
+## Architecture Overview
 
-### Repository layout
+`edgar_sec` is built from Layer 0 up with strict acyclic downward-only dependencies:
 
 ```text
-defs/              # domain-neutral infrastructure (SEC HTTP, storage, runtime, sql, llm, viewer)
-phases/            # phase-owned schemas, normalization, planning, validation, merge
-  01_metadata_extraction/   # Phase 01 — submissions metadata (data.sec.gov)
-  02_filing_extraction/     # Phase 02 — filing catalog and target planning (no network)
-  025_webpage_storage/      # Phase 2.5 — acquisition, normalization, temporal snapshots
-  #   (future) Phase 03 — section segmentation and boundary discovery
-roadmap/           # product and extraction specifications (Milestones M1–M5)
-scripts/           # operations and diagnostics (e.g. monitor_progress.py)
-uploads/           # input manifests
-.artifacts/        # published manifests and transient runs (git-ignored)
+Layer 5: apps/         # Read-only, operator-facing consumers of published artifacts
+Layer 4: pipelines/    # High-level orchestrators, CLI, and resumable execution
+Layer 3: engine/       # Normalization, array unrolling, Arrow batch construction
+Layer 2: infra/        # SEC HTTP transport, token-bucket rate limiter, DuckDB storage
+Layer 1: domain/       # Identity types (Cik, AccessionNumber) and schema definitions
+Layer 0: foundation/   # Crypto, cgroup resources, memory reclamation, settings registry, scanners
 ```
 
-## Quick start
+[AGENTS.md §1](AGENTS.md) is normative for the layer rules and what each layer may import; a policy scanner enforces the graph.
+
+---
+
+## Resource & Memory Guarantees
+
+1. **Cgroup-aware worker sizing** — worker counts derive from cgroup or `/proc/meminfo` memory headroom, never from raw CPU count, so a large host cannot overcommit a small container.
+2. **Bounded DuckDB** — every connection takes its threads, memory limit, and spill directory from that same budget.
+3. **Streaming hashing** — digests stream in blocks, so hashing a multi-megabyte filing never materializes a second full-size copy.
+4. **Scanner enforcement** — `check.py` refuses hardcoded resource limits, environment bypasses, and upward layer imports.
+
+[AGENTS.md §2](AGENTS.md) states each guarantee and the scanner that enforces it.
+
+---
+
+## Quick Start
+
+> [!IMPORTANT]
+> **Run every command from the repository root.** The artifacts, uploads, and
+> cache roots all derive from the current working directory, so running from
+> inside `edgar_sec/` would derive a second, parallel `.artifacts/` tree and
+> silently report an empty catalog. The engine refuses to start there.
+
+### Interactive Launcher
+```bash
+# Launch interactive dispatcher menu:
+python run.py
+```
+
+### Quality Gate
+```bash
+# Full verification gate (format, lint, scanners, tests):
+.venv/bin/python check.py
+
+# Auto-fix formatting and safe lints; does NOT run tests:
+.venv/bin/python check.py --fix
+
+# Fast static verification during development; skips tests:
+.venv/bin/python check.py --fast
+```
+
+### Environment Template
+```bash
+# Generate documented environment configuration:
+python -c "from edgar_sec.foundation.runtime.settings import render_dotenv; print(render_dotenv())" > .env
+```
+
+### Metadata Sync Pipeline
+```bash
+# Capture an immutable external source snapshot, then project the curated input
+# against it to find registrants upstream that the CSV does not cover:
+python run.py metadata sources refresh
+python run.py metadata sources compare --input uploads/cik-sec.csv \
+    --source-manifest <artifacts-root>/metadata/sources/company_tickers/<id>/manifest.json
+
+# Plan a cohort (deterministic, no network). --input takes a curated CSV;
+# --roster takes a published effective CIK roster id from `sources compare`;
+# --universe takes every registrant the SEC knows.
+python run.py metadata plan --input uploads/cik-sec.csv
+python run.py metadata plan --roster <registry_id>
+python run.py metadata sources refresh --source cik_lookup
+python run.py metadata plan --universe
+
+# Inspect progress and outstanding chunks (no network):
+python run.py metadata status --input uploads/cik-sec.csv
+
+# Execute outstanding chunks (resumable; completed chunks are never refetched):
+python run.py metadata run --input uploads/cik-sec.csv
+
+# Validate every chunk and publish a snapshot:
+python run.py metadata merge --input uploads/cik-sec.csv
+
+# Add newly requested CIKs to an existing snapshot without refetching the base:
+python run.py metadata augment --input uploads/cik-sec-new.csv \
+    --base-snapshot-id <id> --new-snapshot-id <id>
+```
+
+Run one cohort across several machines by copying the plan bundle out. The
+bundle is byte-identical for every worker; only the assignment differs.
+```bash
+# Coordinator: one bundle per worker, each with a disjoint chunk list.
+python run.py metadata export --plan-id <plan_id> --worker-count 4 \
+    --destination /tmp/metadata-out
+
+# On each machine, after copying the bundle across:
+python run.py metadata worker --bundle /tmp/metadata-out/worker-00
+
+# Back on the coordinator: verify and adopt the returned chunks.
+python run.py metadata import --plan-id <plan_id> \
+    --source /tmp/metadata-out/worker-00
+```
+
+`--plan-id`, `--bundle`, and `--input`/`--roster` are interchangeable ways to
+name a plan; a copied bundle names its own plan in its manifest. Keep the
+effective chunk size stable across `plan`, `run`, and `merge` — it comes from
+`--chunk-size`, else `RUNTIME_CHUNK_SIZE` — because the plan id is derived from
+the roster identity and that chunk size, so changing it resolves a different plan
+and the command fails loudly rather than reusing mismatched checkpoints.
+Assignment is a separate artifact, so changing the worker count never moves the
+plan or discards completed chunks. Each worker process builds its own rate
+limiter, so divide the budget with `SEC_RATE_LIMIT_RPS` when distributing across
+machines. The full command surface is in the
+[metadata_sync package README](edgar_sec/pipelines/metadata_sync/README.md).
+
+### Filing Catalog Pipeline (Zero Network)
+
+Phase 2 turns a finalized Phase 1 snapshot dataset into immutable,
+content-addressed **target plans** for a future acquisition phase to consume.
+It never performs network I/O, and `tests/test_network_isolation.py` proves
+that by walking the import graph rather than by grep.
 
 ```bash
-# Run the repository launcher and pick an entry, or dispatch directly:
-python run.py                 # interactive menu
-python run.py metadata        # Phase 01 interactive wizard
-python run.py filing-catalog  # Phase 02 interactive materialize/plan menu
-python run.py viewer          # local read-only dataset viewer
-python run.py webpage-storage # Phase 2.5 interactive document acquisition
-python run.py append --plan-dir <expanded-plan> --fixture-id <fixture-id>
-python run.py settings generate-dotenv   # write a documented .env template
+# Materialize a catalog snapshot from a Phase 1 snapshot:
+python run.py filing-catalog materialize \
+    --source-manifest <phase1>/metadata/snapshots/<id>/metadata.manifest.json
 
-# Live acquisition monitoring:
-python scripts/monitor_progress.py --watch
+# Deterministic plan, filtered by form and report date:
+# Forms are exact: an amendment variant such as 10-K/A must be named explicitly.
+python run.py filing-catalog plan --catalog current --forms 10-K
+# Narrow it by report_date: one quoted union of absolute windows and recurring periods.
+python run.py filing-catalog plan --catalog current \
+    --dates "@Q1[1999..2001],2005Q3..2008Q1,2011-12-31..2019-11-03"
 
-# Or use a component's canonical command surface directly:
-.venv/bin/python -m phases.01_metadata_extraction.cli plan \
-    --config .artifacts/metadata/config.json
-.venv/bin/python -m phases.025_webpage_storage.cli run \
-    --scope deterministic --mode production --workers 8
-.venv/bin/python -m phases.025_webpage_storage.cli vacuum --all
-.venv/bin/python -m defs.viewer --artifacts-root .artifacts
-.venv/bin/python -m defs.text.reflow.tools.analysis inventory \
-    --review-root scratch/target_review
-.venv/bin/python -m defs.text.reflow.tools.analysis export \
-    --inventory-id <inventory-id> --annotations <completed-labels.jsonl>
-# Portable published-artifact transport:
-.venv/bin/python -m defs.runtime.bundle create --artifact-id <id> \
-    --output artifacts.bundle.zip
+# Policy plan: fill a declared quota profile across filing eras.
+python run.py filing-catalog plan --catalog current --scope policy \
+    --policy artifacts/filing_catalog/policies/corpus.json
+# ...or derive a baseline policy from the catalog's own forms and year range:
+python run.py filing-catalog plan --catalog current --scope policy --auto-policy
 
-# Or choose Artifact Bundle from `python run.py` for the interactive workflow.
+# Scale a policy plan while retaining the parent's selected locators.
+python run.py filing-catalog expand \
+    --parent-plan artifacts/filing_catalog/plans/<plan_id> \
+    --target-units 10000
+
+# Inspect published state:
+python run.py filing-catalog status
 ```
 
-Settings are declared once as typed specs with logical dotted paths
-(`runtime.threads`, `runtime.chunk_size`, `sec.user_agent`,
-`cache.root`);
-environment names are generated from them (`RUNTIME_THREADS`,
-`RUNTIME_CHUNK_SIZE`, `SEC_USER_AGENT`). The generated dotenv template
-documents every setting, comments out machine-derived suggestions, and never
-writes secret values.
+**Artifact layout.** Snapshots and plans are published immutable; staging lives
+under `artifacts_root/transient/`.
 
-## Phases
+```text
+artifacts_root/filing_catalog/
+├── snapshots/                          # mirrors metadata/snapshots/
+│   ├── <catalog_id>/                   # immutable catalog snapshot
+│   │   ├── snapshot.manifest.json
+│   │   ├── company_profiles.parquet    # projected profile data
+│   │   └── filing_targets/part-NNNNN.parquet   # source-part target shards
+│   ├── <feature-digest>/               # policy-scope feature snapshot, identified by
+│   │                                   #   feature_snapshot.json, not by name
+│   └── current/pointer.json            # current catalog pointer
+├── plans/<plan_id>/                    # immutable plan bundle
+│   ├── plan.json
+│   ├── selection_report.json
+│   ├── seed_filers.csv                 # policy scope only
+│   ├── locator_groups.parquet          # schema depends on planning scope
+│   ├── reserve_targets.parquet         # policy scope only
+│   ├── expansion_metadata.json         # child plans only
+│   └── targets/form=<FORM>/data.parquet
+└── policies/
+```
 
-### [Phase 01 — Submissions Metadata Extraction](phases/01_metadata_extraction/README.md)
+Target shards follow Phase 1 source-part order rather than being globally
+sorted — `sort_order: source_part_order` in the snapshot manifest — and
+`locator_groups.parquet` is the scope-independent work order. See the
+[filing_catalog package README](edgar_sec/pipelines/filing_catalog/README.md)
+for the plan contract and the [selection package README](edgar_sec/engine/selection/README.md)
+for policy plans, which cap over-represented company families and report unmet
+quota floors instead of silently absorbing them.
 
-Fetches the SEC `data.sec.gov/submissions` feed per CIK, follows historical
-submissions files, and produces one `submission_metadata` row per CIK (recent +
-historical filings combined into a nested `filings` list) with strict
-normalization, provenance, and resumable chunk/partition execution. The phase
-also captures explicit SEC listing-source snapshots and can augment a finalized
-metadata snapshot with only newly uncovered CIKs without modifying the tracked
-curated input manifest; both the canonical CLI and the interactive `run.py`
-wizard expose the listing-source refresh and augmentation flow.
+### Document Storage (Phase 2.5)
 
-### [Phase 02 — Filing Catalog](phases/02_filing_extraction/README.md)
+Document storage saves raw responses to append-only fixture stores so a plan can
+be replayed offline. Existing payloads are not overwritten, and failed locators
+can be retried on a later fill. See the
+[pipeline README](edgar_sec/pipelines/document_storage/README.md) for persistence
+details.
 
-Materializes form-partitioned filing occurrences from the finalized Phase 01
-artifact without network access or Phase 01 chunk reads, then plans target
-selections for later archive resolution. Phase 02 is no-network metadata
-preparation only; it does not fetch filing documents. Supports `--scope
-deterministic` for comprehensive annual/quarterly multi-form target plans,
-`--scope policy` for policy-driven deficit selection, and deterministic
-`--config` overrides. Target plans are immutable, selectable work-order bundles
-published under `manifests/filing_extraction/target_plans/<plan-id>/`; the
-selection scope is independent of the Phase 2.5 acquisition mode.
+```bash
+# Fetch missing raw responses from a document chunk-plan JSON:
+python run.py documents fill --plan corpus.json --fixture fix-corpus
 
-Materialization is memory-bounded: source rows are processed in CIK-keyset
-batches (configurable, default 1,000) through disk-backed DuckDB staging tables
-with machine-derived thread/memory limits (`psutil`, environment-overridable).
-Target artifacts are physically unordered; identity and provenance are retained
-for later key/sort phases, and staging is transient.
+# List fixture IDs, payload counts, and manifest validity:
+python run.py documents fixtures
 
-The interactive launcher (`python run.py filing-catalog`) and the canonical CLI
-(`python -m phases.02_filing_extraction.cli {materialize,plan,expand,status}`) share one
-contract. Filing document acquisition is a separate Phase 2.5 boundary that
-consumes these target plans; see the Phase 02 README for the scope split.
+# Replay offline; repeat --fixture to define first-store-wins precedence:
+python run.py documents run --plan corpus.json --fixture fix-corpus
+```
 
-### [Phase 2.5 — Webpage Storage, Normalization & Temporal Snapshots](phases/025_webpage_storage/README.md)
+Running `python run.py documents` opens a phase-local menu over the fixture
+lifecycle: fill, replay, listing, review artifacts, and review comparison. It
+operates on the current plan and fixture formats; it does not migrate or read
+unrelated processing tables.
 
-Acquires and stores raw SEC filing documents (HTML, SGML, iXBRL) as
-content-addressed, zstd-compressed SQLite BLOBs, linked to Phase 02 corporate
-occurrences, and applies multi-era text normalization. Successful normalized
-rows are published through immutable temporal snapshots with lightweight
-`index.parquet` files and deduplicated native-text payload Parquet files:
-- **SGML multi-document envelope unpacking**: Extracts target filings and exhibits from concatenated SGML submission envelopes (`defs.sec_documents.sgml`).
-- **String-first HTML preprocessing**: Renders HTML to canonical text, preserves tagged `<TABLE>` blocks, and unrolls nested markup (`defs.text.html`).
-- **Form-scoped checkbox constraint solver**: Evaluates glyph penalty hypotheses for report periods, filer statuses, and statutory Booleans (`defs.sec_forms.cover`).
-- **Canonical body start alignment**: Uses tiered lexical scoring to anchor the start of substantive body text past cover and TOC pages.
-- **ASCII table recognition & reflow**: Detects untagged multi-column ASCII tables and unwraps hard-wrapped prose and list/bullet markers (`defs.text.reflow`); table boundary policy and structural detection live in `defs.tables`.
-- **Live monitoring**: Real-time read-only status and throughput inspection via `scripts/monitor_progress.py`.
+### Live Smoke Test (Credential-Gated, Outside the Gate)
+```bash
+# Bounded live SEC check. Never publishes a snapshot; requires a preview root.
+python -m edgar_sec.pipelines.metadata_sync.smoke_test \
+    --input tests/fixtures/cik_sec_mini.csv --artifacts preview/metadata
+```
 
-Fixture IDs provide reusable appendable test caches: an expanded child plan reuses
-existing blobs and fetches only missing locators. Finalized partitions are
-namespaced by acquisition run ID and can move between machines with handoff
-manifests; `merge-to-snapshot --run-id <run-id>` discovers the complete set and
-downstream phases plan against the published normalized snapshot rather than
-worker chunks. Document section
-segmentation and financial table extraction are downstream phases built on stable
-document/occurrence identities and the snapshot reader.
+---
 
-## Tools
+## Component Documentation
 
-### [Shared Infrastructure (`defs/`)](defs/README.md)
+Every package owns a `README.md` stating its purpose, layout, contracts, public
+surface, command surface where it has one, mirrored tests, and deliberate gaps.
+The rules that govern them are in [AGENTS.md §5](AGENTS.md), which is normative
+where the two disagree.
 
-Domain-neutral contracts: SEC HTTP client (pacing/retries/caching/managed broker
-with read-only warm-cache readers for workers), canonical filing identity
-(accessions, archive URLs, occurrence IDs, document locator keys), storage
-backends, SQL boundary, SEC document handling (`defs/sec_documents/`),
-`sec_forms/` (shared form definitions, cover-page contracts, coordinate-safe
-`page_markers/` analysis), text reflow/lexical evidence (`defs/text/`), table boundary policy (`defs/tables/`), and the
-shared phase runtime.
+- **package root** — [edgar_sec](edgar_sec/README.md)
+- **foundation** — [foundation](edgar_sec/foundation/README.md) · [checks](edgar_sec/foundation/checks/README.md) · [regex](edgar_sec/foundation/regex/README.md) · [runtime](edgar_sec/foundation/runtime/README.md) · [runtime/settings](edgar_sec/foundation/runtime/settings/README.md) · [scanners](edgar_sec/foundation/scanners/README.md) · [sql](edgar_sec/foundation/sql/README.md) · [text](edgar_sec/foundation/text/README.md)
+- **domain** — [domain](edgar_sec/domain/README.md) · [document](edgar_sec/domain/document/README.md) · [filing_catalog](edgar_sec/domain/filing_catalog/README.md) · [forms](edgar_sec/domain/forms/README.md) · [forms/common](edgar_sec/domain/forms/common/README.md) · [forms/families](edgar_sec/domain/forms/families/README.md) · [submissions](edgar_sec/domain/submissions/README.md) · [taxonomy](edgar_sec/domain/taxonomy/README.md) · [taxonomy/schedules](edgar_sec/domain/taxonomy/schedules/README.md) · [taxonomy/statements](edgar_sec/domain/taxonomy/statements/README.md) · [taxonomy/tables](edgar_sec/domain/taxonomy/tables/README.md)
+- **infra** — [infra](edgar_sec/infra/README.md) · [broker](edgar_sec/infra/broker/README.md) · [sec_http](edgar_sec/infra/sec_http/README.md) · [storage](edgar_sec/infra/storage/README.md)
+- **engine** — [engine](edgar_sec/engine/README.md) · [company_family](edgar_sec/engine/company_family/README.md) · [selection](edgar_sec/engine/selection/README.md) · [submissions](edgar_sec/engine/submissions/README.md)
+  - **document** — [document](edgar_sec/engine/document/README.md) · [html](edgar_sec/engine/document/html/README.md) · [page_markers](edgar_sec/engine/document/page_markers/README.md) · [unpacking](edgar_sec/engine/document/unpacking/README.md) · [whitespace](edgar_sec/engine/document/whitespace/README.md)
+  - **forms** — [forms](edgar_sec/engine/forms/README.md) · [cover](edgar_sec/engine/forms/cover/README.md) · [cover/boundary](edgar_sec/engine/forms/cover/boundary/README.md) · [cover/checkmarks](edgar_sec/engine/forms/cover/checkmarks/README.md) · [cover/healing](edgar_sec/engine/forms/cover/healing/README.md) · [cover/tables](edgar_sec/engine/forms/cover/tables/README.md) · [cover/toc](edgar_sec/engine/forms/cover/toc/README.md) · [plugins](edgar_sec/engine/forms/plugins/README.md) · [plugins/evaluators](edgar_sec/engine/forms/plugins/evaluators/README.md)
+  - **reflow** — [reflow](edgar_sec/engine/reflow/README.md) · [reflow/engine](edgar_sec/engine/reflow/engine/README.md) · [reflow/features](edgar_sec/engine/reflow/features/README.md) · [reflow/rules](edgar_sec/engine/reflow/rules/README.md)
+  - **tables** — [tables](edgar_sec/engine/tables/README.md) · [ascii_html](edgar_sec/engine/tables/ascii_html/README.md) · [false_tables](edgar_sec/engine/tables/false_tables/README.md) · [hybrid](edgar_sec/engine/tables/hybrid/README.md) · [policy](edgar_sec/engine/tables/policy/README.md) · [protection](edgar_sec/engine/tables/protection/README.md) · [taxonomy](edgar_sec/engine/tables/taxonomy/README.md)
+- **pipelines** — [pipelines](edgar_sec/pipelines/README.md) · [metadata_sync](edgar_sec/pipelines/metadata_sync/README.md) · [filing_catalog](edgar_sec/pipelines/filing_catalog/README.md) · [document_storage](edgar_sec/pipelines/document_storage/README.md)
+- **apps** — [apps](edgar_sec/apps/README.md) · [viewer](edgar_sec/apps/viewer/README.md)
 
-### [Dataset Viewer](defs/viewer/README.md)
+---
 
-A local, read-only FastAPI + DuckDB web viewer over the `.artifacts` workspace.
-Discovers Parquet/JSONL datasets and JSON documents (plans, manifests, merge
-reports), serves schema/stats/paged rows with filter+sort+search, and a guarded
-read-only SQL console — with a built TypeScript UI.
+## Repository Layout
 
-The [shared table engine](defs/tables/README.md) provides HTML span-grid
-resolution, layout-table unwrapping, financial column healing, standardized
-ASCII table generation, and exact tagged-table protection (`protection.py`)
-for document-processing phases. Tracked validated corpora live in Parquet
-fixtures with threshold reports written under `.artifacts/test-runs/`.
+```text
+edgar_sec/               # each package has its own README.md (linked above)
+├── foundation/         # Layer 0: runtime, memory, hashing, serialization, zstd
+│                       #   compression, settings registry, scanners, regex DSL
+├── domain/             # Layer 1: Cik/Accession, document, forms and cover
+│                       #   vocabulary, taxonomy, submission and catalog schemas
+├── infra/              # Layer 2: SEC HTTP client, broker, atomic IO, DuckDB,
+│                       #   Parquet, snapshot manifests, part tree, fixture store
+├── engine/             # Layer 3: document normalization, cover/table processing,
+│                       #   candidate selection, company families, submission building
+├── pipelines/          # Layer 4: metadata_sync (Phase 1), filing_catalog
+│                       #   (Phase 2), document_storage (Phase 2.5)
+└── apps/               # Layer 5: the dataset viewer (read-only, no publishing)
 
-## Conventions
+tests/                      # mirrors the edgar_sec/ package tree
+├── support.py              # Shared fixture access and offline HTTP test doubles
+├── fixtures/               # Committed golden fixtures (cross-layer)
+└── <package>/…             # one directory per package, one test file per module
 
-- Every change is gated by the root validation runner: `python check.py` runs
-  the ruff format check, the ruff lint (configuration in `ruff.toml`), the
-  registered policy scanners (environment-access and future gates — see
-  `defs/runtime/checks.py`; `--scan` runs only the scanners), then each test
-  suite in isolation; `--fix` applies formatting and safe lint fixes first.
-- Shared HTTP, storage, CLI lifecycle, progress, settings, and worker-commit
-  behavior live under `defs/`; phases consume those public contracts and own
-  their schemas and domain logic. Direct environment access is confined to
-  `defs/runtime/env.py` and the settings registry.
-- Plans and configs are immutable snapshots validated against effective options;
-  completed chunks are skipped and never re-fetched.
-- Credentials (SEC User-Agent) come from the environment or the git-ignored
-  `.env`; they are never written to plans, manifests, or artifacts.
-- Finalized cross-phase artifacts are discovered through immutable manifests in
-  `.artifacts/manifests/<phase>/<dataset>/[final|partitions]/`; plans, chunks,
-  workers, previews, staging, and merge reports live under
-  `.artifacts/transient/<phase>/`. Bundle transport rebases relative paths and
-  never stores absolute filesystem paths.
+check.py                # Unified repository quality gate runner
+run.py                  # Interactive terminal workflow dispatcher
+ruff.toml               # Lint configuration (suppressions live here, not in code)
+AGENTS.md               # Binding engineering contract and design guidelines
+roadmap/                # Multi-phase product roadmap specifications
+```
+
+The test tree convention — every test directory is a package, and fixture access
+goes through `tests.support` rather than depth arithmetic so reorganizing the
+tree does not break test paths — is stated in [AGENTS.md §6](AGENTS.md).
+
+---
+
+## Artifact Layout
+
+All generated paths derive from the artifacts root; no module hardcodes them.
+
+```text
+{artifacts_root}/metadata/plans/{plan_id}/plan.json            # Small plan manifest
+{artifacts_root}/metadata/plans/{plan_id}/roster/ciks.parquet    # The CIK cohort, frozen into the bundle
+{artifacts_root}/metadata/plans/{plan_id}/input/                 # Where the cohort came from
+{artifacts_root}/metadata/plans/{plan_id}/assignments/*.parquet   # One chunk set per worker
+{artifacts_root}/metadata/cohorts/{key}/ciks.parquet         # Compiled cohort, keyed by input digest
+{artifacts_root}/metadata/cohorts/{key}/cohort.json           # What the input resolved to
+{artifacts_root}/transient/metadata/{plan_id}/chunk_NNNN.parquet # Resumable checkpoints
+{artifacts_root}/metadata/registries/{registry_id}/             # Source comparison outputs
+{artifacts_root}/metadata/snapshots/{snapshot_id}/parts/*.parquet   # Published dataset
+{artifacts_root}/metadata/snapshots/{snapshot_id}/ciks.parquet     # Published CIK index
+{artifacts_root}/metadata/snapshots/current/pointer.json        # Current snapshot pointer
+{artifacts_root}/metadata/sources/{name}/{snapshot_id}/         # Immutable source snapshots
+
+{artifacts_root}/filing_catalog/snapshots/{catalog_id}/     # Immutable catalog snapshot
+{artifacts_root}/filing_catalog/snapshots/current/pointer.json  # Current catalog pointer
+{artifacts_root}/filing_catalog/plans/{plan_id}/            # Immutable plan bundle
+{artifacts_root}/transient/filing_catalog/{catalog_id}/     # Staging; never published
+
+{artifacts_root}/fixtures/{fixture_id}/fixture.sqlite      # Raw replay payloads
+{artifacts_root}/fixtures/{fixture_id}/fixture.manifest.json
+{artifacts_root}/document_storage/snapshots/{snapshot_id}/  # Published documents
+{artifacts_root}/document_storage/review-runs/{run_id}/    # Generated review bundles
+{artifacts_root}/transient/document_storage/runs/{run_id}/ # Resumable run staging
+```
+
+### Merge Semantics
+
+A merge rejects duplicate or null CIKs, schema drift, plan coverage gaps, row
+count mismatches, foreign chunk files, and non-terminal statuses. Duplicate
+*accession numbers* are reportable fan-out — the same filing is legitimately
+listed by more than one registrant — so they surface as a warning and never
+reject. The full contract is in the
+[metadata_sync package README](edgar_sec/pipelines/metadata_sync/README.md#contracts-this-package-guarantees).
+
+---
+
+## Engineering Contract
+
+Refer to [`AGENTS.md`](AGENTS.md) for full engineering rules, layer boundary constraints, and verification protocols.

@@ -1,273 +1,316 @@
-# AGENTS.md — Repository Engineering Contract
+# AGENTS.md — Repository Engineering Contract (v2)
 
-Normative guidance for humans and coding agents working in this repository.
-`roadmap/master_roadmap.md` is the long-term product direction; this file is
-the engineering contract for how code must be built here.
+Normative engineering contract for humans and coding agents working in this repository.
+`roadmap/` describes the long-term product direction; this file is the binding contract
+for how code must be structured, bounded, and verified.
 
-## Mission And Current Boundaries
+---
 
-- The repository transforms SEC filing inputs into versioned, queryable
-  research data (Parquet / JSONL / SQL) with provenance and resumable runs.
-- The roadmap describes future phases and schemas. It is not permission to
-  implement unplanned features or to assume future schemas already exist.
-- Current ingestion boundary: the shared SEC HTTP client (`defs/sec_http.py`)
-  plus phase-owned normalization, planning, checkpoint validation, and merge
-  validation (`phases/01_metadata_extraction/core/`).
-- `old-webpage.py` is historical reference material only (rate-limit and
-  progress behavior). It is not a production dependency and its Item 1/1A
-  keyword filtering must not leak into generic phases.
+## Architectural Layers & Boundaries
 
-## Canonical Layout
+The codebase follows a strict **acyclic downward-only layered architecture**:
 
 ```text
-defs/                              # domain-neutral reusable infrastructure
-  sec_http.py                      # SEC pacing, retries, caching, metrics
-  storage/                         # logical datasets and immutable file chunks
-  sql/                             # SQL AST/compiler/executor boundary
-  llm/                             # future provider-neutral model boundary
-  viewer/                          # read-only local dataset/artifact viewer (API + UI)
-  runtime/                         # shared paths and future lifecycle helpers
-    interactive.py                 # shared partition-oriented operator UI
-    partitions.py                  # partition selection and distribution
-    progress.py                    # shared progress presentation adapter
-    cli.py                         # shared CLI arguments/config bootstrap
-    registry.py                    # static launcher entries for the root run.py
-phases/<number>_<name>/
-  core/                            # phase schemas, domain logic, validation
-  extractors/                      # future regex/LLM phase adapters
-  tests/                           # fixtures live in tests/fixtures/
-  cli.py                           # canonical phase command surface
-  smoke_test.py
-roadmap/                           # product and extraction specifications
-uploads/                           # input manifests
-.artifacts/                        # published manifests and transient state (ignored)
+Layer 5: apps/            edgar_sec.apps.viewer
+                           ├── read-only consumers of published artifacts
+                            │
+Layer 4: pipelines/       edgar_sec.pipelines.metadata_sync
+                           ├── CLI, Operator, Planner, Worker, Merger, Augmentation
+                            │
+Layer 3: engine/          edgar_sec.engine.submissions
+                           ├── Unroller, Profile, Normalizer, Arrow Builder
+                            │
+Layer 2: infra/           edgar_sec.infra
+                           ├── sec_http (Client, RateLimiter, FailureLedger)
+                           └── storage (Atomic IO, DuckDB engine, Parquet IO)
+                            │
+Layer 1: domain/          edgar_sec.domain
+                           ├── Cik, AccessionNumber (identity primitives)
+                           └── Submission schemas and data models
+                            │
+Layer 0: foundation/      edgar_sec.foundation
+                           ├── Hashing & Serialization (file_sha256, canonical_json)
+                           ├── Scanners (modular policy scanner registry)
+                           └── Runtime (env, paths, resources, memory, settings/)
+
+
 ```
 
-- A phase may add files for a real domain concern, but must not fork shared
-  HTTP, storage, CLI lifecycle, progress, or worker-commit behavior.
-- `run.py`-style interactive shims are transitional front-ends. The target
-  command surface is `python -m phases.<phase>.cli {plan,preview,run,status,merge}`.
-- Root `run.py` is a thin launcher over the static registry in
-  `defs/runtime/registry.py` (`python run.py` menu, `python run.py <id>
-  [args...]` direct dispatch, `--list` JSON). It owns no phase behavior and
-  never subprocesses: entries name existing modules, which keep their own
-  argparse, config handling, and exit codes. New phases register by adding one
-  `LauncherEntry`.
-- Shared interactive behavior belongs in `defs.runtime.interactive`; phase
-  runners provide callbacks for preview, plan, status, partition execution,
-  and phase-specific command rendering.
-- Shared CLI argument registration, config bootstrap, override precedence,
-  JSON output, and standard error handling belong in `defs.runtime.cli`.
-- New shared behavior goes under `defs/` only after defining a reusable
-  contract plus contract tests. Phase modules consume public contracts
-  (`defs.storage.make_chunk_backend`, protocols), never backend-private helpers.
-- Use `defs.runtime.paths.resolve_paths()` and its typed layout objects for
-  artifact, config, cache, run, worker, test, and acceptance paths. Do not
-  concatenate `.artifacts` paths or create directories at module import time.
+### Layer Dependency Rules (Enforced by AST Scanner)
+- **Apps (Layer 5)** may import from: `pipelines`, `engine`, `infra`, `domain`, `foundation`.
+- **Pipelines (Layer 4)** may import from: `engine`, `infra`, `domain`, `foundation`. Never `apps`.
+- **Engine (Layer 3)** may import from: `infra`, `domain`, `foundation`. Never `pipelines` or `apps`.
+- **Infra (Layer 2)** may import from: `domain`, `foundation`. Never `engine`, `pipelines`, or `apps`.
+- **Domain (Layer 1)** may import from: `foundation`. Never `infra`, `engine`, `pipelines`, or `apps`.
+- **Foundation (Layer 0)** has **zero** internal dependencies on upper layers.
+- The `layer-boundary` scanner automatically validates this graph in `check.py`.
 
-## Configuration And Plans
+### Package Import & Export Contract (No Shims, No Barrel Re-exports)
+1. **Zero Backward-Compatibility Shims**:
+   - Never create alias modules, forwarding functions, or legacy shims when refactoring or moving code.
+   - When a component is relocated or renamed, update all call sites immediately.
+2. **No Barrel Re-exports in `__init__.py`**:
+   - `__init__.py` files must not re-export symbols from child submodules.
+   - Consumers must import directly from the leaf module (e.g. `from edgar_sec.domain.identity import Cik`, `from edgar_sec.infra.storage.duckdb import connect`).
+   - This prevents eager initialization of heavy dependencies (DuckDB, PyArrow), eliminates circular import cycles, and makes symbol ownership explicit.
+   - Allowed in `__init__.py`: package docstrings, `__version__`, or true dynamic registries (e.g. `ALL_SCANNERS`).
 
-- Reusable settings persist at `.artifacts/metadata/config.json` (phase
-  default: `PROJECT_CONFIG_DEFAULT_PATH`), written atomically with versioning.
-- `--configure` is the only writer; normal commands load the config and treat
-  explicit CLI flags as temporary overrides that are never persisted.
-- A missing config creates a validated template and stops before any network
-  or model work, so credentials can be added first.
-- `plan.json` is an immutable snapshot of effective run settings
-  (`run_options`) plus fingerprint/hash. Plan-defining fields
-  (`input_path`, `artifacts_dir`, `chunk_size`, `limit`, `storage_format`)
-  are checked against effective options; stale plans are rejected with a
-  regeneration message, never silently rewritten.
 
-## Standard Phase Lifecycle
+---
 
-- `plan` is deterministic and performs no network or model calls.
-- `preview` is bounded and explicitly non-production.
-- `run` processes resumable work units (chunks) with shared progress, retry,
-  and checkpoint behavior; completed chunks are skipped, never re-fetched.
-- `status` reads manifests/checkpoints without re-fetching source data.
-- `merge-partition` is the only operation permitted to read chunk directories;
-  it validates phase invariants (ranges, row counts, CIK coverage,
-  fingerprints, terminal statuses) and publishes one finalized partition
-  artifact. `merge` consumes only finalized partition artifacts — never
-  chunks — and delegates physical assembly and atomic publication to shared
-  storage. Merge reports are derived from finalized artifacts, so a missing
-  report is regenerated without chunk access. Accession values are not
-  globally unique (the same filing is listed by multiple registrants);
-  duplicate accessions are reportable fan-out, while duplicate CIKs, stale or
-  foreign artifacts, and incomplete coverage are failures.
-- Partitions are the user-facing distribution unit; fixed-size chunks are the
-  internal resumability unit. Partition assignment and manifests must be
-  deterministic and shared across phases. Chunks are transient: once a
-  partition artifact is verified, no consumer may require its chunks.
+## Memory & Performance Non-Regression Guarantees
 
-## Storage Rules
+To prevent OOM kills, glibc fragmentation, and thread thrashing in containerized or shared environments:
 
-- Use shared storage protocols/factories (`defs/storage/`) for Parquet, JSONL,
-  SQLite, and future backends. No phase-local serializers or filename schemes.
-- Phase owns schema/semantic validation; storage owns physical reads/writes,
-  manifest publication, atomicity, and read-back validation.
-- Source page markers and generated page artifacts are distinct namespaces.
-  Rendering applies an explicit declared policy (`strip`, `annotate`,
-  `preserve`) with source identity recorded in artifact metadata; generated
-  `[[SEC:PAGE_BREAK id=N]]`-style tokens are never reclassified as source
-  markers, and post-render rediscovery from rendered output is never used as
-  the removal mechanism — decisions are resolved on the source DOM/span before
-  rendering and carried through as events.
-- Workers never write the canonical dataset concurrently. They emit immutable,
-  schema-versioned fragments; a coordinator validates identity, provenance,
-  schema, and duplicates before publishing.
-- Standard temporary layout: `.artifacts/transient/<phase>/runs/<run-id>/workers/<worker-id>/`
-  with attempt IDs and a manifest. Partial files are never "complete".
-- Use partition-scoped paths such as
-  `.artifacts/transient/<phase>/runs/<run-id>/partitions/partition-00001/chunks/` when a
-  run is distributed. The same layout must work for one or many machines.
-- Define idempotency keys and conflict policy before adding an append path.
-  No last-writer-wins for conflicting extraction facts; quarantine or fail.
-- Do not use pandas to define nested schemas or persistence behavior. PyArrow,
-  DuckDB conversion, and backend details stay behind `defs/storage`. `pyarrow`
-  must not be imported directly outside `defs/storage/`; schema definitions and
-  types are accessed through `defs.storage` (`defs.storage.pa`).
-- Phase code must not issue literal SQL or import backend-private persistence
-  helpers; use compiled SQL objects and shared executors (`defs/sql/`).
+1. **Cgroup-Aware Resource Budgeting**:
+   - Never size workers from raw CPU count or DuckDB's 80% physical memory default.
+   - Use `edgar_sec.foundation.runtime.resources.derive_resources()` which checks cgroups v2 (`memory.max` - `memory.current`), cgroups v1, `/proc/meminfo` `MemAvailable`, and psutil.
+   - Workers are budgeted via `auto_worker_count(available_bytes, worker_memory_mib=512, safety_fraction=0.9)`.
+2. **glibc Arena Heap Reclamation**:
+   - Call `edgar_sec.foundation.runtime.memory.reclaim()` (`gc.collect()` + `malloc_trim(0)`) at bounded batch intervals to return freed pages to the OS.
+3. **DuckDB Engine Hardening**:
+   - Every DuckDB connection MUST set:
+     - `threads = resources.threads`
+     - `memory_limit = resources.memory_limit`
+     - `temp_directory = resources.temp_directory`
+     - `preserve_insertion_order = false`
+4. **Hardcoded Limits Prohibited**:
+   - Hardcoding `threads=`, `max_workers=`, or `memory_limit=` in library/pipeline code is blocked by the `resource-allocation` policy scanner.
+5. **Streaming & Bounded IO**:
+   - `file_sha256()` streams a file in 64KB blocks. `sha256_text()` also streams:
+     `foundation/hashing.py` encodes the text in 1 MiB code-point slices and
+     updates one hasher, so hashing a multi-megabyte filing never allocates a
+     second full-size bytes copy. Its digest is byte-identical to
+     `hashlib.sha256(text.encode("utf-8"))` — Python `str` indices are code points
+     and UTF-8 encodes each independently, so bounded slices concatenate to the
+     whole string's bytes. `tests/foundation/test_hashing.py` pins the equality.
+     Prefer this over `read_bytes()` into a digest anywhere; the `whole-file-read`
+     scanner enforces that for the obvious cases.
+   - Parquet files use `row_group_size = 128_000` and `compression = "zstd"`.
 
-## Regex And LLM Extraction Boundary
+---
 
-- Prefer deterministic regex where the signal is structurally reliable; use
-  LLM extraction for semantic ambiguity, not to replace ingestion or schema
-  validation.
-- Provider-neutral contracts, request/response models, retries, rate limits,
-  caching, usage/cost metrics, and provider adapters belong in `defs/llm/`.
-- Prompts, extraction schemas, field mappings, source-span requirements,
-  validators, and phase orchestration belong to the owning phase, preferably
-  `extractors/regex/` and `extractors/llm/`.
-- Every model-derived fact retains: source filing identity, location/provenance,
-  provider, model, prompt/template version, extraction schema version, and
-  validation outcome. Raw model text is not canonical data.
-- Provider credentials live in environment/secret management, never in tracked
-  configuration, plans, or worker artifacts.
+## Settings & Configuration Management
 
-## Parallel Worker Contract
+1. **Modular Settings Registry**:
+   - Settings are defined in `edgar_sec/foundation/runtime/settings/` (`sec.py`, `paths.py`, `runtime.py`).
+   - Do NOT create monolithic configuration classes that accumulate parameters across phases.
+   - New phases register their own domain/phase spec dictionaries.
+2. **Deterministic Environment Resolution**:
+   - Logical dotted paths map deterministically to env vars via `environment_name(path)` (e.g. `sec.rate_limit_rps` -> `SEC_RATE_LIMIT_RPS`).
+   - Direct `os.environ` or `os.getenv` access outside `edgar_sec.foundation.runtime.env` is prohibited and caught by `environment-access` scanner.
+3. **Secret Isolation**:
+   - Settings marked `secret=True` are stripped by `flatten_settings()` before persisting manifests, provenance, or logs.
+4. **Precedence Hierarchy**:
+   `CLI overrides > Environment / .env > Stored Config > Defaults / Machine Factories`.
 
-- Workers read immutable inputs and emit independent fragments/deltas plus a
-  manifest containing run, phase, worker, attempt, source identity, schema,
-  code, and model/prompt metadata where applicable.
-- The coordinator is the only component that commits to canonical storage.
-- Coordinator commits are idempotent, deterministic, schema-checked, and
-  atomic; retries create new attempts instead of mutating published fragments.
-- Failed or ambiguous extractions are represented explicitly with
-  status/error/provenance and never silently dropped.
+---
 
-## Engineering Rules And Validation
+## Verification & Quality Gate
 
-- Prefer the smallest compatible change; no compatibility layers without a
-  concrete persisted or external contract.
-- Never commit credentials, generated artifacts, caches, database files, or
-  raw model responses. `.gitignore` already excludes `.artifacts/` patterns.
-- Add contract tests when extending shared infrastructure; add phase tests for
-  domain invariants. Default tests never touch live SEC or model services.
-- Use the project virtual environment: `.venv/bin/python`, `.venv/bin/pytest`.
-- Gate every change with the root runner before finishing work:
+Before submitting any turn or completing work, run the unified quality gate:
 
-  ```bash
-  .venv/bin/python check.py          # ruff format --check, ruff check, all suites
-  .venv/bin/python check.py --fix    # apply formatting and safe lint fixes first
-  ```
+```bash
+.venv/bin/python check.py            # smart gate: ruff format, lint, scanners, targeted pytest
+.venv/bin/python check.py --all      # full gate: runs full unconditional test suite across repository
+.venv/bin/python check.py --fix      # format & safe lint fixes only; does NOT run tests
+.venv/bin/python check.py --fast     # fast static check: format check, lint check, scanners (skips tests)
+.venv/bin/python check.py --scan     # runs only the registered policy scanners
+.venv/bin/python check.py --test     # runs targeted pytest (or full suite with --all)
+.venv/bin/python check.py --explain  # prints detected git changes and reverse AST test lineage
+.venv/bin/python check.py <path>     # passes explicit test paths directly to pytest
+```
 
-- Formatting and linting run **before** tests so style is consistent across
-  implementations and test failures are never mixed with lint noise. Lint
-  configuration lives in `ruff.toml`; when a rule is noisy for a deliberate
-  pattern, suppress it there (per-file ignores, or a global ignore with a
-  rationale comment) instead of scattering `# noqa` comments or bypassing the
-  gate.
-- Run suites separately — `defs/tests` and phase tests have `conftest.py`
-  modules that collide when collected together:
+> [!NOTE]
+> `check.py` automatically uses Git change detection and static AST reverse-dependency lineage tracking:
+> - **Documentation / Assets**: If only markdown, documentation, or static non-code assets changed, pytest execution is bypassed completely.
+> - **Prose-Only Edits**: A `.py` file is compared to its `HEAD` baseline through docstring-stripped AST dumps. A change that leaves those dumps identical — a comment, docstring, or blank-line edit — selects no tests. `ruff format` and `ruff lint` still cover the file, so only pytest selection is skipped. An untracked file, a missing baseline, or unparsable text counts as a logic change.
+> - **Targeted Execution**: Modifying a module resolves and runs its direct mirrored test and downstream dependents, respecting pipeline boundaries.
+> - **Full Gate Verification**: Use `check.py --all` when completing major milestones or pull requests to run the entire test suite.
 
-  ```bash
-  .venv/bin/pytest defs/tests
-  .venv/bin/pytest phases/01_metadata_extraction/tests
-  ```
 
-- Preserve atomic publication, immutable checkpoints, schema versioning,
-  provenance, and resumability in every phase.
+### Registered Policy Scanners
+Scanners are defined modularly in `edgar_sec/foundation/scanners/` and collected via `ALL_SCANNERS`:
+- `environment-access`: Bans direct `os.environ` / `os.getenv` outside `edgar_sec.foundation.runtime.env`.
+- `artifact-paths`: Bans hardcoded `".artifacts"` path literals outside path resolvers.
+- `secrets-leakage`: Bans committed API keys, tokens, or credentials.
+- `clean-exit`: Bans `sys.exit()` in library modules (only allowed in `run.py`, `check.py`, and CLI entrypoints).
+- `file-length`: **Fails the gate** on files exceeding the line limit (800) to prevent monolithic growth. Any finding from any scanner returns a nonzero exit code, so "advisory" is not how it behaves.
+- `layer-boundary`: Enforces strict downward-only import hierarchy.
+- `resource-allocation`: Bans hardcoded thread counts or memory limits in pipeline/engine code.
+- `whole-file-read`: Bans `read_bytes()` consumed by a digest constructor. Hashing a whole
+  artifact to prove it intact materializes the file; use `file_sha256`. Narrow on purpose —
+  a `read_bytes()` feeding `json.loads` on a small payload is a different trade and is not flagged.
+- `prose-length`: **Fails the gate** on a docstring or comment block over its cap. Enforces the
+  "Code Comments and Docstrings" caps below, with tighter caps for tests.
+- `regex-alternations`: Bans hand-crafted 3+ branch alternation literals, so `foundation.regex.builder` is used.
+- `legacy-shims`: Bans backward-compatibility aliases and transitional shims (enforces §1.1).
+- `json-io`: Bans redundant JSON helper definitions and non-atomic JSON writes.
+- `date-patterns`: Bans private month tables and hand-crafted date patterns.
+- `sql-interpolation`: Bans SQL assembled from unescaped values at a query sink. It
+  inspects the argument of `execute` / `executemany` / `executescript` and reports an
+  f-string, `%`, or `+` that interpolates a value which did not reach the statement
+  through `infra.storage.duckdb.sql_literal` / `sql_path_list` / `sql_identifier`, a
+  constant, or a local derived from those. A bound parameter is never a finding, and a
+  module that composes SQL at a sink must be declared in `_SQL_COMPILER_PATHS` — an
+  audited list, each entry recording why its interpolated values are safe.
 
-## Documentation Contract
+> [!NOTE]
+> `regex-alternations`, `legacy-shims`, `json-io`, and `date-patterns` exist to
+> keep a rule *enforced* rather than merely *stated*.
+> Each points at infrastructure the repository already ships — the regex builder
+> DSL, the "zero shims" rule in §1.1, `foundation.serialization.canonical_json`,
+> `infra.storage.atomic.atomic_write_json`, and `foundation.text.dates`. A rule
+> with no scanner erodes, because the cost of ignoring it is invisible until the
+> damage is. Each exempts only the module that owns the vocabulary, plus tests
+> and the scanners themselves.
 
-- Each top-level component (`defs/`, `defs/viewer`, `phases/<number>_<name>`)
-  owns a `README.md` describing its purpose, command surface, layout, and the
-  contracts it guarantees. The root `README.md` links to every component README
-  and summarizes the launcher, phases, and tools.
-- On any **major change** to a component — new command or public entry point,
-  schema/contract change, resumability/merge behavior change, added dependency
-  or tooling, or a new phase — update that component's `README.md`, the root
-  `README.md`, and `roadmap/master_roadmap.md` where the change affects product
-  direction. Do not leave a component, the launcher menu, or the root README out
-  of sync with the code.
-- Documentation describes intended behavior only; it is not a substitute for
-  tests. Default tests remain deterministic, offline, and credential-free.
+Adding a scanner means: a module in `edgar_sec/foundation/scanners/`, an entry in
+`ALL_SCANNERS`, a mirrored `tests/foundation/scanners/test_<name>.py` (§6), and a
+line in the list above. Because that list already specifies the rule, the scanner's
+module docstring states only what it flags, what it deliberately allows, and its
+exemption mechanism — never a restatement of the rule (see **Code Comments and
+Docstrings**).
 
-## Environment And Paths
+### Documentation Contract
 
-- `ARTIFACTS_ROOT` selects the shared generated-artifact workspace and
-  defaults to `.artifacts`.
-- `CACHE_ROOT` may override the derived HTTP cache location; phase config
-  paths are derived via `PhasePaths.config_path` and overridden with CLI `--config`.
-  Credentials and SEC contact identity come from the environment or the git-ignored
-  root `.env` file (direct environment wins; `DOTENV_PATH` may relocate the file)
-  resolved through `defs.runtime.env.get_env`; do not store provider API keys in config.
-- Application settings are declared once as typed specs with logical dotted
-  paths in `defs/runtime/settings/`; phases do not define parallel settings
-  registries. Environment names are generated from the logical paths. New
-  settings never add `os.environ` reads, env-name
-  constants, or exports outside that registry — direct environment access is
-  confined to `defs/runtime/env.py` and the settings resolution boundary and
-  is enforced by the policy scanners registered in `defs/runtime/checks.py`
-  and run by `check.py` (findings fail the gate; `--scan` runs only the
-  scanner step).
-- Secrets and `.env` values are never written to plans, manifests, logs, or
-  generated artifacts. Machine-derived settings (threads, memory
-  budget, spill directory) are never persisted automatically.
-- Persist dataset identity and layout (input manifest, run ID, partition
-  count, chunk size, and storage format) in project config and immutable plans.
-  Keep worker count, rate, timeout, and cache overrides machine-local unless a
-  phase explicitly makes them part of its reproducibility contract.
-- Resolve paths through `defs.runtime.paths`; phase code supplies logical
-  phase/run/worker/partition IDs and never invents directory names.
+Every package in the repository must be rigorously documented to preserve architectural integrity and prevent tribal knowledge erosion:
 
-## Test Artifacts And Fixtures
+- **Every package owns a `README.md`** at `edgar_sec/<layer>/<pkg>/README.md`,
+  plus one per layer root and one for `edgar_sec/` itself. Each states: purpose,
+  a module→responsibility layout table, the contracts it guarantees, its public
+  surface, its command surface if it has one, its mirrored tests, and its
+  **deliberate gaps**. Omit a section that has nothing to say — a library package
+  with no command surface states that in one line rather than omitting it silently.
+- **Package READMEs are concise contracts, not duplicate API manuals.** Explain
+  package-level guarantees and boundaries once; link to the owning module for
+  function-specific behavior instead of copying its docstring. Remove repeated
+  explanations already owned by another package. Describe module
+  responsibilities in the layout table; do not narrate why implementation was
+  split across files or why a symbol was placed in one module rather than another.
+- **Public surface means the supported boundary, not an inventory.** Name the
+  entry points a caller is expected to use and link to the owning module. Do not
+  enumerate every helper, constant, error class, or field a module exports; that
+  list is the module's own docstring's job, and a copied version goes stale
+  silently. A CLI package may treat its command table as its command surface and
+  keep that table out of the Python surface list. Mirrored-tests sections may name
+  the test directory instead of listing every test file.
+- **Do not document what the code already says.** Omit a statement when it restates
+  the code without adding a caller obligation, a boundary, or an impact. In
+  particular, do not narrate where a setting is declared, how a name is derived, or
+  which module a piece of SQL lives in unless a caller must know it to use the
+  package correctly. Link to the owning module instead.
+- **Do not mirror volatile implementation tuning in Markdown.** Leave algorithm
+  thresholds, search windows, and heuristic detail with their owning code or
+  docstring; link there when needed. State these values in a README only when
+  they are part of a persisted, operator-facing, or normative runtime contract.
+- **Avoid volatile implementation counts.** Do not enumerate source/test line
+  numbers, LOC, module or test-file totals, parameters, fields, or pipeline-stage
+  counts in prose when names or behavior express the contract. Retain numbers
+  that are actual runtime policy or persisted schema/version identifiers.
+- **The deliberate-gaps section is important.** A reader must never mistake an
+  absent capability for an oversight. Where a capability is deliberately omitted,
+  deferred to a future phase, or substituted with an alternative pattern, say so
+  and name the alternative or the roadmap item. Record only gaps a caller would
+  notice: an absent capability and its impact. Do not use it to log internal
+  observations, dead parameters, or code facts a reader can see.
+- **`AGENTS.md` is normative.** Where a README and this file disagree, this file
+  wins — and the README is the thing that is wrong, so fix it.
+- On any **major change** — new public entry point, schema or contract change,
+  resumability/merge behaviour change, added dependency or tooling, a new
+  pipeline — update that package's README, the root `README.md` layout section,
+  and the tracked roadmap under `roadmap/` where product direction moves.
+- **Tracked docs cite tracked evidence.** Name or link only paths that exist in
+  the repository. A citation into an absent local-only tree — a machine-local
+  `.v1/` or `.v2/` archive, an untracked plan or scratch directory — is a broken
+  reference, and it fails the same way a wrong claim does: it cannot be
+  checked. Cite tracked, portable evidence instead. Version words that are
+  ordinary technical terminology — cgroups v1/v2, a schema or phase
+  identifier, a `v1`-suffixed name carried by the code itself — are not
+  citations and stay.
+- **Documentation describes verified behaviour, not intent.** Every claim must be
+  checkable against the code, and a documented capability that does not work is
+  itself a defect: if you find one, write it in the package README's
+  deliberate-gaps or known-defects section rather than describing the capability
+  as working.
 
-- Default unit/contract tests are deterministic, offline, and credential-free.
-  A test that exercises an LLM call uses a fake provider or a recorded,
-  sanitized response — never a real model call.
-- Committed fixtures live under the owning package's `tests/fixtures/`: minimal,
-  synthetic or sanitized, versioned, one behavior each (malformed SEC payloads,
-  era-specific filing shapes, regex edge cases, LLM structured responses,
-  schema/provenance validation).
-- Generated test/acceptance output goes under ignored `.artifacts/test-runs/`
-  or `.artifacts/acceptance/`, never beside committed fixtures or canonical
-  outputs. Every generated run recreates its own plan/manifest/storage.
-- Test tiers:
-  - unit/contract: fake SEC client, fake LLM provider, deterministic storage;
-  - fixture replay: recorded responses, no network or provider calls;
-  - live acceptance: explicit opt-in, credential-gated, rate-limited,
-    cost-bounded, excluded from default test commands.
-- Structural acceptance runs use a fixed sample manifest (e.g. 100 CIKs) stored
-  as a tracked fixture `phases/<phase>/tests/fixtures/samples/<name>.json`
-  recording the sample CIK list and source-manifest fingerprint. Do not rely
-  on `limit`, which only takes a prefix of the input CSV.
-- A sample acceptance run must use the same production plan/run/storage path
-  as the full dataset, with only the sample manifest limiting work. Validate
-  schema read-back, required fields, nested cardinality, statuses, provenance,
-  duplicate/conflict behavior, and artifact completeness before authorizing a
-  full run.
-- Sample acceptance artifacts record code/schema/config versions, input and
-  sample fingerprints, storage format, provider/model/prompt versions when
-  applicable, request counts, retry/error counts, and validation results. The
-  resulting raw data and generated Parquet/JSONL/SQL files are not committed.
-- Live LLM acceptance is a separate command or marker (e.g. `-m live_llm`)
-  with explicit model/provider selection and a hard budget/request limit.
-  It produces evidence artifacts for review and is not a required CI gate
-  unless credentials and budget are deliberately provided.
-- Prefer a fake-provider contract asserting request schema, structured-output
-  handling, retries, timeout behavior, usage accounting, and provenance
-  propagation; reserve real-provider checks for adapter smoke tests.
+Adding a package means: a `README.md` in it, an entry in the parent layer's
+README layout table, and an entry in `edgar_sec/README.md` and the root
+`README.md`.
+
+### Code Comments and Docstrings
+
+These rules are normative for code, not just Markdown. They exist because a
+long-prose comment habit, once established, is reintroduced by every later change
+that "documents while implementing". Apply them when you write code, not only
+when reviewing it.
+
+**Default to none.** A `#` or `"""` earns its place only by stating something the
+code cannot state. The code already explains execution; a comment that describes
+what the next lines do is deleted on sight.
+
+**Hard caps.** A module docstring is at most four lines. A function or class
+docstring is at most three. A standalone comment block is at most three lines. A
+test module docstring is at most three lines, a test function at most two, a test
+comment block at most two. A trailing comment (code precedes it on the line) is
+counted alone: it labels its own line, so adjacency is irrelevant. Exceeding a cap
+requires a precondition the type system cannot express, and is justified in review;
+it is not a default to fall back on. The `prose-length` scanner enforces these.
+
+**Document intent, not execution.** Keep the conclusion and drop the derivation.
+"Rows must be sorted before merging, or the fingerprint is unstable" is worth
+writing. "First we sort, then we hash each row, then we compare with the previous
+fingerprint, and if any differ we reject the run" is not.
+
+**Six things justify prose.** A non-obvious invariant the code does not enforce;
+a refusal or rejection semantic and why it refuses; an ordering, determinism, or
+atomicity constraint; a caller obligation ("do not bypass X", "Y must be sorted
+first"); a safety or integrity rule (injection, path traversal, data loss, memory
+bound); a precondition the type system cannot express.
+
+**Do not duplicate.** If a type, function, or module already documents a rule,
+reference it by name in a few words or say nothing. Do not restate a rule that
+`AGENTS.md` already owns.
+
+**Never add:** step-by-step narration; benchmarks, measured figures, or corpus
+statistics; project vocabulary (phase numbers, stage names, milestones, roadmap
+references); design essays on why a file was split or a symbol placed where it is;
+what an earlier implementation did; comments that restate the following line.
+
+**When you change code, do not grow the prose.** Editing a function does not
+license expanding its docstring. New behaviour needs a sentence only when it
+introduces an invariant, a refusal, or an obligation that did not exist before.
+Net comment and docstring volume should not grow with a feature.
+
+---
+
+## Testing & Fixtures
+
+- Default unit tests must be offline, deterministic, and fast (< 1s total).
+- Committed fixtures live under `tests/fixtures/`: sanitized, minimal golden reference JSON and CSVs.
+- Generated test outputs must use pytest's `tmp_path` fixture or transient paths, never dirtying the repository tree.
+
+### Test Tree Mirrors the Source Tree
+
+`tests/` mirrors `edgar_sec/` package-for-package, so a test file sits at the same relative path as the module it covers:
+
+```text
+edgar_sec/pipelines/metadata_sync/worker.py  ->  tests/pipelines/metadata_sync/test_worker.py
+edgar_sec/infra/sec_http/cache.py             ->  tests/infra/sec_http/test_cache.py
+edgar_sec/foundation/runtime/settings/        ->  tests/foundation/runtime/test_settings.py
+```
+
+This is a hard requirement, not a preference: as modules and pipelines accumulate, a flat test list makes it impossible to tell which tests a given pipeline requires.
+
+1. **Every test directory is a package.** Each owns `__init__.py`, so pytest module names stay unambiguous and cannot collide across the tree.
+2. **Add tests at the mirrored path.** Adding `foo/bar.py` means adding `tests/foo/test_bar.py`, not appending to an existing flat module.
+3. **Do not merge unrelated modules into one test file.** One test file per source module. Shared setup lives in `conftest.py` at the narrowest directory that needs it.
+4. **Fixture access goes through `tests.support`.** Never compute fixture paths with `parents[N]` depth arithmetic; it silently breaks when the tree is reorganized. Use `tests.support.load_fixture` / `fixture_path`.
+5. **Offline test doubles live in `tests.support`.** Network fakes are injected at the transport seam (`SecHttpClient(session_factory=...)`), never by reaching into module internals.
+
+> [!IMPORTANT]
+> Committed fixtures and `ruff.toml` are un-ignored at the end of `.gitignore`. The blanket `.*` / `*.csv` / `*.parquet` rules would otherwise swallow them, and a fresh clone missing `tests/fixtures/` fails the gate.
+
+### Lint Configuration
+
+Lint suppression belongs in `ruff.toml`, not scattered `# noqa` comments. When a rule is noisy for a deliberate pattern, add a per-file ignore with a rationale comment rather than bypassing the gate.

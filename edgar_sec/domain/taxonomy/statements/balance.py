@@ -1,0 +1,140 @@
+"""Balance sheet (Financial Position) terms and structural tail patterns.
+
+Owns balance sheet section labels, asset/liability classifications, and tail patterns.
+"""
+
+from __future__ import annotations
+
+import re
+
+from edgar_sec.foundation.regex.builder import build_alternation
+
+ASSETS_TERMS: tuple[str, ...] = (
+    "total assets",
+    "total current assets",
+    "current assets",
+    "assets",
+)
+
+LIABILITIES_TERMS: tuple[str, ...] = (
+    "total liabilities",
+    "total current liabilities",
+    "current liabilities",
+    "liabilities",
+    "long-term debt",
+    "long-term liabilities",
+    "noncurrent liabilities",
+    "commitments and contingencies",
+    "commitments & contingencies",
+    "redeemable preferred stock",
+)
+
+EQUITY_TERMS: tuple[str, ...] = (
+    "total stockholders' equity",
+    "total shareholders' equity",
+    "total stockholders equity",
+    "total shareholders equity",
+    "total equity",
+    "stockholders' equity",
+    "shareholders' equity",
+    "stockholders equity",
+    "shareholders equity",
+    "members' equity",
+    "partners' equity",
+    "unitholders' equity",
+    "retained earnings",
+    "common stock",
+    "additional paid-in capital",
+)
+
+CASH_TERMS: tuple[str, ...] = (
+    "cash and cash equivalents",
+    "cash and equivalents",
+    "marketable securities",
+    "short-term investments",
+)
+
+BALANCE_SHEET_TAIL_TERMS: tuple[str, ...] = (
+    "total assets",
+    "total liabilities",
+    "total liabilities and stockholders' equity",
+    "total liabilities and stockholders' deficit",
+    "total liabilities and shareholders' equity",
+    "total liabilities and shareholders' deficit",
+    "total liabilities and members' equity",
+    "total liabilities and partners' equity",
+    "total liabilities and unitholders' equity",
+)
+
+_BALANCE_SHEET_TAIL_PATTERN = build_alternation(
+    BALANCE_SHEET_TAIL_TERMS,
+    auto_escape=True,
+    flexible_whitespace=True,
+    compact=True,
+)
+
+BALANCE_SHEET_TAIL_RE = re.compile(
+    rf"^\s*{_BALANCE_SHEET_TAIL_PATTERN}(?=\s|$)", re.IGNORECASE
+)
+
+BALANCE_SHEET_VETOES: tuple[str, ...] = ("activities",)
+
+from edgar_sec.domain.taxonomy.tables.shapes import ShapeConstraint
+from edgar_sec.domain.taxonomy.tables.specs import (
+    RepairPolicy,
+    TableFamilySpec,
+    TableScope,
+    build_ngram_tier,
+)
+from edgar_sec.foundation.text.evidence import (
+    LexicalEvidencePack,
+    compile_evidence_pack,
+)
+
+_bs_primary: tuple[str, ...] = (
+    *ASSETS_TERMS,
+    *LIABILITIES_TERMS,
+    *EQUITY_TERMS,
+)
+
+_BALANCE_SHEET_PACK = compile_evidence_pack(
+    LexicalEvidencePack(
+        name="balance_sheet",
+        tiers=tuple(
+            t
+            for t in (
+                build_ngram_tier(
+                    "bs_lines",
+                    _bs_primary,
+                    priority=10,
+                    value=2,
+                    min_distinct_hits=2,
+                ),
+            )
+            if t is not None
+        ),
+        exclusion_terms=BALANCE_SHEET_VETOES,
+    )
+)
+
+BALANCE_SHEET_SPEC = TableFamilySpec(
+    name="balance_sheet",
+    shape=ShapeConstraint(
+        min_rows=8, max_rows=65, min_cols=2, min_numeric_density=0.15
+    ),
+    evidence_pack=_BALANCE_SHEET_PACK,
+    repair_policy=RepairPolicy.SAFE_GRID_REPAIR,
+    candidate_default_scope=TableScope.BODY,
+    priority=100,
+)
+
+__all__ = [
+    "ASSETS_TERMS",
+    "BALANCE_SHEET_SPEC",
+    "BALANCE_SHEET_TAIL_RE",
+    "BALANCE_SHEET_TAIL_TERMS",
+    "BALANCE_SHEET_VETOES",
+    "CASH_TERMS",
+    "EQUITY_TERMS",
+    "LIABILITIES_TERMS",
+]

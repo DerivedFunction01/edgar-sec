@@ -221,8 +221,13 @@ __marimo__/
 # Streamlit
 .streamlit/secrets.toml
 
-# Hidden files and folders 
+# Hidden files and folders
 .*
+# NOTE: the blanket rules below (*.csv, *.parquet, .*) are broad enough to
+# swallow repository content that must stay committable. The exceptions for
+# that content live at the very end of this file, because a later pattern
+# overrides an earlier one.
+
 # Binary files or pandas exports
 *.parquet
 *.xlsx
@@ -373,3 +378,12 @@ dist
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
 .vite/
+# --- Committable exceptions -------------------------------------------------
+# tests/fixtures/ holds committed golden fixtures. These must stay tracked: a
+# fresh clone lacking them fails the gate, because the engine parity tests and
+# the whole pipeline replay read from this directory.
+#
+# uploads/ is deliberately NOT exempted. It holds operator-supplied CIK
+# manifests, which are local run inputs rather than repository content.
+!tests/fixtures/
+!tests/fixtures/**
