@@ -3,14 +3,18 @@
 from __future__ import annotations
 
 import re
-from collections.abc import Sequence
+from collections.abc import Collection, Sequence
 from dataclasses import dataclass
 
 from edgar_sec.domain.document.acquisition import (
     SubmissionDocument,
     describe_submission_document,
 )
-from edgar_sec.domain.document.route import content_route, is_markup_document_path
+from edgar_sec.domain.document.route import (
+    DocumentRoute,
+    content_route,
+    is_markup_document_path,
+)
 
 _RE_DOCUMENT = re.compile(r"(?is)<DOCUMENT>(.*?)</DOCUMENT>")
 _RE_TAG_TYPE = re.compile(r"(?im)^\s*<TYPE>\s*([^\r\n<]+)")
@@ -28,6 +32,11 @@ _RE_TAG_SEQUENCE_B = re.compile(rb"(?im)^\s*<SEQUENCE>\s*([^\r\n<]+)")
 _RE_TAG_FILENAME_B = re.compile(rb"(?im)^\s*<FILENAME>\s*([^\r\n<]+)")
 _RE_TAG_DESCRIPTION_B = re.compile(rb"(?im)^\s*<DESCRIPTION>\s*([^\r\n<]+)")
 _RE_TAG_TEXT_B = re.compile(rb"(?is)<TEXT>(.*?)</TEXT>")
+
+# Delimiter counters for structural validation; a submission may not nest <DOCUMENT>
+# blocks beneath one another.
+_RE_DOC_OPEN_B = re.compile(rb"<DOCUMENT>")
+_RE_DOC_CLOSE_B = re.compile(rb"</DOCUMENT>")
 
 _NON_TEXT_EXTENSIONS = (
     ".jpg",
@@ -340,7 +349,205 @@ def extract_target_sub_document(
     return None if selection is None else selection.payload
 
 
+@dataclass(frozen=True, slots=True)
+class _ResolvedDocument:
+    """One document header with its sliced body; internal to this module."""
+
+    document_path: str | None
+    content_route: DocumentRoute
+    sequence: int | None
+    doc_type: str | None
+    description: str | None
+    payload: bytes
+
+
+@dataclass(frozen=True, slots=True)
+class FilingResolutionScan:
+    """Every document header in a bundle plus the only bodies the resolver retains.
+
+    ``documents`` lists every header in envelope order; ``requested`` and ``primary``
+    carry the two bodies the resolver keeps. ``scan_error`` records delimiter problems.
+    """
+
+    documents: tuple[SubmissionDocument, ...]
+    requested: _ResolvedDocument | None
+    primary: _ResolvedDocument | None
+    requested_match_count: int
+    primary_sequence_tie: bool
+    primary_invalid_sequence: bool
+    scan_error: str | None
+
+
+def _check_document_delimiters(raw_bytes: bytes) -> str | None:
+    """Return an error when ``<DOCUMENT>`` delimiters are unbalanced or nested."""
+    if not raw_bytes:
+        return None
+    positions: list[tuple[int, int]] = []
+    for m in _RE_DOC_OPEN_B.finditer(raw_bytes):
+        positions.append((m.start(), 1))
+    for m in _RE_DOC_CLOSE_B.finditer(raw_bytes):
+        positions.append((m.start(), -1))
+    positions.sort()
+    depth = 0
+    for _, delta in positions:
+        depth += delta
+        if depth < 0:
+            return "unbalanced </DOCUMENT> delimiter"
+        if depth > 1:
+            return "nested <DOCUMENT> delimiter"
+    if depth != 0:
+        return "unbalanced <DOCUMENT> delimiter"
+    return None
+
+
+def _parse_document_headers(
+    raw_bytes: bytes,
+) -> list[tuple[int, int, SubmissionDocument]]:
+    """Return (start, end, descriptor) for every document block in envelope order."""
+    entries: list[tuple[int, int, SubmissionDocument]] = []
+    for m in _RE_DOCUMENT_B.finditer(raw_bytes):
+        block = raw_bytes[m.start(1) : m.end(1)]
+        doc_type_raw = _clean_b_field(_RE_TAG_TYPE_B.search(block)) or ""
+        doc_type = doc_type_raw.upper()
+        seq_raw = _clean_b_field(_RE_TAG_SEQUENCE_B.search(block))
+        sequence: int | None = None
+        if seq_raw:
+            try:
+                sequence = int(seq_raw)
+            except ValueError:
+                sequence = None
+        filename = _clean_b_field(_RE_TAG_FILENAME_B.search(block)) or ""
+        description = _clean_b_field(_RE_TAG_DESCRIPTION_B.search(block))
+        entries.append(
+            (
+                m.start(1),
+                m.end(1),
+                describe_submission_document(
+                    document_path=filename,
+                    content_route=content_route(filename),
+                    sequence=sequence,
+                    doc_type=doc_type or None,
+                    description=description,
+                ),
+            )
+        )
+    return entries
+
+
+def _slice_body(raw_bytes: bytes, block_start: int, block_end: int) -> bytes:
+    """Extract the TEXT body of a document block, or the whole block if no TEXT."""
+    block = raw_bytes[block_start:block_end]
+    m = _RE_TAG_TEXT_B.search(block)
+    if m is not None:
+        return m.group(1).strip(b"\r\n")
+    return block.decode("latin-1").strip().encode("latin-1")
+
+
+def scan_filing_bundle(
+    raw_bytes: bytes,
+    requested_path: str,
+    accepted_types: Collection[str],
+) -> FilingResolutionScan:
+    """Inspect every header in a bundle and slice only the retained bodies.
+
+    ``requested_path`` matched by exact basename; the primary is the accepted
+    header with the lowest valid ``<SEQUENCE>``. Only two bodies survive.
+    """
+    if not raw_bytes:
+        return FilingResolutionScan(
+            documents=(),
+            requested=None,
+            primary=None,
+            requested_match_count=0,
+            primary_sequence_tie=False,
+            primary_invalid_sequence=False,
+            scan_error=None,
+        )
+
+    # Structural validation happens first: an unbalanced or nested envelope is a
+    # structural failure, before any header semantics.
+    scan_error = _check_document_delimiters(raw_bytes)
+
+    entries = _parse_document_headers(raw_bytes)
+    headers = tuple(e[2] for e in entries)
+    offsets = tuple((e[0], e[1]) for e in entries)
+
+    # Requested match: case-insensitive exact basename.
+    requested_base = requested_path.strip().lower()
+    match_indices = [
+        i
+        for i, d in enumerate(headers)
+        if (d.document_path or "").strip().lower() == requested_base
+    ]
+    requested_match_count = len(match_indices)
+
+    # Primary: lowest valid positive sequence among accepted types.
+    accepted: set[str] = {t.strip().upper() for t in accepted_types}
+    matching: list[int] = [
+        i
+        for i, d in enumerate(headers)
+        if d.doc_type and d.doc_type.upper() in accepted
+    ]
+    valid: list[tuple[int, int]] = [
+        (i, headers[i].sequence)
+        for i in matching
+        if isinstance(headers[i].sequence, int) and headers[i].sequence > 0
+    ]
+    invalid = [
+        i
+        for i in matching
+        if not (isinstance(headers[i].sequence, int) and headers[i].sequence > 0)
+    ]
+
+    primary_index: int | None = None
+    primary_sequence_tie = False
+    primary_invalid_sequence = bool(invalid)
+
+    if valid:
+        min_seq = min(seq for _, seq in valid)
+        best = [i for i, seq in valid if seq == min_seq]
+        if len(best) == 1:
+            primary_index = best[0]
+        else:
+            primary_sequence_tie = True
+
+    requested_doc = None
+    primary_doc = None
+    if requested_match_count == 1:
+        idx = match_indices[0]
+        start, end = offsets[idx]
+        requested_doc = _ResolvedDocument(
+            document_path=headers[idx].document_path,
+            content_route=headers[idx].content_route,
+            sequence=headers[idx].sequence,
+            doc_type=headers[idx].doc_type,
+            description=headers[idx].description,
+            payload=_slice_body(raw_bytes, start, end),
+        )
+    if primary_index is not None:
+        start, end = offsets[primary_index]
+        primary_doc = _ResolvedDocument(
+            document_path=headers[primary_index].document_path,
+            content_route=headers[primary_index].content_route,
+            sequence=headers[primary_index].sequence,
+            doc_type=headers[primary_index].doc_type,
+            description=headers[primary_index].description,
+            payload=_slice_body(raw_bytes, start, end),
+        )
+
+    return FilingResolutionScan(
+        documents=headers,
+        requested=requested_doc,
+        primary=primary_doc,
+        requested_match_count=requested_match_count,
+        primary_sequence_tie=primary_sequence_tie,
+        primary_invalid_sequence=primary_invalid_sequence,
+        scan_error=scan_error,
+    )
+
+
 __all__ = [
+    "FilingResolutionScan",
     "SgmlSubDocument",
     "SgmlSubDocumentSelection",
     "extract_target_sub_document",

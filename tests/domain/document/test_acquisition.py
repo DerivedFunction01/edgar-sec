@@ -1,303 +1,327 @@
-"""Tests for document acquisition domain records."""
+"""Tests for filing-resolution acquisition records.
+
+Records live in the domain layer and must stay free of transport, engine, and
+pipeline machinery; fixtures are supplied as plain bytes and locators.
+"""
 
 from __future__ import annotations
-
-from dataclasses import FrozenInstanceError
 
 import pytest
 
 from edgar_sec.domain.document.acquisition import (
-    AcquiredSubmission,
-    AcquisitionFailure,
     AcquisitionSource,
     AcquisitionSourceKind,
-    FetchResult,
-    SubmissionFormat,
-    describe_submission_document,
-    direct_acquisition,
-    is_stub_document_path,
+    BundleFetchResult,
+    DocumentReference,
+    FilingResolutionOutcome,
+    FilingResolutionResult,
+    SubmissionDocument,
+    unresolved_resolution,
 )
 from edgar_sec.domain.document.models import (
+    AccessionNumber,
     DocumentLocator,
-    derive_document_locator_key,
+    FilingOccurrence,
 )
 from edgar_sec.domain.document.route import DocumentRoute
+from edgar_sec.domain.identity import Cik
+
 
 LOCATOR = DocumentLocator.from_parts(
-    "0001234567-11-000001",
-    "acme-10k.htm",
-    archive_url="https://www.sec.gov/Archives/edgar/data/1234567/x/acme-10k.htm",
+    "0000320193-02-000123",
+    "ex21.txt",
+    archive_url="https://www.sec.gov/Archives/edgar/data/320193/000032019302000123/ex21.txt",
     form="10-K",
-    source_cik="1234567",
+    source_cik="0000320193",
+)
+
+DESCRIPTOR = SubmissionDocument(
+    document_path="ex21.txt",
+    content_route=DocumentRoute.TEXT,
+    sequence=1,
+    doc_type="EX-21",
+    description="LIST OF SUBSIDIARIES",
+)
+
+SOURCE = AcquisitionSource(
+    kind=AcquisitionSourceKind.FIXTURE, reference="fixture://ex21.txt"
+)
+
+PRIMARY_LOCATOR = DocumentLocator.from_parts(
+    "0000320193-02-000123",
+    "a10k.htm",
+    archive_url="https://www.sec.gov/Archives/edgar/data/320193/000032019302000123/a10k.htm",
+    form="10-K",
+    source_cik="0000320193",
+    document_type="10-K",
+)
+
+OCCURRENCE = FilingOccurrence(
+    occurrence_id="occ-1",
+    source_cik=Cik.from_raw("0000320193"),
+    accession=LOCATOR.accession,
+    document_path="ex21.txt",
+    form="10-K",
+    filing_date="2002-05-15",
+    report_date=None,
+    doc_id=LOCATOR.document_locator_key,
 )
 
 
-def _ok(payload: bytes = b"<html>body</html>") -> FetchResult:
-    return FetchResult(
-        locator=LOCATOR, status="ok", acquired=direct_acquisition(LOCATOR, payload)
+def test_bundle_fetch_result_invariants() -> None:
+    """An ok result requires a payload; a failure requires an error and no payload."""
+    BundleFetchResult(status="ok", payload=b"bundle", source=SOURCE)
+    BundleFetchResult(status="ok", payload=b"bundle")
+    BundleFetchResult(status="missing", payload=None, error="not found")
+    BundleFetchResult(status="failed", payload=None, error="connection refused")
+
+    with pytest.raises(ValueError, match="ok bundle result must carry a payload"):
+        BundleFetchResult(status="ok")
+
+    with pytest.raises(
+        ValueError, match="unsuccessful bundle result carries no payload"
+    ):
+        BundleFetchResult(status="missing", payload=b"leaked")
+
+    with pytest.raises(
+        ValueError, match="unsuccessful bundle result must name an error"
+    ):
+        BundleFetchResult(status="failed")
+
+
+def test_document_reference_is_role_neutral() -> None:
+    """A reference carries identity, headers, body, and provenance, no role fields."""
+    ref = DocumentReference(
+        locator=LOCATOR, descriptor=DESCRIPTOR, payload=b"exhibit", source=SOURCE
+    )
+    assert ref.locator.document_locator_key == LOCATOR.document_locator_key
+    assert ref.descriptor.doc_type == "EX-21"
+    assert ref.payload == b"exhibit"
+    assert ref.source is SOURCE
+
+    ref_no_source = DocumentReference(
+        locator=LOCATOR, descriptor=DESCRIPTOR, payload=b"exhibit"
+    )
+    assert ref_no_source.source is None
+
+
+def test_resolution_outcome_values_are_exhaustive() -> None:
+    """Every outcome is a unique, stable string."""
+    assert tuple(FilingResolutionOutcome)[:-2] == (
+        "not_candidate",
+        "bundle_unavailable",
+        "non_sgml_bundle",
+        "malformed_sgml",
+        "requested_not_in_bundle",
+        "no_matching_primary",
+        "ambiguous_headers",
+    )
+    assert FilingResolutionOutcome.REQUESTED_IS_PRIMARY.value == "requested_is_primary"
+    assert FilingResolutionOutcome.PRIMARY_RECOVERED.value == "primary_recovered"
+
+
+def test_resolution_result_unresolved_shapes() -> None:
+    """Every unresolved outcome keeps only the requested reference."""
+    ref = DocumentReference(locator=LOCATOR, descriptor=DESCRIPTOR, payload=b"exhibit")
+    for outcome in tuple(FilingResolutionOutcome)[:-2]:
+        result = FilingResolutionResult(
+            requested=ref,
+            requested_occurrences=(OCCURRENCE,),
+            outcome=outcome,
+        )
+        assert result.outcome is outcome
+        assert result.primary is None
+        assert result.exhibit is None
+        assert result.requested is ref
+
+
+def test_resolution_result_requested_is_primary_shape() -> None:
+    """REQUESTED_IS_PRIMARY carries primary is requested and no exhibit."""
+    ref = DocumentReference(locator=LOCATOR, descriptor=DESCRIPTOR, payload=b"exhibit")
+    result = FilingResolutionResult(
+        requested=ref,
+        requested_occurrences=(OCCURRENCE,),
+        primary=ref,
+        outcome=FilingResolutionOutcome.REQUESTED_IS_PRIMARY,
+    )
+    assert result.primary is ref
+    assert result.exhibit is None
+    assert (
+        result.primary.locator.document_locator_key == ref.locator.document_locator_key
     )
 
 
-def _document(filename: str | None, doc_type: str | None, sequence: int | None):
-    return describe_submission_document(
-        document_path=filename,
-        content_route=DocumentRoute.TEXT,
-        sequence=sequence,
-        doc_type=doc_type,
+def test_resolution_result_primary_recovered_shape() -> None:
+    """PRIMARY_RECOVERED keeps requested/exhibit, distinct primary, same accession."""
+    requested = DocumentReference(
+        locator=LOCATOR, descriptor=DESCRIPTOR, payload=b"exhibit", source=SOURCE
+    )
+    primary = DocumentReference(
+        locator=PRIMARY_LOCATOR,
+        descriptor=DESCRIPTOR,
+        payload=b"primary",
+        source=SOURCE,
+    )
+    result = FilingResolutionResult(
+        requested=requested,
+        requested_occurrences=(OCCURRENCE,),
+        primary=primary,
+        exhibit=requested,
+        outcome=FilingResolutionOutcome.PRIMARY_RECOVERED,
+    )
+    assert result.primary is primary
+    assert result.exhibit is requested
+    assert result.requested is requested
+    assert result.primary.locator.accession == requested.locator.accession
+    assert (
+        result.primary.locator.document_locator_key
+        != requested.locator.document_locator_key
+    )
+    assert (
+        len(
+            {
+                result.requested.locator.document_locator_key,
+                result.primary.locator.document_locator_key,
+            }
+        )
+        == 2
     )
 
 
-def _sgml(documents, selected_index: int, payload: bytes = b"body") -> FetchResult:
-    return FetchResult(
+def test_resolution_result_rejects_invalid_shapes() -> None:
+    """Construction enforces the valid shapes strictly."""
+    ref = DocumentReference(locator=LOCATOR, descriptor=DESCRIPTOR, payload=b"exhibit")
+
+    with pytest.raises(ValueError, match="unresolved outcome carries neither"):
+        FilingResolutionResult(
+            requested=ref,
+            requested_occurrences=(OCCURRENCE,),
+            primary=ref,
+            outcome=FilingResolutionOutcome.NOT_CANDIDATE,
+        )
+
+    with pytest.raises(ValueError, match="REQUESTED_IS_PRIMARY requires"):
+        FilingResolutionResult(
+            requested=ref,
+            requested_occurrences=(OCCURRENCE,),
+            primary=DocumentReference(
+                locator=PRIMARY_LOCATOR, descriptor=DESCRIPTOR, payload=b"x"
+            ),
+            outcome=FilingResolutionOutcome.REQUESTED_IS_PRIMARY,
+        )
+
+    with pytest.raises(ValueError, match="REQUESTED_IS_PRIMARY carries no exhibit"):
+        FilingResolutionResult(
+            requested=ref,
+            requested_occurrences=(OCCURRENCE,),
+            primary=ref,
+            exhibit=ref,
+            outcome=FilingResolutionOutcome.REQUESTED_IS_PRIMARY,
+        )
+
+    with pytest.raises(ValueError, match="PRIMARY_RECOVERED requires"):
+        FilingResolutionResult(
+            requested=ref,
+            requested_occurrences=(OCCURRENCE,),
+            primary=DocumentReference(
+                locator=PRIMARY_LOCATOR, descriptor=DESCRIPTOR, payload=b"x"
+            ),
+            outcome=FilingResolutionOutcome.PRIMARY_RECOVERED,
+        )
+
+    with pytest.raises(ValueError, match="PRIMARY_RECOVERED requires"):
+        FilingResolutionResult(
+            requested=ref,
+            requested_occurrences=(OCCURRENCE,),
+            primary=ref,
+            outcome=FilingResolutionOutcome.PRIMARY_RECOVERED,
+        )
+
+    primary_diff_accession = DocumentReference(
+        locator=DocumentLocator.from_parts(
+            "0000789019-02-000001", "a10k.htm", document_type="10-K"
+        ),
+        descriptor=DESCRIPTOR,
+        payload=b"x",
+    )
+    with pytest.raises(ValueError, match="same accession"):
+        FilingResolutionResult(
+            requested=ref,
+            requested_occurrences=(OCCURRENCE,),
+            primary=primary_diff_accession,
+            exhibit=ref,
+            outcome=FilingResolutionOutcome.PRIMARY_RECOVERED,
+        )
+
+    with pytest.raises(ValueError, match="distinct locator key"):
+        FilingResolutionResult(
+            requested=ref,
+            requested_occurrences=(OCCURRENCE,),
+            primary=ref,
+            exhibit=ref,
+            outcome=FilingResolutionOutcome.PRIMARY_RECOVERED,
+        )
+
+
+def test_unresolved_resolution_helper() -> None:
+    """The helper builds every unresolved outcome without boilerplate."""
+    ref = DocumentReference(locator=LOCATOR, descriptor=DESCRIPTOR, payload=b"exhibit")
+    result = unresolved_resolution(
+        ref, (OCCURRENCE,), FilingResolutionOutcome.BUNDLE_UNAVAILABLE
+    )
+    assert (
+        result.primary is None
+        and result.exhibit is None
+        and result.outcome is FilingResolutionOutcome.BUNDLE_UNAVAILABLE
+    )
+
+    with pytest.raises(ValueError, match="use the full constructor"):
+        unresolved_resolution(
+            ref, (OCCURRENCE,), FilingResolutionOutcome.PRIMARY_RECOVERED
+        )
+
+
+def test_bundle_fetch_result_adapts_fetch_result_provenance() -> None:
+    """A caller can fold an existing FetchResult into a BundleFetchResult."""
+    from edgar_sec.domain.document.acquisition import (
+        FetchResult,
+        AcquisitionFailure,
+        direct_acquisition,
+    )
+
+    acquired = direct_acquisition(LOCATOR, b"bundle envelope")
+    fetch = FetchResult(
         locator=LOCATOR,
         status="ok",
-        acquired=AcquiredSubmission(
-            requested_locator=LOCATOR,
-            source_format=SubmissionFormat.SGML,
-            documents=tuple(documents),
-            selected_index=selected_index,
-            selected_payload=payload,
-        ),
+        acquired=acquired,
+        source_payload=b"bundle envelope",
+    )
+    bundle = BundleFetchResult(
+        status=fetch.status,
+        payload=fetch.source_payload,
+        source=None,  # provenance folded in where available
+    )
+    assert bundle.status == "ok"
+    assert bundle.payload == b"bundle envelope"
+    assert bundle.source is None
+
+    failure = FetchResult(
+        locator=LOCATOR, status="missing", acquired=None, error="gone"
+    )
+    assert failure.source_payload is None
+    assert (
+        BundleFetchResult(
+            status=failure.status, payload=failure.source_payload, error=failure.error
+        ).error
+        == "gone"
     )
 
-
-def test_locator_key_is_derived_not_supplied() -> None:
-    same = DocumentLocator.from_parts(
-        "0001234567-11-000001", "acme-10k.htm", archive_url="https://other"
+    missing = FetchResult(
+        locator=LOCATOR, status="missing", acquired=None, error="absent"
     )
-    assert LOCATOR.document_locator_key == same.document_locator_key
-    assert LOCATOR.document_locator_key == derive_document_locator_key(
-        "0001234567-11-000001", "acme-10k.htm"
+    assert (
+        BundleFetchResult(
+            status=missing.status, payload=missing.source_payload, error=missing.error
+        ).payload
+        is None
     )
-
-
-def test_locator_is_frozen() -> None:
-    with pytest.raises(FrozenInstanceError):
-        LOCATOR.accession = "other"  # type: ignore[misc]
-
-
-def test_locator_exposes_stub_state() -> None:
-    assert LOCATOR.is_stub_path is False
-    stub = DocumentLocator.from_parts(
-        "0001234567-11-000001", "acme-10k-0001.htm", archive_url="u"
-    )
-    assert stub.is_stub_path is True
-
-
-def test_ok_requires_an_acquired_submission() -> None:
-    assert _ok().ok is True
-    assert FetchResult(LOCATOR, "missing").ok is False
-    assert FetchResult(LOCATOR, "failed").ok is False
-
-
-def test_ok_without_an_acquired_submission_is_rejected() -> None:
-    """A success status with nothing acquired is a contradiction, not a fetch."""
-    with pytest.raises(ValueError, match="ok fetch"):
-        FetchResult(LOCATOR, "ok")
-
-
-def test_an_unsuccessful_fetch_carries_no_acquisition() -> None:
-    with pytest.raises(ValueError, match="no acquired submission"):
-        FetchResult(LOCATOR, "failed", acquired=direct_acquisition(LOCATOR, b"x"))
-
-
-def test_an_acquired_submission_must_name_the_requested_locator() -> None:
-    other = DocumentLocator.from_parts(
-        "0001234567-11-000002", "other.htm", archive_url="u"
-    )
-    with pytest.raises(ValueError, match="requested locator"):
-        FetchResult(LOCATOR, "ok", acquired=direct_acquisition(other, b"x"))
-
-
-def test_byte_size_counts_only_the_selected_payload() -> None:
-    assert _ok(b"12345").byte_size == 5
-    assert FetchResult(LOCATOR, "failed").byte_size == 0
-
-
-def test_fetch_result_carries_the_source_bundle_separately() -> None:
-    result = FetchResult(
-        LOCATOR,
-        "ok",
-        acquired=direct_acquisition(LOCATOR, b"body"),
-        source_payload=b"bundle",
-    )
-    assert result.source_payload == b"bundle"
-    assert result.error is None
-
-
-def test_direct_acquisition_routes_from_the_requested_path() -> None:
-    acquired = _ok().acquired
-    assert acquired is not None
-    assert acquired.source_format is SubmissionFormat.DIRECT
-    assert acquired.selected_document.content_route is DocumentRoute.MARKUP
-
-
-def test_rendered_acquisition_keeps_the_rendered_route() -> None:
-    """An archive-root URL may serve a .xml name; the requested path is still rendered."""
-    rendered = DocumentLocator.from_parts(
-        "0001234567-11-000001", "xslF345X02/edgar.xml", archive_url="https://x"
-    )
-    acquired = direct_acquisition(rendered, b"<html>x</html>")
-    assert acquired.selected_document.content_route is DocumentRoute.RENDERED
-
-
-def test_every_document_carries_its_own_route() -> None:
-    acquired = _sgml(
-        [
-            describe_submission_document(
-                document_path="ownership.xml", content_route=DocumentRoute.XML
-            ),
-            describe_submission_document(
-                document_path="ex99.htm", content_route=DocumentRoute.MARKUP
-            ),
-        ],
-        selected_index=0,
-    ).acquired
-    assert acquired is not None
-    assert [doc.content_route for doc in acquired.documents] == [
-        DocumentRoute.XML,
-        DocumentRoute.MARKUP,
-    ]
-
-
-def test_selected_index_identifies_the_loaded_body() -> None:
-    """Duplicated filenames cannot identify it; position is the only link."""
-    acquired = _sgml(
-        [_document("a.xml", "4", 1), _document("a.xml", "4", 2)],
-        selected_index=1,
-        payload=b"second",
-    ).acquired
-    assert acquired is not None
-    assert acquired.selected_document.sequence == 2
-    assert acquired.selected_payload == b"second"
-
-
-def test_missing_headers_are_recorded_as_absent() -> None:
-    acquired = _sgml([_document(None, None, None)], 0).acquired
-    assert acquired is not None
-    assert acquired.selected_document.document_path is None
-    assert acquired.selected_document.doc_type is None
-    assert acquired.selected_document.sequence is None
-
-
-def test_an_unrecognized_filename_suffix_stays_unknown() -> None:
-    """No XML is inferred from the payload or the form."""
-    descriptor = describe_submission_document(
-        document_path="ownership", content_route=DocumentRoute.UNKNOWN
-    )
-    assert descriptor.content_route is DocumentRoute.UNKNOWN
-
-
-def test_sgml_child_route_follows_the_child_filename() -> None:
-    """A bundle's .txt suffix says nothing about the sub-document it delivered."""
-    descriptor = describe_submission_document(
-        document_path="ownership.xml", content_route=DocumentRoute.XML
-    )
-    assert _sgml([descriptor], 0).acquired is not None
-
-
-def test_an_empty_submission_is_rejected() -> None:
-    with pytest.raises(ValueError, match="describe a document"):
-        AcquiredSubmission(
-            requested_locator=LOCATOR,
-            source_format=SubmissionFormat.SGML,
-            documents=(),
-            selected_index=0,
-            selected_payload=b"x",
-        )
-
-
-def test_an_out_of_range_selection_is_rejected() -> None:
-    with pytest.raises(ValueError, match="selected_index"):
-        AcquiredSubmission(
-            requested_locator=LOCATOR,
-            source_format=SubmissionFormat.SGML,
-            documents=(_document("a.xml", "4", 1),),
-            selected_index=1,
-            selected_payload=b"x",
-        )
-
-
-def test_a_direct_acquisition_describes_one_document() -> None:
-    with pytest.raises(ValueError, match="exactly one document"):
-        AcquiredSubmission(
-            requested_locator=LOCATOR,
-            source_format=SubmissionFormat.DIRECT,
-            documents=(_document("a.xml", "4", 1), _document("b.xml", "4", 2)),
-            selected_index=0,
-            selected_payload=b"x",
-        )
-
-
-def test_an_acquired_submission_is_scoped_to_its_locator() -> None:
-    acquired = _ok().acquired
-    assert acquired is not None
-    assert acquired.accession == LOCATOR.accession
-    assert acquired.document_locator_key == LOCATOR.document_locator_key
-    assert acquired.requested_locator.document_path == LOCATOR.document_path
-
-
-def test_the_requested_key_never_becomes_the_child_filename() -> None:
-    descriptor = describe_submission_document(
-        document_path="ownership.xml", content_route=DocumentRoute.XML
-    )
-    acquired = _sgml([descriptor], 0).acquired
-    assert acquired is not None
-    assert acquired.document_locator_key == LOCATOR.document_locator_key
-    assert acquired.selected_document.document_path == "ownership.xml"
-
-
-def test_the_acquisition_source_is_reported() -> None:
-    source = AcquisitionSource(
-        kind=AcquisitionSourceKind.ARCHIVE_URL, reference="https://x/acme-10k.htm"
-    )
-    acquired = direct_acquisition(LOCATOR, b"<html>x</html>", source=source)
-    assert acquired.source is source
-    assert acquired.source.kind is AcquisitionSourceKind.ARCHIVE_URL
-
-
-def test_the_acquisition_source_is_optional() -> None:
-    assert direct_acquisition(LOCATOR, b"x").source is None
-
-
-def test_an_acquired_submission_carries_no_source_bundle() -> None:
-    """A 200MB envelope stays transport data; only the selected payload survives."""
-    assert not hasattr(_ok().acquired, "source_payload")
-
-
-def test_acquired_submission_is_frozen() -> None:
-    acquired = _ok().acquired
-    assert acquired is not None
-    with pytest.raises(FrozenInstanceError):
-        acquired.selected_payload = b"other"  # type: ignore[misc]
-
-
-def test_a_submission_document_carries_no_body() -> None:
-    descriptor = describe_submission_document(
-        document_path="a.xml", content_route=DocumentRoute.XML
-    )
-    assert not hasattr(descriptor, "payload")
-
-
-def test_acquisition_failure_defaults() -> None:
-    failure = AcquisitionFailure(
-        document_locator_key="k", accession="a", document_path="p", error="boom"
-    )
-    assert failure.status == "failed"
-    assert failure.metadata == {}
-
-
-@pytest.mark.parametrize(
-    "path",
-    ["", None, "acme-10k-0001.htm", "acme-10k-0001.txt", "x-0000.htm", "x-0000.txt"],
-)
-def test_stub_paths(path: str | None) -> None:
-    assert is_stub_document_path(path) is True
-
-
-@pytest.mark.parametrize(
-    "path",
-    ["acme-10k.htm", "0001234567-11-000001.txt", "xslF345X02/doc3.xml"],
-)
-def test_non_stub_paths(path: str) -> None:
-    assert is_stub_document_path(path) is False

@@ -241,10 +241,11 @@ def test_a_form_token_inside_a_statutory_name_is_rejected() -> None:
 
 
 def test_a_window_eligible_name_that_is_not_statutory_is_not_a_candidate() -> None:
+    """A non-exhibit name carrying the form token is named like the primary form."""
     decision = candidate_decision(_locator("exxon10k.htm"), date(2001, 3, 1))
     assert decision.window_eligible is True
     assert decision.is_bundle_candidate is False
-    assert decision.reason == "not_statutory_exhibit"
+    assert decision.reason == "primary_form_token"
 
 
 def test_the_verified_inversion_sample_is_a_candidate() -> None:

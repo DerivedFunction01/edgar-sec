@@ -7,11 +7,12 @@ may name a document and report on it, but only a pipeline may decide it is worth
 from __future__ import annotations
 
 import re
+from collections.abc import Sequence
 from dataclasses import dataclass, field
 from enum import StrEnum
 from typing import Any, Literal
 
-from edgar_sec.domain.document.models import DocumentLocator
+from edgar_sec.domain.document.models import DocumentLocator, FilingOccurrence
 from edgar_sec.domain.document.route import DocumentRoute, document_route
 from edgar_sec.domain.identity import AccessionNumber
 
@@ -215,16 +216,151 @@ class AcquisitionFailure:
     metadata: dict[str, Any] = field(default_factory=dict)
 
 
+@dataclass(frozen=True, slots=True)
+class BundleFetchResult:
+    """What one complete submission-bundle acquisition produced.
+
+    ``payload`` is the raw bundle and ``source`` records what answered; both are
+    discarded after resolution. Same ``FetchStatus`` success invariants as ``FetchResult``.
+    """
+
+    status: FetchStatus
+    payload: bytes | None = None
+    source: AcquisitionSource | None = None
+    error: str | None = None
+
+    def __post_init__(self) -> None:
+        succeeded = self.status == "ok"
+        if succeeded and self.payload is None:
+            raise ValueError("an ok bundle result must carry a payload")
+        if not succeeded and self.payload is not None:
+            raise ValueError("an unsuccessful bundle result carries no payload")
+        if not succeeded and self.error is None:
+            raise ValueError("an unsuccessful bundle result must name an error")
+
+
+@dataclass(frozen=True, slots=True)
+class DocumentReference:
+    """One body returned by filing resolution, role-independent by construction.
+
+    ``descriptor`` records observed SGML headers; ``payload`` the retained body;
+    ``source`` what served it (may be absent); ``locator`` the role-neutral identity.
+    """
+
+    locator: DocumentLocator
+    descriptor: SubmissionDocument
+    payload: bytes
+    source: AcquisitionSource | None = None
+
+
+class FilingResolutionOutcome(StrEnum):
+    """The exhaustive set of filing-resolution outcomes.
+
+    An unresolved outcome means the request was kept but no primary was recovered; it
+    is a normal result, not a failure of the already acquired requested document.
+    """
+
+    #: The advisory candidate gate did not pass; the bundle was never inspected.
+    NOT_CANDIDATE = "not_candidate"
+    #: The bundle was unavailable or its acquisition failed.
+    BUNDLE_UNAVAILABLE = "bundle_unavailable"
+    #: A successful bundle result contained no SGML document marker.
+    NON_SGML_BUNDLE = "non_sgml_bundle"
+    #: Unbalanced or nested ``<DOCUMENT>`` delimiters.
+    MALFORMED_SGML = "malformed_sgml"
+    #: No exact requested filename appears in the bundle.
+    REQUESTED_NOT_IN_BUNDLE = "requested_not_in_bundle"
+    #: No accepted form type appears in the bundle.
+    NO_MATCHING_PRIMARY = "no_matching_primary"
+    #: Duplicate requested filename, or an accepted type without valid ordering
+    #: metadata, or a tie for the lowest accepted sequence.
+    AMBIGUOUS_HEADERS = "ambiguous_headers"
+    #: The first accepted type match in sequence order is the requested document.
+    REQUESTED_IS_PRIMARY = "requested_is_primary"
+    #: A different first accepted type match is the recovered primary.
+    PRIMARY_RECOVERED = "primary_recovered"
+
+
+@dataclass(frozen=True, slots=True)
+class FilingResolutionResult:
+    """One resolved filing: the requested document plus an optional recovered primary.
+
+    ``requested`` is always acquired; ``primary`` and ``exhibit`` are empty for
+    unresolved outcomes; ``REQUESTED_IS_PRIMARY`` sets ``primary is requested``.
+    """
+
+    requested: DocumentReference
+    requested_occurrences: Sequence[FilingOccurrence]
+    outcome: FilingResolutionOutcome
+    primary: DocumentReference | None = None
+    exhibit: DocumentReference | None = None
+
+    def __post_init__(self) -> None:
+        unresolved = {
+            FilingResolutionOutcome.NOT_CANDIDATE,
+            FilingResolutionOutcome.BUNDLE_UNAVAILABLE,
+            FilingResolutionOutcome.NON_SGML_BUNDLE,
+            FilingResolutionOutcome.MALFORMED_SGML,
+            FilingResolutionOutcome.REQUESTED_NOT_IN_BUNDLE,
+            FilingResolutionOutcome.NO_MATCHING_PRIMARY,
+            FilingResolutionOutcome.AMBIGUOUS_HEADERS,
+        }
+        if self.outcome in unresolved:
+            if self.primary is not None or self.exhibit is not None:
+                raise ValueError(
+                    "an unresolved outcome carries neither primary nor exhibit"
+                )
+        elif self.outcome is FilingResolutionOutcome.REQUESTED_IS_PRIMARY:
+            if self.primary is not self.requested:
+                raise ValueError("REQUESTED_IS_PRIMARY requires primary is requested")
+            if self.exhibit is not None:
+                raise ValueError("REQUESTED_IS_PRIMARY carries no exhibit")
+        elif self.outcome is FilingResolutionOutcome.PRIMARY_RECOVERED:
+            if self.exhibit is not self.requested or self.primary is None:
+                raise ValueError(
+                    "PRIMARY_RECOVERED requires exhibit is requested and a distinct primary"
+                )
+            if self.primary.locator.accession != self.requested.locator.accession:
+                raise ValueError("a recovered primary must name the same accession")
+            if (
+                self.primary.locator.document_locator_key
+                == self.requested.locator.document_locator_key
+            ):
+                raise ValueError("a recovered primary must have a distinct locator key")
+        else:
+            raise ValueError(f"unknown FilingResolutionOutcome: {self.outcome!r}")
+
+
+def unresolved_resolution(
+    requested: DocumentReference,
+    occurrences: Sequence[FilingOccurrence],
+    outcome: FilingResolutionOutcome,
+) -> FilingResolutionResult:
+    """Build a resolution that kept the request but recovered no primary."""
+    if outcome is FilingResolutionOutcome.PRIMARY_RECOVERED:
+        raise ValueError("use the full constructor for PRIMARY_RECOVERED")
+    return FilingResolutionResult(
+        requested=requested,
+        requested_occurrences=occurrences,
+        outcome=outcome,
+    )
+
+
 __all__ = [
     "AcquiredSubmission",
     "AcquisitionFailure",
     "AcquisitionSource",
     "AcquisitionSourceKind",
+    "BundleFetchResult",
+    "DocumentReference",
     "FetchResult",
     "FetchStatus",
+    "FilingResolutionOutcome",
+    "FilingResolutionResult",
     "SubmissionDocument",
     "SubmissionFormat",
     "describe_submission_document",
     "direct_acquisition",
     "is_stub_document_path",
+    "unresolved_resolution",
 ]

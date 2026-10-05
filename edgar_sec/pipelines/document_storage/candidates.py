@@ -186,6 +186,21 @@ def _alias_word_patterns(alias: str) -> list[str]:
     return [_SEPARATOR.join(combo) for combo in product(*segments)]
 
 
+def _form_number_tokens(form: str) -> list[str]:
+    """Return the numeric form token and its word variants for ``form``.
+
+    The digits disambiguate ``10-K`` from a bare "report" filename; a request must
+    carry at least one to be treated as "named like the primary form".
+    """
+    digits: list[str] = []
+    for part in _ALIAS_TOKENS_RE.findall(form):
+        if part.isdigit() and len(part) <= 3:
+            n = int(part)
+            digits.append(part)
+            digits.extend(_num_word_variants(n))
+    return list(dict.fromkeys(digits))
+
+
 @lru_cache(maxsize=64)
 def _form_token_pattern(family: str | None) -> re.Pattern[str]:
     tokens = list(_ALWAYS_TOKENS)
@@ -221,13 +236,21 @@ def candidate_decision(
     if not CANDIDATE_WINDOW_START <= filing_date < CANDIDATE_WINDOW_END:
         return CandidateDecision(CandidateIntent.OUT_OF_WINDOW, "outside_window")
     name = filename_basename(locator.document_path)
-    if not RE_STATUTORY_EXHIBIT_FILENAME.match(name):
-        return CandidateDecision(
-            CandidateIntent.WINDOW_ELIGIBLE, "not_statutory_exhibit"
+    has_form_token = primary_form_token_pattern(locator.form).search(name)
+    is_statutory = bool(RE_STATUTORY_EXHIBIT_FILENAME.match(name))
+    if is_statutory:
+        return (
+            CandidateDecision(CandidateIntent.WINDOW_ELIGIBLE, "primary_form_token")
+            if has_form_token
+            else CandidateDecision(
+                CandidateIntent.BUNDLE_CANDIDATE, "statutory_exhibit"
+            )
         )
-    if primary_form_token_pattern(locator.form).search(name):
+    if has_form_token and any(
+        tok in name.lower() for tok in _form_number_tokens(locator.form or "")
+    ):
         return CandidateDecision(CandidateIntent.WINDOW_ELIGIBLE, "primary_form_token")
-    return CandidateDecision(CandidateIntent.BUNDLE_CANDIDATE, "statutory_exhibit")
+    return CandidateDecision(CandidateIntent.WINDOW_ELIGIBLE, "not_statutory_exhibit")
 
 
 def candidate_for(

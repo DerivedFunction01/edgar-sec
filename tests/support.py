@@ -29,6 +29,7 @@ from edgar_sec.pipelines.metadata_sync.sec_client import SubmissionsClient
 TESTS_ROOT = Path(__file__).resolve().parent
 FIXTURES = TESTS_ROOT / "fixtures"
 CATALOG_FIXTURES = FIXTURES / "catalog"
+DOCUMENT_STORAGE_FIXTURES = FIXTURES / "document_storage"
 
 
 def load_fixture(name: str) -> Any:
@@ -45,6 +46,16 @@ def catalog_fixture_path(name: str) -> Path:
 
 def load_catalog_fixture(name: str) -> Any:
     return json.loads((CATALOG_FIXTURES / name).read_text(encoding="utf-8"))
+
+
+def document_storage_fixture_path(name: str) -> Path:
+    """Path to a committed fixture for the document-storage fixtures."""
+    return DOCUMENT_STORAGE_FIXTURES / name
+
+
+def load_document_storage_fixture(name: str) -> bytes:
+    """Read a committed document-storage fixture as bytes."""
+    return document_storage_fixture_path(name).read_bytes()
 
 
 def submissions_document(cik_padded: str) -> str:
