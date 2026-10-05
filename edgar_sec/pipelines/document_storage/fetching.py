@@ -15,10 +15,12 @@ from pathlib import Path
 from typing import Any, Protocol, runtime_checkable
 
 from edgar_sec.domain.document.acquisition import (
+    AcquiredSubmission,
     AcquisitionSource,
     AcquisitionSourceKind,
     FetchResult,
-    SgmlEnvelopeResolution,
+    SubmissionFormat,
+    direct_acquisition,
     is_stub_document_path,
 )
 from edgar_sec.domain.document.models import (
@@ -45,13 +47,13 @@ log = logging.getLogger("document_storage.fetcher")
 class EnvelopeExtraction:
     """What one response scan produced for a requested locator.
 
-    ``envelope`` is set only when the response was an SGML submission, and then names
-    the selected sub-document plus its siblings' headers.
+    ``submission`` is set only when the response was an SGML envelope, and then names
+    every sub-document it described alongside the one selected body.
     """
 
     payload: bytes | None = None
     bundle: bytes | None = None
-    envelope: SgmlEnvelopeResolution | None = None
+    submission: AcquiredSubmission | None = None
 
 
 @runtime_checkable
@@ -63,7 +65,10 @@ class ArchiveFetcher(Protocol):
 
 
 def extract_from_sgml_envelope(
-    raw_payload: bytes, locator: DocumentLocator
+    raw_payload: bytes,
+    locator: DocumentLocator,
+    *,
+    source: AcquisitionSource | None = None,
 ) -> EnvelopeExtraction:
     """Select the target sub-document when the payload is an SGML envelope.
 
@@ -73,7 +78,10 @@ def extract_from_sgml_envelope(
         return EnvelopeExtraction()
     payload = strip_pem_envelope(raw_payload)
     if not has_sgml_documents(payload):
-        return EnvelopeExtraction(payload=payload)
+        return EnvelopeExtraction(
+            payload=payload,
+            submission=direct_acquisition(locator, payload, source=source),
+        )
 
     form_value = locator.form.strip().upper() if locator.form else None
     targets: tuple[str, ...] = ()
@@ -94,25 +102,26 @@ def extract_from_sgml_envelope(
     return EnvelopeExtraction(
         payload=selection.payload,
         bundle=payload,
-        envelope=SgmlEnvelopeResolution(
-            selected=selection.selected,
-            siblings=selection.siblings,
+        submission=AcquiredSubmission(
+            requested_locator=locator,
+            source_format=SubmissionFormat.SGML,
+            documents=selection.documents,
+            selected_index=selection.selected_index,
+            selected_payload=selection.payload,
+            source=source,
         ),
     )
 
 
-def _ok(
-    locator: DocumentLocator,
-    extraction: EnvelopeExtraction,
-    source: AcquisitionSource,
-) -> FetchResult:
+def _ok(locator: DocumentLocator, extraction: EnvelopeExtraction) -> FetchResult:
+    acquired = extraction.submission
+    if acquired is None:
+        raise ValueError("a successful extraction must carry an acquired submission")
     return FetchResult(
         locator=locator,
-        payload=extraction.payload,
         status="ok",
+        acquired=acquired,
         source_payload=extraction.bundle,
-        source=source,
-        envelope=extraction.envelope,
     )
 
 
@@ -225,9 +234,11 @@ class FixtureArchiveFetcher:
                 )
                 payload = self._lookup(key)
                 if payload is not None:
-                    extraction = extract_from_sgml_envelope(payload, locator)
+                    extraction = extract_from_sgml_envelope(
+                        payload, locator, source=_fixture_source(candidate_path)
+                    )
                     if extraction.payload is not None:
-                        return _ok(locator, extraction, _fixture_source(candidate_path))
+                        return _ok(locator, extraction)
 
             # Fall back to the full submission bundle, which the catalog may
             # have recorded under the accession rather than the sub-document.
@@ -240,17 +251,17 @@ class FixtureArchiveFetcher:
                     derive_document_locator_key(str(locator.accession), bundle_name)
                 )
                 if payload is not None:
-                    extraction = extract_from_sgml_envelope(payload, locator)
+                    extraction = extract_from_sgml_envelope(
+                        payload, locator, source=_fixture_source(bundle_name)
+                    )
                     if extraction.payload is not None:
-                        return _ok(locator, extraction, _fixture_source(bundle_name))
+                        return _ok(locator, extraction)
         except Exception as exc:  # noqa: BLE001 - fetch failures become statuses
             log.debug(
                 "fixture fetch failed for %s: %s", locator.document_locator_key, exc
             )
-            return FetchResult(
-                locator=locator, payload=None, status="failed", error=str(exc)
-            )
-        return FetchResult(locator=locator, payload=None, status="missing")
+            return FetchResult(locator=locator, status="failed", error=str(exc))
+        return FetchResult(locator=locator, status="missing")
 
     def close(self) -> None:
         """Close any fixture connections this process opened."""
@@ -324,33 +335,34 @@ class BrokerArchiveFetcher:
                 continue
             payload, error = self._payload_from(candidate)
             if payload is not None:
-                extraction = extract_from_sgml_envelope(payload, locator)
+                extraction = extract_from_sgml_envelope(
+                    payload, locator, source=_archive_source(candidate)
+                )
                 if extraction.payload is not None:
-                    return _ok(locator, extraction, _archive_source(candidate))
+                    return _ok(locator, extraction)
             primary_error = primary_error or error
 
         if full_sub_url and full_sub_url != locator.archive_url:
             payload, error = self._payload_from(full_sub_url)
             if payload is not None:
-                extraction = extract_from_sgml_envelope(payload, locator)
+                extraction = extract_from_sgml_envelope(
+                    payload, locator, source=_archive_source(full_sub_url)
+                )
                 if extraction.payload is not None:
-                    return _ok(locator, extraction, _archive_source(full_sub_url))
+                    return _ok(locator, extraction)
                 return FetchResult(
                     locator=locator,
-                    payload=None,
                     status="failed",
                     error=f"sgml_subdocument_not_found (form={locator.form})",
                 )
             return FetchResult(
                 locator=locator,
-                payload=None,
                 status="failed",
                 error=primary_error or error or "fetch failed",
             )
 
         return FetchResult(
             locator=locator,
-            payload=None,
             status="failed",
             error=primary_error or "fetch failed",
         )
@@ -397,35 +409,36 @@ class LiveArchiveFetcher:
                 continue
             try:
                 payload = self._http_client.get_bytes(candidate)
-                extraction = extract_from_sgml_envelope(payload, locator)
+                extraction = extract_from_sgml_envelope(
+                    payload, locator, source=_archive_source(candidate)
+                )
                 if extraction.payload is not None:
-                    return _ok(locator, extraction, _archive_source(candidate))
+                    return _ok(locator, extraction)
             except Exception as exc:  # noqa: BLE001 - falls back to the bundle
                 primary_error = primary_error or str(exc)
 
         if full_sub_url and full_sub_url != locator.archive_url:
             try:
                 payload = self._http_client.get_bytes(full_sub_url)
-                extraction = extract_from_sgml_envelope(payload, locator)
+                extraction = extract_from_sgml_envelope(
+                    payload, locator, source=_archive_source(full_sub_url)
+                )
                 if extraction.payload is not None:
-                    return _ok(locator, extraction, _archive_source(full_sub_url))
+                    return _ok(locator, extraction)
                 return FetchResult(
                     locator=locator,
-                    payload=None,
                     status="failed",
                     error=f"sgml_subdocument_not_found (form={locator.form})",
                 )
             except Exception as exc:  # noqa: BLE001
                 return FetchResult(
                     locator=locator,
-                    payload=None,
                     status="failed",
                     error=primary_error or str(exc),
                 )
 
         return FetchResult(
             locator=locator,
-            payload=None,
             status="failed",
             error=primary_error or "fetch failed",
         )

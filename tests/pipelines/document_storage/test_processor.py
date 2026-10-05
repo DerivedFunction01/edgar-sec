@@ -2,9 +2,17 @@
 
 from __future__ import annotations
 
-from edgar_sec.domain.document.acquisition import AcquiredDocument
+from edgar_sec.domain.document.acquisition import (
+    AcquiredSubmission,
+    SubmissionFormat,
+    describe_submission_document,
+    direct_acquisition,
+)
 from edgar_sec.domain.document.models import DocumentLocator
-from edgar_sec.domain.document.route import DocumentRoute, document_route
+from edgar_sec.domain.document.route import (
+    REPRESENTATION_XML,
+    DocumentRoute,
+)
 from edgar_sec.pipelines.document_storage.processor import (
     PROCESSOR_FINGERPRINT,
     PROCESSOR_SCHEMA_VERSION,
@@ -29,6 +37,14 @@ _PAPER_STUB = (
 )
 
 
+_OWNERSHIP_XML = (
+    b'<?xml version="1.0"?>\n'
+    b"<ownershipDocument>\n"
+    b"  <issuerName>ACME INDUSTRIAL WIDGETS, INC.</issuerName>\n"
+    b"  <periodOfReport>2011-12-31</periodOfReport>\n"
+    b"</ownershipDocument>\n"
+)
+
 #: A minimal PDF whose non-ASCII bytes must survive verbatim when stored.
 _PDF_BYTES = b"%PDF-1.4\n%\xe2\xe3\xcf\xd3\n1 0 obj\n<< /Type /Catalog >>\nendobj\n"
 
@@ -37,13 +53,9 @@ def _locator(document_path: str, form: str) -> DocumentLocator:
     return DocumentLocator.from_parts("0001234567-11-000001", document_path, form=form)
 
 
-def _acquired(payload: bytes, document_path: str, form: str) -> AcquiredDocument:
+def _acquired(payload: bytes, document_path: str, form: str):
     """An acquisition whose route follows the requested path, as a direct fetch does."""
-    return AcquiredDocument(
-        locator=_locator(document_path, form),
-        payload=payload,
-        content_route=document_route(document_path),
-    )
+    return direct_acquisition(_locator(document_path, form), payload)
 
 
 def test_schema_version_is_two() -> None:
@@ -151,12 +163,30 @@ def test_binary_locator_key_names_the_filed_path() -> None:
     """Storing bytes verbatim must not change the document's identity."""
     locator = _locator("chart.pdf", "8-K")
 
-    processed = FilingProcessor().process(
-        AcquiredDocument(
-            locator=locator,
-            payload=_PDF_BYTES,
-            content_route=DocumentRoute.BINARY,
-        )
+    processed = FilingProcessor().process(direct_acquisition(locator, _PDF_BYTES))
+
+    assert processed.document_locator_key == locator.document_locator_key
+
+
+def test_the_selected_document_route_drives_normalization() -> None:
+    """A sibling's route never decides how the selected body is normalized."""
+    locator = _locator("0001234567-11-000001.txt", "4")
+    acquired = AcquiredSubmission(
+        requested_locator=locator,
+        source_format=SubmissionFormat.SGML,
+        documents=(
+            describe_submission_document(
+                document_path="ex99.htm", content_route=DocumentRoute.MARKUP
+            ),
+            describe_submission_document(
+                document_path="ownership.xml", content_route=DocumentRoute.XML
+            ),
+        ),
+        selected_index=1,
+        selected_payload=_OWNERSHIP_XML,
     )
 
+    processed = FilingProcessor().process(acquired)
+
+    assert processed.representation == REPRESENTATION_XML
     assert processed.document_locator_key == locator.document_locator_key

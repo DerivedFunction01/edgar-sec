@@ -9,7 +9,7 @@ from __future__ import annotations
 from dataclasses import dataclass, field
 from typing import Any, Protocol, runtime_checkable
 
-from edgar_sec.domain.document.acquisition import AcquiredDocument
+from edgar_sec.domain.document.acquisition import AcquiredSubmission
 from edgar_sec.domain.document.models import DocumentLocator
 from edgar_sec.domain.document.route import (
     REPRESENTATION_RAW,
@@ -121,10 +121,10 @@ class ProcessedDocument:
 
 @runtime_checkable
 class DocumentProcessor(Protocol):
-    """Transform one acquired document into a storable form."""
+    """Transform one acquired submission into a storable form."""
 
-    def process(self, acquired: AcquiredDocument) -> ProcessedDocument:
-        """Process one acquired document."""
+    def process(self, acquired: AcquiredSubmission) -> ProcessedDocument:
+        """Process the document one acquisition selected."""
 
 
 class FilingProcessor:
@@ -158,14 +158,14 @@ class FilingProcessor:
             metadata={"normalization": "deferred", "document_route": "binary"},
         )
 
-    def process(self, acquired: AcquiredDocument) -> ProcessedDocument:
-        locator = acquired.locator
-        route = acquired.content_route
+    def process(self, acquired: AcquiredSubmission) -> ProcessedDocument:
+        locator = acquired.requested_locator
+        route = acquired.selected_document.content_route
         if route is DocumentRoute.BINARY:
-            return self._store_binary(acquired.payload, locator)
+            return self._store_binary(acquired.selected_payload, locator)
 
         result = normalize_document(
-            acquired.payload,
+            acquired.selected_payload,
             form=locator.form,
             content_route=route,
         )
@@ -226,11 +226,11 @@ class PassThroughProcessor:
         """Identity a checkpoint must match before it may be reused."""
         return PASS_THROUGH_FINGERPRINT
 
-    def process(self, acquired: AcquiredDocument) -> ProcessedDocument:
+    def process(self, acquired: AcquiredSubmission) -> ProcessedDocument:
         return ProcessedDocument(
             document_locator_key=acquired.document_locator_key,
-            payload=acquired.payload,
-            byte_size=len(acquired.payload),
+            payload=acquired.selected_payload,
+            byte_size=len(acquired.selected_payload),
             mime_type="application/octet-stream",
             representation=REPRESENTATION_RAW,
             processor_fingerprint=PASS_THROUGH_FINGERPRINT,

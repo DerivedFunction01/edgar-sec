@@ -7,7 +7,7 @@ from pathlib import Path
 import pyarrow.parquet as pq
 import pytest
 
-from edgar_sec.domain.document.acquisition import FetchResult
+from edgar_sec.domain.document.acquisition import FetchResult, direct_acquisition
 from edgar_sec.domain.document.models import DocumentLocator
 from edgar_sec.domain.sec_urls import accession_hyphenated
 from edgar_sec.pipelines.document_storage.delegation import (
@@ -91,8 +91,13 @@ class BundleFetcher:
     def fetch(self, locator: DocumentLocator) -> FetchResult:
         self.calls.append(locator.document_path)
         if self.bundle is None or not locator.document_path.endswith(".txt"):
-            return FetchResult(locator, None, "missing")
-        return FetchResult(locator, self.bundle, "ok", source_payload=self.bundle)
+            return FetchResult(locator, "missing")
+        return FetchResult(
+            locator,
+            "ok",
+            acquired=direct_acquisition(locator, self.bundle),
+            source_payload=self.bundle,
+        )
 
 
 # --- gating ---------------------------------------------------------------

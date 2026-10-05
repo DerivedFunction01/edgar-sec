@@ -246,8 +246,11 @@ def fill_fixture(
                         locator = active.pop(future)
                         try:
                             _locator, result = future.result()
-                            if result.ok and result.payload is not None:
-                                raw_payload = result.source_payload or result.payload
+                            if result.ok and result.acquired is not None:
+                                acquired = result.acquired
+                                raw_payload = (
+                                    result.source_payload or acquired.selected_payload
+                                )
                                 staged.append(
                                     (locator.document_locator_key, raw_payload)
                                 )

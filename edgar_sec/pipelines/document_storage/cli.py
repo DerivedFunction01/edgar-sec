@@ -191,6 +191,8 @@ def _cmd_run(args: argparse.Namespace, paths: ProjectPaths) -> int:
         print(f"chunks        {report.merge.snapshot.chunk_count}")
         print(f"documents     {report.total_documents}")
         print(f"failed        {report.failed_documents}")
+        print(f"eligible      {report.candidate_eligible_count}")
+        print(f"candidates    {report.bundle_candidate_count}")
         print(f"exhibits      {len(report.exhibits)}")
         for warning in report.merge.warnings:
             print(f"warning       {warning}")

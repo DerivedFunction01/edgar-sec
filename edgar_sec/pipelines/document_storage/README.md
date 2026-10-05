@@ -12,13 +12,14 @@ normalizes a full document body, and the only one that needs a process pool.
 Phase 1 produced submissions metadata; Phase 2 turned it into a catalog and a
 target plan; this package consumes those locators and produces text.
 
-1. **Acquire.** A fetcher returns the bytes for one document locator, plus which
-   source served them, and decides nothing about storage. The requested link, the
-   acquired source, and the content route of the bytes stay separate: an SGML
-   `<accession>.txt` bundle can deliver an XML primary, and a rendered link is
-   served from the archive root under a different basename.
-2. **Normalize and triage.** A processor takes that acquired document and returns
-   normalized text plus a stub/delegation verdict.
+1. **Acquire.** A fetcher returns an accession-scoped view of one response — every
+   document it revealed, one of them loaded — plus which source served it, and decides
+   nothing about storage. The requested link, the acquired source, and each document's
+   content route stay separate: an SGML `<accession>.txt` bundle can deliver an XML
+   primary, and a rendered link is served from the archive root under a different
+   basename.
+2. **Normalize and triage.** A processor takes that acquisition and returns normalized
+   text plus a stub/delegation verdict for the one document it selected.
 3. **Resolve delegations.** A stub primary that incorporates its substance from
    an exhibit gets that exhibit fetched and recorded alongside it.
 4. **Publish, then consolidate.** Per-run snapshots merge into one canonical
@@ -47,6 +48,7 @@ Real-filing parity is unverified — see "Deliberate gaps".
 | `fixture_operator.py` | Fixture discovery, live raw fill, append/resume, manifest publication. |
 | `paths.py` | `DocumentStoragePaths`, the published-vs-transient split, and the artifact-name constants. |
 | `worker.py` | Chunk processing, the process pool, the checkpoint-reuse rule. |
+| `candidates.py` | The pre-2005 exhibit-candidate gate: filing-date agreement, statutory filename grammar, dynamic form-token rejection. |
 | `fetching.py` | `ArchiveFetcher` protocol and the fixture / broker / live backends. |
 | `processor.py` | `FilingProcessor`, `PassThroughProcessor`, the processor fingerprint. |
 | `delegation.py` | The exhibit second pass for stub primaries. |
@@ -67,23 +69,41 @@ Real-filing parity is unverified — see "Deliberate gaps".
 - **A fetcher reports; it never decides.** It never writes a checkpoint, never
   opens a transaction, and never judges a payload good enough. That boundary is
   what lets one fetcher serve a worker, a fixture builder, and the review tool.
-- **Only the selected sub-document reaches normalization.** An SGML response is scanned
-  once, its selected body is extracted, and the rest of the envelope is released before
-  the processor is called — a submission spans far more than the document it delivered.
-  Sibling sub-documents survive as headers only (sequence, `<TYPE>`, filename,
-  description), which records what the envelope contained without holding its bytes.
-  These headers make no primary/exhibit claim; see `domain/document/README.md`.
+- **One response becomes one accession-scoped acquisition.** Direct content and an
+  SGML envelope produce the same shape: an ordered `SubmissionDocument` per document the
+  response revealed, and exactly one loaded body named by `selected_index`. Only that
+  body reaches normalization, so a submission never has to be materialized. Sequence
+  numbers and filenames can be absent or duplicated in real envelopes, so the index is
+  the only link between a descriptor and its bytes. The descriptors make no
+  primary/exhibit claim; see `domain/document/README.md`.
+- **The complete envelope is released before normalization.** `FetchResult.source_payload`
+  is the only place a whole submission is held, and it survives solely for fixture
+  seeding and the delegated-exhibit second pass.
 - **Acquisition provenance is in-memory.** Each backend records the URL or fixture key
-  that served the bytes, on the `FetchResult` and from there on the acquired document.
-  It is not persisted: the snapshot schema carries no source column, so a stored row
-  does not record which URL answered it.
-- **`FilingProcessor` dispatches on the acquired document's content route, not on the
+  that served the bytes on the acquisition. It is not persisted: the snapshot schema
+  carries no source column, so a stored row does not record which URL answered it.
+- **`FilingProcessor` dispatches on the selected document's content route, not on the
   requested path.** A binary route never reaches the normalizer, which refuses it: the
   payload is stored byte for byte as `raw`, with the suffix's MIME type and an empty
   `normalized_text`. `raw` is the default representation on `ProcessedDocument` and
   means exactly that — no normalized text exists — so `PassThroughProcessor` reports
   empty text as well. The review tool takes the same dispatch, so a reviewer sees what
   the worker would produce.
+- **The candidate gate is advisory and has no side effect.** `candidates.py` classifies a
+  requested locator against a `2000-01-01 <= filing_date < 2005-01-01` window, the
+  Item 601 filename grammar, and the target form's canonical tokens. A positive decision
+  changes no fetch candidate, no selected index, no snapshot key, and no payload: it is a
+  request worth inspecting, not a claim that the document is displaced. The date comes
+  from the locator's occurrence rows, never from the locator or the accession's year; a
+  co-filer locator whose occurrences disagree, or whose dates are missing or malformed,
+  gets no decision at all.
+- **`RunReport` reports candidate counts, and persists none of them.**
+  `candidate_eligible_count` and `bundle_candidate_count` count locator work items over
+  the whole requested plan — including chunks a resume skipped, whose summary is derived
+  from plan inputs rather than from a checkpoint. Co-filer occurrences coalesce onto
+  their shared locator, so a locator counts once however many rows reference it. The
+  counts reach `ChunkResult`, `RunReport.to_dict()`, and the `run` summary; no manifest,
+  checkpoint, or snapshot artifact carries them.
 - **A rendered path resolves to its original, with the rendering as fallback.** When
   the route from `domain/document/route.py` is `RENDERED`, all three backends prefer
   the archive-root basename over the XSL rendering, and keep the rendering so a root
@@ -168,10 +188,11 @@ Real-filing parity is unverified — see "Deliberate gaps".
 **Obligations on callers**
 
 - Supply chunks: a list of chunk ids with locators and occurrences per chunk.
-- Implement `DocumentProcessor.process` against an `AcquiredDocument`, not a raw
-  `(bytes, locator)` pair: the content route is the acquired bytes' route and is not
-  always the requested path's, so a processor that re-derives it from the locator will
-  normalize an SGML bundle's XML primary as a text file.
+- Implement `DocumentProcessor.process` against an `AcquiredSubmission`, not a raw
+  `(bytes, locator)` pair: read the body as `selected_payload` and its route from
+  `selected_document`, because the acquired bytes' route is not always the requested
+  path's. A processor that re-derives the route from the locator will normalize an SGML
+  bundle's XML primary as a text file.
 - Do not publish from a worker process, and do not hand-assemble a snapshot from
   chunk files. An invalid chunk is dropped with a *warning* rather than failing
   the merge, so a hand-assembled snapshot would silently lose data.
@@ -196,13 +217,18 @@ points a caller is expected to use are:
   `current_snapshot_dir`, `current_snapshot_artifact` — publication, validation,
   identity, and pointer reads. `merger.py`.
 - `vacuum_snapshots` — cross-run consolidation. `vacuum.py`.
-- `process_chunks`, `is_chunk_complete`, `resolved_worker_count` — chunk
-  execution and checkpoint reuse. `worker.py`.
+- `process_chunks`, `is_chunk_complete`, `resolved_worker_count`, `candidate_summary` —
+  chunk execution, checkpoint reuse, and the plan-derived candidate summary that lets a
+  resumed chunk report the same counts as a fresh one. `worker.py`.
+- `candidate_for`, `occurrence_filing_date`, `primary_form_token_pattern` — the
+  pre-2005 exhibit-candidate gate and its two inputs. `candidates.py`.
+- `FilingWork` — one requested locator's pass from catalog row to normalized result.
+  `worker.py`.
 - `ArchiveFetcher`, `make_archive_fetcher`, `EnvelopeExtraction`,
   `extract_from_sgml_envelope` — the acquisition seam, its fixture / broker / live
   backends, and the envelope scan. `fetching.py`.
 - `DocumentProcessor`, `FilingProcessor`, `PassThroughProcessor` — the
-  normalization seam over an `AcquiredDocument`, and the two implementations.
+  normalization seam over an `AcquiredSubmission`, and the two implementations.
   `processor.py`.
 - `resolve_delegated_exhibit`, `exhibits_for` — the exhibit second pass.
   `delegation.py`.
@@ -340,16 +366,23 @@ invariant) and `annual_10k_normalization.json`. Both are **synthetic** — see
   names the rendering. The acquiring fetcher now records which URL served the bytes in
   memory, but no persisted column does, and the document model has not settled how a
   document's authoritative source is represented.
-- **Sibling sub-documents are described but never resolved.** An SGML response records
-  its selected document and its siblings' headers, and stops there. A sibling with a
-  usable `<TYPE>` is *not* promoted in place of the selected one, and nothing consults
-  those headers to recover a primary document that a 2000-2004 filer uploaded at
+- **Sibling sub-documents are described but never resolved.** An SGML response
+  describes every sub-document it holds and loads one, then stops there. A sibling with
+  a usable `<TYPE>` is *not* promoted in place of the selected one, and nothing consults
+  those descriptors to recover a primary document that a 2000-2004 filer uploaded at
   sequence 1 as an exhibit. Only the existing stub-delegation path acquires a sibling,
-  and it re-fetches rather than reading the headers already in hand.
-- **No filing-scoped view exists.** A filing's primary document, exhibits, and any XBRL
-  package are separate acquired documents with no aggregate that groups them, so a
-  caller cannot ask "everything this filing contains" without re-deriving it from
-  accessions and occurrences.
+  and it re-fetches rather than reading the descriptors already in hand.
+- **A candidate count is not a verified inversion.** The gate measures how many requests
+  are worth a bundle inspection and classifies them; it opens no bundle, reads no
+  `<TYPE>`, and confirms nothing. Nothing persists the per-request decisions, so a count
+  cannot be audited back to the documents behind it — re-deriving that population means
+  re-running the plan. Any promotion or dual-write needs the resolution contract that
+  represents a requested exhibit and a form-matched primary as two references, and that
+  does not exist yet.
+- **No filing-scoped view exists.** `AcquiredSubmission` scopes one *response* to one
+  accession; it never merges acquisitions, so a filing reached through several requests
+  has no aggregate grouping it and a caller cannot ask "everything this filing contains"
+  without re-deriving it from accessions and occurrences.
 - **A `.paper` row is a pointer, not a document.** Its payload names an off-archive
   Document Control Number that the warehouse cannot resolve, and the bypass keeps only
   that pointer text. The filing's actual content is not retrievable from EDGAR.

@@ -12,7 +12,7 @@ Nothing here reads, writes, or requests anything. Fetching is
 | Module | Responsibility |
 | :--- | :--- |
 | `models.py` | `DocumentLocator`, `FilingOccurrence`, `RawDocumentBlob`, `NormalizedDocument`, `NormalizationFailure`, `DocumentKind`, and the key-derivation functions |
-| `acquisition.py` | `FetchResult`, `AcquiredDocument`, `AcquisitionSource`, `SgmlEnvelopeResolution`, `SgmlSubDocumentHeader`, `AcquisitionFailure`, `FetchStatus`, `is_stub_document_path()` |
+| `acquisition.py` | `FetchResult`, `AcquiredSubmission`, `SubmissionDocument`, `SubmissionFormat`, `AcquisitionSource`, `AcquisitionFailure`, `FetchStatus`, `direct_acquisition()`, `describe_submission_document()`, `is_stub_document_path()` |
 | `blocks.py` | `BlockKind`, `DocumentBlock`, `BlockStream` — the flat 1D typed block stream |
 | `route.py` | `DocumentRoute`, `document_route()`, `content_route()`, `is_markup_document_path()`, `mime_type_for_suffix()`, `archive_root_candidate()`, and the representation names — the acquisition and normalization routes one document path selects |
 
@@ -30,19 +30,27 @@ Nothing here reads, writes, or requests anything. Fetching is
 - Acquisition reports are separate from storage decisions. `FetchResult` says what
   came back; only a pipeline decides a document is good enough to keep.
 - **A requested link, an acquired source, and a content route are three separate
-  things.** `FetchResult.acquired` keeps all three apart: the locator that was asked
-  for, the `AcquisitionSource` that actually answered, and the `DocumentRoute` of the
-  bytes. They disagree whenever a rendered link is served from the archive root, or an
-  `<accession>.txt` bundle delivers a child named `.xml`. A caller that collapses them
-  either misreports where its bytes came from or reads an XML primary as a text bundle.
+  things.** `AcquiredSubmission` keeps all three apart: the locator that was asked
+  for, the `AcquisitionSource` that actually answered, and the `DocumentRoute` each
+  document carries. They disagree whenever a rendered link is served from the archive
+  root, or an `<accession>.txt` bundle delivers a child named `.xml`. A caller that
+  collapses them either misreports where its bytes came from or reads an XML primary as
+  a text bundle.
 - **The requested locator is the only identity.** Neither the acquired source nor a
   selected sub-document's filename may change `document_path` or
   `document_locator_key`; the catalog derives both in SQL from the filed path.
-- **`AcquiredDocument` carries no source envelope.** An SGML submission spans far more
-  than the selected sub-document, so the headers are kept and the bytes are not. A
-  sibling is a `SgmlSubDocumentHeader` — sequence, `<TYPE>`, filename, description — and
-  a header asserts nothing about role: it is not evidence that the selected document is
-  a filing's primary, or that a sibling is an exhibit.
+- **One acquisition is one accession-scoped view.** `AcquiredSubmission` describes every
+  document the response revealed and loads exactly one body, so resolving a single
+  document never materializes a whole submission. A direct response is the singleton
+  case; an SGML response carries one descriptor per `<DOCUMENT>` header in envelope
+  order.
+- **`selected_index` is the only link between a descriptor and the loaded body.**
+  Sequence numbers and filenames may be absent or duplicated in real envelopes, so
+  neither can identify the selection. The processor must read
+  `acquired.selected_document`, never a lookup by filename.
+- **A descriptor asserts nothing about role.** A `SubmissionDocument` records observed
+  header facts — sequence, `<TYPE>`, filename, description — and is not evidence that
+  the selected document is a filing's primary, or that a sibling is an exhibit.
 - **A slash outranks the suffix for a path, and not for a filename.**
   `document_route()` classifies a path containing `/` as `RENDERED` before consulting
   the extension, because EDGAR publishes an XSL rendering of an XML submission under an
@@ -69,11 +77,14 @@ Nothing here reads, writes, or requests anything. Fetching is
 - Build locators through `DocumentLocator.from_parts()`, not the positional constructor,
   unless restoring a row that already carries its key.
 - Use `FetchResult.ok`, not `.status`, as the success predicate: `ok` requires
-  `status == "ok"` *and* a non-`None` payload.
-- Use `FetchResult.acquired` rather than reading `.payload` with `.locator` when
-  handing a document onward. It resolves the content route for you and is `None` for a
-  fetch that did not succeed, which a bare payload read cannot express.
+  `status == "ok"` *and* an acquired submission, which the constructor enforces.
+- Read the body as `acquired.selected_payload` and its route as
+  `acquired.selected_document.content_route`. A bare payload read cannot express which
+  document was selected, and reading the route off the requested locator gets it wrong
+  for every rendered link and SGML child.
 - Pass an SGML `<FILENAME>` to `content_route()`, never to `document_route()`.
+- Keep `FetchResult.source_payload` as transport data. It is the only place a complete
+  envelope is held, and it exists for fixture seeding and delegated exhibits.
 
 ## Public surface
 
@@ -81,9 +92,10 @@ Nothing here reads, writes, or requests anything. Fetching is
   normalization, and failure records — `models.py`.
 - `canonical_accession_part()`, `derive_document_locator_key()`,
   `derive_occurrence_id()`, and `DocumentKind` — `models.py`.
-- `FetchResult`, `AcquiredDocument`, `AcquisitionSource`, `AcquisitionSourceKind`,
-  `SgmlEnvelopeResolution`, `SgmlSubDocumentHeader`, `AcquisitionFailure`, `FetchStatus`,
-  and `is_stub_document_path()` — `acquisition.py`.
+- `FetchResult`, `AcquiredSubmission`, `SubmissionDocument`, `SubmissionFormat`,
+  `AcquisitionSource`, `AcquisitionSourceKind`, `AcquisitionFailure`, `FetchStatus`,
+  `direct_acquisition()`, `describe_submission_document()`, and
+  `is_stub_document_path()` — `acquisition.py`.
 - `BlockKind`, `DocumentBlock`, `BlockStream` — `blocks.py`.
 - `DocumentRoute`, `document_route()`, `content_route()`, `is_rendered_document_path()`,
   `is_markup_document_path()`, `archive_root_candidate()`, `mime_type_for_suffix()`,
@@ -106,14 +118,14 @@ Tests mirror this package under `tests/domain/document/`.
   `content_route()` read only a path or filename, so a caller holding bytes alone still
   has no route. `UNKNOWN` covers the flat suffixes with no established rule, and those
   are treated as text.
-- **No filing-level aggregate.** A filing spans a primary document, its exhibits, and
-  optionally an XBRL package, and this package models one acquired document at a time.
-  A sub-document's `<TYPE>` and sequence are recorded as observed facts with no
-  primary/exhibit role, so a caller needing a filing-scoped view must build it. Roles,
-  inversion recovery, and exhibit promotion are not decided here.
-- **Acquisition provenance is not persisted.** `AcquiredDocument.source` and its
-  envelope headers are in-memory records; the snapshot schema carries neither, so a
-  stored row does not record which URL served it.
+- **No filing-level aggregate.** `AcquiredSubmission` scopes one *acquisition* to one
+  accession, which is not the same as a filing: it never merges several responses, and
+  it assigns no primary/exhibit roles. Roles, inversion recovery, and exhibit promotion
+  are not decided here, so a caller needing a filing-scoped view across several
+  documents must build it.
+- **Acquisition provenance is not persisted.** `AcquiredSubmission.source` and its
+  document descriptors are in-memory records; the snapshot schema carries neither, so a
+  stored row does not record which URL served it or which siblings the response held.
 - **No form-aware XML validity.** A flat `.xml` is a valid primary document recorded
     with `representation: "xml"`, and the route does not consult the filing's form: it
     does not distinguish an XML-native form's own markup from an XBRL linkbase, and it

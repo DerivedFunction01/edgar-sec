@@ -7,13 +7,14 @@ from dataclasses import FrozenInstanceError
 import pytest
 
 from edgar_sec.domain.document.acquisition import (
-    AcquiredDocument,
+    AcquiredSubmission,
     AcquisitionFailure,
     AcquisitionSource,
     AcquisitionSourceKind,
     FetchResult,
-    SgmlEnvelopeResolution,
-    SgmlSubDocumentHeader,
+    SubmissionFormat,
+    describe_submission_document,
+    direct_acquisition,
     is_stub_document_path,
 )
 from edgar_sec.domain.document.models import (
@@ -29,6 +30,35 @@ LOCATOR = DocumentLocator.from_parts(
     form="10-K",
     source_cik="1234567",
 )
+
+
+def _ok(payload: bytes = b"<html>body</html>") -> FetchResult:
+    return FetchResult(
+        locator=LOCATOR, status="ok", acquired=direct_acquisition(LOCATOR, payload)
+    )
+
+
+def _document(filename: str | None, doc_type: str | None, sequence: int | None):
+    return describe_submission_document(
+        document_path=filename,
+        content_route=DocumentRoute.TEXT,
+        sequence=sequence,
+        doc_type=doc_type,
+    )
+
+
+def _sgml(documents, selected_index: int, payload: bytes = b"body") -> FetchResult:
+    return FetchResult(
+        locator=LOCATOR,
+        status="ok",
+        acquired=AcquiredSubmission(
+            requested_locator=LOCATOR,
+            source_format=SubmissionFormat.SGML,
+            documents=tuple(documents),
+            selected_index=selected_index,
+            selected_payload=payload,
+        ),
+    )
 
 
 def test_locator_key_is_derived_not_supplied() -> None:
@@ -54,53 +84,52 @@ def test_locator_exposes_stub_state() -> None:
     assert stub.is_stub_path is True
 
 
-def test_fetch_result_ok_requires_payload() -> None:
-    assert FetchResult(LOCATOR, b"x", "ok").ok is True
-    assert FetchResult(LOCATOR, None, "ok").ok is False
-    assert FetchResult(LOCATOR, b"x", "missing").ok is False
-    assert FetchResult(LOCATOR, b"x", "failed").ok is False
+def test_ok_requires_an_acquired_submission() -> None:
+    assert _ok().ok is True
+    assert FetchResult(LOCATOR, "missing").ok is False
+    assert FetchResult(LOCATOR, "failed").ok is False
 
 
-def test_fetch_result_byte_size() -> None:
-    assert FetchResult(LOCATOR, b"12345", "ok").byte_size == 5
-    assert FetchResult(LOCATOR, None, "failed").byte_size == 0
+def test_ok_without_an_acquired_submission_is_rejected() -> None:
+    """A success status with nothing acquired is a contradiction, not a fetch."""
+    with pytest.raises(ValueError, match="ok fetch"):
+        FetchResult(LOCATOR, "ok")
 
 
-def test_fetch_result_carries_the_source_bundle() -> None:
-    result = FetchResult(LOCATOR, b"body", "ok", source_payload=b"bundle")
+def test_an_unsuccessful_fetch_carries_no_acquisition() -> None:
+    with pytest.raises(ValueError, match="no acquired submission"):
+        FetchResult(LOCATOR, "failed", acquired=direct_acquisition(LOCATOR, b"x"))
+
+
+def test_an_acquired_submission_must_name_the_requested_locator() -> None:
+    other = DocumentLocator.from_parts(
+        "0001234567-11-000002", "other.htm", archive_url="u"
+    )
+    with pytest.raises(ValueError, match="requested locator"):
+        FetchResult(LOCATOR, "ok", acquired=direct_acquisition(other, b"x"))
+
+
+def test_byte_size_counts_only_the_selected_payload() -> None:
+    assert _ok(b"12345").byte_size == 5
+    assert FetchResult(LOCATOR, "failed").byte_size == 0
+
+
+def test_fetch_result_carries_the_source_bundle_separately() -> None:
+    result = FetchResult(
+        LOCATOR,
+        "ok",
+        acquired=direct_acquisition(LOCATOR, b"body"),
+        source_payload=b"bundle",
+    )
     assert result.source_payload == b"bundle"
     assert result.error is None
 
 
-def _header(
-    filename: str, doc_type: str, sequence: int | None
-) -> SgmlSubDocumentHeader:
-    return SgmlSubDocumentHeader(
-        sequence=sequence,
-        doc_type=doc_type,
-        filename=filename,
-        description=None,
-    )
-
-
-def _resolved_result(envelope: SgmlEnvelopeResolution) -> FetchResult:
-    return FetchResult(LOCATOR, b"<html>body</html>", "ok", envelope=envelope)
-
-
-def test_acquired_document_is_absent_for_a_failed_fetch() -> None:
-    assert FetchResult(LOCATOR, None, "failed").acquired is None
-    assert FetchResult(LOCATOR, None, "missing").acquired is None
-
-
-def test_acquired_document_is_absent_when_payload_is_missing() -> None:
-    """A success status without bytes is not an acquisition."""
-    assert FetchResult(LOCATOR, None, "ok").acquired is None
-
-
 def test_direct_acquisition_routes_from_the_requested_path() -> None:
-    acquired = FetchResult(LOCATOR, b"<html>x</html>", "ok").acquired
+    acquired = _ok().acquired
     assert acquired is not None
-    assert acquired.content_route is DocumentRoute.MARKUP
+    assert acquired.source_format is SubmissionFormat.DIRECT
+    assert acquired.selected_document.content_route is DocumentRoute.MARKUP
 
 
 def test_rendered_acquisition_keeps_the_rendered_route() -> None:
@@ -108,86 +137,146 @@ def test_rendered_acquisition_keeps_the_rendered_route() -> None:
     rendered = DocumentLocator.from_parts(
         "0001234567-11-000001", "xslF345X02/edgar.xml", archive_url="https://x"
     )
-    acquired = FetchResult(rendered, b"<html>x</html>", "ok").acquired
+    acquired = direct_acquisition(rendered, b"<html>x</html>")
+    assert acquired.selected_document.content_route is DocumentRoute.RENDERED
+
+
+def test_every_document_carries_its_own_route() -> None:
+    acquired = _sgml(
+        [
+            describe_submission_document(
+                document_path="ownership.xml", content_route=DocumentRoute.XML
+            ),
+            describe_submission_document(
+                document_path="ex99.htm", content_route=DocumentRoute.MARKUP
+            ),
+        ],
+        selected_index=0,
+    ).acquired
     assert acquired is not None
-    assert acquired.content_route is DocumentRoute.RENDERED
+    assert [doc.content_route for doc in acquired.documents] == [
+        DocumentRoute.XML,
+        DocumentRoute.MARKUP,
+    ]
+
+
+def test_selected_index_identifies_the_loaded_body() -> None:
+    """Duplicated filenames cannot identify it; position is the only link."""
+    acquired = _sgml(
+        [_document("a.xml", "4", 1), _document("a.xml", "4", 2)],
+        selected_index=1,
+        payload=b"second",
+    ).acquired
+    assert acquired is not None
+    assert acquired.selected_document.sequence == 2
+    assert acquired.selected_payload == b"second"
+
+
+def test_missing_headers_are_recorded_as_absent() -> None:
+    acquired = _sgml([_document(None, None, None)], 0).acquired
+    assert acquired is not None
+    assert acquired.selected_document.document_path is None
+    assert acquired.selected_document.doc_type is None
+    assert acquired.selected_document.sequence is None
+
+
+def test_an_unrecognized_filename_suffix_stays_unknown() -> None:
+    """No XML is inferred from the payload or the form."""
+    descriptor = describe_submission_document(
+        document_path="ownership", content_route=DocumentRoute.UNKNOWN
+    )
+    assert descriptor.content_route is DocumentRoute.UNKNOWN
 
 
 def test_sgml_child_route_follows_the_child_filename() -> None:
     """A bundle's .txt suffix says nothing about the sub-document it delivered."""
-    envelope = SgmlEnvelopeResolution(
-        selected=_header("ownership.xml", "4", 1), siblings=()
+    descriptor = describe_submission_document(
+        document_path="ownership.xml", content_route=DocumentRoute.XML
     )
-    acquired = _resolved_result(envelope).acquired
+    assert _sgml([descriptor], 0).acquired is not None
+
+
+def test_an_empty_submission_is_rejected() -> None:
+    with pytest.raises(ValueError, match="describe a document"):
+        AcquiredSubmission(
+            requested_locator=LOCATOR,
+            source_format=SubmissionFormat.SGML,
+            documents=(),
+            selected_index=0,
+            selected_payload=b"x",
+        )
+
+
+def test_an_out_of_range_selection_is_rejected() -> None:
+    with pytest.raises(ValueError, match="selected_index"):
+        AcquiredSubmission(
+            requested_locator=LOCATOR,
+            source_format=SubmissionFormat.SGML,
+            documents=(_document("a.xml", "4", 1),),
+            selected_index=1,
+            selected_payload=b"x",
+        )
+
+
+def test_a_direct_acquisition_describes_one_document() -> None:
+    with pytest.raises(ValueError, match="exactly one document"):
+        AcquiredSubmission(
+            requested_locator=LOCATOR,
+            source_format=SubmissionFormat.DIRECT,
+            documents=(_document("a.xml", "4", 1), _document("b.xml", "4", 2)),
+            selected_index=0,
+            selected_payload=b"x",
+        )
+
+
+def test_an_acquired_submission_is_scoped_to_its_locator() -> None:
+    acquired = _ok().acquired
     assert acquired is not None
-    assert acquired.content_route is DocumentRoute.XML
+    assert acquired.accession == LOCATOR.accession
+    assert acquired.document_locator_key == LOCATOR.document_locator_key
+    assert acquired.requested_locator.document_path == LOCATOR.document_path
 
 
-def test_sgml_child_filename_with_a_directory_is_not_read_as_rendered() -> None:
-    """A slash in an SGML filename is not an XSL directory."""
-    envelope = SgmlEnvelopeResolution(
-        selected=_header("xslF345X02/edgar.xml", "4", 1), siblings=()
+def test_the_requested_key_never_becomes_the_child_filename() -> None:
+    descriptor = describe_submission_document(
+        document_path="ownership.xml", content_route=DocumentRoute.XML
     )
-    acquired = _resolved_result(envelope).acquired
-    assert acquired is not None
-    assert acquired.content_route is DocumentRoute.XML
-
-
-def test_acquired_document_keeps_the_requested_locator_key() -> None:
-    """The child's filename must never become the document's identity."""
-    envelope = SgmlEnvelopeResolution(
-        selected=_header("ownership.xml", "4", 1), siblings=()
-    )
-    acquired = _resolved_result(envelope).acquired
+    acquired = _sgml([descriptor], 0).acquired
     assert acquired is not None
     assert acquired.document_locator_key == LOCATOR.document_locator_key
-    assert acquired.locator.document_path == LOCATOR.document_path
+    assert acquired.selected_document.document_path == "ownership.xml"
 
 
-def test_acquired_document_reports_the_acquisition_source() -> None:
+def test_the_acquisition_source_is_reported() -> None:
     source = AcquisitionSource(
         kind=AcquisitionSourceKind.ARCHIVE_URL, reference="https://x/acme-10k.htm"
     )
-    acquired = FetchResult(LOCATOR, b"<html>x</html>", "ok", source=source).acquired
-    assert acquired is not None
+    acquired = direct_acquisition(LOCATOR, b"<html>x</html>", source=source)
     assert acquired.source is source
     assert acquired.source.kind is AcquisitionSourceKind.ARCHIVE_URL
 
 
-def test_acquired_document_source_is_optional() -> None:
-    acquired = FetchResult(LOCATOR, b"<html>x</html>", "ok").acquired
-    assert acquired is not None
-    assert acquired.source is None
+def test_the_acquisition_source_is_optional() -> None:
+    assert direct_acquisition(LOCATOR, b"x").source is None
 
 
-def test_direct_acquisition_carries_no_envelope() -> None:
-    acquired = FetchResult(LOCATOR, b"<html>x</html>", "ok").acquired
-    assert acquired is not None
-    assert acquired.envelope is None
+def test_an_acquired_submission_carries_no_source_bundle() -> None:
+    """A 200MB envelope stays transport data; only the selected payload survives."""
+    assert not hasattr(_ok().acquired, "source_payload")
 
 
-def test_acquired_document_carries_no_source_bundle() -> None:
-    """A 200MB envelope is released; only the selected payload survives."""
-    acquired = FetchResult(
-        LOCATOR, b"<html>x</html>", "ok", source_payload=b"envelope bytes"
-    ).acquired
-    assert acquired is not None
-    assert not hasattr(acquired, "source_payload")
-
-
-def test_acquired_document_is_frozen() -> None:
-    acquired = FetchResult(LOCATOR, b"<html>x</html>", "ok").acquired
+def test_acquired_submission_is_frozen() -> None:
+    acquired = _ok().acquired
     assert acquired is not None
     with pytest.raises(FrozenInstanceError):
-        acquired.payload = b"other"  # type: ignore[misc]
+        acquired.selected_payload = b"other"  # type: ignore[misc]
 
 
-def test_acquisition_record_can_be_built_directly() -> None:
-    acquired = AcquiredDocument(
-        locator=LOCATOR, payload=b"x", content_route=DocumentRoute.TEXT
+def test_a_submission_document_carries_no_body() -> None:
+    descriptor = describe_submission_document(
+        document_path="a.xml", content_route=DocumentRoute.XML
     )
-    assert acquired.document_locator_key == LOCATOR.document_locator_key
-    assert acquired.envelope is None
+    assert not hasattr(descriptor, "payload")
 
 
 def test_acquisition_failure_defaults() -> None:

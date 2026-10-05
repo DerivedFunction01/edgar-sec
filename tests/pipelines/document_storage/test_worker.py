@@ -9,15 +9,14 @@ import pyarrow.parquet as pq
 import pytest
 
 from edgar_sec.domain.document.acquisition import (
-    AcquiredDocument,
+    AcquiredSubmission,
     AcquisitionSource,
     AcquisitionSourceKind,
     FetchResult,
-    SgmlEnvelopeResolution,
-    SgmlSubDocumentHeader,
+    direct_acquisition,
 )
 from edgar_sec.domain.document.models import DocumentLocator, FilingOccurrence
-from edgar_sec.domain.document.route import DocumentRoute, document_route
+from edgar_sec.domain.document.route import DocumentRoute
 from edgar_sec.domain.identity import Cik
 from edgar_sec.domain.sec_urls import accession_hyphenated
 from edgar_sec.infra.storage.parquet import read_parquet_table
@@ -38,6 +37,7 @@ from edgar_sec.pipelines.document_storage.processor import (
 )
 from edgar_sec.pipelines.document_storage.worker import (
     ChunkError,
+    candidate_summary,
     chunk_fingerprint,
     is_chunk_complete,
     process_chunk,
@@ -90,13 +90,9 @@ def _locator(
     )
 
 
-def _acquired(payload: bytes, locator: DocumentLocator) -> AcquiredDocument:
+def _acquired(payload: bytes, locator: DocumentLocator) -> AcquiredSubmission:
     """An acquisition whose route follows the requested path, as a direct fetch does."""
-    return AcquiredDocument(
-        locator=locator,
-        payload=payload,
-        content_route=document_route(locator.document_path),
-    )
+    return direct_acquisition(locator, payload)
 
 
 def _occurrence(locator: DocumentLocator) -> FilingOccurrence:
@@ -123,8 +119,10 @@ class DictFetcher:
         self.calls.append(locator.document_path)
         response = self.responses.get(locator.document_path, KeyError("absent"))
         if isinstance(response, Exception):
-            return FetchResult(locator, None, "failed", error=str(response))
-        return FetchResult(locator, response, "ok")
+            return FetchResult(locator, "failed", error=str(response))
+        return FetchResult(
+            locator, "ok", acquired=direct_acquisition(locator, response)
+        )
 
 
 def _seed_fixture(db_path: Path, locator: DocumentLocator, payload: bytes) -> None:
@@ -198,10 +196,10 @@ class RecordingProcessor:
     """Processor that records the acquisition it was handed, then passes through."""
 
     def __init__(self) -> None:
-        self.seen: list[AcquiredDocument] = []
+        self.seen: list[AcquiredSubmission] = []
         self.processor_fingerprint = "recording:test"
 
-    def process(self, acquired: AcquiredDocument) -> ProcessedDocument:
+    def process(self, acquired: AcquiredSubmission) -> ProcessedDocument:
         self.seen.append(acquired)
         return PassThroughProcessor().process(acquired)
 
@@ -214,20 +212,19 @@ class BundleFetcher:
 
     def fetch(self, locator: DocumentLocator) -> FetchResult:
         if not locator.document_path.endswith(".txt"):
-            return FetchResult(locator, None, "missing")
-        extraction = extract_from_sgml_envelope(self.bundle, locator)
+            return FetchResult(locator, "missing")
+        source = AcquisitionSource(
+            AcquisitionSourceKind.ARCHIVE_URL,
+            f"https://www.sec.gov/x/{locator.document_path}",
+        )
+        extraction = extract_from_sgml_envelope(self.bundle, locator, source=source)
         if extraction.payload is None:
-            return FetchResult(locator, None, "failed", error="no sub-document")
+            return FetchResult(locator, "failed", error="no sub-document")
         return FetchResult(
             locator,
-            extraction.payload,
             "ok",
+            acquired=extraction.submission,
             source_payload=extraction.bundle,
-            source=AcquisitionSource(
-                AcquisitionSourceKind.ARCHIVE_URL,
-                f"https://www.sec.gov/x/{locator.document_path}",
-            ),
-            envelope=extraction.envelope,
         )
 
 
@@ -248,7 +245,8 @@ def test_worker_hands_the_processor_the_selected_payload(tmp_path: Path) -> None
 
     assert len(processor.seen) == 1
     assert (
-        processor.seen[0].payload == b"<HTML><BODY>PRIMARY DOCUMENT BODY</BODY></HTML>"
+        processor.seen[0].selected_payload
+        == b"<HTML><BODY>PRIMARY DOCUMENT BODY</BODY></HTML>"
     )
 
 
@@ -267,7 +265,7 @@ def test_worker_keeps_the_requested_locator_on_the_acquisition(tmp_path: Path) -
         chunks_dir=tmp_path,
     )
 
-    assert processor.seen[0].locator.document_path == locator.document_path
+    assert processor.seen[0].requested_locator.document_path == locator.document_path
     assert processor.seen[0].document_locator_key == locator.document_locator_key
 
 
@@ -308,8 +306,8 @@ def test_worker_gives_the_processor_the_acquisition_source(tmp_path: Path) -> No
     assert processor.seen[0].source.kind is AcquisitionSourceKind.ARCHIVE_URL
 
 
-def test_worker_gives_the_processor_the_sibling_headers(tmp_path: Path) -> None:
-    """Sibling headers reach the processor, but no sibling payload does."""
+def test_worker_gives_the_processor_every_sub_document(tmp_path: Path) -> None:
+    """Every header reaches the processor, but no sibling payload does."""
     locator = _locator(document_path=f"{accession_hyphenated(ACCESSION)}.txt")
     processor = RecordingProcessor()
 
@@ -323,10 +321,14 @@ def test_worker_gives_the_processor_the_sibling_headers(tmp_path: Path) -> None:
         chunks_dir=tmp_path,
     )
 
-    envelope = processor.seen[0].envelope
-    assert envelope is not None
-    assert [header.filename for header in envelope.siblings] == ["ex21.txt"]
-    assert b"EXHIBIT TWENTY ONE BODY" not in processor.seen[0].payload
+    acquired = processor.seen[0]
+    assert [doc.document_path for doc in acquired.documents] == [
+        "ex21.txt",
+        "acme-10k.htm",
+    ]
+    assert acquired.selected_document.document_path == "acme-10k.htm"
+    assert acquired.selected_index == 1
+    assert b"EXHIBIT TWENTY ONE BODY" not in acquired.selected_payload
 
 
 def test_worker_does_not_persist_acquisition_provenance(tmp_path: Path) -> None:
@@ -361,8 +363,8 @@ def test_sgml_child_routes_by_its_own_filename(tmp_path: Path) -> None:
         chunks_dir=tmp_path,
     )
 
-    assert processor.seen[0].content_route is DocumentRoute.XML
-    assert processor.seen[0].locator.document_path == locator.document_path
+    assert processor.seen[0].selected_document.content_route is DocumentRoute.XML
+    assert processor.seen[0].requested_locator.document_path == locator.document_path
 
 
 def test_sgml_child_route_reaches_normalization(tmp_path: Path) -> None:
@@ -981,3 +983,227 @@ def test_chunk_resumes_when_all_documents_already_staged(tmp_path: Path) -> None
 
     assert resumed_result.payload_sha256 == fresh_result.payload_sha256
     assert resume_fetcher.calls == []
+
+
+# --- the pre-2005 candidate gate -------------------------------------------
+
+_ERA_ACCESSION = "0000890923-01-000002"
+
+
+def _era_locator(document_path: str, form: str = "10-K") -> DocumentLocator:
+    """A locator from the inversion era, so the candidate window is reachable."""
+    return DocumentLocator.from_parts(
+        _ERA_ACCESSION,
+        document_path,
+        archive_url=f"https://www.sec.gov/x/{document_path}",
+        form=form,
+        source_cik="890923",
+    )
+
+
+def _era_occurrence(
+    locator: DocumentLocator,
+    filing_date: str = "2001-03-01",
+    occurrence_id: str = "occ-1",
+) -> FilingOccurrence:
+    return FilingOccurrence(
+        occurrence_id=occurrence_id,
+        source_cik=Cik.from_raw("890923"),
+        accession=locator.accession,
+        document_path=locator.document_path,
+        form="10-K",
+        filing_date=filing_date,
+        report_date=None,
+        doc_id=locator.document_locator_key,
+    )
+
+
+def test_candidate_counts_follow_the_occurrence_filing_date(tmp_path: Path) -> None:
+    """The 2001 exhibit is in the window; the 2012 primary is not."""
+    exhibit = _era_locator("ex21.txt")
+    primary = _locator("acme-10k.htm")
+    result = process_chunk(
+        "c1",
+        "w1",
+        [exhibit, primary],
+        [_era_occurrence(exhibit), _occurrence(primary)],
+        fetcher=DictFetcher(
+            {"ex21.txt": b"EXHIBIT BODY", "acme-10k.htm": BODY.encode()}
+        ),
+        chunks_dir=tmp_path,
+    )
+    assert result.candidate_eligible_count == 1
+    assert result.bundle_candidate_count == 1
+
+
+def test_a_candidate_request_is_still_acquired_at_its_own_url(tmp_path: Path) -> None:
+    """A positive candidate must not promote the request to the accession bundle."""
+    locator = _era_locator("ex21.txt")
+    payload = b"EXHIBIT TWENTY ONE BODY"
+    fetcher = DictFetcher({"ex21.txt": payload})
+    result = process_chunk(
+        "c1",
+        "w1",
+        [locator],
+        [_era_occurrence(locator)],
+        fetcher=fetcher,
+        processor=PassThroughProcessor(),
+        chunks_dir=tmp_path,
+    )
+    assert result.bundle_candidate_count == 1
+    assert fetcher.calls == ["ex21.txt"]
+    table = pq.read_table(result.output_path)
+    assert table.column("document_locator_key").to_pylist() == [
+        locator.document_locator_key
+    ]
+    assert table.column("document_path").to_pylist() == ["ex21.txt"]
+    assert table.column("raw_payload").to_pylist() == [payload]
+    assert table.column("status").to_pylist() == ["ok"]
+    assert table.column("filing_date").to_pylist() == ["2001-03-01"]
+
+
+def test_a_candidate_decision_adds_no_persisted_column(tmp_path: Path) -> None:
+    locator = _era_locator("ex21.txt")
+    result = process_chunk(
+        "c1",
+        "w1",
+        [locator],
+        [_era_occurrence(locator)],
+        fetcher=DictFetcher({"ex21.txt": b"EXHIBIT BODY"}),
+        chunks_dir=tmp_path,
+    )
+    assert pq.read_schema(result.output_path).names == DOCUMENT_SNAPSHOT_SCHEMA.names
+
+
+def test_a_locator_without_a_filing_date_is_not_a_candidate(tmp_path: Path) -> None:
+    """An undescribed locator's synthetic row carries no date, so it cannot qualify."""
+    locator = _era_locator("ex21.txt")
+    result = process_chunk(
+        "c1",
+        "w1",
+        [locator],
+        [],
+        fetcher=DictFetcher({"ex21.txt": b"EXHIBIT BODY"}),
+        chunks_dir=tmp_path,
+    )
+    assert result.candidate_eligible_count == 0
+    assert result.bundle_candidate_count == 0
+
+
+def test_conflicting_co_filer_dates_fail_the_candidate_gate(tmp_path: Path) -> None:
+    locator = _era_locator("ex21.txt")
+    occurrences = [
+        _era_occurrence(locator, "2001-03-01", "occ-1"),
+        _era_occurrence(locator, "2004-03-01", "occ-2"),
+    ]
+    result = process_chunk(
+        "c1",
+        "w1",
+        [locator],
+        occurrences,
+        fetcher=DictFetcher({"ex21.txt": b"EXHIBIT BODY"}),
+        chunks_dir=tmp_path,
+    )
+    assert result.candidate_eligible_count == 0
+    assert result.occurrences == 2
+
+
+def test_co_filer_occurrences_count_once(tmp_path: Path) -> None:
+    locator = _era_locator("ex21.txt")
+    occurrences = [
+        _era_occurrence(locator, "2001-03-01", "occ-1"),
+        _era_occurrence(locator, "2001-03-01", "occ-2"),
+        _era_occurrence(locator, "2001-03-01", "occ-3"),
+    ]
+    result = process_chunk(
+        "c1",
+        "w1",
+        [locator, locator],
+        occurrences,
+        fetcher=DictFetcher({"ex21.txt": b"EXHIBIT BODY"}),
+        chunks_dir=tmp_path,
+    )
+    assert (result.candidate_eligible_count, result.bundle_candidate_count) == (1, 1)
+    assert result.occurrences == 3
+
+
+def test_a_form_named_document_is_not_a_candidate(tmp_path: Path) -> None:
+    """``ex-10k.htm`` is in the window but names the primary form, not an exhibit."""
+    locator = _era_locator("ex-10k.htm")
+    result = process_chunk(
+        "c1",
+        "w1",
+        [locator],
+        [_era_occurrence(locator)],
+        fetcher=DictFetcher({"ex-10k.htm": BODY.encode()}),
+        chunks_dir=tmp_path,
+    )
+    assert result.candidate_eligible_count == 1
+    assert result.bundle_candidate_count == 0
+
+
+def test_candidate_summary_matches_a_processed_chunk(tmp_path: Path) -> None:
+    """The skip path's plan-derived summary must agree with the processed one."""
+    exhibit = _era_locator("ex21.txt")
+    ticker = _era_locator("exxon10k.htm")
+    locators = [exhibit, ticker, exhibit]
+    occurrences = [
+        _era_occurrence(exhibit, "2001-03-01", "occ-1"),
+        _era_occurrence(ticker, "2001-03-01", "occ-2"),
+    ]
+    processed = process_chunk(
+        "c1",
+        "w1",
+        locators,
+        occurrences,
+        fetcher=DictFetcher({"ex21.txt": b"EXHIBIT BODY", "exxon10k.htm": b"X"}),
+        chunks_dir=tmp_path,
+    )
+    summary = candidate_summary(locators, occurrences)
+    assert summary == (
+        processed.candidate_eligible_count,
+        processed.bundle_candidate_count,
+    )
+    assert summary == (2, 1)
+
+
+def test_a_skipped_chunk_reports_the_same_candidate_counts(tmp_path: Path) -> None:
+    """Counts cover the requested plan, so a resumed chunk still reports them."""
+    exhibit = _era_locator("ex21.txt")
+    locators = {"c1": [exhibit]}
+    occurrences = {"c1": [_era_occurrence(exhibit)]}
+    first = process_chunks(
+        ["c1"],
+        locators,
+        occurrences,
+        fetcher=DictFetcher({"ex21.txt": b"EXHIBIT BODY"}),
+        chunks_dir=tmp_path,
+        workers=1,
+    )
+    resumed = process_chunks(
+        ["c1"],
+        locators,
+        occurrences,
+        fetcher=DictFetcher({}),
+        chunks_dir=tmp_path,
+        workers=1,
+    )
+    assert resumed[0].worker_id == "skipped"
+    assert (resumed[0].candidate_eligible_count, resumed[0].bundle_candidate_count) == (
+        first[0].candidate_eligible_count,
+        first[0].bundle_candidate_count,
+    )
+    assert resumed[0].bundle_candidate_count == 1
+
+
+def test_candidate_counts_survive_the_pool_boundary(tmp_path: Path) -> None:
+    locator = _era_locator("ex21.txt")
+    results = process_chunks(
+        ["c1"],
+        {"c1": [locator]},
+        {"c1": [_era_occurrence(locator)]},
+        fetcher=DictFetcher({"ex21.txt": b"EXHIBIT BODY"}),
+        chunks_dir=tmp_path,
+        workers=2,
+    )
+    assert results[0].bundle_candidate_count == 1

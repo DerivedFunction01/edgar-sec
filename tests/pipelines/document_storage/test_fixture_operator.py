@@ -88,8 +88,8 @@ def test_fill_skips_existing_rows_and_retries_failures(tmp_path: Path) -> None:
     assert second.failed == 0
 
     fetcher = FixtureArchiveFetcher([paths.fixture_db_path("fix-fill")])
-    assert fetcher.fetch(missing).payload == b"recovered"
-    assert fetcher.fetch(successful).payload == b"new payload"
+    assert fetcher.fetch(missing).acquired.selected_payload == b"recovered"
+    assert fetcher.fetch(successful).acquired.selected_payload == b"new payload"
     fetcher.close()
 
     manifest = json.loads(paths.fixture_manifest_path("fix-fill").read_text())
@@ -126,7 +126,7 @@ def test_fill_persists_the_complete_submission_bundle(tmp_path: Path) -> None:
     fetcher = FixtureArchiveFetcher([paths.fixture_db_path("fix-bundle")])
     result = fetcher.fetch(locator)
     assert result.ok
-    assert result.payload == b"<html>body</html>"
+    assert result.acquired.selected_payload == b"<html>body</html>"
     assert result.source_payload == bundle
     fetcher.close()
 

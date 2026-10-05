@@ -13,8 +13,10 @@ from dataclasses import dataclass
 from pathlib import Path
 
 from edgar_sec.domain.document.acquisition import (
-    AcquiredDocument,
+    AcquiredSubmission,
     AcquisitionSource,
+    SubmissionFormat,
+    describe_submission_document,
 )
 from edgar_sec.domain.document.models import (
     DocumentLocator,
@@ -145,11 +147,13 @@ def resolve_delegated_exhibit(
             return None
         with suppress(Exception):
             bundle_result = fetcher.fetch(bundle_locator)
-            if bundle_result.ok:
-                candidate = bundle_result.source_payload or bundle_result.payload
+            if bundle_result.ok and bundle_result.acquired is not None:
+                candidate = bundle_result.source_payload
+                if candidate is None:
+                    candidate = bundle_result.acquired.selected_payload
                 if candidate is not None and has_sgml_documents(candidate):
                     bundle = candidate
-                    bundle_source = bundle_result.source
+                    bundle_source = bundle_result.acquired.source
                     source = "bundle-fetch"
     if bundle is None:
         log.info("no bundle available for %s", primary.document_locator_key)
@@ -176,12 +180,22 @@ def resolve_delegated_exhibit(
         payload_sink(exhibit_locator, sub_doc.raw_payload)
 
     exhibit_processed = processor.process(
-        AcquiredDocument(
-            locator=exhibit_locator,
-            payload=sub_doc.raw_payload,
-            # A sub-document names itself in its SGML filename, and a slash there is
-            # never an XSL directory, so the content route ignores directories.
-            content_route=content_route(sub_doc.filename),
+        AcquiredSubmission(
+            requested_locator=exhibit_locator,
+            source_format=SubmissionFormat.SGML,
+            documents=(
+                describe_submission_document(
+                    document_path=sub_doc.filename,
+                    # A sub-document names itself in its SGML filename, and a slash
+                    # there is never an XSL directory, so the route ignores directories.
+                    content_route=content_route(sub_doc.filename),
+                    sequence=sub_doc.sequence,
+                    doc_type=sub_doc.doc_type or None,
+                    description=sub_doc.description,
+                ),
+            ),
+            selected_index=0,
+            selected_payload=sub_doc.raw_payload,
             source=bundle_source,
         )
     )

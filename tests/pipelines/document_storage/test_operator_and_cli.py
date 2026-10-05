@@ -7,7 +7,7 @@ from pathlib import Path
 
 import pytest
 
-from edgar_sec.domain.document.acquisition import FetchResult
+from edgar_sec.domain.document.acquisition import FetchResult, direct_acquisition
 from edgar_sec.domain.document.models import DocumentLocator, FilingOccurrence
 from edgar_sec.domain.identity import Cik
 from edgar_sec.foundation.runtime.paths import ProjectPaths
@@ -95,8 +95,8 @@ class DictFetcher:
         self.calls += 1
         payload = self.responses.get(locator.document_path)
         if payload is None:
-            return FetchResult(locator, None, "missing")
-        return FetchResult(locator, payload, "ok")
+            return FetchResult(locator, "missing")
+        return FetchResult(locator, "ok", acquired=direct_acquisition(locator, payload))
 
 
 def _seed_fixture(
@@ -274,7 +274,7 @@ def test_run_from_a_fixture_end_to_end(paths: ProjectPaths) -> None:
 # --- CLI ------------------------------------------------------------------
 
 
-def _write_plan(path: Path, locators) -> Path:
+def _write_plan(path: Path, locators, occurrences=()) -> Path:
     plan = {
         "chunks": [
             {
@@ -289,6 +289,7 @@ def _write_plan(path: Path, locators) -> Path:
                     }
                     for locator in locators
                 ],
+                "occurrences": [occurrence.to_row() for occurrence in occurrences],
             }
         ]
     }
@@ -550,13 +551,189 @@ def test_fixture_replay_precedence_follows_cli_order(paths: ProjectPaths) -> Non
     _seed_fixture(paths, "first", [locator], b"first payload")
     _seed_fixture(paths, "second", [locator], b"second payload")
     fetcher = make_fetcher("fixture", paths, fixture_id=["first", "second"])
-    assert fetcher.fetch(locator).payload == b"first payload"
+    assert fetcher.fetch(locator).acquired.selected_payload == b"first payload"
     fetcher.close()
 
 
 def test_cli_rejects_an_unknown_command() -> None:
     with pytest.raises(SystemExit):
         cli.main(["teleport"])
+
+
+# --- the pre-2005 candidate counts -----------------------------------------
+
+_ERA_ACCESSION = "0000890923-01-000002"
+
+
+def _era_locator(document_path: str, form: str = "10-K") -> DocumentLocator:
+    """A locator from the inversion era, so the candidate window is reachable."""
+    return DocumentLocator.from_parts(
+        _ERA_ACCESSION,
+        document_path,
+        archive_url=f"https://www.sec.gov/x/{document_path}",
+        form=form,
+        source_cik="890923",
+    )
+
+
+def _era_occurrence(
+    locator: DocumentLocator,
+    filing_date: str = "2001-03-01",
+    occurrence_id: str = "occ-1",
+) -> FilingOccurrence:
+    return FilingOccurrence(
+        occurrence_id=occurrence_id,
+        source_cik=Cik.from_raw("890923"),
+        accession=locator.accession,
+        document_path=locator.document_path,
+        form="10-K",
+        filing_date=filing_date,
+        report_date=None,
+        doc_id=locator.document_locator_key,
+    )
+
+
+def _era_run(paths: ProjectPaths, **overrides):
+    """One chunk holding a statutory exhibit, a form-named file, and a ticker."""
+    exhibit = _era_locator("ex21.txt")
+    form_named = _era_locator("ex-10k.htm")
+    locators = [exhibit, form_named]
+    occurrences = [
+        _era_occurrence(exhibit, "2001-03-01", "occ-1"),
+        _era_occurrence(form_named, "2001-03-01", "occ-2"),
+    ]
+    kwargs = {
+        "paths": paths,
+        "run_id": "run-era",
+        "chunk_ids": ["c1"],
+        "locators_by_chunk": {"c1": locators},
+        "occurrences_by_chunk": {"c1": occurrences},
+        "fetcher": DictFetcher(
+            {"ex21.txt": b"EXHIBIT BODY", "ex-10k.htm": BODY.encode()}
+        ),
+        "workers": 1,
+    }
+    kwargs.update(overrides)
+    return run_document_storage(**kwargs)
+
+
+def test_run_report_carries_the_candidate_counts(paths: ProjectPaths) -> None:
+    payload = _era_run(paths).to_dict()
+    assert payload["candidate_eligible_count"] == 2
+    assert payload["bundle_candidate_count"] == 1
+
+
+def test_candidate_counts_aggregate_across_chunks(paths: ProjectPaths) -> None:
+    exhibit = _era_locator("ex21.txt")
+    ticker = _era_locator("exxon10k.htm")
+    report = _era_run(
+        paths,
+        run_id="run-two-chunks",
+        chunk_ids=["c1", "c2"],
+        locators_by_chunk={"c1": [exhibit], "c2": [ticker]},
+        occurrences_by_chunk={
+            "c1": [_era_occurrence(exhibit, "2001-03-01", "occ-1")],
+            "c2": [_era_occurrence(ticker, "2001-03-01", "occ-2")],
+        },
+    )
+    assert report.candidate_eligible_count == 2
+    assert report.bundle_candidate_count == 1
+
+
+def test_candidate_counts_deduplicate_co_filer_occurrences(paths: ProjectPaths) -> None:
+    exhibit = _era_locator("ex21.txt")
+    occurrences = [
+        _era_occurrence(exhibit, "2001-03-01", f"occ-{index}") for index in range(3)
+    ]
+    report = _era_run(
+        paths,
+        run_id="run-cofilers",
+        locators_by_chunk={"c1": [exhibit]},
+        occurrences_by_chunk={"c1": occurrences},
+    )
+    assert report.candidate_eligible_count == 1
+    assert report.bundle_candidate_count == 1
+    assert report.merge.snapshot.row_count == 3
+
+
+def test_candidate_counts_cover_a_chunk_skipped_by_resume(paths: ProjectPaths) -> None:
+    """A resumed chunk contributes its plan's candidates, not zero."""
+    from edgar_sec.pipelines.document_storage.worker import process_chunks
+
+    exhibit = _era_locator("ex21.txt")
+    ticker = _era_locator("exxon10k.htm")
+    chunks_dir = paths.run_chunks_dir("run-resume-candidates")
+    chunks_dir.mkdir(parents=True, exist_ok=True)
+    process_chunks(
+        ["c1"],
+        {"c1": [exhibit]},
+        {"c1": [_era_occurrence(exhibit, "2001-03-01", "occ-1")]},
+        fetcher=DictFetcher({"ex21.txt": b"EXHIBIT BODY"}),
+        chunks_dir=chunks_dir,
+        workers=1,
+    )
+
+    report = _era_run(
+        paths,
+        run_id="run-resume-candidates",
+        chunk_ids=["c1", "c2"],
+        locators_by_chunk={"c1": [exhibit], "c2": [ticker]},
+        occurrences_by_chunk={
+            "c1": [_era_occurrence(exhibit, "2001-03-01", "occ-1")],
+            "c2": [_era_occurrence(ticker, "2001-03-01", "occ-2")],
+        },
+        fetcher=DictFetcher({}),
+    )
+    skipped = next(chunk for chunk in report.chunks if chunk.chunk_id == "c1")
+    assert skipped.worker_id == "skipped"
+    assert skipped.bundle_candidate_count == 1
+    assert report.candidate_eligible_count == 2
+    assert report.bundle_candidate_count == 1
+
+
+def test_candidate_counts_are_not_persisted_in_the_snapshot(
+    paths: ProjectPaths,
+) -> None:
+    report = _era_run(paths, run_id="run-no-persist")
+    manifest = json.loads(
+        (report.merge.snapshot.artifact_path.parent / "manifest.json").read_text(
+            encoding="utf-8"
+        )
+    )
+    assert "candidate_eligible_count" not in manifest
+    assert "bundle_candidate_count" not in manifest
+
+
+def test_cli_run_json_reports_candidate_counts(
+    paths: ProjectPaths,
+    tmp_path: Path,
+    capsys: pytest.CaptureFixture[str],
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    exhibit = _era_locator("ex21.txt")
+    _seed_fixture(paths, "fix-era", [exhibit], b"EXHIBIT BODY")
+    plan = _write_plan(tmp_path / "plan.json", [exhibit], [_era_occurrence(exhibit)])
+    monkeypatch.setattr(cli, "resolve_paths", lambda: paths)
+    assert cli.main(["run", "--plan", str(plan), "--fixture", "fix-era", "--json"]) == 0
+    payload = json.loads(capsys.readouterr().out)
+    assert payload["candidate_eligible_count"] == 1
+    assert payload["bundle_candidate_count"] == 1
+
+
+def test_cli_run_human_output_reports_candidate_counts(
+    paths: ProjectPaths,
+    tmp_path: Path,
+    capsys: pytest.CaptureFixture[str],
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    exhibit = _era_locator("ex21.txt")
+    _seed_fixture(paths, "fix-era-text", [exhibit], b"EXHIBIT BODY")
+    plan = _write_plan(tmp_path / "plan.json", [exhibit], [_era_occurrence(exhibit)])
+    monkeypatch.setattr(cli, "resolve_paths", lambda: paths)
+    assert cli.main(["run", "--plan", str(plan), "--fixture", "fix-era-text"]) == 0
+    out = capsys.readouterr().out
+    assert "eligible      1" in out
+    assert "candidates    1" in out
 
 
 def test_root_launcher_registers_the_documents_pipeline() -> None:

@@ -5,6 +5,8 @@ Covers the extraction and malformed-input paths the pipeline reaches.
 
 from __future__ import annotations
 
+from edgar_sec.domain.document.route import DocumentRoute
+
 from edgar_sec.engine.document.unpacking.unpacker import (
     SgmlSubDocument,
     extract_target_sub_document,
@@ -187,15 +189,17 @@ def test_selection_reports_the_selected_payload() -> None:
     assert b"Subsidiary list." not in selection.payload
 
 
-def test_selection_reports_every_sibling_in_envelope_order() -> None:
+def test_selection_reports_every_header_in_envelope_order() -> None:
     selection = extract_target_sub_document_selection(
         SAMPLE_SGML.encode("utf-8"), target_types=["10-K"]
     )
     assert selection is not None
-    assert [header.filename for header in selection.siblings] == [
+    assert [doc.document_path for doc in selection.documents] == [
+        "form10k.htm",
         "ex21.txt",
         "image.jpg",
     ]
+    assert selection.selected_index == 0
 
 
 def test_selection_records_the_selected_header() -> None:
@@ -203,10 +207,11 @@ def test_selection_records_the_selected_header() -> None:
         SAMPLE_SGML.encode("utf-8"), target_types=["10-K"]
     )
     assert selection is not None
-    assert selection.selected.doc_type == "10-K"
-    assert selection.selected.filename == "form10k.htm"
-    assert selection.selected.sequence == 1
-    assert selection.selected.description == "ANNUAL REPORT"
+    selected = selection.documents[selection.selected_index]
+    assert selected.doc_type == "10-K"
+    assert selected.document_path == "form10k.htm"
+    assert selected.sequence == 1
+    assert selected.description == "ANNUAL REPORT"
 
 
 def test_selection_records_sibling_descriptions() -> None:
@@ -214,7 +219,19 @@ def test_selection_records_sibling_descriptions() -> None:
         SAMPLE_SGML.encode("utf-8"), target_types=["10-K"]
     )
     assert selection is not None
-    assert selection.siblings[0].description == "SUBSIDIARIES"
+    assert selection.documents[1].description == "SUBSIDIARIES"
+
+
+def test_selection_routes_each_header_from_its_own_filename() -> None:
+    selection = extract_target_sub_document_selection(
+        SAMPLE_SGML.encode("utf-8"), target_types=["10-K"]
+    )
+    assert selection is not None
+    assert [doc.content_route for doc in selection.documents] == [
+        DocumentRoute.MARKUP,
+        DocumentRoute.TEXT,
+        DocumentRoute.BINARY,
+    ]
 
 
 def test_selection_does_not_materialize_sibling_bodies() -> None:
@@ -223,7 +240,7 @@ def test_selection_does_not_materialize_sibling_bodies() -> None:
         SAMPLE_SGML.encode("utf-8"), target_types=["10-K"]
     )
     assert selection is not None
-    assert not hasattr(selection.siblings[0], "raw_payload")
+    assert not hasattr(selection.documents[1], "payload")
     assert b"Subsidiary list." not in selection.payload
     assert b"binarygarbage" not in selection.payload
 
@@ -244,9 +261,10 @@ def test_selection_records_missing_headers_as_absent() -> None:
     bare = b"<DOCUMENT><TYPE>10-K<FILENAME>a.htm<TEXT>body</TEXT></DOCUMENT>"
     selection = extract_target_sub_document_selection(bare)
     assert selection is not None
-    assert selection.selected.sequence is None
-    assert selection.selected.description is None
-    assert selection.siblings == ()
+    assert selection.selected_index == 0
+    assert selection.documents[0].sequence is None
+    assert selection.documents[0].description is None
+    assert len(selection.documents) == 1
 
 
 def test_sgml_sub_document_is_frozen() -> None:

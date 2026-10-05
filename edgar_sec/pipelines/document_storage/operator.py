@@ -81,6 +81,16 @@ class RunReport:
     def failed_documents(self) -> int:
         return sum(chunk.failed_count + chunk.missing_count for chunk in self.chunks)
 
+    @property
+    def candidate_eligible_count(self) -> int:
+        """Requested locators whose filing date falls inside the 2000-2004 window."""
+        return sum(chunk.candidate_eligible_count for chunk in self.chunks)
+
+    @property
+    def bundle_candidate_count(self) -> int:
+        """The subset that also reads as a statutory exhibit rather than the form."""
+        return sum(chunk.bundle_candidate_count for chunk in self.chunks)
+
     def to_dict(self) -> dict[str, Any]:
         """Render the report for a manifest or a CLI summary."""
         return {
@@ -91,6 +101,8 @@ class RunReport:
             "chunk_count": self.merge.snapshot.chunk_count,
             "total_documents": self.total_documents,
             "failed_documents": self.failed_documents,
+            "candidate_eligible_count": self.candidate_eligible_count,
+            "bundle_candidate_count": self.bundle_candidate_count,
             "exhibits_resolved": len(self.exhibits),
             "started_at": self.started_at,
             "finished_at": self.finished_at,

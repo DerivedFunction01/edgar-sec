@@ -10,19 +10,19 @@ This implementation plan operationalizes the architectural contracts and Lakehou
 
 > **Milestone 1 status (2026-10-05).** The document-route classification,
 > no-cover reflow, rendered-document fetch fallback, the sparse acquisition model,
-> and the processor v2 bump have shipped and are verified by the suite. The
-> 14-column snapshot schema, structural-metadata persistence, and inversion
-> dual-write are **deferred** until the document model is finalized (see §1.2).
-> The empirical inversion analysis in §1.1 still stands as the basis for that
-> deferred work.
+> the processor v2 bump, and the pre-2005 exhibit-candidate gate have shipped
+> and are verified by the suite. The 14-column snapshot schema, structural-metadata
+> persistence, and inversion dual-write are **deferred** until the document model is
+> finalized (see §1.2). The empirical inversion analysis in §1.1 still stands as the
+> basis for that deferred work.
 
 1. **Document Route Classification (Layer 1 — shipped)**: `edgar_sec/domain/document/route.py` classifies a document path into a `DocumentRoute` (`RENDERED`, `MARKUP`, `TEXT`, `PAPER`, `XML`, `BINARY`, `UNKNOWN`) before any bytes are read. A path containing `/` is `RENDERED` — an XSL rendering EDGAR serves as HTML even when its basename is `.xml` — so a slash outranks the suffix and a flat suffix is the only decisive signal. A flat `.xml` routes to `XML` and is recorded with `representation: "xml"`; `.paper` routes to `PAPER` (a fixed SGML stub naming an off-archive Document Control Number, with no filing prose); `.pdf`/`.gif`/`.jpg` route to `BINARY` and are stored verbatim.
 2. **No-Cover Reflow Contract (Layer 3 — shipped)**: ASCII filings under a no-cover profile reflow prose from line 0 to EOF. No-cover is identified by the `GENERIC_PROFILE_FAMILY` key, **not** by `profile.boundary is None` — every profile carries a boundary policy, so `None` is not a distinguishing test. Cover-bearing forms (`10-K`, `10-Q`, `20-F`, `8-K`, `6-K`) still reflow after their detected `body_start_line`.
 3. **Processor Version Bump (Layer 4 — shipped)**: `PROCESSOR_SCHEMA_VERSION = 2`. The normalized text changed (no-cover reflow, route-driven representation), so the processor fingerprint gates chunk reuse and a v1 checkpoint is recomputed, not reused.
-4. **Sparse Acquisition Model (Layer 1 & 3 & 4 — shipped)**: `AcquiredDocument` separates the three things one fetch conflates — the requested `DocumentLocator`, the `AcquisitionSource` that actually answered, and the `DocumentRoute` of the bytes. `FetchResult.acquired` resolves the route: a direct response keeps its requested path's route, while a selected SGML sub-document routes by its own `<FILENAME>`, so an XML primary inside an `<accession>.txt` bundle is normalized as XML. `extract_target_sub_document_selection` returns the selected body with every sub-document's headers and materializes no sibling body, so a submission's remaining bytes are released before normalization. The processor signature is `process(AcquiredDocument)`, so a processor no longer re-derives a route from the locator. No identity, schema, SQL, or catalog-planning behavior changed.
+4. **Sparse Submission Acquisition Model (Layer 1 & 3 & 4 — shipped)**: `AcquiredSubmission` is one accession-scoped view of one response. It separates the three things one fetch conflates — the requested `DocumentLocator`, the `AcquisitionSource` that actually answered, and each document's own `DocumentRoute`. It describes every document the response revealed as a `SubmissionDocument` and loads exactly one body, named by `selected_index` because sequence numbers and filenames can be absent or duplicated. Direct content is the singleton case; an SGML envelope routes each child by its own `<FILENAME>`, so an XML primary inside an `<accession>.txt` bundle is normalized as XML. `extract_target_sub_document_selection` materializes no sibling body, and the complete envelope is released before normalization, surviving only as `FetchResult.source_payload` for fixture seeding and the delegated-exhibit pass. The processor signature is `process(AcquiredSubmission)`, so a processor reads the body and route rather than re-deriving them from the locator. No identity, schema, SQL, or catalog-planning behavior changed.
 5. **Form-Aware XML Validity — superseded by route classification.** The plan's form-based distinction (XML-native forms valid, narrative forms filter `.xml` as XBRL linkbases) was not built. The shipped behavior is path-based: a flat `.xml` is a valid primary document with `representation: "xml"` and is never reflowed; the route does not consult the form and does not filter `.xml` out of narrative filings. Form-aware XML validity remains a deliberate gap.
-6. **Structural Metadata Persistence (deferred)**: expanding `DOCUMENT_SNAPSHOT_SCHEMA` from 13 to 14 columns with a canonical JSON `metadata` column is deferred until the document model is finalized. `ProcessedDocument.metadata` and review-artifact diagnostics remain separate from any persisted index and are not repurposed as the document index. Acquisition provenance (`AcquiredDocument.source`, sibling headers) is likewise in-memory only; no column carries it.
-7. **Form-Agnostic Inversion Recovery & Dual-Write (deferred)**: pre-2005 exhibit-target recovery and the primary/exhibit dual-write are deferred. The fetcher's rendered-document fallback (`archive_root_url`) shipped, and the sparse model now supplies the sibling `<TYPE>`/sequence headers the recovery needs; the exhibit-promotion and dual-write logic did not.
+6. **Structural Metadata Persistence (deferred)**: expanding `DOCUMENT_SNAPSHOT_SCHEMA` from 13 to 14 columns with a canonical JSON `metadata` column is deferred until the document model is finalized. `ProcessedDocument.metadata` and review-artifact diagnostics remain separate from any persisted index and are not repurposed as the document index. Acquisition provenance (`AcquiredSubmission.source`, its document descriptors) is likewise in-memory only; no column carries it.
+7. **Form-Agnostic Inversion Recovery & Dual-Write (partially shipped — detection only)**: pre-2005 exhibit-target recovery and the primary/exhibit dual-write are deferred. The fetcher's rendered-document fallback (`archive_root_url`) shipped, the sparse model supplies the sibling `<TYPE>`/sequence headers the recovery needs, and the **candidate gate** now ships: `candidates.py` classifies each requested locator against the 2000-2004 window, the Item 601 filename grammar, and the target form's canonical tokens, and the run report counts the population. The gate opens no bundle and resolves no primary, so the exhibit-promotion and dual-write logic did not.
 
 ---
 
@@ -248,7 +248,7 @@ from functools import lru_cache
 
 
 @lru_cache(maxsize=64)
-def get_primary_form_token_pattern(form: str | None) -> re.Pattern[str]:
+def primary_form_token_pattern(form: str | None) -> re.Pattern[str]:
     """Derive and memoize a primary-document token pattern for one canonical form family.
 
     Why lru_cache instead of a global table:
@@ -299,7 +299,7 @@ def get_primary_form_token_pattern(form: str | None) -> re.Pattern[str]:
 1. **Temporal Gate (`2000-01-01 <= filing_date < 2005-01-01`)**:
    - Pre-2000 targets are already monolithic bundles by default.
    - Post-2005 submissions have **0.0% true sequence inversions** across 3.19M filings due to Modernized EDGARLink header enforcement. All post-2005 targets `PROCEED` directly.
-2. **Dynamic Profile Form Token Exclusion**: If the filename matches `get_primary_form_token_pattern(locator.form)` (e.g. `ex-10k.htm`, `ex10k.txt`), fetch directly as primary document.
+2. **Dynamic Profile Form Token Exclusion**: If the filename matches `primary_form_token_pattern(locator.form)` (e.g. `ex-10k.htm`, `ex10k.txt`), fetch directly as primary document.
 3. **Statutory Number Match**: Filenames lacking statutory numbers 1–105 (e.g. `exxon.htm`, `exp.txt`) are fetched directly.
 4. **SGML Envelope Tier 1 `<TYPE>` Extraction**:
    - When the bundle `<accession>.txt` is unpacked, `unpacker.resolve_target_sub_document(docs, target_types=(form, form/A))` searches all sub-document `<TYPE>` tags.
@@ -346,7 +346,10 @@ This proves that Sequence 1 Exhibit Inversion is **strictly a 2000–2004 legacy
 ### Deferred to Subsequent Milestones:
 1. **14-Column `DOCUMENT_SNAPSHOT_SCHEMA` & Structural Metadata Persistence**: add `("metadata", pa.string())` and update writers, readers, and validators. Deferred until the document model is finalized; `ProcessedDocument.metadata` and review-artifact diagnostics are not repurposed as the persisted index.
 2. **Form-Aware XML Validity**: distinguishing an XML-native form's filing from an XBRL linkbase by form. The shipped route is path-based and makes no such distinction.
-3. **Inversion Recovery & Dual-Write**: pre-2005 exhibit-target promotion and the primary/exhibit dual-write (see §1.1 for the empirical basis).
+3. **Inversion Recovery & Dual-Write**: pre-2005 exhibit-target promotion and the
+   primary/exhibit dual-write (see §1.1 for the empirical basis, and Stage 5 for what
+   detection now covers). What ships is the candidate gate and its reported population,
+   which is a measurement rather than a recovery.
 4. **Forced Full-Bundle Acquisition (`--acquisition-policy full_bundle`)**: execution defaults to sparse acquisition (~2MB primary document).
 5. **Cross-Snapshot Anti-Join Diffing (`--base-snapshot a1`)**: incremental delta execution between published snapshots.
 6. **BlockStream 1D Virtual AST**: `SpanDecision` lacks byte/char offsets and merges spans, so normalization continues emitting clean `normalized_text`.
@@ -447,13 +450,42 @@ flowchart LR
 
 ---
 
-### Stage 5: Inversion Recovery & Dual-Write Storage (Layer 4 — deferred)
+### Stage 5: Inversion Recovery & Dual-Write Storage (Layer 4 — detection shipped; recovery deferred)
 
-#### Responsibilities:
-- In `fetching.py`, gate exhibit detection with `2000 <= filing_year < 2005`, `RE_STATUTORY_EXHIBIT_FILENAME`, and `RE_PRIMARY_FORM_TOKEN` rejection to strictly avoid false-positive bundle fetches on tickers (`EXAS`, `EXPO`) or company names (`exxon10k.htm`).
+#### Shipped: candidate detection
+1. **`edgar_sec/pipelines/document_storage/candidates.py`** — the gate lives beside the
+   worker's chunk records rather than in `fetching.py`, because it decides nothing about
+   acquisition order and its regex grammar is not the fetcher's vocabulary:
+   - `RE_STATUTORY_EXHIBIT_FILENAME` and `primary_form_token_pattern` (memoized per
+     canonical family with `lru_cache(maxsize=64)`), both built with `build_alternation`.
+   - `occurrence_filing_date()` requires a locator's co-filer rows to agree on one valid
+     date; absent, malformed, and conflicting values yield no decision, and the
+     accession's year segment is never a substitute.
+   - `candidate_decision()` bounds recognition to `2000-01-01 <= filing_date < 2005-01-01`,
+     applied to the URL path's basename so a rendered route's directory is not filename
+     grammar. It returns an intent and a reason and invokes no fetch.
+2. **`edgar_sec/pipelines/document_storage/worker.py`** — `FilingWork` carries the
+   unchanged requested locator, its occurrences, the agreed date, and the decision through
+   the existing fetcher, processor, and projector. It claims no primary/exhibit role and
+   does not retain `FetchResult.source_payload`, so the envelope-memory bound is unchanged.
+   `ChunkResult.candidate_eligible_count` / `bundle_candidate_count` are reported for the
+   whole requested plan; `process_chunks()` derives a skipped chunk's summary from the
+   plan's own locator/occurrence inputs, and a co-filer locator counts once.
+3. **`operator.py` / `cli.py`** — the counts aggregate onto `RunReport.to_dict()` and the
+   `run` summary. Nothing persists them.
+
+#### Still deferred
 - When a true pre-2005 exhibit target is identified, promote the fetch to `<accession>.txt`.
-- In `worker.py`, when an inversion is recovered via Tier 1 `<TYPE>` matching in `unpacker.py`, dual-write both the recovered primary document (`role: "primary"`) and the original exhibit (`role: "exhibit"`, `parent_locator_key`).
-- Both `RE_STATUTORY_EXHIBIT_FILENAME` and `get_primary_form_token_pattern` are still unimplemented. The dependencies this stage names do exist: `unpacker.resolve_target_sub_document`, `fetching.extract_from_sgml_envelope`, `aliases_for_family`, and `build_alternation`.
+- In `worker.py`, when an inversion is recovered via Tier 1 `<TYPE>` matching in
+  `unpacker.py`, dual-write both the recovered primary document (`role: "primary"`) and
+  the original exhibit (`role: "exhibit"`, `parent_locator_key`).
+
+A positive candidate decision does neither, and the bundle is deliberately not even
+requested. Recovery needs a resolution contract that represents the requested exhibit and
+the form-matched primary as two distinct references, and fixes which payloads stay loaded
+and how both reach processing; that contract does not exist yet. The dependencies this
+stage names do exist: `unpacker.resolve_target_sub_document`,
+`fetching.extract_from_sgml_envelope`, `aliases_for_family`, and `build_alternation`.
 
 #### URL / Filename Is Not Authoritative for Primary Identity (2000–2005 era)
 
@@ -491,7 +523,7 @@ the bundle format:
   to fetching the full SGML bundle `<accession>.txt`.
 
 **Practical consequence for Stage 4:**
-- The `get_primary_form_token_pattern(form)` check is a **fast pre-filter** to avoid fetching
+- The `primary_form_token_pattern(form)` check is a **fast pre-filter** to avoid fetching
   bundles unnecessarily. It does not assert primary identity.
 - True primary identity is confirmed exclusively by `<TYPE>` matching inside the unpacked SGML
   envelope. The URL is advisory only.
@@ -518,14 +550,15 @@ the bundle format:
 
 #### Verification Steps:
 1. `.venv/bin/python check.py --fast` (all registered policy scanners green — `AGENTS.md` registers 14, not the 12 this plan previously claimed).
-2. `.venv/bin/python check.py --all` (complete test suite green).
+2. `.venv/bin/python check.py` ( test suite green).
 3. Probe script verifying normalized output and representation on review cohort filings, covering a flat `.xml`, an XSL rendering, and a `.paper` stub.
 
 ---
 
 ## 3. Component Touch Matrix
 
-Actual Milestone 1 changes. The deferred Stage 4 and Stage 5 work is excluded; its files are listed in those stages instead.
+Actual Milestone 1 changes. The deferred Stage 4 work, and Stage 5's promotion and
+dual-write, are excluded; their files are listed in those stages instead.
 
 | Component File | Layer | Action | Scanners & Contracts Enforced |
 | :--- | :--- | :--- | :--- |
@@ -537,9 +570,16 @@ Actual Milestone 1 changes. The deferred Stage 4 and Stage 5 work is excluded; i
 | `edgar_sec/pipelines/document_storage/processor.py` | Layer 4 | **EDIT** | `PROCESSOR_SCHEMA_VERSION = 2`; binary verbatim storage; `raw` text contract. |
 | `tests/pipelines/document_storage/test_processor.py` | Tests | **ADD** | v2 fingerprint and diagnostic metadata. |
 | `edgar_sec/pipelines/document_storage/fetching.py` | Layer 4 | **EDIT** | `archive_root_url()` rendered-document fallback; fixture lookup order. |
+| `edgar_sec/pipelines/document_storage/candidates.py` | Layer 4 | **ADD** | Item 601 filename grammar; family-keyed primary-form-token memo; occurrence-date agreement; advisory candidate decision. |
+| `edgar_sec/pipelines/document_storage/worker.py` | Layer 4 | **EDIT** | `FilingWork` handoff; plan-derived candidate counts on processed and skipped chunks. |
+| `edgar_sec/pipelines/document_storage/operator.py` | Layer 4 | **EDIT** | Candidate counts on `RunReport` and `to_dict()`. |
+| `edgar_sec/pipelines/document_storage/cli.py` | Layer 4 | **EDIT** | Candidate counts in the `run` summary. |
+| `tests/pipelines/document_storage/test_candidates.py` | Tests | **ADD** | Window edges, date agreement, filename and form-token discrimination. |
+| `tests/pipelines/document_storage/test_fetching.py` | Tests | **EDIT** | A candidate request changes no broker or live request, selection, or stored row. |
+| `tests/pipelines/document_storage/test_operator_and_cli.py` | Tests | **EDIT** | Candidate counts in JSON and text output, across chunks, over co-filers, and for a resumed chunk. |
 | `edgar_sec/pipelines/document_storage/fixture_operator.py` | Layer 4 | **EDIT** | MIME sourced from the shared route table. |
 | `edgar_sec/pipelines/document_storage/review_artifacts.py` | Layer 4 | **EDIT** | Review defers a binary route exactly as the worker does. |
-| `tests/pipelines/document_storage/test_worker.py` | Tests | **EDIT** | Checkpoint reuse gated on the v2 fingerprint. |
+| `tests/pipelines/document_storage/test_worker.py` | Tests | **EDIT** | Checkpoint reuse gated on the v2 fingerprint; candidate counts on processed, resumed, and pooled chunks. |
 | `edgar_sec/domain/document/README.md` | Doc | **EDIT** | Route contracts and caller obligations. |
 | `edgar_sec/engine/forms/README.md` | Doc | **EDIT** | Route-driven stage eligibility and representation. |
 | `edgar_sec/pipelines/document_storage/README.md` | Doc | **EDIT** | Route-aware acquisition and normalization. |

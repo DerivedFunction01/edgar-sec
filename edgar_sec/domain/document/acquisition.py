@@ -12,7 +12,8 @@ from enum import StrEnum
 from typing import Any, Literal
 
 from edgar_sec.domain.document.models import DocumentLocator
-from edgar_sec.domain.document.route import DocumentRoute, content_route, document_route
+from edgar_sec.domain.document.route import DocumentRoute, document_route
+from edgar_sec.domain.identity import AccessionNumber
 
 FetchStatus = Literal["ok", "missing", "failed"]
 
@@ -60,96 +61,146 @@ class AcquisitionSource:
     reference: str
 
 
-@dataclass(frozen=True, slots=True)
-class SgmlSubDocumentHeader:
-    """One SGML sub-document's header facts, without its payload.
+class SubmissionFormat(StrEnum):
+    """What kind of response one acquisition resolved."""
 
-    Observed facts only: nothing here asserts the sub-document is a filing's primary
-    document, or that any sibling is an exhibit.
-    """
-
-    sequence: int | None
-    doc_type: str
-    filename: str
-    description: str | None
+    #: A single document served at its own URL.
+    DIRECT = "direct"
+    #: An SGML submission envelope holding several documents.
+    SGML = "sgml"
 
 
 @dataclass(frozen=True, slots=True)
-class SgmlEnvelopeResolution:
-    """The selected sub-document of an SGML envelope, plus its siblings.
+class SubmissionDocument:
+    """One document known inside an acquired submission, described but not loaded.
 
-    ``siblings`` excludes the selected document and keeps envelope order. No sibling
-    carries bytes, so resolving one document never materializes a whole submission.
+    Observed header facts only, and no body: nothing here asserts the document is a
+    filing's primary, or that any sibling is an exhibit.
     """
 
-    selected: SgmlSubDocumentHeader
-    siblings: tuple[SgmlSubDocumentHeader, ...]
-
-
-@dataclass(frozen=True, slots=True)
-class AcquiredDocument:
-    """One requested locator's payload, and how it resolved.
-
-    Carries no source envelope: that spans the whole submission, and only the selected
-    sub-document is needed.
-    """
-
-    locator: DocumentLocator
-    payload: bytes
+    document_path: str | None
     content_route: DocumentRoute
+    sequence: int | None = None
+    doc_type: str | None = None
+    description: str | None = None
+
+
+def describe_submission_document(
+    *,
+    document_path: str | None,
+    content_route: DocumentRoute,
+    sequence: int | None = None,
+    doc_type: str | None = None,
+    description: str | None = None,
+) -> SubmissionDocument:
+    """Normalize one observed header into a descriptor.
+
+    An absent filename is recorded as absent rather than guessed, and the caller's
+    route is preserved: deciding a route from content is a separate decision.
+    """
+    return SubmissionDocument(
+        document_path=document_path.strip() if document_path else None,
+        content_route=content_route,
+        sequence=sequence,
+        doc_type=doc_type,
+        description=description,
+    )
+
+
+@dataclass(frozen=True, slots=True)
+class AcquiredSubmission:
+    """One successful acquisition, scoped to the accession its locator names.
+
+    Every known document is described and exactly one body is loaded. No full source
+    envelope is retained; ``selected_index`` is the only link to the loaded body.
+    """
+
+    requested_locator: DocumentLocator
+    source_format: SubmissionFormat
+    documents: tuple[SubmissionDocument, ...]
+    selected_index: int
+    selected_payload: bytes
     source: AcquisitionSource | None = None
-    envelope: SgmlEnvelopeResolution | None = None
+
+    def __post_init__(self) -> None:
+        if not self.documents:
+            raise ValueError("an acquired submission must describe a document")
+        if not 0 <= self.selected_index < len(self.documents):
+            raise ValueError("selected_index names no described document")
+        if self.source_format is SubmissionFormat.DIRECT and (
+            len(self.documents) != 1 or self.selected_index != 0
+        ):
+            raise ValueError("a direct acquisition describes exactly one document")
+
+    @property
+    def accession(self) -> AccessionNumber:
+        return self.requested_locator.accession
 
     @property
     def document_locator_key(self) -> str:
         """The requested document's identity, never the acquired source's."""
-        return self.locator.document_locator_key
+        return self.requested_locator.document_locator_key
+
+    @property
+    def selected_document(self) -> SubmissionDocument:
+        return self.documents[self.selected_index]
+
+
+def direct_acquisition(
+    locator: DocumentLocator,
+    payload: bytes,
+    *,
+    source: AcquisitionSource | None = None,
+) -> AcquiredSubmission:
+    """Describe a document served at its own URL, with no sibling to report."""
+    return AcquiredSubmission(
+        requested_locator=locator,
+        source_format=SubmissionFormat.DIRECT,
+        documents=(
+            describe_submission_document(
+                document_path=locator.document_path,
+                content_route=document_route(locator.document_path),
+            ),
+        ),
+        selected_index=0,
+        selected_payload=payload,
+        source=source,
+    )
 
 
 @dataclass(frozen=True, slots=True)
 class FetchResult:
     """What one acquisition attempt produced.
 
-    ``source_payload`` carries the PEM-stripped SGML bundle when the payload was
-            selected *from* an envelope, so in-bundle exhibits resolve without a refetch.
+    ``source_payload`` carries the PEM-stripped SGML bundle when the document was
+            selected *from* an envelope. It stays transport data, never model state.
     """
 
     locator: DocumentLocator
-    payload: bytes | None
     status: FetchStatus
+    acquired: AcquiredSubmission | None = None
     error: str | None = None
     source_payload: bytes | None = None
-    source: AcquisitionSource | None = None
-    envelope: SgmlEnvelopeResolution | None = None
+
+    def __post_init__(self) -> None:
+        succeeded = self.status == "ok"
+        if succeeded and self.acquired is None:
+            raise ValueError("an ok fetch must carry an acquired submission")
+        if not succeeded and self.acquired is not None:
+            raise ValueError("an unsuccessful fetch carries no acquired submission")
+        if (
+            self.acquired is not None
+            and self.acquired.requested_locator != self.locator
+        ):
+            raise ValueError("an acquired submission must name the requested locator")
 
     @property
     def ok(self) -> bool:
-        return self.status == "ok" and self.payload is not None
+        return self.status == "ok" and self.acquired is not None
 
     @property
     def byte_size(self) -> int:
-        return 0 if self.payload is None else len(self.payload)
-
-    @property
-    def acquired(self) -> AcquiredDocument | None:
-        """This fetch as an acquired document, or ``None`` when it did not succeed.
-
-        The route follows the bytes: a selected sub-document carries its own filename.
-        """
-        if self.payload is None or self.status != "ok":
-            return None
-        route = (
-            content_route(self.envelope.selected.filename)
-            if self.envelope is not None
-            else document_route(self.locator.document_path)
-        )
-        return AcquiredDocument(
-            locator=self.locator,
-            payload=self.payload,
-            content_route=route,
-            source=self.source,
-            envelope=self.envelope,
-        )
+        return 0 if self.acquired is None else len(self.acquired.selected_payload)
 
 
 @dataclass(frozen=True, slots=True)
@@ -165,13 +216,15 @@ class AcquisitionFailure:
 
 
 __all__ = [
-    "AcquiredDocument",
+    "AcquiredSubmission",
     "AcquisitionFailure",
     "AcquisitionSource",
     "AcquisitionSourceKind",
     "FetchResult",
     "FetchStatus",
-    "SgmlEnvelopeResolution",
-    "SgmlSubDocumentHeader",
+    "SubmissionDocument",
+    "SubmissionFormat",
+    "describe_submission_document",
+    "direct_acquisition",
     "is_stub_document_path",
 ]

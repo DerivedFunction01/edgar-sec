@@ -482,7 +482,7 @@ To prevent false-positive bundle promotions on company names and ticker prefixes
     1. Full Formal: `(unit[-_]?)?hundred(?:[-_]?(?:and[-_]?)?compound)?` (`one-hundred-forty-four`, `hundred-forty-four`)
     2. Colloquial (omitting 'hundred'): `unit[-_]?compound` (`one-forty-four` for 144, `four-twenty-five` for 425)
     3. Digit-Hybrid / Component: `unit[-_]?two_digit` (`four24` for 424, `four25` for 425)
-- **Dynamic Family Form Token Pattern**: Generated and memoized on-demand per canonical form family via `@lru_cache(maxsize=64)` (e.g. `get_primary_form_token_pattern(form)` compiling `aliases_for_family(family)` + `{"form", "report", "annual", "quarterly"}`) using `build_alternation`. For single-form plans (350k filings of 10-K), this compiles a compact 6-token pattern once on doc 1 with 100% cache hits, avoiding giant monolithic global regexes.
+- **Dynamic Family Form Token Pattern**: Generated and memoized on-demand per canonical form family via `@lru_cache(maxsize=64)` (e.g. `primary_form_token_pattern(form)` compiling `aliases_for_family(family)` + `{"form", "report", "annual", "quarterly"}`) using `build_alternation`. For single-form plans (350k filings of 10-K), this compiles a compact 6-token pattern once on doc 1 with 100% cache hits, avoiding giant monolithic global regexes.
 
 #### 2. Bundle Call Minimization (99.98% Reduction):
 1. **Temporal Gating**: Restricted strictly to `2000-01-01 <= filing_date < 2005-01-01` (1993–1999 are already bundles; 2005+ has 0.0% inversions).

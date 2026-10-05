@@ -13,10 +13,12 @@ import os
 from collections import Counter
 from collections.abc import Callable, Mapping, Sequence
 from concurrent.futures import ProcessPoolExecutor
-from dataclasses import dataclass
+from dataclasses import dataclass, replace
+from datetime import date
 from pathlib import Path
 from typing import Any
 
+from edgar_sec.domain.document.acquisition import AcquiredSubmission
 from edgar_sec.domain.document.models import (
     DocumentLocator,
     FilingOccurrence,
@@ -33,6 +35,10 @@ from edgar_sec.foundation.runtime.resources import (
 from edgar_sec.foundation.runtime.settings import resolve_runtime_settings
 from edgar_sec.infra.storage.atomic import atomic_write_json
 from edgar_sec.infra.storage.parquet import StagedParquetWriter, read_parquet_table
+from edgar_sec.pipelines.document_storage.candidates import (
+    CandidateDecision,
+    candidate_for,
+)
 from edgar_sec.pipelines.document_storage.checkpoint import (
     DOCUMENT_SNAPSHOT_SCHEMA,
     validate_chunk_snapshot,
@@ -71,6 +77,24 @@ class DelegationTarget:
 
 
 @dataclass(frozen=True, slots=True)
+class FilingWork:
+    """One requested locator's pass through acquisition and normalization.
+
+    Role-neutral: it claims no primary/exhibit role, so ``candidate`` stays a request to
+    inspect. The transport envelope is deliberately absent; only the loaded body travels.
+    """
+
+    locator: DocumentLocator
+    occurrences: tuple[FilingOccurrence, ...]
+    filing_date: date | None
+    candidate: CandidateDecision
+    status: str = ""
+    error: str | None = None
+    acquired: AcquiredSubmission | None = None
+    processed: ProcessedDocument | None = None
+
+
+@dataclass(frozen=True, slots=True)
 class ChunkResult:
     """Outcome of processing one chunk."""
 
@@ -84,6 +108,8 @@ class ChunkResult:
     occurrences: int
     processor_fingerprint: str
     payload_sha256: str
+    candidate_eligible_count: int = 0
+    bundle_candidate_count: int = 0
     delegations: tuple[DelegationTarget, ...] = ()
 
     @property
@@ -125,6 +151,53 @@ def _unique_locators(
         seen.add(locator.document_locator_key)
         unique.append(locator)
     return unique
+
+
+def _occurrences_by_key(
+    occurrences: Sequence[FilingOccurrence],
+) -> dict[str, list[FilingOccurrence]]:
+    """Group provenance rows by the locator key they reference."""
+    by_key: dict[str, list[FilingOccurrence]] = {}
+    for occurrence in occurrences:
+        by_key.setdefault(occurrence.doc_id, []).append(occurrence)
+    return by_key
+
+
+def _filing_work(
+    locator: DocumentLocator, by_key: Mapping[str, list[FilingOccurrence]]
+) -> FilingWork:
+    """Build one work record, so the candidate gate sees the catalog's filing date."""
+    occurrences = by_key.get(locator.document_locator_key) or [
+        _synthetic_occurrence(locator)
+    ]
+    filing_date, candidate = candidate_for(locator, occurrences)
+    return FilingWork(
+        locator=locator,
+        occurrences=tuple(occurrences),
+        filing_date=filing_date,
+        candidate=candidate,
+    )
+
+
+def candidate_summary(
+    locators: Sequence[DocumentLocator],
+    occurrences: Sequence[FilingOccurrence],
+) -> tuple[int, int]:
+    """Return ``(window_eligible, bundle_candidate)`` over one chunk's requested locators.
+
+    Derived from the plan's own inputs rather than from a checkpoint, so a resumed chunk
+    reports what a fresh one would; co-filer occurrences count on their shared locator once.
+    """
+    by_key = _occurrences_by_key(occurrences)
+    eligible = 0
+    candidates = 0
+    for locator in _unique_locators(locators):
+        decision = candidate_for(
+            locator, by_key.get(locator.document_locator_key) or ()
+        )[1]
+        eligible += int(decision.window_eligible)
+        candidates += int(decision.is_bundle_candidate)
+    return eligible, candidates
 
 
 def _build_snapshot_batch(
@@ -211,12 +284,12 @@ def process_chunk(
     output_path = chunk_checkpoint_path(chunks_dir, chunk_id)
     unique = _unique_locators(locators)
 
-    by_key: dict[str, list[FilingOccurrence]] = {}
-    for occurrence in occurrences:
-        by_key.setdefault(occurrence.doc_id, []).append(occurrence)
+    by_key = _occurrences_by_key(occurrences)
 
     expanded_occurrences = _expand_occurrences(unique, by_key, {})
     total_occurrences = len(expanded_occurrences)
+    candidate_eligible = 0
+    bundle_candidates = 0
 
     delegations_file = output_path.with_name(f"{output_path.name}.tmp.delegations.json")
     delegations: list[DelegationTarget] = []
@@ -242,49 +315,56 @@ def process_chunk(
         existing_ids = writer.get_existing_ids()
 
         for index, locator in enumerate(unique):
-            occ_list = by_key.get(locator.document_locator_key)
-            if not occ_list:
-                occ_list = [_synthetic_occurrence(locator)]
+            work = _filing_work(locator, by_key)
+            candidate_eligible += int(work.candidate.window_eligible)
+            bundle_candidates += int(work.candidate.is_bundle_candidate)
 
             if existing_ids and all(
-                occ.occurrence_id in existing_ids for occ in occ_list
+                occ.occurrence_id in existing_ids for occ in work.occurrences
             ):
                 continue
 
-            result = fetcher.fetch(locator)
-            if not result.ok:
+            result = fetcher.fetch(work.locator)
+            work = replace(
+                work,
+                status=result.status,
+                error=result.error,
+                acquired=result.acquired,
+            )
+            acquired = work.acquired
+            if acquired is None:
                 batch = _build_snapshot_batch(
-                    occ_list,
+                    work.occurrences,
                     raw_payload=b"",
                     norm_text="",
                     status="missing",
-                    error=result.error or "payload unavailable",
+                    error=work.error or "payload unavailable",
                 )
                 writer.write_batch(batch)
                 continue
 
-            acquired = result.acquired
-            assert acquired is not None  # guaranteed by result.ok
             # The result also holds the source envelope, which spans the whole submission.
             # Releasing it here keeps one envelope out of memory for the normalize call.
             del result
             if payload_sink is not None:
-                payload_sink(locator, acquired.payload)
+                payload_sink(locator, acquired.selected_payload)
 
             try:
                 processed: ProcessedDocument = effective_processor.process(acquired)
             except Exception as exc:  # noqa: BLE001 - one bad document is not a bad chunk
                 log.warning("processing failed for %s: %s", locator.document_path, exc)
+                work = replace(work, status="failed", error=str(exc))
                 batch = _build_snapshot_batch(
-                    occ_list,
+                    work.occurrences,
                     raw_payload=b"",
                     norm_text="",
                     status="failed",
-                    error=str(exc),
+                    error=work.error,
                 )
                 writer.write_batch(batch)
                 continue
 
+            work = replace(work, processed=processed, status="ok")
             decision = processed.decision
             if decision is not None and decision.target_exhibit:
                 target = DelegationTarget(
@@ -310,10 +390,10 @@ def process_chunk(
                     pass
 
             batch = _build_snapshot_batch(
-                occ_list,
+                work.occurrences,
                 raw_payload=processed.payload,
                 norm_text=processed.text,
-                status="ok",
+                status=work.status,
                 error=None,
             )
             writer.write_batch(batch)
@@ -362,6 +442,8 @@ def process_chunk(
         payload_sha256=sha256_text(
             f"{chunk_id}:{normalized}:{failed}:{missing}:{len(unique)}"
         ),
+        candidate_eligible_count=candidate_eligible,
+        bundle_candidate_count=bundle_candidates,
         delegations=tuple(delegations),
     )
 
@@ -496,19 +578,21 @@ def process_chunks(
     results: dict[str, ChunkResult] = {}
 
     for chunk_id in chunk_ids:
+        locators = locators_by_chunk.get(chunk_id, ())
         if is_chunk_complete(chunks_dir, chunk_id, processor_fingerprint=fingerprint):
             results[chunk_id] = _skipped_result(
                 chunk_id,
                 chunks_dir,
                 fingerprint,
-                len(locators_by_chunk.get(chunk_id, ())),
+                len(locators),
+                candidate_summary(locators, occurrences_by_chunk.get(chunk_id, ())),
             )
             continue
         pending.append(
             {
                 "chunk_id": chunk_id,
                 "worker_id": f"worker-{os.getpid()}",
-                "locators": list(locators_by_chunk.get(chunk_id, ())),
+                "locators": list(locators),
                 "occurrences": list(occurrences_by_chunk.get(chunk_id, ())),
                 "fetcher": fetcher,
                 "processor": effective_processor,
@@ -548,7 +632,11 @@ def process_chunks(
 
 
 def _skipped_result(
-    chunk_id: str, chunks_dir: Path, fingerprint: str, document_count: int
+    chunk_id: str,
+    chunks_dir: Path,
+    fingerprint: str,
+    document_count: int,
+    candidate_counts: tuple[int, int],
 ) -> ChunkResult:
     path = chunk_checkpoint_path(chunks_dir, chunk_id)
     meta = validate_chunk_snapshot(path)
@@ -563,6 +651,8 @@ def _skipped_result(
         occurrences=int(meta["num_rows"]),
         processor_fingerprint=fingerprint,
         payload_sha256=sha256_text(f"{chunk_id}:skipped"),
+        candidate_eligible_count=candidate_counts[0],
+        bundle_candidate_count=candidate_counts[1],
     )
 
 
@@ -572,6 +662,8 @@ __all__ = [
     "ChunkError",
     "ChunkResult",
     "DelegationTarget",
+    "FilingWork",
+    "candidate_summary",
     "chunk_fingerprint",
     "is_chunk_complete",
     "process_chunk",
