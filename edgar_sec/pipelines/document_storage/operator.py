@@ -38,8 +38,10 @@ from edgar_sec.pipelines.document_storage.processor import (
 )
 from edgar_sec.pipelines.document_storage.worker import (
     ChunkResult,
+    process_chunk_stream,
     process_chunks,
 )
+from edgar_sec.pipelines.document_storage.work_order import WorkOrder
 
 log = logging.getLogger("document_storage.operator")
 
@@ -91,6 +93,15 @@ class RunReport:
         """The subset that also reads as a statutory exhibit rather than the form."""
         return sum(chunk.bundle_candidate_count for chunk in self.chunks)
 
+    @property
+    def candidate_date_unresolved_count(self) -> int:
+        """Requested locators with no agreed parseable filing date.
+
+        Reported so a fail-closed date reads as a measured condition rather than as an
+        unexplained zero in the eligible count.
+        """
+        return sum(chunk.candidate_date_unresolved_count for chunk in self.chunks)
+
     def to_dict(self) -> dict[str, Any]:
         """Render the report for a manifest or a CLI summary."""
         return {
@@ -103,6 +114,7 @@ class RunReport:
             "failed_documents": self.failed_documents,
             "candidate_eligible_count": self.candidate_eligible_count,
             "bundle_candidate_count": self.bundle_candidate_count,
+            "candidate_date_unresolved_count": self.candidate_date_unresolved_count,
             "exhibits_resolved": len(self.exhibits),
             "started_at": self.started_at,
             "finished_at": self.finished_at,
@@ -172,9 +184,10 @@ def run_document_storage(
     *,
     paths: ProjectPaths,
     run_id: str,
-    chunk_ids: Sequence[str],
-    locators_by_chunk: Mapping[str, Sequence[DocumentLocator]],
-    occurrences_by_chunk: Mapping[str, Sequence[FilingOccurrence]],
+    chunk_ids: Sequence[str] = (),
+    locators_by_chunk: Mapping[str, Sequence[DocumentLocator]] | None = None,
+    occurrences_by_chunk: Mapping[str, Sequence[FilingOccurrence]] | None = None,
+    work_order: WorkOrder | None = None,
     mode: FetchMode = "fixture",
     fixture_id: str | Sequence[str] | None = None,
     processor: DocumentProcessor | None = None,
@@ -185,9 +198,18 @@ def run_document_storage(
     broker_socket: str | Path | None = None,
     progress: Callable[[dict[str, Any]], None] | None = None,
 ) -> RunReport:
-    """Run the full document-storage pipeline for one set of chunks."""
+    """Run the full document-storage pipeline for one set of chunks.
+
+    Exactly one input mode applies: a replayable ``work_order`` streams its chunks, or
+    explicit chunk ids carry the mappings.
+    """
     started_at = datetime.now(UTC).isoformat(timespec="seconds")
-    if not chunk_ids:
+    streaming = work_order is not None
+    if streaming:
+        if work_order.chunk_count < 1:
+            raise OperatorError("work order yields no chunks")
+        _refuse_existing_run(paths, run_id)
+    elif not chunk_ids:
         raise OperatorError("at least one chunk id is required")
 
     effective_processor = processor if processor is not None else FilingProcessor()
@@ -207,17 +229,34 @@ def run_document_storage(
     chunks_dir.mkdir(parents=True, exist_ok=True)
 
     if progress is not None:
-        progress({"stage": "chunks", "run_id": run_id, "count": len(chunk_ids)})
-    chunk_results = process_chunks(
-        chunk_ids,
-        locators_by_chunk,
-        occurrences_by_chunk,
-        fetcher=active_fetcher,
-        processor=effective_processor,
-        chunks_dir=chunks_dir,
-        workers=workers,
-        profile=profile,
-    )
+        progress(
+            {
+                "stage": "chunks",
+                "run_id": run_id,
+                "count": work_order.chunk_count if streaming else len(chunk_ids),
+            }
+        )
+    if streaming:
+        assert work_order is not None
+        chunk_results = process_chunk_stream(
+            work_order,
+            fetcher=active_fetcher,
+            processor=effective_processor,
+            chunks_dir=chunks_dir,
+            workers=workers,
+            profile=profile,
+        )
+    else:
+        chunk_results = process_chunks(
+            chunk_ids,
+            locators_by_chunk or {},
+            occurrences_by_chunk or {},
+            fetcher=active_fetcher,
+            processor=effective_processor,
+            chunks_dir=chunks_dir,
+            workers=workers,
+            profile=profile,
+        )
     failed_chunks = [result.chunk_id for result in chunk_results if not result.ok]
     if failed_chunks and not _partial_ok(chunk_results):
         raise OperatorError(
@@ -226,13 +265,23 @@ def run_document_storage(
 
     if progress is not None:
         progress({"stage": "delegation", "run_id": run_id})
-    exhibits = _run_delegation(
-        chunk_results,
-        locators_by_chunk,
-        fetcher=active_fetcher,
-        processor=effective_processor,
-        chunks_dir=chunks_dir,
-    )
+    if streaming:
+        assert work_order is not None
+        exhibits = _run_delegation_from_work_order(
+            chunk_results,
+            work_order,
+            fetcher=active_fetcher,
+            processor=effective_processor,
+            chunks_dir=chunks_dir,
+        )
+    else:
+        exhibits = _run_delegation(
+            chunk_results,
+            locators_by_chunk or {},
+            fetcher=active_fetcher,
+            processor=effective_processor,
+            chunks_dir=chunks_dir,
+        )
 
     if progress is not None:
         progress({"stage": "publish", "run_id": run_id})
@@ -250,6 +299,20 @@ def run_document_storage(
         started_at=started_at,
         finished_at=finished_at,
     )
+
+
+def _refuse_existing_run(paths: ProjectPaths, run_id: str) -> None:
+    """Refuse a work-order run whose run directory already holds state.
+
+    Nothing is deleted; reusing an interrupted run belongs to a resumability contract
+    this path does not make.
+    """
+    run_dir = paths.run_dir(run_id)
+    if run_dir.exists():
+        raise OperatorError(
+            f"run directory already exists: {run_dir}; "
+            "use a new run id rather than reusing a catalog plan run"
+        )
 
 
 def _partial_ok(results: Sequence[ChunkResult]) -> bool:
@@ -275,6 +338,50 @@ def _run_delegation(
         for locators in locators_by_chunk.values()
         for locator in locators
     }
+    return _publish_delegations(
+        chunk_results,
+        by_key,
+        fetcher=fetcher,
+        processor=processor,
+        chunks_dir=chunks_dir,
+    )
+
+
+def _run_delegation_from_work_order(
+    chunk_results: Sequence[ChunkResult],
+    work_order: WorkOrder,
+    *,
+    fetcher: Any,
+    processor: DocumentProcessor,
+    chunks_dir: Path,
+) -> tuple[DelegatedExhibit, ...]:
+    """Resolve delegations by re-reading only the locators a worker asked for.
+
+    A work order is replayable precisely so this pass does not rebuild the plan-wide
+    locator mapping the mapping path can afford.
+    """
+    wanted = [
+        target.document_locator_key
+        for result in chunk_results
+        for target in result.delegations
+    ]
+    return _publish_delegations(
+        chunk_results,
+        work_order.locators_by_key(wanted),
+        fetcher=fetcher,
+        processor=processor,
+        chunks_dir=chunks_dir,
+    )
+
+
+def _publish_delegations(
+    chunk_results: Sequence[ChunkResult],
+    by_key: Mapping[str, DocumentLocator],
+    *,
+    fetcher: Any,
+    processor: DocumentProcessor,
+    chunks_dir: Path,
+) -> tuple[DelegatedExhibit, ...]:
     resolved: dict[str, DelegatedExhibit] = {}
     for result in sorted(chunk_results, key=lambda item: item.chunk_id):
         for target in result.delegations:

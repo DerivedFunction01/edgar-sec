@@ -39,7 +39,7 @@ def _build_parser() -> argparse.ArgumentParser:
     sub = parser.add_subparsers(dest="command", required=True)
 
     run = sub.add_parser("run", help="acquire and publish a snapshot from a fixture")
-    run.add_argument("--plan", required=True, help="path to a chunk plan JSON file")
+    _add_plan_input(run)
     run.add_argument(
         "--fixture",
         required=True,
@@ -101,7 +101,7 @@ def _build_parser() -> argparse.ArgumentParser:
     )
 
     fill = sub.add_parser("fill", help="fetch missing raw payloads into a fixture")
-    fill.add_argument("--plan", required=True, help="path to a target plan JSON file")
+    _add_plan_input(fill)
     fill.add_argument("--fixture", required=True, help="fixture id to create or extend")
     fill.add_argument("--workers", type=int, default=None, help="fetch worker count")
     fill.add_argument("--limit", type=int, default=None, help="cap target locators")
@@ -112,10 +112,33 @@ def _build_parser() -> argparse.ArgumentParser:
     return parser
 
 
+def _add_plan_input(parser: argparse.ArgumentParser) -> None:
+    """Attach the two mutually exclusive plan inputs.
+
+    ``--plan`` is a hand-authored JSON plan; ``--catalog-plan`` is a published catalog
+    bundle that is validated and streamed. Separate modes, not one option with two meanings.
+    """
+    group = parser.add_mutually_exclusive_group(required=True)
+    group.add_argument("--plan", help="path to a hand-authored chunk plan JSON file")
+    group.add_argument(
+        "--catalog-plan",
+        dest="catalog_plan",
+        help="path to a published filing_catalog plan bundle directory",
+    )
+
+
 def _load_plan(path: Path) -> dict[str, Any]:
     if not path.is_file():
         raise FileNotFoundError(f"plan not found: {path}")
     return json.loads(path.read_text(encoding="utf-8"))
+
+
+def _open_catalog_plan(path: str) -> Any:
+    """Validate a published catalog bundle and resolve its chunk size."""
+    from edgar_sec.foundation.runtime.settings import resolve_runtime_settings
+    from edgar_sec.pipelines.document_storage.catalog_plan import CatalogPlan
+
+    return CatalogPlan(path, chunk_size=resolve_runtime_settings().default_chunk_size)
 
 
 def _plan_to_inputs(
@@ -163,6 +186,37 @@ def _cmd_run(args: argparse.Namespace, paths: ProjectPaths) -> int:
         run_document_storage,
     )
 
+    work_order = None
+    if getattr(args, "catalog_plan", None):
+        from edgar_sec.pipelines.document_storage.fixture_operator import (
+            verify_fixture_lineage,
+        )
+
+        work_order = _open_catalog_plan(args.catalog_plan)
+        if args.limit is not None and args.limit > 0:
+            print(
+                "--limit applies to a JSON plan; a catalog plan is run whole",
+                file=sys.stderr,
+            )
+            return 2
+        meta = work_order.metadata
+        for fixture_id in args.fixture:
+            verify_fixture_lineage(
+                paths,
+                fixture_id,
+                target_reference=meta.plan_id,
+                target_fingerprint=meta.selection_fingerprint,
+            )
+        report = run_document_storage(
+            paths=paths,
+            run_id=args.run_id or new_run_id(),
+            work_order=work_order,
+            mode="fixture",
+            fixture_id=args.fixture,
+            workers=args.workers,
+        )
+        return _print_run_report(report, args.json)
+
     plan = _load_plan(Path(args.plan))
     chunk_ids, locators_by_chunk, occurrences_by_chunk = _plan_to_inputs(
         plan, args.limit
@@ -181,7 +235,11 @@ def _cmd_run(args: argparse.Namespace, paths: ProjectPaths) -> int:
         fixture_id=args.fixture,
         workers=args.workers,
     )
-    if args.json:
+    return _print_run_report(report, args.json)
+
+
+def _print_run_report(report: Any, as_json: bool) -> int:
+    if as_json:
         print(json.dumps(report.to_dict(), indent=2, sort_keys=True))
     else:
         print(f"run           {report.run_id}")
@@ -193,6 +251,7 @@ def _cmd_run(args: argparse.Namespace, paths: ProjectPaths) -> int:
         print(f"failed        {report.failed_documents}")
         print(f"eligible      {report.candidate_eligible_count}")
         print(f"candidates    {report.bundle_candidate_count}")
+        print(f"undated       {report.candidate_date_unresolved_count}")
         print(f"exhibits      {len(report.exhibits)}")
         for warning in report.merge.warnings:
             print(f"warning       {warning}")
@@ -201,6 +260,19 @@ def _cmd_run(args: argparse.Namespace, paths: ProjectPaths) -> int:
 
 def _cmd_fill(args: argparse.Namespace, paths: ProjectPaths) -> int:
     from edgar_sec.pipelines.document_storage.fixture_operator import fill_fixture
+
+    if getattr(args, "catalog_plan", None):
+        plan = _open_catalog_plan(args.catalog_plan)
+        report = fill_fixture(
+            paths=paths,
+            fixture_id=args.fixture,
+            locator_source=plan.iter_locators(),
+            limit=args.limit,
+            workers=args.workers,
+            target_reference=plan.metadata.plan_id,
+            target_fingerprint=plan.metadata.selection_fingerprint,
+        )
+        return _print_fill_report(report, args.json)
 
     plan = _load_plan(Path(args.plan))
     _chunk_ids, locators_by_chunk, _occurrences = _plan_to_inputs(plan, None)
@@ -213,7 +285,11 @@ def _cmd_fill(args: argparse.Namespace, paths: ProjectPaths) -> int:
         workers=args.workers,
         target_reference=args.plan,
     )
-    if args.json:
+    return _print_fill_report(report, args.json)
+
+
+def _print_fill_report(report: Any, as_json: bool) -> int:
+    if as_json:
         print(json.dumps(report.to_dict(), indent=2, sort_keys=True))
     else:
         print(f"fixture       {report.fixture_id}")
@@ -430,6 +506,7 @@ def _interactive(paths: ProjectPaths) -> int:
                     _cmd_fill(
                         argparse.Namespace(
                             plan=plan_path,
+                            catalog_plan=None,
                             fixture=fixture_id,
                             workers=None,
                             limit=None,
@@ -458,6 +535,7 @@ def _interactive(paths: ProjectPaths) -> int:
                     _cmd_run(
                         argparse.Namespace(
                             plan=plan_path,
+                            catalog_plan=None,
                             fixture=[fixtures[index].fixture_id],
                             run_id=None,
                             workers=None,

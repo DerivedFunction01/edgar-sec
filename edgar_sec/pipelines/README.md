@@ -98,6 +98,8 @@ lower layers it depends on.
 | `document_storage/fixture_operator.py` | Fixture discovery and raw-payload fill operations. |
 | `document_storage/worker.py` | Chunk processing, the process pool, and the checkpoint-reuse rule. |
 | `document_storage/candidates.py` | The advisory pre-2005 exhibit-candidate gate and its reported population. |
+| `document_storage/catalog_plan.py` | Validation and replayable streaming reads of a published `filing_catalog` plan bundle. |
+| `document_storage/work_order.py` | `ChunkInput` and the `WorkOrder` seam between an input plan and chunk execution. |
 | `document_storage/fetching.py` | `ArchiveFetcher` protocol and the fixture / broker / live backends. |
 | `document_storage/processor.py` | `FilingProcessor`, `PassThroughProcessor`, and the processor fingerprint. |
 | `document_storage/delegation.py` | The exhibit second pass for stub primaries. |

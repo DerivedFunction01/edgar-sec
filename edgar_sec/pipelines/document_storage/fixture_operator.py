@@ -2,9 +2,10 @@
 
 from __future__ import annotations
 
+import itertools
 import json
 import re
-from collections.abc import Sequence
+from collections.abc import Iterable, Sequence
 from concurrent.futures import FIRST_COMPLETED, Future, ThreadPoolExecutor, wait
 from dataclasses import dataclass
 from datetime import UTC, datetime
@@ -180,22 +181,25 @@ def fill_fixture(
     *,
     paths: ProjectPaths,
     fixture_id: str,
-    locators: Sequence[DocumentLocator],
+    locators: Sequence[DocumentLocator] | None = None,
+    locator_source: Iterable[DocumentLocator] | None = None,
     limit: int | None = None,
     workers: int | None = None,
     http_client: Any | None = None,
     target_reference: str | None = None,
+    target_fingerprint: str | None = None,
 ) -> FixtureFillReport:
-    """Fetch missing raw payloads with shared HTTP pacing and one SQLite writer."""
+    """Fetch missing raw payloads with shared HTTP pacing and one SQLite writer.
+
+    ``locator_source`` is read lazily with at most ``workers`` fetches in flight; a
+    caller holding the selection's identity passes ``target_fingerprint``.
+    """
     fixture_id = validate_fixture_id(fixture_id)
-    unique: list[DocumentLocator] = []
-    seen: set[str] = set()
-    for locator in locators:
-        if locator.document_locator_key not in seen:
-            seen.add(locator.document_locator_key)
-            unique.append(locator)
+    source: Iterable[DocumentLocator] = (
+        locator_source if locator_source is not None else (locators or ())
+    )
     if limit is not None and limit > 0:
-        unique = unique[:limit]
+        source = itertools.islice(source, limit)
 
     worker_count = derive_resources().threads if workers is None else workers
     if worker_count < 1:
@@ -204,9 +208,6 @@ def fill_fixture(
     database = paths.fixture_db_path(fixture_id)
     manifest_path = paths.fixture_manifest_path(fixture_id)
     now = datetime.now(UTC).isoformat(timespec="seconds")
-    fingerprint = sha256_text(
-        canonical_json([locator.document_locator_key for locator in unique])
-    )
     client = http_client if http_client is not None else _make_http_client()
     fetcher = LiveArchiveFetcher(client)
     failures: list[dict[str, str]] = []
@@ -215,32 +216,32 @@ def fill_fixture(
     staged_forms: dict[str, str] = {}
     already_present = 0
     newly_written = 0
+    requested = 0
+    seen: set[str] = set()
+    keys: list[str] = []
+    backfilled = 0
+
+    def flush_staged(store: FixtureStore) -> None:
+        nonlocal newly_written
+        if staged:
+            newly_written += store.put_many(staged)
+            staged.clear()
+        store.put_documents(staged_meta, staged_forms)
+        staged_meta.clear()
+        staged_forms.clear()
 
     try:
         with FixtureStore(database) as store:
-            pending: list[DocumentLocator] = []
             to_backfill: list[DocumentLocator] = []
-            for locator in unique:
-                key = locator.document_locator_key
-                if store.has(key):
-                    already_present += 1
-                    if not store.has_document(key):
-                        to_backfill.append(locator)
-                else:
-                    pending.append(locator)
-            backfilled = _backfill_document_metadata(store, to_backfill, failures)
 
             def fetch(locator: DocumentLocator) -> tuple[DocumentLocator, Any]:
                 return locator, fetcher.fetch(locator)
 
             with ThreadPoolExecutor(max_workers=worker_count) as pool:
-                iterator = iter(pending)
                 active: dict[Future[tuple[DocumentLocator, Any]], DocumentLocator] = {}
-                for _ in range(min(worker_count, len(pending))):
-                    locator = next(iterator)
-                    active[pool.submit(fetch, locator)] = locator
 
-                while active:
+                def drain() -> None:
+                    nonlocal backfilled
                     completed, _ = wait(active, return_when=FIRST_COMPLETED)
                     for future in completed:
                         locator = active.pop(future)
@@ -274,23 +275,39 @@ def fill_fixture(
                                 }
                             )
                         if len(staged) >= _WRITE_BATCH_SIZE:
-                            newly_written += store.put_many(staged)
-                            staged.clear()
-                            store.put_documents(staged_meta, staged_forms)
-                            staged_meta.clear()
-                            staged_forms.clear()
-                        try:
-                            next_locator = next(iterator)
-                        except StopIteration:
-                            continue
-                        active[pool.submit(fetch, next_locator)] = next_locator
-            if staged:
-                newly_written += store.put_many(staged)
-                staged.clear()
-            store.put_documents(staged_meta, staged_forms)
-            staged_meta.clear()
-            staged_forms.clear()
+                            flush_staged(store)
+                    if len(to_backfill) >= _WRITE_BATCH_SIZE:
+                        backfilled += _backfill_document_metadata(
+                            store, to_backfill, failures
+                        )
+                        to_backfill.clear()
+
+                for locator in source:
+                    key = locator.document_locator_key
+                    if key in seen:
+                        continue
+                    seen.add(key)
+                    if target_fingerprint is None:
+                        keys.append(key)
+                    requested += 1
+                    if store.has(key):
+                        already_present += 1
+                        if not store.has_document(key):
+                            to_backfill.append(locator)
+                        continue
+                    active[pool.submit(fetch, locator)] = locator
+                    while len(active) >= worker_count:
+                        drain()
+
+                while active:
+                    drain()
+
+            backfilled += _backfill_document_metadata(store, to_backfill, failures)
+            to_backfill.clear()
+            flush_staged(store)
             payload_count = store.count()
+
+        fingerprint = target_fingerprint or sha256_text(canonical_json(keys))
 
         prior: dict[str, Any] = {}
         if manifest_path.is_file():
@@ -312,7 +329,7 @@ def fill_fixture(
             "target_reference": Path(target_reference).name
             if target_reference
             else None,
-            "requested": len(unique),
+            "requested": requested,
             "already_present": already_present,
             "newly_written": newly_written,
             "failed": len(failures),
@@ -335,7 +352,7 @@ def fill_fixture(
 
     return FixtureFillReport(
         fixture_id=fixture_id,
-        requested=len(unique),
+        requested=requested,
         already_present=already_present,
         newly_written=newly_written,
         failed=len(failures),
@@ -345,6 +362,39 @@ def fill_fixture(
     )
 
 
+def verify_fixture_lineage(
+    paths: ProjectPaths,
+    fixture_id: str,
+    *,
+    target_reference: str,
+    target_fingerprint: str,
+) -> None:
+    """Refuse a fixture whose recorded last fill did not come from this selection.
+
+    Only the most recent fill is recorded, so what a fixture may still hold after a
+    selection changes belongs to a manifest-model change.
+    """
+    manifest_path = paths.fixture_manifest_path(validate_fixture_id(fixture_id))
+    if not manifest_path.is_file():
+        raise FixtureOperatorError(f"fixture manifest not found: {manifest_path}")
+    try:
+        manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError) as exc:
+        raise FixtureOperatorError(
+            f"invalid fixture manifest: {manifest_path}"
+        ) from exc
+    last_fill = manifest.get("last_fill")
+    if not isinstance(last_fill, dict):
+        raise FixtureOperatorError(f"fixture {fixture_id} records no last fill")
+    recorded = (last_fill.get("target_reference"), last_fill.get("target_fingerprint"))
+    if recorded != (target_reference, target_fingerprint):
+        raise FixtureOperatorError(
+            f"fixture {fixture_id} was last filled from {recorded[0]!r} "
+            f"({recorded[1]!r}), not {target_reference!r} ({target_fingerprint!r}); "
+            "refusing to replay a selection the fixture does not hold"
+        )
+
+
 __all__ = [
     "FixtureFillReport",
     "FixtureInfo",
@@ -352,4 +402,5 @@ __all__ = [
     "fill_fixture",
     "list_fixtures",
     "validate_fixture_id",
+    "verify_fixture_lineage",
 ]

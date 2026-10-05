@@ -49,6 +49,8 @@ Real-filing parity is unverified — see "Deliberate gaps".
 | `paths.py` | `DocumentStoragePaths`, the published-vs-transient split, and the artifact-name constants. |
 | `worker.py` | Chunk processing, the process pool, the checkpoint-reuse rule. |
 | `candidates.py` | The pre-2005 exhibit-candidate gate: filing-date agreement, statutory filename grammar, dynamic form-token rejection. |
+| `catalog_plan.py` | Reader for a published `filing_catalog` plan bundle: validation, then replayable streaming chunks. |
+| `work_order.py` | `ChunkInput` and the `WorkOrder` seam between an input plan and chunk execution. |
 | `fetching.py` | `ArchiveFetcher` protocol and the fixture / broker / live backends. |
 | `processor.py` | `FilingProcessor`, `PassThroughProcessor`, the processor fingerprint. |
 | `delegation.py` | The exhibit second pass for stub primaries. |
@@ -101,9 +103,33 @@ Real-filing parity is unverified — see "Deliberate gaps".
   `candidate_eligible_count` and `bundle_candidate_count` count locator work items over
   the whole requested plan — including chunks a resume skipped, whose summary is derived
   from plan inputs rather than from a checkpoint. Co-filer occurrences coalesce onto
-  their shared locator, so a locator counts once however many rows reference it. The
-  counts reach `ChunkResult`, `RunReport.to_dict()`, and the `run` summary; no manifest,
-  checkpoint, or snapshot artifact carries them.
+  their shared locator, so a locator counts once however many rows reference it.
+  `candidate_date_unresolved_count` counts requested locators with no agreed parseable
+  filing date, so a fail-closed date reads as a measured condition instead of an
+  unexplained zero. The counts reach `ChunkResult`, `RunReport.to_dict()`, and the `run`
+  summary; no manifest, checkpoint, or snapshot artifact carries them.
+- **A catalog plan bundle is an input mode, validated before anything is fetched.**
+  `--catalog-plan` reads a published `filing_catalog` bundle through `catalog_plan.py`,
+  which refuses an incomplete bundle, an unsupported `plan_schema_version`, a `plan_id`
+  that disagrees with its directory, an unknown scope, a locator-group schema that does
+  not match the scope, a missing declared partition, a count that disagrees with its
+  partition, a target row with no locator group, a locator group with no target row, and a
+  row whose derived locator key or occurrence id does not match its own fields. The
+  catalog remains the sole selection authority: storage validates and executes its rows
+  and never re-selects, filters, or rewrites a target. `reserve_targets.parquet` holds
+  locators withheld from the active set and is never read. An occurrence's `doc_id` is its
+  `document_locator_key`, because a catalog plan carries no pre-storage document identity
+  and the worker groups occurrences by that key.
+- **A catalog run streams and is never resumed.** `work_order.py` defines the seam;
+  `CatalogPlan` is replayable and yields at most `runtime.chunk_size` locators per chunk,
+  and `process_chunk_stream()` keeps only `resolved_worker_count` chunks in flight, so
+  resident work is set by chunk size and concurrency rather than by plan size. Chunk ids
+  derive from the plan id, the work-order contract version, the chunk size, and an
+  ordinal, so membership and identity do not depend on row arrival or filesystem order;
+  a policy bundle's wider locator and target schemas are projected by name and their
+  feature columns are ignored. Such a run refuses a run directory that already exists and
+  deletes nothing, so an interrupted run keeps its chunks and an operator chooses a new
+  run id. The `--plan` JSON mode keeps its existing resume behavior unchanged.
 - **A rendered path resolves to its original, with the rendering as fallback.** When
   the route from `domain/document/route.py` is `RENDERED`, all three backends prefer
   the archive-root basename over the XSL rendering, and keep the rendering so a root
@@ -179,7 +205,8 @@ Real-filing parity is unverified — see "Deliberate gaps".
 - **This CLI is fixture-mode by construction.** `run` is hardcoded to fixture mode
   and requires `--fixture`; a missing or malformed fixture store fails before any
   processing. `documents fill` is the only CLI path that makes live requests, and
-  it stores only raw response bytes.
+  it stores only raw response bytes. Both accept either `--plan` (hand-authored
+  JSON) or `--catalog-plan` (a published catalog bundle directory), exclusively.
 - **No SQL string is interpolated from data.** Every consolidation statement is
   built from a literal, a self-quoting relation expression, and bound parameters;
   part paths read from manifests are validated before interpolation, so a
@@ -187,7 +214,9 @@ Real-filing parity is unverified — see "Deliberate gaps".
 
 **Obligations on callers**
 
-- Supply chunks: a list of chunk ids with locators and occurrences per chunk.
+- Supply chunks either as a list of chunk ids with locators and occurrences per
+  chunk, or as a replayable `WorkOrder`. The two are exclusive input modes; a work
+  order is the fresh-run contract and refuses an existing run directory.
 - Implement `DocumentProcessor.process` against an `AcquiredSubmission`, not a raw
   `(bytes, locator)` pair: read the body as `selected_payload` and its route from
   `selected_document`, because the acquired bytes' route is not always the requested
@@ -222,6 +251,11 @@ points a caller is expected to use are:
   resumed chunk report the same counts as a fresh one. `worker.py`.
 - `candidate_for`, `occurrence_filing_date`, `primary_form_token_pattern` — the
   pre-2005 exhibit-candidate gate and its two inputs. `candidates.py`.
+- `CatalogPlan` — validate a published catalog bundle and read it as replayable
+  chunks. `catalog_plan.py`.
+- `fill_fixture` — fill a fixture from either a locator sequence or a streamed
+  locator source; `verify_fixture_lineage` — check a fixture against a
+  selection. `fixture_operator.py`.
 - `FilingWork` — one requested locator's pass from catalog row to normalized result.
   `worker.py`.
 - `ArchiveFetcher`, `make_archive_fetcher`, `EnvelopeExtraction`,
@@ -348,6 +382,13 @@ Committed goldens live at `tests/fixtures/document_storage/`:
 invariant) and `annual_10k_normalization.json`. Both are **synthetic** — see
 "Deliberate gaps".
 
+The catalog-bundle tests build a real plan in a temporary artifacts root through
+the catalog planner, from `tests.support.era_submission_metadata()`. That fixture
+copies the committed catalog parquet and appends pre-2005 filings, because the
+committed catalog fixture holds only 1999 and 2023-2026 dates and a plan built from
+it alone yields no in-window locator — the candidate gate would be untestable
+against a credible zero.
+
 ## Deliberate gaps
 
 - **Real-filing parity is unverified.** The only committed goldens are the two
@@ -379,6 +420,33 @@ invariant) and `annual_10k_normalization.json`. Both are **synthetic** — see
   re-running the plan. Any promotion or dual-write needs the resolution contract that
   represents a requested exhibit and a form-matched primary as two references, and that
   does not exist yet.
+- **A catalog plan cannot be resumed, and no selection drift is detected.**
+  `documents run --catalog-plan` refuses a run directory that already exists, so an
+  interrupted catalog run must be retried under a new run id and its partial chunks are
+  re-fetched. Nothing fingerprints the bundle's source files, recomputes its published
+  selection fingerprint, or records a run manifest, so nothing refuses a resume against a
+  changed selection or a changed chunk layout. Reusing checkpoints across runs, and
+  publishing a reusable child acquisition plan, both wait on a work-order serialization
+  contract that does not exist yet. `--limit` is therefore refused on the catalog mode,
+  since a whole plan is the unit of work.
+- **Fixture lineage covers only the most recent fill.** A catalog `run` accepts a fixture
+  whose `last_fill` names this plan id and this `plan_fingerprint`, and refuses one whose
+  last fill names something else. A fixture that was filled from two plans therefore
+  cannot be replayed against the second, because only the last fill is recorded; deciding
+  what a fixture may still hold after a selection changes needs a manifest-model change.
+- **Co-filer fields are read as the catalog's published representative.** A locator
+  group carries one `representative_cik` and `archive_url`, chosen deterministically by
+  the catalog, and co-filer rows of one document may publish different values: two
+  registrants filing the same accession carry their own archive URLs. Storage validates
+  only what the locator key implies — document path, canonical accession, and
+  `document_path_source` — and takes form and archive URL as published. A disagreement on
+  those representative fields is not detected.
+- **`document_path_source` is validated but not carried.** A catalog plan distinguishes a
+  path taken from the primary document from one falling back to the submission bundle,
+  which is the inversion-exception signal, and the reader checks the two agree with the
+  locator group. Nothing stores it: `DocumentLocator`, `FilingOccurrence`, and the
+  14-column snapshot have nowhere to put it, so its durable representation awaits the
+  document-model contract.
 - **No filing-scoped view exists.** `AcquiredSubmission` scopes one *response* to one
   accession; it never merges acquisitions, so a filing reached through several requests
   has no aggregate grouping it and a caller cannot ask "everything this filing contains"

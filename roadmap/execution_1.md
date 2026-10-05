@@ -473,6 +473,25 @@ flowchart LR
    plan's own locator/occurrence inputs, and a co-filer locator counts once.
 3. **`operator.py` / `cli.py`** — the counts aggregate onto `RunReport.to_dict()` and the
    `run` summary. Nothing persists them.
+4. **`catalog_plan.py` / `work_order.py`** — the candidate population is now measurable
+   against real occurrence dates rather than a hand-authored plan.
+   `CatalogPlan` validates a published `filing_catalog` bundle before the first fetch and
+   reads it as replayable chunks of at most `runtime.chunk_size` locators, so the gate sees
+   the catalog's own `filing_date` for every co-filer row. `documents run` and `documents
+   fill` accept `--catalog-plan` alongside `--plan`; `process_chunk_stream()` keeps only
+   `resolved_worker_count` chunks in flight, and the delegation pass re-reads only the
+   locators a worker asked for. `candidate_date_unresolved_count` reports locators with no
+   agreed date, so a fail-closed date is a measured count rather than an unexplained zero.
+
+#### Deferred: catalog resumability
+
+A catalog plan run is fresh-run only: it refuses a run directory that already exists and
+reuses no checkpoint. Nothing fingerprints the bundle's source files, recomputes its
+published selection fingerprint, or records a run manifest, so nothing refuses a resume
+against a changed selection or chunk layout. Reusing checkpoints and publishing a reusable
+child acquisition plan both wait on a work-order serialization contract, and
+`document_path_source` — the inversion-exception signal, validated but not persisted —
+awaits the document model.
 
 #### Still deferred
 - When a true pre-2005 exhibit target is identified, promote the fetch to `<accession>.txt`.

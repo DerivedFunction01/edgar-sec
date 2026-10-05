@@ -1163,8 +1163,9 @@ def test_candidate_summary_matches_a_processed_chunk(tmp_path: Path) -> None:
     assert summary == (
         processed.candidate_eligible_count,
         processed.bundle_candidate_count,
+        processed.candidate_date_unresolved_count,
     )
-    assert summary == (2, 1)
+    assert summary == (2, 1, 0)
 
 
 def test_a_skipped_chunk_reports_the_same_candidate_counts(tmp_path: Path) -> None:

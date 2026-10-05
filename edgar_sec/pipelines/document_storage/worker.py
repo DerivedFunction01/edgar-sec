@@ -12,7 +12,7 @@ import logging
 import os
 from collections import Counter
 from collections.abc import Callable, Mapping, Sequence
-from concurrent.futures import ProcessPoolExecutor
+from concurrent.futures import FIRST_COMPLETED, Future, ProcessPoolExecutor, wait
 from dataclasses import dataclass, replace
 from datetime import date
 from pathlib import Path
@@ -50,6 +50,7 @@ from edgar_sec.pipelines.document_storage.processor import (
     FilingProcessor,
     ProcessedDocument,
 )
+from edgar_sec.pipelines.document_storage.work_order import ChunkInput, WorkOrder
 
 log = logging.getLogger("document_storage.worker")
 
@@ -110,6 +111,7 @@ class ChunkResult:
     payload_sha256: str
     candidate_eligible_count: int = 0
     bundle_candidate_count: int = 0
+    candidate_date_unresolved_count: int = 0
     delegations: tuple[DelegationTarget, ...] = ()
 
     @property
@@ -182,8 +184,8 @@ def _filing_work(
 def candidate_summary(
     locators: Sequence[DocumentLocator],
     occurrences: Sequence[FilingOccurrence],
-) -> tuple[int, int]:
-    """Return ``(window_eligible, bundle_candidate)`` over one chunk's requested locators.
+) -> tuple[int, int, int]:
+    """Return ``(window_eligible, bundle_candidate, unresolved_date)`` over one chunk.
 
     Derived from the plan's own inputs rather than from a checkpoint, so a resumed chunk
     reports what a fresh one would; co-filer occurrences count on their shared locator once.
@@ -191,13 +193,15 @@ def candidate_summary(
     by_key = _occurrences_by_key(occurrences)
     eligible = 0
     candidates = 0
+    unresolved = 0
     for locator in _unique_locators(locators):
-        decision = candidate_for(
+        filing_date, decision = candidate_for(
             locator, by_key.get(locator.document_locator_key) or ()
-        )[1]
+        )
         eligible += int(decision.window_eligible)
         candidates += int(decision.is_bundle_candidate)
-    return eligible, candidates
+        unresolved += int(filing_date is None)
+    return eligible, candidates, unresolved
 
 
 def _build_snapshot_batch(
@@ -290,6 +294,7 @@ def process_chunk(
     total_occurrences = len(expanded_occurrences)
     candidate_eligible = 0
     bundle_candidates = 0
+    date_unresolved = 0
 
     delegations_file = output_path.with_name(f"{output_path.name}.tmp.delegations.json")
     delegations: list[DelegationTarget] = []
@@ -318,6 +323,7 @@ def process_chunk(
             work = _filing_work(locator, by_key)
             candidate_eligible += int(work.candidate.window_eligible)
             bundle_candidates += int(work.candidate.is_bundle_candidate)
+            date_unresolved += int(work.filing_date is None)
 
             if existing_ids and all(
                 occ.occurrence_id in existing_ids for occ in work.occurrences
@@ -444,6 +450,7 @@ def process_chunk(
         ),
         candidate_eligible_count=candidate_eligible,
         bundle_candidate_count=bundle_candidates,
+        candidate_date_unresolved_count=date_unresolved,
         delegations=tuple(delegations),
     )
 
@@ -636,7 +643,7 @@ def _skipped_result(
     chunks_dir: Path,
     fingerprint: str,
     document_count: int,
-    candidate_counts: tuple[int, int],
+    candidate_counts: tuple[int, int, int],
 ) -> ChunkResult:
     path = chunk_checkpoint_path(chunks_dir, chunk_id)
     meta = validate_chunk_snapshot(path)
@@ -653,7 +660,81 @@ def _skipped_result(
         payload_sha256=sha256_text(f"{chunk_id}:skipped"),
         candidate_eligible_count=candidate_counts[0],
         bundle_candidate_count=candidate_counts[1],
+        candidate_date_unresolved_count=candidate_counts[2],
     )
+
+
+def process_chunk_stream(
+    work_order: WorkOrder,
+    *,
+    fetcher: ArchiveFetcher,
+    processor: DocumentProcessor | None = None,
+    chunks_dir: Path,
+    workers: int | None = None,
+    profile: RuntimeResourceProfile | None = None,
+) -> tuple[ChunkResult, ...]:
+    """Process a replayable work order without holding the plan in memory.
+
+    At most ``resolved_worker_count`` chunks are in flight. No chunk is treated as
+    complete: this is the fresh-run path.
+    """
+    effective_processor = processor if processor is not None else FilingProcessor()
+    resolved = resolved_worker_count(profile, workers)
+    results: list[ChunkResult] = []
+
+    def task_for(chunk: ChunkInput, worker_id: str) -> dict[str, Any]:
+        return {
+            "chunk_id": chunk.chunk_id,
+            "worker_id": worker_id,
+            "locators": list(chunk.locators),
+            "occurrences": list(chunk.occurrences),
+            "fetcher": fetcher,
+            "processor": effective_processor,
+            "chunks_dir": Path(chunks_dir),
+            "profile": profile,
+        }
+
+    if resolved <= 1:
+        for chunk in work_order.iter_chunks():
+            results.append(
+                process_chunk(
+                    chunk.chunk_id,
+                    f"worker-{os.getpid()}",
+                    list(chunk.locators),
+                    list(chunk.occurrences),
+                    fetcher=fetcher,
+                    processor=effective_processor,
+                    chunks_dir=Path(chunks_dir),
+                    profile=profile,
+                )
+            )
+            reclaim()
+        return tuple(results)
+
+    worker_id = f"worker-{os.getpid()}"
+    with ProcessPoolExecutor(
+        max_workers=resolved, max_tasks_per_child=RECLAIM_INTERVAL
+    ) as pool:
+        source = work_order.iter_chunks()
+        in_flight: dict[Future[ChunkResult], None] = {}
+        for _ in range(resolved):
+            chunk = next(source, None)
+            if chunk is None:
+                break
+            in_flight[pool.submit(_run_one, task_for(chunk, worker_id))] = None
+        while in_flight:
+            done, _ = wait(in_flight, return_when=FIRST_COMPLETED)
+            for future in done:
+                in_flight.pop(future)
+                results.append(future.result())
+                reclaim()
+            for _ in range(len(done)):
+                chunk = next(source, None)
+                if chunk is None:
+                    break
+                in_flight[pool.submit(_run_one, task_for(chunk, worker_id))] = None
+
+    return tuple(sorted(results, key=lambda result: result.chunk_id))
 
 
 __all__ = [
@@ -667,6 +748,7 @@ __all__ = [
     "chunk_fingerprint",
     "is_chunk_complete",
     "process_chunk",
+    "process_chunk_stream",
     "process_chunks",
     "resolved_worker_count",
 ]
