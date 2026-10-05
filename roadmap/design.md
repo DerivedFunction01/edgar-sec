@@ -48,7 +48,7 @@ Layer 0: foundation/      edgar_sec.foundation.{hashing, regex, serialization, r
 ### 2.1 The Virtual AST & Block Stream (`domain/document/blocks.py`)
 Rather than forcing document normalization into constructing a recursive, deeply nested AST (`SectionNode[children=[ParagraphNode, TableNode]]`), `edgar_sec` separates physical block extraction from statutory sectioning.
 
-Normalization emits a **Flat 1D Stream of Typed Blocks** ([blocks.py](../edgar_sec/domain/document/blocks.py)):
+The target representation is a **Flat 1D Stream of Typed Blocks** ([blocks.py](../edgar_sec/domain/document/blocks.py)). *Status: `BlockStream` is a domain model; the normalizer does not yet emit it — it emits `normalized_text` (see Stage 4).*
 
 ```python
 from collections.abc import Iterator
@@ -498,15 +498,15 @@ To prevent false-positive bundle promotions on company names and ticker prefixes
 
 ---
 
-### Blueprint D: Cover Boundary Profiles vs Unsegmented (Zero-Boundary) Reflow Contract
-While periodic reports (10-K, 10-Q, 20-F) and current event reports (8-K, 6-K) possess statutory SEC cover pages (SEC mastheads, registrant headers, checkmarks) and execute active cover boundary detection before prose reflow, **unspecialized forms (`GENERIC`) and standalone exhibits operate under unsegmented zero-boundary profiles (`profile.boundary is None`)**:
+### Blueprint D: Cover Boundary Profiles vs No-Cover Reflow Contract
+While periodic reports (10-K, 10-Q, 20-F) and current event reports (8-K, 6-K) possess statutory SEC cover pages (SEC mastheads, registrant headers, checkmarks) and execute active cover boundary detection before prose reflow, **unspecialized forms (`GENERIC`) and standalone exhibits operate under no-cover profiles, identified by the `GENERIC_PROFILE_FAMILY` key rather than by an absent boundary policy**:
 
 1. **Current Reports (8-K, 6-K) Cover Pages**:
    - Form 8-K and Form 6-K possess statutory SEC cover pages with dedicated profiles (`build_current_profile("8-K")`, `generic_6k`) detecting cover headers and item event / signature boundaries. Reflow begins at their detected `body_start_line`.
-2. **Explicit Zero Boundary for No-Cover Profiles**:
-   - Standalone exhibits (`EX-13`, `EX-99`) and unspecialized forms (`GENERIC`) declare no cover boundary (`profile.boundary is None` or `body_start_line = 0`).
+2. **No-Cover Profiles**:
+   - Standalone exhibits (`EX-13`, `EX-99`) and unspecialized forms (`GENERIC`) resolve to the `GENERIC` profile, so `body_start_line = 0`. Every profile carries a boundary policy, so `profile.boundary is None` is not a usable test.
 3. **Reflow Gating**:
-   - Documents under zero-boundary profiles execute `reflow_ascii` starting directly from **line 0 to EOF**, unwrapping hardwrapped paragraphs across the entire file without searching for non-existent Item headings.
+   - Documents under no-cover profiles execute `reflow_ascii` starting directly from **line 0 to EOF**, unwrapping hardwrapped paragraphs across the entire file without searching for non-existent Item headings. Only the text routes (`TEXT`, `UNKNOWN`) enter this gate; markup, XML, binary, and paper routes do not.
 
 ---
 
@@ -539,7 +539,7 @@ flowchart LR
 ### Stage 4: Document AST & Markdown Generation
 - **Objective**: Provide structured, block-level text representations for analytical pipelines and LLM ingestion.
 - **Deliverables**:
-  - Linear `DocumentBlock` 1D stream emission in normalizer (`domain/document/blocks.py`).
+  - Linear `DocumentBlock` 1D stream emission in normalizer (`domain/document/blocks.py`) — *deferred*; the normalizer currently emits `normalized_text`.
   - Native GFM Markdown renderer converting reflowed paragraphs and protected tables into clean markdown.
 
 ### Stage 5: Sparse Aggregate & Multi-Scope Exhibit Recovery
@@ -548,7 +548,7 @@ flowchart LR
   - Implement `FilingAggregate` and `FilingAttachment` in Layer 1 (`edgar_sec/domain/document/aggregate.py`).
   - Integrate exhibit inversion detection in `edgar_sec/engine/forms/plugins/evaluators/annual.py`.
   - Expand `edgar_sec/pipelines/document_storage/delegation.py` to resolve primary forms from `<accession>.txt` bundles.
-  - Implement the no-cover reflow gating (`body_start_line = 0`) in `edgar_sec/engine/forms/normalize.py`.
+  - Implement the no-cover reflow gating (`body_start_line = 0`) in `edgar_sec/engine/forms/normalize.py` — *shipped*; no-cover reflow from line 0 is implemented, keyed on `GENERIC_PROFILE_FAMILY`.
 
 ### Stage 6: DuckDB TOC Spine & Canonical Item Segmentation (Phase 3)
 - **Objective**: Segment Form 10-K and 10-Q documents into canonical statutory Items without string slicing or coordinate drift.
@@ -590,7 +590,7 @@ flowchart TD
     %% Profile & Boundary
     Preprocess --> ProfileCheck{"Form Profile Selection"}
     ProfileCheck -- "Cover Profiles<br/>(10-K, 10-Q, 20-F, 8-K, 6-K)" --> CoverDet["Cover Boundary Detection<br/>(Masthead, Checkmarks, TOC/Item anchors)<br/>body_start_line > 0"]
-    ProfileCheck -- "No-Cover Profiles<br/>(GENERIC, Exhibits)" --> NoCover["Explicit Zero Boundary<br/>(profile.boundary is None)<br/>body_start_line = 0"]
+    ProfileCheck -- "No-Cover Profiles<br/>(GENERIC, Exhibits)" --> NoCover["No-Cover Profile<br/>(GENERIC_PROFILE_FAMILY)<br/>body_start_line = 0"]
     
     %% Normalization & Reflow
     CoverDet --> Reflow["4. Table Protection & Reflow<br/>- Protect Table Grids<br/>- Unwrap hardwrapped prose<br/>(Start from body_start_line)"]
@@ -642,6 +642,7 @@ Each work unit enters from `filing_targets.parquet`:
 ### Step 2: Document Acquisition
 - **Production Mode**: Managed Unix-socket `SecBroker` enforcing aggregate 8.0 RPS token bucket across processes with warm-cache probe.
 - **Fixture / Offline Mode**: Local SQLite CAS (`fixture.sqlite`) looking up by content-addressed key.
+- **Rendered-document fallback**: a `RENDERED` path (under `xsl<Form>X01/`) is fetched from its archive-root basename first, with the rendering retained as fallback so a missing root document cannot turn a reachable filing into a failure (`fetching.archive_root_url`).
 - **Output**: Immutable `raw_bytes`.
 
 ### Step 3: Unpacking & Format Triage
@@ -651,22 +652,22 @@ Each work unit enters from `filing_targets.parquet`:
 - If payload is raw HTML or plain text:
   - Bypasses unpacking; passes directly to preprocessor.
 
-### Step 4: Preprocessing, Profile Selection & Form-Aware XML Validity
-- **Preprocessor & Form-Aware XML Validity**:
+### Step 4: Preprocessing, Route Selection & Profile Selection
+- **Preprocessor & Document Route**:
   - Strips outer envelope SGML headers.
   - Normalizes ASCII/UTF-8 character encodings.
   - Detects page marker comments (`<PAGE>`, form feeds).
-  - **Form-Aware XML Validation**: `.xml` files are valid primary documents for XML-native forms (e.g. `FORM TYPE: 144`, `Form 4`, `Form 3`, `Form 13F`), decoded without being skipped as non-text and recorded with `representation: "xml"`. For narrative periodic/current corporate reports (10-K, 10-Q, 8-K, 6-K), `.xml` files represent ancillary metadata/XBRL linkbases and are filtered out in favor of narrative HTML/ASCII text.
+  - **Path-route classification** (`domain/document/route.py`): a document path selects its route before any bytes are read. A path containing `/` is `RENDERED` — an XSL rendering EDGAR serves as HTML even when its basename is `.xml` — so a slash outranks the suffix and a flat suffix is the only decisive signal. A flat suffix selects `MARKUP` (`.htm`/`.html`/`.xhtml`), `TEXT` (`.txt`), `PAPER` (`.paper`, a fixed SGML stub naming an off-archive Document Control Number), `XML` (`.xml`), `BINARY` (`.pdf`/`.gif`/`.jpg`), or `UNKNOWN`. A flat `.xml` is a valid primary document recorded with `representation: "xml"` and is never reflowed. The route is path-based, not form-based: it does not distinguish an XML-native form's filing from an XBRL linkbase, and it does not filter `.xml` out of narrative filings.
 - **Profile Selection**:
   - **Cover Profiles** (`10-K`, `10-KSB`, `10-Q`, `20-F`, `8-K`, `6-K`): Runs cover boundary detection. Periodic reports (10-K, 10-Q, 20-F) detect masthead, checkmarks, and TOC/Part I anchors. Current reports (8-K, 6-K) detect statutory SEC cover mastheads, registrant metadata, and item event / signature boundaries. Sets `body_start_line > 0`.
-  - **Zero-Boundary Profiles** (`GENERIC`, standalone exhibits): Cover boundary is explicitly unsegmented (`profile.boundary is None`). Sets `body_start_line = 0`.
+  - **No-cover profiles** (`GENERIC`, standalone exhibits): identified by the `GENERIC_PROFILE_FAMILY` key, not by `profile.boundary is None` — every profile carries a boundary policy, so `None` is not a distinguishing test. Sets `body_start_line = 0`.
 
 ### Step 5: Table Protection & Reflow
 - **Table Preservation**: Untagged ASCII table borders (columns, spacing) and HTML `<table>` elements are locked into preformatted boundaries.
 - **Prose Reflow**:
   - For cover documents: unwraps hardwrapped lines starting *after* `body_start_line`.
   - For no-cover documents: unwraps hardwrapped lines starting directly from **line 0 to EOF**. (Resolves the defect where no-cover forms skipped reflow entirely).
-- **Block Stream Emission**: Emits 1D sequence of `DocumentBlock` records (`PARAGRAPH`, `TABLE`, `PRESERVED`, `PAGE_BREAK`).
+- **Block Stream Emission (deferred)**: the normalizer emits `normalized_text` (a string). `BlockStream` exists as a domain model (`domain/document/blocks.py`) but is not wired into emission; `SpanDecision` lacks byte/char offsets and merges spans, so 1D block emission is a Phase 3 goal, not current behavior.
 
 ---
 

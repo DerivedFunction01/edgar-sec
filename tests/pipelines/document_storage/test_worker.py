@@ -8,11 +8,27 @@ from pathlib import Path
 import pyarrow.parquet as pq
 import pytest
 
-from edgar_sec.domain.document.acquisition import FetchResult
+from edgar_sec.domain.document.acquisition import (
+    AcquiredDocument,
+    AcquisitionSource,
+    AcquisitionSourceKind,
+    FetchResult,
+    SgmlEnvelopeResolution,
+    SgmlSubDocumentHeader,
+)
 from edgar_sec.domain.document.models import DocumentLocator, FilingOccurrence
+from edgar_sec.domain.document.route import DocumentRoute, document_route
 from edgar_sec.domain.identity import Cik
-from edgar_sec.pipelines.document_storage.checkpoint import validate_chunk_snapshot
-from edgar_sec.pipelines.document_storage.fetching import FixtureArchiveFetcher
+from edgar_sec.domain.sec_urls import accession_hyphenated
+from edgar_sec.infra.storage.parquet import read_parquet_table
+from edgar_sec.pipelines.document_storage.checkpoint import (
+    DOCUMENT_SNAPSHOT_SCHEMA,
+    validate_chunk_snapshot,
+)
+from edgar_sec.pipelines.document_storage.fetching import (
+    FixtureArchiveFetcher,
+    extract_from_sgml_envelope,
+)
 from edgar_sec.pipelines.document_storage.fixture_store import FixtureStore
 from edgar_sec.pipelines.document_storage.paths import chunk_checkpoint_path
 from edgar_sec.pipelines.document_storage.processor import (
@@ -74,6 +90,15 @@ def _locator(
     )
 
 
+def _acquired(payload: bytes, locator: DocumentLocator) -> AcquiredDocument:
+    """An acquisition whose route follows the requested path, as a direct fetch does."""
+    return AcquiredDocument(
+        locator=locator,
+        payload=payload,
+        content_route=document_route(locator.document_path),
+    )
+
+
 def _occurrence(locator: DocumentLocator) -> FilingOccurrence:
     return FilingOccurrence(
         occurrence_id="occ-1",
@@ -105,6 +130,258 @@ class DictFetcher:
 def _seed_fixture(db_path: Path, locator: DocumentLocator, payload: bytes) -> None:
     with FixtureStore(db_path) as store:
         store.put_many([(locator.document_locator_key, payload)])
+
+
+_PAPER_STUB = (
+    b"<SEC-HEADER>\n<DOCUMENT>\n<TYPE>19B-4E\n<SEQUENCE>1\n"
+    b"<FILENAME>9999999997-25-001505.paper\n"
+    b"<DESCRIPTION>AUTO-GENERATED PAPER DOCUMENT\n<TEXT>\n"
+    b"This document was generated as part of a paper submission.\n"
+    b"Please reference the Document Control Number 25000522 for access to "
+    b"the original document.\n</TEXT>\n</DOCUMENT>\n</SEC-DOCUMENT>\n"
+)
+
+
+def test_bypassed_paper_document_is_still_recorded(tmp_path: Path) -> None:
+    """Skipping the form-driven stages must not drop the row from the corpus."""
+    path = "9999999997-25-001505.paper"
+    locator = _locator(document_path=path, form="REGDEX")
+
+    result = process_chunk(
+        "c1",
+        "w1",
+        [locator],
+        [_occurrence(locator)],
+        fetcher=DictFetcher({path: _PAPER_STUB}),
+        chunks_dir=tmp_path,
+    )
+
+    table = read_parquet_table(result.output_path)
+    assert table.num_rows == 1
+    assert table.column("status").to_pylist() == ["ok"]
+    assert table.column("form").to_pylist() == ["10-K"]
+    assert table.column("filing_date").to_pylist() == ["2012-02-15"]
+    assert table.column("document_locator_key").to_pylist() == [
+        locator.document_locator_key
+    ]
+    assert (
+        "Document Control Number 25000522"
+        in table.column("normalized_text").to_pylist()[0]
+    )
+
+
+# --- acquisition model at the worker boundary ------------------------------
+
+#: Sequence 1 is an exhibit and the 10-K is at sequence 3. EDGAR SGML is
+#: line-oriented, so header tags must start a line to be parsed.
+_INVERTED_BUNDLE = (
+    b"<SEC-DOCUMENT>\n"
+    b"<DOCUMENT>\n<TYPE>EX-21\n<SEQUENCE>1\n<FILENAME>ex21.txt\n"
+    b"<DESCRIPTION>CERTIFICATION OF INCORPORATION\n"
+    b"<TEXT>\nEXHIBIT TWENTY ONE BODY\n</TEXT>\n</DOCUMENT>\n"
+    b"<DOCUMENT>\n<TYPE>10-K\n<SEQUENCE>2\n<FILENAME>acme-10k.htm\n"
+    b"<DESCRIPTION>ANNUAL REPORT\n"
+    b"<TEXT>\n<HTML><BODY>PRIMARY DOCUMENT BODY</BODY></HTML>\n</TEXT>\n"
+    b"</DOCUMENT>\n</SEC-DOCUMENT>\n"
+)
+
+#: A bundle requested as ``<accession>.txt`` whose selected primary is XML.
+_XML_CHILD_BUNDLE = (
+    b"<SEC-DOCUMENT>\n<DOCUMENT>\n<TYPE>4\n<SEQUENCE>1\n"
+    b"<FILENAME>ownership.xml\n<TEXT>\n"
+    b'<?xml version="1.0"?><ownershipDocument><x>1</x></ownershipDocument>\n'
+    b"</TEXT>\n</DOCUMENT>\n</SEC-DOCUMENT>\n"
+)
+
+
+class RecordingProcessor:
+    """Processor that records the acquisition it was handed, then passes through."""
+
+    def __init__(self) -> None:
+        self.seen: list[AcquiredDocument] = []
+        self.processor_fingerprint = "recording:test"
+
+    def process(self, acquired: AcquiredDocument) -> ProcessedDocument:
+        self.seen.append(acquired)
+        return PassThroughProcessor().process(acquired)
+
+
+class BundleFetcher:
+    """Production-shaped fetcher answering an SGML bundle with its own source record."""
+
+    def __init__(self, bundle: bytes) -> None:
+        self.bundle = bundle
+
+    def fetch(self, locator: DocumentLocator) -> FetchResult:
+        if not locator.document_path.endswith(".txt"):
+            return FetchResult(locator, None, "missing")
+        extraction = extract_from_sgml_envelope(self.bundle, locator)
+        if extraction.payload is None:
+            return FetchResult(locator, None, "failed", error="no sub-document")
+        return FetchResult(
+            locator,
+            extraction.payload,
+            "ok",
+            source_payload=extraction.bundle,
+            source=AcquisitionSource(
+                AcquisitionSourceKind.ARCHIVE_URL,
+                f"https://www.sec.gov/x/{locator.document_path}",
+            ),
+            envelope=extraction.envelope,
+        )
+
+
+def test_worker_hands_the_processor_the_selected_payload(tmp_path: Path) -> None:
+    """Only the selected sub-document reaches normalization, never the bundle."""
+    locator = _locator(document_path=f"{accession_hyphenated(ACCESSION)}.txt")
+    processor = RecordingProcessor()
+
+    process_chunk(
+        "c1",
+        "w1",
+        [locator],
+        [_occurrence(locator)],
+        fetcher=BundleFetcher(_INVERTED_BUNDLE),
+        processor=processor,
+        chunks_dir=tmp_path,
+    )
+
+    assert len(processor.seen) == 1
+    assert (
+        processor.seen[0].payload == b"<HTML><BODY>PRIMARY DOCUMENT BODY</BODY></HTML>"
+    )
+
+
+def test_worker_keeps_the_requested_locator_on_the_acquisition(tmp_path: Path) -> None:
+    """The child filename must not become the document's identity."""
+    locator = _locator(document_path=f"{accession_hyphenated(ACCESSION)}.txt")
+    processor = RecordingProcessor()
+
+    process_chunk(
+        "c1",
+        "w1",
+        [locator],
+        [_occurrence(locator)],
+        fetcher=BundleFetcher(_INVERTED_BUNDLE),
+        processor=processor,
+        chunks_dir=tmp_path,
+    )
+
+    assert processor.seen[0].locator.document_path == locator.document_path
+    assert processor.seen[0].document_locator_key == locator.document_locator_key
+
+
+def test_worker_projects_the_row_on_the_requested_locator(tmp_path: Path) -> None:
+    locator = _locator(document_path=f"{accession_hyphenated(ACCESSION)}.txt")
+
+    result = process_chunk(
+        "c1",
+        "w1",
+        [locator],
+        [_occurrence(locator)],
+        fetcher=BundleFetcher(_INVERTED_BUNDLE),
+        chunks_dir=tmp_path,
+    )
+
+    table = read_parquet_table(result.output_path)
+    assert table.column("document_path").to_pylist() == [locator.document_path]
+    assert table.column("document_locator_key").to_pylist() == [
+        locator.document_locator_key
+    ]
+
+
+def test_worker_gives_the_processor_the_acquisition_source(tmp_path: Path) -> None:
+    locator = _locator(document_path=f"{accession_hyphenated(ACCESSION)}.txt")
+    processor = RecordingProcessor()
+
+    process_chunk(
+        "c1",
+        "w1",
+        [locator],
+        [_occurrence(locator)],
+        fetcher=BundleFetcher(_INVERTED_BUNDLE),
+        processor=processor,
+        chunks_dir=tmp_path,
+    )
+
+    assert processor.seen[0].source is not None
+    assert processor.seen[0].source.kind is AcquisitionSourceKind.ARCHIVE_URL
+
+
+def test_worker_gives_the_processor_the_sibling_headers(tmp_path: Path) -> None:
+    """Sibling headers reach the processor, but no sibling payload does."""
+    locator = _locator(document_path=f"{accession_hyphenated(ACCESSION)}.txt")
+    processor = RecordingProcessor()
+
+    process_chunk(
+        "c1",
+        "w1",
+        [locator],
+        [_occurrence(locator)],
+        fetcher=BundleFetcher(_INVERTED_BUNDLE),
+        processor=processor,
+        chunks_dir=tmp_path,
+    )
+
+    envelope = processor.seen[0].envelope
+    assert envelope is not None
+    assert [header.filename for header in envelope.siblings] == ["ex21.txt"]
+    assert b"EXHIBIT TWENTY ONE BODY" not in processor.seen[0].payload
+
+
+def test_worker_does_not_persist_acquisition_provenance(tmp_path: Path) -> None:
+    """Source and headers are in-memory only; the snapshot schema is unchanged."""
+    locator = _locator(document_path=f"{accession_hyphenated(ACCESSION)}.txt")
+
+    result = process_chunk(
+        "c1",
+        "w1",
+        [locator],
+        [_occurrence(locator)],
+        fetcher=BundleFetcher(_INVERTED_BUNDLE),
+        chunks_dir=tmp_path,
+    )
+
+    table = read_parquet_table(result.output_path)
+    assert table.column_names == DOCUMENT_SNAPSHOT_SCHEMA.names
+
+
+def test_sgml_child_routes_by_its_own_filename(tmp_path: Path) -> None:
+    """A bundle requested as .txt can deliver XML; the route follows the bytes."""
+    locator = _locator(document_path=f"{accession_hyphenated(ACCESSION)}.txt", form="4")
+    processor = RecordingProcessor()
+
+    process_chunk(
+        "c1",
+        "w1",
+        [locator],
+        [_occurrence(locator)],
+        fetcher=BundleFetcher(_XML_CHILD_BUNDLE),
+        processor=processor,
+        chunks_dir=tmp_path,
+    )
+
+    assert processor.seen[0].content_route is DocumentRoute.XML
+    assert processor.seen[0].locator.document_path == locator.document_path
+
+
+def test_sgml_child_route_reaches_normalization(tmp_path: Path) -> None:
+    """An XML primary is normalized as XML rather than reflowed as prose."""
+    locator = _locator(document_path=f"{accession_hyphenated(ACCESSION)}.txt", form="4")
+
+    result = process_chunk(
+        "c1",
+        "w1",
+        [locator],
+        [_occurrence(locator)],
+        fetcher=BundleFetcher(_XML_CHILD_BUNDLE),
+        chunks_dir=tmp_path,
+    )
+
+    text = (
+        read_parquet_table(result.output_path).column("normalized_text").to_pylist()[0]
+    )
+    assert "ownershipDocument" in text
 
 
 # --- single chunk ---------------------------------------------------------
@@ -521,15 +798,32 @@ def test_resource_profile_bounds_the_worker_count() -> None:
 
 def test_processed_document_exposes_its_text() -> None:
     processed = ProcessedDocument(
-        document_locator_key="k", payload=b"one two three", byte_size=13, mime_type="t"
+        document_locator_key="k",
+        payload=b"one two three",
+        byte_size=13,
+        mime_type="t",
+        representation="ascii",
     )
     assert processed.text == "one two three"
     assert processed.word_count == 3
 
 
+def test_processed_document_raw_representation_has_no_text() -> None:
+    """`raw` is the default, so it must mean "no normalized text exists"."""
+    processed = ProcessedDocument(
+        document_locator_key="k",
+        payload=b"%PDF-1.4\n%\xe2\xe3\xcf\xd3\n",
+        byte_size=15,
+        mime_type="application/pdf",
+    )
+    assert processed.representation == "raw"
+    assert processed.text == ""
+    assert processed.word_count == 0
+
+
 def test_filing_processor_records_the_cover_boundary() -> None:
     locator = _locator()
-    processed = FilingProcessor().process(BODY.encode(), locator)
+    processed = FilingProcessor().process(_acquired(BODY.encode(), locator))
     assert processed.metadata["cover_boundary_method"] != "disabled"
     assert processed.metadata["representation"] == "ascii"
     assert processed.metadata["word_count"] > 20
@@ -553,7 +847,7 @@ def test_filing_processor_survives_a_payload_carrying_page_markers() -> None:
             b"</PAGE>",
         ]
     )
-    processed = FilingProcessor().process(payload, _locator())
+    processed = FilingProcessor().process(_acquired(payload, _locator()))
 
     assert "page_marker_count" in processed.metadata
     assert processed.metadata["page_marker_count"] > 0

@@ -12,10 +12,13 @@ normalizes a full document body, and the only one that needs a process pool.
 Phase 1 produced submissions metadata; Phase 2 turned it into a catalog and a
 target plan; this package consumes those locators and produces text.
 
-1. **Acquire.** A fetcher returns raw bytes for one document locator and decides
-   nothing about storage.
-2. **Normalize and triage.** A processor returns normalized text plus a
-   stub/delegation verdict.
+1. **Acquire.** A fetcher returns the bytes for one document locator, plus which
+   source served them, and decides nothing about storage. The requested link, the
+   acquired source, and the content route of the bytes stay separate: an SGML
+   `<accession>.txt` bundle can deliver an XML primary, and a rendered link is
+   served from the archive root under a different basename.
+2. **Normalize and triage.** A processor takes that acquired document and returns
+   normalized text plus a stub/delegation verdict.
 3. **Resolve delegations.** A stub primary that incorporates its substance from
    an exhibit gets that exhibit fetched and recorded alongside it.
 4. **Publish, then consolidate.** Per-run snapshots merge into one canonical
@@ -64,6 +67,31 @@ Real-filing parity is unverified — see "Deliberate gaps".
 - **A fetcher reports; it never decides.** It never writes a checkpoint, never
   opens a transaction, and never judges a payload good enough. That boundary is
   what lets one fetcher serve a worker, a fixture builder, and the review tool.
+- **Only the selected sub-document reaches normalization.** An SGML response is scanned
+  once, its selected body is extracted, and the rest of the envelope is released before
+  the processor is called — a submission spans far more than the document it delivered.
+  Sibling sub-documents survive as headers only (sequence, `<TYPE>`, filename,
+  description), which records what the envelope contained without holding its bytes.
+  These headers make no primary/exhibit claim; see `domain/document/README.md`.
+- **Acquisition provenance is in-memory.** Each backend records the URL or fixture key
+  that served the bytes, on the `FetchResult` and from there on the acquired document.
+  It is not persisted: the snapshot schema carries no source column, so a stored row
+  does not record which URL answered it.
+- **`FilingProcessor` dispatches on the acquired document's content route, not on the
+  requested path.** A binary route never reaches the normalizer, which refuses it: the
+  payload is stored byte for byte as `raw`, with the suffix's MIME type and an empty
+  `normalized_text`. `raw` is the default representation on `ProcessedDocument` and
+  means exactly that — no normalized text exists — so `PassThroughProcessor` reports
+  empty text as well. The review tool takes the same dispatch, so a reviewer sees what
+  the worker would produce.
+- **A rendered path resolves to its original, with the rendering as fallback.** When
+  the route from `domain/document/route.py` is `RENDERED`, all three backends prefer
+  the archive-root basename over the XSL rendering, and keep the rendering so a root
+  document that does not exist cannot lose a reachable filing. Only the fetched URL
+  changes: `document_path` and `document_locator_key` still name the catalog's path,
+  so a stored row's key may name the rendering while its bytes are the original. The
+  content route follows the *requested* path here, so a root basename ending in `.xml`
+  does not turn a rendering into an XML document.
 - **A chunk checkpoint is reusable only when it validates *and* was written by
   the processor being asked to run now** — reuse requires both the snapshot
   schema check and a match on the stamped processor fingerprint. Mixing two text
@@ -140,6 +168,10 @@ Real-filing parity is unverified — see "Deliberate gaps".
 **Obligations on callers**
 
 - Supply chunks: a list of chunk ids with locators and occurrences per chunk.
+- Implement `DocumentProcessor.process` against an `AcquiredDocument`, not a raw
+  `(bytes, locator)` pair: the content route is the acquired bytes' route and is not
+  always the requested path's, so a processor that re-derives it from the locator will
+  normalize an SGML bundle's XML primary as a text file.
 - Do not publish from a worker process, and do not hand-assemble a snapshot from
   chunk files. An invalid chunk is dropped with a *warning* rather than failing
   the merge, so a hand-assembled snapshot would silently lose data.
@@ -166,10 +198,12 @@ points a caller is expected to use are:
 - `vacuum_snapshots` — cross-run consolidation. `vacuum.py`.
 - `process_chunks`, `is_chunk_complete`, `resolved_worker_count` — chunk
   execution and checkpoint reuse. `worker.py`.
-- `ArchiveFetcher`, `make_archive_fetcher` — the acquisition seam and its
-  fixture / broker / live backends. `fetching.py`.
+- `ArchiveFetcher`, `make_archive_fetcher`, `EnvelopeExtraction`,
+  `extract_from_sgml_envelope` — the acquisition seam, its fixture / broker / live
+  backends, and the envelope scan. `fetching.py`.
 - `DocumentProcessor`, `FilingProcessor`, `PassThroughProcessor` — the
-  normalization seam and the two implementations. `processor.py`.
+  normalization seam over an `AcquiredDocument`, and the two implementations.
+  `processor.py`.
 - `resolve_delegated_exhibit`, `exhibits_for` — the exhibit second pass.
   `delegation.py`.
 - `fill_fixture`, `list_fixtures` — fixture creation, extension, and discovery.
@@ -300,6 +334,30 @@ invariant) and `annual_10k_normalization.json`. Both are **synthetic** — see
 - **`fixture_lineage` has no consumer.** The check is called from nothing outside
   its own test, so the guard that stops a plan being replayed against a fixture
   built from a different plan is not wired into the offline fetch path.
+- **A row's stored bytes may disagree with the path its key names.** Fetch-time
+  resolution deliberately fetches the archive-root original for a rendered path while
+  identity still derives from the catalog's `xsl*` path, so `document_locator_key`
+  names the rendering. The acquiring fetcher now records which URL served the bytes in
+  memory, but no persisted column does, and the document model has not settled how a
+  document's authoritative source is represented.
+- **Sibling sub-documents are described but never resolved.** An SGML response records
+  its selected document and its siblings' headers, and stops there. A sibling with a
+  usable `<TYPE>` is *not* promoted in place of the selected one, and nothing consults
+  those headers to recover a primary document that a 2000-2004 filer uploaded at
+  sequence 1 as an exhibit. Only the existing stub-delegation path acquires a sibling,
+  and it re-fetches rather than reading the headers already in hand.
+- **No filing-scoped view exists.** A filing's primary document, exhibits, and any XBRL
+  package are separate acquired documents with no aggregate that groups them, so a
+  caller cannot ask "everything this filing contains" without re-deriving it from
+  accessions and occurrences.
+- **A `.paper` row is a pointer, not a document.** Its payload names an off-archive
+  Document Control Number that the warehouse cannot resolve, and the bypass keeps only
+  that pointer text. The filing's actual content is not retrievable from EDGAR.
+- **A binary document is stored verbatim; only its text is missing.** A `.pdf`, `.gif`,
+  or `.jpg` bypasses normalization entirely: the payload is stored byte for byte, the
+  row reports `raw` with the suffix's MIME type, and `normalized_text` is empty because
+  no text form of it exists. What is absent is any *extraction* — nothing reads a PDF's
+  content, so a binary filing contributes a stored blob and no searchable text.
 - **Parts are planned per quarter, not per snapshot.** `quarter_path` builds a
   path from exactly one year and quarter, so a snapshot spanning several fiscal
   quarters needs one planning call per quarter, and nothing validates that a

@@ -8,12 +8,21 @@ This implementation plan operationalizes the architectural contracts and Lakehou
 
 ## 1. Objectives & Architectural Boundaries
 
-1. **Structural Metadata Persistence (Layer 2 & 4)**: Expand `DOCUMENT_SNAPSHOT_SCHEMA` from 13 to 14 columns by persisting a canonical JSON `metadata` column (`pa.string()`). Capture essential downstream markers (`body_start_line`, `toc_span`, `table_count`, `word_count`, `representation`, `is_inversion`, `parent_locator_key`, `target_document_path`) while discarding ephemeral line-by-line debugging traces.
-2. **No-Cover Reflow Contract & Active Current Profiles (Layer 3)**: Acknowledge that Form 8-K and Form 6-K possess statutory SEC cover pages governed by dedicated `CurrentReportEvidence` profiles (`build_current_profile`). Fix the reflow gating defect in `normalize.py` where `body_start_line > 0` skipped prose unwrapping for ASCII filings under unsegmented/no-cover profiles (`GENERIC`, standalone exhibits, `profile.boundary is None`), enabling reflow from line 0 to EOF.
-3. **Form-Agnostic Inversion Recovery & Dual-Write (Layer 2 & 4)**: When a pre-2005 target link points to an exhibit (`ex*.txt`, `ex*.htm`), fetch `<accession>.txt`, extract the true primary document via form-typed Tier 1 unpacking (`target_types`), and dual-write **both** the recovered primary form (`role: "primary"`) and the original exhibit (`role: "exhibit"`, `parent_locator_key`). This satisfies the target plan's locator key without discarding the normalized exhibit.
-4. **Symmetric Document Storage (Layer 2)**: Both primary documents and exhibits share the standard 14-column `DOCUMENT_SNAPSHOT_SCHEMA`, distinguished by `metadata.role` and linked via `parent_locator_key`, allowing Exhibit-First, Primary-First, and Selective-Exhibit plans to co-exist without schema divergence.
-5. **Form-Aware XML Validity (Layer 2 & 4)**: Ensure `.xml` payloads are recognized as valid primary documents for XML-native forms (e.g., Form 144, Form 4, Form 3, Form 13F) rather than being skipped as non-text, while remaining filtered out as ancillary metadata (XBRL linkbases) for narrative periodic filings (10-K, 10-Q, 8-K, 6-K).
-6. **Memory & Performance Guarantees (AGENTS.md Contract)**: Discard ephemeral raw bundle bytes inside workers, maintain the 64-document heap reclamation interval (`reclaim()`), bump `PROCESSOR_SCHEMA_VERSION = 2`, and enforce 100% policy scanner compliance.
+> **Milestone 1 status (2026-10-05).** The document-route classification,
+> no-cover reflow, rendered-document fetch fallback, the sparse acquisition model,
+> and the processor v2 bump have shipped and are verified by the suite. The
+> 14-column snapshot schema, structural-metadata persistence, and inversion
+> dual-write are **deferred** until the document model is finalized (see §1.2).
+> The empirical inversion analysis in §1.1 still stands as the basis for that
+> deferred work.
+
+1. **Document Route Classification (Layer 1 — shipped)**: `edgar_sec/domain/document/route.py` classifies a document path into a `DocumentRoute` (`RENDERED`, `MARKUP`, `TEXT`, `PAPER`, `XML`, `BINARY`, `UNKNOWN`) before any bytes are read. A path containing `/` is `RENDERED` — an XSL rendering EDGAR serves as HTML even when its basename is `.xml` — so a slash outranks the suffix and a flat suffix is the only decisive signal. A flat `.xml` routes to `XML` and is recorded with `representation: "xml"`; `.paper` routes to `PAPER` (a fixed SGML stub naming an off-archive Document Control Number, with no filing prose); `.pdf`/`.gif`/`.jpg` route to `BINARY` and are stored verbatim.
+2. **No-Cover Reflow Contract (Layer 3 — shipped)**: ASCII filings under a no-cover profile reflow prose from line 0 to EOF. No-cover is identified by the `GENERIC_PROFILE_FAMILY` key, **not** by `profile.boundary is None` — every profile carries a boundary policy, so `None` is not a distinguishing test. Cover-bearing forms (`10-K`, `10-Q`, `20-F`, `8-K`, `6-K`) still reflow after their detected `body_start_line`.
+3. **Processor Version Bump (Layer 4 — shipped)**: `PROCESSOR_SCHEMA_VERSION = 2`. The normalized text changed (no-cover reflow, route-driven representation), so the processor fingerprint gates chunk reuse and a v1 checkpoint is recomputed, not reused.
+4. **Sparse Acquisition Model (Layer 1 & 3 & 4 — shipped)**: `AcquiredDocument` separates the three things one fetch conflates — the requested `DocumentLocator`, the `AcquisitionSource` that actually answered, and the `DocumentRoute` of the bytes. `FetchResult.acquired` resolves the route: a direct response keeps its requested path's route, while a selected SGML sub-document routes by its own `<FILENAME>`, so an XML primary inside an `<accession>.txt` bundle is normalized as XML. `extract_target_sub_document_selection` returns the selected body with every sub-document's headers and materializes no sibling body, so a submission's remaining bytes are released before normalization. The processor signature is `process(AcquiredDocument)`, so a processor no longer re-derives a route from the locator. No identity, schema, SQL, or catalog-planning behavior changed.
+5. **Form-Aware XML Validity — superseded by route classification.** The plan's form-based distinction (XML-native forms valid, narrative forms filter `.xml` as XBRL linkbases) was not built. The shipped behavior is path-based: a flat `.xml` is a valid primary document with `representation: "xml"` and is never reflowed; the route does not consult the form and does not filter `.xml` out of narrative filings. Form-aware XML validity remains a deliberate gap.
+6. **Structural Metadata Persistence (deferred)**: expanding `DOCUMENT_SNAPSHOT_SCHEMA` from 13 to 14 columns with a canonical JSON `metadata` column is deferred until the document model is finalized. `ProcessedDocument.metadata` and review-artifact diagnostics remain separate from any persisted index and are not repurposed as the document index. Acquisition provenance (`AcquiredDocument.source`, sibling headers) is likewise in-memory only; no column carries it.
+7. **Form-Agnostic Inversion Recovery & Dual-Write (deferred)**: pre-2005 exhibit-target recovery and the primary/exhibit dual-write are deferred. The fetcher's rendered-document fallback (`archive_root_url`) shipped, and the sparse model now supplies the sibling `<TYPE>`/sequence headers the recovery needs; the exhibit-promotion and dual-write logic did not.
 
 ---
 
@@ -328,19 +337,20 @@ This proves that Sequence 1 Exhibit Inversion is **strictly a 2000–2004 legacy
 
 ## 1.2 Deliberate Gaps & Milestone Scope
 
-### In-Scope for Milestone 1 Execution:
-1. **14-Column `DOCUMENT_SNAPSHOT_SCHEMA`**: Add `("metadata", pa.string())` and update writers, readers, and validators.
-2. **Structural Normalization Metadata**: Persist `body_start_line`, `toc_span`, `table_count`, `word_count`, `representation`, and inversion flags.
-3. **Reflow Contract Fix**: Fix ASCII reflow gating in `normalize.py` for unsegmented/no-cover profiles (`GENERIC`, standalone exhibits) while ensuring cover-bearing forms (`10-K`, `10-Q`, `20-F`, `8-K`, `6-K`) reflow after their detected body start line.
-4. **Form-Aware XML Validity**: Preserve and validate `.xml` primary documents for XML-native forms (e.g. `FORM TYPE: 144`, `4`, `3`, `13F`) with `representation: "xml"`.
-5. **Inversion Recovery & Dual-Write**: Recover true primary forms in `fetching.py` / `worker.py` and write both the primary form and the original exhibit.
-6. **Version Bump**: Bump `PROCESSOR_SCHEMA_VERSION = 2`.
+### Shipped in Milestone 1:
+1. **Document Route Classification**: `domain/document/route.py` — `DocumentRoute`, `document_route()`, `mime_type_for_suffix()`, `is_markup_document_path()`, `archive_root_candidate()`, and the `REPRESENTATION_*` names.
+2. **No-Cover Reflow**: ASCII prose under a no-cover profile reflows from line 0; cover-bearing forms reflow after `body_start_line`. No-cover is keyed on `GENERIC_PROFILE_FAMILY`, not `profile.boundary is None`.
+3. **Rendered-Document Fetch Fallback**: `fetching.archive_root_url()` fetches a `RENDERED` path's archive-root basename first, keeping the rendering as fallback.
+4. **Processor v2**: `PROCESSOR_SCHEMA_VERSION = 2`; the fingerprint gates chunk reuse.
 
 ### Deferred to Subsequent Milestones:
-1. **Forced Full-Bundle Acquisition (`--acquisition-policy full_bundle`)**: Execution defaults to sparse acquisition (~2MB primary document).
-2. **Cross-Snapshot Anti-Join Diffing (`--base-snapshot a1`)**: Incremental delta execution between published snapshots is deferred.
-3. **BlockStream 1D Virtual AST**: Deferred; `SpanDecision` lacks byte/char offsets and merges spans, so normalization continues emitting clean `normalized_text`.
-4. **Phase 3 Virtual Aggregate View (`filing_aggregates`)**: Deferred until Phase 3 materializes `sections.parquet`.
+1. **14-Column `DOCUMENT_SNAPSHOT_SCHEMA` & Structural Metadata Persistence**: add `("metadata", pa.string())` and update writers, readers, and validators. Deferred until the document model is finalized; `ProcessedDocument.metadata` and review-artifact diagnostics are not repurposed as the persisted index.
+2. **Form-Aware XML Validity**: distinguishing an XML-native form's filing from an XBRL linkbase by form. The shipped route is path-based and makes no such distinction.
+3. **Inversion Recovery & Dual-Write**: pre-2005 exhibit-target promotion and the primary/exhibit dual-write (see §1.1 for the empirical basis).
+4. **Forced Full-Bundle Acquisition (`--acquisition-policy full_bundle`)**: execution defaults to sparse acquisition (~2MB primary document).
+5. **Cross-Snapshot Anti-Join Diffing (`--base-snapshot a1`)**: incremental delta execution between published snapshots.
+6. **BlockStream 1D Virtual AST**: `SpanDecision` lacks byte/char offsets and merges spans, so normalization continues emitting clean `normalized_text`.
+7. **Phase 3 Virtual Aggregate View (`filing_aggregates`)**: deferred until Phase 3 materializes `sections.parquet`.
 
 ---
 
@@ -348,108 +358,102 @@ This proves that Sequence 1 Exhibit Inversion is **strictly a 2000–2004 legacy
 
 ```mermaid
 flowchart LR
-    S1["Stage 1: Storage Schema<br/>(14-Column DOCUMENT_SNAPSHOT_SCHEMA)"] --> S2["Stage 2: Engine Normalization<br/>(Reflow Fix & Metadata)"]
-    S2 --> S3["Stage 3: Processor Evolution<br/>(PROCESSOR_SCHEMA_VERSION = 2)"]
-    S3 --> S4["Stage 4: Inversion Dual-Write<br/>(Recovery & Target Key Preservation)"]
-    S4 --> S5["Stage 5: Worker & Storage Integration<br/>(Chunk Serialization & Checks)"]
-    S5 --> S6["Stage 6: Quality Gate & Verification<br/>(check.py --all & Review Cohort)"]
+    S1["Stage 1: Document Route<br/>(shipped)"] --> S2["Stage 2: No-Cover Reflow<br/>(shipped)"]
+    S2 --> S3["Stage 3: Processor v2<br/>(shipped)"]
+    S3 --> S4["Stage 4: Storage Schema & Metadata<br/>(deferred)"]
+    S4 --> S5["Stage 5: Inversion Dual-Write<br/>(deferred)"]
+    S5 --> S6["Stage 6: Quality Gate & Verification"]
 ```
 
 ---
 
-### Stage 1: Storage Schema Evolution (Layer 2: `infra/storage`)
+### Stage 1: Document Route Classification (Layer 1 — shipped)
 
 #### Responsibilities:
-- Add `("metadata", pa.string())` as the 14th column in `DOCUMENT_SNAPSHOT_SCHEMA` (`checkpoint.py`).
-- Update `write_chunk_snapshot`, `validate_chunk_snapshot`, and `assemble_document_snapshots` to handle the `metadata` column.
+- Classify a document path into a `DocumentRoute` before any bytes are read.
+- A path containing `/` is `RENDERED` (an XSL rendering EDGAR serves as HTML); a flat suffix selects `MARKUP`, `TEXT`, `PAPER`, `XML`, `BINARY`, or `UNKNOWN`.
+- Own the MIME table and the representation names so the fixture index and the processor describe one document with the same type.
 
 #### File Modifications:
-1. **`edgar_sec/pipelines/document_storage/checkpoint.py`**:
-   - Update `DOCUMENT_SNAPSHOT_SCHEMA`:
-     ```python
-     DOCUMENT_SNAPSHOT_SCHEMA = pa.schema(
-         [
-             ("occurrence_id", pa.string()),
-             ("source_cik", pa.string()),
-             ("accession", pa.string()),
-             ("document_path", pa.string()),
-             ("document_locator_key", pa.string()),
-             ("blob_hash", pa.string()),
-             ("form", pa.string()),
-             ("filing_date", pa.string()),
-             ("raw_payload", pa.binary()),
-             ("byte_size", pa.int64()),
-             ("normalized_text", pa.string()),
-             ("status", pa.string()),
-             ("error_message", pa.string()),
-             ("metadata", pa.string()),  # Canonical JSON structural metadata
-         ]
-     )
-     ```
-   - Update `write_chunk_snapshot` to accept `metadata_map: Mapping[str, str] | None = None` (defaulting to `"{}"`).
-2. **`tests/infra/storage/test_document_parquet.py`**:
-   - Update tests to verify that `metadata` is written, preserved through assembly, and queryable via DuckDB JSON functions.
+1. **`edgar_sec/domain/document/route.py`**: `DocumentRoute`, `document_route()`, `is_markup_document_path()`, `is_rendered_document_path()`, `archive_root_candidate()`, `mime_type_for_suffix()`, `MIME_BY_SUFFIX`, and the `REPRESENTATION_*` names.
+2. **`edgar_sec/pipelines/document_storage/fetching.py`**: `archive_root_url()` fetches a `RENDERED` path's archive-root basename first and keeps the rendering as fallback, so a root document that does not exist cannot turn a reachable filing into a failure.
+3. **`tests/domain/document/test_route.py`**: mirrored coverage of the route table, the slash-outranks-suffix rule, and the MIME table.
 
 ---
 
-### Stage 2: Engine Normalization & Reflow Fix (Layer 3: `engine/forms`)
+### Stage 2: Engine Normalization & No-Cover Reflow (Layer 3 — shipped)
 
 #### Responsibilities:
-- Fix the reflow gating defect in `normalize.py`: ensure that ASCII filings under no-cover profiles (`profile.boundary is None` or unsegmented `GENERIC`/exhibits) unwrap prose paragraphs starting from line 0, while cover-bearing current/periodic forms (`8-K`, `6-K`, `10-K`, `10-Q`) reflow after their detected `body_start_line`.
+- Fix the reflow gating defect in `normalize.py`: ASCII filings under a no-cover profile unwrap prose paragraphs from line 0, while cover-bearing forms (`8-K`, `6-K`, `10-K`, `10-Q`) reflow after their detected `body_start_line`.
+- No-cover is identified by `profile.family == GENERIC_PROFILE_FAMILY`, **not** by `profile.boundary is None` — every profile carries a boundary policy, so `None` is not a distinguishing test.
+- Only the text routes enter the reflow gate; markup, XML, binary, and paper routes are excluded by omission.
 
 #### File Modifications:
 1. **`edgar_sec/engine/forms/normalize.py`**:
-   - Detect `is_no_cover = profile.boundary is None`.
-   - Update reflow condition (lines 226–230):
+   - `normalize_document(raw_bytes, *, form=None, document_path=None)` — `document_path` selects the route.
+   - `_TEXT_ROUTES` gates reflow eligibility; `_representation_name(route, detected)` returns `REPRESENTATION_XML` for the XML route, where detection cannot see the format.
+   - Reflow condition:
      ```python
      reflow_result: ReflowResult | None = None
-     if representation is not Representation.HTML and (body_start_line > 0 or is_no_cover):
-         stage_trace.append(StageRecord.of("before_reflow", text))
-         reflow_policy = ReflowPolicy(
-             unwrap_pre_body_prose=True,
-             relax_prose_layout_gaps=True,
-             unwrap_bullet_continuations=True,
-             is_checkbox_answer_line=is_checkbox_answer_line,
-             is_page_boundary_line=is_page_marker_line,
-             is_structural_line=is_cover_layout_line,
-         )
+     reflow_eligible = route in _TEXT_ROUTES
+     no_cover = profile.family == GENERIC_PROFILE_FAMILY
+     if (
+         reflow_eligible
+         and representation is not Representation.HTML
+         and (body_start_line > 0 or no_cover)
+     ):
+         ...
          reflow_result = reflow_ascii(
              text,
-             body_start_line=0 if is_no_cover else body_start_line,
+             body_start_line=0 if no_cover else body_start_line,
              page_analysis=analysis,
              policy=reflow_policy,
          )
-         text = reflow_result.text
-         stage_trace.append(StageRecord.of("reflowed", text))
      ```
-2. **`tests/engine/forms/test_normalize.py`**:
-   - Add unit tests verifying that `GENERIC` and standalone exhibit ASCII text files unwrap hard-wrapped paragraphs from line 0, while `8-K` and `6-K` execute reflow following their detected cover page boundaries.
+   - A `PAPER` route returns before any form-driven stage runs; a `BINARY` route raises rather than inventing text.
+2. **`edgar_sec/engine/forms/cover/profiles.py`**: `GENERIC_PROFILE_FAMILY` — the family key every unmodelled form resolves to.
+3. **`tests/engine/forms/test_normalize.py`**: no-cover ASCII unwraps from line 0; cover-bearing forms reflow after their boundary; XML-like input is not reflowed.
 
 ---
 
-### Stage 3: Processor & Structural Metadata Serialization (Layer 4: `pipelines/document_storage`)
+### Stage 3: Processor Evolution (Layer 4 — shipped)
 
 #### Responsibilities:
-- Bump `PROCESSOR_SCHEMA_VERSION = 2` in `processor.py`.
-- Ensure `FilingProcessor.process()` formats clean, compact structural metadata JSON.
+- Bump `PROCESSOR_SCHEMA_VERSION = 2`, so a v1 checkpoint is recomputed rather than reused.
+- Route the document in `FilingProcessor.process()`: `BINARY` is stored verbatim; `PAPER` skips the evaluator; every other route normalizes.
 
 #### File Modifications:
 1. **`edgar_sec/pipelines/document_storage/processor.py`**:
-   - Bump `PROCESSOR_SCHEMA_VERSION = 2`.
-   - Format `ProcessedDocument.metadata` to include canonical structural fields:
-     `processor_version`, `representation`, `word_count`, `table_count`, `body_start_line`, `toc_span`, `is_inversion`, `target_document_path`, `parent_locator_key`.
-2. **`tests/pipelines/document_storage/test_processor.py`**:
-   - Verify `PROCESSOR_FINGERPRINT` reflects `v2`.
-   - Assert `ProcessedDocument.metadata` contains valid structural JSON fields.
+   - `PROCESSOR_SCHEMA_VERSION = 2` and the matching fingerprint.
+   - `ProcessedDocument.metadata` carries the normalization diagnostics already produced — `family`, `representation`, `word_count`, the page-marker and reflow counts, `stage_count`, the cover/body/closing boundary fields, and the triage decision. It does **not** carry `table_count`, `toc_span`, `is_inversion`, `target_document_path`, or `parent_locator_key`; those belong to the deferred structural-metadata work.
+   - `ProcessedDocument.text` returns `""` for a `raw` payload rather than decoding bytes into invented text.
+2. **`tests/pipelines/document_storage/test_processor.py`**: the fingerprint reflects v2; `ProcessedDocument.metadata` contains the diagnostic fields.
 
 ---
 
-### Stage 4: Inversion Recovery & Dual-Write Storage (Layer 4: `pipelines/document_storage`)
+### Stage 4: Storage Schema & Structural Metadata (Layer 4 — deferred)
+
+#### Responsibilities:
+- Add `("metadata", pa.string())` as the 14th column in `DOCUMENT_SNAPSHOT_SCHEMA`.
+- Extend `write_chunk_snapshot` with a `metadata_map` parameter defaulting to `"{}"`, and emit the column from `worker._build_snapshot_batch`.
+- `write_chunk_snapshot` is the second call site the plan omitted: `delegation.py` calls it directly.
+
+#### File Modifications:
+1. **`edgar_sec/pipelines/document_storage/checkpoint.py`**:
+   - Add the column to `DOCUMENT_SNAPSHOT_SCHEMA`.
+   - Extend `write_chunk_snapshot` to accept `metadata_map: Mapping[str, str] | None = None`.
+2. **`edgar_sec/pipelines/document_storage/worker.py`**: emit the column from `_build_snapshot_batch` — the function this plan formerly called `_assemble_batch`.
+3. **`tests/pipelines/document_storage/test_checkpoint.py`**: verify the `metadata` column is written and validated. The path this plan names, `tests/infra/storage/test_document_parquet.py`, does not exist; `infra/storage` owns no document snapshot schema, and the mirrored test for `checkpoint.py` is the one above.
+
+---
+
+### Stage 5: Inversion Recovery & Dual-Write Storage (Layer 4 — deferred)
 
 #### Responsibilities:
 - In `fetching.py`, gate exhibit detection with `2000 <= filing_year < 2005`, `RE_STATUTORY_EXHIBIT_FILENAME`, and `RE_PRIMARY_FORM_TOKEN` rejection to strictly avoid false-positive bundle fetches on tickers (`EXAS`, `EXPO`) or company names (`exxon10k.htm`).
 - When a true pre-2005 exhibit target is identified, promote the fetch to `<accession>.txt`.
 - In `worker.py`, when an inversion is recovered via Tier 1 `<TYPE>` matching in `unpacker.py`, dual-write both the recovered primary document (`role: "primary"`) and the original exhibit (`role: "exhibit"`, `parent_locator_key`).
+- Both `RE_STATUTORY_EXHIBIT_FILENAME` and `get_primary_form_token_pattern` are still unimplemented. The dependencies this stage names do exist: `unpacker.resolve_target_sub_document`, `fetching.extract_from_sgml_envelope`, `aliases_for_family`, and `build_alternation`.
 
 #### URL / Filename Is Not Authoritative for Primary Identity (2000–2005 era)
 
@@ -497,43 +501,48 @@ the bundle format:
    - Detect pre-2005 exhibit-named targets via `RE_STATUTORY_EXHIBIT_FILENAME` and resolve to the accession bundle `<accession>.txt`.
    - `extract_from_sgml_envelope` extracts the true primary form matching `target_types=(form, form/A)` via Tier 1 in `unpacker.py`.
 2. **`edgar_sec/pipelines/document_storage/worker.py`**:
-   - In `_assemble_batch`, map `metadata` to the 14th column.
    - For recovered inversions, append both the primary form and the exhibit occurrence records to the chunk batch.
+   - Emitting `metadata` to the 14th column is Stage 4 work, in `_build_snapshot_batch`.
 3. **`tests/pipelines/document_storage/test_worker.py`**:
    - Add test case verifying dual-write on inverted fixture submissions.
 
 ---
 
-### Stage 5: Quality Gate & Verification
+### Stage 6: Quality Gate & Verification
 
 #### Responsibilities:
 - Run all static policy scanners (`check.py`).
-- Run full test suite (`check.py --all`).
+- Run the full test suite (`check.py --all`), only when explicitly requested.
 - Verify line count limits (`worker.py` < 800 lines).
 - Update package `README.md` files for touched packages.
 
 #### Verification Steps:
-1. `.venv/bin/python check.py --fast` (All 12 policy scanners green).
-2. `.venv/bin/python check.py --all` (Complete test suite green).
-3. Probe script verifying normalized output and structural metadata on review cohort filings.
+1. `.venv/bin/python check.py --fast` (all registered policy scanners green — `AGENTS.md` registers 14, not the 12 this plan previously claimed).
+2. `.venv/bin/python check.py --all` (complete test suite green).
+3. Probe script verifying normalized output and representation on review cohort filings, covering a flat `.xml`, an XSL rendering, and a `.paper` stub.
 
 ---
 
 ## 3. Component Touch Matrix
 
+Actual Milestone 1 changes. The deferred Stage 4 and Stage 5 work is excluded; its files are listed in those stages instead.
+
 | Component File | Layer | Action | Scanners & Contracts Enforced |
 | :--- | :--- | :--- | :--- |
-| `edgar_sec/pipelines/document_storage/checkpoint.py` | Layer 4 | **EDIT** | 14-column `DOCUMENT_SNAPSHOT_SCHEMA`; atomic writer & validator updates. |
-| `tests/pipelines/document_storage/test_checkpoint.py` | Tests | **EDIT** | Mirrored path rule; verify metadata column write and validation. |
-| `edgar_sec/engine/forms/normalize.py` | Layer 3 | **EDIT** | Enable `is_no_cover` reflow from line 0 for `GENERIC` ASCII / exhibits, while preserving cover boundaries for `8-K`, `6-K`, `10-K`, `10-Q`. |
-| `tests/engine/forms/test_normalize.py` | Tests | **EDIT** | Verify no-cover prose unwrapping for `GENERIC`/exhibits and cover boundary reflow for `8-K`/`6-K`. |
-| `edgar_sec/pipelines/document_storage/processor.py` | Layer 4 | **EDIT** | Bump `PROCESSOR_SCHEMA_VERSION = 2`; format structural metadata. |
-| `tests/pipelines/document_storage/test_processor.py` | Tests | **EDIT** | Verify v2 fingerprint and metadata serialization. |
-| `edgar_sec/pipelines/document_storage/fetching.py` | Layer 4 | **EDIT** | Promote pre-2005 exhibit targets to bundle fetches. |
-| `edgar_sec/pipelines/document_storage/worker.py` | Layer 4 | **EDIT** | Emit 14-column batch; handle inversion dual-write; keep < 800 lines. |
-| `tests/pipelines/document_storage/test_worker.py` | Tests | **EDIT** | Verify chunk serialization, metadata column, and dual-write. |
-| `edgar_sec/infra/storage/README.md` | Doc | **EDIT** | Update 14-column schema documentation. |
-| `edgar_sec/pipelines/document_storage/README.md` | Doc | **EDIT** | Document structural metadata and inversion dual-write. |
+| `edgar_sec/domain/document/route.py` | Layer 1 | **ADD** | `DocumentRoute` classification; slash-outranks-suffix rule; single MIME vocabulary. |
+| `tests/domain/document/test_route.py` | Tests | **ADD** | Mirrored path rule; route table and MIME table coverage. |
+| `edgar_sec/engine/forms/normalize.py` | Layer 3 | **EDIT** | Route-gated no-cover reflow from line 0; route-driven representation; paper stub and binary refusal. |
+| `edgar_sec/engine/forms/cover/profiles.py` | Layer 3 | **EDIT** | `GENERIC_PROFILE_FAMILY` as the no-cover key. |
+| `tests/engine/forms/test_normalize.py` | Tests | **EDIT** | No-cover unwrapping, cover-boundary reflow, and XML no-reflow regression. |
+| `edgar_sec/pipelines/document_storage/processor.py` | Layer 4 | **EDIT** | `PROCESSOR_SCHEMA_VERSION = 2`; binary verbatim storage; `raw` text contract. |
+| `tests/pipelines/document_storage/test_processor.py` | Tests | **ADD** | v2 fingerprint and diagnostic metadata. |
+| `edgar_sec/pipelines/document_storage/fetching.py` | Layer 4 | **EDIT** | `archive_root_url()` rendered-document fallback; fixture lookup order. |
+| `edgar_sec/pipelines/document_storage/fixture_operator.py` | Layer 4 | **EDIT** | MIME sourced from the shared route table. |
+| `edgar_sec/pipelines/document_storage/review_artifacts.py` | Layer 4 | **EDIT** | Review defers a binary route exactly as the worker does. |
+| `tests/pipelines/document_storage/test_worker.py` | Tests | **EDIT** | Checkpoint reuse gated on the v2 fingerprint. |
+| `edgar_sec/domain/document/README.md` | Doc | **EDIT** | Route contracts and caller obligations. |
+| `edgar_sec/engine/forms/README.md` | Doc | **EDIT** | Route-driven stage eligibility and representation. |
+| `edgar_sec/pipelines/document_storage/README.md` | Doc | **EDIT** | Route-aware acquisition and normalization. |
 
 ---
 
@@ -541,4 +550,4 @@ the bundle format:
 
 This plan conforms strictly to:
 1. `AGENTS.md` (5-layer acyclic downward import contract, cgroup memory bounds, mirrored test structure, zero legacy shims).
-2. [Architecture & Product Roadmap (v2)](./design.md) (symmetric document storage, structural metadata contract, Lakehouse aggregate design).
+2. [Architecture & Product Roadmap (v2)](./design.md) (document route selection, sparse aggregate design, Lakehouse aggregate design).

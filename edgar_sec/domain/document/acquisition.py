@@ -8,9 +8,11 @@ from __future__ import annotations
 
 import re
 from dataclasses import dataclass, field
+from enum import StrEnum
 from typing import Any, Literal
 
 from edgar_sec.domain.document.models import DocumentLocator
+from edgar_sec.domain.document.route import DocumentRoute, content_route, document_route
 
 FetchStatus = Literal["ok", "missing", "failed"]
 
@@ -37,6 +39,73 @@ def is_stub_document_path(document_path: str | None) -> bool:
     return lowered.endswith(_STUB_SEQUENCE_SUFFIXES)
 
 
+class AcquisitionSourceKind(StrEnum):
+    """What kind of source produced an acquired payload."""
+
+    #: An EDGAR archive URL served over the transport.
+    ARCHIVE_URL = "archive_url"
+    #: A recorded response replayed from a fixture store.
+    FIXTURE = "fixture"
+
+
+@dataclass(frozen=True, slots=True)
+class AcquisitionSource:
+    """The exact source that produced a payload, distinct from the requested locator.
+
+    The two differ whenever a rendered link is served from the archive root, so a
+    caller that assumes they are equal misreports where its bytes came from.
+    """
+
+    kind: AcquisitionSourceKind
+    reference: str
+
+
+@dataclass(frozen=True, slots=True)
+class SgmlSubDocumentHeader:
+    """One SGML sub-document's header facts, without its payload.
+
+    Observed facts only: nothing here asserts the sub-document is a filing's primary
+    document, or that any sibling is an exhibit.
+    """
+
+    sequence: int | None
+    doc_type: str
+    filename: str
+    description: str | None
+
+
+@dataclass(frozen=True, slots=True)
+class SgmlEnvelopeResolution:
+    """The selected sub-document of an SGML envelope, plus its siblings.
+
+    ``siblings`` excludes the selected document and keeps envelope order. No sibling
+    carries bytes, so resolving one document never materializes a whole submission.
+    """
+
+    selected: SgmlSubDocumentHeader
+    siblings: tuple[SgmlSubDocumentHeader, ...]
+
+
+@dataclass(frozen=True, slots=True)
+class AcquiredDocument:
+    """One requested locator's payload, and how it resolved.
+
+    Carries no source envelope: that spans the whole submission, and only the selected
+    sub-document is needed.
+    """
+
+    locator: DocumentLocator
+    payload: bytes
+    content_route: DocumentRoute
+    source: AcquisitionSource | None = None
+    envelope: SgmlEnvelopeResolution | None = None
+
+    @property
+    def document_locator_key(self) -> str:
+        """The requested document's identity, never the acquired source's."""
+        return self.locator.document_locator_key
+
+
 @dataclass(frozen=True, slots=True)
 class FetchResult:
     """What one acquisition attempt produced.
@@ -50,6 +119,8 @@ class FetchResult:
     status: FetchStatus
     error: str | None = None
     source_payload: bytes | None = None
+    source: AcquisitionSource | None = None
+    envelope: SgmlEnvelopeResolution | None = None
 
     @property
     def ok(self) -> bool:
@@ -58,6 +129,27 @@ class FetchResult:
     @property
     def byte_size(self) -> int:
         return 0 if self.payload is None else len(self.payload)
+
+    @property
+    def acquired(self) -> AcquiredDocument | None:
+        """This fetch as an acquired document, or ``None`` when it did not succeed.
+
+        The route follows the bytes: a selected sub-document carries its own filename.
+        """
+        if self.payload is None or self.status != "ok":
+            return None
+        route = (
+            content_route(self.envelope.selected.filename)
+            if self.envelope is not None
+            else document_route(self.locator.document_path)
+        )
+        return AcquiredDocument(
+            locator=self.locator,
+            payload=self.payload,
+            content_route=route,
+            source=self.source,
+            envelope=self.envelope,
+        )
 
 
 @dataclass(frozen=True, slots=True)
@@ -73,8 +165,13 @@ class AcquisitionFailure:
 
 
 __all__ = [
+    "AcquiredDocument",
     "AcquisitionFailure",
+    "AcquisitionSource",
+    "AcquisitionSourceKind",
     "FetchResult",
     "FetchStatus",
+    "SgmlEnvelopeResolution",
+    "SgmlSubDocumentHeader",
     "is_stub_document_path",
 ]

@@ -9,7 +9,13 @@ from __future__ import annotations
 from dataclasses import dataclass, field
 from typing import Any, Protocol, runtime_checkable
 
+from edgar_sec.domain.document.acquisition import AcquiredDocument
 from edgar_sec.domain.document.models import DocumentLocator
+from edgar_sec.domain.document.route import (
+    REPRESENTATION_RAW,
+    DocumentRoute,
+    mime_type_for_suffix,
+)
 from edgar_sec.domain.forms.common.decisions import EvaluatorDecision
 from edgar_sec.engine.document.page_markers.models import PageMarkerAction
 from edgar_sec.engine.forms.normalize import NormalizationResult, normalize_document
@@ -18,12 +24,10 @@ from edgar_sec.foundation.hashing import sha256_text
 
 #: Bumped when normalization output changes shape; the fingerprint gates chunk reuse,
 #: so an older processor's checkpoints are not interchangeable with this one's.
-PROCESSOR_SCHEMA_VERSION = 1
+PROCESSOR_SCHEMA_VERSION = 2
 
 #: Identifies *which* normalization produced a text.
 PROCESSOR_FINGERPRINT = f"document-storage-normalizer:v{PROCESSOR_SCHEMA_VERSION}"
-
-REPRESENTATION_RAW = "raw"
 
 #: Distinct so one processor's checkpoint is never reused by the other.
 PASS_THROUGH_FINGERPRINT = "raw-pass-through"
@@ -98,7 +102,12 @@ class ProcessedDocument:
 
     @property
     def text(self) -> str:
-        """The normalized text, or the empty string for a pass-through."""
+        """The normalized text, or empty for a payload stored verbatim as ``raw``.
+
+        Decoding a raw payload would invent text and misreport the document's size.
+        """
+        if self.representation == REPRESENTATION_RAW:
+            return ""
         return self.payload.decode("utf-8", errors="replace")
 
     @property
@@ -112,10 +121,10 @@ class ProcessedDocument:
 
 @runtime_checkable
 class DocumentProcessor(Protocol):
-    """Transform one raw document into a storable form."""
+    """Transform one acquired document into a storable form."""
 
-    def process(self, raw_bytes: bytes, locator: DocumentLocator) -> ProcessedDocument:
-        """Process one raw document for the given locator."""
+    def process(self, acquired: AcquiredDocument) -> ProcessedDocument:
+        """Process one acquired document."""
 
 
 class FilingProcessor:
@@ -131,12 +140,41 @@ class FilingProcessor:
         """Identity a checkpoint must match before it may be reused."""
         return self._fingerprint
 
-    def process(self, raw_bytes: bytes, locator: DocumentLocator) -> ProcessedDocument:
-        result = normalize_document(raw_bytes, form=locator.form)
+    def _store_binary(
+        self, raw_bytes: bytes, locator: DocumentLocator
+    ) -> ProcessedDocument:
+        """Store a binary document verbatim; no text extraction is implemented.
 
+        The filed bytes are the document, so a transformation would replace them with
+        something the filer never submitted under a ``raw`` label that was then false.
+        """
+        return ProcessedDocument(
+            document_locator_key=locator.document_locator_key,
+            payload=raw_bytes,
+            byte_size=len(raw_bytes),
+            mime_type=mime_type_for_suffix(locator.document_path),
+            representation=REPRESENTATION_RAW,
+            processor_fingerprint=self._fingerprint,
+            metadata={"normalization": "deferred", "document_route": "binary"},
+        )
+
+    def process(self, acquired: AcquiredDocument) -> ProcessedDocument:
+        locator = acquired.locator
+        route = acquired.content_route
+        if route is DocumentRoute.BINARY:
+            return self._store_binary(acquired.payload, locator)
+
+        result = normalize_document(
+            acquired.payload,
+            form=locator.form,
+            content_route=route,
+        )
+
+        # A paper stub carries no prose, so triage would run an evaluator over a
+        # boilerplate pointer and always reach the same verdict.
         plugin = get_plugin(locator.form)
         decision: EvaluatorDecision | None = None
-        if plugin.evaluator is not None:
+        if plugin.evaluator is not None and route is not DocumentRoute.PAPER:
             decision = plugin.evaluator(result.text)
 
         marker_count, stripped_count, preserved_count = _page_counts(result)
@@ -188,11 +226,11 @@ class PassThroughProcessor:
         """Identity a checkpoint must match before it may be reused."""
         return PASS_THROUGH_FINGERPRINT
 
-    def process(self, raw_bytes: bytes, locator: DocumentLocator) -> ProcessedDocument:
+    def process(self, acquired: AcquiredDocument) -> ProcessedDocument:
         return ProcessedDocument(
-            document_locator_key=locator.document_locator_key,
-            payload=raw_bytes,
-            byte_size=len(raw_bytes),
+            document_locator_key=acquired.document_locator_key,
+            payload=acquired.payload,
+            byte_size=len(acquired.payload),
             mime_type="application/octet-stream",
             representation=REPRESENTATION_RAW,
             processor_fingerprint=PASS_THROUGH_FINGERPRINT,

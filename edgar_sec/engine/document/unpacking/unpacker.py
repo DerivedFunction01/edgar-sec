@@ -6,6 +6,9 @@ import re
 from collections.abc import Sequence
 from dataclasses import dataclass
 
+from edgar_sec.domain.document.acquisition import SgmlSubDocumentHeader
+from edgar_sec.domain.document.route import is_markup_document_path
+
 _RE_DOCUMENT = re.compile(r"(?is)<DOCUMENT>(.*?)</DOCUMENT>")
 _RE_TAG_TYPE = re.compile(r"(?im)^\s*<TYPE>\s*([^\r\n<]+)")
 _RE_TAG_SEQUENCE = re.compile(r"(?im)^\s*<SEQUENCE>\s*([^\r\n<]+)")
@@ -20,6 +23,7 @@ _RE_DOCUMENT_B = re.compile(rb"(?is)<DOCUMENT>(.*?)</DOCUMENT>")
 _RE_TAG_TYPE_B = re.compile(rb"(?im)^\s*<TYPE>\s*([^\r\n<]+)")
 _RE_TAG_SEQUENCE_B = re.compile(rb"(?im)^\s*<SEQUENCE>\s*([^\r\n<]+)")
 _RE_TAG_FILENAME_B = re.compile(rb"(?im)^\s*<FILENAME>\s*([^\r\n<]+)")
+_RE_TAG_DESCRIPTION_B = re.compile(rb"(?im)^\s*<DESCRIPTION>\s*([^\r\n<]+)")
 _RE_TAG_TEXT_B = re.compile(rb"(?is)<TEXT>(.*?)</TEXT>")
 
 _NON_TEXT_EXTENSIONS = (
@@ -134,9 +138,8 @@ def unpack_sgml_submission(raw_bytes: bytes | str) -> list[SgmlSubDocument]:
             inner_text = doc_block.strip()
 
         payload = inner_text.encode("latin-1")
-        lowered_filename = filename.lower()
         is_html = (
-            lowered_filename.endswith((".htm", ".html", ".xhtml"))
+            is_markup_document_path(filename)
             or "<html" in inner_text[:1000].lower()
             or "<!doctype html" in inner_text[:1000].lower()
         )
@@ -227,18 +230,35 @@ def resolve_target_sub_document(
     return None
 
 
-def extract_target_sub_document(
+@dataclass(frozen=True, slots=True)
+class SgmlSubDocumentSelection:
+    """A chosen sub-document's payload, with every sub-document's headers.
+
+    Only the selected body is materialized, so one document never loads a submission.
+    """
+
+    payload: bytes
+    selected: SgmlSubDocumentHeader
+    siblings: tuple[SgmlSubDocumentHeader, ...]
+
+
+def extract_target_sub_document_selection(
     raw_bytes: bytes,
     *,
     target_types: Sequence[str] | None = None,
     primary_filename: str | None = None,
     fallback_to_sequence_one: bool = True,
-) -> bytes | None:
-    """Selectively extract the resolved target sub-document payload."""
+) -> SgmlSubDocumentSelection | None:
+    """Select one sub-document's payload and report every sub-document's headers.
+
+    Resolution is ``resolve_target_sub_document``'s, unchanged; this adds the header
+    record and returns it alongside the payload.
+    """
     if not raw_bytes:
         return None
 
     refs: list[tuple[SgmlSubDocument, int, int]] = []
+    headers: list[SgmlSubDocumentHeader] = []
     for match in _RE_DOCUMENT_B.finditer(raw_bytes):
         block = raw_bytes[match.start(1) : match.end(1)]
         doc_type_raw = _clean_b_field(_RE_TAG_TYPE_B.search(block)) or ""
@@ -259,6 +279,14 @@ def extract_target_sub_document(
             is_html=False,
         )
         refs.append((light, match.start(1), match.end(1)))
+        headers.append(
+            SgmlSubDocumentHeader(
+                sequence=sequence,
+                doc_type=doc_type_raw.upper(),
+                filename=filename,
+                description=_clean_b_field(_RE_TAG_DESCRIPTION_B.search(block)),
+            )
+        )
 
     if not refs:
         return None
@@ -271,19 +299,47 @@ def extract_target_sub_document(
     )
     if winner is None:
         return None
-    for doc, start, end in refs:
-        if doc is winner:
-            block = raw_bytes[start:end]
-            text_match = _RE_TAG_TEXT_B.search(block)
-            if text_match is not None:
-                return text_match.group(1).strip(b"\r\n")
-            return block.decode("latin-1").strip().encode("latin-1")
+    for index, (doc, start, end) in enumerate(refs):
+        if doc is not winner:
+            continue
+        block = raw_bytes[start:end]
+        text_match = _RE_TAG_TEXT_B.search(block)
+        if text_match is not None:
+            payload = text_match.group(1).strip(b"\r\n")
+        else:
+            payload = block.decode("latin-1").strip().encode("latin-1")
+        return SgmlSubDocumentSelection(
+            payload=payload,
+            selected=headers[index],
+            siblings=tuple(
+                header for position, header in enumerate(headers) if position != index
+            ),
+        )
     return None
+
+
+def extract_target_sub_document(
+    raw_bytes: bytes,
+    *,
+    target_types: Sequence[str] | None = None,
+    primary_filename: str | None = None,
+    fallback_to_sequence_one: bool = True,
+) -> bytes | None:
+    """Selectively extract the resolved target sub-document payload."""
+    selection = extract_target_sub_document_selection(
+        raw_bytes,
+        target_types=target_types,
+        primary_filename=primary_filename,
+        fallback_to_sequence_one=fallback_to_sequence_one,
+    )
+    return None if selection is None else selection.payload
 
 
 __all__ = [
     "SgmlSubDocument",
+    "SgmlSubDocumentSelection",
     "extract_target_sub_document",
+    "extract_target_sub_document_selection",
     "find_sub_document",
     "has_sgml_documents",
     "resolve_target_sub_document",

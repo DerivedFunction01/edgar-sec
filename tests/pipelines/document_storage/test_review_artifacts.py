@@ -2,21 +2,26 @@
 
 from __future__ import annotations
 
+import hashlib
 import json
 import sqlite3
 from pathlib import Path
 
 import pytest
 
-from edgar_sec.domain.document.models import DocumentLocator
+from edgar_sec.domain.document.models import DocumentLocator, RawDocumentBlob
 from edgar_sec.foundation.runtime.paths import ProjectPaths
 from edgar_sec.pipelines.document_storage.fixture_store import FixtureStore
 from edgar_sec.pipelines.document_storage.paths import REVIEW_MANIFEST_NAME
 from edgar_sec.pipelines.document_storage.review_artifacts import (
     ReviewArtifactError,
+    ReviewCase,
+    bounded_analysis,
     render_review_run,
+    run_review_case,
     sanitized_source_html,
     select_review_cases,
+    write_review_artifacts,
 )
 
 ASCII_SOURCE = (
@@ -33,6 +38,15 @@ HTML_SOURCE = (
     b"<html><head><script>evil()</script><style>a{}</style></head>"
     b'<body><a href="http://x/" onclick="steal()">link</a>'
     b"<table><tr><td>1</td></tr></table></body></html>"
+)
+#: Non-ASCII bytes that must survive a review run that stores the payload verbatim.
+PDF_SOURCE = b"%PDF-1.4\n%\xe2\xe3\xcf\xd3\n1 0 obj\n<< /Type /Catalog >>\nendobj\n"
+PAPER_SOURCE = (
+    b"<SEC-DOCUMENT>\n<TEXT>\nThis document was generated as part of a paper "
+    b"submission.\n</TEXT>\n</SEC-DOCUMENT>\n"
+)
+WRAPPED_SOURCE = (
+    b"The registrant agrees to report on a\nfiscal year basis, as amended.\n"
 )
 
 
@@ -276,3 +290,139 @@ def test_one_failing_document_does_not_end_the_run(tmp_path: Path) -> None:
     assert result.failures
     assert result.rendered == 2
     assert result.selected == 3
+
+
+# --- route parity with the worker ------------------------------------------
+
+
+def _binary_case(document_path: str) -> ReviewCase:
+    return ReviewCase(
+        document=RawDocumentBlob(
+            doc_id="doc-pdf",
+            accession="0001234567-11-000001",
+            document_path=document_path,
+            byte_size=len(PDF_SOURCE),
+            mime_type="application/pdf",
+            raw_payload_sha256=hashlib.sha256(PDF_SOURCE).hexdigest(),
+        ),
+        form="8-K",
+        form_source="fixture",
+        payload=PDF_SOURCE,
+    )
+
+
+def test_review_defers_a_binary_document(tmp_path: Path) -> None:
+    """Review must reach the same outcome the worker does, or it verifies nothing."""
+    result = run_review_case(_binary_case("chart.pdf"))
+
+    assert result.normalization is None
+    assert result.text == ""
+
+
+def test_review_analysis_records_why_a_document_was_deferred() -> None:
+    analysis = bounded_analysis(None)
+
+    assert analysis == {"normalization": "deferred", "reason": "binary document"}
+
+
+def test_review_manifest_reports_raw_for_a_deferred_document(tmp_path: Path) -> None:
+    entry = write_review_artifacts(
+        run_review_case(_binary_case("chart.pdf")), tmp_path / "run", "fix-x"
+    )
+
+    assert entry["representation"] == "raw"
+
+
+def test_review_writes_binary_bytes_verbatim(tmp_path: Path) -> None:
+    """A lost byte must stay distinguishable from a byte that was never there."""
+    result = run_review_case(_binary_case("chart.pdf"))
+    write_review_artifacts(result, tmp_path / "run", "fix-x")
+
+    assert (tmp_path / "run" / "doc-pdf.source.txt").read_bytes() == PDF_SOURCE
+    assert (tmp_path / "run" / "doc-pdf.txt").read_text() == "\n"
+
+
+def _rendered_case() -> ReviewCase:
+    return ReviewCase(
+        document=RawDocumentBlob(
+            doc_id="doc-rendered",
+            accession="0001234567-11-000001",
+            document_path="xslF345X02/edgar.xml",
+            byte_size=len(HTML_SOURCE),
+            mime_type="text/html",
+            raw_payload_sha256=hashlib.sha256(HTML_SOURCE).hexdigest(),
+        ),
+        form="4",
+        form_source="fixture",
+        payload=HTML_SOURCE,
+    )
+
+
+def test_review_gives_a_rendered_document_a_browser_view(tmp_path: Path) -> None:
+    """A rendering is served as HTML, so a suffix-only test withheld the view."""
+    write_review_artifacts(run_review_case(_rendered_case()), tmp_path / "run", "fix-x")
+
+    assert (tmp_path / "run" / "doc-rendered.html").is_file()
+
+
+def test_review_withholds_a_browser_view_from_a_text_document(tmp_path: Path) -> None:
+    case = ReviewCase(
+        document=RawDocumentBlob(
+            doc_id="doc-txt",
+            accession="0001234567-11-000001",
+            document_path="alpha.txt",
+            byte_size=len(ASCII_SOURCE),
+            mime_type="text/plain",
+            raw_payload_sha256=hashlib.sha256(ASCII_SOURCE).hexdigest(),
+        ),
+        form="10-K",
+        form_source="fixture",
+        payload=ASCII_SOURCE,
+    )
+    write_review_artifacts(run_review_case(case), tmp_path / "run", "fix-x")
+
+    assert not (tmp_path / "run" / "doc-txt.html").exists()
+
+
+def test_review_routes_a_paper_stub_like_the_worker() -> None:
+    """Without the path, review ran six stages where the worker runs one."""
+    case = ReviewCase(
+        document=RawDocumentBlob(
+            doc_id="doc-paper",
+            accession="0001234567-11-000001",
+            document_path="9999999997-25-001505.paper",
+            byte_size=len(PAPER_SOURCE),
+            mime_type="text/plain",
+            raw_payload_sha256=hashlib.sha256(PAPER_SOURCE).hexdigest(),
+        ),
+        form="REGDEX",
+        form_source="fixture",
+        payload=PAPER_SOURCE,
+    )
+
+    result = run_review_case(case)
+
+    assert result.normalization is not None
+    assert [record.stage for record in result.normalization.stage_trace] == ["unpacked"]
+
+
+def test_review_reflows_a_no_cover_text_document_like_the_worker() -> None:
+    case = ReviewCase(
+        document=RawDocumentBlob(
+            doc_id="doc-txt",
+            accession="0001234567-11-000001",
+            document_path="note.txt",
+            byte_size=len(WRAPPED_SOURCE),
+            mime_type="text/plain",
+            raw_payload_sha256=hashlib.sha256(WRAPPED_SOURCE).hexdigest(),
+        ),
+        form="REGDEX",
+        form_source="fixture",
+        payload=WRAPPED_SOURCE,
+    )
+
+    result = run_review_case(case)
+
+    assert result.normalization is not None
+    assert result.normalization.reflow is not None
+    assert len(result.text.splitlines()) == 1

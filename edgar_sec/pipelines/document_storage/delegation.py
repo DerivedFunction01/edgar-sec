@@ -12,11 +12,16 @@ from contextlib import suppress
 from dataclasses import dataclass
 from pathlib import Path
 
+from edgar_sec.domain.document.acquisition import (
+    AcquiredDocument,
+    AcquisitionSource,
+)
 from edgar_sec.domain.document.models import (
     DocumentLocator,
     derive_document_locator_key,
     derive_occurrence_id,
 )
+from edgar_sec.domain.document.route import content_route
 from edgar_sec.domain.identity import AccessionNumber, Cik
 from edgar_sec.domain.sec_urls import accession_hyphenated, normalize_accession
 from edgar_sec.engine.document.unpacking.unpacker import (
@@ -132,6 +137,7 @@ def resolve_delegated_exhibit(
     target_text = str(target)
 
     bundle = source_bundle
+    bundle_source: AcquisitionSource | None = None
     source = "in-bundle"
     if bundle is None:
         bundle_locator = _bundle_locator(primary)
@@ -143,6 +149,7 @@ def resolve_delegated_exhibit(
                 candidate = bundle_result.source_payload or bundle_result.payload
                 if candidate is not None and has_sgml_documents(candidate):
                     bundle = candidate
+                    bundle_source = bundle_result.source
                     source = "bundle-fetch"
     if bundle is None:
         log.info("no bundle available for %s", primary.document_locator_key)
@@ -168,7 +175,16 @@ def resolve_delegated_exhibit(
     if payload_sink is not None:
         payload_sink(exhibit_locator, sub_doc.raw_payload)
 
-    exhibit_processed = processor.process(sub_doc.raw_payload, exhibit_locator)
+    exhibit_processed = processor.process(
+        AcquiredDocument(
+            locator=exhibit_locator,
+            payload=sub_doc.raw_payload,
+            # A sub-document names itself in its SGML filename, and a slash there is
+            # never an XSL directory, so the content route ignores directories.
+            content_route=content_route(sub_doc.filename),
+            source=bundle_source,
+        )
+    )
     exhibit_processed = _annotate_delegation(
         exhibit_processed, primary, target_text, document_path
     )

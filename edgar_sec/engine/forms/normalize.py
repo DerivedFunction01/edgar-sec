@@ -7,6 +7,13 @@ from __future__ import annotations
 
 from dataclasses import dataclass, field, replace
 
+from edgar_sec.domain.document.route import (
+    REPRESENTATION_ASCII,
+    REPRESENTATION_HTML,
+    REPRESENTATION_XML,
+    DocumentRoute,
+    document_route,
+)
 from edgar_sec.domain.forms.common.aliases import resolve_alias
 from edgar_sec.domain.forms.common.models import StageRecord
 from edgar_sec.domain.taxonomy.statements.predicates import (
@@ -43,9 +50,10 @@ from edgar_sec.engine.forms.cover.healing.text import heal_cover_text
 from edgar_sec.engine.forms.cover.models import (
     BodyStart,
     BoundaryInput,
+    BoundaryMethod,
     CoverBoundary,
 )
-from edgar_sec.engine.forms.cover.profiles import get_profile
+from edgar_sec.engine.forms.cover.profiles import GENERIC_PROFILE_FAMILY, get_profile
 from edgar_sec.engine.forms.cover.reflow import (
     is_checkbox_answer_line,
     is_cover_layout_line,
@@ -57,6 +65,47 @@ from edgar_sec.engine.reflow.engine.mapper import build_line_mapper
 from edgar_sec.engine.reflow.engine.rewrapper import reflow_ascii
 from edgar_sec.engine.reflow.types import ReflowPolicy, ReflowResult
 from edgar_sec.engine.tables.ascii_html.model import TableGeometry
+
+
+#: Routes carrying text eligible for prose reflow. Markup, XML, binary, and paper
+#: routes are excluded by omission: only these two are ever normalized as prose.
+_TEXT_ROUTES = frozenset({DocumentRoute.TEXT, DocumentRoute.UNKNOWN})
+
+
+def _representation_name(route: DocumentRoute, detected: Representation) -> str:
+    """Name the representation that was actually applied.
+
+    The route overrides detection only where detection cannot see the format.
+    """
+    if route is DocumentRoute.XML:
+        return REPRESENTATION_XML
+    if detected is Representation.HTML:
+        return REPRESENTATION_HTML
+    return REPRESENTATION_ASCII
+
+
+def _normalize_paper_stub(raw_bytes: bytes, *, form: str | None) -> NormalizationResult:
+    """Record a paper submission without running the form-driven prose pipeline.
+
+    Every ``.paper`` payload is one fixed SGML stub naming an off-archive Document
+    Control Number; there is no filing prose to parse.
+    """
+    text, _representation, _encoding = prepare_input_text(raw_bytes)
+    stripped = text.strip()
+    canonical_family = resolve_alias(form)
+    return NormalizationResult(
+        text=stripped,
+        family=canonical_family or (form.upper().strip() if form else "GENERIC"),
+        representation=REPRESENTATION_ASCII,
+        cover_boundary=CoverBoundary(
+            end_line=None,
+            end_offset=None,
+            method=BoundaryMethod.DISABLED,
+            confidence=0.0,
+            approximate=True,
+        ),
+        stage_trace=[StageRecord.of("unpacked", stripped)],
+    )
 
 
 @dataclass(frozen=True, slots=True)
@@ -82,10 +131,24 @@ def normalize_document(
     raw_bytes: bytes,
     *,
     form: str | None = None,
+    document_path: str | None = None,
+    content_route: DocumentRoute | None = None,
 ) -> NormalizationResult:
-    """Normalize one raw filing payload. Stage order is canonical and load-bearing; each
-    stage records a `StageRecord` of its own output.
+    """Normalize one raw filing payload; each stage records a `StageRecord` of its output.
+
+    ``content_route`` is the route of the acquired bytes and wins over the requested
+    ``document_path``. A binary route raises rather than inventing text.
     """
+    route = (
+        content_route if content_route is not None else document_route(document_path)
+    )
+    if route is DocumentRoute.PAPER:
+        return _normalize_paper_stub(raw_bytes, form=form)
+    if route is DocumentRoute.BINARY:
+        raise ValueError(
+            f"route {route.value!r} carries no text; store the payload verbatim"
+        )
+
     text, representation, _encoding = prepare_input_text(raw_bytes)
 
     stage_trace: list[StageRecord] = []
@@ -217,7 +280,13 @@ def normalize_document(
     )
 
     reflow_result: ReflowResult | None = None
-    if representation is not Representation.HTML and body_start_line > 0:
+    reflow_eligible = route in _TEXT_ROUTES
+    no_cover = profile.family == GENERIC_PROFILE_FAMILY
+    if (
+        reflow_eligible
+        and representation is not Representation.HTML
+        and (body_start_line > 0 or no_cover)
+    ):
         stage_trace.append(StageRecord.of("before_reflow", text))
         reflow_policy = ReflowPolicy(
             unwrap_pre_body_prose=True,
@@ -231,7 +300,7 @@ def normalize_document(
         )
         reflow_result = reflow_ascii(
             text,
-            body_start_line=body_start_line,
+            body_start_line=0 if no_cover else body_start_line,
             page_analysis=analysis,
             policy=reflow_policy,
         )
@@ -270,7 +339,7 @@ def normalize_document(
     return NormalizationResult(
         text=text.strip(),
         family=family,
-        representation=("html" if representation is Representation.HTML else "ascii"),
+        representation=_representation_name(route, representation),
         cover_boundary=boundary,
         cover_boundary_detected_line=detected_cover_end,
         cover_start_detected_line=detected_cover_start,

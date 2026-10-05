@@ -8,6 +8,7 @@ from __future__ import annotations
 from edgar_sec.engine.document.unpacking.unpacker import (
     SgmlSubDocument,
     extract_target_sub_document,
+    extract_target_sub_document_selection,
     find_sub_document,
     has_sgml_documents,
     resolve_target_sub_document,
@@ -172,6 +173,80 @@ def test_extract_target_sub_document_skips_binary_first_document() -> None:
     )
     payload = extract_target_sub_document(raw, target_types=("10-K",))
     assert payload == b"real"
+
+
+# --- header-only selection -------------------------------------------------
+
+
+def test_selection_reports_the_selected_payload() -> None:
+    selection = extract_target_sub_document_selection(
+        SAMPLE_SGML.encode("utf-8"), target_types=["10-K"]
+    )
+    assert selection is not None
+    assert b"Annual Report" in selection.payload
+    assert b"Subsidiary list." not in selection.payload
+
+
+def test_selection_reports_every_sibling_in_envelope_order() -> None:
+    selection = extract_target_sub_document_selection(
+        SAMPLE_SGML.encode("utf-8"), target_types=["10-K"]
+    )
+    assert selection is not None
+    assert [header.filename for header in selection.siblings] == [
+        "ex21.txt",
+        "image.jpg",
+    ]
+
+
+def test_selection_records_the_selected_header() -> None:
+    selection = extract_target_sub_document_selection(
+        SAMPLE_SGML.encode("utf-8"), target_types=["10-K"]
+    )
+    assert selection is not None
+    assert selection.selected.doc_type == "10-K"
+    assert selection.selected.filename == "form10k.htm"
+    assert selection.selected.sequence == 1
+    assert selection.selected.description == "ANNUAL REPORT"
+
+
+def test_selection_records_sibling_descriptions() -> None:
+    selection = extract_target_sub_document_selection(
+        SAMPLE_SGML.encode("utf-8"), target_types=["10-K"]
+    )
+    assert selection is not None
+    assert selection.siblings[0].description == "SUBSIDIARIES"
+
+
+def test_selection_does_not_materialize_sibling_bodies() -> None:
+    """Sibling headers carry no bytes, so one document never loads a whole submission."""
+    selection = extract_target_sub_document_selection(
+        SAMPLE_SGML.encode("utf-8"), target_types=["10-K"]
+    )
+    assert selection is not None
+    assert not hasattr(selection.siblings[0], "raw_payload")
+    assert b"Subsidiary list." not in selection.payload
+    assert b"binarygarbage" not in selection.payload
+
+
+def test_selection_agrees_with_payload_only_extraction() -> None:
+    raw = SAMPLE_SGML.encode("utf-8")
+    selection = extract_target_sub_document_selection(raw, target_types=["10-K"])
+    assert selection is not None
+    assert selection.payload == extract_target_sub_document(raw, target_types=["10-K"])
+
+
+def test_selection_returns_none_without_a_document() -> None:
+    assert extract_target_sub_document_selection(b"") is None
+    assert extract_target_sub_document_selection(b"no envelope") is None
+
+
+def test_selection_records_missing_headers_as_absent() -> None:
+    bare = b"<DOCUMENT><TYPE>10-K<FILENAME>a.htm<TEXT>body</TEXT></DOCUMENT>"
+    selection = extract_target_sub_document_selection(bare)
+    assert selection is not None
+    assert selection.selected.sequence is None
+    assert selection.selected.description is None
+    assert selection.siblings == ()
 
 
 def test_sgml_sub_document_is_frozen() -> None:

@@ -5,12 +5,19 @@ from pathlib import Path
 
 import pytest
 
-from edgar_sec.domain.document.models import DocumentLocator
+from edgar_sec.domain.document.acquisition import AcquisitionSourceKind
+from edgar_sec.domain.document.models import (
+    DocumentLocator,
+    derive_document_locator_key,
+)
+from edgar_sec.domain.document.route import DocumentRoute
+from edgar_sec.domain.sec_urls import accession_hyphenated
 from edgar_sec.pipelines.document_storage.fetching import (
     ArchiveFetcher,
     BrokerArchiveFetcher,
     FixtureArchiveFetcher,
     LiveArchiveFetcher,
+    archive_root_url,
     build_broker_fetcher,
     extract_from_sgml_envelope,
     make_archive_fetcher,
@@ -23,11 +30,36 @@ ARCHIVE_URL = (
 )
 
 SGML_BUNDLE = (
-    b"<SEC-DOCUMENT><SEC-HEADER>0001</SEC-HEADER><TYPE>10-K</TYPE>"
-    b"<FILENAME>acme-10k.htm</FILENAME><DOCUMENT><TYPE>10-K</TYPE>"
-    b"<SEQUENCE>1</SEQUENCE><FILENAME>acme-10k.htm</FILENAME><TEXT>\n"
+    b"<SEC-DOCUMENT>\n<SEC-HEADER>0001</SEC-HEADER>\n<TYPE>10-K\n"
+    b"<FILENAME>acme-10k.htm\n<DOCUMENT>\n<TYPE>10-K\n"
+    b"<SEQUENCE>1\n<FILENAME>acme-10k.htm\n<TEXT>\n"
     b"<HTML><BODY>PRIMARY DOCUMENT BODY</BODY></HTML>\n"
-    b"</TEXT></DOCUMENT></SEC-DOCUMENT>"
+    b"</TEXT>\n</DOCUMENT>\n</SEC-DOCUMENT>"
+)
+
+
+#: EDGAR SGML is line-oriented: the unpacker anchors its header tags at line starts.
+_INVERTED_BUNDLE = (
+    b"<SEC-DOCUMENT>\n"
+    b"<DOCUMENT>\n<TYPE>EX-21\n<SEQUENCE>1\n<FILENAME>ex21.txt\n"
+    b"<DESCRIPTION>CERTIFICATION OF INCORPORATION\n"
+    b"<TEXT>\nEXHIBIT TWENTY ONE BODY\n</TEXT>\n</DOCUMENT>\n"
+    b"<DOCUMENT>\n<TYPE>EX-99\n<SEQUENCE>2\n<FILENAME>ex99.htm\n"
+    b"<DESCRIPTION>PRESS RELEASE\n"
+    b"<TEXT>\nPRESS RELEASE BODY\n</TEXT>\n</DOCUMENT>\n"
+    b"<DOCUMENT>\n<TYPE>10-K\n<SEQUENCE>3\n<FILENAME>acme-10k.htm\n"
+    b"<DESCRIPTION>ANNUAL REPORT\n"
+    b"<TEXT>\n<HTML><BODY>PRIMARY DOCUMENT BODY</BODY></HTML>\n</TEXT>\n</DOCUMENT>\n"
+    b"</SEC-DOCUMENT>\n"
+)
+
+#: A bundle whose selected primary is XML, though the locator requested the ``.txt``.
+XML_CHILD_BUNDLE = (
+    b"<SEC-DOCUMENT>\n"
+    b"<DOCUMENT>\n<TYPE>4\n<SEQUENCE>1\n<FILENAME>ownership.xml\n"
+    b'<TEXT>\n<?xml version="1.0"?><ownershipDocument><x>1</x></ownershipDocument>\n'
+    b"</TEXT>\n</DOCUMENT>\n"
+    b"</SEC-DOCUMENT>\n"
 )
 
 
@@ -93,21 +125,24 @@ class FakeCacheReader:
 
 def test_plain_document_is_returned_unchanged() -> None:
     payload = b"<html><body>plain</body></html>"
-    extracted, source = extract_from_sgml_envelope(payload, _locator())
-    assert extracted == payload
-    assert source is None
+    extraction = extract_from_sgml_envelope(payload, _locator())
+    assert extraction.payload == payload
+    assert extraction.bundle is None
+    assert extraction.envelope is None
 
 
 def test_envelope_selects_the_target_sub_document() -> None:
-    extracted, source = extract_from_sgml_envelope(SGML_BUNDLE, _locator())
-    assert extracted is not None
-    assert b"PRIMARY DOCUMENT BODY" in extracted
-    assert b"<SEC-DOCUMENT>" not in extracted
-    assert source == SGML_BUNDLE
+    extraction = extract_from_sgml_envelope(SGML_BUNDLE, _locator())
+    assert extraction.payload is not None
+    assert b"PRIMARY DOCUMENT BODY" in extraction.payload
+    assert b"<SEC-DOCUMENT>" not in extraction.payload
+    assert extraction.bundle == SGML_BUNDLE
 
 
 def test_empty_payload_extracts_to_nothing() -> None:
-    assert extract_from_sgml_envelope(b"", _locator()) == (None, None)
+    extraction = extract_from_sgml_envelope(b"", _locator())
+    assert extraction.payload is None
+    assert extraction.bundle is None
 
 
 def test_pem_envelope_is_unwrapped_before_scanning() -> None:
@@ -117,22 +152,69 @@ def test_pem_envelope_is_unwrapped_before_scanning() -> None:
         + SGML_BUNDLE
         + b"\n-----END PRIVACY-ENHANCED MESSAGE-----\n"
     )
-    extracted, source = extract_from_sgml_envelope(pem, _locator())
-    assert extracted is not None
-    assert b"PRIMARY DOCUMENT BODY" in extracted
-    assert source is not None
+    extraction = extract_from_sgml_envelope(pem, _locator())
+    assert extraction.payload is not None
+    assert b"PRIMARY DOCUMENT BODY" in extraction.payload
+    assert extraction.bundle is not None
 
 
 def test_single_document_bundle_resolves_to_that_document() -> None:
     """The unpacker falls back to the first available sub-document."""
     bundle = (
-        b"<SEC-DOCUMENT><DOCUMENT><TYPE>EX-99.1</TYPE><SEQUENCE>2</SEQUENCE>"
-        b"<FILENAME>other.htm</FILENAME><TEXT><html>exhibit</html></TEXT>"
+        b"<SEC-DOCUMENT><DOCUMENT><TYPE>EX-99.1</TYPE>\n<SEQUENCE>2</SEQUENCE>\n"
+        b"<FILENAME>other.htm</FILENAME><TEXT><html>exhibit</html></TEXT>\n"
         b"</DOCUMENT></SEC-DOCUMENT>"
     )
-    extracted, source = extract_from_sgml_envelope(bundle, _locator())
-    assert extracted == b"<html>exhibit</html>"
-    assert source == bundle
+    extraction = extract_from_sgml_envelope(bundle, _locator())
+    assert extraction.payload == b"<html>exhibit</html>"
+    assert extraction.bundle == bundle
+
+
+def test_envelope_records_the_selected_header() -> None:
+    extraction = extract_from_sgml_envelope(SGML_BUNDLE, _locator())
+    assert extraction.envelope is not None
+    assert extraction.envelope.selected.doc_type == "10-K"
+    assert extraction.envelope.selected.filename == "acme-10k.htm"
+    assert extraction.envelope.selected.sequence == 1
+
+
+def test_envelope_records_sibling_headers_in_envelope_order() -> None:
+    extraction = extract_from_sgml_envelope(_INVERTED_BUNDLE, _locator())
+    assert extraction.envelope is not None
+    assert [header.filename for header in extraction.envelope.siblings] == [
+        "ex21.txt",
+        "ex99.htm",
+    ]
+
+
+def test_envelope_sibling_records_carry_no_payload() -> None:
+    """A sibling header describes a document the fetcher never downloaded."""
+    extraction = extract_from_sgml_envelope(_INVERTED_BUNDLE, _locator())
+    assert extraction.envelope is not None
+    assert extraction.payload is not None
+    assert b"EXHIBIT TWENTY ONE BODY" not in extraction.payload
+    assert not hasattr(extraction.envelope.siblings[0], "raw_payload")
+
+
+def test_envelope_records_sequence_and_description_headers() -> None:
+    extraction = extract_from_sgml_envelope(_INVERTED_BUNDLE, _locator())
+    assert extraction.envelope is not None
+    by_name = {header.filename: header for header in extraction.envelope.siblings}
+    assert by_name["ex21.txt"].sequence == 1
+    assert by_name["ex21.txt"].doc_type == "EX-21"
+    assert by_name["ex21.txt"].description == "CERTIFICATION OF INCORPORATION"
+
+
+def test_envelope_header_missing_fields_are_recorded_as_absent() -> None:
+    """A bare envelope must not invent a sequence or description."""
+    bare = (
+        b"<SEC-DOCUMENT><DOCUMENT><TYPE>10-K</TYPE>\n<FILENAME>a.htm</FILENAME>\n"
+        b"<TEXT>body</TEXT></DOCUMENT></SEC-DOCUMENT>"
+    )
+    extraction = extract_from_sgml_envelope(bare, _locator())
+    assert extraction.envelope is not None
+    assert extraction.envelope.selected.sequence is None
+    assert extraction.envelope.siblings == ()
 
 
 # --- fixture fetcher ------------------------------------------------------
@@ -344,6 +426,158 @@ def test_live_fetcher_exposes_metrics() -> None:
     assert LiveArchiveFetcher(client).metrics is client.metrics
 
 
+# --- acquisition provenance ------------------------------------------------
+
+
+def test_direct_fetch_records_the_url_it_served() -> None:
+    client = FakeHttpClient({"acme-10k.htm": b"<html>live</html>"})
+
+    result = LiveArchiveFetcher(client).fetch(_locator())
+
+    assert result.source is not None
+    assert result.source.kind is AcquisitionSourceKind.ARCHIVE_URL
+    assert result.source.reference == ARCHIVE_URL
+
+
+def test_bundle_fetch_records_the_bundle_url_not_the_requested_document_url() -> None:
+    """The bundle is what answered, so its URL is the source."""
+    client = FakeHttpClient({".txt": SGML_BUNDLE})
+
+    result = LiveArchiveFetcher(client).fetch(_locator())
+
+    assert result.source is not None
+    assert result.source.reference.endswith(".txt")
+    assert result.source.reference != ARCHIVE_URL
+
+
+def test_rendered_locator_records_the_archive_root_url_it_actually_used() -> None:
+    locator = _rendered_locator()
+    client = FakeHttpClient({"/edgar.xml": b"<html>root original</html>"})
+
+    result = LiveArchiveFetcher(client).fetch(locator)
+
+    assert result.source is not None
+    assert result.source.reference == RENDERED_ROOT_URL
+
+
+def test_rendered_fallback_records_the_rendered_url() -> None:
+    locator = _rendered_locator()
+    client = FakeHttpClient({"xslF345X02/edgar.xml": b"<html>rendering</html>"})
+
+    result = LiveArchiveFetcher(client).fetch(locator)
+
+    assert result.source is not None
+    assert result.source.reference == RENDERED_URL
+
+
+def test_rendered_acquisition_keeps_the_requested_identity() -> None:
+    locator = _rendered_locator()
+    client = FakeHttpClient({"/edgar.xml": b"<html>root original</html>"})
+
+    result = LiveArchiveFetcher(client).fetch(locator)
+
+    assert result.locator.document_path == "xslF345X02/edgar.xml"
+    assert result.locator.document_locator_key == derive_document_locator_key(
+        ACCESSION, "xslF345X02/edgar.xml"
+    )
+
+
+def test_rendered_root_serving_an_xml_name_is_still_html_routed() -> None:
+    """The root basename is named .xml, but the requested link was a rendering."""
+    locator = _rendered_locator()
+    client = FakeHttpClient({"/edgar.xml": b"<html>root original</html>"})
+
+    acquired = LiveArchiveFetcher(client).fetch(locator).acquired
+
+    assert acquired is not None
+    assert acquired.content_route is DocumentRoute.RENDERED
+    assert acquired.locator.document_path == "xslF345X02/edgar.xml"
+
+
+def test_sgml_child_route_follows_the_child_not_the_requested_bundle() -> None:
+    """An XML primary inside a .txt bundle is XML; the bundle's suffix is not its format."""
+    bundle_locator = _bundle_locator()
+    client = FakeHttpClient({".txt": XML_CHILD_BUNDLE})
+
+    acquired = LiveArchiveFetcher(client).fetch(bundle_locator).acquired
+
+    assert acquired is not None
+    assert acquired.content_route is DocumentRoute.XML
+
+
+def test_sgml_child_route_leaves_the_requested_locator_untouched() -> None:
+    bundle_locator = _bundle_locator()
+    client = FakeHttpClient({".txt": XML_CHILD_BUNDLE})
+
+    acquired = LiveArchiveFetcher(client).fetch(bundle_locator).acquired
+
+    assert acquired is not None
+    assert acquired.document_locator_key == bundle_locator.document_locator_key
+    assert acquired.locator.document_path == bundle_locator.document_path
+
+
+def test_acquired_document_reports_the_selected_payload_and_headers() -> None:
+    client = FakeHttpClient({".txt": _INVERTED_BUNDLE})
+
+    acquired = LiveArchiveFetcher(client).fetch(_locator()).acquired
+
+    assert acquired is not None
+    assert b"PRIMARY DOCUMENT BODY" in acquired.payload
+    assert acquired.envelope is not None
+    assert acquired.envelope.selected.doc_type == "10-K"
+    assert len(acquired.envelope.siblings) == 2
+
+
+def test_acquired_document_carries_no_source_envelope() -> None:
+    """The bundle is released after extraction; a 200MB submission must not be retained."""
+    client = FakeHttpClient({".txt": _INVERTED_BUNDLE})
+
+    acquired = LiveArchiveFetcher(client).fetch(_locator()).acquired
+
+    assert acquired is not None
+    assert not hasattr(acquired, "source_payload")
+
+
+def test_direct_acquisition_has_no_envelope_record() -> None:
+    client = FakeHttpClient({"acme-10k.htm": b"<html>live</html>"})
+
+    acquired = LiveArchiveFetcher(client).fetch(_locator()).acquired
+
+    assert acquired is not None
+    assert acquired.envelope is None
+    assert acquired.content_route is DocumentRoute.MARKUP
+
+
+def test_failed_fetch_has_no_acquired_document() -> None:
+    client = FakeHttpClient({})
+
+    assert LiveArchiveFetcher(client).fetch(_locator()).acquired is None
+
+
+def test_every_backend_records_a_source_for_a_successful_fetch(tmp_path: Path) -> None:
+    """Provenance must not depend on which transport served the bytes."""
+    db_path = tmp_path / "fix.sqlite"
+    _seed_fixture(db_path, _locator(), b"<html>stored</html>")
+    fixture_fetcher = FixtureArchiveFetcher([db_path])
+    fixture_result = fixture_fetcher.fetch(_locator())
+    fixture_fetcher.close()
+
+    broker_result = BrokerArchiveFetcher(
+        FakeBroker({"acme-10k.htm": b"<html>x</html>"})
+    ).fetch(_locator())
+    live_result = LiveArchiveFetcher(
+        FakeHttpClient({"acme-10k.htm": b"<html>x</html>"})
+    ).fetch(_locator())
+
+    assert fixture_result.source is not None
+    assert fixture_result.source.kind is AcquisitionSourceKind.FIXTURE
+    assert fixture_result.source.reference == "acme-10k.htm"
+    assert broker_result.source is not None
+    assert broker_result.source.kind is AcquisitionSourceKind.ARCHIVE_URL
+    assert live_result.source is not None
+    assert live_result.source.kind is AcquisitionSourceKind.ARCHIVE_URL
+
+
 # --- factory --------------------------------------------------------------
 
 
@@ -410,3 +644,116 @@ def test_mode_is_normalized() -> None:
 )
 def test_every_backend_satisfies_the_protocol(fetcher: object) -> None:
     assert isinstance(fetcher, ArchiveFetcher)
+
+
+# --- Rendered path resolution ---------------------------------------------
+
+RENDERED_URL = (
+    "https://www.sec.gov/Archives/edgar/data/1234567/000123456711000001/"
+    "xslF345X02/edgar.xml"
+)
+RENDERED_ROOT_URL = (
+    "https://www.sec.gov/Archives/edgar/data/1234567/000123456711000001/edgar.xml"
+)
+
+
+def _rendered_locator() -> DocumentLocator:
+    return DocumentLocator.from_parts(
+        ACCESSION,
+        "xslF345X02/edgar.xml",
+        archive_url=RENDERED_URL,
+        form="4",
+    )
+
+
+def _bundle_locator() -> DocumentLocator:
+    return DocumentLocator.from_parts(
+        ACCESSION,
+        f"{accession_hyphenated(ACCESSION)}.txt",
+        archive_url=f"{RENDERED_ROOT_URL.rsplit('/', 1)[0]}/"
+        f"{accession_hyphenated(ACCESSION)}.txt",
+        form="4",
+    )
+
+
+def test_archive_root_url_derives_the_original() -> None:
+    assert archive_root_url(_rendered_locator()) == RENDERED_ROOT_URL
+
+
+def test_archive_root_url_is_none_for_a_flat_path() -> None:
+    assert archive_root_url(_locator()) is None
+
+
+def test_resolution_does_not_alter_locator_identity() -> None:
+    """Only the fetched URL may change; the key names the catalog's path."""
+    locator = _rendered_locator()
+
+    archive_root_url(locator)
+
+    assert locator.document_path == "xslF345X02/edgar.xml"
+    assert locator.document_locator_key == derive_document_locator_key(
+        ACCESSION, "xslF345X02/edgar.xml"
+    )
+
+
+def test_live_fetcher_prefers_the_archive_root_over_the_rendering() -> None:
+    client = FakeHttpClient(
+        {"/xslF345X02/edgar.xml": b"RENDERED", "/edgar.xml": b"ORIGINAL"}
+    )
+
+    result = LiveArchiveFetcher(client).fetch(_rendered_locator())
+
+    assert result.ok
+    assert result.payload == b"ORIGINAL"
+    assert client.calls == [RENDERED_ROOT_URL]
+
+
+def test_live_fetcher_falls_back_to_the_rendering() -> None:
+    """A root document that does not exist must not lose a reachable filing."""
+    client = FakeHttpClient({"/xslF345X02/edgar.xml": b"RENDERED"})
+
+    result = LiveArchiveFetcher(client).fetch(_rendered_locator())
+
+    assert result.ok
+    assert result.payload == b"RENDERED"
+    assert client.calls == [RENDERED_ROOT_URL, RENDERED_URL]
+
+
+def test_broker_fetcher_prefers_the_archive_root() -> None:
+    broker = FakeBroker(
+        {"/xslF345X02/edgar.xml": b"RENDERED", "/edgar.xml": b"ORIGINAL"}
+    )
+
+    result = BrokerArchiveFetcher(broker).fetch(_rendered_locator())
+
+    assert result.ok
+    assert result.payload == b"ORIGINAL"
+
+
+def test_flat_path_fetches_directly(tmp_path: Path) -> None:
+    client = FakeHttpClient({"/acme-10k.htm": SGML_BUNDLE})
+
+    result = LiveArchiveFetcher(client).fetch(_locator())
+
+    assert result.ok
+    assert client.calls == [ARCHIVE_URL]
+
+
+def test_fixture_fetcher_resolves_the_archive_root_first(tmp_path: Path) -> None:
+    locator = _rendered_locator()
+    db_path = tmp_path / "fixture.sqlite"
+    _seed_fixture(db_path, locator, b"RENDERED")
+    _seed_fixture(
+        db_path,
+        DocumentLocator.from_parts(
+            ACCESSION, "edgar.xml", archive_url=RENDERED_ROOT_URL, form="4"
+        ),
+        b"ORIGINAL",
+    )
+    fetcher = FixtureArchiveFetcher([db_path])
+
+    result = fetcher.fetch(locator)
+
+    assert result.ok
+    assert result.payload == b"ORIGINAL"
+    fetcher.close()

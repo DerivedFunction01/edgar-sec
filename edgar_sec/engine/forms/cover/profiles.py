@@ -350,6 +350,10 @@ def _build_profiles() -> dict[str, CoverProfile]:
 
 COVER_PROFILES: dict[str, CoverProfile] = _build_profiles()
 
+#: Family key of the profile every unmodelled form resolves to. A profile's
+#: boundary policy is never ``None``, so no-cover is identified by this key.
+GENERIC_PROFILE_FAMILY = "GENERIC"
+
 
 def get_profile(family: str | None) -> CoverProfile:
     """The cover profile for a form family, falling back to generic. Resolved through
@@ -366,6 +370,7 @@ __all__ = [
     "COMMON_COVER_LABELS",
     "COVER_PROFILES",
     "GENERIC_COVER_LABELS",
+    "GENERIC_PROFILE_FAMILY",
     "GENERIC_PHRASE_RULES",
     "NO_COVER_LABELS",
     "NO_COVER_PHRASE_RULES",

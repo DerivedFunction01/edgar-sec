@@ -10,29 +10,48 @@ import logging
 import threading
 from collections.abc import Iterable, Sequence
 from contextlib import suppress
+from dataclasses import dataclass
 from pathlib import Path
 from typing import Any, Protocol, runtime_checkable
 
 from edgar_sec.domain.document.acquisition import (
+    AcquisitionSource,
+    AcquisitionSourceKind,
     FetchResult,
+    SgmlEnvelopeResolution,
     is_stub_document_path,
 )
 from edgar_sec.domain.document.models import (
     DocumentLocator,
     derive_document_locator_key,
 )
+from edgar_sec.domain.document.route import archive_root_candidate
 from edgar_sec.domain.sec_urls import (
+    SEC_ARCHIVE_BASE,
     full_submission_url_for,
     normalize_accession,
     parse_archive_url,
 )
 from edgar_sec.engine.document.unpacking.unpacker import (
-    extract_target_sub_document,
+    extract_target_sub_document_selection,
     has_sgml_documents,
     strip_pem_envelope,
 )
 
 log = logging.getLogger("document_storage.fetcher")
+
+
+@dataclass(frozen=True, slots=True)
+class EnvelopeExtraction:
+    """What one response scan produced for a requested locator.
+
+    ``envelope`` is set only when the response was an SGML submission, and then names
+    the selected sub-document plus its siblings' headers.
+    """
+
+    payload: bytes | None = None
+    bundle: bytes | None = None
+    envelope: SgmlEnvelopeResolution | None = None
 
 
 @runtime_checkable
@@ -45,17 +64,16 @@ class ArchiveFetcher(Protocol):
 
 def extract_from_sgml_envelope(
     raw_payload: bytes, locator: DocumentLocator
-) -> tuple[bytes | None, bytes | None]:
+) -> EnvelopeExtraction:
     """Select the target sub-document when the payload is an SGML envelope.
 
-    Returns ``(payload, source_bundle)``; the bundle saves a second-pass refetch.
     Scans the whole payload, never a prefix: PEM headers push the first block past one.
     """
     if not raw_payload:
-        return None, None
+        return EnvelopeExtraction()
     payload = strip_pem_envelope(raw_payload)
     if not has_sgml_documents(payload):
-        return payload, None
+        return EnvelopeExtraction(payload=payload)
 
     form_value = locator.form.strip().upper() if locator.form else None
     targets: tuple[str, ...] = ()
@@ -65,19 +83,47 @@ def extract_from_sgml_envelope(
             if form_value.endswith("/A")
             else (form_value, f"{form_value}/A")
         )
-    selected = extract_target_sub_document(
+    selection = extract_target_sub_document_selection(
         payload,
         target_types=targets,
         primary_filename=locator.document_path,
         fallback_to_sequence_one=True,
     )
-    return selected, payload
-
-
-def _ok(locator: DocumentLocator, payload: bytes, source: bytes | None) -> FetchResult:
-    return FetchResult(
-        locator=locator, payload=payload, status="ok", source_payload=source
+    if selection is None:
+        return EnvelopeExtraction(bundle=payload)
+    return EnvelopeExtraction(
+        payload=selection.payload,
+        bundle=payload,
+        envelope=SgmlEnvelopeResolution(
+            selected=selection.selected,
+            siblings=selection.siblings,
+        ),
     )
+
+
+def _ok(
+    locator: DocumentLocator,
+    extraction: EnvelopeExtraction,
+    source: AcquisitionSource,
+) -> FetchResult:
+    return FetchResult(
+        locator=locator,
+        payload=extraction.payload,
+        status="ok",
+        source_payload=extraction.bundle,
+        source=source,
+        envelope=extraction.envelope,
+    )
+
+
+def _archive_source(url: str | None) -> AcquisitionSource:
+    return AcquisitionSource(
+        kind=AcquisitionSourceKind.ARCHIVE_URL, reference=url or ""
+    )
+
+
+def _fixture_source(key: str) -> AcquisitionSource:
+    return AcquisitionSource(kind=AcquisitionSourceKind.FIXTURE, reference=key)
 
 
 def _submission_targets(locator: DocumentLocator) -> tuple[str | None, str | None]:
@@ -87,6 +133,47 @@ def _submission_targets(locator: DocumentLocator) -> tuple[str | None, str | Non
         full_submission_url_for(parts.archive_cik, locator.accession) if parts else None
     )
     return locator.archive_url, full_sub_url
+
+
+def archive_root_url(locator: DocumentLocator) -> str | None:
+    """Return the archive-root URL for a rendered locator's original document.
+
+    ``None`` for a non-rendered path. Identity is untouched: only the URL changes.
+    """
+    basename = archive_root_candidate(locator.document_path)
+    if basename is None or not locator.archive_url:
+        return None
+    parts = parse_archive_url(locator.archive_url)
+    if parts is None:
+        return None
+    return f"{SEC_ARCHIVE_BASE}/{parts.archive_cik}/{parts.accession}/{basename}"
+
+
+def _acquisition_urls(
+    locator: DocumentLocator,
+) -> tuple[str | None, str | None, str | None]:
+    """Return ``(preferred, fallback_rendered, full_submission)`` acquisition URLs.
+
+    The rendering is retained as fallback so a root document that does not exist
+    cannot turn a reachable filing into a failure.
+    """
+    direct_url, full_sub_url = _submission_targets(locator)
+    root_url = archive_root_url(locator)
+    if root_url is None:
+        return direct_url, None, full_sub_url
+    return root_url, direct_url, full_sub_url
+
+
+def _lookup_paths(locator: DocumentLocator) -> tuple[str, ...]:
+    """Return fixture lookup keys in preference order for one locator.
+
+    A rendered path resolves to its archive-root basename first and keeps the
+    rendered path as a fallback, mirroring the URL fetchers' candidate order.
+    """
+    basename = archive_root_candidate(locator.document_path)
+    if basename is None:
+        return (locator.document_path,)
+    return (basename, locator.document_path)
 
 
 class FixtureArchiveFetcher:
@@ -132,11 +219,15 @@ class FixtureArchiveFetcher:
 
     def fetch(self, locator: DocumentLocator) -> FetchResult:
         try:
-            payload = self._lookup(locator.document_locator_key)
-            if payload is not None:
-                extracted, source = extract_from_sgml_envelope(payload, locator)
-                if extracted is not None:
-                    return _ok(locator, extracted, source)
+            for candidate_path in _lookup_paths(locator):
+                key = derive_document_locator_key(
+                    str(locator.accession), candidate_path
+                )
+                payload = self._lookup(key)
+                if payload is not None:
+                    extraction = extract_from_sgml_envelope(payload, locator)
+                    if extraction.payload is not None:
+                        return _ok(locator, extraction, _fixture_source(candidate_path))
 
             # Fall back to the full submission bundle, which the catalog may
             # have recorded under the accession rather than the sub-document.
@@ -144,14 +235,14 @@ class FixtureArchiveFetcher:
             if canonical:
                 from edgar_sec.domain.sec_urls import accession_hyphenated
 
-                bundle_key = derive_document_locator_key(
-                    str(locator.accession), f"{accession_hyphenated(canonical)}.txt"
+                bundle_name = f"{accession_hyphenated(canonical)}.txt"
+                payload = self._lookup(
+                    derive_document_locator_key(str(locator.accession), bundle_name)
                 )
-                payload = self._lookup(bundle_key)
                 if payload is not None:
-                    extracted, source = extract_from_sgml_envelope(payload, locator)
-                    if extracted is not None:
-                        return _ok(locator, extracted, source)
+                    extraction = extract_from_sgml_envelope(payload, locator)
+                    if extraction.payload is not None:
+                        return _ok(locator, extraction, _fixture_source(bundle_name))
         except Exception as exc:  # noqa: BLE001 - fetch failures become statuses
             log.debug(
                 "fixture fetch failed for %s: %s", locator.document_locator_key, exc
@@ -224,24 +315,26 @@ class BrokerArchiveFetcher:
         return None, result.get("error") or "broker reported failure"
 
     def fetch(self, locator: DocumentLocator) -> FetchResult:
-        _direct, full_sub_url = _submission_targets(locator)
+        preferred, fallback_url, full_sub_url = _acquisition_urls(locator)
         is_stub = is_stub_document_path(locator.document_path)
         primary_error: str | None = None
 
-        if not is_stub:
-            payload, error = self._payload_from(locator.archive_url)
+        for candidate in (preferred, fallback_url):
+            if candidate is None or is_stub:
+                continue
+            payload, error = self._payload_from(candidate)
             if payload is not None:
-                extracted, source = extract_from_sgml_envelope(payload, locator)
-                if extracted is not None:
-                    return _ok(locator, extracted, source)
-            primary_error = error
+                extraction = extract_from_sgml_envelope(payload, locator)
+                if extraction.payload is not None:
+                    return _ok(locator, extraction, _archive_source(candidate))
+            primary_error = primary_error or error
 
         if full_sub_url and full_sub_url != locator.archive_url:
             payload, error = self._payload_from(full_sub_url)
             if payload is not None:
-                extracted, source = extract_from_sgml_envelope(payload, locator)
-                if extracted is not None:
-                    return _ok(locator, extracted, source)
+                extraction = extract_from_sgml_envelope(payload, locator)
+                if extraction.payload is not None:
+                    return _ok(locator, extraction, _archive_source(full_sub_url))
                 return FetchResult(
                     locator=locator,
                     payload=None,
@@ -295,25 +388,27 @@ class LiveArchiveFetcher:
         return getattr(self._http_client, "metrics", None)
 
     def fetch(self, locator: DocumentLocator) -> FetchResult:
-        _direct, full_sub_url = _submission_targets(locator)
+        preferred, fallback_url, full_sub_url = _acquisition_urls(locator)
         is_stub = is_stub_document_path(locator.document_path)
         primary_error: str | None = None
 
-        if not is_stub:
+        for candidate in (preferred, fallback_url):
+            if candidate is None or is_stub:
+                continue
             try:
-                payload = self._http_client.get_bytes(locator.archive_url)
-                extracted, source = extract_from_sgml_envelope(payload, locator)
-                if extracted is not None:
-                    return _ok(locator, extracted, source)
+                payload = self._http_client.get_bytes(candidate)
+                extraction = extract_from_sgml_envelope(payload, locator)
+                if extraction.payload is not None:
+                    return _ok(locator, extraction, _archive_source(candidate))
             except Exception as exc:  # noqa: BLE001 - falls back to the bundle
-                primary_error = str(exc)
+                primary_error = primary_error or str(exc)
 
         if full_sub_url and full_sub_url != locator.archive_url:
             try:
                 payload = self._http_client.get_bytes(full_sub_url)
-                extracted, source = extract_from_sgml_envelope(payload, locator)
-                if extracted is not None:
-                    return _ok(locator, extracted, source)
+                extraction = extract_from_sgml_envelope(payload, locator)
+                if extraction.payload is not None:
+                    return _ok(locator, extraction, _archive_source(full_sub_url))
                 return FetchResult(
                     locator=locator,
                     payload=None,
@@ -377,6 +472,7 @@ def make_archive_fetcher(
 __all__ = [
     "ArchiveFetcher",
     "BrokerArchiveFetcher",
+    "EnvelopeExtraction",
     "FixtureArchiveFetcher",
     "LiveArchiveFetcher",
     "build_broker_fetcher",

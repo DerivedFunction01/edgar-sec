@@ -24,7 +24,7 @@ the storage layer.
 | :--- | :--- |
 | `identity.py` | CIK and accession identity primitives |
 | `sec_urls.py` | EDGAR URL construction and archive URL parsing |
-| `document/` | Document locator, occurrence, and acquisition records, flat block stream |
+| `document/` | Document locator, occurrence, and acquisition records, flat block stream, acquisition route |
 | `filing_catalog/` | Catalog schemas, version identifiers, planning filter vocabulary |
 | `forms/` | Form/cover vocabulary, schemas, family aliases, body evidence, evaluator decisions |
 | `submissions/` | Submission dataset schema and record models |

@@ -263,14 +263,16 @@ def process_chunk(
                 writer.write_batch(batch)
                 continue
 
-            assert result.payload is not None  # guaranteed by result.ok
+            acquired = result.acquired
+            assert acquired is not None  # guaranteed by result.ok
+            # The result also holds the source envelope, which spans the whole submission.
+            # Releasing it here keeps one envelope out of memory for the normalize call.
+            del result
             if payload_sink is not None:
-                payload_sink(locator, result.payload)
+                payload_sink(locator, acquired.payload)
 
             try:
-                processed: ProcessedDocument = effective_processor.process(
-                    result.payload, locator
-                )
+                processed: ProcessedDocument = effective_processor.process(acquired)
             except Exception as exc:  # noqa: BLE001 - one bad document is not a bad chunk
                 log.warning("processing failed for %s: %s", locator.document_path, exc)
                 batch = _build_snapshot_batch(

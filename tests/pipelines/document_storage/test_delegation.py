@@ -247,10 +247,10 @@ def test_bundle_locator_uses_the_hyphenated_accession() -> None:
 
 def test_envelope_selection_agrees_on_the_primary() -> None:
     """The resolver and the fetcher must agree on what the primary is."""
-    extracted, source = extract_from_sgml_envelope(BUNDLE, _locator())
-    assert extracted is not None
-    assert b"stub body" in extracted
-    assert source == BUNDLE
+    extraction = extract_from_sgml_envelope(BUNDLE, _locator())
+    assert extraction.payload is not None
+    assert b"stub body" in extraction.payload
+    assert extraction.bundle == BUNDLE
 
 
 # --- grouping and publication --------------------------------------------

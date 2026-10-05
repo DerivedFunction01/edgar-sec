@@ -12,6 +12,7 @@ from pathlib import Path
 from typing import Any
 
 from edgar_sec.domain.document.models import DocumentLocator, RawDocumentBlob
+from edgar_sec.domain.document.route import mime_type_for_suffix
 from edgar_sec.foundation.hashing import sha256_bytes, sha256_text
 from edgar_sec.foundation.runtime.paths import ProjectPaths
 from edgar_sec.foundation.runtime.resources import derive_resources
@@ -27,22 +28,8 @@ MANIFEST_SCHEMA_VERSION = 2
 _FIXTURE_ID = re.compile(r"[A-Za-z0-9][A-Za-z0-9._-]*\Z")
 _WRITE_BATCH_SIZE = 128
 
-#: Extension to MIME, kept stable so a fixture filled by this pipeline and one
-#: filled earlier describe the same document identically.
-_MIME_BY_SUFFIX = {
-    ".htm": "text/html",
-    ".html": "text/html",
-    ".xhtml": "text/html",
-    ".txt": "text/plain",
-    ".xml": "text/xml",
-}
-_DEFAULT_MIME = "application/octet-stream"
-
-
-def mime_type_for(document_path: str) -> str:
-    """Infer a document's MIME type from its extension."""
-    suffix = Path(document_path.strip().lower()).suffix
-    return _MIME_BY_SUFFIX.get(suffix, _DEFAULT_MIME)
+#: Extension to MIME is owned by ``domain.document.route`` so the fixture index and
+#: the processor describe one document with the same type.
 
 
 class FixtureOperatorError(RuntimeError):
@@ -147,7 +134,7 @@ def _document_blob(locator: DocumentLocator, raw_payload: bytes) -> RawDocumentB
         accession=str(locator.accession),
         document_path=locator.document_path,
         byte_size=len(raw_payload),
-        mime_type=mime_type_for(locator.document_path),
+        mime_type=mime_type_for_suffix(locator.document_path),
         raw_payload_sha256=sha256_bytes(raw_payload),
     )
 

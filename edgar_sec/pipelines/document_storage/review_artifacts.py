@@ -17,6 +17,12 @@ from typing import Any
 from tqdm import tqdm
 
 from edgar_sec.domain.document.models import DocumentLocator, RawDocumentBlob
+from edgar_sec.domain.document.route import (
+    REPRESENTATION_RAW,
+    DocumentRoute,
+    document_route,
+    is_markup_document_path,
+)
 from edgar_sec.engine.document.html.tree import parse_html
 from edgar_sec.engine.forms.normalize import NormalizationResult, normalize_document
 from edgar_sec.foundation.hashing import sha256_bytes, sha256_text
@@ -36,7 +42,6 @@ from edgar_sec.pipelines.document_storage.processor import PROCESSOR_FINGERPRINT
 _ANALYSIS_ITEM_LIMIT = 256
 _TABLE_GEOMETRY_LIMIT = 128
 
-_HTML_SUFFIXES = (".htm", ".html", ".xhtml")
 _SANITIZED_STRIP_TAGS = ("script", "style", "meta", "noscript")
 _UNSAFE_ATTRIBUTES = frozenset({"src", "href", "action"})
 
@@ -60,12 +65,15 @@ class ReviewCaseResult:
     """One document after normalization, with its full structural diagnostics."""
 
     case: ReviewCase
-    normalization: NormalizationResult
+    #: ``None`` when the document's route defers normalization, as binary does.
+    normalization: NormalizationResult | None
     source_text: str
 
     @property
     def text(self) -> str:
         """The normalized text, exactly as the pipeline would store it."""
+        if self.normalization is None:
+            return ""
         return self.normalization.text
 
 
@@ -251,7 +259,17 @@ def run_review_case(case: ReviewCase) -> ReviewCaseResult:
         case.document.document_path,
         form=case.form or None,
     )
-    normalization = normalize_document(case.payload, form=locator.form)
+    # A binary route defers normalization exactly as the worker defers it, so a
+    # reviewer sees the same outcome the pipeline would produce.
+    normalization = (
+        None
+        if document_route(locator.document_path) is DocumentRoute.BINARY
+        else normalize_document(
+            case.payload,
+            form=locator.form,
+            document_path=locator.document_path,
+        )
+    )
     return ReviewCaseResult(
         case=case,
         normalization=normalization,
@@ -278,12 +296,15 @@ def sanitized_source_html(source_text: str) -> str:
     return tree.html
 
 
-def bounded_analysis(normalization: NormalizationResult) -> dict[str, Any]:
+def bounded_analysis(normalization: NormalizationResult | None) -> dict[str, Any]:
     """Serialize one document's structural diagnostics, capped.
 
     ``source_text`` is dropped (already written as the case's own ``.txt``) and
-    geometry goes through ``asdict``, or ``json.dumps`` would reject it.
+    geometry goes through ``asdict``. A deferred document records why instead.
     """
+    if normalization is None:
+        return {"normalization": "deferred", "reason": "binary document"}
+
     analysis = normalization.page_analysis
     payload: dict[str, Any] = {}
     if analysis is not None:
@@ -317,13 +338,13 @@ def _manifest_entry(
         "fixture_id": fixture_id,
         "form": case.form,
         "processor_fingerprint": PROCESSOR_FINGERPRINT,
-        "representation": result.normalization.representation,
+        "representation": (
+            result.normalization.representation
+            if result.normalization is not None
+            else REPRESENTATION_RAW
+        ),
         "source_sha256": document.raw_payload_sha256,
     }
-
-
-def _is_html(document_path: str) -> bool:
-    return document_path.casefold().endswith(_HTML_SUFFIXES)
 
 
 def new_review_run_id() -> str:
@@ -362,7 +383,7 @@ def write_review_artifacts(
         output_dir / f"{case_id}.analysis.json",
         bounded_analysis(result.normalization),
     )
-    if _is_html(case.document.document_path):
+    if is_markup_document_path(case.document.document_path):
         atomic_write_text(
             output_dir / f"{case_id}.html", sanitized_source_html(result.source_text)
         )
