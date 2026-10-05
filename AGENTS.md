@@ -112,7 +112,7 @@ Before submitting any turn or completing work, run the unified quality gate:
 
 ```bash
 .venv/bin/python check.py            # smart gate: ruff format, lint, scanners, targeted pytest
-.venv/bin/python check.py --all      # full gate: runs full unconditional test suite across repository
+.venv/bin/python check.py --all      # full gate: runs full unconditional test suite across repository. Do not run unless explicitly told to do so.
 .venv/bin/python check.py --fix      # format & safe lint fixes only; does NOT run tests
 .venv/bin/python check.py --fast     # fast static check: format check, lint check, scanners (skips tests)
 .venv/bin/python check.py --scan     # runs only the registered policy scanners
