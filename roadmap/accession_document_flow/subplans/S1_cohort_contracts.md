@@ -4,9 +4,10 @@
 
 - Owning stage in [implementation.md](../implementation.md): **S1**.
 - Status: schema and contract design before the parser and worker stages.
-- Depends on: S0 evidence for URL construction rules; the S1 catalog adapter uses the
-  existing `filing_catalog` bundle interface.
-- Non-blocking: S2 index fixture store, S3 parser, S5 snapshot, S6 target planning.
+- Depends on: the existing `filing_catalog` bundle interface and accession identity
+  rules; S0 later audits the resulting URL and source-page assumptions.
+- Enables: S2 raw-page capture and S0 audit sampling.
+- Non-blocking: S3 parser, S5 snapshot, S6 target planning.
 
 ## Objective
 
@@ -18,9 +19,14 @@ and ignore document-path locators.
 
 ## Inputs
 
-- Published `filing_catalog` bundle: `manifest.json`, `catalog.parquet`, and any
-  required companion parts.
-- Dedicated inventory fixture cases for testing.
+- Published `filing_catalog` snapshot: `snapshot.manifest.json` and validated
+  `filing_targets/part-*.parquet` parts. S0 uses the broad snapshot as its survey
+  frame.
+- Published `filing_catalog` target plan: `plan.json` and validated
+  `targets/form=.../part-*.parquet` parts. Inventory builds may use a selected cohort
+  plan, but it is not presumed to cover S0's strata.
+- A small dedicated inventory cohort fixture authored with S1's offline adapter tests;
+  it is produced by the S1 implementation, not a pre-existing prerequisite.
 - The S1 cohort model below; exact row grains and refusal rules are fixed here.
 
 ## Typed models
@@ -118,8 +124,9 @@ collapse; conflicting duplicates are refused. Observation order is
 
 ```python
 read_catalog_observations(
-    plan_dir: Path,
+    source_dir: Path,
     cohort_source_id: str,
+    source_kind: Literal["catalog_snapshot", "catalog_plan"],
 ) -> Iterator[CohortObservation]
 
 project_cohort(
@@ -142,8 +149,10 @@ inventory_entry_id(
 ) -> str
 ```
 
-The reader validates the published bundle and yields validated rows; it does not
-read document locators or perform network work. `project_cohort` refuses malformed
+The reader validates the source-specific manifest and all declared target parts and
+yields validated rows; it does not read document locators or perform network work.
+Use `catalog_snapshot` for S0 sampling and `catalog_plan` for a selected inventory
+cohort. `project_cohort` refuses malformed
 rows and conflicting filing facts before returning any work item. The URL builder
 uses the accession's first ten digits as archive CIK and its unhyphenated value
 as the directory; the archive CIK segment is the integer value of those digits
@@ -154,9 +163,10 @@ merge preserves the already-published value.
 
 ## Cohort reader
 
-The reader serves only published `filing_catalog` bundles plus dedicated fixture cases:
+The reader serves only published `filing_catalog` snapshots/plans plus dedicated fixture cases:
 
-1. Read the bundle manifest and validate its schema version and required parts.
+1. Validate the source kind's manifest (`snapshot.manifest.json` or `plan.json`) and
+   its declared target parts.
 2. Project rows to `CohortObservation`, converting identities and ISO dates.
 3. Group by accession; validate filing facts and union source CIKs.
 4. Construct one `IndexWorkItem` per accession from its canonical identity.

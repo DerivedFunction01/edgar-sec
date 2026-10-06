@@ -49,21 +49,22 @@ not register an observed index page or make the inventory complete for those row
 Later plans and source-CIK associations anti-join against the cumulative snapshot;
 accession/form queries use its seek indexes and make no SEC request.
 
-**Deferring document-body HTML processing does not block planning the whole
-flow.** Index-page parsing (`-index.html`) is a required metadata-discovery step
-and is planned as S3; its implementation waits for S0 fixtures and audit results.
-It is separate from parsing/normalizing selected filing-body HTML, which is S10.
-Before implementing the index parser, the cohort contract, fixture database, inventory
-and target-plan schemas, publication identity, planner contract, acquisition
-records, processor interface, and review-artifact shape can all be planned. The
-parser's table and field edge cases wait on the source audit. Processing actual
-filing bodies can be designed and tested against fixtures without choosing a
-durable payload-store schema. The only schema intentionally left open is the
-published storage model for fetched documents and processed representations.
+**Production HTML work is deliberately late, but there are two different HTML
+tasks.** S0 must inspect captured `-index.html` evidence to inform S3; it can use
+manual or disposable exploratory extraction, but does not implement the production
+parser. S3 freezes the reusable index parser only after S0. Selected filing-body HTML
+normalization is a separate S10 task and can be deferred until acquisition fixtures
+exist. Before either production parser is implemented, S1/S2 contracts, raw-page
+capture, target-plan schemas and catalog-direct planning, acquisition transport and
+SGML extraction contracts, and review-artifact shapes can be specified and much of
+their implementation can proceed against synthetic typed inputs. S5's schema/query
+work can likewise proceed, but publication of real index-derived rows waits for S3/S4.
+Only the durable payload-store schema is intentionally left open until reviewed S9/S10
+outputs exist.
 
 | Area | Can be fixed in the roadmap now | What must wait |
 |---|---|---|
-| Cohort, inventory, target-plan, fixture, and manifest schemas | Yes; exact row grains, fields, identity inputs, and refusal rules are specified below. | None beyond validating the index fields against S0. |
+| Cohort, inventory, target-plan, fixture, and manifest schemas | Yes; exact row grains, fields, identity inputs, and refusal rules are specified below. | S0 validates observed index fields; it does not block S1/S2 contract implementation. |
 | Index fetching and parallel execution | Yes; one brokered network stage, a bounded CPU process pool, and parent-owned writers. | Per-worker memory estimate is measured during the audit. |
 | Index parser | Yes; pure input/output contract, error states, and fixture matrix. | Table-discovery and column-variant rules are finalized from the sampled pages. |
 | Target planning | Yes; profile grammar, matching order, outcomes, and independent plan bundle. | XBRL package availability label depends on S0 evidence. |
@@ -576,19 +577,19 @@ on the empirical audit result.
 
 **Details:** [subplan](subplans/S0_sec_index_audit.md)
 
-The stratified 100–200-page `-index.html` audit producing a portable result table, sanitized fixtures, query fixtures, and an XBRL decision record. The sampling matrix, per-page record schema, four audit questions, and acceptance criteria are in the subplan.
+After S1 can project candidates from a broad published `filing_catalog` snapshot and S2 can capture/replay raw pages, the stratified 100–200-page `-index.html` audit produces a portable evidence table, selected sanitized page fixtures, and an XBRL decision record. A selected target plan is not a reliable survey frame. S0 does not need S5 query fixtures or S7 review artifacts; snapshot-query fixtures move to S5/S12. The sampling matrix, per-page record schema, four audit questions, and acceptance criteria are in the subplan.
 
 ### S1 — Cohort projection and inventory-domain contracts
 
 **Details:** [subplan](subplans/S1_cohort_contracts.md)
 
-The inventory-domain model (`InventoryCohort`, `AccessionInventory`, `InventoryEntry`, `AccessionSource`) and a narrow cohort reader projecting a published `filing_catalog` bundle plus fixture cases to accessions. CIK associations are unique relation rows, form/filing-date agreement is required, and document-path locators are ignored; full schemas, refusal rules, and acceptance tests are in the subplan.
+The inventory-domain model (`InventoryCohort`, `AccessionInventory`, `InventoryEntry`, `AccessionSource`) and a narrow cohort reader projecting published `filing_catalog` snapshots or selected plans plus fixture cases to accessions. This is the bootstrap for S0: the broad snapshot supplies survey candidates, while S1 creates a small committed cohort fixture alongside its offline tests. Inventory builds may use a selected plan; CIK associations are unique relation rows, form/filing-date agreement is required, and document-path locators are ignored; full schemas, refusal rules, and acceptance tests are in the subplan.
 
 ### S2 — Index-page fixture capture and replay store
 
 **Details:** [subplan](subplans/S2_index_fixture_store.md)
 
-An append-only SQLite store for raw `-index.html` responses keyed by URL+digest, with an atomic fixture manifest, a capture/fill operation using the cohort adapter, and read-only replay. It stores bytes and source metadata only and may be implemented before the parser; full schema, manifest contents, and acceptance tests are in the subplan.
+An append-only SQLite store for raw `-index.html` responses keyed by URL+digest, with an atomic fixture manifest, a capture/fill operation using the cohort adapter, and read-only replay. Implement it before S0: the audit needs captured pages, while S3 consumes the same bytes after parser rules are informed. It stores bytes and source metadata only; full schema, manifest contents, and acceptance tests are in the subplan.
 
 ### S3 — Pure HTML index parser
 
@@ -653,22 +654,26 @@ A small artifact-oriented CLI surface for snapshot/CIK queries, explicit-retenti
 ## 7. Dependency Graph and Parallel Planning
 
 ```text
-S0 audit ─> S1 cohort/schema ─┬─> S2 index fixture store ─┐
-                             └─> S3 parser ───────────────┴─> S4 broker + process pool
-S4 ─> S5 cumulative/queryable snapshot ─┬─> S6 inventory target source ─> S7 review ─┐
-                                        └─> S8 vacuum/index compaction ──────────────┤
-S1 catalog plan ─> S6 catalog-direct source ──────────────────────────────────────────┤
-S6 ─> S9a work order ─> S9b streaming ─┬─> S10 (direct) ────────────────────────────┤
-                                       ├─> S9c SGML extraction ─> S10 (bundle) ──────┤
-                                       └─> S9d fixtures ───────> S10 (replay) ──────┤
-S1–S11 ──────────────────────────────────────────────────────────────────────────────> S12
+S1 cohort/schema ─> S2 raw index-page capture ─> S0 evidence audit ─> S3 parser
+S1 ─> S6 catalog-direct contract/implementation ─────────────────────┐
+S3 ─> S4 broker + parser worker ─> S5 cumulative/queryable snapshot ─┼─> S6 inventory source
+                                                                     ├─> S8 vacuum
+S6 ─> S9a work order ─> S9b streaming ─┬─> S10 direct processing ───┤
+                                       ├─> S9c SGML extraction ─────┤
+                                       └─> S9d fixture replay ──────┤
+S2/S3/S5/S6 ─> S7 index/plan review ────────────────────────────────┤
+S9/S10 evidence ─> S11 payload-store decision ──────────────────────┤
+S1–S11 ─────────────────────────────────────────────────────────────> S12
 ```
 
-Author the subplans for S1–S12 from this interface map before implementation
-starts. S0 must resolve parser scenarios and the XBRL evidence label before S3/S6
-freeze those specifics, but does not block planning the fixture, snapshot,
-acquisition, or review contracts. S11 is intentionally a design decision after
-S9/S10 evidence, not a missing subplan.
+The inventory implementation bootstrap is S1, S2, S0, S3, S4, S5. The production
+index parser cannot be delayed past S3 because S4/S5 need parsed rows, but it can be
+the last index-HTML implementation after the survey. In parallel, S6's profile and
+catalog-direct path, S9 transport/SGML extraction, and artifact contracts can be
+developed against synthetic typed inputs; end-to-end S6 inventory planning, S7 parser
+review, S8 vacuum, and S9d replay wait for their named source artifacts. S10 filing-
+body HTML processing is deferred until S9 fixtures exist. S11 is intentionally a
+design decision after S9/S10 evidence, not a missing subplan.
 
 ## 8. CLI Surface by Stage
 

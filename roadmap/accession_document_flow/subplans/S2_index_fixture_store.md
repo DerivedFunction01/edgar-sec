@@ -3,10 +3,10 @@
 ## Owner and status
 
 - Owning stage in [implementation.md](../implementation.md): **S2**.
-- Status: schema and fixture manifest design before or alongside the HTML parser;
-  may be implemented before S3 because it stores bytes and source metadata only.
+- Status: raw-page capture/replay infrastructure; stores bytes and source metadata
+  only and is implemented before the empirical audit and production parser.
 - Depends on: the cohort adapter (S1) for accession URLs.
-- Non-blocking: S3 parser (the store holds bytes; the parser consumes parsed rows).
+- Enables: S0 empirical audit and S3 parser replay.
 
 ## Objective
 
@@ -183,9 +183,9 @@ digest-mismatched databases are refused.
 
 ## Committed inputs
 
-Commit only the sanitized representative page cases and the audit's small portable
-result table. Use local generated databases for the full survey corpus; they live under
-a transient path and are not tracked.
+Commit only the sanitized representative page cases selected by S0 and its small
+portable result table. Use local generated databases for the full survey corpus; they
+live under a transient path and are not tracked.
 
 ## Acceptance criteria
 
