@@ -266,7 +266,8 @@ edgar_sec/               # each package has its own README.md (linked above)
 ├── engine/             # Layer 3: document normalization, cover/table processing,
 │                       #   candidate selection, company families, submission building
 ├── pipelines/          # Layer 4: metadata_sync (Phase 1), filing_catalog
-│                       #   (Phase 2), document_storage (Phase 2.5)
+│                       #   (Phase 2), document_inventory (Phase S2),
+│                       #   document_storage (Phase 2.5)
 └── apps/               # Layer 5: the dataset viewer (read-only, no publishing)
 
 tests/                      # mirrors the edgar_sec/ package tree

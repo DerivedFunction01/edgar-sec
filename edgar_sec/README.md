@@ -56,6 +56,7 @@ Layer 0  foundation/   runtime, memory, hashing, compression, settings, scanners
 | 5 | [`apps/`](apps/README.md) | layer root; read-only operator-facing consumers of published artifacts |
 | 5 | [`apps/viewer/`](apps/viewer/README.md) | the dataset viewer: a lazy filesystem explorer, manifest-driven virtual datasets, paged DuckDB reads, a guarded read-only SQL console |
 | 4 | [`pipelines/`](pipelines/README.md) | layer root; orchestration |
+| 4 | [`pipelines/document_inventory/`](pipelines/document_inventory/README.md) | cohort projection, index-page capture and replay |
 | 4 | [`pipelines/metadata_sync/`](pipelines/metadata_sync/README.md) | Submissions metadata ingest, chunked and resumable |
 | 4 | [`pipelines/filing_catalog/`](pipelines/filing_catalog/README.md) | Zero-network catalog materialization and target planning |
 | 4 | [`pipelines/document_storage/`](pipelines/document_storage/README.md) | Fetch, normalize, delegate, checkpoint, merge, consolidate |

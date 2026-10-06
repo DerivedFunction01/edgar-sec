@@ -23,6 +23,9 @@ contracts only.
 - [`filing_catalog/`](filing_catalog/README.md) — Phase 2. Zero network.
   Materializes a catalog snapshot from a Phase 1 snapshot and publishes
   immutable, content-addressed target plans for the next phase to consume.
+- [`document_inventory/`](document_inventory/README.md) — Phase S2. Projects a
+  plan into index-page work items, captures those pages into an append-only,
+  content-addressed fixture store, and replays the bytes without the network.
 - [`document_storage/`](document_storage/README.md) — Phase 2.5. Fetches primary
   filings, unrolls SGML, normalizes, resolves delegated exhibits, and
   consolidates per-run snapshots into one canonical snapshot across runs.
@@ -92,6 +95,11 @@ lower layers it depends on.
 | `filing_catalog/publication.py` | Content-addressed plan ids, staged bundles, the selection fingerprint, and the reuse-or-conflict policy. |
 | `filing_catalog/discovery.py` | Manifest-only catalog/plan/policy enumeration and `current` resolution. |
 | `filing_catalog/paths.py` | `FilingCatalogPaths` and the artifact-name constants. |
+| `document_inventory/__init__.py` | Docstring only. |
+| `document_inventory/cli.py` | Placeholder commands: `cohort`, `index list`, `index replay`, `status`, `query`, `publish`. |
+| `document_inventory/cohort.py` | `CohortObservation`, `IndexWorkItem`, `InventoryCohort`, `project_cohort`, `index_url_for`. |
+| `document_inventory/fixture_store.py` | S2 capture store: `create_index_fixture`, `capture_index_pages`, `publish_index_fixture`, `list_index_cases`, `replay_index_page`. |
+| `document_inventory/index_parser.py` | S3 parser contract: `parse_html_index` and parsed/failure types. |
 | `document_storage/__init__.py` | Docstring only. |
 | `document_storage/cli.py` | Command dispatch, plan-file ingestion, and the stdout/stderr split. |
 | `document_storage/operator.py` | `run_document_storage()`: process chunks, resolve delegations, publish. |

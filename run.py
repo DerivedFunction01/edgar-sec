@@ -37,6 +37,12 @@ ENTRIES: tuple[LauncherEntry, ...] = (
         module="edgar_sec.pipelines.document_storage.cli",
     ),
     LauncherEntry(
+        id="inventory",
+        label="Document Inventory (S0-S5)",
+        description="Cohort, index-page capture, parser, and snapshot publication",
+        module="edgar_sec.pipelines.document_inventory.cli",
+    ),
+    LauncherEntry(
         id="viewer",
         label="Dataset Viewer",
         description="Read-only browser and SQL console over published artifacts",

@@ -1,5 +1,4 @@
-"""Layer 4 pipelines: document_inventory — cohort projection and inventory-domain contracts.
+"""Layer 4 pipeline: document_inventory.
 
-Consumes published filing_catalog snapshots and plans; projects filing observations to
-one index-page work item per accession.
+Cohort projection, parser contract, index-page capture/replay, command surface.
 """
