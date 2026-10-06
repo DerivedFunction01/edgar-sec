@@ -6,7 +6,8 @@
 - Status: empirical evidence-gathering subplan; not the production index-parser implementation.
 - Depends on: S1 cohort projection for candidates and S2 raw-page capture/replay.
 - Blocks: production parser edge rules in S3 and the XBRL availability policy in S6.
-- Does not depend on: S5 inventory snapshots, S7 review artifacts, or S12 CLI artifacts.
+- Does not depend on: S5 inventory snapshots, S7a fixture CLI, S7b parser review
+  artifacts, later S7 review surfaces, or S12 CLI artifacts.
 
 ## Objective
 
@@ -59,9 +60,11 @@ Do not download XBRL ZIP bodies for this study.
 2. S2 captures and replays raw index-page response bytes; it does not parse HTML.
 3. S0 selects and captures the stratified sample, inspects the saved pages with
    manual review or disposable exploratory tooling, then commits selected fixtures
-   and the portable evidence table.
-4. S3 implements the production parser from that evidence. S5 query fixtures and S7
-   review artifacts are produced only after their owning contracts exist.
+   and the portable evidence table. S0 may use S7b's inert source preview once it
+   exists, but does not require its parser output.
+4. S3 parser work may start earlier through S7b using the typed contract and
+   available fixtures; S0 runs in parallel and finalizes parser rules and acceptance
+   coverage. S5 query fixtures and later S7 review surfaces follow their own contracts.
 
 The full live survey requires a published catalog snapshot with sufficient era/form
 coverage and explicit authorization for SEC requests. A unit-test fixture can validate

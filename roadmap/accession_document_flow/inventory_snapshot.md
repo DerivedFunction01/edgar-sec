@@ -85,10 +85,12 @@ One row per canonical accession:
 
 One row per source table row, across both index tables:
 
-There is no asset-count cap or target-based filtering: every body row observed in
-both tables is stored, including rows with no href and repeated filenames or
-sequences. Resource protection is a response-byte budget at fetch time; crossing it
-fails the accession and cannot publish a partial snapshot.
+There is no asset-count cap, target-based filtering, or per-response byte cap: every
+body row observed in both tables is stored, including rows with no href and repeated
+filenames or sequences. The process count is derived from available memory and CPU;
+one unusually large response can exceed the per-worker estimate, and S0 page-size and
+parser-memory evidence tunes that estimate. Responses are not truncated or rejected
+by S4.
 
 | Field | Arrow type | Contract |
 |---|---|---|
@@ -201,12 +203,21 @@ accession whose form/date metadata conflicts is refused before fetch; it is not
 silently re-indexed under a second identity.
 
 Before fetch, `run_intent_id` hashes the current snapshot ID, canonical cohort
-fingerprint, parser/schema/lookup versions, and optional explicit-refresh salt.
-An exact completed intent is validated and reused without HTTP. The immutable
+fingerprint, parser/schema/lookup versions, S4 work-order version and chunk size, and
+optional explicit-refresh salt. An exact successfully published intent is validated
+and reused without HTTP; if only the worker stage completed, retry reuses its valid
+chunks. S4 pins the same identity and exact missing-accession worklist in its run
+manifest; machine-local worker count and spill/cache paths are excluded. The immutable
 `snapshot_id` hashes the parent snapshot ID, changed accession page digests, new
 CIK/accession edges, and schema/lookup versions. A no-op cohort returns the
 parent ID; explicit refresh creates a new page observation only if the source
 digest changes. Failed fetch, parse, or index validation publishes no snapshot.
+
+S4's attempt-scoped outcome and entry Parquet chunks live under
+`{artifacts_root}/transient/document_inventory/{run_intent_id}/`; each is reusable only
+after run identity, exact accession membership, schemas, counts, and digests validate.
+S5 reads these checkpoints into separate publication staging and never treats them as
+snapshot parts. See the [S4 worker contract](subplans/S4_broker_worker.md).
 
 Snapshot updates are serialized per inventory root. Readers remain lock-free
 against immutable snapshots. A writer whose expected parent no longer matches

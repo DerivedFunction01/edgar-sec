@@ -3,17 +3,27 @@
 ## Owner and status
 
 - Owning stage in [implementation.md](../implementation.md): **S7**.
-- Status: review-API design; offline, source-first comparison built from fixtures and
-  published artifacts.
-- Depends on: S2 index fixture store, S3 parser, S5 snapshot, S6 target plans.
-- Non-blocking: S9/S10 acquisition/processing review, S12 CLI.
+- Frontloaded fixture CLI: [S7a](S7a_inventory_cli.md). Parser review loop:
+  [S7b](S7b_parser_review_bootstrap.md).
+- Status: staged review design. S7a creates/fills fixtures; S7b builds parser review
+  artifacts before S3's parser body; later review surfaces follow their source
+  artifacts.
+- S7a depends on S1/S2 and `filing_catalog` plan loading. S7b depends on S7a, S2, and
+  the S3 type contract. Later S7 surfaces depend on S5/S6 and (for processing review)
+  S9/S10.
+- S7b is blocking for S3 parser implementation; S0 audit remains independent and can
+  run in parallel.
+- S7c is target-plan comparison and snapshot inspection after S5/S6. S7d is
+  acquisition/processing review after S9/S10.
 
 ## Objective
 
-Provide offline `review-artifacts`, `review`, and snapshot `inspect` APIs for
-source-page parse output, target plans, and saved manifests. Add CLI routes only for
-these review capabilities and basic snapshot/plan lookup; do not build the interactive
-wizard here.
+Provide offline review and inspect APIs in dependency-sized slices. **S7a** provides
+the fixture CLI lifecycle. **S7b** builds `inventory review-artifacts` from those
+fixtures before the parser body exists, so S3 can iterate through pinned pages. A
+parser-run `inventory review` diff is optional after artifact runs exist. Later S7
+surfaces compare target plans, inspect S5 snapshots, and review acquisition/processing
+artifacts. Do not build the interactive wizard here.
 
 ## Sanitized inert source preview
 
@@ -33,17 +43,18 @@ wizard here.
 
 ## Review surfaces and diff structures
 
-- **Index review artifacts**: Replays an index-page fixture through a chosen parser
+- **S7b — index review artifacts**: Replays an index-page fixture through a chosen parser
   version. Emits `source.inert.html`, parsed accession metadata (`observations.json`),
-  and ordered rows (`entries.csv`). Pinned in `manifest.jsonl`.
-- **Index review comparison**: Compares two parser runs across identical fixture
+  bounded diagnostics, and ordered rows (`entries.csv`). Pinned in `manifest.jsonl`.
+- **Optional S7b — index review comparison**: Compares two parser runs across identical fixture
   responses, keyed strictly by `(accession, table_kind, row_ordinal)`. It reports:
   - Field-level changes: `document_type`, `sequence`, `description`, `filename`,
     `href`, `byte_size`.
-  - Bundle metadata changes: `bundle_url`, `bundle_size`.
+  - Bundle/candidate metadata changes: `bundle_url`, `bundle_size`,
+    `xbrl_candidate_url`.
   - Status changes: `parsed`, `unrecognized`, or parse errors.
   - Stage diagnostics and warning codes.
-- **Target-plan review**: Compares two plan runs (or profile changes) across
+- **S7c — target-plan review**: Compares two plan runs (or profile changes) across
   identical pinned source artifacts. Diffing is keyed by
   `(accession, request_id, source_origin, inventory_entry_id)`; catalog-direct rows
   have null `inventory_entry_id` and remain distinct by `source_origin`.
@@ -51,8 +62,16 @@ wizard here.
   `unresolved` $\leftrightarrow$ `ambiguous`) separately from profile selector edits
   and source-origin/source-artifact changes. `status_reason` changes remain visible
   even when the status itself is unchanged.
-- **Snapshot inspect**: Reads a pinned published snapshot only, reporting its annual
+- **S7c — snapshot inspect**: Reads a pinned published snapshot only, reporting its annual
   partition layout, part manifest, and counts grouped by form and filing year.
+
+- **S7d — acquisition/processing review**: Renders selected S9/S10 cases and compares
+  processing outcomes against pinned fixture and processor fingerprints. It does not
+  affect S7b's parser-development dependency.
+
+S7b is usable while `parse_html_index` remains a failing-closed stub: it emits the
+inert source preview and records `parser_not_implemented` without inventing entries.
+The command and artifacts are then reused unchanged as S3 parsing is implemented.
 
 ## Review output shapes
 
@@ -86,23 +105,32 @@ status, and digests for generated review files.
 
 ## CLI routes
 
-Initial CLI routes are review-capability oriented:
+S7a fixture routes are available first. S7b review routes are available before S3's
+parser body; later S7 routes are added only after their pinned artifacts exist:
 
 ```text
+inventory fixture create --fixture <id> --catalog-plan <id>
+inventory fixture fill --fixture <id> --catalog-plan <id>
+inventory fixture list
 inventory review-artifacts --fixture <id> --output <dir>
-inventory review --base <dir> --new <dir>
+inventory review --base <dir> --new <dir>  # optional
 inventory inspect --snapshot <id|current> [--accession <accession>]
 ```
 
 ## Tests
+
+S7a tests fixture create/fill/list and plan-independent replay. S7b tests stub-status,
+fixture-byte replay, artifact, and sanitizer contracts independently of S5/S6. Parser
+diff tests are optional. The tests below for plan comparison and snapshot
+inspection remain blocked on those artifacts.
 
 - Deterministic manifests: identical fixture + parser version reproduces byte-identical
   review artifacts.
 - Safe source rendering: all links are inert text; script and style tags are stripped;
   CSP header is embedded; zero `javascript:` URIs exist.
 - Network instrumentation confirms exactly zero HTTP requests during all review runs.
-- Parser diffs: detects row additions, deletions, field modifications, and diagnostic
-  shifts across parser versions for the same fixture response.
+- If implemented, parser diffs detect row additions, deletions, field modifications,
+  and diagnostic shifts across parser versions for the same fixture response.
 - Target-plan diffs: keyed by `(accession, request_id, source_origin, entry_id)`;
   catalog-direct and inventory-index rows remain separate, and outcome transitions
   are isolated from profile/source changes.
@@ -114,7 +142,7 @@ inventory inspect --snapshot <id|current> [--accession <accession>]
 
 ## Acceptance criteria
 
-Offline `review-artifacts`, `review`, and snapshot `inspect` APIs serve source-page
-parse output, inventory- or catalog-direct target plans, and saved manifests. Source HTML is actively sanitized into
-inert previews without active anchors or remote loads. Parser and plan diffs isolate
-identity-keyed field and outcome transitions. CLI routes are strictly review-focused.
+S7a fixture create/fill/list works without the originating catalog plan. S7b
+`review-artifacts` serves source-page parse output from pinned fixtures; optional
+`review` compares parser runs, and later `inspect`/plan review follow their artifacts.
+Source HTML is sanitized into inert previews without active anchors or remote loads.

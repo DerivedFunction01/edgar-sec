@@ -3,10 +3,12 @@
 ## Owner and status
 
 - Owning stage in [implementation.md](../implementation.md): **S2**.
-- Status: raw-page capture/replay infrastructure; stores bytes and source metadata
-  only and is implemented before the empirical audit and production parser.
+- Status: capture implementation exists. Before S7b uses it, refine replay into a
+  read-only reader that returns exact uncompressed bytes; the current result exposes
+  the stored zstd frame. Whether a whole-database digest is practical for appendable
+  large fixtures remains open under S7a.
 - Depends on: the cohort adapter (S1) for accession URLs.
-- Enables: S0 empirical audit and S3 parser replay.
+- Enables: S0 empirical audit, S7a fixture CLI, and S7b parser replay/review.
 
 ## Objective
 
@@ -49,10 +51,10 @@ CREATE TABLE cohort_members (
 ```
 
 `cohort_source_id` names the catalog plan or dedicated inventory fixture that
-contributed the occurrence. `compressed_body` stores the exact response bytes; a digest
-key means changed responses append evidence instead of replacing it.
+contributed the occurrence. `compressed_body` stores a zstd frame of the exact response
+bytes; a digest key means changed responses append evidence instead of replacing it.
 
-The body codec is zlib; `byte_size` is the uncompressed response length. The digest
+The body codec is zstd; `byte_size` is the uncompressed response length. The digest
 is SHA-256 over the uncompressed bytes. A URL with a new digest creates a new immutable
 response row, while an identical URL+digest reuses the existing row.
 
@@ -79,6 +81,14 @@ class CapturedIndexPage:
     body: bytes
     captured_at: datetime
 
+class IndexFixtureReader:
+    def list_cases(self, accession: AccessionNumber) -> tuple[IndexResponseKey, ...]: ...
+    def replay(self, accession: AccessionNumber, key: IndexResponseKey) -> CapturedIndexPage: ...
+    def __enter__(self) -> Self: ...
+    def __exit__(self, exc_type, exc_value, traceback) -> None: ...
+
+open_index_fixture(paths: IndexFixturePaths) -> IndexFixtureReader
+
 @dataclass(frozen=True, slots=True)
 class IndexCaptureFailure:
     accession: AccessionNumber
@@ -102,7 +112,7 @@ class IndexFixtureManifest:
     fixture_id: str
     schema_version: int
     database_path: str
-    database_sha256: str
+    database_sha256: str | None
     cohort_source_ids: tuple[str, ...]
     page_count: int
     accession_count: int
@@ -121,16 +131,8 @@ capture_index_pages(
     broker: SecBrokerClient,
 ) -> IndexCaptureResult
 
-list_index_cases(
-    paths: IndexFixturePaths,
-    accession: AccessionNumber,
-) -> tuple[IndexResponseKey, ...]
+publish_index_fixture(paths: IndexFixturePaths) -> IndexFixtureManifest
 
-replay_index_page(
-    paths: IndexFixturePaths,
-    accession: AccessionNumber,
-    key: IndexResponseKey,
-) -> CapturedIndexPage
 ```
 
 `capture_index_pages` fetches one page per `IndexWorkItem` through the supplied broker
@@ -141,11 +143,14 @@ not avoid that fetch. Failures do not
 create `index_responses` or `index_cases` rows. Every `CohortObservation` is preserved
 in `cohort_members`, including observations whose page request failed.
 Replay requires an exact response key,
-so an accession with multiple observed digests cannot silently select a version. It
-opens SQLite read-only, verifies the schema and response digest, decompresses the
-body, and returns the original bytes. The manifest is published atomically only after
-the database transaction commits, SQLite is checkpointed, and the database digest is
-computed. Its database path is relative to the manifest directory.
+so an accession with multiple observed digests cannot silently select a version. The
+reader opens SQLite read-only, verifies the schema, decompresses and verifies each
+requested response, and returns the original uncompressed bytes. A whole-database
+digest is optional and, if retained, is checked at most once per reader using streaming
+hashing. One reader can replay multiple pages without re-hashing the whole database
+for every case. The manifest is published atomically after the database transaction
+commits and SQLite is checkpointed; compute a database digest only if the optional
+digest policy is retained. Its database path is relative to the manifest directory.
 
 ## Capture and fill operation
 
@@ -164,17 +169,21 @@ the page fetch identity remains accession/URL, never the CIK relationship.
 
 ## Read-only replay
 
-Replay loads the committed database, resolves cases by accession and exact response
-key, and serves the original bytes to a chosen parser version. It makes no network
-request. Selected cases and the fixture ID drive reproducibility. Wrong-schema or
-digest-mismatched databases are refused.
+`open_index_fixture` validates the committed manifest and schema, then serves exact
+uncompressed bytes by accession and response key from its read-only connection. It
+makes no network request and never reopens the source catalog plan. Each replay checks
+the requested response digest. A database-wide digest is optional; see S7a's fixture
+identity refinement. Wrong-schema and response-digest-mismatched data are refused.
 
 ## Tests
 
 - URL+digest dedup: the same response keyed by URL and digest, never duplicated.
 - Changed response appends: a new digest adds a row; the old row persists.
 - Source-CIK/source-plan union: multiple cohort sources contribute one page.
-- Exact byte/hash round trip: stored bytes reproduce the captured digest.
+- Exact uncompressed byte/hash round trip: replay returns the original body, not its
+  stored zstd frame.
+- Reader replays multiple cases read-only and verifies each decompressed response;
+  optional database-digest verification does not materialize the whole SQLite file.
 - Read-only non-mutation: replay opens the database read-only and never alters it.
 - Wrong-schema refusal: a mismatched schema version is rejected before replay.
 - Atomic manifest-after-commit: the manifest reflects a committed database.
@@ -190,6 +199,6 @@ live under a transient path and are not tracked.
 ## Acceptance criteria
 
 The fixture store is append-only with a URL+digest primary key, supports exact-byte
-replay without HTTP, unions source-CIK plan contributions without duplicating pages, refuses
+replay without HTTP through a reusable verified reader, unions source-CIK plan contributions without duplicating pages, refuses
 wrong-schema databases, and pins the schema version in an atomic manifest. No source
 evidence is ever overwritten.

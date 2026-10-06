@@ -3,10 +3,11 @@
 ## Owner and status
 
 - Owning stage in [implementation.md](../implementation.md): **S3**.
-- Status: pure input/output contract; table-discovery and column-variant rules are
-  finalized from the S0 stratified audit.
-- Depends on: S0 evidence for parser scenarios and XBRL evidence labeling; the S2
-  fixture store for captured page bytes.
+- Status: typed contract scaffold is implemented; production HTML processing is
+  deferred until the parser-review loop is available.
+- Depends on: S2's exact-byte fixture reader and S7b parser review artifacts to begin
+  iterative implementation. S0 evidence is required to finalize parser rules and
+  coverage, but does not block the first implementation pass.
 - Non-blocking: S1 cohort schema, S2 capture store, S4 broker+pool, S5 snapshot.
 
 ## Objective
@@ -86,6 +87,19 @@ recognized table is genuinely empty. No matching tables yields
 There is no per-accession row-count cap: every body row in both recognized tables
 is returned, including rows without links and duplicate filenames/sequences.
 
+`PARSER_FINGERPRINT` is a stable parser-implementation identity recorded by parser
+review artifacts and snapshot run intent. Increment it whenever parsing semantics
+change; it is not derived from current source-file bytes.
+
+## Implementation start and review loop
+
+Build and exercise the S7b fixture-backed review CLI after S7a's fixture lifecycle and before the production parser body; it
+must render each source page and record an explicit `parser_not_implemented` status
+while this function is still a stub. Parser work can then proceed against pinned
+fixtures through the same command, with `inventory review` comparing each iteration.
+S0 runs in parallel and supplies the final era/table matrix; parser acceptance and
+fixture coverage are not complete until that evidence has been incorporated.
+
 ## Parsing rules
 
 - Discover `Document Format Files` and `Data Files` tables independently. A table whose
@@ -130,8 +144,9 @@ is returned, including rows without links and duplicate filenames/sequences.
 
 ## Inputs
 
-- S2-captured response bytes served through read-only replay, or live survey responses
-  recorded during S0; both are wrapped with the accession and exact source URL.
+- Exact uncompressed response bytes served by the S2 read-only fixture reader, or live
+  survey responses recorded during S0; both are wrapped with the accession and exact
+  source URL.
 - The audit's table-discovery matrix supplies era-specific header names and column
   positions.
 
