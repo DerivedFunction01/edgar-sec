@@ -1,9 +1,14 @@
 # Accession Document Flow — Implementation Roadmap
 
-Status: **architecture and subplan sequence drafted.** The metadata inventory and
+Status: **architecture and subplan sequence drafted; detailed subplans S0–S12 are authored in the subplans directory.** The metadata inventory and
 target-plan schemas can be specified before processing document bodies. The
 filing-index HTML parser's edge rules are gated by a representative SEC-page audit;
 the persistent model for fetched document payloads remains deliberately deferred.
+
+Each of the twelve stages (S0–S12) now has a detailed subplan under
+[./subplans/](./subplans/). Stage headers link to their subplan; further
+refinement of any subplan is independent, and the summaries here will be
+compressed to reference them once all subplans are stable.
 
 See [design.md](./design.md) for the stage boundaries and domain grain. The
 queryable snapshot, co-filer anti-join, seek-index, and vacuum contract is
@@ -510,189 +515,81 @@ on the empirical audit result.
 
 ### S0 — SEC index evidence survey and fixture selection
 
-**Deliver:** stratified 100–200-page audit; tracked per-accession results; a small
-set of committed real-source-derived, sanitized fixtures covering the observed
-shapes; XBRL URL evidence and a decision record on whether runtime `index.json`
-is needed. This is evidence gathering, not the production index-parser
-implementation; retain only the portable audit results and selected sanitized
-fixtures as tracked artifacts.
+**Details:** [subplan](subplans/S0_sec_index_audit.md)
 
-**Accept when:** every audit row records source URL and page digest; the sample
-includes legacy no-link, 2000–2004 sequence/type disagreement cases, modern direct
-links, and `Data Files`; ZIP-path conclusions distinguish URL construction from
-per-accession availability. If the audit disproves HTML sufficiency for a required
-target, amend the inventory source contract before implementing the parser. Also
-retain query fixtures for one accession, each filing form, child document types,
-and a co-filer accession split across plan cohorts; these validate snapshot
-access paths, not only HTML parsing.
+The stratified 100–200-page `-index.html` audit producing a portable result table, sanitized fixtures, query fixtures, and an XBRL decision record. The sampling matrix, per-page record schema, four audit questions, and acceptance criteria are in the subplan.
 
 ### S1 — Cohort projection and inventory-domain contracts
 
-**Deliver:** `InventoryCohort`, `AccessionInventory`, `InventoryEntry`, stable
-entry identity, `AccessionSource`, schema constants, and a narrow cohort reader
-for published `filing_catalog` bundles plus dedicated fixture cases. Deduplicate
-physical work by accession; retain CIK associations as unique relation rows.
-Require agreement on form/filing date and any present report dates, and construct
-the `-index.html` URL from the accession identity. Ignore document-path locators.
+**Details:** [subplan](subplans/S1_cohort_contracts.md)
 
-**Tests:** identity validation, same accession from many CIKs, CIK association
-union across plan shards, conflicting form/date refusal, nullable source fields,
-stable ordering, and no dependency on `document_storage`.
+The inventory-domain model (`InventoryCohort`, `AccessionInventory`, `InventoryEntry`, `AccessionSource`) and a narrow cohort reader projecting a published `filing_catalog` bundle plus fixture cases to accessions. CIK associations are unique relation rows, form/filing-date agreement is required, and document-path locators are ignored; full schemas, refusal rules, and acceptance tests are in the subplan.
 
 ### S2 — Index-page fixture capture and replay store
 
-**Deliver:** append-only SQLite schema and fixture manifest for raw
-`-index.html` responses; capture/fill operation using the cohort adapter and
-shared SEC transport; read-only replay. This subplan may be implemented before
-the HTML parser because it stores bytes and source metadata only.
+**Details:** [subplan](subplans/S2_index_fixture_store.md)
 
-**Tests:** URL+digest dedup, changed response appends, co-filer/source-plan union,
-exact byte/hash round trip, read-only non-mutation, wrong-schema refusal, atomic
-manifest-after-commit, replay without HTTP, deterministic case ordering.
+An append-only SQLite store for raw `-index.html` responses keyed by URL+digest, with an atomic fixture manifest, a capture/fill operation using the cohort adapter, and read-only replay. It stores bytes and source metadata only and may be implemented before the parser; full schema, manifest contents, and acceptance tests are in the subplan.
 
 ### S3 — Pure HTML index parser
 
-**Deliver:** `parse_html_index()` over bytes using the existing HTML engine;
-outputs all document/data-file rows and separate bundle metadata. No network,
-SQLite, profile, `document_storage`, or snapshot imports.
+**Details:** [subplan](subplans/S3_index_parser.md)
 
-**Tests:** sanitized real-page fixtures for the audit cases; missing/duplicate
-sequence, duplicate filename, absent link, relative and absolute href, escaped
-text, missing/invalid size, `Data Files`, empty/unknown table, unsafe/out-of-tree
-href, and malformed HTML.
-Unknown or unsupported page structure is typed as unrecognized rather than a
-successful empty result.
+`parse_html_index()` over raw bytes: no network, SQLite, profile, `document_storage`, or snapshot imports. It emits all document/data-file rows and bundle metadata; unknown or unsupported page structure returns typed `unrecognized`, never a successful empty result. The fixture matrix, edge cases, and acceptance tests are in the subplan.
 
 ### S4 — Broker-backed inventory worker and bounded process pool
 
-**Deliver:** settings-backed broker lifecycle; a `ProcessPoolExecutor` whose
-memory-derived workers fetch one index page through `SecBrokerClient` and parse
-it; bounded submitted tasks; typed page errors; and a coordinator-owned
-fixture/Parquet writer. No worker creates its own HTTP client or writes artifacts.
+**Details:** [subplan](subplans/S4_broker_worker.md)
 
-**Tests:** fake broker success/failure, picklable worker setup/results, all worker
-requests aggregate through one broker, bounded in-flight responses, stable result
-order, one failed accession does not silently become empty, worker exception
-cleanup, no child-side writes, and all accessions validated before the first
-request.
+One `SecBroker` per run whose cache, rate limiter, and failure ledger all worker requests share; a memory-derived process pool executing one accession per task; a coordinator-owned fixture/Parquet writer; and typed page errors. No worker creates its own HTTP client or writes artifacts. Full lifecycle, budget, and acceptance tests are in the subplan.
 
 ### S5 — Immutable inventory snapshot publication
 
-**Deliver:** the cumulative queryable snapshot specified in
-[`inventory_snapshot.md`](./inventory_snapshot.md): anti-join by accession before
-HTTP, merge new co-filer CIK edges without refetching known accessions, publish
-form/year data parts plus accession/CIK seek indexes, and atomically advance
-`current` after the complete snapshot is validated. No target profile or payload
-field enters the snapshot.
+**Details:** [subplan](subplans/S5_snapshot_publication.md)
 
-If any page fetch or parse fails, publish no snapshot. A retry validates the
-same base/cohort intent and rebuilds staging from verified SEC-cache or
-fixture-page responses; it does not add per-accession checkpoint machinery. A
-changed page body is accepted only through explicit refresh and creates a new
-immutable observation version.
-
-**Tests:** same-accession/multi-plan CIK union causes one index-page request;
-queryable current snapshot after each build; exact accession query returns all
-child rows; form query selects only matching form/year partitions; no query makes
-HTTP requests; explicit refresh re-reads sources; unchanged bytes reuse current
-content; changed bytes produce a new snapshot; bad lookup/schema/digest refusal;
-interrupted stage invisible to readers; no partial publication after page error.
+The cumulative queryable snapshot: anti-join by accession before HTTP, co-filer CIK edges merged without refetching known accessions, form/year parts plus accession/CIK seek indexes, and atomic `current` publication after full validation. No target profile or payload field enters the snapshot; a failed fetch or parse publishes nothing. Run intent, immutable identity, and acceptance tests are in the subplan.
 
 ### S6 — Target profiles and separate target-plan artifacts
 
-**Deliver:** versioned JSON profile grammar in `policies/document_targets/`;
-profile normalization and canonical digest; form-family resolution through the
-existing forms alias owner; deterministic targeting from a named inventory
-snapshot; immutable `{artifacts_root}/document_planning/plans/{plan_id}` bundles. Profiles express primary,
-exhibit/data-file selectors, optionality, and package requests. No tier bypass
-from catalog `primary_document` hints.
+**Details:** [subplan](subplans/S6_target_plans.md)
 
-**Tests:** each profile request matches only inventory rows; one snapshot serves
-several plan IDs without HTTP; primary resolution refuses sequence-only guesses;
-multiple matches remain explicit; missing optional targets appear only in the
-plan; required failures are distinct; planner does not mutate the source snapshot.
-XBRL construction/status follows the S0 decision.
+Versioned JSON profiles in `policies/document_targets/` with normalization and canonical digests; target plans as separate immutable bundles pinned to a named snapshot; form-family resolution through the existing forms alias owner; and no tier bypass from catalog `primary_document`. The grammar, v1 target-plan schema, matching rules, and acceptance tests are in the subplan.
 
 ### S7 — Index and target-plan review surfaces
 
-**Deliver:** offline `review-artifacts`, `review`, and snapshot `inspect` APIs for
-source-page parse output, target plans, and saved manifests. Add CLI routes only
-for these review capabilities and basic snapshot/plan lookup. Do not build the
-interactive wizard here.
+**Details:** [subplan](subplans/S7_review.md)
 
-**Tests:** deterministic manifests, safe source rendering, no active remote
-loads, row-level base/new differences, target-outcome distinctions, empty
-selection refusal, one-case failure behavior, and non-empty output refusal.
+Offline `review-artifacts`, `review`, and snapshot `inspect` APIs for source-page parse output, target plans, and saved manifests, with CLI routes limited to review capabilities and basic lookup. Source links render as inert text, review outputs refuse empty destinations, and one bad case does not erase successful cases. The output shapes, comparison boundaries, and acceptance tests are in the subplan.
 
 ### S8 — Snapshot vacuum and lookup-index compaction
 
-**Deliver:** offline compaction of form/year parts and accession/source-CIK
-lookup shards; uniqueness and digest validation; query parity; dependency-aware
-retention; and atomic publication of the new `current` pointer. Cumulative
-snapshots, co-filer merging, point/form queries, and the anti-join are already
-part of S5, not deferred to vacuum.
+**Details:** [subplan](subplans/S8_vacuum.md)
 
-**Tests:** compaction preserves accession, form, document-type, and CIK query
-results; source/page counts and identities remain stable; no HTTP request occurs;
-pointer atomicity, retained-plan dependencies, and lock-free readers of old
-snapshots are verified.
+Metadata-only offline compaction of form/year parts and accession/source-CIK lookup shards, with shard rebuild, uniqueness and digest validation, query-parity verification, and dependency-aware retention. It does not re-fetch pages or alter logical inventory facts, and atomic `current` publication is a publish precondition. Cumulative snapshots, co-filer merging, point/form queries, and the anti-join remain S5 work.
 
 ### S9 — Target-plan acquisition and source fixture database
 
-**Deliver:** acquisition work-order adapter for target-plan rows; direct fetch and
-bundle-plus-sequence extraction; source/selected-byte provenance; typed missing,
-failed, ambiguous, and recovered outcomes; append-only fixture DB for raw response
-bytes keyed by source URL and digest. Route concurrent requests through one SEC
-broker for shared pacing regardless of the fan-out executor; use a bounded
-process pool for CPU-heavy extraction. Establish response-size and memory limits
-before enabling large bodies; the broker currently buffers responses.
+**Details:** [subplan](subplans/S9_acquisition.md)
 
-**Tests:** direct and legacy bundle replay, sequence/filename ambiguity, missing
-body, source hash mismatch, fixture append/read-only behavior, retry from saved
-raw bytes with no HTTP, process serialization, resource-bounded fetch/parse, and
-no writes to inventory or target-plan artifacts.
+Acquisition from target-plan rows: direct fetch and bundle-plus-sequence extraction, source/selected-byte provenance, typed missing/failed/ambiguous/recovered outcomes, and an append-only source fixture DB keyed by URL+digest. Concurrent requests share one SEC broker for pacing, CPU-heavy extraction runs in a bounded process pool, and resource limits are set before large bodies. The fixture schema, replay semantics, and acceptance tests are in the subplan.
 
 ### S10 — Processing contract, processor versions, and document review
 
-**Deliver:** pure byte-to-representation processor interface; deterministic
-processor fingerprint; form/route dispatch; bounded process pool for CPU-heavy
-document-body processing; review artifacts and base/new comparison from acquisition
-fixtures. Reuse existing engine normalizers where their contract fits, without
-depending on `document_storage` pipeline modules. Persist review evidence, not
-published document rows.
+**Details:** [subplan](subplans/S10_processing.md)
 
-**Tests:** offline worker/review parity; identical processor inputs produce
-identical outputs; processor fingerprint changes prevent false comparison;
-binary/unrecognized routes are explicit; review records source/output hashes and
-stage diagnostics; one bad document does not hide successful cases.
+A pure byte-to-representation processor interface with a deterministic fingerprint, form/route dispatch, and a bounded process pool for CPU-heavy body processing. Review runs replay acquisition fixtures with base/new comparison; normalized content is transient, and only review evidence is persisted. Existing engine normalizers are reused where their contract fits; no `document_storage` pipeline imports.
 
 ### S11 — Durable payload-store decision (design gate, not implementation)
 
-**Inputs:** representative observed target plans and acquisition/processing
-review cases for direct HTML, legacy bundle extraction, XML/iXBRL, data files,
-binary documents, failures, and repeated identical bytes.
+**Details:** [subplan](subplans/S11_payload_design.md)
 
-**Deliver:** a separate reviewed design for raw-payload identity, normalized
-representation identity, occurrence/co-filer relationships, source provenance,
-idempotence/reprocessing, part/partition boundaries, retention, and how inventory
-entries relate to stored payloads. Do not add `payload_part`, `payload_hash`, or
-`payload_offset` to the inventory schema. Implementation requires explicit
-approval of that design.
+Design gate only, not implementation. Representative acquisition/processing review cases feed a reviewed design covering raw-payload and normalized representation identity, occurrence/co-filer relationships, provenance, idempotence, part boundaries, retention, and inventory-to-payload linkage. Explicit approval is required before any payload-store code lands, and `payload_part`, `payload_hash`, and `payload_offset` are never added to the inventory schema.
 
 ### S12 — Operator integration and end-to-end quality gate
 
-**Deliver:** small CLI surfaces for cohort inventory, target planning, fixture
-replay, review, and inspect; machine-readable summaries with `fresh`/`reused`
-snapshot status and counts for input, indexed, matched, not-filed,
-required-missing, constructed-candidate, ambiguous, unresolved, and failed.
-An interactive operator is a later UX decision, not part of the initial pipeline.
-Update package READMEs, layer layout tables, root README, and this roadmap when
-public packages and commands land.
+**Details:** [subplan](subplans/S12_operator_integration.md)
 
-**Verify:** mirrored offline tests, scanner/layer checks, CLI refusal semantics,
-broker lifecycle, no document payload persistence, and a tiny vertical run from
-fixture cohort to two independent target plans plus review. Run the smart gate and
-`check.py --fast`; run the full suite only when explicitly requested.
+A small artifact-oriented CLI surface with machine-readable summaries: typed counts (input, indexed, matched, not-filed, required-missing, constructed-candidate, ambiguous, unresolved, failed) and `fresh`/`reused` snapshot status. The verification suite covers mirrored offline tests, scanners, CLI refusal semantics, the broker lifecycle, absence of document payload persistence, and a fixture-to-plan-to-review vertical run. The interactive operator and acquisition/processing CLI commands are deferred; documentation updates are tracked.
 
 ## 7. Dependency Graph and Parallel Planning
 
