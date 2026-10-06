@@ -49,6 +49,7 @@ Real-filing parity is unverified — see "Deliberate gaps".
 | `paths.py` | `DocumentStoragePaths`, the published-vs-transient split, and the artifact-name constants. |
 | `worker.py` | Chunk processing, the process pool, the checkpoint-reuse rule. |
 | `candidates.py` | The pre-2005 exhibit-candidate gate: filing-date agreement, statutory filename grammar, dynamic form-token rejection. |
+| `candidate_recovery.py` | Bundle-first recovery: acquire the submission bundle, resolve the requested document role-neutral against it, and process each selected body, emitting `CandidateOutcome` rows. |
 | `catalog_plan.py` | Reader for a published `filing_catalog` plan bundle: validation, then replayable streaming chunks. |
 | `work_order.py` | `ChunkInput` and the `WorkOrder` seam between an input plan and chunk execution. |
 | `fetching.py` | `ArchiveFetcher` protocol and the fixture / broker / live backends. |
@@ -91,23 +92,17 @@ Real-filing parity is unverified — see "Deliberate gaps".
   means exactly that — no normalized text exists — so `PassThroughProcessor` reports
   empty text as well. The review tool takes the same dispatch, so a reviewer sees what
   the worker would produce.
-- **The candidate gate is advisory and has no side effect.** `candidates.py` classifies a
-  requested locator against a `2000-01-01 <= filing_date < 2005-01-01` window, the
-  Item 601 filename grammar, and the target form's canonical tokens. A positive decision
-  changes no fetch candidate, no selected index, no snapshot key, and no payload: it is a
-  request worth inspecting, not a claim that the document is displaced. The date comes
-  from the locator's occurrence rows, never from the locator or the accession's year; a
-  co-filer locator whose occurrences disagree, or whose dates are missing or malformed,
-  gets no decision at all.
-- **`RunReport` reports candidate counts, and persists none of them.**
+- **A `BUNDLE_CANDIDATE` acquires the submission bundle and is resolved before any body is fetched.** A locator is a candidate when the filing year is in `2000-01-01 <= filing_date < 2005-01-01`, its filename matches the Item 601 statutory exhibit grammar, and it does not match the target form's canonical token pattern. A positive decision opens the `<accession>.txt` bundle through the role-neutral `fetch_bundle` seam, resolves the request against it, and emits one row per requested co-filer plus one projected primary row per co-filer, with `metadata` recording `document_role`, `parent_locator_key`, `document_path_source`, and `resolution_outcome`; unresolved outcomes fall back to the ordinary requested-document fetch. The decision persists on every emitted row, the resolved outcome is recorded, and the complete bundle is released before each selected body is processed. A false positive — a non-candidate — never uses the explicit bundle seam. The 2000-2004 window, the statutory grammar, and the form-token pattern are the current scope: a later era needs a separate acquisition contract. The date comes from the locator's occurrence rows, never from the locator or the accession's year; a co-filer locator whose occurrences disagree, or whose dates are missing or malformed, gets no decision at all.
+- **`RunReport` reports candidate counts, and the manifest now carries them.**
   `candidate_eligible_count` and `bundle_candidate_count` count locator work items over
   the whole requested plan — including chunks a resume skipped, whose summary is derived
   from plan inputs rather than from a checkpoint. Co-filer occurrences coalesce onto
   their shared locator, so a locator counts once however many rows reference it.
   `candidate_date_unresolved_count` counts requested locators with no agreed parseable
   filing date, so a fail-closed date reads as a measured condition instead of an
-  unexplained zero. The counts reach `ChunkResult`, `RunReport.to_dict()`, and the `run`
-  summary; no manifest, checkpoint, or snapshot artifact carries them.
+  unexplained zero. The counts reach `ChunkResult`, `RunReport.to_dict()`, the `run`
+  summary, and the published manifest (`bundle_candidate_count` and
+  `candidate_eligible_count`); no checkpoint carries them.
 - **A catalog plan bundle is an input mode, validated before anything is fetched.**
   `--catalog-plan` reads a published `filing_catalog` bundle through `catalog_plan.py`,
   which refuses an incomplete bundle, an unsupported `plan_schema_version`, a `plan_id`
@@ -407,19 +402,23 @@ against a credible zero.
   names the rendering. The acquiring fetcher now records which URL served the bytes in
   memory, but no persisted column does, and the document model has not settled how a
   document's authoritative source is represented.
-- **Sibling sub-documents are described but never resolved.** An SGML response
-  describes every sub-document it holds and loads one, then stops there. A sibling with
-  a usable `<TYPE>` is *not* promoted in place of the selected one, and nothing consults
-  those descriptors to recover a primary document that a 2000-2004 filer uploaded at
-  sequence 1 as an exhibit. Only the existing stub-delegation path acquires a sibling,
-  and it re-fetches rather than reading the descriptors already in hand.
-- **A candidate count is not a verified inversion.** The gate measures how many requests
-  are worth a bundle inspection and classifies them; it opens no bundle, reads no
-  `<TYPE>`, and confirms nothing. Nothing persists the per-request decisions, so a count
-  cannot be audited back to the documents behind it — re-deriving that population means
-  re-running the plan. Any promotion or dual-write needs the resolution contract that
-  represents a requested exhibit and a form-matched primary as two references, and that
-  does not exist yet.
+- **Sibling sub-documents are described but only candidates are resolved.** An SGML
+  response describes every sub-document it holds and loads one, then stops there for
+  ordinary requests: a sibling with a usable `<TYPE>` is *not* promoted in place of the
+  selected one, and nothing consults those descriptors to recover a primary a
+  2000-2004 filer uploaded at sequence 1 as an exhibit. That promotion now happens only
+  for locators classified as `BUNDLE_CANDIDATE`, through the explicit bundle-first seam,
+  where each sibling's `<TYPE>` is read and the form-matched primary is promoted and
+  dual-written alongside the exhibit. For non-candidates the old behavior holds. The
+  stub-delegation path still re-fetches rather than reading the descriptors already in
+  hand.
+- **A candidate count is a verified inversion.** The gate still measures how many
+  requests are worth a bundle inspection, but a positive decision now opens the
+  `<accession>.txt` bundle, reads the `<TYPE>` headers, resolves the requested exhibit
+  against the form-matched primary, and emits both rows with the outcome in
+  `metadata` — so decisions are auditable and durable, not a population that only
+  exists on re-run. The resolution contract representing a requested exhibit and a
+  form-matched primary as two references exists and is in use.
 - **A catalog plan cannot be resumed, and no selection drift is detected.**
   `documents run --catalog-plan` refuses a run directory that already exists, so an
   interrupted catalog run must be retried under a new run id and its partial chunks are
@@ -441,12 +440,20 @@ against a credible zero.
   only what the locator key implies — document path, canonical accession, and
   `document_path_source` — and takes form and archive URL as published. A disagreement on
   those representative fields is not detected.
-- **`document_path_source` is validated but not carried.** A catalog plan distinguishes a
+- **`document_path_source` is persisted with every row.** A catalog plan distinguishes a
   path taken from the primary document from one falling back to the submission bundle,
   which is the inversion-exception signal, and the reader checks the two agree with the
-  locator group. Nothing stores it: `DocumentLocator`, `FilingOccurrence`, and the
-  14-column snapshot have nowhere to put it, so its durable representation awaits the
-  document-model contract.
+  locator group. The 15-column checkpoint schema now carries `DocumentPathSource` as
+  `document_path_source`, so its durable representation exists; acquisition provenance
+  (which URL or fixture served the bytes) remains in-memory only and no persisted column
+  records it.
+- **The bundle-first seam is scoped to pre-2005.** The 2000-2004 candidate window, the
+  Item 601 statutory exhibit grammar, and the `<accession>.txt` SGML acquisition apply
+  only to the legacy resolver in this milestone. No post-2011 tier is implemented: the
+  plan reads no `index.json`, no `index-headers.html`, no XBRL ZIP, and no heavy HTML,
+  and no bundle fetching beyond `.txt` envelopes is wired. Extending recovery to newer
+  eras requires a separate analysis of tier order and fallback semantics, transfer and
+  memory limits, and typed failure outcomes.
 - **No filing-scoped view exists.** `AcquiredSubmission` scopes one *response* to one
   accession; it never merges acquisitions, so a filing reached through several requests
   has no aggregate grouping it and a caller cannot ask "everything this filing contains"

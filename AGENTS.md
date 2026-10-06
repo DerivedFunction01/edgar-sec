@@ -126,7 +126,7 @@ Before submitting any turn or completing work, run the unified quality gate:
 > - **Documentation / Assets**: If only markdown, documentation, or static non-code assets changed, pytest execution is bypassed completely.
 > - **Prose-Only Edits**: A `.py` file is compared to its `HEAD` baseline through docstring-stripped AST dumps. A change that leaves those dumps identical — a comment, docstring, or blank-line edit — selects no tests. `ruff format` and `ruff lint` still cover the file, so only pytest selection is skipped. An untracked file, a missing baseline, or unparsable text counts as a logic change.
 > - **Targeted Execution**: Modifying a module resolves and runs its direct mirrored test and downstream dependents, respecting pipeline boundaries.
-> - **Full Gate Verification**: Use `check.py --all` when completing major milestones or pull requests to run the entire test suite.
+> - **Full Gate Verification**: Use `check.py --all` only when requested by the user to do so.
 
 
 ### Registered Policy Scanners

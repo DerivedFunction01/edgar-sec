@@ -18,6 +18,20 @@ class DocumentKind(StrEnum):
     XML = "xml"
 
 
+class DocumentPathSource(StrEnum):
+    """Provenance of the effective document path in one filing's storage row.
+
+    Distinguishes the catalog's metadata path from the bundle fallback and recovery.
+    """
+
+    #: The path came from the filing's submitted primary-document metadata.
+    PRIMARY_DOCUMENT = "primary_document"
+    #: The path is the accession's ``<accession>.txt`` submission-envelope fallback.
+    SUBMISSION_BUNDLE = "submission_bundle"
+    #: The path came from the SGML envelope's own ``<FILENAME>`` header.
+    RECOVERED_SUBMISSION_BUNDLE = "recovered_submission_bundle"
+
+
 def canonical_accession_part(accession: str) -> str:
     """Return the hyphen-free accession used inside every content-addressed digest.
 
@@ -63,6 +77,7 @@ class DocumentLocator:
     form: str | None = None
     source_cik: str | None = None
     document_type: str | None = None
+    document_path_source: DocumentPathSource | None = None
 
     @classmethod
     def from_parts(
@@ -74,6 +89,7 @@ class DocumentLocator:
         form: str | None = None,
         source_cik: str | None = None,
         document_type: str | None = None,
+        document_path_source: DocumentPathSource | None = None,
     ) -> DocumentLocator:
         acc = (
             accession
@@ -90,6 +106,7 @@ class DocumentLocator:
             form=form,
             source_cik=source_cik,
             document_type=document_type,
+            document_path_source=document_path_source,
         )
 
     @property
@@ -202,6 +219,7 @@ class FilingOccurrence:
 __all__ = [
     "DocumentKind",
     "DocumentLocator",
+    "DocumentPathSource",
     "FilingOccurrence",
     "NormalizationFailure",
     "NormalizedDocument",

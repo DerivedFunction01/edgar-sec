@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import pickle
+import json
 from pathlib import Path
 
 import pyarrow.parquet as pq
@@ -858,10 +859,18 @@ def test_a_candidate_decision_leaves_the_worker_row_unchanged(tmp_path: Path) ->
     )
 
     assert result.bundle_candidate_count == 1
-    assert result.normalized_count == 1
+    assert result.normalized_count == 2
     table = pq.read_table(result.output_path)
-    assert table.column("document_locator_key").to_pylist() == [
-        locator.document_locator_key
-    ]
-    assert table.column("raw_payload").to_pylist() == [b"EXHIBIT TWENTY ONE BODY"]
-    assert table.column("status").to_pylist() == ["ok"]
+    rows = {
+        path: (payload, metadata)
+        for path, payload, metadata in zip(
+            table.column("document_path").to_pylist(),
+            table.column("raw_payload").to_pylist(),
+            table.column("metadata").to_pylist(),
+            strict=True,
+        )
+    }
+    assert rows[locator.document_path][0] == b"EXHIBIT TWENTY ONE BODY"
+    assert b"PRIMARY DOCUMENT BODY" in rows["acme-10k.htm"][0]
+    assert json.loads(rows[locator.document_path][1])["document_role"] == "exhibit"
+    assert json.loads(rows["acme-10k.htm"][1])["document_role"] == "primary"

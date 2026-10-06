@@ -11,18 +11,19 @@ This implementation plan operationalizes the architectural contracts and Lakehou
 > **Milestone 1 status (2026-10-05).** The document-route classification,
 > no-cover reflow, rendered-document fetch fallback, the sparse acquisition model,
 > the processor v2 bump, and the pre-2005 exhibit-candidate gate have shipped
-> and are verified by the suite. The 14-column snapshot schema, structural-metadata
-> persistence, and inversion dual-write are **deferred** until the document model is
-> finalized (see §1.2). The empirical inversion analysis in §1.1 still stands as the
-> basis for that deferred work.
+> and are verified by the suite. The candidate-gated recovery and dual-write have
+> shipped: a bundle-first seam, role-neutral resolution, and the 15-column
+> checkpoint schema (13 identity/normalization columns plus `metadata` and
+> `report_date`) persist resolution/storage metadata. Newer-era tiered retrieval
+> (index/header parsing, XBRL ZIP, heavy-HTML) remains deferred; see §1.2.
 
 1. **Document Route Classification (Layer 1 — shipped)**: `edgar_sec/domain/document/route.py` classifies a document path into a `DocumentRoute` (`RENDERED`, `MARKUP`, `TEXT`, `PAPER`, `XML`, `BINARY`, `UNKNOWN`) before any bytes are read. A path containing `/` is `RENDERED` — an XSL rendering EDGAR serves as HTML even when its basename is `.xml` — so a slash outranks the suffix and a flat suffix is the only decisive signal. A flat `.xml` routes to `XML` and is recorded with `representation: "xml"`; `.paper` routes to `PAPER` (a fixed SGML stub naming an off-archive Document Control Number, with no filing prose); `.pdf`/`.gif`/`.jpg` route to `BINARY` and are stored verbatim.
 2. **No-Cover Reflow Contract (Layer 3 — shipped)**: ASCII filings under a no-cover profile reflow prose from line 0 to EOF. No-cover is identified by the `GENERIC_PROFILE_FAMILY` key, **not** by `profile.boundary is None` — every profile carries a boundary policy, so `None` is not a distinguishing test. Cover-bearing forms (`10-K`, `10-Q`, `20-F`, `8-K`, `6-K`) still reflow after their detected `body_start_line`.
 3. **Processor Version Bump (Layer 4 — shipped)**: `PROCESSOR_SCHEMA_VERSION = 2`. The normalized text changed (no-cover reflow, route-driven representation), so the processor fingerprint gates chunk reuse and a v1 checkpoint is recomputed, not reused.
 4. **Sparse Submission Acquisition Model (Layer 1 & 3 & 4 — shipped)**: `AcquiredSubmission` is one accession-scoped view of one response. It separates the three things one fetch conflates — the requested `DocumentLocator`, the `AcquisitionSource` that actually answered, and each document's own `DocumentRoute`. It describes every document the response revealed as a `SubmissionDocument` and loads exactly one body, named by `selected_index` because sequence numbers and filenames can be absent or duplicated. Direct content is the singleton case; an SGML envelope routes each child by its own `<FILENAME>`, so an XML primary inside an `<accession>.txt` bundle is normalized as XML. `extract_target_sub_document_selection` materializes no sibling body, and the complete envelope is released before normalization, surviving only as `FetchResult.source_payload` for fixture seeding and the delegated-exhibit pass. The processor signature is `process(AcquiredSubmission)`, so a processor reads the body and route rather than re-deriving them from the locator. No identity, schema, SQL, or catalog-planning behavior changed.
 5. **Form-Aware XML Validity — superseded by route classification.** The plan's form-based distinction (XML-native forms valid, narrative forms filter `.xml` as XBRL linkbases) was not built. The shipped behavior is path-based: a flat `.xml` is a valid primary document with `representation: "xml"` and is never reflowed; the route does not consult the form and does not filter `.xml` out of narrative filings. Form-aware XML validity remains a deliberate gap.
-6. **Structural Metadata Persistence (deferred)**: expanding `DOCUMENT_SNAPSHOT_SCHEMA` from 13 to 14 columns with a canonical JSON `metadata` column is deferred until the document model is finalized. `ProcessedDocument.metadata` and review-artifact diagnostics remain separate from any persisted index and are not repurposed as the document index. Acquisition provenance (`AcquiredSubmission.source`, its document descriptors) is likewise in-memory only; no column carries it.
-7. **Form-Agnostic Inversion Recovery & Dual-Write (partially shipped — detection only)**: pre-2005 exhibit-target recovery and the primary/exhibit dual-write are deferred. The fetcher's rendered-document fallback (`archive_root_url`) shipped, the sparse model supplies the sibling `<TYPE>`/sequence headers the recovery needs, and the **candidate gate** now ships: `candidates.py` classifies each requested locator against the 2000-2004 window, the Item 601 filename grammar, and the target form's canonical tokens, and the run report counts the population. The gate opens no bundle and resolves no primary, so the exhibit-promotion and dual-write logic did not.
+6. **Structural Metadata Persistence (shipped)**: `DOCUMENT_SNAPSHOT_SCHEMA` now carries 15 columns — the original 13 identity/normalization columns plus a canonical-JSON `metadata` column and a typed `report_date` column. See Stage 4. `ProcessedDocument.metadata` and review-artifact diagnostics remain separate from the persisted index and are not repurposed as the document index. Acquisition provenance (`AcquiredSubmission.source`, its document descriptors) is likewise in-memory only; no column carries it.
+7. **Form-Agnostic Inversion Recovery & Dual-Write (shipped)**: pre-2005 exhibit-target recovery and the primary/exhibit dual-write now execute end to end. `candidates.py` (later the same classifier in `candidate_recovery.py`) classifies each requested locator against the 2000-2004 window, the Item 601 filename grammar, and the target form's canonical tokens; the run report counts the population. A true candidate acquires the submission bundle through a role-neutral bundle-first seam, resolves the request against it, emits one row per requested co-filer plus one projected primary row per co-filer, and persists role/parent/path/provenance in `metadata`. Unresolved outcomes fall back to the ordinary requested-document fetch and persist the typed outcome. Newer-era tiered retrieval (index/header parsing, XBRL ZIP, heavy-HTML) remains deferred; see §1.2.
 
 ---
 
@@ -344,16 +345,11 @@ This proves that Sequence 1 Exhibit Inversion is **strictly a 2000–2004 legacy
 4. **Processor v2**: `PROCESSOR_SCHEMA_VERSION = 2`; the fingerprint gates chunk reuse.
 
 ### Deferred to Subsequent Milestones:
-1. **14-Column `DOCUMENT_SNAPSHOT_SCHEMA` & Structural Metadata Persistence**: add `("metadata", pa.string())` and update writers, readers, and validators. Deferred until the document model is finalized; `ProcessedDocument.metadata` and review-artifact diagnostics are not repurposed as the persisted index.
-2. **Form-Aware XML Validity**: distinguishing an XML-native form's filing from an XBRL linkbase by form. The shipped route is path-based and makes no such distinction.
-3. **Inversion Recovery & Dual-Write**: pre-2005 exhibit-target promotion and the
-   primary/exhibit dual-write (see §1.1 for the empirical basis, and Stage 5 for what
-   detection now covers). What ships is the candidate gate and its reported population,
-   which is a measurement rather than a recovery.
-4. **Forced Full-Bundle Acquisition (`--acquisition-policy full_bundle`)**: execution defaults to sparse acquisition (~2MB primary document).
-5. **Cross-Snapshot Anti-Join Diffing (`--base-snapshot a1`)**: incremental delta execution between published snapshots.
-6. **BlockStream 1D Virtual AST**: `SpanDecision` lacks byte/char offsets and merges spans, so normalization continues emitting clean `normalized_text`.
-7. **Phase 3 Virtual Aggregate View (`filing_aggregates`)**: deferred until Phase 3 materializes `sections.parquet`.
+1. **Form-Aware XML Validity**: distinguishing an XML-native form's filing from an XBRL linkbase by form. The shipped route is path-based and makes no such distinction.
+2. **Forced Full-Bundle Acquisition (`--acquisition-policy full_bundle`)**: execution defaults to sparse acquisition (~2MB primary document).
+3. **Cross-Snapshot Anti-Join Diffing (`--base-snapshot a1`)**: incremental delta execution between published snapshots.
+4. **BlockStream 1D Virtual AST**: `SpanDecision` lacks byte/char offsets and merges spans, so normalization continues emitting clean `normalized_text`.
+5. **Phase 3 Virtual Aggregate View (`filing_aggregates`)**: deferred until Phase 3 materializes `sections.parquet`.
 
 ---
 
@@ -363,8 +359,8 @@ This proves that Sequence 1 Exhibit Inversion is **strictly a 2000–2004 legacy
 flowchart LR
     S1["Stage 1: Document Route<br/>(shipped)"] --> S2["Stage 2: No-Cover Reflow<br/>(shipped)"]
     S2 --> S3["Stage 3: Processor v2<br/>(shipped)"]
-    S3 --> S4["Stage 4: Storage Schema & Metadata<br/>(deferred)"]
-    S4 --> S5["Stage 5: Inversion Dual-Write<br/>(deferred)"]
+    S3 --> S4["Stage 4: Storage Schema & Metadata<br/>(shipped)"]
+    S4 --> S5["Stage 5: Inversion Dual-Write<br/>(shipped)"]
     S5 --> S6["Stage 6: Quality Gate & Verification"]
 ```
 
@@ -434,54 +430,79 @@ flowchart LR
 
 ---
 
-### Stage 4: Storage Schema & Structural Metadata (Layer 4 — deferred)
+### Stage 4: Storage Schema & Structural Metadata (Layer 4 — shipped)
 
-#### Responsibilities:
-- Add `("metadata", pa.string())` as the 14th column in `DOCUMENT_SNAPSHOT_SCHEMA`.
-- Extend `write_chunk_snapshot` with a `metadata_map` parameter defaulting to `"{}"`, and emit the column from `worker._build_snapshot_batch`.
-- `write_chunk_snapshot` is the second call site the plan omitted: `delegation.py` calls it directly.
+#### Shipped: the 15-column snapshot schema and per-occurrence metadata
+
+The checkpoint schema grew from 13 to 15 columns. Column 14 is `metadata`, a Parquet
+string column holding canonical JSON from the resolution/worker context (default
+`"{}"`); column 15 is `report_date`, the occurrence's typed report date, carried from
+the catalog plan and nullable on old snapshots. `ProcessedDocument.metadata` stays
+scoped to normalization/evaluator diagnostics and is not the filing-resolution metadata
+source; acquisition provenance stays in-memory only.
 
 #### File Modifications:
 1. **`edgar_sec/pipelines/document_storage/checkpoint.py`**:
-   - Add the column to `DOCUMENT_SNAPSHOT_SCHEMA`.
-   - Extend `write_chunk_snapshot` to accept `metadata_map: Mapping[str, str] | None = None`.
-2. **`edgar_sec/pipelines/document_storage/worker.py`**: emit the column from `_build_snapshot_batch` — the function this plan formerly called `_assemble_batch`.
-3. **`tests/pipelines/document_storage/test_checkpoint.py`**: verify the `metadata` column is written and validated. The path this plan names, `tests/infra/storage/test_document_parquet.py`, does not exist; `infra/storage` owns no document snapshot schema, and the mirrored test for `checkpoint.py` is the one above.
+   - Added `("metadata", pa.string())` and `("report_date", pa.string())` to
+     `DOCUMENT_SNAPSHOT_SCHEMA`.
+   - `write_chunk_snapshot` accepts `metadata_map` and `report_dates` per-occurrence
+     mappings; metadata is validated as canonical JSON at write time.
+2. **`edgar_sec/pipelines/document_storage/worker.py`**: `_build_snapshot_batch` emits
+   both columns; `process_chunk` tracks occurrence IDs seen in a chunk and counts
+   unique persisted rows for the staging commit.
+3. **`edgar_sec/pipelines/document_storage/merger.py`**: carries `metadata` and
+   `report_date` through the assembled artifact and into the index parts; bumps
+   `SNAPSHOT_SCHEMA_VERSION` to `2`; merge assembly collapses identical rows per
+   `occurrence_id` and rejects conflicting identity, metadata, payload/text, or
+   status/error values.
+4. **`edgar_sec/pipelines/document_storage/parts.py`**: `INDEX_COLUMNS` gains
+   `metadata`.
+5. **`edgar_sec/pipelines/document_storage/queries.py`**: `effective_snapshot_relations`
+   projects `COALESCE(metadata, '{}') AS metadata` so old snapshots consolidate with
+   new ones.
+6. **`edgar_sec/pipelines/document_storage/delegation.py`**: `write_exhibit_snapshot`
+   passes the new column mappings.
+7. **`tests/pipelines/document_storage/test_checkpoint.py`**: verify the `metadata`
+   and `report_date` columns are written and validated.
 
 ---
 
-### Stage 5: Inversion Recovery & Dual-Write Storage (Layer 4 — detection shipped; recovery deferred)
+### Stage 5: Inversion Recovery & Dual-Write Storage (Layer 4 — shipped)
 
-#### Shipped: candidate detection
-1. **`edgar_sec/pipelines/document_storage/candidates.py`** — the gate lives beside the
-   worker's chunk records rather than in `fetching.py`, because it decides nothing about
-   acquisition order and its regex grammar is not the fetcher's vocabulary:
-   - `RE_STATUTORY_EXHIBIT_FILENAME` and `primary_form_token_pattern` (memoized per
-     canonical family with `lru_cache(maxsize=64)`), both built with `build_alternation`.
-   - `occurrence_filing_date()` requires a locator's co-filer rows to agree on one valid
-     date; absent, malformed, and conflicting values yield no decision, and the
-     accession's year segment is never a substitute.
-   - `candidate_decision()` bounds recognition to `2000-01-01 <= filing_date < 2005-01-01`,
-     applied to the URL path's basename so a rendered route's directory is not filename
-     grammar. It returns an intent and a reason and invokes no fetch.
-2. **`edgar_sec/pipelines/document_storage/worker.py`** — `FilingWork` carries the
-   unchanged requested locator, its occurrences, the agreed date, and the decision through
-   the existing fetcher, processor, and projector. It claims no primary/exhibit role and
-   does not retain `FetchResult.source_payload`, so the envelope-memory bound is unchanged.
-   `ChunkResult.candidate_eligible_count` / `bundle_candidate_count` are reported for the
-   whole requested plan; `process_chunks()` derives a skipped chunk's summary from the
-   plan's own locator/occurrence inputs, and a co-filer locator counts once.
-3. **`operator.py` / `cli.py`** — the counts aggregate onto `RunReport.to_dict()` and the
-   `run` summary. Nothing persists them.
-4. **`catalog_plan.py` / `work_order.py`** — the candidate population is now measurable
-   against real occurrence dates rather than a hand-authored plan.
-   `CatalogPlan` validates a published `filing_catalog` bundle before the first fetch and
-   reads it as replayable chunks of at most `runtime.chunk_size` locators, so the gate sees
-   the catalog's own `filing_date` for every co-filer row. `documents run` and `documents
-   fill` accept `--catalog-plan` alongside `--plan`; `process_chunk_stream()` keeps only
-   `resolved_worker_count` chunks in flight, and the delegation pass re-reads only the
-   locators a worker asked for. `candidate_date_unresolved_count` reports locators with no
-   agreed date, so a fail-closed date is a measured count rather than an unexplained zero.
+#### Shipped: bundle-first candidate recovery and the dual-write
+
+A `BUNDLE_CANDIDATE` now acquires the submission bundle through a new
+`ArchiveFetcher.fetch_bundle(locator) -> BundleFetchResult` seam (fixture, broker, and
+live backends), resolves the requested document against it with the existing
+`resolve_candidate_filing`, and emits one row per requested co-filer plus one projected
+primary row per co-filer. The bundle-first execution lives in
+`edgar_sec/pipelines/document_storage/candidate_recovery.py`; the worker keeps its
+locator loop, candidate decision, and row writing. Unresolved outcomes fall back to the
+ordinary requested-document fetch and persist the typed outcome in `metadata`.
+
+#### File Modifications:
+1. **`edgar_sec/pipelines/document_storage/fetching.py`**: `ArchiveFetcher.fetch_bundle`
+   acquires the complete submission bundle for a candidate locator through the fixture,
+   broker, and live backends, returning a typed `BundleFetchResult`. It keeps accession
+   URL construction inside the backend; neither the worker nor the resolver builds a
+   `.txt` path.
+2. **`edgar_sec/pipelines/document_storage/candidate_recovery.py`**: bundle-first
+   execution, role-neutral seed-reference construction, resolver adaptation, direct
+   fallback, reference-to-`AcquiredSubmission` conversion, and per-body processing
+   results. Emits one `CandidateOutcome` per row with the resolution/storage metadata
+   (`document_role`, `parent_locator_key`, `document_path_source`, `resolution_outcome`).
+3. **`edgar_sec/pipelines/document_storage/worker.py`**: a `BUNDLE_CANDIDATE` runs
+   `run_candidate_recovery`, writes each outcome (deduped by `occurrence_id` within the
+   chunk), and records any stub delegation target; unresolved outcomes fall back to the
+   ordinary requested-document fetch.
+4. **`edgar_sec/pipelines/document_storage/processing.py`**: ordinary-path helpers
+   (`_build_snapshot_batch`, `_process_locator`, `_record_delegation`) moved out of
+   the worker loop so `worker.py` stays under its line cap.
+5. **`edgar_sec/pipelines/document_storage/work_order.py`**: `FilingWork` and
+   `DelegationTarget` moved here so the ordinary-path helpers can share them without a
+   cycle on the worker.
+6. **`tests/pipelines/document_storage/test_fetching.py`**: bundle-first recovery
+   through the broker fetcher, dual-write rows, and the role/parent/metadata contract.
 
 #### Deferred: catalog resumability
 
@@ -489,22 +510,7 @@ A catalog plan run is fresh-run only: it refuses a run directory that already ex
 reuses no checkpoint. Nothing fingerprints the bundle's source files, recomputes its
 published selection fingerprint, or records a run manifest, so nothing refuses a resume
 against a changed selection or chunk layout. Reusing checkpoints and publishing a reusable
-child acquisition plan both wait on a work-order serialization contract, and
-`document_path_source` — the inversion-exception signal, validated but not persisted —
-awaits the document model.
-
-#### Still deferred
-- When a true pre-2005 exhibit target is identified, promote the fetch to `<accession>.txt`.
-- In `worker.py`, when an inversion is recovered via Tier 1 `<TYPE>` matching in
-  `unpacker.py`, dual-write both the recovered primary document (`role: "primary"`) and
-  the original exhibit (`role: "exhibit"`, `parent_locator_key`).
-
-A positive candidate decision does neither, and the bundle is deliberately not even
-requested. Recovery needs a resolution contract that represents the requested exhibit and
-the form-matched primary as two distinct references, and fixes which payloads stay loaded
-and how both reach processing; that contract does not exist yet. The dependencies this
-stage names do exist: `unpacker.resolve_target_sub_document`,
-`fetching.extract_from_sgml_envelope`, `aliases_for_family`, and `build_alternation`.
+child acquisition plan both wait on a work-order serialization contract.
 
 #### URL / Filename Is Not Authoritative for Primary Identity (2000–2005 era)
 
@@ -576,8 +582,9 @@ the bundle format:
 
 ## 3. Component Touch Matrix
 
-Actual Milestone 1 changes. The deferred Stage 4 work, and Stage 5's promotion and
-dual-write, are excluded; their files are listed in those stages instead.
+Actual Milestone 1 and Milestone 2 changes. The deferred later-stage work (cross-snapshot
+anti-join diffing, `full_bundle` acquisition policy, blockstream 1D virtual AST, Phase 3
+`filing_aggregates`) is excluded.
 
 | Component File | Layer | Action | Scanners & Contracts Enforced |
 | :--- | :--- | :--- | :--- |
@@ -602,9 +609,24 @@ dual-write, are excluded; their files are listed in those stages instead.
 | `edgar_sec/domain/document/README.md` | Doc | **EDIT** | Route contracts and caller obligations. |
 | `edgar_sec/engine/forms/README.md` | Doc | **EDIT** | Route-driven stage eligibility and representation. |
 | `edgar_sec/pipelines/document_storage/README.md` | Doc | **EDIT** | Route-aware acquisition and normalization. |
-
+| `edgar_sec/pipelines/document_storage/checkpoint.py` | Layer 4 | **EDIT** | 15-column snapshot schema (`metadata`, `report_date`); canonical-JSON validation; schema enforcement. |
+| `tests/pipelines/document_storage/test_checkpoint.py` | Tests | **ADD** | Mirrored path; `metadata`/`report_date` written and validated. |
+| `edgar_sec/pipelines/document_storage/candidate_recovery.py` | Layer 4 | **ADD** | Bundle-first execution, role-neutral resolution, per-body processing, stub delegation targets. |
+| `tests/pipelines/document_storage/test_candidate_recovery.py` | Tests | **ADD** | Bundle success/missing/failed, `PRIMARY_RECOVERED` and `REQUESTED_IS_PRIMARY`, fallback. |
+| `edgar_sec/pipelines/document_storage/processing.py` | Layer 4 | **ADD** | Ordinary-path helpers (`_build_snapshot_batch`, `_process_locator`, `_record_delegation`) extracted from the worker loop. |
+| `tests/pipelines/document_storage/test_processing.py` | Tests | **ADD** | Mirrored; snapshot-batch and locator processing. |
+| `edgar_sec/pipelines/document_storage/work_order.py` | Layer 4 | **ADD** | `FilingWork`, `DelegationTarget`, `ChunkInput`, `WorkOrder` protocol. |
+| `edgar_sec/pipelines/document_storage/merger.py` | Layer 4 | **EDIT** | `metadata`/`report_date` carried to artifact and index parts; dedup by `occurrence_id`; conflict refusal. |
+| `tests/pipelines/document_storage/test_merger.py` | Tests | **EDIT** | Schema version, `metadata`/`report_date`, dedup and conflict refusal. |
+| `edgar_sec/pipelines/document_storage/parts.py` | Layer 4 | **EDIT** | `INDEX_COLUMNS` gains `metadata`. |
+| `tests/pipelines/document_storage/test_parts.py` | Tests | **ADD** | Mirrored path; `INDEX_COLUMNS` includes `metadata`. |
+| `edgar_sec/pipelines/document_storage/queries.py` | Layer 4 | **EDIT** | `effective_snapshot_relations` projects old `metadata` as `{}`. |
+| `tests/pipelines/document_storage/test_queries.py` | Tests | **EDIT** | Old/new snapshot consolidation. |
+| `edgar_sec/pipelines/document_storage/vacuum.py` | Layer 4 | **EDIT** | Compatibility projection for mixed old/new snapshots. |
+| `tests/pipelines/document_storage/test_vacuum.py` | Tests | **ADD** | Mirrored; old snapshot read with defaults. |
+| `tests/pipelines/document_storage/test_operator_and_cli.py` | Tests | **EDIT** | Candidate-count summary plus bundle-first recovery counts. |
+| `edgar_sec/pipelines/document_storage/README.md` | Doc | **EDIT** | Layout includes `candidate_recovery.py`; bundle-first execution; persisted `document_path_source`. |
 ---
-
 ## 4. Sign-Off & Execution Readiness
 
 This plan conforms strictly to:

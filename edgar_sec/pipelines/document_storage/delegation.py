@@ -285,7 +285,16 @@ def write_exhibit_snapshot(
         texts[occurrence.occurrence_id] = exhibit.processed.text
         statuses[occurrence.occurrence_id] = "ok"
 
-    write_chunk_snapshot(output_path, occurrences, raw_blobs, texts, statuses, {})
+    write_chunk_snapshot(
+        output_path,
+        occurrences,
+        raw_blobs,
+        texts,
+        statuses,
+        error_messages={},
+        metadata_map={},
+        report_dates={occ.occurrence_id: occ.report_date for occ in occurrences},
+    )
     return Path(output_path)
 
 

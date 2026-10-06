@@ -17,6 +17,7 @@ from edgar_sec.domain.document.models import (
     AccessionNumber,
     Cik,
     DocumentLocator,
+    DocumentPathSource,
     FilingOccurrence,
 )
 from edgar_sec.domain.filing_catalog.schemas import (
@@ -398,6 +399,7 @@ def _locator_from_group(row: dict[str, Any], locator_key: str) -> DocumentLocato
         archive_url=row.get("archive_url"),
         form=row.get("form"),
         source_cik=row.get("representative_cik") or row.get("source_cik"),
+        document_path_source=row.get("document_path_source"),
     )
     if locator.document_locator_key != locator_key:
         raise CatalogPlanError(

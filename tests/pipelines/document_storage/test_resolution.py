@@ -22,7 +22,9 @@ from edgar_sec.domain.document.acquisition import (
 from edgar_sec.domain.document.models import (
     AccessionNumber,
     DocumentLocator,
+    DocumentPathSource,
     FilingOccurrence,
+    derive_occurrence_id,
 )
 from edgar_sec.domain.document.route import DocumentRoute, content_route
 from edgar_sec.domain.identity import Cik
@@ -444,6 +446,281 @@ def test_occurrence_group_is_unchanged() -> None:
     assert len(result.requested_occurrences) == 2
     assert [r.occurrence_id for r in result.requested_occurrences] == ["occ-1", "occ-2"]
     assert len(result.requested_occurrences) == 2
+
+
+def test_missing_source_cik_returns_unresolved() -> None:
+    """A requested occurrence lacking source_cik is refused before projection."""
+    bundle = load_document_storage_fixture("exhibit_primary.sgm")
+    missing_cik = FilingOccurrence(
+        occurrence_id="occ-1",
+        source_cik=None,  # type: ignore[arg-type]
+        accession=AccessionNumber(ACCESSION),
+        document_path="ex21.txt",
+        form="10-K",
+        filing_date="2002-05-15",
+        report_date=None,
+        doc_id="occ-1",
+    )
+    requested = DocumentLocator.from_parts(
+        ACCESSION,
+        "ex21.txt",
+        archive_url=BUNDLE_URL,
+        form="10-K",
+        source_cik="0000320193",
+    )
+    result = resolve_candidate_filing(
+        _requested_ref(requested),
+        [missing_cik],
+        BundleFetchResult(status="ok", payload=bundle),
+    )
+    assert result.outcome is FilingResolutionOutcome.MISSING_SOURCE_CIK
+    assert result.primary is None and result.exhibit is None
+    assert result.primary_occurrences == ()
+    assert len(result.requested_occurrences) == 1
+
+
+def test_duplicate_source_cik_returns_unresolved() -> None:
+    """Repeating source_cik values are refused before projection."""
+    bundle = load_document_storage_fixture("exhibit_primary.sgm")
+    requested = DocumentLocator.from_parts(
+        ACCESSION,
+        "ex21.txt",
+        archive_url=BUNDLE_URL,
+        form="10-K",
+        source_cik="0000320193",
+    )
+    # Two occurrences for the same CIK but different occurrence ids.
+    occurrences = [
+        FilingOccurrence(
+            occurrence_id="occ-1",
+            source_cik=Cik.from_raw("0000320193"),
+            accession=AccessionNumber(ACCESSION),
+            document_path="ex21.txt",
+            form="10-K",
+            filing_date="2002-05-15",
+            report_date=None,
+            doc_id="occ-1",
+        ),
+        FilingOccurrence(
+            occurrence_id="occ-2",
+            source_cik=Cik.from_raw("0000320193"),
+            accession=AccessionNumber(ACCESSION),
+            document_path="ex21.txt",
+            form="10-K",
+            filing_date="2002-05-15",
+            report_date=None,
+            doc_id="occ-2",
+        ),
+    ]
+    result = resolve_candidate_filing(
+        _requested_ref(requested),
+        occurrences,
+        BundleFetchResult(status="ok", payload=bundle),
+    )
+    assert result.outcome is FilingResolutionOutcome.DUPLICATE_SOURCE_CIK
+    assert result.primary is None and result.exhibit is None
+    assert result.primary_occurrences == ()
+    assert [r.occurrence_id for r in result.requested_occurrences] == ["occ-1", "occ-2"]
+
+
+def test_malformed_recovered_filename_returns_malformed_sgml() -> None:
+    """A recovered primary whose filename is path-qualified is malformed bundle data."""
+    requested = DocumentLocator.from_parts(
+        ACCESSION,
+        "ex21.txt",
+        archive_url=BUNDLE_URL,
+        form="10-K",
+        source_cik="0000320193",
+    )
+    # Reuse the exhibit bundle but patch the recovered primary's filename.
+    bundle = load_document_storage_fixture("exhibit_primary.sgm")
+    text = bundle.decode("latin-1")
+    text = text.replace("<FILENAME>a10k.htm", "<FILENAME>../evil.htm", 1)
+    result = resolve_candidate_filing(
+        _requested_ref(requested),
+        [OCCURRENCE],
+        BundleFetchResult(status="ok", payload=text.encode("latin-1")),
+    )
+    assert result.outcome is FilingResolutionOutcome.MALFORMED_SGML
+    assert result.primary is None and result.exhibit is None
+    assert result.primary_occurrences == ()
+
+
+def test_multiple_cofilers_share_one_primary_locator_and_distinct_ids() -> None:
+    """Co-filers share the one recovered primary reference but get distinct ids."""
+    bundle = load_document_storage_fixture("exhibit_primary.sgm")
+    cik_1 = Cik.from_raw("0000320193")
+    cik_2 = Cik.from_raw("0000789019")
+    occurrences = [
+        FilingOccurrence(
+            occurrence_id="occ-1",
+            source_cik=cik_1,
+            accession=AccessionNumber(ACCESSION),
+            document_path="ex21.txt",
+            form="10-K",
+            filing_date="2002-05-15",
+            report_date=None,
+            doc_id="occ-1",
+        ),
+        FilingOccurrence(
+            occurrence_id="occ-2",
+            source_cik=cik_2,
+            accession=AccessionNumber(ACCESSION),
+            document_path="ex21.txt",
+            form="10-K",
+            filing_date="2002-05-15",
+            report_date=None,
+            doc_id="occ-2",
+        ),
+    ]
+    requested = DocumentLocator.from_parts(
+        ACCESSION,
+        "ex21.txt",
+        archive_url=BUNDLE_URL,
+        form="10-K",
+        source_cik="0000320193",
+    )
+    result = resolve_candidate_filing(
+        _requested_ref(requested),
+        occurrences,
+        BundleFetchResult(status="ok", payload=bundle),
+    )
+    assert result.outcome is FilingResolutionOutcome.PRIMARY_RECOVERED
+    assert result.exhibit is result.requested
+    # One recovered primary reference, shared across co-filers.
+    assert result.primary_occurrences[0] is not result.primary_occurrences[1]
+    assert len({r.occurrence_id for r in result.primary_occurrences}) == 2
+    expected_id_1 = derive_occurrence_id(
+        "0000320193", ACCESSION.replace("-", ""), "a10k.htm"
+    )
+    expected_id_2 = derive_occurrence_id(
+        "0000789019", ACCESSION.replace("-", ""), "a10k.htm"
+    )
+    assert result.primary_occurrences[0].occurrence_id == expected_id_1
+    assert result.primary_occurrences[1].occurrence_id == expected_id_2
+    # The primary locator is shared by both rows.
+    assert (
+        result.primary_occurrences[0].doc_id
+        is result.primary_occurrences[1].doc_id
+        is result.primary.locator.document_locator_key
+    )
+    assert (
+        result.primary_occurrences[0].accession
+        is result.primary_occurrences[1].accession
+        is result.primary.locator.accession
+    )
+    assert (
+        result.primary.locator.document_path_source
+        is DocumentPathSource.RECOVERED_SUBMISSION_BUNDLE
+    )
+
+
+def test_primary_occurrences_inherit_per_occurrence_metadata() -> None:
+    """Each co-filer's filing_date and report_date travel with its row."""
+    bundle = load_document_storage_fixture("exhibit_primary.sgm")
+    occurrences = [
+        FilingOccurrence(
+            occurrence_id="occ-1",
+            source_cik=Cik.from_raw("0000320193"),
+            accession=AccessionNumber(ACCESSION),
+            document_path="ex21.txt",
+            form="10-K",
+            filing_date="2002-05-15",
+            report_date=None,
+            doc_id="occ-1",
+        ),
+        FilingOccurrence(
+            occurrence_id="occ-2",
+            source_cik=Cik.from_raw("0000789019"),
+            accession=AccessionNumber(ACCESSION),
+            document_path="ex21.txt",
+            form="10-K",
+            filing_date="2002-05-15",
+            report_date="2002-04-30",
+            doc_id="occ-2",
+        ),
+    ]
+    requested = DocumentLocator.from_parts(
+        ACCESSION,
+        "ex21.txt",
+        archive_url=BUNDLE_URL,
+        form="10-K",
+        source_cik="0000320193",
+    )
+    result = resolve_candidate_filing(
+        _requested_ref(requested),
+        occurrences,
+        BundleFetchResult(status="ok", payload=bundle),
+    )
+    assert result.outcome is FilingResolutionOutcome.PRIMARY_RECOVERED
+    assert len(result.primary_occurrences) == 2
+    assert result.primary_occurrences[0].form == "10-K"
+    assert result.primary_occurrences[0].filing_date == "2002-05-15"
+    assert result.primary_occurrences[0].report_date is None
+    assert result.primary_occurrences[1].report_date == "2002-04-30"
+    # Form, filing_date, and report_date match their source rows.
+    for requested, projected in zip(
+        result.requested_occurrences, result.primary_occurrences
+    ):
+        assert projected.form == requested.form
+        assert projected.filing_date == requested.filing_date
+        assert projected.report_date == requested.report_date
+
+
+def test_amendment_alias_recovery_includes_full_projection() -> None:
+    """An amendment-form bundle resolves the primary with the co-filer projection."""
+    bundle = load_document_storage_fixture("amendment_alias.sgm")
+    occurrences = [
+        FilingOccurrence(
+            occurrence_id="occ-1",
+            source_cik=Cik.from_raw("0000320193"),
+            accession=AccessionNumber(ACCESSION),
+            document_path="ex21.txt",
+            form="10-K",
+            filing_date="2002-05-15",
+            report_date=None,
+            doc_id="occ-1",
+        ),
+        FilingOccurrence(
+            occurrence_id="occ-2",
+            source_cik=Cik.from_raw("0000789019"),
+            accession=AccessionNumber(ACCESSION),
+            document_path="ex21.txt",
+            form="10-K",
+            filing_date="2002-05-15",
+            report_date=None,
+            doc_id="occ-2",
+        ),
+    ]
+    requested = DocumentLocator.from_parts(
+        ACCESSION,
+        "ex21.txt",
+        archive_url=BUNDLE_URL,
+        form="10-K/A",
+        source_cik="0000320193",
+    )
+    result = resolve_candidate_filing(
+        _requested_ref(requested),
+        occurrences,
+        BundleFetchResult(status="ok", payload=bundle),
+    )
+    assert result.outcome is FilingResolutionOutcome.PRIMARY_RECOVERED
+    assert result.exhibit is result.requested
+    assert result.primary.locator.document_path == "a10k.htm"
+    assert result.primary.descriptor.doc_type == "10-K"
+    assert (
+        result.primary_occurrences[0].occurrence_id
+        != result.primary_occurrences[1].occurrence_id
+    )
+    assert (
+        result.primary.locator.document_path_source
+        is DocumentPathSource.RECOVERED_SUBMISSION_BUNDLE
+    )
+    assert all(r.document_path == "a10k.htm" for r in result.primary_occurrences)
+    assert all(
+        r.doc_id == result.primary.locator.document_locator_key
+        for r in result.primary_occurrences
+    )
 
 
 def test_recovered_primary_key_is_recomputed_from_accession_and_filename() -> None:

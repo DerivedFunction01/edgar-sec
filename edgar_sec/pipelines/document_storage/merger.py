@@ -20,7 +20,7 @@ from typing import Any
 from edgar_sec.foundation.hashing import file_sha256, sha256_text
 from edgar_sec.foundation.runtime.paths import DOCUMENTS_DATASET, current_pointer_path
 from edgar_sec.foundation.serialization import canonical_json
-from edgar_sec.infra.storage.duckdb import connect, copy_query_to_parquet
+from edgar_sec.infra.storage.duckdb import connect, copy_query_to_parquet, sql_path_list
 from edgar_sec.infra.storage.manifests import PART_KIND_INDEX, PART_KIND_PAYLOAD
 from edgar_sec.infra.storage.parquet import read_parquet_table
 from edgar_sec.pipelines.document_storage.checkpoint import validate_chunk_snapshot
@@ -33,7 +33,7 @@ from edgar_sec.pipelines.document_storage.queries import chunk_assembly_query
 log = logging.getLogger("document_storage.merger")
 
 SNAPSHOT_MANIFEST_NAME = "manifest.json"
-SNAPSHOT_SCHEMA_VERSION = "1"
+SNAPSHOT_SCHEMA_VERSION = "2"
 
 
 class MergeError(RuntimeError):
@@ -111,6 +111,8 @@ def _write_parts(staging: Path, artifact_path: Path) -> list[dict[str, Any]]:
             "filing_date",
             "byte_size",
             "normalized_text",
+            "report_date",
+            "metadata",
         ],
     )
     columns = {name: table.column(name).to_pylist() for name in table.schema.names}
@@ -127,12 +129,13 @@ def _write_parts(staging: Path, artifact_path: Path) -> list[dict[str, Any]]:
                 "accession": str(columns["accession"][index] or ""),
                 "form": str(columns["form"][index] or ""),
                 "filing_date": str(columns["filing_date"][index] or ""),
-                "report_date": None,
+                "report_date": columns["report_date"][index],
                 "document_path": str(columns["document_path"][index] or ""),
                 "doc_id": doc_id,
                 "mime_type": "text/plain",
                 "byte_size": str(columns["byte_size"][index] or 0),
                 "payload_file": "",
+                "metadata": columns["metadata"][index] or "{}",
             }
         )
 
@@ -185,6 +188,57 @@ def content_fingerprint(chunk_paths: Sequence[Path]) -> str:
             }
         )
     )
+
+
+def _conflict_check_query(chunk_paths: Sequence[str]) -> str:
+    """Check for conflicting rows for the same occurrence_id across chunks.
+
+    Conflicts are a data-integrity error: the merge collapses identical duplicates
+    and refuses any differing identity, metadata, payload/text, or row metadata.
+    """
+    return f"""
+        WITH assembled AS (
+            SELECT * FROM read_parquet({sql_path_list([str(p) for p in chunk_paths])})
+        ),
+        grouped AS (
+            SELECT
+                occurrence_id,
+                COUNT(*) AS n,
+                COUNT(DISTINCT (
+                    blob_hash, source_cik, accession, form, filing_date, report_date,
+                    status, error_message,
+                    COALESCE(metadata, '{{}}'),
+                    sha256(COALESCE(normalized_text, '')),
+                    sha256(raw_payload)
+                )) AS distinct_values
+            FROM assembled
+            GROUP BY occurrence_id
+            HAVING COUNT(*) > 1
+        )
+        SELECT occurrence_id FROM grouped WHERE distinct_values > 1
+    """
+
+
+def _deduped_assembly_query(chunk_paths: Sequence[str]) -> str:
+    """Assemble the snapshot with identical rows collapsed to one per occurrence_id.
+
+    Identical duplicates keep the first row by source_cik, accession, path;
+    conflicting duplicates are rejected by the conflict check above.
+    """
+    return f"""
+        WITH assembled AS (
+            SELECT * FROM read_parquet({sql_path_list([str(p) for p in chunk_paths])})
+        ),
+        ranked AS (
+            SELECT *,
+                ROW_NUMBER() OVER (
+                    PARTITION BY occurrence_id
+                    ORDER BY source_cik, accession, document_path, blob_hash
+                ) AS _rn
+            FROM assembled
+        )
+        SELECT * FROM ranked WHERE _rn = 1
+    """
 
 
 def _write_manifest(
@@ -287,9 +341,20 @@ def publish_snapshot(
     try:
         artifact = staging / SNAPSHOT_ARTIFACT_NAME
         with connect() as con:
+            conflict_rows = list(
+                con.execute(
+                    _conflict_check_query([str(path) for path in usable])
+                ).fetchall()
+            )
+            if conflict_rows:
+                ids = ", ".join(str(r[0]) for r in conflict_rows[:50])
+                raise MergeError(
+                    f"conflicting rows for {len(conflict_rows)} occurrence_id(s) "
+                    f"across chunks: {ids}"
+                )
             row_count = copy_query_to_parquet(
                 con,
-                chunk_assembly_query([str(path) for path in usable]),
+                _deduped_assembly_query([str(path) for path in usable]),
                 artifact,
             )
         failed, missing = _failure_counts(artifact)

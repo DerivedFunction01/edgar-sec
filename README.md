@@ -191,7 +191,11 @@ quota floors instead of silently absorbing them.
 
 Document storage saves raw responses to append-only fixture stores so a plan can
 be replayed offline. Existing payloads are not overwritten, and failed locators
-can be retried on a later fill. See the
+can be retried on a later fill. It also performs candidate-gated recovery: for
+pre-2005 exhibit-target candidates it acquires the submission bundle first,
+resolves the requested exhibit against the form-matched primary, and dual-writes
+both rows with role, parent, provenance, and outcome in the persisted `metadata`.
+See the
 [pipeline README](edgar_sec/pipelines/document_storage/README.md) for persistence
 details.
 

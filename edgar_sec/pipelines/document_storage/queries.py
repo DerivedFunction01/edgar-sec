@@ -66,8 +66,8 @@ def effective_snapshot_relations(
     """
     effective_index = f"""
         SELECT occurrence_id, source_cik, accession, form, filing_date,
-               report_date, document_path, doc_id, mime_type, byte_size,
-               payload_file,
+               report_date, COALESCE(metadata, '{{}}') AS metadata,
+               document_path, doc_id, mime_type, byte_size, payload_file,
                CASE WHEN length(filing_date) >= 4
                     THEN CAST(substr(filing_date, 1, 4) AS INTEGER)
                     ELSE 0
@@ -202,7 +202,7 @@ def effective_quarter_index_rows(
     """Stream metadata-only index rows for one quarter, without payload joins."""
     query = f"""
         SELECT occurrence_id, source_cik, accession, form, filing_date,
-               report_date, document_path, doc_id, mime_type, byte_size,
+               report_date, metadata, document_path, doc_id, mime_type, byte_size,
                payload_file
         FROM ({index_relation}) AS effective_index
         WHERE filing_year = ? AND filing_quarter = ?

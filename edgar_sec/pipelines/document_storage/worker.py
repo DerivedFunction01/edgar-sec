@@ -51,6 +51,21 @@ from edgar_sec.pipelines.document_storage.processor import (
     ProcessedDocument,
 )
 from edgar_sec.pipelines.document_storage.work_order import ChunkInput, WorkOrder
+from edgar_sec.pipelines.document_storage.candidate_recovery import (
+    CandidateOutcome,
+    outcome_batch,
+    run_candidate_recovery,
+)
+from edgar_sec.pipelines.document_storage.processing import (
+    _build_snapshot_batch,
+    _occurrence_report_dates,
+    _process_locator,
+    _record_delegation,
+)
+from edgar_sec.pipelines.document_storage.work_order import (
+    DelegationTarget,
+    FilingWork,
+)
 
 log = logging.getLogger("document_storage.worker")
 
@@ -63,36 +78,6 @@ WORKER_SCHEMA_VERSION = 1
 
 class ChunkError(RuntimeError):
     """A chunk could not be processed."""
-
-
-@dataclass(frozen=True, slots=True)
-class DelegationTarget:
-    """A stub decision a worker observed, for the delegation pass to resolve.
-
-    Only the target's identity travels; exhibits are fetched in that pass.
-    """
-
-    document_locator_key: str
-    document_path: str
-    target_exhibit: str
-
-
-@dataclass(frozen=True, slots=True)
-class FilingWork:
-    """One requested locator's pass through acquisition and normalization.
-
-    Role-neutral: it claims no primary/exhibit role, so ``candidate`` stays a request to
-    inspect. The transport envelope is deliberately absent; only the loaded body travels.
-    """
-
-    locator: DocumentLocator
-    occurrences: tuple[FilingOccurrence, ...]
-    filing_date: date | None
-    candidate: CandidateDecision
-    status: str = ""
-    error: str | None = None
-    acquired: AcquiredSubmission | None = None
-    processed: ProcessedDocument | None = None
 
 
 @dataclass(frozen=True, slots=True)
@@ -204,61 +189,21 @@ def candidate_summary(
     return eligible, candidates, unresolved
 
 
-def _build_snapshot_batch(
+def _error_batch(
     occurrences: Sequence[FilingOccurrence],
-    *,
-    raw_payload: bytes,
-    norm_text: str,
     status: str,
-    error: str | None,
-) -> dict[str, list[Any]]:
-    """Assemble a columnar batch dictionary conforming to DOCUMENT_SNAPSHOT_SCHEMA."""
-    occurrence_ids: list[str] = []
-    source_ciks: list[str] = []
-    accessions: list[str] = []
-    document_paths: list[str] = []
-    document_locator_keys: list[str] = []
-    blob_hashes: list[str] = []
-    forms: list[str] = []
-    filing_dates: list[str] = []
-    raw_payloads: list[bytes] = []
-    byte_sizes: list[int] = []
-    norm_texts: list[str] = []
-    status_list: list[str] = []
-    error_list: list[str | None] = []
-
-    byte_size = len(raw_payload)
-    for occ in occurrences:
-        occurrence_ids.append(occ.occurrence_id)
-        source_ciks.append(occ.source_cik.to_10digit())
-        accessions.append(str(occ.accession))
-        document_paths.append(occ.document_path)
-        doc_key = derive_document_locator_key(str(occ.accession), occ.document_path)
-        document_locator_keys.append(doc_key)
-        blob_hashes.append(occ.doc_id)
-        forms.append(occ.form)
-        filing_dates.append(occ.filing_date)
-        raw_payloads.append(raw_payload)
-        byte_sizes.append(byte_size)
-        norm_texts.append(norm_text)
-        status_list.append(status)
-        error_list.append(error)
-
-    return {
-        "occurrence_id": occurrence_ids,
-        "source_cik": source_ciks,
-        "accession": accessions,
-        "document_path": document_paths,
-        "document_locator_key": document_locator_keys,
-        "blob_hash": blob_hashes,
-        "form": forms,
-        "filing_date": filing_dates,
-        "raw_payload": raw_payloads,
-        "byte_size": byte_sizes,
-        "normalized_text": norm_texts,
-        "status": status_list,
-        "error_message": error_list,
-    }
+    error: str,
+    report_dates: Mapping[str, str | None] | None = None,
+) -> dict[str, list]:
+    """Assemble an error batch with no retained payload."""
+    return _build_snapshot_batch(
+        occurrences,
+        raw_payload=b"",
+        norm_text="",
+        status=status,
+        error=error,
+        report_dates=report_dates,
+    )
 
 
 def process_chunk(
@@ -318,6 +263,8 @@ def process_chunk(
         id_column="occurrence_id",
     ) as writer:
         existing_ids = writer.get_existing_ids()
+        seen = set(existing_ids)
+        chunk_expected = len(existing_ids)
 
         for index, locator in enumerate(unique):
             work = _filing_work(locator, by_key)
@@ -330,84 +277,70 @@ def process_chunk(
             ):
                 continue
 
-            result = fetcher.fetch(work.locator)
-            work = replace(
-                work,
-                status=result.status,
-                error=result.error,
-                acquired=result.acquired,
-            )
-            acquired = work.acquired
-            if acquired is None:
-                batch = _build_snapshot_batch(
-                    work.occurrences,
-                    raw_payload=b"",
-                    norm_text="",
-                    status="missing",
-                    error=work.error or "payload unavailable",
-                )
-                writer.write_batch(batch)
-                continue
-
-            # The result also holds the source envelope, which spans the whole submission.
-            # Releasing it here keeps one envelope out of memory for the normalize call.
-            del result
-            if payload_sink is not None:
-                payload_sink(locator, acquired.selected_payload)
-
-            try:
-                processed: ProcessedDocument = effective_processor.process(acquired)
-            except Exception as exc:  # noqa: BLE001 - one bad document is not a bad chunk
-                log.warning("processing failed for %s: %s", locator.document_path, exc)
-                work = replace(work, status="failed", error=str(exc))
-                batch = _build_snapshot_batch(
-                    work.occurrences,
-                    raw_payload=b"",
-                    norm_text="",
-                    status="failed",
-                    error=work.error,
-                )
-                writer.write_batch(batch)
-                continue
-
-            work = replace(work, processed=processed, status="ok")
-            decision = processed.decision
-            if decision is not None and decision.target_exhibit:
-                target = DelegationTarget(
-                    document_locator_key=locator.document_locator_key,
-                    document_path=locator.document_path,
-                    target_exhibit=decision.target_exhibit,
-                )
-                delegations.append(target)
+            if work.candidate.is_bundle_candidate:
+                # Candidate recovery: bundle-first, one outcome per emitted row.
+                # Track occurrence IDs seen in this chunk (resumption + in-chunk
+                # dedup) so repeated recovered identities do not emit duplicates.
                 try:
-                    atomic_write_json(
-                        delegations_file,
-                        [
-                            {
-                                "document_locator_key": d.document_locator_key,
-                                "document_path": d.document_path,
-                                "target_exhibit": d.target_exhibit,
-                            }
-                            for d in delegations
-                        ],
-                        canonical=True,
+                    outcomes, candidate_delegations = run_candidate_recovery(
+                        work.locator, work.occurrences, fetcher, effective_processor
                     )
-                except OSError:
-                    pass
+                except Exception as exc:  # noqa: BLE001
+                    log.warning(
+                        "candidate recovery failed for %s: %s",
+                        locator.document_path,
+                        exc,
+                    )
+                    fresh = tuple(
+                        occ for occ in work.occurrences if occ.occurrence_id not in seen
+                    )
+                    if fresh:
+                        writer.write_batch(
+                            _error_batch(
+                                fresh,
+                                "failed",
+                                str(exc),
+                                report_dates=_occurrence_report_dates(fresh),
+                            )
+                        )
+                        seen.update(occ.occurrence_id for occ in fresh)
+                        chunk_expected += len(fresh)
+                    continue
+                for outcome in outcomes:
+                    if outcome.occurrence_id in seen:
+                        continue  # already persisted; do not emit duplicates.
+                    seen.add(outcome.occurrence_id)
+                    chunk_expected += 1
+                    batch = outcome_batch(outcome)
+                    writer.write_batch(batch)
+                    if outcome.status == "ok" and payload_sink is not None:
+                        payload_sink(work.locator, outcome.raw_payload)
+                    if outcome.status == "ok":
+                        for dk, dp, te in candidate_delegations:
+                            _record_delegation(
+                                delegations, delegations_file, dk, dp, te
+                            )
+            else:
+                fresh = tuple(
+                    occ for occ in work.occurrences if occ.occurrence_id not in seen
+                )
+                if not fresh:
+                    continue
+                work = replace(work, occurrences=fresh)
+                _process_locator(
+                    locator,
+                    work,
+                    fetcher,
+                    effective_processor,
+                    payload_sink,
+                    delegations,
+                    delegations_file,
+                    writer,
+                )
+                chunk_expected += len(work.occurrences)
+                seen.update(occ.occurrence_id for occ in work.occurrences)
 
-            batch = _build_snapshot_batch(
-                work.occurrences,
-                raw_payload=processed.payload,
-                norm_text=processed.text,
-                status=work.status,
-                error=None,
-            )
-            writer.write_batch(batch)
-
-            if index and index % RECLAIM_INTERVAL == 0:
-                reclaim()
-
-        writer.commit(expected_count=total_occurrences)
+        writer.commit(expected_count=chunk_expected)
         _stamp_fingerprint(output_path, fingerprint)
 
     if delegations_file.is_file():

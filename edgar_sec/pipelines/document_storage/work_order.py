@@ -8,9 +8,13 @@ from __future__ import annotations
 
 from collections.abc import Iterable, Iterator
 from dataclasses import dataclass
+from datetime import date
 from typing import Protocol
 
+from edgar_sec.domain.document.acquisition import AcquiredSubmission
 from edgar_sec.domain.document.models import DocumentLocator, FilingOccurrence
+from edgar_sec.pipelines.document_storage.candidates import CandidateDecision
+from edgar_sec.pipelines.document_storage.processor import ProcessedDocument
 
 
 @dataclass(frozen=True, slots=True)
@@ -20,6 +24,33 @@ class ChunkInput:
     chunk_id: str
     locators: tuple[DocumentLocator, ...]
     occurrences: tuple[FilingOccurrence, ...]
+
+
+@dataclass(frozen=True, slots=True)
+class FilingWork:
+    """One locator's decision and the occurrences it must produce."""
+
+    locator: DocumentLocator
+    occurrences: tuple[FilingOccurrence, ...]
+    filing_date: date | None
+    candidate: CandidateDecision
+    status: str = ""
+    error: str | None = None
+    acquired: AcquiredSubmission | None = None
+    processed: ProcessedDocument | None = None
+
+
+@dataclass(frozen=True, slots=True)
+class DelegationTarget:
+    """A stub decision a worker observed, for the delegation pass to resolve.
+
+    Keyed on the stub primary's locator key so the exhibit second pass can find the
+    matching snapshot row.
+    """
+
+    document_locator_key: str
+    document_path: str
+    target_exhibit: str
 
 
 class WorkOrder(Protocol):
@@ -40,4 +71,9 @@ class WorkOrder(Protocol):
         """Return the named locators, reading no more of the plan than they need."""
 
 
-__all__ = ["ChunkInput", "WorkOrder"]
+__all__ = [
+    "ChunkInput",
+    "DelegationTarget",
+    "FilingWork",
+    "WorkOrder",
+]

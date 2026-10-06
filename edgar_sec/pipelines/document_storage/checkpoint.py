@@ -5,6 +5,7 @@ The merger validates this schema; the worker reuses checkpoints written against 
 
 from __future__ import annotations
 
+import json
 from collections.abc import Mapping, Sequence
 from pathlib import Path
 from typing import Any
@@ -17,6 +18,7 @@ from edgar_sec.domain.document.models import (
     RawDocumentBlob,
     derive_document_locator_key,
 )
+from edgar_sec.foundation.serialization import canonical_json
 from edgar_sec.infra.storage.parquet import StagedParquetWriter
 
 DOCUMENT_SNAPSHOT_SCHEMA = pa.schema(
@@ -36,8 +38,35 @@ DOCUMENT_SNAPSHOT_SCHEMA = pa.schema(
         ("normalized_text", pa.string()),
         ("status", pa.string()),
         ("error_message", pa.string()),
+        # Per-occurrence resolution/storage metadata: document_role,
+        # parent_locator_key, document_path_source, and resolution_outcome,
+        # canonical JSON-encoded and defaulting to "{}". Not ProcessedDocument
+        # metadata; it comes from the resolution/worker context.
+        ("metadata", pa.string()),
+        # Carried from the occurrence: the filing's report date, distinct from
+        # filing_date and nullable when the catalog did not publish one.
+        ("report_date", pa.string()),
     ]
 )
+
+
+def _validate_metadata(metadata_map: Mapping[str, str]) -> None:
+    """Validate per-occurrence metadata before writing.
+
+    Metadata must be parseable as JSON so invalid encoding is caught at write time
+    rather than discovered in an immutable snapshot.
+    """
+    for occurrence_id, value in metadata_map.items():
+        try:
+            decoded = json.loads(value)
+        except json.JSONDecodeError as exc:
+            raise ValueError(
+                f"invalid canonical JSON metadata for occurrence {occurrence_id!r}: {exc}"
+            )
+        if canonical_json(decoded) != value:
+            raise ValueError(
+                f"metadata for occurrence {occurrence_id!r} is not canonical JSON"
+            )
 
 
 def write_chunk_snapshot(
@@ -47,10 +76,16 @@ def write_chunk_snapshot(
     normalized_texts: Mapping[str, str],
     statuses: Mapping[str, str] | None = None,
     error_messages: Mapping[str, str | None] | None = None,
+    metadata_map: Mapping[str, str] | None = None,
+    report_dates: Mapping[str, str | None] | None = None,
 ) -> Path:
     """Serialize worker chunk records directly to an atomic Parquet snapshot file."""
     dest = Path(output_path).resolve()
     dest.parent.mkdir(parents=True, exist_ok=True)
+
+    metadata_map = metadata_map or {}
+    report_dates = report_dates or {}
+    _validate_metadata(metadata_map)
 
     occurrence_ids: list[str] = []
     source_ciks: list[str] = []
@@ -65,6 +100,8 @@ def write_chunk_snapshot(
     norm_texts: list[str] = []
     status_list: list[str] = []
     error_list: list[str | None] = []
+    report_date_list: list[str | None] = []
+    metadata_list: list[str] = []
 
     for occ in occurrences:
         occurrence_ids.append(occ.occurrence_id)
@@ -98,6 +135,9 @@ def write_chunk_snapshot(
         err = error_messages.get(occ.occurrence_id) if error_messages else None
         error_list.append(err)
 
+        report_date_list.append(report_dates.get(occ.occurrence_id, occ.report_date))
+        metadata_list.append(metadata_map.get(occ.occurrence_id, "{}"))
+
     data = {
         "occurrence_id": occurrence_ids,
         "source_cik": source_ciks,
@@ -112,6 +152,8 @@ def write_chunk_snapshot(
         "normalized_text": norm_texts,
         "status": status_list,
         "error_message": error_list,
+        "report_date": report_date_list,
+        "metadata": metadata_list,
     }
 
     with StagedParquetWriter(

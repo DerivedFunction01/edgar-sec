@@ -1,6 +1,7 @@
 from edgar_sec.domain.document.models import (
     DocumentKind,
     DocumentLocator,
+    DocumentPathSource,
     FilingOccurrence,
     RawDocumentBlob,
     derive_document_locator_key,
@@ -55,3 +56,51 @@ def test_filing_occurrence_creation() -> None:
     restored = FilingOccurrence.from_row(row)
     assert restored == occ
     assert DocumentKind.HTML == "html"
+
+
+def test_document_path_source_values() -> None:
+    """DocumentPathSource covers catalog metadata, the bundle fallback, and recovery."""
+    assert DocumentPathSource.PRIMARY_DOCUMENT.value == "primary_document"
+    assert DocumentPathSource.SUBMISSION_BUNDLE.value == "submission_bundle"
+    assert (
+        DocumentPathSource.RECOVERED_SUBMISSION_BUNDLE.value
+        == "recovered_submission_bundle"
+    )
+
+
+def test_document_locator_from_parts_sets_path_source() -> None:
+    """from_parts carries the provenance value into the locator."""
+    locator = DocumentLocator.from_parts(
+        "0000320193-23-000106",
+        "aapl-20230930.htm",
+        document_path_source=DocumentPathSource.PRIMARY_DOCUMENT,
+    )
+    assert locator.document_path_source is DocumentPathSource.PRIMARY_DOCUMENT
+    assert locator.document_path == "aapl-20230930.htm"
+    assert locator.document_locator_key == derive_document_locator_key(
+        "000032019323000106", "aapl-20230930.htm"
+    )
+
+
+def test_document_locator_path_source_defaults_to_none() -> None:
+    """A locator constructed without provenance leaves the field absent."""
+    locator = DocumentLocator.from_parts(
+        "0000320193-23-000106",
+        "aapl-20230930.htm",
+    )
+    assert locator.document_path_source is None
+
+
+def test_path_source_does_not_change_the_locator_key() -> None:
+    """Provenance travels with the path; the content key stays accession+path."""
+    base = DocumentLocator.from_parts(
+        "0000320193-23-000106",
+        "aapl-20230930.htm",
+    )
+    provenanced = DocumentLocator.from_parts(
+        "0000320193-23-000106",
+        "aapl-20230930.htm",
+        document_path_source=DocumentPathSource.RECOVERED_SUBMISSION_BUNDLE,
+    )
+    assert base.document_locator_key == provenanced.document_locator_key
+    assert base.document_path_source != provenanced.document_path_source

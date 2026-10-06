@@ -141,7 +141,8 @@ class FilingAggregate:
     Adheres to the sparse acquisition contract:
     - Primary accession document is acquired by default.
     - Secondary exhibits remain empty unless an evaluator triggers delegation.
-    - Raw submission bundle is None unless fetched for legacy recovery.
+    - Raw submission bundle is fetched for candidate-gated recovery (pre-2005
+      exhibit-target candidates), not for ordinary requests.
     - xbrl slot remains None unless hydrated via downstream fact marts.
     - SOLE OWNER of filing-level attachments, bundles, and optional XBRL data.
     """
@@ -165,7 +166,7 @@ class FilingAggregate:
     decision: Optional[EvaluatorDecision] = None
 
     # Archival bundle & extension slots (owned at filing level)
-    raw_bundle: Optional[bytes] = None  # Populated only on bundle refetch
+    raw_bundle: Optional[bytes] = None  # Populated only on candidate-gated bundle refetch
     xbrl: Optional[Any] = None  # Unpopulated XBRLData extension slot (0 bytes overhead)
 
     @property
@@ -779,7 +780,9 @@ classDiagram
 ### Aggregate Population Invariants:
 1. **Sparse by Default**:
    - `primary_payload` and `primary_document` (`BlockStream`) are populated during Step 5.
-   - `attachments` is an empty dictionary (`{}`) for all forms unless Exhibit 13 delegation or exhibit inversion recovery runs on Form 10-K.
+   - `attachments` is an empty dictionary (`{}`) for all forms unless an evaluator
+     triggers delegation (Exhibit 13 on Form 10-K) or candidate-gated recovery
+     promotes a form-matched primary for a pre-2005 exhibit-target.
    - `raw_bundle` is `None` unless fetched during recovery; in workers, raw bundle bytes are ephemeral and discarded after sub-document extraction to respect the 512 MiB memory budget.
    - `xbrl` is `None` by default (0 bytes overhead).
 2. **Exhibit View**:

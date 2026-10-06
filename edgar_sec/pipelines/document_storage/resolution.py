@@ -18,7 +18,12 @@ from edgar_sec.domain.document.acquisition import (
     SubmissionDocument,
     unresolved_resolution,
 )
-from edgar_sec.domain.document.models import DocumentLocator, FilingOccurrence
+from edgar_sec.domain.document.models import (
+    derive_occurrence_id,
+    DocumentLocator,
+    DocumentPathSource,
+    FilingOccurrence,
+)
 from edgar_sec.domain.forms.common.aliases import (
     FORM_FAMILY_ALIASES,
     aliases_for_family,
@@ -67,10 +72,27 @@ def _archive_url(source: AcquisitionSource | None, fallback: str | None) -> str 
     return None
 
 
+def _is_valid_basename(path: str | None) -> bool:
+    """Return whether ``path`` is a safe plain filename for a recovered primary.
+
+    Rejects empty, path-qualified, ``.``/``..``, and NUL-containing names.
+    """
+    if not path:
+        return False
+    normalized = path.strip()
+    if not normalized or normalized in (".", ".."):
+        return False
+    if "/" in normalized or "\\" in normalized or "\x00" in normalized:
+        return False
+    return True
+
+
 def _reference_from_resolved(
     resolved: _ResolvedDocument,
     locator: DocumentLocator,
     source: AcquisitionSource | None,
+    *,
+    document_path_source: DocumentPathSource | None = None,
 ) -> DocumentReference:
     """Turn a scanned, body-carrying descriptor into a ``DocumentReference``.
 
@@ -85,6 +107,7 @@ def _reference_from_resolved(
         form=locator.form,
         source_cik=locator.source_cik,
         document_type=resolved.doc_type,
+        document_path_source=document_path_source,
     )
     return DocumentReference(
         locator=new_locator,
@@ -224,13 +247,59 @@ def resolve_candidate_filing(
         )
 
     # A distinct document is the recovered primary; the request is the exhibit.
+    if not _is_valid_basename(primary_filename):
+        return unresolved_resolution(
+            requested=requested_ref,
+            occurrences=occurrences,
+            outcome=FilingResolutionOutcome.MALFORMED_SGML,
+        )
+
+    # Validate source CIKs: a missing CIK takes precedence over a duplicate one.
+    ciks: list[str] = []
+    for occurrence in occurrences:
+        if occurrence.source_cik is None:
+            return unresolved_resolution(
+                requested=requested_ref,
+                occurrences=occurrences,
+                outcome=FilingResolutionOutcome.MISSING_SOURCE_CIK,
+            )
+        cik = occurrence.source_cik.to_10digit()
+        if cik in ciks:
+            return unresolved_resolution(
+                requested=requested_ref,
+                occurrences=occurrences,
+                outcome=FilingResolutionOutcome.DUPLICATE_SOURCE_CIK,
+            )
+        ciks.append(cik)
+
     primary = _reference_from_resolved(
-        scan.primary, requested.locator, bundle_result.source
+        scan.primary,
+        requested.locator,
+        bundle_result.source,
+        document_path_source=DocumentPathSource.RECOVERED_SUBMISSION_BUNDLE,
+    )
+    primary_occurrences = tuple(
+        FilingOccurrence(
+            occurrence_id=derive_occurrence_id(
+                occurrence.source_cik.to_10digit(),
+                str(primary.locator.accession),
+                primary.locator.document_path,
+            ),
+            source_cik=occurrence.source_cik,
+            accession=primary.locator.accession,
+            document_path=primary.locator.document_path,
+            form=occurrence.form,
+            filing_date=occurrence.filing_date,
+            report_date=occurrence.report_date,
+            doc_id=primary.locator.document_locator_key,
+        )
+        for occurrence in occurrences
     )
     return FilingResolutionResult(
         requested=requested_ref,
         requested_occurrences=occurrences,
         primary=primary,
         exhibit=requested_ref,
+        primary_occurrences=primary_occurrences,
         outcome=FilingResolutionOutcome.PRIMARY_RECOVERED,
     )

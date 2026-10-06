@@ -18,6 +18,7 @@ from edgar_sec.domain.document.acquisition import (
     AcquiredSubmission,
     AcquisitionSource,
     AcquisitionSourceKind,
+    BundleFetchResult,
     FetchResult,
     SubmissionFormat,
     direct_acquisition,
@@ -62,6 +63,13 @@ class ArchiveFetcher(Protocol):
 
     def fetch(self, locator: DocumentLocator) -> FetchResult:
         """Acquire the bytes identified by ``locator``."""
+
+    def fetch_bundle(self, locator: DocumentLocator) -> BundleFetchResult:
+        """Acquire the complete submission bundle for ``locator``.
+
+        The bundle is returned raw (a ``BundleFetchResult``); it is the caller's
+        responsibility to scan it for a primary and any delegated exhibits.
+        """
 
 
 def extract_from_sgml_envelope(
@@ -263,6 +271,26 @@ class FixtureArchiveFetcher:
             return FetchResult(locator=locator, status="failed", error=str(exc))
         return FetchResult(locator=locator, status="missing")
 
+    def fetch_bundle(self, locator: DocumentLocator) -> BundleFetchResult:
+        """Acquire the complete submission bundle for a candidate locator."""
+        canonical = normalize_accession(locator.accession)
+        if canonical is None:
+            return BundleFetchResult(
+                status="missing", error="accession could not be normalized"
+            )
+        from edgar_sec.domain.sec_urls import accession_hyphenated
+
+        bundle_name = f"{accession_hyphenated(canonical)}.txt"
+        key = derive_document_locator_key(str(locator.accession), bundle_name)
+        payload = self._lookup(key)
+        if payload is not None:
+            return BundleFetchResult(
+                status="ok", payload=payload, source=_fixture_source(bundle_name)
+            )
+        return BundleFetchResult(
+            status="missing", error="bundle not found in fixture store"
+        )
+
     def close(self) -> None:
         """Close any fixture connections this process opened."""
         stores = getattr(self._local, "stores", None)
@@ -367,6 +395,25 @@ class BrokerArchiveFetcher:
             error=primary_error or "fetch failed",
         )
 
+    def fetch_bundle(self, locator: DocumentLocator) -> BundleFetchResult:
+        """Acquire the complete submission bundle for a candidate locator."""
+        from edgar_sec.domain.sec_urls import parse_archive_url
+
+        parts = parse_archive_url(locator.archive_url)
+        if parts is None:
+            return BundleFetchResult(
+                status="missing", error="locator has no archive URL"
+            )
+        url = full_submission_url_for(parts.archive_cik, locator.accession)
+        payload, error = self._payload_from(url)
+        if payload is not None:
+            return BundleFetchResult(
+                status="ok", payload=payload, source=_archive_source(url)
+            )
+        if error is not None and "not found" in error.lower():
+            return BundleFetchResult(status="missing", error=error)
+        return BundleFetchResult(status="failed", error=error or "bundle fetch failed")
+
 
 class LiveArchiveFetcher:
     """Acquire archive bytes through a caller-supplied HTTP client.
@@ -442,6 +489,28 @@ class LiveArchiveFetcher:
             status="failed",
             error=primary_error or "fetch failed",
         )
+
+    def fetch_bundle(self, locator: DocumentLocator) -> BundleFetchResult:
+        """Acquire the complete submission bundle for a candidate locator."""
+        from edgar_sec.domain.sec_urls import parse_archive_url
+
+        parts = parse_archive_url(locator.archive_url)
+        if parts is None:
+            return BundleFetchResult(
+                status="missing", error="locator has no archive URL"
+            )
+        url = full_submission_url_for(parts.archive_cik, locator.accession)
+        try:
+            payload = self._http_client.get_bytes(url)
+        except Exception as exc:  # noqa: BLE001 - transport errors become statuses
+            if "404" in str(exc) or "404" in (getattr(exc, "url", "") or ""):
+                return BundleFetchResult(status="missing", error=str(exc))
+            return BundleFetchResult(status="failed", error=str(exc))
+        if payload:
+            return BundleFetchResult(
+                status="ok", payload=payload, source=_archive_source(url)
+            )
+        return BundleFetchResult(status="missing", error="bundle returned empty")
 
 
 def build_broker_fetcher(

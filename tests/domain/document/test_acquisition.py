@@ -21,7 +21,9 @@ from edgar_sec.domain.document.acquisition import (
 from edgar_sec.domain.document.models import (
     AccessionNumber,
     DocumentLocator,
+    DocumentPathSource,
     FilingOccurrence,
+    derive_occurrence_id,
 )
 from edgar_sec.domain.document.route import DocumentRoute
 from edgar_sec.domain.identity import Cik
@@ -54,6 +56,7 @@ PRIMARY_LOCATOR = DocumentLocator.from_parts(
     form="10-K",
     source_cik="0000320193",
     document_type="10-K",
+    document_path_source=DocumentPathSource.RECOVERED_SUBMISSION_BUNDLE,
 )
 
 OCCURRENCE = FilingOccurrence(
@@ -115,19 +118,31 @@ def test_resolution_outcome_values_are_exhaustive() -> None:
         "requested_not_in_bundle",
         "no_matching_primary",
         "ambiguous_headers",
+        "requested_is_primary",
+        "primary_recovered",
     )
     assert FilingResolutionOutcome.REQUESTED_IS_PRIMARY.value == "requested_is_primary"
     assert FilingResolutionOutcome.PRIMARY_RECOVERED.value == "primary_recovered"
 
 
 def test_resolution_result_unresolved_shapes() -> None:
-    """Every unresolved outcome keeps only the requested reference."""
+    """Every unresolved outcome keeps only the requested reference and no projection."""
     ref = DocumentReference(locator=LOCATOR, descriptor=DESCRIPTOR, payload=b"exhibit")
-    for outcome in tuple(FilingResolutionOutcome)[:-2]:
+    unresolved = (
+        FilingResolutionOutcome.NOT_CANDIDATE,
+        FilingResolutionOutcome.BUNDLE_UNAVAILABLE,
+        FilingResolutionOutcome.NON_SGML_BUNDLE,
+        FilingResolutionOutcome.MALFORMED_SGML,
+        FilingResolutionOutcome.REQUESTED_NOT_IN_BUNDLE,
+        FilingResolutionOutcome.NO_MATCHING_PRIMARY,
+        FilingResolutionOutcome.AMBIGUOUS_HEADERS,
+    )
+    for outcome in unresolved:
         result = FilingResolutionResult(
             requested=ref,
             requested_occurrences=(OCCURRENCE,),
             outcome=outcome,
+            primary_occurrences=(),
         )
         assert result.outcome is outcome
         assert result.primary is None
@@ -162,11 +177,26 @@ def test_resolution_result_primary_recovered_shape() -> None:
         payload=b"primary",
         source=SOURCE,
     )
+    primary_occurrence = FilingOccurrence(
+        occurrence_id=derive_occurrence_id(
+            OCCURRENCE.source_cik.to_10digit(),
+            str(requested.locator.accession),
+            primary.locator.document_path,
+        ),
+        source_cik=OCCURRENCE.source_cik,
+        accession=primary.locator.accession,
+        document_path=primary.locator.document_path,
+        form=OCCURRENCE.form,
+        filing_date=OCCURRENCE.filing_date,
+        report_date=OCCURRENCE.report_date,
+        doc_id=primary.locator.document_locator_key,
+    )
     result = FilingResolutionResult(
         requested=requested,
         requested_occurrences=(OCCURRENCE,),
         primary=primary,
         exhibit=requested,
+        primary_occurrences=(primary_occurrence,),
         outcome=FilingResolutionOutcome.PRIMARY_RECOVERED,
     )
     assert result.primary is primary
@@ -220,20 +250,50 @@ def test_resolution_result_rejects_invalid_shapes() -> None:
         )
 
     with pytest.raises(ValueError, match="PRIMARY_RECOVERED requires"):
+        primary_occurrence = FilingOccurrence(
+            occurrence_id=derive_occurrence_id(
+                OCCURRENCE.source_cik.to_10digit(),
+                str(PRIMARY_LOCATOR.accession),
+                "a10k.htm",
+            ),
+            source_cik=OCCURRENCE.source_cik,
+            accession=PRIMARY_LOCATOR.accession,
+            document_path="a10k.htm",
+            form=OCCURRENCE.form,
+            filing_date=OCCURRENCE.filing_date,
+            report_date=OCCURRENCE.report_date,
+            doc_id=PRIMARY_LOCATOR.document_locator_key,
+        )
         FilingResolutionResult(
             requested=ref,
             requested_occurrences=(OCCURRENCE,),
             primary=DocumentReference(
                 locator=PRIMARY_LOCATOR, descriptor=DESCRIPTOR, payload=b"x"
             ),
+            primary_occurrences=(primary_occurrence,),
             outcome=FilingResolutionOutcome.PRIMARY_RECOVERED,
         )
 
     with pytest.raises(ValueError, match="PRIMARY_RECOVERED requires"):
+        primary_occurrence = FilingOccurrence(
+            occurrence_id=derive_occurrence_id(
+                OCCURRENCE.source_cik.to_10digit(),
+                str(ref.locator.accession),
+                "ex21.txt",
+            ),
+            source_cik=OCCURRENCE.source_cik,
+            accession=ref.locator.accession,
+            document_path="ex21.txt",
+            form=OCCURRENCE.form,
+            filing_date=OCCURRENCE.filing_date,
+            report_date=OCCURRENCE.report_date,
+            doc_id=ref.locator.document_locator_key,
+        )
         FilingResolutionResult(
             requested=ref,
             requested_occurrences=(OCCURRENCE,),
             primary=ref,
+            primary_occurrences=(primary_occurrence,),
             outcome=FilingResolutionOutcome.PRIMARY_RECOVERED,
         )
 
@@ -325,3 +385,380 @@ def test_bundle_fetch_result_adapts_fetch_result_provenance() -> None:
         ).payload
         is None
     )
+
+
+def test_missing_source_cik_is_unresolved_without_projection() -> None:
+    """A requested occurrence lacking source_cik yields MISSING_SOURCE_CIK."""
+    ref = DocumentReference(locator=LOCATOR, descriptor=DESCRIPTOR, payload=b"exhibit")
+    missing_cik_occurrence = FilingOccurrence(
+        occurrence_id="occ-1",
+        source_cik=None,  # type: ignore[arg-type]
+        accession=OCCURRENCE.accession,
+        document_path=OCCURRENCE.document_path,
+        form=OCCURRENCE.form,
+        filing_date=OCCURRENCE.filing_date,
+        report_date=OCCURRENCE.report_date,
+        doc_id=OCCURRENCE.doc_id,
+    )
+    result = FilingResolutionResult(
+        requested=ref,
+        requested_occurrences=(missing_cik_occurrence,),
+        outcome=FilingResolutionOutcome.MISSING_SOURCE_CIK,
+        primary_occurrences=(),
+    )
+    assert result.primary is None and result.exhibit is None
+    assert result.requested is ref
+    assert result.primary_occurrences == ()
+    assert result.requested_occurrences == (missing_cik_occurrence,)
+
+
+def test_duplicate_source_cik_is_unresolved_without_projection() -> None:
+    """Repeating source_cik values yield DUPLICATE_SOURCE_CIK."""
+    ref = DocumentReference(locator=LOCATOR, descriptor=DESCRIPTOR, payload=b"exhibit")
+    result = FilingResolutionResult(
+        requested=ref,
+        requested_occurrences=(OCCURRENCE, OCCURRENCE),
+        outcome=FilingResolutionOutcome.DUPLICATE_SOURCE_CIK,
+        primary_occurrences=(),
+    )
+    assert result.primary is None and result.exhibit is None
+    assert result.primary_occurrences == ()
+
+
+def _primary_ref_for(locator: DocumentLocator) -> DocumentReference:
+    return DocumentReference(
+        locator=locator,
+        descriptor=DESCRIPTOR,
+        payload=b"primary",
+        source=SOURCE,
+    )
+
+
+def test_missing_source_cik_rejected_as_projection() -> None:
+    """A missing source_cik in a source row is refused even with a projection."""
+    ref = DocumentReference(locator=LOCATOR, descriptor=DESCRIPTOR, payload=b"exhibit")
+    bad_row = FilingOccurrence(
+        occurrence_id="occ-1",
+        source_cik=None,  # type: ignore[arg-type]
+        accession=OCCURRENCE.accession,
+        document_path="ex21.txt",
+        form=OCCURRENCE.form,
+        filing_date=OCCURRENCE.filing_date,
+        report_date=OCCURRENCE.report_date,
+        doc_id=LOCATOR.document_locator_key,
+    )
+    primary_occurrence = FilingOccurrence(
+        occurrence_id=derive_occurrence_id(
+            "0000320193", str(LOCATOR.accession), "a10k.htm"
+        ),
+        source_cik=Cik.from_raw("0000320193"),
+        accession=LOCATOR.accession,
+        document_path="a10k.htm",
+        form="10-K",
+        filing_date="2002-05-15",
+        report_date=None,
+        doc_id=PRIMARY_LOCATOR.document_locator_key,
+    )
+    with pytest.raises(ValueError, match="must not retarget identity"):
+        FilingResolutionResult(
+            requested=ref,
+            requested_occurrences=(bad_row,),
+            primary=_primary_ref_for(PRIMARY_LOCATOR),
+            exhibit=ref,
+            primary_occurrences=(primary_occurrence,),
+            outcome=FilingResolutionOutcome.PRIMARY_RECOVERED,
+        )
+
+
+def test_duplicate_source_cik_rejected_as_projection() -> None:
+    """A CIK duplicated in the projection is refused."""
+    ref = DocumentReference(locator=LOCATOR, descriptor=DESCRIPTOR, payload=b"exhibit")
+    cik_1 = Cik.from_raw("0000320193")
+    cik_2 = Cik.from_raw("0000789019")
+    requested = (
+        FilingOccurrence(
+            occurrence_id="occ-1",
+            source_cik=cik_1,
+            accession=LOCATOR.accession,
+            document_path="ex21.txt",
+            form="10-K",
+            filing_date="2002-05-15",
+            report_date=None,
+            doc_id=LOCATOR.document_locator_key,
+        ),
+        FilingOccurrence(
+            occurrence_id="occ-2",
+            source_cik=cik_2,
+            accession=LOCATOR.accession,
+            document_path="ex21.txt",
+            form="10-K",
+            filing_date="2002-05-15",
+            report_date=None,
+            doc_id=LOCATOR.document_locator_key,
+        ),
+    )
+    primary_occurrence = FilingOccurrence(
+        occurrence_id=derive_occurrence_id(
+            "0000320193", str(LOCATOR.accession), "a10k.htm"
+        ),
+        source_cik=cik_1,
+        accession=LOCATOR.accession,
+        document_path="a10k.htm",
+        form="10-K",
+        filing_date="2002-05-15",
+        report_date=None,
+        doc_id=PRIMARY_LOCATOR.document_locator_key,
+    )
+    with pytest.raises(ValueError, match="must derive distinct occurrence ids"):
+        FilingResolutionResult(
+            requested=ref,
+            requested_occurrences=requested,
+            primary=_primary_ref_for(PRIMARY_LOCATOR),
+            exhibit=ref,
+            primary_occurrences=(primary_occurrence, primary_occurrence),
+            outcome=FilingResolutionOutcome.PRIMARY_RECOVERED,
+        )
+
+
+def test_primary_recovered_projection_invariants() -> None:
+    """A PRIMARY_RECOVERED projection is complete, unique, and deterministic."""
+    cik_1 = Cik.from_raw("0000320193")
+    cik_2 = Cik.from_raw("0000789019")
+    requested_occurrence_1 = FilingOccurrence(
+        occurrence_id="occ-1",
+        source_cik=cik_1,
+        accession=LOCATOR.accession,
+        document_path="ex21.txt",
+        form="10-K",
+        filing_date="2002-05-15",
+        report_date=None,
+        doc_id=LOCATOR.document_locator_key,
+    )
+    requested_occurrence_2 = FilingOccurrence(
+        occurrence_id="occ-2",
+        source_cik=cik_2,
+        accession=LOCATOR.accession,
+        document_path="ex21.txt",
+        form="10-K",
+        filing_date="2002-05-15",
+        report_date="2002-04-30",
+        doc_id=LOCATOR.document_locator_key,
+    )
+    primary_occurrence_1 = FilingOccurrence(
+        occurrence_id=derive_occurrence_id(
+            cik_1.to_10digit(), str(LOCATOR.accession), "a10k.htm"
+        ),
+        source_cik=cik_1,
+        accession=LOCATOR.accession,
+        document_path="a10k.htm",
+        form="10-K",
+        filing_date="2002-05-15",
+        report_date=None,
+        doc_id=PRIMARY_LOCATOR.document_locator_key,
+    )
+    primary_occurrence_2 = FilingOccurrence(
+        occurrence_id=derive_occurrence_id(
+            cik_2.to_10digit(), str(LOCATOR.accession), "a10k.htm"
+        ),
+        source_cik=cik_2,
+        accession=LOCATOR.accession,
+        document_path="a10k.htm",
+        form="10-K",
+        filing_date="2002-05-15",
+        report_date="2002-04-30",
+        doc_id=PRIMARY_LOCATOR.document_locator_key,
+    )
+    primary_locator = DocumentLocator.from_parts(
+        "0000320193-02-000123",
+        "a10k.htm",
+        archive_url="https://www.sec.gov/Archives/edgar/data/320193/000032019302000123/a10k.htm",
+        form="10-K",
+        source_cik="0000320193",
+        document_type="10-K",
+        document_path_source=DocumentPathSource.RECOVERED_SUBMISSION_BUNDLE,
+    )
+    primary = _primary_ref_for(primary_locator)
+    requested_ref = DocumentReference(
+        locator=LOCATOR, descriptor=DESCRIPTOR, payload=b"exhibit", source=SOURCE
+    )
+    result = FilingResolutionResult(
+        requested=requested_ref,
+        requested_occurrences=(requested_occurrence_1, requested_occurrence_2),
+        primary=primary,
+        exhibit=requested_ref,
+        primary_occurrences=(primary_occurrence_1, primary_occurrence_2),
+        outcome=FilingResolutionOutcome.PRIMARY_RECOVERED,
+    )
+    assert result.primary is primary
+    assert result.exhibit is requested_ref
+    assert result.requested is requested_ref
+    assert len(result.primary_occurrences) == 2
+    assert result.primary_occurrences[0] is not result.primary_occurrences[1]
+    assert (
+        result.primary.locator.document_path_source
+        is DocumentPathSource.RECOVERED_SUBMISSION_BUNDLE
+    )
+    assert result.primary.locator.document_path == "a10k.htm"
+    assert result.primary.locator.accession == requested_occurrence_1.accession
+    assert (
+        result.primary.locator.document_locator_key
+        != result.requested.locator.document_locator_key
+    )
+    for requested, projected in zip(
+        result.requested_occurrences, result.primary_occurrences
+    ):
+        assert projected.source_cik is requested.source_cik
+        assert projected.accession == requested.accession
+        assert projected.form == requested.form
+        assert projected.filing_date == requested.filing_date
+        assert projected.report_date == requested.report_date
+        assert projected.doc_id == result.primary.locator.document_locator_key
+    ids = [r.occurrence_id for r in result.primary_occurrences]
+    assert len(set(ids)) == len(ids)
+
+
+def test_primary_recovered_projection_fails_on_retargeting() -> None:
+    """A projection that retargets identity is refused."""
+    ref = DocumentReference(locator=LOCATOR, descriptor=DESCRIPTOR, payload=b"exhibit")
+    bad_occurrence = FilingOccurrence(
+        occurrence_id=derive_occurrence_id(
+            "0000320193", "0000789019-02-000001", "a10k.htm"
+        ),
+        source_cik=Cik.from_raw("0000789019"),
+        accession=AccessionNumber("0000789019-02-000001"),
+        document_path="a10k.htm",
+        form="10-K",
+        filing_date="2002-05-15",
+        report_date=None,
+        doc_id=PRIMARY_LOCATOR.document_locator_key,
+    )
+    primary_locator = DocumentLocator.from_parts(
+        "0000320193-02-000123",
+        "a10k.htm",
+        archive_url="https://www.sec.gov/Archives/edgar/data/320193/000032019302000123/a10k.htm",
+        form="10-K",
+        source_cik="0000320193",
+        document_type="10-K",
+        document_path_source=DocumentPathSource.RECOVERED_SUBMISSION_BUNDLE,
+    )
+    with pytest.raises(ValueError, match="must not retarget identity"):
+        FilingResolutionResult(
+            requested=ref,
+            requested_occurrences=(OCCURRENCE,),
+            primary=_primary_ref_for(primary_locator),
+            exhibit=ref,
+            primary_occurrences=(bad_occurrence,),
+            outcome=FilingResolutionOutcome.PRIMARY_RECOVERED,
+        )
+
+
+def test_primary_recovered_projection_fails_on_metadata_mismatch() -> None:
+    """A projection with mismatched inherited metadata is refused."""
+    ref = DocumentReference(locator=LOCATOR, descriptor=DESCRIPTOR, payload=b"exhibit")
+    primary_locator = DocumentLocator.from_parts(
+        "0000320193-02-000123",
+        "a10k.htm",
+        archive_url="https://www.sec.gov/Archives/edgar/data/320193/000032019302000123/a10k.htm",
+        form="10-K",
+        source_cik="0000320193",
+        document_type="10-K",
+        document_path_source=DocumentPathSource.RECOVERED_SUBMISSION_BUNDLE,
+    )
+    primary_ref = _primary_ref_for(primary_locator)
+    for bad_form, bad_filing, bad_report in (
+        ("10-Q", None, None),
+        ("10-K", "2002-06-01", None),
+        ("10-K", "2002-05-15", "2002-05-16"),
+    ):
+        bad_occurrence = FilingOccurrence(
+            occurrence_id=derive_occurrence_id(
+                "0000320193", str(LOCATOR.accession), "a10k.htm"
+            ),
+            source_cik=OCCURRENCE.source_cik,
+            accession=LOCATOR.accession,
+            document_path="a10k.htm",
+            form=bad_form,
+            filing_date=bad_filing,
+            report_date=bad_report,
+            doc_id=PRIMARY_LOCATOR.document_locator_key,
+        )
+        with pytest.raises(ValueError, match="must inherit the source metadata"):
+            FilingResolutionResult(
+                requested=ref,
+                requested_occurrences=(OCCURRENCE,),
+                primary=primary_ref,
+                exhibit=ref,
+                primary_occurrences=(bad_occurrence,),
+                outcome=FilingResolutionOutcome.PRIMARY_RECOVERED,
+            )
+
+
+def test_primary_recovered_projection_fails_on_wrong_doc_id() -> None:
+    """A projection keyed on the wrong locator is refused."""
+    ref = DocumentReference(locator=LOCATOR, descriptor=DESCRIPTOR, payload=b"exhibit")
+    primary_locator = DocumentLocator.from_parts(
+        "0000320193-02-000123",
+        "a10k.htm",
+        archive_url="https://www.sec.gov/Archives/edgar/data/320193/000032019302000123/a10k.htm",
+        form="10-K",
+        source_cik="0000320193",
+        document_type="10-K",
+        document_path_source=DocumentPathSource.RECOVERED_SUBMISSION_BUNDLE,
+    )
+    # Compute the correct occurrence id, then hand-write a wrong doc_id.
+    correct_id = derive_occurrence_id("0000320193", str(LOCATOR.accession), "a10k.htm")
+    bad_occurrence = FilingOccurrence(
+        occurrence_id=correct_id,
+        source_cik=OCCURRENCE.source_cik,
+        accession=LOCATOR.accession,
+        document_path="a10k.htm",
+        form=OCCURRENCE.form,
+        filing_date=OCCURRENCE.filing_date,
+        report_date=OCCURRENCE.report_date,
+        doc_id="not-the-primary-key",
+    )
+    with pytest.raises(ValueError, match="must key on the primary locator"):
+        FilingResolutionResult(
+            requested=ref,
+            requested_occurrences=(OCCURRENCE,),
+            primary=_primary_ref_for(primary_locator),
+            exhibit=ref,
+            primary_occurrences=(bad_occurrence,),
+            outcome=FilingResolutionOutcome.PRIMARY_RECOVERED,
+        )
+
+
+def test_primary_recovered_requires_recovered_path_provenance() -> None:
+    """A primary without recovered-bundle provenance is refused."""
+    ref = DocumentReference(locator=LOCATOR, descriptor=DESCRIPTOR, payload=b"exhibit")
+    primary_locator = DocumentLocator.from_parts(
+        "0000320193-02-000123",
+        "a10k.htm",
+        archive_url="https://www.sec.gov/Archives/edgar/data/320193/000032019302000123/a10k.htm",
+        form="10-K",
+        source_cik="0000320193",
+        document_type="10-K",
+        document_path_source=DocumentPathSource.PRIMARY_DOCUMENT,
+    )
+    with pytest.raises(ValueError, match="record recovered-bundle provenance"):
+        FilingResolutionResult(
+            requested=ref,
+            requested_occurrences=(OCCURRENCE,),
+            primary=_primary_ref_for(primary_locator),
+            exhibit=ref,
+            primary_occurrences=(
+                FilingOccurrence(
+                    occurrence_id=derive_occurrence_id(
+                        "0000320193", str(LOCATOR.accession), "a10k.htm"
+                    ),
+                    source_cik=OCCURRENCE.source_cik,
+                    accession=LOCATOR.accession,
+                    document_path="a10k.htm",
+                    form=OCCURRENCE.form,
+                    filing_date=OCCURRENCE.filing_date,
+                    report_date=OCCURRENCE.report_date,
+                    doc_id=primary_locator.document_locator_key,
+                ),
+            ),
+            outcome=FilingResolutionOutcome.PRIMARY_RECOVERED,
+        )

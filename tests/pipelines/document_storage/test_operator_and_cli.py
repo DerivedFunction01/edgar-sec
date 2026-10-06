@@ -7,8 +7,16 @@ from pathlib import Path
 
 import pytest
 
-from edgar_sec.domain.document.acquisition import FetchResult, direct_acquisition
-from edgar_sec.domain.document.models import DocumentLocator, FilingOccurrence
+from edgar_sec.domain.document.acquisition import (
+    BundleFetchResult,
+    FetchResult,
+    direct_acquisition,
+)
+from edgar_sec.domain.document.models import (
+    DocumentLocator,
+    FilingOccurrence,
+    derive_occurrence_id,
+)
 from edgar_sec.domain.identity import Cik
 from edgar_sec.foundation.runtime.paths import ProjectPaths
 from edgar_sec.pipelines.document_storage import cli
@@ -75,7 +83,9 @@ def _locator(
 
 def _occurrence(locator: DocumentLocator) -> FilingOccurrence:
     return FilingOccurrence(
-        occurrence_id="occ-1",
+        occurrence_id=derive_occurrence_id(
+            "1234567", str(locator.accession), locator.document_path
+        ),
         source_cik=Cik.from_raw("1234567"),
         accession=locator.accession,
         document_path=locator.document_path,
@@ -97,6 +107,9 @@ class DictFetcher:
         if payload is None:
             return FetchResult(locator, "missing")
         return FetchResult(locator, "ok", acquired=direct_acquisition(locator, payload))
+
+    def fetch_bundle(self, locator: DocumentLocator) -> BundleFetchResult:
+        return BundleFetchResult(status="missing", error="no test bundle")
 
 
 def _seed_fixture(

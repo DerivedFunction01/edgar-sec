@@ -41,6 +41,7 @@ INDEX_COLUMNS: tuple[str, ...] = (
     "mime_type",
     "byte_size",
     "payload_file",
+    "metadata",
 )
 # ``filing_year``/``filing_quarter`` are derived at consolidation time, so a
 # snapshot from an older code version consolidates alongside a newer one.

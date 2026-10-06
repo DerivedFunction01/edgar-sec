@@ -12,7 +12,12 @@ from dataclasses import dataclass, field
 from enum import StrEnum
 from typing import Any, Literal
 
-from edgar_sec.domain.document.models import DocumentLocator, FilingOccurrence
+from edgar_sec.domain.document.models import (
+    derive_occurrence_id,
+    DocumentLocator,
+    DocumentPathSource,
+    FilingOccurrence,
+)
 from edgar_sec.domain.document.route import DocumentRoute, document_route
 from edgar_sec.domain.identity import AccessionNumber
 
@@ -279,6 +284,10 @@ class FilingResolutionOutcome(StrEnum):
     REQUESTED_IS_PRIMARY = "requested_is_primary"
     #: A different first accepted type match is the recovered primary.
     PRIMARY_RECOVERED = "primary_recovered"
+    #: A requested occurrence lacks a source CIK required to project a primary row.
+    MISSING_SOURCE_CIK = "missing_source_cik"
+    #: Requested occurrences repeat a CIK, so primary rows would share an ID.
+    DUPLICATE_SOURCE_CIK = "duplicate_source_cik"
 
 
 @dataclass(frozen=True, slots=True)
@@ -290,12 +299,20 @@ class FilingResolutionResult:
     """
 
     requested: DocumentReference
-    requested_occurrences: Sequence[FilingOccurrence]
+    requested_occurrences: tuple[FilingOccurrence, ...]
     outcome: FilingResolutionOutcome
     primary: DocumentReference | None = None
     exhibit: DocumentReference | None = None
+    primary_occurrences: tuple[FilingOccurrence, ...] = ()
 
     def __post_init__(self) -> None:
+        # Freeze both occurrence sequences so later mutation cannot break
+        # the correspondence between requested and projected rows.
+        object.__setattr__(
+            self, "requested_occurrences", tuple(self.requested_occurrences)
+        )
+        object.__setattr__(self, "primary_occurrences", tuple(self.primary_occurrences))
+
         unresolved = {
             FilingResolutionOutcome.NOT_CANDIDATE,
             FilingResolutionOutcome.BUNDLE_UNAVAILABLE,
@@ -310,11 +327,23 @@ class FilingResolutionResult:
                 raise ValueError(
                     "an unresolved outcome carries neither primary nor exhibit"
                 )
+        elif self.outcome is FilingResolutionOutcome.MISSING_SOURCE_CIK:
+            if self.primary is not None or self.exhibit is not None:
+                raise ValueError(
+                    "MISSING_SOURCE_CIK carries neither primary nor exhibit"
+                )
+        elif self.outcome is FilingResolutionOutcome.DUPLICATE_SOURCE_CIK:
+            if self.primary is not None or self.exhibit is not None:
+                raise ValueError(
+                    "DUPLICATE_SOURCE_CIK carries neither primary nor exhibit"
+                )
         elif self.outcome is FilingResolutionOutcome.REQUESTED_IS_PRIMARY:
             if self.primary is not self.requested:
                 raise ValueError("REQUESTED_IS_PRIMARY requires primary is requested")
             if self.exhibit is not None:
                 raise ValueError("REQUESTED_IS_PRIMARY carries no exhibit")
+            if self.primary_occurrences:
+                raise ValueError("REQUESTED_IS_PRIMARY carries no primary occurrences")
         elif self.outcome is FilingResolutionOutcome.PRIMARY_RECOVERED:
             if self.exhibit is not self.requested or self.primary is None:
                 raise ValueError(
@@ -327,8 +356,61 @@ class FilingResolutionResult:
                 == self.requested.locator.document_locator_key
             ):
                 raise ValueError("a recovered primary must have a distinct locator key")
+            self._validate_primary_occurrences()
         else:
             raise ValueError(f"unknown FilingResolutionOutcome: {self.outcome!r}")
+
+    def _validate_primary_occurrences(self) -> None:
+        """Ensure projected primary rows are complete, unique, and deterministic."""
+        if len(self.primary_occurrences) != len(self.requested_occurrences):
+            raise ValueError(
+                "a primary occurrence must project exactly one row per requested occurrence"
+            )
+        primary = self.primary.locator
+        seen_ciks: set[str] = set()
+        for requested, projected in zip(
+            self.requested_occurrences, self.primary_occurrences
+        ):
+            cik = projected.source_cik.to_10digit()
+            if cik in seen_ciks:
+                raise ValueError(
+                    "projected primary occurrences must derive distinct occurrence ids"
+                )
+            seen_ciks.add(cik)
+            if (
+                projected.source_cik != requested.source_cik
+                or projected.accession != primary.accession
+                or projected.document_path != primary.document_path
+            ):
+                raise ValueError(
+                    "a projected primary occurrence must not retarget identity"
+                )
+            if (
+                projected.form != requested.form
+                or projected.filing_date != requested.filing_date
+                or projected.report_date != requested.report_date
+            ):
+                raise ValueError(
+                    "a projected primary occurrence must inherit the source metadata"
+                )
+            expected_id = derive_occurrence_id(
+                cik, str(primary.accession), primary.document_path
+            )
+            if projected.occurrence_id != expected_id:
+                raise ValueError(
+                    "a projected primary occurrence id is not deterministic"
+                )
+            if projected.doc_id != primary.document_locator_key:
+                raise ValueError(
+                    "a projected primary occurrence must key on the primary locator"
+                )
+        if (
+            primary.document_path_source
+            is not DocumentPathSource.RECOVERED_SUBMISSION_BUNDLE
+        ):
+            raise ValueError(
+                "a recovered primary locator must record recovered-bundle provenance"
+            )
 
 
 def unresolved_resolution(
@@ -341,7 +423,8 @@ def unresolved_resolution(
         raise ValueError("use the full constructor for PRIMARY_RECOVERED")
     return FilingResolutionResult(
         requested=requested,
-        requested_occurrences=occurrences,
+        requested_occurrences=tuple(occurrences),
+        primary_occurrences=(),
         outcome=outcome,
     )
 
@@ -357,6 +440,8 @@ __all__ = [
     "FetchStatus",
     "FilingResolutionOutcome",
     "FilingResolutionResult",
+    "MISSING_SOURCE_CIK",
+    "DUPLICATE_SOURCE_CIK",
     "SubmissionDocument",
     "SubmissionFormat",
     "describe_submission_document",
