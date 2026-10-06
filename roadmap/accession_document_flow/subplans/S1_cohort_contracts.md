@@ -23,77 +23,144 @@ and ignore document-path locators.
 - Dedicated inventory fixture cases for testing.
 - The S1 cohort model below; exact row grains and refusal rules are fixed here.
 
-## Output contracts
+## Typed models
 
-### `InventoryCohort`
+The published catalog is a row-oriented input. The inventory boundary converts its
+string dates and identities into validated values before grouping:
 
-A cohort is a collection of accession-level observations contributed by one source.
+```python
+@dataclass(frozen=True, slots=True)
+class CohortObservation:
+    cohort_source_id: str
+    accession: AccessionNumber
+    source_cik: Cik
+    form: str
+    filing_date: date
+    report_date: date | None
 
-| Field | Contract |
-|---|---|
-| `cohort_id` | Stable identity of the contributing catalog plan or fixture. |
-| `accession` | Canonical `AccessionNumber`. |
-| `source_cik` | Canonical `Cik` contributing this observation. |
-| `form` | Filing form; agreement required across sources for the same accession. |
-| `filing_date` | Validated ISO date; agreement required across sources. |
-| `report_date` | Validated ISO date, nullable. |
+@dataclass(frozen=True, slots=True)
+class AccessionInventory:
+    accession: AccessionNumber
+    filing_cik: Cik
+    source_ciks: tuple[Cik, ...]
+    form: str
+    filing_date: date
+    report_date: date | None
+    cohort_sources: tuple[str, ...]
 
-Deduplicate to physical work by `(accession)`; the `(accession, source_cik)` pair is a
-relation, not a fetch key. Require agreement on `form` and `filing_date`; a conflict
-refuses the cohort before any network work. Union and sort `source_cik` values. Ignore
-`document_path` and `primary_document`; they select no document and enter no observed
-row.
+@dataclass(frozen=True, slots=True)
+class AccessionSource:
+    accession: AccessionNumber
+    source_cik: Cik
+    first_seen_by: str
 
-### `AccessionInventory`
+@dataclass(frozen=True, slots=True)
+class IndexWorkItem:
+    accession: AccessionNumber
+    index_url: str
 
-One row per canonical accession contributed to the run.
+@dataclass(frozen=True, slots=True)
+class InventoryCohort:
+    observations: tuple[CohortObservation, ...]
+    accessions: tuple[AccessionInventory, ...]
+    sources: tuple[AccessionSource, ...]
+    work_items: tuple[IndexWorkItem, ...]
 
-| Field | Contract |
-|---|---|
-| `accession` | Canonical `AccessionNumber`. |
-| `source_ciks` | Sorted, de-duplicated source CIK list for the run. |
-| `form` | The agreed filing form. |
-| `filing_date` | The agreed filing date. |
-| `report_date` | Nullable agreed report date, or null. |
-| `cohort_sources` | Contributing `cohort_id` values, sorted. |
+class CohortInputError(ValueError):
+    code: Literal[
+        "invalid_bundle", "invalid_identity", "invalid_date", "missing_form",
+        "conflicting_form", "conflicting_filing_date", "conflicting_report_date",
+    ]
+    accession: AccessionNumber | None
+```
 
-### `InventoryEntry`
+`InventoryEntry` is the S3 parser output after page context is applied:
 
-One row per source table row; identity is stable and derived.
+```python
+@dataclass(frozen=True, slots=True)
+class InventoryEntry:
+    entry_id: str
+    accession: AccessionNumber
+    table_kind: Literal["document_format", "data_file"]
+    row_ordinal: int
+    sequence: int | None
+    document_type: str | None
+    document_label: str | None
+    description: str | None
+    filename: str | None
+    href: str | None
+    archive_url: str | None
+    byte_size: int | None
+```
 
-| Field | Contract |
-|---|---|---|
-| `entry_id` | Deterministic SHA-256 over `[accession, table_kind, row_ordinal, index_sha256]`. |
-| `accession` | Parent accession. |
-| `table_kind` | `document_format` or `data_file`. |
-| `row_ordinal` | Source order within its table. |
-| `sequence` | Nullable source sequence. |
-| `document_type` | Nullable source statutory type. |
-| `document_label` | Nullable visible Document-cell text. |
-| `description` | Nullable source description. |
-| `filename` | Nullable unambiguous source filename. |
-| `href` | Nullable original href. |
-| `archive_url` | Nullable resolved, same-accession SEC archive URL. |
-| `byte_size` | Nullable advertised child size. |
+`filing_date` and `report_date` are `date` values in these models and ISO-8601
+strings in Parquet. `InventoryCohort.observations` retains every source contribution
+for fixture provenance; `accessions` has one row per accession; `sources` has one
+row per unique `(accession, source_cik)`; and `work_items` has one row per accession.
+`filing_cik` is derived from the accession's first ten digits and is distinct from
+the cohort `source_ciks`. All tuples are sorted by their identity keys. Entry identity
+is SHA-256 of canonical JSON for
+`[str(accession), table_kind, row_ordinal, index_sha256]`; `row_ordinal` is
+zero-based among body rows in its table.
 
-### `AccessionSource`
+`filename` preserves each readable row value, even when another row repeats it;
+it is never a uniqueness key. Target planning must retain ambiguity across rows.
 
-One row per unique `(accession, source_cik)` relationship contributed by the run,
-including the `cohort_id` that first contributed it.
+Deduplicate physical work by accession; `(accession, source_cik)` is a relation,
+not a fetch key. Form and filing date must agree across all observations. All
+present report dates must agree; missing report dates do not conflict with a
+present date. Union and sort CIKs. Ignore `document_path` and `primary_document`.
+Identical repeated observations for `(cohort_source_id, accession, source_cik)`
+collapse; conflicting duplicates are refused. Observation order is
+`(accession, source_cik, cohort_source_id)`.
+
+## Operation shapes
+
+```python
+read_catalog_observations(
+    plan_dir: Path,
+    cohort_source_id: str,
+) -> Iterator[CohortObservation]
+
+project_cohort(
+    observations: Iterable[CohortObservation],
+    *,
+    archive_base_url: str,
+) -> InventoryCohort
+
+index_url_for(
+    accession: AccessionNumber,
+    *,
+    archive_base_url: str,
+) -> str
+
+inventory_entry_id(
+    accession: AccessionNumber,
+    table_kind: Literal["document_format", "data_file"],
+    row_ordinal: int,
+    index_sha256: str,
+) -> str
+```
+
+The reader validates the published bundle and yields validated rows; it does not
+read document locators or perform network work. `project_cohort` refuses malformed
+rows and conflicting filing facts before returning any work item. The URL builder
+uses the accession's first ten digits as archive CIK and its unhyphenated value
+as the directory; the archive CIK segment is the integer value of those digits
+without leading zeroes. `archive_base_url` supplies only the archive origin/prefix.
+For repeated `(accession, source_cik)` observations in one projection,
+`first_seen_by` is the lexicographically first `cohort_source_id`; a later snapshot
+merge preserves the already-published value.
 
 ## Cohort reader
 
 The reader serves only published `filing_catalog` bundles plus dedicated fixture cases:
 
 1. Read the bundle manifest and validate its schema version and required parts.
-2. Project catalog rows to `(cohort_id, accession, source_cik, form, filing_date,
-   report_date)`.
-3. Group by accession; validate and union `source_cik`, and check `form`/`filing_date`
-   agreement.
-4. Construct the `-index.html` URL from the canonical accession identity: the decimal
-   value of the accession's first ten digits for the archive CIK segment and the
-   accession with punctuation removed for its directory segment.
-5. Emit `InventoryCohort`/`AccessionInventory`/`AccessionSource` rows in stable order.
+2. Project rows to `CohortObservation`, converting identities and ISO dates.
+3. Group by accession; validate filing facts and union source CIKs.
+4. Construct one `IndexWorkItem` per accession from its canonical identity.
+5. Emit all model tuples in stable identity order.
 
 Reject unknown or malformed manifests, missing parts, and conflicting form or filing
 dates. Transport failures are run results, not successful response rows.

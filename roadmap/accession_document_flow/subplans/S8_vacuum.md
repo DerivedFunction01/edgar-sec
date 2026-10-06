@@ -8,89 +8,101 @@
 - Status: metadata-only compaction and lookup-shard rebuild; it does not re-fetch or
   alter logical inventory facts.
 - Depends on: S5 cumulative snapshot.
+- Non-blocking: downstream processing.
 
 ## Objective
 
-Compact form/year parts and accession/source-CIK lookup shards offline, rebuild the
-seek indexes, enforce uniqueness and digest validation, verify query parity, manage
-dependency-aware retention, and atomically publish a new `current` pointer. Cumulative
-snapshots, co-filer merging, point/form queries, and the anti-join are already part of
-S5, not deferred to vacuum.
+Compact annual parts and accession/filing-CIK/source-CIK lookup shards offline, rebuild the
+seek indexes according to repository Parquet contracts, enforce uniqueness and digest
+validation, verify logical query parity, manage dependency-aware retention, and
+atomically publish a new `current` pointer. Cumulative snapshots, source-CIK edge merging,
+point/form queries, and the anti-join are already part of S5, not deferred to vacuum.
 
 ## Contract
 
-```text
-vacuum(snapshot_id, retention_policy) -> SnapshotPublication | NoOp
+```python
+def vacuum(
+    snapshot_id: str,
+    retention_policy: RetentionPolicy,
+) -> SnapshotPublication | NoOp: ...
 ```
 
 - `snapshot_id`: the base snapshot to compact.
-- `retention_policy`: the set of referenced target plans and child snapshots to
-  retain.
-- Returns a compacted snapshot, or `NoOp` when compaction would change nothing.
+- `retention_policy`: the set of referenced target plans, live manifests, and
+  retention rules.
+- Returns a compacted snapshot publication, or `NoOp` when compaction would change nothing.
 
-## Compaction steps
+## Compaction mechanics
 
-1. Merge accession, entry, and source-CIK deltas; enforce unique accession and
-   `(accession, source_cik)` keys.
-2. Compact form/year parts, sort by their query keys, and rebuild accession and CIK
-   lookup shards and manifest key ranges.
-3. Validate row counts, hashes, referential integrity, co-filer equality, and query
-   parity for accession, filing form, and source CIK.
-4. Keep source snapshots while retained target plans or child snapshots reference
-   them; purge only in a dependency-aware pass that never mutates a source snapshot.
-5. Make no HTTP requests. A changed query layout creates a new immutable snapshot with
-   the same logical inventory fingerprint when row facts are unchanged.
-6. Publish the compaction atomically: new parts and shards are written to staging,
-   validated, then `current/pointer.json` is advanced.
+1. Merge annual accession, entry, and `accession_sources` deltas per `year=YYYY/`.
+2. Enforce primary key uniqueness: unique canonical accession in `accessions`, unique
+   `(accession, table_kind, row_ordinal)` in active `entries`, and unique
+   `(accession, source_cik)` in `accession_sources`.
+3. Sort annual parts by `(form, filing_date, accession)`. Write consolidated Parquet
+   parts adhering strictly to the repository contract:
+   - `row_group_size = 128_000`
+   - `compression = "zstd"`
+4. Rebuild accession, filing-CIK, and source-CIK lookup shards and manifest key ranges.
+5. Zero HTTP requests. Logical inventory facts are unchanged.
 
-## Retention
+## Logical parity verification gate
 
-Retention is driven by references, not age:
+Before `current/pointer.json` can move to the compacted snapshot, vacuum executes a
+mandatory verification gate:
 
-- Target plans referencing a snapshot prevent its purge.
-- Child snapshots referencing a parent snapshot prevent its purge.
-- Reference resolution reads published manifests; an unresolved reference is treated
-  as a live retention obligation.
-- Purge is a separate, auditable operation from compaction.
+1. **Logical Fingerprint Parity**: Compute an order-invariant hash of all active
+    accessions (including derived filing CIKs), entries, and source-CIK relations in the uncompacted base vs. the
+   compacted staging. Row counts, fields, and logical contents must be identical.
+2. **Canonical Query Sampling**: Re-run the canonical query suite against both base
+   and compacted staging:
+   - `get_accession(accession)` for sampled accessions.
+   - `query_filings(form=..., filing_date_range=...)` across all years.
+   - `query_entries(accession=..., document_type=...)` for active entries.
+    - `query_filings(source_cik=...)` via CIK lookup shards.
+    - `query_filings(filing_cik=...)` via accession-prefix CIK lookup shards.
+3. Query parity is a strict publish precondition. Any divergence halts compaction and
+   leaves `current` unchanged.
 
-## Query-parity verification
+## Dependency-aware retention
 
-Before `current` moves, vacuum re-runs the three canonical queries against the
-uncompacted base and the compacted staging:
+Retention is driven by actual part references and active plan pointers, not age alone:
 
-- `get_accession(accession)` for a sample of accessions.
-- `query_filings(form=..., source_cik=...)` for the selected form/year partitions.
-- `query_entries(accession=..., document_type=...)` for selected entry filters.
+- **Plan Reference Protection**: Any snapshot pinned by an active target plan
+  (`document_planning/plans/*/manifest.json`) is protected from deletion.
+- **Live Part Dependencies**: Distinguish parent lineage from actual part dependencies.
+  A compacted snapshot references only its consolidated parts; an older snapshot is
+  pruned only when **no** live manifest references any of its physical parts.
+- Purge is an explicit, auditable operation separate from compaction.
 
-Results must be byte-identical in logical content; only part/row-group locators and
-manifest digests differ. Query parity is a publish precondition, not a post-check.
+## Staging cleanup safeguards
+
+- Cleanup of `transient/{run_id}/` is strictly separated from snapshot vacuum.
+- A TTL alone must **never** delete a still-active run.
+- Staging cleanup requires:
+  1. Age exceeding the configured TTL (e.g. 24 hours).
+  2. An explicit inactive/lease check confirming no running process holds a lock or
+     active task heartbeat on that run ID.
+  3. Verification that no manifest has unresolved references to that staging path.
 
 ## Tests
 
-- Compaction preserves accession, form, document-type, and CIK query results.
+- Compaction preserves accession, form, document-type, filing-CIK, and source-CIK query results.
+- Consolidated Parquet parts adhere to 128k row group size and zstd compression.
 - Source/page counts and identities remain stable after compaction.
-- No HTTP request occurs during vacuum or retention purge.
+- Logical fingerprint parity holds between uncompacted and compacted representations.
+- Zero HTTP requests occur during vacuum, parity verification, or purge.
 - Pointer atomicity: readers of the old `current` see the old snapshot while the new
   pointer is published, and never see a partially written new snapshot.
-- Retained-plan dependencies: a plan still referencing an old snapshot prevents its
-  purge.
-- Lock-free readers of old snapshots: a reader can enumerate the old snapshot while
-  vacuum compacts it.
-- An interrupted or conflicting vacuum cannot move `current`.
+- Retained-plan dependencies: a plan still referencing an old snapshot prevents its purge.
+- Part dependency tracking: uncompacted parts are deleted only when unreferenced by any live snapshot.
+- Staging cleanup safeguards: active run directories under lock are preserved even if older than TTL.
 - A vacuum that would change nothing returns `NoOp` without writing parts.
-- Lookup shards remain single-shard-selectable after rebuild.
-- Manifest key ranges are consistent with part contents.
-- Purge mutates only unreferenced snapshots.
-- A changed query layout without row changes produces a new snapshot with the same
-  logical fingerprint.
-- Uniqueness keys are enforced: duplicate accessions or `(accession, source_cik)`
-  pairs are rejected.
+- Uniqueness keys are strictly enforced; duplicate accessions or relationships fail compaction.
 
 ## Acceptance criteria
 
-Vacuum compacts form/year parts and accession/source-CIK lookup shards offline,
-enforces uniqueness and digest validation, verifies query parity before publication,
-respects dependency-aware retention, and publishes the new `current` pointer
-atomically. Cumulative snapshots, co-filer merging, point/form queries, and the
-anti-join remain S5 work. No page response is fetched; an interrupted or conflicting
-vacuum cannot move `current`.
+Vacuum compacts annual parts and accession/filing-CIK/source-CIK lookup shards offline adhering to
+128k-row zstd Parquet standards, enforces uniqueness and digest validation, verifies
+logical parity before publication, respects dependency-aware retention for active plans
+and live parts, safeguards staging cleanup with lease checks, and publishes the new
+`current` pointer atomically. No page response is fetched.

@@ -33,7 +33,9 @@ Survey **100–200 pages**, stratified by era across:
 | Legacy | 1993–1999 | Concatenated SGML envelope; children listed without individual links; `SEQUENCE`/`TYPE` inside the bundle. |
 | Transition | 2000–2004 | Historical filings may carry both individual files and an envelope; sequence order alone is not a safe primary selector. |
 | Modern | 2005–present | Individual files, an envelope, and directory indexes coexist; direct links and `index.json`. |
-| XML forms | any era | XSL-rendered `xsl*/.../*.xml` served as HTML. |
+
+XML-form pages are an additional coverage minimum across those date-derived strata;
+they may also count toward their filing-era quota.
 
 Stratification targets:
 
@@ -42,36 +44,136 @@ Stratification targets:
 - Pages with and without individual document links.
 - Pages with absent, duplicated, or out-of-order sequences.
 - Pages with absent, duplicated, or ambiguous filenames.
-- At least one accession that appears in several co-filer CIK contexts.
+- At least one accession that appears in several source-CIK plan contexts.
 
 Do not download XBRL ZIP bodies for this study.
 
-## Collected per-page record
+## Typed audit records
 
-One row per sampled page:
+The portable result separates page-level evidence from source-table-row evidence;
+response size and child-file size are different fields.
 
-| Field | Contract |
-|---|---|
-| `accession` | Canonical accession. |
-| `source_url` | The resolved `-index.html` URL used. |
-| `page_digest` | `file_sha256` of the exact response bytes. |
-| `byte_size` | Response size in bytes. |
-| `era` | Era stratum name. |
-| `form` | Filing form. |
-| `table_kind` | `document_format` and/or `data_file`. |
-| `has_link` | Per-row: does the row advertise an individual href? |
-| `sequence` | Observed sequence; note absent/duplicated/out-of-order. |
-| `document_type` | Observed statutory type. |
-| `description` | Observed description. |
-| `filename` | Observed filename; note absent/duplicated. |
-| `href` | Observed href; note absolute or relative. |
-| `byte_size` | Observed child size. |
-| `bundle_url` | Advertised full-submission envelope URL. |
-| `bundle_size` | Advertised envelope size. |
-| `xbrl_zip_url` | Deterministically constructed candidate URL. |
-| `xbrl_zip_exists` | Existence evidence only (HEAD probe or `index.json` listing), never a fetched body. |
-| `parser_exception` | None, or a typed parse error. |
-| `unrecognized` | Whether the page's structure could not be recognized at all. |
+```python
+AuditStratum = Literal["legacy", "transition", "modern"]
+AuditTableKind = Literal["document_format", "data_file"]
+AuditPageStatus = Literal["parsed", "unrecognized", "parse_error"]
+XbrlEvidenceKind = Literal[
+    "not_tested", "constructed_only", "index_json_listed",
+    "head_present", "head_missing", "probe_unsupported",
+]
+
+@dataclass(frozen=True, slots=True)
+class AuditCandidate:
+    accession: AccessionNumber
+    source_ciks: tuple[Cik, ...]
+    form: str
+    filing_date: date
+    is_xml_form: bool
+
+@dataclass(frozen=True, slots=True)
+class AuditSample:
+    accession: AccessionNumber
+    source_ciks: tuple[Cik, ...]
+    form: str
+    filing_date: date
+    era: AuditStratum
+    is_xml_form: bool
+
+@dataclass(frozen=True, slots=True)
+class XbrlEvidence:
+    candidate_url: str | None
+    kind: XbrlEvidenceKind
+    evidence_source: str | None
+
+@dataclass(frozen=True, slots=True)
+class AuditPageRecord:
+    sample: AuditSample
+    source_url: str
+    page_sha256: str
+    response_size: int
+    captured_at: datetime
+    status: AuditPageStatus
+    table_kinds: tuple[AuditTableKind, ...]
+    bundle_url: str | None
+    bundle_size: int | None
+    xbrl: XbrlEvidence
+    diagnostic_codes: tuple[str, ...]
+
+@dataclass(frozen=True, slots=True)
+class AuditEntryRecord:
+    accession: AccessionNumber
+    table_kind: AuditTableKind
+    row_ordinal: int
+    sequence: int | None
+    document_type: str | None
+    document_label: str | None
+    description: str | None
+    filename: str | None
+    href: str | None
+    child_size: int | None
+    has_link: bool
+    sequence_anomaly: Literal["missing", "duplicate", "out_of_order"] | None
+    filename_ambiguous: bool
+
+@dataclass(frozen=True, slots=True)
+class AuditConclusion:
+    question_id: Literal["parser_coverage", "field_ambiguity", "retrieval_mode", "xbrl_evidence"]
+    finding: str
+    supporting_accessions: tuple[AccessionNumber, ...]
+
+@dataclass(frozen=True, slots=True)
+class AuditDecisionRecord:
+    xbrl_policy: Literal["html_only", "index_json_confirmation", "head_probe"]
+    conclusions: tuple[AuditConclusion, ...]
+```
+
+`captured_at` is UTC; the portable table serializes it as an ISO-8601 timestamp.
+`AuditPageRecord` has one row per sampled response. `AuditEntryRecord` has one
+row per source table row; its key is `(accession, table_kind, row_ordinal)`. The
+ordinal is zero-based among body rows. The page digest is SHA-256 of the exact
+response bytes. `XbrlEvidence` never
+asserts package contents: only `index_json_listed` or a successful body-free
+probe is observed availability evidence; `constructed_only` is just a URL.
+
+The portable audit result is `AuditPageRecord[]` plus `AuditEntryRecord[]` and
+the decision record. Captured response bytes live in selected fixtures or the
+transient survey store, not in the tabular result.
+
+## Operation shapes
+
+```python
+select_audit_sample(
+    candidates: Iterable[AuditCandidate],
+    quotas: Mapping[AuditStratum, int],
+    *,
+    minimum_xml_pages: int,
+) -> tuple[AuditSample, ...]
+
+record_audit_page(
+    sample: AuditSample,
+    source_url: str,
+    response_bytes: bytes,
+    captured_at: datetime,
+    xbrl_evidence: XbrlEvidence,
+) -> tuple[AuditPageRecord, tuple[AuditEntryRecord, ...]]
+
+summarize_audit(
+    pages: Iterable[AuditPageRecord],
+    entries: Iterable[AuditEntryRecord],
+) -> AuditDecisionRecord
+```
+
+These are audit-artifact operations, not a production fetch or parser API.
+`AuditCandidate` is an accession-level catalog projection. The date-derived era
+quotas must sum to 100–200 pages; XML-form coverage is an additional minimum and
+may overlap those quotas, but the final unique sample may not exceed 200 pages.
+Selection ranks candidates by SHA-256 of canonical `[era, accession]` within each
+era and fills the XML minimum from remaining XML candidates using the same order;
+it refuses impossible coverage.
+`record_audit_page` records
+parse status and observations but does not probe XBRL packages; any probe result
+is supplied as explicit evidence. The four `question_id` values map to the four
+audit questions above, and each conclusion cites the accessions supporting it.
 
 ## Audit questions
 
@@ -121,7 +223,7 @@ Do not claim universal HTML coverage.
 1. Audit result table (tracked).
 2. Selected sanitized real-page fixtures with capture metadata (tracked).
 3. Query fixtures for: one accession, one filing form, child document types, and one
-   co-filer accession split across plan cohorts. These validate snapshot access paths
+   accession with source-CIK associations split across plan cohorts. These validate snapshot access paths
    as well as HTML parsing.
 4. XBRL decision record.
 5. A short note estimating index-page parse cost and response memory for tuning the

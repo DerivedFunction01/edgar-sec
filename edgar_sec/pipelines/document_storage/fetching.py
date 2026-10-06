@@ -434,9 +434,9 @@ class LiveArchiveFetcher:
         }
 
     def __setstate__(self, state: dict[str, object]) -> None:
-        from edgar_sec.infra.sec_http import make_sec_http_client
+        from edgar_sec.infra.sec_http.client import SecHttpClient
 
-        self._http_client = make_sec_http_client(
+        self._http_client = SecHttpClient(
             user_agent=state.get("user_agent"),
             cache_dir=state.get("cache_dir"),
         )

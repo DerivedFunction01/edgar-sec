@@ -73,7 +73,7 @@ To balance long-term analytical capability with rigorous software engineering, t
 #### Phase 02: Filing Catalog & Accession Cohort Planner (Zero-Network)
 - Materializes flat filing occurrences from finalized Phase 01 Parquet artifacts via memory-bounded DuckDB staging.
 - Assigns every registrant a namespaced `company_family` key (`entity:`, `spv:`, `cik:`) from the compiled registrant universe, to prevent multi-subsidiary duplicate over-representation. All of one sponsor's securitised vehicles form one family across product lines; the sponsor's own non-vehicle entity stays outside it. The assignment is a content-addressed Parquet artifact joined by SQL at feature-snapshot build time, so it is computed once per universe and rules change rather than per plan.
-- Selects filing cohorts across form families (`10-K`, `10-K/A`, `10-KSB`, `10-KT`, `10-Q`, etc.): deterministic whole-catalog filtering (`--scope deterministic`) or policy-driven deficit selection (`--scope policy`) with expandable child plans. These plans choose accessions, not document targets; Phase 2.5 inventory projects their accessions and ignores document paths when planning targets.
+- Selects filing cohorts across form families (`10-K`, `10-K/A`, `10-KSB`, `10-KT`, `10-Q`, etc.): deterministic whole-catalog filtering (`--scope deterministic`) or policy-driven deficit selection (`--scope policy`) with expandable child plans. These plans choose accessions, not document targets; the inventory cohort ignores document paths, while an explicit primary-only catalog-direct target-plan source may use a validated path without creating an inventory observation.
 - **Date selection**: both scopes narrow on `report_date` through one grammar, a comma-separated union of absolute calendar intervals (`2005Q3..2008Q1`) and recurring calendar periods (`@Q1[1999..2001]`). Quarters are calendar quarters of `report_date`, not issuer fiscal quarters. An empty selection applies no date predicate; a nonempty one excludes rows whose `report_date` cannot be read.
 - **Era stratification**: a policy declaring no era bands derives them from the report years its own forms and date selection can reach, so a policy selecting only `@Q1` never band a quarter it cannot select. The resolved bands are recorded in the plan, and an expansion inherits its parent's.
 - **Filing size is banded relative to its own form family**: five bands at multiples of that family's median filing, not corpus-wide cutoffs. The corpus median is ~1.5 MB for `10-K` and ~7 KB for form `4`, a 229× spread, so one absolute threshold set sorts whole families into a single end. A family with little internal size variation reports a skewed split, and that is the truthful answer — the previous quantile rule reported an even 20% per band by construction, inventing a large-filing stratum the corpus does not contain.
@@ -84,21 +84,24 @@ To balance long-term analytical capability with rigorous software engineering, t
 #### Phase 2.5: Accession Inventory, Target Planning & Document Processing
 
 This phase's **new implementation path is planned, not yet implemented**; its
-architecture and subplan sequence are in
+architecture, subplan sequence, and frozen-pipeline disposition are in
 [design](./accession_document_flow/design.md) and
 [implementation](./accession_document_flow/implementation.md). The
-existing `document_storage` implementation is frozen as a reference: do not
-extend its combined selection/acquisition/normalized-row schema for this work.
+existing `document_storage` implementation is frozen during replacement: do not
+extend its combined selection/acquisition/normalized-row schema for this work. Its
+intended removal is gated on replacement completion and migration; see the
+[module disposition map](./accession_document_flow/document_storage_disposition.md).
 
 - **Cohort → queryable inventory:** project selected filings to distinct
   accessions and anti-join them against the cumulative `current` snapshot before
-  HTTP. Fetch only unseen `-index.html` pages; a later plan that adds a co-filer
-  CIK adds a relationship edge without refetching the accession. Use one SEC
+   HTTP. Fetch only unseen `-index.html` pages; a later plan that adds a source-CIK
+   association adds a relationship edge without refetching the accession. Use one SEC
   broker for shared HTTP pacing/cache/failures and a bounded process pool for
   CPU-heavy HTML table parsing; writers stay in the coordinator.
 - **Inventory → target plans:** publish every observed document/data-file row
-  into an immutable, seek-indexed snapshot. Accession and filing-form queries
-  read only relevant index partitions and make no SEC request. Separate,
+   into an immutable, seek-indexed snapshot. Accession, filing-form, filing-CIK,
+   and source-CIK queries read only relevant annual parts and lookups and make no
+   SEC request. Separate,
   zero-network planning applies versioned target profiles to snapshot query
   results and publishes request-specific plans. Primary, exhibit, data-file, and
   XBRL plans can reuse the same accession observations.
@@ -113,7 +116,9 @@ extend its combined selection/acquisition/normalized-row schema for this work.
   document-body review toolchain. All default tests remain offline.
 
 The current `document_storage` capability and its test contracts remain available
-as frozen reference material in its [package README](../edgar_sec/pipelines/document_storage/README.md).
+as frozen reference material in its [package README](../edgar_sec/pipelines/document_storage/README.md)
+and [module disposition map](./accession_document_flow/document_storage_disposition.md)
+until the post-replacement decommission gate passes.
 
 #### Phase 03: Canonical Item Segmentation & Document TOC Spine
 - Consumes clean normalized representations from Phase 2.5 once the new acquisition/processing handoff is verified and builds an **exhaustive, non-overlapping, 1D Table of Contents (TOC) spine**.

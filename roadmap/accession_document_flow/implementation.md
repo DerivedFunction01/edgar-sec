@@ -5,29 +5,49 @@ target-plan schemas can be specified before processing document bodies. The
 filing-index HTML parser's edge rules are gated by a representative SEC-page audit;
 the persistent model for fetched document payloads remains deliberately deferred.
 
-Each of the twelve stages (S0–S12) now has a detailed subplan under
+Each stage S0–S12 has a detailed subplan under
 [./subplans/](./subplans/). Stage headers link to their subplan; further
 refinement of any subplan is independent, and the summaries here will be
-compressed to reference them once all subplans are stable.
+compressed to reference them once all subplans are stable. S9 is decomposed into
+S9a–S9d contracts for target adaptation, streaming, extraction, and fixture replay.
+Stages group into two independent pipelines: `document_inventory` (S0–S5) and
+`document_acquisition` (S6–S10); S7, S8, and S12 are cross-cutting.
 
 See [design.md](./design.md) for the stage boundaries and domain grain. The
-queryable snapshot, co-filer anti-join, seek-index, and vacuum contract is
+queryable snapshot, source-CIK anti-join, seek-index, and vacuum contract is
 detailed in [inventory_snapshot.md](./inventory_snapshot.md).
 
 ## 1. Decision and Scope
 
-Build a new accession-centric flow beside the frozen `document_storage` pipeline.
-Do not port or alter `document_storage`. Continue its useful contracts only where
-they fit: validate inputs before network work, distinguish observed facts from
-decisions, keep work bounded, publish atomically, reject conflicting immutable
-artifacts, and make review replay from saved source evidence.
+Build a new accession-centric flow alongside the frozen `document_storage`
+pipeline. Do not port to, alter its implementation, or import that pipeline during
+S0–S12. Reuse
+independently owned lower-layer APIs where their contracts fit and take only
+documented design inspiration from old pipeline modules. The intended end state is
+to remove `document_storage` after the approved S11 payload store is implemented,
+replacement parity and consumer/artifact migration are verified, and a separately
+gated decommission milestone passes.
+
+The replacement is not a single pipeline. It is two independent pipelines that
+jointly replace `document_storage`:
+
+- `edgar_sec.pipelines.document_inventory` (S0–S5): cohort selection, index-page
+  fetching and parsing, and publication of the cumulative queryable snapshot.
+- `edgar_sec.pipelines.document_acquisition` (S6–S10): target-plan publication,
+  acquisition of selected payloads, and deterministic processing of them.
+
+S7 review and S12 operator integration are cross-cutting to both pipelines; S8 is
+inventory maintenance, and S11 is a payload-store design gate rather than a pipeline.
+No stage in either pipeline imports the frozen legacy package.
 
 The tradeoff is stronger than extending the current path. A factual index of an
 accession's observed files can serve independent primary, exhibit, and XBRL
-target plans. Target intent no longer changes the inventory artifact. The cost is
-one queryable metadata index and one index-page request per previously unseen
-accession. Later plans and co-filer CIK additions anti-join against the cumulative
-snapshot; accession/form queries use its seek indexes and make no SEC request.
+target plans. Target intent no longer changes the inventory artifact. The inventory
+path requires one index-page request per previously unseen accession; an explicit
+catalog-direct target plan can skip index discovery for primary-only work but does
+not register an observed index page or make the inventory complete for those rows.
+Later plans and source-CIK associations anti-join against the cumulative snapshot;
+accession/form queries use its seek indexes and make no SEC request.
 
 **Deferring document-body HTML processing does not block planning the whole
 flow.** Index-page parsing (`-index.html`) is a required metadata-discovery step
@@ -129,8 +149,9 @@ rate-limited research step; normal tests remain offline and deterministic.
     FETCH["One shared SecBroker<br/>fetch only unseen accessions"]
     PARSE["Bounded process-pool workers<br/>fetch through broker, then parse"]
     EDGE["Add unseen CIK edges<br/>reuse indexed page"]
-    INV[("Cumulative queryable snapshot<br/>accession/form/CIK seek indexes")]
-    PLAN["Target planning<br/>profile + inventory snapshot"]
+    INV[("Cumulative queryable snapshot<br/>accession/form/filing-CIK/source-CIK indexes")]
+    PLAN["Inventory target planning<br/>profile + inventory snapshot"]
+    DIRECT["Catalog-direct planning<br/>primary-only, no inventory rows"]
     TARGET[("Independent target-plan artifact")]
     ACQ["Later: acquire selected payloads<br/>direct URL or bundle sequence"]
     PROC["Later: transform/process<br/>deterministic processor"]
@@ -142,6 +163,7 @@ rate-limited research step; normal tests remain offline and deterministic.
     ANTI -->|known accession, new CIK| EDGE --> INV
     ANTI -->|no new facts| INV
     INV --> PLAN --> TARGET
+    CAT --> DIRECT --> TARGET
     TARGET --> ACQ --> PROC --> REVIEW
     PROC -. "schema decision after evidence" .-> STORE
 ```
@@ -149,17 +171,17 @@ rate-limited research step; normal tests remain offline and deterministic.
 - **Cohort selection** chooses accessions. The adapter may project unique
   accessions, form/date fields, and source CIKs from a `filing_catalog` plan or a
   dedicated inventory fixture. Catalog `document_path` is not inventory
-  identity, is not copied into observed rows, and does not select a document.
-  Construct the index-page URL from the canonical accession's registrant prefix
-  and accession directory, not from a planned child-document path: use the
-  decimal value of the accession's first ten digits for the archive CIK segment
-  and the accession with punctuation removed for its directory segment.
+  identity and is not copied into observed rows. S6 may use a catalog path only
+  through its explicit catalog-direct target source; that remains distinct from
+  observed index rows. Construct index-page URLs from accession identity, never a
+  planned child-document path.
 - **Inventory** fetches and parses each accession's lightweight
   `<accession>-index.html`, recording every observed document/data-file row once.
   It does not apply target profiles or fetch document bodies.
-- **Target planning** reads a named immutable inventory snapshot, applies a
-  versioned request/profile, and publishes a separate target plan. It makes no
-  HTTP request and never writes intent back into the inventory.
+- **Target planning** reads exactly one named immutable inventory snapshot or
+  catalog plan, applies a versioned request/profile, and publishes a separate
+  source-pinned target plan. Both modes make no HTTP request and never write intent
+  back into the inventory.
 - **Acquisition and processing** are planned as later stages with explicit
   in-memory contracts and fixture/review tools. They do not imply a published
   payload schema.
@@ -167,10 +189,12 @@ rate-limited research step; normal tests remain offline and deterministic.
   processing outputs exist and can be reviewed. The index is not a promise about
   where or how fetched bodies will be stored.
 
-`document_storage` stays frozen as a comparison/reference. No new package imports
-from `pipelines.document_storage`; shared lower-layer domain, engine, HTTP,
+`document_storage` stays frozen during S0–S12. No new package imports from
+`pipelines.document_storage`; shared lower-layer domain, engine, HTTP,
 serialization, and atomic-storage APIs may be used when their existing contract
-fits. The old candidate-recovery logic is not ported: where the index page
+fits. The module disposition map records direct reuse, inspiration-only contracts,
+and retirement candidates. The package is removed only after the post-S12
+decommission gate passes. The old candidate-recovery logic is not ported: where the index page
 reliably publishes document types, planning uses those observations rather than
 inferring a primary from sequence order or fetching an SGML bundle to discover it.
 
@@ -182,15 +206,25 @@ representation.
 ### 4.1 Inventory snapshot
 
 The first published snapshot is cumulative and queryable. Its exact three-table
-schema, form/year layout, accession and CIK seek indexes, run identity,
+schema, annual partition layout, accession and CIK seek indexes, run identity,
 anti-join, pointer semantics, and vacuum contract are specified in
-[inventory_snapshot.md](./inventory_snapshot.md). In brief, accessions and all
-observed child rows are keyed by physical accession; `(accession, source_cik)`
-is a separate cohort relationship. New plans fetch only accessions missing from
-`current`, and new co-filer edges update the snapshot without an index-page
-request. Accession, filing-form, and CIK queries read the snapshot locally and
-never fetch SEC pages. The snapshot contains no target roles or fetched-payload
-references.
+[inventory_snapshot.md](./inventory_snapshot.md). In brief:
+
+- **Dense annual partitions**: `year=YYYY/part-*.parquet` for `accessions`, `entries`,
+  and `accession_sources`, avoiding sparse Hive form-directory explosion. Parts are
+  sorted by `(form, filing_date, accession)` for Parquet row-group pruning.
+- **Distinct CIK semantics**: `filing_cik` is derived from the accession prefix;
+  `source_cik` records catalog/cohort associations in the `accession_sources`
+  relation table. Relationships are not duplicated in a `co_filers` list on accession
+  rows; new associations append relation rows with zero page refetches and no rewrite
+  of accession facts.
+- **Zero-copy manifest inheritance**: Unchanged annual partitions are referenced
+  directly from parent snapshots; deltas write parts only for affected filing years.
+- **Page supersession**: Refreshed pages supersede prior active entries in the new
+  snapshot via manifest mapping and delta tombstones; older snapshots preserve prior
+  observations intact.
+- Accession, filing-form, and CIK queries read the snapshot locally and never fetch SEC
+  pages. The snapshot contains no target roles or fetched-payload references.
 
 ### 4.2 Target profiles
 
@@ -222,15 +256,22 @@ settings. The profile grammar is a list of form selectors and target requests:
 }
 ```
 
-Resolve comma-separated form selectors through the existing form-alias owner;
-use the most-specific matching rule (`*` is fallback, not merged), and reject
-overlapping rules at the same specificity. The v1 document-type selector is exact after whitespace
-normalization and case folding. Primary selection matches the filing form (and
-its declared canonical aliases) against observed `document_type`; it never
-assumes sequence 1. Package requests such as `xbrl_zip` have an explicit selector
-kind and may produce a constructed candidate without inventing an inventory
-entry. Filename/description fuzzy matching and arbitrary selector expressions
-are out of scope.
+Rules are resolved as follows:
+
+- Every target **must declare an explicit, stable `request_id`**.
+- Comma-separated form selectors are split into individual form tokens, and
+  `resolve_alias(form)` is called on **each individual form**; the alias owner does
+  not accept un-split comma-delimited strings.
+- Semantic canonicalization: form tokens are stripped of whitespace and alias-resolved.
+  Selectors are not case-folded indiscriminately.
+- The most-specific matching rule wins (`*` is a fallback, not merged with others).
+  Overlapping rules at the same specificity are rejected.
+- Primary selection matches the filing form (and its declared canonical aliases)
+  against observed `document_type`; it never assumes sequence 1.
+- Package requests such as `xbrl_zip` have an explicit selector kind and produce a
+  `constructed_candidate` without inventing an inventory entry.
+- Filename/description fuzzy matching and arbitrary selector expressions are out of
+  scope.
 
 ### 4.3 Target-plan artifact
 
@@ -255,21 +296,25 @@ accession and matched entry. Its v1 fields are:
 | `selector` | `string` | Requested form/type/name selector. |
 | `optional` | `bool` | Whether no match is a valid outcome. |
 | `inventory_entry_id` | `string`, nullable | Observed source row; null for constructed URL candidates or no match. |
-| `status` | `string` | `matched`, `not_filed`, `required_missing`, `ambiguous`, `unresolved`, or `constructed_candidate`. |
+| `status` | `string` | Outcome status: `matched`, `not_filed`, `required_missing`, `ambiguous`, `unresolved`, or `constructed_candidate`. |
+| `source_origin` | `string` | Provenance: `inventory_index` (default) or `catalog_direct`. |
 | `retrieval_mode` | `string` | `direct_url`, `bundle_sequence`, `constructed_package`, or `none`. |
 | `target_url` | `string`, nullable | Observed/resolved href or convention-derived candidate URL. |
 | `sequence` | `int32`, nullable | Required for bundle extraction; never guessed. |
 | `byte_size` | `int64`, nullable | Source-observed size; unknown for constructed candidates. |
 | `availability_evidence` | `string` | `index_html`, `constructed`, or `none`; does not imply a payload was fetched. |
 
-An absent optional selector is represented in this plan, never synthesized as an
-inventory row. A primary selector matches form/type evidence, not sequence 1; a
-zero or multiple primary match is explicit `unresolved`/`ambiguous`, not an
-order-based guess. An unlinked row needs both an advertised bundle URL and a
-sequence to become a `bundle_sequence` target. The `*-xbrl.zip` path is derived
-from accession and archive rules only after the empirical audit establishes the
-rule; if no per-accession existence evidence is available, the plan row remains a
-`constructed_candidate`.
+Matching and outcome rules:
+
+- **Status vs. Provenance**: `catalog_direct` belongs in `source_origin`, not in `status`.
+- **`not_filed` vs. `unresolved`**: Use `not_filed` **only** when a recognized, complete
+  index page has no matching row for an optional target. An unrecognized or unavailable
+  page produces `unresolved`, never evidence that the filing omitted the document.
+- **Candidate packages**: A constructed XBRL ZIP path derived from accession rules
+  remains a `constructed_candidate` unless S0 establishes empirical proof of
+  per-accession availability.
+- An unlinked row needs both an advertised bundle URL and a sequence to become a
+  `bundle_sequence` target.
 
 ### 4.4 Fixture databases
 
@@ -400,17 +445,27 @@ process count scales CPU work without creating independent SEC rate limits:
    one `SecBroker`/`managed_broker` for the run. The broker owns one
    settings-backed `SecHttpClient`, its cache, rate limiter, retries, and failure
    ledger.
-2. A bounded `ProcessPoolExecutor` worker receives an accession and index URL,
+2. S4 strictly executes index discovery: it fetches and parses `-index.html` pages
+   and **never** synthesizes `InventoryEntry` rows from catalog hints or filing
+   summaries. Entries are strictly factual rows observed in `Document Format Files`
+   or `Data Files`. S4 does not infer form capability rules or bypass decisions.
+3. A bounded `ProcessPoolExecutor` worker receives an accession and index URL,
    fetches through a `SecBrokerClient`, hashes the response, parses both index
-   tables, and returns a typed outcome plus page bytes when fixture capture is
-   requested. Workers never instantiate their own `SecHttpClient`.
-3. The coordinator alone writes fixture DB rows, Parquet, manifests, and pointers
+   tables, and returns a typed outcome. Workers never instantiate their own
+   `SecHttpClient`.
+4. Over IPC, workers return parsed structures and digests by default; raw HTML bytes
+   are returned only when fixture capture is explicitly requested by the
+   coordinator.
+5. The broker enforces an evidence-gated response-byte budget derived from S0
+   measurements and worker memory headroom, stopping transport immediately upon breach
+   and returning typed `response_too_large` without truncating.
+6. The coordinator alone writes fixture DB rows, Parquet, manifests, and pointers
    in stable accession order. It retains no full-cohort response list and calls
    `reclaim()` at bounded result intervals. A failed fetch or unrecognized page
    is an explicit error, never an empty inventory.
-4. Bound submitted-but-uncollected tasks by the resolved worker budget, counting
-   broker, IPC, response-byte, and parser-DOM memory. No child opens SQLite or
-   writes a published artifact.
+7. Bound submitted-but-uncollected tasks by the resolved worker budget, counting
+   broker buffering, IPC serialization of response bodies into child workers, and
+   worker DOM/parser memory. No child opens SQLite or writes a published artifact.
 
 Use `derive_resources().workers`; its default worker factory calls
 `auto_worker_count` with cgroup-aware available memory, worker-memory estimate,
@@ -460,13 +515,17 @@ without importing those pipeline modules.
   version. Each case presents source URL/digest, a safe inert view of the source
   page, the parsed accession metadata, and the ordered observed rows. The source
   digest and parser version are included in `manifest.jsonl`.
+- **Sanitized inert previews**: `source.inert.html` is generated from sanitized, rebuilt
+  markup. Active scripts, external resources, styles, and event handlers are stripped.
+  Links are rendered as plain inert text without active or pseudo-URI anchors (no
+  `href="javascript:void(0)"`). CSP `default-src 'none'` is embedded as defense in depth.
 - **Index review comparison** compares two parser runs by accession/table/row
   identity and reports added, removed, or changed type, sequence, description,
-  filename, href, size, and bundle metadata. The raw page remains the evidence;
-  rendering does not load active remote links.
-- **Target-plan review** compares matched, not-filed, ambiguous, unresolved, and
-  constructed outcomes separately. A profile change cannot look like an inventory
-  change.
+  filename, href, size, bundle metadata, and diagnostics. The raw page remains the
+  evidence; rendering does not load active remote links.
+- **Target-plan review** compares outcome status transitions (`not_filed`, `matched`,
+  `ambiguous`, `unresolved`, `constructed_candidate`) separately from profile selector
+  edits.
 - **Document processing review** later replays captured acquisition fixtures,
   records source and output digests, processor fingerprint and stage diagnostics,
   and compares outputs across processor versions. It runs no network requests and
@@ -541,65 +600,68 @@ An append-only SQLite store for raw `-index.html` responses keyed by URL+digest,
 
 **Details:** [subplan](subplans/S4_broker_worker.md)
 
-One `SecBroker` per run whose cache, rate limiter, and failure ledger all worker requests share; a memory-derived process pool executing one accession per task; a coordinator-owned fixture/Parquet writer; and typed page errors. No worker creates its own HTTP client or writes artifacts. Full lifecycle, budget, and acceptance tests are in the subplan.
+One `SecBroker` per run whose cache, rate limiter, and failure ledger all worker requests share; strict index discovery boundary with no catalog-derived entry synthesis; a memory-derived process pool executing one accession per task with evidence-gated response byte budgets; coordinator-owned fixture/Parquet writers; raw HTML returned across IPC only when fixture capture is active; and typed page errors. No worker creates its own HTTP client or writes artifacts. Full lifecycle, budget, and acceptance tests are in the subplan.
 
 ### S5 — Immutable inventory snapshot publication
 
 **Details:** [subplan](subplans/S5_snapshot_publication.md)
 
-The cumulative queryable snapshot: anti-join by accession before HTTP, co-filer CIK edges merged without refetching known accessions, form/year parts plus accession/CIK seek indexes, and atomic `current` publication after full validation. No target profile or payload field enters the snapshot; a failed fetch or parse publishes nothing. Run intent, immutable identity, and acceptance tests are in the subplan.
+The cumulative queryable snapshot: dense annual partitions (`year=YYYY/part-*.parquet`), anti-join by accession before HTTP, distinct CIK semantics (`filing_cik` from the accession prefix and `source_cik` relation in `accession_sources`), separate filing/source-CIK lookup shards, zero-copy manifest inheritance, page supersession/tombstones, and atomic `current` publication after validation. No target profile or payload field enters the snapshot; a failed fetch or parse publishes nothing. Run intent, immutable identity, and acceptance tests are in the subplan.
 
 ### S6 — Target profiles and separate target-plan artifacts
 
 **Details:** [subplan](subplans/S6_target_plans.md)
 
-Versioned JSON profiles in `policies/document_targets/` with normalization and canonical digests; target plans as separate immutable bundles pinned to a named snapshot; form-family resolution through the existing forms alias owner; and no tier bypass from catalog `primary_document`. The grammar, v1 target-plan schema, matching rules, and acceptance tests are in the subplan.
+Versioned JSON profiles in `policies/document_targets/` with mandatory `request_id`, individual form alias resolution via `resolve_alias`, and canonical digests; target plans as separate immutable bundles pinned to exactly one source artifact (inventory snapshot or catalog plan); clean separation of outcome `status` from provenance (`source_origin: "inventory_index" | "catalog_direct"`); and primary-only catalog-direct targets without synthetic inventory rows. Hybrid source precedence is deferred. The grammar, v1 target-plan schema, matching rules, and acceptance tests are in the subplan.
 
 ### S7 — Index and target-plan review surfaces
 
 **Details:** [subplan](subplans/S7_review.md)
 
-Offline `review-artifacts`, `review`, and snapshot `inspect` APIs for source-page parse output, target plans, and saved manifests, with CLI routes limited to review capabilities and basic lookup. Source links render as inert text, review outputs refuse empty destinations, and one bad case does not erase successful cases. The output shapes, comparison boundaries, and acceptance tests are in the subplan.
+Offline `review-artifacts`, `review`, and snapshot `inspect` APIs for source-page parse output, target plans, and saved manifests, with CLI routes limited to review capabilities and basic lookup. Rebuilt sanitized markup renders source links as inert text without active anchors; CSP is defense in depth; parser and plan diffs isolate identity-keyed field and outcome transitions; review outputs refuse empty destinations, and one bad case does not erase successful cases. The output shapes, comparison boundaries, and acceptance tests are in the subplan.
 
 ### S8 — Snapshot vacuum and lookup-index compaction
 
 **Details:** [subplan](subplans/S8_vacuum.md)
 
-Metadata-only offline compaction of form/year parts and accession/source-CIK lookup shards, with shard rebuild, uniqueness and digest validation, query-parity verification, and dependency-aware retention. It does not re-fetch pages or alter logical inventory facts, and atomic `current` publication is a publish precondition. Cumulative snapshots, co-filer merging, point/form queries, and the anti-join remain S5 work.
+Metadata-only offline compaction of annual parts and accession/filing-CIK/source-CIK lookup shards adhering to 128k-row zstd Parquet standards, with shard rebuild, uniqueness and digest validation, a logical fingerprint query-parity verification gate before moving `current`, dependency-aware retention protecting active plans and live parts, and lease-checked staging cleanup. It does not re-fetch pages or alter logical inventory facts. Cumulative snapshots, source-CIK edge merging, point/form/CIK queries, and the anti-join remain S5 work.
 
 ### S9 — Target-plan acquisition and source fixture database
 
 **Details:** [subplan](subplans/S9_acquisition.md)
 
-Acquisition from target-plan rows: direct fetch and bundle-plus-sequence extraction, source/selected-byte provenance, typed missing/failed/ambiguous/recovered outcomes, and an append-only source fixture DB keyed by URL+digest. Concurrent requests share one SEC broker for pacing, CPU-heavy extraction runs in a bounded process pool, and resource limits are set before large bodies. The fixture schema, replay semantics, and acceptance tests are in the subplan.
+Acquisition is split into S9a–S9d: target-plan work-order adaptation; brokered streaming into managed staging; bounded exact-sequence SGML extraction; and append-only SQLite case metadata with content-addressed fixture bodies. Both target source origins use the same typed work/result contract. Raw body bytes never cross process IPC; fixture capture streams from managed staging. No `document_storage` imports are introduced. Full schemas, errors, and acceptance tests are in the linked subplans.
 
 ### S10 — Processing contract, processor versions, and document review
 
 **Details:** [subplan](subplans/S10_processing.md)
 
-A pure byte-to-representation processor interface with a deterministic fingerprint, form/route dispatch, and a bounded process pool for CPU-heavy body processing. Review runs replay acquisition fixtures with base/new comparison; normalized content is transient, and only review evidence is persisted. Existing engine normalizers are reused where their contract fits; no `document_storage` pipeline imports.
+A staged-body-to-representation interface with deterministic fingerprint and route dispatch for HTML/iXBRL, text, standalone XML, binary/PDF, paper, and unknown paths. It reuses the existing form-aware engine normalizer without materializing stage traces; normalized content remains transient except selected S7 review outputs. PDF text extraction and XML fact extraction are explicit gaps; no `document_storage` imports.
 
 ### S11 — Durable payload-store decision (design gate, not implementation)
 
 **Details:** [subplan](subplans/S11_payload_design.md)
 
-Design gate only, not implementation. Representative acquisition/processing review cases feed a reviewed design covering raw-payload and normalized representation identity, occurrence/co-filer relationships, provenance, idempotence, part boundaries, retention, and inventory-to-payload linkage. Explicit approval is required before any payload-store code lands, and `payload_part`, `payload_hash`, and `payload_offset` are never added to the inventory schema.
+Design gate only, not implementation. Representative S9/S10 cases feed a reviewed design comparing CAS, annual Parquet, and DuckDB storage for raw/selected/normalized identities, target/source provenance, occurrence relationships, replay, idempotence, retention, and inventory linkage. It preserves S5 annual metadata parts and S6 source-pinned plans; explicit approval is required before payload code, and no payload fields enter inventory.
 
 ### S12 — Operator integration and end-to-end quality gate
 
 **Details:** [subplan](subplans/S12_operator_integration.md)
 
-A small artifact-oriented CLI surface with machine-readable summaries: typed counts (input, indexed, matched, not-filed, required-missing, constructed-candidate, ambiguous, unresolved, failed) and `fresh`/`reused` snapshot status. The verification suite covers mirrored offline tests, scanners, CLI refusal semantics, the broker lifecycle, absence of document payload persistence, and a fixture-to-plan-to-review vertical run. The interactive operator and acquisition/processing CLI commands are deferred; documentation updates are tracked.
+A small artifact-oriented CLI surface for snapshot/CIK queries, explicit-retention vacuum, inventory- or catalog-direct target planning, fixture replay/review, and inspection. Machine-readable summaries retain stage-specific outcomes. The offline vertical run covers cohort fixtures through query, both plan-source modes, acquisition/processing replay, vacuum parity, and parser/plan review. Interactive UX, production acquisition/processing commands, and `document_storage` removal remain deferred.
 
 ## 7. Dependency Graph and Parallel Planning
 
 ```text
 S0 audit ─> S1 cohort/schema ─┬─> S2 index fixture store ─┐
                              └─> S3 parser ───────────────┴─> S4 broker + process pool
-S4 ─> S5 cumulative/queryable snapshot ─┬─> S6 target plans ─> S7 review ────┐
-                                        └─> S8 vacuum/index compaction ──────┤
-S6 ─> S9 acquisition ─> S10 processing/review ─> S11 payload design gate ──┤
-S1–S11 ─────────────────────────────────────────────────────────────────────> S12 integration
+S4 ─> S5 cumulative/queryable snapshot ─┬─> S6 inventory target source ─> S7 review ─┐
+                                        └─> S8 vacuum/index compaction ──────────────┤
+S1 catalog plan ─> S6 catalog-direct source ──────────────────────────────────────────┤
+S6 ─> S9a work order ─> S9b streaming ─┬─> S10 (direct) ────────────────────────────┤
+                                       ├─> S9c SGML extraction ─> S10 (bundle) ──────┤
+                                       └─> S9d fixtures ───────> S10 (replay) ──────┤
+S1–S11 ──────────────────────────────────────────────────────────────────────────────> S12
 ```
 
 Author the subplans for S1–S12 from this interface map before implementation
@@ -616,10 +678,11 @@ The initial operator surface is explicit-artifact oriented and small:
 |---|---|---|
 | Capture index fixture | `inventory fill --catalog-plan <id> --fixture <id>` | Selected accession cohort → append-only raw index-page fixture. |
 | Build inventory | `inventory build --catalog-plan <id>` or `--fixture <id>` | Cohort → anti-join current, fetch only missing accessions, publish cumulative snapshot. |
-| Target planning | `documents plan --inventory <snapshot_id|current> --profile <path>` | Snapshot + intent → separate immutable target plan pinned to the resolved snapshot ID. |
-| Accession query | `inventory query --snapshot current --accession <accession>` | Filing facts, all observed child/data-file rows, and co-filer CIKs; no network. |
-| Form query | `inventory query --snapshot current --form <form> [--source-cik <cik>]` | Matching accessions/entries from selected form/year partitions; no network. |
-| Inspect | `inventory inspect --snapshot <id> --accession <accession>` | Reads a pinned published snapshot only; no network. |
+| Target planning | `documents plan --inventory <snapshot_id|current> --profile <path>` or `--catalog-plan <id> --profile <path>` | Explicit source → immutable target plan with pinned source provenance. One source per v1 plan. |
+| Accession query | `inventory query --snapshot current --accession <accession>` | Filing facts, all observed child/data-file rows, and source-CIK relations; no network. |
+| Form/CIK query | `inventory query --snapshot current --form <form> [--filing-cik <cik>] [--source-cik <cik>]`, `--filing-cik <cik>`, or `--source-cik <cik>` | Matching accessions/entries from annual parts and distinct filing/source-CIK postings; no network. |
+| Vacuum | `inventory vacuum --snapshot <snapshot-id|current> --retention <policy-id>` | Compact annual parts and lookup shards; parity-gated, atomically publish `current`. |
+| Inspect | `inventory inspect --snapshot <id|current> [--accession <accession>]` | Reads a pinned snapshot manifest/partition or one accession; no network. |
 | Review parser | `inventory review-artifacts --fixture <id> --output <dir>` | Fixture pages → per-accession parser evidence. |
 | Compare | `inventory review --base <dir> --new <dir>` | Two review runs → structured differences. |
 
@@ -628,30 +691,13 @@ acquisition/processing CLI commands are added only in their owning subplans. No
 query command fetches index pages or filing bodies; only `inventory build`
 fetches index pages for accessions missing from the selected base snapshot.
 
-## 9. Inspiration from the Frozen Pipeline
+## 9. Frozen Pipeline Module Disposition
 
-Borrowed **contracts and tests**, not code ownership:
-
-- Input validation before fetch, canonical fingerprints, immutable output, and
-  fail-closed reuse: `document_storage/catalog_plan.py`,
-  `document_storage/run_manifest.py`, and
-  `document_storage/merger.py`.
-- Bounded parallel work, broker RPC, and orderly result collection:
-  `document_storage/execution.py` and `document_storage/fetching.py`; adapt
-  brokered process workers and bounded result collection without importing its
-  work-item or checkpoint semantics.
-- Append-only raw evidence, read-only replay, schema checks, and source digests:
-  `document_storage/fixture_store.py` and
-  `tests/pipelines/document_storage/test_fixture_store.py`.
-- Source-first review artifacts and processor comparison:
-  `document_storage/review_artifacts.py`, `document_storage/review.py`, and
-  their mirrored tests.
-- Relevant source edge cases for later acquisition/processing: candidate vs
-  sequence-1 inversion, direct vs rendered path, legacy bundle extraction,
-  duplicated/missing sequence or filenames, stub delegation, binary routes, and
-  source bytes kept distinct from normalized text. These cases inform subplan
-  tests but do not make the new pipeline inherit document_storage's schema or
-  recovery behavior.
+The [module-by-module replacement map](document_storage_disposition.md) records
+what the current `document_storage` pipeline owns, which lower-layer APIs remain
+reused, which old behaviors are inspiration-only or deliberately omitted, and
+which package modules/tests are scheduled for deletion at the post-S12 gate. No
+module under `pipelines.document_storage` is a dependency of the new pipeline.
 
 ## 10. Exclusions and Decision Gates
 
@@ -661,6 +707,9 @@ Borrowed **contracts and tests**, not code ownership:
 - No document-body normalization during inventory or target planning.
 - No production raw/normalized payload Parquet, blob CAS, or payload linkage
   until S11 is reviewed and approved.
+- The planned `document_storage` removal is a separate post-S12 gate: the approved
+  S11 payload design must be implemented, consumers and old artifacts migrated or
+  retired, parity/rollback checks passed, and module-map links cleaned before deletion.
 - No claim that index page formats, constructed ZIP presence, or actual document
   normalization have universal parity until backed by the audit and fixture
   review artifacts.

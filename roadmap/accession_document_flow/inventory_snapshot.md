@@ -26,8 +26,8 @@ row. It exists before any selected document is fetched, and a request for a
 different target is a query against the same snapshot.
 
 **Current roadmap correction:** a cohort-only snapshot followed later by a
-cumulative index is insufficient. If a plan covers one subset of co-filer CIKs
-and a later plan covers another, delaying global accession deduplication causes
+cumulative index is insufficient. If a plan contributes one subset of source-CIK
+associations and a later plan contributes another, delaying global accession deduplication causes
 repeated page fetches. The initial `current` snapshot, accession/form lookup,
 and cross-plan anti-join therefore belong in the first inventory publication;
 vacuum and compaction can follow later.
@@ -42,8 +42,8 @@ indexed”; it does not silently fetch a page.
    and its source-CIK associations. This is the query used to inspect one
    accession before planning its primary, exhibits, or data files.
 2. **One filing form:** enumerate accessions for a filing form, optionally
-   filtered by filing/report date and CIK, then stream the matching inventory
-   entries. It reads only the selected form/year partitions and their row groups;
+   filtered by filing/report date and filing/source CIK, then stream the matching
+   inventory entries. It reads only selected annual partitions and row groups;
    the result itself may be large, but unrelated forms are not scanned.
 3. **One source CIK:** enumerate associated accessions from an inverse CIK index,
    optionally filter by filing form/date, and return entries through the
@@ -71,6 +71,7 @@ One row per canonical accession:
 | Field | Arrow type | Contract |
 |---|---|---|
 | `accession` | `string` | Canonical `AccessionNumber`; unique physical filing key. |
+| `filing_cik` | `string` | Canonical ten-digit CIK in the accession prefix; the filing entity. |
 | `form` | `string` | Filing form from the selected catalog cohort. |
 | `filing_date` | `string` | Validated ISO date; determines filing-year partition. |
 | `report_date` | `string`, nullable | Catalog report date when present. |
@@ -84,17 +85,22 @@ One row per canonical accession:
 
 One row per source table row, across both index tables:
 
+There is no asset-count cap or target-based filtering: every body row observed in
+both tables is stored, including rows with no href and repeated filenames or
+sequences. Resource protection is a response-byte budget at fetch time; crossing it
+fails the accession and cannot publish a partial snapshot.
+
 | Field | Arrow type | Contract |
 |---|---|---|
-| `entry_id` | `string` | SHA-256 of canonical `[accession, table_kind, row_ordinal, index_sha256]`. |
+| `entry_id` | `string` | SHA-256 of canonical `[str(accession), table_kind, row_ordinal, index_sha256]`. |
 | `accession` | `string` | Parent accession. |
 | `table_kind` | `string` | `document_format` or `data_file`. |
-| `row_ordinal` | `int32` | Source order within its table. |
+| `row_ordinal` | `int32` | Zero-based body-row order within its source table. |
 | `sequence` | `int32`, nullable | Source sequence; may be absent or duplicated. |
 | `document_type` | `string`, nullable | Source statutory type. |
 | `document_label` | `string`, nullable | Visible text in the source Document cell. |
 | `description` | `string`, nullable | Source description. |
-| `filename` | `string`, nullable | Unambiguous source filename, otherwise null. |
+| `filename` | `string`, nullable | Observed row filename; duplicates across rows are preserved, and null means unavailable on that row. |
 | `href` | `string`, nullable | Original href; null is meaningful. |
 | `archive_url` | `string`, nullable | Resolved, same-accession SEC archive URL. |
 | `byte_size` | `int64`, nullable | Advertised child size. |
@@ -123,39 +129,47 @@ entry. Repeated `(accession, source_cik)` pairs from later plans are no-ops.
 ## 4. Physical Layout and Seek Indexes
 
 The snapshot is a directory of immutable Parquet parts and small lookup shards,
-not one monolithic Parquet file or one zip that must be downloaded to query:
+not one monolithic Parquet file or one zip that must be downloaded to query. The
+v1 physical layout uses **dense annual partitions**, avoiding sparse form-directory
+explosion while preserving row-group pruning:
 
 ```text
 {artifacts_root}/document_inventory/
   snapshots/{snapshot_id}/manifest.json
-  snapshots/{snapshot_id}/accessions/form_key=<form>/year=<YYYY>/part-*.parquet
-  snapshots/{snapshot_id}/entries/form_key=<form>/year=<YYYY>/part-*.parquet
+  snapshots/{snapshot_id}/accessions/year=<YYYY>/part-*.parquet
+  snapshots/{snapshot_id}/entries/year=<YYYY>/part-*.parquet
   snapshots/{snapshot_id}/accession_sources/year=<YYYY>/part-*.parquet
   snapshots/{snapshot_id}/lookups/accession/shard=<key>/part.parquet
+  snapshots/{snapshot_id}/lookups/filing_cik/shard=<key>/part.parquet
   snapshots/{snapshot_id}/lookups/source_cik/shard=<key>/part.parquet
   snapshots/current/pointer.json
 ```
 
-`form_key` is a safe manifest-mapped token; raw form strings do not become path
-components. Within `form_key/year`, accession and entry parts are sorted by
-accession, then table kind and source row ordinal. The source-CIK relation is
-sorted by CIK and accession. Parquet statistics support row-group pruning inside
-the selected parts.
+Within each `year=<YYYY>/`, accession and entry parts are sorted by
+`(form, filing_date, accession)` so Parquet min/max statistics prune row groups
+during form and date queries without fragmenting into hundreds of sparse form
+folders. The `accession_sources` relation table is sorted by `(source_cik, accession)`.
 
 The lookup shards are versioned, rebuildable seek indexes:
 
-- `accession` maps to filing form/year and the relevant accession, entry, and
-  source-CIK part/row-group locators. The shard key is computed from the
+- `accession` maps to filing year and the relevant accession, entry, filing-CIK,
+  and source-CIK part/row-group locators. The shard key is computed from the
   accession, so a point lookup selects one shard rather than scanning all yearly
   tables.
-- `source_cik` maps to the matching source-CIK part/row groups. A CIK query reads
-  only that lookup shard and its matching rows, then resolves each accession via
-  the accession index.
+- `filing_cik` maps the accession-prefix CIK to filing/entry row groups.
+- `source_cik` maps to the matching source-CIK part/row groups. A source-CIK query
+  reads only that lookup shard and its matching rows, then resolves each accession
+  via the accession index.
+
+**Manifest inheritance & supersession**:
+- Unchanged annual partitions are inherited directly from parent snapshots via
+  `manifest.json`, writing new Parquet parts only for affected filing years.
+- When an explicit refresh yields changed bytes, active manifest mappings mark
+  prior entries for that accession as superseded, while older snapshots preserve
+  historical observations intact.
 
 The manifest lists every logical partition and part with its key range, row
-count, byte size, digest, and lookup-layout version. It also stores the mapping
-from form values to safe `form_key`s and the hash/shard algorithm version. Shard
-packing is tuned by vacuum; changing it does not change logical row identity.
+count, byte size, digest, and lookup-layout version.
 
 For local artifacts, DuckDB can query the selected files with partition and
 row-group pruning. The read interface is also range-oriented: a future remote
@@ -181,7 +195,7 @@ Every inventory build uses the current cumulative snapshot as its base:
    immutable child snapshot; write `current` last.
 
 This is the critical case where one physical accession appears in plans for
-different members of a co-filer group. The first plan fetches its `-index.html`
+different source-CIK contexts. The first plan fetches its `-index.html`
 once. A later plan adds a new CIK edge and reuses the current index page. A known
 accession whose form/date metadata conflicts is refused before fetch; it is not
 silently re-indexed under a second identity.
@@ -198,7 +212,7 @@ Snapshot updates are serialized per inventory root. Readers remain lock-free
 against immutable snapshots. A writer whose expected parent no longer matches
 `current` refuses before pointer publication; retry re-anti-joins against the
 new parent and reuses cached/captured pages. An explicit page refresh is separate
-from a co-filer addition and creates a new page observation only when its digest
+from a source-CIK addition and creates a new page observation only when its digest
 changes.
 
 ## 6. Query API and Planning Handoff
@@ -207,40 +221,48 @@ The inventory query API is a pure snapshot reader:
 
 ```text
 get_accession(snapshot_id, accession)
-query_filings(snapshot_id, filing_form?, filing_date_range?, report_date_range?, source_cik?)
+query_filings(snapshot_id, filing_form?, filing_date_range?, report_date_range?, filing_cik?, source_cik?)
 query_entries(snapshot_id, accession?, filing_form?, document_type?, table_kind?)
 ```
 
-`get_accession` returns the accession facts, all observed child/data-file rows,
-and co-filer CIKs. `query_filings(form=...)` enumerates matching accessions from
-the form/year partitions, then streams their inventory rows. `query_entries`
+`get_accession` returns the accession facts, including `filing_cik`, all observed
+child/data-file rows, and source-CIK associations. `query_filings(form=...)` enumerates
+matching accessions from the annual partitions, then streams their inventory rows.
+`query_entries`
 supports accession and child `document_type` predicates. None of these readers
-has a broker or fetcher dependency. A target planner consumes these iterators,
-then writes its separate target-plan artifact; it does not re-read filing
-catalog plans to discover already indexed documents.
+has a broker or fetcher dependency. An inventory-backed target planner consumes
+these iterators, then writes its separate target-plan artifact; catalog-direct
+planning is a separate S6 source adapter.
 
 In v1, `query_entries` requires an accession or filing-form predicate;
 `document_type` and `table_kind` refine that bounded result. A global
 document-type-only query is rejected until it has a dedicated type lookup rather
 than silently scanning every filing-form partition. `query_filings` likewise
-requires a filing form, source CIK, or bounded date range; an accidental
+requires a filing form, filing CIK, source CIK, or bounded date range; an accidental
 unfiltered inventory scan is not a lookup operation.
 
-For combined `form`/`source_cik` filters, the query planner intersects the form
-partition with the CIK-to-accession postings and resolves matching entries via
-the accession seek index. It must not scan all accessions and then apply the CIK
-filter as a post-read predicate.
+For combined form/CIK filters, the query planner intersects annual form row groups
+with the selected filing-CIK and/or source-CIK postings, then resolves matching
+entries via the accession seek index. It must not scan all accessions and then
+apply a CIK filter as a post-read predicate.
 
 CLI query shapes are:
 
 ```text
 inventory query --snapshot current --accession <accession>
-inventory query --snapshot current --form <filing-form> [--source-cik <cik>]
+inventory query --snapshot current --form <filing-form> [--filing-cik <cik>] [--source-cik <cik>]
+inventory query --snapshot current --filing-cik <cik>
+inventory query --snapshot current --source-cik <cik>
 inventory query --snapshot current --accession <accession> --document-type <type>
 ```
 
 An accession absent from the selected snapshot is reported as not indexed. Only
 `inventory build --catalog-plan ...` discovers/fetches missing index pages.
+
+`filing_cik` and `source_cik` are separate query predicates: the former is the CIK
+encoded in the accession and the latter records catalog/cohort provenance. Both may
+be supplied with a form or date filter; if both CIK filters are supplied, results
+must satisfy their intersection.
 
 ## 7. Vacuum and Snapshot Lifecycle
 
@@ -250,10 +272,11 @@ the manifest's parent/part references. `vacuum` is a metadata-only compaction:
 
 - Merge accession, entry, and source-CIK deltas; enforce unique accession and
   `(accession, source_cik)` keys.
-- Compact form/year parts, sort by their query keys, and rebuild accession/CIK
-  lookup shards and manifest key ranges.
-- Validate row counts, hashes, referential integrity, co-filer equality, and
-  query parity for accession, filing form, and source CIK before moving `current`.
+- Compact annual parts, sort by their query keys, and rebuild accession,
+  filing-CIK, and source-CIK lookup shards and manifest key ranges.
+- Validate row counts, hashes, referential integrity, source-CIK relation equality,
+  and query parity for accession, filing form, filing CIK, and source CIK before
+  moving `current`.
 - Keep source snapshots while retained target plans or child snapshots reference
   them. Purging is dependency-aware; it never mutates a source snapshot.
 - Make no HTTP requests. A changed query layout creates a new immutable snapshot
@@ -272,16 +295,17 @@ index fixture, and parser subplans.
 
 ### S5a — Queryable cumulative snapshot
 
-Implement the logical tables, form/year partitions, lookup shards, global
-accession anti-join, new co-filer edge merge, immutable parent-linked snapshots,
+Implement the logical tables, annual partitions, filing/source-CIK lookup shards, global
+accession anti-join, new source-CIK edge merge, immutable parent-linked snapshots,
 and atomic `current` pointer in the first snapshot publisher.
 
-**Acceptance:** an accession with co-filer CIKs split across independent plan
+**Acceptance:** an accession with source-CIK associations split across independent plan
 fixtures causes one index-page request total; later builds update only unseen
 CIK relationships. The accession query returns all source rows without SEC
-requests. Form queries read only their declared form/year parts and return exact
-rows. A query against a remote-range test adapter reads the manifest, one lookup
-shard, and selected row groups, not all snapshot files.
+requests. Form queries read only selected annual row groups and return exact rows;
+filing-CIK and source-CIK queries return their distinct expected accessions. A query
+against a remote-range test adapter reads the manifest, the relevant lookup shard,
+and selected row groups, not all snapshot files.
 
 ### S8 — Vacuum and query-index verification
 
@@ -289,7 +313,7 @@ Implement compaction, lookup-shard rebuild, parent dependency checks, and
 pointer-last publication. Verify query equivalence before/after compaction and
 retention of all referenced snapshots.
 
-**Acceptance:** accessions, forms, entries, and source-CIK queries return the same
+**Acceptance:** accessions, forms, entries, filing-CIK, and source-CIK queries return the same
 logical results after vacuum; no page response is fetched; an interrupted or
 conflicting vacuum cannot move `current`.
 

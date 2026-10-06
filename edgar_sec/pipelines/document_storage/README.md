@@ -7,6 +7,14 @@ normalizes a full document body, and the only one that needs a process pool.
 
 `AGENTS.md` is normative; where this file disagrees with it, this file is wrong.
 
+## Lifecycle
+
+This pipeline is frozen while the accession-document flow is built. The intended
+end state is removal after replacement parity, payload-store implementation,
+consumer/artifact migration, and a separately approved decommission gate. The
+module-by-module disposition is tracked in
+[`document_storage_disposition.md`](../../../roadmap/accession_document_flow/document_storage_disposition.md).
+
 ## Purpose
 
 Phase 1 produced submissions metadata; Phase 2 turned it into a catalog and a
