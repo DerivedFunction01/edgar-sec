@@ -11,18 +11,28 @@ def registered() -> tuple[Scanner, ...]:
 
 def run_all() -> int:
     """Execute all registered scanners; print findings; return exit code."""
+    results: list[tuple[Scanner, list[ScannerFinding]]] = []
     has_error = False
     for scanner in registered():
-        print(f"==> scanner: {scanner.name} - {scanner.description}")
         findings = scanner.run()
-        if not findings:
-            print("    clean")
-            continue
-        has_error = True
-        for f in findings:
-            print(f"    ERROR [{f.scanner}] {f.path}:{f.line}: {f.message}")
-            if f.hint:
-                print(f"          hint: {f.hint}")
+        results.append((scanner, findings))
+        if findings:
+            has_error = True
+
+    total = len(results)
+    violated = sum(1 for _, fs in results if fs)
+    clean = total - violated
+    if violated == 0:
+        print(f"==> ran {total} checks: {clean} clean")
+    else:
+        print(f"==> ran {total} checks: {clean} clean, {violated} violated")
+        for scanner, findings in results:
+            if not findings:
+                continue
+            for f in findings:
+                print(f"    ERROR [{f.scanner}] {f.path}:{f.line}: {f.message}")
+                if f.hint:
+                    print(f"          hint: {f.hint}")
     return 1 if has_error else 0
 
 

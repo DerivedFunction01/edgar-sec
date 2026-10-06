@@ -36,6 +36,11 @@ class Cik:
     def __int__(self) -> int:
         return self.value
 
+    def __lt__(self, other: object) -> bool:
+        if not isinstance(other, Cik):
+            return NotImplemented
+        return self.value < other.value
+
 
 @dataclass(frozen=True, slots=True)
 class AccessionNumber:
@@ -72,6 +77,11 @@ class AccessionNumber:
 
     def __str__(self) -> str:
         return self.raw
+
+    def __lt__(self, other: object) -> bool:
+        if not isinstance(other, AccessionNumber):
+            return NotImplemented
+        return self.raw < other.raw
 
 
 __all__ = ["AccessionNumber", "Cik"]

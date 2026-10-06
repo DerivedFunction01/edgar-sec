@@ -1,0 +1,30 @@
+{
+  "plan_id": "s1-cohort-plan",
+  "catalog_id": "f259fde5d9c69335",
+  "scope": "policy",
+  "forms": [
+    "10-K",
+    "8-K"
+  ],
+  "counts": {
+    "10-K": 15,
+    "8-K": 2
+  },
+  "plan_schema_version": "1.2",
+  "active_targets_count": 17,
+  "request_fingerprint": "0000000000000000000000000000000000000000000000000000000000000000",
+  "target_units": 1,
+  "level": 1,
+  "parent_plan_id": null,
+  "policy_corpus": "corpus_f259fde5",
+  "policy_fingerprint": "00000000000000000000000000000000",
+  "seed_fingerprint": "00000000000000000000000000000000",
+  "seed_filer_count": 0,
+  "unique_locators_count": 17,
+  "selected_rows": 17,
+  "reserve_count": 0,
+  "selection_policy": {
+    "seed": "fixture-s1",
+    "seed_cik_path": "test.csv"
+  }
+}
