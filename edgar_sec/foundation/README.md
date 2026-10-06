@@ -32,7 +32,7 @@ work. Its only side effects are directory creation in `runtime/paths.py` and
 | `serialization.py` | `canonical_json` / `canonical_hash` for identity-stable payloads; `json_safe` / `safe_dumps` for representability. |
 | `compression.py` | The repository's only zstd frame codec. |
 | `regex/` | The regex builder DSL and prefix-tree factorisation. See [`regex/README.md`](regex/README.md). |
-| `runtime/` | Environment, paths, resources, memory, progress, partitions, interactive dispatch. See [`runtime/README.md`](runtime/README.md). |
+| `runtime/` | Environment, project and fixture paths, resources, memory, progress, partitions, interactive dispatch. See [`runtime/README.md`](runtime/README.md). |
 | `runtime/settings/` | The single typed settings registry. See [`runtime/settings/README.md`](runtime/settings/README.md). |
 | `scanners/` | The registered policy scanners. See [`scanners/README.md`](scanners/README.md). |
 | `checks/` | The gate: runs the scanners, reads git status, resolves AST test lineage. See [`checks/README.md`](checks/README.md). |
@@ -126,7 +126,8 @@ and the per-symbol detail.
   (`serialization.py`); `compress_payload`, `decompress_payload`
   (`compression.py`).
 - [`regex/`](regex/README.md): the builder DSL and prefix-tree factorisation.
-- [`runtime/`](runtime/README.md): environment access, `ProjectPaths`, the
+- [`runtime/`](runtime/README.md): environment access, `ProjectPaths`, generic
+  fixture location and manifest-envelope validation, the
   derived resource profile and its memory arithmetic, `reclaim`, progress,
   partitions, interactive dispatch. [`runtime/settings/`](runtime/settings/README.md):
   `SettingSpec` and the resolve, flatten, and render API.

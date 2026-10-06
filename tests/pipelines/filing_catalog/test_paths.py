@@ -8,15 +8,15 @@ from pathlib import Path
 
 import pytest
 
+import edgar_sec.foundation.runtime.paths as foundation_paths
+from edgar_sec.foundation.runtime.paths import PLAN_FILE_NAME
 from edgar_sec.pipelines.filing_catalog.paths import (
     CURRENT_ALIAS,
     PIPELINE_DIR,
-    PLAN_FILE_NAME,
     PLAN_TARGETS_DIR_NAME,
     PLANS_DIR_NAME,
     REQUIRED_PLAN_FILES,
     SEED_FILERS_NAME,
-    SNAPSHOTS_DIR_NAME,
     form_partition_dir,
     form_partition_name,
     resolve_filing_catalog_paths,
@@ -39,7 +39,7 @@ def test_catalog_root_is_under_the_pipeline_directory(paths) -> None:
 
 def test_snapshots_and_plans_are_sibling_directories(paths) -> None:
     """One published root per kind, both directly under the pipeline directory."""
-    assert paths.snapshots_root == paths.catalog_root / SNAPSHOTS_DIR_NAME
+    assert paths.snapshots_root == paths.catalog_root / foundation_paths.SNAPSHOTS_DIR
     assert paths.plans_root == paths.catalog_root / PLANS_DIR_NAME
     assert paths.snapshot_dir("cat-1").parent == paths.snapshots_root
     assert paths.plan_dir("plan-1").parent == paths.plans_root

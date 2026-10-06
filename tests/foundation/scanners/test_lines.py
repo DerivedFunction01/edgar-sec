@@ -37,7 +37,9 @@ def test_is_noise_ignores_a_hash_inside_code() -> None:
 
 
 def test_is_scanner_infrastructure_covers_scanners_and_tests() -> None:
-    assert lines.is_scanner_infrastructure("edgar_sec/foundation/scanners/paths.py")
+    assert lines.is_scanner_infrastructure(
+        "edgar_sec/foundation/scanners/artifact_paths.py"
+    )
     assert lines.is_scanner_infrastructure("tests/foundation/test_x.py")
     assert not lines.is_scanner_infrastructure("edgar_sec/engine/thing.py")
 

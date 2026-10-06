@@ -27,8 +27,8 @@ Layer 0  foundation/   runtime, memory, hashing, compression, settings, scanners
 
 | Layer | Package | Owns |
 | :--- | :--- | :--- |
-| 0 | [`foundation/`](foundation/README.md) | cgroup-aware resources, memory reclamation, hashing, canonical JSON, the zstd frame codec, the settings registry, the policy scanners |
-| 0 | [`foundation/runtime/`](foundation/runtime/README.md) | paths, env resolution, progress, partitions, interactive prompts, memory |
+| 0 | [`foundation/`](foundation/README.md) | cgroup-aware resources, memory reclamation, hashing, canonical JSON, the zstd frame codec, shared fixture/path primitives, the settings registry, the policy scanners |
+| 0 | [`foundation/runtime/`](foundation/runtime/README.md) | project roots, shared fixture layout/envelope validation, env resolution, progress, partitions, interactive prompts, memory |
 | 0 | [`foundation/runtime/settings/`](foundation/runtime/settings/README.md) | the single typed settings registry; env names derive from logical dotted paths |
 | 0 | [`foundation/scanners/`](foundation/scanners/README.md) | policy scanners and `ALL_SCANNERS` |
 | 0 | [`foundation/text/`](foundation/text/README.md) | shared pattern vocabulary: dates, tokens, grammar, unicode, compounds, the Aho-Corasick automaton |
@@ -58,7 +58,8 @@ Layer 0  foundation/   runtime, memory, hashing, compression, settings, scanners
 | 5 | [`apps/`](apps/README.md) | layer root; read-only operator-facing consumers of published artifacts |
 | 5 | [`apps/viewer/`](apps/viewer/README.md) | the dataset viewer: a lazy filesystem explorer, manifest-driven virtual datasets, paged DuckDB reads, a guarded read-only SQL console |
 | 4 | [`pipelines/`](pipelines/README.md) | layer root; orchestration |
-| 4 | [`pipelines/document_inventory/`](pipelines/document_inventory/README.md) | cohort projection, index-page capture/replay, broker-backed worker coordination |
+| 4 | [`pipelines/document_inventory/`](pipelines/document_inventory/README.md) | fixture/review workflows, path-backed worker coordination, bounded snapshot anti-join |
+| 4 | [`pipelines/document_inventory/snapshot/`](pipelines/document_inventory/snapshot/README.md) | snapshot relation schemas and DuckDB-backed staging/anti-join primitives |
 | 4 | [`pipelines/metadata_sync/`](pipelines/metadata_sync/README.md) | Submissions metadata ingest, chunked and resumable |
 | 4 | [`pipelines/filing_catalog/`](pipelines/filing_catalog/README.md) | Zero-network catalog materialization and target planning |
 | 4 | [`pipelines/document_storage/`](pipelines/document_storage/README.md) | Fetch, normalize, delegate, checkpoint, merge, consolidate |

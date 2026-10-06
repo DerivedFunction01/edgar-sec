@@ -38,9 +38,9 @@ ENTRIES: tuple[LauncherEntry, ...] = (
     ),
     LauncherEntry(
         id="inventory",
-        label="Document Inventory (S0-S5)",
-        description="Cohort, index-page capture, parser, and snapshot publication",
-        module="edgar_sec.pipelines.document_inventory.cli",
+        label="Document Inventory",
+        description="Discover fixtures and review SEC index pages",
+        module="edgar_sec.pipelines.document_inventory.operator",
     ),
     LauncherEntry(
         id="viewer",

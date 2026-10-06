@@ -13,7 +13,7 @@ Capture a selected acquisition corpus with bounded-memory writes and replay it o
 ## Layout and schemas
 
 ```text
-{fixture_root}/acquisition/{fixture_id}/
+{artifacts_root}/acquisition/fixtures/{fixture_id}/
   manifest.json
   cases.sqlite
   responses/{sha256-prefix}/{response_sha256}.body
@@ -71,7 +71,15 @@ CREATE TABLE acquisition_cases (
 );
 ```
 
-The manifest pins fixture/schema versions, target-plan IDs and digests, source snapshot/catalog IDs and digests, counts, and relative body root. `acquisition_cases` records the S6 target identity, selector, source provenance, and retrieval fields needed for review plus the source and selected-body evidence; `target_status` is copied from S6 and is never overwritten by `acquisition_status`. Failed transport cases have no response foreign key. All SQLite foreign keys are enabled.
+The manifest uses `foundation.runtime.fixtures` for dataset-scoped location and the
+common `fixture_kind`, `manifest_version`, identity, storage-reference, and timestamp
+envelope. Acquisition-specific schema versions, target-plan IDs and digests, source
+snapshot/catalog IDs and digests, counts, relative body root, and lineage live under
+`details`. `acquisition_cases` records the S6 target identity, selector, source
+provenance, and retrieval fields needed for review plus the source and selected-body
+evidence; `target_status` is copied from S6 and is never overwritten by
+`acquisition_status`. Failed transport cases have no response foreign key. All SQLite
+foreign keys are enabled.
 
 ## Interfaces
 

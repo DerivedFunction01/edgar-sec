@@ -9,6 +9,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 from pathlib import Path
 
+import edgar_sec.foundation.runtime.paths as foundation_paths
 from edgar_sec.foundation.runtime.paths import (
     PLAN_FILE_NAME,
     ProjectPaths,
@@ -60,7 +61,7 @@ class MetadataPaths:
     @property
     def snapshots_root(self) -> Path:
         """Root of published snapshot directories."""
-        return self.metadata_root / "snapshots"
+        return self.metadata_root / foundation_paths.SNAPSHOTS_DIR
 
     def plan_dir(self, plan_id: str) -> Path:
         """Directory holding one immutable plan."""

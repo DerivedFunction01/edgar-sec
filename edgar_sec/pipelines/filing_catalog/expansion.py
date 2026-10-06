@@ -18,9 +18,9 @@ from edgar_sec.engine.selection.policy import (
     read_seed_filers_csv,
 )
 from edgar_sec.infra.storage.atomic import atomic_write_json
+from edgar_sec.foundation.runtime.paths import PLAN_FILE_NAME
 from edgar_sec.pipelines.filing_catalog.paths import (
     EXPANSION_METADATA_NAME,
-    PLAN_FILE_NAME,
     FilingCatalogPaths,
     resolve_filing_catalog_paths,
 )

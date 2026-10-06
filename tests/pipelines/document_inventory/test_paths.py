@@ -8,13 +8,17 @@ from pathlib import Path
 
 import pytest
 
+import edgar_sec.foundation.runtime.paths as foundation_paths
+from edgar_sec.foundation.runtime.fixtures import FIXTURE_MANIFEST_NAME
 from edgar_sec.pipelines.document_inventory.paths import (
     CHUNKS_DIR,
     DATASET,
+    FIXTURE_DATABASE_FILE,
     OUTCOMES_FILE,
     PUBLICATION_DIR,
     RUN_MANIFEST_FILE,
-    SNAPSHOTS_DIR,
+    InventoryPaths,
+    inventory_paths,
     inventory_run_paths,
 )
 
@@ -26,7 +30,7 @@ def test_run_root_lies_under_transient_dataset(tmp_path: Path) -> None:
 
 def test_snapshots_root_stays_out_of_transient(tmp_path: Path) -> None:
     paths = inventory_run_paths(tmp_path, "run-1")
-    assert paths.snapshots_root == tmp_path / DATASET / SNAPSHOTS_DIR
+    assert paths.snapshots_root == tmp_path / DATASET / foundation_paths.SNAPSHOTS_DIR
     assert "transient" not in paths.snapshots_root.parts
     assert paths.run_root != paths.snapshots_root
 
@@ -78,3 +82,20 @@ def test_chunk_and_attempt_ids_are_validated(tmp_path: Path, bad_id: str) -> Non
 def test_paths_create_nothing_on_disk(tmp_path: Path) -> None:
     inventory_run_paths(tmp_path, "run-1")
     assert list(tmp_path.iterdir()) == []
+
+
+def test_fixture_paths_share_the_inventory_layout(tmp_path: Path) -> None:
+    paths = inventory_paths(tmp_path)
+    fixture = paths.index_fixture_paths("review-one")
+    assert fixture.root == tmp_path / DATASET / "fixtures" / "review-one"
+    assert fixture.manifest_path == paths.fixture_manifest_path("review-one")
+    assert fixture.storage_path == paths.fixture_database_path("review-one")
+    assert fixture.storage_path.name == FIXTURE_DATABASE_FILE
+    assert fixture.manifest_path.name == FIXTURE_MANIFEST_NAME
+
+
+def test_runtime_socket_path_is_centralized(tmp_path: Path) -> None:
+    paths = InventoryPaths(tmp_path)
+    assert paths.broker_socket_path("fixture-run") == (
+        foundation_paths.runtime_root(tmp_path) / "fixture-run.sock"
+    )

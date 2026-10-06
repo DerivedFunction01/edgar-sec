@@ -32,7 +32,7 @@ def test_document_storage_paths_layout(tmp_path: Path) -> None:
         paths.document_transient_root
         == artifacts_root / "transient" / "document_storage"
     )
-    assert paths.fixtures_root == artifacts_root / "fixtures"
+    assert paths.fixtures_root == artifacts_root / "document_storage" / "fixtures"
     assert paths.review_runs_root == artifacts_root / "document_storage" / "review-runs"
     assert paths.exhibits_root == artifacts_root / "document_exhibits" / "snapshots"
 
@@ -56,7 +56,7 @@ def test_document_storage_paths_layout(tmp_path: Path) -> None:
     )
     assert (
         paths.fixture_manifest_path("fix-1")
-        == paths.fixture_dir("fix-1") / "fixture.manifest.json"
+        == paths.fixture_dir("fix-1") / "manifest.json"
     )
 
     assert paths.review_run_dir("rev-1") == paths.review_runs_root / "rev-1"

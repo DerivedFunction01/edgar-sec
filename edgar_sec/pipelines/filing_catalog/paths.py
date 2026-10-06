@@ -9,9 +9,8 @@ from __future__ import annotations
 from dataclasses import dataclass
 from pathlib import Path
 
+import edgar_sec.foundation.runtime.paths as foundation_paths
 from edgar_sec.foundation.runtime.paths import (
-    PLAN_FILE_NAME,
-    POINTER_FILE_NAME,
     ProjectPaths,
     current_pointer_path,
     resolve_paths,
@@ -20,8 +19,7 @@ from edgar_sec.foundation.runtime.paths import (
 
 PIPELINE_DIR = "filing_catalog"
 
-# Published subdirectories, named so this tree reads like the metadata one.
-SNAPSHOTS_DIR_NAME = "snapshots"
+# Published subdirectories.
 PLANS_DIR_NAME = "plans"
 
 # Reference that resolves to whichever catalog the pointer names.
@@ -46,7 +44,7 @@ SEED_FILERS_NAME = "seed_filers.csv"
 POLICIES_DIR_NAME = "policies"
 
 REQUIRED_PLAN_FILES = (
-    PLAN_FILE_NAME,
+    foundation_paths.PLAN_FILE_NAME,
     SELECTION_REPORT_NAME,
     LOCATOR_GROUPS_NAME,
 )
@@ -100,7 +98,7 @@ class FilingCatalogPaths:
     @property
     def snapshots_root(self) -> Path:
         """Root of published catalog snapshot directories, and of the pointer."""
-        return self.catalog_root / SNAPSHOTS_DIR_NAME
+        return self.catalog_root / foundation_paths.SNAPSHOTS_DIR
 
     @property
     def plans_root(self) -> Path:
@@ -174,15 +172,12 @@ __all__ = [
     "LOCATOR_GROUPS_NAME",
     "PIPELINE_DIR",
     "PLANS_DIR_NAME",
-    "PLAN_FILE_NAME",
     "PLAN_TARGETS_DIR_NAME",
-    "POINTER_FILE_NAME",
     "POLICIES_DIR_NAME",
     "REQUIRED_PLAN_FILES",
     "RESERVE_TARGETS_NAME",
     "SEED_FILERS_NAME",
     "SELECTION_REPORT_NAME",
-    "SNAPSHOTS_DIR_NAME",
     "SNAPSHOT_FILE_NAME",
     "SNAPSHOT_MANIFEST_NAME",
     "TARGETS_DIR_NAME",

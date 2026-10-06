@@ -17,7 +17,7 @@ from typing import Any
 
 from edgar_sec.domain.document.models import DocumentLocator, FilingOccurrence
 from edgar_sec.foundation.hashing import file_sha256, sha256_text
-from edgar_sec.foundation.runtime.paths import ProjectPaths
+from edgar_sec.foundation.runtime.fixtures import validate_fixture_component
 from edgar_sec.foundation.runtime.resources import RuntimeResourceProfile
 from edgar_sec.foundation.serialization import canonical_json
 from edgar_sec.infra.storage.atomic import atomic_write_json
@@ -32,10 +32,7 @@ from edgar_sec.pipelines.document_storage.catalog_execution import (
 )
 from edgar_sec.pipelines.document_storage.catalog_plan import CatalogPlan
 from edgar_sec.pipelines.document_storage.fetching import make_archive_fetcher
-from edgar_sec.pipelines.document_storage.fixture_operator import (
-    FixtureOperatorError,
-    validate_fixture_id,
-)
+from edgar_sec.pipelines.document_storage.fixture_operator import FixtureOperatorError
 from edgar_sec.pipelines.document_storage.merger import (
     MergeResult,
     publish_snapshot,
@@ -54,7 +51,10 @@ from edgar_sec.pipelines.document_storage.checkpoint import (
     validate_chunk_snapshot,
     _stamp_fingerprint,
 )
-from edgar_sec.pipelines.document_storage.paths import catalog_delegation_path
+from edgar_sec.pipelines.document_storage.paths import (
+    DocumentStoragePaths,
+    catalog_delegation_path,
+)
 from edgar_sec.pipelines.document_storage.run_manifest import (
     RunManifestError,
     catalog_run_identity,
@@ -173,7 +173,7 @@ def new_run_id(prefix: str = "run") -> str:
 
 def make_fetcher(
     mode: FetchMode,
-    paths: ProjectPaths,
+    paths: DocumentStoragePaths,
     *,
     fixture_id: str | Sequence[str] | None = None,
     http_client: Any | None = None,
@@ -199,8 +199,8 @@ def make_fetcher(
         db_paths = []
         for raw_id in fixture_ids:
             try:
-                safe_id = validate_fixture_id(raw_id)
-            except FixtureOperatorError as exc:
+                safe_id = validate_fixture_component(raw_id, "fixture_id")
+            except ValueError as exc:
                 raise OperatorError(str(exc)) from exc
             db_path = paths.fixture_db_path(safe_id)
             try:
@@ -220,7 +220,7 @@ def make_fetcher(
 
 def run_document_storage(
     *,
-    paths: ProjectPaths,
+    paths: DocumentStoragePaths,
     run_id: str,
     chunk_ids: Sequence[str] = (),
     locators_by_chunk: Mapping[str, Sequence[DocumentLocator]] | None = None,
@@ -412,7 +412,7 @@ def run_document_storage(
     )
 
 
-def _refuse_existing_run(paths: ProjectPaths, run_id: str) -> None:
+def _refuse_existing_run(paths: DocumentStoragePaths, run_id: str) -> None:
     """Refuse a work-order run whose run directory already holds state.
 
     Nothing is deleted; reusing an interrupted run belongs to a resumability contract

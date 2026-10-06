@@ -8,7 +8,7 @@ lives in ``broker.py``.
 from __future__ import annotations
 
 import logging
-from collections.abc import Iterator, Sequence
+from collections.abc import Iterable, Iterator, Sequence
 from concurrent.futures import FIRST_COMPLETED, Future, ProcessPoolExecutor, wait
 from dataclasses import dataclass
 from multiprocessing import get_context
@@ -39,11 +39,12 @@ from .checkpoint import (
     split_retryable,
     validate_committed_chunk,
 )
-from .paths import InventoryRunPaths
+from .paths import InventoryPaths, InventoryRunPaths
 from .run_manifest import (
+    ChunkIdentity,
     InventoryRunManifest,
     WORK_ORDER_VERSION,
-    partition_into_chunks,
+    iter_work_order_chunks,
     read_run_manifest,
     validate_run_manifest,
     write_run_manifest,
@@ -59,6 +60,7 @@ log = logging.getLogger("document_inventory.coordinator")
 
 #: Socket prefix beside the shared broker socket; run id keeps runs isolated.
 SOCKET_PREFIX = "s4-"
+MAX_SUMMARY_CHUNKS = 128
 
 __all__ = [
     "ChunkOutcome",
@@ -165,13 +167,44 @@ class ChunkOutcome:
 
 @dataclass(frozen=True, slots=True)
 class RunSummary:
-    """Summary of one coordinator run: every chunk outcome in ordinal order."""
+    """Run counters and a bounded prefix of per-chunk outcomes."""
 
     run_id: str
     chunks: tuple[ChunkOutcome, ...]
     resumed_count: int
     committed_count: int
     refusal_count: int
+    chunk_count: int
+    chunks_truncated: bool
+
+
+class _RunSummaryCollector:
+    def __init__(self, run_id: str) -> None:
+        self.run_id = run_id
+        self.chunks: list[ChunkOutcome] = []
+        self.resumed_count = 0
+        self.committed_count = 0
+        self.refusal_count = 0
+        self.chunk_count = 0
+
+    def record(self, outcome: ChunkOutcome) -> None:
+        self.chunk_count += 1
+        self.resumed_count += int(outcome.resumed)
+        self.committed_count += int(not outcome.resumed)
+        self.refusal_count += outcome.refusal_count
+        if len(self.chunks) < MAX_SUMMARY_CHUNKS:
+            self.chunks.append(outcome)
+
+    def finish(self) -> RunSummary:
+        return RunSummary(
+            run_id=self.run_id,
+            chunks=tuple(self.chunks),
+            resumed_count=self.resumed_count,
+            committed_count=self.committed_count,
+            refusal_count=self.refusal_count,
+            chunk_count=self.chunk_count,
+            chunks_truncated=self.chunk_count > len(self.chunks),
+        )
 
 
 def _membership_of(members: Sequence[IndexWorkItem]) -> tuple[str, ...]:
@@ -320,7 +353,7 @@ def _decide_chunk(
 
 
 def run_missing_accessions(
-    work_items: Sequence[IndexWorkItem],
+    work_order_path: Path | str,
     run_identity: dict[str, Any],
     paths: InventoryRunPaths,
     *,
@@ -334,13 +367,16 @@ def run_missing_accessions(
     The manifest is checked before any broker call; valid chunks are reused
     without network access. ``retry_failures`` rewrites only retryable chunks.
     """
+    work_order_path = Path(work_order_path)
+    if work_order_path.resolve() != paths.work_order_path().resolve():
+        raise ValueError("work-order path must match the run's centralized path")
     existing = read_run_manifest(paths)
     if existing is None:
         manifest = write_run_manifest(
-            paths, work_items=work_items, **_manifest_kwargs(run_identity)
+            paths, work_order_path=work_order_path, **_manifest_kwargs(run_identity)
         )
     else:
-        manifest = _validate_existing(existing, work_items, run_identity)
+        manifest = _validate_existing(existing, work_order_path, run_identity)
 
     resolved = profile if profile is not None else derive_resources()
     effective_workers = max(
@@ -348,76 +384,46 @@ def run_missing_accessions(
     )
     force_refresh = manifest.fetch_mode == "force_refresh"
 
-    chunks = partition_into_chunks(
-        work_items,
+    if manifest.work_order_rows == 0:
+        return RunSummary(manifest.run_id, (), 0, 0, 0, 0, False)
+    chunks = iter_work_order_chunks(
+        work_order_path,
         chunk_size=manifest.chunk_size,
         work_order_version=manifest.work_order_version,
     )
-    identity_by_id = {ci.chunk_id: ci for ci in manifest.chunk_identities}
-
-    modes: list[tuple[str, str, tuple[IndexWorkItem, ...], str | None]] = []
-    reused: dict[str, ChunkOutcome] = {}
-    for chunk in chunks:
-        chunk_id, *members = chunk
-        member_tuple = tuple(members)
-        mode, prior_id, ready = _decide_chunk(
-            paths,
-            manifest,
-            chunk_id,
-            identity_by_id[chunk_id],
-            retry_failures,
-        )
-        if ready is not None:
-            reused[chunk_id] = ready
-        modes.append((mode, chunk_id, member_tuple, prior_id))
-
-    outcomes: list[ChunkOutcome] = []
-    pending = [entry for entry in modes if entry[0] != "skip"]
-    if pending:
-        outcomes = _run_pending(
-            modes,
-            paths,
-            manifest,
-            broker_args={
-                "http_client": http_client,
-                "workers": effective_workers,
-                "force_refresh": force_refresh,
-            },
-            reused=reused,
-        )
-    else:
-        outcomes = [reused[chunk_id] for _, chunk_id, _, _ in modes]
-
-    resumed = sum(1 for chunk in outcomes if chunk.resumed)
-    return RunSummary(
+    return _run_pending(
+        chunks,
+        paths,
+        manifest,
         run_id=manifest.run_id,
-        chunks=tuple(outcomes),
-        resumed_count=resumed,
-        committed_count=len(outcomes) - resumed,
-        refusal_count=sum(chunk.refusal_count for chunk in outcomes),
+        http_client=http_client,
+        workers=effective_workers,
+        force_refresh=force_refresh,
+        retry_failures=retry_failures,
     )
 
 
 def _run_pending(
-    modes: Sequence[tuple[str, str, tuple[IndexWorkItem, ...], str | None]],
+    chunks: Iterable[tuple[ChunkIdentity, tuple[IndexWorkItem, ...]]],
     paths: InventoryRunPaths,
     manifest: InventoryRunManifest,
     *,
-    broker_args: dict[str, Any],
-    reused: dict[str, ChunkOutcome],
-) -> list[ChunkOutcome]:
-    """Process every non-skipped chunk behind one broker and one pool."""
-    workers = int(broker_args["workers"])
-    force_refresh = bool(broker_args["force_refresh"])
-    socket_path = (
-        paths.artifacts_root / "runtime" / f"{SOCKET_PREFIX}{paths.run_id}.sock"
+    run_id: str,
+    http_client: Any | None,
+    workers: int,
+    force_refresh: bool,
+    retry_failures: bool,
+) -> RunSummary:
+    """Process a Parquet work order one bounded chunk at a time."""
+    socket_path = InventoryPaths(paths.artifacts_root).broker_socket_path(
+        f"{SOCKET_PREFIX}{paths.run_id}"
     )
     socket_path.parent.mkdir(parents=True, exist_ok=True)
-    outcomes: list[ChunkOutcome] = []
+    summary = _RunSummaryCollector(run_id)
 
     with managed_broker(
         socket_path,
-        http_client=broker_args["http_client"],
+        http_client=http_client,
         max_connections=workers,
     ):
         broker = IndexPageBrokerClient(socket_path)
@@ -431,9 +437,17 @@ def _run_pending(
             else None
         )
         try:
-            for mode, chunk_id, members, prior_id in modes:
-                if mode == "skip":
-                    outcomes.append(reused[chunk_id])
+            for identity, members in chunks:
+                chunk_id = identity.chunk_id
+                mode, prior_id, ready = _decide_chunk(
+                    paths,
+                    manifest,
+                    chunk_id,
+                    identity,
+                    retry_failures,
+                )
+                if ready is not None:
+                    summary.record(ready)
                     continue
                 if mode == "retry" and prior_id is not None:
                     outcome = _process_chunk_retry(
@@ -460,12 +474,12 @@ def _run_pending(
                         new_attempt_id(),
                         pool_cm,
                     )
-                outcomes.append(outcome)
+                summary.record(outcome)
                 reclaim()
         finally:
             if pool_cm is not None:
                 pool_cm.shutdown(wait=True)
-    return outcomes
+    return summary.finish()
 
 
 def _manifest_kwargs(run_identity: dict[str, Any]) -> dict[str, Any]:
@@ -489,7 +503,7 @@ def _manifest_kwargs(run_identity: dict[str, Any]) -> dict[str, Any]:
 
 def _validate_existing(
     existing: InventoryRunManifest,
-    work_items: Sequence[IndexWorkItem],
+    work_order_path: Path,
     run_identity: dict[str, Any],
 ) -> InventoryRunManifest:
     kwargs = _manifest_kwargs(run_identity)
@@ -503,6 +517,7 @@ def _validate_existing(
         chunk_size=kwargs["chunk_size"],
         refresh_mode=kwargs["refresh_mode"],
         fetch_mode=kwargs["fetch_mode"],
-        work_items=work_items,
+        fixture_id=kwargs["fixture_id"],
+        work_order_path=work_order_path,
         work_order_version=kwargs["work_order_version"],
     )

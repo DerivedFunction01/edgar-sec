@@ -9,6 +9,7 @@ from typing import Any
 import pyarrow.parquet as pq
 import pytest
 
+from edgar_sec.foundation.runtime.paths import PLAN_FILE_NAME
 from edgar_sec.engine.selection.policy import (
     EraBand,
     SeedFiler,
@@ -27,7 +28,6 @@ from edgar_sec.pipelines.filing_catalog.expansion import (
 from edgar_sec.pipelines.filing_catalog.paths import (
     EXPANSION_METADATA_NAME,
     LOCATOR_GROUPS_NAME,
-    PLAN_FILE_NAME,
     SEED_FILERS_NAME,
     resolve_filing_catalog_paths,
 )

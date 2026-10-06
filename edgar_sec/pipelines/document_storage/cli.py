@@ -13,7 +13,8 @@ from collections.abc import Sequence
 from pathlib import Path
 from typing import Any
 
-from edgar_sec.foundation.runtime.paths import ProjectPaths, resolve_paths
+from edgar_sec.foundation.runtime.paths import resolve_paths
+from edgar_sec.pipelines.document_storage.paths import DocumentStoragePaths
 from edgar_sec.pipelines.document_storage.merger import (
     current_snapshot_artifact,
     current_snapshot_dir,
@@ -180,7 +181,7 @@ def _plan_to_inputs(
     return chunk_ids, locators_by_chunk, occurrences_by_chunk
 
 
-def _cmd_run(args: argparse.Namespace, paths: ProjectPaths) -> int:
+def _cmd_run(args: argparse.Namespace, paths: DocumentStoragePaths) -> int:
     from edgar_sec.pipelines.document_storage.operator import (
         new_run_id,
         run_document_storage,
@@ -257,7 +258,7 @@ def _print_run_report(report: Any, as_json: bool) -> int:
     return 0 if report.ok else 1
 
 
-def _cmd_fill(args: argparse.Namespace, paths: ProjectPaths) -> int:
+def _cmd_fill(args: argparse.Namespace, paths: DocumentStoragePaths) -> int:
     from edgar_sec.pipelines.document_storage.fixture_operator import fill_fixture
 
     if getattr(args, "catalog_plan", None):
@@ -301,7 +302,7 @@ def _print_fill_report(report: Any, as_json: bool) -> int:
     return 0 if report.failed == 0 else 1
 
 
-def _cmd_fixtures(args: argparse.Namespace, paths: ProjectPaths) -> int:
+def _cmd_fixtures(args: argparse.Namespace, paths: DocumentStoragePaths) -> int:
     from edgar_sec.pipelines.document_storage.fixture_operator import list_fixtures
 
     fixtures = list_fixtures(paths)
@@ -326,7 +327,7 @@ def _cmd_fixtures(args: argparse.Namespace, paths: ProjectPaths) -> int:
     return 0
 
 
-def _cmd_status(args: argparse.Namespace, paths: ProjectPaths) -> int:
+def _cmd_status(args: argparse.Namespace, paths: DocumentStoragePaths) -> int:
     pointer = read_pointer(paths.documents_root)
     directory = current_snapshot_dir(paths.documents_root)
     artifact = current_snapshot_artifact(paths.documents_root)
@@ -365,7 +366,7 @@ def _ids_file(path: Path | None) -> list[str]:
     ]
 
 
-def _cmd_review_artifacts(args: argparse.Namespace, paths: ProjectPaths) -> int:
+def _cmd_review_artifacts(args: argparse.Namespace, paths: DocumentStoragePaths) -> int:
     from edgar_sec.pipelines.document_storage.review_artifacts import (
         ReviewArtifactError,
         new_review_run_id,
@@ -411,7 +412,7 @@ def _cmd_review_artifacts(args: argparse.Namespace, paths: ProjectPaths) -> int:
     return 0 if not result.failures else 1
 
 
-def _cmd_review(args: argparse.Namespace, paths: ProjectPaths) -> int:
+def _cmd_review(args: argparse.Namespace, paths: DocumentStoragePaths) -> int:
     from edgar_sec.pipelines.document_storage.review import (
         ReviewDiffError,
         compare_review_runs,
@@ -448,7 +449,7 @@ _COMMANDS = {
 }
 
 
-def _interactive(paths: ProjectPaths) -> int:
+def _interactive(paths: DocumentStoragePaths) -> int:
     """Present the narrow fixture lifecycle menu used by the root launcher."""
     from edgar_sec.pipelines.document_storage.fixture_operator import list_fixtures
 
@@ -552,10 +553,10 @@ def _interactive(paths: ProjectPaths) -> int:
 def main(argv: Sequence[str] | None = None) -> int:
     """Entry point for ``python run.py documents ...``."""
     if argv is None and len(sys.argv) == 1:
-        return _interactive(resolve_paths())
+        return _interactive(DocumentStoragePaths.from_project(resolve_paths()))
     parser = _build_parser()
     args = parser.parse_args(list(argv) if argv is not None else None)
-    paths = resolve_paths()
+    paths = DocumentStoragePaths.from_project(resolve_paths())
     handler = _COMMANDS[args.command]
     try:
         return handler(args, paths)

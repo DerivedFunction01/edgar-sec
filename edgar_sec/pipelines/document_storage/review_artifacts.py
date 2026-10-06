@@ -26,14 +26,17 @@ from edgar_sec.domain.document.route import (
 from edgar_sec.engine.document.html.tree import parse_html
 from edgar_sec.engine.forms.normalize import NormalizationResult, normalize_document
 from edgar_sec.foundation.hashing import sha256_bytes, sha256_text
-from edgar_sec.foundation.runtime.paths import ProjectPaths
 from edgar_sec.foundation.runtime.resources import derive_resources
 from edgar_sec.infra.storage.atomic import atomic_write_bytes, atomic_write_text
 from edgar_sec.pipelines.document_storage.fixture_store import (
     FixtureStore,
     FixtureStoreError,
 )
-from edgar_sec.pipelines.document_storage.paths import CASES_DIR, REVIEW_MANIFEST_NAME
+from edgar_sec.pipelines.document_storage.paths import (
+    CASES_DIR,
+    DocumentStoragePaths,
+    REVIEW_MANIFEST_NAME,
+)
 from edgar_sec.pipelines.document_storage.processor import PROCESSOR_FINGERPRINT
 
 #: Per-collection cap when serializing page-marker analysis. The analysis object
@@ -142,7 +145,7 @@ def _token_matches(document: RawDocumentBlob, token: str) -> bool:
     return document.document_path.casefold().endswith(token.casefold())
 
 
-def _manifest_forms(paths: ProjectPaths, fixture_id: str) -> tuple[Any, ...]:
+def _manifest_forms(paths: DocumentStoragePaths, fixture_id: str) -> tuple[Any, ...]:
     manifest_path = paths.fixture_manifest_path(fixture_id)
     if not manifest_path.is_file():
         return ()
@@ -152,12 +155,15 @@ def _manifest_forms(paths: ProjectPaths, fixture_id: str) -> tuple[Any, ...]:
         return ()
     if not isinstance(manifest, dict):
         return ()
-    forms = manifest.get("forms")
+    details = manifest.get("details")
+    if not isinstance(details, dict):
+        return ()
+    forms = details.get("forms")
     return tuple(forms) if isinstance(forms, list) else ()
 
 
 def select_review_cases(
-    paths: ProjectPaths,
+    paths: DocumentStoragePaths,
     fixture_id: str,
     *,
     ids: Sequence[str] = (),
@@ -398,7 +404,7 @@ def _process_case_task(
 
 
 def render_review_run(
-    paths: ProjectPaths,
+    paths: DocumentStoragePaths,
     fixture_id: str,
     output_dir: Path,
     *,

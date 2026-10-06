@@ -21,19 +21,53 @@ from edgar_sec.pipelines.document_inventory.checkpoint import (
     validate_committed_chunk,
 )
 from edgar_sec.pipelines.document_inventory.worker import IndexWorkerFailure
-from edgar_sec.pipelines.document_inventory.paths import inventory_run_paths
+from edgar_sec.pipelines.document_inventory.paths import (
+    InventoryPaths,
+    inventory_run_paths,
+)
 from edgar_sec.pipelines.document_inventory.run_manifest import (
     ManifestMismatchError,
+    iter_work_order_chunks,
     partition_into_chunks,
     read_run_manifest,
+    write_work_order,
 )
 from edgar_sec.pipelines.document_inventory.coordinator import (
+    ChunkOutcome,
+    _RunSummaryCollector,
     _bounded_results,
-    run_missing_accessions,
+    run_missing_accessions as _run_with_work_order,
 )
 from tests.support import fixture_path
 
 INDEX_HTML = fixture_path("document_inventory_index_page.html").read_bytes()
+
+
+def test_run_summary_caps_retained_chunk_details() -> None:
+    collector = _RunSummaryCollector("run-1")
+    for number in range(130):
+        collector.record(
+            ChunkOutcome(
+                f"chunk-{number}",
+                f"attempt-{number}",
+                resumed=number % 2 == 0,
+                outcome_count=1,
+                entry_count=1,
+                refusal_count=1,
+            )
+        )
+
+    summary = collector.finish()
+
+    assert len(summary.chunks) == coordinator_module.MAX_SUMMARY_CHUNKS
+    assert summary.chunk_count == 130
+    assert summary.chunks_truncated
+    assert (summary.resumed_count, summary.committed_count, summary.refusal_count) == (
+        65,
+        65,
+        130,
+    )
+
 
 IDENTITY = {
     "parent_snapshot_id": "snap-1",
@@ -60,6 +94,11 @@ def _items(count: int) -> list[IndexWorkItem]:
             )
         )
     return result
+
+
+def run_missing_accessions(items, identity, paths, **kwargs):  # noqa: ANN001
+    write_work_order(paths.work_order_path(), items, batch_rows=2)
+    return _run_with_work_order(paths.work_order_path(), identity, paths, **kwargs)
 
 
 class _FakeHttp:
@@ -259,14 +298,18 @@ def test_run_commits_every_chunk_with_one_broker(tmp_path: Path, monkeypatch) ->
             chunk.chunk_id,
             run=read_run_manifest(paths),
             chunk=next(
-                ci
-                for ci in read_run_manifest(paths).chunk_identities
-                if ci.chunk_id == chunk.chunk_id
+                identity
+                for identity, _members in iter_work_order_chunks(
+                    paths.work_order_path(),
+                    chunk_size=read_run_manifest(paths).chunk_size,
+                    work_order_version=read_run_manifest(paths).work_order_version,
+                )
+                if identity.chunk_id == chunk.chunk_id
             ),
         )
         assert validation.valid
     assert not list(paths.run_root.rglob("*.tmp"))
-    runtime_dir = paths.artifacts_root / "runtime"
+    runtime_dir = InventoryPaths(paths.artifacts_root).runtime_root
     assert not list(runtime_dir.glob("*.sock"))
 
 

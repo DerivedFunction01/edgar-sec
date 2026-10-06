@@ -3,10 +3,8 @@
 ## Owner and status
 
 - Owning stage in [implementation.md](../implementation.md): **S2**.
-- Status: capture implementation exists. Before S7b uses it, refine replay into a
-  read-only reader that returns exact uncompressed bytes; the current result exposes
-  the stored zstd frame. Whether a whole-database digest is practical for appendable
-  large fixtures remains open under S7a.
+- Status: capture implementation exists and read-only replay returns exact uncompressed
+  bytes. A whole-database digest remains optional for appendable fixtures.
 - Depends on: the cohort adapter (S1) for accession URLs.
 - Enables: S0 empirical audit, S7a fixture CLI, and S7b parser replay/review.
 
@@ -18,7 +16,7 @@ transport; replay from the store without HTTP.
 
 ## Schema
 
-Three tables, versioned and pinned in an atomic fixture manifest:
+Three tables with a SQLite schema version recorded in an atomic fixture manifest:
 
 ```sql
 CREATE TABLE index_responses (
@@ -60,65 +58,96 @@ response row, while an identical URL+digest reuses the existing row.
 
 ## Fixture manifest
 
-An atomic manifest pinned at commit records the SQLite schema version, fixture ID,
-contributing cohort sources, page and accession counts, and the database-relative path.
-`foreign_keys` is enabled so SQLite enforces referential integrity.
+Fixtures live at `{artifacts_root}/document_inventory/fixtures/{fixture_id}/` and
+use the shared `foundation.runtime.fixtures` location resolver and manifest envelope.
+The envelope records `fixture_kind`, `manifest_version`, fixture identity, the relative
+SQLite storage path, and timestamps. Inventory-specific `details` record the store
+schema version, capture state, contributing cohort sources, and page/accession/member
+counts. `foreign_keys` is enabled so SQLite enforces referential integrity.
 `page_count` is the number of unique `(request_url, response_sha256)` response rows;
 `accession_count` is the number of distinct accessions in `index_cases`.
 
 ## Typed models and operations
 
 ```python
+from edgar_sec.foundation.runtime.fixtures import FixturePaths
+
 @dataclass(frozen=True, slots=True)
 class IndexResponseKey:
     request_url: str
     response_sha256: str
 
 @dataclass(frozen=True, slots=True)
+class CapturedIndexCase:
+    accession: AccessionNumber
+    key: IndexResponseKey
+
+@dataclass(frozen=True, slots=True)
 class CapturedIndexPage:
     accession: AccessionNumber
     key: IndexResponseKey
     body: bytes
-    captured_at: datetime
+    captured_at: str
 
 class IndexFixtureReader:
-    def list_cases(self, accession: AccessionNumber) -> tuple[IndexResponseKey, ...]: ...
+    def list_cases(self, accession: AccessionNumber | str) -> tuple[CapturedIndexCase, ...]: ...
+    def iter_cases(self, accession: AccessionNumber | str | None = None, *, batch_size: int = 128) -> Iterator[CapturedIndexCase]: ...
     def replay(self, accession: AccessionNumber, key: IndexResponseKey) -> CapturedIndexPage: ...
     def __enter__(self) -> Self: ...
     def __exit__(self, exc_type, exc_value, traceback) -> None: ...
 
-open_index_fixture(paths: IndexFixturePaths) -> IndexFixtureReader
+open_index_fixture(paths: FixturePaths) -> IndexFixtureReader
 
 @dataclass(frozen=True, slots=True)
-class IndexCaptureFailure:
-    accession: AccessionNumber
-    request_url: str
-    error_code: str
+class FixtureContribution:
+    plan_id: str
+    catalog_id: str
+    scope: str
+    plan_schema_version: str
+    request_fingerprint: str
+    accession_count: int
 
 @dataclass(frozen=True, slots=True)
-class IndexCaptureResult:
-    fixture_id: str
-    responses_added: int
-    responses_reused: int
-    failures: tuple[IndexCaptureFailure, ...]
-
-@dataclass(frozen=True, slots=True)
-class IndexFixturePaths:
-    database_path: Path
-    manifest_path: Path
+class FixtureManifestContribution:
+    plan_id: str
+    catalog_id: str
+    scope: str
+    plan_schema_version: str
+    request_fingerprint: str
+    accession_count: int
+    captured_accessions: int
+    failed_accessions: int
+    state: str
+    started_at: str
+    finished_at: str | None
 
 @dataclass(frozen=True, slots=True)
 class IndexFixtureManifest:
     fixture_id: str
     schema_version: int
-    database_path: str
-    database_sha256: str | None
-    cohort_source_ids: tuple[str, ...]
+    capture_state: str
+    contributions: tuple[FixtureManifestContribution, ...]
     page_count: int
     accession_count: int
+    membership_count: int
+
+@dataclass(frozen=True, slots=True)
+class IndexCaptureFailure:
+    accession: AccessionNumber
+    failure_code: str
+    raw_broker_error: str | None
+
+@dataclass(frozen=True, slots=True)
+class IndexCaptureResult:
+    responses_added: int
+    responses_reused: int
+    responses_processed: int
+    cases_created: int
+    members_created: int
+    failures: tuple[IndexCaptureFailure, ...]
 
 create_index_fixture(
-    paths: IndexFixturePaths,
+    paths: FixturePaths,
     *,
     fixture_id: str,
 ) -> IndexFixtureManifest
@@ -127,11 +156,10 @@ capture_index_pages(
     cohort: InventoryCohort,
     *,
     fixture_id: str,
-    paths: IndexFixturePaths,
-    broker: SecBrokerClient,
+    paths: FixturePaths,
+    broker: SecBroker,
+    contribution: FixtureContribution,
 ) -> IndexCaptureResult
-
-publish_index_fixture(paths: IndexFixturePaths) -> IndexFixtureManifest
 
 ```
 

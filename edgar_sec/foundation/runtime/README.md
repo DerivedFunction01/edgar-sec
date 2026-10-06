@@ -12,7 +12,7 @@ lifecycle.
 | Concern | Modules |
 | :--- | :--- |
 | Configuration sources. `env.py` is the only module permitted to touch `os.environ`. | `env.py`, `settings/` |
-| Where things live. The single place the `.artifacts` literal and the artifact-layout vocabulary are written down. | `paths.py`, `settings/paths.py` |
+| Where project roots and shared artifact/fixture layout are resolved. | `paths.py`, `fixtures.py`, `settings/paths.py` |
 | How much may run at once, from cgroup and `/proc` facts rather than raw CPU count. | `resources.py` |
 | How a run presents itself and splits work. | `progress.py`, `interactive.py`, `partitions.py` |
 
@@ -24,10 +24,11 @@ know what a CIK or an accession number is.
 | Module | Responsibility |
 | :--- | :--- |
 | `env.py` | `.env` parsing and typed environment reads; the sole `os.environ` owner. |
+| `fixtures.py` | Dataset-scoped fixture locations and pure common-manifest-envelope validation. |
 | `interactive.py` | Terminal prompts, choice menus, and the operator entrypoint policy. |
 | `memory.py` | glibc heap reclamation. |
 | `partitions.py` | Partition-spec parsing and balanced work distribution. |
-| `paths.py` | Project directory layout, artifact vocabulary, root validation. |
+| `paths.py` | Project roots, runtime root, transient and current-pointer primitives. |
 | `progress.py` | tqdm adapters and the optional-callback contract. |
 | `resources.py` | cgroup-aware resource derivation and `RuntimeResourceProfile`. |
 | `settings/` | The typed settings registry. See [settings/README.md](settings/README.md). |
@@ -79,9 +80,14 @@ so the cycle is closed only at call time.
   (env `CACHE_ROOT`, default `<artifacts>/caches`), read through
   `resolve_runtime_settings().cache_root`. Both roots have exactly one
   authority.
-- `current_pointer_path()`, `plan_dir()`, and `transient_dir()` are the shared
-  artifact-layout helpers, so every dataset resolves "current" and "staging"
-  identically.
+- `current_pointer_path()`, `runtime_root()`, and `transient_dir()` are shared
+  artifact-layout primitives. Dataset run/checkpoint trees remain pipeline-owned.
+- `fixture_paths()` resolves a fixture below
+  `<artifacts_root>/<dataset>/fixtures/<fixture_id>` and validates every path
+  component. `FixtureManifestEnvelope` validates the common identity, version,
+  storage reference, timestamps, and details object. This module does no file or
+  JSON IO; pipelines own fixture discovery and payload semantics, and storage
+  infrastructure owns atomic persistence.
 - `emit_progress(progress, event)` is a no-op when `progress` is `None`, so
   every stage-oriented function can accept an optional callback without
   re-checking at each call site.
@@ -126,7 +132,8 @@ the separate verification gate. Neither is in this package.
 - `get_env` / `get_env_int` / `get_env_float` / `get_env_bool` / `load_dotenv` / `DEFAULT_DOTENV_PATH` — environment resolution. `env.py`.
 - `derive_resources`, `RuntimeResourceProfile`, `available_memory_bytes` / `read_cgroup_v2_available_bytes` / `read_cgroup_v1_available_bytes` / `read_proc_mem_available_bytes`, `auto_worker_count` / `usable_memory_bytes` / `default_cpu_cores` / `default_threads` / `default_memory_limit`, and `DEFAULT_MEMORY_FRACTION` (0.6), `MIN_MEMORY_MIB` (256), `DEFAULT_WORKER_MEMORY_MIB` (512), `DEFAULT_WORKER_MEMORY_SAFETY` (0.9). `resources.py`.
 - `resolve_paths` / `ProjectPaths` / `ProjectRootError` / `PACKAGE_ROOT`. `paths.py`.
-- `current_pointer_path` / `plan_dir` / `transient_dir` and the layout constants `TRANSIENT_DIR`, `CURRENT_DIR`, `POINTER_FILE_NAME`, `PLAN_FILE_NAME`, `SNAPSHOTS_DIR`, `PLANS_DIR`, `DOCUMENTS_DATASET`, `RUNS_DIR`, `REVIEW_RUNS_DIR`, `CHECKPOINTS_DIR`, `FIXTURES_DIR`, `PAYLOAD_DB_NAME`, `FIXTURE_MANIFEST_NAME`. `paths.py`.
+- `current_pointer_path` / `runtime_root` / `transient_dir` and the shared layout constants `TRANSIENT_DIR`, `CURRENT_DIR`, `POINTER_FILE_NAME`, `PLAN_FILE_NAME`, `SNAPSHOTS_DIR`, `RUNTIME_DIR`. `paths.py`.
+- `FixturePaths` / `fixture_paths` / `fixtures_root` / `validate_fixture_component` / `FixtureManifestEnvelope` / `FixtureManifestError`, plus fixture layout constants. `fixtures.py`.
 - `reclaim` — `gc.collect()` plus a best-effort `malloc_trim(0)`. `memory.py`.
 - `parse_id_selection` — `'1-3,5'` to `(1, 2, 3, 5)`; raises `ValueError` for a descending range. `partitions.py`.
 - `divide_ids_among_workers` — balanced round-robin buckets. `partitions.py`.
@@ -140,6 +147,7 @@ the separate verification gate. Neither is in this package.
 - `tests/foundation/runtime/test_memory.py`
 - `tests/foundation/runtime/test_partitions.py`
 - `tests/foundation/runtime/test_paths.py`
+- `tests/foundation/runtime/test_fixtures.py`
 - `tests/foundation/runtime/test_resources.py`
 - `tests/foundation/runtime/test_settings.py` (shared with the `settings/` subpackage)
 - `tests/foundation/runtime/test_runtime_settings.py` (mirrored test for `settings/runtime.py`)
@@ -150,6 +158,9 @@ package's resources are exercised through `test_settings.py` and
 
 ## Deliberate gaps
 
+- **No fixture file IO or payload schema.** The shared fixture module validates
+  locations and the common manifest envelope only; pipelines own JSON/SQLite
+  readers, writers, lineage, and domain-specific details.
 - **No config file reader or writer.** `resolve_settings(config=...)` accepts a
   `Mapping` the caller must already have loaded; nothing in `edgar_sec/` reads
   or writes a persisted settings file, and no call site passes a `config`

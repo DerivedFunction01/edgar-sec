@@ -17,11 +17,11 @@ from typing import Any
 
 from edgar_sec.domain.filing_catalog.schemas import SCOPE_POLICY
 from edgar_sec.foundation.serialization import canonical_hash
+from edgar_sec.foundation.runtime.paths import PLAN_FILE_NAME
 from edgar_sec.infra.storage.atomic import atomic_write_json
 from edgar_sec.infra.storage.duckdb import connect, sql_literal
 from edgar_sec.pipelines.filing_catalog.paths import (
     LOCATOR_GROUPS_NAME,
-    PLAN_FILE_NAME,
     PLAN_TARGETS_DIR_NAME,
     REQUIRED_PLAN_FILES,
     SEED_FILERS_NAME,

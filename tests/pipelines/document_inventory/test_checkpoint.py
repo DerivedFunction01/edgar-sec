@@ -38,8 +38,9 @@ from edgar_sec.pipelines.document_inventory.checkpoint import (
 from edgar_sec.pipelines.document_inventory.worker import IndexWorkerFailure
 from edgar_sec.pipelines.document_inventory.paths import inventory_run_paths
 from edgar_sec.pipelines.document_inventory.run_manifest import (
-    partition_into_chunks,
+    iter_work_order_chunks,
     write_run_manifest,
+    write_work_order,
 )
 
 ACCESSION = AccessionNumber.from_any("000012345626000016")
@@ -72,15 +73,23 @@ def _parsed(accession: AccessionNumber = ACCESSION) -> ParsedIndexPage:
 
 def _run_manifest(tmp_path: Path, items: list) -> tuple:
     paths = inventory_run_paths(tmp_path, "run-1")
-    manifest = write_run_manifest(paths, work_items=items, **IDENTITY)
-    chunk = partition_into_chunks(
-        items,
-        chunk_size=manifest.chunk_size,
-        work_order_version=manifest.work_order_version,
-    )[0]
-    chunk_id, *members = chunk
-    identity = next(ci for ci in manifest.chunk_identities if ci.chunk_id == chunk_id)
-    return paths, manifest, chunk_id, tuple(members), identity
+    work_order_path = paths.work_order_path()
+    write_work_order(work_order_path, items)
+    manifest = write_run_manifest(
+        paths,
+        work_order_path=work_order_path,
+        fixture_id=None,
+        **IDENTITY,
+    )
+    identity, members = next(
+        iter_work_order_chunks(
+            work_order_path,
+            chunk_size=manifest.chunk_size,
+            work_order_version=manifest.work_order_version,
+        )
+    )
+    chunk_id = identity.chunk_id
+    return paths, manifest, chunk_id, members, identity
 
 
 def _commit(

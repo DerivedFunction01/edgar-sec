@@ -54,7 +54,7 @@ Real-filing parity is unverified — see "Deliberate gaps".
 | `cli.py` | Subcommand parsing, plan-file ingestion, and the phase-local menu. |
 | `operator.py` | `run_document_storage()`: process chunks, resolve delegations, publish. |
 | `fixture_operator.py` | Fixture discovery, live raw fill, append/resume, manifest publication. |
-| `paths.py` | `DocumentStoragePaths`, the published-vs-transient split, and the artifact-name constants. |
+| `paths.py` | `DocumentStoragePaths`, document-storage artifact names, and binding to the shared fixture resolver. |
 | `candidates.py` | The pre-2005 exhibit-candidate gate: filing-date agreement, statutory filename grammar, dynamic form-token rejection. |
 | `candidate_recovery.py` | Bundle-first recovery: acquire the submission bundle, resolve the requested document against it, and process each selected body, emitting `CandidateOutcome` rows. |
 | `resolution.py` | Pure filing-resolution contract: map a catalog-requested document to an optional form-matched primary. |
@@ -86,6 +86,11 @@ Real-filing parity is unverified — see "Deliberate gaps".
 - **A fetcher reports; it never decides.** It never writes a checkpoint, never
   opens a transaction, and never judges a payload good enough. That boundary is
   what lets one fetcher serve a worker, a fixture builder, and the review tool.
+- **Fixtures have a shared location and manifest envelope.** Raw-payload fixtures
+  live under `{artifacts_root}/document_storage/fixtures/<fixture_id>/` with a
+  `manifest.json` and `fixture.sqlite`. The common envelope is validated by
+  `foundation.runtime.fixtures`; `details` and the SQLite payload schema remain
+  document-storage contracts. The old unnamespaced fixture root is not searched.
 - **One response becomes one accession-scoped acquisition.** Direct content and an
   SGML envelope produce the same shape: an ordered `SubmissionDocument` per document the
   response revealed, and exactly one loaded body named by `selected_index`. Only that
@@ -341,12 +346,14 @@ a way the other two are not.
 ## Artifacts
 
 Top-level roots are listed in the root
-[README](../../../README.md); every path below is resolved by
-[`ProjectPaths`](../../../edgar_sec/foundation/runtime/paths.py), and no module in
-this package hardcodes an artifacts directory.
+[README](../../../README.md); project roots come from
+[`ProjectPaths`](../../../edgar_sec/foundation/runtime/paths.py), while this
+pipeline's artifact paths come from `DocumentStoragePaths` in `paths.py`. The
+shared fixture helper owns only the fixture location and envelope mechanics.
 
 ```text
 {artifacts_root}/document_storage/
+├── fixtures/{fixture_id}/                 shared manifest envelope, raw payload database
 ├── snapshots/{snapshot_id}/              published, immutable
 │   ├── manifest.json                     required, both shapes
 │   ├── documents.parquet                 run snapshots only (assembled artifact)
@@ -380,10 +387,11 @@ A review run's manifest carries the provenance the comparison needs per document
 `processor_fingerprint`, `representation`, `source_sha256`, and
 `current_output_sha256`.
 
-The fixture manifest is `{artifacts_root}/fixtures/<fixture_id>/fixture.manifest.json`,
-written atomically after the SQLite writes have committed, and records fixture and
-schema identity, a relative database path, timestamps, the payload count, and the
-latest fill summary. A writable store creates `fixture_payloads(doc_id, raw_payload)`
+The fixture manifest is `{artifacts_root}/document_storage/fixtures/<fixture_id>/manifest.json`,
+written atomically after the SQLite writes have committed. Its shared envelope records
+fixture identity, manifest version, relative storage path, and timestamps; its `details`
+records payload count, the latest fill summary, and preserved pipeline-specific lineage.
+A writable store creates `fixture_payloads(doc_id, raw_payload)`
 for payloads plus `document_blobs` and `fixture_document_forms`; superseded
 processing tables in an existing database are left untouched and never read.
 

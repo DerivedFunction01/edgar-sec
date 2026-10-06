@@ -10,7 +10,7 @@ from .json_io import SCANNER as JSON_IO_SCANNER
 from .layers import SCANNER as LAYERS_SCANNER
 from .legacy_shims import SCANNER as LEGACY_SHIMS_SCANNER
 from .length import SCANNER as LENGTH_SCANNER
-from .paths import SCANNER as PATHS_SCANNER
+from .artifact_paths import SCANNER as PATHS_SCANNER
 from .prose_length import SCANNER as PROSE_LENGTH_SCANNER
 from .regex_alternations import SCANNER as REGEX_ALTERNATIONS_SCANNER
 from .resources import SCANNER as RESOURCES_SCANNER

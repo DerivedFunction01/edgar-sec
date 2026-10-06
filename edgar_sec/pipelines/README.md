@@ -23,10 +23,9 @@ contracts only.
 - [`filing_catalog/`](filing_catalog/README.md) — Phase 2. Zero network.
   Materializes a catalog snapshot from a Phase 1 snapshot and publishes
   immutable, content-addressed target plans for the next phase to consume.
-- [`document_inventory/`](document_inventory/README.md) — Phase S1–S4. Projects a
-  plan into index-page work items, captures and replays those pages without the
-  network, and runs the broker-backed worker that commits validated, resumable
-  transient Parquet chunks.
+- [`document_inventory/`](document_inventory/README.md) — Phase S1–S5 in progress.
+  Projects selected cohorts, captures and replays index pages, builds parser-review
+  artifacts, and contains path-backed S4 plus bounded S5 anti-join primitives.
 - [`document_storage/`](document_storage/README.md) — Phase 2.5. Fetches primary
   filings, unrolls SGML, normalizes, resolves delegated exhibits, and
   consolidates per-run snapshots into one canonical snapshot across runs.
@@ -97,14 +96,18 @@ lower layers it depends on.
 | `filing_catalog/discovery.py` | Manifest-only catalog/plan/policy enumeration and `current` resolution. |
 | `filing_catalog/paths.py` | `FilingCatalogPaths` and the artifact-name constants. |
 | `document_inventory/__init__.py` | Docstring only. |
-| `document_inventory/cli.py` | Placeholder commands: `cohort`, `index list`, `index replay`, `status`, `query`, `publish`. |
-| `document_inventory/cohort.py` | Catalog observation readers, validation, `project_cohort`, and `index_url_for`. Shared records live in `domain/document_inventory`. |
-| `document_inventory/fixture_store.py` | S2 capture store: `create_index_fixture`, `capture_index_pages`, `publish_index_fixture`, `list_index_cases`, `replay_index_page`. |
+| `document_inventory/cli.py` | Fixture capture/list and offline review commands. |
+| `document_inventory/operator.py` | Discovery-driven fixture and parser-review menu. |
+| `document_inventory/discovery.py` | Manifest-only catalog-plan and fixture selection. |
+| `document_inventory/cohort.py` | Catalog observation readers, validation, selected cohort projection, and index URL resolution. |
+| `document_inventory/fixture_store/` | Mutable fixture capture, response replay, provenance, and manifest-only discovery. |
+| `document_inventory/review_artifacts/` | Offline parser-review case output and inert HTML rendering. |
+| `document_inventory/snapshot/` | Snapshot schemas and metadata, path resolution, DuckDB anti-join and Parquet staging. |
 | `document_inventory/broker.py` | Picklable SEC broker adapter and typed fetch results. |
 | `document_inventory/worker.py` | Module-level per-accession process task and worker failures. |
-| `document_inventory/coordinator.py` | Bounded scheduling, chunk attempts, resume, retry, and `run_missing_accessions`. |
-| `document_inventory/paths.py` | `InventoryRunPaths`: validated run/chunk/attempt paths over the shared transient and pointer helpers. |
-| `document_inventory/run_manifest.py` | Atomic run manifest, resume-identity validation, and deterministic chunk partitioning (`partition_into_chunks`). |
+| `document_inventory/coordinator.py` | Bounded chunk processing, attempts, resume, retry, and `run_missing_accessions`. |
+| `document_inventory/paths.py` | Central inventory artifact, runtime, and transient path layout. |
+| `document_inventory/run_manifest.py` | Atomic run manifest, path-backed work-order validation, and incremental chunk iteration. |
 | `document_inventory/checkpoint.py` | Transient outcome schema/status, staged attempt writers, attempt manifests, chunk pointer commit, resume validation. |
 | `document_storage/__init__.py` | Docstring only. |
 | `document_storage/cli.py` | Command dispatch, plan-file ingestion, and the stdout/stderr split. |

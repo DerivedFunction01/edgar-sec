@@ -4,7 +4,6 @@ from __future__ import annotations
 
 import itertools
 import json
-import re
 from collections.abc import Iterable, Sequence
 from concurrent.futures import FIRST_COMPLETED, Future, ThreadPoolExecutor, wait
 from dataclasses import dataclass
@@ -15,7 +14,10 @@ from typing import Any
 from edgar_sec.domain.document.models import DocumentLocator, RawDocumentBlob
 from edgar_sec.domain.document.route import mime_type_for_suffix
 from edgar_sec.foundation.hashing import sha256_bytes, sha256_text
-from edgar_sec.foundation.runtime.paths import ProjectPaths
+from edgar_sec.foundation.runtime.fixtures import (
+    FixtureManifestEnvelope,
+    validate_fixture_component,
+)
 from edgar_sec.foundation.runtime.resources import derive_resources
 from edgar_sec.foundation.serialization import canonical_json
 from edgar_sec.infra.storage.atomic import atomic_write_json
@@ -24,9 +26,8 @@ from edgar_sec.pipelines.document_storage.fixture_store import (
     FixtureStore,
     FixtureStoreError,
 )
+from edgar_sec.pipelines.document_storage.paths import DocumentStoragePaths
 
-MANIFEST_SCHEMA_VERSION = 2
-_FIXTURE_ID = re.compile(r"[A-Za-z0-9][A-Za-z0-9._-]*\Z")
 _WRITE_BATCH_SIZE = 128
 
 #: Extension to MIME is owned by ``domain.document.route`` so the fixture index and
@@ -69,45 +70,43 @@ class FixtureFillReport:
         }
 
 
-def validate_fixture_id(fixture_id: str) -> str:
-    """Reject fixture IDs that could escape the configured fixture root."""
-    if not _FIXTURE_ID.fullmatch(fixture_id) or fixture_id in {".", ".."}:
-        raise FixtureOperatorError(f"invalid fixture id: {fixture_id!r}")
-    return fixture_id
-
-
-def list_fixtures(paths: ProjectPaths) -> tuple[FixtureInfo, ...]:
+def list_fixtures(paths: DocumentStoragePaths) -> tuple[FixtureInfo, ...]:
     """Discover fixtures newest-first and report database/manifest health."""
     root = paths.fixtures_root
     if not root.is_dir():
         return ()
     found: list[tuple[float, FixtureInfo]] = []
     for directory in root.iterdir():
-        if not directory.is_dir() or not (directory / "fixture.sqlite").is_file():
+        if not directory.is_dir():
             continue
         fixture_id = directory.name
-        db_path = paths.fixture_db_path(fixture_id)
+        try:
+            fixture = paths.fixture_paths(fixture_id)
+        except ValueError:
+            continue
+        db_path = fixture.storage_path
+        if not db_path.is_file():
+            continue
         count: int | None = None
         try:
             with FixtureStore(db_path, read_only=True) as store:
                 count = store.count()
         except FixtureStoreError:
             pass
-        manifest_path = paths.fixture_manifest_path(fixture_id)
         status = "missing"
-        if manifest_path.is_file():
+        if fixture.manifest_path.is_file():
             try:
-                manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
-                if (
-                    not isinstance(manifest, dict)
-                    or manifest.get("fixture_id") != fixture_id
-                ):
-                    status = "invalid"
-                elif manifest.get("manifest_schema_version") == MANIFEST_SCHEMA_VERSION:
-                    status = "valid"
-                else:
-                    status = "legacy"
-            except (OSError, json.JSONDecodeError):
+                raw = json.loads(fixture.manifest_path.read_text(encoding="utf-8"))
+                manifest = FixtureManifestEnvelope.from_mapping(raw)
+                status = (
+                    "valid"
+                    if manifest.fixture_kind == "document_storage.raw_payload"
+                    and manifest.fixture_id == fixture_id
+                    and manifest.storage_format == "sqlite"
+                    and manifest.storage_path == fixture.storage_filename
+                    else "invalid"
+                )
+            except (OSError, json.JSONDecodeError, ValueError):
                 status = "invalid"
         updated = directory.stat().st_mtime
         found.append((updated, FixtureInfo(fixture_id, count, status, db_path)))
@@ -179,7 +178,7 @@ def _backfill_document_metadata(
 
 def fill_fixture(
     *,
-    paths: ProjectPaths,
+    paths: DocumentStoragePaths,
     fixture_id: str,
     locators: Sequence[DocumentLocator] | None = None,
     locator_source: Iterable[DocumentLocator] | None = None,
@@ -194,7 +193,10 @@ def fill_fixture(
     ``locator_source`` is read lazily with at most ``workers`` fetches in flight; a
     caller holding the selection's identity passes ``target_fingerprint``.
     """
-    fixture_id = validate_fixture_id(fixture_id)
+    try:
+        fixture_id = validate_fixture_component(fixture_id, "fixture_id")
+    except ValueError as exc:
+        raise FixtureOperatorError(str(exc)) from exc
     source: Iterable[DocumentLocator] = (
         locator_source if locator_source is not None else (locators or ())
     )
@@ -309,17 +311,22 @@ def fill_fixture(
 
         fingerprint = target_fingerprint or sha256_text(canonical_json(keys))
 
-        prior: dict[str, Any] = {}
+        prior: FixtureManifestEnvelope | None = None
         if manifest_path.is_file():
             try:
                 loaded = json.loads(manifest_path.read_text(encoding="utf-8"))
+                prior = FixtureManifestEnvelope.from_mapping(loaded)
                 if (
-                    isinstance(loaded, dict)
-                    and loaded.get("fixture_id") == fixture_id
-                    and loaded.get("manifest_schema_version") == MANIFEST_SCHEMA_VERSION
+                    prior.fixture_kind != "document_storage.raw_payload"
+                    or prior.fixture_id != fixture_id
+                    or prior.storage_format != "sqlite"
+                    or prior.storage_path
+                    != paths.fixture_paths(fixture_id).storage_filename
                 ):
-                    prior = loaded
-            except (OSError, json.JSONDecodeError) as exc:
+                    raise ValueError(
+                        "fixture envelope identity or storage does not match"
+                    )
+            except (OSError, json.JSONDecodeError, ValueError) as exc:
                 raise FixtureOperatorError(
                     f"invalid fixture manifest: {manifest_path}"
                 ) from exc
@@ -335,18 +342,18 @@ def fill_fixture(
             "failed": len(failures),
             "completed_at": now,
         }
-        manifest = {
-            "manifest_kind": "raw_payload_fixture",
-            "manifest_schema_version": MANIFEST_SCHEMA_VERSION,
-            "fixture_id": fixture_id,
-            "storage_format": "sqlite",
-            "database_path": "fixture.sqlite",
-            "created_at": prior.get("created_at", now),
-            "updated_at": now,
-            "payload_count": payload_count,
-            "last_fill": summary,
-        }
-        atomic_write_json(manifest_path, manifest)
+        details = dict(prior.details) if prior is not None else {}
+        details.update({"payload_count": payload_count, "last_fill": summary})
+        manifest = FixtureManifestEnvelope(
+            fixture_kind="document_storage.raw_payload",
+            fixture_id=fixture_id,
+            storage_format="sqlite",
+            storage_path=paths.fixture_paths(fixture_id).storage_filename,
+            created_at=prior.created_at if prior is not None else now,
+            updated_at=now,
+            details=details,
+        )
+        atomic_write_json(manifest_path, manifest.to_mapping())
     except FixtureStoreError as exc:
         raise FixtureOperatorError(str(exc)) from exc
 
@@ -363,7 +370,7 @@ def fill_fixture(
 
 
 def verify_fixture_lineage(
-    paths: ProjectPaths,
+    paths: DocumentStoragePaths,
     fixture_id: str,
     *,
     target_reference: str,
@@ -374,7 +381,11 @@ def verify_fixture_lineage(
     Only the most recent fill is recorded, so what a fixture may still hold after a
     selection changes belongs to a manifest-model change.
     """
-    manifest_path = paths.fixture_manifest_path(validate_fixture_id(fixture_id))
+    try:
+        fixture_id = validate_fixture_component(fixture_id, "fixture_id")
+    except ValueError as exc:
+        raise FixtureOperatorError(str(exc)) from exc
+    manifest_path = paths.fixture_manifest_path(fixture_id)
     if not manifest_path.is_file():
         raise FixtureOperatorError(f"fixture manifest not found: {manifest_path}")
     try:
@@ -383,7 +394,20 @@ def verify_fixture_lineage(
         raise FixtureOperatorError(
             f"invalid fixture manifest: {manifest_path}"
         ) from exc
-    last_fill = manifest.get("last_fill")
+    try:
+        envelope = FixtureManifestEnvelope.from_mapping(manifest)
+    except ValueError as exc:
+        raise FixtureOperatorError(
+            f"invalid fixture manifest: {manifest_path}"
+        ) from exc
+    if (
+        envelope.fixture_kind != "document_storage.raw_payload"
+        or envelope.fixture_id != fixture_id
+        or envelope.storage_format != "sqlite"
+        or envelope.storage_path != paths.fixture_paths(fixture_id).storage_filename
+    ):
+        raise FixtureOperatorError(f"invalid fixture manifest: {manifest_path}")
+    last_fill = envelope.details.get("last_fill")
     if not isinstance(last_fill, dict):
         raise FixtureOperatorError(f"fixture {fixture_id} records no last fill")
     recorded = (last_fill.get("target_reference"), last_fill.get("target_fingerprint"))
@@ -401,6 +425,5 @@ __all__ = [
     "FixtureOperatorError",
     "fill_fixture",
     "list_fixtures",
-    "validate_fixture_id",
     "verify_fixture_lineage",
 ]

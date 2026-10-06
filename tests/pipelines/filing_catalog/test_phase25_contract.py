@@ -15,9 +15,9 @@ from edgar_sec.domain.filing_catalog.schemas import TARGET_COLUMNS
 from edgar_sec.domain.sec_urls import archives_url
 from edgar_sec.engine.selection.features import FeatureSnapshotBuilder
 from edgar_sec.engine.selection.policy import EraBand, SelectionPolicy
+from edgar_sec.foundation.runtime.paths import PLAN_FILE_NAME
 from edgar_sec.pipelines.filing_catalog.paths import (
     LOCATOR_GROUPS_NAME,
-    PLAN_FILE_NAME,
     REQUIRED_PLAN_FILES,
     RESERVE_TARGETS_NAME,
     form_partition_name,

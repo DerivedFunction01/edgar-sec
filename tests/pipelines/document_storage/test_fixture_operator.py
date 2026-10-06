@@ -8,15 +8,16 @@ from pathlib import Path
 
 from edgar_sec.domain.document.models import DocumentLocator
 from edgar_sec.foundation.hashing import sha256_bytes
+from edgar_sec.foundation.runtime.fixtures import validate_fixture_component
 from edgar_sec.foundation.runtime.paths import ProjectPaths
 from edgar_sec.pipelines.document_storage.fetching import FixtureArchiveFetcher
 from edgar_sec.pipelines.document_storage.fixture_operator import (
     FixtureOperatorError,
     fill_fixture,
     list_fixtures,
-    validate_fixture_id,
 )
 from edgar_sec.pipelines.document_storage.fixture_store import FixtureStore
+from edgar_sec.pipelines.document_storage.paths import DocumentStoragePaths
 
 
 def _locator(name: str) -> DocumentLocator:
@@ -28,8 +29,8 @@ def _locator(name: str) -> DocumentLocator:
     )
 
 
-def _paths(root: Path) -> ProjectPaths:
-    return ProjectPaths(root, root / ".artifacts", root / "uploads")
+def _paths(root: Path) -> DocumentStoragePaths:
+    return DocumentStoragePaths(root / ".artifacts")
 
 
 class FakeClient:
@@ -93,10 +94,12 @@ def test_fill_skips_existing_rows_and_retries_failures(tmp_path: Path) -> None:
     fetcher.close()
 
     manifest = json.loads(paths.fixture_manifest_path("fix-fill").read_text())
-    assert manifest["manifest_schema_version"] == 2
-    assert manifest["payload_count"] == 3
-    assert manifest["last_fill"]["failed"] == 0
-    assert manifest["last_fill"]["target_reference"] is None
+    assert manifest["manifest_version"] == 1
+    assert manifest["fixture_kind"] == "document_storage.raw_payload"
+    assert manifest["storage"] == {"format": "sqlite", "path": "fixture.sqlite"}
+    assert manifest["details"]["payload_count"] == 3
+    assert manifest["details"]["last_fill"]["failed"] == 0
+    assert manifest["details"]["last_fill"]["target_reference"] is None
 
 
 def test_fill_persists_the_complete_submission_bundle(tmp_path: Path) -> None:
@@ -216,7 +219,7 @@ def test_fixture_discovery_reports_manifest_and_payload_count(tmp_path: Path) ->
 def test_fixture_ids_cannot_escape_fixture_root() -> None:
     for fixture_id in ("../outside", ".", "", "/tmp/outside"):
         try:
-            validate_fixture_id(fixture_id)
-        except FixtureOperatorError:
+            validate_fixture_component(fixture_id, "fixture_id")
+        except ValueError:
             continue
         raise AssertionError(f"accepted unsafe fixture id {fixture_id!r}")

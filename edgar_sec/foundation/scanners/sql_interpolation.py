@@ -44,7 +44,6 @@ _SQL_COMPILER_PATHS = frozenset(
         "edgar_sec/engine/selection/inventory.py",
         "edgar_sec/pipelines/filing_catalog/planner.py",
         "edgar_sec/pipelines/document_storage/fixture_store.py",
-        "edgar_sec/pipelines/document_inventory/fixture_store.py",
     }
 )
 

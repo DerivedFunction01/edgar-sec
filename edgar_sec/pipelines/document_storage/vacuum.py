@@ -18,7 +18,6 @@ from typing import Any
 
 from edgar_sec.foundation.hashing import sha256_bytes
 from edgar_sec.foundation.runtime.memory import reclaim
-from edgar_sec.foundation.runtime.paths import DOCUMENTS_DATASET
 from edgar_sec.foundation.runtime.resources import RuntimeResourceProfile
 from edgar_sec.foundation.serialization import canonical_json
 from edgar_sec.infra.storage.duckdb import connect
@@ -45,7 +44,10 @@ from edgar_sec.pipelines.document_storage.parts import (
     write_index_part,
     write_payload_part,
 )
-from edgar_sec.pipelines.document_storage.paths import DOCUMENTS_PHASE
+from edgar_sec.pipelines.document_storage.paths import (
+    DOCUMENTS_DATASET,
+    DOCUMENTS_PHASE,
+)
 from edgar_sec.pipelines.document_storage.queries import (
     effective_quarter_batches,
     effective_quarter_index_rows,

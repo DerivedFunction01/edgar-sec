@@ -19,7 +19,7 @@ line that trips a scanner can only be silenced by changing the scanner.
 | `files.py` | `discover_python_files()`. |
 | `lines.py` | The shared line-oriented rule driver and its helpers. |
 | `__init__.py` | Binds `ALL_SCANNERS`. |
-| `environment.py`, `paths.py`, `secrets.py`, `clean_exit.py`, `length.py`, `layers.py`, `resources.py`, `whole_file_read.py`, `regex_alternations.py`, `legacy_shims.py`, `json_io.py`, `date_patterns.py` | One scanner per module. |
+| `environment.py`, `artifact_paths.py`, `secrets.py`, `clean_exit.py`, `length.py`, `layers.py`, `resources.py`, `whole_file_read.py`, `regex_alternations.py`, `legacy_shims.py`, `json_io.py`, `date_patterns.py` | One scanner per module. |
 
 `ALL_SCANNERS` is a true dynamic registry, which `AGENTS.md` §1.2 permits where a
 barrel re-export is banned. Its order is the order

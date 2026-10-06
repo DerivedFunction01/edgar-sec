@@ -23,10 +23,10 @@ from edgar_sec.engine.selection.predicates import (
     date_selection_sql,
     parsed_date_relation,
 )
+from edgar_sec.foundation.runtime.paths import PLAN_FILE_NAME
 from edgar_sec.infra.storage.duckdb import connect, sql_literal
 from edgar_sec.pipelines.filing_catalog.paths import (
     CURRENT_ALIAS,
-    PLAN_FILE_NAME,
     SNAPSHOT_MANIFEST_NAME,
     FilingCatalogPaths,
     resolve_filing_catalog_paths,

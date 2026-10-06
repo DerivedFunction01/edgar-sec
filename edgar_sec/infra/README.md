@@ -83,11 +83,10 @@ exports no symbols of its own, so there is nothing here to re-document.
   bypass loses it silently.
 - Reuse `DEFAULT_ROW_GROUP_SIZE` / `DEFAULT_COMPRESSION` for Parquet writes; a
   per-call literal reintroduces the inconsistency they exist to remove.
-- Treat a snapshots root passed into `storage/manifests.py` as
-  `ProjectPaths.documents_root`. The layout is
-  `<documents_root>/<snapshot_id>/manifest.json` with the pointer under
-  `<documents_root>/current/`; `manifests.py` does not create or resolve that
-  root for you.
+- Pass the owning pipeline's snapshots root into `storage/manifests.py`. The
+  layout is `<snapshots_root>/<snapshot_id>/manifest.json` with the pointer under
+  `<snapshots_root>/current/`; `manifests.py` does not create or resolve that root
+  for you.
 - Inject network fakes at the transport seam
   (`SecHttpClient(session_factory=...)`); monkeypatching client internals is
   not a supported route.

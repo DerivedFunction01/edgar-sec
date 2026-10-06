@@ -28,6 +28,7 @@ from edgar_sec.pipelines.document_storage.operator import (
     new_run_id,
     run_document_storage,
 )
+from edgar_sec.pipelines.document_storage.paths import DocumentStoragePaths
 
 ACCESSION = "0001234567-11-000001"
 
@@ -61,12 +62,8 @@ SIGNATURES
 
 
 @pytest.fixture
-def paths(tmp_path: Path) -> ProjectPaths:
-    return ProjectPaths(
-        repo_root=tmp_path,
-        artifacts_root=tmp_path / ".artifacts",
-        uploads_root=tmp_path / "uploads",
-    )
+def paths(tmp_path: Path) -> DocumentStoragePaths:
+    return DocumentStoragePaths(tmp_path / ".artifacts")
 
 
 def _locator(

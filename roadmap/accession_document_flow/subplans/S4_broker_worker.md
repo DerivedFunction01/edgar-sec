@@ -60,14 +60,16 @@ new chunk attempt for the failed accession rather than adding a second HTTP retr
 
 ## Worker lifecycle and IPC memory
 
-1. S5 validates the cohort and base snapshot, anti-joins known accessions, then passes
-   S4 only the sorted, unique work items requiring a fetch. S4 validates that complete
-   work list before the first request and starts one `SecBroker`/`managed_broker` for
-   the run.
-2. Partition the work list into deterministic chunks using the resolved runtime chunk
-   size. A chunk ID depends on the work-order version and ordinal, not task completion
-   order. Submit one accession per process-pool task; only a worker-budget-sized
-   in-flight window is retained.
+1. S5 validates the cohort and base snapshot, anti-joins known accessions, then writes
+   the sorted, unique missing work order to transient Parquet. S4 validates its schema,
+   sorted uniqueness, row count, and streaming digest before the first request and
+   starts one `SecBroker`/`managed_broker` for the run. The complete work order is never
+   converted to an in-memory sequence.
+2. Read the work-order Parquet incrementally and form deterministic chunks bounded by
+   the resolved runtime chunk size. A chunk ID depends on the work-order version,
+   ordinal, and that chunk's membership digest, not task completion order. Submit one
+   accession per process-pool task; only a worker-budget-sized in-flight window is
+   retained.
 3. Each worker fetches through `SecBrokerClient`, then parses
    `parse_html_index(IndexPageInput(accession, index_url, html_bytes))`. It returns one
 typed parse outcome or typed fetch/worker failure. Raw HTML stays in the process and
@@ -93,9 +95,9 @@ def process_accession(item, broker) -> IndexParseOutcome | IndexFetchFailure | I
         IndexPageInput(item.accession, item.index_url, page.html_bytes)
     )
 
-def run_missing_accessions(work_items, run_identity, paths) -> Iterator[ChunkRef]:
-    validate_or_create_run_manifest(run_identity, paths)
-    for chunk in deterministic_chunks(work_items):
+def run_missing_accessions(work_order_path, run_identity, paths) -> Iterator[ChunkRef]:
+    validate_or_create_run_manifest(run_identity, work_order_path, paths)
+    for chunk in deterministic_chunks_from_parquet(work_order_path):
         if checkpoint_is_valid(chunk, paths):
             yield current_chunk_ref(chunk, paths)
             continue
@@ -111,14 +113,16 @@ contents described below.
 ## Transient paths and run identity
 
 Add `edgar_sec/pipelines/document_inventory/paths.py`, owned by this pipeline. It wraps
-`ProjectPaths.artifacts_root` and the shared `current_pointer_path()` /
+`ProjectPaths.artifacts_root` and shared `current_pointer_path()` /
 `transient_dir()` helpers; it does not add inventory-specific properties to the
-foundation path object or reuse frozen `DocumentStoragePaths`.
+foundation path object or reuse frozen `DocumentStoragePaths`. S2 fixture paths use
+the shared foundation fixture resolver.
 
 ```text
 {artifacts_root}/document_inventory/snapshots/...
 {artifacts_root}/transient/document_inventory/{run_id}/
   run_manifest.json
+  work_order.parquet
   chunks/chunk-000000/current.json
   chunks/chunk-000000/attempt-<attempt_id>/
     outcomes.parquet
@@ -139,11 +143,14 @@ recovery is explicit, never inferred from an age-based timeout.
 
 S5 supplies a stable run intent ID binding the parent snapshot, canonical cohort/source
 identity, parser and schema versions, refresh mode, and exact missing-accession
-worklist; that intent ID is the `run_id` path component. S4's atomic run manifest additionally pins the work-order version, resolved
-chunk size, outcome/entry schemas, fetch mode and fixture identity when applicable.
-Worker count, cache location, and other machine-local resource choices are excluded:
-they may change across resume without changing logical work. An existing run ID with
-a missing, malformed, or mismatched manifest is refused before any request.
+worklist; that intent ID is the `run_id` path component. S4's atomic run manifest pins
+the work-order Parquet digest and row count, work-order version, resolved chunk size,
+outcome/entry schemas, fetch mode, and fixture identity when applicable. It does not
+duplicate the accession list or store a list of every chunk identity; per-chunk manifests
+pin bounded chunk membership. Worker count, cache location, and other machine-local
+resource choices are excluded: they may change across resume without changing logical
+work. An existing run ID with a missing, malformed, or mismatched manifest is refused
+before any request.
 
 ## Parquet checkpoint and resume contract
 
@@ -175,6 +182,8 @@ a missing, malformed, or mismatched manifest is refused before any request.
 - If S5 staging or publication fails after S4 chunks commit, retry rebuilds S5 staging
   from those validated chunks without refetching pages. S5 does not maintain a second
   checkpoint ledger.
+- The coordinator returns aggregate run counters and retains only a bounded prefix of
+  per-chunk details; result memory does not grow with the number of work-order chunks.
 
 These are new inventory-owned checkpoint semantics. `document_storage` and the
 historical phase inform bounded scheduling, attempt isolation, manifest validation,
@@ -192,7 +201,7 @@ layers and shared-storage helpers named here.
 | `domain/document_inventory/models.py` | `domain.identity`, `foundation.serialization` | Shared S1 cohort and S3 parser records; entry identity |
 | `domain/document_inventory/schemas.py` | PyArrow schema primitives | Versioned durable entry schema |
 | `engine/index_pages/parser.py` | Domain inventory records, `engine.document.html.tree`, `domain.sec_urls`, `foundation.hashing` | Pure index-page transformation and parser fingerprint |
-| `paths.py` | `foundation.runtime.paths.ProjectPaths`, `current_pointer_path`, `transient_dir` | Inventory run/chunk/attempt path methods; never `DocumentStoragePaths` |
+| `paths.py` | `foundation.runtime.paths.ProjectPaths`, shared current-pointer/transient helpers, `foundation.runtime.fixtures` | Inventory run/chunk/attempt paths and binding the index fixture to its shared location; never `DocumentStoragePaths` |
 | `run_manifest.py` | `infra.storage.atomic.atomic_write_json`, `foundation.serialization.canonical_json`, `foundation.hashing.file_sha256` | Run identity, work-order/chunk-size/schema pins, manifest validation |
 | `checkpoint.py` | Domain entry schema, broker/worker failure records, `infra.storage.parquet`, atomic IO, DuckDB validation helpers | Transient outcome schema/status, attempt validation, chunk pointer advance |
 | `broker.py` | `infra.broker.sec_broker.SecBrokerClient` | Picklable broker adapter, response envelope, fetch-failure record |

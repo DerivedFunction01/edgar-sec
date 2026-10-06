@@ -13,6 +13,7 @@ from edgar_sec.pipelines.document_storage.catalog_plan import (
     CatalogPlanError,
 )
 from edgar_sec.pipelines.document_storage.paths import RUN_MANIFEST_NAME
+from edgar_sec.pipelines.document_storage.paths import DocumentStoragePaths
 from edgar_sec.pipelines.document_storage.run_manifest import (
     RUN_MANIFEST_VERSION,
     CatalogRunIdentity,
@@ -43,12 +44,8 @@ SIGNATURES
 
 
 @pytest.fixture
-def paths(tmp_path: Path) -> ProjectPaths:
-    return ProjectPaths(
-        repo_root=tmp_path,
-        artifacts_root=tmp_path / ".artifacts",
-        uploads_root=tmp_path / "uploads",
-    )
+def paths(tmp_path: Path) -> DocumentStoragePaths:
+    return DocumentStoragePaths(tmp_path / ".artifacts")
 
 
 @pytest.fixture
@@ -198,7 +195,7 @@ def test_selection_fingerprint_is_verified_on_reader_construction(
     era_plan_dir: Path,
 ) -> None:
     """The reader must refuse a bundle whose plan file no longer matches its locators."""
-    from edgar_sec.pipelines.filing_catalog.publication import PLAN_FILE_NAME
+    from edgar_sec.foundation.runtime.paths import PLAN_FILE_NAME
     from edgar_sec.foundation.serialization import canonical_json
 
     plan = CatalogPlan(era_plan_dir, chunk_size=3)

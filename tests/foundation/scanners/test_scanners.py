@@ -14,7 +14,7 @@ from edgar_sec.foundation.scanners import (
     environment,
     layers,
     length,
-    paths,
+    artifact_paths,
 )
 from edgar_sec.foundation.scanners import secrets as secrets_scanner
 
@@ -123,7 +123,7 @@ def test_artifact_paths_flags_hardcoded_literal(synthetic_repo: Path) -> None:
         synthetic_repo,
         {"edgar_sec/pipelines/paths.py": 'ROOT = ".artifacts"\n'},
     )
-    assert paths.scan_artifact_paths()
+    assert artifact_paths.scan_artifact_paths()
 
 
 def test_artifact_paths_allows_path_resolver(synthetic_repo: Path) -> None:
@@ -131,7 +131,7 @@ def test_artifact_paths_allows_path_resolver(synthetic_repo: Path) -> None:
         synthetic_repo,
         {"edgar_sec/foundation/runtime/paths.py": 'ROOT = ".artifacts"\n'},
     )
-    assert paths.scan_artifact_paths() == []
+    assert artifact_paths.scan_artifact_paths() == []
 
 
 def test_layers_flag_upward_import(synthetic_repo: Path) -> None:

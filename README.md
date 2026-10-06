@@ -14,7 +14,7 @@ Layer 4: pipelines/    # High-level orchestrators, CLI, and resumable execution
 Layer 3: engine/       # Normalization, array unrolling, Arrow batch construction
 Layer 2: infra/        # SEC HTTP transport, token-bucket rate limiter, DuckDB storage
 Layer 1: domain/       # Identity types (Cik, AccessionNumber) and schema definitions
-Layer 0: foundation/   # Crypto, cgroup resources, memory reclamation, settings registry, scanners
+Layer 0: foundation/   # Shared primitives, runtime/fixture paths, resource budgets, settings, scanners
 ```
 
 [AGENTS.md §1](AGENTS.md) is normative for the layer rules and what each layer may import; a policy scanner enforces the graph.
@@ -158,6 +158,10 @@ python run.py filing-catalog status
 **Artifact layout.** Snapshots and plans are published immutable; staging lives
 under `artifacts_root/transient/`.
 
+Fixtures share the dataset-scoped layout and versioned manifest envelope provided
+by `foundation.runtime.fixtures`; each pipeline owns its fixture details and payload
+schema. The document-storage and document-inventory roots are shown below.
+
 ```text
 artifacts_root/filing_catalog/
 ├── snapshots/                          # mirrors metadata/snapshots/
@@ -248,7 +252,7 @@ where the two disagree.
   - **forms** — [forms](edgar_sec/engine/forms/README.md) · [cover](edgar_sec/engine/forms/cover/README.md) · [cover/boundary](edgar_sec/engine/forms/cover/boundary/README.md) · [cover/checkmarks](edgar_sec/engine/forms/cover/checkmarks/README.md) · [cover/healing](edgar_sec/engine/forms/cover/healing/README.md) · [cover/tables](edgar_sec/engine/forms/cover/tables/README.md) · [cover/toc](edgar_sec/engine/forms/cover/toc/README.md) · [plugins](edgar_sec/engine/forms/plugins/README.md) · [plugins/evaluators](edgar_sec/engine/forms/plugins/evaluators/README.md)
   - **reflow** — [reflow](edgar_sec/engine/reflow/README.md) · [reflow/engine](edgar_sec/engine/reflow/engine/README.md) · [reflow/features](edgar_sec/engine/reflow/features/README.md) · [reflow/rules](edgar_sec/engine/reflow/rules/README.md)
   - **tables** — [tables](edgar_sec/engine/tables/README.md) · [ascii_html](edgar_sec/engine/tables/ascii_html/README.md) · [false_tables](edgar_sec/engine/tables/false_tables/README.md) · [hybrid](edgar_sec/engine/tables/hybrid/README.md) · [policy](edgar_sec/engine/tables/policy/README.md) · [protection](edgar_sec/engine/tables/protection/README.md) · [taxonomy](edgar_sec/engine/tables/taxonomy/README.md)
-- **pipelines** — [pipelines](edgar_sec/pipelines/README.md) · [metadata_sync](edgar_sec/pipelines/metadata_sync/README.md) · [filing_catalog](edgar_sec/pipelines/filing_catalog/README.md) · [document_storage](edgar_sec/pipelines/document_storage/README.md)
+- **pipelines** — [pipelines](edgar_sec/pipelines/README.md) · [metadata_sync](edgar_sec/pipelines/metadata_sync/README.md) · [filing_catalog](edgar_sec/pipelines/filing_catalog/README.md) · [document_inventory](edgar_sec/pipelines/document_inventory/README.md) · [document_inventory/snapshot](edgar_sec/pipelines/document_inventory/snapshot/README.md) · [document_storage](edgar_sec/pipelines/document_storage/README.md)
 - **apps** — [apps](edgar_sec/apps/README.md) · [viewer](edgar_sec/apps/viewer/README.md)
 
 ---
@@ -266,7 +270,7 @@ edgar_sec/               # each package has its own README.md (linked above)
 ├── engine/             # Layer 3: document and index-page parsing, cover/table
 │                       #   processing, candidate selection, submission building
 ├── pipelines/          # Layer 4: metadata_sync (Phase 1), filing_catalog
-│                       #   (Phase 2), document_inventory (Phase S2),
+│                       #   (Phase 2), document_inventory (S1–S5 in progress),
 │                       #   document_storage (Phase 2.5)
 └── apps/               # Layer 5: the dataset viewer (read-only, no publishing)
 
@@ -311,8 +315,10 @@ All generated paths derive from the artifacts root; no module hardcodes them.
 {artifacts_root}/filing_catalog/plans/{plan_id}/            # Immutable plan bundle
 {artifacts_root}/transient/filing_catalog/{catalog_id}/     # Staging; never published
 
-{artifacts_root}/fixtures/{fixture_id}/fixture.sqlite      # Raw replay payloads
-{artifacts_root}/fixtures/{fixture_id}/fixture.manifest.json
+{artifacts_root}/document_storage/fixtures/{fixture_id}/manifest.json # Common envelope; storage details are pipeline-owned
+{artifacts_root}/document_storage/fixtures/{fixture_id}/fixture.sqlite
+{artifacts_root}/document_inventory/fixtures/{fixture_id}/manifest.json # Common envelope; index-store details are pipeline-owned
+{artifacts_root}/document_inventory/fixtures/{fixture_id}/index_fixtures.sqlite
 {artifacts_root}/document_storage/snapshots/{snapshot_id}/  # Published documents
 {artifacts_root}/document_storage/review-runs/{run_id}/    # Generated review bundles
 {artifacts_root}/transient/document_storage/runs/{run_id}/ # Resumable run staging

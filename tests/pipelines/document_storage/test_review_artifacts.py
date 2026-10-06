@@ -10,9 +10,13 @@ from pathlib import Path
 import pytest
 
 from edgar_sec.domain.document.models import DocumentLocator, RawDocumentBlob
+from edgar_sec.foundation.runtime.fixtures import FixtureManifestEnvelope
 from edgar_sec.foundation.runtime.paths import ProjectPaths
 from edgar_sec.pipelines.document_storage.fixture_store import FixtureStore
-from edgar_sec.pipelines.document_storage.paths import REVIEW_MANIFEST_NAME
+from edgar_sec.pipelines.document_storage.paths import (
+    DocumentStoragePaths,
+    REVIEW_MANIFEST_NAME,
+)
 from edgar_sec.pipelines.document_storage.review_artifacts import (
     ReviewArtifactError,
     ReviewCase,
@@ -50,8 +54,8 @@ WRAPPED_SOURCE = (
 )
 
 
-def _paths(root: Path) -> ProjectPaths:
-    return ProjectPaths(root, root / ".artifacts", root / "uploads")
+def _paths(root: Path) -> DocumentStoragePaths:
+    return DocumentStoragePaths(root / ".artifacts")
 
 
 def _seed(
@@ -101,9 +105,18 @@ def _seed(
             ],
             forms or {},
         )
-    (paths.fixture_manifest_path(fixture_id)).parent.mkdir(parents=True, exist_ok=True)
+    manifest = FixtureManifestEnvelope(
+        fixture_kind="document_storage.raw_payload",
+        fixture_id=fixture_id,
+        storage_format="sqlite",
+        storage_path=paths.fixture_paths(fixture_id).storage_filename,
+        created_at="2024-01-01T00:00:00+00:00",
+        updated_at="2024-01-01T00:00:00+00:00",
+        details={"forms": ["10-K"]},
+    )
+    paths.fixture_manifest_path(fixture_id).parent.mkdir(parents=True, exist_ok=True)
     paths.fixture_manifest_path(fixture_id).write_text(
-        json.dumps({"fixture_id": fixture_id, "forms": ["10-K"]}), encoding="utf-8"
+        json.dumps(manifest.to_mapping()), encoding="utf-8"
     )
     return locators
 

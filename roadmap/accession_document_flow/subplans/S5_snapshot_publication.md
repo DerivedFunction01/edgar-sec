@@ -29,6 +29,15 @@ publication staging and owns every canonical Parquet relation. S4 workers never 
 files. Typed outcomes may be supplied directly in isolated writer tests, but those
 tests do not stand in for the S3 parser or full pipeline integration.
 
+Production cohort input is streamed from validated catalog-plan Parquet or an
+observation iterator into bounded temporary Parquet batches. S5 performs accession
+aggregation, conflict checks, anti-joins, sorting, and relation deltas in configured
+DuckDB; it does not first build a tuple-wide `InventoryCohort`, collect DuckDB results
+with `fetchall()`, or keep the current snapshot's keys in Python sets. The S1
+`InventoryCohort` remains useful for small offline unit tests, not the production-scale
+build boundary. Temporary cohort/work-order files live under the run's transient
+publication staging and are not referenced by the published snapshot.
+
 - `cohort`: the S1 `InventoryCohort` with validated, de-duplicated accessions.
 - `base_snapshot`: the current snapshot to anti-join against; `None` for the base run.
 - `explicit_refresh`: force re-read of all cohort index pages.
@@ -76,6 +85,12 @@ digest changes.
    `derive_resources()` (`threads`, `memory_limit`, `temp_directory`, and
    `preserve_insertion_order=false`). Emit annual parts and lookup shards, validate the
    complete child snapshot, then atomically write `current` last.
+
+Candidate and current relations stay on disk or inside DuckDB-managed temporary storage.
+Only bounded Arrow/fetch batches and per-chunk S4 work items may be materialized in
+Python. S4 must accept the missing-accession work order as a stream or Parquet-backed
+source; passing the complete anti-join result through an in-memory sequence is not a
+production implementation of this contract.
 
 An accession whose form/date metadata conflicts is refused before fetch; it is not
 silently re-indexed. Snapshot updates are serialized per inventory root; readers

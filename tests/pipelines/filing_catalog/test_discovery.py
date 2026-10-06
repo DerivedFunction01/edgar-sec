@@ -7,6 +7,7 @@ from pathlib import Path
 
 import pytest
 
+from edgar_sec.foundation.runtime.paths import PLAN_FILE_NAME
 from edgar_sec.pipelines.filing_catalog.catalog_job import materialize
 from edgar_sec.pipelines.filing_catalog.discovery import (
     current_catalog_id,
@@ -16,7 +17,6 @@ from edgar_sec.pipelines.filing_catalog.discovery import (
     status,
 )
 from edgar_sec.pipelines.filing_catalog.paths import (
-    PLAN_FILE_NAME,
     SNAPSHOT_MANIFEST_NAME,
     resolve_filing_catalog_paths,
     safe_identifier,

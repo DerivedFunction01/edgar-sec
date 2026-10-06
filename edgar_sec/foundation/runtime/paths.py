@@ -14,16 +14,7 @@ CURRENT_DIR = "current"
 POINTER_FILE_NAME = "pointer.json"
 PLAN_FILE_NAME = "plan.json"
 SNAPSHOTS_DIR = "snapshots"
-PLANS_DIR = "plans"
-
-# Document storage reuses the same contract; only the dataset name differs.
-DOCUMENTS_DATASET = "document_storage"
-RUNS_DIR = "runs"
-CHECKPOINTS_DIR = "checkpoints"
-FIXTURES_DIR = "fixtures"
-PAYLOAD_DB_NAME = "fixture.sqlite"
-FIXTURE_MANIFEST_NAME = "fixture.manifest.json"
-REVIEW_RUNS_DIR = "review-runs"
+RUNTIME_DIR = "runtime"
 
 
 def current_pointer_path(snapshots_root: Path) -> Path:
@@ -34,14 +25,13 @@ def current_pointer_path(snapshots_root: Path) -> Path:
     return snapshots_root / CURRENT_DIR / POINTER_FILE_NAME
 
 
-def plan_dir(plans_root: Path, plan_id: str) -> Path:
-    """Return the directory holding one immutable plan bundle."""
-    return plans_root / plan_id
-
-
 def transient_dir(artifacts_root: Path, dataset: str, run_id: str) -> Path:
     """Return the staging directory for one resumable run of a dataset."""
     return artifacts_root / TRANSIENT_DIR / dataset / run_id
+
+
+def runtime_root(artifacts_root: Path | str) -> Path:
+    return Path(artifacts_root) / RUNTIME_DIR
 
 
 @dataclass(frozen=True, slots=True)
@@ -59,69 +49,7 @@ class ProjectPaths:
 
     @property
     def runtime_root(self) -> Path:
-        return self.artifacts_root / "runtime"
-
-    @property
-    def broker_socket_path(self) -> Path:
-        return self.runtime_root / "sec_broker.sock"
-
-    # --- Document storage -------------------------------------------------
-
-    @property
-    def documents_root(self) -> Path:
-        """Published document snapshots, one directory per snapshot id."""
-        return self.artifacts_root / DOCUMENTS_DATASET / SNAPSHOTS_DIR
-
-    @property
-    def document_transient_root(self) -> Path:
-        """Run-scoped staging for the document-storage pipeline."""
-        return self.artifacts_root / TRANSIENT_DIR / DOCUMENTS_DATASET
-
-    @property
-    def fixtures_root(self) -> Path:
-        """Committed raw-payload fixtures, one directory per fixture id."""
-        return self.artifacts_root / FIXTURES_DIR
-
-    def run_dir(self, run_id: str) -> Path:
-        """Return the staging directory for one document-storage run."""
-        return self.document_transient_root / RUNS_DIR / run_id
-
-    def run_checkpoints_dir(self, run_id: str) -> Path:
-        """Return the resumable-checkpoint directory for one run."""
-        return self.run_dir(run_id) / CHECKPOINTS_DIR
-
-    def run_chunks_dir(self, run_id: str) -> Path:
-        """Return the worker chunk directory for one run."""
-        return self.run_dir(run_id) / "chunks"
-
-    def snapshot_dir(self, snapshot_id: str) -> Path:
-        """Return the directory for one published document snapshot."""
-        return self.documents_root / snapshot_id
-
-    def fixture_dir(self, fixture_id: str) -> Path:
-        """Return the directory for one raw-payload fixture."""
-        return self.fixtures_root / fixture_id
-
-    def fixture_db_path(self, fixture_id: str) -> Path:
-        """Return the SQLite path holding one fixture's raw payloads."""
-        return self.fixture_dir(fixture_id) / PAYLOAD_DB_NAME
-
-    def fixture_manifest_path(self, fixture_id: str) -> Path:
-        """Return the lineage manifest for one fixture."""
-        return self.fixture_dir(fixture_id) / FIXTURE_MANIFEST_NAME
-
-    @property
-    def review_runs_root(self) -> Path:
-        """Durable root of generated review runs, one directory per run id.
-
-        A review run is a deliverable meant to be diffed against a later one, so it
-                must outlive its command and must not sit where staging may be reclaimed.
-        """
-        return self.artifacts_root / DOCUMENTS_DATASET / REVIEW_RUNS_DIR
-
-    def review_run_dir(self, run_id: str) -> Path:
-        """Return the directory one review run's artifacts are written into."""
-        return self.review_runs_root / run_id
+        return runtime_root(self.artifacts_root)
 
 
 # edgar_sec/, i.e. three levels up from this file (foundation/runtime/paths.py).
@@ -183,24 +111,17 @@ def resolve_paths(repo_root: Path | str | None = None) -> ProjectPaths:
 
 
 __all__ = [
-    "CHECKPOINTS_DIR",
     "CURRENT_DIR",
-    "DOCUMENTS_DATASET",
-    "FIXTURES_DIR",
-    "FIXTURE_MANIFEST_NAME",
     "PACKAGE_ROOT",
-    "PAYLOAD_DB_NAME",
-    "PLANS_DIR",
     "PLAN_FILE_NAME",
     "POINTER_FILE_NAME",
-    "REVIEW_RUNS_DIR",
-    "RUNS_DIR",
+    "RUNTIME_DIR",
     "SNAPSHOTS_DIR",
     "TRANSIENT_DIR",
     "ProjectPaths",
     "ProjectRootError",
     "current_pointer_path",
-    "plan_dir",
     "resolve_paths",
+    "runtime_root",
     "transient_dir",
 ]

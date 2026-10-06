@@ -2,68 +2,64 @@
 
 ## Purpose
 
-Project filing-cohort observations into accession-level index-page work, capture and
-replay `-index.html` responses without the network, fetch and parse missing index pages
-through the shared SEC broker, and (in later stages) publish an immutable, queryable
-inventory snapshot. Layer 4: consumes published artifacts from `filing_catalog`; imports
-only foundation, infra, domain, and sibling modules.
+Project filing-cohort observations into accession-level index-page work, capture
+and replay `-index.html` responses, and build offline parser-review artifacts.
+Layer 4 consumes published `filing_catalog` plans and imports downward only.
 
 ## Module layout
 
 | Module | Responsibility |
 |---|---|
-| `cohort.py` | Read and validate catalog observations, then project one `IndexWorkItem` per accession. Shared records live in `domain/document_inventory`. |
-| `fixture_store.py` | Append-only capture-and-replay store (`index_fixtures.sqlite` + manifest): create, capture, publish, list, replay. |
-| `paths.py` | Validated inventory run/chunk/attempt path methods over `ProjectPaths.artifacts_root` and the shared transient/pointer helpers. |
-| `run_manifest.py` | Atomic run manifest pinning resume identity (parent snapshot, cohort, parser/schema versions, chunk size, work-order version) and deterministic chunk partitioning. |
-| `checkpoint.py` | Transient outcome schema/status, staged attempt writers, attempt manifests, the chunk pointer commit marker, and resume validation. |
+| `cohort.py` | Validate catalog observations and project selected cohorts into accession work. |
+| `discovery.py` | Manifest-only discovery and selection of published plans and fixtures. |
+| `fixture_store/` | Mutable local response capture, provenance, discovery, and exact-byte replay; see its [package contract](fixture_store/README.md). |
+| `review_artifacts/` | Offline parser review output with inert HTML and deterministic manifests; see its [package contract](review_artifacts/README.md). |
+| `snapshot/` | Snapshot schemas, metadata, paths, and current bounded DuckDB anti-join primitives; see its [package contract](snapshot/README.md). |
+| `paths.py` | Inventory-specific artifact, runtime, and transient paths; binds index fixtures to the shared foundation resolver. |
+| `run_manifest.py` | Path-backed work-order identity and chunk manifest validation. |
+| `checkpoint.py` | Transient outcome/entry schemas, attempt commit markers, and resume validation. |
 | `broker.py` | Picklable client for the shared SEC broker and typed fetch results. |
-| `worker.py` | Module-level per-accession task and typed worker failures. |
-| `coordinator.py` | Bounded in-flight scheduling, chunk commit, resume, and explicit retry. |
-| `cli.py` | Command surface (`inventory` subcommands plus interactive menu). |
+| `worker.py` | Per-accession worker task and typed failures. |
+| `coordinator.py` | Chunk commit, resume, and retry over bounded work-order batches. |
+| `cli.py`, `operator.py` | Fixture/review commands and discovery-driven interactive operations. |
+| `run.py` (repository root) | Dispatches the inventory entry to its operator. |
 
 ## Contracts
 
-- `project_cohort` emits one work item per accession, keyed by canonical accession; the cohort reader is offline and deterministic from a catalog snapshot or committed fixture.
-- `capture_index_pages` upserts pages by `(request_url, response_sha256)`; changed responses append, failures become typed capture failures, and every source observation is recorded in `cohort_members`.
-- `publish_index_fixture` finalizes the manifest with the committed database digest; `replay_index_page` opens the store read-only and refuses mismatched schema or digests.
+- Fixture capture reuses successful pages and records additional source membership; failed pages remain retryable. Replay validates the response digest and returns exact decompressed bytes. Inventory fixtures live at `{artifacts_root}/document_inventory/fixtures/<fixture_id>/`; their `manifest.json` uses the shared `foundation.runtime.fixtures` envelope, while `details` and the SQLite schema remain inventory-owned.
+- Plan and fixture discovery reads manifests only; the operator selects discovered artifacts instead of accepting arbitrary plan JSON paths.
 - `engine.index_pages.parser.parse_html_index` transforms explicit bytes to typed domain
   records without network or artifact access; unknown structure never becomes an empty
   successful parse.
-- The run manifest is written or exactly matched before the first broker request; any identity, version, chunk-size, or worklist mismatch refuses the run.
-- Chunk ids derive from work-order version and sorted membership, never completion order. An attempt commits as: write both Parquet files → validate schemas, counts, membership, digests → write `manifest.json` → atomically advance `current.json`. The pointer is the commit marker; orphan attempts are ignored on resume.
-- `outcomes.parquet` holds exactly one typed row per accession (including recognized-empty and failed outcomes); `entries.parquet` preserves every parsed `InventoryEntry` row. Fetch/worker failures are retryable via `retry_failures=True`, which carries successful and parser-refusal outcomes forward and rewrites only the failed accessions; parser refusals (`unrecognized`, `parse_failure`) are never retried.
-- `run_missing_accessions` starts one broker per run, derives its pool from `derive_resources().workers`, streams bounded per-chunk batches through spawn-context tasks, and never crosses production IPC with raw page bytes.
+- S4 work orders are sorted Parquet relations with validated identity; only one bounded chunk is read into worker memory at a time.
+- `run_missing_accessions` returns aggregate run counters and a bounded prefix of per-chunk details, rather than retaining one result object per work-order chunk.
+- Snapshot candidate staging writes outcomes, entries, and source-CIK edges incrementally. The anti-join runs in resource-configured DuckDB and emits Parquet relations without collecting full accession keys in Python.
 
 ## Command surface
 
 ```
-python run.py inventory <subcommand> [options]
-  cohort        build the inventory cohort from a source
-  index list    list captured index pages
-  index replay  replay a captured index page
-  status        report the inventory snapshot
-  query         query the snapshot
-  publish       publish the inventory snapshot
+python run.py inventory fixture create --fixture ID --catalog-plan PLAN [--limit N]
+python run.py inventory fixture fill --fixture ID --catalog-plan PLAN [--limit N]
+python run.py inventory fixture list
+python run.py inventory review-artifacts --fixture ID --output DIR [--accession ACCESSION]
 ```
 
-Common options: `--artifacts`, `--workers`, `--limit`, `--json`. Invoked without a
-subcommand from `python run.py inventory` (no arguments), the launcher opens a narrow
-interactive menu. Exit codes: 0 success, 1 error, 2 invalid usage, 130 interrupt.
+Commands accept `--artifacts` and `--json`; capture also accepts `--limit`, and review
+accepts `--workers`, `--limit`, and repeatable `--accession`. Running `python run.py
+inventory` opens the discovery-driven fixture/review operator.
 
 ## Mirrored tests
 
-`tests/pipelines/document_inventory/`: cohort, fixture store, broker, worker, coordinator,
-paths, run-manifest, checkpoint, and CLI tests. Parser tests live in
+`tests/pipelines/document_inventory/`: cohort, fixture store, review artifacts, snapshot,
+broker, worker, coordinator, paths, run-manifest, checkpoint, discovery, operator, and CLI tests. Parser tests live in
 `tests/engine/index_pages/`; shared contract tests live in `tests/domain/document_inventory/`.
 
 ## Deliberate gaps
 
-- The engine parser's first structural pass is implemented against the standard
-  filing-page fixture; final era/table rules await S0's empirical audit.
-- The CLI command bodies are placeholders; `inventory <subcommand>` returns 1 until
-  the owning stage is implemented. The S4 coordinator is a library entry point
-  (`coordinator.run_missing_accessions`); the `inventory build` command that drives it
-  end-to-end needs S5's anti-join and publication, which S7a/S12 own.
-- `--workers`/`--limit` are accepted but unused by the CLI until `inventory build` lands.
-- S5 snapshot publication and S6 target planning are out of scope for this phase.
+- The parser has not completed the historical SEC layout audit; final acceptance still
+  depends on S0 evidence.
+- The S4 coordinator and S5 anti-join staging are not yet integrated into a production
+  build command. Full snapshot merging, query APIs, validation, and pointer-last
+  publication remain incomplete.
+- Cohort projection is in-memory and is suitable for selected offline inputs, not a
+  production dataset-scale build boundary; S5 needs a streamed catalog-plan projection.

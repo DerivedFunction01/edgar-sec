@@ -46,19 +46,13 @@ inventory fixture list [--artifacts <root>] [--json]
 - The later S7b command surface adds `inventory review-artifacts`; parser-run diff is
   optional and can follow once artifact output exists.
 
-Resolve and validate the plan bundle only during create/fill. Record each contribution's
-plan ID, catalog ID, plan schema/scope, and stable request fingerprint in the fixture
-manifest; do not persist an absolute source path or treat the plan as a replay dependency.
-Additional fills extend the provenance record rather than replace its prior entries.
-Whether source-CIK/cohort membership is unique per plan contribution must be fixed
-with the store write semantics: current `capture_index_pages` does not record a new
-membership when its response row already exists, and can therefore lose new provenance
-for an overlapping plan. The current manifest records cohort source IDs but not the
-catalog plan ID or its request fingerprint, so plan-level provenance must be added.
-The current `publish_index_fixture` also refuses an already-published manifest; a fill
-after publication mutates the database without a supported republish path and makes the
-old whole-file digest stale. The appendable manifest lifecycle must be resolved before
-the CLI can safely expose fill.
+Resolve and validate the plan bundle only during create/fill. Each contribution records
+its plan ID, catalog ID, plan schema/scope, and stable request fingerprint; no absolute
+source path is persisted or required for replay. Additional fills extend the provenance
+record, including cohort membership when a response body is reused. The inventory
+manifest uses the common foundation fixture envelope, with these fields and the store
+schema/counts under its pipeline-owned `details` object. The appendable lifecycle and
+atomic manifest update are implemented in the S2 fixture store.
 
 ## Interactive launcher
 
