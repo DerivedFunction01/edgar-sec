@@ -24,6 +24,7 @@ from edgar_sec.foundation.runtime.paths import (
 )
 
 SNAPSHOT_ARTIFACT_NAME = "documents.parquet"
+RUN_MANIFEST_NAME = "manifest.json"
 CASES_DIR = "cases"
 REVIEW_MANIFEST_NAME = "review_manifest.jsonl"
 EXHIBITS_DATASET = "document_exhibits"
@@ -37,6 +38,11 @@ DOCUMENTS_PHASE = "025_webpage_storage"
 
 def chunk_checkpoint_path(chunks_dir: Path | str, chunk_id: str) -> Path:
     return Path(chunks_dir) / f"chunk-{chunk_id}.parquet"
+
+
+def catalog_delegation_path(checkpoint: Path | str) -> Path:
+    """Sidecar path for a checkpoint's delegated-exhibit targets."""
+    return Path(checkpoint).with_suffix(".delegations.json")
 
 
 @dataclass(frozen=True, slots=True)
@@ -115,7 +121,9 @@ __all__ = [
     "EXHIBITS_DATASET",
     "EXHIBIT_SNAPSHOT_NAME",
     "REVIEW_MANIFEST_NAME",
+    "RUN_MANIFEST_NAME",
     "SNAPSHOT_ARTIFACT_NAME",
     "DocumentStoragePaths",
+    "catalog_delegation_path",
     "chunk_checkpoint_path",
 ]

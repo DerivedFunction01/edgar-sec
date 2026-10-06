@@ -96,16 +96,25 @@ lower layers it depends on.
 | `document_storage/cli.py` | Command dispatch, plan-file ingestion, and the stdout/stderr split. |
 | `document_storage/operator.py` | `run_document_storage()`: process chunks, resolve delegations, publish. |
 | `document_storage/fixture_operator.py` | Fixture discovery and raw-payload fill operations. |
-| `document_storage/worker.py` | Chunk processing, the process pool, and the checkpoint-reuse rule. |
-| `document_storage/candidates.py` | The advisory pre-2005 exhibit-candidate gate and its reported population. |
+| `document_storage/candidates.py` | The pre-2005 exhibit-candidate gate and its reported population. |
+| `document_storage/candidate_recovery.py` | Bundle-first recovery for pre-2005 exhibit-candidate targets. |
+| `document_storage/resolution.py` | Pure filing-resolution contract: map a catalog-requested exhibit to its form-matched primary. |
 | `document_storage/catalog_plan.py` | Validation and replayable streaming reads of a published `filing_catalog` plan bundle. |
+| `document_storage/run_manifest.py` | Transient catalog-run identity and atomic manifest validation (`runs/<run_id>/manifest.json`). |
+| `document_storage/catalog_execution.py` | Chunk-replay streaming, manifest-gated resume, and chunk status tracking for catalog plans. |
 | `document_storage/work_order.py` | `ChunkInput` and the `WorkOrder` seam between an input plan and chunk execution. |
 | `document_storage/fetching.py` | `ArchiveFetcher` protocol and the fixture / broker / live backends. |
 | `document_storage/processor.py` | `FilingProcessor`, `PassThroughProcessor`, and the processor fingerprint. |
+| `document_storage/processing.py` | Row assembly and ordinary fetch/process/delegate execution for one locator. |
+| `document_storage/checkpoint.py` | Chunk-checkpoint schema and IO, fingerprint-based reuse validation, and delegation sidecars. |
+| `document_storage/execution.py` | Chunk execution unit, process pool sizing, child recycling, and resume skipping. |
+| `document_storage/summary.py` | Plan-derived candidate counts for a chunk, independent of any fetch. |
+| `document_storage/occurrences.py` | Locator↔occurrence key mapping, expansion, and synthetic provenance rows. |
+| `document_storage/parts.py` | Byte-budgeted part planning, index/payload column contracts, part-path boundary checks. |
 | `document_storage/delegation.py` | The exhibit second pass for stub primaries. |
-| `document_storage/merger.py` | Per-run snapshot publication: assemble, split into parts, write manifest, move pointer. |
+| `document_storage/merger.py` | Per-run snapshot publication: assemble, split into parts, write manifest, move pointer, idempotent reuse. |
 | `document_storage/vacuum.py` | `vacuum_snapshots()`: cross-run consolidation into one canonical snapshot. Unwired — no CLI route, no production caller. |
-| `document_storage/queries.py` | The direct SQL for consolidation. |
+| `document_storage/queries.py` | The direct SQL for consolidation and assembly. |
 | `document_storage/paths.py` | `DocumentStoragePaths` and the published-vs-transient split. |
 | `document_storage/review.py` | `compare_review_runs()`: base-vs-new review-run comparison. |
 | `document_storage/review_artifacts.py` | Fixture-backed review artifact generation: selection, per-case files, manifest. |

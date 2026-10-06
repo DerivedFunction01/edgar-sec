@@ -188,10 +188,6 @@ def _cmd_run(args: argparse.Namespace, paths: ProjectPaths) -> int:
 
     work_order = None
     if getattr(args, "catalog_plan", None):
-        from edgar_sec.pipelines.document_storage.fixture_operator import (
-            verify_fixture_lineage,
-        )
-
         work_order = _open_catalog_plan(args.catalog_plan)
         if args.limit is not None and args.limit > 0:
             print(
@@ -199,18 +195,11 @@ def _cmd_run(args: argparse.Namespace, paths: ProjectPaths) -> int:
                 file=sys.stderr,
             )
             return 2
-        meta = work_order.metadata
-        for fixture_id in args.fixture:
-            verify_fixture_lineage(
-                paths,
-                fixture_id,
-                target_reference=meta.plan_id,
-                target_fingerprint=meta.selection_fingerprint,
-            )
         report = run_document_storage(
             paths=paths,
             run_id=args.run_id or new_run_id(),
             work_order=work_order,
+            catalog_plan=work_order,
             mode="fixture",
             fixture_id=args.fixture,
             workers=args.workers,
@@ -252,7 +241,17 @@ def _print_run_report(report: Any, as_json: bool) -> int:
         print(f"eligible      {report.candidate_eligible_count}")
         print(f"candidates    {report.bundle_candidate_count}")
         print(f"undated       {report.candidate_date_unresolved_count}")
-        print(f"exhibits      {len(report.exhibits)}")
+        exhibit_count = (
+            len(report.exhibits)
+            if report.exhibits_resolved_count is None
+            else report.exhibits_resolved_count
+        )
+        print(f"exhibits      {exhibit_count}")
+        if report.run_status is not None:
+            print(f"run state     {report.run_status}")
+            print(f"fresh chunks  {report.fresh_chunk_count}")
+            print(f"resumed chunks {report.resumed_chunk_count}")
+            print(f"reused chunks {report.reused_chunk_count}")
         for warning in report.merge.warnings:
             print(f"warning       {warning}")
     return 0 if report.ok else 1

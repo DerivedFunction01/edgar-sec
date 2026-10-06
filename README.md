@@ -195,7 +195,15 @@ can be retried on a later fill. It also performs candidate-gated recovery: for
 pre-2005 exhibit-target candidates it acquires the submission bundle first,
 resolves the requested exhibit against the form-matched primary, and dual-writes
 both rows with role, parent, provenance, and outcome in the persisted `metadata`.
-See the
+
+Execution over a catalog plan is resumable under the same run ID: an atomic
+transient run manifest (`runs/<run_id>/manifest.json`) records input and plan
+identity before fetching begins, replaying validated completed chunks and
+durable delegation sidecars while computing only incomplete work. Same-run
+publication retries validate existing snapshot artifacts and part digests
+idempotently without mutation. Generic and JSON-plan runs remain fresh-only.
+Fixture lineage checks the most recent fill; fixture payloads are not hashed,
+so lineage does not certify complete offline payload coverage. See the
 [pipeline README](edgar_sec/pipelines/document_storage/README.md) for persistence
 details.
 

@@ -26,10 +26,10 @@ To balance long-term analytical capability with rigorous software engineering, t
 └────────────────────────────────────────────────────────────────────────────────────────────────────────┘
                                                      │
  ┌───────────────────────────────────────────────────▼───────────────────────────────────────────────────┐
- │ MILESTONE 1: INGESTION, MULTI-ERA NORMALIZATION & STORAGE FOUNDATION                                  │
+  │ MILESTONE 1: FILING INGESTION, ACCESSION INVENTORY & DOCUMENT PROCESSING FOUNDATION                  │
  │ • Phase 01: Submissions Metadata Extraction (data.sec.gov feeds, nested histories, CIK coverage)      │
- │ • Phase 02: Filing Catalog & Target Planner (Zero-network DuckDB staging, stratified target plans)    │
- │ • Phase 2.5: Webpage Storage & Normalization (CAS BLOBs, SGML unpacking, body alignment, ASCII reflow)│
+  │ • Phase 02: Filing Catalog & Accession Cohort Planner (Zero-network, stratified filing plans)        │
+  │ • Phase 2.5: Accession Inventory & Target Planning; payload store gated on reviewed outputs          │
  └───────────────────────────────────────────────────┬───────────────────────────────────────────────────┘
                                                      │
  ┌───────────────────────────────────────────────────▼───────────────────────────────────────────────────┐
@@ -70,10 +70,10 @@ To balance long-term analytical capability with rigorous software engineering, t
 - Deterministic chunking, atomic partition merging, and zero raw filing downloads.
 - Captures explicit active-listing source snapshots, derives registry/effective-input artifacts, and supports immutable CIK augmentation against finalized metadata manifests without rewriting the curated seed CSV.
 
-#### Phase 02: Filing Catalog & Target Planner (Zero-Network)
+#### Phase 02: Filing Catalog & Accession Cohort Planner (Zero-Network)
 - Materializes flat filing occurrences from finalized Phase 01 Parquet artifacts via memory-bounded DuckDB staging.
 - Assigns every registrant a namespaced `company_family` key (`entity:`, `spv:`, `cik:`) from the compiled registrant universe, to prevent multi-subsidiary duplicate over-representation. All of one sponsor's securitised vehicles form one family across product lines; the sponsor's own non-vehicle entity stays outside it. The assignment is a content-addressed Parquet artifact joined by SQL at feature-snapshot build time, so it is computed once per universe and rules change rather than per plan.
-- Plans target selections across form families (`10-K`, `10-K/A`, `10-KSB`, `10-KT`, `10-Q`, etc.): deterministic whole-catalog filtering (`--scope deterministic`) or policy-driven deficit selection (`--scope policy`) with expandable child plans; plan bundles are immutable, selectable work orders and the selection scope is independent of the Phase 2.5 acquisition mode.
+- Selects filing cohorts across form families (`10-K`, `10-K/A`, `10-KSB`, `10-KT`, `10-Q`, etc.): deterministic whole-catalog filtering (`--scope deterministic`) or policy-driven deficit selection (`--scope policy`) with expandable child plans. These plans choose accessions, not document targets; Phase 2.5 inventory projects their accessions and ignores document paths when planning targets.
 - **Date selection**: both scopes narrow on `report_date` through one grammar, a comma-separated union of absolute calendar intervals (`2005Q3..2008Q1`) and recurring calendar periods (`@Q1[1999..2001]`). Quarters are calendar quarters of `report_date`, not issuer fiscal quarters. An empty selection applies no date predicate; a nonempty one excludes rows whose `report_date` cannot be read.
 - **Era stratification**: a policy declaring no era bands derives them from the report years its own forms and date selection can reach, so a policy selecting only `@Q1` never band a quarter it cannot select. The resolved bands are recorded in the plan, and an expansion inherits its parent's.
 - **Filing size is banded relative to its own form family**: five bands at multiples of that family's median filing, not corpus-wide cutoffs. The corpus median is ~1.5 MB for `10-K` and ~7 KB for form `4`, a 229× spread, so one absolute threshold set sorts whole families into a single end. A family with little internal size variation reports a skewed split, and that is the truthful answer — the previous quantile rule reported an even 20% per band by construction, inventing a large-filing stratum the corpus does not contain.
@@ -81,23 +81,42 @@ To balance long-term analytical capability with rigorous software engineering, t
 - **Absent profile values are normalized, not read as values**: Phase 1 writes an empty string for a field the SEC did not supply, so the feature projection maps every Phase 1 text field through `NULLIF(trim(…))` before deriving a dimension. International-mix control is therefore derived only from a *present* state of incorporation — a registrant with no state reports `foreign_status = "unknown"` rather than being counted foreign, which is what the empty string used to do for 4,735 of 40,914 profiles against 2,977 genuinely foreign.
 - **Operator workflow**: the wizard lists the policy drafts under `policies/`, writes a catalog-derived all-forms draft for editing on a blank answer, and never plans a draft the operator did not choose.
 
-#### Phase 2.5: Raw Webpage Storage & Multi-Era Text Normalization
-- Consumes Phase 02 target plans and fetches each unique `(accession, document_path)` locator exactly once.
-- **Dual-Mode Fetch**: Offline fixture CAS replay (`--mode fixture`) or live SEC archive via managed same-host SEC broker (`--mode production`, 4 RPS pacing, failure ledger). Warm-cache reruns read the broker's HTTP cache read-only from each worker (`SqlCacheReader`): local hits skip the socket and pacing entirely and only misses route through the broker, so cached-document throughput decouples from live-request pacing.
-- **SGML Multi-Document Unpacking**: Unpacks concatenated SGML envelopes (`<DOCUMENT>...</DOCUMENT>`), separates primary documents from exhibits (`EX-10`, `EX-21`, `EX-99`), and extracts `<SEC-HEADER>` metadata (`defs.sec_documents.sgml`).
-- **Multi-Era Normalization Engine**:
-  - String-first HTML preprocessing with canonical `<TABLE>...</TABLE>` rendering and tagged-table protection (`defs.text.html`).
-  - Form-scoped checkbox constraint solver evaluating report-period, filer-status, and statutory Boolean hypotheses (`defs.sec_forms.cover`).
-  - Canonical body-start alignment past cover and TOC pages using tiered lexical evidence scoring (`defs.sec_forms.cover.body_start`).
-  - Geometry-first ASCII reflow: hard-wrapped prose and multi-line bullet/list items are cleanly reflowed (`is_list_or_bullet_marker`), while untagged multi-column ASCII tables are automatically detected and preserved in `<TABLE>` tags (`defs.text.reflow`); table boundary policy and structural detection live in `defs.tables`, and financial statement bridging predicates are composed in `defs.taxonomy.components.financials.reflow`.
-- **Storage Layout**: Persists sha256-addressed raw bytes (`document_blobs`) and versioned normalized representations (`normalized_documents`) in isolated worker SQLite chunks before atomic partition merge. Finalized normalized rows publish to temporal immutable snapshots under `manifests/webpage_storage/normalized_documents/snapshots/`, split into lightweight occurrence indexes and deduplicated native-text payload Parquet parts.
-- **Distributed Handoff**: Finalized partition databases and handoff manifests are portable between machines; snapshot publication validates complete partition coverage but downstream plans can read an immutable normalized snapshot directly.
-- **Snapshot Lifecycle**: Incremental publication may inherit immutable payload parts for late CIK augmentation. Publication is a two-pass planner: metadata-only scanning resolves conflicts and packs payload parts to `--target-mb` without reading blobs, then blob materialization writes parts whose layout is independent of the read batch size; DuckDB handles spillable Parquet joins/deduplication under machine-local resource limits, while parallel `vacuum` materializes selected snapshots by bounded quarter workers, validates dependency closure, and atomically advances the current pointer with progress events.
-- **Live Monitoring**: Real-time progress, throughput, and disk usage tracking via `scripts/monitor_progress.py`.
-- **Review Workflow**: Document corpus review toolchain (`promote_document_corpus`, `build_document_review_artifacts`, `chunk_document_reviews`) with exact golden promotion.
+#### Phase 2.5: Accession Inventory, Target Planning & Document Processing
+
+This phase's **new implementation path is planned, not yet implemented**; its
+architecture and subplan sequence are in
+[design](./accession_document_flow/design.md) and
+[implementation](./accession_document_flow/implementation.md). The
+existing `document_storage` implementation is frozen as a reference: do not
+extend its combined selection/acquisition/normalized-row schema for this work.
+
+- **Cohort → queryable inventory:** project selected filings to distinct
+  accessions and anti-join them against the cumulative `current` snapshot before
+  HTTP. Fetch only unseen `-index.html` pages; a later plan that adds a co-filer
+  CIK adds a relationship edge without refetching the accession. Use one SEC
+  broker for shared HTTP pacing/cache/failures and a bounded process pool for
+  CPU-heavy HTML table parsing; writers stay in the coordinator.
+- **Inventory → target plans:** publish every observed document/data-file row
+  into an immutable, seek-indexed snapshot. Accession and filing-form queries
+  read only relevant index partitions and make no SEC request. Separate,
+  zero-network planning applies versioned target profiles to snapshot query
+  results and publishes request-specific plans. Primary, exhibit, data-file, and
+  XBRL plans can reuse the same accession observations.
+- **Acquisition and processing:** later subplans fetch selected direct URLs or
+  retrieve a selected sequence from a full submission bundle, then process saved
+  bytes through a deterministic, fixture-reviewable pipeline.
+- **Payload storage gate:** the final persistent model for fetched documents and
+  processed representations is designed only after representative acquisition
+  and processing outputs have been reviewed. It is separate from and does not
+  add payload pointers to the inventory schema.
+- **Review:** index-parser and target-plan comparisons precede the later
+  document-body review toolchain. All default tests remain offline.
+
+The current `document_storage` capability and its test contracts remain available
+as frozen reference material in its [package README](../edgar_sec/pipelines/document_storage/README.md).
 
 #### Phase 03: Canonical Item Segmentation & Document TOC Spine
-- Consumes clean normalized documents from Phase 2.5 and builds an **exhaustive, non-overlapping, 1D Table of Contents (TOC) spine**.
+- Consumes clean normalized representations from Phase 2.5 once the new acquisition/processing handoff is verified and builds an **exhaustive, non-overlapping, 1D Table of Contents (TOC) spine**.
 - **Statutory Hierarchy**: Partitions 10-K (Parts I–IV, Items 1–16), 10-Q (Parts I–II, Items 1–6), and 8-K into distinct character spans `[char_start, char_end]`.
 - **TOC & Inline Disambiguation**: Employs monotonic item state machines and structural heading geometry to reject false matches from initial Table of Contents pages and inline cross-references.
 - **Incorporation by Reference**: Detects stubs referencing proxy statements (`Schedule 14A`) or external exhibits and flags them without generating phantom sections.

@@ -31,7 +31,7 @@ from edgar_sec.pipelines.document_storage.fetching import (
 )
 from edgar_sec.pipelines.document_storage.fixture_store import FixtureStore
 from edgar_sec.pipelines.document_storage.processor import PassThroughProcessor
-from edgar_sec.pipelines.document_storage.worker import process_chunk
+from edgar_sec.pipelines.document_storage.execution import process_chunk
 
 ACCESSION = "0001234567-11-000001"
 ARCHIVE_URL = (

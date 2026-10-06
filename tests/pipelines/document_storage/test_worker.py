@@ -27,6 +27,8 @@ from edgar_sec.domain.sec_urls import accession_hyphenated
 from edgar_sec.infra.storage.parquet import read_parquet_table
 from edgar_sec.pipelines.document_storage.checkpoint import (
     DOCUMENT_SNAPSHOT_SCHEMA,
+    chunk_fingerprint,
+    is_chunk_complete,
     validate_chunk_snapshot,
 )
 from edgar_sec.pipelines.document_storage.fetching import (
@@ -40,15 +42,13 @@ from edgar_sec.pipelines.document_storage.processor import (
     PassThroughProcessor,
     ProcessedDocument,
 )
-from edgar_sec.pipelines.document_storage.worker import (
+from edgar_sec.pipelines.document_storage.execution import (
     ChunkError,
-    candidate_summary,
-    chunk_fingerprint,
-    is_chunk_complete,
     process_chunk,
     process_chunks,
     resolved_worker_count,
 )
+from edgar_sec.pipelines.document_storage.summary import candidate_summary
 
 ACCESSION = "0001234567-11-000001"
 BODY = """\
@@ -869,7 +869,7 @@ def test_filing_processor_survives_a_payload_carrying_page_markers() -> None:
 def test_chunk_resumes_from_partial_staging_file(tmp_path: Path) -> None:
     from edgar_sec.infra.storage.parquet import StagedParquetWriter
     from edgar_sec.pipelines.document_storage.checkpoint import DOCUMENT_SNAPSHOT_SCHEMA
-    from edgar_sec.pipelines.document_storage.worker import _build_snapshot_batch
+    from edgar_sec.pipelines.document_storage.processing import _build_snapshot_batch
 
     loc1 = _locator("doc1.htm")
     occ1 = _occurrence(loc1)
@@ -927,7 +927,7 @@ def test_chunk_resumes_when_all_documents_already_staged(tmp_path: Path) -> None
     from edgar_sec.infra.storage.parquet import StagedParquetWriter
     from edgar_sec.pipelines.document_storage.checkpoint import DOCUMENT_SNAPSHOT_SCHEMA
     from edgar_sec.pipelines.document_storage.operator import _partial_ok
-    from edgar_sec.pipelines.document_storage.worker import _build_snapshot_batch
+    from edgar_sec.pipelines.document_storage.processing import _build_snapshot_batch
 
     loc1 = _locator("doc1.htm")
     occ1 = _occurrence(loc1)

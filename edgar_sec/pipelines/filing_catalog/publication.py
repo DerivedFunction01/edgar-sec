@@ -10,7 +10,7 @@ import hashlib
 import json
 import os
 import shutil
-from collections.abc import Iterator
+from collections.abc import Iterable, Iterator
 from contextlib import contextmanager
 from pathlib import Path
 from typing import Any
@@ -75,6 +75,51 @@ def plan_fingerprint(plan_meta: dict[str, Any], locator_keys: list[str]) -> str:
             "locator_keys": sorted(locator_keys),
         }
     )[:32]
+
+
+def plan_fingerprint_from_sorted_keys(
+    plan_meta: dict[str, Any], locator_keys: Iterable[str]
+) -> str:
+    """Hash an ordered locator stream with the same contract as plan_fingerprint."""
+    digest = hashlib.sha256()
+    digest.update(
+        (
+            b'{"catalog_id":'
+            + json.dumps(plan_meta.get("catalog_id"), separators=(",", ":")).encode()
+            + b',"locator_keys":['
+        )
+    )
+    first = True
+    for key in locator_keys:
+        if not first:
+            digest.update(b",")
+        digest.update(json.dumps(key, separators=(",", ":")).encode())
+        first = False
+    digest.update(
+        b'],"plan_id":'
+        + json.dumps(plan_meta.get("plan_id"), separators=(",", ":")).encode()
+        + b',"scope":'
+        + json.dumps(plan_meta.get("scope"), separators=(",", ":")).encode()
+        + b"}"
+    )
+    return digest.hexdigest()[:32]
+
+
+def plan_fingerprint_from_plan(plan_dir: str | Path, plan_meta: dict[str, Any]) -> str:
+    """Verify selection identity without materializing all locator keys."""
+    locator_path = Path(plan_dir).resolve() / LOCATOR_GROUPS_NAME
+    if not locator_path.is_file():
+        raise FileNotFoundError(f"plan locator groups not found: {locator_path}")
+    with connect() as con:
+        reader = con.execute(
+            "SELECT document_locator_key FROM read_parquet("
+            + sql_literal(str(locator_path))
+            + ") ORDER BY document_locator_key"
+        ).to_arrow_reader(2048)
+        return plan_fingerprint_from_sorted_keys(
+            plan_meta,
+            (str(key) for batch in reader for key in batch.column(0).to_pylist()),
+        )
 
 
 def plan_bundle_complete(plan_dir: Path, scope: str = "") -> bool:
@@ -238,6 +283,8 @@ __all__ = [
     "PlanConflictError",
     "plan_bundle_complete",
     "plan_fingerprint",
+    "plan_fingerprint_from_plan",
+    "plan_fingerprint_from_sorted_keys",
     "plan_identity",
     "plan_locator_keys",
     "publish_plan_bundle",

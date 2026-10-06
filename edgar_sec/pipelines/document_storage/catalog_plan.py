@@ -39,6 +39,7 @@ from edgar_sec.pipelines.filing_catalog.paths import (
 from edgar_sec.pipelines.filing_catalog.publication import (
     TARGET_PLAN_SCHEMA_VERSION,
     plan_bundle_complete,
+    plan_fingerprint_from_plan,
 )
 from edgar_sec.pipelines.document_storage.work_order import ChunkInput
 
@@ -91,6 +92,7 @@ class CatalogPlan:
         self._plan_dir = Path(plan_dir).resolve()
         self._chunk_size = chunk_size
         self._batch_rows = batch_rows
+        self._published = _read_plan_json(self._plan_dir)
         self._counts = _read_plan_counts(self._plan_dir)
         self._meta = _read_plan_metadata(self._plan_dir, self._counts)
         self._locator_path = self._plan_dir / LOCATOR_GROUPS_NAME
@@ -102,12 +104,43 @@ class CatalogPlan:
             self._target_paths,
             self._counts,
         )
+        actual_fingerprint = plan_fingerprint_from_plan(self._plan_dir, self._published)
+        if actual_fingerprint != self._meta.selection_fingerprint:
+            raise CatalogPlanError(
+                "plan bundle selection fingerprint does not match its locator groups"
+            )
         self._meta = replace(self._meta, locator_count=locator_count)
 
     @property
     def metadata(self) -> CatalogPlanMetadata:
         """The published identity of the bundle this reader validates."""
         return self._meta
+
+    @property
+    def plan_dir(self) -> Path:
+        return self._plan_dir
+
+    @property
+    def chunk_size(self) -> int:
+        return self._chunk_size
+
+    @property
+    def canonical_metadata(self) -> dict[str, Any]:
+        return {
+            "plan_id": self._meta.plan_id,
+            "catalog_id": self._meta.catalog_id,
+            "scope": self._meta.scope,
+            "selection_fingerprint": self._meta.selection_fingerprint,
+            "counts": dict(sorted(self._counts.items())),
+        }
+
+    @property
+    def source_files(self) -> tuple[Path, ...]:
+        return (
+            self._plan_dir / PLAN_FILE_NAME,
+            self._locator_path,
+            *self._target_paths,
+        )
 
     @property
     def chunk_count(self) -> int:

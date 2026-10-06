@@ -227,7 +227,7 @@ def test_run_report_serializes(paths: ProjectPaths) -> None:
 
 def test_interrupted_run_resumes_and_reuses_its_chunks(paths: ProjectPaths) -> None:
     """The state a killed process leaves: chunks processed, nothing published."""
-    from edgar_sec.pipelines.document_storage.worker import process_chunks
+    from edgar_sec.pipelines.document_storage.execution import process_chunks
 
     locator = _locator()
     fetcher = DictFetcher({"acme-10k.htm": BODY.encode()})
@@ -671,7 +671,7 @@ def test_candidate_counts_deduplicate_co_filer_occurrences(paths: ProjectPaths) 
 
 def test_candidate_counts_cover_a_chunk_skipped_by_resume(paths: ProjectPaths) -> None:
     """A resumed chunk contributes its plan's candidates, not zero."""
-    from edgar_sec.pipelines.document_storage.worker import process_chunks
+    from edgar_sec.pipelines.document_storage.execution import process_chunks
 
     exhibit = _era_locator("ex21.txt")
     ticker = _era_locator("exxon10k.htm")

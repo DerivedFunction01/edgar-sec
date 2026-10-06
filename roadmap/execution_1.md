@@ -504,13 +504,26 @@ ordinary requested-document fetch and persist the typed outcome in `metadata`.
 6. **`tests/pipelines/document_storage/test_fetching.py`**: bundle-first recovery
    through the broker fetcher, dual-write rows, and the role/parent/metadata contract.
 
-#### Deferred: catalog resumability
+#### Shipped: catalog resumability with a transient run manifest
 
-A catalog plan run is fresh-run only: it refuses a run directory that already exists and
-reuses no checkpoint. Nothing fingerprints the bundle's source files, recomputes its
-published selection fingerprint, or records a run manifest, so nothing refuses a resume
-against a changed selection or chunk layout. Reusing checkpoints and publishing a reusable
-child acquisition plan both wait on a work-order serialization contract.
+A catalog plan run is resumable under the same `run_id`; generic and JSON-plan runs
+remain fresh-only. A transient manifest (`runs/<run_id>/manifest.json`) records the
+bundle's plan identity, verified selection fingerprint, source digests, and execution
+inputs, and is written atomically before the first fetch. A matching manifest makes the
+run `resumed` and skips every complete chunk whose Parquet checkpoint, processor
+fingerprint, and durable delegation sidecar validate; a missing, malformed, or mismatched
+manifest refuses before fetch and leaves all chunks untouched. The three chunk states are
+reported as `fresh_chunk_count` (no valid `.tmp` stage), `resumed_chunk_count` (continued
+from a valid partial stage), and `reused_chunk_count` (skipped behind a valid checkpoint
+and sidecar). The delegated-exhibit pass carries a validated input identity from the
+per-chunk sidecars and processor fingerprint, so `chunk-delegated.parquet` and its state
+are reused rather than refetched. Publication of the same `run_id` validates the existing
+snapshot manifest, artifact digest, row count, chunk inventory, and every part's size,
+row count, SHA-256, and safe path, and returns it unmodified with `reused=True` when all
+checks pass; an incomplete, malformed, or conflicting snapshot is refused without
+mutation. Selection drift is detected through the recomputed selection fingerprint and
+pinned source digests. Fixture contents are not hashed, so a resumed incomplete chunk may
+observe newer payloads for the same fixture IDs.
 
 #### URL / Filename Is Not Authoritative for Primary Identity (2000–2005 era)
 

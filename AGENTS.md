@@ -123,10 +123,10 @@ Before submitting any turn or completing work, run the unified quality gate:
 
 > [!NOTE]
 > `check.py` automatically uses Git change detection and static AST reverse-dependency lineage tracking:
-> - **Documentation / Assets**: If only markdown, documentation, or static non-code assets changed, pytest execution is bypassed completely.
+> - **Documentation / Assets**: If only markdown, documentation, or static non-code assets changed, pytest execution is bypassed completely. Do not run `check.py` when only comments, doc-strings, or markdown files are edited (run `--fast`).
 > - **Prose-Only Edits**: A `.py` file is compared to its `HEAD` baseline through docstring-stripped AST dumps. A change that leaves those dumps identical — a comment, docstring, or blank-line edit — selects no tests. `ruff format` and `ruff lint` still cover the file, so only pytest selection is skipped. An untracked file, a missing baseline, or unparsable text counts as a logic change.
 > - **Targeted Execution**: Modifying a module resolves and runs its direct mirrored test and downstream dependents, respecting pipeline boundaries.
-> - **Full Gate Verification**: Use `check.py --all` only when requested by the user to do so.
+> - **Full Gate Verification**: Use `check.py --all` only when requested by the user to do so. Never run `pytest` with the `test/` directory; it is equivalent to `--all`. 
 
 
 ### Registered Policy Scanners

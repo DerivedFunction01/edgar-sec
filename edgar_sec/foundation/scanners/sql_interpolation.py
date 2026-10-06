@@ -139,6 +139,10 @@ def _is_safe_text(node: ast.expr, safe_names: set[str]) -> bool:
             return True
         if name in _NEUTRAL_CALLS:
             return all(_is_safe_text(argument, safe_names) for argument in node.args)
+    if isinstance(node, ast.BinOp):
+        return _is_safe_text(node.left, safe_names) and _is_safe_text(
+            node.right, safe_names
+        )
     return False
 
 

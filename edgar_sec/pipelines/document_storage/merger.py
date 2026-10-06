@@ -15,6 +15,7 @@ from collections.abc import Sequence
 from dataclasses import dataclass, field
 from datetime import UTC, datetime
 from pathlib import Path
+from pathlib import PurePosixPath
 from typing import Any
 
 from edgar_sec.foundation.hashing import file_sha256, sha256_text
@@ -22,8 +23,15 @@ from edgar_sec.foundation.runtime.paths import DOCUMENTS_DATASET, current_pointe
 from edgar_sec.foundation.serialization import canonical_json
 from edgar_sec.infra.storage.duckdb import connect, copy_query_to_parquet, sql_path_list
 from edgar_sec.infra.storage.manifests import PART_KIND_INDEX, PART_KIND_PAYLOAD
-from edgar_sec.infra.storage.parquet import read_parquet_table
-from edgar_sec.pipelines.document_storage.checkpoint import validate_chunk_snapshot
+from edgar_sec.infra.storage.parquet import (
+    count_parquet_rows,
+    read_parquet_schema,
+    read_parquet_table,
+)
+from edgar_sec.pipelines.document_storage.checkpoint import (
+    DOCUMENT_SNAPSHOT_SCHEMA,
+    validate_chunk_snapshot,
+)
 from edgar_sec.pipelines.document_storage.paths import (
     DOCUMENTS_PHASE,
     SNAPSHOT_ARTIFACT_NAME,
@@ -162,6 +170,8 @@ def _write_parts(staging: Path, artifact_path: Path) -> list[dict[str, Any]]:
         row["payload_file"] = payload_part.path
     # Rewrite the index now that each row knows which payload part holds its text.
     parts[0] = write_index_part(staging, index_part, index_rows).to_dict()
+    for part in parts:
+        part["sha256"] = file_sha256(staging / part["path"])
     return parts
 
 
@@ -225,6 +235,10 @@ def _deduped_assembly_query(chunk_paths: Sequence[str]) -> str:
     Identical duplicates keep the first row by source_cik, accession, path;
     conflicting duplicates are rejected by the conflict check above.
     """
+    from edgar_sec.pipelines.document_storage.checkpoint import (
+        DOCUMENT_SNAPSHOT_SCHEMA,
+    )
+
     return f"""
         WITH assembled AS (
             SELECT * FROM read_parquet({sql_path_list([str(p) for p in chunk_paths])})
@@ -237,7 +251,7 @@ def _deduped_assembly_query(chunk_paths: Sequence[str]) -> str:
                 ) AS _rn
             FROM assembled
         )
-        SELECT * FROM ranked WHERE _rn = 1
+        SELECT {", ".join(DOCUMENT_SNAPSHOT_SCHEMA.names)} FROM ranked WHERE _rn = 1
     """
 
 
@@ -316,6 +330,7 @@ def publish_snapshot(
     chunks_dir: Path,
     snapshots_root: Path,
     snapshot_id: str | None = None,
+    reuse_existing: bool = False,
 ) -> MergeResult:
     """Merge a run's chunks into an immutable snapshot and publish it."""
     chunk_paths = sorted(chunks_dir.glob("chunk-*.parquet"))
@@ -331,7 +346,15 @@ def publish_snapshot(
     resolved_snapshot_id = snapshot_id or f"snap-{sha256_text(run_id)[:12]}"
     snapshot_dir = snapshots_root / resolved_snapshot_id
     if snapshot_dir.exists():
-        # Snapshots are immutable; republishing would rewrite a recorded identity.
+        if reuse_existing:
+            return _reuse_existing_snapshot(
+                run_id=run_id,
+                snapshot_id=resolved_snapshot_id,
+                snapshot_dir=snapshot_dir,
+                chunk_paths=chunk_paths,
+                usable=usable,
+                warnings=warnings,
+            )
         raise MergeError(
             f"snapshot {resolved_snapshot_id} already exists at {snapshot_dir}"
         )
@@ -391,6 +414,118 @@ def publish_snapshot(
             missing_documents=missing,
         ),
         reused=False,
+        warnings=tuple(warnings),
+    )
+
+
+def _reuse_existing_snapshot(
+    *,
+    run_id: str,
+    snapshot_id: str,
+    snapshot_dir: Path,
+    chunk_paths: Sequence[Path],
+    usable: Sequence[Path],
+    warnings: Sequence[str],
+) -> MergeResult:
+    from edgar_sec.pipelines.document_storage.parts import (
+        INDEX_COLUMNS,
+        PAYLOAD_COLUMNS,
+    )
+
+    manifest_path = snapshot_dir / SNAPSHOT_MANIFEST_NAME
+    try:
+        manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+        if not isinstance(manifest, dict):
+            raise ValueError("snapshot manifest is not an object")
+        expected_chunks = sorted(path.name for path in usable)
+        if (
+            manifest.get("snapshot_id") != snapshot_id
+            or manifest.get("run_id") != run_id
+            or manifest.get("dataset") != DOCUMENTS_DATASET
+            or manifest.get("phase") != DOCUMENTS_PHASE
+            or manifest.get("schema_version") != SNAPSHOT_SCHEMA_VERSION
+            or manifest.get("artifact_name") != SNAPSHOT_ARTIFACT_NAME
+            or manifest.get("chunks") != expected_chunks
+            or manifest.get("logical_fingerprint") != content_fingerprint(usable)
+            or list(manifest.get("warnings", ())) != list(warnings)
+            or manifest.get("source_snapshot_ids") != [run_id]
+            or len(usable) != len(chunk_paths)
+        ):
+            raise ValueError("snapshot manifest identity does not match this run")
+
+        artifact = snapshot_dir / SNAPSHOT_ARTIFACT_NAME
+        if not artifact.is_file():
+            raise ValueError("snapshot artifact is missing")
+        if file_sha256(artifact) != manifest.get("artifact_file_sha256"):
+            raise ValueError("snapshot artifact digest does not match its manifest")
+        if count_parquet_rows(artifact) != int(manifest.get("row_count", -1)):
+            raise ValueError("snapshot artifact row count does not match its manifest")
+        if read_parquet_schema(artifact).names != DOCUMENT_SNAPSHOT_SCHEMA.names:
+            raise ValueError("snapshot artifact schema does not match the checkpoint")
+
+        parts = manifest.get("resolved_parts")
+        if not isinstance(parts, list) or not parts:
+            raise ValueError("snapshot manifest records no parts")
+        seen_paths: set[str] = set()
+        kinds: set[str] = set()
+        for part in parts:
+            if not isinstance(part, dict):
+                raise ValueError("snapshot part entry is invalid")
+            relative = str(part.get("path") or "")
+            relative_path = PurePosixPath(relative)
+            if (
+                not relative
+                or relative_path.is_absolute()
+                or ".." in relative_path.parts
+                or "\\" in relative
+                or relative in seen_paths
+            ):
+                raise ValueError("snapshot part path is unsafe or duplicated")
+            seen_paths.add(relative)
+            kind = str(part.get("kind") or "")
+            kinds.add(kind)
+            part_path = (snapshot_dir / relative).resolve()
+            part_path.relative_to(snapshot_dir.resolve())
+            if not part_path.is_file():
+                raise ValueError(f"snapshot part is missing: {relative}")
+            if part_path.stat().st_size != int(part.get("byte_size", -1)):
+                raise ValueError(f"snapshot part size differs: {relative}")
+            if file_sha256(part_path) != part.get("sha256"):
+                raise ValueError(f"snapshot part digest differs: {relative}")
+            if count_parquet_rows(part_path) != int(part.get("row_count", -1)):
+                raise ValueError(f"snapshot part row count differs: {relative}")
+            expected_schema = (
+                INDEX_COLUMNS
+                if kind == PART_KIND_INDEX
+                else PAYLOAD_COLUMNS
+                if kind == PART_KIND_PAYLOAD
+                else ()
+            )
+            if not expected_schema or read_parquet_schema(part_path).names != list(
+                expected_schema
+            ):
+                raise ValueError(f"snapshot part schema differs: {relative}")
+        if kinds != {PART_KIND_INDEX, PART_KIND_PAYLOAD}:
+            raise ValueError("snapshot manifest has an incomplete part-kind set")
+        failed = int(manifest.get("failed_documents", -1))
+        missing = int(manifest.get("missing_documents", -1))
+        row_count = int(manifest["row_count"])
+    except (OSError, KeyError, TypeError, ValueError, json.JSONDecodeError) as exc:
+        raise MergeError(
+            f"existing snapshot {snapshot_id} is incomplete or conflicting: {exc}"
+        ) from exc
+
+    return MergeResult(
+        run_id=run_id,
+        snapshot=SnapshotRef(
+            snapshot_id=snapshot_id,
+            artifact_path=snapshot_dir / SNAPSHOT_ARTIFACT_NAME,
+            row_count=row_count,
+            chunk_count=len(usable),
+            failed_documents=failed,
+            missing_documents=missing,
+        ),
+        reused=True,
         warnings=tuple(warnings),
     )
 

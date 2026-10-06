@@ -6,6 +6,7 @@ resolved from a stub must land in the same snapshot as its primary.
 
 from __future__ import annotations
 
+import json
 import logging
 import secrets
 from collections.abc import Callable, Mapping, Sequence
@@ -15,14 +16,21 @@ from pathlib import Path
 from typing import Any
 
 from edgar_sec.domain.document.models import DocumentLocator, FilingOccurrence
+from edgar_sec.foundation.hashing import file_sha256, sha256_text
 from edgar_sec.foundation.runtime.paths import ProjectPaths
 from edgar_sec.foundation.runtime.resources import RuntimeResourceProfile
+from edgar_sec.foundation.serialization import canonical_json
+from edgar_sec.infra.storage.atomic import atomic_write_json
 from edgar_sec.pipelines.document_storage.delegation import (
     REFETCH_ACTION,
     DelegatedExhibit,
     resolve_delegated_exhibit,
     write_exhibit_snapshot,
 )
+from edgar_sec.pipelines.document_storage.catalog_execution import (
+    process_catalog_chunks,
+)
+from edgar_sec.pipelines.document_storage.catalog_plan import CatalogPlan
 from edgar_sec.pipelines.document_storage.fetching import make_archive_fetcher
 from edgar_sec.pipelines.document_storage.fixture_operator import (
     FixtureOperatorError,
@@ -36,10 +44,21 @@ from edgar_sec.pipelines.document_storage.processor import (
     DocumentProcessor,
     FilingProcessor,
 )
-from edgar_sec.pipelines.document_storage.worker import (
+from edgar_sec.pipelines.document_storage.execution import (
     ChunkResult,
     process_chunk_stream,
     process_chunks,
+)
+from edgar_sec.pipelines.document_storage.checkpoint import (
+    chunk_fingerprint,
+    validate_chunk_snapshot,
+    _stamp_fingerprint,
+)
+from edgar_sec.pipelines.document_storage.paths import catalog_delegation_path
+from edgar_sec.pipelines.document_storage.run_manifest import (
+    RunManifestError,
+    catalog_run_identity,
+    create_or_validate_manifest,
 )
 from edgar_sec.pipelines.document_storage.work_order import WorkOrder
 
@@ -62,6 +81,11 @@ class RunReport:
     exhibits: tuple[DelegatedExhibit, ...]
     started_at: str
     finished_at: str
+    run_status: str | None = None
+    fresh_chunk_count: int = 0
+    resumed_chunk_count: int = 0
+    reused_chunk_count: int = 0
+    exhibits_resolved_count: int | None = None
 
     @property
     def snapshot_id(self) -> str:
@@ -104,7 +128,7 @@ class RunReport:
 
     def to_dict(self) -> dict[str, Any]:
         """Render the report for a manifest or a CLI summary."""
-        return {
+        report = {
             "run_id": self.run_id,
             "snapshot_id": self.snapshot_id,
             "artifact_path": str(self.artifact_path),
@@ -115,12 +139,26 @@ class RunReport:
             "candidate_eligible_count": self.candidate_eligible_count,
             "bundle_candidate_count": self.bundle_candidate_count,
             "candidate_date_unresolved_count": self.candidate_date_unresolved_count,
-            "exhibits_resolved": len(self.exhibits),
+            "exhibits_resolved": (
+                len(self.exhibits)
+                if self.exhibits_resolved_count is None
+                else self.exhibits_resolved_count
+            ),
             "started_at": self.started_at,
             "finished_at": self.finished_at,
             "ok": self.ok,
             "warnings": list(self.merge.warnings),
         }
+        if self.run_status is not None:
+            report.update(
+                {
+                    "run_status": self.run_status,
+                    "fresh_chunk_count": self.fresh_chunk_count,
+                    "resumed_chunk_count": self.resumed_chunk_count,
+                    "reused_chunk_count": self.reused_chunk_count,
+                }
+            )
+        return report
 
 
 def new_run_id(prefix: str = "run") -> str:
@@ -188,6 +226,7 @@ def run_document_storage(
     locators_by_chunk: Mapping[str, Sequence[DocumentLocator]] | None = None,
     occurrences_by_chunk: Mapping[str, Sequence[FilingOccurrence]] | None = None,
     work_order: WorkOrder | None = None,
+    catalog_plan: CatalogPlan | None = None,
     mode: FetchMode = "fixture",
     fixture_id: str | Sequence[str] | None = None,
     processor: DocumentProcessor | None = None,
@@ -200,12 +239,17 @@ def run_document_storage(
 ) -> RunReport:
     """Run the full document-storage pipeline for one set of chunks.
 
-    Exactly one input mode applies: a replayable ``work_order`` streams its chunks, or
-    explicit chunk ids carry the mappings.
+    Exactly one input mode applies: a replayable ``work_order``, a catalog bundle,
+    or explicit chunk ids.
     """
     started_at = datetime.now(UTC).isoformat(timespec="seconds")
     streaming = work_order is not None
-    if streaming:
+    run_status: str | None = None
+    if catalog_plan is not None:
+        streaming = True
+        if work_order is not None and work_order is not catalog_plan:
+            raise OperatorError("catalog_plan must be the catalog work order")
+    elif streaming:
         if work_order.chunk_count < 1:
             raise OperatorError("work order yields no chunks")
         _refuse_existing_run(paths, run_id)
@@ -213,6 +257,37 @@ def run_document_storage(
         raise OperatorError("at least one chunk id is required")
 
     effective_processor = processor if processor is not None else FilingProcessor()
+    if catalog_plan is not None:
+        fixture_ids = (
+            (fixture_id,)
+            if isinstance(fixture_id, str)
+            else tuple(str(item) for item in (fixture_id or ()))
+        )
+        identity = catalog_run_identity(
+            catalog_plan,
+            run_id=run_id,
+            mode=mode,
+            fixture_ids=fixture_ids,
+            processor=effective_processor,
+        )
+        try:
+            run_status = create_or_validate_manifest(
+                paths.run_dir(run_id), run_id, identity
+            )
+        except RunManifestError as exc:
+            raise OperatorError(str(exc)) from exc
+        if mode == "fixture":
+            from edgar_sec.pipelines.document_storage.fixture_operator import (
+                verify_fixture_lineage,
+            )
+
+            for selected_fixture in fixture_ids:
+                verify_fixture_lineage(
+                    paths,
+                    selected_fixture,
+                    target_reference=catalog_plan.metadata.plan_id,
+                    target_fingerprint=catalog_plan.metadata.selection_fingerprint,
+                )
     active_fetcher = (
         fetcher
         if fetcher is not None
@@ -236,7 +311,16 @@ def run_document_storage(
                 "count": work_order.chunk_count if streaming else len(chunk_ids),
             }
         )
-    if streaming:
+    if catalog_plan is not None:
+        chunk_results = process_catalog_chunks(
+            catalog_plan,
+            fetcher=active_fetcher,
+            processor=effective_processor,
+            chunks_dir=chunks_dir,
+            workers=workers,
+            profile=profile,
+        )
+    elif streaming:
         assert work_order is not None
         chunk_results = process_chunk_stream(
             work_order,
@@ -265,7 +349,16 @@ def run_document_storage(
 
     if progress is not None:
         progress({"stage": "delegation", "run_id": run_id})
-    if streaming:
+    exhibits_resolved_count: int | None = None
+    if catalog_plan is not None:
+        exhibits, exhibits_resolved_count = _run_catalog_delegation(
+            chunk_results,
+            catalog_plan,
+            fetcher=active_fetcher,
+            processor=effective_processor,
+            chunks_dir=chunks_dir,
+        )
+    elif streaming:
         assert work_order is not None
         exhibits = _run_delegation_from_work_order(
             chunk_results,
@@ -289,6 +382,7 @@ def run_document_storage(
         run_id=run_id,
         chunks_dir=chunks_dir,
         snapshots_root=paths.documents_root,
+        reuse_existing=catalog_plan is not None,
     )
     finished_at = datetime.now(UTC).isoformat(timespec="seconds")
     return RunReport(
@@ -298,6 +392,23 @@ def run_document_storage(
         exhibits=exhibits,
         started_at=started_at,
         finished_at=finished_at,
+        run_status=run_status,
+        fresh_chunk_count=sum(
+            chunk.execution_state == "fresh" for chunk in chunk_results
+        )
+        if catalog_plan is not None
+        else 0,
+        resumed_chunk_count=sum(
+            chunk.execution_state == "resumed" for chunk in chunk_results
+        )
+        if catalog_plan is not None
+        else 0,
+        reused_chunk_count=sum(
+            chunk.execution_state == "reused" for chunk in chunk_results
+        )
+        if catalog_plan is not None
+        else 0,
+        exhibits_resolved_count=exhibits_resolved_count,
     )
 
 
@@ -374,6 +485,70 @@ def _run_delegation_from_work_order(
     )
 
 
+def _run_catalog_delegation(
+    chunk_results: Sequence[ChunkResult],
+    work_order: WorkOrder,
+    *,
+    fetcher: Any,
+    processor: DocumentProcessor,
+    chunks_dir: Path,
+) -> tuple[tuple[DelegatedExhibit, ...], int]:
+    processor_fingerprint = chunk_results[0].processor_fingerprint
+    sources = []
+    wanted: list[str] = []
+    for result in sorted(chunk_results, key=lambda item: item.chunk_id):
+        sidecar = catalog_delegation_path(result.output_path)
+        if not sidecar.is_file():
+            raise OperatorError(f"catalog delegation sidecar is missing: {sidecar}")
+        sources.append({"chunk_id": result.chunk_id, "sha256": file_sha256(sidecar)})
+        wanted.extend(target.document_locator_key for target in result.delegations)
+    input_identity = sha256_text(
+        canonical_json(
+            {"processor_fingerprint": processor_fingerprint, "sources": sources}
+        )
+    )
+    output_path = chunks_dir / "chunk-delegated.parquet"
+    state_path = chunks_dir / "chunk-delegated.state.json"
+    try:
+        state = json.loads(state_path.read_text(encoding="utf-8"))
+        meta = validate_chunk_snapshot(output_path)
+        if (
+            isinstance(state, dict)
+            and state.get("version") == 1
+            and state.get("input_identity") == input_identity
+            and state.get("processor_fingerprint") == processor_fingerprint
+            and state.get("output_sha256") == file_sha256(output_path)
+            and state.get("row_count") == meta["num_rows"]
+            and chunk_fingerprint(output_path) == processor_fingerprint
+        ):
+            return (), int(state["row_count"])
+    except (OSError, ValueError, json.JSONDecodeError):
+        pass
+
+    exhibits = _publish_delegations(
+        chunk_results,
+        work_order.locators_by_key(wanted),
+        fetcher=fetcher,
+        processor=processor,
+        chunks_dir=chunks_dir,
+        write_empty=True,
+    )
+    _stamp_fingerprint(output_path, processor_fingerprint)
+    row_count = validate_chunk_snapshot(output_path)["num_rows"]
+    atomic_write_json(
+        state_path,
+        {
+            "version": 1,
+            "input_identity": input_identity,
+            "processor_fingerprint": processor_fingerprint,
+            "output_sha256": file_sha256(output_path),
+            "row_count": row_count,
+        },
+        canonical=True,
+    )
+    return exhibits, row_count
+
+
 def _publish_delegations(
     chunk_results: Sequence[ChunkResult],
     by_key: Mapping[str, DocumentLocator],
@@ -381,6 +556,7 @@ def _publish_delegations(
     fetcher: Any,
     processor: DocumentProcessor,
     chunks_dir: Path,
+    write_empty: bool = False,
 ) -> tuple[DelegatedExhibit, ...]:
     resolved: dict[str, DelegatedExhibit] = {}
     for result in sorted(chunk_results, key=lambda item: item.chunk_id):
@@ -401,7 +577,7 @@ def _publish_delegations(
                 resolved[exhibit.document_locator_key] = exhibit
 
     exhibits = tuple(resolved.values())
-    if exhibits:
+    if exhibits or write_empty:
         write_exhibit_snapshot(chunks_dir / "chunk-delegated.parquet", exhibits)
     return exhibits
 

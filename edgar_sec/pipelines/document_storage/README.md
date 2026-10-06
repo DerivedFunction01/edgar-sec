@@ -47,18 +47,24 @@ Real-filing parity is unverified — see "Deliberate gaps".
 | `operator.py` | `run_document_storage()`: process chunks, resolve delegations, publish. |
 | `fixture_operator.py` | Fixture discovery, live raw fill, append/resume, manifest publication. |
 | `paths.py` | `DocumentStoragePaths`, the published-vs-transient split, and the artifact-name constants. |
-| `worker.py` | Chunk processing, the process pool, the checkpoint-reuse rule. |
 | `candidates.py` | The pre-2005 exhibit-candidate gate: filing-date agreement, statutory filename grammar, dynamic form-token rejection. |
-| `candidate_recovery.py` | Bundle-first recovery: acquire the submission bundle, resolve the requested document role-neutral against it, and process each selected body, emitting `CandidateOutcome` rows. |
+| `candidate_recovery.py` | Bundle-first recovery: acquire the submission bundle, resolve the requested document against it, and process each selected body, emitting `CandidateOutcome` rows. |
+| `resolution.py` | Pure filing-resolution contract: map a catalog-requested document to an optional form-matched primary. |
 | `catalog_plan.py` | Reader for a published `filing_catalog` plan bundle: validation, then replayable streaming chunks. |
+| `run_manifest.py` | Transient catalog-run identity and atomic manifest validation (`runs/<run_id>/manifest.json`). |
+| `catalog_execution.py` | Chunk-replay streaming, manifest-gated resume, and chunk status tracking for catalog plans. |
 | `work_order.py` | `ChunkInput` and the `WorkOrder` seam between an input plan and chunk execution. |
 | `fetching.py` | `ArchiveFetcher` protocol and the fixture / broker / live backends. |
 | `processor.py` | `FilingProcessor`, `PassThroughProcessor`, the processor fingerprint. |
+| `processing.py` | Row assembly and ordinary fetch/process/delegate execution for one locator. |
 | `delegation.py` | The exhibit second pass for stub primaries. |
 | `merger.py` | Per-run snapshot publication: assemble, split into parts, write manifest, move pointer. |
 | `vacuum.py` | `vacuum_snapshots()`: cross-run consolidation. **Unwired** — no CLI route, no production caller. |
 | `queries.py` | The assembly and consolidation SQL. |
-| `checkpoint.py` | The chunk-checkpoint schema and its write/validate pair. |
+| `checkpoint.py` | Chunk-checkpoint schema and IO, fingerprint-based reuse validation, and delegation sidecars. |
+| `execution.py` | The chunk execution unit: `process_chunk`, `process_chunks`, `process_chunk_stream`, pool sizing and child recycling. |
+| `summary.py` | Plan-derived candidate counts for a chunk, independent of any fetch. |
+| `occurrences.py` | Locator↔occurrence key mapping, expansion, and synthetic provenance rows. |
 | `parts.py` | Byte-budgeted part planning, the index/payload column contracts, and the part-path boundary checks. |
 | `fixture_store.py` | The append-only raw-payload SQLite store behind fixture fill and offline replay. |
 | `fixture_lineage.py` | Pure comparison of a fixture manifest against a plan. |
@@ -115,16 +121,21 @@ Real-filing parity is unverified — see "Deliberate gaps".
   locators withheld from the active set and is never read. An occurrence's `doc_id` is its
   `document_locator_key`, because a catalog plan carries no pre-storage document identity
   and the worker groups occurrences by that key.
-- **A catalog run streams and is never resumed.** `work_order.py` defines the seam;
-  `CatalogPlan` is replayable and yields at most `runtime.chunk_size` locators per chunk,
-  and `process_chunk_stream()` keeps only `resolved_worker_count` chunks in flight, so
-  resident work is set by chunk size and concurrency rather than by plan size. Chunk ids
+- **A catalog run is resumable; a generic or JSON-plan run is fresh-only.** A
+  transient run manifest (`runs/<run_id>/manifest.json`) records the bundle's plan
+  identity, verified selection fingerprint, source digests, and execution inputs, and
+  is written atomically before any fetch. A matching manifest makes the run `resumed`
+  and skips every complete chunk whose Parquet checkpoint, processor fingerprint, and
+  durable delegation sidecar validate; a missing, malformed, or mismatched manifest
+  refuses before fetch and leaves all chunks untouched. An interrupted run keeps its
+  chunks and retried under the same `run_id` recomputes only incomplete work. Chunk ids
   derive from the plan id, the work-order contract version, the chunk size, and an
   ordinal, so membership and identity do not depend on row arrival or filesystem order;
   a policy bundle's wider locator and target schemas are projected by name and their
-  feature columns are ignored. Such a run refuses a run directory that already exists and
-  deletes nothing, so an interrupted run keeps its chunks and an operator chooses a new
-  run id. The `--plan` JSON mode keeps its existing resume behavior unchanged.
+  feature columns are ignored. Resident work is set by chunk size and concurrency
+  (`process_chunk_stream()` keeps only `resolved_worker_count` chunks in flight)
+  rather than by plan size. The `--plan` JSON mode keeps its existing resume behavior
+  unchanged.
 - **A rendered path resolves to its original, with the rendering as fallback.** When
   the route from `domain/document/route.py` is `RENDERED`, all three backends prefer
   the archive-root basename over the XSL rendering, and keep the rendering so a root
@@ -241,18 +252,21 @@ points a caller is expected to use are:
   `current_snapshot_dir`, `current_snapshot_artifact` — publication, validation,
   identity, and pointer reads. `merger.py`.
 - `vacuum_snapshots` — cross-run consolidation. `vacuum.py`.
-- `process_chunks`, `is_chunk_complete`, `resolved_worker_count`, `candidate_summary` —
-  chunk execution, checkpoint reuse, and the plan-derived candidate summary that lets a
-  resumed chunk report the same counts as a fresh one. `worker.py`.
+- `process_chunk`, `process_chunks`, `process_chunk_stream`, `resolved_worker_count` — chunk execution, pool sizing and child recycling, and the resume-skip rule. `execution.py`.
+- `is_chunk_complete`, `chunk_fingerprint`, `read_catalog_delegations`, `_stamp_fingerprint` — checkpoint reuse (fingerprint match) and delegation sidecars. `checkpoint.py`.
+- `candidate_summary` — plan-derived candidate counts, independent of any fetch, so a resumed chunk matches a fresh one. `summary.py`.
+- `document_key_of`, `key_of`, `_expand_occurrences`, `_synthetic_occurrence`, `_filing_work` — locator↔occurrence keying and expansion. `occurrences.py`.
 - `candidate_for`, `occurrence_filing_date`, `primary_form_token_pattern` — the
   pre-2005 exhibit-candidate gate and its two inputs. `candidates.py`.
 - `CatalogPlan` — validate a published catalog bundle and read it as replayable
   chunks. `catalog_plan.py`.
+- `create_or_validate_manifest`, `CatalogRunIdentity` — transient execution identity and atomic manifest validation. `run_manifest.py`.
+- `process_catalog_chunks` — replayable catalog chunk execution with manifest-gated resume. `catalog_execution.py`.
 - `fill_fixture` — fill a fixture from either a locator sequence or a streamed
   locator source; `verify_fixture_lineage` — check a fixture against a
   selection. `fixture_operator.py`.
 - `FilingWork` — one requested locator's pass from catalog row to normalized result.
-  `worker.py`.
+  `work_order.py`.
 - `ArchiveFetcher`, `make_archive_fetcher`, `EnvelopeExtraction`,
   `extract_from_sgml_envelope` — the acquisition seam, its fixture / broker / live
   backends, and the envelope scan. `fetching.py`.
@@ -419,15 +433,16 @@ against a credible zero.
   `metadata` — so decisions are auditable and durable, not a population that only
   exists on re-run. The resolution contract representing a requested exhibit and a
   form-matched primary as two references exists and is in use.
-- **A catalog plan cannot be resumed, and no selection drift is detected.**
-  `documents run --catalog-plan` refuses a run directory that already exists, so an
-  interrupted catalog run must be retried under a new run id and its partial chunks are
-  re-fetched. Nothing fingerprints the bundle's source files, recomputes its published
-  selection fingerprint, or records a run manifest, so nothing refuses a resume against a
-  changed selection or a changed chunk layout. Reusing checkpoints across runs, and
-  publishing a reusable child acquisition plan, both wait on a work-order serialization
-  contract that does not exist yet. `--limit` is therefore refused on the catalog mode,
-  since a whole plan is the unit of work.
+- **A catalog run is resumable; selection drift is detected, but fixture contents are not.**
+  `documents run --catalog-plan` refuses a run directory that already exists only when its
+  manifest does not match current inputs: a different run id, plan source digest, selection
+  fingerprint, chunk size, work-order or worker/checkpoint contract version, processor
+  fingerprint, fetch mode, or ordered fixture ID refuses before any fetch, so a changed
+  selection or chunk layout is detected and chunks are never recomputed silently. Reusing
+  checkpoints across runs still waits on a work-order serialization contract; the current
+  contract pins execution inputs at run scope. `--limit` is therefore refused on the
+  catalog mode, since a whole plan is the unit of work. Fixture contents are not hashed,
+  so a resumed incomplete chunk may observe newer payloads for the same fixture IDs.
 - **Fixture lineage covers only the most recent fill.** A catalog `run` accepts a fixture
   whose `last_fill` names this plan id and this `plan_fingerprint`, and refuses one whose
   last fill names something else. A fixture that was filled from two plans therefore
