@@ -14,7 +14,8 @@
 
 Provide the smallest working command and launcher surface to capture published
 `filing_catalog` plan cohorts into an offline-reviewable index fixture. S7a precedes
-S7b, which precedes S3's parser body. The fixture owns captured pages and source
+S7b; S3's initial parser pass can use the committed standard-layout fixture before
+S7b is complete. The fixture owns captured pages and source
 provenance; later list, replay, and review use the fixture alone.
 
 ## Minimal command surface
@@ -159,5 +160,6 @@ fixture CLI. Keep the package docs at the contract boundary and link to the CLI 
 A user can explicitly create, fill, and list local index fixtures from published
 catalog-plan IDs using either `run.py inventory` or CLI arguments. Fixture replay and
 S7b parser review remain functional after source plan bundles are removed. S7a lands
-before S7b review-artifacts, which lands before S3 parser implementation; S7a owns this
-CLI/fixture lifecycle and S7b consumes the fixture API and S3 types.
+before S7b review-artifacts; S3's initial standard-layout parser pass can proceed from
+the committed fixture while S7b is built. S7a owns this CLI/fixture lifecycle and S7b
+consumes the fixture API and S3 types.

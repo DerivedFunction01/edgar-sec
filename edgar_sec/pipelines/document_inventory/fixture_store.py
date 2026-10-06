@@ -22,7 +22,7 @@ from edgar_sec.foundation.compression import compress_payload, decompress_payloa
 from edgar_sec.foundation.hashing import sha256_bytes
 from edgar_sec.infra.broker.sec_broker import SecBroker
 from edgar_sec.infra.storage.atomic import atomic_write_json
-from edgar_sec.pipelines.document_inventory.cohort import (
+from edgar_sec.domain.document_inventory.models import (
     CohortObservation,
     InventoryCohort,
 )

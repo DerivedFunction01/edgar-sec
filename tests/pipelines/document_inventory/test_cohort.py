@@ -18,15 +18,9 @@ import pyarrow.parquet as pq
 
 from edgar_sec.domain.filing_catalog.schemas import TARGET_COLUMNS
 from edgar_sec.domain.identity import AccessionNumber, Cik
+from edgar_sec.domain.document_inventory.models import CohortObservation
 from edgar_sec.pipelines.document_inventory.cohort import (
     CohortInputError,
-    CohortObservation,
-    AccessionInventory,
-    AccessionSource,
-    IndexWorkItem,
-    InventoryCohort,
-    InventoryEntry,
-    inventory_entry_id,
     index_url_for,
     project_cohort,
     read_catalog_observations,
@@ -673,7 +667,7 @@ def test_index_url_for_canonical_shape() -> None:
     )
     assert (
         url
-        == "https://www.sec.gov/Archives/edgar/data/320193/000032019323000106/-index.html"
+        == "https://www.sec.gov/Archives/edgar/data/320193/000032019323000106/0000320193-23-000106-index.html"
     )
 
 
@@ -685,7 +679,7 @@ def test_index_url_for_archive_cik_unpadded() -> None:
     )
     assert (
         url
-        == "https://www.sec.gov/Archives/edgar/data/950123/000095012394000687/-index.html"
+        == "https://www.sec.gov/Archives/edgar/data/950123/000095012394000687/0000950123-94-000687-index.html"
     )
     url = index_url_for(
         AccessionNumber("0000009015-00-000054"),
@@ -693,7 +687,7 @@ def test_index_url_for_archive_cik_unpadded() -> None:
     )
     assert (
         url
-        == "https://www.sec.gov/Archives/edgar/data/9015/000000901500000054/-index.html"
+        == "https://www.sec.gov/Archives/edgar/data/9015/000000901500000054/0000009015-00-000054-index.html"
     )
 
 
@@ -704,51 +698,7 @@ def test_index_url_for_base_url_handling() -> None:
     )
     assert (
         url
-        == "https://www.sec.gov/Archives/edgar/data/320193/000032019323000106/-index.html"
-    )
-
-
-# --- inventory_entry_id --------------------------------------------------------
-
-
-def test_inventory_entry_id_deterministic() -> None:
-    acc = AccessionNumber("0000320193-23-000106")
-    e1 = inventory_entry_id(acc, "document_format", 0, "d" * 64)
-    e2 = inventory_entry_id(acc, "document_format", 0, "d" * 64)
-    assert e1 == e2
-    assert len(e1) == 64
-
-
-def test_inventory_entry_id_equals_canonical_json() -> None:
-    acc = AccessionNumber("0000320193-23-000106")
-    sha = "a" * 64
-    expected = hashlib.sha256(
-        json.dumps(
-            [str(acc), "document_format", 0, sha],
-            sort_keys=True,
-            separators=(",", ":"),
-            ensure_ascii=True,
-        ).encode()
-    ).hexdigest()
-    assert inventory_entry_id(acc, "document_format", 0, sha) == expected
-
-
-def test_inventory_entry_id_varies_by_inputs() -> None:
-    acc = AccessionNumber("0000320193-23-000106")
-    e = [
-        inventory_entry_id(acc, "document_format", 0, "d" * 64),
-        inventory_entry_id(acc, "data_file", 0, "d" * 64),
-        inventory_entry_id(acc, "document_format", 1, "d" * 64),
-        inventory_entry_id(acc, "document_format", 0, "e" * 64),
-    ]
-    assert len(set(e)) == 4
-
-
-def test_inventory_entry_id_accession_normalization() -> None:
-    assert inventory_entry_id(
-        AccessionNumber("0000320193-23-000106"), "document_format", 0, "d" * 64
-    ) == inventory_entry_id(
-        AccessionNumber.from_any("000032019323000106"), "document_format", 0, "d" * 64
+        == "https://www.sec.gov/Archives/edgar/data/320193/000032019323000106/0000320193-23-000106-index.html"
     )
 
 
@@ -788,8 +738,3 @@ def test_no_pipeline_dependency_import() -> None:
         if m and ("document_storage" in m or m.startswith("pipelines."))
     ]
     assert not forbidden, f"cohort.py imports forbidden modules: {forbidden}"
-
-
-def test_inventory_entry_model_is_importable() -> None:
-    """S2/S5 may reference the parser output contract defined here."""
-    assert InventoryEntry.accession is not None

@@ -83,7 +83,8 @@ One row per canonical accession:
 
 ### `entries`
 
-One row per source table row, across both index tables:
+One row per child-file row in the two index tables. The `Complete submission text
+file` envelope row is excluded here and stored as accession-level bundle metadata.
 
 There is no asset-count cap, target-based filtering, or per-response byte cap: every
 body row observed in both tables is stored, including rows with no href and repeated
@@ -97,7 +98,7 @@ by S4.
 | `entry_id` | `string` | SHA-256 of canonical `[str(accession), table_kind, row_ordinal, index_sha256]`. |
 | `accession` | `string` | Parent accession. |
 | `table_kind` | `string` | `document_format` or `data_file`. |
-| `row_ordinal` | `int32` | Zero-based body-row order within its source table. |
+| `row_ordinal` | `int32` | Zero-based source body-row order within its table; the excluded bundle row still occupies its source position. |
 | `sequence` | `int32`, nullable | Source sequence; may be absent or duplicated. |
 | `document_type` | `string`, nullable | Source statutory type. |
 | `document_label` | `string`, nullable | Visible text in the source Document cell. |

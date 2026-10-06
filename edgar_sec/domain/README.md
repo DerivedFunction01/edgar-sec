@@ -25,6 +25,7 @@ the storage layer.
 | `identity.py` | CIK and accession identity primitives |
 | `sec_urls.py` | EDGAR URL construction and archive URL parsing |
 | `document/` | Document locator, occurrence, and acquisition records, flat block stream, acquisition route |
+| `document_inventory/` | Shared inventory records and durable entry schema |
 | `filing_catalog/` | Catalog schemas, version identifiers, planning filter vocabulary |
 | `forms/` | Form/cover vocabulary, schemas, family aliases, body evidence, evaluator decisions |
 | `submissions/` | Submission dataset schema and record models |
@@ -68,7 +69,9 @@ files do not re-export child symbols.
 - EDGAR URL constants, builders, and the archive-URL parser —
   `edgar_sec/domain/sec_urls.py`.
 - The per-package surfaces are documented in each subpackage README:
-  [document](document/README.md), [filing_catalog](filing_catalog/README.md),
+  [document](document/README.md),
+  [document_inventory](document_inventory/README.md),
+  [filing_catalog](filing_catalog/README.md),
   [forms](forms/README.md), [submissions](submissions/README.md),
   [taxonomy](taxonomy/README.md).
 

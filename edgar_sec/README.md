@@ -36,6 +36,7 @@ Layer 0  foundation/   runtime, memory, hashing, compression, settings, scanners
 | 1 | [`domain/`](domain/README.md) | layer root; contracts only |
 | 1 | [`domain/identity.py`](domain/README.md) | `Cik`, `AccessionNumber` |
 | 1 | [`domain/document/`](domain/document/README.md) | document and occurrence record contracts, acquisition results |
+| 1 | [`domain/document_inventory/`](domain/document_inventory/README.md) | shared inventory records and durable entry schema |
 | 1 | [`domain/forms/`](domain/forms/README.md) | cover/form vocabulary: checkmarks, family aliases, field schemas, body evidence |
 | 1 | [`domain/taxonomy/`](domain/taxonomy/README.md) | jurisdictions, legal forms, family vocabulary |
 | 1 | [`domain/submissions/`](domain/submissions/README.md) | submission schemas |
@@ -53,10 +54,11 @@ Layer 0  foundation/   runtime, memory, hashing, compression, settings, scanners
 | 3 | [`engine/selection/`](engine/selection/README.md) | Phase 2 target-plan selection: features, policy, selector, source |
 | 3 | [`engine/company_family/`](engine/company_family/README.md) | name normalization and universe-scale family assignment |
 | 3 | [`engine/submissions/`](engine/submissions/README.md) | submission unrolling, profiling, building |
+| 3 | [`engine/index_pages/`](engine/index_pages/README.md) | pure SEC filing index-page HTML parser |
 | 5 | [`apps/`](apps/README.md) | layer root; read-only operator-facing consumers of published artifacts |
 | 5 | [`apps/viewer/`](apps/viewer/README.md) | the dataset viewer: a lazy filesystem explorer, manifest-driven virtual datasets, paged DuckDB reads, a guarded read-only SQL console |
 | 4 | [`pipelines/`](pipelines/README.md) | layer root; orchestration |
-| 4 | [`pipelines/document_inventory/`](pipelines/document_inventory/README.md) | cohort projection, index-page capture and replay |
+| 4 | [`pipelines/document_inventory/`](pipelines/document_inventory/README.md) | cohort projection, index-page capture/replay, broker-backed worker coordination |
 | 4 | [`pipelines/metadata_sync/`](pipelines/metadata_sync/README.md) | Submissions metadata ingest, chunked and resumable |
 | 4 | [`pipelines/filing_catalog/`](pipelines/filing_catalog/README.md) | Zero-network catalog materialization and target planning |
 | 4 | [`pipelines/document_storage/`](pipelines/document_storage/README.md) | Fetch, normalize, delegate, checkpoint, merge, consolidate |

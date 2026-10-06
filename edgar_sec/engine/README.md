@@ -21,6 +21,7 @@ own the domain vocabulary or schemas it consumes (that is `edgar_sec/domain`).
 | :--- | :--- |
 | `selection/` | Quota-driven candidate selection for the filing-catalog pipeline. |
 | `submissions/` | SEC submissions JSON to canonical row dicts. |
+| `index_pages/` | SEC filing index-page HTML to typed inventory outcomes. See `index_pages/README.md`. |
 | `company_family/` | Deterministic company-family name normalization and clustering. |
 | `document/` | Input preparation, SGML unpacking, HTML cleaning/projection, page markers, signatures, whitespace. See `document/README.md`. |
 | `tables/` | Table masking, HTML→ASCII rendering and geometry, false-table rejection, boundary resolution, financial-cell vocabulary. See `tables/README.md`. |
@@ -38,7 +39,7 @@ Each package's README carries its module→responsibility layout and its own del
   gate failure, not a lint warning. Within the layer, sibling sub-packages may import each
   freely — `forms/` imports from `document/`, `reflow/`, and `tables/`.
 - **Purity, with named exceptions.** The transformation packages (`document/`, `tables/`,
-  `reflow/`, `forms/`, `submissions/`) do not fetch, do not write artifacts, and do
+  `reflow/`, `forms/`, `submissions/`, `index_pages/`) do not fetch, do not write artifacts, and do
   not read ambient configuration. Two sub-packages are deliberate exceptions, and both
   go through `infra/storage` rather than owning a write path of their own —
   `selection/features.py` materialises a feature snapshot and `selection/policy.py`
@@ -73,6 +74,7 @@ Each sub-package README lists its own public surface. At the layer level:
 - Table protection, rendering, rejection, and boundary resolution — `tables/`.
 - Quota selection and company-family clustering — `selection/`, `company_family/`.
 - Submission metadata rows — `submissions/`.
+- `parse_html_index` and its parser fingerprint — `index_pages/parser.py`.
 
 There is no barrel re-export anywhere in this layer. `edgar_sec/engine/__init__.py` is a
 docstring only, and so is every sub-package `__init__.py`, per `AGENTS.md` §1.2. Consumers

@@ -3,7 +3,9 @@
 ## Owner and status
 
 - Owning stage in [implementation.md](../implementation.md): **S1**.
-- Status: schema and contract design before the parser and worker stages.
+- Status: implemented. Shared records and the durable entry schema live in
+  `edgar_sec.domain.document_inventory`; catalog readers and projection remain in the
+  pipeline.
 - Depends on: the existing `filing_catalog` bundle interface and accession identity
   rules; S0 later audits the resulting URL and source-page assumptions.
 - Enables: S2 raw-page capture and S0 audit sampling.
@@ -72,13 +74,12 @@ class InventoryCohort:
     sources: tuple[AccessionSource, ...]
     work_items: tuple[IndexWorkItem, ...]
 
-class CohortInputError(ValueError):
-    code: Literal[
-        "invalid_bundle", "invalid_identity", "invalid_date", "missing_form",
-        "conflicting_form", "conflicting_filing_date", "conflicting_report_date",
-    ]
-    accession: AccessionNumber | None
 ```
+
+These immutable records and `inventory_entry_id` live in
+`edgar_sec.domain.document_inventory.models`; the versioned durable entry schema lives
+in its `schemas.py`. `CohortInputError`, the source readers, and the projection remain
+in `pipelines.document_inventory.cohort` because they validate and consume artifacts.
 
 `InventoryEntry` is the S3 parser output after page context is applied:
 
@@ -148,6 +149,11 @@ inventory_entry_id(
     index_sha256: str,
 ) -> str
 ```
+
+The index page filename is `{hyphenated_accession}-index.html` inside the compact
+accession directory, e.g. `.../320193/000032019323000106/0000320193-23-000106-index.html`.
+Use the supplied archive base and an unpadded archive CIK; do not request a file named
+`-index.html`.
 
 The reader validates the source-specific manifest and all declared target parts and
 yields validated rows; it does not read document locators or perform network work.

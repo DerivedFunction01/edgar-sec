@@ -7,8 +7,8 @@
   worker/coordinator scaffold can be implemented against S3 types before parsing is
   complete; operational runs require the S3 parser body.
 - Depends on: S1 cohort contract, S2 index fixture store, and S3 typed contract.
-- S7b review artifacts are the prerequisite for beginning the S3 parser body; S0 runs
-  alongside it and supplies final parser/resource evidence.
+- S7b review artifacts support S3 parser iteration; S0 runs alongside it and supplies
+  final parser/resource evidence.
 - Non-blocking for S4 implementation: S5 snapshot writer can be developed against
   synthetic typed outcomes and later consumes S4's stream.
 
@@ -70,9 +70,9 @@ new chunk attempt for the failed accession rather than adding a second HTTP retr
    in-flight window is retained.
 3. Each worker fetches through `SecBrokerClient`, then parses
    `parse_html_index(IndexPageInput(accession, index_url, html_bytes))`. It returns one
-   typed parse outcome or typed fetch/worker failure. Raw HTML stays in the process and
-   never crosses production IPC. The S3 stub's `NotImplementedError` is temporarily
-   classified as `parser_not_implemented`, not as an empty result or parser diagnostic.
+typed parse outcome or typed fetch/worker failure. Raw HTML stays in the process and
+    never crosses production IPC. A task exception is typed `worker_error`, never an empty
+    result.
 4. The coordinator processes one deterministic chunk at a time, writes outcomes and
    zero-or-more entries incrementally into its transient Parquet attempt as tasks
    complete, and immediately refills each freed worker slot.
@@ -189,11 +189,16 @@ layers and shared-storage helpers named here.
 
 | Inventory module | Reuses (do not reimplement) | Owns |
 |---|---|---|
+| `domain/document_inventory/models.py` | `domain.identity`, `foundation.serialization` | Shared S1 cohort and S3 parser records; entry identity |
+| `domain/document_inventory/schemas.py` | PyArrow schema primitives | Versioned durable entry schema |
+| `engine/index_pages/parser.py` | Domain inventory records, `engine.document.html.tree`, `domain.sec_urls`, `foundation.hashing` | Pure index-page transformation and parser fingerprint |
 | `paths.py` | `foundation.runtime.paths.ProjectPaths`, `current_pointer_path`, `transient_dir` | Inventory run/chunk/attempt path methods; never `DocumentStoragePaths` |
 | `run_manifest.py` | `infra.storage.atomic.atomic_write_json`, `foundation.serialization.canonical_json`, `foundation.hashing.file_sha256` | Run identity, work-order/chunk-size/schema pins, manifest validation |
-| `checkpoint.py` | `infra.storage.parquet.StagedParquetWriter`, `read_parquet_schema`, `count_parquet_rows`, `infra.storage.atomic.atomic_write_text`, `infra.storage.duckdb.connect`/`sql_path_list` | Outcome/entry Parquet schemas, attempt validation, chunk pointer advance |
-| `worker.py` | `infra.broker.sec_broker.SecBrokerClient`, `managed_broker`, `foundation.runtime.resources.derive_resources`/`auto_worker_count`, `foundation.runtime.memory.reclaim` | Process pool, broker adapter, outcome typing, bounded in-flight scheduling |
-| `cohort.py` | `domain.filing_catalog.schemas`, `domain.identity`, `domain.sec_urls`, `foundation.serialization` | S1 cohort projection, `InventoryEntry`, `IndexWorkItem` |
+| `checkpoint.py` | Domain entry schema, broker/worker failure records, `infra.storage.parquet`, atomic IO, DuckDB validation helpers | Transient outcome schema/status, attempt validation, chunk pointer advance |
+| `broker.py` | `infra.broker.sec_broker.SecBrokerClient` | Picklable broker adapter, response envelope, fetch-failure record |
+| `worker.py` | Broker adapter, engine parser, `foundation.runtime.memory.reclaim` | Module-level per-accession process task and worker-failure record |
+| `coordinator.py` | Broker daemon, worker task, checkpoint/run manifest, `derive_resources`, process pool | Bounded scheduling, chunk orchestration, resume, retry |
+| `cohort.py` | `domain.filing_catalog.schemas`, domain inventory records, `domain.identity`, `domain.sec_urls` | S1 cohort reading and projection |
 
 S4 does not import `pipelines.document_storage` or any frozen module. It does not
 add inventory-specific properties to the foundation path object, and it never reaches

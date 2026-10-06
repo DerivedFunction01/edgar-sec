@@ -1,117 +1,37 @@
 """Cohort projection and inventory-domain contracts for the document_inventory pipeline.
 
 The catalog is a row-oriented input; the inventory boundary converts its string dates
-and identities into validated values before grouping, then emits one work item per accession.
+and identities into validated values before grouping, then emits one work item per
+accession. Shared immutable records live in `domain.document_inventory.models`.
 """
 
 from __future__ import annotations
 
-import hashlib
 from collections.abc import Iterable, Iterator
-from dataclasses import dataclass
 from datetime import date
 from pathlib import Path
 
 import pyarrow as pa
 import pyarrow.parquet as pq
 
+from edgar_sec.domain.document_inventory.models import (
+    AccessionInventory,
+    AccessionSource,
+    CohortObservation,
+    IndexWorkItem,
+    InventoryCohort,
+)
 from edgar_sec.domain.filing_catalog.schemas import TARGET_COLUMNS
 from edgar_sec.domain.identity import AccessionNumber, Cik
-from edgar_sec.domain.sec_urls import archives_url
 from edgar_sec.foundation.serialization import canonical_json
 from edgar_sec.infra.storage.parquet import count_parquet_rows
 
 __all__ = [
-    "AccessionInventory",
-    "AccessionSource",
     "CohortInputError",
-    "CohortObservation",
-    "IndexWorkItem",
-    "InventoryCohort",
-    "InventoryEntry",
-    "inventory_entry_id",
     "index_url_for",
     "project_cohort",
     "read_catalog_observations",
 ]
-
-
-@dataclass(frozen=True, slots=True)
-class CohortObservation:
-    """One filing-cohort row projected to validated inventory values.
-
-    Retained so provenance of each source contribution is auditable;
-    projection collapses it into one work item per accession.
-    """
-
-    cohort_source_id: str
-    accession: AccessionNumber
-    source_cik: Cik
-    form: str
-    filing_date: date
-    report_date: date | None
-
-
-@dataclass(frozen=True, slots=True)
-class AccessionInventory:
-    """One row per canonical accession after filing-fact validation."""
-
-    accession: AccessionNumber
-    filing_cik: Cik
-    source_ciks: tuple[Cik, ...]
-    form: str
-    filing_date: date
-    report_date: date | None
-    cohort_sources: tuple[str, ...]
-
-
-@dataclass(frozen=True, slots=True)
-class AccessionSource:
-    """One row per unique (accession, source_cik) relationship."""
-
-    accession: AccessionNumber
-    source_cik: Cik
-    first_seen_by: str
-
-
-@dataclass(frozen=True, slots=True)
-class IndexWorkItem:
-    """One unit of physical work: observe one index page for one accession."""
-
-    accession: AccessionNumber
-    index_url: str
-
-
-@dataclass(frozen=True, slots=True)
-class InventoryCohort:
-    """Projection of a catalog bundle or fixture to accession-level work."""
-
-    observations: tuple[CohortObservation, ...]
-    accessions: tuple[AccessionInventory, ...]
-    sources: tuple[AccessionSource, ...]
-    work_items: tuple[IndexWorkItem, ...]
-
-
-@dataclass(frozen=True, slots=True)
-class InventoryEntry:
-    """S3 parser output after page context is applied.
-
-    One row per Document Format Files / Data Files body row; identity is
-    SHA-256 of canonical JSON for [accession, table_kind, row_ordinal, index_sha256].
-    """
-
-    entry_id: str
-    accession: AccessionNumber
-    table_kind: str
-    row_ordinal: int
-    sequence: int | None
-    document_type: str | None
-    document_label: str | None
-    description: str | None
-    filename: str | None
-    href: str | None
-    archive_url: str | None
-    byte_size: int | None
 
 
 class CohortInputError(ValueError):
@@ -492,21 +412,13 @@ def _raise_duplicate_conflict(
 
 
 def index_url_for(accession: AccessionNumber, *, archive_base_url: str) -> str:
-    """Build the ``-index.html`` URL from the accession's identity only.
+    """Build the canonical index-page URL from the accession's identity.
 
     The archive CIK is the integer prefix, so a leading-zero prefix is
-    emitted unpadded; the directory is the unhyphenated accession.
+    emitted unpadded; the directory is compact and filename is hyphenated.
     """
     archive_cik = int(accession.normalized[:10])
-    return archives_url(archive_cik, accession.normalized, "-index.html")
-
-
-def inventory_entry_id(
-    accession: AccessionNumber,
-    table_kind: str,
-    row_ordinal: int,
-    index_sha256: str,
-) -> str:
-    """Deterministic entry identity: SHA-256 of canonical JSON for the four identity fields."""
-    payload = [str(accession), table_kind, row_ordinal, index_sha256]
-    return hashlib.sha256(canonical_json(payload).encode("utf-8")).hexdigest()
+    return (
+        f"{archive_base_url.rstrip('/')}/{archive_cik}/{accession.normalized}/"
+        f"{accession}-index.html"
+    )

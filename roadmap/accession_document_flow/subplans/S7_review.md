@@ -6,13 +6,13 @@
 - Frontloaded fixture CLI: [S7a](S7a_inventory_cli.md). Parser review loop:
   [S7b](S7b_parser_review_bootstrap.md).
 - Status: staged review design. S7a creates/fills fixtures; S7b builds parser review
-  artifacts before S3's parser body; later review surfaces follow their source
-  artifacts.
+  artifacts to inspect the existing S3 parser pass and later iterations; later review
+  surfaces follow their source artifacts.
 - S7a depends on S1/S2 and `filing_catalog` plan loading. S7b depends on S7a, S2, and
   the S3 type contract. Later S7 surfaces depend on S5/S6 and (for processing review)
   S9/S10.
-- S7b is blocking for S3 parser implementation; S0 audit remains independent and can
-  run in parallel.
+- S7b supplies iterative review for S3; the initial parser pass can run against the
+  committed standard-layout fixture. S0 remains independent and gates final coverage.
 - S7c is target-plan comparison and snapshot inspection after S5/S6. S7d is
   acquisition/processing review after S9/S10.
 
@@ -20,8 +20,8 @@
 
 Provide offline review and inspect APIs in dependency-sized slices. **S7a** provides
 the fixture CLI lifecycle. **S7b** builds `inventory review-artifacts` from those
-fixtures before the parser body exists, so S3 can iterate through pinned pages. A
-parser-run `inventory review` diff is optional after artifact runs exist. Later S7
+fixtures and parser outputs so S3 can iterate through pinned pages. A parser-run
+`inventory review` diff is optional after artifact runs exist. Later S7
 surfaces compare target plans, inspect S5 snapshots, and review acquisition/processing
 artifacts. Do not build the interactive wizard here.
 
@@ -29,15 +29,18 @@ artifacts. Do not build the interactive wizard here.
 
 `source.inert.html` generates a safe, inspectable preview of the raw index page:
 
-- **Markup sanitization**: Previews are generated from sanitized, rebuilt markup.
-  Scripts (`<script>`), inline/remote styles (`<style>`, `<link rel="stylesheet">`),
-  external resources (`<img>`, `<video>`, `<audio>`), event handlers (`onload`,
-  `onclick`), frames (`<iframe>`, `<frame>`), and form elements are stripped.
-- **Inert links**: Hyperlinks are **not** rendered with active or pseudo-URI anchors
-  (do not use `href="javascript:void(0)"`). Link anchors are converted to plain
-  inert text or have `href` stripped entirely.
-- **Defense in depth**: Previews include `<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; sandbox;">`.
-  Sanitization is the primary guarantee; CSP is defense in depth.
+- **Structural sanitizer**: Parse with the existing selectolax-backed
+  `engine.document.html.tree.parse_html`, then rebuild with an allowlist that preserves
+  table headers, rows, cells, and visible filing-page text. Drop active-content and
+  embedded-resource subtrees, unwrap other unknown tags, and emit no source attributes.
+  Escape all text nodes.
+  Do not use regex stripping: it is not a safe HTML parser for malformed or adversarial
+  source markup.
+- **Inert links**: Source anchors are rendered as plain text; source URLs and all other
+  source attributes are omitted. Only renderer-generated markup is emitted.
+- **Defense in depth**: Previews include a renderer-generated CSP with `default-src
+  'none'`, `object-src 'none'`, `base-uri 'none'`, `form-action 'none'`, and
+  `sandbox`. Sanitization is the primary guarantee; CSP is defense in depth.
 - **Zero HTTP**: All review operations read solely from local fixture SQLite stores or
   published Parquet snapshots; network calls are strictly banned.
 
@@ -69,9 +72,9 @@ artifacts. Do not build the interactive wizard here.
   processing outcomes against pinned fixture and processor fingerprints. It does not
   affect S7b's parser-development dependency.
 
-S7b is usable while `parse_html_index` remains a failing-closed stub: it emits the
-inert source preview and records `parser_not_implemented` without inventing entries.
-The command and artifacts are then reused unchanged as S3 parsing is implemented.
+S7b reviews the implemented `engine.index_pages.parser.parse_html_index` against pinned
+fixture bytes: it emits the inert source preview and records typed parser outcomes
+without inventing entries. Parser iteration remains owned by S3.
 
 ## Review output shapes
 
@@ -105,8 +108,9 @@ status, and digests for generated review files.
 
 ## CLI routes
 
-S7a fixture routes are available first. S7b review routes are available before S3's
-parser body; later S7 routes are added only after their pinned artifacts exist:
+S7a fixture routes are available first. S7b review routes consume the S3 type contract
+and pinned fixture pages; later S7 routes are added only after their pinned artifacts
+exist:
 
 ```text
 inventory fixture create --fixture <id> --catalog-plan <id>
@@ -126,8 +130,10 @@ inspection remain blocked on those artifacts.
 
 - Deterministic manifests: identical fixture + parser version reproduces byte-identical
   review artifacts.
-- Safe source rendering: all links are inert text; script and style tags are stripped;
-  CSP header is embedded; zero `javascript:` URIs exist.
+- Safe source rendering: hostile and malformed markup cannot preserve active tags,
+  source attributes, or URL-bearing elements; text is escaped, and the generated CSP is
+  present. Tests cover event handlers, obfuscated URL schemes, `srcdoc`, SVG/MathML,
+  raw-text elements, and external-resource tags.
 - Network instrumentation confirms exactly zero HTTP requests during all review runs.
 - If implemented, parser diffs detect row additions, deletions, field modifications,
   and diagnostic shifts across parser versions for the same fixture response.
@@ -145,4 +151,5 @@ inspection remain blocked on those artifacts.
 S7a fixture create/fill/list works without the originating catalog plan. S7b
 `review-artifacts` serves source-page parse output from pinned fixtures; optional
 `review` compares parser runs, and later `inspect`/plan review follow their artifacts.
-Source HTML is sanitized into inert previews without active anchors or remote loads.
+Source HTML is structurally parsed and rebuilt as inert previews without source
+attributes, active anchors, or remote loads; sanitizer tests cover hostile markup.

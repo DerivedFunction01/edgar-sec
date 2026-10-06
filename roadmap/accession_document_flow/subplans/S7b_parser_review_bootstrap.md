@@ -5,14 +5,14 @@
 - Cross-cutting S7 slice after the CLI/fixture lifecycle in
   [S7a](S7a_inventory_cli.md).
 - Depends on S7a, S2's fixture reader, and S3's typed parser contract.
-- Enables S3 iterative parser implementation; S0 evidence and S0-selected real fixtures
-  arrive in parallel and are required for final parser acceptance.
+- Enables iterative S3 parser review; S0 evidence and S0-selected real fixtures arrive
+  in parallel and are required for final parser acceptance.
 - Does not depend on S4 production workers, S5 snapshots, S6 target plans, or S12.
 
 ## Objective
 
-Make captured index pages inspectable before production parsing starts. Parser-run
-comparison is optional follow-up development tooling, not a prerequisite for S3. This
+Make captured index pages and parser outcomes inspectable during parser development.
+Parser-run comparison is optional follow-up development tooling, not a prerequisite for S3. This
 review loop is not the production inventory build path; it makes no SEC requests and
 does not publish snapshot data.
 
@@ -27,12 +27,11 @@ inventory review --base <review-run> --new <review-run> [--output <new-directory
 
 `review-artifacts` selects captured accession/key pairs in deterministic accession
 order, obtains exact uncompressed response bytes from the S2 reader, and calls
-`parse_html_index(IndexPageInput(...))`. A still-unimplemented parser produces the
-explicit `parser_not_implemented` case status; it must not fabricate an empty parsed
-page. Source preview and failure metadata can still be reviewed while S3 is being
-implemented. Once parsing works, the same command exposes every parser iteration
-against the same pinned fixture bytes. An optional `review` command may compare those
-runs offline after artifact shape stabilizes.
+`engine.index_pages.parser.parse_html_index` with the domain `IndexPageInput` record.
+A parser refusal produces an explicit failure
+case status; it must not fabricate an empty parsed page. Source preview and failure
+metadata remain reviewable when a parser refuses a page. The command exposes parser iterations against the same pinned fixture bytes. An
+optional `review` command may compare those runs offline after artifact shape stabilizes.
 
 ## Artifacts
 
@@ -48,15 +47,20 @@ Each manifest row pins fixture ID, accession, request URL, response SHA-256, par
 fingerprint, status, and digests for files that were written. `observations.json`
 records the typed parser status, bundle/XBRL candidate metadata where available, and
 bounded diagnostics (`items`, `suppressed_count`). `entries.csv` uses the S3
-`InventoryEntry` fields in `(table_kind, row_ordinal)` order. A case whose parser is
-unimplemented or fails has no fabricated `entries.csv`; the failure is recorded in
+`InventoryEntry` fields in `(table_kind, row_ordinal)` order. A refused or failed parse
+has no fabricated `entries.csv`; the failure is recorded in
 the observation and manifest. The output directory must be new or empty, and each
 case file is written atomically.
 
-`source.inert.html` is rebuilt from the captured source with scripts, styles,
-external resources, active links, event handlers, frames, and forms removed. It uses
-a restrictive CSP as defense in depth. Review operations read only the local fixture
-store and make zero HTTP requests.
+`source.inert.html` is rebuilt with the existing selectolax-backed
+`engine.document.html.tree.parse_html`; no new HTML dependency is needed. Preserve
+table headers, rows, cells, and visible filing-page text with an allowlist; discard
+active-content and embedded-resource subtrees, and emit no source attributes. Rendered
+text is escaped; links are plain text. Add only renderer-generated document structure
+and a restrictive CSP.
+Regex tag/attribute stripping is not an acceptable sanitizer: malformed markup and
+attribute syntax make it an unreliable security boundary. Review operations read only
+the local fixture store and make zero HTTP requests.
 
 ## Execution and resource boundaries
 
@@ -85,13 +89,17 @@ deterministically ordered and contains no source HTML.
 
 ## Tests
 
-- Stub path creates source previews and explicit `parser_not_implemented` status,
-  never successful empty entries.
+- A refused page creates source previews and an explicit failure status, never
+  successful empty entries.
 - Replay passes exact uncompressed bytes and matching response digest into the parser
   input; a fixture database is validated once per run.
 - Offline-only execution is verified by a transport spy that rejects HTTP.
-- Sanitized previews have no active URL, script, style, form, event-handler, or remote
-  resource; the CSP is present.
+- Preview generation parses HTML structurally and rebuilds only allowlisted markup;
+  it does not sanitize with regex or preserve any source attribute.
+- Hostile/malformed markup cases (script/style bodies, event attributes, encoded or
+  mixed-case URL schemes, `srcdoc`, SVG/MathML, frames, forms, and embedded resources)
+  produce no active element, source attribute, or network load in the preview; the
+  renderer-generated CSP is present.
 - Artifact manifests pin fixture/page/parser identities and hash written files;
   manifest order is stable across worker completion orders.
 - One failed case preserves sibling artifacts and makes the command return nonzero.
@@ -104,8 +112,8 @@ deterministically ordered and contains no source HTML.
 
 ## Acceptance
 
-Before the S3 parser body starts, users can select an S2 fixture and run
-`review-artifacts` to inspect its inert source and current parser status. As S3 evolves,
-identical fixture bytes produce reviewable, parser-fingerprinted results. A run-diff
-command is optional; full S7 target-plan, snapshot, and acquisition review surfaces
-remain downstream of their own artifacts.
+Users can select an S2 fixture and run `review-artifacts` to inspect its inert source
+and current parser status/results. As S3 evolves, identical fixture bytes produce
+reviewable, parser-fingerprinted results. A run-diff command is optional; full S7
+target-plan, snapshot, and acquisition review surfaces remain downstream of their own
+artifacts.

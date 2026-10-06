@@ -67,9 +67,9 @@ intentionally left open until reviewed S9/S10 outputs exist.
 |---|---|---|
 | Cohort, inventory, target-plan, fixture, and manifest schemas | Yes; exact row grains, fields, identity inputs, and refusal rules are specified below. | S0 validates observed index fields; it does not block S1/S2 contract implementation. |
 | Index fetching and parallel execution | Yes; one brokered network stage, a bounded CPU process pool, and parent-owned writers. | Per-worker memory estimate is measured during the audit. |
-| Index parser | Contract scaffold and review loop can be built first; parser implementation can start after S7b. | S0 finalizes era/table variants and parser acceptance coverage. |
+| Index parser | Initial structural pass may proceed from the committed standard-layout fixture; S7b supplies the iterative review loop. | S0 finalizes era/table variants and parser acceptance coverage. |
 | Fixture CLI lifecycle | S7a creates, fills/extends, and lists fixtures from catalog plans before parser work. | Fill/refresh semantics and fixture-manifest integrity are refined in S7a. |
-| Parser review CLI/artifacts | S7b consumes S7a fixtures and the S3 type contract before parser processing. | Parsed results and real-page comparisons wait for S3 body/S0 fixtures; stub-status and source preview work immediately. |
+| Parser review CLI/artifacts | S7b consumes S7a fixtures and the S3 type contract to review parser iterations. | Stub-status works if parsing is still unimplemented; real-page acceptance waits for S0 fixtures. |
 | Target planning | Yes; profile grammar, matching order, outcomes, and independent plan bundle. | XBRL package availability label depends on S0 evidence. |
 | Document acquisition, processing, review | Yes; in-memory contracts, fixture evidence, fingerprints, and review outputs. | Exact processing behavior is exercised on captured document payloads in S9–S10. |
 | Published fetched-payload storage | No, by design. | S11 follows representative acquisition/processing review and requires its own approval. |
@@ -98,7 +98,11 @@ bundle and selected by sequence; inventory does not fetch the bundle.
 
 ### Modern accession: `0000200406-26-000016`
 
-The `Document Format Files` table has direct links, including:
+The `Document Format Files` table includes direct links and an inline-XBRL viewer
+link. For sequence 1, the observed href is `/ix?doc=/Archives/edgar/data/.../jnj-20251228.htm`;
+its `doc` parameter names the direct archive document. Resolve and validate that
+same-accession path rather than treating `/ix` as the document URL. Other file rows
+link directly into the archive:
 
 | Seq | Type | Filename | Size |
 |---:|---|---|---:|
@@ -106,7 +110,9 @@ The `Document Format Files` table has direct links, including:
 | 2 | `EX-4.B` | `ex4b-descriptionofcapitals.htm` | 71 KB |
 | 3 | `EX-21` | `ex21-subsidiariesxform10xk.htm` | 203 KB |
 
-The complete submission text file is 24.8 MB. The directory `index.json`
+The complete submission text file is also advertised in the `Document Format Files`
+table as `0000200406-26-000016.txt` (24,877,468 bytes). It is bundle metadata, not a
+child entry. The directory `index.json`
 contains concrete names and an `*-xbrl.zip`, but does not provide the statutory
 types that the HTML page provides.
 
@@ -453,18 +459,17 @@ process count scales CPU work without creating independent SEC rate limits:
    returns before live HTTP and rate-slot acquisition.
 2. S4 strictly executes index discovery: it fetches and parses `-index.html` pages
    and **never** synthesizes `InventoryEntry` rows from catalog hints or filing
-   summaries. Entries are strictly factual rows observed in `Document Format Files`
-   or `Data Files`. S4 does not infer form capability rules or bypass decisions.
+   summaries. Child entries are factual rows from `Document Format Files` and
+   `Data Files`; the complete-submission envelope row is separate bundle metadata.
+   S4 does not infer form capability rules or bypass decisions.
 3. A `spawn`-context worker receives one accession and index URL through a
    picklable inventory-owned wrapper over infra `SecBrokerClient`, fetches and parses
    in the child, then returns `IndexParseOutcome`, `IndexFetchFailure`, or
    `IndexWorkerFailure`. The transient envelope contains response size and exact
    bytes; raw HTML never returns over production IPC.
-4. The worker scaffold can be implemented against the S3 type contract before its
-   parser body. With the placeholder parser, `NotImplementedError` is typed
-   `parser_not_implemented`; no snapshot is published. S7b parser review must land
-   before S3 parser implementation begins, while S0 evidence gathering runs in
-   parallel and gates final parser acceptance.
+4. The first S3 parser pass uses the committed standard-layout fixture. S7b supplies
+    fixture-backed iteration; parser refusals publish no snapshot. S0 evidence gathering
+    runs in parallel and gates final parser acceptance.
 5. There is no per-response byte cap or truncation. A process handles one full
    response and its parser working set; the derived worker count bounds concurrent
    response/parse sets. A pathological single page can exceed that estimate and
@@ -533,10 +538,11 @@ without importing those pipeline modules.
   version. Each case presents source URL/digest, a safe inert view of the source
   page, the parsed accession metadata, and the ordered observed rows. The source
   digest and parser version are included in `manifest.jsonl`.
-- **Sanitized inert previews**: `source.inert.html` is generated from sanitized, rebuilt
-  markup. Active scripts, external resources, styles, and event handlers are stripped.
-  Links are rendered as plain inert text without active or pseudo-URI anchors (no
-  `href="javascript:void(0)"`). CSP `default-src 'none'` is embedded as defense in depth.
+- **Sanitized inert previews**: `source.inert.html` uses the existing selectolax-backed
+  `engine.document.html.tree.parse_html` and a strict structural allowlist rebuild.
+  It drops active/resource subtrees, emits no source attributes, escapes text, and
+  renders links as plain text. Regex stripping is not an HTML security boundary. A
+  renderer-generated restrictive CSP is defense in depth; no new dependency is needed.
 - **Index review comparison** compares two parser runs by accession/table/row
   identity and reports added, removed, or changed type, sequence, description,
   filename, href, size, bundle metadata, and diagnostics. The raw page remains the
@@ -612,13 +618,13 @@ An append-only SQLite store for raw `-index.html` responses keyed by URL+digest,
 
 **Details:** [subplan](subplans/S3_index_parser.md)
 
-`parse_html_index()` over raw bytes: no network, SQLite, profile, `document_storage`, or snapshot imports. The contract scaffold exists; build S7b review artifacts after S7a fixture commands and before HTML processing. Parser implementation can start through the pinned fixture review loop while S0 gathers evidence; S0 evidence gates final rule/fixture acceptance. It emits all document/data-file rows and bundle metadata; unknown structure returns typed `unrecognized`, never a successful empty result. Details are in the subplan.
+Shared cohort/parser records and the durable entry schema live in `domain.document_inventory`; `engine.index_pages.parser.parse_html_index()` transforms raw bytes using the selectolax-backed tree, maps `Document Format Files` and `Data Files` columns by header, extracts the advertised bundle row separately, and resolves `/ix?doc=...` only after same-accession validation. It imports no pipeline or `document_storage` modules and performs no network or artifact access. S7b reviews the typed outcomes against fixtures; S0 evidence gates final rule/fixture acceptance. Unknown structure returns typed `unrecognized`, never a successful empty result. Details are in the subplan.
 
 ### S4 — Broker-backed inventory worker and bounded process pool
 
 **Details:** [subplan](subplans/S4_broker_worker.md)
 
-One `SecBroker` per run whose cache, rate limiter, and failure ledger all worker requests share; strict index discovery with no catalog-derived entry synthesis; a memory-derived process pool executing one accession per task without per-response caps; deterministic accession chunks persist as validated transient Parquet attempts with run-bound resumability. S5 consumes committed chunks into separate staging, sorts and publishes the canonical snapshot. S2 fixture capture is a separate research/replay path, not a production worker sink. No worker creates its own HTTP client or writes artifacts. Full paths, checkpoint, resource, and acceptance contracts are in the subplan.
+One `SecBroker` per run whose cache, rate limiter, and failure ledger all worker requests share; strict index discovery with no catalog-derived entry synthesis; a memory-derived process pool executing one accession per task without per-response caps; deterministic accession chunks persist as validated transient Parquet attempts with run-bound resumability. Broker adaptation, the module-level per-accession task, and chunk/run coordination are separate pipeline modules. S5 consumes committed chunks into separate staging, sorts and publishes the canonical snapshot. S2 fixture capture is a separate research/replay path, not a production worker sink. No worker creates its own HTTP client or writes artifacts. Full paths, checkpoint, resource, and acceptance contracts are in the subplan.
 
 ### S5 — Immutable inventory snapshot publication
 
@@ -636,7 +642,7 @@ Versioned JSON profiles in `policies/document_targets/` with mandatory `request_
 
 **Details:** [subplan](subplans/S7_review.md)
 
-S7a front-loads the `inventory fixture create/fill/list` lifecycle from `filing_catalog` plans. S7b builds offline `inventory review-artifacts` from those fixtures and the S3 type contract; it is required before the S3 parser body and does not wait for S5/S6. It records diagnostics in review observations and emits inert source previews. A parser-run diff command is optional. Later S7c surfaces compare target plans and inspect snapshots after S5/S6; S7d reviews acquisition/processing after S9/S10. Full contracts are in [S7a](subplans/S7a_inventory_cli.md), [S7b](subplans/S7b_parser_review_bootstrap.md), and [S7](subplans/S7_review.md).
+S7a front-loads the `inventory fixture create/fill/list` lifecycle from `filing_catalog` plans. S7b builds offline `inventory review-artifacts` from those fixtures and the S3 type contract; it supports parser iteration and does not wait for S5/S6. It records diagnostics in review observations and emits inert source previews. A parser-run diff command is optional. Later S7c surfaces compare target plans and inspect snapshots after S5/S6; S7d reviews acquisition/processing after S9/S10. Full contracts are in [S7a](subplans/S7a_inventory_cli.md), [S7b](subplans/S7b_parser_review_bootstrap.md), and [S7](subplans/S7_review.md).
 
 ### S8 — Snapshot vacuum and lookup-index compaction
 
@@ -671,11 +677,10 @@ A small artifact-oriented CLI surface for snapshot/CIK queries, explicit-retenti
 ## 7. Dependency Graph and Parallel Planning
 
 ```text
-S1 cohort/schema ─> S2 raw index-page capture ─┬─> S0 evidence audit ───────────────┐
-                                               └─> S7a fixture CLI ─> S7b parser review ─> S3 parser work
-S1 / filing_catalog plan ────────────────────────> S7a fixture CLI                  │
-S3 typed contract ────────────────────────────────────────> S7b parser review       │
-S0 evidence ────────────────────────────────────────────────────────────────────────┴─> S3 final rules/acceptance
+S1 cohort/schema ─> S2 raw index-page capture ─┬─> S0 evidence audit ──────────────────────┐
+                                               └─> S7a fixture CLI ─> S7b parser review ─┐ │
+S1/S3 typed contract ─> S3 standard-layout parser ──────────────────────────────────────────┴─> S3 iteration/final rules
+S0 evidence ─────────────────────────────────────────────────────────────────────────────────> S3 final acceptance
 S3 typed contract ─> S4 worker scaffold ─┐
 S3 parser work ──────────────────────────┴─> S4 integrated worker ──────────────────┐
 S1 ─> S6 catalog-direct contract/implementation (independent branch)
@@ -690,8 +695,9 @@ S1–S11 ───────────────────────�
 ```
 
 Implementation is deliberately staged rather than linear: after S1/S2, S0 data
-gathering and S7a fixture-CLI construction proceed independently. S7b parser review
-follows S7a and enables S3 parser work; S3 consumes S0 evidence as it arrives. S4 worker code and S5 schema/query
+gathering and S7a fixture-CLI construction proceed independently. The initial S3
+parser uses a standard-layout fixture; S7b follows S7a and enables review of parser
+iterations, while S3 incorporates S0 evidence as it arrives. S4 worker code and S5 schema/query
 work can develop against the S3 contract; real snapshot publication waits for the
 implemented parser and integrated workers. S6 catalog-direct planning remains an
 independent branch while its inventory-source/XBRL pieces wait for S5/S0. Later S7c
@@ -708,7 +714,7 @@ The initial operator surface is explicit-artifact oriented and small:
 | Create fixture (S7a) | `inventory fixture create --fixture <id> --catalog-plan <id>` | Catalog plan cohort → new append-only raw index-page fixture. |
 | Fill/extend fixture (S7a) | `inventory fixture fill --fixture <id> --catalog-plan <id>` | Another/extended plan cohort → append fixture observations and pages. |
 | List fixtures (S7a) | `inventory fixture list` | Local fixture manifests/counts; does not require source plans to exist. |
-| Parser review (S7b, before S3 body) | `inventory review-artifacts --fixture <id> --output <dir>` | Pinned raw pages → inert source preview, parser status/diagnostics, and entries when implemented. |
+| Parser review (S7b) | `inventory review-artifacts --fixture <id> --output <dir>` | Pinned raw pages → inert source preview, parser status/diagnostics, and entries when available. |
 | Compare parser runs (optional S7b) | `inventory review --base <dir> --new <dir>` | Two fixture-pinned parser runs → structured differences. |
 | Build inventory | `inventory build --catalog-plan <id> [--chunk-size <n>] [--retry-failures]` or `inventory build --fixture <id> [--chunk-size <n>]` | Cohort → anti-join current, resume identity-matched transient Parquet chunks, fetch only missing accessions, publish cumulative snapshot. |
 | Target planning | `documents plan --inventory <snapshot_id|current> --profile <path>` or `--catalog-plan <id> --profile <path>` | Explicit source → immutable target plan with pinned source provenance. One source per v1 plan. |

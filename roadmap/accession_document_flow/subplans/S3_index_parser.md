@@ -3,17 +3,17 @@
 ## Owner and status
 
 - Owning stage in [implementation.md](../implementation.md): **S3**.
-- Status: typed contract scaffold is implemented; production HTML processing is
-  deferred until the parser-review loop is available.
-- Depends on: S2's exact-byte fixture reader and S7b parser review artifacts to begin
-  iterative implementation. S0 evidence is required to finalize parser rules and
-  coverage, but does not block the first implementation pass.
+- Status: typed contract and first structural parser pass are implemented against the
+  standard SEC filing-page fixture.
+- Depends on: S2's exact-byte fixture reader for replay. S7b supplies the iterative
+  review loop; S0 evidence is required to finalize era/table rules and acceptance.
 - Non-blocking: S1 cohort schema, S2 capture store, S4 broker+pool, S5 snapshot.
 
 ## Objective
 
-Parse a raw `-index.html` response into all `Document Format Files` and `Data Files`
-rows plus separate bundle metadata. The parser is pure, stateless, and offline: no
+Parse a raw `-index.html` response into child rows from `Document Format Files` and
+`Data Files`, plus separate full-submission bundle metadata. The parser is pure,
+stateless, and offline: no
 network, no SQLite, no profile, no `document_storage`, and no snapshot imports.
 Unknown or unsupported page structure is typed as unrecognized rather than returned as a
 successful empty result.
@@ -76,51 +76,63 @@ IndexParseOutcome = ParsedIndexPage | UnrecognizedIndexPage | IndexParseFailure
 parse_html_index(page: IndexPageInput) -> IndexParseOutcome
 ```
 
+`IndexPageInput`, parse-result records, diagnostics, `InventoryEntry`, and
+`inventory_entry_id` are defined in `edgar_sec.domain.document_inventory.models`.
+`parse_html_index` and `PARSER_FINGERPRINT` are owned by
+`edgar_sec.engine.index_pages.parser`; the parser depends on domain records and the
+generic HTML-tree engine API, never on a pipeline.
+
 The parser computes `page_sha256` over the exact response bytes and calls S1's
-`inventory_entry_id` for each row. That function hashes canonical JSON for
+`inventory_entry_id` for each child row. That function hashes canonical JSON for
 `[str(accession), table_kind, row_ordinal, page_sha256]`. `row_ordinal` is zero-based
-among body rows within a table. Diagnostics keep
-at most 32 items with detail truncated to 256 characters; `suppressed_count`
-records omitted items. `ParsedIndexPage` may have zero entries only when a
-recognized table is genuinely empty. No matching tables yields
-`UnrecognizedIndexPage`; decoding/structural failure yields `IndexParseFailure`.
-There is no per-accession row-count cap: every body row in both recognized tables
-is returned, including rows without links and duplicate filenames/sequences.
+among source body rows within a table. The full-submission row is not a child entry;
+its source ordinal is still counted while it populates separate bundle metadata.
+Diagnostics keep at most 32 items with detail truncated to 256 characters;
+`suppressed_count` records omitted items. A recognized child-empty table yields zero
+entries rather than `UnrecognizedIndexPage`. No matching tables yields
+`UnrecognizedIndexPage`; unsupported decoding yields `IndexParseFailure`. There is no
+per-accession row-count cap: every child body row is returned, including rows without
+links and duplicate filenames/sequences.
 
-`PARSER_FINGERPRINT` is a stable parser-implementation identity recorded by parser
-review artifacts and snapshot run intent. Increment it whenever parsing semantics
-change; it is not derived from current source-file bytes.
+`PARSER_FINGERPRINT` in `edgar_sec.engine.index_pages.parser` is a stable
+parser-implementation identity recorded by parser review artifacts and snapshot run
+intent. Increment it whenever parsing semantics change; it is not derived from current
+source-file bytes.
 
-## Implementation start and review loop
+## Implementation and review loop
 
-Build and exercise the S7b fixture-backed review CLI after S7a's fixture lifecycle and before the production parser body; it
-must render each source page and record an explicit `parser_not_implemented` status
-while this function is still a stub. Parser work can then proceed against pinned
-fixtures through the same command, with `inventory review` comparing each iteration.
-S0 runs in parallel and supplies the final era/table matrix; parser acceptance and
-fixture coverage are not complete until that evidence has been incorporated.
+The initial parser uses a committed sanitized standard-layout fixture. S7b builds the
+offline preview and parser-review command around pinned response bytes so subsequent
+parser changes are comparable. S0 runs in parallel and supplies the era/table matrix;
+the first pass is not final coverage or acceptance.
 
 ## Parsing rules
 
-- Discover `Document Format Files` and `Data Files` tables independently. A table whose
-  header does not match either name is a candidate table; its presence changes
-  diagnostics but does not create an entry.
-- Emit one entry per body row, keyed by `(table_kind, row_ordinal)`; the first body
-  row has ordinal zero, regardless of the source table's header rows.
+- Parse with the existing selectolax-backed `engine.document.html.tree.parse_html`,
+  not regular expressions. Identify tables by their `summary` or preceding section
+  label, then map columns by normalized header text (`Seq`, `Description`, `Document`,
+  `Type`, `Size`). A plausible but unlabelled table is diagnostic only.
+- Emit one child entry per body row, keyed by `(table_kind, row_ordinal)`; the first
+  source body row has ordinal zero. Exclude only the `Complete submission text file`
+  envelope row from child entries while retaining its ordinal and extracting bundle
+  metadata.
 - `href` is the original attribute value: `None` means no `href` attribute and an
   empty string remains an observed empty attribute; `has_link` is therefore exactly
   `href is not None` in the audit model.
 - Do not filter rows by document type, extension, file size, or target relevance.
 - Preserve row order and observed values; do not infer missing fields. Decode HTML
   entities and collapse runs of whitespace in text fields while preserving case.
+- `document_label` is the full visible Document-cell text; `filename` is the first
+  link's visible filename where present.
 - Parse sequence and size only as non-negative integers; invalid or absent values become
   null and produce a diagnostic. Duplicate/out-of-order sequences and duplicate filenames
   are retained and diagnosed, never repaired.
-- Validate href origin: an `archive_url` is constructed only for same-accession SEC
-  archive paths. Any href escaping the accession archive namespace is recorded but not
-  promoted to `archive_url`; out-of-tree hrefs are flagged in diagnostics.
-- Resolve bundle metadata from the page's advertised envelope URL and size, subject to
-  the same-accession URL rule.
+- Validate href origin: resolve relative links against the source page and accept only
+  a same-accession SEC archive path. For SEC `/ix?doc=...` links, validate the single
+  `doc` query path and promote that archive path to `archive_url`; keep the observed
+  wrapper value in `href`. Out-of-tree hrefs remain recorded and are diagnosed.
+- Extract the full-submission URL and size from its advertised table row; never guess
+  or synthesize the `.txt` path when the page does not advertise it.
 - Construct `xbrl_candidate_url` only when the audited URL rule applies. The candidate
   carries no existence claim; S0's decision record owns availability policy.
 
@@ -152,7 +164,8 @@ fixture coverage are not complete until that evidence has been incorporated.
 
 ## Tests
 
-Sanitized real-page fixtures from the S0 audit:
+The committed [standard-layout fixture](../../../tests/fixtures/document_inventory_index_page.html)
+and later sanitized real-page fixtures from the S0 audit cover:
 
 - missing sequence,
 - duplicated sequence,
@@ -160,6 +173,8 @@ Sanitized real-page fixtures from the S0 audit:
 - a page with hundreds of source rows, with every row returned,
 - absent link,
 - relative and absolute href,
+- inline-XBRL `/ix?doc=` href unwrapped to the validated same-accession archive path,
+- advertised full-submission row extracted as bundle metadata but excluded from child entries,
 - escaped text,
 - missing and invalid size,
 - `Data Files` table,
@@ -173,6 +188,7 @@ Additional tests:
 
 - identical inputs produce identical entries and diagnostics,
 - `parse_html_index` has no network, SQLite, profile, or snapshot dependencies,
+- table parsing uses the existing selectolax-backed engine API, not regex matching,
 - an unrecognized page returns `unrecognized` rather than `parsed` with an empty list,
 - diagnostics remain bounded for adversarial input,
 - stable entry ordering independent of parser traversal order.

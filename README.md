@@ -241,9 +241,9 @@ where the two disagree.
 
 - **package root** — [edgar_sec](edgar_sec/README.md)
 - **foundation** — [foundation](edgar_sec/foundation/README.md) · [checks](edgar_sec/foundation/checks/README.md) · [regex](edgar_sec/foundation/regex/README.md) · [runtime](edgar_sec/foundation/runtime/README.md) · [runtime/settings](edgar_sec/foundation/runtime/settings/README.md) · [scanners](edgar_sec/foundation/scanners/README.md) · [sql](edgar_sec/foundation/sql/README.md) · [text](edgar_sec/foundation/text/README.md)
-- **domain** — [domain](edgar_sec/domain/README.md) · [document](edgar_sec/domain/document/README.md) · [filing_catalog](edgar_sec/domain/filing_catalog/README.md) · [forms](edgar_sec/domain/forms/README.md) · [forms/common](edgar_sec/domain/forms/common/README.md) · [forms/families](edgar_sec/domain/forms/families/README.md) · [submissions](edgar_sec/domain/submissions/README.md) · [taxonomy](edgar_sec/domain/taxonomy/README.md) · [taxonomy/schedules](edgar_sec/domain/taxonomy/schedules/README.md) · [taxonomy/statements](edgar_sec/domain/taxonomy/statements/README.md) · [taxonomy/tables](edgar_sec/domain/taxonomy/tables/README.md)
+- **domain** — [domain](edgar_sec/domain/README.md) · [document](edgar_sec/domain/document/README.md) · [document_inventory](edgar_sec/domain/document_inventory/README.md) · [filing_catalog](edgar_sec/domain/filing_catalog/README.md) · [forms](edgar_sec/domain/forms/README.md) · [forms/common](edgar_sec/domain/forms/common/README.md) · [forms/families](edgar_sec/domain/forms/families/README.md) · [submissions](edgar_sec/domain/submissions/README.md) · [taxonomy](edgar_sec/domain/taxonomy/README.md) · [taxonomy/schedules](edgar_sec/domain/taxonomy/schedules/README.md) · [taxonomy/statements](edgar_sec/domain/taxonomy/statements/README.md) · [taxonomy/tables](edgar_sec/domain/taxonomy/tables/README.md)
 - **infra** — [infra](edgar_sec/infra/README.md) · [broker](edgar_sec/infra/broker/README.md) · [sec_http](edgar_sec/infra/sec_http/README.md) · [storage](edgar_sec/infra/storage/README.md)
-- **engine** — [engine](edgar_sec/engine/README.md) · [company_family](edgar_sec/engine/company_family/README.md) · [selection](edgar_sec/engine/selection/README.md) · [submissions](edgar_sec/engine/submissions/README.md)
+- **engine** — [engine](edgar_sec/engine/README.md) · [company_family](edgar_sec/engine/company_family/README.md) · [index_pages](edgar_sec/engine/index_pages/README.md) · [selection](edgar_sec/engine/selection/README.md) · [submissions](edgar_sec/engine/submissions/README.md)
   - **document** — [document](edgar_sec/engine/document/README.md) · [html](edgar_sec/engine/document/html/README.md) · [page_markers](edgar_sec/engine/document/page_markers/README.md) · [unpacking](edgar_sec/engine/document/unpacking/README.md) · [whitespace](edgar_sec/engine/document/whitespace/README.md)
   - **forms** — [forms](edgar_sec/engine/forms/README.md) · [cover](edgar_sec/engine/forms/cover/README.md) · [cover/boundary](edgar_sec/engine/forms/cover/boundary/README.md) · [cover/checkmarks](edgar_sec/engine/forms/cover/checkmarks/README.md) · [cover/healing](edgar_sec/engine/forms/cover/healing/README.md) · [cover/tables](edgar_sec/engine/forms/cover/tables/README.md) · [cover/toc](edgar_sec/engine/forms/cover/toc/README.md) · [plugins](edgar_sec/engine/forms/plugins/README.md) · [plugins/evaluators](edgar_sec/engine/forms/plugins/evaluators/README.md)
   - **reflow** — [reflow](edgar_sec/engine/reflow/README.md) · [reflow/engine](edgar_sec/engine/reflow/engine/README.md) · [reflow/features](edgar_sec/engine/reflow/features/README.md) · [reflow/rules](edgar_sec/engine/reflow/rules/README.md)
@@ -259,12 +259,12 @@ where the two disagree.
 edgar_sec/               # each package has its own README.md (linked above)
 ├── foundation/         # Layer 0: runtime, memory, hashing, serialization, zstd
 │                       #   compression, settings registry, scanners, regex DSL
-├── domain/             # Layer 1: Cik/Accession, document, forms and cover
-│                       #   vocabulary, taxonomy, submission and catalog schemas
+├── domain/             # Layer 1: Cik/Accession, document and inventory records,
+│                       #   forms vocabulary, taxonomy and dataset schemas
 ├── infra/              # Layer 2: SEC HTTP client, broker, atomic IO, DuckDB,
 │                       #   Parquet, snapshot manifests, part tree, fixture store
-├── engine/             # Layer 3: document normalization, cover/table processing,
-│                       #   candidate selection, company families, submission building
+├── engine/             # Layer 3: document and index-page parsing, cover/table
+│                       #   processing, candidate selection, submission building
 ├── pipelines/          # Layer 4: metadata_sync (Phase 1), filing_catalog
 │                       #   (Phase 2), document_inventory (Phase S2),
 │                       #   document_storage (Phase 2.5)

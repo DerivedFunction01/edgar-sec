@@ -21,10 +21,12 @@ from edgar_sec.infra.broker.sec_broker import SecBroker
 from edgar_sec.infra.sec_http.client import SecHttpClient
 from edgar_sec.infra.sec_http.errors import PermanentHttpError
 from edgar_sec.infra.sec_http.rate_limit import RateLimiter
-from edgar_sec.pipelines.document_inventory.cohort import (
+from edgar_sec.domain.document_inventory.models import (
     CohortObservation,
-    InventoryCohort,
     IndexWorkItem,
+    InventoryCohort,
+)
+from edgar_sec.pipelines.document_inventory.cohort import (
     index_url_for,
     project_cohort,
     read_catalog_observations,
@@ -101,7 +103,7 @@ def _cohort(
 
 def test_url_digest_dedup(tmp_path: Path) -> None:
     """Same page fetched twice: one row added, the second fetch is reused."""
-    url = "https://www.sec.gov/Archives/edgar/data/1234567890/000012345612000001/-index.html"
+    url = "https://www.sec.gov/Archives/edgar/data/123456/000012345612000001/0000123456-12-000001-index.html"
     content = b"<html>index</html>"
     cohort = _cohort("0000123456-12-000001", "123456789", "src", url)
     fixture_root = tmp_path / "fixture"
@@ -121,7 +123,7 @@ def test_url_digest_dedup(tmp_path: Path) -> None:
 
 def test_changed_response_appends(tmp_path: Path) -> None:
     """Changed response bytes produce a new row; the old row persists."""
-    url = "https://www.sec.gov/Archives/edgar/data/1234567890/000012345612000001/-index.html"
+    url = "https://www.sec.gov/Archives/edgar/data/123456/000012345612000001/0000123456-12-000001-index.html"
     content1 = b"<html>old</html>"
     content2 = b"<html>new</html>"
     cohort = _cohort("0000123456-12-000001", "123456789", "src", url)
@@ -153,7 +155,7 @@ def test_changed_response_appends(tmp_path: Path) -> None:
 
 def test_source_cik_union(tmp_path: Path) -> None:
     """Two cohort sources contribute one page: one page row, multiple cohort_members."""
-    url = "https://www.sec.gov/Archives/edgar/data/1234567890/000012345612000001/-index.html"
+    url = "https://www.sec.gov/Archives/edgar/data/123456/000012345612000001/0000123456-12-000001-index.html"
     content = b"<html>shared page</html>"
     cohort = InventoryCohort(
         observations=(
@@ -187,7 +189,7 @@ def test_source_cik_union(tmp_path: Path) -> None:
 
 def test_exact_byte_hash_roundtrip(tmp_path: Path) -> None:
     """Replayed page body equals the captured bytes and hashes to the stored digest."""
-    url = "https://www.sec.gov/Archives/edgar/data/1234567890/000012345612000001/-index.html"
+    url = "https://www.sec.gov/Archives/edgar/data/123456/000012345612000001/0000123456-12-000001-index.html"
     content = b"z" * 8192
     cohort = _cohort("0000123456-12-000001", "123456789", "src", url)
     fixture_root = _capture_and_publish(tmp_path, cohort, _broker_for({url: content}))
@@ -210,7 +212,7 @@ def test_exact_byte_hash_roundtrip(tmp_path: Path) -> None:
 
 def test_readonly_nonmutation(tmp_path: Path) -> None:
     """A read-only replay database cannot be altered by any SQL."""
-    url = "https://www.sec.gov/Archives/edgar/data/1234567890/000012345612000001/-index.html"
+    url = "https://www.sec.gov/Archives/edgar/data/123456/000012345612000001/0000123456-12-000001-index.html"
     content = b"<html>index</html>"
     cohort = _cohort("0000123456-12-000001", "123456789", "src", url)
     fixture_root = _capture_and_publish(tmp_path, cohort, _broker_for({url: content}))
@@ -225,7 +227,7 @@ def test_readonly_nonmutation(tmp_path: Path) -> None:
 
 def test_wrong_schema_refusal(tmp_path: Path) -> None:
     """Replay refuses a manifest whose schema_version no longer matches the store."""
-    url = "https://www.sec.gov/Archives/edgar/data/1234567890/000012345612000001/-index.html"
+    url = "https://www.sec.gov/Archives/edgar/data/123456/000012345612000001/0000123456-12-000001-index.html"
     content = b"<html>index</html>"
     cohort = _cohort("0000123456-12-000001", "123456789", "src", url)
     fixture_root = _capture_and_publish(tmp_path, cohort, _broker_for({url: content}))
@@ -243,7 +245,7 @@ def test_wrong_schema_refusal(tmp_path: Path) -> None:
 
 def test_atomic_manifest_after_commit(tmp_path: Path) -> None:
     """After publish the manifest database_sha256 equals the SHA-256 of the committed file."""
-    url = "https://www.sec.gov/Archives/edgar/data/1234567890/000012345612000001/-index.html"
+    url = "https://www.sec.gov/Archives/edgar/data/123456/000012345612000001/0000123456-12-000001-index.html"
     content = b"<html>index</html>"
     cohort = _cohort("0000123456-12-000001", "123456789", "src", url)
     fixture_root = _capture_and_publish(tmp_path, cohort, _broker_for({url: content}))
@@ -256,7 +258,7 @@ def test_atomic_manifest_after_commit(tmp_path: Path) -> None:
 
 def test_replay_without_http(tmp_path: Path) -> None:
     """Replay resolves cases solely from the fixture store; no broker is involved."""
-    url = "https://www.sec.gov/Archives/edgar/data/1234567890/000012345612000001/-index.html"
+    url = "https://www.sec.gov/Archives/edgar/data/123456/000012345612000001/0000123456-12-000001-index.html"
     content = b"<html>index</html>"
     cohort = _cohort("0000123456-12-000001", "123456789", "src", url)
     fixture_root = _capture_and_publish(tmp_path, cohort, _broker_for({url: content}))
@@ -278,7 +280,10 @@ def test_deterministic_case_ordering(tmp_path: Path) -> None:
     work_items: list[IndexWorkItem] = []
     for i in range(5):
         acc = AccessionNumber.from_any(f"{1_000_000 + i:010d}-12-000001")
-        url = f"https://www.sec.gov/Archives/edgar/data/{1_000_000 + i}/{'0' * 18}/-index.html"
+        url = (
+            f"https://www.sec.gov/Archives/edgar/data/{1_000_000 + i}/"
+            f"{acc.normalized}/{acc}-index.html"
+        )
         urls[str(acc)] = url
         contents[url] = f"content-{i}".encode()
         work_items.append(IndexWorkItem(accession=acc, index_url=url))
@@ -302,7 +307,7 @@ def test_deterministic_case_ordering(tmp_path: Path) -> None:
 
 def test_capture_failure_writes_cohort_member_not_page(tmp_path: Path) -> None:
     """A transport failure maps to a stable code, writes no page/case, keeps the member."""
-    url = "https://www.sec.gov/Archives/edgar/data/1234567890/000012345612000001/-index.html"
+    url = "https://www.sec.gov/Archives/edgar/data/123456/000012345612000001/0000123456-12-000001-index.html"
     acc = "0000123456-12-000001"
     content = b"<html>ok</html>"
     cohort_ok = _cohort(acc, "123456789", "src", url)
@@ -370,7 +375,7 @@ def test_index_page_for_18_digit_accession(tmp_path: Path) -> None:
     )
     assert (
         url
-        == "https://www.sec.gov/Archives/edgar/data/9015/000000901500000054/-index.html"
+        == "https://www.sec.gov/Archives/edgar/data/9015/000000901500000054/0000009015-00-000054-index.html"
     )
     content = b"<html>index</html>"
     cohort = InventoryCohort(
