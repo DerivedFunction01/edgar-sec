@@ -30,6 +30,7 @@ know what a CIK or an accession number is.
 | `partitions.py` | Partition-spec parsing and balanced work distribution. |
 | `paths.py` | Project roots, runtime root, transient and current-pointer primitives. |
 | `progress.py` | tqdm adapters and the optional-callback contract. |
+| `render.py` | Component-based terminal renderer for aligned rows and tabular grids. |
 | `resources.py` | cgroup-aware resource derivation and `RuntimeResourceProfile`. |
 | `settings/` | The typed settings registry. See [settings/README.md](settings/README.md). |
 | `__init__.py` | One-line docstring only. No re-exports, per AGENTS.md §1.2. |

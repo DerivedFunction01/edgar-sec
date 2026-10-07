@@ -58,7 +58,8 @@ it has no access to the coordinator's store. The bundle copy is what
 | `universe.py` | Compiling a published full-universe snapshot into a cohort: split the listing at the sink, collapse to one name per registrant, refuse a malformed line. |
 | `family_index.py` | The published company-family assignment for one universe cohort: content identity over roster plus rules, verified reuse, and an atomic rebuild. |
 | `sec_client.py` | One CIK to its submissions document plus every historical file it lists. |
-| `cli.py` | The argparse surface; each `cmd_*` is a plain callable the operator also calls. |
+| `cli.py` | The argparse surface; dispatches to subcommand callables. |
+| [commands/](commands/README.md) | Subcommand implementations using component terminal renderer. |
 | `operator.py` | Interactive wizard: session state, on-disk discovery, auto-resolution, and network consent over the same `cmd_*` functions. |
 | `augment_flow.py` | The augmentation journey: source observation, cohort choice, base choice, and the preflight that settles the arithmetic before any fetch. |
 | `worker_commands.py` | Renders the distributed lifecycle as copy-pasteable shell commands. |

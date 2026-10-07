@@ -36,7 +36,8 @@ ways a network dependency creeps in.
 | Module | Responsibility |
 | :--- | :--- |
 | `__init__.py` | Docstring only. No re-exports, per AGENTS.md §1.2. |
-| `cli.py` | Command dispatch, policy resolution, and the stdout/stderr split. |
+| `cli.py` | Command dispatch, argument parsing, and subparser definitions. |
+| [commands/](commands/README.md) | Subcommand implementations using component terminal renderer. |
 | `operator.py` | Interactive wizard over `cmd_materialize` / `cmd_plan` / `cmd_expand` / `cmd_status`, with discovery-driven catalog and parent-plan selection. |
 | `catalog_job.py` | `materialize()`: one Phase 1 snapshot in, one immutable catalog out, refusing rather than repairing. |
 | `materialization.py` | The catalog SQL: Phase 1 part unnesting into filing occurrences and registrant profile projection. |

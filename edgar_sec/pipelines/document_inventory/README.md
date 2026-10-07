@@ -23,7 +23,9 @@ Layer 4 consumes published `filing_catalog` plans and imports downward only.
 | `broker.py` | Picklable client for the shared SEC broker and typed fetch results. |
 | `worker.py` | Per-accession worker task and typed failures. |
 | `coordinator.py` | Resource-capped scheduling, cancellation, chunk commit, resume, and retry. |
-| `cli.py`, `operator.py` | Fixture/review commands and discovery-driven interactive operations. |
+| `cli.py` | Command dispatch, argument parsing, and subparser definitions. |
+| [commands/](commands/README.md) | Subcommand implementations using component terminal renderer. |
+| `operator.py` | Discovery-driven interactive operations. |
 | `run.py` (repository root) | Dispatches the inventory entry to its operator. |
 
 ## Contracts
