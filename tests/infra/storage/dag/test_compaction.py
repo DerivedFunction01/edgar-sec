@@ -12,6 +12,7 @@ from edgar_sec.infra.storage.dag.manifest import (
     PartDescriptor,
     write_manifest,
 )
+from edgar_sec.infra.storage.dag.publication import read_pointer
 from edgar_sec.infra.storage.dag.spec import RelationSpec
 from edgar_sec.infra.storage.parquet import write_parquet_table
 
@@ -162,3 +163,68 @@ def test_compact_lineage_multipart_budgeting(tmp_path: Path) -> None:
     assert parts[1].row_count == 2
     assert parts[1].key_min == "3"
     assert parts[1].key_max == "4"
+
+
+def test_compact_lineage_publish_advances_pointer(tmp_path: Path) -> None:
+    """Verify compaction with publish=True atomically advances the pointer."""
+    from edgar_sec.foundation.serialization import canonical_json
+    from edgar_sec.infra.storage.atomic import atomic_write_json
+    from edgar_sec.infra.storage.dag.publication import current_pointer_path
+
+    specs = (
+        RelationSpec(
+            name="records",
+            schema=SCHEMA,
+            primary_key=("id",),
+            merge_strategy="upsert",
+            sort_order=("id",),
+        ),
+    )
+    c0_dir = tmp_path / "c0"
+    c0_dir.mkdir(parents=True)
+    c0_part = c0_dir / "records.parquet"
+    write_parquet_table(
+        pa.Table.from_arrays([pa.array(["1"]), pa.array([10])], schema=SCHEMA),
+        c0_part,
+    )
+    c0_manifest = DAGNodeManifest(
+        snapshot_id="c0",
+        kind="checkpoint",
+        parents=(),
+        checkpoint_anchor_id="c0",
+        lineage_depth=0,
+        created_at="2026-10-07T00:00:00Z",
+        relations={
+            "records": (
+                PartDescriptor(
+                    "records.parquet",
+                    file_sha256(c0_part),
+                    1,
+                    c0_part.stat().st_size,
+                ),
+            )
+        },
+        logical_fingerprint="fp0",
+    )
+    c0_manifest_path = c0_dir / "manifest.json"
+    write_manifest(c0_manifest_path, c0_manifest)
+    atomic_write_json(
+        current_pointer_path(tmp_path),
+        {"snapshot_id": "c0", "manifest_sha256": file_sha256(c0_manifest_path)},
+        canonical=True,
+    )
+
+    c1_staged = tmp_path / "stage_c1"
+    compacted = compact_lineage(
+        tmp_path,
+        specs,
+        tip_id="c0",
+        new_snapshot_id="c1",
+        staged_dir=c1_staged,
+        publish=True,
+    )
+    assert compacted.snapshot_id == "c1"
+    ptr = read_pointer(tmp_path)
+    assert ptr is not None
+    assert ptr["snapshot_id"] == "c1"
+    assert (tmp_path / "c1" / "manifest.json").is_file()

@@ -195,8 +195,10 @@ def test_run_chunk_records_progress_events(
         workers=2,
         progress=events.append,
     )
-    assert [e["cik"] for e in events] == ["0000000020", FORD]
+    assert len(events) == 2
+    assert {e["cik"] for e in events} == {SMALL, FORD}
     assert all(e["type"] == "cik_normalized" for e in events)
+    assert all(e["status"] == "ok" for e in events)
 
 
 def test_run_chunk_ids_runs_only_the_chunks_it_is_given(

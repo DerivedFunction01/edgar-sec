@@ -25,7 +25,7 @@ and provides two-tier retention analysis.
 | `retention.py` | Multi-root reachability tracing and physical part reference counting. |
 | `doctor.py` | Graph health audits: detects cycles, missing manifests, unreadable parts, and stale stages. |
 | `query.py` | Point-lookup and range-pruned DuckDB view compiler using part min/max bounds. |
-| `cli.py` | Standard maintenance CLI entrypoint dispatching commands (`doctor`, `compact`, `purge`, `show`). |
+| `cli.py` | Standard maintenance CLI entrypoint dispatching commands (`status`, `log`, `checkout`, `doctor`, `compact`, `gc`). |
 | `__init__.py` | Package docstring only. No re-exports. |
 
 ## Contracts

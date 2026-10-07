@@ -14,6 +14,8 @@ from edgar_sec.foundation.hashing import file_sha256
 from edgar_sec.foundation.runtime.resources import RuntimeResourceProfile
 
 from edgar_sec.infra.storage.duckdb import connect, sql_identifier, sql_path_list
+from edgar_sec.infra.storage.dag.doctor import _resolve_part_path
+from edgar_sec.infra.storage.dag.traversal import walk_lineage
 from edgar_sec.infra.storage.parquet import read_parquet_key_bounds
 from edgar_sec.pipelines.document_inventory.paths import InventoryPaths
 from edgar_sec.pipelines.document_inventory.snapshot.errors import (
@@ -47,6 +49,20 @@ def _artifact_path(
     relative = Path(value)
     if relative.is_absolute() or ".." in relative.parts or len(relative.parts) < 2:
         raise ValidationFailedError("snapshot artifact path escapes its root")
+    if relative.parts[0] in _RELATIONS:
+        source_root = (
+            staged_root
+            if staged_root is not None
+            else paths.snapshot_root(owner_snapshot_id)
+        )
+        resolved = (source_root / relative).resolve()
+        try:
+            resolved.relative_to(source_root.resolve())
+        except ValueError as exc:
+            raise ValidationFailedError(
+                "snapshot artifact path escapes its owner"
+            ) from exc
+        return resolved
     source_id = relative.parts[0]
     try:
         source_root = paths.snapshot_root(source_id)
@@ -222,11 +238,13 @@ def _validate_sorted(
 def _validate_relations(
     relation_files: dict[str, list[Path]],
     profile: RuntimeResourceProfile | None,
+    active_files: dict[str, list[Path]] | None = None,
 ) -> None:
+    views = active_files or relation_files
     con = connect(profile)
     try:
         for name, schema in _RELATIONS.items():
-            _create_view(con, name, relation_files[name], schema, _RELATION_PKS[name])
+            _create_view(con, name, views[name], schema, _RELATION_PKS[name])
         checks = (
             (
                 "duplicate accession keys",
@@ -335,7 +353,33 @@ def validate_snapshot(
         raise ValidationFailedError(
             "snapshot contains undeclared or missing Parquet artifacts"
         )
-    _validate_relations(relation_files, profile)
+    active_files = dict(relation_files)
+    parents = payload.get("parents")
+    parent_id = None
+    if parents and isinstance(parents, list) and len(parents) > 0:
+        first_parent = parents[0]
+        parent_id = (
+            first_parent.get("snapshot_id")
+            if isinstance(first_parent, dict)
+            else getattr(first_parent, "snapshot_id", None)
+        )
+    elif payload.get("parent_snapshot_id"):
+        parent_id = payload["parent_snapshot_id"]
+
+    if parent_id and paths.snapshot_manifest_path(parent_id).is_file():
+        parent_lineage = walk_lineage(paths.snapshots_root, parent_id)
+        for name in _RELATIONS:
+            ancestor_files = []
+            for node in parent_lineage.nodes:
+                for part in node.relations.get(name, ()):
+                    p = _resolve_part_path(
+                        paths.snapshots_root, node.snapshot_id, part.path
+                    )
+                    if p.is_file():
+                        ancestor_files.append(p)
+            active_files[name] = ancestor_files + relation_files[name]
+
+    _validate_relations(relation_files, profile, active_files=active_files)
     return SnapshotMetadata.from_manifest(payload)
 
 

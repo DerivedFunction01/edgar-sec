@@ -15,7 +15,7 @@ from pathlib import Path
 from edgar_sec.foundation.runtime.paths import current_pointer_path
 
 from .manifest import read_manifest
-from .publication import read_pointer_id
+from .publication import PublicationLock, read_pointer_id
 
 
 @dataclass(frozen=True, slots=True)
@@ -112,16 +112,23 @@ def purge_unreferenced(
     report: RetentionReport,
     *,
     dry_run: bool = False,
+    extra_pinned_ids: Set[str] | None = None,
 ) -> list[str]:
-    """Safely unlink snapshot directories identified as prunable."""
+    """Safely unlink snapshot directories identified as prunable under lock."""
     root = Path(snapshots_root)
     removed: list[str] = []
-    for snap_id in report.prunable_snapshots:
-        target = root / snap_id
-        if target.is_dir():
-            if not dry_run:
-                shutil.rmtree(target)
-            removed.append(snap_id)
+    lock_file = root / ".publication.lock"
+    with PublicationLock(lock_file):
+        rechecked = analyze_retention(root, extra_pinned_ids=extra_pinned_ids)
+        safe_to_purge = set(report.prunable_snapshots) & set(
+            rechecked.prunable_snapshots
+        )
+        for snap_id in sorted(safe_to_purge):
+            target = root / snap_id
+            if target.is_dir():
+                if not dry_run:
+                    shutil.rmtree(target)
+                removed.append(snap_id)
     return removed
 
 

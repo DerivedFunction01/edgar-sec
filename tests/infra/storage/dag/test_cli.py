@@ -5,6 +5,7 @@ from pathlib import Path
 from edgar_sec.foundation.hashing import file_sha256
 from edgar_sec.infra.storage.dag.cli import (
     cmd_checkout,
+    cmd_compact,
     cmd_doctor,
     cmd_gc,
     cmd_log,

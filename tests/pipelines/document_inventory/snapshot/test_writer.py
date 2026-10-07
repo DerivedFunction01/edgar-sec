@@ -44,6 +44,9 @@ from edgar_sec.infra.storage.dag.publication import (
     PublicationLockError,
     StaleParentError,
 )
+from edgar_sec.pipelines.document_inventory.snapshot.reader import (
+    get_active_entries,
+)
 from edgar_sec.pipelines.document_inventory.snapshot.schema import (
     SNAPSHOT_ACCESSION_SOURCES_SCHEMA,
     SNAPSHOT_ACCESSIONS_SCHEMA,
@@ -241,7 +244,6 @@ def test_publisher_merges_validated_chunks_and_inherits_unchanged_parts(
         InventoryPaths(tmp_path).snapshot_manifest_path(first.snapshot.snapshot_id)
     )
 
-    parent_accession_part = first.snapshot.accessions_partitions[0].path
     child_paths, _run, second = _publish(
         tmp_path,
         "second-run",
@@ -257,14 +259,13 @@ def test_publisher_merges_validated_chunks_and_inherits_unchanged_parts(
 
     assert second.status == "published"
     assert second.snapshot is not None
-    assert second.snapshot.accession_count == 2
-    assert second.snapshot.entry_count == 2
-    assert second.snapshot.source_cik_count == 3
-    assert parent_accession_part in {
-        part.path for part in second.snapshot.accessions_partitions
-    }
+    assert second.snapshot.accession_count == 1
+    assert second.snapshot.entry_count == 1
+    assert second.snapshot.source_cik_count == 2
+    assert len(second.snapshot.accessions_partitions) == 1
+    assert second.snapshot.accessions_partitions[0].key_min == second_accession
     assert any(
-        part.path.startswith(second.snapshot.snapshot_id)
+        part.path.endswith("part-00000.parquet")
         for part in second.snapshot.accession_sources_partitions
     )
     manifest = json.loads(
@@ -272,9 +273,13 @@ def test_publisher_merges_validated_chunks_and_inherits_unchanged_parts(
         .snapshot_manifest_path(second.snapshot.snapshot_id)
         .read_text(encoding="utf-8")
     )
+    assert manifest["kind"] == "delta"
+    assert manifest["lineage_depth"] == 1
+    assert manifest["checkpoint_anchor_id"] == first.snapshot.snapshot_id
     assert "accessions" in manifest["relations"]
+    assert len(manifest["relations"]["accessions"]) == 1
     checked = validate_snapshot(InventoryPaths(tmp_path), second.snapshot.snapshot_id)
-    assert checked.accession_count == 2
+    assert checked.accession_count == 1
     assert pq.read_schema(
         InventoryPaths(tmp_path).snapshot_root(second.snapshot.snapshot_id)
         / "accessions/part-00000.parquet"
@@ -498,10 +503,12 @@ def test_refresh_replaces_active_entries_only_when_page_digest_changes(
     )
     assert changed.status == "published"
     assert any(
-        p.path.startswith(changed.snapshot.snapshot_id)
+        p.path.endswith("entries/part-00000.parquet")
         for p in changed.snapshot.entries_partitions
     )
-    assert original.snapshot.entry_count == 1
+    refreshed_entries = get_active_entries(tmp_path, accession)
+    assert len(refreshed_entries) == 1
+    assert refreshed_entries[0]["document_label"] == "Annual report"
 
 
 def test_complete_artifact_validation_detects_part_tampering(tmp_path: Path) -> None:
@@ -511,7 +518,7 @@ def test_complete_artifact_validation_detects_part_tampering(tmp_path: Path) -> 
     )
     assert published.snapshot is not None
     part = (
-        InventoryPaths(tmp_path).snapshots_root
+        InventoryPaths(tmp_path).snapshot_root(published.snapshot.snapshot_id)
         / published.snapshot.accessions_partitions[0].path
     )
     part.write_bytes(b"changed")

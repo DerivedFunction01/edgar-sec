@@ -28,7 +28,20 @@ class GraphAudit:
     stale_staging_dirs: tuple[str, ...]
 
 
-def audit_graph(snapshots_root: Path | str) -> GraphAudit:
+def _resolve_part_path(root: Path, snapshot_id: str, part_path: str | Path) -> Path:
+    p = Path(part_path)
+    if p.is_absolute():
+        return p
+    if (root / snapshot_id / p).is_file():
+        return root / snapshot_id / p
+    if (root / p).is_file():
+        return root / p
+    return root / snapshot_id / p
+
+
+def audit_graph(
+    snapshots_root: Path | str, *, verify_digests: bool = False
+) -> GraphAudit:
     """Audit the physical and logical integrity of all snapshots under root."""
     root = Path(snapshots_root)
     errors: list[str] = []
@@ -73,11 +86,7 @@ def audit_graph(snapshots_root: Path | str) -> GraphAudit:
         # Check declared parts
         for rel_name, parts in manifest.relations.items():
             for part in parts:
-                part_path = (
-                    child / part.path
-                    if not Path(part.path).is_absolute()
-                    else Path(part.path)
-                )
+                part_path = _resolve_part_path(root, manifest.snapshot_id, part.path)
                 if not part_path.is_file():
                     errors.append(
                         f"missing part file {part.path} in {manifest.snapshot_id}"
@@ -86,6 +95,11 @@ def audit_graph(snapshots_root: Path | str) -> GraphAudit:
                 if part_path.stat().st_size != part.byte_size:
                     errors.append(
                         f"byte size mismatch for {part.path} in {manifest.snapshot_id}"
+                    )
+                    continue
+                if verify_digests and file_sha256(part_path) != part.sha256:
+                    errors.append(
+                        f"digest mismatch for {part.path} in {manifest.snapshot_id}"
                     )
 
     return GraphAudit(

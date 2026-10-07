@@ -186,3 +186,173 @@ def test_query_point_by_filing_cik(tmp_path: Path) -> None:
         "0000000002-25-000001",
         "0000000002-25-000002",
     }
+
+
+def test_query_point_scoped_mask_supersession(tmp_path: Path) -> None:
+    """Verify scoped_mask drops superseded child entries on parent refresh."""
+    entry_schema = pa.schema(
+        [
+            ("entry_id", pa.string()),
+            ("accession", pa.string()),
+            ("name", pa.string()),
+        ]
+    )
+    entry_spec = RelationSpec(
+        name="entries",
+        schema=entry_schema,
+        primary_key=("entry_id",),
+        merge_strategy="scoped_mask",
+        parent_relation="accessions",
+        parent_join_key=("accession",),
+        sort_order=("accession", "entry_id"),
+        entity_key="accession",
+    )
+    c0_dir = tmp_path / "c0"
+    c0_dir.mkdir(parents=True)
+    p_acc = c0_dir / "acc.parquet"
+    p_ent = c0_dir / "ent.parquet"
+    pq.write_table(
+        pa.Table.from_pylist(
+            [
+                {
+                    "accession": "0000000001-25-000001",
+                    "filing_cik": "0000000001",
+                    "val": 1,
+                }
+            ],
+            schema=SCHEMA,
+        ),
+        p_acc,
+    )
+    pq.write_table(
+        pa.Table.from_pylist(
+            [
+                {
+                    "entry_id": "e1",
+                    "accession": "0000000001-25-000001",
+                    "name": "old_1",
+                },
+                {
+                    "entry_id": "e2",
+                    "accession": "0000000001-25-000001",
+                    "name": "old_2",
+                },
+            ],
+            schema=entry_schema,
+        ),
+        p_ent,
+    )
+    c0_man = c0_dir / "manifest.json"
+    write_manifest(
+        c0_man,
+        DAGNodeManifest(
+            snapshot_id="c0",
+            kind="checkpoint",
+            parents=(),
+            checkpoint_anchor_id="c0",
+            lineage_depth=0,
+            created_at="2026-01-01T00:00:00Z",
+            relations={
+                "accessions": (
+                    PartDescriptor(
+                        "acc.parquet",
+                        file_sha256(p_acc),
+                        1,
+                        p_acc.stat().st_size,
+                        "0000000001-25-000001",
+                        "0000000001-25-000001",
+                    ),
+                ),
+                "entries": (
+                    PartDescriptor(
+                        "ent.parquet",
+                        file_sha256(p_ent),
+                        2,
+                        p_ent.stat().st_size,
+                        "0000000001-25-000001",
+                        "0000000001-25-000001",
+                    ),
+                ),
+            },
+            logical_fingerprint="fp0",
+        ),
+    )
+
+    d1_dir = tmp_path / "d1"
+    d1_dir.mkdir(parents=True)
+    d1_acc = d1_dir / "acc.parquet"
+    d1_ent = d1_dir / "ent.parquet"
+    pq.write_table(
+        pa.Table.from_pylist(
+            [
+                {
+                    "accession": "0000000001-25-000001",
+                    "filing_cik": "0000000001",
+                    "val": 2,
+                }
+            ],
+            schema=SCHEMA,
+        ),
+        d1_acc,
+    )
+    pq.write_table(
+        pa.Table.from_pylist(
+            [
+                {
+                    "entry_id": "e3",
+                    "accession": "0000000001-25-000001",
+                    "name": "new_1",
+                },
+            ],
+            schema=entry_schema,
+        ),
+        d1_ent,
+    )
+    d1_man = d1_dir / "manifest.json"
+    write_manifest(
+        d1_man,
+        DAGNodeManifest(
+            snapshot_id="d1",
+            kind="delta",
+            parents=(ParentRef("c0", file_sha256(c0_man)),),
+            checkpoint_anchor_id="c0",
+            lineage_depth=1,
+            created_at="2026-01-01T00:01:00Z",
+            relations={
+                "accessions": (
+                    PartDescriptor(
+                        "acc.parquet",
+                        file_sha256(d1_acc),
+                        1,
+                        d1_acc.stat().st_size,
+                        "0000000001-25-000001",
+                        "0000000001-25-000001",
+                    ),
+                ),
+                "entries": (
+                    PartDescriptor(
+                        "ent.parquet",
+                        file_sha256(d1_ent),
+                        1,
+                        d1_ent.stat().st_size,
+                        "0000000001-25-000001",
+                        "0000000001-25-000001",
+                    ),
+                ),
+            },
+            logical_fingerprint="fp1",
+        ),
+    )
+
+    lineage = walk_lineage(tmp_path, "d1")
+    con = connect()
+    rows = query_point(
+        con,
+        entry_spec,
+        lineage,
+        tmp_path,
+        "0000000001-25-000001",
+        all_specs=(SPEC, entry_spec),
+    )
+    assert len(rows) == 1
+    assert rows[0]["entry_id"] == "e3"

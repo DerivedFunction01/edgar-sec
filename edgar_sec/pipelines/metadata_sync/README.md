@@ -46,6 +46,7 @@ it has no access to the coordinator's store. The bundle copy is what
 | `progress.py` | This pipeline's progress events rendered for a person. |
 | `paths.py` | `MetadataPaths` / `RunPaths`; the published-vs-transient split, plan bundle, registry, and source locations. |
 | `checkpoints.py` | What counts as a *complete* chunk on disk. |
+| `run_lock.py` | Exclusive per-plan run ownership and explicit stale-lock recovery. |
 | `worker.py` | Resumable chunk execution over a thread pool; the never-refetch guarantee. |
 | `snapshot.py` | Resolve a published snapshot to a verified, ordered Parquet part list; both manifest versions. |
 | `specs.py` | Declarative `RelationSpec` contracts for metadata snapshot tables and compaction. |
@@ -129,6 +130,7 @@ adds on top:
   covers, and carries the plan's input fingerprint. Expected CIKs come from the
   plan's roster range, so the same check covers a chunk that arrived from another
   machine under a copied bundle.
+- **The coordinator holds an exclusive run lock for `run`, `merge`, and `augment` operations on a plan**; completed chunk results are journaled atomically and incomplete chunks resume from validated checkpoints. The lock prevents concurrent merges, concurrent runs on the same plan, and merges while chunks are still being fetched.
 - **Merge separates failures from reportable fan-out** (AGENTS.md §4.3).
   Rejected: duplicate or null CIKs, schema drift, plan coverage gaps, row-count
   mismatch, foreign chunk files, foreign input fingerprints, and non-terminal

@@ -23,7 +23,9 @@ INVENTORY_ENTRIES_SPEC = RelationSpec(
     name="entries",
     schema=ENTRY_SCHEMA,
     primary_key=("entry_id",),
-    merge_strategy="upsert",
+    merge_strategy="scoped_mask",
+    parent_relation="accessions",
+    parent_join_key=("accession",),
     sort_order=("accession", "sequence"),
     entity_key="accession",
 )

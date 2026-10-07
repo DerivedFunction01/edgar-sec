@@ -43,6 +43,7 @@ from .planner import load_plan, write_plan
 from .progress import MERGE_PROGRESS_STAGES, AugmentProgress, progress_renderer
 from .registry import compare_sources
 from .roster import RosterError
+from .run_lock import RunLock
 from .sec_client import SubmissionsClient
 from .snapshot import read_snapshot_parts
 from .source_registry import (
@@ -225,16 +226,17 @@ def cmd_run(options: RunOptions, *, client: SubmissionsClient | None = None) -> 
         "fetch", outstanding, desc=f"plan {plan.plan_id[:8]}"
     )
     try:
-        results = run_chunk_ids(
-            client or _build_client(),
-            plan,
-            run_paths,
-            targets,
-            snapshot_id=options.effective_snapshot_id(plan),
-            workers=resolve_workers(options.workers),
-            completed=completed,
-            progress=progress,
-        )
+        with RunLock(run_paths.lock_path(), stale_lock_confirmed=False):
+            results = run_chunk_ids(
+                client or _build_client(),
+                plan,
+                run_paths,
+                targets,
+                snapshot_id=options.effective_snapshot_id(plan),
+                workers=resolve_workers(options.workers),
+                completed=completed,
+                progress=progress,
+            )
     finally:
         if bar is not None:
             bar.close()
@@ -261,13 +263,14 @@ def cmd_merge(options: RunOptions, *, lineage: dict[str, str] | None = None) -> 
         "merge", MERGE_PROGRESS_STAGES, desc=f"merge {plan.plan_id[:8]}"
     )
     try:
-        report = merge_chunks(
-            plan,
-            run_paths,
-            options.effective_snapshot_id(plan),
-            lineage=lineage,
-            progress=progress,
-        )
+        with RunLock(run_paths.lock_path(), stale_lock_confirmed=False):
+            report = merge_chunks(
+                plan,
+                run_paths,
+                options.effective_snapshot_id(plan),
+                lineage=lineage,
+                progress=progress,
+            )
     finally:
         if bar is not None:
             bar.close()
@@ -315,33 +318,38 @@ def cmd_augment(
         return 0
 
     progress = AugmentProgress(f"augment {base_snapshot_id[:8]}")
+    metadata = resolve_metadata_paths(options.artifacts_root)
     try:
-        if options.registry_id:
-            result = _augment_from_registry(
-                options,
-                base_snapshot_id=base_snapshot_id,
-                new_snapshot_id=new_snapshot_id,
-                workers=workers,
-                lineage=lineage,
-                cohort=cohort,
-                preflight=check,
-                progress=progress,
-            )
-        else:
-            result = augment(
-                _build_client(),
-                cohort.roster,
-                metadata,
-                base_snapshot_id=base_snapshot_id,
-                new_snapshot_id=new_snapshot_id,
-                chunk_size=options.chunk_size,
-                workers=workers,
-                lineage=lineage,
-                preflight=check,
-                progress=progress,
-                input_name=cohort.input_name,
-                input_fingerprint=cohort.input_fingerprint,
-            )
+        with RunLock(
+            metadata.snapshot_lock_path(base_snapshot_id),
+            stale_lock_confirmed=False,
+        ):
+            if options.registry_id:
+                result = _augment_from_registry(
+                    options,
+                    base_snapshot_id=base_snapshot_id,
+                    new_snapshot_id=new_snapshot_id,
+                    workers=workers,
+                    lineage=lineage,
+                    cohort=cohort,
+                    preflight=check,
+                    progress=progress,
+                )
+            else:
+                result = augment(
+                    _build_client(),
+                    cohort.roster,
+                    metadata,
+                    base_snapshot_id=base_snapshot_id,
+                    new_snapshot_id=new_snapshot_id,
+                    chunk_size=options.chunk_size,
+                    workers=workers,
+                    lineage=lineage,
+                    preflight=check,
+                    progress=progress,
+                    input_name=cohort.input_name,
+                    input_fingerprint=cohort.input_fingerprint,
+                )
     finally:
         progress.close()
     _emit(

@@ -21,7 +21,9 @@ def test_inventory_relation_specs_are_valid() -> None:
     assert INVENTORY_ENTRIES_SPEC.name == "entries"
     assert INVENTORY_ENTRIES_SPEC.primary_key == ("entry_id",)
     assert INVENTORY_ENTRIES_SPEC.entity_key == "accession"
-    assert INVENTORY_ENTRIES_SPEC.merge_strategy == "upsert"
+    assert INVENTORY_ENTRIES_SPEC.merge_strategy == "scoped_mask"
+    assert INVENTORY_ENTRIES_SPEC.parent_relation == "accessions"
+    assert INVENTORY_ENTRIES_SPEC.parent_join_key == ("accession",)
     assert INVENTORY_ENTRIES_SPEC.max_rows_per_part == DEFAULT_ROW_GROUP_SIZE
 
     assert INVENTORY_ACCESSION_SOURCES_SPEC.name == "accession_sources"

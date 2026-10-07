@@ -68,12 +68,15 @@ from edgar_sec.pipelines.document_inventory.snapshot.specs import (
     INVENTORY_ENTRIES_SPEC,
     INVENTORY_RELATIONS,
 )
+from edgar_sec.infra.storage.dag.doctor import _resolve_part_path
 from edgar_sec.infra.storage.dag.manifest import (
     DAGNodeManifest,
     ParentRef,
     PartDescriptor,
+    read_manifest,
     write_manifest,
 )
+from edgar_sec.infra.storage.dag.traversal import walk_lineage
 from edgar_sec.pipelines.document_inventory.snapshot.schema import (
     SNAPSHOT_ACCESSION_SOURCES_SCHEMA,
     SNAPSHOT_ACCESSIONS_SCHEMA,
@@ -231,20 +234,28 @@ def _view(con, name: str, files: list[Path], schema: pa.Schema) -> None:
         )
 
 
-def _parent_relation_parts(
-    parent_manifest: dict[str, Any] | None, relation: str
-) -> list[dict[str, Any]]:
-    if not parent_manifest:
+def _parent_relation_files(
+    paths: InventoryPaths,
+    parent_snapshot_id: str | None,
+    relation: str,
+) -> list[Path]:
+    if not parent_snapshot_id:
         return []
-    relations = parent_manifest.get("relations")
-    if isinstance(relations, dict) and relation in relations:
-        return list(relations[relation])
-    return list(parent_manifest.get(relation, []))
+    lineage = walk_lineage(paths.snapshots_root, parent_snapshot_id)
+    files: list[Path] = []
+    for node in lineage.nodes:
+        for part in node.relations.get(relation, ()):
+            part_path = _resolve_part_path(
+                paths.snapshots_root, node.snapshot_id, part.path
+            )
+            if part_path.is_file():
+                files.append(part_path)
+    return files
 
 
 def _create_merge_relations(
     con,
-    parent_manifest: dict[str, Any] | None,
+    parent_snapshot_id: str | None,
     paths: InventoryPaths,
     cohort_accessions: Path,
     cohort_sources: Path,
@@ -257,8 +268,7 @@ def _create_merge_relations(
     refresh: bool,
 ) -> None:
     for name, schema in _RELATION_SCHEMAS.items():
-        records = _parent_relation_parts(parent_manifest, name)
-        files = _relation_files(paths, records)
+        files = _parent_relation_files(paths, parent_snapshot_id, name)
         _view(con, f"parent_{name}", files, schema)
     _view(
         con,
@@ -415,7 +425,7 @@ def _write_relation_part(
             staged.unlink()
         return None
     key_min, key_max = _key_range(staged, key_column)
-    relative = f"{snapshot_id}/{relation}/part-00000.parquet"
+    relative = f"{relation}/part-00000.parquet"
     return {
         "path": relative,
         "row_count": count,
@@ -454,19 +464,16 @@ def _read_pointer(paths: InventoryPaths) -> str | None:
 def _make_parent_input_dirs(
     stage_parent: Path,
     inventory_paths: InventoryPaths,
-    parent_manifest: dict[str, Any] | None,
+    parent_snapshot_id: str | None,
 ) -> tuple[Path | None, Path | None]:
-    if parent_manifest is None:
+    if parent_snapshot_id is None:
         return None, None
     roots = []
     for relation in ("accessions", "accession_sources"):
         root = stage_parent / "parent-input" / relation
         root.mkdir(parents=True)
-        for index, source in enumerate(
-            _relation_files(
-                inventory_paths, _parent_relation_parts(parent_manifest, relation)
-            )
-        ):
+        files = _parent_relation_files(inventory_paths, parent_snapshot_id, relation)
+        for index, source in enumerate(files):
             os.symlink(source, root / f"part-{index:05d}.parquet")
         roots.append(root if any(root.iterdir()) else None)
     return roots[0], roots[1]
@@ -550,7 +557,7 @@ def publish_committed_chunks(
             _copy_committed_attempts(run_paths, run, stage_parent)
         )
         parent_accessions_dir, parent_sources_dir = _make_parent_input_dirs(
-            stage_parent, inventory_paths, parent_manifest
+            stage_parent, inventory_paths, expected_parent_snapshot_id
         )
         try:
             anti_join_result = anti_join(
@@ -583,7 +590,7 @@ def publish_committed_chunks(
         try:
             _create_merge_relations(
                 connection,
-                parent_manifest,
+                expected_parent_snapshot_id,
                 inventory_paths,
                 cohort_accessions,
                 cohort_sources,
@@ -610,7 +617,6 @@ def publish_committed_chunks(
                             f"current is {actual_parent!r}"
                         )
                     return SnapshotPublication.no_op(parent_metadata)
-            inherited = parent_manifest or {}
             accession_query = (
                 "SELECT accession, filing_cik, form, filing_date, report_date, bundle_url, "
                 "bundle_size, index_url, index_sha256, first_indexed_by FROM delta_accessions "
@@ -636,11 +642,10 @@ def publish_committed_chunks(
                 rel = spec.name
                 q = relation_queries[rel]
                 key_col = spec.entity_key or spec.primary_key[0]
-                inherited_parts = _parent_relation_parts(parent_manifest, rel)
                 part = _write_relation_part(
                     connection, staged_snapshot, snapshot_id, rel, q, key_col
                 )
-                relation_records[rel] = inherited_parts + ([part] if part else [])
+                relation_records[rel] = [part] if part else []
         finally:
             connection.close()
 
@@ -650,18 +655,30 @@ def publish_committed_chunks(
                 expected_parent_snapshot_id
             )
             if parent_manifest_file.is_file():
+                parent_node = read_manifest(parent_manifest_file)
                 parent_refs.append(
                     ParentRef(
                         snapshot_id=expected_parent_snapshot_id,
                         manifest_sha256=file_sha256(parent_manifest_file),
                     )
                 )
+                checkpoint_anchor_id = (
+                    parent_node.checkpoint_anchor_id or expected_parent_snapshot_id
+                )
+                lineage_depth = parent_node.lineage_depth + 1
+            else:
+                checkpoint_anchor_id = expected_parent_snapshot_id
+                lineage_depth = 1
+        else:
+            checkpoint_anchor_id = snapshot_id
+            lineage_depth = 0
+
         dag_manifest = DAGNodeManifest(
             snapshot_id=snapshot_id,
             kind="delta" if expected_parent_snapshot_id else "checkpoint",
             parents=tuple(parent_refs),
-            checkpoint_anchor_id=expected_parent_snapshot_id or snapshot_id,
-            lineage_depth=len(parent_refs),
+            checkpoint_anchor_id=checkpoint_anchor_id,
+            lineage_depth=lineage_depth,
             created_at=datetime.now(UTC).isoformat(timespec="seconds"),
             relations={
                 rel: tuple(

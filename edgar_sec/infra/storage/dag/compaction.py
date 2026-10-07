@@ -24,6 +24,7 @@ from edgar_sec.infra.storage.parquet import (
 )
 
 from .manifest import DAGNodeManifest, ParentRef, PartDescriptor, write_manifest
+from .publication import publish_node
 from .resolution import compile_virtual_views, compute_logical_fingerprint
 from .spec import RelationSpec
 from .traversal import LineageChain, walk_lineage
@@ -114,6 +115,9 @@ def compact_lineage(
     tip_id: str,
     new_snapshot_id: str,
     staged_dir: Path | str,
+    *,
+    publish: bool = False,
+    branch_name: str | None = None,
     profile: RuntimeResourceProfile | None = None,
 ) -> DAGNodeManifest:
     """Consolidate DAG lineage into a standalone Checkpoint snapshot."""
@@ -170,6 +174,14 @@ def compact_lineage(
 
     manifest_path = staged / "manifest.json"
     write_manifest(manifest_path, checkpoint_manifest)
+    if publish:
+        publish_node(
+            root,
+            checkpoint_manifest,
+            staged,
+            expected_parent_id=tip_id,
+            branch_name=branch_name,
+        )
     return checkpoint_manifest
 
 

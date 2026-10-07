@@ -186,6 +186,10 @@ class MetadataPaths:
         """Manifest recording the roster and rules an assignment resolved from."""
         return self.family_index_dir(family_index_id) / FAMILY_INDEX_MANIFEST_NAME
 
+    def snapshot_lock_path(self, snapshot_id: str) -> Path:
+        """Exclusive run lock for a published snapshot (used by augment)."""
+        return self.snapshot_dir(snapshot_id) / "run.lock"
+
 
 @dataclass(frozen=True, slots=True)
 class RunPaths:
@@ -231,6 +235,10 @@ class RunPaths:
     def chunk_file(self, chunk_id: int) -> Path:
         """Checkpoint path for one chunk."""
         return self.chunk_dir / f"chunk_{chunk_id:04d}.parquet"
+
+    def lock_path(self) -> Path:
+        """Exclusive run lock for this plan."""
+        return self.metadata.plan_dir(self.plan_id) / "run.lock"
 
 
 def resolve_metadata_paths(

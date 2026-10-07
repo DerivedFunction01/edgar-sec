@@ -76,7 +76,10 @@ def compile_pruned_views(
     view_names: dict[str, str] = {}
     ranges = relation_ranges or {}
 
-    for spec in specs:
+    ordered_specs = sorted(
+        specs, key=lambda s: 1 if s.merge_strategy == "scoped_mask" else 0
+    )
+    for spec in ordered_specs:
         active_name = sql_identifier(f"active_{spec.name}")
         raw_name = sql_identifier(f"_raw_{spec.name}")
         view_names[spec.name] = active_name
@@ -135,6 +138,33 @@ def compile_pruned_views(
                 SELECT * EXCLUDE(_lineage_ord, _rnk) FROM ranked WHERE _rnk = 1
             """
             con.execute(append_stmt)
+        elif spec.merge_strategy == "scoped_mask":
+            parent_table = sql_identifier(spec.parent_relation or "")
+            parent_join_keys = spec.parent_join_key or spec.primary_key
+            p_join_cols = ", ".join(sql_identifier(k) for k in parent_join_keys)
+            join_conditions = " AND ".join(
+                f"c.{sql_identifier(k)} = p.{sql_identifier(k)}"
+                for k in parent_join_keys
+            )
+            mask_stmt = f"""
+                CREATE OR REPLACE TEMP VIEW {active_name} AS
+                WITH winning_parent AS (
+                    SELECT {p_join_cols}, _lineage_ord
+                    FROM (
+                        SELECT {p_join_cols}, _lineage_ord,
+                               ROW_NUMBER() OVER (
+                                   PARTITION BY {p_join_cols} ORDER BY _lineage_ord DESC
+                               ) AS _rnk
+                        FROM {sql_identifier(f"_raw_{parent_table}")}
+                    ) WHERE _rnk = 1
+                )
+                SELECT c.* EXCLUDE(_lineage_ord)
+                FROM {raw_name} c
+                JOIN winning_parent p
+                  ON {join_conditions}
+                 AND c._lineage_ord = p._lineage_ord
+            """
+            con.execute(mask_stmt)
         else:
             default_stmt = f"CREATE OR REPLACE TEMP VIEW {active_name} AS SELECT * EXCLUDE(_lineage_ord) FROM {raw_name}"
             con.execute(default_stmt)
@@ -149,6 +179,7 @@ def query_point(
     snapshots_root: Path | str,
     key_value: str,
     key_column: str | None = None,
+    all_specs: Sequence[RelationSpec] | None = None,
 ) -> list[dict[str, Any]]:
     """Execute high-speed point query with automatic range pruning."""
     col = key_column or spec.entity_key or spec.primary_key[0]
@@ -157,9 +188,11 @@ def query_point(
     else:
         r_min, r_max = key_value, key_value
 
-    compile_pruned_views(
-        con, [spec], lineage, snapshots_root, {spec.name: (r_min, r_max)}
-    )
+    target_specs = list(all_specs) if all_specs is not None else [spec]
+    ranges: dict[str, tuple[str | None, str | None]] = {
+        s.name: (r_min, r_max) for s in target_specs
+    }
+    compile_pruned_views(con, target_specs, lineage, snapshots_root, ranges)
     stmt = f"SELECT * FROM active_{sql_identifier(spec.name)} WHERE {sql_identifier(col)} = ?"
     cursor = con.execute(stmt, [key_value])
     columns = [desc[0] for desc in cursor.description]
