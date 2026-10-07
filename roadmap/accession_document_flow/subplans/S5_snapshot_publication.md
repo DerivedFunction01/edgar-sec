@@ -5,8 +5,11 @@
 - Owning stage in [implementation.md](../implementation.md): **S5**; the detailed
   contract for S5 is also in
   [inventory_snapshot.md](../inventory_snapshot.md).
-- Status: cumulative, queryable snapshot contract; schema, query, and writer work can
-  start from synthetic typed outcomes before production parsing is complete.
+- Status: streamed pre-fetch cohort projection/work-order generation, post-fetch
+  anti-join staging, validated-attempt snapshot merge, artifact validation, serialized
+  installation, stale-parent refusal, and pointer-last publication are implemented.
+  Reader/query API and production projection-to-S4-to-S5 orchestration remain open;
+  explicit superseded-entry manifest mapping is unresolved.
 - Depends for operational publication on: S1 cohort contract, S3 parser body, and S4
   integrated broker+worker. S2 remains research/replay input, not a production writer.
 - Non-blocking: S6–S10 design (consumers, not implementers).
@@ -21,7 +24,7 @@ enters the snapshot.
 
 ## Contract
 
-`build_inventory(cohort, base_snapshot, explicit_refresh=False, chunk_size=None, retry_failures=False) -> SnapshotPublication`
+`build_inventory(catalog_plan_id, base_snapshot, explicit_refresh=False, chunk_size=None, retry_failures=False) -> SnapshotPublication`
 
 The build consumes S4's validated transient Parquet chunk references. S4 owns only its
 identity-bound worker checkpoints; S5 reads them in bounded batches into separate
@@ -29,16 +32,20 @@ publication staging and owns every canonical Parquet relation. S4 workers never 
 files. Typed outcomes may be supplied directly in isolated writer tests, but those
 tests do not stand in for the S3 parser or full pipeline integration.
 
-Production cohort input is streamed from validated catalog-plan Parquet or an
-observation iterator into bounded temporary Parquet batches. S5 performs accession
-aggregation, conflict checks, anti-joins, sorting, and relation deltas in configured
-DuckDB; it does not first build a tuple-wide `InventoryCohort`, collect DuckDB results
-with `fetchall()`, or keep the current snapshot's keys in Python sets. The S1
-`InventoryCohort` remains useful for small offline unit tests, not the production-scale
-build boundary. Temporary cohort/work-order files live under the run's transient
-publication staging and are not referenced by the published snapshot.
+Production input is a validated, published `filing_catalog` plan. S5 streams its
+declared Parquet parts and performs accession aggregation, conflict checks, source-CIK
+relation construction, and pre-fetch anti-join in resource-configured DuckDB. S5 does
+not first build a tuple-wide `InventoryCohort`, collect DuckDB results with `fetchall()`,
+or keep the current snapshot's keys in Python sets. The S1 `InventoryCohort` remains
+useful for small offline unit tests, not the production-scale build boundary. A sorted,
+unique accession/URL work order is written to the run's transient tree and passed to
+S4. It is not a separately published inventory-plan artifact. Temporary cohort
+relations and the work order live under the transient run root; the work order is
+referenced by the run manifest, not by the published snapshot.
 
-- `cohort`: the S1 `InventoryCohort` with validated, de-duplicated accessions.
+- `catalog_plan_id`: a discovered published catalog-plan ID whose manifest and declared
+  parts validate and whose observations project to a consistent accession relation;
+  callers do not provide arbitrary plan paths.
 - `base_snapshot`: the current snapshot to anti-join against; `None` for the base run.
 - `explicit_refresh`: force re-read of all cohort index pages.
 
@@ -61,7 +68,9 @@ digest changes.
 ## Anti-join and distinct CIK semantics
 
 1. Validate the catalog plan and aggregate its rows by accession; validate consistent
-   form/filing/report dates and sort/deduplicate source CIKs.
+   form/filing/report dates and write normalized accession and source-CIK relations.
+   Projection is streaming/relational; it does not call S1 `project_cohort` on the full
+   production plan.
 2. CIK meanings remain distinct:
    - `filing_cik` is the canonical first ten digits of the accession (the filing
      entity) and has a distinct lookup from source-CIK associations.
@@ -72,8 +81,9 @@ digest changes.
      Adding a new source-CIK association appends a row to
      `accession_sources/year=YYYY/` with zero page refetches and no rewrite of
      the accession facts.
-3. Read `current/pointer.json` and the accession lookup; anti-join candidates by
-   **accession only**, not by `(source_cik, accession)`, locator, or plan ID.
+3. Read and validate `current/pointer.json` and its accession relation; anti-join
+   candidates by **accession only**, not by `(source_cik, accession)`, locator, or plan
+   ID. Write the sorted, unique missing-accession work order before any SEC request.
 4. For an accession already indexed, compare filing metadata, append any previously
    unseen `(accession, source_cik)` relationships, and reuse its index page/entries
    without HTTP.
@@ -92,11 +102,72 @@ Python. S4 must accept the missing-accession work order as a stream or Parquet-b
 source; passing the complete anti-join result through an in-memory sequence is not a
 production implementation of this contract.
 
+## Prefetch work-order and recovery boundary
+
+- The filing-catalog plan is the source cohort; S5 creates an identity-pinned transient
+  inventory work order after the current-snapshot anti-join. There is no second
+  published inventory-plan artifact.
+- The current `snapshot.anti_join.anti_join` consumes already-staged worker outcomes,
+  entries, and source edges as a post-fetch delta classifier. The separate
+  `snapshot.projection` validates catalog plans and writes the pre-fetch work order.
+- S4 owns per-accession progress inside a temporary chunk. One complete parse result's
+  outcome, all entries, and completion marker commit atomically in its configured
+  transactional progress store. S5 consumes only S4's fully validated chunk Parquet
+  pointers; it does not read partial progress journals or introduce a second recovery
+  ledger.
+- Run locking protects one run's work order and S4 progress. A separate publication
+  lock protects the current-parent check, immutable snapshot installation, and final
+  pointer update. Snapshot staging may be rebuilt from committed S4 chunks after an
+  S5 failure without fetching again.
+
 An accession whose form/date metadata conflicts is refused before fetch; it is not
 silently re-indexed. Snapshot updates are serialized per inventory root; readers
 remain lock-free against immutable snapshots. A writer whose expected parent no
 longer matches `current` refuses before pointer publication; a retry re-anti-joins
   against the new parent and may reuse compatible SEC-cache or fixture-page responses.
+
+All published and transient path construction is owned by
+`document_inventory.paths`; the snapshot package does not define a second layout.
+
+## Current implementation blockers
+
+- `cli._cohort_for_plan` calls `list(read_catalog_observations(...))` and
+  `project_cohort`; it is a fixture workflow and cannot serve as the production
+  projection for a large plan.
+- `build_inventory` does not exist. No production adapter writes the pre-fetch work
+  order, selects the base snapshot, invokes S4, merges committed attempts, or publishes
+  `current`.
+- `snapshot.projection` already validates published plans and writes the pre-fetch
+  work order. The production builder connecting that projection to S4 and S5 remains
+  absent.
+- The snapshot reader/query API is not implemented; the writer, manifest inheritance,
+  artifact validation, publication lock, stale-parent check, and pointer-last install
+  are available as direct primitives. Changed-page refresh replaces active annual
+  entry parts but does not emit the contract's explicit superseded-entry mapping.
+- The mapping's persisted shape is unresolved: the model currently expresses it as an
+  accession-to-entry-ID Python mapping, which is not bounded for a large refresh. A
+  bounded Parquet delta versus a potentially large manifest mapping must be decided
+  before implementing that part of the contract.
+- S4 currently has chunk-only committed resume, no per-parse transactional progress
+  journal or cooperative cancellation, and retry inspection materializes outcomes and
+  entries into Python lists/dictionaries. Those S4 prerequisites block the requested
+  within-chunk recovery contract, but not synthetic S5 writer tests.
+- The S0 SEC-page audit still gates final historical parser acceptance, not the
+  implementation of the production plan/work-order/snapshot infrastructure.
+
+## Unblock order
+
+1. Connect the existing streamed filing-plan projection and pre-fetch accession
+   anti-join to the production builder; pin the transient work order before S4.
+2. Add S4's run lock, per-parse progress journal, resume validation, and cooperative
+   cancellation. Keep the current chunk-level Parquet pointer as the canonical S4/S5
+   handoff.
+3. Add the snapshot reader/query surface and broaden synthetic committed-attempt
+   coverage; the bounded writer and pointer-last publisher can proceed before S0 ends.
+4. Wire the production builder and discovery-driven command through plan projection,
+   S4, and S5, then run an offline vertical test with a published-plan fixture.
+5. Gate final parser acceptance and live operational rollout on S0's historical-page
+   evidence; this gate does not block the preceding infrastructure implementation.
 
 ## Physical layout: dense annual partitions
 
@@ -142,9 +213,10 @@ explosion while providing backend-neutral query selection:
 - Parser diagnostics remain available to fixture/review artifacts and are not stored
   as a fourth canonical Parquet relation.
 - A retry validates the same base/cohort intent, reuses valid completed S4 Parquet
-  chunks, and rebuilds only S5 publication staging. Incomplete or invalid S4 chunks
-  are recomputed by S4; `--retry-failures` is required to reattempt committed
-  retryable fetch/worker failures. S5 does not maintain a second checkpoint ledger.
+  chunks and valid per-accession progress journals, then rebuilds only S5 publication
+  staging. Invalid S4 progress is recomputed by S4; `--retry-failures` is required to
+  reattempt committed retryable fetch/worker failures. S5 does not maintain a second
+  checkpoint ledger.
 - No target profile or payload field enters the snapshot.
 - Atomic publication: write S5 staging under
   `transient/document_inventory/{run_id}/publication/`, validate completely, move to
@@ -180,6 +252,13 @@ and query parity for accession, filing form, filing CIK, and source CIK.
   logical fingerprint as accession-order synthetic inputs.
 - Filing-CIK and source-CIK queries return distinct expected results; combined
   filters intersect each requested CIK posting with annual row groups.
+- A large synthetic filing-catalog plan produces a sorted unique work order without a
+  full-plan Python collection; duplicate accessions collapse while source-CIK edges
+  remain distinct.
+- No SEC request occurs before catalog-plan validation and the pre-fetch anti-join
+  complete.
+- The production builder derives a transient work order directly from the published
+  filing-catalog plan; no second published inventory-plan artifact is created.
 
 ## Acceptance criteria
 
@@ -190,3 +269,8 @@ are published with zero-copy manifest inheritance, page refreshes supersede olde
 active entries cleanly, and `current` advances atomically after full validation. No
 target profile or payload field enters the snapshot; filing-CIK and source-CIK queries
 use distinct indexes; a failed fetch or parse publishes nothing.
+
+The run can be stopped during a chunk and resumed from valid per-parse progress. Every
+progress transaction contains one terminal outcome, all entries from that accession's
+parse, and its completion marker. A partial entry set is never marked complete. Run
+and publication locks prevent same-run writes and stale-parent pointer movement.

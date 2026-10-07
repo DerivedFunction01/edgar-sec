@@ -25,7 +25,8 @@ contracts only.
   immutable, content-addressed target plans for the next phase to consume.
 - [`document_inventory/`](document_inventory/README.md) — Phase S1–S5 in progress.
   Projects selected cohorts, captures and replays index pages, builds parser-review
-  artifacts, and contains path-backed S4 plus bounded S5 anti-join primitives.
+  artifacts, and contains a streamed pre-fetch projection, path-backed S4, and bounded
+  S5 anti-join primitives.
 - [`document_storage/`](document_storage/README.md) — Phase 2.5. Fetches primary
   filings, unrolls SGML, normalizes, resolves delegated exhibits, and
   consolidates per-run snapshots into one canonical snapshot across runs.

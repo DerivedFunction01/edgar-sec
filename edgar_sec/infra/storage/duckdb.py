@@ -63,6 +63,7 @@ def _identifier(value: str) -> str:
 def connect(
     profile: RuntimeResourceProfile | None = None,
     *,
+    database: str | os.PathLike[str] = ":memory:",
     threads: int | None = None,
     memory_limit: str | None = None,
     temp_directory: str | os.PathLike[str] | None = None,
@@ -85,7 +86,10 @@ def connect(
     )
     actual_temp_dir.mkdir(parents=True, exist_ok=True)
 
-    con = duckdb.connect()
+    database_path = os.fspath(database)
+    if database_path != ":memory:":
+        Path(database_path).resolve().parent.mkdir(parents=True, exist_ok=True)
+    con = duckdb.connect(database=database_path)
     con.execute("SET threads = ?", [max(1, int(actual_threads))])
     con.execute("SET memory_limit = ?", [str(actual_memory_limit)])
     con.execute("SET temp_directory = ?", [str(actual_temp_dir)])

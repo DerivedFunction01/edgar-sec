@@ -147,3 +147,12 @@ def test_copy_query_to_parquet_keeps_a_parametrised_query_constant(
 
     assert pq.read_table(written[0]).column("cik")[0].as_py() == "0000000001"
     assert pq.read_table(written[1]).column("cik")[0].as_py() == "0000000002"
+
+
+def test_connect_persists_to_a_configured_database(tmp_path: Path) -> None:
+    database = tmp_path / "progress" / "state.duckdb"
+    with connect(database=database) as con:
+        con.execute("CREATE TABLE progress(value VARCHAR)")
+        con.execute("INSERT INTO progress VALUES ('saved')")
+    with connect(database=database) as con:
+        assert con.execute("SELECT value FROM progress").fetchone() == ("saved",)

@@ -178,6 +178,14 @@ The reader serves only published `filing_catalog` snapshots/plans plus dedicated
 4. Construct one `IndexWorkItem` per accession from its canonical identity.
 5. Emit all model tuples in stable identity order.
 
+`project_cohort` is an in-memory convenience contract for bounded offline fixtures
+and unit tests; it is not the production-scale build boundary. S5 must implement a
+streaming/relational projection with the same refusal, accession, and source-CIK
+semantics and must not construct `InventoryCohort` for a complete production plan.
+The catalog plan is the production input; S5 derives a run-scoped transient work
+order after comparing its accession relation with the selected base snapshot. No
+separately published inventory-plan artifact is introduced.
+
 Reject unknown or malformed manifests, missing parts, and conflicting form or filing
 dates. Transport failures are run results, not successful response rows.
 

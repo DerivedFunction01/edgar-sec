@@ -40,6 +40,7 @@ class LookupShard:
     part_path: str
     row_count: int
     sha256: str
+    byte_size: int = 0
     key_min: str | None = None
     key_max: str | None = None
 

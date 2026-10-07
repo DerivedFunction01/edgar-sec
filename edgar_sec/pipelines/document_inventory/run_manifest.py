@@ -24,6 +24,7 @@ from edgar_sec.pipelines.document_inventory.paths import InventoryRunPaths
 
 WORK_ORDER_VERSION = "2"
 OUTCOME_SCHEMA_VERSION = 1
+PROGRESS_SCHEMA_VERSION = 1
 WORK_ORDER_SCHEMA = pa.schema(
     [
         pa.field("accession", pa.string(), nullable=False),
@@ -37,6 +38,7 @@ _FETCH_MODES = frozenset({"live", "force_refresh"})
 __all__ = [
     "WORK_ORDER_VERSION",
     "OUTCOME_SCHEMA_VERSION",
+    "PROGRESS_SCHEMA_VERSION",
     "WORK_ORDER_SCHEMA",
     "ChunkIdentity",
     "InventoryRunManifest",
@@ -78,6 +80,7 @@ class InventoryRunManifest:
     parser_version: str
     outcome_schema_version: int
     entry_schema_version: int
+    progress_schema_version: int
     work_order_version: str
     work_order_digest: str
     work_order_rows: int
@@ -97,6 +100,7 @@ class InventoryRunManifest:
             "parser_version": self.parser_version,
             "outcome_schema_version": self.outcome_schema_version,
             "entry_schema_version": self.entry_schema_version,
+            "progress_schema_version": self.progress_schema_version,
             "work_order_version": self.work_order_version,
             "work_order_digest": self.work_order_digest,
             "work_order_rows": self.work_order_rows,
@@ -119,6 +123,7 @@ class InventoryRunManifest:
             parser_version=str(data["parser_version"]),
             outcome_schema_version=int(data["outcome_schema_version"]),
             entry_schema_version=int(data["entry_schema_version"]),
+            progress_schema_version=int(data["progress_schema_version"]),
             work_order_version=str(data["work_order_version"]),
             work_order_digest=str(data["work_order_digest"]),
             work_order_rows=int(data["work_order_rows"]),
@@ -329,6 +334,7 @@ def write_run_manifest(
         parser_version=parser_version,
         outcome_schema_version=OUTCOME_SCHEMA_VERSION,
         entry_schema_version=ENTRY_SCHEMA_VERSION,
+        progress_schema_version=PROGRESS_SCHEMA_VERSION,
         work_order_version=work_order_version,
         work_order_digest=identity.digest,
         work_order_rows=identity.row_count,
@@ -389,6 +395,10 @@ def validate_run_manifest(
             OUTCOME_SCHEMA_VERSION,
         ),
         "entry_schema_version": (existing.entry_schema_version, ENTRY_SCHEMA_VERSION),
+        "progress_schema_version": (
+            existing.progress_schema_version,
+            PROGRESS_SCHEMA_VERSION,
+        ),
     }
     for name, (actual, expected_value) in expected.items():
         if actual != expected_value:

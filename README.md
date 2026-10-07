@@ -270,7 +270,8 @@ edgar_sec/               # each package has its own README.md (linked above)
 ├── engine/             # Layer 3: document and index-page parsing, cover/table
 │                       #   processing, candidate selection, submission building
 ├── pipelines/          # Layer 4: metadata_sync (Phase 1), filing_catalog
-│                       #   (Phase 2), document_inventory (S1–S5 in progress),
+│                       #   (Phase 2), document_inventory (streamed plan-to-work-order
+│                       #   projection; S4/S5 publication integration in progress),
 │                       #   document_storage (Phase 2.5)
 └── apps/               # Layer 5: the dataset viewer (read-only, no publishing)
 
@@ -319,6 +320,12 @@ All generated paths derive from the artifacts root; no module hardcodes them.
 {artifacts_root}/document_storage/fixtures/{fixture_id}/fixture.sqlite
 {artifacts_root}/document_inventory/fixtures/{fixture_id}/manifest.json # Common envelope; index-store details are pipeline-owned
 {artifacts_root}/document_inventory/fixtures/{fixture_id}/index_fixtures.sqlite
+{artifacts_root}/document_inventory/snapshots/{snapshot_id}/manifest.json # Published inventory snapshot
+{artifacts_root}/document_inventory/snapshots/current/pointer.json      # Current snapshot identity
+{artifacts_root}/transient/document_inventory/projection-staging/   # Temporary projection outputs
+{artifacts_root}/transient/document_inventory/{run_id}/cohort_accessions.parquet # Normalized cohort facts
+{artifacts_root}/transient/document_inventory/{run_id}/cohort_sources.parquet    # Source-CIK edges
+{artifacts_root}/transient/document_inventory/{run_id}/work_order.parquet       # Pre-fetch accession work
 {artifacts_root}/document_storage/snapshots/{snapshot_id}/  # Published documents
 {artifacts_root}/document_storage/review-runs/{run_id}/    # Generated review bundles
 {artifacts_root}/transient/document_storage/runs/{run_id}/ # Resumable run staging

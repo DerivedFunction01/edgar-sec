@@ -7,6 +7,7 @@ from __future__ import annotations
 
 from concurrent.futures import Future
 from pathlib import Path
+import signal
 
 import pytest
 
@@ -17,7 +18,7 @@ from edgar_sec.pipelines.document_inventory import coordinator as coordinator_mo
 from edgar_sec.domain.document_inventory.models import IndexWorkItem
 from edgar_sec.pipelines.document_inventory.broker import IndexPageBrokerClient
 from edgar_sec.pipelines.document_inventory.checkpoint import (
-    read_outcome_rows,
+    iter_outcome_rows,
     validate_committed_chunk,
 )
 from edgar_sec.pipelines.document_inventory.worker import IndexWorkerFailure
@@ -35,6 +36,7 @@ from edgar_sec.pipelines.document_inventory.run_manifest import (
 from edgar_sec.pipelines.document_inventory.coordinator import (
     ChunkOutcome,
     _RunSummaryCollector,
+    RunSummary,
     _bounded_results,
     run_missing_accessions as _run_with_work_order,
 )
@@ -132,7 +134,7 @@ def _serving_http(items: list[IndexWorkItem], **kwargs: object) -> _FakeHttp:
 
 def _outcome_by_accession(paths, chunk_id: str, attempt: str) -> dict[str, dict]:
     return {
-        row["accession"]: row for row in read_outcome_rows(paths, chunk_id, attempt)
+        row["accession"]: row for row in iter_outcome_rows(paths, chunk_id, attempt)
     }
 
 
@@ -461,14 +463,14 @@ def test_pool_size_comes_from_resource_profile(tmp_path: Path, monkeypatch) -> N
         threads=2,
         memory_limit="512MB",
         temp_directory=str(tmp_path),
-        available_memory_bytes=1 << 30,
+        available_memory_bytes=2 << 30,
         worker_memory_mib=512,
         worker_memory_safety=0.9,
     )
     summary = run_missing_accessions(
         items, IDENTITY, paths, http_client=fake, profile=profile
     )
-    assert created and created[0]["max_workers"] == 3
+    assert created and created[0]["max_workers"] == profile.worker_ceiling == 2
     assert summary.committed_count == 2
 
 
@@ -485,6 +487,107 @@ def test_single_worker_never_builds_a_pool(tmp_path: Path, monkeypatch) -> None:
         items, IDENTITY, paths, http_client=fake, workers=1
     )
     assert summary.committed_count == 1
+
+
+@pytest.mark.parametrize("signum", [signal.SIGINT, signal.SIGTERM])
+def test_signal_drains_current_result_without_advancing_chunk_pointer(
+    tmp_path: Path, signum: int
+) -> None:
+    items = _items(3)
+    paths = inventory_run_paths(tmp_path, "run-1")
+
+    class _CancelHttp(_FakeHttp):
+        requested = False
+
+        def get_bytes(self, url: str, *, force_refresh: bool = False) -> bytes:
+            body = super().get_bytes(url, force_refresh=force_refresh)
+            if not self.requested:
+                self.requested = True
+                signal.raise_signal(signum)
+            return body
+
+    first = _CancelHttp({item.index_url: INDEX_HTML for item in items})
+    cancelled = run_missing_accessions(
+        items, IDENTITY, paths, http_client=first, workers=1
+    )
+    assert cancelled.cancelled
+    assert cancelled.status == "cancelled"
+    assert cancelled.committed_count == 0
+    assert len(first.calls) == 1
+    identity, _members = next(
+        iter_work_order_chunks(paths.work_order_path(), chunk_size=3)
+    )
+    assert not paths.chunk_pointer_path(identity.chunk_id).exists()
+    assert paths.progress_pointer_path(identity.chunk_id).is_file()
+
+    second = _serving_http(items)
+    resumed = run_missing_accessions(
+        items, IDENTITY, paths, http_client=second, workers=1
+    )
+    assert not resumed.cancelled
+    assert resumed.status == "completed"
+    assert resumed.committed_count == 1
+    assert len(second.calls) == len(items) - 1
+
+
+def test_pool_stop_does_not_refill_and_drains_submitted_results() -> None:
+    items = _items(4)
+    stopped = False
+    submitted = []
+
+    class _ImmediatePool:
+        def submit(self, fn, item, broker, force_refresh):  # noqa: ANN001
+            submitted.append(item)
+            future = Future()
+            future.set_result(
+                IndexWorkerFailure(item.accession, "worker_error", "test")
+            )
+            return future
+
+    results = []
+    for result in _bounded_results(
+        items,
+        None,
+        2,
+        False,
+        _ImmediatePool(),
+        lambda: stopped,
+    ):
+        results.append(result)
+        stopped = True
+    assert len(submitted) == len(results) == 2
+
+
+def test_explicit_workers_cannot_raise_the_safe_ceiling(
+    tmp_path: Path, monkeypatch
+) -> None:
+    items = _items(1)
+    paths = inventory_run_paths(tmp_path, "run-1")
+    profile = RuntimeResourceProfile(
+        cpu_cores=2,
+        workers=10,
+        threads=2,
+        memory_limit="512MB",
+        temp_directory=str(tmp_path),
+        available_memory_bytes=1 << 30,
+        worker_memory_mib=512,
+        worker_memory_safety=0.9,
+    )
+    observed = {}
+
+    def intercept(_chunks, _paths, manifest, **kwargs):  # noqa: ANN001
+        observed["workers"] = kwargs["workers"]
+        return RunSummary(manifest.run_id, (), 0, 0, 0, 0, False)
+
+    monkeypatch.setattr(coordinator_module, "_run_pending", intercept)
+    run_missing_accessions(
+        items,
+        IDENTITY,
+        paths,
+        profile=profile,
+        workers=100,
+    )
+    assert observed["workers"] == profile.worker_ceiling == 1
 
 
 def test_spawn_pool_executes_chunks(tmp_path: Path) -> None:

@@ -8,12 +8,17 @@ lives in ``broker.py``.
 from __future__ import annotations
 
 import logging
+import signal
+import threading
 from collections.abc import Iterable, Iterator, Sequence
+from contextlib import contextmanager
 from concurrent.futures import FIRST_COMPLETED, Future, ProcessPoolExecutor, wait
-from dataclasses import dataclass
+from dataclasses import dataclass, replace
 from multiprocessing import get_context
 from pathlib import Path
 from typing import Any
+
+import pyarrow.parquet as pq
 
 from edgar_sec.domain.document_inventory.models import IndexWorkItem
 from edgar_sec.foundation.runtime.memory import reclaim
@@ -30,16 +35,11 @@ from .checkpoint import (
     ChunkValidation,
     REFUSAL_STATUSES,
     RETRYABLE_STATUSES,
-    entry_rows,
     finalize_attempt,
-    new_attempt_id,
-    outcome_row,
-    read_entry_rows,
-    read_outcome_rows,
-    split_retryable,
     validate_committed_chunk,
 )
 from .paths import InventoryPaths, InventoryRunPaths
+from .progress import ProgressStore, open_progress
 from .run_manifest import (
     ChunkIdentity,
     InventoryRunManifest,
@@ -49,6 +49,7 @@ from .run_manifest import (
     validate_run_manifest,
     write_run_manifest,
 )
+from .run_lock import RunLock
 from .worker import (
     IndexWorkerFailure,
     RECLAIM_INTERVAL,
@@ -75,6 +76,7 @@ def _bounded_results(
     workers: int,
     force_refresh: bool,
     pool: ProcessPoolExecutor | None,
+    stop_requested=lambda: False,
 ) -> Iterator[_TypedResult]:
     """Yield one typed result per item in completion order, bounded by ``workers``.
 
@@ -83,6 +85,8 @@ def _bounded_results(
     """
     if pool is None:
         for item in items:
+            if stop_requested():
+                return
             yield _run_task(item, broker, force_refresh=force_refresh)
             reclaim()
         return
@@ -91,27 +95,33 @@ def _bounded_results(
     in_flight: dict[Future[_TypedResult], IndexWorkItem] = {}
     exhausted = False
 
-    def submit_next() -> list[_TypedResult]:
+    def submit_next() -> Iterator[_TypedResult]:
         """Submit one task; on a broken pool, emit typed failures for the rest."""
         nonlocal exhausted
         item = next(source, None)
         if item is None:
             exhausted = True
-            return []
+            return iter(())
         try:
             in_flight[pool.submit(_run_task, item, broker, force_refresh)] = item
-            return []
+            return iter(())
         except Exception as exc:  # noqa: BLE001 - broken pool must not erase siblings
             exhausted = True
             detail = str(exc) or type(exc).__name__
-            failures = [IndexWorkerFailure(item.accession, "worker_error", detail)]
-            failures.extend(
-                IndexWorkerFailure(rest.accession, "worker_error", detail)
-                for rest in source
-            )
-            return failures
+
+            def broken_pool_failures() -> Iterator[_TypedResult]:
+                yield IndexWorkerFailure(item.accession, "worker_error", detail)
+                for rest in source:
+                    if stop_requested():
+                        return
+                    yield IndexWorkerFailure(rest.accession, "worker_error", detail)
+
+            return broken_pool_failures()
 
     for _ in range(max(1, workers)):
+        if stop_requested():
+            exhausted = True
+            break
         for failure in submit_next():
             yield failure
         if exhausted:
@@ -126,31 +136,14 @@ def _bounded_results(
                 detail = str(exc) or type(exc).__name__
                 yield IndexWorkerFailure(item.accession, "worker_error", detail)
         for _ in range(len(done)):
+            if stop_requested():
+                exhausted = True
+                break
             for failure in submit_next():
                 yield failure
             if exhausted:
                 break
         reclaim()
-
-
-def _write_results(
-    writers: AttemptWriters,
-    url_by_accession: dict[str, str],
-    results: Iterator[_TypedResult],
-) -> tuple[int, int]:
-    """Stream results into staged Parquet; return (refused, retryable) counts."""
-    refused = 0
-    retryable = 0
-    for result in results:
-        row = outcome_row(
-            result, index_url=url_by_accession.get(str(result.accession), "")
-        )
-        writers.add(row, entry_rows(result))
-        if row["status"] in REFUSAL_STATUSES:
-            refused += 1
-        if row["status"] in RETRYABLE_STATUSES:
-            retryable += 1
-    return refused, retryable
 
 
 @dataclass(frozen=True, slots=True)
@@ -176,6 +169,11 @@ class RunSummary:
     refusal_count: int
     chunk_count: int
     chunks_truncated: bool
+    cancelled: bool = False
+
+    @property
+    def status(self) -> str:
+        return "cancelled" if self.cancelled else "completed"
 
 
 class _RunSummaryCollector:
@@ -218,22 +216,48 @@ def _url_index(members: Sequence[IndexWorkItem]) -> dict[str, str]:
 def _process_chunk_fresh(
     paths: InventoryRunPaths,
     run: InventoryRunManifest,
-    chunk_id: str,
+    chunk: ChunkIdentity,
     members: Sequence[IndexWorkItem],
     broker: IndexPageBrokerClient,
     workers: int,
     force_refresh: bool,
-    attempt_id: str,
     pool: ProcessPoolExecutor | None,
+    profile: RuntimeResourceProfile,
+    stop_requested,
+    force_new_progress: bool = False,
+) -> ChunkOutcome | None:
+    """Resume complete per-accession transactions before exporting the attempt."""
+    chunk_id = chunk.chunk_id
+    progress = open_progress(
+        paths, chunk, run, profile=profile, force_new=force_new_progress
+    )
+    try:
+        missing = set(progress.completed_accessions(members))
+        pending = tuple(item for item in members if str(item.accession) in missing)
+        urls = _url_index(members)
+        for result in _bounded_results(
+            pending, broker, workers, force_refresh, pool, stop_requested
+        ):
+            progress.record(result, index_url=urls[str(result.accession)])
+        if progress.completed_accessions(members):
+            return None
+        return _export_progress(paths, run, chunk, members, progress)
+    finally:
+        progress.close()
+
+
+def _export_progress(
+    paths: InventoryRunPaths,
+    run: InventoryRunManifest,
+    chunk: ChunkIdentity,
+    members: Sequence[IndexWorkItem],
+    progress: ProgressStore,
 ) -> ChunkOutcome:
-    """Fetch every member into a new immutable attempt, then validate and commit."""
+    chunk_id = chunk.chunk_id
+    attempt_id = progress.attempt_id
     writers = AttemptWriters(paths, chunk_id, attempt_id)
     try:
-        refused, _ = _write_results(
-            writers,
-            _url_index(members),
-            _bounded_results(members, broker, workers, force_refresh, pool),
-        )
+        progress.export(writers)
     finally:
         writers.close()
     manifest = finalize_attempt(
@@ -251,67 +275,51 @@ def _process_chunk_fresh(
         resumed=False,
         outcome_count=manifest.outcomes_rows,
         entry_count=manifest.entries_rows,
-        refusal_count=refused,
+        refusal_count=progress.counts()[1],
     )
 
 
 def _process_chunk_retry(
     paths: InventoryRunPaths,
     run: InventoryRunManifest,
-    chunk_id: str,
+    chunk: ChunkIdentity,
     members: Sequence[IndexWorkItem],
     broker: IndexPageBrokerClient,
     workers: int,
     force_refresh: bool,
-    attempt_id: str,
     prior_attempt_id: str,
     pool: ProcessPoolExecutor | None,
-) -> ChunkOutcome:
+    profile: RuntimeResourceProfile,
+    stop_requested,
+) -> ChunkOutcome | None:
     """Carry prior non-retryable outcomes forward and retry only failed accessions."""
-    outcomes = read_outcome_rows(paths, chunk_id, prior_attempt_id)
-    entries = read_entry_rows(paths, chunk_id, prior_attempt_id)
-    carry, retry_accessions = split_retryable(outcomes)
-    retry_items = tuple(
-        item for item in members if str(item.accession) in retry_accessions
+    chunk_id = chunk.chunk_id
+    progress = open_progress(
+        paths,
+        chunk,
+        run,
+        purpose="retry",
+        source_attempt_id=prior_attempt_id,
+        profile=profile,
     )
-    entries_by_accession: dict[str, list[dict[str, Any]]] = {}
-    for row in entries:
-        entries_by_accession.setdefault(str(row.get("accession")), []).append(row)
-
-    refused = 0
-    writers = AttemptWriters(paths, chunk_id, attempt_id)
     try:
-        for row in carry:
-            accession = str(row.get("accession"))
-            writers.add(row, entries_by_accession.get(accession, []))
-            if row.get("status") in REFUSAL_STATUSES:
-                refused += 1
-        new_refused, _ = _write_results(
-            writers,
-            _url_index(members),
-            _bounded_results(retry_items, broker, workers, force_refresh, pool),
+        progress.seed_carry(
+            paths.attempt_outcomes_path(chunk_id, prior_attempt_id),
+            paths.attempt_entries_path(chunk_id, prior_attempt_id),
+            profile,
         )
-        refused += new_refused
+        missing = set(progress.completed_accessions(members))
+        retry_items = tuple(item for item in members if str(item.accession) in missing)
+        urls = _url_index(members)
+        for result in _bounded_results(
+            retry_items, broker, workers, force_refresh, pool, stop_requested
+        ):
+            progress.record(result, index_url=urls[str(result.accession)])
+        if progress.completed_accessions(members):
+            return None
+        return _export_progress(paths, run, chunk, members, progress)
     finally:
-        writers.close()
-    manifest = finalize_attempt(
-        paths, chunk_id, attempt_id, membership=_membership_of(members), run=run
-    )
-    log.info(
-        "retried chunk %s attempt %s (%d outcomes, %d carried)",
-        chunk_id,
-        attempt_id,
-        manifest.outcomes_rows,
-        len(carry),
-    )
-    return ChunkOutcome(
-        chunk_id=chunk_id,
-        attempt_id=attempt_id,
-        resumed=False,
-        outcome_count=manifest.outcomes_rows,
-        entry_count=manifest.entries_rows,
-        refusal_count=refused,
-    )
+        progress.close()
 
 
 def _reuse_outcome(
@@ -343,11 +351,19 @@ def _decide_chunk(
     validation = validate_committed_chunk(paths, chunk_id, run=run, chunk=identity)
     if not (validation.valid and validation.attempt_id and validation.manifest):
         log.info("chunk %s invalid (%s); recomputing", chunk_id, validation.reason)
-        return "fresh", None, None
-    rows = read_outcome_rows(paths, chunk_id, validation.attempt_id)
-    _, retry = split_retryable(rows)
-    refusal_count = sum(1 for row in rows if row.get("status") in REFUSAL_STATUSES)
-    if retry and retry_failures:
+        mode = "fresh_reset" if paths.chunk_pointer_path(chunk_id).exists() else "fresh"
+        return mode, None, None
+    retry_count = 0
+    refusal_count = 0
+    parquet = pq.ParquetFile(
+        paths.attempt_outcomes_path(chunk_id, validation.attempt_id)
+    )
+    for batch in parquet.iter_batches(batch_size=256):
+        for index in range(batch.num_rows):
+            status = batch.column("status")[index].as_py()
+            retry_count += int(status in RETRYABLE_STATUSES)
+            refusal_count += int(status in REFUSAL_STATUSES)
+    if retry_count and retry_failures:
         return "retry", validation.attempt_id, None
     return "skip", None, _reuse_outcome(chunk_id, validation, refusal_count)
 
@@ -361,6 +377,7 @@ def run_missing_accessions(
     profile: RuntimeResourceProfile | None = None,
     workers: int | None = None,
     retry_failures: bool = False,
+    stale_lock_confirmed: bool = False,
 ) -> RunSummary:
     """Validate the run manifest, then commit every chunk with resume and retry.
 
@@ -370,37 +387,45 @@ def run_missing_accessions(
     work_order_path = Path(work_order_path)
     if work_order_path.resolve() != paths.work_order_path().resolve():
         raise ValueError("work-order path must match the run's centralized path")
-    existing = read_run_manifest(paths)
-    if existing is None:
-        manifest = write_run_manifest(
-            paths, work_order_path=work_order_path, **_manifest_kwargs(run_identity)
-        )
-    else:
-        manifest = _validate_existing(existing, work_order_path, run_identity)
-
     resolved = profile if profile is not None else derive_resources()
-    effective_workers = max(
-        1, workers if workers is not None and workers > 0 else resolved.workers
+    if workers is not None and workers < 1:
+        raise ValueError("workers must be positive")
+    effective_workers = min(
+        workers if workers is not None else resolved.workers,
+        resolved.worker_ceiling,
     )
-    force_refresh = manifest.fetch_mode == "force_refresh"
+    effective_workers = max(1, effective_workers)
+    with RunLock(paths, stale_lock_confirmed=stale_lock_confirmed):
+        with _cooperative_stop() as stop_requested:
+            existing = read_run_manifest(paths)
+            if existing is None:
+                manifest = write_run_manifest(
+                    paths,
+                    work_order_path=work_order_path,
+                    **_manifest_kwargs(run_identity),
+                )
+            else:
+                manifest = _validate_existing(existing, work_order_path, run_identity)
 
-    if manifest.work_order_rows == 0:
-        return RunSummary(manifest.run_id, (), 0, 0, 0, 0, False)
-    chunks = iter_work_order_chunks(
-        work_order_path,
-        chunk_size=manifest.chunk_size,
-        work_order_version=manifest.work_order_version,
-    )
-    return _run_pending(
-        chunks,
-        paths,
-        manifest,
-        run_id=manifest.run_id,
-        http_client=http_client,
-        workers=effective_workers,
-        force_refresh=force_refresh,
-        retry_failures=retry_failures,
-    )
+            if manifest.work_order_rows == 0:
+                return RunSummary(manifest.run_id, (), 0, 0, 0, 0, False)
+            chunks = iter_work_order_chunks(
+                work_order_path,
+                chunk_size=manifest.chunk_size,
+                work_order_version=manifest.work_order_version,
+            )
+            return _run_pending(
+                chunks,
+                paths,
+                manifest,
+                run_id=manifest.run_id,
+                http_client=http_client,
+                workers=effective_workers,
+                force_refresh=manifest.fetch_mode == "force_refresh",
+                retry_failures=retry_failures,
+                profile=resolved,
+                stop_requested=stop_requested,
+            )
 
 
 def _run_pending(
@@ -413,6 +438,8 @@ def _run_pending(
     workers: int,
     force_refresh: bool,
     retry_failures: bool,
+    profile: RuntimeResourceProfile,
+    stop_requested,
 ) -> RunSummary:
     """Process a Parquet work order one bounded chunk at a time."""
     socket_path = InventoryPaths(paths.artifacts_root).broker_socket_path(
@@ -438,6 +465,8 @@ def _run_pending(
         )
         try:
             for identity, members in chunks:
+                if stop_requested():
+                    break
                 chunk_id = identity.chunk_id
                 mode, prior_id, ready = _decide_chunk(
                     paths,
@@ -453,33 +482,60 @@ def _run_pending(
                     outcome = _process_chunk_retry(
                         paths,
                         manifest,
-                        chunk_id,
+                        identity,
                         members,
                         broker,
                         workers,
                         force_refresh,
-                        new_attempt_id(),
                         prior_id,
                         pool_cm,
+                        profile,
+                        stop_requested,
                     )
                 else:
                     outcome = _process_chunk_fresh(
                         paths,
                         manifest,
-                        chunk_id,
+                        identity,
                         members,
                         broker,
                         workers,
                         force_refresh,
-                        new_attempt_id(),
                         pool_cm,
+                        profile,
+                        stop_requested,
+                        force_new_progress=mode == "fresh_reset",
                     )
+                if outcome is None:
+                    break
                 summary.record(outcome)
                 reclaim()
         finally:
             if pool_cm is not None:
                 pool_cm.shutdown(wait=True)
-    return summary.finish()
+    finished = summary.finish()
+    return replace(finished, cancelled=stop_requested())
+
+
+@contextmanager
+def _cooperative_stop():
+    event = threading.Event()
+    previous = {}
+
+    def request_stop(signum, _frame):
+        log.info("received %s; stopping after in-flight accessions drain", signum)
+        event.set()
+
+    for signum in (signal.SIGINT, signal.SIGTERM):
+        try:
+            previous[signum] = signal.signal(signum, request_stop)
+        except ValueError:
+            continue
+    try:
+        yield event.is_set
+    finally:
+        for signum, handler in previous.items():
+            signal.signal(signum, handler)
 
 
 def _manifest_kwargs(run_identity: dict[str, Any]) -> dict[str, Any]:

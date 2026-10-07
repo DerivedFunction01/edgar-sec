@@ -204,6 +204,16 @@ class RuntimeResourceProfile:
         """Temporary spill directory as a Path."""
         return Path(self.temp_directory)
 
+    @property
+    def worker_ceiling(self) -> int:
+        """Return the resource-derived maximum, independent of worker overrides."""
+        return auto_worker_count(
+            self.available_memory_bytes,
+            worker_memory_mib=self.worker_memory_mib,
+            safety_fraction=self.worker_memory_safety,
+            cpu_cores=self.cpu_cores,
+        )
+
 
 def derive_resources(
     requested_threads: int | None = None,

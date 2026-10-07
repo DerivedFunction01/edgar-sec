@@ -31,7 +31,7 @@ from edgar_sec.pipelines.document_inventory.checkpoint import (
     new_attempt_id,
     outcome_row,
     read_attempt_manifest,
-    read_outcome_rows,
+    iter_outcome_rows,
     split_retryable,
     validate_committed_chunk,
 )
@@ -283,7 +283,7 @@ def test_schema_and_row_roundtrip(tmp_path: Path) -> None:
     paths, _manifest, chunk_id, _identity, attempt = _commit(
         tmp_path, [_parsed()], items
     )
-    rows = read_outcome_rows(paths, chunk_id, attempt)
+    rows = list(iter_outcome_rows(paths, chunk_id, attempt))
     assert len(rows) == 1
     assert rows[0]["status"] == "parsed"
     loaded = read_attempt_manifest(paths, chunk_id, attempt)

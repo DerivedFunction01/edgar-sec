@@ -3,9 +3,9 @@
 ## Owner and status
 
 - Owning stage in [implementation.md](../implementation.md): **S4**.
-- Status: execution-layer design; bounded worker pool and broker lifecycle. The
-  worker/coordinator scaffold can be implemented against S3 types before parsing is
-  complete; operational runs require the S3 parser body.
+- Status: worker/coordinator scaffold and chunk-level Parquet checkpoints exist.
+  Production work-order creation is not wired to S5, and the confirmed within-chunk
+  recovery/cancellation contract is not implemented.
 - Depends on: S1 cohort contract, S2 index fixture store, and S3 typed contract.
 - S7b review artifacts support S3 parser iteration; S0 runs alongside it and supplies
   final parser/resource evidence.
@@ -75,9 +75,10 @@ new chunk attempt for the failed accession rather than adding a second HTTP retr
 typed parse outcome or typed fetch/worker failure. Raw HTML stays in the process and
     never crosses production IPC. A task exception is typed `worker_error`, never an empty
     result.
-4. The coordinator processes one deterministic chunk at a time, writes outcomes and
-   zero-or-more entries incrementally into its transient Parquet attempt as tasks
-   complete, and immediately refills each freed worker slot.
+4. The coordinator processes one deterministic chunk at a time, transactionally
+   persists each complete parse result to the temporary progress journal, and
+   immediately refills each freed worker slot. After every chunk member has a terminal
+   result, it exports the journal to the paired transient Parquet attempt.
    There is one outcome row per accession, including recognized-empty and failed
    outcomes; entry rows preserve every parsed source row. The handoff retains paths and
    bounded batches, not the cohort or all parsed rows in Python memory.
@@ -101,7 +102,15 @@ def run_missing_accessions(work_order_path, run_identity, paths) -> Iterator[Chu
         if checkpoint_is_valid(chunk, paths):
             yield current_chunk_ref(chunk, paths)
             continue
-        attempt = process_bounded_accession_tasks(chunk, process_accession)
+        progress = open_or_validate_progress(chunk, paths)
+        results = process_bounded_accession_tasks(
+            missing_members(chunk, progress), stop_requested
+        )
+        for result in results:
+            record_complete_result_transactionally(progress, result)
+            if stop_requested():
+                return cancelled_summary()
+        attempt = export_progress_to_parquet(progress)
         yield commit_parquet_attempt(chunk, attempt, paths)
 ```
 
@@ -124,6 +133,8 @@ the shared foundation fixture resolver.
   run_manifest.json
   work_order.parquet
   chunks/chunk-000000/current.json
+  chunks/chunk-000000/progress/current.json
+  chunks/chunk-000000/progress/progress-<attempt_id>.duckdb
   chunks/chunk-000000/attempt-<attempt_id>/
     outcomes.parquet
     entries.parquet
@@ -132,10 +143,10 @@ the shared foundation fixture resolver.
 ```
 
 The path object exposes validated path methods for the run lock, run manifest, run/chunk
-directories, attempt outputs/manifests, the per-chunk current pointer, and S5's
-publication staging directory. Run, chunk, and attempt IDs are single safe path
-components; no method accepts an arbitrary relative path. Published snapshot paths
-remain separate from transient run state.
+directories, attempt outputs/manifests, the committed-attempt pointer, the progress
+pointer/database, and S5's publication staging directory. Run, chunk, and attempt IDs
+are single safe path components; no method accepts an arbitrary relative path.
+Published snapshot paths remain separate from transient run state.
 
 Only one coordinator may own a run directory at a time; its lock is acquired before
 manifest/checkpoint reads and writes. Different run IDs remain concurrent. Stale-lock
@@ -145,7 +156,7 @@ S5 supplies a stable run intent ID binding the parent snapshot, canonical cohort
 identity, parser and schema versions, refresh mode, and exact missing-accession
 worklist; that intent ID is the `run_id` path component. S4's atomic run manifest pins
 the work-order Parquet digest and row count, work-order version, resolved chunk size,
-outcome/entry schemas, fetch mode, and fixture identity when applicable. It does not
+outcome/entry/progress-store schema versions, fetch mode, and fixture identity when applicable. It does not
 duplicate the accession list or store a list of every chunk identity; per-chunk manifests
 pin bounded chunk membership. Worker count, cache location, and other machine-local
 resource choices are excluded: they may change across resume without changing logical
@@ -170,15 +181,44 @@ before any request.
 - Resume first requires an exact run-manifest match. For each deterministic chunk,
   validate the pointed attempt's manifest, schema versions, parser fingerprint,
   membership digest, row counts, and Parquet digests. Reuse only an exact valid match;
-  recompute a missing or invalid chunk as a whole. A crash before pointer advancement
-  leaves the prior committed attempt intact, if one exists.
+  recompute a missing or invalid committed attempt as a whole. A crash before pointer
+  advancement leaves the prior committed attempt intact, if one exists.
+- A separate temporary progress journal supports recovery inside an incomplete chunk.
+  The coordinator writes one complete worker parse result as one transaction: its one
+  outcome, all its entry rows, and its completion marker commit together. It must not
+  mark an accession complete while entry rows from that parse are still being written.
+  Parquet remains the immutable chunk output; do not create one Parquet file per
+  accession. The progress store is coordinator-owned, configured DuckDB staging, and
+  is compacted to the paired attempt Parquet files after every work-order member has a
+  terminal result.
+- The journal contains run/chunk/attempt metadata, a terminal-outcome relation, an
+  entry relation, and a completed-accession relation. One parent-owned DuckDB
+  transaction inserts all rows from a single worker result into the outcome and entry
+  relations and then its completion key. Only committed completion keys participate in
+  resume. Export to Parquet reads these relations after the chunk is complete; it does
+  not expose uncommitted entry batches.
+- A progress journal is reusable only when its run ID, attempt ID, work-order version,
+  chunk ID, exact membership digest/count, parser version, and outcome/entry schema
+  and progress-store version match. An atomic per-chunk progress pointer names the
+  active progress database; committed-attempt `current.json` remains a separate pointer.
+  Resume anti-joins the expected chunk membership against completed progress rows in
+  DuckDB and fetches only the missing accessions. An unreadable,
+  mismatched, or structurally inconsistent journal is discarded and the incomplete
+  chunk is recomputed; partial row groups are never treated as completed parses.
 - Fetch and worker failures are persisted as typed outcomes, so a resumed run does not
   repeatedly hit the same failed page by default. `--retry-failures` makes a new
   immutable attempt only for chunks containing retryable fetch/worker failures; it
   reuses successful accession outcomes and retries only those failed accessions. The
-  new pointer advances only after complete validation. Unrecognized pages and parser
+  same per-parse transaction boundary applies to the retry progress journal. The new
+  pointer advances only after complete validation. Unrecognized pages and parser
   failures are not transport retries; they require parser/code correction and a new
   run intent. Any remaining refusal prevents S5 publication.
+- SIGINT and SIGTERM request cooperative stop: stop submitting new accessions, drain
+  the bounded in-flight window, transactionally retain each complete result returned,
+  and stop before starting another chunk. No pointer advances for an incomplete
+  attempt; any prior committed chunk pointer remains unchanged. A restart resumes from
+  a valid progress journal. The run summary distinguishes `completed` from `cancelled`.
+  SIGKILL relies on database transaction rollback and the same journal validation.
 - If S5 staging or publication fails after S4 chunks commit, retry rebuilds S5 staging
   from those validated chunks without refetching pages. S5 does not maintain a second
   checkpoint ledger.
@@ -189,6 +229,24 @@ These are new inventory-owned checkpoint semantics. `document_storage` and the
 historical phase inform bounded scheduling, attempt isolation, manifest validation,
 and atomic commit ordering only; their database layouts, schemas, keys, or resume
 protocols are not imported or copied.
+
+## Current implementation blockers
+
+- `coordinator.run_missing_accessions` requires an already-created work-order file;
+  no production `build_inventory` orchestrates catalog-plan projection, pre-fetch
+  anti-join, S4, and S5.
+- `run_missing_accessions` returns a bounded `RunSummary`, not committed chunk
+  references; the production builder must define a validated S4-to-S5 handoff.
+- The per-result DuckDB transaction, progress-pointer recovery, lock contention,
+  cancellation, and resource-ceiling tests are present, but the required offline
+  throughput/RSS check at production-like work-order size remains outstanding. Do not
+  replace the selected per-parse atomic boundary with entry-row streaming or multi-parse
+  commits.
+- `run_manifest.partition_into_chunks` remains an in-memory helper. Production must
+  stay on `write_work_order`/`iter_work_order_chunks` and must not call it.
+- S5 still lacks its snapshot publisher, publication lock, stale-parent validation,
+  and pointer-last installation. S0 historical-page evidence remains a parser and live
+  rollout gate, not a prerequisite for the S4 recovery work.
 
 ## Module map and reuse
 
@@ -203,10 +261,10 @@ layers and shared-storage helpers named here.
 | `engine/index_pages/parser.py` | Domain inventory records, `engine.document.html.tree`, `domain.sec_urls`, `foundation.hashing` | Pure index-page transformation and parser fingerprint |
 | `paths.py` | `foundation.runtime.paths.ProjectPaths`, shared current-pointer/transient helpers, `foundation.runtime.fixtures` | Inventory run/chunk/attempt paths and binding the index fixture to its shared location; never `DocumentStoragePaths` |
 | `run_manifest.py` | `infra.storage.atomic.atomic_write_json`, `foundation.serialization.canonical_json`, `foundation.hashing.file_sha256` | Run identity, work-order/chunk-size/schema pins, manifest validation |
-| `checkpoint.py` | Domain entry schema, broker/worker failure records, `infra.storage.parquet`, atomic IO, DuckDB validation helpers | Transient outcome schema/status, attempt validation, chunk pointer advance |
+| `checkpoint.py` | Domain entry schema, broker/worker failure records, `infra.storage.parquet`, atomic IO, DuckDB validation helpers | Transient outcome schema/status, attempt validation, chunk pointer advance; progress transaction contract |
 | `broker.py` | `infra.broker.sec_broker.SecBrokerClient` | Picklable broker adapter, response envelope, fetch-failure record |
 | `worker.py` | Broker adapter, engine parser, `foundation.runtime.memory.reclaim` | Module-level per-accession process task and worker-failure record |
-| `coordinator.py` | Broker daemon, worker task, checkpoint/run manifest, `derive_resources`, process pool | Bounded scheduling, chunk orchestration, resume, retry |
+| `coordinator.py` | Broker daemon, worker task, checkpoint/run manifest, `derive_resources`, process pool | Bounded scheduling, cooperative cancellation, chunk orchestration, resume, retry |
 | `cohort.py` | `domain.filing_catalog.schemas`, domain inventory records, `domain.identity`, `domain.sec_urls` | S1 cohort reading and projection |
 
 S4 does not import `pipelines.document_storage` or any frozen module. It does not
@@ -226,10 +284,25 @@ statement at a sink, it must declare itself in
 - Stable chunk membership is independent of task completion order and input arrival.
 - Matching run/chunk manifests skip valid committed Parquet chunks without broker
   calls; mismatched run identity refuses before the first call.
+- A valid partial progress journal resumes only accessions without an atomic completed
+  parse transaction; every completed accession's outcome and full entry set are visible
+  together or not at all.
 - Missing, corrupted, stale-schema, wrong-membership, or digest-mismatched chunk
   attempts are never accepted as complete.
 - Process interruption before an attempt pointer advances leaves the previous commit
-  valid; incomplete attempts are recomputed.
+  valid; valid progress rows in the incomplete chunk resume, while partial/mismatched
+  progress transactions are never reused.
+- A parse with multiple entry rows is transactionally all-or-nothing across its outcome,
+  complete entry set, and completion marker.
+- SIGINT/SIGTERM stops future submission, drains at most the in-flight worker window,
+  and returns a cancelled status without advancing an incomplete attempt pointer.
+- A valid progress journal resumes only accessions not already committed in the exact
+  run/chunk/attempt identity; an invalid journal triggers a whole-chunk recompute.
+- Concurrent coordinators for the same run ID are refused; different run IDs may run
+  concurrently, subject to the shared publication lock at S5.
+- A valid partially completed journal is resumed only when its progress pointer,
+  journal metadata, run/work-order identity, and per-accession transaction records
+  validate; a completed chunk pointer takes precedence over stale progress state.
 - S5's disk-backed sort restores deterministic publication order independent of task
   completion order or transient chunk order.
 - Explicit retry replaces only chunks with retryable typed fetch/worker failures and
@@ -240,9 +313,17 @@ statement at a sink, it must declare itself in
   truncation path exists.
 - Production IPC contains typed results, not raw HTML or fixture bytes.
 - Worker exception cleanup: pool processes terminate cleanly on unexpected crash.
-- No child-side writes to SQLite or Parquet beyond its own attempt files.
+- Worker processes do not write progress stores, SQLite, or Parquet; the coordinator
+  owns per-result transactions and chunk Parquet export.
+- SIGINT/SIGTERM stops refill, drains at most the in-flight window, and leaves the
+  current progress journal reusable without advancing the incomplete attempt pointer.
+- A DuckDB crash/reopen test proves transactions that committed before interruption
+  remain complete and the interrupted accession transaction leaves no completion key.
+- Run lock contention refuses a second owner; explicit stale-lock recovery requires
+  operator-confirmed owner state.
 - All accessions validated before the first request.
 - Pool derives its size from resources without hardcoded worker limits.
+- Explicit worker overrides cannot exceed the safe resource-derived ceiling.
 - `reclaim()` called at bounded intervals.
 - S7b parser-review artifacts are separate from this production worker and preserve
   parser diagnostics for fixture-backed inspection.

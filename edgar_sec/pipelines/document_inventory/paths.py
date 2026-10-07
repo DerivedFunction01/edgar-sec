@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import re
+import hashlib
 from pathlib import Path
 
 import edgar_sec.foundation.runtime.fixtures as foundation_fixtures
@@ -12,6 +13,8 @@ __all__ = [
     "ATTEMPT_PREFIX",
     "CHUNK_MANIFEST_FILE",
     "CHUNKS_DIR",
+    "COHORT_ACCESSIONS_FILE",
+    "COHORT_SOURCES_FILE",
     "DATASET",
     "ENTRIES_FILE",
     "FIXTURE_DATABASE_FILE",
@@ -20,6 +23,9 @@ __all__ = [
     "LOCK_FILE",
     "OUTCOMES_FILE",
     "POINTER_FILE",
+    "PROJECTION_MANIFEST_FILE",
+    "PROJECTION_STAGING_DIR",
+    "PUBLICATION_LOCK_FILE",
     "PUBLICATION_DIR",
     "PUBLICATION_OUTCOMES_FILE",
     "PUBLICATION_ENTRIES_FILE",
@@ -35,6 +41,7 @@ __all__ = [
     "WORK_ORDER_FILE",
     "inventory_run_paths",
     "inventory_paths",
+    "snapshot_id_for",
     "resolve_index_fixture_paths",
 ]
 
@@ -52,6 +59,8 @@ LOCK_FILE = "run.lock"
 
 #: Pointer naming the current committed attempt for a chunk.
 POINTER_FILE = "current.json"
+PROGRESS_DIR = "progress"
+PROGRESS_POINTER_FILE = "current.json"
 
 #: Directory names under a chunk.
 CHUNKS_DIR = "chunks"
@@ -75,6 +84,14 @@ REVIEW_RUNS_DIR = "review-runs"
 REVIEW_CASES_DIR = "cases"
 REVIEW_MANIFEST_FILE = "manifest.jsonl"
 WORK_ORDER_FILE = "work_order.parquet"
+COHORT_ACCESSIONS_FILE = "cohort_accessions.parquet"
+COHORT_SOURCES_FILE = "cohort_sources.parquet"
+PROJECTION_MANIFEST_FILE = "projection_manifest.json"
+PROJECTION_STAGING_DIR = "projection-staging"
+PUBLICATION_LOCK_FILE = "publication.lock"
+SNAPSHOT_PART_PREFIX = "part-"
+SNAPSHOT_SHARD_NAME = "shard"
+SNAPSHOT_YEAR_PARTITION_NAME = "year"
 
 _ID_RE = re.compile(r"^[A-Za-z0-9_.-]+$")
 
@@ -121,6 +138,44 @@ class InventoryPaths:
     def snapshot_root(self, snapshot_id: str) -> Path:
         return self.snapshots_root / _validate_id(snapshot_id, "snapshot_id")
 
+    def snapshot_manifest_path(self, snapshot_id: str) -> Path:
+        return self.snapshot_root(snapshot_id) / "manifest.json"
+
+    def snapshot_part_path(
+        self, snapshot_id: str, relation: str, year: str, part_index: int = 0
+    ) -> Path:
+        if relation not in {"accessions", "entries", "accession_sources"}:
+            raise ValueError(f"invalid snapshot relation: {relation!r}")
+        if not re.fullmatch(r"\d{4}", year):
+            raise ValueError(f"invalid snapshot year: {year!r}")
+        if part_index < 0:
+            raise ValueError("part_index must be non-negative")
+        return (
+            self.snapshot_root(snapshot_id)
+            / relation
+            / f"{SNAPSHOT_YEAR_PARTITION_NAME}={year}"
+            / f"{SNAPSHOT_PART_PREFIX}{part_index:05d}.parquet"
+        )
+
+    def snapshot_lookup_path(
+        self, snapshot_id: str, lookup: str, shard_key: str
+    ) -> Path:
+        if lookup not in {"accession", "filing_cik", "source_cik"}:
+            raise ValueError(f"invalid snapshot lookup: {lookup!r}")
+        if not re.fullmatch(r"[0-9a-f]", shard_key):
+            raise ValueError(f"invalid lookup shard key: {shard_key!r}")
+        return (
+            self.snapshot_root(snapshot_id)
+            / "lookups"
+            / lookup
+            / f"{SNAPSHOT_SHARD_NAME}={shard_key}"
+            / "part-00000.parquet"
+        )
+
+    @property
+    def publication_lock_path(self) -> Path:
+        return self.snapshots_root / PUBLICATION_LOCK_FILE
+
     @property
     def review_runs_root(self) -> Path:
         return self.artifacts_root / DATASET / REVIEW_RUNS_DIR
@@ -133,6 +188,15 @@ class InventoryPaths:
 
     def current_snapshot_pointer(self) -> Path:
         return foundation_paths.current_pointer_path(self.snapshots_root)
+
+    @property
+    def projection_staging_root(self) -> Path:
+        return (
+            self.artifacts_root
+            / foundation_paths.TRANSIENT_DIR
+            / DATASET
+            / PROJECTION_STAGING_DIR
+        )
 
     @property
     def runtime_root(self) -> Path:
@@ -178,6 +242,15 @@ class InventoryRunPaths:
     def work_order_path(self) -> Path:
         return self.run_root / WORK_ORDER_FILE
 
+    def cohort_accessions_path(self) -> Path:
+        return self.run_root / COHORT_ACCESSIONS_FILE
+
+    def cohort_sources_path(self) -> Path:
+        return self.run_root / COHORT_SOURCES_FILE
+
+    def projection_manifest_path(self) -> Path:
+        return self.run_root / PROJECTION_MANIFEST_FILE
+
     # --- chunk-level -----------------------------------------------------
 
     def chunk_dir(self, chunk_id: str) -> Path:
@@ -185,6 +258,16 @@ class InventoryRunPaths:
 
     def chunk_pointer_path(self, chunk_id: str) -> Path:
         return self.chunk_dir(chunk_id) / POINTER_FILE
+
+    def progress_dir(self, chunk_id: str) -> Path:
+        return self.chunk_dir(chunk_id) / PROGRESS_DIR
+
+    def progress_pointer_path(self, chunk_id: str) -> Path:
+        return self.progress_dir(chunk_id) / PROGRESS_POINTER_FILE
+
+    def progress_database_path(self, chunk_id: str, attempt_id: str) -> Path:
+        safe_attempt = _validate_id(attempt_id, "attempt_id")
+        return self.progress_dir(chunk_id) / f"progress-{safe_attempt}.duckdb"
 
     def attempt_dir(self, chunk_id: str, attempt_id: str) -> Path:
         safe_attempt = _validate_id(attempt_id, "attempt_id")
@@ -215,6 +298,12 @@ def inventory_run_paths(artifacts_root: Path | str, run_id: str) -> InventoryRun
 def inventory_paths(artifacts_root: Path | str) -> InventoryPaths:
     """Construct inventory artifact paths from the selected artifacts root."""
     return InventoryPaths(artifacts_root)
+
+
+def snapshot_id_for(parent_snapshot_id: str | None, digest: str) -> str:
+    """Derive an immutable snapshot id from its parent and content digest."""
+    content = f"{parent_snapshot_id or ''}:{digest}"
+    return f"snapshot-{hashlib.sha256(content.encode('utf-8')).hexdigest()[:16]}"
 
 
 def resolve_index_fixture_paths(

@@ -68,3 +68,10 @@ def test_derive_resources_honors_thread_override() -> None:
     res = derive_resources(requested_threads=1)
     assert res.threads == 1
     assert res.workers == 1
+
+
+def test_worker_ceiling_is_independent_of_configured_worker_override() -> None:
+    res = derive_resources(cli_overrides={"runtime.workers": 1000})
+    assert res.workers == 1000
+    assert res.worker_ceiling < res.workers
+    assert 1 <= res.worker_ceiling <= res.cpu_cores

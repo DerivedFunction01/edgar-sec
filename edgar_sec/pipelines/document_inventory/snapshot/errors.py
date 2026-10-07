@@ -23,6 +23,10 @@ class ValidationFailedError(SnapshotError):
     """Staged snapshot failed row-count, digest, or referential checks."""
 
 
+class StaleParentError(SnapshotError):
+    """The current snapshot changed after this publication was prepared."""
+
+
 class SnapshotNotFoundError(SnapshotError):
     """A snapshot id resolves to no published snapshot."""
 

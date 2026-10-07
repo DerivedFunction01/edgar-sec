@@ -9,13 +9,14 @@ from __future__ import annotations
 
 import json
 import os
-from collections.abc import Mapping, Sequence
+from collections.abc import Iterator, Mapping, Sequence
 from dataclasses import dataclass
 from datetime import UTC, datetime
 from pathlib import Path
 from typing import Any
 
 import pyarrow as pa
+import pyarrow.parquet as pq
 
 from edgar_sec.domain.document_inventory.models import (
     IndexParseFailure,
@@ -36,7 +37,6 @@ from edgar_sec.infra.storage.parquet import (
     StagedParquetWriter,
     count_parquet_rows,
     read_parquet_schema,
-    read_parquet_table,
 )
 
 from .paths import InventoryRunPaths
@@ -66,8 +66,7 @@ __all__ = [
     "new_attempt_id",
     "outcome_row",
     "read_attempt_manifest",
-    "read_entry_rows",
-    "read_outcome_rows",
+    "iter_outcome_rows",
     "split_retryable",
     "validate_committed_chunk",
 ]
@@ -355,6 +354,14 @@ class AttemptWriters:
         if len(self._outcome_buffer) >= self._FLUSH_ROWS:
             self._flush()
 
+    def write_outcome_batch(self, batch: pa.RecordBatch | pa.Table) -> None:
+        self._flush()
+        self._outcomes.write_batch(batch)
+
+    def write_entry_batch(self, batch: pa.RecordBatch | pa.Table) -> None:
+        self._flush()
+        self._entries.write_batch(batch)
+
     def _flush(self) -> None:
         if self._outcome_buffer:
             self._outcomes.write_batch(_columnar(self._outcome_buffer, OUTCOME_SCHEMA))
@@ -386,24 +393,36 @@ def advance_pointer(paths: InventoryRunPaths, chunk_id: str, attempt_id: str) ->
 def _validate_membership(
     outcomes_path: Path, entries_path: Path, membership: Sequence[str]
 ) -> None:
-    expected = set(membership)
     con = connect()
     try:
-        outcome_rows = con.execute(
-            f"SELECT accession FROM read_parquet({sql_path_list([str(outcomes_path)])})"
-        ).fetchall()
-        accessions = [row[0] for row in outcome_rows]
-        if len(accessions) != len(set(accessions)):
+        con.execute("CREATE TEMP TABLE expected (accession VARCHAR)")
+        con.execute("INSERT INTO expected SELECT unnest(?)", [list(membership)])
+        con.execute("CREATE TEMP TABLE actual_outcomes (accession VARCHAR)")
+        con.execute(
+            f"INSERT INTO actual_outcomes SELECT accession FROM "
+            f"read_parquet({sql_path_list([str(outcomes_path)])})"
+        )
+        duplicate = con.execute(
+            "SELECT accession FROM actual_outcomes GROUP BY accession "
+            "HAVING count(*) > 1 LIMIT 1"
+        ).fetchone()
+        if duplicate is not None:
             raise AttemptValidationError("outcome accessions are not unique")
-        if set(accessions) != expected:
+        mismatch = con.execute(
+            "SELECT EXISTS (SELECT accession FROM actual_outcomes "
+            "ANTI JOIN expected USING(accession)) OR EXISTS "
+            "(SELECT accession FROM expected ANTI JOIN actual_outcomes USING(accession))"
+        ).fetchone()[0]
+        if mismatch:
             raise AttemptValidationError(
                 "outcome accessions do not exactly match chunk membership"
             )
-        entry_rows_result = con.execute(
-            f"SELECT DISTINCT accession FROM read_parquet({sql_path_list([str(entries_path)])})"
-        ).fetchall()
-        entry_accessions = {row[0] for row in entry_rows_result}
-        if not entry_accessions <= expected:
+        entry_outside = con.execute(
+            f"SELECT EXISTS (SELECT DISTINCT accession FROM "
+            f"read_parquet({sql_path_list([str(entries_path)])}) e "
+            "ANTI JOIN expected USING(accession))"
+        ).fetchone()[0]
+        if entry_outside:
             raise AttemptValidationError(
                 "entry accessions fall outside chunk membership"
             )
@@ -561,22 +580,16 @@ def validate_committed_chunk(
     return ChunkValidation(True, attempt_id, "", manifest)
 
 
-def read_outcome_rows(
+def iter_outcome_rows(
     paths: InventoryRunPaths, chunk_id: str, attempt_id: str
-) -> list[dict[str, Any]]:
-    """Read one attempt's outcome rows for carry-forward inspection."""
-    return read_parquet_table(
-        paths.attempt_outcomes_path(chunk_id, attempt_id)
-    ).to_pylist()
-
-
-def read_entry_rows(
-    paths: InventoryRunPaths, chunk_id: str, attempt_id: str
-) -> list[dict[str, Any]]:
-    """Read one attempt's entry rows for carry-forward inspection."""
-    return read_parquet_table(
-        paths.attempt_entries_path(chunk_id, attempt_id)
-    ).to_pylist()
+) -> Iterator[dict[str, Any]]:
+    parquet = pq.ParquetFile(paths.attempt_outcomes_path(chunk_id, attempt_id))
+    for batch in parquet.iter_batches(batch_size=256):
+        for index in range(batch.num_rows):
+            yield {
+                name: batch.column(column)[index].as_py()
+                for column, name in enumerate(OUTCOME_SCHEMA.names)
+            }
 
 
 def split_retryable(

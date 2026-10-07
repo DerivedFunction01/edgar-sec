@@ -2,30 +2,40 @@
 
 ## Purpose
 
-Own the immutable inventory snapshot format and bounded publication/query primitives.
+Own inventory snapshot relations, pre-fetch plan projection, and bounded merge primitives.
 
 ## Module layout
 
 | Module | Responsibility |
 |---|---|
 | `anti_join.py` | Stage candidate relations incrementally and classify them in DuckDB. |
-| `errors.py` | Publication and query refusal types. |
+| `errors.py` | Snapshot validation and stale-parent failures. |
 | `models.py` | Snapshot metadata, lookup descriptors, and publication results. |
-| `paths.py` | Resolve immutable snapshot and per-run publication paths. |
+| `projection.py` | Validate the published cohort projection, produce normalized relations, and write the pre-fetch work order. |
+| `projection_inputs.py` | Validate catalog-plan bundles and resolve pinned base-snapshot accession parts. |
+| `publication_lock.py` | Serialize snapshot installation and pointer updates per inventory root. |
 | `schema.py` | Versioned Arrow schemas for persisted snapshot relations. |
+| `validation.py` | Check all declared Parquet files, digests, relations, and lookup parity. |
+| `writer.py` | Merge validated committed S4 attempts and publish immutable snapshots. |
 
 ## Contracts
 
 - Candidate and current accession/source relations remain in Parquet or DuckDB; the
   anti-join emits Parquet relations instead of materializing whole keys in Python.
 - Snapshot data is immutable after publication; the current pointer is advanced only
-  after the complete snapshot has been validated.
+  after the complete snapshot has been validated and installed under a publication
+  lock after a stale-parent check.
+- Unchanged annual relation parts are inherited by manifest reference; snapshot files
+  and pointers are owned by `document_inventory.paths`.
 - Filing-CIK identity and catalog source-CIK associations use distinct relations.
+- Catalog plans are projected before S4; normalized cohort facts and source edges are
+  retained separately, and only missing accession pages enter the work order.
 
 ## Public surface
 
-Import publication primitives from their owning modules, especially
-[`anti_join.py`](anti_join.py) and [`models.py`](models.py).
+Call [`project_catalog_plan`](projection.py) for the pre-fetch projection and
+[`publish_committed_chunks`](writer.py) for the S4-attempt-to-snapshot boundary.
+[`validate_snapshot`](validation.py) checks a published or staged snapshot.
 
 ## Command surface
 
@@ -37,5 +47,9 @@ None; commands are owned by `document_inventory.cli`.
 
 ## Deliberate gaps
 
-- The full snapshot writer, reader query API, validation suite, and pointer-last publisher
-  are not implemented yet; only bounded staging and anti-join primitives are present.
+- A snapshot reader/query API and the production builder connecting projection, S4,
+  and S5 are not implemented; these primitives do not start S4 or own CLI/operator
+  orchestration.
+- Changed-page refresh replaces the active annual entry part while retaining the old
+  immutable snapshot. The roadmap's explicit superseded-entry manifest mapping remains
+  unresolved because its current in-memory model is unbounded for large refreshes.
