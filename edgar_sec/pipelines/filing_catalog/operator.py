@@ -288,11 +288,31 @@ def _action_status() -> None:
     cmd_status(_namespace("status"))
 
 
+def open_catalog_dag_console() -> None:
+    """Launch interactive DAG lifecycle console for filing catalog snapshots."""
+    from edgar_sec.infra.storage.dag.menu import DAGMenuConfig, run_dag_menu
+    from .specs import CATALOG_RELATION_SPECS
+
+    paths = resolve_filing_catalog_paths()
+    config = DAGMenuConfig(
+        snapshots_root=lambda: paths.snapshots_root,
+        title="Filing Catalog Snapshot DAG Console",
+        specs=CATALOG_RELATION_SPECS,
+        publish_action=_action_materialize,
+        publish_label="Materialize a catalog snapshot to DAG",
+    )
+    run_dag_menu(config)
+
+
 def build_operator_menu() -> tuple[MenuAction, ...]:
     """Build the operator actions bound to the shared command functions."""
     return build_menu(
         menu_action("Report published catalogs and plans", _action_status),
         menu_action("Materialize a catalog snapshot", _action_materialize),
+        menu_action(
+            "Snapshot DAG console (switch current, inspect, branches, tags)",
+            open_catalog_dag_console,
+        ),
         menu_action("Publish a deterministic target plan", _action_plan),
         menu_action("Publish a selection policy plan", _action_plan_policy),
         menu_action("Expand a policy plan to more locators", _action_expand),

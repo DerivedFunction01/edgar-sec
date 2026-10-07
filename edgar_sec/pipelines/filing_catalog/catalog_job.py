@@ -38,7 +38,16 @@ from edgar_sec.infra.storage.parquet import (
     DEFAULT_ROW_GROUP_SIZE,
     read_parquet_schema,
 )
+from datetime import UTC, datetime
+from edgar_sec.infra.storage.dag.catalog import DAGCatalog
+from edgar_sec.infra.storage.dag.manifest import (
+    DAGNodeManifest,
+    ParentRef,
+    PartDescriptor,
+)
 from edgar_sec.pipelines.filing_catalog.materialization import (
+    build_delta_profile_query,
+    build_delta_unnest_query,
     build_part_unnest_query,
     build_profile_query,
 )
@@ -137,6 +146,34 @@ def _source_from_manifest(manifest_path: Path) -> SourceDataset:
 
 def _source_from_pointer() -> SourceDataset:
     metadata_paths = resolve_metadata_paths()
+    meta_catalog = DAGCatalog(metadata_paths.snapshots_root)
+    if meta_catalog.catalog_file.is_file():
+        ptr = meta_catalog.read_pointer()
+        if not ptr or not ptr.get("snapshot_id"):
+            raise CatalogError(
+                "no Phase 1 snapshot is published; run 'metadata merge' first or "
+                "pass source_artifact explicitly"
+            )
+        snapshot_id = str(ptr["snapshot_id"])
+        node = meta_catalog.get_manifest(snapshot_id)
+        if node is not None and "submissions" in node.relations:
+            paths = tuple(
+                metadata_paths.snapshots_root / snapshot_id / p.path
+                if not Path(p.path).is_absolute()
+                else Path(p.path)
+                for p in node.relations["submissions"]
+            )
+            handoff = node.to_dict()
+            if metadata_paths.snapshot_manifest(snapshot_id).is_file():
+                try:
+                    handoff = json.loads(
+                        metadata_paths.snapshot_manifest(snapshot_id).read_text(
+                            encoding="utf-8"
+                        )
+                    )
+                except Exception:
+                    pass
+            return SourceDataset(paths=paths, handoff=handoff)
     pointer = metadata_paths.current_pointer
     if not pointer.is_file():
         raise CatalogError(
@@ -263,6 +300,30 @@ def materialize(
             "advance to a new upstream snapshot"
         )
 
+    handoff = source.handoff or {}
+    parent_id = str(
+        handoff.get("parent_snapshot_id")
+        or handoff.get("parent_id")
+        or (
+            handoff["parents"][0]["snapshot_id"]
+            if handoff.get("parents") and len(handoff["parents"]) > 0
+            else ""
+        )
+        or ""
+    )
+    dag_catalog = DAGCatalog(paths.snapshots_root)
+    is_delta = bool(parent_id and dag_catalog.has_snapshot(parent_id))
+    base_node = dag_catalog.get_manifest(parent_id) if is_delta else None
+    base_target_paths: list[str] = []
+    if is_delta:
+        active_base = dag_catalog.get_active_parts(parent_id, {"filing_targets"})
+        base_target_paths = [
+            str(paths.snapshots_root / p.path)
+            if not Path(p.path).is_absolute()
+            else str(p.path)
+            for p in active_base
+        ]
+
     if staging_dir.exists():
         shutil.rmtree(staging_dir, ignore_errors=True)
     staging_dir.mkdir(parents=True, exist_ok=True)
@@ -273,7 +334,13 @@ def materialize(
             f"read_parquet({sql_path_list([str(path) for path in source.paths])})"
         )
 
-        profile_query = build_profile_query("source")
+        base_profiles_file = (
+            paths.snapshot_profiles_file(parent_id) if is_delta else None
+        )
+        if base_profiles_file is not None and base_profiles_file.is_file():
+            profile_query = build_delta_profile_query("source", str(base_profiles_file))
+        else:
+            profile_query = build_profile_query("source")
         profiles_path = staging_dir / SNAPSHOT_FILE_NAME
         profile_count = copy_query_to_parquet(con, profile_query, profiles_path, groups)
         emit_progress(
@@ -295,16 +362,15 @@ def materialize(
     part_metadata: list[dict[str, Any]] = []
     form_counts: dict[str, int] = {}
     total_target_rows = 0
-    # One source part per query and per shard. reclaim() between parts returns the
-    # previous part's arena pages to the OS, so peak memory is set by the densest
-    # single part rather than by a fragmented heap.
     with connect() as con:
         for index, source_path in enumerate(source.paths):
             shard_name = target_part_name(index)
             shard_path = targets_dir / shard_name
-            rows = copy_query_to_parquet(
-                con, build_part_unnest_query(str(source_path)), shard_path, groups
-            )
+            if is_delta and base_target_paths:
+                query = build_delta_unnest_query(str(source_path), base_target_paths)
+            else:
+                query = build_part_unnest_query(str(source_path))
+            rows = copy_query_to_parquet(con, query, shard_path, groups)
             total_target_rows += rows
             part_metadata.append(
                 {
@@ -356,21 +422,71 @@ def materialize(
     }
     atomic_write_json(staging_dir / CATALOG_SNAPSHOT_MANIFEST_NAME, manifest, indent=2)
 
-    # Always publish; only the pointer advance is reserved for the durable tree.
+    target_descriptors = [
+        PartDescriptor(
+            path=f"{catalog_id}/{TARGETS_DIR_NAME}/{target_part_name(i)}",
+            sha256=p["artifact_sha256"],
+            row_count=p["row_count"],
+            byte_size=Path(targets_dir / target_part_name(i)).stat().st_size,
+        )
+        for i, p in enumerate(part_metadata)
+    ]
+    profile_descriptors = [
+        PartDescriptor(
+            path=f"{catalog_id}/{SNAPSHOT_FILE_NAME}",
+            sha256=file_sha256(profiles_path),
+            row_count=profile_count,
+            byte_size=profiles_path.stat().st_size,
+        )
+    ]
+    parent_refs: list[ParentRef] = []
+    if is_delta and base_node is not None:
+        parent_sha = dag_catalog.get_manifest_sha256(parent_id) or ""
+        parent_refs.append(ParentRef(snapshot_id=parent_id, manifest_sha256=parent_sha))
+        checkpoint_anchor_id = base_node.checkpoint_anchor_id or parent_id
+        lineage_depth = base_node.lineage_depth + 1
+        kind = "delta"
+    else:
+        checkpoint_anchor_id = catalog_id
+        lineage_depth = 0
+        kind = "checkpoint"
+
+    dag_manifest = DAGNodeManifest(
+        snapshot_id=catalog_id,
+        kind=kind,
+        parents=tuple(parent_refs),
+        checkpoint_anchor_id=checkpoint_anchor_id,
+        lineage_depth=lineage_depth,
+        created_at=datetime.now(UTC).isoformat(timespec="seconds"),
+        relations={
+            "filing_targets": tuple(target_descriptors),
+            "company_profiles": tuple(profile_descriptors),
+        },
+        logical_fingerprint=(
+            parts_digest([{"sha256": p["artifact_sha256"]} for p in part_metadata])
+            if part_metadata
+            else source_hash
+        ),
+        schema_versions={
+            "filing_targets": TARGET_SCHEMA_VERSION,
+            "company_profiles": PROFILE_SCHEMA_VERSION,
+        },
+        metadata={
+            "source_artifact": str(source.first),
+            "form_counts": form_counts,
+            "source_sha256": source_hash,
+            "profile_row_count": profile_count,
+            "target_row_count": total_target_rows,
+        },
+    )
+
     final_dir.parent.mkdir(parents=True, exist_ok=True)
     os.replace(staging_dir, final_dir)
     if durable:
-        atomic_write_json(
-            paths.current_pointer,
-            {
-                "catalog_id": catalog_id,
-                "snapshot_id": snapshot_id,
-                "profile_row_count": profile_count,
-                "target_row_count": total_target_rows,
-                "schema_version": SCHEMA_VERSION,
-            },
-            indent=2,
-        )
+        dag_catalog.publish_node(dag_manifest, branch_name="main")
+    else:
+        dag_catalog.record_node(dag_manifest)
+
     emit_progress(
         progress,
         {

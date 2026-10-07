@@ -49,9 +49,10 @@ def _stub_auto_policy(catalog: str, paths: Any = None) -> SelectionPolicy:
 
 def test_the_menu_exposes_every_command_an_operator_can_drive() -> None:
     labels = [action.label.lower() for action in build_operator_menu()]
-    assert len(labels) == 5
+    assert len(labels) == 6
     assert any("report" in label for label in labels)
     assert any("materialize" in label for label in labels)
+    assert any("dag" in label for label in labels)
     assert any("catalog" in label and "plan" in label for label in labels)
     assert any("selection policy" in label for label in labels)
     assert any("expand" in label for label in labels)
@@ -69,7 +70,7 @@ def test_every_cli_subcommand_is_reachable_one_way_or_the_other() -> None:
 
 def test_menu_actions_are_numbered_in_order() -> None:
     keys = [action.key for action in build_operator_menu()]
-    assert keys == ["1", "2", "3", "4", "5"]
+    assert keys == ["1", "2", "3", "4", "5", "6"]
 
 
 def test_every_action_is_callable() -> None:

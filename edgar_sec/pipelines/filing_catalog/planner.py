@@ -48,6 +48,7 @@ from edgar_sec.engine.selection.predicates import (
 from edgar_sec.engine.selection.selector import DeficitSelector
 from edgar_sec.foundation.runtime.paths import DATA_FILE_NAME, PARQUET_PART_GLOB
 from edgar_sec.foundation.runtime.progress import ProgressCallback, emit_progress
+from edgar_sec.infra.storage.dag.catalog import DAGCatalog
 from edgar_sec.infra.storage.duckdb import (
     connect,
     copy_query_to_parquet,
@@ -121,6 +122,19 @@ def _locator_groups_query(source_sql: str) -> str:
 
 
 def _catalog_target_files(paths: FilingCatalogPaths, catalog_id: str) -> list[Path]:
+    catalog = DAGCatalog(paths.snapshots_root)
+    if catalog.catalog_file.is_file() and catalog.has_snapshot(catalog_id):
+        active_parts = catalog.get_active_parts(catalog_id, {"filing_targets"})
+        if active_parts:
+            resolved: list[Path] = []
+            for part in active_parts:
+                p = Path(part.path)
+                if (paths.snapshots_root / p).is_file():
+                    resolved.append(paths.snapshots_root / p)
+                elif (paths.snapshot_dir(catalog_id) / p).is_file():
+                    resolved.append(paths.snapshot_dir(catalog_id) / p)
+            if resolved:
+                return resolved
     targets_dir = paths.snapshot_targets_dir(catalog_id)
     if not targets_dir.is_dir():
         raise PlanConflictError(f"catalog has no published targets: {targets_dir}")

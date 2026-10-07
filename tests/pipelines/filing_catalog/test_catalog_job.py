@@ -22,6 +22,7 @@ from edgar_sec.domain.submissions.schemas import (
 )
 from edgar_sec.domain.submissions.schemas import SUBMISSION_METADATA_SCHEMA
 from edgar_sec.foundation.hashing import file_sha256
+from edgar_sec.infra.storage.dag.catalog import DAGCatalog
 from edgar_sec.pipelines.filing_catalog.catalog_job import (
     CatalogError,
     materialize,
@@ -606,3 +607,88 @@ def test_materialization_is_deterministic(tmp_path: Path, sample_source: Path) -
     assert first["catalog_id"] == second["catalog_id"]
     assert first["source_sha256"] == second["source_sha256"]
     assert first["target_row_count"] == second["target_row_count"]
+
+
+def test_materialize_publishes_to_dag_catalog(
+    tmp_path: Path, sample_source: Path
+) -> None:
+    """A materialization records in DAGCatalog with targets and profiles."""
+    art_root = tmp_path / "art"
+    result = materialize(sample_source, art_root)
+    catalog = DAGCatalog(resolve_filing_catalog_paths(art_root).snapshots_root)
+    assert catalog.has_snapshot(result["catalog_id"])
+    manifest = catalog.get_manifest(result["catalog_id"])
+    assert manifest is not None
+    assert manifest.kind == "checkpoint"
+    assert "filing_targets" in manifest.relations
+    assert "company_profiles" in manifest.relations
+    assert manifest.lineage_depth == 0
+
+
+def test_delta_materialize_anti_joins_existing_and_emits_new_filings(
+    tmp_path: Path, sample_source: Path
+) -> None:
+    """Delta materialization anti-joins base occurrences and emits net-new."""
+    art_root = tmp_path / "art"
+    base_res = materialize(sample_source, art_root)
+    base_id = base_res["catalog_id"]
+
+    full_table = pq.read_table(sample_source)
+    pylist = full_table.to_pylist()
+    refreshed_cik = pylist[0].copy()
+    existing_filings = list(refreshed_cik["filings"])
+    new_filing = existing_filings[0].copy()
+    new_filing["accession_number"] = "0000000001-99-999999"
+    new_filing["filing_date"] = "2026-01-01"
+    new_filing["primary_document"] = "new_doc.htm"
+    refreshed_cik["filings"] = existing_filings + [new_filing]
+
+    brand_new = pylist[0].copy()
+    brand_new["cik"] = "9999999999"
+    brand_new_filing = existing_filings[0].copy()
+    brand_new_filing["accession_number"] = "0000000002-99-999999"
+    brand_new_filing["primary_document"] = "brand_new.htm"
+    brand_new["filings"] = [brand_new_filing]
+
+    delta_table = pa.Table.from_pylist(
+        [refreshed_cik, brand_new], schema=full_table.schema
+    )
+    delta_part = tmp_path / "delta.parquet"
+    pq.write_table(delta_table, delta_part)
+
+    delta_manifest = tmp_path / "delta.manifest.json"
+    delta_manifest.write_text(
+        json.dumps(
+            {
+                "snapshot_id": "snap-delta",
+                "parent_snapshot_id": base_id,
+                "parts": [
+                    {
+                        "path": str(delta_part),
+                        "sha256": file_sha256(delta_part),
+                        "row_count": 2,
+                    }
+                ],
+            }
+        ),
+        encoding="utf-8",
+    )
+
+    materialize(None, art_root, source_manifest=delta_manifest)
+    catalog = DAGCatalog(resolve_filing_catalog_paths(art_root).snapshots_root)
+    assert catalog.has_snapshot("snap-delta")
+    node = catalog.get_manifest("snap-delta")
+    assert node is not None
+    assert node.kind == "delta"
+    assert node.parents[0].snapshot_id == base_id
+    assert node.checkpoint_anchor_id == base_id
+    assert node.lineage_depth == 1
+
+    delta_part_path = (
+        resolve_filing_catalog_paths(art_root).snapshots_root
+        / node.relations["filing_targets"][0].path
+    )
+    delta_targets = pq.read_table(delta_part_path).to_pylist()
+    assert len(delta_targets) == 2
+    emitted_docs = {r["document_path"] for r in delta_targets}
+    assert emitted_docs == {"new_doc.htm", "brand_new.htm"}

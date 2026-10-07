@@ -24,6 +24,7 @@ from edgar_sec.engine.selection.predicates import (
     parsed_date_relation,
 )
 from edgar_sec.foundation.runtime.paths import PARQUET_PART_GLOB, PLAN_FILE_NAME
+from edgar_sec.infra.storage.dag.catalog import DAGCatalog
 from edgar_sec.infra.storage.duckdb import connect, sql_literal
 from edgar_sec.pipelines.filing_catalog.paths import (
     CATALOG_SNAPSHOT_MANIFEST_NAME,
@@ -54,6 +55,11 @@ def _read_json(path: Path) -> dict[str, Any] | None:
 
 def current_catalog_id(paths: FilingCatalogPaths) -> str | None:
     """Return the catalog id named by the current pointer, if any."""
+    catalog = DAGCatalog(paths.snapshots_root)
+    if catalog.catalog_file.is_file():
+        ptr = catalog.read_pointer()
+        if ptr:
+            return str(ptr["snapshot_id"])
     pointer = _read_json(paths.current_pointer)
     if pointer is None:
         return None
@@ -79,12 +85,35 @@ def resolve_catalog_reference(paths: FilingCatalogPaths, catalog: str) -> str:
 def discover_catalogs(
     paths: FilingCatalogPaths | None = None,
 ) -> list[dict[str, Any]]:
-    """List every published catalog snapshot, newest id last.
-
-    Sorted by catalog id: it is content-derived, so lexical order is reproducible.
-    """
+    """List every published catalog snapshot, newest id last."""
     resolved = paths or resolve_filing_catalog_paths()
-    found: list[dict[str, Any]] = []
+    catalog = DAGCatalog(resolved.snapshots_root)
+    if catalog.catalog_file.is_file():
+        nodes = catalog.list_snapshots()
+        found: list[dict[str, Any]] = []
+        for node_info in nodes:
+            cid = node_info["snapshot_id"]
+            manifest = catalog.get_manifest(cid)
+            if manifest is None:
+                continue
+            meta = manifest.metadata or {}
+            parts = manifest.relations.get("filing_targets", ())
+            target_rows = sum(p.row_count for p in parts)
+            profiles = manifest.relations.get("company_profiles", ())
+            profile_rows = sum(p.row_count for p in profiles)
+            found.append(
+                {
+                    "catalog_id": cid,
+                    "profile_row_count": profile_rows,
+                    "target_row_count": target_rows,
+                    "schema_version": manifest.schema_versions.get("filing_targets"),
+                    "part_count": len(parts),
+                    "form_counts": meta.get("form_counts") or {},
+                    "source_artifact": meta.get("source_artifact"),
+                }
+            )
+        return found
+    found = []
     if not resolved.snapshots_root.is_dir():
         return found
     for entry in sorted(resolved.snapshots_root.iterdir()):

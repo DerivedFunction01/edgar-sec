@@ -16,6 +16,7 @@ from edgar_sec.foundation.runtime.paths import (
     resolve_paths,
     transient_dir,
 )
+from edgar_sec.infra.storage.dag.paths import DAGPaths
 from edgar_sec.pipelines.metadata_sync.paths import resolve_metadata_paths
 
 PIPELINE_DIR = "filing_catalog"
@@ -126,6 +127,11 @@ class FilingCatalogPaths:
     def snapshot_manifest(self, catalog_id: str) -> Path:
         """Materialization manifest for one snapshot."""
         return self.snapshot_dir(catalog_id) / CATALOG_SNAPSHOT_MANIFEST_NAME
+
+    @property
+    def catalog_file(self) -> Path:
+        """SQLite DAG catalog database for published catalog snapshots."""
+        return DAGPaths(self.snapshots_root).catalog_file
 
     @property
     def current_pointer(self) -> Path:

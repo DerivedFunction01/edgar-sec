@@ -216,6 +216,30 @@ def build_parser() -> argparse.ArgumentParser:
     )
     status_parser.set_defaults(func=cmd_status)
 
+    from edgar_sec.infra.storage.dag.cli import (
+        attach_dag_subparser,
+        dispatch_dag_subcommand,
+    )
+    from .specs import CATALOG_RELATION_SPECS
+
+    dag_parser = attach_dag_subparser(
+        subparsers,
+        subcommand_name="dag",
+        default_root=lambda: resolve_filing_catalog_paths().snapshots_root,
+        default_specs=CATALOG_RELATION_SPECS,
+    )
+    dag_parser.set_defaults(
+        func=lambda args: dispatch_dag_subcommand(
+            args,
+            default_root=lambda: (
+                resolve_filing_catalog_paths(
+                    _resolve_artifacts(getattr(args, "artifacts", ""))
+                ).snapshots_root
+            ),
+            default_specs=CATALOG_RELATION_SPECS,
+        )
+    )
+
     return parser
 
 

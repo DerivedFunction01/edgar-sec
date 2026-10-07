@@ -44,6 +44,7 @@ ways a network dependency creeps in.
 | `expansion.py` | Parent validation, child derivation, and the retention invariant. |
 | `publication.py` | Content-addressed plan ids, staged bundles, the selection fingerprint, and the reuse-or-conflict policy. |
 | `discovery.py` | Manifest-only catalog/plan/policy enumeration and `current` resolution. |
+| `specs.py` | Declarative `RelationSpec` contracts (`filing_targets`, `company_profiles`). |
 | `paths.py` | `FilingCatalogPaths` and the artifact-name constants. |
 
 The selection engine this package drives — candidate pools, deficit selection,
@@ -178,6 +179,7 @@ are in the [root README](../../../README.md#filing-catalog-pipeline-zero-network
 | `plan` | `--catalog` (**required**), `--scope` (`deterministic` default; choices `deterministic`, `policy`), `--policy`, `--auto-policy`, `--artifacts`, `--forms` (nargs `*`), `--suffixes` (nargs `*`), `--dates` (one comma-separated union; blank selects every date), `--limit` | 0 with the plan document on stdout, or 1 on `PlanConflictError`, `ValueError`, or `OSError`. |
 | `expand` | `--parent-plan` (**required**, a published policy plan directory), `--target-units` (**required**, int), `--artifacts` | 0 with the child plan document, or 1 on `PlanConflictError`, `ParentPlanError`, `ValueError`, or `OSError`. |
 | `status` | `--artifacts` | 0, with the published-state JSON on stdout. |
+| `dag` | `log`, `branch`, `tag`, `checkout`, `compact`, `diff`, `rebase`, `views`, `--artifacts` | 0 on success, or 1 on DAG operation error. |
 
 `--artifacts` is a root override on every subcommand; empty means
 `resolve_paths().artifacts_root`. There is deliberately **no `run` subcommand**
@@ -186,7 +188,7 @@ and no `--output-root` flag.
 Errors are reported per command: each command catches its own failures, writes
 `error: <msg>` to stderr, and returns 1, so a bad flag is the only exit-2 case.
 
-The wizard's actions cover `status`, `materialize`, deterministic `plan`,
+The wizard's actions cover `status`, `materialize`, `dag` console, deterministic `plan`,
 `plan --scope policy`, and `expand`. The catalog for a plan and the parent plan for
 an expansion are chosen by number from what is published, with the pointer-resolved
 catalog offered as the default. **The policy action creates or runs a draft; it never

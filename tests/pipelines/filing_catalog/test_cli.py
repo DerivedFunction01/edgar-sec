@@ -28,7 +28,7 @@ def test_parser_requires_a_command() -> None:
         build_parser().parse_args([])
 
 
-def test_parser_exposes_exactly_the_four_commands() -> None:
+def test_parser_exposes_expected_commands() -> None:
     parser = build_parser()
     actions = [
         action
@@ -36,7 +36,7 @@ def test_parser_exposes_exactly_the_four_commands() -> None:
         if getattr(action, "choices", None) and "status" in (action.choices or {})
     ]
     assert actions
-    assert set(actions[0].choices) == {"materialize", "plan", "expand", "status"}
+    assert set(actions[0].choices) == {"materialize", "plan", "expand", "status", "dag"}
 
 
 def test_plan_accepts_repeated_form_and_suffix_flags() -> None:
