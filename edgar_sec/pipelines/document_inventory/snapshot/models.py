@@ -2,9 +2,7 @@
 
 from __future__ import annotations
 
-from collections.abc import Mapping
-from dataclasses import dataclass, field
-from datetime import UTC, datetime
+from dataclasses import dataclass
 from typing import Literal
 
 __all__ = [
@@ -49,8 +47,6 @@ class SnapshotMetadata:
     accessions_partitions: tuple[PartitionPart, ...]
     entries_partitions: tuple[PartitionPart, ...]
     accession_sources_partitions: tuple[PartitionPart, ...]
-    active_accessions: Mapping[str, str]
-    superseded_entry_ids: Mapping[str, tuple[str, ...]]
     accessions_digest: str
 
     @classmethod
@@ -109,26 +105,11 @@ class SnapshotMetadata:
                 )
                 for p in sources
             ),
-            active_accessions={
-                k: tuple(v) for k, v in payload.get("active_accessions", {}).items()
-            },
-            superseded_entry_ids={
-                k: tuple(v) for k, v in payload.get("superseded_entry_ids", {}).items()
-            },
             accessions_digest=str(
                 payload.get("accessions_digest")
                 or payload.get("logical_fingerprint", "")
             ),
         )
-
-    def accessor_for(self, accession: str) -> str | None:
-        """Return the accession-part locator for an active accession, else None."""
-        locator = self.active_accessions.get(accession)
-        return locator[0] if isinstance(locator, tuple) else locator
-
-    def superseded_for(self, accession: str) -> tuple[str, ...]:
-        """Return entry ids superseded for the accession; empty when none."""
-        return tuple(self.superseded_entry_ids.get(accession, ()))
 
     @property
     def accession_count(self) -> int:

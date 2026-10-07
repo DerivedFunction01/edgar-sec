@@ -236,6 +236,71 @@ def cmd_review_artifacts(args: argparse.Namespace) -> int:
     return result.exit_code
 
 
+def cmd_build(args: argparse.Namespace) -> int:
+    from edgar_sec.pipelines.document_inventory.snapshot.builder import build_inventory
+
+    root = _artifacts_root(args.artifacts)
+    publication = build_inventory(
+        args.catalog_plan,
+        base_snapshot_id=args.base_snapshot,
+        explicit_refresh=args.explicit_refresh,
+        chunk_size=args.chunk_size,
+        retry_failures=args.retry_failures,
+        workers=args.workers,
+        artifacts_root=root,
+    )
+    payload = {
+        "status": publication.status,
+        "snapshot_id": (
+            publication.snapshot.snapshot_id if publication.snapshot else None
+        ),
+        "reason": publication.reason,
+    }
+    _emit("inventory build", payload, args.json)
+    return 0 if not publication.was_failed else 1
+
+
+def cmd_query(args: argparse.Namespace) -> int:
+    from edgar_sec.pipelines.document_inventory.snapshot.reader import (
+        get_accessions_by_cik,
+        get_accessions_by_source_cik,
+        get_active_accession,
+        get_active_entries,
+        query_accessions,
+    )
+
+    root = _artifacts_root(args.artifacts)
+    snapshots_root = InventoryPaths(root).snapshots_root
+
+    results: list[dict[str, Any]] = []
+    if args.accession:
+        acc = get_active_accession(snapshots_root, args.accession)
+        if acc:
+            entries = get_active_entries(snapshots_root, args.accession)
+            acc_copy = dict(acc)
+            acc_copy["entries"] = entries
+            results.append(acc_copy)
+    elif args.filing_cik and not (args.form or args.source_cik):
+        results = get_accessions_by_cik(snapshots_root, args.filing_cik)
+    elif args.source_cik and not (args.form or args.filing_cik):
+        results = get_accessions_by_source_cik(snapshots_root, args.source_cik)
+    else:
+        results = query_accessions(
+            snapshots_root,
+            form=args.form,
+            filing_cik=args.filing_cik,
+            source_cik=args.source_cik,
+            limit=args.limit,
+        )
+
+    payload = {
+        "count": len(results),
+        "results": results,
+    }
+    _emit("inventory query", payload, args.json)
+    return 0
+
+
 def _add_output_options(parser: argparse.ArgumentParser) -> None:
     parser.add_argument("--artifacts", help="artifacts root override")
     parser.add_argument("--json", action="store_true", help="emit JSON to stdout")
@@ -247,6 +312,42 @@ def build_parser() -> argparse.ArgumentParser:
         description="Capture and review SEC filing index pages.",
     )
     commands = parser.add_subparsers(dest="command", required=True)
+
+    build_cmd = commands.add_parser(
+        "build", help="build and publish an immutable inventory snapshot"
+    )
+    build_cmd.add_argument("--catalog-plan", required=True, help="published plan id")
+    build_cmd.add_argument("--base-snapshot", help="base snapshot id override")
+    build_cmd.add_argument(
+        "--explicit-refresh",
+        action="store_true",
+        help="force re-fetch of index pages",
+    )
+    build_cmd.add_argument(
+        "--chunk-size", type=positive_int_type, help="accessions per S4 chunk"
+    )
+    build_cmd.add_argument(
+        "--retry-failures",
+        action="store_true",
+        help="retry failed chunk attempts",
+    )
+    build_cmd.add_argument(
+        "--workers", type=positive_int_type, help="worker process count"
+    )
+    _add_output_options(build_cmd)
+    build_cmd.set_defaults(func=cmd_build)
+
+    query_cmd = commands.add_parser(
+        "query", help="query active document inventory snapshots"
+    )
+    query_cmd.add_argument("--accession", help="exact accession number")
+    query_cmd.add_argument("--form", help="filing form filter")
+    query_cmd.add_argument("--filing-cik", help="canonical filing CIK filter")
+    query_cmd.add_argument("--source-cik", help="discovery source CIK filter")
+    query_cmd.add_argument("--limit", type=positive_int_type, help="limit results")
+    _add_output_options(query_cmd)
+    query_cmd.set_defaults(func=cmd_query)
+
     fixture = commands.add_parser(
         "fixture", help="create, fill, or list local fixtures"
     )

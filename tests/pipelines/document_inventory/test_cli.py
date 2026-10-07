@@ -71,9 +71,74 @@ def test_fixture_commands_require_ids() -> None:
 
 def test_obsolete_placeholders_are_not_advertised() -> None:
     parser = cli.build_parser()
-    for command in ("cohort", "index", "status", "query", "publish"):
+    for command in ("cohort", "index", "status", "publish"):
         with pytest.raises(SystemExit):
             parser.parse_args([command])
+
+
+def test_cli_build_and_query_dispatch(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch, capsys: pytest.CaptureFixture[str]
+) -> None:
+    from edgar_sec.pipelines.document_inventory.snapshot.models import (
+        SnapshotMetadata,
+        SnapshotPublication,
+    )
+
+    fake_meta = SnapshotMetadata(
+        snapshot_id="s1",
+        parent_snapshot_id="",
+        run_intent_id="r1",
+        base_snapshot_id=None,
+        schema_version="1",
+        entry_schema_version=1,
+        lookup_layout_version="1",
+        created_at="now",
+        accessions_partitions=(),
+        entries_partitions=(),
+        accession_sources_partitions=(),
+        accessions_digest="dig",
+    )
+    monkeypatch.setattr(
+        "edgar_sec.pipelines.document_inventory.snapshot.builder.build_inventory",
+        lambda *args, **kwargs: SnapshotPublication.published(fake_meta),
+    )
+    assert (
+        cli.main(
+            [
+                "build",
+                "--catalog-plan",
+                "plan-1",
+                "--artifacts",
+                str(tmp_path),
+                "--json",
+            ]
+        )
+        == 0
+    )
+    payload = json.loads(capsys.readouterr().out)
+    assert payload["status"] == "published"
+    assert payload["snapshot_id"] == "s1"
+
+    monkeypatch.setattr(
+        "edgar_sec.pipelines.document_inventory.snapshot.reader.query_accessions",
+        lambda *args, **kwargs: [{"accession": "0000320193-23-000106"}],
+    )
+    assert (
+        cli.main(
+            [
+                "query",
+                "--form",
+                "10-K",
+                "--artifacts",
+                str(tmp_path),
+                "--json",
+            ]
+        )
+        == 0
+    )
+    query_payload = json.loads(capsys.readouterr().out)
+    assert query_payload["count"] == 1
+    assert query_payload["results"][0]["accession"] == "0000320193-23-000106"
 
 
 def test_fixture_list_emits_manifest_discovery_json(

@@ -5,12 +5,14 @@
 - Owning stage in [implementation.md](../implementation.md): **S5**; the detailed
   contract for S5 is also in
   [inventory_snapshot.md](../inventory_snapshot.md).
-- Status: streamed pre-fetch cohort projection/work-order generation, post-fetch
-  anti-join staging, validated-attempt snapshot merge, artifact validation, serialized
-  installation, stale-parent refusal, and pointer-last publication are implemented
-  on top of `edgar_sec/infra/storage/dag/` using delta publications and `RelationSpec`.
-  Reader/query API and production projection-to-S4-to-S5 orchestration remain open;
-  explicit superseded-entry manifest mapping is unresolved.
+- Status: Complete production build flow (`build_inventory`), streamed pre-fetch cohort
+  projection/work-order generation, post-fetch anti-join staging, S4 execution,
+  validated-attempt snapshot merge, artifact validation, serialized installation,
+  stale-parent refusal, and pointer-last publication implemented on top of
+  `edgar_sec/infra/storage/dag/` using delta publications and `RelationSpec`. Reader/query
+  surface, CLI/operator commands, and production builder are verified offline. Entry
+  supersession is canonically resolved via relational DAG `scoped_mask` on
+  `INVENTORY_ENTRIES_SPEC`.
 - Depends for operational publication on: S1 cohort contract, S3 parser body, and S4
   integrated broker+worker. S2 remains research/replay input, not a production writer.
 - Non-blocking: S6–S10 design (consumers, not implementers).
@@ -25,7 +27,7 @@ enters the snapshot.
 
 ## Contract
 
-`build_inventory(catalog_plan_id, base_snapshot, explicit_refresh=False, chunk_size=None, retry_failures=False) -> SnapshotPublication`
+`build_inventory(catalog_plan_id, base_snapshot=None, explicit_refresh=False, chunk_size=None, retry_failures=False) -> SnapshotPublication`
 
 The build consumes S4's validated transient Parquet chunk references. S4 owns only its
 identity-bound worker checkpoints; S5 reads them in bounded batches into separate
@@ -125,34 +127,13 @@ An accession whose form/date metadata conflicts is refused before fetch; it is n
 silently re-indexed. Snapshot updates are serialized per inventory root; readers
 remain lock-free against immutable snapshots. A writer whose expected parent no
 longer matches `current` refuses before pointer publication; a retry re-anti-joins
-  against the new parent and may reuse compatible SEC-cache or fixture-page responses.
+against the new parent and may reuse compatible SEC-cache or fixture-page responses.
 
 All published and transient path construction is owned by
 `document_inventory.paths`; the snapshot package does not define a second layout.
 
 ## Current implementation blockers
 
-- `cli._cohort_for_plan` calls `list(read_catalog_observations(...))` and
-  `project_cohort`; it is a fixture workflow and cannot serve as the production
-  projection for a large plan.
-- `build_inventory` does not exist. No production adapter writes the pre-fetch work
-  order, selects the base snapshot, invokes S4, merges committed attempts, or publishes
-  `current`.
-- `snapshot.projection` already validates published plans and writes the pre-fetch
-  work order. The production builder connecting that projection to S4 and S5 remains
-  absent.
-- The snapshot reader/query API is not implemented; the writer, manifest inheritance,
-  artifact validation, publication lock, stale-parent check, and pointer-last install
-  are available as direct primitives. Changed-page refresh replaces active annual
-  entry parts but does not emit the contract's explicit superseded-entry mapping.
-- The mapping's persisted shape is unresolved: the model currently expresses it as an
-  accession-to-entry-ID Python mapping, which is not bounded for a large refresh. A
-  bounded Parquet delta versus a potentially large manifest mapping must be decided
-  before implementing that part of the contract.
-- S4 currently has chunk-only committed resume, no per-parse transactional progress
-  journal or cooperative cancellation, and retry inspection materializes outcomes and
-  entries into Python lists/dictionaries. Those S4 prerequisites block the requested
-  within-chunk recovery contract, but not synthetic S5 writer tests.
 - The S0 SEC-page audit still gates final historical parser acceptance, not the
   implementation of the production plan/work-order/snapshot infrastructure.
 

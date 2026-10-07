@@ -442,9 +442,8 @@ def _run_pending(
     stop_requested,
 ) -> RunSummary:
     """Process a Parquet work order one bounded chunk at a time."""
-    socket_path = InventoryPaths(paths.artifacts_root).broker_socket_path(
-        f"{SOCKET_PREFIX}{paths.run_id}"
-    )
+    socket_id = f"{SOCKET_PREFIX}{paths.run_id[-12:]}"
+    socket_path = InventoryPaths(paths.artifacts_root).broker_socket_path(socket_id)
     socket_path.parent.mkdir(parents=True, exist_ok=True)
     summary = _RunSummaryCollector(run_id)
 

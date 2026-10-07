@@ -42,7 +42,9 @@ Layer 4 consumes published `filing_catalog` plans and imports downward only.
 
 ## Command surface
 
-```
+```text
+python run.py inventory build --catalog-plan PLAN [--base-snapshot ID] [--explicit-refresh]
+python run.py inventory query [--accession ACC] [--form FORM] [--filing-cik CIK] [--source-cik CIK]
 python run.py inventory fixture create --fixture ID --catalog-plan PLAN [--limit N]
 python run.py inventory fixture fill --fixture ID --catalog-plan PLAN [--limit N]
 python run.py inventory fixture list
@@ -51,7 +53,7 @@ python run.py inventory review-artifacts --fixture ID --output DIR [--accession 
 
 Commands accept `--artifacts` and `--json`; capture also accepts `--limit`, and review
 accepts `--workers`, `--limit`, and repeatable `--accession`. Running `python run.py
-inventory` opens the discovery-driven fixture/review operator.
+inventory` opens the discovery-driven operator menu.
 
 ## Mirrored tests
 

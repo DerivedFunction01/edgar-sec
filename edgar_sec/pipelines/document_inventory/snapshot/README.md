@@ -9,11 +9,12 @@ Own inventory snapshot relations, pre-fetch plan projection, and bounded merge p
 | Module | Responsibility |
 |---|---|
 | `anti_join.py` | Stage candidate relations incrementally and classify them in DuckDB. |
+| `builder.py` | Connect catalog-plan projection, S4 coordinator, and S5 publication. |
 | `errors.py` | Snapshot validation and stale-parent failures. |
 | `models.py` | Snapshot metadata, lookup descriptors, and publication results. |
 | `projection.py` | Validate the published cohort projection, produce normalized relations, and write the pre-fetch work order. |
 | `projection_inputs.py` | Validate catalog-plan bundles and resolve pinned base-snapshot accession parts. |
-| `reader.py` | Range-pruned point queries for active accessions and entries. |
+| `reader.py` | Range-pruned point queries for active accessions, entries, and source CIKs. |
 | `schema.py` | Versioned Arrow schemas for persisted snapshot relations. |
 | `specs.py` | Declarative `RelationSpec` contracts (`accessions`, `entries`, `accession_sources`). |
 | `validation.py` | Check all declared Parquet files, digests, relations, and lookup parity. |
@@ -34,11 +35,13 @@ Own inventory snapshot relations, pre-fetch plan projection, and bounded merge p
 
 ## Public surface
 
-Call [`project_catalog_plan`](projection.py) for the pre-fetch projection and
+Call [`build_inventory`](builder.py) for the automated projection-to-S4-to-S5 pipeline.
+Call [`project_catalog_plan`](projection.py) for standalone pre-fetch projection and
 [`publish_committed_chunks`](writer.py) for the S4-attempt-to-snapshot boundary.
 [`validate_snapshot`](validation.py) checks a published or staged snapshot.
-[`get_active_accession`](reader.py), [`get_active_entries`](reader.py), and
-[`get_accessions_by_cik`](reader.py) query the active snapshot state.
+[`get_active_accession`](reader.py), [`get_active_entries`](reader.py),
+[`get_accessions_by_cik`](reader.py), [`get_accessions_by_source_cik`](reader.py),
+[`query_accessions`](reader.py), and [`get_accession_bundle`](reader.py) query active snapshot state.
 
 ## Command surface
 
@@ -50,8 +53,4 @@ None; commands are owned by `document_inventory.cli`.
 
 ## Deliberate gaps
 
-- The production builder connecting projection, S4, and S5 is not implemented;
-  these primitives do not start S4 or own CLI/operator orchestration.
-- Changed-page refresh replaces the active annual entry part while retaining the old
-  immutable snapshot. The roadmap's explicit superseded-entry manifest mapping remains
-  unresolved because its current in-memory model is unbounded for large refreshes.
+None.

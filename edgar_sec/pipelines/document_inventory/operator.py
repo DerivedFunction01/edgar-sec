@@ -140,6 +140,29 @@ def _action_review() -> None:
     )
 
 
+def _action_build() -> None:
+    plans = discover_plans(_root())
+    if not plans:
+        print(
+            "No published catalog plans were discovered; publish a plan before building an inventory snapshot."
+        )
+        return
+    plan = resolve_plan_choice(plans, select=_select)
+    if plan is None:
+        print("Plan selection cancelled.")
+        return
+    plan_id = str(plan["plan_id"])
+    from edgar_sec.pipelines.document_inventory.snapshot.builder import build_inventory
+
+    pub = build_inventory(plan_id, artifacts_root=Path(_root()))
+    if pub.was_published and pub.snapshot:
+        print(f"Snapshot published successfully: {pub.snapshot.snapshot_id}")
+    elif pub.was_no_op:
+        print("Snapshot is already up to date (no-op).")
+    else:
+        print(f"Snapshot build failed: {pub.reason}")
+
+
 def _action_dag() -> None:
     from edgar_sec.infra.storage.dag.menu import DAGMenuConfig, run_dag_menu
     from edgar_sec.pipelines.document_inventory.paths import InventoryPaths
@@ -147,12 +170,12 @@ def _action_dag() -> None:
         INVENTORY_RELATIONS,
     )
 
-    # TODO: Connect publish_action when document_inventory S4 attempt builder is ready.
     config = DAGMenuConfig(
         snapshots_root=lambda: InventoryPaths(Path(_root())).snapshots_root,
         title="Document Inventory Snapshot DAG Console",
         specs=INVENTORY_RELATIONS,
-        publish_action=None,
+        publish_action=_action_build,
+        publish_label="Build inventory snapshot from published plan",
     )
     run_dag_menu(config)
 
@@ -163,7 +186,8 @@ def build_operator_menu() -> tuple[MenuAction, ...]:
         MenuAction("2", "Fill a discovered fixture from a catalog plan", _action_fill),
         MenuAction("3", "List discovered fixtures", _action_list),
         MenuAction("4", "Build parser review artifacts", _action_review),
-        MenuAction("5", "Snapshot DAG Lifecycle Console", _action_dag),
+        MenuAction("5", "Build inventory snapshot from catalog plan", _action_build),
+        MenuAction("6", "Snapshot DAG Lifecycle Console", _action_dag),
     )
 
 
