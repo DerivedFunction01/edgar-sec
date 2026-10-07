@@ -1,4 +1,4 @@
-"""Interactive venv setup: GPU detection, torch wheel locking, uv with pip fallback."""
+"""Interactive venv setup: GPU detection, torch locking, uv with pip fallback."""
 
 import argparse
 import re
@@ -16,44 +16,57 @@ _CUDA_VERSION_RE = re.compile(r"CUDA Version: (\d+)\.(\d+)")
 UPGRADE = False
 REINSTALL_TORCH = False
 
-BASE_PACKAGES = [
-    "matplotlib",
-    "seaborn",
-    "IPython",
-    "IProgress",
-    "ipykernel",
-    "pandas",
-    "tqdm",
-    "numpy",
-    "scikit-learn",
-    "jupyter",
-    "ipywidgets",
-    "pyarrow",
-    "fastparquet",
-]
+# ---------------------------------------------------------------------------
+# Package Registry (Generic across repositories)
+# ---------------------------------------------------------------------------
 
-CUSTOM_PACKAGES = [
-    "duckdb",
-    "pytest",
-    "ruff",
-    "pysbd",
-    "nltk",
-    "tiktoken",
-    "bs4",
-    "selectolax",
-    "sentencepiece",
+PACKAGE_GROUPS: dict[str, list[str]] = {
+    "Core Data & Numerical": [
+        "numpy",
+        "pandas",
+        "scikit-learn",
+        "tqdm",
+    ],
+    "Visualization & Notebooks": [
+        "matplotlib",
+        "seaborn",
+        "plotly",
+        "jupyter",
+        "ipykernel",
+        "IPython",
+        "ipywidgets",
+        "IProgress",
+    ],
+    "Storage & Serialization": [
+        "pyarrow",
+        "fastparquet",
+        "duckdb",
+        "zstandard",
+    ],
+    "Text, NLP & Scraping": [
+        "pysbd",
+        "nltk",
+        "tiktoken",
+        "bs4",
+        "selectolax",
+        "sentencepiece",
+        "lxml",
+    ],
+    "Web & API Services": [
+        "fastapi",
+        "uvicorn",
+        "httpx2",
+    ],
+    "Dev & System Tools": [
+        "pytest",
+        "ruff",
+        "psutil",
+    ],
+}
+
+# Machine learning stack (hardware-aware PyTorch workflow exception)
+ML_PACKAGES: list[str] = [
     "tensorboard",
-    "fastapi",
-    "uvicorn",
-    "httpx2",
-    "psutil",
-    "zstandard",
-    "lxml",
-    "plotly",
-]
-
-# Packages for the ML server
-ML_PACKAGES = [
     "tensorboardX",
     "transformers",
     "evaluate",
@@ -62,8 +75,29 @@ ML_PACKAGES = [
     "accelerate",
 ]
 
-# Legacy "install all" list; the menu installs from the three above.
-PACKAGES = ML_PACKAGES + BASE_PACKAGES + CUSTOM_PACKAGES
+
+def get_bundle_map() -> dict[str, tuple[str, list[str]]]:
+    """Map dynamic letter keys to package group names and package lists."""
+    return {
+        chr(ord("a") + i): (name, pkgs)
+        for i, (name, pkgs) in enumerate(PACKAGE_GROUPS.items())
+    }
+
+
+def all_group_packages() -> list[str]:
+    """Return flat list of all packages defined in PACKAGE_GROUPS."""
+    seen: set[str] = set()
+    pkgs: list[str] = []
+    for group_pkgs in PACKAGE_GROUPS.values():
+        for pkg in group_pkgs:
+            if pkg not in seen:
+                seen.add(pkg)
+                pkgs.append(pkg)
+    return pkgs
+
+
+# Combined package list for reference or bulk installs
+PACKAGES = ML_PACKAGES + all_group_packages()
 
 
 # ---------------------------------------------------------------------------
@@ -175,10 +209,7 @@ def detect_amd_gpu():
 
 
 def get_supported_cuda_version(detected: str) -> str:
-    """Clamp a detected CUDA version to the newest wheel PyTorch publishes.
-
-    Update the list when new wheels ship: https://download.pytorch.org/whl/torch/
-    """
+    """Clamp a detected CUDA version to the newest wheel PyTorch publishes."""
     SUPPORTED_CUDA_VERSIONS = ["cu118", "cu121", "cu124", "cu126", "cu128"]
 
     if detected in SUPPORTED_CUDA_VERSIONS:
@@ -210,7 +241,7 @@ def get_supported_cuda_version(detected: str) -> str:
 
 
 def get_pytorch_install_args() -> list[str]:
-    """Return the PyTorch package list + index-url args for the current hardware."""
+    """Return PyTorch package list + index-url args for current hardware."""
     if GPU_AVAILABLE == "nvidia":
         wheel_tag = get_supported_cuda_version(CUDA_VERSION)
         return [
@@ -246,13 +277,12 @@ def get_pytorch_install_args() -> list[str]:
 def _build_install_cmd(
     packages: list[str], extra_args: list[str] | None = None
 ) -> list[str]:
-    """Build the install argv for uv or pip (never a shell string)."""
+    """Build install argv for uv or pip (never a shell string)."""
     extra_args = extra_args or []
 
     if USE_UV:
         cmd = ["uv", "pip", "install"]
         if USE_VENV:
-            # Tell uv which venv to target explicitly
             cmd += ["--python", _python_executable()]
         if UPGRADE:
             cmd.append("--upgrade")
@@ -285,7 +315,6 @@ def _python_executable() -> str:
     return f"{VENV_DIR}/bin/python"
 
 
-# Keep old name for any callers that still reference it
 def get_pip_executable() -> str:
     return _pip_executable()
 
@@ -306,7 +335,6 @@ def install_packages(package_list: list[str], description: str):
 def install_pytorch():
     """Install PyTorch with appropriate GPU support."""
     print("📦 Installing PyTorch...")
-    # Split packages from index-url args so _build_install_cmd can place them.
     torch_args = get_pytorch_install_args()
     try:
         idx = torch_args.index("--index-url")
@@ -321,7 +349,6 @@ def install_pytorch():
     result = subprocess.run(cmd)
 
     if result.returncode == 0:
-        # Record installed version and lock it
         try:
             if USE_UV:
                 version_result = subprocess.run(
@@ -395,11 +422,11 @@ def show_menu():
     print(f"Platform            : {platform_info}")
 
     if GPU_AVAILABLE == "nvidia":
-        gpu_status = f"GPU: Detected ({CUDA_VERSION})"
+        gpu_status = f"GPU                 : Detected ({CUDA_VERSION})"
     elif GPU_AVAILABLE == "amd":
-        gpu_status = "GPU: AMD ROCm detected"
+        gpu_status = "GPU                 : AMD ROCm detected"
     else:
-        gpu_status = "GPU: Not detected (CPU-only)"
+        gpu_status = "GPU                 : Not detected (CPU-only)"
     print(f"{gpu_status}")
 
     torch_status = (
@@ -407,13 +434,20 @@ def show_menu():
     )
     print(f"Torch Status        : {torch_status}")
 
-    print("\nOptions:")
-    print("  0. Basic setup (includes custom packages)")
-    print("  1. Install ML Packages (ML Server)")
-    print("  2. Install ML Packages (Full Training Setup)")
+    print("\nLifecycle & Workflow Options (Numbered):")
+    print("  0. Install ALL standard package bundles")
+    print("  1. Install PyTorch only (Hardware auto-detect: CUDA / ROCm / CPU)")
+    print("  2. Full ML Environment (PyTorch + ML stack + all standard bundles)")
     print("  3. Check current installation")
-    print("  4. Reinstall PyTorch (unlock and reinstall)")
+    print("  4. Reinstall PyTorch (unlock and force reinstall)")
     print("  5. Exit")
+
+    print("\nDynamic Package Bundles (Lettered — comma-separated allowed, e.g. 'a,c'):")
+    bundle_map = get_bundle_map()
+    for letter, (name, pkgs) in bundle_map.items():
+        sample = ", ".join(pkgs[:3])
+        suffix = f", ... (+{len(pkgs) - 3})" if len(pkgs) > 3 else ""
+        print(f"  [{letter}] {name:<26} ({len(pkgs)} pkgs: {sample}{suffix})")
     print("-" * 60)
 
 
@@ -423,9 +457,9 @@ def check_installation():
     python_exec = _python_executable()
     print(f"   Using Python: {python_exec}")
 
-    def get_package_version(pkg_name):
-        cmd = f'{python_exec} -c "import {pkg_name}; print({pkg_name}.__version__)"'
-        result = subprocess.run(cmd, shell=True, capture_output=True, text=True)
+    def get_package_version(pkg_name: str) -> str:
+        cmd = [python_exec, "-c", f"import {pkg_name}; print({pkg_name}.__version__)"]
+        result = subprocess.run(cmd, capture_output=True, text=True)
         return result.stdout.strip()
 
     packages_to_check = ["torch", "pandas", "pyarrow", "transformers", "sklearn"]
@@ -434,24 +468,21 @@ def check_installation():
         print(f"   {pkg}: {version if version else 'Not installed'}")
 
     print("\n🎮 Checking GPU support...")
-    gpu_check_cmd = (
-        f'{python_exec} -c "'
+    gpu_code = (
         "import torch; "
         "print(f'CUDA available: {torch.cuda.is_available()}'); "
-        "print(f'Device: {torch.cuda.get_device_name(0) if torch.cuda.is_available() else \"CPU\"}')"
-        '"'
+        "dev = torch.cuda.get_device_name(0) if torch.cuda.is_available() else 'CPU'; "
+        "print(f'Device: {dev}')"
     )
-    subprocess.run(gpu_check_cmd, shell=True)
+    subprocess.run([python_exec, "-c", gpu_code])
 
     print("\n📦 Checking Parquet support...")
-    parquet_check_cmd = (
-        f'{python_exec} -c "'
-        "import pandas as pd, sys; "
+    parquet_code = (
+        "import pandas as pd; "
         "pd.io.parquet.get_engine('auto'); "
         "print('✅ Parquet engine available')"
-        '"'
     )
-    subprocess.run(parquet_check_cmd, shell=True)
+    subprocess.run([python_exec, "-c", parquet_code])
 
 
 # ---------------------------------------------------------------------------
@@ -484,8 +515,7 @@ def main():
         "--choice",
         type=str,
         default=None,
-        choices=["0", "1", "2", "3", "4"],
-        help="Select a menu choice immediately and exit without prompting.",
+        help="Select a menu choice immediately (0-5, or bundle letters like 'a,c') and exit.",
     )
     args = parser.parse_args()
 
@@ -510,50 +540,72 @@ def main():
     if USE_VENV:
         create_venv()
 
-    def run_choice(choice: str) -> None:
+    def run_choice(choice: str) -> bool:
+        """Execute chosen menu action. Returns False to keep looping, True to exit."""
+        choice = choice.strip()
+        if not choice:
+            return False
+
         if choice == "0":
-            print("\nBasic setup starting...")
-            install_packages(BASE_PACKAGES, "base packages")
-            install_packages(CUSTOM_PACKAGES, "custom packages")
-            print("\n✅ Basic setup complete!")
+            print("\nInstalling all standard package bundles...")
+            install_packages(all_group_packages(), "all standard package bundles")
+            print("\n✅ Setup complete!")
             sys.exit(0)
 
         if choice == "1":
-            print("\nSetting up for ML ...")
+            print("\nSetting up PyTorch...")
             if is_torch_locked() and not REINSTALL_TORCH:
                 print("🧱 PyTorch is already locked. Skipping PyTorch install.")
             else:
                 install_pytorch()
-            install_packages(ML_PACKAGES, "ML packages")
-            install_packages(CUSTOM_PACKAGES, "custom packages")
-            install_packages(BASE_PACKAGES, "base packages")
-            print("\n✅ ML Server setup complete!")
+            print("\n✅ PyTorch setup complete!")
             sys.exit(0)
 
         if choice == "2":
-            print("\nStarting Full Training Setup...")
+            print("\nStarting Full ML Environment Setup...")
             if is_torch_locked() and not REINSTALL_TORCH:
                 print("🧱 PyTorch is already locked. Skipping PyTorch install.")
             else:
                 install_pytorch()
             install_packages(ML_PACKAGES, "ML packages")
-            install_packages(CUSTOM_PACKAGES, "custom packages")
-            install_packages(BASE_PACKAGES, "base packages")
-            print("\n✅ Full Training Environment setup complete!")
+            install_packages(all_group_packages(), "all standard package bundles")
+            print("\n✅ Full ML Environment setup complete!")
             sys.exit(0)
 
         if choice == "3":
             check_installation()
-            return
+            return False
 
         if choice == "4":
             print("\n🔄 Reinstalling PyTorch...")
             TORCH_LOCK_FILE.unlink(missing_ok=True)
             install_pytorch()
-            return
+            return False
 
-        print("\n👋 Goodbye!")
-        sys.exit(0)
+        if choice in ("5", "q", "exit"):
+            print("\n👋 Goodbye!")
+            sys.exit(0)
+
+        bundle_map = get_bundle_map()
+        raw_tokens = [
+            t.strip().lower()
+            for t in choice.replace(",", " ").split()
+            if t.strip()
+        ]
+        valid_letters = [t for t in raw_tokens if t in bundle_map]
+
+        if valid_letters:
+            for letter in valid_letters:
+                name, pkgs = bundle_map[letter]
+                print(f"\nInstalling bundle [{letter}]: {name}...")
+                install_packages(pkgs, f"{name} packages")
+            print("\n✅ Selected bundles installed successfully.")
+            return False
+
+        print(
+            f"\n⚠️  Invalid choice: '{choice}'. Enter 0-5, or bundle letters (e.g. 'a', 'a,c')."
+        )
+        return False
 
     if args.choice is not None:
         run_choice(args.choice)
@@ -561,7 +613,7 @@ def main():
 
     while True:
         show_menu()
-        choice = input("\nEnter your choice (0-5): ").strip()
+        choice = input("\nEnter your choice (0-5, a-f, or combinations): ").strip()
         run_choice(choice)
 
 
