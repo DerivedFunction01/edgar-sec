@@ -31,12 +31,10 @@ from edgar_sec.pipelines.document_inventory.fixture_store.models import (
 )
 from edgar_sec.pipelines.document_inventory.paths import (
     InventoryPaths,
+    resolve_filing_catalog_paths,
     resolve_index_fixture_paths,
 )
 from edgar_sec.foundation.runtime.paths import PLAN_FILE_NAME
-from edgar_sec.pipelines.filing_catalog.paths import (
-    resolve_filing_catalog_paths,
-)
 
 _ARCHIVE_BASE_URL = "https://www.sec.gov/Archives/edgar/data"
 

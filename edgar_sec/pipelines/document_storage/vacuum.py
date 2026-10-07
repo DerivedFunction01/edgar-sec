@@ -22,7 +22,6 @@ from edgar_sec.foundation.runtime.resources import RuntimeResourceProfile
 from edgar_sec.foundation.serialization import canonical_json
 from edgar_sec.infra.storage.duckdb import connect
 from edgar_sec.pipelines.document_storage.manifests import (
-    MANIFEST_NAME,
     PART_KIND_INDEX,
     PART_KIND_PAYLOAD,
     SnapshotPart,
@@ -35,6 +34,7 @@ from edgar_sec.pipelines.document_storage.manifests import (
     snapshot_identity,
     write_manifest,
 )
+from edgar_sec.pipelines.document_storage.paths import MANIFEST_FILE_NAME
 from edgar_sec.pipelines.document_storage.parts import (
     PlannedPart,
     plan_parts,
@@ -424,7 +424,7 @@ def vacuum_snapshots(
     # Refuse before writing: the derived id is deterministic, so writing parts first
     # would overwrite an immutable snapshot before the refusal could fire.
     target_dir = snapshot_dir(root, physical_id)
-    if (target_dir / MANIFEST_NAME).is_file():
+    if (target_dir / MANIFEST_FILE_NAME).is_file():
         raise VacuumError(
             f"snapshot {physical_id} already exists; the same sources were "
             "already consolidated"

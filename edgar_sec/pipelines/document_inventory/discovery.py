@@ -10,11 +10,13 @@ from edgar_sec.foundation.runtime.paths import resolve_paths
 from edgar_sec.pipelines.document_inventory.fixture_store.discovery import (
     discover_index_fixtures,
 )
-from edgar_sec.pipelines.document_inventory.paths import inventory_paths
+from edgar_sec.pipelines.document_inventory.paths import (
+    inventory_paths,
+    resolve_filing_catalog_paths,
+)
 from edgar_sec.pipelines.filing_catalog.discovery import (
     discover_plans as _discover_plans,
 )
-from edgar_sec.pipelines.filing_catalog.paths import resolve_filing_catalog_paths
 
 
 def discover_plans(artifacts_root: str | Path | None = None) -> list[dict[str, Any]]:

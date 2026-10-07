@@ -17,7 +17,7 @@ from edgar_sec.pipelines.filing_catalog.discovery import (
     status,
 )
 from edgar_sec.pipelines.filing_catalog.paths import (
-    SNAPSHOT_MANIFEST_NAME,
+    CATALOG_SNAPSHOT_MANIFEST_NAME,
     resolve_filing_catalog_paths,
     safe_identifier,
 )
@@ -77,7 +77,9 @@ def test_a_damaged_manifest_is_skipped_not_fatal(published: tuple[Path, str]) ->
     root, catalog_id = published
     broken = _paths(root).snapshots_root / "aaaaaaaaaaaa"
     broken.mkdir()
-    (broken / SNAPSHOT_MANIFEST_NAME).write_text("{ truncated", encoding="utf-8")
+    (broken / CATALOG_SNAPSHOT_MANIFEST_NAME).write_text(
+        "{ truncated", encoding="utf-8"
+    )
     found = discover_catalogs(_paths(root))
     assert [c["catalog_id"] for c in found] == [catalog_id]
 

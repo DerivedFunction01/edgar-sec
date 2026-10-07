@@ -21,6 +21,10 @@ from edgar_sec.foundation.runtime.fixtures import validate_fixture_component
 from edgar_sec.foundation.runtime.resources import RuntimeResourceProfile
 from edgar_sec.foundation.serialization import canonical_json
 from edgar_sec.infra.storage.atomic import atomic_write_json
+from edgar_sec.pipelines.document_storage.paths import (
+    CHUNK_DELEGATED_FILE,
+    CHUNK_DELEGATED_STATE_FILE,
+)
 from edgar_sec.pipelines.document_storage.delegation import (
     REFETCH_ACTION,
     DelegatedExhibit,
@@ -507,8 +511,8 @@ def _run_catalog_delegation(
             {"processor_fingerprint": processor_fingerprint, "sources": sources}
         )
     )
-    output_path = chunks_dir / "chunk-delegated.parquet"
-    state_path = chunks_dir / "chunk-delegated.state.json"
+    output_path = chunks_dir / CHUNK_DELEGATED_FILE
+    state_path = chunks_dir / CHUNK_DELEGATED_STATE_FILE
     try:
         state = json.loads(state_path.read_text(encoding="utf-8"))
         meta = validate_chunk_snapshot(output_path)
@@ -578,7 +582,7 @@ def _publish_delegations(
 
     exhibits = tuple(resolved.values())
     if exhibits or write_empty:
-        write_exhibit_snapshot(chunks_dir / "chunk-delegated.parquet", exhibits)
+        write_exhibit_snapshot(chunks_dir / CHUNK_DELEGATED_FILE, exhibits)
     return exhibits
 
 

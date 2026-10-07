@@ -39,6 +39,7 @@ Layer 0: foundation/      edgar_sec.foundation
 ### Layer Dependency Rules (Enforced by AST Scanner)
 - **Apps (Layer 5)** may import from: `pipelines`, `engine`, `infra`, `domain`, `foundation`.
 - **Pipelines (Layer 4)** may import from: `engine`, `infra`, `domain`, `foundation`. Never `apps`.
+- Cross-pipeline path/schema contract imports are limited to matching `paths.py` or `schemas.py` modules. These direct imports must be unaliased and acyclic; re-exports are confined to those owner modules.
 - **Engine (Layer 3)** may import from: `infra`, `domain`, `foundation`. Never `pipelines` or `apps`.
 - **Infra (Layer 2)** may import from: `domain`, `foundation`. Never `engine`, `pipelines`, or `apps`.
 - **Domain (Layer 1)** may import from: `foundation`. Never `infra`, `engine`, `pipelines`, or `apps`.

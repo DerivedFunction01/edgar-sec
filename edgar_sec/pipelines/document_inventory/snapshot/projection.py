@@ -20,6 +20,7 @@ from edgar_sec.domain.document_inventory.schemas import ENTRY_SCHEMA_VERSION
 from edgar_sec.domain.identity import AccessionNumber
 from edgar_sec.engine.index_pages.parser import PARSER_FINGERPRINT
 from edgar_sec.foundation.hashing import file_sha256
+from edgar_sec.foundation.runtime.paths import PLAN_FILE_NAME
 from edgar_sec.foundation.runtime.memory import reclaim
 from edgar_sec.foundation.runtime.resources import (
     RuntimeResourceProfile,
@@ -38,9 +39,16 @@ from edgar_sec.pipelines.document_inventory.cohort import (
     CohortInputError,
 )
 from edgar_sec.pipelines.document_inventory.paths import (
+    COHORT_ACCESSIONS_FILE,
+    COHORT_SOURCES_FILE,
+    FilingCatalogPaths,
     InventoryRunPaths,
+    MANIFEST_FILE_NAME,
+    PROJECTION_MANIFEST_FILE,
+    WORK_ORDER_FILE,
     inventory_paths,
     inventory_run_paths,
+    resolve_filing_catalog_paths,
 )
 from edgar_sec.pipelines.document_inventory.run_manifest import (
     InventoryRunManifest,
@@ -57,10 +65,6 @@ from edgar_sec.pipelines.document_inventory.snapshot.schema import (
     SNAPSHOT_RELATION_VERSION,
 )
 from edgar_sec.pipelines.document_inventory.snapshot.errors import BaseSnapshotError
-from edgar_sec.pipelines.filing_catalog.paths import (
-    FilingCatalogPaths,
-    resolve_filing_catalog_paths,
-)
 from edgar_sec.pipelines.document_inventory.snapshot.projection_inputs import (
     base_snapshot_parts,
     catalog_plan_parts,
@@ -587,9 +591,9 @@ def project_catalog_plan(
             [explicit_refresh],
         )
 
-        accessions_stage = staging_root / "cohort_accessions.parquet"
-        sources_stage = staging_root / "cohort_sources.parquet"
-        work_order_stage = staging_root / "work_order.parquet"
+        accessions_stage = staging_root / COHORT_ACCESSIONS_FILE
+        sources_stage = staging_root / COHORT_SOURCES_FILE
+        work_order_stage = staging_root / WORK_ORDER_FILE
         accession_count = copy_query_to_parquet(
             connection,
             "SELECT accession, filing_cik, form, filing_date, report_date, index_url "
@@ -606,14 +610,14 @@ def project_catalog_plan(
         _validate_output_schema(accessions_stage, _COHORT_ACCESSIONS_SCHEMA)
         _validate_output_schema(sources_stage, _COHORT_SOURCES_SCHEMA)
         if (
-            file_sha256(plan_root / "plan.json") != plan_file_sha
+            file_sha256(plan_root / PLAN_FILE_NAME) != plan_file_sha
             or file_sha256(locator_path) != locator_file_sha
             or any(file_sha256(path) != digest for _form, path, _count, digest in parts)
             or any(file_sha256(path) != digest for path, _count, digest in base_parts)
             or (
                 base_snapshot_id is not None
                 and file_sha256(
-                    base_paths.snapshot_root(base_snapshot_id) / "manifest.json"
+                    base_paths.snapshot_root(base_snapshot_id) / MANIFEST_FILE_NAME
                 )
                 != base_manifest_sha
             )
@@ -677,22 +681,20 @@ def project_catalog_plan(
             "archive_base_url": base_url,
             "outputs": {
                 "cohort_accessions": {
-                    "path": "cohort_accessions.parquet",
+                    "path": COHORT_ACCESSIONS_FILE,
                     "sha256": file_sha256(accessions_stage),
                 },
                 "cohort_sources": {
-                    "path": "cohort_sources.parquet",
+                    "path": COHORT_SOURCES_FILE,
                     "sha256": file_sha256(sources_stage),
                 },
                 "work_order": {
-                    "path": "work_order.parquet",
+                    "path": WORK_ORDER_FILE,
                     "sha256": file_sha256(work_order_stage),
                 },
             },
         }
-        atomic_write_json(
-            staging_root / "projection_manifest.json", projection_manifest
-        )
+        atomic_write_json(staging_root / PROJECTION_MANIFEST_FILE, projection_manifest)
         stage_complete = True
     finally:
         if connection is not None:

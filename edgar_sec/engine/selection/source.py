@@ -18,6 +18,10 @@ from edgar_sec.domain.filing_catalog.schemas import (
     LOCATOR_FEATURE_COLUMNS,
     OCCURRENCE_FEATURE_COLUMNS,
 )
+from edgar_sec.engine.selection.paths import (
+    LOCATOR_FEATURES_FILE,
+    OCCURRENCE_FEATURES_FILE,
+)
 from edgar_sec.engine.selection.policy import KNOWN_DIMENSIONS
 from edgar_sec.engine.selection.predicates import (
     date_selection_sql,
@@ -153,8 +157,8 @@ class CandidateSource:
         if page_size < 1:
             raise ValueError("page_size must be at least 1")
         self.snapshot_dir = Path(snapshot_dir).resolve()
-        self.locator = self.snapshot_dir / "locator_features.parquet"
-        self.occurrence = self.snapshot_dir / "occurrence_features.parquet"
+        self.locator = self.snapshot_dir / LOCATOR_FEATURES_FILE
+        self.occurrence = self.snapshot_dir / OCCURRENCE_FEATURES_FILE
         for required in (self.locator, self.occurrence):
             if not required.is_file():
                 raise FileNotFoundError(f"feature snapshot is missing {required}")

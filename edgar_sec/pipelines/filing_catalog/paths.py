@@ -16,6 +16,7 @@ from edgar_sec.foundation.runtime.paths import (
     resolve_paths,
     transient_dir,
 )
+from edgar_sec.pipelines.metadata_sync.paths import resolve_metadata_paths
 
 PIPELINE_DIR = "filing_catalog"
 
@@ -28,7 +29,7 @@ CURRENT_ALIAS = "current"
 # Artifact names, named through constants because a literal repeated in two
 # modules is how a rename desynchronizes a writer from its reader.
 SNAPSHOT_FILE_NAME = "company_profiles.parquet"
-SNAPSHOT_MANIFEST_NAME = "snapshot.manifest.json"
+CATALOG_SNAPSHOT_MANIFEST_NAME = "snapshot.manifest.json"
 TARGETS_DIR_NAME = "filing_targets"
 PLAN_TARGETS_DIR_NAME = "targets"
 SELECTION_REPORT_NAME = "selection_report.json"
@@ -124,7 +125,7 @@ class FilingCatalogPaths:
 
     def snapshot_manifest(self, catalog_id: str) -> Path:
         """Materialization manifest for one snapshot."""
-        return self.snapshot_dir(catalog_id) / SNAPSHOT_MANIFEST_NAME
+        return self.snapshot_dir(catalog_id) / CATALOG_SNAPSHOT_MANIFEST_NAME
 
     @property
     def current_pointer(self) -> Path:
@@ -168,6 +169,7 @@ def resolve_filing_catalog_paths(
 
 __all__ = [
     "CURRENT_ALIAS",
+    "CATALOG_SNAPSHOT_MANIFEST_NAME",
     "EXPANSION_METADATA_NAME",
     "LOCATOR_GROUPS_NAME",
     "PIPELINE_DIR",
@@ -179,12 +181,12 @@ __all__ = [
     "SEED_FILERS_NAME",
     "SELECTION_REPORT_NAME",
     "SNAPSHOT_FILE_NAME",
-    "SNAPSHOT_MANIFEST_NAME",
     "TARGETS_DIR_NAME",
     "FilingCatalogPaths",
     "form_partition_dir",
     "form_partition_name",
     "resolve_filing_catalog_paths",
+    "resolve_metadata_paths",
     "safe_identifier",
     "target_part_name",
 ]

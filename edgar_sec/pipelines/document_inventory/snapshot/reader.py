@@ -8,11 +8,17 @@ from __future__ import annotations
 from pathlib import Path
 from typing import Any
 
+from edgar_sec.foundation.runtime.paths import (
+    CURRENT_DIR,
+    POINTER_FILE_NAME,
+    SNAPSHOTS_DIR,
+)
 from edgar_sec.foundation.runtime.resources import RuntimeResourceProfile
 from edgar_sec.infra.storage.dag.publication import read_pointer
 from edgar_sec.infra.storage.dag.query import query_point
 from edgar_sec.infra.storage.dag.traversal import walk_lineage
 from edgar_sec.infra.storage.duckdb import connect
+from edgar_sec.pipelines.document_inventory.paths import DATASET
 from edgar_sec.pipelines.document_inventory.snapshot.specs import (
     INVENTORY_ACCESSIONS_SPEC,
     INVENTORY_ENTRIES_SPEC,
@@ -23,10 +29,10 @@ from edgar_sec.pipelines.document_inventory.snapshot.specs import (
 def _resolve_snapshots_root(root: Path | str) -> Path:
     """Resolve artifacts or snapshot directory root to snapshot root."""
     p = Path(root)
-    if (p / "current" / "pointer.json").is_file():
+    if (p / CURRENT_DIR / POINTER_FILE_NAME).is_file():
         return p
-    sub = p / "document_inventory" / "snapshots"
-    if (sub / "current" / "pointer.json").is_file() or sub.is_dir():
+    sub = p / DATASET / SNAPSHOTS_DIR
+    if (sub / CURRENT_DIR / POINTER_FILE_NAME).is_file() or sub.is_dir():
         return sub
     return p
 

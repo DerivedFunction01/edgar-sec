@@ -12,7 +12,7 @@ from typing import Any
 
 from edgar_sec.foundation.hashing import file_sha256
 from edgar_sec.infra.storage.atomic import atomic_write_json
-from edgar_sec.infra.storage.dag.paths import DAGPaths
+from edgar_sec.infra.storage.dag.paths import DAGPaths, TAGS_JSON_GLOB
 from .publication import PublicationLock
 
 
@@ -72,7 +72,7 @@ def list_tags(snapshots_root: Path | str) -> list[dict[str, Any]]:
     if not tags_dir.is_dir():
         return []
     results: list[dict[str, Any]] = []
-    for tag_file in sorted(tags_dir.glob("*.json")):
+    for tag_file in sorted(tags_dir.glob(TAGS_JSON_GLOB)):
         try:
             data = json.loads(tag_file.read_text(encoding="utf-8"))
             if isinstance(data, dict) and "tag" in data:

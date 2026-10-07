@@ -9,9 +9,8 @@ from pathlib import Path
 from typing import Any
 
 from edgar_sec.engine.selection.policy import KNOWN_DIMENSIONS
+from edgar_sec.engine.selection.paths import LOCATOR_FEATURES_FILE
 from edgar_sec.infra.storage.duckdb import connect, sql_literal
-
-LOCATOR_TABLE = "locator_features.parquet"
 
 
 class UnknownDimensionError(ValueError):
@@ -29,7 +28,7 @@ class InventoryStatistics:
         memory_limit: str | None = None,
     ) -> None:
         self.snapshot_dir = Path(snapshot_dir).resolve()
-        self.locator_path = self.snapshot_dir / LOCATOR_TABLE
+        self.locator_path = self.snapshot_dir / LOCATOR_FEATURES_FILE
         self._threads = threads
         self._memory_limit = memory_limit
 
@@ -122,7 +121,6 @@ class InventoryStatistics:
 
 
 __all__ = [
-    "LOCATOR_TABLE",
     "InventoryStatistics",
     "UnknownDimensionError",
 ]

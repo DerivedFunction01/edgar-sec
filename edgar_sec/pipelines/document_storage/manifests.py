@@ -17,10 +17,10 @@ from edgar_sec.foundation.hashing import sha256_text
 from edgar_sec.foundation.runtime.paths import current_pointer_path
 from edgar_sec.foundation.serialization import canonical_json
 from edgar_sec.infra.storage.atomic import atomic_write_text
+from edgar_sec.pipelines.document_storage.paths import MANIFEST_FILE_NAME
 
 log = logging.getLogger("storage.manifests")
 
-MANIFEST_NAME = "manifest.json"
 PART_KIND_INDEX = "index"
 PART_KIND_PAYLOAD = "payload"
 
@@ -120,10 +120,10 @@ def write_manifest(
     if not snapshot_id:
         raise ManifestError("manifest requires a snapshot_id")
     target = snapshot_dir(snapshots_root, snapshot_id)
-    if (target / MANIFEST_NAME).is_file():
+    if (target / MANIFEST_FILE_NAME).is_file():
         raise ManifestError(f"snapshot {snapshot_id} already published at {target}")
 
-    atomic_write_text(target / MANIFEST_NAME, canonical_json(manifest))
+    atomic_write_text(target / MANIFEST_FILE_NAME, canonical_json(manifest))
     if set_current:
         publish_pointer(
             snapshots_root,
@@ -132,19 +132,19 @@ def write_manifest(
             dataset=dataset,
             phase=phase,
         )
-    return target / MANIFEST_NAME
+    return target / MANIFEST_FILE_NAME
 
 
 def read_manifest(snapshots_root: Path, snapshot_id: str) -> dict[str, Any]:
     """Read one snapshot's manifest."""
-    path = snapshot_dir(snapshots_root, snapshot_id) / MANIFEST_NAME
+    path = snapshot_dir(snapshots_root, snapshot_id) / MANIFEST_FILE_NAME
     if not path.is_file():
         raise ManifestError(f"snapshot manifest not found: {path}")
     return json.loads(path.read_text(encoding="utf-8"))
 
 
 def list_snapshots(
-    snapshots_root: Path, manifest_name: str = MANIFEST_NAME
+    snapshots_root: Path, manifest_name: str = MANIFEST_FILE_NAME
 ) -> list[dict[str, Any]]:
     """List every readable snapshot manifest, sorted by id.
 
@@ -295,7 +295,6 @@ class SnapshotReader:
 
 
 __all__ = [
-    "MANIFEST_NAME",
     "PART_KIND_INDEX",
     "PART_KIND_PAYLOAD",
     "ManifestError",

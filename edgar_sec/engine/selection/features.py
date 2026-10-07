@@ -19,6 +19,14 @@ from edgar_sec.domain.filing_catalog.schemas import (
 from edgar_sec.domain.forms.common.aliases import FORM_FAMILY_SUFFIXES
 from edgar_sec.domain.taxonomy.jurisdictions import STATE_POSTAL_CODES
 from edgar_sec.engine.selection.policy import EraBand, SelectionPolicy
+from edgar_sec.foundation.runtime.paths import PARQUET_PART_GLOB, SNAPSHOTS_DIR
+from edgar_sec.engine.selection.paths import (
+    FEATURE_MANIFEST_FILE,
+    LIFECYCLE_FILE,
+    LOCATOR_FEATURES_FILE,
+    OCCURRENCE_BASE_FILE,
+    OCCURRENCE_FEATURES_FILE,
+)
 from edgar_sec.foundation.serialization import canonical_hash
 from edgar_sec.infra.storage.atomic import atomic_write_text
 from edgar_sec.infra.storage.duckdb import (
@@ -88,9 +96,9 @@ UNKNOWN_FOREIGN_STATUS = "unknown"
 _SQL_COLUMN_IDENTIFIER_RE = re.compile(r"[A-Za-z_][A-Za-z0-9_.]*")
 
 # Named rather than inlined so a published plan can name what it excluded.
-_FEATURE_MANIFEST_NAME = "feature_snapshot.json"
-_OCCURRENCE_FEATURES_NAME = "occurrence_features.parquet"
-_LOCATOR_FEATURES_NAME = "locator_features.parquet"
+FEATURE_MANIFEST_FILE  # noqa: F401 — re-exported from paths for plan consumers
+OCCURRENCE_FEATURES_FILE  # noqa: F401 — re-exported from paths for plan consumers
+LOCATOR_FEATURES_FILE  # noqa: F401 — re-exported from paths for plan consumers
 
 
 def form_family(form: str) -> str:
@@ -220,14 +228,14 @@ class FeatureSnapshotBuilder:
             "policy_fingerprint": self.policy.policy_fingerprint,
             "family_index_id": self.family_index_id,
         }
-        return self.output_root / "snapshots" / canonical_hash(payload)[:32]
+        return self.output_root / SNAPSHOTS_DIR / canonical_hash(payload)[:32]
 
     def paths_for(self, snapshot_dir: Path) -> SnapshotPaths:
         return SnapshotPaths(
             snapshot_dir=snapshot_dir,
-            manifest=snapshot_dir / _FEATURE_MANIFEST_NAME,
-            occurrence_features=snapshot_dir / _OCCURRENCE_FEATURES_NAME,
-            locator_features=snapshot_dir / _LOCATOR_FEATURES_NAME,
+            manifest=snapshot_dir / FEATURE_MANIFEST_FILE,
+            occurrence_features=snapshot_dir / OCCURRENCE_FEATURES_FILE,
+            locator_features=snapshot_dir / LOCATOR_FEATURES_FILE,
         )
 
     def _is_reusable(self, manifest: Path) -> bool:
@@ -247,7 +255,7 @@ class FeatureSnapshotBuilder:
     # ----------------------------------------------------------------- SQL
 
     def _target_part_files(self) -> list[Path]:
-        parts = sorted(self.target_root.glob("part-*.parquet"))
+        parts = sorted(self.target_root.glob(PARQUET_PART_GLOB))
         if not parts:
             raise FileNotFoundError(f"no target part files found in {self.target_root}")
         return parts
@@ -488,7 +496,7 @@ class FeatureSnapshotBuilder:
         return copy_query_to_parquet(
             con,
             query,
-            staging_dir / _OCCURRENCE_FEATURES_NAME,
+            staging_dir / OCCURRENCE_FEATURES_FILE,
             self.row_group_size,
         )
 
@@ -501,7 +509,7 @@ class FeatureSnapshotBuilder:
         # The frame is stated because a window carrying an ORDER BY defaults to a
         # running RANGE: unframed, the count reads 1 on the first row of every
         # partition, which is the only row `rn = 1` keeps.
-        occurrences = sql_literal(str(staging_dir / _OCCURRENCE_FEATURES_NAME))
+        occurrences = sql_literal(str(staging_dir / OCCURRENCE_FEATURES_FILE))
         occurrence_projection = ", ".join(
             f"o.{column}" for column in OCCURRENCE_FEATURE_COLUMNS
         )
@@ -524,7 +532,7 @@ class FeatureSnapshotBuilder:
             FROM ranked WHERE rn = 1
         """
         return copy_query_to_parquet(
-            con, query, staging_dir / _LOCATOR_FEATURES_NAME, self.row_group_size
+            con, query, staging_dir / LOCATOR_FEATURES_FILE, self.row_group_size
         )
 
     # ---------------------------------------------------------------- build
@@ -560,8 +568,8 @@ class FeatureSnapshotBuilder:
             counts["locator_features"] = self._write_locator_features(con, snapshot_dir)
 
         for intermediate in (
-            "occurrence_base.parquet",
-            "lifecycle.parquet",
+            OCCURRENCE_BASE_FILE,
+            LIFECYCLE_FILE,
         ):
             (snapshot_dir / intermediate).unlink(missing_ok=True)
 

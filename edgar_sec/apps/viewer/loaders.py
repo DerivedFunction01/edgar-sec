@@ -25,26 +25,28 @@ from edgar_sec.apps.viewer.model import (
     newest_mtime,
     walk_files,
 )
+from edgar_sec.apps.viewer.paths import (
+    DATA_SUFFIXES,
+    DATABASE_SUFFIXES,
+)
 from edgar_sec.pipelines.document_storage.manifests import (
     PART_KIND_INDEX,
     PART_KIND_PAYLOAD,
     SnapshotReader,
     resolved_parts,
 )
+from edgar_sec.foundation.runtime.paths import SNAPSHOTS_DIR, TRANSIENT_DIR
 from edgar_sec.pipelines.filing_catalog.paths import (
+    CATALOG_SNAPSHOT_MANIFEST_NAME,
     SNAPSHOT_FILE_NAME,
     TARGETS_DIR_NAME,
     FilingCatalogPaths,
 )
-from edgar_sec.pipelines.filing_catalog.paths import (
-    SNAPSHOT_MANIFEST_NAME as CATALOG_MANIFEST_NAME,
-)
+from edgar_sec.pipelines.document_storage.paths import DOCUMENTS_DATASET
 from edgar_sec.pipelines.metadata_sync.paths import (
     METADATA_DIR,
     MetadataPaths,
-)
-from edgar_sec.pipelines.metadata_sync.paths import (
-    SNAPSHOT_MANIFEST_NAME as METADATA_MANIFEST_NAME,
+    SNAPSHOT_MANIFEST_NAME,
 )
 from edgar_sec.pipelines.metadata_sync.snapshot import (
     SnapshotLayoutError,
@@ -66,7 +68,6 @@ __all__ = [
 ]
 
 _TRANSIENT_DATASETS = (METADATA_DIR, "filing_catalog", "document_storage")
-_DATA_SUFFIXES = {".parquet", ".db", ".sqlite"}
 
 # Synthetic logical name for a multipart dataset spanning a directory; no such
 # file exists. The id names the dataset and ``source_paths`` carries the real parts.
@@ -102,7 +103,7 @@ def _stat_revision(paths: tuple[Path, ...]) -> str:
 
 
 def _fmt_for(path: Path) -> str:
-    return "sqlite" if path.suffix.lower() in {".db", ".sqlite"} else "parquet"
+    return "sqlite" if path.suffix.lower() in DATABASE_SUFFIXES else "parquet"
 
 
 def _read_manifest(path: Path) -> dict[str, Any]:
@@ -160,7 +161,7 @@ def load_metadata(root: Path) -> list[ArtifactSummary]:
         return []
     found: list[ArtifactSummary] = []
     for entry in sorted(snapshots_root.iterdir()):
-        manifest_path = entry / METADATA_MANIFEST_NAME
+        manifest_path = entry / SNAPSHOT_MANIFEST_NAME
         if not manifest_path.is_file():
             continue
         snapshot_id = entry.name
@@ -220,7 +221,7 @@ def load_filing_catalog(root: Path) -> list[ArtifactSummary]:
         return []
     found: list[ArtifactSummary] = []
     for entry in sorted(catalog_root.iterdir()):
-        manifest_path = entry / CATALOG_MANIFEST_NAME
+        manifest_path = entry / CATALOG_SNAPSHOT_MANIFEST_NAME
         if not manifest_path.is_file():
             continue
         try:
@@ -263,7 +264,7 @@ def load_document_storage(root: Path) -> list[ArtifactSummary]:
     Index and payload are separate records; parts resolve through ``SnapshotReader``,
     never by globbing, so an unfinished publication is reported, not partially shown.
     """
-    snapshots_root = Path(root) / "document_storage" / "snapshots"
+    snapshots_root = Path(root) / DOCUMENTS_DATASET / SNAPSHOTS_DIR
     if not snapshots_root.is_dir():
         return []
     found: list[ArtifactSummary] = []
@@ -309,7 +310,7 @@ def load_transient_runs(root: Path) -> list[ArtifactSummary]:
     a stat composite, not a digest, because a union changes as files arrive.
     """
     found: list[ArtifactSummary] = []
-    transient_root = Path(root) / "transient"
+    transient_root = Path(root) / TRANSIENT_DIR
     if not transient_root.is_dir():
         return found
     for dataset in _TRANSIENT_DATASETS:
@@ -320,7 +321,7 @@ def load_transient_runs(root: Path) -> list[ArtifactSummary]:
             chunks = tuple(
                 path
                 for path in walk_files(run_dir)
-                if path.suffix.lower() in _DATA_SUFFIXES
+                if path.suffix.lower() in DATA_SUFFIXES
             )
             if not chunks:
                 continue
@@ -400,7 +401,7 @@ def load_sqlite_databases(root: Path) -> list[ArtifactSummary]:
     """
     found: list[ArtifactSummary] = []
     for path in walk_files(Path(root)):
-        if path.suffix.lower() not in {".db", ".sqlite"}:
+        if path.suffix.lower() not in DATABASE_SUFFIXES:
             continue
         for table in _sqlite_tables(path) or ["sqlite_master"]:
             found.append(
@@ -460,11 +461,11 @@ def iter_documents(root: Path) -> list[ArtifactSummary]:
     seen: set[Path] = set()
     metadata_paths = MetadataPaths(artifacts_root=Path(root))
     candidates: list[Path] = sorted(
-        metadata_paths.snapshots_root.glob(f"*/{METADATA_MANIFEST_NAME}")
+        metadata_paths.snapshots_root.glob(f"*/{SNAPSHOT_MANIFEST_NAME}")
     )
     catalog_paths = FilingCatalogPaths(artifacts_root=Path(root))
     candidates.extend(
-        sorted(catalog_paths.snapshots_root.glob(f"*/{CATALOG_MANIFEST_NAME}"))
+        sorted(catalog_paths.snapshots_root.glob(f"*/{CATALOG_SNAPSHOT_MANIFEST_NAME}"))
     )
     for path in candidates:
         if path in seen or not path.is_file():

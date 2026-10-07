@@ -17,7 +17,7 @@ from typing import Any
 
 from edgar_sec.domain.filing_catalog.schemas import SCOPE_POLICY
 from edgar_sec.foundation.serialization import canonical_hash
-from edgar_sec.foundation.runtime.paths import PLAN_FILE_NAME
+from edgar_sec.foundation.runtime.paths import DATA_FILE_NAME, PLAN_FILE_NAME
 from edgar_sec.infra.storage.atomic import atomic_write_json
 from edgar_sec.infra.storage.duckdb import connect, sql_literal
 from edgar_sec.pipelines.filing_catalog.paths import (
@@ -144,7 +144,7 @@ def plan_bundle_complete(plan_dir: Path, scope: str = "") -> bool:
     present = {
         entry.name
         for entry in targets_dir.glob("form=*")
-        if entry.is_dir() and (entry / "data.parquet").is_file()
+        if entry.is_dir() and (entry / DATA_FILE_NAME).is_file()
     }
     return present == expected
 

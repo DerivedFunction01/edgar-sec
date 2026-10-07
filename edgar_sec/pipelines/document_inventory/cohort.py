@@ -21,10 +21,16 @@ from edgar_sec.domain.document_inventory.models import (
     IndexWorkItem,
     InventoryCohort,
 )
-from edgar_sec.domain.filing_catalog.schemas import TARGET_COLUMNS
+from edgar_sec.domain.filing_catalog.schemas import (
+    TARGET_COLUMNS,
+)
 from edgar_sec.domain.identity import AccessionNumber, Cik
+from edgar_sec.foundation.runtime.paths import DATA_FILE_NAME, PLAN_FILE_NAME
 from edgar_sec.foundation.serialization import canonical_json
 from edgar_sec.infra.storage.parquet import count_parquet_rows
+from edgar_sec.pipelines.document_inventory.paths import (
+    CATALOG_SNAPSHOT_MANIFEST_NAME,
+)
 
 __all__ = [
     "CohortInputError",
@@ -183,7 +189,7 @@ def read_catalog_observations(
 
 
 def _read_snapshot_manifest(source_dir: Path) -> tuple[list[Path], int | None]:
-    manifest_path = source_dir / "snapshot.manifest.json"
+    manifest_path = source_dir / CATALOG_SNAPSHOT_MANIFEST_NAME
     if not manifest_path.is_file():
         raise CohortInputError(
             "invalid_bundle", None, detail=f"manifest missing: {manifest_path}"
@@ -242,7 +248,7 @@ def _read_snapshot_manifest(source_dir: Path) -> tuple[list[Path], int | None]:
 
 
 def _read_plan_manifest(source_dir: Path) -> tuple[list[Path], int | None]:
-    plan_path = source_dir / "plan.json"
+    plan_path = source_dir / PLAN_FILE_NAME
     if not plan_path.is_file():
         raise CohortInputError(
             "invalid_bundle", None, detail=f"plan.json missing: {plan_path}"
@@ -274,12 +280,12 @@ def _read_plan_manifest(source_dir: Path) -> tuple[list[Path], int | None]:
         )
     for form in sorted(forms):
         partition = "form=" + form.replace("/", "_")
-        part_path = targets / partition / "data.parquet"
+        part_path = targets / partition / DATA_FILE_NAME
         if not part_path.is_file():
             raise CohortInputError(
                 "invalid_bundle",
                 None,
-                detail=f"form part missing: {partition}/data.parquet",
+                detail=f"form part missing: {partition}/{DATA_FILE_NAME}",
             )
         rows = count_parquet_rows(part_path)
         if payload.get("counts", {}).get(form) != rows:

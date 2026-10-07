@@ -12,6 +12,11 @@ from pathlib import Path
 import edgar_sec.foundation.runtime.fixtures as foundation_fixtures
 import edgar_sec.foundation.runtime.paths as foundation_paths
 from edgar_sec.foundation.runtime.paths import ProjectPaths
+from edgar_sec.pipelines.filing_catalog.paths import (
+    LOCATOR_GROUPS_NAME,
+    PLAN_TARGETS_DIR_NAME,
+    form_partition_name,
+)
 
 DOCUMENTS_DATASET = "document_storage"
 RUNS_DIR = "runs"
@@ -20,12 +25,14 @@ REVIEW_RUNS_DIR = "review-runs"
 PAYLOAD_DB_NAME = "fixture.sqlite"
 
 SNAPSHOT_ARTIFACT_NAME = "documents.parquet"
-RUN_MANIFEST_NAME = "manifest.json"
+MANIFEST_FILE_NAME = "manifest.json"
 CASES_DIR = "cases"
 REVIEW_MANIFEST_NAME = "review_manifest.jsonl"
 EXHIBITS_DATASET = "document_exhibits"
 EXHIBIT_SNAPSHOT_NAME = "exhibits.parquet"
 CHUNKS_DIR_NAME = "chunks"
+CHUNK_DELEGATED_FILE = "chunk-delegated.parquet"
+CHUNK_DELEGATED_STATE_FILE = "chunk-delegated.state.json"
 
 #: Stamped into this pipeline's manifests and pointer. Owned here because which
 #: phase produced a snapshot is a fact about the pipeline, not the shared writer.
@@ -119,6 +126,9 @@ __all__ = [
     "CASES_DIR",
     "CHECKPOINTS_DIR",
     "CHUNKS_DIR_NAME",
+    "CHUNK_DELEGATED_FILE",
+    "CHUNK_DELEGATED_STATE_FILE",
+    "LOCATOR_GROUPS_NAME",
     "DOCUMENTS_PHASE",
     "DOCUMENTS_DATASET",
     "EXHIBITS_DATASET",
@@ -126,10 +136,12 @@ __all__ = [
     "PAYLOAD_DB_NAME",
     "REVIEW_RUNS_DIR",
     "REVIEW_MANIFEST_NAME",
-    "RUN_MANIFEST_NAME",
+    "MANIFEST_FILE_NAME",
+    "PLAN_TARGETS_DIR_NAME",
     "RUNS_DIR",
     "SNAPSHOT_ARTIFACT_NAME",
     "DocumentStoragePaths",
     "catalog_delegation_path",
     "chunk_checkpoint_path",
+    "form_partition_name",
 ]

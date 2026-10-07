@@ -14,7 +14,11 @@ from pathlib import Path
 
 from edgar_sec.foundation.runtime.paths import current_pointer_path
 
-from edgar_sec.infra.storage.dag.paths import DAGPaths
+from edgar_sec.infra.storage.dag.paths import (
+    BRANCH_POINTER_GLOB,
+    DAGPaths,
+    TAGS_JSON_GLOB,
+)
 
 from .manifest import read_manifest
 from .publication import PublicationLock, read_pointer_id
@@ -45,14 +49,14 @@ def discover_roots(
 
     branches_dir = DAGPaths(root).branches_root
     if branches_dir.is_dir():
-        for b_pointer in branches_dir.glob("*/pointer.json"):
+        for b_pointer in branches_dir.glob(BRANCH_POINTER_GLOB):
             b_id = read_pointer_id(b_pointer)
             if b_id:
                 roots.add(b_id)
 
     tags_dir = DAGPaths(root).tags_root
     if tags_dir.is_dir():
-        for tag_file in tags_dir.glob("*.json"):
+        for tag_file in tags_dir.glob(TAGS_JSON_GLOB):
             try:
                 t_data = json.loads(tag_file.read_text(encoding="utf-8"))
                 if isinstance(t_data, dict) and "snapshot_id" in t_data:

@@ -6,6 +6,7 @@ import os
 from dataclasses import asdict, dataclass
 from pathlib import Path
 
+from edgar_sec.apps.viewer.paths import DATABASE_SUFFIXES
 from edgar_sec.apps.viewer.loaders import run_all
 from edgar_sec.apps.viewer.model import (
     ArtifactSummary,
@@ -27,7 +28,6 @@ __all__ = [
 
 ROOT_NODE_ID = "root"
 MAX_TEXT_BYTES = 64 * 1024
-_DATABASE_SUFFIXES = {".db", ".sqlite", ".duckdb"}
 _FORMAT_BY_SUFFIX = {
     ".csv": "csv",
     ".tsv": "csv",
@@ -82,7 +82,7 @@ def _text_like(path: Path) -> bool:
 
 def _file_format(path: Path) -> str | None:
     suffix = path.suffix.lower()
-    if suffix in _DATABASE_SUFFIXES:
+    if suffix in DATABASE_SUFFIXES:
         return "duckdb" if suffix == ".duckdb" else "sqlite"
     if suffix in _FORMAT_BY_SUFFIX:
         return _FORMAT_BY_SUFFIX[suffix]

@@ -192,6 +192,80 @@ def test_layers_allow_downward_import(synthetic_repo: Path) -> None:
     assert layers.scan_layer_boundary() == []
 
 
+def test_layers_allow_matching_cross_pipeline_paths_imports(
+    synthetic_repo: Path,
+) -> None:
+    _build_repo(
+        synthetic_repo,
+        {
+            "edgar_sec/pipelines/alpha/paths.py": (
+                "from edgar_sec.pipelines.beta.paths import SHARED_NAME\n"
+            ),
+            "edgar_sec/pipelines/beta/paths.py": "SHARED_NAME = 'shared'\n",
+        },
+    )
+    assert layers.scan_layer_boundary() == []
+
+
+def test_layers_restrict_cross_pipeline_imports_to_matching_modules(
+    synthetic_repo: Path,
+) -> None:
+    _build_repo(
+        synthetic_repo,
+        {
+            "edgar_sec/pipelines/alpha/operator.py": (
+                "from edgar_sec.pipelines.beta.paths import SHARED_NAME\n"
+            ),
+            "edgar_sec/pipelines/beta/paths.py": "SHARED_NAME = 'shared'\n",
+        },
+    )
+    findings = layers.scan_layer_boundary()
+    assert len(findings) == 1
+    assert "cross-pipeline" in findings[0].message
+
+
+def test_layers_allow_cross_pipeline_schemas_and_reject_aliases(
+    synthetic_repo: Path,
+) -> None:
+    _build_repo(
+        synthetic_repo,
+        {
+            "edgar_sec/pipelines/alpha/schemas.py": (
+                "from edgar_sec.pipelines.beta.schemas import SharedSchema\n"
+            ),
+            "edgar_sec/pipelines/beta/schemas.py": "SharedSchema = object\n",
+        },
+    )
+    assert layers.scan_layer_boundary() == []
+
+    (synthetic_repo / "edgar_sec/pipelines/alpha/schemas.py").write_text(
+        "from edgar_sec.pipelines.beta.schemas import SharedSchema as LocalSchema\n",
+        encoding="utf-8",
+    )
+    findings = layers.scan_layer_boundary()
+    assert len(findings) == 1
+    assert "cross-pipeline" in findings[0].message
+
+
+def test_layers_reject_cross_pipeline_path_import_cycles(
+    synthetic_repo: Path,
+) -> None:
+    _build_repo(
+        synthetic_repo,
+        {
+            "edgar_sec/pipelines/alpha/paths.py": (
+                "from edgar_sec.pipelines.beta.paths import B_NAME\n"
+            ),
+            "edgar_sec/pipelines/beta/paths.py": (
+                "from edgar_sec.pipelines.alpha.paths import A_NAME\n"
+            ),
+        },
+    )
+    findings = layers.scan_layer_boundary()
+    assert len(findings) == 1
+    assert "import cycle" in findings[0].message
+
+
 def test_secrets_flag_committed_api_key(synthetic_repo: Path) -> None:
     _build_repo(
         synthetic_repo,

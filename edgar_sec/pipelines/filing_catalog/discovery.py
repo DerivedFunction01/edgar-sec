@@ -23,11 +23,11 @@ from edgar_sec.engine.selection.predicates import (
     date_selection_sql,
     parsed_date_relation,
 )
-from edgar_sec.foundation.runtime.paths import PLAN_FILE_NAME
+from edgar_sec.foundation.runtime.paths import PARQUET_PART_GLOB, PLAN_FILE_NAME
 from edgar_sec.infra.storage.duckdb import connect, sql_literal
 from edgar_sec.pipelines.filing_catalog.paths import (
+    CATALOG_SNAPSHOT_MANIFEST_NAME,
     CURRENT_ALIAS,
-    SNAPSHOT_MANIFEST_NAME,
     FilingCatalogPaths,
     resolve_filing_catalog_paths,
     safe_identifier,
@@ -92,7 +92,7 @@ def discover_catalogs(
         # here; only one carrying snapshot.manifest.json is a catalog snapshot.
         if not entry.is_dir() or entry.name == CURRENT_ALIAS:
             continue
-        manifest = _read_json(entry / SNAPSHOT_MANIFEST_NAME)
+        manifest = _read_json(entry / CATALOG_SNAPSHOT_MANIFEST_NAME)
         if manifest is None:
             continue
         found.append(
@@ -211,7 +211,9 @@ def _current_year() -> int:
 
 def _target_relation(paths: FilingCatalogPaths, catalog_id: str) -> str | None:
     """Return the catalog's targets as one relation, or ``None`` when absent."""
-    target_files = sorted(paths.snapshot_targets_dir(catalog_id).glob("part-*.parquet"))
+    target_files = sorted(
+        paths.snapshot_targets_dir(catalog_id).glob(PARQUET_PART_GLOB)
+    )
     if not target_files:
         return None
     file_list = ", ".join(sql_literal(str(path)) for path in target_files)

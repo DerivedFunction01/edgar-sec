@@ -28,10 +28,10 @@ from edgar_sec.domain.filing_catalog.schemas import (
     TARGET_COLUMNS,
 )
 from edgar_sec.foundation.hashing import sha256_text
-from edgar_sec.foundation.runtime.paths import PLAN_FILE_NAME
+from edgar_sec.foundation.runtime.paths import DATA_FILE_NAME, PLAN_FILE_NAME
 from edgar_sec.infra.storage.duckdb import connect, sql_literal, sql_path_list
 from edgar_sec.infra.storage.parquet import count_parquet_rows, read_parquet_schema
-from edgar_sec.pipelines.filing_catalog.paths import (
+from edgar_sec.pipelines.document_storage.paths import (
     LOCATOR_GROUPS_NAME,
     PLAN_TARGETS_DIR_NAME,
     form_partition_name,
@@ -277,7 +277,7 @@ def _target_partitions(plan_dir: Path, counts: dict[str, int]) -> tuple[Path, ..
             plan_dir
             / PLAN_TARGETS_DIR_NAME
             / f"form={form_partition_name(form)}"
-            / "data.parquet"
+            / DATA_FILE_NAME
         )
         if not data.is_file():
             raise CatalogPlanError(f"declared target partition is missing: {data}")

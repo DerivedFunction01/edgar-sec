@@ -11,21 +11,24 @@ import pyarrow.parquet as pq
 
 from edgar_sec.domain.filing_catalog.schemas import TARGET_SCHEMA
 from edgar_sec.foundation.hashing import file_sha256
+from edgar_sec.foundation.runtime.paths import DATA_FILE_NAME, PLAN_FILE_NAME
 from edgar_sec.pipelines.document_inventory.cohort import CohortInputError
-from edgar_sec.pipelines.document_inventory.paths import InventoryPaths
+from edgar_sec.pipelines.document_inventory.paths import (
+    FilingCatalogPaths,
+    MANIFEST_FILE_NAME,
+    PLAN_TARGETS_DIR_NAME,
+    REQUIRED_PLAN_FILES,
+    SEED_FILERS_NAME,
+    InventoryPaths,
+    form_partition_name,
+    resolve_filing_catalog_paths,
+)
 from edgar_sec.pipelines.document_inventory.snapshot.errors import BaseSnapshotError
 from edgar_sec.pipelines.document_inventory.snapshot.schema import (
     SNAPSHOT_ACCESSIONS_SCHEMA,
     SNAPSHOT_RELATION_VERSION,
 )
 from edgar_sec.pipelines.filing_catalog.discovery import discover_plans
-from edgar_sec.pipelines.filing_catalog.paths import (
-    PLAN_TARGETS_DIR_NAME,
-    REQUIRED_PLAN_FILES,
-    SEED_FILERS_NAME,
-    FilingCatalogPaths,
-    form_partition_name,
-)
 from edgar_sec.pipelines.filing_catalog.publication import (
     TARGET_PLAN_SCHEMA_VERSION,
     plan_fingerprint_from_plan,
@@ -61,7 +64,7 @@ def catalog_plan_parts(
         raise CohortInputError(
             "invalid_bundle", detail="plan escapes catalog storage"
         ) from exc
-    plan_path = root / "plan.json"
+    plan_path = root / PLAN_FILE_NAME
     try:
         plan_path.resolve().relative_to(root.resolve())
     except ValueError as exc:
@@ -189,7 +192,7 @@ def catalog_plan_parts(
             raise CohortInputError(
                 "invalid_bundle", detail=f"invalid row count for {form!r}"
             )
-        path = root / PLAN_TARGETS_DIR_NAME / f"form={partition}" / "data.parquet"
+        path = root / PLAN_TARGETS_DIR_NAME / f"form={partition}" / DATA_FILE_NAME
         if not path.is_file():
             raise CohortInputError(
                 "invalid_bundle", detail=f"target part missing: {path.name}"
@@ -304,7 +307,7 @@ def base_snapshot_parts(
         raise BaseSnapshotError(
             "current snapshot pointer has an unsafe snapshot_id"
         ) from exc
-    manifest_path = snapshot_root / "manifest.json"
+    manifest_path = snapshot_root / MANIFEST_FILE_NAME
     if not manifest_path.is_file():
         raise BaseSnapshotError(f"base snapshot manifest missing: {snapshot_id}")
     try:

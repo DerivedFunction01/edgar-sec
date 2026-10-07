@@ -15,6 +15,8 @@ POINTER_FILE_NAME = "pointer.json"
 PLAN_FILE_NAME = "plan.json"
 SNAPSHOTS_DIR = "snapshots"
 RUNTIME_DIR = "runtime"
+DATA_FILE_NAME = "data.parquet"
+PARQUET_PART_GLOB = "part-*.parquet"
 
 
 def current_pointer_path(snapshots_root: Path) -> Path:

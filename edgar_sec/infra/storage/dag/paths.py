@@ -10,7 +10,6 @@ from dataclasses import dataclass
 from pathlib import Path
 
 from edgar_sec.foundation.runtime.paths import (
-    CURRENT_DIR,
     POINTER_FILE_NAME,
     current_pointer_path,
 )
@@ -18,10 +17,13 @@ from edgar_sec.foundation.runtime.paths import (
 MANIFEST_FILE_NAME = "manifest.json"
 BRANCHES_DIR_NAME = "branches"
 TAGS_DIR_NAME = "tags"
+DEFAULT_REPOSITORY_DIR_NAME = "metadata"
 STAGING_PREFIX = ".stage-"
 PART_PREFIX = "part-"
 PART_SUFFIX = ".parquet"
 PUBLICATION_LOCK_FILE = ".publication.lock"
+BRANCH_POINTER_GLOB = f"*/{POINTER_FILE_NAME}"
+TAGS_JSON_GLOB = "*.json"
 
 
 @dataclass(frozen=True, slots=True)
@@ -108,12 +110,13 @@ class DAGPaths:
 
 __all__ = [
     "BRANCHES_DIR_NAME",
+    "BRANCH_POINTER_GLOB",
     "DAGPaths",
     "MANIFEST_FILE_NAME",
     "PART_PREFIX",
     "PART_SUFFIX",
-    "POINTER_FILE_NAME",
     "PUBLICATION_LOCK_FILE",
     "STAGING_PREFIX",
     "TAGS_DIR_NAME",
+    "TAGS_JSON_GLOB",
 ]

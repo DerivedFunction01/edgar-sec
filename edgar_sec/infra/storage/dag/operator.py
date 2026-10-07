@@ -8,8 +8,16 @@ from __future__ import annotations
 from pathlib import Path
 import sys
 
-from edgar_sec.foundation.runtime.paths import resolve_paths
-from edgar_sec.infra.storage.dag.paths import DAGPaths
+from edgar_sec.foundation.runtime.paths import (
+    CURRENT_DIR,
+    SNAPSHOTS_DIR,
+    resolve_paths,
+)
+from edgar_sec.infra.storage.dag.paths import (
+    BRANCHES_DIR_NAME,
+    DEFAULT_REPOSITORY_DIR_NAME,
+    DAGPaths,
+)
 from .menu import DAGMenuConfig, run_dag_menu
 
 
@@ -25,9 +33,9 @@ def discover_snapshot_repositories() -> list[tuple[str, Path]]:
     for base in [cwd, artifacts_dir]:
         if not base.is_dir():
             continue
-        for sub in base.rglob("snapshots"):
+        for sub in base.rglob(SNAPSHOTS_DIR):
             if sub.is_dir() and (
-                (sub / "current").is_dir() or (sub / "branches").is_dir()
+                (sub / CURRENT_DIR).is_dir() or (sub / BRANCHES_DIR_NAME).is_dir()
             ):
                 rel = sub.relative_to(cwd) if sub.is_relative_to(cwd) else sub
                 candidates.append((str(rel), sub))
@@ -43,7 +51,9 @@ def main(argv: list[str] | None = None) -> int:
     """Entry point for standalone interactive DAG operator."""
     repos = discover_snapshot_repositories()
     if not repos:
-        target = resolve_paths().artifacts_root / "metadata" / "snapshots"
+        target = (
+            resolve_paths().artifacts_root / DEFAULT_REPOSITORY_DIR_NAME / SNAPSHOTS_DIR
+        )
         config = DAGMenuConfig(snapshots_root=target, title="Snapshot DAG Console")
         return run_dag_menu(config, argv)
 

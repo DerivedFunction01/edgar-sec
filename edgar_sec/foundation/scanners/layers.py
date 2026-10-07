@@ -1,7 +1,6 @@
-"""AST Scanner enforcing acyclic downward-only layer dependencies.
+"""AST scanner enforcing layer boundaries and bounded pipeline imports.
 
-The layer table is the whole rule, so adding a layer costs one entry here. A rank buys
-asymmetry: the layer may import anything below it, nothing below may import it.
+Cross-pipeline imports are limited to matching ``paths.py`` or ``schemas.py`` modules.
 """
 
 from __future__ import annotations
@@ -23,8 +22,12 @@ _LAYER_RANK = {
 
 
 def scan_layer_boundary() -> list[ScannerFinding]:
-    """Enforces downward-only layer dependencies in edgar_sec."""
+    """Enforce layer dependencies and isolated cross-pipeline path/schema imports."""
     findings: list[ScannerFinding] = []
+    pipeline_edges: dict[str, list[tuple[str, str, int]]] = {
+        "paths": [],
+        "schemas": [],
+    }
 
     for path_str in discover_python_files():
         if not path_str.startswith("edgar_sec/"):
@@ -46,6 +49,18 @@ def scan_layer_boundary() -> list[ScannerFinding]:
         for node in ast.walk(tree):
             if isinstance(node, ast.Import):
                 for alias in node.names:
+                    edge_kind = _check_cross_pipeline_import(
+                        findings,
+                        path_str,
+                        node.lineno,
+                        alias.name,
+                        alias.asname,
+                        None,
+                    )
+                    if edge_kind is not None:
+                        pipeline_edges[edge_kind].append(
+                            (parts[2], alias.name.split(".")[2], node.lineno)
+                        )
                     _check_import(
                         findings,
                         path_str,
@@ -59,6 +74,18 @@ def scan_layer_boundary() -> list[ScannerFinding]:
                 if module is None:
                     continue
                 for alias in node.names:
+                    edge_kind = _check_cross_pipeline_import(
+                        findings,
+                        path_str,
+                        node.lineno,
+                        module,
+                        alias.asname,
+                        alias.name,
+                    )
+                    if edge_kind is not None:
+                        pipeline_edges[edge_kind].append(
+                            (parts[2], module.split(".")[2], node.lineno)
+                        )
                     _check_import(
                         findings,
                         path_str,
@@ -68,6 +95,105 @@ def scan_layer_boundary() -> list[ScannerFinding]:
                         f"{module}.{alias.name}",
                     )
 
+    for kind, edges in pipeline_edges.items():
+        findings.extend(_cross_pipeline_cycles(kind, edges))
+    return findings
+
+
+def _check_cross_pipeline_import(
+    findings: list[ScannerFinding],
+    path_str: str,
+    lineno: int,
+    imported_module: str,
+    asname: str | None,
+    imported_name: str | None,
+) -> str | None:
+    caller_parts = path_str.split("/")
+    target_parts = imported_module.split(".")
+    if (
+        len(caller_parts) < 4
+        or caller_parts[1] != "pipelines"
+        or len(target_parts) < 3
+        or target_parts[:2] != ["edgar_sec", "pipelines"]
+        or caller_parts[2] == target_parts[2]
+    ):
+        return None
+
+    caller_kind = Path(path_str).stem
+    target_kind = target_parts[-1]
+    if caller_kind not in {"paths", "schemas"} and target_kind not in {
+        "paths",
+        "schemas",
+    }:
+        return None
+    allowed = (
+        caller_kind in {"paths", "schemas"}
+        and target_kind == caller_kind
+        and len(target_parts) == 4
+        and asname is None
+        and imported_name != "*"
+    )
+    if allowed:
+        return caller_kind
+
+    findings.append(
+        ScannerFinding(
+            scanner="layer-boundary",
+            source="static",
+            path=path_str,
+            line=lineno,
+            message=(
+                f"Illegal cross-pipeline import from '{caller_parts[2]}' "
+                f"to '{target_parts[2]}'"
+            ),
+            hint=(
+                "Use a direct matching paths.py or schemas.py import only from the "
+                "corresponding owner module."
+            ),
+        )
+    )
+    return None
+
+
+def _cross_pipeline_cycles(
+    kind: str, edges: list[tuple[str, str, int]]
+) -> list[ScannerFinding]:
+    adjacency: dict[str, list[tuple[str, int]]] = {}
+    for source, target, line in edges:
+        adjacency.setdefault(source, []).append((target, line))
+
+    state: dict[str, int] = {}
+    stack: list[str] = []
+    findings: list[ScannerFinding] = []
+
+    def visit(node: str) -> None:
+        state[node] = 1
+        stack.append(node)
+        for target, line in adjacency.get(node, []):
+            if state.get(target) == 1:
+                start = stack.index(target)
+                cycle = [*stack[start:], target]
+                findings.append(
+                    ScannerFinding(
+                        scanner="layer-boundary",
+                        source="static",
+                        path=f"edgar_sec/pipelines/{node}/{kind}.py",
+                        line=line,
+                        message=(
+                            f"Cross-pipeline {kind}.py import cycle: "
+                            f"{' -> '.join(cycle)}"
+                        ),
+                        hint="Break the cycle by moving the shared contract lower.",
+                    )
+                )
+            elif state.get(target, 0) == 0:
+                visit(target)
+        stack.pop()
+        state[node] = 2
+
+    for node in sorted(adjacency):
+        if state.get(node, 0) == 0:
+            visit(node)
     return findings
 
 

@@ -46,6 +46,7 @@ from edgar_sec.engine.selection.predicates import (
     suffix_sql,
 )
 from edgar_sec.engine.selection.selector import DeficitSelector
+from edgar_sec.foundation.runtime.paths import DATA_FILE_NAME, PARQUET_PART_GLOB
 from edgar_sec.foundation.runtime.progress import ProgressCallback, emit_progress
 from edgar_sec.infra.storage.duckdb import (
     connect,
@@ -65,6 +66,7 @@ from edgar_sec.pipelines.filing_catalog.paths import (
     SEED_FILERS_NAME,
     FilingCatalogPaths,
     form_partition_name,
+    resolve_metadata_paths,
     resolve_filing_catalog_paths,
 )
 from edgar_sec.pipelines.filing_catalog.publication import (
@@ -76,7 +78,6 @@ from edgar_sec.pipelines.filing_catalog.publication import (
     write_plan_documents,
 )
 from edgar_sec.pipelines.metadata_sync.family_index import ensure_family_index
-from edgar_sec.pipelines.metadata_sync.paths import resolve_metadata_paths
 
 # Characters permitted in a form filter. '/' is allowed because amendment forms
 # are written that way ("8-K/A") and are escaped at partition time.
@@ -123,7 +124,7 @@ def _catalog_target_files(paths: FilingCatalogPaths, catalog_id: str) -> list[Pa
     targets_dir = paths.snapshot_targets_dir(catalog_id)
     if not targets_dir.is_dir():
         raise PlanConflictError(f"catalog has no published targets: {targets_dir}")
-    files = sorted(targets_dir.glob("part-*.parquet"))
+    files = sorted(targets_dir.glob(PARQUET_PART_GLOB))
     if not files:
         raise PlanConflictError(f"catalog target directory is empty: {targets_dir}")
     return files
@@ -249,7 +250,7 @@ def plan(
             written: list[Path] = []
             for form_name in available:
                 partition = form_partition_name(form_name)
-                destination = targets_root / f"form={partition}" / "data.parquet"
+                destination = targets_root / f"form={partition}" / DATA_FILE_NAME
                 where = [*shared_where, f"form = {sql_literal(form_name)}"]
                 query = (
                     f"SELECT {target_columns} FROM {source} "
@@ -547,7 +548,7 @@ def plan_policy(
                 destination = (
                     targets_root
                     / f"form={form_partition_name(form_name)}"
-                    / "data.parquet"
+                    / DATA_FILE_NAME
                 )
                 # `o.*`, not `*`: the relation is a join whose second input only
                 # filters rows, so `SELECT *` would publish a

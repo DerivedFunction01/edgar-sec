@@ -10,20 +10,26 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
 
+from edgar_sec.foundation.runtime.paths import PLAN_FILE_NAME
 from edgar_sec.foundation.runtime.partitions import parse_id_selection
 from edgar_sec.foundation.runtime.settings import resolve_runtime_settings
 from edgar_sec.foundation.runtime.settings.runtime import DEFAULT_CHUNK_SIZE
 
 from .manifest import CompiledCohort, compile_cik_cohort
 from .paths import (
+    ASSIGNMENTS_DIR_NAME,
+    CHUNKS_DIR_NAME,
+    INPUT_DIR_NAME,
+    INPUT_MANIFEST_NAME,
     RECEIPT_FILE_NAME,
+    ROSTER_DIR_NAME,
     MetadataPaths,
     resolve_metadata_paths,
     resolve_run_paths,
 )
 from .planner import Plan
 from .registry import load_registry_roster
-from .roster import Roster
+from .roster import ROSTER_FILE_NAME, Roster
 from .source_registry import SOURCE_UNIVERSE_NAME, resolve_universe_snapshot
 from .universe import compile_universe_cohort
 
@@ -51,7 +57,7 @@ class BundleRunPaths:
     @property
     def plan_file(self) -> Path:
         """Execution manifest inside the copied bundle."""
-        return self.bundle_root / "plan.json"
+        return self.bundle_root / PLAN_FILE_NAME
 
     @property
     def plan_bundle(self) -> Path:
@@ -61,12 +67,12 @@ class BundleRunPaths:
     @property
     def roster_file(self) -> Path:
         """The CIK cohort inside the copied bundle."""
-        return self.bundle_root / "roster" / "ciks.parquet"
+        return self.bundle_root / ROSTER_DIR_NAME / ROSTER_FILE_NAME
 
     @property
     def assignments_dir(self) -> Path:
         """Assignment directory inside the copied bundle."""
-        return self.bundle_root / "assignments"
+        return self.bundle_root / ASSIGNMENTS_DIR_NAME
 
     def assignment_file(self, assignment_id: str) -> Path:
         """Path of one assignment inside the copied bundle."""
@@ -75,7 +81,7 @@ class BundleRunPaths:
     @property
     def chunk_dir(self) -> Path:
         """Local checkpoint directory for this worker's chunk files."""
-        return self.bundle_root / "chunks"
+        return self.bundle_root / CHUNKS_DIR_NAME
 
     def chunk_file(self, chunk_id: int) -> Path:
         """Checkpoint path for one chunk inside the copied bundle."""
@@ -271,7 +277,7 @@ def plan_options(
 
 def read_bundle_plan_id(bundle_root: Path | str) -> str:
     """Read the plan identity a copied bundle declares for itself."""
-    manifest = Path(bundle_root) / "plan.json"
+    manifest = Path(bundle_root) / PLAN_FILE_NAME
     if not manifest.is_file():
         return ""
     try:

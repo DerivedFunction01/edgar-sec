@@ -39,8 +39,12 @@ from edgar_sec.pipelines.document_inventory.checkpoint import (
     validate_committed_chunk,
 )
 from edgar_sec.pipelines.document_inventory.paths import (
+    ENTRIES_FILE,
     InventoryPaths,
     InventoryRunPaths,
+    MANIFEST_FILE_NAME,
+    OUTCOMES_FILE,
+    SNAPSHOT_PART_PREFIX,
     snapshot_id_for,
 )
 from edgar_sec.pipelines.document_inventory.run_manifest import (
@@ -156,8 +160,8 @@ def _copy_committed_attempts(
                 )
             attempt_dir = run_paths.attempt_dir(chunk.chunk_id, checked.attempt_id)
             for source, writer in (
-                (attempt_dir / "outcomes.parquet", outcome_writer),
-                (attempt_dir / "entries.parquet", entry_writer),
+                (attempt_dir / OUTCOMES_FILE, outcome_writer),
+                (attempt_dir / ENTRIES_FILE, entry_writer),
             ):
                 parquet = pq.ParquetFile(source)
                 for batch in parquet.iter_batches(batch_size=_BATCH_ROWS):
@@ -474,7 +478,7 @@ def _make_parent_input_dirs(
         root.mkdir(parents=True)
         files = _parent_relation_files(inventory_paths, parent_snapshot_id, relation)
         for index, source in enumerate(files):
-            os.symlink(source, root / f"part-{index:05d}.parquet")
+            os.symlink(source, root / f"{SNAPSHOT_PART_PREFIX}{index:05d}.parquet")
         roots.append(root if any(root.iterdir()) else None)
     return roots[0], roots[1]
 
@@ -707,7 +711,7 @@ def publish_committed_chunks(
             },
         )
         staged_snapshot.mkdir(parents=True, exist_ok=True)
-        manifest_path = staged_snapshot / "manifest.json"
+        manifest_path = staged_snapshot / MANIFEST_FILE_NAME
         write_manifest(manifest_path, dag_manifest)
         metadata = validate_snapshot(
             inventory_paths,
@@ -730,7 +734,7 @@ def publish_committed_chunks(
                 inventory_paths.current_snapshot_pointer(),
                 {
                     "snapshot_id": snapshot_id,
-                    "manifest_sha256": file_sha256(installed / "manifest.json"),
+                    "manifest_sha256": file_sha256(installed / MANIFEST_FILE_NAME),
                 },
                 canonical=True,
             )

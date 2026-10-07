@@ -11,6 +11,7 @@ from pathlib import Path
 from typing import Any
 
 from edgar_sec.foundation.hashing import file_sha256
+from edgar_sec.foundation.runtime.paths import PLAN_FILE_NAME
 
 from .assignment import (
     Assignment,
@@ -27,8 +28,16 @@ from .assignment import (
 )
 from .checkpoints import inspect_chunk
 from .options import BundleRunPaths, RunOptions
-from .paths import resolve_run_paths
+from .paths import (
+    ASSIGNMENTS_DIR_NAME,
+    INPUT_DIR_NAME,
+    INPUT_MANIFEST_NAME,
+    RECEIPT_FILE_NAME,
+    ROSTER_DIR_NAME,
+    resolve_run_paths,
+)
 from .planner import Plan, load_plan, utc_now_iso
+from .roster import ROSTER_FILE_NAME
 
 __all__ = [
     "adopt_chunks",
@@ -82,13 +91,14 @@ def export_bundle(
 
 def copy_bundle(source: Any, bundle: Path) -> None:
     """Copy the plan manifest, roster, and input diagnostics into a bundle."""
-    (bundle / "roster").mkdir(parents=True, exist_ok=True)
-    shutil.copy2(source.plan_file, bundle / "plan.json")
-    shutil.copy2(source.roster_file, bundle / "roster" / "ciks.parquet")
+    (bundle / ROSTER_DIR_NAME).mkdir(parents=True, exist_ok=True)
+    shutil.copy2(source.plan_file, bundle / PLAN_FILE_NAME)
+    shutil.copy2(source.roster_file, bundle / ROSTER_DIR_NAME / ROSTER_FILE_NAME)
     if source.input_manifest_file.is_file():
-        (bundle / "input").mkdir(parents=True, exist_ok=True)
+        (bundle / INPUT_DIR_NAME).mkdir(parents=True, exist_ok=True)
         shutil.copy2(
-            source.input_manifest_file, bundle / "input" / "input_manifest.json"
+            source.input_manifest_file,
+            bundle / INPUT_DIR_NAME / INPUT_MANIFEST_NAME,
         )
 
 
@@ -152,7 +162,7 @@ def build_worker_receipt(
 
 def read_returned_assignment(source: Path, receipt: Any) -> Assignment:
     """Load the assignment the returned bundle was produced under."""
-    path = source / "assignments" / f"{receipt.assignment_id}.parquet"
+    path = source / ASSIGNMENTS_DIR_NAME / f"{receipt.assignment_id}.parquet"
     if not path.is_file():
         raise AssignmentError(f"returned assignment not found: {path}")
     assignment = read_assignment(path)
@@ -167,7 +177,7 @@ def read_returned_assignment(source: Path, receipt: Any) -> Assignment:
 def load_returned_plan(run_paths: Any, source: Path) -> tuple[Plan, Any, Assignment]:
     """Load the plan and validate a returned bundle's receipt against it."""
     plan = load_plan(run_paths)
-    receipt = read_receipt(source / "receipt.json")
+    receipt = read_receipt(source / RECEIPT_FILE_NAME)
     if receipt.plan_id != plan.plan_id:
         raise AssignmentError(
             f"receipt is for plan {receipt.plan_id!r}, this is plan {plan.plan_id!r}"

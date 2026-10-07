@@ -43,15 +43,15 @@ from edgar_sec.pipelines.filing_catalog.materialization import (
     build_profile_query,
 )
 from edgar_sec.pipelines.filing_catalog.paths import (
+    CATALOG_SNAPSHOT_MANIFEST_NAME,
     PIPELINE_DIR,
     SNAPSHOT_FILE_NAME,
-    SNAPSHOT_MANIFEST_NAME,
     TARGETS_DIR_NAME,
     resolve_filing_catalog_paths,
+    resolve_metadata_paths,
     target_part_name,
 )
 from edgar_sec.pipelines.metadata_sync.merger import parts_digest
-from edgar_sec.pipelines.metadata_sync.paths import resolve_metadata_paths
 from edgar_sec.pipelines.metadata_sync.snapshot import (
     SnapshotLayoutError,
     read_snapshot_parts,
@@ -354,7 +354,7 @@ def materialize(
         "sort_order": TARGET_SORT_ORDER,
         "pipeline": PIPELINE_DIR,
     }
-    atomic_write_json(staging_dir / SNAPSHOT_MANIFEST_NAME, manifest, indent=2)
+    atomic_write_json(staging_dir / CATALOG_SNAPSHOT_MANIFEST_NAME, manifest, indent=2)
 
     # Always publish; only the pointer advance is reserved for the durable tree.
     final_dir.parent.mkdir(parents=True, exist_ok=True)

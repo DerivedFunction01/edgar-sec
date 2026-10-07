@@ -20,6 +20,7 @@ from edgar_sec.domain.filing_catalog.filters import (
     format_date_selection,
     normalize_suffixes,
 )
+from edgar_sec.engine.selection.paths import POLICY_JSON_GLOB
 from edgar_sec.foundation.serialization import canonical_hash
 from edgar_sec.infra.storage.atomic import atomic_write_json, atomic_write_text
 
@@ -470,7 +471,7 @@ def discover_policies(search_dirs: Sequence[str | Path]) -> list[dict[str, Any]]
         directory = Path(raw_dir)
         if not directory.is_dir():
             continue
-        for candidate in sorted(directory.glob("*.json")):
+        for candidate in sorted(directory.glob(POLICY_JSON_GLOB)):
             resolved = candidate.resolve()
             if resolved in seen:
                 continue

@@ -11,7 +11,9 @@ from collections.abc import Callable
 from pathlib import Path
 from typing import Any
 
+from edgar_sec.foundation.runtime.paths import PLAN_FILE_NAME
 from .paths import (
+    PLANS_DIR_NAME,
     REGISTRIES_DIR_NAME,
     SNAPSHOT_MANIFEST_NAME,
     MetadataPaths,
@@ -68,7 +70,7 @@ def _read_plan_manifest(metadata: MetadataPaths, plan_id: str) -> dict[str, Any]
     """Read one plan's manifest without validating or loading its cohort.
     Validation is skipped so a plan this build cannot use can still be listed.
     """
-    path = metadata.plan_dir(plan_id) / "plan.json"
+    path = metadata.plan_dir(plan_id) / PLAN_FILE_NAME
     try:
         raw = json.loads(path.read_text(encoding="utf-8"))
     except (OSError, json.JSONDecodeError):
@@ -112,7 +114,7 @@ def list_plans(metadata: MetadataPaths) -> list[PlanSummary]:
     ``created_at`` is second-resolution and ties; directory mtime does not, and
     ``plan_id`` breaks what remains.
     """
-    root = metadata.metadata_root / "plans"
+    root = metadata.metadata_root / PLANS_DIR_NAME
     if not root.is_dir():
         return []
     found = [

@@ -28,7 +28,6 @@ ROSTER_DIR_NAME = "roster"
 INPUT_DIR_NAME = "input"
 INPUT_MANIFEST_NAME = "input_manifest.json"
 ASSIGNMENTS_DIR_NAME = "assignments"
-ASSIGNMENT_FILE_SUFFIX = ".parquet"
 RECEIPT_FILE_NAME = "receipt.json"
 RUN_LOCK_FILE = "run.lock"
 
@@ -36,8 +35,12 @@ REGISTRIES_DIR_NAME = "registries"
 
 REGISTRY_EFFECTIVE_CIK_DATASET = "effective_ciks"
 REGISTRY_EFFECTIVE_CIK_INPUT_NAME = "effective_cik_input.csv"
+EFFECTIVE_CIK_INPUT_MANIFEST_NAME = "effective_cik_input.csv.manifest.json"
 
 COHORTS_DIR_NAME = "cohorts"
+PLANS_DIR_NAME = "plans"
+SOURCES_DIR_NAME = "sources"
+CHUNKS_DIR_NAME = "chunks"
 
 COMPILED_ROSTER_MANIFEST_NAME = "cohort.json"
 COMPILED_ROSTER_MANIFEST_KIND = "cik_cohort"
@@ -66,7 +69,7 @@ class MetadataPaths:
 
     def plan_dir(self, plan_id: str) -> Path:
         """Directory holding one immutable plan."""
-        return self.metadata_root / "plans" / plan_id
+        return self.metadata_root / PLANS_DIR_NAME / plan_id
 
     def transient_dir(self, plan_id: str) -> Path:
         """Directory holding one plan's transient chunk checkpoints."""
@@ -106,11 +109,11 @@ class MetadataPaths:
     @property
     def sources_root(self) -> Path:
         """Root of the published external source snapshots, by source name."""
-        return self.metadata_root / "sources"
+        return self.metadata_root / SOURCES_DIR_NAME
 
     def source_dir(self, source_name: str, snapshot_id: str) -> Path:
         """Directory holding one immutable external source snapshot."""
-        return self.metadata_root / "sources" / source_name / snapshot_id
+        return self.sources_root / source_name / snapshot_id
 
     def source_snapshot_file(
         self, source_name: str, snapshot_id: str, *, suffix: str = ".json"
@@ -127,7 +130,7 @@ class MetadataPaths:
 
     def registry_root(self, registry_id: str) -> Path:
         """Directory holding a content-addressed curated-input projection."""
-        return self.metadata_root / "registries" / registry_id
+        return self.metadata_root / REGISTRIES_DIR_NAME / registry_id
 
     def registry_manifest_root(self, registry_id: str) -> Path:
         """Directory holding one registry's published Parquet datasets."""
@@ -226,7 +229,7 @@ class RunPaths:
 
     def assignment_file(self, assignment_id: str) -> Path:
         """Path of one worker assignment dataset."""
-        return self.assignments_dir / f"{assignment_id}{ASSIGNMENT_FILE_SUFFIX}"
+        return self.assignments_dir / f"{assignment_id}.parquet"
 
     @property
     def chunk_dir(self) -> Path:
@@ -268,22 +271,25 @@ def resolve_run_paths(
 
 __all__ = [
     "ASSIGNMENTS_DIR_NAME",
-    "ASSIGNMENT_FILE_SUFFIX",
     "COHORTS_DIR_NAME",
+    "CHUNKS_DIR_NAME",
     "COMPILED_ROSTER_MANIFEST_KIND",
     "COMPILED_ROSTER_MANIFEST_NAME",
     "INPUT_DIR_NAME",
     "INPUT_MANIFEST_NAME",
     "METADATA_DIR",
     "PARTS_DIR_NAME",
+    "PLANS_DIR_NAME",
     "RECEIPT_FILE_NAME",
     "REGISTRIES_DIR_NAME",
     "REGISTRY_EFFECTIVE_CIK_DATASET",
     "REGISTRY_EFFECTIVE_CIK_INPUT_NAME",
+    "EFFECTIVE_CIK_INPUT_MANIFEST_NAME",
     "ROSTER_DIR_NAME",
     "RUN_LOCK_FILE",
     "SNAPSHOT_FILE_NAME",
     "SNAPSHOT_MANIFEST_NAME",
+    "SOURCES_DIR_NAME",
     "MetadataPaths",
     "RunPaths",
     "resolve_metadata_paths",

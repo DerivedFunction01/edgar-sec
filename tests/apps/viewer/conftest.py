@@ -17,12 +17,10 @@ from edgar_sec.pipelines.document_storage.manifests import (
     PART_KIND_PAYLOAD,
 )
 from edgar_sec.pipelines.filing_catalog.paths import (
+    CATALOG_SNAPSHOT_MANIFEST_NAME,
     SNAPSHOT_FILE_NAME,
     TARGETS_DIR_NAME,
     FilingCatalogPaths,
-)
-from edgar_sec.pipelines.filing_catalog.paths import (
-    SNAPSHOT_MANIFEST_NAME as CATALOG_MANIFEST_NAME,
 )
 from edgar_sec.pipelines.metadata_sync.paths import (
     METADATA_DIR,
@@ -159,7 +157,7 @@ def build_catalog_snapshot(root: Path, catalog_id: str = "cat-1") -> Path:
         "schema_version": "1",
         "source_part_count": 1,
     }
-    manifest_path = snapshot_dir / CATALOG_MANIFEST_NAME
+    manifest_path = snapshot_dir / CATALOG_SNAPSHOT_MANIFEST_NAME
     manifest_path.write_text(json.dumps(manifest, indent=2), encoding="utf-8")
     return manifest_path
 

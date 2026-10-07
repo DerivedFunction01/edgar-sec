@@ -8,10 +8,18 @@ from pathlib import Path
 
 import edgar_sec.foundation.runtime.fixtures as foundation_fixtures
 import edgar_sec.foundation.runtime.paths as foundation_paths
+from edgar_sec.pipelines.filing_catalog.paths import (
+    CATALOG_SNAPSHOT_MANIFEST_NAME,
+    FilingCatalogPaths,
+    PLAN_TARGETS_DIR_NAME,
+    REQUIRED_PLAN_FILES,
+    SEED_FILERS_NAME,
+    form_partition_name,
+    resolve_filing_catalog_paths,
+)
 
 __all__ = [
     "ATTEMPT_PREFIX",
-    "CHUNK_MANIFEST_FILE",
     "CHUNKS_DIR",
     "COHORT_ACCESSIONS_FILE",
     "COHORT_SOURCES_FILE",
@@ -21,6 +29,7 @@ __all__ = [
     "InventoryPaths",
     "InventoryRunPaths",
     "LOCK_FILE",
+    "MANIFEST_FILE_NAME",
     "OUTCOMES_FILE",
     "POINTER_FILE",
     "PROJECTION_MANIFEST_FILE",
@@ -33,6 +42,11 @@ __all__ = [
     "NEW_ACCESSIONS_FILE",
     "KNOWN_ACCESSIONS_FILE",
     "CANDIDATE_ENTRIES_FILE",
+    "CATALOG_SNAPSHOT_MANIFEST_NAME",
+    "FilingCatalogPaths",
+    "PLAN_TARGETS_DIR_NAME",
+    "REQUIRED_PLAN_FILES",
+    "SEED_FILERS_NAME",
     "NEW_SOURCES_FILE",
     "RUN_MANIFEST_FILE",
     "REVIEW_CASES_DIR",
@@ -42,6 +56,8 @@ __all__ = [
     "inventory_run_paths",
     "inventory_paths",
     "snapshot_id_for",
+    "form_partition_name",
+    "resolve_filing_catalog_paths",
     "resolve_index_fixture_paths",
 ]
 
@@ -51,7 +67,7 @@ DATASET = "document_inventory"
 #: Files inside one attempt directory.
 OUTCOMES_FILE = "outcomes.parquet"
 ENTRIES_FILE = "entries.parquet"
-CHUNK_MANIFEST_FILE = "manifest.json"
+MANIFEST_FILE_NAME = "manifest.json"
 
 #: Files at the run root.
 RUN_MANIFEST_FILE = "run_manifest.json"
@@ -138,7 +154,7 @@ class InventoryPaths:
         return self.snapshots_root / _validate_id(snapshot_id, "snapshot_id")
 
     def snapshot_manifest_path(self, snapshot_id: str) -> Path:
-        return self.snapshot_root(snapshot_id) / "manifest.json"
+        return self.snapshot_root(snapshot_id) / MANIFEST_FILE_NAME
 
     def snapshot_part_path(
         self, snapshot_id: str, relation: str, year: str, part_index: int = 0
@@ -264,7 +280,7 @@ class InventoryRunPaths:
         return self.attempt_dir(chunk_id, attempt_id) / ENTRIES_FILE
 
     def attempt_manifest_path(self, chunk_id: str, attempt_id: str) -> Path:
-        return self.attempt_dir(chunk_id, attempt_id) / CHUNK_MANIFEST_FILE
+        return self.attempt_dir(chunk_id, attempt_id) / MANIFEST_FILE_NAME
 
     # --- shared pointer --------------------------------------------------
 

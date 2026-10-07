@@ -24,7 +24,11 @@ from edgar_sec.infra.storage.parquet import (
 )
 
 from .manifest import compile_cik_cohort
-from .paths import REGISTRY_EFFECTIVE_CIK_DATASET, MetadataPaths
+from .paths import (
+    EFFECTIVE_CIK_INPUT_MANIFEST_NAME,
+    REGISTRY_EFFECTIVE_CIK_DATASET,
+    MetadataPaths,
+)
 from .roster import (
     ROSTER_SCHEMA_VERSION,
     Roster,
@@ -376,7 +380,7 @@ def load_registry_manifest(
     The human-facing manifest; a plan consumes ``load_registry_roster``.
     """
     path = metadata_paths.effective_input_file(registry_id).with_name(
-        "effective_cik_input.csv.manifest.json"
+        EFFECTIVE_CIK_INPUT_MANIFEST_NAME
     )
     if not path.is_file():
         raise FileNotFoundError(f"registry manifest not found: {path}")

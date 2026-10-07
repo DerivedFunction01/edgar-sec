@@ -38,13 +38,13 @@ from edgar_sec.pipelines.document_storage.checkpoint import (
 from edgar_sec.pipelines.document_storage.paths import (
     DOCUMENTS_DATASET,
     DOCUMENTS_PHASE,
+    MANIFEST_FILE_NAME,
     SNAPSHOT_ARTIFACT_NAME,
 )
 from edgar_sec.pipelines.document_storage.queries import chunk_assembly_query
 
 log = logging.getLogger("document_storage.merger")
 
-SNAPSHOT_MANIFEST_NAME = "manifest.json"
 SNAPSHOT_SCHEMA_VERSION = "2"
 
 
@@ -294,7 +294,7 @@ def _write_manifest(
         "source_snapshot_ids": [run_id],
         "logical_fingerprint": logical_fingerprint,
     }
-    path = snapshot_dir / SNAPSHOT_MANIFEST_NAME
+    path = snapshot_dir / MANIFEST_FILE_NAME
     _atomic_write(path, canonical_json(manifest))
     return path
 
@@ -436,7 +436,7 @@ def _reuse_existing_snapshot(
         PAYLOAD_COLUMNS,
     )
 
-    manifest_path = snapshot_dir / SNAPSHOT_MANIFEST_NAME
+    manifest_path = snapshot_dir / MANIFEST_FILE_NAME
     try:
         manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
         if not isinstance(manifest, dict):
@@ -569,7 +569,6 @@ def current_snapshot_artifact(snapshots_root: Path) -> Path | None:
 
 __all__ = [
     "SNAPSHOT_ARTIFACT_NAME",
-    "SNAPSHOT_MANIFEST_NAME",
     "MergeError",
     "MergeResult",
     "SnapshotRef",
