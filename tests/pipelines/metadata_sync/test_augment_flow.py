@@ -8,11 +8,14 @@ from pathlib import Path
 import pytest
 
 from edgar_sec.domain.sec_urls import submissions_url
+from edgar_sec.infra.storage.dag.catalog import DAGCatalog
+from edgar_sec.infra.storage.dag.manifest import DAGNodeManifest
 from edgar_sec.pipelines.metadata_sync import augment_flow as flow
 from edgar_sec.pipelines.metadata_sync import cli as cli_module
 from edgar_sec.pipelines.metadata_sync import operator as operator_module
 from edgar_sec.pipelines.metadata_sync.augmentation import AugmentPreflight
 from edgar_sec.pipelines.metadata_sync.cli import main
+from edgar_sec.pipelines.metadata_sync.discovery import current_snapshot_id
 from edgar_sec.pipelines.metadata_sync.operator import WizardState
 from edgar_sec.pipelines.metadata_sync.options import plan_options
 from edgar_sec.pipelines.metadata_sync.paths import resolve_metadata_paths
@@ -61,6 +64,18 @@ def _publish_snapshot_stub(state: WizardState, snapshot_id: str) -> None:
         json.dumps({"snapshot_id": snapshot_id, "row_count": 3, "parts": []}),
         encoding="utf-8",
     )
+    catalog = DAGCatalog(metadata.snapshots_root)
+    node = DAGNodeManifest(
+        snapshot_id=snapshot_id,
+        kind="checkpoint",
+        parents=(),
+        checkpoint_anchor_id=snapshot_id,
+        lineage_depth=0,
+        created_at="2026-10-07T00:00:00Z",
+        relations={},
+        logical_fingerprint="fp-" + snapshot_id,
+    )
+    catalog.record_node(node)
 
 
 def _publish_source(state: WizardState, snapshot_id: str, *, retrieved_at: str) -> None:
@@ -183,9 +198,8 @@ def test_the_base_defaults_to_the_current_snapshot(
     """Augmenting usually means augmenting what is published."""
     _publish_snapshot_stub(state, "older")
     _publish_snapshot_stub(state, "published-id")
-    pointer = state.metadata().current_pointer
-    pointer.parent.mkdir(parents=True, exist_ok=True)
-    pointer.write_text('{"snapshot_id": "published-id"}', encoding="utf-8")
+    catalog = DAGCatalog(state.metadata().snapshots_root)
+    catalog.write_pointer("main", "published-id")
     seen = _stub_journey(state, monkeypatch)
     # A blank base answer keeps the pointer where it is.
     monkeypatch.setattr(flow, "prompt_text", lambda label, default="": "")
@@ -201,12 +215,11 @@ def test_an_earlier_snapshot_can_be_chosen_as_the_base(
     """Backfilling onto an older base is a legitimate correction."""
     _publish_snapshot_stub(state, "older")
     _publish_snapshot_stub(state, "current")
-    pointer = state.metadata().current_pointer
-    pointer.parent.mkdir(parents=True, exist_ok=True)
-    pointer.write_text('{"snapshot_id": "current"}', encoding="utf-8")
+    catalog = DAGCatalog(state.metadata().snapshots_root)
+    catalog.write_pointer("main", "current")
     seen = _stub_journey(state, monkeypatch)
-    # Snapshots list in id order, so "current" is choice 1 and "older" choice 2.
-    monkeypatch.setattr(flow, "prompt_text", lambda label, default="": "2")
+    # Snapshots list in chronological order, so "older" is choice 1 and "current" choice 2.
+    monkeypatch.setattr(flow, "prompt_text", lambda label, default="": "1")
 
     flow.run_augment(state)
 
@@ -608,7 +621,7 @@ def test_augment_reports_a_covered_cohort_as_a_successful_no_op(
     """The ordinary case for a stale seed: nothing fetched, written, or moved."""
     metadata = resolve_metadata_paths(tmp_path)
     base = _publish_base_via_cli(session, tmp_path, capsys, monkeypatch)
-    pointer_before = metadata.current_pointer.read_bytes()
+    pointer_before = current_snapshot_id(metadata)
     plans_root = metadata.metadata_root / "plans"
     plans_before = sorted(p.name for p in plans_root.iterdir())
     # Client construction costs request budget, not merely its first request.
@@ -639,7 +652,7 @@ def test_augment_reports_a_covered_cohort_as_a_successful_no_op(
     # No client, no new plan directory, no pointer movement.
     assert clients == []
     assert sorted(p.name for p in plans_root.iterdir()) == plans_before
-    assert metadata.current_pointer.read_bytes() == pointer_before
+    assert current_snapshot_id(metadata) == pointer_before
 
 
 def test_merge_refuses_a_delta_plan_and_leaves_the_snapshot_intact(
@@ -671,14 +684,10 @@ def test_merge_refuses_a_delta_plan_and_leaves_the_snapshot_intact(
     assert augmented["no_op"] is False
     assert augmented["delta_row_count"] == 1
     delta_plan = augmented["delta_plan_id"]
-    # The augment advanced the pointer onto its own publication.
-    pointer_before = metadata.current_pointer.read_bytes()
-    assert json.loads(pointer_before)["snapshot_id"] == "aug"
-
     assert main(["merge", "--plan-id", delta_plan, "--artifacts", str(tmp_path)]) == 1
     assert "delta plan" in capsys.readouterr().err
     # The correctly augmented snapshot and the pointer are both untouched.
-    assert metadata.current_pointer.read_bytes() == pointer_before
+    assert current_snapshot_id(metadata) == "aug"
     assert metadata.snapshot_manifest(base).read_bytes() == manifest_before
     assert metadata.snapshot_manifest("aug").is_file()
 

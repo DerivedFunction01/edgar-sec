@@ -509,6 +509,7 @@ def test_cli_review_exits_zero_when_nothing_moved(
     )
     assert "no differences" in capsys.readouterr().out
 
+
 def test_cli_requires_a_command() -> None:
     with pytest.raises(SystemExit):
         cli.main([])

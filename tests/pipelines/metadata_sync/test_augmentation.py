@@ -20,6 +20,7 @@ from edgar_sec.pipelines.metadata_sync.augmentation import (
     preflight_augment,
 )
 from edgar_sec.pipelines.metadata_sync.checkpoints import discover_completed_chunks
+from edgar_sec.pipelines.metadata_sync.discovery import current_snapshot_id
 from edgar_sec.pipelines.metadata_sync.manifest import compile_cik_cohort
 from edgar_sec.pipelines.metadata_sync.merger import (
     MergeError,
@@ -314,9 +315,7 @@ def test_augment_merges_base_and_delta_without_refetching_base(
     ]
     assert parts.layout.manifest["sort_order"] == "chunk_order"
 
-    pointer = json.loads(metadata.current_pointer.read_text())
-    assert pointer["snapshot_id"] == "next"
-    assert pointer["row_count"] == 5
+    assert current_snapshot_id(metadata) == "next"
 
 
 # --------------------------------------------------------------- progress
@@ -453,9 +452,7 @@ def test_an_omitted_snapshot_id_publishes_under_the_delta_plan_id(
     )
     assert manifest["snapshot_id"] == result.report.plan_id
     assert manifest["parent_snapshot_id"] == "base"
-    assert json.loads(metadata.current_pointer.read_text())["snapshot_id"] == (
-        result.new_snapshot_id
-    )
+    assert current_snapshot_id(metadata) == result.new_snapshot_id
 
 
 def test_the_derived_id_is_stable_for_the_same_base_and_cohort(
@@ -658,7 +655,7 @@ def test_augment_is_a_no_op_when_the_base_already_covers_the_request(
 ) -> None:
     """Re-augmenting a fully ingested seed settles as a no-op rather than raising."""
     metadata, cohort, _, _ = _publish_baseline(client, session, tmp_path)
-    pointer_before = metadata.current_pointer.read_bytes()
+    pointer_before = current_snapshot_id(metadata)
     sessions_before = session.calls
 
     result = augment(
@@ -684,7 +681,7 @@ def test_augment_is_a_no_op_when_the_base_already_covers_the_request(
     assert result.total_row_count == result.base_row_count
     assert session.calls == sessions_before
     assert metadata.snapshot_manifest("next").exists() is False
-    assert metadata.current_pointer.read_bytes() == pointer_before
+    assert current_snapshot_id(metadata) == pointer_before
 
 
 def test_preflight_reports_the_work_before_anything_is_fetched(

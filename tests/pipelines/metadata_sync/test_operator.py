@@ -9,6 +9,7 @@ from pathlib import Path
 
 import pytest
 
+from edgar_sec.infra.storage.dag.catalog import DAGCatalog
 from edgar_sec.pipelines.metadata_sync import augment_flow
 from edgar_sec.pipelines.metadata_sync import operator as operator_module
 from edgar_sec.pipelines.metadata_sync.cli import (
@@ -305,9 +306,8 @@ def test_a_published_snapshot_offers_augment_when_no_plan_exists(
     state: WizardState, tmp_path: Path, monkeypatch: pytest.MonkeyPatch, capsys
 ) -> None:
     metadata = state.metadata()
-    pointer = metadata.current_pointer
-    pointer.parent.mkdir(parents=True, exist_ok=True)
-    pointer.write_text('{"snapshot_id": "abc123"}', encoding="utf-8")
+    catalog = DAGCatalog(metadata.snapshots_root)
+    catalog.write_pointer("main", "abc123")
 
     monkeypatch.setattr(operator_module, "prompt_text", lambda label, default: "0")
     assert resolve_plan(state) is False
@@ -356,9 +356,8 @@ def test_session_header_names_the_plan_and_the_published_snapshot(
 ) -> None:
     """The header is what makes the session's target visible without running status."""
     state.plan_id = _write_plan(tmp_path, chunk_size=2)
-    pointer = state.metadata().current_pointer
-    pointer.parent.mkdir(parents=True, exist_ok=True)
-    pointer.write_text('{"snapshot_id": "abc123"}', encoding="utf-8")
+    catalog = DAGCatalog(state.metadata().snapshots_root)
+    catalog.write_pointer("main", "abc123")
 
     header = render_session_header(state)
     assert state.plan_id in header

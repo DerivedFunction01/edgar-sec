@@ -43,13 +43,13 @@ from edgar_sec.pipelines.document_inventory.paths import (
     COHORT_SOURCES_FILE,
     FilingCatalogPaths,
     InventoryRunPaths,
-    MANIFEST_FILE_NAME,
     PROJECTION_MANIFEST_FILE,
     WORK_ORDER_FILE,
     inventory_paths,
     inventory_run_paths,
     resolve_filing_catalog_paths,
 )
+from edgar_sec.infra.storage.dag.catalog import DAGCatalog
 from edgar_sec.pipelines.document_inventory.run_manifest import (
     InventoryRunManifest,
     ManifestMismatchError,
@@ -616,8 +616,8 @@ def project_catalog_plan(
             or any(file_sha256(path) != digest for path, _count, digest in base_parts)
             or (
                 base_snapshot_id is not None
-                and file_sha256(
-                    base_paths.snapshot_root(base_snapshot_id) / MANIFEST_FILE_NAME
+                and DAGCatalog(base_paths.snapshots_root).get_manifest_sha256(
+                    base_snapshot_id
                 )
                 != base_manifest_sha
             )

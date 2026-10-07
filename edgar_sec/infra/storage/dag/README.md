@@ -44,14 +44,15 @@ and provides two-tier retention analysis.
 
 ## Public surface
 
+- `DAGCatalog` in [`catalog.py`](catalog.py).
 - `DAGPaths` in [`paths.py`](paths.py).
 - `RelationSpec`, `MergeStrategy` in [`spec.py`](spec.py).
-- `DAGNodeManifest`, `ParentRef`, `PartDescriptor`, `read_manifest`, `write_manifest` in [`manifest.py`](manifest.py).
+- `DAGNodeManifest`, `ParentRef`, `PartDescriptor` in [`manifest.py`](manifest.py).
 - `walk_lineage`, `resolve_lineage`, `clear_lineage_cache`, `LineageChain` in [`traversal.py`](traversal.py).
 - `compile_virtual_views`, `compute_logical_fingerprint` in [`resolution.py`](resolution.py).
 - `compile_pruned_views`, `derive_accession_range`, `prune_parts_for_range`, `query_point` in [`query.py`](query.py).
 - `filter_candidate_delta`, `FilteredDelta` in [`anti_join.py`](anti_join.py).
-- `publish_node`, `PublicationLock`, `pointer_path_for`, `list_branches`, `create_branch`, `delete_branch` in [`publication.py`](publication.py).
+- `publish_node`, `PublicationLock`, `list_branches`, `create_branch`, `delete_branch` in [`publication.py`](publication.py).
 - `create_tag`, `read_tag`, `list_tags`, `delete_tag` in [`tags.py`](tags.py).
 - `DAGSwimlaneRenderer`, `GraphNode` in [`renderer.py`](renderer.py).
 - `DAGMenuConfig`, `run_dag_menu`, `create_dag_menu`, `prompt_paginated_choice` in [`menu.py`](menu.py).

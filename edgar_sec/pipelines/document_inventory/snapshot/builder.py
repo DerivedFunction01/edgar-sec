@@ -12,6 +12,7 @@ from edgar_sec.foundation.runtime.resources import (
     derive_resources,
 )
 from edgar_sec.foundation.runtime.settings import resolve_settings
+from edgar_sec.infra.storage.dag.catalog import DAGCatalog
 from edgar_sec.infra.storage.duckdb import connect, sql_path_list
 from edgar_sec.pipelines.document_inventory.coordinator import (
     run_missing_accessions,
@@ -144,8 +145,8 @@ def build_inventory(
             if not _has_new_source_edges(
                 inventory_paths, parent_id, cohort_sources, resources
             ):
-                parent_manifest_path = inventory_paths.snapshot_manifest_path(parent_id)
-                if parent_manifest_path.is_file():
+                catalog = DAGCatalog(inventory_paths.snapshots_root)
+                if catalog.has_snapshot(parent_id):
                     parent_metadata = validate_snapshot(inventory_paths, parent_id)
                     return SnapshotPublication.no_op(parent_metadata)
                 return SnapshotPublication.no_op(None)

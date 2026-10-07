@@ -71,13 +71,13 @@ CREATE INDEX IF NOT EXISTS idx_parts_path     ON parts(part_path);
 
 CREATE TABLE IF NOT EXISTS branches (
     name                 TEXT PRIMARY KEY,
-    snapshot_id          TEXT NOT NULL REFERENCES nodes(snapshot_id),
+    snapshot_id          TEXT NOT NULL,
     updated_at           TEXT NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS tags (
     name                 TEXT PRIMARY KEY,
-    snapshot_id          TEXT NOT NULL REFERENCES nodes(snapshot_id),
+    snapshot_id          TEXT NOT NULL,
     created_at           TEXT NOT NULL,
     message              TEXT NOT NULL DEFAULT ''
 );
@@ -138,6 +138,21 @@ class DAGCatalog:
     ) -> None:
         payload = canonical_json(manifest.to_dict())
         digest = sha256_text(payload)
+
+        cur = con.execute(
+            "SELECT manifest_sha256, logical_fingerprint FROM nodes WHERE snapshot_id = ?",
+            (manifest.snapshot_id,),
+        )
+        existing = cur.fetchone()
+        if existing is not None:
+            if existing["manifest_sha256"] == digest or (
+                existing["logical_fingerprint"]
+                and existing["logical_fingerprint"] == manifest.logical_fingerprint
+            ):
+                return
+            raise ValueError(
+                f"snapshot {manifest.snapshot_id!r} already recorded with different digest"
+            )
 
         parent_id = manifest.parent_snapshot_id or None
         schema_json = json.dumps(dict(manifest.schema_versions), sort_keys=True)
@@ -283,7 +298,12 @@ class DAGCatalog:
         """Read the tip snapshot pointer for a given branch."""
         with self._connect() as con:
             cur = con.execute(
-                "SELECT snapshot_id, updated_at FROM branches WHERE name = ?",
+                """
+                SELECT b.snapshot_id, b.updated_at, n.manifest_sha256
+                FROM branches b
+                LEFT JOIN nodes n ON b.snapshot_id = n.snapshot_id
+                WHERE b.name = ?
+                """,
                 (branch_name,),
             )
             row = cur.fetchone()
@@ -293,6 +313,7 @@ class DAGCatalog:
                 "snapshot_id": row["snapshot_id"],
                 "branch_name": branch_name,
                 "updated_at": row["updated_at"],
+                "manifest_sha256": row["manifest_sha256"],
             }
 
     def write_pointer(self, branch_name: str, snapshot_id: str) -> None:

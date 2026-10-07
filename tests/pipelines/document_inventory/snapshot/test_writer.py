@@ -19,7 +19,7 @@ from edgar_sec.domain.document_inventory.models import (
 from edgar_sec.domain.document_inventory.schemas import ENTRY_SCHEMA
 from edgar_sec.domain.identity import AccessionNumber
 from edgar_sec.foundation.hashing import file_sha256
-from edgar_sec.infra.storage.atomic import atomic_write_json
+from edgar_sec.infra.storage.dag.catalog import DAGCatalog
 from edgar_sec.pipelines.document_inventory.checkpoint import (
     AttemptWriters,
     entry_rows,
@@ -237,11 +237,12 @@ def test_publisher_merges_validated_chunks_and_inherits_unchanged_parts(
     )
     assert first.status == "published"
     assert first.snapshot is not None
-    current = InventoryPaths(tmp_path).current_snapshot_pointer()
-    pointer = json.loads(current.read_text(encoding="utf-8"))
+    catalog = DAGCatalog(InventoryPaths(tmp_path).snapshots_root)
+    pointer = catalog.read_pointer()
+    assert pointer is not None
     assert pointer["snapshot_id"] == first.snapshot.snapshot_id
-    assert pointer["manifest_sha256"] == file_sha256(
-        InventoryPaths(tmp_path).snapshot_manifest_path(first.snapshot.snapshot_id)
+    assert pointer["manifest_sha256"] == catalog.get_manifest_sha256(
+        first.snapshot.snapshot_id
     )
 
     child_paths, _run, second = _publish(
@@ -268,16 +269,13 @@ def test_publisher_merges_validated_chunks_and_inherits_unchanged_parts(
         part.path.endswith("part-00000.parquet")
         for part in second.snapshot.accession_sources_partitions
     )
-    manifest = json.loads(
-        InventoryPaths(tmp_path)
-        .snapshot_manifest_path(second.snapshot.snapshot_id)
-        .read_text(encoding="utf-8")
-    )
-    assert manifest["kind"] == "delta"
-    assert manifest["lineage_depth"] == 1
-    assert manifest["checkpoint_anchor_id"] == first.snapshot.snapshot_id
-    assert "accessions" in manifest["relations"]
-    assert len(manifest["relations"]["accessions"]) == 1
+    manifest = catalog.get_manifest(second.snapshot.snapshot_id)
+    assert manifest is not None
+    assert manifest.kind == "delta"
+    assert manifest.lineage_depth == 1
+    assert manifest.checkpoint_anchor_id == first.snapshot.snapshot_id
+    assert "accessions" in manifest.relations
+    assert len(manifest.relations["accessions"]) == 1
     checked = validate_snapshot(InventoryPaths(tmp_path), second.snapshot.snapshot_id)
     assert checked.accession_count == 1
     assert pq.read_schema(
@@ -314,53 +312,7 @@ def test_refusal_does_not_publish_and_partial_progress_is_not_an_input(
             cohort_sources_path=paths.cohort_sources_path(),
             expected_parent_snapshot_id=None,
         )
-    assert not InventoryPaths(tmp_path).current_snapshot_pointer().exists()
-
-
-def test_pointer_is_last_and_installed_snapshot_survives_interruption(
-    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
-) -> None:
-    first = "0000000001-25-000001"
-    second = "0000000002-26-000002"
-    _paths, _run, published = _publish(
-        tmp_path, "base-run", [first], [_source(first, "0000000099")]
-    )
-    assert published.snapshot is not None
-    paths, run = _prepare_run(
-        tmp_path,
-        "interrupted-run",
-        [IndexWorkItem(AccessionNumber(second), _url(second))],
-        [_fact(first), _fact(second, date="2026-01-01")],
-        [_source(first, "0000000099"), _source(second, "0000000099")],
-        parent_id=published.snapshot.snapshot_id,
-    )
-    pointer_path = InventoryPaths(tmp_path).current_snapshot_pointer()
-    previous_pointer = pointer_path.read_bytes()
-    original_write = writer_module.atomic_write_json
-
-    def interrupt_pointer(path, payload, *, canonical=False):
-        if Path(path) == pointer_path:
-            raise RuntimeError("simulated interruption before pointer replacement")
-        return original_write(path, payload, canonical=canonical)
-
-    monkeypatch.setattr(writer_module, "atomic_write_json", interrupt_pointer)
-    with pytest.raises(RuntimeError, match="simulated interruption"):
-        publish_committed_chunks(
-            paths,
-            run,
-            cohort_accessions_path=paths.cohort_accessions_path(),
-            cohort_sources_path=paths.cohort_sources_path(),
-            expected_parent_snapshot_id=published.snapshot.snapshot_id,
-        )
-    assert pointer_path.read_bytes() == previous_pointer
-    snapshots = [
-        path
-        for path in InventoryPaths(tmp_path).snapshots_root.iterdir()
-        if path.is_dir()
-        and path.name not in {"current", published.snapshot.snapshot_id}
-    ]
-    assert len(snapshots) == 1
-    assert (snapshots[0] / "manifest.json").is_file()
+    assert DAGCatalog(InventoryPaths(tmp_path).snapshots_root).read_pointer() is None
 
 
 def test_stale_parent_is_rejected_and_publication_lock_is_exclusive(
@@ -449,9 +401,8 @@ def test_concurrent_publishers_serialize_and_refuse_the_loser(
     assert len(outcomes) == 1
     assert outcomes[0].status == "published"
     assert len(stale) == 1
-    pointer = json.loads(
-        InventoryPaths(tmp_path).current_snapshot_pointer().read_text(encoding="utf-8")
-    )
+    pointer = DAGCatalog(InventoryPaths(tmp_path).snapshots_root).read_pointer()
+    assert pointer is not None
     assert pointer["snapshot_id"] == outcomes[0].snapshot.snapshot_id
 
 

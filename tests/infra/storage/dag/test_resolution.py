@@ -9,7 +9,6 @@ from edgar_sec.infra.storage.dag.manifest import (
     DAGNodeManifest,
     ParentRef,
     PartDescriptor,
-    write_manifest,
 )
 from edgar_sec.infra.storage.dag.resolution import (
     compile_virtual_views,
@@ -100,8 +99,6 @@ def test_upsert_and_composite_scoped_mask(tmp_path: Path) -> None:
         },
         logical_fingerprint="fp0",
     )
-    c0_manifest_path = c0_dir / "manifest.json"
-    write_manifest(c0_manifest_path, c0_manifest)
     from edgar_sec.infra.storage.dag.catalog import DAGCatalog
 
     catalog = DAGCatalog(tmp_path)
@@ -158,7 +155,6 @@ def test_upsert_and_composite_scoped_mask(tmp_path: Path) -> None:
         },
         logical_fingerprint="fp1",
     )
-    write_manifest(d1_dir / "manifest.json", d1_manifest)
     catalog.record_node(d1_manifest)
 
     # Resolve views

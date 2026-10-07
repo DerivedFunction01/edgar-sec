@@ -11,7 +11,6 @@ from edgar_sec.infra.storage.dag.manifest import (
     DAGNodeManifest,
     ParentRef,
     PartDescriptor,
-    write_manifest,
 )
 from edgar_sec.infra.storage.dag.publication import read_pointer
 from edgar_sec.infra.storage.dag.spec import RelationSpec
@@ -59,8 +58,6 @@ def test_compact_lineage_preserves_parity(tmp_path: Path) -> None:
         },
         logical_fingerprint="fp0",
     )
-    c0_manifest_path = c0_dir / "manifest.json"
-    write_manifest(c0_manifest_path, c0_manifest)
     catalog.record_node(c0_manifest)
 
     # 2. Delta D1: update "2" to 99, add "3" to 30
@@ -90,7 +87,6 @@ def test_compact_lineage_preserves_parity(tmp_path: Path) -> None:
         },
         logical_fingerprint="fp1",
     )
-    write_manifest(d1_dir / "manifest.json", d1_manifest)
     catalog.record_node(d1_manifest)
 
     # 3. Compact D1 into C1
@@ -149,7 +145,6 @@ def test_compact_lineage_multipart_budgeting(tmp_path: Path) -> None:
         },
         logical_fingerprint="fp0",
     )
-    write_manifest(c0_dir / "manifest.json", c0_manifest)
     catalog = DAGCatalog(tmp_path)
     catalog.record_node(c0_manifest)
 
@@ -208,8 +203,6 @@ def test_compact_lineage_publish_advances_pointer(tmp_path: Path) -> None:
         },
         logical_fingerprint="fp0",
     )
-    c0_manifest_path = c0_dir / "manifest.json"
-    write_manifest(c0_manifest_path, c0_manifest)
     catalog = DAGCatalog(tmp_path)
     catalog.record_node(c0_manifest)
     catalog.write_pointer("main", "c0")

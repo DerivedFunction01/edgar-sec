@@ -15,14 +15,13 @@ from typing import Any
 
 from .compaction import compact_lineage
 from .doctor import audit_graph
-from .manifest import DAGNodeManifest, read_manifest
+from .manifest import DAGNodeManifest
 from .paths import DAGPaths
 from .publication import (
     checkout_tip,
     create_branch,
     delete_branch,
     list_branches,
-    pointer_path_for,
     publish_node,
     read_pointer,
     read_pointer_id,
@@ -217,6 +216,7 @@ def _assert_lineage_affinity(root: Path, current_id: str, target_id: str) -> Non
 def cmd_publish(
     snapshots_root: Path,
     staged_dir: Path,
+    manifest: DAGNodeManifest,
     *,
     expected_parent_id: str | None = None,
     branch_name: str | None = None,
@@ -224,15 +224,6 @@ def cmd_publish(
     as_json: bool = False,
 ) -> int:
     """Publish a staged snapshot node and atomically advance pointer."""
-    manifest_path = DAGPaths(staged_dir).staged_manifest_file(staged_dir)
-    if not manifest_path.is_file():
-        if as_json:
-            _emit({"error": f"staged manifest not found: {manifest_path}"})
-        else:
-            print(f"Error: staged manifest not found: {manifest_path}")
-        return 1
-
-    manifest = read_manifest(manifest_path)
     ptr = read_pointer(snapshots_root, branch_name=branch_name)
     current_id = str(ptr["snapshot_id"]) if ptr else None
 

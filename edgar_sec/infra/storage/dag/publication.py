@@ -5,7 +5,6 @@ Guarantees atomic pointer advancement and serializes concurrent writers.
 
 from __future__ import annotations
 
-import json
 import shutil
 from pathlib import Path
 from types import TracebackType
@@ -65,7 +64,7 @@ class PublicationLock:
 
 
 def read_pointer_id(pointer_file: Path | str) -> str | None:
-    """Return the snapshot_id from a pointer file or catalog, or None if absent."""
+    """Return the snapshot_id from a catalog, or None if absent."""
     path = Path(pointer_file)
     if not path.exists():
         return None
@@ -73,18 +72,7 @@ def read_pointer_id(pointer_file: Path | str) -> str | None:
         root = path.parent if path.is_file() else path
         ptr = DAGCatalog(root).read_pointer()
         return str(ptr["snapshot_id"]) if ptr else None
-    try:
-        data = json.loads(path.read_text(encoding="utf-8"))
-        return str(data.get("snapshot_id")) if isinstance(data, dict) else None
-    except (OSError, json.JSONDecodeError, UnicodeDecodeError):
-        return None
-
-
-def pointer_path_for(
-    snapshots_root: Path | str, branch_name: str | None = None
-) -> Path:
-    """Resolve the catalog file path for a repository."""
-    return DAGCatalog(snapshots_root).catalog_file
+    return None
 
 
 def publish_node(
@@ -194,7 +182,6 @@ __all__ = [
     "create_branch",
     "delete_branch",
     "list_branches",
-    "pointer_path_for",
     "publish_node",
     "read_pointer",
     "read_pointer_id",

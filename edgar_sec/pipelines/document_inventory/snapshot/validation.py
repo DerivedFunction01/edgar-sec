@@ -14,7 +14,9 @@ from edgar_sec.foundation.hashing import file_sha256
 from edgar_sec.foundation.runtime.resources import RuntimeResourceProfile
 
 from edgar_sec.infra.storage.duckdb import connect, sql_identifier, sql_path_list
+from edgar_sec.infra.storage.dag.catalog import DAGCatalog
 from edgar_sec.infra.storage.dag.doctor import _resolve_part_path
+from edgar_sec.infra.storage.dag.manifest import DAGNodeManifest
 from edgar_sec.infra.storage.dag.traversal import walk_lineage
 from edgar_sec.infra.storage.parquet import read_parquet_key_bounds
 from edgar_sec.pipelines.document_inventory.paths import InventoryPaths
@@ -311,16 +313,27 @@ def validate_snapshot(
     paths: InventoryPaths,
     snapshot_id: str,
     *,
+    manifest: DAGNodeManifest | dict[str, Any] | None = None,
     manifest_path: Path | None = None,
     staged_root: Path | None = None,
     profile: RuntimeResourceProfile | None = None,
 ) -> SnapshotMetadata:
     """Validate every declared part, digest, and relation invariant."""
-    path = manifest_path or paths.snapshot_manifest_path(snapshot_id)
-    try:
-        payload = json.loads(path.read_text(encoding="utf-8"))
-    except (OSError, UnicodeError, json.JSONDecodeError) as exc:
-        raise ValidationFailedError("snapshot manifest is unreadable") from exc
+    if manifest is not None:
+        payload = manifest.to_dict() if hasattr(manifest, "to_dict") else manifest
+    elif manifest_path is not None and manifest_path.is_file():
+        try:
+            payload = json.loads(manifest_path.read_text(encoding="utf-8"))
+        except (OSError, UnicodeError, json.JSONDecodeError) as exc:
+            raise ValidationFailedError("snapshot manifest is unreadable") from exc
+    else:
+        catalog = DAGCatalog(paths.snapshots_root)
+        node = catalog.get_manifest(snapshot_id)
+        if node is None:
+            raise ValidationFailedError(
+                f"snapshot manifest not found in catalog: {snapshot_id}"
+            )
+        payload = node.to_dict()
     if not isinstance(payload, dict) or payload.get("snapshot_id") != snapshot_id:
         raise ValidationFailedError("snapshot manifest identity mismatch")
     schema_ver = payload.get("schema_version") or payload.get(
@@ -366,7 +379,8 @@ def validate_snapshot(
     elif payload.get("parent_snapshot_id"):
         parent_id = payload["parent_snapshot_id"]
 
-    if parent_id and paths.snapshot_manifest_path(parent_id).is_file():
+    catalog = DAGCatalog(paths.snapshots_root)
+    if parent_id and catalog.has_snapshot(parent_id):
         parent_lineage = walk_lineage(paths.snapshots_root, parent_id)
         for name in _RELATIONS:
             ancestor_files = []

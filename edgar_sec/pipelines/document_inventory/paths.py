@@ -153,9 +153,6 @@ class InventoryPaths:
     def snapshot_root(self, snapshot_id: str) -> Path:
         return self.snapshots_root / _validate_id(snapshot_id, "snapshot_id")
 
-    def snapshot_manifest_path(self, snapshot_id: str) -> Path:
-        return self.snapshot_root(snapshot_id) / MANIFEST_FILE_NAME
-
     def snapshot_part_path(
         self, snapshot_id: str, relation: str, year: str, part_index: int = 0
     ) -> Path:

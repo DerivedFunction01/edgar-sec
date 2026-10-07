@@ -6,15 +6,12 @@ import pyarrow.parquet as pq
 
 from edgar_sec.domain.document_inventory.schemas import ENTRY_SCHEMA
 from edgar_sec.foundation.hashing import file_sha256
-from edgar_sec.infra.storage.atomic import atomic_write_json
 from edgar_sec.infra.storage.dag.catalog import DAGCatalog
 from edgar_sec.infra.storage.dag.manifest import (
     DAGNodeManifest,
     ParentRef,
     PartDescriptor,
-    write_manifest,
 )
-from edgar_sec.foundation.runtime.paths import current_pointer_path
 from edgar_sec.pipelines.document_inventory.snapshot.reader import (
     get_accessions_by_cik,
     get_active_accession,
@@ -108,8 +105,6 @@ def _setup_inventory_dag(tmp_path: Path) -> None:
         },
         logical_fingerprint="fp0",
     )
-    c0_man_path = c0_dir / "manifest.json"
-    write_manifest(c0_man_path, c0_manifest)
     catalog = DAGCatalog(tmp_path)
     catalog.record_node(c0_manifest)
 
@@ -195,15 +190,8 @@ def _setup_inventory_dag(tmp_path: Path) -> None:
         },
         logical_fingerprint="fp1",
     )
-    d1_man_path = d1_dir / "manifest.json"
-    write_manifest(d1_man_path, d1_manifest)
     catalog.record_node(d1_manifest)
     catalog.write_pointer("main", "d1")
-    atomic_write_json(
-        current_pointer_path(tmp_path),
-        {"snapshot_id": "d1", "manifest_sha256": file_sha256(d1_man_path)},
-        canonical=True,
-    )
 
 
 def test_reader_empty_pointer(tmp_path: Path) -> None:

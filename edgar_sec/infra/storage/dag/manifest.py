@@ -1,18 +1,14 @@
-"""Manifest models and JSON serialization for DAG snapshot nodes.
+"""Manifest models for DAG snapshot nodes.
 
 Provides deterministic serialization and cryptographic integrity checking.
 """
 
 from __future__ import annotations
 
-import json
 from collections.abc import Mapping
 from dataclasses import dataclass, field
 from datetime import UTC, datetime
-from pathlib import Path
 from typing import Any, Literal
-
-from edgar_sec.infra.storage.atomic import atomic_write_json
 
 NodeKind = Literal["checkpoint", "delta"]
 
@@ -154,27 +150,9 @@ class DAGNodeManifest:
         )
 
 
-def read_manifest(path: Path | str) -> DAGNodeManifest:
-    """Read and deserialize a DAG node manifest from disk."""
-    file_path = Path(path)
-    if not file_path.is_file():
-        raise FileNotFoundError(f"manifest not found: {file_path}")
-    raw = json.loads(file_path.read_text(encoding="utf-8"))
-    if not isinstance(raw, dict):
-        raise ValueError(f"invalid manifest JSON at {file_path}")
-    return DAGNodeManifest.from_dict(raw)
-
-
-def write_manifest(path: Path | str, manifest: DAGNodeManifest) -> int:
-    """Atomically serialize a DAG node manifest as canonical JSON."""
-    return atomic_write_json(path, manifest.to_dict(), canonical=True)
-
-
 __all__ = [
     "DAGNodeManifest",
     "NodeKind",
     "ParentRef",
     "PartDescriptor",
-    "read_manifest",
-    "write_manifest",
 ]

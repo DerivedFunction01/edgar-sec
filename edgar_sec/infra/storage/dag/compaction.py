@@ -11,7 +11,7 @@ from pathlib import Path
 
 from edgar_sec.foundation.hashing import file_sha256
 from edgar_sec.foundation.runtime.resources import RuntimeResourceProfile
-from edgar_sec.infra.storage.dag.paths import DAGPaths, PART_PREFIX, PART_SUFFIX
+from edgar_sec.infra.storage.dag.paths import PART_PREFIX, PART_SUFFIX
 from edgar_sec.infra.storage.duckdb import (
     connect,
     copy_query_to_parquet,
@@ -25,7 +25,7 @@ from edgar_sec.infra.storage.parquet import (
 )
 
 from .catalog import DAGCatalog
-from .manifest import DAGNodeManifest, ParentRef, PartDescriptor, write_manifest
+from .manifest import DAGNodeManifest, ParentRef, PartDescriptor
 from .publication import publish_node
 from .resolution import compile_virtual_views, compute_logical_fingerprint
 from .spec import RelationSpec
@@ -174,8 +174,6 @@ def compact_lineage(
     finally:
         verify_con.close()
 
-    manifest_path = DAGPaths(staged).staged_manifest_file(staged)
-    write_manifest(manifest_path, checkpoint_manifest)
     if publish:
         publish_node(
             root,

@@ -11,6 +11,7 @@ import pyarrow.parquet as pq
 from edgar_sec.domain.sec_urls import submissions_url
 from edgar_sec.domain.submissions.schemas import SUBMISSION_METADATA_SCHEMA
 from edgar_sec.pipelines.metadata_sync.checkpoints import discover_completed_chunks
+from edgar_sec.pipelines.metadata_sync.discovery import current_snapshot_id
 from edgar_sec.pipelines.metadata_sync.merger import merge_chunks, publish_snapshot
 from edgar_sec.pipelines.metadata_sync.paths import resolve_run_paths
 from edgar_sec.pipelines.metadata_sync.planner import build_plan, write_plan
@@ -102,10 +103,7 @@ def test_full_replay_produces_publishable_snapshot(
     ciks = table.column("cik").to_pylist()
     assert sorted(ciks) == sorted(cohort.roster.range_ciks(0, cohort.row_count))
 
-    pointer = json.loads(run_paths.metadata.current_pointer.read_text())
-    assert pointer["snapshot_id"] == plan.plan_id
-    assert pointer["row_count"] == 4
-    assert pointer["part_count"] == 2
+    assert current_snapshot_id(run_paths.metadata) == plan.plan_id
 
 
 def test_replay_is_resumable_and_does_not_refetch(

@@ -12,10 +12,10 @@ import pyarrow.parquet as pq
 from edgar_sec.domain.filing_catalog.schemas import TARGET_SCHEMA
 from edgar_sec.foundation.hashing import file_sha256
 from edgar_sec.foundation.runtime.paths import DATA_FILE_NAME, PLAN_FILE_NAME
+from edgar_sec.infra.storage.dag.catalog import DAGCatalog
 from edgar_sec.pipelines.document_inventory.cohort import CohortInputError
 from edgar_sec.pipelines.document_inventory.paths import (
     FilingCatalogPaths,
-    MANIFEST_FILE_NAME,
     PLAN_TARGETS_DIR_NAME,
     REQUIRED_PLAN_FILES,
     SEED_FILERS_NAME,
@@ -279,21 +279,12 @@ def _resolve_snapshot_part(
 def base_snapshot_parts(
     paths: InventoryPaths,
 ) -> tuple[str | None, list[tuple[Path, int, str]], str | None]:
-    pointer_path = paths.current_snapshot_pointer()
-    if pointer_path.is_symlink() and not pointer_path.exists():
-        raise BaseSnapshotError("current snapshot pointer is a broken symlink")
-    if not pointer_path.exists():
+    catalog = DAGCatalog(paths.snapshots_root)
+    if not catalog.catalog_file.is_file():
         return None, [], None
-    try:
-        pointer_path.resolve().relative_to(paths.snapshots_root.resolve())
-    except ValueError as exc:
-        raise BaseSnapshotError(
-            "current snapshot pointer escapes snapshot storage"
-        ) from exc
-    try:
-        pointer = _read_json(pointer_path, label="current snapshot pointer")
-    except CohortInputError as exc:
-        raise BaseSnapshotError(str(exc)) from exc
+    pointer = catalog.read_pointer()
+    if not pointer:
+        return None, [], None
     snapshot_id = pointer.get("snapshot_id")
     if (
         not isinstance(snapshot_id, str)
@@ -302,59 +293,45 @@ def base_snapshot_parts(
     ):
         raise BaseSnapshotError("current snapshot pointer has no valid snapshot_id")
     try:
-        snapshot_root = paths.snapshot_root(snapshot_id)
+        paths.snapshot_root(snapshot_id)
     except ValueError as exc:
         raise BaseSnapshotError(
             "current snapshot pointer has an unsafe snapshot_id"
         ) from exc
-    manifest_path = snapshot_root / MANIFEST_FILE_NAME
-    if not manifest_path.is_file():
+    manifest = catalog.get_manifest(snapshot_id)
+    if manifest is None:
         raise BaseSnapshotError(f"base snapshot manifest missing: {snapshot_id}")
-    try:
-        manifest_path.resolve().relative_to(paths.snapshots_root.resolve())
-    except ValueError as exc:
-        raise BaseSnapshotError(
-            "base snapshot manifest escapes snapshot storage"
-        ) from exc
-    try:
-        manifest_text = manifest_path.read_text(encoding="utf-8")
-        manifest = json.loads(manifest_text)
-    except (OSError, UnicodeError, json.JSONDecodeError) as exc:
-        raise BaseSnapshotError(
-            f"base snapshot manifest unreadable: {snapshot_id}"
-        ) from exc
-    if not isinstance(manifest, dict) or manifest.get("snapshot_id") != snapshot_id:
+    if manifest.snapshot_id != snapshot_id:
         raise BaseSnapshotError("base snapshot manifest identity mismatch")
-    schema_ver = manifest.get("schema_version") or manifest.get(
-        "schema_versions", {}
-    ).get("accessions")
+    schema_ver = manifest.schema_versions.get("accessions") or manifest.metadata.get(
+        "schema_version"
+    )
     if schema_ver != SNAPSHOT_RELATION_VERSION:
         raise BaseSnapshotError("base snapshot relation schema is unsupported")
+    actual_manifest_sha = catalog.get_manifest_sha256(snapshot_id)
     pinned_manifest_sha = pointer.get("manifest_sha256")
-    if (
-        pinned_manifest_sha is not None
-        and file_sha256(manifest_path) != pinned_manifest_sha
-    ):
+    if pinned_manifest_sha is not None and actual_manifest_sha != pinned_manifest_sha:
         raise BaseSnapshotError(
             "base snapshot manifest digest does not match current pointer"
         )
-    records = manifest.get("accessions")
-    if records is None and isinstance(manifest.get("relations"), dict):
-        records = manifest["relations"].get("accessions")
-    if not isinstance(records, list):
+    records = manifest.relations.get("accessions")
+    if records is None:
         raise BaseSnapshotError("base snapshot accession parts are missing")
     result: list[tuple[Path, int, str]] = []
     for record in records:
-        if not isinstance(record, dict):
-            raise BaseSnapshotError("base snapshot accession part metadata is invalid")
-        path = _resolve_snapshot_part(
-            paths.snapshots_root, snapshot_id, record.get("path")
+        part_path = record.path if hasattr(record, "path") else record.get("path")
+        part_sha = record.sha256 if hasattr(record, "sha256") else record.get("sha256")
+        part_row_count = (
+            record.row_count
+            if hasattr(record, "row_count")
+            else record.get("row_count")
         )
+        path = _resolve_snapshot_part(paths.snapshots_root, snapshot_id, part_path)
         if not path.is_file():
             raise BaseSnapshotError(
                 f"base snapshot accession part missing: {path.name}"
             )
-        if file_sha256(path) != record.get("sha256"):
+        if file_sha256(path) != part_sha:
             raise BaseSnapshotError(
                 f"base snapshot accession digest mismatch: {path.name}"
             )
@@ -378,12 +355,12 @@ def base_snapshot_parts(
             )
         row_count = int(parquet.metadata.num_rows)
         if (
-            not isinstance(record.get("row_count"), int)
-            or isinstance(record.get("row_count"), bool)
-            or row_count != record.get("row_count")
+            not isinstance(part_row_count, int)
+            or isinstance(part_row_count, bool)
+            or row_count != part_row_count
         ):
             raise BaseSnapshotError(
                 f"base snapshot accession row count mismatch: {path.name}"
             )
-        result.append((path.resolve(), row_count, record["sha256"]))
-    return snapshot_id, result, file_sha256(manifest_path)
+        result.append((path.resolve(), row_count, part_sha))
+    return snapshot_id, result, actual_manifest_sha

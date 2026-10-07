@@ -184,25 +184,6 @@ def test_multipart_manifest_names_no_single_payload(tmp_path: Path) -> None:
         "parts/part-00001.parquet",
     ]
 
-    pointer = json.loads(run_paths.metadata.current_pointer.read_text(encoding="utf-8"))
-    assert pointer["part_count"] == 2
-    assert pointer["parts_digest"] == manifest["parts_digest"]
-    assert "artifact_sha256" not in pointer
-
-
-def test_publish_snapshot_writes_manifest_and_pointer(tmp_path: Path) -> None:
-    plan, run_paths = _plan(tmp_path)
-    _complete(plan, run_paths)
-    report = merge_chunks(plan, run_paths, "snap1")
-    manifest = publish_snapshot(report, run_paths.metadata)
-
-    manifest_path = run_paths.metadata.snapshot_manifest("snap1")
-    assert json.loads(manifest_path.read_text())["row_count"] == 4
-
-    pointer = json.loads(run_paths.metadata.current_pointer.read_text(encoding="utf-8"))
-    assert pointer["snapshot_id"] == "snap1"
-    assert manifest["parts_digest"] == report.parts_digest
-
 
 # ------------------------------------------------------------------- progress
 

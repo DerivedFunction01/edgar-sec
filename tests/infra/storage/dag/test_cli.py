@@ -20,7 +20,6 @@ from edgar_sec.infra.storage.dag.manifest import (
     DAGNodeManifest,
     ParentRef,
     PartDescriptor,
-    write_manifest,
 )
 from edgar_sec.infra.storage.dag.publication import checkout_tip
 
@@ -50,8 +49,6 @@ def _setup_dag(tmp_path: Path) -> str:
         },
         logical_fingerprint="fp0",
     )
-    c0_man_path = c0_dir / "manifest.json"
-    write_manifest(c0_man_path, c0_manifest)
     catalog.record_node(c0_manifest)
 
     d1_dir = tmp_path / "d1"
@@ -77,7 +74,6 @@ def _setup_dag(tmp_path: Path) -> str:
         },
         logical_fingerprint="fp1",
     )
-    write_manifest(d1_dir / "manifest.json", d1_manifest)
     catalog.record_node(d1_manifest)
     checkout_tip(tmp_path, "d1")
     return "d1"
@@ -121,7 +117,6 @@ def test_cli_checkout_lineage_guard(tmp_path: Path) -> None:
         relations={},
         logical_fingerprint="fp_unrelated",
     )
-    write_manifest(unrelated_dir / "manifest.json", unrelated_manifest)
     DAGCatalog(tmp_path).record_node(unrelated_manifest)
 
     # Without --force, checkout to unrelated snapshot should fail
@@ -157,8 +152,7 @@ def test_cli_publish_genesis(tmp_path: Path) -> None:
         relations={},
         logical_fingerprint="fp_g",
     )
-    write_manifest(staged / "manifest.json", manifest)
-    assert cmd_publish(tmp_path, staged, allow_null=True) == 0
+    assert cmd_publish(tmp_path, staged, manifest, allow_null=True) == 0
     assert cmd_status(tmp_path) == 0
 
 

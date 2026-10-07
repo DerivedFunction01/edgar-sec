@@ -29,7 +29,7 @@ from .cli import (
     cmd_status,
     cmd_tag,
 )
-from .manifest import read_manifest
+from .catalog import DAGCatalog
 from .publication import list_branches, read_pointer, read_pointer_id
 from .renderer import DAGSwimlaneRenderer, build_graph_nodes
 from .spec import RelationSpec
@@ -184,9 +184,9 @@ def render_dag_dashboard(config: DAGMenuConfig) -> str:
 
     if ptr is not None:
         tip_id = str(ptr["snapshot_id"])
-        manifest_file = DAGPaths(root).manifest_file(tip_id)
-        if manifest_file.is_file():
-            tip = read_manifest(manifest_file)
+        catalog = DAGCatalog(root)
+        tip = catalog.get_manifest(tip_id)
+        if tip is not None:
             lines.append(
                 f"   HEAD: (branch: current) -> {tip_id} ({tip.kind}) | Depth: {tip.lineage_depth}"
             )

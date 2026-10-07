@@ -1,17 +1,13 @@
 """Tests for DAGNodeManifest models and serialization."""
 
-from pathlib import Path
-
 from edgar_sec.infra.storage.dag.manifest import (
     DAGNodeManifest,
     ParentRef,
     PartDescriptor,
-    read_manifest,
-    write_manifest,
 )
 
 
-def test_manifest_roundtrip_with_multiple_parents(tmp_path: Path) -> None:
+def test_manifest_roundtrip_with_multiple_parents() -> None:
     manifest = DAGNodeManifest(
         snapshot_id="snap-merge",
         kind="delta",
@@ -37,9 +33,7 @@ def test_manifest_roundtrip_with_multiple_parents(tmp_path: Path) -> None:
         logical_fingerprint="fingerprint-abc",
     )
 
-    out_file = tmp_path / "manifest.json"
-    write_manifest(out_file, manifest)
-    loaded = read_manifest(out_file)
+    loaded = DAGNodeManifest.from_dict(manifest.to_dict())
 
     assert loaded.snapshot_id == "snap-merge"
     assert len(loaded.parents) == 2

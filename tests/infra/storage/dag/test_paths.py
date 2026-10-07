@@ -11,26 +11,10 @@ from edgar_sec.infra.storage.dag.paths import (
 )
 
 
-def test_current_pointer_resolves_to_current_dir(tmp_path: Path) -> None:
+def test_catalog_file_resolves_to_sqlite(tmp_path: Path) -> None:
     paths = DAGPaths(tmp_path)
-    expected = tmp_path / "current" / "pointer.json"
-    assert paths.current_pointer == expected
-
-
-def test_branch_pointer_resolves_correctly(tmp_path: Path) -> None:
-    paths = DAGPaths(tmp_path)
-    expected = tmp_path / "branches" / "main" / "pointer.json"
-    assert paths.branch_pointer("main") == expected
-
-
-def test_pointer_for_returns_current_when_no_branch(tmp_path: Path) -> None:
-    paths = DAGPaths(tmp_path)
-    assert paths.pointer_for() == paths.current_pointer
-
-
-def test_pointer_for_returns_branch_pointer_when_branch_given(tmp_path: Path) -> None:
-    paths = DAGPaths(tmp_path)
-    assert paths.pointer_for("main") == paths.branch_pointer("main")
+    expected = tmp_path / "catalog.sqlite"
+    assert paths.catalog_file == expected
 
 
 def test_branches_root(tmp_path: Path) -> None:
@@ -48,19 +32,9 @@ def test_tags_root(tmp_path: Path) -> None:
     assert paths.tags_root == tmp_path / "tags"
 
 
-def test_tag_file(tmp_path: Path) -> None:
-    paths = DAGPaths(tmp_path)
-    assert paths.tag_file("v1") == tmp_path / "tags" / "v1.json"
-
-
 def test_snapshot_dir(tmp_path: Path) -> None:
     paths = DAGPaths(tmp_path)
     assert paths.snapshot_dir("c0") == tmp_path / "c0"
-
-
-def test_manifest_file(tmp_path: Path) -> None:
-    paths = DAGPaths(tmp_path)
-    assert paths.manifest_file("c0") == tmp_path / "c0" / "manifest.json"
 
 
 def test_relation_dir(tmp_path: Path) -> None:
@@ -92,12 +66,6 @@ def test_is_staging_name_true() -> None:
 def test_is_staging_name_false() -> None:
     assert DAGPaths.is_staging_name("c0") is False
     assert DAGPaths.is_staging_name(".other-c0") is False
-
-
-def test_staged_manifest_file(tmp_path: Path) -> None:
-    paths = DAGPaths(tmp_path)
-    staged = tmp_path / ".stage-c0"
-    assert paths.staged_manifest_file(staged) == staged / "manifest.json"
 
 
 def test_list_staging_dirs_empty_when_no_root(tmp_path: Path) -> None:

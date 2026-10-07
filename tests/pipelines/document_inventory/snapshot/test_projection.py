@@ -14,6 +14,8 @@ from edgar_sec.domain.identity import AccessionNumber
 from edgar_sec.domain.filing_catalog.schemas import TARGET_SCHEMA
 from edgar_sec.foundation.hashing import file_sha256
 from edgar_sec.foundation.runtime.resources import derive_resources
+from edgar_sec.infra.storage.dag.catalog import DAGCatalog
+from edgar_sec.infra.storage.dag.manifest import DAGNodeManifest, PartDescriptor
 from edgar_sec.pipelines.document_inventory.cohort import CohortInputError
 from edgar_sec.pipelines.document_inventory.paths import InventoryPaths
 from edgar_sec.pipelines.document_inventory.snapshot import (
@@ -105,23 +107,29 @@ def _publish_base_snapshot(artifacts_root: Path, accession_rows: list[dict]) -> 
     pq.write_table(
         pa.Table.from_pylist(accession_rows, schema=SNAPSHOT_ACCESSIONS_SCHEMA), part
     )
-    manifest = {
-        "snapshot_id": snapshot_id,
-        "schema_version": SNAPSHOT_RELATION_VERSION,
-        "accessions": [
-            {
-                "path": f"{snapshot_id}/accessions/year=2024/part-00000.parquet",
-                "row_count": len(accession_rows),
-                "sha256": file_sha256(part),
-            }
-        ],
-    }
-    (paths.snapshot_root(snapshot_id) / "manifest.json").write_text(
-        json.dumps(manifest), encoding="utf-8"
+    manifest = DAGNodeManifest(
+        snapshot_id=snapshot_id,
+        kind="checkpoint",
+        parents=(),
+        checkpoint_anchor_id=snapshot_id,
+        lineage_depth=0,
+        created_at="2026-10-07T00:00:00Z",
+        relations={
+            "accessions": (
+                PartDescriptor(
+                    path=f"{snapshot_id}/accessions/year=2024/part-00000.parquet",
+                    sha256=file_sha256(part),
+                    row_count=len(accession_rows),
+                    byte_size=part.stat().st_size,
+                ),
+            )
+        },
+        logical_fingerprint="fp-base",
+        schema_versions={"accessions": SNAPSHOT_RELATION_VERSION},
     )
-    pointer = paths.current_snapshot_pointer()
-    pointer.parent.mkdir(parents=True)
-    pointer.write_text(json.dumps({"snapshot_id": snapshot_id}), encoding="utf-8")
+    catalog = DAGCatalog(paths.snapshots_root)
+    catalog.record_node(manifest)
+    catalog.write_pointer("main", snapshot_id)
 
 
 def _build_empty_plan(artifacts_root: Path, plan_id: str) -> None:

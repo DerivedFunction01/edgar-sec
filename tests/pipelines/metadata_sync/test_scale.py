@@ -19,6 +19,7 @@ from edgar_sec.pipelines.metadata_sync.assignment import (
     write_assignment,
 )
 from edgar_sec.pipelines.metadata_sync.checkpoints import discover_completed_chunks
+from edgar_sec.pipelines.metadata_sync.discovery import current_snapshot_id
 from edgar_sec.pipelines.metadata_sync.merger import merge_chunks, publish_snapshot
 from edgar_sec.pipelines.metadata_sync.options import (
     BundleRunPaths,
@@ -307,8 +308,7 @@ def test_a_published_snapshot_is_verifiable_from_its_own_directory(
     )
     assert on_disk["row_count"] == len(rows)
     assert on_disk["cik_count"] == len(index)
-    pointer = json.loads(metadata.current_pointer.read_text(encoding="utf-8"))
-    assert pointer["snapshot_id"] == on_disk["snapshot_id"] == plan.plan_id
+    assert current_snapshot_id(metadata) == on_disk["snapshot_id"] == plan.plan_id
     assert manifest["row_count"] == len(rows)
 
 
@@ -335,9 +335,6 @@ def test_phase_two_reads_exactly_the_declared_parts(tmp_path: Path) -> None:
     for path in parts.paths:
         assert pq.read_schema(path).names == SUBMISSION_METADATA_SCHEMA.names
     assert index not in parts.paths
-    pointer = json.loads(metadata.current_pointer.read_text(encoding="utf-8"))
-    assert pointer["part_count"] == parts.part_count
-    assert pointer["parts_digest"]
 
 
 def test_an_empty_selection_is_refused_before_any_work(tmp_path: Path) -> None:

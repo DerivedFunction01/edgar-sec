@@ -8,12 +8,9 @@ from __future__ import annotations
 from pathlib import Path
 from typing import Any
 
-from edgar_sec.foundation.runtime.paths import (
-    CURRENT_DIR,
-    POINTER_FILE_NAME,
-    SNAPSHOTS_DIR,
-)
+from edgar_sec.foundation.runtime.paths import SNAPSHOTS_DIR
 from edgar_sec.foundation.runtime.resources import RuntimeResourceProfile
+from edgar_sec.infra.storage.dag.paths import DAGPaths
 from edgar_sec.infra.storage.dag.publication import read_pointer
 from edgar_sec.infra.storage.dag.query import (
     compile_pruned_views,
@@ -33,10 +30,10 @@ from edgar_sec.pipelines.document_inventory.snapshot.specs import (
 def _resolve_snapshots_root(root: Path | str) -> Path:
     """Resolve artifacts or snapshot directory root to snapshot root."""
     p = Path(root)
-    if (p / CURRENT_DIR / POINTER_FILE_NAME).is_file():
+    if DAGPaths(p).catalog_file.is_file():
         return p
     sub = p / DATASET / SNAPSHOTS_DIR
-    if (sub / CURRENT_DIR / POINTER_FILE_NAME).is_file() or sub.is_dir():
+    if DAGPaths(sub).catalog_file.is_file() or sub.is_dir():
         return sub
     return p
 

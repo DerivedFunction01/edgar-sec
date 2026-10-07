@@ -18,11 +18,11 @@ from edgar_sec.domain.submissions.schemas import SCHEMA_VERSION
 from edgar_sec.foundation.hashing import file_sha256, sha256_bytes
 from edgar_sec.foundation.serialization import canonical_json
 from edgar_sec.infra.storage.atomic import atomic_write_json
+from edgar_sec.infra.storage.dag.catalog import DAGCatalog
 from edgar_sec.infra.storage.dag.manifest import (
     DAGNodeManifest,
     ParentRef,
     PartDescriptor,
-    write_manifest,
 )
 from edgar_sec.infra.storage.duckdb import (
     connect,
@@ -433,17 +433,15 @@ def publish_snapshot(
         indent=2,
     )
     parent_refs: list[ParentRef] = []
+    catalog = DAGCatalog(metadata_paths.snapshots_root)
     if report.parent_snapshot_id:
-        parent_manifest = (
-            metadata_paths.snapshot_dir(report.parent_snapshot_id) / "manifest.json"
-        )
-        if parent_manifest.is_file():
-            parent_refs.append(
-                ParentRef(
-                    snapshot_id=report.parent_snapshot_id,
-                    manifest_sha256=file_sha256(parent_manifest),
-                )
+        parent_sha = catalog.get_manifest_sha256(report.parent_snapshot_id) or ""
+        parent_refs.append(
+            ParentRef(
+                snapshot_id=report.parent_snapshot_id,
+                manifest_sha256=parent_sha,
             )
+        )
     part_descriptors = tuple(
         PartDescriptor(
             path=str(p["path"]),
@@ -467,27 +465,7 @@ def publish_snapshot(
         relations={"submissions": part_descriptors},
         logical_fingerprint=report.parts_digest or "",
     )
-    write_manifest(
-        metadata_paths.snapshot_dir(report.snapshot_id) / "manifest.json",
-        dag_manifest,
-    )
-    pointer: dict[str, Any] = {
-        "snapshot_id": report.snapshot_id,
-        "plan_id": report.plan_id,
-        "row_count": report.row_count,
-        "updated_at": report.merged_at,
-    }
-    if report.parts:
-        pointer["part_count"] = len(report.parts)
-        pointer["parts_digest"] = report.parts_digest
-        pointer["snapshot_manifest"] = metadata_paths.snapshot_manifest(
-            report.snapshot_id
-        ).name
-    else:
-        pointer["artifact_sha256"] = report.artifact_sha256
-    atomic_write_json(
-        metadata_paths.current_pointer, pointer, canonical=False, indent=2
-    )
+    catalog.publish_node(dag_manifest)
     return manifest
 
 
@@ -497,35 +475,10 @@ def publish_current_snapshot(metadata_paths: MetadataPaths, snapshot_id: str) ->
     dataset is worse than a stale one.
     """
     manifest_path = metadata_paths.snapshot_manifest(snapshot_id)
-    try:
-        manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
-    except (OSError, json.JSONDecodeError) as exc:
+    catalog = DAGCatalog(metadata_paths.snapshots_root)
+    if not catalog.has_snapshot(snapshot_id) and not manifest_path.is_file():
         raise MergeError(
-            f"cannot point current at {snapshot_id!r}: {manifest_path} is unreadable "
-            f"({exc})"
-        ) from exc
-    if (
-        not isinstance(manifest, dict)
-        or str(manifest.get("snapshot_id", "")) != snapshot_id
-    ):
-        raise MergeError(
-            f"cannot point current at {snapshot_id!r}: {manifest_path} does not "
-            "describe that snapshot"
+            f"cannot point current at {snapshot_id!r}: snapshot is missing"
         )
-
-    pointer: dict[str, Any] = {
-        "snapshot_id": snapshot_id,
-        "plan_id": str(manifest.get("plan_id", "")),
-        "row_count": int(manifest.get("row_count", 0) or 0),
-        "updated_at": str(manifest.get("merged_at", "")),
-    }
-    if manifest.get("parts"):
-        pointer["part_count"] = len(manifest["parts"])
-        pointer["parts_digest"] = str(manifest.get("parts_digest", ""))
-        pointer["snapshot_manifest"] = manifest_path.name
-    else:
-        pointer["artifact_sha256"] = str(manifest.get("artifact_sha256", ""))
-    atomic_write_json(
-        metadata_paths.current_pointer, pointer, canonical=False, indent=2
-    )
-    return metadata_paths.current_pointer
+    catalog.write_pointer("main", snapshot_id)
+    return catalog.catalog_file

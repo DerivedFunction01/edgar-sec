@@ -11,7 +11,6 @@ from edgar_sec.infra.storage.dag.manifest import (
     DAGNodeManifest,
     ParentRef,
     PartDescriptor,
-    write_manifest,
 )
 from edgar_sec.infra.storage.dag.query import (
     compile_pruned_views,
@@ -101,8 +100,6 @@ def _setup_multi_part_dag(tmp_path: Path) -> tuple[Path, str]:
         },
         logical_fingerprint="fp0",
     )
-    c0_man = c0_dir / "manifest.json"
-    write_manifest(c0_man, c0_m)
     from edgar_sec.infra.storage.dag.catalog import DAGCatalog
 
     catalog = DAGCatalog(tmp_path)
@@ -145,7 +142,6 @@ def _setup_multi_part_dag(tmp_path: Path) -> tuple[Path, str]:
         },
         logical_fingerprint="fp1",
     )
-    write_manifest(d1_dir / "manifest.json", d1_m)
     catalog.record_node(d1_m)
     return tmp_path, "d1"
 
@@ -280,8 +276,6 @@ def test_query_point_scoped_mask_supersession(tmp_path: Path) -> None:
         },
         logical_fingerprint="fp0",
     )
-    c0_man = c0_dir / "manifest.json"
-    write_manifest(c0_man, c0_manifest)
     catalog2 = DAGCatalog(tmp_path)
     catalog2.record_node(c0_manifest)
     c0_digest2 = catalog2.get_manifest_sha256("c0") or ""
@@ -316,7 +310,6 @@ def test_query_point_scoped_mask_supersession(tmp_path: Path) -> None:
         ),
         d1_ent,
     )
-    d1_man = d1_dir / "manifest.json"
     d1_manifest = DAGNodeManifest(
         snapshot_id="d1",
         kind="delta",
@@ -348,7 +341,6 @@ def test_query_point_scoped_mask_supersession(tmp_path: Path) -> None:
         },
         logical_fingerprint="fp1",
     )
-    write_manifest(d1_man, d1_manifest)
     catalog2.record_node(d1_manifest)
 
     lineage = walk_lineage(tmp_path, "d1")

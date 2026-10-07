@@ -12,6 +12,7 @@ from pathlib import Path
 from typing import Any
 
 from edgar_sec.foundation.runtime.paths import PLAN_FILE_NAME
+from edgar_sec.infra.storage.dag.catalog import DAGCatalog
 from .paths import (
     PLANS_DIR_NAME,
     REGISTRIES_DIR_NAME,
@@ -132,19 +133,10 @@ def list_plans(metadata: MetadataPaths) -> list[PlanSummary]:
 
 def list_snapshots(metadata: MetadataPaths) -> list[dict[str, Any]]:
     """Every published metadata snapshot manifest."""
-    root = metadata.snapshots_root
-    if not root.is_dir():
+    catalog = DAGCatalog(metadata.snapshots_root)
+    if not catalog.catalog_file.is_file():
         return []
-    found: list[dict[str, Any]] = []
-    for entry in sorted(root.iterdir()):
-        manifest_path = entry / SNAPSHOT_MANIFEST_NAME
-        if not manifest_path.is_file():
-            continue
-        try:
-            found.append(json.loads(manifest_path.read_text(encoding="utf-8")))
-        except (OSError, json.JSONDecodeError):
-            continue
-    return found
+    return catalog.list_snapshots()
 
 
 def list_rosters(metadata: MetadataPaths) -> list[RosterSummary]:
@@ -194,15 +186,10 @@ def list_rosters(metadata: MetadataPaths) -> list[RosterSummary]:
 
 
 def current_snapshot_id(metadata: MetadataPaths) -> str:
-    """Snapshot id named by the ``current`` pointer, or empty when unset."""
-    pointer = metadata.current_pointer
-    if not pointer.is_file():
-        return ""
-    try:
-        payload = json.loads(pointer.read_text(encoding="utf-8"))
-    except (OSError, json.JSONDecodeError):
-        return ""
-    return str(payload.get("snapshot_id", "")) if isinstance(payload, dict) else ""
+    """Snapshot id named by the catalog pointer, or empty when unset."""
+    catalog = DAGCatalog(metadata.snapshots_root)
+    ptr = catalog.read_pointer()
+    return str(ptr["snapshot_id"]) if ptr else ""
 
 
 def resolve_plan_choice(

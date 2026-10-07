@@ -13,9 +13,6 @@ def test_inventory_paths_resolve_snapshot_layout(tmp_path: Path) -> None:
 
     expected_root = tmp_path / "document_inventory" / foundation_paths.SNAPSHOTS_DIR
     assert paths.snapshots_root == expected_root
-    assert paths.snapshot_manifest_path("snapshot-1") == (
-        expected_root / "snapshot-1" / "manifest.json"
-    )
     assert paths.snapshot_part_path("snapshot-1", "accessions", "2025", 3) == (
         expected_root / "snapshot-1" / "accessions" / "year=2025" / "part-00003.parquet"
     )

@@ -22,7 +22,7 @@ from edgar_sec.foundation.hashing import file_sha256
 from edgar_sec.foundation.runtime.memory import reclaim
 from edgar_sec.foundation.runtime.resources import RuntimeResourceProfile
 from edgar_sec.foundation.serialization import canonical_hash
-from edgar_sec.infra.storage.atomic import _fsync_dir, atomic_write_json
+from edgar_sec.infra.storage.atomic import _fsync_dir
 from edgar_sec.infra.storage.duckdb import (
     connect,
     copy_query_to_parquet,
@@ -42,7 +42,6 @@ from edgar_sec.pipelines.document_inventory.paths import (
     ENTRIES_FILE,
     InventoryPaths,
     InventoryRunPaths,
-    MANIFEST_FILE_NAME,
     OUTCOMES_FILE,
     SNAPSHOT_PART_PREFIX,
     snapshot_id_for,
@@ -78,8 +77,6 @@ from edgar_sec.infra.storage.dag.manifest import (
     DAGNodeManifest,
     ParentRef,
     PartDescriptor,
-    read_manifest,
-    write_manifest,
 )
 from edgar_sec.infra.storage.dag.traversal import walk_lineage
 from edgar_sec.pipelines.document_inventory.snapshot.schema import (
@@ -448,27 +445,7 @@ def _read_pointer(paths: InventoryPaths) -> str | None:
         ptr = catalog.read_pointer()
         if ptr:
             return str(ptr["snapshot_id"])
-    pointer_path = paths.current_snapshot_pointer()
-    if not pointer_path.exists():
-        return None
-    try:
-        payload = json.loads(pointer_path.read_text(encoding="utf-8"))
-    except (OSError, UnicodeError, json.JSONDecodeError) as exc:
-        raise ValidationFailedError("current snapshot pointer is unreadable") from exc
-    snapshot_id = payload.get("snapshot_id") if isinstance(payload, dict) else None
-    if not isinstance(snapshot_id, str) or not snapshot_id:
-        raise ValidationFailedError("current snapshot pointer has no snapshot id")
-    manifest_digest = payload.get("manifest_sha256")
-    manifest = paths.snapshot_manifest_path(snapshot_id)
-    if not isinstance(manifest_digest, str) or not manifest.is_file():
-        raise ValidationFailedError(
-            "current snapshot pointer has no valid manifest digest"
-        )
-    if file_sha256(manifest) != manifest_digest:
-        raise ValidationFailedError(
-            "current snapshot manifest digest differs from pointer"
-        )
-    return snapshot_id
+    return None
 
 
 def _make_parent_input_dirs(
@@ -546,15 +523,9 @@ def publish_committed_chunks(
         raise StaleParentError(
             f"expected parent {expected_parent_snapshot_id!r}, current is {current_id!r}"
         )
-    parent_manifest = None
     if current_id is not None:
         parent_metadata = validate_snapshot(
             inventory_paths, current_id, profile=profile
-        )
-        parent_manifest = json.loads(
-            inventory_paths.snapshot_manifest_path(current_id).read_text(
-                encoding="utf-8"
-            )
         )
         if parent_metadata.snapshot_id != expected_parent_snapshot_id:
             raise ValidationFailedError("current parent snapshot identity mismatch")
@@ -663,15 +634,10 @@ def publish_committed_chunks(
         catalog = DAGCatalog(inventory_paths.snapshots_root)
         if expected_parent_snapshot_id:
             parent_node = catalog.get_manifest(expected_parent_snapshot_id)
-            parent_file = inventory_paths.snapshot_manifest_path(
-                expected_parent_snapshot_id
-            )
-            if parent_node is None and parent_file.is_file():
-                parent_node = read_manifest(parent_file)
             if parent_node is not None:
-                parent_sha = catalog.get_manifest_sha256(
-                    expected_parent_snapshot_id
-                ) or (file_sha256(parent_file) if parent_file.is_file() else "")
+                parent_sha = (
+                    catalog.get_manifest_sha256(expected_parent_snapshot_id) or ""
+                )
                 parent_refs.append(
                     ParentRef(
                         snapshot_id=expected_parent_snapshot_id,
@@ -723,12 +689,10 @@ def publish_committed_chunks(
             },
         )
         staged_snapshot.mkdir(parents=True, exist_ok=True)
-        manifest_path = staged_snapshot / MANIFEST_FILE_NAME
-        write_manifest(manifest_path, dag_manifest)
         metadata = validate_snapshot(
             inventory_paths,
             snapshot_id,
-            manifest_path=manifest_path,
+            manifest=dag_manifest,
             staged_root=staged_snapshot,
             profile=profile,
         )
@@ -742,14 +706,11 @@ def publish_committed_chunks(
                 inventory_paths, snapshot_id, staged_snapshot, profile
             )
             catalog.record_node(dag_manifest)
-            validate_snapshot(inventory_paths, snapshot_id, profile=profile)
-            atomic_write_json(
-                inventory_paths.current_snapshot_pointer(),
-                {
-                    "snapshot_id": snapshot_id,
-                    "manifest_sha256": file_sha256(installed / MANIFEST_FILE_NAME),
-                },
-                canonical=True,
+            validate_snapshot(
+                inventory_paths,
+                snapshot_id,
+                manifest=dag_manifest,
+                profile=profile,
             )
             catalog.write_pointer("main", snapshot_id)
         return SnapshotPublication.published(metadata)

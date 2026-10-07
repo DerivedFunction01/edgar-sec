@@ -8,6 +8,8 @@ from pathlib import Path
 import pytest
 
 from edgar_sec.foundation.hashing import file_sha256
+from edgar_sec.infra.storage.dag.catalog import DAGCatalog
+from edgar_sec.infra.storage.dag.manifest import DAGNodeManifest
 from edgar_sec.pipelines.metadata_sync.discovery import (
     current_snapshot_id,
     describe_roster,
@@ -122,38 +124,31 @@ def test_published_plan_is_flagged(tmp_path: Path) -> None:
 
 def test_current_snapshot_is_read_from_the_pointer(tmp_path: Path) -> None:
     metadata = resolve_metadata_paths(tmp_path)
-    pointer = metadata.current_pointer
-    pointer.parent.mkdir(parents=True, exist_ok=True)
-    pointer.write_text('{"snapshot_id": "abc123"}', encoding="utf-8")
+    catalog = DAGCatalog(metadata.snapshots_root)
+    catalog.write_pointer("main", "abc123")
     assert current_snapshot_id(metadata) == "abc123"
 
 
 def test_an_unreadable_pointer_is_not_fatal(tmp_path: Path) -> None:
     metadata = resolve_metadata_paths(tmp_path)
-    pointer = metadata.current_pointer
-    pointer.parent.mkdir(parents=True, exist_ok=True)
-    pointer.write_text("not json", encoding="utf-8")
     assert current_snapshot_id(metadata) == ""
 
 
-def test_list_snapshots_uses_this_pipeline_manifest_name(tmp_path: Path) -> None:
-    """The shared scanner keys on the filename, so this pipeline names its own."""
+def test_list_snapshots_from_catalog(tmp_path: Path) -> None:
     metadata = resolve_metadata_paths(tmp_path)
-    good = metadata.snapshot_dir("good")
-    good.mkdir(parents=True)
-    (good / "metadata.manifest.json").write_text(
-        '{"snapshot_id": "good", "row_count": 3}', encoding="utf-8"
+    assert list_snapshots(metadata) == []
+    catalog = DAGCatalog(metadata.snapshots_root)
+    manifest = DAGNodeManifest(
+        snapshot_id="good",
+        kind="checkpoint",
+        parents=(),
+        checkpoint_anchor_id="good",
+        lineage_depth=0,
+        created_at="2026-10-07T00:00:00Z",
+        relations={},
+        logical_fingerprint="fp-good",
     )
-    damaged = metadata.snapshot_dir("damaged")
-    damaged.mkdir(parents=True)
-    (damaged / "metadata.manifest.json").write_text("not json", encoding="utf-8")
-    # A document_storage-shaped manifest must not be mistaken for a Phase 1 one.
-    foreign = metadata.snapshot_dir("foreign")
-    foreign.mkdir(parents=True)
-    (foreign / "manifest.json").write_text(
-        '{"snapshot_id": "foreign"}', encoding="utf-8"
-    )
-
+    catalog.record_node(manifest)
     found = list_snapshots(metadata)
     assert [item["snapshot_id"] for item in found] == ["good"]
 
