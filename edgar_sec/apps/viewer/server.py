@@ -123,7 +123,7 @@ def create_app(artifacts_root: Path | None = None) -> FastAPI:
     """Build the viewer application.
 
     ``artifacts_root`` defaults to the resolved project root; passing it is how the
-    tests and ``--artifacts-root`` override that.
+    tests and ``--artifacts`` override that.
     """
     if artifacts_root is None:
         from edgar_sec.foundation.runtime.paths import resolve_paths

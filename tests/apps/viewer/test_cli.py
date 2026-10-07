@@ -16,9 +16,9 @@ def test_the_default_port() -> None:
     assert build_parser().parse_args([]).port == DEFAULT_PORT
 
 
-def test_artifacts_root_is_unset_by_default() -> None:
+def test_artifacts_is_unset_by_default() -> None:
     """Unset means "resolve the project root", not "the current directory"."""
-    assert build_parser().parse_args([]).artifacts_root is None
+    assert build_parser().parse_args([]).artifacts is None
 
 
 def test_the_ui_is_mounted_unless_api_only() -> None:
@@ -28,9 +28,9 @@ def test_the_ui_is_mounted_unless_api_only() -> None:
 
 def test_overrides_are_accepted() -> None:
     args = build_parser().parse_args(
-        ["--artifacts-root", "/tmp/artifacts", "--host", "0.0.0.0", "--port", "9001"]
+        ["--artifacts", "/tmp/artifacts", "--host", "0.0.0.0", "--port", "9001"]
     )
-    assert args.artifacts_root == "/tmp/artifacts"
+    assert args.artifacts == "/tmp/artifacts"
     assert args.host == "0.0.0.0"
     assert args.port == 9001
 

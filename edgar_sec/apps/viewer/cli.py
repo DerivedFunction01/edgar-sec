@@ -20,7 +20,7 @@ def build_parser() -> argparse.ArgumentParser:
         description="Serve the read-only dataset viewer (API + built UI).",
     )
     parser.add_argument(
-        "--artifacts-root",
+        "--artifacts",
         default=None,
         help="artifacts workspace (default: the resolved project artifacts root)",
     )

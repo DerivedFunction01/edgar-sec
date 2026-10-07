@@ -301,7 +301,7 @@ its own failure.
   configured project root, and a non-default root is a per-command `--artifacts`
   flag. Only `filing_catalog` and `metadata_sync` expose that flag;
   `document_storage` has none and is bound to the configured root. `viewer` is the
-  same at the CLI (`--artifacts-root`, optional) and is not interactive at all.
+  same at the CLI (`--artifacts`, optional) and is not interactive at all.
 - **Real-filing parity is unverified for Phase 2.5** — its committed goldens are
   synthetic. See [`document_storage/README.md`](document_storage/README.md#deliberate-gaps).
 - **No scheduling, no cross-pipeline coordination, and no provenance graph.**

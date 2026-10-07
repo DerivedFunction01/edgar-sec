@@ -112,7 +112,7 @@ Consumers import from the leaf module.
 | `python -m edgar_sec.apps.viewer.cli` | Serves on `127.0.0.1:8500`. |
 | `python run.py viewer` | The same, via the root launcher. |
 | `python -m edgar_sec.apps.viewer.cli --api-only` | No static mount. |
-| `python -m edgar_sec.apps.viewer.cli --artifacts-root DIR` | Browse another root. |
+| `python -m edgar_sec.apps.viewer.cli --artifacts DIR` | Browse another root. |
 | `python -m edgar_sec.apps.viewer.cli --port N` | Non-default port. |
 | `python -m edgar_sec.apps.viewer.cli --host 0.0.0.0` | Binds non-loopback and prints a warning. |
 
