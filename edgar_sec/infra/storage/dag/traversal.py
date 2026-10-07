@@ -6,6 +6,7 @@ Walks from a tip backward through multi-parent ancestors to checkpoint anchors.
 from __future__ import annotations
 
 from dataclasses import dataclass
+from functools import lru_cache
 from pathlib import Path
 
 from edgar_sec.foundation.hashing import file_sha256
@@ -104,11 +105,28 @@ def walk_lineage(snapshots_root: Path | str, tip_id: str) -> LineageChain:
     )
 
 
+@lru_cache(maxsize=128)
+def _cached_lineage(root_str: str, tip_id: str) -> LineageChain:
+    return walk_lineage(Path(root_str), tip_id)
+
+
+def resolve_lineage(snapshots_root: Path | str, tip_id: str) -> LineageChain:
+    """Return topological lineage chain, using in-memory LRU cache."""
+    return _cached_lineage(str(Path(snapshots_root).resolve()), tip_id)
+
+
+def clear_lineage_cache() -> None:
+    """Clear in-memory lineage cache."""
+    _cached_lineage.cache_clear()
+
+
 __all__ = [
     "BrokenLineageError",
     "CycleDetectedError",
     "DigestMismatchError",
     "LineageChain",
     "LineageError",
+    "clear_lineage_cache",
+    "resolve_lineage",
     "walk_lineage",
 ]

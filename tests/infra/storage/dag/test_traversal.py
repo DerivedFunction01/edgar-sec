@@ -14,6 +14,8 @@ from edgar_sec.infra.storage.dag.traversal import (
     BrokenLineageError,
     CycleDetectedError,
     DigestMismatchError,
+    clear_lineage_cache,
+    resolve_lineage,
     walk_lineage,
 )
 
@@ -122,3 +124,16 @@ def test_digest_mismatch_detection(tmp_path: Path) -> None:
     _write_node(tmp_path, "d1", "delta", parents=(("c0", "wrong_hash"),), anchor="c0")
     with pytest.raises(DigestMismatchError):
         walk_lineage(tmp_path, "d1")
+
+
+def test_resolve_lineage_caching(tmp_path: Path) -> None:
+    clear_lineage_cache()
+    c0_m, c0_h = _write_node(tmp_path, "c0", "checkpoint")
+    _write_node(tmp_path, "d1", "delta", parents=(("c0", c0_h),), anchor="c0")
+    chain1 = resolve_lineage(tmp_path, "d1")
+    chain2 = resolve_lineage(tmp_path, "d1")
+    assert chain1 is chain2
+    clear_lineage_cache()
+    chain3 = resolve_lineage(tmp_path, "d1")
+    assert chain3 is not chain1
+    assert chain3.tip_id == chain1.tip_id
