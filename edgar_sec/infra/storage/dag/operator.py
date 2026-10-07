@@ -9,6 +9,7 @@ from pathlib import Path
 import sys
 
 from edgar_sec.foundation.runtime.paths import resolve_paths
+from edgar_sec.infra.storage.dag.paths import DAGPaths
 from .menu import DAGMenuConfig, run_dag_menu
 
 
@@ -18,7 +19,7 @@ def discover_snapshot_repositories() -> list[tuple[str, Path]]:
     cwd = Path.cwd()
     artifacts_dir = resolve_paths().artifacts_root
 
-    if (cwd / "current" / "pointer.json").is_file():
+    if DAGPaths(cwd).current_pointer.is_file():
         candidates.append(("Current working directory", cwd))
 
     for base in [cwd, artifacts_dir]:

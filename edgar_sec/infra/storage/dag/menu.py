@@ -16,6 +16,7 @@ from edgar_sec.foundation.runtime.interactive import (
     prompt_text,
 )
 from edgar_sec.foundation.runtime.settings import resolve_settings
+from edgar_sec.infra.storage.dag.paths import DAGPaths, STAGING_PREFIX
 from .cli import (
     cmd_branch,
     cmd_checkout,
@@ -173,7 +174,7 @@ def render_dag_dashboard(config: DAGMenuConfig) -> str:
         [
             d.name
             for d in sorted(root.iterdir())
-            if d.is_dir() and d.name.startswith(".stage-")
+            if d.is_dir() and DAGPaths.is_staging_name(d.name)
         ]
         if root.is_dir()
         else []
@@ -181,7 +182,7 @@ def render_dag_dashboard(config: DAGMenuConfig) -> str:
 
     if ptr is not None:
         tip_id = str(ptr["snapshot_id"])
-        manifest_file = root / tip_id / "manifest.json"
+        manifest_file = DAGPaths(root).manifest_file(tip_id)
         if manifest_file.is_file():
             tip = read_manifest(manifest_file)
             lines.append(
@@ -283,10 +284,12 @@ def _action_checkout(config: DAGMenuConfig) -> None:
 def _action_publish_staged(config: DAGMenuConfig) -> None:
     root = config.resolve_root()
     staged = [
-        d for d in sorted(root.iterdir()) if d.is_dir() and d.name.startswith(".stage-")
+        d
+        for d in sorted(root.iterdir())
+        if d.is_dir() and DAGPaths.is_staging_name(d.name)
     ]
     if not staged:
-        print("No staged directories (.stage-*) found to publish.")
+        print(f"No staged directories ({STAGING_PREFIX}*) found to publish.")
         return
 
     items = [PickItem(key=d.name, label=d.name, value=d) for d in staged]
@@ -314,7 +317,7 @@ def create_dag_menu(config: DAGMenuConfig) -> tuple[MenuAction, ...]:
     actions.append(
         MenuAction(
             str(idx),
-            "Publish detected staging directory (.stage-*)",
+            f"Publish detected staging directory ({STAGING_PREFIX}*)",
             lambda: _action_publish_staged(config),
         )
     )

@@ -12,6 +12,8 @@ from pathlib import Path
 
 from edgar_sec.foundation.hashing import file_sha256
 
+from edgar_sec.infra.storage.dag.paths import DAGPaths
+
 from .manifest import DAGNodeManifest, read_manifest
 from .retention import discover_roots
 from .traversal import CycleDetectedError, walk_lineage
@@ -44,6 +46,7 @@ def audit_graph(
 ) -> GraphAudit:
     """Audit the physical and logical integrity of all snapshots under root."""
     root = Path(snapshots_root)
+    paths = DAGPaths(root)
     errors: list[str] = []
     warnings: list[str] = []
     stale_stages: list[str] = []
@@ -63,14 +66,14 @@ def audit_graph(
     for child in root.iterdir():
         if not child.is_dir():
             continue
-        if child.name.startswith(".stage-"):
+        if paths.is_staging_name(child.name):
             if now - child.stat().st_mtime > 86400:
                 stale_stages.append(child.name)
             continue
         if child.name in ("current", "branches"):
             continue
 
-        manifest_file = child / "manifest.json"
+        manifest_file = paths.manifest_file(child.name)
         if not manifest_file.is_file():
             warnings.append(
                 f"uncommitted snapshot directory without manifest: {child.name}"

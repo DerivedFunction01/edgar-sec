@@ -15,6 +15,7 @@ and provides two-tier retention analysis.
 
 | Module | Responsibility |
 | :--- | :--- |
+| `paths.py` | `DAGPaths` typed wrapper and constants for snapshot DAG filesystem layout and path resolution. |
 | `spec.py` | Declarative `RelationSpec` contracts and `MergeStrategy` options (`upsert`, `append`, `scoped_mask`). |
 | `manifest.py` | `DAGNodeManifest`, `ParentRef`, `PartDescriptor`, and canonical JSON IO. |
 | `traversal.py` | Anchor-to-tip topological DFS traversal, cycle verification, and digest checking. |
@@ -27,6 +28,8 @@ and provides two-tier retention analysis.
 | `query.py` | Point-lookup and range-pruned DuckDB view compiler using part min/max bounds. |
 | `tags.py` | Immutable snapshot tagging, metadata persistence, and lifecycle. |
 | `renderer.py` | Cycle-tolerant ASCII swimlane and DAG graph visualizer with bridge link annotations. |
+| `menu.py` | Pluggable interactive console, paginated pick-lists, and dashboard. |
+| `operator.py` | Standalone workspace-autodiscovering DAG console operator. |
 | `cli.py` | Standard maintenance CLI entrypoint dispatching commands (`status`, `log`, `checkout`, `publish`, `branch`, `tag`, `doctor`, `compact`, `gc`). |
 | `__init__.py` | Package docstring only. No re-exports. |
 
@@ -41,6 +44,7 @@ and provides two-tier retention analysis.
 
 ## Public surface
 
+- `DAGPaths` in [`paths.py`](paths.py).
 - `RelationSpec`, `MergeStrategy` in [`spec.py`](spec.py).
 - `DAGNodeManifest`, `ParentRef`, `PartDescriptor`, `read_manifest`, `write_manifest` in [`manifest.py`](manifest.py).
 - `walk_lineage`, `resolve_lineage`, `clear_lineage_cache`, `LineageChain` in [`traversal.py`](traversal.py).
@@ -50,10 +54,12 @@ and provides two-tier retention analysis.
 - `publish_node`, `PublicationLock`, `pointer_path_for`, `list_branches`, `create_branch`, `delete_branch` in [`publication.py`](publication.py).
 - `create_tag`, `read_tag`, `list_tags`, `delete_tag` in [`tags.py`](tags.py).
 - `DAGSwimlaneRenderer`, `GraphNode` in [`renderer.py`](renderer.py).
+- `DAGMenuConfig`, `run_dag_menu`, `create_dag_menu`, `prompt_paginated_choice` in [`menu.py`](menu.py).
 - `compact_lineage` in [`compaction.py`](compaction.py).
 - `analyze_retention`, `purge_unreferenced` in [`retention.py`](retention.py).
 - `audit_graph` in [`doctor.py`](doctor.py).
-- `main` in [`cli.py`](cli.py).
+- `attach_dag_subparser`, `dispatch_dag_subcommand`, `main` in [`cli.py`](cli.py).
+- `main` in [`operator.py`](operator.py).
 
 ## Command surface
 

@@ -30,6 +30,7 @@ INPUT_MANIFEST_NAME = "input_manifest.json"
 ASSIGNMENTS_DIR_NAME = "assignments"
 ASSIGNMENT_FILE_SUFFIX = ".parquet"
 RECEIPT_FILE_NAME = "receipt.json"
+RUN_LOCK_FILE = "run.lock"
 
 REGISTRIES_DIR_NAME = "registries"
 
@@ -188,7 +189,7 @@ class MetadataPaths:
 
     def snapshot_lock_path(self, snapshot_id: str) -> Path:
         """Exclusive run lock for a published snapshot (used by augment)."""
-        return self.snapshot_dir(snapshot_id) / "run.lock"
+        return self.snapshot_dir(snapshot_id) / RUN_LOCK_FILE
 
 
 @dataclass(frozen=True, slots=True)
@@ -238,7 +239,7 @@ class RunPaths:
 
     def lock_path(self) -> Path:
         """Exclusive run lock for this plan."""
-        return self.metadata.plan_dir(self.plan_id) / "run.lock"
+        return self.metadata.plan_dir(self.plan_id) / RUN_LOCK_FILE
 
 
 def resolve_metadata_paths(
@@ -280,6 +281,7 @@ __all__ = [
     "REGISTRY_EFFECTIVE_CIK_DATASET",
     "REGISTRY_EFFECTIVE_CIK_INPUT_NAME",
     "ROSTER_DIR_NAME",
+    "RUN_LOCK_FILE",
     "SNAPSHOT_FILE_NAME",
     "SNAPSHOT_MANIFEST_NAME",
     "MetadataPaths",

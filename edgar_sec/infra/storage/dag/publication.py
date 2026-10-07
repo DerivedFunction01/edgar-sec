@@ -14,7 +14,7 @@ from types import TracebackType
 from typing import Any, Self
 
 from edgar_sec.foundation.hashing import file_sha256
-from edgar_sec.foundation.runtime.paths import current_pointer_path
+from edgar_sec.infra.storage.dag.paths import DAGPaths
 from edgar_sec.infra.storage.atomic import _fsync_dir, atomic_write_json
 
 from .manifest import DAGNodeManifest
@@ -76,11 +76,11 @@ def read_pointer_id(pointer_file: Path | str) -> str | None:
         return None
 
 
-def pointer_path_for(snapshots_root: Path, branch_name: str | None = None) -> Path:
+def pointer_path_for(
+    snapshots_root: Path | str, branch_name: str | None = None
+) -> Path:
     """Resolve the pointer file path for current or a named branch."""
-    if branch_name:
-        return snapshots_root / "branches" / branch_name / "pointer.json"
-    return current_pointer_path(snapshots_root)
+    return DAGPaths(snapshots_root).pointer_for(branch_name)
 
 
 def publish_node(
@@ -96,8 +96,8 @@ def publish_node(
     root = Path(snapshots_root)
     staged = Path(staged_dir)
     target_dir = root / manifest.snapshot_id
-    lock_file = root / ".publication.lock"
-    pointer_file = pointer_path_for(root, branch_name)
+    lock_file = DAGPaths(root).publication_lock_path
+    pointer_file = DAGPaths(root).pointer_for(branch_name)
 
     with PublicationLock(lock_file, blocking=blocking_lock):
         current_id = read_pointer_id(pointer_file)
@@ -118,7 +118,7 @@ def publish_node(
             shutil.move(str(staged), str(target_dir))
             _fsync_dir(str(root))
 
-        manifest_path = target_dir / "manifest.json"
+        manifest_path = DAGPaths(root).manifest_file(manifest.snapshot_id)
         if not manifest_path.is_file():
             raise FileNotFoundError(f"published manifest missing: {manifest_path}")
 
@@ -155,10 +155,10 @@ def checkout_tip(
 ) -> Path:
     """Atomically swing pointer to a target snapshot under exclusive lock."""
     root = Path(snapshots_root)
-    target_manifest = root / target_snapshot_id / "manifest.json"
+    target_manifest = DAGPaths(root).manifest_file(target_snapshot_id)
     if not target_manifest.is_file():
         raise FileNotFoundError(f"target snapshot manifest missing: {target_manifest}")
-    lock_file = root / ".publication.lock"
+    lock_file = DAGPaths(root).publication_lock_path
     pointer_file = pointer_path_for(root, branch_name)
     digest = file_sha256(target_manifest)
     with PublicationLock(lock_file):
@@ -175,12 +175,12 @@ def list_branches(snapshots_root: Path | str) -> list[str]:
     """Return all branch names with existing pointer files."""
     root = Path(snapshots_root)
     branches: list[str] = []
-    if pointer_path_for(root).is_file():
+    if DAGPaths(root).current_pointer.is_file():
         branches.append("current")
-    branches_dir = root / "branches"
+    branches_dir = DAGPaths(root).branches_root
     if branches_dir.is_dir():
         for b_dir in sorted(branches_dir.iterdir()):
-            if (b_dir / "pointer.json").is_file():
+            if DAGPaths(root).branch_pointer(b_dir.name).is_file():
                 branches.append(b_dir.name)
     return branches
 
@@ -202,7 +202,7 @@ def delete_branch(snapshots_root: Path | str, branch_name: str) -> bool:
         raise ValueError("cannot delete 'current' branch")
     root = Path(snapshots_root)
     pointer = pointer_path_for(root, branch_name)
-    lock_file = root / ".publication.lock"
+    lock_file = DAGPaths(root).publication_lock_path
     with PublicationLock(lock_file):
         if not pointer.is_file():
             return False

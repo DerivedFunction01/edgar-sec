@@ -12,12 +12,13 @@ from typing import Any
 
 from edgar_sec.foundation.hashing import file_sha256
 from edgar_sec.infra.storage.atomic import atomic_write_json
+from edgar_sec.infra.storage.dag.paths import DAGPaths
 from .publication import PublicationLock
 
 
 def tag_path_for(snapshots_root: Path | str, tag_name: str) -> Path:
     """Return filesystem path to a tag JSON file."""
-    return Path(snapshots_root) / "tags" / f"{tag_name}.json"
+    return DAGPaths(snapshots_root).tag_file(tag_name)
 
 
 def create_tag(
@@ -31,11 +32,11 @@ def create_tag(
     if not tag_name or "/" in tag_name:
         raise ValueError(f"invalid tag name: {tag_name!r}")
     root = Path(snapshots_root)
-    manifest_path = root / snapshot_id / "manifest.json"
+    manifest_path = DAGPaths(root).manifest_file(snapshot_id)
     if not manifest_path.is_file():
         raise FileNotFoundError(f"snapshot manifest missing: {manifest_path}")
 
-    lock_file = root / ".publication.lock"
+    lock_file = DAGPaths(root).publication_lock_path
     tag_path = tag_path_for(root, tag_name)
     digest = file_sha256(manifest_path)
     payload = {
@@ -67,7 +68,7 @@ def read_tag(snapshots_root: Path | str, tag_name: str) -> dict[str, Any] | None
 
 def list_tags(snapshots_root: Path | str) -> list[dict[str, Any]]:
     """Return all persisted tags ordered by tag name."""
-    tags_dir = Path(snapshots_root) / "tags"
+    tags_dir = DAGPaths(snapshots_root).tags_root
     if not tags_dir.is_dir():
         return []
     results: list[dict[str, Any]] = []
@@ -85,7 +86,7 @@ def delete_tag(snapshots_root: Path | str, tag_name: str) -> bool:
     """Delete a tag under publication lock, returning True if deleted."""
     root = Path(snapshots_root)
     tag_path = tag_path_for(root, tag_name)
-    lock_file = root / ".publication.lock"
+    lock_file = DAGPaths(root).publication_lock_path
     with PublicationLock(lock_file):
         if not tag_path.is_file():
             return False

@@ -14,6 +14,8 @@ from pathlib import Path
 
 from edgar_sec.foundation.runtime.paths import current_pointer_path
 
+from edgar_sec.infra.storage.dag.paths import DAGPaths
+
 from .manifest import read_manifest
 from .publication import PublicationLock, read_pointer_id
 
@@ -41,14 +43,14 @@ def discover_roots(
     if curr_id:
         roots.add(curr_id)
 
-    branches_dir = root / "branches"
+    branches_dir = DAGPaths(root).branches_root
     if branches_dir.is_dir():
         for b_pointer in branches_dir.glob("*/pointer.json"):
             b_id = read_pointer_id(b_pointer)
             if b_id:
                 roots.add(b_id)
 
-    tags_dir = root / "tags"
+    tags_dir = DAGPaths(root).tags_root
     if tags_dir.is_dir():
         for tag_file in tags_dir.glob("*.json"):
             try:
@@ -81,7 +83,7 @@ def analyze_retention(
             curr = to_visit.pop()
             if curr in retained:
                 continue
-            manifest_file = root / curr / "manifest.json"
+            manifest_file = DAGPaths(root).manifest_file(curr)
             if not manifest_file.is_file():
                 continue
             retained.add(curr)
@@ -106,7 +108,10 @@ def analyze_retention(
             or child.name in ("current", "branches")
         ):
             continue
-        if child.name not in retained and (child / "manifest.json").is_file():
+        if (
+            child.name not in retained
+            and DAGPaths(root).manifest_file(child.name).is_file()
+        ):
             age = now - child.stat().st_mtime
             if age >= min_age_seconds:
                 prunable.append(child.name)
@@ -132,7 +137,7 @@ def purge_unreferenced(
     """Safely unlink snapshot directories identified as prunable under lock."""
     root = Path(snapshots_root)
     removed: list[str] = []
-    lock_file = root / ".publication.lock"
+    lock_file = DAGPaths(root).publication_lock_path
     with PublicationLock(lock_file):
         rechecked = analyze_retention(root, extra_pinned_ids=extra_pinned_ids)
         safe_to_purge = set(report.prunable_snapshots) & set(

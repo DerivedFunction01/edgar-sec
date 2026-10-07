@@ -13,7 +13,7 @@ from edgar_sec.infra.storage.dag.manifest import (
     PartDescriptor,
     write_manifest,
 )
-from edgar_sec.infra.storage.dag.publication import current_pointer_path
+from edgar_sec.foundation.runtime.paths import current_pointer_path
 from edgar_sec.pipelines.document_inventory.snapshot.reader import (
     get_accessions_by_cik,
     get_active_accession,

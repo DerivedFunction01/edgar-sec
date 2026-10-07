@@ -167,9 +167,8 @@ def test_compact_lineage_multipart_budgeting(tmp_path: Path) -> None:
 
 def test_compact_lineage_publish_advances_pointer(tmp_path: Path) -> None:
     """Verify compaction with publish=True atomically advances the pointer."""
-    from edgar_sec.foundation.serialization import canonical_json
+    from edgar_sec.foundation.runtime.paths import current_pointer_path
     from edgar_sec.infra.storage.atomic import atomic_write_json
-    from edgar_sec.infra.storage.dag.publication import current_pointer_path
 
     specs = (
         RelationSpec(

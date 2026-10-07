@@ -16,6 +16,7 @@ from typing import Any
 from .compaction import compact_lineage
 from .doctor import audit_graph
 from .manifest import DAGNodeManifest, read_manifest
+from .paths import DAGPaths
 from .publication import (
     checkout_tip,
     create_branch,
@@ -223,7 +224,7 @@ def cmd_publish(
     as_json: bool = False,
 ) -> int:
     """Publish a staged snapshot node and atomically advance pointer."""
-    manifest_path = staged_dir / "manifest.json"
+    manifest_path = DAGPaths(staged_dir).staged_manifest_file(staged_dir)
     if not manifest_path.is_file():
         if as_json:
             _emit({"error": f"staged manifest not found: {manifest_path}"})
@@ -496,7 +497,7 @@ def cmd_compact(
         return 1
 
     target_id = new_snapshot_id or f"{tip_id}_compacted"
-    staged = snapshots_root / f".stage-{target_id}"
+    staged = DAGPaths(snapshots_root).staging_dir(target_id)
     try:
         manifest = compact_lineage(
             snapshots_root,

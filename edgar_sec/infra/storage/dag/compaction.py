@@ -11,6 +11,7 @@ from pathlib import Path
 
 from edgar_sec.foundation.hashing import file_sha256
 from edgar_sec.foundation.runtime.resources import RuntimeResourceProfile
+from edgar_sec.infra.storage.dag.paths import DAGPaths, PART_PREFIX, PART_SUFFIX
 from edgar_sec.infra.storage.duckdb import (
     connect,
     copy_query_to_parquet,
@@ -73,7 +74,7 @@ def _compact_relation(
 
     descriptors: list[PartDescriptor] = []
     for idx, (min_k, max_k) in enumerate(ranges):
-        part_name = f"part-{idx:05d}.parquet"
+        part_name = f"{PART_PREFIX}{idx:05d}{PART_SUFFIX}"
         part_path = rel_dir / part_name
         if min_k is None or max_k is None:
             query = f"SELECT * FROM {view_name} ORDER BY {order_cols}"
@@ -149,7 +150,7 @@ def compact_lineage(
             parents=(
                 ParentRef(
                     snapshot_id=tip_id,
-                    manifest_sha256=file_sha256(root / tip_id / "manifest.json"),
+                    manifest_sha256=file_sha256(DAGPaths(root).manifest_file(tip_id)),
                 ),
             ),
             checkpoint_anchor_id=new_snapshot_id,
@@ -172,7 +173,7 @@ def compact_lineage(
     finally:
         verify_con.close()
 
-    manifest_path = staged / "manifest.json"
+    manifest_path = DAGPaths(staged).staged_manifest_file(staged)
     write_manifest(manifest_path, checkpoint_manifest)
     if publish:
         publish_node(

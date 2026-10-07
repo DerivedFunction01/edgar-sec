@@ -11,6 +11,8 @@ from pathlib import Path
 
 from edgar_sec.foundation.hashing import file_sha256
 
+from edgar_sec.infra.storage.dag.paths import DAGPaths
+
 from .manifest import DAGNodeManifest, read_manifest
 
 
@@ -63,7 +65,7 @@ def walk_lineage(snapshots_root: Path | str, tip_id: str) -> LineageChain:
             return
 
         visiting.add(current_id)
-        manifest_path = root / current_id / "manifest.json"
+        manifest_path = DAGPaths(root).manifest_file(current_id)
         if not manifest_path.is_file():
             raise BrokenLineageError(
                 f"manifest missing for {current_id}: {manifest_path}"
@@ -76,7 +78,7 @@ def walk_lineage(snapshots_root: Path | str, tip_id: str) -> LineageChain:
                 raise BrokenLineageError(f"delta node {current_id} has no parents")
             for parent_ref in node.parents:
                 p_id = parent_ref.snapshot_id
-                p_manifest = root / p_id / "manifest.json"
+                p_manifest = DAGPaths(root).manifest_file(p_id)
                 if not p_manifest.is_file():
                     raise BrokenLineageError(f"parent manifest missing for {p_id}")
                 actual_digest = file_sha256(p_manifest)
