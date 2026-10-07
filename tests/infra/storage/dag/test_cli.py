@@ -100,6 +100,32 @@ def test_cli_checkout(tmp_path: Path) -> None:
     assert cmd_checkout(tmp_path, "c0") == 0
 
 
+def test_cli_checkout_lineage_guard(tmp_path: Path) -> None:
+    """Checkout to an unrelated snapshot is blocked without --force."""
+    _setup_dag(tmp_path)
+
+    # Create an unrelated snapshot not in d1's lineage
+    unrelated_dir = tmp_path / "unrelated"
+    unrelated_dir.mkdir(parents=True)
+    unrelated_manifest = DAGNodeManifest(
+        snapshot_id="unrelated",
+        kind="checkpoint",
+        parents=(),
+        checkpoint_anchor_id="unrelated",
+        lineage_depth=0,
+        created_at="2026-10-07T00:00:00Z",
+        relations={},
+        logical_fingerprint="fp_unrelated",
+    )
+    write_manifest(unrelated_dir / "manifest.json", unrelated_manifest)
+
+    # Without --force, checkout to unrelated snapshot should fail
+    assert cmd_checkout(tmp_path, "unrelated") == 1
+
+    # With --force, checkout should succeed
+    assert cmd_checkout(tmp_path, "unrelated", force=True) == 0
+
+
 def test_cli_doctor_and_gc(tmp_path: Path) -> None:
     _setup_dag(tmp_path)
     assert cmd_doctor(tmp_path, as_json=True) == 0

@@ -106,6 +106,14 @@ def publish_node(
                 f"expected parent {expected_parent_id!r}, current is {current_id!r}"
             )
 
+        if expected_parent_id is not None:
+            parent_ids = {p.snapshot_id for p in manifest.parents}
+            if expected_parent_id not in parent_ids:
+                raise ValueError(
+                    f"cannot publish to branch: expected parent {expected_parent_id!r} "
+                    f"is not among manifest parents {parent_ids!r}"
+                )
+
         if not target_dir.exists():
             shutil.move(str(staged), str(target_dir))
             _fsync_dir(str(root))

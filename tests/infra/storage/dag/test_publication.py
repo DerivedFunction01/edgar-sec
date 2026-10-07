@@ -6,6 +6,7 @@ import pytest
 
 from edgar_sec.infra.storage.dag.manifest import (
     DAGNodeManifest,
+    ParentRef,
     write_manifest,
 )
 from edgar_sec.infra.storage.dag.publication import (
@@ -46,13 +47,13 @@ def test_publish_node_and_stale_parent(tmp_path: Path) -> None:
     publish_node(tmp_path, c0_manifest, c0_staged, expected_parent_id=None)
     assert read_pointer_id(tmp_path / "current" / "pointer.json") == "c0"
 
-    # 2. Publish d1 expecting c0
+    # 2. Publish d1 expecting c0 (delta lists c0 as parent)
     d1_staged = tmp_path / "stage_d1"
     d1_staged.mkdir(parents=True)
     d1_manifest = DAGNodeManifest(
         snapshot_id="d1",
         kind="delta",
-        parents=(),
+        parents=(ParentRef("c0", ""),),
         checkpoint_anchor_id="c0",
         lineage_depth=1,
         created_at="2026-10-07T00:01:00Z",
@@ -70,7 +71,7 @@ def test_publish_node_and_stale_parent(tmp_path: Path) -> None:
     d2_manifest = DAGNodeManifest(
         snapshot_id="d2",
         kind="delta",
-        parents=(),
+        parents=(ParentRef("d1", ""),),
         checkpoint_anchor_id="c0",
         lineage_depth=2,
         created_at="2026-10-07T00:02:00Z",
@@ -81,6 +82,42 @@ def test_publish_node_and_stale_parent(tmp_path: Path) -> None:
 
     with pytest.raises(StaleParentError):
         publish_node(tmp_path, d2_manifest, d2_staged, expected_parent_id="c0")
+
+
+def test_publish_delta_mismatched_parent_raises(tmp_path: Path) -> None:
+    """Delta node whose manifest parents don't include expected_parent_id is rejected."""
+    c0_staged = tmp_path / "stage_c0"
+    c0_staged.mkdir(parents=True)
+    c0_manifest = DAGNodeManifest(
+        snapshot_id="c0",
+        kind="checkpoint",
+        parents=(),
+        checkpoint_anchor_id="c0",
+        lineage_depth=0,
+        created_at="2026-10-07T00:00:00Z",
+        relations={},
+        logical_fingerprint="fp0",
+    )
+    write_manifest(c0_staged / "manifest.json", c0_manifest)
+    publish_node(tmp_path, c0_manifest, c0_staged, expected_parent_id=None)
+
+    # d1 claims a different parent than the current pointer
+    d1_staged = tmp_path / "stage_d1"
+    d1_staged.mkdir(parents=True)
+    d1_manifest = DAGNodeManifest(
+        snapshot_id="d1",
+        kind="delta",
+        parents=(ParentRef("wrong_parent", ""),),
+        checkpoint_anchor_id="c0",
+        lineage_depth=1,
+        created_at="2026-10-07T00:01:00Z",
+        relations={},
+        logical_fingerprint="fp1",
+    )
+    write_manifest(d1_staged / "manifest.json", d1_manifest)
+
+    with pytest.raises(ValueError, match="not among manifest parents"):
+        publish_node(tmp_path, d1_manifest, d1_staged, expected_parent_id="c0")
 
 
 def test_branch_management(tmp_path: Path) -> None:

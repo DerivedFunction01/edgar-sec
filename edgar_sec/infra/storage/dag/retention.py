@@ -89,6 +89,11 @@ def analyze_retention(
             if node.kind != "checkpoint":
                 for parent_ref in node.parents:
                     to_visit.append(parent_ref.snapshot_id)
+            if node.checkpoint_anchor_id:
+                to_visit.append(node.checkpoint_anchor_id)
+            base_pin = node.metadata.get("base_snapshot_id")
+            if base_pin:
+                to_visit.append(str(base_pin))
 
     # Phase 2: Find all snapshot directories on disk not in retained
     now = time.time()

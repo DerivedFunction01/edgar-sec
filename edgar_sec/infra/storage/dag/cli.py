@@ -209,6 +209,7 @@ def cmd_checkout(
     target: str,
     *,
     branch_name: str | None = None,
+    force: bool = False,
 ) -> int:
     """Atomically swing pointer to a target snapshot, branch, or tag."""
     tag_data = read_tag(snapshots_root, target)
@@ -216,10 +217,48 @@ def cmd_checkout(
         target_id = str(tag_data["snapshot_id"])
     else:
         target_id = target
+
+    root = Path(snapshots_root)
+    pointer_file = pointer_path_for(root, branch_name)
+    current_id = read_pointer_id(pointer_file)
+
+    if current_id is not None and not force:
+        try:
+            _assert_lineage_affinity(root, current_id, target_id)
+        except ValueError as exc:
+            print(f"Error: {exc}")
+            return 1
+
     checkout_tip(snapshots_root, target_id, branch_name=branch_name)
     branch_label = f" (branch '{branch_name}')" if branch_name else ""
     print(f"Checked out tip{branch_label}: {target_id}")
     return 0
+
+
+def _assert_lineage_affinity(root: Path, current_id: str, target_id: str) -> None:
+    """Verify target is an ancestor or descendant of the current tip."""
+    try:
+        current_lineage = walk_lineage(root, current_id)
+    except Exception:
+        return
+    current_ancestors = {n.snapshot_id for n in current_lineage.nodes}
+
+    if target_id in current_ancestors:
+        return
+
+    try:
+        target_lineage = walk_lineage(root, target_id)
+    except Exception:
+        return
+    target_ancestors = {n.snapshot_id for n in target_lineage.nodes}
+
+    if current_id in target_ancestors:
+        return
+
+    raise ValueError(
+        f"checkout blocked: {target_id!r} is not an ancestor or descendant "
+        f"of current tip {current_id!r}; use --force to override"
+    )
 
 
 def cmd_publish(
@@ -617,6 +656,9 @@ def build_parser() -> argparse.ArgumentParser:
     co_p = sub.add_parser("checkout", help="Switch current or branch pointer")
     co_p.add_argument("target", help="Target snapshot ID, branch, or tag")
     co_p.add_argument("--branch", default=None, help="Target branch to switch")
+    co_p.add_argument(
+        "--force", action="store_true", help="Override lineage affinity guard"
+    )
 
     doc_p = sub.add_parser("doctor", help="Run integrity checks")
     doc_p.add_argument(
@@ -681,7 +723,9 @@ def main(argv: Sequence[str] | None = None) -> int:
             as_json=as_json,
         )
     if args.subcommand == "checkout":
-        return cmd_checkout(root, args.target, branch_name=args.branch)
+        return cmd_checkout(
+            root, args.target, branch_name=args.branch, force=args.force
+        )
     if args.subcommand == "doctor":
         return cmd_doctor(root, verify_digests=not args.skip_digests, as_json=as_json)
     if args.subcommand == "compact":
