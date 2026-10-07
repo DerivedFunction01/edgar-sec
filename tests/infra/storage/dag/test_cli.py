@@ -4,12 +4,15 @@ from pathlib import Path
 
 from edgar_sec.foundation.hashing import file_sha256
 from edgar_sec.infra.storage.dag.cli import (
+    cmd_branch,
     cmd_checkout,
     cmd_compact,
     cmd_doctor,
     cmd_gc,
     cmd_log,
+    cmd_publish,
     cmd_status,
+    cmd_tag,
     main,
 )
 from edgar_sec.infra.storage.dag.manifest import (
@@ -107,3 +110,46 @@ def test_cli_main_entrypoint(tmp_path: Path) -> None:
     _setup_dag(tmp_path)
     exit_code = main(["--root", str(tmp_path), "status"])
     assert exit_code == 0
+
+
+def test_cli_publish_genesis(tmp_path: Path) -> None:
+    """Verify dag publish supports genesis publication with --allow-null."""
+    staged = tmp_path / "stage_genesis"
+    staged.mkdir(parents=True)
+    manifest = DAGNodeManifest(
+        snapshot_id="g0",
+        kind="checkpoint",
+        parents=(),
+        checkpoint_anchor_id="g0",
+        lineage_depth=0,
+        created_at="2026-10-07T00:00:00Z",
+        relations={},
+        logical_fingerprint="fp_g",
+    )
+    write_manifest(staged / "manifest.json", manifest)
+    assert cmd_publish(tmp_path, staged, allow_null=True) == 0
+    assert cmd_status(tmp_path) == 0
+
+
+def test_cli_branch_and_tag(tmp_path: Path) -> None:
+    """Verify CLI branch and tag management subcommands."""
+    _setup_dag(tmp_path)
+    assert cmd_branch(tmp_path, action="create", name="exp") == 0
+    assert cmd_branch(tmp_path, action="list") == 0
+    assert (
+        cmd_tag(tmp_path, action="create", name="v1", target="d1", message="test tag")
+        == 0
+    )
+    assert cmd_tag(tmp_path, action="list") == 0
+    assert cmd_checkout(tmp_path, "v1") == 0
+    assert cmd_branch(tmp_path, action="delete", name="exp") == 0
+    assert cmd_tag(tmp_path, action="delete", name="v1") == 0
+
+
+def test_cli_log_graph(tmp_path: Path, capsys) -> None:
+    """Verify CLI log --graph output with swimlanes."""
+    _setup_dag(tmp_path)
+    assert cmd_log(tmp_path, graph=True) == 0
+    out = capsys.readouterr().out
+    assert "d1" in out
+    assert "c0" in out

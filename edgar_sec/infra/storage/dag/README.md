@@ -25,7 +25,9 @@ and provides two-tier retention analysis.
 | `retention.py` | Multi-root reachability tracing and physical part reference counting. |
 | `doctor.py` | Graph health audits: detects cycles, missing manifests, unreadable parts, and stale stages. |
 | `query.py` | Point-lookup and range-pruned DuckDB view compiler using part min/max bounds. |
-| `cli.py` | Standard maintenance CLI entrypoint dispatching commands (`status`, `log`, `checkout`, `doctor`, `compact`, `gc`). |
+| `tags.py` | Immutable snapshot tagging, metadata persistence, and lifecycle. |
+| `renderer.py` | Cycle-tolerant ASCII swimlane and DAG graph visualizer with bridge link annotations. |
+| `cli.py` | Standard maintenance CLI entrypoint dispatching commands (`status`, `log`, `checkout`, `publish`, `branch`, `tag`, `doctor`, `compact`, `gc`). |
 | `__init__.py` | Package docstring only. No re-exports. |
 
 ## Contracts
@@ -45,7 +47,9 @@ and provides two-tier retention analysis.
 - `compile_virtual_views`, `compute_logical_fingerprint` in [`resolution.py`](resolution.py).
 - `compile_pruned_views`, `derive_accession_range`, `prune_parts_for_range`, `query_point` in [`query.py`](query.py).
 - `filter_candidate_delta`, `FilteredDelta` in [`anti_join.py`](anti_join.py).
-- `publish_node`, `PublicationLock`, `pointer_path_for` in [`publication.py`](publication.py).
+- `publish_node`, `PublicationLock`, `pointer_path_for`, `list_branches`, `create_branch`, `delete_branch` in [`publication.py`](publication.py).
+- `create_tag`, `read_tag`, `list_tags`, `delete_tag` in [`tags.py`](tags.py).
+- `DAGSwimlaneRenderer`, `GraphNode` in [`renderer.py`](renderer.py).
 - `compact_lineage` in [`compaction.py`](compaction.py).
 - `analyze_retention`, `purge_unreferenced` in [`retention.py`](retention.py).
 - `audit_graph` in [`doctor.py`](doctor.py).

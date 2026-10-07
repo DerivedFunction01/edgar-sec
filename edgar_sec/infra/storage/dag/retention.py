@@ -48,6 +48,16 @@ def discover_roots(
             if b_id:
                 roots.add(b_id)
 
+    tags_dir = root / "tags"
+    if tags_dir.is_dir():
+        for tag_file in tags_dir.glob("*.json"):
+            try:
+                t_data = json.loads(tag_file.read_text(encoding="utf-8"))
+                if isinstance(t_data, dict) and "snapshot_id" in t_data:
+                    roots.add(str(t_data["snapshot_id"]))
+            except (OSError, json.JSONDecodeError):
+                continue
+
     if extra_pinned_ids:
         roots.update(extra_pinned_ids)
 

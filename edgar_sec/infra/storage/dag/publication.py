@@ -163,11 +163,54 @@ def checkout_tip(
     return pointer_file
 
 
+def list_branches(snapshots_root: Path | str) -> list[str]:
+    """Return all branch names with existing pointer files."""
+    root = Path(snapshots_root)
+    branches: list[str] = []
+    if pointer_path_for(root).is_file():
+        branches.append("current")
+    branches_dir = root / "branches"
+    if branches_dir.is_dir():
+        for b_dir in sorted(branches_dir.iterdir()):
+            if (b_dir / "pointer.json").is_file():
+                branches.append(b_dir.name)
+    return branches
+
+
+def create_branch(
+    snapshots_root: Path | str,
+    branch_name: str,
+    snapshot_id: str,
+) -> Path:
+    """Create or advance a named branch pointer to a snapshot."""
+    if branch_name in ("current", ""):
+        raise ValueError("branch name cannot be 'current' or empty")
+    return checkout_tip(snapshots_root, snapshot_id, branch_name=branch_name)
+
+
+def delete_branch(snapshots_root: Path | str, branch_name: str) -> bool:
+    """Delete a named branch pointer under publication lock."""
+    if branch_name in ("current", ""):
+        raise ValueError("cannot delete 'current' branch")
+    root = Path(snapshots_root)
+    pointer = pointer_path_for(root, branch_name)
+    lock_file = root / ".publication.lock"
+    with PublicationLock(lock_file):
+        if not pointer.is_file():
+            return False
+        pointer.unlink()
+        pointer.parent.rmdir()
+        return True
+
+
 __all__ = [
     "PublicationLock",
     "PublicationLockError",
     "StaleParentError",
     "checkout_tip",
+    "create_branch",
+    "delete_branch",
+    "list_branches",
     "pointer_path_for",
     "publish_node",
     "read_pointer",

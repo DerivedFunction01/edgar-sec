@@ -62,3 +62,19 @@ def test_retention_protects_branch_and_pins(tmp_path: Path) -> None:
     assert purged == ["d_orphan"]
     assert not (tmp_path / "d_orphan").exists()
     assert (tmp_path / "d1").exists()
+
+
+def test_retention_protects_tagged_snapshots(tmp_path: Path) -> None:
+    """Verify tags protect non-branch snapshots from garbage collection."""
+    _make_node(tmp_path, "c0", "checkpoint")
+    _make_node(tmp_path, "c_tagged", "checkpoint")
+
+    (tmp_path / "current").mkdir()
+    atomic_write_json(tmp_path / "current" / "pointer.json", {"snapshot_id": "c0"})
+
+    from edgar_sec.infra.storage.dag.tags import create_tag
+
+    create_tag(tmp_path, "release-1", "c_tagged")
+    report = analyze_retention(tmp_path)
+    assert "c_tagged" in report.retained_snapshots
+    assert "c_tagged" not in report.prunable_snapshots

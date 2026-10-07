@@ -12,6 +12,9 @@ from edgar_sec.infra.storage.dag.publication import (
     PublicationLock,
     PublicationLockError,
     StaleParentError,
+    create_branch,
+    delete_branch,
+    list_branches,
     publish_node,
     read_pointer_id,
 )
@@ -78,3 +81,31 @@ def test_publish_node_and_stale_parent(tmp_path: Path) -> None:
 
     with pytest.raises(StaleParentError):
         publish_node(tmp_path, d2_manifest, d2_staged, expected_parent_id="c0")
+
+
+def test_branch_management(tmp_path: Path) -> None:
+    """Verify branch creation, listing, and deletion under lock."""
+    c0_dir = tmp_path / "c0"
+    c0_dir.mkdir(parents=True)
+    manifest = DAGNodeManifest(
+        snapshot_id="c0",
+        kind="checkpoint",
+        parents=(),
+        checkpoint_anchor_id="c0",
+        lineage_depth=0,
+        created_at="2026-10-07T00:00:00Z",
+        relations={},
+        logical_fingerprint="fp0",
+    )
+    write_manifest(c0_dir / "manifest.json", manifest)
+
+    branch_file = create_branch(tmp_path, "feature-x", "c0")
+    assert branch_file.is_file()
+    assert "feature-x" in list_branches(tmp_path)
+
+    with pytest.raises(ValueError):
+        create_branch(tmp_path, "current", "c0")
+
+    assert delete_branch(tmp_path, "feature-x") is True
+    assert "feature-x" not in list_branches(tmp_path)
+    assert delete_branch(tmp_path, "nonexistent") is False
