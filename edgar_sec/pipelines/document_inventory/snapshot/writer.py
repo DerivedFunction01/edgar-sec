@@ -29,7 +29,10 @@ from edgar_sec.infra.storage.duckdb import (
     sql_identifier,
     sql_path_list,
 )
-from edgar_sec.infra.storage.parquet import StagedParquetWriter
+from edgar_sec.infra.storage.parquet import (
+    StagedParquetWriter,
+    read_parquet_key_bounds,
+)
 from edgar_sec.pipelines.document_inventory.checkpoint import (
     OUTCOME_SCHEMA,
     AttemptValidationError,
@@ -47,7 +50,6 @@ from edgar_sec.pipelines.document_inventory.run_manifest import (
     validate_work_order,
 )
 from edgar_sec.pipelines.document_inventory.snapshot.errors import (
-    StaleParentError,
     ValidationFailedError,
 )
 from edgar_sec.pipelines.document_inventory.snapshot.anti_join import (
@@ -55,13 +57,22 @@ from edgar_sec.pipelines.document_inventory.snapshot.anti_join import (
     anti_join,
 )
 from edgar_sec.pipelines.document_inventory.snapshot.models import SnapshotPublication
-from edgar_sec.pipelines.document_inventory.snapshot.publication_lock import (
+from edgar_sec.infra.storage.dag.publication import (
     PublicationLock,
+    PublicationLockError,
+    StaleParentError,
+)
+from edgar_sec.pipelines.document_inventory.snapshot.specs import (
+    INVENTORY_ACCESSIONS_SPEC,
+    INVENTORY_ACCESSION_SOURCES_SPEC,
+    INVENTORY_ENTRIES_SPEC,
+    INVENTORY_RELATIONS,
 )
 from edgar_sec.infra.storage.dag.manifest import (
     DAGNodeManifest,
     ParentRef,
     PartDescriptor,
+    write_manifest,
 )
 from edgar_sec.pipelines.document_inventory.snapshot.schema import (
     SNAPSHOT_ACCESSION_SOURCES_SCHEMA,
@@ -174,14 +185,7 @@ def _write_part_descriptor(
     key_column: str,
 ) -> dict[str, Any]:
     parquet = pq.ParquetFile(path)
-    key_min = key_max = None
-    for batch in parquet.iter_batches(batch_size=_BATCH_ROWS, columns=[key_column]):
-        for value in batch.column(0).to_pylist():
-            if value is None:
-                continue
-            value = str(value)
-            key_min = value if key_min is None else min(key_min, value)
-            key_max = value if key_max is None else max(key_max, value)
+    key_min, key_max = read_parquet_key_bounds(path, key_column)
     if key_min is None or key_max is None:
         raise ValidationFailedError(f"snapshot part has no key values: {path}")
     if pq.ParquetFile(path).schema_arrow.names != schema.names:
@@ -198,16 +202,7 @@ def _write_part_descriptor(
 
 
 def _key_range(path: Path, key_column: str) -> tuple[str | None, str | None]:
-    key_min = key_max = None
-    parquet = pq.ParquetFile(path)
-    for batch in parquet.iter_batches(batch_size=_BATCH_ROWS, columns=[key_column]):
-        for value in batch.column(0).to_pylist():
-            if value is None:
-                continue
-            text = str(value)
-            key_min = text if key_min is None else min(key_min, text)
-            key_max = text if key_max is None else max(key_max, text)
-    return key_min, key_max
+    return read_parquet_key_bounds(path, key_column)
 
 
 def _relation_files(paths: InventoryPaths, records: list[dict[str, Any]]) -> list[Path]:
@@ -236,6 +231,17 @@ def _view(con, name: str, files: list[Path], schema: pa.Schema) -> None:
         )
 
 
+def _parent_relation_parts(
+    parent_manifest: dict[str, Any] | None, relation: str
+) -> list[dict[str, Any]]:
+    if not parent_manifest:
+        return []
+    relations = parent_manifest.get("relations")
+    if isinstance(relations, dict) and relation in relations:
+        return list(relations[relation])
+    return list(parent_manifest.get(relation, []))
+
+
 def _create_merge_relations(
     con,
     parent_manifest: dict[str, Any] | None,
@@ -251,7 +257,7 @@ def _create_merge_relations(
     refresh: bool,
 ) -> None:
     for name, schema in _RELATION_SCHEMAS.items():
-        records = parent_manifest.get(name, []) if parent_manifest else []
+        records = _parent_relation_parts(parent_manifest, name)
         files = _relation_files(paths, records)
         _view(con, f"parent_{name}", files, schema)
     _view(
@@ -457,7 +463,9 @@ def _make_parent_input_dirs(
         root = stage_parent / "parent-input" / relation
         root.mkdir(parents=True)
         for index, source in enumerate(
-            _relation_files(inventory_paths, parent_manifest.get(relation, []))
+            _relation_files(
+                inventory_paths, _parent_relation_parts(parent_manifest, relation)
+            )
         ):
             os.symlink(source, root / f"part-{index:05d}.parquet")
         roots.append(root if any(root.iterdir()) else None)
@@ -618,13 +626,17 @@ def publish_committed_chunks(
                 "SELECT accession, source_cik, first_seen_by FROM delta_sources "
                 "ORDER BY source_cik, accession"
             )
+            relation_queries = {
+                INVENTORY_ACCESSIONS_SPEC.name: accession_query,
+                INVENTORY_ENTRIES_SPEC.name: entry_query,
+                INVENTORY_ACCESSION_SOURCES_SPEC.name: source_query,
+            }
             relation_records: dict[str, list[dict[str, Any]]] = {}
-            for rel, q, key_col in (
-                ("accessions", accession_query, "accession"),
-                ("entries", entry_query, "accession"),
-                ("accession_sources", source_query, "source_cik"),
-            ):
-                inherited_parts = list(inherited.get(rel, []))
+            for spec in INVENTORY_RELATIONS:
+                rel = spec.name
+                q = relation_queries[rel]
+                key_col = spec.entity_key or spec.primary_key[0]
+                inherited_parts = _parent_relation_parts(parent_manifest, rel)
                 part = _write_relation_part(
                     connection, staged_snapshot, snapshot_id, rel, q, key_col
                 )
@@ -632,9 +644,6 @@ def publish_committed_chunks(
         finally:
             connection.close()
 
-        accessions_digest = canonical_hash(
-            [(part["path"], part["sha256"]) for part in relation_records["accessions"]]
-        )
         parent_refs: list[ParentRef] = []
         if expected_parent_snapshot_id:
             parent_manifest_file = inventory_paths.snapshot_manifest_path(
@@ -669,30 +678,20 @@ def publish_committed_chunks(
                 for rel, parts in relation_records.items()
             },
             logical_fingerprint=content_digest,
-        )
-        manifest = {
-            "snapshot_id": snapshot_id,
-            "parent_snapshot_id": expected_parent_snapshot_id or "",
-            "run_intent_id": run.run_id,
-            "base_snapshot_id": expected_parent_snapshot_id,
-            "kind": dag_manifest.kind,
-            "parents": [p.to_dict() for p in dag_manifest.parents],
-            "checkpoint_anchor_id": dag_manifest.checkpoint_anchor_id,
-            "lineage_depth": dag_manifest.lineage_depth,
-            "created_at": dag_manifest.created_at,
-            "schema_version": SNAPSHOT_RELATION_VERSION,
-            "entry_schema_version": ENTRY_SCHEMA_VERSION,
-            "relations": {
-                rel: [p.to_dict() for p in parts]
-                for rel, parts in dag_manifest.relations.items()
+            schema_versions={
+                "accessions": SNAPSHOT_RELATION_VERSION,
+                "entries": str(ENTRY_SCHEMA_VERSION),
             },
-            **relation_records,
-            "accessions_digest": accessions_digest,
-            "input_rows": {"outcomes": outcome_count, "entries": entry_count},
-        }
+            metadata={
+                "run_intent_id": run.run_id,
+                "parent_snapshot_id": expected_parent_snapshot_id or "",
+                "base_snapshot_id": expected_parent_snapshot_id or "",
+                "input_rows": {"outcomes": outcome_count, "entries": entry_count},
+            },
+        )
         staged_snapshot.mkdir(parents=True, exist_ok=True)
         manifest_path = staged_snapshot / "manifest.json"
-        atomic_write_json(manifest_path, manifest, canonical=True)
+        write_manifest(manifest_path, dag_manifest)
         metadata = validate_snapshot(
             inventory_paths,
             snapshot_id,

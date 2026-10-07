@@ -19,12 +19,4 @@ def test_inventory_paths_resolve_snapshot_layout(tmp_path: Path) -> None:
     assert paths.snapshot_part_path("snapshot-1", "accessions", "2025", 3) == (
         expected_root / "snapshot-1" / "accessions" / "year=2025" / "part-00003.parquet"
     )
-    assert paths.snapshot_lookup_path("snapshot-1", "filing_cik", "a") == (
-        expected_root
-        / "snapshot-1"
-        / "lookups"
-        / "filing_cik"
-        / "shard=a"
-        / "part-00000.parquet"
-    )
     assert paths.publication_lock_path == expected_root / "publication.lock"

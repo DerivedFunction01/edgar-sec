@@ -31,8 +31,8 @@ class StaleParentError(RuntimeError):
 class PublicationLock:
     """Exclusive filesystem lock serializing snapshot publications."""
 
-    def __init__(self, lock_path: Path | str, *, blocking: bool = True) -> None:
-        self.path = Path(lock_path)
+    def __init__(self, lock_path: Any, *, blocking: bool = True) -> None:
+        self.path = Path(getattr(lock_path, "publication_lock_path", lock_path))
         self.path.parent.mkdir(parents=True, exist_ok=True)
         self._descriptor = os.open(self.path, os.O_CREAT | os.O_RDWR, 0o600)
         operation = fcntl.LOCK_EX | (0 if blocking else fcntl.LOCK_NB)

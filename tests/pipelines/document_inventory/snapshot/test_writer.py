@@ -37,12 +37,12 @@ from edgar_sec.pipelines.document_inventory.run_manifest import (
     write_work_order,
 )
 from edgar_sec.pipelines.document_inventory.snapshot.errors import (
-    StaleParentError,
     ValidationFailedError,
 )
-from edgar_sec.pipelines.document_inventory.snapshot.publication_lock import (
+from edgar_sec.infra.storage.dag.publication import (
     PublicationLock,
     PublicationLockError,
+    StaleParentError,
 )
 from edgar_sec.pipelines.document_inventory.snapshot.schema import (
     SNAPSHOT_ACCESSION_SOURCES_SCHEMA,

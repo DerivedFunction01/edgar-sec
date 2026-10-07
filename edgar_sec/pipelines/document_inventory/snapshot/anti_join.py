@@ -43,12 +43,10 @@ __all__ = [
     "StagingRelations",
     "anti_join",
     "build_staging",
-    "shard_key",
 ]
 
 ANTI_JOIN_VERSION = "2"
 ANTI_JOIN_BATCH_ROWS = 4096
-LOOKUP_SHARD_BITS = 4
 
 
 @dataclass(frozen=True, slots=True)
@@ -68,12 +66,6 @@ class AntiJoinResult:
     known_accession_count: int
     candidate_entry_count: int
     new_source_count: int
-
-
-def shard_key(value: str) -> str:
-    """Return the fixed-width seek-index shard key for a lookup value."""
-    digest = hashlib.sha256(value.encode("utf-8")).hexdigest()
-    return digest[: LOOKUP_SHARD_BITS // 4]
 
 
 def _write_rows(

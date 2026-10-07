@@ -13,8 +13,8 @@ Own inventory snapshot relations, pre-fetch plan projection, and bounded merge p
 | `models.py` | Snapshot metadata, lookup descriptors, and publication results. |
 | `projection.py` | Validate the published cohort projection, produce normalized relations, and write the pre-fetch work order. |
 | `projection_inputs.py` | Validate catalog-plan bundles and resolve pinned base-snapshot accession parts. |
-| `publication_lock.py` | Serialize snapshot installation and pointer updates per inventory root. |
 | `schema.py` | Versioned Arrow schemas for persisted snapshot relations. |
+| `specs.py` | Declarative `RelationSpec` contracts (`accessions`, `entries`, `accession_sources`). |
 | `validation.py` | Check all declared Parquet files, digests, relations, and lookup parity. |
 | `writer.py` | Merge validated committed S4 attempts and publish immutable snapshots. |
 

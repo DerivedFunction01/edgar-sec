@@ -10,7 +10,6 @@ from typing import Literal
 __all__ = [
     "AccessionRow",
     "EntryRow",
-    "LookupShard",
     "PartitionPart",
     "SnapshotMetadata",
     "SnapshotPublication",
@@ -32,20 +31,6 @@ class PartitionPart:
 
 
 @dataclass(frozen=True, slots=True)
-class LookupShard:
-    """One seek-index shard for an accession, filing-CIK, or source-CIK."""
-
-    lookup: str
-    shard_key: str
-    part_path: str
-    row_count: int
-    sha256: str
-    byte_size: int = 0
-    key_min: str | None = None
-    key_max: str | None = None
-
-
-@dataclass(frozen=True, slots=True)
 class SnapshotMetadata:
     """Immutable metadata of one published snapshot; mirrors manifest.json.
 
@@ -64,9 +49,6 @@ class SnapshotMetadata:
     accessions_partitions: tuple[PartitionPart, ...]
     entries_partitions: tuple[PartitionPart, ...]
     accession_sources_partitions: tuple[PartitionPart, ...]
-    accessions_lookup: tuple[LookupShard, ...]
-    filing_cik_lookup: tuple[LookupShard, ...]
-    source_cik_lookup: tuple[LookupShard, ...]
     active_accessions: Mapping[str, str]
     superseded_entry_ids: Mapping[str, tuple[str, ...]]
     accessions_digest: str
@@ -74,16 +56,11 @@ class SnapshotMetadata:
     @classmethod
     def from_manifest(cls, payload: dict) -> "SnapshotMetadata":
         relations = payload.get("relations", {})
-        accessions = payload.get("accessions")
-        if accessions is None:
-            accessions = relations.get("accessions", [])
-        entries = payload.get("entries")
-        if entries is None:
-            entries = relations.get("entries", [])
-        sources = payload.get("accession_sources")
-        if sources is None:
-            sources = relations.get("accession_sources", [])
-        lookups = payload.get("lookups", {})
+        accessions = relations.get("accessions") or payload.get("accessions", [])
+        entries = relations.get("entries") or payload.get("entries", [])
+        sources = relations.get("accession_sources") or payload.get(
+            "accession_sources", []
+        )
         return cls(
             snapshot_id=str(payload["snapshot_id"]),
             parent_snapshot_id=str(payload.get("parent_snapshot_id", "")),
@@ -131,15 +108,6 @@ class SnapshotMetadata:
                     p.sha256,
                 )
                 for p in sources
-            ),
-            accessions_lookup=tuple(
-                LookupShard(**s) for s in lookups.get("accession", [])
-            ),
-            filing_cik_lookup=tuple(
-                LookupShard(**s) for s in lookups.get("filing_cik", [])
-            ),
-            source_cik_lookup=tuple(
-                LookupShard(**s) for s in lookups.get("source_cik", [])
             ),
             active_accessions={
                 k: tuple(v) for k, v in payload.get("active_accessions", {}).items()

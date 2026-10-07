@@ -322,7 +322,10 @@ def base_snapshot_parts(
         ) from exc
     if not isinstance(manifest, dict) or manifest.get("snapshot_id") != snapshot_id:
         raise BaseSnapshotError("base snapshot manifest identity mismatch")
-    if manifest.get("schema_version") != SNAPSHOT_RELATION_VERSION:
+    schema_ver = manifest.get("schema_version") or manifest.get(
+        "schema_versions", {}
+    ).get("accessions")
+    if schema_ver != SNAPSHOT_RELATION_VERSION:
         raise BaseSnapshotError("base snapshot relation schema is unsupported")
     pinned_manifest_sha = pointer.get("manifest_sha256")
     if (

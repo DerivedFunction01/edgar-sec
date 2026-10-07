@@ -64,6 +64,41 @@ def read_parquet_table(
     return pq.read_table(path, columns=columns)
 
 
+def read_parquet_key_bounds(
+    path: str | os.PathLike[str],
+    column: str,
+) -> tuple[str | None, str | None]:
+    """Extract column min/max bounds from Parquet footer metadata or DuckDB."""
+    parquet = pq.ParquetFile(path)
+    schema = parquet.schema_arrow
+    idx = schema.get_field_index(column)
+    if idx < 0:
+        return None, None
+    meta = parquet.metadata
+    mins, maxs = [], []
+    for rg in range(meta.num_row_groups):
+        stat = meta.row_group(rg).column(idx).statistics
+        if stat is not None and stat.has_min_max:
+            mins.append(str(stat.min))
+            maxs.append(str(stat.max))
+    if mins and maxs:
+        return min(mins), max(maxs)
+    from .duckdb import connect, sql_identifier
+
+    con = connect()
+    try:
+        res = con.execute(
+            f"SELECT min({sql_identifier(column)}), max({sql_identifier(column)}) FROM read_parquet(?)",
+            [str(path)],
+        ).fetchone()
+        return (
+            str(res[0]) if res[0] is not None else None,
+            str(res[1]) if res[1] is not None else None,
+        )
+    finally:
+        con.close()
+
+
 class StagedParquetWriter:
     """Atomic, incremental Parquet writer for streaming chunk checkpoints.
 
@@ -243,6 +278,7 @@ __all__ = [
     "DEFAULT_ROW_GROUP_SIZE",
     "StagedParquetWriter",
     "count_parquet_rows",
+    "read_parquet_key_bounds",
     "read_parquet_schema",
     "read_parquet_table",
     "write_parquet_table",

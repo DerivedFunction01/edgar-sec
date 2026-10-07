@@ -9,6 +9,7 @@ from edgar_sec.infra.storage.parquet import (
     DEFAULT_ROW_GROUP_SIZE,
     StagedParquetWriter,
     count_parquet_rows,
+    read_parquet_key_bounds,
     read_parquet_schema,
     read_parquet_table,
     write_parquet_table,
@@ -213,3 +214,45 @@ def test_staged_parquet_writer_preserved_stage_is_resumable(tmp_path: Path) -> N
     assert not (tmp_path / "chunk_resume_preserve.parquet.tmp").exists()
     table = read_parquet_table(path)
     assert table.column("cik").to_pylist() == ["0000000001", "0000000002"]
+
+
+def test_read_parquet_key_bounds(tmp_path: Path) -> None:
+    path = tmp_path / "chunk.parquet"
+    write_parquet_table(
+        pa.Table.from_arrays(
+            [pa.array(["charlie", "alpha", "bravo"])],
+            schema=pa.schema([("cik", pa.string())]),
+        ),
+        path,
+    )
+    key_min, key_max = read_parquet_key_bounds(path, "cik")
+    assert key_min == "alpha"
+    assert key_max == "charlie"
+
+
+def test_read_parquet_key_bounds_missing_column(tmp_path: Path) -> None:
+    path = tmp_path / "chunk.parquet"
+    write_parquet_table(
+        pa.Table.from_arrays(
+            [pa.array(["a", "b"])],
+            schema=pa.schema([("cik", pa.string())]),
+        ),
+        path,
+    )
+    key_min, key_max = read_parquet_key_bounds(path, "missing")
+    assert key_min is None
+    assert key_max is None
+
+
+def test_read_parquet_key_bounds_single_row(tmp_path: Path) -> None:
+    path = tmp_path / "chunk.parquet"
+    write_parquet_table(
+        pa.Table.from_arrays(
+            [pa.array(["only"])],
+            schema=pa.schema([("cik", pa.string())]),
+        ),
+        path,
+    )
+    key_min, key_max = read_parquet_key_bounds(path, "cik")
+    assert key_min == "only"
+    assert key_max == "only"

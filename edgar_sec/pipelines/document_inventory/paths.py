@@ -90,7 +90,6 @@ PROJECTION_MANIFEST_FILE = "projection_manifest.json"
 PROJECTION_STAGING_DIR = "projection-staging"
 PUBLICATION_LOCK_FILE = "publication.lock"
 SNAPSHOT_PART_PREFIX = "part-"
-SNAPSHOT_SHARD_NAME = "shard"
 SNAPSHOT_YEAR_PARTITION_NAME = "year"
 
 _ID_RE = re.compile(r"^[A-Za-z0-9_.-]+$")
@@ -155,21 +154,6 @@ class InventoryPaths:
             / relation
             / f"{SNAPSHOT_YEAR_PARTITION_NAME}={year}"
             / f"{SNAPSHOT_PART_PREFIX}{part_index:05d}.parquet"
-        )
-
-    def snapshot_lookup_path(
-        self, snapshot_id: str, lookup: str, shard_key: str
-    ) -> Path:
-        if lookup not in {"accession", "filing_cik", "source_cik"}:
-            raise ValueError(f"invalid snapshot lookup: {lookup!r}")
-        if not re.fullmatch(r"[0-9a-f]", shard_key):
-            raise ValueError(f"invalid lookup shard key: {shard_key!r}")
-        return (
-            self.snapshot_root(snapshot_id)
-            / "lookups"
-            / lookup
-            / f"{SNAPSHOT_SHARD_NAME}={shard_key}"
-            / "part-00000.parquet"
         )
 
     @property

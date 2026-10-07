@@ -12,26 +12,26 @@ import pyarrow.parquet as pq
 
 from edgar_sec.foundation.hashing import file_sha256
 from edgar_sec.foundation.runtime.resources import RuntimeResourceProfile
+
 from edgar_sec.infra.storage.duckdb import connect, sql_identifier, sql_path_list
+from edgar_sec.infra.storage.parquet import read_parquet_key_bounds
 from edgar_sec.pipelines.document_inventory.paths import InventoryPaths
 from edgar_sec.pipelines.document_inventory.snapshot.errors import (
     ValidationFailedError,
 )
 from edgar_sec.pipelines.document_inventory.snapshot.models import SnapshotMetadata
 from edgar_sec.pipelines.document_inventory.snapshot.schema import (
-    SNAPSHOT_ACCESSION_SOURCES_SCHEMA,
-    SNAPSHOT_ACCESSIONS_SCHEMA,
     SNAPSHOT_RELATION_VERSION,
 )
+from edgar_sec.pipelines.document_inventory.snapshot.specs import INVENTORY_RELATIONS
 from edgar_sec.domain.document_inventory.schemas import (
-    ENTRY_SCHEMA,
     ENTRY_SCHEMA_VERSION,
 )
 
-_RELATIONS = {
-    "accessions": SNAPSHOT_ACCESSIONS_SCHEMA,
-    "entries": ENTRY_SCHEMA,
-    "accession_sources": SNAPSHOT_ACCESSION_SOURCES_SCHEMA,
+_RELATIONS = {spec.name: spec.schema for spec in INVENTORY_RELATIONS}
+_RELATION_PKS = {spec.name: spec.primary_key for spec in INVENTORY_RELATIONS}
+_RELATION_ENTITY_KEYS = {
+    spec.name: (spec.entity_key or spec.primary_key[0]) for spec in INVENTORY_RELATIONS
 }
 
 
@@ -155,32 +155,14 @@ def _part_files(
         )
         if parquet.metadata.num_rows < 1 or parquet.metadata.num_row_groups < 1:
             raise ValidationFailedError(f"snapshot part has no row groups: {path}")
-        key_column = {
-            "accessions": "accession",
-            "entries": "accession",
-            "accession_sources": "source_cik",
-        }[relation]
-        key_min = key_max = None
-        for batch in parquet.iter_batches(batch_size=4096, columns=[key_column]):
-            for value in batch.column(0).to_pylist():
-                if value is None:
-                    continue
-                value = str(value)
-                key_min = value if key_min is None else min(key_min, value)
-                key_max = value if key_max is None else max(key_max, value)
+        key_column = _RELATION_ENTITY_KEYS[relation]
+        key_min, key_max = read_parquet_key_bounds(path, key_column)
         if (key_min, key_max) != (record.get("key_min"), record.get("key_max")):
             raise ValidationFailedError(f"snapshot part key range mismatch: {path}")
         if Path(record["path"]).parts[0] in (snapshot_id, relation):
             local_files.add(path)
         result.append(path)
     return result
-
-
-_RELATION_PKS = {
-    "accessions": ("accession",),
-    "entries": ("entry_id",),
-    "accession_sources": ("accession", "source_cik"),
-}
 
 
 def _create_view(
@@ -217,17 +199,24 @@ def _count(con, query: str) -> int:
     return int(con.execute(query).fetchone()[0])
 
 
-def _validate_sorted(path: Path, columns: list[str]) -> None:
-    parquet = pq.ParquetFile(path)
-    previous = None
-    for batch in parquet.iter_batches(batch_size=4096, columns=columns):
-        for values in zip(
-            *(batch.column(index).to_pylist() for index in range(len(columns)))
-        ):
-            key = tuple(values)
-            if previous is not None and key <= previous:
-                raise ValidationFailedError(f"snapshot rows are not sorted: {path}")
-            previous = key
+def _validate_sorted(
+    con: duckdb.DuckDBPyConnection, path: Path, columns: list[str]
+) -> None:
+    source = sql_path_list([str(path)])
+    cols_expr = ", ".join(sql_identifier(c) for c in columns)
+    prev_cols = ", ".join(
+        f"lag({sql_identifier(c)}) OVER (ORDER BY file_row_number) AS p_{c}"
+        for c in columns
+    )
+    prev_tuple = ", ".join(f"p_{c}" for c in columns)
+    query = (
+        f"SELECT count(*) FROM ("
+        f"SELECT {cols_expr}, {prev_cols} "
+        f"FROM read_parquet({source}, file_row_number=true, hive_partitioning=false)"
+        f") WHERE ({prev_tuple}) >= ({cols_expr}) AND p_{columns[0]} IS NOT NULL"
+    )
+    if int(con.execute(query).fetchone()[0]):
+        raise ValidationFailedError(f"snapshot rows are not sorted: {path}")
 
 
 def _validate_relations(
@@ -276,9 +265,9 @@ def _validate_relations(
             if _count(con, query):
                 raise ValidationFailedError(label)
         for path in relation_files["accessions"]:
-            _validate_sorted(path, ["form", "filing_date", "accession"])
+            _validate_sorted(con, path, ["form", "filing_date", "accession"])
         for path in relation_files["accession_sources"]:
-            _validate_sorted(path, ["source_cik", "accession"])
+            _validate_sorted(con, path, ["source_cik", "accession"])
         for path in relation_files["entries"]:
             source = sql_path_list([str(path)])
             ordering = (
@@ -316,9 +305,15 @@ def validate_snapshot(
         raise ValidationFailedError("snapshot manifest is unreadable") from exc
     if not isinstance(payload, dict) or payload.get("snapshot_id") != snapshot_id:
         raise ValidationFailedError("snapshot manifest identity mismatch")
-    if payload.get("schema_version") != SNAPSHOT_RELATION_VERSION:
+    schema_ver = payload.get("schema_version") or payload.get(
+        "schema_versions", {}
+    ).get("accessions")
+    if schema_ver != SNAPSHOT_RELATION_VERSION:
         raise ValidationFailedError("snapshot relation version mismatch")
-    if payload.get("entry_schema_version") != ENTRY_SCHEMA_VERSION:
+    raw_entry_ver = payload.get("entry_schema_version") or payload.get(
+        "schema_versions", {}
+    ).get("entries")
+    if int(raw_entry_ver or 0) != ENTRY_SCHEMA_VERSION:
         raise ValidationFailedError("snapshot entry schema version mismatch")
 
     local_files: set[Path] = set()

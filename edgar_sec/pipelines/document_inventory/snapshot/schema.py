@@ -37,19 +37,5 @@ SNAPSHOT_ACCESSION_SOURCES_SCHEMA = pa.schema(
     ]
 )
 
-SNAPSHOT_LOOKUP_SCHEMA = pa.schema(
-    [
-        ("lookup_value", pa.string()),
-        ("accession", pa.string()),
-        ("filing_year", pa.string()),
-    ]
-)
-
-#: The key column used to index an annual part. For the accession and entry
-#: relations the physical sort key is (form, filing_date, accession); the
-#: accession_sources relation sort key is (source_cik, accession).
+#: The key column used to index an accession relation.
 KEY_COLUMN = "accession"
-
-#: Annual partition directory name and its parsed value; ``form=`` and locator
-#: names are reserved by the document_storage layout and are not reused here.
-YEAR_PARTITION_NAME = "year"

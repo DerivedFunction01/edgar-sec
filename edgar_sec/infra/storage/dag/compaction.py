@@ -19,6 +19,7 @@ from edgar_sec.infra.storage.duckdb import (
 from edgar_sec.infra.storage.parquet import (
     DEFAULT_COMPRESSION,
     DEFAULT_ROW_GROUP_SIZE,
+    read_parquet_key_bounds,
     read_parquet_table,
 )
 
@@ -92,10 +93,7 @@ def _compact_relation(
             params=params,
         )
 
-        table = read_parquet_table(part_path, columns=[key_col])
-        col_vals = [str(x) for x in table.column(key_col).to_pylist() if x is not None]
-        k_min = min(col_vals) if col_vals else None
-        k_max = max(col_vals) if col_vals else None
+        k_min, k_max = read_parquet_key_bounds(part_path, key_col)
 
         descriptors.append(
             PartDescriptor(
