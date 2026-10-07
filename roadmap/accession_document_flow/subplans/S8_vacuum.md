@@ -1,22 +1,22 @@
-# S8 — Snapshot Vacuum and Lookup-Index Compaction
+# S8 — Snapshot DAG Compaction, Lineage Retention, and Pruning
 
 ## Owner and status
 
 - Owning stage in [implementation.md](../implementation.md): **S8**; the detailed
   contract for S8 is in
   [inventory_snapshot.md](../inventory_snapshot.md) §7.
-- Status: metadata-only compaction and lookup-shard rebuild; it does not re-fetch or
+- Status: metadata-only DAG compaction and lineage retention; it does not re-fetch or
   alter logical inventory facts.
 - Depends on: S5 cumulative snapshot.
 - Non-blocking: downstream processing.
 
 ## Objective
 
-Compact annual parts and accession/filing-CIK/source-CIK lookup shards offline, rebuild the
-seek indexes according to repository Parquet contracts, enforce uniqueness and digest
-validation, verify logical query parity, manage dependency-aware retention, and
-atomically publish a new `current` pointer. Cumulative snapshots, source-CIK edge merging,
-point/form queries, and the anti-join are already part of S5, not deferred to vacuum.
+Compact DAG delta lineages into consolidated checkpoint nodes, verify logical query
+parity, manage dependency-aware retention, and prune unreachable part files offline.
+Enforce uniqueness and digest validation, and atomically publish a new `current`
+pointer. Cumulative snapshots, source-CIK edge merging, point/form queries, and the
+anti-join are already part of S5, not deferred to vacuum.
 
 ## Contract
 
@@ -42,7 +42,8 @@ def vacuum(
    parts adhering strictly to the repository contract:
    - `row_group_size = 128_000`
    - `compression = "zstd"`
-4. Rebuild accession, filing-CIK, and source-CIK lookup shards and manifest key ranges.
+4. Calculate consolidated `key_min`/`key_max` bounds from Parquet footer metadata
+   via `read_parquet_key_bounds()` for each consolidated part.
 5. Zero HTTP requests. Logical inventory facts are unchanged.
 
 ## Logical parity verification gate
@@ -58,8 +59,8 @@ mandatory verification gate:
    - `get_accession(accession)` for sampled accessions.
    - `query_filings(form=..., filing_date_range=...)` across all years.
    - `query_entries(accession=..., document_type=...)` for active entries.
-    - `query_filings(source_cik=...)` via CIK lookup shards.
-    - `query_filings(filing_cik=...)` via accession-prefix CIK lookup shards.
+     - `query_filings(source_cik=...)` via DuckDB lineage view with pushdown filter.
+     - `query_filings(filing_cik=...)` via DuckDB lineage view with pushdown filter.
 3. Query parity is a strict publish precondition. Any divergence halts compaction and
    leaves `current` unchanged.
 

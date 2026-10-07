@@ -129,42 +129,39 @@ index-page request and one set of observed entries. The relationship table
 supports CIK queries without repeatedly scanning a CIK list embedded in every
 entry. Repeated `(accession, source_cik)` pairs from later plans are no-ops.
 
-## 4. Physical Layout and Seek Indexes
+## 4. Physical Layout: Append-Only DAG Nodes
 
-The snapshot is a directory of immutable Parquet parts and small lookup shards,
-not one monolithic Parquet file or one zip that must be downloaded to query. The
-v1 physical layout uses **dense annual partitions**, avoiding sparse form-directory
-explosion while preserving row-group pruning:
+The snapshot is an append-only DAG of immutable Parquet parts anchored by
+periodic checkpoint cuts, not one monolithic Parquet file or one zip that must
+be downloaded to query. Each node is a directory containing a manifest and
+partitioned Parquet relations defined via declarative `RelationSpec`s:
 
 ```text
 {artifacts_root}/document_inventory/
   snapshots/{snapshot_id}/manifest.json
-  snapshots/{snapshot_id}/accessions/year=<YYYY>/part-*.parquet
-  snapshots/{snapshot_id}/entries/year=<YYYY>/part-*.parquet
-  snapshots/{snapshot_id}/accession_sources/year=<YYYY>/part-*.parquet
-  snapshots/{snapshot_id}/lookups/accession/shard=<key>/part.parquet
-  snapshots/{snapshot_id}/lookups/filing_cik/shard=<key>/part.parquet
-  snapshots/{snapshot_id}/lookups/source_cik/shard=<key>/part.parquet
+  snapshots/{snapshot_id}/accessions/part-*.parquet
+  snapshots/{snapshot_id}/entries/part-*.parquet
+  snapshots/{snapshot_id}/accession_sources/part-*.parquet
   snapshots/current/pointer.json
 ```
 
-Within each `year=<YYYY>/`, accession and entry parts are sorted by
-`(form, filing_date, accession)` so Parquet min/max statistics prune row groups
-during form and date queries without fragmenting into hundreds of sparse form
-folders. The `accession_sources` relation table is sorted by `(source_cik, accession)`.
+Within each relation, parts are sorted by the `RelationSpec` sort order so
+Parquet min/max statistics prune row groups during form and date queries without
+fragmenting into hundreds of sparse form folders. The `accession_sources`
+relation is sorted by `(source_cik, accession)`.
 
-The lookup shards are versioned, rebuildable seek indexes:
+**PartDescriptor and key bounds:**
+Each part in the manifest is described by a `PartDescriptor` recording
+`(path, sha256, row_count, byte_size, key_min, key_max)`. The `key_min`/`key_max`
+bounds are extracted from Parquet footer metadata via `read_parquet_key_bounds()`
+at publication time, enabling predicate pushdown without physical seek indexes.
 
-- `accession` maps to filing year and the relevant accession, entry, filing-CIK,
-  and source-CIK part/row-group locators. The shard key is computed from the
-  accession, so a point lookup selects one shard rather than scanning all yearly
-  tables.
-- `filing_cik` maps the accession-prefix CIK to filing/entry row groups.
-- `source_cik` maps to the matching source-CIK part/row groups. A source-CIK query
-  reads only that lookup shard and its matching rows, then resolves each accession
-  via the accession index.
+**RelationSpecs** define the three canonical relations:
+- `accessions`: `upsert` on `accession`, sorted by `(form, filing_date, accession)`
+- `entries`: `scoped_mask` on `accession`, sorted by `(accession, table_kind, row_ordinal)`
+- `accession_sources`: `append` on `(accession, source_cik)`, sorted by `(source_cik, accession)`
 
-**Manifest inheritance & supersession**:
+**Manifest inheritance & supersession:**
 - Unchanged annual partitions are inherited directly from parent snapshots via
   `manifest.json`, writing new Parquet parts only for affected filing years.
 - When an explicit refresh yields changed bytes, active manifest mappings mark
@@ -172,15 +169,15 @@ The lookup shards are versioned, rebuildable seek indexes:
   historical observations intact.
 
 The manifest lists every logical partition and part with its key range, row
-count, byte size, digest, and lookup-layout version.
+count, byte size, digest, and DAG node kind (`checkpoint` or `delta`).
 
 For local artifacts, DuckDB can query the selected files with partition and
 row-group pruning. The read interface is also range-oriented: a future remote
-object-store or repository adapter reads the manifest, the key's lookup shard,
-and only selected Parquet parts/ranges. It must not download the complete
-snapshot or fall back to fetching `-index.html` for a query hit. The first
-implementation can use local paths; the query planner and manifest must preserve
-the same selected-file contract for a later remote backend.
+object-store or repository adapter reads the manifest, prunes parts via
+`(key_min, key_max)` metadata, and only selected Parquet parts/ranges. It must
+not download the complete snapshot or fall back to fetching `-index.html` for a
+query hit. The first implementation can use local paths; the query planner and
+manifest must preserve the same selected-file contract for a later remote backend.
 
 ## 5. Cross-Plan Accession Anti-Join
 
@@ -284,8 +281,9 @@ the manifest's parent/part references. `vacuum` is a metadata-only compaction:
 
 - Merge accession, entry, and source-CIK deltas; enforce unique accession and
   `(accession, source_cik)` keys.
-- Compact annual parts, sort by their query keys, and rebuild accession,
-  filing-CIK, and source-CIK lookup shards and manifest key ranges.
+- Compact DAG delta lineages into consolidated checkpoint parts, sort by their
+  query keys, and calculate consolidated `key_min`/`key_max` bounds via
+  `read_parquet_key_bounds()`.
 - Validate row counts, hashes, referential integrity, source-CIK relation equality,
   and query parity for accession, filing form, filing CIK, and source CIK before
   moving `current`.
@@ -307,23 +305,24 @@ index fixture, and parser subplans.
 
 ### S5a — Queryable cumulative snapshot
 
-Implement the logical tables, annual partitions, filing/source-CIK lookup shards, global
-accession anti-join, new source-CIK edge merge, immutable parent-linked snapshots,
-and atomic `current` pointer in the first snapshot publisher.
+Implement the logical tables, declarative `RelationSpec`s, append-only delta and
+checkpoint DAG publications, global accession anti-join, new source-CIK edge merge,
+immutable parent-linked snapshots, and atomic `current` pointer in the first
+snapshot publisher.
 
 **Acceptance:** an accession with source-CIK associations split across independent plan
 fixtures causes one index-page request total; later builds update only unseen
 CIK relationships. The accession query returns all source rows without SEC
-requests. Form queries read only selected annual row groups and return exact rows;
+requests. Form queries read only selected row groups and return exact rows;
 filing-CIK and source-CIK queries return their distinct expected accessions. A query
-against a remote-range test adapter reads the manifest, the relevant lookup shard,
-and selected row groups, not all snapshot files.
+against a remote-range test adapter reads the manifest, prunes parts via
+`(key_min, key_max)` metadata, and selected row groups, not all snapshot files.
 
-### S8 — Vacuum and query-index verification
+### S8 — DAG compaction, lineage retention, and pruning
 
-Implement compaction, lookup-shard rebuild, parent dependency checks, and
-pointer-last publication. Verify query equivalence before/after compaction and
-retention of all referenced snapshots.
+Implement DAG lineage compaction into consolidated checkpoint nodes, query-parity
+verification, dependency-aware retention, and offline part pruning. Verify query
+equivalence before/after compaction and retention of all referenced snapshots.
 
 **Acceptance:** accessions, forms, entries, filing-CIK, and source-CIK queries return the same
 logical results after vacuum; no page response is fetched; an interrupted or

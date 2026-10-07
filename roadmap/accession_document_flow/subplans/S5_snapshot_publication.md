@@ -7,7 +7,8 @@
   [inventory_snapshot.md](../inventory_snapshot.md).
 - Status: streamed pre-fetch cohort projection/work-order generation, post-fetch
   anti-join staging, validated-attempt snapshot merge, artifact validation, serialized
-  installation, stale-parent refusal, and pointer-last publication are implemented.
+  installation, stale-parent refusal, and pointer-last publication are implemented
+  on top of `edgar_sec/infra/storage/dag/` using delta publications and `RelationSpec`.
   Reader/query API and production projection-to-S4-to-S5 orchestration remain open;
   explicit superseded-entry manifest mapping is unresolved.
 - Depends for operational publication on: S1 cohort contract, S3 parser body, and S4
@@ -93,7 +94,7 @@ digest changes.
    publication staging and leave `current` unchanged, while retaining valid S4 chunks.
 6. Externally sort staged rows by the physical keys below using DuckDB configured from
    `derive_resources()` (`threads`, `memory_limit`, `temp_directory`, and
-   `preserve_insertion_order=false`). Emit annual parts and lookup shards, validate the
+   `preserve_insertion_order=false`). Emit annual parts and delta manifests, validate the
    complete child snapshot, then atomically write `current` last.
 
 Candidate and current relations stay on disk or inside DuckDB-managed temporary storage.
@@ -177,12 +178,9 @@ explosion while providing backend-neutral query selection:
 ```text
 {artifacts_root}/document_inventory/
   snapshots/{snapshot_id}/manifest.json
-  snapshots/{snapshot_id}/accessions/year=<YYYY>/part-*.parquet
-  snapshots/{snapshot_id}/entries/year=<YYYY>/part-*.parquet
-  snapshots/{snapshot_id}/accession_sources/year=<YYYY>/part-*.parquet
-  snapshots/{snapshot_id}/lookups/accession/shard=<key>/part.parquet
-  snapshots/{snapshot_id}/lookups/filing_cik/shard=<key>/part.parquet
-  snapshots/{snapshot_id}/lookups/source_cik/shard=<key>/part.parquet
+  snapshots/{snapshot_id}/accessions/part-*.parquet
+  snapshots/{snapshot_id}/entries/part-*.parquet
+  snapshots/{snapshot_id}/accession_sources/part-*.parquet
   snapshots/current/pointer.json
 ```
 
@@ -246,7 +244,8 @@ and query parity for accession, filing form, filing CIK, and source CIK.
 - S4 chunk pointer/manifest/schema/digest mismatches are never consumed as complete.
 - Concurrent writers serialize; a writer with a stale parent refuses before publish.
 - Manifest digests match all published parts.
-- Point accession query resolves via a single lookup shard.
+- Point accession query resolves via DuckDB predicate pushdown over the
+  snapshot's lineage view with `(key_min, key_max)` range pruning.
 - Form+CIK combined filter intersects CIK postings with annual form row groups.
 - Completion-order worker results produce the same deterministic sorted rows and
   logical fingerprint as accession-order synthetic inputs.

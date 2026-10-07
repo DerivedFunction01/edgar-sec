@@ -630,7 +630,7 @@ One `SecBroker` per run whose cache, rate limiter, and failure ledger all worker
 
 **Details:** [subplan](subplans/S5_snapshot_publication.md)
 
-The cumulative queryable snapshot: dense annual partitions (`year=YYYY/part-*.parquet`), anti-join by accession before HTTP, distinct CIK semantics (`filing_cik` from the accession prefix and `source_cik` relation in `accession_sources`), separate filing/source-CIK lookup shards, zero-copy manifest inheritance, page supersession/tombstones, and atomic `current` publication after validation. Schema/query/writer work can use typed synthetic outcomes before S3/S4 finish; real publication consumes validated S4 chunks, rebuilds its own bounded staging, and externally sorts with derived DuckDB resources. No target profile or payload field enters the snapshot; a failed fetch or parse publishes nothing.
+The cumulative queryable snapshot: append-only delta and checkpoint DAG publications, declarative `RelationSpec`s (`accessions`, `entries`, `accession_sources`), anti-join by accession before HTTP, distinct CIK semantics (`filing_cik` from the accession prefix and `source_cik` relation in `accession_sources`), Parquet footer statistics key-range pruning, zero-copy manifest inheritance, page supersession/tombstones, and atomic `current` publication after validation. Schema/query/writer work can use typed synthetic outcomes before S3/S4 finish; real publication consumes validated S4 chunks, rebuilds its own bounded staging, and externally sorts with derived DuckDB resources. No target profile or payload field enters the snapshot; a failed fetch or parse publishes nothing.
 
 ### S6 — Target profiles and separate target-plan artifacts
 
@@ -648,7 +648,7 @@ S7a front-loads the `inventory fixture create/fill/list` lifecycle from `filing_
 
 **Details:** [subplan](subplans/S8_vacuum.md)
 
-Metadata-only offline compaction of annual parts and accession/filing-CIK/source-CIK lookup shards adhering to 128k-row zstd Parquet standards, with shard rebuild, uniqueness and digest validation, a logical fingerprint query-parity verification gate before moving `current`, dependency-aware retention protecting active plans and live parts, and lease-checked staging cleanup. It does not re-fetch pages or alter logical inventory facts. Cumulative snapshots, source-CIK edge merging, point/form/CIK queries, and the anti-join remain S5 work.
+Metadata-only offline DAG lineage compaction into consolidated checkpoint nodes adhering to 128k-row zstd Parquet standards, with Parquet footer key-range bounds, uniqueness and digest validation, a logical fingerprint query-parity verification gate before moving `current`, dependency-aware retention protecting active plans and live parts, and offline pruning of unreachable part files. It does not re-fetch pages or alter logical inventory facts. Cumulative snapshots, source-CIK edge merging, point/form/CIK queries, and the anti-join remain S5 work.
 
 ### S9 — Target-plan acquisition and source fixture database
 
@@ -720,7 +720,7 @@ The initial operator surface is explicit-artifact oriented and small:
 | Target planning | `documents plan --inventory <snapshot_id|current> --profile <path>` or `--catalog-plan <id> --profile <path>` | Explicit source → immutable target plan with pinned source provenance. One source per v1 plan. |
 | Accession query | `inventory query --snapshot current --accession <accession>` | Filing facts, all observed child/data-file rows, and source-CIK relations; no network. |
 | Form/CIK query | `inventory query --snapshot current --form <form> [--filing-cik <cik>] [--source-cik <cik>]`, `--filing-cik <cik>`, or `--source-cik <cik>` | Matching accessions/entries from annual parts and distinct filing/source-CIK postings; no network. |
-| Vacuum | `inventory vacuum --snapshot <snapshot-id|current> --retention <policy-id>` | Compact annual parts and lookup shards; parity-gated, atomically publish `current`. |
+| Vacuum | `inventory vacuum --snapshot <snapshot-id|current> --retention <policy-id>` | Compact DAG delta lineages into checkpoint nodes and prune unreachable parts; parity-gated, atomically publish `current`. |
 | Inspect (later S7c) | `inventory inspect --snapshot <id|current> [--accession <accession>]` | Reads a pinned snapshot manifest/partition or one accession; no network. |
 
 `index.json` parsing, a broader `status` command, interactive wizard, and

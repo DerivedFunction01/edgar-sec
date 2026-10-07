@@ -361,3 +361,23 @@ gantt
 | **M3: Metadata Sync** | `pipelines/metadata_sync` | • `edgar_sec/pipelines/metadata_sync/merger.py` (delegates to DAG publisher)<br>• `edgar_sec/pipelines/metadata_sync/snapshot.py` (loads via DAG lineage resolution)<br>• `edgar_sec/pipelines/metadata_sync/README.md` |
 | **M4: Document Acquisition** | `pipelines/document_acquisition` | • `edgar_sec/pipelines/document_acquisition/snapshot/` (new adapter using composite-key `scoped_mask`)<br>• `roadmap/accession_document_flow/subplans/S9_acquisition.md` |
 | **M5: Test Consolidation** | `tests/` | • `tests/pipelines/document_inventory/snapshot/test_writer.py` (prune redundant CoW copy tests)<br>• `tests/pipelines/metadata_sync/test_merger.py` (prune redundant full chunk merge tests) |
+
+---
+
+## 8. Implementation Status
+
+The core DAG engine is fully implemented in `edgar_sec/infra/storage/dag/`:
+`spec.py` (declarative `RelationSpec`), `manifest.py` (DAG node manifests and
+`PartDescriptor`), `traversal.py` (lineage walking), `resolution.py` (DuckDB
+virtual view compiler), `anti_join.py` (idempotence filtering),
+`publication.py` (atomic pointer-last CAS), `compaction.py` (lineage cuts and
+checkpoint materialization), `retention.py` (reachability tracing and part
+reference counting), `doctor.py` (graph health audit), `query.py` (accelerated
+point lookup with range pruning), `cli.py`, and `README.md`. The engine is
+covered by `tests/infra/storage/dag/`.
+
+`document_inventory` is the primary consumer, utilizing `RelationSpec`s for
+`accessions` (`upsert`), `entries` (`scoped_mask`), and `accession_sources`
+(`append`). The `document_inventory` snapshot writer emits thin delta nodes and
+checkpoint cuts via the DAG engine rather than rewriting entire annual
+partitions.
