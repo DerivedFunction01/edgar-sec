@@ -140,12 +140,30 @@ def _action_review() -> None:
     )
 
 
+def _action_dag() -> None:
+    from edgar_sec.infra.storage.dag.menu import DAGMenuConfig, run_dag_menu
+    from edgar_sec.pipelines.document_inventory.paths import InventoryPaths
+    from edgar_sec.pipelines.document_inventory.snapshot.specs import (
+        INVENTORY_RELATIONS,
+    )
+
+    # TODO: Connect publish_action when document_inventory S4 attempt builder is ready.
+    config = DAGMenuConfig(
+        snapshots_root=lambda: InventoryPaths(Path(_root())).snapshots_root,
+        title="Document Inventory Snapshot DAG Console",
+        specs=INVENTORY_RELATIONS,
+        publish_action=None,
+    )
+    run_dag_menu(config)
+
+
 def build_operator_menu() -> tuple[MenuAction, ...]:
     return (
         MenuAction("1", "Create fixture from a published catalog plan", _action_create),
         MenuAction("2", "Fill a discovered fixture from a catalog plan", _action_fill),
         MenuAction("3", "List discovered fixtures", _action_list),
         MenuAction("4", "Build parser review artifacts", _action_review),
+        MenuAction("5", "Snapshot DAG Lifecycle Console", _action_dag),
     )
 
 

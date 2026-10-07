@@ -190,3 +190,10 @@ def test_no_args_prints_help_instead_of_json_prompt(
     monkeypatch.setattr("sys.argv", ["inventory"])
     assert cli.main(None) == 0
     assert "fixture" in capsys.readouterr().out
+
+
+def test_cli_dispatches_dag_subcommand(
+    tmp_path: Path, capsys: pytest.CaptureFixture[str]
+) -> None:
+    assert cli.main(["dag", "--root", str(tmp_path), "status"]) == 1
+    assert "No active snapshot pointer" in capsys.readouterr().out

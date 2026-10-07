@@ -13,6 +13,7 @@ from pathlib import Path
 from typing import Any
 
 from edgar_sec.engine.selection.policy import SelectionPolicy
+from edgar_sec.foundation.runtime.settings.validators import positive_int_type
 from edgar_sec.pipelines.filing_catalog.catalog_job import (
     CatalogError,
     materialize,
@@ -182,7 +183,10 @@ def build_parser() -> argparse.ArgumentParser:
         ),
     )
     plan_parser.add_argument(
-        "--limit", type=int, default=None, help="max rows per form partition"
+        "--limit",
+        type=positive_int_type,
+        default=None,
+        help="max rows per form partition",
     )
     plan_parser.set_defaults(func=cmd_plan)
 
@@ -194,7 +198,10 @@ def build_parser() -> argparse.ArgumentParser:
         "--parent-plan", required=True, help="published policy plan directory"
     )
     expand_parser.add_argument(
-        "--target-units", type=int, required=True, help="child plan locator target"
+        "--target-units",
+        type=positive_int_type,
+        required=True,
+        help="child plan locator target",
     )
     expand_parser.add_argument(
         "--artifacts", default="", help="artifacts root override"

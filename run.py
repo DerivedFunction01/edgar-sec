@@ -48,6 +48,12 @@ ENTRIES: tuple[LauncherEntry, ...] = (
         description="Read-only browser and SQL console over published artifacts",
         module="edgar_sec.apps.viewer.cli",
     ),
+    LauncherEntry(
+        id="dag",
+        label="Snapshot DAG Console",
+        description="Interactive DAG lineage, swimlane graphs, tags, branches, and maintenance",
+        module="edgar_sec.infra.storage.dag.operator",
+    ),
 )
 
 

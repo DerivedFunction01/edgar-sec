@@ -487,6 +487,21 @@ def commands(state: WizardState) -> None:
     )
 
 
+def open_metadata_dag_console(state: WizardState) -> None:
+    """Launch the interactive DAG lifecycle console for metadata sync snapshots."""
+    from edgar_sec.infra.storage.dag.menu import DAGMenuConfig, run_dag_menu
+    from .specs import METADATA_RELATION_SPECS
+
+    config = DAGMenuConfig(
+        snapshots_root=lambda: state.metadata().snapshots_root,
+        title="Metadata Sync Snapshot DAG Console",
+        specs=METADATA_RELATION_SPECS,
+        publish_action=lambda: merge(state),
+        publish_label="Merge completed run chunks and publish to DAG",
+    )
+    run_dag_menu(config)
+
+
 # ----------------------------------------------------------------------- menu
 
 
@@ -512,8 +527,8 @@ def build_operator_menu(state: WizardState | None = None) -> tuple[MenuAction, .
         ),
         MenuAction(
             "p",
-            "Switch the current published snapshot",
-            lambda: select_snapshot(session),
+            "Snapshot DAG console (switch current, inspect, branches, tags)",
+            lambda: open_metadata_dag_console(session),
         ),
         MenuAction(
             "c", "Show worker commands for this plan", lambda: commands(session)

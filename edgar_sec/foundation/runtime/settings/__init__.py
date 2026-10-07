@@ -15,6 +15,7 @@ from pathlib import Path
 
 from ..env import get_env
 from .catalog import get_catalog_specs
+from .dag import get_dag_specs
 from .paths import get_paths_specs
 from .runtime import get_runtime_specs
 from .sec import SecSettings, get_sec_specs
@@ -75,6 +76,7 @@ def collect_specs() -> dict[str, SettingSpec]:
         get_paths_specs,
         get_sec_specs,
         get_catalog_specs,
+        get_dag_specs,
     ):
         group = spec_provider()
         _flatten_group(group, "", specs)

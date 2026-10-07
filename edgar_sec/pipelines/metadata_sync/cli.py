@@ -14,6 +14,14 @@ from pathlib import Path
 from typing import Any
 
 from edgar_sec.foundation.runtime.settings import resolve_runtime_settings
+from edgar_sec.foundation.runtime.settings.validators import (
+    non_negative_int_type,
+    positive_int_type,
+)
+from edgar_sec.infra.storage.dag.cli import (
+    attach_dag_subparser,
+    dispatch_dag_subcommand,
+)
 
 from .assignment import AssignmentError
 from .augmentation import augment, augment_from_roster, preflight_augment
@@ -492,13 +500,13 @@ def _add_common(sub: argparse.ArgumentParser) -> None:
     sub.add_argument("--artifacts", default="", help="artifacts root override")
     sub.add_argument(
         "--chunk-size",
-        type=int,
+        type=positive_int_type,
         default=None,
         help="CIKs per resumable chunk; defaults to runtime.chunk_size",
     )
     sub.add_argument(
         "--workers",
-        type=int,
+        type=positive_int_type,
         default=None,
         help="worker threads; machine-derived if unset",
     )
@@ -531,12 +539,14 @@ def _add_cohort_source(sub: argparse.ArgumentParser, *, with_limit: bool) -> Non
         "--universe", action="store_true", help="full SEC registrant index"
     )
     if with_limit:
-        sub.add_argument("--limit", type=int, default=None)
+        sub.add_argument("--limit", type=positive_int_type, default=None)
 
 
 def _add_chunk_selection(sub: argparse.ArgumentParser) -> None:
     sub.add_argument("--chunks", default="", help="chunk ids or ranges, e.g. '0-3,7'")
-    sub.add_argument("--chunk", type=int, default=None, help="a single chunk id")
+    sub.add_argument(
+        "--chunk", type=non_negative_int_type, default=None, help="a single chunk id"
+    )
 
 
 def _plan_options(args: argparse.Namespace) -> PlanOptions:
@@ -629,7 +639,10 @@ def build_parser() -> argparse.ArgumentParser:
     _add_plan_reference(export_parser)
     _add_common(export_parser)
     export_parser.add_argument(
-        "--worker-count", type=int, required=True, help="disjoint assignments to emit"
+        "--worker-count",
+        type=positive_int_type,
+        required=True,
+        help="disjoint assignments to emit",
     )
     export_parser.add_argument("--destination", required=True, help="output directory")
     export_parser.set_defaults(
@@ -720,6 +733,22 @@ def build_parser() -> argparse.ArgumentParser:
     family_index_parser.set_defaults(
         func=lambda args: cmd_family_index(
             Path(args.artifacts) if args.artifacts else None
+        )
+    )
+
+    from .specs import METADATA_RELATION_SPECS
+
+    dag_parser = attach_dag_subparser(
+        subparsers,
+        subcommand_name="dag",
+        default_root=lambda: resolve_metadata_paths().snapshots_root,
+        default_specs=METADATA_RELATION_SPECS,
+    )
+    dag_parser.set_defaults(
+        func=lambda args: dispatch_dag_subcommand(
+            args,
+            default_root=lambda: resolve_metadata_paths().snapshots_root,
+            default_specs=METADATA_RELATION_SPECS,
         )
     )
 

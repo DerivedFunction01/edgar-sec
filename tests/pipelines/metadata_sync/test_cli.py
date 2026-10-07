@@ -49,6 +49,7 @@ COMMANDS = (
     "augment",
     "sources",
     "family-index",
+    "dag",
 )
 
 SOURCE_TICKERS = {
@@ -765,3 +766,8 @@ def test_family_index_refuses_without_a_published_universe(
 ) -> None:
     assert main(["family-index", "--artifacts", str(tmp_path)]) == 1
     assert "cik_lookup" in capsys.readouterr().err
+
+
+def test_dag_subcommand_dispatches(tmp_path: Path, capsys) -> None:
+    assert main(["dag", "--root", str(tmp_path), "status"]) == 1
+    assert "No active snapshot pointer" in capsys.readouterr().out

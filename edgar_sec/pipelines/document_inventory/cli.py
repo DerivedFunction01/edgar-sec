@@ -11,6 +11,7 @@ from uuid import uuid4
 
 from edgar_sec.foundation.hashing import file_sha256, sha256_text
 from edgar_sec.foundation.runtime.paths import resolve_paths
+from edgar_sec.foundation.runtime.settings.validators import positive_int_type
 from edgar_sec.foundation.serialization import canonical_json
 from edgar_sec.infra.broker.daemon import managed_broker
 from edgar_sec.pipelines.document_inventory.cohort import (
@@ -44,16 +45,6 @@ def _artifacts_root(value: str | None) -> Path:
     if value:
         return Path(value).expanduser().resolve()
     return resolve_paths().artifacts_root.resolve()
-
-
-def _positive_limit(value: str) -> int:
-    try:
-        result = int(value)
-    except ValueError as exc:
-        raise argparse.ArgumentTypeError("limit must be a positive integer") from exc
-    if result < 1:
-        raise argparse.ArgumentTypeError("limit must be a positive integer")
-    return result
 
 
 def _plan(root: Path, plan_id: str) -> tuple[dict, dict, Path]:
@@ -270,7 +261,7 @@ def build_parser() -> argparse.ArgumentParser:
         child.add_argument("--fixture", required=True, help="fixture id")
         child.add_argument("--catalog-plan", required=True, help="published plan id")
         child.add_argument(
-            "--limit", type=_positive_limit, help="limit captured accessions"
+            "--limit", type=positive_int_type, help="limit captured accessions"
         )
         _add_output_options(child)
         child.set_defaults(func=handler)
@@ -289,11 +280,40 @@ def build_parser() -> argparse.ArgumentParser:
         "--accession", action="append", help="limit to an accession; repeatable"
     )
     review.add_argument(
-        "--limit", type=_positive_limit, help="limit selected captured pages"
+        "--limit", type=positive_int_type, help="limit selected captured pages"
     )
-    review.add_argument("--workers", type=_positive_limit, help="worker process count")
+    review.add_argument(
+        "--workers", type=positive_int_type, help="worker process count"
+    )
     _add_output_options(review)
     review.set_defaults(func=cmd_review_artifacts)
+
+    from edgar_sec.infra.storage.dag.cli import (
+        attach_dag_subparser,
+        dispatch_dag_subcommand,
+    )
+    from edgar_sec.pipelines.document_inventory.snapshot.specs import (
+        INVENTORY_RELATIONS,
+    )
+
+    dag_parser = attach_dag_subparser(
+        commands,
+        subcommand_name="dag",
+        default_root=lambda: InventoryPaths(_artifacts_root(None)).snapshots_root,
+        default_specs=INVENTORY_RELATIONS,
+    )
+    dag_parser.set_defaults(
+        func=lambda args: dispatch_dag_subcommand(
+            args,
+            default_root=lambda: (
+                InventoryPaths(
+                    _artifacts_root(getattr(args, "artifacts", None))
+                ).snapshots_root
+            ),
+            default_specs=INVENTORY_RELATIONS,
+        )
+    )
+
     return parser
 
 

@@ -1,4 +1,4 @@
-"""Shared validators for typed setting specifications.
+"""Shared validators and argparse type callables for typed setting specs.
 
 Bounds are declared once here so sibling specs cannot disagree.
 """
@@ -6,14 +6,28 @@ Bounds are declared once here so sibling specs cannot disagree.
 from __future__ import annotations
 
 
-def validate_positive_int(value: object) -> None:
-    if int(value) < 1:
+def positive_int_type(value: str) -> int:
+    """Convert a string to a positive int (>= 1) for argparse ``type=``."""
+    result = int(value)
+    if result < 1:
         raise ValueError("must be >= 1")
+    return result
+
+
+def non_negative_int_type(value: str) -> int:
+    """Convert a string to a non-negative int (>= 0) for argparse ``type=``."""
+    result = int(value)
+    if result < 0:
+        raise ValueError("must be >= 0")
+    return result
+
+
+def validate_positive_int(value: object) -> None:
+    positive_int_type(str(value))
 
 
 def validate_non_negative_int(value: object) -> None:
-    if int(value) < 0:
-        raise ValueError("must be >= 0")
+    non_negative_int_type(str(value))
 
 
 def validate_fraction(value: object) -> None:
@@ -27,6 +41,8 @@ def validate_fraction(value: object) -> None:
 
 
 __all__ = [
+    "positive_int_type",
+    "non_negative_int_type",
     "validate_fraction",
     "validate_non_negative_int",
     "validate_positive_int",

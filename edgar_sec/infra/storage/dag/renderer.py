@@ -7,6 +7,7 @@ from __future__ import annotations
 
 from collections import defaultdict, deque
 from dataclasses import dataclass, field
+from pathlib import Path
 from typing import Sequence
 
 
@@ -74,13 +75,44 @@ class DAGSwimlaneRenderer:
 
         return order, cycle_back_edges
 
-    def render(self) -> str:
+    def render(
+        self,
+        *,
+        offset: int = 0,
+        limit: int | None = None,
+        filter_text: str = "",
+    ) -> str:
         """Render DAG nodes into ASCII swimlanes with bridge link details."""
         order, cycle_back_edges = self.compute_order()
+        if filter_text:
+            query = filter_text.strip().lower()
+            filtered_order = [
+                n_id
+                for n_id in order
+                if query in n_id.lower()
+                or (
+                    self.node_map.get(n_id)
+                    and any(query in lbl.lower() for lbl in self.node_map[n_id].labels)
+                )
+                or (
+                    self.node_map.get(n_id)
+                    and query in self.node_map[n_id].checkpoint_anchor_id.lower()
+                )
+            ]
+        else:
+            filtered_order = order
+
+        slice_end = (offset + limit) if limit is not None else None
+        visible_order = (
+            filtered_order[offset:slice_end]
+            if (offset or limit is not None)
+            else filtered_order
+        )
+
         lines: list[str] = []
         lanes: list[str] = []
 
-        for node_id in order:
+        for node_id in visible_order:
             indices = [i for i, target in enumerate(lanes) if target == node_id]
             if indices:
                 active_idx = indices[0]
@@ -134,7 +166,74 @@ class DAGSwimlaneRenderer:
         return "\n".join(lines)
 
 
+def build_graph_nodes(
+    snapshots_root: Path | str,
+    *,
+    branch_name: str | None = None,
+    all_heads: bool = False,
+) -> list[GraphNode]:
+    """Assemble graph nodes with branch and tag labels from root."""
+    from .manifest import DAGNodeManifest
+    from .publication import list_branches, read_pointer
+    from .retention import discover_roots
+    from .tags import list_tags
+    from .traversal import walk_lineage
+
+    root = Path(snapshots_root)
+    all_branches = list_branches(root)
+    branch_map: dict[str, list[str]] = {}
+    for b in all_branches:
+        b_ptr = read_pointer(root, branch_name=None if b == "current" else b)
+        if b_ptr:
+            s_id = str(b_ptr["snapshot_id"])
+            lbl = "(HEAD -> current)" if b == "current" else f"(branch: {b})"
+            branch_map.setdefault(s_id, []).append(lbl)
+
+    tag_map: dict[str, list[str]] = {}
+    for t in list_tags(root):
+        tag_map.setdefault(str(t["snapshot_id"]), []).append(f"(tag: {t['tag']})")
+
+    node_pool: dict[str, DAGNodeManifest] = {}
+    if all_heads:
+        heads = discover_roots(root)
+        for head in heads:
+            try:
+                lin = walk_lineage(root, head)
+                for node in lin.nodes:
+                    node_pool[node.snapshot_id] = node
+            except Exception:
+                continue
+    else:
+        ptr = read_pointer(root, branch_name=branch_name)
+        if ptr is not None:
+            lin = walk_lineage(root, str(ptr["snapshot_id"]))
+            for node in lin.nodes:
+                node_pool[node.snapshot_id] = node
+
+    graph_nodes: list[GraphNode] = []
+    for node in node_pool.values():
+        labels = branch_map.get(node.snapshot_id, []) + tag_map.get(
+            node.snapshot_id, []
+        )
+        bridge_links: list[str] = []
+        base_pin = node.metadata.get("base_snapshot_id")
+        if base_pin:
+            bridge_links.append(str(base_pin))
+        graph_nodes.append(
+            GraphNode(
+                snapshot_id=node.snapshot_id,
+                kind=node.kind,
+                parents=tuple(p.snapshot_id for p in node.parents),
+                checkpoint_anchor_id=node.checkpoint_anchor_id,
+                bridge_links=tuple(bridge_links),
+                labels=tuple(labels),
+            )
+        )
+    return graph_nodes
+
+
 __all__ = [
     "DAGSwimlaneRenderer",
     "GraphNode",
+    "build_graph_nodes",
 ]

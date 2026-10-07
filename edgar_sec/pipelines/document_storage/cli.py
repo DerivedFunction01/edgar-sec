@@ -14,6 +14,7 @@ from pathlib import Path
 from typing import Any
 
 from edgar_sec.foundation.runtime.paths import resolve_paths
+from edgar_sec.foundation.runtime.settings.validators import positive_int_type
 from edgar_sec.pipelines.document_storage.paths import DocumentStoragePaths
 from edgar_sec.pipelines.document_storage.merger import (
     current_snapshot_artifact,
@@ -72,7 +73,9 @@ def _build_parser() -> argparse.ArgumentParser:
         help="render source-first review artifacts from a fixture",
     )
     artifacts.add_argument("--fixture", required=True, help="fixture id to review")
-    artifacts.add_argument("--limit", type=int, default=None, help="max documents")
+    artifacts.add_argument(
+        "--limit", type=positive_int_type, default=None, help="max documents"
+    )
     artifacts.add_argument(
         "--id",
         action="append",
@@ -96,7 +99,9 @@ def _build_parser() -> argparse.ArgumentParser:
     artifacts.add_argument(
         "--output", type=Path, default=None, help="output directory; must not exist"
     )
-    artifacts.add_argument("--workers", type=int, default=None, help="worker processes")
+    artifacts.add_argument(
+        "--workers", type=positive_int_type, default=None, help="worker processes"
+    )
     artifacts.add_argument(
         "--json", action="store_true", help="emit the report as JSON"
     )
@@ -373,12 +378,6 @@ def _cmd_review_artifacts(args: argparse.Namespace, paths: DocumentStoragePaths)
         render_review_run,
     )
 
-    if args.limit is not None and args.limit <= 0:
-        print("--limit must be positive", file=sys.stderr)
-        return 2
-    if args.workers is not None and args.workers <= 0:
-        print("--workers must be positive", file=sys.stderr)
-        return 2
     ids = [*args.ids, *_ids_file(args.ids_file)]
     run_id = args.run_id or new_review_run_id()
     output = Path(args.output) if args.output else paths.review_run_dir(run_id)
