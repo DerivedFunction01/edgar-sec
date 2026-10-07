@@ -58,8 +58,12 @@ from edgar_sec.pipelines.document_inventory.snapshot.models import SnapshotPubli
 from edgar_sec.pipelines.document_inventory.snapshot.publication_lock import (
     PublicationLock,
 )
+from edgar_sec.infra.storage.dag.manifest import (
+    DAGNodeManifest,
+    ParentRef,
+    PartDescriptor,
+)
 from edgar_sec.pipelines.document_inventory.snapshot.schema import (
-    LOOKUP_LAYOUT_VERSION,
     SNAPSHOT_ACCESSION_SOURCES_SCHEMA,
     SNAPSHOT_ACCESSIONS_SCHEMA,
     SNAPSHOT_RELATION_VERSION,
@@ -387,103 +391,34 @@ def _create_merge_relations(
         "FROM parent_accession_sources UNION ALL SELECT accession, source_cik, first_seen_by "
         "FROM delta_sources"
     )
-    con.execute(
-        "CREATE TEMP VIEW accessions_by_year AS SELECT *, substr(filing_date, 1, 4) AS _year "
-        "FROM all_accessions"
-    )
-    con.execute(
-        "CREATE TEMP VIEW entries_by_year AS SELECT e.*, a.form, a.filing_date, "
-        "substr(a.filing_date, 1, 4) AS _year FROM all_entries e JOIN all_accessions a USING(accession)"
-    )
-    con.execute(
-        "CREATE TEMP VIEW sources_by_year AS SELECT s.*, substr(a.filing_date, 1, 4) AS _year "
-        "FROM all_accession_sources s JOIN all_accessions a USING(accession)"
-    )
-    con.execute(
-        "CREATE TEMP VIEW lookup_accession_all AS SELECT accession AS lookup_value, accession, _year AS filing_year "
-        "FROM accessions_by_year"
-    )
-    con.execute(
-        "CREATE TEMP VIEW lookup_filing_cik_all AS SELECT filing_cik AS lookup_value, accession, _year AS filing_year "
-        "FROM accessions_by_year"
-    )
-    con.execute(
-        "CREATE TEMP VIEW lookup_source_cik_all AS SELECT source_cik AS lookup_value, accession, _year AS filing_year "
-        "FROM sources_by_year"
-    )
 
 
-def _years(con, query: str) -> set[str]:
-    return {str(row[0]) for row in con.execute(query).fetchall()}
-
-
-def _part_year(record: dict[str, Any]) -> str:
-    for component in Path(record["path"]).parts:
-        if component.startswith("year="):
-            return component[5:]
-    raise ValidationFailedError("snapshot partition path has no year")
-
-
-def _write_annual_parts(
+def _write_relation_part(
     con,
-    paths: InventoryPaths,
-    snapshot_id: str,
     stage_root: Path,
+    snapshot_id: str,
     relation: str,
     query: str,
-    changed_years: set[str],
-    inherited: list[dict[str, Any]],
-) -> list[dict[str, Any]]:
-    retained = [
-        record for record in inherited if _part_year(record) not in changed_years
-    ]
-    schema = _RELATION_SCHEMAS[relation]
-    result = list(retained)
-    for year in sorted(changed_years):
-        final = paths.snapshot_part_path(snapshot_id, relation, year)
-        staged = stage_root / relation / f"year={year}" / final.name
-        copy_query_to_parquet(con, query, staged, params=[year])
-        if pq.ParquetFile(staged).metadata.num_rows == 0:
+    key_column: str,
+) -> dict[str, Any] | None:
+    staged = stage_root / relation / "part-00000.parquet"
+    staged.parent.mkdir(parents=True, exist_ok=True)
+    count = copy_query_to_parquet(con, query, staged)
+    if count == 0:
+        if staged.exists():
             staged.unlink()
-            continue
-        relative = f"{snapshot_id}/{relation}/year={year}/{final.name}"
-        result.append(
-            _write_part_descriptor(staged, relative, schema, _RELATION_KEYS[relation])
-        )
-    return sorted(result, key=lambda record: (_part_year(record), record["path"]))
-
-
-def _write_lookup_shards(
-    con, paths: InventoryPaths, snapshot_id: str, stage_root: Path
-) -> dict[str, list[dict[str, Any]]]:
-    result = {}
-    for lookup in ("accession", "filing_cik", "source_cik"):
-        records = []
-        for shard in range(16):
-            key = f"{shard:x}"
-            final = paths.snapshot_lookup_path(snapshot_id, lookup, key)
-            staged = stage_root / "lookups" / lookup / f"shard={key}" / final.name
-            query = (
-                f"SELECT lookup_value, accession, filing_year FROM lookup_{lookup}_all "
-                "WHERE substr(sha256(lookup_value), 1, 1) = ? ORDER BY lookup_value, accession"
-            )
-            count = copy_query_to_parquet(con, query, staged, params=[key])
-            key_min, key_max = _key_range(staged, "lookup_value")
-            relative = f"{snapshot_id}/lookups/{lookup}/shard={key}/{final.name}"
-            records.append(
-                {
-                    "lookup": lookup,
-                    "shard_key": key,
-                    "part_path": relative,
-                    "row_count": count,
-                    "sha256": file_sha256(staged),
-                    "byte_size": staged.stat().st_size,
-                    "key_min": key_min,
-                    "key_max": key_max,
-                }
-            )
-        result[lookup] = records
-    return result
+        return None
+    key_min, key_max = _key_range(staged, key_column)
+    relative = f"{snapshot_id}/{relation}/part-00000.parquet"
+    return {
+        "path": relative,
+        "row_count": count,
+        "key_min": key_min,
+        "key_max": key_max,
+        "byte_size": staged.stat().st_size,
+        "sha256": file_sha256(staged),
+        "row_group_count": pq.ParquetFile(staged).metadata.num_row_groups,
+    }
 
 
 def _read_pointer(paths: InventoryPaths) -> str | None:
@@ -632,7 +567,6 @@ def publish_committed_chunks(
                 "cohort_sources": file_sha256(cohort_sources),
                 "snapshot_schema": SNAPSHOT_RELATION_VERSION,
                 "entry_schema": ENTRY_SCHEMA_VERSION,
-                "lookup_layout": LOOKUP_LAYOUT_VERSION,
             }
         )
         snapshot_id = snapshot_id_for(expected_parent_snapshot_id, content_digest)
@@ -668,83 +602,91 @@ def publish_committed_chunks(
                             f"current is {actual_parent!r}"
                         )
                     return SnapshotPublication.no_op(parent_metadata)
-            delta_accession_years = _years(
-                connection,
-                "SELECT DISTINCT substr(filing_date, 1, 4) FROM delta_accessions",
-            )
-            delta_source_years = _years(
-                connection,
-                "SELECT DISTINCT substr(a.filing_date, 1, 4) FROM delta_sources s "
-                "JOIN all_accessions a USING(accession)",
-            )
             inherited = parent_manifest or {}
             accession_query = (
                 "SELECT accession, filing_cik, form, filing_date, report_date, bundle_url, "
-                "bundle_size, index_url, index_sha256, first_indexed_by FROM accessions_by_year "
-                "WHERE _year = ? ORDER BY form, filing_date, accession"
+                "bundle_size, index_url, index_sha256, first_indexed_by FROM delta_accessions "
+                "ORDER BY form, filing_date, accession"
             )
             entry_query = (
                 "SELECT entry_id, accession, table_kind, row_ordinal, sequence, document_type, "
                 "document_label, description, filename, href, archive_url, byte_size "
-                "FROM entries_by_year WHERE _year = ? "
+                "FROM delta_entries JOIN delta_accessions USING(accession) "
                 "ORDER BY form, filing_date, accession, row_ordinal, table_kind, entry_id"
             )
             source_query = (
-                "SELECT accession, source_cik, first_seen_by FROM sources_by_year "
-                "WHERE _year = ? ORDER BY source_cik, accession"
+                "SELECT accession, source_cik, first_seen_by FROM delta_sources "
+                "ORDER BY source_cik, accession"
             )
-            relation_records = {
-                "accessions": _write_annual_parts(
-                    connection,
-                    inventory_paths,
-                    snapshot_id,
-                    staged_snapshot,
-                    "accessions",
-                    accession_query,
-                    delta_accession_years,
-                    inherited.get("accessions", []),
-                ),
-                "entries": _write_annual_parts(
-                    connection,
-                    inventory_paths,
-                    snapshot_id,
-                    staged_snapshot,
-                    "entries",
-                    entry_query,
-                    delta_accession_years,
-                    inherited.get("entries", []),
-                ),
-                "accession_sources": _write_annual_parts(
-                    connection,
-                    inventory_paths,
-                    snapshot_id,
-                    staged_snapshot,
-                    "accession_sources",
-                    source_query,
-                    delta_source_years,
-                    inherited.get("accession_sources", []),
-                ),
-            }
-            lookup_records = _write_lookup_shards(
-                connection, inventory_paths, snapshot_id, staged_snapshot
-            )
+            relation_records: dict[str, list[dict[str, Any]]] = {}
+            for rel, q, key_col in (
+                ("accessions", accession_query, "accession"),
+                ("entries", entry_query, "accession"),
+                ("accession_sources", source_query, "source_cik"),
+            ):
+                inherited_parts = list(inherited.get(rel, []))
+                part = _write_relation_part(
+                    connection, staged_snapshot, snapshot_id, rel, q, key_col
+                )
+                relation_records[rel] = inherited_parts + ([part] if part else [])
         finally:
             connection.close()
 
         accessions_digest = canonical_hash(
             [(part["path"], part["sha256"]) for part in relation_records["accessions"]]
         )
+        parent_refs: list[ParentRef] = []
+        if expected_parent_snapshot_id:
+            parent_manifest_file = inventory_paths.snapshot_manifest_path(
+                expected_parent_snapshot_id
+            )
+            if parent_manifest_file.is_file():
+                parent_refs.append(
+                    ParentRef(
+                        snapshot_id=expected_parent_snapshot_id,
+                        manifest_sha256=file_sha256(parent_manifest_file),
+                    )
+                )
+        dag_manifest = DAGNodeManifest(
+            snapshot_id=snapshot_id,
+            kind="delta" if expected_parent_snapshot_id else "checkpoint",
+            parents=tuple(parent_refs),
+            checkpoint_anchor_id=expected_parent_snapshot_id or snapshot_id,
+            lineage_depth=len(parent_refs),
+            created_at=datetime.now(UTC).isoformat(timespec="seconds"),
+            relations={
+                rel: tuple(
+                    PartDescriptor(
+                        path=p["path"],
+                        sha256=p["sha256"],
+                        row_count=p["row_count"],
+                        byte_size=p["byte_size"],
+                        key_min=p.get("key_min"),
+                        key_max=p.get("key_max"),
+                    )
+                    for p in parts
+                )
+                for rel, parts in relation_records.items()
+            },
+            logical_fingerprint=content_digest,
+        )
         manifest = {
             "snapshot_id": snapshot_id,
             "parent_snapshot_id": expected_parent_snapshot_id or "",
             "run_intent_id": run.run_id,
             "base_snapshot_id": expected_parent_snapshot_id,
+            "kind": dag_manifest.kind,
+            "parents": [p.to_dict() for p in dag_manifest.parents],
+            "checkpoint_anchor_id": dag_manifest.checkpoint_anchor_id,
+            "lineage_depth": dag_manifest.lineage_depth,
+            "created_at": dag_manifest.created_at,
             "schema_version": SNAPSHOT_RELATION_VERSION,
             "entry_schema_version": ENTRY_SCHEMA_VERSION,
-            "lookup_layout_version": LOOKUP_LAYOUT_VERSION,
-            "created_at": datetime.now(UTC).isoformat(timespec="seconds"),
+            "relations": {
+                rel: [p.to_dict() for p in parts]
+                for rel, parts in dag_manifest.relations.items()
+            },
             **relation_records,
-            "lookups": lookup_records,
             "accessions_digest": accessions_digest,
             "input_rows": {"outcomes": outcome_count, "entries": entry_count},
         }

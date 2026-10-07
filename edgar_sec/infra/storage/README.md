@@ -28,7 +28,7 @@ system and no table registry.
 | `atomic.py` | The three atomic writers and the shared parent-directory fsync — the tmp-then-rename discipline the rest of the layer copies. |
 | `parquet.py` | The Parquet format constants, the PyArrow read/write wrappers, and `StagedParquetWriter` for incremental chunk staging and resumption. |
 | `duckdb.py` | `connect()`, the only `duckdb.connect()` call site in `edgar_sec`; the SQL dialect primitives (`sql_literal`, `sql_identifier`, `sql_path_list`); the atomic out-of-core COPY; and the generic duplicate/null-key checks. |
-| `manifests.py` | Snapshot identity, immutable manifest publication, the `current` pointer, and the part-sharing analysis a safe purge needs. |
+| `dag/` | Unified append-only snapshot DAG engine, lineage traversal, compaction, publication locks, and CLI runner. |
 | `__init__.py` | Docstring only. No re-exports. |
 
 ## Contracts

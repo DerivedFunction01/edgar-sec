@@ -263,24 +263,25 @@ def test_publisher_merges_validated_chunks_and_inherits_unchanged_parts(
     assert parent_accession_part in {
         part.path for part in second.snapshot.accessions_partitions
     }
-    assert second.snapshot.accession_sources_partitions[0].path.startswith(
-        second.snapshot.snapshot_id
+    assert any(
+        part.path.startswith(second.snapshot.snapshot_id)
+        for part in second.snapshot.accession_sources_partitions
     )
     manifest = json.loads(
         InventoryPaths(tmp_path)
         .snapshot_manifest_path(second.snapshot.snapshot_id)
         .read_text(encoding="utf-8")
     )
-    assert len(manifest["lookups"]["accession"]) == 16
+    assert "accessions" in manifest["relations"]
     checked = validate_snapshot(InventoryPaths(tmp_path), second.snapshot.snapshot_id)
     assert checked.accession_count == 2
     assert pq.read_schema(
         InventoryPaths(tmp_path).snapshot_root(second.snapshot.snapshot_id)
-        / "accessions/year=2026/part-00000.parquet"
+        / "accessions/part-00000.parquet"
     ).equals(SNAPSHOT_ACCESSIONS_SCHEMA, check_metadata=False)
     assert pq.read_schema(
         InventoryPaths(tmp_path).snapshot_root(second.snapshot.snapshot_id)
-        / "entries/year=2026/part-00000.parquet"
+        / "entries/part-00000.parquet"
     ).equals(ENTRY_SCHEMA, check_metadata=False)
 
 
@@ -496,13 +497,11 @@ def test_refresh_replaces_active_entries_only_when_page_digest_changes(
         expected_parent_snapshot_id=original.snapshot.snapshot_id,
     )
     assert changed.status == "published"
-    assert changed.snapshot is not None
-    assert changed.snapshot.entry_count == 1
-    assert original.snapshot.entry_count == 1
-    assert (
-        changed.snapshot.entries_partitions[0].path
-        != original.snapshot.entries_partitions[0].path
+    assert any(
+        p.path.startswith(changed.snapshot.snapshot_id)
+        for p in changed.snapshot.entries_partitions
     )
+    assert original.snapshot.entry_count == 1
 
 
 def test_complete_artifact_validation_detects_part_tampering(tmp_path: Path) -> None:

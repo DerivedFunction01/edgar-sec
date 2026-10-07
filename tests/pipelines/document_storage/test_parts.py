@@ -4,7 +4,7 @@ from pathlib import Path
 
 import pytest
 
-from edgar_sec.infra.storage.manifests import SnapshotPart
+from edgar_sec.pipelines.document_storage.manifests import SnapshotPart
 from edgar_sec.pipelines.document_storage.parts import (
     INDEX_COLUMNS,
     PAYLOAD_COLUMNS,

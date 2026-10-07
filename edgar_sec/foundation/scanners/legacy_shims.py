@@ -30,7 +30,7 @@ _IDENTIFIERS = build_alternation(["legacy", "compat", "shim"])
 _COMPAT_IDENTIFIER_RE = re.compile(
     rf"\b(?:def\s+_(?:{_IDENTIFIERS})\w*"
     rf"|class\s+(?:{build_alternation(['Legacy', 'Compat', 'Shim'])})\w*"
-    rf"|(?:{build_alternation(['legacy_', 'compat_', 'shim_'])})\w*\s*=)",
+    rf"|(?:{build_alternation(['legacy_', 'compat_', 'shim_', '_legacy'])})\w*\s*=)",
     re.IGNORECASE,
 )
 

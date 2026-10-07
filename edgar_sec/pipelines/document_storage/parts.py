@@ -17,7 +17,7 @@ import pyarrow as pa
 import pyarrow.parquet as pq
 
 from edgar_sec.infra.storage.atomic import _fsync_dir
-from edgar_sec.infra.storage.manifests import (
+from edgar_sec.pipelines.document_storage.manifests import (
     PART_KIND_INDEX,
     PART_KIND_PAYLOAD,
     SnapshotPart,

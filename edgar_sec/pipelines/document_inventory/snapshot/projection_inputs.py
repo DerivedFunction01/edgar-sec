@@ -333,6 +333,8 @@ def base_snapshot_parts(
             "base snapshot manifest digest does not match current pointer"
         )
     records = manifest.get("accessions")
+    if records is None and isinstance(manifest.get("relations"), dict):
+        records = manifest["relations"].get("accessions")
     if not isinstance(records, list):
         raise BaseSnapshotError("base snapshot accession parts are missing")
     result: list[tuple[Path, int, str]] = []

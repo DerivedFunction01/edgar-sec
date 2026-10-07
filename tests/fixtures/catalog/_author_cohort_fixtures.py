@@ -13,6 +13,8 @@ from pathlib import Path
 import pyarrow as pa
 import pyarrow.parquet as pq
 
+from edgar_sec.infra.storage.parquet import DEFAULT_ROW_GROUP_SIZE
+
 FIXTURES = Path(__file__).resolve().parent
 
 # Column types for the synthetic part; reported_size and the xbrl flags mirror the
@@ -279,7 +281,9 @@ def _write_parquet(
     table = pa.Table.from_pylist(
         [_to_py_row(r) for r in rows], schema=OBSERVATION_SCHEMA
     )
-    pq.write_table(table, path, compression="zstd", row_group_size=128_000)
+    pq.write_table(
+        table, path, compression="zstd", row_group_size=DEFAULT_ROW_GROUP_SIZE
+    )
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
 

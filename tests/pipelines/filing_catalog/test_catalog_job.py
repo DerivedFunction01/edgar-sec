@@ -118,8 +118,13 @@ def _phase1_manifest(sample_source: Path, root: Path) -> Path:
         json.dumps(
             {
                 "snapshot_id": "snap-1",
-                "output_path": str(target),
-                "artifact_sha256": file_sha256(target),
+                "parts": [
+                    {
+                        "path": str(target),
+                        "sha256": file_sha256(target),
+                        "row_count": pq.read_table(target).num_rows,
+                    }
+                ],
             }
         ),
         encoding="utf-8",
@@ -275,7 +280,7 @@ def test_source_manifest_rejects_a_tampered_payload(
     tmp_path: Path, sample_source: Path
 ) -> None:
     manifest = _phase1_manifest(sample_source, tmp_path / "art")
-    payload = json.loads(manifest.read_text(encoding="utf-8"))["output_path"]
+    payload = Path(json.loads(manifest.read_text(encoding="utf-8"))["parts"][0]["path"])
     table = pq.read_table(payload).drop_columns(["listings"])
     pq.write_table(table, payload)
 
@@ -288,10 +293,10 @@ def test_source_manifest_without_a_digest_is_refused(
 ) -> None:
     manifest = _phase1_manifest(sample_source, tmp_path / "art")
     document = json.loads(manifest.read_text(encoding="utf-8"))
-    document.pop("artifact_sha256")
+    document["parts"][0].pop("sha256")
     manifest.write_text(json.dumps(document), encoding="utf-8")
 
-    with pytest.raises(CatalogError, match="no artifact digest"):
+    with pytest.raises(CatalogError, match="has no digest"):
         resolve_source(None, manifest)
 
 
@@ -300,7 +305,7 @@ def test_source_manifest_without_an_output_path_is_refused(
 ) -> None:
     manifest = _phase1_manifest(sample_source, tmp_path / "art")
     document = json.loads(manifest.read_text(encoding="utf-8"))
-    document.pop("output_path")
+    document.pop("parts")
     manifest.write_text(json.dumps(document), encoding="utf-8")
 
     with pytest.raises(CatalogError, match="names no payload"):

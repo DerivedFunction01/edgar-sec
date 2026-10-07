@@ -9,7 +9,7 @@ import pytest
 
 from edgar_sec.domain.document.models import DocumentLocator, FilingOccurrence
 from edgar_sec.domain.identity import Cik
-from edgar_sec.infra.storage.manifests import (
+from edgar_sec.pipelines.document_storage.manifests import (
     ManifestError,
     SnapshotPart,
     expand_dependency_closure,
@@ -92,7 +92,10 @@ def _manifest(root: Path, snapshot_id: str) -> dict:
 
 def _consolidated_rows(root: Path, snapshot_id: str) -> list[dict]:
     """Reads the stored part, so it reports what was actually written."""
-    from edgar_sec.infra.storage.manifests import SnapshotReader, snapshot_dir
+    from edgar_sec.pipelines.document_storage.manifests import (
+        SnapshotReader,
+        snapshot_dir,
+    )
 
     reader = SnapshotReader(root, snapshot_id)
     parts = reader.parts("index")
@@ -110,7 +113,10 @@ def _consolidated_rows(root: Path, snapshot_id: str) -> list[dict]:
 
 def _derived_quarters(root: Path, snapshot_id: str) -> list[tuple[int, str]]:
     """Derive fiscal quarters the way a consumer does, from the effective relation."""
-    from edgar_sec.infra.storage.manifests import SnapshotReader, snapshot_dir
+    from edgar_sec.pipelines.document_storage.manifests import (
+        SnapshotReader,
+        snapshot_dir,
+    )
     from edgar_sec.pipelines.document_storage.vacuum import effective_relations
 
     reader = SnapshotReader(root, snapshot_id)
@@ -342,7 +348,7 @@ def _write_raw_snapshot(
     filing_dates: dict[str, str] | None = None,
 ) -> None:
     """Publish a snapshot directly from a document/text map."""
-    from edgar_sec.infra.storage.manifests import write_manifest
+    from edgar_sec.pipelines.document_storage.manifests import write_manifest
     from edgar_sec.pipelines.document_storage.parts import (
         PlannedPart,
         write_index_part,
@@ -583,7 +589,7 @@ def _write_shared_snapshot(
     root: Path, snapshot_id: str, documents: dict[str, str]
 ) -> None:
     """Publish a snapshot that reuses another snapshot's part paths."""
-    from edgar_sec.infra.storage.manifests import write_manifest
+    from edgar_sec.pipelines.document_storage.manifests import write_manifest
 
     source = [m for m in list_snapshots(root) if m["snapshot_id"] == "snap-a"]
     assert source, "snap-a must exist first"

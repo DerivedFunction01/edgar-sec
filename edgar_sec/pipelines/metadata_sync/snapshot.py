@@ -61,9 +61,7 @@ class SnapshotParts:
 
 
 def load_snapshot_manifest(manifest_path: str | Path) -> SnapshotLayout:
-    """Read a snapshot manifest and describe its layout.
-    A legacy manifest describes a single payload; a versioned one a part list.
-    """
+    """Read a snapshot manifest and describe its layout."""
     path = Path(manifest_path)
     if not path.is_file():
         raise FileNotFoundError(f"snapshot manifest not found: {path}")
@@ -71,18 +69,25 @@ def load_snapshot_manifest(manifest_path: str | Path) -> SnapshotLayout:
     if not isinstance(manifest, dict):
         raise SnapshotLayoutError(f"snapshot manifest is not a JSON object: {path}")
 
-    multipart = bool(manifest.get("parts"))
-    if not multipart and not str(manifest.get("output_path") or ""):
+    parts = manifest.get("parts")
+    if parts is None and manifest.get("relations"):
+        parts = manifest["relations"].get("submissions", ())
+    if not parts:
         raise SnapshotLayoutError(
             f"snapshot manifest names no payload: {path}; expected a 'parts' list "
-            "or a legacy 'output_path'"
+            "or 'relations'"
         )
+    row_count = int(manifest.get("row_count") or 0)
+    if not row_count and manifest.get("relations"):
+        submissions_rel = manifest["relations"].get("submissions", ())
+        row_count = sum(int(p.get("row_count", 0)) for p in submissions_rel)
+
     return SnapshotLayout(
         manifest_path=path,
         manifest=manifest,
-        multipart=multipart,
+        multipart=True,
         snapshot_id=str(manifest.get("snapshot_id") or ""),
-        row_count=int(manifest.get("row_count") or 0),
+        row_count=row_count,
         schema_version=str(manifest.get("schema_version") or ""),
     )
 
@@ -107,32 +112,14 @@ def read_snapshot_parts(
     manifest = layout.manifest
     anchor = layout.manifest_path
 
-    if not layout.multipart:
-        payload = resolve_part_path(anchor, str(manifest["output_path"]))
-        if not payload.is_file():
-            raise SnapshotLayoutError(
-                f"snapshot payload named by {layout.manifest_path} is missing: {payload}"
-            )
-        if verify_digests:
-            expected = str(manifest.get("artifact_sha256") or "")
-            if not expected:
-                raise SnapshotLayoutError(
-                    f"snapshot manifest records no artifact digest: "
-                    f"{layout.manifest_path}"
-                )
-            actual = file_sha256(payload)
-            if actual != expected:
-                raise SnapshotLayoutError(
-                    f"snapshot payload digest mismatch: manifest {expected}, "
-                    f"file {actual}"
-                )
-        return SnapshotParts(
-            layout=layout, paths=(payload,), part_count=1, row_count=layout.row_count
-        )
-
     paths: list[Path] = []
     seen: set[str] = set()
-    for index, part in enumerate(manifest["parts"]):
+    raw_parts = manifest.get("parts")
+    if raw_parts is None and manifest.get("relations"):
+        raw_parts = manifest["relations"].get("submissions", ())
+    parts_list = list(raw_parts or ())
+
+    for index, part in enumerate(parts_list):
         name = str(part.get("path") or "")
         if not name:
             raise SnapshotLayoutError(

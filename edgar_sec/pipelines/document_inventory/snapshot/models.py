@@ -20,15 +20,15 @@ __all__ = [
 
 @dataclass(frozen=True, slots=True)
 class PartitionPart:
-    """One Parquet part inside an annual partition."""
+    """One Parquet part in a snapshot relation."""
 
     path: str
     row_count: int
-    key_min: str
-    key_max: str
-    byte_size: int
-    sha256: str
-    row_group_count: int
+    key_min: str | None = None
+    key_max: str | None = None
+    byte_size: int = 0
+    sha256: str = ""
+    row_group_count: int = 1
 
 
 @dataclass(frozen=True, slots=True)
@@ -73,22 +73,65 @@ class SnapshotMetadata:
 
     @classmethod
     def from_manifest(cls, payload: dict) -> "SnapshotMetadata":
-        accessions = payload.get("accessions", [])
-        entries = payload.get("entries", [])
-        sources = payload.get("accession_sources", [])
+        relations = payload.get("relations", {})
+        accessions = payload.get("accessions")
+        if accessions is None:
+            accessions = relations.get("accessions", [])
+        entries = payload.get("entries")
+        if entries is None:
+            entries = relations.get("entries", [])
+        sources = payload.get("accession_sources")
+        if sources is None:
+            sources = relations.get("accession_sources", [])
         lookups = payload.get("lookups", {})
         return cls(
             snapshot_id=str(payload["snapshot_id"]),
             parent_snapshot_id=str(payload.get("parent_snapshot_id", "")),
-            run_intent_id=str(payload["run_intent_id"]),
+            run_intent_id=str(payload.get("run_intent_id", "")),
             base_snapshot_id=payload.get("base_snapshot_id"),
             schema_version=str(payload.get("schema_version", "1")),
             entry_schema_version=int(payload.get("entry_schema_version", 1)),
             lookup_layout_version=str(payload.get("lookup_layout_version", "1")),
-            created_at=str(payload["created_at"]),
-            accessions_partitions=tuple(PartitionPart(**p) for p in accessions),
-            entries_partitions=tuple(PartitionPart(**p) for p in entries),
-            accession_sources_partitions=tuple(PartitionPart(**p) for p in sources),
+            created_at=str(payload.get("created_at", "")),
+            accessions_partitions=tuple(
+                PartitionPart(**p)
+                if isinstance(p, dict)
+                else PartitionPart(
+                    p.path,
+                    p.row_count,
+                    p.key_min,
+                    p.key_max,
+                    p.byte_size,
+                    p.sha256,
+                )
+                for p in accessions
+            ),
+            entries_partitions=tuple(
+                PartitionPart(**p)
+                if isinstance(p, dict)
+                else PartitionPart(
+                    p.path,
+                    p.row_count,
+                    p.key_min,
+                    p.key_max,
+                    p.byte_size,
+                    p.sha256,
+                )
+                for p in entries
+            ),
+            accession_sources_partitions=tuple(
+                PartitionPart(**p)
+                if isinstance(p, dict)
+                else PartitionPart(
+                    p.path,
+                    p.row_count,
+                    p.key_min,
+                    p.key_max,
+                    p.byte_size,
+                    p.sha256,
+                )
+                for p in sources
+            ),
             accessions_lookup=tuple(
                 LookupShard(**s) for s in lookups.get("accession", [])
             ),
@@ -104,7 +147,10 @@ class SnapshotMetadata:
             superseded_entry_ids={
                 k: tuple(v) for k, v in payload.get("superseded_entry_ids", {}).items()
             },
-            accessions_digest=str(payload["accessions_digest"]),
+            accessions_digest=str(
+                payload.get("accessions_digest")
+                or payload.get("logical_fingerprint", "")
+            ),
         )
 
     def accessor_for(self, accession: str) -> str | None:

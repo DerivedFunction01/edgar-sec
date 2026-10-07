@@ -7,6 +7,7 @@ publishes only once every chunk has validated.
 from __future__ import annotations
 
 import json
+import os
 import shutil
 from collections.abc import Callable, Sequence
 from dataclasses import dataclass, field
@@ -17,6 +18,12 @@ from edgar_sec.domain.submissions.schemas import SCHEMA_VERSION
 from edgar_sec.foundation.hashing import file_sha256, sha256_bytes
 from edgar_sec.foundation.serialization import canonical_json
 from edgar_sec.infra.storage.atomic import atomic_write_json
+from edgar_sec.infra.storage.dag.manifest import (
+    DAGNodeManifest,
+    ParentRef,
+    PartDescriptor,
+    write_manifest,
+)
 from edgar_sec.infra.storage.duckdb import (
     connect,
     find_duplicate_keys,
@@ -270,15 +277,33 @@ def publish_parts(
     metadata_paths: MetadataPaths,
     sources: Sequence[tuple[str, Path]],
 ) -> tuple[Path, ...]:
-    """Publish validated source files as a snapshot's ordered Parquet parts.
-    Byte copies of validated files. The trade is row order: part order, not sorted
-    by CIK, and the manifest records that.
-    """
+    """Publish validated source files as a snapshot's ordered Parquet parts."""
     parts_dir = metadata_paths.snapshot_parts_dir(report.snapshot_id)
     parts_dir.mkdir(parents=True, exist_ok=True)
+    snapshot_dir = metadata_paths.snapshot_dir(report.snapshot_id)
     published: list[Path] = []
+    chunk_index = 0
     for index, (label, source) in enumerate(sources):
-        name = f"part-{index:05d}.parquet"
+        if label.startswith("base:"):
+            if not source.is_file():
+                raise MergeError(f"ancestor part missing: {source}")
+            rel_path = os.path.relpath(source, snapshot_dir)
+            report.parts.append(
+                {
+                    "path": rel_path,
+                    "part_index": index,
+                    "source": label,
+                    "row_count": count_parquet_rows(source),
+                    "byte_count": source.stat().st_size,
+                    "sha256": file_sha256(source),
+                    "schema_version": report.schema_version,
+                }
+            )
+            published.append(source)
+            continue
+
+        name = f"part-{chunk_index:05d}.parquet"
+        chunk_index += 1
         destination = parts_dir / name
         shutil.copy2(source, destination)
         if not read_parquet_schema(destination).equals(
@@ -406,6 +431,45 @@ def publish_snapshot(
         manifest,
         canonical=False,
         indent=2,
+    )
+    parent_refs: list[ParentRef] = []
+    if report.parent_snapshot_id:
+        parent_manifest = (
+            metadata_paths.snapshot_dir(report.parent_snapshot_id) / "manifest.json"
+        )
+        if parent_manifest.is_file():
+            parent_refs.append(
+                ParentRef(
+                    snapshot_id=report.parent_snapshot_id,
+                    manifest_sha256=file_sha256(parent_manifest),
+                )
+            )
+    part_descriptors = tuple(
+        PartDescriptor(
+            path=str(p["path"]),
+            sha256=str(p["sha256"]),
+            row_count=int(p["row_count"]),
+            byte_size=int(p.get("byte_count", 0)),
+        )
+        for p in report.parts
+    )
+    dag_manifest = DAGNodeManifest(
+        snapshot_id=report.snapshot_id,
+        kind="delta" if report.parent_snapshot_id else "checkpoint",
+        parents=tuple(parent_refs),
+        checkpoint_anchor_id=(
+            report.snapshot_id
+            if not report.parent_snapshot_id
+            else report.parent_snapshot_id
+        ),
+        lineage_depth=1 if report.parent_snapshot_id else 0,
+        created_at=report.merged_at or utc_now_iso(),
+        relations={"submissions": part_descriptors},
+        logical_fingerprint=report.parts_digest or "",
+    )
+    write_manifest(
+        metadata_paths.snapshot_dir(report.snapshot_id) / "manifest.json",
+        dag_manifest,
     )
     pointer: dict[str, Any] = {
         "snapshot_id": report.snapshot_id,

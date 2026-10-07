@@ -11,6 +11,7 @@ from edgar_sec.domain.document_inventory.models import ParsedIndexPage
 from edgar_sec.foundation.serialization import canonical_json
 from edgar_sec.infra.storage.atomic import atomic_write_json
 from edgar_sec.infra.storage.duckdb import connect, sql_path_list
+from edgar_sec.infra.storage.parquet import DEFAULT_ROW_GROUP_SIZE
 
 from .checkpoint import OUTCOME_SCHEMA, RETRYABLE_STATUSES, outcome_row
 from .paths import InventoryRunPaths
@@ -198,7 +199,9 @@ class ProgressStore:
                 writers.write_entry_batch,
             ),
         ):
-            reader = self._con.execute(query).to_arrow_reader(batch_size=128_000)
+            reader = self._con.execute(query).to_arrow_reader(
+                batch_size=DEFAULT_ROW_GROUP_SIZE
+            )
             for batch in reader:
                 writer(batch)
 

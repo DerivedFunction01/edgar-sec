@@ -19,11 +19,9 @@ from edgar_sec.pipelines.document_inventory.snapshot.errors import (
 )
 from edgar_sec.pipelines.document_inventory.snapshot.models import SnapshotMetadata
 from edgar_sec.pipelines.document_inventory.snapshot.schema import (
-    LOOKUP_LAYOUT_VERSION,
     SNAPSHOT_ACCESSION_SOURCES_SCHEMA,
     SNAPSHOT_ACCESSIONS_SCHEMA,
     SNAPSHOT_RELATION_VERSION,
-    SNAPSHOT_LOOKUP_SCHEMA,
 )
 from edgar_sec.domain.document_inventory.schemas import (
     ENTRY_SCHEMA,
@@ -35,8 +33,6 @@ _RELATIONS = {
     "entries": ENTRY_SCHEMA,
     "accession_sources": SNAPSHOT_ACCESSION_SOURCES_SCHEMA,
 }
-_LOOKUPS = ("accession", "filing_cik", "source_cik")
-_SHARDS = tuple(f"{number:x}" for number in range(16))
 
 
 def _artifact_path(
@@ -125,17 +121,19 @@ def _part_files(
             paths, snapshot_id, record.get("path"), staged_root=staged_root
         )
         relative = Path(record["path"])
-        if (
-            len(relative.parts) != 4
-            or relative.parts[1] != relation
-            or not re.fullmatch(r"year=\d{4}", relative.parts[2])
-            or not re.fullmatch(r"part-\d{5}\.parquet", relative.parts[3])
-            or relative.parts[2][5:] in years
-        ):
+        valid_path = (
+            len(relative.parts) == 3
+            and relative.parts[1] == relation
+            and bool(re.fullmatch(r"part-\d{5}\.parquet", relative.parts[2]))
+        ) or (
+            len(relative.parts) == 2
+            and relative.parts[0] == relation
+            and bool(re.fullmatch(r"part-\d{5}\.parquet", relative.parts[1]))
+        )
+        if not valid_path:
             raise ValidationFailedError(
                 f"snapshot partition path is invalid: {record['path']!r}"
             )
-        years.add(relative.parts[2][5:])
         if not path.is_file():
             raise ValidationFailedError(f"snapshot part is missing: {path}")
         try:
@@ -172,26 +170,39 @@ def _part_files(
                 key_max = value if key_max is None else max(key_max, value)
         if (key_min, key_max) != (record.get("key_min"), record.get("key_max")):
             raise ValidationFailedError(f"snapshot part key range mismatch: {path}")
-        if relation == "accessions":
-            for batch in parquet.iter_batches(batch_size=4096, columns=["filing_date"]):
-                if any(
-                    value is None or value[:4] != relative.parts[2][5:]
-                    for value in batch.column(0).to_pylist()
-                ):
-                    raise ValidationFailedError(
-                        f"accession year partition mismatch: {path}"
-                    )
-        if Path(record["path"]).parts[0] == snapshot_id:
+        if Path(record["path"]).parts[0] in (snapshot_id, relation):
             local_files.add(path)
         result.append(path)
     return result
 
 
-def _create_view(con, name: str, files: list[Path], schema: pa.Schema) -> None:
+_RELATION_PKS = {
+    "accessions": ("accession",),
+    "entries": ("entry_id",),
+    "accession_sources": ("accession", "source_cik"),
+}
+
+
+def _create_view(
+    con, name: str, files: list[Path], schema: pa.Schema, pk: tuple[str, ...]
+) -> None:
     if files:
+        for p in files:
+            file_sql = sql_path_list([str(p)])
+            pk_cols = ", ".join(sql_identifier(c) for c in pk)
+            query = (
+                f"SELECT count(*) FROM (SELECT {pk_cols} FROM read_parquet({file_sql}) "
+                f"GROUP BY {pk_cols} HAVING count(*) > 1)"
+            )
+            if int(con.execute(query).fetchone()[0]):
+                raise ValidationFailedError(f"duplicate {name} primary key in {p.name}")
+        pk_cols = ", ".join(sql_identifier(c) for c in pk)
         con.execute(
-            f"CREATE TEMP VIEW {sql_identifier(name)} AS SELECT * FROM "
-            f"read_parquet({sql_path_list([str(p) for p in files])}, hive_partitioning=false)"
+            f"CREATE TEMP VIEW {sql_identifier(name)} AS "
+            f"WITH ranked AS ("
+            f"  SELECT *, ROW_NUMBER() OVER (PARTITION BY {pk_cols} ORDER BY file_row_number DESC) AS _rnk "
+            f"  FROM read_parquet({sql_path_list([str(p) for p in files])}, file_row_number=true, hive_partitioning=false)"
+            f") SELECT * EXCLUDE(_rnk, file_row_number) FROM ranked WHERE _rnk = 1"
         )
     else:
         empty_name = f"empty_{name}"
@@ -221,17 +232,12 @@ def _validate_sorted(path: Path, columns: list[str]) -> None:
 
 def _validate_relations(
     relation_files: dict[str, list[Path]],
-    lookup_files: dict[str, list[Path]],
     profile: RuntimeResourceProfile | None,
 ) -> None:
     con = connect(profile)
     try:
         for name, schema in _RELATIONS.items():
-            _create_view(con, name, relation_files[name], schema)
-        for name in _LOOKUPS:
-            _create_view(
-                con, f"{name}_lookup", lookup_files[name], SNAPSHOT_LOOKUP_SCHEMA
-            )
+            _create_view(con, name, relation_files[name], schema, _RELATION_PKS[name])
         checks = (
             (
                 "duplicate accession keys",
@@ -290,31 +296,6 @@ def _validate_relations(
             )
             if _count(con, ordering):
                 raise ValidationFailedError(f"entry part rows are not sorted: {path}")
-        parity = (
-            (
-                "accession",
-                "SELECT accession AS lookup_value, accession, substr(filing_date, 1, 4) AS filing_year FROM accessions",
-            ),
-            (
-                "filing_cik",
-                "SELECT filing_cik AS lookup_value, accession, substr(filing_date, 1, 4) AS filing_year FROM accessions",
-            ),
-            (
-                "source_cik",
-                "SELECT s.source_cik AS lookup_value, s.accession, substr(a.filing_date, 1, 4) AS filing_year FROM accession_sources s JOIN accessions a USING(accession)",
-            ),
-        )
-        for name, expected_query in parity:
-            actual = f"{name}_lookup"
-            actual_query = f"SELECT lookup_value, accession, filing_year FROM {sql_identifier(actual)}"
-            if _count(
-                con,
-                f"SELECT count(*) FROM (({expected_query}) EXCEPT ALL ({actual_query}))",
-            ) or _count(
-                con,
-                f"SELECT count(*) FROM (({actual_query}) EXCEPT ALL ({expected_query}))",
-            ):
-                raise ValidationFailedError(f"{name} lookup parity failed")
     finally:
         con.close()
 
@@ -327,7 +308,7 @@ def validate_snapshot(
     staged_root: Path | None = None,
     profile: RuntimeResourceProfile | None = None,
 ) -> SnapshotMetadata:
-    """Validate every declared part, lookup, digest, and relation invariant."""
+    """Validate every declared part, digest, and relation invariant."""
     path = manifest_path or paths.snapshot_manifest_path(snapshot_id)
     try:
         payload = json.loads(path.read_text(encoding="utf-8"))
@@ -339,15 +320,13 @@ def validate_snapshot(
         raise ValidationFailedError("snapshot relation version mismatch")
     if payload.get("entry_schema_version") != ENTRY_SCHEMA_VERSION:
         raise ValidationFailedError("snapshot entry schema version mismatch")
-    if payload.get("lookup_layout_version") != LOOKUP_LAYOUT_VERSION:
-        raise ValidationFailedError("snapshot lookup version mismatch")
 
     local_files: set[Path] = set()
     relation_files = {
         name: _part_files(
             paths,
             snapshot_id,
-            payload.get(name),
+            payload.get(name) or payload.get("relations", {}).get(name),
             name,
             schema,
             staged_root=staged_root,
@@ -355,87 +334,13 @@ def validate_snapshot(
         )
         for name, schema in _RELATIONS.items()
     }
-    lookups_payload = payload.get("lookups")
-    if not isinstance(lookups_payload, dict):
-        raise ValidationFailedError("snapshot lookup descriptors are missing")
-    lookup_files: dict[str, list[Path]] = {}
-    for name in _LOOKUPS:
-        records = lookups_payload.get(name)
-        if not isinstance(records, list) or len(records) != len(_SHARDS):
-            raise ValidationFailedError(f"{name} lookup shard set is incomplete")
-        by_key = {
-            record.get("shard_key"): record
-            for record in records
-            if isinstance(record, dict)
-        }
-        if set(by_key) != set(_SHARDS):
-            raise ValidationFailedError(f"{name} lookup shard keys are invalid")
-        lookup_files[name] = []
-        for key in _SHARDS:
-            record = by_key[key]
-            path = _artifact_path(
-                paths, snapshot_id, record.get("part_path"), staged_root=staged_root
-            )
-            if not path.is_file():
-                raise ValidationFailedError(f"lookup part is missing: {path}")
-            relative = Path(record.get("part_path", ""))
-            expected_suffix = ("lookups", name, f"shard={key}", "part-00000.parquet")
-            if len(relative.parts) != 5 or relative.parts[1:] != expected_suffix:
-                raise ValidationFailedError(f"lookup part path is invalid: {relative}")
-            if record.get("lookup") != name or record.get("shard_key") != key:
-                raise ValidationFailedError(
-                    f"lookup descriptor identity is invalid: {relative}"
-                )
-            parquet = _validate_parquet(
-                path,
-                SNAPSHOT_LOOKUP_SCHEMA,
-                record.get("row_count"),
-                record.get("sha256"),
-                None,
-            )
-            if (
-                not isinstance(record.get("byte_size"), int)
-                or isinstance(record.get("byte_size"), bool)
-                or path.stat().st_size != record.get("byte_size")
-            ):
-                raise ValidationFailedError(f"lookup part size mismatch: {path}")
-            if record.get("row_count") and parquet.metadata.num_row_groups < 1:
-                raise ValidationFailedError(f"lookup part has no row groups: {path}")
-            key_min = key_max = None
-            previous = None
-            for batch in parquet.iter_batches(batch_size=4096):
-                for row in batch.to_pylist():
-                    value = row["lookup_value"]
-                    pair = (value, row["accession"])
-                    if (
-                        value is None
-                        or row["accession"] is None
-                        or row["filing_year"] is None
-                    ):
-                        raise ValidationFailedError(f"lookup row is incomplete: {path}")
-                    if previous is not None and pair < previous:
-                        raise ValidationFailedError(
-                            f"lookup rows are not sorted: {path}"
-                        )
-                    previous = pair
-                    if hashlib.sha256(value.encode("utf-8")).hexdigest()[0] != key:
-                        raise ValidationFailedError(
-                            f"lookup row is in the wrong shard: {path}"
-                        )
-                    key_min = value if key_min is None else min(key_min, value)
-                    key_max = value if key_max is None else max(key_max, value)
-            if (key_min, key_max) != (record.get("key_min"), record.get("key_max")):
-                raise ValidationFailedError(f"lookup key range mismatch: {path}")
-            if Path(record["part_path"]).parts[0] == snapshot_id:
-                local_files.add(path)
-            lookup_files[name].append(path)
     local_root = staged_root or paths.snapshot_root(snapshot_id)
     observed = {p.resolve() for p in local_root.rglob("*.parquet")}
     if observed != local_files:
         raise ValidationFailedError(
             "snapshot contains undeclared or missing Parquet artifacts"
         )
-    _validate_relations(relation_files, lookup_files, profile)
+    _validate_relations(relation_files, profile)
     return SnapshotMetadata.from_manifest(payload)
 
 

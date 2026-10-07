@@ -4,7 +4,7 @@ from pathlib import Path
 
 import pytest
 
-from edgar_sec.infra.storage.manifests import (
+from edgar_sec.pipelines.document_storage.manifests import (
     PART_KIND_INDEX,
     PART_KIND_PAYLOAD,
     ManifestError,

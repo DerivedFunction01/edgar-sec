@@ -12,7 +12,10 @@ import pyarrow as pa
 import pyarrow.parquet as pq
 import pytest
 
-from edgar_sec.infra.storage.manifests import PART_KIND_INDEX, PART_KIND_PAYLOAD
+from edgar_sec.pipelines.document_storage.manifests import (
+    PART_KIND_INDEX,
+    PART_KIND_PAYLOAD,
+)
 from edgar_sec.pipelines.filing_catalog.paths import (
     SNAPSHOT_FILE_NAME,
     TARGETS_DIR_NAME,

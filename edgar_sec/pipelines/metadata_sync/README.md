@@ -48,6 +48,7 @@ it has no access to the coordinator's store. The bundle copy is what
 | `checkpoints.py` | What counts as a *complete* chunk on disk. |
 | `worker.py` | Resumable chunk execution over a thread pool; the never-refetch guarantee. |
 | `snapshot.py` | Resolve a published snapshot to a verified, ordered Parquet part list; both manifest versions. |
+| `specs.py` | Declarative `RelationSpec` contracts for metadata snapshot tables and compaction. |
 | `merger.py` | Coordinator validation, multipart publication, CIK index, snapshot manifest, pointer advance, and explicit pointer selection. |
 | `augmentation.py` | Delta planning and merge onto a published snapshot without refetching the base. |
 | `validation.py` | The merge-time cohort checks: one row per CIK, and reportable duplicate-accession fan-out. |

@@ -21,7 +21,7 @@ from edgar_sec.foundation.runtime.memory import reclaim
 from edgar_sec.foundation.runtime.resources import RuntimeResourceProfile
 from edgar_sec.foundation.serialization import canonical_json
 from edgar_sec.infra.storage.duckdb import connect
-from edgar_sec.infra.storage.manifests import (
+from edgar_sec.pipelines.document_storage.manifests import (
     MANIFEST_NAME,
     PART_KIND_INDEX,
     PART_KIND_PAYLOAD,

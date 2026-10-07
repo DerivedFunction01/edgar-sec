@@ -22,7 +22,10 @@ from edgar_sec.foundation.hashing import file_sha256, sha256_text
 from edgar_sec.foundation.runtime.paths import current_pointer_path
 from edgar_sec.foundation.serialization import canonical_json
 from edgar_sec.infra.storage.duckdb import connect, copy_query_to_parquet, sql_path_list
-from edgar_sec.infra.storage.manifests import PART_KIND_INDEX, PART_KIND_PAYLOAD
+from edgar_sec.pipelines.document_storage.manifests import (
+    PART_KIND_INDEX,
+    PART_KIND_PAYLOAD,
+)
 from edgar_sec.infra.storage.parquet import (
     count_parquet_rows,
     read_parquet_schema,

@@ -83,46 +83,6 @@ def test_a_multipart_manifest_resolves_to_its_parts(tmp_path: Path) -> None:
     assert parts.sql_sources()[0].endswith("part-00000.parquet")
 
 
-def test_a_legacy_single_file_manifest_still_resolves(tmp_path: Path) -> None:
-    """Snapshots published before the multipart contract must remain readable."""
-    payload = tmp_path / "metadata.parquet"
-    pq.write_table(_table(2), payload)
-    manifest = tmp_path / "metadata.manifest.json"
-    atomic_write_json(
-        manifest,
-        {
-            "snapshot_id": "legacy",
-            "output_path": str(payload),
-            "artifact_sha256": file_sha256(payload),
-            "row_count": 2,
-        },
-        canonical=False,
-    )
-
-    parts = read_snapshot_parts(manifest)
-    assert parts.part_count == 1
-    assert parts.paths == (payload,)
-    assert parts.layout.multipart is False
-
-
-def test_a_relative_legacy_output_path_resolves_against_the_manifest(
-    tmp_path: Path,
-) -> None:
-    payload = tmp_path / "metadata.parquet"
-    pq.write_table(_table(1), payload)
-    manifest = tmp_path / "metadata.manifest.json"
-    atomic_write_json(
-        manifest,
-        {
-            "snapshot_id": "legacy",
-            "output_path": "metadata.parquet",
-            "artifact_sha256": file_sha256(payload),
-        },
-        canonical=False,
-    )
-    assert read_snapshot_parts(manifest).paths == (payload,)
-
-
 def test_a_tampered_part_is_refused(tmp_path: Path) -> None:
     manifest = _multipart(tmp_path)
     victim = tmp_path / "parts" / "part-00001.parquet"
@@ -203,3 +163,32 @@ def test_verification_can_be_skipped_for_a_metadata_only_read(
 
     parts = read_snapshot_parts(manifest, verify_digests=False)
     assert parts.part_count == 3
+
+
+def test_dag_node_manifest_is_readable_by_snapshot_parts(tmp_path: Path) -> None:
+    manifest_path = tmp_path / "manifest.json"
+    parts_dir = tmp_path / "parts"
+    parts_dir.mkdir()
+    part = parts_dir / "part-00000.parquet"
+    part.write_bytes(b"mock")
+    atomic_write_json(
+        manifest_path,
+        {
+            "snapshot_id": "snap-dag",
+            "kind": "checkpoint",
+            "relations": {
+                "submissions": [
+                    {
+                        "path": "parts/part-00000.parquet",
+                        "sha256": file_sha256(part),
+                        "row_count": 42,
+                    }
+                ]
+            },
+        },
+        canonical=False,
+    )
+    parts = read_snapshot_parts(manifest_path)
+    assert parts.part_count == 1
+    assert parts.row_count == 42
+    assert parts.paths == (part,)

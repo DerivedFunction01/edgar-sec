@@ -25,7 +25,7 @@ from edgar_sec.apps.viewer.model import (
     newest_mtime,
     walk_files,
 )
-from edgar_sec.infra.storage.manifests import (
+from edgar_sec.pipelines.document_storage.manifests import (
     PART_KIND_INDEX,
     PART_KIND_PAYLOAD,
     SnapshotReader,
