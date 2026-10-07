@@ -138,7 +138,7 @@ the separate verification gate. Neither is in this package.
 - `parse_id_selection` — `'1-3,5'` to `(1, 2, 3, 5)`; raises `ValueError` for a descending range. `partitions.py`.
 - `divide_ids_among_workers` — balanced round-robin buckets. `partitions.py`.
 - `ProgressCallback` / `emit_progress` / `make_tqdm_callback` / `make_merge_progress_callback` — progress wiring; `ProgressCallback` is `Callable[[dict[str, Any]], None] | None`. `progress.py`.
-- `MenuAction` / `prompt_text` / `prompt_choice` / `run_interactive_menu` / `operator_entrypoint` — terminal presentation. `interactive.py`.
+- `MenuAction` / `menu_action` / `assign_menu_keys` / `build_menu` / `prompt_text` / `prompt_choice` / `run_interactive_menu` / `operator_entrypoint` — terminal presentation. `interactive.py`.
 
 ## Tests
 

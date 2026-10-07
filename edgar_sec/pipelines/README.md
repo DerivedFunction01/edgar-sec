@@ -209,7 +209,7 @@ package README's business.
   package's three pipeline ids plus the Layer 5 `viewer` app, which is why the
   entry class is not named `PipelineEntry`. `run.py` (repository root, not in this
   package).
-- `operator_entrypoint`, `MenuAction`, `prompt_text` — the shared operator policy:
+- `operator_entrypoint`, `MenuAction`, `menu_action`, `assign_menu_keys`, `build_menu`, `prompt_text` — the shared operator policy:
   a menu with no arguments, the CLI otherwise.
   `foundation/runtime/interactive.py`.
 

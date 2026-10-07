@@ -12,6 +12,8 @@ from typing import Any
 
 from edgar_sec.foundation.runtime.interactive import (
     MenuAction,
+    build_menu,
+    menu_action,
     operator_entrypoint,
     prompt_text,
 )
@@ -302,94 +304,60 @@ def create_dag_menu(config: DAGMenuConfig) -> tuple[MenuAction, ...]:
     """Construct MenuAction tuple for interactive DAG management."""
     root = config.resolve_root()
     actions: list[MenuAction] = []
-    idx = 1
 
     if config.publish_action is not None:
-        actions.append(
-            MenuAction(
-                str(idx),
-                config.publish_label,
-                config.publish_action,
-            )
-        )
-        idx += 1
+        actions.append(menu_action(config.publish_label, config.publish_action))
 
     actions.append(
-        MenuAction(
-            str(idx),
+        menu_action(
             f"Publish detected staging directory ({STAGING_PREFIX}*)",
             lambda: _action_publish_staged(config),
         )
     )
-    idx += 1
-
     actions.append(
-        MenuAction(
-            str(idx),
+        menu_action(
             "View ASCII swimlane graph (paginated & filterable)",
             lambda: run_paginated_graph(root, limit=config.default_graph_limit or 25),
         )
     )
-    idx += 1
-
+    actions.append(menu_action("Quick status & metrics", lambda: cmd_status(root)))
     actions.append(
-        MenuAction(str(idx), "Quick status & metrics", lambda: cmd_status(root))
-    )
-    idx += 1
-
-    actions.append(
-        MenuAction(
-            str(idx),
+        menu_action(
             "Checkout / switch tip (pick-list: branches, tags, snapshots)",
             lambda: _action_checkout(config),
         )
     )
-    idx += 1
-
     actions.append(
-        MenuAction(
-            str(idx),
+        menu_action(
             "Branch management (list, create, delete)",
             lambda: cmd_branch(root, action="list"),
         )
     )
-    idx += 1
-
     actions.append(
-        MenuAction(
-            str(idx),
+        menu_action(
             "Tag management (list, create, delete)",
             lambda: cmd_tag(root, action="list"),
         )
     )
-    idx += 1
-
     actions.append(
-        MenuAction(
-            str(idx),
+        menu_action(
             "Compact lineage (S8 Checkpoint parity merge)",
             lambda: cmd_compact(root, specs_target=None),
         )
     )
-    idx += 1
-
     actions.append(
-        MenuAction(
-            str(idx),
+        menu_action(
             "Run integrity doctor (verify digests, cycles, parts)",
             lambda: cmd_doctor(root, verify_digests=True),
         )
     )
-    idx += 1
-
     actions.append(
-        MenuAction(
-            str(idx),
+        menu_action(
             "Garbage collection (discover & purge unreferenced)",
             lambda: cmd_gc(root, dry_run=False),
         )
     )
-    return tuple(actions)
+    return build_menu(*actions)
 
 
 def run_dag_menu(config: DAGMenuConfig, argv: list[str] | None = None) -> int:

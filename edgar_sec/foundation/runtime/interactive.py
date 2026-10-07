@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 import sys
-from collections.abc import Callable
+from collections.abc import Callable, Sequence
 from dataclasses import dataclass
 from typing import Any
 
@@ -15,6 +15,52 @@ class MenuAction:
     key: str
     label: str
     callback: Callable[[], Any]
+
+
+def menu_action(
+    label: str,
+    callback: Callable[[], Any],
+    *,
+    key: str | None = None,
+) -> MenuAction:
+    """Create a menu action with an optional explicit key override."""
+    return MenuAction(key=key or "", label=label, callback=callback)
+
+
+def assign_menu_keys(
+    actions: Sequence[MenuAction],
+    *,
+    exit_key: str = "0",
+    start: int = 1,
+) -> tuple[MenuAction, ...]:
+    """Auto-assign sequential numeric keys to unkeyed actions, preserving explicit keys."""
+    reserved = {exit_key.lower()}
+    for a in actions:
+        if a.key:
+            reserved.add(a.key.lower())
+
+    result: list[MenuAction] = []
+    next_num = start
+    for a in actions:
+        if a.key:
+            result.append(a)
+        else:
+            while str(next_num) in reserved:
+                next_num += 1
+            result.append(
+                MenuAction(key=str(next_num), label=a.label, callback=a.callback)
+            )
+            next_num += 1
+
+    return tuple(result)
+
+
+def build_menu(
+    *actions: MenuAction,
+    exit_key: str = "0",
+) -> tuple[MenuAction, ...]:
+    """Ergonomic factory for building an auto-keyed MenuAction tuple."""
+    return assign_menu_keys(actions, exit_key=exit_key)
 
 
 def prompt_text(prompt: str, default: str = "") -> str:
@@ -124,6 +170,9 @@ def operator_entrypoint(
 
 __all__ = [
     "MenuAction",
+    "assign_menu_keys",
+    "build_menu",
+    "menu_action",
     "operator_entrypoint",
     "prompt_choice",
     "prompt_text",

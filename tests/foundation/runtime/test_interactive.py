@@ -6,6 +6,9 @@ from __future__ import annotations
 
 from edgar_sec.foundation.runtime.interactive import (
     MenuAction,
+    assign_menu_keys,
+    build_menu,
+    menu_action,
     operator_entrypoint,
     prompt_choice,
     prompt_text,
@@ -173,3 +176,90 @@ def test_the_entrypoint_renders_the_menu_with_no_arguments(monkeypatch) -> None:
         operator_entrypoint("T", [], lambda argv: 0, [], before_menu=lambda: "h") == 0
     )
     assert seen["before"] is not None
+
+
+# ------------------------------------------------------------------ auto-keying
+
+
+def test_menu_action_defaults_to_empty_key() -> None:
+    action = menu_action("Do a thing", lambda: None)
+    assert action.key == ""
+    assert action.label == "Do a thing"
+    assert callable(action.callback)
+
+
+def test_menu_action_preserves_explicit_key() -> None:
+    action = menu_action("Do a thing", lambda: None, key="f")
+    assert action.key == "f"
+
+
+def test_assign_menu_keys_sequential_when_all_unkeyed() -> None:
+    actions = (
+        menu_action("Alpha", lambda: None),
+        menu_action("Beta", lambda: None),
+        menu_action("Gamma", lambda: None),
+    )
+    result = assign_menu_keys(actions)
+    assert [a.key for a in result] == ["1", "2", "3"]
+
+
+def test_assign_menu_keys_preserves_explicit_keys() -> None:
+    actions = (
+        menu_action("Alpha", lambda: None),
+        menu_action("Special", lambda: None, key="f"),
+        menu_action("Beta", lambda: None),
+    )
+    result = assign_menu_keys(actions)
+    assert [a.key for a in result] == ["1", "f", "2"]
+
+
+def test_assign_menu_keys_reserves_exit_key() -> None:
+    actions = (
+        menu_action("Alpha", lambda: None),
+        menu_action("Beta", lambda: None),
+    )
+    result = assign_menu_keys(actions, exit_key="0")
+    assert [a.key for a in result] == ["1", "2"]
+    assert "0" not in {a.key for a in result}
+
+
+def test_assign_menu_keys_avoids_explicit_key_collisions() -> None:
+    actions = (
+        menu_action("Alpha", lambda: None),
+        menu_action("Explicit two", lambda: None, key="2"),
+        menu_action("Beta", lambda: None),
+    )
+    result = assign_menu_keys(actions)
+    assert [a.key for a in result] == ["1", "2", "3"]
+
+
+def test_build_menu_is_ergonomic_factory() -> None:
+    result = build_menu(
+        menu_action("Alpha", lambda: None),
+        menu_action("Bravo", lambda: None, key="b"),
+        menu_action("Charlie", lambda: None),
+    )
+    assert [a.key for a in result] == ["1", "b", "2"]
+
+
+def test_assign_menu_keys_preserves_order() -> None:
+    actions = (
+        menu_action("First", lambda: None),
+        menu_action("Second", lambda: None, key="s"),
+        menu_action("Third", lambda: None),
+        menu_action("Fourth", lambda: None),
+    )
+    result = assign_menu_keys(actions)
+    assert [a.key for a in result] == ["1", "s", "2", "3"]
+
+
+def test_assign_menu_keys_starts_from_one_by_default() -> None:
+    actions = (menu_action("Only", lambda: None),)
+    result = assign_menu_keys(actions)
+    assert [a.key for a in result] == ["1"]
+
+
+def test_assign_menu_keys_custom_start() -> None:
+    actions = (menu_action("Only", lambda: None),)
+    result = assign_menu_keys(actions, start=5)
+    assert [a.key for a in result] == ["5"]

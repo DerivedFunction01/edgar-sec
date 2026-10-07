@@ -91,7 +91,6 @@ def test_menu_covers_the_whole_lifecycle() -> None:
         "6",
         "7",
         "8",
-        "9",
         "f",
         "p",
         "c",
@@ -114,8 +113,8 @@ def test_every_menu_action_binds_to_a_shared_command() -> None:
 def test_menu_labels_describe_the_phase() -> None:
     labels = [action.label for action in build_operator_menu()]
     assert any("Plan" in label for label in labels)
-    assert any("Merge" in label for label in labels)
     assert any("Augment" in label for label in labels)
+    assert any("DAG console" in label for label in labels)
     assert MENU_TITLE.startswith("Metadata Sync")
 
 

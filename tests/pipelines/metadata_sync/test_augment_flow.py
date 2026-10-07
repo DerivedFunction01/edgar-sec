@@ -499,7 +499,7 @@ def _publish_roster(state: WizardState, registry_id: str, *, source_snapshot_id:
 def test_the_menu_still_delegates_augmentation_to_the_journey() -> None:
     """The action is a hand-off, so the menu owns no cohort logic."""
     menu = {action.key: action for action in operator_module.build_operator_menu()}
-    assert menu["5"].label == "Augment published snapshot"
+    assert menu["4"].label == "Augment published snapshot"
     assert callable(menu["5"].callback)
 
 

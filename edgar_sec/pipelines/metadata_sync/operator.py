@@ -12,6 +12,8 @@ from pathlib import Path
 
 from edgar_sec.foundation.runtime.interactive import (
     MenuAction,
+    build_menu,
+    menu_action,
     operator_entrypoint,
     prompt_text,
 )
@@ -508,30 +510,27 @@ def open_metadata_dag_console(state: WizardState) -> None:
 def build_operator_menu(state: WizardState | None = None) -> tuple[MenuAction, ...]:
     """Build the operator actions, bound to this session's state."""
     session = state if state is not None else WizardState()
-    return (
-        MenuAction("1", "Plan generation", lambda: plan(session)),
-        MenuAction("2", "Status and resume inspect", lambda: status(session)),
-        MenuAction("3", "Run chunks", lambda: run(session)),
-        MenuAction("4", "Merge chunks into snapshot", lambda: merge(session)),
-        MenuAction("5", "Augment published snapshot", lambda: augment(session)),
-        MenuAction("6", "Export bundles for workers", lambda: export(session)),
-        MenuAction("7", "Run a worker bundle", lambda: worker(session)),
-        MenuAction("8", "Refresh external source", lambda: refresh(session)),
-        MenuAction(
-            "9", "Compare curated input against a source", lambda: compare(session)
-        ),
-        MenuAction(
-            "f",
+    return build_menu(
+        menu_action("Plan generation", lambda: plan(session)),
+        menu_action("Status and resume inspect", lambda: status(session)),
+        menu_action("Run chunks", lambda: run(session)),
+        menu_action("Augment published snapshot", lambda: augment(session)),
+        menu_action("Export bundles for workers", lambda: export(session)),
+        menu_action("Run a worker bundle", lambda: worker(session)),
+        menu_action("Refresh external source", lambda: refresh(session)),
+        menu_action("Compare curated input against a source", lambda: compare(session)),
+        menu_action(
             "Assign company families for the universe",
             lambda: family_index(session),
+            key="f",
         ),
-        MenuAction(
-            "p",
-            "Snapshot DAG console (switch current, inspect, branches, tags)",
+        menu_action(
+            "Snapshot DAG console (merge/publish, switch current, inspect, branches, tags)",
             lambda: open_metadata_dag_console(session),
+            key="p",
         ),
-        MenuAction(
-            "c", "Show worker commands for this plan", lambda: commands(session)
+        menu_action(
+            "Show worker commands for this plan", lambda: commands(session), key="c"
         ),
     )
 

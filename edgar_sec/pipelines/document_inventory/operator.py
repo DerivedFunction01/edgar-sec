@@ -7,6 +7,8 @@ import sys
 
 from edgar_sec.foundation.runtime.interactive import (
     MenuAction,
+    build_menu,
+    menu_action,
     operator_entrypoint,
     prompt_text,
 )
@@ -181,13 +183,13 @@ def _action_dag() -> None:
 
 
 def build_operator_menu() -> tuple[MenuAction, ...]:
-    return (
-        MenuAction("1", "Create fixture from a published catalog plan", _action_create),
-        MenuAction("2", "Fill a discovered fixture from a catalog plan", _action_fill),
-        MenuAction("3", "List discovered fixtures", _action_list),
-        MenuAction("4", "Build parser review artifacts", _action_review),
-        MenuAction("5", "Build inventory snapshot from catalog plan", _action_build),
-        MenuAction("6", "Snapshot DAG Lifecycle Console", _action_dag),
+    return build_menu(
+        menu_action("Create fixture from a published catalog plan", _action_create),
+        menu_action("Fill a discovered fixture from a catalog plan", _action_fill),
+        menu_action("List discovered fixtures", _action_list),
+        menu_action("Build parser review artifacts", _action_review),
+        menu_action("Build inventory snapshot from catalog plan", _action_build),
+        menu_action("Snapshot DAG Lifecycle Console", _action_dag),
     )
 
 

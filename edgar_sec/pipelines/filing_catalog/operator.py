@@ -18,6 +18,8 @@ from edgar_sec.domain.filing_catalog.schemas import (
 )
 from edgar_sec.foundation.runtime.interactive import (
     MenuAction,
+    build_menu,
+    menu_action,
     operator_entrypoint,
     prompt_text,
 )
@@ -288,12 +290,12 @@ def _action_status() -> None:
 
 def build_operator_menu() -> tuple[MenuAction, ...]:
     """Build the operator actions bound to the shared command functions."""
-    return (
-        MenuAction("1", "Report published catalogs and plans", _action_status),
-        MenuAction("2", "Materialize a catalog snapshot", _action_materialize),
-        MenuAction("3", "Publish a deterministic target plan", _action_plan),
-        MenuAction("4", "Publish a selection policy plan", _action_plan_policy),
-        MenuAction("5", "Expand a policy plan to more locators", _action_expand),
+    return build_menu(
+        menu_action("Report published catalogs and plans", _action_status),
+        menu_action("Materialize a catalog snapshot", _action_materialize),
+        menu_action("Publish a deterministic target plan", _action_plan),
+        menu_action("Publish a selection policy plan", _action_plan_policy),
+        menu_action("Expand a policy plan to more locators", _action_expand),
     )
 
 
