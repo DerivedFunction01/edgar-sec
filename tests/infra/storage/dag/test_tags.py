@@ -5,7 +5,8 @@ Verifies creation, immutability, listing, and deletion.
 from pathlib import Path
 import pytest
 
-from edgar_sec.infra.storage.dag.manifest import DAGNodeManifest, write_manifest
+from edgar_sec.infra.storage.dag.catalog import DAGCatalog
+from edgar_sec.infra.storage.dag.manifest import DAGNodeManifest
 from edgar_sec.infra.storage.dag.tags import (
     create_tag,
     delete_tag,
@@ -16,8 +17,6 @@ from edgar_sec.infra.storage.dag.tags import (
 
 
 def _make_dummy_snapshot(root: Path, snapshot_id: str) -> None:
-    snap_dir = root / snapshot_id
-    snap_dir.mkdir(parents=True, exist_ok=True)
     manifest = DAGNodeManifest(
         snapshot_id=snapshot_id,
         kind="checkpoint",
@@ -28,7 +27,7 @@ def _make_dummy_snapshot(root: Path, snapshot_id: str) -> None:
         relations={},
         logical_fingerprint="dummy",
     )
-    write_manifest(snap_dir / "manifest.json", manifest)
+    DAGCatalog(root).record_node(manifest)
 
 
 def test_tag_lifecycle(tmp_path: Path) -> None:

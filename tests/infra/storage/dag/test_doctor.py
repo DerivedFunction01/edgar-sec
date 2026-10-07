@@ -2,17 +2,16 @@
 
 from pathlib import Path
 
-from edgar_sec.infra.storage.atomic import atomic_write_json
+from edgar_sec.infra.storage.dag.catalog import DAGCatalog
 from edgar_sec.infra.storage.dag.doctor import audit_graph
 from edgar_sec.infra.storage.dag.manifest import (
     DAGNodeManifest,
     PartDescriptor,
-    write_manifest,
 )
 
 
 def test_doctor_audits_integrity(tmp_path: Path) -> None:
-    # 1. Healthy checkpoint c0
+    catalog = DAGCatalog(tmp_path)
     c0_dir = tmp_path / "c0"
     c0_dir.mkdir(parents=True)
     part_file = c0_dir / "data.parquet"
@@ -36,10 +35,8 @@ def test_doctor_audits_integrity(tmp_path: Path) -> None:
         },
         logical_fingerprint="fp0",
     )
-    write_manifest(c0_dir / "manifest.json", c0_manifest)
-
-    (tmp_path / "current").mkdir()
-    atomic_write_json(tmp_path / "current" / "pointer.json", {"snapshot_id": "c0"})
+    catalog.record_node(c0_manifest)
+    catalog.write_pointer("main", "c0")
 
     audit_healthy = audit_graph(tmp_path)
     assert audit_healthy.is_healthy is True
@@ -54,6 +51,7 @@ def test_doctor_audits_integrity(tmp_path: Path) -> None:
 
 def test_doctor_audits_digest_mismatch(tmp_path: Path) -> None:
     """Verify doctor flags SHA-256 digest mismatches when verify_digests=True."""
+    catalog = DAGCatalog(tmp_path)
     c0_dir = tmp_path / "c0"
     c0_dir.mkdir(parents=True)
     part_file = c0_dir / "data.parquet"
@@ -77,9 +75,8 @@ def test_doctor_audits_digest_mismatch(tmp_path: Path) -> None:
         },
         logical_fingerprint="fp0",
     )
-    write_manifest(c0_dir / "manifest.json", c0_manifest)
-    (tmp_path / "current").mkdir(exist_ok=True)
-    atomic_write_json(tmp_path / "current" / "pointer.json", {"snapshot_id": "c0"})
+    catalog.record_node(c0_manifest)
+    catalog.write_pointer("main", "c0")
 
     assert audit_graph(tmp_path, verify_digests=False).is_healthy is True
     audit_digests = audit_graph(tmp_path, verify_digests=True)

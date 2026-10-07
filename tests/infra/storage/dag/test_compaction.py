@@ -5,6 +5,7 @@ from pathlib import Path
 import pyarrow as pa
 
 from edgar_sec.foundation.hashing import file_sha256
+from edgar_sec.infra.storage.dag.catalog import DAGCatalog
 from edgar_sec.infra.storage.dag.compaction import compact_lineage
 from edgar_sec.infra.storage.dag.manifest import (
     DAGNodeManifest,
@@ -20,6 +21,7 @@ SCHEMA = pa.schema([("id", pa.string()), ("val", pa.int64())])
 
 
 def test_compact_lineage_preserves_parity(tmp_path: Path) -> None:
+    catalog = DAGCatalog(tmp_path)
     specs = (
         RelationSpec(
             name="records",
@@ -59,6 +61,7 @@ def test_compact_lineage_preserves_parity(tmp_path: Path) -> None:
     )
     c0_manifest_path = c0_dir / "manifest.json"
     write_manifest(c0_manifest_path, c0_manifest)
+    catalog.record_node(c0_manifest)
 
     # 2. Delta D1: update "2" to 99, add "3" to 30
     d1_dir = tmp_path / "d1"
@@ -71,7 +74,7 @@ def test_compact_lineage_preserves_parity(tmp_path: Path) -> None:
     d1_manifest = DAGNodeManifest(
         snapshot_id="d1",
         kind="delta",
-        parents=(ParentRef("c0", file_sha256(c0_manifest_path)),),
+        parents=(ParentRef("c0", catalog.get_manifest_sha256("c0") or ""),),
         checkpoint_anchor_id="c0",
         lineage_depth=1,
         created_at="2026-10-07T00:01:00Z",
@@ -88,6 +91,7 @@ def test_compact_lineage_preserves_parity(tmp_path: Path) -> None:
         logical_fingerprint="fp1",
     )
     write_manifest(d1_dir / "manifest.json", d1_manifest)
+    catalog.record_node(d1_manifest)
 
     # 3. Compact D1 into C1
     c1_staged = tmp_path / "stage_c1"
@@ -146,6 +150,8 @@ def test_compact_lineage_multipart_budgeting(tmp_path: Path) -> None:
         logical_fingerprint="fp0",
     )
     write_manifest(c0_dir / "manifest.json", c0_manifest)
+    catalog = DAGCatalog(tmp_path)
+    catalog.record_node(c0_manifest)
 
     c1_staged = tmp_path / "stage_c1"
     compacted = compact_lineage(
@@ -167,9 +173,6 @@ def test_compact_lineage_multipart_budgeting(tmp_path: Path) -> None:
 
 def test_compact_lineage_publish_advances_pointer(tmp_path: Path) -> None:
     """Verify compaction with publish=True atomically advances the pointer."""
-    from edgar_sec.foundation.runtime.paths import current_pointer_path
-    from edgar_sec.infra.storage.atomic import atomic_write_json
-
     specs = (
         RelationSpec(
             name="records",
@@ -207,11 +210,9 @@ def test_compact_lineage_publish_advances_pointer(tmp_path: Path) -> None:
     )
     c0_manifest_path = c0_dir / "manifest.json"
     write_manifest(c0_manifest_path, c0_manifest)
-    atomic_write_json(
-        current_pointer_path(tmp_path),
-        {"snapshot_id": "c0", "manifest_sha256": file_sha256(c0_manifest_path)},
-        canonical=True,
-    )
+    catalog = DAGCatalog(tmp_path)
+    catalog.record_node(c0_manifest)
+    catalog.write_pointer("main", "c0")
 
     c1_staged = tmp_path / "stage_c1"
     compacted = compact_lineage(
@@ -226,4 +227,4 @@ def test_compact_lineage_publish_advances_pointer(tmp_path: Path) -> None:
     ptr = read_pointer(tmp_path)
     assert ptr is not None
     assert ptr["snapshot_id"] == "c1"
-    assert (tmp_path / "c1" / "manifest.json").is_file()
+    assert catalog.has_snapshot("c1")

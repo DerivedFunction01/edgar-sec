@@ -172,8 +172,8 @@ def cmd_checkout(
         target_id = target
 
     root = Path(snapshots_root)
-    pointer_file = pointer_path_for(root, branch_name)
-    current_id = read_pointer_id(pointer_file)
+    ptr = read_pointer(root, branch_name=branch_name)
+    current_id = str(ptr["snapshot_id"]) if ptr else None
 
     if current_id is not None and not force:
         try:
@@ -233,8 +233,8 @@ def cmd_publish(
         return 1
 
     manifest = read_manifest(manifest_path)
-    pointer_file = pointer_path_for(snapshots_root, branch_name=branch_name)
-    current_id = read_pointer_id(pointer_file)
+    ptr = read_pointer(snapshots_root, branch_name=branch_name)
+    current_id = str(ptr["snapshot_id"]) if ptr else None
 
     if allow_null:
         if current_id is not None:

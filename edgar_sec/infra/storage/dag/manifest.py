@@ -99,6 +99,11 @@ class DAGNodeManifest:
         """First parent manifest digest or empty string if no parents."""
         return self.parents[0].manifest_sha256 if self.parents else ""
 
+    @property
+    def manifest_sha256(self) -> str:
+        """Digest of this snapshot node manifest."""
+        return self.logical_fingerprint
+
     def to_dict(self) -> dict[str, Any]:
         return {
             "snapshot_id": self.snapshot_id,

@@ -24,6 +24,7 @@ from edgar_sec.infra.storage.parquet import (
     read_parquet_table,
 )
 
+from .catalog import DAGCatalog
 from .manifest import DAGNodeManifest, ParentRef, PartDescriptor, write_manifest
 from .publication import publish_node
 from .resolution import compile_virtual_views, compute_logical_fingerprint
@@ -150,7 +151,7 @@ def compact_lineage(
             parents=(
                 ParentRef(
                     snapshot_id=tip_id,
-                    manifest_sha256=file_sha256(DAGPaths(root).manifest_file(tip_id)),
+                    manifest_sha256=DAGCatalog(root).get_manifest_sha256(tip_id) or "",
                 ),
             ),
             checkpoint_anchor_id=new_snapshot_id,

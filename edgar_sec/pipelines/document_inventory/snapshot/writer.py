@@ -61,6 +61,7 @@ from edgar_sec.pipelines.document_inventory.snapshot.anti_join import (
     anti_join,
 )
 from edgar_sec.pipelines.document_inventory.snapshot.models import SnapshotPublication
+from edgar_sec.infra.storage.dag.catalog import DAGCatalog
 from edgar_sec.infra.storage.dag.publication import (
     PublicationLock,
     PublicationLockError,
@@ -442,6 +443,11 @@ def _write_relation_part(
 
 
 def _read_pointer(paths: InventoryPaths) -> str | None:
+    catalog = DAGCatalog(paths.snapshots_root)
+    if catalog.catalog_file.is_file():
+        ptr = catalog.read_pointer()
+        if ptr:
+            return str(ptr["snapshot_id"])
     pointer_path = paths.current_snapshot_pointer()
     if not pointer_path.exists():
         return None
@@ -654,16 +660,22 @@ def publish_committed_chunks(
             connection.close()
 
         parent_refs: list[ParentRef] = []
+        catalog = DAGCatalog(inventory_paths.snapshots_root)
         if expected_parent_snapshot_id:
-            parent_manifest_file = inventory_paths.snapshot_manifest_path(
+            parent_node = catalog.get_manifest(expected_parent_snapshot_id)
+            parent_file = inventory_paths.snapshot_manifest_path(
                 expected_parent_snapshot_id
             )
-            if parent_manifest_file.is_file():
-                parent_node = read_manifest(parent_manifest_file)
+            if parent_node is None and parent_file.is_file():
+                parent_node = read_manifest(parent_file)
+            if parent_node is not None:
+                parent_sha = catalog.get_manifest_sha256(
+                    expected_parent_snapshot_id
+                ) or (file_sha256(parent_file) if parent_file.is_file() else "")
                 parent_refs.append(
                     ParentRef(
                         snapshot_id=expected_parent_snapshot_id,
-                        manifest_sha256=file_sha256(parent_manifest_file),
+                        manifest_sha256=parent_sha,
                     )
                 )
                 checkpoint_anchor_id = (
@@ -729,6 +741,7 @@ def publish_committed_chunks(
             installed = _install_snapshot(
                 inventory_paths, snapshot_id, staged_snapshot, profile
             )
+            catalog.record_node(dag_manifest)
             validate_snapshot(inventory_paths, snapshot_id, profile=profile)
             atomic_write_json(
                 inventory_paths.current_snapshot_pointer(),
@@ -738,6 +751,7 @@ def publish_committed_chunks(
                 },
                 canonical=True,
             )
+            catalog.write_pointer("main", snapshot_id)
         return SnapshotPublication.published(metadata)
     finally:
         shutil.rmtree(stage_parent, ignore_errors=True)

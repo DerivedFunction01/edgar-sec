@@ -1,20 +1,17 @@
 """Graph integrity auditor and diagnostic repair tools for DAG snapshots.
 
-Detects cycles, dangling parents, corrupted part digests, and orphaned staging dirs.
+Detects cycles, dangling parents, corrupted part digests, and orphaned staging dirs using DAGCatalog.
 """
 
 from __future__ import annotations
 
-import json
 import time
 from dataclasses import dataclass
 from pathlib import Path
 
 from edgar_sec.foundation.hashing import file_sha256
-
+from edgar_sec.infra.storage.dag.catalog import DAGCatalog
 from edgar_sec.infra.storage.dag.paths import DAGPaths
-
-from .manifest import DAGNodeManifest, read_manifest
 from .retention import discover_roots
 from .traversal import CycleDetectedError, walk_lineage
 
@@ -47,12 +44,12 @@ def audit_graph(
     """Audit the physical and logical integrity of all snapshots under root."""
     root = Path(snapshots_root)
     paths = DAGPaths(root)
+    catalog = DAGCatalog(root)
     errors: list[str] = []
     warnings: list[str] = []
     stale_stages: list[str] = []
     roots = discover_roots(root)
 
-    # 1. Check active tips and verify ancestry traversal
     for tip in sorted(roots):
         try:
             walk_lineage(root, tip)
@@ -61,33 +58,27 @@ def audit_graph(
         except Exception as exc:
             errors.append(f"broken lineage for {tip}: {exc}")
 
-    # 2. Check all snapshot directories on disk
+    sql_audit = catalog.audit_graph()
+    for cycle_root in sql_audit.get("cycles", []):
+        errors.append(f"cycle detected in graph involving {cycle_root}")
+    for orphan in sql_audit.get("orphan_nodes", []):
+        errors.append(
+            f"orphan node {orphan['snapshot_id']} references missing parent {orphan['parent_id']}"
+        )
+
     now = time.time()
-    for child in root.iterdir():
-        if not child.is_dir():
-            continue
-        if paths.is_staging_name(child.name):
-            if now - child.stat().st_mtime > 86400:
-                stale_stages.append(child.name)
-            continue
-        if child.name in ("current", "branches"):
-            continue
+    if root.is_dir():
+        for child in root.iterdir():
+            if child.is_dir() and paths.is_staging_name(child.name):
+                if now - child.stat().st_mtime > 86400:
+                    stale_stages.append(child.name)
 
-        manifest_file = paths.manifest_file(child.name)
-        if not manifest_file.is_file():
-            warnings.append(
-                f"uncommitted snapshot directory without manifest: {child.name}"
-            )
+    snapshots = catalog.list_snapshots()
+    for s_info in snapshots:
+        manifest = catalog.get_manifest(s_info["snapshot_id"])
+        if manifest is None:
             continue
-
-        try:
-            manifest = read_manifest(manifest_file)
-        except Exception as exc:
-            errors.append(f"corrupted manifest at {child.name}: {exc}")
-            continue
-
-        # Check declared parts
-        for rel_name, parts in manifest.relations.items():
+        for _rel_name, parts in manifest.relations.items():
             for part in parts:
                 part_path = _resolve_part_path(root, manifest.snapshot_id, part.path)
                 if not part_path.is_file():

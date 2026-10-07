@@ -1,6 +1,6 @@
 """Lineage traversal and DAG cycle verification.
 
-Walks from a tip backward through multi-parent ancestors to checkpoint anchors.
+Walks from a tip backward through multi-parent ancestors to checkpoint anchors using DAGCatalog.
 """
 
 from __future__ import annotations
@@ -9,11 +9,8 @@ from dataclasses import dataclass
 from functools import lru_cache
 from pathlib import Path
 
-from edgar_sec.foundation.hashing import file_sha256
-
-from edgar_sec.infra.storage.dag.paths import DAGPaths
-
-from .manifest import DAGNodeManifest, read_manifest
+from edgar_sec.infra.storage.dag.catalog import DAGCatalog
+from .manifest import DAGNodeManifest
 
 
 class LineageError(RuntimeError):
@@ -54,51 +51,41 @@ class LineageChain:
 def walk_lineage(snapshots_root: Path | str, tip_id: str) -> LineageChain:
     """Traverse DAG from tip backward, returning topological linear order."""
     root = Path(snapshots_root)
-    visiting: set[str] = set()
-    visited: dict[str, DAGNodeManifest] = {}
-    topological: list[DAGNodeManifest] = []
+    catalog = DAGCatalog(root)
 
-    def dfs(current_id: str) -> None:
-        if current_id in visiting:
-            raise CycleDetectedError(f"cycle detected involving {current_id}")
-        if current_id in visited:
-            return
+    audit = catalog.audit_graph()
+    if audit.get("cycles"):
+        raise CycleDetectedError(f"cycle detected involving {audit['cycles']}")
 
-        visiting.add(current_id)
-        manifest_path = DAGPaths(root).manifest_file(current_id)
-        if not manifest_path.is_file():
-            raise BrokenLineageError(
-                f"manifest missing for {current_id}: {manifest_path}"
-            )
+    if not catalog.has_snapshot(tip_id):
+        raise BrokenLineageError(f"manifest missing for {tip_id}")
 
-        node = read_manifest(manifest_path)
+    nodes = catalog.walk_lineage(tip_id)
+    if not nodes:
+        raise BrokenLineageError(f"lineage empty for {tip_id}")
 
+    for node in nodes:
         if node.kind != "checkpoint":
             if not node.parents:
-                raise BrokenLineageError(f"delta node {current_id} has no parents")
+                raise BrokenLineageError(
+                    f"delta node {node.snapshot_id} has no parents"
+                )
             for parent_ref in node.parents:
-                p_id = parent_ref.snapshot_id
-                p_manifest = DAGPaths(root).manifest_file(p_id)
-                if not p_manifest.is_file():
-                    raise BrokenLineageError(f"parent manifest missing for {p_id}")
-                actual_digest = file_sha256(p_manifest)
+                p_digest = catalog.get_manifest_sha256(parent_ref.snapshot_id)
+                if p_digest is None:
+                    raise BrokenLineageError(
+                        f"parent manifest missing for {parent_ref.snapshot_id}"
+                    )
                 if (
                     parent_ref.manifest_sha256
-                    and actual_digest != parent_ref.manifest_sha256
+                    and p_digest != parent_ref.manifest_sha256
                 ):
                     raise DigestMismatchError(
-                        f"parent manifest digest mismatch for {p_id}: "
-                        f"expected {parent_ref.manifest_sha256}, got {actual_digest}"
+                        f"parent manifest digest mismatch for {parent_ref.snapshot_id}: "
+                        f"expected {parent_ref.manifest_sha256}, got {p_digest}"
                     )
-                dfs(p_id)
 
-        visiting.remove(current_id)
-        visited[current_id] = node
-        topological.append(node)
-
-    dfs(tip_id)
-
-    ordered = tuple(topological)
+    ordered = tuple(nodes)
     primary_anchor = ordered[0].snapshot_id
     return LineageChain(
         tip_id=tip_id,

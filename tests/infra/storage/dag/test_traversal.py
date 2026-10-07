@@ -4,11 +4,12 @@ from pathlib import Path
 
 import pytest
 
-from edgar_sec.foundation.hashing import file_sha256
+from edgar_sec.foundation.hashing import sha256_text
+from edgar_sec.foundation.serialization import canonical_json
+from edgar_sec.infra.storage.dag.catalog import DAGCatalog
 from edgar_sec.infra.storage.dag.manifest import (
     DAGNodeManifest,
     ParentRef,
-    write_manifest,
 )
 from edgar_sec.infra.storage.dag.traversal import (
     BrokenLineageError,
@@ -27,8 +28,7 @@ def _write_node(
     parents: tuple[tuple[str, str], ...] = (),
     anchor: str = "",
 ) -> tuple[DAGNodeManifest, str]:
-    snap_dir = root / snapshot_id
-    snap_dir.mkdir(parents=True, exist_ok=True)
+    catalog = DAGCatalog(root)
     manifest = DAGNodeManifest(
         snapshot_id=snapshot_id,
         kind="checkpoint" if kind == "checkpoint" else "delta",
@@ -41,9 +41,9 @@ def _write_node(
         relations={},
         logical_fingerprint="fp",
     )
-    manifest_path = snap_dir / "manifest.json"
-    write_manifest(manifest_path, manifest)
-    return manifest, file_sha256(manifest_path)
+    digest = sha256_text(canonical_json(manifest.to_dict()))
+    catalog.record_node(manifest)
+    return manifest, digest
 
 
 def test_linear_lineage_traversal(tmp_path: Path) -> None:
@@ -81,16 +81,11 @@ def test_diamond_merge_traversal(tmp_path: Path) -> None:
     assert "da" in node_ids
     assert "db" in node_ids
     assert node_ids[-1] == "m"
-    assert len(node_ids) == 4  # c0 is not duplicated!
+    assert len(node_ids) == 4
 
 
 def test_cycle_detection(tmp_path: Path) -> None:
-    # d1 -> d2 -> d1
-    d1_dir = tmp_path / "d1"
-    d2_dir = tmp_path / "d2"
-    d1_dir.mkdir(parents=True, exist_ok=True)
-    d2_dir.mkdir(parents=True, exist_ok=True)
-
+    catalog = DAGCatalog(tmp_path)
     m1 = DAGNodeManifest(
         snapshot_id="d1",
         kind="delta",
@@ -101,8 +96,6 @@ def test_cycle_detection(tmp_path: Path) -> None:
         relations={},
         logical_fingerprint="fp",
     )
-    write_manifest(d1_dir / "manifest.json", m1)
-
     m2 = DAGNodeManifest(
         snapshot_id="d2",
         kind="delta",
@@ -113,7 +106,8 @@ def test_cycle_detection(tmp_path: Path) -> None:
         relations={},
         logical_fingerprint="fp",
     )
-    write_manifest(d2_dir / "manifest.json", m2)
+    catalog.record_node(m1)
+    catalog.record_node(m2)
 
     with pytest.raises(CycleDetectedError):
         walk_lineage(tmp_path, "d1")

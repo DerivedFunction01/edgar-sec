@@ -1,27 +1,18 @@
 """Two-tier retention analysis and safe garbage collection for DAG snapshots.
 
-Traces logical DAG reachability from roots, then ref-counts physical files.
+Traces logical DAG reachability from roots using DAGCatalog, then cleans unreferenced snapshots.
 """
 
 from __future__ import annotations
 
-import json
 import shutil
-import time
 from collections.abc import Set
 from dataclasses import dataclass
 from pathlib import Path
 
-from edgar_sec.foundation.runtime.paths import current_pointer_path
-
-from edgar_sec.infra.storage.dag.paths import (
-    BRANCH_POINTER_GLOB,
-    DAGPaths,
-    TAGS_JSON_GLOB,
-)
-
-from .manifest import read_manifest
-from .publication import PublicationLock, read_pointer_id
+from edgar_sec.infra.storage.dag.catalog import DAGCatalog
+from edgar_sec.infra.storage.dag.paths import DAGPaths
+from .publication import PublicationLock
 
 
 @dataclass(frozen=True, slots=True)
@@ -38,31 +29,16 @@ def discover_roots(
     snapshots_root: Path | str,
     extra_pinned_ids: Set[str] | None = None,
 ) -> set[str]:
-    """Find all active root snapshot IDs from current, branches, and plan pins."""
+    """Find all active root snapshot IDs from branches, tags, and plan pins."""
     root = Path(snapshots_root)
+    catalog = DAGCatalog(root)
     roots: set[str] = set()
 
-    current_pointer = current_pointer_path(root)
-    curr_id = read_pointer_id(current_pointer)
-    if curr_id:
-        roots.add(curr_id)
+    for branch_head in catalog.list_branches().values():
+        roots.add(branch_head)
 
-    branches_dir = DAGPaths(root).branches_root
-    if branches_dir.is_dir():
-        for b_pointer in branches_dir.glob(BRANCH_POINTER_GLOB):
-            b_id = read_pointer_id(b_pointer)
-            if b_id:
-                roots.add(b_id)
-
-    tags_dir = DAGPaths(root).tags_root
-    if tags_dir.is_dir():
-        for tag_file in tags_dir.glob(TAGS_JSON_GLOB):
-            try:
-                t_data = json.loads(tag_file.read_text(encoding="utf-8"))
-                if isinstance(t_data, dict) and "snapshot_id" in t_data:
-                    roots.add(str(t_data["snapshot_id"]))
-            except (OSError, json.JSONDecodeError):
-                continue
+    for tag in catalog.list_tags():
+        roots.add(tag["snapshot_id"])
 
     if extra_pinned_ids:
         roots.update(extra_pinned_ids)
@@ -77,47 +53,43 @@ def analyze_retention(
 ) -> RetentionReport:
     """Calculate reachable DAG nodes and identify unreferenced snapshots."""
     root = Path(snapshots_root)
+    catalog = DAGCatalog(root)
     roots = discover_roots(root, extra_pinned_ids)
     retained: set[str] = set()
 
-    # Phase 1: Trace reachability from roots backward to checkpoint anchors
     for root_id in roots:
-        to_visit = [root_id]
-        while to_visit:
-            curr = to_visit.pop()
-            if curr in retained:
-                continue
-            manifest_file = DAGPaths(root).manifest_file(curr)
-            if not manifest_file.is_file():
-                continue
-            retained.add(curr)
-            node = read_manifest(manifest_file)
-            if node.kind != "checkpoint":
-                for parent_ref in node.parents:
-                    to_visit.append(parent_ref.snapshot_id)
-            if node.checkpoint_anchor_id:
-                to_visit.append(node.checkpoint_anchor_id)
-            base_pin = node.metadata.get("base_snapshot_id")
+        manifests = catalog.walk_lineage(root_id)
+        for m in manifests:
+            retained.add(m.snapshot_id)
+            if m.checkpoint_anchor_id:
+                retained.add(m.checkpoint_anchor_id)
+            base_pin = m.metadata.get("base_snapshot_id")
             if base_pin:
-                to_visit.append(str(base_pin))
+                retained.add(str(base_pin))
 
-    # Phase 2: Find all snapshot directories on disk not in retained
-    now = time.time()
+    all_snapshots = [s["snapshot_id"] for s in catalog.list_snapshots()]
     prunable: list[str] = []
     prunable_bytes = 0
-    for child in root.iterdir():
-        if (
-            not child.is_dir()
-            or child.name.startswith(".")
-            or child.name in ("current", "branches")
-        ):
-            continue
-        if (
-            child.name not in retained
-            and DAGPaths(root).manifest_file(child.name).is_file()
-        ):
-            age = now - child.stat().st_mtime
-            if age >= min_age_seconds:
+
+    for s_id in all_snapshots:
+        if s_id not in retained:
+            prunable.append(s_id)
+            target = root / s_id
+            if target.is_dir():
+                for f in target.rglob("*"):
+                    if f.is_file():
+                        prunable_bytes += f.stat().st_size
+
+    # Also check legacy directories on disk if any
+    if root.is_dir():
+        for child in root.iterdir():
+            if (
+                child.is_dir()
+                and not child.name.startswith(".")
+                and child.name not in ("parts", "branches", "current")
+                and child.name not in retained
+                and child.name not in prunable
+            ):
                 prunable.append(child.name)
                 for f in child.rglob("*"):
                     if f.is_file():
@@ -138,8 +110,9 @@ def purge_unreferenced(
     dry_run: bool = False,
     extra_pinned_ids: Set[str] | None = None,
 ) -> list[str]:
-    """Safely unlink snapshot directories identified as prunable under lock."""
+    """Safely unlink snapshot directories and purge records from catalog under lock."""
     root = Path(snapshots_root)
+    catalog = DAGCatalog(root)
     removed: list[str] = []
     lock_file = DAGPaths(root).publication_lock_path
     with PublicationLock(lock_file):
@@ -152,7 +125,10 @@ def purge_unreferenced(
             if target.is_dir():
                 if not dry_run:
                     shutil.rmtree(target)
-                removed.append(snap_id)
+            if not dry_run:
+                with catalog._connect() as con:
+                    con.execute("DELETE FROM nodes WHERE snapshot_id = ?", (snap_id,))
+            removed.append(snap_id)
     return removed
 
 

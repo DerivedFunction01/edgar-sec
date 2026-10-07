@@ -102,6 +102,11 @@ def test_upsert_and_composite_scoped_mask(tmp_path: Path) -> None:
     )
     c0_manifest_path = c0_dir / "manifest.json"
     write_manifest(c0_manifest_path, c0_manifest)
+    from edgar_sec.infra.storage.dag.catalog import DAGCatalog
+
+    catalog = DAGCatalog(tmp_path)
+    catalog.record_node(c0_manifest)
+    c0_digest = catalog.get_manifest_sha256("c0") or ""
 
     # 2. Delta D1: Refresh Accession 001 with primary_v2.htm
     d1_dir = tmp_path / "d1"
@@ -129,7 +134,7 @@ def test_upsert_and_composite_scoped_mask(tmp_path: Path) -> None:
     d1_manifest = DAGNodeManifest(
         snapshot_id="d1",
         kind="delta",
-        parents=(ParentRef("c0", file_sha256(c0_manifest_path)),),
+        parents=(ParentRef("c0", c0_digest),),
         checkpoint_anchor_id="c0",
         lineage_depth=1,
         created_at="2026-10-07T00:01:00Z",
@@ -154,6 +159,7 @@ def test_upsert_and_composite_scoped_mask(tmp_path: Path) -> None:
         logical_fingerprint="fp1",
     )
     write_manifest(d1_dir / "manifest.json", d1_manifest)
+    catalog.record_node(d1_manifest)
 
     # Resolve views
     lineage = walk_lineage(tmp_path, "d1")

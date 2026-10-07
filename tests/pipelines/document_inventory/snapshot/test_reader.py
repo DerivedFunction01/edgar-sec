@@ -7,6 +7,7 @@ import pyarrow.parquet as pq
 from edgar_sec.domain.document_inventory.schemas import ENTRY_SCHEMA
 from edgar_sec.foundation.hashing import file_sha256
 from edgar_sec.infra.storage.atomic import atomic_write_json
+from edgar_sec.infra.storage.dag.catalog import DAGCatalog
 from edgar_sec.infra.storage.dag.manifest import (
     DAGNodeManifest,
     ParentRef,
@@ -109,6 +110,8 @@ def _setup_inventory_dag(tmp_path: Path) -> None:
     )
     c0_man_path = c0_dir / "manifest.json"
     write_manifest(c0_man_path, c0_manifest)
+    catalog = DAGCatalog(tmp_path)
+    catalog.record_node(c0_manifest)
 
     # d1 refreshes accession 0000320193-24-000001 with new entry e-new-1
     d1_dir = tmp_path / "d1"
@@ -164,7 +167,7 @@ def _setup_inventory_dag(tmp_path: Path) -> None:
     d1_manifest = DAGNodeManifest(
         snapshot_id="d1",
         kind="delta",
-        parents=(ParentRef("c0", file_sha256(c0_man_path)),),
+        parents=(ParentRef("c0", catalog.get_manifest_sha256("c0") or ""),),
         checkpoint_anchor_id="c0",
         lineage_depth=1,
         created_at="2026-01-01T00:01:00Z",
@@ -194,6 +197,8 @@ def _setup_inventory_dag(tmp_path: Path) -> None:
     )
     d1_man_path = d1_dir / "manifest.json"
     write_manifest(d1_man_path, d1_manifest)
+    catalog.record_node(d1_manifest)
+    catalog.write_pointer("main", "d1")
     atomic_write_json(
         current_pointer_path(tmp_path),
         {"snapshot_id": "d1", "manifest_sha256": file_sha256(d1_man_path)},

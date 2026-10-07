@@ -7,7 +7,6 @@ import pytest
 from edgar_sec.infra.storage.dag.manifest import (
     DAGNodeManifest,
     ParentRef,
-    write_manifest,
 )
 from edgar_sec.infra.storage.dag.publication import (
     PublicationLock,
@@ -17,7 +16,7 @@ from edgar_sec.infra.storage.dag.publication import (
     delete_branch,
     list_branches,
     publish_node,
-    read_pointer_id,
+    read_pointer,
 )
 
 
@@ -42,10 +41,11 @@ def test_publish_node_and_stale_parent(tmp_path: Path) -> None:
         relations={},
         logical_fingerprint="fp0",
     )
-    write_manifest(c0_staged / "manifest.json", c0_manifest)
 
     publish_node(tmp_path, c0_manifest, c0_staged, expected_parent_id=None)
-    assert read_pointer_id(tmp_path / "current" / "pointer.json") == "c0"
+    ptr0 = read_pointer(tmp_path)
+    assert ptr0 is not None
+    assert ptr0["snapshot_id"] == "c0"
 
     # 2. Publish d1 expecting c0 (delta lists c0 as parent)
     d1_staged = tmp_path / "stage_d1"
@@ -60,10 +60,11 @@ def test_publish_node_and_stale_parent(tmp_path: Path) -> None:
         relations={},
         logical_fingerprint="fp1",
     )
-    write_manifest(d1_staged / "manifest.json", d1_manifest)
 
     publish_node(tmp_path, d1_manifest, d1_staged, expected_parent_id="c0")
-    assert read_pointer_id(tmp_path / "current" / "pointer.json") == "d1"
+    ptr1 = read_pointer(tmp_path)
+    assert ptr1 is not None
+    assert ptr1["snapshot_id"] == "d1"
 
     # 3. Publish d2 expecting obsolete c0 raises StaleParentError
     d2_staged = tmp_path / "stage_d2"
@@ -78,7 +79,6 @@ def test_publish_node_and_stale_parent(tmp_path: Path) -> None:
         relations={},
         logical_fingerprint="fp2",
     )
-    write_manifest(d2_staged / "manifest.json", d2_manifest)
 
     with pytest.raises(StaleParentError):
         publish_node(tmp_path, d2_manifest, d2_staged, expected_parent_id="c0")
@@ -98,7 +98,6 @@ def test_publish_delta_mismatched_parent_raises(tmp_path: Path) -> None:
         relations={},
         logical_fingerprint="fp0",
     )
-    write_manifest(c0_staged / "manifest.json", c0_manifest)
     publish_node(tmp_path, c0_manifest, c0_staged, expected_parent_id=None)
 
     # d1 claims a different parent than the current pointer
@@ -114,7 +113,6 @@ def test_publish_delta_mismatched_parent_raises(tmp_path: Path) -> None:
         relations={},
         logical_fingerprint="fp1",
     )
-    write_manifest(d1_staged / "manifest.json", d1_manifest)
 
     with pytest.raises(ValueError, match="not among manifest parents"):
         publish_node(tmp_path, d1_manifest, d1_staged, expected_parent_id="c0")
@@ -122,8 +120,8 @@ def test_publish_delta_mismatched_parent_raises(tmp_path: Path) -> None:
 
 def test_branch_management(tmp_path: Path) -> None:
     """Verify branch creation, listing, and deletion under lock."""
-    c0_dir = tmp_path / "c0"
-    c0_dir.mkdir(parents=True)
+    c0_staged = tmp_path / "stage_c0"
+    c0_staged.mkdir(parents=True)
     manifest = DAGNodeManifest(
         snapshot_id="c0",
         kind="checkpoint",
@@ -134,7 +132,7 @@ def test_branch_management(tmp_path: Path) -> None:
         relations={},
         logical_fingerprint="fp0",
     )
-    write_manifest(c0_dir / "manifest.json", manifest)
+    publish_node(tmp_path, manifest, c0_staged, expected_parent_id=None)
 
     branch_file = create_branch(tmp_path, "feature-x", "c0")
     assert branch_file.is_file()

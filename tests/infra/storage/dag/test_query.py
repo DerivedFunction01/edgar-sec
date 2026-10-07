@@ -5,6 +5,7 @@ import pyarrow as pa
 import pyarrow.parquet as pq
 
 from edgar_sec.foundation.hashing import file_sha256
+from edgar_sec.infra.storage.dag.catalog import DAGCatalog
 from edgar_sec.infra.storage.duckdb import connect
 from edgar_sec.infra.storage.dag.manifest import (
     DAGNodeManifest,
@@ -102,6 +103,11 @@ def _setup_multi_part_dag(tmp_path: Path) -> tuple[Path, str]:
     )
     c0_man = c0_dir / "manifest.json"
     write_manifest(c0_man, c0_m)
+    from edgar_sec.infra.storage.dag.catalog import DAGCatalog
+
+    catalog = DAGCatalog(tmp_path)
+    catalog.record_node(c0_m)
+    c0_digest = catalog.get_manifest_sha256("c0") or ""
 
     d1_dir = tmp_path / "d1"
     d1_dir.mkdir()
@@ -121,7 +127,7 @@ def _setup_multi_part_dag(tmp_path: Path) -> tuple[Path, str]:
     d1_m = DAGNodeManifest(
         snapshot_id="d1",
         kind="delta",
-        parents=(ParentRef("c0", file_sha256(c0_man)),),
+        parents=(ParentRef("c0", c0_digest),),
         checkpoint_anchor_id="c0",
         lineage_depth=1,
         created_at="2026-01-01T00:01:00Z",
@@ -140,6 +146,7 @@ def _setup_multi_part_dag(tmp_path: Path) -> tuple[Path, str]:
         logical_fingerprint="fp1",
     )
     write_manifest(d1_dir / "manifest.json", d1_m)
+    catalog.record_node(d1_m)
     return tmp_path, "d1"
 
 
@@ -242,41 +249,42 @@ def test_query_point_scoped_mask_supersession(tmp_path: Path) -> None:
         ),
         p_ent,
     )
-    c0_man = c0_dir / "manifest.json"
-    write_manifest(
-        c0_man,
-        DAGNodeManifest(
-            snapshot_id="c0",
-            kind="checkpoint",
-            parents=(),
-            checkpoint_anchor_id="c0",
-            lineage_depth=0,
-            created_at="2026-01-01T00:00:00Z",
-            relations={
-                "accessions": (
-                    PartDescriptor(
-                        "acc.parquet",
-                        file_sha256(p_acc),
-                        1,
-                        p_acc.stat().st_size,
-                        "0000000001-25-000001",
-                        "0000000001-25-000001",
-                    ),
+    c0_manifest = DAGNodeManifest(
+        snapshot_id="c0",
+        kind="checkpoint",
+        parents=(),
+        checkpoint_anchor_id="c0",
+        lineage_depth=0,
+        created_at="2026-01-01T00:00:00Z",
+        relations={
+            "accessions": (
+                PartDescriptor(
+                    "acc.parquet",
+                    file_sha256(p_acc),
+                    1,
+                    p_acc.stat().st_size,
+                    "0000000001-25-000001",
+                    "0000000001-25-000001",
                 ),
-                "entries": (
-                    PartDescriptor(
-                        "ent.parquet",
-                        file_sha256(p_ent),
-                        2,
-                        p_ent.stat().st_size,
-                        "0000000001-25-000001",
-                        "0000000001-25-000001",
-                    ),
+            ),
+            "entries": (
+                PartDescriptor(
+                    "ent.parquet",
+                    file_sha256(p_ent),
+                    2,
+                    p_ent.stat().st_size,
+                    "0000000001-25-000001",
+                    "0000000001-25-000001",
                 ),
-            },
-            logical_fingerprint="fp0",
-        ),
+            ),
+        },
+        logical_fingerprint="fp0",
     )
+    c0_man = c0_dir / "manifest.json"
+    write_manifest(c0_man, c0_manifest)
+    catalog2 = DAGCatalog(tmp_path)
+    catalog2.record_node(c0_manifest)
+    c0_digest2 = catalog2.get_manifest_sha256("c0") or ""
 
     d1_dir = tmp_path / "d1"
     d1_dir.mkdir(parents=True)
@@ -309,40 +317,39 @@ def test_query_point_scoped_mask_supersession(tmp_path: Path) -> None:
         d1_ent,
     )
     d1_man = d1_dir / "manifest.json"
-    write_manifest(
-        d1_man,
-        DAGNodeManifest(
-            snapshot_id="d1",
-            kind="delta",
-            parents=(ParentRef("c0", file_sha256(c0_man)),),
-            checkpoint_anchor_id="c0",
-            lineage_depth=1,
-            created_at="2026-01-01T00:01:00Z",
-            relations={
-                "accessions": (
-                    PartDescriptor(
-                        "acc.parquet",
-                        file_sha256(d1_acc),
-                        1,
-                        d1_acc.stat().st_size,
-                        "0000000001-25-000001",
-                        "0000000001-25-000001",
-                    ),
+    d1_manifest = DAGNodeManifest(
+        snapshot_id="d1",
+        kind="delta",
+        parents=(ParentRef("c0", c0_digest2),),
+        checkpoint_anchor_id="c0",
+        lineage_depth=1,
+        created_at="2026-01-01T00:01:00Z",
+        relations={
+            "accessions": (
+                PartDescriptor(
+                    "acc.parquet",
+                    file_sha256(d1_acc),
+                    1,
+                    d1_acc.stat().st_size,
+                    "0000000001-25-000001",
+                    "0000000001-25-000001",
                 ),
-                "entries": (
-                    PartDescriptor(
-                        "ent.parquet",
-                        file_sha256(d1_ent),
-                        1,
-                        d1_ent.stat().st_size,
-                        "0000000001-25-000001",
-                        "0000000001-25-000001",
-                    ),
+            ),
+            "entries": (
+                PartDescriptor(
+                    "ent.parquet",
+                    file_sha256(d1_ent),
+                    1,
+                    d1_ent.stat().st_size,
+                    "0000000001-25-000001",
+                    "0000000001-25-000001",
                 ),
-            },
-            logical_fingerprint="fp1",
-        ),
+            ),
+        },
+        logical_fingerprint="fp1",
     )
+    write_manifest(d1_man, d1_manifest)
+    catalog2.record_node(d1_manifest)
 
     lineage = walk_lineage(tmp_path, "d1")
     con = connect()

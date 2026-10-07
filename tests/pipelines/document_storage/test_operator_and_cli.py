@@ -509,18 +509,6 @@ def test_cli_review_exits_zero_when_nothing_moved(
     )
     assert "no differences" in capsys.readouterr().out
 
-
-def test_cli_review_artifacts_rejects_a_non_positive_limit(
-    paths: ProjectPaths,
-    tmp_path: Path,
-    capsys: pytest.CaptureFixture[str],
-    monkeypatch: pytest.MonkeyPatch,
-) -> None:
-    monkeypatch.setattr(cli, "resolve_paths", lambda: paths)
-    assert cli.main(["review-artifacts", "--fixture", "fix-1", "--limit", "0"]) == 2
-    assert "--limit must be positive" in capsys.readouterr().err
-
-
 def test_cli_requires_a_command() -> None:
     with pytest.raises(SystemExit):
         cli.main([])

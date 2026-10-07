@@ -1,24 +1,19 @@
 """Immutable snapshot tag management.
 
-Provides persistence, resolution, and lifecycle methods for snapshot tags.
+Provides persistence, resolution, and lifecycle methods for snapshot tags in DAGCatalog.
 """
 
 from __future__ import annotations
 
-from datetime import UTC, datetime
-import json
 from pathlib import Path
 from typing import Any
 
-from edgar_sec.foundation.hashing import file_sha256
-from edgar_sec.infra.storage.atomic import atomic_write_json
-from edgar_sec.infra.storage.dag.paths import DAGPaths, TAGS_JSON_GLOB
-from .publication import PublicationLock
+from edgar_sec.infra.storage.dag.catalog import DAGCatalog
 
 
 def tag_path_for(snapshots_root: Path | str, tag_name: str) -> Path:
-    """Return filesystem path to a tag JSON file."""
-    return DAGPaths(snapshots_root).tag_file(tag_name)
+    """Return catalog database path associated with tags."""
+    return DAGCatalog(snapshots_root).catalog_file
 
 
 def create_tag(
@@ -31,67 +26,47 @@ def create_tag(
     """Persist an immutable tag pointing to a verified snapshot manifest."""
     if not tag_name or "/" in tag_name:
         raise ValueError(f"invalid tag name: {tag_name!r}")
-    root = Path(snapshots_root)
-    manifest_path = DAGPaths(root).manifest_file(snapshot_id)
-    if not manifest_path.is_file():
-        raise FileNotFoundError(f"snapshot manifest missing: {manifest_path}")
-
-    lock_file = DAGPaths(root).publication_lock_path
-    tag_path = tag_path_for(root, tag_name)
-    digest = file_sha256(manifest_path)
-    payload = {
-        "tag": tag_name,
-        "snapshot_id": snapshot_id,
-        "manifest_sha256": digest,
-        "created_at": datetime.now(UTC).isoformat(),
-        "message": message,
-    }
-    with PublicationLock(lock_file):
-        if tag_path.exists():
-            raise FileExistsError(f"tag already exists: {tag_name}")
-        tag_path.parent.mkdir(parents=True, exist_ok=True)
-        atomic_write_json(tag_path, payload, canonical=True)
-    return tag_path
+    catalog = DAGCatalog(snapshots_root)
+    if not catalog.has_snapshot(snapshot_id):
+        raise FileNotFoundError(f"snapshot manifest missing: {snapshot_id}")
+    if catalog.get_tag(tag_name) is not None:
+        raise FileExistsError(f"tag already exists: {tag_name}")
+    catalog.create_tag(tag_name, snapshot_id, message)
+    return catalog.catalog_file
 
 
 def read_tag(snapshots_root: Path | str, tag_name: str) -> dict[str, Any] | None:
     """Return tag payload or None if the tag does not exist."""
-    path = tag_path_for(snapshots_root, tag_name)
-    if not path.is_file():
+    catalog = DAGCatalog(snapshots_root)
+    tag = catalog.get_tag(tag_name)
+    if tag is None:
         return None
-    try:
-        data = json.loads(path.read_text(encoding="utf-8"))
-        return data if isinstance(data, dict) else None
-    except (OSError, json.JSONDecodeError):
-        return None
+    return {
+        "tag": tag["name"],
+        "snapshot_id": tag["snapshot_id"],
+        "created_at": tag["created_at"],
+        "message": tag["message"],
+    }
 
 
 def list_tags(snapshots_root: Path | str) -> list[dict[str, Any]]:
-    """Return all persisted tags ordered by tag name."""
-    tags_dir = DAGPaths(snapshots_root).tags_root
-    if not tags_dir.is_dir():
-        return []
-    results: list[dict[str, Any]] = []
-    for tag_file in sorted(tags_dir.glob(TAGS_JSON_GLOB)):
-        try:
-            data = json.loads(tag_file.read_text(encoding="utf-8"))
-            if isinstance(data, dict) and "tag" in data:
-                results.append(data)
-        except (OSError, json.JSONDecodeError):
-            continue
-    return results
+    """Return all persisted tags ordered by creation time."""
+    catalog = DAGCatalog(snapshots_root)
+    return [
+        {
+            "tag": t["name"],
+            "snapshot_id": t["snapshot_id"],
+            "created_at": t["created_at"],
+            "message": t["message"],
+        }
+        for t in catalog.list_tags()
+    ]
 
 
 def delete_tag(snapshots_root: Path | str, tag_name: str) -> bool:
-    """Delete a tag under publication lock, returning True if deleted."""
-    root = Path(snapshots_root)
-    tag_path = tag_path_for(root, tag_name)
-    lock_file = DAGPaths(root).publication_lock_path
-    with PublicationLock(lock_file):
-        if not tag_path.is_file():
-            return False
-        tag_path.unlink()
-        return True
+    """Delete a tag by name, returning True if deleted."""
+    catalog = DAGCatalog(snapshots_root)
+    return catalog.delete_tag(tag_name)
 
 
 __all__ = [

@@ -14,6 +14,7 @@ from edgar_sec.foundation.runtime.paths import (
     current_pointer_path,
 )
 
+CATALOG_DB_NAME = "catalog.sqlite"
 MANIFEST_FILE_NAME = "manifest.json"
 BRANCHES_DIR_NAME = "branches"
 TAGS_DIR_NAME = "tags"
@@ -35,6 +36,14 @@ class DAGPaths:
     @property
     def root(self) -> Path:
         return self.snapshots_root
+
+    @property
+    def catalog_file(self) -> Path:
+        return self.root / CATALOG_DB_NAME
+
+    @property
+    def parts_root(self) -> Path:
+        return self.root / "parts"
 
     # --- Pointers & Branches ---
 
@@ -111,6 +120,7 @@ class DAGPaths:
 __all__ = [
     "BRANCHES_DIR_NAME",
     "BRANCH_POINTER_GLOB",
+    "CATALOG_DB_NAME",
     "DAGPaths",
     "MANIFEST_FILE_NAME",
     "PART_PREFIX",
