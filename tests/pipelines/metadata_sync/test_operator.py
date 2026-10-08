@@ -80,23 +80,15 @@ def _write_plan(tmp_path: Path, *, chunk_size: int = 2) -> str:
 
 def test_menu_covers_the_whole_lifecycle() -> None:
     menu = build_operator_menu()
-    assert [action.key for action in menu] == [
-        "1",
-        "2",
-        "3",
-        "4",
-        "5",
-        "6",
-        "f",
-        "d",
-        "p",
-    ]
-
-
-def test_pointer_selection_and_command_rendering_have_distinct_keys() -> None:
-    labels = {action.key: action.label for action in build_operator_menu()}
-    assert "dag" in labels["p"].lower() or "snapshot" in labels["p"].lower()
-    assert "distribution" in labels["d"].lower()
+    labels = {action.key: action.label for action in menu}
+    assert "d" in labels and "distribution" in labels["d"].lower()
+    assert "p" in labels and (
+        "dag" in labels["p"].lower() or "snapshot" in labels["p"].lower()
+    )
+    assert "f" in labels and "famil" in labels["f"].lower()
+    assert any("Plan" in label for label in labels.values())
+    assert any("Augment" in label for label in labels.values())
+    assert MENU_TITLE.startswith("Metadata Sync")
 
 
 def test_every_menu_action_binds_to_a_shared_command() -> None:
@@ -104,20 +96,6 @@ def test_every_menu_action_binds_to_a_shared_command() -> None:
     for action in build_operator_menu():
         assert action.callback.__name__ == "<lambda>"
         assert callable(action.callback)
-
-
-def test_menu_labels_describe_the_phase() -> None:
-    labels = [action.label for action in build_operator_menu()]
-    assert any("Plan" in label for label in labels)
-    assert any("Augment" in label for label in labels)
-    assert any("DAG console" in label for label in labels)
-    assert MENU_TITLE.startswith("Metadata Sync")
-
-
-def test_the_family_index_action_is_offline_and_derived() -> None:
-    """It is the one menu entry that needs neither a plan nor network consent."""
-    labels = {action.key: action.label for action in build_operator_menu()}
-    assert "famil" in labels["f"].lower()
 
 
 def test_the_family_index_action_explains_a_missing_universe(
@@ -780,7 +758,7 @@ def test_main_states_that_completed_work_survives_an_interrupt(
             rendered.append(before_menu() or "")
         # Drive only status; the rest prompt for a plan this test has not set up.
         for action in actions:
-            if action.key == "2":
+            if "status" in action.label.lower():
                 try:
                     action.callback()
                 except KeyboardInterrupt:

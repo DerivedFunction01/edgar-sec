@@ -308,9 +308,8 @@ def build_operator_menu() -> tuple[MenuAction, ...]:
     """Build the operator actions bound to the shared command functions."""
     return build_menu(
         menu_action("Report published catalogs and plans", _action_status),
-        menu_action("Materialize a catalog snapshot", _action_materialize),
         menu_action(
-            "Snapshot DAG console (switch current, inspect, branches, tags)",
+            "Snapshot DAG console (materialize/publish, switch current, inspect, branches, tags)",
             open_catalog_dag_console,
         ),
         menu_action("Publish a deterministic target plan", _action_plan),

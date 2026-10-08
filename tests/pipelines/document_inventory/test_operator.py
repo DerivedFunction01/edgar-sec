@@ -9,11 +9,12 @@ import edgar_sec.pipelines.document_inventory.operator as operator
 
 def test_menu_exposes_discovered_fixture_operations() -> None:
     actions = operator.build_operator_menu()
-    assert [action.key for action in actions] == ["1", "2", "3", "4", "5", "6", "d"]
-    assert "catalog plan" in actions[0].label
-    assert "List discovered fixtures" == actions[2].label
-    assert "DAG" in actions[5].label
-    assert "distribution" in actions[6].label.lower()
+    labels = {action.key: action.label for action in actions}
+    assert "d" in labels and "distribution" in labels["d"].lower()
+    assert "p" in labels and "dag" in labels["p"].lower()
+    assert any("catalog plan" in label.lower() for label in labels.values())
+    assert any("discovered fixtures" in label.lower() for label in labels.values())
+    assert any("review artifacts" in label.lower() for label in labels.values())
 
 
 def test_create_uses_discovered_plan_and_confirmed_cli_function(

@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import argparse
 import sys
+from pathlib import Path
 
 from edgar_sec.foundation.runtime.interactive import (
     MenuAction,
@@ -209,12 +210,15 @@ def build_operator_menu() -> tuple[MenuAction, ...]:
         menu_action("Fill a discovered fixture from a catalog plan", _action_fill),
         menu_action("List discovered fixtures", _action_list),
         menu_action("Build parser review artifacts", _action_review),
-        menu_action("Build inventory snapshot from catalog plan", _action_build),
-        menu_action("Snapshot DAG Lifecycle Console", _action_dag),
         menu_action(
             "Worker distribution console (export, worker, import, commands)",
             _action_distrib,
             key="d",
+        ),
+        menu_action(
+            "Snapshot DAG console (build/publish, switch current, inspect, branches, tags)",
+            _action_dag,
+            key="p",
         ),
     )
 

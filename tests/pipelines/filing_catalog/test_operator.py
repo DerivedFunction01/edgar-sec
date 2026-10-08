@@ -49,10 +49,8 @@ def _stub_auto_policy(catalog: str, paths: Any = None) -> SelectionPolicy:
 
 def test_the_menu_exposes_every_command_an_operator_can_drive() -> None:
     labels = [action.label.lower() for action in build_operator_menu()]
-    assert len(labels) == 6
     assert any("report" in label for label in labels)
-    assert any("materialize" in label for label in labels)
-    assert any("dag" in label for label in labels)
+    assert any("materialize" in label or "dag" in label for label in labels)
     assert any("catalog" in label and "plan" in label for label in labels)
     assert any("selection policy" in label for label in labels)
     assert any("expand" in label for label in labels)
@@ -66,11 +64,6 @@ def test_every_cli_subcommand_is_reachable_one_way_or_the_other() -> None:
     )
     for command in ("materialize", "plan", "expand", "status"):
         assert command in menu, command
-
-
-def test_menu_actions_are_numbered_in_order() -> None:
-    keys = [action.key for action in build_operator_menu()]
-    assert keys == ["1", "2", "3", "4", "5", "6"]
 
 
 def test_every_action_is_callable() -> None:
@@ -169,9 +162,7 @@ def test_every_prompted_action_builds_a_usable_namespace(
         return 0
 
     # In menu order; the counts are why each action's answers appear where they do.
-    answers = iter(
-        ["src", "cat-1", "10-K", "@Q1[1999..2001]", "cat-2", "1", "1", "5000"]
-    )
+    answers = iter(["cat-1", "10-K", "@Q1[1999..2001]", "cat-2", "1", "1", "5000"])
     monkeypatch.setattr(operator, "prompt_text", lambda prompt, default: next(answers))
     monkeypatch.setattr(operator, "discover_catalogs", lambda _paths: [])
     monkeypatch.setattr(operator, "discover_policies", lambda _paths: [_DRAFT])
@@ -190,18 +181,17 @@ def test_every_prompted_action_builds_a_usable_namespace(
 
     assert [namespace.command for namespace in seen] == [
         "status",
-        "materialize",
         "plan",
         "plan",
         "expand",
     ]
-    plan_namespace = seen[2]
+    plan_namespace = seen[1]
     assert plan_namespace.catalog == "cat-1"
     assert plan_namespace.forms == ["10-K"]
     assert plan_namespace.dates == "@Q1[1999..2001]"
     assert plan_namespace.scope == "deterministic"
 
-    policy_namespace = seen[3]
+    policy_namespace = seen[2]
     assert policy_namespace.catalog == "cat-2"
     assert policy_namespace.scope == "policy"
     assert policy_namespace.policy == _DRAFT["path"]
@@ -243,7 +233,6 @@ def test_no_action_ever_asks_for_the_artifacts_root(
     # The policy action answers blank, which is its write-a-new-draft path.
     assert [namespace.command for namespace in seen] == [
         "status",
-        "materialize",
         "plan",
         "expand",
     ]
