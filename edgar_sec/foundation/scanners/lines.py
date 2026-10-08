@@ -19,12 +19,13 @@ def is_noise(line: str) -> bool:
     return line.strip().startswith(_COMMENT_PREFIXES)
 
 
-def is_scanner_infrastructure(path: str) -> bool:
-    """True for the scanners themselves and for test files.
-
-    Both must spell out the patterns they detect, or assert on a violation.
-    """
-    return "foundation/scanners/" in path or path.startswith("tests/")
+def is_scanner_infrastructure(path: str, scan_tests: bool = False) -> bool:
+    """True for the scanners themselves and for test files."""
+    if "foundation/scanners/" in path:
+        return True
+    if scan_tests:
+        return path.startswith("tests/foundation/scanners/")
+    return path.startswith("tests/")
 
 
 def matches_allowed(path: str, prefixes: Sequence[str]) -> bool:
@@ -55,15 +56,18 @@ def scan_text_rule(
     prefixes: Sequence[str] = (),
     skip: Sequence[str] = (),
     skip_noise: bool = True,
+    scan_tests: bool = False,
 ) -> list[ScannerFinding]:
     """Apply a per-line rule across the tree and return the findings.
 
     ``prefixes`` exempts modules owning the pattern vocabulary; ``skip`` exempts files.
-    ``skip_noise`` suits a code rule, not a prose one, so the legacy-shims rule turns it off.
     """
     findings = []
     for path_str, number, line in iter_source_lines():
-        if is_scanner_infrastructure(path_str) or path_str in skip:
+        if (
+            is_scanner_infrastructure(path_str, scan_tests=scan_tests)
+            or path_str in skip
+        ):
             continue
         if matches_allowed(path_str, prefixes):
             continue

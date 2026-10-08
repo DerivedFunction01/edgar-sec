@@ -117,12 +117,40 @@ def test_ignores_entrypoints(synthetic_repo: Path) -> None:
     assert legacy_shims.scan_legacy_shims() == []
 
 
-def test_ignores_tests(synthetic_repo: Path) -> None:
+def test_ignores_scanner_tests(synthetic_repo: Path) -> None:
     _build_repo(
         synthetic_repo,
-        {"tests/test_thing.py": "def _legacy_helper() -> None:\n    pass\n"},
+        {
+            "tests/foundation/scanners/test_custom.py": "def _legacy_helper() -> None:\n    pass\n"
+        },
     )
     assert legacy_shims.scan_legacy_shims() == []
+
+
+def test_flags_test_files_with_legacy_shims(synthetic_repo: Path) -> None:
+    _build_repo(
+        synthetic_repo,
+        {
+            "tests/infra/test_thing.py": "def test_legacy_behavior() -> None:\n    pass\n"
+        },
+    )
+    assert legacy_shims.scan_legacy_shims()
+
+
+def test_flags_unanchored_phrasing_in_comment_and_docstring(
+    synthetic_repo: Path,
+) -> None:
+    _build_repo(
+        synthetic_repo,
+        {
+            "edgar_sec/engine/thing.py": (
+                "# Also check legacy directories\n"
+                "def foo() -> None:\n"
+                '    """This is deprecated."""\n'
+            )
+        },
+    )
+    assert len(legacy_shims.scan_legacy_shims()) == 2
 
 
 def test_hint_cites_the_agents_rule(synthetic_repo: Path) -> None:

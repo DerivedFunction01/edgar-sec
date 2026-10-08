@@ -212,7 +212,9 @@ def test_a_multipart_source_materializes_the_same_catalog(
     single_part = _phase1_manifest(sample_source, tmp_path / "single-art")
     multipart = _multipart_manifest(sample_source, tmp_path / "multi-art")
 
-    from_single = materialize(None, tmp_path / "out-single", source_manifest=single_part)
+    from_single = materialize(
+        None, tmp_path / "out-single", source_manifest=single_part
+    )
     from_parts = materialize(None, tmp_path / "out-multi", source_manifest=multipart)
 
     assert from_parts["source_part_count"] > 1

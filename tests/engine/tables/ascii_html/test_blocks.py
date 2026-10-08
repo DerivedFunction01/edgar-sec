@@ -111,7 +111,10 @@ def test_a_data_row_fuses_a_currency_prefix_into_the_amount() -> None:
 
 def test_a_header_row_is_never_fused_because_affix_columns_mean_nothing_there() -> None:
     blocks = [_block([0], "$"), _block([1], "Amount", width=6)]
-    assert fuse_data_affix_blocks(blocks, 0, 1, {0}, set(), DEFAULT_RENDER_BUDGET) == blocks
+    assert (
+        fuse_data_affix_blocks(blocks, 0, 1, {0}, set(), DEFAULT_RENDER_BUDGET)
+        == blocks
+    )
 
 
 def test_a_standalone_hyphen_does_not_attach_to_the_following_number() -> None:
@@ -149,7 +152,9 @@ def test_a_header_does_not_extend_across_a_band_that_carries_content() -> None:
 
 def test_an_empty_data_row_sub_block_fuses_under_its_parent_header_span() -> None:
     blocks = [_block([0, 1], "", width=6), _block([2], "1,200", width=5)]
-    fused = fuse_empty_header_span_blocks(blocks, 2, 1, [{0, 1, 2}], DEFAULT_RENDER_BUDGET)
+    fused = fuse_empty_header_span_blocks(
+        blocks, 2, 1, [{0, 1, 2}], DEFAULT_RENDER_BUDGET
+    )
     assert len(fused) == 1
     assert fused[0].text == "1,200"
 
@@ -164,7 +169,9 @@ def test_a_protected_span_is_never_absorbed_into_a_neighbour() -> None:
 
 def test_a_range_marker_block_is_never_absorbed() -> None:
     blocks = [_block([0, 1], "", width=6), _block([2], "-", width=1)]
-    fused = fuse_empty_header_span_blocks(blocks, 2, 1, [{0, 1, 2}], DEFAULT_RENDER_BUDGET)
+    fused = fuse_empty_header_span_blocks(
+        blocks, 2, 1, [{0, 1, 2}], DEFAULT_RENDER_BUDGET
+    )
     assert len(fused) == 2
 
 
@@ -174,7 +181,9 @@ def test_a_combined_numeric_value_expands_across_its_three_column_band() -> None
         _block([1], "$14,164", width=7),
         _block([2], "", width=1),
     ]
-    expanded = expand_numeric_blocks_to_header_bands(blocks, [{0, 1, 2}], DEFAULT_RENDER_BUDGET)
+    expanded = expand_numeric_blocks_to_header_bands(
+        blocks, [{0, 1, 2}], DEFAULT_RENDER_BUDGET
+    )
     assert len(expanded) == 1
     assert expanded[0].text == "$14,164"
     assert expanded[0].alignment is HorizontalAlign.RIGHT
@@ -186,7 +195,12 @@ def test_a_band_with_two_populated_blocks_is_left_alone() -> None:
         _block([1], "1,100", width=5),
         _block([2], "", width=1),
     ]
-    assert expand_numeric_blocks_to_header_bands(blocks, [{0, 1, 2}], DEFAULT_RENDER_BUDGET) == blocks
+    assert (
+        expand_numeric_blocks_to_header_bands(
+            blocks, [{0, 1, 2}], DEFAULT_RENDER_BUDGET
+        )
+        == blocks
+    )
 
 
 def test_a_terminal_subheader_aligns_to_the_numeric_edge_not_the_micro_columns() -> (
