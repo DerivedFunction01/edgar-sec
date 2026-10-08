@@ -63,7 +63,7 @@ class InventoryReviewAdapter(ReviewAdapter):
             fixture=fixture_id,
             catalog_plan=catalog_plan,
             limit=limit,
-            artifacts=str(artifacts_root),
+            artifacts_root=str(artifacts_root),
             json=json,
         )
         fn = _get_cli_dep("cmd_fixture_create", cmd_fixture_create)
@@ -82,7 +82,7 @@ class InventoryReviewAdapter(ReviewAdapter):
             fixture=fixture_id,
             catalog_plan=catalog_plan,
             limit=limit,
-            artifacts=str(artifacts_root),
+            artifacts_root=str(artifacts_root),
             json=json,
         )
         fn = _get_cli_dep("cmd_fixture_fill", cmd_fixture_fill)
@@ -103,7 +103,7 @@ class InventoryReviewAdapter(ReviewAdapter):
             limit=limit,
             workers=workers,
             accession=list(accessions) if accessions else None,
-            artifacts=str(artifacts_root),
+            artifacts_root=str(artifacts_root),
             json=False,
         )
         return cmd_review_artifacts(args)

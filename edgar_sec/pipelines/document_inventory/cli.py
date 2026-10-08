@@ -50,7 +50,12 @@ __all__ = [
 
 
 def _add_output_options(parser: argparse.ArgumentParser) -> None:
-    parser.add_argument("--artifacts", help="artifacts root override")
+    parser.add_argument(
+        "--artifacts",
+        dest="artifacts_root",
+        default="",
+        help="artifacts root override",
+    )
     parser.add_argument("--json", action="store_true", help="emit JSON to stdout")
 
 
@@ -113,7 +118,7 @@ def build_parser() -> argparse.ArgumentParser:
             args,
             default_root=lambda: (
                 InventoryPaths(
-                    _artifacts_root(getattr(args, "artifacts", None))
+                    _artifacts_root(getattr(args, "artifacts_root", None))
                 ).snapshots_root
             ),
             default_specs=INVENTORY_RELATIONS,
@@ -126,8 +131,8 @@ def build_parser() -> argparse.ArgumentParser:
     attach_distrib_subparser(
         commands,
         lambda args: InventoryDistributionAdapter(
-            artifacts_root=Path(args.artifacts).resolve()
-            if getattr(args, "artifacts", None)
+            artifacts_root=Path(args.artifacts_root).resolve()
+            if getattr(args, "artifacts_root", None)
             else None
         ),
     )

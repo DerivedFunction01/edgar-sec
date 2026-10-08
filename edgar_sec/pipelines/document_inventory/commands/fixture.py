@@ -38,7 +38,7 @@ def _get_cli_dep(name: str, fallback: Any) -> Any:
 
 def _capture(args: argparse.Namespace, *, create: bool) -> int:
     """Capture index pages into a new or existing fixture."""
-    root = resolve_artifacts_root(args.artifacts)
+    root = resolve_artifacts_root(args.artifacts_root)
     fixture_paths = resolve_index_fixture_paths(root, args.fixture)
     if create and (
         fixture_paths.manifest_path.exists() or fixture_paths.storage_path.exists()
@@ -140,7 +140,7 @@ def cmd_fixture_fill(args: argparse.Namespace) -> int:
 
 def cmd_fixture_list(args: argparse.Namespace) -> int:
     """List discovered index fixtures."""
-    root = resolve_artifacts_root(args.artifacts)
+    root = resolve_artifacts_root(args.artifacts_root)
     fixtures = discover_fixtures(root)
     result = {"fixtures": fixtures, "fixture_count": len(fixtures)}
 

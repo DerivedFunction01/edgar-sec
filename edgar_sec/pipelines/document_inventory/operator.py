@@ -45,7 +45,7 @@ def _action_query() -> None:
                 filing_cik=None,
                 source_cik=None,
                 limit=None,
-                artifacts=_root(),
+                artifacts_root=_root(),
                 json=False,
             )
         )
@@ -66,7 +66,7 @@ def _action_query() -> None:
             filing_cik=filing_cik or None,
             source_cik=source_cik or None,
             limit=limit,
-            artifacts=_root(),
+            artifacts_root=_root(),
             json=False,
         )
     )

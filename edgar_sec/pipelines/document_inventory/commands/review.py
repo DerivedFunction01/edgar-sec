@@ -17,7 +17,7 @@ from .common import resolve_artifacts_root
 
 def cmd_review_artifacts(args: argparse.Namespace) -> int:
     """Build offline parser review artifacts from index fixtures."""
-    root = resolve_artifacts_root(args.artifacts)
+    root = resolve_artifacts_root(args.artifacts_root)
     fixture = resolve_index_fixture_paths(root, args.fixture)
     result = build_review_artifacts(
         fixture,

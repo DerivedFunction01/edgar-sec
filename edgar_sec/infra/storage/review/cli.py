@@ -48,7 +48,12 @@ def _attach_review_commands(
         dest="accessions",
         help="restrict to accession (repeatable)",
     )
-    gen.add_argument("--artifacts", default="", help="artifacts root override")
+    gen.add_argument(
+        "--artifacts",
+        dest="artifacts_root",
+        default="",
+        help="artifacts root override",
+    )
     gen.add_argument("--json", action="store_true", help="emit JSON output")
     gen.set_defaults(func=lambda args: _cmd_generate(args, adapter))
 
@@ -66,7 +71,12 @@ def _attach_review_commands(
         default=20,
         help="maximum changed cases to list in console",
     )
-    cmp_cmd.add_argument("--artifacts", default="", help="artifacts root override")
+    cmp_cmd.add_argument(
+        "--artifacts",
+        dest="artifacts_root",
+        default="",
+        help="artifacts root override",
+    )
     cmp_cmd.add_argument("--json", action="store_true", help="emit JSON output")
     cmp_cmd.set_defaults(func=lambda args: _cmd_compare(args, adapter))
 
@@ -89,7 +99,12 @@ def _attach_fixture_commands(
     create_cmd.add_argument(
         "--limit", type=positive_int_type, help="limit target cases"
     )
-    create_cmd.add_argument("--artifacts", default="", help="artifacts root override")
+    create_cmd.add_argument(
+        "--artifacts",
+        dest="artifacts_root",
+        default="",
+        help="artifacts root override",
+    )
     create_cmd.add_argument("--json", action="store_true", help="emit JSON output")
     create_cmd.set_defaults(func=lambda args: _cmd_create_fixture(args, adapter))
 
@@ -99,12 +114,22 @@ def _attach_fixture_commands(
         "--catalog-plan", required=True, help="published catalog plan id"
     )
     fill_cmd.add_argument("--limit", type=positive_int_type, help="limit target cases")
-    fill_cmd.add_argument("--artifacts", default="", help="artifacts root override")
+    fill_cmd.add_argument(
+        "--artifacts",
+        dest="artifacts_root",
+        default="",
+        help="artifacts root override",
+    )
     fill_cmd.add_argument("--json", action="store_true", help="emit JSON output")
     fill_cmd.set_defaults(func=lambda args: _cmd_fill_fixture(args, adapter))
 
     list_cmd = commands.add_parser("list", help="list discovered fixtures")
-    list_cmd.add_argument("--artifacts", default="", help="artifacts root override")
+    list_cmd.add_argument(
+        "--artifacts",
+        dest="artifacts_root",
+        default="",
+        help="artifacts root override",
+    )
     list_cmd.add_argument("--json", action="store_true", help="emit JSON output")
     list_cmd.set_defaults(func=lambda args: _cmd_list_fixtures(args, adapter))
 
@@ -113,7 +138,7 @@ def _cmd_generate(args: argparse.Namespace, adapter: ReviewAdapter) -> int:
     output_dir = (
         Path(args.output)
         if args.output
-        else _derive_run_dir(args.artifacts, adapter.dataset_name)
+        else _derive_run_dir(args.artifacts_root, adapter.dataset_name)
     )
     exit_code = adapter.build_review_artifacts(
         fixture_id=args.fixture,
@@ -121,7 +146,7 @@ def _cmd_generate(args: argparse.Namespace, adapter: ReviewAdapter) -> int:
         limit=args.limit,
         workers=args.workers,
         accessions=args.accessions,
-        artifacts_root=args.artifacts,
+        artifacts_root=args.artifacts_root,
     )
     if not args.json:
         print(f"Review artifacts written to: {output_dir}")
@@ -134,7 +159,7 @@ def _cmd_compare(args: argparse.Namespace, adapter: ReviewAdapter) -> int:
     output_dir = (
         Path(args.output)
         if args.output
-        else _derive_diff_dir(args.artifacts, adapter.dataset_name)
+        else _derive_diff_dir(args.artifacts_root, adapter.dataset_name)
     )
     summary = compare_review_runs(
         base_dir=base_dir,
@@ -165,46 +190,30 @@ def _cmd_compare(args: argparse.Namespace, adapter: ReviewAdapter) -> int:
 
 
 def _cmd_create_fixture(args: argparse.Namespace, adapter: ReviewAdapter) -> int:
-    try:
-        return adapter.create_fixture(
-            fixture_id=args.fixture,
-            catalog_plan=args.catalog_plan,
-            limit=args.limit,
-            artifacts_root=args.artifacts,
-            json=getattr(args, "json", False),
-        )
-    except TypeError:
-        return adapter.create_fixture(
-            fixture_id=args.fixture,
-            catalog_plan=args.catalog_plan,
-            limit=args.limit,
-            artifacts_root=args.artifacts,
-        )
+    return adapter.create_fixture(
+        fixture_id=args.fixture,
+        catalog_plan=args.catalog_plan,
+        limit=args.limit,
+        artifacts_root=args.artifacts_root,
+        json=getattr(args, "json", False),
+    )
 
 
 def _cmd_fill_fixture(args: argparse.Namespace, adapter: ReviewAdapter) -> int:
-    try:
-        return adapter.fill_fixture(
-            fixture_id=args.fixture,
-            catalog_plan=args.catalog_plan,
-            limit=args.limit,
-            artifacts_root=args.artifacts,
-            json=getattr(args, "json", False),
-        )
-    except TypeError:
-        return adapter.fill_fixture(
-            fixture_id=args.fixture,
-            catalog_plan=args.catalog_plan,
-            limit=args.limit,
-            artifacts_root=args.artifacts,
-        )
+    return adapter.fill_fixture(
+        fixture_id=args.fixture,
+        catalog_plan=args.catalog_plan,
+        limit=args.limit,
+        artifacts_root=args.artifacts_root,
+        json=getattr(args, "json", False),
+    )
 
 
 def _cmd_list_fixtures(args: argparse.Namespace, adapter: ReviewAdapter) -> int:
     cmd_fn = getattr(adapter, "cmd_list_fixtures", None)
     if callable(cmd_fn):
         return int(cmd_fn(args))
-    fixtures = adapter.list_fixtures(args.artifacts)
+    fixtures = adapter.list_fixtures(args.artifacts_root)
     if args.json:
         print(json.dumps(fixtures, indent=2))
     else:

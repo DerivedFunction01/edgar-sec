@@ -22,6 +22,7 @@ def test_action_query_with_accession(monkeypatch) -> None:
     operator._action_query()
     assert len(calls) == 1
     assert calls[0].accession == "0000000001-20-000001"
+    assert calls[0].artifacts_root == operator._root()
 
 
 def test_action_query_with_form_and_limit(monkeypatch) -> None:
@@ -34,6 +35,7 @@ def test_action_query_with_form_and_limit(monkeypatch) -> None:
     assert calls[0].form == "10-K"
     assert calls[0].filing_cik == "12345"
     assert calls[0].limit == 50
+    assert calls[0].artifacts_root == operator._root()
 
 
 def test_action_review_delegates_to_review_menu(tmp_path: Path, monkeypatch) -> None:

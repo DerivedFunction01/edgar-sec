@@ -28,6 +28,7 @@ class ReviewAdapter(Protocol):
         catalog_plan: str,
         limit: int | None = None,
         artifacts_root: Path | str = "",
+        json: bool = False,
     ) -> int:
         """Capture and persist a new fixture from a catalog plan."""
         ...
@@ -38,6 +39,7 @@ class ReviewAdapter(Protocol):
         catalog_plan: str,
         limit: int | None = None,
         artifacts_root: Path | str = "",
+        json: bool = False,
     ) -> int:
         """Extend an existing fixture with additional targets."""
         ...

@@ -21,6 +21,7 @@ def build_parser() -> argparse.ArgumentParser:
     )
     parser.add_argument(
         "--artifacts",
+        dest="artifacts_root",
         default=None,
         help="artifacts workspace (default: the resolved project artifacts root)",
     )

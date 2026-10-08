@@ -20,7 +20,7 @@ from .common import resolve_artifacts_root
 
 def cmd_query(args: argparse.Namespace) -> int:
     """Query active document inventory snapshots."""
-    root = resolve_artifacts_root(args.artifacts)
+    root = resolve_artifacts_root(args.artifacts_root)
     snapshots_root = InventoryPaths(root).snapshots_root
 
     results: list[dict[str, Any]] = []

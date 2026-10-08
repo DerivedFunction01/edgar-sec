@@ -25,7 +25,7 @@ from edgar_sec.pipelines.document_inventory.paths import (
 ARCHIVE_BASE_URL = "https://www.sec.gov/Archives/edgar/data"
 
 
-def resolve_artifacts_root(value: str | None) -> Path:
+def resolve_artifacts_root(value: str | Path | None = None) -> Path:
     """Resolve artifacts root directory."""
     if value:
         return Path(value).expanduser().resolve()

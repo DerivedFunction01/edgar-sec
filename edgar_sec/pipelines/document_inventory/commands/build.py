@@ -13,7 +13,7 @@ from .common import resolve_artifacts_root
 
 def cmd_build(args: argparse.Namespace) -> int:
     """Build and publish an immutable inventory snapshot."""
-    root = resolve_artifacts_root(args.artifacts)
+    root = resolve_artifacts_root(args.artifacts_root)
     publication = builder.build_inventory(
         args.catalog_plan,
         base_snapshot_id=args.base_snapshot,

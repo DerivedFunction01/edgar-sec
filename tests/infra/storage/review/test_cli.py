@@ -23,7 +23,7 @@ class RecordingAdapter:
         catalog_plan: str,
         limit=None,
         artifacts_root="",
-        **kwargs,
+        json=False,
     ):
         self.calls.append(
             ("create", {"id": fixture_id, "plan": catalog_plan, "limit": limit})
@@ -36,7 +36,7 @@ class RecordingAdapter:
         catalog_plan: str,
         limit=None,
         artifacts_root="",
-        **kwargs,
+        json=False,
     ):
         self.calls.append(
             ("fill", {"id": fixture_id, "plan": catalog_plan, "limit": limit})
