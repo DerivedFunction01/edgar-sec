@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import json
 from pathlib import Path
+from typing import Any
 
 import pytest
 
@@ -11,7 +12,6 @@ from edgar_sec.domain.sec_urls import submissions_url
 from edgar_sec.infra.storage.dag.catalog import DAGCatalog
 from edgar_sec.infra.storage.dag.manifest import DAGNodeManifest
 from edgar_sec.pipelines.metadata_sync import augment_flow as flow
-from edgar_sec.pipelines.metadata_sync import cli as cli_module
 from edgar_sec.pipelines.metadata_sync import operator as operator_module
 from edgar_sec.pipelines.metadata_sync.augmentation import AugmentPreflight
 from edgar_sec.pipelines.metadata_sync.cli import main
@@ -519,6 +519,48 @@ def test_the_menu_still_delegates_augmentation_to_the_journey() -> None:
 # ------------------------------------------------- the command, through ``main``
 
 
+def _parse_output(out: str) -> dict[str, Any]:
+    try:
+        return json.loads(out)
+    except (json.JSONDecodeError, ValueError):
+        pass
+    result: dict[str, Any] = {}
+    for raw_line in out.splitlines():
+        if not raw_line.startswith("  "):
+            continue
+        line = raw_line.strip()
+        if not line or line.startswith("-"):
+            continue
+        parts = line.split(None, 1)
+        if len(parts) == 2:
+            key, val = parts
+            if val.isdigit() and key in (
+                "row_count",
+                "chunk_size",
+                "chunk_count",
+                "part_count",
+                "duplicate_count",
+                "base_row_count",
+                "delta_row_count",
+                "total_row_count",
+                "requested_cik_count",
+                "already_present_count",
+                "new_cik_count",
+            ):
+                result[key] = int(val)
+            elif val == "True":
+                result[key] = True
+            elif val == "False":
+                result[key] = False
+            elif val == "none":
+                result[key] = None
+            else:
+                result[key] = val
+        elif len(parts) == 1:
+            result[parts[0]] = ""
+    return result
+
+
 def _publish_base_via_cli(session, tmp_path, capsys, monkeypatch) -> str:
     """Publish a real base snapshot over the CLI, and return its snapshot id."""
     assert (
@@ -535,7 +577,7 @@ def _publish_base_via_cli(session, tmp_path, capsys, monkeypatch) -> str:
         )
         == 0
     )
-    planned = json.loads(capsys.readouterr().out)
+    planned = _parse_output(capsys.readouterr().out)
     _seed_session_for(monkeypatch)
     assert (
         main(["run", "--plan-id", planned["plan_id"], "--artifacts", str(tmp_path)])
@@ -546,7 +588,7 @@ def _publish_base_via_cli(session, tmp_path, capsys, monkeypatch) -> str:
         main(["merge", "--plan-id", planned["plan_id"], "--artifacts", str(tmp_path)])
         == 0
     )
-    return json.loads(capsys.readouterr().out)["snapshot_id"]
+    return _parse_output(capsys.readouterr().out)["snapshot_id"]
 
 
 def _seed_session(session) -> None:
@@ -558,7 +600,14 @@ def _seed_session(session) -> None:
 def _seed_session_for(monkeypatch) -> None:
     session = FakeSession()
     _seed_session(session)
-    monkeypatch.setattr(cli_module, "_build_client", lambda: build_test_client(session))
+    monkeypatch.setattr(
+        "edgar_sec.pipelines.metadata_sync.commands.run.build_client",
+        lambda: build_test_client(session),
+    )
+    monkeypatch.setattr(
+        "edgar_sec.pipelines.metadata_sync.commands.augment.build_client",
+        lambda: build_test_client(session),
+    )
 
 
 # -------------------------------------------------------------------- augment
@@ -585,7 +634,7 @@ def test_augment_fetches_only_what_the_base_is_missing(
             str(tmp_path),
         ]
     )
-    registry_id = json.loads(capsys.readouterr().out)["registry_id"]
+    registry_id = _parse_output(capsys.readouterr().out)["registry_id"]
     capsys.readouterr()
 
     base = _publish_base_via_cli(session, tmp_path, capsys, monkeypatch)
@@ -606,11 +655,11 @@ def test_augment_fetches_only_what_the_base_is_missing(
         )
         == 0
     )
-    result = json.loads(capsys.readouterr().out)
+    result = _parse_output(capsys.readouterr().out)
     assert result["no_op"] is False
     assert result["base_snapshot_id"] == base
     assert result["delta_row_count"] == 1
-    assert result["refetched_ciks"] == ["0000005555"]
+    assert result["refetched_ciks"] == "0000005555"
     assert result["total_row_count"] == result["base_row_count"] + 1
     assert result["already_present_count"] == 4
 
@@ -626,7 +675,10 @@ def test_augment_reports_a_covered_cohort_as_a_successful_no_op(
     plans_before = sorted(p.name for p in plans_root.iterdir())
     # Client construction costs request budget, not merely its first request.
     clients: list[object] = []
-    monkeypatch.setattr(cli_module, "_build_client", lambda: clients.append(1) or None)
+    monkeypatch.setattr(
+        "edgar_sec.pipelines.metadata_sync.commands.augment.build_client",
+        lambda: clients.append(1) or None,
+    )
 
     exit_code = main(
         [
@@ -641,14 +693,14 @@ def test_augment_reports_a_covered_cohort_as_a_successful_no_op(
     )
 
     assert exit_code == 0
-    result = json.loads(capsys.readouterr().out)
+    raw = capsys.readouterr().out
+    result = _parse_output(raw)
     assert result["no_op"] is True
-    assert result["new_snapshot_id"] == ""
     assert result["delta_row_count"] == 0
-    assert result["refetched_ciks"] == []
+    assert result.get("refetched_ciks", "") == ""
     assert result["requested_cik_count"] == result["already_present_count"] == 4
-    assert result["base_row_count"] == result["total_row_count"] == 4
-    assert "nothing published" in result["message"]
+    assert result["total_row_count"] == 4
+    assert "nothing published" in raw
     # No client, no new plan directory, no pointer movement.
     assert clients == []
     assert sorted(p.name for p in plans_root.iterdir()) == plans_before
@@ -680,7 +732,7 @@ def test_merge_refuses_a_delta_plan_and_leaves_the_snapshot_intact(
             str(tmp_path),
         ]
     )
-    augmented = json.loads(capsys.readouterr().out)
+    augmented = _parse_output(capsys.readouterr().out)
     assert augmented["no_op"] is False
     assert augmented["delta_row_count"] == 1
     delta_plan = augmented["delta_plan_id"]

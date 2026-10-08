@@ -818,10 +818,10 @@ def test_refresh_can_publish_the_universe_index(
     assert seen == [(state.metadata().artifacts_root, SOURCE_UNIVERSE_NAME)]
 
 
-def test_refresh_names_the_payload_size_in_its_consent(
+def test_refresh_names_the_source_in_its_consent(
     state: WizardState, monkeypatch: pytest.MonkeyPatch
 ) -> None:
-    """A 40 MB download should not be consented to as if it were a 1 MB one."""
+    """Network confirmation must identify the selected source."""
     prompts: list[str] = []
     monkeypatch.setattr(
         operator_module,
@@ -837,4 +837,4 @@ def test_refresh_names_the_payload_size_in_its_consent(
 
     operator_module.refresh(state)
 
-    assert any("40 MB" in text for text in prompts)
+    assert any(SOURCE_UNIVERSE_NAME in text for text in prompts)

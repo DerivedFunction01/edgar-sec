@@ -129,10 +129,10 @@ def test_client_accepts_an_explicit_user_agent(session: FakeSession) -> None:
 def test_client_builds_from_resolved_settings() -> None:
     """Every other test injects a fake transport, so only this reaches the chain."""
     from edgar_sec.foundation.runtime.settings import resolve_runtime_settings
-    from edgar_sec.pipelines.metadata_sync.cli import _build_client
+    from edgar_sec.pipelines.metadata_sync.commands.client import build_client
 
     settings = resolve_runtime_settings().sec
-    client = _build_client()
+    client = build_client()
     assert client.http.user_agent == settings.user_agent
     assert client.http.timeout_s == settings.timeout_s
     assert client.http.retry_policy.max_retries == settings.max_retries
