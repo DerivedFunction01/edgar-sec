@@ -9,21 +9,18 @@ from pathlib import Path
 
 import pytest
 
-from edgar_sec.infra.storage.atomic import atomic_write_json
+from edgar_sec.infra.storage.cohort.catalog import CohortCatalog
+from edgar_sec.infra.storage.cohort.paths import resolve_cohort_paths
 from edgar_sec.pipelines.metadata_sync.paths import resolve_metadata_paths
+from edgar_sec.pipelines.metadata_sync.roster import RosterError
 from edgar_sec.pipelines.metadata_sync.source_registry import (
     SOURCE_UNIVERSE_NAME,
     SOURCE_UNIVERSE_URL,
     SourceRegistryError,
-    load_source_snapshot,
-    parse_cik_lookup_universe,
     refresh_cik_lookup_universe,
     resolve_universe_snapshot,
 )
-from edgar_sec.pipelines.metadata_sync.universe import (
-    NAME_RULE,
-    compile_universe_cohort,
-)
+from edgar_sec.pipelines.metadata_sync.universe import compile_universe_cohort
 from tests.support import FakeSession, build_test_http, fixture_path
 
 FIXTURE = fixture_path("cik_lookup_universe_mini.txt")
@@ -45,20 +42,6 @@ def _publish(session: FakeSession, tmp_path: Path, payload: bytes | None = None)
     return metadata, manifest
 
 
-# ------------------------------------------------------------------- the parser
-
-
-def test_parse_counts_lines_registrants_and_repeats() -> None:
-    _none, report = parse_cik_lookup_universe(
-        _payload(), snapshot_id="snap", observed_at="2026-01-01T00:00:00Z"
-    )
-    assert report["line_count"] == 14
-    assert report["distinct_cik_count"] == 12
-    # Three names share one registrant, so two lines collapse away.
-    assert report["collapsed_name_count"] == 2
-    assert report["malformed_line_count"] == 0
-
-
 def test_the_fixture_has_no_trailing_newline() -> None:
     """The live payload's last line lacks one; a fixture that added one would differ."""
     assert not _payload().endswith(b"\n")
@@ -74,12 +57,8 @@ def test_refresh_publishes_the_universe_snapshot(
     assert manifest["source"] == SOURCE_UNIVERSE_NAME
     assert manifest["source_url"] == SOURCE_UNIVERSE_URL
     assert manifest["distinct_cik_count"] == 12
-    assert Path(manifest["raw_path"]).name == "raw.txt"
-
-    loaded = load_source_snapshot(
-        metadata.source_manifest_file(SOURCE_UNIVERSE_NAME, manifest["snapshot_id"])
-    )
-    assert loaded.raw_path.read_bytes() == _payload()
+    assert Path(manifest["raw_path"]).suffix == ".txt"
+    assert Path(manifest["raw_path"]).read_bytes() == _payload()
 
 
 def test_refresh_refuses_a_malformed_payload(
@@ -102,28 +81,15 @@ def test_resolve_is_empty_without_a_snapshot(tmp_path: Path) -> None:
     assert resolve_universe_snapshot(metadata) == ""
 
 
-def test_resolve_picks_the_newest_of_two(session: FakeSession, tmp_path: Path) -> None:
+def test_resolve_uses_the_active_catalog_pointer(
+    session: FakeSession, tmp_path: Path
+) -> None:
     metadata = resolve_metadata_paths(tmp_path)
-    for snapshot_id, retrieved_at in (
-        ("aaa", "2026-01-01T00:00:00Z"),
-        ("bbb", "2026-02-01T00:00:00Z"),
-    ):
-        directory = metadata.source_dir(SOURCE_UNIVERSE_NAME, snapshot_id)
-        directory.mkdir(parents=True)
-        atomic_write_json(
-            directory / "manifest.json",
-            {"snapshot_id": snapshot_id, "retrieved_at": retrieved_at},
-            canonical=False,
-        )
-    assert resolve_universe_snapshot(metadata) == "bbb"
-
-
-def test_resolve_ignores_a_broken_manifest(tmp_path: Path) -> None:
-    metadata = resolve_metadata_paths(tmp_path)
-    directory = metadata.source_dir(SOURCE_UNIVERSE_NAME, "broken")
-    directory.mkdir(parents=True)
-    (directory / "manifest.json").write_text("not json", encoding="utf-8")
-    assert resolve_universe_snapshot(metadata) == ""
+    _metadata, first = _publish(session, tmp_path)
+    second_payload = _payload().replace(b"0001471283", b"0001471284", 1)
+    _metadata, second = _publish(session, tmp_path, payload=second_payload)
+    assert resolve_universe_snapshot(metadata) == second["snapshot_id"]
+    assert second["snapshot_id"] != first["snapshot_id"]
 
 
 # --------------------------------------------------------------- the cohort
@@ -225,7 +191,7 @@ def test_a_different_limit_is_a_different_cohort(
     assert limited.roster_id != full.roster_id
 
 
-def test_a_corrupted_cohort_dataset_is_recompiled(
+def test_a_corrupted_shared_cohort_dataset_is_rejected(
     session: FakeSession, tmp_path: Path
 ) -> None:
     metadata, manifest = _publish(session, tmp_path)
@@ -234,25 +200,20 @@ def test_a_corrupted_cohort_dataset_is_recompiled(
     )
     assert first.dataset is not None
     first.dataset.write_bytes(b"corrupt")
-    # Reuse must reject the tampered dataset and rebuild it, not trust it.
-    rebuilt = compile_universe_cohort(
-        metadata, source_snapshot_id=manifest["snapshot_id"]
-    )
-    assert rebuilt.roster_id == first.roster_id
+    with pytest.raises(RosterError, match="digest does not match"):
+        compile_universe_cohort(metadata, source_snapshot_id=manifest["snapshot_id"])
 
 
-def test_cohort_manifest_records_provenance(
+def test_cohort_catalog_records_source_provenance(
     session: FakeSession, tmp_path: Path
 ) -> None:
     metadata, manifest = _publish(session, tmp_path)
     compile_universe_cohort(metadata, source_snapshot_id=manifest["snapshot_id"])
-    cohort_manifest = metadata.compiled_cohort_manifest(
-        f"universe-{manifest['snapshot_id']}"
-    )
-    recorded = json.loads(cohort_manifest.read_text(encoding="utf-8"))
-    assert recorded["source_snapshot_id"] == manifest["snapshot_id"]
-    assert recorded["raw_sha256"] == manifest["raw_sha256"]
-    assert recorded["name_rule"] == NAME_RULE
+    paths = resolve_cohort_paths(metadata.artifacts_root)
+    record = CohortCatalog(paths).resolve_cohort_identifier(manifest["cohort_id"])
+    origin = json.loads(record.origin_json)
+    assert origin["source_snapshot_id"] == manifest["snapshot_id"]
+    assert origin["raw_sha256"] == manifest["raw_sha256"]
 
 
 def test_unknown_snapshot_is_reported(session: FakeSession, tmp_path: Path) -> None:

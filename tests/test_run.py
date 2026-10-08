@@ -9,3 +9,8 @@ def test_inventory_launcher_routes_through_discovery_operator() -> None:
 def test_dag_launcher_routes_through_dag_operator() -> None:
     entry = next(item for item in ENTRIES if item.id == "dag")
     assert entry.module == "edgar_sec.infra.storage.dag.operator"
+
+
+def test_cohort_launcher_routes_through_cohort_cli() -> None:
+    entry = next(item for item in ENTRIES if item.id == "cohort")
+    assert entry.module == "edgar_sec.pipelines.cohort.cli"

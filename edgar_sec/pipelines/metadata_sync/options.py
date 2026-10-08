@@ -14,7 +14,11 @@ from edgar_sec.foundation.runtime.paths import PLAN_FILE_NAME
 from edgar_sec.foundation.runtime.partitions import parse_id_selection
 from edgar_sec.foundation.runtime.settings import resolve_runtime_settings
 from edgar_sec.foundation.runtime.settings.runtime import DEFAULT_CHUNK_SIZE
+from edgar_sec.infra.storage.cohort.catalog import CohortCatalog
+from edgar_sec.infra.storage.cohort.operations import sample_cohort
+from edgar_sec.infra.storage.cohort.paths import resolve_cohort_paths
 
+from .cohort_adapter import cohort_record_to_roster
 from .manifest import CompiledCohort, compile_cik_cohort
 from .paths import (
     ASSIGNMENTS_DIR_NAME,
@@ -29,7 +33,7 @@ from .paths import (
 )
 from .planner import Plan
 from .registry import load_registry_roster
-from .roster import ROSTER_FILE_NAME, Roster
+from .roster import ROSTER_FILE_NAME, Roster, read_roster
 from .source_registry import SOURCE_UNIVERSE_NAME, resolve_universe_snapshot
 from .universe import compile_universe_cohort
 
@@ -106,6 +110,7 @@ class PlanOptions:
 
     input_path: Path | None = None
     registry_id: str = ""
+    cohort: str = ""
     universe: bool = False
     artifacts_root: Path | None = None
     chunk_size: int = DEFAULT_CHUNK_SIZE
@@ -117,31 +122,33 @@ class PlanOptions:
 
     def roster(self) -> Roster:
         """Resolve the selected cohort this invocation plans over."""
-        if self.universe:
-            self._refuse_mixed_cohort()
-            return self.universe_cohort().roster
-        if self.registry_id:
-            if self.input_path is not None:
-                raise ValueError("pass --input or --roster, not both")
-            return load_registry_roster(self.registry_id, self.metadata())
-        if self.input_path is None:
-            raise ValueError("a plan needs --input, --roster, or --universe")
-        return self.selected_cohort().roster
+        return resolve_cohort(self).roster
 
     def _refuse_mixed_cohort(self) -> None:
-        """A universe run already names every registrant, so narrowing it is a mistake."""
-        if self.input_path is not None or self.registry_id:
-            raise ValueError("pass --universe alone, not with --input or --roster")
+        selected = sum(
+            bool(value)
+            for value in (self.input_path, self.registry_id, self.cohort, self.universe)
+        )
+        if selected > 1:
+            raise ValueError("pass one of --input, --roster, --cohort, or --universe")
 
     def universe_cohort(self) -> SelectedCohort:
-        """The full registrant index as a cohort, compiled from its snapshot.
-
-        Planning stays network-free, so an absent snapshot is refused, not fetched.
-        """
+        """Load the active shared universe cohort without refreshing SEC data."""
         if self.limit is not None and self.limit < 1:
             raise ValueError(f"--limit must be >= 1, got {self.limit}")
         metadata = self.metadata()
-        source_snapshot_id = resolve_universe_snapshot(metadata)
+        from edgar_sec.infra.storage.cohort.sources import resolve_active_source
+
+        paths = resolve_cohort_paths(metadata.artifacts_root)
+        record = resolve_active_source("cik_lookup", catalog=CohortCatalog(paths))
+        if record is None:
+            source_snapshot_id = ""
+        else:
+            source_snapshot_id = str(
+                json.loads(record.origin_json).get(
+                    "source_snapshot_id", record.cohort_id
+                )
+            )
         if not source_snapshot_id:
             raise ValueError(
                 "no published cik_lookup snapshot is available; run "
@@ -157,7 +164,7 @@ class PlanOptions:
         The limit applies during compilation, before identity is derived.
         """
         if self.input_path is None:
-            raise ValueError("a plan needs --input or --roster")
+            raise ValueError("a plan needs --input, --roster, --cohort, or --universe")
         if self.limit is not None and self.limit < 1:
             raise ValueError(f"--limit must be >= 1, got {self.limit}")
         cohort = compile_cik_cohort(
@@ -172,6 +179,8 @@ class PlanOptions:
                 "registry_id": "",
                 "source_snapshot_id": resolve_universe_snapshot(self.metadata()),
             }
+        if self.cohort:
+            return {"registry_id": "", "cohort_id": self.cohort}
         if not self.registry_id:
             return {"registry_id": ""}
         return {"registry_id": self.registry_id}
@@ -217,14 +226,40 @@ class SelectedCohort:
 
 def resolve_cohort(options: PlanOptions) -> SelectedCohort:
     """Resolve the cohort named by these options, applying any selection limit."""
+    options._refuse_mixed_cohort()
     if options.universe:
-        options._refuse_mixed_cohort()
         return options.universe_cohort()
+    if options.cohort:
+        if options.limit is not None and options.limit < 1:
+            raise ValueError(f"--limit must be >= 1, got {options.limit}")
+        paths = resolve_cohort_paths(options.metadata().artifacts_root)
+        record = CohortCatalog(paths).resolve_cohort_identifier(options.cohort)
+        roster = cohort_record_to_roster(record, paths)
+        if options.limit is not None and options.limit < roster.row_count:
+            if roster.dataset is None:
+                raise ValueError("selected cohort has no dataset")
+            output = (
+                options.metadata().transient_dir(
+                    f"cohort-limit-{record.cohort_id}-{options.limit}"
+                )
+                / "ciks.parquet"
+            )
+            written = sample_cohort(roster.dataset, output, sample_limit=options.limit)
+            roster = read_roster(output)
+            if written != options.limit or roster.row_count != options.limit:
+                raise ValueError("limited cohort has an unexpected row count")
+        return SelectedCohort(
+            roster=roster,
+            input_name=f"cohort:{record.cohort_id}",
+            input_fingerprint=record.dataset_sha256,
+        )
     if options.registry_id:
         return SelectedCohort.from_registry(
             options.registry_id,
             load_registry_roster(options.registry_id, options.metadata()),
         )
+    if options.input_path is None:
+        raise ValueError("a plan needs --input, --roster, --cohort, or --universe")
     return options.selected_cohort()
 
 
@@ -259,6 +294,7 @@ def plan_options(
     *,
     input_path: str | Path | None = None,
     registry_id: str = "",
+    cohort: str = "",
     universe: bool = False,
     artifacts_root: str | Path | None = None,
     chunk_size: int | None = None,
@@ -268,6 +304,7 @@ def plan_options(
     return PlanOptions(
         input_path=Path(input_path).resolve() if input_path else None,
         registry_id=registry_id,
+        cohort=cohort,
         universe=universe,
         artifacts_root=(Path(artifacts_root).resolve() if artifacts_root else None),
         chunk_size=resolve_chunk_size(chunk_size),
@@ -291,6 +328,7 @@ def run_options(
     plan_id: str = "",
     input_path: str | Path | None = None,
     registry_id: str = "",
+    cohort: str = "",
     universe: bool = False,
     chunk_size: int | None = None,
     limit: int | None = None,
@@ -308,11 +346,12 @@ def run_options(
         chunk_ids = parse_id_selection(chunk_ids) if chunk_ids else ()
     if bundle_root and not plan_id:
         plan_id = read_bundle_plan_id(bundle_root)
-    if not plan_id and (input_path or registry_id or universe):
+    if not plan_id and (input_path or registry_id or cohort or universe):
         plan_id = derive_plan_id(
             plan_options(
                 input_path=input_path,
                 registry_id=registry_id,
+                cohort=cohort,
                 universe=universe,
                 artifacts_root=artifacts_root,
                 chunk_size=chunk_size,
@@ -321,7 +360,7 @@ def run_options(
         )
     if not plan_id:
         raise ValueError(
-            "a plan reference is required: --plan-id, --bundle, --input, or --roster"
+            "a plan reference is required: --plan-id, --bundle, --input, --roster, --cohort, or --universe"
         )
     return RunOptions(
         plan_id=plan_id,
@@ -348,6 +387,7 @@ def augment_options(
     *,
     input_path: str | Path | None = None,
     registry_id: str = "",
+    cohort: str = "",
     universe: bool = False,
     artifacts_root: str | Path | None = None,
     chunk_size: int | None = None,
@@ -361,6 +401,7 @@ def augment_options(
     options = plan_options(
         input_path=input_path,
         registry_id=registry_id,
+        cohort=cohort,
         universe=universe,
         artifacts_root=artifacts_root,
         chunk_size=chunk_size,

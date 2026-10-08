@@ -1,7 +1,4 @@
-"""Immutable external source snapshots, content-addressed from the payload digest.
-
-An unchanged fetch is a no-op; a changed payload is a new snapshot, not a rewrite.
-"""
+"""Metadata source refresh delegates to shared official source cohorts."""
 
 from __future__ import annotations
 
@@ -10,20 +7,20 @@ from pathlib import Path
 
 import pytest
 
-from edgar_sec.foundation.hashing import sha256_bytes
+from edgar_sec.infra.storage.cohort.catalog import CohortCatalog
+from edgar_sec.infra.storage.cohort.paths import resolve_cohort_paths
+from edgar_sec.infra.storage.cohort.sources import resolve_active_source
+from edgar_sec.pipelines.metadata_sync.cohort_adapter import cohort_record_to_roster
 from edgar_sec.pipelines.metadata_sync.paths import resolve_metadata_paths
+from edgar_sec.pipelines.metadata_sync.registry import RegistryError, compare_sources
 from edgar_sec.pipelines.metadata_sync.source_registry import (
-    SOURCE_MANIFEST_KIND,
     SOURCE_NAME,
-    SOURCE_SCHEMA_VERSION,
     SOURCE_URL,
     SourceRegistryError,
-    load_source_snapshot,
     parse_company_tickers,
     refresh_company_tickers,
-    source_snapshot_id,
 )
-from tests.support import FakeSession, build_test_http
+from tests.support import FakeSession, build_test_http, fixture_path
 
 TICKERS = {
     "0": {"cik_str": "37996", "ticker": "F", "title": "FORD MOTOR CO"},
@@ -33,13 +30,6 @@ TICKERS = {
 
 def _payload(entries: dict) -> bytes:
     return json.dumps(entries).encode("utf-8")
-
-
-def test_snapshot_id_is_content_addressed() -> None:
-    digest = sha256_bytes(b"payload")
-    assert source_snapshot_id(digest) == source_snapshot_id(digest)
-    assert source_snapshot_id(digest) != source_snapshot_id("other")
-    assert len(source_snapshot_id(digest)) == 32
 
 
 def test_parse_normalizes_and_orders_listings() -> None:
@@ -94,21 +84,13 @@ def test_refresh_publishes_immutable_snapshot(
     manifest = refresh_company_tickers(
         metadata_paths=metadata, client=build_test_http(session)
     )
-    assert manifest["validation_status"] == "ok"
-    assert manifest["manifest_kind"] == SOURCE_MANIFEST_KIND
     assert manifest["source"] == SOURCE_NAME
-    assert manifest["manifest_schema_version"] == SOURCE_SCHEMA_VERSION
     assert manifest["unique_cik_count"] == 2
-    assert manifest["raw_path"] == str(
-        metadata.source_snapshot_file(SOURCE_NAME, manifest["snapshot_id"])
-    )
-    assert metadata.source_manifest_file(SOURCE_NAME, manifest["snapshot_id"]).is_file()
-
-    loaded = load_source_snapshot(
-        metadata.source_manifest_file(SOURCE_NAME, manifest["snapshot_id"])
-    )
-    assert loaded.manifest["raw_sha256"] == manifest["raw_sha256"]
-    assert loaded.raw_path.read_bytes() == _payload(TICKERS)
+    paths = resolve_cohort_paths(metadata.artifacts_root)
+    record = CohortCatalog(paths).resolve_cohort_identifier(manifest["cohort_id"])
+    assert record.tags == ("official-source", f"source:{SOURCE_NAME}", "system")
+    assert cohort_record_to_roster(record, paths).row_count == 2
+    assert Path(manifest["raw_path"]).read_bytes() == _payload(TICKERS)
 
 
 def test_refetching_unchanged_content_is_a_no_op(
@@ -122,8 +104,13 @@ def test_refetching_unchanged_content_is_a_no_op(
     again = refresh_company_tickers(metadata_paths=metadata, client=client)
     assert again["snapshot_id"] == first["snapshot_id"]
 
-    snapshots = list((metadata.metadata_root / "sources" / SOURCE_NAME).iterdir())
-    assert len(snapshots) == 1
+    paths = resolve_cohort_paths(metadata.artifacts_root)
+    records = CohortCatalog(paths).list_cohorts(tag=f"source:{SOURCE_NAME}")
+    assert len(records) == 1
+    assert (
+        resolve_active_source(SOURCE_NAME, catalog=CohortCatalog(paths)).cohort_id
+        == records[0].cohort_id
+    )
 
 
 def test_changed_payload_creates_a_second_snapshot(
@@ -142,11 +129,11 @@ def test_changed_payload_creates_a_second_snapshot(
 
     assert second["snapshot_id"] != first["snapshot_id"]
     assert second["listing_row_count"] == 3
-    original = metadata.source_snapshot_file(SOURCE_NAME, first["snapshot_id"])
+    original = Path(first["raw_path"])
     assert original.read_bytes() == _payload(TICKERS)
 
 
-def test_tampered_snapshot_is_rejected_on_load(
+def test_tampered_source_payload_is_rejected_for_registry_projection(
     session: FakeSession, tmp_path: Path
 ) -> None:
     session.register_bytes(SOURCE_URL, _payload(TICKERS))
@@ -157,21 +144,9 @@ def test_tampered_snapshot_is_rejected_on_load(
     raw = Path(manifest["raw_path"])
     raw.write_text("{}", encoding="utf-8")
 
-    with pytest.raises(SourceRegistryError, match="hash does not match"):
-        load_source_snapshot(
-            metadata.source_manifest_file(SOURCE_NAME, manifest["snapshot_id"])
+    with pytest.raises(RegistryError, match="payload digest"):
+        compare_sources(
+            curated_input_path=fixture_path("cik_sec_mini.csv"),
+            source_cohort_id=manifest["cohort_id"],
+            metadata_paths=metadata,
         )
-
-
-def test_load_rejects_a_foreign_manifest(tmp_path: Path) -> None:
-    from edgar_sec.infra.storage.atomic import atomic_write_json
-
-    path = tmp_path / "manifest.json"
-    atomic_write_json(path, {"manifest_kind": "something_else"}, canonical=False)
-    with pytest.raises(SourceRegistryError, match="not a source snapshot"):
-        load_source_snapshot(path)
-
-
-def test_load_reports_a_missing_manifest(tmp_path: Path) -> None:
-    with pytest.raises(FileNotFoundError):
-        load_source_snapshot(tmp_path / "absent.json")

@@ -89,6 +89,13 @@ what a consumer can rely on.
   plan remains complete while a bundle that lost a shard is rejected.
 - **A zero-row plan is still structurally complete and reusable.** The `targets/`
   directory and `locator_groups.parquet` are always written.
+- **Cohort inputs are content-bound and fail closed.** Deterministic `--cohort`
+  planning semi-joins target `source_cik` values to the cohort's integer CIKs, and
+  includes the resolved cohort id and dataset digest in plan identity. Policy
+  `--seed-cohort` uses its dataset rows instead of the configured seed CSV and
+  fingerprints both the normalized seeds and cohort provenance. Missing, unreadable,
+  count-inconsistent, or digest-mismatched cohort datasets fail planning; an empty
+  deterministic cohort selects zero targets.
 - **One row per document locator.** Grouping is on `document_locator_key` alone,
   with representative columns chosen by a total order, so the representative is
   deterministic even when co-filers share a locator.
@@ -129,6 +136,10 @@ what a consumer can rely on.
 - For `plan --scope policy`, supply exactly one of `--policy PATH` or
   `--auto-policy`. A policy plan built from an assumed quota profile would be
   indistinguishable from a deliberate one in the published `plan.json`.
+- Cohort records and datasets must be available under the same `--artifacts` root
+  used for planning. Use `--cohort` only with deterministic scope and
+  `--seed-cohort` only with policy scope; seed cohorts replace, rather than merge
+  with, policy-configured seed CSV rows.
 - Do not widen `plan()` with policy-only parameters. `selection_policy_path`,
   `seed_cik_path`, `parent_plan_dir`, and `target_units` are absent from that
   signature by design; they reappear with the policy scope and with expansion.
@@ -177,7 +188,7 @@ are in the [root README](../../../README.md#filing-catalog-pipeline-zero-network
 | Subcommand | Flags | Returns |
 | :--- | :--- | :--- |
 | `materialize` | `--source` (one Parquet part, treated as a one-part dataset), `--source-manifest` (Phase 1 snapshot manifest; its declared parts are resolved and verified), `--artifacts` | 0 with the manifest JSON on stdout, or 1 on `CatalogError` with `error: <msg>` on stderr. |
-| `plan` | `--catalog` (**required**), `--scope` (`deterministic` default; choices `deterministic`, `policy`), `--policy`, `--auto-policy`, `--artifacts`, `--forms` (nargs `*`), `--suffixes` (nargs `*`), `--dates` (one comma-separated union; blank selects every date), `--limit` | 0 with the plan document on stdout, or 1 on `PlanConflictError`, `ValueError`, or `OSError`. |
+| `plan` | `--catalog` (**required**), `--scope` (`deterministic` default; choices `deterministic`, `policy`), `--policy`, `--auto-policy`, `--cohort` (deterministic CIK filter), `--seed-cohort` (policy seeds, replacing configured CSV seeds), `--artifacts`, `--forms` (nargs `*`), `--suffixes` (nargs `*`), `--dates` (one comma-separated union; blank selects every date), `--limit` | 0 with the plan document on stdout, or 1 on planning/input errors. |
 | `expand` | `--parent-plan` (**required**, a published policy plan directory), `--target-units` (**required**, int), `--artifacts` | 0 with the child plan document, or 1 on `PlanConflictError`, `ParentPlanError`, `ValueError`, or `OSError`. |
 | `status` | `--artifacts` | 0, with the published-state JSON on stdout. |
 | `dag` | `log`, `branch`, `tag`, `checkout`, `compact`, `diff`, `rebase`, `views`, `--artifacts` | 0 on success, or 1 on DAG operation error. |
@@ -242,6 +253,16 @@ sharing a CIK are refused rather than repaired.
 Both derive a `request` dict, hash it to a `plan_id`, ask `reuse_existing_plan`
 whether the bundle is already published (raising on a conflict), and only then
 enter `staged_plan_bundle`.
+
+An optional deterministic cohort is resolved from the cohort catalog under the
+planning artifacts root. Its stored relative path is resolved by `CohortPaths`, its
+dataset digest and catalog row counts are checked, and a bound semi-join compares
+`try_cast(source_cik AS BIGINT)` with `try_cast(cik_padded AS BIGINT)`. Policy seed
+cohorts follow the same input checks; their `cik_padded` rows become `SeedFiler`
+records with `seed_group="cohort"`, cohort-name coverage tags, and cohort provenance
+notes. Both cohort id and dataset digest enter the request before its identity is
+computed. Omitting these flags retains the existing unfiltered and configured-seed
+behavior.
 
 The deterministic scope discovers the available forms *after* applying the form,
 suffix, and date filters, writes one `targets/form=<FORM>/data.parquet` per form

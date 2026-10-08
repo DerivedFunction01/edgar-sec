@@ -20,6 +20,10 @@ from edgar_sec.foundation.runtime.interactive import (
     prompt_text,
 )
 from edgar_sec.foundation.runtime.settings import resolve_runtime_settings
+from edgar_sec.infra.storage.cohort.catalog import CohortCatalog
+from edgar_sec.infra.storage.cohort.models import CohortRecord
+from edgar_sec.infra.storage.cohort.paths import resolve_cohort_paths
+from edgar_sec.infra.storage.cohort.sources import resolve_active_source
 
 from .commands.merge import cmd_merge
 from .commands.plan import cmd_plan, cmd_status
@@ -28,17 +32,13 @@ from .commands.sources import cmd_compare, cmd_family_index, cmd_refresh
 
 from .cli import main as cli_main
 from .discovery import (
-    SourceSummary,
     current_snapshot_id,
     describe_plan,
     list_plans,
     list_snapshots,
-    list_source_snapshots,
-    list_universe_snapshots,
     plan_summary,
     resolve_plan_choice,
     resolve_snapshot_choice,
-    resolve_source_choice,
 )
 from .merger import MergeError, publish_current_snapshot
 from .options import (
@@ -350,31 +350,37 @@ def augment(state: WizardState) -> None:
     run_augment(state)
 
 
-def _source_label(source_name: str, snapshots: list[SourceSummary]) -> str:
+def _source_label(source_name: str, record: CohortRecord | None) -> str:
     """One line naming a source and what is already published from it."""
-    if not snapshots:
+    if record is None:
         return f"{source_name}  (not published)"
-    newest = snapshots[0]
     return (
-        f"{source_name}  ({newest['unique_cik_count']:,} CIKs published, retrieved "
-        f"{newest['retrieved_at'] or 'unknown'})"
+        f"{source_name}  ({record.row_count:,} CIKs published, active cohort "
+        f"{record.cohort_id})"
     )
 
 
 def refresh(state: WizardState) -> None:
-    """Publish an immutable snapshot of an external SEC source.
+    """Refresh a shared official SEC source cohort.
 
     Which source is asked, because the two differ in kind and size: the ticker
     listing is small, the registrant index large.
     """
     metadata = state.metadata()
+    cohort_paths = resolve_cohort_paths(metadata.artifacts_root)
+    catalog = CohortCatalog(cohort_paths)
     options = [
         (
-            _source_label(SOURCE_NAME, list_source_snapshots(metadata, SOURCE_NAME)),
+            _source_label(
+                SOURCE_NAME, resolve_active_source(SOURCE_NAME, catalog=catalog)
+            ),
             SOURCE_NAME,
         ),
         (
-            _source_label(SOURCE_UNIVERSE_NAME, list_universe_snapshots(metadata)),
+            _source_label(
+                SOURCE_UNIVERSE_NAME,
+                resolve_active_source(SOURCE_UNIVERSE_NAME, catalog=catalog),
+            ),
             SOURCE_UNIVERSE_NAME,
         ),
     ]
@@ -414,32 +420,55 @@ def family_index(state: WizardState) -> None:
 
 
 def compare(state: WizardState) -> None:
-    """Compare a curated seed against a published SEC listing snapshot."""
+    """Compare a curated seed against a published SEC listing cohort."""
     source = prompt_text("CIK manifest CSV", state.input_path or DEFAULT_INPUT)
     if not source:
         return
     metadata = state.metadata()
-    sources = list_source_snapshots(metadata)
-    if not sources:
-        print("no source snapshot published; run 'Refresh external source' first")
-        return
-
-    def select(lines: list[str]) -> str:
-        print("\nSource snapshots (newest first):")
-        for line in lines:
-            print(line)
-        return prompt_text("Source snapshot number", "1").strip() or "1"
-
-    chosen = resolve_source_choice(sources, select=select)
-    if not chosen:
-        print("cancelled; no source snapshot selected")
-        return
+    catalog = CohortCatalog(resolve_cohort_paths(metadata.artifacts_root))
+    page_size = 20
+    offset = 0
+    while True:
+        records = catalog.list_cohorts(
+            tag=f"source:{SOURCE_NAME}", limit=page_size, offset=offset
+        )
+        if not records:
+            print(
+                "no company_tickers source cohort published; refresh the source first"
+            )
+            return
+        print("\nCompany ticker source cohorts:")
+        for index, record in enumerate(records, start=1):
+            print(f"  {index}. {record.cohort_id}  ({record.row_count:,} CIKs)")
+        controls = []
+        if offset:
+            controls.append("p=previous")
+        if len(records) == page_size:
+            controls.append("n=next")
+        suffix = f" ({', '.join(controls)})" if controls else ""
+        answer = prompt_text(f"Source cohort{suffix} (blank=cancel)", "").strip()
+        if answer.casefold() == "n" and len(records) == page_size:
+            offset += page_size
+            continue
+        if answer.casefold() == "p" and offset:
+            offset = max(0, offset - page_size)
+            continue
+        if not answer:
+            return
+        try:
+            choice = int(answer)
+        except ValueError:
+            print("invalid selection")
+            continue
+        if 1 <= choice <= len(records):
+            break
+        print("invalid selection")
     cmd_compare(
         plan_options(
             input_path=source,
             artifacts_root=Path(state.artifacts_root) if state.artifacts_root else None,
         ),
-        source_manifest=metadata.source_manifest_file(SOURCE_NAME, chosen),
+        source_cohort_id=records[choice - 1].cohort_id,
     )
 
 

@@ -8,18 +8,16 @@ in a lower layer and consumed here.
 
 ## Purpose
 
-Three pipelines, each a complete vertical from a published input to a published
-output. Each owns its own package README; the details below are the layer-level
-contracts only.
+Four packages: three data pipelines and one cohort-management command surface.
+Each owns its own package README; the details below are the layer-level contracts
+only.
 
 - [`metadata_sync/`](metadata_sync/README.md) — Phase 1. Turns a
-  content-addressed CIK roster into a manifest-described Parquet dataset
-  snapshot. The cohort lives once, in an immutable roster dataset; the plan
-  references it by identity and records only the chunk layout, so a plan is
-  constant in size and moving a cohort to another machine keeps its plan and its
-  completed chunks. It also captures immutable external source snapshots,
-  projects the curated input against them, and supports copy-based multi-machine
-  distribution.
+  shared CIK cohort into a manifest-described Parquet dataset snapshot. Plans
+  carry a verified roster copy for distributed workers and record only the chunk
+  layout, so moving a plan bundle to another machine keeps its completed chunks.
+  It also consumes official shared source cohorts, projects curated inputs
+  against them, and supports copy-based multi-machine distribution.
 - [`filing_catalog/`](filing_catalog/README.md) — Phase 2. Zero network.
   Materializes a catalog snapshot from a Phase 1 snapshot and publishes
   immutable, content-addressed target plans for the next phase to consume.
@@ -30,6 +28,8 @@ contracts only.
 - [`document_storage/`](document_storage/README.md) — Phase 2.5. Fetches primary
   filings, unrolls SGML, normalizes, resolves delegated exhibits, and
   consolidates per-run snapshots into one canonical snapshot across runs.
+- [`cohort/`](cohort/README.md) — Phase 0 cohort registry; manages shared cohort
+  records and workspace expressions before metadata collection begins.
 
 Layer 4 is the only layer permitted to orchestrate. Orchestration means ordering,
 chunking, checkpointing, validating, and publishing — deciding *what happens
@@ -63,6 +63,10 @@ lower layers it depends on.
 | Module | Responsibility |
 | :--- | :--- |
 | `__init__.py` | Docstring only. No re-exports, per AGENTS.md §1.2. |
+| `cohort/__init__.py` | Docstring only. |
+| `cohort/options.py` | Cohort command grammar and argument validation. |
+| `cohort/menu.py` | Grouped interactive cohort console. |
+| `cohort/cli.py` | Catalog, import, query, sampling, expression, and workspace dispatch. |
 | `metadata_sync/__init__.py` | Docstring only. |
 | `metadata_sync/cli.py` | The commands, the nested `sources` group, and the argparse surface; each `cmd_*` is a plain callable the operator also calls. |
 | `metadata_sync/operator.py` | Interactive wizard; a presentation layer over the same `cmd_*` functions. |
@@ -71,7 +75,7 @@ lower layers it depends on.
 | `metadata_sync/discovery.py` | What is already on disk, for the wizard to choose from. Manifest reads only. |
 | `metadata_sync/worker_commands.py` | Renders the distributed lifecycle as copy-pasteable shell commands. |
 | `metadata_sync/roster.py` | The content-addressed CIK roster: identity, atomic Parquet IO, set operations, and the published CIK index. |
-| `metadata_sync/manifest.py` | CIK CSV ingestion, normalization, deduplication, curated names, and the input fingerprint. |
+| `metadata_sync/manifest.py` | Curated CIK file intake through shared cohort ingestion and plan input identity. |
 | `metadata_sync/planner.py` | `Plan`: chunk layout as roster ordinal ranges, plan identity, bundle write, and validated load. |
 | `metadata_sync/assignment.py` | Static chunk-to-worker assignment and the worker receipt that crosses the machine boundary. |
 | `metadata_sync/distribution.py` | Copy-based multi-machine distribution: export, select, and the import trust boundary. |
@@ -82,9 +86,9 @@ lower layers it depends on.
 | `metadata_sync/merger.py` | Coordinator validation, multipart publication, progress events, CIK index, snapshot manifest, pointer. |
 | `metadata_sync/augmentation.py` | Delta planning and merge onto a published snapshot without refetching the base. |
 | `metadata_sync/sec_client.py` | One CIK to its submissions document plus every historical file it lists. |
-| `metadata_sync/paths.py` | `MetadataPaths` / `RunPaths`; the published-vs-transient split, plan bundle, source, registry, and snapshot-part locations. |
-| `metadata_sync/source_registry.py` | Write-once, content-addressed snapshots of an external SEC source: `company_tickers.json` and the full `cik-lookup-data.txt` registrant index, reached by `sources refresh --source`. |
-| `metadata_sync/universe.py` | Compiling a published full-universe snapshot into a cohort for `plan --universe`. |
+| `metadata_sync/paths.py` | `MetadataPaths` / `RunPaths`; plan, registry, snapshot, and transient locations. |
+| `metadata_sync/source_registry.py` | Delegated SEC source refresh and active cohort resolution. |
+| `metadata_sync/universe.py` | Resolve the active full-universe cohort for `plan --universe`. |
 | `metadata_sync/registry.py` | Curated-versus-source comparison, the effective CIK roster, and the CSV export, reached by `sources compare`. |
 | `metadata_sync/smoke_test.py` | Credential-gated live check that never publishes. |
 | `filing_catalog/__init__.py` | Docstring only. |

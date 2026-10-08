@@ -189,8 +189,8 @@ def test_csv_export_quotes_separators() -> None:
     assert text == 'cik,name\n0000001985,"Acme, ""The"" Co"\n'
 
 
-def test_csv_export_round_trips_through_the_compiler(tmp_path: Path) -> None:
-    """The CSV stays importable, so an existing script still works."""
+def test_csv_export_is_importable_as_canonical_membership(tmp_path: Path) -> None:
+    """The imported CIK set is canonical regardless of exported row order."""
     from edgar_sec.pipelines.metadata_sync.manifest import compile_cik_cohort
     from edgar_sec.pipelines.metadata_sync.paths import resolve_metadata_paths
 
@@ -199,8 +199,7 @@ def test_csv_export_round_trips_through_the_compiler(tmp_path: Path) -> None:
     cohort = compile_cik_cohort(
         exported, metadata_paths=resolve_metadata_paths(tmp_path / "artifacts")
     )
-    assert cohort.roster.range_ciks(0, cohort.row_count) == FOUR
-    assert cohort.roster_id == _mini().roster_id
+    assert cohort.roster.range_ciks(0, cohort.row_count) == tuple(sorted(FOUR, key=int))
 
 
 def test_cik_index_is_sorted_and_distinct(tmp_path: Path) -> None:

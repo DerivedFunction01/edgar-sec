@@ -612,7 +612,6 @@ def test_sources_compare_publishes_a_roster_and_the_csv_export(
     published = refresh_company_tickers(
         metadata_paths=metadata, client=build_test_http(session)
     )
-    manifest_path = metadata.source_manifest_file(SOURCE_NAME, published["snapshot_id"])
     capsys.readouterr()
 
     exit_code = main(
@@ -621,8 +620,8 @@ def test_sources_compare_publishes_a_roster_and_the_csv_export(
             "compare",
             "--input",
             str(fixture_path("cik_sec_mini.csv")),
-            "--source-manifest",
-            str(manifest_path),
+            "--source-cohort",
+            published["cohort_id"],
             "--artifacts",
             str(tmp_path),
         ]
@@ -660,8 +659,8 @@ def test_a_published_roster_can_be_planned_and_merged(
             "compare",
             "--input",
             str(fixture_path("cik_sec_mini.csv")),
-            "--source-manifest",
-            str(metadata.source_manifest_file(SOURCE_NAME, published["snapshot_id"])),
+            "--source-cohort",
+            published["cohort_id"],
             "--artifacts",
             str(tmp_path),
         ]
@@ -706,7 +705,7 @@ def test_a_published_roster_can_be_planned_and_merged(
     assert published_manifest["cik_index_path"].endswith("ciks.parquet")
 
 
-def test_sources_compare_reports_a_bad_manifest_as_exit_1(
+def test_sources_compare_reports_an_unknown_cohort_as_exit_1(
     tmp_path: Path, capsys
 ) -> None:
     exit_code = main(
@@ -715,8 +714,8 @@ def test_sources_compare_reports_a_bad_manifest_as_exit_1(
             "compare",
             "--input",
             str(fixture_path("cik_sec_mini.csv")),
-            "--source-manifest",
-            str(tmp_path / "absent.json"),
+            "--source-cohort",
+            "c-0000000",
             "--artifacts",
             str(tmp_path),
         ]

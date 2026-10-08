@@ -23,7 +23,7 @@ from edgar_sec.pipelines.metadata_sync.worker import (
 from tests.support import FakeSession, compiled_cohort, load_fixture
 
 FORD = "0000037996"
-SMALL = "0000000020"
+CHUNK_ONE_FIRST = "0000001985"
 HIST_NAME = "CIK0000037996-submissions-001.json"
 HIST_URL = f"https://data.sec.gov/submissions/{HIST_NAME}"
 
@@ -143,8 +143,8 @@ def test_run_chunk_writes_checkpoint_with_all_ciks(
     plan, run_paths = _plan(tmp_path, chunk_size=2)
     _ford_pair(session)
     session.register(
-        submissions_url(SMALL),
-        {"name": "SMALL CO", "filings": {"recent": {}, "files": []}},
+        submissions_url(CHUNK_ONE_FIRST),
+        {"name": "ACCEL INTERNATIONAL CORP", "filings": {"recent": {}, "files": []}},
     )
 
     result = run_chunk(client, plan, run_paths, 1, snapshot_id="snap1", workers=2)
@@ -153,7 +153,7 @@ def test_run_chunk_writes_checkpoint_with_all_ciks(
     path = run_paths.chunk_file(1)
     assert path.is_file()
     table = pq.read_table(path)
-    assert set(table.column("cik").to_pylist()) == {"0000000020", FORD}
+    assert set(table.column("cik").to_pylist()) == {CHUNK_ONE_FIRST, FORD}
     assert set(table.column("status").to_pylist()) == {"ok"}
     assert result.statuses == {"ok": 2}
 
@@ -182,8 +182,8 @@ def test_run_chunk_records_progress_events(
     plan, run_paths = _plan(tmp_path, chunk_size=2)
     _ford_pair(session)
     session.register(
-        submissions_url(SMALL),
-        {"name": "SMALL CO", "filings": {"recent": {}, "files": []}},
+        submissions_url(CHUNK_ONE_FIRST),
+        {"name": "ACCEL INTERNATIONAL CORP", "filings": {"recent": {}, "files": []}},
     )
     events: list[dict] = []
     run_chunk(
@@ -196,7 +196,7 @@ def test_run_chunk_records_progress_events(
         progress=events.append,
     )
     assert len(events) == 2
-    assert {e["cik"] for e in events} == {SMALL, FORD}
+    assert {e["cik"] for e in events} == {CHUNK_ONE_FIRST, FORD}
     assert all(e["type"] == "cik_normalized" for e in events)
     assert all(e["status"] == "ok" for e in events)
 
@@ -260,13 +260,13 @@ def test_run_chunk_resumes_from_partial_staging_file(
     plan, run_paths = _plan(tmp_path, chunk_size=2)
     _ford_pair(session)
     session.register(
-        submissions_url(SMALL),
-        {"name": "SMALL CO", "filings": {"recent": {}, "files": []}},
+        submissions_url(CHUNK_ONE_FIRST),
+        {"name": "ACCEL INTERNATIONAL CORP", "filings": {"recent": {}, "files": []}},
     )
 
     row, _ = normalize_one_cik(
         client,
-        SMALL,
+        CHUNK_ONE_FIRST,
         input_name=plan.input_name,
         snapshot_id="snap1",
         input_fingerprint=plan.input_fingerprint,
@@ -291,7 +291,7 @@ def test_run_chunk_resumes_from_partial_staging_file(
 
     assert len(session.calls) == calls_before + 2
     table = pq.read_table(chunk_path)
-    assert set(table.column("cik").to_pylist()) == {SMALL, FORD}
+    assert set(table.column("cik").to_pylist()) == {CHUNK_ONE_FIRST, FORD}
 
 
 def test_run_chunk_resumes_when_all_ciks_already_staged(
@@ -304,13 +304,13 @@ def test_run_chunk_resumes_when_all_ciks_already_staged(
     plan, run_paths = _plan(tmp_path, chunk_size=2)
     _ford_pair(session)
     session.register(
-        submissions_url(SMALL),
-        {"name": "SMALL CO", "filings": {"recent": {}, "files": []}},
+        submissions_url(CHUNK_ONE_FIRST),
+        {"name": "ACCEL INTERNATIONAL CORP", "filings": {"recent": {}, "files": []}},
     )
 
-    row_small, _ = normalize_one_cik(
+    row_first, _ = normalize_one_cik(
         client,
-        SMALL,
+        CHUNK_ONE_FIRST,
         input_name=plan.input_name,
         snapshot_id="snap1",
         input_fingerprint=plan.input_fingerprint,
@@ -328,7 +328,7 @@ def test_run_chunk_resumes_when_all_ciks_already_staged(
     with StagedParquetWriter(
         chunk_path, schema=SUBMISSION_METADATA_SCHEMA, id_column="cik"
     ) as writer:
-        writer.write_batch(build_submission_table([row_small, row_ford]))
+        writer.write_batch(build_submission_table([row_first, row_ford]))
 
     assert chunk_path.with_name(f"{chunk_path.name}.tmp").is_file()
     calls_before = len(session.calls)
@@ -365,24 +365,24 @@ def test_run_chunk_resumes_a_stage_it_wrote_itself(
     plan, run_paths = _plan(tmp_path, chunk_size=2)
     _ford_pair(session)
     session.register(
-        submissions_url(SMALL),
-        {"name": "SMALL CO", "filings": {"recent": {}, "files": []}},
+        submissions_url(CHUNK_ONE_FIRST),
+        {"name": "ACCEL INTERNATIONAL CORP", "filings": {"recent": {}, "files": []}},
     )
 
     crashing = _CrashingClient(client, FORD)
     with pytest.raises(RuntimeError, match="simulated worker crash"):
-        # One worker serializes the chunk, so SMALL is staged before FORD
+        # One worker serializes the chunk, so its first CIK is staged before FORD
         # crashes; the stage is preserved rather than discarded.
         run_chunk(crashing, plan, run_paths, 1, snapshot_id="snap1", workers=1)
 
     chunk_path = run_paths.chunk_file(1)
     staged = chunk_path.with_name(f"{chunk_path.name}.tmp")
     assert staged.is_file()
-    assert set(pq.read_table(staged).column("cik").to_pylist()) == {SMALL}
+    assert set(pq.read_table(staged).column("cik").to_pylist()) == {CHUNK_ONE_FIRST}
 
-    small_calls = session.calls.count(submissions_url(SMALL))
+    first_calls = session.calls.count(submissions_url(CHUNK_ONE_FIRST))
     ford_calls = session.calls.count(submissions_url(FORD))
-    assert small_calls == 1
+    assert first_calls == 1
     assert ford_calls == 0
 
     result = run_chunk(client, plan, run_paths, 1, snapshot_id="snap1", workers=2)
@@ -390,7 +390,10 @@ def test_run_chunk_resumes_a_stage_it_wrote_itself(
     assert result.statuses == {"ok": 2}
     assert chunk_path.is_file()
     assert not staged.exists()
-    assert set(pq.read_table(chunk_path).column("cik").to_pylist()) == {SMALL, FORD}
-    # SMALL was already staged, so only FORD was fetched on resume.
-    assert session.calls.count(submissions_url(SMALL)) == small_calls
+    assert set(pq.read_table(chunk_path).column("cik").to_pylist()) == {
+        CHUNK_ONE_FIRST,
+        FORD,
+    }
+    # The first CIK was already staged, so only FORD was fetched on resume.
+    assert session.calls.count(submissions_url(CHUNK_ONE_FIRST)) == first_calls
     assert session.calls.count(submissions_url(FORD)) == ford_calls + 1

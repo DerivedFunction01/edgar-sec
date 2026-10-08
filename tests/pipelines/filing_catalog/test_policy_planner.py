@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import hashlib
 import json
 from pathlib import Path
 
@@ -19,6 +20,9 @@ from edgar_sec.engine.selection.policy import (
     compute_seed_fingerprint,
     read_seed_filers_csv,
 )
+from edgar_sec.infra.storage.cohort.catalog import CohortCatalog
+from edgar_sec.infra.storage.cohort.ingestion import ingest_file_to_cohort
+from edgar_sec.infra.storage.cohort.paths import resolve_cohort_paths
 from edgar_sec.pipelines.filing_catalog.catalog_job import materialize
 from edgar_sec.pipelines.filing_catalog.paths import (
     LOCATOR_GROUPS_NAME,
@@ -37,6 +41,7 @@ from edgar_sec.pipelines.filing_catalog.planner import (
 from edgar_sec.pipelines.filing_catalog.publication import (
     PlanConflictError,
     plan_bundle_complete,
+    plan_identity,
     plan_locator_keys,
 )
 from tests.support import published_universe
@@ -331,6 +336,69 @@ def _seed_csv(path: Path, group: str) -> Path:
         encoding="utf-8",
     )
     return path
+
+
+def _seed_cohort(
+    artifacts_root: Path, tmp_path: Path, *, name: str, cik: str
+) -> object:
+    paths = resolve_cohort_paths(artifacts_root)
+    source = tmp_path / f"{name}.csv"
+    source.write_text(f"cik,name\n{cik},entity\n", encoding="utf-8")
+    return ingest_file_to_cohort(
+        source,
+        catalog=CohortCatalog(paths),
+        paths=paths,
+        name=name,
+    ).cohort
+
+
+def test_seed_cohort_replaces_configured_seed_csv_and_is_fingerprinted(
+    catalog_snapshot: tuple[dict[str, object], Path],
+    tmp_path: Path,
+    catalog_artifacts_root: Path,
+) -> None:
+    manifest, _ = catalog_snapshot
+    configured_csv = _seed_csv(tmp_path / "configured.csv", "configured")
+    policy = _policy(seed_cik_path=str(configured_csv))
+    cohort = _seed_cohort(
+        catalog_artifacts_root, tmp_path, name="cohort-seeds", cik="320193"
+    )
+
+    meta = plan_policy(
+        str(manifest["catalog_id"]),
+        policy,
+        catalog_artifacts_root,
+        seed_cohort=cohort.cohort_id,
+    )
+    plan_dir = resolve_filing_catalog_paths(catalog_artifacts_root).plan_dir(
+        meta["plan_id"]
+    )
+    seeds = read_seed_filers_csv(plan_dir / SEED_FILERS_NAME)
+
+    assert set(seeds) == {"0000320193"}
+    seed = seeds["0000320193"]
+    assert seed.seed_group == "cohort"
+    assert seed.coverage_tags == cohort.name
+    assert seed.notes == f"From cohort {cohort.cohort_id}"
+    assert meta["seed_cohort_id"] == cohort.cohort_id
+    assert meta["seed_cohort_dataset_sha256"] == cohort.dataset_sha256
+    assert meta["seed_fingerprint"] == compute_seed_fingerprint(seeds)
+    request = {
+        "catalog_id": str(manifest["catalog_id"]),
+        "scope": SCOPE_POLICY,
+        "policy_fingerprint": policy.policy_fingerprint,
+        "seed_fingerprint": meta["seed_fingerprint"],
+        "plan_schema_version": meta["plan_schema_version"],
+        "seed_cohort_id": cohort.cohort_id,
+        "seed_cohort_dataset_sha256": cohort.dataset_sha256,
+    }
+    assert meta["plan_id"] == plan_identity(request)
+    assert (
+        meta["request_fingerprint"]
+        == hashlib.sha256(
+            json.dumps(request, sort_keys=True).encode("utf-8")
+        ).hexdigest()
+    )
 
 
 def test_a_policy_plan_publishes_its_normalized_seed_set(

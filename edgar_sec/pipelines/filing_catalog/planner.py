@@ -46,8 +46,12 @@ from edgar_sec.engine.selection.predicates import (
     suffix_sql,
 )
 from edgar_sec.engine.selection.selector import DeficitSelector
+from edgar_sec.foundation.hashing import file_sha256
 from edgar_sec.foundation.runtime.paths import DATA_FILE_NAME, PARQUET_PART_GLOB
 from edgar_sec.foundation.runtime.progress import ProgressCallback, emit_progress
+from edgar_sec.infra.storage.cohort.catalog import CohortCatalog
+from edgar_sec.infra.storage.cohort.models import CohortRecord
+from edgar_sec.infra.storage.cohort.paths import resolve_cohort_paths
 from edgar_sec.infra.storage.dag.catalog import DAGCatalog
 from edgar_sec.infra.storage.duckdb import (
     connect,
@@ -144,6 +148,67 @@ def _catalog_target_files(paths: FilingCatalogPaths, catalog_id: str) -> list[Pa
     return files
 
 
+def _resolve_cohort(
+    artifacts_root: Path, identifier: str | None
+) -> tuple[CohortRecord, Path] | None:
+    if identifier is None:
+        return None
+    try:
+        cohort_paths = resolve_cohort_paths(artifacts_root)
+        record = CohortCatalog(cohort_paths).resolve_cohort_identifier(identifier)
+        dataset = cohort_paths.resolve_relative_path(record.dataset_path)
+        if not dataset.is_file():
+            raise FileNotFoundError(dataset)
+        if file_sha256(dataset) != record.dataset_sha256:
+            raise ValueError(f"cohort dataset digest mismatch: {record.cohort_id}")
+        with connect() as con:
+            rows, distinct_ciks, invalid_ciks = con.execute(
+                "SELECT count(*), "
+                "count(DISTINCT try_cast(cik_padded AS BIGINT)), "
+                "count(*) FILTER (WHERE try_cast(cik_padded AS BIGINT) IS NULL) "
+                "FROM read_parquet(?)",
+                [str(dataset)],
+            ).fetchone()
+        if rows != record.row_count or distinct_ciks != record.distinct_cik_count:
+            raise ValueError("cohort row counts do not match its catalog record")
+        if invalid_ciks:
+            raise ValueError(f"cohort contains invalid CIK values: {record.cohort_id}")
+        return record, dataset
+    except Exception as error:
+        raise ValueError(f"unable to load cohort {identifier!r}: {error}") from error
+
+
+def _cohort_seed_filers(record: CohortRecord, dataset: Path) -> dict[str, SeedFiler]:
+    try:
+        with connect() as con:
+            rows = con.execute(
+                "SELECT cik_padded FROM read_parquet(?) ORDER BY ordinal",
+                [str(dataset)],
+            ).fetchall()
+    except Exception as error:
+        raise ValueError(
+            f"unable to read cohort seeds {record.cohort_id!r}: {error}"
+        ) from error
+
+    seed_map: dict[str, SeedFiler] = {}
+    for (cik_value,) in rows:
+        if (
+            not isinstance(cik_value, str)
+            or len(cik_value) != 10
+            or not cik_value.isdigit()
+        ):
+            raise ValueError(f"cohort contains invalid seed CIK: {cik_value!r}")
+        if cik_value in seed_map:
+            raise ValueError(f"cohort contains duplicate seed CIK: {cik_value}")
+        seed_map[cik_value] = SeedFiler(
+            cik=cik_value,
+            seed_group="cohort",
+            coverage_tags=record.name or record.cohort_id,
+            notes=f"From cohort {record.cohort_id}",
+        )
+    return seed_map
+
+
 def plan(
     catalog: str,
     output_root: str | Path | None = None,
@@ -152,6 +217,7 @@ def plan(
     document_suffixes: tuple[str, ...] | None = None,
     dates: str | None = None,
     limit: int | None = None,
+    cohort: str | None = None,
     progress: ProgressCallback = None,
     row_group_size: int = DEFAULT_ROW_GROUP_SIZE,
 ) -> dict[str, Any]:
@@ -179,6 +245,7 @@ def plan(
     )
     catalog = resolve_catalog_reference(paths, catalog)
     source_files = _catalog_target_files(paths, catalog)
+    cohort_input = _resolve_cohort(paths.artifacts_root, cohort)
 
     request = {
         "catalog_id": catalog,
@@ -189,6 +256,10 @@ def plan(
         "limit": limit,
         "plan_schema_version": TARGET_PLAN_SCHEMA_VERSION,
     }
+    if cohort_input is not None:
+        cohort_record, _ = cohort_input
+        request["cohort_id"] = cohort_record.cohort_id
+        request["cohort_dataset_sha256"] = cohort_record.dataset_sha256
     plan_id = plan_identity(request)
     final_dir = paths.plan_dir(plan_id)
 
@@ -217,15 +288,32 @@ def plan(
             f"CREATE OR REPLACE TEMP VIEW {view} AS "
             f"SELECT * FROM read_parquet([{file_list}]) WHERE form IS NOT NULL"
         )
+        source = view
+        if cohort_input is not None:
+            _, cohort_dataset = cohort_input
+            con.execute("CREATE TEMP TABLE cohort_ciks (cohort_cik BIGINT)")
+            con.execute(
+                "INSERT INTO cohort_ciks "
+                "SELECT try_cast(cik_padded AS BIGINT) "
+                "FROM read_parquet(?)",
+                [str(cohort_dataset)],
+            )
+            source = "cohort_targets"
+            con.execute(
+                "CREATE OR REPLACE TEMP VIEW cohort_targets AS "
+                "SELECT target.* FROM catalog_targets target "
+                "SEMI JOIN cohort_ciks cohort "
+                "ON try_cast(target.source_cik AS BIGINT) = cohort.cohort_cik"
+            )
 
         # A date selection filters on a parsed DATE, projected once here rather
         # than per reference in the predicate.
-        source = view
         if date_selection:
+            date_source = source
             source = "catalog_dated"
             con.execute(
                 f"CREATE OR REPLACE TEMP VIEW {source} AS SELECT *, "
-                f"{date_projection_sql('report_date')} FROM {view}"
+                f"{date_projection_sql('report_date')} FROM {date_source}"
             )
 
         # Form discovery runs the same predicates the partition writes do, so a
@@ -329,6 +417,9 @@ def plan(
                     json.dumps(request, sort_keys=True).encode("utf-8")
                 ).hexdigest(),
             }
+            if cohort_input is not None:
+                plan_meta["cohort_id"] = cohort_record.cohort_id
+                plan_meta["cohort_dataset_sha256"] = cohort_record.dataset_sha256
             plan_meta = write_plan_documents(staging, plan_meta, selection_report)
 
     return plan_meta
@@ -433,6 +524,7 @@ def plan_policy(
     output_root: str | Path | None = None,
     *,
     seed_filers: dict[str, SeedFiler] | None = None,
+    seed_cohort: str | None = None,
     parent_active_keys: list[str] | None = None,
     progress: ProgressCallback = None,
     row_group_size: int = DEFAULT_ROW_GROUP_SIZE,
@@ -461,9 +553,16 @@ def plan_policy(
     # Pinned once, then carried everywhere: reading the seed manifest per
     # consumer is what let a plan and its features disagree about which
     # registrants were mandatory.
-    pinned_seed = (
-        dict(seed_filers) if seed_filers is not None else resolve_seed_filers(policy)
-    )
+    seed_cohort_input = _resolve_cohort(paths.artifacts_root, seed_cohort)
+    if seed_cohort_input is not None:
+        seed_cohort_record, seed_cohort_dataset = seed_cohort_input
+        pinned_seed = _cohort_seed_filers(seed_cohort_record, seed_cohort_dataset)
+    else:
+        pinned_seed = (
+            dict(seed_filers)
+            if seed_filers is not None
+            else resolve_seed_filers(policy)
+        )
     seed_fingerprint = compute_seed_fingerprint(pinned_seed)
     # ``target_units`` and ``level`` stay out: ``policy_fingerprint`` already
     # covers both, and restating them gave the identity two encodings of one fact.
@@ -474,6 +573,9 @@ def plan_policy(
         "seed_fingerprint": seed_fingerprint,
         "plan_schema_version": TARGET_PLAN_SCHEMA_VERSION,
     }
+    if seed_cohort_input is not None:
+        request["seed_cohort_id"] = seed_cohort_record.cohort_id
+        request["seed_cohort_dataset_sha256"] = seed_cohort_record.dataset_sha256
     plan_id = plan_identity(request)
     final_dir = paths.plan_dir(plan_id)
 
@@ -645,6 +747,9 @@ def plan_policy(
                 json.dumps(request, sort_keys=True).encode("utf-8")
             ).hexdigest(),
         }
+        if seed_cohort_input is not None:
+            plan_meta["seed_cohort_id"] = seed_cohort_record.cohort_id
+            plan_meta["seed_cohort_dataset_sha256"] = seed_cohort_record.dataset_sha256
         plan_meta = write_plan_documents(staging, plan_meta, selection_report)
 
     return plan_meta

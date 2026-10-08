@@ -16,6 +16,7 @@ from edgar_sec.pipelines.metadata_sync.augmentation import (
     augment_from_input,
     augment_from_roster,
     base_cik_sources,
+    delta_roster_path,
     derive_delta_plan,
     preflight_augment,
 )
@@ -169,8 +170,8 @@ def test_one_requested_list_against_two_bases_is_two_plans(
 
     assert against_a.plan_id != against_b.plan_id
     assert against_a.roster.range_ciks(0, against_a.row_count) == (
-        "0000001761",
         "0000000020",
+        "0000001761",
         "0000037996",
     )
     assert against_b.roster.range_ciks(0, against_b.row_count) == (
@@ -221,12 +222,15 @@ def test_the_delta_is_numbered_from_zero_and_is_reproducible(
     second = derive_delta_plan(
         requested, metadata, chunk_size=2, base_snapshot_id="base"
     )
+    delta_path = delta_roster_path(requested, metadata, "base")
 
     assert first.roster.roster_id == second.roster.roster_id
+    assert delta_path.is_file()
+    assert delta_path.is_relative_to(metadata.transient_dir("probe").parent)
     assert first.plan_id == second.plan_id
     assert first.row_count == 3
     assert first.chunk_start(0) == 0
-    assert first.chunk_ciks(0) == ("0000001761", "0000000020")
+    assert first.chunk_ciks(0) == ("0000000020", "0000001761")
     assert first.chunk_ciks(1) == (FORD,)
 
 

@@ -30,6 +30,8 @@ system and no table registry.
 | `duckdb.py` | `connect()`, the only `duckdb.connect()` call site in `edgar_sec`; the SQL dialect primitives (`sql_literal`, `sql_identifier`, `sql_path_list`); the atomic out-of-core COPY; and the generic duplicate/null-key checks. |
 | `dag/` | Unified append-only snapshot DAG engine, lineage traversal, compaction, publication locks, and CLI runner. |
 | `review/` | Generalized review run artifacts, multi-format diff engine, comparison reporting, and operator/CLI harness. |
+| `object_store/` | Shared SQLite persistence for immutable expression nodes and session aliases. |
+| `cohort/` | Shared cohort paths, SQLite catalog, and immutable cohort datasets. |
 | `__init__.py` | Docstring only. No re-exports. |
 
 ## Contracts
@@ -99,6 +101,16 @@ system and no table registry.
   `write_chunk_snapshot` in the document-storage pipeline writes and validates
   chunk checkpoints against `DOCUMENT_SNAPSHOT_SCHEMA`, comparing a file's
   schema for exact name order and equality.
+- **Expression nodes are global and immutable; aliases are session-scoped.**
+  [`object_store/`](object_store/README.md) owns the SQLite schema and validates
+  alias targets before moving a pointer.
+- **Cohort identities refer to immutable datasets.** The shared
+  [`cohort/`](cohort/README.md) package owns relative paths, catalog records,
+  source pointers, and lifecycle guards.
+- **CIK, not name, determines membership.** File intake selects the first
+  non-empty label in input order; union/intersection select the left operand's
+  non-empty name before the right. Callers must place the preferred label source
+  on the left; conflicting payloads for an existing CIK-set identity are refused.
 - **Fixture payloads are append-only evidence.** This belongs to the
   document-storage pipeline's fixture store, not here.
 
@@ -138,6 +150,10 @@ members.
   resolution, and the dependency closure. The publishing dataset and phase are
   supplied by the caller, because several phases publish through this one
   function and a constant here would mislabel all but one of them.
+- `object_store/store.py` — `ObjectStore` session, immutable-object, and alias
+  operations; record types are owned by `object_store/models.py`.
+- `cohort/` — the `CohortPaths` and `CohortCatalog` APIs; see its README for the
+  supported storage boundary.
 
 **Command surface:** none. The consumer commands (`documents fill`, `documents
 run`, `documents review-artifacts`, …) live in

@@ -22,7 +22,7 @@ from edgar_sec.pipelines.metadata_sync.source_registry import (
 def cmd_refresh(
     artifacts_root: Path | None = None, *, source: str = SOURCE_NAME
 ) -> int:
-    """Fetch and publish one immutable external source snapshot."""
+    """Refresh one shared official source cohort."""
     metadata = resolve_metadata_paths(artifacts_root)
     if source == SOURCE_UNIVERSE_NAME:
         manifest = refresh_cik_lookup_universe(metadata_paths=metadata)
@@ -80,13 +80,17 @@ def _family_index_summary(manifest_path: Path) -> dict[str, Any]:
     }
 
 
-def cmd_compare(options: PlanOptions, *, source_manifest: Path) -> int:
-    """Project the curated CIK input against a published source snapshot."""
+def cmd_compare(
+    options: PlanOptions,
+    *,
+    source_cohort_id: str,
+) -> int:
+    """Project the curated CIK input against a published source cohort."""
     if options.input_path is None:
         raise ValueError("sources compare needs --input")
     summary = compare_sources(
         curated_input_path=options.input_path,
-        source_manifest_path=source_manifest,
+        source_cohort_id=source_cohort_id,
         metadata_paths=resolve_metadata_paths(options.artifacts_root),
     )
     render_output(

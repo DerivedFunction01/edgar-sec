@@ -34,8 +34,8 @@ def test_chunks_are_ordinal_ranges_not_embedded_lists() -> None:
     assert plan.chunk_count == 2
     assert plan.chunk_start(0) == 0 and plan.chunk_length(0) == 2
     assert plan.chunk_start(1) == 2 and plan.chunk_length(1) == 2
-    assert plan.chunk_ciks(0) == ("0000001985", "0000001761")
-    assert plan.chunk_ciks(1) == ("0000000020", "0000037996")
+    assert plan.chunk_ciks(0) == ("0000000020", "0000001761")
+    assert plan.chunk_ciks(1) == ("0000001985", "0000037996")
 
 
 def test_the_last_chunk_is_short() -> None:

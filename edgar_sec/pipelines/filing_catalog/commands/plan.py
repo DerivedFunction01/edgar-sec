@@ -38,11 +38,19 @@ def cmd_plan(args: argparse.Namespace) -> int:
     artifacts = resolve_artifacts(args.artifacts)
     try:
         if args.scope == SCOPE_POLICY:
+            if args.cohort:
+                raise ValueError("--cohort is only valid for deterministic scope")
             policy = _load_policy(args)
             plan = build_policy_plan(
-                args.catalog, policy, artifacts, progress=emit_progress
+                args.catalog,
+                policy,
+                artifacts,
+                seed_cohort=args.seed_cohort or None,
+                progress=emit_progress,
             )
         else:
+            if args.seed_cohort:
+                raise ValueError("--seed-cohort is only valid for policy scope")
             plan = build_plan(
                 args.catalog,
                 artifacts,
@@ -50,6 +58,7 @@ def cmd_plan(args: argparse.Namespace) -> int:
                 document_suffixes=(tuple(args.suffixes) if args.suffixes else None),
                 dates=args.dates,
                 limit=args.limit,
+                cohort=args.cohort or None,
                 progress=emit_progress,
             )
     except (PlanConflictError, ValueError, OSError) as error:

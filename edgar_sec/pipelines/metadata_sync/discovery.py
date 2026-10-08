@@ -22,33 +22,22 @@ from .paths import (
 )
 from .registry import RegistryError
 from .roster import RosterError
-from .source_registry import (
-    SOURCE_MANIFEST_KIND,
-    SOURCE_NAME,
-    SOURCE_UNIVERSE_NAME,
-)
 
 __all__ = [
     "InputSummary",
     "PlanSummary",
     "RosterSummary",
-    "SourceSummary",
     "current_snapshot_id",
     "describe_plan",
     "describe_roster",
-    "describe_source",
     "list_input_manifests",
     "list_plans",
     "list_rosters",
     "list_snapshots",
-    "list_source_snapshots",
-    "list_universe_snapshots",
-    "newest_universe_snapshot_id",
     "plan_summary",
     "resolve_input_choice",
     "resolve_plan_choice",
     "resolve_snapshot_choice",
-    "resolve_source_choice",
 ]
 
 
@@ -58,10 +47,6 @@ class PlanSummary(dict[str, Any]):
 
 class RosterSummary(dict[str, Any]):
     """One discovered effective-CIK roster, as plain pickable data."""
-
-
-class SourceSummary(dict[str, Any]):
-    """One published external source snapshot, as plain pickable data."""
 
 
 class InputSummary(dict[str, Any]):
@@ -229,117 +214,6 @@ def describe_roster(roster: RosterSummary) -> str:
         parts.append(f"{roster['active_cik_count']:,} active in source")
     parts.append(f"source {roster['source_snapshot_id'] or 'unknown'}")
     return f"{roster['registry_id']}  " + ", ".join(parts)
-
-
-def _source_count(manifest: dict[str, Any], *keys: str) -> int:
-    """First present count key as an int; a source names its counts differently."""
-    for key in keys:
-        value = manifest.get(key, 0)
-        if value:
-            return int(value)
-    return 0
-
-
-def list_source_snapshots(
-    metadata: MetadataPaths, source_name: str = SOURCE_NAME
-) -> list[SourceSummary]:
-    """Every published snapshot of one external source, newest retrieval first.
-    Ordering by ``retrieved_at`` is what makes "the latest" mean something.
-    """
-    root = metadata.sources_root / source_name
-    if not root.is_dir():
-        return []
-    found: list[SourceSummary] = []
-    for entry in sorted(root.iterdir()):
-        if not entry.is_dir():
-            continue
-        path = metadata.source_manifest_file(source_name, entry.name)
-        try:
-            manifest = json.loads(path.read_text(encoding="utf-8"))
-        except (OSError, json.JSONDecodeError) as exc:
-            found.append(
-                SourceSummary(
-                    snapshot_id=entry.name,
-                    manifest_path=str(path),
-                    retrieved_at="",
-                    unique_cik_count=0,
-                    listing_row_count=0,
-                    readable=False,
-                    readable_reason=str(exc),
-                )
-            )
-            continue
-        if not isinstance(manifest, dict):
-            manifest = {}
-        readable = manifest.get("manifest_kind") == SOURCE_MANIFEST_KIND
-        found.append(
-            SourceSummary(
-                snapshot_id=str(manifest.get("snapshot_id", "") or entry.name),
-                manifest_path=str(path),
-                retrieved_at=str(manifest.get("retrieved_at", "")),
-                unique_cik_count=_source_count(
-                    manifest, "unique_cik_count", "distinct_cik_count"
-                ),
-                listing_row_count=_source_count(
-                    manifest, "listing_row_count", "line_count"
-                ),
-                readable=readable,
-                readable_reason="" if readable else "not a source manifest",
-            )
-        )
-    found.sort(
-        key=lambda item: (item["retrieved_at"], item["snapshot_id"]), reverse=True
-    )
-    return found
-
-
-def list_universe_snapshots(metadata: MetadataPaths) -> list[SourceSummary]:
-    """Every published full-registrant-index snapshot, newest retrieval first."""
-    return list_source_snapshots(metadata, SOURCE_UNIVERSE_NAME)
-
-
-def newest_universe_snapshot_id(metadata: MetadataPaths) -> str:
-    """The newest readable universe snapshot id, or empty when none is usable."""
-    for snapshot in list_universe_snapshots(metadata):
-        if snapshot["readable"]:
-            return str(snapshot["snapshot_id"])
-    return ""
-
-
-def describe_source(source: SourceSummary) -> str:
-    """One-line human summary of a source snapshot's age and coverage."""
-    if not source["readable"]:
-        return f"{source['snapshot_id']}  unreadable ({source['readable_reason']})"
-    parts = [f"retrieved {source['retrieved_at'] or 'unknown'}"]
-    if source["unique_cik_count"]:
-        parts.append(f"{source['unique_cik_count']:,} CIKs")
-    if source["listing_row_count"]:
-        parts.append(f"{source['listing_row_count']:,} listings")
-    return f"{source['snapshot_id']}  " + ", ".join(parts)
-
-
-def resolve_source_choice(
-    sources: list[SourceSummary], *, select: Callable[[list[str]], str]
-) -> str:
-    """Choose one source snapshot id from discovered snapshots.
-    A lone snapshot is still offered: which observations a cohort uses is a decision.
-    """
-    if not sources:
-        return ""
-    lines = [
-        f"  {index}. {describe_source(source)}"
-        for index, source in enumerate(sources, start=1)
-    ]
-    choice = select(lines)
-    if not choice:
-        return ""
-    try:
-        index = int(choice)
-    except ValueError:
-        return ""
-    if not 1 <= index <= len(sources):
-        return ""
-    return str(sources[index - 1]["snapshot_id"])
 
 
 def list_input_manifests(directory: str | Path | None = None) -> list[InputSummary]:

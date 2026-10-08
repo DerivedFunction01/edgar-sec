@@ -11,6 +11,8 @@ import pyarrow.parquet as pq
 import pytest
 
 from edgar_sec.infra.storage.atomic import atomic_write_json
+from edgar_sec.infra.storage.cohort.catalog import CohortCatalog
+from edgar_sec.infra.storage.cohort.paths import resolve_cohort_paths
 from edgar_sec.pipelines.metadata_sync.manifest import compile_cik_cohort
 from edgar_sec.pipelines.metadata_sync.paths import resolve_metadata_paths
 from edgar_sec.pipelines.metadata_sync.registry import (
@@ -29,8 +31,6 @@ from edgar_sec.pipelines.metadata_sync.roster import write_roster
 from edgar_sec.pipelines.metadata_sync.source_registry import (
     SOURCE_NAME,
     SOURCE_URL,
-    SourceRegistryError,
-    load_source_snapshot,
     refresh_company_tickers,
 )
 from tests.support import (
@@ -49,14 +49,14 @@ TICKERS = {
 
 
 @pytest.fixture()
-def published_source(session: FakeSession, tmp_path: Path) -> tuple[Path, object]:
-    """Refresh a source snapshot and return its manifest path."""
+def published_source(session: FakeSession, tmp_path: Path) -> tuple[str, object]:
+    """Refresh a shared source cohort and return its catalog identity."""
     session.register_bytes(SOURCE_URL, json.dumps(TICKERS).encode("utf-8"))
     metadata = resolve_metadata_paths(tmp_path)
     manifest = refresh_company_tickers(
         metadata_paths=metadata, client=build_test_http(session)
     )
-    return metadata.source_manifest_file(SOURCE_NAME, manifest["snapshot_id"]), metadata
+    return manifest["cohort_id"], metadata
 
 
 def _read(path: Path) -> list[dict]:
@@ -74,7 +74,7 @@ def test_compare_writes_every_declared_artifact(published_source, tmp_path) -> N
     manifest_path, metadata = published_source
     result = compare_sources(
         curated_input_path=fixture_path("cik_sec_mini.csv"),
-        source_manifest_path=manifest_path,
+        source_cohort_id=manifest_path,
         metadata_paths=metadata,
     )
 
@@ -115,7 +115,7 @@ def test_compare_derives_new_ciks_and_worklist(published_source) -> None:
     manifest_path, metadata = published_source
     result = compare_sources(
         curated_input_path=fixture_path("cik_sec_mini.csv"),
-        source_manifest_path=manifest_path,
+        source_cohort_id=manifest_path,
         metadata_paths=metadata,
     )
     registry_id = result["registry_id"]
@@ -147,7 +147,7 @@ def test_compare_preserves_curated_only_ciks(published_source) -> None:
     manifest_path, metadata = published_source
     result = compare_sources(
         curated_input_path=fixture_path("cik_sec_mini.csv"),
-        source_manifest_path=manifest_path,
+        source_cohort_id=manifest_path,
         metadata_paths=metadata,
     )
     rows = {
@@ -171,7 +171,7 @@ def test_the_effective_roster_is_published_as_a_loadable_dataset(
     manifest_path, metadata = published_source
     result = compare_sources(
         curated_input_path=fixture_path("cik_sec_mini.csv"),
-        source_manifest_path=manifest_path,
+        source_cohort_id=manifest_path,
         metadata_paths=metadata,
     )
     registry_id = result["registry_id"]
@@ -195,7 +195,7 @@ def test_the_roster_and_the_csv_describe_the_same_union(
     manifest_path, metadata = published_source
     result = compare_sources(
         curated_input_path=fixture_path("cik_sec_mini.csv"),
-        source_manifest_path=manifest_path,
+        source_cohort_id=manifest_path,
         metadata_paths=metadata,
     )
     roster = load_registry_roster(result["registry_id"], metadata)
@@ -213,7 +213,7 @@ def test_load_registry_roster_refuses_a_swapped_dataset(published_source) -> Non
     manifest_path, metadata = published_source
     result = compare_sources(
         curated_input_path=fixture_path("cik_sec_mini.csv"),
-        source_manifest_path=manifest_path,
+        source_cohort_id=manifest_path,
         metadata_paths=metadata,
     )
     registry_id = result["registry_id"]
@@ -233,7 +233,7 @@ def test_effective_csv_covers_the_union_and_is_usable_as_input(
     manifest_path, metadata = published_source
     result = compare_sources(
         curated_input_path=fixture_path("cik_sec_mini.csv"),
-        source_manifest_path=manifest_path,
+        source_cohort_id=manifest_path,
         metadata_paths=metadata,
     )
     effective = metadata.effective_input_file(result["registry_id"])
@@ -262,7 +262,7 @@ def test_compare_is_deterministic_for_unchanged_inputs(published_source) -> None
     manifest_path, metadata = published_source
     kwargs = {
         "curated_input_path": fixture_path("cik_sec_mini.csv"),
-        "source_manifest_path": manifest_path,
+        "source_cohort_id": manifest_path,
         "metadata_paths": metadata,
     }
     first = compare_sources(**kwargs)
@@ -281,12 +281,12 @@ def test_comparing_against_a_different_curated_input_changes_identity(
 
     first = compare_sources(
         curated_input_path=fixture_path("cik_sec_mini.csv"),
-        source_manifest_path=manifest_path,
+        source_cohort_id=manifest_path,
         metadata_paths=metadata,
     )
     second = compare_sources(
         curated_input_path=other,
-        source_manifest_path=manifest_path,
+        source_cohort_id=manifest_path,
         metadata_paths=metadata,
     )
     assert first["registry_id"] != second["registry_id"]
@@ -300,30 +300,32 @@ def test_compare_performs_no_network_access(
     calls_after_refresh = len(session.calls)
     compare_sources(
         curated_input_path=fixture_path("cik_sec_mini.csv"),
-        source_manifest_path=manifest_path,
+        source_cohort_id=manifest_path,
         metadata_paths=metadata,
     )
     assert len(session.calls) == calls_after_refresh
 
 
 def test_compare_rejects_a_tampered_source_snapshot(published_source) -> None:
-    manifest_path, metadata = published_source
-    published = json.loads(manifest_path.read_text(encoding="utf-8"))
-    Path(published["raw_path"]).write_text("{}", encoding="utf-8")
+    cohort_id, metadata = published_source
+    paths = resolve_cohort_paths(metadata.artifacts_root)
+    record = CohortCatalog(paths).resolve_cohort_identifier(cohort_id)
+    details = json.loads(record.origin_json)
+    paths.resolve_relative_path(details["raw_path"]).write_text("{}", encoding="utf-8")
 
-    with pytest.raises(SourceRegistryError, match="hash does not match"):
+    with pytest.raises(RegistryError, match="payload digest"):
         compare_sources(
             curated_input_path=fixture_path("cik_sec_mini.csv"),
-            source_manifest_path=manifest_path,
+            source_cohort_id=cohort_id,
             metadata_paths=metadata,
         )
 
 
-def test_compare_reports_a_missing_source_manifest(tmp_path) -> None:
-    with pytest.raises(FileNotFoundError):
+def test_compare_refuses_an_unpublished_source_cohort(tmp_path) -> None:
+    with pytest.raises(ValueError, match="Cohort not found"):
         compare_sources(
             curated_input_path=fixture_path("cik_sec_mini.csv"),
-            source_manifest_path=tmp_path / "absent.json",
+            source_cohort_id="absent-cohort",
             metadata_paths=resolve_metadata_paths(tmp_path),
         )
 
@@ -332,7 +334,7 @@ def test_load_registry_manifest_verifies_the_digest(published_source) -> None:
     manifest_path, metadata = published_source
     result = compare_sources(
         curated_input_path=fixture_path("cik_sec_mini.csv"),
-        source_manifest_path=manifest_path,
+        source_cohort_id=manifest_path,
         metadata_paths=metadata,
     )
     assert load_registry_manifest(result["registry_id"], metadata)["row_count"] == 5
@@ -353,7 +355,7 @@ def test_dataset_schemas_match_the_declared_contracts(published_source) -> None:
     manifest_path, metadata = published_source
     result = compare_sources(
         curated_input_path=fixture_path("cik_sec_mini.csv"),
-        source_manifest_path=manifest_path,
+        source_cohort_id=manifest_path,
         metadata_paths=metadata,
     )
     registry_id = result["registry_id"]
@@ -397,7 +399,7 @@ def test_ensure_registry_projects_the_seed_against_the_source(
     manifest_path, metadata = published_source
     result = ensure_registry(
         curated_input_path=fixture_path("cik_sec_mini.csv"),
-        source_snapshot_id=load_source_snapshot(manifest_path).manifest["snapshot_id"],
+        source_cohort_id=manifest_path,
         metadata_paths=metadata,
     )
     roster = load_registry_roster(result["registry_id"], metadata)
@@ -417,15 +419,15 @@ def test_ensure_registry_reuses_an_already_computed_projection(
 ) -> None:
     """An unnoticed re-comparison would republish a registry on every invocation."""
     manifest_path, metadata = published_source
-    source_id = load_source_snapshot(manifest_path).manifest["snapshot_id"]
+    source_id = manifest_path
     first = ensure_registry(
         curated_input_path=fixture_path("cik_sec_mini.csv"),
-        source_snapshot_id=source_id,
+        source_cohort_id=source_id,
         metadata_paths=metadata,
     )
     second = ensure_registry(
         curated_input_path=fixture_path("cik_sec_mini.csv"),
-        source_snapshot_id=source_id,
+        source_cohort_id=source_id,
         metadata_paths=metadata,
     )
     assert second["registry_id"] == first["registry_id"]
@@ -439,15 +441,15 @@ def test_ensure_registry_answers_the_same_questions_either_way(
 ) -> None:
     """The two paths answer from different sources, so their key sets must match."""
     manifest_path, metadata = published_source
-    source_id = load_source_snapshot(manifest_path).manifest["snapshot_id"]
+    source_id = manifest_path
     fresh = ensure_registry(
         curated_input_path=fixture_path("cik_sec_mini.csv"),
-        source_snapshot_id=source_id,
+        source_cohort_id=source_id,
         metadata_paths=metadata,
     )
     reused = ensure_registry(
         curated_input_path=fixture_path("cik_sec_mini.csv"),
-        source_snapshot_id=source_id,
+        source_cohort_id=source_id,
         metadata_paths=metadata,
     )
     for key in (
@@ -470,16 +472,16 @@ def test_ensure_registry_recomputes_when_the_roster_digest_is_wrong(
 ) -> None:
     """A swapped roster is not reused; the comparison republishes the truth."""
     manifest_path, metadata = published_source
-    source_id = load_source_snapshot(manifest_path).manifest["snapshot_id"]
+    source_id = manifest_path
     first = ensure_registry(
         curated_input_path=fixture_path("cik_sec_mini.csv"),
-        source_snapshot_id=source_id,
+        source_cohort_id=source_id,
         metadata_paths=metadata,
     )
     metadata.effective_cik_roster(first["registry_id"]).write_bytes(b"corrupted")
     second = ensure_registry(
         curated_input_path=fixture_path("cik_sec_mini.csv"),
-        source_snapshot_id=source_id,
+        source_cohort_id=source_id,
         metadata_paths=metadata,
     )
     assert second["reused"] is False
@@ -491,6 +493,6 @@ def test_ensure_registry_names_a_missing_seed(tmp_path) -> None:
     with pytest.raises(FileNotFoundError, match="curated CIK manifest"):
         ensure_registry(
             curated_input_path=tmp_path / "absent.csv",
-            source_snapshot_id="src-1",
+            source_cohort_id="unneeded",
             metadata_paths=metadata,
         )

@@ -36,13 +36,8 @@ REGISTRY_EFFECTIVE_CIK_DATASET = "effective_ciks"
 REGISTRY_EFFECTIVE_CIK_INPUT_NAME = "effective_cik_input.csv"
 EFFECTIVE_CIK_INPUT_MANIFEST_NAME = "effective_cik_input.csv.manifest.json"
 
-COHORTS_DIR_NAME = "cohorts"
 PLANS_DIR_NAME = "plans"
-SOURCES_DIR_NAME = "sources"
 CHUNKS_DIR_NAME = "chunks"
-
-COMPILED_ROSTER_MANIFEST_NAME = "cohort.json"
-COMPILED_ROSTER_MANIFEST_KIND = "cik_cohort"
 
 FAMILY_INDEX_DIR_NAME = "family_index"
 FAMILY_INDEX_FILE_NAME = "company_family.parquet"
@@ -105,28 +100,6 @@ class MetadataPaths:
         """Sorted distinct CIK index published beside one snapshot payload."""
         return self.snapshot_dir(snapshot_id) / SNAPSHOT_CIK_INDEX_NAME
 
-    @property
-    def sources_root(self) -> Path:
-        """Root of the published external source snapshots, by source name."""
-        return self.metadata_root / SOURCES_DIR_NAME
-
-    def source_dir(self, source_name: str, snapshot_id: str) -> Path:
-        """Directory holding one immutable external source snapshot."""
-        return self.sources_root / source_name / snapshot_id
-
-    def source_snapshot_file(
-        self, source_name: str, snapshot_id: str, *, suffix: str = ".json"
-    ) -> Path:
-        """Raw payload of one immutable source snapshot.
-
-        The suffix follows the payload's own, so a text index is not mislabelled JSON.
-        """
-        return self.source_dir(source_name, snapshot_id) / f"raw{suffix}"
-
-    def source_manifest_file(self, source_name: str, snapshot_id: str) -> Path:
-        """Manifest describing one immutable source snapshot."""
-        return self.source_dir(source_name, snapshot_id) / "manifest.json"
-
     def registry_root(self, registry_id: str) -> Path:
         """Directory holding a content-addressed curated-input projection."""
         return self.metadata_root / REGISTRIES_DIR_NAME / registry_id
@@ -148,25 +121,6 @@ class MetadataPaths:
     def effective_cik_roster(self, registry_id: str) -> Path:
         """Path of the effective CIK roster dataset for one registry."""
         return self.registry_dataset(registry_id, REGISTRY_EFFECTIVE_CIK_DATASET)
-
-    @property
-    def cohorts_root(self) -> Path:
-        """Compiled cohorts, keyed by the fingerprint that produced them: the shared
-        store, distinct from the copy a bundle freezes to travel.
-        """
-        return self.metadata_root / COHORTS_DIR_NAME
-
-    def compiled_cohort_dir(self, key: str) -> Path:
-        """Directory holding one cohort compiled from a CIK input file."""
-        return self.cohorts_root / key
-
-    def compiled_cohort_file(self, key: str) -> Path:
-        """Path of the compiled cohort's CIK dataset."""
-        return self.compiled_cohort_dir(key) / ROSTER_FILE_NAME
-
-    def compiled_cohort_manifest(self, key: str) -> Path:
-        """Manifest recording how one cohort was compiled and what it resolved to."""
-        return self.compiled_cohort_dir(key) / COMPILED_ROSTER_MANIFEST_NAME
 
     @property
     def family_index_root(self) -> Path:
@@ -270,10 +224,7 @@ def resolve_run_paths(
 
 __all__ = [
     "ASSIGNMENTS_DIR_NAME",
-    "COHORTS_DIR_NAME",
     "CHUNKS_DIR_NAME",
-    "COMPILED_ROSTER_MANIFEST_KIND",
-    "COMPILED_ROSTER_MANIFEST_NAME",
     "INPUT_DIR_NAME",
     "INPUT_MANIFEST_NAME",
     "METADATA_DIR",
@@ -288,7 +239,6 @@ __all__ = [
     "RUN_LOCK_FILE",
     "SNAPSHOT_FILE_NAME",
     "SNAPSHOT_MANIFEST_NAME",
-    "SOURCES_DIR_NAME",
     "MetadataPaths",
     "RunPaths",
     "resolve_metadata_paths",

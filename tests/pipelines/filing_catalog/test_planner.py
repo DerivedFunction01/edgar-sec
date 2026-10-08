@@ -10,6 +10,9 @@ import pyarrow.parquet as pq
 import pytest
 
 from edgar_sec.foundation.runtime.paths import PLAN_FILE_NAME
+from edgar_sec.infra.storage.cohort.catalog import CohortCatalog
+from edgar_sec.infra.storage.cohort.ingestion import ingest_file_to_cohort
+from edgar_sec.infra.storage.cohort.paths import resolve_cohort_paths
 from edgar_sec.pipelines.filing_catalog.catalog_job import materialize
 from edgar_sec.pipelines.filing_catalog.paths import (
     LOCATOR_GROUPS_NAME,
@@ -40,6 +43,21 @@ def _plan_dir(artifacts_root: Path, plan_meta: dict[str, Any]) -> Path:
     return resolve_filing_catalog_paths(artifacts_root).plan_dir(plan_meta["plan_id"])
 
 
+def _cohort(artifacts_root: Path, tmp_path: Path, name: str, rows: list[str]) -> Any:
+    paths = resolve_cohort_paths(artifacts_root)
+    roster = tmp_path / f"{name}.csv"
+    roster.write_text(
+        "cik,name\n" + "".join(f"{cik},entity\n" for cik in rows),
+        encoding="utf-8",
+    )
+    return ingest_file_to_cohort(
+        roster,
+        catalog=CohortCatalog(paths),
+        paths=paths,
+        name=name,
+    ).cohort
+
+
 # --- the four supported filters -------------------------------------------
 
 
@@ -47,6 +65,45 @@ def test_all_forms_plans_every_target(catalog_id: str, artifacts_root: Path) -> 
     meta = plan(catalog_id, artifacts_root)
     assert meta["selected_rows"] == 13
     assert sum(meta["counts"].values()) == 13
+
+
+def test_cohort_filters_targets_and_participates_in_identity(
+    catalog_id: str, artifacts_root: Path, tmp_path: Path
+) -> None:
+    cohort = _cohort(artifacts_root, tmp_path, "one-filer", ["320193"])
+    meta = plan(catalog_id, artifacts_root, cohort=cohort.cohort_id)
+
+    assert meta["selected_rows"] == 4
+    assert meta["cohort_id"] == cohort.cohort_id
+    assert meta["cohort_dataset_sha256"] == cohort.dataset_sha256
+    another = _cohort(artifacts_root, tmp_path, "another-filer", ["9999999999"])
+    another_plan = plan(catalog_id, artifacts_root, cohort=another.cohort_id)
+    assert meta["plan_id"] != another_plan["plan_id"]
+    assert meta["plan_id"] != plan(catalog_id, artifacts_root)["plan_id"]
+
+
+def test_an_empty_cohort_publishes_zero_targets(
+    catalog_id: str, artifacts_root: Path, tmp_path: Path
+) -> None:
+    cohort = _cohort(artifacts_root, tmp_path, "empty", [])
+    meta = plan(catalog_id, artifacts_root, cohort=cohort.cohort_id)
+
+    assert meta["selected_rows"] == 0
+    assert meta["counts"] == {}
+    assert plan_bundle_complete(_plan_dir(artifacts_root, meta))
+
+
+def test_a_modified_cohort_dataset_fails_closed(
+    catalog_id: str, artifacts_root: Path, tmp_path: Path
+) -> None:
+    cohort = _cohort(artifacts_root, tmp_path, "tampered", ["320193"])
+    dataset = resolve_cohort_paths(artifacts_root).resolve_relative_path(
+        cohort.dataset_path
+    )
+    dataset.write_bytes(b"not parquet")
+
+    with pytest.raises(ValueError, match="digest mismatch"):
+        plan(catalog_id, artifacts_root, cohort=cohort.cohort_id)
 
 
 # Six fixture targets have a readable report_date and seven an empty one.

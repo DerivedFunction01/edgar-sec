@@ -46,6 +46,21 @@ Layer 0: foundation/   # Shared primitives, runtime/fixture paths, resource budg
 python run.py
 ```
 
+### Phase 0: Cohort Management
+```bash
+# Import and inspect a cohort:
+python run.py cohort import --input uploads/cik-sec.csv --name uploaded
+python run.py cohort list
+python run.py cohort query uploaded --limit 10
+
+# Combine sources, preferring the official SEC names on the left:
+python run.py cohort merge --expr "official + uploaded" --name combined
+```
+
+Membership is deduplicated by CIK. Duplicate input rows select the first
+non-empty trimmed name; unions/intersections prefer the left operand's non-empty
+name, then the right. Put the label source you trust first.
+
 ### Quality Gate
 ```bash
 # Full verification gate (format, lint, scanners, tests):
@@ -70,13 +85,14 @@ python -c "from edgar_sec.foundation.runtime.settings import render_dotenv; prin
 # against it to find registrants upstream that the CSV does not cover:
 python run.py metadata sources refresh
 python run.py metadata sources compare --input uploads/cik-sec.csv \
-    --source-manifest <artifacts-root>/metadata/sources/company_tickers/<id>/manifest.json
+    --source-cohort <cohort_id>
 
 # Plan a cohort (deterministic, no network). --input takes a curated CSV;
 # --roster takes a published effective CIK roster id from `sources compare`;
 # --universe takes every registrant the SEC knows.
 python run.py metadata plan --input uploads/cik-sec.csv
 python run.py metadata plan --roster <registry_id>
+python run.py metadata plan --cohort <cohort_id>
 python run.py metadata sources refresh --source cik_lookup
 python run.py metadata plan --universe
 
@@ -136,6 +152,8 @@ python run.py filing-catalog materialize \
 # Deterministic plan, filtered by form and report date:
 # Forms are exact: an amendment variant such as 10-K/A must be named explicitly.
 python run.py filing-catalog plan --catalog current --forms 10-K
+# Restrict deterministic targets to a shared cohort:
+python run.py filing-catalog plan --catalog current --cohort <cohort_id>
 # Narrow it by report_date: one quoted union of absolute windows and recurring periods.
 python run.py filing-catalog plan --catalog current \
     --dates "@Q1[1999..2001],2005Q3..2008Q1,2011-12-31..2019-11-03"
@@ -143,6 +161,9 @@ python run.py filing-catalog plan --catalog current \
 # Policy plan: fill a declared quota profile across filing eras.
 python run.py filing-catalog plan --catalog current --scope policy \
     --policy artifacts/filing_catalog/policies/corpus.json
+# Or seed a policy plan from a shared cohort:
+python run.py filing-catalog plan --catalog current --scope policy \
+    --policy artifacts/filing_catalog/policies/corpus.json --seed-cohort <cohort_id>
 # ...or derive a baseline policy from the catalog's own forms and year range:
 python run.py filing-catalog plan --catalog current --scope policy --auto-policy
 
@@ -246,13 +267,13 @@ where the two disagree.
 - **package root** — [edgar_sec](edgar_sec/README.md)
 - **foundation** — [foundation](edgar_sec/foundation/README.md) · [checks](edgar_sec/foundation/checks/README.md) · [regex](edgar_sec/foundation/regex/README.md) · [runtime](edgar_sec/foundation/runtime/README.md) · [runtime/settings](edgar_sec/foundation/runtime/settings/README.md) · [scanners](edgar_sec/foundation/scanners/README.md) · [sql](edgar_sec/foundation/sql/README.md) · [text](edgar_sec/foundation/text/README.md)
 - **domain** — [domain](edgar_sec/domain/README.md) · [document](edgar_sec/domain/document/README.md) · [document_inventory](edgar_sec/domain/document_inventory/README.md) · [filing_catalog](edgar_sec/domain/filing_catalog/README.md) · [forms](edgar_sec/domain/forms/README.md) · [forms/common](edgar_sec/domain/forms/common/README.md) · [forms/families](edgar_sec/domain/forms/families/README.md) · [submissions](edgar_sec/domain/submissions/README.md) · [taxonomy](edgar_sec/domain/taxonomy/README.md) · [taxonomy/schedules](edgar_sec/domain/taxonomy/schedules/README.md) · [taxonomy/statements](edgar_sec/domain/taxonomy/statements/README.md) · [taxonomy/tables](edgar_sec/domain/taxonomy/tables/README.md)
-- **infra** — [infra](edgar_sec/infra/README.md) · [broker](edgar_sec/infra/broker/README.md) · [sec_http](edgar_sec/infra/sec_http/README.md) · [storage](edgar_sec/infra/storage/README.md)
+- **infra** — [infra](edgar_sec/infra/README.md) · [broker](edgar_sec/infra/broker/README.md) · [sec_http](edgar_sec/infra/sec_http/README.md) · [storage](edgar_sec/infra/storage/README.md) · [storage/object_store](edgar_sec/infra/storage/object_store/README.md) · [storage/cohort](edgar_sec/infra/storage/cohort/README.md)
 - **engine** — [engine](edgar_sec/engine/README.md) · [company_family](edgar_sec/engine/company_family/README.md) · [index_pages](edgar_sec/engine/index_pages/README.md) · [selection](edgar_sec/engine/selection/README.md) · [submissions](edgar_sec/engine/submissions/README.md)
   - **document** — [document](edgar_sec/engine/document/README.md) · [html](edgar_sec/engine/document/html/README.md) · [page_markers](edgar_sec/engine/document/page_markers/README.md) · [unpacking](edgar_sec/engine/document/unpacking/README.md) · [whitespace](edgar_sec/engine/document/whitespace/README.md)
   - **forms** — [forms](edgar_sec/engine/forms/README.md) · [cover](edgar_sec/engine/forms/cover/README.md) · [cover/boundary](edgar_sec/engine/forms/cover/boundary/README.md) · [cover/checkmarks](edgar_sec/engine/forms/cover/checkmarks/README.md) · [cover/healing](edgar_sec/engine/forms/cover/healing/README.md) · [cover/tables](edgar_sec/engine/forms/cover/tables/README.md) · [cover/toc](edgar_sec/engine/forms/cover/toc/README.md) · [plugins](edgar_sec/engine/forms/plugins/README.md) · [plugins/evaluators](edgar_sec/engine/forms/plugins/evaluators/README.md)
   - **reflow** — [reflow](edgar_sec/engine/reflow/README.md) · [reflow/engine](edgar_sec/engine/reflow/engine/README.md) · [reflow/features](edgar_sec/engine/reflow/features/README.md) · [reflow/rules](edgar_sec/engine/reflow/rules/README.md)
   - **tables** — [tables](edgar_sec/engine/tables/README.md) · [ascii_html](edgar_sec/engine/tables/ascii_html/README.md) · [false_tables](edgar_sec/engine/tables/false_tables/README.md) · [hybrid](edgar_sec/engine/tables/hybrid/README.md) · [policy](edgar_sec/engine/tables/policy/README.md) · [protection](edgar_sec/engine/tables/protection/README.md) · [taxonomy](edgar_sec/engine/tables/taxonomy/README.md)
-- **pipelines** — [pipelines](edgar_sec/pipelines/README.md) · [metadata_sync](edgar_sec/pipelines/metadata_sync/README.md) · [filing_catalog](edgar_sec/pipelines/filing_catalog/README.md) · [document_inventory](edgar_sec/pipelines/document_inventory/README.md) · [document_inventory/snapshot](edgar_sec/pipelines/document_inventory/snapshot/README.md) · [document_storage](edgar_sec/pipelines/document_storage/README.md)
+- **pipelines** — [pipelines](edgar_sec/pipelines/README.md) · [metadata_sync](edgar_sec/pipelines/metadata_sync/README.md) · [filing_catalog](edgar_sec/pipelines/filing_catalog/README.md) · [cohort](edgar_sec/pipelines/cohort/README.md) · [document_inventory](edgar_sec/pipelines/document_inventory/README.md) · [document_inventory/snapshot](edgar_sec/pipelines/document_inventory/snapshot/README.md) · [document_storage](edgar_sec/pipelines/document_storage/README.md)
 - **apps** — [apps](edgar_sec/apps/README.md) · [viewer](edgar_sec/apps/viewer/README.md)
 
 ---
@@ -266,11 +287,12 @@ edgar_sec/               # each package has its own README.md (linked above)
 ├── domain/             # Layer 1: Cik/Accession, document and inventory records,
 │                       #   forms vocabulary, taxonomy and dataset schemas
 ├── infra/              # Layer 2: SEC HTTP client, broker, atomic IO, DuckDB,
-│                       #   Parquet, snapshot manifests, part tree, fixture store
+│                       #   Parquet, snapshot manifests, part tree, cohort and object stores
 ├── engine/             # Layer 3: document and index-page parsing, cover/table
 │                       #   processing, candidate selection, submission building
-├── pipelines/          # Layer 4: metadata_sync (Phase 1), filing_catalog
-│                       #   (Phase 2), document_inventory (streamed plan-to-work-order
+├── pipelines/          # Layer 4: cohort registry (Phase 0), metadata_sync
+│                       #   (Phase 1), filing_catalog (Phase 2),
+│                       #   document_inventory (streamed plan-to-work-order
 │                       #   projection, resumable S4, DAG-backed S5 publication/query),
 │                       #   document_storage (Phase 2.5)
 └── apps/               # Layer 5: the dataset viewer (read-only, no publishing)
@@ -302,14 +324,15 @@ All generated paths derive from the artifacts root; no module hardcodes them.
 {artifacts_root}/metadata/plans/{plan_id}/roster/ciks.parquet    # The CIK cohort, frozen into the bundle
 {artifacts_root}/metadata/plans/{plan_id}/input/                 # Where the cohort came from
 {artifacts_root}/metadata/plans/{plan_id}/assignments/*.parquet   # One chunk set per worker
-{artifacts_root}/metadata/cohorts/{key}/ciks.parquet         # Compiled cohort, keyed by input digest
-{artifacts_root}/metadata/cohorts/{key}/cohort.json           # What the input resolved to
+{artifacts_root}/cohorts/cohorts.sqlite                       # Shared cohort catalog and workspace objects
+{artifacts_root}/cohorts/{cohort_id}/ciks.parquet             # Immutable shared CIK dataset
+{artifacts_root}/cohorts/{cohort_id}/cohort.json              # Canonical cohort manifest
+{artifacts_root}/cohorts/source_snapshots/{name}/{snapshot_id} # Immutable SEC source payload
 {artifacts_root}/transient/metadata/{plan_id}/chunk_NNNN.parquet # Resumable checkpoints
 {artifacts_root}/metadata/registries/{registry_id}/             # Source comparison outputs
 {artifacts_root}/metadata/snapshots/{snapshot_id}/parts/*.parquet   # Published dataset
 {artifacts_root}/metadata/snapshots/{snapshot_id}/ciks.parquet     # Published CIK index
 {artifacts_root}/metadata/snapshots/catalog.sqlite        # SQLite DAG catalog database
-{artifacts_root}/metadata/sources/{name}/{snapshot_id}/         # Immutable source snapshots
 
 {artifacts_root}/filing_catalog/snapshots/{catalog_id}/     # Immutable catalog snapshot
 {artifacts_root}/filing_catalog/snapshots/catalog.sqlite  # SQLite DAG catalog database

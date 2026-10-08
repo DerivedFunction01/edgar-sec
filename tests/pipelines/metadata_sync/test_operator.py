@@ -365,25 +365,6 @@ def test_a_declined_refresh_publishes_nothing(monkeypatch: pytest.MonkeyPatch) -
     assert seen == []
 
 
-def _publish_source(state: WizardState, snapshot_id: str) -> None:
-    """Write a source snapshot manifest so the wizard's listing finds a real one."""
-    path = state.metadata().source_manifest_file(SOURCE_NAME, snapshot_id)
-    path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text(
-        json.dumps(
-            {
-                "manifest_kind": "metadata_source_snapshot",
-                "source": SOURCE_NAME,
-                "snapshot_id": snapshot_id,
-                "retrieved_at": "2026-01-01T00:00:00Z",
-                "unique_cik_count": 2,
-                "listing_row_count": 2,
-            }
-        ),
-        encoding="utf-8",
-    )
-
-
 def _forbid_artifacts_prompts(
     monkeypatch: pytest.MonkeyPatch, asked: list[str]
 ) -> None:
@@ -544,84 +525,52 @@ def test_refresh_targets_the_session_artifacts_root_without_asking(
 def test_compare_targets_the_session_artifacts_root(
     state: WizardState, monkeypatch: pytest.MonkeyPatch
 ) -> None:
-    """A project-default root would find no source snapshot and refuse."""
-    _publish_source(state, "src-1")
+    """The selected shared source cohort is passed through with session paths."""
+    from types import SimpleNamespace
+
+    record = SimpleNamespace(cohort_id="cohort-1", row_count=2)
+
+    class Catalog:
+        def __init__(self, _paths):
+            pass
+
+        def list_cohorts(self, **_kwargs):
+            return [record]
+
+    monkeypatch.setattr(operator_module, "CohortCatalog", Catalog)
     asked: list[str] = []
-    seen: list[PlanOptions] = []
-    _forbid_artifacts_prompts(monkeypatch, asked)
+    seen: list[tuple[PlanOptions, str]] = []
+    answers = iter((DEFAULT_INPUT, "1"))
+
+    def prompt(label: str, _default: str = "") -> str:
+        asked.append(label)
+        if "rtifact" in label:
+            pytest.fail(f"the wizard asked for the artifacts root: {label!r}")
+        return next(answers)
+
+    monkeypatch.setattr(operator_module, "prompt_text", prompt)
     monkeypatch.setattr(
-        operator_module, "cmd_compare", lambda options, **kw: seen.append(options)
+        operator_module,
+        "cmd_compare",
+        lambda options, **kw: seen.append((options, kw["source_cohort_id"])),
     )
 
     operator_module.compare(state)
 
     assert len(seen) == 1
-    assert seen[0].artifacts_root == state.metadata().artifacts_root
+    assert seen[0][0].artifacts_root == state.metadata().artifacts_root
+    assert seen[0][1] == record.cohort_id
     assert asked, "compare still prompts for its own inputs"
 
 
-def test_compare_says_so_when_no_source_snapshot_exists(
+def test_compare_says_so_when_no_source_cohort_exists(
     state: WizardState, monkeypatch: pytest.MonkeyPatch, capsys
 ) -> None:
     monkeypatch.setattr(
         operator_module, "prompt_text", lambda label, default="": default
     )
     operator_module.compare(state)
-    assert "no source snapshot published" in capsys.readouterr().out
-
-
-def test_compare_resolves_the_source_manifest_from_its_snapshot_id(
-    state: WizardState, monkeypatch: pytest.MonkeyPatch
-) -> None:
-    """The manifest carries no path to itself, so the id derives it."""
-    metadata = state.metadata()
-    manifest_path = metadata.source_manifest_file(SOURCE_NAME, "src-1")
-    manifest_path.parent.mkdir(parents=True, exist_ok=True)
-    manifest_path.write_text(
-        '{"snapshot_id": "src-1", "manifest_kind": "x"}', encoding="utf-8"
-    )
-    monkeypatch.setattr(
-        operator_module,
-        "list_source_snapshots",
-        lambda _paths: [
-            {
-                "snapshot_id": "src-1",
-                "manifest_path": str(manifest_path),
-                "retrieved_at": "2026-09-30T00:00:00Z",
-                "unique_cik_count": 2,
-                "listing_row_count": 2,
-                "readable": True,
-                "readable_reason": "",
-            }
-        ],
-    )
-    monkeypatch.setattr(
-        operator_module, "prompt_text", lambda label, default="": default
-    )
-    seen: list[Path] = []
-    monkeypatch.setattr(
-        operator_module,
-        "cmd_compare",
-        lambda options, **kwargs: seen.append(kwargs["source_manifest"]),
-    )
-    operator_module.compare(state)
-    assert seen == [manifest_path]
-    assert seen[0].is_file()
-
-
-def test_compare_lists_source_snapshots_not_published_metadata_snapshots(
-    state: WizardState, monkeypatch: pytest.MonkeyPatch
-) -> None:
-    """A metadata snapshot id is never a source snapshot id."""
-    _write_plan(Path(state.artifacts_root))
-    monkeypatch.setattr(operator_module, "list_source_snapshots", lambda _paths: [])
-    monkeypatch.setattr(
-        operator_module, "prompt_text", lambda label, default="": default
-    )
-    seen: list[object] = []
-    monkeypatch.setattr(operator_module, "cmd_compare", lambda *a, **k: seen.append(k))
-    operator_module.compare(state)
-    assert seen == []
+    assert "no company_tickers source cohort published" in capsys.readouterr().out
 
 
 # ----------------------------------------------------------------- the pointer

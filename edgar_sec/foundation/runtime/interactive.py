@@ -19,6 +19,11 @@ class MenuAction:
     callback: Callable[[], Any]
 
 
+@dataclass(frozen=True, slots=True)
+class MenuSeparator:
+    title: str = ""
+
+
 def menu_action(
     label: str,
     callback: Callable[[], Any],
@@ -30,7 +35,7 @@ def menu_action(
 
 
 def assign_menu_keys(
-    actions: Sequence[MenuAction],
+    actions: Sequence[MenuAction | MenuSeparator],
     *,
     exit_key: str = "0",
     start: int = 1,
@@ -38,12 +43,15 @@ def assign_menu_keys(
     """Auto-assign sequential numeric keys to unkeyed actions, preserving explicit keys."""
     reserved = {exit_key.lower()}
     for a in actions:
-        if a.key:
+        if isinstance(a, MenuAction) and a.key:
             reserved.add(a.key.lower())
 
-    result: list[MenuAction] = []
+    result: list[MenuAction | MenuSeparator] = []
     next_num = start
     for a in actions:
+        if isinstance(a, MenuSeparator):
+            result.append(a)
+            continue
         if a.key:
             result.append(a)
         else:
@@ -58,9 +66,9 @@ def assign_menu_keys(
 
 
 def build_menu(
-    *actions: MenuAction,
+    *actions: MenuAction | MenuSeparator,
     exit_key: str = "0",
-) -> tuple[MenuAction, ...]:
+) -> tuple[MenuAction | MenuSeparator, ...]:
     """Ergonomic factory for building an auto-keyed MenuAction tuple."""
     return assign_menu_keys(actions, exit_key=exit_key)
 
@@ -230,7 +238,7 @@ def prompt_paginated_choice(
 
 def run_interactive_menu(
     title: str,
-    actions: tuple[MenuAction, ...] | list[MenuAction],
+    actions: tuple[MenuAction | MenuSeparator, ...] | list[MenuAction | MenuSeparator],
     exit_key: str = "0",
     *,
     interrupted_message: str | None = None,
@@ -241,7 +249,7 @@ def run_interactive_menu(
     A blank answer re-renders rather than defaulting to the first action, which may mutate;
     ``before_menu`` runs per render and a failure inside it still draws the menu.
     """
-    action_map = {a.key.lower(): a for a in actions}
+    action_map = {a.key.lower(): a for a in actions if isinstance(a, MenuAction)}
 
     while True:
         if before_menu is not None:
@@ -254,7 +262,14 @@ def run_interactive_menu(
 
         print(f"\n{title}")
         for a in actions:
-            print(f"  {a.key}. {a.label}")
+            if isinstance(a, MenuSeparator):
+                if a.title:
+                    prefix = f"── {a.title} "
+                    print(prefix + "─" * max(0, 64 - len(prefix)))
+                else:
+                    print()
+            else:
+                print(f"  {a.key}. {a.label}")
         print(f"  {exit_key}. Exit")
 
         raw = prompt_text("\nChoice", "").strip()
@@ -278,7 +293,7 @@ def run_interactive_menu(
 
 def operator_entrypoint(
     title: str,
-    menu: tuple[MenuAction, ...] | list[MenuAction],
+    menu: tuple[MenuAction | MenuSeparator, ...] | list[MenuAction | MenuSeparator],
     cli_main: Callable[[list[str]], int],
     argv: list[str] | None = None,
     *,
@@ -304,6 +319,7 @@ def operator_entrypoint(
 
 __all__ = [
     "MenuAction",
+    "MenuSeparator",
     "PickItem",
     "assign_menu_keys",
     "build_menu",

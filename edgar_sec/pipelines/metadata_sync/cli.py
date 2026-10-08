@@ -76,6 +76,7 @@ def _add_plan_reference(sub: argparse.ArgumentParser) -> None:
     group.add_argument("--bundle", default="", help="copied plan bundle directory")
     group.add_argument("--input", default="", help="CIK manifest CSV to re-derive from")
     group.add_argument("--roster", default="", help="effective CIK roster id")
+    group.add_argument("--cohort", default="", help="published cohort name or id")
     group.add_argument(
         "--universe",
         action="store_true",
@@ -90,6 +91,7 @@ def _add_cohort_source(sub: argparse.ArgumentParser, *, with_limit: bool) -> Non
     group.add_argument(
         "--roster", default="", help="effective CIK roster id from 'sources compare'"
     )
+    group.add_argument("--cohort", default="", help="published cohort name or id")
     group.add_argument(
         "--universe", action="store_true", help="full SEC registrant index"
     )
@@ -108,6 +110,7 @@ def _plan_options(args: argparse.Namespace) -> PlanOptions:
     return plan_options(
         input_path=args.input or None,
         registry_id=args.roster,
+        cohort=args.cohort,
         universe=args.universe,
         artifacts_root=args.artifacts or None,
         chunk_size=args.chunk_size,
@@ -120,6 +123,7 @@ def _run_options(args: argparse.Namespace) -> RunOptions:
         plan_id=getattr(args, "plan_id", "") or "",
         input_path=getattr(args, "input", "") or None,
         registry_id=getattr(args, "roster", "") or "",
+        cohort=args.cohort or "",
         universe=getattr(args, "universe", False),
         chunk_size=args.chunk_size,
         limit=getattr(args, "limit", None),
@@ -204,12 +208,12 @@ def build_parser() -> argparse.ArgumentParser:
     augment_parser.set_defaults(func=lambda args: _augment_from_args(args))
 
     sources_parser = subparsers.add_parser(
-        "sources", help="external source snapshot and curated-input projection"
+        "sources", help="shared official source cohorts and curated-input projection"
     )
     sources_sub = sources_parser.add_subparsers(dest="source_command", required=True)
 
     refresh_parser = sources_sub.add_parser(
-        "refresh", help="publish an immutable external source snapshot"
+        "refresh", help="refresh a shared official source cohort"
     )
     refresh_parser.add_argument("--artifacts", default="")
     refresh_parser.add_argument(
@@ -226,21 +230,19 @@ def build_parser() -> argparse.ArgumentParser:
     )
 
     compare_parser = sources_sub.add_parser(
-        "compare", help="project curated CIK input against a published source"
+        "compare", help="project curated CIK input against a published source cohort"
     )
     _add_cohort_source(compare_parser, with_limit=False)
     _add_common(compare_parser)
     compare_parser.add_argument(
-        "--source-manifest",
+        "--source-cohort",
         required=True,
-        help="path to published source snapshot manifest.json",
+        help="published company_tickers source cohort id",
     )
     compare_parser.set_defaults(
         func=lambda args: cmd_compare(
             _plan_options(args),
-            source_manifest=Path(
-                _require(args.source_manifest, "--source-manifest")
-            ).resolve(),
+            source_cohort_id=args.source_cohort,
         )
     )
 
@@ -275,6 +277,7 @@ def _augment_from_args(args: argparse.Namespace) -> int:
     options, lineage = augment_options(
         input_path=args.input or None,
         registry_id=args.roster,
+        cohort=args.cohort,
         universe=args.universe,
         artifacts_root=args.artifacts or None,
         chunk_size=args.chunk_size,

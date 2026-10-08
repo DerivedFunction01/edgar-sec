@@ -1,8 +1,4 @@
-"""Curated-versus-source CIK registry and effective-input projections.
-Answers which registrants exist upstream that a curated input misses, from one
-published source snapshot and one CSV with no network. Identity is content-derived
-from that pair, so an unchanged comparison is a no-op.
-"""
+"""Curated-versus-source CIK registry and effective-input projections."""
 
 from __future__ import annotations
 
@@ -17,6 +13,8 @@ from edgar_sec.foundation.hashing import file_sha256, sha256_bytes
 from edgar_sec.foundation.runtime.settings.runtime import DEFAULT_CHUNK_SIZE
 from edgar_sec.foundation.serialization import canonical_json
 from edgar_sec.infra.storage.atomic import atomic_write_json, atomic_write_text
+from edgar_sec.infra.storage.cohort.catalog import CohortCatalog
+from edgar_sec.infra.storage.cohort.paths import resolve_cohort_paths
 from edgar_sec.infra.storage.parquet import (
     DEFAULT_ROW_GROUP_SIZE,
     read_parquet_schema,
@@ -37,7 +35,7 @@ from .roster import (
     roster_to_csv_text,
     write_roster_rows,
 )
-from .source_registry import SOURCE_NAME, load_source_snapshot, parse_company_tickers
+from .source_registry import SOURCE_NAME, parse_company_tickers
 
 REGISTRY_SCHEMA_VERSION = "1.0.0"
 REGISTRY_MANIFEST_KIND = "registry_artifact"
@@ -202,18 +200,19 @@ def _build_registry_rows(
 def compare_sources(
     *,
     curated_input_path: str | Path,
-    source_manifest_path: str | Path,
+    source_cohort_id: str,
     metadata_paths: MetadataPaths,
 ) -> dict[str, Any]:
     """Project the curated CIK input against a published source snapshot.
     Two immutable inputs and no network, so the result is a pure function of them.
     """
-    source = load_source_snapshot(source_manifest_path)
-    source_snapshot_id = str(source.manifest["snapshot_id"])
+    source_snapshot_id, retrieved_at, raw_payload = _source_cohort_payload(
+        source_cohort_id, metadata_paths
+    )
     listings, _parse_report = parse_company_tickers(
-        source.raw_path.read_bytes(),
+        raw_payload,
         snapshot_id=source_snapshot_id,
-        observed_at=str(source.manifest["retrieved_at"]),
+        observed_at=retrieved_at,
     )
 
     cohort = compile_cik_cohort(curated_input_path, metadata_paths=metadata_paths)
@@ -286,6 +285,7 @@ def compare_sources(
         "chunk_size_default": DEFAULT_CHUNK_SIZE,
         "validation_status": "ok",
     }
+
     atomic_write_json(
         effective_csv.with_name(effective_csv.name + ".manifest.json"),
         effective_manifest,
@@ -315,6 +315,27 @@ def compare_sources(
         },
         "validation_status": "ok",
     }
+
+
+def _source_cohort_payload(
+    source_cohort_id: str, metadata_paths: MetadataPaths
+) -> tuple[str, str, bytes]:
+    paths = resolve_cohort_paths(metadata_paths.artifacts_root)
+    record = CohortCatalog(paths).resolve_cohort_identifier(source_cohort_id)
+    details = json.loads(record.origin_json)
+    if (
+        record.origin_kind != "official_source"
+        or details.get("source_name") != SOURCE_NAME
+    ):
+        raise RegistryError("selected cohort is not a company_tickers source")
+    raw_path = paths.resolve_relative_path(str(details["raw_path"]))
+    if file_sha256(raw_path) != details.get("raw_sha256"):
+        raise RegistryError("source cohort payload digest does not match its origin")
+    return (
+        str(details["source_snapshot_id"]),
+        str(details["retrieved_at"]),
+        raw_path.read_bytes(),
+    )
 
 
 def _publish_effective_roster(
@@ -396,40 +417,40 @@ def load_registry_manifest(
 def ensure_registry(
     *,
     curated_input_path: str | Path,
-    source_snapshot_id: str,
+    source_cohort_id: str,
     metadata_paths: MetadataPaths,
 ) -> dict[str, Any]:
-    """Return the effective roster for one curated input and source snapshot.
-    Identity is content-derived, so a computed projection is reused. Both branches
-    return the same keys.
-    """
+    """Return the published effective roster for a curated input and source cohort."""
     curated = Path(curated_input_path)
     if not curated.is_file():
         raise FileNotFoundError(f"curated CIK manifest not found: {curated}")
     fingerprint = file_sha256(curated)
+    source_snapshot_id, _retrieved_at, _payload = _source_cohort_payload(
+        source_cohort_id, metadata_paths
+    )
     registry_id = registry_id_for(source_snapshot_id, fingerprint)
     try:
         roster = load_registry_roster(registry_id, metadata_paths)
+        manifest = load_registry_manifest(registry_id, metadata_paths)
     except (OSError, ValueError, RosterError):
         pass
     else:
-        return {
-            "registry_id": registry_id,
-            "roster_id": roster.roster_id,
-            "source_snapshot_id": source_snapshot_id,
-            "curated_input_path": str(curated),
-            "curated_input_fingerprint": fingerprint,
-            "curated_cik_count": 0,
-            "active_cik_count": 0,
-            "registry_row_count": roster.row_count,
-            "row_count": roster.row_count,
-            "reused": True,
-        }
+        if manifest.get("source_snapshot_id") == source_snapshot_id:
+            return {
+                "registry_id": registry_id,
+                "roster_id": roster.roster_id,
+                "source_snapshot_id": source_snapshot_id,
+                "curated_input_path": str(curated),
+                "curated_input_fingerprint": fingerprint,
+                "curated_cik_count": 0,
+                "active_cik_count": 0,
+                "registry_row_count": roster.row_count,
+                "row_count": roster.row_count,
+                "reused": True,
+            }
     result = compare_sources(
         curated_input_path=curated,
-        source_manifest_path=metadata_paths.source_manifest_file(
-            SOURCE_NAME, source_snapshot_id
-        ),
+        source_cohort_id=source_cohort_id,
         metadata_paths=metadata_paths,
     )
     return {

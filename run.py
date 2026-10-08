@@ -25,6 +25,12 @@ ENTRIES: tuple[LauncherEntry, ...] = (
         module="edgar_sec.pipelines.metadata_sync.operator",
     ),
     LauncherEntry(
+        id="cohort",
+        label="Cohort Management (Phase 0)",
+        description="Manage, import, query, and combine registrant cohorts",
+        module="edgar_sec.pipelines.cohort.cli",
+    ),
+    LauncherEntry(
         id="filing-catalog",
         label="Filing Catalog (Phase 02)",
         description="Offline DuckDB catalog materialization and target planning",

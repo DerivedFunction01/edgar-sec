@@ -9,6 +9,9 @@ from typing import Any
 
 import pytest
 
+from edgar_sec.infra.storage.cohort.catalog import CohortCatalog
+from edgar_sec.infra.storage.cohort.ingestion import ingest_file_to_cohort
+from edgar_sec.infra.storage.cohort.paths import resolve_cohort_paths
 from edgar_sec.pipelines.filing_catalog.cli import (
     build_parser,
     cmd_expand,
@@ -67,6 +70,22 @@ def test_plan_accepts_repeated_form_and_suffix_flags() -> None:
     )
     assert args.forms == ["10-K", "10-Q"]
     assert args.suffixes == [".htm"]
+
+
+def test_plan_accepts_cohort_selection_flags() -> None:
+    args = build_parser().parse_args(
+        [
+            "plan",
+            "--catalog",
+            "abc",
+            "--cohort",
+            "sample",
+            "--seed-cohort",
+            "seed-set",
+        ]
+    )
+    assert args.cohort == "sample"
+    assert args.seed_cohort == "seed-set"
 
 
 def test_plan_requires_a_catalog() -> None:
@@ -161,6 +180,106 @@ def test_plan_publishes_the_requested_date_selection(
         {"kind": "absolute", "start_date": "2024-01-01", "end_date": "2024-12-31"}
     ]
     assert plan["selected_rows"] == 1
+
+
+def test_cli_cohort_filter_publishes_only_matching_ciks(
+    tmp_path: Path, capsys: pytest.CaptureFixture[str]
+) -> None:
+    artifacts = tmp_path / "art"
+    main(["materialize", "--source", SAMPLE, "--artifacts", str(artifacts)])
+    catalog_id = _json_output(capsys)["catalog_id"]
+    cohort_paths = resolve_cohort_paths(artifacts)
+    cohort_catalog = CohortCatalog(cohort_paths)
+    roster = tmp_path / "roster.csv"
+    roster.write_text("cik,name\n320193,one\n", encoding="utf-8")
+    cohort = ingest_file_to_cohort(
+        roster,
+        catalog=cohort_catalog,
+        paths=cohort_paths,
+        name="single filer",
+    ).cohort
+
+    assert (
+        main(
+            [
+                "plan",
+                "--catalog",
+                catalog_id,
+                "--artifacts",
+                str(artifacts),
+                "--cohort",
+                cohort.cohort_id,
+            ]
+        )
+        == 0
+    )
+    published = _json_output(capsys)
+    assert published["selected_rows"] == 4
+    plan_file = (
+        resolve_filing_catalog_paths(artifacts).plan_dir(published["plan_id"])
+        / "plan.json"
+    )
+    plan = json.loads(plan_file.read_text(encoding="utf-8"))
+    assert plan["cohort_id"] == cohort.cohort_id
+    assert plan["cohort_dataset_sha256"] == cohort.dataset_sha256
+
+
+def test_cli_reports_a_missing_cohort_without_publishing(
+    tmp_path: Path, capsys: pytest.CaptureFixture[str]
+) -> None:
+    artifacts = tmp_path / "art"
+    main(["materialize", "--source", SAMPLE, "--artifacts", str(artifacts)])
+    catalog_id = _json_output(capsys)["catalog_id"]
+    assert (
+        main(
+            [
+                "plan",
+                "--catalog",
+                catalog_id,
+                "--artifacts",
+                str(artifacts),
+                "--cohort",
+                "not-found",
+            ]
+        )
+        == 1
+    )
+    assert "unable to load cohort" in capsys.readouterr().err
+
+
+def test_cli_reports_a_corrupt_cohort_without_publishing(
+    tmp_path: Path, capsys: pytest.CaptureFixture[str]
+) -> None:
+    artifacts = tmp_path / "art"
+    main(["materialize", "--source", SAMPLE, "--artifacts", str(artifacts)])
+    catalog_id = _json_output(capsys)["catalog_id"]
+    cohort_paths = resolve_cohort_paths(artifacts)
+    roster = tmp_path / "roster.csv"
+    roster.write_text("cik,name\n320193,entity\n", encoding="utf-8")
+    cohort = ingest_file_to_cohort(
+        roster,
+        catalog=CohortCatalog(cohort_paths),
+        paths=cohort_paths,
+        name="corrupt",
+    ).cohort
+    dataset = cohort_paths.resolve_relative_path(cohort.dataset_path)
+    dataset.write_bytes(b"not parquet")
+
+    assert (
+        main(
+            [
+                "plan",
+                "--catalog",
+                catalog_id,
+                "--artifacts",
+                str(artifacts),
+                "--cohort",
+                cohort.cohort_id,
+            ]
+        )
+        == 1
+    )
+    assert "digest mismatch" in capsys.readouterr().err
 
 
 # --- commands -------------------------------------------------------------

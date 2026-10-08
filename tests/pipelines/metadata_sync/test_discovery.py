@@ -13,17 +13,14 @@ from edgar_sec.infra.storage.dag.manifest import DAGNodeManifest
 from edgar_sec.pipelines.metadata_sync.discovery import (
     current_snapshot_id,
     describe_roster,
-    describe_source,
     list_input_manifests,
     list_plans,
     list_rosters,
     list_snapshots,
-    list_source_snapshots,
     plan_summary,
     resolve_input_choice,
     resolve_plan_choice,
     resolve_snapshot_choice,
-    resolve_source_choice,
 )
 from edgar_sec.pipelines.metadata_sync.paths import resolve_metadata_paths
 from edgar_sec.pipelines.metadata_sync.planner import build_plan, write_plan
@@ -353,103 +350,6 @@ def test_a_roster_summary_reads_as_size_and_source(tmp_path: Path) -> None:
     assert "2 CIKs" in described
     assert "2 active in source" in described
     assert "src-1" in described
-
-
-# --------------------------------------------------------- source snapshots
-
-
-def _write_source(
-    metadata,
-    snapshot_id: str,
-    *,
-    retrieved_at: str,
-    unique_cik_count: int = 4,
-    kind: str = "metadata_source_snapshot",
-) -> None:
-    """Publish a source manifest so discovery reads a real one."""
-    path = metadata.source_manifest_file("company_tickers", snapshot_id)
-    path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text(
-        json.dumps(
-            {
-                "manifest_kind": kind,
-                "source": "company_tickers",
-                "snapshot_id": snapshot_id,
-                "retrieved_at": retrieved_at,
-                "unique_cik_count": unique_cik_count,
-                "listing_row_count": unique_cik_count + 1,
-            }
-        ),
-        encoding="utf-8",
-    )
-
-
-def test_source_snapshots_are_listed_newest_retrieval_first(tmp_path: Path) -> None:
-    """A source snapshot's age is the reason it is worth listing at all."""
-    metadata = resolve_metadata_paths(tmp_path)
-    _write_source(metadata, "older", retrieved_at="2026-01-01T00:00:00Z")
-    _write_source(metadata, "newer", retrieved_at="2026-09-30T00:00:00Z")
-
-    found = list_source_snapshots(metadata)
-
-    assert [item["snapshot_id"] for item in found] == ["newer", "older"]
-    assert found[0]["retrieved_at"] == "2026-09-30T00:00:00Z"
-    assert found[0]["readable"] is True
-    assert found[0]["unique_cik_count"] == 4
-
-
-def test_a_source_summary_names_when_it_was_retrieved(tmp_path: Path) -> None:
-    metadata = resolve_metadata_paths(tmp_path)
-    _write_source(metadata, "src-1", retrieved_at="2026-09-30T00:00:00Z")
-    described = describe_source(list_source_snapshots(metadata)[0])
-    assert "retrieved 2026-09-30T00:00:00Z" in described
-    assert "4 CIKs" in described
-
-
-def test_an_unreadable_source_snapshot_is_listed_with_its_reason(
-    tmp_path: Path,
-) -> None:
-    """A damaged source must not read as an absent one."""
-    metadata = resolve_metadata_paths(tmp_path)
-    _write_source(
-        metadata, "foreign", retrieved_at="2026-01-01T00:00:00Z", kind="other"
-    )
-
-    found = list_source_snapshots(metadata)
-
-    assert [item["snapshot_id"] for item in found] == ["foreign"]
-    assert found[0]["readable"] is False
-    assert "unreadable" in describe_source(found[0])
-
-
-def test_no_source_snapshots_lists_nothing(tmp_path: Path) -> None:
-    metadata = resolve_metadata_paths(tmp_path)
-    assert list_source_snapshots(metadata) == []
-
-
-def test_a_source_picker_returns_the_chosen_id(tmp_path: Path) -> None:
-    metadata = resolve_metadata_paths(tmp_path)
-    _write_source(metadata, "older", retrieved_at="2026-01-01T00:00:00Z")
-    _write_source(metadata, "newer", retrieved_at="2026-09-30T00:00:00Z")
-    sources = list_source_snapshots(metadata)
-
-    seen: list[str] = []
-    chosen = resolve_source_choice(
-        sources, select=lambda lines: (seen.extend(lines), "2")[1]
-    )
-
-    assert chosen == "older"
-    assert len(seen) == 2
-    assert "newer" in seen[0]
-
-
-def test_a_blank_source_picker_cancels(tmp_path: Path) -> None:
-    metadata = resolve_metadata_paths(tmp_path)
-    _write_source(metadata, "only", retrieved_at="2026-01-01T00:00:00Z")
-    assert (
-        resolve_source_choice(list_source_snapshots(metadata), select=lambda _: "")
-        == ""
-    )
 
 
 # ----------------------------------------------------------- input manifests

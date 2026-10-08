@@ -12,12 +12,14 @@ from pathlib import Path
 from typing import Any
 
 from edgar_sec.foundation.runtime.settings.runtime import DEFAULT_CHUNK_SIZE
+from edgar_sec.foundation.hashing import sha256_text
 from edgar_sec.infra.storage.duckdb import (
     connect,
     copy_query_to_parquet,
     find_duplicate_keys,
     find_null_keys,
 )
+from edgar_sec.infra.storage.cohort.operations import execute_delta_roster
 
 from .manifest import compile_cik_cohort
 from .merger import (
@@ -122,25 +124,6 @@ FROM read_parquet(?) AS requested
 LEFT JOIN read_parquet(?) AS base ON base.cik = requested.cik_padded
 """
 
-#: Ordinals are renumbered from zero: an ordinal is a position *within* a cohort,
-#: and chunk ranges start at zero, so keeping the requested cohort's numbering
-#: would leave the delta addressed from wherever the removed rows happened to fall.
-_CIK_ANTI_JOIN_QUERY = """
-WITH kept AS (
-    SELECT ordinal, cik_padded, name
-    FROM read_parquet(?) AS requested
-    WHERE NOT EXISTS (
-        SELECT 1 FROM read_parquet(?) AS base WHERE base.cik = requested.cik_padded
-    )
-)
-SELECT
-    row_number() OVER (ORDER BY ordinal) - 1 AS ordinal,
-    cik_padded,
-    name
-FROM kept
-ORDER BY ordinal
-"""
-
 
 def preflight_augment(
     requested: Roster,
@@ -176,41 +159,58 @@ def _base_path_list(sources: list[str]) -> list[str] | str:
     return sources[0] if len(sources) == 1 else [str(path) for path in sources]
 
 
-def derive_delta_cohort(
+def derive_delta_roster(
     requested: Roster,
     metadata_paths: MetadataPaths,
     *,
     base_snapshot_id: str,
     destination: str | Path,
 ) -> Roster:
-    """Materialize the CIKs the base does not hold as their own cohort.
-    Written as a cohort because it carries an identity the merge report records.
-    """
+    """Write the verified requested-minus-base roster to the supplied path."""
     if requested.dataset is None:
         raise RosterError("cannot reduce an empty cohort")
     sources, _from_parts = base_cik_sources(metadata_paths, base_snapshot_id)
-    con = connect()
-    try:
-        copy_query_to_parquet(
-            con,
-            _CIK_ANTI_JOIN_QUERY,
-            destination,
-            params=[[str(requested.dataset)], _base_path_list(sources)],
-        )
-    finally:
-        con.close()
-    return read_roster(destination)
+    if not sources:
+        raise FileNotFoundError(f"base snapshot {base_snapshot_id!r} has no CIK index")
+    base_dataset = Path(sources[0])
+    if len(sources) > 1:
+        base_dataset = _base_cik_map_path(requested, metadata_paths, base_snapshot_id)
+        con = connect()
+        try:
+            copy_query_to_parquet(
+                con,
+                "SELECT DISTINCT cik FROM read_parquet(?)",
+                base_dataset,
+                params=[sources],
+            )
+        finally:
+            con.close()
+
+    written = execute_delta_roster(requested.dataset, base_dataset, Path(destination))
+    delta = read_roster(destination)
+    expected = preflight_augment(
+        requested, metadata_paths, base_snapshot_id=base_snapshot_id
+    ).delta_count
+    if written != delta.row_count or delta.row_count != expected:
+        raise RosterError("delta roster does not match the requested/base difference")
+    return delta
 
 
-def delta_cohort_path(
+def delta_roster_path(
     requested: Roster, metadata_paths: MetadataPaths, base_snapshot_id: str
 ) -> Path:
-    """Where the difference between a requested cohort and a base is compiled.
+    """Transient destination for a base-specific delta roster."""
+    key = sha256_text(f"{requested.roster_id}:{base_snapshot_id}")
+    key = f"delta-{key}"
+    return metadata_paths.transient_dir(key) / "ciks.parquet"
 
-    Keyed by both inputs, so two different reductions never share a cohort.
-    """
-    key = f"{requested.roster_id}-minus-{base_snapshot_id}"
-    return metadata_paths.compiled_cohort_file(key)
+
+def _base_cik_map_path(
+    requested: Roster, metadata_paths: MetadataPaths, base_snapshot_id: str
+) -> Path:
+    key = sha256_text(f"{requested.roster_id}:{base_snapshot_id}")
+    key = f"delta-base-{key}"
+    return metadata_paths.transient_dir(key) / "base-ciks.parquet"
 
 
 def derive_delta_plan(
@@ -224,11 +224,11 @@ def derive_delta_plan(
     created_at: str | None = None,
 ) -> Plan:
     """Build the plan covering exactly the CIKs absent from the base snapshot."""
-    delta = derive_delta_cohort(
+    delta = derive_delta_roster(
         requested,
         metadata_paths,
         base_snapshot_id=base_snapshot_id,
-        destination=delta_cohort_path(requested, metadata_paths, base_snapshot_id),
+        destination=delta_roster_path(requested, metadata_paths, base_snapshot_id),
     )
     if delta.is_empty:
         raise MergeError(

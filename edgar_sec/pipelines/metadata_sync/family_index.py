@@ -26,15 +26,17 @@ from edgar_sec.foundation.hashing import file_sha256
 from edgar_sec.foundation.serialization import canonical_hash
 from edgar_sec.infra.storage.atomic import atomic_write_json
 from edgar_sec.infra.storage.duckdb import connect, sql_literal
+from edgar_sec.infra.storage.cohort.catalog import CohortCatalog
+from edgar_sec.infra.storage.cohort.paths import resolve_cohort_paths
+from edgar_sec.infra.storage.cohort.sources import resolve_active_source
 
-from .manifest import cik_cohort_key
+from .cohort_adapter import cohort_record_to_roster
 from .paths import (
     FAMILY_INDEX_MANIFEST_KIND,
     FAMILY_INDEX_MANIFEST_NAME,
     MetadataPaths,
     resolve_metadata_paths,
 )
-from .source_registry import resolve_universe_snapshot
 
 __all__ = [
     "FamilyIndexArtifact",
@@ -75,21 +77,17 @@ def published_universe_roster(
     corpus would encode that corpus's vocabulary as corporate identity.
     """
     metadata_paths = paths or resolve_metadata_paths()
-    snapshot_id = resolve_universe_snapshot(metadata_paths)
-    if not snapshot_id:
+    cohort_paths = resolve_cohort_paths(metadata_paths.artifacts_root)
+    record = resolve_active_source("cik_lookup", catalog=CohortCatalog(cohort_paths))
+    if record is None:
         raise FileNotFoundError(
-            "no published cik_lookup source snapshot; refresh the metadata universe "
+            "no published cik_lookup cohort; refresh the metadata universe "
             "before building a company-family assignment"
         )
-    key = cik_cohort_key(f"universe-{snapshot_id}", None)
-    dataset = metadata_paths.compiled_cohort_file(key)
-    manifest_path = metadata_paths.compiled_cohort_manifest(key)
-    if not dataset.is_file() or not manifest_path.is_file():
-        from .universe import compile_universe_cohort
-
-        compile_universe_cohort(metadata_paths, source_snapshot_id=snapshot_id)
-    recorded = json.loads(manifest_path.read_text(encoding="utf-8"))
-    return dataset, str(recorded["roster_id"]), str(recorded["dataset_sha256"])
+    roster = cohort_record_to_roster(record, cohort_paths)
+    if roster.dataset is None:
+        raise FileNotFoundError("active cik_lookup cohort has no dataset")
+    return roster.dataset, roster.roster_id, record.dataset_sha256
 
 
 def _roster_relation(dataset: Path) -> str:

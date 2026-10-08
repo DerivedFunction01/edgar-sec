@@ -7,6 +7,7 @@ from __future__ import annotations
 from edgar_sec.foundation.runtime.interactive import (
     DEFAULT_PAGE_SIZE,
     MenuAction,
+    MenuSeparator,
     PickItem,
     assign_menu_keys,
     build_menu,
@@ -260,6 +261,41 @@ def test_assign_menu_keys_starts_from_one_by_default() -> None:
     actions = (menu_action("Only", lambda: None),)
     result = assign_menu_keys(actions)
     assert [a.key for a in result] == ["1"]
+
+
+def test_assign_menu_keys_preserves_separators_without_consuming_keys() -> None:
+    separator = MenuSeparator("Section")
+    actions = (
+        menu_action("First", lambda: None),
+        separator,
+        MenuSeparator(),
+        menu_action("Second", lambda: None),
+    )
+    result = assign_menu_keys(actions)
+    assert [item.key for item in result if isinstance(item, MenuAction)] == ["1", "2"]
+    assert result[1] is separator
+    assert isinstance(result[2], MenuSeparator)
+
+
+def test_run_interactive_menu_renders_separators_without_dispatching_them(
+    monkeypatch, capsys
+) -> None:
+    ran: list[str] = []
+    _answers(monkeypatch, ["section", "1", "0"])
+    run_interactive_menu(
+        "Title",
+        [
+            MenuSeparator("Section"),
+            MenuAction("1", "Work", lambda: ran.append("1")),
+            MenuSeparator(),
+        ],
+    )
+    out = capsys.readouterr().out
+    assert "── Section " + "─" * 53 in out
+    assert "  1. Work" in out
+    assert "  1. Work\n\n  0. Exit" in out
+    assert ran == ["1"]
+    assert "Invalid choice" in out
 
 
 def test_assign_menu_keys_custom_start() -> None:

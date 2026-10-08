@@ -77,6 +77,7 @@ def test_plan_options_carry_no_worker_field() -> None:
     assert [field for field in PlanOptions.__slots__] == [
         "input_path",
         "registry_id",
+        "cohort",
         "universe",
         "artifacts_root",
         "chunk_size",
@@ -88,7 +89,7 @@ def test_a_cohort_reference_is_required(
     monkeypatch: pytest.MonkeyPatch, tmp_path: Path
 ) -> None:
     monkeypatch.setenv("RUNTIME_CHUNK_SIZE", "1")
-    with pytest.raises(ValueError, match="--input, --roster, or --universe"):
+    with pytest.raises(ValueError, match="--input, --roster, --cohort, or --universe"):
         plan_options().roster()
 
 
@@ -134,6 +135,43 @@ def test_lineage_is_empty_for_a_csv_cohort(tmp_path: Path) -> None:
     assert plan_options(input_path=MINI, artifacts_root=tmp_path).lineage() == {
         "registry_id": ""
     }
+
+
+def test_a_published_cohort_can_be_selected_and_rederived(tmp_path: Path) -> None:
+    from edgar_sec.infra.storage.cohort.catalog import CohortCatalog
+    from edgar_sec.infra.storage.cohort.paths import resolve_cohort_paths
+
+    compile_cik_cohort(MINI, metadata_paths=resolve_metadata_paths(tmp_path))
+    catalog = CohortCatalog(resolve_cohort_paths(tmp_path))
+    record = catalog.list_cohorts(tag="metadata_sync")[0]
+    selected = resolve_cohort(
+        plan_options(cohort=record.cohort_id, artifacts_root=tmp_path)
+    )
+
+    assert selected.input_name == f"cohort:{record.cohort_id}"
+    assert selected.input_fingerprint == record.dataset_sha256
+    assert selected.roster.row_count == record.row_count
+    assert run_options(cohort=record.cohort_id, artifacts_root=tmp_path).plan_id
+    limited = resolve_cohort(
+        plan_options(cohort=record.cohort_id, limit=2, artifacts_root=tmp_path)
+    )
+    assert limited.roster.row_count == 2
+    assert limited.roster.dataset is not None
+    assert "transient" in limited.roster.dataset.parts
+
+
+def test_cohort_selection_is_mutually_exclusive(tmp_path: Path) -> None:
+    from edgar_sec.infra.storage.cohort.catalog import CohortCatalog
+    from edgar_sec.infra.storage.cohort.paths import resolve_cohort_paths
+
+    compile_cik_cohort(MINI, metadata_paths=resolve_metadata_paths(tmp_path))
+    record = CohortCatalog(resolve_cohort_paths(tmp_path)).list_cohorts()[0]
+    with pytest.raises(ValueError, match="one of --input, --roster, --cohort"):
+        plan_options(
+            cohort=record.cohort_id,
+            input_path=MINI,
+            artifacts_root=tmp_path,
+        ).roster()
     assert plan_options(registry_id="reg1", artifacts_root=tmp_path).lineage() == {
         "registry_id": "reg1"
     }
@@ -175,7 +213,7 @@ def test_universe_resolves_a_published_snapshot(tmp_path: Path) -> None:
 
 
 def test_universe_refuses_to_mix_with_a_file(tmp_path: Path) -> None:
-    with pytest.raises(ValueError, match="--universe alone"):
+    with pytest.raises(ValueError, match="one of --input, --roster, --cohort"):
         plan_options(universe=True, input_path=MINI, artifacts_root=tmp_path).roster()
 
 

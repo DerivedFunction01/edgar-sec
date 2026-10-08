@@ -76,6 +76,16 @@ def build_parser() -> argparse.ArgumentParser:
         action="store_true",
         help="derive a baseline policy from the catalog (policy scope)",
     )
+    plan_parser.add_argument(
+        "--cohort",
+        default="",
+        help="restrict deterministic targets to a cohort id or name",
+    )
+    plan_parser.add_argument(
+        "--seed-cohort",
+        default="",
+        help="use a cohort's CIKs as policy seeds (policy scope)",
+    )
     plan_parser.add_argument("--artifacts", default="", help="artifacts root override")
     plan_parser.add_argument(
         "--forms", nargs="*", default=[], help="restrict to these form types"

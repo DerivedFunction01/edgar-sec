@@ -22,6 +22,7 @@ from edgar_sec.pipelines.metadata_sync.paths import (
     resolve_metadata_paths,
     resolve_run_paths,
 )
+from edgar_sec.pipelines.metadata_sync import paths as metadata_paths_module
 
 
 def test_published_and_transient_state_live_in_separate_trees(tmp_path: Path) -> None:
@@ -33,6 +34,15 @@ def test_published_and_transient_state_live_in_separate_trees(tmp_path: Path) ->
     assert str(chunk).startswith(str(tmp_path / "transient" / METADATA_DIR))
     assert "transient" not in snapshot.parts
     assert "transient" not in metadata.plan_dir("plan").parts
+
+
+def test_cohort_storage_is_owned_by_the_shared_paths(tmp_path: Path) -> None:
+    metadata = MetadataPaths(artifacts_root=tmp_path)
+    assert not hasattr(metadata, "cohorts_root")
+    assert not hasattr(metadata, "compiled_cohort_file")
+    assert not hasattr(metadata, "compiled_cohort_manifest")
+    assert not hasattr(metadata_paths_module, "COHORTS_DIR_NAME")
+    assert not hasattr(metadata_paths_module, "COMPILED_ROSTER_MANIFEST_KIND")
 
 
 def metadata_root_of(path: Path) -> Path:
@@ -89,18 +99,6 @@ def test_a_copied_bundle_resolves_the_same_shape(tmp_path: Path) -> None:
     )
     assert bundle.receipt_file == tmp_path / "out" / "worker-00" / RECEIPT_FILE_NAME
     assert "transient" not in bundle.chunk_file(0).parts
-
-
-def test_source_paths_are_content_addressed(tmp_path: Path) -> None:
-    metadata = MetadataPaths(artifacts_root=tmp_path)
-    source = metadata.source_dir("company_tickers", "snap1")
-    assert source == tmp_path / "metadata" / "sources" / "company_tickers" / "snap1"
-    assert metadata.source_snapshot_file("company_tickers", "snap1") == (
-        source / "raw.json"
-    )
-    assert metadata.source_manifest_file("company_tickers", "snap1") == (
-        source / "manifest.json"
-    )
 
 
 def test_registry_paths_are_content_addressed(tmp_path: Path) -> None:
