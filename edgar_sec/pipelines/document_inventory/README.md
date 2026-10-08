@@ -24,6 +24,7 @@ Layer 4 consumes published `filing_catalog` plans and imports downward only.
 | `worker.py` | Per-accession worker task and typed failures. |
 | `coordinator.py` | Resource-capped scheduling, cancellation, chunk commit, resume, and retry. |
 | `distribution_adapter.py` | Adapts document inventory to the generic Layer 2 distribution engine. |
+| `review_adapter.py` | Adapts document inventory to the generic Layer 2 review/fixture harness. |
 | `cli.py` | Command dispatch, argument parsing, and subparser definitions. |
 | [commands/](commands/README.md) | Subcommand implementations using component terminal renderer. |
 | `operator.py` | Discovery-driven interactive operations. |
@@ -51,7 +52,8 @@ python run.py inventory query [--accession ACC] [--form FORM] [--filing-cik CIK]
 python run.py inventory fixture create --fixture ID --catalog-plan PLAN [--limit N]
 python run.py inventory fixture fill --fixture ID --catalog-plan PLAN [--limit N]
 python run.py inventory fixture list
-python run.py inventory review-artifacts --fixture ID --output DIR [--accession ACCESSION]
+python run.py inventory review generate --fixture ID [--output DIR] [--accession ACCESSION]
+python run.py inventory review compare --base DIR --new DIR [--output DIR]
 python run.py inventory distrib export --plan-id PLAN --workers N [--destination DIR]
 python run.py inventory distrib worker --bundle DIR
 python run.py inventory distrib import --bundle DIR

@@ -29,6 +29,7 @@ system and no table registry.
 | `parquet.py` | The Parquet format constants, the PyArrow read/write wrappers, and `StagedParquetWriter` for incremental chunk staging and resumption. |
 | `duckdb.py` | `connect()`, the only `duckdb.connect()` call site in `edgar_sec`; the SQL dialect primitives (`sql_literal`, `sql_identifier`, `sql_path_list`); the atomic out-of-core COPY; and the generic duplicate/null-key checks. |
 | `dag/` | Unified append-only snapshot DAG engine, lineage traversal, compaction, publication locks, and CLI runner. |
+| `review/` | Generalized review run artifacts, multi-format diff engine, comparison reporting, and operator/CLI harness. |
 | `__init__.py` | Docstring only. No re-exports. |
 
 ## Contracts

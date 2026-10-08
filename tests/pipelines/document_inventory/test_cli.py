@@ -42,9 +42,9 @@ def test_parser_exposes_fixture_and_review_commands() -> None:
     assert args.limit == 2
     assert (
         parser.parse_args(
-            ["review-artifacts", "--fixture", "f", "--output", "review"]
+            ["review", "generate", "--fixture", "f", "--output", "review"]
         ).command
-        == "review-artifacts"
+        == "review"
     )
 
 

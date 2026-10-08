@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import argparse
+from pathlib import Path
 import sys
 
 from edgar_sec.foundation.runtime.settings.validators import positive_int_type
@@ -96,45 +97,10 @@ def build_parser() -> argparse.ArgumentParser:
     _add_output_options(query_cmd)
     query_cmd.set_defaults(func=cmd_query)
 
-    fixture = commands.add_parser(
-        "fixture", help="create, fill, or list local fixtures"
-    )
-    fixture_commands = fixture.add_subparsers(dest="fixture_command", required=True)
-    for name, handler, help_text in (
-        ("create", cmd_fixture_create, "create and capture a fixture"),
-        ("fill", cmd_fixture_fill, "extend an existing fixture"),
-    ):
-        child = fixture_commands.add_parser(name, help=help_text)
-        child.add_argument("--fixture", required=True, help="fixture id")
-        child.add_argument("--catalog-plan", required=True, help="published plan id")
-        child.add_argument(
-            "--limit", type=positive_int_type, help="limit captured accessions"
-        )
-        _add_output_options(child)
-        child.set_defaults(func=handler)
+    from edgar_sec.infra.storage.review.cli import attach_review_subparsers
+    from .review_adapter import InventoryReviewAdapter
 
-    listing = fixture_commands.add_parser(
-        "list", help="list manifest-discovered fixtures"
-    )
-    _add_output_options(listing)
-    listing.set_defaults(func=cmd_fixture_list)
-
-    review = commands.add_parser(
-        "review-artifacts", help="review captured pages offline"
-    )
-    review.add_argument("--fixture", required=True, help="fixture id")
-    review.add_argument("--output", required=True, help="new or empty review directory")
-    review.add_argument(
-        "--accession", action="append", help="limit to an accession; repeatable"
-    )
-    review.add_argument(
-        "--limit", type=positive_int_type, help="limit selected captured pages"
-    )
-    review.add_argument(
-        "--workers", type=positive_int_type, help="worker process count"
-    )
-    _add_output_options(review)
-    review.set_defaults(func=cmd_review_artifacts)
+    attach_review_subparsers(commands, InventoryReviewAdapter())
 
     dag_parser = attach_dag_subparser(
         commands,

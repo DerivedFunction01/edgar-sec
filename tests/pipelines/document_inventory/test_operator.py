@@ -2,75 +2,54 @@ from __future__ import annotations
 
 from argparse import Namespace
 from pathlib import Path
-from types import SimpleNamespace
 
 import edgar_sec.pipelines.document_inventory.operator as operator
 
 
-def test_menu_exposes_discovered_fixture_operations() -> None:
+def test_menu_exposes_operations() -> None:
     actions = operator.build_operator_menu()
     labels = {action.key: action.label for action in actions}
+    assert "1" in labels and "query" in labels["1"].lower()
     assert "d" in labels and "distribution" in labels["d"].lower()
     assert "p" in labels and "dag" in labels["p"].lower()
-    assert any("catalog plan" in label.lower() for label in labels.values())
-    assert any("discovered fixtures" in label.lower() for label in labels.values())
-    assert any("review artifacts" in label.lower() for label in labels.values())
+    assert "f" in labels and "review" in labels["f"].lower()
 
 
-def test_create_uses_discovered_plan_and_confirmed_cli_function(
-    tmp_path: Path, monkeypatch
-) -> None:
+def test_action_query_with_accession(monkeypatch) -> None:
     calls: list[Namespace] = []
-    monkeypatch.setattr(operator, "_root", lambda: str(tmp_path))
-    monkeypatch.setattr(
-        operator,
-        "discover_plans",
-        lambda _root: [{"plan_id": "plan-1", "catalog_id": "c"}],
-    )
-    monkeypatch.setattr(operator, "prompt_text", lambda *_args: "fixture-1")
-    monkeypatch.setattr(operator, "_confirm_capture", lambda *_args: True)
-    monkeypatch.setattr(operator, "cmd_fixture_create", calls.append)
-
-    operator._action_create()
-
+    monkeypatch.setattr(operator, "prompt_text", lambda *_args: "0000000001-20-000001")
+    monkeypatch.setattr(operator, "cmd_query", calls.append)
+    operator._action_query()
     assert len(calls) == 1
-    assert calls[0].fixture == "fixture-1"
-    assert calls[0].catalog_plan == "plan-1"
-    assert calls[0].artifacts == ""
+    assert calls[0].accession == "0000000001-20-000001"
 
 
-def test_fill_discovers_both_fixture_and_plan(tmp_path: Path, monkeypatch) -> None:
+def test_action_query_with_form_and_limit(monkeypatch) -> None:
+    prompts = iter(["", "10-K", "12345", "", "50"])
     calls: list[Namespace] = []
-    monkeypatch.setattr(operator, "_root", lambda: str(tmp_path))
-    monkeypatch.setattr(
-        operator, "discover_fixtures", lambda _root: [{"fixture_id": "fixture-1"}]
-    )
-    monkeypatch.setattr(
-        operator,
-        "discover_plans",
-        lambda _root: [{"plan_id": "plan-1", "catalog_id": "c"}],
-    )
-    monkeypatch.setattr(operator, "_confirm_capture", lambda *_args: True)
-    monkeypatch.setattr(operator, "cmd_fixture_fill", calls.append)
-
-    operator._action_fill()
-
+    monkeypatch.setattr(operator, "prompt_text", lambda *_args: next(prompts))
+    monkeypatch.setattr(operator, "cmd_query", calls.append)
+    operator._action_query()
     assert len(calls) == 1
-    assert calls[0].fixture == "fixture-1"
-    assert calls[0].catalog_plan == "plan-1"
+    assert calls[0].form == "10-K"
+    assert calls[0].filing_cik == "12345"
+    assert calls[0].limit == 50
 
 
-def test_create_cancels_without_confirmation(tmp_path: Path, monkeypatch) -> None:
-    calls = []
+def test_action_review_delegates_to_review_menu(tmp_path: Path, monkeypatch) -> None:
+    calls: list[tuple] = []
+    import edgar_sec.infra.storage.review.operator as rev_op
+
     monkeypatch.setattr(operator, "_root", lambda: str(tmp_path))
     monkeypatch.setattr(
-        operator, "discover_plans", lambda _root: [{"plan_id": "p", "catalog_id": "c"}]
+        rev_op,
+        "run_review_menu",
+        lambda adapter, artifacts_root: calls.append((adapter, artifacts_root)),
     )
-    monkeypatch.setattr(operator, "prompt_text", lambda *_args: "f")
-    monkeypatch.setattr(operator, "_confirm_capture", lambda *_args: False)
-    monkeypatch.setattr(operator, "cmd_fixture_create", calls.append)
-    operator._action_create()
-    assert calls == []
+    operator._action_review()
+    assert len(calls) == 1
+    assert calls[0][0].dataset_name == "document_inventory"
+    assert calls[0][1] == tmp_path
 
 
 def test_operator_dispatches_cli_arguments(monkeypatch) -> None:

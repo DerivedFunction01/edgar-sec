@@ -1,10 +1,10 @@
-"""Discovery-driven operator for local inventory fixtures and parser reviews."""
+"""Discovery-driven operator for document inventory snapshots, DAG, and review."""
 
 from __future__ import annotations
 
 import argparse
-import sys
 from pathlib import Path
+import sys
 
 from edgar_sec.foundation.runtime.interactive import (
     MenuAction,
@@ -14,19 +14,12 @@ from edgar_sec.foundation.runtime.interactive import (
     prompt_text,
 )
 from edgar_sec.foundation.runtime.paths import resolve_paths
-from edgar_sec.pipelines.document_inventory.cli import (
-    cmd_fixture_create,
-    cmd_fixture_fill,
-    cmd_fixture_list,
-    cmd_review_artifacts,
-)
+from edgar_sec.pipelines.document_inventory.cli import main as cli_main
+from edgar_sec.pipelines.document_inventory.commands.query import cmd_query
 from edgar_sec.pipelines.document_inventory.discovery import (
-    discover_fixtures,
     discover_plans,
-    resolve_fixture_choice,
     resolve_plan_choice,
 )
-from edgar_sec.pipelines.document_inventory.cli import main as cli_main
 
 MENU_TITLE = "Document Inventory"
 
@@ -36,108 +29,44 @@ def _select(lines: list[str]) -> str:
     return prompt_text("Choice", "1").strip()
 
 
-def _confirm_capture(fixture_id: str, plan_id: str) -> bool:
-    print(
-        f"This operation requests SEC index pages for {fixture_id} using plan {plan_id}."
-    )
-    return (
-        prompt_text("Proceed with live SEC requests? [y/N]", "").strip().lower() == "y"
-    )
-
-
 def _root() -> str:
     return str(resolve_paths().artifacts_root)
 
 
-def _action_create() -> None:
-    plans = discover_plans(_root())
-    if not plans:
-        print(
-            "No published catalog plans were discovered; publish a plan before creating a fixture."
+def _action_query() -> None:
+    accession = prompt_text(
+        "Accession number (or press enter to query by form/cik)", ""
+    ).strip()
+    if accession:
+        cmd_query(
+            argparse.Namespace(
+                accession=accession,
+                form=None,
+                filing_cik=None,
+                source_cik=None,
+                limit=None,
+                artifacts=_root(),
+                json=False,
+            )
         )
         return
-    plan = resolve_plan_choice(plans, select=_select)
-    if plan is None:
-        print("Plan selection cancelled.")
-        return
-    fixture_id = prompt_text("Fixture id", "fixture").strip()
-    if not fixture_id:
-        print("Fixture id is required.")
-        return
-    if not _confirm_capture(fixture_id, str(plan["plan_id"])):
-        print("Capture cancelled.")
-        return
-    cmd_fixture_create(
+    form = prompt_text("Filing form (or press enter to skip)", "").strip()
+    filing_cik = prompt_text(
+        "Canonical filing CIK (or press enter to skip)", ""
+    ).strip()
+    source_cik = prompt_text(
+        "Discovery source CIK (or press enter to skip)", ""
+    ).strip()
+    limit_str = prompt_text("Limit results (default 20)", "20").strip()
+    limit = int(limit_str) if limit_str.isdigit() else 20
+    cmd_query(
         argparse.Namespace(
-            fixture=fixture_id,
-            catalog_plan=plan["plan_id"],
-            limit=None,
-            artifacts="",
-            json=False,
-        )
-    )
-
-
-def _action_fill() -> None:
-    fixtures = discover_fixtures(_root())
-    if not fixtures:
-        print("No fixtures were discovered; create a fixture first.")
-        return
-    fixture = resolve_fixture_choice(fixtures, select=_select)
-    if fixture is None:
-        print("Fixture selection cancelled.")
-        return
-    plans = discover_plans(_root())
-    if not plans:
-        print(
-            "No published catalog plans were discovered; publish a plan before filling a fixture."
-        )
-        return
-    plan = resolve_plan_choice(plans, select=_select)
-    if plan is None:
-        print("Plan selection cancelled.")
-        return
-    fixture_id = str(fixture["fixture_id"])
-    plan_id = str(plan["plan_id"])
-    if not _confirm_capture(fixture_id, plan_id):
-        print("Capture cancelled.")
-        return
-    cmd_fixture_fill(
-        argparse.Namespace(
-            fixture=fixture_id,
-            catalog_plan=plan_id,
-            limit=None,
-            artifacts="",
-            json=False,
-        )
-    )
-
-
-def _action_list() -> None:
-    cmd_fixture_list(argparse.Namespace(artifacts="", json=False))
-
-
-def _action_review() -> None:
-    fixtures = discover_fixtures(_root())
-    if not fixtures:
-        print("No fixtures were discovered; capture a fixture first.")
-        return
-    fixture = resolve_fixture_choice(fixtures, select=_select)
-    if fixture is None:
-        print("Fixture selection cancelled.")
-        return
-    output = prompt_text("New review output directory", "review").strip()
-    if not output:
-        print("Review output directory is required.")
-        return
-    cmd_review_artifacts(
-        argparse.Namespace(
-            fixture=fixture["fixture_id"],
-            output=output,
             accession=None,
-            limit=None,
-            workers=None,
-            artifacts="",
+            form=form or None,
+            filing_cik=filing_cik or None,
+            source_cik=source_cik or None,
+            limit=limit,
+            artifacts=_root(),
             json=False,
         )
     )
@@ -204,12 +133,16 @@ def _action_distrib() -> None:
     run_distrib_menu(config)
 
 
+def _action_review() -> None:
+    from edgar_sec.infra.storage.review.operator import run_review_menu
+    from .review_adapter import InventoryReviewAdapter
+
+    run_review_menu(InventoryReviewAdapter(), artifacts_root=Path(_root()))
+
+
 def build_operator_menu() -> tuple[MenuAction, ...]:
     return build_menu(
-        menu_action("Create fixture from a published catalog plan", _action_create),
-        menu_action("Fill a discovered fixture from a catalog plan", _action_fill),
-        menu_action("List discovered fixtures", _action_list),
-        menu_action("Build parser review artifacts", _action_review),
+        menu_action("Query document inventory", _action_query),
         menu_action(
             "Worker distribution console (export, worker, import, commands)",
             _action_distrib,
@@ -219,6 +152,11 @@ def build_operator_menu() -> tuple[MenuAction, ...]:
             "Snapshot DAG console (build/publish, switch current, inspect, branches, tags)",
             _action_dag,
             key="p",
+        ),
+        menu_action(
+            "Fixtures and review console (create, fill, list, generate, compare)",
+            _action_review,
+            key="f",
         ),
     )
 
