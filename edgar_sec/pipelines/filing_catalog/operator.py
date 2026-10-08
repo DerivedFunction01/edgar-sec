@@ -88,30 +88,36 @@ def _ask_catalog() -> str:
     if not catalogs:
         return prompt_text("Catalog id or 'current'", "current")
     current = _current_catalog_index(catalogs, paths)
-    print("\nPublished catalogs:")
+    items = []
+    default_item = None
     for index, catalog in enumerate(catalogs, start=1):
-        marker = " [current]" if index == current else ""
-        print(
-            f"  {index}. {catalog['catalog_id']}{marker}  "
-            f"{int(catalog.get('target_row_count') or 0):,} target rows, "
-            f"{int(catalog.get('part_count') or 0)} parts"
-        )
-    default = "1" if current is None else str(current)
-    answer = prompt_text("Catalog number", default).strip() or default
-    try:
-        return str(catalogs[int(answer) - 1]["catalog_id"])
-    except (ValueError, IndexError):
+        is_cur = index == current
+        cid = str(catalog["catalog_id"])
+        marker = " [current]" if is_cur else ""
+        rows = int(catalog.get("target_row_count") or 0)
+        parts = int(catalog.get("part_count") or 0)
+        label = f"{cid}{marker}  {rows:,} target rows, {parts} parts"
+        item = PickItem(key=cid, label=label, value=catalog)
+        items.append(item)
+        if is_cur:
+            default_item = item
+    if default_item is None and items:
+        default_item = items[0]
+    chosen = prompt_paginated_choice(
+        items,
+        prompt_label="Select catalog",
+        default=default_item,
+    )
+    if chosen is None:
         print("invalid selection; using 'current'")
         return "current"
+    return str(chosen.value["catalog_id"])
 
 
 def _current_catalog_index(
     catalogs: list[dict[str, Any]], paths: FilingCatalogPaths
 ) -> int | None:
-    """1-based position of the published catalog, or ``None``.
-    ``paths`` is passed rather than re-resolved: a second resolution could read a
-    different root and mark the wrong entry current.
-    """
+    """1-based position of the published catalog, or ``None``."""
     current_id = current_catalog_id(paths)
     if current_id is None:
         return None
@@ -122,10 +128,7 @@ def _current_catalog_index(
 
 
 def _ask_parent_plan() -> tuple[str, int] | None:
-    """Pick the policy plan to expand, as a resolved directory and its size.
-
-    Only policy-scope plans are offered; expansion refuses a deterministic parent.
-    """
+    """Pick the policy plan to expand, as a resolved directory and its size."""
     paths = resolve_filing_catalog_paths()
     parents = [
         plan for plan in discover_plans(paths) if plan.get("scope") == SCOPE_POLICY
@@ -136,29 +139,52 @@ def _ask_parent_plan() -> tuple[str, int] | None:
             "'plan --scope policy' on the CLI first"
         )
         return None
-    print("\nPolicy plans available to expand:")
-    for index, plan in enumerate(parents, start=1):
+    items = []
+    for plan in parents:
         parent = str(plan.get("parent_plan_id") or "")
         suffix = f"  (expanded from {parent})" if parent else ""
-        print(
-            f"  {index}. {plan['plan_id']}  "
-            f"{int(plan.get('unique_locators_count') or 0):,} locators, "
-            f"{int(plan.get('target_units') or 0):,} target units{suffix}"
-        )
-    answer = prompt_text("Parent plan number", "1").strip() or "1"
-    try:
-        chosen = parents[int(answer) - 1]
-    except (ValueError, IndexError):
+        pid = str(plan["plan_id"])
+        locators = int(plan.get("unique_locators_count") or 0)
+        units = int(plan.get("target_units") or 0)
+        label = f"{pid}  {locators:,} locators, {units:,} target units{suffix}"
+        items.append(PickItem(key=pid, label=label, value=plan))
+    chosen = prompt_paginated_choice(
+        items,
+        prompt_label="Select parent plan to expand",
+        default=items[0],
+    )
+    if chosen is None:
         print("invalid selection")
         return None
-    plan_id = str(chosen["plan_id"])
-    return str(paths.plan_dir(plan_id)), int(chosen.get("unique_locators_count") or 0)
+    chosen_plan = chosen.value
+    plan_id = str(chosen_plan["plan_id"])
+    return str(paths.plan_dir(plan_id)), int(
+        chosen_plan.get("unique_locators_count") or 0
+    )
 
 
 def _action_materialize() -> None:
-    source = prompt_text("Phase 1 metadata.parquet path (blank for current)", "")
+    from edgar_sec.infra.storage.dag.catalog import DAGCatalog
+    from edgar_sec.infra.storage.dag.menu import prompt_dag_target
+    from .paths import resolve_metadata_paths
+
+    meta_paths = resolve_metadata_paths()
+    chosen_id = prompt_dag_target(
+        meta_paths.snapshots_root,
+        prompt_label="Phase 01 metadata source snapshot",
+    )
+    if chosen_id is None:
+        return
     args = _namespace("materialize")
-    args.source = source
+    meta_catalog = DAGCatalog(meta_paths.snapshots_root)
+    ptr = meta_catalog.read_pointer()
+    current_id = str(ptr["snapshot_id"]) if ptr else None
+    if chosen_id != current_id:
+        manifest_path = meta_paths.snapshot_manifest(chosen_id)
+        if manifest_path.is_file():
+            args.source_manifest = str(manifest_path)
+        else:
+            args.source = str(meta_paths.snapshot_file(chosen_id))
     cmd_materialize(args)
 
 

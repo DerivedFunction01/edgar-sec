@@ -66,9 +66,14 @@ class MetadataPaths:
         """Root of published snapshot directories."""
         return self.metadata_root / foundation_paths.SNAPSHOTS_DIR
 
+    @property
+    def plans_root(self) -> Path:
+        """Root of published metadata plan bundles."""
+        return self.metadata_root / PLANS_DIR_NAME
+
     def plan_dir(self, plan_id: str) -> Path:
         """Directory holding one immutable plan."""
-        return self.metadata_root / PLANS_DIR_NAME / plan_id
+        return self.plans_root / plan_id
 
     def transient_dir(self, plan_id: str) -> Path:
         """Directory holding one plan's transient chunk checkpoints."""

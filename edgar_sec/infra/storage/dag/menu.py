@@ -161,14 +161,15 @@ def run_paginated_graph(
         offset = 0
 
 
-def _action_checkout(config: DAGMenuConfig) -> None:
-    root = config.resolve_root()
+def collect_dag_targets(snapshots_root: Path | str) -> list[PickItem]:
+    """Collect selectable branch and tag targets for a DAG repository."""
+    root = Path(snapshots_root)
     branches = list_branches(root)
     tags = list_tags(root)
     items: list[PickItem] = []
 
     for b in branches:
-        b_ptr = read_pointer(root, branch_name=None if b == "current" else b)
+        b_ptr = read_pointer(root, branch_name=b)
         s_id = str(b_ptr["snapshot_id"]) if b_ptr else "none"
         prefix = "* " if b == "current" else "  "
         items.append(
@@ -183,13 +184,130 @@ def _action_checkout(config: DAGMenuConfig) -> None:
             PickItem(
                 key=t["tag"],
                 label=f"  tag: {t['tag']:<17} -> {t['snapshot_id']}",
-                value=t["tag"],
+                value=t["snapshot_id"],
             )
         )
+    return items
 
-    chosen = prompt_paginated_choice(items, prompt_label="Select target to checkout")
-    if chosen is not None:
-        cmd_checkout(root, chosen.value)
+
+def prompt_dag_target(
+    snapshots_root: Path | str,
+    *,
+    prompt_label: str = "Select target",
+) -> str | None:
+    """Interactively select a target snapshot from a DAG repository."""
+    items = collect_dag_targets(snapshots_root)
+    if not items:
+        print("No published snapshot targets available.")
+        return None
+    chosen = prompt_paginated_choice(
+        items,
+        prompt_label=prompt_label,
+        default=items[0],
+    )
+    return str(chosen.value) if chosen is not None else None
+
+
+def _action_checkout(config: DAGMenuConfig) -> None:
+    root = config.resolve_root()
+    target = prompt_dag_target(root, prompt_label="Select target to checkout")
+    if target is not None:
+        cmd_checkout(root, target)
+
+
+def _action_branch(config: DAGMenuConfig) -> None:
+    root = config.resolve_root()
+    sub = prompt_text(
+        "Branch Management: 1 List, 2 Create, 3 Delete (blank = 1)", "1"
+    ).strip()
+    if sub in ("", "1"):
+        branches = list_branches(root)
+        if not branches:
+            print("No branches found.")
+            return
+        items = []
+        for b in branches:
+            ptr = read_pointer(root, branch_name=None if b == "current" else b)
+            s_id = str(ptr["snapshot_id"]) if ptr else "none"
+            prefix = "* " if b == "current" else "  "
+            items.append(PickItem(key=b, label=f"{prefix}{b:<16} -> {s_id}", value=b))
+        prompt_paginated_choice(items, prompt_label="Branches")
+    elif sub == "2":
+        name = prompt_text("Branch name", "").strip()
+        if not name:
+            print("Branch name cannot be blank.")
+            return
+        target_id = prompt_dag_target(root, prompt_label="Select source snapshot")
+        if target_id is None:
+            curr_ptr = read_pointer(root)
+            target_id = str(curr_ptr["snapshot_id"]) if curr_ptr else None
+        if not target_id:
+            print("No snapshot available to branch from.")
+            return
+        cmd_branch(root, action="create", name=name, from_snapshot_id=target_id)
+    elif sub == "3":
+        branches = [b for b in list_branches(root) if b != "current"]
+        if not branches:
+            print("No deletable branches found (cannot delete current).")
+            return
+        items = [PickItem(key=b, label=f"branch: {b}", value=b) for b in branches]
+        chosen = prompt_paginated_choice(items, prompt_label="Select branch to delete")
+        if chosen is not None:
+            cmd_branch(root, action="delete", name=chosen.value)
+
+
+def _action_tag(config: DAGMenuConfig) -> None:
+    root = config.resolve_root()
+    sub = prompt_text(
+        "Tag Management: 1 List, 2 Create, 3 Delete (blank = 1)", "1"
+    ).strip()
+    if sub in ("", "1"):
+        tags = list_tags(root)
+        if not tags:
+            print("No tags found.")
+            return
+        items = []
+        for t in tags:
+            msg = f" [{t['message']}]" if t.get("message") else ""
+            date = t.get("created_at", "")[:10]
+            items.append(
+                PickItem(
+                    key=t["tag"],
+                    label=f"{t['tag']:<16} -> {t['snapshot_id']} ({date}){msg}",
+                    value=t["tag"],
+                )
+            )
+        prompt_paginated_choice(items, prompt_label="Tags")
+    elif sub == "2":
+        name = prompt_text("Tag name", "").strip()
+        if not name:
+            print("Tag name cannot be blank.")
+            return
+        target_id = prompt_dag_target(root, prompt_label="Select target snapshot")
+        if target_id is None:
+            curr_ptr = read_pointer(root)
+            target_id = str(curr_ptr["snapshot_id"]) if curr_ptr else None
+        if not target_id:
+            print("No snapshot available to tag.")
+            return
+        msg = prompt_text("Message (optional)", "").strip()
+        cmd_tag(root, action="create", name=name, target=target_id, message=msg)
+    elif sub == "3":
+        tags = list_tags(root)
+        if not tags:
+            print("No tags found to delete.")
+            return
+        items = [
+            PickItem(
+                key=t["tag"],
+                label=f"tag: {t['tag']} -> {t['snapshot_id']}",
+                value=t["tag"],
+            )
+            for t in tags
+        ]
+        chosen = prompt_paginated_choice(items, prompt_label="Select tag to delete")
+        if chosen is not None:
+            cmd_tag(root, action="delete", name=chosen.value)
 
 
 def _action_publish_staged(config: DAGMenuConfig) -> None:
@@ -241,13 +359,13 @@ def create_dag_menu(config: DAGMenuConfig) -> tuple[MenuAction, ...]:
     actions.append(
         menu_action(
             "Branch management (list, create, delete)",
-            lambda: cmd_branch(root, action="list"),
+            lambda: _action_branch(config),
         )
     )
     actions.append(
         menu_action(
             "Tag management (list, create, delete)",
-            lambda: cmd_tag(root, action="list"),
+            lambda: _action_tag(config),
         )
     )
     actions.append(
@@ -298,7 +416,9 @@ def run_dag_menu(config: DAGMenuConfig, argv: list[str] | None = None) -> int:
 
 __all__ = [
     "DAGMenuConfig",
+    "collect_dag_targets",
     "create_dag_menu",
+    "prompt_dag_target",
     "render_dag_dashboard",
     "run_dag_menu",
     "run_paginated_graph",

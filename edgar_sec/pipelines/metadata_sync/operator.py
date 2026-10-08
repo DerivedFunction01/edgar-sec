@@ -12,9 +12,11 @@ from pathlib import Path
 
 from edgar_sec.foundation.runtime.interactive import (
     MenuAction,
+    PickItem,
     build_menu,
     menu_action,
     operator_entrypoint,
+    prompt_paginated_choice,
     prompt_text,
 )
 from edgar_sec.foundation.runtime.settings import resolve_runtime_settings
@@ -28,6 +30,7 @@ from .cli import main as cli_main
 from .discovery import (
     SourceSummary,
     current_snapshot_id,
+    describe_plan,
     list_plans,
     list_snapshots,
     list_source_snapshots,
@@ -188,25 +191,29 @@ def resolve_plan(state: WizardState) -> bool:
             select_snapshot(state)
         return False
 
-    def select(lines: list[str]) -> str:
-        print("\nPlans (newest first):")
-        for line in lines:
-            print(line)
-        return prompt_text("Plan number", "1").strip()
-
-    chosen = resolve_plan_choice(plans, select=select)
+    items = []
+    for p in plans:
+        marker = " [current]" if p["published"] else ""
+        label = f"{p['plan_id']}{marker}  {describe_plan(p)}"
+        items.append(PickItem(key=str(p["plan_id"]), label=label, value=p))
+    chosen = prompt_paginated_choice(
+        items,
+        prompt_label="Select working plan",
+        default=items[0],
+    )
     if chosen is None:
         state.clear()
         return False
-    if not chosen["readable"]:
+    selected = chosen.value
+    if not selected["readable"]:
         print(
-            f"plan {chosen['plan_id']} is unreadable or not compatible with this "
+            f"plan {selected['plan_id']} is unreadable or not compatible with this "
             "build; use 'Plan generation' to create one this build can run"
         )
         return False
-    state.plan_id = chosen["plan_id"]
+    state.plan_id = selected["plan_id"]
     state.bundle_root = ""
-    print(f"Working plan: {chosen['plan_id']}")
+    print(f"Working plan: {selected['plan_id']}")
     return True
 
 
@@ -288,10 +295,6 @@ def _ask_run_options(
         if bundle:
             state.bundle_root = bundle
             state.plan_id = state.plan_id or read_bundle_plan_id(bundle)
-    typed = prompt_text("Plan id (blank = use the working plan)", state.plan_id).strip()
-    if typed and typed != state.plan_id:
-        state.plan_id = typed
-        state.bundle_root = ""
     if not state.plan_id and not _ensure_plan(state):
         return None
     return state.run_options(
@@ -442,7 +445,11 @@ def compare(state: WizardState) -> None:
 
 def open_metadata_distrib_console(state: WizardState) -> None:
     """Launch the interactive worker distribution console."""
-    from edgar_sec.infra.distribution.menu import DistribMenuConfig, run_distrib_menu
+    from edgar_sec.infra.distribution.menu import (
+        DistribMenuConfig,
+        DistribSession,
+        run_distrib_menu,
+    )
     from .distribution_adapter import MetadataDistributionAdapter
 
     adapter = MetadataDistributionAdapter(
@@ -450,12 +457,17 @@ def open_metadata_distrib_console(state: WizardState) -> None:
     )
     if not _ensure_plan(state):
         return
+    session = DistribSession(state.plan_id)
     config = DistribMenuConfig(
         adapter=adapter,
         plan_id=state.plan_id,
+        plans_root=state.metadata().plans_root,
         title="Metadata Sync Worker Distribution",
     )
-    run_distrib_menu(config)
+    run_distrib_menu(config, session=session)
+    if session.plan_id and session.plan_id != state.plan_id:
+        state.plan_id = session.plan_id
+        state.bundle_root = ""
 
 
 def open_metadata_dag_console(state: WizardState) -> None:

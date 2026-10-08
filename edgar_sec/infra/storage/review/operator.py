@@ -70,13 +70,14 @@ def run_review_menu(config: ReviewMenuConfig) -> int:
             plans = discover_plans(config.plans_root)
             if not plans:
                 return None
-            if len(plans) == 1:
-                session_plan = plans[0]
-                return session_plan
             items = [
                 PickItem(key=p.plan_id, label=p.describe(), value=p) for p in plans
             ]
-            chosen = prompt_paginated_choice(items, prompt_label="Select plan")
+            chosen = prompt_paginated_choice(
+                items,
+                prompt_label="Select plan",
+                default=items[0],
+            )
             if chosen is not None:
                 session_plan = chosen.value
                 return session_plan
@@ -247,13 +248,38 @@ def run_review_menu(config: ReviewMenuConfig) -> int:
         )
         print(ReviewPaths(diff_dir).summary_file.read_text(encoding="utf-8"))
 
-    menu = build_menu(
+    def _action_switch_plan() -> None:
+        nonlocal session_plan
+        if not config.plans_root:
+            print("No plans directory configured for this console.")
+            return
+        from edgar_sec.domain.plan.discovery import discover_plans
+
+        plans = discover_plans(config.plans_root)
+        if not plans:
+            print("No published plans discovered.")
+            return
+        items = [PickItem(key=p.plan_id, label=p.describe(), value=p) for p in plans]
+        chosen = prompt_paginated_choice(
+            items,
+            prompt_label="Select active plan",
+            default=items[0],
+        )
+        if chosen is not None:
+            session_plan = chosen.value
+            print(f"Active plan switched to {session_plan['plan_id']}")
+
+    actions = [
         menu_action("Create fixture from a published plan", _action_create),
         menu_action("Fill a discovered fixture from a plan", _action_fill),
         menu_action("List discovered fixtures", _action_list),
         menu_action("Generate parser review artifacts from fixture", _action_generate),
         menu_action("Compare two review runs (diff & summary)", _action_compare),
-    )
+    ]
+    if config.plans_root:
+        actions.append(menu_action("Switch active plan", _action_switch_plan, key="s"))
+
+    menu = build_menu(*actions)
 
     title = (
         f"{adapter.dataset_name.replace('_', ' ').title()} Fixtures & Review Console"

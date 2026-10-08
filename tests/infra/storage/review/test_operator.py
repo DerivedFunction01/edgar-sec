@@ -1,6 +1,9 @@
 """Unit tests for the interactive review operator console."""
 
+import json
 from pathlib import Path
+
+import pytest
 
 from edgar_sec.infra.storage.review.models import CaseDiff
 from edgar_sec.infra.storage.review.operator import (
@@ -80,7 +83,7 @@ def test_create_fixture_uses_the_provided_plan_and_proposes_fx_default(
         encoding="utf-8",
     )
 
-    answers = iter(["1", "", "", "0"])
+    answers = iter(["1", "", "", "", "0"])
     monkeypatch.setattr("builtins.input", lambda _p="": next(answers))
 
     config = ReviewMenuConfig(
@@ -166,3 +169,22 @@ def test_compare_selects_runs_with_smart_defaults_and_renders_summary(
     config = ReviewMenuConfig(adapter=adapter, artifacts_root=tmp_path)
     assert run_review_menu(config) == 0
     assert adapter.calls == []
+
+
+def test_review_menu_switch_plan(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    plans_dir = tmp_path / "plans"
+    for pid in ("plan-1", "plan-2"):
+        pdir = plans_dir / pid
+        pdir.mkdir(parents=True)
+        (pdir / "plan.json").write_text(json.dumps({"plan_id": pid}), encoding="utf-8")
+    adapter = RecordingAdapter()
+    config = ReviewMenuConfig(
+        adapter=adapter,
+        artifacts_root=tmp_path,
+        plans_root=plans_dir,
+    )
+    answers = iter(["s", "2", "0"])
+    monkeypatch.setattr("builtins.input", lambda _p="": next(answers))
+    assert run_review_menu(config) == 0

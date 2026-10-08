@@ -34,6 +34,7 @@ __all__ = [
     "RosterSummary",
     "SourceSummary",
     "current_snapshot_id",
+    "describe_plan",
     "describe_roster",
     "describe_source",
     "list_input_manifests",
@@ -204,7 +205,7 @@ def resolve_plan_choice(
         return plans[0]
     lines = []
     for index, plan in enumerate(plans, start=1):
-        state = _describe(plan)
+        state = describe_plan(plan)
         marker = " [current]" if plan["published"] else ""
         lines.append(f"  {index}. {plan['plan_id']}{marker} {state}")
     choice = select(lines)
@@ -449,10 +450,8 @@ def _describe_snapshot(manifest: dict[str, Any], current_id: str) -> str:
     return f"{snapshot_id}{marker}  " + ", ".join(parts)
 
 
-def _describe(plan: PlanSummary) -> str:
-    """One-line human summary of a plan's size, progress, and kind.
-    Kind and parent are shown because the ordinary merge path cannot publish a delta.
-    """
+def describe_plan(plan: PlanSummary) -> str:
+    """One-line human summary of a plan's size, progress, and kind."""
     parts = [f"{plan['row_count']:,} CIKs", f"{plan['chunk_count']} chunks"]
     completed = plan["completed_chunks"]
     if completed < 0:

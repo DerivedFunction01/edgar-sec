@@ -207,35 +207,28 @@ def test_a_blank_plan_id_discovers_a_plan_when_none_is_established(
     state: WizardState, tmp_path: Path, monkeypatch: pytest.MonkeyPatch
 ) -> None:
     plan_id = _write_plan(tmp_path, chunk_size=2)
-    monkeypatch.setattr(operator_module, "prompt_text", lambda label, default: default)
+    monkeypatch.setattr("builtins.input", lambda _: "")
     options = _ask_run_options(state)
     assert options is not None
     assert options.plan_id == plan_id
     assert state.plan_id == plan_id
 
 
-def test_an_explicit_plan_id_replaces_the_working_one(
+def test_working_plan_is_preserved_without_reprompt(
     state: WizardState, monkeypatch: pytest.MonkeyPatch
 ) -> None:
-    state.plan_id = "old"
-    answers = iter(["new", ""])
-    monkeypatch.setattr(
-        operator_module, "prompt_text", lambda label, default: next(answers)
-    )
+    state.plan_id = "plan-active"
+    monkeypatch.setattr("builtins.input", lambda _: "")
     options = _ask_run_options(state)
-    assert options is not None and options.plan_id == "new"
-    assert state.plan_id == "new"
+    assert options is not None and options.plan_id == "plan-active"
+    assert state.plan_id == "plan-active"
 
 
-def test_an_in_progress_run_is_adopted_without_asking(
+def test_an_in_progress_run_is_adopted_with_default(
     state: WizardState, tmp_path: Path, monkeypatch: pytest.MonkeyPatch
 ) -> None:
     plan_id = _write_plan(tmp_path, chunk_size=2)
-
-    def must_not_prompt(_label: str, _default: str = "") -> str:
-        raise AssertionError("a lone plan should not be put to the operator")
-
-    monkeypatch.setattr(operator_module, "prompt_text", must_not_prompt)
+    monkeypatch.setattr("builtins.input", lambda _: "")
     assert _ensure_plan(state) is True
     assert state.plan_id == plan_id
 
@@ -245,16 +238,9 @@ def test_several_plans_are_offered_as_a_numbered_pick(
 ) -> None:
     _write_plan(tmp_path, chunk_size=4)
     second = _write_plan(tmp_path, chunk_size=2)
-    picks: list[str] = []
-
-    def picker(label: str, default: str = "") -> str:
-        picks.append(label)
-        return "1"
-
-    monkeypatch.setattr(operator_module, "prompt_text", picker)
+    monkeypatch.setattr("builtins.input", lambda _: "1")
     assert resolve_plan(state) is True
     assert state.plan_id == second
-    assert any("Plan number" in pick for pick in picks)
 
 
 def test_a_cancelled_pick_leaves_no_plan_established(
@@ -262,7 +248,7 @@ def test_a_cancelled_pick_leaves_no_plan_established(
 ) -> None:
     _write_plan(tmp_path, chunk_size=4)
     _write_plan(tmp_path, chunk_size=2)
-    monkeypatch.setattr(operator_module, "prompt_text", lambda label, default: "99")
+    monkeypatch.setattr("builtins.input", lambda _: "q")
     assert resolve_plan(state) is False
     assert state.plan_id == ""
 
@@ -293,6 +279,7 @@ def test_the_working_plan_survives_across_menu_visits(
     """State is the point: visiting the menu must not cost the operator a re-ask."""
     plan_id = _write_plan(tmp_path, chunk_size=2)
     monkeypatch.setattr(operator_module, "prompt_text", lambda label, default: default)
+    monkeypatch.setattr("builtins.input", lambda _: "")
     assert _ensure_plan(state) is True
     seen: list[object] = []
     monkeypatch.setattr(operator_module, "cmd_status", seen.append)

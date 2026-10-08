@@ -57,13 +57,12 @@ class DistribSession:
             if not plans:
                 print("No published plans discovered.")
                 return None
-            if len(plans) == 1:
-                self.plan_id = plans[0].plan_id
-                return self.plan_id
             items = [
                 PickItem(key=p.plan_id, label=p.describe(), value=p) for p in plans
             ]
-            chosen = prompt_paginated_choice(items, prompt_label="Select plan")
+            chosen = prompt_paginated_choice(
+                items, prompt_label="Select plan", default=items[0]
+            )
             if chosen is not None:
                 self.plan_id = chosen.value.plan_id
                 return self.plan_id
@@ -197,6 +196,27 @@ def _action_commands(config: DistribMenuConfig, session: DistribSession) -> None
     cmd_commands(config.adapter, plan_id, worker_count=workers, destination=dest)
 
 
+def _action_switch_plan(config: DistribMenuConfig, session: DistribSession) -> None:
+    if not config.plans_root:
+        print("No plans directory configured for this console.")
+        return
+    from edgar_sec.domain.plan.discovery import discover_plans
+
+    plans = discover_plans(config.plans_root)
+    if not plans:
+        print("No published plans discovered.")
+        return
+    items = [PickItem(key=p.plan_id, label=p.describe(), value=p) for p in plans]
+    chosen = prompt_paginated_choice(
+        items,
+        prompt_label="Select active plan",
+        default=items[0],
+    )
+    if chosen is not None:
+        session.plan_id = chosen.value.plan_id
+        print(f"Active plan switched to {session.plan_id}")
+
+
 def create_distrib_menu(
     config: DistribMenuConfig, session: DistribSession | None = None
 ) -> tuple[MenuAction, ...]:
@@ -225,16 +245,28 @@ def create_distrib_menu(
             lambda: _action_commands(config, active_session),
         ),
     ]
+    if config.plans_root:
+        actions.append(
+            menu_action(
+                "Switch active plan",
+                lambda: _action_switch_plan(config, active_session),
+                key="s",
+            )
+        )
     return build_menu(*actions)
 
 
-def run_distrib_menu(config: DistribMenuConfig, argv: list[str] | None = None) -> int:
+def run_distrib_menu(
+    config: DistribMenuConfig,
+    argv: list[str] | None = None,
+    session: DistribSession | None = None,
+) -> int:
     """Launch interactive distribution console."""
-    session = DistribSession(config.plan_id)
+    active_session = session or DistribSession(config.plan_id)
     return operator_entrypoint(
         config.title,
-        create_distrib_menu(config, session),
+        create_distrib_menu(config, active_session),
         lambda _argv: 0,
         argv,
-        before_menu=lambda: render_distrib_dashboard(config, session.plan_id),
+        before_menu=lambda: render_distrib_dashboard(config, active_session.plan_id),
     )

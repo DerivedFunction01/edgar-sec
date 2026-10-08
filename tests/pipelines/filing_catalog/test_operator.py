@@ -163,7 +163,7 @@ def test_every_prompted_action_builds_a_usable_namespace(
 
     # In menu order; the counts are why each action's answers appear where they do.
     answers = iter(["cat-1", "10-K", "@Q1[1999..2001]", "cat-2", "1", "1", "5000"])
-    monkeypatch.setattr(operator, "prompt_text", lambda prompt, default: next(answers))
+    monkeypatch.setattr("builtins.input", lambda _="": next(answers))
     monkeypatch.setattr(operator, "discover_catalogs", lambda _paths: [])
     monkeypatch.setattr(operator, "discover_policies", lambda _paths: [_DRAFT])
     monkeypatch.setattr(
@@ -211,6 +211,7 @@ def test_no_action_ever_asks_for_the_artifacts_root(
         return default
 
     monkeypatch.setattr(operator, "prompt_text", _record)
+    monkeypatch.setattr("builtins.input", lambda _: _record("input", ""))
     monkeypatch.setattr(operator, "discover_catalogs", lambda _paths: [])
     monkeypatch.setattr(operator, "discover_policies", lambda _paths: [_DRAFT])
     monkeypatch.setattr(
@@ -343,6 +344,7 @@ def test_expand_resolves_a_picked_parent_to_its_directory(
     """The plan directory is resolved from the pick, never typed by the operator."""
     seen: list[argparse.Namespace] = []
     monkeypatch.setattr(operator, "prompt_text", lambda prompt, default: default)
+    monkeypatch.setattr("builtins.input", lambda _: "")
     monkeypatch.setattr(
         operator,
         "discover_plans",
@@ -398,12 +400,9 @@ def test_expand_refuses_a_contraction(
     )
     monkeypatch.setattr(operator, "cmd_expand", lambda args: pytest.fail("expanded"))
 
-    def answers(prompt: str, default: str = "") -> str:
-        if "Parent plan" in prompt:
-            return "1"
-        return "10"
-
-    monkeypatch.setattr(operator, "prompt_text", answers)
+    inputs = iter(["1", "10"])
+    monkeypatch.setattr("builtins.input", lambda _: next(inputs))
+    monkeypatch.setattr(operator, "prompt_text", lambda prompt, default: "10")
 
     operator._action_expand()
     assert "contraction" in capsys.readouterr().out
@@ -422,7 +421,7 @@ def test_catalog_selection_prefers_the_published_pointer(
         ],
     )
     monkeypatch.setattr(operator, "current_catalog_id", lambda _paths: "cat-b")
-    monkeypatch.setattr(operator, "prompt_text", lambda prompt, default: default)
+    monkeypatch.setattr("builtins.input", lambda _: "")
 
     assert operator._ask_catalog() == "cat-b"
     out = capsys.readouterr().out
@@ -442,7 +441,7 @@ def test_a_catalog_can_still_be_chosen_by_number(
         ],
     )
     monkeypatch.setattr(operator, "current_catalog_id", lambda _paths: "cat-b")
-    monkeypatch.setattr(operator, "prompt_text", lambda prompt, default: "1")
+    monkeypatch.setattr("builtins.input", lambda _: "1")
     assert operator._ask_catalog() == "cat-a"
 
 
@@ -457,7 +456,7 @@ def test_an_invalid_catalog_number_falls_back_to_current(
         ],
     )
     monkeypatch.setattr(operator, "current_catalog_id", lambda _paths: "cat-a")
-    monkeypatch.setattr(operator, "prompt_text", lambda prompt, default: "nope")
+    monkeypatch.setattr("builtins.input", lambda _: "q")
     assert operator._ask_catalog() == "current"
     assert "invalid selection" in capsys.readouterr().out
 

@@ -8,25 +8,19 @@ import sys
 
 from edgar_sec.foundation.runtime.interactive import (
     MenuAction,
+    PickItem,
     build_menu,
     menu_action,
     operator_entrypoint,
+    prompt_paginated_choice,
     prompt_text,
 )
 from edgar_sec.foundation.runtime.paths import resolve_paths
 from edgar_sec.pipelines.document_inventory.cli import main as cli_main
 from edgar_sec.pipelines.document_inventory.commands.query import cmd_query
-from edgar_sec.pipelines.document_inventory.discovery import (
-    discover_plans,
-    resolve_plan_choice,
-)
+from edgar_sec.pipelines.document_inventory.discovery import discover_plans
 
 MENU_TITLE = "Document Inventory"
-
-
-def _select(lines: list[str]) -> str:
-    print("\n" + "\n".join(lines))
-    return prompt_text("Choice", "1").strip()
 
 
 def _root() -> str:
@@ -79,11 +73,26 @@ def _action_build() -> None:
             "No published catalog plans were discovered; publish a plan before building an inventory snapshot."
         )
         return
-    plan = resolve_plan_choice(plans, select=_select)
-    if plan is None:
+    items = [
+        PickItem(
+            key=str(p.get("plan_id", "?")),
+            label=(
+                f"{p.get('plan_id', '?')}  catalog {p.get('catalog_id', '?')}  "
+                f"{p.get('scope', 'unknown')}"
+            ),
+            value=p,
+        )
+        for p in plans
+    ]
+    chosen = prompt_paginated_choice(
+        items,
+        prompt_label="Select catalog plan",
+        default=items[0],
+    )
+    if chosen is None:
         print("Plan selection cancelled.")
         return
-    plan_id = str(plan["plan_id"])
+    plan_id = str(chosen.value["plan_id"])
     from edgar_sec.pipelines.document_inventory.snapshot.builder import build_inventory
 
     pub = build_inventory(plan_id, artifacts_root=Path(_root()))

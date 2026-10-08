@@ -70,3 +70,26 @@ def test_operator_dispatches_cli_arguments(monkeypatch) -> None:
     assert menu == operator.build_operator_menu()
     assert argv == ["fixture", "list"]
     assert cli_main is operator.cli_main
+
+
+def test_action_build_uses_paginated_choice(monkeypatch, tmp_path: Path) -> None:
+    built: list[str] = []
+
+    class DummyPub:
+        was_published = True
+        snapshot = type("Snap", (), {"snapshot_id": "snap-xyz"})()
+
+    monkeypatch.setattr(
+        operator,
+        "discover_plans",
+        lambda _root: [
+            {"plan_id": "p-1", "catalog_id": "c-1", "scope": "deterministic"}
+        ],
+    )
+    monkeypatch.setattr("builtins.input", lambda _: "")
+    monkeypatch.setattr(
+        "edgar_sec.pipelines.document_inventory.snapshot.builder.build_inventory",
+        lambda pid, artifacts_root: built.append(pid) or DummyPub(),
+    )
+    operator._action_build()
+    assert built == ["p-1"]

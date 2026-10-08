@@ -5,6 +5,8 @@ from __future__ import annotations
 from pathlib import Path
 from unittest.mock import MagicMock
 
+import pytest
+
 from edgar_sec.infra.storage.dag.menu import (
     DAGMenuConfig,
     create_dag_menu,
@@ -79,3 +81,86 @@ def test_create_dag_menu_keys_are_contiguous_when_publish_is_present(
         "9",
         "10",
     ]
+
+
+def test_collect_dag_targets_empty(tmp_path: Path) -> None:
+    from edgar_sec.infra.storage.dag.menu import collect_dag_targets
+
+    assert collect_dag_targets(tmp_path) == []
+
+
+def test_collect_and_prompt_dag_targets(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    from edgar_sec.infra.storage.dag.catalog import DAGCatalog
+    from edgar_sec.infra.storage.dag.menu import collect_dag_targets, prompt_dag_target
+
+    catalog = DAGCatalog(tmp_path)
+    catalog.write_pointer("current", "snap-1")
+    catalog.write_pointer("develop", "snap-2")
+    catalog.create_tag("v1.0", "snap-1")
+
+    items = collect_dag_targets(tmp_path)
+    assert len(items) == 3
+    assert items[0].key == "current"
+    assert items[0].value == "snap-1"
+
+    monkeypatch.setattr("builtins.input", lambda _: "")
+    chosen = prompt_dag_target(tmp_path)
+    assert chosen == "snap-1"
+
+
+def test_action_branch_list_and_create(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    from edgar_sec.infra.storage.dag.manifest import DAGNodeManifest
+    from edgar_sec.infra.storage.dag.catalog import DAGCatalog
+    from edgar_sec.infra.storage.dag.menu import _action_branch
+
+    catalog = DAGCatalog(tmp_path)
+    manifest = DAGNodeManifest(
+        snapshot_id="snap-1",
+        kind="checkpoint",
+        parents=(),
+        checkpoint_anchor_id="snap-1",
+        logical_fingerprint="fp-1",
+        lineage_depth=0,
+        created_at="2024-01-01T00:00:00Z",
+        relations={},
+    )
+    catalog.publish_node(manifest, branch_name="current")
+
+    inputs = iter(["2", "feature-x", ""])
+    monkeypatch.setattr("builtins.input", lambda _: next(inputs))
+    config = DAGMenuConfig(snapshots_root=tmp_path)
+    _action_branch(config)
+
+    branches = catalog.list_branches()
+    assert "feature-x" in branches
+
+
+def test_action_tag_create(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
+    from edgar_sec.infra.storage.dag.manifest import DAGNodeManifest
+    from edgar_sec.infra.storage.dag.catalog import DAGCatalog
+    from edgar_sec.infra.storage.dag.menu import _action_tag
+
+    catalog = DAGCatalog(tmp_path)
+    manifest = DAGNodeManifest(
+        snapshot_id="snap-1",
+        kind="checkpoint",
+        parents=(),
+        checkpoint_anchor_id="snap-1",
+        logical_fingerprint="fp-1",
+        lineage_depth=0,
+        created_at="2024-01-01T00:00:00Z",
+        relations={},
+    )
+    catalog.publish_node(manifest, branch_name="current")
+
+    inputs = iter(["2", "v2.0", "", "test release"])
+    monkeypatch.setattr("builtins.input", lambda _: next(inputs))
+    config = DAGMenuConfig(snapshots_root=tmp_path)
+    _action_tag(config)
+
+    tags = catalog.list_tags()
+    assert any(t["name"] == "v2.0" for t in tags)
