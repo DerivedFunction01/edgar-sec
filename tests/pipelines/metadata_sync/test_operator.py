@@ -14,13 +14,12 @@ from edgar_sec.pipelines.metadata_sync import augment_flow
 from edgar_sec.pipelines.metadata_sync import operator as operator_module
 from edgar_sec.pipelines.metadata_sync.cli import (
     cmd_compare,
-    cmd_export,
+    cmd_family_index,
     cmd_merge,
     cmd_plan,
     cmd_refresh,
     cmd_run,
     cmd_status,
-    cmd_worker,
 )
 from edgar_sec.pipelines.metadata_sync.discovery import current_snapshot_id
 from edgar_sec.pipelines.metadata_sync.merger import publish_current_snapshot
@@ -60,8 +59,6 @@ COMMANDS = {
     "status": cmd_status,
     "run": cmd_run,
     "merge": cmd_merge,
-    "export": cmd_export,
-    "worker": cmd_worker,
     "refresh": cmd_refresh,
     "compare": cmd_compare,
 }
@@ -90,18 +87,16 @@ def test_menu_covers_the_whole_lifecycle() -> None:
         "4",
         "5",
         "6",
-        "7",
-        "8",
         "f",
+        "d",
         "p",
-        "c",
     ]
 
 
 def test_pointer_selection_and_command_rendering_have_distinct_keys() -> None:
     labels = {action.key: action.label for action in build_operator_menu()}
-    assert "current" in labels["p"].lower()
-    assert "worker commands" in labels["c"].lower()
+    assert "dag" in labels["p"].lower() or "snapshot" in labels["p"].lower()
+    assert "distribution" in labels["d"].lower()
 
 
 def test_every_menu_action_binds_to_a_shared_command() -> None:
@@ -144,9 +139,9 @@ def test_the_family_index_action_builds_against_a_published_universe(
     state = WizardState()
     state.artifacts_root = str(tmp_path)
     family_index(state)
-    payload = json.loads(capsys.readouterr().out)
-    assert Path(payload["assignment"]).is_file()
-    assert payload["registrants"] > 0
+    out = capsys.readouterr().out
+    assert "Family Index Published" in out
+    assert "family_index_id" in out
 
 
 def test_menu_closes_over_the_supplied_state() -> None:
@@ -537,9 +532,7 @@ def test_cancelled_answers_short_circuit_every_action(
     operator_module.run(state)
     operator_module.merge(state)
     operator_module.augment(state)
-    operator_module.export(state)
-    operator_module.worker(state)
-    operator_module.commands(state)
+    operator_module.open_metadata_distrib_console(state)
     assert called == []
 
 

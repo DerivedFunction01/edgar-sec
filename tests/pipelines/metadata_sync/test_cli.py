@@ -43,9 +43,7 @@ COMMANDS = (
     "status",
     "run",
     "merge",
-    "worker",
-    "export",
-    "import",
+    "distrib",
     "augment",
     "sources",
     "family-index",
@@ -114,6 +112,14 @@ def test_sources_registers_refresh_and_compare() -> None:
     assert set(nested) == {"refresh", "compare"}
 
 
+def test_distrib_registers_distribution_subcommands() -> None:
+    distrib = _subparser("distrib")
+    nested = next(
+        act.choices for act in distrib._actions if getattr(act, "choices", None)
+    )
+    assert set(nested) == {"export", "worker", "import", "list", "commands"}
+
+
 def test_a_plan_needs_a_cohort_reference() -> None:
     for command in ("plan", "augment"):
         assert {"--input", "--roster", "--universe"} <= _flags(command)
@@ -133,7 +139,7 @@ def test_the_universe_cannot_be_combined_with_another_cohort() -> None:
 
 
 def test_execution_commands_re_derive_from_the_universe() -> None:
-    for command in ("status", "run", "merge", "worker", "export", "import"):
+    for command in ("status", "run", "merge"):
         assert "--universe" in _flags(command)
 
 
@@ -143,7 +149,7 @@ def test_a_plan_with_no_cohort_reference_is_rejected() -> None:
 
 
 def test_execution_commands_accept_a_plan_reference() -> None:
-    for command in ("status", "run", "merge", "worker", "export", "import"):
+    for command in ("status", "run", "merge"):
         assert {"--plan-id", "--bundle", "--input"} <= _flags(command)
 
 
@@ -411,12 +417,13 @@ def test_a_copied_bundle_names_its_own_plan(tmp_path: Path, capsys) -> None:
     destination = tmp_path / "out"
     main(
         [
+            "distrib",
             "export",
             "--plan-id",
             plan_id,
             "--artifacts",
             str(tmp_path),
-            "--worker-count",
+            "--workers",
             "1",
             "--destination",
             str(destination),

@@ -154,6 +154,18 @@ def build_parser() -> argparse.ArgumentParser:
         )
     )
 
+    from edgar_sec.infra.distribution.cli import attach_distrib_subparser
+    from .distribution_adapter import InventoryDistributionAdapter
+
+    attach_distrib_subparser(
+        commands,
+        lambda args: InventoryDistributionAdapter(
+            artifacts_root=Path(args.artifacts).resolve()
+            if getattr(args, "artifacts", None)
+            else None
+        ),
+    )
+
     return parser
 
 

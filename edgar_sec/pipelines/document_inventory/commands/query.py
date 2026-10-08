@@ -13,13 +13,7 @@ from edgar_sec.foundation.runtime.render import (
     render_output,
 )
 from edgar_sec.pipelines.document_inventory.paths import InventoryPaths
-from edgar_sec.pipelines.document_inventory.snapshot.reader import (
-    get_accessions_by_cik,
-    get_accessions_by_source_cik,
-    get_active_accession,
-    get_active_entries,
-    query_accessions,
-)
+from edgar_sec.pipelines.document_inventory.snapshot import reader
 
 from .common import resolve_artifacts_root
 
@@ -31,18 +25,18 @@ def cmd_query(args: argparse.Namespace) -> int:
 
     results: list[dict[str, Any]] = []
     if args.accession:
-        acc = get_active_accession(snapshots_root, args.accession)
+        acc = reader.get_active_accession(snapshots_root, args.accession)
         if acc:
-            entries = get_active_entries(snapshots_root, args.accession)
+            entries = reader.get_active_entries(snapshots_root, args.accession)
             acc_copy = dict(acc)
             acc_copy["entries"] = entries
             results.append(acc_copy)
     elif args.filing_cik and not (args.form or args.source_cik):
-        results = get_accessions_by_cik(snapshots_root, args.filing_cik)
+        results = reader.get_accessions_by_cik(snapshots_root, args.filing_cik)
     elif args.source_cik and not (args.form or args.filing_cik):
-        results = get_accessions_by_source_cik(snapshots_root, args.source_cik)
+        results = reader.get_accessions_by_source_cik(snapshots_root, args.source_cik)
     else:
-        results = query_accessions(
+        results = reader.query_accessions(
             snapshots_root,
             form=args.form,
             filing_cik=args.filing_cik,

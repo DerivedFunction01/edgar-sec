@@ -16,7 +16,7 @@ from pathlib import Path
 from ..env import get_env
 from .catalog import get_catalog_specs
 from .dag import get_dag_specs
-from .paths import get_paths_specs
+from .paths import DEFAULT_DISTRIBUTION_ROOT, get_paths_specs
 from .runtime import get_runtime_specs
 from .sec import SecSettings, get_sec_specs
 
@@ -218,6 +218,7 @@ class RuntimeSettings:
     cache_root: Path
     ttl_s: int
     temp_directory: Path | None
+    distribution_root: Path = DEFAULT_DISTRIBUTION_ROOT
     log_level: str = "INFO"
 
 
@@ -254,6 +255,9 @@ def resolve_runtime_settings(
         cache_root=Path(str(raw["cache.root"])),
         ttl_s=int(raw["cache.ttl_s"]),
         temp_directory=temp_dir,
+        distribution_root=Path(
+            str(raw.get("distribution.root", DEFAULT_DISTRIBUTION_ROOT))
+        ),
     )
 
 

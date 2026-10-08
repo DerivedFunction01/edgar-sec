@@ -6,7 +6,7 @@ import argparse
 import json
 
 from edgar_sec.foundation.runtime.render import KeyValueRow, render_output
-from edgar_sec.pipelines.document_inventory.snapshot.builder import build_inventory
+from edgar_sec.pipelines.document_inventory.snapshot import builder
 
 from .common import resolve_artifacts_root
 
@@ -14,7 +14,7 @@ from .common import resolve_artifacts_root
 def cmd_build(args: argparse.Namespace) -> int:
     """Build and publish an immutable inventory snapshot."""
     root = resolve_artifacts_root(args.artifacts)
-    publication = build_inventory(
+    publication = builder.build_inventory(
         args.catalog_plan,
         base_snapshot_id=args.base_snapshot,
         explicit_refresh=args.explicit_refresh,

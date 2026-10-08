@@ -19,14 +19,16 @@ from edgar_sec.infra.storage.dag.cli import (
     dispatch_dag_subcommand,
 )
 
+from edgar_sec.infra.distribution.cli import attach_distrib_subparser
+
 from .assignment import AssignmentError
 from .commands.augment import cmd_augment
 from .commands.client import build_client
-from .commands.distribution import cmd_export, cmd_import, cmd_worker
 from .commands.merge import cmd_merge
 from .commands.plan import cmd_plan, cmd_status
 from .commands.run import cmd_run
 from .commands.sources import cmd_compare, cmd_family_index, cmd_refresh
+from .distribution_adapter import MetadataDistributionAdapter
 from .options import (
     PlanOptions,
     RunOptions,
@@ -47,15 +49,12 @@ __all__ = [
     "build_parser",
     "cmd_augment",
     "cmd_compare",
-    "cmd_export",
     "cmd_family_index",
-    "cmd_import",
     "cmd_merge",
     "cmd_plan",
     "cmd_refresh",
     "cmd_run",
     "cmd_status",
-    "cmd_worker",
     "main",
 ]
 
@@ -195,51 +194,13 @@ def build_parser() -> argparse.ArgumentParser:
     _add_common(merge_parser)
     merge_parser.set_defaults(func=lambda args: cmd_merge(_run_options(args)))
 
-    worker_parser = subparsers.add_parser(
-        "worker", help="run this worker's assigned chunks from a copied bundle"
-    )
-    _add_plan_reference(worker_parser)
-    _add_common(worker_parser)
-    worker_parser.add_argument(
-        "--worker", default="", help="worker id, when the bundle carries several"
-    )
-    worker_parser.set_defaults(
-        func=lambda args: cmd_worker(_run_options(args), client=_build_client())
-    )
-
-    export_parser = subparsers.add_parser(
-        "export", help="copy the plan bundle out, one directory per worker"
-    )
-    _add_plan_reference(export_parser)
-    _add_common(export_parser)
-    export_parser.add_argument(
-        "--worker-count",
-        type=positive_int_type,
-        required=True,
-        help="disjoint assignments to emit",
-    )
-    export_parser.add_argument("--destination", required=True, help="output directory")
-    export_parser.set_defaults(
-        func=lambda args: cmd_export(
-            _run_options(args),
-            worker_count=args.worker_count,
-            destination=Path(_require(args.destination, "--destination")).resolve(),
-        )
-    )
-
-    import_parser = subparsers.add_parser(
-        "import", help="verify a worker's returned chunks and adopt them"
-    )
-    _add_plan_reference(import_parser)
-    _add_common(import_parser)
-    import_parser.add_argument(
-        "--source", required=True, help="directory holding the returned bundle"
-    )
-    import_parser.set_defaults(
-        func=lambda args: cmd_import(
-            _run_options(args),
-            source=Path(_require(args.source, "--source")).resolve(),
-        )
+    attach_distrib_subparser(
+        subparsers,
+        lambda args: MetadataDistributionAdapter(
+            artifacts_root=Path(args.artifacts).resolve()
+            if getattr(args, "artifacts", None)
+            else None
+        ),
     )
 
     augment_parser = subparsers.add_parser(

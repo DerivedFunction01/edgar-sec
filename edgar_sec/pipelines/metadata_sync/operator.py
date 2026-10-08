@@ -22,14 +22,13 @@ from edgar_sec.foundation.runtime.settings import resolve_runtime_settings
 from .cli import (
     cmd_compare,
     cmd_family_index,
-    cmd_export,
     cmd_merge,
     cmd_plan,
     cmd_refresh,
     cmd_run,
     cmd_status,
-    cmd_worker,
 )
+
 from .cli import main as cli_main
 from .discovery import (
     SourceSummary,
@@ -353,37 +352,6 @@ def augment(state: WizardState) -> None:
     run_augment(state)
 
 
-def export(state: WizardState) -> None:
-    if not _ensure_plan(state):
-        return
-    destination = prompt_text("Destination directory", "").strip()
-    if not destination:
-        print("cancelled; export needs a destination directory")
-        return
-    worker_count = _ask_int("Worker assignments to emit", 2)
-    if worker_count is None:
-        print("cancelled; export needs a worker count")
-        return
-    cmd_export(
-        state.run_options(),
-        worker_count=worker_count,
-        destination=Path(destination).resolve(),
-    )
-
-
-def worker(state: WizardState) -> None:
-    options = _ask_run_options(state, with_bundle=True)
-    if options is None:
-        return
-    label = prompt_text("Worker id (blank = the only assignment)", "").strip()
-    if label:
-        options.worker_id = label
-    if not confirm_network():
-        print("cancelled; nothing was fetched")
-        return
-    cmd_worker(options)
-
-
 def _source_label(source_name: str, snapshots: list[SourceSummary]) -> str:
     """One line naming a source and what is already published from it."""
     if not snapshots:
@@ -480,13 +448,20 @@ def compare(state: WizardState) -> None:
     )
 
 
-def commands(state: WizardState) -> None:
-    """Print the full distributed lifecycle for this plan, in execution order."""
-    from .worker_commands import render_worker_commands
+def open_metadata_distrib_console(state: WizardState) -> None:
+    """Launch the interactive worker distribution console."""
+    from edgar_sec.infra.distribution.menu import DistribMenuConfig, run_distrib_menu
+    from .distribution_adapter import MetadataDistributionAdapter
 
-    render_worker_commands(
-        state.metadata(), lambda: state.plan_id if _ensure_plan(state) else None
+    adapter = MetadataDistributionAdapter(
+        artifacts_root=Path(state.artifacts_root) if state.artifacts_root else None
     )
+    config = DistribMenuConfig(
+        adapter=adapter,
+        plan_id_provider=lambda: state.plan_id if _ensure_plan(state) else None,
+        title="Metadata Sync Worker Distribution",
+    )
+    run_distrib_menu(config)
 
 
 def open_metadata_dag_console(state: WizardState) -> None:
@@ -515,8 +490,6 @@ def build_operator_menu(state: WizardState | None = None) -> tuple[MenuAction, .
         menu_action("Status and resume inspect", lambda: status(session)),
         menu_action("Run chunks", lambda: run(session)),
         menu_action("Augment published snapshot", lambda: augment(session)),
-        menu_action("Export bundles for workers", lambda: export(session)),
-        menu_action("Run a worker bundle", lambda: worker(session)),
         menu_action("Refresh external source", lambda: refresh(session)),
         menu_action("Compare curated input against a source", lambda: compare(session)),
         menu_action(
@@ -525,12 +498,14 @@ def build_operator_menu(state: WizardState | None = None) -> tuple[MenuAction, .
             key="f",
         ),
         menu_action(
+            "Worker distribution console (export, worker, import, commands)",
+            lambda: open_metadata_distrib_console(session),
+            key="d",
+        ),
+        menu_action(
             "Snapshot DAG console (merge/publish, switch current, inspect, branches, tags)",
             lambda: open_metadata_dag_console(session),
             key="p",
-        ),
-        menu_action(
-            "Show worker commands for this plan", lambda: commands(session), key="c"
         ),
     )
 

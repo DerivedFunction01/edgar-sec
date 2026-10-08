@@ -6,6 +6,7 @@ from dataclasses import dataclass
 from pathlib import Path
 
 from .settings import resolve_settings
+from .settings.paths import DEFAULT_DISTRIBUTION_ROOT
 
 # Cross-pipeline artifact layout: an immutable dataset under a dataset root, a
 # pointer naming what is published, and resumable work under a transient root.
@@ -52,6 +53,21 @@ class ProjectPaths:
     @property
     def runtime_root(self) -> Path:
         return runtime_root(self.artifacts_root)
+
+    @property
+    def distribution_root(self) -> Path:
+        return distribution_root(self.repo_root)
+
+
+def distribution_root(repo_root: Path | str | None = None) -> Path:
+    """Resolve the registered distribution root."""
+    configured = Path(
+        str(resolve_settings().get("distribution.root", DEFAULT_DISTRIBUTION_ROOT))
+    )
+    if configured.is_absolute():
+        return configured
+    base = Path(repo_root) if repo_root is not None else Path.cwd()
+    return (base / configured).resolve()
 
 
 # edgar_sec/, i.e. three levels up from this file (foundation/runtime/paths.py).
@@ -123,6 +139,7 @@ __all__ = [
     "ProjectPaths",
     "ProjectRootError",
     "current_pointer_path",
+    "distribution_root",
     "resolve_paths",
     "runtime_root",
     "transient_dir",

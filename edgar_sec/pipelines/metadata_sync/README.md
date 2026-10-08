@@ -62,7 +62,7 @@ it has no access to the coordinator's store. The bundle copy is what
 | [commands/](commands/README.md) | Subcommand implementations using component terminal renderer. |
 | `operator.py` | Interactive wizard: session state, on-disk discovery, auto-resolution, and network consent over the same `cmd_*` functions. |
 | `augment_flow.py` | The augmentation journey: source observation, cohort choice, base choice, and the preflight that settles the arithmetic before any fetch. |
-| `worker_commands.py` | Renders the distributed lifecycle as copy-pasteable shell commands. |
+| `distribution_adapter.py` | Adapts metadata sync to the generic Layer 2 distribution engine. |
 | `discovery.py` | What is already on disk: plans with progress, published snapshots, the current pointer, and published effective-CIK rosters. Manifests only; never opens a Parquet payload. |
 | `smoke_test.py` | Credential-gated live check that never publishes. |
 

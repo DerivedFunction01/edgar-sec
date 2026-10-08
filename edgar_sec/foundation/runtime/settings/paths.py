@@ -16,6 +16,7 @@ if TYPE_CHECKING:
 
 DEFAULT_ARTIFACTS_ROOT = Path(".artifacts")
 DEFAULT_CACHE_TTL_S = 90 * 24 * 60 * 60  # 90 days
+DEFAULT_DISTRIBUTION_ROOT = Path(".distrib")
 
 
 def _cache_root(resolved: dict) -> Path:
@@ -34,6 +35,15 @@ def get_paths_specs() -> dict[str, dict[str, SettingSpec]]:
                 env=True,
                 machine_local=True,
                 description="shared generated-artifact workspace",
+            ),
+        },
+        "distribution": {
+            "root": SettingSpec(
+                value_type=Path,
+                default=DEFAULT_DISTRIBUTION_ROOT,
+                env=True,
+                machine_local=True,
+                description="shared root for distributed worker bundles",
             ),
         },
         "cache": {
@@ -59,5 +69,6 @@ def get_paths_specs() -> dict[str, dict[str, SettingSpec]]:
 __all__ = [
     "DEFAULT_ARTIFACTS_ROOT",
     "DEFAULT_CACHE_TTL_S",
+    "DEFAULT_DISTRIBUTION_ROOT",
     "get_paths_specs",
 ]

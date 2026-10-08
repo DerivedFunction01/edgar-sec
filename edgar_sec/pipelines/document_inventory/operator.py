@@ -182,6 +182,27 @@ def _action_dag() -> None:
     run_dag_menu(config)
 
 
+def _action_distrib() -> None:
+    from edgar_sec.infra.distribution.menu import DistribMenuConfig, run_distrib_menu
+    from .distribution_adapter import InventoryDistributionAdapter
+
+    def _provide_plan_id() -> str | None:
+        plans = discover_plans(_root())
+        if not plans:
+            print("No published catalog plans were discovered.")
+            return None
+        plan = resolve_plan_choice(plans, select=_select)
+        return str(plan["plan_id"]) if plan is not None else None
+
+    adapter = InventoryDistributionAdapter(artifacts_root=Path(_root()))
+    config = DistribMenuConfig(
+        adapter=adapter,
+        plan_id_provider=_provide_plan_id,
+        title="Document Inventory Worker Distribution",
+    )
+    run_distrib_menu(config)
+
+
 def build_operator_menu() -> tuple[MenuAction, ...]:
     return build_menu(
         menu_action("Create fixture from a published catalog plan", _action_create),
@@ -190,6 +211,11 @@ def build_operator_menu() -> tuple[MenuAction, ...]:
         menu_action("Build parser review artifacts", _action_review),
         menu_action("Build inventory snapshot from catalog plan", _action_build),
         menu_action("Snapshot DAG Lifecycle Console", _action_dag),
+        menu_action(
+            "Worker distribution console (export, worker, import, commands)",
+            _action_distrib,
+            key="d",
+        ),
     )
 
 

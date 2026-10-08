@@ -11,8 +11,8 @@ Presentation and execution layer for the metadata sync CLI subcommands.
 | Execution and chunk running | [run.py](run.py) |
 | Snapshot chunk merging | [merge.py](merge.py) |
 | Cohort augmentation | [augment.py](augment.py) |
-| Distributed worker export, run, and import | [distribution.py](distribution.py) |
 | Submissions HTTP client factory | [client.py](client.py) |
+
 
 ## Layout
 
@@ -24,7 +24,6 @@ Presentation and execution layer for the metadata sync CLI subcommands.
 | [run.py](run.py) | `cmd_run`. |
 | [merge.py](merge.py) | `cmd_merge`. |
 | [augment.py](augment.py) | `cmd_augment`. |
-| [distribution.py](distribution.py) | `cmd_export`, `cmd_worker`, `cmd_import`. |
 | `__init__.py` | Package docstring only; no re-exports. |
 
 ## Contracts
@@ -40,8 +39,8 @@ Presentation and execution layer for the metadata sync CLI subcommands.
 - [run.py](run.py): `cmd_run`
 - [merge.py](merge.py): `cmd_merge`
 - [augment.py](augment.py): `cmd_augment`
-- [distribution.py](distribution.py): `cmd_export`, `cmd_worker`, `cmd_import`
 - [client.py](client.py): `build_client`
+
 
 ## Mirrored Tests
 
