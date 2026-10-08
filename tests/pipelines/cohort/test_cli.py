@@ -36,6 +36,7 @@ def test_parser_exposes_documented_commands_and_nested_workspace_grammar() -> No
         "diff",
         "family-index",
         "workspace",
+        "repl",
         "merge",
         "console",
     }
@@ -118,6 +119,22 @@ def test_cli_startup_cleans_expired_sessions(
     assert cli.main(["workspace", "init", "session-a"]) == 0
     assert calls == [86400]
     assert ObjectStore(paths.catalog_file).get_active_session() == "session-a"
+
+
+def test_repl_command_dispatches_to_workspace_loop(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    paths = CohortPaths(tmp_path)
+    context = cli._Context(paths, CohortCatalog(paths), ObjectStore(paths.catalog_file))
+    calls = []
+    monkeypatch.setattr(cli, "_context", lambda: context)
+    monkeypatch.setattr(
+        "edgar_sec.pipelines.cohort.repl.run_repl",
+        lambda *args: calls.append(args) or 0,
+    )
+
+    assert cli.main(["repl"]) == 0
+    assert calls == [(paths, context.catalog, context.store)]
 
 
 def test_list_renders_cohorts_as_a_grid(capsys: pytest.CaptureFixture[str]) -> None:

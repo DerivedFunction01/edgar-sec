@@ -135,15 +135,7 @@ def resolve_cohort(options: PlanOptions) -> SelectedCohort:
         raise ValueError(f"--limit must be >= 1, got {options.limit}")
     paths = resolve_cohort_paths(options.metadata().artifacts_root)
     catalog = CohortCatalog(paths)
-    aliases = {"universe": "cik_lookup", "tickers": "company_tickers"}
-    if options.cohort in aliases:
-        from edgar_sec.infra.storage.cohort.sources import resolve_active_source
-
-        record = resolve_active_source(aliases[options.cohort], catalog=catalog)
-        if record is None:
-            raise ValueError(f"no active {options.cohort} cohort is published")
-    else:
-        record = catalog.resolve_cohort_identifier(options.cohort)
+    record = catalog.resolve_cohort_identifier(options.cohort)
     roster = cohort_record_to_roster(record, paths)
     if options.limit is not None and options.limit < roster.row_count:
         if roster.dataset is None:

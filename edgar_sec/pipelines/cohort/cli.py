@@ -211,17 +211,6 @@ def _cmd_find(args: Any, context: _Context) -> int:
 
 
 def _source_record(context: _Context, source: str) -> CohortRecord:
-    from edgar_sec.infra.storage.cohort.sources import resolve_active_source
-
-    source_name = {
-        "universe": "cik_lookup",
-        "tickers": "company_tickers",
-    }.get(source, source)
-    if source_name in {"cik_lookup", "company_tickers"}:
-        record = resolve_active_source(source_name, catalog=context.catalog)
-        if record is None:
-            raise ValueError(f"No active cohort source: {source_name!r}")
-        return record
     return _resolve(context, source)
 
 
@@ -496,6 +485,12 @@ def _cmd_merge(args: Any, context: _Context) -> int:
     return 0
 
 
+def _cmd_repl(_args: Any, context: _Context) -> int:
+    from edgar_sec.pipelines.cohort.repl import run_repl
+
+    return run_repl(context.paths, context.catalog, context.store)
+
+
 def _dispatch(args: Any, context: _Context) -> int:
     handlers = {
         "import": _cmd_import,
@@ -511,6 +506,7 @@ def _dispatch(args: Any, context: _Context) -> int:
         "diff": _cmd_diff,
         "family-index": _cmd_family_index,
         "workspace": _cmd_workspace,
+        "repl": _cmd_repl,
         "merge": _cmd_merge,
     }
     if args.command == "sources":

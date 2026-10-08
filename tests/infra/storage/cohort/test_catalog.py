@@ -49,6 +49,33 @@ def _registered(
     )
 
 
+def _registered_official(
+    catalog: CohortCatalog,
+    paths: CohortPaths,
+    *,
+    source_name: str = "cik_lookup",
+    suffix: str = "",
+    pinned: bool = True,
+):
+    snapshot_id = hashlib.sha256(f"source:{source_name}:{suffix}".encode()).hexdigest()
+    roster_id = hashlib.sha256(f"roster:{source_name}:{suffix}".encode()).hexdigest()
+    cohort_id = f"c-{snapshot_id[:16]}"
+    dataset = paths.cohort_dataset_file(cohort_id)
+    dataset.parent.mkdir(parents=True, exist_ok=True)
+    dataset.write_bytes(f"official:{suffix}".encode())
+    return catalog.register_cohort(
+        cohort_id=cohort_id,
+        origin_kind="official_source",
+        origin_details={"source_snapshot_id": snapshot_id, "source_name": source_name},
+        roster_id=roster_id,
+        row_count=1,
+        distinct_cik_count=1,
+        dataset_sha256=file_sha256(dataset),
+        dataset_path=paths.relative_path(dataset),
+        pinned=pinned,
+    )
+
+
 def _family_index(
     paths: CohortPaths, family_index_id: str, content: bytes = b"family index"
 ) -> tuple[Path, str]:
@@ -332,6 +359,17 @@ def test_catalog_lookup_tags_search_and_identifier_prefix(tmp_path: Path) -> Non
     assert not (paths.cohort_dir(record.cohort_id) / "cohort.json").exists()
 
 
+def test_cohort_count_returns_zero_then_registered_total(tmp_path: Path) -> None:
+    paths = CohortPaths(tmp_path)
+    catalog = CohortCatalog(paths)
+    assert catalog.cohort_count() == 0
+
+    _registered(catalog, paths, suffix="-one")
+    _registered(catalog, paths, suffix="-two")
+
+    assert catalog.cohort_count() == 2
+
+
 def test_identifier_short_missing_and_ambiguous_refusal(tmp_path: Path) -> None:
     paths = CohortPaths(tmp_path)
     catalog = CohortCatalog(paths)
@@ -349,9 +387,15 @@ def test_identifier_short_missing_and_ambiguous_refusal(tmp_path: Path) -> None:
 def test_active_source_pointer_and_pinned_deletion_guards(tmp_path: Path) -> None:
     paths = CohortPaths(tmp_path)
     catalog = CohortCatalog(paths)
-    active = _registered(catalog, paths, suffix="-active")
+    active = _registered_official(catalog, paths, suffix="-active")
     catalog.set_active_source_pointer("cik_lookup", active.cohort_id)
     assert catalog.get_active_source_pointer("cik_lookup") == active.cohort_id
+    with pytest.raises(CohortPinnedError):
+        catalog.delete_cohort(active.cohort_id)
+    with catalog._connection() as connection:
+        connection.execute(
+            "UPDATE cohorts SET pinned = 0 WHERE cohort_id = ?", (active.cohort_id,)
+        )
     with pytest.raises(CohortActiveSourceError):
         catalog.delete_cohort(active.cohort_id)
 
@@ -362,6 +406,89 @@ def test_active_source_pointer_and_pinned_deletion_guards(tmp_path: Path) -> Non
         )
     with pytest.raises(CohortPinnedError):
         catalog.delete_cohort(pinned.cohort_id)
+
+
+def test_active_source_pointer_requires_official_pinned_cohort(
+    tmp_path: Path,
+) -> None:
+    paths = CohortPaths(tmp_path)
+    catalog = CohortCatalog(paths)
+    import_record = _registered(catalog, paths)
+    unpinned = _registered_official(catalog, paths, suffix="-unpinned", pinned=False)
+    wrong_source = _registered_official(
+        catalog, paths, source_name="company_tickers", suffix="-wrong-source"
+    )
+
+    for cohort_id in (import_record.cohort_id, unpinned.cohort_id):
+        with pytest.raises(CohortIdentifierError, match="official pinned"):
+            catalog.set_active_source_pointer("cik_lookup", cohort_id)
+    with pytest.raises(CohortIdentifierError, match="different source"):
+        catalog.set_active_source_pointer("cik_lookup", wrong_source.cohort_id)
+    with pytest.raises(CohortIdentifierError, match="not found"):
+        catalog.set_active_source_pointer("cik_lookup", "c-missing")
+    with pytest.raises(CohortIdentifierError, match="unknown official source"):
+        catalog.set_active_source_pointer("custom", import_record.cohort_id)
+
+
+@pytest.mark.parametrize(
+    "alias,source_name", [("universe", "cik_lookup"), ("tickers", "company_tickers")]
+)
+def test_source_alias_resolves_active_official_snapshot(
+    tmp_path: Path, alias: str, source_name: str
+) -> None:
+    paths = CohortPaths(tmp_path)
+    catalog = CohortCatalog(paths)
+    record = _registered_official(catalog, paths, source_name=source_name)
+    catalog.set_active_source_pointer(source_name, record.cohort_id)
+
+    assert catalog.resolve_cohort_identifier(alias) == record
+
+
+def test_source_alias_takes_precedence_over_matching_user_name(tmp_path: Path) -> None:
+    paths = CohortPaths(tmp_path)
+    catalog = CohortCatalog(paths)
+    user_named_cohort = _registered(catalog, paths)
+    with catalog._connection() as connection:
+        connection.execute(
+            "UPDATE cohorts SET name = ? WHERE cohort_id = ?",
+            ("universe", user_named_cohort.cohort_id),
+        )
+
+    with pytest.raises(CohortIdentifierError, match="no active universe"):
+        catalog.resolve_cohort_identifier("universe")
+
+
+def test_source_alias_refuses_dangling_or_invalid_pointer(tmp_path: Path) -> None:
+    paths = CohortPaths(tmp_path)
+    catalog = CohortCatalog(paths)
+    record = _registered(catalog, paths)
+
+    with catalog._connection() as connection:
+        connection.execute(
+            "INSERT INTO source_active_pointers (source_name, active_snapshot_id) VALUES (?, ?)",
+            ("cik_lookup", "c-missing"),
+        )
+    with pytest.raises(CohortIdentifierError, match="references a missing cohort"):
+        catalog.resolve_cohort_identifier("universe")
+
+    with catalog._connection() as connection:
+        connection.execute(
+            "UPDATE source_active_pointers SET active_snapshot_id = ? WHERE source_name = ?",
+            (record.cohort_id, "cik_lookup"),
+        )
+    with pytest.raises(CohortIdentifierError, match="not an official pinned"):
+        catalog.resolve_cohort_identifier("universe")
+
+    wrong_source = _registered_official(
+        catalog, paths, source_name="company_tickers", suffix="-wrong-source"
+    )
+    with catalog._connection() as connection:
+        connection.execute(
+            "UPDATE source_active_pointers SET active_snapshot_id = ? WHERE source_name = ?",
+            (wrong_source.cohort_id, "cik_lookup"),
+        )
+    with pytest.raises(CohortIdentifierError, match="different source"):
+        catalog.resolve_cohort_identifier("universe")
 
 
 def test_alias_reference_requires_force_and_force_removes_alias(tmp_path: Path) -> None:

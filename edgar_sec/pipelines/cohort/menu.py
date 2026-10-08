@@ -16,6 +16,8 @@ from edgar_sec.foundation.runtime.interactive import (
     run_interactive_menu,
 )
 
+SUPPORTED_UPLOAD_EXTENSIONS = frozenset({".csv", ".tsv", ".txt", ".text", ".parquet"})
+
 
 def _run_cli(*arguments: str) -> None:
     from edgar_sec.pipelines.cohort.cli import main
@@ -98,10 +100,33 @@ def pick_workspace_session(store: object) -> str | None:
 def pick_upload_file(base_dir: str | Path = "uploads") -> str | None:
     directory = Path(base_dir)
     files = (
-        sorted((path for path in directory.iterdir() if path.is_file()), key=str)
+        sorted(
+            (
+                path
+                for path in directory.iterdir()
+                if path.is_file()
+                and not path.is_symlink()
+                and not path.name.startswith(".")
+                and path.suffix.lower() in SUPPORTED_UPLOAD_EXTENSIONS
+            ),
+            key=lambda path: (path.name.casefold(), path.name),
+        )
         if directory.is_dir()
         else []
     )
+    if not files:
+        print(f"No supported dataset files found in {directory}.")
+        explicit_path = prompt_text("Dataset file path (blank to cancel)")
+        if not explicit_path:
+            return None
+        candidate = Path(explicit_path).expanduser()
+        if (
+            not candidate.is_file()
+            or candidate.suffix.lower() not in SUPPORTED_UPLOAD_EXTENSIONS
+        ):
+            print("Enter an existing CSV, TSV, TXT/TEXT, or Parquet file.")
+            return None
+        return str(candidate)
     items = [
         PickItem(key=path.name, label=str(path), value=str(path)) for path in files
     ]
@@ -164,7 +189,7 @@ def _publish_family_index() -> None:
 def _source_menu() -> None:
     actions = make_menu(
         menu_action("Refresh official source", _refresh_source),
-        menu_action("Assign company families", _assign_families),
+        menu_action("Assign company families", _publish_family_index),
         MenuSeparator(),
     )
     run_interactive_menu("Official Sources & Taxonomy", actions)
@@ -186,6 +211,8 @@ def _import() -> None:
 
 def _workspace_menu() -> None:
     actions = make_menu(
+        menu_action("Open interactive REPL", lambda: _run_cli("repl")),
+        MenuSeparator("Session Workflows"),
         menu_action("Initialize session", lambda: _prompt_workspace("init")),
         menu_action("Show current session", lambda: _run_cli("workspace", "current")),
         menu_action("List sessions", lambda: _run_cli("workspace", "sessions")),
@@ -201,6 +228,36 @@ def _workspace_menu() -> None:
         menu_action("Clear session variables", lambda: _run_cli("workspace", "clear")),
     )
     run_interactive_menu("Cohort Workspace", actions)
+
+
+def _diff_cohorts() -> None:
+    from edgar_sec.infra.storage.cohort.catalog import CohortCatalog
+    from edgar_sec.infra.storage.cohort.paths import resolve_cohort_paths
+
+    catalog = CohortCatalog(resolve_cohort_paths())
+    left = pick_cohort(catalog)
+    if left is None:
+        return
+    right = pick_cohort(catalog)
+    if right is None:
+        return
+    save_side = prompt_choice(
+        "Save a delta cohort?",
+        [
+            ("1", "No; show the diff only"),
+            ("2", "Save left-only delta (left minus right)"),
+            ("3", "Save right-only delta (right minus left)"),
+        ],
+        default="1",
+    )
+    arguments = ["diff", left, right]
+    if save_side in {"2", "3"}:
+        name = prompt_text("Delta cohort name")
+        if not name:
+            return
+        flag = "--save-left-delta" if save_side == "2" else "--save-right-delta"
+        arguments.extend((flag, name))
+    _run_cli(*arguments)
 
 
 def _prompt_workspace(command: str) -> None:
@@ -357,6 +414,7 @@ def build_menu() -> tuple[MenuAction | MenuSeparator, ...]:
     return make_menu(
         MenuSeparator("Official Sources & Taxonomy"),
         menu_action("Refresh & manage official sources", _source_menu),
+        menu_action("Diff cohorts", _diff_cohorts),
         menu_action(
             "Publish family index for the universe",
             _publish_family_index,
@@ -379,15 +437,22 @@ def _header() -> str:
 
     paths = resolve_cohort_paths()
     catalog = CohortCatalog(paths)
-    count = 0
-    offset = 0
-    while True:
-        page = catalog.list_cohorts(limit=500, offset=offset)
-        count += len(page)
-        if len(page) < 500:
-            break
-        offset += len(page)
-    return f"Catalog: {paths.catalog_file} | Cohorts: {count} | Family Index: cohort pipeline"
+    count = catalog.cohort_count()
+    universe_id = catalog.get_active_source_pointer("cik_lookup")
+    tickers_id = catalog.get_active_source_pointer("company_tickers")
+    family_index = (
+        catalog.get_active_family_index(universe_id)
+        if universe_id is not None
+        else None
+    )
+    family_index_id = (
+        family_index.family_index_id if family_index is not None else "none"
+    )
+    return (
+        f"Catalog: {paths.catalog_file} | Cohorts: {count} | "
+        f"Universe: {universe_id or 'none'} | Tickers: {tickers_id or 'none'} | "
+        f"Family Index: {family_index_id}"
+    )
 
 
 def run_console() -> int:

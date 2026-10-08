@@ -170,6 +170,7 @@ def build_parser() -> argparse.ArgumentParser:
     workspace_commands.choices["drop"].add_argument("variable")
     workspace_commands.choices["clean"].add_argument("--older-than", default="24h")
 
+    commands.add_parser("repl", help="open an interactive cohort workspace")
     merge = commands.add_parser("merge", help="evaluate a cohort set expression")
     merge.add_argument("--expr", required=True)
     merge.add_argument("--name")

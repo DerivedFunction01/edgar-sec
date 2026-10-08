@@ -11,6 +11,7 @@ Provides Phase 0 command-line and interactive orchestration for the shared cohor
 | `options.py` | CLI grammar and argument validation. |
 | `menu.py` | Grouped interactive console and prompt flows. |
 | `cli.py` | Source refresh, cohort diff, catalog, query, sampling, family-index, and workspace dispatch. |
+| `repl.py` | Line-oriented workspace commands and set-expression assignments. |
 | `family_index.py` | Content-addressed publication of the active universe family index. |
 | `__init__.py` | Package docstring only; no re-exports. |
 
@@ -33,12 +34,13 @@ Provides Phase 0 command-line and interactive orchestration for the shared cohor
 
 - `main()` in [`cli.py`](cli.py) is the launcher entry point.
 - `build_parser()` in [`options.py`](options.py) exposes the documented command grammar.
+- `run_repl()` in [`repl.py`](repl.py) runs the opt-in interactive workspace.
 
 ## Command Surface
 
 `import`, `list`, `info`, `rename`, `tag`, `untag`, `delete`, `query`, `find`,
-`sample`, `sources refresh`, `diff`, `family-index`, `workspace`, `merge`, and
-`console`.
+`sample`, `sources refresh`, `diff`, `family-index`, `workspace`, `merge`, `repl`,
+and `console`.
 
 ## Mirrored Tests
 

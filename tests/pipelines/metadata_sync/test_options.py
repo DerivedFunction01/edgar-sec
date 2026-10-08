@@ -1,11 +1,14 @@
 from __future__ import annotations
 
+import hashlib
 import shutil
 from pathlib import Path
 
 import pytest
 
 from edgar_sec.foundation.runtime.settings.runtime import DEFAULT_CHUNK_SIZE
+from edgar_sec.foundation.hashing import file_sha256
+from edgar_sec.infra.storage.cohort.catalog import CohortCatalog
 from edgar_sec.pipelines.metadata_sync.options import (
     BundleRunPaths,
     PlanOptions,
@@ -26,6 +29,29 @@ MINI = fixture_path("cik_sec_mini.csv")
 
 def _publish(root: Path):
     return publish_test_cohort(MINI, root)
+
+
+def _publish_official_alias(paths, source_record, source_name: str):
+    catalog = CohortCatalog(paths)
+    snapshot_id = hashlib.sha256(source_name.encode()).hexdigest()
+    cohort_id = f"c-{snapshot_id[:16]}"
+    dataset = paths.cohort_dataset_file(cohort_id)
+    dataset.parent.mkdir(parents=True, exist_ok=True)
+    shutil.copyfile(paths.resolve_relative_path(source_record.dataset_path), dataset)
+    record = catalog.register_cohort(
+        cohort_id=cohort_id,
+        name=f"official-{source_name}",
+        origin_kind="official_source",
+        origin_details={"source_snapshot_id": snapshot_id, "source_name": source_name},
+        roster_id=source_record.roster_id,
+        row_count=source_record.row_count,
+        distinct_cik_count=source_record.distinct_cik_count,
+        dataset_sha256=file_sha256(dataset),
+        dataset_path=paths.relative_path(dataset),
+        pinned=True,
+    )
+    catalog.set_active_source_pointer(source_name, record.cohort_id)
+    return record
 
 
 def test_an_explicit_chunk_size_wins(monkeypatch: pytest.MonkeyPatch, tmp_path: Path):
@@ -106,31 +132,15 @@ def test_a_limit_must_be_positive(tmp_path: Path):
     ("alias", "source"), [("universe", "cik_lookup"), ("tickers", "company_tickers")]
 )
 def test_active_cohort_aliases_resolve_through_layer_two(
-    alias: str, source: str, tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+    alias: str, source: str, tmp_path: Path
 ):
-    from edgar_sec.infra.storage.cohort import sources
-
-    record, _paths, _roster = _publish(tmp_path)
-    observed = []
-
-    def resolve_active_source(name, *, catalog):
-        observed.append((name, catalog))
-        return record
-
-    monkeypatch.setattr(sources, "resolve_active_source", resolve_active_source)
+    _record, paths, _roster = _publish(tmp_path)
+    source_record = _publish_official_alias(paths, _record, source)
     selected = resolve_cohort(plan_options(cohort=alias, artifacts_root=tmp_path))
-    assert selected.input_name == f"cohort:{record.cohort_id}"
-    assert observed[0][0] == source
+    assert selected.input_name == f"cohort:{source_record.cohort_id}"
 
 
-def test_missing_active_alias_is_refused(
-    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
-):
-    from edgar_sec.infra.storage.cohort import sources
-
-    monkeypatch.setattr(
-        sources, "resolve_active_source", lambda *_args, **_kwargs: None
-    )
+def test_missing_active_alias_is_refused(tmp_path: Path):
     with pytest.raises(ValueError, match="no active universe cohort"):
         resolve_cohort(plan_options(cohort="universe", artifacts_root=tmp_path))
 

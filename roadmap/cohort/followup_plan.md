@@ -344,51 +344,66 @@ flowchart TD
     PhaseF4 --> PhaseF5
 ```
 
-### Detailed Phase Specifications
+### Implementation Status & Detailed Phase Specifications
+
+| Phase | Description | Status | Remaining Scope |
+|---|---|---|---|
+| **Phase F1** | Manifest Removal, Locking & Leases | **Core Landed** | Detached dataset tracking (`detached_cohort_datasets`) and `cohort maintain`/`gc` pruning |
+| **Phase F2** | Official SEC Sources & Generic Diff | **Largely Landed** | Direct DuckDB conversion for `company_tickers` (zero intermediate CSV) |
+| **Phase F3** | Architectural Layer Alignment | **Pending** | Realign package ownership: move workflows/operations to `pipelines.cohort` |
+| **Phase F4** | Family Index Decoupling & Consumer Cutover | **Landed** | Fully completed; verified in full test suite |
+| **Phase F5** | Interactive Pickers & Output Presentation | **Landed** | Fully completed; verified in full test suite |
+
+---
 
 #### Phase F1: Manifest Removal, Publication Locking & Staging Hardening
 - **Target Modules**: `infra/storage/cohort/catalog.py`, `infra/storage/cohort/paths.py`, `infra/storage/cohort/ingestion.py`.
-- **Deliverables**:
-  - Remove all disk writes of `cohort.json`.
-  - Implement `PublicationLock` in `infra.storage.cohort.paths` and wrap publication and sweeps.
-  - Implement `.stage.lease` with host, PID, and heartbeat tracking; prune only expired leases.
-  - Implement `detached_cohort_datasets` table and `.detached` markers for `--keep-dataset`.
-  - Implement `cohort maintain` and `cohort gc` command grammar.
-  - Make boot sweep prune uncataloged cohort-ID directories (`c-*`, `universe-*`, `tickers-*`) without touching non-cohort namespaces.
+- **Implemented**:
+  - Removed all disk writes of `cohort.json` and eliminated manifest path/model APIs; SQLite WAL is authoritative.
+  - Implemented `PublicationLock` (`.publication.lock`) using re-entrant thread local and `fcntl.flock`.
+  - Implemented `.stage.lease` recording `{host, pid, created_at, heartbeat}` with background heartbeat daemon.
+  - Implemented basic staging cleanup (`cleanup_stale_staging`).
+- **Remaining**:
+  - Implement `detached_cohort_datasets` catalog table and `.detached` sentinel markers for `--keep-dataset`.
+  - Implement `cohort maintain` / `cohort gc` command grammar (`--clean-missing`, `--clean-stale-staging`, `--clean-raw-snapshots`).
+  - Make startup sweeps prune uncataloged cohort-ID directories (`c-*`, `universe-*`, `tickers-*`) under `PublicationLock` while exempting detached datasets and non-cohort namespaces.
 
 #### Phase F2: Official SEC Sources Lifecycle & Generic Diff
-- **Target Modules**: `pipelines/cohort/sources.py`, `pipelines/cohort/operations.py`, `infra/storage/cohort/models.py`.
-- **Deliverables**:
-  - Compile `company_tickers` directly to canonical `ciks.parquet` under `c-<id>/`, enforcing canonical name selection policy.
-  - Implement byte-preserving `hashlib.sha256(payload_bytes)` deduplication.
-  - Standardize on `edgar-sec cohort diff <cohort_a> <cohort_b>` with optional `--save-left-delta` and `--save-right-delta`.
-  - Retire legacy `metadata_sync/registry.py:compare_sources()` and eliminate writing raw `.txt`/`.json` snapshot files to disk.
+- **Target Modules**: `infra/storage/cohort/sources.py`, `pipelines/cohort/cli.py`, `infra/storage/cohort/operations.py`.
+- **Implemented**:
+  - Moved official source refresh into `edgar-sec cohort sources refresh`.
+  - Implemented byte-preserving `sha256_bytes(payload)` deduplication, avoiding redundant re-work and re-fetching.
+  - Eliminated writing new raw `.txt`/`.json` snapshots to disk.
+  - Implemented generic `edgar-sec cohort diff <cohort_a> <cohort_b>` supporting source aliases (`universe`, `tickers`), `--save-left-delta`, `--save-right-delta`, and ASCII `Grid` diff presentation.
+- **Remaining**:
+  - Compile `company_tickers.json` directly to canonical `ciks.parquet` in DuckDB in a single pass without intermediate `.ticker-rows-*.csv` files.
 
 #### Phase F3: Architectural Layer Alignment & Tracked Documentation
 - **Target Modules**: `infra/storage/cohort/*`, `pipelines/cohort/*`, docs in `roadmap/cohort/`.
-- **Deliverables**:
-  - Maintain `catalog.py`, `paths.py`, and `models.py` in Layer 2 (`edgar_sec.infra.storage.cohort`).
-  - Maintain orchestration, CLI (`cli.py`), menus (`menu.py`), and REPL (`workspace.py`) in Layer 4 (`edgar_sec.pipelines.cohort`).
-  - Enforce source pointer validation in `CohortCatalog.set_active_source_pointer()`.
-  - Update tracked architecture documentation ([spec.md](spec.md), [storage_spec.md](storage_spec.md), [operations_spec.md](operations_spec.md), [cli_spec.md](cli_spec.md), [integration_spec.md](integration_spec.md), [plan.md](plan.md)) and package READMEs.
+- **Status**: **Pending**
+- **Remaining**:
+  - Retain strictly storage primitives in Layer 2 (`edgar_sec.infra.storage.cohort`): `catalog.py`, `paths.py`, `models.py`.
+  - Relocate pipeline workflows, parsing, operations, search, and workspace execution to Layer 4 (`edgar_sec.pipelines.cohort`): `ingestion.py`, `sources.py`, `operations.py`, `query.py`, `workspace.py`.
+  - Ensure downstream pipelines (`metadata_sync`, `filing_catalog`) import downward only from Layer 2 storage modules.
+  - Synchronize tracked package READMEs and architecture specs.
 
 #### Phase F4: Family Index Decoupling & CLI Specialization
-- **Target Modules**: `pipelines/cohort/family_index.py`, `metadata_sync/cli.py`, `metadata_sync/options.py`, `filing_catalog/planner.py`.
-- **Deliverables**:
-  - Move family index publication workflow to `edgar_sec.pipelines.cohort.family_index`.
-  - Add `active_family_indices` table to `cohorts.sqlite`.
-  - Enforce 32-hex ID validation and path containment in `CohortPaths.family_index_dir`.
-  - Delete `sources` subcommands, `_add_cohort_source()`, and `[c]` menu entry from `metadata_sync`; define per-command `--cohort` options for `plan` and `augment`.
-  - Delete obsolete shims (`manifest.py`, `universe.py`, `cohort_adapter.py`, `source_registry.py`) from `metadata_sync`.
-  - Update `filing_catalog.planner` to consume published family index via Layer 2 `CohortPaths` with fail-closed stale/corrupt validation.
+- **Target Modules**: `pipelines/cohort/family_index.py`, `filing_catalog/family_index.py`, `filing_catalog/planner.py`, `metadata_sync/*`.
+- **Status**: **Landed & Verified**
+- **Delivered**:
+  - Relocated full-universe company family index publication to `edgar_sec.pipelines.cohort.family_index`.
+  - Added `active_family_indices` catalog table in `cohorts.sqlite` and 32-hex secure path validation in `CohortPaths.family_index_dir`.
+  - Severed cross-pipeline import in `filing_catalog.planner`; created read-only consumer validator in `pipelines.filing_catalog.family_index.resolve_active_family_index()` that reads from `CohortCatalog` and fails closed (`FamilyIndexNotFoundError`) if missing, stale, or corrupt.
+  - Incorporated `family_index_id` into `plan_identity()`.
+  - Purged `metadata_sync` of `sources refresh`, `sources compare`, and `family_index.py`. Deleted all obsolete shims (`manifest.py`, `universe.py`, `cohort_adapter.py`, `source_registry.py`, `registry.py`).
 
 #### Phase F5: Interactive Pickers & Output Presentation
 - **Target Modules**: `pipelines/cohort/menu.py`, `pipelines/cohort/cli.py`.
-- **Deliverables**:
-  - Implement `pick_cohort`, `pick_workspace_variable`, `pick_workspace_session`, and `pick_upload_file` using `prompt_paginated_choice`.
-  - Include active official source aliases (`universe`, `tickers`) in `pick_cohort`.
-  - Replace blind text prompts in `menu.py` with the paginated pickers.
-  - Format `cohort list`, `cohort query`, and `cohort find` outputs using `Grid` and `render_output`.
+- **Status**: **Landed & Verified**
+- **Delivered**:
+  - Implemented `pick_cohort` (prepending active aliases `universe` and `tickers`), `pick_workspace_variable`, `pick_workspace_session`, and `pick_upload_file` using `prompt_paginated_choice`.
+  - Replaced manual text prompts in `menu.py` with paginated pickers.
+  - Formatted `cohort list`, `cohort query`, and `cohort find` outputs with aligned `Grid` and `render_output`.
 
 ---
 

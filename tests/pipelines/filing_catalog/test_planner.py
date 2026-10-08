@@ -82,6 +82,33 @@ def test_cohort_filters_targets_and_participates_in_identity(
     assert meta["plan_id"] != plan(catalog_id, artifacts_root)["plan_id"]
 
 
+def test_active_source_alias_resolves_for_cohort_filter(
+    catalog_id: str, artifacts_root: Path, tmp_path: Path
+) -> None:
+    cohort = _cohort(artifacts_root, tmp_path, "active-universe", ["320193"])
+    catalog = CohortCatalog(resolve_cohort_paths(artifacts_root))
+    with catalog._connection() as connection:
+        connection.execute(
+            "UPDATE cohorts SET origin_kind = ?, origin_json = ?, pinned = 1 WHERE cohort_id = ?",
+            (
+                "official_source",
+                json.dumps(
+                    {
+                        "source_name": "cik_lookup",
+                        "source_snapshot_id": "a" * 64,
+                    }
+                ),
+                cohort.cohort_id,
+            ),
+        )
+    catalog.set_active_source_pointer("cik_lookup", cohort.cohort_id)
+
+    meta = plan(catalog_id, artifacts_root, cohort="universe")
+
+    assert meta["cohort_id"] == cohort.cohort_id
+    assert meta["selected_rows"] == 4
+
+
 def test_an_empty_cohort_publishes_zero_targets(
     catalog_id: str, artifacts_root: Path, tmp_path: Path
 ) -> None:

@@ -406,6 +406,11 @@ class CohortCatalog:
             ).fetchall()
             return [self._record(connection, row) for row in rows]
 
+    def cohort_count(self) -> int:
+        with self._connection() as connection:
+            row = connection.execute("SELECT COUNT(*) FROM cohorts").fetchone()
+            return int(row[0])
+
     def rename_cohort(self, cohort_id: str, new_name: str) -> None:
         if not new_name:
             raise ValueError("cohort name must be non-empty")
@@ -543,6 +548,47 @@ class CohortCatalog:
     ) -> CohortRecord:
         if min_prefix_len < 1:
             raise ValueError("min_prefix_len must be positive")
+        source_name = {
+            "universe": "cik_lookup",
+            "tickers": "company_tickers",
+        }.get(id_or_name)
+        if source_name is not None:
+            with self._connection() as connection:
+                pointer = connection.execute(
+                    "SELECT active_snapshot_id FROM source_active_pointers WHERE source_name = ?",
+                    (source_name,),
+                ).fetchone()
+                if pointer is None:
+                    raise CohortIdentifierError(
+                        f"no active {id_or_name} cohort is published"
+                    )
+                row = connection.execute(
+                    "SELECT * FROM cohorts WHERE cohort_id = ?",
+                    (pointer["active_snapshot_id"],),
+                ).fetchone()
+                if row is None:
+                    raise CohortIdentifierError(
+                        f"active {id_or_name} source pointer references a missing cohort"
+                    )
+                record = self._record(connection, row)
+                if record.origin_kind != "official_source" or not record.pinned:
+                    raise CohortIdentifierError(
+                        f"active {id_or_name} source pointer is not an official pinned cohort"
+                    )
+                try:
+                    details = json.loads(record.origin_json)
+                except json.JSONDecodeError as exc:
+                    raise CohortIdentifierError(
+                        f"active {id_or_name} source metadata is invalid"
+                    ) from exc
+                if (
+                    not isinstance(details, dict)
+                    or details.get("source_name") != source_name
+                ):
+                    raise CohortIdentifierError(
+                        f"active {id_or_name} source pointer belongs to a different source"
+                    )
+                return record
         with self._connection() as connection:
             row = connection.execute(
                 "SELECT * FROM cohorts WHERE name = ? LIMIT 1", (id_or_name,)
@@ -576,7 +622,34 @@ class CohortCatalog:
     def set_active_source_pointer(
         self, source_name: str, active_snapshot_id: str
     ) -> None:
+        if source_name not in {"cik_lookup", "company_tickers"}:
+            raise CohortIdentifierError(f"unknown official source: {source_name!r}")
         with self._connection() as connection:
+            cohort = connection.execute(
+                "SELECT origin_kind, origin_json, pinned FROM cohorts WHERE cohort_id = ?",
+                (active_snapshot_id,),
+            ).fetchone()
+            if cohort is None:
+                raise CohortIdentifierError(
+                    f"active source cohort not found: {active_snapshot_id!r}"
+                )
+            if cohort["origin_kind"] != "official_source" or not cohort["pinned"]:
+                raise CohortIdentifierError(
+                    "active source pointer requires an official pinned cohort"
+                )
+            try:
+                details = json.loads(cohort["origin_json"])
+            except json.JSONDecodeError as exc:
+                raise CohortIdentifierError(
+                    "active source cohort metadata is invalid"
+                ) from exc
+            if (
+                not isinstance(details, dict)
+                or details.get("source_name") != source_name
+            ):
+                raise CohortIdentifierError(
+                    "active source cohort belongs to a different source"
+                )
             connection.execute(
                 """
                 INSERT INTO source_active_pointers (source_name, active_snapshot_id, pinned_at)

@@ -44,6 +44,8 @@ persisted in SQLite are relative to the configured `cohorts_root`.
 - A different dataset payload for an existing cohort identity is rejected.
   Official source snapshots with the same CIK set but changed names remain
   separate immutable records, and active source pointers target their cohort IDs.
+- Active source pointers accept only pinned official snapshots for their source;
+  the reserved `universe` and `tickers` identifiers resolve those pointers.
 - Staging directories are siblings of final cohort directories, allowing an
   atomic directory rename on the same filesystem. Failed catalog registration
   removes the unpublished catalog entry's final directory.

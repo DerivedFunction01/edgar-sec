@@ -57,6 +57,9 @@ python run.py cohort sources refresh --source cik_lookup
 # After publishing the source:
 python run.py cohort family-index
 
+# Explore cohorts interactively in a temporary workspace session:
+python run.py cohort repl
+
 # Compare two cohorts; optionally publish either directional delta:
 python run.py cohort diff universe tickers \
     --save-left-delta sec-only --save-right-delta ticker-only

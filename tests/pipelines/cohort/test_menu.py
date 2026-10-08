@@ -16,7 +16,7 @@ def test_grouped_menu_separators_do_not_consume_numeric_keys() -> None:
     separators = [action for action in actions if isinstance(action, MenuSeparator)]
 
     assert [action.key for action in choices] == [
-        str(number) for number in range(1, 10)
+        str(number) for number in range(1, 11)
     ]
     family_action = next(action for action in choices if "family index" in action.label)
     assert family_action.callback == menu._publish_family_index
@@ -38,8 +38,35 @@ def test_console_renders_group_titles_and_exit_key(monkeypatch, capsys) -> None:
     output = capsys.readouterr().out
     assert "── Official Sources & Taxonomy" in output
     assert "── Cohort Ingest & Algebra" in output
-    assert "9. Delete cohort" in output
+    assert "10. Delete cohort" in output
     assert "0. Exit" in output
+
+
+def test_workspace_menu_adds_repl_without_removing_session_workflows(
+    monkeypatch,
+) -> None:
+    captured = {}
+    monkeypatch.setattr(
+        menu,
+        "run_interactive_menu",
+        lambda _title, actions: captured.setdefault("actions", actions),
+    )
+    calls = []
+    monkeypatch.setattr(menu, "_run_cli", lambda *args: calls.append(args))
+
+    menu._workspace_menu()
+
+    choices = [
+        action
+        for action in captured["actions"]
+        if isinstance(action, interactive.MenuAction)
+    ]
+    assert any(action.label == "Initialize session" for action in choices)
+    assert any(action.label == "Switch session" for action in choices)
+    next(
+        action for action in choices if action.label == "Open interactive REPL"
+    ).callback()
+    assert calls == [("repl",)]
 
 
 def test_pick_cohort_includes_catalog_details_and_active_aliases(monkeypatch) -> None:
@@ -129,7 +156,13 @@ def test_workspace_pickers_return_selected_variable_and_session(monkeypatch) -> 
 def test_upload_picker_lists_files_in_stable_order(monkeypatch, tmp_path: Path) -> None:
     (tmp_path / "b.csv").write_text("b", encoding="utf-8")
     (tmp_path / "a.tsv").write_text("a", encoding="utf-8")
+    (tmp_path / "C.PARQUET").write_text("c", encoding="utf-8")
+    (tmp_path / "d.text").write_text("d", encoding="utf-8")
+    (tmp_path / "notes.md").write_text("notes", encoding="utf-8")
+    (tmp_path / ".private.csv").write_text("hidden", encoding="utf-8")
     (tmp_path / "folder").mkdir()
+    (tmp_path / "folder.csv").mkdir()
+    (tmp_path / "linked.csv").symlink_to(tmp_path / "b.csv")
     captured = {}
 
     def choose(items, *, prompt_label):
@@ -140,14 +173,119 @@ def test_upload_picker_lists_files_in_stable_order(monkeypatch, tmp_path: Path) 
     monkeypatch.setattr(menu, "prompt_paginated_choice", choose)
 
     assert menu.pick_upload_file(tmp_path) == str(tmp_path / "a.tsv")
-    assert [item.key for item in captured["items"]] == ["a.tsv", "b.csv"]
+    assert [item.key for item in captured["items"]] == [
+        "a.tsv",
+        "b.csv",
+        "C.PARQUET",
+        "d.text",
+    ]
     assert captured["prompt_label"] == "Select upload file"
 
 
 def test_empty_upload_picker_cancels(monkeypatch, tmp_path: Path) -> None:
-    monkeypatch.setattr(menu, "prompt_paginated_choice", lambda *_args, **_kwargs: None)
+    monkeypatch.setattr(menu, "prompt_text", lambda *_args, **_kwargs: "")
 
     assert menu.pick_upload_file(tmp_path / "missing") is None
+
+
+def test_empty_upload_picker_accepts_explicit_supported_file(
+    monkeypatch, tmp_path: Path
+) -> None:
+    explicit = tmp_path / "external.CSV"
+    explicit.write_text("cik", encoding="utf-8")
+    monkeypatch.setattr(menu, "prompt_text", lambda *_args, **_kwargs: str(explicit))
+
+    assert menu.pick_upload_file(tmp_path / "empty") == str(explicit)
+
+
+def test_empty_upload_picker_rejects_unsupported_explicit_file(
+    monkeypatch, tmp_path: Path
+) -> None:
+    explicit = tmp_path / "notes.md"
+    explicit.write_text("notes", encoding="utf-8")
+    monkeypatch.setattr(menu, "prompt_text", lambda *_args, **_kwargs: str(explicit))
+
+    assert menu.pick_upload_file(tmp_path / "empty") is None
+
+
+def test_source_menu_routes_family_action_to_publisher(monkeypatch) -> None:
+    captured = {}
+    monkeypatch.setattr(
+        menu,
+        "run_interactive_menu",
+        lambda _title, actions: captured.setdefault("actions", actions),
+    )
+    calls = []
+    monkeypatch.setattr(menu, "_publish_family_index", lambda: calls.append("publish"))
+
+    menu._source_menu()
+
+    family = next(
+        action for action in captured["actions"] if "families" in action.label
+    )
+    family.callback()
+    assert calls == ["publish"]
+
+
+def test_diff_menu_invokes_cli_with_one_optional_delta(monkeypatch) -> None:
+    from edgar_sec.infra.storage.cohort import catalog as catalog_module
+    from edgar_sec.infra.storage.cohort import paths as paths_module
+
+    monkeypatch.setattr(catalog_module, "CohortCatalog", lambda _paths: object())
+    monkeypatch.setattr(paths_module, "resolve_cohort_paths", lambda: object())
+    choices = iter(("universe", "tech"))
+    calls = []
+    monkeypatch.setattr(menu, "pick_cohort", lambda _catalog: next(choices))
+    monkeypatch.setattr(menu, "prompt_choice", lambda *_args, **_kwargs: "3")
+    monkeypatch.setattr(menu, "prompt_text", lambda *_args, **_kwargs: "tickers_only")
+    monkeypatch.setattr(menu, "_run_cli", lambda *args: calls.append(args))
+
+    menu._diff_cohorts()
+
+    assert calls == [("diff", "universe", "tech", "--save-right-delta", "tickers_only")]
+
+
+def test_diff_menu_cancels_when_picker_is_cancelled(monkeypatch) -> None:
+    from edgar_sec.infra.storage.cohort import catalog as catalog_module
+    from edgar_sec.infra.storage.cohort import paths as paths_module
+
+    monkeypatch.setattr(catalog_module, "CohortCatalog", lambda _paths: object())
+    monkeypatch.setattr(paths_module, "resolve_cohort_paths", lambda: object())
+    calls = []
+    monkeypatch.setattr(menu, "pick_cohort", lambda _catalog: None)
+    monkeypatch.setattr(menu, "_run_cli", lambda *args: calls.append(args))
+
+    menu._diff_cohorts()
+
+    assert calls == []
+
+
+def test_header_uses_catalog_count_query(monkeypatch) -> None:
+    from edgar_sec.infra.storage.cohort import catalog as catalog_module
+    from edgar_sec.infra.storage.cohort import paths as paths_module
+
+    paths = SimpleNamespace(catalog_file="cohorts.sqlite")
+
+    class Catalog:
+        def __init__(self, _paths):
+            pass
+
+        def cohort_count(self):
+            return 17
+
+        def get_active_source_pointer(self, source):
+            return {"cik_lookup": "c-universe", "company_tickers": "c-tickers"}[source]
+
+        def get_active_family_index(self, _universe_id):
+            return SimpleNamespace(family_index_id="a" * 32)
+
+    monkeypatch.setattr(catalog_module, "CohortCatalog", Catalog)
+    monkeypatch.setattr(paths_module, "resolve_cohort_paths", lambda: paths)
+
+    assert menu._header() == (
+        "Catalog: cohorts.sqlite | Cohorts: 17 | Universe: c-universe | "
+        "Tickers: c-tickers | Family Index: " + "a" * 32
+    )
 
 
 def test_family_index_menu_handler_invokes_the_cohort_command(monkeypatch) -> None:
