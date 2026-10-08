@@ -14,6 +14,8 @@ phase-specific parameters.
 | `sec.py` | SEC identity, rate limit, timeout, retry, and failure-history specs; `SecSettings`. |
 | `paths.py` | Artifacts, cache root, and cache TTL specs. |
 | `catalog.py` | Filing-catalog and document-storage batch and row-group specs. |
+| `dag.py` | Snapshot DAG swimlane-viewer graph-limit spec. |
+| `interactive.py` | Interactive pick-list page-size spec. |
 | `validators.py` | The shared numeric bounds checks. |
 
 ## The registry
@@ -42,9 +44,11 @@ flags. A default marked `secret` is contact identity that must never be publishe
 | `catalog.row_group_size` | `CATALOG_ROW_GROUP_SIZE` | int | `128000` | no | no | no | no | no |
 | `documents.read_batch_size` | `DOCUMENTS_READ_BATCH_SIZE` | int | `4096` | yes | no | no | no | yes |
 | `documents.payload_target_bytes` | `DOCUMENTS_PAYLOAD_TARGET_BYTES` | int | `100663296` (96 MiB) | yes | no | no | no | yes |
+| `dag.graph_limit` | `DAG_GRAPH_LIMIT` | int | `25` | yes | yes | yes | no | no |
+| `interactive.page_size` | `INTERACTIVE_PAGE_SIZE` | int | `15` | yes | yes | yes | no | no |
 
-`sec.user_agent` is the only `secret=True` spec, and no spec declares
-`config=True`. The `catalog.row_group_size` and `documents.*` defaults duplicate
+`sec.user_agent` is the only `secret=True` spec. The `catalog.row_group_size`
+and `documents.*` defaults duplicate
 authorities owned by `infra.storage.parquet` and `pipelines.document_storage`; the
 layer graph forbids Layer 0 from importing them, so each pair is pinned by a
 mirrored test instead.

@@ -19,15 +19,10 @@ from edgar_sec.foundation.runtime.interactive import (
 )
 from edgar_sec.foundation.runtime.settings import resolve_runtime_settings
 
-from .cli import (
-    cmd_compare,
-    cmd_family_index,
-    cmd_merge,
-    cmd_plan,
-    cmd_refresh,
-    cmd_run,
-    cmd_status,
-)
+from .commands.merge import cmd_merge
+from .commands.plan import cmd_plan, cmd_status
+from .commands.run import cmd_run
+from .commands.sources import cmd_compare, cmd_family_index, cmd_refresh
 
 from .cli import main as cli_main
 from .discovery import (

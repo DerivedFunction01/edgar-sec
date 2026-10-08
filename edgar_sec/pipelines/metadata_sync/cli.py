@@ -23,7 +23,6 @@ from edgar_sec.infra.distribution.cli import attach_distrib_subparser
 
 from .assignment import AssignmentError
 from .commands.augment import cmd_augment
-from .commands.client import build_client
 from .commands.merge import cmd_merge
 from .commands.plan import cmd_plan, cmd_status
 from .commands.run import cmd_run
@@ -47,21 +46,8 @@ from .specs import METADATA_RELATION_SPECS
 
 __all__ = [
     "build_parser",
-    "cmd_augment",
-    "cmd_compare",
-    "cmd_family_index",
-    "cmd_merge",
-    "cmd_plan",
-    "cmd_refresh",
-    "cmd_run",
-    "cmd_status",
     "main",
 ]
-
-
-def _build_client() -> SubmissionsClient:
-    """Build the submissions client against the shared response store."""
-    return build_client()
 
 
 # ------------------------------------------------------------------- argparse
@@ -185,9 +171,7 @@ def build_parser() -> argparse.ArgumentParser:
     _add_plan_reference(run_parser)
     _add_common(run_parser)
     _add_chunk_selection(run_parser)
-    run_parser.set_defaults(
-        func=lambda args: cmd_run(_run_options(args), client=_build_client())
-    )
+    run_parser.set_defaults(func=lambda args: cmd_run(_run_options(args)))
 
     merge_parser = subparsers.add_parser("merge", help="publish a snapshot")
     _add_plan_reference(merge_parser)
@@ -304,7 +288,6 @@ def _augment_from_args(args: argparse.Namespace) -> int:
         new_snapshot_id=args.new_snapshot_id,
         workers=args.workers,
         lineage=lineage,
-        client=_build_client(),
     )
 
 

@@ -168,12 +168,15 @@ def test_create_uses_shared_capture_command_and_json(
         yield broker
 
     monkeypatch.setattr(
-        cli, "_cohort_for_plan", lambda *_args: (plan, work, contribution_record)
+        "edgar_sec.pipelines.document_inventory.commands.fixture.cohort_for_plan",
+        lambda *_args: (plan, work, contribution_record),
     )
-    monkeypatch.setattr(cli, "managed_broker", managed)
     monkeypatch.setattr(
-        cli,
-        "create_index_fixture",
+        "edgar_sec.pipelines.document_inventory.commands.fixture.managed_broker",
+        managed,
+    )
+    monkeypatch.setattr(
+        "edgar_sec.pipelines.document_inventory.commands.fixture.create_index_fixture",
         lambda paths, fixture_id: created.append((paths, fixture_id)),
     )
 
@@ -181,7 +184,10 @@ def test_create_uses_shared_capture_command_and_json(
         captured.append((fixture_id, paths, broker, contribution))
         return IndexCaptureResult(1, 0, 1, 1, 1, ())
 
-    monkeypatch.setattr(cli, "capture_index_pages", capture)
+    monkeypatch.setattr(
+        "edgar_sec.pipelines.document_inventory.commands.fixture.capture_index_pages",
+        capture,
+    )
     code = cli.main(
         [
             "fixture",
@@ -216,13 +222,19 @@ def test_capture_failure_returns_nonzero(
         yield object()
 
     monkeypatch.setattr(
-        cli, "_cohort_for_plan", lambda *_args: ({}, work, _contribution())
+        "edgar_sec.pipelines.document_inventory.commands.fixture.cohort_for_plan",
+        lambda *_args: ({}, work, _contribution()),
     )
-    monkeypatch.setattr(cli, "managed_broker", managed)
-    monkeypatch.setattr(cli, "create_index_fixture", lambda *_args, **_kwargs: None)
     monkeypatch.setattr(
-        cli,
-        "capture_index_pages",
+        "edgar_sec.pipelines.document_inventory.commands.fixture.managed_broker",
+        managed,
+    )
+    monkeypatch.setattr(
+        "edgar_sec.pipelines.document_inventory.commands.fixture.create_index_fixture",
+        lambda *_args, **_kwargs: None,
+    )
+    monkeypatch.setattr(
+        "edgar_sec.pipelines.document_inventory.commands.fixture.capture_index_pages",
         lambda *_args, **_kwargs: IndexCaptureResult(0, 0, 1, 0, 1, (failure,)),
     )
     code = cli.main(

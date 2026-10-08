@@ -60,6 +60,7 @@ def cmd_status(options: RunOptions) -> int:
             KeyValueRow("planned_chunks", str(len(planned))),
             KeyValueRow("completed_chunks", str(len(completed))),
             KeyValueRow("mergeable", str(not outstanding)),
+            KeyValueRow("schema_version", str(plan.schema_version)),
         ],
         title=f"Plan Status ({plan.plan_id[:8]})",
     )

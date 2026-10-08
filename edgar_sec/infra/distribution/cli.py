@@ -303,6 +303,10 @@ def attach_distrib_subparser(
         default=None,
         help="destination directory override",
     )
+    for child_parser in (exp, wrk, imp, lst, cmd):
+        child_parser.add_argument(
+            "--artifacts", default="", help="artifacts root override"
+        )
 
     dist_parser.set_defaults(
         func=lambda args: dispatch_distrib_subcommand(args, adapter_factory(args))

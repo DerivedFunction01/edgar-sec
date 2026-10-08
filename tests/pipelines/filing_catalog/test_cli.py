@@ -5,6 +5,8 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
+from typing import Any
+
 import pytest
 
 from edgar_sec.pipelines.filing_catalog.cli import (
@@ -12,12 +14,32 @@ from edgar_sec.pipelines.filing_catalog.cli import (
     cmd_expand,
     main,
 )
+from edgar_sec.pipelines.filing_catalog.paths import resolve_filing_catalog_paths
 
 SAMPLE = "tests/fixtures/catalog/sample_submission_metadata.parquet"
 
 
-def _json_output(capsys: pytest.CaptureFixture[str]) -> dict:
-    return json.loads(capsys.readouterr().out)
+def _json_output(capsys: pytest.CaptureFixture[str]) -> dict[str, Any]:
+    out = capsys.readouterr().out
+    try:
+        return json.loads(out)
+    except (json.JSONDecodeError, ValueError):
+        pass
+    result: dict[str, Any] = {}
+    for line in out.splitlines():
+        line = line.strip()
+        if not line:
+            continue
+        parts = line.split(None, 1)
+        if len(parts) == 2:
+            key, val = parts
+            if val.isdigit():
+                result[key] = int(val)
+            elif val == "none":
+                result[key] = None
+            else:
+                result[key] = val
+    return result
 
 
 # --- parser ---------------------------------------------------------------
@@ -128,7 +150,13 @@ def test_plan_publishes_the_requested_date_selection(
         )
         == 0
     )
-    plan = _json_output(capsys)
+    out_plan = _json_output(capsys)
+    assert out_plan["selected_rows"] == 1
+    plan_file = (
+        resolve_filing_catalog_paths(artifacts).plan_dir(out_plan["plan_id"])
+        / "plan.json"
+    )
+    plan = json.loads(plan_file.read_text(encoding="utf-8"))
     assert plan["date_selection"] == [
         {"kind": "absolute", "start_date": "2024-01-01", "end_date": "2024-12-31"}
     ]
@@ -212,7 +240,15 @@ def test_plan_current_alias_resolves_via_the_pointer(
     assert main(["materialize", "--source", SAMPLE]) == 0
     capsys.readouterr()
     assert main(["plan", "--catalog", "current", "--forms", "10-K"]) == 0
-    plan = _json_output(capsys)
+    plan_summary = _json_output(capsys)
+    assert plan_summary["selected_rows"] == 4
+    plan_file = (
+        resolve_filing_catalog_paths(tmp_path / "durable").plan_dir(
+            plan_summary["plan_id"]
+        )
+        / "plan.json"
+    )
+    plan = json.loads(plan_file.read_text(encoding="utf-8"))
     assert plan["selected_rows"] == 4
     assert plan["forms"] == ["10-K"]
 

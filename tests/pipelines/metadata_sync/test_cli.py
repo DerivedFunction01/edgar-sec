@@ -9,6 +9,8 @@ from pathlib import Path
 
 import pytest
 
+from typing import Any
+
 from edgar_sec.domain.sec_urls import submissions_url
 from edgar_sec.foundation.runtime.settings.runtime import DEFAULT_CHUNK_SIZE
 from edgar_sec.pipelines.metadata_sync import cli as cli_module
@@ -62,6 +64,33 @@ MINI = ["0000001985", "0000001761", "0000000020", "0000037996"]
 def _seed_session(session: FakeSession) -> None:
     for cik in MINI:
         session.register(submissions_url(cik), cik_payload(cik, f"COMPANY {cik}"))
+
+
+def _parse_output(capsys: pytest.CaptureFixture[str]) -> dict[str, Any]:
+    out = capsys.readouterr().out
+    try:
+        return json.loads(out)
+    except (json.JSONDecodeError, ValueError):
+        pass
+    result: dict[str, Any] = {}
+    for line in out.splitlines():
+        line = line.strip()
+        if not line or "  " not in line:
+            continue
+        parts = line.split(None, 1)
+        if len(parts) == 2:
+            key, val = parts
+            if val.isdigit():
+                result[key] = int(val)
+            elif val == "True":
+                result[key] = True
+            elif val == "False":
+                result[key] = False
+            elif val == "none":
+                result[key] = None
+            else:
+                result[key] = val
+    return result
 
 
 def _subparser(command: str):
@@ -234,7 +263,7 @@ def test_plan_command_honors_environment_settings(
     """The regression itself: the written plan must record the declared settings."""
     monkeypatch.setenv("RUNTIME_CHUNK_SIZE", "2")
     assert main(_plan_argv(tmp_path)) == 0
-    payload = json.loads(capsys.readouterr().out)
+    payload = _parse_output(capsys)
     assert payload["chunk_size"] == 2
     assert payload["chunk_count"] == 2
 
@@ -254,25 +283,25 @@ def test_plan_writes_a_bundle_not_one_file(tmp_path: Path) -> None:
 
 def test_plan_command_limit_truncates_the_cohort(tmp_path: Path, capsys) -> None:
     assert main(_plan_argv(tmp_path, "--chunk-size", "2", "--limit", "2")) == 0
-    payload = json.loads(capsys.readouterr().out)
+    payload = _parse_output(capsys)
     assert payload["row_count"] == 2
 
 
 def test_a_limited_plan_and_a_full_plan_do_not_collide(tmp_path: Path, capsys) -> None:
     """The limit is applied before identity is derived, so the two stay distinct."""
     assert main(_plan_argv(tmp_path, "--chunk-size", "2")) == 0
-    full = json.loads(capsys.readouterr().out)["plan_id"]
+    full = _parse_output(capsys)["plan_id"]
     assert main(_plan_argv(tmp_path, "--chunk-size", "2", "--limit", "2")) == 0
-    limited = json.loads(capsys.readouterr().out)["plan_id"]
+    limited = _parse_output(capsys)["plan_id"]
     assert full != limited
     assert len(list((tmp_path / "metadata" / "plans").iterdir())) == 2
 
 
 def test_replanning_the_same_cohort_is_idempotent(tmp_path: Path, capsys) -> None:
     assert main(_plan_argv(tmp_path, "--chunk-size", "2")) == 0
-    first = json.loads(capsys.readouterr().out)["plan_id"]
+    first = _parse_output(capsys)["plan_id"]
     assert main(_plan_argv(tmp_path, "--chunk-size", "2")) == 0
-    assert json.loads(capsys.readouterr().out)["plan_id"] == first
+    assert _parse_output(capsys)["plan_id"] == first
     assert len(list((tmp_path / "metadata" / "plans").iterdir())) == 1
 
 
@@ -302,7 +331,7 @@ def test_plan_over_the_universe_covers_every_registrant(
 ) -> None:
     _publish_universe_snapshot(session, tmp_path)
     assert main(["plan", "--universe", "--artifacts", str(tmp_path)]) == 0
-    payload = json.loads(capsys.readouterr().out)
+    payload = _parse_output(capsys)
     assert payload["row_count"] == 12
 
 
@@ -311,9 +340,9 @@ def test_plan_over_the_universe_is_idempotent(
 ) -> None:
     _publish_universe_snapshot(session, tmp_path)
     main(["plan", "--universe", "--artifacts", str(tmp_path)])
-    first = json.loads(capsys.readouterr().out)["plan_id"]
+    first = _parse_output(capsys)["plan_id"]
     main(["plan", "--universe", "--artifacts", str(tmp_path)])
-    assert json.loads(capsys.readouterr().out)["plan_id"] == first
+    assert _parse_output(capsys)["plan_id"] == first
 
 
 def test_a_universe_plan_and_a_csv_plan_do_not_collide(
@@ -321,9 +350,9 @@ def test_a_universe_plan_and_a_csv_plan_do_not_collide(
 ) -> None:
     _publish_universe_snapshot(session, tmp_path)
     main(["plan", "--universe", "--artifacts", str(tmp_path)])
-    universe = json.loads(capsys.readouterr().out)["plan_id"]
+    universe = _parse_output(capsys)["plan_id"]
     main(_plan_argv(tmp_path, "--chunk-size", "2"))
-    curated = json.loads(capsys.readouterr().out)["plan_id"]
+    curated = _parse_output(capsys)["plan_id"]
     assert universe != curated
 
 
@@ -346,7 +375,7 @@ def test_a_universe_limit_bounds_the_plan(
         )
         == 0
     )
-    payload = json.loads(capsys.readouterr().out)
+    payload = _parse_output(capsys)
     assert payload["row_count"] == 3
     assert payload["chunk_count"] == 2
 
@@ -371,7 +400,7 @@ def test_status_reports_progress_offline(tmp_path: Path, capsys) -> None:
         )
         == 0
     )
-    payload = json.loads(capsys.readouterr().out)
+    payload = _parse_output(capsys)
     assert payload["planned_chunks"] == 2
     assert payload["completed_chunks"] == 0
     assert payload["mergeable"] is False
@@ -381,9 +410,9 @@ def test_status_reports_progress_offline(tmp_path: Path, capsys) -> None:
 
 def test_status_accepts_an_explicit_plan_id(tmp_path: Path, capsys) -> None:
     assert main(_plan_argv(tmp_path, "--chunk-size", "2")) == 0
-    plan_id = json.loads(capsys.readouterr().out)["plan_id"]
+    plan_id = _parse_output(capsys)["plan_id"]
     assert main(["status", "--plan-id", plan_id, "--artifacts", str(tmp_path)]) == 0
-    assert json.loads(capsys.readouterr().out)["plan_id"] == plan_id
+    assert _parse_output(capsys)["plan_id"] == plan_id
 
 
 def test_changed_effective_chunking_fails_loudly(tmp_path: Path, capsys) -> None:
@@ -413,7 +442,7 @@ def test_missing_plan_reports_an_error(tmp_path: Path, capsys) -> None:
 def test_a_copied_bundle_names_its_own_plan(tmp_path: Path, capsys) -> None:
     """The bundle carries the manifest that declares the plan, so there is one source."""
     assert main(_plan_argv(tmp_path, "--chunk-size", "2")) == 0
-    plan_id = json.loads(capsys.readouterr().out)["plan_id"]
+    plan_id = _parse_output(capsys)["plan_id"]
     destination = tmp_path / "out"
     main(
         [
@@ -455,10 +484,12 @@ def test_run_requires_a_chunk_selection_the_plan_has(tmp_path: Path, capsys) -> 
 def test_run_chunk_selection_is_parsed(
     tmp_path: Path, client: SubmissionsClient, monkeypatch, capsys
 ) -> None:
-    monkeypatch.setattr(cli_module, "_build_client", lambda: client)
+    monkeypatch.setattr(
+        "edgar_sec.pipelines.metadata_sync.commands.run.build_client", lambda: client
+    )
     _seed_session_for(monkeypatch)
     assert main(_plan_argv(tmp_path, "--chunk-size", "2")) == 0
-    plan_id = json.loads(capsys.readouterr().out)["plan_id"]
+    plan_id = _parse_output(capsys)["plan_id"]
 
     assert (
         main(
@@ -466,15 +497,17 @@ def test_run_chunk_selection_is_parsed(
         )
         == 0
     )
-    assert "chunk_id" in capsys.readouterr().out
+    assert "total_chunks" in capsys.readouterr().out
 
 
 def test_run_rejects_a_chunk_outside_the_plan(
     tmp_path: Path, capsys, monkeypatch: pytest.MonkeyPatch
 ) -> None:
-    monkeypatch.setattr(cli_module, "_build_client", lambda: None)
+    monkeypatch.setattr(
+        "edgar_sec.pipelines.metadata_sync.commands.run.build_client", lambda: None
+    )
     assert main(_plan_argv(tmp_path, "--chunk-size", "2")) == 0
-    plan_id = json.loads(capsys.readouterr().out)["plan_id"]
+    plan_id = _parse_output(capsys)["plan_id"]
     assert (
         main(
             ["run", "--plan-id", plan_id, "--artifacts", str(tmp_path), "--chunks", "9"]
@@ -487,7 +520,14 @@ def test_run_rejects_a_chunk_outside_the_plan(
 def _seed_session_for(monkeypatch: pytest.MonkeyPatch) -> None:
     session = FakeSession()
     _seed_session(session)
-    monkeypatch.setattr(cli_module, "_build_client", lambda: build_test_client(session))
+    monkeypatch.setattr(
+        "edgar_sec.pipelines.metadata_sync.commands.run.build_client",
+        lambda: build_test_client(session),
+    )
+    monkeypatch.setattr(
+        "edgar_sec.pipelines.metadata_sync.commands.augment.build_client",
+        lambda: build_test_client(session),
+    )
 
 
 def build_test_client(session: FakeSession) -> SubmissionsClient:
@@ -511,7 +551,10 @@ def test_sources_refresh_routes_the_artifacts_root(
             "validation_status": "ok",
         }
 
-    monkeypatch.setattr(cli_module, "refresh_company_tickers", fake_refresh)
+    monkeypatch.setattr(
+        "edgar_sec.pipelines.metadata_sync.commands.sources.refresh_company_tickers",
+        fake_refresh,
+    )
     assert main(["sources", "refresh", "--artifacts", str(tmp_path)]) == 0
     assert captured["artifacts_root"] == tmp_path.resolve()
 
@@ -522,7 +565,10 @@ def test_sources_refresh_reports_a_failure_as_exit_1(
     def explode(**_kwargs):
         raise ValueError("source unavailable")
 
-    monkeypatch.setattr(cli_module, "refresh_company_tickers", explode)
+    monkeypatch.setattr(
+        "edgar_sec.pipelines.metadata_sync.commands.sources.refresh_company_tickers",
+        explode,
+    )
     assert main(["sources", "refresh", "--artifacts", str(tmp_path)]) == 1
     assert "error: source unavailable" in capsys.readouterr().err
 
@@ -537,7 +583,10 @@ def test_sources_refresh_routes_the_universe_source(
         captured["artifacts_root"] = metadata_paths.artifacts_root
         return {"source": "cik_lookup", "snapshot_id": "u1", "validation_status": "ok"}
 
-    monkeypatch.setattr(cli_module, "refresh_cik_lookup_universe", fake_universe)
+    monkeypatch.setattr(
+        "edgar_sec.pipelines.metadata_sync.commands.sources.refresh_cik_lookup_universe",
+        fake_universe,
+    )
     assert (
         main(
             [
@@ -579,7 +628,7 @@ def test_sources_compare_publishes_a_roster_and_the_csv_export(
         ]
     )
     assert exit_code == 0
-    summary = json.loads(capsys.readouterr().out)
+    summary = _parse_output(capsys)
     assert summary["source"] == SOURCE_NAME
     assert summary["new_cik_count"] == 1
 
@@ -617,7 +666,7 @@ def test_a_published_roster_can_be_planned_and_merged(
             str(tmp_path),
         ]
     )
-    registry_id = json.loads(capsys.readouterr().out)["registry_id"]
+    registry_id = _parse_output(capsys)["registry_id"]
     capsys.readouterr()
 
     assert (
@@ -634,7 +683,7 @@ def test_a_published_roster_can_be_planned_and_merged(
         )
         == 0
     )
-    planned = json.loads(capsys.readouterr().out)
+    planned = _parse_output(capsys)
     assert planned["row_count"] == 5
 
     _seed_session_for(monkeypatch)
@@ -648,7 +697,10 @@ def test_a_published_roster_can_be_planned_and_merged(
         main(["merge", "--plan-id", planned["plan_id"], "--artifacts", str(tmp_path)])
         == 0
     )
-    published_manifest = json.loads(capsys.readouterr().out)
+    merged = _parse_output(capsys)
+    assert merged["row_count"] == 5
+    manifest_file = metadata.snapshot_manifest(merged["snapshot_id"])
+    published_manifest = json.loads(manifest_file.read_text(encoding="utf-8"))
     assert published_manifest["row_count"] == 5
     assert published_manifest["registry_id"] == registry_id
     assert published_manifest["cik_index_path"].endswith("ciks.parquet")
@@ -729,10 +781,10 @@ def test_metadata_is_registered_in_the_launcher() -> None:
 def test_built_client_is_cached_against_the_registered_store() -> None:
     """`resolve_paths()` names a different directory, so reading it opens an empty store."""
     from edgar_sec.foundation.runtime.settings import resolve_runtime_settings
-    from edgar_sec.pipelines.metadata_sync.cli import _build_client
+    from edgar_sec.pipelines.metadata_sync.commands.client import build_client
 
     settings = resolve_runtime_settings()
-    client = _build_client()
+    client = build_client()
 
     assert client.http.cache_dir == Path(settings.cache_root).resolve()
     assert client.http._cache is not None
@@ -750,22 +802,32 @@ def test_family_index_publishes_an_assignment_and_reports_it(
     """The counts an operator needs to judge the artifact come back from its manifest."""
     published_universe(tmp_path)
     assert main(["family-index", "--artifacts", str(tmp_path)]) == 0
-    payload = json.loads(capsys.readouterr().out)
-    assert Path(payload["assignment"]).is_file()
-    assert Path(payload["manifest"]).is_file()
-    assert payload["registrants"] > 0
-    assert payload["rules_fingerprint"]
-    assert payload["dataset_sha256"]
+    summary = _parse_output(capsys)
+    metadata = resolve_metadata_paths(tmp_path)
+    manifest_file = metadata.family_index_manifest(summary["family_index_id"])
+    assignment_file = metadata.family_index_file(summary["family_index_id"])
+    manifest = json.loads(manifest_file.read_text(encoding="utf-8"))
+    assert assignment_file.is_file()
+    assert manifest_file.is_file()
+    assert summary["registrants"] > 0
+    assert manifest["rules_fingerprint"]
+    assert manifest["dataset_sha256"]
 
 
 def test_family_index_is_idempotent_across_runs(tmp_path: Path, capsys) -> None:
     published_universe(tmp_path)
     assert main(["family-index", "--artifacts", str(tmp_path)]) == 0
-    first = json.loads(capsys.readouterr().out)
+    first = _parse_output(capsys)
     assert main(["family-index", "--artifacts", str(tmp_path)]) == 0
-    second = json.loads(capsys.readouterr().out)
+    second = _parse_output(capsys)
     assert first["family_index_id"] == second["family_index_id"]
-    assert first["assignment_sha256"] == second["assignment_sha256"]
+    metadata = resolve_metadata_paths(tmp_path)
+    manifest = json.loads(
+        metadata.family_index_manifest(first["family_index_id"]).read_text(
+            encoding="utf-8"
+        )
+    )
+    assert manifest["assignment_sha256"]
 
 
 def test_family_index_refuses_without_a_published_universe(

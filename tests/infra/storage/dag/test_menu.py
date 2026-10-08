@@ -7,38 +7,9 @@ from unittest.mock import MagicMock
 
 from edgar_sec.infra.storage.dag.menu import (
     DAGMenuConfig,
-    PickItem,
     create_dag_menu,
-    prompt_paginated_choice,
     render_dag_dashboard,
 )
-
-
-def test_prompt_paginated_choice_selects_item(monkeypatch) -> None:
-    items = [
-        PickItem(key="b1", label="Branch One", value="b1"),
-        PickItem(key="b2", label="Branch Two", value="b2"),
-    ]
-    monkeypatch.setattr(
-        "edgar_sec.infra.storage.dag.menu.prompt_text", lambda *_args: "1"
-    )
-    chosen = prompt_paginated_choice(items, page_size=10)
-    assert chosen is not None
-    assert chosen.key == "b1"
-
-
-def test_prompt_paginated_choice_filters_and_quits(monkeypatch) -> None:
-    items = [
-        PickItem(key="main", label="main branch", value="main"),
-        PickItem(key="feature", label="feature branch", value="feature"),
-    ]
-    prompts = iter(["feat", "1"])
-    monkeypatch.setattr(
-        "edgar_sec.infra.storage.dag.menu.prompt_text", lambda *_args: next(prompts)
-    )
-    chosen = prompt_paginated_choice(items, page_size=10)
-    assert chosen is not None
-    assert chosen.key == "feature"
 
 
 def test_render_dag_dashboard_runs(tmp_path: Path) -> None:

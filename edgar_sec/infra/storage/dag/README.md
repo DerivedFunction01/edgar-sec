@@ -55,7 +55,7 @@ and provides two-tier retention analysis.
 - `publish_node`, `PublicationLock`, `list_branches`, `create_branch`, `delete_branch` in [`publication.py`](publication.py).
 - `create_tag`, `read_tag`, `list_tags`, `delete_tag` in [`tags.py`](tags.py).
 - `DAGSwimlaneRenderer`, `GraphNode` in [`renderer.py`](renderer.py).
-- `DAGMenuConfig`, `run_dag_menu`, `create_dag_menu`, `prompt_paginated_choice` in [`menu.py`](menu.py).
+- `DAGMenuConfig`, `run_dag_menu`, `create_dag_menu` in [`menu.py`](menu.py).
 - `compact_lineage` in [`compaction.py`](compaction.py).
 - `analyze_retention`, `purge_unreferenced` in [`retention.py`](retention.py).
 - `audit_graph` in [`doctor.py`](doctor.py).

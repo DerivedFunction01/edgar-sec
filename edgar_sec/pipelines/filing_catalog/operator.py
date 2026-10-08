@@ -36,7 +36,10 @@ from edgar_sec.pipelines.filing_catalog.paths import (
     safe_identifier,
 )
 
-from .cli import cmd_expand, cmd_materialize, cmd_plan, cmd_status
+from .commands.expand import cmd_expand
+from .commands.materialize import cmd_materialize
+from .commands.plan import cmd_plan
+from .commands.status import cmd_status
 from .cli import main as cli_main
 
 __all__ = ["build_operator_menu", "main"]

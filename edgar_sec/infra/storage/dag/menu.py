@@ -12,12 +12,16 @@ from typing import Any
 
 from edgar_sec.foundation.runtime.interactive import (
     MenuAction,
+    PickItem,
     build_menu,
     menu_action,
     operator_entrypoint,
+    prompt_paginated_choice,
     prompt_text,
 )
 from edgar_sec.foundation.runtime.settings import resolve_settings
+from edgar_sec.foundation.runtime.settings.dag import DEFAULT_DAG_GRAPH_LIMIT
+from edgar_sec.foundation.runtime.settings.interactive import DEFAULT_PAGE_SIZE
 from edgar_sec.infra.storage.dag.paths import DAGPaths, STAGING_PREFIX
 from .cli import (
     cmd_branch,
@@ -61,101 +65,6 @@ class DAGMenuConfig:
         if callable(self.specs):
             return self.specs()
         return self.specs
-
-
-@dataclass(frozen=True, slots=True)
-class PickItem:
-    """One selectable item in a paginated pick-list."""
-
-    key: str
-    label: str
-    value: Any
-
-
-def prompt_paginated_choice(
-    items: Sequence[PickItem],
-    *,
-    page_size: int = 15,
-    prompt_label: str = "Choice",
-) -> PickItem | None:
-    """Interactively select an item with line-buffered pagination and filtering."""
-    if not items:
-        print("No items available.")
-        return None
-
-    active_filter = ""
-    offset = 0
-
-    while True:
-        if active_filter:
-            q = active_filter.lower()
-            filtered = [
-                it for it in items if q in it.key.lower() or q in it.label.lower()
-            ]
-        else:
-            filtered = list(items)
-
-        total = len(filtered)
-        if total == 0:
-            print(f"No items match filter '{active_filter}'. [c]lear to reset.")
-            ans = prompt_text("[c]lear filter or [q]uit", "c").strip()
-            if ans.lower() == "c":
-                active_filter = ""
-                offset = 0
-            else:
-                return None
-            continue
-
-        if offset >= total:
-            offset = max(0, ((total - 1) // page_size) * page_size)
-
-        page_items = filtered[offset : offset + page_size]
-        current_page = (offset // page_size) + 1
-        total_pages = max(1, (total + page_size - 1) // page_size)
-
-        filter_banner = f" | Filter: '{active_filter}'" if active_filter else ""
-        print(
-            f"\nShowing {offset + 1}-{offset + len(page_items)} of {total} items "
-            f"(Page {current_page}/{total_pages}{filter_banner}):"
-        )
-        for idx, it in enumerate(page_items, start=1):
-            print(f"  [{idx}] {it.label}")
-
-        nav_options: list[str] = [f"1-{len(page_items)}"]
-        if current_page < total_pages:
-            nav_options.append("[n]ext")
-        if current_page > 1:
-            nav_options.append("[p]rev")
-        if active_filter:
-            nav_options.append("[c]lear filter")
-        nav_options.append("[q]uit")
-
-        prompt_msg = f"{prompt_label} ({', '.join(nav_options)} or type text to filter)"
-        choice = prompt_text(prompt_msg, "").strip()
-
-        if not choice or choice.lower() == "q":
-            return None
-        if choice.lower() == "n":
-            if current_page < total_pages:
-                offset += page_size
-            continue
-        if choice.lower() == "p":
-            if current_page > 1:
-                offset -= page_size
-            continue
-        if choice.lower() == "c":
-            active_filter = ""
-            offset = 0
-            continue
-        if choice.isdigit():
-            val = int(choice)
-            if 1 <= val <= len(page_items):
-                return page_items[val - 1]
-            print(f"Selection must be between 1 and {len(page_items)}.")
-            continue
-
-        active_filter = choice
-        offset = 0
 
 
 def render_dag_dashboard(config: DAGMenuConfig) -> str:
@@ -317,7 +226,9 @@ def create_dag_menu(config: DAGMenuConfig) -> tuple[MenuAction, ...]:
     actions.append(
         menu_action(
             "View ASCII swimlane graph (paginated & filterable)",
-            lambda: run_paginated_graph(root, limit=config.default_graph_limit or 25),
+            lambda: run_paginated_graph(
+                root, limit=config.default_graph_limit or DEFAULT_DAG_GRAPH_LIMIT
+            ),
         )
     )
     actions.append(menu_action("Quick status & metrics", lambda: cmd_status(root)))
@@ -363,8 +274,8 @@ def create_dag_menu(config: DAGMenuConfig) -> tuple[MenuAction, ...]:
 def run_dag_menu(config: DAGMenuConfig, argv: list[str] | None = None) -> int:
     """Run interactive DAG console bound to configuration."""
     resolved = resolve_settings()
-    page_size = int(resolved.get("dag.page_size", 15))
-    graph_limit = int(resolved.get("dag.graph_limit", 25))
+    page_size = int(resolved.get("interactive.page_size", DEFAULT_PAGE_SIZE))
+    graph_limit = int(resolved.get("dag.graph_limit", DEFAULT_DAG_GRAPH_LIMIT))
 
     effective_config = DAGMenuConfig(
         snapshots_root=config.snapshots_root,
@@ -387,9 +298,7 @@ def run_dag_menu(config: DAGMenuConfig, argv: list[str] | None = None) -> int:
 
 __all__ = [
     "DAGMenuConfig",
-    "PickItem",
     "create_dag_menu",
-    "prompt_paginated_choice",
     "render_dag_dashboard",
     "run_dag_menu",
     "run_paginated_graph",

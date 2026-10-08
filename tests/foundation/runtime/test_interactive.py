@@ -1,16 +1,19 @@
-"""Prompt and menu-loop contracts: a blank answer runs nothing, a failing action
-keeps the session alive, and the header hook cannot hide the menu.
+"""Prompt and pick-list contracts: a blank answer runs nothing, a failing
+action keeps the session alive, and a pick-list filters before numbering.
 """
 
 from __future__ import annotations
 
 from edgar_sec.foundation.runtime.interactive import (
+    DEFAULT_PAGE_SIZE,
     MenuAction,
+    PickItem,
     assign_menu_keys,
     build_menu,
     menu_action,
     operator_entrypoint,
     prompt_choice,
+    prompt_paginated_choice,
     prompt_text,
     run_interactive_menu,
 )
@@ -263,3 +266,68 @@ def test_assign_menu_keys_custom_start() -> None:
     actions = (menu_action("Only", lambda: None),)
     result = assign_menu_keys(actions, start=5)
     assert [a.key for a in result] == ["5"]
+
+
+# ------------------------------------------------------- paginated pick-list
+
+
+def _pick_answers(monkeypatch, replies: list[str]) -> None:
+    pending = iter(replies)
+    monkeypatch.setattr(
+        "edgar_sec.foundation.runtime.interactive.prompt_text",
+        lambda *_args, **_kwargs: next(pending),
+    )
+
+
+def test_a_pick_item_carries_its_key_label_and_value() -> None:
+    item = PickItem(key="b1", label="Branch One", value="b1")
+    assert (item.key, item.label, item.value) == ("b1", "Branch One", "b1")
+
+
+def test_the_default_page_size_matches_the_registered_setting() -> None:
+    from edgar_sec.foundation.runtime.settings import resolve_settings
+
+    assert DEFAULT_PAGE_SIZE == 15
+    assert prompt_paginated_choice.__kwdefaults__["page_size"] == DEFAULT_PAGE_SIZE
+    assert resolve_settings(env={})["interactive.page_size"] == DEFAULT_PAGE_SIZE
+
+
+def test_a_numbered_answer_selects_the_matching_item(monkeypatch) -> None:
+    items = [
+        PickItem(key="b1", label="Branch One", value="b1"),
+        PickItem(key="b2", label="Branch Two", value="b2"),
+    ]
+    _pick_answers(monkeypatch, ["1"])
+    chosen = prompt_paginated_choice(items, page_size=10)
+    assert chosen is not None
+    assert chosen.key == "b1"
+
+
+def test_typing_filters_the_list_before_a_numbered_answer(monkeypatch) -> None:
+    items = [
+        PickItem(key="main", label="main branch", value="main"),
+        PickItem(key="feature", label="feature branch", value="feature"),
+    ]
+    _pick_answers(monkeypatch, ["feat", "1"])
+    chosen = prompt_paginated_choice(items, page_size=10)
+    assert chosen is not None
+    assert chosen.key == "feature"
+
+
+def test_an_empty_list_reports_itself_and_selects_nothing(capsys) -> None:
+    assert prompt_paginated_choice([], page_size=10) is None
+    assert "No items available." in capsys.readouterr().out
+
+
+def test_quitting_selects_nothing(monkeypatch) -> None:
+    _pick_answers(monkeypatch, ["q"])
+    item = PickItem(key="a", label="Alpha", value="a")
+    assert prompt_paginated_choice([item], page_size=10) is None
+
+
+def test_next_page_advances_the_numbered_window(monkeypatch) -> None:
+    items = [PickItem(key=str(i), label=f"Item {i}", value=i) for i in range(5)]
+    _pick_answers(monkeypatch, ["n", "1"])
+    chosen = prompt_paginated_choice(items, page_size=2)
+    assert chosen is not None
+    assert chosen.value == 2

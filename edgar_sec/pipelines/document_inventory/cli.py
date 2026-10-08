@@ -7,14 +7,9 @@ from pathlib import Path
 import sys
 
 from edgar_sec.foundation.runtime.settings.validators import positive_int_type
-from edgar_sec.infra.broker.daemon import managed_broker
 from edgar_sec.infra.storage.dag.cli import (
     attach_dag_subparser,
     dispatch_dag_subcommand,
-)
-from edgar_sec.pipelines.document_inventory.fixture_store.capture import (
-    capture_index_pages,
-    create_index_fixture,
 )
 from edgar_sec.pipelines.document_inventory.paths import InventoryPaths
 from edgar_sec.pipelines.document_inventory.snapshot.specs import (
@@ -23,7 +18,6 @@ from edgar_sec.pipelines.document_inventory.snapshot.specs import (
 
 from .commands.build import cmd_build
 from .commands.common import (
-    cohort_for_plan as _cohort_for_plan,
     resolve_artifacts_root as _artifacts_root,
 )
 from .commands.fixture import (
@@ -36,16 +30,7 @@ from .commands.review import cmd_review_artifacts
 
 __all__ = [
     "build_parser",
-    "capture_index_pages",
-    "cmd_build",
-    "cmd_fixture_create",
-    "cmd_fixture_fill",
-    "cmd_fixture_list",
-    "cmd_query",
-    "cmd_review_artifacts",
-    "create_index_fixture",
     "main",
-    "managed_broker",
 ]
 
 

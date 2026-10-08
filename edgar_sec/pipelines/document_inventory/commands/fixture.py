@@ -28,17 +28,11 @@ from edgar_sec.pipelines.document_inventory.paths import (
 from .common import cohort_for_plan, resolve_artifacts_root
 
 
-def _get_cli_dep(name: str, fallback: Any) -> Any:
-    """Retrieve attribute from cli module if monkeypatched, else fallback."""
-    mod = sys.modules.get("edgar_sec.pipelines.document_inventory.cli")
-    if mod is not None and hasattr(mod, name):
-        return getattr(mod, name)
-    return fallback
-
-
 def _capture(args: argparse.Namespace, *, create: bool) -> int:
     """Capture index pages into a new or existing fixture."""
-    root = resolve_artifacts_root(args.artifacts_root)
+    root = resolve_artifacts_root(
+        getattr(args, "artifacts_root", None) or getattr(args, "artifacts", None)
+    )
     fixture_paths = resolve_index_fixture_paths(root, args.fixture)
     if create and (
         fixture_paths.manifest_path.exists() or fixture_paths.storage_path.exists()
@@ -49,20 +43,16 @@ def _capture(args: argparse.Namespace, *, create: bool) -> int:
     ):
         raise ValueError(f"fixture does not exist: {args.fixture}")
 
-    cohort_fn = _get_cli_dep("_cohort_for_plan", cohort_for_plan)
-    plan, cohort, contribution = cohort_fn(root, args.catalog_plan, args.limit)
+    plan, cohort, contribution = cohort_for_plan(root, args.catalog_plan, args.limit)
 
-    create_fn = _get_cli_dep("create_index_fixture", create_index_fixture)
     if create:
-        create_fn(fixture_paths, fixture_id=args.fixture)
+        create_index_fixture(fixture_paths, fixture_id=args.fixture)
 
     socket_id = f"fixture-{uuid4().hex}"
     broker_path = InventoryPaths(root).broker_socket_path(socket_id)
-    broker_ctx = _get_cli_dep("managed_broker", managed_broker)
-    capture_fn = _get_cli_dep("capture_index_pages", capture_index_pages)
 
-    with broker_ctx(broker_path) as broker:
-        capture = capture_fn(
+    with managed_broker(broker_path) as broker:
+        capture = capture_index_pages(
             cohort,
             fixture_id=args.fixture,
             paths=fixture_paths,
@@ -140,7 +130,9 @@ def cmd_fixture_fill(args: argparse.Namespace) -> int:
 
 def cmd_fixture_list(args: argparse.Namespace) -> int:
     """List discovered index fixtures."""
-    root = resolve_artifacts_root(args.artifacts_root)
+    root = resolve_artifacts_root(
+        getattr(args, "artifacts_root", None) or getattr(args, "artifacts", None)
+    )
     fixtures = discover_fixtures(root)
     result = {"fixtures": fixtures, "fixture_count": len(fixtures)}
 

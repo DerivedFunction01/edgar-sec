@@ -32,10 +32,6 @@ from .commands.status import cmd_status
 
 __all__ = [
     "build_parser",
-    "cmd_expand",
-    "cmd_materialize",
-    "cmd_plan",
-    "cmd_status",
     "main",
 ]
 
