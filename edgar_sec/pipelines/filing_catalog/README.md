@@ -205,7 +205,7 @@ The published layout is in the
 facts are specific to this package:
 
 - **Catalog snapshots and plan bundles live in separated roots.**
-  `filing_catalog/snapshots/<catalog_id>/`, `filing_catalog/snapshots/current/pointer.json`,
+  `filing_catalog/snapshots/<catalog_id>/`, `filing_catalog/snapshots/catalog.sqlite`,
   and `filing_catalog/plans/<plan_id>/`, so a reader can tell a snapshot from a plan by
   name.
 - **The feature snapshot shares `snapshots/` with catalog snapshots and is told
@@ -231,7 +231,7 @@ The catalog is built one source part at a time, and each part's occurrences are
 written to its own `filing_targets/part-NNNNN.parquet`. The manifest records the source
 part list and digests, schema versions, row counts, `form_counts`, per-shard metadata,
 and `sort_order`. The manifest is written into staging, `os.replace` publishes, and
-only then — and only for the durable tree — is `current/pointer.json` written.
+only then — and only for the durable tree — is the DAG catalog updated.
 
 Sharding bounds peak memory to the densest single part instead of the whole cohort,
 and it adds one precondition: because occurrence dedup is per shard, source parts

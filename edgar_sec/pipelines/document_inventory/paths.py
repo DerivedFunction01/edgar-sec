@@ -8,6 +8,7 @@ from pathlib import Path
 
 import edgar_sec.foundation.runtime.fixtures as foundation_fixtures
 import edgar_sec.foundation.runtime.paths as foundation_paths
+from edgar_sec.infra.storage.dag.paths import DAGPaths
 from edgar_sec.pipelines.filing_catalog.paths import (
     CATALOG_SNAPSHOT_MANIFEST_NAME,
     FilingCatalogPaths,
@@ -183,8 +184,10 @@ class InventoryPaths:
     def review_manifest_path(self, review_id: str) -> Path:
         return self.review_run_root(review_id) / REVIEW_MANIFEST_FILE
 
-    def current_snapshot_pointer(self) -> Path:
-        return foundation_paths.current_pointer_path(self.snapshots_root)
+    @property
+    def catalog_file(self) -> Path:
+        """SQLite DAG catalog database for published inventory snapshots."""
+        return DAGPaths(self.snapshots_root).catalog_file
 
     @property
     def projection_staging_root(self) -> Path:
@@ -278,13 +281,6 @@ class InventoryRunPaths:
 
     def attempt_manifest_path(self, chunk_id: str, attempt_id: str) -> Path:
         return self.attempt_dir(chunk_id, attempt_id) / MANIFEST_FILE_NAME
-
-    # --- shared pointer --------------------------------------------------
-
-    @staticmethod
-    def current_pointer_path(snapshots_root: Path) -> Path:
-        """Return the published-snapshot pointer for the inventory dataset."""
-        return foundation_paths.current_pointer_path(Path(snapshots_root))
 
 
 def inventory_run_paths(artifacts_root: Path | str, run_id: str) -> InventoryRunPaths:

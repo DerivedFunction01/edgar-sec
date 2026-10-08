@@ -38,6 +38,20 @@ CHUNK_DELEGATED_STATE_FILE = "chunk-delegated.state.json"
 #: phase produced a snapshot is a fact about the pipeline, not the shared writer.
 DOCUMENTS_PHASE = "025_webpage_storage"
 
+#: The pointer file naming the currently published snapshot. Owned here because
+#: which dataset a pointer belongs to is a fact about the pipeline.
+POINTER_FILE_NAME = "pointer.json"
+CURRENT_DIR = "current"
+
+
+def current_pointer_path(snapshots_root: Path | str) -> Path:
+    """Return the pointer file naming the currently published snapshot.
+
+    Owned here because the pointer is a document-storage artifact, not a shared
+    foundation primitive: which dataset a pointer belongs to is a pipeline fact.
+    """
+    return Path(snapshots_root) / CURRENT_DIR / POINTER_FILE_NAME
+
 
 def chunk_checkpoint_path(chunks_dir: Path | str, chunk_id: str) -> Path:
     return Path(chunks_dir) / f"chunk-{chunk_id}.parquet"
@@ -90,7 +104,7 @@ class DocumentStoragePaths:
         return self.snapshot_dir(snapshot_id) / SNAPSHOT_ARTIFACT_NAME
 
     def current_pointer_path(self) -> Path:
-        return foundation_paths.current_pointer_path(self.snapshots_root)
+        return self.snapshots_root / CURRENT_DIR / POINTER_FILE_NAME
 
     def run_dir(self, run_id: str) -> Path:
         return self.document_transient_root / RUNS_DIR / run_id
@@ -128,12 +142,14 @@ __all__ = [
     "CHUNKS_DIR_NAME",
     "CHUNK_DELEGATED_FILE",
     "CHUNK_DELEGATED_STATE_FILE",
+    "CURRENT_DIR",
     "LOCATOR_GROUPS_NAME",
     "DOCUMENTS_PHASE",
     "DOCUMENTS_DATASET",
     "EXHIBITS_DATASET",
     "EXHIBIT_SNAPSHOT_NAME",
     "PAYLOAD_DB_NAME",
+    "POINTER_FILE_NAME",
     "REVIEW_RUNS_DIR",
     "REVIEW_MANIFEST_NAME",
     "MANIFEST_FILE_NAME",

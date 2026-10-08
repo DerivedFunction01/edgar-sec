@@ -171,7 +171,7 @@ artifacts_root/filing_catalog/
 │   │   └── filing_targets/part-NNNNN.parquet   # source-part target shards
 │   ├── <feature-digest>/               # policy-scope feature snapshot, identified by
 │   │                                   #   feature_snapshot.json, not by name
-│   └── current/pointer.json            # current catalog pointer
+│   └── catalog.sqlite                  # SQLite DAG catalog database
 ├── plans/<plan_id>/                    # immutable plan bundle
 │   ├── plan.json
 │   ├── selection_report.json
@@ -308,11 +308,11 @@ All generated paths derive from the artifacts root; no module hardcodes them.
 {artifacts_root}/metadata/registries/{registry_id}/             # Source comparison outputs
 {artifacts_root}/metadata/snapshots/{snapshot_id}/parts/*.parquet   # Published dataset
 {artifacts_root}/metadata/snapshots/{snapshot_id}/ciks.parquet     # Published CIK index
-{artifacts_root}/metadata/snapshots/current/pointer.json        # Current snapshot pointer
+{artifacts_root}/metadata/snapshots/catalog.sqlite        # SQLite DAG catalog database
 {artifacts_root}/metadata/sources/{name}/{snapshot_id}/         # Immutable source snapshots
 
 {artifacts_root}/filing_catalog/snapshots/{catalog_id}/     # Immutable catalog snapshot
-{artifacts_root}/filing_catalog/snapshots/current/pointer.json  # Current catalog pointer
+{artifacts_root}/filing_catalog/snapshots/catalog.sqlite  # SQLite DAG catalog database
 {artifacts_root}/filing_catalog/plans/{plan_id}/            # Immutable plan bundle
 {artifacts_root}/transient/filing_catalog/{catalog_id}/     # Staging; never published
 
@@ -321,7 +321,7 @@ All generated paths derive from the artifacts root; no module hardcodes them.
 {artifacts_root}/document_inventory/fixtures/{fixture_id}/manifest.json # Common envelope; index-store details are pipeline-owned
 {artifacts_root}/document_inventory/fixtures/{fixture_id}/index_fixtures.sqlite
 {artifacts_root}/document_inventory/snapshots/{snapshot_id}/manifest.json # Published inventory snapshot
-{artifacts_root}/document_inventory/snapshots/current/pointer.json      # Current snapshot identity
+{artifacts_root}/document_inventory/snapshots/catalog.sqlite      # SQLite DAG catalog database
 {artifacts_root}/transient/document_inventory/projection-staging/   # Temporary projection outputs
 {artifacts_root}/transient/document_inventory/{run_id}/cohort_accessions.parquet # Normalized cohort facts
 {artifacts_root}/transient/document_inventory/{run_id}/cohort_sources.parquet    # Source-CIK edges

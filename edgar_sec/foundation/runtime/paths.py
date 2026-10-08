@@ -9,23 +9,14 @@ from .settings import resolve_settings
 from .settings.paths import DEFAULT_DISTRIBUTION_ROOT
 
 # Cross-pipeline artifact layout: an immutable dataset under a dataset root, a
-# pointer naming what is published, and resumable work under a transient root.
+# tip naming what is published, and resumable work under a transient root.
 TRANSIENT_DIR = "transient"
 CURRENT_DIR = "current"
-POINTER_FILE_NAME = "pointer.json"
 PLAN_FILE_NAME = "plan.json"
 SNAPSHOTS_DIR = "snapshots"
 RUNTIME_DIR = "runtime"
 DATA_FILE_NAME = "data.parquet"
 PARQUET_PART_GLOB = "part-*.parquet"
-
-
-def current_pointer_path(snapshots_root: Path) -> Path:
-    """Return the pointer file naming the currently published snapshot.
-
-    Shared so every dataset resolves "current" identically.
-    """
-    return snapshots_root / CURRENT_DIR / POINTER_FILE_NAME
 
 
 def transient_dir(artifacts_root: Path, dataset: str, run_id: str) -> Path:
@@ -132,13 +123,11 @@ __all__ = [
     "CURRENT_DIR",
     "PACKAGE_ROOT",
     "PLAN_FILE_NAME",
-    "POINTER_FILE_NAME",
     "RUNTIME_DIR",
     "SNAPSHOTS_DIR",
     "TRANSIENT_DIR",
     "ProjectPaths",
     "ProjectRootError",
-    "current_pointer_path",
     "distribution_root",
     "resolve_paths",
     "runtime_root",

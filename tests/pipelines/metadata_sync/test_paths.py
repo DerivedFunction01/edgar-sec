@@ -47,9 +47,6 @@ def test_snapshot_paths_are_scoped_by_snapshot_id(tmp_path: Path) -> None:
     assert metadata.snapshot_manifest("abc") == (
         tmp_path / "metadata" / "snapshots" / "abc" / SNAPSHOT_MANIFEST_NAME
     )
-    assert metadata.current_pointer == (
-        tmp_path / "metadata" / "snapshots" / "current" / "pointer.json"
-    )
 
 
 def test_plan_paths_are_scoped_by_plan_id(tmp_path: Path) -> None:

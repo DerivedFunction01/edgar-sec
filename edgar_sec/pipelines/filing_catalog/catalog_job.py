@@ -147,48 +147,40 @@ def _source_from_manifest(manifest_path: Path) -> SourceDataset:
 def _source_from_pointer() -> SourceDataset:
     metadata_paths = resolve_metadata_paths()
     meta_catalog = DAGCatalog(metadata_paths.snapshots_root)
-    if meta_catalog.catalog_file.is_file():
-        ptr = meta_catalog.read_pointer()
-        if not ptr or not ptr.get("snapshot_id"):
-            raise CatalogError(
-                "no Phase 1 snapshot is published; run 'metadata merge' first or "
-                "pass source_artifact explicitly"
-            )
-        snapshot_id = str(ptr["snapshot_id"])
-        node = meta_catalog.get_manifest(snapshot_id)
-        if node is not None and "submissions" in node.relations:
-            paths = tuple(
-                metadata_paths.snapshots_root / snapshot_id / p.path
-                if not Path(p.path).is_absolute()
-                else Path(p.path)
-                for p in node.relations["submissions"]
-            )
-            handoff = node.to_dict()
-            if metadata_paths.snapshot_manifest(snapshot_id).is_file():
-                try:
-                    handoff = json.loads(
-                        metadata_paths.snapshot_manifest(snapshot_id).read_text(
-                            encoding="utf-8"
-                        )
-                    )
-                except Exception:
-                    pass
-            return SourceDataset(paths=paths, handoff=handoff)
-    pointer = metadata_paths.current_pointer
-    if not pointer.is_file():
+    if not meta_catalog.catalog_file.is_file():
         raise CatalogError(
             "no Phase 1 snapshot is published; run 'metadata merge' first or "
             "pass source_artifact explicitly"
         )
-    handoff = json.loads(pointer.read_text(encoding="utf-8"))
-    snapshot_id = handoff.get("snapshot_id")
-    if not snapshot_id:
-        raise CatalogError(f"Phase 1 pointer names no snapshot: {pointer}")
-    try:
-        parts = read_snapshot_parts(metadata_paths.snapshot_manifest(str(snapshot_id)))
-    except SnapshotLayoutError as exc:
-        raise CatalogError(str(exc)) from exc
-    return SourceDataset(paths=parts.paths, handoff=parts.layout.manifest)
+    ptr = meta_catalog.read_pointer()
+    if not ptr or not ptr.get("snapshot_id"):
+        raise CatalogError(
+            "no Phase 1 snapshot is published; run 'metadata merge' first or "
+            "pass source_artifact explicitly"
+        )
+    snapshot_id = str(ptr["snapshot_id"])
+    node = meta_catalog.get_manifest(snapshot_id)
+    if node is None or "submissions" not in node.relations:
+        raise CatalogError(
+            f"Phase 1 pointer names a snapshot with no submissions: {snapshot_id}"
+        )
+    paths = tuple(
+        metadata_paths.snapshots_root / snapshot_id / p.path
+        if not Path(p.path).is_absolute()
+        else Path(p.path)
+        for p in node.relations["submissions"]
+    )
+    handoff = node.to_dict()
+    if metadata_paths.snapshot_manifest(snapshot_id).is_file():
+        try:
+            handoff = json.loads(
+                metadata_paths.snapshot_manifest(snapshot_id).read_text(
+                    encoding="utf-8"
+                )
+            )
+        except Exception:
+            pass
+    return SourceDataset(paths=paths, handoff=handoff)
 
 
 def _guard_not_transient(source: SourceDataset) -> None:

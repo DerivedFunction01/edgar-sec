@@ -14,10 +14,12 @@ from pathlib import Path
 from typing import Any
 
 from edgar_sec.foundation.hashing import sha256_text
-from edgar_sec.foundation.runtime.paths import current_pointer_path
 from edgar_sec.foundation.serialization import canonical_json
 from edgar_sec.infra.storage.atomic import atomic_write_text
-from edgar_sec.pipelines.document_storage.paths import MANIFEST_FILE_NAME
+from edgar_sec.pipelines.document_storage.paths import (
+    MANIFEST_FILE_NAME,
+    current_pointer_path,
+)
 
 log = logging.getLogger("storage.manifests")
 

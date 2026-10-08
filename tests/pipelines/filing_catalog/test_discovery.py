@@ -2,7 +2,6 @@
 
 from __future__ import annotations
 
-import json
 from pathlib import Path
 
 import pytest
@@ -21,6 +20,7 @@ from edgar_sec.pipelines.filing_catalog.paths import (
     resolve_filing_catalog_paths,
     safe_identifier,
 )
+from edgar_sec.infra.storage.dag.catalog import DAGCatalog
 from edgar_sec.pipelines.filing_catalog.planner import plan
 from edgar_sec.pipelines.filing_catalog.publication import PlanConflictError
 
@@ -171,8 +171,5 @@ def test_current_pointer_is_read_when_durable(
 def test_pointer_contents_are_authoritative(published: tuple[Path, str]) -> None:
     root, catalog_id = published
     paths = _paths(root)
-    paths.current_pointer.parent.mkdir(parents=True, exist_ok=True)
-    paths.current_pointer.write_text(
-        json.dumps({"catalog_id": catalog_id}), encoding="utf-8"
-    )
+    DAGCatalog(paths.snapshots_root).write_pointer("main", catalog_id)
     assert current_catalog_id(paths) == catalog_id

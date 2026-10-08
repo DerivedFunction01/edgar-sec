@@ -12,7 +12,6 @@ from pathlib import Path
 import edgar_sec.foundation.runtime.paths as foundation_paths
 from edgar_sec.foundation.runtime.paths import (
     ProjectPaths,
-    current_pointer_path,
     resolve_paths,
     transient_dir,
 )
@@ -132,11 +131,6 @@ class FilingCatalogPaths:
     def catalog_file(self) -> Path:
         """SQLite DAG catalog database for published catalog snapshots."""
         return DAGPaths(self.snapshots_root).catalog_file
-
-    @property
-    def current_pointer(self) -> Path:
-        """Atomic JSON pointer naming the currently published catalog."""
-        return current_pointer_path(self.snapshots_root)
 
     def plan_dir(self, plan_id: str) -> Path:
         """Directory holding one immutable target-plan bundle."""

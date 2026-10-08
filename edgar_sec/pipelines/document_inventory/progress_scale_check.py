@@ -311,9 +311,8 @@ def run_simulation(
     expected_entries = rows * entries_per_accession
     if entry_count != expected_entries:
         raise RuntimeError("final entry count does not match the synthetic work order")
-    published_pointer = inventory_paths(scratch).current_snapshot_pointer()
-    if published_pointer.exists():
-        raise RuntimeError("scale check unexpectedly created a snapshot pointer")
+    if inventory_paths(scratch).catalog_file.exists():
+        raise RuntimeError("scale check unexpectedly created a snapshot catalog")
 
     duckdb_bytes = sum(path.stat().st_size for path in scratch.rglob("*.duckdb"))
     parquet_bytes = sum(path.stat().st_size for path in scratch.rglob("*.parquet"))

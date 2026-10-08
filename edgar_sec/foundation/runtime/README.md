@@ -28,7 +28,7 @@ know what a CIK or an accession number is.
 | `interactive.py` | Terminal prompts, choice menus, and the operator entrypoint policy. |
 | `memory.py` | glibc heap reclamation. |
 | `partitions.py` | Partition-spec parsing and balanced work distribution. |
-| `paths.py` | Project roots, runtime root, transient and current-pointer primitives. |
+| `paths.py` | Project roots, runtime root, and transient layout primitives. |
 | `progress.py` | tqdm adapters and the optional-callback contract. |
 | `render.py` | Component-based terminal renderer for aligned rows and tabular grids. |
 | `resources.py` | cgroup-aware resource derivation and `RuntimeResourceProfile`. |
@@ -81,7 +81,7 @@ so the cycle is closed only at call time.
   (env `CACHE_ROOT`, default `<artifacts>/caches`), read through
   `resolve_runtime_settings().cache_root`. Both roots have exactly one
   authority.
-- `current_pointer_path()`, `runtime_root()`, and `transient_dir()` are shared
+- `runtime_root()` and `transient_dir()` are shared
   artifact-layout primitives. Dataset run/checkpoint trees remain pipeline-owned.
 - `fixture_paths()` resolves a fixture below
   `<artifacts_root>/<dataset>/fixtures/<fixture_id>` and validates every path
@@ -133,7 +133,7 @@ the separate verification gate. Neither is in this package.
 - `get_env` / `get_env_int` / `get_env_float` / `get_env_bool` / `load_dotenv` / `DEFAULT_DOTENV_PATH` — environment resolution. `env.py`.
 - `derive_resources`, `RuntimeResourceProfile`, `available_memory_bytes` / `read_cgroup_v2_available_bytes` / `read_cgroup_v1_available_bytes` / `read_proc_mem_available_bytes`, `auto_worker_count` / `usable_memory_bytes` / `default_cpu_cores` / `default_threads` / `default_memory_limit`, and `DEFAULT_MEMORY_FRACTION` (0.6), `MIN_MEMORY_MIB` (256), `DEFAULT_WORKER_MEMORY_MIB` (512), `DEFAULT_WORKER_MEMORY_SAFETY` (0.9). `resources.py`.
 - `resolve_paths` / `ProjectPaths` / `ProjectRootError` / `PACKAGE_ROOT`. `paths.py`.
-- `current_pointer_path` / `runtime_root` / `transient_dir` and the shared layout constants `TRANSIENT_DIR`, `CURRENT_DIR`, `POINTER_FILE_NAME`, `PLAN_FILE_NAME`, `SNAPSHOTS_DIR`, `RUNTIME_DIR`. `paths.py`.
+- `runtime_root` / `transient_dir` and the shared layout constants `TRANSIENT_DIR`, `CURRENT_DIR`, `PLAN_FILE_NAME`, `SNAPSHOTS_DIR`, `RUNTIME_DIR`. `paths.py`.
 - `FixturePaths` / `fixture_paths` / `fixtures_root` / `validate_fixture_component` / `FixtureManifestEnvelope` / `FixtureManifestError`, plus fixture layout constants. `fixtures.py`.
 - `reclaim` — `gc.collect()` plus a best-effort `malloc_trim(0)`. `memory.py`.
 - `parse_id_selection` — `'1-3,5'` to `(1, 2, 3, 5)`; raises `ValueError` for a descending range. `partitions.py`.

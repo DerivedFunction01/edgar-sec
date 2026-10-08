@@ -54,17 +54,16 @@ def _read_json(path: Path) -> dict[str, Any] | None:
 
 
 def current_catalog_id(paths: FilingCatalogPaths) -> str | None:
-    """Return the catalog id named by the current pointer, if any."""
+    """Return the catalog id named by the current pointer, if any.
+
+    The DAG catalog is the single authority for the published tip.
+    """
     catalog = DAGCatalog(paths.snapshots_root)
     if catalog.catalog_file.is_file():
         ptr = catalog.read_pointer()
         if ptr:
             return str(ptr["snapshot_id"])
-    pointer = _read_json(paths.current_pointer)
-    if pointer is None:
-        return None
-    catalog_id = pointer.get("catalog_id") or pointer.get("snapshot_id")
-    return str(catalog_id) if catalog_id else None
+    return None
 
 
 def resolve_catalog_reference(paths: FilingCatalogPaths, catalog: str) -> str:

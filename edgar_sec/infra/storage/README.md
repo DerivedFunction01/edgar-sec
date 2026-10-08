@@ -79,8 +79,8 @@ system and no table registry.
   writes the manifest, and only then publishes the pointer: a crash between the
   two leaves a stale pointer to a snapshot that does exist, which is strictly
   better than a pointer to one that does not. The pointer goes through
-  `atomic_write_text` and the shared `current_pointer_path`, so every dataset
-  resolves `current` identically. `snapshot_identity` digests sorted inputs, so
+  `atomic_write_text`, so snapshot tip pointers resolve `current` atomically.
+  `snapshot_identity` digests sorted inputs, so
   consolidating the same sources twice yields the same id and a repeat is
   recognizably a no-op.
 - **Part paths are snapshot-relative, and a purge is gated on part sharing.** A

@@ -13,7 +13,6 @@ import edgar_sec.foundation.runtime.paths as foundation_paths
 from edgar_sec.foundation.runtime.paths import (
     PLAN_FILE_NAME,
     ProjectPaths,
-    current_pointer_path,
     resolve_paths,
     transient_dir,
 )
@@ -100,11 +99,6 @@ class MetadataPaths:
     def snapshot_cik_index(self, snapshot_id: str) -> Path:
         """Sorted distinct CIK index published beside one snapshot payload."""
         return self.snapshot_dir(snapshot_id) / SNAPSHOT_CIK_INDEX_NAME
-
-    @property
-    def current_pointer(self) -> Path:
-        """Atomic JSON pointer naming the currently published snapshot."""
-        return current_pointer_path(self.snapshots_root)
 
     @property
     def sources_root(self) -> Path:

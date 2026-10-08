@@ -324,7 +324,7 @@ def test_explicit_output_root_never_advances_a_pointer(
     tmp_path: Path, sample_source: Path, catalog_paths: Any
 ) -> None:
     materialize(sample_source, tmp_path / "out")
-    assert not catalog_paths.current_pointer.exists()
+    assert not catalog_paths.catalog_file.exists()
 
 
 # --- source resolution ----------------------------------------------------

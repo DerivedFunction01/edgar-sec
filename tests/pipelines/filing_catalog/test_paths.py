@@ -50,12 +50,9 @@ def test_catalog_and_plan_ids_have_separate_namespaces(paths) -> None:
     assert paths.snapshot_dir("same-id") != paths.plan_dir("same-id")
 
 
-def test_the_current_pointer_lives_inside_the_snapshots_root(paths) -> None:
-    """The pointer sits beside the directories it can name."""
-    assert paths.current_pointer == (
-        paths.snapshots_root / CURRENT_ALIAS / "pointer.json"
-    )
-    assert paths.current_pointer.parent.parent == paths.snapshots_root
+def test_catalog_file_lives_inside_the_snapshots_root(paths) -> None:
+    """The SQLite DAG catalog sits in the snapshots root."""
+    assert paths.catalog_file == paths.snapshots_root / "catalog.sqlite"
 
 
 # --- identifiers -----------------------------------------------------------
