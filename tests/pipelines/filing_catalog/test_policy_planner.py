@@ -38,6 +38,7 @@ from edgar_sec.pipelines.filing_catalog.planner import (
     plan,
     plan_policy,
 )
+from edgar_sec.pipelines.cohort.family_index import publish_family_index
 from edgar_sec.pipelines.filing_catalog.publication import (
     PlanConflictError,
     plan_bundle_complete,
@@ -72,6 +73,7 @@ def test_policy_plan_publishes_a_complete_bundle(
 
     plan_dir = resolve_filing_catalog_paths(artifacts_root).plan_dir(meta["plan_id"])
     assert plan_bundle_complete(plan_dir)
+    assert meta["family_index_id"]
     for name in REQUIRED_PLAN_FILES:
         assert (plan_dir / name).is_file()
 
@@ -388,6 +390,7 @@ def test_seed_cohort_replaces_configured_seed_csv_and_is_fingerprinted(
         "scope": SCOPE_POLICY,
         "policy_fingerprint": policy.policy_fingerprint,
         "seed_fingerprint": meta["seed_fingerprint"],
+        "family_index_id": meta["family_index_id"],
         "plan_schema_version": meta["plan_schema_version"],
         "seed_cohort_id": cohort.cohort_id,
         "seed_cohort_dataset_sha256": cohort.dataset_sha256,
@@ -614,6 +617,8 @@ def test_a_policy_rebuild_into_an_independent_root_is_identical(
     materialize(sample_source, second_root)
     for root in (first_root, second_root):
         published_universe(root)
+        paths = resolve_cohort_paths(root)
+        publish_family_index(catalog=CohortCatalog(paths), paths=paths)
 
     first = plan_policy(str(manifest["catalog_id"]), policy, first_root)
     second = plan_policy(str(manifest["catalog_id"]), policy, second_root)

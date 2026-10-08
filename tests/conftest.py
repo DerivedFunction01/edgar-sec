@@ -22,12 +22,12 @@ def sample_source() -> Path:
 @pytest.fixture(scope="session", autouse=True)
 def no_production_cohort_writes() -> Iterator[None]:
     """Fail the session if a test adds a cohort to this repository's own tree."""
-    root = DEFAULT_ARTIFACTS_ROOT / "metadata" / "cohorts"
+    root = DEFAULT_ARTIFACTS_ROOT / "cohorts"
     before = {path.name for path in root.iterdir()} if root.is_dir() else set()
     yield
     after = {path.name for path in root.iterdir()} if root.is_dir() else set()
     leaked = sorted(after - before)
     assert not leaked, (
         f"tests wrote production cohorts under {root}: {leaked}. "
-        "Pass artifacts_root=tmp_path to the options that compile one."
+        "Pass tmp_path as the cohort storage root when compiling one."
     )

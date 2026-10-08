@@ -13,18 +13,14 @@ from edgar_sec.infra.storage.dag.catalog import DAGCatalog
 from edgar_sec.pipelines.metadata_sync import augment_flow
 from edgar_sec.pipelines.metadata_sync import operator as operator_module
 from edgar_sec.pipelines.metadata_sync.cli import (
-    cmd_compare,
-    cmd_family_index,
     cmd_merge,
     cmd_plan,
-    cmd_refresh,
     cmd_run,
     cmd_status,
 )
 from edgar_sec.pipelines.metadata_sync.discovery import current_snapshot_id
 from edgar_sec.pipelines.metadata_sync.merger import publish_current_snapshot
 from edgar_sec.pipelines.metadata_sync.operator import (
-    DEFAULT_INPUT,
     INTERRUPTED_MESSAGE,
     MENU_TITLE,
     WizardState,
@@ -34,33 +30,26 @@ from edgar_sec.pipelines.metadata_sync.operator import (
     _ensure_plan,
     build_operator_menu,
     confirm_network,
-    family_index,
     main,
     render_plan_header,
     render_session_header,
     resolve_plan,
 )
 from edgar_sec.pipelines.metadata_sync.options import (
-    PlanOptions,
     derive_plan_id,
     plan_options,
     run_options,
 )
 from edgar_sec.pipelines.metadata_sync.paths import resolve_run_paths
 from edgar_sec.pipelines.metadata_sync.planner import build_plan, write_plan
-from edgar_sec.pipelines.metadata_sync.source_registry import (
-    SOURCE_NAME,
-    SOURCE_UNIVERSE_NAME,
-)
-from tests.support import fixture_cohort, fixture_path, published_universe
+from tests.pipelines.metadata_sync.cohort_support import publish_test_cohort
+from tests.support import fixture_path
 
 COMMANDS = {
     "plan": cmd_plan,
     "status": cmd_status,
     "run": cmd_run,
     "merge": cmd_merge,
-    "refresh": cmd_refresh,
-    "compare": cmd_compare,
 }
 
 
@@ -70,9 +59,21 @@ def state(tmp_path: Path) -> WizardState:
 
 
 def _write_plan(tmp_path: Path, *, chunk_size: int = 2) -> str:
-    plan = build_plan(fixture_cohort("cik_sec_mini.csv").roster, chunk_size=chunk_size)
+    record, _paths, roster = publish_test_cohort(
+        fixture_path("cik_sec_mini.csv"), tmp_path
+    )
+    plan = build_plan(
+        roster,
+        chunk_size=chunk_size,
+        input_name=f"cohort:{record.cohort_id}",
+        input_fingerprint=record.dataset_sha256,
+    )
     write_plan(plan, resolve_run_paths(plan.plan_id, tmp_path))
     return plan.plan_id
+
+
+def _cohort_id(artifacts: Path) -> str:
+    return publish_test_cohort(fixture_path("cik_sec_mini.csv"), artifacts)[0].cohort_id
 
 
 # ------------------------------------------------------------------------ menu
@@ -85,9 +86,13 @@ def test_menu_covers_the_whole_lifecycle() -> None:
     assert "p" in labels and (
         "dag" in labels["p"].lower() or "snapshot" in labels["p"].lower()
     )
-    assert "f" in labels and "famil" in labels["f"].lower()
     assert any("Plan" in label for label in labels.values())
     assert any("Augment" in label for label in labels.values())
+    assert not any(
+        term in label.casefold()
+        for label in labels.values()
+        for term in ("source", "cohort", "family-index")
+    )
     assert MENU_TITLE.startswith("Metadata Sync")
 
 
@@ -96,30 +101,6 @@ def test_every_menu_action_binds_to_a_shared_command() -> None:
     for action in build_operator_menu():
         assert action.callback.__name__ == "<lambda>"
         assert callable(action.callback)
-
-
-def test_the_family_index_action_explains_a_missing_universe(
-    tmp_path: Path, capsys
-) -> None:
-    """It must not crash the menu; it says which earlier step is missing."""
-    state = WizardState()
-    state.artifacts_root = str(tmp_path)
-    family_index(state)
-    out = capsys.readouterr().out
-    assert "cik_lookup" in out
-    assert "Refresh external source" in out
-
-
-def test_the_family_index_action_builds_against_a_published_universe(
-    tmp_path: Path, capsys
-) -> None:
-    published_universe(tmp_path)
-    state = WizardState()
-    state.artifacts_root = str(tmp_path)
-    family_index(state)
-    out = capsys.readouterr().out
-    assert "Family Index Published" in out
-    assert "family_index_id" in out
 
 
 def test_menu_closes_over_the_supplied_state() -> None:
@@ -151,7 +132,7 @@ def test_an_unparsable_answer_falls_back_rather_than_crashing(
 def test_ask_plan_options_returns_none_on_cancel(
     state: WizardState, monkeypatch: pytest.MonkeyPatch
 ) -> None:
-    monkeypatch.setattr(operator_module, "_ask_cohort_source", lambda _state: None)
+    monkeypatch.setattr(operator_module, "_ask_published_cohort", lambda _state: None)
     assert _ask_plan_options(state, with_limit=True) is None
 
 
@@ -161,14 +142,13 @@ def test_ask_plan_options_uses_registered_defaults(
     monkeypatch.setenv("RUNTIME_CHUNK_SIZE", "17")
     monkeypatch.setattr(
         operator_module,
-        "_ask_cohort_source",
-        lambda _state: plan_options(input_path=DEFAULT_INPUT),
+        "_ask_published_cohort",
+        lambda _state: plan_options(cohort="c-test"),
     )
     monkeypatch.setattr(operator_module, "prompt_text", lambda label, default: default)
     options = _ask_plan_options(state)
     assert options is not None
-    assert options.input_path is not None
-    assert options.input_path.name == Path(DEFAULT_INPUT).name
+    assert options.cohort == "c-test"
     assert options.chunk_size == 17
 
 
@@ -177,8 +157,8 @@ def test_ask_plan_options_records_a_limit(
 ) -> None:
     monkeypatch.setattr(
         operator_module,
-        "_ask_cohort_source",
-        lambda _state: plan_options(input_path=fixture_path("cik_sec_mini.csv")),
+        "_ask_published_cohort",
+        lambda _state: plan_options(cohort="c-test"),
     )
     answers = iter(["1000", "3"])
     monkeypatch.setattr(
@@ -356,29 +336,6 @@ def test_a_declined_run_fetches_nothing(
     assert "nothing was fetched" in capsys.readouterr().out
 
 
-def test_a_declined_refresh_publishes_nothing(monkeypatch: pytest.MonkeyPatch) -> None:
-    monkeypatch.setattr(operator_module, "prompt_text", lambda label, default: default)
-    monkeypatch.setattr(operator_module, "confirm_network", lambda *a, **k: False)
-    seen: list[object] = []
-    monkeypatch.setattr(operator_module, "cmd_refresh", seen.append)
-    operator_module.refresh(WizardState())
-    assert seen == []
-
-
-def _forbid_artifacts_prompts(
-    monkeypatch: pytest.MonkeyPatch, asked: list[str]
-) -> None:
-    """Failing on the label, not on a count, catches a re-added root prompt."""
-
-    def stub(label: str, default: str = "") -> str:
-        asked.append(label)
-        if "rtifact" in label:
-            pytest.fail(f"the wizard asked for the artifacts root: {label!r}")
-        return default
-
-    monkeypatch.setattr(operator_module, "prompt_text", stub)
-
-
 # ------------------------------------------------------------------- delegation
 
 
@@ -389,17 +346,14 @@ def test_action_plan_records_the_plan_it_created(
         operator_module,
         "_ask_plan_options",
         lambda *a, **k: plan_options(
-            input_path=fixture_path("cik_sec_mini.csv"), artifacts_root=tmp_path
+            cohort=_cohort_id(tmp_path), artifacts_root=tmp_path
         ),
     )
     monkeypatch.setattr(operator_module, "cmd_plan", lambda options: None)
     operator_module.plan(state)
     assert state.plan_id == derive_plan_id(
-        plan_options(
-            input_path=fixture_path("cik_sec_mini.csv"), artifacts_root=tmp_path
-        )
+        plan_options(cohort=_cohort_id(tmp_path), artifacts_root=tmp_path)
     )
-    assert state.input_path.endswith("cik_sec_mini.csv")
 
 
 def test_action_status_delegates_to_cmd_status(
@@ -480,97 +434,6 @@ def test_cancelled_answers_short_circuit_every_action(
     operator_module.augment(state)
     operator_module.open_metadata_distrib_console(state)
     assert called == []
-
-
-# ------------------------------------------------------- refresh and compare
-
-
-def test_refresh_needs_no_reference_and_still_reaches_the_library(
-    state: WizardState, monkeypatch: pytest.MonkeyPatch
-) -> None:
-    """Refreshing is not scoped to a plan, so a blank answer is not a cancel."""
-    monkeypatch.setattr(operator_module, "prompt_text", lambda label, default="": "")
-    monkeypatch.setattr(operator_module, "confirm_network", lambda *a, **k: True)
-    seen: list[tuple[object, str]] = []
-    monkeypatch.setattr(
-        operator_module,
-        "cmd_refresh",
-        lambda root, *, source: seen.append((root, source)),
-    )
-    operator_module.refresh(state)
-    assert seen == [(state.metadata().artifacts_root, SOURCE_NAME)]
-
-
-def test_refresh_targets_the_session_artifacts_root_without_asking(
-    state: WizardState, monkeypatch: pytest.MonkeyPatch
-) -> None:
-    """A project-default root would publish outside the tree the session reads."""
-    asked: list[str] = []
-    refreshed: list[tuple[Path | None, str]] = []
-    _forbid_artifacts_prompts(monkeypatch, asked)
-    monkeypatch.setattr(operator_module, "confirm_network", lambda *a, **k: True)
-    monkeypatch.setattr(
-        operator_module,
-        "cmd_refresh",
-        lambda root, *, source: refreshed.append((root, source)),
-    )
-
-    operator_module.refresh(state)
-
-    assert refreshed == [(state.metadata().artifacts_root, SOURCE_NAME)]
-    # Asking which source is expected; the helper already fails on any root prompt.
-    assert asked == ["Source number"]
-
-
-def test_compare_targets_the_session_artifacts_root(
-    state: WizardState, monkeypatch: pytest.MonkeyPatch
-) -> None:
-    """The selected shared source cohort is passed through with session paths."""
-    from types import SimpleNamespace
-
-    record = SimpleNamespace(cohort_id="cohort-1", row_count=2)
-
-    class Catalog:
-        def __init__(self, _paths):
-            pass
-
-        def list_cohorts(self, **_kwargs):
-            return [record]
-
-    monkeypatch.setattr(operator_module, "CohortCatalog", Catalog)
-    asked: list[str] = []
-    seen: list[tuple[PlanOptions, str]] = []
-    answers = iter((DEFAULT_INPUT, "1"))
-
-    def prompt(label: str, _default: str = "") -> str:
-        asked.append(label)
-        if "rtifact" in label:
-            pytest.fail(f"the wizard asked for the artifacts root: {label!r}")
-        return next(answers)
-
-    monkeypatch.setattr(operator_module, "prompt_text", prompt)
-    monkeypatch.setattr(
-        operator_module,
-        "cmd_compare",
-        lambda options, **kw: seen.append((options, kw["source_cohort_id"])),
-    )
-
-    operator_module.compare(state)
-
-    assert len(seen) == 1
-    assert seen[0][0].artifacts_root == state.metadata().artifacts_root
-    assert seen[0][1] == record.cohort_id
-    assert asked, "compare still prompts for its own inputs"
-
-
-def test_compare_says_so_when_no_source_cohort_exists(
-    state: WizardState, monkeypatch: pytest.MonkeyPatch, capsys
-) -> None:
-    monkeypatch.setattr(
-        operator_module, "prompt_text", lambda label, default="": default
-    )
-    operator_module.compare(state)
-    assert "no company_tickers source cohort published" in capsys.readouterr().out
 
 
 # ----------------------------------------------------------------- the pointer
@@ -658,11 +521,12 @@ def test_selecting_a_snapshot_with_nothing_published_says_so(
 
 
 def test_main_dispatches_a_command_argument_to_the_cli(tmp_path: Path, capsys) -> None:
+    cohort_id = _cohort_id(tmp_path)
     exit_code = main(
         [
             "plan",
-            "--input",
-            str(fixture_path("cik_sec_mini.csv")),
+            "--cohort",
+            cohort_id,
             "--artifacts",
             str(tmp_path),
         ]
@@ -730,47 +594,3 @@ def test_a_dispatched_command_never_resolves_session_state(
     assert main(["status", "--plan-id", "p"]) == 0
     assert seen == [["status", "--plan-id", "p"]]
     assert "No plan selected" not in capsys.readouterr().out
-
-
-def test_refresh_can_publish_the_universe_index(
-    state: WizardState, monkeypatch: pytest.MonkeyPatch
-) -> None:
-    """The universe was reachable only from the CLI; the menu must reach it too."""
-    seen: list[tuple[object, str]] = []
-    monkeypatch.setattr(
-        operator_module,
-        "prompt_text",
-        lambda label, default="": "2" if label == "Source number" else default,
-    )
-    monkeypatch.setattr(operator_module, "confirm_network", lambda *a, **k: True)
-    monkeypatch.setattr(
-        operator_module,
-        "cmd_refresh",
-        lambda root, *, source: seen.append((root, source)),
-    )
-
-    operator_module.refresh(state)
-
-    assert seen == [(state.metadata().artifacts_root, SOURCE_UNIVERSE_NAME)]
-
-
-def test_refresh_names_the_source_in_its_consent(
-    state: WizardState, monkeypatch: pytest.MonkeyPatch
-) -> None:
-    """Network confirmation must identify the selected source."""
-    prompts: list[str] = []
-    monkeypatch.setattr(
-        operator_module,
-        "prompt_text",
-        lambda label, default="": "2" if label == "Source number" else default,
-    )
-    monkeypatch.setattr(
-        operator_module,
-        "confirm_network",
-        lambda prompt="": prompts.append(prompt) or True,
-    )
-    monkeypatch.setattr(operator_module, "cmd_refresh", lambda root, *, source: None)
-
-    operator_module.refresh(state)
-
-    assert any(SOURCE_UNIVERSE_NAME in text for text in prompts)

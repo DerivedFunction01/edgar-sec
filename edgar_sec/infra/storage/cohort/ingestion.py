@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import json
 import os
 import re
 import shutil
@@ -278,58 +279,99 @@ def _publish_query(
         cohort_id = _cohort_id(roster_id, origin_kind, origin_details)
         dataset_sha256 = file_sha256(temporary)
         final_dir = paths.cohort_dir(cohort_id)
-        if final_dir.exists():
-            existing = catalog.get_cohort(cohort_id)
-            if existing is None:
-                raise FileExistsError(
-                    f"unregistered cohort directory exists: {cohort_id}"
-                )
+        existing = catalog.get_cohort(cohort_id)
+        if existing is not None:
+            if existing.roster_id != roster_id or existing.origin_kind != origin_kind:
+                raise ValueError(f"cohort {cohort_id!r} collides with another source")
+            if origin_kind == "official_source":
+                previous = json.loads(existing.origin_json)
+                for key in ("source_name", "source_snapshot_id", "raw_sha256"):
+                    if previous.get(key) != origin_details.get(key):
+                        raise ValueError(
+                            f"official source identity conflicts for {cohort_id!r}"
+                        )
             if existing.dataset_sha256 != dataset_sha256:
                 raise ValueError(f"cohort {cohort_id!r} is immutable")
-            return catalog.register_cohort(
-                cohort_id=cohort_id,
-                name=name,
-                description=description,
-                origin_kind=origin_kind,
-                origin_details=origin_details,
-                roster_id=roster_id,
-                row_count=row_count,
-                distinct_cik_count=row_count,
-                dataset_sha256=dataset_sha256,
-                dataset_path=existing.dataset_path,
-                pinned=pinned,
-                tags=tags,
-            )
+            dataset_path = paths.resolve_relative_path(existing.dataset_path)
+            expected_path = paths.relative_path(paths.cohort_dataset_file(cohort_id))
+            if existing.dataset_path != expected_path:
+                raise ValueError(f"cohort {cohort_id!r} has an invalid dataset path")
+            try:
+                intact = (
+                    dataset_path.is_file()
+                    and file_sha256(dataset_path) == dataset_sha256
+                )
+            except OSError:
+                intact = False
+            if not intact and origin_kind != "official_source":
+                raise ValueError(f"cohort {cohort_id!r} dataset is corrupt")
+            with paths.publication_lock():
+                latest = catalog.get_cohort(cohort_id)
+                if latest != existing:
+                    raise ValueError(f"cohort {cohort_id!r} changed during publication")
+                if not intact:
+                    if final_dir.exists():
+                        dataset_path.parent.mkdir(parents=True, exist_ok=True)
+                        os.replace(temporary, dataset_path)
+                    else:
+                        stage = paths.create_staging_dir(cohort_id)
+                        with paths.active_staging_lease(stage):
+                            os.replace(temporary, stage / DATASET_FILE_NAME)
+                        paths.publish_staging_dir(cohort_id, stage)
+                        stage = None
+                    temporary = None
+                    if file_sha256(dataset_path) != dataset_sha256:
+                        raise ValueError(
+                            f"official source {cohort_id!r} repair digest mismatch"
+                        )
+                return catalog.register_cohort(
+                    cohort_id=cohort_id,
+                    name=name,
+                    description=description,
+                    origin_kind=origin_kind,
+                    origin_details=origin_details,
+                    roster_id=roster_id,
+                    row_count=row_count,
+                    distinct_cik_count=row_count,
+                    dataset_sha256=dataset_sha256,
+                    dataset_path=existing.dataset_path,
+                    pinned=pinned,
+                    tags=tags,
+                )
+        if final_dir.exists():
+            raise FileExistsError(f"unregistered cohort directory exists: {cohort_id}")
 
         stage = paths.create_staging_dir(cohort_id)
-        os.replace(temporary, stage / DATASET_FILE_NAME)
+        with paths.active_staging_lease(stage):
+            os.replace(temporary, stage / DATASET_FILE_NAME)
         temporary = None
-        paths.publish_staging_dir(cohort_id, stage)
-        stage = None
-        dataset_path = paths.relative_path(paths.cohort_dataset_file(cohort_id))
-        try:
-            return catalog.register_cohort(
-                cohort_id=cohort_id,
-                name=name,
-                description=description,
-                origin_kind=origin_kind,
-                origin_details=origin_details,
-                roster_id=roster_id,
-                row_count=row_count,
-                distinct_cik_count=row_count,
-                dataset_sha256=dataset_sha256,
-                dataset_path=dataset_path,
-                pinned=pinned,
-                tags=tags,
-            )
-        except BaseException:
+        with paths.publication_lock():
+            paths.publish_staging_dir(cohort_id, stage)
+            stage = None
+            dataset_path = paths.relative_path(paths.cohort_dataset_file(cohort_id))
             try:
-                registered = catalog.get_cohort(cohort_id) is not None
-            except Exception:
-                registered = True
-            if not registered and final_dir.exists():
-                shutil.rmtree(final_dir)
-            raise
+                return catalog.register_cohort(
+                    cohort_id=cohort_id,
+                    name=name,
+                    description=description,
+                    origin_kind=origin_kind,
+                    origin_details=origin_details,
+                    roster_id=roster_id,
+                    row_count=row_count,
+                    distinct_cik_count=row_count,
+                    dataset_sha256=dataset_sha256,
+                    dataset_path=dataset_path,
+                    pinned=pinned,
+                    tags=tags,
+                )
+            except BaseException:
+                try:
+                    registered = catalog.get_cohort(cohort_id) is not None
+                except Exception:
+                    registered = True
+                if not registered and final_dir.exists():
+                    shutil.rmtree(final_dir)
+                raise
     finally:
         if temporary is not None:
             temporary.unlink(missing_ok=True)

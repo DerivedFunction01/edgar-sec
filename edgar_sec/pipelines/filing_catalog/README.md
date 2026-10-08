@@ -96,6 +96,10 @@ what a consumer can rely on.
   fingerprints both the normalized seeds and cohort provenance. Missing, unreadable,
   count-inconsistent, or digest-mismatched cohort datasets fail planning; an empty
   deterministic cohort selects zero targets.
+- **Policy plans consume immutable, pre-published family indexes.** The active index
+  must belong to the active SEC universe, match the current rule fingerprint, and
+  pass dataset digest and Parquet schema checks. Its id participates in plan identity;
+  planning never builds or refreshes the taxonomy.
 - **One row per document locator.** Grouping is on `document_locator_key` alone,
   with representative columns chosen by a total order, so the representative is
   deterministic even when co-filers share a locator.
@@ -136,6 +140,9 @@ what a consumer can rely on.
 - For `plan --scope policy`, supply exactly one of `--policy PATH` or
   `--auto-policy`. A policy plan built from an assumed quota profile would be
   indistinguishable from a deliberate one in the published `plan.json`.
+- Publish the official universe and its family index before policy planning. Use the
+  cohort pipeline's family-index command; planning refuses missing, stale, or corrupt
+  indexes rather than building them on demand.
 - Cohort records and datasets must be available under the same `--artifacts` root
   used for planning. Use `--cohort` only with deterministic scope and
   `--seed-cohort` only with policy scope; seed cohorts replace, rather than merge

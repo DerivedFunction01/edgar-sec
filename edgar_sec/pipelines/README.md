@@ -66,36 +66,34 @@ lower layers it depends on.
 | `cohort/__init__.py` | Docstring only. |
 | `cohort/options.py` | Cohort command grammar and argument validation. |
 | `cohort/menu.py` | Grouped interactive cohort console. |
-| `cohort/cli.py` | Catalog, import, query, sampling, expression, and workspace dispatch. |
+| `cohort/cli.py` | Source refresh, cohort diff/publication, catalog, import, query, sampling, and workspace dispatch. |
+| `cohort/family_index.py` | Build and publish immutable family assignments from the active SEC universe. |
 | `metadata_sync/__init__.py` | Docstring only. |
-| `metadata_sync/cli.py` | The commands, the nested `sources` group, and the argparse surface; each `cmd_*` is a plain callable the operator also calls. |
+| `metadata_sync/cli.py` | Plan, run, augment, merge, and distribution command parsing and dispatch. |
 | `metadata_sync/operator.py` | Interactive wizard; a presentation layer over the same `cmd_*` functions. |
-| `metadata_sync/augment_flow.py` | The interactive augmentation journey: source observation, cohort build, base choice. |
+| `metadata_sync/augment_flow.py` | Interactive cohort selection and base-snapshot choice for augmentation. |
 | `metadata_sync/progress.py` | Renders this pipeline's progress events for a person; presentation only. |
 | `metadata_sync/discovery.py` | What is already on disk, for the wizard to choose from. Manifest reads only. |
 | `metadata_sync/worker_commands.py` | Renders the distributed lifecycle as copy-pasteable shell commands. |
-| `metadata_sync/roster.py` | The content-addressed CIK roster: identity, atomic Parquet IO, set operations, and the published CIK index. |
-| `metadata_sync/manifest.py` | Curated CIK file intake through shared cohort ingestion and plan input identity. |
+| `metadata_sync/roster.py` | Metadata roster identity and IO, plus verified adaptation from Layer 2 cohort records. |
 | `metadata_sync/planner.py` | `Plan`: chunk layout as roster ordinal ranges, plan identity, bundle write, and validated load. |
 | `metadata_sync/assignment.py` | Static chunk-to-worker assignment and the worker receipt that crosses the machine boundary. |
 | `metadata_sync/distribution.py` | Copy-based multi-machine distribution: export, select, and the import trust boundary. |
-| `metadata_sync/options.py` | The one typed options model the CLI and the operator both build; bundle path resolution. |
+| `metadata_sync/options.py` | Typed cohort-only plan and augmentation selection; bundle path resolution. |
 | `metadata_sync/worker.py` | Resumable chunk execution over a thread pool; the never-refetch guarantee. |
 | `metadata_sync/checkpoints.py` | What counts as a *complete* chunk on disk. |
 | `metadata_sync/snapshot.py` | Resolve a published snapshot to a verified, ordered Parquet part list. |
 | `metadata_sync/merger.py` | Coordinator validation, multipart publication, progress events, CIK index, snapshot manifest, pointer. |
 | `metadata_sync/augmentation.py` | Delta planning and merge onto a published snapshot without refetching the base. |
 | `metadata_sync/sec_client.py` | One CIK to its submissions document plus every historical file it lists. |
-| `metadata_sync/paths.py` | `MetadataPaths` / `RunPaths`; plan, registry, snapshot, and transient locations. |
-| `metadata_sync/source_registry.py` | Delegated SEC source refresh and active cohort resolution. |
-| `metadata_sync/universe.py` | Resolve the active full-universe cohort for `plan --universe`. |
-| `metadata_sync/registry.py` | Curated-versus-source comparison, the effective CIK roster, and the CSV export, reached by `sources compare`. |
+| `metadata_sync/paths.py` | `MetadataPaths` / `RunPaths`; plan, snapshot, and transient locations. |
 | `metadata_sync/smoke_test.py` | Credential-gated live check that never publishes. |
 | `filing_catalog/__init__.py` | Docstring only. |
 | `filing_catalog/cli.py` | Command dispatch, policy resolution, and the stdout/stderr split. |
 | `filing_catalog/operator.py` | Interactive wizard over the same `cmd_*` functions, with discovery-driven catalog and parent-plan selection. |
 | `filing_catalog/catalog_job.py` | `materialize()`: one Phase 1 snapshot in, one immutable catalog out, behind three guards. |
-| `filing_catalog/planner.py` | `plan()` for deterministic filtering and `plan_policy()` for quota selection, resolved era bands, and form-by-era allocation. |
+| `filing_catalog/planner.py` | Deterministic and policy plans; policy planning consumes a validated pre-published family index. |
+| `filing_catalog/family_index.py` | Fail-closed active family-index validation for policy planning. |
 | `filing_catalog/expansion.py` | Parent validation, child derivation, and the retention invariant. |
 | `filing_catalog/publication.py` | Content-addressed plan ids, staged bundles, the selection fingerprint, and the reuse-or-conflict policy. |
 | `filing_catalog/discovery.py` | Manifest-only catalog/plan/policy enumeration and `current` resolution. |

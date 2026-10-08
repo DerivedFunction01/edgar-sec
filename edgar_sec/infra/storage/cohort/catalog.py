@@ -15,13 +15,17 @@ from typing import Any, Iterator
 
 from edgar_sec.foundation.hashing import file_sha256
 from edgar_sec.foundation.serialization import canonical_json
-from edgar_sec.infra.storage.atomic import atomic_write_json
 
-from .models import CohortRecord
-from .paths import CohortPaths, STAGING_PREFIX
+from .models import CohortRecord, FamilyIndexRecord
+from .paths import (
+    CohortPaths,
+    STAGING_PREFIX,
+    STAGING_QUARANTINE_PREFIX,
+)
 
 MANIFEST_SCHEMA_VERSION = "2.0.0"
 _HEX_SHA256_RE = re.compile(r"^[0-9a-f]{64}$")
+_FAMILY_INDEX_ID_RE = re.compile(r"^[a-f0-9]{32}$")
 
 _SCHEMA_SQL = """
 CREATE TABLE IF NOT EXISTS cohorts (
@@ -54,6 +58,15 @@ CREATE TABLE IF NOT EXISTS source_active_pointers (
     source_name TEXT PRIMARY KEY,
     active_snapshot_id TEXT NOT NULL,
     pinned_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+CREATE TABLE IF NOT EXISTS active_family_indices (
+    universe_cohort_id TEXT NOT NULL REFERENCES cohorts(cohort_id),
+    family_index_id TEXT NOT NULL,
+    rules_fingerprint TEXT NOT NULL,
+    dataset_path TEXT NOT NULL,
+    dataset_sha256 TEXT NOT NULL,
+    pinned_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY (universe_cohort_id)
 );
 """
 
@@ -246,7 +259,6 @@ class CohortCatalog:
                     "SELECT * FROM cohorts WHERE cohort_id = ?", (cohort_id,)
                 ).fetchone()
                 record = self._record(connection, row)
-                self.write_manifest(record)
             return record
         except BaseException:
             if registration_started and final_dir.exists():
@@ -255,29 +267,9 @@ class CohortCatalog:
                 except sqlite3.Error:
                     concurrently_registered = True
                 if not concurrently_registered:
-                    shutil.rmtree(final_dir, ignore_errors=True)
+                    with self.paths.publication_lock():
+                        shutil.rmtree(final_dir, ignore_errors=True)
             raise
-
-    def write_manifest(
-        self, record: CohortRecord, directory: Path | str | None = None
-    ) -> Path:
-        target_dir = (
-            self.paths.cohort_dir(record.cohort_id)
-            if directory is None
-            else Path(directory).resolve()
-        )
-        root = self.paths.cohorts_root.resolve()
-        if target_dir.parent != root:
-            raise ValueError(
-                "manifest directory must be a direct child of cohorts_root"
-            )
-        if target_dir != self.paths.cohort_dir(
-            record.cohort_id
-        ) and not target_dir.name.startswith(f"{STAGING_PREFIX}{record.cohort_id}-"):
-            raise ValueError("manifest directory must be this cohort or its stage")
-        manifest_path = target_dir / "cohort.json"
-        atomic_write_json(manifest_path, record.to_manifest())
-        return manifest_path
 
     def get_cohort(self, id_or_name: str) -> CohortRecord | None:
         with self._connection() as connection:
@@ -289,6 +281,91 @@ class CohortCatalog:
                     "SELECT * FROM cohorts WHERE cohort_id = ? LIMIT 1", (id_or_name,)
                 ).fetchone()
             return self._record(connection, row) if row is not None else None
+
+    def set_active_family_index(
+        self,
+        universe_cohort_id: str,
+        family_index_id: str,
+        rules_fingerprint: str,
+        dataset_sha256: str,
+    ) -> None:
+        if not isinstance(family_index_id, str) or not _FAMILY_INDEX_ID_RE.fullmatch(
+            family_index_id
+        ):
+            raise ValueError(
+                "family_index_id must be 32 lowercase hexadecimal characters"
+            )
+        if not isinstance(rules_fingerprint, str) or not _HEX_SHA256_RE.fullmatch(
+            rules_fingerprint
+        ):
+            raise ValueError("rules_fingerprint must be a lowercase SHA-256 digest")
+        if not isinstance(dataset_sha256, str) or not _HEX_SHA256_RE.fullmatch(
+            dataset_sha256
+        ):
+            raise ValueError("dataset_sha256 must be a lowercase SHA-256 digest")
+
+        dataset_file = self.paths.family_index_file(family_index_id)
+        relative_dataset = self.paths.relative_path(dataset_file)
+        expected_dataset = f"family_index/{family_index_id}/company_family.parquet"
+        if relative_dataset != expected_dataset:
+            raise ValueError("family index path is not canonical")
+        if not dataset_file.is_file():
+            raise ValueError("family index dataset file is missing")
+        if file_sha256(dataset_file) != dataset_sha256:
+            raise ValueError("family index dataset digest does not match")
+
+        pinned_at = datetime.now(UTC).isoformat()
+        with self._connection() as connection:
+            if (
+                connection.execute(
+                    "SELECT 1 FROM cohorts WHERE cohort_id = ?", (universe_cohort_id,)
+                ).fetchone()
+                is None
+            ):
+                raise CohortIdentifierError(
+                    f"Universe cohort not found: {universe_cohort_id!r}"
+                )
+            connection.execute(
+                """
+                INSERT INTO active_family_indices (
+                    universe_cohort_id, family_index_id, rules_fingerprint,
+                    dataset_path, dataset_sha256, pinned_at
+                ) VALUES (?, ?, ?, ?, ?, ?)
+                ON CONFLICT(universe_cohort_id) DO UPDATE SET
+                    family_index_id = excluded.family_index_id,
+                    rules_fingerprint = excluded.rules_fingerprint,
+                    dataset_path = excluded.dataset_path,
+                    dataset_sha256 = excluded.dataset_sha256,
+                    pinned_at = excluded.pinned_at
+                """,
+                (
+                    universe_cohort_id,
+                    family_index_id,
+                    rules_fingerprint,
+                    relative_dataset,
+                    dataset_sha256,
+                    pinned_at,
+                ),
+            )
+
+    def get_active_family_index(
+        self, universe_cohort_id: str
+    ) -> FamilyIndexRecord | None:
+        with self._connection() as connection:
+            row = connection.execute(
+                "SELECT * FROM active_family_indices WHERE universe_cohort_id = ?",
+                (universe_cohort_id,),
+            ).fetchone()
+            if row is None:
+                return None
+            return FamilyIndexRecord(
+                universe_cohort_id=row["universe_cohort_id"],
+                family_index_id=row["family_index_id"],
+                rules_fingerprint=row["rules_fingerprint"],
+                dataset_path=row["dataset_path"],
+                dataset_sha256=row["dataset_sha256"],
+                pinned_at=row["pinned_at"],
+            )
 
     def list_cohorts(
         self,
@@ -339,10 +416,6 @@ class CohortCatalog:
             )
             if cursor.rowcount == 0:
                 raise CohortIdentifierError(f"Cohort not found: {cohort_id!r}")
-            row = connection.execute(
-                "SELECT * FROM cohorts WHERE cohort_id = ?", (cohort_id,)
-            ).fetchone()
-            self.write_manifest(self._record(connection, row))
 
     def add_tags(self, cohort_id: str, tags: Sequence[str]) -> None:
         if any(not isinstance(tag, str) or not tag for tag in tags):
@@ -364,10 +437,6 @@ class CohortCatalog:
                 "UPDATE cohorts SET updated_at = ? WHERE cohort_id = ?",
                 (now, cohort_id),
             )
-            row = connection.execute(
-                "SELECT * FROM cohorts WHERE cohort_id = ?", (cohort_id,)
-            ).fetchone()
-            self.write_manifest(self._record(connection, row))
 
     def remove_tags(self, cohort_id: str, tags: Sequence[str]) -> None:
         if any(not isinstance(tag, str) or not tag for tag in tags):
@@ -389,12 +458,18 @@ class CohortCatalog:
                 "UPDATE cohorts SET updated_at = ? WHERE cohort_id = ?",
                 (now, cohort_id),
             )
-            row = connection.execute(
-                "SELECT * FROM cohorts WHERE cohort_id = ?", (cohort_id,)
-            ).fetchone()
-            self.write_manifest(self._record(connection, row))
 
     def delete_cohort(
+        self,
+        cohort_id: str,
+        purge_dataset: bool = True,
+        *,
+        force: bool = False,
+    ) -> bool:
+        with self.paths.publication_lock():
+            return self._delete_cohort_locked(cohort_id, purge_dataset, force=force)
+
+    def _delete_cohort_locked(
         self,
         cohort_id: str,
         purge_dataset: bool = True,
@@ -521,25 +596,52 @@ class CohortCatalog:
             ).fetchone()
             return str(row["active_snapshot_id"]) if row is not None else None
 
-    def cleanup_stale_staging(self, max_age_seconds: int = 86_400) -> int:
+    def cleanup_stale_staging(
+        self, max_age_seconds: int = 86_400, *, force: bool = False
+    ) -> int:
         if max_age_seconds < 0:
             raise ValueError("max_age_seconds must be non-negative")
-        cutoff = datetime.now(UTC).timestamp() - max_age_seconds
+        with self.paths.publication_lock():
+            return self._cleanup_stale_staging_locked(max_age_seconds, force=force)
+
+    def _cleanup_stale_staging_locked(
+        self, max_age_seconds: int, *, force: bool
+    ) -> int:
+        now = datetime.now(UTC)
         removed = 0
         for stage in self.paths.list_staging_dirs():
             try:
-                if stage.stat().st_mtime < cutoff:
-                    if stage.name.startswith(f"{STAGING_PREFIX}purge-"):
-                        cohort_id = stage.name.removeprefix(
-                            f"{STAGING_PREFIX}purge-"
-                        ).rsplit("-", 1)[0]
-                        if self.get_cohort(cohort_id) is not None:
-                            final_dir = self.paths.cohort_dir(cohort_id)
-                            if not final_dir.exists():
-                                stage.rename(final_dir)
-                                continue
-                    self.paths.remove_staging_dir(stage)
-                    removed += 1
+                stage_age = now.timestamp() - stage.stat().st_mtime
+                if stage.name.startswith(STAGING_QUARANTINE_PREFIX):
+                    if force or stage_age > 86_400:
+                        self.paths.remove_staging_dir(stage)
+                        removed += 1
+                    continue
+                if stage_age <= max_age_seconds and not force:
+                    continue
+                if stage.name.startswith(f"{STAGING_PREFIX}purge-"):
+                    cohort_id = stage.name.removeprefix(
+                        f"{STAGING_PREFIX}purge-"
+                    ).rsplit("-", 1)[0]
+                    if self.get_cohort(cohort_id) is not None:
+                        final_dir = self.paths.cohort_dir(cohort_id)
+                        if not final_dir.exists():
+                            stage.rename(final_dir)
+                            continue
+                lease_status = self.paths.staging_lease_is_unexpired(stage, now=now)
+                if lease_status is True:
+                    continue
+                if lease_status is None:
+                    quarantine = self.paths.cohorts_root / (
+                        f"{STAGING_QUARANTINE_PREFIX}{uuid.uuid4().hex}-{stage.name}"
+                    )
+                    stage.rename(quarantine)
+                    if force or stage_age > 86_400:
+                        self.paths.remove_staging_dir(quarantine)
+                        removed += 1
+                    continue
+                self.paths.remove_staging_dir(stage)
+                removed += 1
             except FileNotFoundError:
                 continue
         return removed
@@ -553,5 +655,6 @@ __all__ = [
     "CohortIdentifierError",
     "CohortInUseError",
     "CohortPinnedError",
+    "FamilyIndexRecord",
     "MANIFEST_SCHEMA_VERSION",
 ]

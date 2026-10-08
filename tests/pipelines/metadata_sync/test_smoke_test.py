@@ -11,19 +11,20 @@ import pytest
 
 from edgar_sec.pipelines.metadata_sync import smoke_test as smoke
 from edgar_sec.pipelines.metadata_sync.smoke_test import build_parser, main
+from tests.pipelines.metadata_sync.cohort_support import publish_test_cohort
 from tests.support import fixture_path
 
 
-def test_artifacts_root_is_required() -> None:
+def test_cohort_and_artifacts_root_are_required() -> None:
     with pytest.raises(SystemExit):
-        build_parser().parse_args(["--input", str(fixture_path("cik_sec_mini.csv"))])
+        build_parser().parse_args(["--cohort", "uploaded"])
 
 
 def test_chunk_size_defaults_to_none_so_the_registry_decides() -> None:
     args = build_parser().parse_args(
         [
-            "--input",
-            str(fixture_path("cik_sec_mini.csv")),
+            "--cohort",
+            "uploaded",
             "--artifacts",
             "preview/metadata",
         ]
@@ -36,8 +37,8 @@ def test_chunk_size_defaults_to_none_so_the_registry_decides() -> None:
 def test_chunk_size_can_be_overridden() -> None:
     args = build_parser().parse_args(
         [
-            "--input",
-            str(fixture_path("cik_sec_mini.csv")),
+            "--cohort",
+            "uploaded",
             "--artifacts",
             "preview/metadata",
             "--chunk-size",
@@ -52,44 +53,14 @@ def test_a_production_artifacts_root_is_refused(tmp_path: Path, capsys) -> None:
     production = tmp_path / ".artifacts" / "metadata"
     exit_code = main(
         [
-            "--input",
-            str(fixture_path("cik_sec_mini.csv")),
+            "--cohort",
+            "uploaded",
             "--artifacts",
             str(production),
         ]
     )
     assert exit_code == 2
     assert "preview directory" in capsys.readouterr().err
-
-
-def test_a_missing_manifest_exits_two(tmp_path: Path, capsys) -> None:
-    exit_code = main(
-        [
-            "--input",
-            str(tmp_path / "absent.csv"),
-            "--artifacts",
-            str(tmp_path / "preview" / "metadata"),
-        ]
-    )
-    assert exit_code == 2
-    assert "error:" in capsys.readouterr().err
-
-
-def test_an_empty_manifest_exits_two(tmp_path: Path, capsys) -> None:
-    empty = tmp_path / "empty.csv"
-    empty.write_text("cik,name\n", encoding="utf-8")
-    assert (
-        main(
-            [
-                "--input",
-                str(empty),
-                "--artifacts",
-                str(tmp_path / "preview" / "metadata"),
-            ]
-        )
-        == 2
-    )
-    assert "no usable CIKs" in capsys.readouterr().err
 
 
 def _fake_run_chunk(statuses: list[str], captured: dict[str, object]):
@@ -156,6 +127,15 @@ def test_a_preview_root_is_accepted(tmp_path: Path, monkeypatch, capsys) -> None
     """A preview root passes the guard and reaches the fetch path."""
     preview = tmp_path / "preview" / "metadata"
     captured: dict[str, object] = {}
+    record, _paths, _roster = publish_test_cohort(
+        fixture_path("cik_sec_mini.csv"), tmp_path
+    )
+    resolve_options = smoke.plan_options
+    monkeypatch.setattr(
+        smoke,
+        "plan_options",
+        lambda **kwargs: resolve_options(**kwargs, artifacts_root=tmp_path),
+    )
 
     monkeypatch.setattr(smoke, "_build_client", lambda artifacts_root: object())
     monkeypatch.setattr(smoke, "run_chunk", _fake_run_chunk(["ok", "ok"], captured))
@@ -163,8 +143,8 @@ def test_a_preview_root_is_accepted(tmp_path: Path, monkeypatch, capsys) -> None
     assert (
         main(
             [
-                "--input",
-                str(fixture_path("cik_sec_mini.csv")),
+                "--cohort",
+                record.cohort_id,
                 "--artifacts",
                 str(preview),
                 "--sample-size",
@@ -185,6 +165,15 @@ def test_a_preview_root_is_accepted(tmp_path: Path, monkeypatch, capsys) -> None
 def test_a_failed_sample_exits_nonzero(tmp_path: Path, monkeypatch, capsys) -> None:
     preview = tmp_path / "preview" / "metadata"
     captured: dict[str, object] = {}
+    record, _paths, _roster = publish_test_cohort(
+        fixture_path("cik_sec_mini.csv"), tmp_path
+    )
+    resolve_options = smoke.plan_options
+    monkeypatch.setattr(
+        smoke,
+        "plan_options",
+        lambda **kwargs: resolve_options(**kwargs, artifacts_root=tmp_path),
+    )
 
     monkeypatch.setattr(smoke, "_build_client", lambda artifacts_root: object())
     monkeypatch.setattr(smoke, "run_chunk", _fake_run_chunk(["failed"], captured))
@@ -192,8 +181,8 @@ def test_a_failed_sample_exits_nonzero(tmp_path: Path, monkeypatch, capsys) -> N
     assert (
         main(
             [
-                "--input",
-                str(fixture_path("cik_sec_mini.csv")),
+                "--cohort",
+                record.cohort_id,
                 "--artifacts",
                 str(preview),
                 "--sample-size",

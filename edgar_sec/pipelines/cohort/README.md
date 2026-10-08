@@ -10,7 +10,8 @@ Provides Phase 0 command-line and interactive orchestration for the shared cohor
 | :--- | :--- |
 | `options.py` | CLI grammar and argument validation. |
 | `menu.py` | Grouped interactive console and prompt flows. |
-| `cli.py` | Catalog, query, sampling, expression, and workspace command dispatch. |
+| `cli.py` | Source refresh, cohort diff, catalog, query, sampling, family-index, and workspace dispatch. |
+| `family_index.py` | Content-addressed publication of the active universe family index. |
 | `__init__.py` | Package docstring only; no re-exports. |
 
 ## Contracts
@@ -23,6 +24,10 @@ Provides Phase 0 command-line and interactive orchestration for the shared cohor
   input-row name; union/intersection use the left non-empty name, then the right.
   Put official SEC sources on the left to prioritize their labels. Blank names
   fall through and never produce duplicate members.
+- Interactive cohort, workspace, and upload selection is paginated and filterable;
+  headless list, query, and find results use aligned tables.
+- Official SEC source refresh is owned here; `diff` accepts cohort IDs/names and
+  the active `universe`/`tickers` aliases, with optional canonical delta publication.
 
 ## Public Surface
 
@@ -32,7 +37,8 @@ Provides Phase 0 command-line and interactive orchestration for the shared cohor
 ## Command Surface
 
 `import`, `list`, `info`, `rename`, `tag`, `untag`, `delete`, `query`, `find`,
-`sample`, `workspace`, `merge`, and `console`.
+`sample`, `sources refresh`, `diff`, `family-index`, `workspace`, `merge`, and
+`console`.
 
 ## Mirrored Tests
 
@@ -40,7 +46,5 @@ Provides Phase 0 command-line and interactive orchestration for the shared cohor
 
 ## Deliberate Gaps
 
-- Family-grouped sampling requires the caller to pass `--family-index` because
-  the cohort layer does not build or implicitly resolve metadata family indexes.
-- Interactive family assignment remains available through
-  `edgar-sec metadata family-index`.
+- Family-grouped sampling requires the caller to pass `--family-index`; it does not
+  fall back to the active family-index pointer.

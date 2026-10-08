@@ -71,8 +71,6 @@ class MergeReport:
     parent_snapshot_id: str = ""
     roster_id: str = ""
     delta_roster_id: str = ""
-    registry_id: str = ""
-    source_snapshot_id: str = ""
     schema_version: str = SCHEMA_VERSION
     manifest_version: str = SNAPSHOT_MANIFEST_VERSION
     sort_order: str = "chunk_order"
@@ -108,8 +106,6 @@ class MergeReport:
             "parent_snapshot_id": self.parent_snapshot_id,
             "roster_id": self.roster_id,
             "delta_roster_id": self.delta_roster_id,
-            "registry_id": self.registry_id,
-            "source_snapshot_id": self.source_snapshot_id,
             "schema_version": self.schema_version,
             "merged_at": self.merged_at,
             "duplicate_accessions": self.duplicate_accessions,
@@ -373,8 +369,6 @@ def merge_chunks(
         parent_snapshot_id=plan.parent_id or recorded.get("parent_snapshot_id", ""),
         roster_id=plan.roster.roster_id,
         delta_roster_id=recorded.get("delta_roster_id", ""),
-        registry_id=recorded.get("registry_id", ""),
-        source_snapshot_id=recorded.get("source_snapshot_id", ""),
         merged_at=utc_now_iso(),
     )
     emit({"type": "chunks_validated", "chunks": len(chunk_paths)})

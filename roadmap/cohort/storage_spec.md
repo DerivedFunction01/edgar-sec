@@ -15,20 +15,21 @@ The cohort subsystem lives as a sibling to pipeline artifacts under `.artifacts/
 ```text
 .artifacts/
 ├── cohorts/                            # Cohort storage root (CohortPaths.cohorts_root)
-│   ├── cohorts.sqlite                  # Shared SQLite database (WAL mode)
-│   ├── cohorts.sqlite-wal
-│   ├── cohorts.sqlite-shm
-│   ├── universe-1dddc0e9b6076010/      # Published cohort directory
-│   │   ├── ciks.parquet                # Canonical columnar dataset
-│   │   └── cohort.json                 # Exported manifest metadata
-│   ├── tickers-2e7351357647487b/
+│   ├── cohorts.sqlite                  # Authoritative SQLite catalog (WAL mode)
+│   ├── universe-1dddc0e9b6076010/      # Published universe cohort directory
+│   │   └── ciks.parquet                # Canonical columnar dataset (1 row per CIK)
+│   ├── tickers-2e7351357647487b/       # Published operating tickers cohort directory
+│   │   └── ciks.parquet                # Canonical columnar dataset (1 row per CIK)
+│   ├── c-59508de79eafa64e/             # Custom cohort directory
 │   │   └── ciks.parquet
-│   └── c-59508de79eafa64e/
-│       ├── ciks.parquet
-│       └── cohort.json
+│   └── family_index/                   # Company family indices namespace
+│       └── 7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d/
+│           └── company_family.parquet
 ├── metadata/                           # Phase 01 pipeline root
 └── filing_catalog/                     # Phase 02 pipeline root
 ```
+
+*(Note: SQLite `-wal` and `-shm` files are transient engine files managed by SQLite WAL mode and are not guaranteed or tracked as repository artifacts.)*
 
 ### 1.1 Relative Path Portability
 In `cohorts.sqlite`, `dataset_path` stores the relative path relative to `cohorts_root` (e.g. `c-59508de79eafa64e/ciks.parquet`). Path resolvers convert between relative stored strings and runtime `Path` instances:
@@ -41,8 +42,11 @@ Located in `edgar_sec.infra.storage.cohort.paths`:
 COHORTS_DIR_NAME = "cohorts"
 CATALOG_DB_NAME = "cohorts.sqlite"
 DATASET_FILE_NAME = "ciks.parquet"
-MANIFEST_FILE_NAME = "cohort.json"
+FAMILY_INDEX_DIR_NAME = "family_index"
+FAMILY_INDEX_FILE_NAME = "company_family.parquet"
+
 _SAFE_ID_RE = re.compile(r"^[a-zA-Z0-9_\-\.]{3,64}$")
+_FAMILY_INDEX_ID_RE = re.compile(r"^[a-f0-9]{32}$")
 
 
 @dataclass(frozen=True, slots=True)
@@ -57,6 +61,14 @@ class CohortPaths:
     def catalog_file(self) -> Path:
         return self.cohorts_root / CATALOG_DB_NAME
 
+    @property
+    def publication_lock_path(self) -> Path:
+        return self.cohorts_root / ".publication.lock"
+
+    @property
+    def family_indices_root(self) -> Path:
+        return self.cohorts_root / FAMILY_INDEX_DIR_NAME
+
     def cohort_dir(self, cohort_id: str) -> Path:
         if not _SAFE_ID_RE.match(cohort_id) or ".." in cohort_id or "/" in cohort_id:
             raise ValueError(f"Invalid or unsafe cohort identifier: {cohort_id!r}")
@@ -68,8 +80,16 @@ class CohortPaths:
     def cohort_dataset_file(self, cohort_id: str) -> Path:
         return self.cohort_dir(cohort_id) / DATASET_FILE_NAME
 
-    def cohort_manifest_file(self, cohort_id: str) -> Path:
-        return self.cohort_dir(cohort_id) / MANIFEST_FILE_NAME
+    def family_index_dir(self, family_index_id: str) -> Path:
+        if not _FAMILY_INDEX_ID_RE.match(family_index_id):
+            raise ValueError(f"Invalid family index identifier: {family_index_id!r}")
+        target = (self.family_indices_root / family_index_id).resolve()
+        if target.parent != self.family_indices_root.resolve():
+            raise ValueError("Path traversal detected in family index id")
+        return target
+
+    def family_index_file(self, family_index_id: str) -> Path:
+        return self.family_index_dir(family_index_id) / FAMILY_INDEX_FILE_NAME
 
 
 def resolve_cohort_paths(
@@ -97,83 +117,50 @@ Per connection rules in `edgar_sec/infra/storage/dag/catalog.py`:
 - `CohortWorkspace` accepts `CohortPaths` and verifies that `ObjectStore` and `CohortCatalog` are constructed on the exact same database file (`paths.catalog_file`).
 
 ### 2.2 Database Schema (`object_store/schema.py`)
-
 ```sql
--- 1. Workspace Sessions & Active Context Pointer
 CREATE TABLE IF NOT EXISTS workspace_sessions (
-    session_id           TEXT PRIMARY KEY,
-    description          TEXT NOT NULL DEFAULT '',
-    created_at           TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    updated_at           TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    session_id          TEXT PRIMARY KEY,
+    description         TEXT NOT NULL DEFAULT '',
+    created_at          TEXT NOT NULL,
+    updated_at          TEXT NOT NULL,
+    last_accessed_at    TEXT NOT NULL
 );
 
-CREATE TABLE IF NOT EXISTS active_workspace_session (
-    id                   INTEGER PRIMARY KEY CHECK (id = 1),
-    session_id           TEXT NOT NULL REFERENCES workspace_sessions(session_id) ON DELETE CASCADE,
-    switched_at          TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+CREATE TABLE IF NOT EXISTS object_nodes (
+    object_id           TEXT PRIMARY KEY,
+    expression_kind     TEXT NOT NULL,
+    expression_json     TEXT NOT NULL,
+    result_hash         TEXT NOT NULL,
+    row_count           INTEGER NOT NULL,
+    distinct_cik_count  INTEGER NOT NULL,
+    dataset_path        TEXT NOT NULL,
+    dataset_sha256      TEXT NOT NULL,
+    created_at          TEXT NOT NULL
 );
 
--- 2. Global Immutable Expression DAG Nodes (Content-Addressed)
-CREATE TABLE IF NOT EXISTS objects (
-    object_id            TEXT PRIMARY KEY,      -- SHA-256 of canonical JSON AST
-    schema_name          TEXT NOT NULL,         -- e.g. 'cohort_expr_ast'
-    parent_object_id     TEXT NULL REFERENCES objects(object_id) ON DELETE SET NULL,
-    data                 TEXT NOT NULL,         -- Serialized JSON AST or SQL generator definition
-    created_at           TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-);
-
-CREATE INDEX IF NOT EXISTS idx_objects_parent 
-    ON objects (parent_object_id);
-
--- 3. Movable Session Aliases (Pointers: 'x' -> object_id or cohort_id)
 CREATE TABLE IF NOT EXISTS object_session_aliases (
-    session_id           TEXT NOT NULL REFERENCES workspace_sessions(session_id) ON DELETE CASCADE,
-    alias_name           TEXT NOT NULL,         -- e.g. 'A', 'B', 'x'
-    target_id            TEXT NOT NULL,         -- Points to objects.object_id OR published cohort_id
-    created_at           TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    updated_at           TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    session_id          TEXT NOT NULL REFERENCES workspace_sessions(session_id) ON DELETE CASCADE,
+    alias_name          TEXT NOT NULL,
+    object_id           TEXT NOT NULL REFERENCES object_nodes(object_id),
+    bound_at            TEXT NOT NULL,
     PRIMARY KEY (session_id, alias_name)
 );
 
-CREATE INDEX IF NOT EXISTS idx_session_aliases_target 
-    ON object_session_aliases (target_id);
+CREATE INDEX IF NOT EXISTS idx_object_aliases_object ON object_session_aliases(object_id);
 ```
-
-### 2.3 Global Expression Lifecycle & Alias Safety
-1. **Decoupled Node Ownership**:
-   - `objects` nodes do **not** carry a foreign key to `workspace_sessions`.
-   - Expressions are content-addressed and immutable across the entire catalog.
-   - If Session 1 creates expression `A + B` (hash `018f...`) and Session 2 later builds the identical expression, Session 2 safely references the existing node via `ON CONFLICT (object_id) DO NOTHING`.
-   - When Session 1 expires or is cleared, only its alias rows in `object_session_aliases` are deleted; the immutable node in `objects` remains intact, preventing dangling pointer corruptions in Session 2.
-2. **Alias Target Validation**:
-   - Calling `upsert_alias(session_id, alias_name, target_id)` performs validation before committing:
-     - Target must exist in `objects.object_id` OR in `cohorts.cohort_id`.
-     - If neither exists, the operation raises `ValueError(f"Invalid alias target '{target_id}': entity not found")`.
-3. **Active Session Resolution & Fallback**:
-   - Active session is resolved in order:
-     1. Explicit CLI argument: `--session <id>`.
-     2. Context pointer: `SELECT session_id FROM active_workspace_session WHERE id = 1`.
-     3. Fallback: `"default"`.
-   - If the active session is deleted, expired, or cleared, subsequent operations automatically fall back to `"default"`, lazily inserting it into `workspace_sessions` if absent.
-4. **Session TTL & Boot Cleanup**:
-   - Every read/write operation in a session updates `workspace_sessions.updated_at = CURRENT_TIMESTAMP`.
-   - At CLI startup (`edgar_sec.pipelines.cohort.cli`), `ObjectStore.clean_expired_sessions(max_age_seconds=86400)` runs automatically, pruning sessions inactive for $> 24$ hours.
-   - Orphaned expression nodes (objects with no referencing aliases and no child references) are pruned during explicit `cohort workspace clean` sweeps.
 
 ---
 
-## 3. Cohort Domain Catalog Schema (`cohorts.sqlite`)
-
-Stored in the same SQLite database alongside the object store:
+## 3. Cohort Catalog Schema (`cohorts.sqlite`)
 
 ```sql
 CREATE TABLE IF NOT EXISTS cohorts (
-    cohort_id            TEXT PRIMARY KEY,      -- e.g. "c-59508de79eafa64e"
-    name                 TEXT UNIQUE,           -- Unique human alias or NULL
+    cohort_id            TEXT PRIMARY KEY,      -- 'c-<16-hex>' or 'universe-<16-hex>'
+    name                 TEXT UNIQUE,           -- Unique human alias, e.g. 'universe'
     description          TEXT NOT NULL DEFAULT '',
-    manifest_schema_ver  TEXT NOT NULL DEFAULT '2.0.0',
-    origin_kind          TEXT NOT NULL,         -- 'official_source', 'file_import', 'set_operation', 'sample'
-    origin_json          TEXT NOT NULL DEFAULT '{}',
+    manifest_schema_ver  INTEGER NOT NULL DEFAULT 1,
+    origin_kind          TEXT NOT NULL,         -- 'file_import', 'official_source', 'expression'
+    origin_json          TEXT NOT NULL,         -- Canonical JSON provenance details
     roster_id            TEXT NOT NULL,         -- SHA-256 of sorted CIK text stream
     row_count            INTEGER NOT NULL,
     distinct_cik_count   INTEGER NOT NULL,
@@ -202,26 +189,44 @@ CREATE TABLE IF NOT EXISTS source_active_pointers (
     active_snapshot_id   TEXT NOT NULL,
     pinned_at            TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+
+CREATE TABLE IF NOT EXISTS active_family_indices (
+    universe_cohort_id   TEXT NOT NULL REFERENCES cohorts(cohort_id),
+    family_index_id      TEXT NOT NULL,         -- 32-hex identifier
+    rules_fingerprint    TEXT NOT NULL,
+    dataset_path         TEXT NOT NULL,
+    dataset_sha256       TEXT NOT NULL,
+    pinned_at            TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY (universe_cohort_id)
+);
+
+CREATE TABLE IF NOT EXISTS detached_cohort_datasets (
+    cohort_id            TEXT PRIMARY KEY,
+    dataset_path         TEXT NOT NULL,
+    detached_at          TEXT NOT NULL
+);
 ```
 
 ---
 
 ## 4. Canonical Dataset Contract & Identity
 
-Every cohort is stored as an immutable Parquet file at `.artifacts/cohorts/<cohort_id>/ciks.parquet`.
+Every cohort is stored as an immutable Parquet file at `.artifacts/cohorts/<cohort_id>/ciks.parquet`. All cohorts—including official operating tickers and SEC universe sources—compile directly to this canonical format.
 
 ### 4.1 Canonical Schema & Deliberate Sorting Migration
-All cohort Parquet files adhere to the schema:
+All cohort Parquet files adhere to the canonical schema:
 ```text
 ordinal:     int64          (1-indexed monotonic sequence, 0 to N-1)
 cik_padded:  string         (10-digit zero-padded string, regex: ^[0-9]{10}$)
 name:        string         (Entity title, defaults to empty string "")
 ```
-- **Deliberate Migration from Legacy Input Order**:
-  - Legacy `compile_cik_cohort` in `metadata_sync` preserved file line occurrence order (`ORDER BY rn`), which made cohort identity fragile to line permutations.
-  - In `CohortCatalog`, datasets are **strictly sorted ascending by numeric CIK** (`ORDER BY try_cast(cik_padded AS BIGINT) ASC`).
-  - Permuting rows in an input file produces the identical canonical Parquet dataset and identical `cohort_id`.
-  - When downstream `metadata_sync` requires a `Roster`, an adapter loads the canonical Parquet into a `Roster` object with ordinal addressing.
+- **Sorting Invariant**: Datasets are **strictly sorted ascending by numeric CIK** (`ORDER BY try_cast(cik_padded AS BIGINT) ASC`).
+- **1-Row-Per-CIK Invariant**: Canonical cohorts enforce `row_count == distinct_cik_count`.
+- **Sole Canonical Format**: Downstream pipelines (`metadata_sync` plan and augment, `filing_catalog`) exclusively consume CIKs. No companion listing tables are generated or maintained. Operating filers with multiple listings in `company_tickers.json` resolve to a single canonical name via deterministic source order:
+  ```sql
+  first(nullif(trim(raw_name), '') ORDER BY source_order)
+      FILTER (WHERE nullif(trim(raw_name), '') IS NOT NULL)
+  ```
 
 ### 4.2 Deterministic Writer Settings
 To guarantee byte reproducibility across runs, all Parquet writes enforce:
@@ -231,20 +236,16 @@ To guarantee byte reproducibility across runs, all Parquet writes enforce:
 - `dictionary_encode = False`
 
 ### 4.3 Identity Hash (`roster_id`) vs Integrity Digest (`dataset_sha256`)
-- **`roster_id`**: SHA-256 digest of the canonical sorted text stream of unique CIKs (`\n`-separated `cik_padded` lines). Independent of compression settings or timestamps.
+- **`roster_id`**: SHA-256 digest of the canonical sorted text stream of unique CIKs (`\n`-separated `cik_padded` lines).
 - **`dataset_sha256`**: SHA-256 digest of the physical `ciks.parquet` file on disk via `foundation.hashing.file_sha256`.
 - **`cohort_id`**: `c-<roster_id[:16]>`.
-- **Collision Refusal**: If a computed 16-hex prefix collides with an existing cohort with a different full `roster_id`, registration raises `CohortCollisionError`.
 
-### 4.4 Atomic Staging, Publication & Recovery
-A file and a SQLite database cannot be committed together in a single hardware transaction. The system enforces strict staged commits:
-1. **Staging**: Assemble dataset in temporary staging directory `.artifacts/cohorts/.stage-<cohort_id>-<uuid>/`.
-2. **Integrity Validation**: Write `ciks.parquet`, verify row counts and compute `dataset_sha256`. Write `cohort.json`.
-3. **Atomic Rename**: `os.replace(stage_dir, final_dir)` atomically publishes the directory.
-4. **Catalog Commit**: Insert metadata row into `cohorts.sqlite` in an atomic transaction.
-5. **Recovery**:
-   - If SQLite insert fails, remove `final_dir`.
-   - Any stale `.stage-*` directories left by interrupted processes are cleaned up during boot sweeps.
+### 4.4 Publication Locking, Leases & Scoped Pruning
+1. **PublicationLock**: Moving staged directories to publication paths and committing SQLite records are serialized under `PublicationLock(paths.publication_lock_path)`. Maintenance sweeps also acquire this exclusive lock, preventing race conditions with in-flight publications.
+2. **Multi-Attribute Lease**: Staging directories write `.stage.lease` recording `{host, pid, started_at, heartbeat_at}`. Long jobs update heartbeat every 30s. If interrupted, cleanup prunes only expired leases (> 2 hours) or dead local PIDs under `PublicationLock`.
+3. **Integrity Validation**: Write `ciks.parquet`, verify row counts and compute `dataset_sha256`. Unlink `.stage.lease`.
+4. **Atomic Rename & Catalog Commit**: `os.replace(stage_dir, final_dir)` and `INSERT INTO cohorts` execute under `PublicationLock`.
+5. **Scoped Pruning & Retained Datasets**: Startup sweeps prune uncataloged directories matching cohort ID patterns (`c-*`, `universe-*`, `tickers-*`). Retained datasets (`delete --keep-dataset`) are registered in `detached_cohort_datasets` and marked with `.detached` sentinels, protecting them from pruning. Non-cohort subdirectories (`family_index/`, `source_snapshots/`, `workspace/`) are never touched.
 
 ### 4.5 Deletion Reference & Purge Guard
 Calling `delete_cohort(cohort_id, purge_dataset=True)`:

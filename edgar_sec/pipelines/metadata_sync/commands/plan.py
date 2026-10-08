@@ -28,7 +28,6 @@ def cmd_plan(options: PlanOptions) -> int:
         input_name=cohort.input_name,
         input_fingerprint=cohort.input_fingerprint,
         selected_limit=options.limit,
-        registry_id=options.registry_id,
     )
     run_paths = resolve_run_paths(plan.plan_id, options.artifacts_root)
     write_plan(plan, run_paths)

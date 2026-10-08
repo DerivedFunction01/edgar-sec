@@ -2,7 +2,6 @@
 
 from __future__ import annotations
 
-import json
 from dataclasses import dataclass
 
 
@@ -24,24 +23,15 @@ class CohortRecord:
     updated_at: str
     tags: tuple[str, ...] = ()
 
-    def to_manifest(self) -> dict[str, object]:
-        return {
-            "cohort_id": self.cohort_id,
-            "name": self.name,
-            "description": self.description,
-            "manifest_schema_ver": self.manifest_schema_ver,
-            "origin_kind": self.origin_kind,
-            "origin": json.loads(self.origin_json),
-            "roster_id": self.roster_id,
-            "row_count": self.row_count,
-            "distinct_cik_count": self.distinct_cik_count,
-            "dataset_sha256": self.dataset_sha256,
-            "dataset_path": self.dataset_path,
-            "pinned": self.pinned,
-            "created_at": self.created_at,
-            "updated_at": self.updated_at,
-            "tags": list(self.tags),
-        }
+
+@dataclass(frozen=True, slots=True)
+class FamilyIndexRecord:
+    universe_cohort_id: str
+    family_index_id: str
+    rules_fingerprint: str
+    dataset_path: str
+    dataset_sha256: str
+    pinned_at: str
 
 
-__all__ = ["CohortRecord"]
+__all__ = ["CohortRecord", "FamilyIndexRecord"]

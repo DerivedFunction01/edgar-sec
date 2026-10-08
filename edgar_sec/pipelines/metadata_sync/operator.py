@@ -20,15 +20,10 @@ from edgar_sec.foundation.runtime.interactive import (
     prompt_text,
 )
 from edgar_sec.foundation.runtime.settings import resolve_runtime_settings
-from edgar_sec.infra.storage.cohort.catalog import CohortCatalog
-from edgar_sec.infra.storage.cohort.models import CohortRecord
-from edgar_sec.infra.storage.cohort.paths import resolve_cohort_paths
-from edgar_sec.infra.storage.cohort.sources import resolve_active_source
 
 from .commands.merge import cmd_merge
 from .commands.plan import cmd_plan, cmd_status
 from .commands.run import cmd_run
-from .commands.sources import cmd_compare, cmd_family_index, cmd_refresh
 
 from .cli import main as cli_main
 from .discovery import (
@@ -45,12 +40,10 @@ from .options import (
     PlanOptions,
     RunOptions,
     derive_plan_id,
-    plan_options,
     read_bundle_plan_id,
     run_options,
 )
 from .paths import resolve_metadata_paths
-from .source_registry import SOURCE_NAME, SOURCE_UNIVERSE_NAME
 
 __all__ = [
     "WizardState",
@@ -62,8 +55,6 @@ __all__ = [
 ]
 
 MENU_TITLE = "Metadata Sync (Phase 01)"
-
-DEFAULT_INPUT = "uploads/cik-sec.csv"
 
 INTERRUPTED_MESSAGE = (
     "Interrupted. Completed chunks are preserved and will be skipped on resume;"
@@ -84,8 +75,6 @@ class WizardState:
     plan_id: str = ""
     bundle_root: str = ""
     worker_id: str = ""
-    input_path: str = ""
-    registry_id: str = ""
     artifacts_root: str = ""
 
     def metadata(self):
@@ -254,22 +243,22 @@ def select_snapshot(state: WizardState) -> None:
     print(f"current snapshot is now {chosen}")
 
 
-def _ask_cohort_source(state: WizardState) -> PlanOptions | None:
+def _ask_published_cohort(state: WizardState) -> PlanOptions | None:
     """Choose the cohort a plan is built over.
 
     The picker is shared with augmentation: the sources available are the same,
     so a choice meaningful for planning is meaningful for augmenting.
     """
-    from .augment_flow import ask_cohort_source
+    from .augment_flow import ask_published_cohort
 
-    return ask_cohort_source(state, purpose="Cohort to plan over")
+    return ask_published_cohort(state, purpose="Cohort to plan over")
 
 
 def _ask_plan_options(
     state: WizardState, *, with_limit: bool = False
 ) -> PlanOptions | None:
     """Collect the cohort reference and chunk layout a plan needs."""
-    cohort = _ask_cohort_source(state)
+    cohort = _ask_published_cohort(state)
     if cohort is None:
         return None
     settings = resolve_runtime_settings()
@@ -313,8 +302,6 @@ def plan(state: WizardState) -> None:
     # Act on the plan just created rather than making the operator name it back.
     state.plan_id = derive_plan_id(options)
     state.bundle_root = ""
-    state.input_path = str(options.input_path or "")
-    state.registry_id = options.registry_id
 
 
 def status(state: WizardState) -> None:
@@ -348,128 +335,6 @@ def augment(state: WizardState) -> None:
     from .augment_flow import run_augment
 
     run_augment(state)
-
-
-def _source_label(source_name: str, record: CohortRecord | None) -> str:
-    """One line naming a source and what is already published from it."""
-    if record is None:
-        return f"{source_name}  (not published)"
-    return (
-        f"{source_name}  ({record.row_count:,} CIKs published, active cohort "
-        f"{record.cohort_id})"
-    )
-
-
-def refresh(state: WizardState) -> None:
-    """Refresh a shared official SEC source cohort.
-
-    Which source is asked, because the two differ in kind and size: the ticker
-    listing is small, the registrant index large.
-    """
-    metadata = state.metadata()
-    cohort_paths = resolve_cohort_paths(metadata.artifacts_root)
-    catalog = CohortCatalog(cohort_paths)
-    options = [
-        (
-            _source_label(
-                SOURCE_NAME, resolve_active_source(SOURCE_NAME, catalog=catalog)
-            ),
-            SOURCE_NAME,
-        ),
-        (
-            _source_label(
-                SOURCE_UNIVERSE_NAME,
-                resolve_active_source(SOURCE_UNIVERSE_NAME, catalog=catalog),
-            ),
-            SOURCE_UNIVERSE_NAME,
-        ),
-    ]
-    print("\nSource to refresh:")
-    for index, (label, _name) in enumerate(options, start=1):
-        print(f"  {index}. {label}")
-    answer = prompt_text("Source number", "1").strip() or "1"
-    try:
-        choice = int(answer)
-    except ValueError:
-        choice = 1
-    if not 1 <= choice <= len(options):
-        print("invalid selection")
-        return
-
-    _label, source_name = options[choice - 1]
-    if not confirm_network(f"Fetching {source_name} from SEC. Continue? (y/N) "):
-        print("cancelled; nothing was fetched")
-        return
-    cmd_refresh(
-        Path(state.artifacts_root) if state.artifacts_root else None,
-        source=source_name,
-    )
-
-
-def family_index(state: WizardState) -> None:
-    """Assign a company family to every registrant of the published universe.
-
-    Offline and derived, so it needs no confirmation. It is separate from the menu's
-    other entries because only policy-scope planning consumes the result.
-    """
-    try:
-        cmd_family_index(Path(state.artifacts_root) if state.artifacts_root else None)
-    except FileNotFoundError as error:
-        print(f"{error}")
-        print("run 'Refresh external source' with cik_lookup first")
-
-
-def compare(state: WizardState) -> None:
-    """Compare a curated seed against a published SEC listing cohort."""
-    source = prompt_text("CIK manifest CSV", state.input_path or DEFAULT_INPUT)
-    if not source:
-        return
-    metadata = state.metadata()
-    catalog = CohortCatalog(resolve_cohort_paths(metadata.artifacts_root))
-    page_size = 20
-    offset = 0
-    while True:
-        records = catalog.list_cohorts(
-            tag=f"source:{SOURCE_NAME}", limit=page_size, offset=offset
-        )
-        if not records:
-            print(
-                "no company_tickers source cohort published; refresh the source first"
-            )
-            return
-        print("\nCompany ticker source cohorts:")
-        for index, record in enumerate(records, start=1):
-            print(f"  {index}. {record.cohort_id}  ({record.row_count:,} CIKs)")
-        controls = []
-        if offset:
-            controls.append("p=previous")
-        if len(records) == page_size:
-            controls.append("n=next")
-        suffix = f" ({', '.join(controls)})" if controls else ""
-        answer = prompt_text(f"Source cohort{suffix} (blank=cancel)", "").strip()
-        if answer.casefold() == "n" and len(records) == page_size:
-            offset += page_size
-            continue
-        if answer.casefold() == "p" and offset:
-            offset = max(0, offset - page_size)
-            continue
-        if not answer:
-            return
-        try:
-            choice = int(answer)
-        except ValueError:
-            print("invalid selection")
-            continue
-        if 1 <= choice <= len(records):
-            break
-        print("invalid selection")
-    cmd_compare(
-        plan_options(
-            input_path=source,
-            artifacts_root=Path(state.artifacts_root) if state.artifacts_root else None,
-        ),
-        source_cohort_id=records[choice - 1].cohort_id,
-    )
 
 
 def open_metadata_distrib_console(state: WizardState) -> None:
@@ -525,13 +390,6 @@ def build_operator_menu(state: WizardState | None = None) -> tuple[MenuAction, .
         menu_action("Status and resume inspect", lambda: status(session)),
         menu_action("Run chunks", lambda: run(session)),
         menu_action("Augment published snapshot", lambda: augment(session)),
-        menu_action("Refresh external source", lambda: refresh(session)),
-        menu_action("Compare curated input against a source", lambda: compare(session)),
-        menu_action(
-            "Assign company families for the universe",
-            lambda: family_index(session),
-            key="f",
-        ),
         menu_action(
             "Worker distribution console (export, worker, import, commands)",
             lambda: open_metadata_distrib_console(session),

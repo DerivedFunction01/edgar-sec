@@ -1,6 +1,6 @@
 # Cohort Ingestion, Sources & Relational Operations Specification
 
-This specification defines the ingestion engines, official SEC source management, relational set algebra, and sampling capabilities in `edgar_sec.infra.storage.cohort`.
+This specification defines the ingestion workflows, official SEC source management, relational set algebra, sampling, and comparison capabilities in `edgar_sec.pipelines.cohort` (Layer 4), delegating catalog and dataset persistence to `edgar_sec.infra.storage.cohort` (Layer 2).
 
 ---
 
@@ -64,25 +64,37 @@ def ingest_file_to_cohort(
 
 ## 2. Official SEC Sources Subsystem (`sources.py`)
 
-Dedicated module `edgar_sec.infra.storage.cohort.sources` manages official SEC reference registries.
+Dedicated module `edgar_sec.pipelines.cohort.sources` manages official SEC reference registries.
 
 ### 2.1 Managed Official Sources
 1. **Universe (`cik_lookup`)**:
    - Source: SEC `cik_lookup.txt` (full historical universe of ~980,000+ filers).
    - Stored with `origin_kind = 'official_source'`, `pinned = 1`.
+   - Publishes canonical `ciks.parquet` under `c-<cohort_id>/`.
 2. **Active Tickers (`company_tickers`)**:
    - Source: SEC `company_tickers.json` (~10,000+ active operating companies).
    - Stored with `origin_kind = 'official_source'`, `pinned = 1`.
+   - Publishes canonical `ciks.parquet` (1 row per distinct CIK). Zero companion listing files are needed.
 
-### 2.2 Active Version Management (SQLite WAL)
+### 2.2 Canonical Name Priority Policy
+For CIKs with multiple listings in `company_tickers.json`, the single canonical name for `ciks.parquet` is selected via deterministic source order:
+```sql
+first(nullif(trim(raw_name), '') ORDER BY source_order)
+    FILTER (WHERE nullif(trim(raw_name), '') IS NOT NULL)
+```
+
+### 2.3 Active Version Management (SQLite WAL)
 Active version pointers are stored in `source_active_pointers` in `cohorts.sqlite`:
 - **Read Active Version**:
   `SELECT active_snapshot_id FROM source_active_pointers WHERE source_name = ?`
 - **Atomic Pointer Swap**:
-  `INSERT OR REPLACE INTO source_active_pointers (source_name, active_snapshot_id) VALUES (?, ?)`
-- Completely replaces disk-based `active_pointer.json` files, preventing multi-process race conditions.
+  `CohortCatalog.set_active_source_pointer(source_name, active_snapshot_id)`
+  Enforces that `active_snapshot_id` exists in `cohorts`, has `origin_kind == 'official_source'`, and is pinned (`pinned == 1`).
 
-### 2.3 Python Signatures
+### 2.4 Byte-Preserving Deduplication
+Deduplication evaluates raw payload bytes directly via `hashlib.sha256(payload_bytes).hexdigest()`. If `(source_name, raw_source_sha256, parser_version, schema_version)` matches an existing cohort whose datasets are intact on disk, refresh exits immediately with zero re-work, preserving existing timestamps.
+
+### 2.5 Python Signatures
 ```python
 def refresh_official_source(
     source_name: str,  # 'cik_lookup' or 'company_tickers'
@@ -107,100 +119,32 @@ def publish_tickers_source(
     paths: CohortPaths,
     catalog: CohortCatalog,
 ) -> CohortRecord: ...
-
-
-def swap_active_source_pointer(
-    source_name: str,
-    snapshot_id: str,
-    *,
-    catalog: CohortCatalog,
-) -> None: ...
-
-
-def resolve_active_source(
-    source_name: str,
-    *,
-    catalog: CohortCatalog,
-) -> CohortRecord | None: ...
 ```
 
 ---
 
-## 3. Relational Set Algebra & AST Compiler (`operations.py`)
+## 3. Relational Set Algebra & Generic Diffing Engine (`operations.py`)
 
-Relational set operations combine cohorts into derived cohorts, inspection reports, or augmentation delta rosters.
+### 3.1 Relational Set Algebra
+- **Operations Supported**: Union (`+`), Intersection (`&`), Difference (`-`).
+- **AST Generation**: Compiles nested algebraic expressions (e.g. `(A + B) - C`) into a single DuckDB SQL query.
+- **Relational Merge Execution**: Executes compiled AST against underlying `ciks.parquet` tables, publishing the evaluated result as a new canonical cohort.
 
-### 3.1 Set Operation Execution
-Supports `union`, `intersect`, and `difference` producing a new registered cohort:
-- **Set Logic**:
-  - `union`: Distinct union of all CIKs across both operands.
-  - `intersect`: Inner join of CIKs present in both operands.
-  - `difference`: Left anti-join (`left` minus `right`).
-- **Name Resolution**:
-  `coalesce(nullif(left.name, ''), nullif(right.name, ''), '')`
-  Prefers non-empty name from left operand, falls back to right, then defaults to `""`.
-- **Monotonic Ordinal**:
-  Output rows are strictly ordered by `try_cast(cik_padded AS BIGINT) ASC`, and `ordinal` is re-assigned via `row_number() OVER () - 1`.
+### 3.2 Generic Cohort Diffing Engine
+Diffing is generalized across all cohorts rather than coupled to raw SEC files or ticker listings. An operator imports any input (e.g., `cohort import --input curated.csv --name curated`) and diffs it against official sources (`tickers`, `universe`) or other custom cohorts.
 
-### 3.2 Augmentation Delta Roster Materialization
-For `metadata_sync` augmentation planning, a dedicated anti-join operator materializes the subtraction of a base snapshot CIK index from a requested cohort:
-```python
-def execute_delta_roster(
-    requested_dataset: Path,
-    base_cik_map_dataset: Path,
-    output_dataset: Path,
-) -> int:
-    """Materialize rows in requested cohort absent from base CIK map.
-
-    Renubers ordinals monotonically from 0 for chunk addressing.
-    """
-    ...
-```
-
-### 3.3 AST Compiler & Dry-Run Preview
-The expression compiler parses tree expressions into structured AST nodes:
-```python
-SetOpKind = Literal["union", "intersect", "difference"]
-
-
-@dataclass(frozen=True, slots=True)
-class ExprNode:
-    pass
-
-
-@dataclass(frozen=True, slots=True)
-class CohortRef(ExprNode):
-    cohort_identifier: str  # name or cohort_id
-
-
-@dataclass(frozen=True, slots=True)
-class BinaryOp(ExprNode):
-    left: ExprNode
-    right: ExprNode
-    op: SetOpKind
-
-
-def compile_ast_to_sql(node: ExprNode, catalog: CohortCatalog) -> str: ...
-```
-- Compiles into a single nested DuckDB SQL query.
-- Evaluated directly into destination Parquet via `copy_query_to_parquet` without disk intermediates.
-- `--serialize` outputs canonical JSON AST without executing the query.
-
-### 3.4 Set Difference Inspection (`diff_cohorts`)
-Generates comparison metrics between two cohorts without creating a new cohort:
 ```python
 @dataclass(frozen=True, slots=True)
 class SetDiffReport:
-    left_name: str
-    right_name: str
-    left_total: int
-    right_total: int
-    intersection_count: int
+    left_count: int
+    right_count: int
     left_only_count: int
     right_only_count: int
     union_count: int
-    sample_left_only: tuple[tuple[str, str], ...]  # (cik_padded, name)
+    intersection_count: int
+    sample_left_only: tuple[tuple[str, str], ...]
     sample_right_only: tuple[tuple[str, str], ...]
+    delta_cohort_record: CohortRecord | None = None
 
 
 def diff_cohorts(
@@ -210,8 +154,15 @@ def diff_cohorts(
     left_name: str = "A",
     right_name: str = "B",
     sample_limit: int = 5,
+    save_delta_name: str | None = None,
+    catalog: CohortCatalog | None = None,
+    paths: CohortPaths | None = None,
 ) -> SetDiffReport: ...
 ```
+
+- **Set Difference Metrics**: Computes cardinalities via DuckDB: `left_count`, `right_count`, `left_only_count` (`LEFT ANTI JOIN`), `right_only_count` (`RIGHT ANTI JOIN`), `union_count` (`UNION`), and `intersection_count` (`INNER JOIN`).
+- **Sample Roster Preview**: Extracts preview samples `(cik_padded, name)` for inspection.
+- **Optional Delta Publication**: When `save_delta_name` is provided, stages and publishes the difference cohort (`left - right`) atomically under `PublicationLock`.
 
 ---
 
@@ -237,7 +188,7 @@ Sampling enables reproducible sub-cohort creation from large rosters.
 
 ### 4.3 Family Grouping & SPV Filtering
 - When `--group-family` is requested:
-  - If `family_index_dataset` is missing or unreadable, the operation **fails closed** with `FamilyIndexNotFoundError`.
+  - `family_index_dataset: Path` **must be explicitly provided**. If `None` or missing, the operation **strictly fails closed** with `FamilyIndexNotFoundError`.
   - For entities not found in the family index (NULL family), each unindexed CIK is treated as its own independent singleton family (retained, never dropped).
   - Deduplicates to 1 representative per family, preferring operating companies over special purpose vehicles (`exclude_spv = True`).
 
@@ -268,4 +219,4 @@ Query operations enforce deterministic ordering to prevent row duplicates or omi
   - `SELECT ordinal, cik_padded, name FROM read_parquet(?) WHERE ... ORDER BY ordinal ASC LIMIT ? OFFSET ?`
 - **Global Search (`find_across_cohorts`)**:
   - Strictly ordered by **`cohort_id ASC, ordinal ASC`**.
-  - Guarantees deterministic pagination when scanning multiple cohorts.
+  - Guarantees deterministic pagination when scanning multiple cohorts (`LIMIT ? OFFSET ((page - 1) * limit)`).

@@ -10,23 +10,20 @@ This specification defines how Phase 01 (`metadata_sync`) and Phase 02 (`filing_
 All cohort paths and symbols are removed from `edgar_sec/pipelines/metadata_sync/paths.py`:
 - `COHORTS_DIR_NAME`, `COMPILED_ROSTER_MANIFEST_NAME`, `COMPILED_ROSTER_MANIFEST_KIND` removed.
 - `MetadataPaths.cohorts_root`, `compiled_cohort_dir`, `compiled_cohort_file`, and `compiled_cohort_manifest` removed.
-- Call sites in `metadata_sync` import downward from `edgar_sec.infra.storage.cohort`.
+- Call sites in `metadata_sync` import downward from Layer 2 `edgar_sec.infra.storage.cohort`.
 
 ### 1.2 Pipeline Planning & CLI Wiring (`options.py` and `cli.py`)
 1. **`PlanOptions` in `metadata_sync/options.py`**:
-   - Add field `cohort: str = ""` to `PlanOptions`.
-   - Update `roster(self) -> Roster`:
-     If `self.cohort` is provided, resolve the cohort from `CohortCatalog` and convert to `Roster` via adapter `cohort_record_to_roster(record, paths)`.
-   - Update mutual exclusion: `--cohort`, `--universe`, `--input`, and `--roster` are strictly mutually exclusive.
+   - Stores strictly `cohort: str = ""` and `limit: int | None = None`.
+   - Resolves cohort via `CohortCatalog(paths).resolve_cohort_identifier(self.cohort)` and loads canonical `ciks.parquet` into `Roster` via `cohort_record_to_roster(record, paths)`.
+   - Removes legacy `--universe`, `--input`, and `--roster` fields.
 2. **CLI Parser in `metadata_sync/cli.py`**:
-   - Expose `--cohort <name_or_id>` on `edgar-sec metadata plan`.
-3. **Interactive Menu (`augment_flow.py`)**:
-   - Replace `ask_cohort_source` with paginated `CohortCatalog` picker, eliminating the combinatorial explosion of seed CSVs and universe snapshots.
-4. **Augmentation Flow (`augmentation.py`)**:
-   - Replaces manual row-diffing queries with `operations.execute_delta_roster(cohort_dataset, base_cik_map, output_dataset)`.
-5. **Universe & Official Sources (`universe.py`, `source_registry.py`)**:
-   - `source_registry.py` delegates snapshot acquisition to `edgar_sec.infra.storage.cohort.sources` (Layer 2).
-   - Universe snapshot resolution uses `sources.resolve_active_source("cik_lookup", catalog)` instead of directory walking.
+   - `metadata plan`: requires `--cohort <id_or_name>` (with optional `--limit <n>`).
+   - `metadata augment`: requires `--base-snapshot-id <id>` and `--cohort <id_or_name>` (delta cohort selector).
+   - Deletes `sources refresh` and `sources compare` subcommands from `metadata_sync`.
+   - Deletes shared `_add_cohort_source()` helper.
+3. **Removal of Shims**:
+   - Deletes `metadata_sync/manifest.py`, `universe.py`, and `cohort_adapter.py`.
 
 ---
 
@@ -46,7 +43,6 @@ Phase 02 utilizes cohorts for deterministic target filtering and policy seeding.
      request["cohort_id"] = record.cohort_id
      request["cohort_dataset_sha256"] = record.dataset_sha256
      ```
-   - This ensures different cohorts produce distinct plan IDs, preventing erroneous reuse of cached plans.
 3. **Normalized SQL Semi-Join Binding**:
    - Target locator rows in filing catalog store CIK under column **`source_cik`** (`domain.filing_catalog.schemas.TARGET_SCHEMA`), not `cik_padded`.
    - The query binds using integer comparison to prevent padding mismatches:
@@ -73,15 +69,22 @@ Phase 02 utilizes cohorts for deterministic target filtering and policy seeding.
 3. **Precedence & Mutex**:
    - `--seed-cohort` replaces policy-configured seed CSV files.
    - Passing both `--seed-cohort` and `--seed-csv` raises `ConflictError("Cannot pass both --seed-cohort and --seed-csv")`.
-   - The resolved `SeedFiler` list is included in the policy plan request fingerprint.
 
-### 2.3 Strict Failure Contracts & Edge Case Guarantees
+### 2.3 Company Family Index Consumer Contract
+1. **Prerequisite Publication**:
+   - `filing_catalog.planner` does not compile or publish the family index dynamically.
+   - Publication is an explicit prerequisite managed by `edgar-sec cohort family-index publish`.
+2. **Artifact Resolution**:
+   - Resolves the active family index record via Layer 2 `CohortCatalog.get_active_family_index(universe_cohort_id)`.
+   - Resolves the Parquet file path via Layer 2 `CohortPaths.family_index_file(family_index_id)`.
+3. **Fail-Closed on Missing or Stale**:
+   - If the active family index is missing, stale (universe changed), or corrupt (`file_sha256` mismatch), `filing_catalog.planner` strictly fails closed with `FamilyIndexNotFoundError`.
+
+### 2.4 Strict Failure Contracts & Edge Case Guarantees
 1. **Fail-Closed on Missing or Corrupt Cohorts**:
    - If `--cohort` or `--seed-cohort` cannot be resolved or its Parquet file is unreadable/corrupt, planning **fails immediately with a nonzero exit code**.
-   - Under no circumstances does the planner log a warning and proceed without the filter.
 2. **Empty Cohort Guarantee**:
    - If a cohort is valid but contains 0 CIKs (empty cohort), planning must produce **exactly 0 targets**.
-   - It must never omit the semi-join or silently plan against the entire filing catalog.
 
 ---
 
@@ -94,7 +97,6 @@ In strict accordance with `AGENTS.md` ("Zero Backward-Compatibility Shims"):
    - All runtime operations query `.artifacts/cohorts/cohorts.sqlite`.
 2. **Rebuild / Discard Default**:
    - Existing `.artifacts/metadata/cohorts/` directories are treated as deprecated and discarded.
-   - Official sources are populated cleanly via `edgar-sec cohort refresh-sources`.
-3. **Offline Scratch Migration Script**:
-   - For local development machines with custom cohorts, an offline script `scratch/migrate_legacy_cohorts.py` is provided to read legacy `.artifacts/metadata/cohorts/` and import them into `CohortCatalog`.
-   - This script is not part of library code and is not imported by pipelines.
+   - Official sources are populated cleanly via `edgar-sec cohort sources refresh`.
+3. **No Migration Utility**:
+   - No offline scratch migration script is provided. Stale or unmanaged legacy scratch artifacts are discarded or re-ingested via standard CLI commands (`edgar-sec cohort import`).

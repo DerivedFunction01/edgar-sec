@@ -5,7 +5,6 @@ from __future__ import annotations
 import csv
 import json
 import os
-import shutil
 import tempfile
 from datetime import UTC, datetime
 from pathlib import Path
@@ -40,38 +39,30 @@ def _snapshot_id(source_name: str, raw_sha256: str) -> str:
     return sha256_bytes(payload.encode("utf-8"))
 
 
-def _persist_raw_snapshot(
-    raw_path: Path, *, source_name: str, paths: CohortPaths, raw_sha256: str
-) -> tuple[str, str]:
+def _matching_source_record(
+    source_name: str, raw_sha256: str, *, paths: CohortPaths, catalog: CohortCatalog
+) -> CohortRecord | None:
     snapshot_id = _snapshot_id(source_name, raw_sha256)
-    relative = (
-        Path("source_snapshots")
-        / source_name
-        / f"{snapshot_id}{_SOURCE_SUFFIXES[source_name]}"
-    )
-    target = paths.cohorts_root / relative
-    target.parent.mkdir(parents=True, exist_ok=True)
-    if target.exists():
-        if file_sha256(target) != raw_sha256:
-            raise ValueError("immutable source snapshot digest conflict")
-    else:
-        descriptor, temporary_name = tempfile.mkstemp(
-            prefix=f".{snapshot_id}-", suffix=".tmp", dir=target.parent
+    record = catalog.get_cohort(f"c-{snapshot_id[:16]}")
+    if record is None:
+        return None
+    details = json.loads(record.origin_json)
+    if (
+        record.origin_kind != "official_source"
+        or details.get("source_name") != source_name
+        or details.get("source_snapshot_id") != snapshot_id
+        or details.get("raw_sha256") != raw_sha256
+    ):
+        raise ValueError("official source identity conflicts with its catalog record")
+    expected_path = paths.relative_path(paths.cohort_dataset_file(record.cohort_id))
+    if record.dataset_path != expected_path:
+        raise ValueError(
+            "official source dataset path conflicts with its catalog record"
         )
-        try:
-            with (
-                os.fdopen(descriptor, "wb") as destination,
-                raw_path.open("rb") as source,
-            ):
-                shutil.copyfileobj(source, destination, length=65_536)
-                destination.flush()
-                os.fsync(destination.fileno())
-            if file_sha256(temporary_name) != raw_sha256:
-                raise ValueError("source payload changed while taking its snapshot")
-            os.replace(temporary_name, target)
-        finally:
-            Path(temporary_name).unlink(missing_ok=True)
-    return snapshot_id, paths.relative_path(target)
+    dataset = paths.resolve_relative_path(record.dataset_path)
+    if not dataset.is_file() or file_sha256(dataset) != record.dataset_sha256:
+        return None
+    return record
 
 
 def _ticker_csv(raw_path: Path, paths: CohortPaths) -> tuple[Path, dict[str, int]]:
@@ -129,7 +120,6 @@ def _origin_details(
     source_name: str,
     raw_sha256: str,
     snapshot_id: str,
-    raw_relative_path: str,
     observed_at: str,
     source_metrics: dict[str, int],
 ) -> dict[str, Any]:
@@ -138,7 +128,6 @@ def _origin_details(
         "source_url": SOURCE_URLS[source_name],
         "source_snapshot_id": snapshot_id,
         "raw_sha256": raw_sha256,
-        "raw_path": raw_relative_path,
         "retrieved_at": observed_at,
         "source_parser_version": _SOURCE_SCHEMA_VERSION,
         **source_metrics,
@@ -153,11 +142,12 @@ def publish_tickers_source(
     if not raw.is_file():
         raise FileNotFoundError(raw)
     raw_sha256 = file_sha256(raw)
+    existing = _matching_source_record(source, raw_sha256, paths=paths, catalog=catalog)
+    if existing is not None:
+        return existing
     generated, metrics = _ticker_csv(raw, paths)
     try:
-        snapshot_id, raw_relative_path = _persist_raw_snapshot(
-            raw, source_name=source, paths=paths, raw_sha256=raw_sha256
-        )
+        snapshot_id = _snapshot_id(source, raw_sha256)
         return _ingest_file(
             generated,
             catalog=catalog,
@@ -169,7 +159,6 @@ def publish_tickers_source(
                 source_name=source,
                 raw_sha256=raw_sha256,
                 snapshot_id=snapshot_id,
-                raw_relative_path=raw_relative_path,
                 observed_at=datetime.now(UTC).isoformat(),
                 source_metrics=metrics,
             ),
@@ -209,6 +198,9 @@ def publish_universe_source(
     if not raw.is_file():
         raise FileNotFoundError(raw)
     raw_sha256 = file_sha256(raw)
+    existing = _matching_source_record(source, raw_sha256, paths=paths, catalog=catalog)
+    if existing is not None:
+        return existing
     connection = connect()
     try:
         line_count, rejected, usable = connection.execute(
@@ -224,9 +216,7 @@ def publish_universe_source(
         if not usable:
             raise ValueError("cik_lookup source contains no usable registrants")
         duplicate_rows = int(line_count) - rejected - usable
-        snapshot_id, raw_relative_path = _persist_raw_snapshot(
-            raw, source_name=source, paths=paths, raw_sha256=raw_sha256
-        )
+        snapshot_id = _snapshot_id(source, raw_sha256)
         query = (
             _UNIVERSE_CTE
             + """
@@ -248,7 +238,6 @@ def publish_universe_source(
             source_name=source,
             raw_sha256=raw_sha256,
             snapshot_id=snapshot_id,
-            raw_relative_path=raw_relative_path,
             observed_at=datetime.now(UTC).isoformat(),
             source_metrics={
                 "line_count": line_count,
@@ -282,6 +271,11 @@ def refresh_official_source(
 ) -> CohortRecord:
     source = _source_name(source_name)
     payload = client.get_bytes(SOURCE_URLS[source], mutable=True)
+    raw_sha256 = sha256_bytes(payload)
+    existing = _matching_source_record(source, raw_sha256, paths=paths, catalog=catalog)
+    if existing is not None:
+        swap_active_source_pointer(source, existing.cohort_id, catalog=catalog)
+        return existing
     paths.cohorts_root.mkdir(parents=True, exist_ok=True)
     descriptor, temporary_name = tempfile.mkstemp(
         prefix=f".{source}-", suffix=_SOURCE_SUFFIXES[source], dir=paths.cohorts_root

@@ -1,5 +1,5 @@
 """Bounded live SEC smoke test. Not collected by pytest.
-python -m edgar_sec.pipelines.metadata_sync.smoke_test --input <csv> --artifacts <preview-root>
+python -m edgar_sec.pipelines.metadata_sync.smoke_test --cohort <name-or-id> --artifacts <preview-root>
 Writes only to the explicit preview root, never a published snapshot.
 """
 
@@ -13,8 +13,8 @@ from edgar_sec.foundation.runtime.memory import reclaim
 from edgar_sec.foundation.runtime.settings import resolve_runtime_settings
 from edgar_sec.foundation.runtime.settings.runtime import DEFAULT_CHUNK_SIZE
 
-from .manifest import compile_cik_cohort
-from .paths import resolve_metadata_paths, resolve_run_paths
+from .options import plan_options, resolve_cohort
+from .paths import resolve_run_paths
 from .planner import build_plan, write_plan
 from .sec_client import SubmissionsClient
 from .worker import resolve_workers, run_chunk
@@ -26,7 +26,7 @@ def build_parser() -> argparse.ArgumentParser:
         prog="edgar_sec.pipelines.metadata_sync.smoke_test",
         description="Bounded live SEC smoke test (never publishes a snapshot)",
     )
-    parser.add_argument("--input", required=True, help="CIK manifest CSV")
+    parser.add_argument("--cohort", required=True, help="published cohort name or id")
     parser.add_argument(
         "--artifacts",
         required=True,
@@ -72,14 +72,8 @@ def main(argv: list[str] | None = None) -> int:
         )
         return 2
 
-    # The preview root is resolved and refused before anything is compiled, so a
-    # rejected run leaves no cohort behind in the production cache.
     try:
-        cohort = compile_cik_cohort(
-            args.input,
-            limit=sample_size,
-            metadata_paths=resolve_metadata_paths(artifacts),
-        )
+        cohort = resolve_cohort(plan_options(cohort=args.cohort, limit=sample_size))
     except (FileNotFoundError, ValueError) as exc:
         print(f"error: {exc}", file=sys.stderr)
         return 2

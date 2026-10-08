@@ -30,19 +30,8 @@ ASSIGNMENTS_DIR_NAME = "assignments"
 RECEIPT_FILE_NAME = "receipt.json"
 RUN_LOCK_FILE = "run.lock"
 
-REGISTRIES_DIR_NAME = "registries"
-
-REGISTRY_EFFECTIVE_CIK_DATASET = "effective_ciks"
-REGISTRY_EFFECTIVE_CIK_INPUT_NAME = "effective_cik_input.csv"
-EFFECTIVE_CIK_INPUT_MANIFEST_NAME = "effective_cik_input.csv.manifest.json"
-
 PLANS_DIR_NAME = "plans"
 CHUNKS_DIR_NAME = "chunks"
-
-FAMILY_INDEX_DIR_NAME = "family_index"
-FAMILY_INDEX_FILE_NAME = "company_family.parquet"
-FAMILY_INDEX_MANIFEST_NAME = "family_index.manifest.json"
-FAMILY_INDEX_MANIFEST_KIND = "company_family_index"
 
 
 @dataclass(frozen=True, slots=True)
@@ -99,49 +88,6 @@ class MetadataPaths:
     def snapshot_cik_index(self, snapshot_id: str) -> Path:
         """Sorted distinct CIK index published beside one snapshot payload."""
         return self.snapshot_dir(snapshot_id) / SNAPSHOT_CIK_INDEX_NAME
-
-    def registry_root(self, registry_id: str) -> Path:
-        """Directory holding a content-addressed curated-input projection."""
-        return self.metadata_root / REGISTRIES_DIR_NAME / registry_id
-
-    def registry_manifest_root(self, registry_id: str) -> Path:
-        """Directory holding one registry's published Parquet datasets."""
-        return self.registry_root(registry_id) / "datasets"
-
-    def registry_dataset(self, registry_id: str, dataset: str) -> Path:
-        """Path of one published registry Parquet dataset."""
-        return self.registry_manifest_root(registry_id) / f"{dataset}.parquet"
-
-    def effective_input_file(self, registry_id: str) -> Path:
-        """The effective CIK input CSV is an export for people; the roster Parquet
-        dataset beside it is the carrier.
-        """
-        return self.registry_root(registry_id) / REGISTRY_EFFECTIVE_CIK_INPUT_NAME
-
-    def effective_cik_roster(self, registry_id: str) -> Path:
-        """Path of the effective CIK roster dataset for one registry."""
-        return self.registry_dataset(registry_id, REGISTRY_EFFECTIVE_CIK_DATASET)
-
-    @property
-    def family_index_root(self) -> Path:
-        """Root of published company-family assignments, one per content identity."""
-        return self.metadata_root / FAMILY_INDEX_DIR_NAME
-
-    def family_index_dir(self, family_index_id: str) -> Path:
-        """Directory holding one immutable company-family assignment.
-
-        The id is a content hash, so it needs no escaping, and it is not validated for
-        the same reason `plan_dir` is not.
-        """
-        return self.family_index_root / family_index_id
-
-    def family_index_file(self, family_index_id: str) -> Path:
-        """Sorted assignment dataset of one row per CIK."""
-        return self.family_index_dir(family_index_id) / FAMILY_INDEX_FILE_NAME
-
-    def family_index_manifest(self, family_index_id: str) -> Path:
-        """Manifest recording the roster and rules an assignment resolved from."""
-        return self.family_index_dir(family_index_id) / FAMILY_INDEX_MANIFEST_NAME
 
     def snapshot_lock_path(self, snapshot_id: str) -> Path:
         """Exclusive run lock for a published snapshot (used by augment)."""

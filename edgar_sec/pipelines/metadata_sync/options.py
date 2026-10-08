@@ -18,13 +18,9 @@ from edgar_sec.infra.storage.cohort.catalog import CohortCatalog
 from edgar_sec.infra.storage.cohort.operations import sample_cohort
 from edgar_sec.infra.storage.cohort.paths import resolve_cohort_paths
 
-from .cohort_adapter import cohort_record_to_roster
-from .manifest import CompiledCohort, compile_cik_cohort
 from .paths import (
     ASSIGNMENTS_DIR_NAME,
     CHUNKS_DIR_NAME,
-    INPUT_DIR_NAME,
-    INPUT_MANIFEST_NAME,
     RECEIPT_FILE_NAME,
     ROSTER_DIR_NAME,
     MetadataPaths,
@@ -32,16 +28,12 @@ from .paths import (
     resolve_run_paths,
 )
 from .planner import Plan
-from .registry import load_registry_roster
-from .roster import ROSTER_FILE_NAME, Roster, read_roster
-from .source_registry import SOURCE_UNIVERSE_NAME, resolve_universe_snapshot
-from .universe import compile_universe_cohort
+from .roster import ROSTER_FILE_NAME, Roster, cohort_record_to_roster, read_roster
 
 __all__ = [
     "BundleRunPaths",
     "PlanOptions",
     "RunOptions",
-    "augment_options",
     "derive_plan_id",
     "plan_options",
     "read_bundle_plan_id",
@@ -108,10 +100,7 @@ def resolve_chunk_size(value: int | None) -> int:
 class PlanOptions:
     """Everything that defines a plan; worker count must never reach plan identity."""
 
-    input_path: Path | None = None
-    registry_id: str = ""
     cohort: str = ""
-    universe: bool = False
     artifacts_root: Path | None = None
     chunk_size: int = DEFAULT_CHUNK_SIZE
     limit: int | None = None
@@ -124,143 +113,56 @@ class PlanOptions:
         """Resolve the selected cohort this invocation plans over."""
         return resolve_cohort(self).roster
 
-    def _refuse_mixed_cohort(self) -> None:
-        selected = sum(
-            bool(value)
-            for value in (self.input_path, self.registry_id, self.cohort, self.universe)
-        )
-        if selected > 1:
-            raise ValueError("pass one of --input, --roster, --cohort, or --universe")
-
-    def universe_cohort(self) -> SelectedCohort:
-        """Load the active shared universe cohort without refreshing SEC data."""
-        if self.limit is not None and self.limit < 1:
-            raise ValueError(f"--limit must be >= 1, got {self.limit}")
-        metadata = self.metadata()
-        from edgar_sec.infra.storage.cohort.sources import resolve_active_source
-
-        paths = resolve_cohort_paths(metadata.artifacts_root)
-        record = resolve_active_source("cik_lookup", catalog=CohortCatalog(paths))
-        if record is None:
-            source_snapshot_id = ""
-        else:
-            source_snapshot_id = str(
-                json.loads(record.origin_json).get(
-                    "source_snapshot_id", record.cohort_id
-                )
-            )
-        if not source_snapshot_id:
-            raise ValueError(
-                "no published cik_lookup snapshot is available; run "
-                "'metadata sources refresh --source cik_lookup' first"
-            )
-        roster = compile_universe_cohort(
-            metadata, source_snapshot_id=source_snapshot_id, limit=self.limit
-        )
-        return SelectedCohort.from_universe(source_snapshot_id, roster)
-
     def selected_cohort(self) -> SelectedCohort:
-        """The cohort this invocation selected, with its provenance intact.
-        The limit applies during compilation, before identity is derived.
-        """
-        if self.input_path is None:
-            raise ValueError("a plan needs --input, --roster, --cohort, or --universe")
-        if self.limit is not None and self.limit < 1:
-            raise ValueError(f"--limit must be >= 1, got {self.limit}")
-        cohort = compile_cik_cohort(
-            self.input_path, limit=self.limit, metadata_paths=self.metadata()
-        )
-        return SelectedCohort.from_compiled(cohort)
-
-    def lineage(self) -> dict[str, str]:
-        """Source identities to record on anything this plan publishes."""
-        if self.universe:
-            return {
-                "registry_id": "",
-                "source_snapshot_id": resolve_universe_snapshot(self.metadata()),
-            }
-        if self.cohort:
-            return {"registry_id": "", "cohort_id": self.cohort}
-        if not self.registry_id:
-            return {"registry_id": ""}
-        return {"registry_id": self.registry_id}
+        """Resolve the selected published cohort and its verified dataset."""
+        return resolve_cohort(self)
 
 
 @dataclass(frozen=True, slots=True)
 class SelectedCohort:
-    """A resolved cohort plus where it came from; a registry roster has no input
-    file, so its identity stands in for an input fingerprint.
-    """
+    """A published cohort dataset adapted to the metadata roster contract."""
 
     roster: Roster
     input_name: str = ""
     input_fingerprint: str = ""
 
-    @classmethod
-    def from_compiled(cls, cohort: CompiledCohort) -> SelectedCohort:
-        """The limit is already in that identity; re-truncating would hide a mistake."""
-        return cls(
-            roster=cohort.roster,
-            input_name=cohort.input_name,
-            input_fingerprint=cohort.input_fingerprint,
-        )
-
-    @classmethod
-    def from_registry(cls, registry_id: str, roster: Roster) -> SelectedCohort:
-        """Build from a published registry roster, whose fingerprint is its id."""
-        return cls(
-            roster=roster,
-            input_name=f"registry:{registry_id}",
-            input_fingerprint=roster.roster_id,
-        )
-
-    @classmethod
-    def from_universe(cls, source_snapshot_id: str, roster: Roster) -> SelectedCohort:
-        """Build from a published universe snapshot, whose fingerprint is its id."""
-        return cls(
-            roster=roster,
-            input_name=f"universe:{SOURCE_UNIVERSE_NAME}:{source_snapshot_id}",
-            input_fingerprint=source_snapshot_id,
-        )
-
 
 def resolve_cohort(options: PlanOptions) -> SelectedCohort:
     """Resolve the cohort named by these options, applying any selection limit."""
-    options._refuse_mixed_cohort()
-    if options.universe:
-        return options.universe_cohort()
-    if options.cohort:
-        if options.limit is not None and options.limit < 1:
-            raise ValueError(f"--limit must be >= 1, got {options.limit}")
-        paths = resolve_cohort_paths(options.metadata().artifacts_root)
-        record = CohortCatalog(paths).resolve_cohort_identifier(options.cohort)
-        roster = cohort_record_to_roster(record, paths)
-        if options.limit is not None and options.limit < roster.row_count:
-            if roster.dataset is None:
-                raise ValueError("selected cohort has no dataset")
-            output = (
-                options.metadata().transient_dir(
-                    f"cohort-limit-{record.cohort_id}-{options.limit}"
-                )
-                / "ciks.parquet"
+    if not options.cohort:
+        raise ValueError("--cohort is required")
+    if options.limit is not None and options.limit < 1:
+        raise ValueError(f"--limit must be >= 1, got {options.limit}")
+    paths = resolve_cohort_paths(options.metadata().artifacts_root)
+    catalog = CohortCatalog(paths)
+    aliases = {"universe": "cik_lookup", "tickers": "company_tickers"}
+    if options.cohort in aliases:
+        from edgar_sec.infra.storage.cohort.sources import resolve_active_source
+
+        record = resolve_active_source(aliases[options.cohort], catalog=catalog)
+        if record is None:
+            raise ValueError(f"no active {options.cohort} cohort is published")
+    else:
+        record = catalog.resolve_cohort_identifier(options.cohort)
+    roster = cohort_record_to_roster(record, paths)
+    if options.limit is not None and options.limit < roster.row_count:
+        if roster.dataset is None:
+            raise ValueError("selected cohort has no dataset")
+        output = (
+            options.metadata().transient_dir(
+                f"cohort-limit-{record.cohort_id}-{options.limit}"
             )
-            written = sample_cohort(roster.dataset, output, sample_limit=options.limit)
-            roster = read_roster(output)
-            if written != options.limit or roster.row_count != options.limit:
-                raise ValueError("limited cohort has an unexpected row count")
-        return SelectedCohort(
-            roster=roster,
-            input_name=f"cohort:{record.cohort_id}",
-            input_fingerprint=record.dataset_sha256,
+            / "ciks.parquet"
         )
-    if options.registry_id:
-        return SelectedCohort.from_registry(
-            options.registry_id,
-            load_registry_roster(options.registry_id, options.metadata()),
-        )
-    if options.input_path is None:
-        raise ValueError("a plan needs --input, --roster, --cohort, or --universe")
-    return options.selected_cohort()
+        written = sample_cohort(roster.dataset, output, sample_limit=options.limit)
+        roster = read_roster(output)
+        if written != options.limit or roster.row_count != options.limit:
+            raise ValueError("limited cohort has an unexpected row count")
+    return SelectedCohort(
+        roster=roster,
+        input_name=f"cohort:{record.cohort_id}",
+        input_fingerprint=record.dataset_sha256,
+    )
 
 
 @dataclass(slots=True)
@@ -292,20 +194,14 @@ class RunOptions:
 
 def plan_options(
     *,
-    input_path: str | Path | None = None,
-    registry_id: str = "",
     cohort: str = "",
-    universe: bool = False,
     artifacts_root: str | Path | None = None,
     chunk_size: int | None = None,
     limit: int | None = None,
 ) -> PlanOptions:
     """Build plan options from raw values, resolving effective settings once."""
     return PlanOptions(
-        input_path=Path(input_path).resolve() if input_path else None,
-        registry_id=registry_id,
         cohort=cohort,
-        universe=universe,
         artifacts_root=(Path(artifacts_root).resolve() if artifacts_root else None),
         chunk_size=resolve_chunk_size(chunk_size),
         limit=limit,
@@ -326,10 +222,7 @@ def read_bundle_plan_id(bundle_root: Path | str) -> str:
 def run_options(
     *,
     plan_id: str = "",
-    input_path: str | Path | None = None,
-    registry_id: str = "",
     cohort: str = "",
-    universe: bool = False,
     chunk_size: int | None = None,
     limit: int | None = None,
     artifacts_root: str | Path | None = None,
@@ -346,13 +239,10 @@ def run_options(
         chunk_ids = parse_id_selection(chunk_ids) if chunk_ids else ()
     if bundle_root and not plan_id:
         plan_id = read_bundle_plan_id(bundle_root)
-    if not plan_id and (input_path or registry_id or cohort or universe):
+    if not plan_id and cohort:
         plan_id = derive_plan_id(
             plan_options(
-                input_path=input_path,
-                registry_id=registry_id,
                 cohort=cohort,
-                universe=universe,
                 artifacts_root=artifacts_root,
                 chunk_size=chunk_size,
                 limit=limit,
@@ -360,7 +250,7 @@ def run_options(
         )
     if not plan_id:
         raise ValueError(
-            "a plan reference is required: --plan-id, --bundle, --input, --roster, --cohort, or --universe"
+            "a plan reference is required: --plan-id, --bundle, or --cohort"
         )
     return RunOptions(
         plan_id=plan_id,
@@ -381,31 +271,3 @@ def derive_plan_id(options: PlanOptions) -> str:
         resolve_cohort(options).roster,
         chunk_size=options.chunk_size,
     ).plan_id
-
-
-def augment_options(
-    *,
-    input_path: str | Path | None = None,
-    registry_id: str = "",
-    cohort: str = "",
-    universe: bool = False,
-    artifacts_root: str | Path | None = None,
-    chunk_size: int | None = None,
-    base_snapshot_id: str = "",
-    new_snapshot_id: str = "",
-    workers: int | None = None,
-) -> tuple[PlanOptions, dict[str, str]]:
-    """The base is explicit; the new snapshot id defaults to the derived delta
-    plan id.
-    """
-    options = plan_options(
-        input_path=input_path,
-        registry_id=registry_id,
-        cohort=cohort,
-        universe=universe,
-        artifacts_root=artifacts_root,
-        chunk_size=chunk_size,
-    )
-    lineage = options.lineage()
-    lineage["parent_snapshot_id"] = base_snapshot_id
-    return options, lineage

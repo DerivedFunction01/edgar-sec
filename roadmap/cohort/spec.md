@@ -10,12 +10,12 @@ In strict compliance with `AGENTS.md` (strict downward-only layered architecture
 
 - **Storage & Engine (Layer 2)**:
   - `edgar_sec.infra.storage.object_store`: Generic single-user hierarchical object store for immutable expression DAGs, session aliasing, and lazy TTL lifecycle.
-  - `edgar_sec.infra.storage.cohort`: Domain-specific cohort storage, SQLite WAL catalog, official SEC source management, DuckDB set algebra, and composable sampling.
+  - `edgar_sec.infra.storage.cohort`: Domain-specific cohort storage, SQLite WAL catalog (`cohorts.sqlite`), path security resolvers (`CohortPaths`), and canonical data models (`models.py`).
   - Stored at `.artifacts/cohorts/` as a sibling to pipeline roots.
-- **Orchestration & UI (Layer 4)**:
-  - `edgar_sec.pipelines.cohort`: Operator CLI commands, interactive console menus, REPL workspace, and launcher entry (`run.py`).
+- **Pipeline Subsystem (Layer 4)**:
+  - `edgar_sec.pipelines.cohort`: Operator CLI commands, interactive console menus, REPL workspace, ingestion workflows, official SEC source lifecycle, set algebra, generic cohort diffing, composable sampling, and family index publication.
 - **Downstream Consumers (Layer 4)**:
-  - `edgar_sec.pipelines.metadata_sync` (Phase 01) and `edgar_sec.pipelines.filing_catalog` (Phase 02) import downward cleanly from `infra.storage.cohort`.
+  - `edgar_sec.pipelines.metadata_sync` (Phase 01) and `edgar_sec.pipelines.filing_catalog` (Phase 02) import downward cleanly from `infra.storage.cohort` (`catalog.py`, `paths.py`, `models.py`).
 
 ```mermaid
 flowchart TD
@@ -24,28 +24,27 @@ flowchart TD
             ObjStore["ObjectStore Engine\n• objects (global immutable DAG)\n• object_session_aliases (movable pointers)\n• session TTL & cleanup"]
         end
         subgraph CohortStorePkg["cohort/"]
-            Catalog["CohortCatalog (cohorts.sqlite)\n• cohorts & cohort_tags\n• source_active_pointers"]
-            Paths["CohortPaths (.artifacts/cohorts/)"]
-            Sources["sources.py (SEC Universe & Tickers)"]
-            Ingest["ingestion.py (CSV, TSV, TXT, Parquet)"]
-            Ops["operations.py (DuckDB Set Algebra & Sampling)"]
-            Query["query.py (CIK/Name Search & Pagination)"]
-            Work["workspace.py (Session State Engine)"]
+            Catalog["CohortCatalog (cohorts.sqlite)\n• cohorts & cohort_tags\n• source_active_pointers\n• active_family_indices"]
+            Paths["CohortPaths (.artifacts/cohorts/)\n• containment security"]
+            Models["models.py (CohortRecord, IngestionQuality)"]
         end
     end
 
+    subgraph Layer3["Layer 3: Engine"]
+        CompanyFamily["engine.company_family.assignment\n• Entity clustering & SPV detection"]
+    end
+
     subgraph Layer4["Layer 4: Pipelines"]
-        CohortCLI["pipelines.cohort\n(CLI, Console, Menu, REPL)"]
+        CohortPipeline["pipelines.cohort\n• CLI, Console, Menus, REPL\n• ingestion.py, sources.py, operations.py\n• family_index.py"]
         MetaSync["pipelines.metadata_sync\n(Planner & Augment Flow)"]
         FilingCat["pipelines.filing_catalog\n(Target Semi-Join & Seed Filers)"]
     end
 
-    CohortCLI --> Layer2
+    CohortPipeline --> Layer2
+    CohortPipeline --> Layer3
     MetaSync --> Layer2
     FilingCat --> Layer2
-    Work -.-> ObjStore
-    Work -.-> Ops
-    Ops -.-> Catalog
+    FilingCat --> Layer3
 ```
 
 ---
@@ -56,10 +55,11 @@ To maintain modularity and prevent monolithic document growth, the detailed cont
 
 | Specification Document | Scope & Responsibilities |
 |---|---|
-| [storage_spec.md](storage_spec.md) | ObjectStore schema, session aliasing, `cohorts.sqlite` catalog schema, canonical Parquet schema, deterministic writer settings, roster hash vs dataset SHA-256 identity, and atomic staging. |
-| [operations_spec.md](operations_spec.md) | Multi-format ingestion (`ingestion.py`), row quality invariant, official SEC sources lifecycle (`sources.py`), relational set algebra execution & AST compilation (`operations.py`), and deterministic/seeded sampling. |
-| [cli_spec.md](cli_spec.md) | Layer 4 package placement (`edgar_sec.pipelines.cohort`), `MenuSeparator` primitive, interactive console menus, unified CLI grammar, short hash prefix matching ($\ge 7$ chars), and `run.py` registration. |
+| [storage_spec.md](storage_spec.md) | ObjectStore schema, session aliasing, `cohorts.sqlite` catalog schema, canonical Parquet schema, staging `.stage.lease`, and scoped directory pruning. |
+| [operations_spec.md](operations_spec.md) | Multi-format ingestion (`ingestion.py`), row quality invariant, official SEC sources lifecycle (`sources.py`), relational set algebra execution & AST compilation (`operations.py`), generic cohort diffing, and deterministic/seeded sampling. |
+| [cli_spec.md](cli_spec.md) | Layer 4 package placement (`edgar_sec.pipelines.cohort`), `MenuSeparator` primitive, interactive console pickers, unified CLI grammar, short hash prefix matching ($\ge 7$ chars), and formatted output. |
 | [integration_spec.md](integration_spec.md) | Downstream pipeline integrations (`metadata_sync`, `filing_catalog`), fail-closed semantics, empty cohort guarantees, mutual exclusion rules, and legacy migration policy. |
+| [followup_plan.md](followup_plan.md) | Authoritative execution specification for manifest removal, generic cohort diffing, Layer 2/4 boundary reconciliation, family-index relocation, and interactive pagination. |
 | [plan.md](plan.md) | Four-track implementation milestones (M1–M8), dependency DAG, test fixtures, package README deliverables, and verification checklist. |
 
 ---
@@ -77,21 +77,22 @@ edgar_sec/
 │   │   └── README.md                # Package contract documentation
 │   └── cohort/                      # Cohort Storage Engine (Layer 2)
 │       ├── __init__.py              # Package docstring only
-│       ├── paths.py                 # CohortPaths (.artifacts/cohorts/ layout)
-│       ├── catalog.py               # SQLite CohortCatalog (WAL mode)
-│       ├── models.py                # CohortRecord, CohortMember dataclasses
-│       ├── sources.py               # SEC Universe & Tickers ingestion + active pointers
-│       ├── ingestion.py             # Multi-format streaming parser (CSV, TSV, TXT, Parquet)
-│       ├── operations.py            # DuckDB set algebra, AST compilation, sampling
-│       ├── query.py                 # Fast CIK/name search with pagination
-│       ├── workspace.py             # Session state delegating to ObjectStore
+│       ├── paths.py                 # CohortPaths (.artifacts/cohorts/ layout & traversal security)
+│       ├── catalog.py               # SQLite CohortCatalog (WAL mode, cohorts, active pointers)
+│       ├── models.py                # CohortRecord, CohortMember, IngestionQuality dataclasses
 │       └── README.md                # Package contract documentation
 └── pipelines/
-    └── cohort/                      # Cohort Orchestration & CLI (Layer 4)
+    └── cohort/                      # Cohort Pipeline Orchestration (Layer 4)
         ├── __init__.py              # Package docstring only
-        ├── cli.py                   # Unified CLI entrypoint
-        ├── menu.py                  # Interactive Console & REPL menus
+        ├── cli.py                   # Unified CLI entrypoint (sources, diff, import, list, etc.)
+        ├── menu.py                  # Interactive Console & REPL menus (paginated pickers)
         ├── options.py               # Typed CLI argument parser models
+        ├── ingestion.py             # Multi-format streaming parser (CSV, TSV, TXT, Parquet)
+        ├── sources.py               # SEC Universe & Tickers ingestion directly to ciks.parquet
+        ├── operations.py            # DuckDB set algebra, AST compilation, sampling, diffing
+        ├── query.py                 # Fast CIK/name search with pagination
+        ├── workspace.py             # Session state delegating to ObjectStore
+        ├── family_index.py          # Full-universe company family index publication
         └── README.md                # Package contract documentation
 ```
 
@@ -99,7 +100,7 @@ edgar_sec/
 
 ## 4. Key Guarantees & Constraints
 
-1. **Acyclic Downward Imports**: Storage code in Layer 2 has zero imports from Layer 4 (`pipelines`) or Layer 5 (`apps`). Orchestration lives in Layer 4.
+1. **Acyclic Downward Imports**: Storage code in Layer 2 has zero imports from Layer 4 (`pipelines`) or Layer 5 (`apps`). Downstream pipelines import downward from Layer 2 `infra.storage.cohort`.
 2. **Deterministic Binary Reproducibility**: Parquet datasets enforce strict column schemas, numeric CIK ascending sort, and fixed zstd writer settings.
 3. **Fail-Closed Downstream Execution**: If a specified cohort is missing or corrupt in downstream pipelines (`metadata_sync`, `filing_catalog`), planning fails immediately with a nonzero exit code.
 4. **Content-Addressed Invariance**: `roster_id` is computed from the sorted CIK text stream, guaranteeing identical sets yield identical IDs regardless of input format or column layout.

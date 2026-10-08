@@ -101,30 +101,6 @@ def test_a_copied_bundle_resolves_the_same_shape(tmp_path: Path) -> None:
     assert "transient" not in bundle.chunk_file(0).parts
 
 
-def test_registry_paths_are_content_addressed(tmp_path: Path) -> None:
-    metadata = MetadataPaths(artifacts_root=tmp_path)
-    root = metadata.registry_root("reg1")
-    assert root == tmp_path / "metadata" / "registries" / "reg1"
-    assert metadata.registry_manifest_root("reg1") == root / "datasets"
-    assert metadata.registry_dataset("reg1", "registrant_registry") == (
-        root / "datasets" / "registrant_registry.parquet"
-    )
-    assert metadata.effective_input_file("reg1") == root / "effective_cik_input.csv"
-
-
-def test_the_effective_roster_is_published_beside_the_csv(tmp_path: Path) -> None:
-    """The CSV is an export; the roster dataset is what a plan consumes."""
-    metadata = MetadataPaths(artifacts_root=tmp_path)
-    assert metadata.effective_cik_roster("reg1") == (
-        tmp_path
-        / "metadata"
-        / "registries"
-        / "reg1"
-        / "datasets"
-        / "effective_ciks.parquet"
-    )
-
-
 def test_the_published_cik_index_sits_beside_the_payload(tmp_path: Path) -> None:
     metadata = MetadataPaths(artifacts_root=tmp_path)
     assert metadata.snapshot_cik_index("snap1") == (

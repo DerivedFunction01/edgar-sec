@@ -9,21 +9,26 @@ import json
 import tempfile
 import threading
 from collections.abc import Iterable
+from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
 
 import pyarrow as pa
 
 from edgar_sec.domain.sec_urls import historical_submissions_url, submissions_url
+from edgar_sec.foundation.hashing import file_sha256
+from edgar_sec.infra.storage.cohort.catalog import CohortCatalog
+from edgar_sec.infra.storage.cohort.ingestion import ingest_file_to_cohort
+from edgar_sec.infra.storage.cohort.paths import resolve_cohort_paths
+from edgar_sec.infra.storage.cohort.sources import SOURCE_URLS, refresh_official_source
 from edgar_sec.infra.sec_http.client import SecHttpClient
 from edgar_sec.infra.sec_http.rate_limit import RateLimiter
 from edgar_sec.infra.sec_http.retry import RetryPolicy
-from edgar_sec.pipelines.metadata_sync.manifest import (
-    CompiledCohort,
-    compile_cik_cohort,
+from edgar_sec.pipelines.metadata_sync.roster import (
+    Roster,
+    cohort_record_to_roster,
+    write_roster_rows,
 )
-from edgar_sec.pipelines.metadata_sync.paths import resolve_metadata_paths
-from edgar_sec.pipelines.metadata_sync.roster import Roster, write_roster_rows
 from edgar_sec.pipelines.metadata_sync.sec_client import SubmissionsClient
 
 TESTS_ROOT = Path(__file__).resolve().parent
@@ -180,13 +185,48 @@ def scratch_root() -> Path:
 _ROOT_SCRATCH: tempfile.TemporaryDirectory[str] | None = None
 
 
-def fixture_cohort(fixture_name: str, *, limit: int | None = None) -> CompiledCohort:
-    """For tests that need what a fixture resolves to, not where it lands."""
-    return compile_cik_cohort(
-        fixture_path(fixture_name),
-        limit=limit,
-        metadata_paths=resolve_metadata_paths(scratch_root()),
+@dataclass(frozen=True, slots=True)
+class FixtureCohort:
+    cohort_id: str
+    row_count: int
+    roster: Roster
+    dataset: Path
+    input_name: str
+    input_path: Path
+    input_fingerprint: str
+    selected_limit: int | None
+    rejected_row_count: int
+    duplicate_row_count: int
+    dataset_sha256: str
+
+
+def _compile_fixture_cohort(
+    fixture_name: str, root: str | Path, *, limit: int | None = None
+) -> FixtureCohort:
+    source = fixture_path(fixture_name).resolve()
+    paths = resolve_cohort_paths(root)
+    catalog = CohortCatalog(paths)
+    result = ingest_file_to_cohort(source, catalog=catalog, paths=paths, limit=limit)
+    record = result.cohort
+    dataset = paths.resolve_relative_path(record.dataset_path)
+    return FixtureCohort(
+        cohort_id=record.cohort_id,
+        row_count=record.row_count,
+        roster=cohort_record_to_roster(record, paths),
+        dataset=dataset,
+        input_name=source.name,
+        input_path=source,
+        input_fingerprint=file_sha256(source),
+        selected_limit=limit,
+        rejected_row_count=result.quality.rejected_rows,
+        duplicate_row_count=result.quality.duplicate_rows,
+        dataset_sha256=record.dataset_sha256,
     )
+
+
+def fixture_cohort(fixture_name: str, *, limit: int | None = None) -> FixtureCohort:
+    """Compile a fixture as a temporary shared cohort and metadata roster."""
+    return _compile_fixture_cohort(fixture_name, scratch_root(), limit=limit)
 
 
 def fixture_ciks(fixture_name: str) -> tuple[str, ...]:
@@ -197,13 +237,9 @@ def fixture_ciks(fixture_name: str) -> tuple[str, ...]:
 
 def compiled_cohort(
     fixture_name: str, root: str | Path, *, limit: int | None = None
-) -> CompiledCohort:
-    """The caller must name a root it accepts writes into."""
-    return compile_cik_cohort(
-        fixture_path(fixture_name),
-        limit=limit,
-        metadata_paths=resolve_metadata_paths(root),
-    )
+) -> FixtureCohort:
+    """Compile a fixture under the caller's accepted storage root."""
+    return _compile_fixture_cohort(fixture_name, root, limit=limit)
 
 
 def published_universe(
@@ -213,23 +249,16 @@ def published_universe(
 
     Goes through the real publish and compile path, on the committed mini fixture.
     """
-    from edgar_sec.pipelines.metadata_sync.source_registry import (
-        SOURCE_UNIVERSE_URL,
-        refresh_cik_lookup_universe,
-    )
-    from edgar_sec.pipelines.metadata_sync.universe import compile_universe_cohort
-
     session = FakeSession()
-    session.register_bytes(SOURCE_UNIVERSE_URL, fixture_path(fixture_name).read_bytes())
-    metadata_paths = resolve_metadata_paths(root)
-    manifest = refresh_cik_lookup_universe(
-        metadata_paths=metadata_paths, client=build_test_http(session)
+    session.register_bytes(
+        SOURCE_URLS["cik_lookup"], fixture_path(fixture_name).read_bytes()
     )
-    roster = compile_universe_cohort(
-        metadata_paths, source_snapshot_id=str(manifest["snapshot_id"])
+    paths = resolve_cohort_paths(root)
+    catalog = CohortCatalog(paths)
+    record = refresh_official_source(
+        "cik_lookup", client=build_test_http(session), paths=paths, catalog=catalog
     )
-    assert roster.dataset is not None
-    return roster.dataset
+    return paths.resolve_relative_path(record.dataset_path)
 
 
 class FakeResponse:
@@ -289,6 +318,7 @@ __all__ = [
     "TESTS_ROOT",
     "FakeResponse",
     "FakeSession",
+    "FixtureCohort",
     "build_test_client",
     "build_test_http",
     "catalog_fixture_path",

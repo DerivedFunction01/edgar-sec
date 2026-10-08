@@ -12,6 +12,7 @@ from pathlib import Path
 from typing import Any
 
 from edgar_sec.foundation.runtime.paths import resolve_paths
+from edgar_sec.foundation.runtime.render import Grid, KeyValueRow, render_output
 from edgar_sec.infra.storage.cohort.catalog import CohortCatalog
 from edgar_sec.infra.storage.cohort.models import CohortRecord
 from edgar_sec.infra.storage.cohort.paths import CohortPaths, resolve_cohort_paths
@@ -43,13 +44,6 @@ def _resolve(context: _Context, identifier: str) -> CohortRecord:
     return context.catalog.resolve_cohort_identifier(identifier)
 
 
-def _print_record(record: CohortRecord) -> None:
-    print(
-        f"{record.cohort_id}\t{record.name or '-'}\t{record.row_count}\t"
-        f"{','.join(record.tags)}"
-    )
-
-
 def _cmd_import(args: Any, context: _Context) -> int:
     from edgar_sec.infra.storage.cohort.ingestion import ingest_file_to_cohort
 
@@ -78,8 +72,23 @@ def _cmd_list(args: Any, context: _Context) -> int:
         limit=args.limit,
         offset=args.offset,
     )
-    for record in records:
-        _print_record(record)
+    render_output(
+        [
+            Grid(
+                headers=("Cohort ID", "Name", "Rows", "Tags"),
+                rows=tuple(
+                    (
+                        record.cohort_id,
+                        record.name or "-",
+                        str(record.row_count),
+                        ",".join(record.tags),
+                    )
+                    for record in records
+                ),
+            )
+        ],
+        title="Cohorts",
+    )
     return 0
 
 
@@ -155,8 +164,15 @@ def _cmd_query(args: Any, context: _Context) -> int:
         offset=args.offset,
     )
     print(f"matches={count} offset={args.offset}")
-    for member in members:
-        print(f"{member.cik_padded}\t{member.name}")
+    render_output(
+        [
+            Grid(
+                headers=("CIK", "Name"),
+                rows=tuple((member.cik_padded, member.name) for member in members),
+            )
+        ],
+        title="Cohort Members",
+    )
     return 0
 
 
@@ -174,11 +190,23 @@ def _cmd_find(args: Any, context: _Context) -> int:
         offset=offset,
     )
     print(f"matches={count} page={args.page}")
-    for match in matches:
-        print(
-            f"{match.cohort_id}\t{match.cohort_name or ''}\t"
-            f"{match.cik_padded}\t{match.name}"
-        )
+    render_output(
+        [
+            Grid(
+                headers=("Cohort ID", "Cohort Name", "CIK", "Name"),
+                rows=tuple(
+                    (
+                        match.cohort_id,
+                        match.cohort_name or "",
+                        match.cik_padded,
+                        match.name,
+                    )
+                    for match in matches
+                ),
+            )
+        ],
+        title="Cohort Matches",
+    )
     return 0
 
 
@@ -245,6 +273,116 @@ def _cmd_sample(args: Any, context: _Context) -> int:
             tags=("sample",),
         )
     print(f"{result.cohort.cohort_id} rows={row_count}")
+    return 0
+
+
+def _cmd_family_index(_args: Any, context: _Context) -> int:
+    from edgar_sec.pipelines.cohort.family_index import publish_family_index
+
+    artifact, stats = publish_family_index(catalog=context.catalog, paths=context.paths)
+    render_output(
+        [
+            KeyValueRow("family_index_id", artifact.record.family_index_id),
+            KeyValueRow("dataset_path", str(artifact.dataset_path)),
+            KeyValueRow("registrants", str(stats.registrants)),
+            KeyValueRow("entity_families", str(stats.entity_families)),
+            KeyValueRow("spv_families", str(stats.spv_families)),
+            KeyValueRow("singletons", str(stats.singletons)),
+            KeyValueRow("spv_registrants", str(stats.spv_registrants)),
+            KeyValueRow("unresolved_sponsors", str(stats.unresolved_sponsors)),
+        ],
+        title="Family Index Published",
+    )
+    return 0
+
+
+def _cmd_sources_refresh(args: Any, context: _Context, client: Any = None) -> int:
+    from edgar_sec.infra.storage.cohort.sources import refresh_official_source
+
+    if client is None:
+        from edgar_sec.foundation.runtime.settings import resolve_runtime_settings
+        from edgar_sec.infra.sec_http.client import SecHttpClient
+
+        settings = resolve_runtime_settings()
+        client = SecHttpClient.from_settings(
+            settings.sec, cache_dir=settings.cache_root, ttl_s=settings.ttl_s
+        )
+    record = refresh_official_source(
+        args.source,
+        client=client,
+        paths=context.paths,
+        catalog=context.catalog,
+    )
+    print(f"active {args.source}: {record.cohort_id}")
+    return 0
+
+
+def _cmd_diff(args: Any, context: _Context) -> int:
+    from edgar_sec.infra.storage.cohort.ingestion import publish_derived_cohort
+    from edgar_sec.infra.storage.cohort.operations import (
+        diff_cohorts,
+        execute_set_operation,
+    )
+
+    left = _source_record(context, args.left)
+    right = _source_record(context, args.right)
+    left_dataset = _dataset(context, left)
+    right_dataset = _dataset(context, right)
+    report = diff_cohorts(
+        left_dataset,
+        right_dataset,
+        left_name=args.left,
+        right_name=args.right,
+    )
+    render_output(
+        [
+            KeyValueRow("left", f"{args.left} ({report.left_total:,} CIKs)"),
+            KeyValueRow("right", f"{args.right} ({report.right_total:,} CIKs)"),
+            KeyValueRow("intersection", str(report.intersection_count)),
+            KeyValueRow("left only", str(report.left_only_count)),
+            KeyValueRow("right only", str(report.right_only_count)),
+            KeyValueRow("union", str(report.union_count)),
+            Grid(
+                headers=("Delta", "CIK", "Name"),
+                rows=tuple(
+                    ("left only", cik, name) for cik, name in report.sample_left_only
+                )
+                + tuple(
+                    ("right only", cik, name) for cik, name in report.sample_right_only
+                ),
+            ),
+        ],
+        title="Cohort Diff",
+    )
+
+    for side, name, source, base, origin_key in (
+        ("left", args.save_left_delta, left, right, "left_only"),
+        ("right", args.save_right_delta, right, left, "right_only"),
+    ):
+        if not name:
+            continue
+        with tempfile.TemporaryDirectory(prefix="edgar-cohort-diff-") as temp_dir:
+            output = Path(temp_dir) / "delta.parquet"
+            execute_set_operation(
+                _dataset(context, source),
+                _dataset(context, base),
+                "difference",
+                output,
+            )
+            result = publish_derived_cohort(
+                output,
+                catalog=context.catalog,
+                paths=context.paths,
+                origin_kind="set_operation",
+                origin_details={
+                    "operation": origin_key,
+                    "source_cohort_id": source.cohort_id,
+                    "base_cohort_id": base.cohort_id,
+                },
+                name=name,
+                tags=("diff", f"diff:{side}"),
+            )
+        print(f"saved {side} delta: {result.cohort.cohort_id}")
     return 0
 
 
@@ -370,9 +508,15 @@ def _dispatch(args: Any, context: _Context) -> int:
         "query": _cmd_query,
         "find": _cmd_find,
         "sample": _cmd_sample,
+        "diff": _cmd_diff,
+        "family-index": _cmd_family_index,
         "workspace": _cmd_workspace,
         "merge": _cmd_merge,
     }
+    if args.command == "sources":
+        if args.sources_command == "refresh":
+            return _cmd_sources_refresh(args, context)
+        raise ValueError(f"unsupported sources command: {args.sources_command!r}")
     if args.command == "console":
         from edgar_sec.pipelines.cohort.menu import run_console
 
@@ -383,13 +527,15 @@ def _dispatch(args: Any, context: _Context) -> int:
     return handler(args, context)
 
 
-def main(argv: list[str] | None = None) -> int:
+def main(argv: list[str] | None = None, *, source_client: Any = None) -> int:
     arguments = sys.argv[1:] if argv is None else argv
     parser = build_parser()
     if not arguments:
         arguments = ["console"]
     args = parser.parse_args(arguments)
     try:
+        if args.command == "sources" and args.sources_command == "refresh":
+            return _cmd_sources_refresh(args, _context(), client=source_client)
         return _dispatch(args, _context())
     except Exception as exc:  # noqa: BLE001 - command errors are reported with nonzero status
         print(f"Error: {exc}", file=sys.stderr)

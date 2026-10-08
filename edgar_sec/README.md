@@ -46,7 +46,7 @@ Layer 0  foundation/   runtime, memory, hashing, compression, settings, scanners
 | 2 | [`infra/broker/`](infra/broker/README.md) | Unix-socket broker so an arbitrary worker pool shares one rate limit |
 | 2 | [`infra/storage/`](infra/storage/README.md) | atomic IO, DuckDB engine, Parquet, snapshot manifests, document parts, and shared cohort/object storage |
 | 2 | [`infra/storage/object_store/`](infra/storage/object_store/README.md) | global immutable expression nodes and session-scoped aliases |
-| 2 | [`infra/storage/cohort/`](infra/storage/cohort/README.md) | cohort paths, catalog, manifests, and immutable datasets |
+| 2 | [`infra/storage/cohort/`](infra/storage/cohort/README.md) | cohort paths, SQLite catalog, active pointers, and immutable datasets |
 | 3 | [`engine/`](engine/README.md) | layer root; filing transformations and selection feature construction |
 | 3 | [`engine/document/`](engine/document/README.md) | input preparation, SGML unpacking, HTML cleaning/projection, page markers, signatures, whitespace |
 | 3 | [`engine/tables/`](engine/tables/README.md) | table masking, HTML→ASCII rendering with geometry, false-table rejection |
@@ -64,7 +64,7 @@ Layer 0  foundation/   runtime, memory, hashing, compression, settings, scanners
 | 4 | [`pipelines/document_inventory/snapshot/`](pipelines/document_inventory/snapshot/README.md) | snapshot relation schemas and DuckDB-backed staging/anti-join primitives |
 | 4 | [`pipelines/metadata_sync/`](pipelines/metadata_sync/README.md) | Submissions metadata ingest, chunked and resumable |
 | 4 | [`pipelines/filing_catalog/`](pipelines/filing_catalog/README.md) | Zero-network catalog materialization and target planning |
-| 4 | [`pipelines/cohort/`](pipelines/cohort/README.md) | Phase 0 cohort catalog commands, set operations, sampling, and workspace console |
+| 4 | [`pipelines/cohort/`](pipelines/cohort/README.md) | Phase 0 source refresh, diff, family-index publication, set operations, sampling, and workspace console |
 | 4 | [`pipelines/document_storage/`](pipelines/document_storage/README.md) | Fetch, normalize, delegate, checkpoint, merge, consolidate |
 
 ## Shared engineering contract

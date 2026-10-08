@@ -15,6 +15,9 @@ from edgar_sec.pipelines.filing_catalog.paths import (
     FilingCatalogPaths,
     resolve_filing_catalog_paths,
 )
+from edgar_sec.infra.storage.cohort.catalog import CohortCatalog
+from edgar_sec.infra.storage.cohort.paths import resolve_cohort_paths
+from edgar_sec.pipelines.cohort.family_index import publish_family_index
 from tests.support import published_universe
 
 EXPECTED_TARGETS = "expected_filing_targets.csv"
@@ -23,11 +26,11 @@ EXPECTED_PROFILES = "expected_company_profiles.csv"
 
 @pytest.fixture(autouse=True)
 def universe_roster(catalog_artifacts_root: Path) -> Path:
-    """Publish the registrant universe every plan's families come from.
-
-    Autouse because the planner cannot build a plan without one.
-    """
-    return published_universe(catalog_artifacts_root)
+    """Publish the universe and its immutable family index for policy plans."""
+    dataset = published_universe(catalog_artifacts_root)
+    paths = resolve_cohort_paths(catalog_artifacts_root)
+    publish_family_index(catalog=CohortCatalog(paths), paths=paths)
+    return dataset
 
 
 @pytest.fixture

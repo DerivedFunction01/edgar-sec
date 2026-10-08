@@ -1,8 +1,4 @@
-"""Shared fixtures for the document-storage tests.
-
-The catalog-bundle fixtures publish a registrant universe first: the planner cannot
-resolve company families without one, so a plan cannot be built without it.
-"""
+"""Shared fixtures for the document-storage tests."""
 
 from __future__ import annotations
 
@@ -11,6 +7,9 @@ from typing import Any
 
 import pytest
 
+from edgar_sec.infra.storage.cohort.catalog import CohortCatalog
+from edgar_sec.infra.storage.cohort.paths import resolve_cohort_paths
+from edgar_sec.pipelines.cohort.family_index import publish_family_index
 from edgar_sec.pipelines.filing_catalog.paths import resolve_filing_catalog_paths
 from tests.support import era_submission_metadata, published_universe
 
@@ -22,7 +21,10 @@ def catalog_artifacts_root(tmp_path: Path) -> Path:
 
 @pytest.fixture
 def universe_roster(catalog_artifacts_root: Path) -> Path:
-    return published_universe(catalog_artifacts_root)
+    dataset = published_universe(catalog_artifacts_root)
+    paths = resolve_cohort_paths(catalog_artifacts_root)
+    publish_family_index(catalog=CohortCatalog(paths), paths=paths)
+    return dataset
 
 
 def _publish_plan(source: Path, root: Path) -> tuple[dict[str, Any], Path]:

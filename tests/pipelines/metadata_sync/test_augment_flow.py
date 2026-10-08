@@ -19,33 +19,16 @@ from edgar_sec.pipelines.metadata_sync.discovery import current_snapshot_id
 from edgar_sec.pipelines.metadata_sync.operator import WizardState
 from edgar_sec.pipelines.metadata_sync.options import plan_options
 from edgar_sec.pipelines.metadata_sync.paths import resolve_metadata_paths
-from edgar_sec.pipelines.metadata_sync.source_registry import (
-    SOURCE_NAME,
-    SOURCE_URL,
-    refresh_company_tickers,
-)
+from tests.pipelines.metadata_sync.cohort_support import publish_test_cohort
 from tests.support import (
     FakeSession,
     build_test_client,
-    build_test_http,
     cik_payload,
     fixture_path,
     roster_of,
 )
 
-# A live listing naming a registrant the curated seed does not cover.
-SOURCE_TICKERS = {
-    "0": {"cik_str": "37996", "ticker": "F", "title": "FORD MOTOR CO"},
-    "1": {"cik_str": "20", "ticker": "KTC", "title": "K Tron International Inc"},
-    "2": {"cik_str": "5555", "ticker": "NEW", "title": "NEWCO INC"},
-}
-
 MINI = ["0000001985", "0000001761", "0000000020", "0000037996"]
-
-TICKERS = {
-    "0": {"cik_str": "37996", "ticker": "F", "title": "FORD MOTOR CO"},
-    "1": {"cik_str": "5555", "ticker": "NEW", "title": "NEWCO INC"},
-}
 
 
 @pytest.fixture()
@@ -99,11 +82,14 @@ def _stub_journey(
     state: WizardState, monkeypatch: pytest.MonkeyPatch, *, delta_rows: int = 1
 ) -> list[dict]:
     """Wire an augment run whose cohort and arithmetic are already decided."""
+    record, _paths, _roster = publish_test_cohort(
+        fixture_path("cik_sec_mini.csv"), state.metadata().artifacts_root
+    )
     monkeypatch.setattr(
         flow,
         "ask_augment_cohort",
         lambda _s: plan_options(
-            input_path=fixture_path("cik_sec_mini.csv"),
+            cohort=record.cohort_id,
             artifacts_root=Path(state.artifacts_root),
         ),
     )
@@ -194,11 +180,14 @@ def test_an_already_covered_cohort_never_asks_to_fetch(
     """Nothing to fetch must not be discovered only after every question is asked."""
     _publish_snapshot_stub(state, "base")
     asked: list[str] = []
+    record, _paths, _roster = publish_test_cohort(
+        fixture_path("cik_sec_mini.csv"), state.metadata().artifacts_root
+    )
     monkeypatch.setattr(
         flow,
         "ask_augment_cohort",
         lambda _s: plan_options(
-            input_path=fixture_path("cik_sec_mini.csv"),
+            cohort=record.cohort_id,
             artifacts_root=Path(state.artifacts_root),
         ),
     )
@@ -270,173 +259,44 @@ def test_no_published_snapshot_cancels_the_augment(
     assert "no published snapshot to augment" in capsys.readouterr().out
 
 
-# ---------------------------------------------------------------- the cohort
-
-
-def _write_seed(tmp_path: Path, name: str = "seed.csv") -> Path:
-    path = tmp_path / name
-    path.write_text(
-        "cik,name\n0000001985,ACCEL\n0000001761,TRANZONIC\n", encoding="utf-8"
-    )
-    return path
-
-
-def test_published_cohorts_are_selected_from_the_shared_catalog(
-    state: WizardState, tmp_path: Path, monkeypatch: pytest.MonkeyPatch, capsys
+def test_published_cohorts_are_the_only_picker_choices(
+    state: WizardState, tmp_path: Path, monkeypatch: pytest.MonkeyPatch
 ) -> None:
-    from edgar_sec.pipelines.metadata_sync.manifest import compile_cik_cohort
-    from edgar_sec.infra.storage.cohort.catalog import CohortCatalog
-    from edgar_sec.infra.storage.cohort.paths import resolve_cohort_paths
-
-    compile_cik_cohort(
-        fixture_path("cik_sec_mini.csv"), metadata_paths=state.metadata()
+    record, _paths, _roster = publish_test_cohort(
+        fixture_path("cik_sec_mini.csv"), state.metadata().artifacts_root
     )
-    record = CohortCatalog(
-        resolve_cohort_paths(state.metadata().artifacts_root)
-    ).list_cohorts(tag="metadata_sync")[0]
-    monkeypatch.setattr(flow, "prompt_text", lambda label, default="": "1")
+    observed: dict[str, Any] = {}
 
+    def choose(items, *, prompt_label):
+        observed["keys"] = [item.key for item in items]
+        observed["labels"] = [item.label for item in items]
+        observed["prompt"] = prompt_label
+        return items[0]
+
+    monkeypatch.setattr(flow, "prompt_paginated_choice", choose)
     options = flow.ask_augment_cohort(state)
 
     assert options is not None
     assert options.cohort == record.cohort_id
-    assert record.cohort_id in capsys.readouterr().out
+    assert observed["keys"] == [record.cohort_id]
+    assert observed["prompt"] == "Cohort to augment"
+    assert "CIKs" in observed["labels"][0]
 
 
-def test_curated_input_remains_available_without_a_source_refresh(
-    state: WizardState, tmp_path: Path, monkeypatch: pytest.MonkeyPatch, capsys
-) -> None:
-    """Curated cohort selection does not require an official source refresh."""
-    seed = _write_seed(tmp_path)
-    monkeypatch.setattr(flow, "DEFAULT_INPUT", str(seed), raising=False)
-    monkeypatch.setattr(
-        flow,
-        "prompt_text",
-        lambda label, default="": "1" if label.startswith("Cohort choice") else default,
-    )
-
-    options = flow.ask_augment_cohort(state)
-
-    assert options is not None
-    assert options.input_path == seed
-    assert "published cohorts" in capsys.readouterr().out
-
-
-def test_published_registry_roster_reference_remains_available(
-    state: WizardState, tmp_path: Path, monkeypatch: pytest.MonkeyPatch
-) -> None:
-    monkeypatch.setattr(
-        flow,
-        "prompt_text",
-        lambda label, default="": "2" if label.startswith("Cohort choice") else "reg-1",
-    )
-    options = flow.ask_augment_cohort(state)
-    assert options is not None
-    assert options.registry_id == "reg-1"
-
-
-def test_a_published_comparison_is_offered_as_a_cohort(
-    state: WizardState, tmp_path: Path, monkeypatch: pytest.MonkeyPatch, capsys
-) -> None:
-    """A roster the operator already published stays reachable by hand."""
-    seed = _write_seed(tmp_path)
-    _publish_roster(state, "reg-1", source_snapshot_id="src-1")
-    monkeypatch.setattr(
-        flow,
-        "prompt_text",
-        lambda label, default="": "2" if label.startswith("Cohort choice") else "reg-1",
-    )
-
-    options = flow.ask_augment_cohort(state)
-
-    assert options is not None
-    assert options.registry_id == "reg-1"
-    assert "Published registry roster id" in capsys.readouterr().out
-
-
-def test_a_missing_seed_path_is_reported(
+def test_no_published_cohorts_cancels_selection(
     state: WizardState, monkeypatch: pytest.MonkeyPatch, capsys
 ) -> None:
-    monkeypatch.setattr(
-        flow, "DEFAULT_INPUT", "uploads/definitely-absent.csv", raising=False
-    )
-    monkeypatch.setattr(
-        flow,
-        "prompt_text",
-        lambda label, default="": (
-            "1"
-            if label.startswith("Cohort choice")
-            else "uploads/definitely-absent.csv"
-        ),
-    )
-
+    monkeypatch.setattr(flow, "prompt_paginated_choice", lambda items, **_: None)
     assert flow.ask_augment_cohort(state) is None
-    assert "does not exist" in capsys.readouterr().out
-
-
-def test_a_blank_seed_cancels(
-    state: WizardState, monkeypatch: pytest.MonkeyPatch
-) -> None:
-    monkeypatch.setattr(flow, "prompt_text", lambda label, default="": "")
-    assert flow.ask_augment_cohort(state) is None
-
-
-def _publish_roster(state: WizardState, registry_id: str, *, source_snapshot_id: str):
-    """Publish a real registry so the cohort list reads genuine manifests."""
-    from edgar_sec.pipelines.metadata_sync.registry import (
-        EFFECTIVE_INPUT_MANIFEST_KIND,
-        REGISTRY_SCHEMA_VERSION,
-    )
-    from edgar_sec.pipelines.metadata_sync.roster import (
-        ROSTER_MANIFEST_KIND,
-        ROSTER_SCHEMA_VERSION,
-        write_roster,
-    )
-
-    metadata = state.metadata()
-    roster_path = metadata.effective_cik_roster(registry_id)
-    roster_path.parent.mkdir(parents=True, exist_ok=True)
-    roster = roster_of(("0000001985", "0000001761"))
-    digest = write_roster(roster, roster_path)
-    roster_path.with_name(roster_path.name + ".manifest.json").write_text(
-        json.dumps(
-            {
-                "manifest_kind": ROSTER_MANIFEST_KIND,
-                "schema_version": ROSTER_SCHEMA_VERSION,
-                "registry_id": registry_id,
-                "artifact_sha256": digest,
-                "roster_id": roster.roster_id,
-            }
-        ),
-        encoding="utf-8",
-    )
-    effective = metadata.effective_input_file(registry_id)
-    effective.write_text("cik,name\n0000001985,ACCEL\n", encoding="utf-8")
-    (metadata.registry_manifest_root(registry_id) / "..").mkdir(
-        parents=True, exist_ok=True
-    )
-    effective.with_name("effective_cik_input.csv.manifest.json").write_text(
-        json.dumps(
-            {
-                "manifest_kind": EFFECTIVE_INPUT_MANIFEST_KIND,
-                "schema_version": REGISTRY_SCHEMA_VERSION,
-                "registry_id": registry_id,
-                "source_snapshot_id": source_snapshot_id,
-                "curated_cik_count": 2,
-                "active_cik_count": 2,
-                "artifact_path": str(effective),
-                "artifact_sha256": "0" * 64,
-            }
-        ),
-        encoding="utf-8",
-    )
+    assert "no published cohorts" in capsys.readouterr().out
 
 
 def test_the_menu_still_delegates_augmentation_to_the_journey() -> None:
     """The action is a hand-off, so the menu owns no cohort logic."""
     menu = {action.key: action for action in operator_module.build_operator_menu()}
     assert menu["4"].label == "Augment published snapshot"
-    assert callable(menu["5"].callback)
+    assert callable(menu["d"].callback)
+    assert callable(menu["p"].callback)
 
 
 # ------------------------------------------------- the command, through ``main``
@@ -486,12 +346,15 @@ def _parse_output(out: str) -> dict[str, Any]:
 
 def _publish_base_via_cli(session, tmp_path, capsys, monkeypatch) -> str:
     """Publish a real base snapshot over the CLI, and return its snapshot id."""
+    record, _paths, _roster = publish_test_cohort(
+        fixture_path("cik_sec_mini.csv"), tmp_path
+    )
     assert (
         main(
             [
                 "plan",
-                "--input",
-                str(fixture_path("cik_sec_mini.csv")),
+                "--cohort",
+                record.cohort_id,
                 "--artifacts",
                 str(tmp_path),
                 "--chunk-size",
@@ -539,37 +402,21 @@ def _seed_session_for(monkeypatch) -> None:
 def test_augment_fetches_only_what_the_base_is_missing(
     session: FakeSession, tmp_path: Path, capsys, monkeypatch
 ) -> None:
-    """A source-derived CIK absent from the base is fetched and published."""
-    session.register_bytes(SOURCE_URL, json.dumps(SOURCE_TICKERS).encode("utf-8"))
-    metadata = resolve_metadata_paths(tmp_path)
-    published = refresh_company_tickers(
-        metadata_paths=metadata, client=build_test_http(session)
-    )
-    main(
-        [
-            "sources",
-            "compare",
-            "--input",
-            str(fixture_path("cik_sec_mini.csv")),
-            "--source-cohort",
-            published["cohort_id"],
-            "--artifacts",
-            str(tmp_path),
-        ]
-    )
-    registry_id = _parse_output(capsys.readouterr().out)["registry_id"]
-    capsys.readouterr()
-
+    """A selected published cohort is reduced against the base snapshot."""
     base = _publish_base_via_cli(session, tmp_path, capsys, monkeypatch)
-
-    # NEWCO is in the live listing but not the seed, so the union is not covered.
+    requested = tmp_path / "requested.csv"
+    requested.write_text(
+        "cik,name\n" + "".join(f"{cik},CO {cik}\n" for cik in [*MINI, "0000005555"]),
+        encoding="utf-8",
+    )
+    record, _paths, _roster = publish_test_cohort(requested, tmp_path)
     session.register(submissions_url("0000005555"), cik_payload("0000005555", "NEWCO"))
     assert (
         main(
             [
                 "augment",
-                "--roster",
-                registry_id,
+                "--cohort",
+                record.cohort_id,
                 "--base-snapshot-id",
                 base,
                 "--artifacts",
@@ -593,6 +440,9 @@ def test_augment_reports_a_covered_cohort_as_a_successful_no_op(
     """The ordinary case for a stale seed: nothing fetched, written, or moved."""
     metadata = resolve_metadata_paths(tmp_path)
     base = _publish_base_via_cli(session, tmp_path, capsys, monkeypatch)
+    record, _paths, _roster = publish_test_cohort(
+        fixture_path("cik_sec_mini.csv"), tmp_path
+    )
     pointer_before = current_snapshot_id(metadata)
     plans_root = metadata.metadata_root / "plans"
     plans_before = sorted(p.name for p in plans_root.iterdir())
@@ -606,8 +456,8 @@ def test_augment_reports_a_covered_cohort_as_a_successful_no_op(
     exit_code = main(
         [
             "augment",
-            "--input",
-            str(fixture_path("cik_sec_mini.csv")),
+            "--cohort",
+            record.cohort_id,
             "--base-snapshot-id",
             base,
             "--artifacts",
@@ -642,11 +492,12 @@ def test_merge_refuses_a_delta_plan_and_leaves_the_snapshot_intact(
     session.register(submissions_url("0000005555"), cik_payload("0000005555", "NEWCO"))
     delta_csv = tmp_path / "delta.csv"
     delta_csv.write_text("cik,name\n0000005555,NEWCO\n", encoding="utf-8")
+    record, _paths, _roster = publish_test_cohort(delta_csv, tmp_path)
     main(
         [
             "augment",
-            "--input",
-            str(delta_csv),
+            "--cohort",
+            record.cohort_id,
             "--base-snapshot-id",
             base,
             "--new-snapshot-id",
@@ -667,68 +518,15 @@ def test_merge_refuses_a_delta_plan_and_leaves_the_snapshot_intact(
     assert metadata.snapshot_manifest("aug").is_file()
 
 
-# ---------------------------------------------------- the shared cohort picker
-
-
-def test_the_universe_is_offered_once_a_snapshot_is_published(
-    state: WizardState, tmp_path: Path, monkeypatch: pytest.MonkeyPatch, capsys
-) -> None:
-    """Shared catalog records are selectable for plan and augmentation flows."""
-    from edgar_sec.pipelines.metadata_sync.manifest import compile_cik_cohort
-    from edgar_sec.infra.storage.cohort.catalog import CohortCatalog
-    from edgar_sec.infra.storage.cohort.paths import resolve_cohort_paths
-
-    compile_cik_cohort(
-        fixture_path("cik_sec_mini.csv"), metadata_paths=state.metadata()
-    )
-    record = CohortCatalog(
-        resolve_cohort_paths(state.metadata().artifacts_root)
-    ).list_cohorts(tag="metadata_sync")[0]
-    monkeypatch.setattr(flow, "prompt_text", lambda label, default="": "1")
-
-    options = flow.ask_augment_cohort(state)
-
-    out = capsys.readouterr().out
-    assert options is not None
-    assert options.cohort == record.cohort_id
-    monkeypatch.setattr(flow, "prompt_text", lambda label, default="": "1")
-    plan_selection = flow.ask_cohort_source(state, purpose="Cohort to plan over")
-    assert plan_selection is not None
-    assert plan_selection.cohort == record.cohort_id
-    assert "published cohorts" in out
-
-
-def test_a_csv_cohort_needs_no_published_source(
-    state: WizardState, tmp_path: Path, monkeypatch: pytest.MonkeyPatch, capsys
-) -> None:
-    """Curated CSV selection does not require a ticker source refresh."""
-    seed = _write_seed(tmp_path)
-    monkeypatch.setattr(flow, "DEFAULT_INPUT", str(seed), raising=False)
-    monkeypatch.setattr(
-        flow, "confirm_network", lambda *a, **k: pytest.fail("asked to fetch")
-    )
-    monkeypatch.setattr(
-        flow,
-        "prompt_text",
-        lambda label, default="": "1" if label.startswith("Cohort choice") else default,
-    )
-
-    options = flow.ask_augment_cohort(state)
-
-    assert options is not None
-    assert options.input_path == seed
-    assert "published cohorts" in capsys.readouterr().out
-
-
 def test_the_picker_pages_through_catalog_cohorts(
-    state: WizardState, tmp_path: Path, monkeypatch: pytest.MonkeyPatch, capsys
+    state: WizardState, tmp_path: Path, monkeypatch: pytest.MonkeyPatch
 ) -> None:
-    """The picker advances and selects records from catalog pages."""
+    """The runtime picker receives every published cohort from catalog pages."""
     from types import SimpleNamespace
 
     first_page = [
         SimpleNamespace(cohort_id=f"cohort-{index}", name=None, row_count=1)
-        for index in range(20)
+        for index in range(100)
     ]
     second_page = [SimpleNamespace(cohort_id="last-cohort", name="last", row_count=2)]
 
@@ -742,17 +540,19 @@ def test_the_picker_pages_through_catalog_cohorts(
 
     catalog = Catalog(None)
     monkeypatch.setattr(flow, "CohortCatalog", lambda _paths: catalog)
-    answers = iter(("n", "1"))
-    labels = []
-    monkeypatch.setattr(
-        flow,
-        "prompt_text",
-        lambda label, default="": (labels.append(label), next(answers))[1],
-    )
+    observed: dict[str, Any] = {}
 
-    options = flow.ask_cohort_source(state, purpose="Cohort to plan over")
+    def choose(items, *, prompt_label):
+        observed["items"] = items
+        observed["prompt_label"] = prompt_label
+        return items[-1]
+
+    monkeypatch.setattr(flow, "prompt_paginated_choice", choose)
+
+    options = flow.ask_published_cohort(state, purpose="Cohort to plan over")
 
     assert options is not None
     assert options.cohort == "last-cohort"
-    assert catalog.calls == [(20, 0), (20, 20)]
-    assert any("n=next" in label for label in labels)
+    assert catalog.calls == [(100, 0), (100, 100)]
+    assert len(observed["items"]) == 101
+    assert observed["prompt_label"] == "Cohort to plan over"

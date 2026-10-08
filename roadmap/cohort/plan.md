@@ -539,3 +539,14 @@ Every new package (source and mirrored test packages) must own an `__init__.py` 
 - Active/pinned deletion refusal: assert SQLite foreign key and catalog validation blocks deletion.
 - `filing_catalog`: assert plan caching distinguishes cohorts by ID and digest, joins bind to `source_cik`, empty cohort produces 0 targets, and missing cohort fails closed.
 - Heavy benchmarks ($100\text{k}+$ lines) isolated in `scratch/bench_cohort_txt.py` outside the deterministic test gate.
+
+---
+
+## 5. Follow-Up Architectural Evolution (Phases F1–F5)
+
+The subsequent evolution of the subsystem is detailed in [followup_plan.md](followup_plan.md), which serves as the binding execution specification for:
+- **Phase F1**: Elimination of redundant disk `cohort.json` manifests, `.stage.lease` staging hardening, and deterministic orphan pruning.
+- **Phase F2**: Streamlined official SEC sources lifecycle, byte-preserving deduplication, direct canonical compilation to `ciks.parquet`, and generic `cohort diff` algebra.
+- **Phase F3**: Architectural reconciliation of Layer 2 storage primitives (`catalog.py`, `paths.py`, `models.py`) and Layer 4 pipeline workflows.
+- **Phase F4**: Relocation of full-universe company family index publication to `pipelines.cohort.family_index`, dedicated `active_family_indices` pointer table, and decoupling metadata sync CLI options.
+- **Phase F5**: Structured `Grid` terminal output formatting and interactive console pickers via `prompt_paginated_choice`.

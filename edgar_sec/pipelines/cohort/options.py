@@ -107,6 +107,26 @@ def build_parser() -> argparse.ArgumentParser:
     sample.add_argument("--exclude-spv", action="store_true")
     sample.add_argument("--name")
 
+    sources = commands.add_parser("sources", help="manage official SEC source cohorts")
+    source_commands = sources.add_subparsers(dest="sources_command", required=True)
+    refresh = source_commands.add_parser(
+        "refresh", help="refresh an official SEC source cohort"
+    )
+    refresh.add_argument(
+        "--source",
+        choices=("cik_lookup", "company_tickers"),
+        default="cik_lookup",
+        help="which official source to refresh",
+    )
+
+    diff = commands.add_parser("diff", help="compare cohort membership")
+    diff.add_argument("left")
+    diff.add_argument("right")
+    diff.add_argument("--save-left-delta", metavar="NAME")
+    diff.add_argument("--save-right-delta", metavar="NAME")
+
+    commands.add_parser("family-index", help="publish the active universe family index")
+
     workspace = commands.add_parser(
         "workspace", help="manage workspace sessions and variables"
     )

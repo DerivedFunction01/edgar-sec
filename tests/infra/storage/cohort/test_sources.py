@@ -4,6 +4,8 @@ from pathlib import Path
 import pytest
 import pyarrow.parquet as pq
 
+from edgar_sec.foundation.hashing import file_sha256
+from edgar_sec.infra.storage.cohort import sources
 from edgar_sec.infra.storage.cohort.catalog import CohortCatalog
 from edgar_sec.infra.storage.cohort.paths import CohortPaths
 from edgar_sec.infra.storage.cohort.sources import (
@@ -17,11 +19,18 @@ from edgar_sec.infra.storage.cohort.sources import (
 from tests.support import FakeSession, build_test_http, fixture_path
 
 
-def test_universe_source_publishes_pinned_system_cohort(tmp_path: Path) -> None:
+def test_universe_source_publishes_pinned_system_cohort(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
     paths = CohortPaths(tmp_path)
     catalog = CohortCatalog(paths)
     source_path = fixture_path("cik_lookup_universe_mini.txt")
     record = publish_universe_source(source_path, paths=paths, catalog=catalog)
+
+    def no_reparse():
+        raise AssertionError("intact source snapshot should be reused without parsing")
+
+    monkeypatch.setattr(sources, "connect", no_reparse)
     repeated = publish_universe_source(source_path, paths=paths, catalog=catalog)
 
     assert record.origin_kind == "official_source"
@@ -33,12 +42,14 @@ def test_universe_source_publishes_pinned_system_cohort(tmp_path: Path) -> None:
     assert record.cohort_id == f"c-{details['source_snapshot_id'][:16]}"
     assert details["line_count"] == 14
     assert details["distinct_cik_count"] == record.row_count
+    assert "raw_path" not in details
     assert repeated == record
+    assert not (paths.cohorts_root / "source_snapshots").exists()
     assert resolve_active_source("cik_lookup", catalog=catalog) is None
 
 
 def test_ticker_snapshots_with_changed_names_keep_separate_records(
-    tmp_path: Path,
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
 ) -> None:
     paths = CohortPaths(tmp_path / "artifacts")
     catalog = CohortCatalog(paths)
@@ -65,6 +76,11 @@ def test_ticker_snapshots_with_changed_names_keep_separate_records(
 
     first = publish_tickers_source(first_source, paths=paths, catalog=catalog)
     changed = publish_tickers_source(changed_source, paths=paths, catalog=catalog)
+
+    def no_reparse(*_args, **_kwargs):
+        raise AssertionError("intact source snapshot should be reused without parsing")
+
+    monkeypatch.setattr(sources, "_ticker_csv", no_reparse)
     repeated = publish_tickers_source(first_source, paths=paths, catalog=catalog)
 
     first_details = json.loads(first.origin_json)
@@ -77,6 +93,7 @@ def test_ticker_snapshots_with_changed_names_keep_separate_records(
     assert repeated == first
     assert catalog.get_cohort(first.cohort_id) == first
     assert catalog.get_cohort(changed.cohort_id) == changed
+    assert not (paths.cohorts_root / "source_snapshots").exists()
 
     swap_active_source_pointer("company_tickers", changed.cohort_id, catalog=catalog)
     assert catalog.get_active_source_pointer("company_tickers") == changed.cohort_id
@@ -120,7 +137,10 @@ def test_refresh_tickers_sets_pointer_only_after_valid_publication(
     assert resolve_active_source("company_tickers", catalog=catalog) == first
     assert first.pinned
     assert first.row_count == 2
-    assert json.loads(first.origin_json)["raw_sha256"]
+    details = json.loads(first.origin_json)
+    assert details["raw_sha256"]
+    assert "raw_path" not in details
+    assert not (paths.cohorts_root / "source_snapshots").exists()
 
     session.register_bytes(SOURCE_URLS["company_tickers"], b'{"bad":')
     with pytest.raises(ValueError, match="valid UTF-8 JSON"):
@@ -129,6 +149,64 @@ def test_refresh_tickers_sets_pointer_only_after_valid_publication(
         )
 
     assert resolve_active_source("company_tickers", catalog=catalog) == first
+
+
+def test_refresh_reuses_intact_payload_before_parsing_and_reactivates_it(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    paths = CohortPaths(tmp_path)
+    catalog = CohortCatalog(paths)
+    payload = b'{"0":{"cik_str":10,"ticker":"A","title":"Alpha Inc"}}'
+    session = FakeSession()
+    session.register_bytes(SOURCE_URLS["company_tickers"], payload)
+    client = build_test_http(session)
+    first = refresh_official_source(
+        "company_tickers", client=client, paths=paths, catalog=catalog
+    )
+    other_payload = tmp_path / "other-tickers.json"
+    other_payload.write_text(
+        '{"0":{"cik_str":11,"ticker":"B","title":"Beta Inc"}}',
+        encoding="utf-8",
+    )
+    other = publish_tickers_source(other_payload, paths=paths, catalog=catalog)
+    swap_active_source_pointer("company_tickers", other.cohort_id, catalog=catalog)
+
+    def no_reparse(*_args, **_kwargs):
+        raise AssertionError("intact source payload should bypass parsing")
+
+    monkeypatch.setattr(sources, "_ticker_csv", no_reparse)
+    repeated = refresh_official_source(
+        "company_tickers", client=client, paths=paths, catalog=catalog
+    )
+
+    assert repeated == first
+    assert catalog.get_active_source_pointer("company_tickers") == first.cohort_id
+    assert not list(paths.cohorts_root.glob(".company_tickers-*"))
+
+
+@pytest.mark.parametrize("damage", ["missing", "corrupt"])
+def test_source_refresh_repairs_missing_or_corrupt_dataset(
+    tmp_path: Path, damage: str
+) -> None:
+    paths = CohortPaths(tmp_path / "artifacts")
+    catalog = CohortCatalog(paths)
+    raw = tmp_path / "tickers.json"
+    raw.write_text(
+        '{"0":{"cik_str":10,"ticker":"A","title":"Alpha Inc"}}',
+        encoding="utf-8",
+    )
+    original = publish_tickers_source(raw, paths=paths, catalog=catalog)
+    dataset = paths.resolve_relative_path(original.dataset_path)
+    if damage == "missing":
+        dataset.unlink()
+    else:
+        dataset.write_bytes(b"corrupt")
+
+    repaired = publish_tickers_source(raw, paths=paths, catalog=catalog)
+
+    assert repaired == original
+    assert file_sha256(dataset) == original.dataset_sha256
+    assert pq.read_table(dataset).num_rows == original.row_count
 
 
 def test_refresh_universe_uses_client_and_activates_after_publish(

@@ -18,6 +18,8 @@ import pyarrow.parquet as pq
 
 from edgar_sec.foundation.hashing import file_sha256
 from edgar_sec.foundation.serialization import canonical_json
+from edgar_sec.infra.storage.cohort.models import CohortRecord
+from edgar_sec.infra.storage.cohort.paths import CohortPaths
 from edgar_sec.infra.storage.parquet import read_parquet_schema, write_parquet_table
 
 ROSTER_SCHEMA_VERSION = "1.0.0"
@@ -40,6 +42,7 @@ __all__ = [
     "SNAPSHOT_CIK_INDEX_SCHEMA",
     "Roster",
     "RosterError",
+    "cohort_record_to_roster",
     "derive_roster_id",
     "empty_roster",
     "read_cik_index",
@@ -63,6 +66,26 @@ SNAPSHOT_CIK_INDEX_SCHEMA = pa.schema([("cik", pa.string())])
 
 class RosterError(ValueError):
     """Raised when a roster cannot be produced, stored, or verified."""
+
+
+def cohort_record_to_roster(record: CohortRecord, paths: CohortPaths) -> Roster:
+    """Adapt a catalog record after verifying its published dataset contract."""
+    dataset = paths.resolve_relative_path(record.dataset_path)
+    roster = read_roster(dataset)
+    digest = file_sha256(dataset)
+    if digest != record.dataset_sha256:
+        raise RosterError(f"cohort dataset digest does not match catalog: {dataset}")
+    if record.row_count != roster.row_count:
+        raise RosterError(
+            f"cohort row count {record.row_count} does not match dataset "
+            f"{roster.row_count}: {dataset}"
+        )
+    if record.distinct_cik_count != roster.row_count:
+        raise RosterError(
+            f"cohort distinct CIK count {record.distinct_cik_count} does not "
+            f"match dataset {roster.row_count}: {dataset}"
+        )
+    return roster
 
 
 @dataclass(frozen=True, slots=True)

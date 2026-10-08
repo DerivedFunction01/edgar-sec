@@ -170,12 +170,13 @@ class CohortWorkspace:
         staging_dir = self.paths.create_staging_dir(cohort_id)
         staged_dataset = staging_dir / "ciks.parquet"
         try:
-            with connect() as connection:
-                materialized_rows = copy_query_to_parquet(
-                    connection, query, staged_dataset
-                )
-            if materialized_rows != row_count:
-                raise ValueError("materialized expression row count changed")
+            with self.paths.active_staging_lease(staging_dir):
+                with connect() as connection:
+                    materialized_rows = copy_query_to_parquet(
+                        connection, query, staged_dataset
+                    )
+                if materialized_rows != row_count:
+                    raise ValueError("materialized expression row count changed")
             dataset_sha256 = file_sha256(staged_dataset)
             dataset_path = self.paths.relative_path(
                 self.paths.cohort_dataset_file(cohort_id)
@@ -195,20 +196,21 @@ class CohortWorkspace:
                 ):
                     raise ValueError(f"cohort {cohort_id!r} is immutable")
                 return existing
-            self.paths.publish_staging_dir(cohort_id, staging_dir)
-            return self.catalog.register_cohort(
-                cohort_id=cohort_id,
-                name=output_name,
-                description=description,
-                origin_kind="set_operation",
-                origin_details={"expression": self._serialize_node(expression)},
-                roster_id=roster_id,
-                row_count=row_count,
-                distinct_cik_count=row_count,
-                dataset_sha256=dataset_sha256,
-                dataset_path=dataset_path,
-                tags=tags,
-            )
+            with self.paths.publication_lock():
+                self.paths.publish_staging_dir(cohort_id, staging_dir)
+                return self.catalog.register_cohort(
+                    cohort_id=cohort_id,
+                    name=output_name,
+                    description=description,
+                    origin_kind="set_operation",
+                    origin_details={"expression": self._serialize_node(expression)},
+                    roster_id=roster_id,
+                    row_count=row_count,
+                    distinct_cik_count=row_count,
+                    dataset_sha256=dataset_sha256,
+                    dataset_path=dataset_path,
+                    tags=tags,
+                )
         finally:
             if staging_dir.exists():
                 self.paths.remove_staging_dir(staging_dir)

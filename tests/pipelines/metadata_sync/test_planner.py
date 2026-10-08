@@ -8,7 +8,11 @@ from pathlib import Path
 import pytest
 
 from edgar_sec.domain.submissions.schemas import SCHEMA_VERSION
-from edgar_sec.pipelines.metadata_sync.options import derive_plan_id, plan_options
+from edgar_sec.pipelines.metadata_sync.options import (
+    derive_plan_id,
+    plan_options,
+    resolve_cohort,
+)
 from edgar_sec.pipelines.metadata_sync.paths import resolve_run_paths
 from edgar_sec.pipelines.metadata_sync.planner import (
     PLAN_FORMAT_VERSION,
@@ -21,7 +25,8 @@ from edgar_sec.pipelines.metadata_sync.planner import (
     derive_plan_id as derive_plan_id_direct,
 )
 from edgar_sec.pipelines.metadata_sync.roster import RosterError
-from tests.support import compiled_cohort, fixture_cohort, fixture_path, roster_of
+from tests.pipelines.metadata_sync.cohort_support import publish_test_cohort
+from tests.support import fixture_cohort, fixture_path, roster_of
 
 
 def _plan(**kwargs):
@@ -100,13 +105,17 @@ def test_delta_and_full_plans_over_one_cohort_are_distinct() -> None:
 
 
 def test_limit_binds_identity_before_the_plan_is_built(tmp_path: Path) -> None:
-    """The limit binds while the cohort compiles, before identity is derived."""
-    full = build_plan(
-        compiled_cohort("cik_sec_mini.csv", tmp_path).roster, chunk_size=2
+    record, _paths, _roster = publish_test_cohort(
+        fixture_path("cik_sec_mini.csv"), tmp_path
     )
-    bounded = compiled_cohort("cik_sec_mini.csv", tmp_path, limit=2)
+    options = plan_options(cohort=record.cohort_id, artifacts_root=tmp_path)
+    full = build_plan(resolve_cohort(options).roster, chunk_size=2)
+    bounded_options = plan_options(
+        cohort=record.cohort_id, artifacts_root=tmp_path, limit=2
+    )
+    bounded = resolve_cohort(bounded_options)
     limited = build_plan(
-        bounded.roster, chunk_size=2, selected_limit=bounded.selected_limit
+        bounded.roster, chunk_size=2, selected_limit=bounded_options.limit
     )
     assert limited.plan_id != full.plan_id
     assert limited.row_count == 2
@@ -115,20 +124,29 @@ def test_limit_binds_identity_before_the_plan_is_built(tmp_path: Path) -> None:
 
 
 def test_limit_records_provenance(tmp_path: Path) -> None:
-    cohort = compiled_cohort("cik_sec_mini.csv", tmp_path, limit=2)
+    record, _paths, _roster = publish_test_cohort(
+        fixture_path("cik_sec_mini.csv"), tmp_path
+    )
+    options = plan_options(cohort=record.cohort_id, artifacts_root=tmp_path, limit=2)
+    cohort = resolve_cohort(options)
     plan = build_plan(
         cohort.roster,
         chunk_size=2,
         input_fingerprint=cohort.input_fingerprint,
-        selected_limit=cohort.selected_limit,
+        selected_limit=options.limit,
     )
     assert plan.input_fingerprint == cohort.input_fingerprint
     assert plan.to_manifest()["selected_limit"] == 2
 
 
 def test_limit_must_be_positive(tmp_path: Path) -> None:
+    record, _paths, _roster = publish_test_cohort(
+        fixture_path("cik_sec_mini.csv"), tmp_path
+    )
     with pytest.raises(ValueError, match="limit"):
-        compiled_cohort("cik_sec_mini.csv", tmp_path, limit=0)
+        resolve_cohort(
+            plan_options(cohort=record.cohort_id, artifacts_root=tmp_path, limit=0)
+        )
 
 
 def test_invalid_chunk_size_rejected() -> None:
@@ -269,9 +287,12 @@ def test_load_rejects_a_foreign_manifest_kind(tmp_path: Path) -> None:
 
 
 def test_options_derive_the_same_plan_id_the_planner_builds(tmp_path: Path) -> None:
+    record, _paths, _roster = publish_test_cohort(
+        fixture_path("cik_sec_mini.csv"), tmp_path
+    )
     derived = derive_plan_id(
         plan_options(
-            input_path=fixture_path("cik_sec_mini.csv"),
+            cohort=record.cohort_id,
             chunk_size=2,
             artifacts_root=tmp_path,
         )

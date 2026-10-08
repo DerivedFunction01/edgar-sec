@@ -1,49 +1,50 @@
 # metadata_sync
 
-Plans SEC submissions work from a CIK roster, fetches and checkpoints per-CIK
-results, then publishes immutable Parquet snapshots. Shared cohorts and official
-SEC sources are owned by `infra.storage.cohort`; metadata_sync consumes them and
-publishes its plans, registry rosters, and snapshots under `metadata/`.
+Plans SEC submissions work from a published cohort, fetches and checkpoints
+per-CIK results, then publishes immutable Parquet snapshots. Shared cohorts and
+official SEC source management are owned by the cohort pipeline and Layer 2 store.
 
 ## Module Layout
 
 | Module | Responsibility |
 | :--- | :--- |
-| `cohort_adapter.py` | Verify shared cohort datasets and load metadata roster handles. |
-| `manifest.py` | Register curated CIK files through shared cohort ingestion; count candidate input rows. |
-| `roster.py` | Metadata roster schema, identity, ordinal reads, and Parquet publication. |
-| `options.py` | Plan, run, and augmentation options; resolve input, registry, cohort, and universe selections. |
+| `roster.py` | Metadata roster schema, identity, ordinal reads, Parquet publication, and verified cohort adaptation. |
+| `options.py` | Plan, run, and augmentation options; resolve published cohort selections. |
 | `planner.py` | Plan identity, chunk layout, plan bundle write and validated load. |
 | `augmentation.py` | Preflight a requested roster against a published CIK index and write a verified transient delta. |
-| `source_registry.py` | Delegate SEC source refresh to `cohort.sources`; expose the active universe identity. |
-| `universe.py` | Resolve the active `cik_lookup` cohort and optionally bound it for a plan. |
-| `registry.py` | Compare a curated input with a published `company_tickers` cohort and publish a registry roster. |
-| `family_index.py` | Build and verify the company-family assignment from the active universe cohort. |
-| `paths.py` | Metadata plan, registry, snapshot, and transient locations. |
-| `discovery.py` | Discover plans, snapshots, registry rosters, and curated CSV candidates. |
-| `operator.py`, `augment_flow.py` | Interactive plan/source selection, lifecycle orchestration, and network consent. |
-| `cli.py`, `commands/` | Command parser and implementations. |
-| Remaining modules | Worker execution, checkpointing, merging, distribution, SEC transport, and snapshot validation. |
+| `assignment.py` | Divide plan chunks into worker assignments and persist the assignment manifest. |
+| `checkpoints.py` | Discover and validate completed chunk checkpoints. |
+| `worker.py` | Fetch submissions and checkpoint chunk results. |
+| `validation.py` | Validate plan inputs and worker results before merge. |
+| `merger.py` | Merge validated chunks and publish immutable snapshots. |
+| `snapshot.py` | Load and validate published snapshot manifests and parts. |
+| `distribution.py`, `distribution_adapter.py` | Export/import worker bundles through the distribution boundary. |
+| `sec_client.py`, `commands/client.py` | Build the SEC submissions client and its cache. |
+| `progress.py`, `run_lock.py` | Render execution progress and serialize snapshot writes. |
+| `specs.py` | Declare metadata relations for DAG lifecycle operations. |
+| `paths.py` | Metadata plan, snapshot, and transient locations. |
+| `discovery.py` | Discover plans and published snapshots. |
+| `operator.py`, `augment_flow.py` | Interactive cohort selection, lifecycle orchestration, and network consent. |
+| `cli.py`, `commands/` | Parse and dispatch public metadata commands. |
+| `smoke_test.py` | Run a bounded live fetch into a preview artifact root. |
+| `__init__.py`, `commands/__init__.py` | Package markers. |
 
 ## Contracts
 
-- `--input`, `--roster`, `--cohort`, and `--universe` are mutually exclusive plan
-  sources. Curated inputs are registered with shared cohort ingestion; `--cohort`
-  resolves a published shared cohort by name or identifier; `--roster` continues to
-  address a published metadata registry roster.
-- `--universe` resolves the active `cik_lookup` source through the shared catalog.
-  Planning does not refresh SEC data. `sources refresh --source cik_lookup` publishes
-  the source cohort first.
+- Plan and augmentation commands accept only `--cohort` as their dataset selector.
+  It resolves a published cohort name or identifier; the active `universe` and
+  `tickers` aliases resolve through the shared source catalog.
+- Metadata planning is offline and never refreshes official sources. Use the cohort
+  command surface to refresh a source before selecting its active alias.
 - A catalog record is adapted only after its relative dataset path resolves through
   `CohortPaths`, its recorded file digest matches, and the dataset passes metadata
   roster schema and row-count validation. The shared CIK-set identity and metadata
   roster identity are separate contracts.
-- The interactive plan/augmentation picker pages through published `CohortCatalog`
-  entries. Curated CSV and published registry roster references remain available as
-  separate choices.
-- `sources compare` requires a published `company_tickers` source cohort. Its raw
-  payload digest is verified before comparison; effective roster datasets remain
-  published in the metadata registry layout.
+- Interactive planning and augmentation select only published `CohortCatalog`
+  entries through the shared runtime picker.
+- Company-family assignment publication belongs to the cohort pipeline. Downstream
+  policy planning consumes a pre-published active index and never builds one lazily;
+  metadata_sync exposes no family-index management item.
 - Augmentation computes `requested - base` with shared cohort operations and writes
   its verified delta under metadata transient storage. The plan bundle contains the
   roster it needs; no metadata-local cohort store is created.
@@ -63,33 +64,27 @@ publishes its plans, registry rosters, and snapshots under `metadata/`.
 ## Command Surface
 
 ```text
-metadata plan     --input <csv> | --roster <registry_id> | --cohort <id-or-name> | --universe
+metadata plan     --cohort <id-or-name>
 metadata status   <plan reference>
 metadata run      <plan reference> [--chunks 0-3,7] [--chunk N]
 metadata merge    <plan reference>
 metadata worker   <plan reference> [--worker <id>]
 metadata export   <plan reference> --worker-count N --destination <dir>
 metadata import   <plan reference> --source <dir>
-metadata augment  --input <csv> | --roster <registry_id> | --cohort <id-or-name> | --universe
+metadata augment  --cohort <id-or-name>
                   --base-snapshot-id <id> [--new-snapshot-id <id>]
-metadata sources refresh  [--artifacts <dir>] [--source company_tickers|cik_lookup]
-metadata sources compare  --input <csv> --source-cohort <cohort_id>
 ```
 
 Plan references for status, run, merge, worker, export, and import accept a plan id,
-a plan bundle, or one of the four plan sources above. `--artifacts` selects a
-non-default artifact root. The command table is the command surface; metadata_sync
-does not expose cohort catalog management commands.
+a plan bundle, or `--cohort <id-or-name>`. `--artifacts` selects a non-default
+artifact root. Source and family-index management remain outside metadata_sync.
 
 ## Deliberate Gaps
 
-- Shared cohort lifecycle and catalog administration are outside this pipeline; use
-  the shared cohort API/command surface rather than metadata-specific cohort paths.
+- Source refresh, cohort administration, cohort diff, and family-index publication
+  are outside this pipeline; use the cohort command surface.
 - Delta datasets are transient derivations, not catalog-published cohorts. Their
   plan bundle preserves the selected roster for execution and distribution.
-- Registry comparison preserves listing details by parsing the verified source
-  payload in memory; the published shared cohort dataset contains the canonical CIK
-  roster, not every ticker observation.
 - Augmentation is single-host. Its derived delta is executed and merged within the
   command rather than exported for distributed workers.
 

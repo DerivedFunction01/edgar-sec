@@ -1,5 +1,7 @@
+import fcntl
 import hashlib
 import json
+import os
 from pathlib import Path
 
 import pytest
@@ -163,6 +165,36 @@ def test_diff_peek_and_save_operate_on_resolved_expressions(tmp_path: Path) -> N
     assert saved.tags == ("derived",)
     assert saved.dataset_path == f"{saved.cohort_id}/ciks.parquet"
     assert saved.row_count == 3
+    assert catalog.get_cohort(saved.cohort_id) == saved
+
+
+def test_workspace_save_holds_publication_lock_through_registration(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    workspace, catalog, paths = _workspace(tmp_path)
+    _registered(catalog, paths, "first", (("0000000001", "One"),))
+    _registered(catalog, paths, "second", (("0000000002", "Two"),))
+    workspace.bind_alias("A", "first")
+    workspace.bind_alias("B", "second")
+    workspace.let_expression("combined", "A + B")
+    register = catalog.register_cohort
+
+    def register_under_publication_lock(**kwargs):
+        descriptor = os.open(paths.cohorts_root / ".publication.lock", os.O_RDWR)
+        try:
+            with pytest.raises(BlockingIOError):
+                fcntl.flock(descriptor, fcntl.LOCK_EX | fcntl.LOCK_NB)
+        finally:
+            os.close(descriptor)
+        final_dir = paths.cohort_dir(kwargs["cohort_id"])
+        assert final_dir.is_dir()
+        assert not (final_dir / ".stage.lease").exists()
+        return register(**kwargs)
+
+    monkeypatch.setattr(catalog, "register_cohort", register_under_publication_lock)
+
+    saved = workspace.save("combined", "combined_saved")
+
     assert catalog.get_cohort(saved.cohort_id) == saved
 
 

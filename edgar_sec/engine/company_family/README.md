@@ -43,9 +43,8 @@ None. Library package, no CLI.
 - Normalization helpers: `identity_tokens`, `normalized_key`, `has_spv_marker`,
   `sponsor_candidate`, `umbrella_parent`, `apply_aliases` — `tokens.py`.
 
-A caller that wants a cached, reusable artifact should use
-`edgar_sec.pipelines.metadata_sync.family_index.ensure_family_index`, which owns the
-content-addressed path, the manifest, and the reuse check.
+The cohort pipeline publishes reusable assignments through `cohort family-index`;
+the shared catalog records the immutable artifact and its universe identity.
 
 ## Mirrored tests
 

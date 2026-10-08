@@ -2,15 +2,16 @@
 
 from __future__ import annotations
 
-import subprocess
-import sys
+from pathlib import Path
 
 from edgar_sec.foundation.runtime.interactive import (
     MenuAction,
     MenuSeparator,
+    PickItem,
     build_menu as make_menu,
     menu_action,
     prompt_choice,
+    prompt_paginated_choice,
     prompt_text,
     run_interactive_menu,
 )
@@ -20,6 +21,114 @@ def _run_cli(*arguments: str) -> None:
     from edgar_sec.pipelines.cohort.cli import main
 
     main(list(arguments))
+
+
+def _cohort_label(record: object) -> str:
+    tags = ", ".join(record.tags) or "none"
+    name = f"{record.name} ({record.cohort_id})" if record.name else record.cohort_id
+    return (
+        f"{name}  {record.distinct_cik_count:,} CIKs | "
+        f"tags: {tags} | origin: {record.origin_kind}"
+    )
+
+
+def pick_cohort(catalog: object) -> str | None:
+    cohort_items: list[PickItem] = []
+    offset = 0
+    while True:
+        records = catalog.list_cohorts(limit=500, offset=offset)
+        cohort_items.extend(
+            PickItem(
+                key=record.cohort_id,
+                label=_cohort_label(record),
+                value=record.cohort_id,
+            )
+            for record in records
+        )
+        if len(records) < 500:
+            break
+        offset += len(records)
+    alias_items: list[PickItem] = []
+    for source_name, alias, title in (
+        ("cik_lookup", "universe", "Active SEC Universe"),
+        ("company_tickers", "tickers", "Active Operating Filers"),
+    ):
+        cohort_id = catalog.get_active_source_pointer(source_name)
+        record = catalog.get_cohort(cohort_id) if cohort_id else None
+        if record is not None:
+            alias_items.append(
+                PickItem(
+                    key=alias,
+                    label=f"{alias}  {title} | {_cohort_label(record)}",
+                    value=alias,
+                ),
+            )
+    items = alias_items + cohort_items
+    chosen = prompt_paginated_choice(items, prompt_label="Select cohort")
+    return chosen.value if chosen is not None else None
+
+
+def pick_workspace_variable(workspace: object) -> str | None:
+    items = [
+        PickItem(
+            key=variable.name,
+            label=f"{variable.name}  {variable.kind} | {variable.target_id}",
+            value=variable.name,
+        )
+        for variable in workspace.list_variables()
+    ]
+    chosen = prompt_paginated_choice(items, prompt_label="Select workspace variable")
+    return chosen.value if chosen is not None else None
+
+
+def pick_workspace_session(store: object) -> str | None:
+    active = store.get_active_session()
+    items = [
+        PickItem(
+            key=session_id,
+            label=f"{session_id}{' (active)' if session_id == active else ''}",
+            value=session_id,
+        )
+        for session_id in store.list_sessions()
+    ]
+    chosen = prompt_paginated_choice(items, prompt_label="Select workspace session")
+    return chosen.value if chosen is not None else None
+
+
+def pick_upload_file(base_dir: str | Path = "uploads") -> str | None:
+    directory = Path(base_dir)
+    files = (
+        sorted((path for path in directory.iterdir() if path.is_file()), key=str)
+        if directory.is_dir()
+        else []
+    )
+    items = [
+        PickItem(key=path.name, label=str(path), value=str(path)) for path in files
+    ]
+    chosen = prompt_paginated_choice(items, prompt_label="Select upload file")
+    return chosen.value if chosen is not None else None
+
+
+def _workspace_context() -> tuple[object, object]:
+    from edgar_sec.foundation.runtime.paths import resolve_paths
+    from edgar_sec.infra.storage.cohort.catalog import CohortCatalog
+    from edgar_sec.infra.storage.cohort.paths import resolve_cohort_paths
+    from edgar_sec.infra.storage.object_store.store import ObjectStore
+
+    paths = resolve_cohort_paths(project_paths=resolve_paths())
+    catalog = CohortCatalog(paths)
+    store = ObjectStore(paths.catalog_file)
+    store.initialize_schema()
+    return catalog, store
+
+
+def _workspace(catalog: object, store: object) -> object:
+    from edgar_sec.foundation.runtime.paths import resolve_paths
+    from edgar_sec.infra.storage.cohort.paths import resolve_cohort_paths
+    from edgar_sec.infra.storage.cohort.workspace import CohortWorkspace
+
+    paths = resolve_cohort_paths(project_paths=resolve_paths())
+    return CohortWorkspace(paths, catalog=catalog, store=store)
 
 
 def _refresh_source() -> None:
@@ -48,23 +157,8 @@ def _refresh_source() -> None:
     print(f"active {source_name}: {record.cohort_id}")
 
 
-def _assign_families() -> None:
-    from edgar_sec.foundation.runtime.paths import resolve_paths
-
-    paths = resolve_paths()
-    result = subprocess.run(
-        [
-            sys.executable,
-            str(paths.repo_root / "run.py"),
-            "metadata",
-            "family-index",
-            "--artifacts",
-            str(paths.artifacts_root),
-        ],
-        check=False,
-    )
-    if result.returncode:
-        print(f"Family-index command exited with status {result.returncode}.")
+def _publish_family_index() -> None:
+    _run_cli("family-index")
 
 
 def _source_menu() -> None:
@@ -77,7 +171,9 @@ def _source_menu() -> None:
 
 
 def _import() -> None:
-    source = prompt_text("Input file")
+    source = pick_upload_file()
+    if source is None:
+        return
     name = prompt_text("Cohort name (optional)")
     tags = prompt_text("Tags (comma-separated, optional)")
     arguments = ["import", "--input", source]
@@ -108,10 +204,18 @@ def _workspace_menu() -> None:
 
 
 def _prompt_workspace(command: str) -> None:
-    if command in {"init", "use"}:
+    if command == "init":
         _run_cli("workspace", command, prompt_text("Session id"))
+    elif command == "use":
+        _catalog, store = _workspace_context()
+        session_id = pick_workspace_session(store)
+        if session_id is not None:
+            _run_cli("workspace", command, session_id)
     elif command == "bind":
-        _run_cli("workspace", "bind", prompt_text("Alias"), prompt_text("Cohort"))
+        catalog, store = _workspace_context()
+        cohort = pick_cohort(catalog)
+        if cohort is not None:
+            _run_cli("workspace", "bind", prompt_text("Alias"), cohort)
     elif command == "let":
         _run_cli(
             "workspace",
@@ -120,28 +224,44 @@ def _prompt_workspace(command: str) -> None:
             prompt_text("Expression"),
         )
     elif command == "diff":
-        _run_cli(
-            "workspace",
-            "diff",
-            prompt_text("Left variable"),
-            prompt_text("Right variable"),
-        )
+        catalog, store = _workspace_context()
+        workspace = _workspace(catalog, store)
+        left = pick_workspace_variable(workspace)
+        if left is None:
+            return
+        right = pick_workspace_variable(workspace)
+        if right is not None:
+            _run_cli("workspace", "diff", left, right)
     elif command == "peek":
-        _run_cli("workspace", "peek", prompt_text("Variable"))
+        catalog, store = _workspace_context()
+        variable = pick_workspace_variable(_workspace(catalog, store))
+        if variable is not None:
+            _run_cli("workspace", "peek", variable)
     elif command == "save":
-        _run_cli(
-            "workspace",
-            "save",
-            prompt_text("Variable"),
-            "--name",
-            prompt_text("Cohort name"),
-        )
+        catalog, store = _workspace_context()
+        variable = pick_workspace_variable(_workspace(catalog, store))
+        if variable is not None:
+            _run_cli(
+                "workspace",
+                "save",
+                variable,
+                "--name",
+                prompt_text("Cohort name"),
+            )
     elif command == "drop":
-        _run_cli("workspace", "drop", prompt_text("Variable"))
+        catalog, store = _workspace_context()
+        variable = pick_workspace_variable(_workspace(catalog, store))
+        if variable is not None:
+            _run_cli("workspace", "drop", variable)
 
 
 def _sample() -> None:
-    source = prompt_text("Source cohort or source name")
+    from edgar_sec.infra.storage.cohort.catalog import CohortCatalog
+    from edgar_sec.infra.storage.cohort.paths import resolve_cohort_paths
+
+    source = pick_cohort(CohortCatalog(resolve_cohort_paths()))
+    if source is None:
+        return
     method = prompt_choice(
         "Sampling method", [("1", "Hash modulo"), ("2", "Seeded random")]
     )
@@ -177,7 +297,13 @@ def _query() -> None:
     name = prompt_text("Entity name contains (optional)")
     cik = prompt_text("CIK (optional)")
     if kind == "1":
-        arguments = ["query", prompt_text("Cohort")]
+        from edgar_sec.infra.storage.cohort.catalog import CohortCatalog
+        from edgar_sec.infra.storage.cohort.paths import resolve_cohort_paths
+
+        cohort = pick_cohort(CohortCatalog(resolve_cohort_paths()))
+        if cohort is None:
+            return
+        arguments = ["query", cohort]
     else:
         arguments = ["find"]
     if name:
@@ -188,11 +314,21 @@ def _query() -> None:
 
 
 def _inspect() -> None:
-    _run_cli("info", prompt_text("Cohort"))
+    from edgar_sec.infra.storage.cohort.catalog import CohortCatalog
+    from edgar_sec.infra.storage.cohort.paths import resolve_cohort_paths
+
+    cohort = pick_cohort(CohortCatalog(resolve_cohort_paths()))
+    if cohort is not None:
+        _run_cli("info", cohort)
 
 
 def _maintain() -> None:
-    cohort = prompt_text("Cohort")
+    from edgar_sec.infra.storage.cohort.catalog import CohortCatalog
+    from edgar_sec.infra.storage.cohort.paths import resolve_cohort_paths
+
+    cohort = pick_cohort(CohortCatalog(resolve_cohort_paths()))
+    if cohort is None:
+        return
     operation = prompt_choice(
         "Maintenance",
         [("1", "Rename"), ("2", "Add tags"), ("3", "Remove tags")],
@@ -206,7 +342,12 @@ def _maintain() -> None:
 
 
 def _delete() -> None:
-    cohort = prompt_text("Cohort to delete")
+    from edgar_sec.infra.storage.cohort.catalog import CohortCatalog
+    from edgar_sec.infra.storage.cohort.paths import resolve_cohort_paths
+
+    cohort = pick_cohort(CohortCatalog(resolve_cohort_paths()))
+    if cohort is None:
+        return
     confirmation = prompt_text(f"Type {cohort!r} to confirm")
     if confirmation == cohort:
         _run_cli("delete", cohort)
@@ -217,8 +358,8 @@ def build_menu() -> tuple[MenuAction | MenuSeparator, ...]:
         MenuSeparator("Official Sources & Taxonomy"),
         menu_action("Refresh & manage official sources", _source_menu),
         menu_action(
-            "Assign company families for the universe",
-            _assign_families,
+            "Publish family index for the universe",
+            _publish_family_index,
         ),
         MenuSeparator("Cohort Ingest & Algebra"),
         menu_action("Process file to cohort", _import),

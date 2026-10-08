@@ -26,22 +26,16 @@ from .commands.augment import cmd_augment
 from .commands.merge import cmd_merge
 from .commands.plan import cmd_plan, cmd_status
 from .commands.run import cmd_run
-from .commands.sources import cmd_compare, cmd_family_index, cmd_refresh
 from .distribution_adapter import MetadataDistributionAdapter
 from .options import (
     PlanOptions,
     RunOptions,
-    augment_options,
     plan_options,
     run_options,
 )
 from .paths import resolve_metadata_paths
 from .roster import RosterError
 from .sec_client import SubmissionsClient
-from .source_registry import (
-    SOURCE_NAME,
-    SOURCE_UNIVERSE_NAME,
-)
 from .specs import METADATA_RELATION_SPECS
 
 __all__ = [
@@ -70,31 +64,16 @@ def _add_common(sub: argparse.ArgumentParser) -> None:
 
 
 def _add_plan_reference(sub: argparse.ArgumentParser) -> None:
-    """Attach an explicit plan reference or a cohort reference."""
+    """Attach an explicit plan, bundle, or published cohort reference."""
     group = sub.add_mutually_exclusive_group()
     group.add_argument("--plan-id", default="", help="plan identifier to operate on")
     group.add_argument("--bundle", default="", help="copied plan bundle directory")
-    group.add_argument("--input", default="", help="CIK manifest CSV to re-derive from")
-    group.add_argument("--roster", default="", help="effective CIK roster id")
     group.add_argument("--cohort", default="", help="published cohort name or id")
-    group.add_argument(
-        "--universe",
-        action="store_true",
-        help="full SEC registrant index to re-derive from",
-    )
 
 
 def _add_cohort_source(sub: argparse.ArgumentParser, *, with_limit: bool) -> None:
-    """Attach the cohort reference a plan is created over."""
-    group = sub.add_mutually_exclusive_group(required=True)
-    group.add_argument("--input", default="", help="CIK manifest CSV")
-    group.add_argument(
-        "--roster", default="", help="effective CIK roster id from 'sources compare'"
-    )
-    group.add_argument("--cohort", default="", help="published cohort name or id")
-    group.add_argument(
-        "--universe", action="store_true", help="full SEC registrant index"
-    )
+    """Attach the sole dataset selector used for planning or augmentation."""
+    sub.add_argument("--cohort", required=True, help="published cohort name or id")
     if with_limit:
         sub.add_argument("--limit", type=positive_int_type, default=None)
 
@@ -108,10 +87,7 @@ def _add_chunk_selection(sub: argparse.ArgumentParser) -> None:
 
 def _plan_options(args: argparse.Namespace) -> PlanOptions:
     return plan_options(
-        input_path=args.input or None,
-        registry_id=args.roster,
         cohort=args.cohort,
-        universe=args.universe,
         artifacts_root=args.artifacts or None,
         chunk_size=args.chunk_size,
         limit=getattr(args, "limit", None),
@@ -121,10 +97,7 @@ def _plan_options(args: argparse.Namespace) -> PlanOptions:
 def _run_options(args: argparse.Namespace) -> RunOptions:
     return run_options(
         plan_id=getattr(args, "plan_id", "") or "",
-        input_path=getattr(args, "input", "") or None,
-        registry_id=getattr(args, "roster", "") or "",
         cohort=args.cohort or "",
-        universe=getattr(args, "universe", False),
         chunk_size=args.chunk_size,
         limit=getattr(args, "limit", None),
         artifacts_root=args.artifacts or None,
@@ -207,55 +180,6 @@ def build_parser() -> argparse.ArgumentParser:
     )
     augment_parser.set_defaults(func=lambda args: _augment_from_args(args))
 
-    sources_parser = subparsers.add_parser(
-        "sources", help="shared official source cohorts and curated-input projection"
-    )
-    sources_sub = sources_parser.add_subparsers(dest="source_command", required=True)
-
-    refresh_parser = sources_sub.add_parser(
-        "refresh", help="refresh a shared official source cohort"
-    )
-    refresh_parser.add_argument("--artifacts", default="")
-    refresh_parser.add_argument(
-        "--source",
-        default=SOURCE_NAME,
-        choices=[SOURCE_NAME, SOURCE_UNIVERSE_NAME],
-        help="which external source to refresh",
-    )
-    refresh_parser.set_defaults(
-        func=lambda args: cmd_refresh(
-            Path(args.artifacts).resolve() if args.artifacts else None,
-            source=args.source,
-        )
-    )
-
-    compare_parser = sources_sub.add_parser(
-        "compare", help="project curated CIK input against a published source cohort"
-    )
-    _add_cohort_source(compare_parser, with_limit=False)
-    _add_common(compare_parser)
-    compare_parser.add_argument(
-        "--source-cohort",
-        required=True,
-        help="published company_tickers source cohort id",
-    )
-    compare_parser.set_defaults(
-        func=lambda args: cmd_compare(
-            _plan_options(args),
-            source_cohort_id=args.source_cohort,
-        )
-    )
-
-    family_index_parser = subparsers.add_parser(
-        "family-index", help="publish company family assignment for universe"
-    )
-    family_index_parser.add_argument("--artifacts", default="")
-    family_index_parser.set_defaults(
-        func=lambda args: cmd_family_index(
-            Path(args.artifacts).resolve() if args.artifacts else None
-        )
-    )
-
     dag_parser = attach_dag_subparser(
         subparsers,
         subcommand_name="dag",
@@ -274,23 +198,16 @@ def build_parser() -> argparse.ArgumentParser:
 
 
 def _augment_from_args(args: argparse.Namespace) -> int:
-    options, lineage = augment_options(
-        input_path=args.input or None,
-        registry_id=args.roster,
+    options = plan_options(
         cohort=args.cohort,
-        universe=args.universe,
         artifacts_root=args.artifacts or None,
         chunk_size=args.chunk_size,
-        base_snapshot_id=args.base_snapshot_id,
-        new_snapshot_id=args.new_snapshot_id,
-        workers=args.workers,
     )
     return cmd_augment(
         options,
         base_snapshot_id=args.base_snapshot_id,
         new_snapshot_id=args.new_snapshot_id,
         workers=args.workers,
-        lineage=lineage,
     )
 
 

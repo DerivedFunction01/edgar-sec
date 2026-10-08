@@ -21,7 +21,6 @@ from edgar_sec.infra.storage.duckdb import (
 )
 from edgar_sec.infra.storage.cohort.operations import execute_delta_roster
 
-from .manifest import compile_cik_cohort
 from .merger import (
     MergeError,
     MergeReport,
@@ -45,8 +44,6 @@ __all__ = [
     "AugmentPreflight",
     "AugmentResult",
     "augment",
-    "augment_from_input",
-    "augment_from_roster",
     "base_cik_sources",
     "derive_delta_cohort",
     "derive_delta_plan",
@@ -294,7 +291,6 @@ def augment(
     new_snapshot_id: str = "",
     chunk_size: int = DEFAULT_CHUNK_SIZE,
     workers: int | None = None,
-    lineage: dict[str, str] | None = None,
     preflight: AugmentPreflight | None = None,
     progress: Callable[[dict[str, Any]], None] | None = None,
     input_name: str = "",
@@ -373,8 +369,6 @@ def augment(
         parent_snapshot_id=base_snapshot_id,
         roster_id=plan.roster.roster_id,
         delta_roster_id=plan.roster.roster_id,
-        registry_id=(lineage or {}).get("registry_id", ""),
-        source_snapshot_id=(lineage or {}).get("source_snapshot_id", ""),
     )
 
     con = connect()
@@ -444,42 +438,4 @@ def augment(
         no_op=False,
         requested_cik_count=check.requested_count,
         already_present_count=check.already_present_count,
-    )
-
-
-def augment_from_roster(
-    client: SubmissionsClient,
-    requested: Roster,
-    metadata_paths: MetadataPaths,
-    *,
-    base_snapshot_id: str,
-    new_snapshot_id: str = "",
-    **kwargs: Any,
-) -> AugmentResult:
-    """Augment from an already-resolved cohort rather than a CIK input file."""
-    return augment(
-        client,
-        requested,
-        metadata_paths,
-        base_snapshot_id=base_snapshot_id,
-        new_snapshot_id=new_snapshot_id,
-        **kwargs,
-    )
-
-
-def augment_from_input(
-    client: SubmissionsClient,
-    input_path: str,
-    metadata_paths: MetadataPaths,
-    **kwargs: Any,
-) -> AugmentResult:
-    """Compile a CIK input file into a cohort and augment from it."""
-    cohort = compile_cik_cohort(input_path, metadata_paths=metadata_paths)
-    return augment(
-        client,
-        cohort.roster,
-        metadata_paths,
-        input_name=cohort.input_name,
-        input_fingerprint=cohort.input_fingerprint,
-        **kwargs,
     )

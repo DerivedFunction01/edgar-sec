@@ -5,14 +5,18 @@ names, and a round trip faithful enough that a re-derived identity still matches
 from __future__ import annotations
 
 import time
+from dataclasses import replace
 from pathlib import Path
 
 import pytest
 
+from edgar_sec.foundation.hashing import file_sha256
+from edgar_sec.infra.storage.parquet import write_parquet_table
 from edgar_sec.pipelines.metadata_sync.roster import (
     ROSTER_SCHEMA,
     Roster,
     RosterError,
+    cohort_record_to_roster,
     derive_roster_id,
     empty_roster,
     read_cik_index,
@@ -22,6 +26,8 @@ from edgar_sec.pipelines.metadata_sync.roster import (
     write_roster,
     write_roster_rows,
 )
+from tests.pipelines.metadata_sync.cohort_support import publish_test_cohort
+from tests.support import fixture_path
 from tests.support import roster_of
 
 FOUR = ("0000001985", "0000001761", "0000000020", "0000037996")
@@ -189,17 +195,56 @@ def test_csv_export_quotes_separators() -> None:
     assert text == 'cik,name\n0000001985,"Acme, ""The"" Co"\n'
 
 
-def test_csv_export_is_importable_as_canonical_membership(tmp_path: Path) -> None:
-    """The imported CIK set is canonical regardless of exported row order."""
-    from edgar_sec.pipelines.metadata_sync.manifest import compile_cik_cohort
-    from edgar_sec.pipelines.metadata_sync.paths import resolve_metadata_paths
-
-    exported = tmp_path / "effective.csv"
-    exported.write_text(roster_to_csv_text(_mini()), encoding="utf-8")
-    cohort = compile_cik_cohort(
-        exported, metadata_paths=resolve_metadata_paths(tmp_path / "artifacts")
+def test_cohort_adapter_keeps_the_two_roster_identities_distinct(
+    tmp_path: Path,
+) -> None:
+    record, paths, roster = publish_test_cohort(
+        fixture_path("cik_sec_mini.csv"), tmp_path
     )
-    assert cohort.roster.range_ciks(0, cohort.row_count) == tuple(sorted(FOUR, key=int))
+    adapted = cohort_record_to_roster(record, paths)
+    assert adapted.roster_id == roster.roster_id
+    assert adapted.roster_id != record.roster_id
+    assert adapted.row_count == record.row_count == record.distinct_cik_count
+
+
+def test_cohort_adapter_verifies_dataset_digest(tmp_path: Path) -> None:
+    record, paths, _roster = publish_test_cohort(
+        fixture_path("cik_sec_mini.csv"), tmp_path
+    )
+    with pytest.raises(RosterError, match="digest does not match"):
+        cohort_record_to_roster(replace(record, dataset_sha256="0" * 64), paths)
+
+
+@pytest.mark.parametrize("field", ["row_count", "distinct_cik_count"])
+def test_cohort_adapter_verifies_recorded_row_counts(
+    tmp_path: Path, field: str
+) -> None:
+    record, paths, _roster = publish_test_cohort(
+        fixture_path("cik_sec_mini.csv"), tmp_path
+    )
+    with pytest.raises(RosterError, match="does not match dataset"):
+        cohort_record_to_roster(replace(record, **{field: record.row_count + 1}), paths)
+
+
+def test_cohort_adapter_rejects_a_foreign_dataset_schema(tmp_path: Path) -> None:
+    import pyarrow as pa
+
+    from edgar_sec.infra.storage.cohort.paths import resolve_cohort_paths
+
+    record, paths, _roster = publish_test_cohort(
+        fixture_path("cik_sec_mini.csv"), tmp_path
+    )
+    foreign = paths.cohorts_root / "foreign.parquet"
+    write_parquet_table(pa.table({"cik_padded": ["0000000001"]}), foreign)
+    altered = replace(
+        record,
+        dataset_path=paths.relative_path(foreign),
+        dataset_sha256=file_sha256(foreign),
+        row_count=1,
+        distinct_cik_count=1,
+    )
+    with pytest.raises(RosterError, match="schema drifted"):
+        cohort_record_to_roster(altered, resolve_cohort_paths(tmp_path))
 
 
 def test_cik_index_is_sorted_and_distinct(tmp_path: Path) -> None:

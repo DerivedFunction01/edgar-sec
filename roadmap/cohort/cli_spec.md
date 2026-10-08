@@ -34,9 +34,9 @@ class MenuSeparator:
 
 ---
 
-## 2. Cohort Management Console (`[c]`)
+## 2. Cohort Management Console
 
-Accessible from `edgar-sec cohort console` or via `[c]` in `metadata_sync`:
+Accessible via `edgar-sec cohort console`:
 
 ```text
 ================================================================================
@@ -44,19 +44,20 @@ Cohort Management Console (Layer 4)
 Catalog: .artifacts/cohorts/cohorts.sqlite  |  Cohorts: 6  |  Family Index: active
 ================================================================================
 ── Official Sources & Taxonomy ─────────────────────────────────────────────────
-  1. Refresh & manage official sources (Universe & Tickers, swap active version)
-  2. Assign company families for the universe
+  1. Refresh official sources (Universe & Tickers)
+  2. Diff cohorts (Curated vs Official sources or custom sets)
+  3. Publish company family index for universe
 
 ── Cohort Ingest & Algebra ──────────────────────────────────────────────────────
-  3. Process file to cohort (CSV, TSV, TXT, Parquet)
-  4. Cohort workspace (interactive session: bind, let, diff, peek, save, drop, clear)
-  5. Sample cohort (Uniform random, Hash modulo, Family-stratified)
+  4. Process file to cohort (CSV, TSV, TXT, Parquet)
+  5. Cohort workspace (interactive session: bind, let, diff, peek, save, drop, clear)
+  6. Sample cohort (Uniform random, Hash modulo, Family-stratified)
 
 ── Cohort Maintenance & Query ──────────────────────────────────────────────────
-  6. Query CIKs or entity names (paginated in-cohort query or global find)
-  7. Inspect cohort details (Provenance, counts, sample CIKs)
-  8. Rename / Tag cohort
-  9. Delete cohorts
+  7. Query CIKs or entity names (paginated in-cohort query or global find)
+  8. Inspect cohort details (Provenance, counts, sample CIKs)
+  9. Rename / Tag cohort
+  10. Delete cohorts
   0. Back to caller menu
 
 Choice [0]:
@@ -64,7 +65,23 @@ Choice [0]:
 
 ---
 
-## 3. Short Hash Prefix Resolution & Identifier Lookups
+## 3. Interactive Pickers & Output Presentation
+
+### 3.1 Paginated Pickers via `prompt_paginated_choice`
+Replaces blind text typing across console workflows:
+- `pick_cohort(catalog)`: Lists available cohorts with CIK counts, tags, and origin kinds. Synthetically prepends active source aliases:
+  - `[universe] (Active SEC Universe, 987k CIKs)`
+  - `[tickers] (Active Operating Filers, 10k CIKs)`
+- `pick_workspace_variable(workspace)`: Replaces blind typing in `diff`, `peek`, `save`, and `drop`.
+- `pick_workspace_session(store)`: Replaces blind typing in `workspace use`.
+- `pick_upload_file(base_dir="uploads")`: Replaces blind file path typing in `import`.
+
+### 3.2 Structured Grid Presentation
+`cohort list`, `cohort query`, and `cohort find` render formatted tabular output using `render_output` with `Grid` from `edgar_sec.foundation.runtime.render`, replacing raw tab-separated dumps.
+
+---
+
+## 4. Short Hash Prefix Resolution & Identifier Lookups
 
 All CLI commands accepting a `<cohort>` identifier (`query`, `info`, `rename`, `tag`, `delete`, `diff`, `sample`, etc.) resolve identifiers via `CohortCatalog.resolve_cohort_identifier`:
 
@@ -73,22 +90,29 @@ All CLI commands accepting a `<cohort>` identifier (`query`, `info`, `rename`, `
    - If input is shorter than 7 hex characters and does not match a human name, fails immediately:
      `Error: Ambiguous or short hash prefix '5950'. Hash lookups require at least 7 characters.`
 2. **Resolution Precedence**:
-   1. **Exact Name Match**: `SELECT * FROM cohorts WHERE name = ?`
-   2. **Exact ID Match**: `SELECT * FROM cohorts WHERE cohort_id = ?`
-   3. **Prefix Match** (when $\ge 7$ chars and valid hex):
+   1. **Reserved Source Aliases**: Maps `"universe"` -> `cik_lookup` and `"tickers"` -> `company_tickers`, looking up the active pointer.
+   2. **Exact Name Match**: `SELECT * FROM cohorts WHERE name = ?`
+   3. **Exact ID Match**: `SELECT * FROM cohorts WHERE cohort_id = ?`
+   4. **Prefix Match** (when $\ge 7$ chars and valid hex):
       `SELECT * FROM cohorts WHERE cohort_id LIKE 'c-' || ? || '%' OR cohort_id LIKE ? || '%'`
 3. **Ambiguity & Missing Refusal**:
-   - If prefix matches $> 1$ cohort: Fails with exit code 1, listing candidate IDs:
-     `Error: Ambiguous cohort prefix '59508de'. Matches 2 cohorts: [c-59508de7a1b2, c-59508def098c]. Provide more characters.`
+   - If prefix matches $> 1$ cohort: Fails with exit code 1, listing candidate IDs.
    - If prefix matches 0 cohorts: Fails with `Error: Cohort not found: '<identifier>'`.
 
 ---
 
-## 4. Unified CLI Grammar
+## 5. Unified CLI Grammar
 
 Implemented in `edgar_sec.pipelines.cohort.cli`:
 
 ```bash
+# --- Official Sources Lifecycle & Diffing ---
+edgar-sec cohort sources refresh --source company_tickers
+edgar-sec cohort sources refresh --source cik_lookup
+edgar-sec cohort diff curated tickers
+edgar-sec cohort diff curated universe [--save-delta curated_missing]
+edgar-sec cohort diff tech_q1 tech_q2
+
 # --- Ingestion & Intake ---
 edgar-sec cohort import --input uploads/tech_firms.txt --name tech_firms --tags tech,q3
 edgar-sec cohort import --input uploads/sec_ciks.csv --name sec_ciks --delimiter ","
@@ -109,7 +133,9 @@ edgar-sec cohort find --name "Energy" --limit 20
 
 # --- Composable Sampling ---
 edgar-sec cohort sample \
-    --source universe --method modulo --rate 5 --group-family --name universe_sample_5pct
+    --source universe --method modulo --rate 5 --group-family \
+    --family-index .artifacts/cohorts/family_index/<id>/company_family.parquet \
+    --name universe_sample_5pct
 edgar-sec cohort sample \
     --source universe --method random --limit 1000 --seed 42 --name universe_sample_1k
 
@@ -145,7 +171,7 @@ edgar-sec cohort console
 
 ---
 
-## 5. Entrypoint Registration (`run.py`)
+## 6. Entrypoint Registration (`run.py`)
 
 Hooked into repository launcher:
 ```python

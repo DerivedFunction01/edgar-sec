@@ -64,6 +64,9 @@ from edgar_sec.pipelines.filing_catalog.discovery import (
     eligible_year_bounds,
     resolve_catalog_reference,
 )
+from edgar_sec.pipelines.filing_catalog.family_index import (
+    resolve_active_family_index,
+)
 from edgar_sec.pipelines.filing_catalog.paths import (
     LOCATOR_GROUPS_NAME,
     PLAN_TARGETS_DIR_NAME,
@@ -82,7 +85,6 @@ from edgar_sec.pipelines.filing_catalog.publication import (
     staged_plan_bundle,
     write_plan_documents,
 )
-from edgar_sec.pipelines.metadata_sync.family_index import ensure_family_index
 
 # Characters permitted in a form filter. '/' is allowed because amendment forms
 # are written that way ("8-K/A") and are escaped at partition time.
@@ -549,6 +551,7 @@ def plan_policy(
     # Resolved before the request is hashed, so the plan id names the bands its
     # locators will actually be chosen under.
     policy = _resolve_era_bands(paths, catalog, policy)
+    family_index, family_index_path = resolve_active_family_index(paths.artifacts_root)
 
     # Pinned once, then carried everywhere: reading the seed manifest per
     # consumer is what let a plan and its features disagree about which
@@ -571,6 +574,7 @@ def plan_policy(
         "scope": SCOPE_POLICY,
         "policy_fingerprint": policy.policy_fingerprint,
         "seed_fingerprint": seed_fingerprint,
+        "family_index_id": family_index.family_index_id,
         "plan_schema_version": TARGET_PLAN_SCHEMA_VERSION,
     }
     if seed_cohort_input is not None:
@@ -599,11 +603,6 @@ def plan_policy(
 
     emit_progress(
         progress,
-        {"type": "merge_stage", "stage": "family_index", "catalog": catalog},
-    )
-    family_index = ensure_family_index(resolve_metadata_paths(paths.artifacts_root))
-    emit_progress(
-        progress,
         {
             "type": "merge_stage",
             "stage": "family_index_ready",
@@ -616,7 +615,7 @@ def plan_policy(
         profile_path=paths.snapshot_profiles_file(catalog),
         output_root=paths.catalog_root,
         policy=policy,
-        family_index_path=family_index.assignment_path,
+        family_index_path=family_index_path,
         family_index_id=family_index.family_index_id,
         row_group_size=row_group_size,
     )
@@ -711,6 +710,7 @@ def plan_policy(
             "scope": SCOPE_POLICY,
             "catalog_id": catalog,
             "plan_id": plan_id,
+            "family_index_id": family_index.family_index_id,
             "active_targets_count": total_rows,
             "unique_locators_count": locator_count,
             "reserve_count": len(selection.reserve_locators),
@@ -727,6 +727,7 @@ def plan_policy(
             "plan_id": plan_id,
             "catalog_id": catalog,
             "scope": SCOPE_POLICY,
+            "family_index_id": family_index.family_index_id,
             "policy_corpus": policy.corpus_id,
             "policy_fingerprint": policy.policy_fingerprint,
             "seed_fingerprint": seed_fingerprint,

@@ -40,10 +40,10 @@ from edgar_sec.pipelines.metadata_sync.roster import read_cik_index
 from edgar_sec.pipelines.metadata_sync.sec_client import SubmissionsClient
 from edgar_sec.pipelines.metadata_sync.snapshot import read_snapshot_parts
 from edgar_sec.pipelines.metadata_sync.worker import run_chunk_ids
+from tests.pipelines.metadata_sync.cohort_support import publish_test_cohort
 from tests.support import (
     FakeSession,
     build_test_http,
-    fixture_cohort,
     fixture_path,
     roster_of,
 )
@@ -70,14 +70,15 @@ def _client(session: FakeSession) -> SubmissionsClient:
 
 
 def _prepare(tmp_path: Path, chunk_size: int = 1):
-    """Plan the committed mini manifest, returning plan, paths, and run options."""
-
-    cohort = fixture_cohort("cik_sec_mini.csv")
+    """Plan a published mini cohort and return its execution paths."""
+    record, _cohort_paths, roster = publish_test_cohort(
+        fixture_path("cik_sec_mini.csv"), tmp_path
+    )
     plan = build_plan(
-        cohort.roster,
+        roster,
         chunk_size=chunk_size,
-        input_name=cohort.input_name,
-        input_fingerprint=cohort.input_fingerprint,
+        input_name=f"cohort:{record.cohort_id}",
+        input_fingerprint=record.dataset_sha256,
     )
     run_paths = resolve_run_paths(plan.plan_id, tmp_path)
     write_plan(plan, run_paths)
@@ -155,9 +156,12 @@ def test_reassigning_every_chunk_leaves_the_plan_untouched(tmp_path: Path) -> No
 def test_derived_and_recorded_plan_ids_agree(tmp_path: Path) -> None:
     """Planning twice is idempotent, which is what makes resume safe."""
     plan, run_paths = _prepare(tmp_path, chunk_size=1)
+    record, _paths, _roster = publish_test_cohort(
+        fixture_path("cik_sec_mini.csv"), tmp_path
+    )
     derived = derive_plan_id(
         plan_options(
-            input_path=fixture_path("cik_sec_mini.csv"),
+            cohort=record.cohort_id,
             chunk_size=1,
             artifacts_root=tmp_path,
         )
@@ -165,7 +169,7 @@ def test_derived_and_recorded_plan_ids_agree(tmp_path: Path) -> None:
     assert derived == plan.plan_id == load_plan(run_paths).plan_id
     assert (
         run_options(
-            input_path=str(fixture_path("cik_sec_mini.csv")),
+            cohort=record.cohort_id,
             chunk_size=1,
             artifacts_root=tmp_path,
         ).plan_id

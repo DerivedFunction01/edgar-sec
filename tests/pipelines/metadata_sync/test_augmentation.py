@@ -13,8 +13,6 @@ from edgar_sec.domain.sec_urls import submissions_url
 from edgar_sec.domain.submissions.schemas import SUBMISSION_METADATA_SCHEMA
 from edgar_sec.pipelines.metadata_sync.augmentation import (
     augment,
-    augment_from_input,
-    augment_from_roster,
     base_cik_sources,
     delta_roster_path,
     derive_delta_plan,
@@ -22,7 +20,6 @@ from edgar_sec.pipelines.metadata_sync.augmentation import (
 )
 from edgar_sec.pipelines.metadata_sync.checkpoints import discover_completed_chunks
 from edgar_sec.pipelines.metadata_sync.discovery import current_snapshot_id
-from edgar_sec.pipelines.metadata_sync.manifest import compile_cik_cohort
 from edgar_sec.pipelines.metadata_sync.merger import (
     MergeError,
     merge_chunks,
@@ -36,6 +33,7 @@ from edgar_sec.pipelines.metadata_sync.planner import build_plan, write_plan
 from edgar_sec.pipelines.metadata_sync.roster import read_cik_index
 from edgar_sec.pipelines.metadata_sync.snapshot import read_snapshot_parts
 from edgar_sec.pipelines.metadata_sync.worker import run_chunk
+from tests.pipelines.metadata_sync.cohort_support import publish_test_cohort
 from tests.support import (
     FakeSession,
     cik_payload,
@@ -44,16 +42,13 @@ from tests.support import (
     roster_of,
 )
 
-# A live listing that names a registrant the curated seed does not cover.
-SOURCE_TICKERS = {
-    "0": {"cik_str": "37996", "ticker": "F", "title": "FORD MOTOR CO"},
-    "1": {"cik_str": "20", "ticker": "KTC", "title": "K Tron International Inc"},
-    "2": {"cik_str": "5555", "ticker": "NEW", "title": "NEWCO INC"},
-}
-
 FORD = "0000037996"
 EXTRA = "0000005555"
 HIST_URL = f"https://data.sec.gov/submissions/CIK{FORD}-submissions-001.json"
+
+
+def _published_roster(source: Path, metadata):
+    return publish_test_cohort(source, metadata.artifacts_root)[2]
 
 
 def _seed(session: FakeSession, extra: bool = False) -> None:
@@ -281,7 +276,7 @@ def test_augment_merges_base_and_delta_without_refetching_base(
 
     result = augment(
         client,
-        compile_cik_cohort(widened, metadata_paths=metadata).roster,
+        _published_roster(widened, metadata),
         metadata,
         base_snapshot_id="base",
         new_snapshot_id="next",
@@ -335,7 +330,7 @@ def test_an_augmentation_reports_both_of_its_phases(
     events: list[dict] = []
     augment(
         client,
-        compile_cik_cohort(widened, metadata_paths=metadata).roster,
+        _published_roster(widened, metadata),
         metadata,
         base_snapshot_id="base",
         chunk_size=2,
@@ -369,7 +364,7 @@ def test_progress_comes_before_the_publish_so_a_bar_never_overruns(
     events: list[dict] = []
     result = augment(
         client,
-        compile_cik_cohort(widened, metadata_paths=metadata).roster,
+        _published_roster(widened, metadata),
         metadata,
         base_snapshot_id="base",
         chunk_size=2,
@@ -394,7 +389,7 @@ def test_a_broken_progress_callback_cannot_fail_an_augmentation(
 
     result = augment(
         client,
-        compile_cik_cohort(widened, metadata_paths=metadata).roster,
+        _published_roster(widened, metadata),
         metadata,
         base_snapshot_id="base",
         chunk_size=2,
@@ -411,7 +406,7 @@ def test_omitting_progress_is_still_supported(
     widened = _widen(tmp_path, session, EXTRA)
     result = augment(
         client,
-        compile_cik_cohort(widened, metadata_paths=metadata).roster,
+        _published_roster(widened, metadata),
         metadata,
         base_snapshot_id="base",
         chunk_size=2,
@@ -441,7 +436,7 @@ def test_an_omitted_snapshot_id_publishes_under_the_delta_plan_id(
 
     result = augment(
         client,
-        compile_cik_cohort(widened, metadata_paths=metadata).roster,
+        _published_roster(widened, metadata),
         metadata,
         base_snapshot_id="base",
         chunk_size=2,
@@ -466,7 +461,7 @@ def test_the_derived_id_is_stable_for_the_same_base_and_cohort(
     widened = _widen(tmp_path, session, EXTRA)
     first = augment(
         client,
-        compile_cik_cohort(widened, metadata_paths=metadata).roster,
+        _published_roster(widened, metadata),
         metadata,
         base_snapshot_id="base",
         chunk_size=2,
@@ -474,7 +469,7 @@ def test_the_derived_id_is_stable_for_the_same_base_and_cohort(
     )
     second = augment(
         client,
-        compile_cik_cohort(widened, metadata_paths=metadata).roster,
+        _published_roster(widened, metadata),
         metadata,
         base_snapshot_id="base",
         chunk_size=2,
@@ -488,11 +483,13 @@ def test_a_different_base_or_chunk_layout_yields_a_different_id(
 ) -> None:
     metadata, _, _, _ = _publish_baseline(client, session, tmp_path)
     widened = _widen(tmp_path, session, EXTRA)
-    cohort = compile_cik_cohort(widened, metadata_paths=metadata)
+    _record, _paths, cohort_roster = publish_test_cohort(
+        widened, metadata.artifacts_root
+    )
 
     chunk_size_two = augment(
         client,
-        cohort.roster,
+        cohort_roster,
         metadata,
         base_snapshot_id="base",
         chunk_size=2,
@@ -500,7 +497,7 @@ def test_a_different_base_or_chunk_layout_yields_a_different_id(
     )
     chunk_size_one = augment(
         client,
-        cohort.roster,
+        cohort_roster,
         metadata,
         base_snapshot_id="base",
         chunk_size=1,
@@ -518,7 +515,7 @@ def test_an_explicit_snapshot_id_still_overrides_the_derivation(
 
     result = augment(
         client,
-        compile_cik_cohort(widened, metadata_paths=metadata).roster,
+        _published_roster(widened, metadata),
         metadata,
         base_snapshot_id="base",
         new_snapshot_id="chosen",
@@ -541,7 +538,7 @@ def test_augmented_index_is_the_union_of_base_and_delta(
 
     result = augment(
         client,
-        compile_cik_cohort(widened, metadata_paths=metadata).roster,
+        _published_roster(widened, metadata),
         metadata,
         base_snapshot_id="base",
         new_snapshot_id="next",
@@ -566,7 +563,7 @@ def test_augmented_manifest_records_its_lineage(
 
     result = augment(
         client,
-        compile_cik_cohort(widened, metadata_paths=metadata).roster,
+        _published_roster(widened, metadata),
         metadata,
         base_snapshot_id="base",
         new_snapshot_id="next",
@@ -595,7 +592,7 @@ def test_augment_preserves_base_row_provenance(
     _seed(session, extra=True)
     augment(
         client,
-        compile_cik_cohort(widened, metadata_paths=metadata).roster,
+        _published_roster(widened, metadata),
         metadata,
         base_snapshot_id="base",
         new_snapshot_id="next",
@@ -607,51 +604,6 @@ def test_augment_preserves_base_row_provenance(
             assert row["snapshot_id"] == base_stamps[row["cik"]]
         else:
             assert row["snapshot_id"] == "next"
-
-
-def test_augment_from_input_compiles_the_csv_and_matches_augment(
-    client, session: FakeSession, tmp_path: Path
-) -> None:
-    """This wrapper is the path the CLI takes, so it must agree with `augment`."""
-    metadata, _, _, _ = _publish_baseline(client, session, tmp_path)
-    widened = tmp_path / "widened.csv"
-    widened.write_text("cik,name\n5555,EXTRA CO\n", encoding="utf-8")
-    _seed(session, extra=True)
-
-    result = augment_from_input(
-        client,
-        str(widened),
-        metadata,
-        base_snapshot_id="base",
-        new_snapshot_id="next",
-        chunk_size=2,
-        workers=2,
-    )
-    assert result.base_row_count == 4
-    assert result.delta_row_count == 1
-    assert result.refetched_ciks == (EXTRA,)
-
-
-def test_augment_from_roster_agrees_with_the_csv_wrapper(
-    client, session: FakeSession, tmp_path: Path
-) -> None:
-    metadata, _, _, _ = _publish_baseline(client, session, tmp_path)
-    roster = roster_of((EXTRA,), ("EXTRA CO",))
-    _seed(session, extra=True)
-    result = augment_from_roster(
-        client,
-        roster,
-        metadata,
-        base_snapshot_id="base",
-        new_snapshot_id="next",
-        chunk_size=2,
-        input_name="registry:demo",
-        input_fingerprint=roster.roster_id,
-        workers=2,
-    )
-    assert result.delta_row_count == 1
-    assert result.refetched_ciks == (EXTRA,)
-    assert result.report.input_fingerprint == roster.roster_id
 
 
 def test_augment_is_a_no_op_when_the_base_already_covers_the_request(

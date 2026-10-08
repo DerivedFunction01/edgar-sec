@@ -8,34 +8,25 @@ from __future__ import annotations
 
 import json
 from collections.abc import Callable
-from pathlib import Path
 from typing import Any
 
 from edgar_sec.foundation.runtime.paths import PLAN_FILE_NAME
 from edgar_sec.infra.storage.dag.catalog import DAGCatalog
+
 from .paths import (
     PLANS_DIR_NAME,
-    REGISTRIES_DIR_NAME,
     SNAPSHOT_MANIFEST_NAME,
     MetadataPaths,
     resolve_run_paths,
 )
-from .registry import RegistryError
-from .roster import RosterError
 
 __all__ = [
-    "InputSummary",
     "PlanSummary",
-    "RosterSummary",
     "current_snapshot_id",
     "describe_plan",
-    "describe_roster",
-    "list_input_manifests",
     "list_plans",
-    "list_rosters",
     "list_snapshots",
     "plan_summary",
-    "resolve_input_choice",
     "resolve_plan_choice",
     "resolve_snapshot_choice",
 ]
@@ -43,14 +34,6 @@ __all__ = [
 
 class PlanSummary(dict[str, Any]):
     """One discovered plan, as plain data the operator renders and picks from."""
-
-
-class RosterSummary(dict[str, Any]):
-    """One discovered effective-CIK roster, as plain pickable data."""
-
-
-class InputSummary(dict[str, Any]):
-    """One candidate CIK manifest CSV, as plain pickable data."""
 
 
 def _read_plan_manifest(metadata: MetadataPaths, plan_id: str) -> dict[str, Any]:
@@ -125,52 +108,6 @@ def list_snapshots(metadata: MetadataPaths) -> list[dict[str, Any]]:
     return catalog.list_snapshots()
 
 
-def list_rosters(metadata: MetadataPaths) -> list[RosterSummary]:
-    """Every published effective-CIK roster a plan can be built from.
-    An unreadable registry is reported, not dropped.
-    """
-    root = metadata.metadata_root / REGISTRIES_DIR_NAME
-    if not root.is_dir():
-        return []
-    from .registry import load_registry_manifest, load_registry_roster
-
-    found: list[RosterSummary] = []
-    for entry in sorted(root.iterdir()):
-        if not entry.is_dir():
-            continue
-        # Key assignment, not attribute assignment: these summaries are dicts, and
-        # a plain attribute would leave the key every reader looks up empty.
-        summary = RosterSummary(
-            {
-                "registry_id": entry.name,
-                "row_count": 0,
-                "readable": False,
-                "readable_reason": "",
-                "source_snapshot_id": "",
-                "curated_cik_count": 0,
-                "active_cik_count": 0,
-            }
-        )
-        try:
-            roster = load_registry_roster(entry.name, metadata)
-        except (OSError, ValueError, RosterError) as exc:
-            summary["readable_reason"] = str(exc)
-        else:
-            summary["row_count"] = roster.row_count
-            summary["readable"] = True
-        try:
-            manifest = load_registry_manifest(entry.name, metadata)
-        except (OSError, ValueError, KeyError, RegistryError):
-            # The manifest is provenance, not the plan's input; the roster
-            # digest already decided usability, so missing counts stay unknown.
-            manifest = {}
-        summary["source_snapshot_id"] = str(manifest.get("source_snapshot_id", ""))
-        summary["curated_cik_count"] = int(manifest.get("curated_cik_count", 0) or 0)
-        summary["active_cik_count"] = int(manifest.get("active_cik_count", 0) or 0)
-        found.append(summary)
-    return found
-
-
 def current_snapshot_id(metadata: MetadataPaths) -> str:
     """Snapshot id named by the catalog pointer, or empty when unset."""
     catalog = DAGCatalog(metadata.snapshots_root)
@@ -203,84 +140,6 @@ def resolve_plan_choice(
     if not 1 <= index <= len(plans):
         return None
     return plans[index - 1]
-
-
-def describe_roster(roster: RosterSummary) -> str:
-    """One-line human summary of a roster's provenance and size."""
-    if not roster["readable"]:
-        return f"{roster['registry_id']}  unusable ({roster['readable_reason']})"
-    parts = [f"{roster['row_count']:,} CIKs"]
-    if roster["active_cik_count"]:
-        parts.append(f"{roster['active_cik_count']:,} active in source")
-    parts.append(f"source {roster['source_snapshot_id'] or 'unknown'}")
-    return f"{roster['registry_id']}  " + ", ".join(parts)
-
-
-def list_input_manifests(directory: str | Path | None = None) -> list[InputSummary]:
-    """Candidate CIK manifest CSVs, by path.
-    The seed and a hand-supplied delta are indistinguishable by name, so a
-    candidate is reported as a CIK manifest and nothing more.
-    """
-    from edgar_sec.foundation.runtime.paths import resolve_paths
-
-    root = Path(directory) if directory is not None else resolve_paths().uploads_root
-    if not root.is_dir():
-        return []
-    from .manifest import count_cohort_rows
-
-    found: list[InputSummary] = []
-    for path in sorted(root.glob("*.csv")):
-        summary = InputSummary(
-            input_path=str(path),
-            name=path.name,
-            row_count=0,
-            readable=False,
-            readable_reason="",
-        )
-        try:
-            # Counted, not compiled: a menu render must not write an
-            # artifact nobody asked for.
-            rows = count_cohort_rows(path)
-        except (OSError, ValueError) as exc:
-            summary["readable_reason"] = str(exc)
-        else:
-            if rows == 0:
-                summary["readable_reason"] = (
-                    f"input manifest contains no usable CIKs: {path}"
-                )
-            else:
-                summary["row_count"] = rows
-                summary["readable"] = True
-        found.append(summary)
-    found.sort(key=lambda item: item["name"])
-    return found
-
-
-def resolve_input_choice(
-    inputs: list[InputSummary], *, select: Callable[[list[str]], str]
-) -> str:
-    """Choose one CIK manifest path from discovered candidates.
-    Empty on cancel, which leaves a hand-typed path available.
-    """
-    if not inputs:
-        return ""
-    lines = [
-        f"  {index}. {item['name']}  ({item['row_count']:,} CIKs)"
-        if item["readable"]
-        else f"  {index}. {item['name']}  unreadable ({item['readable_reason']})"
-        for index, item in enumerate(inputs, start=1)
-    ]
-    choice = select(lines)
-    if not choice:
-        return ""
-    try:
-        index = int(choice)
-    except ValueError:
-        return ""
-    if not 1 <= index <= len(inputs):
-        return ""
-    chosen = inputs[index - 1]
-    return str(chosen["input_path"]) if chosen["readable"] else ""
 
 
 def resolve_snapshot_choice(

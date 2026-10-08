@@ -52,6 +52,14 @@ python run.py
 python run.py cohort import --input uploads/cik-sec.csv --name uploaded
 python run.py cohort list
 python run.py cohort query uploaded --limit 10
+# Refresh sources here, outside metadata_sync:
+python run.py cohort sources refresh --source cik_lookup
+# After publishing the source:
+python run.py cohort family-index
+
+# Compare two cohorts; optionally publish either directional delta:
+python run.py cohort diff universe tickers \
+    --save-left-delta sec-only --save-right-delta ticker-only
 
 # Combine sources, preferring the official SEC names on the left:
 python run.py cohort merge --expr "official + uploaded" --name combined
@@ -81,32 +89,22 @@ python -c "from edgar_sec.foundation.runtime.settings import render_dotenv; prin
 
 ### Metadata Sync Pipeline
 ```bash
-# Capture an immutable external source snapshot, then project the curated input
-# against it to find registrants upstream that the CSV does not cover:
-python run.py metadata sources refresh
-python run.py metadata sources compare --input uploads/cik-sec.csv \
-    --source-cohort <cohort_id>
-
-# Plan a cohort (deterministic, no network). --input takes a curated CSV;
-# --roster takes a published effective CIK roster id from `sources compare`;
-# --universe takes every registrant the SEC knows.
-python run.py metadata plan --input uploads/cik-sec.csv
-python run.py metadata plan --roster <registry_id>
-python run.py metadata plan --cohort <cohort_id>
-python run.py metadata sources refresh --source cik_lookup
-python run.py metadata plan --universe
+# Plan one published cohort (deterministic, no network). Select an id, name,
+# or active alias such as universe or tickers; metadata does not refresh sources.
+python run.py metadata plan --cohort uploaded
+python run.py metadata plan --cohort universe
 
 # Inspect progress and outstanding chunks (no network):
-python run.py metadata status --input uploads/cik-sec.csv
+python run.py metadata status --cohort uploaded
 
 # Execute outstanding chunks (resumable; completed chunks are never refetched):
-python run.py metadata run --input uploads/cik-sec.csv
+python run.py metadata run --cohort uploaded
 
 # Validate every chunk and publish a snapshot:
-python run.py metadata merge --input uploads/cik-sec.csv
+python run.py metadata merge --cohort uploaded
 
 # Add newly requested CIKs to an existing snapshot without refetching the base:
-python run.py metadata augment --input uploads/cik-sec-new.csv \
+python run.py metadata augment --cohort uploaded \
     --base-snapshot-id <id> --new-snapshot-id <id>
 ```
 
@@ -125,8 +123,8 @@ python run.py metadata import --plan-id <plan_id> \
     --source /tmp/metadata-out/worker-00
 ```
 
-`--plan-id`, `--bundle`, and `--input`/`--roster` are interchangeable ways to
-name a plan; a copied bundle names its own plan in its manifest. Keep the
+`--plan-id`, `--bundle`, and `--cohort` are ways to identify the plan for status,
+run, and merge; a copied bundle names its own plan in its manifest. Keep the
 effective chunk size stable across `plan`, `run`, and `merge` — it comes from
 `--chunk-size`, else `RUNTIME_CHUNK_SIZE` — because the plan id is derived from
 the roster identity and that chunk size, so changing it resolves a different plan
@@ -159,6 +157,8 @@ python run.py filing-catalog plan --catalog current \
     --dates "@Q1[1999..2001],2005Q3..2008Q1,2011-12-31..2019-11-03"
 
 # Policy plan: fill a declared quota profile across filing eras.
+# Publish the current universe's family index before planning.
+python run.py cohort family-index
 python run.py filing-catalog plan --catalog current --scope policy \
     --policy artifacts/filing_catalog/policies/corpus.json
 # Or seed a policy plan from a shared cohort:
@@ -252,7 +252,7 @@ unrelated processing tables.
 ```bash
 # Bounded live SEC check. Never publishes a snapshot; requires a preview root.
 python -m edgar_sec.pipelines.metadata_sync.smoke_test \
-    --input tests/fixtures/cik_sec_mini.csv --artifacts preview/metadata
+    --cohort uploaded --artifacts preview/metadata
 ```
 
 ---
@@ -273,7 +273,7 @@ where the two disagree.
   - **forms** — [forms](edgar_sec/engine/forms/README.md) · [cover](edgar_sec/engine/forms/cover/README.md) · [cover/boundary](edgar_sec/engine/forms/cover/boundary/README.md) · [cover/checkmarks](edgar_sec/engine/forms/cover/checkmarks/README.md) · [cover/healing](edgar_sec/engine/forms/cover/healing/README.md) · [cover/tables](edgar_sec/engine/forms/cover/tables/README.md) · [cover/toc](edgar_sec/engine/forms/cover/toc/README.md) · [plugins](edgar_sec/engine/forms/plugins/README.md) · [plugins/evaluators](edgar_sec/engine/forms/plugins/evaluators/README.md)
   - **reflow** — [reflow](edgar_sec/engine/reflow/README.md) · [reflow/engine](edgar_sec/engine/reflow/engine/README.md) · [reflow/features](edgar_sec/engine/reflow/features/README.md) · [reflow/rules](edgar_sec/engine/reflow/rules/README.md)
   - **tables** — [tables](edgar_sec/engine/tables/README.md) · [ascii_html](edgar_sec/engine/tables/ascii_html/README.md) · [false_tables](edgar_sec/engine/tables/false_tables/README.md) · [hybrid](edgar_sec/engine/tables/hybrid/README.md) · [policy](edgar_sec/engine/tables/policy/README.md) · [protection](edgar_sec/engine/tables/protection/README.md) · [taxonomy](edgar_sec/engine/tables/taxonomy/README.md)
-- **pipelines** — [pipelines](edgar_sec/pipelines/README.md) · [metadata_sync](edgar_sec/pipelines/metadata_sync/README.md) · [filing_catalog](edgar_sec/pipelines/filing_catalog/README.md) · [cohort](edgar_sec/pipelines/cohort/README.md) · [document_inventory](edgar_sec/pipelines/document_inventory/README.md) · [document_inventory/snapshot](edgar_sec/pipelines/document_inventory/snapshot/README.md) · [document_storage](edgar_sec/pipelines/document_storage/README.md)
+- **pipelines** — [pipelines](edgar_sec/pipelines/README.md) · [metadata_sync](edgar_sec/pipelines/metadata_sync/README.md) · [filing_catalog](edgar_sec/pipelines/filing_catalog/README.md) · [cohort](edgar_sec/pipelines/cohort/README.md) (including `cohort family-index`) · [document_inventory](edgar_sec/pipelines/document_inventory/README.md) · [document_inventory/snapshot](edgar_sec/pipelines/document_inventory/snapshot/README.md) · [document_storage](edgar_sec/pipelines/document_storage/README.md)
 - **apps** — [apps](edgar_sec/apps/README.md) · [viewer](edgar_sec/apps/viewer/README.md)
 
 ---
@@ -326,10 +326,9 @@ All generated paths derive from the artifacts root; no module hardcodes them.
 {artifacts_root}/metadata/plans/{plan_id}/assignments/*.parquet   # One chunk set per worker
 {artifacts_root}/cohorts/cohorts.sqlite                       # Shared cohort catalog and workspace objects
 {artifacts_root}/cohorts/{cohort_id}/ciks.parquet             # Immutable shared CIK dataset
-{artifacts_root}/cohorts/{cohort_id}/cohort.json              # Canonical cohort manifest
-{artifacts_root}/cohorts/source_snapshots/{name}/{snapshot_id} # Immutable SEC source payload
+{artifacts_root}/cohorts/family_index/{family_index_id}/company_family.parquet # Immutable published family assignments
+{artifacts_root}/cohorts/source_snapshots/{name}/{snapshot_id} # Historical raw payload copies; refresh no longer writes these
 {artifacts_root}/transient/metadata/{plan_id}/chunk_NNNN.parquet # Resumable checkpoints
-{artifacts_root}/metadata/registries/{registry_id}/             # Source comparison outputs
 {artifacts_root}/metadata/snapshots/{snapshot_id}/parts/*.parquet   # Published dataset
 {artifacts_root}/metadata/snapshots/{snapshot_id}/ciks.parquet     # Published CIK index
 {artifacts_root}/metadata/snapshots/catalog.sqlite        # SQLite DAG catalog database

@@ -1,4 +1,6 @@
+import fcntl
 import hashlib
+import os
 from pathlib import Path
 
 import pyarrow as pa
@@ -175,3 +177,31 @@ def test_publish_derived_cohort_rejects_other_origins(tmp_path: Path) -> None:
             paths=paths,
             origin_kind="file_import",
         )
+
+
+def test_publication_lock_covers_rename_and_catalog_insert(
+    tmp_path: Path, monkeypatch
+) -> None:
+    source = tmp_path / "input.txt"
+    source.write_text("20\n", encoding="utf-8")
+    paths = CohortPaths(tmp_path / "artifacts")
+    catalog = CohortCatalog(paths)
+    register = catalog.register_cohort
+
+    def register_under_publication_lock(**kwargs):
+        descriptor = os.open(paths.cohorts_root / ".publication.lock", os.O_RDWR)
+        try:
+            with pytest.raises(BlockingIOError):
+                fcntl.flock(descriptor, fcntl.LOCK_EX | fcntl.LOCK_NB)
+        finally:
+            os.close(descriptor)
+        final_dir = paths.cohort_dir(kwargs["cohort_id"])
+        assert final_dir.is_dir()
+        assert not (final_dir / ".stage.lease").exists()
+        return register(**kwargs)
+
+    monkeypatch.setattr(catalog, "register_cohort", register_under_publication_lock)
+
+    result = ingest_file_to_cohort(source, catalog=catalog, paths=paths)
+
+    assert catalog.get_cohort(result.cohort.cohort_id) == result.cohort

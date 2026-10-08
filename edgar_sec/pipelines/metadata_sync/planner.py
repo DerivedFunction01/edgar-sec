@@ -87,7 +87,6 @@ class Plan:
     schema_version: str = SCHEMA_VERSION
     roster_sha256: str = ""
     selected_limit: int | None = None
-    registry_id: str = ""
 
     @property
     def row_count(self) -> int:
@@ -95,10 +94,8 @@ class Plan:
         return self.roster.row_count
 
     def lineage(self) -> dict[str, str]:
-        """Source identities carried from the cohort reference to publication.
-        A plan over a registry roster records that registry.
-        """
-        recorded = {"registry_id": self.registry_id}
+        """Parent identity carried by a delta plan to publication."""
+        recorded: dict[str, str] = {}
         if self.parent_id:
             recorded["parent_snapshot_id"] = self.parent_id
         return recorded
@@ -163,7 +160,6 @@ class Plan:
             "input_name": self.input_name,
             "input_fingerprint": self.input_fingerprint,
             "selected_limit": self.selected_limit,
-            "registry_id": self.registry_id,
         }
 
 
@@ -177,7 +173,6 @@ def build_plan(
     input_fingerprint: str = "",
     created_at: str | None = None,
     selected_limit: int | None = None,
-    registry_id: str = "",
 ) -> Plan:
     """Build the immutable plan for a selected roster."""
     if chunk_size < 1:
@@ -196,7 +191,6 @@ def build_plan(
         input_name=input_name,
         input_fingerprint=input_fingerprint,
         selected_limit=selected_limit,
-        registry_id=registry_id,
     )
 
 
@@ -282,7 +276,6 @@ def load_plan(run_paths: RunPaths) -> Plan:
         schema_version=SCHEMA_VERSION,
         roster_sha256=str(manifest.get("roster_artifact_sha256", "")),
         selected_limit=int(limit) if isinstance(limit, int) else None,
-        registry_id=str(manifest.get("registry_id", "")),
     )
 
 
