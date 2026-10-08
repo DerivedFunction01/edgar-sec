@@ -85,10 +85,9 @@ def published_universe_roster(
     dataset = metadata_paths.compiled_cohort_file(key)
     manifest_path = metadata_paths.compiled_cohort_manifest(key)
     if not dataset.is_file() or not manifest_path.is_file():
-        raise FileNotFoundError(
-            f"universe cohort is not compiled: {dataset}; compile the universe roster "
-            "before building a company-family assignment"
-        )
+        from .universe import compile_universe_cohort
+
+        compile_universe_cohort(metadata_paths, source_snapshot_id=snapshot_id)
     recorded = json.loads(manifest_path.read_text(encoding="utf-8"))
     return dataset, str(recorded["roster_id"]), str(recorded["dataset_sha256"])
 
