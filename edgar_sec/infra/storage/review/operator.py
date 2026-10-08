@@ -2,10 +2,13 @@
 
 from __future__ import annotations
 
+from dataclasses import dataclass
 from pathlib import Path
-from typing import Any
+from typing import Any, Callable
 
 from edgar_sec.foundation.runtime.interactive import (
+    PickItem,
+    prompt_paginated_choice,
     build_menu,
     menu_action,
     prompt_text,
@@ -24,48 +27,113 @@ from .paths import (
 )
 
 
-def run_review_menu(
-    adapter: ReviewAdapter,
-    artifacts_root: Path | str | None = None,
-) -> int:
+@dataclass(frozen=True, slots=True)
+class ReviewMenuConfig:
+    """Configuration for the review fixtures and comparison console.
+
+    ``plan_id_provider`` returns the selected plan's metadata.
+    """
+
+    adapter: ReviewAdapter
+    plan_id_provider: Callable[[], dict | None] | Callable[[], str | None] | None = None
+    artifacts_root: Path | str | Callable[[], Path] | None = None
+    title: str = "Review Artifacts & Fixtures Console"
+
+    def resolve_root(self) -> Path:
+        root = self.artifacts_root
+        if callable(root):
+            return Path(root()).resolve()
+        if root is not None:
+            return Path(root).resolve()
+        return resolve_paths().artifacts_root
+
+
+def run_review_menu(config: ReviewMenuConfig) -> int:
     """Run interactive terminal console for review runs and fixtures."""
-    root = Path(artifacts_root) if artifacts_root else resolve_paths().artifacts_root
-    dataset = adapter.dataset_name
+    root = config.resolve_root()
+    adapter = config.adapter
+    review_root = review_runs_root(root, adapter.dataset_name)
+
+    def _plan_info() -> dict[str, Any] | None:
+        if config.plan_id_provider is None:
+            return None
+        result = config.plan_id_provider()
+        if result is None:
+            return None
+        if isinstance(result, dict):
+            return result
+        return {"plan_id": str(result), "scope": "unknown", "selected_rows": 0}
+
+    def _fixture_label(f: dict[str, Any]) -> str:
+        fid = f.get("fixture_id", "unknown")
+        pages = int(f.get("page_count") or 0)
+        accessions = int(f.get("accession_count") or 0)
+        state = f.get("capture_state", "unknown")
+        return f"{fid}  ({pages:,} pages, {accessions:,} accessions, {state})"
+
+    def _limit_from_plan(plan: dict[str, Any]) -> int | None:
+        scope = plan.get("scope", "unknown")
+        rows = plan.get("selected_rows")
+        if scope == "policy" and rows:
+            prompt = (
+                f"Plan scope is 'policy' (curated to {rows} accessions). "
+                f"Limit accessions [all {rows}]"
+            )
+            default = ""
+        elif scope == "deterministic" and rows:
+            prompt = (
+                f"Plan scope is 'deterministic' ({rows} locators). "
+                f"Limit accessions [500]"
+            )
+            default = "500"
+        else:
+            prompt = "Limit accessions (blank for all)"
+            default = ""
+        raw = prompt_text(prompt, default).strip()
+        if raw == "" or raw.lower() == "all":
+            return None
+        return (
+            int(raw) if raw.isdigit() else (int(default) if default.isdigit() else None)
+        )
 
     def _action_create() -> None:
-        fixture_id = prompt_text("Fixture ID").strip()
+        plan = _plan_info()
+        if plan is None:
+            print("No catalog plans available; publish a catalog plan first.")
+            return
+        default_fid = f"fx_{plan['plan_id'][:8]}"
+        fixture_id = prompt_text("Fixture ID", default_fid).strip()
         if not fixture_id:
             return
-        plan_id = prompt_text("Catalog plan ID").strip()
-        if not plan_id:
-            return
-        limit_raw = prompt_text("Limit accessions (blank for all)").strip()
-        limit = int(limit_raw) if limit_raw.isdigit() else None
-        adapter.create_fixture(fixture_id, plan_id, limit=limit, artifacts_root=root)
+        limit = _limit_from_plan(plan)
+        adapter.create_fixture(
+            fixture_id, plan["plan_id"], limit=limit, artifacts_root=root
+        )
+        print(f"Fixture '{fixture_id}' created from plan '{plan['plan_id']}'.")
 
     def _action_fill() -> None:
         fixtures = adapter.list_fixtures(root)
         if not fixtures:
             print("No fixtures found to extend.")
             return
-        print("Available fixtures:")
-        for idx, f in enumerate(fixtures, start=1):
-            fid = f.get("fixture_id", "unknown")
-            print(f"  {idx}. {fid}")
-        choice_raw = prompt_text("Select fixture number or ID").strip()
-        if not choice_raw:
+        items = [
+            PickItem(key=f["fixture_id"], label=_fixture_label(f), value=f)
+            for f in fixtures
+        ]
+        chosen = prompt_paginated_choice(items, prompt_label="Select fixture to extend")
+        if chosen is None:
             return
-        if choice_raw.isdigit() and 1 <= int(choice_raw) <= len(fixtures):
-            fixture_id = str(fixtures[int(choice_raw) - 1].get("fixture_id", ""))
-        else:
-            fixture_id = choice_raw
+        fixture_id = chosen.key
 
-        plan_id = prompt_text("Catalog plan ID to fill from").strip()
-        if not plan_id:
+        plan = _plan_info()
+        if plan is None:
+            print("No catalog plans available; publish a plan first.")
             return
-        limit_raw = prompt_text("Limit accessions (blank for all)").strip()
-        limit = int(limit_raw) if limit_raw.isdigit() else None
-        adapter.fill_fixture(fixture_id, plan_id, limit=limit, artifacts_root=root)
+        limit = _limit_from_plan(plan)
+        adapter.fill_fixture(
+            fixture_id, plan["plan_id"], limit=limit, artifacts_root=root
+        )
+        print(f"Fixture '{fixture_id}' extended from plan '{plan['plan_id']}'.")
 
     def _action_list() -> None:
         fixtures = adapter.list_fixtures(root)
@@ -83,26 +151,22 @@ def run_review_menu(
         if not fixtures:
             print("No fixtures found to review.")
             return
-        print("Available fixtures:")
-        for idx, f in enumerate(fixtures, start=1):
-            fid = f.get("fixture_id", "unknown")
-            print(f"  {idx}. {fid}")
-        choice_raw = prompt_text("Select fixture number or ID").strip()
-        if not choice_raw:
+        items = [
+            PickItem(key=f["fixture_id"], label=_fixture_label(f), value=f)
+            for f in fixtures
+        ]
+        chosen = prompt_paginated_choice(items, prompt_label="Select fixture to review")
+        if chosen is None:
             return
-        if choice_raw.isdigit() and 1 <= int(choice_raw) <= len(fixtures):
-            fixture_id = str(fixtures[int(choice_raw) - 1].get("fixture_id", ""))
-        else:
-            fixture_id = choice_raw
+        fixture_id = chosen.key
 
-        out_raw = prompt_text("Output directory (blank for auto-derived)").strip()
-        review_root = review_runs_root(root, dataset)
+        default_out = f"auto {new_review_run_dir(review_root).name}"
+        out_raw = prompt_text(f"Output run [{default_out}]", "").strip()
         output_dir = Path(out_raw) if out_raw else new_review_run_dir(review_root)
-        limit_raw = prompt_text("Limit cases (blank for all)").strip()
+        limit_raw = prompt_text("Limit cases (blank for all)", "").strip()
         limit = int(limit_raw) if limit_raw.isdigit() else None
-        workers_raw = prompt_text("Workers (blank for default)").strip()
+        workers_raw = prompt_text("Workers (blank for auto)", "").strip()
         workers = int(workers_raw) if workers_raw.isdigit() else None
-
         adapter.build_review_artifacts(
             fixture_id=fixture_id,
             output_dir=output_dir,
@@ -113,7 +177,6 @@ def run_review_menu(
         print(f"Review artifacts written to: {output_dir}")
 
     def _action_compare() -> None:
-        review_root = review_runs_root(root, dataset)
         runs: list[Path] = []
         if review_root.is_dir():
             runs = sorted(
@@ -125,33 +188,44 @@ def run_review_menu(
                 key=lambda p: p.stat().st_mtime,
                 reverse=True,
             )
-        if len(runs) >= 2:
-            print("Recent review runs:")
-            for idx, r in enumerate(runs[:8], start=1):
-                print(f"  {idx}. {r.name}")
-
-        base_raw = prompt_text("Base review run directory or number").strip()
-        if not base_raw:
+        if len(runs) == 0:
+            print(
+                f"No review runs found under {review_root}. "
+                "Run option 4 to generate a review run first."
+            )
             return
-        if base_raw.isdigit() and 1 <= int(base_raw) <= len(runs):
-            base_dir = runs[int(base_raw) - 1]
-        else:
-            base_dir = Path(base_raw)
-
-        new_raw = prompt_text("New review run directory or number").strip()
-        if not new_raw:
+        if len(runs) == 1:
+            print(
+                f"Only 1 review run found ({runs[0].name}). "
+                "Comparison requires at least two runs; "
+                "run option 4 to generate a candidate review run first."
+            )
             return
-        if new_raw.isdigit() and 1 <= int(new_raw) <= len(runs):
-            new_dir = runs[int(new_raw) - 1]
-        else:
-            new_dir = Path(new_raw)
-
+        items = [
+            PickItem(
+                key=r.name, label=r.name + (" (latest)" if i == 0 else ""), value=r
+            )
+            for i, r in enumerate(runs)
+        ]
+        base_chosen = prompt_paginated_choice(
+            items,
+            default=runs[-2].name if len(runs) >= 2 else items[0].key,
+            prompt_label="Base review run (previous baseline)",
+        )
+        if base_chosen is None:
+            return
+        new_chosen = prompt_paginated_choice(
+            items,
+            default=runs[0].name,
+            prompt_label="New review run (candidate)",
+        )
+        if new_chosen is None:
+            return
+        base_dir = base_chosen.value
+        new_dir = new_chosen.value
         diff_dir = new_diff_dir(review_root)
         compare_review_runs(
-            base_dir=base_dir,
-            new_dir=new_dir,
-            output_dir=diff_dir,
-            adapter=adapter,
+            base_dir=base_dir, new_dir=new_dir, output_dir=diff_dir, adapter=adapter
         )
         print(ReviewPaths(diff_dir).summary_file.read_text(encoding="utf-8"))
 
@@ -160,8 +234,10 @@ def run_review_menu(
         menu_action("Fill a discovered fixture from a catalog plan", _action_fill),
         menu_action("List discovered fixtures", _action_list),
         menu_action("Generate parser review artifacts from fixture", _action_generate),
-        menu_action("Compare two review runs (diff & summary report)", _action_compare),
+        menu_action("Compare two review runs (diff & summary)", _action_compare),
     )
 
-    title = f"{dataset.replace('_', ' ').title()} Fixtures & Review Console"
+    title = (
+        f"{adapter.dataset_name.replace('_', ' ').title()} Fixtures & Review Console"
+    )
     return run_interactive_menu(title, menu, exit_key="0")

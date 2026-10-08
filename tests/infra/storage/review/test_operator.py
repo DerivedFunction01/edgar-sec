@@ -3,7 +3,10 @@
 from pathlib import Path
 
 from edgar_sec.infra.storage.review.models import CaseDiff
-from edgar_sec.infra.storage.review.operator import run_review_menu
+from edgar_sec.infra.storage.review.operator import (
+    ReviewMenuConfig,
+    run_review_menu,
+)
 
 
 class RecordingAdapter:
@@ -14,7 +17,20 @@ class RecordingAdapter:
 
     def list_fixtures(self, _root):
         self.calls.append("list")
-        return [{"fixture_id": "fix-1"}]
+        return [
+            {
+                "fixture_id": "fix-aaa",
+                "page_count": 1,
+                "accession_count": 10,
+                "capture_state": "complete",
+            },
+            {
+                "fixture_id": "fix-bbb",
+                "page_count": 2,
+                "accession_count": 20,
+                "capture_state": "partial",
+            },
+        ]
 
     def create_fixture(self, *_a, **_k):
         self.calls.append("create")
@@ -32,11 +48,121 @@ class RecordingAdapter:
         return CaseDiff(case_id, "unchanged")
 
 
-def test_operator_runs_actions_and_exits(tmp_path: Path, monkeypatch) -> None:
+def test_list_fixtures_runs_and_exits(tmp_path: Path, monkeypatch) -> None:
     adapter = RecordingAdapter()
     answers = iter(["3", "0"])
     monkeypatch.setattr("builtins.input", lambda _p="": next(answers))
 
-    exit_code = run_review_menu(adapter, artifacts_root=tmp_path)
+    config = ReviewMenuConfig(adapter=adapter, artifacts_root=tmp_path)
+    exit_code = run_review_menu(config)
     assert exit_code == 0
-    assert "list" in adapter.calls
+    assert adapter.calls == ["list"]
+
+
+def test_create_fixture_uses_the_provided_plan_and_proposes_fx_default(
+    tmp_path: Path, monkeypatch
+) -> None:
+    adapter = RecordingAdapter()
+
+    def _provide_plan_id():
+        return {
+            "plan_id": "94ea5ab57122d607532cbc93",
+            "catalog_id": "f259fde5",
+            "scope": "policy",
+            "selected_rows": 506,
+        }
+
+    answers = iter(["1", "", "", "0"])
+    monkeypatch.setattr("builtins.input", lambda _p="": next(answers))
+
+    config = ReviewMenuConfig(
+        adapter=adapter,
+        plan_id_provider=_provide_plan_id,
+        artifacts_root=tmp_path,
+    )
+    assert run_review_menu(config) == 0
+    assert adapter.calls == ["create"]
+
+
+def test_create_exits_cleanly_when_no_plans_are_available(
+    tmp_path: Path, monkeypatch
+) -> None:
+    adapter = RecordingAdapter()
+    answers = iter(["1", "0"])
+    monkeypatch.setattr("builtins.input", lambda _p="": next(answers))
+
+    config = ReviewMenuConfig(adapter=adapter, artifacts_root=tmp_path)
+    assert run_review_menu(config) == 0
+    assert adapter.calls == []
+
+
+def test_fill_selects_a_fixture_via_paginated_choice_and_applies_the_plan(
+    tmp_path: Path, monkeypatch
+) -> None:
+    adapter = RecordingAdapter()
+
+    def _provide_plan_id():
+        return {
+            "plan_id": "94ea5ab57122d607532cbc93",
+            "catalog_id": "f259fde5",
+            "scope": "deterministic",
+            "selected_rows": 100_000,
+        }
+
+    answers = iter(["2", "1", "", "0"])
+    monkeypatch.setattr("builtins.input", lambda _p="": next(answers))
+
+    config = ReviewMenuConfig(
+        adapter=adapter,
+        plan_id_provider=_provide_plan_id,
+        artifacts_root=tmp_path,
+    )
+    assert run_review_menu(config) == 0
+    assert adapter.calls == ["list", "fill"]
+
+
+def test_generate_builds_artifacts_to_an_auto_derived_run_dir(
+    tmp_path: Path, monkeypatch
+) -> None:
+    adapter = RecordingAdapter()
+    answers = iter(["4", "1", "", "", "", "0"])
+    monkeypatch.setattr("builtins.input", lambda _p="": next(answers))
+
+    config = ReviewMenuConfig(adapter=adapter, artifacts_root=tmp_path)
+    assert run_review_menu(config) == 0
+    assert adapter.calls == ["list", "generate"]
+
+
+def test_compare_blocks_when_no_review_runs_exist(tmp_path: Path, monkeypatch) -> None:
+    adapter = RecordingAdapter()
+    answers = iter(["5", "0"])
+    monkeypatch.setattr("builtins.input", lambda _p="": next(answers))
+
+    config = ReviewMenuConfig(adapter=adapter, artifacts_root=tmp_path)
+    assert run_review_menu(config) == 0
+    assert adapter.calls == []
+
+
+def test_compare_blocks_with_a_single_review_run(tmp_path: Path, monkeypatch) -> None:
+    adapter = RecordingAdapter()
+    (tmp_path / "run-20260101_000000").mkdir()
+    answers = iter(["5", "0"])
+    monkeypatch.setattr("builtins.input", lambda _p="": next(answers))
+
+    config = ReviewMenuConfig(adapter=adapter, artifacts_root=tmp_path)
+    assert run_review_menu(config) == 0
+    assert adapter.calls == []
+
+
+def test_compare_selects_runs_with_smart_defaults_and_renders_summary(
+    tmp_path: Path, monkeypatch
+) -> None:
+    adapter = RecordingAdapter()
+    (tmp_path / "run-20260101_000000").mkdir()
+    (tmp_path / "run-20260102_000000").mkdir()
+    answers = iter(["5", "", "", "0"])
+    monkeypatch.setattr("builtins.input", lambda _p="": next(answers))
+
+    config = ReviewMenuConfig(adapter=adapter, artifacts_root=tmp_path)
+    assert run_review_menu(config) == 0
+    assert adapter.calls == []

@@ -13,24 +13,37 @@ from edgar_sec.foundation.regex.builder import build_alternation
 from .base import Scanner, ScannerFinding
 from .lines import finding, scan_text_rule
 
-_COMMENT_TERMS = [
-    r"backwards?[- ]compatibility",
-    "compatibility",
-    "legacy",
-    "kept for compatibility",
-    "transitional shim",
-    "deprecated",
+_PHRASE_TERMS = [
+    r"backwards?[-_ ]compat\w*",
+    r"deprecat\w*",
+    r"legacy",
+    r"transitional[-_ ]shim\w*",
+    r"compat(?:ibility)?[-_ ]shim\w*",
+    r"kept for (?:backward[-_ ])?compat\w*",
 ]
-_COMPAT_COMMENT_RE = re.compile(
-    rf"#\s*{build_alternation(_COMMENT_TERMS, sort_longest_first=True)}",
+_COMPAT_PHRASE_RE = re.compile(
+    rf"\b(?:{build_alternation(_PHRASE_TERMS, sort_longest_first=True)})\b",
     re.IGNORECASE,
 )
 
 _IDENTIFIERS = build_alternation(["legacy", "compat", "shim"])
+_CLASS_NAMES = build_alternation(["Legacy", "Compat", "Shim", "Deprecated"])
+_ASSIGN_PREFIXES = build_alternation(
+    ["legacy_", "compat_", "shim_", "_legacy", "_compat", "_shim"]
+)
+_FUNC_TERMS = build_alternation(
+    ["legacy", "shim", "deprecated", "backward_compat", "backwards_compat"]
+)
+_COMPAT_IDENTIFIERS = build_alternation(
+    ["compat_", "shim_", "legacy_", "_compat_", "_shim_", "_legacy_"]
+)
+
 _COMPAT_IDENTIFIER_RE = re.compile(
-    rf"\b(?:def\s+_(?:{_IDENTIFIERS})\w*"
-    rf"|class\s+(?:{build_alternation(['Legacy', 'Compat', 'Shim'])})\w*"
-    rf"|(?:{build_alternation(['legacy_', 'compat_', 'shim_', '_legacy'])})\w*\s*=)",
+    rf"\b(?:def\s+(?:\w*_)?(?:{_FUNC_TERMS})\w*"
+    rf"|def\s+\w*(?:{_COMPAT_IDENTIFIERS})\w*"
+    rf"|def\s+\w*(?:_compat|_shim|_legacy)\b"
+    rf"|class\s+\w*(?:{_CLASS_NAMES})\w*"
+    rf"|(?:{_ASSIGN_PREFIXES})\w*\s*=)",
     re.IGNORECASE,
 )
 
@@ -49,7 +62,7 @@ _HINT = (
 
 
 def _rule(path: str, number: int, line: str) -> ScannerFinding | None:
-    if _COMPAT_COMMENT_RE.search(line) or _COMPAT_IDENTIFIER_RE.search(line):
+    if _COMPAT_PHRASE_RE.search(line) or _COMPAT_IDENTIFIER_RE.search(line):
         return finding(
             "legacy-shims",
             path,
@@ -70,11 +83,13 @@ def _rule(path: str, number: int, line: str) -> ScannerFinding | None:
 
 
 def scan_legacy_shims() -> list[ScannerFinding]:
-    """Flag backward-compatibility aliases, shims, and dead legacy paths.
-
-    Comment noise is not skipped: a shim is usually announced in a comment.
-    """
-    return scan_text_rule(rule=_rule, skip=("check.py", "run.py"), skip_noise=False)
+    """Flag backward-compatibility aliases, shims, and dead legacy paths."""
+    return scan_text_rule(
+        rule=_rule,
+        skip=("check.py", "run.py"),
+        skip_noise=False,
+        scan_tests=True,
+    )
 
 
 SCANNER = Scanner(

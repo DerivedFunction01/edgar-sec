@@ -40,20 +40,3 @@ def test_manifest_roundtrip_with_multiple_parents() -> None:
     assert loaded.parent_snapshot_id == "snap-p1"
     assert loaded.parents[1].snapshot_id == "snap-p2"
     assert loaded.relations["submissions"][0].row_count == 100
-
-
-def test_manifest_backward_compatibility() -> None:
-    legacy_payload = {
-        "snapshot_id": "snap-legacy",
-        "kind": "delta",
-        "parent_snapshot_id": "snap-parent",
-        "parent_manifest_sha256": "parent-hash",
-        "checkpoint_anchor_id": "snap-base",
-        "lineage_depth": 1,
-        "relations": {},
-        "logical_fingerprint": "hash-x",
-    }
-    node = DAGNodeManifest.from_dict(legacy_payload)
-    assert len(node.parents) == 1
-    assert node.parents[0].snapshot_id == "snap-parent"
-    assert node.parent_manifest_sha256 == "parent-hash"

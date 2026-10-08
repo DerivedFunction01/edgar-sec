@@ -192,17 +192,17 @@ def test_floors_are_satisfied_before_the_weighted_fill(
         corpus_id="floors",
         forms=["10-K"],
         era_bands=[
-            EraBand(name="legacy", end_year=2010),
+            EraBand(name="historical", end_year=2010),
             EraBand(name="modern", start_year=2010),
         ],
         base_content_units=8,
         reserve_size=0,
         seed_cik_path="__absent__",
-        floors={"era": {"legacy": 4}},
+        floors={"era": {"historical": 4}},
     )
     result = DeficitSelector(snapshot_dir, policy).select()
     coverage = result.report["coverage_distributions"]["era"]
-    assert coverage.get("legacy", 0) >= 4
+    assert coverage.get("historical", 0) >= 4
     assert result.report["underfilled_floors"] == {}
 
 
@@ -408,13 +408,13 @@ def _allocation_cells(report: dict[str, Any]) -> dict[tuple[str, str], dict[str,
 def test_allocation_spreads_a_budget_across_cells(tmp_path: Path) -> None:
     """Two equal cells get equal shares, so the big one does not take both."""
     snapshot = _spread_snapshot(
-        tmp_path / "spread", {("10-K", "modern"): 9, ("8-K", "legacy"): 3}
+        tmp_path / "spread", {("10-K", "modern"): 9, ("8-K", "historical"): 3}
     )
     policy = SelectionPolicy(
         corpus_id="spread",
         forms=["10-K", "8-K"],
         era_bands=[
-            EraBand(name="legacy", end_year=2010),
+            EraBand(name="historical", end_year=2010),
             EraBand(name="modern", start_year=2010),
         ],
         base_content_units=6,
@@ -424,9 +424,9 @@ def test_allocation_spreads_a_budget_across_cells(tmp_path: Path) -> None:
     result = DeficitSelector(snapshot, policy).select()
     cells = _allocation_cells(result.report)
     assert cells[("10-K", "modern")]["available"] == 9
-    assert cells[("8-K", "legacy")]["available"] == 3
+    assert cells[("8-K", "historical")]["available"] == 3
     assert cells[("10-K", "modern")]["selected"] == 3
-    assert cells[("8-K", "legacy")]["selected"] == 3
+    assert cells[("8-K", "historical")]["selected"] == 3
     assert result.report["form_era_allocation"]["unallocated"] == 0
     assert result.report["form_era_allocation"]["underfilled_cells"] == 0
 
@@ -434,13 +434,13 @@ def test_allocation_spreads_a_budget_across_cells(tmp_path: Path) -> None:
 def test_allocation_redistributes_from_an_exhausted_cell(tmp_path: Path) -> None:
     """A cell smaller than its share gives the remainder to the others."""
     snapshot = _spread_snapshot(
-        tmp_path / "sparse", {("10-K", "modern"): 9, ("8-K", "legacy"): 1}
+        tmp_path / "sparse", {("10-K", "modern"): 9, ("8-K", "historical"): 1}
     )
     policy = SelectionPolicy(
         corpus_id="sparse",
         forms=["10-K", "8-K"],
         era_bands=[
-            EraBand(name="legacy", end_year=2010),
+            EraBand(name="historical", end_year=2010),
             EraBand(name="modern", start_year=2010),
         ],
         base_content_units=6,
@@ -449,9 +449,9 @@ def test_allocation_redistributes_from_an_exhausted_cell(tmp_path: Path) -> None
     )
     result = DeficitSelector(snapshot, policy).select()
     cells = _allocation_cells(result.report)
-    assert cells[("8-K", "legacy")]["selected"] == 1
+    assert cells[("8-K", "historical")]["selected"] == 1
     assert cells[("10-K", "modern")]["selected"] == 5
-    assert cells[("8-K", "legacy")]["shortfall"] > 0
+    assert cells[("8-K", "historical")]["shortfall"] > 0
     assert len(result.active_locators) == 6
 
 
@@ -489,19 +489,19 @@ def test_a_cap_smaller_than_the_cell_count_prioritizes_era_coverage(
 def test_allocation_never_exceeds_the_global_cap(tmp_path: Path) -> None:
     """Floors run first; allocation only draws from what they left."""
     snapshot = _spread_snapshot(
-        tmp_path / "shared", {("10-K", "modern"): 20, ("8-K", "legacy"): 20}
+        tmp_path / "shared", {("10-K", "modern"): 20, ("8-K", "historical"): 20}
     )
     policy = SelectionPolicy(
         corpus_id="shared",
         forms=["10-K", "8-K"],
         era_bands=[
-            EraBand(name="legacy", end_year=2010),
+            EraBand(name="historical", end_year=2010),
             EraBand(name="modern", start_year=2010),
         ],
         base_content_units=5,
         reserve_size=0,
         seed_cik_path="__absent__",
-        floors={"era": {"legacy": 4}},
+        floors={"era": {"historical": 4}},
     )
     result = DeficitSelector(snapshot, policy).select()
     assert len(result.active_locators) == 5

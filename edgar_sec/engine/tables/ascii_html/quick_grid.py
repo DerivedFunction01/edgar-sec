@@ -68,5 +68,5 @@ def quick_extract_table_grid(
     if not rows:
         return ()
 
-    # Pad rows to uniform width for is_false_grid compatibility
+    # Pad rows to uniform width for downstream grid check
     return tuple(row + ("",) * (max_cols - len(row)) for row in rows)

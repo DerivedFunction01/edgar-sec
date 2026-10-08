@@ -38,7 +38,9 @@ def test_action_query_with_form_and_limit(monkeypatch) -> None:
     assert calls[0].artifacts_root == operator._root()
 
 
-def test_action_review_delegates_to_review_menu(tmp_path: Path, monkeypatch) -> None:
+def test_action_review_provides_plan_discovery_via_config(
+    tmp_path: Path, monkeypatch
+) -> None:
     calls: list[tuple] = []
     import edgar_sec.infra.storage.review.operator as rev_op
 
@@ -46,12 +48,12 @@ def test_action_review_delegates_to_review_menu(tmp_path: Path, monkeypatch) -> 
     monkeypatch.setattr(
         rev_op,
         "run_review_menu",
-        lambda adapter, artifacts_root: calls.append((adapter, artifacts_root)),
+        lambda config: calls.append((config.adapter, config.artifacts_root)),
     )
     operator._action_review()
     assert len(calls) == 1
     assert calls[0][0].dataset_name == "document_inventory"
-    assert calls[0][1] == tmp_path
+    assert Path(calls[0][1]) == tmp_path
 
 
 def test_operator_dispatches_cli_arguments(monkeypatch) -> None:

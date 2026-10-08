@@ -20,7 +20,7 @@ def inventory(tmp_path: Path) -> InventoryStatistics:
             index,
             company_family=f"family{index % 4}",
             sic_code="3571" if index < 6 else "7372",
-            era=("legacy" if index % 2 == 0 else "modern"),
+            era=("historical" if index % 2 == 0 else "modern"),
         )
         for index in range(20)
     ]
@@ -32,7 +32,7 @@ def test_value_counts_resolve_every_dimension_at_locator_grain(
 ) -> None:
     """One table serves the vocabulary, so a value cannot read as zero by mistake."""
     era = inventory.value_counts("era")
-    assert {row["value"] for row in era} == {"legacy", "modern"}
+    assert {row["value"] for row in era} == {"historical", "modern"}
     assert all(row["locator_count"] == 10 for row in era)
 
     sic = inventory.value_counts("sic_code")
@@ -62,8 +62,8 @@ def test_value_counts_reject_an_unknown_dimension(
 def test_floor_feasibility_reports_a_satisfiable_floor(
     inventory: InventoryStatistics,
 ) -> None:
-    report = inventory.check_floor_feasibility({"era": {"legacy": 4}})
-    assert report["era"]["legacy"] == {
+    report = inventory.check_floor_feasibility({"era": {"historical": 4}})
+    assert report["era"]["historical"] == {
         "required": 4,
         "available": 10,
         "feasible": True,
@@ -88,7 +88,7 @@ def test_floor_feasibility_covers_every_declared_dimension(
     inventory: InventoryStatistics,
 ) -> None:
     report = inventory.check_floor_feasibility(
-        {"era": {"legacy": 1}, "sic_code": {"3571": 1}}
+        {"era": {"historical": 1}, "sic_code": {"3571": 1}}
     )
     assert set(report) == {"era", "sic_code"}
 
@@ -97,12 +97,12 @@ def test_composite_feasibility_counts_matching_locators(
     inventory: InventoryStatistics,
 ) -> None:
     report = inventory.check_composite_feasibility(
-        [{"filters": {"era": "legacy", "sic_code": "3571"}, "min": 3}]
+        [{"filters": {"era": "historical", "sic_code": "3571"}, "min": 3}]
     )
     assert len(report) == 1
     assert report[0]["required"] == 3
     assert report[0]["feasible"] is True
-    # Six locators carry sic 3571, half of them legacy.
+    # Six locators carry sic 3571, half of them historical.
     assert report[0]["available"] == 3
 
 

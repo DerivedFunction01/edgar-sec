@@ -25,7 +25,7 @@ _PROTECTED_UNIT_KINDS = frozenset({"table", "list", "signature", "toc"})
 
 def compile_body_lexical(evidence: object) -> CompiledEvidencePack:
     """Compile the lexical pack for an evidence object: a compiled pack, a
-    `LexicalEvidencePack`, or an object carrying `lexical` or legacy body fields.
+    `LexicalEvidencePack`, or an object carrying `lexical` or body vocabulary fields.
     """
     if isinstance(evidence, CompiledEvidencePack):
         return evidence

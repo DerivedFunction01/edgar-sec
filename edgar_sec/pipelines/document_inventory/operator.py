@@ -134,10 +134,35 @@ def _action_distrib() -> None:
 
 
 def _action_review() -> None:
-    from edgar_sec.infra.storage.review.operator import run_review_menu
+    from edgar_sec.infra.storage.review.operator import (
+        ReviewMenuConfig,
+        run_review_menu,
+    )
     from .review_adapter import InventoryReviewAdapter
 
-    run_review_menu(InventoryReviewAdapter(), artifacts_root=Path(_root()))
+    def _provide_plan_id() -> dict | None:
+        plans = discover_plans(_root())
+        if not plans:
+            print("No published catalog plans were discovered.")
+            return None
+        plan = resolve_plan_choice(plans, select=_select)
+        if plan is None:
+            return None
+        return {
+            "plan_id": str(plan["plan_id"]),
+            "catalog_id": plan.get("catalog_id"),
+            "scope": plan.get("scope"),
+            "selected_rows": plan.get("selected_rows"),
+        }
+
+    run_review_menu(
+        ReviewMenuConfig(
+            adapter=InventoryReviewAdapter(),
+            plan_id_provider=_provide_plan_id,
+            artifacts_root=Path(_root()),
+            title="Document Inventory Fixtures & Review Console",
+        )
+    )
 
 
 def build_operator_menu() -> tuple[MenuAction, ...]:

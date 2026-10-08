@@ -122,7 +122,7 @@ def test_geometry_reports_its_documented_field_types() -> None:
     assert isinstance(geometry.span_groups, tuple)
     assert isinstance(geometry.confidence, float)
     assert isinstance(geometry.diagnostics, tuple)
-    assert isinstance(geometry.is_fallback_to_legacy, bool)
+    assert isinstance(geometry.is_fallback, bool)
 
 
 def test_conversion_accepts_bytes_and_a_preparsed_node() -> None:

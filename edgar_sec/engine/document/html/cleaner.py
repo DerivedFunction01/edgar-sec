@@ -263,7 +263,7 @@ def strip_office_metadata_attributes(html: str) -> str:
 
 
 def strip_font_tag_and_noise_attributes(html: str) -> str:
-    """Strip legacy non-symbolic font face/size/color and noise attributes."""
+    """Strip obsolete non-symbolic font face/size/color and noise attributes."""
     if "<font" in html or "<FONT" in html:
 
         def _clean_tag(match: re.Match[str]) -> str:

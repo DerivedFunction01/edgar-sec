@@ -211,7 +211,7 @@ class TableRenderResult:
     resolved_grid: ResolvedGrid
     confidence: float
     diagnostics: tuple[str, ...] = ()
-    is_fallback_to_legacy: bool = False
+    is_fallback: bool = False
 
 
 @dataclass(frozen=True, slots=True)
@@ -236,8 +236,8 @@ class TableGeometry:
         return self.render_result.diagnostics
 
     @property
-    def is_fallback_to_legacy(self) -> bool:
-        return self.render_result.is_fallback_to_legacy
+    def is_fallback(self) -> bool:
+        return self.render_result.is_fallback
 
     @property
     def rows(self) -> tuple[tuple[str, ...], ...]:

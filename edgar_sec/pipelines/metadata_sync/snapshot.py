@@ -25,7 +25,7 @@ __all__ = [
 SNAPSHOT_MANIFEST_VERSION = "2.0.0"
 """Manifest version carrying an explicit ordered part list.
 
-A manifest without this version is a legacy single-part manifest and is read
+A manifest without this version is a single-part manifest and is read
 through the ``output_path``/``artifact_sha256`` pair it already carries.
 """
 

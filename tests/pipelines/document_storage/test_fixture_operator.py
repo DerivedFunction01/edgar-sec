@@ -173,17 +173,17 @@ def test_fill_records_document_metadata_for_every_locator(tmp_path: Path) -> Non
 def test_refill_backfills_metadata_without_refetching(tmp_path: Path) -> None:
     """Re-running the same fill must not touch the network."""
     paths = _paths(tmp_path)
-    locator = _locator("legacy.htm")
-    with FixtureStore(paths.fixture_db_path("fix-legacy")) as store:
-        store.put_many([(locator.document_locator_key, b"legacy payload")])
-    with sqlite3.connect(paths.fixture_db_path("fix-legacy")) as connection:
+    locator = _locator("retained.htm")
+    with FixtureStore(paths.fixture_db_path("fix-retained")) as store:
+        store.put_many([(locator.document_locator_key, b"retained payload")])
+    with sqlite3.connect(paths.fixture_db_path("fix-retained")) as connection:
         connection.execute("DROP TABLE document_blobs")
         connection.commit()
 
-    client = FakeClient({"legacy.htm": b"must not be fetched"})
+    client = FakeClient({"retained.htm": b"must not be fetched"})
     report = fill_fixture(
         paths=paths,
-        fixture_id="fix-legacy",
+        fixture_id="fix-retained",
         locators=[locator],
         workers=1,
         http_client=client,
@@ -192,11 +192,11 @@ def test_refill_backfills_metadata_without_refetching(tmp_path: Path) -> None:
     assert report.newly_written == 0
     assert report.backfilled_metadata == 1
     assert client.calls == []
-    with FixtureStore(paths.fixture_db_path("fix-legacy"), read_only=True) as store:
+    with FixtureStore(paths.fixture_db_path("fix-retained"), read_only=True) as store:
         assert store.documents()[0].raw_payload_sha256 == sha256_bytes(
-            b"legacy payload"
+            b"retained payload"
         )
-        assert store.get(locator.document_locator_key) == b"legacy payload"
+        assert store.get(locator.document_locator_key) == b"retained payload"
 
 
 def test_fixture_discovery_reports_manifest_and_payload_count(tmp_path: Path) -> None:

@@ -25,7 +25,21 @@ Reusable harness for parser review runs, multi-format objective diffing, and fix
 - [`ReviewAdapter`](adapter.py)
 - [`compare_review_runs`](diff.py), [`diff_text`](diff.py), [`diff_json`](diff.py), [`diff_dataset`](diff.py)
 - [`attach_review_subparsers`](cli.py)
-- [`run_review_menu`](operator.py)
+- [`ReviewMenuConfig`](operator.py), [`run_review_menu`](operator.py)
+
+## Interactive Console
+
+[`run_review_menu`](operator.py) is an interactive console for review runs and fixtures.
+It accepts a [`ReviewMenuConfig`](operator.py) and supports:
+
+- **Plan-guided fixtures**: the caller supplies `plan_id_provider` (a callback the
+  owning pipeline layer resolves into plan metadata); create and fill actions
+  display the plan and propose `fx_{plan_id[:8]}` fixture IDs.
+- **Paginated pick-lists**: fixture and review-run selection go through
+  `prompt_paginated_choice` with a marked default and filtering.
+- **Guarded comparison**: fewer than two review runs print a message and return;
+  the previous baseline and latest run are the defaults for the base and new
+  run prompts.
 
 ## Mirrored Tests
 - [`tests/infra/storage/review/`](../../../../tests/infra/storage/review)

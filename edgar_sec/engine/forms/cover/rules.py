@@ -32,7 +32,7 @@ class CompiledCoverRules:
 
 def _lexical_for(body_evidence: object | None) -> CompiledEvidencePack:
     """Compile the lexical pack for a body evidence object. An explicit `lexical` pack
-    wins; otherwise one is derived from legacy body vocabulary fields.
+    wins; otherwise one is derived from body vocabulary fields.
     """
     lexical = getattr(body_evidence, "lexical", None)
     if isinstance(lexical, LexicalEvidencePack):

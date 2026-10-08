@@ -66,7 +66,7 @@ def test_table_geometry_projects_its_render_result() -> None:
     assert len(geometry.column_widths) == 2
     assert isinstance(geometry.confidence, float)
     assert isinstance(geometry.diagnostics, tuple)
-    assert geometry.is_fallback_to_legacy is False
+    assert geometry.is_fallback is False
     assert geometry.resolved_grid is geometry.render_result.resolved_grid
 
 

@@ -180,7 +180,7 @@ def snapshot_dir(tmp_path: Path) -> Path:
             index,
             company_family=f"family{index % 4}",
             sic_code=f"357{index % 10}",
-            era=("legacy" if index % 2 == 0 else "modern"),
+            era=("historical" if index % 2 == 0 else "modern"),
         )
         for index in range(20)
     ]
@@ -193,7 +193,7 @@ def selection_policy() -> SelectionPolicy:
         corpus_id="test_corpus",
         forms=["10-K"],
         era_bands=[
-            EraBand(name="legacy", end_year=2010),
+            EraBand(name="historical", end_year=2010),
             EraBand(name="modern", start_year=2010),
         ],
         base_content_units=6,

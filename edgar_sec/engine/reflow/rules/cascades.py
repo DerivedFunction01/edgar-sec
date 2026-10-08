@@ -309,7 +309,7 @@ class RuleEngine:
                 confidence=0.95,
                 direct_conditions=(FeatureThreshold("has_tab", "==", True),),
                 evidence=("internal_tab",),
-                rationale="Internal tabs indicate legacy tabular column formatting.",
+                rationale="Internal tabs indicate tabular column formatting.",
             ),
             Rule(
                 name="hard_preserve_signature",

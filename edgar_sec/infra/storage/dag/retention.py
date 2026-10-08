@@ -80,7 +80,7 @@ def analyze_retention(
                     if f.is_file():
                         prunable_bytes += f.stat().st_size
 
-    # Also check legacy directories on disk if any
+    # Also check unreferenced directories on disk if any
     if root.is_dir():
         for child in root.iterdir():
             if (

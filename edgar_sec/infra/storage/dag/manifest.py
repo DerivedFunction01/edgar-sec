@@ -127,13 +127,6 @@ class DAGNodeManifest:
         raw_parents = data.get("parents")
         if raw_parents is not None and isinstance(raw_parents, list):
             parents = tuple(ParentRef.from_dict(p) for p in raw_parents)
-        elif data.get("parent_snapshot_id"):
-            parents = (
-                ParentRef(
-                    snapshot_id=str(data["parent_snapshot_id"]),
-                    manifest_sha256=str(data.get("parent_manifest_sha256") or ""),
-                ),
-            )
         else:
             parents = ()
         return cls(

@@ -64,11 +64,11 @@ def test_unrecorded_field_is_unknown_not_mismatch() -> None:
 
 def test_plan_without_the_axis_imposes_no_constraint() -> None:
     check_fixture_lineage(
-        {**MANIFEST, "catalog_id": "cat-legacy"}, {"forms": ["10-K", "10-Q"]}
+        {**MANIFEST, "catalog_id": "cat-untracked"}, {"forms": ["10-K", "10-Q"]}
     )
 
 
-def test_legacy_manifest_with_no_lineage_passes() -> None:
+def test_untracked_manifest_with_no_lineage_passes() -> None:
     check_fixture_lineage({}, PLAN)
     check_fixture_lineage({}, {})
 

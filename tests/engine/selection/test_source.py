@@ -53,10 +53,10 @@ def test_pool_for_value_matches_and_respects_the_limit(
     snapshot_dir: Path,
 ) -> None:
     with _source(snapshot_dir).session() as source:
-        legacy = source.pool_for_value("era", "legacy")
-        assert legacy
-        assert all(row["era"] == "legacy" for row in legacy)
-        assert len(source.pool_for_value("era", "legacy", limit=2)) == 2
+        pool = source.pool_for_value("era", "historical")
+        assert pool
+        assert all(row["era"] == "historical" for row in pool)
+        assert len(source.pool_for_value("era", "historical", limit=2)) == 2
 
 
 def test_pool_for_value_rejects_an_unknown_dimension(snapshot_dir: Path) -> None:
@@ -87,9 +87,9 @@ def test_a_quote_shaped_dimension_value_is_bound_not_interpolated(
 
 def test_pool_for_composite_conjoins_every_filter(snapshot_dir: Path) -> None:
     with _source(snapshot_dir).session() as source:
-        rows = source.pool_for_composite({"era": "legacy", "form_family": "10-K"})
+        rows = source.pool_for_composite({"era": "historical", "form_family": "10-K"})
     assert rows
-    assert all(row["era"] == "legacy" for row in rows)
+    assert all(row["era"] == "historical" for row in rows)
 
 
 def test_pool_for_ciks_caps_each_cik_separately(tmp_path: Path) -> None:
@@ -141,7 +141,7 @@ def test_selected_keys_are_excluded_from_later_pools(
         }
         assert claimed not in {
             row["document_locator_key"]
-            for row in source.pool_for_value("era", "legacy")
+            for row in source.pool_for_value("era", "historical")
         }
 
 
@@ -342,27 +342,27 @@ def test_cell_availability_counts_only_the_rows_a_pool_could_draw(
     locators = [
         make_locator(1, company_family="a", form="10-K", era="modern"),
         make_locator(2, company_family="b", form="10-K", era="modern"),
-        make_locator(3, company_family="c", form="8-K", era="legacy"),
+        make_locator(3, company_family="c", form="8-K", era="historical"),
     ]
     snapshot = write_snapshot(tmp_path / "cells", locators)
     with _source(snapshot).session() as source:
         assert source.cell_availability() == [
             ("10-K", "modern", 2),
-            ("8-K", "legacy", 1),
+            ("8-K", "historical", 1),
         ]
         source.register_selected(["loc-0001"])
         assert source.cell_availability() == [
             ("10-K", "modern", 1),
-            ("8-K", "legacy", 1),
+            ("8-K", "historical", 1),
         ]
 
 
 def test_a_pool_for_one_cell_returns_only_that_cell(tmp_path: Path) -> None:
     locators = [
         make_locator(1, company_family="a", form="10-K", era="modern"),
-        make_locator(2, company_family="b", form="10-K", era="legacy"),
+        make_locator(2, company_family="b", form="10-K", era="historical"),
     ]
     snapshot = write_snapshot(tmp_path / "one-cell", locators)
     with _source(snapshot).session() as source:
-        rows = source.pool_for_cell("10-K", "legacy", limit=10)
+        rows = source.pool_for_cell("10-K", "historical", limit=10)
     assert [row["document_locator_key"] for row in rows] == ["loc-0002"]

@@ -681,11 +681,11 @@ def test_a_policy_document_without_the_new_field_is_still_readable(
 ) -> None:
     """A draft written before the field existed is a policy, not an error."""
     manifest, _ = catalog_snapshot
-    legacy = _policy().to_dict()
-    legacy.pop("date_selection")
+    unfiltered = _policy().to_dict()
+    unfiltered.pop("date_selection")
     meta = plan_policy(
         str(manifest["catalog_id"]),
-        SelectionPolicy.from_dict(legacy),
+        SelectionPolicy.from_dict(unfiltered),
         catalog_artifacts_root,
     )
     assert meta["selection_policy"]["date_selection"] == []

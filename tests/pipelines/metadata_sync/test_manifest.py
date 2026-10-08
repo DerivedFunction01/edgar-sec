@@ -19,7 +19,7 @@ from edgar_sec.pipelines.metadata_sync.paths import (
 from tests.support import fixture_path
 
 #: Recorded from the row-by-row parser before it was deleted.
-LEGACY_IDENTITIES = {
+BASELINE_IDENTITIES = {
     "cik_sec_mini.csv": ("0554eb6d91ecc97326ea0f7e51ae7f59", 4, 3, 1),
     "catalog/cik_sample.csv": ("36cdabbe2346c5462f27242bc5f9afc3", 6, 0, 0),
     "company_family/seed_ciks.csv": ("467aca2de994556b40d6b13dd1041999", 10, 0, 0),
@@ -39,12 +39,12 @@ def _write(root: Path, text: str, name: str = "input.csv") -> Path:
 # ------------------------------------------------------------------ identity
 
 
-@pytest.mark.parametrize("fixture", sorted(LEGACY_IDENTITIES))
+@pytest.mark.parametrize("fixture", sorted(BASELINE_IDENTITIES))
 def test_compiled_identity_matches_the_parser_it_replaced(
     tmp_path: Path, fixture: str
 ) -> None:
     """Rows and counts are pinned too: a matching id over a differing cohort is luck."""
-    roster_id, rows, rejected, duplicates = LEGACY_IDENTITIES[fixture]
+    roster_id, rows, rejected, duplicates = BASELINE_IDENTITIES[fixture]
     cohort = compile_cik_cohort(fixture_path(fixture), metadata_paths=_paths(tmp_path))
     assert cohort.roster_id == roster_id
     assert cohort.row_count == rows

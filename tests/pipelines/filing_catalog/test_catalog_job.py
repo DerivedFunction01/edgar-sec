@@ -209,19 +209,19 @@ def test_a_multipart_source_materializes_the_same_catalog(
     tmp_path: Path, sample_source: Path
 ) -> None:
     """Several parts and one file are the same dataset, so the catalog must match."""
-    legacy = _phase1_manifest(sample_source, tmp_path / "legacy-art")
+    single_part = _phase1_manifest(sample_source, tmp_path / "single-art")
     multipart = _multipart_manifest(sample_source, tmp_path / "multi-art")
 
-    from_legacy = materialize(None, tmp_path / "out-legacy", source_manifest=legacy)
+    from_single = materialize(None, tmp_path / "out-single", source_manifest=single_part)
     from_parts = materialize(None, tmp_path / "out-multi", source_manifest=multipart)
 
     assert from_parts["source_part_count"] > 1
-    assert from_legacy["profile_row_count"] == from_parts["profile_row_count"]
-    assert from_legacy["target_row_count"] == from_parts["target_row_count"]
-    assert from_legacy["form_counts"] == from_parts["form_counts"]
+    assert from_single["profile_row_count"] == from_parts["profile_row_count"]
+    assert from_single["target_row_count"] == from_parts["target_row_count"]
+    assert from_single["form_counts"] == from_parts["form_counts"]
 
-    legacy_profiles = pq.read_table(
-        resolve_filing_catalog_paths(tmp_path / "out-legacy").snapshot_profiles_file(
+    single_profiles = pq.read_table(
+        resolve_filing_catalog_paths(tmp_path / "out-single").snapshot_profiles_file(
             "snap-1"
         )
     )
@@ -230,7 +230,7 @@ def test_a_multipart_source_materializes_the_same_catalog(
             "snap-multi"
         )
     )
-    assert legacy_profiles.equals(multi_profiles)
+    assert single_profiles.equals(multi_profiles)
 
 
 def test_a_multipart_source_with_a_tampered_part_is_refused(

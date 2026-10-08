@@ -49,7 +49,7 @@ from edgar_sec.foundation.text.evidence import LexicalEvidencePack
 
 COVER_FAMILIES = ("10-K", "20-F", "10-Q")
 GENERIC_FAMILIES = ("8-K", "6-K", "GENERIC")
-NO_COVER_FAMILIES = GENERIC_FAMILIES
+NO_COVER_FAMILIES = ("8-K", "6-K", "GENERIC")
 LEXICAL_FAMILIES = ("10-K", "20-F", "10-Q", "8-K", "6-K")
 
 

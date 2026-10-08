@@ -70,7 +70,7 @@ GOOD_OBSERVATIONS = [
         "2023-02-01",
         "2022-12-31",
     ),
-    # Legacy 1994 accession, one exact duplicate.
+    # Historical 1994 accession, one exact duplicate.
     (
         "plan-alpha",
         "000095012394000687",

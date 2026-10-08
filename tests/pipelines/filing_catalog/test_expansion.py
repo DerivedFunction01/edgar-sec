@@ -202,7 +202,7 @@ def test_only_the_current_schema_is_expandable(
     version: str | None,
     catalog_artifacts_root: Path,
 ) -> None:
-    """Older, newer, absent and empty all fail closed, with no compat shim."""
+    """Older, newer, absent and empty all fail closed with no fallback."""
     artifacts_root = _root(catalog_artifacts_root)
     parent_dir, _ = _publish_parent(
         catalog_snapshot, catalog_artifacts_root, base_content_units=2

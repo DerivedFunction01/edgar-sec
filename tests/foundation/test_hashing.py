@@ -79,7 +79,7 @@ def test_sha256_text_chunking_preserves_multibyte_boundaries() -> None:
 
 
 def test_sha256_text_is_the_only_public_definition() -> None:
-    """§1.1: two functions of one name with different behaviour is a shim."""
+    """§1.1: two functions of one name with different behaviour violates the contract."""
     from edgar_sec.foundation.runtime import memory
 
     assert not hasattr(memory, "sha256_text")
