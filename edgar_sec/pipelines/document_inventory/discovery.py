@@ -14,14 +14,15 @@ from edgar_sec.pipelines.document_inventory.paths import (
     inventory_paths,
     resolve_filing_catalog_paths,
 )
-from edgar_sec.pipelines.filing_catalog.discovery import (
+from edgar_sec.domain.plan.discovery import (
     discover_plans as _discover_plans,
 )
+from edgar_sec.domain.plan.envelope import PlanEnvelope
 
 
-def discover_plans(artifacts_root: str | Path | None = None) -> list[dict[str, Any]]:
+def discover_plans(artifacts_root: str | Path | None = None) -> list[PlanEnvelope]:
     paths = resolve_filing_catalog_paths(artifacts_root)
-    return _discover_plans(paths)
+    return _discover_plans(paths.plans_root)
 
 
 def discover_fixtures(artifacts_root: str | Path | None = None) -> list[dict[str, Any]]:

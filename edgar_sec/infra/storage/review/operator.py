@@ -29,13 +29,11 @@ from .paths import (
 
 @dataclass(frozen=True, slots=True)
 class ReviewMenuConfig:
-    """Configuration for the review fixtures and comparison console.
-
-    ``plan_id_provider`` returns the selected plan's metadata.
-    """
+    """Configuration for the review fixtures and comparison console."""
 
     adapter: ReviewAdapter
-    plan_id_provider: Callable[[], dict | None] | Callable[[], str | None] | None = None
+    plan_id: str | None = None
+    plans_root: Path | str | None = None
     artifacts_root: Path | str | Callable[[], Path] | None = None
     title: str = "Review Artifacts & Fixtures Console"
 
@@ -53,16 +51,36 @@ def run_review_menu(config: ReviewMenuConfig) -> int:
     root = config.resolve_root()
     adapter = config.adapter
     review_root = review_runs_root(root, adapter.dataset_name)
+    session_plan: Any = None
 
-    def _plan_info() -> dict[str, Any] | None:
-        if config.plan_id_provider is None:
-            return None
-        result = config.plan_id_provider()
-        if result is None:
-            return None
-        if isinstance(result, dict):
-            return result
-        return {"plan_id": str(result), "scope": "unknown", "selected_rows": 0}
+    def _plan_info() -> Any | None:
+        nonlocal session_plan
+        if session_plan is not None:
+            return session_plan
+        if config.plan_id:
+            session_plan = {
+                "plan_id": config.plan_id,
+                "scope": "unknown",
+                "selected_rows": 0,
+            }
+            return session_plan
+        if config.plans_root:
+            from edgar_sec.domain.plan.discovery import discover_plans
+
+            plans = discover_plans(config.plans_root)
+            if not plans:
+                return None
+            if len(plans) == 1:
+                session_plan = plans[0]
+                return session_plan
+            items = [
+                PickItem(key=p.plan_id, label=p.describe(), value=p) for p in plans
+            ]
+            chosen = prompt_paginated_choice(items, prompt_label="Select plan")
+            if chosen is not None:
+                session_plan = chosen.value
+                return session_plan
+        return None
 
     def _fixture_label(f: dict[str, Any]) -> str:
         fid = f.get("fixture_id", "unknown")
@@ -99,9 +117,9 @@ def run_review_menu(config: ReviewMenuConfig) -> int:
     def _action_create() -> None:
         plan = _plan_info()
         if plan is None:
-            print("No catalog plans available; publish a catalog plan first.")
+            print("No plans available; publish a plan first.")
             return
-        default_fid = f"fx_{plan['plan_id'][:8]}"
+        default_fid = f"fix-{plan['plan_id'][:8]}"
         fixture_id = prompt_text("Fixture ID", default_fid).strip()
         if not fixture_id:
             return
@@ -127,7 +145,7 @@ def run_review_menu(config: ReviewMenuConfig) -> int:
 
         plan = _plan_info()
         if plan is None:
-            print("No catalog plans available; publish a plan first.")
+            print("No plans available; publish a plan first.")
             return
         limit = _limit_from_plan(plan)
         adapter.fill_fixture(
@@ -230,8 +248,8 @@ def run_review_menu(config: ReviewMenuConfig) -> int:
         print(ReviewPaths(diff_dir).summary_file.read_text(encoding="utf-8"))
 
     menu = build_menu(
-        menu_action("Create fixture from a published catalog plan", _action_create),
-        menu_action("Fill a discovered fixture from a catalog plan", _action_fill),
+        menu_action("Create fixture from a published plan", _action_create),
+        menu_action("Fill a discovered fixture from a plan", _action_fill),
         menu_action("List discovered fixtures", _action_list),
         menu_action("Generate parser review artifacts from fixture", _action_generate),
         menu_action("Compare two review runs (diff & summary)", _action_compare),

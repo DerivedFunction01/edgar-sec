@@ -32,9 +32,8 @@ Reusable harness for parser review runs, multi-format objective diffing, and fix
 [`run_review_menu`](operator.py) is an interactive console for review runs and fixtures.
 It accepts a [`ReviewMenuConfig`](operator.py) and supports:
 
-- **Plan-guided fixtures**: the caller supplies `plan_id_provider` (a callback the
-  owning pipeline layer resolves into plan metadata); create and fill actions
-  display the plan and propose `fx_{plan_id[:8]}` fixture IDs.
+- **Plan-guided fixtures**: the caller supplies `plans_root` (or `plan_id`);
+  create and fill actions display the plan and propose fixture IDs.
 - **Paginated pick-lists**: fixture and review-run selection go through
   `prompt_paginated_choice` with a marked default and filtering.
 - **Guarded comparison**: fewer than two review runs print a message and return;

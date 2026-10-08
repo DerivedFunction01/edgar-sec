@@ -115,19 +115,13 @@ def _action_dag() -> None:
 def _action_distrib() -> None:
     from edgar_sec.infra.distribution.menu import DistribMenuConfig, run_distrib_menu
     from .distribution_adapter import InventoryDistributionAdapter
+    from .paths import resolve_filing_catalog_paths
 
-    def _provide_plan_id() -> str | None:
-        plans = discover_plans(_root())
-        if not plans:
-            print("No published catalog plans were discovered.")
-            return None
-        plan = resolve_plan_choice(plans, select=_select)
-        return str(plan["plan_id"]) if plan is not None else None
-
+    plans_root = resolve_filing_catalog_paths(_root()).plans_root
     adapter = InventoryDistributionAdapter(artifacts_root=Path(_root()))
     config = DistribMenuConfig(
         adapter=adapter,
-        plan_id_provider=_provide_plan_id,
+        plans_root=plans_root,
         title="Document Inventory Worker Distribution",
     )
     run_distrib_menu(config)
@@ -138,27 +132,14 @@ def _action_review() -> None:
         ReviewMenuConfig,
         run_review_menu,
     )
+    from .paths import resolve_filing_catalog_paths
     from .review_adapter import InventoryReviewAdapter
 
-    def _provide_plan_id() -> dict | None:
-        plans = discover_plans(_root())
-        if not plans:
-            print("No published catalog plans were discovered.")
-            return None
-        plan = resolve_plan_choice(plans, select=_select)
-        if plan is None:
-            return None
-        return {
-            "plan_id": str(plan["plan_id"]),
-            "catalog_id": plan.get("catalog_id"),
-            "scope": plan.get("scope"),
-            "selected_rows": plan.get("selected_rows"),
-        }
-
+    plans_root = resolve_filing_catalog_paths(_root()).plans_root
     run_review_menu(
         ReviewMenuConfig(
             adapter=InventoryReviewAdapter(),
-            plan_id_provider=_provide_plan_id,
+            plans_root=plans_root,
             artifacts_root=Path(_root()),
             title="Document Inventory Fixtures & Review Console",
         )

@@ -28,6 +28,7 @@ the storage layer.
 | `document_inventory/` | Shared inventory records and durable entry schema |
 | `filing_catalog/` | Catalog schemas, version identifiers, planning filter vocabulary |
 | `forms/` | Form/cover vocabulary, schemas, family aliases, body evidence, evaluator decisions |
+| `plan/` | Universal plan envelope and manifest discovery |
 | `submissions/` | Submission dataset schema and record models |
 | `taxonomy/` | Jurisdiction, legal-form, and company-name vocabulary; statement, schedule, and table specifications |
 

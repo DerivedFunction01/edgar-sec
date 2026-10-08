@@ -448,9 +448,11 @@ def open_metadata_distrib_console(state: WizardState) -> None:
     adapter = MetadataDistributionAdapter(
         artifacts_root=Path(state.artifacts_root) if state.artifacts_root else None
     )
+    if not _ensure_plan(state):
+        return
     config = DistribMenuConfig(
         adapter=adapter,
-        plan_id_provider=lambda: state.plan_id if _ensure_plan(state) else None,
+        plan_id=state.plan_id,
         title="Metadata Sync Worker Distribution",
     )
     run_distrib_menu(config)

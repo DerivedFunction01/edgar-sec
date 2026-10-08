@@ -62,22 +62,30 @@ def test_list_fixtures_runs_and_exits(tmp_path: Path, monkeypatch) -> None:
 def test_create_fixture_uses_the_provided_plan_and_proposes_fx_default(
     tmp_path: Path, monkeypatch
 ) -> None:
-    adapter = RecordingAdapter()
+    import json
 
-    def _provide_plan_id():
-        return {
-            "plan_id": "94ea5ab57122d607532cbc93",
-            "catalog_id": "f259fde5",
-            "scope": "policy",
-            "selected_rows": 506,
-        }
+    adapter = RecordingAdapter()
+    plans_dir = tmp_path / "plans"
+    plan_subdir = plans_dir / "94ea5ab57122d607532cbc93"
+    plan_subdir.mkdir(parents=True)
+    (plan_subdir / "plan.json").write_text(
+        json.dumps(
+            {
+                "plan_id": "94ea5ab57122d607532cbc93",
+                "catalog_id": "f259fde5",
+                "scope": "policy",
+                "selected_rows": 506,
+            }
+        ),
+        encoding="utf-8",
+    )
 
     answers = iter(["1", "", "", "0"])
     monkeypatch.setattr("builtins.input", lambda _p="": next(answers))
 
     config = ReviewMenuConfig(
         adapter=adapter,
-        plan_id_provider=_provide_plan_id,
+        plans_root=plans_dir,
         artifacts_root=tmp_path,
     )
     assert run_review_menu(config) == 0
@@ -101,20 +109,12 @@ def test_fill_selects_a_fixture_via_paginated_choice_and_applies_the_plan(
 ) -> None:
     adapter = RecordingAdapter()
 
-    def _provide_plan_id():
-        return {
-            "plan_id": "94ea5ab57122d607532cbc93",
-            "catalog_id": "f259fde5",
-            "scope": "deterministic",
-            "selected_rows": 100_000,
-        }
-
     answers = iter(["2", "1", "", "0"])
     monkeypatch.setattr("builtins.input", lambda _p="": next(answers))
 
     config = ReviewMenuConfig(
         adapter=adapter,
-        plan_id_provider=_provide_plan_id,
+        plan_id="94ea5ab57122d607532cbc93",
         artifacts_root=tmp_path,
     )
     assert run_review_menu(config) == 0

@@ -23,9 +23,13 @@ from edgar_sec.engine.selection.predicates import (
     date_selection_sql,
     parsed_date_relation,
 )
-from edgar_sec.foundation.runtime.paths import PARQUET_PART_GLOB, PLAN_FILE_NAME
+from edgar_sec.domain.plan.discovery import (
+    discover_plans as _discover_plans,
+)
+from edgar_sec.foundation.runtime.paths import PARQUET_PART_GLOB
 from edgar_sec.infra.storage.dag.catalog import DAGCatalog
 from edgar_sec.infra.storage.duckdb import connect, sql_literal
+from edgar_sec.pipelines.filing_catalog.envelope import CatalogPlanEnvelope
 from edgar_sec.pipelines.filing_catalog.paths import (
     CATALOG_SNAPSHOT_MANIFEST_NAME,
     CURRENT_ALIAS,
@@ -137,35 +141,12 @@ def discover_catalogs(
     return found
 
 
-def discover_plans(paths: FilingCatalogPaths | None = None) -> list[dict[str, Any]]:
+def discover_plans(
+    paths: FilingCatalogPaths | None = None,
+) -> list[CatalogPlanEnvelope]:
     """List every published target-plan bundle."""
     resolved = paths or resolve_filing_catalog_paths()
-    found: list[dict[str, Any]] = []
-    if not resolved.plans_root.is_dir():
-        return found
-    for entry in sorted(resolved.plans_root.iterdir()):
-        if not entry.is_dir():
-            continue
-        plan = _read_json(entry / PLAN_FILE_NAME)
-        if plan is None:
-            continue
-        found.append(
-            {
-                "plan_id": entry.name,
-                "catalog_id": plan.get("catalog_id"),
-                "scope": plan.get("scope"),
-                "forms": plan.get("forms") or [],
-                "document_suffixes": plan.get("document_suffixes") or [],
-                "limit": plan.get("limit"),
-                "selected_rows": plan.get("selected_rows"),
-                "unique_locators_count": plan.get("unique_locators_count"),
-                "counts": plan.get("counts") or {},
-                "target_units": plan.get("target_units"),
-                "parent_plan_id": plan.get("parent_plan_id"),
-                "policy_fingerprint": plan.get("policy_fingerprint"),
-            }
-        )
-    return found
+    return _discover_plans(resolved.plans_root, envelope_cls=CatalogPlanEnvelope)
 
 
 def policy_search_dirs(paths: FilingCatalogPaths | None = None) -> list[Path]:

@@ -8,9 +8,11 @@ from pathlib import Path
 
 from edgar_sec.foundation.runtime.interactive import (
     MenuAction,
+    PickItem,
     build_menu,
     menu_action,
     operator_entrypoint,
+    prompt_paginated_choice,
     prompt_text,
 )
 from edgar_sec.foundation.runtime.paths import distribution_root
@@ -25,7 +27,8 @@ class DistribMenuConfig:
     """Configuration for an interactive distribution console."""
 
     adapter: DistributionAdapter
-    plan_id_provider: Callable[[], str | None]
+    plan_id: str | None = None
+    plans_root: Path | str | None = None
     distribution_root: Path | Callable[[], Path] | None = None
     title: str = "Worker Distribution Console"
 
@@ -38,10 +41,41 @@ class DistribMenuConfig:
         return distribution_root().resolve()
 
 
-def render_distrib_dashboard(config: DistribMenuConfig) -> str:
+class DistribSession:
+    """State for an active distribution menu session."""
+
+    def __init__(self, plan_id: str | None = None) -> None:
+        self.plan_id = plan_id
+
+    def get_or_prompt_plan(self, config: DistribMenuConfig) -> str | None:
+        if self.plan_id:
+            return self.plan_id
+        if config.plans_root:
+            from edgar_sec.domain.plan.discovery import discover_plans
+
+            plans = discover_plans(config.plans_root)
+            if not plans:
+                print("No published plans discovered.")
+                return None
+            if len(plans) == 1:
+                self.plan_id = plans[0].plan_id
+                return self.plan_id
+            items = [
+                PickItem(key=p.plan_id, label=p.describe(), value=p) for p in plans
+            ]
+            chosen = prompt_paginated_choice(items, prompt_label="Select plan")
+            if chosen is not None:
+                self.plan_id = chosen.value.plan_id
+                return self.plan_id
+        return None
+
+
+def render_distrib_dashboard(
+    config: DistribMenuConfig, active_plan_id: str | None = None
+) -> str:
     """Render bounded header summary of discovered bundles and active plan."""
     root = config.resolve_root()
-    plan_id = config.plan_id_provider()
+    plan_id = active_plan_id or config.plan_id
     p_name = config.adapter.pipeline_name
 
     lines = [
@@ -70,8 +104,8 @@ def render_distrib_dashboard(config: DistribMenuConfig) -> str:
     return "\n".join(lines)
 
 
-def _action_export(config: DistribMenuConfig) -> None:
-    plan_id = config.plan_id_provider()
+def _action_export(config: DistribMenuConfig, session: DistribSession) -> None:
+    plan_id = session.get_or_prompt_plan(config)
     if not plan_id:
         print("No active plan selected. Select or publish a plan first.")
         return
@@ -90,9 +124,9 @@ def _action_export(config: DistribMenuConfig) -> None:
     cmd_export(config.adapter, plan_id, worker_count=workers, destination=dest)
 
 
-def _action_run_worker(config: DistribMenuConfig) -> None:
+def _action_run_worker(config: DistribMenuConfig, session: DistribSession) -> None:
     root = config.resolve_root()
-    plan_id = config.plan_id_provider()
+    plan_id = session.get_or_prompt_plan(config)
     bundles = [
         b
         for b in discover_bundles(
@@ -115,9 +149,9 @@ def _action_run_worker(config: DistribMenuConfig) -> None:
     cmd_worker(config.adapter, chosen.bundle_dir, worker_id=chosen.worker_id)
 
 
-def _action_import(config: DistribMenuConfig) -> None:
+def _action_import(config: DistribMenuConfig, session: DistribSession) -> None:
     root = config.resolve_root()
-    plan_id = config.plan_id_provider()
+    plan_id = session.get_or_prompt_plan(config)
     if not plan_id:
         print("No active plan selected.")
         return
@@ -144,8 +178,8 @@ def _action_import(config: DistribMenuConfig) -> None:
     cmd_import(config.adapter, plan_id, chosen.bundle_dir)
 
 
-def _action_commands(config: DistribMenuConfig) -> None:
-    plan_id = config.plan_id_provider()
+def _action_commands(config: DistribMenuConfig, session: DistribSession) -> None:
+    plan_id = session.get_or_prompt_plan(config)
     if not plan_id:
         print("No active plan selected.")
         return
@@ -163,25 +197,32 @@ def _action_commands(config: DistribMenuConfig) -> None:
     cmd_commands(config.adapter, plan_id, worker_count=workers, destination=dest)
 
 
-def create_distrib_menu(config: DistribMenuConfig) -> tuple[MenuAction, ...]:
+def create_distrib_menu(
+    config: DistribMenuConfig, session: DistribSession | None = None
+) -> tuple[MenuAction, ...]:
     """Construct interactive MenuAction items for distribution console."""
     root = config.resolve_root()
+    active_session = session or DistribSession(config.plan_id)
     actions = [
         menu_action(
             "List discovered worker bundles",
             lambda: cmd_list(config.adapter, destination=root),
         ),
         menu_action(
-            "Export worker bundles for active plan", lambda: _action_export(config)
+            "Export worker bundles for active plan",
+            lambda: _action_export(config, active_session),
         ),
         menu_action(
-            "Execute worker on a pending bundle", lambda: _action_run_worker(config)
+            "Execute worker on a pending bundle",
+            lambda: _action_run_worker(config, active_session),
         ),
         menu_action(
-            "Adopt returned worker bundle (import)", lambda: _action_import(config)
+            "Adopt returned worker bundle (import)",
+            lambda: _action_import(config, active_session),
         ),
         menu_action(
-            "Render copy-pasteable execution commands", lambda: _action_commands(config)
+            "Render copy-pasteable execution commands",
+            lambda: _action_commands(config, active_session),
         ),
     ]
     return build_menu(*actions)
@@ -189,10 +230,11 @@ def create_distrib_menu(config: DistribMenuConfig) -> tuple[MenuAction, ...]:
 
 def run_distrib_menu(config: DistribMenuConfig, argv: list[str] | None = None) -> int:
     """Launch interactive distribution console."""
+    session = DistribSession(config.plan_id)
     return operator_entrypoint(
         config.title,
-        create_distrib_menu(config),
+        create_distrib_menu(config, session),
         lambda _argv: 0,
         argv,
-        before_menu=lambda: render_distrib_dashboard(config),
+        before_menu=lambda: render_distrib_dashboard(config, session.plan_id),
     )
