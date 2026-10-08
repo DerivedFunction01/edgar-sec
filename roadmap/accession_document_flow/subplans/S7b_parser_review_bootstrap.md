@@ -4,34 +4,40 @@
 
 - Cross-cutting S7 slice after the CLI/fixture lifecycle in
   [S7a](S7a_inventory_cli.md).
+- Status: review-artifact generation and structural inert previews are implemented;
+  semantic keyed parser-run comparison remains incomplete.
 - Depends on S7a, S2's fixture reader, and S3's typed parser contract.
 - Enables iterative S3 parser review; S0 evidence and S0-selected real fixtures arrive
   in parallel and are required for final parser acceptance.
 - Does not depend on S4 production workers, S5 snapshots, S6 target plans, or S12.
 
+Verified implementation evidence: `edgar_sec/pipelines/document_inventory/review_artifacts/`
+and `tests/pipelines/document_inventory/review_artifacts/` cover fixture replay, parser
+statuses, artifact outputs, worker ordering, and inert rendering. The command is exposed
+as `inventory review generate` through the shared review CLI.
+
 ## Objective
 
 Make captured index pages and parser outcomes inspectable during parser development.
-Parser-run comparison is optional follow-up development tooling, not a prerequisite for S3. This
-review loop is not the production inventory build path; it makes no SEC requests and
-does not publish snapshot data.
+Semantic parser-run comparison is optional follow-up development tooling, not a
+prerequisite for S3. This review loop is not the production inventory build path; it
+makes no SEC requests and does not publish snapshot data.
 
 ## Commands
 
 ```text
-inventory review-artifacts --fixture <id> --output <new-directory>
+inventory review generate --fixture <id> --output <new-directory>
     [--accession <accession> ...] [--limit <n>] [--workers <n>] [--json]
 
-inventory review --base <review-run> --new <review-run> [--output <new-directory>]  # optional
+inventory review compare --base <review-run> --new <review-run> [--output <new-directory>]
 ```
 
-`review-artifacts` selects captured accession/key pairs in deterministic accession
+`review generate` selects captured accession/key pairs in deterministic accession
 order, obtains exact uncompressed response bytes from the S2 reader, and calls
 `engine.index_pages.parser.parse_html_index` with the domain `IndexPageInput` record.
-A parser refusal produces an explicit failure
-case status; it must not fabricate an empty parsed page. Source preview and failure
-metadata remain reviewable when a parser refuses a page. The command exposes parser iterations against the same pinned fixture bytes. An
-optional `review` command may compare those runs offline after artifact shape stabilizes.
+A parser refusal produces an explicit outcome and does not fabricate an empty parsed
+page. Source preview and outcome metadata remain reviewable when parsing refuses a page.
+Non-parsed outcomes contribute to the command's nonzero exit status.
 
 ## Artifacts
 
@@ -78,41 +84,33 @@ the local fixture store and make zero HTTP requests.
 - Drop response bytes after each case and call `reclaim()` at bounded worker and
   coordinator batches. No full fixture body collection is retained in memory.
 
-## Comparison
+## Comparison status
 
-Parser-run comparison pins identical fixture/accession/response-digest inputs and
-reports row additions/deletions/field changes keyed by
-`(accession, table_kind, row_ordinal)`, bundle metadata changes, parse-status changes,
-and diagnostic changes. Parser fingerprints identify the implementation semantics;
-S3 owns and increments `PARSER_FINGERPRINT` when they change. Comparison output is
-deterministically ordered and contains no source HTML.
+The available shared `review compare` command compares generated review directories.
+Its inventory adapter uses set-based CSV row comparison and JSON observation diffs. It
+does not enforce identical fixture/page inputs or report parser-entry changes keyed by
+`(accession, table_kind, row_ordinal)`. Bundle metadata, status, diagnostic, and
+field-level changes are not yet presented as the semantic diff described by the target
+contract below. Parser fingerprints identify implementation semantics; S3 owns and
+increments `PARSER_FINGERPRINT` when they change.
 
 ## Tests
 
-- A refused page creates source previews and an explicit failure status, never
-  successful empty entries.
-- Replay passes exact uncompressed bytes and matching response digest into the parser
-  input; a fixture database is validated once per run.
-- Offline-only execution is verified by a transport spy that rejects HTTP.
-- Preview generation parses HTML structurally and rebuilds only allowlisted markup;
-  it does not sanitize with regex or preserve any source attribute.
-- Hostile/malformed markup cases (script/style bodies, event attributes, encoded or
-  mixed-case URL schemes, `srcdoc`, SVG/MathML, frames, forms, and embedded resources)
-  produce no active element, source attribute, or network load in the preview; the
-  renderer-generated CSP is present.
-- Artifact manifests pin fixture/page/parser identities and hash written files;
-  manifest order is stable across worker completion orders.
-- One failed case preserves sibling artifacts and makes the command return nonzero.
-- If the optional diff route is implemented, it detects entry, bundle, status, and
-  diagnostics changes for equal pinned source pages.
-- Empty selections and non-empty output directories are refused.
-- Tests do not inject a fake parser. Artifact serialization may be tested with directly
-  constructed typed outcomes; successful real-page parser tests are added with S0's
-  selected fixtures when S3 parsing is implemented.
+- Verified in `tests/pipelines/document_inventory/review_artifacts/`: builder tests
+  cover manifest/artifact output, replay failure without entries, empty selection,
+  occupied output refusal, deterministic case paths, and parallel manifest ordering.
+  Sanitizer tests cover tables, event attributes, a JavaScript URL, external resources,
+  active-content subtrees, malformed markup, and a generated CSP.
+- The implementation reads the local fixture store and has no network client dependency;
+  there is no dedicated transport-spy test. Broader hostile-markup combinations,
+  byte-identical reruns, keyed semantic comparison, and S0-selected real-page tests
+  remain unverified.
+- Tests do not inject a fake parser. The committed successful parser case is the
+  standard-layout fixture; S0-selected source pages are still required for era coverage.
 
 ## Acceptance
 
-Users can select an S2 fixture and run `review-artifacts` to inspect its inert source
+Users can select an S2 fixture and run `inventory review generate` to inspect its inert source
 and current parser status/results. As S3 evolves, identical fixture bytes produce
 reviewable, parser-fingerprinted results. A run-diff command is optional; full S7
 target-plan, snapshot, and acquisition review surfaces remain downstream of their own

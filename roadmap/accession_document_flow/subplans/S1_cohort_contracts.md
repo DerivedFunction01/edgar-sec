@@ -11,6 +11,21 @@
 - Enables: S2 raw-page capture and S0 audit sampling.
 - Non-blocking: S3 parser, S5 snapshot, S6 target planning.
 
+## Acceptance evidence
+
+- `edgar_sec/pipelines/document_inventory/cohort.py` implements catalog snapshot/plan
+  validation, row conversion, accession grouping, conflict refusal, and index-URL
+  construction.
+- `edgar_sec/domain/document_inventory/models.py` and `schemas.py` own the shared
+  immutable records and versioned entry schema.
+- Offline contract coverage is in `tests/pipelines/document_inventory/test_cohort.py`,
+  `tests/domain/document_inventory/test_models.py`, and
+  `tests/domain/document_inventory/test_schemas.py`.
+
+No S1 implementation blocker is identified by the current code/test surface. The
+separate S0 historical-source audit remains open and does not invalidate these
+cohort-contract tests.
+
 ## Objective
 
 Specify the inventory-domain model and a narrow cohort reader that projects a filing

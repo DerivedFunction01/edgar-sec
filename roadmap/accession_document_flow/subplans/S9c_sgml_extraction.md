@@ -3,8 +3,15 @@
 ## Owner and status
 
 - Owning stage in [S9](S9_acquisition.md): exact selection from submission envelopes.
-- Status: streaming extractor contract; implementation belongs below pipelines.
+- Status: streaming extractor design only; the existing lower-layer helper is
+  bytes-based and not suitable for the required large-bundle path.
 - Depends on: [S9a work orders](S9a_target_adapter.md), [S9b staged bodies](S9b_stream_transport.md).
+
+## Current tracked-code audit (2026-10-08)
+
+- **Status: bytes-based extraction exists as a parity foundation; the required streaming extractor is not implemented.** The existing helper scans complete byte strings, selects according to legacy type/filename rules, and may fall back to sequence one; it does not write one requested sequence to a staged child file.
+- **Evidence:** [`engine/document/unpacking/unpacker.py`](../../../edgar_sec/edgar_sec/engine/document/unpacking/unpacker.py) exposes bytes-based `extract_target_sub_document_selection`; [`test_unpacker.py`](../../../tests/engine/document/unpacking/test_unpacker.py) verifies that legacy selection and parity behavior.
+- **Next step:** add the separate bounded extractor under `engine/document/unpacking`, taking an S9 staged source and exact sequence, with typed structural failures and mirrored chunk-boundary, length, ambiguity, and byte-digest tests.
 
 ## Objective
 

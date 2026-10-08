@@ -271,7 +271,7 @@ edgar_sec/               # each package has its own README.md (linked above)
 │                       #   processing, candidate selection, submission building
 ├── pipelines/          # Layer 4: metadata_sync (Phase 1), filing_catalog
 │                       #   (Phase 2), document_inventory (streamed plan-to-work-order
-│                       #   projection; S4/S5 publication integration in progress),
+│                       #   projection, resumable S4, DAG-backed S5 publication/query),
 │                       #   document_storage (Phase 2.5)
 └── apps/               # Layer 5: the dataset viewer (read-only, no publishing)
 

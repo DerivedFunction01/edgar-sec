@@ -3,9 +3,11 @@
 ## Owner and status
 
 - Owning stage in [implementation.md](../implementation.md): **S4**.
-- Status: worker/coordinator scaffold and chunk-level Parquet checkpoints exist.
-  Production work-order creation is not wired to S5, and the confirmed within-chunk
-  recovery/cancellation contract is not implemented.
+- Status: bounded worker coordination, chunk checkpoints, per-accession transactional
+  progress/resume, retry, run locking, and cooperative cancellation are implemented.
+  S5's production builder creates the work order, invokes S4, and consumes its committed
+  attempts. An offline progress/RSS scale simulation has passed; no durable run report is
+  tracked, and live SEC workload behavior remains unverified.
 - Depends on: S1 cohort contract, S2 index fixture store, and S3 typed contract.
 - S7b review artifacts support S3 parser iteration; S0 runs alongside it and supplies
   final parser/resource evidence.
@@ -232,21 +234,18 @@ protocols are not imported or copied.
 
 ## Current implementation blockers
 
-- `coordinator.run_missing_accessions` requires an already-created work-order file;
-  no production `build_inventory` orchestrates catalog-plan projection, pre-fetch
-  anti-join, S4, and S5.
-- `run_missing_accessions` returns a bounded `RunSummary`, not committed chunk
-  references; the production builder must define a validated S4-to-S5 handoff.
-- The per-result DuckDB transaction, progress-pointer recovery, lock contention,
-  cancellation, and resource-ceiling tests are present, but the required offline
-  throughput/RSS check at production-like work-order size remains outstanding. Do not
-  replace the selected per-parse atomic boundary with entry-row streaming or multi-parse
-  commits.
-- `run_manifest.partition_into_chunks` remains an in-memory helper. Production must
-  stay on `write_work_order`/`iter_work_order_chunks` and must not call it.
-- S5 still lacks its snapshot publisher, publication lock, stale-parent validation,
-  and pointer-last installation. S0 historical-page evidence remains a parser and live
-  rollout gate, not a prerequisite for the S4 recovery work.
+- `tests/pipelines/document_inventory/test_progress.py` exercises atomic per-parse
+  recovery; `test_coordinator.py` covers bounded scheduling, resume/retry, run behavior,
+  signal drain, and worker ceilings; `test_run_lock.py` covers exclusive ownership.
+- `tests/pipelines/document_inventory/test_progress_scale_check.py` runs only a small
+  synthetic offline recovery case. A prior explicitly opted-in simulation also passed
+  at the documented production-like work-order size, including recovery/resume without
+  network or snapshot publication. Its result is not tracked as a durable report; live
+  SEC workload behavior remains unverified.
+- Production paths use the Parquet-backed work-order iterators. The in-memory chunk
+  helper remains available for unit use and is not evidence of production behavior.
+- S0 historical-page evidence still gates final parser acceptance and live rollout, not
+  the implemented S4 recovery contract.
 
 ## Module map and reuse
 

@@ -1,9 +1,10 @@
 # Accession Document Flow — Implementation Roadmap
 
-Status: **architecture and staged subplans S0–S12, including early S7a/S7b, are drafted in the subplans directory.** The metadata inventory and
-target-plan schemas can be specified before processing document bodies. The
-filing-index HTML parser's edge rules are gated by a representative SEC-page audit;
-the persistent model for fetched document payloads remains deliberately deferred.
+Status: **the S1–S5 inventory build path and S7a/S7b fixture-review foundations are
+implemented; S0 historical acceptance, S5 supersession identity, and S8 operational
+retention remain open.** S6 target planning is the next offline handoff. See the
+[inventory exit and acquisition gate](./inventory_exit_and_acquisition_gate.md) for
+current readiness; stage subplans own detailed contracts.
 
 Each stage S0–S12 has a detailed subplan under
 [./subplans/](./subplans/); S7a is the frontloaded fixture CLI and S7b is the parser
@@ -11,8 +12,10 @@ review loop. Stage headers link to their subplan; further
 refinement of any subplan is independent, and the summaries here will be
 compressed to reference them once all subplans are stable. S9 is decomposed into
 S9a–S9d contracts for target adaptation, streaming, extraction, and fixture replay.
-Stages group into two independent pipelines: `document_inventory` (S0–S5) and
-`document_acquisition` (S6–S10); S7, S8, and S12 are cross-cutting.
+Stages are owned by three pipeline packages joined by immutable artifacts:
+`document_inventory` (S0–S5), `document_planning` (S6), and
+`document_acquisition` (S9–S10). S7, S8, and S12 are cross-cutting; S11 is a payload-store
+design gate.
 
 See [design.md](./design.md) for the stage boundaries and domain grain. The
 queryable snapshot, source-CIK anti-join, seek-index, and vacuum contract is
@@ -29,18 +32,20 @@ to remove `document_storage` after the approved S11 payload store is implemented
 replacement parity and consumer/artifact migration are verified, and a separately
 gated decommission milestone passes.
 
-The replacement is not a single pipeline. It is two independent pipelines that
-jointly replace `document_storage`:
+The replacement is not a single pipeline. Three stage-owned pipeline packages
+jointly replace `document_storage` through explicit artifact handoffs:
 
 - `edgar_sec.pipelines.document_inventory` (S0–S5): cohort selection, index-page
   fetching and parsing, and publication of the cumulative queryable snapshot.
-- `edgar_sec.pipelines.document_acquisition` (S6–S10): target-plan publication,
-  acquisition of selected payloads, and deterministic processing of them.
+- `edgar_sec.pipelines.document_planning` (S6): offline target-plan publication from
+  exactly one immutable inventory snapshot or filing-catalog plan.
+- `edgar_sec.pipelines.document_acquisition` (S9–S10): acquisition of selected
+  payloads and deterministic processing of them.
 
 S7 review (with S7a fixture lifecycle and S7b parser review frontloaded before parser
-implementation) and S12 operator integration are cross-cutting to both pipelines; S8 is
-inventory maintenance, and S11 is a payload-store design gate rather than a pipeline.
-No stage in either pipeline imports the frozen legacy package.
+implementation) and S12 operator integration are cross-cutting to the three packages;
+S8 is inventory maintenance, and S11 is a payload-store design gate rather than a
+pipeline. None of the replacement packages imports the frozen legacy package.
 
 The tradeoff is stronger than extending the current path. A factual index of an
 accession's observed files can serve independent primary, exhibit, and XBRL
@@ -268,7 +273,9 @@ settings. The profile grammar is a list of form selectors and target requests:
 
 Rules are resolved as follows:
 
-- Every target **must declare an explicit, stable `request_id`**.
+- Every target has a stable semantic `request_id`. It may be explicit or derived from
+  a unique primary, document-type, or package-type selector; positional defaults and
+  collisions are rejected.
 - Comma-separated form selectors are split into individual form tokens, and
   `resolve_alias(form)` is called on **each individual form**; the alias owner does
   not accept un-split comma-delimited strings.
@@ -292,14 +299,15 @@ Target intent and match outcomes belong in a separate plan bundle:
 {artifacts_root}/document_planning/plans/{plan_id}/targets.parquet
 ```
 
-The manifest pins `plan_id`, `inventory_snapshot_id`, canonical profile/request
-digest, target-plan schema version, target-matching implementation version, and
-counts by outcome. The target table is one row per requested selector outcome per
-accession and matched entry. Its v1 fields are:
+The manifest pins `plan_id`, exactly one source kind/ID/digest, the canonical
+profile/request digest, target-plan schema version, target-matching implementation
+version, and counts by outcome. Its v1 table emits one row per candidate entry; an
+unmatched request emits one row with a null `inventory_entry_id`, while an ambiguous
+request emits one row per conflicting candidate. Its fields are:
 
 | Field | Arrow type | Contract |
 |---|---|---|
-| `target_id` | `string` | SHA-256 of canonical `[plan_id, accession, request_id, inventory_entry_id, outcome]`. |
+| `target_id` | `string` | SHA-256 of canonical `[plan_id, accession, request_id, inventory_entry_id, status]`; status is the outcome component. |
 | `accession` | `string` | Accession requested by the cohort. |
 | `request_id` | `string` | Stable selector/rule identity from the profile. |
 | `target_role` | `string` | Intent: `primary`, `exhibit`, `data_file`, or `package`. |
@@ -307,24 +315,28 @@ accession and matched entry. Its v1 fields are:
 | `optional` | `bool` | Whether no match is a valid outcome. |
 | `inventory_entry_id` | `string`, nullable | Observed source row; null for constructed URL candidates or no match. |
 | `status` | `string` | Outcome status: `matched`, `not_filed`, `required_missing`, `ambiguous`, `unresolved`, or `constructed_candidate`. |
+| `status_reason` | `string`, nullable | Stable reason code for a non-match or source-specific refusal. |
 | `source_origin` | `string` | Provenance: `inventory_index` (default) or `catalog_direct`. |
 | `retrieval_mode` | `string` | `direct_url`, `bundle_sequence`, `constructed_package`, or `none`. |
-| `target_url` | `string`, nullable | Observed/resolved href or convention-derived candidate URL. |
+| `target_url` | `string`, nullable | Exact retrieval locator: observed child href for `direct_url`, advertised accession bundle URL for `bundle_sequence`, or constructed candidate URL. |
 | `sequence` | `int32`, nullable | Required for bundle extraction; never guessed. |
 | `byte_size` | `int64`, nullable | Source-observed size; unknown for constructed candidates. |
-| `availability_evidence` | `string` | `index_html`, `constructed`, or `none`; does not imply a payload was fetched. |
+| `availability_evidence` | `string` | `index_html`, `catalog_metadata`, `constructed`, or `none`; does not imply a payload was fetched. |
 
 Matching and outcome rules:
 
 - **Status vs. Provenance**: `catalog_direct` belongs in `source_origin`, not in `status`.
 - **`not_filed` vs. `unresolved`**: Use `not_filed` **only** when a recognized, complete
-  index page has no matching row for an optional target. An unrecognized or unavailable
-  page produces `unresolved`, never evidence that the filing omitted the document.
+  index page has no matching row for an optional target. S5 refuses to publish failed or
+  unrecognized pages, so an inventory-backed plan cannot emit `unresolved` for such a
+  page from a successfully published snapshot. Per-accession parse-failure outcomes
+  require a persisted S5 page-status relation.
 - **Candidate packages**: A constructed XBRL ZIP path derived from accession rules
   remains a `constructed_candidate` unless S0 establishes empirical proof of
   per-accession availability.
 - An unlinked row needs both an advertised bundle URL and a sequence to become a
-  `bundle_sequence` target.
+  self-contained `bundle_sequence` target; its bundle URL is stored in `target_url` so
+  S9 does not need to reopen the inventory snapshot.
 
 ### 4.4 Fixture databases
 
@@ -636,7 +648,7 @@ The cumulative queryable snapshot: append-only delta and checkpoint DAG publicat
 
 **Details:** [subplan](subplans/S6_target_plans.md)
 
-Versioned JSON profiles in `policies/document_targets/` with mandatory `request_id`, individual form alias resolution via `resolve_alias`, and canonical digests; target plans as separate immutable bundles pinned to exactly one source artifact (inventory snapshot or catalog plan); clean separation of outcome `status` from provenance (`source_origin: "inventory_index" | "catalog_direct"`); and primary-only catalog-direct targets without synthetic inventory rows. Hybrid source precedence is deferred. The grammar, v1 target-plan schema, matching rules, and acceptance tests are in the subplan.
+Versioned JSON profiles in `policies/document_targets/` with semantic `request_id` values (explicit or canonically derived), per-token form alias resolution, and canonical digests; target plans as separate immutable bundles pinned to exactly one source artifact (inventory snapshot or catalog plan); clean separation of outcome `status` from provenance (`source_origin: "inventory_index" | "catalog_direct"`); and primary-only catalog-direct targets without synthetic inventory rows. Hybrid source precedence is deferred. The grammar, v1 target-plan schema, matching rules, and acceptance tests are in the subplan.
 
 ### S7 — Index and target-plan review surfaces
 

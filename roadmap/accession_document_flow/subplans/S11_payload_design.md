@@ -7,6 +7,12 @@
 - Depends on: S9 acquisition/fixture cases and S10 processor review cases.
 - Precedes: any durable payload-store implementation or `document_storage` cutover.
 
+## Current tracked-code audit (2026-10-08)
+
+- **Status: design gate remains open; no approval or decision record is evidenced.** The representative S9 acquisition cases and S10 processing-review cases required as decision inputs are not implemented, so the candidate comparison and evidence-based approval checklist cannot yet be completed.
+- **Evidence:** the S9a–S9d and S10 audits in their subplans record the missing prerequisite artifacts. The existing [`document_storage` processor](../../../edgar_sec/pipelines/document_storage/processor.py) and persisted snapshot path are legacy behavior, not an S11 decision or replacement-store implementation; [`document_storage_disposition.md`](../document_storage_disposition.md) keeps that package frozen pending the retirement gate.
+- **Next step:** complete and review S9/S10 representative fixture cases first; then write the required decision record with evidence, rejected alternatives, migration implications, and explicit approval identity/date. Do not implement or cut over a durable replacement before approval.
+
 ## Objective
 
 Choose durable raw-payload and normalized-representation storage only after representative target sources, acquisition routes, and processing outputs have been reviewed. The decision must remain separate from S5's annual metadata snapshot and S6's immutable target plans.

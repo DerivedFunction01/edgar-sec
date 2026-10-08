@@ -73,8 +73,7 @@ broker, worker, coordinator, run lock, progress journal, paths, run-manifest, ch
 
 - The parser has not completed the historical SEC layout audit; final acceptance still
   depends on S0 evidence.
-- The S4 coordinator and S5 projection/publication primitives are not integrated into a
-  production build command. A snapshot reader/query API and the explicit superseded-entry
-  manifest mapping remain incomplete.
-- Fixture/review cohort projection through `cohort.py` remains in-memory and is not the
-  production-scale path.
+- `cohort.py` remains an in-memory projection for small fixture and review inputs; the
+  production build uses the streamed catalog-plan projection in `snapshot/`.
+- Refreshes hide prior entry rows from active snapshot queries through DAG scoped masking,
+  but do not publish a direct mapping of superseded entry IDs.

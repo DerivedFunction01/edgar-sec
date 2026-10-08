@@ -5,17 +5,17 @@
 - Owning stage in [implementation.md](../implementation.md): **S5**; the detailed
   contract for S5 is also in
   [inventory_snapshot.md](../inventory_snapshot.md).
-- Status: Complete production build flow (`build_inventory`), streamed pre-fetch cohort
-  projection/work-order generation, post-fetch anti-join staging, S4 execution,
-  validated-attempt snapshot merge, artifact validation, serialized installation,
-  stale-parent refusal, and pointer-last publication implemented on top of
-  `edgar_sec/infra/storage/dag/` using delta publications and `RelationSpec`. Reader/query
-  surface, CLI/operator commands, and production builder are verified offline. Entry
-  supersession is canonically resolved via relational DAG `scoped_mask` on
-  `INVENTORY_ENTRIES_SPEC`.
+- Status: production build flow (`build_inventory`), streamed pre-fetch projection and
+  work-order generation, S4 execution, validated-attempt merge, snapshot validation,
+  serialized installation, stale-parent refusal, pointer-last publication, and reader/
+  query commands are implemented. Entry supersession uses DAG `scoped_mask` through
+  `INVENTORY_ENTRIES_SPEC`, but the planned explicit prior-entry-ID mapping is not
+  persisted. Offline test coverage exists; historical parser acceptance and live
+  operational rollout remain gated by S0.
 - Depends for operational publication on: S1 cohort contract, S3 parser body, and S4
   integrated broker+worker. S2 remains research/replay input, not a production writer.
-- Non-blocking: S6–S10 design (consumers, not implementers).
+- Non-blocking: S6 target planning and S9–S10 acquisition/processing (read-only
+  consumers, not inventory writers).
 
 ## Objective
 
@@ -134,22 +134,37 @@ All published and transient path construction is owned by
 
 ## Current implementation blockers
 
-- The S0 SEC-page audit still gates final historical parser acceptance, not the
-  implementation of the production plan/work-order/snapshot infrastructure.
+- The S0 SEC-page audit still gates final historical parser acceptance and any claim of
+  historical/live source coverage. It does not block the implemented offline
+  plan-to-snapshot build path.
+- Refresh publication masks parent entries for a changed accession from active queries
+  and preserves the parent snapshot, but does not persist the explicit prior-entry-ID
+  supersession mapping required by the contract below. Current reader tests establish
+  active-query behavior only. Decide whether that mapping is required; if retained,
+  implement a bounded persisted representation and test its lineage behavior.
+- The reader resolves a branch/current tip for queries but does not expose an immutable
+  named-snapshot read boundary for downstream planning. Add a reader path that resolves
+  one snapshot ID and validates its manifest/parts before S6 streams batches; never let a
+  target plan re-read a moving branch pointer.
 
-## Unblock order
+## Acceptance evidence and next step
 
-1. Connect the existing streamed filing-plan projection and pre-fetch accession
-   anti-join to the production builder; pin the transient work order before S4.
-2. Add S4's run lock, per-parse progress journal, resume validation, and cooperative
-   cancellation. Keep the current chunk-level Parquet pointer as the canonical S4/S5
-   handoff.
-3. Add the snapshot reader/query surface and broaden synthetic committed-attempt
-   coverage; the bounded writer and pointer-last publisher can proceed before S0 ends.
-4. Wire the production builder and discovery-driven command through plan projection,
-   S4, and S5, then run an offline vertical test with a published-plan fixture.
-5. Gate final parser acceptance and live operational rollout on S0's historical-page
-   evidence; this gate does not block the preceding infrastructure implementation.
+- `edgar_sec/pipelines/document_inventory/snapshot/builder.py` connects validated plan
+  projection, S4 coordination, and snapshot publication; `snapshot/reader.py` exposes
+  active accession, entry, filing-CIK, and source-CIK queries.
+- `tests/pipelines/document_inventory/snapshot/test_projection.py` covers bounded
+  projection and a 236k-row projection case; `test_builder.py` covers offline build,
+  no-op, source-edge addition without refetch, and failed-build refusal;
+  `test_writer.py` covers delta publication, validation, stale parents, refresh
+  supersession, and publication locking; `test_reader.py` covers active queries and
+  scoped-mask supersession.
+- The inventory CLI/operator routes build and query operations through the production
+  builder/reader. These offline cases do not establish live SEC behavior or S0 historical
+  parser coverage.
+- No plan-projection, S4 integration, active-query, or pointer-last publisher wiring
+  task remains outstanding in this subplan. Next: add named-snapshot reads for S6, resolve
+  the explicit supersession-map contract and implement/test it if retained, then complete
+  S0's authorized source audit.
 
 ## Physical layout: dense annual partitions
 

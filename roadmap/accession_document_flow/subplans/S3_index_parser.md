@@ -3,11 +3,26 @@
 ## Owner and status
 
 - Owning stage in [implementation.md](../implementation.md): **S3**.
-- Status: typed contract and first structural parser pass are implemented against the
-  standard SEC filing-page fixture.
+- Status: parser implementation and offline edge-case tests exist. The committed-page
+  baseline is one standard-layout fixture plus synthetic cases; S0 historical coverage
+  and final parser acceptance remain incomplete.
 - Depends on: S2's exact-byte fixture reader for replay. S7b supplies the iterative
   review loop; S0 evidence is required to finalize era/table rules and acceptance.
 - Non-blocking: S1 cohort schema, S2 capture store, S4 broker+pool, S5 snapshot.
+
+## Acceptance evidence and blocker
+
+- `edgar_sec/engine/index_pages/parser.py` implements the pure typed parser and stable
+  fingerprint. `tests/engine/index_pages/test_parser.py` covers the committed
+  `tests/fixtures/document_inventory_index_page.html` and synthetic table, row,
+  diagnostic, and URL cases.
+- The tracked parser tests do not demonstrate legacy/transition/modern coverage from
+  sampled SEC pages. The S0 audit table and selected historical fixtures are not present
+  in the tracked tree, so the “every audit case” acceptance criterion remains open.
+- The parser currently returns no XBRL candidate; an XBRL availability policy must not
+  be inferred from its URL behavior and remains an S0 decision.
+- Next: apply S0 evidence to the parser, add sanitized source-derived cases for observed
+  variants, and rerun parser review before declaring historical acceptance.
 
 ## Objective
 

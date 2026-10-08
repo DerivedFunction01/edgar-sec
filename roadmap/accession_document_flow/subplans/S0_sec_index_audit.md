@@ -3,11 +3,29 @@
 ## Owner and status
 
 - Owning stage in [implementation.md](../implementation.md): **S0**.
-- Status: empirical evidence-gathering subplan; not the production index-parser implementation.
+- Status: **not complete**. The offline parser baseline and capture/replay machinery
+  exist, but no tracked stratified audit table or audit-selected historical fixture set
+  is present. This status does not imply that a live SEC survey has been run.
 - Depends on: S1 cohort projection for candidates and S2 raw-page capture/replay.
 - Blocks: production parser edge rules in S3 and the XBRL availability policy in S6.
 - Does not depend on: S5 inventory snapshots, S7a fixture CLI, S7b parser review
   artifacts, later S7 review surfaces, or S12 CLI artifacts.
+
+## Current evidence and next step
+
+- `roadmap/accession_document_flow/implementation.md` records illustrative legacy and
+  modern accession examples and explicitly distinguishes them from universal coverage.
+- `tests/fixtures/document_inventory_index_page.html` is the committed parser fixture;
+  `tests/engine/index_pages/test_parser.py` also exercises synthetic structural cases.
+- S2 capture/replay is implemented in `edgar_sec/pipelines/document_inventory/fixture_store/`;
+  its offline contracts are tested under `tests/pipelines/document_inventory/fixture_store/`.
+- The tracked tree contains no portable S0 audit result or audit-selected historical
+  fixture manifest. The existing fixture/tests do not establish 100–200-page era/form
+  coverage or a live SEC finding.
+- Next: obtain a sufficiently broad published catalog snapshot and explicit
+  authorization for SEC research, capture the stratified pages through S2, then commit
+  the portable audit evidence and selected sanitized fixtures before finalizing S3/S6
+  acceptance.
 
 ## Objective
 

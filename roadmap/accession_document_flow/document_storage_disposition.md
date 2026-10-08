@@ -3,17 +3,17 @@
 ## Status and purpose
 
 `edgar_sec.pipelines.document_storage` is frozen while the accession-document flow
-is built. The replacement is not a single pipeline: it is two independent pipelines,
-`edgar_sec.pipelines.document_inventory` and
-`edgar_sec.pipelines.document_acquisition`, and no module under the frozen package is
-imported by either. The planned end state is to remove the package after the S11
-payload store is implemented, replacement behavior is verified, consumers and old
-artifacts are migrated or retired, and a separate decommission gate passes.
+is built. The replacement is split across three artifact-connected pipeline packages:
+`edgar_sec.pipelines.document_inventory`, `edgar_sec.pipelines.document_planning`, and
+`edgar_sec.pipelines.document_acquisition`. No module under the frozen package is
+imported by them. The planned end state is to remove the package after the S11 payload
+store is implemented, replacement behavior is verified, consumers and old artifacts
+are migrated or retired, and a separate decommission gate passes.
 
 This map records the old responsibilities, the replacement owner or deliberate gap,
 and which contracts are invariants to reimplement versus historical cases to keep as
-tests. The replacement owners are the two pipelines above (`document_inventory` owns
-S0–S5; `document_acquisition` owns S6–S10), plus cross-cutting S7 and S12 and
+tests. The replacement owners are `document_inventory` (S0–S5), `document_planning`
+(S6), and `document_acquisition` (S9–S10), plus cross-cutting S7/S12 and
 inventory-maintenance S8. `R` means reimplement a contract, **not reuse the old module**; `I`
 means inspiration/test evidence only; `N` means do not port the old behavior or
 schema; `D` means delete the old module at the approved retirement gate.

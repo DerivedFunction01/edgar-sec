@@ -3,9 +3,16 @@
 ## Owner and status
 
 - Owning stage in [implementation.md](../implementation.md): **S12**.
-- Status: artifact-oriented CLI and vertical verification contract.
+- Status: integrated CLI and vertical verification remain design-only; existing
+  inventory and catalog commands are separate partial foundations.
 - Depends on: S1–S11 public contracts, including S9a–S9d.
 - Non-blocking: interactive UX and `document_storage` decommissioning.
+
+## Current tracked-code audit (2026-10-08)
+
+- **Status: inventory CLI foundations exist; the S12 command surface and offline vertical gate are not implemented.** Inventory build/query/review commands are tracked, and filing-catalog planning is a separate CLI; there is no integrated `documents plan` command or fixture-driven plan-to-acquisition-to-processing-to-vacuum-to-review run matching this contract.
+- **Evidence:** [`document_inventory/cli.py`](../../../edgar_sec/edgar_sec/pipelines/document_inventory/cli.py) registers inventory commands and review/DAG/distribution subcommands. Mirrored inventory and catalog tests cover those owners, while `document_storage` retains a separate legacy CLI and tests.
+- **Next step:** defer the vertical integration test until S6, S9, and S10 replacement APIs are implemented; then wire explicit artifact IDs and add the zero-network, no-payload-write end-to-end fixture gate before any legacy decommissioning.
 
 ## Objective
 
@@ -67,7 +74,7 @@ The quality-gate integration fixture performs these stages in a temporary artifa
 5. **Plan (S6):** create an inventory-backed target plan and a separate catalog-direct plan from local fixtures. Assert identical target schema, distinct `source_origin`, zero HTTP, and no inventory mutation. The two source plans remain separate; this test does not imply hybrid precedence.
 6. **Acquire (S9):** replay direct-URL and bundle-sequence acquisition cases from S9d. Verify body/source/selected digests, exact sequence, and zero HTTP.
 7. **Process (S10):** process fixture HTML/iXBRL, standalone XML, binary/PDF, legacy `<PRE>`, and malformed-input cases. Verify route-specific outcomes, processor fingerprint, and that normalized data remains transient except for explicitly selected review output.
-8. **Vacuum (S8):** compact the published snapshot under a test retention policy, compare the full logical fingerprint and canonical query results, and prove a plan-pinned old snapshot remains readable. A stale/concurrent pointer cannot be overwritten.
+8. **Vacuum (S8):** compact the published snapshot under a test retention policy, compare the full logical fingerprint and canonical query results, and prove an explicitly tagged old snapshot remains readable. A target-plan source reference alone is not a DAG retention root. A stale/concurrent pointer cannot be overwritten.
 9. **Review (S7):** compare two parser runs over the same fixture and two target plans over pinned inputs; verify identity-keyed diffs, inert HTML, and empty-destination refusal.
 
 The run asserts zero network calls, zero `document_storage` imports in new S9/S10 paths, no payload fields in inventory/target-plan Parquet, and cleanup of transient staging after success and injected failure.

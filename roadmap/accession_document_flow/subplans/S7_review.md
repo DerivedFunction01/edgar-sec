@@ -5,9 +5,9 @@
 - Owning stage in [implementation.md](../implementation.md): **S7**.
 - Frontloaded fixture CLI: [S7a](S7a_inventory_cli.md). Parser review loop:
   [S7b](S7b_parser_review_bootstrap.md).
-- Status: staged review design. S7a creates/fills fixtures; S7b builds parser review
-  artifacts to inspect the existing S3 parser pass and later iterations; later review
-  surfaces follow their source artifacts.
+- Status: S7a fixture create/fill/list and S7b parser review artifact generation are
+  implemented. S7c target-plan/snapshot review and S7d acquisition/processing review
+  remain downstream work.
 - S7a depends on S1/S2 and `filing_catalog` plan loading. S7b depends on S7a, S2, and
   the S3 type contract. Later S7 surfaces depend on S5/S6 and (for processing review)
   S9/S10.
@@ -19,9 +19,10 @@
 ## Objective
 
 Provide offline review and inspect APIs in dependency-sized slices. **S7a** provides
-the fixture CLI lifecycle. **S7b** builds `inventory review-artifacts` from those
-fixtures and parser outputs so S3 can iterate through pinned pages. A parser-run
-`inventory review` diff is optional after artifact runs exist. Later S7
+the fixture CLI lifecycle. **S7b** builds `inventory review generate` from those
+fixtures and parser outputs so S3 can iterate through pinned pages. Generic
+`inventory review compare` exists; semantic parser-run comparison remains optional
+follow-up work. Later S7
 surfaces compare target plans, inspect S5 snapshots, and review acquisition/processing
 artifacts. Do not build the interactive wizard here.
 
@@ -39,10 +40,11 @@ artifacts. Do not build the interactive wizard here.
 - **Inert links**: Source anchors are rendered as plain text; source URLs and all other
   source attributes are omitted. Only renderer-generated markup is emitted.
 - **Defense in depth**: Previews include a renderer-generated CSP with `default-src
-  'none'`, `object-src 'none'`, `base-uri 'none'`, `form-action 'none'`, and
-  `sandbox`. Sanitization is the primary guarantee; CSP is defense in depth.
-- **Zero HTTP**: All review operations read solely from local fixture SQLite stores or
-  published Parquet snapshots; network calls are strictly banned.
+  'none'`, `img-src 'none'`, `style-src 'none'`, `frame-src 'none'`, `base-uri 'none'`,
+  `form-action 'none'`, and `sandbox`. Sanitization is the primary guarantee; CSP is
+  defense in depth.
+- **Zero HTTP**: Parser review generation and comparison read local fixture artifacts;
+  fixture create/fill are separate commands that capture SEC responses.
 
 ## Review surfaces and diff structures
 
@@ -74,7 +76,9 @@ artifacts. Do not build the interactive wizard here.
 
 S7b reviews the implemented `engine.index_pages.parser.parse_html_index` against pinned
 fixture bytes: it emits the inert source preview and records typed parser outcomes
-without inventing entries. Parser iteration remains owned by S3.
+without inventing entries. The available shared `review compare` route provides generic
+row/observation comparison; the keyed, field-level parser diff specified below is not
+verified as implemented. Parser iteration remains owned by S3.
 
 ## Review output shapes
 
@@ -108,16 +112,16 @@ status, and digests for generated review files.
 
 ## CLI routes
 
-S7a fixture routes are available first. S7b review routes consume the S3 type contract
-and pinned fixture pages; later S7 routes are added only after their pinned artifacts
-exist:
+Implemented fixture and parser review routes use the shared inventory CLI. The current
+command shape is `inventory fixture ...` and `inventory review generate|compare`; later
+S7 routes remain dependent on their source artifacts:
 
 ```text
 inventory fixture create --fixture <id> --catalog-plan <id>
 inventory fixture fill --fixture <id> --catalog-plan <id>
 inventory fixture list
-inventory review-artifacts --fixture <id> --output <dir>
-inventory review --base <dir> --new <dir>  # optional
+inventory review generate --fixture <id> [--output <dir>]
+inventory review compare --base <dir> --new <dir>
 inventory inspect --snapshot <id|current> [--accession <accession>]
 ```
 
@@ -149,7 +153,8 @@ inspection remain blocked on those artifacts.
 ## Acceptance criteria
 
 S7a fixture create/fill/list works without the originating catalog plan. S7b
-`review-artifacts` serves source-page parse output from pinned fixtures; optional
-`review` compares parser runs, and later `inspect`/plan review follow their artifacts.
+`inventory review generate` serves source-page parse output from pinned fixtures;
+generic `review compare` exists, while semantic parser comparison and later
+`inspect`/plan review follow their source artifacts.
 Source HTML is structurally parsed and rebuilt as inert previews without source
 attributes, active anchors, or remote loads; sanitizer tests cover hostile markup.

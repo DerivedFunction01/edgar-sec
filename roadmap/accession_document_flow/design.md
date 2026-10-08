@@ -45,11 +45,11 @@ target plan derives `direct_url` or `bundle_sequence` retrieval from it.
 
 The inventory unit is the accession, not a requested document. Inventory records
 what the archive exposes; planning separately decides which rows to target. Each
-stage consumes the prior artifact without rewriting it. These stages form two
-independent replacement pipelines — `document_inventory` (S0–S5) and
-`document_acquisition` (S6–S10) — rather than a single monolithic replacement of
-`document_storage`; S6 produces the shared target-plan artifact consumed by the
-acquisition pipeline.
+stage consumes the prior artifact without rewriting it. The flow uses three
+stage-owned pipeline packages — `document_inventory` (S0–S5),
+`document_planning` (S6), and `document_acquisition` (S9–S10) — rather than a
+monolithic replacement of `document_storage`. S6 publishes the target-plan artifact
+consumed by acquisition.
 
 ```mermaid
 flowchart TD
@@ -77,7 +77,7 @@ flowchart TD
         FIX["Acquisition fixture/evidence<br/>source URL and body digest"]
     end
 
-    subgraph S5["Stage 5 · document_processing (later, zero network)"]
+    subgraph S5["S10 · document_acquisition processing (later, zero network)"]
         NORM["Process captured document bytes"]
         REVIEW["Review artifacts and diffs<br/>fixture replay only"]
     end

@@ -3,9 +3,16 @@
 ## Owner and status
 
 - Owning stage in [implementation.md](../implementation.md): **S9**.
-- Status: acquisition contracts, streaming transport, legacy extraction, and fixture replay.
+- Status: replacement acquisition remains design-only; legacy byte-oriented
+  acquisition components do not satisfy the staged S9 contracts.
 - Depends on: S6 target plans; S5 snapshot reads for inventory bundle metadata; S4 broker lifecycle.
 - Non-blocking: S10 processing uses the staged selected-body reference and fixture replay API.
+
+## Current tracked-code audit (2026-10-08)
+
+- **Status: replacement acquisition is not implemented.** Existing SEC HTTP and `document_storage` paths fetch and pass full response bytes; the old acquisition, fixture, and processing models do not satisfy the staged S9 contracts.
+- **Evidence:** [`infra/sec_http/client.py`](../../../edgar_sec/infra/sec_http/client.py) reads `response.content`; [`infra/broker/sec_broker.py`](../../../edgar_sec/infra/broker/sec_broker.py) returns payload bytes through its broker protocol. [`document_storage_disposition.md`](../document_storage_disposition.md) explicitly marks the old fetcher, fixture store, and work order as inspiration or non-reusable legacy contracts.
+- **Next step:** start with S9a after the S6 profile target-plan contract exists; then implement staged streaming, exact-sequence extraction, and the separate S9d fixture store in dependency order.
 
 ## Objective
 
@@ -16,7 +23,7 @@ Acquire only executable targets from immutable target plans, retain source prove
 S9 reads target-plan rows and their pinned source manifests. `source_origin` selects a resolver, not a separate downstream data shape:
 
 - `inventory_index` direct targets fetch their observed URL.
-- `inventory_index` bundle targets resolve the accession bundle URL from the plan's pinned inventory snapshot and require the observed sequence.
+- `inventory_index` bundle targets use the accession bundle URL in `target_url` and require the observed sequence; S9 does not reopen the inventory snapshot.
 - `catalog_direct` targets fetch the direct URL emitted by the S6 catalog adapter. They do not create or require a synthetic inventory entry.
 
 Only `status="matched"` rows with `direct_url` or `bundle_sequence` are executable. Other target outcomes remain in the plan and are counted as skipped; `constructed_candidate` is not fetched unless a later S0 policy explicitly makes it executable. Target plans and inventory snapshots remain immutable.

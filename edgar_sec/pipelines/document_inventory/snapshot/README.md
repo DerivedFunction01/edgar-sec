@@ -53,4 +53,5 @@ None; commands are owned by `document_inventory.cli`.
 
 ## Deliberate gaps
 
-None.
+- Refreshes mask superseded entry rows from active views, but no snapshot artifact
+  records the direct IDs of the entries replaced by a refresh.

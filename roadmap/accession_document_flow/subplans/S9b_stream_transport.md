@@ -3,8 +3,14 @@
 ## Owner and status
 
 - Owning stage in [S9](S9_acquisition.md): bounded HTTP body transfer.
-- Status: broker streaming and staging contract.
+- Status: streaming/staging design only; current broker transport returns body bytes.
 - Depends on: [S9a work orders](S9a_target_adapter.md), S4 broker lifecycle.
+
+## Current tracked-code audit (2026-10-08)
+
+- **Status: not implemented.** The current HTTP client and broker still materialize complete bodies as bytes; there is no staged-body handle or stream-to-managed-file API in the tracked transport.
+- **Evidence:** [`infra/sec_http/client.py`](../../../edgar_sec/infra/sec_http/client.py) consumes `response.content`, and [`infra/broker/sec_broker.py`](../../../edgar_sec/infra/broker/sec_broker.py) sends and receives the complete payload in its framed response. [`document_storage_disposition.md`](../document_storage_disposition.md) states that this broker needs a streaming-to-stage extension.
+- **Next step:** extend the broker/HTTP seam to stream bounded chunks into owner-generated staging paths and return metadata/digests only; add offline tests for size abort, redirects, cleanup, and body-free IPC.
 
 ## Objective
 

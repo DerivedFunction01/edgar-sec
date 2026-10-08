@@ -3,9 +3,16 @@
 ## Owner and status
 
 - Owning stage in [implementation.md](../implementation.md): **S10**.
-- Status: deterministic processing interface and route coverage; no durable output schema.
+- Status: S10 transient result/review contract is design-only; legacy route-aware
+  processing is available but persists a different result shape.
 - Depends on: S9 staged selected-body and fixture replay contracts; S7 review artifacts.
 - Non-blocking: S11 payload-store decision.
+
+## Current tracked-code audit (2026-10-08)
+
+- **Status: processing foundations exist in the legacy pipeline; the S10 transient processing contract is not implemented.** `FilingProcessor` normalizes acquired bytes and exposes a fingerprint, but its result carries payload bytes for legacy persistence. The engine normalizer has no no-stage-trace switch, and no `process_target` result/review-staging API is present.
+- **Evidence:** [`document_storage/processor.py`](../../../edgar_sec/edgar_sec/pipelines/document_storage/processor.py) returns `ProcessedDocument.payload`; [`engine/forms/normalize.py`](../../../edgar_sec/edgar_sec/engine/forms/normalize.py) always appends stage records; [`test_processor.py`](../../../tests/pipelines/document_storage/test_processor.py) covers legacy routes and fingerprint behavior.
+- **Next step:** implement the S9 staged-body input and typed metadata-only result boundary, add the no-trace normalizer mode, then test route outcomes, XML refusal/validation, stable fingerprints, and review-output staging without durable payload writes.
 
 ## Objective
 

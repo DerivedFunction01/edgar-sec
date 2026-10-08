@@ -29,7 +29,7 @@ def discover_roots(
     snapshots_root: Path | str,
     extra_pinned_ids: Set[str] | None = None,
 ) -> set[str]:
-    """Find all active root snapshot IDs from branches, tags, and plan pins."""
+    """Find branch/tag roots plus caller-supplied snapshot pins."""
     root = Path(snapshots_root)
     catalog = DAGCatalog(root)
     roots: set[str] = set()

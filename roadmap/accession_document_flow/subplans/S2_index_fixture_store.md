@@ -3,10 +3,22 @@
 ## Owner and status
 
 - Owning stage in [implementation.md](../implementation.md): **S2**.
-- Status: capture implementation exists and read-only replay returns exact uncompressed
-  bytes. A whole-database digest remains optional for appendable fixtures.
+- Status: implemented with schema version 2. Capture, manifest discovery, and read-only
+  exact-byte replay are covered by mirrored tests; no whole-database digest is used.
 - Depends on: the cohort adapter (S1) for accession URLs.
 - Enables: S0 empirical audit, S7a fixture CLI, and S7b parser replay/review.
+
+## Acceptance evidence
+
+- Capture, fill, manifest publication, and exact decompressed-byte replay are implemented
+  in `edgar_sec/pipelines/document_inventory/fixture_store/`.
+- Offline coverage is in `tests/pipelines/document_inventory/fixture_store/`, including
+  append/reuse, provenance union, retryable failures, read-only replay, and digest refusal.
+- These tests establish fixture-store behavior, not a live SEC survey or the presence of
+  an S0-selected historical corpus.
+
+Next: use the store to capture the S0-authorized stratified sample; no further S2 code
+blocker is identified by the current tracked tests.
 
 ## Objective
 
@@ -163,36 +175,33 @@ capture_index_pages(
 
 ```
 
-`capture_index_pages` fetches one page per `IndexWorkItem` through the supplied broker
-and serializes all SQLite writes in the coordinator. `responses_added` and
-`responses_reused` count successful fetched page cases according to whether their
-URL+digest required a new response row or matched an existing row; a store hit does
-not avoid that fetch. Failures do not
-create `index_responses` or `index_cases` rows. Every `CohortObservation` is preserved
-in `cohort_members`, including observations whose page request failed.
-Replay requires an exact response key,
-so an accession with multiple observed digests cannot silently select a version. The
-reader opens SQLite read-only, verifies the schema, decompresses and verifies each
-requested response, and returns the original uncompressed bytes. A whole-database
-digest is optional and, if retained, is checked at most once per reader using streaming
-hashing. One reader can replay multiple pages without re-hashing the whole database
-for every case. The manifest is published atomically after the database transaction
-commits and SQLite is checkpointed; compute a database digest only if the optional
-digest policy is retained. Its database path is relative to the manifest directory.
+`capture_index_pages` processes work items serially and commits each accession's SQLite
+updates. A successful accession/URL already present in the fixture is reused without a
+broker fetch; this avoids recapturing a changed response unless a future refresh path is
+added. `responses_added` and `responses_reused` count response and case reuse. Failures
+do not create response/case rows, but observations are recorded in `cohort_members`.
+Replay requires an exact response key, so an accession with multiple observed digests
+cannot silently select a version. The reader opens SQLite read-only, validates the
+schema and SQLite integrity, decompresses selected responses, and verifies each
+response digest before returning the original bytes. No whole-database digest or
+explicit SQLite checkpoint is used. The atomic manifest's database path is relative to
+its directory.
 
 ## Capture and fill operation
 
 1. Project the cohort with the S1 adapter.
-2. Acquire each response through one brokered SEC transport. A worker fetches through
-   `SecBrokerClient`, hashes the response, and the coordinator appends a new row.
-3. A response whose URL+digest exists is reused; a changed response appends a new row
-   keyed by `(request_url, response_sha256)`. Transport failures are recorded as run
-   results, not response rows.
+2. For an accession/URL without a successful case, fetch through the supplied broker,
+   hash the response, and insert a response row keyed by URL+digest. Existing successful
+   accession/URL cases are reused without fetching. Transport failures are recorded as
+   contribution results, not response rows.
+3. If a fetched URL+digest already exists, its response row is reused; the current
+   capture path does not refetch successful cases and therefore cannot observe changed
+   source content for them.
 4. Write `index_cases` for successful responses and `cohort_members` for every source
    relationship, including failed page requests.
 
-The store never mutates source evidence. Re-fetching a changed response appends; no row
-is overwritten. Cohort-member identity is `(accession, source_cik, cohort_source_id)`;
+The store never overwrites a response row. Cohort-member identity is
+`(accession, source_cik, cohort_source_id)`;
 the page fetch identity remains accession/URL, never the CIK relationship.
 
 ## Read-only replay
@@ -200,18 +209,20 @@ the page fetch identity remains accession/URL, never the CIK relationship.
 `open_index_fixture` validates the committed manifest and schema, then serves exact
 uncompressed bytes by accession and response key from its read-only connection. It
 makes no network request and never reopens the source catalog plan. Each replay checks
-the requested response digest. A database-wide digest is optional; see S7a's fixture
-identity refinement. Wrong-schema and response-digest-mismatched data are refused.
+the requested response digest. Wrong-schema, SQLite-integrity, and response-digest
+failures are refused. Membership/provenance edits that preserve database validity and
+counts are not detected cryptographically.
 
 ## Tests
 
 - URL+digest dedup: the same response keyed by URL and digest, never duplicated.
-- Changed response appends: a new digest adds a row; the old row persists.
+- Existing successful accession/URL is reused without a fetch; partial failures are
+  retried and missing response rows are appended.
 - Source-CIK/source-plan union: multiple cohort sources contribute one page.
 - Exact uncompressed byte/hash round trip: replay returns the original body, not its
   stored zstd frame.
-- Reader replays multiple cases read-only and verifies each decompressed response;
-  optional database-digest verification does not materialize the whole SQLite file.
+- Reader replays cases read-only and verifies each decompressed response digest; no
+  database-wide digest is checked.
 - Read-only non-mutation: replay opens the database read-only and never alters it.
 - Wrong-schema refusal: a mismatched schema version is rejected before replay.
 - Atomic manifest-after-commit: the manifest reflects a committed database.
@@ -227,6 +238,6 @@ live under a transient path and are not tracked.
 ## Acceptance criteria
 
 The fixture store is append-only with a URL+digest primary key, supports exact-byte
-replay without HTTP through a reusable verified reader, unions source-CIK plan contributions without duplicating pages, refuses
-wrong-schema databases, and pins the schema version in an atomic manifest. No source
-evidence is ever overwritten.
+replay without HTTP through a reusable verified reader, reuses successful accession/URL
+cases while unioning cohort contributions, refuses invalid schemas/databases, and pins
+the schema version in an atomic manifest. No source response row is overwritten.

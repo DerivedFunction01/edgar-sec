@@ -3,8 +3,14 @@
 ## Owner and status
 
 - Owning stage in [S9](S9_acquisition.md): acquisition work-order boundary.
-- Status: typed adapter contract; no network or body storage.
+- Status: typed adapter design only; no S6 target-row adapter is implemented.
 - Depends on: S6 target-plan schema, S5 snapshot reader for bundle metadata.
+
+## Current tracked-code audit (2026-10-08)
+
+- **Status: not implemented; a related legacy reader exists.** `document_storage.catalog_plan.CatalogPlan` validates filing-catalog locator plans and streams locator chunks, but it does not validate S6 profile target rows or resolve `DirectUrlWork` / `BundleSequenceWork` records.
+- **Evidence:** [`document_storage/catalog_plan.py`](../../../edgar_sec/pipelines/document_storage/catalog_plan.py), [`document_storage/work_order.py`](../../../edgar_sec/pipelines/document_storage/work_order.py), and [`test_catalog_plan.py`](../../../tests/pipelines/document_storage/test_catalog_plan.py) cover the legacy plan/chunk boundary. The disposition document identifies this as a rebuild point for S9a.
+- **Next step:** implement the target-row validator and work-order mapper against the delivered S6 bundle; pin and verify its source artifacts before any broker calls.
 
 ## Objective
 
@@ -70,14 +76,12 @@ class AcquisitionWorkOrder:
 ```python
 load_acquisition_work_order(
     plan_dir: Path,
-    *,
-    inventory_reader: InventorySnapshotReader | None = None,
 ) -> AcquisitionWorkOrder
 ```
 
 The loader verifies the target-plan manifest, target table digest, source artifact IDs, and schema versions. It selects only `status="matched"` rows with `direct_url` or `bundle_sequence`; other outcomes are retained in `skipped` and cause no HTTP request. A constructed package candidate is not executable in S9 without explicit S0 authorization.
 
-For an inventory-index direct target, `fetch_url` is the target row's observed URL. For a catalog-direct target, it is the catalog-derived URL already pinned in the plan. For a bundle target, the pinned inventory snapshot resolves the accession's advertised `bundle_url`; the target row supplies an exact sequence. Catalog-direct bundle extraction is not part of v1.
+For an inventory-index direct target, `fetch_url` is the observed URL in `target_url`. For a catalog-direct target, it is the catalog-derived URL already pinned in the plan. For a bundle target, `target_url` contains the accession's advertised bundle URL and the target row supplies an exact sequence. The plan is self-contained for acquisition; S9 does not reopen its source snapshot. Catalog-direct bundle extraction is not part of v1.
 
 `document_path` is the URL path relative to the accession's archive directory, not the full URL path. This preserves the route distinction in `domain.document.route`: an XSL rendering path contains a subdirectory, while a root file is flat. Bundle extraction uses the selected `<FILENAME>` with `content_route()` instead.
 
@@ -88,11 +92,11 @@ URLs must use HTTPS, belong to the SEC archive host policy, and resolve beneath 
 ## Tests
 
 - Inventory-index and catalog-direct rows with `direct_url` produce the same work shape and retain distinct `source_origin` values.
-- Bundle work resolves `bundle_url` from the pinned snapshot and requires a positive sequence.
-- Missing or mismatched pinned artifacts, digest failures, unsafe URLs, and dangling entry references are refused before network work.
+- Bundle work uses the target row's pinned `target_url` and requires a positive sequence.
+- Missing target-plan parts, digest failures, unsafe URLs, and invalid source provenance are refused before network work.
 - Non-matched and unauthorized candidate rows are skipped without broker calls.
 - The target plan and its source artifacts remain unchanged.
 
 ## Acceptance criteria
 
-Each work order is reproducible from a validated target-plan bundle and its pinned sources. No target selector is re-evaluated, no missing sequence is guessed, and catalog-direct provenance never becomes an `InventoryEntry`.
+Each work order is reproducible from a validated target-plan bundle. The source identity and digest remain provenance fields, not runtime reads. No target selector is re-evaluated, no missing sequence is guessed, and catalog-direct provenance never becomes an `InventoryEntry`.
