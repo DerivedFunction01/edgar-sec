@@ -16,6 +16,7 @@ from pathlib import Path, PurePosixPath
 from typing import Iterator
 
 import fcntl
+import psutil
 
 from edgar_sec.infra.storage.atomic import atomic_write_json
 from edgar_sec.foundation.runtime.paths import ProjectPaths, resolve_paths
@@ -28,7 +29,8 @@ FAMILY_INDEX_FILE_NAME = "company_family.parquet"
 STAGING_PREFIX = ".stage-"
 STAGING_LEASE_NAME = ".stage.lease"
 STAGING_QUARANTINE_PREFIX = f"{STAGING_PREFIX}quarantine-"
-STAGING_LEASE_EXPIRY_SECONDS = 120
+MAX_STAGING_LEASE_SECONDS = 7_200
+STAGING_QUARANTINE_EXPIRY_SECONDS = 86_400
 _SAFE_ID_RE = re.compile(r"^[a-zA-Z0-9_.-]{3,64}$")
 _FAMILY_INDEX_ID_RE = re.compile(r"^[a-f0-9]{32}$")
 _LOCK_STATE = threading.local()
@@ -183,7 +185,10 @@ class CohortPaths:
             return stage
 
     def _staging_path(self, staging_dir: Path | str) -> Path:
-        stage = Path(staging_dir).resolve()
+        candidate = Path(staging_dir)
+        if candidate.is_symlink():
+            raise ValueError(f"Invalid staging directory: {staging_dir!r}")
+        stage = candidate.resolve()
         if stage.parent != self.cohorts_root.resolve() or not stage.name.startswith(
             STAGING_PREFIX
         ):
@@ -221,11 +226,14 @@ class CohortPaths:
         staging_dir: Path | str,
         *,
         now: datetime | None = None,
-        expiry_seconds: int = STAGING_LEASE_EXPIRY_SECONDS,
+        expiry_seconds: int = MAX_STAGING_LEASE_SECONDS,
     ) -> bool | None:
         stage = self._staging_path(staging_dir)
         try:
-            lease = json.loads((stage / STAGING_LEASE_NAME).read_text(encoding="utf-8"))
+            lease_path = stage / STAGING_LEASE_NAME
+            if lease_path.is_symlink():
+                return None
+            lease = json.loads(lease_path.read_text(encoding="utf-8"))
             if (
                 not isinstance(lease, dict)
                 or not isinstance(lease.get("host"), str)
@@ -233,8 +241,12 @@ class CohortPaths:
                 or not isinstance(lease.get("pid"), int)
                 or isinstance(lease["pid"], bool)
                 or lease["pid"] <= 0
-                or not isinstance(lease.get("created_at"), str)
-                or not isinstance(lease.get("heartbeat"), str)
+            ):
+                return None
+            if lease["host"] == socket.gethostname():
+                return psutil.pid_exists(lease["pid"])
+            if not isinstance(lease.get("created_at"), str) or not isinstance(
+                lease.get("heartbeat"), str
             ):
                 return None
             created_at = datetime.fromisoformat(lease["created_at"])
@@ -303,7 +315,9 @@ class CohortPaths:
             (
                 entry
                 for entry in self.cohorts_root.iterdir()
-                if entry.is_dir() and entry.name.startswith(STAGING_PREFIX)
+                if not entry.is_symlink()
+                and entry.is_dir()
+                and entry.name.startswith(STAGING_PREFIX)
             ),
             key=lambda entry: entry.name,
         )
@@ -337,8 +351,9 @@ __all__ = [
     "FAMILY_INDEX_DIR_NAME",
     "FAMILY_INDEX_FILE_NAME",
     "PublicationLock",
-    "STAGING_LEASE_EXPIRY_SECONDS",
+    "MAX_STAGING_LEASE_SECONDS",
     "STAGING_LEASE_NAME",
+    "STAGING_QUARANTINE_EXPIRY_SECONDS",
     "STAGING_PREFIX",
     "STAGING_QUARANTINE_PREFIX",
     "resolve_cohort_paths",

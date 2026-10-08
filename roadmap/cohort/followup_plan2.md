@@ -133,14 +133,14 @@ while True:
 
 This section is authoritative where this audit differs from [followup_plan.md](followup_plan.md). Implement shared storage and lifecycle work once under the first plan; this plan owns only its additional console and REPL behavior.
 
-Follow-up plan 2 is not ready as a whole: M1, M2, and centralized alias/pointer validation are implemented and verified; F1 maintenance grammar and safety remain unresolved.
+Follow-up plan 2 is now reconciled with follow-up plan 1: M1, M2, and M3 are implemented; F1 maintenance grammar and lifecycle behavior are implemented in the shared storage layer.
 
 | Area | Current disposition | Readiness constraint |
 |---|---|---|
 | Console bugs, upload filtering, diff action, and count query | Independent of the first plan and implemented in the current worktree. | Tests cover callback routing, cancellation, case-insensitive supported extensions (including `.text`), hidden files, directories, symlinks, explicit-path validation, delta selection, and the count/source-pointer header. |
 | Family-index sampling path | The auto-resolution proposal is rejected because the first plan requires an explicit `--family-index` path. | Any picker must select a concrete file and pass that explicit path; missing or stale active pointers must not silently choose one. |
 | Source aliases | Central resolution and pointer validation are implemented in the current worktree, closing a first-plan contract gap. | Tests cover reserved-name precedence, absent/dangling pointers, non-official/unpinned targets, and source-key mismatch; metadata_sync and cohort CLI now use the catalog resolver. |
-| Detached datasets, maintenance, GC, and doctor | Shared with the first plan's unfinished F1. Do not implement a second catalog table or sweep engine from this plan. | Use one reconciled grammar (`maintain --clean-missing --prune-orphans`; `gc --clean-stale-staging --clean-raw-snapshots --clean-detached`) after resolving F1's stale `--prune-manifests` flag. Preserve `.detached`, exclude non-cohort namespaces, refuse destructive work on an unavailable/corrupt catalog, reject symlink escapes, and serialize publication/detach/pruning under one lock. Missing rows still referenced by active pointers, aliases, or family-index records must be reported/refused rather than silently purged. |
+| Detached datasets, maintenance, and doctor | Implemented and reconciled with F1. | `cohort doctor` is read-only; `cohort maintain` exposes targeted cleanup, including `--clean-raw-snapshots`. `--all` runs stale staging, orphan, and missing-row cleanup only. Workspace sessions are decoupled: missing datasets fail lazily at REPL evaluation/peek time. Pinned cohorts, active source pointers, and active family-index universes are preserved with warnings. Detached datasets use `.detached` markers inside `c-<id>/`. Maintenance refuses an absent or corrupt catalog. |
 | Workspace REPL | Implemented as an opt-in command and submenu action; the existing workspace CLI, session store, and paginated menu pickers remain supported. | Assignment delegates to the existing restricted `parse_expression()` API; it does not call Python `eval()` or `exec()`. Commands use simple line dispatch and quoted argument splitting. An explicit session avoids changing the process-wide active-session pointer; exit, EOF, or Ctrl+C clears only the transient session and its aliases. |
 | Direct ticker conversion and Layer 2/4 realignment | Already tracked as F2/F3 in the first plan; remove the duplicate milestones here. | Preserve first-non-empty trimmed-name selection in source order, reject malformed JSON/CIKs deterministically, retain byte-based source identity, and keep intermediate cleanup bounded and failure-safe. Relocation must preserve direct Layer 2 imports for consumers and avoid compatibility shims. |
 
@@ -150,15 +150,22 @@ Follow-up plan 2 is not ready as a whole: M1, M2, and centralized alias/pointer 
 |---|---|---|
 | M1 | Implemented and verified (42 focused tests passed). | Route family-index action to its publisher, filter uploads, use a count query, and add interactive diff with at most one delta publication per invocation. |
 | M2 | Implemented and verified (32 focused tests passed). | Add an opt-in REPL using the simple, bounded `parse_expression` API while retaining current workspace CLI and menu workflows. |
-| M3 | Split ownership. | Alias resolution and pointer validation are implemented; maintenance and detached-dataset work remains first-plan F1 and requires command-grammar reconciliation. |
+| M3 | Implemented. | Centralized alias resolution, read-only doctor, session-decoupled maintenance, lazy actionable variable errors, and detached-data lifecycle. |
 | M4 | Removed from this plan's implementation scope. | Continue under first-plan F2/F3 to avoid duplicated or contradictory work. |
 
-### Deferred Edge-Case Decisions
+### Resolved Maintenance & Lifecycle Decisions
 
-- Use the first plan's lease contract: local live PIDs are never reclaimed; remote leases expire only after two hours; missing/corrupt leases are quarantined and deleted only after one day or explicit force. Reconcile PID reuse and malformed/future timestamps before GC implementation.
-- The first plan's `--prune-manifests` flag is obsolete after manifest removal; decide whether to drop it before publishing the shared maintenance CLI grammar.
-- `doctor` must distinguish missing files, digest mismatch, unreadable Parquet, and schema mismatch, and must not repair or delete anything implicitly.
-- Diffing a cohort against itself is valid and yields empty deltas; the console therefore offers a single optional delta per run to avoid a partially published two-delta operation if the second name conflicts.
+- **Drop `--prune-manifests`**: Since `cohort.json` manifests were removed, `--prune-manifests` is obsolete and dropped from the CLI.
+- **Consolidated Commands**: Replaces fragmented subcommands with two distinct verbs: `cohort doctor` (read-only inspection) and `cohort maintain` (mutating cleanup with targeted flags).
+- **Non-Initializing Loaders**: Both `doctor` and `maintain` bypass `cli._context()`. They do not call `CohortCatalog._initialize_schema()` and do not touch `ObjectStore.clean_expired_sessions()`. `doctor` opens SQLite via read-only URI (`mode=ro`); if `cohorts.sqlite` is absent, it reports the missing file and exits cleanly without creating database files or directories.
+- **Actionable Session Errors**: `CohortWorkspace` and REPL variable resolution raise `CohortNotFoundError` when an alias references a missing catalog row or dataset: `Variable '<var>' references cohort '<id>' which no longer exists`.
+- **Protected Catalog Rows**: `clean-missing` never purges pinned cohorts, active source pointers (`universe`, `tickers`), or registered family indices; it skips them and emits an actionable warning.
+- **Detached Sentinel (`.detached`)**: `cohort delete <id> --keep-dataset` drops the SQLite record, records the cohort in `detached_cohort_datasets`, and places a `.detached` marker inside `c-<id>/.detached`. Orphan sweeps preserve folders containing `.detached` unless `--clean-detached` is passed.
+- **Unified Staging Lease Protocol**:
+  1. Local host + dead PID (`psutil.pid_exists(pid) == False`) $\rightarrow$ reclaimed immediately under `PublicationLock`. Local live PID $\rightarrow$ never reclaimed.
+  2. Foreign host + valid lease $\rightarrow$ reclaimed only after `MAX_STAGING_LEASE_SECONDS` (2 hours).
+  3. Missing or unparseable lease $\rightarrow$ quarantined to `.stage-quarantine-...`, deleted only if `mtime > 24 hours` or explicit `--force`.
+- **Fail-Closed Catalog Guard**: `maintain` aborts with `CatalogUnavailableError` if `cohorts.sqlite` cannot be verified, preventing accidental file deletions.
 
 ---
 
@@ -261,25 +268,62 @@ The REPL reuses the existing set-expression API; it does not define another AST 
 
 ---
 
-## 5. Maintenance & Garbage Collection Engine (Shared with F1)
+## 5. Maintenance & Garbage Collection Engine
 
-This plan does not define a second maintenance implementation. Use F1's catalog, lock, lease, detached-dataset, and sweep contracts. The following gaps must be resolved before implementation:
+Maintenance and hygiene operations are consolidated into two explicit commands: **`cohort doctor`** (read-only audit) and **`cohort maintain`** (mutating cleanup).
 
-1. **Detached Dataset Tracking**:
-   - `cohort delete <id> --keep-dataset` inserts into `detached_cohort_datasets`:
+### 5.1 Non-Initializing Loaders & Command Specifications
+
+To prevent unintended state mutations, both commands bypass the CLI's standard `_context()` helper:
+
+1. **`cohort doctor` (Read-Only Diagnostic Audit)**:
+   - **Non-Initializing Loader**: Directly checks if `paths.catalog_file.is_file()`. If absent, outputs a diagnostic report stating the database is uninitialized and exits (code 1) without creating directories or database files.
+   - **Read-Only Connection**: Connects to SQLite using URI `file:{path}?mode=ro`. Never executes DDL, never runs migrations, and never touches `ObjectStore` or `clean_expired_sessions()`.
+   - **Integrity Checks**:
+     - Runs `PRAGMA integrity_check`.
+     - Audits catalog records against disk (missing `ciks.parquet`, corrupted tables, or SHA-256 digest mismatches).
+      - Reports uncataloged cohort directories matching `c-<16-hex>` that lack a detached marker.
+     - Reports abandoned staging directories and dead or expired leases.
+   - **Guarantees**: Strictly zero writes.
+
+2. **`cohort maintain` (Mutating Cleanup)**:
+   - **Fail-Closed Loader**: Requires `paths.catalog_file.is_file()`; aborts with `CatalogUnavailableError` if SQLite is absent or fails integrity checks. Connects directly to SQLite without running session cleanup.
+   - **Flags**:
+     - `--clean-stale-staging`: Reclaims staging directories under `PublicationLock` using the unified lease protocol:
+       1. Local host + dead PID (`psutil.pid_exists(pid) == False`) $\rightarrow$ reclaimed immediately. Local live PID is never reclaimed.
+       2. Foreign host + valid lease $\rightarrow$ reclaimed when heartbeat age $> 2$ hours (`MAX_STAGING_LEASE_SECONDS`).
+       3. Missing or unparseable lease $\rightarrow$ quarantined to `.stage-quarantine-...`, deleted only if `mtime > 24 hours` or explicit `--force`.
+     - `--clean-orphans`: Deletes uncataloged cohort directories on disk (skips directories containing `.detached`).
+     - `--clean-missing`: Purges SQLite records whose datasets were deleted from disk. **Safety Rule**: Skips pinned cohorts, active source pointers (`universe`, `tickers`), and registered family indices with an actionable warning.
+      - `--clean-detached`: Purges directories marked with `.detached`.
+      - `--clean-raw-snapshots`: Removes historical files only under `source_snapshots/`.
+      - `--all`: Combines `--clean-stale-staging`, `--clean-orphans`, and `--clean-missing`.
+      - `--force`: Removes quarantined malformed leases without waiting 24 hours; it never reclaims a live local PID.
+
+### 5.2 Session Decoupling & Actionable Error Handling
+
+- **Independent Maintenance**: `cohort maintain` operates exclusively on the core catalog (`cohorts.sqlite`) and dataset directories. It does not inspect, lock, or coordinate with `workspace_aliases` or `workspace_sessions`.
+- **Actionable Session Errors**: When resolving a session alias (`var_name -> target_id`), if the target cohort is absent from the catalog or missing its `ciks.parquet` dataset, `CohortWorkspace` and REPL variable resolution raise:
+  ```python
+  CohortNotFoundError(f"Variable {var_name!r} references cohort {target_id!r} which no longer exists")
+  ```
+  The REPL surfaces this directly (`Error: Variable 'A' references cohort 'c-1209bc43' which no longer exists`), allowing the operator to drop or rebind the alias.
+
+### 5.3 Detached Dataset Lifecycle
+
+- When `cohort delete <id> --keep-dataset` is called:
+  1. The cohort record is deleted from SQLite under `PublicationLock`.
+  2. A row is inserted into `detached_cohort_datasets`:
      ```sql
      CREATE TABLE IF NOT EXISTS detached_cohort_datasets (
          cohort_id    TEXT PRIMARY KEY,
          dataset_path TEXT NOT NULL,
+         dataset_sha256 TEXT NOT NULL,
          detached_at  TEXT NOT NULL
      );
      ```
-   - Writes `.detached` marker file inside the dataset directory.
-2. **Maintenance safety decisions**:
-   - Reconcile F1's `--prune-manifests` flag with manifest removal before wiring parser options.
-   - `clean-missing` must not remove pinned/active rows or rows referenced by workspace aliases or family-index records; report and refuse those cases.
-   - `doctor` is read-only and must distinguish an absent catalog from a corrupt catalog without creating/reinitializing it.
-   - Orphan scans operate only on recognized cohort directory names, preserve detached records/markers, and never traverse symlinks or non-cohort namespaces.
+  3. A `.detached` marker file is touched inside `c-<id>/.detached`.
+- Orphan pruning sweeps check for `.detached` and preserve the folder unless `--clean-detached` is explicitly provided.
 
 ---
 
@@ -287,24 +331,28 @@ This plan does not define a second maintenance implementation. Use F1's catalog,
 
 ```mermaid
 flowchart TD
-    M1["Milestone 1: Console Bug Fixes, Upload Filtering & Dashboard Banner\n• Route family-index action to publisher\n• Filter supported visible files, retain explicit-path fallback\n• Add O(1) count and active-source header\n• Add Diff cohorts menu action"]
-    M2["Milestone 2: Interactive Cohort Workspace REPL\n• Implement CohortREPL loop with natural syntax (var = A & B)\n• Auto-init transient session & Ctrl+C cleanup\n• Add REPL action alongside workspace menu"]
-    M3["Shared with first plan: alias contract repair and F1 maintenance\n• Strengthen pointers before alias resolution\n• Reconcile maintenance grammar and safety"]
+    M1["Milestone 1: Console Bug Fixes, Upload Filtering & Dashboard Banner (Completed)\n• Routed family-index action to publisher\n• Filtered upload picker extensions\n• Added O(1) count and active-source header\n• Added Diff cohorts menu action"]
+    M2["Milestone 2: Interactive Cohort Workspace REPL (Completed)\n• Implemented CohortREPL line loop with shlex tokenization\n• Auto-initialized transient session & Ctrl+C cleanup\n• Added REPL action to workspace menu and cohort repl CLI"]
+    M3["Milestone 3: Maintenance Engine (Completed)\n• read-only doctor and fail-closed explicit maintenance\n• detached dataset registry and markers\n• protected active pointers, family indices, and pinned cohorts\n• lazy actionable workspace errors"]
 
-    M1 --> M2
+    M1 --> M2 --> M3
 ```
 
 ### Milestone Deliverables
 
-- **Milestone 1 (Immediate)**:
-  1. Fix `_source_menu` in `menu.py` to eliminate `NameError`.
-  2. Filter visible upload files by supported extensions (`.csv`, `.tsv`, `.txt`, `.text`, `.parquet`), exclude symlinks, and validate the explicit-path fallback.
-  3. Implement $O(1)$ `catalog.cohort_count()` and rich status header in `menu.py`.
-  4. Add `_diff_cohorts()` to `menu.py` with `pick_cohort()` prompts and delta save.
-- **Milestone 2**:
-  1. Implement `CohortREPL` in `edgar_sec/pipelines/cohort/repl.py` (or `menu.py`).
-  2. Wire REPL auto-init, natural syntax parsing, and `Ctrl+C` transient session cleanup.
-  3. Add a distinct REPL menu action without removing the existing workspace menu.
-- **Milestone 3**:
-  This work is owned by the first plan's pointer/alias contract and F1 maintenance scope; it is not a second implementation milestone here.
-- Direct ticker conversion and Layer 2/4 relocation remain first-plan F2/F3 work and are removed from this plan's milestone graph.
+- **Milestone 1 (Completed & Verified)**:
+  1. Fixed `_source_menu` in `menu.py` to eliminate `NameError`.
+  2. Filtered visible upload files by supported extensions (`.csv`, `.tsv`, `.txt`, `.text`, `.parquet`), excluding symlinks, with explicit-path fallback.
+  3. Implemented $O(1)$ `catalog.cohort_count()` and telemetry header in `menu.py`.
+  4. Added `_diff_cohorts()` to `menu.py` with `pick_cohort()` prompts and delta save.
+- **Milestone 2 (Completed & Verified)**:
+  1. Implemented opt-in `cohort repl` command and workspace submenu action.
+  2. Retained existing workspace CLI and paginated menu workflows.
+  3. Used explicit session isolation with transient session cleanup on exit, EOF, or Ctrl+C.
+  4. Handled command parsing via `shlex` and expression parsing via restricted `CohortWorkspace.let_expression()`.
+- **Milestone 3 (Ready for Implementation)**:
+  1. Implement read-only `cohort doctor` diagnostic command.
+  2. Implement `cohort maintain` with `--clean-stale-staging`, `--clean-orphans`, `--clean-missing`, `--clean-detached`, and `--all`.
+  3. Wire `.detached` sentinel file on `cohort delete --keep-dataset` and orphan sweep exclusion.
+  4. Enforce referential safety on `--clean-missing` (skip pinned cohorts, active source pointers, and registered family indices).
+- Direct ticker conversion and Layer 2/4 relocation remain first-plan F2/F3 work and are excluded from this plan's scope.

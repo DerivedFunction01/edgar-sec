@@ -276,7 +276,7 @@ where the two disagree.
   - **forms** — [forms](edgar_sec/engine/forms/README.md) · [cover](edgar_sec/engine/forms/cover/README.md) · [cover/boundary](edgar_sec/engine/forms/cover/boundary/README.md) · [cover/checkmarks](edgar_sec/engine/forms/cover/checkmarks/README.md) · [cover/healing](edgar_sec/engine/forms/cover/healing/README.md) · [cover/tables](edgar_sec/engine/forms/cover/tables/README.md) · [cover/toc](edgar_sec/engine/forms/cover/toc/README.md) · [plugins](edgar_sec/engine/forms/plugins/README.md) · [plugins/evaluators](edgar_sec/engine/forms/plugins/evaluators/README.md)
   - **reflow** — [reflow](edgar_sec/engine/reflow/README.md) · [reflow/engine](edgar_sec/engine/reflow/engine/README.md) · [reflow/features](edgar_sec/engine/reflow/features/README.md) · [reflow/rules](edgar_sec/engine/reflow/rules/README.md)
   - **tables** — [tables](edgar_sec/engine/tables/README.md) · [ascii_html](edgar_sec/engine/tables/ascii_html/README.md) · [false_tables](edgar_sec/engine/tables/false_tables/README.md) · [hybrid](edgar_sec/engine/tables/hybrid/README.md) · [policy](edgar_sec/engine/tables/policy/README.md) · [protection](edgar_sec/engine/tables/protection/README.md) · [taxonomy](edgar_sec/engine/tables/taxonomy/README.md)
-- **pipelines** — [pipelines](edgar_sec/pipelines/README.md) · [metadata_sync](edgar_sec/pipelines/metadata_sync/README.md) · [filing_catalog](edgar_sec/pipelines/filing_catalog/README.md) · [cohort](edgar_sec/pipelines/cohort/README.md) (including `cohort family-index`) · [document_inventory](edgar_sec/pipelines/document_inventory/README.md) · [document_inventory/snapshot](edgar_sec/pipelines/document_inventory/snapshot/README.md) · [document_storage](edgar_sec/pipelines/document_storage/README.md)
+- **pipelines** — [pipelines](edgar_sec/pipelines/README.md) · [metadata_sync](edgar_sec/pipelines/metadata_sync/README.md) · [filing_catalog](edgar_sec/pipelines/filing_catalog/README.md) · [cohort](edgar_sec/pipelines/cohort/README.md) (including read-only `cohort doctor` and explicit `cohort maintain`) · [document_inventory](edgar_sec/pipelines/document_inventory/README.md) · [document_inventory/snapshot](edgar_sec/pipelines/document_inventory/snapshot/README.md) · [document_storage](edgar_sec/pipelines/document_storage/README.md)
 - **apps** — [apps](edgar_sec/apps/README.md) · [viewer](edgar_sec/apps/viewer/README.md)
 
 ---
@@ -290,11 +290,12 @@ edgar_sec/               # each package has its own README.md (linked above)
 ├── domain/             # Layer 1: Cik/Accession, document and inventory records,
 │                       #   forms vocabulary, taxonomy and dataset schemas
 ├── infra/              # Layer 2: SEC HTTP client, broker, atomic IO, DuckDB,
-│                       #   Parquet, snapshot manifests, part tree, cohort and object stores
+│                       #   Parquet, snapshot manifests, part tree, cohort catalog and object store
 ├── engine/             # Layer 3: document and index-page parsing, cover/table
 │                       #   processing, candidate selection, submission building
 ├── pipelines/          # Layer 4: cohort registry (Phase 0), metadata_sync
-│                       #   (Phase 1), filing_catalog (Phase 2),
+│                       #   (Phase 1), explicit cohort diagnostics/maintenance,
+│                       #   filing_catalog (Phase 2),
 │                       #   document_inventory (streamed plan-to-work-order
 │                       #   projection, resumable S4, DAG-backed S5 publication/query),
 │                       #   document_storage (Phase 2.5)
@@ -329,8 +330,9 @@ All generated paths derive from the artifacts root; no module hardcodes them.
 {artifacts_root}/metadata/plans/{plan_id}/assignments/*.parquet   # One chunk set per worker
 {artifacts_root}/cohorts/cohorts.sqlite                       # Shared cohort catalog and workspace objects
 {artifacts_root}/cohorts/{cohort_id}/ciks.parquet             # Immutable shared CIK dataset
+{artifacts_root}/cohorts/{cohort_id}/.detached                # Retained dataset marker after catalog deletion
 {artifacts_root}/cohorts/family_index/{family_index_id}/company_family.parquet # Immutable published family assignments
-{artifacts_root}/cohorts/source_snapshots/{name}/{snapshot_id} # Historical raw payload copies; refresh no longer writes these
+{artifacts_root}/cohorts/source_snapshots/                    # Historical raw payload copies; explicit cleanup only
 {artifacts_root}/transient/metadata/{plan_id}/chunk_NNNN.parquet # Resumable checkpoints
 {artifacts_root}/metadata/snapshots/{snapshot_id}/parts/*.parquet   # Published dataset
 {artifacts_root}/metadata/snapshots/{snapshot_id}/ciks.parquet     # Published CIK index

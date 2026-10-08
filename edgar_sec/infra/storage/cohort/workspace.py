@@ -15,7 +15,7 @@ from edgar_sec.foundation.serialization import canonical_hash, canonical_json
 from edgar_sec.infra.storage.duckdb import connect, copy_query_to_parquet
 from edgar_sec.infra.storage.object_store.store import ObjectStore
 
-from .catalog import CohortCatalog
+from .catalog import CohortCatalog, CohortNotFoundError
 from .operations import (
     BinaryOp,
     CohortRef,
@@ -256,10 +256,11 @@ class CohortWorkspace:
                         raise ValueError(
                             f"unsupported object schema {stored.schema_name!r}"
                         )
+                    self._validate_expression_datasets(
+                        node.cohort_identifier, self._object_expression(target_id)
+                    )
                     return {"object_id": target_id}
-                record = self.catalog.get_cohort(target_id)
-                if record is None:
-                    raise ValueError(f"invalid workspace alias target {target_id!r}")
+                record = self._require_cohort_dataset(node.cohort_identifier, target_id)
                 return {"cohort_id": record.cohort_id}
             record = self.catalog.resolve_cohort_identifier(node.cohort_identifier)
             return {"cohort_id": record.cohort_id}
@@ -292,10 +293,12 @@ class CohortWorkspace:
                         raise ValueError(
                             f"unsupported object schema {stored.schema_name!r}"
                         )
-                    return self._object_expression(target_id)
-                record = self.catalog.get_cohort(target_id)
-                if record is None:
-                    raise ValueError(f"invalid workspace alias target {target_id!r}")
+                    expression = self._object_expression(target_id)
+                    self._validate_expression_datasets(
+                        node.cohort_identifier, expression
+                    )
+                    return expression
+                record = self._require_cohort_dataset(node.cohort_identifier, target_id)
                 return CohortRef(record.cohort_id)
             return CohortRef(
                 self.catalog.resolve_cohort_identifier(node.cohort_identifier).cohort_id
@@ -352,14 +355,38 @@ class CohortWorkspace:
         target_id = self.store.get_alias_target(self.session_id, var_name)
         if target_id is None:
             record = self.catalog.resolve_cohort_identifier(var_name)
-            return CohortRef(record.cohort_id)
+            expression = CohortRef(record.cohort_id)
+            self._validate_expression_datasets(var_name, expression)
+            return expression
         stored = self.store.get_object(target_id)
         if stored is not None:
-            return self._object_expression(target_id)
-        record = self.catalog.get_cohort(target_id)
-        if record is None:
-            raise ValueError(f"invalid workspace alias target {target_id!r}")
+            expression = self._object_expression(target_id)
+            self._validate_expression_datasets(var_name, expression)
+            return expression
+        record = self._require_cohort_dataset(var_name, target_id)
         return CohortRef(record.cohort_id)
+
+    def _require_cohort_dataset(self, var_name: str, cohort_id: str) -> CohortRecord:
+        record = self.catalog.get_cohort(cohort_id)
+        if record is None:
+            raise CohortNotFoundError(
+                f"Variable {var_name!r} references cohort {cohort_id!r} "
+                "which no longer exists."
+            )
+        dataset = self.paths.resolve_relative_path(record.dataset_path)
+        if not dataset.is_file():
+            raise CohortNotFoundError(
+                f"Variable {var_name!r} references cohort {cohort_id!r} "
+                "which no longer exists."
+            )
+        return record
+
+    def _validate_expression_datasets(self, var_name: str, node: ExprNode) -> None:
+        if isinstance(node, CohortRef):
+            self._require_cohort_dataset(var_name, node.cohort_identifier)
+        elif isinstance(node, BinaryOp):
+            self._validate_expression_datasets(var_name, node.left)
+            self._validate_expression_datasets(var_name, node.right)
 
     def _variable_query(self, var_name: str) -> tuple[str, str]:
         expression = self._variable_expression(var_name)

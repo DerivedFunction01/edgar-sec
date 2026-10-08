@@ -11,6 +11,7 @@ persisted in SQLite are relative to the configured `cohorts_root`.
 | `paths.py` | `CohortPaths`, configured root resolution, bounded relative paths, and staging publication. |
 | `models.py` | Immutable cohort and family-index records returned from the SQLite catalog. |
 | `catalog.py` | WAL SQLite schema, cohort metadata, tags, active pointers, and lifecycle guards. |
+| `maintenance.py` | Read-only catalog diagnostics and explicit cleanup operations. |
 | `sources.py` | Official SEC reference source acquisition and active snapshot resolution. |
 | `ingestion.py` | Streaming CSV/TSV/TXT/Parquet intake and canonical cohort publication. |
 | `operations.py` | Set algebra, safe expression AST compilation, roster deltas, and deterministic sampling. |
@@ -25,7 +26,8 @@ persisted in SQLite are relative to the configured `cohorts_root`.
 - SQLite connections use WAL mode, foreign keys, and normal synchronous mode;
   fresh catalog files use 8192-byte pages.
 - `cohorts.sqlite` owns cohort metadata, including the schema version and origin
-  JSON. New cohort directories contain only `ciks.parquet`.
+  JSON. Published cohort directories contain `ciks.parquet`; detached directories
+  also carry the `.detached` retention marker.
 - The active family-index pointer is keyed by its universe cohort and records the
   immutable assignment path and digest. Registration refuses noncanonical IDs,
   paths, missing files, and digest mismatches.
@@ -50,13 +52,23 @@ persisted in SQLite are relative to the configured `cohorts_root`.
   atomic directory rename on the same filesystem. Failed catalog registration
   removes the unpublished catalog entry's final directory.
 - Deletion refuses pinned or active-source cohorts; workspace alias references
-  require explicit force, which removes those aliases.
+  require explicit force, which removes those aliases. `--keep-dataset` records
+  the retained path and digest so orphan cleanup preserves it until explicit removal.
+- Maintenance uses the publication lock and the existing catalog without schema
+  initialization or workspace-session cleanup. Doctor is read-only; maintenance
+  does not inspect or modify workspace aliases.
+- Doctor checks catalog and active family-index checksums, Parquet readability,
+  detached retention records, orphan cohort directories, and staging leases.
+- Missing datasets referenced by workspace variables fail lazily during variable
+  evaluation with `CohortNotFoundError`.
 
 ## Public Surface
 
 - `CohortPaths` and `resolve_cohort_paths()` in [`paths.py`](paths.py).
 - `CohortRecord` and `FamilyIndexRecord` in [`models.py`](models.py).
 - `CohortCatalog` and lifecycle errors in [`catalog.py`](catalog.py).
+- `audit_cohort_store()` and `maintain_cohort_store()` in
+  [`maintenance.py`](maintenance.py).
 - `refresh_official_source()` and `resolve_active_source()` in
   [`sources.py`](sources.py).
 - `ingest_file_to_cohort()` and `publish_derived_cohort()` in
@@ -79,8 +91,7 @@ persisted in SQLite are relative to the configured `cohorts_root`.
   to supply an explicit assignment path.
 - Existing on-disk `cohort.json` files are left in place but are not migrated or
   consulted; SQLite remains authoritative.
-- Historical raw SEC payload files under `source_snapshots/` are not migrated or
-  deleted; refreshes no longer write new copies there.
-- Stale staging cleanup is explicit through `cleanup_stale_staging()`; this
-  package does not schedule process-start cleanup or reconcile orphan final
-  directories left by abrupt process termination between rename and commit.
+- Historical raw SEC payload files under `source_snapshots/` remain until the
+  explicit `--clean-raw-snapshots` action; refreshes no longer write new copies.
+- No cleanup is scheduled at process startup. Detached datasets remain until
+  `--clean-detached` is explicitly selected.

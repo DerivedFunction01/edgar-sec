@@ -55,35 +55,36 @@ To prevent race conditions between publication and maintenance sweeps:
 2. **Multi-Attribute Staging Leases & Heartbeat Cadence**:
    - Transient staging directories (`.stage-<cohort_id>-<uuid>/`) write a `.stage.lease` file:
      ```json
-     {
-       "host": "hostname",
-       "pid": 12345,
-       "started_at": "2026-10-08T12:00:00Z",
-       "heartbeat_at": "2026-10-08T12:05:00Z"
-     }
-     ```
-   - **Publisher Cadence**: Long-running ingestion or source downloads touch `heartbeat_at` every 30 seconds.
+      {
+        "host": "hostname",
+        "pid": 12345,
+        "created_at": "2026-10-08T12:00:00Z",
+        "heartbeat": "2026-10-08T12:05:00Z"
+      }
+      ```
+    - **Publisher Cadence**: Long-running ingestion or source downloads update `heartbeat` every 30 seconds.
    - **Abandonment Protocol**: Under `PublicationLock`, a staging folder is reclaimed only if:
      - The lease `host` matches the local host AND `psutil.pid_exists(pid)` is False. If the local PID is alive, the directory is **never** reclaimed, protecting active processes.
-     - If `host` differs (e.g. leftover from a container restart with a new hostname), `heartbeat_at` must be older than `MAX_STAGING_LEASE_SECONDS` (7,200s / 2 hours).
-   - **Missing or Corrupt Lease**: A staging folder with a missing or unparseable lease is quarantined; deletion requires `folder_mtime > 86400s` or explicit `--force`.
+      - If `host` differs (e.g. leftover from a container restart with a new hostname), `heartbeat` must be older than `MAX_STAGING_LEASE_SECONDS` (7,200s / 2 hours).
+    - **Missing or Corrupt Lease**: A staging folder with a missing or unparseable lease is quarantined; deletion requires `folder_mtime > 86400s` or explicit `--force`.
    - The `.stage.lease` is unlinked inside the staging folder immediately prior to `os.replace` under `PublicationLock`.
 
 3. **Scoped Directory Pruning & Retained Datasets**:
-   - Pruning during catalog boot sweeps or `cohort maintain` is **strictly restricted** to recognized cohort directory patterns (`c-[a-f0-9]{16}`, `universe-[a-f0-9]{16}`, `tickers-[a-f0-9]{16}`). Non-cohort namespaces (`family_index/`, `source_snapshots/`, `workspace/`) are never touched.
+    - Cohort orphan pruning is **strictly restricted** to recognized cohort directory patterns (`c-[a-f0-9]{16}`). It never enters `family_index/` or workspace state. Historical raw payload cleanup is separately opt-in through `--clean-raw-snapshots`, scoped only to `source_snapshots/`.
    - **Retained Datasets (`delete --keep-dataset`)**:
      When a cohort is deleted with `--keep-dataset`, it is recorded in a SQLite table:
      ```sql
-     CREATE TABLE IF NOT EXISTS detached_cohort_datasets (
-         cohort_id     TEXT PRIMARY KEY,
-         dataset_path  TEXT NOT NULL,
-         detached_at   TEXT NOT NULL
-     );
+      CREATE TABLE IF NOT EXISTS detached_cohort_datasets (
+          cohort_id     TEXT PRIMARY KEY,
+          dataset_path  TEXT NOT NULL,
+          dataset_sha256 TEXT NOT NULL,
+          detached_at   TEXT NOT NULL
+      );
      ```
-     Additionally, a sentinel file `.detached` is placed inside `c-<cohort_id>/.detached`. Pruning sweeps verify this table and ignore detached datasets unless `--clean-detached` is explicitly passed.
+      Additionally, a sentinel file `.detached` is placed inside `c-<cohort_id>/.detached`. Orphan pruning preserves detached datasets unless `--clean-detached` is explicitly passed.
    - **Manual `rm -rf` & Catalog Corruption Handling**:
-     - If an operator manually removes a directory (`rm -rf`): `cohort maintain --clean-missing` detects missing datasets and flags or purges dead catalog rows.
-     - If `cohorts.sqlite` is corrupt or unavailable: pruning **refuses to run** (`PruningRefusedError: catalog database unavailable or corrupt`), ensuring no files are deleted when catalog state cannot be verified.
+      - If an operator manually removes a directory (`rm -rf`): `cohort maintain --clean-missing` detects missing datasets and purges dead catalog rows, skipping pinned cohorts, active source pointers, and registered family indices with a warning.
+     - If `cohorts.sqlite` is corrupt or unavailable: pruning **refuses to run** (`CatalogUnavailableError: catalog database unavailable or corrupt`), ensuring no files are deleted when catalog state cannot be verified.
 
 ---
 
@@ -121,7 +122,7 @@ Official SEC sources compile directly to standard canonical `ciks.parquet` datas
   2. Compute `raw_source_sha256 = hashlib.sha256(payload_bytes).hexdigest()`.
   3. Query `cohorts.sqlite`: If an official cohort matches `dedup_key`, verify its `ciks.parquet` exists and matches `dataset_sha256`. If intact, ensure active pointer is set and exit early (zero re-work, preserving existing `observed_at` timestamps). If missing or corrupt, recompile and overwrite.
   4. Write temporary conversion files in staging, compile `ciks.parquet`, and unlink intermediate files immediately upon publication under `PublicationLock`.
-- **HTTP Cache & Existing Files**: Stopping raw snapshot writes to `.artifacts/cohorts/source_snapshots/` does not remove the HTTP client cache (`.artifacts/http_cache/`). Historical raw snapshots from prior runs remain on disk until pruned by an operator maintenance command (`cohort gc --clean-raw-snapshots`).
+- **HTTP Cache & Existing Files**: Stopping raw snapshot writes to `.artifacts/cohorts/source_snapshots/` does not remove the HTTP client cache (`.artifacts/http_cache/`). Historical raw snapshots from prior runs remain on disk until pruned by an operator maintenance command (`cohort maintain --clean-raw-snapshots`).
 
 #### 3. Generic Cohort Diff (`edgar-sec cohort diff`)
 Replace specialized, ticker-specific comparison with **generic cohort diffing**:
@@ -280,12 +281,17 @@ To avoid conflating user-assigned display names with official system source poin
 ### 6.3 Maintenance & Garbage Collection Grammar
 Explicit maintenance commands manage system hygiene:
 ```bash
-# Verify integrity, clean missing entries from manual deletions, prune uncataloged cohorts
-edgar-sec cohort maintain [--clean-missing] [--prune-orphans] [--prune-manifests] [--older-than <seconds>]
+# Read-only integrity audit: check SQLite, datasets, orphans, and stale leases
+edgar-sec cohort doctor
 
-# Garbage-collect historical raw snapshots and detached retained datasets
-edgar-sec cohort gc [--clean-raw-snapshots] [--clean-detached]
+# Mutating maintenance: select one or more explicit cleanup actions
+edgar-sec cohort maintain [--clean-stale-staging] [--clean-orphans] [--clean-missing] [--clean-detached] [--clean-raw-snapshots] [--all] [--force]
 ```
+
+`--all` combines stale staging, orphan, and missing-row cleanup only. `--force`
+applies to quarantined unparseable staging leases; live local PIDs are never
+reclaimed. Maintenance does not inspect workspace sessions, and no cleanup runs
+automatically at process startup.
 
 ### 6.4 Interactive Pickers & Structured Grid Presentation
 1. **Interactive Console Pickers (`menu.py`)**:
@@ -348,7 +354,7 @@ flowchart TD
 
 | Phase | Description | Status | Remaining Scope |
 |---|---|---|---|
-| **Phase F1** | Manifest Removal, Locking & Leases | **Core Landed** | Detached dataset tracking (`detached_cohort_datasets`) and `cohort maintain`/`gc` pruning |
+| **Phase F1** | Manifest Removal, Locking & Leases | **Landed** | None |
 | **Phase F2** | Official SEC Sources & Generic Diff | **Largely Landed** | Direct DuckDB conversion for `company_tickers` (zero intermediate CSV) |
 | **Phase F3** | Architectural Layer Alignment | **Pending** | Realign package ownership: move workflows/operations to `pipelines.cohort` |
 | **Phase F4** | Family Index Decoupling & Consumer Cutover | **Landed** | Fully completed; verified in full test suite |
@@ -362,11 +368,10 @@ flowchart TD
   - Removed all disk writes of `cohort.json` and eliminated manifest path/model APIs; SQLite WAL is authoritative.
   - Implemented `PublicationLock` (`.publication.lock`) using re-entrant thread local and `fcntl.flock`.
   - Implemented `.stage.lease` recording `{host, pid, created_at, heartbeat}` with background heartbeat daemon.
-  - Implemented basic staging cleanup (`cleanup_stale_staging`).
-- **Remaining**:
-  - Implement `detached_cohort_datasets` catalog table and `.detached` sentinel markers for `--keep-dataset`.
-  - Implement `cohort maintain` / `cohort gc` command grammar (`--clean-missing`, `--clean-stale-staging`, `--clean-raw-snapshots`).
-  - Make startup sweeps prune uncataloged cohort-ID directories (`c-*`, `universe-*`, `tickers-*`) under `PublicationLock` while exempting detached datasets and non-cohort namespaces.
+  - Implemented session-independent doctor and maintenance loaders; doctor uses read-only SQLite access and never creates an absent catalog.
+  - Implemented explicit maintenance actions for staging, orphans, missing rows, detached data, and historical raw snapshots under `PublicationLock`.
+  - Added detached-dataset registry rows and `.detached` markers; missing-row cleanup protects pinned cohorts, active source pointers, and registered family indices.
+  - Kept cleanup explicit; doctor and maintenance bypass workspace initialization and session cleanup.
 
 #### Phase F2: Official SEC Sources Lifecycle & Generic Diff
 - **Target Modules**: `infra/storage/cohort/sources.py`, `pipelines/cohort/cli.py`, `infra/storage/cohort/operations.py`.

@@ -28,12 +28,16 @@ class _Context:
 
 
 def _context() -> _Context:
-    paths = resolve_cohort_paths(project_paths=resolve_paths())
+    paths = _paths()
     catalog = CohortCatalog(paths)
     store = ObjectStore(paths.catalog_file)
     store.initialize_schema()
     store.clean_expired_sessions()
     return _Context(paths, catalog, store)
+
+
+def _paths() -> CohortPaths:
+    return resolve_cohort_paths(project_paths=resolve_paths())
 
 
 def _dataset(context: _Context, record: CohortRecord) -> Path:
@@ -386,6 +390,38 @@ def _duration_seconds(value: str) -> int:
     return amount * factor
 
 
+def _cmd_doctor(paths: CohortPaths) -> int:
+    from edgar_sec.infra.storage.cohort.maintenance import audit_cohort_store
+
+    report = audit_cohort_store(paths)
+    if report.healthy:
+        print("cohort catalog healthy")
+        return 0
+    for finding in report.findings:
+        print(f"issue: {finding}")
+    return 1
+
+
+def _cmd_maintain(args: Any, paths: CohortPaths) -> int:
+    from edgar_sec.infra.storage.cohort.maintenance import maintain_cohort_store
+
+    report = maintain_cohort_store(
+        paths,
+        clean_stale_staging=args.clean_stale_staging,
+        clean_orphans=args.clean_orphans,
+        clean_missing=args.clean_missing,
+        clean_detached=args.clean_detached,
+        clean_raw_snapshots=args.clean_raw_snapshots,
+        all=args.all,
+        force=args.force,
+    )
+    for name, count in report.removed:
+        print(f"removed_{name}={count}")
+    for warning in report.warnings:
+        print(f"warning: {warning}")
+    return 0
+
+
 def _cmd_workspace(args: Any, context: _Context) -> int:
     command = args.workspace_command
     if command == "init":
@@ -530,6 +566,10 @@ def main(argv: list[str] | None = None, *, source_client: Any = None) -> int:
         arguments = ["console"]
     args = parser.parse_args(arguments)
     try:
+        if args.command == "doctor":
+            return _cmd_doctor(_paths())
+        if args.command == "maintain":
+            return _cmd_maintain(args, _paths())
         if args.command == "sources" and args.sources_command == "refresh":
             return _cmd_sources_refresh(args, _context(), client=source_client)
         return _dispatch(args, _context())

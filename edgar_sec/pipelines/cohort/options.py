@@ -79,6 +79,16 @@ def build_parser() -> argparse.ArgumentParser:
         "--tags", "--remove", dest="remove", required=True, type=csv_values
     )
 
+    commands.add_parser("doctor", help="audit catalog and cohort artifacts read-only")
+    maintain = commands.add_parser("maintain", help="explicitly clean cohort artifacts")
+    maintain.add_argument("--clean-stale-staging", action="store_true")
+    maintain.add_argument("--clean-orphans", action="store_true")
+    maintain.add_argument("--clean-missing", action="store_true")
+    maintain.add_argument("--clean-detached", action="store_true")
+    maintain.add_argument("--clean-raw-snapshots", action="store_true")
+    maintain.add_argument("--all", action="store_true")
+    maintain.add_argument("--force", action="store_true")
+
     delete = commands.add_parser("delete", help="delete a cohort")
     delete.add_argument("cohort")
     delete.add_argument("--keep-dataset", action="store_true")

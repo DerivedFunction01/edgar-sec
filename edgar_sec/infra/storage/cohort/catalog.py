@@ -20,7 +20,6 @@ from .models import CohortRecord, FamilyIndexRecord
 from .paths import (
     CohortPaths,
     STAGING_PREFIX,
-    STAGING_QUARANTINE_PREFIX,
 )
 
 MANIFEST_SCHEMA_VERSION = "2.0.0"
@@ -68,6 +67,12 @@ CREATE TABLE IF NOT EXISTS active_family_indices (
     pinned_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     PRIMARY KEY (universe_cohort_id)
 );
+CREATE TABLE IF NOT EXISTS detached_cohort_datasets (
+    cohort_id TEXT PRIMARY KEY,
+    dataset_path TEXT NOT NULL,
+    dataset_sha256 TEXT NOT NULL,
+    detached_at TEXT NOT NULL
+);
 """
 
 
@@ -93,6 +98,10 @@ class CohortInUseError(CohortCatalogError):
 
 class CohortIdentifierError(CohortCatalogError):
     """A cohort identifier is missing, too short, or ambiguous."""
+
+
+class CohortNotFoundError(CohortCatalogError):
+    """A workspace variable refers to a missing cohort dataset."""
 
 
 class CohortCatalog:
@@ -121,6 +130,31 @@ class CohortCatalog:
     def initialize_schema(self) -> None:
         with self._connection() as connection:
             connection.executescript(_SCHEMA_SQL)
+            columns = {
+                str(row[1])
+                for row in connection.execute(
+                    "PRAGMA table_info(detached_cohort_datasets)"
+                )
+            }
+            if "dataset_sha256" not in columns:
+                connection.execute(
+                    "ALTER TABLE detached_cohort_datasets "
+                    "ADD COLUMN dataset_sha256 TEXT NOT NULL DEFAULT ''"
+                )
+                rows = connection.execute(
+                    "SELECT cohort_id, dataset_path FROM detached_cohort_datasets"
+                ).fetchall()
+                for row in rows:
+                    try:
+                        dataset = self.paths.resolve_relative_path(row["dataset_path"])
+                    except ValueError:
+                        continue
+                    if dataset.is_file():
+                        connection.execute(
+                            "UPDATE detached_cohort_datasets SET dataset_sha256 = ? "
+                            "WHERE cohort_id = ?",
+                            (file_sha256(dataset), row["cohort_id"]),
+                        )
 
     @staticmethod
     def _table_exists(connection: sqlite3.Connection, table: str) -> bool:
@@ -482,12 +516,16 @@ class CohortCatalog:
         force: bool = False,
     ) -> bool:
         quarantined: Path | None = None
+        marker: Path | None = None
+        marker_created = False
         final_dir = self.paths.cohort_dir(cohort_id)
         deleted = False
         try:
             with self._connection() as connection:
                 row = connection.execute(
-                    "SELECT pinned FROM cohorts WHERE cohort_id = ?", (cohort_id,)
+                    "SELECT pinned, dataset_path, dataset_sha256 FROM cohorts "
+                    "WHERE cohort_id = ?",
+                    (cohort_id,),
                 ).fetchone()
                 if row is None:
                     return False
@@ -522,6 +560,36 @@ class CohortCatalog:
                         / f"{STAGING_PREFIX}purge-{cohort_id}-{uuid.uuid4().hex}"
                     )
                     final_dir.rename(quarantined)
+                if not purge_dataset:
+                    if final_dir.is_symlink() or not final_dir.is_dir():
+                        raise FileNotFoundError(final_dir)
+                    dataset_file = self.paths.cohort_dataset_file(cohort_id)
+                    dataset_recorded = self.paths.resolve_relative_path(
+                        row["dataset_path"]
+                    )
+                    if (
+                        dataset_recorded != dataset_file
+                        or dataset_file.is_symlink()
+                        or not dataset_file.is_file()
+                    ):
+                        raise FileNotFoundError(dataset_file)
+                    marker = final_dir / ".detached"
+                    if marker.is_symlink():
+                        raise ValueError("detached marker cannot be a symlink")
+                    if not marker.exists():
+                        marker.touch()
+                        marker_created = True
+                    connection.execute(
+                        "INSERT OR REPLACE INTO detached_cohort_datasets "
+                        "(cohort_id, dataset_path, dataset_sha256, detached_at) "
+                        "VALUES (?, ?, ?, ?)",
+                        (
+                            cohort_id,
+                            row["dataset_path"],
+                            row["dataset_sha256"],
+                            datetime.now(UTC).isoformat(),
+                        ),
+                    )
                 if aliases_exist and force:
                     connection.execute(
                         "DELETE FROM object_session_aliases WHERE target_id = ?",
@@ -532,6 +600,8 @@ class CohortCatalog:
                 )
             deleted = True
         except BaseException:
+            if marker_created and marker is not None:
+                marker.unlink(missing_ok=True)
             if (
                 quarantined is not None
                 and quarantined.exists()
@@ -669,56 +739,6 @@ class CohortCatalog:
             ).fetchone()
             return str(row["active_snapshot_id"]) if row is not None else None
 
-    def cleanup_stale_staging(
-        self, max_age_seconds: int = 86_400, *, force: bool = False
-    ) -> int:
-        if max_age_seconds < 0:
-            raise ValueError("max_age_seconds must be non-negative")
-        with self.paths.publication_lock():
-            return self._cleanup_stale_staging_locked(max_age_seconds, force=force)
-
-    def _cleanup_stale_staging_locked(
-        self, max_age_seconds: int, *, force: bool
-    ) -> int:
-        now = datetime.now(UTC)
-        removed = 0
-        for stage in self.paths.list_staging_dirs():
-            try:
-                stage_age = now.timestamp() - stage.stat().st_mtime
-                if stage.name.startswith(STAGING_QUARANTINE_PREFIX):
-                    if force or stage_age > 86_400:
-                        self.paths.remove_staging_dir(stage)
-                        removed += 1
-                    continue
-                if stage_age <= max_age_seconds and not force:
-                    continue
-                if stage.name.startswith(f"{STAGING_PREFIX}purge-"):
-                    cohort_id = stage.name.removeprefix(
-                        f"{STAGING_PREFIX}purge-"
-                    ).rsplit("-", 1)[0]
-                    if self.get_cohort(cohort_id) is not None:
-                        final_dir = self.paths.cohort_dir(cohort_id)
-                        if not final_dir.exists():
-                            stage.rename(final_dir)
-                            continue
-                lease_status = self.paths.staging_lease_is_unexpired(stage, now=now)
-                if lease_status is True:
-                    continue
-                if lease_status is None:
-                    quarantine = self.paths.cohorts_root / (
-                        f"{STAGING_QUARANTINE_PREFIX}{uuid.uuid4().hex}-{stage.name}"
-                    )
-                    stage.rename(quarantine)
-                    if force or stage_age > 86_400:
-                        self.paths.remove_staging_dir(quarantine)
-                        removed += 1
-                    continue
-                self.paths.remove_staging_dir(stage)
-                removed += 1
-            except FileNotFoundError:
-                continue
-        return removed
-
 
 __all__ = [
     "CohortActiveSourceError",
@@ -727,6 +747,7 @@ __all__ = [
     "CohortCollisionError",
     "CohortIdentifierError",
     "CohortInUseError",
+    "CohortNotFoundError",
     "CohortPinnedError",
     "FamilyIndexRecord",
     "MANIFEST_SCHEMA_VERSION",

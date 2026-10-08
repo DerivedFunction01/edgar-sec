@@ -22,6 +22,7 @@ def test_parser_exposes_documented_commands_and_nested_workspace_grammar() -> No
     parser = cli.build_parser()
     commands = next(action.choices for action in parser._actions if action.choices)
     assert set(commands) == {
+        "doctor",
         "import",
         "list",
         "info",
@@ -38,6 +39,7 @@ def test_parser_exposes_documented_commands_and_nested_workspace_grammar() -> No
         "workspace",
         "repl",
         "merge",
+        "maintain",
         "console",
     }
     workspace = commands["workspace"]
@@ -86,6 +88,51 @@ def test_parser_exposes_documented_commands_and_nested_workspace_grammar() -> No
     assert diff.right == "tickers"
     assert diff.save_left_delta == "old"
     assert diff.save_right_delta is None
+    maintain = parser.parse_args(["maintain", "--all"])
+    assert maintain.all is True
+
+
+@pytest.mark.parametrize("command", ["doctor", "maintain"])
+def test_maintenance_commands_bypass_context_without_creating_catalog(
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+    capsys: pytest.CaptureFixture[str],
+    command: str,
+) -> None:
+    paths = CohortPaths(tmp_path)
+    monkeypatch.setattr(cli, "_paths", lambda: paths)
+    monkeypatch.setattr(
+        cli,
+        "_context",
+        lambda: pytest.fail("maintenance must not initialize a workspace context"),
+    )
+
+    arguments = [command] if command == "doctor" else [command, "--all"]
+    assert cli.main(arguments) == 1
+    captured = capsys.readouterr()
+    assert "catalog is absent" in captured.err + captured.out
+    assert not paths.cohorts_root.exists()
+
+
+def test_maintenance_dispatches_without_workspace_context(
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+    capsys: pytest.CaptureFixture[str],
+) -> None:
+    paths = CohortPaths(tmp_path)
+    CohortCatalog(paths)
+    orphan = paths.cohort_dir("c-0123456789abcdef")
+    orphan.mkdir()
+    monkeypatch.setattr(cli, "_paths", lambda: paths)
+    monkeypatch.setattr(
+        cli,
+        "_context",
+        lambda: pytest.fail("maintenance must not initialize a workspace context"),
+    )
+
+    assert cli.main(["maintain", "--clean-orphans"]) == 0
+    assert not orphan.exists()
+    assert "removed_orphans=1" in capsys.readouterr().out
 
 
 def test_cli_identifier_resolution_fails_closed(

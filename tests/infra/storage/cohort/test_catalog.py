@@ -20,6 +20,7 @@ from edgar_sec.infra.storage.cohort.catalog import (
 from edgar_sec.infra.storage.cohort.paths import CohortPaths
 from edgar_sec.infra.storage.cohort.models import FamilyIndexRecord
 from edgar_sec.infra.storage.cohort.paths import STAGING_LEASE_NAME
+from edgar_sec.infra.storage.cohort.maintenance import maintain_cohort_store
 
 
 def _registered(
@@ -559,79 +560,115 @@ def test_failed_catalog_insert_removes_published_directory(tmp_path: Path) -> No
     assert not paths.cohort_dir(cohort_id).exists()
 
 
-def test_cleanup_removes_only_stale_stage_directories(tmp_path: Path) -> None:
+def _clean_staging(paths: CohortPaths, *, force: bool = False) -> int:
+    report = maintain_cohort_store(paths, clean_stale_staging=True, force=force)
+    return dict(report.removed)["staging"]
+
+
+def test_cleanup_removes_dead_local_stage_immediately(
+    tmp_path: Path, monkeypatch
+) -> None:
     paths = CohortPaths(tmp_path)
-    catalog = CohortCatalog(paths)
-    stale = paths.create_staging_dir("c-0123456789abcdef")
-    fresh = paths.create_staging_dir("c-fedcba9876543210")
-    paths.refresh_staging_lease(stale, now=datetime.fromtimestamp(1, UTC))
-    os.utime(stale, (1, 1))
-
-    assert catalog.cleanup_stale_staging(max_age_seconds=60) == 1
-    assert not stale.exists()
-    assert fresh.exists()
-
-
-def test_cleanup_keeps_old_stage_with_unexpired_lease(tmp_path: Path) -> None:
-    paths = CohortPaths(tmp_path)
-    catalog = CohortCatalog(paths)
+    CohortCatalog(paths)
     stage = paths.create_staging_dir("c-0123456789abcdef")
-    os.utime(stage, (1, 1))
+    lease_path = stage / STAGING_LEASE_NAME
+    lease = json.loads(lease_path.read_text(encoding="utf-8"))
+    lease["pid"] = 2**30
+    lease_path.write_text(json.dumps(lease), encoding="utf-8")
+    monkeypatch.setattr(
+        "edgar_sec.infra.storage.cohort.paths.psutil.pid_exists", lambda _pid: False
+    )
 
-    assert catalog.cleanup_stale_staging(max_age_seconds=0) == 0
-    assert catalog.cleanup_stale_staging(force=True) == 0
+    assert _clean_staging(paths) == 1
+    assert not stage.exists()
+
+
+def test_cleanup_never_removes_live_local_stage(tmp_path: Path, monkeypatch) -> None:
+    paths = CohortPaths(tmp_path)
+    CohortCatalog(paths)
+    stage = paths.create_staging_dir("c-0123456789abcdef")
+    lease_path = stage / STAGING_LEASE_NAME
+    lease = json.loads(lease_path.read_text(encoding="utf-8"))
+    lease["heartbeat"] = "2000-01-01T00:00:00+00:00"
+    lease_path.write_text(json.dumps(lease), encoding="utf-8")
+    monkeypatch.setattr(
+        "edgar_sec.infra.storage.cohort.paths.psutil.pid_exists", lambda _pid: True
+    )
+
+    assert _clean_staging(paths, force=True) == 0
+    assert stage.is_dir()
+    lease.pop("heartbeat")
+    lease_path.write_text(json.dumps(lease), encoding="utf-8")
+    assert _clean_staging(paths, force=True) == 0
     assert stage.is_dir()
 
 
+def test_cleanup_removes_expired_foreign_lease(tmp_path: Path) -> None:
+    paths = CohortPaths(tmp_path)
+    CohortCatalog(paths)
+    stage = paths.create_staging_dir("c-0123456789abcdef")
+    lease_path = stage / STAGING_LEASE_NAME
+    lease = json.loads(lease_path.read_text(encoding="utf-8"))
+    lease.update(host="remote-host", heartbeat="2000-01-01T00:00:00+00:00")
+    lease_path.write_text(json.dumps(lease), encoding="utf-8")
+
+    assert _clean_staging(paths) == 1
+    assert not stage.exists()
+
+
 @pytest.mark.parametrize("lease_state", ["missing", "corrupt"])
-def test_cleanup_quarantines_bad_lease_until_forced(
+def test_cleanup_quarantines_bad_lease_until_old_or_forced(
     tmp_path: Path, lease_state: str
 ) -> None:
     paths = CohortPaths(tmp_path)
-    catalog = CohortCatalog(paths)
+    CohortCatalog(paths)
     stage = paths.create_staging_dir("c-0123456789abcdef")
     lease_path = stage / STAGING_LEASE_NAME
     if lease_state == "missing":
         lease_path.unlink()
     else:
         lease_path.write_text("not-json", encoding="utf-8")
-    os.utime(stage, (datetime.now(UTC).timestamp() - 100,) * 2)
+    now = datetime.now(UTC).timestamp()
+    os.utime(stage, (now, now))
 
-    assert catalog.cleanup_stale_staging(max_age_seconds=0) == 0
+    assert _clean_staging(paths) == 0
     quarantined = paths.list_staging_dirs()
     assert len(quarantined) == 1
     assert quarantined[0] != stage
     assert quarantined[0].name.startswith(".stage-quarantine-")
-    assert catalog.cleanup_stale_staging(force=True) == 1
+    assert _clean_staging(paths, force=True) == 1
     assert not quarantined[0].exists()
 
 
 def test_cleanup_removes_quarantined_stage_after_one_day(tmp_path: Path) -> None:
     paths = CohortPaths(tmp_path)
-    catalog = CohortCatalog(paths)
+    CohortCatalog(paths)
     stage = paths.create_staging_dir("c-0123456789abcdef")
     (stage / STAGING_LEASE_NAME).unlink()
     os.utime(stage, (1, 1))
 
-    assert catalog.cleanup_stale_staging(max_age_seconds=0) == 1
+    assert _clean_staging(paths) == 1
     assert paths.list_staging_dirs() == []
 
 
 def test_cleanup_force_removes_fresh_stage_with_missing_lease(tmp_path: Path) -> None:
     paths = CohortPaths(tmp_path)
-    catalog = CohortCatalog(paths)
+    CohortCatalog(paths)
     stage = paths.create_staging_dir("c-0123456789abcdef")
     (stage / STAGING_LEASE_NAME).unlink()
 
-    assert catalog.cleanup_stale_staging(force=True) == 1
+    assert _clean_staging(paths, force=True) == 1
     assert not stage.exists()
 
 
 def test_stale_cleanup_holds_publication_lock(tmp_path: Path, monkeypatch) -> None:
     paths = CohortPaths(tmp_path)
-    catalog = CohortCatalog(paths)
+    CohortCatalog(paths)
     stage = paths.create_staging_dir("c-0123456789abcdef")
-    paths.refresh_staging_lease(stage, now=datetime.fromtimestamp(1, UTC))
+    lease_path = stage / STAGING_LEASE_NAME
+    lease = json.loads(lease_path.read_text(encoding="utf-8"))
+    lease.update(host="remote-host", heartbeat="2000-01-01T00:00:00+00:00")
+    lease_path.write_text(json.dumps(lease), encoding="utf-8")
     os.utime(stage, (1, 1))
     remove = CohortPaths.remove_staging_dir
 
@@ -645,7 +682,7 @@ def test_stale_cleanup_holds_publication_lock(tmp_path: Path, monkeypatch) -> No
         remove(owner, path)
 
     monkeypatch.setattr(CohortPaths, "remove_staging_dir", check_locked)
-    assert catalog.cleanup_stale_staging(max_age_seconds=0) == 1
+    assert _clean_staging(paths) == 1
 
 
 def test_stale_purge_stage_restores_cohort_still_in_catalog(tmp_path: Path) -> None:
@@ -657,6 +694,6 @@ def test_stale_purge_stage_restores_cohort_still_in_catalog(tmp_path: Path) -> N
     final_dir.rename(stage)
     os.utime(stage, (1, 1))
 
-    assert catalog.cleanup_stale_staging(max_age_seconds=0) == 0
+    assert _clean_staging(paths) == 0
     assert final_dir.is_dir()
     assert not stage.exists()

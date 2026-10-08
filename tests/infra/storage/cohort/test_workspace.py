@@ -8,7 +8,8 @@ import pytest
 
 import edgar_sec.infra.storage.cohort.workspace as workspace_module
 from edgar_sec.foundation.hashing import file_sha256
-from edgar_sec.infra.storage.cohort.catalog import CohortCatalog
+from edgar_sec.infra.storage.cohort.catalog import CohortCatalog, CohortNotFoundError
+from edgar_sec.infra.storage.cohort.maintenance import maintain_cohort_store
 from edgar_sec.infra.storage.cohort.paths import CohortPaths
 from edgar_sec.infra.storage.cohort.workspace import CohortWorkspace
 from edgar_sec.infra.storage.duckdb import connect, copy_query_to_parquet
@@ -238,3 +239,26 @@ def test_session_alias_lifecycle_and_session_switch(tmp_path: Path) -> None:
     workspace.clear()
     assert workspace.session_id == "default"
     assert [variable.name for variable in workspace.list_variables()] == ["A"]
+
+
+def test_missing_alias_dataset_has_actionable_lazy_error(tmp_path: Path) -> None:
+    workspace, catalog, paths = _workspace(tmp_path)
+    record = _registered(catalog, paths, "first", (("0000000001", "One"),))
+    workspace.bind_alias("A", record.cohort_id)
+    workspace.let_expression("combined", "A + A")
+    paths.resolve_relative_path(record.dataset_path).unlink()
+
+    with pytest.raises(
+        CohortNotFoundError,
+        match=rf"Variable 'A' references cohort '{record.cohort_id}' which no longer exists",
+    ):
+        workspace.let_expression("next", "A + A")
+    report = maintain_cohort_store(paths, clean_missing=True)
+    assert dict(report.removed)["missing"] == 1
+    with pytest.raises(
+        CohortNotFoundError,
+        match=rf"Variable 'combined' references cohort '{record.cohort_id}' which no longer exists",
+    ):
+        workspace.peek("combined")
+
+    assert workspace.drop_var("A")

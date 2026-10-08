@@ -203,6 +203,7 @@ CREATE TABLE IF NOT EXISTS active_family_indices (
 CREATE TABLE IF NOT EXISTS detached_cohort_datasets (
     cohort_id            TEXT PRIMARY KEY,
     dataset_path         TEXT NOT NULL,
+    dataset_sha256       TEXT NOT NULL,
     detached_at          TEXT NOT NULL
 );
 ```
@@ -242,10 +243,10 @@ To guarantee byte reproducibility across runs, all Parquet writes enforce:
 
 ### 4.4 Publication Locking, Leases & Scoped Pruning
 1. **PublicationLock**: Moving staged directories to publication paths and committing SQLite records are serialized under `PublicationLock(paths.publication_lock_path)`. Maintenance sweeps also acquire this exclusive lock, preventing race conditions with in-flight publications.
-2. **Multi-Attribute Lease**: Staging directories write `.stage.lease` recording `{host, pid, started_at, heartbeat_at}`. Long jobs update heartbeat every 30s. If interrupted, cleanup prunes only expired leases (> 2 hours) or dead local PIDs under `PublicationLock`.
+2. **Multi-Attribute Lease**: Staging directories write `.stage.lease` recording `{host, pid, created_at, heartbeat}`. Long jobs update heartbeat every 30s. Explicit maintenance reclaims foreign leases older than 2 hours or dead local PIDs under `PublicationLock`; local live PIDs are never reclaimed.
 3. **Integrity Validation**: Write `ciks.parquet`, verify row counts and compute `dataset_sha256`. Unlink `.stage.lease`.
 4. **Atomic Rename & Catalog Commit**: `os.replace(stage_dir, final_dir)` and `INSERT INTO cohorts` execute under `PublicationLock`.
-5. **Scoped Pruning & Retained Datasets**: Startup sweeps prune uncataloged directories matching cohort ID patterns (`c-*`, `universe-*`, `tickers-*`). Retained datasets (`delete --keep-dataset`) are registered in `detached_cohort_datasets` and marked with `.detached` sentinels, protecting them from pruning. Non-cohort subdirectories (`family_index/`, `source_snapshots/`, `workspace/`) are never touched.
+5. **Scoped Pruning & Retained Datasets**: Cleanup runs only through `cohort maintain`. Orphan sweeps target uncataloged `c-<16-hex>` directories and preserve detached datasets. `delete --keep-dataset` records the dataset path and digest in `detached_cohort_datasets` and writes a `.detached` sentinel. Historical raw snapshots are removed only by explicit `--clean-raw-snapshots`; family-index and workspace state are outside the cleanup scope.
 
 ### 4.5 Deletion Reference & Purge Guard
 Calling `delete_cohort(cohort_id, purge_dataset=True)`:
