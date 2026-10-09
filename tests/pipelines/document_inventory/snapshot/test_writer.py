@@ -19,6 +19,7 @@ from edgar_sec.domain.document_inventory.models import (
 from edgar_sec.domain.document_inventory.schemas import ENTRY_SCHEMA
 from edgar_sec.domain.identity import AccessionNumber
 from edgar_sec.foundation.hashing import file_sha256
+from edgar_sec.infra.storage.dag import publication as publication_module
 from edgar_sec.infra.storage.dag.catalog import DAGCatalog
 from edgar_sec.pipelines.document_inventory.checkpoint import (
     AttemptWriters,
@@ -52,7 +53,6 @@ from edgar_sec.pipelines.document_inventory.snapshot.schema import (
     SNAPSHOT_ACCESSIONS_SCHEMA,
 )
 from edgar_sec.pipelines.document_inventory.snapshot.validation import validate_snapshot
-from edgar_sec.pipelines.document_inventory.snapshot import writer as writer_module
 from edgar_sec.pipelines.document_inventory.snapshot.writer import (
     publish_committed_chunks,
 )
@@ -371,13 +371,13 @@ def test_concurrent_publishers_serialize_and_refuse_the_loser(
         prepared.append((paths, run))
 
     rendezvous = Barrier(2)
-    real_lock = writer_module.PublicationLock
+    real_lock = publication_module.PublicationLock
 
-    def concurrent_lock(paths):
+    def concurrent_lock(*args, **kwargs):
         rendezvous.wait(timeout=30)
-        return real_lock(paths)
+        return real_lock(*args, **kwargs)
 
-    monkeypatch.setattr(writer_module, "PublicationLock", concurrent_lock)
+    monkeypatch.setattr(publication_module, "PublicationLock", concurrent_lock)
 
     def publish(prepared_run):
         paths, run = prepared_run

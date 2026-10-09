@@ -105,14 +105,13 @@ def publish_node(
             raise StaleParentError(
                 f"expected parent {expected_parent_id!r}, current is {current_id!r}"
             )
+        target_dir = root / manifest.snapshot_id
+        if staged_dir is not None:
+            staged = Path(staged_dir)
+            if staged.exists() and not target_dir.exists():
+                shutil.move(str(staged), str(target_dir))
 
-    target_dir = root / manifest.snapshot_id
-    if staged_dir is not None:
-        staged = Path(staged_dir)
-        if staged.exists() and not target_dir.exists():
-            shutil.move(str(staged), str(target_dir))
-
-    catalog.publish_node(manifest, branch_name=target_branch)
+        catalog.publish_node(manifest, branch_name=target_branch)
     return target_dir
 
 
