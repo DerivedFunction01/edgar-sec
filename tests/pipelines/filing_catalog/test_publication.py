@@ -9,9 +9,9 @@ import pyarrow as pa
 import pyarrow.parquet as pq
 import pytest
 
+from edgar_sec.domain.filing_catalog.schemas import TARGET_PLAN_SCHEMA_VERSION
 from edgar_sec.pipelines.filing_catalog.paths import REQUIRED_PLAN_FILES
 from edgar_sec.pipelines.filing_catalog.publication import (
-    TARGET_PLAN_SCHEMA_VERSION,
     PlanConflictError,
     plan_bundle_complete,
     plan_fingerprint,
@@ -91,6 +91,54 @@ def test_complete_bundle_is_detected(tmp_path: Path) -> None:
     bundle = tmp_path / "p1"
     bundle.mkdir()
     _stage_bundle(bundle)
+    assert plan_bundle_complete(bundle)
+
+
+def test_new_plan_manifest_pins_each_target_part(tmp_path: Path) -> None:
+    bundle = tmp_path / "p1"
+    bundle.mkdir()
+    _stage_bundle(bundle)
+
+    plan = json.loads((bundle / "plan.json").read_text(encoding="utf-8"))
+    part = plan["target_parts"][0]
+    part_path = bundle / part["path"]
+    assert part["form"] == "10-K"
+    assert part["row_count"] == 1
+    assert part["byte_size"] == part_path.stat().st_size
+    assert len(part["sha256"]) == 64
+
+
+def test_target_part_mutation_makes_the_bundle_incomplete(tmp_path: Path) -> None:
+    bundle = tmp_path / "p1"
+    bundle.mkdir()
+    _stage_bundle(bundle)
+    target_part = bundle / "targets" / "form=10-K" / "data.parquet"
+    target_part.write_bytes(b"mutated")
+
+    assert not plan_bundle_complete(bundle)
+
+
+def test_current_schema_requires_target_part_descriptors(tmp_path: Path) -> None:
+    bundle = tmp_path / "p1"
+    bundle.mkdir()
+    _stage_bundle(bundle)
+    plan = json.loads((bundle / "plan.json").read_text(encoding="utf-8"))
+    plan["plan_schema_version"] = TARGET_PLAN_SCHEMA_VERSION
+    plan.pop("target_parts")
+    (bundle / "plan.json").write_text(json.dumps(plan), encoding="utf-8")
+
+    assert not plan_bundle_complete(bundle)
+
+
+def test_v12_plan_remains_complete_for_existing_readers(tmp_path: Path) -> None:
+    bundle = tmp_path / "p1"
+    bundle.mkdir()
+    _stage_bundle(bundle)
+    plan = json.loads((bundle / "plan.json").read_text(encoding="utf-8"))
+    plan["plan_schema_version"] = "1.2"
+    plan.pop("target_parts")
+    (bundle / "plan.json").write_text(json.dumps(plan), encoding="utf-8")
+
     assert plan_bundle_complete(bundle)
 
 
@@ -237,7 +285,7 @@ def test_publish_moves_the_whole_bundle(tmp_path: Path) -> None:
 
 def test_target_plan_schema_version_is_declared() -> None:
     # Every bump makes older bundles non-reusable rather than reinterpreted.
-    assert TARGET_PLAN_SCHEMA_VERSION == "1.2"
+    assert TARGET_PLAN_SCHEMA_VERSION == "1.3"
 
 
 def test_publication_stamps_a_selection_fingerprint(tmp_path: Path) -> None:

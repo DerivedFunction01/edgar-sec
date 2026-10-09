@@ -1,9 +1,9 @@
 # Accession Document Flow — Implementation Roadmap
 
-Status: **the S1–S5 inventory publication path, the split Project/Run/Status/Publish
+Status: **the S1–S6 inventory/target-planning path, the split Project/Run/Status/Publish
 lifecycle, and S7a/S7b fixture-review foundations are implemented; S0 historical
-acceptance and S8 operational retention remain open.** S6
-target planning is the next offline handoff. See the
+acceptance and S8 operational retention remain open.** S9 acquisition is the next
+offline handoff. See the
 [inventory exit and acquisition gate](./inventory_exit_and_acquisition_gate.md) for
 current readiness; stage subplans own detailed contracts.
 
@@ -315,6 +315,11 @@ target-matching implementation version, coverage, and counts by outcome. Its v1
 table carries catalog `form` and `filing_date`, emits one row per candidate entry; an
 unmatched request emits one row with a null `inventory_entry_id`, while an ambiguous
 request emits one row per conflicting candidate. Its fields are:
+
+S6 accepts a filing-catalog plan only when it uses plan schema 1.3 and its
+`plan.json` declares the selected `targets/form=<escaped-form>/data.parquet` part
+paths, row counts, byte sizes, and SHA-256 digests. Earlier plans remain readable
+by their owning consumers but are not accepted as digest-pinned S6 scope.
 
 | Field | Arrow type | Contract |
 |---|---|---|
@@ -668,7 +673,7 @@ The cumulative queryable snapshot: append-only delta and checkpoint DAG publicat
 
 **Details:** [subplan](subplans/S6_target_plans.md)
 
-Versioned JSON profiles in `policies/document_targets/` with role/type targets and planner-derived `request_id` values, per-token form alias resolution, and canonical digests; target plans as separate immutable bundles pinned to a required catalog plan and optional inventory snapshot; clean separation of outcome `status` from provenance (`source_origin: "inventory_index" | "catalog_direct"`); primary-only catalog-direct targets without synthetic inventory rows; and index-only locator resolution when a snapshot is supplied. The grammar, target-plan schema, matching rules, stage-owned operator UX, and acceptance tests are in the [S6 subplan](subplans/S6_target_plans.md) and [detailed planning specification](subplans/document_planning/specs.md); implementation dependencies and parallel tracks are in [the plan](subplans/document_planning/plan.md).
+Versioned JSON profiles in `policies/document_targets/` with role/type targets and planner-derived `request_id` values, per-token form alias resolution, and canonical digests; target plans as separate immutable bundles pinned to a required schema-1.3 catalog plan and optional inventory snapshot; clean separation of outcome `status` from provenance (`source_origin: "inventory_index" | "catalog_direct"`); primary-only catalog-direct targets without synthetic inventory rows; and index-only locator resolution when a snapshot is supplied. The grammar, target-plan schema, matching rules, stage-owned operator UX, and acceptance tests are in the [S6 subplan](subplans/S6_target_plans.md) and [detailed planning specification](subplans/document_planning/specs.md); implementation dependencies and parallel tracks are in [the plan](subplans/document_planning/plan.md).
 
 ### S7 — Index and target-plan review surfaces
 

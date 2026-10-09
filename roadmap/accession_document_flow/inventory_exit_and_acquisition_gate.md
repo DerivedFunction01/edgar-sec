@@ -131,6 +131,9 @@ ownership and derived role/type identity as the S6 subplan.
 - Publish `plan.json` and ordered form-partitioned target parts as one atomic immutable
   bundle with schema, coverage/count, and digest validation. Reusing a plan ID with
   different inputs fails.
+- S6 requires filing-catalog plan schema 1.3 with declared row counts, byte sizes,
+  and SHA-256 digests for selected target parts; legacy plan payloads are not accepted
+  as pinned accession scope.
 - Test primary/exhibit/data-file matching, no sequence guessing, `not_filed` versus
   required_missing, graphic and extracted-instance selectors, per-candidate `ambiguous`,
   catalog-direct refusal, and constructed-only XBRL outcomes offline.

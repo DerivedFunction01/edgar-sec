@@ -13,10 +13,12 @@ from edgar_sec.domain.filing_catalog.schemas import (
     PROFILE_COLUMNS,
     PROFILE_SCHEMA,
     PROFILE_SCHEMA_VERSION,
+    READABLE_TARGET_PLAN_SCHEMA_VERSIONS,
     SCHEMA_VERSION,
     TARGET_COLUMNS,
     TARGET_SCHEMA,
     TARGET_SCHEMA_VERSION,
+    TARGET_PLAN_SCHEMA_VERSION,
 )
 from edgar_sec.domain.submissions.schemas import SUBMISSION_METADATA_SCHEMA
 
@@ -68,6 +70,8 @@ def test_version_constants_are_present_and_ordered() -> None:
     assert SCHEMA_VERSION == "1.1.0"
     assert TARGET_SCHEMA_VERSION == "1.1.0"
     assert PROFILE_SCHEMA_VERSION == "1.0.0"
+    assert TARGET_PLAN_SCHEMA_VERSION == "1.3"
+    assert READABLE_TARGET_PLAN_SCHEMA_VERSIONS == frozenset({"1.2", "1.3"})
 
 
 def test_path_source_constants() -> None:

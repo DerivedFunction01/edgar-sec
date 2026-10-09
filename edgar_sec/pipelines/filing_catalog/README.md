@@ -95,7 +95,8 @@ what a consumer can rely on.
 - **A plan bundle is complete when it matches its recorded manifest.** That requires
   every required file, the seed sidecar for a policy plan, and a match between the
   on-disk partition set and the one recorded in `plan.json`, so a legitimately empty
-  plan remains complete while a bundle that lost a shard is rejected.
+  plan remains complete while a bundle that lost a shard is rejected. Schema 1.3
+  plans also verify each selected target part's row count, byte size, and SHA-256.
 - **A zero-row plan is still structurally complete and reusable.** The `targets/`
   directory and `locator_groups.parquet` are always written.
 - **Cohort inputs are content-bound and fail closed.** Deterministic `--cohort`
@@ -389,9 +390,10 @@ invariant spans several packages.
   `artifacts.root` setting is the single authority.
 - **`selection_report.json` is an audit artifact.** No production machine reads it or
   the feasibility prediction inside it; they exist for a human reviewing a run.
-- **The selection fingerprint covers the work order, not every bundle byte.**
-  Per-file digests for the target shards are recorded in the *catalog* manifest,
-  not the plan.
+- **Selection identity and payload integrity are separate.** `plan_fingerprint`
+  covers selected locator keys; schema 1.3 adds `target_parts` digests for the
+  selected occurrence Parquet files. Other sidecars remain governed by their own
+  schema and validation contracts.
 - **A fresh policy plan tolerates an underfilled quota; an expansion does not.**
   A first plan reflects a corpus; an expansion is a promise the caller made.
 - **A deterministic plan cannot be expanded.** It is a slice, not a selection, so

@@ -12,6 +12,9 @@ Before parallel implementation, agree on these interfaces and invariants:
 
 - Every plan requires a published filing-catalog plan. It defines the accession
   scope; S6 adds no form, date, cohort, seed, or limit filters.
+- S6 accepts only filing-catalog plan schema 1.3, which declares each selected
+  target part's row count, byte size, and SHA-256. Legacy schema 1.2 plans lack
+  payload pins and are refused as S6 scope.
 - An inventory snapshot is optional evidence. With one, every target resolves
   against its pinned index only. An accession missing from it emits
   `unresolved` with `accession_not_indexed`, regardless of `optional`; there is
@@ -49,9 +52,12 @@ each test directory is a package.
 | `edgar_sec/pipelines/document_planning/paths.py` | Resolve profile and artifact roots, validate identifiers, define partition and plan paths. | `tests/pipelines/document_planning/test_paths.py` |
 | `edgar_sec/pipelines/document_planning/__init__.py` | Package docstring/version only; no child re-exports. | `tests/pipelines/document_planning/__init__.py` |
 | `edgar_sec/pipelines/document_planning/schemas.py` | Own target Arrow schema and schema/version constants. | `tests/pipelines/document_planning/test_schemas.py` |
+| `edgar_sec/domain/filing_catalog/schemas.py` | Own the catalog target-plan version and readable-version set. | `tests/domain/filing_catalog/test_schemas.py` |
+| `edgar_sec/pipelines/filing_catalog/publication.py` | Stamp and verify target-part descriptors in schema 1.3 plan bundles. | `tests/pipelines/filing_catalog/test_publication.py` |
 | `edgar_sec/pipelines/document_planning/profiles.py` | Discover, validate, normalize, and digest profiles; enforce catalog-only profile restriction. | `tests/pipelines/document_planning/test_profiles.py` |
 | `edgar_sec/pipelines/document_planning/catalog_scope.py` | Validate catalog plan bundle, stream selected target rows, aggregate accessions, and verify catalog facts. | `tests/pipelines/document_planning/test_catalog_scope.py` |
 | `edgar_sec/pipelines/document_planning/inventory_evidence.py` | Pin and stream the named S5 snapshot; semi-join catalog accessions and check metadata consistency. | `tests/pipelines/document_planning/test_inventory_evidence.py` |
+| `edgar_sec/pipelines/document_planning/matching.py` | Match roles to source rows and validate retrieval locators. | `tests/pipelines/document_planning/test_matching.py` |
 | `edgar_sec/pipelines/document_planning/planner.py` | Apply profile rules to the normalized catalog scope and optional evidence; emit bounded target rows. | `tests/pipelines/document_planning/test_planner.py` |
 | `edgar_sec/pipelines/document_planning/publication.py` | Compute plan identity/digest, stage and validate Parquet parts, atomically publish and reuse bundles. | `tests/pipelines/document_planning/test_publication.py` |
 | `edgar_sec/pipelines/document_planning/discovery.py` | Discover and validate published plan envelopes without scanning source artifacts. | `tests/pipelines/document_planning/test_discovery.py` |

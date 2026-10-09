@@ -62,6 +62,8 @@ Layer 0  foundation/   runtime, memory, hashing, compression, settings, scanners
 | 4 | [`pipelines/`](pipelines/README.md) | layer root; orchestration |
 | 4 | [`pipelines/document_inventory/`](pipelines/document_inventory/README.md) | fixture/review workflows, path-backed worker coordination, bounded snapshot anti-join |
 | 4 | [`pipelines/document_inventory/snapshot/`](pipelines/document_inventory/snapshot/README.md) | snapshot relation schemas and DuckDB-backed staging/anti-join primitives |
+| 4 | [`pipelines/document_planning/`](pipelines/document_planning/README.md) | offline catalog/inventory evidence matching and immutable target-plan publication |
+| 4 | [`pipelines/document_planning/commands/`](pipelines/document_planning/commands/README.md) | offline plan, inspect, and status command handlers |
 | 4 | [`pipelines/metadata_sync/`](pipelines/metadata_sync/README.md) | Submissions metadata ingest, chunked and resumable |
 | 4 | [`pipelines/filing_catalog/`](pipelines/filing_catalog/README.md) | Zero-network catalog materialization and target planning |
 | 4 | [`pipelines/cohort/`](pipelines/cohort/README.md) | Phase 0 source refresh, diff, family-index publication, set operations, sampling, and workspace console |

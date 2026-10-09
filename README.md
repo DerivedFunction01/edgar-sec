@@ -309,6 +309,34 @@ python run.py inventory query --snapshot current --accession 0000000001-25-00000
 `--artifacts` selects the artifacts root for all commands; the full command surface is in
 the [document_inventory package README](edgar_sec/pipelines/document_inventory/README.md).
 
+### Document Planning (S6)
+
+Document Planning produces an immutable target plan from a published filing-catalog
+plan and, optionally, one pinned inventory snapshot. It is offline: it does not
+project inventory or start document acquisition. The interactive operator makes
+the evidence mode explicit and defaults publication confirmation to no.
+
+```bash
+# List profiles and plan manifests; profile files live under policies/document_targets/.
+python run.py planning status
+
+# Inventory-backed planning pins the resolved snapshot ID before preflight.
+python run.py planning plan --catalog-plan <catalog-plan-id> \
+    --profile-id <profile-id> --inventory current
+
+# Catalog-only planning is limited to profiles requesting primary documents only.
+python run.py planning plan --catalog-plan <catalog-plan-id> \
+    --profile-id <primary-only-profile>
+
+python run.py planning inspect --plan-id <document-plan-id>
+```
+
+S6 accepts catalog plan schema 1.3, whose selected target parts have declared
+byte sizes and SHA-256 digests. Inventory-backed planning uses only its pinned
+snapshot for locator evidence; catalog locators are never a fallback. See the
+[document_planning package README](edgar_sec/pipelines/document_planning/README.md)
+for the profile and published-bundle contracts.
+
 ### DAG Catalog: Durable Publication Contract
 
 All three writing pipelines share one durable publication mechanism: thin snapshots and
@@ -361,7 +389,7 @@ where the two disagree.
   - **forms** — [forms](edgar_sec/engine/forms/README.md) · [cover](edgar_sec/engine/forms/cover/README.md) · [cover/boundary](edgar_sec/engine/forms/cover/boundary/README.md) · [cover/checkmarks](edgar_sec/engine/forms/cover/checkmarks/README.md) · [cover/healing](edgar_sec/engine/forms/cover/healing/README.md) · [cover/tables](edgar_sec/engine/forms/cover/tables/README.md) · [cover/toc](edgar_sec/engine/forms/cover/toc/README.md) · [plugins](edgar_sec/engine/forms/plugins/README.md) · [plugins/evaluators](edgar_sec/engine/forms/plugins/evaluators/README.md)
   - **reflow** — [reflow](edgar_sec/engine/reflow/README.md) · [reflow/engine](edgar_sec/engine/reflow/engine/README.md) · [reflow/features](edgar_sec/engine/reflow/features/README.md) · [reflow/rules](edgar_sec/engine/reflow/rules/README.md)
   - **tables** — [tables](edgar_sec/engine/tables/README.md) · [ascii_html](edgar_sec/engine/tables/ascii_html/README.md) · [false_tables](edgar_sec/engine/tables/false_tables/README.md) · [hybrid](edgar_sec/engine/tables/hybrid/README.md) · [policy](edgar_sec/engine/tables/policy/README.md) · [protection](edgar_sec/engine/tables/protection/README.md) · [taxonomy](edgar_sec/engine/tables/taxonomy/README.md)
-- **pipelines** — [pipelines](edgar_sec/pipelines/README.md) · [metadata_sync](edgar_sec/pipelines/metadata_sync/README.md) · [filing_catalog](edgar_sec/pipelines/filing_catalog/README.md) · [cohort](edgar_sec/pipelines/cohort/README.md) (including read-only `cohort doctor` and explicit `cohort maintain`) · [document_inventory](edgar_sec/pipelines/document_inventory/README.md) · [document_inventory/snapshot](edgar_sec/pipelines/document_inventory/snapshot/README.md) · [document_storage](edgar_sec/pipelines/document_storage/README.md)
+- **pipelines** — [pipelines](edgar_sec/pipelines/README.md) · [metadata_sync](edgar_sec/pipelines/metadata_sync/README.md) · [filing_catalog](edgar_sec/pipelines/filing_catalog/README.md) · [cohort](edgar_sec/pipelines/cohort/README.md) (including read-only `cohort doctor` and explicit `cohort maintain`) · [document_inventory](edgar_sec/pipelines/document_inventory/README.md) · [document_inventory/snapshot](edgar_sec/pipelines/document_inventory/snapshot/README.md) · [document_planning](edgar_sec/pipelines/document_planning/README.md) · [document_planning/commands](edgar_sec/pipelines/document_planning/commands/README.md) · [document_storage](edgar_sec/pipelines/document_storage/README.md)
 - **apps** — [apps](edgar_sec/apps/README.md) · [viewer](edgar_sec/apps/viewer/README.md)
 
 ---
@@ -383,6 +411,7 @@ edgar_sec/               # each package has its own README.md (linked above)
 │                       #   filing_catalog (Phase 2),
 │                       #   document_inventory (streamed plan-to-work-order
 │                       #   projection, resumable S4, DAG-backed S5 publication/query),
+│                       #   document_planning (offline S6 target plans),
 │                       #   document_storage (Phase 2.5)
 └── apps/               # Layer 5: the dataset viewer (read-only, no publishing)
 
@@ -427,6 +456,9 @@ All generated paths derive from the artifacts root; no module hardcodes them.
 {artifacts_root}/filing_catalog/snapshots/catalog.sqlite  # SQLite DAG catalog database
 {artifacts_root}/filing_catalog/plans/{plan_id}/            # Immutable plan bundle
 {artifacts_root}/transient/filing_catalog/{catalog_id}/     # Staging; never published
+
+{artifacts_root}/document_planning/plans/{plan_id}/plan.json # Immutable S6 target plan
+{artifacts_root}/document_planning/plans/{plan_id}/targets/form=<FORM>/part-NNNNN.parquet # Target rows
 
 {artifacts_root}/document_storage/fixtures/{fixture_id}/manifest.json # Common envelope; storage details are pipeline-owned
 {artifacts_root}/document_storage/fixtures/{fixture_id}/fixture.sqlite

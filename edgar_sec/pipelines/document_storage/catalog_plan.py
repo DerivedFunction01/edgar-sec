@@ -23,6 +23,7 @@ from edgar_sec.domain.document.models import (
 from edgar_sec.domain.filing_catalog.schemas import (
     LOCATOR_BASE_COLUMNS,
     LOCATOR_POLICY_COLUMNS,
+    READABLE_TARGET_PLAN_SCHEMA_VERSIONS,
     SCOPE_DETERMINISTIC,
     SCOPE_POLICY,
     TARGET_COLUMNS,
@@ -37,7 +38,6 @@ from edgar_sec.pipelines.document_storage.paths import (
     form_partition_name,
 )
 from edgar_sec.pipelines.filing_catalog.publication import (
-    TARGET_PLAN_SCHEMA_VERSION,
     plan_bundle_complete,
     plan_fingerprint_from_plan,
 )
@@ -46,8 +46,6 @@ from edgar_sec.pipelines.document_storage.work_order import ChunkInput
 #: Bumped when a change to what a chunk holds or how it is named would make previously
 #: published chunk identities ambiguous.
 WORK_ORDER_VERSION = "catalog-1"
-
-SUPPORTED_PLAN_SCHEMA_VERSIONS = frozenset({TARGET_PLAN_SCHEMA_VERSION})
 
 _SCOPE_LOCATOR_COLUMNS = {
     SCOPE_DETERMINISTIC: LOCATOR_BASE_COLUMNS,
@@ -241,10 +239,10 @@ def _read_plan_metadata(plan_dir: Path, counts: dict[str, int]) -> CatalogPlanMe
     """Check the published ``plan.json`` identity this reader can execute."""
     published = _read_plan_json(plan_dir)
     version = str(published.get("plan_schema_version") or "")
-    if version not in SUPPORTED_PLAN_SCHEMA_VERSIONS:
+    if version not in READABLE_TARGET_PLAN_SCHEMA_VERSIONS:
         raise CatalogPlanError(
             f"unsupported plan schema version {version!r}; this reader accepts "
-            f"{sorted(SUPPORTED_PLAN_SCHEMA_VERSIONS)}"
+            f"{sorted(READABLE_TARGET_PLAN_SCHEMA_VERSIONS)}"
         )
     plan_id = str(published.get("plan_id") or "")
     if not plan_id:
@@ -297,6 +295,7 @@ def _validate_bundle(
     Returns the distinct locator count, which the chunk count needs and cannot be
     derived from occurrence counts.
     """
+    _validate_counts(target_paths, counts)
     if not plan_bundle_complete(plan_dir, meta.scope):
         raise CatalogPlanError(
             f"plan bundle at {plan_dir} is incomplete for scope {meta.scope!r}; "
@@ -321,7 +320,6 @@ def _validate_bundle(
                 f"it publishes {actual_targets}"
             )
 
-    _validate_counts(target_paths, counts)
     return _validate_lineage(locator_path, target_paths)
 
 
@@ -479,7 +477,7 @@ def _chunk(
 
 
 __all__ = [
-    "SUPPORTED_PLAN_SCHEMA_VERSIONS",
+    "READABLE_TARGET_PLAN_SCHEMA_VERSIONS",
     "WORK_ORDER_VERSION",
     "CatalogPlan",
     "CatalogPlanError",

@@ -30,6 +30,8 @@ planning implementations belong to the infrastructure and pipeline layers.
 - Schema and profile versions are tracked independently, so a profile change does
   not force a target-schema bump: `SCHEMA_VERSION`, `TARGET_SCHEMA_VERSION`,
   `PROFILE_SCHEMA_VERSION`.
+- Target plan version 1.3 declares target-part row counts, sizes, and SHA-256
+  digests for consumers that require payload integrity pins.
 - Path provenance is a closed vocabulary: `PATH_SOURCE_PRIMARY` and
   `PATH_SOURCE_BUNDLE`.
 - Suffix inputs are normalized and validated by `normalize_suffixes()`; invalid
@@ -50,7 +52,7 @@ planning implementations belong to the infrastructure and pipeline layers.
 
 | Symbol | Module |
 | :--- | :--- |
-| `DATASET_NAME` (`"filing_catalog"`), `SCHEMA_VERSION`, `TARGET_SCHEMA_VERSION`, `PROFILE_SCHEMA_VERSION` | `schemas.py` |
+| `DATASET_NAME` (`"filing_catalog"`), `SCHEMA_VERSION`, `TARGET_SCHEMA_VERSION`, `PROFILE_SCHEMA_VERSION`, `TARGET_PLAN_SCHEMA_VERSION`, `READABLE_TARGET_PLAN_SCHEMA_VERSIONS` | `schemas.py` |
 | `PATH_SOURCE_PRIMARY`, `PATH_SOURCE_BUNDLE` | `schemas.py` |
 | `PROFILE_COLUMNS`, `PROFILE_SCHEMA`, `TARGET_COLUMNS`, `TARGET_SCHEMA` | `schemas.py` |
 | `LOCATOR_BASE_COLUMNS`, `LOCATOR_POLICY_FEATURES`, `LOCATOR_POLICY_COLUMNS` | `schemas.py` |

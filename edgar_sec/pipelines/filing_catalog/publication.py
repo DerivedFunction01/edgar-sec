@@ -16,6 +16,11 @@ from pathlib import Path
 from typing import Any
 
 from edgar_sec.domain.filing_catalog.schemas import SCOPE_POLICY
+from edgar_sec.domain.filing_catalog.schemas import (
+    READABLE_TARGET_PLAN_SCHEMA_VERSIONS,
+    TARGET_PLAN_SCHEMA_VERSION,
+)
+from edgar_sec.foundation.hashing import file_sha256
 from edgar_sec.foundation.serialization import canonical_hash
 from edgar_sec.foundation.runtime.paths import DATA_FILE_NAME, PLAN_FILE_NAME
 from edgar_sec.infra.storage.atomic import atomic_write_json
@@ -28,8 +33,6 @@ from edgar_sec.pipelines.filing_catalog.paths import (
     SELECTION_REPORT_NAME,
     form_partition_name,
 )
-
-TARGET_PLAN_SCHEMA_VERSION = "1.2"
 
 
 class PlanConflictError(RuntimeError):
@@ -146,7 +149,54 @@ def plan_bundle_complete(plan_dir: Path, scope: str = "") -> bool:
         for entry in targets_dir.glob("form=*")
         if entry.is_dir() and (entry / DATA_FILE_NAME).is_file()
     }
-    return present == expected
+    if present != expected:
+        return False
+    if "target_parts" in published:
+        return _target_parts_complete(plan_dir, published, counts)
+    return published.get("plan_schema_version") != TARGET_PLAN_SCHEMA_VERSION
+
+
+def _target_parts_complete(
+    plan_dir: Path, published: dict[str, Any], counts: dict[str, Any]
+) -> bool:
+    parts = published.get("target_parts")
+    if not isinstance(parts, list):
+        return False
+    expected = {
+        (form, f"targets/form={form_partition_name(form)}/{DATA_FILE_NAME}"): row_count
+        for form, row_count in counts.items()
+    }
+    if len(parts) != len(expected):
+        return False
+    observed: set[tuple[str, str]] = set()
+    for part in parts:
+        if not isinstance(part, dict):
+            return False
+        form, relative, rows, digest = (
+            part.get("form"),
+            part.get("path"),
+            part.get("row_count"),
+            part.get("sha256"),
+        )
+        key = (form, relative)
+        if (
+            key not in expected
+            or key in observed
+            or rows != expected[key]
+            or not isinstance(digest, str)
+            or len(digest) != 64
+            or any(character not in "0123456789abcdef" for character in digest)
+        ):
+            return False
+        path = plan_dir / relative
+        if not path.is_file():
+            return False
+        if part.get("byte_size") != path.stat().st_size:
+            return False
+        if file_sha256(path) != digest:
+            return False
+        observed.add(key)
+    return observed == set(expected)
 
 
 def _load_plan_json(plan_dir: Path) -> dict[str, Any] | None:
@@ -270,6 +320,7 @@ def write_plan_documents(
     returned so a caller rewriting ``plan.json`` carries the stamp with it.
     """
     stamped = dict(plan_meta)
+    stamped["target_parts"] = _describe_target_parts(staging_dir, stamped.get("counts"))
     stamped["plan_fingerprint"] = plan_fingerprint(
         stamped, plan_locator_keys(staging_dir)
     )
@@ -278,8 +329,43 @@ def write_plan_documents(
     return stamped
 
 
+def _describe_target_parts(staging_dir: Path, counts: Any) -> list[dict[str, Any]]:
+    if not isinstance(counts, dict):
+        raise PlanConflictError("plan counts must be an object before publication")
+    parts: list[dict[str, Any]] = []
+    partitions: set[str] = set()
+    for form in sorted(counts):
+        row_count = counts[form]
+        if (
+            not isinstance(form, str)
+            or not isinstance(row_count, int)
+            or isinstance(row_count, bool)
+            or row_count < 0
+        ):
+            raise PlanConflictError("plan counts contain an invalid form or row count")
+        partition = form_partition_name(form)
+        if partition in partitions:
+            raise PlanConflictError("plan forms collide in target partition names")
+        partitions.add(partition)
+        relative = f"{PLAN_TARGETS_DIR_NAME}/form={partition}/{DATA_FILE_NAME}"
+        path = staging_dir / relative
+        if not path.is_file():
+            raise PlanConflictError(
+                f"target part is missing before publication: {relative}"
+            )
+        parts.append(
+            {
+                "form": form,
+                "path": relative,
+                "row_count": row_count,
+                "byte_size": path.stat().st_size,
+                "sha256": file_sha256(path),
+            }
+        )
+    return parts
+
+
 __all__ = [
-    "TARGET_PLAN_SCHEMA_VERSION",
     "PlanConflictError",
     "plan_bundle_complete",
     "plan_fingerprint",

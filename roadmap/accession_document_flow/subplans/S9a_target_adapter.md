@@ -3,15 +3,16 @@
 ## Owner and status
 
 - Owning stage in [S9](S9_acquisition.md): acquisition work-order boundary.
-- Status: typed adapter design only; no S6 target-row adapter is implemented.
+- Status: S6 target-plan production is implemented; the S9a acquisition adapter
+  remains design-only.
 - Depends on: S6 target-plan schema and S4 broker lifecycle; the target bundle is
   self-contained for acquisition.
 
-## Current tracked-code audit (2026-10-08)
+## Current tracked-code audit (2026-10-09)
 
-- **Status: not implemented; a related legacy reader exists.** `document_storage.catalog_plan.CatalogPlan` validates filing-catalog locator plans and streams locator chunks, but it does not validate S6 profile target rows or resolve `DirectUrlWork` / `BundleSequenceWork` records.
-- **Evidence:** [`document_storage/catalog_plan.py`](../../../edgar_sec/pipelines/document_storage/catalog_plan.py), [`document_storage/work_order.py`](../../../edgar_sec/pipelines/document_storage/work_order.py), and [`test_catalog_plan.py`](../../../tests/pipelines/document_storage/test_catalog_plan.py) cover the legacy plan/chunk boundary. The disposition document identifies this as a rebuild point for S9a.
-- **Next step:** implement the target-row validator and work-order mapper against the delivered S6 bundle; verify the bundle and preserve its source pins without opening upstream artifacts.
+- **Status: S6 producer exists; S9a is not implemented.** `document_storage.catalog_plan.CatalogPlan` still validates filing-catalog locator plans and streams locator chunks; it does not validate S6 target rows or resolve `DirectUrlWork` / `BundleSequenceWork` records.
+- **Evidence:** [`document_planning`](../../../edgar_sec/pipelines/document_planning/README.md) publishes self-contained target bundles with both source pins. [`document_storage/catalog_plan.py`](../../../edgar_sec/pipelines/document_storage/catalog_plan.py), [`document_storage/work_order.py`](../../../edgar_sec/pipelines/document_storage/work_order.py), and [`test_catalog_plan.py`](../../../tests/pipelines/document_storage/test_catalog_plan.py) remain the separate plan/chunk boundary.
+- **Next step:** implement the target-row validator and work-order mapper against the S6 bundle; validate its manifest and target-part digests, preserve both source pins, and do not reopen upstream artifacts.
 
 ## Objective
 

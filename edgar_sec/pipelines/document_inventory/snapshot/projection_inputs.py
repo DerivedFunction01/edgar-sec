@@ -9,7 +9,10 @@ from typing import Any
 import pyarrow as pa
 import pyarrow.parquet as pq
 
-from edgar_sec.domain.filing_catalog.schemas import TARGET_SCHEMA
+from edgar_sec.domain.filing_catalog.schemas import (
+    READABLE_TARGET_PLAN_SCHEMA_VERSIONS,
+    TARGET_SCHEMA,
+)
 from edgar_sec.foundation.hashing import file_sha256
 from edgar_sec.foundation.runtime.paths import DATA_FILE_NAME, PLAN_FILE_NAME
 from edgar_sec.infra.storage.dag.catalog import DAGCatalog
@@ -30,7 +33,6 @@ from edgar_sec.pipelines.document_inventory.snapshot.schema import (
 )
 from edgar_sec.pipelines.filing_catalog.discovery import discover_plans
 from edgar_sec.pipelines.filing_catalog.publication import (
-    TARGET_PLAN_SCHEMA_VERSION,
     plan_fingerprint_from_plan,
 )
 
@@ -81,7 +83,7 @@ def catalog_plan_parts(
         raise CohortInputError(
             "invalid_bundle", detail="plan id does not match its directory"
         )
-    if document.get("plan_schema_version") != TARGET_PLAN_SCHEMA_VERSION:
+    if document.get("plan_schema_version") not in READABLE_TARGET_PLAN_SCHEMA_VERSIONS:
         raise CohortInputError(
             "invalid_bundle", detail="unsupported plan schema version"
         )

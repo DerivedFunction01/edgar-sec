@@ -11,9 +11,9 @@
 
 ## Current tracked-code audit (2026-10-09)
 
-- **Status: inventory lifecycle commands exist; the S12 cross-stage surface and offline vertical gate are not implemented.** Inventory project/run/status/publish/query/review commands are tracked, and filing-catalog planning is a separate CLI; there is no integrated `documents plan` command or fixture-driven plan-to-acquisition-to-processing-to-vacuum-to-review run matching this contract.
-- **Evidence:** [`document_inventory/cli.py`](../../../edgar_sec/edgar_sec/pipelines/document_inventory/cli.py) registers inventory commands and review/DAG/distribution subcommands. Mirrored inventory and catalog tests cover those owners, while `document_storage` retains a separate legacy CLI and tests.
-- **Next step:** defer the vertical integration test until S6, S9, and S10 replacement APIs are implemented; then wire explicit artifact IDs and add the zero-network, no-payload-write end-to-end fixture gate before any legacy decommissioning.
+- **Status: inventory lifecycle and stage-local planning commands exist; the S12 cross-stage surface and offline vertical gate are not implemented.** Inventory project/run/status/publish/query/review and S6 plan/inspect/status commands are tracked; there is no integrated `documents plan` command or fixture-driven plan-to-acquisition-to-processing-to-vacuum-to-review run matching this contract.
+- **Evidence:** [`document_inventory/cli.py`](../../../edgar_sec/pipelines/document_inventory/cli.py) registers inventory commands. [`document_planning/cli.py`](../../../edgar_sec/pipelines/document_planning/cli.py) owns stage-local S6 commands, while `document_storage` retains a separate CLI and tests.
+- **Next step:** defer the vertical integration test until S9 and S10 replacement APIs are implemented; then wire explicit artifact IDs and add the zero-network, no-payload-write end-to-end fixture gate before any legacy decommissioning.
 
 ## Objective
 
@@ -44,7 +44,11 @@ inventory review --base <dir> --new <dir>
 inventory inspect --snapshot <id|current> [--accession <accession>]
 ```
 
-`documents plan` requires a catalog plan for scope and accepts an optional inventory snapshot for document evidence. The catalog plan determines selected accessions; the optional snapshot is the sole locator source when present. Missing snapshot accessions are `unresolved` / `accession_not_indexed`, never catalog-path fallback. Without a snapshot, S6 accepts only primary-only profiles and emits `catalog_direct` provenance. Both modes produce the same target-plan schema and pin the catalog plan plus the optional snapshot. `catalog_direct` is a provenance value, not a status or a synthetic inventory row.
+Until S12 is implemented, S6 is available through `python run.py planning plan`,
+`planning inspect`, and `planning status`. The integrated `documents plan` spelling
+above remains a future S12 command, not a launcher alias.
+
+The S6 plan operation requires a catalog plan for scope and accepts an optional inventory snapshot for document evidence. The catalog plan determines selected accessions; the optional snapshot is the sole locator source when present. Missing snapshot accessions are `unresolved` / `accession_not_indexed`, never catalog-path fallback. Without a snapshot, S6 accepts only primary-only profiles and emits `catalog_direct` provenance. Both modes produce the same target-plan schema and pin the catalog plan plus the optional snapshot. `catalog_direct` is a provenance value, not a status or a synthetic inventory row.
 
 `inventory query --filing-cik` uses the CIK encoded in the accession prefix;
 `--source-cik` uses the separate S5 catalog/cohort relationship index. These are
@@ -55,7 +59,7 @@ never triggers network work.
 
 Acquisition and processing do not gain production SEC-fetch CLI commands in this stage.
 They run from the S9 work order and S9d fixture replay contracts. The S6 package-local
-operator is specified by the S6 subplan; an integrated operator that moves among
+operator is implemented by the S6 pipeline; an integrated operator that moves among
 inventory, planning, acquisition, processing, and review remains a later S12 decision.
 
 ## Summary schemas

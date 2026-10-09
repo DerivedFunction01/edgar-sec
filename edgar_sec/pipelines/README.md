@@ -8,9 +8,8 @@ in a lower layer and consumed here.
 
 ## Purpose
 
-Four packages: three data pipelines and one cohort-management command surface.
-Each owns its own package README; the details below are the layer-level contracts
-only.
+Six packages: five data pipelines and the cohort-management command surface. Each
+owns its own package README; the details below are the layer-level contracts only.
 
 - [`metadata_sync/`](metadata_sync/README.md) — Phase 1. Turns a
   shared CIK cohort into a manifest-described Parquet dataset snapshot. Plans
@@ -25,6 +24,9 @@ only.
   Projects selected cohorts, captures and replays index pages, builds parser-review
   artifacts, and contains a streamed pre-fetch projection, path-backed S4, and bounded
   S5 anti-join primitives.
+- [`document_planning/`](document_planning/README.md) — offline S6 target planning
+  from a digest-pinned filing-catalog plan and an optional immutable inventory
+  snapshot. It publishes no acquisition work.
 - [`document_storage/`](document_storage/README.md) — Phase 2.5. Fetches primary
   filings, unrolls SGML, normalizes, resolves delegated exhibits, and
   consolidates per-run snapshots into one canonical snapshot across runs.
@@ -95,9 +97,23 @@ lower layers it depends on.
 | `filing_catalog/planner.py` | Deterministic and policy plans; policy planning consumes a validated pre-published family index. |
 | `filing_catalog/family_index.py` | Fail-closed active family-index validation for policy planning. |
 | `filing_catalog/expansion.py` | Parent validation, child derivation, and the retention invariant. |
-| `filing_catalog/publication.py` | Content-addressed plan ids, staged bundles, the selection fingerprint, and the reuse-or-conflict policy. |
+| `filing_catalog/publication.py` | Content-addressed plan ids, staged bundles, selection fingerprints, target-part digests, and reuse-or-conflict policy. |
 | `filing_catalog/discovery.py` | Manifest-only catalog/plan/policy enumeration and `current` resolution. |
 | `filing_catalog/paths.py` | `FilingCatalogPaths` and the artifact-name constants. |
+| `document_planning/__init__.py` | Docstring only. |
+| `document_planning/paths.py` | Profile, plan, and source-contract path resolution. |
+| `document_planning/schemas.py` | Target relation and version contracts. |
+| `document_planning/profiles.py` | Profile discovery, strict validation, and normalized requests. |
+| `document_planning/catalog_scope.py` | Digest-verified filing-catalog scope stream. |
+| `document_planning/inventory_evidence.py` | Pinned DAG lineage and bounded inventory evidence stream. |
+| `document_planning/matching.py` | Role matching and SEC locator validation. |
+| `document_planning/planner.py` | Source pins, plan identity, coverage, and target generation. |
+| `document_planning/publication.py` | Atomic plan-bundle publication and exact reuse. |
+| `document_planning/discovery.py` | Manifest-only status and full plan validation. |
+| `document_planning/cli.py` | `plan`, `inspect`, and `status` command dispatch. |
+| `document_planning/operator.py` | Evidence-mode selection and default-no publish confirmation. |
+| `document_planning/commands/` | Plan, inspect, and status handlers. |
+| [`document_planning/commands/README.md`](document_planning/commands/README.md) | Command package contract and deliberate gaps. |
 | `document_inventory/__init__.py` | Docstring only. |
 | `document_inventory/cli.py` | Fixture capture/list and offline review commands. |
 | `document_inventory/operator.py` | Discovery-driven fixture and parser-review menu. |
@@ -106,6 +122,7 @@ lower layers it depends on.
 | `document_inventory/fixture_store/` | Mutable fixture capture, response replay, provenance, and manifest-only discovery. |
 | `document_inventory/review_artifacts/` | Offline parser-review case output and inert HTML rendering. |
 | `document_inventory/snapshot/` | Snapshot schemas and metadata, path resolution, DuckDB anti-join and Parquet staging. |
+| `document_inventory/schemas.py` | Direct schema and relation-contract surface for Inventory consumers. |
 | `document_inventory/broker.py` | Picklable SEC broker adapter and typed fetch results. |
 | `document_inventory/worker.py` | Module-level per-accession process task and worker failures. |
 | `document_inventory/coordinator.py` | Bounded chunk processing, attempts, resume, retry, and `run_missing_accessions`. |

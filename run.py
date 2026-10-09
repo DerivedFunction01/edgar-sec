@@ -43,6 +43,12 @@ ENTRIES: tuple[LauncherEntry, ...] = (
         module="edgar_sec.pipelines.document_inventory.operator",
     ),
     LauncherEntry(
+        id="planning",
+        label="Document Planning",
+        description="Resolve filing targets from published catalog and inventory evidence",
+        module="edgar_sec.pipelines.document_planning.operator",
+    ),
+    LauncherEntry(
         id="documents",
         label="Document Storage",
         description="Document acquisition, normalization, snapshots, and review (removed soon)",

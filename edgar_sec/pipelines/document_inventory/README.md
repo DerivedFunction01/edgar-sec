@@ -15,6 +15,7 @@ Layer 4 consumes published `filing_catalog` plans and imports downward only.
 | `fixture_store/` | Mutable local response capture, provenance, discovery, and exact-byte replay; see its [package contract](fixture_store/README.md). |
 | `review_artifacts/` | Offline parser review output with inert HTML and deterministic manifests; see its [package contract](review_artifacts/README.md). |
 | `snapshot/` | Snapshot schemas, streamed catalog-plan projection, bounded DuckDB anti-join, and publication primitives; see its [package contract](snapshot/README.md). |
+| `schemas.py` | Public access to the snapshot-owned relation schemas and merge specifications. |
 | `paths.py` | Inventory-specific artifact, runtime, and transient paths; binds index fixtures to the shared foundation resolver. |
 | `run_manifest.py` | Path-backed work-order identity and chunk manifest validation. |
 | `run_state.py` | Read-only projection validation, run discovery, and persisted execution status. |
@@ -47,6 +48,11 @@ Layer 4 consumes published `filing_catalog` plans and imports downward only.
 - Durable publication pins the branch tip. `base_snapshot_id` selects the delta's lineage base and the S5/S4 identity; when omitted, the tip of the selected branch (default `main`) is used. An explicit base must match the branch tip, so historical bases require a branch created at that tip. `--expected-branch-tip` pins the branch pointer expected at commit; a concurrent move refuses publication without moving the pointer, and a retry re-anti-joins against the new parent.
 - Persisted Run cancellation is recorded before the command returns; incomplete chunks,
   retryable outcomes, parser refusals, and cancellation block independent publication.
+
+## Public surface
+
+`schemas.py` is the permitted cross-pipeline contract for canonical inventory relation
+schemas and DAG specifications; their definitions remain owned by `snapshot/`.
 
 ## Command surface
 
