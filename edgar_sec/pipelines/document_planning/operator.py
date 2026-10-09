@@ -40,6 +40,7 @@ from edgar_sec.pipelines.document_planning.planner import (
 from edgar_sec.pipelines.document_planning.profiles import (
     compatible_with_catalog_only,
     discover_profiles,
+    get_or_create_baseline_profile,
 )
 from .cli import main as cli_main
 
@@ -102,7 +103,8 @@ def _profile_choice(
     *,
     catalog_only: bool,
     default: str | None = None,
-) -> str | None:
+) -> tuple[str | None, bool]:
+    """Return (selected_profile_id, created_baseline)."""
     choices: list[PickItem] = []
     for item in discover_profiles(paths.profiles_root):
         if item.profile is None:
@@ -118,10 +120,29 @@ def _profile_choice(
                 profile.profile_id,
             )
         )
+    # Add baseline generation option
+    from edgar_sec.pipelines.document_planning.profiles import _BASELINE_PROFILE_ID
+
+    choices.append(
+        PickItem(
+            f"--{_BASELINE_PROFILE_ID}",
+            f"Generate primary-only baseline",
+            f"--{_BASELINE_PROFILE_ID}",
+        )
+    )
     chosen = prompt_paginated_choice(
         choices, prompt_label="Select target profile", default=default
     )
-    return str(chosen.value) if chosen is not None else None
+    if chosen is None:
+        return None, False
+    if chosen.value.startswith("--"):
+        try:
+            profile = get_or_create_baseline_profile(paths.profiles_root)
+            return profile.profile_id, True
+        except ValueError as err:
+            print(f"baseline profile generation failed: {err}")
+            return None, False
+    return str(chosen.value), False
 
 
 def _snapshot_choices(paths: DocumentPlanningPaths) -> list[PickItem]:
@@ -180,7 +201,7 @@ def _action_plan(session: OperatorSession) -> None:
         return
     session.catalog_plan_id = catalog_plan_id
     catalog_only = mode == "1"
-    profile_id = _profile_choice(
+    profile_id, _ = _profile_choice(
         paths, catalog_only=catalog_only, default=session.profile_id
     )
     if profile_id is None:

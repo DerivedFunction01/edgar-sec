@@ -15,7 +15,9 @@ def test_operator_requires_default_no_confirmation_after_coverage(
     monkeypatch.setattr(
         operator, "_catalog_choice", lambda _paths, _default=None: "catalog-1"
     )
-    monkeypatch.setattr(operator, "_profile_choice", lambda *_args, **_kw: "profile-1")
+    monkeypatch.setattr(
+        operator, "_profile_choice", lambda *_args, **_kw: ("profile-1", False)
+    )
     monkeypatch.setattr(
         operator, "_snapshot_choice", lambda _paths, _default=None: "current"
     )

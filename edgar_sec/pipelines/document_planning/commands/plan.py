@@ -10,10 +10,18 @@ from edgar_sec.pipelines.document_planning.planner import (
     DocumentPlanningError,
     create_document_plan,
 )
+from edgar_sec.pipelines.document_planning.profiles import (
+    get_or_create_baseline_profile,
+)
 
 
 def cmd_plan(args: argparse.Namespace) -> int:
     paths = resolve_document_planning_paths(artifacts_root=args.artifacts or None)
+    # Resolve profile ID from either explicit --profile-id or auto-generated baseline
+    profile_id = (
+        args.profile_id
+        or get_or_create_baseline_profile(paths.profiles_root).profile_id
+    )
     try:
         result = create_document_plan(
             args.catalog_plan,

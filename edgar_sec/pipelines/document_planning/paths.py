@@ -22,7 +22,7 @@ from edgar_sec.pipelines.document_inventory.paths import InventoryPaths
 PIPELINE_DIR = "document_planning"
 PLANS_DIR_NAME = "plans"
 POLICY_DIR_NAME = "policies"
-DOCUMENT_TARGETS_DIR_NAME = "document_targets"
+PROFILES_DIR_NAME = "profiles"
 _PROFILE_ID_RE = re.compile(r"[A-Za-z0-9_.-]+\Z", re.ASCII)
 
 
@@ -85,7 +85,7 @@ class DocumentPlanningPaths:
 
     @property
     def profiles_root(self) -> Path:
-        return self.repo_root / POLICY_DIR_NAME / DOCUMENT_TARGETS_DIR_NAME
+        return self.artifacts_root / PIPELINE_DIR / PROFILES_DIR_NAME
 
     @property
     def plans_root(self) -> Path:
@@ -128,7 +128,7 @@ def resolve_document_planning_paths(
 
 
 __all__ = [
-    "DOCUMENT_TARGETS_DIR_NAME",
+    "PROFILES_DIR_NAME",
     "CatalogPaths",
     "DocumentPlanningPaths",
     "PIPELINE_DIR",

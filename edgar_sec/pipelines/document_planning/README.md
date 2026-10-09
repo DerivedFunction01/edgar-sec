@@ -28,7 +28,7 @@ into an immutable accession-document target plan for later acquisition.
 | Subcommand | Description | Arguments |
 | :--- | :--- | :--- |
 | `inspect` | validate and inspect a plan | `--plan-id`, `[--artifacts]`, `[--json]` |
-| `plan` | publish a deterministic target plan | `--catalog-plan`, `--profile-id`, `[--inventory]`, `[--artifacts]`, `[--json]` |
+| `plan` | publish a deterministic target plan | `--catalog-plan`, `[--inventory]`, `[--profile-id]`, `[--auto-primary-profile]`, `[--artifacts]`, `[--json]` |
 | `status` | list profiles and published plans | `[--artifacts]`, `[--json]` |
 <!-- AUTOGEN:COMMANDS:END -->
 
@@ -51,20 +51,18 @@ python run.py planning inspect --plan-id plan-2024-01-15
 ```text
 {artifacts_root}/
 └── document_planning/
-    └── plans/
-        └── {plan_id}/
-            └── plan.json
-
-{repo_root}/
-└── policies/
-    └── document_targets/
+    ├── plans/
+    │   └── {plan_id}/
+    │       └── plan.json
+    └── profiles/
         └── {profile_id}.json
 ```
 <!-- AUTOGEN:PATHS:END -->
 
 ## Deliberate gaps
 
-- No built-in target profile is selected for an operator; profiles are curated inputs.
+- The baseline profile is generated from the operator or CLI, not inferred from
+  inventory observations; users may edit or create additional profiles.
 - No source refresh, inventory projection, or acquisition is performed. Operators
   use `inventory project` separately when coverage is missing, then plan from its
   published snapshot.

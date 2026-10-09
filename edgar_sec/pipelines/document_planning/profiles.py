@@ -4,12 +4,16 @@ from __future__ import annotations
 
 import hashlib
 import json
+import os
 import re
+import tempfile
+import stat
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
 
 from edgar_sec.domain.forms.common.aliases import resolve_alias
+from edgar_sec.foundation.runtime.paths import resolve_paths
 from edgar_sec.foundation.serialization import canonical_json
 from edgar_sec.pipelines.document_planning.paths import (
     resolve_document_planning_paths,
@@ -277,6 +281,102 @@ def discover_profiles(
     return tuple(discovered)
 
 
+_BASELINE_PROFILE_ID = "primary-only"
+_BASELINE_VERSION = "1.0.0"
+
+
+def _make_baseline_profile() -> ResolvedProfile:
+    """Create a canonical primary-only baseline profile."""
+    rules: tuple[ProfileRule, ...] = (
+        ProfileRule(
+            "*",
+            (ProfileTarget("primary", "primary", False, "primary:primary"),),
+        ),
+    )
+    digest = hashlib.sha256(
+        canonical_json(
+            {
+                "profile_id": _BASELINE_PROFILE_ID,
+                "schema_version": PROFILE_SCHEMA_VERSION,
+                "version": _BASELINE_VERSION,
+                "rules": [
+                    {
+                        "form_selector": "*",
+                        "targets": [
+                            {"role": "primary", "type": "primary", "optional": False}
+                        ],
+                    }
+                ],
+            }
+        ).encode("utf-8")
+    ).hexdigest()
+    return ResolvedProfile(
+        _BASELINE_PROFILE_ID, PROFILE_SCHEMA_VERSION, _BASELINE_VERSION, digest, rules
+    )
+
+
+def get_or_create_baseline_profile(
+    profiles_root: str | Path | None = None,
+) -> ResolvedProfile:
+    """Return the canonical baseline, creating it atomically if absent."""
+    safe_id = _BASELINE_PROFILE_ID
+    baseline = _make_baseline_profile()
+    root = (
+        Path(profiles_root).resolve()
+        if profiles_root is not None
+        else resolve_document_planning_paths().profiles_root
+    )
+    root.mkdir(parents=True, exist_ok=True)
+    path = root / f"{safe_id}.json"
+
+    if path.exists():
+        try:
+            text = path.read_text(encoding="utf-8")
+            data = json.loads(
+                text,
+                object_pairs_hook=_unique_object,
+                parse_constant=_reject_constant,
+            )
+        except (OSError, UnicodeError, json.JSONDecodeError, ValueError):
+            raise ValueError(
+                f"baseline profile {safe_id!r} exists but is unreadable; "
+                "please rename or remove it and retry"
+            )
+        try:
+            existing = _profile_from_data(data, safe_id)
+        except ValueError as err:
+            raise ValueError(
+                f"baseline profile {safe_id!r} exists but is invalid; "
+                f"please fix or rename it: {err}"
+            ) from err
+
+        if existing.digest == baseline.digest:
+            return existing
+        raise ValueError(
+            f"baseline profile {safe_id!r} exists with modified content; "
+            "please rename it or create a new profile ID"
+        )
+
+    import tempfile
+    import stat
+
+    temp_fd, temp_path = tempfile.mkstemp(
+        suffix=".json", prefix=f"{safe_id}.", dir=root
+    )
+    try:
+        with os.fdopen(temp_fd, "w", encoding="utf-8") as f:
+            f.write(json.dumps(baseline, indent=2, ensure_ascii=False) + "\n")
+        os.chmod(temp_path, stat.S_IRUSR | stat.S_IWUSR)
+        os.replace(temp_path, path)
+    except Exception:
+        try:
+            os.unlink(temp_path)
+        except OSError:
+            pass
+        raise
+    return baseline
+
+
 def compatible_with_catalog_only(profile: ResolvedProfile) -> bool:
     """Whether every request in the normalized profile is primary-only."""
     return all(
@@ -305,6 +405,7 @@ __all__ = [
     "ResolvedProfile",
     "compatible_with_catalog_only",
     "discover_profiles",
+    "get_or_create_baseline_profile",
     "load_profile",
     "profile_digest",
     "targets_for_form",

@@ -22,7 +22,13 @@ def build_parser() -> argparse.ArgumentParser:
     )
     plan_parser.add_argument("--catalog-plan", required=True)
     plan_parser.add_argument("--inventory", default=None, help="snapshot id or current")
-    plan_parser.add_argument("--profile-id", required=True)
+    profile_group = plan_parser.add_mutually_exclusive_group(required=True)
+    profile_group.add_argument("--profile-id", help="profile ID to use")
+    profile_group.add_argument(
+        "--auto-primary-profile",
+        action="store_true",
+        help="generate or reuse the primary-only baseline profile",
+    )
     plan_parser.add_argument("--artifacts", default="", help="artifacts root override")
     plan_parser.add_argument("--json", action="store_true")
     plan_parser.set_defaults(func=cmd_plan)

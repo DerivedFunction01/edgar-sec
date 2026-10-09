@@ -20,7 +20,10 @@ def test_profile_id_rejects_non_component_values(value: str) -> None:
 def test_paths_resolve_policy_and_plan_paths_from_roots(tmp_path: Path) -> None:
     paths = resolve_document_planning_paths(tmp_path, tmp_path / "configured-artifacts")
 
-    assert paths.profiles_root == tmp_path / "policies" / "document_targets"
+    assert (
+        paths.profiles_root
+        == tmp_path / "configured-artifacts" / "document_planning" / "profiles"
+    )
     assert (
         paths.plan_dir("plan_1")
         == tmp_path / "configured-artifacts" / "document_planning" / "plans" / "plan_1"
